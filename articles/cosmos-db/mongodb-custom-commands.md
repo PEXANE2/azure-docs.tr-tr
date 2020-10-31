@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 05/28/2020
 ms.author: jasonh
 ms.custom: devx-track-js
-ms.openlocfilehash: 39f116139d68f2382085dbbab5e862d0c621ad2e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 68f7c9331423fa4ef350bd7915ad85e3152c6885
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282456"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096555"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sinde depolanan verileri yönetmek için MongoDB uzantı komutlarını kullanma 
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Aşağıdaki belge, MongoDB için Azure Cosmos DB API 'sine özgü özel eylem komutlarını içerir. Bu komutlar [Azure Cosmos DB kapasite modeline](account-databases-containers-items.md)özgü veritabanı kaynaklarını oluşturmak ve almak için kullanılabilir.
 
@@ -26,7 +27,7 @@ MongoDB için Azure Cosmos DB API 'SI, MongoDB sunucu sürümü 3,2 ve 3,6 ile u
 
 Aşağıdaki uzantı komutları, veritabanı istekleri aracılığıyla Azure Cosmos DB özel kaynakları oluşturma ve değiştirme olanağı sağlar:
 
-* [Veritabanı oluşturma](#create-database)
+* [Veritabanı oluştur](#create-database)
 * [Veritabanını güncelleştir](#update-database)
 * [Veritabanını al](#get-database)
 * [Koleksiyon Oluştur](#create-collection)
@@ -43,7 +44,7 @@ Veritabanı uzantısı Oluştur komutu yeni bir MongoDB veritabanı oluşturur. 
 | `offerThroughput` | `int`  | Veritabanında ayarladığınız üretilen iş hacmi. Bu parametre isteğe bağlıdır. |
 | `autoScaleSettings` | `Object` | [Otomatik ölçeklendirme modu](provision-throughput-autoscale.md)için gereklidir. Bu nesne, otomatik ölçeklendirme kapasitesi moduyla ilişkili ayarları içerir. `maxThroughput`Koleksiyonun dinamik olarak artırılabileceği en yüksek Istek birimi miktarını açıklayan değeri ayarlayabilirsiniz. |
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Komut başarılı olursa, şu yanıtı döndürür:
 
@@ -98,7 +99,7 @@ Veritabanı uzantısını Güncelleştir komutu, belirtilen veritabanıyla iliş
 
 Bu komut, oturum bağlamında belirtilen veritabanını kullanır. Bu, komutunda kullandığınız veritabanıdır `use <database>` . Şu anda, veritabanı adı bu komut kullanılarak değiştirilemez.
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Komut başarılı olursa, şu yanıtı döndürür:
 
@@ -146,7 +147,7 @@ Aşağıdaki tabloda komut içindeki parametreler açıklanmaktadır:
 |---------|---------|---------|
 |  `customAction`   |   `string`      |   Özel komutun adı. "GetDatabase" olmalıdır|
         
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Komut başarılı olursa, yanıt aşağıdaki alanları içeren bir belge içerir:
 
@@ -219,7 +220,7 @@ Aşağıdaki tabloda komut içindeki parametreler açıklanmaktadır:
 | `shardKey` | `string` | Büyük aktarım hızı olan koleksiyonlar için gereklidir | Parçalı koleksiyon için parça anahtarının yolu. İçinde 10.000 RU/sn 'den fazla ayarlarsanız bu parametre gereklidir `offerThroughput` .  Belirtilmişse, ekli tüm belgeler bu anahtar ve değeri gerektirir. |
 | `autoScaleSettings` | `Object` | [Otomatik ölçeklendirme modu](provision-throughput-autoscale.md) için gerekli | Bu nesne, otomatik ölçeklendirme kapasitesi moduyla ilişkili ayarları içerir. `maxThroughput`Koleksiyonun dinamik olarak artırılabileceği en yüksek Istek birimi miktarını açıklayan değeri ayarlayabilirsiniz. |
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Varsayılan özel komut yanıtını döndürür. Çıktıda parametreler için özel komutun [varsayılan çıktısına](#default-output) bakın.
 
@@ -309,7 +310,7 @@ Aşağıdaki tabloda komut içindeki parametreler açıklanmaktadır:
 | `offerThroughput` | `int` |   Koleksiyonda ayarlanacak sağlanan aktarım hızı.|
 | `autoScaleSettings` | `Object` | [Otomatik ölçeklendirme modu](provision-throughput-autoscale.md)için gereklidir. Bu nesne, otomatik ölçeklendirme kapasitesi moduyla ilişkili ayarları içerir. `maxThroughput`Değer, koleksiyonun dinamik olarak artırılacakları en yüksek Istek birimi sayısını açıklar. |
 
-## <a name="output"></a>Çıktı
+## <a name="output"></a>Çıkış
 
 Varsayılan özel komut yanıtını döndürür. Çıktıda parametreler için özel komutun [varsayılan çıktısına](#default-output) bakın.
 
@@ -343,7 +344,7 @@ Aşağıdaki tabloda komut içindeki parametreler açıklanmaktadır:
 | `customAction`    |   `string`      |   Özel komutun adı. "GetCollection" olmalıdır.      |
 | `collection`    |    `string`     |    Koleksiyonun adı.     |
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 Komut başarılı olursa, yanıt aşağıdaki alanları içeren bir belge içerir
 

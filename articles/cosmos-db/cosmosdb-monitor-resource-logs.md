@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/28/2020
 ms.author: sngun
-ms.openlocfilehash: 319713cd631b87d9f97af0db3d4a7b3af1c580ec
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 18850fafd1f6cb084c9e5fdb9a24e9c4fd8bb4cc
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926130"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097575"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Azure 'da tanılama ayarlarını kullanarak Azure Cosmos DB verilerini izleme
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure 'daki Tanılama ayarları, kaynak günlüklerini toplamak için kullanılır. Azure Kaynak günlükleri bir kaynak tarafından dağıtılır ve bu kaynağın çalışması hakkında zengin ve sık veriler sağlar. Bu Günlükler istek başına yakalanır ve ayrıca "veri düzlemi günlükleri" olarak anırlar. Veri düzlemi işlemlerine bazı örnekler silme, ekleme ve readFeed içerir. Bu günlüklerin içeriği kaynak türüne göre değişir.
 

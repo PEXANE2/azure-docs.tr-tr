@@ -7,18 +7,18 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure
-ms.openlocfilehash: 638dfc63b6a37bae3905703bbd5ecabaa94d2020
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6c768df964d46364a8ca501c078dbecaf1aaa21f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783088"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095569"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>GitHub eylemlerini kullanarak App Service dağıtma
 
 İş akışınızı otomatik hale getirmek ve GitHub 'dan [Azure App Service](overview.md) dağıtmak Için [GitHub eylemleri](https://help.github.com/en/articles/about-github-actions) ile çalışmaya başlayın. 
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - GitHub hesabı. Bir hesabınız yoksa [ücretsiz](https://github.com/join)kaydolun.  
@@ -74,6 +74,9 @@ Yayımlama profili, uygulama düzeyinde bir kimlik bilgileridir. Yayımlama prof
 1. **Genel bakış** sayfasında, **Yayımlama profili al** ' ı seçin.
 
 1. İndirdiğiniz dosyayı kaydedin. Dosyanın içeriğini bir GitHub parolası oluşturmak için kullanacaksınız.
+
+> [!NOTE]
+> 2020 Ekim itibariyle Linux Web Apps, `WEBSITE_WEBDEPLOY_USE_SCM` `true` **Yayımlama profilini indirmeden önce** uygulama ayarının olarak ayarlanmış olması gerekecektir. Bu gereksinim gelecekte kaldırılacak.
 
 # <a name="service-principal"></a>[Hizmet sorumlusu](#tab/userlevel)
 

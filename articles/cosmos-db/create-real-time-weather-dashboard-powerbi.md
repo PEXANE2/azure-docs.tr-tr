@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: f44a8d82ea2588abad6855fd8eaf7aed34256d87
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: fc285599176057c57621dc6bfefbe9188d3badd7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370772"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096895"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Azure Cosmos DB ve Power BI kullanarak gerçek zamanlı pano oluşturma
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Bu makalede Azure Cosmos DB ve Azure Analysis Services kullanarak Power BI canlı bir hava durumu panosu oluşturmak için gereken adımlar açıklanmaktadır. Power BI panosunda, bir bölgedeki sıcaklık ve kinfhakkında gerçek zamanlı bilgileri göstermek için grafikler görüntülenir.
 
@@ -74,7 +75,7 @@ Azure Cosmos DB [Hava durumu verilerini](https://catalog.data.gov/dataset/local-
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/define-refresh-policy.png" alt-text="Azure Cosmos DB Power BI bağlayıcısı":::
 
-   *D sorgusunun katlanacak şekilde onaylanamadığını*belirten uyarıyı yoksayın. Azure Cosmos DB Bağlayıcısı sorguları filtreler.
+   *D sorgusunun katlanacak şekilde onaylanamadığını* belirten uyarıyı yoksayın. Azure Cosmos DB Bağlayıcısı sorguları filtreler.
 
 1. **Verileri yükleme ve raporları oluşturma** -daha önce yüklediğiniz verileri kullanarak sıcaklık ve Korni raporlamak üzere grafikleri oluşturun.
 
@@ -105,7 +106,7 @@ Azure Cosmos DB [Hava durumu verilerini](https://catalog.data.gov/dataset/local-
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/add-data-source.png" alt-text="Azure Cosmos DB Power BI bağlayıcısı":::
 
-   **Hesap URI 'si**, **veritabanı adı**ve **kapsayıcı adı**sağlayarak Azure Cosmos DB bağlanın. Artık Azure Cosmos kapsayıcısından alınan verileri Power BI olarak görebilirsiniz.
+   **Hesap URI 'si** , **veritabanı adı** ve **kapsayıcı adı** sağlayarak Azure Cosmos DB bağlanın. Artık Azure Cosmos kapsayıcısından alınan verileri Power BI olarak görebilirsiniz.
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/preview-cosmosdb-data.png" alt-text="Azure Cosmos DB Power BI bağlayıcısı":::
 
@@ -140,7 +141,7 @@ Azure Cosmos DB [Hava durumu verilerini](https://catalog.data.gov/dataset/local-
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-partitions.png" alt-text="Azure Cosmos DB Power BI bağlayıcısı" = Table.SelectRows(#"Sorted Rows", each [Document.month] = "2019-07")`
    * **Eskiye** -  `#"Filtered Rows" = Table.SelectRows(#"Sorted Rows", each [Document.month] <> "2019-07")`
 
-1. **Modeli Azure Analiz sunucusu dağıtma** -Azure Analysis Services projeye sağ tıklayıp **Dağıt**' ı seçin. Sunucu adını **dağıtım sunucusu Özellikler** bölmesine ekleyin.
+1. **Modeli Azure Analiz sunucusu dağıtma** -Azure Analysis Services projeye sağ tıklayıp **Dağıt** ' ı seçin. Sunucu adını **dağıtım sunucusu Özellikler** bölmesine ekleyin.
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-deploy-model.png" alt-text="Azure Cosmos DB Power BI bağlayıcısı":::
 

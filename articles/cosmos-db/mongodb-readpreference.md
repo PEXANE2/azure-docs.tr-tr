@@ -9,14 +9,15 @@ ms.devlang: nodejs
 ms.topic: how-to
 ms.date: 02/26/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: e86c48695c732b27f5032c1e3780cc24c8d3dc39
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 3d21aadd8174bf933e55320c8596c57274140582
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482273"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096402"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB MongoDB için API 'sini kullanarak genel olarak okuma dağıtımı
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Bu makalede, MongoDB için Azure Cosmos DB API 'sini kullanarak [MongoDB okuma tercihi](https://docs.mongodb.com/manual/core/read-preference/) ayarları ile okuma işlemlerinin genel olarak nasıl dağıtılacağı gösterilmektedir.
 
@@ -145,7 +146,7 @@ MongoDB protokolü, okuma tercih moduna ek olarak, okuma işlemlerini yönlendir
       }
 ```
 
-Bu nedenle, MongoClient, `region` okuma işlemlerini belirli bölgelere yönlendirmek için bölge adıyla birlikte etiketini kullanabilir. Cosmos hesapları için, bölge adları, sol taraftaki ayarlar ' ın altında Azure portal, **genel olarak çoğaltma verileri >**' nde bulunabilir. Bu ayar, istemci uygulamanın okuma işlemlerini yalnızca belirli bir bölgeye yönlendirmek istediği **okuma yalıtımına** ulaşmak için yararlıdır. Bu ayar, arka planda çalıştırılan ve üretim açısından kritik hizmetler olmayan, üretim dışı/analiz türü senaryolar için idealdir.
+Bu nedenle, MongoClient, `region` okuma işlemlerini belirli bölgelere yönlendirmek için bölge adıyla birlikte etiketini kullanabilir. Cosmos hesapları için, bölge adları, sol taraftaki ayarlar ' ın altında Azure portal, **genel olarak çoğaltma verileri >** ' nde bulunabilir. Bu ayar, istemci uygulamanın okuma işlemlerini yalnızca belirli bir bölgeye yönlendirmek istediği **okuma yalıtımına** ulaşmak için yararlıdır. Bu ayar, arka planda çalıştırılan ve üretim açısından kritik hizmetler olmayan, üretim dışı/analiz türü senaryolar için idealdir.
 
 Örnek uygulamadaki aşağıdaki kod parçacığında, NodeJS içindeki etiketlerle oku tercihinin nasıl yapılandırılacağı gösterilmektedir:
 
@@ -166,8 +167,8 @@ Bu makalede, MongoDB için Azure Cosmos DB API 'SI ile okuma tercihini kullanara
 
 Bu uygulamayı kullanmaya devam edemeyecekiz aşağıdaki adımlarla Azure portal Bu makalede oluşturulan tüm kaynakları silin:
 
-1. Azure portalında sol taraftaki menüden, **Kaynak grupları**'na ve ardından oluşturduğunuz kaynağın adına tıklayın. 
-2. Kaynak grubu sayfanızda, **Sil**'e tıklayın, metin kutusuna silinecek kaynağın adını yazın ve ardından **Sil**'e tıklayın.
+1. Azure portalında sol taraftaki menüden, **Kaynak grupları** 'na ve ardından oluşturduğunuz kaynağın adına tıklayın. 
+2. Kaynak grubu sayfanızda, **Sil** 'e tıklayın, metin kutusuna silinecek kaynağın adını yazın ve ardından **Sil** 'e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

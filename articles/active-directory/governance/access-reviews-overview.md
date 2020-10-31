@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 09/08/2020
+ms.date: 10/29/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: b454ced085ec3d73f3ca0f761abb6c5de44244ab
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3f52b8d4e56ec854f93940ea77f09c3dff1d362e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89594348"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096011"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmesi nedir?
 
@@ -81,7 +81,7 @@ Dizininiz, aşağıdaki görevleri gerçekleştiren çalışanların sayısı ka
 
 Azure AD Premium P2 lisansları, erişim gözden geçirmeleri kuran, ayarları yapılandıran veya kararların kararlarını uygulayan genel yönetici veya Kullanıcı Yöneticisi rollerine sahip kullanıcılar için gerekli **değildir** .
 
-Kendi kuruluşunuzun kullanıcılarından birine atadığınız her ücretli Azure AD Premium P2 lisansı için, dış Kullanıcı tahsisatından beş adede kadar Konuk kullanıcıya davet etmek için Azure AD işletmeden işletmeye (B2B) kullanabilirsiniz. Bu Konuk kullanıcılar Azure AD Premium P2 özelliklerini de kullanabilir. Daha fazla bilgi için bkz. [Azure AD B2B işbirliği Lisanslama Kılavuzu](../external-identities/licensing-guidance.md).
+Azure AD Konuk Kullanıcı erişimi, 1:5 Ratio faturalandırma modelinin yerini alan aylık etkin kullanıcılar (MAU) Faturalandırma modelini temel alır. Daha fazla bilgi için bkz. [Azure AD dış kimlikler fiyatlandırması](../external-identities/external-identities-pricing.md).
 
 Lisanslar hakkında daha fazla bilgi için bkz. [Azure Active Directory portalını kullanarak lisans atama veya kaldırma](../fundamentals/license-users-groups.md).
 

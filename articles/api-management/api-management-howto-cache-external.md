@@ -11,12 +11,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: cfb7dd7a3831d90235b25af9598cfbc137ffcb3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6288a10e111e42629abf5e09b84a6a7791dcfe95
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87904964"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095943"
 ---
 # <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>Azure API Management dış Redsıs uyumlu bir önbellek kullanın
 
@@ -39,7 +39,7 @@ Dış önbellek kullanmak, yerleşik önbelleğin bazı sınırlamalarını aşm
 > [!div class="checklist"]
 > * API Management bir dış önbellek ekleyin
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
@@ -60,12 +60,12 @@ Bu bölümde, Azure 'da redin için Azure önbelleğinin nasıl oluşturulacağ�
 
 Azure API Management 'de Redsıs için dış Azure önbelleği eklemek üzere aşağıdaki adımları izleyin.
 
-![Kendi önbelleğinizi APıM 'e taşıyın](media/api-management-howto-cache-external/add-external-cache.png)
+![Azure API Management redin için dış Azure önbelleğinin nasıl ekleneceğini gösteren ekran görüntüsü.](media/api-management-howto-cache-external/add-external-cache.png)
 
 > [!NOTE]
 > Bu ayardan **kullanımı** , yapılandırılmış önbelleği kullanacak bir Azure bölgesi veya şirket içinde barındırılan ağ geçidi konumunu belirtir. **Varsayılan** olarak yapılandırılan önbellekler, belirli bir eşleşen bölge veya konum değeri olan önbellekler tarafından geçersiz kılınır.
 >
-> Örneğin, API Management Doğu ABD, Güneydoğu Asya ve Batı Avrupa bölgelerinde barındırılıyorsa ve iki önbellek yapılandırıldığında, biri **varsayılan** diğeri ve **Güneydoğu Asya**için bir tane yapılandırılmışsa, **Güneydoğu Asya** 'daki API Management kendi önbelleğini kullanır, ancak diğer iki bölge **varsayılan** önbellek girişini kullanır.
+> Örneğin, API Management Doğu ABD, Güneydoğu Asya ve Batı Avrupa bölgelerinde barındırılıyorsa ve iki önbellek yapılandırıldığında, biri **varsayılan** diğeri ve **Güneydoğu Asya** için bir tane yapılandırılmışsa, **Güneydoğu Asya** 'daki API Management kendi önbelleğini kullanır, ancak diğer iki bölge **varsayılan** önbellek girişini kullanır.
 
 ### <a name="add-an-azure-cache-for-redis-from-the-same-subscription"></a>Aynı aboneliğden Redsıs için Azure önbelleği ekleme
 
@@ -74,7 +74,7 @@ Azure API Management 'de Redsıs için dış Azure önbelleği eklemek üzere a�
 3. **+ Ekle** düğmesine tıklayın.
 4. **Önbellek örneği** açılan alanında önbelleğinizi seçin.
 5. **Varsayılan** ' ı seçin veya istediğiniz bölgeyi açılan **menüden kullan** alanından belirtin.
-6. **Kaydet**’e tıklayın.
+6. **Kaydet** ’e tıklayın.
 
 ### <a name="add-an-azure-cache-for-redis-hosted-outside-of-the-current-azure-subscription-or-azure-in-general"></a>Geçerli Azure aboneliğinin veya genel olarak Azure 'un dışında barındırılan Red, için Azure önbelleği ekleme
 
@@ -84,7 +84,7 @@ Azure API Management 'de Redsıs için dış Azure önbelleği eklemek üzere a�
 4. **Önbellek örneği** açılan alanında **özel** ' i seçin.
 5. **Varsayılan** ' ı seçin veya istediğiniz bölgeyi açılan **menüden kullan** alanından belirtin.
 6. **Bağlantı dizesi** alanında redsıs bağlantı dizesi Için Azure önbelleğinizi sağlayın.
-7. **Kaydet**’e tıklayın.
+7. **Kaydet** ’e tıklayın.
 
 ### <a name="add-a-redis-cache-to-a-self-hosted-gateway"></a>Kendi kendine barındırılan bir ağ geçidine Redsıs önbelleği ekleme
 
@@ -94,7 +94,7 @@ Azure API Management 'de Redsıs için dış Azure önbelleği eklemek üzere a�
 4. **Önbellek örneği** açılan alanında **özel** ' i seçin.
 5. İstenen şirket içinde barındırılan ağ geçidi konumunu veya **varsayılan** , açılan **listeden kullan** alanından belirtin.
 6. **Bağlantı dizesi** alanında redsıs Cache Bağlantı dizenizi belirtin.
-7. **Kaydet**’e tıklayın.
+7. **Kaydet** ’e tıklayın.
 
 ## <a name="use-the-external-cache"></a>Dış önbelleği kullanma
 

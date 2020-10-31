@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 03/23/2020
 author: timsander1
 ms.author: tisande
-ms.openlocfilehash: 657f3cf204411bd51541437f05ff13a3f9b929c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e096de5eea9bf5bbd47b976976192e62eb6aa33e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85263050"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096421"
 ---
 # <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API'siyle Robo 3T kullanma
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Robo 3T kullanarak Cosmos hesabına bağlanmak için şunları yapmanız gerekir:
 
@@ -35,17 +36,17 @@ Cosmos hesabınızı Robo 3T bağlantı yöneticisine eklemek için aşağıdaki
 
 3. Bağlantılarınızı yönetmek için **Dosya** altındaki bağlantı düğmesine tıklayın. Ardından, **MongoDB bağlantıları** penceresinde **Oluştur** ' a tıklayarak **bağlantı ayarları** penceresini açarsınız.
 
-4. **Bağlantı ayarları** penceresinde bir ad seçin. Ardından, 1. adımdaki bağlantı bilgilerinizin **ana bilgisayar** ve **bağlantı noktasını** bulun ve sırasıyla **Adres** ve **bağlantı noktasına**girin.
+4. **Bağlantı ayarları** penceresinde bir ad seçin. Ardından, 1. adımdaki bağlantı bilgilerinizin **ana bilgisayar** ve **bağlantı noktasını** bulun ve sırasıyla **Adres** ve **bağlantı noktasına** girin.
 
     :::image type="content" source="./media/mongodb-robomongo/manageconnections.png" alt-text="Bağlantı dizesi dikey penceresinin ekran görüntüsü":::
-5. **Kimlik doğrulama** sekmesinde **kimlik doğrulama gerçekleştir**' e tıklayın. Ardından, veritabanınızı (varsayılan *yönetici*), **Kullanıcı adını** ve **parolayı**girin.
+5. **Kimlik doğrulama** sekmesinde **kimlik doğrulama gerçekleştir** ' e tıklayın. Ardından, veritabanınızı (varsayılan *yönetici* ), **Kullanıcı adını** ve **parolayı** girin.
 **Kullanıcı adı** ve **parola** , adım 1 ' deki bağlantı bilgileriniz içinde bulunabilir.
 
     :::image type="content" source="./media/mongodb-robomongo/authentication.png" alt-text="Bağlantı dizesi dikey penceresinin ekran görüntüsü":::
-6. **SSL** SEKMESINDE, **SSL protokolünü kullan**' ı Işaretleyin ve **kimlik doğrulama yöntemini** **otomatik olarak imzalanan sertifikayla**değiştirin.
+6. **SSL** SEKMESINDE, **SSL protokolünü kullan** ' ı Işaretleyin ve **kimlik doğrulama yöntemini** **otomatik olarak imzalanan sertifikayla** değiştirin.
 
     :::image type="content" source="./media/mongodb-robomongo/SSL.png" alt-text="Bağlantı dizesi dikey penceresinin ekran görüntüsü":::
-7. Son olarak, bağlanabilediğinizi doğrulamak için **Test** ' e tıklayın, sonra **kaydedin**.
+7. Son olarak, bağlanabilediğinizi doğrulamak için **Test** ' e tıklayın, sonra **kaydedin** .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

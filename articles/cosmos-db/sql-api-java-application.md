@@ -9,14 +9,15 @@ ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 74a4178cc6b9645f3cb22bf3d1c7c0ee942c3f5f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 774c829b3f9c36cef33f8f334825440b92582f4e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485299"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097320"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Öğretici: Azure Cosmos DB ve SQL API kullanarak Java Web uygulaması oluşturma
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -65,15 +66,15 @@ Bu araçları ilk kez yüklüyorsanız coreservlets.com, öğreticinin hızlı b
 
 JSP uygulaması oluşturmak için:
 
-1. İlk olarak, bir Java projesi oluşturarak başlayacağız. Eclipse'i başlatın, ardından **Dosya**'ya tıklayın, **Yeni**'ye tıklayın ve ardından **Dinamik Web Projesi**'ne tıklayın. Kullanılabilir bir proje olarak listelenen **dinamik Web projesini** görmüyorsanız şunları yapın: **Dosya**, **Yeni**, **Proje**..., **Web**' i genişletin, **dinamik Web projesi**' ne tıklayın ve **İleri**' ye tıklayın.
+1. İlk olarak, bir Java projesi oluşturarak başlayacağız. Eclipse'i başlatın, ardından **Dosya** 'ya tıklayın, **Yeni** 'ye tıklayın ve ardından **Dinamik Web Projesi** 'ne tıklayın. Kullanılabilir bir proje olarak listelenen **dinamik Web projesini** görmüyorsanız şunları yapın: **Dosya** , **Yeni** , **Proje** ..., **Web** ' i genişletin, **dinamik Web projesi** ' ne tıklayın ve **İleri** ' ye tıklayın.
    
     :::image type="content" source="./media/sql-api-java-application/image10.png" alt-text="Yapılacaklar Listesi Java uygulamam":::
 
-1. **Proje adı** kutusuna bir proje adı girin ve **Hedef Çalışma Zamanı** açılan menüsünde isteğe bağlı olarak bir değer seçin (ör. Apache Tomcat v7.0) ve ardından **Son**'a tıklayın. Bir hedef çalışma zamanının seçilmesi, projenizi Eclipse aracılığıyla yerel olarak çalıştırmanızı sağlar.
+1. **Proje adı** kutusuna bir proje adı girin ve **Hedef Çalışma Zamanı** açılan menüsünde isteğe bağlı olarak bir değer seçin (ör. Apache Tomcat v7.0) ve ardından **Son** 'a tıklayın. Bir hedef çalışma zamanının seçilmesi, projenizi Eclipse aracılığıyla yerel olarak çalıştırmanızı sağlar.
 
-1. Eclipse'te Proje Gezgini görünümünde projenizi genişletin. **WebContent**'e sağ tıklayın, **Yeni**'ye tıklayın ve ardından **JSP Dosyası**'na tıklayın.
+1. Eclipse'te Proje Gezgini görünümünde projenizi genişletin. **WebContent** 'e sağ tıklayın, **Yeni** 'ye tıklayın ve ardından **JSP Dosyası** 'na tıklayın.
 
-1. **Yeni JSP Dosyası** iletişim kutusunda dosyaya **index.jsp** adını verin. Üst klasörü aşağıdaki resimde gösterildiği gibi **WebContent** olarak tutun ve ardından **İleri**'ye tıklayın.
+1. **Yeni JSP Dosyası** iletişim kutusunda dosyaya **index.jsp** adını verin. Üst klasörü aşağıdaki resimde gösterildiği gibi **WebContent** olarak tutun ve ardından **İleri** 'ye tıklayın.
    
     :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="Yapılacaklar Listesi Java uygulamam":::
 
@@ -89,7 +90,7 @@ JSP uygulaması oluşturmak için:
 
 1. *index.jsp* dosyasını kaydedin.
 
-1. 2 adımda bir hedef çalışma zamanı ayarlarsanız **Proje**'ye ve ardından **Çalıştır**'a tıklayıp JSP uygulamanızı yerel olarak çalıştırabilirsiniz:
+1. 2 adımda bir hedef çalışma zamanı ayarlarsanız **Proje** 'ye ve ardından **Çalıştır** 'a tıklayıp JSP uygulamanızı yerel olarak çalıştırabilirsiniz:
 
    :::image type="content" source="./media/sql-api-java-application/image12.png" alt-text="Yapılacaklar Listesi Java uygulamam":::
 
@@ -97,13 +98,13 @@ JSP uygulaması oluşturmak için:
 
 [Apache Maven](https://maven.apache.org/), SQL Java SDK'sını ve bağımlılıklarını çekmenin en kolay yolunu sağlar. Bunu yapmak için, aşağıdaki adımları kullanarak projenizi bir Maven projesine dönüştürmeniz gerekir:
 
-1. Proje Gezgini'nde projenize sağ tıklayın, **Yapılandır**'a tıklayın, **Maven Projesine Dönüştür**'e tıklayın.
+1. Proje Gezgini'nde projenize sağ tıklayın, **Yapılandır** 'a tıklayın, **Maven Projesine Dönüştür** 'e tıklayın.
 
-1. **Yeni POM oluştur** penceresinde varsayılanları kabul edin ve **Son**'a tıklayın.
+1. **Yeni POM oluştur** penceresinde varsayılanları kabul edin ve **Son** 'a tıklayın.
 
-1. **Proje Gezgini**'nde pom.xml dosyasını açın.
+1. **Proje Gezgini** 'nde pom.xml dosyasını açın.
 
-1. **Bağımlılıklar** sekmesindeki **Bağımlılıklar** bölmesinde **Ekle**'ye tıklayın.
+1. **Bağımlılıklar** sekmesindeki **Bağımlılıklar** bölmesinde **Ekle** 'ye tıklayın.
 
 1. **Bağımlılık Seç** penceresinde aşağıdakileri yapın:
    
@@ -129,7 +130,7 @@ JSP uygulaması oluşturmak için:
 
 ### <a name="add-a-model"></a>Model ekleme
 
-İlk olarak, yeni bir *TodoItem. Java*dosyası içinde bir model tanımlayalim. `TodoItem`Sınıfı, alıcı ve ayarlayıcı yöntemleriyle birlikte bir öğenin şemasını tanımlar:
+İlk olarak, yeni bir *TodoItem. Java* dosyası içinde bir model tanımlayalim. `TodoItem`Sınıfı, alıcı ve ayarlayıcı yöntemleriyle birlikte bir öğenin şemasını tanımlar:
 
 :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/model/TodoItem.java":::
 
@@ -183,13 +184,13 @@ Eğlenceli bitleri tamamladığımıza göre, her şey hızlı bir kullanıcı a
 
    :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/WebContent/assets/todo.js":::
 
-1. Şimdi geriye yalnızca uygulamayı test etmek kaldı. Uygulamayı yerel olarak çalıştırın, ardından öğe adı ve kategoriyi doldurarak ve **Görev Ekle**'ye tıklayarak birkaç Yapılacaklar öğesi ekleyin. Öğe görüntülendikten sonra, onay kutusunu değiştirerek ve **görevleri güncelleştir**' i tıklatarak tamamlanıp tamamlanmayacağını güncelleştirebilirsiniz.
+1. Şimdi geriye yalnızca uygulamayı test etmek kaldı. Uygulamayı yerel olarak çalıştırın, ardından öğe adı ve kategoriyi doldurarak ve **Görev Ekle** 'ye tıklayarak birkaç Yapılacaklar öğesi ekleyin. Öğe görüntülendikten sonra, onay kutusunu değiştirerek ve **görevleri güncelleştir** ' i tıklatarak tamamlanıp tamamlanmayacağını güncelleştirebilirsiniz.
 
 ## <a name="deploy-your-java-application-to-azure-web-sites"></a><a id="Deploy"></a>Java uygulamanızı Azure Web siteleri 'ne dağıtma
 
 Azure Web Siteleri Java uygulamalarını dağıtmayı, uygulamanızı bir WAR dosyası olarak dışarı aktarmak ve kaynak denetimi (ör. Git) veya FTP aracılığıyla karşıya yüklemek kadar basit hale getirir.
 
-1. Uygulamanızı bir WAR dosyası olarak dışarı aktarmak için **Proje Gezgini**'nde projenize sağ tıklayın, **Dışarı Aktar**'a tıklayın ve ardından **WAR Dosyası**'na tıklayın.
+1. Uygulamanızı bir WAR dosyası olarak dışarı aktarmak için **Proje Gezgini** 'nde projenize sağ tıklayın, **Dışarı Aktar** 'a tıklayın ve ardından **WAR Dosyası** 'na tıklayın.
 
 1. **WAR Dışarı Aktar** penceresinde aşağıdakileri yapın:
    
@@ -209,41 +210,41 @@ Bu öğreticideki tüm örnekler GitHub'daki [todo](https://github.com/Azure-Sam
 
 1. Eclipse açıksa kapatın ve Lombok'u yüklemek için yeniden başlatın.
 
-1. Eclipse'te **Dosya** menüsünde **İçeri Aktar**'a tıklayın.
+1. Eclipse'te **Dosya** menüsünde **İçeri Aktar** 'a tıklayın.
 
-1. **İçeri Aktar** penceresinde **Git**'e tıklayın, **Git Projeleri**'ne tıklayın ve ardından **İleri**'ye tıklayın.
+1. **İçeri Aktar** penceresinde **Git** 'e tıklayın, **Git Projeleri** 'ne tıklayın ve ardından **İleri** 'ye tıklayın.
 
-1. **Depo Kaynağı Seçin** ekranında **URI'yi kopyalama**'ya tıklayın.
+1. **Depo Kaynağı Seçin** ekranında **URI'yi kopyalama** 'ya tıklayın.
 
-1. **Kaynak Git Deposu** ekranında, **URI** kutusunda, https://github.com/Azure-Samples/documentdb-java-todo-app.git girin ve ardından **İleri**’ye tıklayın.
+1. **Kaynak Git Deposu** ekranında, **URI** kutusunda, https://github.com/Azure-Samples/documentdb-java-todo-app.git girin ve ardından **İleri** ’ye tıklayın.
 
-1. **Dal Seçimi** ekranında **master**'ın seçili olduğundan emin olun ve ardından **İleri**'ye tıklayın.
+1. **Dal Seçimi** ekranında **master** 'ın seçili olduğundan emin olun ve ardından **İleri** 'ye tıklayın.
 
-1. **Yerel Hedef** ekranında deponun kopyalanabileceği bir klasör seçmek için **Gözat**'a tıklayın ve ardından **İleri**'ye tıklayın.
+1. **Yerel Hedef** ekranında deponun kopyalanabileceği bir klasör seçmek için **Gözat** 'a tıklayın ve ardından **İleri** 'ye tıklayın.
 
-1. **Projeleri içeri aktarmada kullanmak için sihirbaz seçin** ekranında **Var olan projeleri içeri aktar**'ın seçili olduğundan emin olun ve ardından **İleri**'ye tıklayın.
+1. **Projeleri içeri aktarmada kullanmak için sihirbaz seçin** ekranında **Var olan projeleri içeri aktar** 'ın seçili olduğundan emin olun ve ardından **İleri** 'ye tıklayın.
 
-1. **Projeleri İçeri Aktar** ekranında **DocumentDB** projesinin seçimini kaldırın ve ardından **Son**'a tıklayın. DocumentDB projesi, daha sonra bağımlılık olarak ekleyeceğimiz Azure Cosmos DB Java SDK'sını içerir.
+1. **Projeleri İçeri Aktar** ekranında **DocumentDB** projesinin seçimini kaldırın ve ardından **Son** 'a tıklayın. DocumentDB projesi, daha sonra bağımlılık olarak ekleyeceğimiz Azure Cosmos DB Java SDK'sını içerir.
 
-1. **Proje Gezgini**’nde azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java konumuna gidin ve HOST ve MASTER_KEY değerlerini Azure Cosmos DB hesabınızın URI ve PRIMARY KEY değerleriyle değiştirin ve ardından dosyayı kaydedin. Daha fazla bilgi için bkz [. 1. adım. Azure Cosmos veritabanı hesabı oluşturun](#CreateDB).
+1. **Proje Gezgini** ’nde azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java konumuna gidin ve HOST ve MASTER_KEY değerlerini Azure Cosmos DB hesabınızın URI ve PRIMARY KEY değerleriyle değiştirin ve ardından dosyayı kaydedin. Daha fazla bilgi için bkz [. 1. adım. Azure Cosmos veritabanı hesabı oluşturun](#CreateDB).
 
-1. **Proje Gezgini**'nde **azure-documentdb-java-sample**'a sağ tıklayın, **Yapı Yolu**'na tıklayın ve ardından **Oluşturma Yolunu Yapılandır**'a tıklayın.
+1. **Proje Gezgini** 'nde **azure-documentdb-java-sample** 'a sağ tıklayın, **Yapı Yolu** 'na tıklayın ve ardından **Oluşturma Yolunu Yapılandır** 'a tıklayın.
 
-1. **Java Oluşturma Yolu** ekranında sağ bölmedeki **Kitaplıklar** sekmesini seçin ve ardından **Dış JAR'lar Ekle**'ye tıklayın. Lombok.jar dosyasının konumuna gidin, **Aç**'a tıklayın ve ardından **Tamam**'a tıklayın.
+1. **Java Oluşturma Yolu** ekranında sağ bölmedeki **Kitaplıklar** sekmesini seçin ve ardından **Dış JAR'lar Ekle** 'ye tıklayın. Lombok.jar dosyasının konumuna gidin, **Aç** 'a tıklayın ve ardından **Tamam** 'a tıklayın.
 
-1. **Özellikler** penceresini tekrar açmak için 12. adımı kullanın ve ardından sol bölmedeki **Hedeflenen Çalışma Zamanları**'na tıklayın.
+1. **Özellikler** penceresini tekrar açmak için 12. adımı kullanın ve ardından sol bölmedeki **Hedeflenen Çalışma Zamanları** 'na tıklayın.
 
-1. **Hedeflenen Çalışma Zamanları** ekranında **Yeni**'ye tıklayın, **Apache Tomcat v7.0**'ı seçin ve ardından **Tamam**'a tıklayın.
+1. **Hedeflenen Çalışma Zamanları** ekranında **Yeni** 'ye tıklayın, **Apache Tomcat v7.0** 'ı seçin ve ardından **Tamam** 'a tıklayın.
 
-1. **Özellikler** penceresini tekrar açmak için 12. adımı kullanın ve ardından sol bölmedeki **Proje Modelleri**'ne tıklayın.
+1. **Özellikler** penceresini tekrar açmak için 12. adımı kullanın ve ardından sol bölmedeki **Proje Modelleri** 'ne tıklayın.
 
-1. **Proje Modelleri** ekranında **Dinamik Web Modülü**'nü ve **Java**'yı seçin ve ardından **Tamam**'a tıklayın.
+1. **Proje Modelleri** ekranında **Dinamik Web Modülü** 'nü ve **Java** 'yı seçin ve ardından **Tamam** 'a tıklayın.
 
-1. Ekranın en altındaki **Sunucular** sekmesinde **Localhost'ta Tomcat v7.0 Sunucusu**'na sağ tıklayın ve ardından **Ekle ve Kaldır**'a tıklayın.
+1. Ekranın en altındaki **Sunucular** sekmesinde **Localhost'ta Tomcat v7.0 Sunucusu** 'na sağ tıklayın ve ardından **Ekle ve Kaldır** 'a tıklayın.
 
-1. **Ekle ve Kaldır** penceresinde **azure-documentdb-java-sample**'ı **Yapılandırılmış** kutusuna taşıyın ve ardından **Son**'a tıklayın.
+1. **Ekle ve Kaldır** penceresinde **azure-documentdb-java-sample** 'ı **Yapılandırılmış** kutusuna taşıyın ve ardından **Son** 'a tıklayın.
 
-1. **Sunucular** sekmesinde **Localhost'ta Tomcat v7.0 Sunucusu**'na sağ tıklayın ve ardından **Yeniden Başlat**'a tıklayın.
+1. **Sunucular** sekmesinde **Localhost'ta Tomcat v7.0 Sunucusu** 'na sağ tıklayın ve ardından **Yeniden Başlat** 'a tıklayın.
 
 1. Bir tarayıcıda, `http://localhost:8080/azure-documentdb-java-sample/` konumuna gidin ve görev listenizi eklemeye başlayın. Varsayılan bağlantı noktası değerlerinizi değiştirdiyseniz 8080'i seçtiğiniz değere değiştirmeyi unutmayın.
 

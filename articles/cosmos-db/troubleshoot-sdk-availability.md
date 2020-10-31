@@ -8,14 +8,15 @@ ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: d43305040e7896a9d3a58929537f19c2bd1f526c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: b1c2377ba26b4ca64f5028fb1a51ca4e64f6a67c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319375"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097898"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>Multiregional ortamlarında Azure Cosmos SDK 'larının kullanılabilirliğini tanılama ve sorunlarını giderme
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Bu makalede, belirli bir bölgede veya bir bölge yük devretmesinin gerçekleştiği zaman bir bağlantı sorunu gördüğünüzde Azure Cosmos SDK 'larının en son sürümünün davranışı açıklanmaktadır.
 
@@ -34,7 +35,7 @@ Bölgesel tercihi ayarladığınızda, istemci aşağıdaki tabloda belirtildiğ
 | Tek bir yazma bölgesi | Tercih edilen bölge | Birincil bölge  |
 | Birden çok yazma bölgesi | Tercih edilen bölge | Tercih edilen bölge  |
 
-**Tercih edilen bölge AYARLAMAZSANıZ**SDK istemcisi varsayılan olarak birincil bölgeye ayarlanır:
+**Tercih edilen bölge AYARLAMAZSANıZ** SDK istemcisi varsayılan olarak birincil bölgeye ayarlanır:
 
 |Hesap türü |Okumalar |Yazmalar |
 |------------------------|--|--|
@@ -46,7 +47,7 @@ Bölgesel tercihi ayarladığınızda, istemci aşağıdaki tabloda belirtildiğ
 
 Normal koşullarda, SDK istemcisi tercih edilen bölgeye (bölgesel bir tercih ayarlandıysa) veya birincil bölgeye (hiçbir tercih ayarlanmamışsa) bağlanır ve aşağıdaki senaryolardan herhangi biri gerçekleşmediği takdirde işlemler bu bölgeyle sınırlandıralınacaktır.
 
-Bu durumlarda, Azure Cosmos SDK 'sını kullanan istemci günlükleri kullanıma sunar ve **işlem tanılama bilgilerinin**bir parçası olarak yeniden deneme bilgilerini içerir:
+Bu durumlarda, Azure Cosmos SDK 'sını kullanan istemci günlükleri kullanıma sunar ve **işlem tanılama bilgilerinin** bir parçası olarak yeniden deneme bilgilerini içerir:
 
 * .NET v2 SDK 'daki yanıtlarda *Requestdiagnosticsstring* özelliği.
 * .NET v3 SDK 'daki yanıtlar ve özel durumlar için *Tanılama* özelliği.

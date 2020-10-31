@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 7c506d66c101c2770cffb8cc8d105b2f841c539a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 43625a80df76ff35b8bb1804df5f5fd1524326c5
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279487"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097541"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB çevrimiçi yedekleme ve isteğe bağlı veri yükleme
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB, düzenli aralıklarla verilerinizin yedeklerini otomatik olarak alır. Otomatik yedeklemeler, veritabanı işlemlerinin performansını veya kullanılabilirliğini etkilemeden alınır. Tüm yedeklemeler bir depolama hizmetinde ayrı olarak depolanır ve bu yedeklemeler, bölgesel felate karşı dayanıklılık açısından küresel olarak çoğaltılır. Azure Cosmos hesabınızı, veritabanınızı veya kapsayıcısını yanlışlıkla sildikten veya güncelleştirdiğinizde ve daha sonra veri kurtarmayı gerektirdiğinde, otomatik yedeklemeler senaryolarda yardımcı olur.
 
@@ -53,13 +54,13 @@ Mevcut bir Azure Cosmos hesabının varsayılan yedekleme seçeneklerini değiş
 
    :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="GRS Azure depolama alanındaki tüm Cosmos DB varlıkların düzenli aralıklarla tam yedeklemeleri" border="true":::
 
-Hesap oluşturma sırasında yedekleme seçeneklerini yapılandırırsanız, her bir **düzenli** veya **sürekli**olan **yedekleme ilkesini**yapılandırabilirsiniz. Düzenli ilke, yedekleme aralığını ve yedekleme saklama süresini yapılandırmanıza olanak tanır. Sürekli ilke şu anda yalnızca kaydolma tarafından kullanılabilir. Azure Cosmos DB ekibi, iş yükünüzü değerlendirecek ve isteğinizi onaylacaktır.
+Hesap oluşturma sırasında yedekleme seçeneklerini yapılandırırsanız, her bir **düzenli** veya **sürekli** olan **yedekleme ilkesini** yapılandırabilirsiniz. Düzenli ilke, yedekleme aralığını ve yedekleme saklama süresini yapılandırmanıza olanak tanır. Sürekli ilke şu anda yalnızca kaydolma tarafından kullanılabilir. Azure Cosmos DB ekibi, iş yükünüzü değerlendirecek ve isteğinizi onaylacaktır.
 
 :::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="GRS Azure depolama alanındaki tüm Cosmos DB varlıkların düzenli aralıklarla tam yedeklemeleri" border="true":::
 
 ## <a name="request-data-restore-from-a-backup"></a>Yedekten veri geri yükleme isteği
 
-Veritabanınızı veya bir kapsayıcıyı yanlışlıkla silerseniz, verileri otomatik çevrimiçi yedeklemelerden geri yüklemek için [bir destek bileti dosyası](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) veya [Azure desteği çağırabilirsiniz](https://azure.microsoft.com/support/options/) . Azure desteği, yalnızca **Standart**, **Geliştirici**ve planlardan daha yüksek planlar gibi seçili planlar için kullanılabilir. Azure desteği, **temel** plan ile kullanılamaz. Farklı destek planları hakkında bilgi edinmek için bkz. [Azure destek planları](https://azure.microsoft.com/support/plans/) sayfası.
+Veritabanınızı veya bir kapsayıcıyı yanlışlıkla silerseniz, verileri otomatik çevrimiçi yedeklemelerden geri yüklemek için [bir destek bileti dosyası](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) veya [Azure desteği çağırabilirsiniz](https://azure.microsoft.com/support/options/) . Azure desteği, yalnızca **Standart** , **Geliştirici** ve planlardan daha yüksek planlar gibi seçili planlar için kullanılabilir. Azure desteği, **temel** plan ile kullanılamaz. Farklı destek planları hakkında bilgi edinmek için bkz. [Azure destek planları](https://azure.microsoft.com/support/plans/) sayfası.
 
 Yedeklemenin belirli bir anlık görüntüsünü geri yüklemek için Azure Cosmos DB, verilerin söz konusu anlık görüntüye ait yedekleme döngüsünün süresi boyunca kullanılabilir olmasını gerektirir.
 Geri yükleme isteğinde bulunulmadan önce aşağıdaki ayrıntılara sahip olmanız gerekir:

@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d7d77bdb223e8c3b71ef03febd4081d1f63bd1a3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 76f4f9ddaa1e4aec9409e96a0088ec51b8c2645e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475473"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097473"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB’de sağlanan işlem hızını iyileştirme
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Sağlanan aktarım hızı modeli sunarak Azure Cosmos DB, herhangi bir ölçekte tahmin edilebilir performans sağlar. Zaman ayırarak üretilen iş hacmi, performansınızda "gürültülü komşu" etkisini ortadan kaldırır. İhtiyacınız olan aktarım hızını tam olarak belirtirsiniz ve Azure Cosmos DB, SLA tarafından desteklenen, yapılandırılan üretilen işi garanti eder.
 
@@ -30,7 +31,7 @@ Veritabanlarında veya kapsayıcılarda verim sağlayabilirsiniz. Her strateji, 
 
 Aşağıda, sağlanan bir verimlilik stratejisine karar vermek için bazı yönergeler verilmiştir:
 
-Şu **durumlarda bir Azure Cosmos veritabanında (bir kapsayıcı kümesi içeren) üretilen iş sağlamayı düşünün**:
+Şu **durumlarda bir Azure Cosmos veritabanında (bir kapsayıcı kümesi içeren) üretilen iş sağlamayı düşünün** :
 
 1. Birkaç düzine Azure Cosmos Kapsayıcınız var ve bunların bazıları veya tümünde üretilen işi paylaşmak istiyorsunuz. 
 

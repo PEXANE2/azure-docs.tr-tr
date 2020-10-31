@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: c2228c99dba2dd99c0afa44457642235e08ac011
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 02fd0a4c7d931f439ab85af8d90de323105e21f2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480930"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096708"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Azure Cosmos DB’ye yüzlerce terabaytlık verileri geçirme 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB terabaytlarca veriyi depolayabilir. Üretim iş yükünüzü Azure Cosmos DB’ye taşımak için büyük ölçekli bir veri geçişi yapabilirsiniz. Bu makalede büyük ölçekli verileri Azure Cosmos DB’ye geçirmenin zorlukları açıklanır; zorluklarda size yardımcı olan ve verileri Azure Cosmos DB’ye geçiren araç tanıtılır. Müşteri, bu örnek olay incelemesinde Cosmos DB SQL API kullandı.  
 
@@ -28,11 +29,11 @@ Azure Cosmos DB geçiş stratejileri Şu anda API seçimine ve verilerin boyutun
 
 Azure Cosmos DB veri taşımaya yönelik mevcut araçlar, özellikle büyük ölçeklerde görünen bazı sınırlamalara sahiptir:
 
- * **Sınırlı ölçek genişletme özellikleri**: terabaytlarca veri Azure Cosmos DB, mümkün olduğunca hızlı bir şekilde geçiş yapmak ve sağlanan tüm üretilen iş verimini etkin bir şekilde kullanmak için, geçiş istemcilerinin sonsuza kadar ölçeklendirme yeteneği olmalıdır.  
+ * **Sınırlı ölçek genişletme özellikleri** : terabaytlarca veri Azure Cosmos DB, mümkün olduğunca hızlı bir şekilde geçiş yapmak ve sağlanan tüm üretilen iş verimini etkin bir şekilde kullanmak için, geçiş istemcilerinin sonsuza kadar ölçeklendirme yeteneği olmalıdır.  
 
-* **İlerleme izlemenin ve onay durumunun olmaması**: geçiş işleminin ilerlemesini izlemek ve büyük veri kümelerini geçirirken denetim noktası sağlamak önemlidir. Aksi takdirde, geçiş sırasında oluşan herhangi bir hata geçişi durdurur ve işlemi sıfırdan başlatmanız gerekir. %99 zaten tamamlandığında geçiş işleminin tamamını yeniden başlatmak üretken değildir.  
+* **İlerleme izlemenin ve onay durumunun olmaması** : geçiş işleminin ilerlemesini izlemek ve büyük veri kümelerini geçirirken denetim noktası sağlamak önemlidir. Aksi takdirde, geçiş sırasında oluşan herhangi bir hata geçişi durdurur ve işlemi sıfırdan başlatmanız gerekir. %99 zaten tamamlandığında geçiş işleminin tamamını yeniden başlatmak üretken değildir.  
 
-* **Sahipsiz sıra olmaması**durumunda: büyük veri kümeleri içinde, bazı durumlarda kaynak verilerin bölümleriyle ilgili sorunlar olabilir. Ayrıca, istemci veya ağla ilgili geçici sorunlar da olabilir. Bu durumların herhangi biri, geçişin tamamının başarısız olmasına neden olmamalıdır. Çoğu geçiş aracının aralıklı sorunlara karşı koruma sağlayan güçlü yeniden deneme özellikleri olsa da, her zaman yeterince olmaz. Örneğin, kaynak veri belgelerinin% 0,01 ' sinden azı boyutu 2 MB 'tan fazlaysa, Azure Cosmos DB belge yazma işlemi başarısız olur. En ideal olarak, geçiş aracının bu ' başarısız ' belgelerini başka bir atılacak ileti kuyruğuna kalıcı hale getirmek için, geçiş sonrası işlenebilen yararlı bir seçenektir. 
+* **Sahipsiz sıra olmaması** durumunda: büyük veri kümeleri içinde, bazı durumlarda kaynak verilerin bölümleriyle ilgili sorunlar olabilir. Ayrıca, istemci veya ağla ilgili geçici sorunlar da olabilir. Bu durumların herhangi biri, geçişin tamamının başarısız olmasına neden olmamalıdır. Çoğu geçiş aracının aralıklı sorunlara karşı koruma sağlayan güçlü yeniden deneme özellikleri olsa da, her zaman yeterince olmaz. Örneğin, kaynak veri belgelerinin% 0,01 ' sinden azı boyutu 2 MB 'tan fazlaysa, Azure Cosmos DB belge yazma işlemi başarısız olur. En ideal olarak, geçiş aracının bu ' başarısız ' belgelerini başka bir atılacak ileti kuyruğuna kalıcı hale getirmek için, geçiş sonrası işlenebilen yararlı bir seçenektir. 
 
 Azure Data Factory, Azure Data Migration hizmetleri gibi araçlar için bu sınırlamaların birçoğu düzeltilmekte. 
 

@@ -9,20 +9,21 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: 84d96344f20c56c9fab9eb5b3affcca3a437c096
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eab24c317513382afdd452843bc09e845ca90452
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324561"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096504"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Node.js Mongoose uygulamasını Azure Cosmos DB 'a bağlama
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Bu öğreticide, Cosmos DB veri depolarken [Mongoose çerçevesinin](https://mongoosejs.com/) nasıl kullanılacağı gösterilmektedir. Bu izlenecek yol için MongoDB için Azure Cosmos DB API 'sini kullanıyoruz. Henüz tanımayanlar için, Mongoose MongoDB için Node.js'de bir nesne modelleme çerçevesidir ve uygulama verilerinizi modellemeniz için rahat, şema tabanlı bir çözüm sağlar.
 
 Cosmos DB, Microsoft 'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Cosmos DB temel dağıtım ve yatay ölçek özelliğinden faydalanabilir ve her şey belge, anahtar/değer ve grafik veritabanlarını hızlıca oluşturup sorgulayabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -38,11 +39,11 @@ Bir Cosmos hesabı oluşturalım. Kullanmak istediğiniz bir hesap zaten varsa N
 
 ### <a name="create-a-database"></a>Veritabanı oluşturma 
 Bu uygulamada Azure Cosmos DB koleksiyon oluşturmanın iki yolu ele alınacaktır: 
-- **Her nesne modelini ayrı bir koleksiyonda depolama**: [adanmış aktarım hızına sahip bir veritabanı oluşturmanızı](set-throughput.md#set-throughput-on-a-database)öneririz. Bu kapasite modelinin kullanılması, size daha iyi maliyet verimliliği sağlayacaktır.
+- **Her nesne modelini ayrı bir koleksiyonda depolama** : [adanmış aktarım hızına sahip bir veritabanı oluşturmanızı](set-throughput.md#set-throughput-on-a-database)öneririz. Bu kapasite modelinin kullanılması, size daha iyi maliyet verimliliği sağlayacaktır.
 
     :::image type="content" source="./media/mongodb-mongoose/db-level-throughput.png" alt-text="Node.js öğreticisi-Azure portal, Mongoose node modülüyle kullanılmak üzere bir Azure Cosmos DB hesabı için Veri Gezgini bir veritabanı oluşturmayı gösteren ekran görüntüsü":::
 
-- **Tüm nesne modellerini tek bir Cosmos DB koleksiyonunda**depolama: tüm modelleri tek bir koleksiyonda depolamayı tercih ediyorsanız, sağlama üretilen iş seçeneğini seçmeden yalnızca yeni bir veritabanı oluşturabilirsiniz. Bu kapasite modelinin kullanılması her bir koleksiyonu her nesne modeli için kendi üretilen iş kapasitesine sahip olacak şekilde oluşturacaktır.
+- **Tüm nesne modellerini tek bir Cosmos DB koleksiyonunda** depolama: tüm modelleri tek bir koleksiyonda depolamayı tercih ediyorsanız, sağlama üretilen iş seçeneğini seçmeden yalnızca yeni bir veritabanı oluşturabilirsiniz. Bu kapasite modelinin kullanılması her bir koleksiyonu her nesne modeli için kendi üretilen iş kapasitesine sahip olacak şekilde oluşturacaktır.
 
 Veritabanını oluşturduktan sonra, `COSMOSDB_DBNAME` Aşağıdaki ortam değişkeninde adı kullanacaksınız.
 

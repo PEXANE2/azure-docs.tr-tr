@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 10/22/2020
-ms.openlocfilehash: 88849e6b915128394546c01698ecee34d6206043
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5ebe0bcf1e491166c5fc61597904056307f9679c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461728"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098017"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Azure SQL Yönetilen Örneği için bağlantı mimarisi
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -104,14 +104,14 @@ SQL yönetilen örneğini sanal ağın içindeki ayrılmış bir alt ağda dağ�
 - **Alt ağ temsili:** SQL yönetilen örnek alt ağının, kaynak sağlayıcısına atanmış olması gerekir `Microsoft.Sql/managedInstances` .
 - **Ağ güvenlik grubu (NSG):** NSG 'nin SQL yönetilen örnek alt ağıyla ilişkilendirilmesi gerekir. SQL yönetilen örneği yeniden yönlendirme bağlantıları için yapılandırıldığında, bağlantı noktası 1433 ve bağlantı noktaları 11000-11999 üzerindeki trafiği filtreleyerek, SQL yönetilen örnek veri uç noktasına erişimi denetlemek için NSG kullanabilirsiniz. Hizmet, yönetim trafiğinin kesintisiz akışına izin vermek için gereken geçerli [kuralları](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration) otomatik olarak sağlar ve saklar.
 - **Kullanıcı tanımlı yol (UDR) tablosu:** Bir UDR tablosunun SQL yönetilen örnek alt ağıyla ilişkilendirilmesi gerekir. Şirket içi özel IP aralıklarına sahip trafiği, sanal ağ geçidi veya sanal ağ gereci (NVA) aracılığıyla bir hedef olarak yönlendirmek için yol tablosuna giriş ekleyebilirsiniz. Hizmet, kesintisiz yönetim trafiği akışına izin vermek için gerekli olan [girişleri](#user-defined-routes-with-service-aided-subnet-configuration) otomatik olarak sağlayacak ve güncel tutacaktır.
-- **Yeterlı IP adresi:** SQL yönetilen örnek alt ağı en az 16 IP adresine sahip olmalıdır. Önerilen minimum değer 32 IP adresidir. Daha fazla bilgi için bkz. [SQL yönetilen örneği için alt ağın boyutunu belirleme](vnet-subnet-determine-size.md). Yönetilen örnekleri, [SQL yönetilen örneği için ağ gereksinimlerini](#network-requirements)karşılayacak şekilde yapılandırdıktan sonra [, var olan ağda](vnet-existing-add-subnet.md) dağıtabilirsiniz. Bunu yapamazsanız [yeni bir ağ ve alt ağ](virtual-network-subnet-create-arm-template.md) oluşturabilirsiniz.
+- **Yeterlı IP adresi:** SQL yönetilen örnek alt ağı en az 32 IP adresine sahip olmalıdır. Daha fazla bilgi için bkz. [SQL yönetilen örneği için alt ağın boyutunu belirleme](vnet-subnet-determine-size.md). Yönetilen örnekleri, [SQL yönetilen örneği için ağ gereksinimlerini](#network-requirements)karşılayacak şekilde yapılandırdıktan sonra [, var olan ağda](vnet-existing-add-subnet.md) dağıtabilirsiniz. Bunu yapamazsanız [yeni bir ağ ve alt ağ](virtual-network-subnet-create-arm-template.md) oluşturabilirsiniz.
 
 > [!IMPORTANT]
 > Yönetilen bir örnek oluşturduğunuzda, ağ kurulum üzerinde uyumsuz değişiklikler yapılmasını engellemek için alt ağa bir ağ hedefi ilkesi uygulanır. Son örnek alt ağdan kaldırıldıktan sonra, ağ hedefi ilkesi de kaldırılır.
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Hizmet destekli alt ağ yapılandırması ile zorunlu gelen güvenlik kuralları
 
-| Name       |Bağlantı noktası                        |Protokol|Kaynak           |Hedef|Eylem|
+| Ad       |Bağlantı noktası                        |Protokol|Kaynak           |Hedef|Eylem|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |yönetim  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |Mı ALT AĞı  |İzin Ver |
 |            |9000, 9003                  |TCP     |Corpnetgördünüz       |Mı ALT AĞı  |İzin Ver |
@@ -121,14 +121,14 @@ SQL yönetilen örneğini sanal ağın içindeki ayrılmış bir alt ağda dağ�
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Hizmet destekli alt ağ yapılandırması ile zorunlu giden güvenlik kuralları
 
-| Name       |Bağlantı noktası          |Protokol|Kaynak           |Hedef|Eylem|
+| Ad       |Bağlantı noktası          |Protokol|Kaynak           |Hedef|Eylem|
 |------------|--------------|--------|-----------------|-----------|------|
 |yönetim  |443, 12000    |TCP     |Mı ALT AĞı        |AzureCloud |İzin Ver |
 |mi_subnet   |Herhangi biri           |Herhangi biri     |Mı ALT AĞı        |Mı ALT AĞı  |İzin Ver |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>Hizmet destekli alt ağ yapılandırmasıyla Kullanıcı tanımlı rotalar
 
-|Name|Adres ön eki|Sonraki atlama|
+|Ad|Adres ön eki|Sonraki atlama|
 |----|--------------|-------|
 |alt ağdan vnetlocal|Mı ALT AĞı|Sanal ağ|
 |mi-13-64-11-sonrakii-Internet|13.64.0.0/11|İnternet|
@@ -301,20 +301,22 @@ SQL yönetilen örneğini sanal ağın içindeki ayrılmış bir alt ağda dağ�
 
 \* Mı alt ağı, x. x. x. x/y biçimindeki alt ağın IP adresi aralığını ifade eder. Bu bilgileri, Azure portal alt ağ özelliklerinde bulabilirsiniz.
 
+\** Hedef adres Azure hizmetlerinden biri için ise, Azure trafiği Internet 'e yönlendirmek yerine doğrudan Azure omurga ağı üzerinden hizmete yönlendirir. Sanal ağın içinde bulunduğu Azure bölgesi veya Azure hizmeti örneğinin dağıtıldığı Azure bölgesi ne olursa olsun, Azure hizmetleri arasındaki trafik İnternet'i dolaşmaz. Daha fazla ayrıntı için [UDR belgeleri sayfasını](../../virtual-network/virtual-networks-udr-overview.md)inceleyin.
+
 Ayrıca, sanal ağ geçidi veya sanal ağ gereci (NVA) aracılığıyla şirket içi özel IP aralıklarına sahip trafiği bir hedef olarak yönlendirmek için yol tablosuna giriş ekleyebilirsiniz.
 
 Sanal ağ özel bir DNS içeriyorsa, özel DNS sunucusunun ortak DNS kayıtlarını çözümleyebilmesi gerekir. Azure AD kimlik doğrulaması gibi ek özelliklerin kullanılması ek FQDN 'lerin çözümlenmesini gerektirebilir. Daha fazla bilgi için bkz. [özel DNS ayarlama](custom-dns-configure.md).
 
 ### <a name="networking-constraints"></a>Ağ kısıtlamaları
 
-**TLS 1,2, giden bağlantılarda zorlanır**: Microsoft 2020 ' de, tüm Azure hizmetlerinde hizmet içi trafik için MICROSOFT için TLS 1,2. Azure SQL yönetilen örneği için, bu, SQL Server ile çoğaltma ve bağlı sunucu bağlantıları için kullanılan giden bağlantılarda TLS 1,2 ile sonuçlandı. SQL yönetilen örneği ile 2016 'den eski SQL Server sürümlerini kullanıyorsanız, lütfen [TLS 1,2 özgü güncelleştirmelerin](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) uygulandığından emin olun.
+**TLS 1,2, giden bağlantılarda zorlanır** : Microsoft 2020 ' de, tüm Azure hizmetlerinde hizmet içi trafik için MICROSOFT için TLS 1,2. Azure SQL yönetilen örneği için, bu, SQL Server ile çoğaltma ve bağlı sunucu bağlantıları için kullanılan giden bağlantılarda TLS 1,2 ile sonuçlandı. SQL yönetilen örneği ile 2016 'den eski SQL Server sürümlerini kullanıyorsanız, lütfen [TLS 1,2 özgü güncelleştirmelerin](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) uygulandığından emin olun.
 
 Şu sanal ağ özellikleri şu anda SQL yönetilen örneği ile desteklenmiyor:
 
-- **Microsoft eşlemesi**: ExpressRoute bağlantı hatları üzerinde [Microsoft EŞLEMESINI](../../expressroute/expressroute-faqs.md#microsoft-peering) etkinleştirme, SQL yönetilen örneğinin bulunduğu bir sanal ağ ile doğrudan veya geçişli bir şekilde etkinleştiriliyor, sanal ağ içindeki SQL yönetilen örnek bileşenleri ve bağlı olduğu hizmetler arasındaki trafik akışını etkiler ve kullanılabilirlik sorunlarına neden olur. Microsoft eşlemesi zaten etkinleştirilmiş olan sanal ağa SQL yönetilen örnek dağıtımları başarısız olması beklenir.
-- **Küresel sanal ağ eşlemesi**: Azure bölgelerinde [sanal ağ eşlemesi](../../virtual-network/virtual-network-peering-overview.md) bağlantısı, 9/22/2020 ' dan önce oluşturulan alt ağlara yerleştirilmiş SQL yönetilen örnekleri için çalışmaz.
-- **AzurePlatformDNS**: platform DNS çözümlemesini engellemek için AzurePlatformDNS [HIZMETI etiketinin](../../virtual-network/service-tags-overview.md) kullanılması SQL yönetilen örneği kullanılamıyor olarak işleyebilir. SQL yönetilen örneği, altyapı içinde DNS çözümlemesi için müşteri tanımlı DNS 'i desteklese de platform için platform DNS işlemleri için bir bağımlılık vardır.
-- **NAT ağ geçidi**: belirli BIR genel IP adresiyle giden bağlantıyı denetlemek Için [Azure sanal ağ NAT](../../virtual-network/nat-overview.md) kullanmak, SQL yönetilen örneği kullanılamaz hale gelirse. SQL yönetilen örnek hizmeti şu anda, sanal ağ NAT ile gelen ve giden akışların birlikte bulunmasını sağlamayan temel yük dengeleyicinin kullanımıyla sınırlıdır.
+- **Microsoft eşlemesi** : ExpressRoute bağlantı hatları üzerinde [Microsoft EŞLEMESINI](../../expressroute/expressroute-faqs.md#microsoft-peering) etkinleştirme, SQL yönetilen örneğinin bulunduğu bir sanal ağ ile doğrudan veya geçişli bir şekilde etkinleştiriliyor, sanal ağ içindeki SQL yönetilen örnek bileşenleri ve bağlı olduğu hizmetler arasındaki trafik akışını etkiler ve kullanılabilirlik sorunlarına neden olur. Microsoft eşlemesi zaten etkinleştirilmiş olan sanal ağa SQL yönetilen örnek dağıtımları başarısız olması beklenir.
+- **Küresel sanal ağ eşlemesi** : Azure bölgelerinde [sanal ağ eşlemesi](../../virtual-network/virtual-network-peering-overview.md) bağlantısı, 9/22/2020 ' dan önce oluşturulan alt ağlara yerleştirilmiş SQL yönetilen örnekleri için çalışmaz.
+- **AzurePlatformDNS** : platform DNS çözümlemesini engellemek için AzurePlatformDNS [HIZMETI etiketinin](../../virtual-network/service-tags-overview.md) kullanılması SQL yönetilen örneği kullanılamıyor olarak işleyebilir. SQL yönetilen örneği, altyapı içinde DNS çözümlemesi için müşteri tanımlı DNS 'i desteklese de platform için platform DNS işlemleri için bir bağımlılık vardır.
+- **NAT ağ geçidi** : belirli BIR genel IP adresiyle giden bağlantıyı denetlemek Için [Azure sanal ağ NAT](../../virtual-network/nat-overview.md) kullanmak, SQL yönetilen örneği kullanılamaz hale gelirse. SQL yönetilen örnek hizmeti şu anda, sanal ağ NAT ile gelen ve giden akışların birlikte bulunmasını sağlamayan temel yük dengeleyicinin kullanımıyla sınırlıdır.
 
 ### <a name="deprecated-network-requirements-without-service-aided-subnet-configuration"></a>Kullanım dışı Hizmet destekli alt ağ yapılandırması olmayan ağ gereksinimleri
 
@@ -331,15 +333,15 @@ SQL yönetilen örneğini sanal ağın içindeki ayrılmış bir alt ağda dağ�
 
 ### <a name="mandatory-inbound-security-rules"></a>Zorunlu gelen güvenlik kuralları
 
-| Name       |Bağlantı noktası                        |Protokol|Kaynak           |Hedef|Eylem|
+| Ad       |Bağlantı noktası                        |Protokol|Kaynak           |Hedef|Eylem|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|yönetim  |9000, 9003, 1438, 1440, 1452|TCP     |Herhangi biri              |Mı ALT AĞı  |İzin Ver |
+|yönetim  |9000, 9003, 1438, 1440, 1452|TCP     |Herhangi bir              |Mı ALT AĞı  |İzin Ver |
 |mi_subnet   |Herhangi biri                         |Herhangi biri     |Mı ALT AĞı        |Mı ALT AĞı  |İzin Ver |
 |health_probe|Herhangi biri                         |Herhangi biri     |AzureLoadBalancer|Mı ALT AĞı  |İzin Ver |
 
 ### <a name="mandatory-outbound-security-rules"></a>Zorunlu giden güvenlik kuralları
 
-| Name       |Bağlantı noktası          |Protokol|Kaynak           |Hedef|Eylem|
+| Ad       |Bağlantı noktası          |Protokol|Kaynak           |Hedef|Eylem|
 |------------|--------------|--------|-----------------|-----------|------|
 |yönetim  |443, 12000    |TCP     |Mı ALT AĞı        |AzureCloud |İzin Ver |
 |mi_subnet   |Herhangi biri           |Herhangi biri     |Mı ALT AĞı        |Mı ALT AĞı  |İzin Ver |
@@ -357,7 +359,7 @@ SQL yönetilen örneğini sanal ağın içindeki ayrılmış bir alt ağda dağ�
 
 ### <a name="user-defined-routes"></a>Kullanıcı tanımlı yollar
 
-|Name|Adres ön eki|Sonraki atlama|
+|Ad|Adres ön eki|Sonraki atlama|
 |----|--------------|-------|
 |subnet_to_vnetlocal|Mı ALT AĞı|Sanal ağ|
 |mi-13-64-11-sonrakii-Internet|13.64.0.0/11|İnternet|

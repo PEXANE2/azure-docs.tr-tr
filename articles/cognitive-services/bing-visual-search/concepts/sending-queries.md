@@ -10,14 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: aahi
-ms.openlocfilehash: d9be654b014b00a9d906210f484c2620e688838d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 331b2ffde8d034ba94f5b1adcae5efa223f57594
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84169143"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095127"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Bing Görsel Arama API'si arama sorguları gönderme
+
+> [!WARNING]
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
+> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
 
 Bu makalede, yanıt nesnesi ve Bing Görsel Arama API'si gönderilen isteklerin parametreleri ve öznitelikleri açıklanmaktadır. 
 
@@ -73,14 +78,14 @@ Görsel Arama uç noktası şudur: https:\/\/api.cognitive.microsoft.com/bing/v7
 
 Aşağıdakiler, isteğinizde belirtilmesi gereken sorgu parametreleridir. En azından, `mkt` sorgu parametresini eklemeniz gerekir:
 
-| Name | Değer | Tür | Gerekli |
+| Ad | Değer | Tür | Gerekli |
 | --- | --- | --- | --- |
 | <a name="cc"></a>cc  | Sonuçların nereden geldiği temsil eden iki karakterli bir ülke kodu.<br /><br /> Bu parametreyi ayarlarsanız, [Accept-Language](#acceptlanguage) üst bilgisini de belirtmelisiniz. Bing dil listesinde bulduğu ilk desteklenen dili kullanır ve dili sizin belirttiğiniz ülke koduyla birleştirerek sonuçları hangi pazardan döndüreceğini saptar. Dil listesi desteklenen bir dil içermiyorsa, Bing isteği destekleyen en yakın dili ve pazarı bulur. Öte yandan, sonuçlarda belirtilen pazar yerine toplu veya varsayılan bir pazarı da kullanılabilir.<br /><br /> Bu sorgu parametresini ve `Accept-Language` sorgu parametresini ancak birden çok dil belirttiyseniz kullanmalısınız; aksi takdirde `mkt` ve `setLang` sorgu parametrelerini kullanmanız gerekir.<br /><br /> Bu parametre ve [](#mkt)mkt&mdash; sorgu parametresi karşılıklı olarak birbirini dışlar. İkisini birlikte belirtmeyin. | Dize | Hayır       |
-| <a name="mkt"></a>mkt   | Sonuçların geldiği pazar. <br /><br /> **Note:** Biliniyorsa, her zaman pazarı belirtmeniz gerekir. Pazarın belirtilmesi Bing’in isteği yönlendirmesine, uygun ve en iyi yanıtı döndürmesine yardımcı olur.<br /><br /> Bu parametre ve [](#cc)cc&mdash; sorgu parametresi karşılıklı olarak birbirini dışlar. İkisini birlikte belirtmeyin. | Dize | Evet      |
+| <a name="mkt"></a>mkt   | Sonuçların geldiği pazar. <br /><br /> **Note:** Biliniyorsa, her zaman pazarı belirtmeniz gerekir. Pazarın belirtilmesi Bing’in isteği yönlendirmesine, uygun ve en iyi yanıtı döndürmesine yardımcı olur.<br /><br /> Bu parametre ve [](#cc)cc&mdash; sorgu parametresi karşılıklı olarak birbirini dışlar. İkisini birlikte belirtmeyin. | Dize | Yes      |
 | <a name="safesearch"></a>safeSearch | Yetişkinlere yönelik içerik için bir filtre. Aşağıdakiler, büyük/küçük harfe duyarlı olmayan olası filtre değerleridir.<br /><ul><li>Off&mdash;Yetişkinlere yönelik metin veya resim içeren web sayfalarını döndürür.<br /><br/></li><li>Moderate&mdash;Yetişkinlere yönelik metin içeren web sayfalarını döndürür ama yetişkinlere yönelik resim içerenleri döndürmez.<br /><br/></li><li>Strict&mdash;Yetişkinlere yönelik metin veya resim içeren web sayfalarını döndürmez.</li></ul><br /> Varsayılan ayar Moderate değeridir.<br /><br /> **NOT:** İstek, Bing'in yetişkinlere yönelik içerik ilkesinin `safeSearch` parametresinde Strict ayarlanmasını gerektirdiği bir pazardan geliyorsa, Bing `safeSearch` değerini yoksayar ve Strict değerini kullanır.<br/><br/>**Note:** `site:` Sorgu işlecini kullanırsanız, yanıt, `safeSearch` sorgu parametresinin ne şekilde ayarlandığına bakılmaksızın yetişkinlere yönelik içerik içerebilen bir şansınız olabilir. `site:` işlecini yalnızca sitenin içeriği hakkında bilgi sahibiyseniz ve senaryonuz, yetişkinlere yönelik içeriğin mevcut olma ihtimalini destekliyorsa kullanın.  | Dize | Hayır       |
 | <a name="setlang"></a>setLang  | Kullanıcı arabirimi dizelerinde kullanılacak dil. ISO 639-1 iki harfli dil kodunu kullanarak dili belirtin. Örneğin, Türkçe için dil kodu TR'dir. Varsayılan değer EN (İngilizce) ayarıdır.<br /><br /> İsteğe bağlı olsa da, her zaman dil belirtmelisiniz. Kullanıcı tarafından kullanıcı arabirimi dizelerinin farklı dilde görüntülenmesi istenmediği sürece, normalde `setLang` parametresini `mkt` parametresiyle aynı dile ayarlarsınız.<br /><br /> Bu parametre ve [](#acceptlanguage)Accept-Language&mdash; üst bilgisi karşılıklı olarak birbirini dışlar. İkisini birlikte belirtmeyin.<br /><br /> Kullanıcı arabirimi dizesi, kullanıcı arabiriminde etiket olarak kullanılan dizedir. JSON yanıt nesnelerinde çok az kullanıcı arabirimi dizesi vardır. Ayrıca, yanıt nesnelerinde Bing.com özelliklerine yönelik bağlantılar da belirtilen dildedir. | Dize | Hayır   |
 
-## <a name="headers"></a>Üst bilgiler
+## <a name="headers"></a>Üst Bilgiler
 
 Aşağıdakiler, isteğinizde belirtilmesi gereken üst bilgilerdir. `Content-Type`Ve `Ocp-Apim-Subscription-Key` üst bilgileri yalnızca gerekli olan başlıklardır, ancak,, ve de dahil etmelisiniz `User-Agent` `X-MSEdge-ClientID` `X-MSEdge-ClientIP` `X-Search-Location` .
 
@@ -148,7 +153,7 @@ Yerel bir görüntüyü karşıya yüklerseniz, aşağıdaki kod parçacığı G
 Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 Content-Type: image/jpeg
 
-ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
+ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
 
 --boundary_1234-abcd--
 ```
@@ -175,7 +180,7 @@ Content-Disposition: form-data; name="image"; filename="image"
 Content-Type: image/jpeg
 
 
-ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
+ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
 
 --boundary_1234-abcd--
 ```

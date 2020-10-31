@@ -7,14 +7,15 @@ ms.topic: troubleshooting
 ms.date: 10/12/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 7a34b4a3a0f9fe75b5e252f20a8b0924b0ce01d7
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ece814ea316fe62bc2b8b64036b08983f65ccbef
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488393"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096368"
 ---
 # <a name="troubleshoot-query-issues-when-using-the-azure-cosmos-db-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API kullanırken sorgu sorunlarını giderme
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Bu makalede, Azure Cosmos DB sorgularda sorun giderme için önerilen genel bir yaklaşım gösterilmektedir. Bu makalede özetlenen adımları olası sorgu sorunlarına karşı kapsamlı bir savunma olarak düşünmemeniz durumunda, en sık karşılaşılan performans ipuçlarını buradan sunuyoruz. Bu makaleyi, MongoDB için Azure Cosmos DB API 'sindeki yavaş veya pahalı sorguların sorunlarını gidermeye yönelik bir başlangıç yeri olarak kullanmanız gerekir. Azure Cosmos DB Core (SQL) API 'sini kullanıyorsanız, bkz. [SQL API sorgusu sorun giderme kılavuzu](troubleshoot-query-performance.md) makalesi.
 
@@ -262,7 +263,7 @@ Herhangi bir zamanda yazma veya okuma kullanılabilirliği üzerinde hiçbir etk
 
 Çoğu durumda, MongoDB için Azure Cosmos DB API 'sindeki toplama işlemleri kısmi olarak dizinleri kullanacaktır. Genellikle, sorgu altyapısı önce eşitlik ve Aralık filtrelerini uygular ve dizinleri kullanır. Bu filtreleri uyguladıktan sonra sorgu altyapısı, ek filtreleri değerlendirebilir ve gerekirse toplamı hesaplamak için kalan belgeleri yüklemeyi çare olarak gerçekleştirebilir. 
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 ```
 db.coll.aggregate( [

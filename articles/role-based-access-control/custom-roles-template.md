@@ -1,6 +1,6 @@
 ---
 title: Azure Resource Manager şablonu kullanarak Azure özel rolü oluşturma-Azure RBAC
-description: Azure Resource Manager şablonları ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak Azure özel rolü oluşturmayı öğrenin.
+description: Azure Resource Manager şablonu (ARM şablonu) ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak Azure özel rolü oluşturmayı öğrenin.
 services: role-based-access-control,azure-resource-manager
 author: rolyon
 manager: mtillman
@@ -10,57 +10,59 @@ ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 06/25/2020
 ms.author: rolyon
-ms.openlocfilehash: bcf1966ffc326291448cb611d99390fe0d652151
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96dfdc0a1c32237c55d4e65bb25989656e2a4ad2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85392982"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097031"
 ---
-# <a name="create-an-azure-custom-role-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Azure özel rolü oluşturma
+# <a name="create-an-azure-custom-role-using-an-arm-template"></a>ARM şablonu kullanarak Azure özel rolü oluşturma
 
-[Azure yerleşik rolleri](built-in-roles.md) , kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi [özel rollerinizi](custom-roles.md)de oluşturabilirsiniz. Bu makalede, bir Azure Resource Manager şablonu kullanarak nasıl özel rol oluşturulacağı açıklanır.
+[Azure yerleşik rolleri](built-in-roles.md) , kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi [özel rollerinizi](custom-roles.md)de oluşturabilirsiniz. Bu makalede bir Azure Resource Manager şablonu (ARM şablonu) kullanılarak nasıl özel bir rol oluşturulacağı açıklanır.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+Özel bir rol oluşturmak için, rol adı, izinler ve rolün kullanılabileceği yerleri belirtirsiniz. Bu makalede, bir abonelik kapsamında veya daha düşük bir abonelik kapsamında atanabilen, kaynak izinleri olan _özel rol-RG Reader_ adlı bir rol oluşturacaksınız.
+
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure’a dağıtma** düğmesini seçin. Şablon Azure portalda açılır.
+
+[![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsubscription-deployments%2Fcreate-role-def%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Ön koşullar
 
 Özel bir rol oluşturmak için şunları yapmanız gerekir:
 
-- [Sahip](built-in-roles.md#owner) veya [Kullanıcı Erişimi Yöneticisi](built-in-roles.md#user-access-administrator) gibi özel rol oluşturma izni
+- [Sahip](built-in-roles.md#owner) veya [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator)gibi özel roller oluşturma izinleri.
 
-## <a name="create-a-custom-role"></a>Özel rol oluşturma
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Özel bir rol oluşturmak için, rol adı, izinler ve rolün kullanılabileceği yerleri belirtirsiniz. Bu makalede, bir abonelik kapsamında veya daha düşük bir şekilde atanabilecek kaynak izinleriyle "özel rol-RG Reader" adlı bir rol oluşturacaksınız.
+Bu makalede kullanılan şablon, [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/create-role-def). Şablonda dört parametre ve bir kaynak bölümü vardır. Dört parametre şunlardır:
 
-### <a name="review-the-template"></a>Şablonu gözden geçirme
-
-Bu makalede kullanılan şablon, [Azure hızlı başlangıç şablonlarından](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-role-def). Şablonda dört parametre ve bir kaynak bölümü vardır. Dört parametre şunlardır:
-
-- Varsayılan değeri ["Microsoft. resources/abonelikler/resourceGroups/Read"] olan eylem dizisi
-- Boş bir varsayılan değere sahip notActions dizisi
-- Varsayılan "özel rol-RG Reader" değerine sahip rol adı
-- "Rol tanımının abonelik düzeyi dağıtımı" varsayılan değerine sahip rol açıklaması
-
-Şablonda tanımlanan kaynak:
-
-- [Microsoft. Authorization/roleDefinitions](/azure/templates/Microsoft.Authorization/roleDefinitions)
+- Varsayılan değeri olan eylem dizisi `["Microsoft.Resources/subscriptions/resourceGroups/read"]` .
+- `notActions`Boş bir varsayılan değere sahip dizi.
+- Varsayılan değeri olan rol adı `Custom Role - RG Reader` .
+- Varsayılan değeri olan rol açıklaması `Subscription Level Deployment of a Role Definition` .
 
 Bu özel rolün atanabileceği kapsam geçerli aboneliğe ayarlanır.
 
 :::code language="json" source="~/quickstart-templates/subscription-deployments/create-role-def/azuredeploy.json":::
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
+Şablonda tanımlanan kaynak:
+
+- [Microsoft. Authorization/roleDefinitions](/azure/templates/Microsoft.Authorization/roleDefinitions)
+
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
 Önceki şablonu dağıtmak için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. PowerShell için Azure Cloud Shell açın.
 
 1. Aşağıdaki betiği kopyalayıp Cloud Shell yapıştırın.
 
-    ```azurepowershell
+    ```azurepowershell-interactive
     $location = Read-Host -Prompt "Enter a location (i.e. centralus)"
     [string[]]$actions = Read-Host -Prompt "Enter actions as a comma-separated list (i.e. action1,action2)"
     $actions = $actions.Split(',')
@@ -70,19 +72,19 @@ Bu özel rolün atanabileceği kapsam geçerli aboneliğe ayarlanır.
     New-AzDeployment -Location $location -TemplateUri $templateUri -actions $actions
     ```
 
-1. Dağıtım için tek *merkezde ABD*gibi bir konum girin.
+1. Dağıtım için tek *merkezde ABD* gibi bir konum girin.
 
-1. Özel rol için *Microsoft. resources/Resources/Read, Microsoft. resources/abonelikler/resourceGroups/Read*gibi bir virgülle ayrılmış liste olarak eylemlerin bir listesini girin.
+1. Özel rol için *Microsoft. resources/Resources/Read, Microsoft. resources/abonelikler/resourceGroups/Read* gibi bir virgülle ayrılmış liste olarak eylemlerin bir listesini girin.
 
-1. Gerekirse, New-AzDeployment komutunu çalıştırmak için ENTER tuşuna basın.
+1. Gerekirse, komutu çalıştırmak için ENTER tuşuna basın `New-AzDeployment` .
 
     [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) komutu şablonu özel rol oluşturmak için dağıtır.
 
     Aşağıdakine benzer bir çıktı görmeniz gerekir:
 
-    ```azurepowershell
+    ```azurepowershell-interactive
     PS> New-AzDeployment -Location $location -TemplateUri $templateUri -actions $actions
-    
+
     Id                      : /subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/azuredeploy
     DeploymentName          : azuredeploy
     Location                : centralus
@@ -92,7 +94,7 @@ Bu özel rolün atanabileceği kapsam geçerli aboneliğe ayarlanır.
     TemplateLink            :
                               Uri            : https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-deployments/create-role-def/azuredeploy.json
                               ContentVersion : 1.0.0.0
-    
+
     Parameters              :
                               Name               Type                       Value
                               =================  =========================  ==========
@@ -103,7 +105,7 @@ Bu özel rolün atanabileceği kapsam geçerli aboneliğe ayarlanır.
                               notActions         Array                      []
                               roleName           String                     Custom Role - RG Reader
                               roleDescription    String                     Subscription Level Deployment of a Role Definition
-    
+
     Outputs                 :
     DeploymentDebugLogLevel :
     ```
@@ -114,13 +116,13 @@ Bu özel rolün atanabileceği kapsam geçerli aboneliğe ayarlanır.
 
 1. Özel rolü listelemek için [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) komutunu çalıştırın.
 
-    ```azurepowershell
+    ```azurepowershell-interactive
     Get-AzRoleDefinition "Custom Role - RG Reader" | ConvertTo-Json
     ```
 
     Aşağıdakine benzer bir çıktı görmeniz gerekir:
 
-    ```azurepowershell
+    ```azurepowershell-interactive
     {
       "Name": "Custom Role - RG Reader",
       "Id": "11111111-1111-1111-1111-111111111111",
@@ -141,11 +143,11 @@ Bu özel rolün atanabileceği kapsam geçerli aboneliğe ayarlanır.
 
 1. Azure portal aboneliğinizi açın.
 
-1. Sol menüde **erişim denetimi (IAM)** öğesine tıklayın.
+1. Sol menüde **erişim denetimi (IAM)** seçeneğini belirleyin.
 
-1. **Roller** sekmesine tıklayın.
+1. **Roller** sekmesini seçin.
 
-1. **Tür** listesini **customrole**olarak ayarlayın.
+1. **Tür** listesini **customrole** olarak ayarlayın.
 
 1. **Özel rol-RG okuyucu** rolünün listelendiğini doğrulayın.
 
@@ -157,7 +159,7 @@ Bu özel rolün atanabileceği kapsam geçerli aboneliğe ayarlanır.
 
 1. Özel rolü kaldırmak için aşağıdaki komutu çalıştırın.
 
-    ```azurepowershell
+    ```azurepowershell-interactive
     Get-AzRoleDefinition -Name "Custom Role - RG Reader" | Remove-AzRoleDefinition
     ```
 

@@ -8,14 +8,15 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 57d319d54d15b72747da029d365137f5b5bb384c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d8398dbded8753bac193f973026fb63d5f1fc6b3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489260"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097728"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB için Gelişmiş tehdit koruması (Önizleme)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB için Gelişmiş tehdit koruması, Azure Cosmos DB hesaplara yönelik olağan dışı ve potansiyel olarak zararlı girişimleri algılayan ek bir güvenlik zekası katmanı sağlar. Bu koruma katmanı, güvenlik uzmanı olmadan bile tehditleri ele almanıza ve bunları Merkezi güvenlik izleme sistemleriyle tümleştirmenize olanak tanır.
 
@@ -32,9 +33,9 @@ Güvenlik uyarılarının tam araştırma deneyimi için, tüm belgeler, kapsay�
 
 Azure Cosmos DB için Gelişmiş tehdit koruması, veritabanları için olağandışı ve potansiyel olarak zararlı girişimleri gösteren anormal etkinlikleri algılar. Şu anda şu uyarıları tetikleyebilirler:
 
-- **Olağan dışı konumlardan erişim**: Bu uyarı, bir Azure Cosmos hesabına yönelik erişim modelinde bir değişiklik olduğunda tetiklenir ve bu, birisinin olağan dışı bir coğrafi konumdan Azure Cosmos DB uç noktasına bağlandığı yerdir. Bazı durumlarda, uyarı yeni bir uygulama veya geliştiricinin bakım işlemini ifade eden yasal bir eylemi algılar. Diğer durumlarda, uyarı eski bir çalışan, dış saldırgan vb. için kötü amaçlı bir eylem algılar.
+- **Olağan dışı konumlardan erişim** : Bu uyarı, bir Azure Cosmos hesabına yönelik erişim modelinde bir değişiklik olduğunda tetiklenir ve bu, birisinin olağan dışı bir coğrafi konumdan Azure Cosmos DB uç noktasına bağlandığı yerdir. Bazı durumlarda, uyarı yeni bir uygulama veya geliştiricinin bakım işlemini ifade eden yasal bir eylemi algılar. Diğer durumlarda, uyarı eski bir çalışan, dış saldırgan vb. için kötü amaçlı bir eylem algılar.
 
-- **Olağan dışı veri ayıklama**: Bu uyarı, bir istemci bir Azure Cosmos DB hesabından olağan dışı miktarda veri ayıkladığında tetiklenir. Bu, hesapta depolanan tüm verilerin bir dış veri deposuna aktarılması için gerçekleştirilen bazı veri dışlanan belirtisi olabilir.
+- **Olağan dışı veri ayıklama** : Bu uyarı, bir istemci bir Azure Cosmos DB hesabından olağan dışı miktarda veri ayıkladığında tetiklenir. Bu, hesapta depolanan tüm verilerin bir dış veri deposuna aktarılması için gerçekleştirilen bazı veri dışlanan belirtisi olabilir.
 
 
 
@@ -46,14 +47,14 @@ Gelişmiş tehdit korumasını aşağıdaki bölümlerde açıklanan çeşitli y
 
 1. Üzerinde Azure portal başlatın  [https://portal.azure.com](https://portal.azure.com/) .
 
-2. Azure Cosmos DB hesabından, **Ayarlar** menüsünden **Gelişmiş güvenlik**' i seçin.
+2. Azure Cosmos DB hesabından, **Ayarlar** menüsünden **Gelişmiş güvenlik** ' i seçin.
 
     :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp.png" alt-text="ATP ayarla":::
 
 3. **Gelişmiş güvenlik** yapılandırması dikey penceresinde:
 
-    * **Gelişmiş tehdit koruması** seçeneğine tıklayarak **Açık**olarak ayarlayın.
-    * Yeni veya güncelleştirilmiş Gelişmiş Tehdit Koruması ilkesini kaydetmek için **Kaydet**’e tıklayın.   
+    * **Gelişmiş tehdit koruması** seçeneğine tıklayarak **Açık** olarak ayarlayın.
+    * Yeni veya güncelleştirilmiş Gelişmiş Tehdit Koruması ilkesini kaydetmek için **Kaydet** ’e tıklayın.   
 
 ### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
@@ -83,17 +84,17 @@ Cosmos DB için Gelişmiş tehdit koruması 'nı etkinleştirmek üzere bir Azur
 
     :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db.png" alt-text="ATP ayarla"::: 
 
-1. **CosmosDB Için Gelişmiş tehdit koruması dağıtma** İlkesi ' ne tıklayın ve ardından **ata**' ya tıklayın.
+1. **CosmosDB Için Gelişmiş tehdit koruması dağıtma** İlkesi ' ne tıklayın ve ardından **ata** ' ya tıklayın.
 
     :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png" alt-text="ATP ayarla":::
 
 
-1. **Kapsam** alanından üç noktaya tıklayın, bir Azure aboneliği veya kaynak grubu seçin ve ardından **Seç**' e tıklayın.
+1. **Kapsam** alanından üç noktaya tıklayın, bir Azure aboneliği veya kaynak grubu seçin ve ardından **Seç** ' e tıklayın.
 
     :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png" alt-text="ATP ayarla":::
 
 
-1. Diğer parametreleri girip **ata**' ya tıklayın.
+1. Diğer parametreleri girip **ata** ' ya tıklayın.
 
 
 

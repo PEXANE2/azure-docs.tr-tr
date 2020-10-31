@@ -4,12 +4,12 @@ description: Öğretici - Batch Renderin Hizmetini ve Azure Komut Satırı Arabi
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 516f5a3f80f1252dbf63e3b254f0c7200de16e11
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: fbaa56ab444b9d686e5054a3668604bd40f7a262
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747047"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097702"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Öğretici: Azure Batch ile sahne işleme 
 
@@ -24,15 +24,15 @@ Azure Batch, kullanım başına ödeme temelinde bulut ölçekli işleme özelli
 
 Bu öğreticide, ışın izleme işleyicisi [Arnold](https://www.autodesk.com/products/arnold/overview)'ı kullanarak Batch ile bir 3ds Max sahnesini işleyeceksiniz. Batch havuzu, önceden yüklenen grafikler ve kullandığın kadar öde lisansı sağlayan işleme uygulamalar içeren bir Azure Marketi resmi kullanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Batch’teki işleme uygulamalarını kullandığın kadar öde esasıyla kullanmak için bir kullandıkça öde aboneliğine veya diğer Azure satın alma seçeneğine ihtiyacınız vardır. **Para kredi sağlayan ücretsiz bir Azure teklifi kullanıyorsanız, kullandığın kadar öde lisansı desteklenmez.**
+ - Batch’teki işleme uygulamalarını kullandığın kadar öde esasıyla kullanmak için bir kullandıkça öde aboneliğine veya diğer Azure satın alma seçeneğine ihtiyacınız vardır. **Para kredi sağlayan ücretsiz bir Azure teklifi kullanıyorsanız, kullandığın kadar öde lisansı desteklenmez.**
 
-Bu öğretici için örnek 3ds Max sahnesi, bir örnek Batch betiği ve JSON yapılandırma dosyalarıyla birlikte [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene)'dadır. 3ds Max sahnesi, [Autodesk 3ds Max örnek dosyalarından](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe) alınmıştır. (Autodesk 3ds Max örnek dosyaları, Creative Commons Attribution-NonCommercial-Share Alike lisansı kapsamında sağlanır. Telif hakkı &copy; Autodesk, Inc.)
+ - Bu öğretici için örnek 3ds Max sahnesi, bir örnek Batch betiği ve JSON yapılandırma dosyalarıyla birlikte [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene)'dadır. 3ds Max sahnesi, [Autodesk 3ds Max örnek dosyalarından](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe) alınmıştır. (Autodesk 3ds Max örnek dosyaları, Creative Commons Attribution-NonCommercial-Share Alike lisansı kapsamında sağlanır. Telif hakkı &copy; Autodesk, Inc.)
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.20 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
+- Bu öğretici, Azure CLı 'nin sürüm 2.0.20 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
 ## <a name="create-a-batch-account"></a>Batch hesabı oluşturma
 

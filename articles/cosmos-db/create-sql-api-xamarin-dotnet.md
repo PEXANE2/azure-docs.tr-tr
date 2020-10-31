@@ -9,14 +9,15 @@ ms.topic: quickstart
 ms.date: 10/09/2020
 ms.author: anfeldma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2d82b7f618757fbf77072bd7147595eec3083885
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 91e89eaf215468f171974e5f3fd383691fdd6ebe
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487645"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096993"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabı kullanarak Xamarin ile ToDo uygulaması oluşturma
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
@@ -89,11 +90,11 @@ Mac kullanıyorsanız, **ücretsiz** [Mac için Visual Studio](https://www.visua
 
 Azure portalına geri dönerek API anahtarı bilgilerini alın ve uygulamaya kopyalayın.
 
-1. [Azure portalında](https://portal.azure.com/), Azure Cosmos DB SQL API hesabınızın sol taraftaki gezinti menüsünden **Anahtarlar**'a ve ardından **Okuma/Yazma Anahtarları**'na tıklayın. Ekranın sağ tarafındaki kopyalama düğmelerini kullanarak URI ve Birincil Anahtar değerlerini kopyalayarak sonraki adımda APIKeys.cs dosyasına yapıştırın.
+1. [Azure portalında](https://portal.azure.com/), Azure Cosmos DB SQL API hesabınızın sol taraftaki gezinti menüsünden **Anahtarlar** 'a ve ardından **Okuma/Yazma Anahtarları** 'na tıklayın. Ekranın sağ tarafındaki kopyalama düğmelerini kullanarak URI ve Birincil Anahtar değerlerini kopyalayarak sonraki adımda APIKeys.cs dosyasına yapıştırın.
 
     :::image type="content" source="./media/create-sql-api-xamarin-dotnet/keys.png" alt-text="iOS’ta çalışan Xamarin todo uygulaması":::
 
-2. Visual Studio 'da **todoıtems. Core/yardımcılar/APIKeys. cs**öğesini açın.
+2. Visual Studio 'da **todoıtems. Core/yardımcılar/APIKeys. cs** öğesini açın.
 
 3. Azure portalında, Kopyala düğmesini kullanarak **URI** değerini kopyalayın ve `CosmosEndpointUrl` APIKeys.cs içinde değişkenin değeri yapın.
 

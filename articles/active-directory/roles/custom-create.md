@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 254ab7a10eb9779706ee31e5a16d51fe03b7122b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1aa5671a73c8a4de945a2013d8678d7f0f74625e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92377779"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098000"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Azure Active Directory özel rol oluşturma ve atama
 
@@ -31,11 +31,11 @@ Bu makalede, Azure Active Directory (Azure AD) içinde yeni özel roller oluştu
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>Uygulama kayıtlarını yönetmek için erişim izni vermek üzere yeni bir özel rol oluşturun
 
 1. Azure AD kuruluşunda ayrıcalıklı rol yöneticisi veya genel yönetici izinleriyle [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
-1. **Azure Active Directory**  >  **Roller ve yöneticiler**  >  **Yeni özel rol**' i seçin.
+1. **Azure Active Directory**  >  **Roller ve yöneticiler**  >  **Yeni özel rol** ' i seçin.
 
    ![Roller ve yöneticiler sayfasından roller oluşturma veya düzenleme](./media/custom-create/new-custom-role.png)
 
-1. **Temel bilgiler** sekmesinde, rol için bir ad ve açıklama girin ve ardından **İleri**' ye tıklayın.
+1. **Temel bilgiler** sekmesinde, rol için bir ad ve açıklama girin ve ardından **İleri** ' ye tıklayın.
 
    ![Temel bilgiler sekmesinde özel rol için bir ad ve açıklama girin](./media/custom-create/basics-tab.png)
 
@@ -44,8 +44,8 @@ Bu makalede, Azure Active Directory (Azure AD) içinde yeni özel roller oluştu
 
       ![Izinler sekmesinde özel bir rol için izinleri seçin](./media/custom-create/permissions-tab.png)
 
-   1. Sonra, arama çubuğuna "temel" yazın, `microsoft.directory/applications/basic/update` izni seçin ve ardından **İleri**' ye tıklayın.
-1. **Gözden geçir + oluştur** sekmesinde izinleri gözden geçirin ve **Oluştur**' u seçin.
+   1. Sonra, arama çubuğuna "temel" yazın, `microsoft.directory/applications/basic/update` izni seçin ve ardından **İleri** ' ye tıklayın.
+1. **Gözden geçir + oluştur** sekmesinde izinleri gözden geçirin ve **Oluştur** ' u seçin.
 
 Özel rolünüzün atanacak kullanılabilir roller listesinde görünür.
 
@@ -169,12 +169,12 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 Yerleşik roller gibi, kuruluşunuzdaki tüm uygulama kayıtları üzerinde erişim izinleri vermek için varsayılan kuruluş genelindeki kapsamda varsayılan olarak özel roller atanır. Ancak, yerleşik rollerden farklı olarak, özel roller tek bir Azure AD kaynağı kapsamında de atanabilir. Bu, kullanıcıya ikinci bir özel rol oluşturmak zorunda kalmadan tek bir uygulamanın kimlik bilgilerini ve temel özelliklerini güncelleştirme izni vermenizi sağlar.
 
 1. Azure AD kuruluşunda uygulama geliştirici izinleriyle [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
-1. **Uygulama kayıtları**’nı seçin.
+1. **Uygulama kayıtları** ’nı seçin.
 1. Yönetmek üzere erişim verdiğiniz uygulama kaydını seçin. Azure AD kuruluşunuzda uygulama kayıtlarının tüm listesini görmek için **tüm uygulamalar** ' ı seçmeniz gerekebilir.
 
     ![Rol ataması için kaynak kapsamı olarak uygulama kaydını seçin](./media/custom-create/appreg-all-apps.png)
 
-1. Uygulama kaydında **Roller ve yöneticiler**' i seçin. Henüz bir tane oluşturmadıysanız, yönergeler [önceki yordamda](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations)bulunur.
+1. Uygulama kaydında **Roller ve yöneticiler** ' i seçin. Henüz bir tane oluşturmadıysanız, yönergeler [önceki yordamda](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations)bulunur.
 
 1. **Atamalar** sayfasını açmak için rolü seçin.
 1. Kullanıcı eklemek için **atama Ekle** ' yi seçin. Kullanıcıya yalnızca seçili uygulama kaydı üzerinden herhangi bir izin verilecek.
@@ -183,4 +183,4 @@ Yerleşik roller gibi, kuruluşunuzdaki tüm uygulama kayıtları üzerinde eri�
 
 - [Azure AD Yönetim rolleri forumundan](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)bizimle paylaşabilirsiniz.
 - Roller ve yönetici rolü atama hakkında daha fazla bilgi için bkz. [yönetici rolleri atama](permissions-reference.md).
-- Varsayılan Kullanıcı izinleri için bkz. [varsayılan Konuk ve üye Kullanıcı izinlerinin karşılaştırması](/azure/active-directory/fundamentals/users-default-permissions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context).
+- Varsayılan Kullanıcı izinleri için bkz. [varsayılan Konuk ve üye Kullanıcı izinlerinin karşılaştırması](/azure/active-directory/fundamentals/users-default-permissions).

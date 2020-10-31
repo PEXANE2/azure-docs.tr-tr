@@ -7,14 +7,15 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/17/2020
 ms.custom: contperfq1
-ms.openlocfilehash: f8bcadf25ac8e001657f2be012f99ddb507e672d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb6d1cb684f4c2e3f563d5690c804d64c97ff70c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445188"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096746"
 ---
 # <a name="command-line-and-powershell-reference-for-azure-cosmos-db-emulator"></a>Azure Cosmos DB öykünücü için komut satırı ve PowerShell Başvurusu
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos öykünücüsü, Azure Cosmos DB hizmetine yerel geliştirme amaçlarıyla taklit eden bir yerel ortam sağlar. [Öykünücüyü](local-emulator.md)yükledikten sonra, öykünücü komut satırı ve PowerShell komutlarıyla kontrol edebilirsiniz. Bu makalede, öykünücü başlatmak ve durdurmak, seçenekleri yapılandırmak ve diğer işlemleri gerçekleştirmek için komut satırı ve PowerShell komutlarının nasıl kullanılacağı açıklanır. Yükleme konumundan komutları çalıştırmanız gerekir.
 
@@ -26,7 +27,7 @@ Microsoft.Azure.Cosmos.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort]
 
 Seçenek listesini görüntülemek için komut satırına `Microsoft.Azure.Cosmos.Emulator.exe /?` yazın.
 
-|**Seçenek** | **Açıklama** | **Komut**| **Bağımsız değişkenler**|
+|**Seçenek** | **Açıklama** | **Komut**| **Arguments**|
 |---|---|---|---|
 |[Bağımsız değişken yok] | Azure Cosmos öykünücüsünü varsayılan ayarlarla başlatır. |Microsoft.Azure.Cosmos.Emulator.exe| |
 |[Yardım] |Desteklenen komut satırı bağımsız değişkenleri listesini görüntüler.|Microsoft.Azure.Cosmos.Emulator.exe/? | |
@@ -85,7 +86,7 @@ Aşağıda, PowerShell’den öykünücüyü denetlemeye ilişkin komutların ö
 
 ### `Get-CosmosDbEmulatorStatus`
 
-**Sözdizimi**
+**Syntax**
 
 `Get-CosmosDbEmulatorStatus`
 
@@ -95,7 +96,7 @@ Aşağıda, PowerShell’den öykünücüyü denetlemeye ilişkin komutların ö
 
 ### `Start-CosmosDbEmulator`
 
-**Sözdizimi**
+**Syntax**
 
 `Start-CosmosDbEmulator [-DataPath <string>] [-DefaultPartitionCount <uint16>] [-DirectPort <uint16[]>] [-MongoPort <uint16>] [-NoUI] [-NoWait] [-PartitionCount <uint16>] [-Port <uint16>] [<CommonParameters>]`
 
@@ -105,7 +106,7 @@ Aşağıda, PowerShell’den öykünücüyü denetlemeye ilişkin komutların ö
 
 ### `Stop-CosmosDbEmulator`
 
-**Sözdizimi**
+**Syntax**
 
  `Stop-CosmosDbEmulator [-NoWait]`
 
@@ -115,7 +116,7 @@ Aşağıda, PowerShell’den öykünücüyü denetlemeye ilişkin komutların ö
 
 ### `Uninstall-CosmosDbEmulator`
 
-**Sözdizimi**
+**Syntax**
 
 `Uninstall-CosmosDbEmulator [-RemoveData]`
 
@@ -139,7 +140,7 @@ Azure Cosmos öykünücüsünde bulunan kapsayıcıların sayısını değiştir
 
 1. Bu klasördeki tüm öykünücü verilerini silin `%LOCALAPPDATA%\CosmosDBEmulator` .
 
-1. Sistem tepsisindeki **Azure Cosmos DB Öykünücüsü** simgesine sağ tıklayıp **Çıkış**’a tıklayarak tüm açık örneklerden çıkın. Tüm örneklerin çıkması bir dakika sürebilir.
+1. Sistem tepsisindeki **Azure Cosmos DB Öykünücüsü** simgesine sağ tıklayıp **Çıkış** ’a tıklayarak tüm açık örneklerden çıkın. Tüm örneklerin çıkması bir dakika sürebilir.
 
 1. [Azure Cosmos öykünücüsünün](https://aka.ms/cosmosdb-emulator)en son sürümünü yükler.
 

@@ -9,14 +9,15 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: bf8563274d7aa677249335612d0156d6a5ecbd95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eee59d906da46e315ede52796bd89c7827833ede
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018459"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095739"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB tablo .NET Standard API: Indirme ve sürüm notları
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 > [!div class="op_single_selector"]
 > 
 > * [.NET](table-sdk-dotnet.md)
@@ -31,7 +32,7 @@ ms.locfileid: "89018459"
 |**Örnek**|[Cosmos DB Tablo API'si .NET örneği](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
 |**Hızlı Başlangıç**|[Hızlı Başlangıç](create-table-dotnet.md)|
 |**Öğretici**|[Öğretici](tutorial-develop-table-dotnet.md)|
-|**Desteklenen geçerli çerçeve**|[Microsoft .NET Standart 2,0](https://www.nuget.org/packages/NETStandard.Library)|
+|**Şu anda desteklenen çerçeve**|[Microsoft .NET Standart 2,0](https://www.nuget.org/packages/NETStandard.Library)|
 |**Sorun bildir**|[Sorun bildir](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
 
 ## <a name="release-notes-for-200-series"></a>2.0.0 serisi için sürüm notları

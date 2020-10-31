@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 6ddc428a1b2228c7e6e15093c12deb25ddd65c27
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b89c48b5040c198cb1b4a6ce383baed51dfac19e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281023"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097422"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Azure Cosmos DB ile performans ve ölçek testi
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Performans ve ölçek testi, uygulama geliştirmede önemli bir adımdır. Birçok uygulama için veritabanı katmanının genel performans ve ölçeklenebilirlik üzerinde önemli bir etkisi vardır. Bu nedenle, performans testi 'nin kritik bir bileşenidir. [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) , elastik ölçek ve öngörülebilir performans için oluşturulmuştur. Bu yetenekler, yüksek performanslı bir veritabanı katmanına ihtiyacı olan uygulamalar için harika bir uyum yapar. 
 
@@ -93,7 +94,7 @@ Uygulamayı çalıştırdıktan sonra, aktarım hızı ve gecikme süresi üzeri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, .NET konsol uygulaması kullanarak Azure Cosmos DB nasıl performans ve ölçek testi gerçekleştirekullanabileceğinizi inceledik. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Bu makalede, .NET konsol uygulaması kullanarak Azure Cosmos DB nasıl performans ve ölçek testi gerçekleştirekullanabileceğinizi inceledik. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * [Azure Cosmos DB performans testi örneği](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
 * [Azure Cosmos DB performansını geliştirmek için istemci yapılandırma seçenekleri](performance-tips.md)

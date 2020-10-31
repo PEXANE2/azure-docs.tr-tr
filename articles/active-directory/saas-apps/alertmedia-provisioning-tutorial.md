@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 2ae06a8ed59f7987f58aba8b8017833315e6529f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 98cca99ab0e088bbae047fa64ec52429e531dfed
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92429004"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096096"
 ---
 # <a name="tutorial-configure-alertmedia-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için AlertMedia yapılandırma
 
@@ -35,7 +35,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem AlertM
 > * AlertMedia 'te grupları ve grup üyeliklerini sağlama
 > * Alertmedyada [Çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/alertmedia-tutorial) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -51,8 +51,8 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 ## <a name="step-2-configure-alertmedia-to-support-provisioning-with-azure-ad"></a>Adım 2. Azure AD ile sağlamayı desteklemek için AlertMedia 'ı yapılandırma
 
-1. AlertMedia hesabınızda oturum açın. **Şirket > API**'sine gidin.
-2. **Yeni Ekle**' ye tıklayın.
+1. AlertMedia hesabınızda oturum açın. **Şirket > API** 'sine gidin.
+2. **Yeni Ekle** ' ye tıklayın.
 3. Anahtarların nerede kullanıldığını kolayca tanımanıza yardımcı olması için **API tümleştirmenizi** bir ad vermek için seçin.
 4. Tümleştirmeyi ilişkilendirmek istediğiniz yöneticiyi seçin.
 5. **Anahtar oluştur** ve **Kaydet** düğmesine tıklayın.
@@ -67,7 +67,7 @@ Azure AD uygulama galerisinden AlertMedia ' i ekleyerek AlertMedia sağlama işl
 
 Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun özniteliklerine göre hazırlanacak kişilerin kapsamını belirlemenizi sağlar. Uygulamanız için hazırlanacak kişilerin kapsamını atamaya göre belirlemeyi seçerseniz kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Hazırlanacak kişilerin kapsamını yalnızca kullanıcı veya grup özniteliklerine göre belirlemeyi seçerseniz [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) anlatılan kapsam belirleme filtresini kullanabilirsiniz. 
 
-* Alertmedyaya Kullanıcı ve grup atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) daha fazla rol ekleyebilirsiniz. 
+* Alertmedyaya Kullanıcı ve grup atarken **varsayılan erişim** dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) daha fazla rol ekleyebilirsiniz. 
 
 * Başlangıçta kapsamı sınırlı tutun. Herkesi hazırlamadan önce birkaç kullanıcı ve grupla test yapın. Hazırlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında uygulamaya bir veya iki kullanıcı ya da grup atayarak bu adımı kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) belirtebilirsiniz. 
 
@@ -78,11 +78,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-alertmedia-in-azure-ad"></a>Azure AD 'de AlertMedia için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Alertmedia**' i seçin.
+2. Uygulamalar listesinde, **Alertmedia** ' i seçin.
 
     ![Uygulamalar listesindeki AlertMedia bağlantısı](common/all-applications.png)
 
@@ -90,14 +90,14 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Hazırlama sekmesi](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Sekme otomatik sağlama](common/provisioning-automatic.png)
 
 5. **Yönetici kimlik bilgileri** bölümünde, AlertMedia **kiracı URL** 'nizi aşağıdakilerden biri olarak girin.
-      * (özel etki alanı yok) https://dashboard.alertmedia.com/api/scim/v3
+      * (özel etki alanı yok) https://docs.gitlab.com/ee/api/scim.html
 
-      * (özel etki alanı) https://subdomain.alertmedia.com/api/scim/v3
+      * (özel etki alanı) https://developer.github.com/v3/scim/
 
       **Gizli anahtarı** adım 2 ' de daha önce alındı olarak girin. Azure AD 'nin AlertMedia 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, AlertMedia hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
@@ -107,9 +107,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’i seçin.
+7. **Kaydet** ’i seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları alertmedia ile eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları alertmedia ile eşitler** ' ı seçin.
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'Den AlertMedia ile eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için AlertMedia içindeki kullanıcı hesaplarıyla eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)değiştirmeyi seçerseniz, AlertMedia API 'sinin kullanıcıları bu özniteliğe göre filtrelemeyi desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -143,7 +143,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
    |urn: IETF: params: Scim: schemas: Extension: alertmedia: 2.0: CustomAttribute: Kullanıcı: customer_user_id|Dize|
    |urn: IETF: params: Scim: schemas: Extension: alertmedia: 2.0: CustomAttribute: Kullanıcı: user_type|Dize|
 
-10. **Eşlemeler** bölümünde **Azure Active Directory grupları alertmedia ile eşitler**' ı seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory grupları alertmedia ile eşitler** ' ı seçin.
 
 11. **Öznitelik eşleme** bölümünde Azure AD 'Den AlertMedia ile eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için AlertMedia içindeki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -162,7 +162,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

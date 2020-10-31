@@ -10,14 +10,15 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: c16d7ccba24680604bc7f083f7242edd53abe102
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 181af5cf26d19a9f51e8d456e777badf7efa224d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282910"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097831"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma-kullanıcı arabirimini angular ile derleme
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni bir uygulama oluşturma ve ardından bunu [MongoDB için Cosmos DB API 'siyle yapılandırılmış Cosmos hesabınıza](mongodb-introduction.md)bağlama işlemlerinin nasıl yapılacağı gösterilmektedir.
 
@@ -103,7 +104,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
     </div>
     ```
 
-7. HTML’yi oluşturduğumuza göre artık şablonla etkileşim kurmasını sağlamak için **heroes.component.ts** dosyasına eklememiz gerekiyor. Aşağıdaki kod, şablonu bileşen dosyanıza ekler. Bazı hero’ları alan ve tüm verileri almak için hero hizmet bileşenini başlatan bir oluşturucu eklendi. Bu kod ayrıca, kullanıcı arabirimindeki olayları işleyebilmek için gerekli tüm yöntemleri ekler. **heroes.component.ts**’deki mevcut kodun üzerine aşağıdaki kodu kopyalayabilirsiniz. Hero ve HeroService alanlarında hataları görmeyi bekleyebilirsiniz çünkü bunlara karşılık gelen bileşenler henüz içeri aktarılmamıştır; bu hataları sonraki bölümde düzelteceksiniz. 
+7. HTML’yi oluşturduğumuza göre artık şablonla etkileşim kurmasını sağlamak için **heroes.component.ts** dosyasına eklememiz gerekiyor. Aşağıdaki kod, şablonu bileşen dosyanıza ekler. Bazı hero’ları alan ve tüm verileri almak için hero hizmet bileşenini başlatan bir oluşturucu eklendi. Bu kod ayrıca, kullanıcı arabirimindeki olayları işleyebilmek için gerekli tüm yöntemleri ekler. **heroes.component.ts** ’deki mevcut kodun üzerine aşağıdaki kodu kopyalayabilirsiniz. Hero ve HeroService alanlarında hataları görmeyi bekleyebilirsiniz çünkü bunlara karşılık gelen bileşenler henüz içeri aktarılmamıştır; bu hataları sonraki bölümde düzelteceksiniz. 
 
     ```ts
     import { Component, OnInit } from '@angular/core';
@@ -171,7 +172,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
     }
     ```
 
-8. **Explorer**’da **app/app.module.ts** dosyasını açın ve `FormsModule`’e yönelik içeri aktarma eklemek için imports bölümünü güncelleştirin. Import bölümü artık şöyle görünmelidir:
+8. **Explorer** ’da **app/app.module.ts** dosyasını açın ve `FormsModule`’e yönelik içeri aktarma eklemek için imports bölümünü güncelleştirin. Import bölümü artık şöyle görünmelidir:
 
     ```
     imports: [
@@ -353,7 +354,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni 
 
 Şu an bileşenimiz var, peki ekranda görünmesini nasıl sağlarız? **app.component.ts** dosyasındaki varsayılan bileşenleri değiştirelim.
 
-1. Explorer bölmesinde **/app/app.component.ts**'yi açın, başlığı Heroes olarak değiştirin, ardından **heroes.components.ts** (app-heroes) dosyasında oluşturduğumuz bileşenin adını, yeni bileşene başvurmak üzere ekleyin. Dosyanın içeriği şimdi aşağıdaki gibi görünmelidir: 
+1. Explorer bölmesinde **/app/app.component.ts** 'yi açın, başlığı Heroes olarak değiştirin, ardından **heroes.components.ts** (app-heroes) dosyasında oluşturduğumuz bileşenin adını, yeni bileşene başvurmak üzere ekleyin. Dosyanın içeriği şimdi aşağıdaki gibi görünmelidir: 
 
     ```ts
     import { Component } from '@angular/core';

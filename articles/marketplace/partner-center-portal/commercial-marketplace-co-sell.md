@@ -1,26 +1,26 @@
 ---
 title: Iş Ortağı Merkezi 'nde ortak satış seçeneği | Azure Marketi
-description: Teklifinizin ortak satış sekmesinde sağladığınız bilgiler, Microsoft Sales ekipleri tarafından müşteri gereksinimlerine uygun olarak değerlendirme yaparken çözümünüz hakkında daha fazla bilgi edinmek için kullanılacaktır.
+description: Teklifinizin ortak satış sekmesinde sağladığınız bilgiler, Microsoft Sales ekipleri tarafından müşteri gereksinimlerine uygun olarak değerlendirme yaparken teklifiniz hakkında daha fazla bilgi edinmek için kullanılacaktır.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
-ms.date: 10/19/2020
-ms.openlocfilehash: ec076567d06a8237db2a708a5276a358f64a8388
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.date: 10/28/2020
+ms.openlocfilehash: 2a648b4f4c614fc64fa7817102215720e51abe7f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204920"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095610"
 ---
 # <a name="co-sell-option-in-partner-center"></a>İş Ortağı Merkezi’nde ortak satış seçeneği
 
-Ortak satış sekmesi hakkında bilgi sağlanması tamamen isteğe bağlıdır. Ortak satış için hazırlık ve IP ortak satışı için hazırlık durumu elde etmek gerekir. Sağladığınız bilgiler, Microsoft Sales ekipleri tarafından müşteri gereksinimlerine uygun olarak değerlendirme yaparken çözümünüz hakkında daha fazla bilgi edinmek için kullanılacaktır. Doğrudan müşteriler tarafından kullanılamaz. Daha fazla bilgi için bkz. [Microsoft üzerinden satış](https://partner.microsoft.com/membership/sell-with-microsoft).
+Ortak satış sekmesi hakkında bilgi sağlanması tamamen isteğe bağlıdır. Ortak satış için hazırlık ve IP ortak satışı Incentivized durumu elde etmek gerekir. Sağladığınız bilgiler, Microsoft Sales ekipleri tarafından müşteri gereksinimlerine uygun olarak değerlendirme yaparken teklifiniz hakkında daha fazla bilgi edinmek için kullanılacaktır. Doğrudan müşteriler tarafından kullanılamaz. Daha fazla bilgi için bkz. [Microsoft üzerinden satış](https://partner.microsoft.com/membership/sell-with-microsoft).
 
 Iş Ortağı Merkezi 'ndeki ortak satış seçeneği, bazı teklif türleri için şu anda kullanılabilir. Ek teklif türleri için destek, zaman içinde kullanılabilir hale getirilir.
 
-| **Teklif Türü** | **Ortak satış sayfası Iş Ortağı Merkezi 'nde kullanılabilir** |
+| **Teklif türü** | **Ortak satış sayfası Iş Ortağı Merkezi 'nde kullanılabilir** |
 |    -----------------------    |    -----------------------------  |
 | Hizmet olarak yazılım (SaaS) |      Kullanıma sunuldu      |
 | PowerApps & müşteri katılımı için Dynamics 365      |     Kullanıma sunuldu      |
@@ -36,7 +36,7 @@ Iş Ortağı Merkezi 'ndeki ortak satış seçeneği, bazı teklif türleri içi
 
 ## <a name="listing"></a>Liste
 
-Ortak satış listeleri, Microsoft satış ekiplerinin çözümünüzü daha geniş bir hedef kitleye pazarlamasını sağlar. *(Tüm alanlar gereklidir.)*
+Ortak satış listeleri, Microsoft satış ekiplerinin teklifinizi daha geniş bir hedef kitle için pazara sunmasına yardımcı olur. *(Tüm alanlar gereklidir.)*
 
 - Teklifinizin oluşturulduğu, genişlettiği veya tümleştirildiği Microsoft platformlarını seçin.
 - Teklifinizin hedeflediği piyasa segmentlerini seçin.
@@ -67,13 +67,13 @@ Microsoft 'un teklifiniz hakkında daha fazla bilgi edinmek ve müşteri gereksi
 | **Belgeler**    | **Açıklama**  |
 | :------------------- | :-------------------|
 | *Müşteri tek çağrı cihazı (gerekli)* | Tekliflerinizin müşteri için Ready açıklaması. Microsoft satış ekipleri, teklifinizin uygun olup olmadığını belirlemenize ve müşterinin hazır olmasını sağlamaya yardımcı olmak için bu bilgileri müşterilerle paylaşabilir. <br> <br> Iş Ortağı Merkezi 'nde kullanılabilen ilgili şablonlardan birini kullanın: <br> <ul> <li> Tek sayfalayıcı şablonu Microsoft Azure </li> <li> Microsoft Dynamics 365 1-sayfalayıcı şablonu </li> <li> Microsoft 365 1-sayfalayıcı şablonu </li> <li> Windows 10 1-sayfalayıcı şablonu </li> </ul> |
-| *Müşteri sunumu (gerekli)* | Çözümünüzü ve değer teklifini aralıklı olarak kaydırarak slayt destesi. Teklifinizin müşteri için hazırlandığından emin olduktan sonra, Microsoft satış takımları, her iki şirketin da bir Birleşik çözüm dağıtmakta olduğu değeri ifade etmek için sunuyu müşterilerle paylaşabilir. Sunu, çözümünüzün ne yaptığını, BT 'nin müşterilere nasıl yardımcı olduğunu, çözüm için hangi sektörlerin olduğunu ve rakip çözümlerle nasıl karşılaştırdığını kapsamalıdır. <br> <br> Iş Ortağı Merkezi 'nde bulunan şablonu kullanın.|
-| *Müşteri örnek olay incelemesi* | Bu bilgiler, siz ve Microsoft 'un bu çözümü önceki durumlarda nasıl başarıyla dağıttığından oluşan potansiyel bir müşteriyi gösterir. <br> <br> Iş Ortağı Merkezi 'nde bulunan şablonu kullanın. |
-| *Doğrulanabilen müşteri WINS* | Çözümünüz dağıtıldıktan sonra müşteri başarılarını belirli örneklere örnekler. |
-| *Kanal aralığı destesi* | Tekliflerinizi satmaya yönelik olarak, kanal satıcılarının çözümünüz hakkında daha fazla bilgi edinmelerini ve satış ekiplerini hazırlamalarını sağlayacak bilgiler içeren bir slayt destesi. Genellikle bir Asansör aralığı, hedef müşteriler hakkında bilgiler, müşterilere Sorulacak sorular, iletişim noktaları ve videoların, belgelerin ve destek bilgilerinin bağlantıları bulunur. |
-| *Başvuru mimarisi diyagramları* | İş ortağı tarafından oluşturulan IP 'yi, Microsoft bulut hizmetleriyle ilişkisi ve IP ortak satış programının teknik gereksinimlerini karşıladığı modeli gösteren bir belge. |
-| *Diğer belgeler* | İsteğe bağlı olarak, Microsoft satış ekiplerine ve kanal satıcılarına, çözümünüz, kuruluşunuz ve/veya farklılar hakkında daha fazla bilgi edinmenize yardımcı olmak için beş adede kadar ek belge veya video yükleyebilirsiniz. |
-| *Dış başvuru URL 'SI* | Microsoft satış ekiplerinin ve kanal satıcılarınızın çözümünüz hakkında daha fazla bilgi sağlayabildiği ürün sitesinin bağlantısı. |
+| *Müşteri sunumu (gerekli)* | Teklifinizi ve değer teklifini aralıklı olarak sunmak için slayt destesi. Teklifinizin müşteri için hazırlandığından emin olduktan sonra, Microsoft satış ekipleri, sunuyu şirketinizin ve Microsoft 'un ortak bir çözüm dağıtımında sunduğu değeri ifade etmek için müşterilerle paylaşabilir. Sunum, teklifinizin ne yaptığını, müşterilerin müşterilere nasıl yardımcı olduğunu, teklifin hangi sektörlerin ilgili olduğunu ve rakip çözümlerle nasıl karşılaştırdığını kapsamalıdır. <br> <br> Iş Ortağı Merkezi 'nde bulunan şablonu kullanın.|
+| *Müşteri örnek olay incelemesi* | Bu bilgiler, sizin ve Microsoft 'un teklifinizi nasıl başarılı bir şekilde dağıttığından, olası bir müşteriyi gösterir. <br> <br> Iş Ortağı Merkezi 'nde bulunan şablonu kullanın. |
+| *Doğrulanabilen müşteri WINS* | Teklifiniz dağıtıldıktan sonra müşteri başarılarınızın belirli örnekleri. |
+| *Kanal aralığı destesi* | Kanal satıcılarının teklifiniz hakkında daha fazla bilgi edinmelerini ve satış ekiplerini satmaya hazırlamalarını sağlayacak bilgiler içeren bir slayt destesi. Deste genellikle bir Asansör aralığı, hedef müşteriler hakkında bilgiler, müşterilere Sorulacak sorular, iletişim noktaları ve videoların, belgelerin ve destek bilgilerinin bağlantıları bulunur. |
+| *Başvuru mimarisi diyagramı* | Teklifinizi temsil eden modeli gösteren bir diyagram ve IP ortak satış programının teknik gereksinimlerini nasıl karşıladığı hakkında Microsoft bulut hizmetleriyle ilişkisi. [Başvuru mimarisi diyagramı hakkında daha fazla bilgi edinin.](#reference-architecture-diagram) |
+| *Diğer belgeler* | İsteğe bağlı olarak, Microsoft satış ekiplerine ve kanal satıcılarına yardımcı olmak üzere en fazla beş ek belge veya video yükleyerek teklif, kuruluşunuz ve/veya farklıcılarınız hakkında daha fazla bilgi edinebilirsiniz. |
+| *Dış başvuru URL 'SI* | Microsoft satış ekiplerinin ve kanal satıcılarınızın teklifiniz hakkında daha fazla bilgi sağlayabildiği ürününüzün sitesine olan bağlantı. |
 
 ## <a name="contacts"></a>Kişiler
 
@@ -83,23 +83,45 @@ Iş Ortağı Merkezi 'nden CSV şablonunu indirerek, her satırı ilgili bilgile
 
 Ayrıca, bir teklifin mevcut kişi listesini dışarı aktarabilir ve ardından bu dosyada değişiklik yapabilirsiniz.
 
-* *Ad (gerekli)*: kişinin adı.
-* *E-posta adresi (gerekli)*: kişinin e-posta adresi.
-* *İş unvanı (gerekli)*: iş unvanı.
-* *Rol (zorunlu)*: aşağıdaki rollerden birini kullanın.
+* *Ad (gerekli)* : kişinin adı.
+* *E-posta adresi (gerekli)* : kişinin e-posta adresi.
+* *İş unvanı (gerekli)* : iş unvanı.
+* *Rol (zorunlu)* : aşağıdaki rollerden birini kullanın.
 
     | **Role**    | **Açıklama**  |
     | :------------------- | :-------------------|
-    | *:::no-loc text="Partner marketing":::* | Bu rol, Microsoft satış ekipleri ve kanal satıcıları ile çözümünüze pazarlama ve pazarlama çabalarıyla işbirliği yapmaya odaklanır. Pazarlama görevlendirmelere yönelik ana iletişim noktası ve ürün açıklamaları, Resimler ve videolar gibi liste içeriği teklifi. |
-    | *:::no-loc text="Partner sales":::* | Bu rol, Microsoft satış ekipleriyle ve kanal satıcılarıyla çözümünüze ve satış üzerinde işbirliği yapmaya odaklanır. Ortak satış çözümleri için, ortak satış sağlamak istediğiniz bölge başına en az bir iş ortağı satış kişisi belirtin. Aynı iş ortağı satış kişisi birden çok bölgeyi kapsayabilir. |
+    | *:::no-loc text="Partner marketing":::* | Bu rol, Microsoft satış ekipleri ve kanal satıcıları ile teklifinizi pazarlama çabalarına ve pazarlama çabalarıyla işbirliği yapmaya odaklanır. Pazarlama görevlendirmelere yönelik ana iletişim noktası ve ürün açıklamaları, Resimler ve videolar gibi liste içeriği teklifi. |
+    | *:::no-loc text="Partner sales":::* | Bu rol, Microsoft satış ekipleriyle ve kanal satıcılarıyla satışa sunduğunuz teklifinizi ve işbirliği uygulamanızı satmaya odaklanır. Teklifinizin ortak satış olmasını istediğiniz bölge başına en az bir iş ortağı satış kişisi belirtin. Aynı iş ortağı satış kişisi birden çok bölgeyi kapsayabilir. |
     | *:::no-loc text="Partner technical sales":::* | Satış çevrimi, satış sonrası tümleştirme ve dağıtım dönemleri sırasında teknik mimariyi ve dağıtım konularını destekler. |
-    | *:::no-loc text="Partner customer success manager":::* | Genellikle, çözümünüzden en iyi şekilde yararlanmalarına yardımcı olmak ve müşterinin kuruluşundaki parmak izini büyütmek için müşterilerin dağıtım sonrası dağıtımını destekler. |
+    | *:::no-loc text="Partner customer success manager":::* | Genellikle müşterilerin dağıtım sonrası, teklifinizin en iyi şekilde yararlanmasına ve müşterinin kuruluşundaki parmak izini büyütmesine yardımcı olur. |
 
 * *Ülkeler/bölgeler (gerekli):*  Şablonu doldururken, [listelenen iki harfli ülke/bölge kodlarını](./commercial-marketplace-co-sell-countries.md)kullanın. Kişi tüm ülkeleri/bölgeleri kapsıyorsa, "OOO" üç harfli kodu kullanın. Bir kişi birden fazla ülke/bölge kapsıyorsa, iki harfli her birini virgülle ayırarak girin (örneğin, şablona tırnak işareti olmadan "ABD, CA, FR" yazın).
 
     Ülkeler/bölgeler her bir kişinin bölgesini yansıtmalıdır. Microsoft satış ekipleri ve kanal satıcıları, belirli bir ülkede/bölgede bilgi istemek veya satış üzerinde işbirliği yapmak için bu bilgileri kullanır.
 
 * *Eyalet/eyalet es (Isteğe bağlı):*  Şablonu doldururken, [durumlar/eyalet es tablosunda](./commercial-marketplace-co-sell-states.md)listelenen XX-XX biçimini kullanın.
+
+## <a name="reference-architecture-diagram"></a>Başvuru mimarisi diyagramı
+
+### <a name="what-is-a-reference-architecture--diagram"></a>Başvuru mimarisi diyagramı nedir?
+Başvuru mimarisi diyagramı, teklifinizin temel aldığı altyapıyı temsil eden bir modeldir ve teklifinizin, IP ortak satış programının teknik gereksinimleri uyarınca bulut hizmetlerinden yararlanır. Mimarinin kalitesini değerlendirmek ve farklı hizmetlerden yararlanmak için tasarlanmamıştır.
+
+Belge birden çok araç aracılığıyla oluşturulabilir. Azure mimari modellerini belirleyen birden çok kalıbı içerdiğinden, Microsoft Visio 'yu öneririz.
+
+Başvuru mimarisi diyagramları oluşturmak için faydalı bir başlangıç noktası, [Azure mimarisi modellerinden](https://docs.microsoft.com/azure/architecture/browse/)faydalanır.
+
+### <a name="typical-components-of-a-reference-architecture-diagram"></a>Başvuru mimarisi diyagramının tipik bileşenleri
+- Azure kullanımını oluşturan ve teklifinizle etkileşime geçen bulut Hizmetleri
+- Teklifiniz tarafından tüketilen veri bağlantıları, veri katmanları, veri Hizmetleri
+- Güvenlik, kimlik doğrulama, teklifin kullanıcılarını denetlemek için kullanılan bulut Hizmetleri
+- Son kullanıcılara teklifi sunan kullanıcı arabirimleri ve diğer hizmetler
+- Karma ve/veya şirket içi bağlantı ve tümleştirmeler 
+
+### <a name="example-reference-architecture-diagram"></a>Örnek başvuru mimarisi diyagramı
+
+:::image type="content" source="media/co-sell-arch-diagram.png" alt-text="Bu görüntü, örnek bir ortak satış mimarisi diyagramı örneğidir.":::
+
+(Yukarıdaki örnek başvuru mimarisi diyagramı, farklı ERP sistemlerinden tedarik zinciri ve üretim zamanlaması verilerini kullanarak bir Machine Learning algoritması aracılığıyla tahmin talep senaryolarıyla tümleştirilebilen bir dikey sektör sohbet botu yöneliktir. Bot, bir satış kişisinin bir sipariş için olası teslimat tarihlerine ne zaman teslim edebilmesiyle ilgili soruları ele almak üzere tasarlanmıştır.)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

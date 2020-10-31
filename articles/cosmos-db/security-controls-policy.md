@@ -7,16 +7,17 @@ author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: cfa5be6ed7cc933513b4c42a05a7ccdd40e8c13f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 1461667c9ba36a7834d78ee91c15b291d455e841
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314345"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097310"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Ilke mevzuat uyumluluk denetimleri
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-[Azure Ilkesinde mevzuata uyumluluğu](../governance/policy/concepts/regulatory-compliance.md) , farklı uyumluluk standartlarıyla ilgili **Uyumluluk etki alanları** ve **güvenlik denetimleri** için yerleşik olarak bilinen Microsoft _tarafından_oluşturulan ve yönetilen girişim tanımlarını sağlar. Bu sayfada Azure Cosmos DB için **Uyumluluk etki alanları** ve **güvenlik denetimleri** listelenir. Azure kaynaklarınızı belirli bir standarda uygun hale getirmenize yardımcı olmak için, bir **güvenlik denetimi** için yerleşik bileşenleri atayabilirsiniz.
+[Azure Ilkesinde mevzuata uyumluluğu](../governance/policy/concepts/regulatory-compliance.md) , farklı uyumluluk standartlarıyla ilgili **Uyumluluk etki alanları** ve **güvenlik denetimleri** için yerleşik olarak bilinen Microsoft _tarafından_ oluşturulan ve yönetilen girişim tanımlarını sağlar. Bu sayfada Azure Cosmos DB için **Uyumluluk etki alanları** ve **güvenlik denetimleri** listelenir. Azure kaynaklarınızı belirli bir standarda uygun hale getirmenize yardımcı olmak için, bir **güvenlik denetimi** için yerleşik bileşenleri atayabilirsiniz.
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../includes/policy/standards/intro-warning.md)]
 

@@ -10,14 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: e378bc88d28173eaed0308db3034a54236d63098
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 998e18f8901dda3430d5289e0590ef8099b6fb8c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91262833"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095467"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Bing Web Araması API'si için dil ve bölge desteği
+
+> [!WARNING]
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
+> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
 
 Bing Web Araması API'si, üç düzine ülke veya bölgeyi destekler ve birden çok dili vardır. Bir ülkeyi veya bölgeyi bir sorgu ile belirtmek, bu ülkeye veya bölgelere ilgi alanları temelinde arama sonuçlarının iyileştirmesine yardımcı olur. Sonuçlar Bing bağlantıları içerebilir ve bu bağlantılar, belirtilen ülkeye/bölgeye veya dile göre Bing Kullanıcı deneyimini yerelleştiremeyebilir.
 
@@ -108,7 +113,7 @@ Alternatif olarak, bir Pazar, `mkt` sorgu parametresi ve **pazarlar** tablosunda
 |Tayvan|Geleneksel Çince|zh-TW|
 |Türkiye|Türkçe|tr-TR|
 |Birleşik Krallık|İngilizce|en-GB|
-|Birleşik Devletler|İngilizce|tr-TR|
+|Birleşik Devletler|İngilizce|en-US|
 |Birleşik Devletler|İspanyolca|es-US|
 
 ## <a name="next-steps"></a>Sonraki adımlar

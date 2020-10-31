@@ -10,14 +10,19 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: d5de1cc606f97655427c0c86aea0c5c722e1bab8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbd4f32e77dc8d386067987a0ab0436a7875c15e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84171472"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095399"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Bing yerel Iş Arama API 'SI v7 başvurusu
+
+> [!WARNING]
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
+> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
 
 Yerel Iş Arama API 'SI, Restoran, otel veya diğer yerel işletmelerin bulunduğu sonuçları almak için Bing 'e bir arama sorgusu gönderir. Bu şekilde, sorgu yerel iş veya bir kategorinin adını belirtebilir (örneğin, restoranlar gibi). Varlık sonuçları kişileri, yerleri veya nesneleri kapsar. Bu bağlamdaki bir yerde iş varlıkları, durumlar, ülkeler/bölgeler vb.  
 
@@ -33,7 +38,7 @@ Yanıtın içerdiği JSON nesneleri hakkında daha fazla bilgi için bkz. [Respo
 
 
   
-## <a name="endpoint"></a>Uç Noktası  
+## <a name="endpoint"></a>Uç Nokta  
 Yerel iş sonuçları istemek için şunu öğesine bir GET isteği gönderin: 
 
 ``` 
@@ -47,7 +52,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 > URL uzunluğu üst sınırı 2.048 karakterdir. URL uzunluğunun sınırı aşmadığından emin olmak için, sorgu parametrelerinizin en fazla uzunluğu 1.500 karakterden az olmalıdır. URL 2.048 karakteri aşarsa, sunucu 404 ' i döndürür.  
   
   
-## <a name="headers"></a>Üst bilgiler  
+## <a name="headers"></a>Üst Bilgiler  
 Bir istek ve yanıtın içerebilme üstbilgileri aşağıda verilmiştir.  
   
 |Üst bilgi|Açıklama|  
@@ -71,11 +76,11 @@ Bir istek ve yanıtın içerebilme üstbilgileri aşağıda verilmiştir.
 İstek aşağıdaki sorgu parametrelerini içerebilir. Gerekli parametreler için gereken sütuna bakın. Sorgu parametrelerini URL kodlamanız gerekir.  
   
   
-|Name|Değer|Tür|Gerekli|  
+|Ad|Değer|Tür|Gerekli|  
 |----------|-----------|----------|--------------|
 |<a name="count"></a>biriktirme|Parametresi tarafından belirtilen dizinden başlayarak döndürülecek sonuç sayısı `offset` .|Dize|Hayır|   
 |<a name="localCategories"></a>Yerel Kategoriler|İş kategorisine göre arama tanımlayan seçeneklerin listesi.  Bkz. [Yerel Iş kategorileri arama](local-categories.md)|Dize|Hayır|  
-|<a name="mkt"></a>mkt|Sonuçların geldiği pazar. <br /><br />Olası Pazar değerlerinin listesi için bkz. Pazar kodları.<br /><br /> **Note:** Yerel Iş Arama API 'SI Şu anda yalnızca en-ABD pazar ve dilini desteklemektedir.<br /><br />|Dize|Evet|
+|<a name="mkt"></a>mkt|Sonuçların geldiği pazar. <br /><br />Olası Pazar değerlerinin listesi için bkz. Pazar kodları.<br /><br /> **Note:** Yerel Iş Arama API 'SI Şu anda yalnızca en-ABD pazar ve dilini desteklemektedir.<br /><br />|Dize|Yes|
 |<a name="offset"></a>konumu|Parametre tarafından belirtilen sonuçları başlatacak Dizin `count` .|Tamsayı|Hayır|  
 |<a name="query"></a>ç|Kullanıcının arama terimi.|Dize|Hayır|  
 |<a name="responseformat"></a>responseFormat|Yanıt için kullanılacak medya türü. Aşağıdakiler, büyük/küçük harf duyarsız değerlerdir.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Varsayılan değer JSON ' dır. Yanıtın içerdiği JSON nesneleri hakkında daha fazla bilgi için bkz. [Response Objects](#response-objects).<br /><br />  JsonLd belirtirseniz, yanıt gövdesi, arama sonuçlarını içeren JSON-LD nesnelerini içerir. JSON-LD hakkında daha fazla bilgi için bkz. [JSON-ld](https://json-ld.org/).|Dize|Hayır|  
@@ -108,7 +113,7 @@ Oluşan hatayı tanımlar.
 ### <a name="errorresponse"></a>ErrorResponse  
 İstek başarısız olduğunda yanıtın içerdiği en üst düzey nesne.  
   
-|Name|Değer|Tür|  
+|Ad|Değer|Tür|  
 |----------|-----------|----------|  
 |_type|İpucu yazın.|Dize|  
 |<a name="errors"></a>hatası|İsteğin başarısız olma nedenlerini betimleyen hataların listesi.|[Hata](#error)[]|  
@@ -118,7 +123,7 @@ Oluşan hatayı tanımlar.
 ### <a name="license"></a>Lisans  
 Metin veya fotoğrafın kullanılabileceği lisansı tanımlar.  
   
-|Name|Değer|Tür|  
+|Ad|Değer|Tür|  
 |----------|-----------|----------|  
 |name|Lisansın adı.|Dize|  
 |url|Kullanıcının lisans hakkında daha fazla bilgi alabileceğiniz bir Web sitesinin URL 'SI.<br /><br /> Köprü oluşturmak için adı ve URL 'YI kullanın.|Dize|  
@@ -127,7 +132,7 @@ Metin veya fotoğrafın kullanılabileceği lisansı tanımlar.
 ### <a name="link"></a>Bağlantı  
 Bir köprünün bileşenlerini tanımlar.  
   
-|Name|Değer|Tür|  
+|Ad|Değer|Tür|  
 |----------|-----------|----------|  
 |_type|İpucu yazın.|Dize|  
 |metin|Görüntü metni.|Dize|  
@@ -141,7 +146,7 @@ Bir yayımcıyı tanımlar.
   
 Bir yayımcının adlarını veya Web sitelerini veya her ikisini de sağlayabileceğini unutmayın.  
   
-|Name|Değer|Tür|  
+|Ad|Değer|Tür|  
 |----------|-----------|----------|  
 |name|Yayımcının adı.|Dize|  
 |url|Yayımcının Web sitesinin URL 'SI.<br /><br /> Yayımcının bir Web sitesi sağlayamadığını unutmayın.|Dize|  
@@ -151,7 +156,7 @@ Bir yayımcının adlarını veya Web sitelerini veya her ikisini de sağlayabil
 ### <a name="place"></a>Yer  
 Restoran veya otel gibi yerel bir işletme hakkındaki bilgileri tanımlar.  
   
-|Name|Değer|Tür|  
+|Ad|Değer|Tür|  
 |----------|-----------|----------|  
 |_type|Aşağıdakilerden birine ayarlanmış olabilecek tür İpucu:<br /><br /><ul><li>Otel</li><li>Yerel Iş<br /></li><li>Izın</ul><li>|Dize|  
 |adres|Varlığın bulunduğu posta adresi.|PostalAddress|  
@@ -167,29 +172,29 @@ Restoran veya otel gibi yerel bir işletme hakkındaki bilgileri tanımlar.
   
 |Öğe|Açıklama|Tür|  
 |-------------|-----------------|----------|  
-|Adultınkatlanmış|Belirtilen sorgunun yetişkinlere yönelik amaç olup olmadığını gösteren bir Boole değeri. Sorguda yetişkinlere yönelik amaç varsa değer **true** 'dur; Aksi takdirde, **false**.|Boole|  
-|alterationOverrideQuery|Bing 'in özgün dizeyi kullanmasına zorlamak için kullanılacak sorgu dizesi. Örneğin, sorgu dizesi *downwind salalıyorsa*, geçersiz kılma sorgu dizesi *+ sallama*olur. *% 2Bsaling + downrüzgar*ile sonuçlanan sorgu dizesini kodlamayı unutmayın.<br /><br /> Bu alan, yalnızca özgün sorgu dizesinde yazım hatası varsa dahil edilir.|Dize|  
+|Adultınkatlanmış|Belirtilen sorgunun yetişkinlere yönelik amaç olup olmadığını gösteren bir Boole değeri. Sorguda yetişkinlere yönelik amaç varsa değer **true** 'dur; Aksi takdirde, **false** .|Boole|  
+|alterationOverrideQuery|Bing 'in özgün dizeyi kullanmasına zorlamak için kullanılacak sorgu dizesi. Örneğin, sorgu dizesi *downwind salalıyorsa* , geçersiz kılma sorgu dizesi *+ sallama* olur. *% 2Bsaling + downrüzgar* ile sonuçlanan sorgu dizesini kodlamayı unutmayın.<br /><br /> Bu alan, yalnızca özgün sorgu dizesinde yazım hatası varsa dahil edilir.|Dize|  
 |alteredQuery|Sorguyu gerçekleştirmek için Bing tarafından kullanılan sorgu dizesi. Özgün sorgu dizesinde yazım hataları yer alıyorsa Bing değiştirilen sorgu dizesini kullanır. Örneğin, sorgu dizesi ise, `saling downwind` Değiştirilen sorgu dizesi olacaktır `sailing downwind` .<br /><br /> Bu alan, yalnızca özgün sorgu dizesinde yazım hatası varsa dahil edilir.|Dize|  
-|askUserForLocation|Bing 'in, kullanıcının konumunun doğru sonuçlar sağlamasını gerektirip gerektirmediğini belirten bir Boole değeri. Kullanıcının konumunu [X-MSEdge-ClientIP](#clientip) ve [x-Search-location](#location) üst bilgilerini kullanarak belirttiyseniz, bu alanı yoksayabilirsiniz.<br /><br /> "Bugün hava durumu" veya "Yakınımdaki Restoran" gibi konum duyarlı sorgularda, bu alan doğru sonuçlar sağlamak için kullanıcının konumuna ihtiyacı olan bu alan **true**olarak ayarlanır.<br /><br /> Konumu içeren konum duyarlı sorgular için (örneğin, "Seattle Hava durumu"), bu alan **false**olarak ayarlanır. Bu alan ayrıca "en iyi satıcılar" gibi konum duyarlı olmayan sorgular için **false** olarak ayarlanır.|Boole|  
+|askUserForLocation|Bing 'in, kullanıcının konumunun doğru sonuçlar sağlamasını gerektirip gerektirmediğini belirten bir Boole değeri. Kullanıcının konumunu [X-MSEdge-ClientIP](#clientip) ve [x-Search-location](#location) üst bilgilerini kullanarak belirttiyseniz, bu alanı yoksayabilirsiniz.<br /><br /> "Bugün hava durumu" veya "Yakınımdaki Restoran" gibi konum duyarlı sorgularda, bu alan doğru sonuçlar sağlamak için kullanıcının konumuna ihtiyacı olan bu alan **true** olarak ayarlanır.<br /><br /> Konumu içeren konum duyarlı sorgular için (örneğin, "Seattle Hava durumu"), bu alan **false** olarak ayarlanır. Bu alan ayrıca "en iyi satıcılar" gibi konum duyarlı olmayan sorgular için **false** olarak ayarlanır.|Boole|  
 |originalQuery|İstekte belirtilen şekilde sorgu dizesi.|Dize|  
 
 ### <a name="identifiable"></a>Maya
 
-|Name|Değer|Tür|  
+|Ad|Değer|Tür|  
 |-------------|-----------------|----------|
 |kimlik|Kaynak tanımlayıcısı|Dize|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Mainline gibi bir arama sonuçları grubunu tanımlar.
 
-|Name|Değer|Tür|  
+|Ad|Değer|Tür|  
 |-------------|-----------------|----------|
 |öğeler|Grupta görüntülenecek arama sonuçlarının listesi.|Rankingıtem|
 
 ### <a name="rankingitem"></a>Rankingıtem
 Görüntülenecek bir arama sonuç öğesi tanımlar.
 
-|Name|Değer|Tür|  
+|Ad|Değer|Tür|  
 |-------------|-----------------|----------|
 |Resultındex|Görüntülenecek cevap içindeki öğenin sıfır tabanlı dizini. Öğe bu alanı içermiyorsa, yanıtdaki tüm öğeleri görüntüleyin. Örneğin, haber yanıtında tüm haber makalelerini görüntüleyin.|Tamsayı|
 |answerType|Görüntülenecek öğeyi içeren yanıt. Örneğin, Haberler.<br /><br />SearchResponse nesnesinde yanıtı bulmak için türü kullanın. Tür, SearchResponse alanının adıdır.<br /><br /> Ancak, yanıt türünü yalnızca bu nesne değer alanını içeriyorsa kullanın; Aksi takdirde, yoksayabilirsiniz.|Dize|
@@ -199,7 +204,7 @@ Görüntülenecek bir arama sonuç öğesi tanımlar.
 ### <a name="rankingresponse"></a>RankingResponse  
 Arama sonuçları sayfasının içeriğini ve ne sırada yerleştirileceğini tanımlar.  
   
-|Name|Değer|  
+|Ad|Değer|  
 |----------|-----------|  
 |<a name="ranking-mainline"></a>Ana hat|Ana satırda görüntülenecek arama sonuçları.|  
 |<a name="ranking-pole"></a>kutup|En sık görülen işleme (örneğin, ana hat ve kenar çubuğu üzerinde görüntülenir) uygun olması gereken arama sonuçları.|  
@@ -210,7 +215,7 @@ Arama sonuçları sayfasının içeriğini ve ne sırada yerleştirileceğini ta
   
 Hizmet bir hizmet reddi saldırısından şüpheleniyorsa, isteğin başarılı olacağını unutmayın (HTTP durum kodu 200 Tamam); Ancak, yanıt gövdesi boş olur.  
   
-|Name|Değer|Tür|  
+|Ad|Değer|Tür|  
 |----------|-----------|----------|  
 |_type|SearchResponse olarak ayarlanan tip ipucu.|Dize|  
 |verir|Arama sorgusuyla ilgili varlıkların listesi.|JSON nesnesi|  

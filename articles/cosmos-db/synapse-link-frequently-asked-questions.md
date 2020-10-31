@@ -6,14 +6,15 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: f6a348ceb30806259035cb71bb4165b736949272
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 30f139c92fe426369c609dabd826a7bff1617e72
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480080"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098051"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Synapse Link hakkında sık sorulan sorular
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
 
 Azure Cosmos DB için Azure SYNAPSE bağlantısı Azure Cosmos DB ile Azure SYNAPSE Analytics arasında sıkı bir tümleştirme oluşturur. Müşterilerin, işletimsel iş yüklerinden ve ETL işlem hattı olmadan tam performans yalıtımıyla neredeyse gerçek zamanlı analizler çalıştırmasına olanak sağlar. Bu makalede Azure Cosmos DB için Synapse Link hakkında sık sorulan soruların yanıtları yer almaktadır.
 

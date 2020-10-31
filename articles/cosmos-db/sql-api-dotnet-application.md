@@ -9,14 +9,15 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: e1dd1e94bd9747bb0961c09ce2f281c433b4b4fd
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: e4e2ba15dad7459ba3f7926a965292be37249054
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488223"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097371"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Öğretici: .NET SDK kullanarak Azure Cosmos DB ile ASP.NET Core MVC web uygulaması geliştirme
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -67,33 +68,33 @@ Sonraki bölümde, yeni bir ASP.NET Core MVC uygulaması oluşturacaksınız.
 
 ## <a name="step-2-create-a-new-aspnet-core-mvc-application"></a><a name="create-a-new-mvc-application"></a>2. Adım: yeni bir ASP.NET Core MVC uygulaması oluşturma
 
-1. Visual Studio 'Yu açın ve **Yeni proje oluştur**' u seçin.
+1. Visual Studio 'Yu açın ve **Yeni proje oluştur** ' u seçin.
 
-1. **Yeni proje oluştur**' da, C# için **ASP.NET Core Web uygulaması** bulun ve seçin. Devam etmek için **İleri** seçeneğini belirleyin.
+1. **Yeni proje oluştur** ' da, C# için **ASP.NET Core Web uygulaması** bulun ve seçin. Devam etmek için **İleri** seçeneğini belirleyin.
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png" alt-text="Bu öğretici tarafından oluşturulan yapılacaklar listesi MVC web uygulaması ekran görüntüsü-ASP NET Core MVC öğretici adım adım":::
 
-1. **Yeni projenizi yapılandırın**bölümünde, projeyi *Todo* olarak adlandırın ve **Oluştur**' u seçin.
+1. **Yeni projenizi yapılandırın** bölümünde, projeyi *Todo* olarak adlandırın ve **Oluştur** ' u seçin.
 
-1. **Yeni bir ASP.NET Core Web uygulaması oluşturma**bölümünde **Web uygulaması (Model-View-Controller)** öğesini seçin. Devam etmek için **Oluştur** ' u seçin.
+1. **Yeni bir ASP.NET Core Web uygulaması oluşturma** bölümünde **Web uygulaması (Model-View-Controller)** öğesini seçin. Devam etmek için **Oluştur** ' u seçin.
 
    Visual Studio boş bir MVC uygulaması oluşturur.
 
-1. **Debug**  >  ASP.NET uygulamanızı yerel olarak çalıştırmak için hata**ayıklamayı Başlat** veya F5 ' i seçin.
+1. **Debug**  >  ASP.NET uygulamanızı yerel olarak çalıştırmak için hata **ayıklamayı Başlat** veya F5 ' i seçin.
 
 ## <a name="step-3-add-azure-cosmos-db-nuget-package-to-the-project"></a><a name="add-nuget-packages"></a>3. Adım: projeye Azure Cosmos DB NuGet paketi ekleme
 
 Bu çözüm için ihtiyaç duyduğumuz ASP.NET Core MVC Framework kodunun çoğunu kullandığımıza göre, Azure Cosmos DB bağlanmak için gereken NuGet paketlerini ekleyelim.
 
-1. **Çözüm Gezgini**, projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin.
+1. **Çözüm Gezgini** , projenize sağ tıklayın ve **NuGet Paketlerini Yönet** ' i seçin.
 
-1. **NuGet Paket Yöneticisi**' nde, **Microsoft. Azure. Cosmos**arayın ve seçin. **Yükle**'yi seçin.
+1. **NuGet Paket Yöneticisi** ' nde, **Microsoft. Azure. Cosmos** arayın ve seçin. **Yükle** 'yi seçin.
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="Bu öğretici tarafından oluşturulan yapılacaklar listesi MVC web uygulaması ekran görüntüsü-ASP NET Core MVC öğretici adım adım":::
 
    Visual Studio, Azure Cosmos DB paketini ve bağımlılıklarını indirir ve yükler.
 
-   NuGet paketini yüklemek için **Paket Yöneticisi konsolu 'nu** da kullanabilirsiniz. Bunu yapmak için **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu**' nu seçin. Komut isteminde aşağıdaki komutu yazın:
+   NuGet paketini yüklemek için **Paket Yöneticisi konsolu 'nu** da kullanabilirsiniz. Bunu yapmak için **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu** ' nu seçin. Komut isteminde aşağıdaki komutu yazın:
 
    ```ps
    Install-Package Microsoft.Azure.Cosmos
@@ -105,9 +106,9 @@ Bu çözüm için ihtiyaç duyduğumuz ASP.NET Core MVC Framework kodunun çoğu
 
 ### <a name="add-a-model"></a><a name="add-a-model"></a> Model ekleme
 
-1. **Çözüm Gezgini**, **modeller** klasörüne sağ tıklayın, sınıf **Ekle**' yi seçin  >  **Class**.
+1. **Çözüm Gezgini** , **modeller** klasörüne sağ tıklayın, sınıf **Ekle** ' yi seçin  >  **Class** .
 
-1. **Yeni öğe Ekle**' de, yeni sınıfınızı *Item.cs* olarak adlandırın ve **Ekle**' yi seçin.
+1. **Yeni öğe Ekle** ' de, yeni sınıfınızı *Item.cs* olarak adlandırın ve **Ekle** ' yi seçin.
 
 1. *Item.cs* sınıfının içeriğini şu kodla değiştirin:
 
@@ -127,17 +128,17 @@ Ardından aşağıdaki görünümleri ekleyelim.
 
 #### <a name="create-item-view"></a><a name="AddNewIndexView"></a>Öğe görünümü oluştur
 
-1. **Çözüm Gezgini**, **Görünümler** klasörüne sağ tıklayın ve **Add**  >  **Yeni klasör**Ekle ' yi seçin. Klasör *öğesini*adlandırın.
+1. **Çözüm Gezgini** , **Görünümler** klasörüne sağ tıklayın ve **Add**  >  **Yeni klasör** Ekle ' yi seçin. Klasör *öğesini* adlandırın.
 
-1. Boş **öğe** klasörünü sağ tıklatın ve ardından Görünüm **Ekle**' yi seçin  >  **View**.
+1. Boş **öğe** klasörünü sağ tıklatın ve ardından Görünüm **Ekle** ' yi seçin  >  **View** .
 
-1. **MVC görünümü Ekle**' de, aşağıdaki değişiklikleri yapın:
+1. **MVC görünümü Ekle** ' de, aşağıdaki değişiklikleri yapın:
 
-   * **Görünüm adı**' nda *Oluştur*' u girin.
-   * **Şablon**' da **Oluştur**' u seçin.
-   * **Model sınıfı**' nda, **öğe (Todo) öğesini seçin. Modeller)**.
-   * **Düzen kullan sayfasını** seçin ve *~/views/Shared/_Layout. cshtml*yazın.
-   * **Ekle**’yi seçin.
+   * **Görünüm adı** ' nda *Oluştur* ' u girin.
+   * **Şablon** ' da **Oluştur** ' u seçin.
+   * **Model sınıfı** ' nda, **öğe (Todo) öğesini seçin. Modeller)** .
+   * **Düzen kullan sayfasını** seçin ve *~/views/Shared/_Layout. cshtml* yazın.
+   * **Ekle** ’yi seçin.
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="Bu öğretici tarafından oluşturulan yapılacaklar listesi MVC web uygulaması ekran görüntüsü-ASP NET Core MVC öğretici adım adım":::
 
@@ -147,15 +148,15 @@ Ardından aşağıdaki görünümleri ekleyelim.
 
 #### <a name="delete-item-view"></a><a name="AddEditIndexView"></a>Öğe görünümünü sil
 
-1. **Çözüm Gezgini**, **öğe** klasörünü yeniden sağ tıklatın, Görünüm Ekle ' yi seçin **Add**  >  **View**.
+1. **Çözüm Gezgini** , **öğe** klasörünü yeniden sağ tıklatın, Görünüm Ekle ' yi seçin **Add**  >  **View** .
 
-1. **MVC görünümü Ekle**' de, aşağıdaki değişiklikleri yapın:
+1. **MVC görünümü Ekle** ' de, aşağıdaki değişiklikleri yapın:
 
-   * **Görünüm adı** kutusunda *Sil*yazın.
-   * **Şablon** kutusunda **Sil**' i seçin.
+   * **Görünüm adı** kutusunda *Sil* yazın.
+   * **Şablon** kutusunda **Sil** ' i seçin.
    * **Model sınıfı** kutusunda **Öğe (todo.Models)** seçeneğini belirleyin.
-   * **Düzen kullan sayfasını** seçin ve *~/views/Shared/_Layout. cshtml*yazın.
-   * **Ekle**’yi seçin.
+   * **Düzen kullan sayfasını** seçin ve *~/views/Shared/_Layout. cshtml* yazın.
+   * **Ekle** ’yi seçin.
 
 1. Sonra **Ekle** ' yi seçin ve Visual Studio 'nun yeni bir şablon görünümü oluşturmasına izin verin. Oluşturulan dosyadaki kodu aşağıdaki içeriklerle değiştirin:
 
@@ -163,14 +164,14 @@ Ardından aşağıdaki görünümleri ekleyelim.
 
 #### <a name="add-a-view-to-get-an-item-details"></a><a name="AddItemIndexView"></a>Öğe ayrıntılarını almak için bir görünüm ekleyin
 
-1. **Çözüm Gezgini**, **öğe** klasörünü yeniden sağ tıklatın, Görünüm **Ekle**' yi seçin  >  **View**.
+1. **Çözüm Gezgini** , **öğe** klasörünü yeniden sağ tıklatın, Görünüm **Ekle** ' yi seçin  >  **View** .
 
-1. **MVC görünümü Ekle**' de, aşağıdaki değerleri sağlayın:
+1. **MVC görünümü Ekle** ' de, aşağıdaki değerleri sağlayın:
 
-   * **Görünüm adı**' nda, *Ayrıntılar*girin.
-   * **Şablon**' da **Ayrıntılar**' ı seçin.
-   * **Model sınıfı**' nda, **öğe (Todo) öğesini seçin. Modeller)**.
-   * **Düzen kullan sayfasını** seçin ve *~/views/Shared/_Layout. cshtml*yazın.
+   * **Görünüm adı** ' nda, *Ayrıntılar* girin.
+   * **Şablon** ' da **Ayrıntılar** ' ı seçin.
+   * **Model sınıfı** ' nda, **öğe (Todo) öğesini seçin. Modeller)** .
+   * **Düzen kullan sayfasını** seçin ve *~/views/Shared/_Layout. cshtml* yazın.
 
 1. Sonra **Ekle** ' yi seçin ve Visual Studio 'nun yeni bir şablon görünümü oluşturmasına izin verin. Oluşturulan dosyadaki kodu aşağıdaki içeriklerle değiştirin:
 
@@ -178,15 +179,15 @@ Ardından aşağıdaki görünümleri ekleyelim.
 
 #### <a name="add-an-edit-item-view"></a><a name="AddEditIndexView"></a>Düzenleme öğesi görünümü ekleme
 
-1. **Çözüm Gezgini**, **öğe** klasörünü yeniden sağ tıklatın, Görünüm Ekle ' yi seçin **Add**  >  **View**.
+1. **Çözüm Gezgini** , **öğe** klasörünü yeniden sağ tıklatın, Görünüm Ekle ' yi seçin **Add**  >  **View** .
 
-1. **MVC görünümü Ekle**' de, aşağıdaki değişiklikleri yapın:
+1. **MVC görünümü Ekle** ' de, aşağıdaki değişiklikleri yapın:
 
    * **Görünüm adı** kutusunda *Edit* yazın.
-   * **Şablon** kutusunda **Düzenle**'yi seçin.
+   * **Şablon** kutusunda **Düzenle** 'yi seçin.
    * **Model sınıfı** kutusunda **Öğe (todo.Models)** seçeneğini belirleyin.
-   * **Düzen kullan sayfasını** seçin ve *~/views/Shared/_Layout. cshtml*yazın.
-   * **Ekle**’yi seçin.
+   * **Düzen kullan sayfasını** seçin ve *~/views/Shared/_Layout. cshtml* yazın.
+   * **Ekle** ’yi seçin.
 
 1. Sonra **Ekle** ' yi seçin ve Visual Studio 'nun yeni bir şablon görünümü oluşturmasına izin verin. Oluşturulan dosyadaki kodu aşağıdaki içeriklerle değiştirin:
 
@@ -196,15 +197,15 @@ Ardından aşağıdaki görünümleri ekleyelim.
 
 Son olarak, aşağıdaki adımlarla tüm öğeleri almak için bir görünüm ekleyin:
 
-1. **Çözüm Gezgini**, **öğe** klasörünü yeniden sağ tıklatın, Görünüm Ekle ' yi seçin **Add**  >  **View**.
+1. **Çözüm Gezgini** , **öğe** klasörünü yeniden sağ tıklatın, Görünüm Ekle ' yi seçin **Add**  >  **View** .
 
-1. **MVC görünümü Ekle**' de, aşağıdaki değişiklikleri yapın:
+1. **MVC görünümü Ekle** ' de, aşağıdaki değişiklikleri yapın:
 
    * **Görünüm adı** kutusunda *Index* yazın.
-   * **Şablon** kutusunda **Liste**'yi seçin.
+   * **Şablon** kutusunda **Liste** 'yi seçin.
    * **Model sınıfı** kutusunda **Öğe (todo.Models)** seçeneğini belirleyin.
-   * **Düzen kullan sayfasını** seçin ve *~/views/Shared/_Layout. cshtml*yazın.
-   * **Ekle**’yi seçin.
+   * **Düzen kullan sayfasını** seçin ve *~/views/Shared/_Layout. cshtml* yazın.
+   * **Ekle** ’yi seçin.
 
 1. Sonra **Ekle** ' yi seçin ve Visual Studio 'nun yeni bir şablon görünümü oluşturmasına izin verin. Oluşturulan dosyadaki kodu aşağıdaki içeriklerle değiştirin:
 
@@ -216,21 +217,21 @@ Bu adımları tamamladıktan sonra, Visual Studio 'daki tüm *cshtml* belgelerin
 
 İlk olarak, Azure Cosmos DB bağlanma ve kullanma mantığını içeren bir sınıf ekleyeceğiz. Bu öğreticide, bu mantığı adlı bir sınıfa `CosmosDbService` ve adlı bir arabirime kapsülliyoruz `ICosmosDbService` . Bu hizmet CRUD işlemlerini yapar. Ayrıca, tamamlanmamış öğeleri Listeleme, öğeleri oluşturma, düzenlemesi ve silme gibi akış işlemlerini de okur.
 
-1. **Çözüm Gezgini**, projenize sağ tıklayın ve **Add**  >  **Yeni klasör**Ekle ' yi seçin. Klasör *hizmetlerini*adlandırın.
+1. **Çözüm Gezgini** , projenize sağ tıklayın ve **Add**  >  **Yeni klasör** Ekle ' yi seçin. Klasör *hizmetlerini* adlandırın.
 
-1. **Hizmetler** klasörüne sağ tıklayın, sınıf **Ekle**' yi seçin  >  **Class**. Yeni sınıfı *Cosmosdbservice* olarak adlandırın ve **Ekle**' yi seçin.
+1. **Hizmetler** klasörüne sağ tıklayın, sınıf **Ekle** ' yi seçin  >  **Class** . Yeni sınıfı *Cosmosdbservice* olarak adlandırın ve **Ekle** ' yi seçin.
 
 1. *CosmosDbService.cs* içeriğini aşağıdaki kodla değiştirin:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
 
-1. **Hizmetler** klasörüne sağ tıklayın, sınıf **Ekle**' yi seçin  >  **Class**. Yeni sınıfı *ıosmosdbservice* olarak adlandırın ve **Ekle**' yi seçin.
+1. **Hizmetler** klasörüne sağ tıklayın, sınıf **Ekle** ' yi seçin  >  **Class** . Yeni sınıfı *ıosmosdbservice* olarak adlandırın ve **Ekle** ' yi seçin.
 
 1. Aşağıdaki kodu *ıcosmosdbservice* sınıfına ekleyin:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
 
-1. Çözümünüzde *Startup.cs* dosyasını açın ve aşağıdaki **ınitializecosmosclientınstanceasync**yöntemini ekleyerek yapılandırmayı okur ve istemciyi başlatır.
+1. Çözümünüzde *Startup.cs* dosyasını açın ve aşağıdaki **ınitializecosmosclientınstanceasync** yöntemini ekleyerek yapılandırmayı okur ve istemciyi başlatır.
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="InitializeCosmosClientInstanceAsync" :::
 
@@ -258,13 +259,13 @@ Bu adımları tamamladıktan sonra, Visual Studio 'daki tüm *cshtml* belgelerin
 
 ### <a name="add-a-controller"></a><a name="add-a-controller"></a>Denetleyici ekleme
 
-1. **Çözüm Gezgini**, **denetleyiciler** klasörüne sağ tıklayın, denetleyici **Ekle**' yi seçin  >  **Controller**.
+1. **Çözüm Gezgini** , **denetleyiciler** klasörüne sağ tıklayın, denetleyici **Ekle** ' yi seçin  >  **Controller** .
 
-1. **Yapı Iskelesi Ekle**' de **MVC denetleyicisi-boş** ' yı seçin ve **Ekle**' yi seçin.
+1. **Yapı Iskelesi Ekle** ' de **MVC denetleyicisi-boş** ' yı seçin ve **Ekle** ' yi seçin.
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png" alt-text="Bu öğretici tarafından oluşturulan yapılacaklar listesi MVC web uygulaması ekran görüntüsü-ASP NET Core MVC öğretici adım adım":::
 
-1. Yeni Controller *ıtemcontroller*'ı adlandırın.
+1. Yeni Controller *ıtemcontroller* 'ı adlandırın.
 
 1. *ItemController.cs* içeriğini aşağıdaki kodla değiştirin:
 
@@ -286,11 +287,11 @@ Uygulamayı yerel bilgisayarınızda test etmek için aşağıdaki adımları ku
 
 1. **Yeni oluştur** bağlantısını seçin ve **ad** ve **Açıklama** alanlarına değer ekleyin. **Tamamlandı** onay kutusunu seçilmemiş olarak bırakın. Bu seçeneği belirlerseniz, uygulama yeni öğeyi tamamlanmış durumuna ekler. Öğe artık ilk listede görünmüyor.
 
-1. **Oluştur**’u seçin. Uygulama sizi **Dizin** görünümüne geri gönderir ve öğe listede görüntülenir. **Yapılacaklar** listenize birkaç öğe ekleyebilirsiniz.
+1. **Oluştur** ’u seçin. Uygulama sizi **Dizin** görünümüne geri gönderir ve öğe listede görüntülenir. **Yapılacaklar** listenize birkaç öğe ekleyebilirsiniz.
 
     :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png" alt-text="Bu öğretici tarafından oluşturulan yapılacaklar listesi MVC web uygulaması ekran görüntüsü-ASP NET Core MVC öğretici adım adım":::
   
-1. Listedeki bir **öğenin** yanındaki **Düzenle** ' yi seçin. Uygulama, **Tamamlanan** bayrak dahil olmak üzere, nesnenizin herhangi bir özelliğini güncelleştirebileceğiniz **düzenleme** görünümünü açar. **Tamamlandı** ' ı ve **Kaydet**' i seçerseniz, uygulama **öğeyi** listede tamamlandı olarak görüntüler.
+1. Listedeki bir **öğenin** yanındaki **Düzenle** ' yi seçin. Uygulama, **Tamamlanan** bayrak dahil olmak üzere, nesnenizin herhangi bir özelliğini güncelleştirebileceğiniz **düzenleme** görünümünü açar. **Tamamlandı** ' ı ve **Kaydet** ' i seçerseniz, uygulama **öğeyi** listede tamamlandı olarak görüntüler.
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png" alt-text="Bu öğretici tarafından oluşturulan yapılacaklar listesi MVC web uygulaması ekran görüntüsü-ASP NET Core MVC öğretici adım adım":::
 
@@ -302,27 +303,27 @@ Uygulamayı yerel bilgisayarınızda test etmek için aşağıdaki adımları ku
 
 Artık uygulamanın tamamı Azure Cosmos DB ile doğru şekilde çalıştığına göre, bu web uygulamasını Azure App Service’e dağıtacağız.  
 
-1. Bu uygulamayı yayımlamak için **Çözüm Gezgini** ' de projeye sağ tıklayın ve **Yayımla**' yı seçin.
+1. Bu uygulamayı yayımlamak için **Çözüm Gezgini** ' de projeye sağ tıklayın ve **Yayımla** ' yı seçin.
 
-1. **Bir yayımlama hedefi**seçin kısmında **App Service**' yi seçin.
+1. **Bir yayımlama hedefi** seçin kısmında **App Service** ' yi seçin.
 
-1. Mevcut bir App Service profilini kullanmak için **Varolanı Seç**' i seçin ve ardından **Yayımla**' yı seçin.
+1. Mevcut bir App Service profilini kullanmak için **Varolanı Seç** ' i seçin ve ardından **Yayımla** ' yı seçin.
 
-1. **App Service**bir **abonelik**seçin. Kaynak grubuna veya kaynak türüne göre sıralamak için **Görünüm** filtresini kullanın.
+1. **App Service** bir **abonelik** seçin. Kaynak grubuna veya kaynak türüne göre sıralamak için **Görünüm** filtresini kullanın.
 
-1. Profilinizi bulun ve **Tamam**' ı seçin. Sonra gerekli Azure App Service arayın ve **Tamam**' ı seçin.
+1. Profilinizi bulun ve **Tamam** ' ı seçin. Sonra gerekli Azure App Service arayın ve **Tamam** ' ı seçin.
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service-2019.png" alt-text="Bu öğretici tarafından oluşturulan yapılacaklar listesi MVC web uygulaması ekran görüntüsü-ASP NET Core MVC öğretici adım adım":::
 
 Başka bir seçenek de yeni bir profil oluşturmaktır:
 
-1. Önceki yordamda olduğu gibi **Çözüm Gezgini** projeye sağ tıklayın ve **Yayımla**' yı seçin.
+1. Önceki yordamda olduğu gibi **Çözüm Gezgini** projeye sağ tıklayın ve **Yayımla** ' yı seçin.
   
-1. **Bir yayımlama hedefi**seçin kısmında **App Service**' yi seçin.
+1. **Bir yayımlama hedefi** seçin kısmında **App Service** ' yi seçin.
 
-1. **Bir yayımlama hedefi**seçin bölümünde **Yeni oluştur** ' u seçin ve **Yayımla**' yı seçin.
+1. **Bir yayımlama hedefi** seçin bölümünde **Yeni oluştur** ' u seçin ve **Yayımla** ' yı seçin.
 
-1. **App Service**, Web uygulaması adınızı ve uygun aboneliği, kaynak grubunu ve barındırma planını girip **Oluştur**' u seçin.
+1. **App Service** , Web uygulaması adınızı ve uygun aboneliği, kaynak grubunu ve barındırma planını girip **Oluştur** ' u seçin.
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service-2019.png" alt-text="Bu öğretici tarafından oluşturulan yapılacaklar listesi MVC web uygulaması ekran görüntüsü-ASP NET Core MVC öğretici adım adım":::
 

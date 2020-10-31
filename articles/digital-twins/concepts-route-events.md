@@ -7,20 +7,20 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: f124eb24dcdc9e6437c803d1066d6ca86d5c32ab
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 9c7b08b92fad07cddbdb2783f2d68cdb9be034a4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440816"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097082"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Azure dijital TWINS 'in içindeki ve dışındaki olayları yönlendirme
 
 Azure dijital TWINS, hizmet dışındaki tüketicilere veri göndermek için **olay yollarını** kullanır. 
 
-Önizleme süresince Azure dijital TWINS verileri göndermek için iki önemli durum vardır:
+Azure dijital TWINS verileri göndermek için iki önemli durum vardır:
 * Azure dijital TWINS grafiğindeki bir ikizi 'den diğerine veri gönderme. Örneğin, bir dijital ikizi üzerinde bir özellik değiştiğinde, başka bir dijital ikizi 'e göre bildirim almak ve güncelleştirmek isteyebilirsiniz.
-* Ek depolama veya işleme ( *veri*çıkışı olarak da bilinir) için aşağı akış veri hizmetlerine veri gönderme. Örneğin,
+* Ek depolama veya işleme ( *veri* çıkışı olarak da bilinir) için aşağı akış veri hizmetlerine veri gönderme. Örneğin,
   - Bir barındırma, toplu analizler için el ile ilgili olayların zaman serisi verilerini kaydetmek üzere Azure dijital TWINS olay verilerini [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md)' A göndermek isteyebilir.
   - Zaten [Azure Maps](../azure-maps/about-azure-maps.md) kullanan bir işletme, çözümlerini geliştirmek Için Azure dijital TWINS 'i kullanmak isteyebilir. Azure dijital TWINS 'i ayarladıktan sonra Azure haritasını hızlı bir şekilde etkinleştirebilir, Azure Map varlıklarını ikizi grafiğinde [dijital TWINS](concepts-twins-graph.md) olarak Azure dijital TWINS 'e taşıyın veya Azure haritalarını ve Azure dijital TWINS verilerini birlikte kullanarak güçlü sorgular çalıştırın.
 
@@ -38,7 +38,7 @@ Olay yolları için tipik aşağı akış hedefleri, TSI, Azure Maps, Storage ve
 
 ### <a name="event-routes-for-internal-digital-twin-events"></a>İç dijital ikizi olayları için olay yolları
 
-Geçerli önizleme sürümü sırasında olay yolları, ikizi Graph içindeki olayları işlemek ve dijital ikizi 'den dijital ikizi 'e veri göndermek için de kullanılır. Bu, [Azure işlevleri](../azure-functions/functions-overview.md)gibi işlem kaynaklarına Event Grid aracılığıyla olay yolları bağlanarak yapılır. Bu işlevler daha sonra TWINS 'in olayları alıp nasıl yanıtlaması tanımlar. 
+Olay yolları, ikizi Graph içindeki olayları işlemek ve dijital ikizi 'den dijital ikizi 'e veri göndermek için de kullanılır. Bu, [Azure işlevleri](../azure-functions/functions-overview.md)gibi işlem kaynaklarına Event Grid aracılığıyla olay yolları bağlanarak yapılır. Bu işlevler daha sonra TWINS 'in olayları alıp nasıl yanıtlaması tanımlar. 
 
 Bir işlem kaynağı, olay rotası aracılığıyla aldığı bir olaya göre ikizi grafiğini değiştirmek istediğinde, onun zaman içinde hangi ikizi üzerinde değişiklik yapılmasını istediğini bilmesini sağlamak yararlı olur. 
 
@@ -50,7 +50,7 @@ Dijital ikizi olaylarını işlemek için bir Azure işlevi ayarlama sürecinde 
 
 ## <a name="create-an-endpoint"></a>Uç nokta oluşturma
 
-Bir olay yolu tanımlamak için, geliştiriciler önce uç noktaları tanımlamalıdır. **Uç nokta** , Azure dijital TWINS 'in dışında bir yol bağlantısını destekleyen bir hedefdir. Geçerli önizleme sürümündeki desteklenen hedefler şunlardır:
+Bir olay yolu tanımlamak için, geliştiriciler önce uç noktaları tanımlamalıdır. **Uç nokta** , Azure dijital TWINS 'in dışında bir yol bağlantısını destekleyen bir hedefdir. Desteklenen hedefler şunlardır:
 * Event Grid özel konular
 * Olay Hub'ı
 * Service Bus
@@ -73,7 +73,7 @@ Denetim düzleminde kullanılabilen uç nokta API 'Leri şunlardır:
  
 Bir olay yolu oluşturmak için Azure dijital TWINS [**veri düzlemi API 'leri**](how-to-manage-routes-apis-cli.md#create-an-event-route), [**clı komutları**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)veya [**Azure Portal**](how-to-manage-routes-portal.md#create-an-event-route)kullanabilirsiniz. 
 
-`CreateEventRoute` [.Net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview) çağrısını kullanarak bir istemci uygulaması içinde bir olay yolu oluşturma örneği aşağıda verilmiştir: 
+`CreateEventRoute` [.Net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) çağrısını kullanarak bir istemci uygulaması içinde bir olay yolu oluşturma örneği aşağıda verilmiştir: 
 
 ```csharp
 EventRoute er = new EventRoute("endpointName");
@@ -94,7 +94,7 @@ Rotalar [Azure Digital TWINS CLI](how-to-use-cli.md)kullanılarak da oluşturula
 
 ## <a name="dead-letter-events"></a>Atılacak mektup olayları
 
-Bir uç nokta belirli bir süre içinde bir olayı teslim edimezse veya olayı belirli bir sayıda sunmaya çalıştıktan sonra, teslim edilmemiş olayı bir depolama hesabına gönderebilir. Bu işlem, **atılacak**olarak bilinir. **Aşağıdaki koşullardan biri** karşılandığında Azure dijital TWINS, bir olayı atılacak. 
+Bir uç nokta belirli bir süre içinde bir olayı teslim edimezse veya olayı belirli bir sayıda sunmaya çalıştıktan sonra, teslim edilmemiş olayı bir depolama hesabına gönderebilir. Bu işlem, **atılacak** olarak bilinir. **Aşağıdaki koşullardan biri** karşılandığında Azure dijital TWINS, bir olayı atılacak. 
 
 * Etkinlik, yaşam süresi aralığında teslim edilmemiş
 * Olayı teslim etmeye yönelik denemeler sayısı sınırı aştı

@@ -7,14 +7,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: ae0bf6836fd08e20d97f1cfd85627b25e31bf380
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0868b0d3e917b857d09c89e3a35d03872c42a23e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278415"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096657"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Azure Cosmos DB veri modellemesi
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB gibi şemaya ücretsiz veritabanları olsa da, yapılandırılmamış ve yarı yapılandırılmış verilerin depolanmasını ve sorgulanmasını kolaylaştırır; performans ve ölçeklenebilirlik ve en düşük maliyette hizmetin en iyi şekilde yararlanmak için veri modelinize bir süre harcamanız gerekir.
 
@@ -35,7 +36,7 @@ Karşılaştırma için, bir ilişkisel veritabanındaki verileri modelliyoruz. 
 
 :::image type="content" source="./media/sql-api-modeling-data/relational-data-model.png" alt-text="İlişkisel veritabanı modeli" border="false":::
 
-İlişkisel veritabanlarıyla çalışırken, strateji tüm verilerinizi normalleştirilemiyor. Verilerinizin normalleştirilmesi, genellikle kişi gibi bir varlık almayı ve ayrı bileşenlere doğru bir şekilde bölünmesini içerir. Yukarıdaki örnekte, bir kişi birden fazla kişi ayrıntısı kaydına ve birden çok adres kaydına sahip olabilir. İletişim ayrıntıları, bir tür gibi ortak alanlar daha fazla ayıklanarak daha fazla ayrılabilir. Aynı adres için de geçerlidir, her bir kayıt *Ev* veya *iş*türünde olabilir.
+İlişkisel veritabanlarıyla çalışırken, strateji tüm verilerinizi normalleştirilemiyor. Verilerinizin normalleştirilmesi, genellikle kişi gibi bir varlık almayı ve ayrı bileşenlere doğru bir şekilde bölünmesini içerir. Yukarıdaki örnekte, bir kişi birden fazla kişi ayrıntısı kaydına ve birden çok adres kaydına sahip olabilir. İletişim ayrıntıları, bir tür gibi ortak alanlar daha fazla ayıklanarak daha fazla ayrılabilir. Aynı adres için de geçerlidir, her bir kayıt *Ev* veya *iş* türünde olabilir.
 
 Verileri normalleştirirken temel alan, her kayıtta gereksiz verileri depolamayı ve bunun yerine verilere **başvurmaktan kaçınmaktır** . Bu örnekte, kişinin tüm iletişim ayrıntılarını ve adreslerini içeren bir kişiyi okumak için, çalışma zamanında verilerinizi etkin bir şekilde oluşturmak (veya yeniden kullanmak) için BIRLEŞTIRMELERI kullanmanız gerekir.
 
@@ -85,9 +86,9 @@ Genel olarak, şu durumlarda ekli veri modellerini kullanın:
 
 * Varlıklar arasında **Kapsanan** ilişkiler vardır.
 * Varlıklar arasında **bire bir** ilişki vardır.
-* **Seyrek olarak değişen**gömülü veriler vardır.
-* **Bağlantılı olmadan**artmayacak gömülü veriler var.
-* **Birlikte sık sorgulanan**Ekli veriler vardır.
+* **Seyrek olarak değişen** gömülü veriler vardır.
+* **Bağlantılı olmadan** artmayacak gömülü veriler var.
+* **Birlikte sık sorgulanan** Ekli veriler vardır.
 
 > [!NOTE]
 > Genellikle, yoğun veri modelleri daha iyi **okuma** performansı sağlar.
@@ -116,7 +117,7 @@ Bu JSON kod parçacığını alın.
 }
 ```
 
-Bu, genel bir blog veya CMS, sistem modelliyoruz, gömülü açıklamalara sahip bir post varlığının nasıl görüneceğine benzeyebilir. Bu örnekteki sorun, Comments dizisinin **sınırsız**olması, yani tek bir gönderinin sahip olduğu açıklama sayısında (pratik) bir sınır olmadığı anlamına gelir. Öğenin boyutu sonsuz büyük büyüyerek bu sorun oluşabilir.
+Bu, genel bir blog veya CMS, sistem modelliyoruz, gömülü açıklamalara sahip bir post varlığının nasıl görüneceğine benzeyebilir. Bu örnekteki sorun, Comments dizisinin **sınırsız** olması, yani tek bir gönderinin sahip olduğu açıklama sayısında (pratik) bir sınır olmadığı anlamına gelir. Öğenin boyutu sonsuz büyük büyüyerek bu sorun oluşabilir.
 
 Öğenin boyutu, verilerin kablo üzerinden iletilmesi ve öğe okuma ve güncelleştirme özelliğinin ölçeğini büyürken, bu, ölçeğe karşı etkilenir.
 
@@ -241,8 +242,8 @@ Genel olarak, şu durumlarda normalleştirilmiş veri modellerini kullanın:
 
 * **Bire çok** ilişkilerini temsil etme.
 * **Çoka** çok ilişkileri temsil eden.
-* İlgili veri **değişiklikleri sıklıkla**yapılır.
-* Başvurulan verilerin **sınırsız**olması olabilir.
+* İlgili veri **değişiklikleri sıklıkla** yapılır.
+* Başvurulan verilerin **sınırsız** olması olabilir.
 
 > [!NOTE]
 > Genellikle normalleştirici daha iyi **yazma** performansı sağlar.
@@ -402,7 +403,7 @@ Yazarın adı değiştiyse ya da fotoğraflarını güncelleştirmek istiyorlars
 
 Örnekte, bir okuma işleminde pahalı işleme kaydetmek için **önceden hesaplanmış toplamalar** değerleri vardır. Örnekte, yazar belgesine katıştırılmış verilerden bazıları çalışma zamanında hesaplanan verilerden oluşur. Her yeni kitap yayımlandığında, bir kitap belgesi oluşturulur **ve** countOfBooks alanı, belirli bir yazar için mevcut olan kitap belgelerinin sayısına göre hesaplanmış bir değere ayarlanır. Bu iyileştirme, okuma işlemlerini en iyi duruma getirmek için yazma işlemleri yapmak için uygun olan okuma ağır sistemlerde iyi hale getirilir.
 
-Azure Cosmos DB **çok belgeli işlemleri**desteklediğinden, önceden hesaplanmış alanları olan bir modele sahip olabilme olasılığı vardır. Birçok NoSQL deposu belgelerde işlem yapılamaz ve bu nedenle, bu sınırlama nedeniyle "her şeyi her zaman katıştır" gibi tasarım kararları verebilir. Azure Cosmos DB ile, bir ACID işlemi içinde kitaplar ekleyen ve yazarları güncelleştiren sunucu tarafı tetikleyicilerini veya saklı yordamları kullanabilirsiniz. Artık verilerinizin tutarlı kalmasını sağlamak için her şeyi tek bir belgeye katıştırmanız **gerekmez.**
+Azure Cosmos DB **çok belgeli işlemleri** desteklediğinden, önceden hesaplanmış alanları olan bir modele sahip olabilme olasılığı vardır. Birçok NoSQL deposu belgelerde işlem yapılamaz ve bu nedenle, bu sınırlama nedeniyle "her şeyi her zaman katıştır" gibi tasarım kararları verebilir. Azure Cosmos DB ile, bir ACID işlemi içinde kitaplar ekleyen ve yazarları güncelleştiren sunucu tarafı tetikleyicilerini veya saklı yordamları kullanabilirsiniz. Artık verilerinizin tutarlı kalmasını sağlamak için her şeyi tek bir belgeye katıştırmanız **gerekmez.**
 
 ## <a name="distinguishing-between-different-document-types"></a>Farklı belge türleri arasında ayrım
 

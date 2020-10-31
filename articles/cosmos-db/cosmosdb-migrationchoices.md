@@ -6,14 +6,15 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2020
-ms.openlocfilehash: 38129c920b422babfedf5d40bb362c7552f6f712
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 8721c0eb728f568521e86baecb658dc9c869a7f6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951970"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097592"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>Şirket içi veya bulut verilerinizi Azure Cosmos DB 'e geçirmeye yönelik seçenekler
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB için çeşitli veri kaynaklarından veri yükleyebilirsiniz. Azure Cosmos DB birden çok API 'yi desteklediğinden, hedefler mevcut API 'lerden herhangi biri olabilir. Aşağıda Azure Cosmos DB verileri geçirebileceğiniz bazı senaryolar verilmiştir:
 
@@ -24,23 +25,23 @@ Azure Cosmos DB için çeşitli veri kaynaklarından veri yükleyebilirsiniz. Az
 
 Çeşitli kaynaklardan farklı Azure Cosmos DB API 'Lerine geçiş yollarını desteklemek için, her geçiş yolu için özel işleme sağlayan birden çok çözüm vardır. Bu belgede, kullanılabilir çözümler listelenmekte ve bunların avantajları ve sınırlamaları açıklanmaktadır.
 
-## <a name="factors-affecting-the-choice-of-migration-tool"></a>Geçiş Aracı seçimini etkileyen faktörler
+## <a name="factors-affecting-the-choice-of-migration-tool"></a>Geçiş aracı seçimini etkileyen faktörler
 
-Aşağıdaki etmenler geçiş aracının seçimini belirlemektir:
+Aşağıdaki faktörler geçiş aracı seçiminde belirleyici rol oynar:
 
-* **Çevrimiçi ve çevrimdışı geçiş**: birçok geçiş aracı yalnızca bir kerelik geçiş yapmak için bir yol sağlar. Bu, veritabanına erişen uygulamaların bir süre kapalı kalma süresine neden olabileceği anlamına gelir. Bazı geçiş çözümleri, kaynak ve hedef arasında bir çoğaltma işlem hattının ayarlandığı dinamik geçiş yapmak için bir yol sağlar.
+* **Çevrimiçi veya çevrimdışı geçiş** : Birçok geçiş aracı yalnızca bir kerelik geçiş yapmak için yol sağlar. Diğer bir deyişle veritabanına erişen uygulamalar belirli bir kapalı kalma süresiyle karşılaşabilir. Bazı geçiş çözümleri, kaynak ile hedef arasında bir çoğaltma işlem hattının ayarlandığı dinamik bir geçiş yapmanın yolunu sağlar.
 
-* **Veri kaynağı**: mevcut VERILER Oracle DB2, DataStax Cassanda, Azure SQL veritabanı, PostgreSQL vb. gibi çeşitli veri kaynaklarında bulunabilir. Veriler de mevcut bir Azure Cosmos DB hesabında olabilir ve geçiş amacı veri modelini değiştirebilir veya bir kapsayıcıdaki verileri farklı bir bölüm anahtarıyla yeniden bölümleyebilir.
+* **Veri kaynağı** : mevcut VERILER Oracle DB2, DataStax Cassanda, Azure SQL veritabanı, PostgreSQL vb. gibi çeşitli veri kaynaklarında bulunabilir. Veriler de mevcut bir Azure Cosmos DB hesabında olabilir ve geçiş amacı veri modelini değiştirebilir veya bir kapsayıcıdaki verileri farklı bir bölüm anahtarıyla yeniden bölümleyebilir.
 
-* **Azure Cosmos DB API**: Azure Cosmos db SQL API 'si için, farklı geçiş senaryolarına yardımcı olan Azure Cosmos DB ekibi tarafından geliştirilen çeşitli araçlar vardır. Diğer tüm API 'Lerde, topluluk tarafından geliştirilen ve tutulan kendi özelleştirilmiş araç kümesi vardır. Azure Cosmos DB, bu API 'Leri bir kablo protokol düzeyinde desteklediğinden, bu araçların verileri Azure Cosmos DB geçirirken olduğu gibi çalışması gerekir. Ancak, bu kavram Azure Cosmos DB özel olarak, bu kavram için özel işleme gerektirebilir.
+* **Azure Cosmos DB API** : Azure Cosmos DB'deki SQL API için, Azure Cosmos DB ekibinin geliştirdiği ve farklı geçiş senaryolarına yardımcı olacak çeşitli araçlar vardır. Diğer tüm API'lerin topluluk tarafından geliştirilen özelleştirilmiş kendi araç kümesi bulunur. Azure Cosmos DB bu API'leri kablo protokolü düzeyinde desteklediğinden, verileri Azure Cosmos DB'ye geçirirken de bu araçlar oldukları gibi çalışmalıdır. Öte yandan kısıtlamalar için özel işlem gerektirebilir çünkü bu kavram Azure Cosmos DB'ye özgüdür.
 
-* **Verilerin boyutu**: çoğu geçiş araçları daha küçük veri kümeleri için çok iyi çalışır. Veri kümesi birkaç yüz gigabayttan geçtiğinde, geçiş araçlarının seçimleri sınırlıdır. 
+* **Verilerin boyutu** : Geçiş araçlarının çoğu daha küçük veri kümelerinde çok iyi çalışır. Veri kümesi birkaç yüz gigabaytı aştığında geçiş aracı seçenekleri sınırlıdır. 
 
-* **Geçiş süresi bekleniyordu**: geçişler, daha az üretilen iş harcayan veya hedef Azure Cosmos DB kapsayıcısında sağlanan tüm aktarım hızını tüketebilir ve geçişi daha az zamanda tamamlayabileceği yavaş, artımlı bir hızda gerçekleşecek şekilde yapılandırılabilir.
+* **Beklenen geçiş süresi** : Geçişler az aktarım hızı kullanacak şeklide yavaş, küçük artışlarla yapılacak şekilde yapılandırılabilir veya hedef Azure Cosmos DB kapsayıcısında sağlanan aktarım hızının tamamını kullanarak daha kısa sürede tamamlanabilir.
 
 ## <a name="azure-cosmos-db-sql-api"></a>Azure Cosmos DB SQL API
 
-|Geçiş türü|Çözüm|Desteklenen kaynaklar|Desteklenen hedefler|Önemli noktalar|
+|Geçiş türü|Çözüm|Desteklenen kaynaklar|Desteklenen hedefler|Dikkat edilmesi gerekenler|
 |---------|---------|---------|---------|---------|
 |Çevrimdışı|[Veri Geçişi Aracı](import-data.md)| &bull;JSON/CSV dosyaları<br/>&bull;Azure Cosmos DB SQL API<br/>&bull;MongoDB<br/>&bull;SQL Server<br/>&bull;Tablo Depolama<br/>&bull;AWS DynamoDB<br/>&bull;Azure Blob depolama|&bull;Azure Cosmos DB SQL API<br/>&bull;Azure Cosmos DB tabloları API 'SI<br/>&bull;JSON dosyaları |&bull; Daha kolay bir şekilde ayarlanır ve birden çok kaynağı destekler. <br/>&bull; Büyük veri kümeleri için uygun değildir.|
 |Çevrimdışı|[Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)| &bull;JSON/CSV dosyaları<br/>&bull;Azure Cosmos DB SQL API<br/>&bull;MongoDB için Azure Cosmos DB API<br/>&bull;MongoDB <br/>&bull;SQL Server<br/>&bull;Tablo Depolama<br/>&bull;Azure Blob depolama <br/> <br/>Desteklenen diğer kaynaklar için [Azure Data Factory](../data-factory/connector-overview.md) makalesine bakın.|&bull;Azure Cosmos DB SQL API<br/>&bull;MongoDB için Azure Cosmos DB API<br/>&bull;JSON dosyaları <br/><br/> Desteklenen diğer hedefler için [Azure Data Factory](../data-factory/connector-overview.md) makalesine bakın. |&bull; Daha kolay bir şekilde ayarlanır ve birden çok kaynağı destekler.<br/>&bull; Azure Cosmos DB toplu yürütücü Kitaplığı ' nı kullanır. <br/>&bull; Büyük veri kümeleri için uygundur. <br/>&bull; Denetimsiz işaret olmaması-geçiş işlemi sırasında bir sorun oluşursa, tüm geçiş sürecini yeniden başlatmanız gerekir.<br/>&bull; Geçerliliği kalmamış bir sıra yok-bu, birkaç hatalı dosyanın tüm geçiş sürecini durduramaması anlamına gelir.|
@@ -52,7 +53,7 @@ Aşağıdaki etmenler geçiş aracının seçimini belirlemektir:
 
 ## <a name="azure-cosmos-db-mongo-api"></a>Azure Cosmos DB Mongo API 'SI
 
-|Geçiş türü|Çözüm|Desteklenen kaynaklar|Desteklenen hedefler|Önemli noktalar|
+|Geçiş türü|Çözüm|Desteklenen kaynaklar|Desteklenen hedefler|Dikkat edilmesi gerekenler|
 |---------|---------|---------|---------|---------|
 |Çevrimiçi|[Azure Veritabanı Geçiş Hizmeti](../dms/tutorial-mongodb-cosmos-db-online.md)| MongoDB|MongoDB için Azure Cosmos DB API |&bull; Azure Cosmos DB toplu yürütücü Kitaplığı ' nı kullanır. <br/>&bull; Büyük veri kümeleri için uygundur ve canlı değişiklikleri çoğaltmaya özen gösterin. <br/>&bull; Yalnızca diğer MongoDB kaynaklarıyla birlikte geçerlidir.|
 |Çevrimdışı|[Azure Veritabanı Geçiş Hizmeti](../dms/tutorial-mongodb-cosmos-db-online.md)| MongoDB| MongoDB için Azure Cosmos DB API| &bull; Azure Cosmos DB toplu yürütücü Kitaplığı ' nı kullanır. <br/>&bull; Büyük veri kümeleri için uygundur ve canlı değişiklikleri çoğaltmaya özen gösterin. <br/>&bull; Yalnızca diğer MongoDB kaynaklarıyla birlikte geçerlidir.|
@@ -61,7 +62,7 @@ Aşağıdaki etmenler geçiş aracının seçimini belirlemektir:
 
 ## <a name="azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API'si
 
-|Geçiş türü|Çözüm|Desteklenen kaynaklar|Desteklenen hedefler|Önemli noktalar|
+|Geçiş türü|Çözüm|Desteklenen kaynaklar|Desteklenen hedefler|Dikkat edilmesi gerekenler|
 |---------|---------|---------|---------|---------|
 |Çevrimdışı|[csqlsh COPY komutu](cassandra-import-data.md#migrate-data-using-cqlsh-copy-command)|CSV dosyaları | Azure Cosmos DB Cassandra API'si| &bull; Kolayca ayarlanabilir. <br/>&bull; Büyük veri kümeleri için uygun değildir. <br/>&bull; Yalnızca kaynak bir Cassandra tablosu olduğunda geçerlidir.|
 |Çevrimdışı|[Spark ile tablo kopyalama](cassandra-import-data.md#migrate-data-using-spark) | &bull;Apache Cassandra<br/>&bull;Azure Cosmos DB Cassandra API'si| Azure Cosmos DB Cassandra API'si | &bull; , Paralel hale getirmek dönüşüm ve alımı için Spark yeteneklerini kullanabilir. <br/>&bull; Azaltıcı lıkları işlemek için özel bir yeniden deneme ilkesiyle yapılandırma gerekir.|
@@ -77,7 +78,7 @@ SQL API, Mongo API ve Cassandra API dışındaki API 'Ler için, her API 'nin me
 * [Veri Geçişi Aracı](table-import.md#data-migration-tool)
 * [AzCopy](table-import.md#migrate-data-by-using-azcopy)
 
-**Gremlin API**
+**Gremlin API 'SI**
 
 * [Graph toplu yürütücü kitaplığı](bulk-executor-graph-dotnet.md)
 * [Gremlin Spark](https://github.com/Azure/azure-cosmosdb-spark/blob/2.4/samples/graphframes/main.scala) 

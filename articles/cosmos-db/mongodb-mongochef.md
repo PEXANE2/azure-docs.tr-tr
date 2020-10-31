@@ -8,14 +8,15 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: 6c9ea401a4a62f617b5acf6f96c60532d929ff1c
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: a02aaadf8c774557eb182acf041b6f19337a0de8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167977"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096529"
 ---
 # <a name="connect-to-an-azure-cosmos-account-using-studio-3t"></a>Studio 3T kullanarak bir Azure Cosmos hesabına bağlanma
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Studio 3T kullanarak MongoDB için Azure Cosmos DB API 'sine bağlanmak için şunları yapmanız gerekir:
 
@@ -42,23 +43,23 @@ Azure Cosmos hesabınızı Studio 3T bağlantı Yöneticisi 'ne eklemek için a�
 5. **Yeni bağlantı** penceresinde, **SSL** SEKMESINDE, **bağlanmak için SSL protokolünü kullan** onay kutusunu ve **sunucuyu otomatik olarak imzalanan SSL sertifikalarını kabul et** radyo düğmesini işaretleyin.
 
     :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerSSLTab.png" alt-text="Bağlantı dizesi sayfasının ekran görüntüsü":::
-6. Bağlantı bilgilerini doğrulamak için **Bağlantıyı Sına** düğmesine tıklayın, yeni bağlantı penceresine dönüp **Tamam** ' a tıklayın ve ardından **Kaydet**' e tıklayın.
+6. Bağlantı bilgilerini doğrulamak için **Bağlantıyı Sına** düğmesine tıklayın, yeni bağlantı penceresine dönüp **Tamam** ' a tıklayın ve ardından **Kaydet** ' e tıklayın.
 
     :::image type="content" source="./media/mongodb-mongochef/TestConnectionResults.png" alt-text="Bağlantı dizesi sayfasının ekran görüntüsü":::
 
 ## <a name="use-studio-3t-to-create-a-database-collection-and-documents"></a>Bir veritabanı, koleksiyon ve belge oluşturmak için Studio 3T kullanın
 Studio 3T kullanarak bir veritabanı, koleksiyon ve belgeler oluşturmak için aşağıdaki adımları uygulayın:
 
-1. **Bağlantı Yöneticisi**'nde bağlantıyı vurgulayın ve **Bağlan**' a tıklayın.
+1. **Bağlantı Yöneticisi** 'nde bağlantıyı vurgulayın ve **Bağlan** ' a tıklayın.
 
     :::image type="content" source="./media/mongodb-mongochef/ConnectToAccount.png" alt-text="Bağlantı dizesi sayfasının ekran görüntüsü":::
-2. Konağa sağ tıklayın ve **veritabanı Ekle**' yi seçin.  Bir veritabanı adı girin ve **Tamam 'a**tıklayın.
+2. Konağa sağ tıklayın ve **veritabanı Ekle** ' yi seçin.  Bir veritabanı adı girin ve **Tamam 'a** tıklayın.
 
     :::image type="content" source="./media/mongodb-mongochef/AddDatabase1.png" alt-text="Bağlantı dizesi sayfasının ekran görüntüsü":::
-3. Veritabanına sağ tıklayın ve **koleksiyon Ekle**' yi seçin.  Bir koleksiyon adı girin ve **Oluştur**' a tıklayın.
+3. Veritabanına sağ tıklayın ve **koleksiyon Ekle** ' yi seçin.  Bir koleksiyon adı girin ve **Oluştur** ' a tıklayın.
 
     :::image type="content" source="./media/mongodb-mongochef/AddCollection.png" alt-text="Bağlantı dizesi sayfasının ekran görüntüsü":::
-4. **Koleksiyon** menü öğesine tıklayın ve **Belge Ekle**' ye tıklayın.
+4. **Koleksiyon** menü öğesine tıklayın ve **Belge Ekle** ' ye tıklayın.
 
     :::image type="content" source="./media/mongodb-mongochef/AddDocument1.png" alt-text="Bağlantı dizesi sayfasının ekran görüntüsü" },
         "isRegistered": false

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 8c9df3393a0554d2e65b3918c6760885f89e11ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: adb221c12af436135b1e740fdef7c5c0a0a7f0cb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86254754"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096045"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Azure API Management'ı Azure Application Insights ile Tümleştirme
 
@@ -32,23 +32,23 @@ Bu kılavuzu izlemek için bir Azure API Management örneğine sahip olmanız ge
 
 Azure Application Insights kullanabilmeniz için önce hizmetin bir örneğini oluşturmanız gerekir.
 
-1. **Azure Portal** açın ve **Application Insights**gidin.  
-    ![Uygulama öngörüleri oluştur](media/api-management-howto-app-insights/apim-app-insights-instance-1.png)  
-2. **+ Ekle**’ye tıklayın.  
+1. **Azure Portal** açın ve **Application Insights** gidin.  
+    ![Application Insights nasıl gezindiğinin gösterildiği ekran görüntüsü.](media/api-management-howto-app-insights/apim-app-insights-instance-1.png)  
+2. **+ Ekle** ’ye tıklayın.  
     ![Uygulama öngörüleri oluştur](media/api-management-howto-app-insights/apim-app-insights-instance-2.png)  
-3. Formu doldur. **Uygulama türü**olarak **genel** ' i seçin.
-4. **Oluştur**’a tıklayın.
+3. Formu doldur. **Uygulama türü** olarak **genel** ' i seçin.
+4. **Oluştur** 'a tıklayın.
 
 ## <a name="create-a-connection-between-azure-application-insights-and-azure-api-management-service-instance"></a>Azure Application Insights ile Azure API Management hizmet örneği arasında bağlantı oluşturma
 
 1. **Azure Portal** **Azure API Management hizmet örneğinize** gidin.
 2. Soldaki menüden **Application Insights** seçin.
-3. **+ Ekle**’ye tıklayın.  
-    ![App Insights günlükçüsü](media/api-management-howto-app-insights/apim-app-insights-logger-1.png)  
+3. **+ Ekle** ’ye tıklayın.  
+    ![Yeni bir bağlantının nereye ekleneceğini gösteren ekran görüntüsü.](media/api-management-howto-app-insights/apim-app-insights-logger-1.png)  
 4. Daha önce oluşturulan **Application Insights** örneğini seçin ve kısa bir açıklama sağlayın.
-5. **Oluştur**’a tıklayın.
+5. **Oluştur** 'a tıklayın.
 6. Bir izleme anahtarı ile Azure Application Insights günlükçüsü oluşturdunuz. Artık listede görünmelidir.  
-    ![App Insights günlükçüsü](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
+    ![Yeni oluşturulan Azure Application Insights günlükçüsü izleme anahtarıyla nerede görüntüleneceği gösteren ekran görüntüsü.](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
 > [!NOTE]
 > Sahnenin arkasında, Application Insights örneğinin Izleme anahtarını içeren API Management örneğiniz için bir [günlükçü](/rest/api/apimanagement/2019-12-01/logger/createorupdate) varlığı oluşturulur.
@@ -57,14 +57,14 @@ Azure Application Insights kullanabilmeniz için önce hizmetin bir örneğini o
 
 1. **Azure Portal** **Azure API Management hizmet örneğinize** gidin.
 2. Soldaki menüden **API'ler** seçeneğini belirleyin.
-3. Bu örnekte, API 'nize tıklayarak bu örnek **Tanıtım Konferansı API 'si**.
+3. Bu örnekte, API 'nize tıklayarak bu örnek **Tanıtım Konferansı API 'si** .
 4. Üstteki çubukta **Ayarlar** sekmesine gidin.
 5. **Tanılama günlükleri** bölümüne gidin.  
     ![App Insights günlükçüsü](media/api-management-howto-app-insights/apim-app-insights-api-1.png)  
 6. **Etkinleştir** kutusunu işaretleyin.
 7. **Hedef** açılan menüsünde, eklenen günlükçüyü seçin.
 8. **Örnekleme (%)** olarak **100** girin ve **her zaman günlük hatalarını** işaretle onay kutusunu işaretleyin.
-9. **Kaydet**’e tıklayın.
+9. **Kaydet** ’e tıklayın.
 
 > [!WARNING]
 > **Gövde alanının ilk baytlarında** **0** varsayılan değerini geçersiz kılmak, API 'nizin performansını önemli ölçüde azaltabilir.
@@ -97,8 +97,8 @@ Azure Application Insights kullanabilmeniz için önce hizmetin bir örneğini o
 
 Azure Application Insights şunları alır:
 
-+ Her gelen istek (*ön uç isteği*, *ön uç yanıtı*) için telemetri öğesi *iste* ,
-+ Bir arka uç hizmetine iletilen her istek için *bağımlılık* telemetri öğesi (*arka uç isteği*, *arka uç yanıtı*),
++ Her gelen istek ( *ön uç isteği* , *ön uç yanıtı* ) için telemetri öğesi *iste* ,
++ Bir arka uç hizmetine iletilen her istek için *bağımlılık* telemetri öğesi ( *arka uç isteği* , *arka uç yanıtı* ),
 + Her başarısız istek için *özel durum* telemetrisi öğesi.
 
 Başarısız istek bir istek ve şu şekilde:

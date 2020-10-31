@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: aecc64c5fa923bc29d34efd3969c2c12f30153c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 351a9742e9d839a8e217fdea35cad922acc3339f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320111"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095681"
 ---
 # <a name="handling-review-feedback-for-azure-application-offers"></a>Azure Uygulama teklifleri için gözden geçirme geri bildirimi işleniyor
 
@@ -39,11 +39,11 @@ Iş Ortağı Merkezi 'nde "Geliştirici" rolüne erişimi olan tüm kullanıcıl
     [![Çekme isteği giriş sayfası](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
     <br/> *Genişletmek için bu resme tıklayın.*
 
-1. Seçim Pencerenin sağ tarafında, bölüm **ilkeleri**' nde, sorunun alt düzey ayrıntılarını araştırmak için, ilgili günlük dosyaları da dahil olmak üzere, sorun iletisini seçin (Bu örnekte, **ilke doğrulaması başarısız oldu**). Hatalar genellikle günlük dosyalarının altında görüntülenir.
+1. Seçim Pencerenin sağ tarafında, bölüm **ilkeleri** ' nde, sorunun alt düzey ayrıntılarını araştırmak için, ilgili günlük dosyaları da dahil olmak üzere, sorun iletisini seçin (Bu örnekte, **ilke doğrulaması başarısız oldu** ). Hatalar genellikle günlük dosyalarının altında görüntülenir.
 
 1. Ana sayfanın sol tarafındaki menüde, bu teklif için teknik varlıkları oluşturan liste dosyalarını göstermek için **dosyalar** ' ı seçin. Microsoft gözden geçirenler, bulunan kritik sorunları açıklayan açıklamalar eklemiş olmalıdır. Aşağıdaki örnekte, iki sorun keşfedilmiştir.
 
-    [![Çekme isteği giriş sayfası](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
+    [![Dosyaları ve keşfedilen iki sorunu vurgulayan ekran görüntüsü.](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
     <br/> *Genişletmek için bu resme tıklayın.*
 
 1. Çevredeki kodun bağlamında açıklamaya gitmek için sol ağaçtaki her bir yorum düğümünü seçin. Açıklama tarafından açıklanan sorunu gidermek için takımınızın projesindeki kaynak kodunuzu düzeltin.

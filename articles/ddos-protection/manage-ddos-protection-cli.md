@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 0307fcee207f045c2808b3c66e9911623391d486
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 47733f4b141b0064e966d0c083fd6414405f65f9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905661"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095552"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Azure DDoS koruma standardı oluşturma ve yapılandırma
 
@@ -107,8 +107,6 @@ az network ddos-protection show \
 
 Komutun DDoS koruma planınızın doğru ayrıntılarını döndürdüğünden emin olun.
 
-Benzetimler üzerinden test
-
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Kaynaklarınızın bir sonraki öğreticide kalmasını sağlayabilirsiniz. Artık gerekmiyorsa, _Myresourcegroup_ kaynak grubunu silin. Kaynak grubunu sildiğinizde, DDoS koruma planını ve ilgili tüm kaynakları da silersiniz. 
@@ -136,4 +134,4 @@ DDoS koruma planını silmek istiyorsanız, önce tüm sanal ağların ilişkile
 DDoS koruma planınız için telemetri görüntüleme ve yapılandırma hakkında bilgi edinmek için öğreticilere devam edin.
 
 > [!div class="nextstepaction"]
-> [DDoS koruması telemetrisini görüntüleyin ve yapılandırın](telemetry-monitoring-alerting.md)
+> [DDoS konuma telemetrisini görüntüleme ve yapılandırma](telemetry-monitoring-alerting.md)

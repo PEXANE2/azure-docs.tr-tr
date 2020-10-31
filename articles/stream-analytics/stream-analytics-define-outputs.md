@@ -8,34 +8,34 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/2/2020
-ms.openlocfilehash: 5f109ad719ada9728938f6e37d4ec854d3950a24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95607b78ff80566b76b8e6aa20462957249015b4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708444"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097660"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Azure Stream Analytics çıkış çıkışları
 
 Azure Stream Analytics iş bir giriş, sorgu ve bir çıktıdan oluşur. Dönüştürülmüş verileri gönderebilmeniz için birkaç çıktı türü vardır. Bu makalede desteklenen Stream Analytics çıkışları listelenmektedir. Stream Analytics sorgunuzu tasarlarken, [from yan tümcesini](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics)kullanarak çıkışın adına bakın. Sorguya birden çok yan tümce ekleyerek, iş başına tek bir çıktı veya akış işi başına birden fazla çıkış (ihtiyacınız varsa) kullanabilirsiniz.
 
-Stream Analytics iş çıktıları oluşturmak, düzenlemek ve test etmek için [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-output), [Azure POWERSHELL](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [.NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output)ve [Visual Studio 'yu](stream-analytics-quick-create-vs.md)kullanabilirsiniz.
+Stream Analytics iş çıktıları oluşturmak, düzenlemek ve test etmek için [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-output), [Azure POWERSHELL](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [.NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [REST API](https://docs.microsoft.com/rest/api/streamanalytics/)ve [Visual Studio 'yu](stream-analytics-quick-create-vs.md)kullanabilirsiniz.
 
 Bazı çıkış türleri [bölümleme](#partitioning)destekler ve [Çıkış toplu işlem boyutları](#output-batch-size) , üretilen işi iyileştirmek için farklılık gösterir. Aşağıdaki tabloda her çıkış türü için desteklenen özellikler gösterilmektedir:
 
 | Çıkış türü | Bölümleme | Güvenlik | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage 1. Nesil](azure-data-lake-storage-gen1-output.md)|Evet|Azure Active Directory Kullanıcı </br> MSI|
+|[Azure Data Lake Storage 1. Nesil](azure-data-lake-storage-gen1-output.md)|Yes|Azure Active Directory Kullanıcı </br> MSI|
 |[Azure SQL Veritabanı](sql-database-output.md)|Evet, isteğe bağlı.|SQL kullanıcı kimlik doğrulaması </br> MSI (Önizleme)|
-|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Evet|SQL kullanıcı kimlik doğrulaması|
-|[BLOB depolama ve Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Evet|MSI </br> Erişim anahtarı|
+|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Yes|SQL kullanıcı kimlik doğrulaması|
+|[BLOB depolama ve Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Yes|MSI </br> Erişim anahtarı|
 |[Azure Event Hubs](event-hubs-output.md)|Evet, çıkış yapılandırmasında bölüm anahtarı sütununu ayarlamanız gerekir.|Erişim anahtarı|
 |[Power BI](power-bi-output.md)|Hayır|Azure Active Directory Kullanıcı </br> MSI|
-|[Azure Tablo Depolama](table-storage-output.md)|Evet|Hesap anahtarı|
-|[Azure Service Bus kuyrukları](service-bus-queues-output.md)|Evet|Erişim anahtarı|
-|[Azure Service Bus konuları](service-bus-topics-output.md)|Evet|Erişim anahtarı|
-|[Azure Cosmos DB](azure-cosmos-db-output.md)|Evet|Erişim anahtarı|
-|[Azure İşlevleri](azure-functions-output.md)|Evet|Erişim anahtarı|
+|[Azure Tablo Depolama](table-storage-output.md)|Yes|Hesap anahtarı|
+|[Azure Service Bus kuyrukları](service-bus-queues-output.md)|Yes|Erişim anahtarı|
+|[Azure Service Bus konuları](service-bus-topics-output.md)|Yes|Erişim anahtarı|
+|[Azure Cosmos DB](azure-cosmos-db-output.md)|Yes|Erişim anahtarı|
+|[Azure İşlevleri](azure-functions-output.md)|Yes|Erişim anahtarı|
 
 ## <a name="partitioning"></a>Bölümleme
 
@@ -59,7 +59,7 @@ Azure Resource Manager şablon dağıtımı veya REST API kullanılırken, iki t
 
    Toplu iş başına en az satır sayısı. Parquet için her Batch yeni bir dosya oluşturur. Geçerli varsayılan değer 2.000 satırdır ve izin verilen en fazla 10.000 satır olur.
 
-Bu toplu işlem penceresi özellikleri yalnızca API sürüm **2017-04-01-önizleme**tarafından desteklenir. REST API çağrısının JSON yükünün bir örneği aşağıda verilmiştir:
+Bu toplu işlem penceresi özellikleri yalnızca API sürüm **2017-04-01-önizleme** tarafından desteklenir. REST API çağrısının JSON yükünün bir örneği aşağıda verilmiştir:
 
 ```json
 "type": "stream",

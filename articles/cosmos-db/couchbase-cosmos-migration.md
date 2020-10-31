@@ -7,14 +7,15 @@ ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: 0e8859eebf97b8d2788153e74e36f31fda3323c5
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0f286b5586a0d74afed0bb185179454bb1efff95
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282476"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097558"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Couşbase 'ten Azure Cosmos DB SQL API 'sine geçiş
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB, ölçeklenebilir, global olarak dağıtılmış, tam olarak yönetilen bir veritabanıdır. Verilerinize garantili düşük gecikme süresi erişimi sağlar. Azure Cosmos DB hakkında daha fazla bilgi edinmek için [genel bakış](introduction.md) makalesine bakın. Bu makalede, Couşbase 'e bağlı Java uygulamalarını Azure Cosmos DB 'deki bir SQL API hesabına geçirmeye yönelik yönergeler sağlanmaktadır.
 
@@ -37,7 +38,7 @@ Aşağıda, Couşbase ile karşılaştırıldığında Azure Cosmos DB farklı �
 
 * Azure Cosmos DB, koleksiyon adı zaten mevcut olduğundan üst düzey hiyerarşinin koleksiyonu belirtmek için gerekli değildir. Bu özellik, JSON yapısını çok daha kolay hale getirir. Aşağıdaki örnek, Couşbase ve Azure Cosmos DB arasında veri modelinde farkları gösteren bir örnektir:
 
-   **Couşbase**: belge kimliği = "99FF4444"
+   **Couşbase** : belge kimliği = "99FF4444"
 
     ```json
     {
@@ -67,7 +68,7 @@ Aşağıda, Couşbase ile karşılaştırıldığında Azure Cosmos DB farklı �
     }
    ```
 
-   **Azure Cosmos DB**: belge içinde aşağıda gösterildiği gıbı "kimlik" öğesine bakın
+   **Azure Cosmos DB** : belge içinde aşağıda gösterildiği gıbı "kimlik" öğesine bakın
 
     ```json
     {
@@ -311,7 +312,7 @@ Bu, sorgular yerine arama gerçekleştirebileceğiniz basit bir iş yükü tür�
 
 1. Birincil anahtar olarak "/ID" seçeneğini göz önünde bulundurun. Bu, arama işlemini doğrudan belirli bölümde gerçekleştirebilmeniz için sağlar. Bir koleksiyon oluşturun ve bölüm anahtarı olarak "/ID" belirtin.
 
-1. Dizin oluşturma işleminin tamamen devre dışı bırakın. Arama işlemlerini yürütecağından, dizin oluşturma ek yükü taşıma noktası yoktur. Dizin oluşturmayı devre dışı bırakmak için Azure portal oturum açın, Azure Cosmos DB hesaba gidin. **Veri Gezgini**açın, **veritabanınızı** ve **kapsayıcıyı**seçin. **Ölçek & ayarları** sekmesini açın ve **Dizin oluşturma ilkesini**seçin. Şu anda dizin oluşturma ilkesi şu şekilde görünür:
+1. Dizin oluşturma işleminin tamamen devre dışı bırakın. Arama işlemlerini yürütecağından, dizin oluşturma ek yükü taşıma noktası yoktur. Dizin oluşturmayı devre dışı bırakmak için Azure portal oturum açın, Azure Cosmos DB hesaba gidin. **Veri Gezgini** açın, **veritabanınızı** ve **kapsayıcıyı** seçin. **Ölçek & ayarları** sekmesini açın ve **Dizin oluşturma ilkesini** seçin. Şu anda dizin oluşturma ilkesi şu şekilde görünür:
     
    ```json
    {

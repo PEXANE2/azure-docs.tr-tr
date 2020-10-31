@@ -7,14 +7,16 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 905560094afa9338d44ba73120d316b3c81b5580
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 10917ce51ff64292809f2fa8799c84b5cdeb3d6c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277152"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097915"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-rate-too-large-exceptions"></a>Tanılama ve sorun giderme Azure Cosmos DB istek hızı çok büyük özel durumlar
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 "Istek hızı çok büyük" iletisi veya 429 hata kodu, isteklerinizin kısıtlandığını gösterir.
 
 ## <a name="troubleshooting-steps"></a>Sorun giderme adımları

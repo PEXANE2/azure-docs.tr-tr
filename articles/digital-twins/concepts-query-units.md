@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d50c273e50a7faf2d8c24982fbd39cecdff0bf7f
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 5ba765f03e7ac700fb4338e14358fc55e6423c47
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044386"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097048"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Azure dijital TWINS 'de sorgu birimleri 
 
@@ -70,4 +70,4 @@ Azure dijital TWINS sorgulama hakkında daha fazla bilgi edinmek için şu adres
 * [*Nasıl yapılır: ikizi grafiğini sorgulama*](how-to-query-graph.md)
 * [Sorgu API 'SI başvuru belgeleri](/rest/api/digital-twins/dataplane/query/querytwins)
 
-{1 & gt; Azure & lt; 1} sorgu ile ilgili sınırları [*genel önizlemede*](reference-service-limits.md)bulabilirsiniz.
+Azure dijital TWINS sorgusu ile ilgili limitleri [*Başvuru:*](reference-service-limits.md)

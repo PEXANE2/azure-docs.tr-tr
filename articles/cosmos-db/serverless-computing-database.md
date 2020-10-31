@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 0167dc0b1cbf8cf3b95995645ef24548a05c4343
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5264fb44f8088ae8f942abf95bc8c0ef6d917413
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538655"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096147"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB ve Azure Işlevleri 'ni kullanarak sunucusuz veritabanı hesaplama
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Sunucusuz bilgi işlem, tekrarlanabilir ve durumsuz olan ayrı mantık parçalarına odaklanma imkanına sahiptir. Bu parçalar altyapı yönetimi gerektirmez ve kaynakları yalnızca, için çalıştıkları saniyeler veya milisaniyelerle tüketir. Sunucusuz bilgi işlem hareketinin çekirdeğiyle Azure 'un Azure [işlevleri](https://azure.microsoft.com/services/functions)tarafından sunulan Işlevleri, Azure ekosisteminde kullanılabilir. Azure 'da diğer sunucusuz yürütme ortamları hakkında daha fazla bilgi edinmek için bkz. [Azure 'da sunucusuz](https://azure.microsoft.com/solutions/serverless/) sayfasında. 
 

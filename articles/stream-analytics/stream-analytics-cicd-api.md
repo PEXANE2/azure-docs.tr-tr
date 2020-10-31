@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: ed11488f397704be782a092d6cdc6463449cc71e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18817a426bacc1ddf144c1d64b611c55245cc21e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86039084"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097796"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>API 'Leri kullanarak IoT Edge Stream Analytics için CI/CD uygulayın
 
@@ -59,7 +59,7 @@ Stream Analytics işi oluşturmak için, Stream Analytics API 'sini kullanarak P
 |------|-----------|
 |PUT|`https://management.azure.com/subscriptions/{\**subscription-id**}/resourcegroups/{**resource-group-name**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**job-name**}?api-version=2017-04-01-preview`|
  
-**Kıvrımlı**kullanılarak komut örneği:
+**Kıvrımlı** kullanılarak komut örneği:
 
 ```curl
 curl -u { <username:password> } -H "Content-Type: application/json" -X { <method> } -d "{ <request body> }" https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}?api-version=2017-04-01-preview  
@@ -136,7 +136,7 @@ JSON 'da istek gövdesi örneği:
 } 
 ```
  
-Daha fazla bilgi için [API belgelerine](/rest/api/streamanalytics/stream-analytics-job)bakın.  
+Daha fazla bilgi için [API belgelerine](/rest/api/streamanalytics/)bakın.  
  
 ## <a name="publish-edge-package"></a>Edge paketini Yayımla 
  
@@ -148,7 +148,7 @@ IoT Edge üzerinde Stream Analytics işi yayımlamak için, Edge paketi yayımla
 
 Bu zaman uyumsuz işlem, iş başarıyla yayımlanana kadar 202 durumunu döndürür. Konum yanıt üst bilgisi işlemin durumunu almak için kullanılan URI 'yi içerir. İşlem çalışırken, konum üstbilgisindeki URI 'ye yapılan bir çağrı 202 durumunu döndürür. İşlem tamamlandığında, konum üstbilgisindeki URI 200 durumunu döndürür. 
 
-Bir Edge paketi örneği, **kıvrımlı**kullanarak çağrı yayınlama: 
+Bir Edge paketi örneği, **kıvrımlı** kullanarak çağrı yayınlama: 
 
 ```bash
 curl -d -X POST https://management.azure.com/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}/publishedgepackage?api-version=2017-04-01-preview
@@ -163,7 +163,7 @@ https://management.azure.com/subscriptions/{**subscriptionid**}/resourcegroups/{
 ```
 Yanıtın baş bölümünde bulduğunuz URL ile bir API çağrısı yapmak için aşağıdaki komutu çalıştırmadan önce bir ila iki dakika bekleyin. 200 yanıtını alamazsanız komutu yeniden deneyin.
  
-**Kıvrmadan**döndürülen URL ile API çağrısı yapma örneği:
+**Kıvrmadan** döndürülen URL ile API çağrısı yapma örneği:
 
 ```bash
 curl -d –X GET https://management.azure.com/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/Microsoft.StreamAnalytics/streamingjobs/{resourcename}/publishedgepackage?api-version=2017-04-01-preview 

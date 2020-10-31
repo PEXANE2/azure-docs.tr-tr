@@ -8,14 +8,15 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: e4c2969db560ff20cae2ed7b9ffbe0cea206c7a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff861b5a58de4f108e49e52e6f09c71d7dd678ac
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611580"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097201"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Değişiklik Akışı İşlemci SDK'sı: İndirme ve sürüm notları
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 >

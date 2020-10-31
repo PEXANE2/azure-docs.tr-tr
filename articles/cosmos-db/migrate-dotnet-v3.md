@@ -6,14 +6,15 @@ ms.author: esarroyo
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: c86121bfd78452f613109c59cbc7a8b763755124
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cddf76ae0157c6729e6f58e40ee3f1725a9d395
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842997"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096674"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-net-sdk-v3"></a>Uygulamanızı .NET SDK V3 Azure Cosmos DB kullanmak için geçirin
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!IMPORTANT]
 > .NET SDK V3 Azure Cosmos DB hakkında bilgi edinmek için [sürüm notlarına](sql-api-sdk-dotnet-standard.md), [.net GitHub DEPOSUNA](https://github.com/Azure/azure-cosmos-dotnet-v3), .NET SDK V3 [performans ipuçlarına](performance-tips-dotnet-sdk-v3-sql.md)ve [sorun giderme kılavuzuna](troubleshoot-dot-net-sdk.md)bakın.

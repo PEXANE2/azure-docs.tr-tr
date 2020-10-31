@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 19dcc0f7605ae771e2ff826299413eaa073f212b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 37c128a42ca68134b770b32c940d59834261ce44
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284617"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096589"
 ---
 # <a name="consistency-levels-for-azure-cosmos-db-and-the-api-for-mongodb"></a>Azure Cosmos DB için tutarlılık düzeyleri ve MongoDB için API
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Azure Cosmos DB aksine, yerel MongoDB kesin olarak tanımlanmış tutarlılık garantisi sağlamaz. Bunun yerine, yerel MongoDB kullanıcıların, istenen tutarlılık düzeyini elde etmek için, okuma işlemlerini birincil veya ikincil çoğaltmalara yönlendirecek bir yazma sorunu, bir okuma sorunu ve isMaster yönergesi sağlar.
 

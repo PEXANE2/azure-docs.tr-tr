@@ -9,14 +9,15 @@ ms.date: 10/21/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 6e084a890dd5c772fbf576ddc50fd26b2d1774f0
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a1144560b8bd8638477828f1aeafcacbc8b77f1d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487390"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096487"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sinde Dizin oluşturmayı yönetme
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 MongoDB için Azure Cosmos DB API 'SI, Azure Cosmos DB temel dizin yönetimi olanaklarından yararlanır. Bu makalede, MongoDB için Azure Cosmos DB API 'sini kullanarak dizin ekleme konusu ele alınmaktadır. Ayrıca, tüm API 'lerde ilgili olan [Azure Cosmos DB Dizin oluşturma hakkında genel bir bakış](index-overview.md) da okuyabilirsiniz.
 
@@ -53,7 +54,7 @@ Aşağıdaki örnekte gösterildiği gibi, aynı anda birden çok alanda etkili 
 
 `db.coll.find().sort({name:1,age:1})`
 
-Yukarıdaki bileşik dizini, tüm alanlarda ters sıralama düzeni ile bir sorguyu etkin bir şekilde sıralamak için de kullanabilirsiniz. İşte bir örnek:
+Yukarıdaki bileşik dizini, tüm alanlarda ters sıralama düzeni ile bir sorguyu etkin bir şekilde sıralamak için de kullanabilirsiniz. Aşağıda bir örnek verilmiştir:
 
 `db.coll.find().sort({name:-1,age:-1})`
 
@@ -121,7 +122,7 @@ Aşağıdaki komut, içindeki herhangi bir özelliklerde bir joker dizin oluştu
 
 `db.coll.createIndex({"children.$**" : 1})`
 
-**MongoDB 'Nin aksine, joker karakter dizinleri sorgu koşullarına göre birden çok alanı destekleyebilir**. Her özellik için ayrı bir dizin oluşturmak yerine bir tek joker karakter dizini kullanırsanız sorgu performansında bir farklılık olmayacaktır.
+**MongoDB 'Nin aksine, joker karakter dizinleri sorgu koşullarına göre birden çok alanı destekleyebilir** . Her özellik için ayrı bir dizin oluşturmak yerine bir tek joker karakter dizini kullanırsanız sorgu performansında bir farklılık olmayacaktır.
 
 Joker karakter sözdizimini kullanarak aşağıdaki dizin türlerini oluşturabilirsiniz:
 
@@ -147,7 +148,7 @@ Joker dizinler aşağıdaki dizin türlerinden veya özelliklerden hiçbirini de
 - TTL
 - Benzersiz
 
-**MongoDB 'Nin aksine**, mongodb için Azure Cosmos DB API 'sindeki farklı Joker **dizinleri kullanamazsınız:**
+**MongoDB 'Nin aksine** , mongodb için Azure Cosmos DB API 'sindeki farklı Joker **dizinleri kullanamazsınız:**
 
 - Birden çok özel alan içeren bir joker karakter dizini oluşturma
 

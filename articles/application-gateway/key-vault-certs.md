@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: victorh
-ms.openlocfilehash: e7c4842494c144f5cd64d46f53f7a99266064680
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 3569ae130813eb0aaf14ec3d8d4e5cfac3e98c6f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993643"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095656"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>Key Vault sertifikalarla TLS sonlandırma
 
@@ -49,6 +49,9 @@ Key Vault ile tümleştirme Application Gateway üç adımlı bir yapılandırma
 
    Daha sonra mevcut bir sertifikayı içeri aktarırsınız veya Anahtar Kasanızda yeni bir sertifika oluşturacaksınız. Sertifika, uygulama ağ geçidi aracılığıyla çalışan uygulamalar tarafından kullanılacaktır. Bu adımda, parola kullanmayan, temel 64 kodlu PFX dosyası olarak depolanan bir Anahtar Kasası gizli anahtarını da kullanabilirsiniz. Anahtar kasasındaki sertifika türü nesneleriyle kullanılabilen otomatik yenileme özelliği nedeniyle bir sertifika türü kullanmanızı öneririz. Bir sertifika veya gizli dizi oluşturduktan sonra, kimliğe gizli dizi *erişimi verilmesini sağlamak* için anahtar kasasında erişim ilkeleri tanımlarsınız.
    
+   > [!IMPORTANT]
+   > Application Gateway, tümleştirmeden yararlanmak üzere tüm ağlardan erişime izin vermek için Key Vault gereklidir. Key Vault yalnızca özel uç noktalara izin verecek şekilde ayarlandığında ve ağların erişimini seçerken Key Vault tümleştirmeyi desteklemez. Özel ve seçim ağları desteği, Application Gateway Key Vault tam tümleştirmesi için çalışmalardır. 
+
    > [!NOTE]
    > Application Gateway 'i Azure CLı veya PowerShell kullanarak ya da Azure portal dağıtılan bir Azure uygulaması aracılığıyla bir ARM şablonuyla dağıtırsanız, SSL sertifikası anahtar kasasında Base64 kodlamalı PFX dosyası olarak depolanır. [Dağıtım sırasında güvenli parametre değeri geçirmek için Azure Key Vault kullanma](../azure-resource-manager/templates/key-vault-parameter.md)adımlarını gerçekleştirmeniz gerekir. 
    >

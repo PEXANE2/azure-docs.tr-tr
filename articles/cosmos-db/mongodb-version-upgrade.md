@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-mongo
 ms.topic: guide
 ms.date: 09/22/2020
 ms.author: jasonh
-ms.openlocfilehash: c6369be39d0a964f07c64083e3269bb1c0c49c7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb12fc909b5165cbc759bbb7c531864cde16bb88
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409678"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096317"
 ---
 # <a name="upgrade-the-mongodb-wire-protocol-version-of-your-azure-cosmos-dbs-api-for-mongodb-account"></a>MongoDB hesabı için Azure Cosmos DB API 'nizin MongoDB kablo protokol sürümünü yükseltin
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Bu makalede, MongoDB hesabı için Azure Cosmos DB API 'sinin tel Protokolü sürümünün nasıl yükseltileceği açıklanır. Kablo protokol sürümünü yükselttikten sonra, MongoDB için Azure Cosmos DB API 'sindeki en son işlevselliği kullanabilirsiniz. Yükseltme işlemi, hesabınızın kullanılabilirliğini kesintiye uğramaz ve herhangi bir noktada, her zaman veritabanı kapasitesini azaltır. Bu işlemden, mevcut veri veya dizinlerin hiçbiri etkilenmeyecektir.
 
@@ -37,7 +38,7 @@ Sürüm 3,6 ' de bulunan yeni özellikler aşağıda verilmiştir:
 
 ### <a name="changes-from-version-32"></a>Sürüm 3,2 ' den değişiklikler
 
-- **RequestRateIsLarge hatalar kaldırılmıştır**. İstemci uygulamasından gelen istekler artık 16500 hata döndürmeyecektir. Bunun yerine istekler, zaman aşımını tamamlayana veya yerine getirene kadar sürdürülecek.
+- **RequestRateIsLarge hatalar kaldırılmıştır** . İstemci uygulamasından gelen istekler artık 16500 hata döndürmeyecektir. Bunun yerine istekler, zaman aşımını tamamlayana veya yerine getirene kadar sürdürülecek.
 - İstek başına zaman aşımı 60 saniyeye ayarlanır.
 - Yeni hat Protokolü sürümünde oluşturulan MongoDB koleksiyonları yalnızca `_id` Varsayılan olarak dizinli özelliğe sahip olur.
 
@@ -49,7 +50,7 @@ Sürüm 3,6 ' e yükseltme için veritabanı hesabı uç noktası son eki şu bi
 <your_database_account_name>.mongo.cosmos.azure.com
 ```
 
-Bu veritabanı hesabıyla bağlanan Uygulamalarınız ve sürücülerinizin mevcut uç noktasını değiştirmeniz gerekir. **MongoDB sürüm 3,6 ' deki özelliklere yalnızca yeni uç noktayı kullanan bağlantılar erişebilir**. Önceki uç nokta sonekine sahip olmalıdır `.documents.azure.com` .
+Bu veritabanı hesabıyla bağlanan Uygulamalarınız ve sürücülerinizin mevcut uç noktasını değiştirmeniz gerekir. **MongoDB sürüm 3,6 ' deki özelliklere yalnızca yeni uç noktayı kullanan bağlantılar erişebilir** . Önceki uç nokta sonekine sahip olmalıdır `.documents.azure.com` .
 
 >[!Note]
 > Hesabınız bir Sogeign, kamu veya sınırlı Azure bulutu 'nda oluşturulduysa, bu uç nokta hafif farklılıklara sahip olabilir.
@@ -80,7 +81,7 @@ Bu veritabanı hesabıyla bağlanan Uygulamalarınız ve sürücülerinizin mevc
 
     :::image type="content" source="./media/mongodb-version-upgrade/6.png" alt-text="MongoDB hesabına genel bakış ile Azure portal" border="false":::
 
-7. **Veritabanı hesabınızın yükseltilen sürümünü kullanmaya başlamak için**dikey pencereye geri dönün `Overview` ve uygulamanızda kullanmak üzere yeni bağlantı dizesini kopyalayın. Uygulamalar, yeni uç noktaya bağlandıklarında yükseltilen sürümü kullanmaya başlar. Mevcut bağlantılar kesintiye uğramayacak ve bu işlem sizin için uygun şekilde güncelleştirilemeyebilir. Tutarlı bir deneyim sağlamak için tüm uygulamalarınızın yeni uç noktayı kullanması gerekir.
+7. **Veritabanı hesabınızın yükseltilen sürümünü kullanmaya başlamak için** dikey pencereye geri dönün `Overview` ve uygulamanızda kullanmak üzere yeni bağlantı dizesini kopyalayın. Uygulamalar, yeni uç noktaya bağlandıklarında yükseltilen sürümü kullanmaya başlar. Mevcut bağlantılar kesintiye uğramayacak ve bu işlem sizin için uygun şekilde güncelleştirilemeyebilir. Tutarlı bir deneyim sağlamak için tüm uygulamalarınızın yeni uç noktayı kullanması gerekir.
 
     :::image type="content" source="./media/mongodb-version-upgrade/7.png" alt-text="MongoDB hesabına genel bakış ile Azure portal" border="false":::
 

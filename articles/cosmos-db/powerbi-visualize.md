@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: a7e5443869efd7f37153b47e4d9c3eaa39f9c41d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c6da4eef15f8f0946e17e910fa39aee1f34fccf0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475286"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096385"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Power BI bağlayıcısını kullanarak Azure Cosmos DB verilerini görselleştirme
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 [Power BI](https://powerbi.microsoft.com/) , panoları ve raporları oluşturabileceğiniz ve paylaşabileceğiniz bir çevrimiçi hizmettir. Power BI Desktop bir rapor yazma aracıdır ve çeşitli veri kaynaklarından veri almanıza olanak tanır. Azure Cosmos DB, Power BI Desktop ile kullanabileceğiniz veri kaynaklarından biridir. Power BI için Azure Cosmos DB bağlayıcısını kullanarak Power BI Desktop'ı Azure Cosmos DB'ye bağlayabilirsiniz.  Azure Cosmos DB verilerini Power BI'da içeri aktardıktan sonra bu verileri dönüştürebilir, raporlar oluşturabilir ve raporları Power BI'da yayımlayabilirsiniz.   
 
@@ -74,21 +75,21 @@ Azure Cosmos DB hesabından Volcano verilerini alıp etkileşimli bir Power BI r
 
 1. Power BI Desktop çalıştırın.
 
-2. **Veri alabilir**, **en son kaynaklara**bakabilirsiniz veya **diğer raporları** doğrudan hoş geldiniz ekranından açabilirsiniz. Ekranı kapatmak için sağ üst köşedeki "X" i seçin. Power BI Desktop **rapor** görünümü görüntülenir.
+2. **Veri alabilir** , **en son kaynaklara** bakabilirsiniz veya **diğer raporları** doğrudan hoş geldiniz ekranından açabilirsiniz. Ekranı kapatmak için sağ üst köşedeki "X" i seçin. Power BI Desktop **rapor** görünümü görüntülenir.
    
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbireportview.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
 
-3. **Giriş** şeritini seçin ve **veri al**' a tıklayın.  **Veri al** penceresi görünmelidir.
+3. **Giriş** şeritini seçin ve **veri al** ' a tıklayın.  **Veri al** penceresi görünmelidir.
 
-4. **Azure**' a tıklayın, **Azure Cosmos DB (Beta)** öğesini seçin ve ardından **Bağlan**' a tıklayın. 
+4. **Azure** ' a tıklayın, **Azure Cosmos DB (Beta)** öğesini seçin ve ardından **Bağlan** ' a tıklayın. 
 
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbigetdata.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
 
-5. **Önizleme Bağlayıcısı** sayfasında **devam**' a tıklayın. **Azure Cosmos DB** penceresi görüntülenir.
+5. **Önizleme Bağlayıcısı** sayfasında **devam** ' a tıklayın. **Azure Cosmos DB** penceresi görüntülenir.
 
-6. Verileri aşağıda gösterildiği gibi almak istediğiniz Azure Cosmos DB hesabı uç nokta URL 'sini belirtin ve ardından **Tamam**' a tıklayın. Kendi hesabınızı kullanmak için Azure portal **anahtarlar** DIKEY penceresindeki URI kutusundan URL 'yi alabilirsiniz. İsteğe bağlı olarak, verilerin nereden geldiğini tanımlayacak veritabanını ve koleksiyonu seçmek için veritabanı adını, koleksiyon adını sağlayabilir veya Gezginini kullanabilirsiniz.
+6. Verileri aşağıda gösterildiği gibi almak istediğiniz Azure Cosmos DB hesabı uç nokta URL 'sini belirtin ve ardından **Tamam** ' a tıklayın. Kendi hesabınızı kullanmak için Azure portal **anahtarlar** DIKEY penceresindeki URI kutusundan URL 'yi alabilirsiniz. İsteğe bağlı olarak, verilerin nereden geldiğini tanımlayacak veritabanını ve koleksiyonu seçmek için veritabanı adını, koleksiyon adını sağlayabilir veya Gezginini kullanabilirsiniz.
    
-7. Bu uç noktaya ilk kez bağlanıyorsanız hesap anahtarı istenir. Kendi hesabınız için, Azure portal **salt okunurdur anahtarlar** dikey penceresindeki **birincil anahtar** kutusundan anahtarı alın. Uygun anahtarı girin ve sonra **Bağlan**' a tıklayın.
+7. Bu uç noktaya ilk kez bağlanıyorsanız hesap anahtarı istenir. Kendi hesabınız için, Azure portal **salt okunurdur anahtarlar** dikey penceresindeki **birincil anahtar** kutusundan anahtarı alın. Uygun anahtarı girin ve sonra **Bağlan** ' a tıklayın.
    
    Rapor oluştururken salt okunurdur anahtarını kullanmanızı öneririz. Bu, birincil anahtarın potansiyel güvenlik riskleri açısından gereksiz şekilde açıklanmasını önler. Salt okuma anahtarı, Azure portal **anahtarlar** dikey penceresinde kullanılabilir. 
     
@@ -98,7 +99,7 @@ Azure Cosmos DB hesabından Volcano verilerini alıp etkileşimli bir Power BI r
 
 10. Şimdi, alınacak verileri içeren bir koleksiyon seçin, **volcano1** (koleksiyon adınız farklı olabilir) seçeneğini belirleyin.
     
-    Önizleme bölmesi, **kayıt** öğelerinin bir listesini gösterir.  Belge, Power BI bir **kayıt** türü olarak gösterilir. Benzer şekilde, bir belge içinde iç içe geçmiş bir JSON bloğu da bir **kayıttır**.
+    Önizleme bölmesi, **kayıt** öğelerinin bir listesini gösterir.  Belge, Power BI bir **kayıt** türü olarak gösterilir. Benzer şekilde, bir belge içinde iç içe geçmiş bir JSON bloğu da bir **kayıttır** .
     
     :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbinavigator.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
 
@@ -109,7 +110,7 @@ Azure Cosmos DB hesabından Volcano verilerini alıp etkileşimli bir Power BI r
 
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
 
-1. **Belge** sütun üstbilgisinin sağ tarafındaki genişleticiye tıklayın.  Bir alan listesi ile bağlam menüsü görüntülenir.  Raporunuz için ihtiyacınız olan alanları seçin; örneğin, Volcano adı, ülke, bölge, konum, yükseltme, tür, durum ve son bilgi alma. **Özgün sütun adını önek olarak kullan** kutusunun işaretini kaldırın ve ardından **Tamam**' a tıklayın.
+1. **Belge** sütun üstbilgisinin sağ tarafındaki genişleticiye tıklayın.  Bir alan listesi ile bağlam menüsü görüntülenir.  Raporunuz için ihtiyacınız olan alanları seçin; örneğin, Volcano adı, ülke, bölge, konum, yükseltme, tür, durum ve son bilgi alma. **Özgün sütun adını önek olarak kullan** kutusunun işaretini kaldırın ve ardından **Tamam** ' a tıklayın.
    
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
 
@@ -119,7 +120,7 @@ Azure Cosmos DB hesabından Volcano verilerini alıp etkileşimli bir Power BI r
 
 1. Örneğimizde Location özelliği bir belgedeki GeoJSON bloğudur.  Görebileceğiniz gibi, konum Power BI Desktop bir **kayıt** türü olarak gösterilir.  
 
-1. Belge. Location sütun üstbilgisinin sağ tarafındaki genişleticiye tıklayın.  Tür ve koordinat alanları içeren bağlam menüsü görüntülenir.  Koordinatlar alanını seçelim, **ön ek seçili olmadığından özgün sütun adını kullan** ' ın seçili olduğundan emin olun ve **Tamam**' a tıklayın.
+1. Belge. Location sütun üstbilgisinin sağ tarafındaki genişleticiye tıklayın.  Tür ve koordinat alanları içeren bağlam menüsü görüntülenir.  Koordinatlar alanını seçelim, **ön ek seçili olmadığından özgün sütun adını kullan** ' ın seçili olduğundan emin olun ve **Tamam** ' a tıklayın.
    
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
 
@@ -129,11 +130,11 @@ Azure Cosmos DB hesabından Volcano verilerini alıp etkileşimli bir Power BI r
 
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
 
-1. Koordinatları dizisini düzleştirmek için, LatLong adlı **özel bir sütun** oluşturun.  **Sütun Ekle** şeridini seçin ve **özel sütun**' a tıklayın.  **Özel sütun** penceresi görüntülenir.
+1. Koordinatları dizisini düzleştirmek için, LatLong adlı **özel bir sütun** oluşturun.  **Sütun Ekle** şeridini seçin ve **özel sütun** ' a tıklayın.  **Özel sütun** penceresi görüntülenir.
 
 1. Yeni sütun için bir ad girin, örneğin, LatLong.
 
-1. Ardından, yeni sütun için özel formül belirtin.  Bizim örneğimizde, aşağıdaki formül kullanılarak aşağıda gösterildiği gibi bir virgülle ayrılmış Enlem ve boylam değerlerini birleştirilecek: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})` . **Tamam**’a tıklayın.
+1. Ardından, yeni sütun için özel formül belirtin.  Bizim örneğimizde, aşağıdaki formül kullanılarak aşağıda gösterildiği gibi bir virgülle ayrılmış Enlem ve boylam değerlerini birleştirilecek: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})` . **Tamam** ’a tıklayın.
    
    DAX işlevleri de dahil olmak üzere veri çözümleme Ifadeleri (DAX) hakkında daha fazla bilgi için lütfen [Power BI Desktop Içindeki Dax temel](/power-bi/desktop-quickstart-learn-dax-basics)bilgilerini ziyaret edin.
    
@@ -182,7 +183,7 @@ Aşağıda basit bir etkileşimli harita görünümü raporu oluşturmanın teme
 Raporunuzu paylaşmak için PowerBI.com içinde bir hesabınız olması gerekir.
 
 1. Power BI Desktop, **giriş** şeridi ' ne tıklayın.
-1. **Yayımla**’ya tıklayın.  PowerBI.com hesabınız için Kullanıcı adı ve parola girmeniz istenir.
+1. **Yayımla** ’ya tıklayın.  PowerBI.com hesabınız için Kullanıcı adı ve parola girmeniz istenir.
 1. Kimlik bilgisinin kimliği doğrulandıktan sonra, rapor seçtiğiniz hedefe yayımlanır.
 1. Raporunuzu PowerBI.com üzerinde görmek ve paylaşmak için **Power BI içinde ' Powerbituon. pbix ' öğesini aç** ' a tıklayın.
    

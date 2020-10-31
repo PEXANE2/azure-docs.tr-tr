@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 882ba7f0b8f896c51e340fe921e53b27dd07ff8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 263c38e330bad00833bd31bc8a43208c3784bcf4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85262472"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097490"
 ---
 # <a name="migrate-data-from-oracle-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Blitzz kullanarak Oracle 'dan Azure Cosmos DB Cassandra API hesabına veri geçirme
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Azure Cosmos DB Cassandra API, Oracle üzerinde çalışan kurumsal iş yükleri için, şunlar gibi çeşitli nedenlerle harika bir seçenek haline geldi:
 
@@ -100,7 +101,7 @@ Bu bölümde, Blitzz 'yi kurmak ve verileri Oracle veritabanından Azure Cosmos 
 
    Geçiş işlemi tamamlandıktan sonra aktarım hızını azaltmalısınız. Her işlem için gerekli olan ve RUs veri miktarına bağlı olarak, veri geçişten sonra gereken aktarım hızını tahmin edebilirsiniz. Gerekli olan RUs 'yi tahmin etme hakkında daha fazla bilgi edinmek için bkz. [kapsayıcılar ve veritabanları üzerinde üretilen Iş sağlama](set-throughput.md) ve [Azure Cosmos DB kapasite PLANLAYıCıSı makalelerini kullanarak ru/s 'yi tahmin](estimate-ru-with-capacity-planner.md) etme.
 
-1. **Bağlantı dizesi** bölmesinden Azure Cosmos hesabınızın **Iletişim noktasını, bağlantı noktasını, Kullanıcı adını**ve **birincil parolasını** alın. Yapılandırma dosyasında bu değerleri kullanacaksınız.
+1. **Bağlantı dizesi** bölmesinden Azure Cosmos hesabınızın **Iletişim noktasını, bağlantı noktasını, Kullanıcı adını** ve **birincil parolasını** alın. Yapılandırma dosyasında bu değerleri kullanacaksınız.
 
 1. CLı terminalinde hedef veritabanı yapılandırmasını ayarlayın. Yapılandırma dosyasını komutunu kullanarak açın **`vi conf/conn/cosmosdb.yml`** ve konak URI 'si, bağlantı noktası numarası, Kullanıcı adı, parola ve diğer gerekli parametrelerin virgülle ayrılmış bir listesini ekleyin. Yapılandırma dosyasındaki içeriklerin bir örneği aşağıda verilmiştir:
 

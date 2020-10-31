@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 3aec6cf2fa515d71b93d84cf8c4fc901fc847162
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 53a3317f38cc22ffa3745f5f0e58cc01a54b825c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487441"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096759"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>Bire çok ilişkisel verileri Azure Cosmos DB SQL API hesabına geçirme
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 İlişkisel bir veritabanından Azure Cosmos DB SQL API 'sine geçiş yapmak için, veri modelinde değişiklik yapmak üzere verilerin iyileştirilmesi için gerekli olabilir.
 
@@ -54,7 +55,7 @@ Bu sorgunun sonuçları aşağıdaki gibi görünür:
 
 Aşağıdaki yollarla bu geçerli sınırlamayı geçici olarak çözebiliriz:
 
-* **İki kopyalama etkinliği ile Azure Data Factory kullanın**: 
+* **İki kopyalama etkinliği ile Azure Data Factory kullanın** : 
   1. SQL 'den bir ara BLOB depolama konumundaki bir metin dosyasına JSON biçimli veri alın ve 
   2. JSON metin dosyasındaki verileri Azure Cosmos DB bir kapsayıcıya yükleyin.
 

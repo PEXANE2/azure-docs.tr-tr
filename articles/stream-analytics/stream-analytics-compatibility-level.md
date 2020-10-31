@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: a82f3c347c75d658e3e7ec52d51107f5a240ee5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b49cdb423e8fd2e70175d4ac71f6dcd07b459f9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88056525"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097745"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics işleri için uyumluluk düzeyi
 
@@ -33,13 +33,13 @@ Yeni bir Stream Analytics iş oluşturduğunuzda, en son uyumluluk düzeyini kul
 
 ## <a name="set-the-compatibility-level"></a>Uyumluluk düzeyini ayarlama
 
-Stream Analytics işi için uyumluluk düzeyini Azure portal veya [iş oluştur REST API çağrısını](/rest/api/streamanalytics/stream-analytics-job)kullanarak ayarlayabilirsiniz.
+Stream Analytics işi için uyumluluk düzeyini Azure portal veya [iş oluştur REST API çağrısını](/azure/stream-analytics/stream-analytics-quick-create-portal)kullanarak ayarlayabilirsiniz.
 
 Azure portal işin uyumluluk düzeyini güncelleştirmek için:
 
 1. Stream Analytics işinizi bulmak için [Azure Portal](https://portal.azure.com) kullanın.
 2. Uyumluluk düzeyini güncelleştirmeden önce işi **durdurun** . İşiniz çalışır durumdaysa uyumluluk düzeyini güncelleştiremezsiniz.
-3. **Yapılandır** başlığı altında, **Uyumluluk düzeyi**' ni seçin.
+3. **Yapılandır** başlığı altında, **Uyumluluk düzeyi** ' ni seçin.
 4. İstediğiniz uyumluluk düzeyi değerini seçin.
 5. Sayfanın alt kısmındaki **Kaydet** ' i seçin.
 
@@ -53,7 +53,7 @@ Aşağıdaki büyük değişiklikler uyumluluk düzeyi 1,2 ' de kullanıma sunul
 
 ###  <a name="amqp-messaging-protocol"></a>AMQP mesajlaşma Protokolü
 
-**1,2 düzeyi**: Azure Stream Analytics Service Bus kuyruklara ve konulara yazmak Için [Gelişmiş ileti sırası Protokolü (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) mesajlaşma protokolünü kullanır. AMQP, açık bir standart protokol kullanarak platformlar arası karma uygulamalar oluşturmanıza olanak sağlar.
+**1,2 düzeyi** : Azure Stream Analytics Service Bus kuyruklara ve konulara yazmak Için [Gelişmiş ileti sırası Protokolü (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) mesajlaşma protokolünü kullanır. AMQP, açık bir standart protokol kullanarak platformlar arası karma uygulamalar oluşturmanıza olanak sağlar.
 
 ### <a name="geospatial-functions"></a>Jeo-uzamsal işlevler
 
@@ -75,11 +75,11 @@ Daha fazla bilgi için bkz. [bulut ve IoT Edge Azure Stream Analytics Jeo-uzamsa
 
 ### <a name="native-bulk-api-integration-with-cosmosdb-output"></a>CosmosDB çıkışıyla yerel toplu API Tümleştirmesi
 
-**Önceki düzeyler:** Upsert davranış *INSERT veya Merge*.
+**Önceki düzeyler:** Upsert davranış *INSERT veya Merge* .
 
 **1,2 düzeyi:** CosmosDB çıkışıyla yerel toplu API Tümleştirmesi aktarım hızını en üst düzeye çıkarır ve azaltma isteklerini verimli bir şekilde işler. Daha fazla bilgi için [Azure Cosmos DB çıktıyı Azure Stream Analytics sayfasına](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12)bakın.
 
-Upsert davranış *INSERT veya Replace*.
+Upsert davranış *INSERT veya Replace* .
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>SQL çıktısına yazarken DateTimeOffset
 

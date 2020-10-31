@@ -8,14 +8,15 @@ ms.topic: tutorial
 ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: f99d7430b76c0b1c4e9c07835267a4a0807efdb1
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: e876ca028532bb3721146e90a91d68c4c12bf79f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92481372"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096090"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Verilerinizi Azure Cosmos DB Tablo API'si hesabına geçirme
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 Bu öğreticide, Azure Cosmos DB [tablo API'si](table-introduction.md)kullanım için verileri içeri aktarmaya yönelik yönergeler sağlanmaktadır. Azure Tablo depolama alanında depolanan verileriniz varsa verilerinizi Azure Cosmos DB Tablo API'sine aktarmak için Veri Taşıma Aracı'nı veya AzCopy'yi kullanabilirsiniz. Bir Azure Cosmos DB Tablo API'si (önizleme) hesabında depolanan verileriniz varsa, verilerinizi taşımak için Veri Taşıma Aracı'nı kullanmanız gerekir. 
 
@@ -66,11 +67,11 @@ Azure Tablo Depolama veya Tablo API önizlemesini geçişin kaynağı olarak tan
 * **/S.Filter:** Seçim. Uygulanacak filtre dizesi
 * **/S.Projection:** Seçim. Seçilecek sütunların listesi
 
-Azure Tablo depolamadan içeri aktarırken kaynak bağlantı dizesini almak için, Azure Portal açın ve **depolama hesapları**  >  **Hesap**  >  **erişim anahtarları**' na tıklayın ve sonra **bağlantı dizesini**kopyalamak için Kopyala düğmesini kullanın.
+Azure Tablo depolamadan içeri aktarırken kaynak bağlantı dizesini almak için, Azure Portal açın ve **depolama hesapları**  >  **Hesap**  >  **erişim anahtarları** ' na tıklayın ve sonra **bağlantı dizesini** kopyalamak için Kopyala düğmesini kullanın.
 
 :::image type="content" source="./media/table-import/storage-table-access-key.png" alt-text="> hesabı > erişim tuşları seçeneklerini gösteren ve Kopyala düğmesini vurgulayan bir ekran görüntüsü.":::
 
-Azure Cosmos db tablo API'si (Önizleme) hesabından içeri aktarırken kaynak bağlantı dizesini almak için, Azure Portal açın, **Azure Cosmos DB**  >  **hesabı**  >  **bağlantı dizesi** ' ne tıklayın ve Kopyala düğmesini kullanarak **bağlantı dizesini**kopyalayın.
+Azure Cosmos db tablo API'si (Önizleme) hesabından içeri aktarırken kaynak bağlantı dizesini almak için, Azure Portal açın, **Azure Cosmos DB**  >  **hesabı**  >  **bağlantı dizesi** ' ne tıklayın ve Kopyala düğmesini kullanarak **bağlantı dizesini** kopyalayın.
 
 :::image type="content" source="./media/table-import/cosmos-connection-string.png" alt-text="> hesabı > erişim tuşları seçeneklerini gösteren ve Kopyala düğmesini vurgulayan bir ekran görüntüsü.":::
 
