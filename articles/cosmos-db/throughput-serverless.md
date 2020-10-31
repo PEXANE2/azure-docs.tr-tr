@@ -6,14 +6,15 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 0adb346a693beaa905438cfdc1249c1646c28811
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d16343864d9602d644b31d34a2b66e39211b6ece
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88608866"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079348"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>Sağlanan aktarım hızı ve sunucusuz arasından seçim yapma
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB iki farklı kapasite modunda kullanılabilir: [sağlanan aktarım hızı](set-throughput.md) ve [sunucusuz](serverless.md). Her iki modda da tam olarak aynı veritabanı işlemlerini gerçekleştirebilirsiniz, ancak bu işlemler için faturalandırıldığınız şekilde tamamen farklıdır. Aşağıdaki videoda, bu modlar arasındaki temel farklılıklar ve farklı iş yükleri türlerine nasıl uydukları açıklanmaktadır:
 
@@ -42,20 +43,20 @@ Azure Cosmos DB iki farklı kapasite modunda kullanılabilir: [sağlanan aktarı
 Bazı durumlarda, belirli bir iş yükü için sağlanan aktarım hızı veya sunucusuz seçilmelidir. Bu kararya yardımcı olması için şunları tahmin edebilirsiniz:
 
 - İş yükünüz, bir saniye içinde kullanmanız gerekebilecek en fazla RUs miktarı olan **buristikülebilirlik** gereksinimidir
-- Genel olarak **beklenen**, bir ayda kullanabileceğiniz Toplam ru sayısı (Bu, [burada](plan-manage-costs.md#estimating-serverless-costs)gösterilen tablonun yardımıyla tahmin edebilirsiniz)
+- Genel olarak **beklenen** , bir ayda kullanabileceğiniz Toplam ru sayısı (Bu, [burada](plan-manage-costs.md#estimating-serverless-costs)gösterilen tablonun yardımıyla tahmin edebilirsiniz)
 
 İş yükünüz, saniyede 5.000 RU 'dan patlama gerektiriyorsa, sunucusuz kapsayıcılar bu sınırın üzerinde veri bloğu yaptığından sağlanan aktarım hızı seçilmelidir. Aksi takdirde, beklenen tüketiminiz temelinde her iki modun maliyetini karşılaştırabilirsiniz.
 
-**Örnek 1**: bir iş yükünün en fazla 10.000 ru/sn 'ye patlaması ve bir ayda toplam 20.000.000 ru kullanması beklenir.
+**Örnek 1** : bir iş yükünün en fazla 10.000 ru/sn 'ye patlaması ve bir ayda toplam 20.000.000 ru kullanması beklenir.
 
 - Yalnızca sağlanan aktarım hızı modu, 10.000 RU/sn aktarım hızını sunabilir
 
-**Örnek 2**: bir iş yükünün en fazla 500 ru/sn 'ye patlaması ve bir ayda toplam 20.000.000 ru kullanması beklenir.
+**Örnek 2** : bir iş yükünün en fazla 500 ru/sn 'ye patlaması ve bir ayda toplam 20.000.000 ru kullanması beklenir.
 
 - Sağlanan aktarım hızı modunda, aylık 500 RU/sn ile bir kapsayıcı sağlayacaksınız: $0,008 * 5 * 730 = **$29,20**
 - Sunucusuz modda tüketilen RUs için ödeme yaparsınız: $0,25 * 20 = **$5,00**
 
-**Örnek 3**: iş yükünün en fazla 500 ru/sn 'ye patlaması ve bir ayda toplam 250.000.000 ru kullanması beklenir.
+**Örnek 3** : iş yükünün en fazla 500 ru/sn 'ye patlaması ve bir ayda toplam 250.000.000 ru kullanması beklenir.
 
 - Sağlanan aktarım hızı modunda, aylık 500 RU/sn ile bir kapsayıcı sağlayacaksınız: $0,008 * 5 * 730 = **$29,20**
 - Sunucusuz modda tüketilen ru: $0,25 * 250 = **$62,50** için ödeme yaparsınız.

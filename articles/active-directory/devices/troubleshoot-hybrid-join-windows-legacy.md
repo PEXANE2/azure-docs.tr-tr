@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 361b27ce84417b30fe58ac7651f70f8c72f8a16a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a4e8ec75d6610e19f241d2047518c3a43132a6e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627381"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079028"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Karma Azure Active Directory katılmış alt düzey cihazlarda sorun giderme 
 
@@ -55,7 +55,7 @@ Bu makale, olası sorunların nasıl çözüleceği hakkında sorun giderme kıl
 
 Bu komut, size JOIN durumu hakkında ayrıntılar sağlayan bir iletişim kutusu görüntüler.
 
-![Windows için Workplace Join](./media/troubleshoot-hybrid-join-windows-legacy/01.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/01.png" alt-text="Windows için Workplace Join iletişim kutusunun ekran görüntüsü. E-posta adresi içeren metin, belirli bir cihazın çalışma alanına katıldığını belirtir." border="false":::
 
 ## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>2. Adım: karma Azure AD JOIN durumunu değerlendirme 
 
@@ -65,7 +65,7 @@ Cihaz karma Azure AD 'ye katılmış değilse, "katıl" düğmesine tıklayarak 
 
 - Yanlış yapılandırılmış AD FS veya Azure AD veya ağ sorunları
 
-    ![Windows için Workplace Join](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/02.png" alt-text="Windows için Workplace Join iletişim kutusunun ekran görüntüsü. E-posta adresi içeren metin, belirli bir cihazın çalışma alanına katıldığını belirtir." border="false":::
     
    - Autoworkplace.exe, Azure AD veya AD FS ile sessizce kimlik doğrulaması yapamıyor. Bunun nedeni, eksik veya yanlış yapılandırılmış AD FS (federe etki alanları için) veya eksik ya da yanlış yapılandırılmış Azure AD sorunsuz tek Sign-On (yönetilen etki alanları için) veya ağ sorunları olabilir. 
    - Bu, Multi-Factor Authentication (MFA) özelliğinin etkinleştirilmesi/yapılandırılması ve WIAORMULTIAUTHN 'nin AD FS sunucuda yapılandırılmamış olması olabilir. 
@@ -76,7 +76,7 @@ Cihaz karma Azure AD 'ye katılmış değilse, "katıl" düğmesine tıklayarak 
    - Kuruluşunuz Azure AD sorunsuz çoklu oturum açma 'yı kullanır `https://autologon.microsoftazuread-sso.com` veya `https://aadg.windows.net.nsatc.net` cihazın IE intranet ayarlarında mevcut değildir ve intranet bölgesi için **komut dosyası aracılığıyla durum çubuğundaki güncelleştirmelerin** etkin olmadığından izin vermez.
 - Bir etki alanı kullanıcısı olarak oturum açmadınız
 
-   ![Windows için Workplace Join](./media/troubleshoot-hybrid-join-windows-legacy/03.png)
+   :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/03.png" alt-text="Windows için Workplace Join iletişim kutusunun ekran görüntüsü. E-posta adresi içeren metin, belirli bir cihazın çalışma alanına katıldığını belirtir." border="false":::
 
    Bunun gerçekleşebileceği birkaç farklı neden vardır:
 
@@ -84,11 +84,11 @@ Cihaz karma Azure AD 'ye katılmış değilse, "katıl" düğmesine tıklayarak 
    - İstemci bir etki alanı denetleyicisine bağlanamıyor.    
 - Kotaya ulaşıldı
 
-    ![Windows için Workplace Join](./media/troubleshoot-hybrid-join-windows-legacy/04.png)
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/04.png" alt-text="Windows için Workplace Join iletişim kutusunun ekran görüntüsü. E-posta adresi içeren metin, belirli bir cihazın çalışma alanına katıldığını belirtir." border="false":::
 
 - Hizmet yanıt vermiyor 
 
-    ![Windows için Workplace Join](./media/troubleshoot-hybrid-join-windows-legacy/05.png)
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/05.png" alt-text="Windows için Workplace Join iletişim kutusunun ekran görüntüsü. E-posta adresi içeren metin, belirli bir cihazın çalışma alanına katıldığını belirtir." border="false":::
 
 Durum bilgilerini olay günlüğü 'nde de bulabilirsiniz: **uygulamalar ve hizmetler Log\Microsoft-Workplace JOIN**
   
@@ -97,7 +97,7 @@ Durum bilgilerini olay günlüğü 'nde de bulabilirsiniz: **uygulamalar ve hizm
 - Bilgisayarınız kuruluşunuzun iç ağına veya şirket içi AD etki alanı denetleyicinize bağlantısı olan bir VPN 'ye bağlı değil.
 - Bilgisayarınızda yerel bir bilgisayar hesabıyla oturum açtınız. 
 - Hizmet yapılandırma sorunları: 
-   - AD FS sunucusu **Wiaormultiauthn**'yi destekleyecek şekilde yapılandırılmamış. 
+   - AD FS sunucusu **Wiaormultiauthn** 'yi destekleyecek şekilde yapılandırılmamış. 
    - Bilgisayarınızın ormanında, Azure AD 'de doğrulanmış etki alanı adınızı işaret eden bir hizmet bağlantı noktası nesnesi yok 
    - Ya da etki alanınız yönetiliyorsa, sorunsuz SSO Yapılandırılmadı veya çalışmıyor.
    - Bir Kullanıcı cihaz sınırına ulaştı. 

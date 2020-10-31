@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 42d9e8b190747a3ffaf0e46ea1eddda33d09bb24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16be1b91d007ca2dbc88405cfc55ff519f51ee41
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74870573"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081545"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Azure Cosmos DB için SQL alt sorgu örnekleri
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Alt sorgu, başka bir sorgu içinde iç içe geçmiş bir sorgudur. Bir alt sorgu iç sorgu veya iç seçim olarak da adlandırılır. Alt sorgu içeren deyime genellikle dış sorgu denir.
 
@@ -23,16 +24,16 @@ Bu makalede, Azure Cosmos DB 'de SQL alt sorguları ve bunların ortak kullanım
 
 İki ana alt sorgu türü vardır:
 
-* **Bağıntılı**: dış sorgudan değerlere başvuran bir alt sorgu. Alt sorgu, dış sorgunun işlediği her satır için bir kez değerlendirilir.
-* **Bağıntılı olmayan**: dış sorgudan bağımsız bir alt sorgu. Dış sorguya bağlı kalmadan kendi üzerinde çalıştırılabilir.
+* **Bağıntılı** : dış sorgudan değerlere başvuran bir alt sorgu. Alt sorgu, dış sorgunun işlediği her satır için bir kez değerlendirilir.
+* **Bağıntılı olmayan** : dış sorgudan bağımsız bir alt sorgu. Dış sorguya bağlı kalmadan kendi üzerinde çalıştırılabilir.
 
 > [!NOTE]
 > Azure Cosmos DB yalnızca bağıntılı alt sorguları destekler.
 
 Alt sorgular, geri dönedikleri satır ve sütun sayısına göre daha fazla sınıflandırılabilir. Üç tür vardır:
-* **Tablo**: birden çok satırı ve birden çok sütunu döndürür.
-* **Çoklu değer**: birden çok satırı ve tek bir sütunu döndürür.
-* **Skaler**: tek bir satırı ve tek bir sütunu döndürür.
+* **Tablo** : birden çok satırı ve birden çok sütunu döndürür.
+* **Çoklu değer** : birden çok satırı ve tek bir sütunu döndürür.
+* **Skaler** : tek bir satırı ve tek bir sütunu döndürür.
 
 Azure Cosmos DB içindeki SQL sorguları her zaman tek bir sütun (basit bir değer ya da karmaşık bir belge) döndürür. Bu nedenle, Azure Cosmos DB yalnızca çok değerli ve skaler alt sorgular geçerlidir. Yalnızca FROM yan tümcesinde ilişkisel ifade olarak bir çok değerli alt sorgu kullanabilirsiniz. Skalar bir alt sorguyu SELECT veya WHERE yan tümcesinde skaler bir ifade olarak veya FROM yan tümcesinde ilişkisel bir ifade olarak kullanabilirsiniz.
 

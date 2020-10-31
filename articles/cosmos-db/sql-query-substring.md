@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: d4462fc407093b23510bddfae4d9f55d68f8c0fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6cb96270d1db970230e3abb528b58b7341d652f0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78303707"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081493"
 ---
 # <a name="substring-azure-cosmos-db"></a>Alt DIZE (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Belirtilen karakter sıfır tabanlı konumdan başlayarak bir dize ifadesinin parçasını döndürür ve belirtilen uzunluğa veya dizenin sonuna kadar devam eder.  
   
 ## <a name="syntax"></a>Söz dizimi
@@ -29,7 +31,7 @@ SUBSTRING(<str_expr>, <num_expr1>, <num_expr2>)
    Bir dize ifadesidir.
   
 *num_expr1*  
-   , Başlangıç karakterini göstermek için sayısal bir ifadedir. 0 değeri, *str_expr*ilk karakteridir.
+   , Başlangıç karakterini göstermek için sayısal bir ifadedir. 0 değeri, *str_expr* ilk karakteridir.
   
 *num_expr2*  
    Döndürülecek *str_expr* en fazla karakter sayısını göstermek için sayısal bir ifadedir. Boş dize ile 0 veya daha az bir değer elde edin.

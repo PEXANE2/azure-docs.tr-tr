@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: f0dfa137e42d60246ce8f5281f002d5ca567c2ae
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: ac134e6a371ea85a20094e688adc57da8550a03d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427524"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078994"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning işlem örneği oluşturma ve yönetme
 
@@ -34,7 +34,7 @@ Bu makalede şunları öğreneceksiniz:
 
 İşlem örnekleri, kuruluşların SSH bağlantı noktalarını açmasına gerek kalmadan, işleri bir [sanal ağ ortamında](how-to-secure-training-vnet.md)güvenli bir şekilde çalıştırabilir. İş kapsayıcılı bir ortamda yürütülür ve model bağımlılıklarınızı bir Docker kapsayıcısında paketleyebilir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
@@ -42,7 +42,7 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="create"></a>Oluştur
 
-**Tahmini süre**: yaklaşık 5 dakika.
+**Tahmini süre** : yaklaşık 5 dakika.
 
 İşlem örneği oluşturma, çalışma alanınız için tek seferlik bir işlemdir. Bu işlemi bir geliştirme iş istasyonu olarak veya eğitim için bir işlem hedefi olarak yeniden kullanabilirsiniz. Çalışma alanınıza eklenmiş birden çok işlem örneği olabilir.
 
@@ -206,7 +206,7 @@ Aşağıdaki örneklerde, işlem örneği adı **örnek**
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
-Azure Machine Learning Studio 'daki çalışma alanınızda **işlem**' ı seçin ve ardından en üstteki **işlem örneği** ' ni seçin.
+Azure Machine Learning Studio 'daki çalışma alanınızda **işlem** ' ı seçin ve ardından en üstteki **işlem örneği** ' ni seçin.
 
 ![İşlem örneğini yönetme](./media/concept-compute-instance/manage-compute-instance.png)
 
@@ -256,7 +256,9 @@ Paketleri doğrudan Jupyter Notebook veya RStudio 'Ya yükleyebilirsiniz:
 * Python: Jupyter Notebook bir hücrede Install kodu ekleyin ve yürütün.
 
 Ya da bir terminal penceresinden yükleyebilirsiniz. Python paketlerini **python 3,6-AzureML** ortamına yükler.  R paketlerini **r** ortamına yükler.
-% PIP ve% Conda Magic işlevleri, Jupyter Not defteri oturumunda paketleri şu anda çalışan çekirdeğe otomatik olarak yükler.
+
+> [!NOTE]
+> Bir not defteri içinde paket yönetimi için **% PIP** veya **% Conda** Magic işlevlerini kullanarak paketleri, tüm paketlere (Şu anda çalışan çekirdeklerdeki paketler dahil), tüm paketlere başvuran **! PIP** veya **! Conda** yerine **çalışmakta olan çekirdeğe** otomatik olarak yükler.
 
 ## <a name="add-new-kernels"></a>Yeni çekirdekler Ekle
 

@@ -1,18 +1,18 @@
 ---
-title: Önizleme-Azure Kubernetes Service (AKS) kümesine bir spot düğüm havuzu ekleme
+title: Azure Kubernetes Service (AKS) kümesine spot düğüm havuzu ekleme
 description: Azure Kubernetes Service (AKS) kümesine bir spot düğüm havuzu eklemeyi öğrenin.
 services: container-service
 ms.service: container-service
 ms.topic: article
-ms.date: 02/25/2020
-ms.openlocfilehash: dbb003c287a18810c2c14c4f2ea401fa55cca427
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/19/2020
+ms.openlocfilehash: 5fd97560c3a6e41b49beb957c7b8d79369799c21
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87987299"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078960"
 ---
-# <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Önizleme-Azure Kubernetes Service (AKS) kümesine bir spot düğüm havuzu ekleme
+# <a name="add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) kümesine spot düğüm havuzu ekleme
 
 Spot düğüm havuzu, bir [spot sanal makine ölçek kümesi][vmss-spot]tarafından desteklenen bir düğüm havuzudur. AKS kümeniz olan düğümler için spot VM 'Lerin kullanılması, Azure 'daki unutilized kapasitesinden yararlanarak önemli bir maliyet tasarrufu elde etmenizi sağlar. Kullanılabilir unutilized kapasitesi, düğüm boyutu, bölge ve günün saati dahil olmak üzere birçok etkene göre değişiklik gösterecektir.
 
@@ -24,61 +24,25 @@ Bu makalede, var olan bir Azure Kubernetes Service (AKS) kümesine ikincil bir s
 
 Bu makalede, Kubernetes ve Azure Load Balancer kavramlarının temel bir şekilde anlaşıldığı varsayılır. Daha fazla bilgi için bkz. [Azure Kubernetes hizmeti (AKS) Için Kubernetes temel kavramları][kubernetes-concepts].
 
-Bu özellik şu anda önizleme sürümündedir.
-
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bir spot düğüm havuzu kullanmak için bir küme oluşturduğunuzda, bu küme düğüm havuzları ve *Standart* SKU yük dengeleyici Için sanal makine ölçek kümelerini de kullanmalıdır. Bir spot düğüm havuzu kullanmak için kümenizi oluşturduktan sonra ek bir düğüm havuzu da eklemeniz gerekir. Ek düğüm havuzu eklemek sonraki bir adımda ele alınmıştır, ancak önce bir önizleme özelliğini etkinleştirmeniz gerekir.
+Bir spot düğüm havuzu kullanmak için bir küme oluşturduğunuzda, bu küme düğüm havuzları ve *Standart* SKU yük dengeleyici Için sanal makine ölçek kümelerini de kullanmalıdır. Bir spot düğüm havuzu kullanmak için kümenizi oluşturduktan sonra ek bir düğüm havuzu da eklemeniz gerekir. Ek düğüm havuzu eklemek sonraki bir adımda ele alınmıştır.
 
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-### <a name="register-spotpoolpreview-preview-feature"></a>Spotpoolpreview önizleme özelliğini Kaydet
-
-Spot düğüm havuzu kullanan bir AKS kümesi oluşturmak için, aboneliğinizde *spotpoolpreview* özelliği bayrağını etkinleştirmeniz gerekir. Bu özellik, bir kümeyi yapılandırırken en son hizmet iyileştirmeleri sağlar.
-
-Aşağıdaki örnekte gösterildiği gibi [az Feature Register][az-feature-register] komutunu kullanarak *spotpoolpreview* Özellik bayrağını kaydedin:
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "spotpoolpreview"
-```
-
-Durumun *kayıtlı*gösterilmesi birkaç dakika sürer. [Az Feature List][az-feature-list] komutunu kullanarak kayıt durumunu denetleyebilirsiniz:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/spotpoolpreview')].{Name:name,State:properties.state}"
-```
-
-Hazırlandığınızda, [az Provider Register][az-provider-register] komutunu kullanarak *Microsoft. Containerservice* kaynak sağlayıcısı kaydını yenileyin:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
-### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI uzantısını yükleme
-
-Spot düğüm havuzu kullanan bir AKS kümesi oluşturmak için, *aks-Preview* CLI uzantısının sürümü 0.4.32 veya üzeri bir sürüm gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükledikten sonra [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin:
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
- 
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
+Bu makalede, Azure CLı sürüm 2,14 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
 
 ### <a name="limitations"></a>Sınırlamalar
 
 Bir spot düğüm havuzuyla AKS kümeleri oluşturup yönetirken aşağıdaki sınırlamalar geçerlidir:
 
 * Bir spot düğüm havuzu kümenin varsayılan düğüm havuzu olamaz. Bir spot düğüm havuzu yalnızca ikincil havuz için kullanılabilir.
-* Spot düğüm havuzları Cordon ve drenajı garanti edemediği için bir spot düğüm havuzunu yükseltemezsiniz. Kubernetes sürümünü yükseltme gibi işlemleri yapmak için mevcut spot düğüm havuzunuzu yeni bir tane ile değiştirmeniz gerekir. Bir spot düğüm havuzunu değiştirmek için, farklı bir Kubernetes sürümü ile yeni bir spot düğüm havuzu oluşturun, durumu *hazır*olana kadar bekleyin, sonra eski düğüm havuzunu kaldırın.
+* Spot düğüm havuzları Cordon ve drenajı garanti edemediği için bir spot düğüm havuzunu yükseltemezsiniz. Kubernetes sürümünü yükseltme gibi işlemleri yapmak için mevcut spot düğüm havuzunuzu yeni bir tane ile değiştirmeniz gerekir. Bir spot düğüm havuzunu değiştirmek için, farklı bir Kubernetes sürümü ile yeni bir spot düğüm havuzu oluşturun, durumu *hazır* olana kadar bekleyin, sonra eski düğüm havuzunu kaldırın.
 * Denetim düzlemi ve düğüm havuzları aynı anda yükseltilemez. Bunları ayrı olarak yükseltmeniz veya denetim düzlemi ile kalan düğüm havuzlarını aynı anda yükseltmek için spot düğüm havuzunu kaldırmanız gerekir.
 * Bir spot düğüm havuzunun sanal makine ölçek kümelerini kullanması gerekir.
 * Oluşturmadan sonra ScaleSetPriority veya SpotMaxPrice ' i değiştiremezsiniz.
 * SpotMaxPrice ayarlanırken değer-1 veya en fazla beş ondalık basamak içeren pozitif bir değer olmalıdır.
-* Bir spot düğüm havuzunda *Kubernetes.Azure.com/scalesetpriority:spot*etiketi, taint *Kubernetes.Azure.com/scalesetpriority=spot:NoSchedule*ve sistem yığınlarının benzeşim düzeyi olur.
+* Bir spot düğüm havuzunda *Kubernetes.Azure.com/scalesetpriority:spot* etiketi, taint *Kubernetes.Azure.com/scalesetpriority=spot:NoSchedule* ve sistem yığınlarının benzeşim düzeyi olur.
 * Bir spot düğüm havuzunda iş yüklerini zamanlamak için [karşılık gelen bir tolerans][spot-toleration] eklemeniz gerekir.
 
 ## <a name="add-a-spot-node-pool-to-an-aks-cluster"></a>AKS kümesine spot düğüm havuzu ekleme
@@ -100,7 +64,7 @@ az aks nodepool add \
     --no-wait
 ```
 
-Varsayılan olarak, çok düğümlü havuzlarla bir küme oluşturduğunuzda AKS kümenizde *düzenli* *önceliğe* sahip bir düğüm havuzu oluşturursunuz. Yukarıdaki komut, var olan bir AKS kümesine bir *nokta* *önceliği* olan bir yardımcı düğüm havuzu ekler. Noktanın *önceliği* , *Spot* düğüm havuzunun bir spot düğüm havuzu olmasını sağlar. *Çıkarma-ilke* parametresi, yukarıdaki örnekte varsayılan değer olan, *silinmek* üzere ayarlanır. [Çıkarma Ilkesini][eviction-policy] *silinmek*üzere ayarladığınızda, düğüm havuzunun temeldeki ölçek kümesindeki düğümler çıkarıldıklarında silinir. Çıkarma ilkesini *serbest bırakma*olarak da ayarlayabilirsiniz. Çıkarma ilkesini *serbest bırakma*olarak ayarladığınızda, temel alınan ölçek kümesindeki düğümler, çıkarma sırasında durdurulmuş, serbest bırakılmış duruma ayarlanır. İşlem kotasından dolayı durdurulmuş serbest bırakılmış durum sayısı içindeki düğümler, küme ölçeklendirme veya yükseltme ile ilgili sorunlara neden olabilir. *Öncelik* ve *çıkarma ilkesi* değerleri yalnızca düğüm havuzu oluşturma sırasında ayarlanabilir. Bu değerler daha sonra güncellenemiyor.
+Varsayılan olarak, çok düğümlü havuzlarla bir küme oluşturduğunuzda AKS kümenizde *düzenli* *önceliğe* sahip bir düğüm havuzu oluşturursunuz. Yukarıdaki komut, var olan bir AKS kümesine bir *nokta* *önceliği* olan bir yardımcı düğüm havuzu ekler. Noktanın *önceliği* , *Spot* düğüm havuzunun bir spot düğüm havuzu olmasını sağlar. *Çıkarma-ilke* parametresi, yukarıdaki örnekte varsayılan değer olan, *silinmek* üzere ayarlanır. [Çıkarma Ilkesini][eviction-policy] *silinmek* üzere ayarladığınızda, düğüm havuzunun temeldeki ölçek kümesindeki düğümler çıkarıldıklarında silinir. Çıkarma ilkesini *serbest bırakma* olarak da ayarlayabilirsiniz. Çıkarma ilkesini *serbest bırakma* olarak ayarladığınızda, temel alınan ölçek kümesindeki düğümler, çıkarma sırasında durdurulmuş, serbest bırakılmış duruma ayarlanır. İşlem kotasından dolayı durdurulmuş serbest bırakılmış durum sayısı içindeki düğümler, küme ölçeklendirme veya yükseltme ile ilgili sorunlara neden olabilir. *Öncelik* ve *çıkarma ilkesi* değerleri yalnızca düğüm havuzu oluşturma sırasında ayarlanabilir. Bu değerler daha sonra güncellenemiyor.
 
 Komut Ayrıca, küme düğüm havuzlarıyla kullanılması önerilen [küme otomatik Scaler][cluster-autoscaler]öğesini de sağlar. Kümenizde çalışan iş yüklerine bağlı olarak, otomatik ölçeklendirme kümesi, düğüm havuzundaki düğüm sayısını ölçeklendirir ve ölçeklendirir. Spot düğüm havuzları için, ek düğümlere ihtiyaç duyulduktan sonra, küme otomatik olarak bir çıkarma sonrasında düğüm sayısını ölçeklendirecektir. Düğüm havuzunun sahip olduğu en fazla düğüm sayısını değiştirirseniz, `maxCount` küme otomatik Scaler ile ilişkili değeri de ayarlamanız gerekir. Bir küme otomatik yüklemesi kullanmazsanız, çıkarma sonrasında, nokta havuzu sonunda sıfır olarak azalır ve ek spot düğümleri almak için el ile bir işlem gerekir.
 
@@ -115,7 +79,7 @@ Düğüm havuzunuzun bir spot düğüm havuzu olarak eklendiğini doğrulamak i�
 az aks nodepool show --resource-group myResourceGroup --cluster-name myAKSCluster --name spotnodepool
 ```
 
-*Scalesetpriority* 'nin *nokta*olduğunu onaylayın.
+*Scalesetpriority* 'nin *nokta* olduğunu onaylayın.
 
 Bir pod 'yi bir spot düğümünde çalışacak şekilde zamanlamak için, nokta düğümünüz uygulanmış olan taınt öğesine karşılık gelen bir tolerans ekleyin. Aşağıdaki örnek, bir YAML dosyasının, önceki adımda kullanılan bir *Kubernetes.Azure.com/scalesetpriority=spot:NoSchedule* taınt öğesine karşılık gelen bir toleransı tanımlayan bir bölümünü gösterir.
 
@@ -136,7 +100,7 @@ Bu toleranya sahip bir pod dağıtıldığında Kubernetes, Taint uygulanmış o
 ## <a name="max-price-for-a-spot-pool"></a>Bir spot havuz için en fazla fiyat
 [Spot örnekleri Için fiyatlandırma][pricing-spot], bölgeye ve SKU 'ya göre değişkendir. Daha fazla bilgi için bkz. [Linux][pricing-linux] ve [Windows][pricing-windows]fiyatlandırması.
 
-Değişken fiyatlandırmayla, en fazla 5 ondalık basamak kullanarak ABD Doları (USD) cinsinden maksimum fiyat ayarlama seçeneğiniz vardır. Örneğin *0,98765* değeri, saat başına en fazla $0,98765 ABD doları olur. Maksimum fiyatı *-1*olarak ayarlarsanız, örnek fiyata göre çıkarılmaz. Örneğin fiyatı, kapasite ve kota kullanılabilir olduğu sürece, bir standart örnek için geçerli fiyat veya fiyat fiyatı olacaktır.
+Değişken fiyatlandırmayla, en fazla 5 ondalık basamak kullanarak ABD Doları (USD) cinsinden maksimum fiyat ayarlama seçeneğiniz vardır. Örneğin *0,98765* değeri, saat başına en fazla $0,98765 ABD doları olur. Maksimum fiyatı *-1* olarak ayarlarsanız, örnek fiyata göre çıkarılmaz. Örneğin fiyatı, kapasite ve kota kullanılabilir olduğu sürece, bir standart örnek için geçerli fiyat veya fiyat fiyatı olacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -148,14 +112,8 @@ Bu makalede bir AKS kümesine spot düğüm havuzu eklemeyi öğrendiniz. Düğ�
 <!-- LINKS - Internal -->
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-group-deploy-create]: /cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create
+[azure-cli-install]: /cli/azure/install-azure-cli
 [az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add
-[az-provider-register]: /cli/azure/provider#az-provider-register
-[az-template-deploy]: ../azure-resource-manager/templates/deploy-cli.md#deployment-scope
 [cluster-autoscaler]: cluster-autoscaler.md
 [eviction-policy]: ../virtual-machine-scale-sets/use-spot.md#eviction-policy
 [kubernetes-concepts]: concepts-clusters-workloads.md

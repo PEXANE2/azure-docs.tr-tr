@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 493064bc22b1144df6878d71c99e50fd7c15ba1d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1390f5db6e0f0370788bef60d5a2cafee1e8a96d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482239"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080660"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>Azure Cosmos DB kaynaklarına yönelik idare ve denetimleri uygulamak için Azure Ilkesini kullanma
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 [Azure ilkesi](../governance/policy/overview.md) , kurumsal idare standartlarına zorlamaya, kaynak uyumluluğunu değerlendirmenize ve otomatik düzeltme uygulamanıza yardımcı olur. Yaygın kullanım örnekleri arasında güvenlik, maliyet yönetimi ve yapılandırma tutarlılığı vardır.
 
@@ -24,7 +25,7 @@ Azure Ilkesi yerleşik ilke tanımları sağlar. Yerleşik ilke tanımları tara
 
 ## <a name="assign-a-built-in-policy-definition"></a>Yerleşik ilke tanımı atama
 
-İlke tanımları, kaynak uyumluluk koşullarını ve bir koşul karşılanırsa gerçekleştirilecek etkiyi tanımlar. İlke _atamaları_ ilke _tanımlarından_oluşturulur. Azure Cosmos DB kaynaklarınız için yerleşik veya özel ilke tanımlarını kullanabilirsiniz. İlke atamaları, bir Azure yönetim grubu, bir Azure aboneliği veya bir kaynak grubu kapsamlandırılır ve seçilen kapsam içindeki kaynaklara uygulanır. İsteğe bağlı olarak, belirli kaynakları kapsamdan dışlayabilirsiniz.
+İlke tanımları, kaynak uyumluluk koşullarını ve bir koşul karşılanırsa gerçekleştirilecek etkiyi tanımlar. İlke _atamaları_ ilke _tanımlarından_ oluşturulur. Azure Cosmos DB kaynaklarınız için yerleşik veya özel ilke tanımlarını kullanabilirsiniz. İlke atamaları, bir Azure yönetim grubu, bir Azure aboneliği veya bir kaynak grubu kapsamlandırılır ve seçilen kapsam içindeki kaynaklara uygulanır. İsteğe bağlı olarak, belirli kaynakları kapsamdan dışlayabilirsiniz.
 
 [Azure Portal](../governance/policy/assign-policy-portal.md), [Azure POWERSHELL](../governance/policy/assign-policy-powershell.md), [Azure CLI](../governance/policy/assign-policy-azurecli.md)veya [ARM şablonuyla](../governance/policy/assign-policy-template.md)ilke atamaları oluşturabilirsiniz.
 
@@ -39,7 +40,7 @@ Azure Cosmos DB için yerleşik ilke tanımından bir ilke ataması oluşturmak 
 
 ## <a name="create-a-custom-policy-definition"></a>Özel ilke tanımı oluşturma
 
-Yerleşik ilkeler tarafından açıklanmayan belirli senaryolar için [özel bir ilke tanımı](../governance/policy/tutorials/create-custom-policy-definition.md)oluşturabilirsiniz. Daha sonra özel ilke _tanımınızdan_bir ilke _ataması_ oluşturursunuz.
+Yerleşik ilkeler tarafından açıklanmayan belirli senaryolar için [özel bir ilke tanımı](../governance/policy/tutorials/create-custom-policy-definition.md)oluşturabilirsiniz. Daha sonra özel ilke _tanımınızdan_ bir ilke _ataması_ oluşturursunuz.
 
 ### <a name="property-types-and-property-aliases-in-policy-rules"></a>İlke kurallarında Özellik türleri ve özellik diğer adları
 

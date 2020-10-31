@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 09/10/2019
 author: SnehaGunda
 ms.author: sngun
-ms.openlocfilehash: c03e4db30d590df21a8ceb3c483ece4b59e548d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61814082ebe9828a08da1e8786890b500c239082
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397326"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081850"
 ---
 # <a name="system-document-properties"></a>Sistem belgesi özellikleri
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Azure Cosmos DB her belgede,,, ve gibi [sistem özelliklerine](/rest/api/cosmos-db/databases) sahiptir ```_ts``` ```_self``` ```_attachments``` ```_rid``` ```_etag``` . Bunun yanı sıra Gremlin altyapısı kenarlara ```inVPartition``` ve ```outVPartition``` özelliklerini ekler. Varsayılan olarak, bu özellikler çapraz geçiş için kullanılabilir. Ancak, Gremlin geçişi içinde belirli özellikleri veya bunların tümünü dahil etmek mümkündür.
 

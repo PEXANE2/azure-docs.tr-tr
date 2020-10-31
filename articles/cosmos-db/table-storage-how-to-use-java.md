@@ -9,19 +9,20 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-java
-ms.openlocfilehash: 4e9df3343a89097b192c51d3b9f093805afe6b87
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1f3f5a35beeac6c683aeb6db16a417b897755666
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92477360"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079776"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Java’dan Azure Tablo depolama veya Azure Cosmos DB Tablo API'sini kullanma
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-Bu makalede, tablolar oluşturma, verilerinizi depolama ve veri üzerinde CRUD işlemleri gerçekleştirme işlemleri gösterilir. Azure Tablo hizmeti 'ni veya Azure Cosmos DB Tablo API'si seçin. Örnekler Java dilinde yazılır ve [Java için Azure Depolama SDK’sı][Azure Storage SDK for Java] kullanır. Tablo **oluşturma**, **listeleme** ve **silme** işlemlerinin yanı sıra bir tablodaki varlıkları **ekleme**, **sorgulama**, **değiştirme** ve **silme** işlemleri ele alınmaktadır. Tablolar hakkında daha fazla bilgi için [Sonraki adımlar](#next-steps)’a bakın.
+Bu makalede, tablolar oluşturma, verilerinizi depolama ve veri üzerinde CRUD işlemleri gerçekleştirme işlemleri gösterilir. Azure Tablo hizmeti 'ni veya Azure Cosmos DB Tablo API'si seçin. Örnekler Java dilinde yazılır ve [Java için Azure Depolama SDK’sı][Azure Storage SDK for Java] kullanır. Tablo **oluşturma** , **listeleme** ve **silme** işlemlerinin yanı sıra bir tablodaki varlıkları **ekleme** , **sorgulama** , **değiştirme** ve **silme** işlemleri ele alınmaktadır. Tablolar hakkında daha fazla bilgi için [Sonraki adımlar](#next-steps)’a bakın.
 
 > [!NOTE]
 > Android cihazlarda Azure Depolama kullanan geliştiriciler için bir SDK mevcuttur. Daha fazla bilgi için bkz. [Android için Azure Depolama SDK’sı][Azure Storage SDK for Android].

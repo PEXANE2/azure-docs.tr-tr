@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 0bbb0da0ce39aab9fba843dda99b45ea59881ce2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2fb8b24d5d44ced8f9e363008354acf5bc2fde40
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490552"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081884"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB yüksek kullanılabilirlik sağlama
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB, iki temel şekilde yüksek kullanılabilirlik sağlar. İlk olarak, Azure Cosmos DB verileri Cosmos hesabı içinde yapılandırılan bölgelerde çoğaltır. İkincisi, Azure Cosmos DB bir bölgedeki verilerin 4 çoğaltmasını korur.
 
@@ -73,7 +74,7 @@ Bölgesel kesintiden nadir durumlar için Azure Cosmos DB veritabanınızın her
 * Daha önce etkilenen yazma bölgesi kurtarıldıktan sonra otomatik olarak bir okuma bölgesi olarak kullanılabilir hale gelir. Kurtarılan bölgeye yazma bölgesi olarak dönebilirsiniz. [PowerShell, Azure CLI veya Azure Portal](how-to-manage-database-account.md#manual-failover)kullanarak bölgeleri değiştirebilirsiniz. Bir **veri veya kullanılabilirlik kaybı** , yazma bölgesini değiştirmeden veya sonra, uygulamanız yüksek oranda kullanılabilir olmaya devam eder.
 
 > [!IMPORTANT]
-> **Otomatik yük devretmeyi etkinleştirmek**için üretim iş yükleri Için kullanılan Azure Cosmos hesaplarını yapılandırmanız önemle tavsiye edilir. El ile yük devretme, yük devretme sırasında veri kaybı olmadığından emin olmak için bir tutarlılık denetimini tamamlamaya yönelik ikincil ve birincil yazma bölgesi arasında bağlantı gerektirir. Birincil bölge kullanılamaz durumdaysa, bu tutarlılık denetimi tamamlanamaz ve el ile yük devretme başarısız olur ve bu durum, bölgesel kesinti süresi boyunca yazma kullanılabilirliği kaybı ile sonuçlanır.
+> **Otomatik yük devretmeyi etkinleştirmek** için üretim iş yükleri Için kullanılan Azure Cosmos hesaplarını yapılandırmanız önemle tavsiye edilir. El ile yük devretme, yük devretme sırasında veri kaybı olmadığından emin olmak için bir tutarlılık denetimini tamamlamaya yönelik ikincil ve birincil yazma bölgesi arasında bağlantı gerektirir. Birincil bölge kullanılamaz durumdaysa, bu tutarlılık denetimi tamamlanamaz ve el ile yük devretme başarısız olur ve bu durum, bölgesel kesinti süresi boyunca yazma kullanılabilirliği kaybı ile sonuçlanır.
 
 ### <a name="multi-region-accounts-with-a-single-write-region-read-region-outage"></a>Tek bir yazma bölgesi olan çok bölgeli hesaplar (okuma bölgesi kesintisi)
 
@@ -89,7 +90,7 @@ Bölgesel kesintiden nadir durumlar için Azure Cosmos DB veritabanınızın her
 
 * Sonraki okumalar kurtarılan bölgeye yönlendirilir ve bunun için uygulamanızın kodunda değişiklik yapılması gerekmez. Daha önce başarısız olan bir bölgenin yük devretmesi ve yeniden katılması sırasında, uyumluluk garantisi Azure Cosmos DB tarafından kabul edilir.
 
-* Azure bölgesinin kalıcı olarak kurtarılabilir olduğu nadir ve talihsiz olayında bile, çok bölgeli Azure Cosmos hesabınız *güçlü* tutarlılık ile yapılandırıldıysa veri kaybı olmaz. Kalıcı ve kurtarılabilir bir yazma bölgesi durumunda, sınırlı stalet tutarlılığı ile yapılandırılmış çok bölgeli bir Azure Cosmos hesabı olan potansiyel veri kaybı penceresi, K = 100000 güncelleştirmelerinin ve T = 5 dakikadan kısa bir süre içinde (*k* veya *t*) kısıtlanmıştır. Oturum, tutarlı ön ek ve nihai tutarlılık seviyeleri için, olası veri kaybı penceresi en fazla 15 dakika sınırlı olur. Azure Cosmos DB için RTO ve RPO hedefleri hakkında daha fazla bilgi için bkz. [tutarlılık düzeyleri ve veri dayanıklılığı](./consistency-levels.md#rto)
+* Azure bölgesinin kalıcı olarak kurtarılabilir olduğu nadir ve talihsiz olayında bile, çok bölgeli Azure Cosmos hesabınız *güçlü* tutarlılık ile yapılandırıldıysa veri kaybı olmaz. Kalıcı ve kurtarılabilir bir yazma bölgesi durumunda, sınırlı stalet tutarlılığı ile yapılandırılmış çok bölgeli bir Azure Cosmos hesabı olan potansiyel veri kaybı penceresi, K = 100000 güncelleştirmelerinin ve T = 5 dakikadan kısa bir süre içinde ( *k* veya *t* ) kısıtlanmıştır. Oturum, tutarlı ön ek ve nihai tutarlılık seviyeleri için, olası veri kaybı penceresi en fazla 15 dakika sınırlı olur. Azure Cosmos DB için RTO ve RPO hedefleri hakkında daha fazla bilgi için bkz. [tutarlılık düzeyleri ve veri dayanıklılığı](./consistency-levels.md#rto)
 
 ## <a name="availability-zone-support"></a>Kullanılabilirlik alanı desteği
 

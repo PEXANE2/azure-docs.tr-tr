@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/21/2020
 ms.author: memildin
-ms.openlocfilehash: 0bc8b4f7bd2bf02d4d034ebacc0fc45b17cd3e15
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 55a4e50e3a85eccb9517cf682b67268e633abecc
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928102"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081238"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik puanı
 
@@ -190,7 +190,7 @@ Güvenlik Merkezi 'nin varsayılan güvenlik girişimi sektörde en iyi uygulama
     <td class="tg-lboi"; width=55%>- Sanal makinelerin yönetim bağlantı noktaları, tam zamanında ağ erişim denetimiyle korunmalıdır<br>- Sanal makineler bir ağ güvenlik grubuyla ilişkilendirilmelidir<br>- Yönetim bağlantı noktaları sanal makinelerinizde kapatılmalıdır</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">Sistem güncelleştirmelerini Uygula (en fazla 6 puan)</p></strong>Sistem güncelleştirmeleri, kuruluşlara operasyonel verimliliği koruma, güvenlik açıklarını azaltma ve son kullanıcılar için daha kararlı bir ortam sağlama olanağı sunar. Güncelleştirmelerin uygulanması, düzeltme eki yüklenmemiş güvenlik açıklarını ve saldırılara açık olan ortamlarda sonuçları bırakır. Bu güvenlik açıklarına yararlanılabilir ve veri kaybına, veri ayıklanmasına, fidye ve kaynak kötüye kullanılmasına yol açabilir. Sistem güncelleştirmelerini dağıtmak için, sanal makinelerinize yönelik <a href="/azure/automation/automation-update-management">düzeltme eklerini ve güncelleştirmeleri yönetmek üzere güncelleştirme yönetimi çözümünü</a> kullanabilirsiniz. Güncelleştirme yönetimi, yazılım sürümlerinin dağıtımını ve bakımını denetleme işlemidir.</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">Sistem güncelleştirmelerini Uygula (en fazla 6 puan)</p></strong>Sistem güncelleştirmeleri, kuruluşlara operasyonel verimliliği koruma, güvenlik açıklarını azaltma ve son kullanıcılar için daha kararlı bir ortam sağlama olanağı sunar. Güncelleştirmelerin uygulanması, düzeltme eki yüklenmemiş güvenlik açıklarını ve saldırılara açık olan ortamlarda sonuçları bırakır. Bu güvenlik açıklarına yararlanılabilir ve veri kaybına, veri ayıklanmasına, fidye ve kaynak kötüye kullanılmasına yol açabilir. Sistem güncelleştirmelerini dağıtmak için, sanal makinelerinize yönelik <a href="/azure/automation/update-management/overview">düzeltme eklerini ve güncelleştirmeleri yönetmek üzere güncelleştirme yönetimi çözümünü</a> kullanabilirsiniz. Güncelleştirme yönetimi, yazılım sürümlerinin dağıtımını ve bakımını denetleme işlemidir.</td>
     <td class="tg-lboi"; width=55%>- İzleme Aracısı sistem durumu sorunları makinelerinizde çözümlenmelidir<br>- İzleme Aracısı sanal makine ölçek kümelerine yüklenmelidir<br>- İzleme Aracısı makinelerinizde yüklü olmalıdır<br>- Bulut hizmeti rolleriniz için işletim sistemi sürümü güncellenmelidir<br>- Sanal makine ölçek kümelerindeki sistem güncelleştirmeleri yüklenmelidir<br>- Sistem güncelleştirmelerinin makinelerinizde yüklü olması gerekir<br>- Sistem güncelleştirmelerinin uygulanabilmesi için makineleriniz yeniden başlatılmalıdır<br>- Kubernetes Hizmetleri, güvenlik açığı olmayan bir Kubernetes sürümüne yükseltilmelidir<br>- İzleme Aracısı sanal makinelerinizde yüklü olmalıdır<br>- Log Analytics Aracısı Windows tabanlı Azure Arc makinelerinizde yüklü olmalıdır (Önizleme)<br>- Log Analytics Aracısı, Linux tabanlı Azure yay makinelerinizde yüklü olmalıdır (Önizleme)</td>
   </tr>
   <tr>

@@ -8,14 +8,15 @@ ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 94aa699d8daab7e5e7ff4ae82e5d09ab1475c07e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 709b83ad3e71a932202cebb9c9cb6187feae4ed7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92477598"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080014"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure Tablo Depolama tablo tasarım kılavuzu: Ölçeklenebilir ve yüksek performanslı tablolar
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
@@ -123,7 +124,7 @@ Aşağıdaki örnek, çalışan ve departman varlıklarını depolamak için bas
 </table>
 
 
-Şimdiye kadar, bu tasarım ilişkisel veritabanındaki bir tabloya benzer şekilde görünür. Önemli farklılıklar, zorunlu sütunlardır ve birden çok varlık türünü aynı tabloda depolayabilme özelliğidir. Ayrıca, **ad** veya **yaş**gibi Kullanıcı tanımlı özelliklerin her biri, ilişkisel veritabanındaki bir sütun gibi bir veri türüne (örneğin, bir tamsayı veya dize) sahiptir. Ancak, ilişkisel bir veritabanının aksine, tablo depolamanın şema-daha az doğası, bir özelliğin her varlıkta aynı veri türüne sahip olması gerektiği anlamına gelir. Karmaşık veri türlerini tek bir özellikte depolamak için JSON veya XML gibi serileştirilmiş bir biçim kullanmanız gerekir. Daha fazla bilgi için bkz. [Tablo depolama veri modelini anlama](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
+Şimdiye kadar, bu tasarım ilişkisel veritabanındaki bir tabloya benzer şekilde görünür. Önemli farklılıklar, zorunlu sütunlardır ve birden çok varlık türünü aynı tabloda depolayabilme özelliğidir. Ayrıca, **ad** veya **yaş** gibi Kullanıcı tanımlı özelliklerin her biri, ilişkisel veritabanındaki bir sütun gibi bir veri türüne (örneğin, bir tamsayı veya dize) sahiptir. Ancak, ilişkisel bir veritabanının aksine, tablo depolamanın şema-daha az doğası, bir özelliğin her varlıkta aynı veri türüne sahip olması gerektiği anlamına gelir. Karmaşık veri türlerini tek bir özellikte depolamak için JSON veya XML gibi serileştirilmiş bir biçim kullanmanız gerekir. Daha fazla bilgi için bkz. [Tablo depolama veri modelini anlama](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
 
 Ve seçiminiz, `PartitionKey` `RowKey` iyi tablo tasarımı için temel seçenektir. Bir tabloda depolanan her varlık, ve benzersiz bir birleşimine sahip olmalıdır `PartitionKey` `RowKey` . İlişkisel bir veritabanı tablosundaki anahtarlarda olduğu gibi, `PartitionKey` ve değerleri de `RowKey` Hızlı görünüm sağlayan kümelenmiş bir dizin oluşturmak için dizinlenir. Ancak tablo depolama, ikincil dizinler oluşturmaz, bu nedenle yalnızca iki dizinli özellik bulunur (daha sonra açıklanan bazı desenler, daha sonra bu görünen sınırlamanın nasıl geçici bir şekilde çalışabilir).  
 
@@ -137,7 +138,7 @@ Tablo depolamada, tek bir düğüm bir veya daha fazla tam bölüm hizmetleri ve
 Tablo depolamanın iç ayrıntıları hakkında daha fazla bilgi edinmek ve belirli bölümleri nasıl yönettiği hakkında daha fazla bilgi için, bkz. [Microsoft Azure depolama: güçlü tutarlılık ile yüksek oranda kullanılabilir bir bulut depolama hizmeti](/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency).  
 
 ### <a name="entity-group-transactions"></a>Varlık grubu işlemleri
-Tablo depolamadaki varlık grubu işlemleri (Yumurlar), birden çok varlıkta atomik güncelleştirmeler gerçekleştirmeye yönelik tek yerleşik mekanizmadır. Yumurtları *toplu işlemler*olarak da adlandırılır. Yumurtları yalnızca aynı bölümde depolanan varlıklar üzerinde çalışabilir (belirli bir tabloda aynı bölüm anahtarını paylaşıyor), bu nedenle birden çok varlık genelinde atomik işlem davranışına ihtiyacınız varsa, bu varlıkların aynı bölümde olduğundan emin olun. Bu genellikle, farklı varlık türleri için birden çok tablo kullanmadan, birden çok varlık türünü aynı tabloda (ve bölümde) tutmanın bir nedenidir. Tek bir EGT, en fazla 100 varlık üzerinde çalışabilir.  İşlenmek üzere birden çok eş zamanlı Yumurtları gönderirseniz, bu yumurtların Yumurtları genelinde ortak varlıklar üzerinde çalışmalarından emin olmak önemlidir. Aksi takdirde, işlemeyi erteleyerek risk alırsınız.
+Tablo depolamadaki varlık grubu işlemleri (Yumurlar), birden çok varlıkta atomik güncelleştirmeler gerçekleştirmeye yönelik tek yerleşik mekanizmadır. Yumurtları *toplu işlemler* olarak da adlandırılır. Yumurtları yalnızca aynı bölümde depolanan varlıklar üzerinde çalışabilir (belirli bir tabloda aynı bölüm anahtarını paylaşıyor), bu nedenle birden çok varlık genelinde atomik işlem davranışına ihtiyacınız varsa, bu varlıkların aynı bölümde olduğundan emin olun. Bu genellikle, farklı varlık türleri için birden çok tablo kullanmadan, birden çok varlık türünü aynı tabloda (ve bölümde) tutmanın bir nedenidir. Tek bir EGT, en fazla 100 varlık üzerinde çalışabilir.  İşlenmek üzere birden çok eş zamanlı Yumurtları gönderirseniz, bu yumurtların Yumurtları genelinde ortak varlıklar üzerinde çalışmalarından emin olmak önemlidir. Aksi takdirde, işlemeyi erteleyerek risk alırsınız.
 
 Yumurtları, tasarımınızda değerlendirmenize yönelik potansiyel bir ticaretle da tanıtılmaktadır. Azure 'un düğümler arasında yük dengeleme isteklerini daha fazla fırsata sahip olduğu için daha fazla bölüm kullanmak uygulamanızın ölçeklenebilirliğini artırır. Ancak bu durum, uygulamanızın Atomik işlemler gerçekleştirmesini ve verilerinize yönelik güçlü tutarlılığı korumanıza yönelik yeteneği sınırlayabilir. Ayrıca, tek bir düğüm için bekleneceğiniz işlem verimini sınırlayabilen bir bölüm düzeyinde belirli ölçeklenebilirlik hedefleri vardır.
 
@@ -205,12 +206,12 @@ Aşağıdaki örneklerde, tablo depolamanın çalışan varlıklarını aşağı
 Tablo depolama sorguları tasarlamak için bazı genel yönergeler aşağıda verilmiştir. Aşağıdaki örneklerde kullanılan filtre sözdizimi tablo depolama REST API. Daha fazla bilgi için bkz. [Sorgu varlıkları](/rest/api/storageservices/Query-Entities).  
 
 * *Nokta sorgusu* , kullanılacak en etkili aramadır ve en düşük gecikme süresini gerektiren yüksek hacimli aramalar veya aramalar için önerilir. Böyle bir sorgu, ve değerlerini belirterek tek bir varlığı etkin bir şekilde bulmak için dizinleri kullanabilir `PartitionKey` `RowKey` . Örneğin: `$filter=(PartitionKey eq 'Sales') and (RowKey eq '2')`.  
-* İkinci en iyi *Aralık sorgusudur*. Birden `PartitionKey` `RowKey` fazla varlık döndürmek için bir değer aralığı üzerinde ve filtrelerini kullanır. `PartitionKey`Değer belirli bir bölümü tanımlar ve `RowKey` değerler bu bölümdeki varlıkların bir alt kümesini tanımlar. Örneğin: `$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`.  
-* Üçüncü en iyi *bölüm taramasından*. `PartitionKey`Anahtar olmayan başka bir özellik üzerinde, ve filtrelerini kullanır ve birden fazla varlık döndürebilir. `PartitionKey`Değer belirli bir bölümü tanımlar ve özellik değerleri ilgili bölümdeki varlıkların bir alt kümesini seçer. Örneğin: `$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'`.  
+* İkinci en iyi *Aralık sorgusudur* . Birden `PartitionKey` `RowKey` fazla varlık döndürmek için bir değer aralığı üzerinde ve filtrelerini kullanır. `PartitionKey`Değer belirli bir bölümü tanımlar ve `RowKey` değerler bu bölümdeki varlıkların bir alt kümesini tanımlar. Örneğin: `$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`.  
+* Üçüncü en iyi *bölüm taramasından* . `PartitionKey`Anahtar olmayan başka bir özellik üzerinde, ve filtrelerini kullanır ve birden fazla varlık döndürebilir. `PartitionKey`Değer belirli bir bölümü tanımlar ve özellik değerleri ilgili bölümdeki varlıkların bir alt kümesini seçer. Örneğin: `$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'`.  
 * *Tablo taraması* , `PartitionKey` herhangi bir eşleşen varlık için tablonuzu oluşturan tüm bölümleri aradığı için, ' yi içermez ve verimsiz olur. Filtrenizin ' i kullanıp kullanmadığını bakılmaksızın tablo taraması gerçekleştirir `RowKey` . Örneğin: `$filter=LastName eq 'Jones'`.  
 * Birden çok varlık döndüren Azure Tablo depolama sorguları bunları `PartitionKey` ve sırasını sıralar `RowKey` . İstemcideki varlıkları yeniden kullanmaktan kaçınmak için `RowKey` en yaygın sıralama düzenini tanımlayan bir seçin. Azure Cosmos DB Azure Tablo API'si tarafından döndürülen sorgu sonuçları bölüm anahtarına veya satır anahtarına göre sıralanmaz. Özellik farklarının ayrıntılı bir listesi için, [Azure Cosmos DB ve Azure Tablo depolamadaki tablo API'si arasındaki farklara](table-api-faq.md#table-api-vs-table-storage)bakın.
 
-Değerleri temel alan bir filtre belirtmek için "**or**" kullanılması `RowKey` , Bölüm taramasıyla sonuçlanır ve Aralık sorgusu olarak değerlendirilmez. Bu nedenle, şu gibi filtreler kullanan sorgulardan kaçının: `$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')` .  
+Değerleri temel alan bir filtre belirtmek için " **or** " kullanılması `RowKey` , Bölüm taramasıyla sonuçlanır ve Aralık sorgusu olarak değerlendirilmez. Bu nedenle, şu gibi filtreler kullanan sorgulardan kaçının: `$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')` .  
 
 Etkili sorgular çalıştırmak için depolama Istemci kitaplığını kullanan istemci tarafı kodu örnekleri için, bkz.:  
 
@@ -252,7 +253,7 @@ Tablo Depolaması sorgu sonuçlarını, ve daha sonra öğesine göre artan sır
 > [!NOTE]
 > Azure Cosmos DB Azure Tablo API'si tarafından döndürülen sorgu sonuçları bölüm anahtarına veya satır anahtarına göre sıralanmaz. Özellik farklarının ayrıntılı bir listesi için, [Azure Cosmos DB ve Azure Tablo depolamadaki tablo API'si arasındaki farklara](table-api-faq.md#table-api-vs-table-storage)bakın.
 
-Tablo depolamadaki anahtarlar dize değerleridir. Sayısal değerlerin doğru şekilde sıralanmasını sağlamak için, bunları sabit bir uzunluğa dönüştürmeniz ve bunları sıfırlarla birlikte yapmanız gerekir. Örneğin, olarak kullandığınız çalışan KIMLIĞI değeri `RowKey` bir tamsayı değeri ise, **123** çalışan kimliğini **00000123**olarak dönüştürmeniz gerekir. 
+Tablo depolamadaki anahtarlar dize değerleridir. Sayısal değerlerin doğru şekilde sıralanmasını sağlamak için, bunları sabit bir uzunluğa dönüştürmeniz ve bunları sıfırlarla birlikte yapmanız gerekir. Örneğin, olarak kullandığınız çalışan KIMLIĞI değeri `RowKey` bir tamsayı değeri ise, **123** çalışan kimliğini **00000123** olarak dönüştürmeniz gerekir. 
 
 Birçok uygulamanın, farklı siparişlerde sıralanmış verileri kullanma gereksinimleri vardır: Örneğin, çalışanları ada göre veya birleştirme tarihine göre sıralama. Bölüm [tablosu tasarım desenlerindeki](#table-design-patterns) aşağıdaki desenler, varlıklarınız için nasıl alternatif sıralama düzenleri ele alma bölümüne yöneliktir:  
 
@@ -494,7 +495,7 @@ Aşağıdaki iki filtre ölçütü (bir çalışan KIMLIĞI tarafından bir aram
 
 Bir dizi çalışan varlığı için sorgulama yaparsanız, çalışan KIMLIĞI sırasında sıralanmış bir Aralık veya e-posta adresi sırasında sıralanan bir Aralık belirleyebilirsiniz. İçinde uygun öneki olan varlıklar için sorgu `RowKey` .  
 
-* Satış departmanındaki tüm çalışanları **000100** - **000199**aralığında, çalışan kimliği SıRASıYLA sıralanan bir çalışan kimliği ile bulmak için, şunu kullanın: $Filter = (partitionkey EQ ' empid_Sales ') ve (rowkey Ge ' 000100 ') ve (rowkey Le ' 000199 ')  
+* Satış departmanındaki tüm çalışanları **000100** - **000199** aralığında, çalışan kimliği SıRASıYLA sıralanan bir çalışan kimliği ile bulmak için, şunu kullanın: $Filter = (partitionkey EQ ' empid_Sales ') ve (rowkey Ge ' 000100 ') ve (rowkey Le ' 000199 ')  
 * Satış departmanındaki tüm çalışanları "a" ile başlayan, e-posta adresi sırasıyla sıralanmış bir e-posta adresiyle bulmak için: $filter = (PartitionKey EQ ' email_Sales ') ve (RowKey Ge ' a ') ve (RowKey lt ' b ') kullanın  
 
 Yukarıdaki örneklerde kullanılan filtre sözdiziminin tablo depolama REST API olduğunu unutmayın. Daha fazla bilgi için bkz. [Sorgu varlıkları](/rest/api/storageservices/Query-Entities).  
@@ -700,7 +701,7 @@ $filter = (PartitionKey EQ ' Sales ') ve (RowKey Ge ' empid_000123 ') ve (RowKey
 #### <a name="issues-and-considerations"></a>Sorunlar ve dikkat edilmesi gerekenler
 Bu düzenin nasıl uygulanacağına karar verirken aşağıdaki noktaları göz önünde bulundurun:  
 
-* Değeri ayrıştırmayı kolaylaştıran uygun bir ayırıcı karakter kullanmanız gerekir `RowKey` : Örneğin, **000123_2012**.  
+* Değeri ayrıştırmayı kolaylaştıran uygun bir ayırıcı karakter kullanmanız gerekir `RowKey` : Örneğin, **000123_2012** .  
 * Ayrıca, bu varlığı aynı çalışanla ilgili verileri içeren diğer varlıklarla aynı bölümde depoluyorsunuz. Bu, güçlü tutarlılığı sürdürmek için Yumurtları kullanabileceğiniz anlamına gelir.
 * Bu düzenin uygun olup olmadığını anlamak için verileri ne sıklıkta sorgulayacağınızı düşünmeniz gerekir. Örneğin, İnceleme verilerine sık sık ve ana çalışan verileri sıklıkla eriştiğinizde, onları ayrı varlıklar olarak saklamanız gerekir.  
 

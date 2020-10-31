@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: a058e7a23c36dcaca16c3cce1be1ca826d472bc0
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: eb06d101170685bea5ff231612e9ffbf8df467da
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92477003"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079300"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Azure Cosmos DB ile toplam sahip olma maliyeti (TCO)
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB, ayrıntılı çok kiracılı olarak ve kaynak idaresi özelliğiyle tasarlanmıştır. Bu tasarım, Azure Cosmos DB’nin çok daha az maliyetlerle çalıştırılmasına olanak tanır ve kullanıcıların tasarruf etmesine yardımcı olur. Şu anda, Azure Cosmos DB tek makinede 280’den fazla müşteri iş yükünü ve bir kümede binlerce müşteri iş yükünü destekler. Bu yoğunluk, sürekli olarak artış gösteriyor. Müşterilerin iş yüklerinin çoğaltmalarına ilişkin yükü bir kümedeki farklı makinelerde ve bir veri merkezindeki birden fazla kümede dengeler. Daha fazla bilgi edinmek için bkz. [Azure Cosmos DB: genel olarak dağıtılmış veritabanlarının en katmanını iletme](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/). Kaynak yönetimi, çok kiracılı ve Azure altyapısına yönelik yerel tümleştirme nedeniyle Azure Cosmos DB, MongoDB, Cassandra veya IaaS üzerinde çalışan diğer OSS NoSQL ve şirket içinde çalışan veritabanı altyapılarından en fazla 10 kez bir tanesi üzerinden. [Bir NoSQL veritabanı bulut hizmetinin toplam maliyetlerine (değil)](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf)ait incelemeye bakın.
 

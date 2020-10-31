@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e907a3ec2e2521524cdf23e1403ae38a19275aa6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c7c002b57f2220ac0a9fba43a8081b2a4ed800e7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071328"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081068"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Azure API Management örneği kapasitesi
 
@@ -42,7 +42,7 @@ Bu makaledeki adımları takip etmek için şunları yapmanız gerekir:
 
 ## <a name="what-is-capacity"></a>Kapasite nedir?
 
-![Kapasite ölçümü](./media/api-management-capacity/capacity-ingredients.png)
+![Kapasite ölçümünü açıklayan diyagram.](./media/api-management-capacity/capacity-ingredients.png)
 
 **Kapasite** , bir API Management örneğindeki yükün göstergesidir. Kaynak kullanımını (CPU, bellek) ve ağ kuyruğu uzunluklarını yansıtır. CPU ve bellek kullanımı, kaynakların tüketimini şu şekilde gösterir:
 
@@ -52,7 +52,7 @@ Bu makaledeki adımları takip etmek için şunları yapmanız gerekir:
 
 Toplam **Kapasite** , bir API Management örneğinin her biriminden kendi değerlerinin ortalamasıdır.
 
-**Kapasite ölçümü** API Management örneğinizle ilgili sorunları yüzeye sunacak şekilde tasarlansa da, sorunların **Kapasite ölçümünde**değişikliklere yansıtılmayabileceği durumlar vardır.
+**Kapasite ölçümü** API Management örneğinizle ilgili sorunları yüzeye sunacak şekilde tasarlansa da, sorunların **Kapasite ölçümünde** değişikliklere yansıtılmayabileceği durumlar vardır.
 
 ## <a name="capacity-metric-behavior"></a>Kapasite ölçümü davranışı
 
@@ -78,7 +78,7 @@ Düşük **kapasiteli ölçüm** , API Management örneğinizin herhangi bir sor
 ![Kapasite ölçümü](./media/api-management-capacity/capacity-metric.png)  
 
 1. [Azure Portal](https://portal.azure.com/)APIM örneğinize gidin.
-2. **Ölçümler**’i seçin.
+2. **Ölçümler** ’i seçin.
 3. Mor bölümünde, kullanılabilir ölçülerden **Kapasite** ölçümü ' ni seçin ve varsayılan **Ort** toplamayı bırakın.
 
     > [!TIP]
@@ -99,7 +99,7 @@ Düşük **kapasiteli ölçüm** , API Management örneğinizin herhangi bir sor
 
 + Uzun süreli eğilim ve ortalamaya bakıyor.
 + Yükte hiçbir artışla ilgisi olmayan ani artışlar yok sayılıyor (bkz. "kapasite ölçüm davranışı" Açıklama).
-+ **Kapasitenin**değeri, daha uzun bir süre boyunca %60 veya %70 ' i aştığında, örneğinizi yükseltmek veya ölçeklendirmek (örneğin, 30 dakika). Farklı değerler, hizmetiniz veya senaryonuz için daha iyi çalışabilir.
++ **Kapasitenin** değeri, daha uzun bir süre boyunca %60 veya %70 ' i aştığında, örneğinizi yükseltmek veya ölçeklendirmek (örneğin, 30 dakika). Farklı değerler, hizmetiniz veya senaryonuz için daha iyi çalışabilir.
 
 >[!TIP]  
 > Trafiğinizi önceden tahmin edebiliyorsanız, istediğiniz iş yükleri için APıM örneğinizi test edin. Kiracınızdaki istek yükünü kademeli olarak artırabilir ve kapasite ölçümünün en yüksek yüküne karşılık gelen değerini izleyebilirsiniz. Herhangi bir zamanda ne kadar kapasite kullanıldığını anlamak için Azure portal kullanmak için önceki bölümde verilen adımları izleyin.

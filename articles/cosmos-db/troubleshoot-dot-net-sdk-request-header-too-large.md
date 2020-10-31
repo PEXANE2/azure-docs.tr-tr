@@ -8,14 +8,16 @@ ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: d5d66ca05390af5f6fef91ca959f1db3d547d3fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fff9bc55b324875601a2c4e68835a17c61c3769b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89014056"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079266"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-header-too-large-message"></a>Tanılama ve sorun giderme Azure Cosmos DB "Istek üst bilgisi çok büyük" iletisi
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 "Istek üst bilgisi çok büyük" iletisi bir HTTP hata kodu 400 ile oluşturulur. İstek üstbilgisinin boyutu, izin verilen en büyük boyutu aşarsa, bu hata oluşur. SDK 'nın en son sürümünü kullanmanızı öneririz. En az sürüm 3. x veya 2. x kullanın, çünkü bu sürümler özel durum iletisine üst bilgi boyutu izleme ekler.
 
 ## <a name="troubleshooting-steps"></a>Sorun giderme adımları

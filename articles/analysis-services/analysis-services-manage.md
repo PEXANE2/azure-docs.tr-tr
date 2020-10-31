@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 697e5484c007c095201344fb4829a92eb642a6e3
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 91ffcac98b2b919a8fc131d235e699aad4fa215d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014860"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078909"
 ---
 # <a name="manage-analysis-services"></a>Analysis Services’ı yönetme
 Azure 'da bir Analysis Services sunucusu oluşturduktan sonra, hemen gerçekleştirmeniz gereken bazı yönetim ve yönetim görevleri olabilir. Örneğin, işleme verilerini yenileme, sunucunuzdaki modellere kimlerin erişebileceğini denetleme veya sunucunuzun sistem durumunu izleme gibi işlemler gerçekleştirin. Bazı yönetim görevleri yalnızca Azure portal, diğer SQL Server Management Studio (SSMS) ve bazı görevlerde gerçekleştirilebilir.
@@ -20,7 +20,7 @@ Azure 'da bir Analysis Services sunucusu oluşturduktan sonra, hemen gerçekleş
 ## <a name="azure-portal"></a>Azure portal
 [Azure Portal](https://portal.azure.com/) , sunucuları oluşturabileceğiniz ve silebileceğiniz, sunucu kaynaklarını izleyebileceğiniz, boyutu değiştirebileceğiniz ve sunucularınıza kimlerin erişebileceğini yönetebilen yerdir.  Bazı sorunlarla karşılaşırsanız, bir destek isteği de gönderebilirsiniz.
 
-![Azure'da sunucu adını alma](./media/analysis-services-manage/aas-manage-portal.png)
+![Sunucu oluşturup silebileceğiniz, sunucu kaynaklarını izleyip, boyutu değiştirebileceğiniz ve sunucularınıza kimlerin erişebileceğini yönetebilen Azure portal gösteren ekran görüntüsü.](./media/analysis-services-manage/aas-manage-portal.png)
 
 ## <a name="sql-server-management-studio"></a>SQL Server Management Studio
 Azure 'da sunucunuza bağlanmak tıpkı kendi kuruluşunuzdaki bir sunucu örneğine bağlanma gibidir. SSMS 'den, işlem verileri gibi aynı görevlerin birçoğunu gerçekleştirebilir veya bir işlem betiği oluşturabilir, rolleri yönetebilir ve PowerShell kullanabilirsiniz.
@@ -39,10 +39,10 @@ En son özellikleri ve Azure Analysis Services sunucunuza bağlanırken en iyi d
 1. Bağlanmadan önce sunucu adını almanız gerekir. **Azure portalı** > sunucu > **Genel Bakış** > **Sunucu adı** menüsünde sunucu adını kopyalayın.
    
     ![Azure'da sunucu adını alma](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
-2. SSMS > **Nesne Gezgini**'nde **Bağlan** > **Analysis Services**'e tıklayın.
-3. **Sunucuya Bağlan** iletişim kutusunda sunucu adını yapıştırın, ardından **kimlik doğrulaması**' nda aşağıdaki kimlik doğrulama türlerinden birini seçin:   
+2. SSMS > **Nesne Gezgini** 'nde **Bağlan** > **Analysis Services** 'e tıklayın.
+3. **Sunucuya Bağlan** iletişim kutusunda sunucu adını yapıştırın, ardından **kimlik doğrulaması** ' nda aşağıdaki kimlik doğrulama türlerinden birini seçin:   
     > [!NOTE]
-    > **MFA desteğiyle Active Directory**kimlik doğrulaması türü, önerilir.
+    > **MFA desteğiyle Active Directory** kimlik doğrulaması türü, önerilir.
 
     > [!NOTE]
     > Bir Microsoft hesabı, Live ID, Yahoo, Gmail vb. ile oturum açarsanız, parola alanını boş bırakın. Bağlan ' a tıkladıktan sonra parola girmeniz istenir.

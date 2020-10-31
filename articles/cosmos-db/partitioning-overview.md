@@ -6,20 +6,21 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 353abe5ac55e49e01f6a99f72307b8525a72fc00
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 7c05ca6462d49d1d41791e5b93b7723ac681d448
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281151"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080841"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB'de bölümleme ve yatay ölçeklendirme
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB, uygulamanızın performans ihtiyaçlarını karşılamak üzere bir veritabanındaki ayrı kapsayıcıları ölçeklendirmek için bölümleme kullanır. Bölümleme bölümünde, bir kapsayıcıdaki öğeler *mantıksal bölümler*adlı farklı alt kümelere bölünür. Mantıksal bölümler, bir kapsayıcıdaki her öğeyle ilişkili bir *bölüm anahtarının* değerine göre oluşturulur. Bir mantıksal bölümdeki tüm öğeler aynı bölüm anahtarı değerine sahip.
+Azure Cosmos DB, uygulamanızın performans ihtiyaçlarını karşılamak üzere bir veritabanındaki ayrı kapsayıcıları ölçeklendirmek için bölümleme kullanır. Bölümleme bölümünde, bir kapsayıcıdaki öğeler *mantıksal bölümler* adlı farklı alt kümelere bölünür. Mantıksal bölümler, bir kapsayıcıdaki her öğeyle ilişkili bir *bölüm anahtarının* değerine göre oluşturulur. Bir mantıksal bölümdeki tüm öğeler aynı bölüm anahtarı değerine sahip.
 
 Örneğin, bir kapsayıcı öğeleri barındırır. Her öğenin özellik için benzersiz bir değeri vardır `UserID` . `UserID`Kapsayıcıda öğeler için bölüm anahtarı olarak görev yapar ve 1.000 benzersiz `UserID` değer varsa, kapsayıcı için 1.000 mantıksal bölümler oluşturulur.
 
-Öğenin mantıksal bölümünü belirleyen bir bölüm anahtarına ek olarak, bir kapsayıcıdaki her öğe bir *öğe kimliğine* (mantıksal bölüm içinde benzersiz) sahiptir. Bölüm anahtarını ve *öğe kimliğini* birleştirmek, öğenin benzersiz şekilde tanımlandığı öğenin *dizinini*oluşturur. [Bölüm anahtarının seçilmesi](#choose-partitionkey) , uygulamanızın performansını etkileyecek önemli bir karardır.
+Öğenin mantıksal bölümünü belirleyen bir bölüm anahtarına ek olarak, bir kapsayıcıdaki her öğe bir *öğe kimliğine* (mantıksal bölüm içinde benzersiz) sahiptir. Bölüm anahtarını ve *öğe kimliğini* birleştirmek, öğenin benzersiz şekilde tanımlandığı öğenin *dizinini* oluşturur. [Bölüm anahtarının seçilmesi](#choose-partitionkey) , uygulamanızın performansını etkileyecek önemli bir karardır.
 
 Bu makalede, mantıksal ve fiziksel bölümler arasındaki ilişki açıklanmaktadır. Ayrıca bölümlendirme için en iyi yöntemleri açıklar ve yatay ölçeklendirmenin Azure Cosmos DB nasıl çalıştığına ilişkin derinlemesine bir görünüm sağlar. Bölüm anahtarınızı seçmek için bu iç ayrıntıları anlamanız gerekli değildir, ancak Azure Cosmos DB nasıl çalıştığına ilişkin netlik sahibi olmak üzere kapsandık.
 
@@ -77,7 +78,7 @@ Aşağıdaki görüntüde, mantıksal bölümlerin küresel olarak dağıtılan 
 
 ## <a name="choosing-a-partition-key"></a><a id="choose-partitionkey"></a>Bölüm anahtarını seçme
 
-Bölüm anahtarında iki bileşen vardır: **bölüm anahtar yolu** ve **bölüm anahtarı değeri**. Örneğin, {"UserID" öğesini düşünün: "Andrew", "worksFor": "Microsoft"} bölüm anahtarı olarak "UserID" seçeneğini belirlerseniz, iki bölüm anahtarı bileşeni aşağıda verilmiştir:
+Bölüm anahtarında iki bileşen vardır: **bölüm anahtar yolu** ve **bölüm anahtarı değeri** . Örneğin, {"UserID" öğesini düşünün: "Andrew", "worksFor": "Microsoft"} bölüm anahtarı olarak "UserID" seçeneğini belirlerseniz, iki bölüm anahtarı bileşeni aşağıda verilmiştir:
 
 * Bölüm anahtarı yolu (örneğin: "/UserID"). Bölüm anahtarı yolu alfasayısal ve alt çizgi (_) karakterlerini kabul eder. Ayrıca, standart yol gösterimini (/) kullanarak iç içe geçmiş nesneleri de kullanabilirsiniz.
 
@@ -113,20 +114,20 @@ Kapsayıcınız birkaç fiziksel bölümden daha fazla büyümeye devam ediyorsa
 
 ## <a name="using-item-id-as-the-partition-key"></a>Bölüm anahtarı olarak öğe KIMLIĞI kullanma
 
-Kapsayıcının çok sayıda olası değeri olan bir özelliği varsa, büyük olasılıkla büyük bir bölüm anahtarı seçimidir. Bu tür bir özelliğin olası bir örneği *öğe kimliğidir*. Küçük okuma ağır kapsayıcılar veya herhangi bir büyüklükte yazma ağır kapsayıcılar için, *öğe kimliği* doğal olarak bölüm anahtarı için harika bir seçimdir.
+Kapsayıcının çok sayıda olası değeri olan bir özelliği varsa, büyük olasılıkla büyük bir bölüm anahtarı seçimidir. Bu tür bir özelliğin olası bir örneği *öğe kimliğidir* . Küçük okuma ağır kapsayıcılar veya herhangi bir büyüklükte yazma ağır kapsayıcılar için, *öğe kimliği* doğal olarak bölüm anahtarı için harika bir seçimdir.
 
-Kapsayıcıdaki her öğede sistem özelliği *öğe kimliği* var. Öğe için bir mantıksal KIMLIĞI temsil eden diğer özelliklere sahip olabilirsiniz. Çoğu durumda bunlar Ayrıca, *öğe kimliği*ile aynı nedenlerden dolayı büyük bölüm anahtarı seçimleridir.
+Kapsayıcıdaki her öğede sistem özelliği *öğe kimliği* var. Öğe için bir mantıksal KIMLIĞI temsil eden diğer özelliklere sahip olabilirsiniz. Çoğu durumda bunlar Ayrıca, *öğe kimliği* ile aynı nedenlerden dolayı büyük bölüm anahtarı seçimleridir.
 
 *Öğe kimliği* , aşağıdaki nedenlerden dolayı harika bir bölüm anahtarı seçimleridir:
 
 * Çok sayıda olası değer aralığı vardır (öğe başına bir benzersiz *öğe kimliği* ).
 * Öğe başına benzersiz bir *öğe kimliği* olduğundan, *öğe kimliği* , ru tüketimine ve veri depolama alanı üzerinde eşit dengelemeye sahip harika bir iş yapar.
-* *Öğe kimliğini*biliyorsanız, öğenin bölüm anahtarını her zaman öğrentireceğiz, kolayca etkili nokta okuma yapabilirsiniz.
+* *Öğe kimliğini* biliyorsanız, öğenin bölüm anahtarını her zaman öğrentireceğiz, kolayca etkili nokta okuma yapabilirsiniz.
 
 Bölüm anahtarı olarak *öğe kimliği* seçerken göz önünde bulundurmanız gereken bazı noktalar şunlardır:
 
-* *Öğe kimliği* bölüm anahtarınkse, kapsayıcının tamamında benzersiz bir tanımlayıcı olur. Yinelenen *öğe kimliği*olan öğeleriniz olamaz.
-* Çok sayıda [fiziksel bölüm](partitioning-overview.md#physical-partitions)içeren bir okuma ağır kapsayıcınız varsa, *öğe kimliği*ile bir eşitlik filtresi varsa sorgular daha verimli olacaktır.
+* *Öğe kimliği* bölüm anahtarınkse, kapsayıcının tamamında benzersiz bir tanımlayıcı olur. Yinelenen *öğe kimliği* olan öğeleriniz olamaz.
+* Çok sayıda [fiziksel bölüm](partitioning-overview.md#physical-partitions)içeren bir okuma ağır kapsayıcınız varsa, *öğe kimliği* ile bir eşitlik filtresi varsa sorgular daha verimli olacaktır.
 * Saklı yordamları veya Tetikleyicileri birden çok mantıksal bölümde çalıştıramazsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar

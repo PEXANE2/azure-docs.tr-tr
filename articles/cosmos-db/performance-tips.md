@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 0fb783a6ad65ce17bff14b72e8d94d284769779f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 824c48646ab32e02c627fb623dbab60c3050ad96
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475167"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080728"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Azure Cosmos DB ve .NET SDK v2 için performans ipuçları
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
@@ -44,14 +45,14 @@ Gelişmiş performans için Windows 64 bit ana bilgisayar işlemesini öneririz.
 
 - Yürütülebilir uygulamalar için, **Yapı** sekmesindeki **Proje özellikleri** penceresinde [Platform hedefini](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) **x64** olarak ayarlayarak ana bilgisayar işlemesini değiştirebilirsiniz.
 
-- VSTest tabanlı test projeleri için, **Test**  >  **Test Settings**  >  Visual Studio **Test** menüsünde test test ayarları**Varsayılan işlemci mimarisi x64 olarak** ' yi seçerek konak işlemeyi değiştirebilirsiniz.
+- VSTest tabanlı test projeleri için, **Test**  >  **Test Settings**  >  Visual Studio **Test** menüsünde test test ayarları **Varsayılan işlemci mimarisi x64 olarak** ' yi seçerek konak işlemeyi değiştirebilirsiniz.
 
-- Yerel olarak dağıtılan ASP.NET Web uygulamaları için, **Araçlar**seçenekler projeler ve çözümler Web projeleri altındaki **Web siteleri ve projeleri için IIS Express 64 bitlik sürümünü kullan** ' ı seçerek konak işlemeyi değiştirebilirsiniz  >  **Options**  >  **Projects and Solutions**  >  **Web Projects**.
+- Yerel olarak dağıtılan ASP.NET Web uygulamaları için, **Araçlar** seçenekler projeler ve çözümler Web projeleri altındaki **Web siteleri ve projeleri için IIS Express 64 bitlik sürümünü kullan** ' ı seçerek konak işlemeyi değiştirebilirsiniz  >  **Options**  >  **Projects and Solutions**  >  **Web Projects** .
 
 - Azure 'da dağıtılan ASP.NET Web uygulamaları için Azure portal **uygulama ayarlarında** **64 bitlik** platformu seçerek konak işlemeyi değiştirebilirsiniz.
 
 > [!NOTE] 
-> Varsayılan olarak, yeni Visual Studio projeleri **herhangi BIR CPU**'ya ayarlanır. Projenizi **x86**'ya geçiş yapmak için **x64** olarak ayarlamanızı öneririz. **Herhangi BIR CPU** 'ya ayarlanmış bir proje, yalnızca x86 bağımlılığı eklendiyse, kolayca **x86** 'ya geçiş yapabilir.<br/>
+> Varsayılan olarak, yeni Visual Studio projeleri **herhangi BIR CPU** 'ya ayarlanır. Projenizi **x86** 'ya geçiş yapmak için **x64** olarak ayarlamanızı öneririz. **Herhangi BIR CPU** 'ya ayarlanmış bir proje, yalnızca x86 bağımlılığı eklendiyse, kolayca **x86** 'ya geçiş yapabilir.<br/>
 > ServiceInterop.dll SDK DLL 'inin yürütüldüğü klasörde olması gerekir. Bu, yalnızca dll 'Leri el ile kopyalarsanız veya özel derleme/dağıtım sistemlerine sahipseniz sorun olması gerekir.
     
 **Sunucu tarafı atık toplamayı aç (GC)**
@@ -135,7 +136,7 @@ SQL .NET SDK 1.9.0 ve üzeri, bölümlenmiş bir koleksiyonu paralel olarak sorg
 - `MaxDegreeOfParallelism` paralel olarak sorgulanabilecek en fazla bölüm sayısını denetler. 
 - `MaxBufferedItemCount` önceden getirilen sonuçların sayısını denetler.
 
-**_Paralellik derecesi ayarlama_*_
+**_Paralellik derecesi ayarlama_* _
 
 Paralel sorgu birden çok bölümü paralel olarak sorgulayarak işe yarar. Ancak tek bir bölümden alınan veriler sorguya göre işlem içine alınır. `MaxDegreeOfParallelism` [SDK v2](sql-api-sdk-dotnet.md) 'nin bölüm sayısına en iyi şekilde ayarlanması, diğer tüm sistem koşullarının aynı kalması şartıyla en iyi performansı elde etmek için en iyi şansınız vardır. Bölüm sayısını bilmiyorsanız paralellik derecesini yüksek bir sayı olarak ayarlayabilirsiniz. Sistem paralellik derecesi olarak en az (bölüm sayısını, Kullanıcı tarafından girilen girişi) seçer.
 
@@ -147,7 +148,7 @@ Paralel sorgu, geçerli sonuç toplu işi istemci tarafından işlendiği sırad
 
 Önceden getirme, paralellik derecesi ne olursa olsun aynı şekilde çalışacaktır ve tüm bölümlerdeki veriler için tek bir arabellek vardır.  
 
-_*RetryAfter aralıklarında geri alma Uygula**
+_ *RetryAfter aralıklarında geri alma Uygula**
 
 Performans testi sırasında, küçük bir istek hızı kısıtlanana kadar yükü artırmanız gerekir. İstekler kısıtlanmamışsa, sunucu tarafından belirtilen yeniden deneme aralığı için istemci uygulamanın azaltılmasından sonra kapatılması gerekir. Geri alma işleminin tamamlanması, yeniden denemeler arasında bekleyen en az miktarda süre harcamanızı sağlar. 
 

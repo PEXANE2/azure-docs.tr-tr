@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: c64efb92de00291e6381e30af24e76df2b38aee0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1ef1a815469e7fb2dd10311b92a28b828772be7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83847123"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079929"
 ---
 # <a name="startswith-azure-cosmos-db"></a>STARTSWITH (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
  İlk dize ifadesinin ikinciyle başlatılıp başlatılmayacağını gösteren bir Boole değeri döndürür.  
   
@@ -30,7 +31,7 @@ STARTSWITH(<str_expr1>, <str_expr2> [, <bool_expr>])
    Bir dize ifadesidir.
   
 *str_expr2*  
-   *Str_expr1*başlangıcıyla Karşılaştırılacak bir dize ifadesidir.
+   *Str_expr1* başlangıcıyla Karşılaştırılacak bir dize ifadesidir.
 
 *bool_expr* Büyük/küçük harf yoksayma için isteğe bağlı değer. True olarak ayarlandığında, STARTSWITH, büyük/küçük harfe duyarsız bir arama yapılır. Belirtilmediğinde, bu değer false 'tur.
 

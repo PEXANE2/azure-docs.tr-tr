@@ -10,14 +10,15 @@ author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.custom: devx-track-python
-ms.openlocfilehash: 0dd56b285401bd99a173700be6d6eb7c1fc97faa
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 341615bf8fe231eafa606411948ad014399b8261
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92477258"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079555"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Python kullanarak Azure Tablo depolamayı ve Azure Cosmos DB Tablo API’sini kullanmaya başlama
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
@@ -120,7 +121,7 @@ table_service.insert_entity('tasktable', task)
 
 Her varlık için bir **PartitionKey** ve bir de **RowKey** özelliği belirtmeniz gerekir. Bunlar, birlikte bir varlığın birincil anahtarını oluşturduklarından varlıklarınızın benzersiz tanımlayıcılarıdır. Yalnızca bu değerlerin dizini oluşturulduğundan, bu değerleri kullanarak, diğer varlık özellikleriyle yapabildiğinizden çok daha hızlı olarak sorgulama yapabilirsiniz.
 
-Table hizmeti, tablo varlıklarını depolama düğümlerine akıllıca dağıtmak için **PartitionKey** değerini kullanır. Aynı **PartitionKey** değerine sahip olan varlıklar aynı düğüme depolanır. **RowKey**, varlığın ait olduğu bölümdeki benzersiz kimliğidir.
+Table hizmeti, tablo varlıklarını depolama düğümlerine akıllıca dağıtmak için **PartitionKey** değerini kullanır. Aynı **PartitionKey** değerine sahip olan varlıklar aynı düğüme depolanır. **RowKey** , varlığın ait olduğu bölümdeki benzersiz kimliğidir.
 
 ## <a name="update-an-entity"></a>Varlığı güncelleştirme
 

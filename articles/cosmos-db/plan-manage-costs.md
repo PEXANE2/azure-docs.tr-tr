@@ -7,14 +7,15 @@ ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 278603887fe7d47b4be52b04f9f0864be1a1b75b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 3a1bb36910b09d24c3328c8fc8ae94e1e3321642
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482256"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080711"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Azure Cosmos DB maliyetlerini planlayın ve yönetin
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Bu makalede Azure Cosmos DB maliyetlerini nasıl planlayabileceğinizi ve yönetebileceğiniz açıklanmaktadır:
 
@@ -56,7 +57,7 @@ Azure Cosmos DB sunucusuz modda kullanmayı planlıyorsanız, aylık olarak kaç
 > [!IMPORTANT] 
 > Yukarıdaki tablodaki notlara dikkat edin. Operasyonlarınızın gerçek maliyetlerinin daha doğru bir şekilde tahmin etmek için [Azure Cosmos öykünücüsünü](local-emulator.md) kullanabilir ve [OPERASYONLARıNıZıN tam ru maliyetini ölçebilirsiniz](find-request-unit-charge.md). Azure Cosmos öykünücüsü sunucusuz 'yi desteklemediğinden, veritabanı işlemleri için standart RU ücreti rapor edebilir ve bu tahmin için kullanılabilir.
 
-Bir ay boyunca tükettiğiniz toplam Istek birimi ve GB depolama alanı sayısını hesapladıktan sonra, aşağıdaki formül maliyet tahmininizi döndürür: **([istek birimi sayısı]/1.000.000 * $0,25) + ([GB depolama] * $0,25)**.
+Bir ay boyunca tükettiğiniz toplam Istek birimi ve GB depolama alanı sayısını hesapladıktan sonra, aşağıdaki formül maliyet tahmininizi döndürür: **([istek birimi sayısı]/1.000.000 * $0,25) + ([GB depolama] * $0,25)** .
 
 > [!NOTE]
 > Önceki örnekte gösterilen maliyetler yalnızca tanıtım amaçlıdır. En son fiyatlandırma bilgileri için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın.
@@ -87,11 +88,11 @@ Maliyet analizini kullandığınızda, grafik ve tablolardaki Azure Cosmos DB ma
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. **Maliyet yönetimi + faturalandırma** penceresini açın, menüden **maliyet yönetimi** ' ni seçin ve ardından **Maliyet Analizi**' ni seçin. Daha sonra **kapsam** açılan listesinden belirli bir aboneliğin kapsamını değiştirebilirsiniz.
+1. **Maliyet yönetimi + faturalandırma** penceresini açın, menüden **maliyet yönetimi** ' ni seçin ve ardından **Maliyet Analizi** ' ni seçin. Daha sonra **kapsam** açılan listesinden belirli bir aboneliğin kapsamını değiştirebilirsiniz.
 
 1. Varsayılan olarak, tüm hizmetlerin maliyeti ilk halka grafiğinde gösterilir. Grafikteki "Azure Cosmos DB" etiketli alanı seçin.
 
-1. Azure Cosmos DB gibi tek bir hizmetin maliyetlerini daraltmak için, **Filtre Ekle** ' yi ve ardından **hizmet adı**' nı seçin. Sonra listeden **Azure Cosmos DB** öğesini seçin. Yalnızca Azure Cosmos DB maliyetlerini gösteren bir örnek aşağıda verilmiştir:
+1. Azure Cosmos DB gibi tek bir hizmetin maliyetlerini daraltmak için, **Filtre Ekle** ' yi ve ardından **hizmet adı** ' nı seçin. Sonra listeden **Azure Cosmos DB** öğesini seçin. Yalnızca Azure Cosmos DB maliyetlerini gösteren bir örnek aşağıda verilmiştir:
  
    :::image type="content" source="./media/plan-manage-costs/cost-analysis-pane.png" alt-text="Azure Cosmos DB kapasite hesaplayıcıda maliyet tahmini":::
 
