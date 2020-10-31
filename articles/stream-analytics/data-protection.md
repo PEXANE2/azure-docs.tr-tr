@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: b54076413d3a6cabf2e3ef0b06e8e17875efbf97
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e823322803958f092cee3b6d77e6a0ca7bc6e3f2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746408"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074259"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure Stream Analytics veri koruma 
 
@@ -59,7 +59,7 @@ Tüm düzenlenmiş sektörlerde veya ortamlarda uyumluluk yükümlülüklerinizi
 
 Depolama hesabınızı özel veri varlıkları için yapılandırmak üzere aşağıdaki adımları kullanın. Bu yapılandırma, depolama hesabınızdan değil, Stream Analytics işinden yapılır.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin. 
 
@@ -73,6 +73,27 @@ Depolama hesabınızı özel veri varlıkları için yapılandırmak üzere aşa
 
    ![Özel veri depolama hesabı ayarları](./media/data-protection/storage-account-create.png)
 
+## <a name="private-data-assets-that-are-stored"></a>Depolanan özel veri varlıkları
+
+Stream Analytics tarafından kalıcı olması gereken tüm özel veriler depolama hesabınızda depolanır. Özel veri varlıkları örnekleri şunları içerir: 
+
+* Yazdığınız sorgular ve bunlarla ilgili yapılandırma  
+
+* Kullanıcı tanımlı işlevler 
+
+* Stream Analytics çalışma zamanı için gereken denetim noktaları
+
+* Başvuru verilerinin anlık görüntüleri 
+
+Kaynaklarınızın Stream Analytics iş tarafından kullanılan bağlantı ayrıntıları da depolanır. Tüm verilerinizi güvenli hale getirmek için depolama hesabınızı şifreleyin. 
+
+Tüm düzenlenmiş sektörlerde veya ortamlarda uyumluluk yükümlülüklerinizi karşılamanıza yardımcı olmak için [Microsoft 'un uyumluluk teklifleri](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)hakkında daha fazla bilgi edinebilirsiniz. 
+
+## <a name="enables-data-residency"></a>Veri fazlalığını mümkün 
+Bu özelliği, bir depolama hesabını uygun şekilde sağlayarak sahip olduğunuz tüm veri fazlalığını zorlamak için kullanabilirsiniz.
+
+## <a name="known-issues"></a>Bilinen sorunlar
+Müşteri tarafından yönetilen anahtarı kullanan bir işin, herhangi bir giriş veya çıkış için kimlik doğrulaması yapmak üzere yönetilen kimlik kullanırken hatalara karşı çalıştığı bilinen bir sorun vardır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

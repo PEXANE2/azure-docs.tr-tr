@@ -7,23 +7,24 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: d1b03417b81299ca959670287e252402e994f15a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7b26c88bcbd303f00dc6163dd0323b07cbb83dcf
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476408"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073834"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Azure Cosmos DB faturanızı anlama
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Tam olarak yönetilen bir bulutta yerel veritabanı hizmeti olan Azure Cosmos DB, yalnızca veritabanı işlemleri için ücretlendirme yaparak ve depolama alanı tüketilip faturalandırılmasını basitleştirir. Şirket içi veya IaaS ile barındırılan diğer yöntemler ile karşılaştırıldığında ek lisans ücretleri, donanım, yardımcı program maliyetleri veya tesis maliyetleri yoktur. Azure Cosmos DB çoklu bölge yeteneklerini dikkate aldığınızda, veritabanı hizmeti mevcut şirket içi veya IaaS çözümleriyle karşılaştırıldığında maliyetlerde önemli bir düşüş sağlar.
 
-- **Veritabanı işlemleri**: veritabanı işlemlerinizin ücretlendirildiği yol, kullanmakta olduğunuz Azure Cosmos hesabının türüne bağlıdır.
+- **Veritabanı işlemleri** : veritabanı işlemlerinizin ücretlendirildiği yol, kullanmakta olduğunuz Azure Cosmos hesabının türüne bağlıdır.
 
-  - **Sağlanan aktarım hızı**: 100 ru/sn 'lik artışlarla, belirli bir saat için sağlanan maksimum üretilen iş hacmi için saatlik olarak faturalandırılırsınız.
-  - **Sunucusuz**: veritabanı işlemleriniz tarafından tüketilen toplam istek birimi miktarı için saatlik olarak faturalandırılırsınız.
+  - **Sağlanan aktarım hızı** : 100 ru/sn 'lik artışlarla, belirli bir saat için sağlanan maksimum üretilen iş hacmi için saatlik olarak faturalandırılırsınız.
+  - **Sunucusuz** : veritabanı işlemleriniz tarafından tüketilen toplam istek birimi miktarı için saatlik olarak faturalandırılırsınız.
 
-- **Depolama**: belirli bir saat için verileriniz ve dizinlerinizin tükettiği toplam depolama miktarı (GB cinsinden) için sabit bir ücret üzerinden faturalandırılırsınız.
+- **Depolama** : belirli bir saat için verileriniz ve dizinlerinizin tükettiği toplam depolama miktarı (GB cinsinden) için sabit bir ücret üzerinden faturalandırılırsınız.
 
 En son fiyatlandırma bilgileri için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın.
 

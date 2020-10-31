@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b8fdabc3f4f33627936eead9dda57e67c7b0da8
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 42b1c0ef42454b085c5d4dbcdc14162b2c829c6a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040507"
+ms.locfileid: "93074823"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory 'de sık sorulan sorular kimlik koruması
 
@@ -36,9 +36,6 @@ Kullanıcı riski geri ayırma akışında gecikmeye neden olan geçerli bir bil
 
 Klasik kimlik korumasında **tüm olayları kapat** risk algılamalarının durumunu **Kapalı (çözüldü)** olarak ayarlar.
 
-## <a name="risky-sign-ins-report-known-issues"></a>Riskli oturum açma işlemleri raporu bilinen sorunlar
-
-Risk algılamasında **Çözümle** , durumu **risk tabanlı ILKEYE göre yönetilen MFA 'ya geçen kullanıcılara** ayarlar.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 

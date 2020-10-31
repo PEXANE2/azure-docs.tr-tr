@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 32266695770f627f7044bce92e4505f45776fd28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7a013e07ada0ba88b20598c23f706eb5ee71d49
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83747358"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073072"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Azure Cosmos DB’de uyumluluk 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB tüm Azure bölgelerinde kullanılabilir. Microsoft, müşterilerin sunduğu beş farklı Azure bulut ortamını kullanıma sunar:
 
@@ -47,12 +48,12 @@ Azure Cosmos DB sertifika kapsamını sürekli genişletiyor. Şu anda Azure Cos
 | ISO 27701:2019| | | |
 | SOC 1, 2, 3 | | | |
 
-Bu uyumluluk tekliflerinden her biri hakkında daha fazla bilgi edinmek için [Microsoft Azure Uyumluluk sayfasına genel bakış](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) bölümüne bakın.
+Bu uyumluluk tekliflerinden her biri hakkında daha fazla bilgi edinmek ve bunların nasıl yararlanabileceği hakkında daha fazla bilgi için bkz. [Microsoft Azure uyumluluk teklifleri](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/), ek A &
 
 Aşağıdaki tabloda, Azure Kamu 'da Azure Cosmos DB tarafından desteklenen sertifikalar listelenmektedir:
 
 | **Küresel olarak uygulanabilir** | **ABD devleti** | **Sektöre özgü** | 
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | CSA STAR sertifikası | CJIS| HIPAA BAA | 
 | CSA STAR kanıtlama| DoD SRG düzeyi 2| HıTRUST  | 
 | ISO 20000-1:2011 | DoD SRG düzeyi 4 | PCI DSS | 
@@ -68,8 +69,14 @@ Aşağıdaki tabloda, Azure Kamu 'da Azure Cosmos DB tarafından desteklenen ser
 
 Azure uyumluluk sertifikaları hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-* Azure Cosmos DB için en son uyumluluk sertifikalarını öğrenmek için bkz. [Azure uyumluluğu 'Na genel bakış](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).  
+* Azure Cosmos DB için en son uyumluluk sertifikalarını öğrenmek için bkz. [Microsoft Azure uyumluluk teklifleri](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/), ek A & B.  
 
-* Azure Cosmos DB güvenliğe ve en son geliştirmelere genel bakış için bkz. [Azure Cosmos veritabanı güvenlik](database-security.md) makalesi.
+* Azure Cosmos DB güvenliğe ve en son geliştirmelere genel bakış için bkz. [Azure Cosmos veritabanı güvenliği](database-security.md).
+
+* Azure Cosmos DB dağıtımınızın güvenlik duruşunu artırmaya yönelik öneriler için, bkz. [Azure Cosmos DB güvenlik temeli](security-baseline.md). 
 
 * Microsoft sertifikaları hakkında daha fazla bilgi için [Azure Güven Merkezi](https://azure.microsoft.com/support/trust-center/)bakın.
+
+* Fedrampa uyumluluk bilgileri için bkz. [fedrampa ve DOD CC SRG denetim kapsamına göre Azure hizmetleri](../azure-government/compliance/azure-services-in-fedramp-auditscope.md).
+
+* DoD uyumluluk bilgileri için bkz. [DOD uyumluluk teklifleri](/microsoft-365/compliance/offering-dod-disa-l2-l4-l5?view=o365-worldwide).

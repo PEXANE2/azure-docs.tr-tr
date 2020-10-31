@@ -7,16 +7,16 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 7ec511400d1e00d37993f2f4ee581bce1bccb897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17b2ab53c0154a29f9084f9dd999a53bcf477b72
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715980"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075135"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Windows 'da Azure dosyaları sorunlarını giderme (SMB)
 
-Bu makalede, Windows istemcilerinden bağlandığınızda Microsoft Azure dosyalarla ilgili yaygın sorunlar listelenmektedir. Ayrıca, bu sorunlar için olası nedenler ve çözümler de sağlar. Bu makaledeki sorun giderme adımlarına ek olarak, [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)   Windows istemci ortamının doğru önkoşullara sahip olduğundan emin olmak Için azfilediagnostics 'i de kullanabilirsiniz. AzFileDiagnostics, bu makalede bahsedilen belirtilerin çoğunu algılamayı otomatikleştirir ve en iyi performansı elde etmek için ortamınızı ayarlamanıza yardımcı olur.
+Bu makalede, Windows istemcilerinden bağlandığınızda Microsoft Azure dosyalarla ilgili yaygın sorunlar listelenmektedir. Ayrıca, bu sorunlar için olası nedenler ve çözümler de sağlar. Bu makaledeki sorun giderme adımlarına ek olarak, Windows istemci ortamının doğru önkoşullara sahip olduğundan emin olmak için [Azfilediagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) 'i de kullanabilirsiniz. AzFileDiagnostics, bu makalede bahsedilen belirtilerin çoğunu algılamayı otomatikleştirir ve en iyi performansı elde etmek için ortamınızı ayarlamanıza yardımcı olur.
 
 > [!IMPORTANT]
 > Bu makalenin içeriği yalnızca SMB paylaşımları için geçerlidir. NFS paylaşımları hakkında daha fazla bilgi için bkz. [Azure NFS dosya paylaşımları sorunlarını giderme](storage-troubleshooting-files-nfs.md).
@@ -177,23 +177,82 @@ Azure dosya paylaşımının bulunduğu depolama hesabına gidin, **erişim dene
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Azure dosya paylaşımında dosya veya dizin silinemiyor
-Bir dosyayı silmeye çalıştığınızda şu hatayı alabilirsiniz:
+Bir dosya paylaşımının temel amaçlarından biri, birden çok kullanıcının ve uygulamanın paylaşımdaki dosyalarla ve dizinlerde eşzamanlı olarak etkileşime girebileceği bir dosyadır. Dosya paylaşımları, bu etkileşime yardımcı olmak için dosyalara ve dizinlere erişim sağlayan çeşitli yollar sağlar.
 
-Belirtilen kaynak SMB istemcisi tarafından silinmek üzere işaretlendi.
+SMB üzerinden bağlı bir Azure dosya paylaşımından bir dosya açtığınızda, uygulamanız/işletim sisteminiz dosya başvurusu olan bir dosya tanıtıcısı ister. Diğer şeyler arasında, uygulamanız bir dosya tanıtıcısı istediğinde, Azure dosyaları tarafından zorlanan dosyaya erişiminizin denetim düzeyini belirten bir dosya paylaşım modu belirtir: 
 
-### <a name="cause"></a>Nedeni
-Bu sorun genellikle dosya veya dizinde açık bir tanıtıcı varsa oluşur. 
+- `None`: özel erişime sahipsiniz. 
+- `Read`: açıkken başkaları dosyayı okuyabilir.
+- `Write`: Bu dosya açıkken başkaları dosyaya yazabilir. 
+- `ReadWrite`: hem hem de `Read` `Write` Paylaşım modlarının birleşimi.
+- `Delete`: başkaları dosyayı açtığınızda silebilir. 
 
-### <a name="solution"></a>Çözüm
+Durum bilgisi olmayan bir protokol olsa da, Dosyasıest protokolünün bir dosya tanıtıcısı kavramı yoktur, betiğinizin, uygulamanızın veya hizmetinizin kullanabileceği dosya ve klasörlere erişim aracılık için de benzer bir mekanizma sağlar: dosya kiraları. Bir dosya kiralandığınızda, dosya paylaşım moduyla bir dosya tanıtıcısına eşdeğer olarak kabul edilir `None` . 
 
-SMB istemcileri tüm açık tutamaçları kapatmışsa ve sorun oluşmaya devam ederse, şunları yapın:
+Dosya tanıtıcıları ve kiralamalar önemli bir amaca uygun olsa da, bazen Dosya tutamaçları ve kiralamalar yalnız bırakılmış olabilir. Bu durumda, dosyaları değiştirme veya silme sorunlarına neden olabilir. Şu şekilde hata iletileri görebilirsiniz:
 
-- Açık tutamaçları görüntülemek için [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet 'ini kullanın.
+- Başka bir işlem tarafından kullanıldığından, işlem dosyaya erişemiyor.
+- Dosya başka bir programda açık olduğundan eylem tamamlanamıyor.
+- Belge, başka bir kullanıcı tarafından düzenlenmek üzere kilitlenmiş.
+- Belirtilen kaynak SMB istemcisi tarafından silinmek üzere işaretlendi.
 
-- Açık tutamaçları kapatmak için [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet 'ini kullanın. 
+Bu soruna yönelik çözüm, bunun neden yalnız bırakılmış bir dosya tanıtıcısı veya kira nedeniyle kaynaklandığına bağlıdır. 
+
+### <a name="cause-1"></a>1\. Neden
+Dosya tanıtıcısı, bir dosyanın/dizinin değiştirilmesini veya silinmesini engellemektedir. Açık tutamaçları görüntülemek için [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet 'ini kullanabilirsiniz. 
+
+Tüm SMB istemcileri bir dosya/dizinde açık tutamaçlarını kapatmışsa ve sorun oluşmaya devam ederse, bir dosya tanıtıcısını kapatmaya zorlayabilirsiniz.
+
+### <a name="solution-1"></a>1\. Çözüm
+Bir dosya tanıtıcısının kapatılmasını zorlamak için, [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet 'ini kullanın. 
 
 > [!Note]  
 > Get-AzStorageFileHandle ve Close-AzStorageFileHandle cmdlet 'leri az PowerShell Module 2,4 veya sonraki bir sürüme dahildir. En son az PowerShell modülünü yüklemek için bkz. [Azure PowerShell modülünü yüklemek](https://docs.microsoft.com/powershell/azure/install-az-ps).
+
+### <a name="cause-2"></a>2\. Neden
+Dosya kirası, bir dosyanın değiştirilmesini veya silinmesini engeller. Aşağıdaki PowerShell ile bir dosyanın bir dosya kirası olup olmadığını kontrol edebilirsiniz,,, `<resource-group>` `<storage-account>` `<file-share>` ve `<path-to-file>` ile ortamınız için uygun değerler ile değiştirin:
+
+```PowerShell
+# Set variables 
+$resourceGroupName = "<resource-group>"
+$storageAccountName = "<storage-account>"
+$fileShareName = "<file-share>"
+$fileForLease = "<path-to-file>"
+
+# Get reference to storage account
+$storageAccount = Get-AzStorageAccount `
+        -ResourceGroupName $resourceGroupName `
+        -Name $storageAccountName
+
+# Get reference to file
+$file = Get-AzStorageFile `
+        -Context $storageAccount.Context `
+        -ShareName $fileShareName `
+        -Path $fileForLease
+
+$fileClient = $file.ShareFileClient
+
+# Check if the file has a file lease
+$fileClient.GetProperties().Value
+```
+
+Bir dosya kira içeriyorsa, döndürülen nesne aşağıdaki özellikleri içermelidir:
+
+```Output
+LeaseDuration         : Infinite
+LeaseState            : Leased
+LeaseStatus           : Locked
+```
+
+### <a name="solution-2"></a>2\. Çözüm
+Bir dosyadan kira kaldırmak için kirayı serbest bırakabilir veya kirayı kesebilirsiniz. Kirayı serbest bırakmak için kirayı oluştururken ayarladığınız kiralamanın leaseID 'Si gerekir. Kiralamanın kesilmesini için leaseID gerekli değildir.
+
+Aşağıdaki örnek, neden 2 ' de gösterilen dosyanın kira süresinin nasıl kesilmesini gösterir (Bu örnek, neden 2 ' den PowerShell değişkenlerine devam eder):
+
+```PowerShell
+$leaseClient = [Azure.Storage.Files.Shares.Specialized.ShareLeaseClient]::new($fileClient)
+$leaseClient.Break() | Out-Null
+```
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-windows"></a>Windows'da Azure Dosyaları ile yavaş dosya alışverişi

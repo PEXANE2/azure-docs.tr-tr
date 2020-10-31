@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2a7645950fd7a239376f07d6c6f4689c1a3f3da5
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8694a884b26194c61cc77d00848692a24e3009be
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476323"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073715"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB ölçümlerle izleme ve hata ayıklama
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB işleme hızı, depolama, tutarlılık, kullanılabilirlik ve gecikme süresi ölçümleri sağlar. Azure portalı bu ölçümlerin bir toplu görünümünü sağlar. Azure Cosmos DB ölçümlerini Azure İzleyici API'sinden de görüntüleyebilirsiniz. Kapsayıcı adı gibi ölçümler için boyut değerleri büyük/küçük harfe duyarlıdır. Bu nedenle, bu boyut değerlerinde dize karşılaştırmaları yaparken büyük/küçük harfe duyarsız karşılaştırma kullanmanız gerekir. Azure izleyici 'de ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Azure izleyici 'den ölçümleri alma](./monitor-cosmos-db.md) makalesine bakın.
 

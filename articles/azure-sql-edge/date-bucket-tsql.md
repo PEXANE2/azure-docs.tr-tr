@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 896caae2dfd79c4678ffb34c531fb56835e9bd66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d81419721e94a2e181f094c0e0e64b1b23544a8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886849"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073528"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
 
@@ -41,16 +41,19 @@ DATE_BUCKET (datePart, number, date, origin)
   
 |*Işlevindeki*|Kısaltmaları|  
 |---|---|
-|**günündeki**|**dd**, **d**|  
-|**hafta**|**hafta**, **WW**|  
+|**günündeki**|**dd** , **d**|  
+|**hafta**|**hafta** , **WW**| 
+|**ay**|**AA** , **dk**|
+|**dönem**|**QQ** , **q**|  
+|**yıl**|**yy** , **yyyy**|  
 |**saate**|**hh**|  
-|**dakikaya**|**mı**, **n**|  
-|**İkincisi**|**SS**, **s**|  
+|**dakikaya**|**mı** , **n**|  
+|**İkincisi**|**SS** , **s**|  
 |**milisaniy**|**SWM**|  
 
-*number*
+*sayı*
 
-Değer, *datePart* bağımsız değişkeniyle birleştirilmiş olan demet genişliğine karar veren tamsayı numarası. Bu, kaynak zamandan itibaren veri bölümü demetlerinin genişliğini temsil eder. **`This argument cannot be a negative integer value`**. 
+Değer, *datePart* bağımsız değişkeniyle birleştirilmiş olan demet genişliğine karar veren tamsayı numarası. Bu, kaynak zamandan itibaren veri bölümü demetlerinin genişliğini temsil eder. **`This argument cannot be a negative integer value`** . 
 
 *güncel*
 
@@ -63,7 +66,7 @@ Aşağıdaki değerlerden birine çözümleyebilecek bir ifade:
 + **girişin**
 + **ışınızda**
 
-*Tarih*için, `DATE_BUCKET` yukarıda belirtilen veri türlerine çözümlendiklerinde bir sütun ifadesi, ifade veya Kullanıcı tanımlı değişken kabul eder.
+*Tarih* için, `DATE_BUCKET` yukarıda belirtilen veri türlerine çözümlendiklerinde bir sütun ifadesi, ifade veya Kullanıcı tanımlı değişken kabul eder.
 
 **Tıdır** 
 
@@ -122,7 +125,7 @@ Select DATE_BUCKET(wk, 5, @date, @origin)
 
 ## <a name="datepart-argument"></a>datepart bağımsız değişkeni
 
-**DayOfYear**, **Day**ve **HAFTANINGÜNÜ** aynı değeri döndürür. Her *datepart* ve kısaltmalar aynı değeri döndürür.
+**DayOfYear** , **Day** ve **HAFTANINGÜNÜ** aynı değeri döndürür. Her *datepart* ve kısaltmalar aynı değeri döndürür.
   
 ## <a name="number-argument"></a>sayı bağımsız değişkeni
 
@@ -197,7 +200,7 @@ Bu örnekler, *sayı* ve *Tarih* parametreleri için bağımsız değişken olar
   
 #### <a name="specifying-user-defined-variables-as-number-and-date"></a>Kullanıcı tanımlı değişkenleri sayı ve tarih olarak belirtme  
 
-Bu örnek, *sayı* ve *Tarih*için bağımsız değişken olarak Kullanıcı tanımlı değişkenleri belirtir:
+Bu örnek, *sayı* ve *Tarih* için bağımsız değişken olarak Kullanıcı tanımlı değişkenleri belirtir:
   
 ```sql
 DECLARE @days int = 365,
@@ -247,7 +250,7 @@ ShippedDateBucket           SumOrderQuantity SumUnitPrice
 
 #### <a name="specifying-scalar-system-function-as-date"></a>Skalar sistem işlevini tarih olarak belirtme
 
-Bu örnek, `SYSDATETIME` *tarihi*belirtir. Döndürülen tam değer deyimin çalışmasının günü ve saatine bağlıdır:
+Bu örnek, `SYSDATETIME` *tarihi* belirtir. Döndürülen tam değer deyimin çalışmasının günü ve saatine bağlıdır:
   
 ```sql
 SELECT Date_Bucket(wk, 10, SYSDATETIME());  
@@ -264,7 +267,7 @@ Sonuç kümesini burada bulabilirsiniz.
 
 #### <a name="specifying-scalar-subqueries-and-scalar-functions-as-number-and-date"></a>Skaler alt sorgular ve skaler işlevleri sayı ve tarih olarak belirtme
 
-Bu örnek, `MAX(OrderDate)` *sayı* ve *Tarih*için bağımsız değişkenler olarak skaler alt sorgular kullanır. `(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100)` değer listesinden bir *sayı* bağımsız değişkeninin nasıl ekleneceğini göstermek için sayı parametresi için yapay bir bağımsız değişken işlevi görür.
+Bu örnek, `MAX(OrderDate)` *sayı* ve *Tarih* için bağımsız değişkenler olarak skaler alt sorgular kullanır. `(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100)` değer listesinden bir *sayı* bağımsız değişkeninin nasıl ekleneceğini göstermek için sayı parametresi için yapay bir bağımsız değişken işlevi görür.
   
 ```sql
 SELECT DATE_BUCKET(week,(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100),  
@@ -281,7 +284,7 @@ SELECT Date_Bucket(week,(10/2), SYSDATETIME());
 
 #### <a name="specifying-an-aggregate-window-function-as-number"></a>Toplam pencere işlevini sayı olarak belirtme
 
-Bu örnek, *sayı*için bir bağımsız değişken olarak bir toplam pencere işlevi kullanır.
+Bu örnek, *sayı* için bir bağımsız değişken olarak bir toplam pencere işlevi kullanır.
   
 ```sql
 Select 

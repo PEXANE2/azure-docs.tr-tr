@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 3f787840422e61d6f43081d991ffc3ef28da6976
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a25cd2c0a9205dc184640e95f122c770b29cf24a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486540"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073256"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Bir Azure AD kimliği için Azure Cosmos DB hesabından anahtarlara erişmek üzere sertifika tabanlı kimlik doğrulaması
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Sertifika tabanlı kimlik doğrulaması, istemci uygulamanızın Azure Active Directory (Azure AD) kullanılarak bir istemci sertifikasıyla kimliğinin doğrulanmasına olanak tanır. Sertifika tabanlı kimlik doğrulamasını şirket içindeki makine veya Azure’daki sanal makine gibi kimliğinizin olmasını gerektiren bir makinede gerçekleştirebilirsiniz. Uygulamanız daha sonra anahtarları doğrudan uygulamada kullanmadan Azure Cosmos DB anahtarlarını okuyabilir. Bu makalede örnek bir Azure AD uygulaması oluşturma, sertifika tabanlı kimlik doğrulaması için yapılandırma, yeni uygulama kimliğini kullanarak Azure 'da oturum açma ve ardından Azure Cosmos hesabınızdan anahtarları alma açıklanır. Bu makale, kimlikleri ayarlamak için Azure PowerShell kullanır ve Azure Cosmos hesabınızdan anahtar kimliğini doğrulayan ve erişen bir C# örnek uygulaması sağlar.  
 
@@ -30,7 +31,7 @@ Bu adımda, Azure AD hesabınızda örnek bir Web uygulaması kaydedeceğinizi c
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
-1. Azure **Active Directory** bölmesini açın, **uygulama kayıtları** bölmesine gidin ve **Yeni kayıt**' yi seçin. 
+1. Azure **Active Directory** bölmesini açın, **uygulama kayıtları** bölmesine gidin ve **Yeni kayıt** ' yi seçin. 
 
    :::image type="content" source="./media/certificate-based-authentication/new-app-registration.png" alt-text="Active Directory yeni uygulama kaydı&quot;:::
 
@@ -48,7 +49,7 @@ Bu adımda, Azure AD hesabınızda örnek bir Web uygulaması kaydedeceğinizi c
 
 1. Formu doldurduktan sonra **Kaydet** ' i seçin.
 
-1. Uygulama kaydedildikten sonra, **uygulama (istemci) kimliğini** ve **nesne kimliğini**bir yere getirin ve bu ayrıntıları sonraki adımlarda kullanacaksınız. 
+1. Uygulama kaydedildikten sonra, **uygulama (istemci) kimliğini** ve **nesne kimliğini** bir yere getirin ve bu ayrıntıları sonraki adımlarda kullanacaksınız. 
 
    :::image type="content" source="./media/certificate-based-authentication/get-app-object-ids.png" alt-text="Active Directory yeni uygulama kaydı&quot;:::
 
@@ -139,9 +140,9 @@ Sertifika tabanlı kimlik bilgilerini Azure portal Azure AD 'deki istemci uygula
 
 1. Azure **Active Directory** bölmesini açın, **uygulama kayıtları** bölmesine gidin ve önceki adımda oluşturduğunuz örnek uygulamayı açın. 
 
-1. **& sertifikalar** ' ı seçin ve ardından **sertifikayı karşıya yükleyin**. Karşıya yüklemek için önceki adımda oluşturduğunuz sertifika dosyasına gidin.
+1. **& sertifikalar** ' ı seçin ve ardından **sertifikayı karşıya yükleyin** . Karşıya yüklemek için önceki adımda oluşturduğunuz sertifika dosyasına gidin.
 
-1. **Ekle**’yi seçin. Sertifika karşıya yüklendikten sonra, parmak izi, başlangıç tarihi ve süre sonu değerleri görüntülenir.
+1. **Ekle** ’yi seçin. Sertifika karşıya yüklendikten sonra, parmak izi, başlangıç tarihi ve süre sonu değerleri görüntülenir.
 
 ## <a name="access-the-keys-from-powershell"></a>PowerShell 'ten anahtarlara erişme
 

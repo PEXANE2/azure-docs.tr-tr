@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: e452f03721551adada69a36b1ce69e57f1111f55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83a422bbdc4e33ecd955451bb3c1e305cee2b2f4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85834072"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93072850"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB ve Azure Işlevleri ile sunucusuz olay tabanlı mimariler
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Işlevleri, [değişiklik akışına](change-feed.md)bağlanmak için en kolay yolu sağlar. Azure Cosmos kapsayıcısının değişiklik akışındaki her yeni olayda otomatik olarak tetiklenecek küçük reaktif Azure Işlevleri oluşturabilirsiniz.
 
@@ -29,8 +30,8 @@ Azure Işlevleri, [değişiklik akışına](change-feed.md)bağlanmak için en k
 
 Sunucusuz bir olay tabanlı akış uygulamak için şunlar gerekir:
 
-* **İzlenen kapsayıcı**: izlenen kapsayıcı, Izlenen Azure Cosmos kapsayıcısıdır ve değişiklik beslemenin oluşturulduğu verileri depolar. Tüm ekler, izlenen kapsayıcıya yapılan güncelleştirmeler kapsayıcının değişiklik akışına yansıtılır.
-* **Kira kapsayıcısı**: kira kapsayıcısı, birden çok ve dinamik sunucusuz Azure işlev örneğinde durum tutar ve dinamik ölçeklendirmeyi sağlar. Bu Kiralama kapsayıcısı, Cosmos DB için Azure Işlevleri tetikleyicisi tarafından el ile veya otomatik olarak oluşturulabilir. Kira kapsayıcısını otomatik olarak oluşturmak için, [yapılandırmada](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) *Createleasecollectionifnotexists* bayrağını ayarlayın. Bölümlenmiş kira kapsayıcıları, bölüm anahtarı tanımına sahip olmak için gereklidir `/id` .
+* **İzlenen kapsayıcı** : izlenen kapsayıcı, Izlenen Azure Cosmos kapsayıcısıdır ve değişiklik beslemenin oluşturulduğu verileri depolar. Tüm ekler, izlenen kapsayıcıya yapılan güncelleştirmeler kapsayıcının değişiklik akışına yansıtılır.
+* **Kira kapsayıcısı** : kira kapsayıcısı, birden çok ve dinamik sunucusuz Azure işlev örneğinde durum tutar ve dinamik ölçeklendirmeyi sağlar. Bu Kiralama kapsayıcısı, Cosmos DB için Azure Işlevleri tetikleyicisi tarafından el ile veya otomatik olarak oluşturulabilir. Kira kapsayıcısını otomatik olarak oluşturmak için, [yapılandırmada](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) *Createleasecollectionifnotexists* bayrağını ayarlayın. Bölümlenmiş kira kapsayıcıları, bölüm anahtarı tanımına sahip olmak için gereklidir `/id` .
 
 ## <a name="create-your-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB için Azure Işlevleri tetiklerinizi oluşturma
 

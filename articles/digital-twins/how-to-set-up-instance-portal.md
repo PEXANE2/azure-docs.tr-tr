@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperfq
-ms.openlocfilehash: 2dc19432d2185b95376717c570cd3165ebc85075
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: da0eb80352409bbbbe29a80fe18a52f54540ae62
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027296"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93071496"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (portal) ayarlama
 
@@ -36,7 +36,7 @@ Portalda bir kez, Azure Hizmetleri giriş sayfası menüsünde _kaynak oluştur_
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-resource.png" alt-text="Azure portal ana sayfasından ' kaynak oluştur ' seçeneği seçiliyor":::
 
-Arama kutusunda *Azure dijital TWINS* araması yapın ve sonuçlardan **Azure dijital TWINS (Önizleme)** hizmetini seçin. Yeni bir hizmet örneği oluşturmak için _Oluştur_ düğmesini seçin.
+Arama kutusunda *Azure dijital TWINS* araması yapın ve sonuçlardan **Azure dijital TWINS** hizmetini seçin. Yeni bir hizmet örneği oluşturmak için _Oluştur_ düğmesini seçin.
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Azure portal ana sayfasından ' kaynak oluştur ' seçeneği seçiliyor":::
 

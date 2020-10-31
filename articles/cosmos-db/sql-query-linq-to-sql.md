@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 7/29/2020
 ms.author: tisande
-ms.openlocfilehash: 4f5e88e7201c4097e2f8d654b8780ea12816b15d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c7d47b0bb167b3211b3859a47b0c8e11876b1614
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485112"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075410"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ to SQL çevirisi
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB sorgu sağlayıcısı, bir LINQ sorgusundan Cosmos DB SQL sorgusuna en iyi çaba eşlemesini gerçekleştirir. LINQ 'dan çevrilen SQL sorgusunu almak istiyorsanız `ToString()` oluşturulan nesnede yöntemini kullanın `IQueryable` . Aşağıdaki açıklamada, [LINQ](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries)ile ilgili temel bir benzerlik varsayılmaktadır.
 
@@ -79,19 +80,19 @@ using (FeedIterator<Book> setIterator = container.GetItemLinqQueryable<Book>()
 
 SQL .NET SDK 'sına dahil edilen LINQ sağlayıcısı aşağıdaki işleçleri destekler:
 
-- **Seçim**: nesne oluşturma dahil olmak üzere [Seçilecek](sql-query-select.md)projeksiyonler çeviri.
-- **Burada**: filtreler [nereye](sql-query-where.md)çeviriye çevirir ve `&&` ,, `||` ve ile `!` SQL işleçleri arasındaki çeviriyi destekler
-- **SelectMany**: dizilerin [JOIN](sql-query-join.md) yan tümcesine geri sarıya izin verir. Dizi öğelerinde filtrelemek için ifadeleri zincirlemek veya iç içe yerleştirmek için kullanın.
-- **OrderBy** ve **OrderByDescending**: ASC veya DESC ile [order by](sql-query-order-by.md) 'a çevirin.
-- [Toplama](sql-query-aggregates.md)için **Count**, **Sum**, **Min**, **Max**ve **Average** işleçleri ve zaman uyumsuz eşdeğerleri **countasync**, **SumAsync**, **minasync**, **maxasync**ve **averageasync**.
-- **CompareTo**: Aralık karşılaştırmaları ' ne çevirir. Genellikle dizeler için kullanılır, çünkü .NET ' de karşılaştırılabilir değildir.
-- **Atla** ve **Al**: sorgunun sonuçlarını sınırlandırma ve sayfalandırma IŞLEMLERI için [uzaklığa ve sınıra](sql-query-offset-limit.md) çevirir.
-- **Matematik işlevleri**: .net,,,,,,,, `Abs` `Acos` ,, `Asin` `Atan` `Ceiling` `Cos` `Exp` `Floor` `Log` `Log10` `Pow` , `Round` , `Sign` , `Sin` , `Sqrt` , `Tan` ve ile `Truncate` eşdeğer [yerleşik matematik işlevlerine](sql-query-mathematical-functions.md)çeviriyi destekler.
-- **Dize işlevleri**: .net,,,,,,,, `Concat` `Contains` ,, `Count` `EndsWith` `IndexOf` `Replace` `Reverse` `StartsWith` `SubString` `ToLower` `ToUpper` , `TrimEnd` ve ile `TrimStart` eşdeğer [yerleşik dize işlevlerine](sql-query-string-functions.md)çeviriyi destekler.
-- **Dizi işlevleri**: .net `Concat` , `Contains` ve ile `Count` eşdeğer [yerleşik dizi işlevlerine](sql-query-array-functions.md)çeviriyi destekler.
-- **Jeo-uzamsal uzantı işlevleri**: saplama yöntemlerinden, `Distance` , `IsValid` `IsValidDetailed` , ve `Within` eşdeğer [yerleşik Jeo uzamsal işlevlere](sql-query-geospatial-query.md)çeviriyi destekler.
-- **Kullanıcı tanımlı Işlev uzantısı işlevi**: saplama yönteminden `UserDefinedFunctionProvider.Invoke` karşılık gelen [Kullanıcı tanımlı işleve](sql-query-udfs.md)çeviriyi destekler.
-- **Çeşitli**: `Coalesce` ve koşullu [işleçlerin](sql-query-operators.md)çevirisini destekler. `Contains`İçeriğe bağlı olarak, ' nın içerdiği, ARRAY_CONTAINS veya Içinde dize ile çeviri yapılabilir.
+- **Seçim** : nesne oluşturma dahil olmak üzere [Seçilecek](sql-query-select.md)projeksiyonler çeviri.
+- **Burada** : filtreler [nereye](sql-query-where.md)çeviriye çevirir ve `&&` ,, `||` ve ile `!` SQL işleçleri arasındaki çeviriyi destekler
+- **SelectMany** : dizilerin [JOIN](sql-query-join.md) yan tümcesine geri sarıya izin verir. Dizi öğelerinde filtrelemek için ifadeleri zincirlemek veya iç içe yerleştirmek için kullanın.
+- **OrderBy** ve **OrderByDescending** : ASC veya DESC ile [order by](sql-query-order-by.md) 'a çevirin.
+- [Toplama](sql-query-aggregates.md)için **Count** , **Sum** , **Min** , **Max** ve **Average** işleçleri ve zaman uyumsuz eşdeğerleri **countasync** , **SumAsync** , **minasync** , **maxasync** ve **averageasync** .
+- **CompareTo** : Aralık karşılaştırmaları ' ne çevirir. Genellikle dizeler için kullanılır, çünkü .NET ' de karşılaştırılabilir değildir.
+- **Atla** ve **Al** : sorgunun sonuçlarını sınırlandırma ve sayfalandırma IŞLEMLERI için [uzaklığa ve sınıra](sql-query-offset-limit.md) çevirir.
+- **Matematik işlevleri** : .net,,,,,,,, `Abs` `Acos` ,, `Asin` `Atan` `Ceiling` `Cos` `Exp` `Floor` `Log` `Log10` `Pow` , `Round` , `Sign` , `Sin` , `Sqrt` , `Tan` ve ile `Truncate` eşdeğer [yerleşik matematik işlevlerine](sql-query-mathematical-functions.md)çeviriyi destekler.
+- **Dize işlevleri** : .net,,,,,,,, `Concat` `Contains` ,, `Count` `EndsWith` `IndexOf` `Replace` `Reverse` `StartsWith` `SubString` `ToLower` `ToUpper` , `TrimEnd` ve ile `TrimStart` eşdeğer [yerleşik dize işlevlerine](sql-query-string-functions.md)çeviriyi destekler.
+- **Dizi işlevleri** : .net `Concat` , `Contains` ve ile `Count` eşdeğer [yerleşik dizi işlevlerine](sql-query-array-functions.md)çeviriyi destekler.
+- **Jeo-uzamsal uzantı işlevleri** : saplama yöntemlerinden, `Distance` , `IsValid` `IsValidDetailed` , ve `Within` eşdeğer [yerleşik Jeo uzamsal işlevlere](sql-query-geospatial-query.md)çeviriyi destekler.
+- **Kullanıcı tanımlı Işlev uzantısı işlevi** : saplama yönteminden `UserDefinedFunctionProvider.Invoke` karşılık gelen [Kullanıcı tanımlı işleve](sql-query-udfs.md)çeviriyi destekler.
+- **Çeşitli** : `Coalesce` ve koşullu [işleçlerin](sql-query-operators.md)çevirisini destekler. `Contains`İçeriğe bağlı olarak, ' nın içerdiği, ARRAY_CONTAINS veya Içinde dize ile çeviri yapılabilir.
 
 ## <a name="examples"></a>Örnekler
 

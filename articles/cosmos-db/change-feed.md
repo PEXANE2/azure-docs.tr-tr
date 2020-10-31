@@ -8,14 +8,15 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 4cd0ad1553f04a781349a4664fbb408108015632
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d0ae81177ca8488c410e40ca56642199694c08c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510292"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93072654"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Azure Cosmos DB'deki değişiklik akışı
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB’de değişiklik akışı desteği, Azure Cosmos kapsayıcısında yapılan değişiklikleri dinleyerek çalışır. Ardından çıkış olarak, değiştirilen belgelerin değiştirilme zamanına göre sıralandığı bir belge listesi oluşturur. Değişiklikler kalıcı hale getirilir, zaman uyumsuz ve artırımlı olarak işlenebilir ve çıkış, paralel işleme için bir veya daha fazla tüketiciye dağıtılabilir.
 
@@ -25,12 +26,12 @@ Azure Cosmos DB’de değişiklik akışı desteği, Azure Cosmos kapsayıcısı
 
 Bu özellik şu anda aşağıdaki Azure Cosmos DB API 'Leri ve istemci SDK 'Ları tarafından desteklenmektedir.
 
-| **İstemci sürücüleri** | **SQL APı 'SI** | **Cassandra için Azure Cosmos DB API 'SI** | **MongoDB için Azure Cosmos DB API’si** | **Gremlin API**|**Tablo API’si** |
+| **İstemci sürücüleri** | **SQL APı 'SI** | **Cassandra için Azure Cosmos DB API 'SI** | **MongoDB için Azure Cosmos DB API’si** | **Gremlin API 'SI**|**Tablo API’si** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | Evet | Evet | Evet | Evet | Hayır |
-|Java|Evet|Evet|Evet|Evet|Hayır|
-|Python|Evet|Evet|Evet|Evet|Hayır|
-|Node/JS|Evet|Evet|Evet|Evet|Hayır|
+| .NET | Yes | Yes | Yes | Yes | Hayır |
+|Java|Yes|Yes|Yes|Yes|Hayır|
+|Python|Yes|Yes|Yes|Yes|Hayır|
+|Node/JS|Yes|Yes|Yes|Yes|Hayır|
 
 ## <a name="change-feed-and-different-operations"></a>Akışı ve farklı işlemleri değiştirme
 

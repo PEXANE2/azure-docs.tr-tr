@@ -7,14 +7,15 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a876c5ba9c289f0edbbfdf8727e9957e7937b781
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c9df71763c610f9773949ef618de7840ae752d82
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476255"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073579"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Azure Cosmos DB tarihlerle çalışma
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB, yerel bir [JSON](https://www.json.org) veri modeli aracılığıyla şema esnekliği ve zengin dizin oluşturma sağlar. Veritabanları, kapsayıcılar, belgeler ve saklı yordamlar dahil tüm Azure Cosmos DB kaynakları, JSON belgeleri olarak modellenir ve depolanır. Taşınabilir olması için, JSON (ve Azure Cosmos DB) yalnızca küçük bir temel türler kümesini destekler: dize, sayı, Boolean, dizi, nesne ve null. Ancak, JSON esnektir ve geliştiricilerin ve çerçevelerin bu temel öğeleri kullanarak daha karmaşık türleri göstermesini ve bunları nesne veya dizi olarak oluşturma olanağı sağlar.
 

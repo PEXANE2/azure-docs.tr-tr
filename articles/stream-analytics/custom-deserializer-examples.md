@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4616f6c567b0bba13fe04aed56fd5e4ddc293f90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac08b5af0afbf43c7b13808fac06c40066e48b7a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89008395"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074242"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>.NET özel seri hale getiriciler kullanarak her biçimdeki girişi oku
 
@@ -201,7 +201,7 @@ namespace ExampleCustomCode.Serialization
 
 ## <a name="serialization-format-for-rest-apis"></a>REST API 'Leri için serileştirme biçimi
 
-Her Stream Analytics girişinin bir **serileştirme biçimi**vardır. Giriş seçenekleri hakkında daha fazla bilgi için bkz. [giriş REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input) belgeleri.
+Her Stream Analytics girişinin bir **serileştirme biçimi** vardır. Giriş seçenekleri hakkında daha fazla bilgi için bkz. [giriş REST API](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs) belgeleri.
 
 Aşağıdaki JavaScript kodu, REST API kullanılırken .NET seri hale getirici serileştirme biçiminin bir örneğidir:
 
@@ -227,7 +227,7 @@ Aşağıdaki JavaScript kodu, REST API kullanılırken .NET seri hale getirici s
 Bu özellik aşağıdaki bölgelerde kullanılabilir:
 
 * Orta Batı ABD
-* Kuzey Avrupa
+* North Europe
 * Doğu ABD
 * Batı ABD
 * Doğu ABD 2

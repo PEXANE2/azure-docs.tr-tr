@@ -8,14 +8,15 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.reviewer: sngun
-ms.openlocfilehash: aa0586ab2a0ff21e3187bba070dd4be7ef325288
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6d2f39eae94b217ad1f95a6a559aa3e1044d10da
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784686"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93072688"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Azure Cosmos DB akış çekme modelini değiştirme
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Değişiklik akışı çekme modeliyle birlikte Azure Cosmos DB değişiklik akışını kendi hızınızda kullanabilirsiniz. Değişiklik [akışı işlemcisi](change-feed-processor.md)ile zaten yaptığınız gibi, değişiklik akışı çekme modelini kullanarak değişikliklerin birden fazla değişiklik akışı tüketicisinden işlenmesini paralel hale getirmek.
 
@@ -46,7 +47,7 @@ Aşağıda, değişiklik akışı işlemcisi ve çekme modeli arasındaki bazı 
 | Gelecekteki değişiklikler için yoklama | Kullanıcı tarafından belirtilen değişiklikleri otomatik olarak denetler `WithPollInterval` | El ile |
 | Yeni değişiklik olmadığı davranış | Otomatik olarak bekle `WithPollInterval` ve yeniden denetle | Özel durum yakalanmalıdır ve el ile yeniden denetlenecektir |
 | Tüm kapsayıcılardan değişiklikleri işle | Evet ve aynı kapsayıcıdan birden çok iş parçacığı/makine tarafından otomatik olarak paralelleştirildi| Evet ve Feedtoken kullanarak manuel olarak paralelleştirildi |
-| Yalnızca tek bir bölüm anahtarından değişiklikleri işle | Desteklenmez | Evet|
+| Yalnızca tek bir bölüm anahtarından değişiklikleri işle | Desteklenmez | Yes|
 | Destek düzeyi | Genel kullanıma sunuldu | Önizleme |
 
 > [!NOTE]

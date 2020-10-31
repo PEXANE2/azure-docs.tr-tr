@@ -2,13 +2,13 @@
 title: Azure Event Grid kavramlar
 description: Azure Event Grid ve kavramlarını açıklar. Event Grid birçok anahtar bileşenini tanımlar.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 003139374a056da6ddc22dd1453d28761ff58871
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/29/2020
+ms.openlocfilehash: 6cfb8b3aaf16a0080b9864ce5198b8a7232e8bc8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86116497"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075118"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure Event Grid kavramlar
 
@@ -37,11 +37,11 @@ Desteklenen Event Grid kaynaklarından herhangi birini uygulama hakkında daha f
 
 Olay Kılavuzu konusu, kaynağın olayları gönderdiği bir uç nokta sağlar. Yayımcı, olay Kılavuzu konusunu oluşturur ve bir olay kaynağının bir konu veya birden fazla konu ihtiyacı olup olmadığına karar verir. İlgili olayların toplanması için bir konu kullanılır. Belirli olay türlerine yanıt vermek için, aboneler hangi konuların abone olacağına karar verir.
 
-Sistem konuları Azure depolama, Azure Event Hubs ve Azure Service Bus gibi Azure hizmetleri tarafından sunulan yerleşik konulardır. Azure aboneliğinizde sistem konuları oluşturabilir ve bunlara abone olabilirsiniz. Daha fazla bilgi için bkz. [sistem konularına genel bakış](system-topics.md). 
+**Sistem konuları** Azure depolama, Azure Event Hubs ve Azure Service Bus gibi Azure hizmetleri tarafından sunulan yerleşik konulardır. Azure aboneliğinizde sistem konuları oluşturabilir ve bunlara abone olabilirsiniz. Daha fazla bilgi için bkz. [sistem konularına genel bakış](system-topics.md). 
 
-Özel konu başlıkları uygulamalar ve üçüncü taraf konu başlıklarıdır. Özel konu başlığı oluşturduğunuzda veya özel konu başlığına erişim için atandığınızda, aboneliğinizde özel konu başlığını görürsünüz. Daha fazla bilgi için bkz. [özel konular](custom-topics.md).
+**Özel konular** uygulama ve üçüncü taraf konulardır. Özel konu başlığı oluşturduğunuzda veya özel konu başlığına erişim için atandığınızda, aboneliğinizde özel konu başlığını görürsünüz. Daha fazla bilgi için bkz. [özel konular](custom-topics.md). Uygulamanızı tasarlarken, kaç tane konu oluşturacağına karar verirken esneklik elde edersiniz. Büyük çözümler için ilgili olayların her kategorisi için özel bir konu oluşturun. Örneğin, kullanıcı hesaplarını değiştirme ve siparişleri işleme ile ilgili olaylar gönderen bir uygulamayı ele alalım. Herhangi bir olay işleyicisinin her iki olay kategorisini de istemesi pek olası değildir. İki özel konu başlığı oluşturun ve olay işleyicilerinin ilgilendikleri konu başlığına abone olmalarına izin verin. Küçük çözümler için tüm olayları tek bir konuya göndermenizi tercih edebilirsiniz. Olay aboneleri istedikleri olay türlerini filtreleyebilir.
 
-Uygulamanızı tasarlarken, kaç tane konu oluşturacağına karar verirken esneklik elde edersiniz. Büyük çözümler için ilgili olayların her kategorisi için özel bir konu oluşturun. Örneğin, kullanıcı hesaplarını değiştirme ve siparişleri işleme ile ilgili olaylar gönderen bir uygulamayı ele alalım. Herhangi bir olay işleyicisinin her iki olay kategorisini de istemesi pek olası değildir. İki özel konu başlığı oluşturun ve olay işleyicilerinin ilgilendikleri konu başlığına abone olmalarına izin verin. Küçük çözümler için tüm olayları tek bir konuya göndermenizi tercih edebilirsiniz. Olay aboneleri istedikleri olay türlerini filtreleyebilir.
+Başka türde bir konu vardır: **iş ortağı konusu** . [Iş ortağı olayları](partner-events-overview.md) özelliği, üçüncü taraf SaaS sağlayıcısı 'nın, bu olaylara abone olan tüketiciler tarafından kullanılabilmesini sağlamak için hizmetlerinden olayları yayımlamasına olanak sağlar. SaaS sağlayıcısı, abonelerin olayları tüketmek için kullandığı bir **iş ortağı konusu** olan bir konu türü sunar. Ayrıca, olay yayımcıları ve aboneler tarafından kullanılan kaynakların kaygılarını ve sahipliğini ayırarak temiz bir yayın-alt modeli sunar.
 
 ## <a name="event-subscriptions"></a>Olay abonelikleri
 

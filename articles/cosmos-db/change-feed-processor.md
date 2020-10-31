@@ -9,14 +9,15 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 377165c94303a4a44d481009700cdef9169b3d78
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: dfd96e7c62d700ccec2ecd4b223668d7aca4f18f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475813"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93072815"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB'deki değişiklik akışı işlemcisi
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Değişiklik akışı işlemcisi, [Azure Cosmos DB SDK V3](https://github.com/Azure/azure-cosmos-dotnet-v3)'nin bir parçasıdır. Değişiklik akışını okuma ve olay işlemeyi birden çok tüketiciye etkin bir şekilde dağıtma sürecini basitleştirir.
 
@@ -61,8 +62,8 @@ Bir konak örneğinin normal yaşam döngüsü şu şekildedir:
 
 1. Değişiklik akışını okuyun.
 1. Değişiklik yoksa, önceden tanımlanmış bir süre (Oluşturucu içinde özelleştirilebilir) için uyku moduna `WithPollInterval` geçin ve #1 gidin.
-1. Değişiklikler varsa **temsilciyi temsilciye**gönderin.
-1. Temsilci değişiklikleri **başarıyla**işlemeyi tamamladığında, kira deposunu en son işlenen zaman noktasıyla güncelleştirin ve #1 gidin.
+1. Değişiklikler varsa **temsilciyi temsilciye** gönderin.
+1. Temsilci değişiklikleri **başarıyla** işlemeyi tamamladığında, kira deposunu en son işlenen zaman noktasıyla güncelleştirin ve #1 gidin.
 
 ## <a name="error-handling"></a>Hata işleme
 
@@ -104,7 +105,7 @@ Varsayılan olarak, bir değişiklik akışı işlemcisi ilk kez başladığınd
 
 ### <a name="reading-from-a-previous-date-and-time"></a>Önceki bir tarih ve saatten okuma
 
-Değişiklik akışı işlemcisini, **belirli bir tarih ve saatte**başlayan değişiklikleri okumak için, bir a örneğini `DateTime` Oluşturucu uzantısına geçirerek başlatmak mümkündür `WithStartTime` :
+Değişiklik akışı işlemcisini, **belirli bir tarih ve saatte** başlayan değişiklikleri okumak için, bir a örneğini `DateTime` Oluşturucu uzantısına geçirerek başlatmak mümkündür `WithStartTime` :
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=TimeInitialization)]
 
@@ -112,7 +113,7 @@ Değişiklik akışı işlemcisi, belirli bir tarih ve saat için başlatılır 
 
 ### <a name="reading-from-the-beginning"></a>Baştan itibaren okunuyor
 
-Veri geçişleri veya bir kapsayıcının tüm geçmişinin çözümlenmesi gibi diğer senaryolarda, **Bu kapsayıcının yaşam süresinden itibaren**değişiklik akışını okuduk. Bunu yapmak için, Oluşturucu uzantısı üzerinde kullanabiliriz, ancak bu, `WithStartTime` `DateTime.MinValue.ToUniversalTime()` En düşük değerin UTC gösterimini oluşturan, `DateTime` şöyle olabilir:
+Veri geçişleri veya bir kapsayıcının tüm geçmişinin çözümlenmesi gibi diğer senaryolarda, **Bu kapsayıcının yaşam süresinden itibaren** değişiklik akışını okuduk. Bunu yapmak için, Oluşturucu uzantısı üzerinde kullanabiliriz, ancak bu, `WithStartTime` `DateTime.MinValue.ToUniversalTime()` En düşük değerin UTC gösterimini oluşturan, `DateTime` şöyle olabilir:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartFromBeginningInitialization)]
 

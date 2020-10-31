@@ -6,14 +6,15 @@ ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 04/07/2020
-ms.openlocfilehash: 9c266e42804a12403e446bf024e93fe879497570
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec6a9db63504958640137fcd0fcfc904eb01afa5
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803271"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074738"
 ---
 # <a name="how-to-monitor-the-server-side-latency-for-operations-in-an-azure-cosmos-db-container-or-account"></a>Bir Azure Cosmos DB kapsayıcısı veya hesabındaki işlemler için sunucu tarafı gecikme süresini izleme
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB için Azure Izleyici, hesabınızı izlemek ve panolar oluşturmak için bir ölçüm görünümü sağlar. Azure Cosmos DB ölçümleri varsayılan olarak toplanır, bu özellik açıkça her şeyi etkinleştirmenizi veya yapılandırmanızı gerektirmez. Sunucu tarafı gecikme ölçümü, bir işlemin sunucu tarafı gecikme süresini görüntülemek için kullanılır. Azure Cosmos DB, doğrudan bağlantı ile nokta okuma/yazma işlemleri için 10 MS 'den daha az SLA sağlar. Nokta okuma ve yazma işlemleri için [SLA 'lar belgesinde](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/)ayrıntılı olarak hesaplanır.
 
@@ -29,11 +30,11 @@ Döndürülen verilerin boyutunu görmek için tanılama günlüğüne bakabilir
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
-1. Sol taraftaki Gezinti çubuğundan **izleyici** ' yi seçin ve **ölçümler**' i seçin.
+1. Sol taraftaki Gezinti çubuğundan **izleyici** ' yi seçin ve **ölçümler** ' i seçin.
 
    :::image type="content" source="./media/monitor-server-side-latency/monitor-metrics-blade.png" alt-text="Azure Izleyici 'de ölçümler bölmesi":::
 
-1. **Ölçümler** bölmesinden > **bir kaynak seçin** > gerekli **aboneliği**ve **kaynak grubunu**seçin. **Kaynak türü**için **Azure Cosmos DB hesapları**' nı seçin, mevcut Azure Cosmos hesaplarınızdan birini seçin ve **Uygula**' yı seçin.
+1. **Ölçümler** bölmesinden > **bir kaynak seçin** > gerekli **aboneliği** ve **kaynak grubunu** seçin. **Kaynak türü** için **Azure Cosmos DB hesapları** ' nı seçin, mevcut Azure Cosmos hesaplarınızdan birini seçin ve **Uygula** ' yı seçin.
    
    :::image type="content" source="./media/monitor-server-side-latency/select-cosmos-db-account.png" alt-text="Azure Izleyici 'de ölçümler bölmesi":::
 
@@ -43,9 +44,9 @@ Döndürülen verilerin boyutunu görmek için tanılama günlüğüne bakabilir
 
 ## <a name="filters-for-server-side-latency"></a>Sunucu tarafı gecikme süresi için filtreler
 
-Ayrıca ölçümleri filtreleyebilir ve belirli bir **CollectionName**, **connectionmode**, **DatabaseName**, **OperationType**, **Region**ve **publicapıtype**tarafından görünen grafikleri alabilirsiniz. 
+Ayrıca ölçümleri filtreleyebilir ve belirli bir **CollectionName** , **connectionmode** , **DatabaseName** , **OperationType** , **Region** ve **publicapıtype** tarafından görünen grafikleri alabilirsiniz. 
 
-Ölçümleri filtrelemek için, **Filtre Ekle** ' yi seçin ve **Publicapittype** gibi gerekli özelliği seçin ve **SQL**değerini seçin. **OperationType**için başka bir filtre ekleyin. Daha sonra grafik, seçilen dönemde farklı işlemler için sunucu tarafı gecikme süresini görüntüler. Saklı yordam aracılığıyla yürütülen işlemler, OperationType ölçümü altında kullanılamayacak şekilde günlüğe kaydedilmez.
+Ölçümleri filtrelemek için, **Filtre Ekle** ' yi seçin ve **Publicapittype** gibi gerekli özelliği seçin ve **SQL** değerini seçin. **OperationType** için başka bir filtre ekleyin. Daha sonra grafik, seçilen dönemde farklı işlemler için sunucu tarafı gecikme süresini görüntüler. Saklı yordam aracılığıyla yürütülen işlemler, OperationType ölçümü altında kullanılamayacak şekilde günlüğe kaydedilmez.
 
 Her bir işlemin **sunucu tarafı gecikme süresi** ölçümleri, aşağıdaki görüntüde gösterildiği gibi görüntülenir:
 

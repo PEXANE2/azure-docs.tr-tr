@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: 84a39ade902bd22d67e9b3a7d40b392bfd83dfd3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1206d67b6a9d3823220b1ce1b7bd5b4b45e672fe
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475924"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93072714"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Gerçek zamanlı veri analizlerini görselleştirmek için Azure Cosmos DB değişiklik akışını kullanın
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB değişiklik akışı, bu kayıtlar oluşturulduğu veya değiştirildiği için Azure Cosmos kapsayıcısından sürekli ve artımlı bir kayıt akışı almanın bir mekanizmadır. Değişiklik akışı desteği, herhangi bir değişiklik için kapsayıcıyı dinleyerek işe yarar. Ardından çıkış olarak, değiştirilen belgelerin değiştirilme zamanına göre sıralandığı bir belge listesi oluşturur. Değişiklik akışı hakkında daha fazla bilgi için bkz. [değişiklik akışı ile çalışma](change-feed.md) makalesi. 
 
@@ -72,23 +73,23 @@ Aşağıdaki diyagram, çözüme dahil olan veri akışını ve bileşenlerini t
 
 Çözüm için gereken Azure kaynakları-Azure Cosmos DB, depolama hesabı, Olay Hub 'ı Stream Analytics oluşturun. Bu kaynakları bir Azure Resource Manager şablonuyla dağıtacaksınız. Bu kaynakları dağıtmak için aşağıdaki adımları kullanın: 
 
-1. Windows PowerShell yürütme ilkesini **Kısıtlanmamış**olarak ayarlayın. Bunu yapmak için, **Windows PowerShell 'ı yönetici olarak** açın ve aşağıdaki komutları çalıştırın:
+1. Windows PowerShell yürütme ilkesini **Kısıtlanmamış** olarak ayarlayın. Bunu yapmak için, **Windows PowerShell 'ı yönetici olarak** açın ve aşağıdaki komutları çalıştırın:
 
    ```powershell
    Get-ExecutionPolicy
    Set-ExecutionPolicy Unrestricted 
    ```
 
-2. Önceki adımda indirdiğiniz GitHub deposundan **Azure Resource Manager** klasörüne gidin ve dosya ** üzerindeparameters.js** adlı dosyayı açın.  
+2. Önceki adımda indirdiğiniz GitHub deposundan **Azure Resource Manager** klasörüne gidin ve dosya **üzerindeparameters.js** adlı dosyayı açın.  
 
 3. Dosyadaki **parameters.js** gösterildiği gibi cosmosdbaccount_name, eventhubnamespace_name, storageaccount_name, parametreleri için değerler sağlayın. Kaynaklarınızın her birine verdiğiniz adları daha sonra kullanmanız gerekir.  
 
-4. **Windows PowerShell**'de **Azure Resource Manager** klasöre gidin ve aşağıdaki komutu çalıştırın:
+4. **Windows PowerShell** 'de **Azure Resource Manager** klasöre gidin ve aşağıdaki komutu çalıştırın:
 
    ```powershell
    .\deploy.ps1
    ```
-5. İstendiğinde, Azure **ABONELIK kimliğinizi**, kaynak grubu adı için **changefeedlab** ve dağıtım adı için **Run1** girin. Kaynaklar dağıtmaya başladıktan sonra, tamamlanması 10 dakika kadar sürebilir.
+5. İstendiğinde, Azure **ABONELIK kimliğinizi** , kaynak grubu adı için **changefeedlab** ve dağıtım adı için **Run1** girin. Kaynaklar dağıtmaya başladıktan sonra, tamamlanması 10 dakika kadar sürebilir.
 
 ## <a name="create-a-database-and-the-collection"></a>Veritabanı ve koleksiyon oluşturma
 
@@ -98,19 +99,19 @@ Artık, e-ticaret sitesi olaylarını tutmak için bir koleksiyon oluşturacaks�
 
 2. **Veri Gezgini** bölmesinden **Yeni koleksiyon** ' ı seçin ve formu aşağıdaki ayrıntılarla doldurabilirsiniz:  
 
-   * **Veritabanı kimliği** alanı Için **Yeni oluştur**' u seçin ve ardından **changefeedlabdatabase**yazın. **Veritabanı Işleme sağlama** kutusunu işaretlenmemiş olarak bırakın.  
-   * **Koleksiyon** kimliği alanı için **changefeedlabcollection**yazın.  
-   * **Bölüm anahtarı** alanı için **/Item**yazın. Bu, büyük/küçük harfe duyarlıdır, bu nedenle doğru girdiğinizden emin olun.  
-   * **Verimlilik** alanı için **10000**girin.  
+   * **Veritabanı kimliği** alanı Için **Yeni oluştur** ' u seçin ve ardından **changefeedlabdatabase** yazın. **Veritabanı Işleme sağlama** kutusunu işaretlenmemiş olarak bırakın.  
+   * **Koleksiyon** kimliği alanı için **changefeedlabcollection** yazın.  
+   * **Bölüm anahtarı** alanı için **/Item** yazın. Bu, büyük/küçük harfe duyarlıdır, bu nedenle doğru girdiğinizden emin olun.  
+   * **Verimlilik** alanı için **10000** girin.  
    * **Tamam** düğmesini seçin.  
 
 3. Daha sonra değişiklik akışı işleme için **kiralamalar** adlı başka bir koleksiyon oluşturun. Kira koleksiyonu, değişiklik akışını birden çok çalışan genelinde işlemeye yönelik koordinatları. Ayrı bir koleksiyon, kiralamaları bölüm başına bir kira ile depolamak için kullanılır.  
 
 4. **Veri Gezgini** bölmesine dönün ve **Yeni koleksiyon** ' ı seçin ve formu aşağıdaki ayrıntılarla doldurur:
 
-   * **Veritabanı kimliği** alanı için **var olanı kullan**' ı seçin ve ardından **changefeedlabdatabase**yazın.  
-   * **Koleksiyon kimliği** alanı için **kiralamalar**girin.  
-   * **Depolama kapasitesi**için **sabit**' i seçin.  
+   * **Veritabanı kimliği** alanı için **var olanı kullan** ' ı seçin ve ardından **changefeedlabdatabase** yazın.  
+   * **Koleksiyon kimliği** alanı için **kiralamalar** girin.  
+   * **Depolama kapasitesi** için **sabit** ' i seçin.  
    * **Üretilen iş** alanını varsayılan değerine ayarlayın.  
    * **Tamam** düğmesini seçin.
 
@@ -120,7 +121,7 @@ Artık, e-ticaret sitesi olaylarını tutmak için bir koleksiyon oluşturacaks�
 
 1. [Azure Portal](https://portal.azure.com/) gidin ve şablon dağıtımı tarafından oluşturulan **Azure Cosmos DB hesabı** bulun.  
 
-2. **Anahtarlar** bölmesine gıdın, BIRINCIL bağlantı dizesini kopyalayın ve laboratuvar genelinde erişiminizin olacağı bir not defteri veya başka bir belgeye kopyalayın. **Bağlantı dizesinin Cosmos DB**etiketlenmesi gerekir. Dizeyi daha sonra kodunuza kopyalamanız gerekir, bu nedenle bir göz atın ve nerede depolayabileceğinizi unutmayın.
+2. **Anahtarlar** bölmesine gıdın, BIRINCIL bağlantı dizesini kopyalayın ve laboratuvar genelinde erişiminizin olacağı bir not defteri veya başka bir belgeye kopyalayın. **Bağlantı dizesinin Cosmos DB** etiketlenmesi gerekir. Dizeyi daha sonra kodunuza kopyalamanız gerekir, bu nedenle bir göz atın ve nerede depolayabileceğinizi unutmayın.
 
 ### <a name="get-the-storage-account-key-and-connection-string"></a>Depolama hesabı anahtarını ve bağlantı dizesini al
 
@@ -130,7 +131,7 @@ Azure depolama hesapları kullanıcıların veri depolamasına izin verir. Bu la
 
 2. Sol taraftaki menüden **erişim tuşları** ' nı seçin.  
 
-3. **Ana 1** altındaki değerleri bir not defteri veya laboratuvar genelinde erişiminizin olacağı başka bir belgeye kopyalayın. **Anahtarı** **depolama anahtarı** ve **bağlantı dizesi** olarak, **depolama bağlantı dizesi**olarak etiketlemelidir. Bu dizeleri daha sonra kodunuza kopyalamanız gerekir, bu nedenle bir göz atın ve bunları nerede depolayabileceğinizi unutmayın.  
+3. **Ana 1** altındaki değerleri bir not defteri veya laboratuvar genelinde erişiminizin olacağı başka bir belgeye kopyalayın. **Anahtarı** **depolama anahtarı** ve **bağlantı dizesi** olarak, **depolama bağlantı dizesi** olarak etiketlemelidir. Bu dizeleri daha sonra kodunuza kopyalamanız gerekir, bu nedenle bir göz atın ve bunları nerede depolayabileceğinizi unutmayın.  
 
 ### <a name="get-the-event-hub-namespace-connection-string"></a>Olay Hub 'ı ad alanı bağlantı dizesini al
 
@@ -140,7 +141,7 @@ Azure Olay Hub 'ı, olay verilerini alır, depolar, işler ve verileri iletir. B
 
 2. Sol taraftaki menüden **paylaşılan erişim ilkeleri** ' ni seçin.  
 
-3. **RootManageSharedAccessKey**öğesini seçin. **Bağlantı dizesi-birincil anahtarı** , laboratuvar genelinde erişiminizin olacağı bir not defteri veya başka bir belgeye kopyalayın. Bu **Olay Hub 'ı ad alanı** bağlantı dizesinin etiketlenmesi gerekir. Dizeyi daha sonra kodunuza kopyalamanız gerekir, bu nedenle bir göz atın ve nerede depolayabileceğinizi unutmayın.
+3. **RootManageSharedAccessKey** öğesini seçin. **Bağlantı dizesi-birincil anahtarı** , laboratuvar genelinde erişiminizin olacağı bir not defteri veya başka bir belgeye kopyalayın. Bu **Olay Hub 'ı ad alanı** bağlantı dizesinin etiketlenmesi gerekir. Dizeyi daha sonra kodunuza kopyalamanız gerekir, bu nedenle bir göz atın ve nerede depolayabileceğinizi unutmayın.
 
 ## <a name="set-up-azure-function-to-read-the-change-feed"></a>Değişiklik akışını okumak için Azure Işlevini ayarlama
 
@@ -148,15 +149,15 @@ Yeni bir belge oluşturulduğunda veya Cosmos kapsayıcısında geçerli bir bel
 
 1. Cihazınızda Klonladığınız depoya dönün.  
 
-2. **Changefeedlabsolution. sln** adlı dosyaya sağ tıklayın ve **Visual Studio ile aç**' ı seçin.  
+2. **Changefeedlabsolution. sln** adlı dosyaya sağ tıklayın ve **Visual Studio ile aç** ' ı seçin.  
 
 3. Visual Studio 'da **local.settings.js** gidin. Ardından, daha önce kaydettiğiniz değerleri kullanarak boş olanları doldurmanız gerekir.  
 
-4. **ChangeFeedProcessor.cs**adresine gidin. **Run** işlevinin parametrelerinde, aşağıdaki eylemleri gerçekleştirin:  
+4. **ChangeFeedProcessor.cs** adresine gidin. **Run** işlevinin parametrelerinde, aşağıdaki eylemleri gerçekleştirin:  
 
    * **Koleksıyon adınızın** metnini, koleksiyonunuzun adıyla değiştirin. Önceki yönergeleri izlediyseniz, koleksiyonunuzun adı changefeedlabcollection olur.  
-   * **Kıra KOLEKSIYONU adınızın** metnini, kira koleksiyonlarınızın adıyla değiştirin. Önceki yönergeleri izlediyseniz, kira koleksiyonunuzun adı **kiralamalar**olur.  
-   * Visual Studio 'nun sol tarafında yeşil okun solundaki başlangıç projesi kutusunun **Changefeedfunction**olduğunu doğrulayın.  
+   * **Kıra KOLEKSIYONU adınızın** metnini, kira koleksiyonlarınızın adıyla değiştirin. Önceki yönergeleri izlediyseniz, kira koleksiyonunuzun adı **kiralamalar** olur.  
+   * Visual Studio 'nun sol tarafında yeşil okun solundaki başlangıç projesi kutusunun **Changefeedfunction** olduğunu doğrulayın.  
    * Programı çalıştırmak için sayfanın en üstünde **Başlat**  ' ı seçin  
    * Konsol uygulaması "Iş Konağı başlatıldı" diyorsa işlevin çalıştığını doğrulayabilirsiniz.
 
@@ -174,11 +175,11 @@ Değişiklik akışı 'nın bir e-ticaret sitesinde yeni eylemleri nasıl işley
  
 4. Değişiklikleri düzenlenen tüm dosyalar üzerinde kaydedin.  
 
-5. Visual Studio 'nun sol tarafında yeşil okun solundaki **Başlangıç projesi** kutusunun **DataGenerator**olduğunu doğrulayın. Sonra, programı çalıştırmak için sayfanın en üstündeki **Başlat** ' ı seçin.  
+5. Visual Studio 'nun sol tarafında yeşil okun solundaki **Başlangıç projesi** kutusunun **DataGenerator** olduğunu doğrulayın. Sonra, programı çalıştırmak için sayfanın en üstündeki **Başlat** ' ı seçin.  
  
 6. Programın çalışmasını bekleyin. Yıldızlar verilerin geldiği anlamına gelir! Programı çalışır durumda tutun; büyük miktarda verinin toplanması önemlidir.  
 
-7. [Azure Portal](https://portal.azure.com/) ' a ve ardından kaynak grubunuzdaki Cosmos DB hesaba giderek **Veri Gezgini**istiyorsanız, değişiklik yaptığınız rastgele verileri **changefeedlabcollection** içinde görürsünüz.
+7. [Azure Portal](https://portal.azure.com/) ' a ve ardından kaynak grubunuzdaki Cosmos DB hesaba giderek **Veri Gezgini** istiyorsanız, değişiklik yaptığınız rastgele verileri **changefeedlabcollection** içinde görürsünüz.
  
    :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="Proje görseli":::
 
@@ -192,35 +193,35 @@ Azure Stream Analytics, akış verilerinin gerçek zamanlı işlemesi için tam 
 
    :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="Proje görseli":::
 
-3. **+ Akış girişi Ekle**' yi seçin. Ardından açılan menüden **Olay Hub 'ını** seçin.  
+3. **+ Akış girişi Ekle** ' yi seçin. Ardından açılan menüden **Olay Hub 'ını** seçin.  
 
 4. Yeni giriş formunu aşağıdaki ayrıntılarla doldur:
 
-   * **Giriş** diğer adı alanına **giriş**' i girin.  
-   * **Aboneliklerinizden Olay Hub 'ı Seç**seçeneğini belirleyin.  
+   * **Giriş** diğer adı alanına **giriş** ' i girin.  
+   * **Aboneliklerinizden Olay Hub 'ı Seç** seçeneğini belirleyin.  
    * **Abonelik alanını aboneliğiniz** olarak ayarlayın.  
    * **Olay Hub 'ı ad** alanı alanına, ön laboratuvar sırasında oluşturduğunuz Olay Hub 'ı ad alanının adını girin.  
    * **Olay Hub 'ı adı** alanında, **var olanı kullan** seçeneğini belirleyin ve açılır menüden **Event-HUB1** öğesini seçin.  
    * **Olay Hub 'ı ilke** adı alanını varsayılan değerine ayarlı bırakın.  
-   * **Olay serileştirme biçimini** **JSON**olarak bırakın.  
-   * **Kodlama alanını** **UTF-8**olarak ayarlayın.  
-   * **Olay sıkıştırma türü** alanı **none**olarak ayarlanmış kalsın.  
+   * **Olay serileştirme biçimini** **JSON** olarak bırakın.  
+   * **Kodlama alanını** **UTF-8** olarak ayarlayın.  
+   * **Olay sıkıştırma türü** alanı **none** olarak ayarlanmış kalsın.  
    * **Kaydet** düğmesini seçin.
 
-5. Stream Analytics işi sayfasına dönün ve **çıktılar**' i seçin.  
+5. Stream Analytics işi sayfasına dönün ve **çıktılar** ' i seçin.  
 
-6. **+ Ekle**'yi seçin. Sonra açılan menüden **Power BI** ' ı seçin.  
+6. **+ Ekle** öğesini seçin. Sonra açılan menüden **Power BI** ' ı seçin.  
 
 7. Ortalama fiyatı görselleştirmek üzere yeni bir Power BI çıkışı oluşturmak için aşağıdaki eylemleri gerçekleştirin:
 
-   * **Çıkış diğer adı** alanında **averagepriceoutput**yazın.  
-   * **Grup çalışma** alanı alanını, **yükleme çalışma alanları için yetki ver**olarak ayarlanmış olarak bırakın.  
-   * **Veri kümesi adı** alanında **averageprice**girin.  
-   * **Tablo adı** alanında **averageprice**girin.  
+   * **Çıkış diğer adı** alanında **averagepriceoutput** yazın.  
+   * **Grup çalışma** alanı alanını, **yükleme çalışma alanları için yetki ver** olarak ayarlanmış olarak bırakın.  
+   * **Veri kümesi adı** alanında **averageprice** girin.  
+   * **Tablo adı** alanında **averageprice** girin.  
    * **Yetkilendir** düğmesini seçin, ardından Power BI bağlantıyı yetkilendirmek için yönergeleri izleyin.  
    * **Kaydet** düğmesini seçin.  
 
-8. Ardından **streamjob1** adresine dönün ve **Sorguyu Düzenle**' yi seçin.
+8. Ardından **streamjob1** adresine dönün ve **Sorguyu Düzenle** ' yi seçin.
 
    :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="Proje görseli" olarak değiştirilir.
 
@@ -234,11 +235,11 @@ Power BI, veri çözümlemek ve öngörü paylaşmak için kullanılan iş anali
 
 3. Sağ üst köşedeki **+ kutucuk Ekle** ' yi seçin.  
 
-4. **Özel akış verileri**' ni seçin ve ardından **İleri** düğmesini seçin.  
+4. **Özel akış verileri** ' ni seçin ve ardından **İleri** düğmesini seçin.  
  
-5. **Veri kümelerinizde** **averageprice** ' i seçin ve ardından **İleri**' yi seçin.  
+5. **Veri kümelerinizde** **averageprice** ' i seçin ve ardından **İleri** ' yi seçin.  
 
-6. **Görselleştirme türü** alanında, açılan menüden **kümelenmiş çubuk grafik** ' i seçin. **Eksen**altında eylem ekleyin. Herhangi bir şey eklemeden **Göstergeyi** atlayın. Ardından, bir sonraki bölüm altında, **değer**olarak, **Ort**ekleyin. **İleri**' yi seçin, sonra grafiğinizi unvanın ve **Uygula**' yı seçin. Panonuzda yeni bir grafik görmeniz gerekir!  
+6. **Görselleştirme türü** alanında, açılan menüden **kümelenmiş çubuk grafik** ' i seçin. **Eksen** altında eylem ekleyin. Herhangi bir şey eklemeden **Göstergeyi** atlayın. Ardından, bir sonraki bölüm altında, **değer** olarak, **Ort** ekleyin. **İleri** ' yi seçin, sonra grafiğinizi unvanın ve **Uygula** ' yı seçin. Panonuzda yeni bir grafik görmeniz gerekir!  
 
 7. Artık daha fazla ölçüm görselleştirmek istiyorsanız, **streamjob1** adresine dönüp aşağıdaki alanlarla üç çıkış daha oluşturabilirsiniz.
 
@@ -308,7 +309,7 @@ Power BI, veri çözümlemek ve öngörü paylaşmak için kullanılan iş anali
 
 Artık gerçek bir e-ticaret sitesiyle bağlantı kurmak için yeni veri analizi aracınızı nasıl kullanabileceğinizi gözlemleyeceksiniz. E-ticaret sitesini derlemek için bir Azure Cosmos veritabanını kullanarak ürün kategorilerinin listesini (kadınlar, Erkek, Unisex), ürün kataloğunu ve en popüler öğelerin bir listesini depolayın.
 
-1. [Azure Portal](https://portal.azure.com/), ardından **Cosmos DB hesabınıza**ve ardından **Veri Gezgini**' e gidin.  
+1. [Azure Portal](https://portal.azure.com/), ardından **Cosmos DB hesabınıza** ve ardından **Veri Gezgini** ' e gidin.  
 
    Değişiklik, sabit depolama kapasitesine sahip **changefeedlabdatabase**  -  **ürünlerinin** ve **kategorilerinin** altına iki koleksiyon ekleyin.
 
@@ -318,7 +319,7 @@ Artık gerçek bir e-ticaret sitesiyle bağlantı kurmak için yeni veri analizi
 
    :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="Proje görseli":::
 
-3. **TopItems** koleksiyonunu en sık satın alınan öğelerle doldurmak için, **streamjob1** adresine gidin ve yeni bir **Çıkış**ekleyin. **Cosmos DB**seçin.
+3. **TopItems** koleksiyonunu en sık satın alınan öğelerle doldurmak için, **streamjob1** adresine gidin ve yeni bir **Çıkış** ekleyin. **Cosmos DB** seçin.
 
 4. Gerekli alanları aşağıda gösterildiği gibi girin.
 
@@ -326,14 +327,14 @@ Artık gerçek bir e-ticaret sitesiyle bağlantı kurmak için yeni veri analizi
  
 5. Laboratuvarın önceki bölümünde isteğe bağlı Ilk 5 sorgu eklediyseniz, 5A bölümüne ilerleyin. Aksi takdirde, bölüm 5b ' e geçin.
 
-   5a. **Streamjob1**' de, **Sorguyu Düzenle** ' yi seçin ve aşağıdaki sorguyu en üstteki 5 sorgunun altına, ancak sorguların geri kalanında Azure Stream Analytics sorgu düzenleyicinize yapıştırın.
+   5a. **Streamjob1** ' de, **Sorguyu Düzenle** ' yi seçin ve aşağıdaki sorguyu en üstteki 5 sorgunun altına, ancak sorguların geri kalanında Azure Stream Analytics sorgu düzenleyicinize yapıştırın.
 
    ```sql
    SELECT arrayvalue.value.item AS Item, arrayvalue.value.price, arrayvalue.value.countEvents
    INTO topItems
    FROM arrayselect
    ```
-   5b. **Streamjob1**' de, **Sorguyu Düzenle** ' yi seçin ve aşağıdaki sorguyu diğer tüm sorguların üzerine Azure Stream Analytics sorgu düzenleyicinize yapıştırın.
+   5b. **Streamjob1** ' de, **Sorguyu Düzenle** ' yi seçin ve aşağıdaki sorguyu diğer tüm sorguların üzerine Azure Stream Analytics sorgu düzenleyicinize yapıştırın.
 
    ```sql
    /*TOP 5*/
@@ -364,9 +365,9 @@ Artık gerçek bir e-ticaret sitesiyle bağlantı kurmak için yeni veri analizi
 
 6. **EcommerceWebApp. sln** dosyasını açın ve **Çözüm Gezgini** **Web.config** dosyasına gidin.  
 
-7. Bloğu içinde `<appSettings>` , daha önce, **URI 'nizi buraya** ve **birincil anahtarınızı**burada belirten, daha önce kaydettiğiniz **URI** ve **birincil anahtarı** ekleyin. Ardından **veritabanı adınızı** ve **koleksiyon adınızı** gösterildiği gibi ekleyin. (Bu adların, farklı şekilde ad olarak isimsiz olarak isimsiz olarak isimsiz olarak isimsiz olarak, **changefeedlabdatabase** ve **changefeed**
+7. Bloğu içinde `<appSettings>` , daha önce, **URI 'nizi buraya** ve **birincil anahtarınızı** burada belirten, daha önce kaydettiğiniz **URI** ve **birincil anahtarı** ekleyin. Ardından **veritabanı adınızı** ve **koleksiyon adınızı** gösterildiği gibi ekleyin. (Bu adların, farklı şekilde ad olarak isimsiz olarak isimsiz olarak isimsiz olarak isimsiz olarak, **changefeedlabdatabase** ve **changefeed**
 
-   **Ürün koleksiyonu adı**, **Kategoriler koleksiyonu adı**ve **en üst öğe koleksiyonu adını** gösterildiği gibi girin. (Bu adların, farklı bir şekilde ad olarak isimsiz olarak isimsiz olarak isimsiz olarak mı yoksa **, ürünler ve Topgıtems**  
+   **Ürün koleksiyonu adı** , **Kategoriler koleksiyonu adı** ve **en üst öğe koleksiyonu adını** gösterildiği gibi girin. (Bu adların, farklı bir şekilde ad olarak isimsiz olarak isimsiz olarak isimsiz olarak mı yoksa **, ürünler ve Topgıtems**  
 
 8. Adresine gidin ve **EcommerceWebApp. sln** Içindeki **kullanıma al klasörünü** açın. Sonra bu klasörde **Web.config** dosyasını açın.  
 

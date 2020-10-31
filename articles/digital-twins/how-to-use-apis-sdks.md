@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 89fb0e8435bd1804193db5b0f8c0596733a7e674
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 54b6415b3d9ef9f9d5a5c9f5745c0d1ff81dc6e3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026148"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93071479"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins API’lerini ve SDK’larını kullanma
 
@@ -26,13 +26,13 @@ Bu makale, kullanılabilir API 'Lere ve bunlarla etkileşime yönelik yöntemler
 
 Denetim düzlemi API 'Leri, Azure dijital TWINS örneğinizi bir bütün olarak yönetmek için kullanılan [ARM](../azure-resource-manager/management/overview.md) API 'lardır, böylece tüm örneğinizi oluşturma veya silme gibi işlemleri kapsar. Bunları, uç noktaları oluşturmak ve silmek için de kullanacaksınız.
 
-Genel önizleme için en güncel Denetim düzlemi API sürümü _**2020-10-31**_ ' dir.
+En güncel Denetim düzlemi API sürümü _**2020-10-31**_ ' dir.
 
 Denetim düzlemi API 'Lerini kullanmak için:
 * [Denetim düzlemi Swagger klasöründeki](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)en son Swagger 'A başvurarak API 'leri doğrudan çağırabilirsiniz. Bu depo ayrıca kullanımı gösteren örneklerin bir klasörünü de içerir.
 * Şu anda, içindeki denetim API 'Leri için SDK 'Lara erişebilirsiniz...
-  - [.Net (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([kaynak](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins)) ([başvuru [otomatik olarak oluşturulan]](/dotnet/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-dotnet-preview))
-  - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([kaynak](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31)) ([başvuru [otomatik olarak oluşturulan]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview))
+  - [.Net (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([başvuru [otomatik olarak oluşturulan]](/dotnet/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-dotnet-preview)) ([kaynak](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
+  - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([başvuru [otomatik olarak oluşturulan]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview)) ([kaynak](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31))
   - [JavaScript](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([kaynak](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
   - [Python](https://pypi.org/project/azure-mgmt-digitaltwins/) ([kaynak](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins))
   - [Git](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins) ([kaynak](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins))
@@ -47,7 +47,7 @@ Veri düzlemi API 'Leri, Azure dijital TWINS örneğinizin içindeki öğeleri y
 * **Sorgu** -sorgu kategorisi, geliştiricilerin ilişkiler genelinde [ikizi grafiğinde dijital TWINS kümeleri bulmasına](how-to-query-graph.md) olanak tanır.
 * **Olay** rotaları-olay rotaları kategorisi, verileri sistem ve aşağı akış Hizmetleri aracılığıyla [yönlendiren](concepts-route-events.md)API 'leri içerir.
 
-Genel önizleme için en güncel veri düzlemi API sürümü _**2020-10-31**_ ' dir.
+En güncel veri düzlemi API sürümü _**2020-10-31**_ ' dir.
 
 Veri düzlemi API 'Lerini kullanmak için:
 * API 'Leri doğrudan çağırabilirsiniz...
@@ -55,13 +55,13 @@ Veri düzlemi API 'Lerini kullanmak için:
    - [API başvuru belgelerini](/rest/api/azure-digitaltwins/)görüntüleme.
 * **.Net (C#)** SDK 'sını kullanabilirsiniz. .NET SDK 'Yı kullanmak için...
    - paketi NuGet: [Azure. DigitalTwins. Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core)' dan görüntüleyebilir ve ekleyebilirsiniz. 
-   - örnek bir klasör içeren SDK kaynağını GitHub 'da bulabilirsiniz: [.net Için Azure IoT dijital TWINS istemci kitaplığı](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
    - [SDK başvuru belgelerini](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)görüntüleyebilirsiniz.
+   - örnek bir klasör içeren SDK kaynağını GitHub 'da bulabilirsiniz: [.net Için Azure IoT dijital TWINS istemci kitaplığı](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
    - Bu makalenin [.net (C#) SDK (veri düzlemi)](#net-c-sdk-data-plane) bölümüne devam ederek ayrıntılı bilgi ve kullanım örnekleri görebilirsiniz.
 * **Java** SDK 'sını kullanabilirsiniz. Java SDK 'sını kullanmak için...
    - paketi Maven 'ten görüntüleyebilir ve yükleyebilirsiniz: [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar)
-   - SDK kaynağını GitHub 'da bulabilirsiniz: [Java Için Azure IoT dijital TWINS istemci kitaplığı](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
    - [SDK başvuru belgelerini](/java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-preview) görüntüleyebilirsiniz
+   - SDK kaynağını GitHub 'da bulabilirsiniz: [Java Için Azure IoT dijital TWINS istemci kitaplığı](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
 * **JavaScript** SDK 'sını kullanabilirsiniz. JavaScript SDK 'sını kullanmak için...
    - paketi NPM 'den görüntüleyebilir ve yükleyebilirsiniz: [JavaScript Için Azure Azure Digital TWINS istemci kitaplığı](https://www.npmjs.com/package/@azure/digital-twins-core).
    - [SDK başvuru belgelerini](/javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest)görüntüleyebilirsiniz.

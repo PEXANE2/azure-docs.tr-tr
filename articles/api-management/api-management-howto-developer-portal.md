@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 30a6a73768db7b073258487435ddbe6c0daccf16
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 30487218fc95be75d22b5a9ea5a6dbc224ffd025
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317815"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074806"
 ---
 # <a name="overview-of-the-developer-portal"></a>Geliştirici portalına genel bakış
 
@@ -62,7 +62,7 @@ Geliştirici portalının önizleme sürümünü ilk kez başlattığınızda, A
 
 Portalınızı içeriğin önizleme sürümüne göre büyük ölçüde özelleştirdiyseniz, bunu olduğu gibi kullanmaya devam edebilir ve yeni pencere öğelerini portalın sayfalarına el ile yerleştirebilirsiniz. Aksi takdirde, portalınızın içeriğini yeni varsayılan içerikle değiştirmeniz önerilir.
 
-Yönetilen bir portaldaki içeriği sıfırlamak için, **işlemler** menüsü bölümünde **içeriği Sıfırla** ' yı seçin. Bu işlem portalın tüm içeriğini kaldıracak ve yeni varsayılan içerik sağlayacak. Tüm geliştirici portalı özelleştirmelerini ve değişikliklerini kaybedersiniz. **Bu eylemi geri alamazsınız**.
+Yönetilen bir portaldaki içeriği sıfırlamak için, **işlemler** menüsü bölümünde **içeriği Sıfırla** ' yı seçin. Bu işlem portalın tüm içeriğini kaldıracak ve yeni varsayılan içerik sağlayacak. Tüm geliştirici portalı özelleştirmelerini ve değişikliklerini kaybedersiniz. **Bu eylemi geri alamazsınız** .
 
 ![Portal içeriğini sıfırlama](media/api-management-howto-developer-portal/reset-content.png)
 
@@ -126,7 +126,7 @@ Etkileşimli konsol tarayıcıdan istemci tarafı API isteği yapar. API 'lerini
 
 CORS ilkesinin durumunu, Azure portal API Management hizmetinizin **Portal genel bakış** bölümünde bulabilirsiniz. Bir uyarı kutusu, eksik veya yanlış yapılandırılmış bir ilkeyi gösterir.
 
-![API Management geliştirici portalı](media/api-management-howto-developer-portal/cors-azure-portal.png)
+![CORS ilkenizin durumunu nereden kontrol edebilirsiniz gösteren ekran görüntüsü.](media/api-management-howto-developer-portal/cors-azure-portal.png)
 
 CORS ilkesini **Etkinleştir** düğmesine tıklayarak OTOMATIK olarak CORS ilkesini uygulayın.
 

@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 5545acbfd6bb239b9518fbe352b819f300dafaf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb193637525722bf227241a614cd977fbf70c9ac
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962358"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074191"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 'da Web Apps için yapılandırma ve yönetim SSS
 
@@ -60,23 +60,25 @@ Daha fazla bilgi için bkz. [App Service sınırlamaları](../azure-resource-man
 Web uygulamanız için sunucu saat dilimini ayarlamak için:
 
 1. Azure portal, App Service aboneliğinizdeki **uygulama ayarları** menüsüne gidin.
-2. **Uygulama ayarları**' nın altında şu ayarı ekleyin:
+2. **Uygulama ayarları** ' nın altında şu ayarı ekleyin:
     * Anahtar = WEBSITE_TIME_ZONE
     * Değer = *istediğiniz saat dilimi*
-3. **Kaydet**’i seçin.
+3. **Kaydet** ’i seçin.
 
-Windows üzerinde çalışan uygulama hizmetleri için, kabul edilen değerler için [varsayılan saat dilimleri](/windows-hardware/manufacture/desktop/default-time-zones) makalesindeki **saat dilimi** sütununa bakın. Linux üzerinde çalışan uygulama hizmetleri için, [TZ veritabanı adını](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) saat dilimi değeri olarak ayarlayın. Aşağıda, TZ veritabanı adı örneği verilmiştir: Amerika/adak.
+Windows üzerinde çalışan uygulama hizmetleri için bkz `tzutil /L` . Windows komutundan çıkış. Her girdinin ikinci satırındaki değerini kullanın. Örneğin: "Tonga standart saati". Bu değerlerden bazıları Ayrıca [varsayılan saat dilimlerindeki](/windows-hardware/manufacture/desktop/default-time-zones) **saat dilimi** sütununda listelenir.
+
+Linux üzerinde çalışan uygulama hizmetleri için, [ıANA TZ veritabanından](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)bir değer ayarlayın. Örneğin: "Amerika/adak".
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Sürekli Web Işleriniz neden bazen başarısız oluyor?
 
-Varsayılan olarak, Web Apps, belirlenen süre boyunca boşta kalırsa kaldırılır. Bu, sistemin kaynakları tasarruf etmenizi sağlar. Temel ve standart planlarda, Web uygulamasının her zaman yüklenmesini sağlamak için **her zaman açık** ayarını açabilirsiniz. Web uygulamanız sürekli Web Işleri çalıştırıyorsa, **her zaman açık**' i açmanız gerekir, aksi takdirde Web işleri güvenilir bir şekilde çalışmayabilir. Daha fazla bilgi için bkz. [sürekli çalışan bir WebJob oluşturma](webjobs-create.md#CreateContinuous).
+Varsayılan olarak, Web Apps, belirlenen süre boyunca boşta kalırsa kaldırılır. Bu, sistemin kaynakları tasarruf etmenizi sağlar. Temel ve standart planlarda, Web uygulamasının her zaman yüklenmesini sağlamak için **her zaman açık** ayarını açabilirsiniz. Web uygulamanız sürekli Web Işleri çalıştırıyorsa, **her zaman açık** ' i açmanız gerekir, aksi takdirde Web işleri güvenilir bir şekilde çalışmayabilir. Daha fazla bilgi için bkz. [sürekli çalışan bir WebJob oluşturma](webjobs-create.md#CreateContinuous).
 
 ## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>Web uygulamamın giden IP adresini almak Nasıl yaparım? mı?
 
 Web uygulamanıza giden IP adreslerinin listesini almak için:
 
 1. Azure portal, Web uygulaması dikey penceresinde, **Özellikler** menüsüne gidin.
-2. **Giden IP adreslerini**arayın.
+2. **Giden IP adreslerini** arayın.
 
 Giden IP adresleri listesi görüntülenir.
 
@@ -129,7 +131,7 @@ WebJob günlüklerini gözden geçirmek için:
 2. WebJob 'u seçin.
 3. **Çıkışı geç** düğmesini seçin.
 4. Çıkış dosyasını indirmek için **indirme** bağlantısını seçin.
-5. Bireysel çalıştırmalar için **tek tek Invoke**' ı seçin.
+5. Bireysel çalıştırmalar için **tek tek Invoke** ' ı seçin.
 6. **Çıkışı geç** düğmesini seçin.
 7. İndirme bağlantısını seçin.
 
@@ -183,8 +185,8 @@ Bir F12 izlemeyi yakalamak için iki seçeneğiniz vardır:
 ### <a name="f12-console-output"></a>F12 konsol çıkışı
 
 1. **Konsol** sekmesini seçin.
-2. Sıfırdan fazla öğe içeren her sekme için sekmeyi (**hata**, **Uyarı**veya **bilgi**) seçin. Sekme seçili değilse, imleci konumundan uzağa taşıdığınızda sekme simgesi gri veya siyah olur.
-3. Bölmenin ileti alanına sağ tıklayın ve ardından **Tümünü Kopyala**' yı seçin.
+2. Sıfırdan fazla öğe içeren her sekme için sekmeyi ( **hata** , **Uyarı** veya **bilgi** ) seçin. Sekme seçili değilse, imleci konumundan uzağa taşıdığınızda sekme simgesi gri veya siyah olur.
+3. Bölmenin ileti alanına sağ tıklayın ve ardından **Tümünü Kopyala** ' yı seçin.
 4. Kopyalanmış metni bir dosyaya yapıştırın ve dosyayı kaydedin.
 
 Bir HAR dosyasını görüntülemek için, [har görüntüleyicisini](http://www.softwareishard.com/har/viewer/)kullanabilirsiniz.
@@ -282,7 +284,7 @@ App Service kimlik doğrulaması ve yetkilendirmeyle ilgili ayrıntılı belgele
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>Nasıl yaparım? varsayılan *. azurewebsites.net etki alanını Azure Web uygulamamın özel etki alanına yeniden yönlendir mi?
 
-Azure 'da Web Apps kullanarak yeni bir Web sitesi oluşturduğunuzda, sitenize varsayılan bir *SiteName*. azurewebsites.net etki alanı atanır. Sitenize özel bir ana bilgisayar adı ekler ve kullanıcıların varsayılan *. azurewebsites.net etki alanına erişmesini istemiyorsanız varsayılan URL 'YI yeniden yönlendirebilirsiniz. Web sitenizin varsayılan etki alanındaki tüm trafiği özel etki alanına yeniden yönlendirmeyi öğrenmek için bkz. [varsayılan etki alanını Azure Web Apps 'te özel etki alanına yönlendirme](https://zainrizvi.io/blog/block-default-azure-websites-domain/).
+Azure 'da Web Apps kullanarak yeni bir Web sitesi oluşturduğunuzda, sitenize varsayılan bir *SiteName* . azurewebsites.net etki alanı atanır. Sitenize özel bir ana bilgisayar adı ekler ve kullanıcıların varsayılan *. azurewebsites.net etki alanına erişmesini istemiyorsanız varsayılan URL 'YI yeniden yönlendirebilirsiniz. Web sitenizin varsayılan etki alanındaki tüm trafiği özel etki alanına yeniden yönlendirmeyi öğrenmek için bkz. [varsayılan etki alanını Azure Web Apps 'te özel etki alanına yönlendirme](https://zainrizvi.io/blog/block-default-azure-websites-domain/).
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>App Service hangi .NET sürümü sürümünün yüklendiğini Nasıl yaparım?.
 
