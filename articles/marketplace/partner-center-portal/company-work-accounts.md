@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 05/30/2019
-ms.openlocfilehash: 246fbcd9bc72683e41489daf105f174f9380c029
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b4aadc506b2f4a251ccef5e9488066b609ba5a5
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400273"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130536"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>Şirket iş hesapları ve Iş Ortağı Merkezi
 
@@ -24,7 +24,7 @@ ms.locfileid: "91400273"
 
 Denetlemek için şu adımları izleyin:
 1. Konumundaki Azure Yönetim Portalı ' nda oturum açın https://portal.azure.com .
-2. Sol gezinti menüsünden **Azure Active Directory** seçin ve ardından **özel etki alanı adları**' nı seçin.
+2. Sol gezinti menüsünden **Azure Active Directory** seçin ve ardından **özel etki alanı adları** ' nı seçin.
 3. Zaten bir iş hesabınız varsa, etki alanı adınız listelenecektir.
 
 Şirketinizde zaten bir iş hesabı yoksa, iş ortağı merkezi kayıt işlemi sırasında sizin için bir tane oluşturulur.
@@ -38,13 +38,13 @@ Mevcut bir iş hesabını kullanmaya karar vermeden önce iş hesabındaki kaç 
 Şirketiniz için yeni bir iş hesabı oluşturmak için aşağıdaki adımları izleyin. Şirketinizin Microsoft Azure hesabınızda Yönetici izinlerine sahip olduğunuzda yardım istemeniz gerekebilir.
 
 1. [Microsoft Azure portalda](https://portal.azure.com) oturum açın.
-2. Sol gezinti menüsünden **Azure Active Directory**  ->  **kullanıcıları**' nı seçin.
+2. Sol gezinti menüsünden **Azure Active Directory**  ->  **kullanıcıları** ' nı seçin.
 3. **Yeni Kullanıcı** ' yı seçin ve bir ad ve e-posta adresi girerek yeni bir Azure iş hesabı oluşturun. **Dizin rolünün** **Kullanıcı** olarak ayarlandığından emin olun ve en alttaki **parolayı göster** onay kutusunu seçerek otomatik olarak oluşturulan parolayı görebilirsiniz.
 4. Yeni kullanıcıyı kaydetmek için **Oluştur** ' u seçin.
 
-Kullanıcı hesabının e-posta adresi, dizininizde doğrulanmış bir etki alanı adı olmalıdır. **Azure Active Directory**  ->  Sol gezinti menüsünde Azure Active Directory**özel etki alanı adları** ' nı seçerek dizininizdeki tüm doğrulanmış etki alanlarını listeleyebilirsiniz.
+Kullanıcı hesabının e-posta adresi, dizininizde doğrulanmış bir etki alanı adı olmalıdır. **Azure Active Directory**  ->  Sol gezinti menüsünde Azure Active Directory **özel etki alanı adları** ' nı seçerek dizininizdeki tüm doğrulanmış etki alanlarını listeleyebilirsiniz.
 
-Azure Active Directory özel etki alanları ekleme hakkında daha fazla bilgi edinmek için bkz. [Azure AD 'de etki alanı ekleme veya ilişkilendirme](../../active-directory/active-directory-add-domain.md).
+Azure Active Directory özel etki alanları ekleme hakkında daha fazla bilgi edinmek için bkz. [Azure AD 'de etki alanı ekleme veya ilişkilendirme](../../active-directory/fundamentals/add-custom-domain.md).
 
 ## <a name="troubleshoot-work-email-sign-in"></a>İş e-postasına yönelik oturum açma sorunlarını giderme
 
@@ -54,4 +54,4 @@ Azure Active Directory özel etki alanları ekleme hakkında daha fazla bilgi ed
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Iş Ortağı Merkezi 'nde ticari Market hesabınızı yönetme](./manage-account.md) 
+- [Iş Ortağı Merkezi 'nde ticari Market hesabınızı yönetme](./manage-account.md)

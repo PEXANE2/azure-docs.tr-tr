@@ -6,21 +6,18 @@ ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 10/28/2020
+ms.date: 10/30/2020
 ms.author: normesta
-ms.openlocfilehash: 9704ff7dec02a0de044863ec2da6280d65b30ef0
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: dc0b620629b5dce651e02e5fe95b0619c1d42a78
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043547"
+ms.locfileid: "93131165"
 ---
 # <a name="premium-tier-for-azure-data-lake-storage"></a>Azure Data Lake Storage için Premium katman
 
-Azure Data Lake Storage 2. artık [Premium performans katmanını](storage-blob-performance-tiers.md#premium-performance)desteklemektedir. Premium performans katmanı, düşük tutarlı gecikme süresi gerektiren ve çok sayıda işlem içeren büyük veri analizi uygulamaları ve iş yükleri için idealdir. 
-
-> [!NOTE]
-> Azure Data Lake Storage Premium katmanı genel önizlemede. Bkz. [Bölgesel kullanılabilirlik](#regional-availability).
+Azure Data Lake Storage 2. artık [Premium performans katmanını](storage-blob-performance-tiers.md#premium-performance)desteklemektedir. Premium performans katmanı, düşük tutarlı gecikme süresi gerektiren ve çok sayıda işlem içeren büyük veri analizi uygulamaları ve iş yükleri için idealdir.
 
 ## <a name="workloads-that-can-benefit-from-the-premium-performance-tier"></a>Premium performans katmanından faydalanabilir iş yükleri
 
@@ -89,7 +86,7 @@ Azure Data Lake Storage için Premium katman aşağıdaki bölgelerde kullanıla
 |Orta Güney ABD|LRS|
 |Orta Kanada|LRS|
 |Doğu Kanada|LRS|
-|Kuzey Avrupa|LRS, ZRS|
+|North Europe|LRS, ZRS|
 |West Europe|LRS, ZRS|
 |Güney Birleşik Krallık|LRS|
 |Batı Birleşik Krallık|LRS|
@@ -106,8 +103,3 @@ Azure Data Lake Storage için Premium katman aşağıdaki bölgelerde kullanıla
 |Doğu Avustralya|LRS, ZRS|
 |Avustralya Güneydoğu|LRS|
 |Brezilya Güney|LRS|
-
-
-## <a name="next-steps"></a>Sonraki adımlar
-
-Azure Data Lake Storage [Blog duyurusu](https://www.microsoft.com)için Premium katmana bakın.

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ac08b5af0afbf43c7b13808fac06c40066e48b7a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 87f3e2014281580cc35f941ad62046dcb24539df
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074242"
+ms.locfileid: "93129414"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>.NET özel seri hale getiriciler kullanarak her biçimdeki girişi oku
 
@@ -201,7 +201,7 @@ namespace ExampleCustomCode.Serialization
 
 ## <a name="serialization-format-for-rest-apis"></a>REST API 'Leri için serileştirme biçimi
 
-Her Stream Analytics girişinin bir **serileştirme biçimi** vardır. Giriş seçenekleri hakkında daha fazla bilgi için bkz. [giriş REST API](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs) belgeleri.
+Her Stream Analytics girişinin bir **serileştirme biçimi** vardır. Giriş seçenekleri hakkında daha fazla bilgi için bkz. [giriş REST API](./stream-analytics-define-inputs.md) belgeleri.
 
 Aşağıdaki JavaScript kodu, REST API kullanılırken .NET seri hale getirici serileştirme biçiminin bir örneğidir:
 
@@ -239,7 +239,7 @@ Ek bölgeler için [destek isteyebilirsiniz](https://aka.ms/ccodereqregion) .
 
 ### <a name="when-will-this-feature-be-available-in-all-azure-regions"></a>Bu özellik tüm Azure bölgelerinde kullanılabilir olacaktır?
 
-Bu özellik [6 bölgede](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples#region-support)kullanılabilir. Bu işlevi başka bir bölgede kullanmak istiyorsanız [bir istek gönderebilirsiniz](https://aka.ms/ccodereqregion). Tüm Azure bölgeleri için destek yol haritasında bulunur.
+Bu özellik [6 bölgede](#region-support)kullanılabilir. Bu işlevi başka bir bölgede kullanmak istiyorsanız [bir istek gönderebilirsiniz](https://aka.ms/ccodereqregion). Tüm Azure bölgeleri için destek yol haritasında bulunur.
 
 ### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>GetMetadataPropertyValue işlevine benzer girişlerimin MetadataPropertyValue öğesine erişebilir miyim?
 

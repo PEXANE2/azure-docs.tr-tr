@@ -17,12 +17,12 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22a8a0efe16b4ab2ea7b8a647284a3449741ac02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cabf5f40bc17828bc37b5c094de7b90de3ec8b26
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226973"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130230"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Azure Active Directory Raporlama API 'sine erişim önkoşulları
 
@@ -53,9 +53,9 @@ API aracılığıyla raporlama verilerine erişim sağlamak için, aşağıdaki 
 Bir kiracının oturum açma raporlarına erişebilmek için bir Azure AD kiracısının ilişkili Azure AD Premium lisansı olması gerekir. Azure AD Premium P1 (veya üzeri), herhangi bir Azure AD kiracısına yönelik oturum açma raporlarına erişmek için gereklidir. Alternatif olarak, Dizin türü Azure AD B2C ise, oturum açma raporlarına ek lisans gereksinimi olmadan API aracılığıyla erişilebilir. 
 
 
-## <a name="register-an-application"></a>Bir uygulamayı kaydetme
+## <a name="register-an-application"></a>Uygulamayı kaydetme
 
-Raporlama API 'sine bir betik kullanarak erişiyorsanız bile kayıt gereklidir. Kayıt, yetkilendirme çağrıları için gerekli olan bir **uygulama kimliği**sağlar ve kodunuzun belirteçleri almasını sağlar.
+Raporlama API 'sine bir betik kullanarak erişiyorsanız bile kayıt gereklidir. Kayıt, yetkilendirme çağrıları için gerekli olan bir **uygulama kimliği** sağlar ve kodunuzun belirteçleri almasını sağlar.
 
 Dizininizi Azure AD Raporlama API 'sine erişecek şekilde yapılandırmak için, Azure AD kiracınızda **genel yönetici** dizini rolünün da üyesi olan bir Azure yönetici hesabıyla [Azure Portal](https://portal.azure.com) oturum açmalısınız.
 
@@ -67,27 +67,27 @@ Dizininizi Azure AD Raporlama API 'sine erişecek şekilde yapılandırmak için
 
 1. [Azure Portal](https://portal.azure.com)sol gezinti bölmesinden **Azure Active Directory** ' i seçin.
    
-    ![Uygulamayı kaydetme](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![Ekran görüntüsü Azure portal menüsünden Seçili Azure Active Directory gösterir.](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
-2. **Azure Active Directory** sayfasında **uygulama kayıtları**' i seçin.
+2. **Azure Active Directory** sayfasında **uygulama kayıtları** ' i seçin.
 
-    ![Uygulamayı kaydetme](./media/howto-configure-prerequisites-for-reporting-api/02.png) 
+    ![Ekran görüntüsü Yönet menüsünden Seçili Uygulama kayıtları gösterir.](./media/howto-configure-prerequisites-for-reporting-api/02.png) 
 
-3. **Uygulama kayıtları** sayfasından **Yeni kayıt**' yi seçin.
+3. **Uygulama kayıtları** sayfasından **Yeni kayıt** ' yi seçin.
 
-    ![Uygulamayı kaydetme](./media/howto-configure-prerequisites-for-reporting-api/03.png)
+    ![Ekran görüntüsünde yeni kayıt seçili görüntülenir.](./media/howto-configure-prerequisites-for-reporting-api/03.png)
 
 4. **Uygulama kaydetme** sayfası:
 
-    ![Uygulamayı kaydetme](./media/howto-configure-prerequisites-for-reporting-api/04.png)
+    ![Ekran görüntüsünde, bu adımdaki değerleri girebileceğiniz bir uygulama kaydetme sayfası gösterilir.](./media/howto-configure-prerequisites-for-reporting-api/04.png)
 
     a. **Ad** metin kutusuna yazın `Reporting API application` .
 
-    b. **Desteklenen hesap türü**için **yalnızca bu kuruluştaki hesaplar**' ı seçin.
+    b. **Desteklenen hesap türü** için **yalnızca bu kuruluştaki hesaplar** ' ı seçin.
 
     c. **Yeniden yönlendirme URL 'si** ' nde **Web** metin kutusu seçin yazın `https://localhost` .
 
-    d. **Kaydet**’i seçin. 
+    d. **Kaydet** ’i seçin. 
 
 
 ## <a name="grant-permissions"></a>İzinleri verme 
@@ -99,33 +99,32 @@ Erişmek istediğiniz API 'ye bağlı olarak, uygulamanıza aşağıdaki izinler
 | Windows Azure Active Directory | Dizin verilerini oku |
 | Microsoft Graph | Tüm denetim günlüğü verilerini okuyun |
 
-
-![Uygulamayı kaydetme](./media/howto-configure-prerequisites-for-reporting-api/36.png)
+![Ekran görüntüsü, bir P I izinleri bölmesinde izin Ekle ' yi seçebileceğiniz yeri gösterir.](./media/howto-configure-prerequisites-for-reporting-api/36.png)
 
 Aşağıdaki bölümde her iki API için de adımlar listelenmektedir. API 'lerden birine erişmek istemiyorsanız ilgili adımları atlayabilirsiniz.
 
 **API 'Leri kullanmak için uygulamanıza izin vermek için:**
 
 
-1. **API izinleri** ' ni seçin ve **izin ekleyin**. 
+1. **API izinleri** ' ni seçin ve **izin ekleyin** . 
 
-    ![Uygulamayı kaydetme](./media/howto-configure-prerequisites-for-reporting-api/05.png)
+    ![Ekran görüntüsü, izin Ekle seçeneğini seçebileceğiniz bir P I Izinleri sayfasını gösterir.](./media/howto-configure-prerequisites-for-reporting-api/05.png)
 
-2. **API Izinleri iste sayfasında**, **Eski API** **Azure Active Directory grafiğini**destekler ' i bulun. 
+2. **API Izinleri iste sayfasında** , **Eski API** **Azure Active Directory grafiğini** destekler ' i bulun. 
 
-    ![Uygulamayı kaydetme](./media/howto-configure-prerequisites-for-reporting-api/06.png)
+    ![Ekran görüntüsü, Azure Active Directory grafik seçebileceğiniz bir P I izinleri ıste sayfasını gösterir.](./media/howto-configure-prerequisites-for-reporting-api/06.png)
 
-3. **Gerekli izinler** sayfasında **Uygulama izinleri**' ni, **Dizin** onay kutusu dizini ' ni genişletin **. ReadAll**' u seçin.  **Izin Ekle**' yi seçin.
+3. **Gerekli izinler** sayfasında **Uygulama izinleri** ' ni, **Dizin** onay kutusu dizini ' ni genişletin **. ReadAll** ' u seçin.  **Izin Ekle** ' yi seçin.
 
-    ![Uygulamayı kaydetme](./media/howto-configure-prerequisites-for-reporting-api/07.png)
+    ![Ekran görüntüsü, uygulama izinleri seçebileceğiniz bir P I izinleri ıste sayfasını gösterir.](./media/howto-configure-prerequisites-for-reporting-api/07.png)
 
-4. **Raporlama API 'Si uygulaması-API izinleri** sayfasında, yönetici izni **ver**' i seçin. 
+4. **Raporlama API 'Si uygulaması-API izinleri** sayfasında, yönetici izni **ver** ' i seçin. 
 
-    ![Uygulamayı kaydetme](./media/howto-configure-prerequisites-for-reporting-api/08.png)
+    ![Ekran görüntüsünde, yönetici izni ver ' i seçebileceğiniz bir P I uygulaması olan p I izinleri bildiren bir ekran görüntülenir.](./media/howto-configure-prerequisites-for-reporting-api/08.png)
 
 5. Note: **Microsoft Graph** , API kaydı sırasında varsayılan olarak eklenir.
 
-    ![Uygulamayı kaydetme](./media/howto-configure-prerequisites-for-reporting-api/15.png)
+    ![Ekran görüntüsü, izin Ekle seçeneğini seçebileceğiniz bir P I izinleri sayfasını gösterir.](./media/howto-configure-prerequisites-for-reporting-api/15.png)
 
 ## <a name="gather-configuration-settings"></a>Yapılandırma ayarlarını topla 
 
@@ -141,13 +140,13 @@ Raporlama API 'sine yapılan çağrıları yapılandırırken bu değerlere ihti
 
 **Etki alanı adınızı almak için:**
 
-1. [Azure Portal](https://portal.azure.com), sol gezinti bölmesinde **Azure Active Directory**' i seçin.
+1. [Azure Portal](https://portal.azure.com), sol gezinti bölmesinde **Azure Active Directory** ' i seçin.
    
-    ![Uygulamayı kaydetme](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![Ekran görüntüsü Azure portal menüsünden Seçili Azure Active Directory gösterir.](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
-2. **Azure Active Directory** sayfasında, **özel etki alanı adları**' nı seçin.
+2. **Azure Active Directory** sayfasında, **özel etki alanı adları** ' nı seçin.
 
-    ![Uygulamayı kaydetme](./media/howto-configure-prerequisites-for-reporting-api/09.png) 
+    ![Ekran görüntüsünde Azure Active Directory seçilen özel etki alanı adları gösterilmektedir.](./media/howto-configure-prerequisites-for-reporting-api/09.png) 
 
 3. Etki alanı adınızı etki alanları listesinden kopyalayın.
 
@@ -156,15 +155,15 @@ Raporlama API 'sine yapılan çağrıları yapılandırırken bu değerlere ihti
 
 **Uygulamanızın istemci KIMLIĞINI almak için:**
 
-1. [Azure Portal](https://portal.azure.com), sol gezinti bölmesinde **Azure Active Directory**' e tıklayın.
+1. [Azure Portal](https://portal.azure.com), sol gezinti bölmesinde **Azure Active Directory** ' e tıklayın.
    
-    ![Uygulamayı kaydetme](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![Ekran görüntüsü Azure portal menüsünden Seçili Azure Active Directory gösterir.](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2. Uygulama **kayıtları** sayfasından uygulamanızı seçin.
 
-3. Uygulama sayfasından **uygulama kimliği** ' ne gidin ve **kopyalamak Için tıklayın ' ı**seçin.
+3. Uygulama sayfasından **uygulama kimliği** ' ne gidin ve **kopyalamak Için tıklayın ' ı** seçin.
 
-    ![Uygulamayı kaydetme](./media/howto-configure-prerequisites-for-reporting-api/11.png) 
+    ![Ekran görüntüsü, b uygulamasını kopyalayabileceğiniz bir P I uygulaması raporlama sayfasını gösterir.](./media/howto-configure-prerequisites-for-reporting-api/11.png) 
 
 
 ### <a name="get-your-applications-client-secret"></a>Uygulamanızın istemci gizliliğini alın
@@ -172,23 +171,23 @@ Raporlama API 'sine yapılan çağrıları yapılandırırken bu değerlere ihti
 
 **Uygulamanızın istemci gizli anahtarını almak için:**
 
-1. [Azure Portal](https://portal.azure.com), sol gezinti bölmesinde **Azure Active Directory**' e tıklayın.
+1. [Azure Portal](https://portal.azure.com), sol gezinti bölmesinde **Azure Active Directory** ' e tıklayın.
    
-    ![Uygulamayı kaydetme](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![Ekran görüntüsü Azure portal menüsünden Seçili Azure Active Directory gösterir.](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2.  Uygulama **kayıtları** sayfasından uygulamanızı seçin.
 
-3.  **API uygulaması** sayfasında **Sertifikalar ve gizlilikler** ' ı seçin, **Istemci gizli** dizileri bölümünde **+ yeni istemci parolası**' na tıklayın. 
+3.  **API uygulaması** sayfasında **Sertifikalar ve gizlilikler** ' ı seçin, **Istemci gizli** dizileri bölümünde **+ yeni istemci parolası** ' na tıklayın. 
 
-    ![Uygulamayı kaydetme](./media/howto-configure-prerequisites-for-reporting-api/12.png)
+    ![Ekran görüntüsü, bir istemci gizli anahtarı ekleyebileceğiniz sertifikalar & gizli dizi sayfasını gösterir.](./media/howto-configure-prerequisites-for-reporting-api/12.png)
 
 5. **İstemci parolası Ekle** sayfasında şunları ekleyin:
 
     a. **Açıklama** metin kutusuna yazın `Reporting API` .
 
-    b. **Süresi sona erdiğinde** **2 yıl içinde**öğesini seçin.
+    b. **Süresi sona erdiğinde** **2 yıl içinde** öğesini seçin.
 
-    c. **Kaydet**’e tıklayın.
+    c. **Kaydet** ’e tıklayın.
 
     d. Anahtar değerini kopyalayın.
 
@@ -204,7 +203,7 @@ Bu bölümde, Microsoft Graph API 'sini ve bunların çözümlenme adımlarını
 
 ### <a name="error-failed-to-do-premium-license-check-from-microsoft-graph"></a>Hata: Microsoft Graph Premium lisans denetimi yapılamadı 
 
-Graph Explorer kullanarak oturum açma erişimiyle çalışmaya çalışırken bu hata iletisiyle karşılaşırsanız, sol gezinti bölmesinde hesabınızın altındaki **Izinleri Değiştir** ' i seçin ve **Görevler. ReadWrite** ve **Dizin. Read. All**' ı seçin. 
+Graph Explorer kullanarak oturum açma erişimiyle çalışmaya çalışırken bu hata iletisiyle karşılaşırsanız, sol gezinti bölmesinde hesabınızın altındaki **Izinleri Değiştir** ' i seçin ve **Görevler. ReadWrite** ve **Dizin. Read. All** ' ı seçin. 
 
 ![İzin Kullanıcı arabirimini değiştirme](./media/troubleshoot-graph-api/modify-permissions.png)
 

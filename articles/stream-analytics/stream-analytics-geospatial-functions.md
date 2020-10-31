@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: f47f34b60c858bb9a0feafd25176e4a811046630
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44e445f6d1dce8193109d6b5ad1742210458e74c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75426236"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130417"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Jeo-uzamsal işlevlere Stream Analytics giriş
 
@@ -26,7 +26,7 @@ Jeo-uzamsal işlevlerden faydalanabilir senaryolar örnekleri şunlardır:
 * Coğrafi sınırlama
 * Hücre siteleri arasında telefon izleme
 
-Stream Analytics sorgu dili yedi yerleşik Jeo uzamsal işlevlere sahiptir: **Createlinestring**, **createpoint**, **createçokgen**, **ST_DISTANCE**, **ST_OVERLAPS**, **ST_INTERSECTS**ve **ST_WITHIN**.
+Stream Analytics sorgu dili yedi yerleşik Jeo uzamsal işlevlere sahiptir: **Createlinestring** , **createpoint** , **createçokgen** , **ST_DISTANCE** , **ST_OVERLAPS** , **ST_INTERSECTS** ve **ST_WITHIN** .
 
 ## <a name="createlinestring"></a>CreateLineString
 
@@ -42,9 +42,9 @@ FROM input
 
 ### <a name="input-example"></a>Giriş örneği  
   
-|En|MIN|  
+|latitude|MIN|  
 |--------------|---------------|  
-|3.0|-10,2|  
+|3,0|-10,2|  
 |-87,33|20,2321|  
   
 ### <a name="output-example"></a>Çıkış örneği  
@@ -53,7 +53,7 @@ FROM input
 
  {"tür": "LineString", "koordinatlar": [[20,2321,-87,33], [10,0, 10,0], [10,5, 10,5]]}
 
-Daha fazla bilgi edinmek için [Createlinestring](https://docs.microsoft.com/stream-analytics-query/createlinestring) başvurusunu ziyaret edin.
+Daha fazla bilgi edinmek için [Createlinestring](/stream-analytics-query/createlinestring) başvurusunu ziyaret edin.
 
 ## <a name="createpoint"></a>CreatePoint
 
@@ -69,9 +69,9 @@ FROM input
 
 ### <a name="input-example"></a>Giriş örneği  
   
-|En|MIN|  
+|latitude|MIN|  
 |--------------|---------------|  
-|3.0|-10,2|  
+|3,0|-10,2|  
 |-87,33|20,2321|  
   
 ### <a name="output-example"></a>Çıkış örneği
@@ -80,7 +80,7 @@ FROM input
   
  {"Type": "Point", "koordinatlar": [20,2321,-87,33]}  
 
-Daha fazla bilgi için, [Createpoint](https://docs.microsoft.com/stream-analytics-query/createpoint) başvurusunu ziyaret edin.
+Daha fazla bilgi için, [Createpoint](/stream-analytics-query/createpoint) başvurusunu ziyaret edin.
 
 ## <a name="createpolygon"></a>CreatePolygon
 
@@ -96,9 +96,9 @@ FROM input
 
 ### <a name="input-example"></a>Giriş örneği  
   
-|En|MIN|  
+|latitude|MIN|  
 |--------------|---------------|  
-|3.0|-10,2|  
+|3,0|-10,2|  
 |-87,33|20,2321|  
   
 ### <a name="output-example"></a>Çıkış örneği  
@@ -107,7 +107,7 @@ FROM input
  
  {"Type": "Çokgen", "koordinatlar": [[[20,2321,-87,33], [10,0, 10,0], [10,5, 10,5], [20,2321,-87,33]]]}
 
-Daha fazla bilgi edinmek için [Createçokgen](https://docs.microsoft.com/stream-analytics-query/createpolygon) başvurusunu ziyaret edin.
+Daha fazla bilgi edinmek için [Createçokgen](/stream-analytics-query/createpolygon) başvurusunu ziyaret edin.
 
 
 ## <a name="st_distance"></a>ST_DISTANCE
@@ -121,7 +121,7 @@ FROM Cars c
 JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 ```
 
-Daha fazla bilgi edinmek için [ST_DISTANCE](https://docs.microsoft.com/stream-analytics-query/st-distance) başvurusunu ziyaret edin.
+Daha fazla bilgi edinmek için [ST_DISTANCE](/stream-analytics-query/st-distance) başvurusunu ziyaret edin.
 
 ## <a name="st_overlaps"></a>ST_OVERLAPS
 `ST_OVERLAPS`İşlev iki poligonu karşılaştırır. Çokgenler çakışırsa, işlev bir 1 döndürür. Çokgenler çakışmazsa işlev 0 döndürür. 
@@ -142,7 +142,7 @@ FROM Cars c, Storm s
 JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 ```
 
-Daha fazla bilgi edinmek için [ST_OVERLAPS](https://docs.microsoft.com/stream-analytics-query/st-overlaps) başvurusunu ziyaret edin.
+Daha fazla bilgi edinmek için [ST_OVERLAPS](/stream-analytics-query/st-overlaps) başvurusunu ziyaret edin.
 
 ## <a name="st_intersects"></a>ST_INTERSECTS
 `ST_INTERSECTS`İşlevi Iki LineString 'i karşılaştırır. LineString kesiştiğinde, işlev 1 değerini döndürür. LineString kesişmezseniz işlev 0 döndürür.
@@ -168,7 +168,7 @@ FROM input
   
  0  
 
-Daha fazla bilgi edinmek için [ST_INTERSECTS](https://docs.microsoft.com/stream-analytics-query/st-intersects) başvurusunu ziyaret edin.
+Daha fazla bilgi edinmek için [ST_INTERSECTS](/stream-analytics-query/st-intersects) başvurusunu ziyaret edin.
 
 ## <a name="st_within"></a>ST_WITHIN
 `ST_WITHIN`İşlevi bir noktanın veya çokgenin çokgen içinde olup olmadığını belirler. Çokgen nokta veya Çokgen içeriyorsa, işlev 1 döndürür. Nokta veya Çokgen, belirtilen çokgen içinde yer alıyorsa işlev 0 döndürür.
@@ -194,12 +194,12 @@ FROM input
   
  1  
 
-Daha fazla bilgi edinmek için [ST_WITHIN](https://docs.microsoft.com/stream-analytics-query/st-within) başvurusunu ziyaret edin.
+Daha fazla bilgi edinmek için [ST_WITHIN](/stream-analytics-query/st-within) başvurusunu ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Stream Analytics giriş](stream-analytics-introduction.md)
 * [Azure Akış Analizi'ni kullanmaya başlama](stream-analytics-real-time-fraud-detection.md)
 * [Azure Akış Analizi işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
-* [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Akış Analizi Yönetimi REST API'si Başvurusu](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Akış Analizi Sorgu Dili Başvurusu](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Akış Analizi Yönetimi REST API'si Başvurusu](/rest/api/streamanalytics/)

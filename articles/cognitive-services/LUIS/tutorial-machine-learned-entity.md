@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: 01262ee0271849793c4393b1ea8e18c4179ad4e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f85ba0c64db23e156f384fadcc5ca7bf84a58d4
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334744"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130769"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>Öğretici: Language Understanding (LUSıS) içinde makine öğrenimi varlıkları ile Kullanıcı aradıklarından yapılandırılmış verileri Ayıkla
 
@@ -18,7 +18,7 @@ Bu öğreticide, makine öğrenimi varlığını kullanarak bir noktadan yapıla
 
 Makine öğrenimi varlığı, [özelliklerle](luis-concept-feature.md)alt varlık varlıkları sağlayarak [model ayrıştırma kavramını](luis-concept-model.md#v3-authoring-model-decomposition) destekler.
 
-**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
+**Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:**
 
 > [!div class="checklist"]
 > * Örnek uygulamayı içeri aktar
@@ -72,18 +72,18 @@ Bir pizza sırası hakkındaki ayrıntıları ayıklamak için, en üst düzey, 
     |--|
     |`pickup a cheddar cheese pizza large with extra anchovies`|
 
-    En solundaki (#1) metinden hemen önce seçmeye başlayın `pickup` , sonra sağ taraftaki metnin hemen ötesine geçin `anchovies` (#2-bu etiketleme işlemini sonlandırır). Bir açılır menü görünür. Açılır kutuya varlığın adını `Order` (#3) olarak girin. Sonra `Order Create new entity` listeden (#4) öğesini seçin.
+    İmlecinizi tıklayın ve ilk örnek amacı için metnin üzerine sürükleyin. görüntülenen menüde varlığın adını olarak girin `Order` . Ardından listeden öğesini seçin `Order Create new entity` .
 
     ![Metnin başlangıç ve bitiş sırası için etiketi](media/tutorial-machine-learned-entity/mark-complete-order.png)
 
     > [!NOTE]
     > Bir varlık her zaman tüm söylik olmaz. Bu özel durumda, `pickup` siparişin nasıl alınacağını gösterir. Kavramsal bir perspektiften, `pickup` sıralama için etiketlenmiş varlığın bir parçası olmalıdır.
 
-1. **Varlık türü seçin** kutusunda, **Yapı Ekle** ' yi seçin ve ardından **İleri**' yi seçin. Boyut ve miktar gibi alt varlıklar eklemek için yapı gereklidir.
+1. **Varlık türü seçin** kutusunda, **Yapı Ekle** ' yi seçin ve ardından **İleri** ' yi seçin. Boyut ve miktar gibi alt varlıklar eklemek için yapı gereklidir.
 
     ![Ekran görüntüsü, yapı Ekle seçeneği işaretli bir varlık türü Seç penceresini gösterir.](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
 
-1. **Alt varlıklar Ekle (isteğe bağlı)** kutusunda, satırda ' ı seçin **+** `Order` , ardından `Size` `Quantity` alt varlıklar ekleyin ve ardından **Oluştur**' u seçin.
+1. **Alt varlıklar Ekle (isteğe bağlı)** kutusunda, satırda ' ı seçin **+** `Order` , ardından `Size` `Quantity` alt varlıklar ekleyin ve ardından **Oluştur** ' u seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Ekran görüntüsü alt varlıkların vurgulandığı alt varlıkları Ekle (isteğe bağlı) penceresini gösterir.](media/tutorial-machine-learned-entity/add-subentities-when-creating-machine-learned-entity.png)
@@ -96,7 +96,7 @@ Bir pizza sırası hakkındaki ayrıntıları ayıklamak için, en üst düzey, 
 
 1. Sol menüden **varlıklar** ' ı seçin ve ardından **sipariş** varlığı ' nı seçin.
 
-1. **Şema ve Özellikler** sekmesinde, alt varlık **boyutu** ' nu seçin ve **+ Özellik Ekle**' yi seçin.
+1. **Şema ve Özellikler** sekmesinde, alt varlık **boyutu** ' nu seçin ve **+ Özellik Ekle** ' yi seçin.
 
 1. Açılan menüden **Yeni tümcecik listesi oluştur** ' u seçin.
 
@@ -108,7 +108,7 @@ Bir pizza sırası hakkındaki ayrıntıları ayıklamak için, en üst düzey, 
 
 İstemci uygulamanın tanıdığı bilinen boyutların bir listesini eklemek, ayıklama işleminin de sağlanmasına yardımcı olur.
 
-1. Sol menüden **varlıkları** seçin ve **+ Oluştur**' u seçin.
+1. Sol menüden **varlıkları** seçin ve **+ Oluştur** ' u seçin.
 
 1. Varlık adını olarak ayarlayın `SizeListentity` ve bir önceki bölümde oluşturulan ile karşılaştırıldığında tanımlanması kolay olacak şekilde türü **liste** olarak ayarlayın `SizePhraselist` .
 
@@ -131,7 +131,7 @@ Bir pizza sırası hakkındaki ayrıntıları ayıklamak için, en üst düzey, 
 
 1. Varlıklar listesinden **sipariş** ' i seçin.
 
-1. **Şema ve Özellikler** sekmesinde, varlık **boyutu** ' nu seçin ve **+ Özellik Ekle**' yi seçin.
+1. **Şema ve Özellikler** sekmesinde, varlık **boyutu** ' nu seçin ve **+ Özellik Ekle** ' yi seçin.
 
 1. Açılan listeden **@ Sizelistentity** ' ı seçin.
 
@@ -141,9 +141,9 @@ Bir pizza sırası hakkındaki ayrıntıları ayıklamak için, en üst düzey, 
 
 Önceden oluşturulmuş bir sayı varlığı eklemek ayıklamanın de sağlanmasına yardımcı olur.
 
-1. Sol menüden **varlık** ' ı seçin ve ardından **önceden oluşturulmuş varlık Ekle**' yi seçin.
+1. Sol menüden **varlık** ' ı seçin ve ardından **önceden oluşturulmuş varlık Ekle** ' yi seçin.
 
-1. Listeden **sayı** ' yı seçin ve **bitti**' yi seçin.
+1. Listeden **sayı** ' yı seçin ve **bitti** ' yi seçin.
 
 1. Varlıklar listesine dönmek için sol menüden **varlıklar** ' ı seçin.
 
@@ -151,7 +151,7 @@ Bir pizza sırası hakkındaki ayrıntıları ayıklamak için, en üst düzey, 
 
 1. Varlıklar listesinden **sipariş** ' i seçin.
 
-1. **Şema ve Özellikler** sekmesinde, **Miktar** varlığını seçin ve **+ Özellik Ekle**' yi seçin.
+1. **Şema ve Özellikler** sekmesinde, **Miktar** varlığını seçin ve **+ Özellik Ekle** ' yi seçin.
 
 1. Açılan listeden **@ sayı** ' yı seçin.
 
@@ -173,7 +173,7 @@ Makine tarafından öğrenilen varlık oluşturulur ve alt varlıkların özelli
 
 1. Sol gezinmede **amaçları** seçin, sonra **orderpizza** hedefini seçin.
 
-1. **Varlık paletini**açmak için **@** bağlam araç çubuğunda sembolü seçin.
+1. **Varlık paletini** açmak için **@** bağlam araç çubuğunda sembolü seçin.
 
 1. Paletteki her bir varlık satırını seçin ve ardından palet imlecini kullanarak her bir örnekteki varlığı seçin. İşiniz bittiğinde, varlık listesi aşağıdaki görüntüde olduğu gibi görünmelidir.
 
@@ -182,7 +182,7 @@ Makine tarafından öğrenilen varlık oluşturulur ve alt varlıkların özelli
 
 ## <a name="train-the-app"></a>Uygulamayı eğitme
 
-Uygulamayı eğiteiçin **eğitme**' yi seçin. Eğitim, etkin modele yeni varlıklar ve etiketli utterler gibi değişiklikleri uygular.
+Uygulamayı eğiteiçin **eğitme** ' yi seçin. Eğitim, etkin modele yeni varlıklar ve etiketli utterler gibi değişiklikleri uygular.
 
 ## <a name="add-a-new-example-utterance"></a>Yeni bir örnek ekleyin
 
@@ -217,7 +217,7 @@ Bu noktada, sıralamada ayıklanabilen bazı ayrıntılar (boyut, miktar ve topl
 
 Etkileşimli **Test** panelini kullanarak uygulamayı test edin. Bu işlem, yeni bir söylenişi girmenizi sağlar ve ardından, etkin, eğitilen uygulamanın ne kadar iyi çalıştığını görmek için tahmin sonuçlarını görüntüleyebilir. Amaç tahmini oldukça emin olmalıdır (%60 üzerinde) ve varlık ayıklama en az `Order` varlığı almalıdır. Bu birkaç işlem, her durumu işlemek için yeterli olmadığından, sipariş varlığının ayrıntıları eksik olabilir.
 
-1. Üst gezinti bölmesinde **Test**'i seçin.
+1. Üst gezinti bölmesinde **Test** 'i seçin.
 1. Söylenişi `2 small cheese pizzas for pickup` ' i girip ENTER ' u seçin. Etkin Model %60 güvenilirlikle doğru amacı tahmin eden tahmini.
 
 
@@ -236,12 +236,12 @@ Bir sohbet robotunda veya başka bir istemci uygulamasında bir LUIS tahmini alm
 
     ![En sağ menüdeki LUSıS uç noktaya Yayımla düğmesinin ekran görüntüsü](./media/howto-publish/publish-button.png)
 
-1. **Üretim** yuvasını seçin, ardından **Ayarları Değiştir**' i seçin, **yaklaşım Analizi**seçin ve **bitti**' yi seçin.
+1. **Üretim** yuvasını seçin, ardından **Ayarları Değiştir** ' i seçin, **yaklaşım Analizi** seçin ve **bitti** ' yi seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Uç noktada bir HALSıS yayımlama ekran görüntüsü](./media/tutorial-machine-learned-entity/publish-with-sentiment-analysis.png)
 
-1. **Azure kaynakları** sayfasına gitmek için bildirimde **uç nokta URL 'lerine erişin** bağlantısına tıklayın. Uç nokta URL 'Leri **örnek sorgu**olarak listelenir.
+1. **Azure kaynakları** sayfasına gitmek için bildirimde **uç nokta URL 'lerine erişin** bağlantısına tıklayın. Uç nokta URL 'Leri **örnek sorgu** olarak listelenir.
 
 ## <a name="get-intent-and-entity-prediction-from-http-endpoint"></a>HTTP uç noktasından amacı ve varlık tahminini alın
 
@@ -251,7 +251,7 @@ Bir sohbet robotunda veya başka bir istemci uygulamasında bir LUIS tahmini alm
 
     `2 small cheese pizzas for pickup`
 
-    Son sorgu dizesi parametresi ifade **s**orgusu olan `query` öğesidir.
+    Son sorgu dizesi parametresi ifade **s** orgusu olan `query` öğesidir.
 
     ```json
     {

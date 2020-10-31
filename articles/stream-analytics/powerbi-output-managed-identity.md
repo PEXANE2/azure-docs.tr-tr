@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/10/2020
-ms.openlocfilehash: 85925369da8fec83a613226fe248b396fd88105a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f81b6dabbd9053a69ff60d1a3c71d03fff38f627
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89613414"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129771"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Azure Stream Analytics işinizin kimliğini doğrulamak için yönetilen kimliği kullanın Power BI
 
@@ -19,23 +19,23 @@ Power BI çıkışı için [yönetilen kimlik kimlik doğrulaması](../active-di
 
 Bu makalede, Azure portal ve Azure Resource Manager dağıtımı aracılığıyla bir Stream Analytics işinin Power BI çıktıları için yönetilen kimliğin nasıl etkinleştirileceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu özelliği kullanmak için aşağıdakiler gereklidir:
 
-- [Pro lisansına](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro)sahip Power BI hesabı.
+- [Pro lisansına](/power-bi/service-admin-purchasing-power-bi-pro)sahip Power BI hesabı.
 
 - Power BI hesabınızda yükseltilen bir çalışma alanı. Daha fazla bilgi için bu özelliğin [duyurusunu Power BI](https://powerbi.microsoft.com/blog/announcing-new-workspace-experience-general-availability-ga/) bakın.
 
 ## <a name="create-a-stream-analytics-job-using-the-azure-portal"></a>Azure portal kullanarak Stream Analytics işi oluşturma
 
-1. Yeni bir Stream Analytics işi oluşturun veya Azure portal var olan bir işi açın. Ekranın sol tarafındaki menü çubuğundan **Yapılandır**' ın altında bulunan **yönetilen kimlik** ' i seçin. "Sistem tarafından atanan yönetilen kimliği kullan" öğesinin seçili olduğundan emin olun ve ardından ekranın alt kısmındaki **Kaydet** düğmesini seçin.
+1. Yeni bir Stream Analytics işi oluşturun veya Azure portal var olan bir işi açın. Ekranın sol tarafındaki menü çubuğundan **Yapılandır** ' ın altında bulunan **yönetilen kimlik** ' i seçin. "Sistem tarafından atanan yönetilen kimliği kullan" öğesinin seçili olduğundan emin olun ve ardından ekranın alt kısmındaki **Kaydet** düğmesini seçin.
 
    ![Stream Analytics yönetilen kimliği yapılandırma](./media/common/stream-analytics-enable-managed-identity.png)
 
 2. Çıktıyı yapılandırmadan önce, bu makalenin [Power BI çalışma alanınıza Stream Analytics iş erişimini verme](#give-the-stream-analytics-job-access-to-your-power-bi-workspace) bölümündeki yönergeleri izleyerek Stream Analytics işi Power BI çalışma alanınıza erişim izni verin.
 
-3. Stream analitik işinin **çıktılar** bölümüne gidin, **+ Ekle**' yi seçin ve ardından **Power BI**' yi seçin. Sonra **Yetkilendir** düğmesini seçin ve Power BI hesabınızla oturum açın.
+3. Stream analitik işinin **çıktılar** bölümüne gidin, **+ Ekle** ' yi seçin ve ardından **Power BI** ' yi seçin. Sonra **Yetkilendir** düğmesini seçin ve Power BI hesabınızla oturum açın.
 
    ![Power BI hesabıyla yetkilendir](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-authorize-powerbi.png)
 
@@ -45,7 +45,7 @@ Bu özelliği kullanmak için aşağıdakiler gereklidir:
 
 ## <a name="azure-resource-manager-deployment"></a>Azure Resource Manager dağıtımı
 
-Azure Resource Manager, Stream Analytics işinizin dağıtımını tamamen otomatikleştirmenizi sağlar. Azure PowerShell ya da [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)kullanarak kaynak yöneticisi şablonlarını dağıtabilirsiniz. Aşağıdaki örneklerde Azure CLı kullanılır.
+Azure Resource Manager, Stream Analytics işinizin dağıtımını tamamen otomatikleştirmenizi sağlar. Azure PowerShell ya da [Azure CLI](/cli/azure/?view=azure-cli-latest)kullanarak kaynak yöneticisi şablonlarını dağıtabilirsiniz. Aşağıdaki örneklerde Azure CLı kullanılır.
 
 
 1. Kaynak Yöneticisi şablonunuzun kaynak bölümüne aşağıdaki özelliği ekleyerek, yönetilen bir kimlikle bir **Microsoft. StreamAnalytics/streamingjobs** kaynağı oluşturabilirsiniz:
@@ -160,9 +160,9 @@ Stream Analytics işi oluşturuldığına göre, bir Power BI çalışma alanın
 ### <a name="use-the-power-bi-ui"></a>Power BI Kullanıcı arabirimini kullanma
 
    > [!Note]
-   > Kullanıcı arabirimini kullanarak Stream Analytics işini Power BI çalışma alanınıza eklemek için, Power BI yönetici portalındaki **Geliştirici ayarlarında** hizmet sorumlusu erişimini de etkinleştirmeniz gerekir. Daha fazla ayrıntı için bkz. [hizmet sorumlusu ile çalışmaya başlama](https://docs.microsoft.com/power-bi/developer/embed-service-principal) .
+   > Kullanıcı arabirimini kullanarak Stream Analytics işini Power BI çalışma alanınıza eklemek için, Power BI yönetici portalındaki **Geliştirici ayarlarında** hizmet sorumlusu erişimini de etkinleştirmeniz gerekir. Daha fazla ayrıntı için bkz. [hizmet sorumlusu ile çalışmaya başlama](/power-bi/developer/embed-service-principal) .
 
-1. Çalışma alanının erişim ayarlarına gidin. Daha ayrıntılı bilgi için bu makaleye bakın: [çalışma alanınıza erişim Izni verin](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces#give-access-to-your-workspace).
+1. Çalışma alanının erişim ayarlarına gidin. Daha ayrıntılı bilgi için bu makaleye bakın: [çalışma alanınıza erişim Izni verin](/power-bi/service-create-the-new-workspaces#give-access-to-your-workspace).
 
 2. Stream Analytics işinizin adını metin kutusuna yazın ve erişim düzeyi olarak **katkıda bulunan** ' i seçin.
 
@@ -195,7 +195,7 @@ Add-PowerBIWorkspaceUser -WorkspaceId <group-id> -PrincipalId <principal-id> -Pr
 
 ### <a name="use-the-power-bi-rest-api"></a>Power BI kullanın REST API
 
-Stream Analytics işi, doğrudan "Grup kullanıcısı ekle" REST API kullanılarak çalışma alanına katkıda bulunan olarak da eklenebilir. Bu API için tam belge buradan bulunabilir: [Gruplar-Grup kullanıcısı ekle](https://docs.microsoft.com/rest/api/power-bi/groups/addgroupuser).
+Stream Analytics işi, doğrudan "Grup kullanıcısı ekle" REST API kullanılarak çalışma alanına katkıda bulunan olarak da eklenebilir. Bu API için tam belge buradan bulunabilir: [Gruplar-Grup kullanıcısı ekle](/rest/api/power-bi/groups/addgroupuser).
 
 **Örnek İstek**
 ```http

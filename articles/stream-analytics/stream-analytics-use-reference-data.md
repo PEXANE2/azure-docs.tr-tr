@@ -7,16 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/11/2020
-ms.openlocfilehash: 8aae9a0ff3ffdbd4f6bc93db5c6f15dcb938080e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a08b73a74d30a99ba3c360f012d5917f1d0c8bf
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84196434"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129737"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics aramalar için başvuru verilerini kullanma
 
-Başvuru verileri (arama tablosu olarak da bilinir), bir arama gerçekleştirmek veya veri akışlarınızı genişletmek için kullanılan, statik veya yavaş değişen, sınırlı bir veri kümesidir. Örneğin, bir IoT senaryosunda, sensörlerle ilgili meta verileri (sık değişmeyin) başvuru verilerinde saklayabilir ve gerçek zamanlı IoT veri akışları ile birleştirebilirsiniz. Azure Stream Analytics düşük gecikmeli akış işleme elde etmek için belleğe başvuru verilerini yükler. Azure Stream Analytics işinizdeki başvuru verilerini kullanmak için, genellikle sorgunuzda bir [başvuru verisi katılımı](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) kullanacaksınız. 
+Başvuru verileri (arama tablosu olarak da bilinir), bir arama gerçekleştirmek veya veri akışlarınızı genişletmek için kullanılan, statik veya yavaş değişen, sınırlı bir veri kümesidir. Örneğin, bir IoT senaryosunda, sensörlerle ilgili meta verileri (sık değişmeyin) başvuru verilerinde saklayabilir ve gerçek zamanlı IoT veri akışları ile birleştirebilirsiniz. Azure Stream Analytics düşük gecikmeli akış işleme elde etmek için belleğe başvuru verilerini yükler. Azure Stream Analytics işinizdeki başvuru verilerini kullanmak için, genellikle sorgunuzda bir [başvuru verisi katılımı](/stream-analytics-query/reference-data-join-azure-stream-analytics) kullanacaksınız. 
 
 ## <a name="example"></a>Örnek  
 Otomobiller bir stand geldiğinde gerçek zamanlı bir olay akışına sahip olabilirsiniz. Ücretli stand, lisans levhasını gerçek zamanlı olarak yakalayabilir ve süresi doldu lisans kalıplarını belirlemek için kayıt ayrıntıları olan statik bir veri kümesiyle katılabilir.  
@@ -37,7 +37,7 @@ Başvuru verileri, blob adında belirtilen tarih/saatin artan sırada bir blob d
 
 ### <a name="configure-blob-reference-data"></a>Blob başvuru verilerini yapılandırma
 
-Başvuru verilerinizi yapılandırmak için önce **başvuru verileri**türünde bir giriş oluşturmanız gerekir. Aşağıdaki tabloda, başvuru veri girişini açıklaması ile oluştururken sağlamanız gereken her özellik açıklanmaktadır:
+Başvuru verilerinizi yapılandırmak için önce **başvuru verileri** türünde bir giriş oluşturmanız gerekir. Aşağıdaki tabloda, başvuru veri girişini açıklaması ile oluştururken sağlamanız gereken her özellik açıklanmaktadır:
 
 |**Özellik adı**  |**Açıklama**  |
 |---------|---------|
@@ -96,7 +96,7 @@ Delta sorgu seçeneği ile, Stream Analytics taban çizgisi başvuru veri kümes
 
 SQL veritabanı başvuru verilerinizi yapılandırmak için önce **başvuru veri** girişi oluşturmanız gerekir. Aşağıdaki tabloda, başvuru verileri girişini açıklamasıyla oluştururken sağlamanız gereken her özellik açıklanmaktadır. Daha fazla bilgi için bkz. [Azure Stream Analytics bir iş IÇIN SQL veritabanından başvuru verileri kullanma](sql-reference-data.md).
 
-[Azure SQL yönetilen örneğini](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) , başvuru veri girişi olarak kullanabilirsiniz. [SQL yönetilen örneği 'nde genel uç noktasını yapılandırmanız](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) ve ardından Azure Stream Analytics aşağıdaki ayarları el ile yapılandırmanız gerekir. SQL Server çalıştıran bir veritabanı ile birlikte çalışan Azure sanal makinesi, aşağıdaki ayarları el ile yapılandırarak de desteklenir.
+[Azure SQL yönetilen örneğini](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) , başvuru veri girişi olarak kullanabilirsiniz. [SQL yönetilen örneği 'nde genel uç noktasını yapılandırmanız](../azure-sql/managed-instance/public-endpoint-configure.md) ve ardından Azure Stream Analytics aşağıdaki ayarları el ile yapılandırmanız gerekir. SQL Server çalıştıran bir veritabanı ile birlikte çalışan Azure sanal makinesi, aşağıdaki ayarları el ile yapılandırarak de desteklenir.
 
 |**Özellik adı**|**Açıklama**  |
 |---------|---------|
@@ -146,6 +146,6 @@ JOIN    refData2 ON refData2.Desc = Step1.Desc
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.get.started]: stream-analytics-get-started.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.get.started]: ./stream-analytics-real-time-fraud-detection.md
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

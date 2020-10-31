@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 1ae5908fe3ab95dcd62da976988bd7ce107217e5
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 1826b66b0548b7567af59de64549c7eb700025c3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027415"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130910"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Azure Stream Analytics işi için bir SQL veritabanındaki başvuru verilerini kullanma
 
@@ -173,11 +173,11 @@ Delta sorgu kullanılırken, [Azure SQL veritabanı 'nda](../azure-sql/temporal-
    Stream Analytics çalışma zamanının, denetim noktalarını depolamak için Delta sorgusuna ek olarak anlık görüntü sorgusunu da çalıştırabileceğini unutmayın.
 
 ## <a name="test-your-query"></a>Sorgunuzu test etme
-   Sorgunuzun, Stream Analytics işin başvuru verileri olarak kullanacağı beklenen veri kümesini döndürdüğünü doğrulamak önemlidir. Sorgunuzu test etmek için, portalda Iş topolojisi bölümünde giriş bölümüne gidin. Daha sonra SQL veritabanı başvuru girişte örnek veriler ' i seçebilirsiniz. Örnek kullanılabilir hale geldikten sonra dosyayı indirebilir ve döndürülmekte olan verilerin beklendiği gibi olup olmadığını kontrol edebilirsiniz. Geliştirme ve test yinelemelerinizi iyileştirmek istiyorsanız, [Visual Studio için Stream Analytics araçları](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)kullanmanız önerilir. Tercih ettiğiniz diğer araçlardan birini, önce sorgunun Azure SQL veritabanı 'ndan doğru sonuçları döndürdüğünü ve sonra bunu Stream Analytics işte kullanmasını sağlamak için de kullanabilirsiniz. 
+   Sorgunuzun, Stream Analytics işin başvuru verileri olarak kullanacağı beklenen veri kümesini döndürdüğünü doğrulamak önemlidir. Sorgunuzu test etmek için, portalda Iş topolojisi bölümünde giriş bölümüne gidin. Daha sonra SQL veritabanı başvuru girişte örnek veriler ' i seçebilirsiniz. Örnek kullanılabilir hale geldikten sonra dosyayı indirebilir ve döndürülmekte olan verilerin beklendiği gibi olup olmadığını kontrol edebilirsiniz. Geliştirme ve test yinelemelerinizi iyileştirmek istiyorsanız, [Visual Studio için Stream Analytics araçları](./stream-analytics-tools-for-visual-studio-install.md)kullanmanız önerilir. Tercih ettiğiniz diğer araçlardan birini, önce sorgunun Azure SQL veritabanı 'ndan doğru sonuçları döndürdüğünü ve sonra bunu Stream Analytics işte kullanmasını sağlamak için de kullanabilirsiniz. 
 
 ### <a name="test-your-query-with-visual-studio-code"></a>Sorgunuzu Visual Studio Code ile test etme
 
-   Visual Studio Code [Azure Stream Analytics araçları](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) ve [SQL Server (MSSQL)](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) yükleyip asa projenizi ayarlayın. Daha fazla bilgi için bkz. [hızlı başlangıç: Visual Studio Code](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code) ve [SQL Server (MSSQL) uzantı öğreticisinde](https://aka.ms/mssql-getting-started)Azure Stream Analytics işi oluşturma.
+   Visual Studio Code [Azure Stream Analytics araçları](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) ve [SQL Server (MSSQL)](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) yükleyip asa projenizi ayarlayın. Daha fazla bilgi için bkz. [hızlı başlangıç: Visual Studio Code](./quick-create-visual-studio-code.md) ve [SQL Server (MSSQL) uzantı öğreticisinde](/sql/tools/visual-studio-code/sql-server-develop-use-vscode)Azure Stream Analytics işi oluşturma.
 
 1. SQL Reference veri girişinizi yapılandırın.
    

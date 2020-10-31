@@ -5,12 +5,12 @@ author: dlepow
 ms.topic: article
 ms.author: danlep
 ms.date: 10/29/2020
-ms.openlocfilehash: c7beddda0d344f6b7606f3e2d3624bee39009c66
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: e5fd70cdde6be431f7bb1950a42ca43e81b34e36
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043546"
+ms.locfileid: "93130859"
 ---
 # <a name="manage-public-content-with-azure-container-registry"></a>Azure Container Registry ortak içeriği yönetme
 
@@ -21,7 +21,7 @@ Bu makalede, Docker Hub 'daki kapsayıcı görüntüleri gibi genel içeriklerin
 
 Ortamınız ortak kapsayıcı görüntüleri, [HELI grafikleri](https://helm.sh/), [Açık ilke aracısı](https://www.openpolicyagent.org/) (Opa) ilkeleri veya diğer yapıtlar gibi ortak içeriklere yönelik bağımlılıklara sahip olabilir. Örneğin, hizmet yönlendirme için [NGINX](https://hub.docker.com/_/nginx) veya `docker build FROM alpine` doğrudan Docker Hub veya başka bir genel kayıt defteri 'nden görüntü çekerek çalıştırabilirsiniz. 
 
-Doğru denetimler olmadan, ortak kayıt defteri içeriğine bağımlılıklar olması, görüntü geliştirme ve dağıtım iş akışlarınızla riskleri ortaya çıkarabilir. Riskleri azaltmak için, mümkün olduğunda ortak içeriğin yerel kopyalarını saklayın. Ayrıntılar için bkz. [kapsayıcı girişimi blogu](https://opencontainers.org/posts/blog). 
+Doğru denetimler olmadan, ortak kayıt defteri içeriğine bağımlılıklar olması, görüntü geliştirme ve dağıtım iş akışlarınızla riskleri ortaya çıkarabilir. Riskleri azaltmak için, mümkün olduğunda ortak içeriğin yerel kopyalarını saklayın. Ayrıntılar için bkz. [kapsayıcı girişimi blogu](https://opencontainers.org/posts/blog/2020-10-30-consuming-public-content/). 
 
 ## <a name="authenticate-with-docker-hub"></a>Docker Hub ile kimlik doğrulama
 
@@ -33,8 +33,6 @@ Doğru denetimler olmadan, ortak kayıt defteri içeriğine bağımlılıklar ol
 > Çekme isteklerinizin sayısını tahmin etmek için, bulut sağlayıcısı hizmetlerini kullanırken veya bir kurumsal NAT 'ın arkasında çalışırken birden çok Kullanıcı, IP adreslerinin bir alt kümesi olarak toplama bölümünde yer alan Docker Hub 'ına sunulur.  Docker Hub 'a yapılan isteklere Docker ücretli hesap kimlik doğrulaması eklemek, hız sınırı azaltma nedeniyle olası hizmet kesintilerine engel olur.
 >
 > Ayrıntılar için bkz. [Docker fiyatlandırma ve abonelikler](https://www.docker.com/pricing) ve [Docker hizmet koşulları](https://www.docker.com/legal/docker-terms-service).
-
-
 
 Kimlik doğrulama örnekleri ve senaryolar için bkz. [indirme hız sınırı](https://docs.docker.com/docker-hub/download-rate-limit/).
 
@@ -72,7 +70,7 @@ Ortak görüntülerin kopyalarını yönetmeye başlamak için, henüz yoksa bir
 
 Önerilen bir kerelik adım olarak, temel görüntüleri ve diğer ortak içerikleri Azure Container Registry 'nize [aktarın](container-registry-import-images.md) . Azure CLı 'deki [az ACR Import](/cli/azure/acr#az_acr_import) komutu, Docker Hub ve Microsoft Container Registry gibi ortak kayıt defterlerinden ve diğer özel kapsayıcı kayıt defterlerinden görüntü içeri aktarmayı destekler. 
 
-`az acr import` Yerel bir Docker yüklemesi gerektirmez. Azure CLı 'nin yerel bir yüklemesiyle veya doğrudan bir işletim sistemi türünü, çok mimarili görüntüleri veya HELI grafikleri gibi OCı yapılarını destekleyen Azure Cloud Shell doğrudan çalıştırabilirsiniz.
+`az acr import` Yerel bir Docker yüklemesi gerektirmez. Azure CLı yerel yüklemesiyle veya doğrudan Azure Cloud Shell ' de çalıştırabilirsiniz. Herhangi bir işletim sistemi türünün, çok mimarili görüntülerin veya HELI grafikleri gibi OCı yapıtlarının görüntülerini destekler.
 
 Örnek:
 
@@ -82,7 +80,7 @@ az acr import \
   --source docker.io/library/hello-world:latest \
   --image hello-world:latest \
   --username <Docker Hub username> \
-  --password <Docker Hub password>
+  --password <Docker Hub token>
 ```
 
 Kuruluşunuzun ihtiyaçlarına bağlı olarak, paylaşılan bir kayıt defterindeki adanmış bir kayıt defterine veya depoya aktarabilirsiniz.
@@ -93,7 +91,7 @@ Uygulama görüntülerinin geliştiricileri, kendi kendi denetimleri altındaki 
 
 Görüntü içeri aktarma üzerine genişleterek, temel görüntüler güncelleştirilirken uygulama görüntüsü derlemelerini otomatikleştirmek için bir [Azure Container Registry görevi](container-registry-tasks-overview.md) ayarlayın. Otomatik derleme görevi, hem [temel görüntü güncelleştirmelerini](container-registry-tasks-base-images.md) hem de [kaynak kodu güncelleştirmelerini](container-registry-tasks-overview.md#trigger-task-on-source-code-update)izleyebilir.
 
-Ayrıntılı bir örnek için bkz. [Azure Container Registry görevlerle ortak Içeriği kullanma ve koruma](https://github.com/SteveLasker/azure-docs/blob/consuming-public-content/articles/container-registry/container-registry-consuming-public-content.md). 
+Ayrıntılı bir örnek için bkz. [Azure Container Registry görevlerle ortak Içeriği kullanma ve koruma](tasks-consume-public-content.md). 
 
 > [!NOTE]
 > Tek bir önceden yapılandırılmış görev, bağımlı bir temel görüntüye başvuran her uygulama görüntüsünü otomatik olarak yeniden oluşturabilir. 
@@ -101,4 +99,5 @@ Ayrıntılı bir örnek için bkz. [Azure Container Registry görevlerle ortak I
 ## <a name="next-steps"></a>Sonraki adımlar
  
 * Azure 'da kapsayıcı görüntülerini derlemek, çalıştırmak, göndermek ve bunlara yama yapmak için [ACR görevleri](container-registry-tasks-overview.md) hakkında daha fazla bilgi edinin.
+* Temel görüntüleri ortamınıza güncelleştirmek üzere otomatik bir çalışma iş akışı için [Azure Container Registry görevlerle ortak Içeriği nasıl kullanacağınızı ve koruyaöğrenin](tasks-consume-public-content.md) . 
 * Görüntü yapılarını ve güncelleştirmelerini otomatikleştirmeye yönelik daha fazla örnek için [ACR görev öğreticilerine](container-registry-tutorial-quick-task.md) bakın.

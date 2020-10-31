@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: aee5cb077604e5fc95647eca0e6570ea3582a785
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29bd4dc5cabe8b29efe7b89395c5e7d36bd0347a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822993"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129788"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Azure Stream Analytics çıkışı Power BI
 
@@ -51,7 +51,7 @@ Power BI ilk kez ilk çıkar (FıFO) bekletme ilkesini kullanır. Veriler, 200.0
 
 Azure Stream Analytics, çıkış şeması değişirse veri modelini çalışma zamanında dinamik olarak güncelleştirir. Sütun adı değişiklikleri, sütun türü değişiklikleri ve sütun ekleme veya kaldırma işlemlerinin tümü izlenir.
 
-Bu tablo, bir Power BI veri kümesi ve tablo yoksa [Stream Analytics veri türlerinden](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics) Power BI [varlık veri modeli (EDM) türlerine](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model)veri türü dönüştürmelerini içerir.
+Bu tablo, bir Power BI veri kümesi ve tablo yoksa [Stream Analytics veri türlerinden](/stream-analytics-query/data-types-azure-stream-analytics) Power BI [varlık veri modeli (EDM) türlerine](/dotnet/framework/data/adonet/entity-data-model)veri türü dönüştürmelerini içerir.
 
 Stream Analytics 'den | Power BI için
 -----|-----
@@ -76,7 +76,7 @@ Tarih saat | Dize | Dize |  Tarih saat | Dize
 
 ## <a name="output-batch-size"></a>Çıkış toplu iş boyutu
 
-Çıkış toplu iş boyutu için [Power BI REST API sınırları](https://msdn.microsoft.com/library/dn950053.aspx)' na bakın.
+Çıkış toplu iş boyutu için [Power BI REST API sınırları](/power-bi/developer/automation/api-rest-api-limitations)' na bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

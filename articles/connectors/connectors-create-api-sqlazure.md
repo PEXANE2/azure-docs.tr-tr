@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 10/22/2020
 tags: connectors
-ms.openlocfilehash: f8dccca1d1264492a4e7c8dab568e13eec9d2557
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ce7679fff86d2c96588cf2b704d44238535963b3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100720"
+ms.locfileid: "93130944"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak bir SQL veritabanı için iş akışlarını otomatikleştirme
 
@@ -96,9 +96,14 @@ Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps
    ||||
 
    > [!TIP]
-   > Bu bilgileri veritabanınızın bağlantı dizesinde bulabilirsiniz. Örneğin, Azure portal, veritabanınızı bulun ve açın. Veritabanı menüsünde, **bağlantı dizeleri** veya bu dizeyi bulabileceğiniz **Özellikler** ' i seçin:
+   > Veritabanınızın ve tablo bilgilerinizin sağlanması için şu seçeneklere sahip olursunuz:
+   > 
+   > * Veritabanınızın bağlantı dizesinde bu bilgileri bulun. Örneğin, Azure portal, veritabanınızı bulun ve açın. Veritabanı menüsünde, **bağlantı dizeleri** veya **Özellikler** ' i seçin, burada bu dizeyi bulabilirsiniz:
    >
-   > `Server=tcp:{your-server-address}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
+   >   `Server=tcp:{your-server-address}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
+   >
+   > * Varsayılan olarak, sistem veritabanlarındaki tablolar filtrelenerek bir sistem veritabanını seçtiğinizde otomatik olarak görünmeyebilir. Alternatif olarak, veritabanı listesinden **özel değer gir** ' i seçtikten sonra tablo adını el ile girebilirsiniz.
+   >
 
    Bu örnekte bu değerlerin nasıl görünebileceğini gösterilmektedir:
 

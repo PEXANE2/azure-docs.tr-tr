@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) kümesinde otomatik TLS sertifikası
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 30fb0d000a64c7e460dd0ccf7e7eaf4b67957c8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5032880ddc5d23f824adec28aee85c652bad29d2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335577"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129669"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) üzerinde bir HTTPS giriş denetleyicisi oluşturma
 
@@ -38,15 +38,15 @@ Bu makalede, Azure CLı sürüm 2.0.64 veya üstünü de çalıştırıyor olman
 
 ## <a name="create-an-ingress-controller"></a>Giriş denetleyicisi oluşturma
 
-Giriş denetleyicisini oluşturmak için `helm` komutunu kullanarak *NGINX-giriş*' yi kullanın. Daha fazla yedeklilik sağlamak için `--set controller.replicaCount` parametresiyle iki NGINX giriş denetleyicisi çoğaltması dağıtılır. Giriş denetleyicisinin Çoğaltmalarından tamamen yararlanmak için AKS kümenizde birden fazla düğüm olduğundan emin olun.
+Giriş denetleyicisini oluşturmak için `helm` komutunu kullanarak *NGINX-giriş* ' yi kullanın. Daha fazla yedeklilik sağlamak için `--set controller.replicaCount` parametresiyle iki NGINX giriş denetleyicisi çoğaltması dağıtılır. Giriş denetleyicisinin Çoğaltmalarından tamamen yararlanmak için AKS kümenizde birden fazla düğüm olduğundan emin olun.
 
 Ayrıca giriş denetleyicisinin bir Linux düğümü üzerinde zamanlanması gerekir. Giriş denetleyicisi, Windows Server düğümlerinde çalıştırılmamalıdır. Kubernetes zamanlayıcısına NGINX giriş denetleyicisini Linux tabanlı bir düğümde çalıştırmasını söylemek için `--set nodeSelector` parametresi kullanılarak bir düğüm seçici belirtilir.
 
 > [!TIP]
-> Aşağıdaki örnek, *Giriş-Basic*adlı giriş kaynakları için bir Kubernetes ad alanı oluşturur. Gerektiğinde kendi ortamınız için bir ad alanı belirtin.
+> Aşağıdaki örnek, *Giriş-Basic* adlı giriş kaynakları için bir Kubernetes ad alanı oluşturur. Gerektiğinde kendi ortamınız için bir ad alanı belirtin.
 
 > [!TIP]
-> Kümenizdeki kapsayıcılara yönelik [istemci kaynak IP korumasını][client-source-ip] etkinleştirmek Istiyorsanız, `--set controller.service.externalTrafficPolicy=Local` Helm install komutuna ekleyin. İstemci kaynak IP 'si, *Için X-iletilen-için*istek üstbilgisinde depolanır. İstemci kaynak IP koruması etkinken bir giriş denetleyicisi kullanılırken, TLS geçişi çalışmaz.
+> Kümenizdeki kapsayıcılara yönelik [istemci kaynak IP korumasını][client-source-ip] etkinleştirmek Istiyorsanız, `--set controller.service.externalTrafficPolicy=Local` Helm install komutuna ekleyin. İstemci kaynak IP 'si, *Için X-iletilen-için* istek üstbilgisinde depolanır. İstemci kaynak IP koruması etkinken bir giriş denetleyicisi kullanılırken, TLS geçişi çalışmaz.
 
 ```console
 # Create a namespace for your ingress resources
@@ -194,7 +194,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld-one
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -232,7 +232,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld-two
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -265,7 +265,7 @@ Her iki uygulama da artık Kubernetes kümenizde çalışıyor. Ancak bunlar tü
 Aşağıdaki örnekte, *Hello-World-ınress adresine giden trafik. MY_CUSTOM_DOMAIN* *aks-HelloWorld* hizmetine yönlendirilir. *Hello-World-ınress adresine giden trafik. MY_CUSTOM_DOMAIN/Hello-World-Two* , *aks-HelloWorld-Two* Service 'e yönlendirilir. *Hello-World-ınress için trafik. MY_CUSTOM_DOMAIN/static* , statik varlıklar için *aks-HelloWorld* adlı hizmete yönlendirilir.
 
 > [!NOTE]
-> Özel bir etki alanı yerine giriş denetleyicisi IP adresi için bir FQDN yapılandırdıysanız, *Hello-World-giriş yerine FQDN 'yi kullanın. MY_CUSTOM_DOMAIN*. Örneğin, FQDN 'niz *demo-aks-ingress.eastus.cloudapp.Azure.com*ise, *Hello-i-ınress ' ı değiştirin. * *Demo-aks-ingress.eastus.cloudapp.azure.com* ile MY_CUSTOM_DOMAIN `hello-world-ingress.yaml` .
+> Özel bir etki alanı yerine giriş denetleyicisi IP adresi için bir FQDN yapılandırdıysanız, *Hello-World-giriş yerine FQDN 'yi kullanın. MY_CUSTOM_DOMAIN* . Örneğin, FQDN 'niz *demo-aks-ingress.eastus.cloudapp.Azure.com* ise, *Hello-i-ınress ' ı değiştirin.* *Demo-aks-ingress.eastus.cloudapp.azure.com* ile MY_CUSTOM_DOMAIN `hello-world-ingress.yaml` .
 
 `hello-world-ingress.yaml`Aşağıdaki örnek YAML kullanılarak adlı bir dosya oluşturun. *Ana bilgisayarları* ve *ana bilgisayarı* , önceki adımda oluşturduğunuz DNS adına güncelleştirin.
 
@@ -335,7 +335,7 @@ kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
 
 Daha sonra, bir sertifika kaynağı oluşturulmalıdır. Sertifika kaynağı istenen X. 509.952 sertifikasını tanımlar. Daha fazla bilgi için bkz. [CERT-Manager sertifikaları][cert-manager-certificates]. CERT-Manager, v 0.2.2 bu yana otomatik olarak CERT-Manager ile dağıtılan giriş dolgusu 'nı kullanarak sizin için otomatik olarak bir sertifika nesnesi oluşturdu. Daha fazla bilgi için bkz. giriş [dolgusu belgeleri][ingress-shim].
 
-Sertifikanın başarıyla oluşturulduğunu doğrulamak için `kubectl get certificate --namespace ingress-basic` komutunu kullanın ve *hazırlanın* seçeneğinin *doğru*olduğunu doğrulayın. Bu işlem birkaç dakika sürebilir.
+Sertifikanın başarıyla oluşturulduğunu doğrulamak için `kubectl get certificate --namespace ingress-basic` komutunu kullanın ve *hazırlanın* seçeneğinin *doğru* olduğunu doğrulayın. Bu işlem birkaç dakika sürebilir.
 
 ```
 $ kubectl get certificate --namespace ingress-basic
@@ -346,7 +346,7 @@ tls-secret   True    tls-secret   11m
 
 ## <a name="test-the-ingress-configuration"></a>Giriş yapılandırmasını test etme
 
-Merhaba-Dünya girişi için bir Web tarayıcısı açın *. * Kubernetes giriş denetleyicinizin MY_CUSTOM_DOMAIN. HTTPS kullanmaya yönlendirirsiniz, sertifikaya güvenildiğini ve tanıtım uygulamasının Web tarayıcısında gösterildiğini görebilirsiniz. */Hello-World-Two* yolunu ekleyin ve ikinci demo uygulamasının özel başlığa sahip olduğuna dikkat edin.
+Merhaba-Dünya girişi için bir Web tarayıcısı açın *.* Kubernetes giriş denetleyicinizin MY_CUSTOM_DOMAIN. HTTPS kullanmaya yönlendirirsiniz, sertifikaya güvenildiğini ve tanıtım uygulamasının Web tarayıcısında gösterildiğini görebilirsiniz. */Hello-World-Two* yolunu ekleyin ve ikinci demo uygulamasının özel başlığa sahip olduğuna dikkat edin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -368,7 +368,7 @@ Alternatif olarak, oluşturulan kaynakları tek tek silmek daha ayrıntılı bir
 kubectl delete -f cluster-issuer.yaml --namespace ingress-basic
 ```
 
-Komut ile Held sürümlerini listeleyin `helm list` . Aşağıdaki örnek çıktıda gösterildiği gibi *NGINX* ve *CERT-Manager*adlı grafikleri arayın:
+Komut ile Held sürümlerini listeleyin `helm list` . Aşağıdaki örnek çıktıda gösterildiği gibi *NGINX* ve *CERT-Manager* adlı grafikleri arayın:
 
 ```
 $ helm list --namespace ingress-basic

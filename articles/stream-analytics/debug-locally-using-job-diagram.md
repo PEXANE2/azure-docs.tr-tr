@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: e9d6bbdf325c0da96b81c1f2146da284ea744def
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: c32ba468979e4566d8e349d481eddca7d407b659
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218264"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130995"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Visual Studio 'da iş diyagramını kullanarak Azure Stream Analytics sorguları yerel olarak ayıklayın
 
@@ -32,7 +32,7 @@ Visual Studio kullanarak Stream Analytics işi oluşturmayı veya [var olan bir 
 > [!NOTE]
 > Bir işi yerel projeye dışa aktarıp canlı bir giriş akışına karşı test etmek istiyorsanız, tüm girişlerin kimlik bilgilerini tekrar belirtmeniz gerekir.  
 
-Betik düzenleyicisinden giriş ve çıkış kaynağını seçin ve **yerel olarak çalıştır**' ı seçin. İş Diyagramı sağ tarafta görüntülenir.
+Betik düzenleyicisinden giriş ve çıkış kaynağını seçin ve **yerel olarak çalıştır** ' ı seçin. İş Diyagramı sağ tarafta görüntülenir.
 
 ### <a name="view-the-intermediate-result-set"></a>Ara sonuç kümesini görüntüleme  
 
@@ -119,7 +119,7 @@ Diğer iş düzeyi ölçümleri, açılan konsolda görüntülenir. İşi durdur
 
 * Power BI ve Azure Data Lake Storage 1. çıkış havuzları, kimlik doğrulama modeli sınırlamaları nedeniyle desteklenmez.
 
-* Yalnızca bulut girişi seçeneklerinde [zaman ilkeleri](stream-analytics-out-of-order-and-late-events.md) desteklenir, ancak yerel giriş seçenekleri değildir.
+* Yalnızca bulut girişi seçeneklerinde [zaman ilkeleri](./stream-analytics-time-handling.md) desteklenir, ancak yerel giriş seçenekleri değildir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

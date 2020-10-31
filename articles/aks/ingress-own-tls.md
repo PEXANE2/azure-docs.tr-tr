@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) kümesinde kendi sertifikalarınız�
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 42e9f2128063caa13cf3fca1a28ec7e6465ba74e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8ea245444fa5e8e042644bd3f7a34ed021ccd1d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855688"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131046"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service'te (AKS) HTTPS giriş denetleyicisi oluşturma ve kendi TLS sertifikalarınızı kullanma
 
@@ -33,15 +33,15 @@ Bu makalede, Azure CLı sürüm 2.0.64 veya üstünü de çalıştırıyor olman
 
 ## <a name="create-an-ingress-controller"></a>Giriş denetleyicisi oluşturma
 
-Giriş denetleyicisini oluşturmak için, `Helm` *NGINX-giriş*yüklemek üzere kullanın. Daha fazla yedeklilik sağlamak için `--set controller.replicaCount` parametresiyle iki NGINX giriş denetleyicisi çoğaltması dağıtılır. Giriş denetleyicisinin Çoğaltmalarından tamamen yararlanmak için AKS kümenizde birden fazla düğüm olduğundan emin olun.
+Giriş denetleyicisini oluşturmak için, `Helm` *NGINX-giriş* yüklemek üzere kullanın. Daha fazla yedeklilik sağlamak için `--set controller.replicaCount` parametresiyle iki NGINX giriş denetleyicisi çoğaltması dağıtılır. Giriş denetleyicisinin Çoğaltmalarından tamamen yararlanmak için AKS kümenizde birden fazla düğüm olduğundan emin olun.
 
 Ayrıca giriş denetleyicisinin bir Linux düğümü üzerinde zamanlanması gerekir. Giriş denetleyicisi, Windows Server düğümlerinde çalıştırılmamalıdır. Kubernetes zamanlayıcısına NGINX giriş denetleyicisini Linux tabanlı bir düğümde çalıştırmasını söylemek için `--set nodeSelector` parametresi kullanılarak bir düğüm seçici belirtilir.
 
 > [!TIP]
-> Aşağıdaki örnek, *Giriş-Basic*adlı giriş kaynakları için bir Kubernetes ad alanı oluşturur. Gerektiğinde kendi ortamınız için bir ad alanı belirtin. AKS kümeniz RBAC etkinleştirilmemişse, `--set rbac.create=false` helk komutlarına ekleyin.
+> Aşağıdaki örnek, *Giriş-Basic* adlı giriş kaynakları için bir Kubernetes ad alanı oluşturur. Gerektiğinde kendi ortamınız için bir ad alanı belirtin. AKS kümeniz RBAC etkinleştirilmemişse, `--set rbac.create=false` helk komutlarına ekleyin.
 
 > [!TIP]
-> Kümenizdeki kapsayıcılara yönelik [istemci kaynak IP korumasını][client-source-ip] etkinleştirmek Istiyorsanız, `--set controller.service.externalTrafficPolicy=Local` Helm install komutuna ekleyin. İstemci kaynak IP 'si, *Için X-iletilen-için*istek üstbilgisinde depolanır. İstemci kaynak IP koruması etkinken bir giriş denetleyicisi kullanılırken, TLS geçişi çalışmaz.
+> Kümenizdeki kapsayıcılara yönelik [istemci kaynak IP korumasını][client-source-ip] etkinleştirmek Istiyorsanız, `--set controller.service.externalTrafficPolicy=Local` Helm install komutuna ekleyin. İstemci kaynak IP 'si, *Için X-iletilen-için* istek üstbilgisinde depolanır. İstemci kaynak IP koruması etkinken bir giriş denetleyicisi kullanılırken, TLS geçişi çalışmaz.
 
 ```console
 # Create a namespace for your ingress resources
@@ -83,7 +83,7 @@ Henüz giriş kuralı oluşturulmadı. Genel IP adresine gözattığınızda NG�
 
 Bu makalede, ile otomatik olarak imzalanan bir sertifika oluşturalım `openssl` . Üretim kullanımı için, bir sağlayıcı veya kendi sertifika yetkiliniz (CA) aracılığıyla güvenilir ve imzalı bir sertifika istemeniz gerekir. Bir sonraki adımda, bir Kubernetes *gizli* anahtarını, OpenSSL tarafından oluşturulan TLS sertifikasını ve özel anahtarı kullanarak oluşturabilirsiniz.
 
-Aşağıdaki örnek, *aks-ingress-TLS. CRT*adlı 365 gün için geçerli 2048 BITLIK bir RSA x509 sertifikası üretir. Özel anahtar dosyası *aks-ingress-TLS. Key*olarak adlandırılmıştır. Bir Kubernetes TLS parolası, bu dosyaların her ikisini de gerektirir.
+Aşağıdaki örnek, *aks-ingress-TLS. CRT* adlı 365 gün için geçerli 2048 BITLIK bir RSA x509 sertifikası üretir. Özel anahtar dosyası *aks-ingress-TLS. Key* olarak adlandırılmıştır. Bir Kubernetes TLS parolası, bu dosyaların her ikisini de gerektirir.
 
 Bu makale, *demo.Azure.com* konu ortak adı ile birlikte çalışarak, değiştirilmesi gerekmez. Üretim kullanımı için, parametre için kendi kuruluş değerlerinizi belirtin `-subj` :
 
@@ -98,7 +98,7 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 
 Kubernetes 'in, giriş denetleyicisi için TLS sertifikasını ve özel anahtarı kullanmasına izin vermek için bir gizli dizi oluşturup kullanın. Gizli dizi bir kez tanımlanır ve önceki adımda oluşturulan sertifika ve anahtar dosyasını kullanır. Ardından, giriş yollarını tanımlarken bu gizliliğe başvurabilirsiniz.
 
-Aşağıdaki örnek, bir gizli dizi adı ( *aks-ınress-TLS*) oluşturur:
+Aşağıdaki örnek, bir gizli dizi adı ( *aks-ınress-TLS* ) oluşturur:
 
 ```console
 kubectl create secret tls aks-ingress-tls \
@@ -132,7 +132,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -170,7 +170,7 @@ spec:
     spec:
       containers:
       - name: ingress-demo
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -205,7 +205,7 @@ Aşağıdaki örnekte, adrese `https://demo.azure.com/` olan trafik adlı hizmet
 > [!TIP]
 > Sertifika isteği işlemi sırasında belirtilen ana bilgisayar adı, CN adı, giriş rotasında tanımlanan konakla eşleşmiyorsa, denetleyici bir *Kubernetes ınress denetleyicisi sahte sertifika* uyarısı görüntüler. Sertifikanızın ve giriş yolu ana bilgisayar adlarının eşleştiğinden emin olun.
 
-*TLS* bölümü, giriş yoluna, ana bilgisayar *demo.Azure.com*için *aks-giriş-TLS* adlı gizli dizi kullanımını söyler. Daha sonra, üretim kullanımı için kendi ana bilgisayar adresinizi belirtin.
+*TLS* bölümü, giriş yoluna, ana bilgisayar *demo.Azure.com* için *aks-giriş-TLS* adlı gizli dizi kullanımını söyler. Daha sonra, üretim kullanımı için kendi ana bilgisayar adresinizi belirtin.
 
 Adlı bir dosya oluşturun `hello-world-ingress.yaml` ve aşağıdaki örnekteki YAML 'yi kopyalayın.
 

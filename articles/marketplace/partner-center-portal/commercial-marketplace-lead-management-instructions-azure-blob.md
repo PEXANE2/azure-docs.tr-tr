@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/01/2020
-ms.openlocfilehash: cd0b708ac3a1b16804430584dfcb01b3d2a4fae2
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: dea9c0eec275c6a0596636c8625e52b8978bb9a6
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042386"
+ms.locfileid: "93130553"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Ticari Market müşteri adaylarını yönetmek için Azure Blob depolamayı kullanma
 
@@ -33,7 +33,7 @@ ms.locfileid: "93042386"
 3. Azure portal, aşağıdaki yordamı kullanarak bir depolama hesabı oluşturun.  
     1. Sol menü çubuğunda **+ kaynak oluştur** ' u seçin.  **Yeni** bölme (dikey pencere) sağa görüntülenecektir.
     2. **Yeni** bölmesinde **depolama** ' yı seçin.  **Öne çıkan** bir liste sağ tarafta görüntülenir.
-    3. Hesap oluşturmaya başlamak için **Depolama hesabını** seçin.  [Depolama hesabı oluşturma](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)makalesindeki yönergeleri izleyin.
+    3. Hesap oluşturmaya başlamak için **Depolama hesabını** seçin.  [Depolama hesabı oluşturma](../../storage/common/storage-account-create.md?tabs=azure-portal)makalesindeki yönergeleri izleyin.
 
     ![Azure depolama hesabı oluşturma adımları](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-create.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "93042386"
 
 5. Depolama hesabı bölmesinizden **erişim anahtarları** ' nı seçin ve anahtar için *bağlantı dizesi* değerini kopyalayın. Bu değeri, Market teklifinizin müşteri adaylarını almak için Yayımlama portalında sağlamanız gereken *depolama hesabı bağlantı dizesi* değeridir.
 
-     Bağlantı almaya bir örnek:
+     Bağlantı dizesine bir örnek:
 
      ```sql
      DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net
@@ -55,11 +55,11 @@ ms.locfileid: "93042386"
 
 6. Depolama hesabı sayfasından **Bloblar** ' ı seçin.
 
-   ![Azure depolama anahtarı](./media/commercial-marketplace-lead-management-instructions-azure-blob/select-blobs.png)
+   ![Blob 'ların seçildiği Azure depolama hesabı sayfasının ekran görüntüsü](./media/commercial-marketplace-lead-management-instructions-azure-blob/select-blobs.png)
 
 7. Bloblar sayfasında, **+ Container** düğmesini seçin.
 
-8. Yeni Kapsayıcınız için bir **ad** yazın. Kapsayıcı adı küçük harflerden oluşmalı ve bir harf veya rakamla başlamalıdır; yalnızca harf, rakam ve tire (-) karakterini içerebilir. Kapsayıcı ve BLOB adları hakkında daha fazla bilgi için bkz. [kapsayıcıları, Blobları ve meta verileri adlandırma ve başvuru](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+8. Yeni Kapsayıcınız için bir **ad** yazın. Kapsayıcı adı küçük harflerden oluşmalı ve bir harf veya rakamla başlamalıdır; yalnızca harf, rakam ve tire (-) karakterini içerebilir. Kapsayıcı ve BLOB adları hakkında daha fazla bilgi için bkz. [kapsayıcıları, Blobları ve meta verileri adlandırma ve başvuru](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
     Bu değeri, Market teklifinizin müşteri adaylarını almak için Yayımlama portalında sağlamanız gereken *kapsayıcı adı* değeri olduğundan kaydedin.
 
@@ -91,5 +91,3 @@ Yayımlama portalında teklifiniz için müşteri adayı yönetim bilgilerini ya
 
     > [!NOTE]
     > Teklif için müşteri adaylarını almadan önce teklifin geri kalanını yapılandırmayı ve bunu yayımlamanız gerekir.
-
-

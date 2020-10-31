@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 10/06/2020
-ms.openlocfilehash: ff31e29b8c2a36c9aaa3d72eab86340ed405b1ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54775d7e9923505c6e68a47feed6726b9cb84c47
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91772660"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129941"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Teklif türüne göre yayımlama kılavuzu
 
@@ -37,7 +37,7 @@ Aşağıdaki tabloda, Iş Ortağı Merkezi 'nde ticari Market teklif türleri g�
 | [**Danışmanlık hizmeti**](consulting-services.md) | Danışmanlık Hizmetleri, Azure, Dynamics 365 veya Power Suite hizmetlerinin kullanımını desteklemek ve genişletmek için müşterilerin hizmetleriyle bağlantı sağlanmasına yardımcı olur.|
 | [**Dynamics 365**](appsource-offer-publishing-guide.md) | Dynamics 365 Iş Merkezi, Dynamics 365 müşteri katılımı, Power Apps ve finans ve operasyon uygulamaları üzerinde yapı veya genişletme için AppSource tekliflerini yayımlayabilirsiniz.|
 | [**IoT Edge modülü**](iot-edge-module.md) | Azure IoT Edge modüller, IoT Edge tarafından yönetilen en düşük hesaplama birimleridir ve Microsoft hizmetlerini (Azure Stream Analytics), 3. taraf hizmetleri veya kendi çözümüne özgü kodunuzu içerebilir. |
-| [**Yönetilen hizmet**](partner-center-portal/create-new-managed-service-offer.md) | Yönetilen hizmet teklifleri oluşturabilir ve [Azure açık Thouse](/azure/lighthouse/overview)aracılığıyla müşteri tarafından atanan abonelikleri veya kaynak gruplarını yönetebilirsiniz.|
+| [**Yönetilen hizmet**](partner-center-portal/create-new-managed-service-offer.md) | Yönetilen hizmet teklifleri oluşturabilir ve [Azure açık Thouse](../lighthouse/overview.md)aracılığıyla müşteri tarafından atanan abonelikleri veya kaynak gruplarını yönetebilirsiniz.|
 | [**Power BI uygulaması** <br/> **Microsoft 365**](appsource-offer-publishing-guide.md) | Power BI ve Microsoft 365 oluşturan AppSource tekliflerini yayımlayabilirsiniz.|
 | [**Hizmet olarak yazılım**](plan-saas-offer.md) | Müşterinizin SaaS tabanlı, teknik çözümünüzü bir abonelik olarak satın almasını sağlamak için hizmet olarak yazılım (SaaS) teklif türünü kullanın. |
 

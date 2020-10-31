@@ -7,16 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/11/2019
-ms.openlocfilehash: e0214cb9515a5974f1de9a27760dc037f7593f30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba63358347cf9722d2cafa35598b9b3b37f49dc3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892303"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129465"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>Azure Stream Analytics işleri kopyalama veya yedekleme
 
-Visual Studio Code veya Visual Studio kullanarak dağıtılan Azure Stream Analytics işlerinizi kopyalayabilir veya yedekleyebilirsiniz. Bir işi başka bir bölgeye kopyalamak, son çıkış süresini kopyalamaz. Bu nedenle, kopyalanmış işi başlatırken [**son durdurulduğu zaman**](https://docs.microsoft.com/azure/stream-analytics/start-job#start-options) seçeneğini kullanamazsınız.
+Visual Studio Code veya Visual Studio kullanarak dağıtılan Azure Stream Analytics işlerinizi kopyalayabilir veya yedekleyebilirsiniz. Bir işi başka bir bölgeye kopyalamak, son çıkış süresini kopyalamaz. Bu nedenle, kopyalanmış işi başlatırken [**son durdurulduğu zaman**](./start-job.md#start-options) seçeneğini kullanamazsınız.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
@@ -45,7 +45,7 @@ Visual Studio Code veya Visual Studio kullanarak dağıtılan Azure Stream Analy
 
 ## <a name="visual-studio"></a>Visual Studio
 
-1. [Dağıtılan Azure Stream Analytics işini bir proje yönergelerine dışarı aktarma](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-vs-tools#export-jobs-to-a-project)işlemini izleyin.
+1. [Dağıtılan Azure Stream Analytics işini bir proje yönergelerine dışarı aktarma](./stream-analytics-vs-tools.md#export-jobs-to-a-project)işlemini izleyin.
 
 2. \*Sorgu Düzenleyicisi 'nde. asaql dosyasını açın, betik düzenleyicisinde **Azure 'a gönder** ' i seçin ve yeni bir ad kullanarak işi başka bir bölgeye veya yedeklemeye yayımlamak için yönergeleri izleyin.
 

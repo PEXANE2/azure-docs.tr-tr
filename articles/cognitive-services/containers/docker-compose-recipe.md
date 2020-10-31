@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 10/29/2020
 ms.author: aahi
-ms.openlocfilehash: 740311226a662ea3d3f8bba3ee5156e14f74516b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cedcf8a3fcd656c4af0ca7493c598791d35d20d9
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88244304"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130570"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>Docker Compose kullanarak birden çok kapsayıcı dağıtma
 
@@ -25,7 +25,7 @@ Bu makalede, birden çok Azure bilişsel hizmet kapsayıcısının nasıl dağı
 
 Tek bir ana bilgisayarda birden çok kapsayıcı görüntüsünü düzenlemek yararlı olabilir. Bu makalede okuma ve form tanıyıcı kapsayıcılarını birlikte ekleyeceğiz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu yordam, yüklenmesi ve yerel olarak çalıştırılması gereken çeşitli araçlar gerektirir:
 
@@ -35,24 +35,17 @@ Bu yordam, yüklenmesi ve yerel olarak çalıştırılması gereken çeşitli ar
   * Yalnızca F0 veya standart fiyatlandırma katmanıyla **görüntü işleme** kaynak.
   * Yalnızca F0 veya standart fiyatlandırma katmanı olan bir **tür tanıyıcı** kaynağı.
   * S0 fiyatlandırma katmanı ile bilişsel **Hizmetler** kaynağı.
-
-## <a name="request-access-to-the-container-registry"></a>Kapsayıcı kayıt defterine erişim isteme
-
-Bilişsel [Hizmetler konuşma kapsayıcıları istek formunu](https://aka.ms/speechcontainerspreview/)doldurun ve iletin. 
-
-[!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
-
-[!INCLUDE [Authenticate to the container registry](../../../includes/cognitive-services-containers-access-registry.md)]
+* Geçişli önizleme kapsayıcısı kullanıyorsanız, onu kullanmak için [çevrimiçi istek formunu](https://aka.ms/csgate/) doldurmanız gerekir.
 
 ## <a name="docker-compose-file"></a>Docker Compose dosyası
 
-YAML dosyası, dağıtılacak tüm hizmetleri tanımlar. Bu hizmetler, `DockerFile` ya da mevcut bir kapsayıcı görüntüsünü kullanır. Bu durumda, iki önizleme görüntüsü kullanacağız. Aşağıdaki YAML dosyasını kopyalayıp yapıştırın ve *Docker-Compose. YAML*olarak kaydedin. Dosyada uygun **apikey**, **faturalandırma**ve **dosyasında değiştirilecek endpointUri** değerlerini sağlayın.
+YAML dosyası, dağıtılacak tüm hizmetleri tanımlar. Bu hizmetler, `DockerFile` ya da mevcut bir kapsayıcı görüntüsünü kullanır. Bu durumda, iki önizleme görüntüsü kullanacağız. Aşağıdaki YAML dosyasını kopyalayıp yapıştırın ve *Docker-Compose. YAML* olarak kaydedin. Dosyada uygun **apikey** , **faturalandırma** ve **dosyasında değiştirilecek endpointUri** değerlerini sağlayın.
 
 ```yaml
 version: '3.7'
 services:
   forms:
-    image: "containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer"
+    image: "mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout"
     environment:
        eula: accept
        billing: # < Your form recognizer billing URL >
@@ -70,7 +63,7 @@ services:
       - "5010:5000"
 
   ocr:
-    image: "containerpreview.azurecr.io/microsoft/cognitive-services-read"
+    image: "mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview"
     environment:
       eula: accept
       apikey: # < Your computer vision API key >
@@ -98,8 +91,8 @@ docker-compose up
 Docker bu yapılandırmayı kullanarak **Docker-Compose up** komutunu ilk kez yürüttüğünde, **Hizmetler** düğümü altında yapılandırılan görüntüleri çeker ve sonra bunları indirir ve bağlar:
 
 ```console
-Pulling forms (containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:)...
-latest: Pulling from microsoft/cognitive-services-form-recognizer
+Pulling forms (mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout:)...
+latest: Pulling from azure-cognitive-services/form-recognizer/layout
 743f2d6c1f65: Pull complete
 72befba99561: Pull complete
 2a40b9192d02: Pull complete
@@ -113,8 +106,8 @@ fd93b5f95865: Pull complete
 ef41dcbc5857: Pull complete
 4d05c86a4178: Pull complete
 34e811d37201: Pull complete
-Pulling ocr (containerpreview.azurecr.io/microsoft/cognitive-services-read:)...
-latest: Pulling from microsoft/cognitive-services-read
+Pulling ocr (mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview:)...
+latest: Pulling from /azure-cognitive-services/vision/read:3.1-preview
 f476d66f5408: Already exists
 8882c27f669e: Already exists
 d9af21273955: Already exists
@@ -166,8 +159,8 @@ ocr_1    | Application started. Press Ctrl+C to shut down.
 
 ```
 IMAGE ID            REPOSITORY                                                                 TAG
-2ce533f88e80        containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer   latest
-4be104c126c5        containerpreview.azurecr.io/microsoft/cognitive-services-read              latest
+2ce533f88e80        mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout          latest
+4be104c126c5        mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview         latest
 ```
 
 ### <a name="test-containers"></a>Test kapsayıcıları

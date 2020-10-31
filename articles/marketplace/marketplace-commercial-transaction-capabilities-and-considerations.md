@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: ca8f2e1721c99c79188917e5b44950b8db6895ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6ce256db907589ace7e77157397257732564fb6
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90006406"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130332"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Ticari Market Transact özellikleri
 
@@ -24,7 +24,7 @@ Yayımcı veya Microsoft, ticari Market 'teki teklifler için yazılım lisansı
 
 ### <a name="contact-me-free-trial-and-byol-options"></a>Benimle iletişim kurun, ücretsiz deneme ve KLG seçenekleri
 
-Yayımcılar _benimle Iletişim kurun_ ve _ücretsiz deneme sürümü_, promosyon ve Kullanıcı alma amaçları için seçenekler arasından seçim yapabilir. Bazı teklif türlerinde, yayımcılar, müşterilerin doğrudan sizin satın aldıkları bir lisansı kullanarak teklifinizi bir abonelik satın almasını sağlamak için kendi lisansını getir (KLG) seçeneğini seçebilirler. Bu seçeneklerle, Microsoft doğrudan yayımcının yazılım lisansı işlemlerine katılmaz ve ilişkili işlem ücreti yoktur. 
+Yayımcılar _benimle Iletişim kurun_ ve _ücretsiz deneme sürümü_ , promosyon ve Kullanıcı alma amaçları için seçenekler arasından seçim yapabilir. Bazı teklif türlerinde, yayımcılar, müşterilerin doğrudan sizin satın aldıkları bir lisansı kullanarak teklifinizi bir abonelik satın almasını sağlamak için kendi lisansını getir (KLG) seçeneğini seçebilirler. Bu seçeneklerle, Microsoft doğrudan yayımcının yazılım lisansı işlemlerine katılmaz ve ilişkili işlem ücreti yoktur. 
 
 Yayımcılar, yazılım lisans işleminin tüm yönlerini desteklemekten sorumludur. Bu, sipariş, karşılama, ölçüm, faturalandırma, faturalama, ödeme ve koleksiyon ile sınırlı değildir ancak bunlarla sınırlı değildir. Ilgili kişi listeleme seçeneğiyle, yayımcılar, müşteriden toplanan yayımcı yazılım lisansı ücretleri %100 ' ı tutar.
 
@@ -46,9 +46,9 @@ Microsoft, Transact seçeneğini kullanırken, üçüncü taraf yazılımların�
 
 ### <a name="billing-infrastructure-costs"></a>Faturalandırma altyapısı maliyetleri
 
-**Sanal makineler** ve **Azure uygulamaları**için Azure altyapı kullanım ücretleri müşterinin Azure aboneliğine faturalandırılır. Altyapı kullanım ücretleri fiyatlandırılır ve müşterinin faturasında yazılım sağlayıcısının lisanslama ücretlerinden ayrı olarak sunulur.
+**Sanal makineler** ve **Azure uygulamaları** için Azure altyapı kullanım ücretleri müşterinin Azure aboneliğine faturalandırılır. Altyapı kullanım ücretleri fiyatlandırılır ve müşterinin faturasında yazılım sağlayıcısının lisanslama ücretlerinden ayrı olarak sunulur.
 
-**SaaS uygulamaları**için, yayımcının tek bir maliyet öğesi olarak Azure altyapı kullanım ücretlerini ve yazılım lisanslama ücretlerini hesaba göre hesabı olması gerekir.  Müşteriye yönelik bir sabit ücret olarak gösterilir. Azure altyapı kullanımı yönetilir ve doğrudan yayımcıya faturalandırılır. Gerçek altyapı kullanım ücretleri müşteri tarafından görülmez. Yayımcılar genellikle Azure altyapı kullanım ücretlerini yazılım lisans fiyatlandırmasına paketlendirmeyi tercih edebilir. Yazılım Lisanslama ücretleri tarifeli değildir veya Kullanıcı tüketimine göre hesaplanır.
+**SaaS uygulamaları** için, yayımcının tek bir maliyet öğesi olarak Azure altyapı kullanım ücretlerini ve yazılım lisanslama ücretlerini hesaba göre hesabı olması gerekir.  Müşteriye yönelik bir sabit ücret olarak gösterilir. Azure altyapı kullanımı yönetilir ve doğrudan yayımcıya faturalandırılır. Gerçek altyapı kullanım ücretleri müşteri tarafından görülmez. Yayımcılar genellikle Azure altyapı kullanım ücretlerini yazılım lisans fiyatlandırmasına paketlendirmeyi tercih edebilir. Yazılım Lisanslama ücretleri tarifeli değildir veya Kullanıcı tüketimine göre hesaplanır.
 
 ## <a name="pricing-models"></a>Fiyatlandırma modelleri
 
@@ -107,7 +107,7 @@ Bu senaryoda, Microsoft, yayımlanmış VM Görüntünüzün kullanımı için s
 |Microsoft, Azure kullanım maliyetinin %100 ' ünü tutar | $0,14/saat |
 ||
 
-**Kendi lisansınızı getirin (KLG)**
+**Kendi Lisansını Getir (KLG)**
 
 KLG aşağıdaki maliyet yapısına sahiptir:
 
@@ -197,7 +197,7 @@ Transact yayımlama seçeneği yalnızca aşağıdaki Market teklif türleriyle 
 
 - **Azure uygulaması: çözüm şablonu veya yönetilen uygulama** – bir veya daha fazla sanal makine sağlamalıdır ve sanal makine fiyatlandırmasının toplamını almalıdır. Tek bir planda yönetilen uygulamalar için, sanal makine fiyatlandırması yerine fiyatlandırma modeli olarak bir sabit hızlı aylık abonelik seçilebilir. Bazı durumlarda, Azure altyapı kullanım ücretleri müşteriye yazılım lisans ücretlerinden ayrı olarak geçirilir, ancak aynı faturalandırma beyanının üzerinden yapılır. Ancak, ISV altyapı ücretleri için yönetilen bir uygulama teklifi yapılandırırsanız Azure kaynakları yayımcıya faturalandırılır ve müşteri altyapı, yazılım lisansı ve yönetim hizmetleri maliyetini içeren bir sabit ücret alır.
 
-- **SaaS uygulaması** -çok kiracılı bir çözüm olmalıdır, kimlik doğrulaması için [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) kullanın ve [SaaS karşılama API 'leriyle](partner-center-portal/pc-saas-fulfillment-api-v2.md)tümleştirin. Azure altyapı kullanımı, doğrudan sizin kullanımınıza (iş ortağı) göre yönetilir ve faturalandırılır. bu nedenle, Azure altyapı kullanım ücretleri ve yazılım lisanslama ücretlerini tek bir maliyet öğesi olarak hesaba almalısınız. Ayrıntılı kılavuz için bkz. [ticari Market 'te yeni SaaS teklifi oluşturma](partner-center-portal/create-new-saas-offer.md).
+- **SaaS uygulaması** -çok kiracılı bir çözüm olmalıdır, kimlik doğrulaması için [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) kullanın ve [SaaS karşılama API 'leriyle](partner-center-portal/pc-saas-fulfillment-api-v2.md)tümleştirin. Azure altyapı kullanımı, doğrudan sizin kullanımınıza (iş ortağı) göre yönetilir ve faturalandırılır. bu nedenle, Azure altyapı kullanım ücretleri ve yazılım lisanslama ücretlerini tek bir maliyet öğesi olarak hesaba almalısınız. Ayrıntılı kılavuz için bkz. [ticari Market 'te yeni SaaS teklifi oluşturma](./create-new-saas-offer.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

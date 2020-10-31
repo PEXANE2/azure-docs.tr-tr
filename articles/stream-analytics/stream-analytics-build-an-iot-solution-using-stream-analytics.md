@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: e0e2244d8c70ca2e6d379e741d543d9cd260b7f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87ec59d19fb442293fb7f14d110cf513015ec9f7
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044592"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130808"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Stream Analytics kullanarak IoT çözümü oluşturma
 
@@ -134,7 +134,7 @@ Bir kaynak grubunda birkaç tıklamayla kolayca dağıtılabilecek birkaç kayna
 
 9. Örnek şablonu dağıtmak için **satın al** ' ı seçin.
 
-10. Birkaç dakika sonra, **dağıtımın başarılı**olduğunu onaylamak için bir bildirim belirir.
+10. Birkaç dakika sonra, **dağıtımın başarılı** olduğunu onaylamak için bir bildirim belirir.
 
 ### <a name="review-the-azure-stream-analytics-tollapp-resources"></a>Azure Stream Analytics TollApp kaynaklarını gözden geçirin
 
@@ -163,7 +163,7 @@ Bir kaynak grubunda birkaç tıklamayla kolayca dağıtılabilecek birkaç kayna
 
    Sorgunun amacını ifade etmek için, bir stand girerek telefon numarasını saymanız gerektiğini varsayalım. Bir otoyol 'e girerken sürekli bir telefon akışı olduğundan, giriş olayları, hiç durdurulmamış bir akışa benzerdir. Akışı ölçmek için, ölçmek üzere bir "zaman dilimi" tanımlamanız gerekir. Bu soruyu daha da belirginleştirem, "kaç kişinin her üç dakikada bir ücretli bir stand mi girsin?" Bu, yaygın olarak belirtilen sayı olarak adlandırılır.
 
-   Gördüğünüz gibi Azure Stream Analytics, SQL gibi bir sorgu dili kullanır ve sorgunun zaman ilişkili yönlerini belirtmek için birkaç uzantı ekliyor.  Daha fazla ayrıntı için sorguda kullanılan [zaman yönetimi](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics) ve [Pencereleme](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) yapıları hakkında bilgi edinin.
+   Gördüğünüz gibi Azure Stream Analytics, SQL gibi bir sorgu dili kullanır ve sorgunun zaman ilişkili yönlerini belirtmek için birkaç uzantı ekliyor.  Daha fazla ayrıntı için sorguda kullanılan [zaman yönetimi](/stream-analytics-query/time-management-azure-stream-analytics) ve [Pencereleme](/stream-analytics-query/windowing-azure-stream-analytics) yapıları hakkında bilgi edinin.
 
 3. TollApp örnek işinin girişlerini inceleyin. Geçerli sorguda yalnızca EntryStream girişi kullanılır.
    - **Entrystream** girişi, bir araba otoyol üzerine bir tollstand girdiğinde verileri sıraya alan bir olay hub bağlantısıdır. Örneğin bir parçası olan bir Web uygulaması olayları oluşturuyor ve bu veri bu olay hub 'ında sıraya alındı. Bu girişin, akış sorgusunun FROM yan tümcesinde sorgulandığını unutmayın.
@@ -176,20 +176,20 @@ Bir kaynak grubunda birkaç tıklamayla kolayca dağıtılabilecek birkaç kayna
 ## <a name="start-the-tollapp-streaming-job"></a>TollApp akış işini başlatma
 Akış işini başlatmak için aşağıdaki adımları izleyin:
 
-1. İşin **genel bakış** sayfasında **Başlat**' ı seçin.
+1. İşin **genel bakış** sayfasında **Başlat** ' ı seçin.
 
-2. **Işi Başlat** bölmesinde **Şimdi**' yi seçin.
+2. **Işi Başlat** bölmesinde **Şimdi** ' yi seçin.
 
 3. Birkaç dakika sonra, iş çalışmaya başladıktan sonra, akış işinin **genel bakış** sayfasında **izleme** grafiğini görüntüleyin. Grafik birkaç bin giriş olayı ve onlarca çıkış olayı göstermelidir.
 
 ## <a name="review-the-cosmosdb-output-data"></a>CosmosDB çıkış verilerini gözden geçirme
 1. TollApp kaynaklarını içeren kaynak grubunu bulun.
 
-2. **Tollapp \<random\> -Cosmos**ad düzenine sahip Azure Cosmos DB hesabını seçin.
+2. **Tollapp \<random\> -Cosmos** ad düzenine sahip Azure Cosmos DB hesabını seçin.
 
 3. Veri Gezgini sayfasını açmak için **Veri Gezgini** başlığını seçin.
 
-4. **Tollappdatabase**  >  **tollappcollection**  >  **belgelerini**genişletin.
+4. **Tollappdatabase**  >  **tollappcollection**  >  **belgelerini** genişletin.
 
 5. Kimlik listesinde, çıktı kullanılabilir olduğunda birkaç belge gösterilir.
 
@@ -214,7 +214,7 @@ AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 
 ### <a name="to-update-the-tollapp-streaming-job-query-syntax"></a>TollApp akış işi sorgu söz dizimini güncelleştirmek için:
 
-1. İşin **genel bakış** sayfasında **Durdur**' u seçin.
+1. İşin **genel bakış** sayfasında **Durdur** ' u seçin.
 
 2. İşin durdurulduğu bildirim için birkaç dakika bekleyin.
 
@@ -224,9 +224,9 @@ AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 
 5. Sorguyu kaydetmek için **Kaydet** ' i seçin. Değişiklikleri kaydetmek için **Evet** ' i onaylayın.
 
-6. İşin **genel bakış** sayfasında **Başlat**' ı seçin.
+6. İşin **genel bakış** sayfasında **Başlat** ' ı seçin.
 
-7. **Işi Başlat** bölmesinde **Şimdi**' yi seçin.
+7. **Işi Başlat** bölmesinde **Şimdi** ' yi seçin.
 
 ### <a name="review-the-total-time-in-the-output"></a>Çıkışdaki toplam süreyi gözden geçirin
 Akış işinden CosmosDB çıkış verilerini gözden geçirmek için yukarıdaki bölümdeki adımları yineleyin. En son JSON belgelerini gözden geçirin.
@@ -301,9 +301,9 @@ Akış işini daha fazla akış birimine ölçeklendirmek için:
 
 2. Sorgu söz dizimini **< > sorgu** sayfasında güncelleştirin ve değişiklikleri kaydedin.
 
-3. Akış işindeki yapılandırma başlığı altında **Ölçek**' i seçin.
+3. Akış işindeki yapılandırma başlığı altında **Ölçek** ' i seçin.
 
-4. **Akış birimleri** kaydırıcısını 1 ' den 6 ' a kaydırın. Akış birimleri, işin alabileceği işlem gücü miktarını tanımlar. **Kaydet**’i seçin.
+4. **Akış birimleri** kaydırıcısını 1 ' den 6 ' a kaydırın. Akış birimleri, işin alabileceği işlem gücü miktarını tanımlar. **Kaydet** ’i seçin.
 
 5. Ek ölçeği göstermek için akış işini **başlatın** . Azure Stream Analytics, işleri daha fazla işlem kaynağına dağıtır ve bölüm BY yan tümcesinde belirtilen sütunu kullanarak işleri kaynaklar genelinde bölümleyerek daha iyi işleme elde edin.
 
@@ -319,7 +319,7 @@ Akış işini daha fazla akış birimine ölçeklendirmek için:
 
 2. TollApp şablonuyla ilgili sekiz kaynak içeren kaynak grubunu bulun.
 
-3. **Kaynak grubunu sil**'i seçin. Silmeyi onaylamak için kaynak grubunun adını yazın.
+3. **Kaynak grubunu sil** 'i seçin. Silmeyi onaylamak için kaynak grubunun adını yazın.
 
 ## <a name="conclusion"></a>Sonuç
 Bu çözüm sizi Azure Stream Analytics hizmetine tanıtmaktadır. Stream Analytics işi için girişlerin ve çıktıların nasıl yapılandırılacağı gösterilmiştir. Ücretsiz veri senaryosunu kullanarak çözüm, hareket halindeki verilerin alanında ortaya çıkan ve Azure Stream Analytics içindeki basit SQL benzeri sorgularla nasıl çözülebilecekleri hakkında yaygın olarak karşılaşılan sorun türlerini açıklanmıştı. Geçici verilerle çalışmak için SQL uzantı yapılarını tarif eden çözüm. Veri akışlarına nasıl katılabileceğiniz, veri akışının statik başvuru verileriyle nasıl zenginleştirileceği ve daha yüksek aktarım hızı elde etmek için bir sorgunun nasıl ölçekleneceği gösterildi.

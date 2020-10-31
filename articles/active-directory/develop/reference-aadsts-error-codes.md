@@ -12,12 +12,12 @@ ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b00d4be72aaed980e2604291d8c67c9fec0fb25b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5cff53ee9e742e93a6183eb5d506bf8f1a08deb
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88115110"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130196"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD Kimlik Doğrulaması ve yetkilendirme hata kodları
 
@@ -156,7 +156,7 @@ Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADS
 | AADSTS50136 | RedirectMsaSessionToApp-tek MSA oturumu algılandı. |
 | AADSTS50139 | SessionMissingMsaOAuth2RefreshToken-eksik bir dış yenileme belirteci nedeniyle oturum geçersiz. |
 | AADSTS50140 | Kmsiınterrupt-Kullanıcı oturum açarken "Oturumumu Açık bırak" kesmesi nedeniyle bu hata oluştu. Daha fazla bilgi almak için Bağıntı Kimliği, İstek Kimliği ve Hata kodu ile [bir destek bileti açın](../fundamentals/active-directory-troubleshooting-support-howto.md). |
-| AADSTS50143 | Oturum uyumsuzluğu-Kullanıcı kiracısı farklı kaynak nedeniyle etki alanı ipucuyla eşleşmediğinden oturum geçersiz. Daha fazla ayrıntı edinmek için bağıntı KIMLIĞI, Istek KIMLIĞI ve hata kodu ile  [bir destek bileti açın](../fundamentals/active-directory-troubleshooting-support-howto.md) . |
+| AADSTS50143 | Oturum uyuşmazlığı - Kullanıcı kiracısı farklı kaynak nedeniyle etki alanı ipucu ile eşleşmediğinden oturum geçersiz. Daha fazla bilgi almak için Bağıntı Kimliği, İstek Kimliği ve Hata kodu ile [bir destek bileti açın](../fundamentals/active-directory-troubleshooting-support-howto.md). |
 | AADSTS50144 | Invalidpasswordexpiredonprempassword-kullanıcının Active Directory parolasının süresi doldu. Kullanıcı için yeni bir parola oluşturun veya kullanıcının parolasını sıfırlamak için self servis sıfırlama aracını kullanmasını sağlayabilirsiniz. |
 | AADSTS50146 | MissingCustomSigningKey-bu uygulamanın uygulamaya özgü bir imzalama anahtarıyla yapılandırılması gerekir. Bu şekilde yapılandırılmamış veya anahtarın süresi dolmuş ya da anahtar henüz geçerli değil. |
 | AADSTS50147 | MissingCodeChallenge-kod sınama parametresinin boyutu geçerli değil. |
@@ -200,7 +200,7 @@ Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADS
 | AADSTS70007 | UnsupportedResponseMode-uygulama, belirteç istenirken desteklenmeyen bir değer döndürdü `response_mode` .  |
 | AADSTS70008 | ExpiredOrRevokedGrant-yenileme belirtecinin süresi eylemsizlik nedeniyle doldu. Belirteç XXX 'de verildi ve belirli bir süre boyunca etkin değil. |
 | AADSTS70011 | Invalidscope-uygulama tarafından istenen kapsam geçersiz. |
-| AADSTS70012 | MsaServerError-MSA (tüketici) kullanıcısının kimliği doğrulanırken bir sunucu hatası oluştu. Yeniden deneyin. Başarısız olmaya devam ederse, [bir destek bileti açın](../fundamentals/active-directory-troubleshooting-support-howto.md) |
+| AADSTS70012 | MsaServerError-MSA (tüketici) kullanıcısının kimliği doğrulanırken bir sunucu hatası oluştu. Yeniden deneyin. Başarısız olmaya devam ederse [bir destek bileti açın](../fundamentals/active-directory-troubleshooting-support-howto.md) |
 | AADSTS70016 | AuthorizationPending-OAuth 2,0 cihaz akışı hatası. Yetkilendirme beklemede. Cihaz isteği yoklamayı yeniden deneyecek. |
 | AADSTS70018 | Baddoğrulamaları ıationcode-Kullanıcı, cihaz kodu akışı için yanlış Kullanıcı koduna yazma nedeniyle geçersiz doğrulama kodu. Yetkilendirme onaylanmamış. |
 | AADSTS70019 | Codesüre sonu-doğrulama kodu zaman aşımına uğradı. Kullanıcının oturum açmayı yeniden denemesini sağlayın. |
@@ -320,6 +320,7 @@ Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADS
 | AADSTS1000000 | UserNotBoundError-bağlama API 'SI, Azure AD kullanıcısının, henüz gerçekleşmemiş bir dış ıDP ile kimlik doğrulaması yapmasını gerektirir. |
 | AADSTS1000002 | BindCompleteInterruptError-bağlama başarıyla tamamlandı, ancak kullanıcının bilgilendirilmesi gerekiyor. |
 | AADSTS7000112 | UnauthorizedClientApplicationDisabled-uygulama devre dışı bırakıldı. |
+| AADSTS7000114| ' Appıdentifier ' uygulamasının uygulama üzerinde çağrı yapmasına izin verilmiyor.|
 | AADSTS7500529 | ' Samlıd-Guid ' değeri geçerli bir SAML KIMLIĞI değil-Azure AD döndürülen yanıtın ' ınresponseattribute ' değerini doldurmak için bu özniteliği kullanır. KIMLIK bir sayıyla başlamamalıdır, bu nedenle ortak bir strateji, bir GUID 'nin dize gösterimine "ID" gibi bir dizeyi eklemek için kullanılır. Örneğin, id6c1c178c166d486687be4aaf5e482730 geçerli bir KIMLIĞIDIR. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -7,22 +7,22 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/06/2020
-ms.openlocfilehash: b4e34befbf28de2b985ff49ce17a87a25842015e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80567a211f08d6322c80b6645f8b70ec7df64b59
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87901700"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130672"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Azure Stream Analytics için olay sıralama ilkelerini yapılandırma
 
-Bu makalede, Azure Stream Analytics ' de geç ve sıra dışı olay ilkelerinin nasıl ayarlanacağı ve kullanılacağı açıklanır. Bu ilkeler yalnızca sorgunuzda [zaman DAMGASı by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) yan tümcesini kullandığınızda uygulanır ve yalnızca bulut giriş kaynakları için geçerlidir.
+Bu makalede, Azure Stream Analytics ' de geç ve sıra dışı olay ilkelerinin nasıl ayarlanacağı ve kullanılacağı açıklanır. Bu ilkeler yalnızca sorgunuzda [zaman DAMGASı by](/stream-analytics-query/timestamp-by-azure-stream-analytics) yan tümcesini kullandığınızda uygulanır ve yalnızca bulut giriş kaynakları için geçerlidir.
 
 ## <a name="event-time-and-arrival-time"></a>Olay saati ve geliş zamanı
 
-Stream Analytics işiniz olayları *Olay saati* veya *varış zamanına*göre işleyebilir. Olay **/uygulama saati** olay yükünde (olay oluşturulduğunda) zaman damgasıdır. Giriş **saati** , olay giriş kaynağında (Event Hubs/IoT Hub/BLOB depolama) alındığında zaman damgasıdır. 
+Stream Analytics işiniz olayları *Olay saati* veya *varış zamanına* göre işleyebilir. Olay **/uygulama saati** olay yükünde (olay oluşturulduğunda) zaman damgasıdır. Giriş **saati** , olay giriş kaynağında (Event Hubs/IoT Hub/BLOB depolama) alındığında zaman damgasıdır. 
 
-Varsayılan olarak, olayları *varış süresine*göre işler Stream Analytics, sorgunuzda [zaman damgası by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) yan tümcesini kullanarak olayları *Olay zamanına* göre işlemeyi tercih edebilirsiniz. Geç varış ve sıra dışı ilkeler yalnızca olayları Olay zamanına göre işetmeniz durumunda geçerlidir. Bu ayarları yapılandırırken senaryonuzun gecikme süresi ve doğruluk gereksinimlerini göz önünde bulundurun. 
+Varsayılan olarak, olayları *varış süresine* göre işler Stream Analytics, sorgunuzda [zaman damgası by](/stream-analytics-query/timestamp-by-azure-stream-analytics) yan tümcesini kullanarak olayları *Olay zamanına* göre işlemeyi tercih edebilirsiniz. Geç varış ve sıra dışı ilkeler yalnızca olayları Olay zamanına göre işetmeniz durumunda geçerlidir. Bu ayarları yapılandırırken senaryonuzun gecikme süresi ve doğruluk gereksinimlerini göz önünde bulundurun. 
 
 ## <a name="what-is-late-arrival-policy"></a>Geç varış ilkesi nedir?
 
@@ -79,8 +79,8 @@ Bu ileti, girişte en az bir bölümün boş olduğunu ve çıktıyı geç varı
 ## <a name="why-do-i-see-a-delay-of-5-seconds-even-when-my-late-arrival-policy-is-set-to-0"></a>Geç varış ilkeniz 0 olarak ayarlandığında, neden 5 saniyelik bir gecikme görüyorum?
 Hiçbir girişi hiç almamış bir giriş bölümü olduğunda bu oluşur. Bu davranışı doğrulamak için bölüm ile giriş ölçümlerini doğrulayabilirsiniz. 
 
-Bir bölüm, yapılandırılan geç eşiğini aşan bir veri içermiyorsa, Stream Analytics, olay sırası konuları bölümünde açıklandığı gibi uygulama zaman damgasını ilerletir. Bu, tahmini varış süresi gerektirir. Bölüm hiçbir zaman veri almadıysanız, Stream Analytics varış süresini *Yerel Saat-5 saniye*olarak tahmin eder. Hiçbir veri olmayan bu bölümler nedeniyle 5 saniyelik bir eşik gecikmesi gösterebilir.  
+Bir bölüm, yapılandırılan geç eşiğini aşan bir veri içermiyorsa, Stream Analytics, olay sırası konuları bölümünde açıklandığı gibi uygulama zaman damgasını ilerletir. Bu, tahmini varış süresi gerektirir. Bölüm hiçbir zaman veri almadıysanız, Stream Analytics varış süresini *Yerel Saat-5 saniye* olarak tahmin eder. Hiçbir veri olmayan bu bölümler nedeniyle 5 saniyelik bir eşik gecikmesi gösterebilir.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Zaman işleme konusunda dikkat edilmesi gerekenler](stream-analytics-time-handling.md)
-* [Stream Analytics kullanılabilen ölçümler](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-monitoring#metrics-available-for-stream-analytics)
+* [Stream Analytics kullanılabilen ölçümler](./stream-analytics-monitoring.md#metrics-available-for-stream-analytics)

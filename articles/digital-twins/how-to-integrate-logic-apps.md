@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 9ea85449d3980f46e88eddc7e06e4a5384b8cea3
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 3fbd9016bcbfa83574d894af7ca728b863f54344
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027559"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129329"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Özel bağlayıcı kullanarak Logic Apps tümleştirme
 
@@ -33,34 +33,11 @@ Azure aboneliğiniz yoksa başlamadan önce **[ücretsiz bir hesap](https://azur
 
 Önkoşul kurulumunun bir parçası olarak aşağıdaki öğeleri de doldurmanız gerekir. Bu bölümün geri kalanı aşağıdaki adımlarda size yol gösterir:
 - Azure dijital TWINS örneği ayarlama
-- Uygulama kaydı istemci gizliliğini al
 - Dijital ikizi ekleme
 
 ### <a name="set-up-azure-digital-twins-instance"></a>Azure dijital TWINS örneğini ayarlama
 
-Bu makaledeki Logic Apps bir Azure dijital TWINS örneğini bağlamak için **Azure Digital TWINS örneğinin** zaten ayarlanmış olması gerekir. 
-
-İlk olarak, **bir Azure dijital TWINS örneği** ve onunla çalışabilmeniz için gereken kimlik doğrulamasını ayarlayın. Bunu yapmak için [*nasıl yapılır: örnek ve kimlik doğrulama ayarlama*](how-to-set-up-instance-portal.md)konusundaki yönergeleri izleyin.
-* Azure dijital TWINS örneğinizi ayarladıktan sonra, örneğin **_ana bilgisayar adı_** ( [Azure Portal bul](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) gerekir.
-
-Bağlayıcının kimliğini doğrulamak için, bir **uygulama kaydı** da ayarlamanız gerekir. Bunu ayarlamak için [*nasıl yapılır: uygulama kaydı oluşturma*](how-to-create-app-registration.md) ' daki yönergeleri izleyin. 
-* Uygulama kaydınız olduktan sonra kaydın **_uygulama (istemci) kimliği_** ve **_Dizin (kiracı) kimliği_** ( [Azure Portal bul](how-to-create-app-registration.md#collect-client-id-and-tenant-id)) gerekir.
-
-### <a name="get-app-registration-client-secret"></a>Uygulama kaydı istemci gizliliğini al
-
-Ayrıca, Azure AD uygulama kaydınız için bir **_istemci gizli anahtarı_** oluşturmanız gerekir. Bunu yapmak için, Azure portal [uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) sayfasına gidin (Bu bağlantıyı kullanabilir veya Portal arama çubuğunda bulabilirsiniz). Ayrıntılarını açmak için listeden önceki bölümde oluşturduğunuz kaydınızı seçin. 
-
-Kayıt menüsündeki *Sertifikalar ve gizli* dizileri vurun ve *+ yeni istemci parolası* ' nı seçin.
-
-:::image type="content" source="media/how-to-integrate-logic-apps/client-secret.png" alt-text="Azure AD uygulama kaydının Portal görünümü. Kaynak menüsündeki ' sertifikalar ve gizlilikler ' etrafında bir vurgulama ve sayfada ' yeni istemci gizli dizisi ' etrafında vurgu var":::
-
-Açıklama ve süre sonu için istediğiniz değerleri girin ve *Ekle* 'ye basın.
-
-:::image type="content" source="media/how-to-integrate-logic-apps/add-client-secret.png" alt-text="Azure AD uygulama kaydının Portal görünümü. Kaynak menüsündeki ' sertifikalar ve gizlilikler ' etrafında bir vurgulama ve sayfada ' yeni istemci gizli dizisi ' etrafında vurgu var":::
-
-Şimdi, istemci parolasının _süre sonu_ ve _değer_ alanlarıyla birlikte _Sertifikalar & gizlilikler_ sayfasında görünür olduğunu doğrulayın. Daha sonra kullanmak için _değerini_ bir yere göz atın (kopyalama simgesiyle birlikte Pano 'ya de kopyalayabilirsiniz)
-
-:::image type="content" source="media/how-to-integrate-logic-apps/client-secret-value.png" alt-text="Azure AD uygulama kaydının Portal görünümü. Kaynak menüsündeki ' sertifikalar ve gizlilikler ' etrafında bir vurgulama ve sayfada ' yeni istemci gizli dizisi ' etrafında vurgu var":::
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
 ### <a name="add-a-digital-twin"></a>Dijital ikizi ekleme
 
@@ -70,9 +47,29 @@ Bu makalede, Azure dijital TWINS örneğiniz içindeki bir ikizi güncelleştirm
 
 Örneğiniz içinde oluşturduğunuz bir ikizi **_IKIZI ID_** 'ye ihtiyacınız olacaktır.
 
+## <a name="set-up-app-registration"></a>Uygulama kaydını ayarlama
+
+[!INCLUDE [digital-twins-prereq-registration.md](../../includes/digital-twins-prereq-registration.md)]
+
+### <a name="get-app-registration-client-secret"></a>Uygulama kaydı istemci gizliliğini al
+
+Ayrıca, Azure AD uygulama kaydınız için bir **_istemci gizli anahtarı_** oluşturmanız gerekir. Bunu yapmak için, Azure portal [uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) sayfasına gidin (Bu bağlantıyı kullanabilir veya Portal arama çubuğunda bulabilirsiniz). Ayrıntılarını açmak için listeden önceki bölümde oluşturduğunuz kaydınızı seçin. 
+
+Kayıt menüsündeki *Sertifikalar ve gizli* dizileri vurun ve *+ yeni istemci parolası* ' nı seçin.
+
+:::image type="content" source="media/how-to-integrate-logic-apps/client-secret.png" alt-text="Azure AD uygulama kaydının Portal görünümü. Kaynak menüsündeki ' sertifikalar ve gizlilikler ' etrafında bir vurgulama ve sayfada ' yeni istemci gizli dizisi ' etrafında vurgu var":::
+
+*Açıklama* ve *süre sonu* için Istediğiniz değerleri girin ve *Ekle* 'ye basın.
+
+:::image type="content" source="media/how-to-integrate-logic-apps/add-client-secret.png" alt-text="Azure AD uygulama kaydının Portal görünümü. Kaynak menüsündeki ' sertifikalar ve gizlilikler ' etrafında bir vurgulama ve sayfada ' yeni istemci gizli dizisi ' etrafında vurgu var":::
+
+Şimdi, istemci parolasının _süre sonu_ ve _değer_ alanlarıyla birlikte _Sertifikalar & gizlilikler_ sayfasında görünür olduğunu doğrulayın. Daha sonra kullanmak için _değerini_ bir yere göz atın (kopyalama simgesiyle birlikte Pano 'ya de kopyalayabilirsiniz)
+
+:::image type="content" source="media/how-to-integrate-logic-apps/client-secret-value.png" alt-text="Azure AD uygulama kaydının Portal görünümü. Kaynak menüsündeki ' sertifikalar ve gizlilikler ' etrafında bir vurgulama ve sayfada ' yeni istemci gizli dizisi ' etrafında vurgu var":::
+
 ## <a name="create-custom-logic-apps-connector"></a>Özel Logic Apps Bağlayıcısı oluştur
 
-Bu adımda, Azure dijital TWINS API 'Leri için [özel bir Logic Apps Bağlayıcısı](../logic-apps/custom-connector-overview.md) oluşturacaksınız. Bunu yaptıktan sonra, bir sonraki bölümde bir mantıksal uygulama oluştururken Azure dijital TWINS 'i yedeklenebilir.
+Şimdi Azure dijital TWINS API 'Leri için [özel bir Logic Apps Bağlayıcısı](../logic-apps/custom-connector-overview.md) oluşturmaya hazırsınız. Bunu yaptıktan sonra, bir sonraki bölümde bir mantıksal uygulama oluştururken Azure dijital TWINS 'i yedeklenebilir.
 
 Azure portal [Logic Apps özel bağlayıcı](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Web%2FcustomApis) sayfasına gidin (Bu bağlantıyı kullanabilir veya Portal arama çubuğunda arama yapabilirsiniz). İsabet *+ Ekle* .
 

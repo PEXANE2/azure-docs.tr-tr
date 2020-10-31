@@ -8,28 +8,28 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: a24d1716448363a199151a50a260bbdbd1e8e634
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14f7462aec65d2a13eb36b291331c347b995d281
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91249493"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130689"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics Azure Machine Learning ile tümleştirme (Önizleme)
 
 Akış girişi verilerinizde gerçek zamanlı Puanlama ve tahmin işlemleri yapmak için Azure Stream Analytics işlerinizde Kullanıcı tanımlı bir işlev (UDF) olarak makine öğrenimi modelleri uygulayabilirsiniz. [Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) , modellerinizi geliştirmek, eğitme ve dağıtmak Için TensorFlow, scikit-öğren veya PyTorch gibi popüler açık kaynak araçlarından birini kullanmanıza olanak sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Machine Learning modelini Stream Analytics işinize bir işlev olarak eklemeden önce aşağıdaki adımları uygulayın:
 
-1. [Modelinizi bir Web hizmeti olarak dağıtmak](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)için Azure Machine Learning kullanın.
+1. [Modelinizi bir Web hizmeti olarak dağıtmak](../machine-learning/how-to-deploy-and-where.md)için Azure Machine Learning kullanın.
 
 2. Puanlama betiğinizin bir şema belirtimi oluşturmak için Azure Machine Learning tarafından kullanılan [örnek girişler ve çıktılar](../machine-learning/how-to-deploy-and-where.md) olması gerekir. Stream Analytics, Web hizmetinizin işlev imzasını anlamak için şemayı kullanır. Bu [örnek Swagger tanımını](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json) , doğru ayarlamış olduğunuzdan emin olmak için bir başvuru olarak kullanabilirsiniz.
 
 3. Web hizmetinizin JSON seri hale getirilmiş verileri kabul ettiğinden ve döndürdüğünden emin olun.
 
-4. Modelinizi [Azure Kubernetes hizmetinde](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) yüksek ölçekli üretim dağıtımları için dağıtın. Web hizmeti, işinizden gelen istek sayısını işleyemediğinde, Stream Analytics işinizin performansı düşecek ve bu da gecikmeyi etkiler. Azure Container Instances dağıtılan modeller yalnızca Azure portal kullandığınızda desteklenir. [Azure Machine Learning Designer](https://docs.microsoft.com/azure/machine-learning/concept-designer) kullanılarak oluşturulan modeller henüz Stream Analytics desteklenmemektedir.
+4. Modelinizi [Azure Kubernetes hizmetinde](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) yüksek ölçekli üretim dağıtımları için dağıtın. Web hizmeti, işinizden gelen istek sayısını işleyemediğinde, Stream Analytics işinizin performansı düşecek ve bu da gecikmeyi etkiler. Azure Container Instances dağıtılan modeller yalnızca Azure portal kullandığınızda desteklenir. [Azure Machine Learning Designer](../machine-learning/concept-designer.md) kullanılarak oluşturulan modeller henüz Stream Analytics desteklenmemektedir.
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>İşinize bir makine öğrenme modeli ekleyin
 
@@ -37,7 +37,7 @@ Stream Analytics işinize doğrudan Azure portal veya Visual Studio Code Azure M
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. Azure portal Stream Analytics işinize gidin ve **iş topolojisi**altında **işlevler** ' i seçin. Ardından, + açılan menü **Ekle** menüsünden **Azure Machine Learning hizmet** ' i seçin.
+1. Azure portal Stream Analytics işinize gidin ve **iş topolojisi** altında **işlevler** ' i seçin. Ardından, + açılan menü **Ekle** menüsünden **Azure Machine Learning hizmet** ' i seçin.
 
    ![Azure Machine Learning UDF ekleyin](./media/machine-learning-udf/add-azure-machine-learning-udf.png)
 
@@ -47,7 +47,7 @@ Stream Analytics işinize doğrudan Azure portal veya Visual Studio Code Azure M
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-1. Stream Analytics projenizi Visual Studio Code açın ve **işlevler** klasörüne sağ tıklayın. Sonra **Işlev Ekle**' yi seçin. Açılan listeden **MACHINE LEARNING UDF** ' i seçin.
+1. Stream Analytics projenizi Visual Studio Code açın ve **işlevler** klasörüne sağ tıklayın. Sonra **Işlev Ekle** ' yi seçin. Açılan listeden **MACHINE LEARNING UDF** ' i seçin.
 
    :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function.png" alt-text="VS Code UDF ekleme":::
 

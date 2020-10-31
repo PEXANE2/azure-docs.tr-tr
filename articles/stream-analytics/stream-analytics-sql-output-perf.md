@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: b760ad03318b3c31b39b6470251847150dc5a70a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db396bbd2f26638c39f2573fb6014cd2602279d0
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88869431"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129754"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure SQL veritabanı 'na Azure Stream Analytics çıkışı
 
@@ -27,15 +27,15 @@ Azure Stream Analytics içindeki SQL çıktısı, bir seçenek olarak paralel ya
 - **Bölümlendirmeyi devralma** – bu SQL çıkış yapılandırma seçeneği, önceki sorgu adımlarınızın veya girişinin bölümleme düzeninin devralınmasını mümkün. Bu etkinken, disk tabanlı bir tabloya yazma ve işiniz için [tamamen paralel](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) topolojiye sahip olmak için daha iyi işlem görmeniz beklenir. Bu bölümlendirme diğer birçok [çıktı](stream-analytics-parallelization.md#partitions-in-inputs-and-outputs)için zaten otomatik olarak yapılır. Bu seçenekle yapılan toplu eklemeler için tablo kilitleme (TABLOCK) de devre dışı bırakıldı.
 
 > [!NOTE] 
-> 8 ' den fazla giriş bölümü olduğunda, giriş bölümleme düzenini devralma uygun bir seçenek olmayabilir. Bu üst sınır, tek bir kimlik sütunu ve bir kümelenmiş dizin içeren bir tabloda gözlemlendi. Bu durumda, çıkış yazıcılarının sayısını açıkça belirtmek için sorgunuzda 8 ' [e](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) kadar kullanmayı düşünün. Şemanıza ve Dizin seçimine bağlı olarak, gözlemlerinizin farklılık gösterebilir.
+> 8 ' den fazla giriş bölümü olduğunda, giriş bölümleme düzenini devralma uygun bir seçenek olmayabilir. Bu üst sınır, tek bir kimlik sütunu ve bir kümelenmiş dizin içeren bir tabloda gözlemlendi. Bu durumda, çıkış yazıcılarının sayısını açıkça belirtmek için sorgunuzda 8 ' [e](/stream-analytics-query/into-azure-stream-analytics#into-shard-count) kadar kullanmayı düşünün. Şemanıza ve Dizin seçimine bağlı olarak, gözlemlerinizin farklılık gösterebilir.
 
-- **Toplu Iş boyutu** -SQL çıkış yapılandırması, hedef tablonuzun/iş yükünüzün doğasına göre Azure Stream ANALYTICS bir SQL çıkışında en büyük toplu iş boyutunu belirtmenize olanak tanır. Toplu iş boyutu, her toplu ekleme işlemi ile gönderilen en fazla kayıt sayısıdır. Kümelenmiş columnstore dizinlerinde, daha paralelleştirme, en az günlüğe kaydetme ve kilitleme iyileştirmeleri için [100K](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) etrafında toplu işlem boyutları. Disk tabanlı tablolarda, en fazla Batch boyutları toplu ekleme sırasında kilit yükseltmeyi tetikleyebilen için 10.000 (varsayılan) veya daha düşük bir çözüm, çözümünüz için en uygun olabilir.
+- **Toplu Iş boyutu** -SQL çıkış yapılandırması, hedef tablonuzun/iş yükünüzün doğasına göre Azure Stream ANALYTICS bir SQL çıkışında en büyük toplu iş boyutunu belirtmenize olanak tanır. Toplu iş boyutu, her toplu ekleme işlemi ile gönderilen en fazla kayıt sayısıdır. Kümelenmiş columnstore dizinlerinde, daha paralelleştirme, en az günlüğe kaydetme ve kilitleme iyileştirmeleri için [100K](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) etrafında toplu işlem boyutları. Disk tabanlı tablolarda, en fazla Batch boyutları toplu ekleme sırasında kilit yükseltmeyi tetikleyebilen için 10.000 (varsayılan) veya daha düşük bir çözüm, çözümünüz için en uygun olabilir.
 
 - **Giriş Iletisi ayarlama** – bölümleme ve toplu iş boyutunu devralma kullanarak en iyi duruma getirildikten sonra, bölüm başına ileti başına giriş olaylarının sayısını artırmak, yazma aktarım hızınızı daha da ileri dağıtmaya yardımcı olur. Giriş iletisi ayarlama, Azure Stream Analytics içindeki toplu iş boyutlarının belirtilen toplu iş boyutuna kadar olmasına olanak tanır ve böylece üretilen işi geliştirir. Bu, bu veya EventHub ya da blob 'daki giriş iletisi boyutlarının [artması veya artırılması aracılığıyla elde](stream-analytics-define-inputs.md) edilebilir.
 
 ## <a name="sql-azure"></a>SQL Azure
 
-- **Bölümlenmiş tablo ve dizinler** [– bölümlemeli bir SQL](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) tablosu ve bölümlenmiş dizinleri, Bölüm anahtarınızla aynı sütunla (örneğin, PartitionID) kullanarak, yazma işlemleri sırasında bölümler arasındaki çekişmeleri önemli ölçüde azaltabilir. Bölümlenmiş bir tablo için, BIRINCIL dosya grubunda bir [bölüm işlevi](https://docs.microsoft.com/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017) ve bir [bölüm düzeni](https://docs.microsoft.com/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017) oluşturmanız gerekir. Bu, yeni veriler yüklenirken mevcut verilerin kullanılabilirliğini de artırır. Günlük GÇ sınırı, SKU ile yükseltilerek artırılabilir olan bölüm sayısına bağlı olarak gelebilir.
+- **Bölümlenmiş tablo ve dizinler** [– bölümlemeli bir SQL](/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) tablosu ve bölümlenmiş dizinleri, Bölüm anahtarınızla aynı sütunla (örneğin, PartitionID) kullanarak, yazma işlemleri sırasında bölümler arasındaki çekişmeleri önemli ölçüde azaltabilir. Bölümlenmiş bir tablo için, BIRINCIL dosya grubunda bir [bölüm işlevi](/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017) ve bir [bölüm düzeni](/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017) oluşturmanız gerekir. Bu, yeni veriler yüklenirken mevcut verilerin kullanılabilirliğini de artırır. Günlük GÇ sınırı, SKU ile yükseltilerek artırılabilir olan bölüm sayısına bağlı olarak gelebilir.
 
 - **Benzersiz anahtar Ihlallerinden kaçının** – Azure Stream Analytics etkinlik günlüğünde [birden çok anahtar ihlali uyarı iletisi](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) alırsanız, işinizin kurtarma durumları sırasında gerçekleşmesi muhtemel olan benzersiz kısıtlama ihlallerinden etkilenmediğinden emin olun. Dizininizdeki [ \_ \_ anahtar yok sayma](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) seçeneği ayarlanarak bu kaçınılabilir.
 

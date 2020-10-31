@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 1b49cdb423e8fd2e70175d4ac71f6dcd07b459f9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 87ee8a9c57fc456ba02f97bf56db25e4c91e9398
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097745"
+ms.locfileid: "93129822"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics işleri için uyumluluk düzeyi
 
@@ -33,7 +33,7 @@ Yeni bir Stream Analytics iş oluşturduğunuzda, en son uyumluluk düzeyini kul
 
 ## <a name="set-the-compatibility-level"></a>Uyumluluk düzeyini ayarlama
 
-Stream Analytics işi için uyumluluk düzeyini Azure portal veya [iş oluştur REST API çağrısını](/azure/stream-analytics/stream-analytics-quick-create-portal)kullanarak ayarlayabilirsiniz.
+Stream Analytics işi için uyumluluk düzeyini Azure portal veya [iş oluştur REST API çağrısını](./stream-analytics-quick-create-portal.md)kullanarak ayarlayabilirsiniz.
 
 Azure portal işin uyumluluk düzeyini güncelleştirmek için:
 
@@ -77,13 +77,13 @@ Daha fazla bilgi için bkz. [bulut ve IoT Edge Azure Stream Analytics Jeo-uzamsa
 
 **Önceki düzeyler:** Upsert davranış *INSERT veya Merge* .
 
-**1,2 düzeyi:** CosmosDB çıkışıyla yerel toplu API Tümleştirmesi aktarım hızını en üst düzeye çıkarır ve azaltma isteklerini verimli bir şekilde işler. Daha fazla bilgi için [Azure Cosmos DB çıktıyı Azure Stream Analytics sayfasına](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12)bakın.
+**1,2 düzeyi:** CosmosDB çıkışıyla yerel toplu API Tümleştirmesi aktarım hızını en üst düzeye çıkarır ve azaltma isteklerini verimli bir şekilde işler. Daha fazla bilgi için [Azure Cosmos DB çıktıyı Azure Stream Analytics sayfasına](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12)bakın.
 
 Upsert davranış *INSERT veya Replace* .
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>SQL çıktısına yazarken DateTimeOffset
 
-**Önceki düzeyler:** [DateTimeOffset](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) türleri UTC olarak ayarlandı.
+**Önceki düzeyler:** [DateTimeOffset](/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) türleri UTC olarak ayarlandı.
 
 **1,2 düzeyi:** DateTimeOffset artık ayarlanmamış.
 
@@ -151,4 +151,4 @@ Aşağıdaki büyük değişiklikler uyumluluk düzeyi 1,1 ' de kullanıma sunul
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Stream Analytics giriş sorunlarını giderme](stream-analytics-troubleshoot-input.md)
-* [Stream Analytics kaynak durumu](stream-analytics-resource-health.md)
+* [Stream Analytics kaynak durumu](./stream-analytics-troubleshoot-query.md)

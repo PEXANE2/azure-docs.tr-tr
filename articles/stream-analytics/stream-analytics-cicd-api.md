@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 18817a426bacc1ddf144c1d64b611c55245cc21e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a7e56758a1a76933d6bb18883aa15ce33ce2e89e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097796"
+ms.locfileid: "93130927"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>API 'Leri kullanarak IoT Edge Stream Analytics için CI/CD uygulayın
 
@@ -258,5 +258,5 @@ Dağıtım bildiriminin yapılandırmasından sonra dağıtım için [Azure CLI 
 ## <a name="next-steps"></a>Sonraki adımlar 
  
 * [IoT Edge üzerinde Azure Stream Analytics](stream-analytics-edge.md)
-* [IoT Edge öğreticide ASA](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
+* [IoT Edge öğreticide ASA](../iot-edge/tutorial-deploy-stream-analytics.md)
 * [Visual Studio araçlarını kullanarak Stream Analytics Edge işleri geliştirme](stream-analytics-tools-for-visual-studio-edge-jobs.md)

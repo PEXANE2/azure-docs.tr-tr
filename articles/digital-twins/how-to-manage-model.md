@@ -7,18 +7,22 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 399ae682028479f801b82b6273f7d1429cfa1b97
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: e50c2bb73f56017a047e6c657c866b61e5eaa465
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494849"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130391"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure dijital TWINS modellerini yönetme
 
 Azure Digital TWINS örneğinizin, [**Digitaltwinmodeller API 'leri**](/rest/api/digital-twins/dataplane/models), [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)veya [Azure dijital TWINS CLI](how-to-use-cli.md)'yi kullanma hakkında bilgi sahibi olan [modelleri](concepts-models.md) yönetebilirsiniz. 
 
 Yönetim işlemlerine, modellerin karşıya yüklenmesi, doğrulanması, alınması ve silinmesi dahildir. 
+
+## <a name="prerequisites"></a>Önkoşullar
+
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
 ## <a name="create-models"></a>Model oluşturma
 
@@ -61,7 +65,7 @@ Bir hastanın odalarını dijital olarak göstermek istediği örneği göz ön�
 > [!NOTE]
 > Bu, bir modelin bir istemci projesinin parçası olarak yüklenmesi ve kaydedildiği bir. JSON dosyası için örnek gövdedir. Diğer taraftan REST API çağrısı, yukarıdaki gibi bir model tanımları dizisi alır ( `IEnumerable<string>` .NET SDK içinde bir ile eşleştirilir). Bu modeli REST API doğrudan kullanabilmek için köşeli ayraç ile çevreleyin.
 
-Bu model, hasta odası için bir ad ve benzersiz KIMLIĞI ve ziyaretçi sayısını ve el-yıkama durumunu temsil edecek özellikleri tanımlar (Bu sayaçlar hareket sensörleri ve akıllı SOAP dağıtıcılarından güncelleştirilir ve bir *handyıkama yüzdesi* özelliği hesaplamak için birlikte kullanılır). Model Ayrıca, bu *Oda* modeline bağlı olarak herhangi bir [dijital TWINS](concepts-twins-graph.md) 'i gerçek cihazlara bağlamak için kullanılacak olan bir ilişki *hasdevices*'i tanımlar.
+Bu model, hasta odası için bir ad ve benzersiz KIMLIĞI ve ziyaretçi sayısını ve el-yıkama durumunu temsil edecek özellikleri tanımlar (Bu sayaçlar hareket sensörleri ve akıllı SOAP dağıtıcılarından güncelleştirilir ve bir *handyıkama yüzdesi* özelliği hesaplamak için birlikte kullanılır). Model Ayrıca, bu *Oda* modeline bağlı olarak herhangi bir [dijital TWINS](concepts-twins-graph.md) 'i gerçek cihazlara bağlamak için kullanılacak olan bir ilişki *hasdevices* 'i tanımlar.
 
 Bu yöntemi izleyerek, hospstanonun için modeller, bölgeler veya hastanın kendisi için modeller tanımlama bölümüne geçebilirsiniz.
 
@@ -200,7 +204,7 @@ Yeni bir ikizi oluşturduğunuzda, yeni model sürümü ve eski model sürümü 
 
 Bu Ayrıca, bir modelin yeni bir sürümünün karşıya yüklenmesi mevcut TWINS 'in otomatik olarak etkilenmeyeceği anlamına gelir. Mevcut TWINS yalnızca eski model sürümünün örneklerini kalacak.
 
-*Nasıl yapılır: dijital TWINS 'ı yönetme*konusunun [*dijital Ikizi 'nin modelini güncelleştirme*](how-to-manage-twin.md#update-a-digital-twins-model) bölümünde açıklandığı gibi, var olan mevcut TWINS sürümlerini yeni model sürümüne güncelleştirebilirsiniz. Aynı düzeltme ekinde, hem **model kimliğini** (yeni sürüme) hem de **ikizi üzerinde değiştirilmesi gereken tüm alanları yeni modele uygun hale getirmek için**güncelleştirmeniz gerekir.
+*Nasıl yapılır: dijital TWINS 'ı yönetme* konusunun [*dijital Ikizi 'nin modelini güncelleştirme*](how-to-manage-twin.md#update-a-digital-twins-model) bölümünde açıklandığı gibi, var olan mevcut TWINS sürümlerini yeni model sürümüne güncelleştirebilirsiniz. Aynı düzeltme ekinde, hem **model kimliğini** (yeni sürüme) hem de **ikizi üzerinde değiştirilmesi gereken tüm alanları yeni modele uygun hale getirmek için** güncelleştirmeniz gerekir.
 
 ### <a name="remove-models"></a>Modelleri kaldır
 

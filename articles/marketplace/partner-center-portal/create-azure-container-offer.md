@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: cbaca0b9d608d7703beec559e5434f52308629ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c30a9997fcc7ac10b1072d4f164c3e7bfa16f0b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91709113"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130519"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure Market'te Azure kapsayıcısı teklifi oluşturma
 
@@ -22,9 +22,9 @@ Bu makalede, Azure Marketi için bir kapsayıcı teklifinin nasıl oluşturulaca
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
 
-2. Sol gezinti menüsünde **ticari Market**  >  **genel bakış**' ı seçin.
+2. Sol gezinti menüsünde **ticari Market**  >  **genel bakış** ' ı seçin.
 
-3. Genel Bakış sayfasında **+ yeni teklif**  >  **Azure kapsayıcısı**' nı seçin.
+3. Genel Bakış sayfasında **+ yeni teklif**  >  **Azure kapsayıcısı** ' nı seçin.
 
    ![Sol gezinti menüsünü gösterir.](./media/new-offer-azure-container.png)
 
@@ -33,16 +33,16 @@ Bu makalede, Azure Marketi için bir kapsayıcı teklifinin nasıl oluşturulaca
 
 ### <a name="offer-id-and-alias"></a>Teklif KIMLIĞI ve diğer ad
 
-Bir **TEKLIF kimliği**girin. Bu, hesabınızdaki her teklif için benzersiz bir tanımlayıcıdır.
+Bir **TEKLIF kimliği** girin. Bu, hesabınızdaki her teklif için benzersiz bir tanımlayıcıdır.
 
 - Bu KIMLIK, varsa Market teklifi ve Azure Resource Manager şablonları için Web adresinde müşteriler tarafından görülebilir.
-- Yalnızca küçük harfleri ve rakamları kullanın. Kısa çizgi ve alt çizgi içerebilir, ancak boşluk içeremez ve 50 karakterle sınırlıdır. Örneğin, **Test-teklif-1**girerseniz, teklif Web adresi olacaktır `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
-- Teklif KIMLIĞI, **Oluştur**' u seçtikten sonra değiştirilemez.
+- Yalnızca küçük harfleri ve rakamları kullanın. Kısa çizgi ve alt çizgi içerebilir, ancak boşluk içeremez ve 50 karakterle sınırlıdır. Örneğin, **Test-teklif-1** girerseniz, teklif Web adresi olacaktır `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
+- Teklif KIMLIĞI, **Oluştur** ' u seçtikten sonra değiştirilemez.
 
-Bir **teklif diğer adı**girin. Bu, Iş Ortağı Merkezi 'nde teklif için kullanılan addır.
+Bir **teklif diğer adı** girin. Bu, Iş Ortağı Merkezi 'nde teklif için kullanılan addır.
 
 - Bu ad Market 'te kullanılmıyor ve teklif adından ve müşterilere gösterilen diğer değerlerden farklı.
-- Bu, **Oluştur**' u seçtikten sonra değiştirilemez.
+- Bu, **Oluştur** ' u seçtikten sonra değiştirilemez.
 
 Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
@@ -52,10 +52,10 @@ Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 Bu sayfa, teklifin geçerli durumuna bağlı olarak farklı bağlantıları gösterir. Örneğin:
 
-- Teklif bir taslak- [silme taslağı tekliftir](update-existing-offer.md#delete-a-draft-offer)
+- Teklif bir taslak-silme taslağı tekliftir
 - Teklif canlı ise, [teklifi satmaya](update-existing-offer.md#stop-selling-an-offer-or-plan)
-- Teklif önizleme sürümündedir- [canlı](publishing-status.md#publisher-approval)
-- Yayımcı oturumu kapatma Işlemini tamamlamadıysanız [yayımlamayı Iptal edin](update-existing-offer.md#cancel-publishing)
+- Teklif önizleme sürümündedir- [canlı](../review-publish-offer.md#previewing-and-approving-your-offer)
+- Yayımcı oturumu kapatma Işlemini tamamlamadıysanız [yayımlamayı Iptal edin.](../review-publish-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>Teklif kurulumu
 
@@ -65,7 +65,7 @@ Teklifinizi ayarlamak için bu adımları izleyin.
 
 Teklifinizi Iş Ortağı Merkezi ile ticari Market 'te yayımlarken, Müşteri Ilişkileri yönetimi (CRM) sisteminize bağlayabilirsiniz. Bu, bir kişi, ürününüzü ilgilendiren veya ürünü kullandığı anda müşteri iletişim bilgilerini almanızı sağlar.
 
-1. **Müşteri adaylarını göndermemizi istediğiniz bir müşteri adayı hedefi seçin**. İş Ortağı Merkezi aşağıdaki CRM sistemlerini destekler:
+1. **Müşteri adaylarını göndermemizi istediğiniz bir müşteri adayı hedefi seçin** . İş Ortağı Merkezi aşağıdaki CRM sistemlerini destekler:
 
    - Müşteri katılımı için [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md)
    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
@@ -96,7 +96,7 @@ Bu sayfa, teklifinizi Market 'te gruplandırmak için kullanılan kategorileri v
 Teklifinizi uygun Market arama alanlarında yerleştirmek için kategoriler ve alt kategoriler ' i seçin. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğini açıkladığınızdan emin olun. Seçin:
 
 - Birincil ve ikincil kategori dahil olmak üzere en az bir ve en fazla iki kategori (isteğe bağlı).
-- Her birincil ve/veya ikincil kategori için en fazla iki alt kategori. Teklifiniz için geçerli bir alt kategori yoksa, **geçerli değil**' i seçin.
+- Her birincil ve/veya ikincil kategori için en fazla iki alt kategori. Teklifiniz için geçerli bir alt kategori yoksa, **geçerli değil** ' i seçin.
 
 [Teklif listesi En Iyi uygulamalarında](../gtm-offer-listing-best-practices.md)kategorilerin ve alt kategorilerin tam listesini görebilirsiniz. Kapsayıcılar her zaman **kapsayıcılar** altında ve sonra **kapsayıcı görüntüleri** kategorisi ' nde görünür.
 
@@ -133,7 +133,7 @@ Bu sayfa, ticari Market 'te görüntülenen teklif ayrıntılarını tanımlaman
 > [!NOTE]
 > Teklif açıklaması, "Bu uygulama yalnızca [Ingilizce olmayan dil] ' de kullanılabilir" ifadesi ile başlıyorsa, teklif ayrıntılarının Ingilizce olması gerekmez. Ayrıca, teklif listesi ayrıntılarından farklı bir dilde içerik sunmak için faydalı bir bağlantı sağlamak da yararlı olabilir.
 
-### <a name="name"></a>Adı
+### <a name="name"></a>Ad
 
 Buraya girdiğiniz ad teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
 
@@ -172,7 +172,7 @@ Teklifiniz hakkında ek çevrimiçi belgeler sağlayın. En fazla 25 bağlantı 
 
 ### <a name="contact-information"></a>İletişim Bilgileri
 
-Bir **destek kişisi** ve **mühendislik ilgili kişisi**için ad, e-posta ve telefon numarası sağlamanız gerekir. Bu bilgiler müşterilere gösterilmez, ancak Microsoft tarafından kullanılabilir. Ayrıca, bulut çözümü sağlayıcısı (CSP) iş ortakları için de kullanılabilir.
+Bir **destek kişisi** ve **mühendislik ilgili kişisi** için ad, e-posta ve telefon numarası sağlamanız gerekir. Bu bilgiler müşterilere gösterilmez, ancak Microsoft tarafından kullanılabilir. Ayrıca, bulut çözümü sağlayıcısı (CSP) iş ortakları için de kullanılabilir.
 
 - Destek kişisi (gerekli): genel destek soruları Için.
 - Mühendislik ilgili kişisi (gerekli): Teknik sorular ve sertifika sorunları Için.
@@ -180,7 +180,7 @@ Bir **destek kişisi** ve **mühendislik ilgili kişisi**için ad, e-posta ve te
 
 **Destek kişisi** bölümünde, ortağın küresel Azure 'Da, Azure Kamu 'da veya her ikisinde de kullanılabilir olup olmadığına bağlı olarak, teklif için iş ortaklarının destek bulabileceği **Destek Web sitesini** sağlayın.
 
-**CSP program kişisi** bölümünde, CSP iş ortaklarının teklifiniz için pazarlama malzemeleri bulabileceği bağlantıyı (**CSP program pazarlama malzemeleri**) sağlayın.
+**CSP program kişisi** bölümünde, CSP iş ortaklarının teklifiniz için pazarlama malzemeleri bulabileceği bağlantıyı ( **CSP program pazarlama malzemeleri** ) sağlayın.
 
 #### <a name="additional-marketplace-listing-resources"></a>Ek Market listeleme kaynakları
 
@@ -242,7 +242,7 @@ Bu, arama sonuçlarını Azure portal gösterir:
 Önizleme sekmesinde, canlı yayımlamadan önce teklifinizi doğrulamak için sınırlı bir **Önizleme hedef kitlesi** seçebilirsiniz.
 
 > [!IMPORTANT]
-> Teklifinizi **önizlemede**güncelleştirdikten sonra teklifinizi herkese açık bir şekilde yayımlamak Için **canlı git** ' i seçmeniz gerekir.
+> Teklifinizi **önizlemede** güncelleştirdikten sonra teklifinizi herkese açık bir şekilde yayımlamak Için **canlı git** ' i seçmeniz gerekir.
 
 Azure abonelik KIMLIĞI GUID 'Lerini kullanarak önizleme Dinleyicilerinizi, her biri için isteğe bağlı bir açıklama ile birlikte belirtin. Bu alanlardan hiçbiri müşteriler tarafından görülenebilir.
 
@@ -274,14 +274,14 @@ Plana genel bakışta sunulan eylemler planınızın geçerli durumuna bağlı o
 
 ### <a name="create-new-plan"></a>Yeni plan oluştur
 
-**Yeni plan oluştur**' u seçin. **Yeni plan** iletişim kutusu görüntülenir.
+**Yeni plan oluştur** ' u seçin. **Yeni plan** iletişim kutusu görüntülenir.
 
 **Plan kimliği** kutusunda, bu teklifteki her plan için benzersiz bir plan tanımlayıcısı oluşturun. Bu KIMLIK, ürünün Web adresindeki müşteriler tarafından görülebilir. Yalnızca küçük harf ve rakam, tire veya alt çizgi ve en fazla 50 karakter kullanın.
 
 > [!NOTE]
-> Plan KIMLIĞI, **Oluştur**' u seçtikten sonra değiştirilemez.
+> Plan KIMLIĞI, **Oluştur** ' u seçtikten sonra değiştirilemez.
 
-**Plan adı** kutusuna bu plan için bir ad girin. Müşteriler, teklifiniz dahilinde hangi planın seçeceğinize karar verirken bu adı görür. Bu teklifte her plan için benzersiz bir ad oluşturun. Örneğin, Windows Server **2016** ve **Windows Server 2019**planlarına **sahip bir** teklif adı kullanabilirsiniz.
+**Plan adı** kutusuna bu plan için bir ad girin. Müşteriler, teklifiniz dahilinde hangi planın seçeceğinize karar verirken bu adı görür. Bu teklifte her plan için benzersiz bir ad oluşturun. Örneğin, Windows Server **2016** ve **Windows Server 2019** planlarına **sahip bir** teklif adı kullanabilirsiniz.
 
 ### <a name="plan-setup"></a>Planı ayarla
 
@@ -289,7 +289,7 @@ Bu sekme, planın kullanılabildiği bulutu seçmenize olanak sağlar. Bu sekmed
 
 #### <a name="azure-regions"></a>Azure bölgeleri
 
-Azure Container teklifleri için tüm planlar otomatik olarak **Azure genel**'de kullanıma sunulmuştur.  Planınız, ticari Market kullanan tüm genel Azure bölgelerinde bulunan müşteriler tarafından kullanılabilir. Ayrıntılar için bkz. [coğrafi kullanılabilirlik ve para birimi desteği](../marketplace-geo-availability-currencies.md).
+Azure Container teklifleri için tüm planlar otomatik olarak **Azure genel** 'de kullanıma sunulmuştur.  Planınız, ticari Market kullanan tüm genel Azure bölgelerinde bulunan müşteriler tarafından kullanılabilir. Ayrıntılar için bkz. [coğrafi kullanılabilirlik ve para birimi desteği](../marketplace-geo-availability-currencies.md).
 
 Çözümünüzü burada görünmesini sağlamak için [Azure Kamu](../../azure-government/documentation-government-welcome.md) seçeneğini belirleyin. Bu, ABD Federal, eyalet ve yerel ya da üç devlet kurumlarının yanı sıra onlara hizmeti sunmaya uygun iş ortakları için denetimli erişime sahip bir kamu topluluk bulutuna sahiptir. Yayımcı olarak, bu bulut topluluğu için tüm uyumluluk denetimleri, güvenlik ölçüleri ve en iyi uygulamalardan siz sorumlusunuz. Azure Kamu fiziksel olarak yalıtılmış veri merkezleri ve ağlar (yalnızca ABD 'de bulunur) kullanır. Azure Kamu 'da [yayımlamadan](../../azure-government/documentation-government-manage-marketplace-partners.md) önce, sonuçlar farklı olabileceğinden çözümünüzü test edin ve onaylayın. Çözümünüzü oluşturmak ve test etmek için [Microsoft Azure Kamu deneme](https://azure.microsoft.com/global-infrastructure/government/request/)sürümünden bir deneme hesabı isteyin.
 
@@ -298,7 +298,7 @@ Azure Container teklifleri için tüm planlar otomatik olarak **Azure genel**'de
 
 #### <a name="azure-government-certifications"></a>Azure Kamu sertifikaları
 
-Bu seçenek, yalnızca Azure **kamu** , **Azure bölgeleri**altında seçilirse görülebilir.
+Bu seçenek, yalnızca Azure **kamu** , **Azure bölgeleri** altında seçilirse görülebilir.
 
 Azure Kamu Hizmetleri, belirli kamu düzenlemelerine ve gereksinimlerine tabi olan verileri işler. Örneğin, Fedrampa, NıST 800,171 (DIB), ıTAR, ıRS 1075, DoD L4 ve CJıS.
 
@@ -365,11 +365,11 @@ Teklif yayımlandıktan sonra, kapsayıcı görüntünüz belirli bir ortak kaps
 
  :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="Microsoft 'un ticari Market 'e yönelik standart sözleşmeyi kullanma onay kutusunu gösterir.":::
 
-**Azure Container Registry parolası** – Azure Container Registry ilişkili Yönetici Kullanıcı adı için parola belirtin ve kapsayıcı görüntünüzü içerir. Şirketinizin kayıt defterine erişiminin olduğundan emin olmak için Kullanıcı adı ve parola gereklidir. Azure Portal parolayı **Container Registry**  >  **erişim anahtarlarına** giderek veya [göster komutunu](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)kullanarak Azure CLI ile öğrenebilirsiniz.
+**Azure Container Registry parolası** – Azure Container Registry ilişkili Yönetici Kullanıcı adı için parola belirtin ve kapsayıcı görüntünüzü içerir. Şirketinizin kayıt defterine erişiminin olduğundan emin olmak için Kullanıcı adı ve parola gereklidir. Azure Portal parolayı **Container Registry**  >  **erişim anahtarlarına** giderek veya [göster komutunu](/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)kullanarak Azure CLI ile öğrenebilirsiniz.
 
 :::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="Microsoft 'un ticari Market 'e yönelik standart sözleşmeyi kullanma onay kutusunu gösterir.":::
 
-**Azure Container Registry Içinde Depo adı**. Yansımanıza sahip Azure Container Registry deposunun adını sağlayın. Görüntüyü kayıt defterine gönderdiğinizde deponun adını ekleyin. Deponun adını [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **depoları** sayfasına giderek bulabilirsiniz. Daha fazla bilgi için bkz. [Azure Portal kapsayıcı kayıt defteri depolarını Görüntüleme](../../container-registry/container-registry-repositories.md).
+**Azure Container Registry Içinde Depo adı** . Yansımanıza sahip Azure Container Registry deposunun adını sağlayın. Görüntüyü kayıt defterine gönderdiğinizde deponun adını ekleyin. Deponun adını [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **depoları** sayfasına giderek bulabilirsiniz. Daha fazla bilgi için bkz. [Azure Portal kapsayıcı kayıt defteri depolarını Görüntüleme](../../container-registry/container-registry-repositories.md).
 
 > [!NOTE]
 > Ad ayarlandıktan sonra değiştirilemez. Hesabınızdaki her teklif için benzersiz bir ad kullanın.
@@ -391,7 +391,7 @@ Tüm bildirim etiketleri (en son etiket hariç), X. Y **-** veya x. y. z ile ba�
 
 Teklifin tüm gerekli bölümlerini tamamladıktan sonra, bunu gözden geçirmek ve yayımlamak için gönderebilirsiniz.
 
-Portalın sağ üst köşesinde, **gözden geçir ve** **Yayımla**' yı seçin.
+Portalın sağ üst köşesinde, **gözden geçir ve** **Yayımla** ' yı seçin.
 
 İnceleme sayfasında şunları yapabilirsiniz:
 
@@ -401,11 +401,11 @@ Portalın sağ üst köşesinde, **gözden geçir ve** **Yayımla**' yı seçin.
   - **Tamamlanmış** – hatasız tüm gerekli verileri içerir. Teklifi gönderebilmeniz için teklifin tüm bölümlerinin tamamlanmış olması gerekir.
 - Teklifinizin doğru şekilde test edilmesini sağlamak için sertifika ekibine test yönergeleri sağlayın. Ayrıca, teklifinizi anlamak için yararlı olan tüm ek notları sağlayın.
 
-Teklifi yayımlamaya göndermek için **Yayımla**' yı seçin.
+Teklifi yayımlamaya göndermek için **Yayımla** ' yı seçin.
 
 Teklifin bir önizleme sürümünün gözden geçirilmesi ve onaylanmak üzere kullanılabilir olduğunu size bildirmek için size bir e-posta göndereceğiz.
 
-Teklifinizi herkese açık bir şekilde yayımlamak için Iş Ortağı Merkezi 'ne gidin ve **Git-Live**' ı seçin.
+Teklifinizi herkese açık bir şekilde yayımlamak için Iş Ortağı Merkezi 'ne gidin ve **Git-Live** ' ı seçin.
 
 ## <a name="next-step"></a>Sonraki adım
 

@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 01/27/2020
-ms.openlocfilehash: 70ea5ec9ee91fdba8023b9c6af1ce65b691a17fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 127fcdf68990b15098c24488e6ed879fbaa79116
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006899"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129686"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Öğretici: Azure Stream Analytics işlerden Azure Işlevleri çalıştırma 
 
@@ -20,7 +20,7 @@ ms.locfileid: "89006899"
 
 Stream Analytics, HTTP tetikleyicileri aracılığıyla İşlevleri çağırır. İşlevlerin çıkış bağdaştırıcısı, kullanıcıların Stream Analytics sorgularına göre olayların tetiklenmesini sağlayacak şekilde Stream Analytics’e İşlevleri bağlamasına olanak tanır. 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Stream Analytics işi oluşturma ve çalıştırma
@@ -44,7 +44,7 @@ Bir olay hub’ı oluşturmak, olay oluşturucu uygulamasını başlamak ve bir 
 
 1. [Önbellek oluşturma](../azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)bölümünde açıklanan adımları kullanarak Reda Için Azure önbelleğinde önbellek oluşturun.  
 
-2. Önbelleği oluşturduktan sonra **Ayarlar** altında **Erişim Anahtarları**’nı seçin. **Birincil bağlantı dizesi**’ni not edin.
+2. Önbelleği oluşturduktan sonra **Ayarlar** altında **Erişim Anahtarları** ’nı seçin. **Birincil bağlantı dizesi** ’ni not edin.
 
    ![Redsıs bağlantı dizesi için Azure önbelleğinin ekran görüntüsü](./media/stream-analytics-with-azure-functions/image2.png)
 
@@ -128,19 +128,19 @@ Bir olay hub’ı oluşturmak, olay oluşturucu uygulamasını başlamak ve bir 
 
    ```
  
-4. Azure portalına geri dönün. **Platform özellikleri** sekmesinden işlevinize göz atın. **Geliştirme Araçları** altında **App Service Düzenleyicisi**’ni seçin. 
+4. Azure portalına geri dönün. **Platform özellikleri** sekmesinden işlevinize göz atın. **Geliştirme Araçları** altında **App Service Düzenleyicisi** ’ni seçin. 
  
-   ![App Service Düzenleyicisi ekran görüntüsü](./media/stream-analytics-with-azure-functions/image3.png)
+   ![Ekran görüntüsü, App Service Düzenleyicisi seçili olan platform özellikleri sekmesini gösterir.](./media/stream-analytics-with-azure-functions/image3.png)
 
 5. App Service Düzenleyicisi’nde kök dizininize sağ tıklayın ve **project.json** dosyasını karşıya yükleyin. Karşıya yükleme başarılı olduktan sonra sayfayı yenileyin. Şu anda **project.lock.json** adlı otomatik olarak oluşturulmuş bir dosya görmeniz gerekir. Otomatik olarak oluşturulan dosya, project.json dosyasındaki .dll dosyalarının başvurularını içerir.  
 
-   ![App Service Düzenleyicisi ekran görüntüsü](./media/stream-analytics-with-azure-functions/image4.png)
+   ![Ekran görüntüsü, menüden karşıya yükleme dosyalarını gösterir.](./media/stream-analytics-with-azure-functions/image4.png)
 
 ## <a name="update-the-stream-analytics-job-with-the-function-as-output"></a>Çıktı olarak işlevle Stream Analytics işini güncelleştirme
 
 1. Stream Analytics işinizi Azure portalında açın.  
 
-2. İşlevinize göz atın ve **genel bakış**  >  **çıkışları**  >  **Ekle**' yi seçin. Yeni bir çıktı eklemek için havuz seçeneği olarak **Azure İşlevi**’ni seçin. Işlevler çıkış bağdaştırıcısı aşağıdaki özelliklere sahiptir:  
+2. İşlevinize göz atın ve **genel bakış**  >  **çıkışları**  >  **Ekle** ' yi seçin. Yeni bir çıktı eklemek için havuz seçeneği olarak **Azure İşlevi** ’ni seçin. Işlevler çıkış bağdaştırıcısı aşağıdaki özelliklere sahiptir:  
 
    |**Özellik adı**|**Açıklama**|
    |---|---|
@@ -152,9 +152,9 @@ Bir olay hub’ı oluşturmak, olay oluşturucu uygulamasını başlamak ve bir 
    |En Büyük Toplu İş Sayısı|İşleve gönderilen her toplu işteki en büyük olay sayısını belirtir. Varsayılan değer 100’dür. Bu özellik isteğe bağlıdır.|
    |Anahtar|Başka bir abonelikteki işlevi kullanmanıza olanak sağlar. İşlevinize erişmek için anahtar değerini sağlayın. Bu özellik isteğe bağlıdır.|
 
-3. Çıktı diğer adı için bir ad belirtin. Bu öğreticide, **saop1**olarak adlandırılmıştır, ancak dilediğiniz adı kullanabilirsiniz. Diğer ayrıntıları girin.
+3. Çıktı diğer adı için bir ad belirtin. Bu öğreticide, **saop1** olarak adlandırılmıştır, ancak dilediğiniz adı kullanabilirsiniz. Diğer ayrıntıları girin.
 
-4. Stream Analytics işinizi açın ve sorguyu aşağıdaki gibi güncelleştirin. Çıkış havuzunu **saop1**olarak belirtmediyseniz, sorguda değiştirmeyi unutmayın.  
+4. Stream Analytics işinizi açın ve sorguyu aşağıdaki gibi güncelleştirin. Çıkış havuzunu **saop1** olarak belirtmediyseniz, sorguda değiştirmeyi unutmayın.  
 
    ```sql
     SELECT
@@ -177,7 +177,7 @@ Bir olay hub’ı oluşturmak, olay oluşturucu uygulamasını başlamak ve bir 
 
 ## <a name="check-azure-cache-for-redis-for-results"></a>For Redfor sonuçları için Azure önbelleğini denetle
 
-1. Azure portal gidin ve Redsıs için Azure önbelleğinizi bulun. **Konsol**’u seçin.  
+1. Azure portal gidin ve Redsıs için Azure önbelleğinizi bulun. **Konsol** ’u seçin.  
 
 2. Verilerinizi Redsıs için Azure önbelleğinde olduğunu doğrulamak üzere [redsıs komutları Için Azure önbelleğini](https://redis.io/commands) kullanın. (Komut Get {Key} biçimini alır.) Örneğin:
 
@@ -198,7 +198,7 @@ Olayları Azure Işlevlerine gönderirken bir hata oluşursa, en fazla işlem St
 
 Azure portalında En Büyük Toplu İş Boyutu/En Büyük Toplu İş Sayısı değerini boş (varsayılan) olarak sıfırlamaya çalıştığınızda değer kaydedildikten sonra daha önce girilen değerle değiştirilir. Bu durumda bu alanların varsayılan değerlerini el ile girin.
 
-Azure işlevlerinizin [http yönlendirme](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp) kullanımı şu anda Stream Analytics tarafından desteklenmiyor.
+Azure işlevlerinizin [http yönlendirme](/sandbox/functions-recipes/routes?tabs=csharp) kullanımı şu anda Stream Analytics tarafından desteklenmiyor.
 
 Bir sanal ağda barındırılan Azure Işlevlerine bağlanma desteği etkin değil.
 
@@ -206,8 +206,8 @@ Bir sanal ağda barındırılan Azure Işlevlerine bağlanma desteği etkin değ
 
 Artık gerekli olmadığında kaynak grubunu, akış işini ve tüm ilgili kaynakları silin. İşin silinmesi, iş tarafından kullanılan akış birimlerinin faturalanmasını önler. İşi gelecekte kullanmayı planlıyorsanız, durdurup daha sonra gerektiğinde yeniden başlatabilirsiniz. Bu işi kullanmaya devam etmeyecekseniz aşağıdaki adımları kullanarak bu hızlı başlangıçla oluşturulan tüm kaynakları silin:
 
-1. Azure portalında sol taraftaki menüden, **Kaynak grupları**'na ve ardından oluşturduğunuz kaynağın adına tıklayın.  
-2. Kaynak grubu sayfanızda, **Sil**'e tıklayın, metin kutusuna silinecek kaynağın adını yazın ve ardından **Sil**'e tıklayın.
+1. Azure portalında sol taraftaki menüden, **Kaynak grupları** 'na ve ardından oluşturduğunuz kaynağın adına tıklayın.  
+2. Kaynak grubu sayfanızda, **Sil** 'e tıklayın, metin kutusuna silinecek kaynağın adını yazın ve ardından **Sil** 'e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

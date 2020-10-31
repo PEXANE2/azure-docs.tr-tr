@@ -7,12 +7,12 @@ ms.author: msangapu
 keywords: Azure App Service, Web uygulaması, Linux, Windows, Docker, kapsayıcı
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: f3c687d5c8b4e4c6d0b7f4ff912137066fe10bbb
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b5682275a9e5f3993de715ab5f23a708d5df47ae
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743723"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130128"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Özel bir kapsayıcı kullanarak Azure App Service özel yazılım geçirme
 
@@ -22,7 +22,7 @@ ms.locfileid: "92743723"
 
 ![Bir Windows kapsayıcısında çalışan Web uygulamasını gösterir.](media/tutorial-custom-container/app-running.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -318,6 +318,10 @@ ENTRYPOINT ["init.sh"]
 * Son satır, `ENTRYPOINT ["init.sh"]` `init.sh` SSH hizmetini ve Python sunucusunu başlatmak için çağırır.
 
 ## <a name="build-and-test-the-image-locally"></a>Görüntüyü yerel olarak derleyin ve test edin
+
+> [!NOTE]
+> Docker Hub [, IP başına anonim giriş sayısı ve ücretsiz Kullanıcı başına kimliği doğrulanmış giriş sayısı üzerinde kotalar içerir (bkz. **veri aktarımı** )](https://www.docker.com/pricing). Docker Hub 'dan çekmenize sınırlı olduğunu fark ederseniz, `docker login` oturum açmadıysanız deneyin.
+> 
 
 1. Görüntüyü derlemek için aşağıdaki komutu çalıştırın:
 

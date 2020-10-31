@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/02/2019
-ms.openlocfilehash: 9792641da4b3aebad047179e2c02dad757027801
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90d8c70ac0a34470e8121d2234fd6b898cfed1ab
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045272"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130604"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>Azure Stream Analytics ile bölge sınırlama ve jeo uzamsal toplama senaryoları
 
@@ -125,4 +125,4 @@ Aşağıdaki görüntüde, Power BI panoya olan sorgunun çıktısı gösterilme
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Jeo-uzamsal işlevlere Stream Analytics giriş](stream-analytics-geospatial-functions.md)
-* [Jeo-uzamsal Işlevler (Azure Stream Analytics)](https://docs.microsoft.com/stream-analytics-query/geospatial-functions)
+* [Jeo-uzamsal Işlevler (Azure Stream Analytics)](/stream-analytics-query/geospatial-functions)

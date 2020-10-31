@@ -7,18 +7,18 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 4310bd94edd5ebe14eab40b6d19e2bacbdd1b03c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d5ddb508740cf5fec670d258926419512e3d549
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906228"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129839"
 ---
 # <a name="azure-sql-database-output-from-azure-stream-analytics"></a>Azure Stream Analytics Azure SQL veritabanı çıkışı
 
 [Azure SQL veritabanını](https://azure.microsoft.com/services/sql-database/) , doğası veya ilişkisel bir veritabanında barındırılmakta olan içeriğe bağlı uygulamalar için bir çıktı olarak kullanabilirsiniz. Azure Stream Analytics işleri SQL veritabanında var olan bir tabloya yazar. Tablo şemasının, iş çıkışındaki alanlarla ve türleriyle tam olarak eşleşmesi gerekir. Ayrıca, SQL Database output seçeneği aracılığıyla [Azure SYNAPSE Analytics](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) 'i çıkış olarak belirtebilirsiniz. Yazma verimini geliştirme yolları hakkında bilgi edinmek için bkz. [Azure SQL veritabanı ile çıkış makalesi Stream Analytics](stream-analytics-sql-output-perf.md) .
 
-[Azure SQL yönetilen örneğini](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) çıkış olarak da kullanabilirsiniz. [SQL yönetilen örneği 'nde genel uç noktasını yapılandırmanız](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) ve ardından Azure Stream Analytics aşağıdaki ayarları el ile yapılandırmanız gerekir. SQL Server çalıştıran bir veritabanı ile birlikte çalışan Azure sanal makinesi, aşağıdaki ayarları el ile yapılandırarak de desteklenir.
+[Azure SQL yönetilen örneğini](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) çıkış olarak da kullanabilirsiniz. [SQL yönetilen örneği 'nde genel uç noktasını yapılandırmanız](../azure-sql/managed-instance/public-endpoint-configure.md) ve ardından Azure Stream Analytics aşağıdaki ayarları el ile yapılandırmanız gerekir. SQL Server çalıştıran bir veritabanı ile birlikte çalışan Azure sanal makinesi, aşağıdaki ayarları el ile yapılandırarak de desteklenir.
 
 ## <a name="output-configuration"></a>Çıkış yapılandırması
 
@@ -37,9 +37,9 @@ Aşağıdaki tabloda, bir SQL veritabanı çıkışı oluşturmak için özellik
 
 Azure Stream Analytics 'den Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) giden çıktıyı etkinleştiren iki bağdaştırıcı vardır: SQL veritabanı ve Azure SYNAPSE. Aşağıdaki koşullardan herhangi biri doğruysa SQL veritabanı bağdaştırıcısı yerine Azure SYNAPSE Analytics bağdaştırıcısını seçmenizi öneririz:
 
-* **Aktarım hızı**: beklenen aktarım hızı, şimdi veya gelecekte 10 MB 'tan fazlaysa, daha iyi performans Için Azure SYNAPSE output seçeneğini kullanın.
+* **Aktarım hızı** : beklenen aktarım hızı, şimdi veya gelecekte 10 MB 'tan fazlaysa, daha iyi performans Için Azure SYNAPSE output seçeneğini kullanın.
 
-* **Giriş bölümleri**: sekiz veya daha fazla giriş bölümü varsa, daha iyi genişleme Için Azure SYNAPSE output seçeneğini kullanın.
+* **Giriş bölümleri** : sekiz veya daha fazla giriş bölümü varsa, daha iyi genişleme Için Azure SYNAPSE output seçeneğini kullanın.
 
 ## <a name="partitioning"></a>Bölümleme
 
@@ -47,7 +47,7 @@ BÖLÜMLEMENIN etkinleştirilmesi gerekir ve sorgudaki bölüm BY yan tümcesine
 
 ## <a name="output-batch-size"></a>Çıkış toplu iş boyutu
 
-En büyük **yığın sayısını**kullanarak en fazla ileti boyutunu yapılandırabilirsiniz. Varsayılan en büyük değer 10.000 ' dir ve tek toplu ekleme başına en az 100 satır olur. Daha fazla bilgi için bkz. [Azure SQL sınırları](../sql-database/sql-database-resource-limits.md). Her toplu iş ilk olarak en fazla toplu iş sayısı ile toplu olarak eklenir. Batch, SQL 'deki yeniden denenebilir hatalara göre yarı (en az toplu işlem sayısına kadar) yarıya bölünür.
+En büyük **yığın sayısını** kullanarak en fazla ileti boyutunu yapılandırabilirsiniz. Varsayılan en büyük değer 10.000 ' dir ve tek toplu ekleme başına en az 100 satır olur. Daha fazla bilgi için bkz. [Azure SQL sınırları](../azure-sql/database/resource-limits-logical-server.md). Her toplu iş ilk olarak en fazla toplu iş sayısı ile toplu olarak eklenir. Batch, SQL 'deki yeniden denenebilir hatalara göre yarı (en az toplu işlem sayısına kadar) yarıya bölünür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

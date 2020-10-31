@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 35b1b07bd4d9eef555be26e1c24356b7c352bf38
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 39caa60196eca1afb7df1b0acbecddb557796fc3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100703"
+ms.locfileid: "93130349"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Değişiklik İzleme ve envantere genel bakış
 
@@ -93,7 +93,7 @@ Hem Windows hem de Linux 'ta dosyalardaki değişiklikleri izlemek için, Deği�
 
 ## <a name="tracking-file-content-changes"></a>Dosya içeriği değişikliklerini izleme
 
-Değişiklik İzleme ve envanter, bir Windows veya Linux dosyasının içeriğini görüntülemenizi sağlar. Bir dosyada yapılan her değişiklik için Değişiklik İzleme ve stok, dosyanın içeriğini bir [Azure depolama hesabına](/azure/storage/common/storage-account-create)depolar. Bir dosyayı izlerken, bir değişiklikten önce veya sonra içeriğini görüntüleyebilirsiniz. Dosya içeriği satır içi veya yan yana görüntülenebilir.
+Değişiklik İzleme ve envanter, bir Windows veya Linux dosyasının içeriğini görüntülemenizi sağlar. Bir dosyada yapılan her değişiklik için Değişiklik İzleme ve stok, dosyanın içeriğini bir [Azure depolama hesabına](../../storage/common/storage-account-create.md)depolar. Bir dosyayı izlerken, bir değişiklikten önce veya sonra içeriğini görüntüleyebilirsiniz. Dosya içeriği satır içi veya yan yana görüntülenebilir.
 
 ![Dosyadaki değişiklikleri görüntüleme](./media/overview/view-file-changes.png)
 
@@ -158,7 +158,7 @@ Aşağıdaki tabloda, Değişiklik İzleme ve envanter için makine başına izl
 |Hizmetler|250|
 |Daemon 'ları|250|
 
-Değişiklik İzleme ve envanter kullanan bir makineye yönelik ortalama Log Analytics veri kullanımı ortamınıza bağlı olarak ayda yaklaşık 40 MB 'dir. Log Analytics çalışma alanının kullanım ve tahmini maliyetler özelliği sayesinde, kullanım grafiğinde Değişiklik İzleme ve envanterle alınan verileri görüntüleyebilirsiniz. Veri kullanımınızı değerlendirmek ve faturanızı nasıl etkileyeceğini öğrenmek için bu veri görünümünü kullanın. Bkz. [kullanımınızı anlayın ve maliyetleri tahmin edin](/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs).
+Değişiklik İzleme ve envanter kullanan bir makineye yönelik ortalama Log Analytics veri kullanımı ortamınıza bağlı olarak ayda yaklaşık 40 MB 'dir. Log Analytics çalışma alanının kullanım ve tahmini maliyetler özelliği sayesinde, kullanım grafiğinde Değişiklik İzleme ve envanterle alınan verileri görüntüleyebilirsiniz. Veri kullanımınızı değerlendirmek ve faturanızı nasıl etkileyeceğini öğrenmek için bu veri görünümünü kullanın. Bkz. [kullanımınızı anlayın ve maliyetleri tahmin edin](../../azure-monitor/platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs).
 
 ### <a name="microsoft-service-data"></a>Microsoft hizmet verileri
 

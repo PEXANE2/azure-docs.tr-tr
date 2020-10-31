@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 10/10/2018
+ms.date: 10/30/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61f82e94f506cc403106912e24532f9d5263a60d
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: cd91d1d2c9f5a4a413f9ea64cfdef649823d0f09
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896475"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131029"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Şirket içi uygulamalarınıza Azure AD erişimi için B2B kullanıcıları verme
 
@@ -77,7 +77,7 @@ MıM 2016 hizmet paketi 1 ' i ve MıM Yönetim Aracısı 'nı şirket içi dizin
 
 Şirket içi Active Directory Konuk kullanıcı nesnelerini oluşturmak için başlangıç noktası olarak kullanabileceğiniz bir PowerShell örnek betiği bulunur.
 
-Betiği ve Benioku dosyasını [Indirme merkezinden](https://www.microsoft.com/download/details.aspx?id=51495)indirebilirsiniz. **Azure AD B2B kullanıcılarını on-prem.zipdosyayı çekmek Için betiği ve Benioku** dosyasını seçin.
+[Microsoft Identity Manager 2016 ve Forefront Identity Manager 2010 R2 için](https://www.microsoft.com/download/details.aspx?id=51495)komut dosyasını ve Benioku dosyasını bağlayıcılardan indirebilirsiniz. İndirme paketinde, **Azure AD B2B kullanıcıları on-prem.zipdosyasını çekmek Için betiği ve Benioku** dosyasını seçin.
 
 Betiği kullanmadan önce, ilişkili Readme dosyasındaki önkoşulları ve önemli konuları gözden geçirdiğinizden emin olun. Ayrıca, betiğin yalnızca örnek olarak kullanılabileceğini de anlayın. Geliştirme takımınızın veya iş ortağının, çalıştırmadan önce betiği özelleştirmesi ve incelemesi gerekir.
 

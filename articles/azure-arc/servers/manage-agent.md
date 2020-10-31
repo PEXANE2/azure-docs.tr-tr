@@ -1,18 +1,18 @@
 ---
 title: Azure Arc etkin sunucular Aracısı 'nı yönetme
 description: Bu makalede, Azure Arc etkin sunucular bağlı makine aracısının yaşam döngüsü boyunca genellikle gerçekleştirdiğiniz farklı yönetim görevleri açıklanır.
-ms.date: 10/21/2020
+ms.date: 10/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 184b0425b956232b4485047cafb00a7ced21c7dd
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 63db1177b193cad66208964ec377fab0779f23ba
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371435"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130978"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Bağlı makine aracısını yönetme ve sürdürme
 
-Windows veya Linux için, Azure Arc etkinleştirilmiş sunuculara bağlı makine aracısının ilk dağıtımından sonra, aracıyı yeniden yapılandırmanız, yükseltmeniz veya yaşam döngüsünün kullanımdan kaldırılması aşamasına ulaştıysa bilgisayardan kaldırmanız gerekebilir. Bu rutin bakım görevlerini el ile veya Otomasyon aracılığıyla kolayca yönetebilirsiniz, bu da hem işlemsel hata hem de giderleri azaltır.
+Windows veya Linux için, Azure Arc etkinleştirilmiş sunuculara bağlı makine aracısının ilk dağıtımından sonra aracıyı yeniden yapılandırmanız, yükseltmeniz veya bilgisayardan kaldırmanız gerekebilir. Bu rutin bakım görevlerini el ile veya Otomasyon aracılığıyla kolayca yönetebilirsiniz, bu da hem işlemsel hata hem de giderleri azaltır.
 
 ## <a name="before-uninstalling-agent"></a>Aracıyı kaldırmadan önce
 
@@ -38,7 +38,11 @@ Artık Azure Arc etkin sunucularıyla yönetmek istemediğiniz sunucular veya ma
 
 ## <a name="upgrading-agent"></a>Aracı yükseltiliyor
 
-Windows ve Linux için Azure bağlı makine Aracısı, gereksinimlerinize bağlı olarak, en son sürüme el ile veya otomatik olarak yükseltilebilir. Aşağıdaki tabloda, aracı yükseltmesini gerçekleştirmek için desteklenen yöntemler açıklanmıştır.
+Azure bağlı makine Aracısı, hata düzeltmelerini, kararlılık geliştirmelerini ve yeni işlevselliği karşılamak için düzenli olarak güncelleştirilir. [Azure Advisor](../../advisor/advisor-overview.md) , makine aracısının en son sürümünü kullanmayan kaynakları tanımlar ve en son sürüme yükseltmenizi önerir. **Genel bakış** sayfasında bir başlık sunarak veya Azure Portal aracılığıyla Advisor 'a eriştiğinizde, yay etkin sunucuyu seçtiğinizde bunu size bildirir.
+
+Windows ve Linux için Azure bağlı makine Aracısı, gereksinimlerinize bağlı olarak, en son sürüme el ile veya otomatik olarak yükseltilebilir.
+
+Aşağıdaki tabloda, aracı yükseltmesini gerçekleştirmek için desteklenen yöntemler açıklanmıştır.
 
 | İşletim sistemi | Yükseltme yöntemi |
 |------------------|----------------|
@@ -163,7 +167,7 @@ Azcmagent Aracı (Azcmagent.exe), yükleme sırasında Azure Arc etkin sunucular
 Etkileşimli olarak oturum açtığınızda bir **bağlantı** ve **bağlantı kesmeyi** el ile gerçekleştirebilir veya birden çok aracı eklemek için kullandığınız hizmet sorumlusunu veya bir Microsoft Identity Platform [erişim belirteci](../../active-directory/develop/access-tokens.md)kullanarak otomatik hale getirebilirsiniz. Makineyi Azure Arc etkin sunucularla kaydetmek için bir hizmet sorumlusu kullanmıyorsanız, hizmet sorumlusu oluşturmak için aşağıdaki [makaleye](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) bakın.
 
 >[!NOTE]
->**Azcmagent**çalıştırmak için Linux makinelerde *kök* erişim izinlerine sahip olmanız gerekir.
+>**Azcmagent** çalıştırmak için Linux makinelerde *kök* erişim izinlerine sahip olmanız gerekir.
 
 ### <a name="connect"></a>Bağlan
 
@@ -215,8 +219,8 @@ Aşağıdaki yöntemlerin her ikisi de aracıyı kaldırır, ancak makinede *C:\
 1. Windows aracısını makineden kaldırmak için aşağıdakileri yapın:
 
     a. Yönetici izinlerine sahip bir hesapla bilgisayarda oturum açın.  
-    b. **Denetim Masası**'nda **Programlar ve Özellikler**' i seçin.  
-    c. **Programlar ve Özellikler**' de **Azure bağlı makine Aracısı**' nı seçin, **Kaldır**' ı seçin ve **Evet**' i seçin.  
+    b. **Denetim Masası** 'nda **Programlar ve Özellikler** ' i seçin.  
+    c. **Programlar ve Özellikler** ' de **Azure bağlı makine Aracısı** ' nı seçin, **Kaldır** ' ı seçin ve **Evet** ' i seçin.  
 
     >[!NOTE]
     > Aracı Kurulum sihirbazını **AzureConnectedMachineAgent.msi** yükleyicisi paketine çift tıklayarak da çalıştırabilirsiniz.
@@ -277,7 +281,7 @@ Makinenin Azure 'da destekleyici hizmetler ile yönetilmesini durdurmayı planl�
 
 1. [Azure Portal](https://aka.ms/hybridmachineportal)giderek Azure Arc etkin sunucularını açın.
 
-2. Listeden makineyi seçin, üç nokta (**...**) simgesini seçin ve **Sil**' i seçin.
+2. Listeden makineyi seçin, üç nokta ( **...** ) simgesini seçin ve **Sil** ' i seçin.
 
 ## <a name="update-or-remove-proxy-settings"></a>Proxy ayarlarını Güncelleştir veya Kaldır
 

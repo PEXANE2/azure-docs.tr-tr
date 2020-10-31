@@ -7,12 +7,12 @@ ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 07/01/2020
-ms.openlocfilehash: 2808f0d3b99257d52b2d400424f256f980005863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bb5dccfc99a693ec89ed08ac31b77eb16442f73
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88607192"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129975"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market 'teki özel teklifler
 
@@ -30,18 +30,18 @@ Kurumsal müşteriler, bulut çözümlerini bulmak, denemek ve satın almak içi
 
 Özel teklifler artık sanal makine, Azure uygulaması (çözüm şablonları veya yönetilen uygulamalar olarak uygulanır) ve SaaS uygulamaları tarafından sunulmaktadır.
 
-<!--- Like public offers, private offers can be created and managed via the [Cloud Partner Portal](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md). Customers can be granted or revoked access to private offers in minutes.
+<!--- Like public offers, private offers can be created and managed via the [Cloud Partner Portal](). Customers can be granted or revoked access to private offers in minutes.
 --->
 
 ## <a name="creating-private-offers-using-plans"></a>Planlar kullanarak özel teklifler oluşturma
 
-*Planlarla yeni veya mevcut teklifler*için, yayımcılar yeni planlar (eski adıyla SKU 'lar) oluşturarak ve bunları özel olarak işaretleyerek kolayca yeni ve özel Çeşitlemeler oluşturabilir. Her teklifin en fazla 45 özel planı olabilir.
+*Planlarla yeni veya mevcut teklifler* için, yayımcılar yeni planlar (eski adıyla SKU 'lar) oluşturarak ve bunları özel olarak işaretleyerek kolayca yeni ve özel Çeşitlemeler oluşturabilir. Her teklifin en fazla 45 özel planı olabilir.
 
-<!--- [Private SKUs](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) --->
+<!--- [Private SKUs]() --->
 
 Özel planlar bir teklifin bileşenleridir ve hedeflenen müşteriler tarafından yalnızca görünür ve satın alınabilir alınırken. Özel planlar, temel görüntüleri yeniden kullanabilir ve/veya zaten ortak bir plan için yayımlanmış meta verileri sunabilir. Bu seçenek, yayımcıların aynı temel görüntünün birden çok sürümünü yayınlamak ve meta verileri sunmak zorunda kalmadan ortak bir teklifin birden çok özel çeşitlemelerini oluşturmalarına olanak tanır. Yalnızca sanal makine ve Azure uygulaması için özel bir plan ortak bir plana sahip bir temel görüntüyü paylaşıyorsa, teklifin temel görüntüsündeki tüm değişiklikler, bu temel görüntüyü kullanarak tüm genel ve özel planlara yayılır.
 
-*Yalnızca özel planlar içeren yeni teklifler*için yayımcılar, tekliflerini başka bir teklif olarak oluşturabilir ve sonra planları özel olarak işaretleyebilir. Yalnızca özel planları olan teklifler, Microsoft ticari marketi veya teklifle ilişkilendirilmemiş müşteriler tarafından [Azure Portal](https://azure.microsoft.com/features/azure-portal/) bulunabilir veya erişilebilir olmayacaktır.
+*Yalnızca özel planlar içeren yeni teklifler* için yayımcılar, tekliflerini başka bir teklif olarak oluşturabilir ve sonra planları özel olarak işaretleyebilir. Yalnızca özel planları olan teklifler, Microsoft ticari marketi veya teklifle ilişkilendirilmemiş müşteriler tarafından [Azure Portal](https://azure.microsoft.com/features/azure-portal/) bulunabilir veya erişilebilir olmayacaktır.
 
 >[!NOTE]
 >Yalnızca özel planları içeren bir teklif, genel Azure Market veya AppSource 'ta görünmez.
@@ -69,5 +69,5 @@ Müşteriler, Azure portal oturum açtıktan sonra özel tekliflerinden erişmek
 <!---
 ## Next steps
 
-To start using private offers, follow the steps in the [Private SKUs and Plans](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) guide.
+To start using private offers, follow the steps in the [Private SKUs and Plans]() guide.
 --->

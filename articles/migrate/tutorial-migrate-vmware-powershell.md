@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 10/1/2020
 ms.author: rahugup
-ms.openlocfilehash: eed10f13b9495ab2cccfd9c57ae14ccc5d8e4a63
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 40f8a63481adc2e5641337c41dee1cf55d1f39ae
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043553"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130315"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless---powershell"></a>VMware VM 'lerini Azure 'a geçirme (aracısız)-PowerShell
 
@@ -114,10 +114,10 @@ $DiscoveredServers = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.
 
 [Azure geçişi: sunucu geçişi](migrate-services-overview.md#azure-migrate-server-migration-tool) , VM 'leri geçirmek için birden çok Azure kaynağı kullanır. Sunucu geçişi, proje ile aynı kaynak grubunda aşağıdaki kaynakları sağlar.
 
-- **Service Bus**: sunucu geçişi, yüklemeye çoğaltma düzenleme iletileri göndermek için Service Bus 'ı kullanır.
-- **Ağ geçidi depolama hesabı**: sunucu geçişi, çoğaltılan VM 'ler hakkında durum bilgilerini depolamak için ağ geçidi depolama hesabını kullanır.
-- **Günlük depolama hesabı**: Azure geçişi gereci, VM 'ler için çoğaltma günlüklerini bir günlük depolama hesabına yükler. Azure geçişi, çoğaltma bilgilerini çoğaltma tarafından yönetilen disklere uygular.
-- **Anahtar Kasası**: Azure geçişi gereci, hizmet veri yolu için bağlantı dizelerini yönetmek üzere anahtar kasasını ve Çoğaltmada kullanılan depolama hesapları için erişim anahtarlarını kullanır.
+- **Service Bus** : sunucu geçişi, yüklemeye çoğaltma düzenleme iletileri göndermek için Service Bus 'ı kullanır.
+- **Ağ geçidi depolama hesabı** : sunucu geçişi, çoğaltılan VM 'ler hakkında durum bilgilerini depolamak için ağ geçidi depolama hesabını kullanır.
+- **Günlük depolama hesabı** : Azure geçişi gereci, VM 'ler için çoğaltma günlüklerini bir günlük depolama hesabına yükler. Azure geçişi, çoğaltma bilgilerini çoğaltma tarafından yönetilen disklere uygular.
+- **Anahtar Kasası** : Azure geçişi gereci, hizmet veri yolu için bağlantı dizelerini yönetmek üzere anahtar kasasını ve Çoğaltmada kullanılan depolama hesapları için erişim anahtarlarını kullanır.
 
 Azure geçişi projesindeki ilk VM 'yi çoğaltmadan önce, çoğaltma altyapısını sağlamak için aşağıdaki betiği çalıştırın. Bu betik, VMware VM 'lerinizi geçirmeye başlayabilmeniz için, belirtilen kaynakları sağlar ve yapılandırır.
 
@@ -146,7 +146,7 @@ Bulma işlemini tamamladıktan ve çoğaltma altyapısını başlattıktan sonra
 - **Hedef sanal ağ ve alt ağ** -Azure sanal ağının kimliğini ve `TargetNetworkId` sırasıyla ve parametrelerini kullanarak VM 'nin geçirilmesi gereken alt ağın adını belirtin `TargetSubnetName` . 
 - **Hedef VM adı** -parametresini kullanarak oluşturulacak Azure VM 'nin adını belirtin `TargetVMName` .
 - **Hedef VM boyutu** -parametre kullanarak çoğaltma VM 'si Için kullanılacak Azure VM boyutunu belirtin `TargetVMSize` . Örneğin, bir VM 'yi Azure 'da D2_v2 VM 'ye geçirmek için değeri `TargetVMSize` "Standard_D2_v2" olarak belirtin.  
-- **Lisans** -etkin yazılım güvencesi veya Windows Server abonelikleri kapsamındaki Windows Server makineleriniz için Azure hibrit avantajı kullanmak için, parametre için değeri `LicenseType` "ahub" olarak belirtin. Aksi takdirde, parametre için değeri `LicenseType` "NoLicenseType" olarak belirtin.
+- **Lisans** -etkin yazılım güvencesi veya Windows Server abonelikleri kapsamındaki Windows Server makineleriniz için Azure hibrit avantajı kullanmak için, parametre için değeri `LicenseType` "windowsserver" olarak belirtin. Aksi takdirde, parametre için değeri `LicenseType` "NoLicenseType" olarak belirtin.
 - İşletim sistemi **diski** -işletim sistemi önyükleme yükleyicisine ve yükleyiciye sahip diskin benzersiz tanımlayıcısını belirtin. Kullanılacak disk KIMLIĞI, cmdlet 'i kullanılarak alınan diskin benzersiz tanımlayıcı (UUID) özelliğidir `Get-AzMigrateServer` .
 - **Disk türü** -parametre için değeri `DiskType` aşağıdaki şekilde belirtin.
     - Premium yönetilen diskleri kullanmak için, "Premium_LRS" parametresini parametre değeri olarak belirtin `DiskType` . 
@@ -156,6 +156,7 @@ Bulma işlemini tamamladıktan ve çoğaltma altyapısını başlattıktan sonra
     - Bölge içindeki belirli bir kullanılabilirlik bölgesine geçirilen makineyi sabitlemek için kullanılabilirlik alanı. Kullanılabilirlik Alanları arasında çok düğümlü bir uygulama katmanı oluşturan sunucuları dağıtmak için bu seçeneği kullanın. Bu seçenek yalnızca geçiş için seçilen hedef bölge Kullanılabilirlik Alanları destekliyorsa kullanılabilir. Kullanılabilirlik alanlarını kullanmak için, parametre için kullanılabilirlik alanı değerini belirtin `TargetAvailabilityZone` .
     - Geçirilen makinenin bir kullanılabilirlik kümesine yerleştirileceği kullanılabilirlik kümesi. Seçilen hedef kaynak grubu, bu seçeneği kullanmak için bir veya daha fazla kullanılabilirlik kümesine sahip olmalıdır. Kullanılabilirlik kümesini kullanmak için, parametre için kullanılabilirlik kümesi KIMLIĞINI belirtin `TargetAvailabilitySet` . 
 
+### <a name="replicate-vms-with-all-disks"></a>VM 'Leri tüm disklerle çoğaltma
 Bu öğreticide, bulunan VM 'nin tüm disklerini çoğaltacak ve Azure 'da VM için yeni bir ad belirteceğiz. Bulunan sunucunun ilk diskini işletim sistemi diski olarak belirtir ve tüm diskleri Standart HDD olarak geçirin. İşletim Sistemi diski, işletim sistemi önyükleyiciye ve yükleyiciye sahip disktir.
 
 ```azurepowershell
@@ -178,6 +179,7 @@ while (($MigrateJob.State -eq "InProgress") -or ($MigrateJob.State -eq "NotStart
 Write-Output $MigrateJob.State
 ```
 
+### <a name="replicate-vms-with-select-disks"></a>VM 'Leri Select disklerle çoğaltma
 Ayrıca, cmdlet 'ini kullanarak keşfedilen VM disklerini seçmeli `New-AzMigrateDiskMapping` olarak çoğaltabilir ve `DiskToInclude` cmdlet 'teki parametreye bir girdi olarak bunu sağlayabilirsiniz `New-AzMigrateServerReplication` . Ayrıca, `New-AzMigrateDiskMapping` çoğaltılacak her bir disk için farklı hedef disk türlerini belirtmek için cmdlet 'ini de kullanabilirsiniz. 
 
 Cmdlet 'in aşağıdaki parametreleri için değerleri belirtin `New-AzMigrateDiskMapping` .

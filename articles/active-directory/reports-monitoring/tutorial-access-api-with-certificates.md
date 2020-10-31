@@ -17,12 +17,12 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: bc763a99c945925b80171738f4076e6305d92df9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3443cb73e85fc69349e7293597a5f4a723959d3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89229468"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130060"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Öğretici: sertifikalarla Azure Active Directory Raporlama API 'sini kullanarak veri edinme
 
@@ -34,7 +34,7 @@ Bu öğreticide, raporlama için MS Graph API erişmek üzere bir test sertifika
 
 1. Oturum açma verilerine erişmek için Premium (P1/P2) lisansına sahip bir Azure Active Directory kiracınız olduğundan emin olun. Azure Active Directory sürümünüzü yükseltmek için bkz. [Azure Active Directory Premium kullanmaya](../fundamentals/active-directory-get-started-premium.md) başlama. Yükseltmeden önce herhangi bir etkinlik veriniz yoksa, Premium bir lisansa yükselttikten sonra verilerin raporlarda gösterilmesi birkaç gün sürecek şekilde değişir. 
 
-2. Kiracı için **genel yönetici**, **Güvenlik Yöneticisi**, **güvenlik okuyucusu** veya **rapor okuyucu** rolünde bir kullanıcı hesabı oluşturun veya bu hesaba geçiş yapın. 
+2. Kiracı için **genel yönetici** , **Güvenlik Yöneticisi** , **güvenlik okuyucusu** veya **rapor okuyucu** rolünde bir kullanıcı hesabı oluşturun veya bu hesaba geçiş yapın. 
 
 3. [Azure Active Directory Raporlama API 'sine erişmek için önkoşulları](howto-configure-prerequisites-for-reporting-api.md)doldurun. 
 
@@ -45,7 +45,7 @@ Bu öğreticide, raporlama için MS Graph API erişmek üzere bir test sertifika
     - ADAL kullanarak kullanıcı, uygulama anahtarları ve sertifikalardan erişim belirteçleri
     - Disk belleğine alınmış Graph API işleme sonuçları
 
-6. Modülü ilk kez kullanıyorsanız **Install-MSCloudIdUtilsModule**komutunu çalıştırın, aksi takdirde **Import-Module** PowerShell komutunu kullanarak içeri aktarın. Oturumunuz Şu ekrana benzer görünmelidir: ![ Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. Modülü ilk kez kullanıyorsanız **Install-MSCloudIdUtilsModule** komutunu çalıştırın, aksi takdirde **Import-Module** PowerShell komutunu kullanarak içeri aktarın. Oturumunuz Şu ekrana benzer görünmelidir: ![ Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
   
 7. Bir test sertifikası oluşturmak için **New-SelfSignedCertificate** PowerShell komutunu kullanın.
 
@@ -62,11 +62,11 @@ Bu öğreticide, raporlama için MS Graph API erişmek üzere bir test sertifika
 
 ## <a name="get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Sertifikalarla Azure Active Directory raporlama API’sini kullanarak veri alma
 
-1. [Azure Portal](https://portal.azure.com)gidin, **Azure Active Directory**' i seçin ve **uygulama kayıtları** ' yı seçin ve listeden uygulamanızı seçin. 
+1. [Azure Portal](https://portal.azure.com)gidin, **Azure Active Directory** ' i seçin ve **uygulama kayıtları** ' yı seçin ve listeden uygulamanızı seçin. 
 
-2. Uygulama kaydı dikey penceresinde **Yönet** bölümünde **Sertifikalar & gizlilikler** ' ı seçin ve **sertifikayı karşıya yükle**' yi seçin.
+2. Uygulama kaydı dikey penceresinde **Yönet** bölümünde **Sertifikalar & gizlilikler** ' ı seçin ve **sertifikayı karşıya yükle** ' yi seçin.
 
-3. Önceki adımdan sertifika dosyasını seçin ve **Ekle**' yi seçin. 
+3. Önceki adımdan sertifika dosyasını seçin ve **Ekle** ' yi seçin. 
 
 4. Uygulama KIMLIĞINI ve uygulamanıza yeni kaydettiğiniz sertifikanın parmak izini göz önünde bulabilirsiniz. Portı bulmak için, portaldaki uygulama sayfanızda, **Yönet** bölümünde **Sertifikalar & gizli** dizileri ' ne gidin. Parmak izi, **Sertifikalar** listesinde olacaktır.
 
@@ -85,15 +85,17 @@ Bu öğreticide, raporlama için MS Graph API erişmek üzere bir test sertifika
    ``` 
 6. Şimdi bu sertifikayı kullanarak MS Graph API için bir erişim belirteci alabilirsiniz. MSCloudIdUtils PowerShell modülünden **Get-Mscloudıdmsgraphaccesstokenfromcert** cmdlet 'Ini kullanarak uygulama kimliğini ve önceki adımdan edindiğiniz parmak izini geçirerek kullanın. 
 
-   ![Azure portal](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
+   ![Ekran görüntüsünde, bir erişim belirteci oluşturan komutuyla bir PowerShell penceresi gösterilir.](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
 
 7. Graph API sorgulamak için PowerShell betiğinizdeki erişim belirtecini kullanın. Signins ve directoryAudits uç noktasını numaralandırmak için MSCloudIDUtils öğesinden **Invoke-Mscloudıdmsgraphquery** cmdlet 'ini kullanın. Bu cmdlet çok sayfalı sonuçları işler ve bu sonuçları PowerShell işlem hattına gönderir.
 
 8. Denetim günlüklerini almak için directoryAudits uç noktasını sorgulayın. 
-   ![Azure portalda](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
+
+   ![Ekran görüntüsünde, bu yordamın önceki kısımlarında yer aldığı erişim belirtecini kullanarak directoryAudits uç noktasını sorgulamak için komutuyla bir PowerShell penceresi gösterilir.](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
 
 9. Oturum açma günlüklerini almak için signins uç noktasını sorgulayın.
-    ![Azure portalda](./media/tutorial-access-api-with-certificates/query-signins.png)
+
+    ![Ekran görüntüsünde, bu yordamın önceki kısımlarında yer aldığı erişim belirtecini kullanarak signins uç noktasını sorgulamak için komutuyla bir PowerShell penceresi gösterilir.](./media/tutorial-access-api-with-certificates/query-signins.png)
 
 10. Artık bu verileri bir CSV 'ye vermeyi ve bir SıEM sistemine kaydetmeyi seçebilirsiniz. Ayrıca, betiğinizi zamanlanmış bir göreve kaydırarak, uygulama anahtarlarını kaynak kodda depolamak zorunda kalmadan kiracınızdan Azure AD verilerini düzenli olarak alabilirsiniz. 
 

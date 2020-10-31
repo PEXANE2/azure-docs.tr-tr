@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 3b74f3ecdc048b6468906fb46a848d27cd1f23b9
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 7008c305525c7564e57fd225e961b462bf6939f2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275416"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130842"
 ---
 # <a name="support-for-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market desteği
 
@@ -32,7 +32,7 @@ Ekleme ve Başlarken sorunları için Microsoft [Marketplace Publisher desteğiy
 
 | Destek kanalı | Açıklama |  
 |:--- |:--- |  
-| MSDN forumları: [Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/products/azure) 'Nda bulunan Market | Microsoft Developer Network Forumu. |  
+| MSDN forumları: [Microsoft Q&soru sayfası](/answers/products/azure) 'Nda bulunan Market | Microsoft Developer Network Forumu. |  
 | Stack Overflow: Azure [StackOverflow.com/Questions/Tagged/Azure](https://stackoverflow.com/questions/tagged/azure) adresinde bulunur | Azure Market ile ilgili her şey hakkında çözüm almak ve soru sormak için Stack Overflow ortam.<ul> <li>Stack Overflow: [StackOverflow.com/Questions/Tagged/Azure-Marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace) adresinde bulunan Azure Marketi</li> <li>Stack Overflow: [StackOverflow.com/Questions/Tagged/Azure-Resource-Manager](https://stackoverflow.com/questions/tagged/azure-resource-manager) konumunda bulunan Azure Resource Manager</li> <li>Stack Overflow: Azure 'daki sanal makineler [StackOverflow.com/Questions/Tagged/Azure-Virtual-Machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine) adresinde bulunur</li> <li>Stack Overflow: Azure 'daki kapsayıcılar [StackOverflow.com/search?q=Azure+Container](https://stackoverflow.com/search?q=azure+container) adresinde bulunur</li> </ul> |
 
 ## <a name="marketing-resources"></a>Pazarlama Kaynakları  
