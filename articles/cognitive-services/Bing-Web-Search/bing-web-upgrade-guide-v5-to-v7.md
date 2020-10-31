@@ -11,14 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 7ee8d05a542c6906d4ebe70f7e2a461752c6e3f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95e80907220a58243844b80d81dc187f8dc4c8bc
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85609461"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078705"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Bing Web Araması API'si v5 'ten v7 'ye yükseltme
+
+> [!WARNING]
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
+> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
 
 Bu yükseltme Kılavuzu, sürüm 5 ve Bing Web Araması API'si sürüm 7 arasındaki değişiklikleri tanımlar. Uygulamanızın 7 sürümünü kullanmak için güncelleştirmeniz gereken parçalarını belirlemenize yardımcı olması için bu kılavuzu kullanın.
 
@@ -26,7 +31,7 @@ Bu yükseltme Kılavuzu, sürüm 5 ve Bing Web Araması API'si sürüm 7 arasın
 
 ### <a name="endpoints"></a>Uç Noktalar
 
-- Uç noktanın sürüm numarası, V5 'ten v7 'e değişti. Örneğin, https: \/ \/ api.Cognitive.Microsoft.com/Bing/**v 7.0**/Search.
+- Uç noktanın sürüm numarası, V5 'ten v7 'e değişti. Örneğin, https: \/ \/ api.Cognitive.Microsoft.com/Bing/ **v 7.0** /Search.
 
 ### <a name="error-response-objects-and-error-codes"></a>Hata yanıtı nesneleri ve hata kodları
 
@@ -73,7 +78,7 @@ Engellendi|Invalidrequest. engellendi
 
 ## <a name="non-breaking-changes"></a>Kırılamayan değişiklikler  
 
-### <a name="headers"></a>Üst bilgiler
+### <a name="headers"></a>Üst Bilgiler
 
 - İsteğe bağlı [pragma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) istek üst bilgisi eklendi. Varsayılan olarak, Bing önbelleğe alınmış içeriği (varsa) döndürür. Bing'in önbelleğe alınmış içeriği döndürmesini önlemek için, Pragma üst bilgisini no-cache olarak ayarlayın (örneğin, Pragma: no-cache).
 
@@ -81,7 +86,7 @@ Engellendi|Invalidrequest. engellendi
 
 - [AnswerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) sorgu parametresi eklendi. Yanıtın içermesini istediğiniz yanıt sayısını belirtmek için bu parametreyi kullanın. Yanıtlar, sıralamaya göre seçilir. Örneğin, bu parametreyi üç (3) olarak ayarlarsanız, yanıt, en çok üç dereceli yanıtı içerir.  
 
-- [Yükseltme](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) sorgu parametresi eklendi. Bu parametreyi `answerCount` , derecelendirmesinden bağımsız olarak bir veya daha fazla yanıt türünü açıkça içerecek şekilde kullanın. Örneğin, Videoları ve görüntüleri yanıta yükseltmek için, *videoları videolar, görüntüler*olarak ayarlamanız gerekir. Yükseltmek istediğiniz yanıtların listesi sınıra göre sayılmaz `answerCount` . Örneğin, `answerCount` 2 ise ve `promote` *videolar, görüntüler*olarak ayarlanırsa, yanıt Web sayfaları, Haberler, videolar ve görüntüler içerebilir.
+- [Yükseltme](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) sorgu parametresi eklendi. Bu parametreyi `answerCount` , derecelendirmesinden bağımsız olarak bir veya daha fazla yanıt türünü açıkça içerecek şekilde kullanın. Örneğin, Videoları ve görüntüleri yanıta yükseltmek için, *videoları videolar, görüntüler* olarak ayarlamanız gerekir. Yükseltmek istediğiniz yanıtların listesi sınıra göre sayılmaz `answerCount` . Örneğin, `answerCount` 2 ise ve `promote` *videolar, görüntüler* olarak ayarlanırsa, yanıt Web sayfaları, Haberler, videolar ve görüntüler içerebilir.
 
 ### <a name="object-changes"></a>Nesne değişiklikleri
 

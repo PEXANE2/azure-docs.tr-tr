@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: e6b299b5befec93f21e9e8476d0cc74710612d66
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6c6282f487d6a20de4654118df94c8bfac8a441d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91323813"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075934"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Hızlı başlangıç: Java hizmeti SDK 'sını kullanarak cihaz sağlama hizmeti IoT Hub TPM cihazı kaydetme
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıçta, örnek bir Java uygulaması yardımıyla Java hizmeti
 - [IoT Hub cihaz sağlama hizmetini Azure Portal Ile ayarlama](./quick-setup-auto-provision.md)işlemi tamamlandı.
 - [TPM cihazından şifreleme anahtarlarının okuma](quick-create-simulated-device.md#simulatetpm)işleminin tamamlanması.
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Java SE Development Kit 8](https://aka.ms/azure-jdks). Bu hızlı başlangıçta [Java hizmeti SDK 'sı](https://azure.github.io/azure-iot-sdk-java/service/) yüklenir. Hem Windows hem de Linux üzerinde çalışmaktadır. Bu hızlı başlangıçta Windows kullanılır.
+- [Java SE Development Kit 8](https://aka.ms/azure-jdks). Bu hızlı başlangıçta [Java hizmeti SDK 'sı](https://azure.github.io/azure-iot-sdk-java/master/service/) yüklenir. Hem Windows hem de Linux üzerinde çalışmaktadır. Bu hızlı başlangıçta Windows kullanılır.
 - [Maven 3](https://maven.apache.org/download.cgi).
 - [Git](https://git-scm.com/download/).
 
@@ -62,17 +62,17 @@ Bu hızlı başlangıçta, örnek bir Java uygulaması yardımıyla Java hizmeti
 
 Bu bölümde örnek koda TPM cihazınızın sağlama ayrıntılarını nasıl ekleyeceğiniz gösterilir. 
 
-1. Bir komut istemi açın. [Java hizmeti SDK 'sını](https://azure.github.io/azure-iot-sdk-java/service/)kullanarak cihaz kayıt kodu örneği için GitHub deposunu kopyalayın:
+1. Bir komut istemi açın. [Java hizmeti SDK 'sını](https://azure.github.io/azure-iot-sdk-java/master/service/)kullanarak cihaz kayıt kodu örneği için GitHub deposunu kopyalayın:
     
     ```cmd\sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
     ```
 
-2. İndirilen kaynak kodunda örnek klasörüne gidin: **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-sample_**. **_/src/main/java/samples/com/microsoft/azure/sdk/iot/ServiceEnrollmentSample.java_** adlı dosyayı istediğiniz düzenleyicide açıp aşağıdaki ayrıntıları ekleyin:
+2. İndirilen kaynak kodunda örnek klasörüne gidin: **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-sample_** . **_/src/main/java/samples/com/microsoft/azure/sdk/iot/ServiceEnrollmentSample.java_** adlı dosyayı istediğiniz düzenleyicide açıp aşağıdaki ayrıntıları ekleyin:
 
    1. Portaldan sağlama hizmetinize ait `[Provisioning Connection String]` bilgisini aşağıdaki şekilde ekleyin:
        1. [Azure portalında](https://portal.azure.com) sağlama hizmetinize gidin. 
-       2. **Paylaşılan erişim ilkeleri**'ni açıp *EnrollmentWrite* iznine sahip bir ilke seçin.
+       2. **Paylaşılan erişim ilkeleri** 'ni açıp *EnrollmentWrite* iznine sahip bir ilke seçin.
        3. **Birincil anahtar bağlantı dizesini** kopyalayın. 
 
            ![Sağlama bağlantısı dizesini portaldan alma](./media/quick-enroll-device-tpm-java/provisioning-string.png)  
@@ -94,7 +94,7 @@ Bu bölümde örnek koda TPM cihazınızın sağlama ayrıntılarını nasıl ek
 
    3. İsteğe bağlı olarak örnek kod aracılığıyla sağlama hizmetinizi de yapılandırabilirsiniz:
       - Örneğe bu yapılandırmayı eklemek için aşağıdaki adımları izleyin:
-        1. [Azure portalında](https://portal.azure.com) sağlama hizmetinizle bağlantılı IoT hub sayfasına gidin. Hub'ın **Özet** sayfasını açıp **Ana bilgisayar adı**'nı kopyalayın. Bu **Ana bilgisayar adı** değerini *IOTHUB_HOST_NAME* parametresine atayın.
+        1. [Azure portalında](https://portal.azure.com) sağlama hizmetinizle bağlantılı IoT hub sayfasına gidin. Hub'ın **Özet** sayfasını açıp **Ana bilgisayar adı** 'nı kopyalayın. Bu **Ana bilgisayar adı** değerini *IOTHUB_HOST_NAME* parametresine atayın.
             ```Java
             private static final String IOTHUB_HOST_NAME = "[Host name].azure-devices.net";
             ```
@@ -130,7 +130,7 @@ Bu bölümde örnek koda TPM cihazınızın sağlama ayrıntılarını nasıl ek
     mvn install -DskipTests
     ```
 
-   Bu komut, Maven paketini [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) makinenize indirir. Bu paket, örnek kodun derlenmesi gereken [Java hizmeti SDK 'sının](https://azure.github.io/azure-iot-sdk-java/service/)ikili dosyalarını içerir. 
+   Bu komut, Maven paketini [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) makinenize indirir. Bu paket, örnek kodun derlenmesi gereken [Java hizmeti SDK 'sının](https://azure.github.io/azure-iot-sdk-java/master/service/)ikili dosyalarını içerir. 
 
 3. Komut penceresinde aşağıdaki komutları çalıştırarak örneği çalıştırın:
 
@@ -141,7 +141,7 @@ Bu bölümde örnek koda TPM cihazınızın sağlama ayrıntılarını nasıl ek
 
 4. Kaydın başarılı olup olmadığını görmek için çıktı penceresini izleyin. 
 
-5. Azure portalında sağlama hizmetinize gidin. Kayıtları **Yönet**' i seçin ve **bireysel** kayıtlar sekmesini seçin. Sanal TPM cihazınızın *kayıt kimliğinin* artık listelendiğini unutmayın. 
+5. Azure portalında sağlama hizmetinize gidin. Kayıtları **Yönet** ' i seçin ve **bireysel** kayıtlar sekmesini seçin. Sanal TPM cihazınızın *kayıt kimliğinin* artık listelendiğini unutmayın. 
 
     ![Portalda TPM kaydının başarılı olup olmadığını doğrulama](./media/quick-enroll-device-tpm-java/verify-tpm-enrollment.png)  
 
@@ -150,7 +150,7 @@ Java hizmet örneğini keşfetmeyi planlıyorsanız, bu hızlı başlangıçta o
 
 1. Makinenizdeki Java örnek çıktı penceresini kapatın.
 1. TPM cihazınızı benzetmek için oluşturmuş olabileceğiniz TPM simülatörü penceresini kapatın.
-1. Azure portal cihaz sağlama hizmetine gidin, kayıtları **Yönet**' i seçin ve sonra **bireysel** kayıtlar sekmesini seçin. Bu hızlı başlangıcı kullanarak *oluşturduğunuz kayıt girişinin* yanındaki onay kutusunu işaretleyin ve bölmenin üst kısmındaki **Sil** düğmesine basın.
+1. Azure portal cihaz sağlama hizmetine gidin, kayıtları **Yönet** ' i seçin ve sonra **bireysel** kayıtlar sekmesini seçin. Bu hızlı başlangıcı kullanarak *oluşturduğunuz kayıt girişinin* yanındaki onay kutusunu işaretleyin ve bölmenin üst kısmındaki **Sil** düğmesine basın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu hızlı başlangıçta, cihaz sağlama hizmetinize sanal bir TPM cihazı kaydettiniz. Cihaz sağlama hakkında ayrıntılı bilgi edinmek için Azure portalında Cihaz Sağlama Hizmeti ayarları öğreticisine geçin. 

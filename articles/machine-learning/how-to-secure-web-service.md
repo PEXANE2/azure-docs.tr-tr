@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 03/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 52344b665b00329c80fb651657fbbd19d5ffd7a4
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: bb6229f602e4171cc88af6a452da69a02d2f7ad6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743091"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078195"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS kullanarak Azure Machine Learning aracılığıyla web hizmetinin güvenliğini sağlama
 
@@ -28,7 +28,7 @@ Web hizmetlerine erişimi kısıtlamak ve istemcilerin gönderebileceği veriler
 > [!TIP]
 > Azure Machine Learning SDK, güvenli iletişimlerle ilgili özellikler için "SSL" terimini kullanır. Bu, Web hizmetinizin *TLS* kullanmayacağınız anlamına gelmez. SSL yalnızca daha yaygın olarak tanınan bir terimdir.
 >
-> Özellikle, Azure Machine Learning aracılığıyla dağıtılan Web Hizmetleri, AKS için ACI ve TLS sürüm 1,2 için yalnızca TLS sürüm 1,1 ' i destekler.
+> Özellikle, Azure Machine Learning aracılığıyla dağıtılan Web Hizmetleri AKS ve ACI için TLS sürüm 1,2 ' ü destekler. ACı dağıtımları için eski TLS sürümse, en son TLS sürümünü almak için yeniden dağıtım yapmanız önerilir.
 
 TLS ve SSL her ikisi de şifreleme ve kimlik doğrulamaya yardımcı olan *dijital sertifikaları* kullanır. Dijital sertifikaların nasıl çalıştığı hakkında daha fazla bilgi için Vikipedi topic [ortak anahtar altyapısına](https://en.wikipedia.org/wiki/Public_key_infrastructure)bakın.
 

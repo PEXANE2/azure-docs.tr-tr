@@ -9,14 +9,15 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/15/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0cb5091b9b7d36c70454a65213113d34b29d76c2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 510ff971c5d5924f2266dc93035f42e545906761
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92478958"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93076248"
 ---
 # <a name="quickstart-build-a-net-web-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Hızlı başlangıç: Azure Cosmos DB MongoDB için API 'sini kullanarak .NET Web uygulaması oluşturma 
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -131,7 +132,7 @@ Bir görev oluşturun ve koleksiyona ekleyin
 
 Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp uygulamaya ekleyin.
 
-1. [Azure Portal](https://portal.azure.com/), Cosmos hesabınızda, sol gezinti **bağlantı dizesi**' ne tıklayın ve ardından **okuma-yazma anahtarları**' na tıklayın. Sonraki adımda ekranın sağ tarafındaki kopyalama düğmelerini kullanarak Kullanıcı Adı, Parola ve Ana Bilgisayar değerlerini Dal.cs dosyasına kopyalayacaksınız.
+1. [Azure Portal](https://portal.azure.com/), Cosmos hesabınızda, sol gezinti **bağlantı dizesi** ' ne tıklayın ve ardından **okuma-yazma anahtarları** ' na tıklayın. Sonraki adımda ekranın sağ tarafındaki kopyalama düğmelerini kullanarak Kullanıcı Adı, Parola ve Ana Bilgisayar değerlerini Dal.cs dosyasına kopyalayacaksınız.
 
 2. **DAL** dizinindeki **Dal.cs** dosyasını açın. 
 
@@ -145,7 +146,7 @@ Artık uygulamanızı Cosmos DB ile iletişim kurması için gereken tüm bilgil
     
 ## <a name="run-the-web-app"></a>Web uygulamasını çalıştırma
 
-1. Visual Studio'nun **Çözüm Gezgini** bölümünde projeye sağ tıklayın ve ardından **NuGet Paketlerini Yönet**'e tıklayın. 
+1. Visual Studio'nun **Çözüm Gezgini** bölümünde projeye sağ tıklayın ve ardından **NuGet Paketlerini Yönet** 'e tıklayın. 
 
 2. NuGet **Gözat** kutusuna *MongoDB* yazın.
 

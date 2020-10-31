@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bebd32d2773ca86638de221d305079bb262e3e5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3ac799203cade3a907acbe28dee3a8023891db2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631435"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077651"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Koşullu Erişimde What If aracını kullanarak sorunları giderme
 
-[Koşullu erişim](./overview.md) , yetkili kullanıcıların bulut uygulamalarınıza nasıl erişebileceğini denetlemenize olanak tanıyan Azure Active Directory (Azure AD) özelliğidir. Ortamınızdaki koşullu erişim ilkelerinden ne bekleneceğinizi nasıl anlarsınız? Bu soruyu yanıtlamak için **koşullu erişim What If aracı**' nı kullanabilirsiniz.
+[Koşullu erişim](./overview.md) , yetkili kullanıcıların bulut uygulamalarınıza nasıl erişebileceğini denetlemenize olanak tanıyan Azure Active Directory (Azure AD) özelliğidir. Ortamınızdaki koşullu erişim ilkelerinden ne bekleneceğinizi nasıl anlarsınız? Bu soruyu yanıtlamak için **koşullu erişim What If aracı** ' nı kullanabilirsiniz.
 
 Bu makalede, koşullu erişim ilkelerinizi test etmek için bu aracı nasıl kullanabileceğiniz açıklanır.
 
@@ -32,7 +32,7 @@ Bu makalede, koşullu erişim ilkelerinizi test etmek için bu aracı nasıl kul
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-**Koşullu erişim What If aracında**, önce benzetimini yapmak istediğiniz oturum açma senaryosunun ayarlarını yapılandırmanız gerekir. Bu ayarlar şunlardır:
+**Koşullu erişim What If aracında** , önce benzetimini yapmak istediğiniz oturum açma senaryosunun ayarlarını yapılandırmanız gerekir. Bu ayarlar şunlardır:
 
 - Test etmek istediğiniz Kullanıcı 
 - Kullanıcının erişmeyi deneyeceği bulut uygulamaları
@@ -46,9 +46,9 @@ Değerlendirme tamamlandığında, araç etkilenen ilkelerin bir raporunu oluşt
 
 **What If** aracını, Azure Portal **[koşullu erişim ilkeleri](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)** sayfasında bulabilirsiniz.
 
-Aracı başlatmak için, ilke listesinin üstündeki araç çubuğunda **What If**' ye tıklayın.
+Aracı başlatmak için, ilke listesinin üstündeki araç çubuğunda **What If** ' ye tıklayın.
 
-![What If](./media/what-if-tool/01.png)
+:::image type="content" source="./media/what-if-tool/01.png" alt-text="Azure portal koşullu erişim Ilkeleri sayfasının ekran görüntüsü. Araç çubuğunda, ne tür öğesi vurgulandığında." border="false":::
 
 Bir değerlendirmeyi çalıştırmadan önce, ayarları yapılandırmanız gerekir.
 
@@ -56,7 +56,7 @@ Bir değerlendirmeyi çalıştırmadan önce, ayarları yapılandırmanız gerek
 
 Bu bölüm, benzetim çalıştırmasının ayarları hakkında bilgi sağlar.
 
-![What If](./media/what-if-tool/02.png)
+:::image type="content" source="./media/what-if-tool/02.png" alt-text="Azure portal koşullu erişim Ilkeleri sayfasının ekran görüntüsü. Araç çubuğunda, ne tür öğesi vurgulandığında." border="false":::
 
 ### <a name="user"></a>Kullanıcı
 
@@ -64,9 +64,9 @@ Yalnızca bir kullanıcı seçebilirsiniz. Bu, tek gerekli alandır.
 
 ### <a name="cloud-apps"></a>Bulut uygulamaları
 
-Bu ayar için varsayılan değer **tüm bulut**uygulamalardır. Varsayılan ayar, ortamınızdaki kullanılabilir tüm ilkelerin değerlendirmesini gerçekleştirir. Belirli bulut uygulamalarını etkileyen ilkeler için kapsamı daraltabilirsiniz.
+Bu ayar için varsayılan değer **tüm bulut** uygulamalardır. Varsayılan ayar, ortamınızdaki kullanılabilir tüm ilkelerin değerlendirmesini gerçekleştirir. Belirli bulut uygulamalarını etkileyen ilkeler için kapsamı daraltabilirsiniz.
 
-### <a name="ip-address"></a>IP adresi
+### <a name="ip-address"></a>IP Adresi
 
 IP adresi, [konum koşulunu](location-condition.md)taklit eden tek bir IPv4 adresidir. Adres, Kullanıcı tarafından oturum açmak için kullanılan cihazın Internet 'e yönelik adresini temsil eder. Bir cihazın IP adresini, örneğin, [IP adresim](https://whatismyipaddress.com)'e giderek doğrulayabilirsiniz.    
 
@@ -88,9 +88,9 @@ Bu ayar, [oturum açma risk koşulunu](concept-conditional-access-conditions.md#
 
 ## <a name="evaluation"></a>Değerlendirme 
 
-**What If**' ye tıklayarak bir değerlendirme başlatabilirsiniz. Değerlendirme sonucu size şunları içeren bir rapor sağlar: 
+**What If** ' ye tıklayarak bir değerlendirme başlatabilirsiniz. Değerlendirme sonucu size şunları içeren bir rapor sağlar: 
 
-![What If](./media/what-if-tool/03.png)
+:::image type="content" source="./media/what-if-tool/03.png" alt-text="Azure portal koşullu erişim Ilkeleri sayfasının ekran görüntüsü. Araç çubuğunda, ne tür öğesi vurgulandığında." border="false":::
 
 - Ortamınızda klasik ilkelerin var olup olmadığı göstergesi
 - Kullanıcılarınız için uygulanan ilkeler

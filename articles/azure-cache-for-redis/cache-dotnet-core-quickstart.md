@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: .NET Core uygulamalarıyla Redsıs için Azure önbelleğini kullanma'
+title: "Hızlı başlangıç: .NET Core 'da Redsıs için Azure önbelleğini kullanma"
 description: Bu hızlı başlangıçta, .NET Core uygulamalarınızda Redsıs için Azure önbelleğine nasıl erişebileceğinizi öğrenin
 author: yegu-ms
 ms.author: yegu
@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 12466f64daa699925e4e184536b2d50c5fb89847
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 945d4a3d2bba84bf8f5973fd8dec092c66794c11
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547733"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077090"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Hızlı başlangıç: .NET Core uygulaması ile Redsıs için Azure önbelleğini kullanma
+# <a name="quickstart-use-azure-cache-for-redis-in-net-core"></a>Hızlı başlangıç: .NET Core 'da Redsıs için Azure önbelleğini kullanma
 
 Bu hızlı başlangıçta, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, ayrılmış bir önbelleğe erişim sağlamak için Redsıs için Azure önbelleğini bir .NET Core uygulamasına dahil edersiniz. .NET Core konsol uygulamasında C# kodu ile [StackExchange. Redo](https://github.com/StackExchange/StackExchange.Redis) istemcisini özellikle kullanırsınız.
 

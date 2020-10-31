@@ -6,18 +6,21 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: d435a33ba45daf2c8a6a42e51c3e0d58f3abc23b
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 7f177a7801e18bcdb2c2d6ef737f0c790cf6b1d1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057765"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075798"
 ---
-# <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>App Service'teki bir kapsayıcıdan ağ paylaşımı olarak Azure Depolama'ya erişme
+# <a name="access-azure-storage-preview-as-a-network-share-from-a-container-in-app-service"></a>Azure depolamaya (Önizleme) App Service bir kapsayıcıdan ağ paylaşma olarak erişin
 
 ::: zone pivot="container-windows"
 
 Bu kılavuzda, Azure depolama dosyalarının App Service bir Windows kapsayıcısına ağ paylaşımının nasıl ekleneceği gösterilmektedir. Yalnızca [Azure dosya paylaşımları](../storage/files/storage-how-to-use-files-cli.md) ve [Premium dosya paylaşımları](../storage/files/storage-how-to-create-premium-fileshare.md) desteklenir. Avantajlar güvenli içerik, içerik taşınabilirlik, birden çok uygulamaya erişim ve birden çok aktarım yöntemi içerir.
+
+> [!NOTE]
+>App Service 'de Azure depolama, **Önizleme** aşamasındadır ve **Üretim senaryolarında** **desteklenmez** .
 
 ::: zone-end
 
@@ -25,9 +28,12 @@ Bu kılavuzda, Azure depolama dosyalarının App Service bir Windows kapsayıcı
 
 Bu kılavuzda, Azure depolama 'nın bir Linux kapsayıcısına App Service nasıl ekleneceği gösterilmektedir. Avantajlar, güvenli içerik, içerik taşınabilirlik, kalıcı depolama, birden çok uygulamaya erişim ve birden fazla aktarım yöntemi içerir.
 
+> [!NOTE]
+>App Service 'de Azure depolama, Linux ve Kapsayıcılar için Web App App Service için **Önizleme** aşamasındadır. **Üretim senaryolarında** bu **desteklenmez** .
+
 ::: zone-end
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ::: zone pivot="container-windows"
 
@@ -53,7 +59,6 @@ Bu kılavuzda, Azure depolama 'nın bir Linux kapsayıcısına App Service nası
 
 ::: zone pivot="container-windows"
 
-- App Service 'de Azure depolama, **Önizleme** aşamasındadır ve **Üretim senaryolarında** **desteklenmez** .
 - App Service 'de Azure depolama Şu anda kendi kod senaryolarınızı getir (kapsayıcısız Windows uygulamaları) için **desteklenmiyor** .
 - App Service ' deki Azure depolama, altyapı sınırlamaları nedeniyle **depolama güvenlik duvarı** yapılandırmasını kullanmayı **desteklemez** .
 - App Service ile Azure depolama, uygulama başına **en fazla beş** bağlama noktası belirtmenizi sağlar.
@@ -63,7 +68,6 @@ Bu kılavuzda, Azure depolama 'nın bir Linux kapsayıcısına App Service nası
 
 ::: zone pivot="container-linux"
 
-- App Service 'de Azure depolama, Linux ve Kapsayıcılar için Web App App Service için **Önizleme** aşamasındadır. **Üretim senaryolarında**bu **desteklenmez** .
 - App Service Azure Storage, **Azure dosya kapsayıcıları** (okuma/yazma) ve **Azure Blob kapsayıcıları** (salt okuma) bağlamayı destekler
 - App Service Azure depolama, uygulama başına **en fazla beş** bağlama noktası belirtmenizi sağlar.
 - Bir uygulamaya bağlı Azure Storage App Service FTP/FTPs uç noktaları aracılığıyla erişilebilir değildir. [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)kullanın.

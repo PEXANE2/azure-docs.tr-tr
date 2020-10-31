@@ -12,14 +12,19 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8bfd7b6e5c9a2a7e3d9ed750e544036f3874271f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9131dbff9b732ecfc7f6edb62b42959abcc17da8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88933231"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078688"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>C 'de konsol uygulama arama istemcisi oluşturma #
+
+> [!WARNING]
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
+> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
 
 Bu öğreticide, kullanıcıların Bing Web Araması API'si sorgulamasını ve derecelendirilen sonuçları görüntülemesini sağlayan basit bir .NET Core konsol uygulamasının nasıl oluşturulacağı gösterilmektedir.
 
@@ -33,7 +38,7 @@ Bu öğreticide nasıl yapılacağı gösterilmektedir:
 Öğreticiyle birlikte izlemek için şunlar gerekir:
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
-* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir Bing arama kaynağı oluşturun Bing arama bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
+* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir Bing arama kaynağı oluşturun Bing arama bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
 * [Visual STUDIO IDE](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-a-new-console-app-project"></a>Yeni bir konsol uygulaması projesi oluştur
@@ -42,28 +47,28 @@ Visual Studio’da `Ctrl`+`Shift`+`N` ile yeni bir proje oluşturun.
 
 **Yeni proje** iletişim kutusunda, **Visual C# > Windows Klasik Masaüstü > konsol uygulaması (.NET Framework)** seçeneğine tıklayın.
 
-Uygulamayı **Myconsolesearchapp**olarak adlandırın ve ardından **Tamam**' a tıklayın.
+Uygulamayı **Myconsolesearchapp** olarak adlandırın ve ardından **Tamam** ' a tıklayın.
 
 ## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>JSON.net NuGet paketini projeye ekleyin
 
 JSON.net, API tarafından döndürülen JSON yanıtları ile çalışmanıza olanak sağlar. NuGet paketini projenize ekleyin:
 
 - **Çözüm Gezgini** projeye sağ tıklayıp **NuGet Paketlerini Yönet...** seçeneğini belirleyin.
-- **Araştır** sekmesinde için arama yapın `Newtonsoft.Json` . En son sürümü seçin ve ardından **Install**' a tıklayın.
+- **Araştır** sekmesinde için arama yapın `Newtonsoft.Json` . En son sürümü seçin ve ardından **Install** ' a tıklayın.
 - **Değişiklikleri gözden geçir** penceresinde **Tamam** düğmesine tıklayın.
-- **NuGet: MyConsoleSearchApp**başlıklı Visual Studio sekmesini kapatın.
+- **NuGet: MyConsoleSearchApp** başlıklı Visual Studio sekmesini kapatın.
 
 ## <a name="add-a-reference-to-systemweb"></a>System. Web 'e başvuru ekleme
 
 Bu öğretici derlemeyi temel alır `System.Web` . Projenize bu derlemeye bir başvuru ekleyin:
 
-- **Çözüm Gezgini**, **Başvurular** ' a sağ tıklayın ve **Başvuru Ekle...** öğesini seçin.
-- **Derlemeler > Framework**' ü seçin, ardından aşağı kaydırın ve **System. Web** ' i denetleyin
+- **Çözüm Gezgini** , **Başvurular** ' a sağ tıklayın ve **Başvuru Ekle...** öğesini seçin.
+- **Derlemeler > Framework** ' ü seçin, ardından aşağı kaydırın ve **System. Web** ' i denetleyin
 - **Tamam 'ı** seçin
 
 ## <a name="add-some-necessary-using-statements"></a>Bazı gerekli using deyimlerini ekleyin
 
-Bu öğreticideki kod, üç ek using deyimi gerektirir. Bu deyimleri, `using` **program.cs**'in en üstündeki mevcut deyimlerinin altına ekleyin:
+Bu öğreticideki kod, üç ek using deyimi gerektirir. Bu deyimleri, `using` **program.cs** 'in en üstündeki mevcut deyimlerinin altına ekleyin:
 
 ```csharp
 using System.Web;
@@ -72,7 +77,7 @@ using System.Net.Http;
 
 ## <a name="ask-the-user-for-a-query"></a>Kullanıcıdan bir sorgu isteyin
 
-**Çözüm Gezgini**' de, **program.cs**' yi açın. Yöntemi güncelleştirin `Main()` :
+**Çözüm Gezgini** ' de, **program.cs** ' yi açın. Yöntemi güncelleştirin `Main()` :
 
 ```csharp
 static void Main()
@@ -231,7 +236,7 @@ Sonuçları derecelendirildi sırada görüntülemeyi göstermeden önce, örnek
 
 Sıralama yanıtı JSON, bir veya daha fazla gruptan birini içerebilir.
 
-**Program.cs**' de, sonuçları düzgün bir şekilde derecelendirilen sırada göstermek için aşağıdaki yöntemi ekleyin:
+**Program.cs** ' de, sonuçları düzgün bir şekilde derecelendirilen sırada göstermek için aşağıdaki yöntemi ekleyin:
 
 ```csharp
 static void DisplayAllRankedResults(Newtonsoft.Json.Linq.JObject responseObjects)
@@ -278,7 +283,7 @@ Bu yöntem:
 - `rankingResponse`Yanıtın içerdiği gruplar üzerinde döngüler
 - Her bir gruptaki öğeleri çağırarak görüntüler `DisplaySpecificResults(...)`
 
-**Program.cs**içinde aşağıdaki iki yöntemi ekleyin:
+**Program.cs** içinde aşağıdaki iki yöntemi ekleyin:
 
 ```csharp
 static void DisplaySpecificResults(Newtonsoft.Json.Linq.JToken resultIndex, Newtonsoft.Json.Linq.JToken items, string title, params string[] fields)

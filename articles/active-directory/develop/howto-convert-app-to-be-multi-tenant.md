@@ -9,27 +9,27 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 03/17/2020
+ms.date: 10/27/2020
 ms.author: ryanwi
-ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
+ms.reviewer: marsma, jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 3578562839069eb4b9c99b16d938efe48821fcec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c5b06fd14f526ca90b1b922be281af55ba00116
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631316"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077498"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Nasıl yapılır: Çok kiracılı uygulama desenini kullanarak istediğiniz bir Azure Active Directory kullanıcısıyla oturum açma
 
-Birçok kuruluşa bir hizmet olarak yazılım (SaaS) uygulaması sunadıysanız, uygulamanızı herhangi bir Azure Active Directory (Azure AD) kiracısından oturum açma işlemlerini kabul edecek şekilde yapılandırabilirsiniz. Bu yapılandırma, *uygulamanızı çok kiracılı hale getirme*olarak adlandırılır. Herhangi bir Azure AD kiracısındaki kullanıcılar, kendi hesabını uygulamanızla birlikte kullanmak için uygulamanızda oturum açabilirler.
+Birçok kuruluşa bir hizmet olarak yazılım (SaaS) uygulaması sunadıysanız, uygulamanızı herhangi bir Azure Active Directory (Azure AD) kiracısından oturum açma işlemlerini kabul edecek şekilde yapılandırabilirsiniz. Bu yapılandırma, *uygulamanızı çok kiracılı hale getirme* olarak adlandırılır. Herhangi bir Azure AD kiracısındaki kullanıcılar, kendi hesabını uygulamanızla birlikte kullanmak için uygulamanızda oturum açabilirler.
 
 Kendi hesap sistemine sahip mevcut bir uygulamanız varsa veya diğer bulut sağlayıcılarından gelen diğer oturum açma türlerini destekliyorsa, herhangi bir kiracıdan Azure AD oturum açma işlemi basittir. Uygulamanızı kaydedin, OAuth2, OpenID Connect veya SAML aracılığıyla oturum açma kodu ekleyin ve uygulamanıza bir ["Microsoft hesabıyla oturum açın" düğmesi][AAD-App-Branding] koyun.
 
 > [!NOTE]
-> Bu makalede, Azure AD için tek bir kiracı uygulaması oluşturma konusunda zaten bilgi sahibi olduğunuz varsayılır. Değilseniz, [Geliştirici Kılavuzu giriş][AAD-Dev-Guide]sayfasındaki Hızlı başlangıçlardan biriyle başlayın.
+> Bu makalede, Azure AD için tek kiracılı bir uygulama oluşturma konusunda zaten bilgi sahibi olduğunuz varsayılır. Değilseniz, [Geliştirici Kılavuzu giriş][AAD-Dev-Guide]sayfasındaki Hızlı başlangıçlardan biriyle başlayın.
 
-Uygulamanızı bir Azure AD çok kiracılı uygulamasına dönüştürmek için dört basit adım vardır:
+Uygulamanızı bir Azure AD çok kiracılı uygulamasına dönüştürmek için dört adım vardır:
 
 1. [Uygulama kaydınızı çok kiracılı olarak güncelleştirme](#update-registration-to-be-multi-tenant)
 2. [Kodu, sık karşılaşılan uç noktasına istek gönderecek şekilde güncelleştirin](#update-your-code-to-send-requests-to-common)
@@ -40,14 +40,11 @@ Her adıma ayrıntılı olarak bakalım. Ayrıca, [Azure AD ve OpenID Connect ku
 
 ## <a name="update-registration-to-be-multi-tenant"></a>Kaydı çok kiracılı olacak şekilde Güncelleştir
 
-Varsayılan olarak, Azure AD 'de Web uygulaması/API kayıtları tek kiracısıdır. [Azure Portal][AZURE-portal] uygulama kaydınızın **kimlik doğrulama** bölmesinde **Desteklenen hesap türleri** anahtarını bularak ve **herhangi bir kuruluş dizinindeki hesaplara**ayarlayarak kaydınızı çok kiracılı hale getirebilirsiniz.
+Varsayılan olarak, Azure AD 'de Web uygulaması/API kayıtları tek kiracısıdır. [Azure Portal][AZURE-portal] uygulama kaydınızın **kimlik doğrulama** bölmesinde **Desteklenen hesap türleri** anahtarını bularak ve **herhangi bir kuruluş dizinindeki hesaplara** ayarlayarak kaydınızı çok kiracılı hale getirebilirsiniz.
 
 Bir uygulamanın çok kiracılı hale getirilbilmesi için Azure AD, uygulamanın uygulama KIMLIĞI URI 'sinin genel olarak benzersiz olmasını gerektirir. Uygulama Kimliği URI'si, uygulamanın protokol iletileri içinde tanımlanması için kullanılan yollardan biridir. Tek kiracılı bir uygulamada Uygulama Kimliği URI'sinin kiracı içinde benzersiz olması yeterlidir. Azure AD'nin uygulamayı tüm kiracılar arasında bulabilmesi için çok kiracılı uygulamada bu değerin genel olarak benzersiz olması gerekir. Genel olarak benzersiz olma gereksinimi, Uygulama Kimliği URI'sinin Azure AD kiracısının doğrulanmış etki alanı ile eşleşen bir ana bilgisayar adına sahip olması şartıyla sağlanır.
 
 Varsayılan olarak, Azure portal ile oluşturulan uygulamalar, uygulama oluşturma sırasında genel olarak benzersiz bir uygulama KIMLIĞI URI 'SI kümesine sahiptir, ancak bu değeri değiştirebilirsiniz. Örneğin, kiracınızın adı contoso.onmicrosoft.com ise geçerli bir uygulama KIMLIĞI URI 'SI olur `https://contoso.onmicrosoft.com/myapp` . Kiracınızda doğrulanmış bir etki alanı varsa `contoso.com` , geçerli bir uygulama kimliği URI 'si de olur `https://contoso.com/myapp` . Uygulama Kimliği URI'si bu düzene uygun olmadığında uygulamayı çok kiracılı hale getirme işlemi başarısız olur.
-
-> [!NOTE]
-> Yerel istemci kayıtları ve [Microsoft Identity platform uygulamaları](./v2-overview.md) , varsayılan olarak çok kiracılı değildir. Bu uygulama kayıtlarını çok kiracılı hale getirmek için herhangi bir işlem yapmanız gerekmez.
 
 ## <a name="update-your-code-to-send-requests-to-common"></a>Kodu, istekleri sık karşılaşılan 'a gönderecek şekilde güncelleştirin
 
@@ -64,37 +61,39 @@ Uygulamanın oturum açma yanıtı, daha sonra kullanıcıyı temsil eden bir be
 
 ## <a name="update-your-code-to-handle-multiple-issuer-values"></a>Kodunuzu birden çok veren değerini işleyecek şekilde güncelleştirin
 
-Web uygulamaları ve Web API 'Leri Microsoft Identity platformundan belirteçleri alır ve doğrular.
+Web uygulamaları ve Web API 'Leri Microsoft Identity platform 'dan belirteçleri alır ve doğrular.
 
 > [!NOTE]
-> Yerel istemci uygulamaları Microsoft Identity platformundan belirteç talep eder ve bunları aldıktan sonra, bunları doğrulanacak oldukları API 'lere gönderir. Yerel uygulamalar belirteçleri doğrulamaz ve bunları donuk olarak kabul etmelidir.
+> Yerel istemci uygulamaları Microsoft Identity platformundan belirteç talep eder ve bunları aldıktan sonra, bunları doğrulanan API 'lere gönderir. Yerel uygulamalar erişim belirteçlerini doğrulamaz ve bunları donuk olarak kabul etmelidir.
 
-Uygulamanın Microsoft Identity platform 'dan aldığı belirteçleri nasıl doğruladığına bakalım. Tek bir kiracı uygulaması normalde şöyle bir uç nokta değeri alır:
-
-```http
-    https://login.microsoftonline.com/contoso.onmicrosoft.com
-```
-
-ve bir meta veri URL 'SI (Bu örnekte, OpenID Connect) oluşturmak için aşağıdaki gibi kullanır:
+Uygulamanın Microsoft Identity platformundan aldığı belirteçleri nasıl doğruladığına bakalım. Tek kiracılı bir uygulama normalde şöyle bir uç nokta değeri alır:
 
 ```http
-    https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration
+https://login.microsoftonline.com/contoso.onmicrosoft.com
 ```
 
-belirteçleri doğrulamak için kullanılan iki kritik bilgi parçasını indirmek için: kiracının İmzalama anahtarları ve veren değeri. Her Azure AD kiracısı, Şu biçimdeki benzersiz bir veren değerine sahiptir:
+... ve bir meta veri URL 'SI (Bu örnekte, OpenID Connect) oluşturmak için aşağıdaki gibi kullanır:
 
 ```http
-    https://sts.windows.net/31537af4-6d77-4bb9-a681-d2394888ea26/
+https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration
 ```
 
-burada GUID değeri, kiracının kiracı KIMLIĞININ yeniden adlandırma güvenli sürümüdür. İçin önceki meta veri bağlantısını seçerseniz `contoso.onmicrosoft.com` belgesinde bu veren değerini görebilirsiniz.
+belirteçleri doğrulamak için kullanılan iki kritik bilgi parçasını indirmek için: kiracının İmzalama anahtarları ve veren değeri.
 
-Tek bir kiracı uygulaması bir belirteci doğrulaırsa, meta veri belgesinden imzalama anahtarlarına karşı belirtecin imzasını denetler. Bu test, belirteçteki veren değerinin meta veri belgesinde bulunan ile eşleştiğinden emin olmanızı sağlar.
+Her Azure AD kiracısı, Şu biçimdeki benzersiz bir veren değerine sahiptir:
+
+```http
+https://sts.windows.net/31537af4-6d77-4bb9-a681-d2394888ea26/
+```
+
+... burada GUID değeri, kiracının kiracı KIMLIĞININ yeniden adlandırma güvenli sürümüdür. İçin önceki meta veri bağlantısını seçerseniz `contoso.onmicrosoft.com` belgesinde bu veren değerini görebilirsiniz.
+
+Tek kiracılı bir uygulama bir belirteci doğrulaırsa, meta veri belgesinden imzalama anahtarlarına karşı belirtecin imzasını denetler. Bu test, belirteçteki veren değerinin meta veri belgesinde bulunan ile eşleştiğinden emin olmanızı sağlar.
 
 Sık karşılaşılan uç noktası bir kiracıya karşılık gelmediğinden ve veren olmadığından, sık karşılaşılan meta verilerinde veren değerini incelediğinizde gerçek bir değer yerine şablonlu bir URL 'ye sahiptir:
 
 ```http
-    https://sts.windows.net/{tenantid}/
+https://sts.windows.net/{tenantid}/
 ```
 
 Bu nedenle, çok kiracılı bir uygulama belirteçleri yalnızca, belirteçteki değerle meta verilerde veren değeriyle eşleştirerek doğrulayamaz `issuer` . Çok kiracılı bir uygulama, hangi veren değerlerinin geçerli olduğunu ve veren değerinin kiracı KIMLIĞI kısmına bağlı olmayan karar vermek için mantığa ihtiyaç duyuyor.
@@ -105,7 +104,7 @@ Bu nedenle, çok kiracılı bir uygulama belirteçleri yalnızca, belirteçteki 
 
 ## <a name="understand-user-and-admin-consent"></a>Kullanıcı ve yönetici onayını anlama
 
-Bir kullanıcının Azure AD 'de bir uygulamada oturum açması için, uygulamanın kullanıcının kiracısında temsil edilebilmesi gerekir. Bu, kuruluşun kiracılarından kullanıcılar uygulamada oturum açtığında benzersiz ilkeler uygulama gibi işlemler yapmasına olanak sağlar. Tek bir kiracı uygulaması için bu kayıt basittir; Bu, uygulamayı [Azure Portal][AZURE-portal]kaydettiğinizde meydana gelen bir uygulamadır.
+Bir kullanıcının Azure AD 'de bir uygulamada oturum açması için, uygulamanın kullanıcının kiracısında temsil edilebilmesi gerekir. Bu, kuruluşun kiracılarından kullanıcılar uygulamada oturum açtığında benzersiz ilkeler uygulama gibi işlemler yapmasına olanak sağlar. Tek kiracılı bir uygulama için, bu kayıt daha kolay; Bu, uygulamayı [Azure Portal][AZURE-portal]kaydettiğinizde meydana gelen bir uygulamadır.
 
 Çok kiracılı bir uygulama için, uygulamanın ilk kaydı, geliştirici tarafından kullanılan Azure AD kiracısında bulunur. Farklı bir kiracıya ait bir kullanıcı uygulamada ilk kez oturum açtığında, Azure AD, uygulamanın istediği izinleri onay vermesini ister. Onay varsa, kullanıcının kiracısında *hizmet sorumlusu* adlı uygulamanın bir temsili oluşturulur ve oturum açma işlemi devam edebilir. Kullanıcının uygulamaya iznini kaydeden dizinde da bir temsili oluşturulur. Uygulamanın uygulaması ve ServicePrincipal nesneleri ve birbirleriyle birbirleriyle ilgili ayrıntılar için bkz. [uygulama nesneleri ve hizmet sorumlusu nesneleri][AAD-App-SP-Objects].
 
@@ -126,14 +125,11 @@ Ayrıca, bazı temsilci izinleri kiracı yöneticisinin onayını gerektirir. Ö
 
 Uygulamanız yönetici onayı gerektiren izinler kullanıyorsa, yöneticinin eylemi başlatabileceği bir düğme veya bağlantı gibi bir hareketinizin olması gerekir. Uygulamanızın bu eylem için gönderdiği istek, sorgu dizesi parametresini de içeren olağan OAuth2/OpenID Connect yetkilendirme isteğidir `prompt=admin_consent` . Yönetici bir kez daha alındıktan ve hizmet sorumlusu müşterinin kiracısında oluşturulduktan sonra, sonraki oturum açma isteklerinde parametreye gerek yoktur `prompt=admin_consent` . Yönetici istenen izinleri kabul etmiş olduğundan, Kiracıdaki başka hiçbir kullanıcıya o noktadan sonra izin istenmez.
 
-Bir kiracı yöneticisi, normal kullanıcıların uygulamaları kabul etme yeteneğini devre dışı bırakabilir. Bu yetenek devre dışıysa, uygulamanın kiracıya kullanılması için yönetici izni her zaman gereklidir. Uygulamanızı son kullanıcı onayı devre dışı olmadan test etmek istiyorsanız, **Kurumsal uygulamalar**altındaki **[kullanıcı ayarları](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)** bölümünde [Azure Portal][AZURE-portal] yapılandırma anahtarını bulabilirsiniz.
+Bir kiracı yöneticisi, normal kullanıcıların uygulamaları kabul etme yeteneğini devre dışı bırakabilir. Bu yetenek devre dışıysa, uygulamanın kiracıya kullanılması için yönetici izni her zaman gereklidir. Uygulamanızı son kullanıcı onayı devre dışı olmadan test etmek istiyorsanız, **Kurumsal uygulamalar** altındaki **[kullanıcı ayarları](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)** bölümünde [Azure Portal][AZURE-portal] yapılandırma anahtarını bulabilirsiniz.
 
 `prompt=admin_consent`Parametresi, yönetici izni gerektirmeyen izinler isteyen uygulamalar tarafından da kullanılabilir. Uygulamanın, kiracı yöneticisinin "bir kez kaydolduğunda" bir deneyim gerektirmesi ve bu noktadan onay istenmediği başka kullanıcılardan ne zaman kullanılacağı hakkında bir örnek vardır.
 
-Bir uygulama yönetici onayı gerektiriyorsa ve bir yönetici, gönderilen parametre olmadan oturum açarsa `prompt=admin_consent` , yönetici uygulamaya başarıyla katıldıysa, **yalnızca kendi Kullanıcı hesapları için**geçerlidir. Normal kullanıcılar yine de uygulama üzerinde oturum açamaz veya onay vermez. Bu özellik, kiracı yöneticisine diğer kullanıcılara erişim izni vermeden önce uygulamanızı keşfetmeye olanak tanımak istiyorsanız yararlıdır.
-
-> [!NOTE]
-> Bazı uygulamalar, normal kullanıcıların başlangıçta izin verebildiği bir deneyim ister ve daha sonra uygulama yönetici onayı gerektiren yönetici ve istek izinleri içerebilir. Bunun için Azure AD 'de bir v 1.0 uygulama kaydıyla bunu yapmanın bir yolu yoktur; Ancak, Microsoft Identity platform (v 2.0) uç noktası kullanmak, uygulamaların kayıt sırasında değil, bu senaryoyu sağlayan, çalışma zamanında izin istemesine olanak tanır. Daha fazla bilgi için bkz. [Microsoft Identity platform uç noktası][AAD-V2-Dev-Guide].
+Bir uygulama yönetici onayı gerektiriyorsa ve bir yönetici, gönderilen parametre olmadan oturum açarsa `prompt=admin_consent` , yönetici uygulamaya başarıyla katıldıysa, **yalnızca kendi Kullanıcı hesapları için** geçerlidir. Normal kullanıcılar yine de uygulama üzerinde oturum açamaz veya onay vermez. Bu özellik, kiracı yöneticisine diğer kullanıcılara erişim izni vermeden önce uygulamanızı keşfetmeye olanak tanımak istiyorsanız yararlıdır.
 
 ### <a name="consent-and-multi-tier-applications"></a>Onay ve çok katmanlı uygulamalar
 
@@ -143,8 +139,8 @@ Uygulamanızın her biri Azure AD 'de kendi kaydıyla temsil edilen birden çok 
 
 Mantıksal uygulamanız iki veya daha fazla uygulama kaydı içeriyorsa (örneğin, ayrı bir istemci ve kaynak) Bu bir sorun olabilir. İlk olarak kaynağı Müşteri kiracısına nasıl alabilirim? Azure AD, istemci ve kaynağın tek bir adımda toplanmasına olanak tanıyarak bu durumu ele alır. Kullanıcı, izin sayfasında hem istemci hem de kaynak tarafından istenen izinlerin toplam toplamını görür. Bu davranışı etkinleştirmek için, kaynağın uygulama kaydı, uygulamanın uygulama KIMLIĞINI `knownClientApplications` [uygulama bildiriminde][AAD-App-Manifest]bir olarak içermelidir. Örneğin:
 
-```aad-app-manifest
-    knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
+```json
+"knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
 ```
 
 Bu makalede, bu makalenin sonundaki [ilgili içerik](#related-content) bölümünde yer aldığı çok katmanlı yerel istemci BIR Web API örneğinde arama gösterilmiştir. Aşağıdaki diyagramda, tek bir kiracıda kayıtlı çok katmanlı bir uygulama için izin özeti sağlanmaktadır.
@@ -177,7 +173,7 @@ Bir yönetici bir Kiracıdaki tüm kullanıcılar için bir uygulamaya onay veri
 
 ## <a name="multi-tenant-applications-and-caching-access-tokens"></a>Çok kiracılı uygulamalar ve önbelleğe alma erişimi belirteçleri
 
-Çok kiracılı uygulamalar, Azure AD tarafından korunan API 'Leri çağırmak için de erişim belirteçleri alabilir. Çok kiracılı bir uygulamayla Active Directory Authentication Library (ADAL) kullanılırken, başlangıçta/Common kullanarak bir kullanıcı belirteci istemesi, yanıt alacak ve ardından aynı kullanıcı için/commonkullanarak daha sonra bir belirteç istemesi için sık karşılaşılan bir hata. Azure AD 'nin yanıtı/Common değil bir kiracıdan geldiği için ADAL, belirteci kiracıdan olduğu gibi önbelleğe alır. Sonraki sık karşılaşılan çağrısı, Kullanıcı için önbellek girdisini isabetsiz bir erişim belirteci alır ve kullanıcıdan yeniden oturum açması istenir. Önbelleğin eksik olmaması için, zaten oturum açmış olan bir kullanıcıya yönelik sonraki çağrıların kiracının uç noktasına yapıldığından emin olun.
+Çok kiracılı uygulamalar, Azure AD tarafından korunan API 'Leri çağırmak için de erişim belirteçleri alabilir. Çok kiracılı bir uygulamayla Microsoft kimlik doğrulama kitaplığı (MSAL) kullanılırken, başlangıçta/Common kullanarak bir kullanıcı belirteci istemesi, yanıt alacak ve ardından aynı kullanıcı için/commonkullanarak daha sonra bir belirteç istemesi için sık karşılaşılan bir hata. Azure AD 'nin yanıtı/Common değil bir kiracıdan geldiğinden, MSAL belirteci kiracıdan olduğu gibi önbelleğe alır. Sonraki sık karşılaşılan çağrısı, Kullanıcı için önbellek girdisini isabetsiz bir erişim belirteci alır ve kullanıcıdan yeniden oturum açması istenir. Önbelleğin eksik olmaması için, zaten oturum açmış olan bir kullanıcıya yönelik sonraki çağrıların kiracının uç noktasına yapıldığından emin olun.
 
 ## <a name="related-content"></a>İlgili içerik
 
@@ -190,7 +186,9 @@ Bir yönetici bir Kiracıdaki tüm kullanıcılar için bir uygulamaya onay veri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, herhangi bir Azure AD kiracısından bir kullanıcının oturum açmasını sağlayan bir uygulama oluşturmayı öğrendiniz. Uygulamanız ve Azure AD arasında tek Sign-On (SSO) etkinleştirildikten sonra, uygulamanızı Microsoft 365 gibi Microsoft kaynakları tarafından sunulan API 'Lere erişmek için de güncelleştirebilirsiniz. Bu, uygulamanızda, profil resmi veya bir sonraki takvim randevusu gibi bağlamsal bilgileri göstermek gibi kişiselleştirilmiş bir deneyim sunmanızı sağlar. Azure AD 'ye yönelik API çağrılarını ve Exchange, SharePoint, OneDrive, OneNote gibi Microsoft 365 hizmetleri ve daha fazlasını yapma hakkında daha fazla bilgi edinmek için [MICROSOFT Graph API][MSFT-Graph-overview]adresini ziyaret edin.
+Bu makalede, herhangi bir Azure AD kiracısından bir kullanıcının oturum açmasını sağlayan bir uygulama oluşturmayı öğrendiniz. Uygulamanız ve Azure AD arasında tek Sign-On (SSO) etkinleştirildikten sonra, uygulamanızı Microsoft 365 gibi Microsoft kaynakları tarafından sunulan API 'Lere erişmek için de güncelleştirebilirsiniz. Bu, uygulamanızda, profil resmi veya bir sonraki takvim randevusu gibi bağlamsal bilgileri göstermek gibi kişiselleştirilmiş bir deneyim sunmanızı sağlar.
+
+Azure AD 'ye yönelik API çağrılarını ve Exchange, SharePoint, OneDrive, OneNote gibi Microsoft 365 hizmetleri ve daha fazlasını yapma hakkında daha fazla bilgi edinmek için [MICROSOFT Graph API][MSFT-Graph-overview]adresini ziyaret edin.
 
 <!--Reference style links IN USE -->
 [AAD-Access-Panel]:  https://myapps.microsoft.com

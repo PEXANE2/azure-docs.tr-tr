@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2f24eb64a5418a9963fd58611314ccbc6b72ec4
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 27075af51c8deb886a060c81927f30bb70b5f638
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968472"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077668"
 ---
 # <a name="azure-ad-password-protection-on-premises-frequently-asked-questions"></a>Azure AD parola koruması şirket içi sık sorulan sorular
 
@@ -32,9 +32,9 @@ Microsoft 'un bu konuyla ilgili geçerli Kılavuzu aşağıdaki bağlantıda bul
 
 **S: şirket içi Azure AD parola koruması, genel olmayan bulutlarda destekleniyor mu?**
 
-Şirket içi Azure AD parola koruması yalnızca genel bulutta desteklenir. Genel olmayan bulut kullanılabilirliği için hiçbir tarih duyurulmamıştır.
+Şirket içi Azure AD parola koruması, genel bulutta ve Arlington bulutu 'nda desteklenir. Diğer bulutlarda kullanılabilirlik için hiçbir tarih duyurulmamıştır.
 
-Azure AD portalı, genel olmayan bulutlarda bile olsa, şirket içi "Windows Server Active Directory parola koruması" yapılandırması için değişiklik yapılmasına izin verir; Bu değişiklikler kalıcı hale getirilir, aksi takdirde hiçbir zaman etkili olmayacaktır. Genel olmayan bulut kimlik bilgileri kullanıldığında şirket içi proxy aracılarının veya ormanlarının kaydı desteklenmez ve bu tür kayıt denemeleri her zaman başarısız olur.
+Azure AD portalı, desteklenmeyen bulutlarda bile olsa, şirket içi "Windows Server Active Directory parola koruması" yapılandırması için değişiklik yapılmasına izin verir; Bu değişiklikler kalıcı hale getirilir, aksi takdirde hiçbir zaman etkili olmayacaktır. Şirket içi proxy aracılarının veya ormanlarının kaydı, desteklenmeyen bulutlarda desteklenmez ve bu tür kayıt denemeleri her zaman başarısız olur.
 
 **S: Azure AD parola koruma avantajlarını şirket içi kullanıcılarınızın bir alt kümesine nasıl uygulayabilirim?**
 

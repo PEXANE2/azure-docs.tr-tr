@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 10/29/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f78dadc0eb1570018320aa77a390f94adf708a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7aebe6fafea7cbbb0b37469a13262529b568e342
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371911"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077974"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory özellik dağıtım kılavuzu
 
@@ -26,7 +26,7 @@ Kuruluşunuz için Azure Active Directory (Azure AD) dağıtımı yapabilir ve g
 
 Ayrıca müşteriler, Microsoft 'un en iyi uygulamalarına nasıl hizalanacağını öğrenmek için kendi [kimlik güvenli Puanını](identity-secure-score.md) denetleyebilir. Sektörünüz ve boyutlarınızın diğer kuruluşlarındaki diğer kuruluşlara kıyasla ne kadar iyi işlem yaptığınızı görmek için bu önerileri uyguladıktan önce ve sonra güvenli puanınızı kontrol edin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kılavuzdaki önerilerin birçoğu Azure AD Ücretsiz veya hiçbir lisans olmadan uygulanabilir. Lisansların gerekli olduğu durumlar, görevi gerçekleştirmek için en düşük düzeyde lisansın gerekli olduğu durumdur.
 
@@ -35,7 +35,7 @@ Lisanslama hakkında ek bilgiler aşağıdaki sayfalarda bulunabilir:
 * [Azure AD lisanslama](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Microsoft 365 Kurumsal](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
 * [Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
-* [Azure AD B2B Lisanslama Kılavuzu](../external-identities/licensing-guidance.md)
+* [Azure AD dış kimlikleri fiyatlandırması](../external-identities/external-identities-pricing.md)
 
 ## <a name="phase-1-build-a-foundation-of-security"></a>1. Aşama: güvenlik temeli oluşturma
 
@@ -70,7 +70,7 @@ Daha sonra, 1. Aşama ' de bulunan, kullanıcılarınızı içeri aktararak ve e
 | [Parola geri yazmayı Uygula](../authentication/tutorial-enable-sspr-writeback.md) | Bulutta parola değişikliklerinin şirket içi Windows Server Active Directory ortamına geri yazılmasına izin verin. | Azure AD Premium P1 |
 | [Azure AD Connect Health Uygula](../hybrid/whatis-azure-ad-connect.md#what-is-azure-ad-connect-health) | Azure AD Connect sunucularınız, AD FS sunucularınız ve etki alanı denetleyicileriniz için anahtar sistem durumu istatistiklerinin izlenmesini etkinleştirin. | Azure AD Premium P1 |
 | [Azure Active Directory ' de grup üyeliğine göre kullanıcılara lisans atama](../enterprise-users/licensing-groups-assign.md) | Kullanıcı başına ayar yerine gruba göre özellikleri etkinleştiren veya devre dışı bırakan lisanslama grupları oluşturarak zaman ve çaba tasarrufu yapın. | |
-| [Konuk Kullanıcı erişimi için bir plan oluşturun](../external-identities/what-is-b2b.md) | Kendi iş, okul veya sosyal kimliklerini kullanarak uygulamalarınızda ve hizmetlerinizde oturum açmalarına izin vererek Konuk kullanıcılarla işbirliği yapın. | [Azure AD B2B Lisanslama Kılavuzu](../external-identities/licensing-guidance.md) |
+| [Konuk Kullanıcı erişimi için bir plan oluşturun](../external-identities/what-is-b2b.md) | Kendi iş, okul veya sosyal kimliklerini kullanarak uygulamalarınızda ve hizmetlerinizde oturum açmalarına izin vererek Konuk kullanıcılarla işbirliği yapın. | [Azure AD dış kimlikleri fiyatlandırması](../external-identities/external-identities-pricing.md) |
 | [Cihaz yönetimi stratejisine karar verme](../devices/overview.md) | Kuruluşunuzun cihazlara yönelik olarak izin vermesini belirleyin. Vs katılımını kaydetme, kendi cihazını ve şirket tarafından sağlanmış olan cihazları alın. | |
 | [Kuruluşunuzda Iş için Windows Hello 'Yu dağıtma](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | Windows Hello kullanarak passwordless kimlik doğrulaması için hazırlanma | |
 | [Kullanıcılarınız için passwordless kimlik doğrulama yöntemlerini dağıtın](../authentication/concept-authentication-passwordless.md) | Kullanıcılarınıza güvenli parolasız kimlik doğrulama yöntemleri sağlayın | Azure AD Premium P1 |

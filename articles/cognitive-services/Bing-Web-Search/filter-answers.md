@@ -11,14 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
-ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad021b4d219353a6037988c164bb34cac6761682
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84696720"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078637"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>Arama yanıtının içerdiği yanıtları filtreleme  
+
+> [!WARNING]
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
+> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
 
 Web 'i sorguladığınızda, Bing arama için bulduğu tüm ilgili içeriği döndürür. Örneğin, arama sorgusu "karmaşık + Dinghies" ise, yanıt aşağıdaki yanıtları içerebilir:
 
@@ -131,7 +136,7 @@ Sonuçlar, Bing filtre ölçütlerinizle eşleşen Web sayfası sayısı istedi�
 
 ## <a name="limiting-the-number-of-answers-in-the-response"></a>Yanıttaki yanıt sayısını sınırlandırma
 
-Bing, JSON yanıtında birden çok yanıt türü döndürebilir. Örneğin, *yelkenler + Dinghies*'yi sorgulayıp Bing,,, `webpages` `images` ve döndürebilir `videos` `relatedSearches` .
+Bing, JSON yanıtında birden çok yanıt türü döndürebilir. Örneğin, *yelkenler + Dinghies* 'yi sorgulayıp Bing,,, `webpages` `images` ve döndürebilir `videos` `relatedSearches` .
 
 ```json
 {

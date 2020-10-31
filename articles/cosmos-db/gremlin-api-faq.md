@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: b43bd0a076a21429a5f6fe05ef0c20d62674acdf
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 8f9e4211b05503f70987b9e476d9a55510bbd520
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281556"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078331"
 ---
 # <a name="frequently-asked-questions-about-the-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB 'da Gremlin API 'SI hakkında sık sorulan sorular
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Bu makalede, Azure Cosmos DB 'de Gremlin API hakkında sık sorulan bazı soruların yanıtları açıklanmaktadır.
 

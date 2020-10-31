@@ -13,14 +13,15 @@ ms.custom:
 - seo-javascript-september2019
 - seo-python-october2019
 - devx-track-python
-ms.openlocfilehash: aa23f6d5d7b81e93145fd7db3fb5b45e46918d21
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c74da5e612609ce6a0525b24e5868059f06da179
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487594"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078807"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabı kullanarak bir Python uygulaması oluşturma
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
@@ -57,7 +58,7 @@ Bu hızlı başlangıçta, Azure portal ve Visual Studio Code içinden GitHub 'd
 
 Artık bir veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgini aracı 'nı kullanabilirsiniz. 
 
-1. Yeni **Veri Gezgini**  >  **kapsayıcı**seçin. 
+1. Yeni **Veri Gezgini**  >  **kapsayıcı** seçin. 
     
     **Kapsayıcı Ekle** alanı en sağda görüntülenir, görmek için sağa kaydırmanız gerekebilir.
 
@@ -74,7 +75,7 @@ Artık bir veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgin
     
     Önceki ayarlara ek olarak, kapsayıcı için isteğe bağlı olarak **benzersiz anahtarlar** ekleyebilirsiniz. Bu örnekte bu alanı boş bırakalım. Benzersiz anahtarlar sayesinde geliştiriciler veritabanına bir veri bütünlüğü katmanı ekleyebilir. Bir kapsayıcı oluştururken benzersiz bir anahtar ilkesi oluşturarak, bölüm anahtarı başına bir veya daha fazla değerin benzersizliği olduğundan emin olursunuz. Daha fazla bilgi edinmek için [Azure Cosmos DB'de benzersiz anahtarlar](unique-keys.md) makalesine bakın.
     
-    **Tamam**’ı seçin. Veri Gezgini, yeni veritabanını ve kapsayıcıyı görüntüler.
+    **Tamam** ’ı seçin. Veri Gezgini, yeni veritabanını ve kapsayıcıyı görüntüler.
 
 ## <a name="add-sample-data"></a>Örnek verileri ekleme
 
@@ -119,13 +120,13 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
     :::image type="content" source="./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png" alt-text="Azure portalındaki Veri Gezgini, Kapsayıcı Ekle bölmesi":::
 
-2. Visual Studio Code içinde *cosmos_get_started. Kopyala* dosyasını *\git-samples\azure-Cosmos-DB-Python-Getting-Started*içinde açın.
+2. Visual Studio Code içinde *cosmos_get_started. Kopyala* dosyasını *\git-samples\azure-Cosmos-DB-Python-Getting-Started* içinde açın.
 
 3. Portaldan **URI** değerini kopyalayın (kopyalama düğmesini kullanarak) ve *cosmos_get_started.* Kopyala içindeki **uç nokta** değişkeninin değerini yapın. 
 
     `endpoint = 'https://FILLME.documents.azure.com',`
 
-4. Ardından, portaldan **BIRINCIL anahtar** değerini kopyalayın ve *cosmos_get_started. Kopyala*içindeki **anahtar** değerini yapın. Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken tüm bilgileri eklemiş oldunuz. 
+4. Ardından, portaldan **BIRINCIL anahtar** değerini kopyalayın ve *cosmos_get_started. Kopyala* içindeki **anahtar** değerini yapın. Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken tüm bilgileri eklemiş oldunuz. 
 
     `key = 'FILLME'`
 
@@ -163,7 +164,7 @@ Aşağıdaki kod parçacıklarının hepsi *cosmos_get_started. Kopyala* dosyas�
    
 ## <a name="run-the-app"></a>Uygulamayı çalıştırma
 
-1. Visual Studio Code, **görüntüleme**  >  **komut paleti**' ni seçin. 
+1. Visual Studio Code, **görüntüleme**  >  **komut paleti** ' ni seçin. 
 
 2. Komut isteminde, **Python: Yorumlayıcı Seçin** girip kullanılacak Python sürümün seçin.
 
@@ -191,7 +192,7 @@ Aşağıdaki kod parçacıklarının hepsi *cosmos_get_started. Kopyala* dosyas�
     python cosmos_get_started.py
     ```
 
-7. Oluşturulan ve kaydedilen yeni öğeleri onaylamak için, Azure Portal **Veri Gezgini**  >  **AzureSampleFamilyDatabase**  >  **öğelerini**seçin. Oluşturulan öğeleri görüntüleyin. Örneğin, Andersen ailesi için örnek bir JSON belgesi aşağıda verilmiştir:
+7. Oluşturulan ve kaydedilen yeni öğeleri onaylamak için, Azure Portal **Veri Gezgini**  >  **AzureSampleFamilyDatabase**  >  **öğelerini** seçin. Oluşturulan öğeleri görüntüleyin. Örneğin, Andersen ailesi için örnek bir JSON belgesi aşağıda verilmiştir:
    
    ```json
    {

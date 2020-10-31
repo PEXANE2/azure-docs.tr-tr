@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 7f2673bd181bc24d821b41ae1466c05a9593f154
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: fae4e349d46425c0c2b2b923d6a61e2e588708c1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315726"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077260"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Azure API Management 'de OAuth 2,0 kullanarak Geliştirici hesaplarını yetkilendirme
 
 Birçok API, API 'YI güvenli hale getirmek ve yalnızca geçerli kullanıcıların erişimi olduğundan emin olmak için [OAuth 2,0](https://oauth.net/2/) ' i destekler ve yalnızca hak kazanabilecekleri kaynaklara erişebilir. Azure API Management 'in etkileşimli geliştirici konsolunu bu tür API 'lerle kullanabilmek için, hizmet örneğinizi OAuth 2,0 özellikli API 'niz ile çalışacak şekilde yapılandırmanıza olanak tanır.
 
-## <a name="prerequisites"></a><a name="prerequisites"> </a>Ön koşullar
+## <a name="prerequisites"></a><a name="prerequisites"> </a>Önkoşullar
 
 Bu kılavuzda, API Management hizmeti örneğinizi geliştirici hesapları için OAuth 2,0 yetkilendirmesi kullanacak şekilde nasıl yapılandırabileceğiniz, ancak bir OAuth 2,0 sağlayıcısının nasıl yapılandırılacağı gösterilmeyebilir. Her bir OAuth 2,0 sağlayıcısı için yapılandırma farklıdır, ancak adımlar benzerdir ve API Management hizmet Örneğinizde OAuth 2,0 ' i yapılandırmada kullanılan gerekli bilgi parçaları aynı olur. Bu konuda, OAuth 2,0 sağlayıcısı olarak Azure Active Directory kullanan örnekler gösterilmektedir.
 
@@ -38,7 +38,7 @@ Bu kılavuzda, API Management hizmeti örneğinizi geliştirici hesapları için
 > [!NOTE]
 > Henüz bir API Management hizmet örneği oluşturmadıysanız, bkz. [API Management hizmet örneği oluşturma][Create an API Management service instance].
 
-1. Sol taraftaki menüdeki OAuth 2,0 sekmesine tıklayın ve **+ Ekle**' ye tıklayın.
+1. Sol taraftaki menüdeki OAuth 2,0 sekmesine tıklayın ve **+ Ekle** ' ye tıklayın.
 
     ![OAuth 2,0 menüsü](./media/api-management-howto-oauth2/oauth-01.png)
 
@@ -47,40 +47,40 @@ Bu kılavuzda, API Management hizmeti örneğinizi geliştirici hesapları için
     > [!NOTE]
     > Bu alanlar, OAuth 2,0 yetkilendirme sunucusunu geçerli API Management hizmet örneği içinde tanımlamak için kullanılır ve bunların değerleri OAuth 2,0 sunucusundan gelmiyor.
 
-3. **İstemci kayıt sayfası URL 'sini**girin. Bu sayfa, kullanıcıların hesaplarını oluşturup yönetebilecekleri ve kullanılan OAuth 2,0 sağlayıcısına bağlı olarak farklılık gösterdiği yerdir. **İstemci kayıt sayfası URL 'si** , kullanıcıların hesapların Kullanıcı yönetimini destekleyen OAuth 2,0 sağlayıcıları için kendi hesaplarını oluşturmak ve yapılandırmak üzere kullanabileceği sayfayı işaret eder `https://contoso.com/login` . Bazı kuruluşlar, OAuth 2,0 sağlayıcısı tarafından desteklendiği halde bu işlevselliği yapılandırmaz veya kullanmaz. OAuth 2,0 sağlayıcınızda yapılandırılmış hesapların Kullanıcı yönetimi yoksa, şirketinizin URL 'SI gibi bir yer tutucu URL veya gibi bir URL girin `https://placeholder.contoso.com` .
+3. **İstemci kayıt sayfası URL 'sini** girin. Bu sayfa, kullanıcıların hesaplarını oluşturup yönetebilecekleri ve kullanılan OAuth 2,0 sağlayıcısına bağlı olarak farklılık gösterdiği yerdir. **İstemci kayıt sayfası URL 'si** , kullanıcıların hesapların Kullanıcı yönetimini destekleyen OAuth 2,0 sağlayıcıları için kendi hesaplarını oluşturmak ve yapılandırmak üzere kullanabileceği sayfayı işaret eder `https://contoso.com/login` . Bazı kuruluşlar, OAuth 2,0 sağlayıcısı tarafından desteklendiği halde bu işlevselliği yapılandırmaz veya kullanmaz. OAuth 2,0 sağlayıcınızda yapılandırılmış hesapların Kullanıcı yönetimi yoksa, şirketinizin URL 'SI gibi bir yer tutucu URL veya gibi bir URL girin `https://placeholder.contoso.com` .
 
     ![OAuth 2,0 yeni sunucu](./media/api-management-howto-oauth2/oauth-02.png)
 
-4. Formun sonraki bölümü **Yetkilendirme verme türlerini**, **Yetkilendirme uç noktası URL 'sini**ve **yetkilendirme isteği yöntemi** ayarlarını içerir.
+4. Formun sonraki bölümü **Yetkilendirme verme türlerini** , **Yetkilendirme uç noktası URL 'sini** ve **yetkilendirme isteği yöntemi** ayarlarını içerir.
 
     İstenen türleri denetleyerek **Yetkilendirme verme türlerini** belirtin. **Yetkilendirme kodu** varsayılan olarak belirtilir.
 
-    **Yetkilendirme uç noktası URL 'sini**girin. Azure Active Directory için, bu URL aşağıdaki URL 'ye benzer ve burada `<tenant_id>` Azure AD KIRACıNıZıN kimliğiyle birlikte değişir.
+    **Yetkilendirme uç noktası URL 'sini** girin. Azure Active Directory için, bu URL aşağıdaki URL 'ye benzer ve burada `<tenant_id>` Azure AD KIRACıNıZıN kimliğiyle birlikte değişir.
 
     `https://login.microsoftonline.com/<tenant_id>/oauth2/authorize`
 
     **Yetkilendirme isteği yöntemi** , yetkilendirme isteğinin OAuth 2,0 sunucusuna nasıl gönderileceğini belirtir. Varsayılan olarak **Al** seçilidir.
 
-5. Ardından, **belirteç uç noktası URL 'si**, **istemci kimlik doğrulama yöntemleri**, **erişim belirteci gönderme yöntemi** ve **varsayılan kapsam** belirtilmelidir.
+5. Ardından, **belirteç uç noktası URL 'si** , **istemci kimlik doğrulama yöntemleri** , **erişim belirteci gönderme yöntemi** ve **varsayılan kapsam** belirtilmelidir.
 
-    ![OAuth 2,0 yeni sunucu](./media/api-management-howto-oauth2/oauth-03.png)
+    ![Add OAuth2 Service ekranını gösteren ekran görüntüsü.](./media/api-management-howto-oauth2/oauth-03.png)
 
     Azure Active Directory OAuth 2,0 sunucusu için, **belirteç uç noktası URL 'si** aşağıdaki biçimde olacaktır, burada `<TenantID>`  biçimi vardır `yourapp.onmicrosoft.com` .
 
     `https://login.microsoftonline.com/<TenantID>/oauth2/token`
 
-    **İstemci kimlik doğrulama yöntemlerinin** varsayılan ayarı **temel**ve **erişim belirteci gönderme yöntemi** **Yetkilendirme üst bilgisi**olur. Bu değerler formun bu bölümünde, **varsayılan kapsamla**birlikte yapılandırılır.
+    **İstemci kimlik doğrulama yöntemlerinin** varsayılan ayarı **temel** ve **erişim belirteci gönderme yöntemi** **Yetkilendirme üst bilgisi** olur. Bu değerler formun bu bölümünde, **varsayılan kapsamla** birlikte yapılandırılır.
 
-6. **İstemci kimlik bilgileri** bölümü, OAuth 2,0 sunucunuzun oluşturma ve yapılandırma işlemi sırasında elde EDILEN **Istemci kimliğini** ve **istemci gizli**anahtarını içerir. **ISTEMCI kimliği** ve **istemci parolası** belirtildiğinde, **yetkilendirme kodu** için **redirect_uri** oluşturulur. Bu URI, OAuth 2,0 sunucu yapılandırmanızda yanıt URL 'sini yapılandırmak için kullanılır.
+6. **İstemci kimlik bilgileri** bölümü, OAuth 2,0 sunucunuzun oluşturma ve yapılandırma işlemi sırasında elde EDILEN **Istemci kimliğini** ve **istemci gizli** anahtarını içerir. **ISTEMCI kimliği** ve **istemci parolası** belirtildiğinde, **yetkilendirme kodu** için **redirect_uri** oluşturulur. Bu URI, OAuth 2,0 sunucu yapılandırmanızda yanıt URL 'sini yapılandırmak için kullanılır.
 
     Yeni geliştirici portalında URI son eki şu biçimdedir:
 
     - `/signin-oauth/code/callback/{authServerName}` yetkilendirme kodu verme akışı için
     - `/signin-oauth/implicit/callback` örtük verme akışı için
 
-    ![OAuth 2,0 yeni sunucu](./media/api-management-howto-oauth2/oauth-04.png)
+    ![Yeni OAuth2 hizmeti için istemci kimlik bilgilerinin nereye ekleneceğini gösteren ekran görüntüsü.](./media/api-management-howto-oauth2/oauth-04.png)
 
-    **Yetkilendirme verme türleri** **kaynak sahibi parolası**olarak ayarlandıysa, bu kimlik bilgilerini belirtmek için **kaynak sahibi parolası kimlik bilgileri** bölümü kullanılır; Aksi takdirde, boş bırakabilirsiniz.
+    **Yetkilendirme verme türleri** **kaynak sahibi parolası** olarak ayarlandıysa, bu kimlik bilgilerini belirtmek için **kaynak sahibi parolası kimlik bilgileri** bölümü kullanılır; Aksi takdirde, boş bırakabilirsiniz.
 
     Form tamamlandıktan sonra, API Management OAuth 2,0 yetkilendirme sunucusu yapılandırmasını kaydetmek için **Oluştur** ' a tıklayın. Sunucu yapılandırması kaydedildikten sonra, API 'Leri, sonraki bölümde gösterildiği gibi bu yapılandırmayı kullanacak şekilde yapılandırabilirsiniz.
 
@@ -90,13 +90,13 @@ Bu kılavuzda, API Management hizmeti örneğinizi geliştirici hesapları için
 
     ![OAuth 2,0 API 'Leri](./media/api-management-howto-oauth2/oauth-05.png)
 
-2. İstenen API 'nin adına tıklayın ve **Ayarlar**' a tıklayın. **Güvenlik** bölümüne gidip **OAuth 2,0**kutusunu işaretleyin.
+2. İstenen API 'nin adına tıklayın ve **Ayarlar** ' a tıklayın. **Güvenlik** bölümüne gidip **OAuth 2,0** kutusunu işaretleyin.
 
     ![OAuth 2,0 ayarları](./media/api-management-howto-oauth2/oauth-06.png)
 
-3. Açılan listeden istenen **Yetkilendirme sunucusunu** seçin ve **Kaydet**' e tıklayın.
+3. Açılan listeden istenen **Yetkilendirme sunucusunu** seçin ve **Kaydet** ' e tıklayın.
 
-    ![OAuth 2,0 ayarları](./media/api-management-howto-oauth2/oauth-07.png)
+    ![Seçilen yetkilendirme sunucusunu ve Kaydet düğmesini vurgulayan ekran görüntüsü.](./media/api-management-howto-oauth2/oauth-07.png)
 
 ## <a name="legacy-developer-portal---test-the-oauth-20-user-authorization"></a><a name="step3"> </a>Eski geliştirici portalı-OAuth 2,0 Kullanıcı yetkilendirmesini test etme
 
@@ -104,14 +104,14 @@ Bu kılavuzda, API Management hizmeti örneğinizi geliştirici hesapları için
 
 OAuth 2,0 yetkilendirme sunucunuzu yapılandırdıktan ve API 'nizi bu sunucuyu kullanacak şekilde yapılandırdıktan sonra, geliştirici Portalına gidip bir API 'yi çağırarak test edebilirsiniz. Azure API Management örneğine **genel bakış** sayfasından üstteki menüden **Geliştirici Portalı (eski)** seçeneğine tıklayın.
 
-Üstteki menüde **API 'ler** ' e tıklayın ve **echo API**' yi seçin.
+Üstteki menüde **API 'ler** ' e tıklayın ve **echo API** ' yi seçin.
 
 ![Echo API’si][api-management-apis-echo-api]
 
 > [!NOTE]
 > Yapılandırılmış ya da hesabınıza görünen yalnızca bir API’niz varsa, API’lere tıklamak sizi doğrudan bu API’nin işlemlerine götürür.
 
-**Kaynak al** işlemini seçin, **Konsolu Aç**' a tıklayın ve ardından açılan listeden **yetkilendirme kodu** ' nu seçin.
+**Kaynak al** işlemini seçin, **Konsolu Aç** ' a tıklayın ve ardından açılan listeden **yetkilendirme kodu** ' nu seçin.
 
 ![Konsolu açma][api-management-open-console]
 
@@ -120,7 +120,7 @@ OAuth 2,0 yetkilendirme sunucunuzu yapılandırdıktan ve API 'nizi bu sunucuyu 
 > [!NOTE]
 > Açılır pencereleri devre dışı bırakırsanız, tarayıcı tarafından etkinleştirmeniz istenir. Bunları etkinleştirdikten sonra, **yetkilendirme kodu** ' nu yeniden seçin ve oturum açma formu görüntülenir.
 
-![Oturum aç][api-management-oauth2-signin]
+![Oturum açın][api-management-oauth2-signin]
 
 Oturum açtıktan sonra, **istek üstbilgileri** `Authorization : Bearer` isteği yetkilendiren bir üstbilgiyle doldurulur.
 

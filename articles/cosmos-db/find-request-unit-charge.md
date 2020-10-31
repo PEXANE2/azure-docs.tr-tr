@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: d8c1237b1bf4fac743ad5e70fee857337d9624c4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 9d0694a76bca832887d30601711894b953fe22e1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490671"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078450"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-sql-api"></a>Azure Cosmos DB SQL API 'sinde yürütülen işlemler için istek birimi ücreti bulma
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB SQL, MongoDB, Cassandra, Gremlin ve Table gibi birçok API 'yi destekler. Her API 'nin kendi veritabanı işlemleri kümesi vardır. Bu işlemler, karmaşık sorgulardan okuma ve yazma işlemleri için basit noktadan aralığıdır. Her veritabanı işlemi, işlemin karmaşıklığına göre sistem kaynaklarını tüketir.
 
@@ -33,9 +34,9 @@ Bu makalede, Azure Cosmos DB SQL API 'sindeki bir kapsayıcıya karşı yürüt�
 
 1. **Veri Gezgini** bölmesine gidin ve üzerinde çalışmak istediğiniz kapsayıcıyı seçin.
 
-1. **Yeni SQL Sorgusu**'nu seçin.
+1. **Yeni SQL Sorgusu** 'nu seçin.
 
-1. Geçerli bir sorgu girin ve sonra **sorguyu Yürüt**' ü seçin.
+1. Geçerli bir sorgu girin ve sonra **sorguyu Yürüt** ' ü seçin.
 
 1. Yürüttüğünüz istek için gerçek istek ücreti göstermek üzere **sorgu istatistikleri** ' ni seçin.
 

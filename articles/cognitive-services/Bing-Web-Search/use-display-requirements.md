@@ -10,14 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93be72f2afcda90dde1b74c5ee317a7ad3350be1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60499894"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075696"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Bing Arama API’si kullanım ve görüntüleme gereksinimleri
+
+> [!WARNING]
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
+> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
 
 Bu kullanım ve görüntüleme gereksinimleri, ilişki, meta veriler ve diğer sinyaller dahil olmak üzere aşağıdaki Bing Arama API'leri tüm içerik ve ilgili bilgilerin uygulanması için geçerlidir.
 
@@ -34,7 +39,7 @@ Bu kullanım ve görüntüleme gereksinimleri, ilişki, meta veriler ve diğer s
 ## <a name="definitions"></a>Tanımlar
 
 
-|Süre  |Açıklama  |
+|Terim  |Açıklama  |
 |---------|---------|
 |Yanıt     | Bir yanıtta döndürülen sonuç kategorisi. Örneğin, Bing Web Araması API'si bir yanıt, Web sayfası sonuçları, görüntü, video, görsel ve haber kategorilerine yanıt içerebilir. |
 |Yanıt     | Bir arama API 'sine yapılan tek bir çağrıya yanıt olarak alınan tüm yanıtlar ve ilgili veriler. |
@@ -99,7 +104,7 @@ Yapma:
 ### <a name="notices-and-branding"></a>Bildirimler ve marka 
 Gösterme
 
-- Göze çarpacak, kullanıcı deneyiminin (UX) bir kullanıcıya bir arama sorgusu girişi olanağı sunan her noktaya yakın bir [Microsoft gizlilik bildirimine](https://go.microsoft.com/fwlink/?LinkId=521839)yönelik işlevsel köprü içerir. Köprü **Microsoft gizlilik bildirimi**' ni etiketleyin.
+- Göze çarpacak, kullanıcı deneyiminin (UX) bir kullanıcıya bir arama sorgusu girişi olanağı sunan her noktaya yakın bir [Microsoft gizlilik bildirimine](https://go.microsoft.com/fwlink/?LinkId=521839)yönelik işlevsel köprü içerir. Köprü **Microsoft gizlilik bildirimi** ' ni etiketleyin.
 
 - Belirgin bir şekilde, bir kullanıcıya arama sorgusu girişi olanağı sunan, UX 'teki her bir noktaya yakın olan [Bing marka kullanım yönergeleriyle](https://go.microsoft.com/fwlink/?linkid=833278)tutarlı Bing markalaması görüntüleyin. Bu marka, Microsoft 'un Internet arama deneyimini güçleme kullanıcısına açık bir durum vermelidir.
 

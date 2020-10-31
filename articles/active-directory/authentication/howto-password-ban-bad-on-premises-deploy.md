@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f3aee10c0682feeea7c74133f908452d1c5595f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 66df1bbe531c072ff5aa2bebe7b197201e6931a2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968608"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077736"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Şirket içi Azure Active Directory parola korumasını planlayın ve dağıtın
 
@@ -42,7 +42,7 @@ Denetim aşamasında, birçok kuruluş aşağıdaki durumların uygulanacağın�
 * Kullanıcılar genellikle güvenli olmayan parolalar kullanır.
 * Kullanıcılara, güvenlik zorlamada yaklaşan değişikliği, bunlara ilişkin olası etkileri ve daha güvenli parolalar seçme hakkında bilgilendirmeleri gerekir.
 
-Daha güçlü parola doğrulamanın, mevcut Active Directory etki alanı denetleyicisi dağıtım otomasyonunu etkilemesini de mümkün hale gelir. Bu tür sorunları açığa çıkarmak için Denetim dönemi değerlendirmesi sırasında en az bir DC yükseltmesinin ve bir DC indirgemenin gerçekleşmesini öneririz. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+Daha güçlü parola doğrulamanın, mevcut Active Directory etki alanı denetleyicisi dağıtım otomasyonunu etkilemesini de mümkün hale gelir. Bu tür sorunları açığa çıkarmak için Denetim dönemi değerlendirmesi sırasında en az bir DC yükseltmesinin ve bir DC indirgemenin gerçekleşmesini öneririz. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * [Ntdsutil.exe zayıf Dizin Hizmetleri onarım modu parolasını ayarlayamadı](howto-password-ban-bad-on-premises-troubleshoot.md#ntdsutilexe-fails-to-set-a-weak-dsrm-password)
 * [Etki alanı denetleyicisi çoğaltma yükseltmesi zayıf bir dizin hizmetleri onarım modu parolası nedeniyle başarısız oluyor](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
@@ -90,7 +90,7 @@ Aşağıdaki temel gereksinimler geçerlidir:
     * Varsayılan olarak, RPC sunucu bağlantı noktası dinamik bir RPC bağlantı noktasıdır, ancak [statik bir bağlantı noktası kullanacak](#static)şekilde yapılandırılabilir.
 * Azure AD parola koruma Proxy hizmetinin yükleneceği tüm makinelerin aşağıdaki uç noktalara ağ erişimi olması gerekir:
 
-    |**Uç Noktası**|**Amaç**|
+    |**Uç Nokta**|**Amaç**|
     | --- | --- |
     |`https://login.microsoftonline.com`|Kimlik doğrulama istekleri|
     |`https://enterpriseregistration.windows.net`|Azure AD parola koruma işlevi|
@@ -125,7 +125,7 @@ Azure AD parola koruması proxy hizmeti için aşağıdaki gereksinimler geçerl
     * .NET 4,7, tam olarak güncelleştirilmiş bir Windows Server 'a zaten yüklenmiş olmalıdır. Gerekirse, [Windows için .NET Framework 4,7 çevrimdışı yükleyicisinde](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)bulunan yükleyiciyi indirip çalıştırın.
 * Azure AD parola koruması ara sunucusu hizmetini barındıran tüm makineler, etki alanı denetleyicilerinin proxy hizmetinde oturum açabilme izni verecek şekilde yapılandırılmalıdır. Bu özellik "Bu bilgisayara ağ üzerinden eriş" ayrıcalık ataması aracılığıyla denetlenir.
 * Azure AD parola koruması ara sunucusu hizmetini barındıran tüm makineler, giden TLS 1,2 HTTP trafiğine izin verecek şekilde yapılandırılmalıdır.
-* Azure AD parola koruma proxy hizmetini ve ormanını Azure AD 'ye kaydetmek için bir *genel yönetici* hesabı.
+* Azure AD parola koruma proxy hizmetini ve ormanını Azure AD 'ye kaydetmek için bir *genel yönetici* veya *Güvenlik Yöneticisi* hesabı.
 * [Uygulama proxy 'si ortamı kurulum yordamları](../manage-apps/application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)'nda belirtilen bağlantı noktaları ve URL 'ler kümesi için ağ erişimi etkinleştirilmelidir.
 
 ### <a name="microsoft-azure-ad-connect-agent-updater-prerequisites"></a>Microsoft Azure AD aracı Güncelleştirici önkoşullarını bağlama
@@ -142,8 +142,8 @@ Microsoft Azure AD Connect Agent Güncelleştirici hizmeti, Azure AD parola koru
 
 Şirket içi Azure AD parola koruma dağıtımı için gereken iki yükleyici vardır:
 
-* Azure AD parola koruma DC Aracısı (*AzureADPasswordProtectionDCAgentSetup.msi*)
-* Azure AD parola koruma proxy 'si (*AzureADPasswordProtectionProxySetup.exe*)
+* Azure AD parola koruma DC Aracısı ( *AzureADPasswordProtectionDCAgentSetup.msi* )
+* Azure AD parola koruma proxy 'si ( *AzureADPasswordProtectionProxySetup.exe* )
 
 Her iki yükleyiciyi de [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=57071)' nden indirin.
 
@@ -155,9 +155,11 @@ Sonraki bölümde, Azure AD parola koruma DC aracılarını şirket içi AD DS o
 
 Azure AD parola koruma proxy hizmetini barındırmak için bir veya daha fazla sunucu seçin. Sunucu (ler) için aşağıdaki noktalar geçerlidir:
 
-* Bu tür bir hizmet yalnızca tek bir orman için parola ilkeleri sağlayabilir. Konak makinenin o ormandaki bir etki alanına katılması gerekir. Kök ve alt etki alanlarının ikisi de desteklenir. Ormanın her etki alanında ve parola koruma makinesinde en az bir DC arasında ağ bağlantısı gerekir.
+* Bu tür bir hizmet yalnızca tek bir orman için parola ilkeleri sağlayabilir. Konak makinenin bu ormandaki herhangi bir etki alanına katılması gerekir.
+* Proxy 'nin hizmeti kök veya alt etki alanında veya bunların bir birleşimini yüklemek için desteklenir.
+* Ormanın her etki alanında en az bir DC ve bir parola koruma proxy sunucusu arasında ağ bağlantısı gerekir.
 * Test için bir etki alanı denetleyicisinde Azure AD parola koruma proxy hizmetini çalıştırabilirsiniz, ancak bu etki alanı denetleyicisi daha sonra internet bağlantısı gerektirir. Bu bağlantı bir güvenlik sorunu olabilir. Bu yapılandırmayı yalnızca test için öneririz.
-* [Yüksek kullanılabilirlik konuları](#high-availability-considerations)hakkında önceki bölümde belirtildiği gibi, artıklık için en az ıkı Azure AD parola koruma proxy sunucusu önerilir.
+* [Yüksek kullanılabilirlik konuları](#high-availability-considerations)hakkında önceki bölümde belirtildiği gibi, her orman için ormanlar için en az ıkı Azure AD parola koruma proxy sunucusu önerilir.
 * Azure AD parola koruma proxy hizmetini salt bir etki alanı denetleyicisinde çalıştırmak desteklenmez.
 
 Azure AD parola koruma proxy hizmeti 'ni yüklemek için aşağıdaki adımları izleyin:
@@ -195,7 +197,7 @@ Azure AD parola koruma proxy hizmeti 'ni yüklemek için aşağıdaki adımları
 
 1. Proxy hizmeti makinede çalışıyor, ancak Azure AD ile iletişim kurmak için kimlik bilgileri yok. Cmdlet 'ini kullanarak Azure AD parola koruma proxy sunucusunu Azure AD 'ye kaydedin `Register-AzureADPasswordProtectionProxy` .
 
-    Bu cmdlet Azure kiracınız için genel yönetici kimlik bilgilerini gerektirir. Ayrıca, orman kök etki alanında Şirket içi Active Directory etki alanı yöneticisi ayrıcalıklarına sahip olmanız gerekir. Bu cmdlet 'in Ayrıca yerel yönetici ayrıcalıklarına sahip bir hesap kullanılarak çalıştırılması gerekir:
+    Bu cmdlet Azure kiracınız için *genel yönetici* veya *Güvenlik Yöneticisi* kimlik bilgileri gerektirir. Bu cmdlet 'in Ayrıca yerel yönetici ayrıcalıklarına sahip bir hesap kullanılarak çalıştırılması gerekir.
 
     Bu komut bir Azure AD parola koruma proxy hizmeti için bir kez başarılı olduktan sonra, ek olarak başarısız olur, ancak gereksizdir.
 
@@ -233,7 +235,7 @@ Azure AD parola koruma proxy hizmeti 'ni yüklemek için aşağıdaki adımları
         >
         > Ayrıca, Azure cihaz kaydı (Azure AD parola koruması 'nın altında kullanılan), MFA 'yı genel olarak gerektirecek şekilde yapılandırıldıysa, MFA 'nın gerekli olduğunu da görebilirsiniz. Bu gereksinime geçici bir çözüm olarak, önceki iki kimlik doğrulama modundan biriyle MFA 'yı destekleyen farklı bir hesap kullanabilir veya Azure cihaz kaydı MFA gereksinimini geçici olarak da yapabilirsiniz.
         >
-        > Bu değişikliği yapmak için, Azure portal **Azure Active Directory** arayıp seçin, sonra **cihaz ayarları > cihazlar**' ı seçin. Cihazların *Hayır*'a **katılması Için Multi-Factor auth gerektir** ' i ayarlayın. Kayıt tamamlandıktan sonra bu ayarı *Evet* olarak yeniden yapılandırdığınızdan emin olun.
+        > Bu değişikliği yapmak için, Azure portal **Azure Active Directory** arayıp seçin, sonra **cihaz ayarları > cihazlar** ' ı seçin. Cihazların *Hayır* 'a **katılması Için Multi-Factor auth gerektir** ' i ayarlayın. Kayıt tamamlandıktan sonra bu ayarı *Evet* olarak yeniden yapılandırdığınızdan emin olun.
         >
         > MFA gereksinimlerinin yalnızca test amacıyla atlanmasına önerilir.
 
@@ -246,7 +248,9 @@ Azure AD parola koruma proxy hizmeti 'ni yüklemek için aşağıdaki adımları
     > [!NOTE]
     > Ortamınızda birden çok Azure AD parola koruma proxy sunucusu yüklüyse, bu, ormanı kaydetmek için kullandığınız proxy sunucusunu değildir.
 
-    Cmdlet 'i Azure kiracınız için genel yönetici kimlik bilgileri gerektirir. Ayrıca, yerel yönetici ayrıcalıklarına sahip bir hesap kullanarak bu cmdlet 'i çalıştırmalısınız. Ayrıca şirket içi Active Directory Kurumsal Yönetici ayrıcalıkları gerektirir. Bu adım, her orman için bir kez çalıştırılır.
+    Cmdlet 'i Azure kiracınız için *genel yönetici* veya *Güvenlik Yöneticisi* kimlik bilgileri gerektirir. Ayrıca şirket içi Active Directory Kurumsal Yönetici ayrıcalıkları gerektirir. Ayrıca, yerel yönetici ayrıcalıklarına sahip bir hesap kullanarak bu cmdlet 'i çalıştırmalısınız. Ormanı kaydettirmek için kullanılan Azure hesabı, şirket içi Active Directory hesabından farklı olabilir.
+    
+    Bu adım, her orman için bir kez çalıştırılır.
 
     `Register-AzureADPasswordProtectionForest`Cmdlet 'i aşağıdaki üç kimlik doğrulama modunu destekler. İlk iki mod Azure Multi-Factor Authentication destekler, ancak üçüncü mod değildir.
 
@@ -282,7 +286,7 @@ Azure AD parola koruma proxy hizmeti 'ni yüklemek için aşağıdaki adımları
         >
         > Ayrıca, Azure cihaz kaydı (Azure AD parola koruması 'nın altında kullanılan), MFA 'yı genel olarak gerektirecek şekilde yapılandırıldıysa, MFA 'nın gerekli olduğunu da görebilirsiniz. Bu gereksinime geçici bir çözüm olarak, önceki iki kimlik doğrulama modundan biriyle MFA 'yı destekleyen farklı bir hesap kullanabilir veya Azure cihaz kaydı MFA gereksinimini geçici olarak da yapabilirsiniz.
         >
-        > Bu değişikliği yapmak için, Azure portal **Azure Active Directory** arayıp seçin, sonra **cihaz ayarları > cihazlar**' ı seçin. Cihazların *Hayır*'a **katılması Için Multi-Factor auth gerektir** ' i ayarlayın. Kayıt tamamlandıktan sonra bu ayarı *Evet* olarak yeniden yapılandırdığınızdan emin olun.
+        > Bu değişikliği yapmak için, Azure portal **Azure Active Directory** arayıp seçin, sonra **cihaz ayarları > cihazlar** ' ı seçin. Cihazların *Hayır* 'a **katılması Için Multi-Factor auth gerektir** ' i ayarlayın. Kayıt tamamlandıktan sonra bu ayarı *Evet* olarak yeniden yapılandırdığınızdan emin olun.
         >
         > MFA gereksinimlerinin yalnızca test amacıyla atlanmasına önerilir.
 

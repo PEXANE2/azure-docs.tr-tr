@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 419de27ad87b113de62dacb0dc384702420afbd6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 980d3ca52016c65301ea72e4e669c4bafea4c053
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071124"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077209"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Azure API Management'ta istemci sertifikası kimlik doğrulamasını kullanarak arka uç hizmetlerinin güvenliğini sağlama
 
@@ -44,14 +44,14 @@ Yeni bir istemci sertifikasını karşıya yüklemek için aşağıdaki adımlar
 1. Azure portal Azure API Management hizmet örneğinize gidin.
 2. Menüden **Sertifikalar** ' ı seçin.
 3. **+ Ekle** düğmesine tıklayın.
-    ![İstemci sertifikası Ekle](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
+    ![+ Ekle düğmesini vurgulayan ekran görüntüsü.](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
 4. Sertifikaya gözatıp KIMLIĞINI ve parolasını belirtin.
-5. **Oluştur**’a tıklayın.
+5. **Oluştur** 'a tıklayın.
 
 > [!NOTE]
 > Sertifika **. pfx** biçiminde olmalıdır. Otomatik olarak imzalanan sertifikalara izin verilir.
 
-Sertifika karşıya yüklendikten sonra, **Sertifikalar**içinde görüntülenir.  Birçok sertifikanız varsa, bir [API 'yi Ağ Geçidi kimlik doğrulaması için bir istemci sertifikası kullanacak şekilde yapılandırmak][Configure an API to use a client certificate for gateway authentication]üzere, istenen sertifikanın parmak izini bir yere getirin.
+Sertifika karşıya yüklendikten sonra, **Sertifikalar** içinde görüntülenir.  Birçok sertifikanız varsa, bir [API 'yi Ağ Geçidi kimlik doğrulaması için bir istemci sertifikası kullanacak şekilde yapılandırmak][Configure an API to use a client certificate for gateway authentication]üzere, istenen sertifikanın parmak izini bir yere getirin.
 
 > [!NOTE]
 > Örneğin, otomatik olarak imzalanan bir sertifika kullanırken sertifika zinciri doğrulamasını devre dışı bırakmak için, bu SSS [öğesinde](api-management-faq.md#can-i-use-a-self-signed-tlsssl-certificate-for-a-back-end)açıklanan adımları izleyin.
@@ -73,9 +73,9 @@ Sertifika bir API tarafından kullanılıyorsa, bir uyarı ekranı görüntülen
 
 2. **Tasarım** sekmesinde, **arka uç** bölümünün kalem simgesine tıklayın.
 3. **Ağ Geçidi kimlik bilgilerini** **istemci sertifikası** olarak değiştirin ve açılan listeden sertifikanızı seçin.
-    ![İstemci sertifikalarını etkinleştir](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
+    ![Ağ Geçidi kimlik bilgilerinin değiştirileceği ve sertifikanızı seçebileceğiniz ekran görüntüsü.](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
 
-4. **Kaydet**’e tıklayın.
+4. **Kaydet** ’e tıklayın.
 
 > [!WARNING]
 > Bu değişiklik hemen etkili olur ve bu API işlemlerine yapılan çağrılar, arka uç sunucusunda kimlik doğrulaması yapmak için sertifikayı kullanır.

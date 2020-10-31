@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab9d544cc205d2971b2097110d8c36c5d85fa1fd
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: e4c020a9be7683bf045dbcc747dad3cb45058dd7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145000"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077685"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Nasıl yapılır: koşullu erişimi olan güvenilmeyen ağlardan erişim için MFA gerektirme   
 
@@ -54,11 +54,11 @@ Güvenilir olmayan tüm konumların ne olduğunu tanımlamaya çalışmak yerine
 
 - Herhangi bir konum Ekle 
 
-   ![Koşullu Erişim](./media/untrusted-networks/02.png)
+   :::image type="content" source="./media/untrusted-networks/02.png" alt-text="Azure A D konumları bölmesinin, Yapılandır 'ı Evet olarak ayarlanmış, ekleme sekmesi görünür ve herhangi bir konum seçeneği seçili ve vurgulanmış olan ekran görüntüsü." border="false":::
 
 - Tüm güvenilen konumları Dışla 
 
-   ![Koşullu Erişim](./media/untrusted-networks/01.png)
+   :::image type="content" source="./media/untrusted-networks/01.png" alt-text="Azure A D konumları bölmesinin, Yapılandır 'ı Evet olarak ayarlanmış, ekleme sekmesi görünür ve herhangi bir konum seçeneği seçili ve vurgulanmış olan ekran görüntüsü." border="false":::
 
 ## <a name="policy-deployment"></a>İlke dağıtımı
 

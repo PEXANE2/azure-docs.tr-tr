@@ -9,29 +9,28 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/23/2020
+ms.date: 10/29/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperfq1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 4accae27dc092a4900e6092c62c7f4978a46668a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 4dab75a4e95a7561bc86176816cb402c10de781e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503785"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077430"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft Identity platformunda yapılandırılabilir belirteç yaşam süreleri (Önizleme)
 
-Microsoft Identity platform tarafından verilen belirtecin ömrünü belirtebilirsiniz. Kuruluşunuzdaki tüm uygulamalar, çok kiracılı (çok kuruluşlu) bir uygulama veya belirli bir hizmet sorumlusu için belirteç ömrünü ayarlayabilirsiniz. Ancak, şu anda [yönetilen kimlik hizmeti sorumluları](../managed-identities-azure-resources/overview.md)için belirteç yaşam sürelerini yapılandırmayı desteklemiyoruz.
-
 > [!IMPORTANT]
-> %30 Ocak 2021 ' den sonra, kiracılar artık yenileme ve oturum belirteci yaşam sürelerini yapılandıramayacak ve Azure Active Directory bu tarihten sonra ilkelerde mevcut yenileme ve oturum belirteci yapılandırmasını kullanmayı durduracak. Devre dışı bırakma sonrasında erişim belirteci yaşam sürelerini yapılandırmaya devam edebilirsiniz.
-> Azure AD koşullu erişim 'de [kimlik doğrulama oturumu yönetimi özellikleri](../conditional-access/howto-conditional-access-session-lifetime.md)uyguladık   . Bu yeni özelliği, oturum açma sıklığını ayarlayarak yenileme belirteci yaşam sürelerini yapılandırmak için kullanabilirsiniz. Koşullu erişim Azure AD Premium P1 özelliğidir ve Premium [fiyatlandırma sayfasında](https://azure.microsoft.com/en-us/pricing/details/active-directory/), primin doğru olup olmadığını değerlendirebilirsiniz. 
-> 
-> Kullanımdan kaldırma tarihinden sonra koşullu erişimde kimlik doğrulama oturumu yönetimi kullanmayan kiracılar için, Azure AD 'nin bir sonraki bölümde ana hatlarıyla belirtilen varsayılan yapılandırmayı kabul edebilecekleri bir işlem olabilir.
+> %30 Ocak 2021 ' den sonra, kiracılar artık yenileme ve oturum belirteci yaşam sürelerini yapılandıramayacak ve Azure Active Directory bu tarihten sonra ilkelerde yenileme ve oturum belirteci yapılandırmasını durdurur.
+>
+> Bir kullanıcının yeniden oturum açması istenmeden önce geçen süreyi tanımlamaya devam etmeniz gerekiyorsa, koşullu erişimde oturum açma sıklığını yapılandırın. Koşullu erişim hakkında daha fazla bilgi edinmek için [Azure AD fiyatlandırma sayfasını](https://azure.microsoft.com/en-us/pricing/details/active-directory/)ziyaret edin.
+>
+> Kullanımdan kaldırma tarihinden sonra koşullu erişim kullanmak istemediğiniz kiracılar için, Azure AD 'nin bir sonraki bölümde özetlenen varsayılan yapılandırmayı kabul edebilecekleri bir işlem olabilir.
 
 ## <a name="configurable-token-lifetime-properties-after-the-retirement"></a>Kullanımdan kaldırıldıktan sonra yapılandırılabilir belirteç ömrü özellikleri
-Yenileme ve oturum belirteci yapılandırması aşağıdaki özelliklerden ve sırasıyla ayarlanan değerleriyle etkilenir. Yenileme ve oturum belirteci yapılandırması kullanımdan kaldırıldıktan sonra, ilkelerin özel değerler yapılandırılmış özel değerler mi olduğunu bağımsız olarak, Azure AD yalnızca aşağıda açıklanan varsayılan değeri kabul eder.  
+Yenileme ve oturum belirteci yapılandırması aşağıdaki özelliklerden ve sırasıyla ayarlanan değerleriyle etkilenir. Yenileme ve oturum belirteci yapılandırması kullanımdan kaldırıldıktan sonra, ilkelerin özel değerler yapılandırılmış özel değerler mi olduğunu bağımsız olarak, Azure AD yalnızca aşağıda açıklanan varsayılan değeri kabul eder. Devre dışı bırakma sonrasında erişim belirteci yaşam sürelerini yapılandırmaya devam edebilirsiniz. 
 
 |Özellik   |İlke Özellik dizesi    |Ekranlarını |Varsayılan |
 |----------|-----------|------------|------------|
@@ -41,13 +40,34 @@ Yenileme ve oturum belirteci yapılandırması aşağıdaki özelliklerden ve s�
 |Single-Factor oturum belirtecinin maksimum yaşı  |Maxagesessionsinglefaktör |Oturum belirteçleri (kalıcı ve kalıcı olmayan)  |İptal edilene kadar |
 |Multi-Factor Session belirtecinin en fazla yaşı  |MaxAgeSessionMultiFactor  |Oturum belirteçleri (kalıcı ve kalıcı olmayan)  |180 gün |
 
-Özellik değerleri Azure AD varsayılanlarından farklı olan belirteç ömür ilkelerini belirlemek için [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) cmdlet 'ini kullanabilirsiniz.
+## <a name="identify-configuration-in-scope-of-retirement"></a>Kullanımdan kaldırma kapsamında yapılandırmayı tanımla
 
-İlkelerinizin kiracınızda nasıl kullanıldığını daha fazla anlamak için [Get-AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) cmdlet 'ini kullanarak ilkelerinize hangi uygulamaların ve hizmet sorumlularının bağlandığını belirleyebilirsiniz. 
+Başlamak için aşağıdaki adımları uygulayın:
 
-Kiracınızda yenileme ve oturum belirteci yapılandırma özellikleri için özel değerler tanımlayan ilkeler varsa, Microsoft, kapsamdaki bu ilkeleri yukarıda açıklanan Varsayılanları yansıtan değerlere güncelleştirmenizi önerir. Hiçbir değişiklik yapılgerekmediğinden, Azure AD varsayılan değerleri otomatik olarak kabul eder.  
+1. En son [Azure AD PowerShell modülü genel önizleme sürümünü](https://www.powershellgallery.com/packages/AzureADPreview)indirin.
+1. `Connect`Azure AD yönetici hesabınızda oturum açmak için komutunu çalıştırın. Her yeni oturumu başlattığınızda bu komutu çalıştırın.
+
+    ```powershell
+    Connect-AzureAD -Confirm
+    ```
+
+1. Kuruluşunuzda oluşturulan tüm ilkeleri görmek için [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) cmdlet 'ini çalıştırın.  Yukarıda listelenen varsayılandan farklı olarak tanımlanmış özellik değerleri olan sonuçlar, emeklilik kapsamıdır.
+
+    ```powershell
+    Get-AzureADPolicy -All
+    ```
+
+1. Belirlediğiniz belirli bir ilkeye bağlı olan uygulamaları ve hizmet sorumlularını görmek için, aşağıdaki [Get-AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) cmdlet 'ini çalıştırarak **1a37dad8-5dad7-4cc8-87c7-efbc0326cf20** ' i ilke kimliklerinizle değiştirin. Daha sonra koşullu erişim oturum açma sıklığını yapılandırıp yapılandırmamaya veya Azure AD varsayılanları ile kalmaya karar verebilirsiniz.
+
+    ```powershell
+    Get-AzureADPolicyAppliedObject -id 1a37dad8-5da7-4cc8-87c7-efbc0326cf20
+    ```
+
+Kiracınızda yenileme ve oturum belirteci yapılandırma özellikleri için özel değerler tanımlayan ilkeler varsa, Microsoft bu ilkeleri yukarıda belirtilen Varsayılanları yansıtan değerlere güncelleştirmenizi önerir. Hiçbir değişiklik yapılgerekmediğinden, Azure AD varsayılan değerleri otomatik olarak kabul eder.  
 
 ## <a name="overview"></a>Genel Bakış
+
+Microsoft Identity platform tarafından verilen belirtecin ömrünü belirtebilirsiniz. Kuruluşunuzdaki tüm uygulamalar, çok kiracılı (çok kuruluşlu) bir uygulama veya belirli bir hizmet sorumlusu için belirteç ömrünü ayarlayabilirsiniz. Ancak, şu anda [yönetilen kimlik hizmeti sorumluları](../managed-identities-azure-resources/overview.md)için belirteç yaşam sürelerini yapılandırmayı desteklemiyoruz.
 
 Azure AD 'de bir ilke nesnesi, tek tek uygulamalarda veya bir kuruluştaki tüm uygulamalarda zorlanan bir kurallar kümesini temsil eder. Her ilke türünün, atandıkları nesnelere uygulanan bir özellikler kümesi ile benzersiz bir yapısı vardır.
 
@@ -77,7 +97,7 @@ NotOnOrAfter değeri, `AccessTokenLifetime` içindeki parametresi kullanılarak 
 
 ### <a name="refresh-tokens"></a>Belirteçleri Yenile
 
-İstemci korunan bir kaynağa erişmek için bir erişim belirteci aldığında, istemci Ayrıca bir yenileme belirteci alır. Yenileme belirteci, geçerli erişim belirtecinin süresi dolmuşsa yeni erişim/yenileme belirteci çiftleri almak için kullanılır. Yenileme belirteci, Kullanıcı ve istemci birleşimine bağlanır. Yenileme belirteci [herhangi bir zamanda iptal](access-tokens.md#token-revocation)edilebilir ve belirteç her kullanıldığında belirtecin geçerliliği denetlenir.  Yeni erişim belirteçleri getirmek için kullanıldığında yenileme belirteçleri iptal edilmez; bununla birlikte, yeni bir belirteç alırken eski belirteci güvenli bir şekilde silmek için en iyi uygulamadır. 
+İstemci korunan bir kaynağa erişmek için bir erişim belirteci aldığında, istemci Ayrıca bir yenileme belirteci alır. Yenileme belirteci, geçerli erişim belirtecinin süresi dolmuşsa yeni erişim/yenileme belirteci çiftleri almak için kullanılır. Yenileme belirteci, Kullanıcı ve istemci birleşimine bağlanır. Yenileme belirteci [herhangi bir zamanda iptal](access-tokens.md#token-revocation)edilebilir ve belirteç her kullanıldığında belirtecin geçerliliği denetlenir.  Yeni erişim belirteçleri getirmek için kullanıldığında yenileme belirteçleri iptal edilmez; bununla birlikte, yeni bir belirteç alırken eski belirteci güvenli bir şekilde silmek için en iyi uygulamadır.
 
 Gizli istemcilerle ortak istemciler arasında ayrım yapmak önemlidir, çünkü yenileme belirteçlerinin ne kadar süreyle kullanılabileceğini etkiler. Farklı istemci türleri hakkında daha fazla bilgi için bkz. [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1).
 

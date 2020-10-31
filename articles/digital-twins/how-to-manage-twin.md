@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4945e89232ee9a15b2700dac49ccd829b7a52dac
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 425ee90306de3961c64766f42bd28f668fc9396e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494777"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077957"
 ---
 # <a name="manage-digital-twins"></a>Dijital ikizleri yönetme
 
@@ -35,14 +35,19 @@ Dijital bir ikizi oluşturmak için şunları sağlamanız gerekir:
 * Dijital ikizi için istenen KIMLIK
 * Kullanmak istediğiniz [model](concepts-models.md)
 
-İsteğe bağlı olarak, dijital ikizi tüm özellikleri için başlangıç değerleri sağlayabilirsiniz. 
+İsteğe bağlı olarak, dijital ikizi tüm özellikleri için başlangıç değerleri sağlayabilirsiniz. Özellikler isteğe bağlı olarak değerlendirilir ve daha sonra ayarlanabilir, ancak **ayarlanana kadar bir ikizi parçası olarak gösterilmez.**
 
-Model ve ilk özellik değerleri `initData` , ilgili verileri içeren BIR JSON dizesi olan parametresi aracılığıyla sağlanır. Bu nesneyi yapılandırma hakkında daha fazla bilgi için sonraki bölüme geçin.
+>[!NOTE]
+>İkizi özelliklerinin **başlatılması gerekmiyorsa, ikizi oluşturulduğunda ikizi 'in** tüm [bileşenlerinin](concepts-models.md#elements-of-a-model) ayarlanması gerekir. Bunlar boş nesneler olabilirler, ancak bileşenlerin kendisi mevcut olmalıdır.
+
+Model ve herhangi bir başlangıç özelliği değeri `initData` , ilgili verileri içeren BIR JSON dizesi olan parametresi aracılığıyla sağlanır. Bu nesneyi yapılandırma hakkında daha fazla bilgi için sonraki bölüme geçin.
 
 > [!TIP]
 > Bir ikizi oluşturduktan veya güncelleştirdikten sonra değişiklikler [sorgularda](how-to-query-graph.md)yansıtılmadan önce 10 saniyeye kadar gecikme olabilir. `GetDigitalTwin`API ( [Bu makalede daha sonra](#get-data-for-a-digital-twin)açıklanan) Bu gecikmeyle karşılaşmaz, bu nedenle anlık bir yanıt gerekiyorsa, yeni oluşturduğunuz TWINS 'nizi görmek IÇIN sorgulamak yerine API çağrısını kullanın. 
 
 ### <a name="initialize-model-and-properties"></a>Modeli ve özellikleri Başlat
+
+İkizi oluşturulduğu sırada bir ikizi özelliklerini başlatabilirsiniz. 
 
 İkizi oluşturma API 'SI, ikizi özelliklerinin geçerli bir JSON açıklamasına serileştirilmiş bir nesne kabul eder. Bir ikizi için JSON biçiminin açıklaması için bkz. [*Kavramlar: dijital TWINS ve ikizi Graph*](concepts-twins-graph.md) . 
 
@@ -110,7 +115,7 @@ Yöntemi ile bir ikizi aldığınızda, yalnızca en az bir kez ayarlanmış ola
 
 Tek bir API çağrısını kullanarak birden çok TWINS almak için, sorgu API 'SI örneklerine bkz. [*nasıl yapılır: ikizi grafiğini sorgulama*](how-to-query-graph.md).
 
-Bir *ay*tanımlayan aşağıdaki modeli ( [dijital TWINS tanım dili (dtdl)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)olarak yazılmış) göz önünde bulundurun:
+Bir *ay* tanımlayan aşağıdaki modeli ( [dijital TWINS tanım dili (dtdl)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)olarak yazılmış) göz önünde bulundurun:
 
 ```json
 {
@@ -133,7 +138,7 @@ Bir *ay*tanımlayan aşağıdaki modeli ( [dijital TWINS tanım dili (dtdl)](htt
     ]
 }
 ```
-`object result = await client.GetDigitalTwinAsync("my-moon");`Bir *ay*türü ikizi çağırma sonucu şöyle görünebilir:
+`object result = await client.GetDigitalTwinAsync("my-moon");`Bir *ay* türü ikizi çağırma sonucu şöyle görünebilir:
 
 ```json
 {
@@ -164,7 +169,7 @@ Bir *ay*tanımlayan aşağıdaki modeli ( [dijital TWINS tanım dili (dtdl)](htt
 Dijital ikizi tanımlı özellikleri, Digital ikizi üzerinde en üst düzey özellikler olarak döndürülür. DTDL tanımının parçası olmayan meta veriler veya sistem bilgileri bir `$` ön ek ile döndürülür. Meta veri özellikleri şunları içerir:
 * Bu Azure dijital TWINS örneğindeki dijital ikizi KIMLIĞI (as) `$dtId` .
 * `$etag`, Web sunucusu tarafından atanan standart bir HTTP alanı.
-* Bir bölümdeki diğer özellikler `$metadata` . Bu modüller şunlardır:
+* Bir bölümdeki diğer özellikler `$metadata` . Bunlar:
     - Dijital ikizi modelinin DTMı 'ı.
     - Her yazılabilir özellik için eşitleme durumu. Bu, hizmetin ve cihazın ayrılan durumlar (örneğin, bir cihaz çevrimdışı olduğunda) olduğu durumlarda, cihazlar için en yararlı seçenektir. Şu anda bu özellik yalnızca IoT Hub bağlı fiziksel cihazlara uygulanır. Meta veriler bölümündeki verilerle, bir özelliğin tam durumunun yanı sıra son değiştirilme zaman damgalarını anlamak mümkündür. Eşitleme durumu hakkında daha fazla bilgi için bkz. cihaz durumunu eşitlemeye yönelik [bu IoT Hub öğreticisi](../iot-hub/tutorial-device-twins.md) .
     - IoT Hub veya Azure dijital TWINS gibi hizmete özgü meta veriler. 
@@ -276,8 +281,8 @@ Bir Digital ikizi bileşenlerindeki özellikler için düzeltme eki uygulamak ü
 Bu işlem yalnızca düzeltme eki tarafından değiştirilen dijital ikizi yeni modelle uyumlu olduğunda başarılı olur. 
 
 Aşağıdaki örneği inceleyin:
-1. *Foo_old*modeliyle dijital bir ikizi düşünün. *foo_old* gerekli bir özellik *kütle*tanımlar.
-2. Yeni model *foo_new* bir özellik kütle tanımlar ve yeni bir gerekli özellik *sıcaklığını*ekler.
+1. *Foo_old* modeliyle dijital bir ikizi düşünün. *foo_old* gerekli bir özellik *kütle* tanımlar.
+2. Yeni model *foo_new* bir özellik kütle tanımlar ve yeni bir gerekli özellik *sıcaklığını* ekler.
 3. Düzeltme ekiyle sonra, dijital ikizi hem bir kütle hem de sıcaklık özelliği olmalıdır. 
 
 Bu durumun düzeltme ekinin hem model hem de ikizi 'ın sıcaklık özelliğini güncelleştirmesi gerekir, örneğin:

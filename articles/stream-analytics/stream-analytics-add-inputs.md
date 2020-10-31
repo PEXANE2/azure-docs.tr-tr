@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: f49ba8a907a65180061ef3973ae30b4438a945a2
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 843e05a68a9fd9a72f14847a941d69c672094b66
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043008"
+ms.locfileid: "93077022"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Azure Stream Analytics için girişleri anlayın
 
@@ -26,7 +26,7 @@ Stream Analytics giriş olarak dört tür kaynakla birinci sınıf tümleştirme
 
 Bu giriş kaynakları, Stream Analytics işiniz veya farklı bir abonelikle aynı Azure aboneliğinde bulunabilir.
 
-[Azure Portal](stream-analytics-quick-create-portal.md#configure-job-input), [Azure POWERSHELL](https://docs.microsoft.com/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput), [.NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input)ve [Visual Studio 'yu](stream-analytics-tools-for-visual-studio-install.md) kullanarak Stream Analytics iş girişleri oluşturabilir, düzenleyebilir ve test edebilirsiniz.
+[Azure Portal](stream-analytics-quick-create-portal.md#configure-job-input), [Azure POWERSHELL](https://docs.microsoft.com/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput), [.NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [REST API](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs)ve [Visual Studio 'yu](stream-analytics-tools-for-visual-studio-install.md) kullanarak Stream Analytics iş girişleri oluşturabilir, düzenleyebilir ve test edebilirsiniz.
 
 ## <a name="stream-and-reference-inputs"></a>Akış ve başvuru girişleri
 Veriler bir veri kaynağına gönderildiği için Stream Analytics işi tarafından kullanılır ve gerçek zamanlı olarak işlenir. Girişler iki türe ayrılır: veri akışı girişleri ve başvuru verisi girişleri.
