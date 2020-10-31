@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: krsh
 ms.date: 10/20/2020
-ms.openlocfilehash: 34d64d70c657712bb44aa6331b53f014349a0dda
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c28595458fea61f66b6930ce72fa0702e00aecd9
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92284823"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129313"
 ---
 # <a name="how-to-create-a-virtual-machine-using-an-approved-base"></a>Onaylanan bir temel kullanılarak sanal makine oluşturma
 
@@ -32,12 +32,12 @@ Tabanınız olarak aşağıdaki Windows veya Linux görüntülerinden birini se�
 
 ### <a name="linux"></a>Linux
 
-Azure, onaylı bir Linux dağıtımları yelpazesi sunar. Geçerli bir liste için bkz. [Azure tarafından onaylanan dağıtımlara Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+Azure, onaylı bir Linux dağıtımları yelpazesi sunar. Geçerli bir liste için bkz. [Azure tarafından onaylanan dağıtımlara Linux](../virtual-machines/linux/endorsed-distros.md).
 
 ## <a name="create-vm-on-the-azure-portal"></a>Azure portal VM oluşturma
 
 1. [Azure portalında](https://ms.portal.azure.com/) oturum açın.
-2. **Sanal makineler**'i seçin.
+2. **Sanal makineler** 'i seçin.
 3. **+ Ekle** ' yi seçerek **sanal makine oluştur** ekranını açın.
 4. Açılan listeden görüntüyü seçin veya tüm kullanılabilir sanal makine görüntülerini aramak veya taramak için **tüm ortak ve özel görüntülere gözatıp '** yi seçin.
 5. **Gen 2** VM oluşturmak için **Gelişmiş** sekmesine gidin ve **Gen 2** seçeneğini belirleyin.
@@ -49,9 +49,9 @@ Azure, onaylı bir Linux dağıtımları yelpazesi sunar. Geçerli bir liste iç
     :::image type="content" source="media/create-vm/create-virtual-machine-sizes.png" alt-text="Gen 1 veya Gen 2 ' yi seçin.":::
 
 7. VM oluşturmak için gereken diğer ayrıntıları sağlayın.
-8. Seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin. **Doğrulama başarılı** Iletisi göründüğünde **Oluştur**' u seçin.
+8. Seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin. **Doğrulama başarılı** Iletisi göründüğünde **Oluştur** ' u seçin.
 
-Azure, belirttiğiniz sanal makineyi sağlamaya başlar. Sol menüdeki **sanal makineler** sekmesini seçerek ilerleme durumunu izleyin. Oluşturulduktan sonra, sanal makinenin durumu **çalışıyor**olarak değişir.
+Azure, belirttiğiniz sanal makineyi sağlamaya başlar. Sol menüdeki **sanal makineler** sekmesini seçerek ilerleme durumunu izleyin. Oluşturulduktan sonra, sanal makinenin durumu **çalışıyor** olarak değişir.
 
 
 ## <a name="configure-the-vm"></a>VM'yi yapılandırma

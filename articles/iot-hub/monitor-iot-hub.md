@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: 577ec9e01310787dacb45a03e1efae128cbab872
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 71a7041ec02da9a85de411f1113814311c21cd4f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078229"
+ms.locfileid: "93128888"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Azure IoT Hub izleme
 
@@ -23,7 +23,9 @@ Her bir IoT Hub 'ı için Azure portal **genel bakış** sayfasında, kullanıla
 
 :::image type="content" source="media/monitor-iot-hub/overview-portal.png" alt-text="IoT Hub 'a Genel Bakış sayfasında varsayılan ölçüm grafikleri.":::
 
-Bu bilgiler faydalıdır, ancak bir IoT Hub 'ı için kullanılabilen izleme verilerinin yalnızca küçük bir miktarını temsil eder. Bazı izleme verileri otomatik olarak toplanır ve IoT Hub 'ınızı oluşturandan hemen sonra analiz için kullanılabilir. Bazı yapılandırma ile ek veri koleksiyonu türlerini etkinleştirebilirsiniz.
+İleti sayısı değerinin 1 dakika geciktirilebildiği ve bu nedenle IoT Hub hizmet altyapısında olması gereken nedenlerden dolayı değer bazen yenileme sırasında daha yüksek ve daha düşük değerler arasında sıçramaya neden olabilir. Bu sayaç yalnızca geçen dakika boyunca tahakkuk edilen değerler için yanlış olmalıdır.
+
+Genel Bakış bölmesinde sunulan bilgiler kullanışlıdır, ancak bir IoT Hub 'ı için kullanılabilen izleme verilerinin yalnızca küçük bir miktarını temsil eder. Bazı izleme verileri otomatik olarak toplanır ve IoT Hub 'ınızı oluşturandan hemen sonra analiz için kullanılabilir. Bazı yapılandırma ile ek veri koleksiyonu türlerini etkinleştirebilirsiniz.
 
 ## <a name="what-is-azure-monitor"></a>Azure İzleyici nedir?
 

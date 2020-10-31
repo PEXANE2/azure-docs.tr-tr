@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: 467b8506eb0cafc61731a69804c70b8080ab21c2
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 649abf6d07a95c7f20f6416f7d3155f8d115782b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042443"
+ms.locfileid: "93127578"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream Analytics giriş olarak veri akışı
 
@@ -38,7 +38,7 @@ Stream Analytics tüm veri akışı giriş kaynaklarında sıkıştırmayı dest
 
 Azure Event Hubs, yüksek düzeyde ölçeklenebilir Yayınla-Abone ol olay yatırımcıları sağlar. Bir olay hub 'ı saniyede milyonlarca olay toplayabilir, böylece bağlı cihazlarınız ve uygulamalarınız tarafından üretilen büyük miktarda veriyi işleyebilir ve analiz edebilirsiniz. Birlikte, Event Hubs ve Stream Analytics gerçek zamanlı analizler için uçtan uca bir çözüm sunar. Event Hubs, olayları gerçek zamanlı olarak Azure 'a aktarmanıza olanak tanır ve Stream Analytics işler bu olayları gerçek zamanlı olarak işleyebilir. Örneğin, Event Hubs için Web tıklamalarını, algılayıcı ayarlarını veya çevrimiçi günlük olaylarını gönderebilirsiniz. Daha sonra gerçek zamanlı filtreleme, toplama ve bağıntı için giriş veri akışları olarak Event Hubs kullanmak üzere Stream Analytics işleri oluşturabilirsiniz.
 
-`EventEnqueuedUtcTime` bir olay hub 'ında bir olayın varış zamanıdır ve Stream Analytics Event Hubs gelen olayların varsayılan zaman damgasıdır. Verileri olay yükünde zaman damgası kullanarak bir akış olarak işlemek için anahtar sözcük [Ile zaman damgasını](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) kullanmanız gerekir.
+`EventEnqueuedUtcTime` bir olay hub 'ında bir olayın varış zamanıdır ve Stream Analytics Event Hubs gelen olayların varsayılan zaman damgasıdır. Verileri olay yükünde zaman damgası kullanarak bir akış olarak işlemek için anahtar sözcük [Ile zaman damgasını](/stream-analytics-query/timestamp-by-azure-stream-analytics) kullanmanız gerekir.
 
 ### <a name="event-hubs-consumer-groups"></a>Event Hubs tüketici grupları
 
@@ -56,7 +56,7 @@ Aşağıdaki tabloda, bir olay hub 'ından veri girişi akışı için Azure por
 | **Olay Hub'ı adı** | Giriş olarak kullanılacak Olay Hub 'ının adı. |
 | **Olay Hub'ı ilke adı** | Olay Hub 'ına erişim sağlayan paylaşılan erişim ilkesi. Her paylaşılan erişim ilkesinin adı, sizin ayarladığınız izinler ve anahtarlara erişim vardır. Bu seçenek, Olay Hub 'ı ayarlarını el ile sağlama seçeneğini seçmediğiniz takdirde otomatik olarak doldurulur.|
 | **Olay Hub 'ı Tüketici grubu** (önerilir) | Her Stream Analytics işi için ayrı bir tüketici grubu kullanmanız önemle önerilir. Bu dize, Olay Hub 'ından veri almak için kullanılacak tüketici grubunu tanımlar. Hiçbir tüketici grubu belirtilmemişse, Stream Analytics işi $Default tüketici grubunu kullanır.  |
-| **Bölüm anahtarı** | Bu, yalnızca işiniz [Uyumluluk düzeyi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) 1,2 veya üstünü kullanacak şekilde yapılandırıldıysa kullanılabilen isteğe bağlı bir alandır. Giriş bir özellik tarafından bölümlenmiş ise, bu özelliğin adını buraya ekleyebilirsiniz. Bu özellik, bir bölüm BY veya GROUP BY yan tümcesi içeriyorsa sorgunuzun performansını iyileştirmek için kullanılır. Bu iş uyumluluk düzeyi 1,2 veya üstünü kullanıyorsa, bu alan varsayılan olarak "PartitionID" olarak belirlenmiştir. |
+| **Bölüm anahtarı** | Bu, yalnızca işiniz [Uyumluluk düzeyi](./stream-analytics-compatibility-level.md) 1,2 veya üstünü kullanacak şekilde yapılandırıldıysa kullanılabilen isteğe bağlı bir alandır. Giriş bir özellik tarafından bölümlenmiş ise, bu özelliğin adını buraya ekleyebilirsiniz. Bu özellik, bir bölüm BY veya GROUP BY yan tümcesi içeriyorsa sorgunuzun performansını iyileştirmek için kullanılır. Bu iş uyumluluk düzeyi 1,2 veya üstünü kullanıyorsa, bu alan varsayılan olarak "PartitionID" olarak belirlenmiştir. |
 | **Olay serileştirme biçimi** | Gelen veri akışının serileştirme biçimi (JSON, CSV, Avro veya [diğer (prototip, XML, özel...)](custom-deserializer.md)).  JSON biçiminin belirtile hizalandığından ve ondalık sayılar için öndeki 0 içermediğinden emin olun. |
 | **Kodlama** | UTF-8 şu anda desteklenen tek kodlama biçimidir. |
 | **Olay sıkıştırma türü** | Hiçbiri (varsayılan), GZip veya söndür gibi gelen veri akışını okumak için kullanılan sıkıştırma türü. |
@@ -80,14 +80,14 @@ FROM Input
 ```
 
 > [!NOTE]
-> Olay Hub 'ını IoT Hub yollar için uç nokta olarak kullanırken, [Getmetadatapropertyvalue işlevini](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue)kullanarak IoT Hub meta verilerine erişebilirsiniz.
+> Olay Hub 'ını IoT Hub yollar için uç nokta olarak kullanırken, [Getmetadatapropertyvalue işlevini](/stream-analytics-query/getmetadatapropertyvalue)kullanarak IoT Hub meta verilerine erişebilirsiniz.
 > 
 
 ## <a name="stream-data-from-iot-hub"></a>IoT Hub veri akışı
 
 Azure IoT Hub, IoT senaryoları için iyileştirilmiş, yüksek düzeyde ölçeklenebilir bir yayınla-abone ol olay alma olayıdır.
 
-Stream Analytics bir IoT Hub gelen olayların varsayılan zaman damgası, olayın IoT Hub geldiği zaman damgasıdır `EventEnqueuedUtcTime` . Verileri olay yükünde zaman damgası kullanarak bir akış olarak işlemek için anahtar sözcük [Ile zaman damgasını](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) kullanmanız gerekir.
+Stream Analytics bir IoT Hub gelen olayların varsayılan zaman damgası, olayın IoT Hub geldiği zaman damgasıdır `EventEnqueuedUtcTime` . Verileri olay yükünde zaman damgası kullanarak bir akış olarak işlemek için anahtar sözcük [Ile zaman damgasını](/stream-analytics-query/timestamp-by-azure-stream-analytics) kullanmanız gerekir.
 
 ### <a name="iot-hub-consumer-groups"></a>IoT Hub 'ı tüketici grupları
 
@@ -106,7 +106,7 @@ Aşağıdaki tabloda, bir IoT Hub akış girişi olarak yapılandırdığınızd
 | **Paylaşılan erişim ilkesi adı** | IoT Hub erişim sağlayan paylaşılan erişim ilkesi. Her paylaşılan erişim ilkesinin adı, sizin ayarladığınız izinler ve anahtarlara erişim vardır. |
 | **Paylaşılan erişim ilkesi anahtarı** | IoT Hub erişimi yetkilendirmek için kullanılan paylaşılan erişim anahtarı.  IoT Hub ayarlarını el ile sağlama seçeneğini seçmediğiniz takdirde bu seçenek otomatik olarak doldurulur. |
 | **Tüketici grubu** | Her Stream Analytics işi için farklı bir tüketici grubu kullanmanız önemle tavsiye edilir. Tüketici grubu IoT Hub verileri almak için kullanılır. Stream Analytics, aksi belirtilmedikçe $Default tüketicisi grubunu kullanır.  |
-| **Bölüm anahtarı** | Bu, yalnızca işiniz [Uyumluluk düzeyi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) 1,2 veya üstünü kullanacak şekilde yapılandırıldıysa kullanılabilen isteğe bağlı bir alandır. Giriş bir özellik tarafından bölümlenmiş ise, bu özelliğin adını buraya ekleyebilirsiniz. Bu özellik, bir bölüm BY veya GROUP BY yan tümcesi içeriyorsa sorgunuzun performansını iyileştirmek için kullanılır. Bu iş uyumluluk düzeyi 1,2 veya üstünü kullanıyorsa, bu alan varsayılan olarak "PartitionID" olarak belirlenmiştir. |
+| **Bölüm anahtarı** | Bu, yalnızca işiniz [Uyumluluk düzeyi](./stream-analytics-compatibility-level.md) 1,2 veya üstünü kullanacak şekilde yapılandırıldıysa kullanılabilen isteğe bağlı bir alandır. Giriş bir özellik tarafından bölümlenmiş ise, bu özelliğin adını buraya ekleyebilirsiniz. Bu özellik, bir bölüm BY veya GROUP BY yan tümcesi içeriyorsa sorgunuzun performansını iyileştirmek için kullanılır. Bu iş uyumluluk düzeyi 1,2 veya üstünü kullanıyorsa, bu alan varsayılan olarak "PartitionID" olarak belirlenmiştir. |
 | **Olay serileştirme biçimi** | Gelen veri akışının serileştirme biçimi (JSON, CSV, Avro veya [diğer (prototip, XML, özel...)](custom-deserializer.md)).  JSON biçiminin belirtile hizalandığından ve ondalık sayılar için öndeki 0 içermediğinden emin olun. |
 | **Kodlama** | UTF-8 şu anda desteklenen tek kodlama biçimidir. |
 | **Olay sıkıştırma türü** | Hiçbiri (varsayılan), GZip veya söndür gibi gelen veri akışını okumak için kullanılan sıkıştırma türü. |
@@ -137,7 +137,7 @@ Bir blob, 13:00 konumundaki bir depolama hesabı kapsayıcısına yüklenirse ve
 
 Bir Azure Stream Analytics işi *Şu* anda 13:00 ' de kullanılarak başlatılırsa ve bir BLOB depolama hesabı kapsayıcısına 13:01 ' de yüklenirse, Azure Stream Analytics blobu seçer. Her bloba atanan zaman damgası yalnızca üzerine dayalıdır `BlobLastModifiedTime` . Blob 'un içinde olduğu klasörün, atanan zaman damgasıyla ilişkisi yok. Örneğin, 2019-11-11 olan bir blob *2019/10-01/00/b1.txt* varsa `BlobLastModifiedTime` , bu bloba atanan zaman damgası 2019-11-11.
 
-Verileri olay yükünde zaman damgası kullanarak bir akış olarak işlemek için anahtar sözcük [Ile zaman damgasını](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) kullanmanız gerekir. Blob dosyası kullanılabiliyorsa Stream Analytics işi her saniye Azure Blob depolama alanından veya ADLS 2. girişte veri çeker. Blob dosyası kullanılamıyorsa, 90 saniyelik en fazla gecikme süresine sahip bir üstel geri alma işlemi vardır.
+Verileri olay yükünde zaman damgası kullanarak bir akış olarak işlemek için anahtar sözcük [Ile zaman damgasını](/stream-analytics-query/stream-analytics-query-language-reference) kullanmanız gerekir. Blob dosyası kullanılabiliyorsa Stream Analytics işi her saniye Azure Blob depolama alanından veya ADLS 2. girişte veri çeker. Blob dosyası kullanılamıyorsa, 90 saniyelik en fazla gecikme süresine sahip bir üstel geri alma işlemi vardır.
 
 CSV biçimli girişler, veri kümesi alanlarını tanımlamak için bir başlık satırı gerektirir ve tüm üstbilgi satırı alanları benzersiz olmalıdır.
 
@@ -157,10 +157,10 @@ Aşağıdaki tabloda, blob depolamayı bir akış girişi olarak yapılandırdı
 | **Depolama hesabı** | Blob dosyalarının bulunduğu depolama hesabının adı. |
 | **Depolama hesabı anahtarı** | Depolama hesabıyla ilişkili gizli anahtar. Ayarları el ile sağlama seçeneğini seçmediğiniz takdirde bu seçenek otomatik olarak doldurulur. |
 | **Kapsayıcı** | Kapsayıcılar, Bloblar için mantıksal bir gruplama sağlar. Yeni bir kapsayıcının oluşturulmasını sağlamak için **Mevcut kapsayıcıyı kullan** veya  **Yeni oluştur** seçeneklerinden birini belirleyebilirsiniz.|
-| **Yol kalıbı** (isteğe bağlı) | Belirtilen kapsayıcı içindeki Blobları bulmak için kullanılan dosya yolu. Kapsayıcının kökünden blob 'ları okumak istiyorsanız, bir yol kalıbı ayarlamayın. Yol içinde, aşağıdaki üç değişkenin bir veya daha fazla örneğini belirtebilirsiniz: `{date}` , `{time}` veya `{partition}`<br/><br/>Örnek 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Örnek 2: `cluster1/logs/{date}`<br/><br/>`*`Karakter, yol ön eki için izin verilen bir değer değil. Yalnızca geçerli <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure Blob karakterlerine</a> izin verilir. Kapsayıcı adlarını veya dosya adlarını eklemeyin. |
+| **Yol kalıbı** (isteğe bağlı) | Belirtilen kapsayıcı içindeki Blobları bulmak için kullanılan dosya yolu. Kapsayıcının kökünden blob 'ları okumak istiyorsanız, bir yol kalıbı ayarlamayın. Yol içinde, aşağıdaki üç değişkenin bir veya daha fazla örneğini belirtebilirsiniz: `{date}` , `{time}` veya `{partition}`<br/><br/>Örnek 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Örnek 2: `cluster1/logs/{date}`<br/><br/>`*`Karakter, yol ön eki için izin verilen bir değer değil. Yalnızca geçerli <a HREF="/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata">Azure Blob karakterlerine</a> izin verilir. Kapsayıcı adlarını veya dosya adlarını eklemeyin. |
 | **Tarih biçimi** (isteğe bağlı) | Yol içinde tarih değişkenini kullanıyorsanız, dosyaların düzenlenme tarih biçimi. Örnek: `YYYY/MM/DD` <br/><br/> Blob girişi `{date}` `{time}` yolunda veya yolunda olduğunda, klasörler artan zaman düzeninde aranır.|
 | **Saat biçimi** (isteğe bağlı) |  Yoldaki zaman değişkenini, dosyaların düzenlenme zaman biçimini kullanırsanız. Şu anda desteklenen tek değer `HH` saattir. |
-| **Bölüm anahtarı** | Bu, yalnızca işiniz [Uyumluluk düzeyi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) 1,2 veya üstünü kullanacak şekilde yapılandırıldıysa kullanılabilen isteğe bağlı bir alandır. Giriş bir özellik tarafından bölümlenmiş ise, bu özelliğin adını buraya ekleyebilirsiniz. Bu özellik, bir bölüm BY veya GROUP BY yan tümcesi içeriyorsa sorgunuzun performansını iyileştirmek için kullanılır. Bu iş uyumluluk düzeyi 1,2 veya üstünü kullanıyorsa, bu alan varsayılan olarak "PartitionID" olarak belirlenmiştir. |
+| **Bölüm anahtarı** | Bu, yalnızca işiniz [Uyumluluk düzeyi](./stream-analytics-compatibility-level.md) 1,2 veya üstünü kullanacak şekilde yapılandırıldıysa kullanılabilen isteğe bağlı bir alandır. Giriş bir özellik tarafından bölümlenmiş ise, bu özelliğin adını buraya ekleyebilirsiniz. Bu özellik, bir bölüm BY veya GROUP BY yan tümcesi içeriyorsa sorgunuzun performansını iyileştirmek için kullanılır. Bu iş uyumluluk düzeyi 1,2 veya üstünü kullanıyorsa, bu alan varsayılan olarak "PartitionID" olarak belirlenmiştir. |
 | **Giriş bölümlerinin sayısı** | Bu alan yalnızca yol düzeninde {Partition} mevcut olduğunda mevcuttur. Bu özelliğin değeri bir tamsayı >= 1 ' dir. Pathmodel içinde {Partition} nerede göründüğünde, 0 ile bu alanın değeri (1) arasında bir sayı kullanılacaktır. |
 | **Olay serileştirme biçimi** | Gelen veri akışının serileştirme biçimi (JSON, CSV, Avro veya [diğer (prototip, XML, özel...)](custom-deserializer.md)).  JSON biçiminin belirtile hizalandığından ve ondalık sayılar için öndeki 0 içermediğinden emin olun. |
 | **Kodlama** | CSV ve JSON için, UTF-8 şu anda desteklenen tek kodlama biçimidir. |
@@ -194,5 +194,5 @@ FROM Input
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

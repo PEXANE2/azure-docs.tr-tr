@@ -12,24 +12,30 @@ ms.date: 03/30/2020
 ms.author: amishu
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-twenty-two
-ms.openlocfilehash: 4585538e552e73f8f7a4b7b105153a9d26eeb4c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d6a0388507d836050550a3a98255deabb826cde
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934114"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128334"
 ---
 # <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Konuşma SDK 'Sı ile codec ile sıkıştırılmış ses girişi kullanma
 
 Konuşma hizmeti SDK 'Sı **sıkıştırılmış ses girişi akış** API 'si, veya kullanarak konuşma hizmetine sıkıştırılmış ses akışını sağlamanın bir yolunu sağlar `PullStream` `PushStream` .
 
-Windows üzerinde C#, C++, Java ve Python için akış sıkıştırılmış giriş sesi şu anda desteklenmektedir (UWP uygulamaları desteklenmez) ve Linux (Ubuntu 16,04, Ubuntu 18,04, de, 9, RHEL 7/8, CentOS 7/8). Android 'de Java için de desteklenir.
+Platform | Diller | Desteklenen GStreamer sürümü
+| :--- | ---: | :---:
+Windows (UWP hariç)  | C++, C#, Java, Python | [1.15.1](https://gstreamer.freedesktop.org/data/pkg/windows/1.15.1/)
+Linux  | C++, C#, Java, Python | [desteklenen Linux dağıtımları ve hedef mimarileri](~/articles/cognitive-services/speech-service/speech-sdk.md)
+Android  | Java | [1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/)
+
+## <a name="speech-sdk-version-required-for-compressed-audio-input"></a>Sıkıştırılmış ses girişi için konuşma SDK sürümü gerekli
 * RHEL 8 ve CentOS 8 için konuşma SDK sürümü 1.10.0 veya üzeri gereklidir
 * Windows için konuşma SDK sürümü 1.11.0 veya üzeri gereklidir.
 
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/csharp/prerequisites.md)]

@@ -10,13 +10,13 @@ ms.topic: how-to
 author: stevestein
 ms.author: sashan
 ms.reviewer: ''
-ms.date: 07/29/2020
-ms.openlocfilehash: 7a80f6ef918ac42f43eee2ccc8acae09c5008129
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.date: 10/30/2020
+ms.openlocfilehash: 53e62d790514bd3fb5bef93788fa78944db28c2c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748882"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127748"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda bir veritabanının işlemsel olarak tutarlı bir kopyasını kopyalama
 
@@ -29,7 +29,7 @@ Azure SQL veritabanı, aynı sunucuda veya farklı bir sunucuda var olan bir [ve
 Veritabanı kopyası, kopyalama isteği başlatıldıktan sonra zaman içindeki bir noktaya göre kaynak veritabanının işlemsel olarak tutarlı bir anlık görüntüsüdür. Kopya için aynı sunucuyu veya farklı bir sunucuyu seçebilirsiniz. Ayrıca, yedek yedekliliği, hizmet katmanını ve kaynak veritabanının işlem boyutunu tutmayı veya aynı veya farklı bir hizmet katmanı içinde farklı bir yedek depolama yedekliği ve/veya işlem boyutunu kullanmayı seçebilirsiniz. Kopyalama işlemi tamamlandıktan sonra, tamamen işlevsel, bağımsız bir veritabanı haline gelir. Kopyalanmış veritabanındaki oturumlar, kullanıcılar ve izinler, kaynak veritabanından bağımsız olarak yönetilir. Kopya, coğrafi çoğaltma teknolojisi kullanılarak oluşturulur. Çoğaltma dengeli dağıtımı tamamlandıktan sonra, coğrafi çoğaltma bağlantısı otomatik olarak sonlandırılır. Coğrafi çoğaltmayı kullanmayla ilgili tüm gereksinimler veritabanı kopyalama işlemine de uygulanır. Ayrıntılar için bkz. [etkin coğrafi Çoğaltmaya genel bakış](active-geo-replication-overview.md) .
 
 > [!NOTE]
-> Azure SQL veritabanı yapılandırılabilir yedekleme depolama yedekliği Şu anda yalnızca Güneydoğu Asya Azure bölgesinde genel kullanıma sunulmuştur. Önizlemede, kaynak veritabanı yerel olarak yedekli veya bölgesel olarak yedekli yedek depolama yedeklemesiyle oluşturulduysa, farklı bir Azure bölgesindeki bir sunucuya veritabanı kopyalama desteklenmez. 
+> Azure SQL veritabanı yapılandırılabilir yedekleme depolama yedekliği Şu anda Brezilya Güney ' de genel önizlemede mevcuttur ve genel olarak yalnızca Güneydoğu Asya Azure bölgesinde kullanılabilir. Önizlemede, kaynak veritabanı yerel olarak yedekli veya bölgesel olarak yedekli yedek depolama yedeklemesiyle oluşturulduysa, farklı bir Azure bölgesindeki bir sunucuya veritabanı kopyalama desteklenmez. 
 
 ## <a name="logins-in-the-database-copy"></a>Veritabanı kopyasında oturum açma işlemleri
 

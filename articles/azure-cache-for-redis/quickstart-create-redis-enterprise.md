@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/28/2020
-ms.openlocfilehash: ca5bdf606b51b4019bd9e655d172733074febd39
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: bd5e05f38d34199d9012c52ca3fdad33af231aad
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078024"
+ms.locfileid: "93127994"
 ---
 # <a name="quickstart-create-an-enterprise-tier-cache-preview"></a>Hızlı başlangıç: Kurumsal katman önbelleği oluşturma (Önizleme)
 
@@ -29,7 +29,7 @@ Başlamadan önce bir Azure aboneliğine sahip olmanız gerekir. Bir tane yoksa,
 
 1. **Yeni** sayfada **veritabanları** ' nı seçin ve ardından **redsıs için Azure önbelleği** ' ni seçin.
    
-   ![Redsıs için Azure önbelleğini seçin](media/cache-create/new-cache-menu.png)
+   :::image type="content" source="media/cache-create/new-cache-menu.png" alt-text="Redsıs için Azure önbelleğini seçin":::
    
 1. **Yeni Redis Cache** sayfasında, yeni önbelleğiniz için ayarları yapılandırın.
    
@@ -41,10 +41,7 @@ Başlamadan önce bir Azure aboneliğine sahip olmanız gerekir. Bir tane yoksa,
    | **Konum** | Açılır ve bir konum seçin. | Önizleme sırasında kurumsal katmanlar sınırlı Azure bölgelerinde kullanılabilir. |
    | **Önbellek türü** | Açılır ve bir *Kurumsal* veya *Kurumsal Flash* katmanı ve bir boyut seçin. |  Katman, önbellek için kullanılabilen boyut, performans ve özellikleri belirler. |
    
-   ![Kurumsal katman temelleri](media/cache-create/enterprise-tier-basics.png) 
-
-   > [!NOTE] 
-   > Devam etmeden önce "Şartlar" altındaki kutuyu kontrol ettiğinizden emin olun.
+   :::image type="content" source="media/cache-create/enterprise-tier-basics.png" alt-text="Redsıs için Azure önbelleğini seçin" altındaki kutuyu kontrol ettiğinizden emin olun.
    >
 
 1. **İleri ' yi seçin: ağ oluşturma** ve atlama.
@@ -53,11 +50,11 @@ Başlamadan önce bir Azure aboneliğine sahip olmanız gerekir. Bir tane yoksa,
    > Özel bağlantı seçeneği kullanıma alındı ve bölgenizde hemen kullanılamıyor olabilir.
    >
 
-1. **İleri: Gelişmiş** 'i seçin.
+1. **İleri: Gelişmiş** ' i seçin ve **kümeleme ilkesini** **Kurumsal** olarak ayarlayın.
    
    Varsayılan ayarları koruyabilir veya uygun şekilde değiştirebilirsiniz. **Yalnızca TLS aracılığıyla erişime Izin ver** seçeneği açıldığında, uygulamanızdaki yeni önbelleğe erışmek için TLS kullanmanız gerekir.
 
-   ![Kurumsal katman gelişmiş](media/cache-create/enterprise-tier-advanced.png) 
+   :::image type="content" source="media/cache-create/enterprise-tier-advanced.png" alt-text="Redsıs için Azure önbelleğini seçin":::
 
    > [!NOTE] 
    > Redsıs modülleri henüz Enterprise Flash katmanında desteklenmez. Redl modülünü kullanmayı planlıyorsanız, bir kurumsal katman önbelleği seçtiğinizden emin olun.
@@ -67,7 +64,7 @@ Başlamadan önce bir Azure aboneliğine sahip olmanız gerekir. Bir tane yoksa,
 
 1. **Sonraki: Gözden geçirme ve oluşturma** ’yı seçin.
 
-   ![Kurumsal katman Özeti](media/cache-create/enterprise-tier-summary.png) 
+   :::image type="content" source="media/cache-create/enterprise-tier-summary.png" alt-text="Redsıs için Azure önbelleğini seçin":::
 
 1. Ayarları gözden geçirin ve **Oluştur** ' a tıklayın.
    

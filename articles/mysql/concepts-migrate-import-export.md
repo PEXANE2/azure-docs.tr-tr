@@ -5,17 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 9/22/2020
-ms.openlocfilehash: 6d0a29d8ef8123eafd6a1616a24003c1e36e6e59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/30/2020
+ms.openlocfilehash: 1b4959cbf082a589c90034f48d597907c9b7e6cc
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905927"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128938"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>İçeri ve dışarı aktarma kullanarak MySQL veritabanınızı geçirme
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 Bu makalede MySQL çalışma ekranı kullanarak bir MySQL için Azure veritabanı sunucusuna verileri içeri ve dışarı aktarmaya yönelik iki yaygın yaklaşım açıklanmaktadır.
+
+Ayrıca, [veritabanı geçiş kılavuzu](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide) ' na başvurarak ayrıntılı bilgiler ve veritabanlarını MySQL Için Azure veritabanı 'na geçirme hakkındaki durumları kullanabilirsiniz. Bu kılavuz, Azure 'a bir MySQL geçişinin başarıyla planlanmasını ve yürütülmesini sağlayacak yönergeler sağlar.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
@@ -45,7 +47,7 @@ Aşağıdaki senaryolarda bulunan veritabanlarını Azure MySQL veritabanına i�
 - MySQL veritabanı dışındaki dış veri kaynaklarından veri geçirirken, düz dosyalar oluşturun ve [mysqlimport](https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html)kullanarak içeri aktarın.
 
 > [!Important]
-> Tek sunucu ve esnek sunucu **yalnızca InnoDB depolama altyapısını**destekler. MySQL için Azure veritabanı 'na veri yüklerken veritabanındaki tüm tabloların InnoDB Storage altyapısını kullanmasını sağlayın.
+> Tek sunucu ve esnek sunucu **yalnızca InnoDB depolama altyapısını** destekler. MySQL için Azure veritabanı 'na veri yüklerken veritabanındaki tüm tabloların InnoDB Storage altyapısını kullanmasını sağlayın.
 > Kaynak veritabanınız başka bir depolama altyapısı kullanıyorsa veritabanını geçirmeden önce lütfen InnoDB altyapısına dönüştürün. Örneğin, MyISAM altyapısını kullanan bir WordPress veya Web uygulamanız varsa, önce verileri InnoDB tablolarına geçirerek tabloları dönüştürün. Yan tümcesini kullanarak `ENGINE=INNODB` tablo oluşturma altyapısını ayarlayın ve ardından geçişten önce verileri uyumlu tabloya aktarın.
 
    ```sql
@@ -72,26 +74,26 @@ MySQL çalışma ekranına verileri dışarı ve içeri aktarmanın iki yolu var
 
 Tablo verilerine yönelik sihirbazlar CSV ve JSON dosyalarını kullanarak içeri ve dışarı aktarma işlemlerini destekler. Ayırıcılar, sütun seçimi ve kodlama seçimi gibi çeşitli yapılandırma seçeneklerini içerirler. Her Sihirbazı yerel veya uzaktan bağlanan MySQL sunucularında gerçekleştirebilirsiniz. İçeri aktarma eylemi tablo, sütun ve tür eşlemeyi içerir.
 
-Bu sihirbazlara, bir tabloya sağ tıklayarak nesne tarayıcısının bağlam menüsünden erişebilirsiniz. Ardından **Tablo verileri dışarı aktarma Sihirbazı** veya **tablo verilerini içeri aktarma Sihirbazı**' nı seçin.
+Bu sihirbazlara, bir tabloya sağ tıklayarak nesne tarayıcısının bağlam menüsünden erişebilirsiniz. Ardından **Tablo verileri dışarı aktarma Sihirbazı** veya **tablo verilerini içeri aktarma Sihirbazı** ' nı seçin.
 
 #### <a name="table-data-export-wizard"></a>Tablo verilerini dışarı aktarma Sihirbazı
 Aşağıdaki örnek, tabloyu bir CSV dosyasına dışarı aktarır:
 1. Aktarılacak veritabanının tablosuna sağ tıklayın.
-2. **Tablo verilerini dışarı aktarma Sihirbazı**' nı seçin. Aktarılacak sütunları, satır sapmasını (varsa) ve sayıyı (varsa) seçin.
-3. **Dışarı aktarma için veri Seç** sayfasında **İleri**' ye tıklayın. Dosya yolu, CSV veya JSON dosya türünü seçin. Ayrıca satır ayırıcı, kapsayan dizeler yöntemi ve alan ayırıcısı ' nı da seçin.
-4. **Çıkış dosyası konumunu seçin** sayfasında **İleri**' ye tıklayın.
-5. **Verileri dışarı aktar** sayfasında **İleri**' ye tıklayın.
+2. **Tablo verilerini dışarı aktarma Sihirbazı** ' nı seçin. Aktarılacak sütunları, satır sapmasını (varsa) ve sayıyı (varsa) seçin.
+3. **Dışarı aktarma için veri Seç** sayfasında **İleri** ' ye tıklayın. Dosya yolu, CSV veya JSON dosya türünü seçin. Ayrıca satır ayırıcı, kapsayan dizeler yöntemi ve alan ayırıcısı ' nı da seçin.
+4. **Çıkış dosyası konumunu seçin** sayfasında **İleri** ' ye tıklayın.
+5. **Verileri dışarı aktar** sayfasında **İleri** ' ye tıklayın.
 
 #### <a name="table-data-import-wizard"></a>Tablo verileri Içeri aktarma Sihirbazı
 Aşağıdaki örnek, tabloyu bir CSV dosyasından içe aktarır:
 1. İçeri aktarılacak veritabanının tablosuna sağ tıklayın.
-2. İçeri aktarılacak CSV dosyasına gidin ve seçin ve ardından **İleri**' ye tıklayın.
-3. Hedef tabloyu seçin (yeni veya var olan) ve **içeri aktarmadan önce tabloyu kes** onay kutusunu seçin veya temizleyin. **İleri**’ye tıklayın.
-4. Kodlama ve içeri aktarılacak sütunları seçin ve ardından **İleri**' ye tıklayın.
-5. **Verileri Içeri aktar** sayfasında, **İleri**' ye tıklayın. Sihirbaz verileri buna göre içe aktarır.
+2. İçeri aktarılacak CSV dosyasına gidin ve seçin ve ardından **İleri** ' ye tıklayın.
+3. Hedef tabloyu seçin (yeni veya var olan) ve **içeri aktarmadan önce tabloyu kes** onay kutusunu seçin veya temizleyin. **İleri** ’ye tıklayın.
+4. Kodlama ve içeri aktarılacak sütunları seçin ve ardından **İleri** ' ye tıklayın.
+5. **Verileri Içeri aktar** sayfasında, **İleri** ' ye tıklayın. Sihirbaz verileri buna göre içe aktarır.
 
 ### <a name="sql-data-export-and-import-wizards-from-the-navigator-pane"></a>Gezgin bölmesinden SQL verileri dışarı aktarma ve içeri aktarma sihirbazları
-MySQL çalışma sunucusundan oluşturulan veya mysqldump komutundan oluşturulan SQL 'i içeri veya dışarı aktarmak için bir sihirbaz kullanın. Bu sihirbazlara **Gezgin** bölmesinden veya ana menüden **sunucu** ' yı seçerek erişin. Ardından **veri dışarı aktarma** veya **veri içeri aktarma**' yı seçin.
+MySQL çalışma sunucusundan oluşturulan veya mysqldump komutundan oluşturulan SQL 'i içeri veya dışarı aktarmak için bir sihirbaz kullanın. Bu sihirbazlara **Gezgin** bölmesinden veya ana menüden **sunucu** ' yı seçerek erişin. Ardından **veri dışarı aktarma** veya **veri içeri aktarma** ' yı seçin.
 
 #### <a name="data-export"></a>Verileri Dışarı Aktarma
 :::image type="content" source="./media/concepts-migrate-import-export/p2.png" alt-text="Azure portal bağlantı bilgilerini bulun":::
@@ -115,4 +117,4 @@ Dışarı aktarılan verileri veri dışa aktarma işleminden veya mysqldump kom
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Başka bir geçiş yaklaşımı olarak MySQL [Için Azure veritabanı 'nda dökümünü ve geri yüklemeyi kullanarak MySQL veritabanınızı geçirin](concepts-migrate-dump-restore.md).
-- MySQL için Azure veritabanı 'na veritabanı geçirme hakkında daha fazla bilgi için bkz. [veritabanı geçiş kılavuzu](https://aka.ms/datamigration).
+- MySQL için Azure veritabanı 'na veritabanı geçirme hakkında daha fazla bilgi için bkz. [veritabanı geçiş kılavuzu](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide).

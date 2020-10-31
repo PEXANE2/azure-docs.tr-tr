@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 78a81a2d392363ac45979fd28138f838653a2358
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d84e1508dec4d4a5802f7a2ac8c0e6ada5a8044c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89381181"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128700"
 ---
 # <a name="how-to-add-technical-details-for-your-saas-offer"></a>SaaS teklifinizin teknik ayrıntılarını ekleme
 
@@ -38,7 +38,7 @@ Bu makalede, Microsoft Commercial Market 'in çözümünüze bağlanmasına yard
 
 - **Azure Active Directory KIRACı kimliği** (gerekli) – Azure Active Directory (Azure AD) uygulamanıza AIT Kiracı kimliğini bulmak için Azure Active Directory içindeki [uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) dikey penceresine gidin. **Görünen ad** sütununda, uygulamayı seçin. Ardından listelenen **Dizin (kiracı) kimliği** numarasını (örneğin, `50c464d3-4930-494c-963c-1e951d15360e` ) arayın.
 
-- **Azure Active Directory Uygulama kimliği** (gerekli) – [uygulama kimliğinizi](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)bulmak için Azure Active Directory [uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) dikey penceresine gidin. **Görünen ad** sütununda, uygulamayı seçin. Ardından listelenen uygulama (istemci) KIMLIĞI numarasını (örneğin, `50c464d3-4930-494c-963c-1e951d15360e` ) arayın.
+- **Azure Active Directory Uygulama kimliği** (gerekli) – [uygulama kimliğinizi](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)bulmak için Azure Active Directory [uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) dikey penceresine gidin. **Görünen ad** sütununda, uygulamayı seçin. Ardından listelenen uygulama (istemci) KIMLIĞI numarasını (örneğin, `50c464d3-4930-494c-963c-1e951d15360e` ) arayın.
 
 Sonraki sekmeye geçmeden önce **Taslağı kaydet** ' i seçin: plana genel bakış.
 

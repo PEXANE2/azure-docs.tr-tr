@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: c84367a5e3ab57090f59196e8474c14cba87f32b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e90c023fa74711246c2e6e69eb576695e86a457
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250156"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128513"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Azure Işlevleri ile Azure statik Web Apps önizlemesine API ekleme
 
 Azure Işlevleri ile tümleştirme yoluyla, Azure statik Web Apps sunucusuz API 'Ler ekleyebilirsiniz. Bu makalede bir Azure statik Web Apps sitesine API ekleme ve dağıtma işlemlerinin nasıl yapılacağı gösterilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan Azure hesabı.
   - Hesabınız yoksa, [ücretsiz olarak bir tane oluşturabilirsiniz](https://azure.microsoft.com/free).
@@ -33,15 +33,15 @@ Azure Işlevleri ile tümleştirme yoluyla, Azure statik Web Apps sunucusuz API 
 Aşağıdaki adımlarda, yeni bir depoyu oluşturma ve dosyaları bilgisayarınıza kopyalama işlemleri gösterilmektedir.
 
 1. GitHub ' da oturum açtığınızdan emin olun ve https://github.com/staticwebdev/vanilla-basic/generate Yeni bir depo oluşturmak için ' a gidin.
-1. _Depo adı_ kutusuna **My-Vanilla-API**yazın.
-1. **Şablondan depo oluştur**' a tıklayın.
+1. _Depo adı_ kutusuna **My-Vanilla-API** yazın.
+1. **Şablondan depo oluştur** ' a tıklayın.
 
    :::image type="content" source="media/add-api/create-repository.png" alt-text="Vanilla 'dan yeni bir depo oluşturma-temel":::
 
 Projeniz oluşturulduktan sonra, yeni depo için tarayıcınızda URL 'YI kopyalayın. Git deposunu kopyalamak için bu URL 'YI Visual Studio Code kullanabilirsiniz.
 
 1. Komut paletinde komutunu açmak için **F1** tuşuna basın.
-1. URL 'YI _Git: kopyalama_ istemine yapıştırın ve **ENTER**tuşuna basın.
+1. URL 'YI _Git: kopyalama_ istemine yapıştırın ve **ENTER** tuşuna basın.
 
    :::image type="content" source="media/add-api/vscode-git-0.png" alt-text="Vanilla 'dan yeni bir depo oluşturma-temel":::
 
@@ -51,7 +51,7 @@ Projeniz oluşturulduktan sonra, yeni depo için tarayıcınızda URL 'YI kopyal
 
 Daha sonra, uygulamanın API 'SI olarak bir Azure Işlevleri projesi oluşturursunuz. 
 
-1. _My-Vanilla-API_ projesinde, **API**adlı bir alt klasör oluşturun.
+1. _My-Vanilla-API_ projesinde, **API** adlı bir alt klasör oluşturun.
 1. Komut paletini açmak için **F1** tuşuna basın
 1. **Azure işlevleri yazın: yeni proje oluştur...**
 1. **Enter** tuşuna basın
@@ -63,10 +63,10 @@ Daha sonra, uygulamanın API 'SI olarak bir Azure Işlevleri projesi oluştururs
 
 1. İstemlere aşağıdaki bilgileri sağlayın:
 
-    - _Dil seçin_: **JavaScript** seçin
-    - _Projenizin ilk işlevi için bir şablon seçin_: **http tetikleyicisi** seçin
-    - _Bir işlev adı_girin: **GetMessage** girin
-    - _Yetkilendirme düzeyi_: herkesin işlev uç noktanızı çağırmasını sağlayan **anonim**' i seçin.
+    - _Dil seçin_ : **JavaScript** seçin
+    - _Projenizin ilk işlevi için bir şablon seçin_ : **http tetikleyicisi** seçin
+    - _Bir işlev adı_ girin: **GetMessage** girin
+    - _Yetkilendirme düzeyi_ : herkesin işlev uç noktanızı çağırmasını sağlayan **anonim** ' i seçin.
         - Yetkilendirme düzeyleri hakkında bilgi edinmek için bkz. [Yetkilendirme anahtarları](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys).
 
 Visual Studio Code, HTTP ile tetiklenen bir işlev içeren bir Azure Işlevleri projesi oluşturur.
@@ -195,7 +195,7 @@ Azure 'a dağıtıldığında, API 'ye gönderilen istekler, rotaya gönderilen 
 
 1. API projesini başlatmak için **F5** tuşuna basın.
 
-1. **F1** tuşuna basın ve **canlı sunucu: Live Server ile aç**' ı seçin.
+1. **F1** tuşuna basın ve **canlı sunucu: Live Server ile aç** ' ı seçin.
 
     Şimdi Web sayfasında API iletisini görmeniz gerekir.
 
@@ -228,7 +228,7 @@ Sonra uygulamaya özgü ayarları ekleyin.
 
 1. _Azure aboneliğinizi_ seçin
 1. Yeni bir _kaynak grubu_ seçin veya oluşturun
-1. Uygulamayı **My-Vanilla-API**olarak adlandırın.
+1. Uygulamayı **My-Vanilla-API** olarak adlandırın.
 1. Size en yakın _bölgeyi_ seçin
 1. **Ücretsiz** _SKU 'yu_ seçin
 1. **GitHub ile Oturum Aç** düğmesine tıklayın ve GitHub ile kimliğinizi doğrulayın
@@ -239,10 +239,10 @@ Sonra uygulamaya özgü ayarları ekleyin.
 
 Ardından, aşağıdaki derleme ayrıntılarını ekleyin.
 
-1. **/** _Uygulama konumu_için girin.
+1. **/** _Uygulama konumu_ için girin.
 1. API _konumu_ kutusuna **API** girin.
-1. Varsayılan değeri, _uygulama yapıtı konumundan_kaldırın ve kutuyu boş bırakın.
-1. **Gözden geçir ve oluştur**’a tıklayın.
+1. Varsayılan değeri, _uygulama yapıtı konumundan_ kaldırın ve kutuyu boş bırakın.
+1. **Gözden geçir ve oluştur** ’a tıklayın.
 1. **Oluştur** düğmesine tıklayın
 
     _Oluştur_ düğmesine tıkladığınızda Azure iki şey yapar. İlk olarak, temel bulut hizmetleri uygulamayı desteklemek için oluşturulur. Ardından, bir arka plan işlemi, uygulamayı derleyip dağıtmaya başlar.
@@ -268,7 +268,7 @@ Bu uygulamayı daha fazla kullanım için tutmak istemiyorsanız, Azure statik W
 1. _Myresourcegroup_ sayfasında, listelenen kaynakların silmek istedikleriniz olduğundan emin olun.
 1. **Sil** ' i seçin
 1. Metin kutusuna **Myresourcegroup** yazın
-1. **Sil**’i seçin.
+1. **Sil** ’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

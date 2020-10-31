@@ -7,26 +7,26 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/15/2019
-ms.openlocfilehash: 175abe54ce5476bece309bbfaf7858cd2e214f52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c05db2d9ba184da89665a236994c851355cc2644
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187668"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127442"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>Tümleştirme ve geliştirme için Azure Stream Analytics CI/CD NuGet paketini kullanın 
 Bu makalede, Azure Stream Analytics CI/CD NuGet paketinin bir sürekli tümleştirme ve dağıtım işlemi ayarlamak için nasıl kullanılacağı açıklanır.
 
-MSBuild için destek almak üzere [Visual Studio için Stream Analytics araçları](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio) ' nın 2.3.0000.0 veya üzeri sürümlerini kullanın.
+MSBuild için destek almak üzere [Visual Studio için Stream Analytics araçları](./stream-analytics-quick-create-vs.md) ' nın 2.3.0000.0 veya üzeri sürümlerini kullanın.
 
 Bir NuGet paketi kullanılabilir: [Microsoft. Azure. Stream Analytics. CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/). [Stream Analytics Visual Studio projelerinin](stream-analytics-vs-tools.md)sürekli tümleştirme ve dağıtım sürecini destekleyen MSBuild, yerel çalıştırma ve dağıtım araçlarını sağlar. 
 > [!NOTE]
 > NuGet paketi yalnızca Visual Studio için Stream Analytics araçları 'nın 2.3.0000.0 veya üzeri sürümü ile kullanılabilir. Visual Studio araçlarının önceki sürümlerinde oluşturulmuş projeleriniz varsa, bunları 2.3.0000.0 veya sonraki sürümüyle açmanız ve kaydetmeniz yeterlidir. Ardından yeni yetenekler etkinleştirilir. 
 
-Daha fazla bilgi için bkz. [Visual Studio için Stream Analytics araçları](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
+Daha fazla bilgi için bkz. [Visual Studio için Stream Analytics araçları](./stream-analytics-quick-create-vs.md).
 
 ## <a name="msbuild"></a>MSBuild
-Standart Visual Studio MSBuild deneyimi gibi bir proje oluşturmak için iki seçeneğiniz vardır. Projeye sağ tıklayıp ardından **Oluştur**' u seçin. Ayrıca, komut satırından NuGet paketindeki **MSBuild** 'i de kullanabilirsiniz.
+Standart Visual Studio MSBuild deneyimi gibi bir proje oluşturmak için iki seçeneğiniz vardır. Projeye sağ tıklayıp ardından **Oluştur** ' u seçin. Ayrıca, komut satırından NuGet paketindeki **MSBuild** 'i de kullanabilirsiniz.
 ```
 ./build/msbuild /t:build [Your Project Full Path] /p:CompilerTaskAssemblyFile=Microsoft.WindowsAzure.StreamAnalytics.Common.CompileService.dll  /p:ASATargetsFilePath="[NuGet Package Local Path]\build\StreamAnalytics.targets"
 
@@ -52,7 +52,7 @@ parameters.jsdosyadaki varsayılan parametreler, Visual Studio projenizin ayarla
       "value": null
     },
 ```
-[Kaynak Yöneticisi Şablon dosyası ve Azure PowerShell dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)hakkında daha fazla bilgi edinin. Bir [nesnenin kaynak yöneticisi şablonunda parametre olarak nasıl kullanılacağı](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters)hakkında daha fazla bilgi edinin.
+[Kaynak Yöneticisi Şablon dosyası ve Azure PowerShell dağıtma](../azure-resource-manager/templates/deploy-powershell.md)hakkında daha fazla bilgi edinin. Bir [nesnenin kaynak yöneticisi şablonunda parametre olarak nasıl kullanılacağı](/azure/architecture/building-blocks/extending-templates/objects-as-parameters)hakkında daha fazla bilgi edinin.
 
 Azure Data Lake Store Gen1 için yönetilen kimliği çıkış havuzu olarak kullanmak için, Azure 'a dağıtılmadan önce PowerShell kullanarak hizmet sorumlusuna erişim sağlamanız gerekir. [Kaynak Yöneticisi şablonuyla yönetilen kimlik ile ADLS 1. dağıtma](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment)hakkında daha fazla bilgi edinin.
 
@@ -60,7 +60,7 @@ Azure Data Lake Store Gen1 için yönetilen kimliği çıkış havuzu olarak kul
 ## <a name="command-line-tool"></a>Komut satırı aracı
 
 ### <a name="build-the-project"></a>Projeyi derleme
-NuGet paketinin **SA.exe**adlı bir komut satırı aracı vardır. Sürekli tümleştirme ve sürekli teslim sürecinde kullanabileceğiniz rastgele bir makinede proje derlemesini ve yerel sınamayı destekler. 
+NuGet paketinin **SA.exe** adlı bir komut satırı aracı vardır. Sürekli tümleştirme ve sürekli teslim sürecinde kullanabileceğiniz rastgele bir makinede proje derlemesini ve yerel sınamayı destekler. 
 
 Dağıtım dosyaları varsayılan olarak geçerli dizinin altına yerleştirilir. Aşağıdaki-OutputPath parametresini kullanarak çıkış yolunu belirtebilirsiniz:
 

@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 46a5f4036be2d670689f7e936a31dc63e0690ddc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de2b12bca10382d7e885626222fe463af27f9953
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302392"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128784"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Makine öğrenimi işlem hatlarını yayımlama ve izleme
 
@@ -26,7 +26,7 @@ Bu makalede, bir makine öğrenimi işlem hattının iş arkadaşlarınızla vey
 
 Machine Learning işlem hatları, Machine Learning görevleri için yeniden kullanılabilir iş akışlarıdır. İşlem hatlarından bir avantajı daha fazla işbirliği. Ayrıca, yeni bir sürümde çalışırken müşterilerin geçerli modeli kullanmasına izin vererek işlem hatlarını de kullanabilirsiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Tüm işlem hattı kaynaklarınızın tutulacağı bir [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md) oluşturun
 
@@ -95,9 +95,148 @@ response = requests.post(published_pipeline1.endpoint,
 | `DataSetDefinitionValueAssignments` | Yeniden eğitim olmadan veri kümelerini değiştirmek için kullanılan sözlük (aşağıdaki tartışmaya bakın) | 
 | `DataPathAssignments` | Yeniden eğitim olmadan veri yollarını değiştirmek için kullanılan sözlük (aşağıdaki tartışmaya bakın) | 
 
+### <a name="run-a-published-pipeline-using-c"></a>C kullanarak yayımlanmış bir işlem hattı çalıştırma # 
+
+Aşağıdaki kod, bir işlem hattının C# ' den zaman uyumsuz olarak nasıl çağrılacağını gösterir. Kısmi kod parçacığı yalnızca çağrı yapısını gösterir ve bir Microsoft örneğinin parçası değildir. Bütün sınıfları veya hata işlemeyi göstermez. 
+
+```csharp
+[DataContract]
+public class SubmitPipelineRunRequest
+{
+    [DataMember]
+    public string ExperimentName { get; set; }
+
+    [DataMember]
+    public string Description { get; set; }
+
+    [DataMember(IsRequired = false)]
+    public IDictionary<string, string> ParameterAssignments { get; set; }
+}
+
+// ... in its own class and method ... 
+const string RestEndpoint = "your-pipeline-endpoint";
+
+using (HttpClient client = new HttpClient())
+{
+    var submitPipelineRunRequest = new SubmitPipelineRunRequest()
+    {
+        ExperimentName = "YourExperimentName", 
+        Description = "Asynchronous C# REST api call", 
+        ParameterAssignments = new Dictionary<string, string>
+        {
+            {
+                // Replace with your pipeline parameter keys and values
+                "your-pipeline-parameter", "default-value"
+            }
+        }
+    };
+
+    string auth_key = "your-auth-key"; 
+    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", auth_key);
+
+    // submit the job
+    var requestPayload = JsonConvert.SerializeObject(submitPipelineRunRequest);
+    var httpContent = new StringContent(requestPayload, Encoding.UTF8, "application/json");
+    var submitResponse = await client.PostAsync(RestEndpoint, httpContent).ConfigureAwait(false);
+    if (!submitResponse.IsSuccessStatusCode)
+    {
+        await WriteFailedResponse(submitResponse); // ... method not shown ...
+        return;
+    }
+
+    var result = await submitResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+    var obj = JObject.Parse(result);
+    // ... use `obj` dictionary to access results
+}
+```
+
+### <a name="run-a-published-pipeline-using-java"></a>Java kullanarak yayımlanmış bir işlem hattı çalıştırma
+
+Aşağıdaki kod, kimlik doğrulaması gerektiren bir işlem hattının çağrısını gösterir (bkz. [Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama](how-to-setup-authentication.md)). İşlem hatlarınız herkese açık bir şekilde dağıtılırsa, üreten çağrılara gerek kalmaz `authKey` . Kısmi kod parçacığı, Java sınıfı ve özel durum işleme ortak öğesini göstermez. Kod, `Optional.flatMap` bir araya döndürebileceğiniz işlevleri birlikte zincirleme için kullanır `Optional` . , `flatMap` Kısaltmayı ve kodu açıklığa kavuşturun kullanımı, ancak `getRequestBody()` SBU kodun özel durumlara izin verdiğini unutmayın.
+
+```java
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.Optional;
+// JSON library
+import com.google.gson.Gson;
+
+String scoringUri = "scoring-endpoint";
+String tenantId = "your-tenant-id";
+String clientId = "your-client-id";
+String clientSecret = "your-client-secret";
+String resourceManagerUrl = "https://management.azure.com";
+String dataToBeScored = "{ \"ExperimentName\" : \"My_Pipeline\", \"ParameterAssignments\" : { \"pipeline_arg\" : \"20\" }}";
+
+HttpClient client = HttpClient.newBuilder().build();
+Gson gson = new Gson();
+
+HttpRequest tokenAuthenticationRequest = tokenAuthenticationRequest(tenantId, clientId, clientSecret, resourceManagerUrl);
+Optional<String> authBody = getRequestBody(client, tokenAuthenticationRequest);
+Optional<String> authKey = authBody.flatMap(body -> Optional.of(gson.fromJson(body, AuthenticationBody.class).access_token);;
+Optional<HttpRequest> scoringRequest = authKey.flatMap(key -> Optional.of(scoringRequest(key, scoringUri, dataToBeScored)));
+Optional<String> scoringResult = scoringRequest.flatMap(req -> getRequestBody(client, req));
+// ... etc (`scoringResult.orElse()`) ... 
+
+static HttpRequest tokenAuthenticationRequest(String tenantId, String clientId, String clientSecret, String resourceManagerUrl)
+{
+    String authUrl = String.format("https://login.microsoftonline.com/%s/oauth2/token", tenantId);
+    String clientIdParam = String.format("client_id=%s", clientId);
+    String resourceParam = String.format("resource=%s", resourceManagerUrl);
+    String clientSecretParam = String.format("client_secret=%s", clientSecret);
+
+    String bodyString = String.format("grant_type=client_credentials&%s&%s&%s", clientIdParam, resourceParam, clientSecretParam);
+
+    HttpRequest request = HttpRequest.newBuilder()
+        .uri(URI.create(authUrl))
+        .POST(HttpRequest.BodyPublishers.ofString(bodyString))
+        .build();
+    return request;
+}
+
+static HttpRequest scoringRequest(String authKey, String scoringUri, String dataToBeScored)
+{
+    HttpRequest request = HttpRequest.newBuilder()
+        .uri(URI.create(scoringUri))
+        .header("Authorization", String.format("Token %s", authKey))
+        .POST(HttpRequest.BodyPublishers.ofString(dataToBeScored))
+        .build();
+    return request;
+
+}
+
+static Optional<String> getRequestBody(HttpClient client, HttpRequest request) {
+    try {
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        if (response.statusCode() != 200) {
+            System.out.println(String.format("Unexpected server response %d", response.statusCode()));
+            return Optional.empty();
+        }
+        return Optional.of(response.body());
+    }catch(Exception x)
+    {
+        System.out.println(x.toString());
+        return Optional.empty();
+    }
+}
+
+class AuthenticationBody {
+    String access_token;
+    String token_type;
+    int expires_in;
+    String scope;
+    String refresh_token;
+    String id_token;
+    
+    AuthenticationBody() {}
+}
+```
+
 ### <a name="changing-datasets-and-datapaths-without-retraining"></a>Veri kümelerini ve veri yollarını yeniden eğitim olmadan değiştirme
 
-Farklı veri kümelerinde ve veri yollarında eğmeniz ve çıkarımını isteyebilirsiniz. Örneğin, daha küçük, sparser veri kümesi üzerinde eğmek, ancak tüm veri kümelerinde çıkarımı yapmak isteyebilirsiniz. Veri kümelerini `DataSetDefinitionValueAssignments` isteğin `json` bağımsız değişkeninde anahtarla değiştirin. Veri yollarını ile değiştirin `DataPathAssignments` . Her ikisinin tekniği benzerdir:
+Farklı veri kümelerinde ve veri yollarında eğmeniz ve çıkarımını isteyebilirsiniz. Örneğin, daha küçük bir veri kümesi üzerinde eğmek ve veri kümesinin tamamını çıkarklaştırmak isteyebilirsiniz. Veri kümelerini `DataSetDefinitionValueAssignments` isteğin `json` bağımsız değişkeninde anahtarla değiştirin. Veri yollarını ile değiştirin `DataPathAssignments` . Her ikisinin tekniği benzerdir:
 
 1. İşlem hattı tanım betiğinizdeki `PipelineParameter` veri kümesi için bir oluşturun. `DatasetConsumptionConfig`Veya arasından bir oluşturun `DataPath` `PipelineParameter` :
 
@@ -155,7 +294,7 @@ Farklı veri kümelerinde ve veri yollarında eğmeniz ve çıkarımını isteye
 
 ## <a name="create-a-versioned-pipeline-endpoint"></a>Sürümlü ardışık düzen uç noktası oluşturma
 
-Birden çok yayınlanan işlem hattı arkasında bir ardışık düzen uç noktası oluşturabilirsiniz. Bu, size yineleme yaparken ve ML işlem hatlarınızı güncelleştirdiğinizde sabit bir REST uç noktası sağlar.
+Birden çok yayınlanan işlem hattı arkasında bir ardışık düzen uç noktası oluşturabilirsiniz. Bu teknik, ML işlem hatlarınızı yinelemek ve güncellemek için size sabit bir REST uç noktası sağlar.
 
 ```python
 from azureml.pipeline.core import PipelineEndpoint
@@ -201,9 +340,9 @@ Ayrıca, Studio 'dan yayımlanmış bir işlem hattı da çalıştırabilirsiniz
 
 1. [Çalışma alanınızı görüntüleyin](how-to-manage-workspace.md#view).
 
-1. Sol tarafta **uç noktalar**' ı seçin.
+1. Sol tarafta **uç noktalar** ' ı seçin.
 
-1. Üstte **ardışık düzen uç noktaları**' nı seçin.
+1. Üstte **ardışık düzen uç noktaları** ' nı seçin.
  ![Machine Learning yayımlanmış işlem hatları listesi](./media/how-to-create-your-first-pipeline/pipeline-endpoints.png)
 
 1. İşlem hattı uç noktasının önceki çalıştırmalarının sonuçlarını çalıştırmak, kullanmak veya gözden geçirmek için belirli bir işlem hattı seçin.

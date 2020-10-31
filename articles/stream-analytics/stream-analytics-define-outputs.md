@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/2/2020
-ms.openlocfilehash: 95607b78ff80566b76b8e6aa20462957249015b4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fdd610be1dd7c5fe9c7aa574fde33df866116dd2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097660"
+ms.locfileid: "93128843"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Azure Stream Analytics çıkış çıkışları
 
-Azure Stream Analytics iş bir giriş, sorgu ve bir çıktıdan oluşur. Dönüştürülmüş verileri gönderebilmeniz için birkaç çıktı türü vardır. Bu makalede desteklenen Stream Analytics çıkışları listelenmektedir. Stream Analytics sorgunuzu tasarlarken, [from yan tümcesini](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics)kullanarak çıkışın adına bakın. Sorguya birden çok yan tümce ekleyerek, iş başına tek bir çıktı veya akış işi başına birden fazla çıkış (ihtiyacınız varsa) kullanabilirsiniz.
+Azure Stream Analytics iş bir giriş, sorgu ve bir çıktıdan oluşur. Dönüştürülmüş verileri gönderebilmeniz için birkaç çıktı türü vardır. Bu makalede desteklenen Stream Analytics çıkışları listelenmektedir. Stream Analytics sorgunuzu tasarlarken, [from yan tümcesini](/stream-analytics-query/into-azure-stream-analytics)kullanarak çıkışın adına bakın. Sorguya birden çok yan tümce ekleyerek, iş başına tek bir çıktı veya akış işi başına birden fazla çıkış (ihtiyacınız varsa) kullanabilirsiniz.
 
-Stream Analytics iş çıktıları oluşturmak, düzenlemek ve test etmek için [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-output), [Azure POWERSHELL](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [.NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [REST API](https://docs.microsoft.com/rest/api/streamanalytics/)ve [Visual Studio 'yu](stream-analytics-quick-create-vs.md)kullanabilirsiniz.
+Stream Analytics iş çıktıları oluşturmak, düzenlemek ve test etmek için [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-output), [Azure POWERSHELL](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [REST API](/rest/api/streamanalytics/)ve [Visual Studio 'yu](stream-analytics-quick-create-vs.md)kullanabilirsiniz.
 
 Bazı çıkış türleri [bölümleme](#partitioning)destekler ve [Çıkış toplu işlem boyutları](#output-batch-size) , üretilen işi iyileştirmek için farklılık gösterir. Aşağıdaki tabloda her çıkış türü için desteklenen özellikler gösterilmektedir:
 
@@ -41,7 +41,7 @@ Bazı çıkış türleri [bölümleme](#partitioning)destekler ve [Çıkış top
 
 Stream Analytics, Power BI hariç tüm çıkışlara yönelik bölümleri destekler. Bölüm anahtarları ve çıkış yazıcısı sayısı hakkında daha fazla bilgi için ilgilendiğiniz belirli çıktı türü için makaleye bakın. Tüm çıkış makaleleri önceki bölüme bağlanır.  
 
-Ayrıca, bölümlerin daha gelişmiş olarak ayarlanması için, çıktı yazıcılarının sayısı `INTO <partition count>` sorgunuzda bir (bkz.) yan tümcesi kullanılarak denetlenebilir [INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)ve bu da istenen iş topolojisini elde etmek için yararlı olabilir. Çıkış bağdaştırıcınız bölümlendirilmemişse, bir giriş bölümünde verilerin bulunmaması, geç varış süresinin sonuna kadar gecikmeye neden olur. Bu gibi durumlarda, çıkış tek bir yazıcı ile birleştirilir ve bu da işlem hattınızda performans sorunlarına neden olabilir. Geç alma ilkesi hakkında daha fazla bilgi için bkz. [Azure Stream Analytics olay sırası konuları](stream-analytics-out-of-order-and-late-events.md).
+Ayrıca, bölümlerin daha gelişmiş olarak ayarlanması için, çıktı yazıcılarının sayısı `INTO <partition count>` sorgunuzda bir (bkz.) yan tümcesi kullanılarak denetlenebilir [INTO](/stream-analytics-query/into-azure-stream-analytics#into-shard-count)ve bu da istenen iş topolojisini elde etmek için yararlı olabilir. Çıkış bağdaştırıcınız bölümlendirilmemişse, bir giriş bölümünde verilerin bulunmaması, geç varış süresinin sonuna kadar gecikmeye neden olur. Bu gibi durumlarda, çıkış tek bir yazıcı ile birleştirilir ve bu da işlem hattınızda performans sorunlarına neden olabilir. Geç alma ilkesi hakkında daha fazla bilgi için bkz. [Azure Stream Analytics olay sırası konuları](./stream-analytics-time-handling.md).
 
 ## <a name="output-batch-size"></a>Çıkış toplu iş boyutu
 
@@ -91,5 +91,5 @@ Bu toplu işlem penceresi özellikleri yalnızca API sürüm **2017-04-01-önizl
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

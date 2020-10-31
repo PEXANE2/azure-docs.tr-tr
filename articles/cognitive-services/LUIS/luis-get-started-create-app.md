@@ -4,13 +4,13 @@ description: Bu hızlı `HomeAutomation` Başlangıçta, ışıkları ve gereçl
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/05/2020
-ms.openlocfilehash: 28bf79b61c0278a3f45820a23cd2c69f0b609700
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/13/2020
+ms.openlocfilehash: 60151e97c64a3d61044e4b82299573ee59951d46
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91316503"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128211"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Hızlı başlangıç: Önceden oluşturulmuş ev otomasyonu uygulamasını kullanma
 
@@ -23,25 +23,28 @@ Bu hızlı başlangıçta ışıkları ve cihazları açıp kapatmak için önce
 ## <a name="create-a-new-app"></a>Yeni uygulama oluşturma
 **Uygulamalarım** sayfasından uygulama oluşturabilir ve yönetebilirsiniz.
 
-1. Uygulamalarım listesinde, **konuşma için + yeni uygulama**' yı seçin ve ardından Seçenekler listesinde, yeniden **konuşmaya yönelik yeni uygulama** ' yı seçin.
+### <a name="create-an-application"></a>Uygulama oluşturma
 
-1. İletişim kutusunda uygulamanızı adlandırın `Home Automation` .
-1. Kültür olarak **İngilizce** ' yi seçin.
-1. İsteğe bağlı bir açıklama girin.
-1. Kaynağı henüz oluşturmadıysanız bir tahmin kaynağı seçmeyin. Uygulamanızın tahmin uç noktasını (hazırlama veya üretim) kullanmak için bir tahmin kaynağı atamanız gerekir.
-1. **Bitti** seçeneğini belirleyin.
+Bir uygulama oluşturmak için  **+ Yeni uygulama** ' ya tıklayın. 
 
-    LUO uygulamayı oluşturur.
+Görüntülenen pencerede, aşağıdaki bilgileri girin:
 
-    ![İletişim kutusunda, uygulamanızın giriş Otomasyonu ' nu adlandırın](./media/create-new-app-details.png)
+|Ad  |Açıklama  |
+|---------|---------|
+|AName     | Uygulamanız için bir ad. Örneğin, "ana Otomasyon".        |
+|Kültür     | Uygulamanızın anladığı ve kulakça dili.   |
+|Açıklama | Uygulamanız için bir açıklama.
+|Tahmin kaynağı | Sorgu alacak tahmin kaynağı. |
 
-    >[!NOTE]
-    >Uygulama oluşturduktan sonra kültür değiştirilemez.
+**Bitti** ’yi seçin.
+
+>[!NOTE]
+>Uygulama oluşturduktan sonra kültür değiştirilemez.
 
 ## <a name="add-prebuilt-domain"></a>Önceden oluşturulmuş etki alanını ekleme
 
-1. Sol gezinti bölmesinde, **önceden oluşturulmuş etki alanları**' nı seçin.
-1. **Homeautomation**için arama yapın.
+1. Sol gezinti bölmesinde, **önceden oluşturulmuş etki alanları** ' nı seçin.
+1. **Homeautomation** için arama yapın.
 1. HomeAutomation kartında **etki alanı Ekle** ' yi seçin.
 
     > [!div class="mx-imgBorder"]
@@ -51,18 +54,19 @@ Bu hızlı başlangıçta ışıkları ve cihazları açıp kapatmak için önce
 
 ## <a name="intents-and-entities"></a>Amaçlar ve varlıklar
 
-1. HomeAutomation etki alanı amaçlarını gözden geçirmek için **amaçlar** ' ı seçin. Önceden oluşturulmuş etki alanı amaçları, örnek söylenebilir.
-
-    > [!div class="mx-imgBorder"]
-    > ![HomeAutomation amaçları listesinin ekran görüntüsü](media/luis-quickstart-new-app/home-automation-intents.png "HomeAutomation amaçları listesinin ekran görüntüsü")
+1. HomeAutomation etki alanı amaçlarını görmek için sol gezinti menüsünde **amaçlar** ' ı seçin. Ve gibi örnek bir örnek vardır `HomeAutomation.QueryState`     `HomeAutomation.SetDevice` .
 
     > [!NOTE]
-    > **Hiçbiri**, tüm LUIS uygulamaları tarafından sağlanan bir amaçtır. Uygulamanızın sağladığı işlevleri karşılamayan konuşmaların işlenmesi için bunu seçersiniz.
+    > **Hiçbiri** , tüm LUIS uygulamaları tarafından sağlanan bir amaçtır. Uygulamanızın sağladığı işlevleri karşılamayan konuşmaların işlenmesi için bunu seçersiniz.
 
 1. **HomeAutomation.TurnOff** amacını seçin. Amaç, varlıklarla etiketlenmiş örnek bir listesini içerir.
 
     > [!div class="mx-imgBorder"]
     > [![HomeAutomation.TurnOff amacının ekran görüntüsü](media/luis-quickstart-new-app/home-automation-turnoff.png "HomeAutomation.TurnOff amacının ekran görüntüsü")](media/luis-quickstart-new-app/home-automation-turnoff.png)
+
+1. Uygulamanın varlıklarını görüntülemek istiyorsanız, **varlıklar** ' ı seçin. Örneğin, **Homeautomation. aygıtadı** gibi varlıklardan birine tıklarsanız, onunla ilişkili değerlerin bir listesini görürsünüz. 
+ 
+    :::image type="content" source="media/luis-quickstart-new-app/entities-page.png" alt-text="Görüntü alternatif metni" lightbox="media/luis-quickstart-new-app/entities-page.png":::
 
 ## <a name="train-the-luis-app"></a>LUIS uygulamasını eğitme
 
@@ -73,13 +77,9 @@ Uygulamanızı eğittikten sonra test edebilirsiniz.
 
 1. Sağ üst gezinmede **Test** ' i seçin.
 
-1. Etkileşimli test bölmesine benzer bir test söyliği yazın `Turn off the lights` ve ENTER tuşuna basın.
+1. Etkileşimli test bölmesine benzer bir test söyliği yazın `Turn off the lights` ve ENTER tuşuna basın. Örneğin *ışıkları devre dışı bırakın* .
 
-    ```
-    Turn off the lights
-    ```
-
-    Bu örnekte, `Turn off the lights` **Homeautomation. turnoff**'un en üst Puanlama hedefi olarak doğru şekilde tanımlanır.
+    Bu örnekte, `Turn off the lights` **Homeautomation. turnoff** 'un en üst Puanlama hedefi olarak doğru şekilde tanımlanır.
 
     ![Konuşmanın vurgulandığı Test paneli ekran görüntüsü](media/luis-quickstart-new-app/review-test-inspection-pane-in-portal.png)
 
@@ -94,7 +94,18 @@ Uygulamanızı eğittikten sonra test edebilirsiniz.
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Uç nokta URL'sini almak için uygulamayı yayımlama
 
-[!INCLUDE [LUIS How to Publish steps](./includes/howto-publish.md)]
+Bir sohbet bot veya diğer istemci uygulamasında bir LUO tahmini almak için, uygulamayı tahmin uç noktasına yayımlamanız gerekir.
+
+1. Pencerenin sağ üst köşesinde **Yayımla** ' yı seçin.
+
+1. **Üretim** yuvasını seçin ve **bitti** ' yi seçin.
+
+    > [!div class="mx-imgBorder"]
+    > ![Uç noktada bir HALSıS yayımlama ekran görüntüsü](media/howto-publish/publish-app-popup.png)
+
+1. **Azure kaynakları** sayfasına gitmek için bildirimde **uç nokta URL 'lerine erişin** bağlantısına tıklayın. Uç nokta URL 'Leri **örnek sorgu** olarak listelenir.
+
+<!-- [!INCLUDE [LUIS How to Publish steps](./includes/howto-publish.md)] -->
 
 <a name="query-the-v2-api-prediction-endpoint"></a>
 

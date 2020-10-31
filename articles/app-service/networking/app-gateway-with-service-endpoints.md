@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 837a57ee6ce836fb781f5bf5d5362d7c56cba31e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: dbf38c303f024884971e95f7be9d4dfc50d118de
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746209"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127833"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>Hizmet uç noktaları ile Application Gateway tümleştirme
 Azure Application Gateway tümleştirmesi için biraz farklı yapılandırma gerektiren App Service üç çeşidi vardır. Çeşitlemeler, çok kiracılı, Iç Load Balancer (ıLB) App Service Ortamı (Ao) ve dış Ao olarak da bilinen normal App Service içerir. Bu makalede, bunu App Service (çok kiracılı) ile yapılandırma ve ıLB ve dış Ao hakkındaki konuları tartışacak.
@@ -27,7 +27,7 @@ Azure Application Gateway tümleştirmesi için biraz farklı yapılandırma ger
 ## <a name="integration-with-app-service-multi-tenant"></a>App Service ile tümleştirme (çok kiracılı)
 App Service (çok kiracılı), herkese açık bir internet uç noktası içerir. [Hizmet uç noktalarını](../../virtual-network/virtual-network-service-endpoints-overview.md) kullanarak yalnızca bir Azure sanal ağı içindeki belirli bir alt ağdan gelen trafiğe izin verebilir ve diğer her şeyi engelleyebilirsiniz. Aşağıdaki senaryoda, bir App Service örneğinin yalnızca belirli bir Application Gateway örneğinden gelen trafiği alabilmesi için bu işlevi kullanacağız.
 
-![App Service ile tümleştirme Application Gateway](./media/app-gateway-with-service-endpoints/service-endpoints-appgw.png)
+![Diyagramda, bir Azure sanal ağındaki Application Gateway Internet akışını ve App Service içindeki uygulama örneklerine bir güvenlik duvarı simgesiyle bu şekilde akan.](./media/app-gateway-with-service-endpoints/service-endpoints-appgw.png)
 
 App Service ve Application Gateway oluşturmanın yanı sıra bu yapılandırmanın iki bölümü vardır. İlk bölüm, Application Gateway dağıtıldığı sanal ağın alt ağında hizmet uç noktalarını etkinleştirir. Hizmet uç noktaları, tüm ağ trafiğinin App Service doğru kalmasını sağlamak için belirli alt ağ KIMLIĞIYLE etiketlenecek. İkinci bölüm, yalnızca bu belirli alt ağ KIMLIĞIYLE etiketlenmiş trafiğe izin verildiğinden emin olmak için belirli bir Web uygulamasına erişim kısıtlaması ayarlansağlamaktır. Tercihe bağlı olarak farklı araçlar kullanarak yapılandırabilirsiniz.
 
@@ -40,7 +40,7 @@ Azure portal, kurulumu sağlamak ve yapılandırmak için dört adımı takip ed
 
 Artık Application Gateway üzerinden App Service erişebilirsiniz ancak doğrudan App Service erişmeyi denerseniz, Web sitesinin durdurulduğunu belirten 403 HTTP hatası almalısınız.
 
-![App Service ile tümleştirme Application Gateway](./media/app-gateway-with-service-endpoints/web-site-stopped.png)
+![Ekran görüntüsünde bir hata 403, bu Web uygulaması durdurulur.](./media/app-gateway-with-service-endpoints/web-site-stopped.png)
 
 ## <a name="using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanma
 [Kaynak Yöneticisi dağıtım şablonu][template-app-gateway-app-service-complete] , bir bütün senaryo sağlayacaktır. Senaryo, hizmet uç noktaları ve erişim kısıtlaması ile kilitlenmiş bir App Service örneğinden oluşur ve yalnızca Application Gateway trafiği alırlar. Şablon, çok sayıda akıllı varsayılan ve kaynak adlarına eklenen benzersiz postdüzeltmelerin yanı sıra basit hale gelir. Bunları geçersiz kılmak için depoyu kopyalamanız veya şablonu indirmeniz ve düzenlemeniz gerekir. 

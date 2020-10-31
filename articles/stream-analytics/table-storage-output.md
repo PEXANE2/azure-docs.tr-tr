@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 3e5b747e55c8f246167bcf8bbde3542146e69706
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea775ef472687485dbd2f30c4f60adc33c0eaa73
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891959"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127357"
 ---
 # <a name="table-storage-output-from-azure-stream-analytics"></a>Azure Stream Analytics 'den tablo depolama çıkışı
 
@@ -28,7 +28,7 @@ Aşağıdaki tabloda, tablo çıktısı oluşturmaya yönelik özellik adları v
 | Tablo adı |Tablonun adı. Tablo yoksa oluşturulur. |
 | Bölüm anahtarı |Bölüm anahtarını içeren çıkış sütununun adı. Bölüm anahtarı, bir varlığın birincil anahtarının ilk kısmını oluşturan tablo içindeki bölüm için benzersiz bir tanımlayıcıdır. Boyutu 1 KB 'a kadar olabilecek bir dize değeridir. |
 | Satır anahtarı |Satır anahtarını içeren çıkış sütununun adı. Satır anahtarı, bir bölüm içindeki bir varlık için benzersiz bir tanımlayıcıdır. Bir varlığın birincil anahtarının ikinci bölümünü oluşturur. Satır anahtarı, boyutu 1 KB 'a kadar olabilecek bir dize değeridir. |
-| Toplu iş boyutu |Bir toplu işlem için kayıt sayısı. Varsayılan (100) çoğu iş için yeterlidir. Bu ayarı değiştirme hakkında daha fazla bilgi için bkz. [tablo toplu işlem belirtimi](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.tablebatchoperation) . |
+| Toplu iş boyutu |Bir toplu işlem için kayıt sayısı. Varsayılan (100) çoğu iş için yeterlidir. Bu ayarı değiştirme hakkında daha fazla bilgi için bkz. [tablo toplu işlem belirtimi](/java/api/com.microsoft.azure.storage.table.tablebatchoperation) . |
 
 ## <a name="partitioning"></a>Bölümleme
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/04/2020
-ms.openlocfilehash: 4acdd8bfd567a317b954d58629468fa8cd929669
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b4941d326359a51ff6a75385a74a8bcdabfa075
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90032393"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129006"
 ---
 # <a name="determine-your-publishing-option"></a>Yayımlama seçeneğinizi belirleme
 
@@ -32,7 +32,7 @@ Aşağıdaki tabloda, Microsoft AppSource ve Azure Marketi 'nde teklif türleri 
 
 |   | **Liste (kişi)**  | **Liste (deneme)**  | **Ücretsiz** | **KLG** | **İşlem**|
 | :--------- | :----------- | :------------ | :----------- | :---------- |:---------- |
-| **Sanal Makine** |  |  |  | Azure Market |  Azure Market |
+| **Sanal makine** |  |  |  | Azure Market |  Azure Market |
 | **Azure uygulamaları (çoklu VM)** |  |  | Azure Market | Azure Market | Azure Market  |
 | **Kapsayıcı görüntüsü** |  |  | Azure Market | Azure Market |   |
 | **IoT Edge modülü** |  |  | Azure Market | Azure Market |   |
@@ -49,14 +49,14 @@ Microsoft AppSource SaaS uygulaması Transact tekliflerinin &#42; Şu anda yaln�
 
 ## <a name="choose-a-listing-option"></a>Listeleme seçeneği seçin
 
-Mevcut olan liste seçenekleri, müşteri adayı paylaşma ve [ticari Market avantajlarına](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)erişmenizi sağlarken farklılaştırılan müşteri katılımını sunmaktadır. Yayımlama seçeneğiyle karşılık gelen listeleme seçeneklerini unutmayın:
+Mevcut olan liste seçenekleri, müşteri adayı paylaşma ve [ticari Market avantajlarına](./gtm-your-marketplace-benefits.md)erişmenizi sağlarken farklılaştırılan müşteri katılımını sunmaktadır. Yayımlama seçeneğiyle karşılık gelen listeleme seçeneklerini unutmayın:
 
 | **Yayımlama seçeneği**    | **Açıklama**  |
 | :------------------- | :-------------------|
 | **Liste** | Uygulama veya hizmetinizin, bir ticari Market kullanıcısına **Ilgili kişi** listeleme seçenekleri aracılığıyla müşteriye bağlanmanızı istemesini sağlayan basit listesi. |
-| **Deneme** | Ticari Market 'i kullanarak, çözümünüzün deneme deneyiminizin sağlamasını geliştirin ve bu sayede, olası kullanıcıların satın alınmadan önce sınırlı bir süre boyunca SaaS, IaaS veya Microsoft uygulama içi deneyiminizi kullanmasına olanak sağlar. Deneme yayımlama seçeneği için kullanılan liste seçenekleri, **ücretsiz deneme** veya **Test sürüşdir**. |
-| **KLG** | Keşfedilebilirliğini geliştirmek ve çözümünüzün sağlamasını otomatik hale getirmek için ticari Market 'i kullanın ve mali işlemi ayrı olarak doldurun. KLG teklif türleri şirket içinde bulut geçişleri için idealdir. Listeleme seçeneği **Şimdi alınır**.
-| **İşlem** | Transact teklifleri ticari Market aracılığıyla satılır. Microsoft, faturalandırma ve koleksiyonlardan sorumludur. Listeleme seçeneği **Şimdi alınır**.|
+| **Deneme** | Ticari Market 'i kullanarak, çözümünüzün deneme deneyiminizin sağlamasını geliştirin ve bu sayede, olası kullanıcıların satın alınmadan önce sınırlı bir süre boyunca SaaS, IaaS veya Microsoft uygulama içi deneyiminizi kullanmasına olanak sağlar. Deneme yayımlama seçeneği için kullanılan liste seçenekleri, **ücretsiz deneme** veya **Test sürüşdir** . |
+| **KLG** | Keşfedilebilirliğini geliştirmek ve çözümünüzün sağlamasını otomatik hale getirmek için ticari Market 'i kullanın ve mali işlemi ayrı olarak doldurun. KLG teklif türleri şirket içinde bulut geçişleri için idealdir. Listeleme seçeneği **Şimdi alınır** .
+| **İşlem** | Transact teklifleri ticari Market aracılığıyla satılır. Microsoft, faturalandırma ve koleksiyonlardan sorumludur. Listeleme seçeneği **Şimdi alınır** .|
 
 > [!Note]
 > Transact Publishing seçeneğini kullanırken, bir teklif türü seçmeden ve teklifinizi oluşturmadan önce fiyatlandırma, faturalandırma, faturalama ve ödeme konularını anlamak önemlidir. Daha fazla bilgi edinmek için [ticari Market Transact özellikleri](./marketplace-commercial-transaction-capabilities-and-considerations.md)makalesine bakın.
@@ -80,10 +80,10 @@ SaaS teklifleri, Azure Market veya AppSource 'ta yayımlanabilir. SaaS teklifini
 
 | Ölçülen faturalandırma | Ortak plan | Özel plan | Kullanılabilir: |
 |---|---|---|---|
-| Evet             | Evet         | Hayır           | Azure Marketi ve Azure portal |
-| Evet             | Evet         | Evet          | Azure Marketi ve Azure portal * |
-| Evet             | Hayır          | Evet          | Yalnızca Azure portal |
-| Hayır              | Hayır          | Evet          | Yalnızca Azure portal |
+| Yes             | Yes         | Hayır           | Azure Marketi ve Azure portal |
+| Yes             | Yes         | Yes          | Azure Marketi ve Azure portal * |
+| Yes             | Hayır          | Yes          | Yalnızca Azure portal |
+| Hayır              | Hayır          | Yes          | Yalnızca Azure portal |
 
 &#42; teklifin özel planı yalnızca Azure portal ile kullanılabilir
 

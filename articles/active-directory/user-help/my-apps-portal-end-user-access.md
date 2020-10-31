@@ -12,12 +12,12 @@ ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: e54f153738d232eaddff8b0fc499a763581ca726
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 61dd185d00cef2382763e7435c081e1d412cdb92
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277422"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127885"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Uygulamalarım portalından oturum açın ve uygulamaları başlatın
 
@@ -60,7 +60,7 @@ Kuruluşunuzun bulut tabanlı uygulamalarına erişme ve bunları kullanma iznin
 
 ### <a name="download-and-install-the-my-apps-secure-sign-in-extension"></a>Uygulamalarım güvenli oturum açma uzantısını indirin ve yükleyin
 
-İstenirse **uygulamalarım güvenli oturum açma uzantısını**indirip yükleyin. Bu uzantı, kuruluşunuzun bulut uygulamalarıyla çoklu oturum açma kullanmak için masaüstü tarayıcınızı kullanmanıza yardımcı olur. Uygulamalarım portalındaki bir uygulamanın üzerine gelin **My Apps** , **...** seçeneğini belirleyip **uygulamanızı Yönet**' i seçin.
+İstenirse **uygulamalarım güvenli oturum açma uzantısını** indirip yükleyin. Bu uzantı, kuruluşunuzun bulut uygulamalarıyla çoklu oturum açma kullanmak için masaüstü tarayıcınızı kullanmanıza yardımcı olur. Uygulamalarım portalındaki bir uygulamanın üzerine gelin **My Apps** , **...** seçeneğini belirleyip **uygulamanızı Yönet** ' i seçin.
 
 Kuruluşunuz zaten çoklu oturum açma için ayarlandıysa, uzantı otomatik olarak yüklenir ve bu bölümü atlayabilirsiniz.
 
@@ -77,9 +77,9 @@ Uzantıyı, kullanmakta olduğunuz tarayıcıya göre indirin ve yükleyin.
 
 - **Microsoft Edge** -Microsoft Store, [uygulamalarım güvenli oturum açma uzantısı](https://microsoftedge.microsoft.com/addons/detail/my-apps-secure-signin-ex/gaaceiggkkiffbfdpmfapegoiohkiipl) özelliğine gidin ve sonra Microsoft Edge eski tarayıcı uzantısını almak için **Al** ' ı seçin.
 
-- **Google Chrome** -Chrome Web mağazasından, [uygulamalarım güvenli oturum açma uzantısı](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl) özelliğine gidin ve ardından **Chrome 'a Ekle**' yi seçin.
+- **Google Chrome** -Chrome Web mağazasından, [uygulamalarım güvenli oturum açma uzantısı](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl) özelliğine gidin ve ardından **Chrome 'a Ekle** ' yi seçin.
 
-- **Mozilla Firefox** - **Firefox eklentileri** sayfasından [uygulamalarım güvenli oturum açma uzantısı](https://addons.mozilla.org/firefox/addon/access-panel-extension/) özelliğine gidin ve ardından **Firefox 'a Ekle**' yi seçin.
+- **Mozilla Firefox** - **Firefox eklentileri** sayfasından [uygulamalarım güvenli oturum açma uzantısı](https://addons.mozilla.org/firefox/addon/access-panel-extension/) özelliğine gidin ve ardından **Firefox 'a Ekle** ' yi seçin.
 
 **Adres** çubuğunuzun sağına bir simge eklenir, bu da oturum açıp uzantıyı özelleştirmenize olanak tanır.
 
@@ -87,9 +87,9 @@ Uzantıyı, kullanmakta olduğunuz tarayıcıya göre indirin ve yükleyin.
 
 **Son kullanılan** bölümde kaç uygulama görüntüleneceğini seçebilir ve kuruluşunuzun Iç URL 'lerinin yeniden yönlendirmesine izin verip vermeyeceğine karar verebilirsiniz.
 
-1. Adres çubuğunuzun sağ tarafındaki yeni **uygulamalarım güvenli oturum açma uzantısı** simgesi ![ uzantısını seçin ](media/my-apps-portal/my-apps-portal-extension-icon.png) ve ardından oturum aç **Address** ' ı seçerek **kullanmaya başlayın**.
+1. Adres çubuğunuzun sağ tarafındaki yeni **uygulamalarım güvenli oturum açma uzantısı** simgesi ![ uzantısını seçin ](media/my-apps-portal/my-apps-portal-extension-icon.png) ve ardından oturum aç **Address** ' ı seçerek **kullanmaya başlayın** .
 
-1. **Ayarlar** simgesi ayarları simgesine sağ tıklayın ![ ](media/my-apps-portal/my-apps-portal-extension-settings-icon.png) ve ardından **Ayarlar**' ı seçin.
+1. **Ayarlar** simgesi ayarları simgesine sağ tıklayın ![ ](media/my-apps-portal/my-apps-portal-extension-settings-icon.png) ve ardından **Ayarlar** ' ı seçin.
 
 1. **Ayarlar** kutusunda, portalda görmek istediğiniz son uygulama sayısını ve kuruluşunuzun Iç URL 'lerinin uzaktan kullanabilmeniz için yeniden yönlendirmesine izin verip vermeyeceğinizi seçin.
 
@@ -113,11 +113,11 @@ Kuruluşunuzun uygulamalarını cihazlarınızda Edge tarayıcısının mobil s�
 
 Yöneticiniz size izin verdiyse, **uygulamalar** sayfasına yeni bir uygulama ekleyebilirsiniz.
 
-1. **Uygulamalar** sayfasından **self servis uygulamaları Ekle**' yi seçin.
+1. **Uygulamalar** sayfasından **self servis uygulamaları Ekle** ' yi seçin.
 
    ![Uygulamalar Ekle sayfasında, myapplications.microsoft.com adresindeki uygulamalar portalı](media/my-apps-portal/my-apps-portal-add-app-link.png)
 
-1. Belirtilen listeden eklemek istediğiniz uygulamayı seçin ve ardından **Ekle**' yi seçin.
+1. Belirtilen listeden eklemek istediğiniz uygulamayı seçin ve ardından **Ekle** ' yi seçin.
 
 1. Uygulama, **uygulamalar** sayfasındaki listeye eklenir.
 
@@ -151,7 +151,7 @@ Mevcut bulut tabanlı uygulamalardan herhangi birini **uygulamalarım** portalı
 
 **Uygulamalar** sayfasına geldiğinizde şunları yapabilirsiniz:
 
-- [Profil bilgilerinizi değiştirme](my-apps-portal-end-user-update-profile.md)
+- [Profil bilgilerinizi değiştirme](./my-account-portal-settings.md)
 
 - [Gruplarla ilgili bilgilerinizi görüntüleyin ve güncelleştirin](my-apps-portal-end-user-groups.md)
 

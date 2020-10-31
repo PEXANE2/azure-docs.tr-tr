@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/26/2019
-ms.openlocfilehash: a40f92e88d2d8e5ca253446b9c67ad30df538a5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 311aca139220622a0436d490e73a536c3fc898c9
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86043436"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129024"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>Azure Stream Analytics ile gerçek zamanlı IoT veri akışlarını işleme
 
@@ -50,7 +50,7 @@ Kullanım kolaylığı için, bu başlangıç kılavuzunda gerçek algılayıcı
 
 1. Benzersiz bir iş adı girin ve aboneliğin işiniz için doğru olduğundan emin olun. Yeni bir kaynak grubu oluşturun veya aboneliğinizden mevcut bir kaynağı seçin.
 
-1. İşiniz için bir konum seçin. İşlem hızını artırmak ve maliyetlerin düşürülmesi için kaynak grubunuz ve tüm kaynaklar için aynı konumu kullanın. Yapılandırma yaptıktan sonra **Oluştur**' u seçin.
+1. İşiniz için bir konum seçin. İşlem hızını artırmak ve maliyetlerin düşürülmesi için kaynak grubunuz ve tüm kaynaklar için aynı konumu kullanın. Yapılandırma yaptıktan sonra **Oluştur** ' u seçin.
    
     ![Yeni bir Akış Analizi işi oluşturma ayrıntıları](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.png)
 
@@ -60,7 +60,7 @@ Kullanım kolaylığı için, bu başlangıç kılavuzunda gerçek algılayıcı
 [HelloWorldASA-InputStream.js](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json
 ) GitHub 'dan indirin. Sonra, Azure portal Azure Stream Analytics işinize gidin.
 
-Sol menüden **iş topolojisi** altında **sorgu** ' yı seçin. Ardından **örnek girişi yükle**' yi seçin. Dosyayı karşıya yükleyin `HelloWorldASA-InputStream.json` ve **Tamam**' ı seçin.
+Sol menüden **iş topolojisi** altında **sorgu** ' yı seçin. Ardından **örnek girişi yükle** ' yi seçin. Dosyayı karşıya yükleyin `HelloWorldASA-InputStream.json` ve **Tamam** ' ı seçin.
 
 ![Pano sorgu kutucuğunu Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 
@@ -125,7 +125,7 @@ HAVING Avg(temp)>100
 
 ![30 saniyelik filtre sorgusu](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-10.png)
 
-Ortalama geçicinin 100 ' den büyük olduğu yalnızca 245 satır ve algılayıcı adı içeren sonuçları görmeniz gerekir. Bu sorguda olay akışı, 30 saniyelik bir **Atlayan Pencere** üzerinden algılayıcı adı olan **dspl**'ye göre gruplanır. Zamana bağlı sorgular, saatin nasıl ilerlemesini istediğinizi belirtmelidir. **Zaman DAMGASı by** yan tümcesini kullanarak, saatleri tüm zamana bağlı hesaplamalarla Ilişkilendirmek Için **outputtime** sütununu belirttiniz. Ayrıntılı bilgi için [zaman yönetimi](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics) ve [Pencereleme işlevleri](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)hakkında bilgi edinin.
+Ortalama geçicinin 100 ' den büyük olduğu yalnızca 245 satır ve algılayıcı adı içeren sonuçları görmeniz gerekir. Bu sorguda olay akışı, 30 saniyelik bir **Atlayan Pencere** üzerinden algılayıcı adı olan **dspl** 'ye göre gruplanır. Zamana bağlı sorgular, saatin nasıl ilerlemesini istediğinizi belirtmelidir. **Zaman DAMGASı by** yan tümcesini kullanarak, saatleri tüm zamana bağlı hesaplamalarla Ilişkilendirmek Için **outputtime** sütununu belirttiniz. Ayrıntılı bilgi için [zaman yönetimi](/stream-analytics-query/time-management-azure-stream-analytics) ve [Pencereleme işlevleri](/stream-analytics-query/windowing-azure-stream-analytics)hakkında bilgi edinin.
 
 ### <a name="query-detect-absence-of-events"></a>Sorgu: Var olmayan olayları algılama
 
@@ -148,9 +148,8 @@ WHERE t2.dspl IS NULL
 
 ![Var olmayan olayları algılama](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-11.png)
 
-Burada, **LEFT OUTER** deyimini aynı veri akışı üzerinde kullanırız (kendi kendine birleşme). Bir **INNER** birleşimde, yalnızca bir eşleşme bulunduğu zaman bir sonuç döndürülür.  Bir **LEFT OUTER** birleşimde, birleştirmenin sol tarafındaki bir olay eşleşmemişse sağ taraftaki tüm sütunlar için NULL değerine sahip bir satır döndürülür. Bu teknik, var olmayan olayların bulunması için oldukça kullanışlıdır. Daha fazla bilgi için bkz. [JOIN](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics).
+Burada, **LEFT OUTER** deyimini aynı veri akışı üzerinde kullanırız (kendi kendine birleşme). Bir **INNER** birleşimde, yalnızca bir eşleşme bulunduğu zaman bir sonuç döndürülür.  Bir **LEFT OUTER** birleşimde, birleştirmenin sol tarafındaki bir olay eşleşmemişse sağ taraftaki tüm sütunlar için NULL değerine sahip bir satır döndürülür. Bu teknik, var olmayan olayların bulunması için oldukça kullanışlıdır. Daha fazla bilgi için bkz. [JOIN](/stream-analytics-query/join-azure-stream-analytics).
 
 ## <a name="conclusion"></a>Sonuç
 
 Bu makalenin amacı, farklı Stream Analytics sorgu dili sorgularının nasıl yazılacağını ve sonuçları tarayıcıda görmektir. Ancak, bu yalnızca başlamanıza olanak sağlamak için kullanılır. Akış Analizi birçok giriş ve çıkışı desteklemenin yanı sıra Azure Machine Learning'deki işlevlerden de faydalanır. Bu da onu veri akışlarının analizi için sağlam bir araç haline getirir. Sorgu yazma hakkında daha fazla bilgi için [ortak sorgu desenleri](stream-analytics-stream-analytics-query-patterns.md) hakkındaki makaleyi okuyun.
-
