@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84d0731a67ac47b8b0fc73cb485857458b3febbb
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 6837bbdb63caf0fb1ecb3f6e520d5f3623483b44
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093319"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083244"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>Güvenli, Azure tarafından yönetilen iş istasyonlarını anlayın
 
@@ -94,12 +94,15 @@ Güvenli bir iş istasyonu için temel, ' güven kökü ' adlı güvenilir bir i
 
 Bu çözüm için, güven kökü, modern teknik gereksinimleri karşılayan donanımla [Microsoft Autopilot](/windows/deployment/windows-autopilot/windows-autopilot) teknolojisi kullanılarak dağıtılır. Bir iş istasyonunun güvenliğini sağlamak için, Autopilot Microsoft OEM ile iyileştirilmiş Windows 10 cihazlarından yararlanmanızı sağlar. Bu cihazlar, üreticiden bilinen iyi bir durumda gelir. Autopilot, güvenli olmayabilecek bir cihazı yeniden Imaging yerine bir Windows cihazını "iş için kullanılabilir" durumuna dönüştürebilir. Ayarlar ve ilkeler uygular, uygulamalar yüklenir ve hatta Windows 10 sürümünü değiştirir. Örneğin, Autopilot, bir cihazın Windows yüklemesini Windows 10 Pro 'dan Windows 10 Enterprise 'a değiştirerek gelişmiş özellikleri kullanabilir.
 
-![Güvenli iş istasyonu düzeyleri](./media/concept-azure-managed-workstation/supplychain.png)
+:::image type="complex" source="./media/concept-azure-managed-workstation/supplychain.png" alt-text="Güvenli bir iş istasyonunun yaşam döngüsünü gösteren diyagram." border="false":::
+Diyagramın üst kısmına yakın bir cihaz satıcısı görüntülenir. Oklar, bu satıcıdan iş istasyonunu satın alan ve yerine getirilmesi ve teslim edilen bir kamyonun bulunduğu müşteriye işaret edebilir. Kamyonun, bir ok, bu resimleri bir iş istasyonu kullanarak bir kişi olarak dağıtın etiketli bir görüntüye işaret ediyor. Self servis deneyimi etiketli bir ok, bu kişiden iş için hazırlanma etiketli bir ekrana uzanır. Bu ekranın altında, yönetilen güvenli etiketli simgeler görüntülenir. Sabit durum kullanımı etiketli bir ok, ekrandan yaşam sonu simgesine ve bir onarım sıfırlama simgesine kadar geçerli noktaları yönetin ve izleyin. Son bir ok, onarım simgesini bir iş için hazırlanma ekranına geri döngüye alır.
+:::image-end:::
 
 ## <a name="device-roles-and-profiles"></a>Cihaz rolleri ve profilleri
 
 Bu kılavuzda, kullanıcılar, geliştiriciler ve BT personeli için daha güvenli çözümler oluşturmanıza yardımcı olabilecek birkaç güvenlik profili ve rolü başvuruyordur. Bu profiller, gelişmiş veya güvenli bir iş istasyonundan faydalanabilecek ortak kullanıcılara yönelik kullanılabilirliği ve riskleri dengeleyebilir. Burada sunulan ayarların yapılandırması, sektörde kabul edilen standartları temel alır. Bu kılavuzda, Windows 10 ' un nasıl zor yapılacağı ve cihaz ya da Kullanıcı güvenliğinin aşılmasına ilişkin riskleri azaltma gösterilmektedir. Modern donanım teknolojisinin ve güven cihazının kökünün avantajlarından yararlanmak için, **yüksek güvenlik** profilinden başlayarak etkinleştirilen [cihaz sistem durumu kanıtlama](https://techcommunity.microsoft.com/t5/Intune-Customer-Success/Support-Tip-Using-Device-Health-Attestation-Settings-as-Part-of/ba-p/282643)kullanacağız. Bu yetenek, bir cihazın erken önyüklemesi sırasında saldırganların kalıcı olmamasını sağlamak için mevcuttur. Bu, güvenlik özelliklerinin ve risklerinin yönetilmesine yardımcı olmak üzere ilke ve teknolojiyi kullanarak bunu yapar.
-![Güvenli iş istasyonu düzeyleri](./media/concept-azure-managed-workstation/seccon-levels.png)
+
+:::image type="content" source="./media/concept-azure-managed-workstation/seccon-levels.png" alt-text="Güvenli bir iş istasyonunun yaşam döngüsünü gösteren diyagram." border="false":::
 
 * **Temel güvenlik** – yönetilen, standart bir iş istasyonu çoğu ev ve küçük işletme kullanımı için iyi bir başlangıç noktası sağlar. Bu cihazlar Azure AD 'ye kaydedilir ve Intune ile yönetilir. Bu profil kullanıcıların herhangi bir uygulamayı çalıştırmasına ve herhangi bir Web sitesine gözatmasına izin verir. [Microsoft Defender](https://www.microsoft.com/windows/comprehensive-security) gibi kötü amaçlı yazılımdan koruma çözümü etkinleştirilmelidir.
 

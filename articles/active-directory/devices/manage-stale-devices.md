@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea5d24fd36e668fc52a8b5c9a20472c42ef3c420
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7651f84e14d6ea7dcb4e12d57e2bf494d5aeff1e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825963"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083193"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Nasıl yapılır: Azure AD 'de eski cihazları yönetme
 
@@ -55,11 +55,11 @@ Etkinlik zaman damgasının değerini almak için iki seçeneğiniz vardır:
 
 - Azure portaldaki [cihazlar sayfasının](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)**Etkinlik** sütunu
 
-    ![Etkinlik zaman damgası](./media/manage-stale-devices/01.png)
+    :::image type="content" source="./media/manage-stale-devices/01.png" alt-text="Ad, sahip ve cihazlarda diğer bilgileri listelemek Azure portal sayfanın ekran görüntüsü. Bir sütunda etkinlik zaman damgası listelenir." border="false":::
 
 - [Get-AzureADDevice](/powershell/module/azuread/Get-AzureADDevice) cmdlet 'i
 
-    ![Etkinlik zaman damgası](./media/manage-stale-devices/02.png)
+    :::image type="content" source="./media/manage-stale-devices/02.png" alt-text="Ad, sahip ve cihazlarda diğer bilgileri listelemek Azure portal sayfanın ekran görüntüsü. Bir sütunda etkinlik zaman damgası listelenir." border="false":::
 
 ## <a name="plan-the-cleanup-of-your-stale-devices"></a>Eski cihazların temizliğini planlama
 

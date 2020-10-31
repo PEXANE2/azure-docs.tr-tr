@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: e64914118409332f6a1c08b6d5e1669685529d76
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: ff071373706759576f80426d61a27851bfc4e1b6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999172"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082173"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Modeli Azure Container Instances’a dağıtma
 
@@ -33,7 +33,7 @@ ACI 'nin kota ve bölge kullanılabilirliği hakkında daha fazla bilgi için bk
 >
 > Azure Machine Learning - [Yerel Not Defterine Dağıtma](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local) konusuna da bakabilirsiniz
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
@@ -60,7 +60,7 @@ Daha fazla bilgi için bkz. [sanal ağlarla ının güvenliğini sağlama](how-t
 
 ## <a name="deploy-to-aci"></a>ACI'ye dağıtma
 
-Azure Container Instances bir modeli dağıtmak için, gereken işlem kaynaklarını açıklayan bir __dağıtım yapılandırması__ oluşturun. Örneğin, çekirdek ve bellek sayısı. Ayrıca, modeli ve Web hizmetini barındırmak için gereken ortamı açıklayan bir __çıkarım yapılandırmasına__ihtiyacınız vardır. Çıkarım yapılandırmasını oluşturma hakkında daha fazla bilgi için bkz. [modellerin nasıl ve ne şekilde dağıtılacağı](how-to-deploy-and-where.md).
+Azure Container Instances bir modeli dağıtmak için, gereken işlem kaynaklarını açıklayan bir __dağıtım yapılandırması__ oluşturun. Örneğin, çekirdek ve bellek sayısı. Ayrıca, modeli ve Web hizmetini barındırmak için gereken ortamı açıklayan bir __çıkarım yapılandırmasına__ ihtiyacınız vardır. Çıkarım yapılandırmasını oluşturma hakkında daha fazla bilgi için bkz. [modellerin nasıl ve ne şekilde dağıtılacağı](how-to-deploy-and-where.md).
 
 > [!NOTE]
 > * ACI yalnızca boyutu 1 GB 'ın altında olan küçük modeller için uygundur. 
@@ -104,6 +104,8 @@ Bkz. [vs Code modellerinizi dağıtma](tutorial-train-deploy-image-classificatio
 > [!IMPORTANT]
 > Önceden test etmek için bir ACI kapsayıcısı oluşturmanız gerekmez. ACI kapsayıcıları gerektiğinde oluşturulur.
 
+> [!IMPORTANT]
+> Oluşturulan tüm temel acı kaynaklarına karma çalışma alanı kimliği ekliyoruz, aynı çalışma alanından tüm acı adları aynı soneke sahip olur. Azure Machine Learning hizmet adı aynı müşteri "service_name" olarak sağlanmakta ve tüm kullanıcılara yönelik Azure Machine Learning SDK API 'Lerine hiçbir değişiklik gerektirmez. Oluşturulan temel kaynakların adları üzerinde hiçbir garanti vermeyiz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/03/2020
 ms.author: marsma
-ms.custom: aaddev, identityplatformtop40, contperfq1
+ms.custom: aaddev, identityplatformtop40, contperfq1, contentperfq2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 9cd59d6bf5b9bf6e17cba0786bfac27ed12d7638
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ed4e3c54bd4aa6be314fe7ec12d6ba6e7cf949d9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91258141"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083329"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Hızlı başlangıç: Microsoft Identity platformu ile uygulama kaydetme
 
@@ -30,7 +30,7 @@ Microsoft Identity platformunun kimlik ve erişim yönetimi (ıAM) gerçekleşti
 * Etkin aboneliği olan bir Azure hesabı- [ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Hızlı başlangıç tamamlama: kiracı ayarlama](quickstart-create-new-tenant.md)
 
-## <a name="register-an-application"></a>Bir uygulamayı kaydetme
+## <a name="register-an-application"></a>Uygulamayı kaydetme
 
 Uygulamanızı kaydetmek, uygulamanız ve Microsoft Identity platform arasında bir güven ilişkisi kurar. Güven tek yönlü: uygulamanız Microsoft Identity platformu ' na güvendiğinden, bunun diğer bir yolu değildir.
 
@@ -38,10 +38,10 @@ Uygulama kaydını oluşturmak için aşağıdaki adımları izleyin:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/quickstart-register-app/portal-01-directory-subscription-filter.png" border="false"::: .
-1. **Azure Active Directory**'yi bulun ve seçin.
-1. **Yönet**altında **uygulama kayıtları**ve ardından **Yeni kayıt**' ı seçin.
+1. **Azure Active Directory** 'yi bulun ve seçin.
+1. **Yönet** altında **uygulama kayıtları** ve ardından **Yeni kayıt** ' ı seçin.
 1. Uygulamanız için bir **ad** girin. Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
-1. Bazen *oturum açma hedef kitlesi*olarak adlandırılan, uygulamayı kimlerin kullanacağınızı belirtin.
+1. Bazen *oturum açma hedef kitlesi* olarak adlandırılan, uygulamayı kimlerin kullanacağınızı belirtin.
 
     | Desteklenen hesap türleri | Açıklama |
     |-------------------------|-------------|
@@ -55,7 +55,7 @@ Uygulama kaydını oluşturmak için aşağıdaki adımları izleyin:
 
     :::image type="content" source="media/quickstart-register-app/portal-02-app-reg-01.png" alt-text="Bir uygulama kaydetme bölmesini gösteren bir Web tarayıcısındaki Azure portal ekran görüntüsü.":::
 
-Kayıt tamamlandığında Azure portal, **uygulamanın (istemci) kimliğini**içeren uygulama kaydının **genel bakış** bölmesini görüntüler. Yalnızca *ISTEMCI kimliği*olarak da adlandırılan bu değer, uygulamanızı Microsoft Identity platformunda benzersiz şekilde tanımlar.
+Kayıt tamamlandığında Azure portal, **uygulamanın (istemci) kimliğini** içeren uygulama kaydının **genel bakış** bölmesini görüntüler. Yalnızca *ISTEMCI kimliği* olarak da adlandırılan bu değer, uygulamanızı Microsoft Identity platformunda benzersiz şekilde tanımlar.
 
 Uygulamanızın kodu veya daha yaygın olarak uygulamanızda kullanılan bir kimlik doğrulama kitaplığı da, kimlik platformundan aldığı güvenlik belirteçlerini doğrulamak için istemci KIMLIĞINI bir boyut olarak kullanır.
 
@@ -71,14 +71,14 @@ Bir üretim Web uygulamasında, örneğin, yeniden yönlendirme URI 'SI genellik
 
 ### <a name="configure-platform-settings"></a>Platform ayarlarını yapılandırma
 
-Yeniden yönlendirme URI 'Leri dahil olmak üzere her uygulama türünün ayarları, Azure portal **Platform yapılandırmalarında** yapılandırılır. **Web** ve **tek sayfalı uygulamalar**gibi bazı platformlar, BIR yeniden yönlendirme URI 'sini el ile belirtmenizi gerektirir. Mobil ve Masaüstü gibi diğer platformlarda, diğer ayarlarını yapılandırırken sizin için oluşturulan yeniden yönlendirme URI 'Leri arasından seçim yapabilirsiniz.
+Yeniden yönlendirme URI 'Leri dahil olmak üzere her uygulama türünün ayarları, Azure portal **Platform yapılandırmalarında** yapılandırılır. **Web** ve **tek sayfalı uygulamalar** gibi bazı platformlar, BIR yeniden yönlendirme URI 'sini el ile belirtmenizi gerektirir. Mobil ve Masaüstü gibi diğer platformlarda, diğer ayarlarını yapılandırırken sizin için oluşturulan yeniden yönlendirme URI 'Leri arasından seçim yapabilirsiniz.
 
 Hedeflediğiniz platformu veya cihazı temel alan uygulama ayarlarını yapılandırmak için:
 
 1. Azure portal **uygulama kayıtları** uygulamanızdaki uygulamanızı seçin.
-1. **Yönet**altında **kimlik doğrulaması**' nı seçin.
-1. **Platform yapılandırması**altında **Platform Ekle**' yi seçin.
-1. **Platformları Yapılandır**bölümünde, ayarlarını yapılandırmak için uygulama türü (Platform) kutucuğunu seçin.
+1. **Yönet** altında **kimlik doğrulaması** ' nı seçin.
+1. **Platform yapılandırması** altında **Platform Ekle** ' yi seçin.
+1. **Platformları Yapılandır** bölümünde, ayarlarını yapılandırmak için uygulama türü (Platform) kutucuğunu seçin.
 
     :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="Bir uygulama kaydetme bölmesini gösteren bir Web tarayıcısındaki Azure portal ekran görüntüsü." border="false":::
 
@@ -86,9 +86,9 @@ Hedeflediğiniz platformu veya cihazı temel alan uygulama ayarlarını yapılan
     | -------- | ---------------------- |
     | **Web** | Uygulamanız için bir **yeniden yönlendirme URI 'si** girin, Microsoft Identity platformunun bir kullanıcının istemcisini yeniden yönlendirdiği ve kimlik doğrulamasından sonra güvenlik belirteçleri gönderdiği konum.<br/><br/>Sunucuda çalışan standart Web uygulamaları için bu platformu seçin. |
     | **Tek sayfalı uygulama** | Uygulamanız için bir **yeniden yönlendirme URI 'si** girin, Microsoft Identity platformunun bir kullanıcının istemcisini yeniden yönlendirdiği ve kimlik doğrulamasından sonra güvenlik belirteçleri gönderdiği konum.<br/><br/>JavaScript 'te bir istemci tarafı Web uygulaması oluşturuyorsanız veya angular, Vue.js, React.js veya Blazor WebAssembly gibi bir çatı varsa bu platformu seçin. |
-    | **iOS/macOS** | *Info. plist* veya Build Settings Içinde Xcode içinde bulunan uygulama **paket kimliğini**girin.<br/><br/>Bir paket KIMLIĞI belirttiğinizde sizin için bir yeniden yönlendirme URI 'SI oluşturulur. |
-    | **Android** | *AndroidManifest.xml* dosyasında bulabileceğiniz uygulama **paketi adını**girin ve **imza karmasını**oluşturup girin.<br/><br/>Bu ayarları belirttiğinizde sizin için bir yeniden yönlendirme URI 'SI oluşturulur. |
-    | **Mobil ve Masaüstü uygulamaları** | **Önerilen yeniden yönlendirme** URI 'lerinden birini seçin veya özel bir **yeniden yönlendirme URI 'si**belirtin.<br/>Masaüstü uygulamaları için şunları yapmanızı öneririz:<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>En son Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanmayan veya bir aracı kullanmayan mobil uygulamalar için bu platformu seçin. Masaüstü uygulamaları için de bu platformu seçin. |
+    | **iOS/macOS** | *Info. plist* veya Build Settings Içinde Xcode içinde bulunan uygulama **paket kimliğini** girin.<br/><br/>Bir paket KIMLIĞI belirttiğinizde sizin için bir yeniden yönlendirme URI 'SI oluşturulur. |
+    | **Android** | *AndroidManifest.xml* dosyasında bulabileceğiniz uygulama **paketi adını** girin ve **imza karmasını** oluşturup girin.<br/><br/>Bu ayarları belirttiğinizde sizin için bir yeniden yönlendirme URI 'SI oluşturulur. |
+    | **Mobil ve Masaüstü uygulamaları** | **Önerilen yeniden yönlendirme** URI 'lerinden birini seçin veya özel bir **yeniden yönlendirme URI 'si** belirtin.<br/>Masaüstü uygulamaları için şunları yapmanızı öneririz:<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>En son Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanmayan veya bir aracı kullanmayan mobil uygulamalar için bu platformu seçin. Masaüstü uygulamaları için de bu platformu seçin. |
 1. Platform yapılandırmasını gerçekleştirmek için **Yapılandır** ' ı seçin.
 
 ### <a name="redirect-uri-restrictions"></a>Yeniden yönlendirme URI kısıtlamaları
@@ -105,22 +105,22 @@ Gizli istemci uygulaması kaydınız için kimlik bilgileri olarak hem sertifika
 
 ### <a name="add-a-certificate"></a>Sertifika ekle
 
-Bazen *ortak anahtar*olarak da bilinen sertifikalar, istemci gizliliğine göre daha yüksek bir güvence düzeyi sağladıkları için önerilen kimlik bilgisi türüdür.
+Bazen *ortak anahtar* olarak da bilinen sertifikalar, istemci gizliliğine göre daha yüksek bir güvence düzeyi sağladıkları için önerilen kimlik bilgisi türüdür.
 
 1. Azure portal **uygulama kayıtları** uygulamanızdaki uygulamanızı seçin.
-1. **Sertifikalar & parolaları**  >  **karşıya yükleme sertifikası**' nı seçin.
+1. **Sertifikalar & parolaları**  >  **karşıya yükleme sertifikası** ' nı seçin.
 1. Yüklemek istediğiniz dosyayı seçin. Şu dosya türlerinden biri olmalıdır: .cer, .pem, .crt.
-1. **Ekle**’yi seçin.
+1. **Ekle** ’yi seçin.
 
 ### <a name="add-a-client-secret"></a>İstemci parolası ekleme
 
-*Uygulama parolası*olarak da bilinen istemci parolası, uygulamanızın kimliğini kimlik için bir sertifika yerine kullanabileceği bir dize değeridir. Bu iki kimlik bilgisi türünün kullanılması kolaylaşır ve genellikle geliştirme sırasında kullanılır, ancak bir sertifikadan daha az güvenli olarak değerlendirilir. Üretimde çalışan uygulamalarınızda sertifikalar kullanmanız gerekir.
+*Uygulama parolası* olarak da bilinen istemci parolası, uygulamanızın kimliğini kimlik için bir sertifika yerine kullanabileceği bir dize değeridir. Bu iki kimlik bilgisi türünün kullanılması kolaylaşır ve genellikle geliştirme sırasında kullanılır, ancak bir sertifikadan daha az güvenli olarak değerlendirilir. Üretimde çalışan uygulamalarınızda sertifikalar kullanmanız gerekir.
 
 1. Azure portal **uygulama kayıtları** uygulamanızdaki uygulamanızı seçin.
-1. **Sertifikalar & parolaları**seçin  >   **yeni istemci gizli anahtarı**.
+1. **Sertifikalar & parolaları** seçin  >   **yeni istemci gizli anahtarı** .
 1. İstemci gizli diziniz için bir açıklama ekleyin.
 1. Bir süre seçin.
-1. **Ekle**’yi seçin.
+1. **Ekle** ’yi seçin.
 1. **Gizli anahtarı** istemci uygulama kodunuzda kullanım için kaydedin-bu sayfadan ayrıldıktan sonra *hiç bir daha gösterilmez* .
 
 ## <a name="next-steps"></a>Sonraki adımlar

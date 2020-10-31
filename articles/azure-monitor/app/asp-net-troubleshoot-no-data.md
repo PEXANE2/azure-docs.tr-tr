@@ -4,12 +4,12 @@ description: Azure Application Insights verileri görmüyor musunuz? Buradan den
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: 2bf9b50c9b378d8624c311af5935b8cd0a28a31a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c053796dd887722d1d767229621c0a1ae004b5c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757988"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083176"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>.NET/.NET Core için veri Application Insights sorunlarını giderme
 
@@ -44,7 +44,7 @@ ms.locfileid: "91757988"
 
 * Tüm .NET projesi türleri araçlar tarafından desteklenmez. Web ve WCF projeleri desteklenir. Masaüstü veya hizmet uygulamaları gibi diğer proje türleri için de [projenize el ile bir APPLICATION INSIGHTS SDK ekleyebilirsiniz](./windows-desktop.md).
 * [Visual Studio 2013 güncelleştirme 3 veya sonraki bir sürüme](/visualstudio/releasenotes/vs2013-update3-rtm-vs)sahip olduğunuzdan emin olun. Application Insights SDK 'sını sağlayan geliştirici Analizi araçlarıyla önceden yüklenmiş olarak gelir.
-* **Araçlar**, **Uzantılar ve güncelleştirmeler** ' i seçin ve **Developer Analytics Tools** yüklendiğini ve etkinleştirildiğini denetleyin. Bu durumda, kullanılabilir bir güncelleştirme olup olmadığını görmek için **güncelleştirmeler** ' e tıklayın.
+* **Araçlar** , **Uzantılar ve güncelleştirmeler** ' i seçin ve **Developer Analytics Tools** yüklendiğini ve etkinleştirildiğini denetleyin. Bu durumda, kullanılabilir bir güncelleştirme olup olmadığını görmek için **güncelleştirmeler** ' e tıklayın.
 * Yeni proje iletişim kutusunu açın ve ASP.NET Web uygulaması ' nı seçin. Burada Application Insights seçeneği görürseniz araçlar yüklenir. Aksi takdirde, Developer Analytics Tools kaldırıp yeniden yüklemeyi deneyin.
 
 ## <a name="adding-application-insights-failed"></a><a name="q02"></a>Application Insights eklenemedi
@@ -65,7 +65,7 @@ Onar
 ## <a name="i-get-an-error-instrumentation-key-cannot-be-empty"></a><a name="emptykey"></a>"Izleme anahtarı boş olamaz" hatası alıyorum
 Application Insights yüklerken bir sorun oluştu veya belki de günlüğe kaydetme bağdaştırıcısı.
 
-Çözüm Gezgini, projenize sağ tıklayın ve **Application Insights yapılandır > Application Insights**' i seçin. Azure 'da oturum açmanız ve bir Application Insights kaynağı oluşturmanız ya da var olan bir kaynağın yeniden kullanılması için sizi davet eden bir iletişim kutusu alacaksınız.
+Çözüm Gezgini, projenize sağ tıklayın ve **Application Insights yapılandır > Application Insights** ' i seçin. Azure 'da oturum açmanız ve bir Application Insights kaynağı oluşturmanız ya da var olan bir kaynağın yeniden kullanılması için sizi davet eden bir iletişim kutusu alacaksınız.
 
 ## <a name="nuget-packages-are-missing-on-my-build-server"></a><a name="NuGetBuild"></a> "Derleme sunucum üzerinde" NuGet paketleri eksik "
 *Geliştirme makinmda hata ayıklarken her şey tamam, ancak yapı sunucusunda bir NuGet hatası alıyorum.*
@@ -84,8 +84,8 @@ Olası nedenler:
 Onar
 
 * Visual Studio sürümünüzün 2013 güncelleştirme 3 veya sonraki bir sürümü olduğundan emin olun.
-* **Araçlar**, **Uzantılar ve güncelleştirmeler** ' i seçin ve **Geliştirici analiz araçları** 'nın yüklü ve etkin olduğunu denetleyin. Bu durumda, kullanılabilir bir güncelleştirme olup olmadığını görmek için **güncelleştirmeler** ' e tıklayın.
-* Çözüm Gezgini ' de projenize sağ tıklayın. **> Application Insights yapılandırmak Application Insights**komutu görürseniz, projenizi Application Insights hizmetindeki kaynağa bağlamak için kullanın.
+* **Araçlar** , **Uzantılar ve güncelleştirmeler** ' i seçin ve **Geliştirici analiz araçları** 'nın yüklü ve etkin olduğunu denetleyin. Bu durumda, kullanılabilir bir güncelleştirme olup olmadığını görmek için **güncelleştirmeler** ' e tıklayın.
+* Çözüm Gezgini ' de projenize sağ tıklayın. **> Application Insights yapılandırmak Application Insights** komutu görürseniz, projenizi Application Insights hizmetindeki kaynağa bağlamak için kullanın.
 
 Aksi halde, proje türü geliştirici analizi araçları tarafından doğrudan desteklenmez. Telemetriyi görmek için [Azure Portal](https://portal.azure.com)oturum açın, sol gezinti çubuğunda Application Insights ' i seçin ve uygulamanızı seçin.
 
@@ -128,7 +128,7 @@ Onar
   ![Visual Studio 'da uygulamanızı hata ayıklama modunda çalıştırmayı gösteren ekran görüntüsü.](./media/asp-net-troubleshoot-no-data/output-window.png)
 * Application Insights portalında [Tanılama araması](./diagnostic-search.md)' nı açın. Veriler genellikle önce burada görünür.
 * Yenile düğmesine tıklayın. Dikey pencere kendi kendine düzenli olarak yenilenir, ancak bunu el ile de yapabilirsiniz. Yenileme aralığı daha büyük zaman aralıkları için daha uzun.
-* İzleme anahtarlarının eşleştiğinden emin olun. Application Insights portalındaki uygulamanızın ana dikey penceresinde, **Essentials** açılan penceresinde, **izleme anahtarı**' na bakın. Ardından, Visual Studio 'daki projenizdeki ApplicationInsights.config açın ve bulun `<instrumentationkey>` . İki anahtarın eşit olup olmadığını denetleyin. Aksi takdirde:  
+* İzleme anahtarlarının eşleştiğinden emin olun. Application Insights portalındaki uygulamanızın ana dikey penceresinde, **Essentials** açılan penceresinde, **izleme anahtarı** ' na bakın. Ardından, Visual Studio 'daki projenizdeki ApplicationInsights.config açın ve bulun `<instrumentationkey>` . İki anahtarın eşit olup olmadığını denetleyin. Aksi takdirde:  
   * Portalda Application Insights ' a tıklayın ve doğru anahtarla uygulama kaynağını arayın; veya
   * Visual Studio Çözüm Gezgini, projeye sağ tıklayın ve Application Insights, Yapılandır ' ı seçin. Doğru kaynağa telemetri göndermek için uygulamayı sıfırlayın.
   * Eşleşen anahtarları bulamıyorsanız, portalda ' de olduğu gibi Visual Studio 'da aynı oturum açma kimlik bilgilerini kullanıp kullanınızdan emin olun.
@@ -239,14 +239,14 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 ```
 
 Gerektiğinde bu parametreleri değiştirebilirsiniz:
-- **Maxcollectsec**. PerfView 'ın süresiz olarak çalışmasını ve sunucunuzun performansını etkilemesini engellemek için bu parametreyi ayarlayın.
-- **Yalnızca sağlayıcılar**. Yalnızca SDK 'dan günlükleri toplamak için bu parametreyi ayarlayın. Bu listeyi, özel araştırmalarınız temelinde özelleştirebilirsiniz. 
-- **Noguı**. Bu parametreyi, GUI olmadan günlükleri toplamak için ayarlayın.
+- **Maxcollectsec** . PerfView 'ın süresiz olarak çalışmasını ve sunucunuzun performansını etkilemesini engellemek için bu parametreyi ayarlayın.
+- **Yalnızca sağlayıcılar** . Yalnızca SDK 'dan günlükleri toplamak için bu parametreyi ayarlayın. Bu listeyi, özel araştırmalarınız temelinde özelleştirebilirsiniz. 
+- **Noguı** . Bu parametreyi, GUI olmadan günlükleri toplamak için ayarlayın.
 
 
 Daha fazla bilgi için,
 - [PerfView ile performans Izlemeleri kaydediliyor](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView).
-- [Olay kaynaklarını Application Insights](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/ETW)
+- [Olay kaynaklarını Application Insights](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/ETW)
 
 ## <a name="collect-logs-with-dotnet-trace"></a>DotNet-Trace ile günlükleri toplama
 

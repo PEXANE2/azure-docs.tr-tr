@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de383bfa9f943cd5644d35ed83db8a80ec8017bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a559b29502adb1c507b1543463d84eb3bd15d5a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653222"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083295"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Nasıl yapılır: Azure AD JOIN Uygulamanızı planlayın
 
@@ -24,7 +24,7 @@ Azure AD katılımı, kullanıcılarınızın üretken ve güvenli tutulması s�
 
 Bu makale, Azure AD JOIN uygulamanızı planlamak için gereken bilgileri sağlar.
  
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, [Azure Active Directory 'de cihaz yönetimine giriş](./overview.md)hakkında bilgi sahibi olduğunuz varsayılır.
 
@@ -90,8 +90,8 @@ Cihazları Azure AD 'ye katmak için akıllı kartlar veya sertifika tabanlı ki
 
 İçinde kullanıcı oluşturursanız:
 
-- **Şirket içi Active Directory**, [Azure AD Connect](../hybrid/how-to-connect-sync-whatis.md)kullanarak bunları Azure AD ile eşitlemeniz gerekir. 
-- **Azure AD**, ek bir kurulum gerekli değildir.
+- **Şirket içi Active Directory** , [Azure AD Connect](../hybrid/how-to-connect-sync-whatis.md)kullanarak bunları Azure AD ile eşitlemeniz gerekir. 
+- **Azure AD** , ek bir kurulum gerekli değildir.
 
 Azure AD UPN 'lerden farklı olan şirket içi UPN 'ler Azure AD 'ye katılmış cihazlarda desteklenmez. Kullanıcılarınız şirket içi UPN kullanıyorsa, Azure AD 'de birincil UPN 'sini kullanmaya geçmeniz gerekir.
 
@@ -187,7 +187,7 @@ Azure AD 'ye katılmış cihazlara yönelik Uzak Masaüstü bağlantısı konak 
 Windows 10 2004 Güncelleştirmesi başlatıldığında, kullanıcılar Azure AD 'ye kayıtlı bir Windows 10 cihazından Azure AD 'ye katılmış bir cihaza uzak masaüstü 'nü de kullanabilir. 
 
 ## <a name="understand-your-provisioning-options"></a>Sağlama seçeneklerinizi anlayın
-**Note**: Azure AD 'ye katılmış cihazlar Sistem Hazırlama Aracı (Sysprep) veya benzer görüntüleme araçları kullanılarak dağıtılamaz
+**Note** : Azure AD 'ye katılmış cihazlar Sistem Hazırlama Aracı (Sysprep) veya benzer görüntüleme araçları kullanılarak dağıtılamaz
 
 Aşağıdaki yaklaşımlardan yararlanarak Azure AD katılımı sağlayabilirsiniz:
 
@@ -199,11 +199,11 @@ Bu üç yaklaşımdan oluşan bir karşılaştırma
  
 | Öğe | Self Servis kurulumu | Windows Autopilot | Toplu kayıt |
 | --- | --- | --- | --- |
-| Ayarlama için Kullanıcı etkileşimi gerektir | Evet | Evet | Hayır |
-| BT çabaları gerektir | Hayır | Evet | Evet |
+| Ayarlama için Kullanıcı etkileşimi gerektir | Yes | Yes | Hayır |
+| BT çabaları gerektir | Hayır | Yes | Evet |
 | Uygulanabilir akışlar | OOBE & ayarları | Yalnızca OOBE | Yalnızca OOBE |
 | Birincil kullanıcı için yerel yönetici hakları | Evet, varsayılan olarak | Yapılandırılabilir | Hayır |
-| Cihaz OEM desteği gerektir | Hayır | Evet | Hayır |
+| Cihaz OEM desteği gerektir | Hayır | Yes | Hayır |
 | Desteklenen sürümler | 1511 + | 1709 + | 1703 + |
  
 Yukarıdaki tabloyu inceleyerek dağıtım yaklaşımınızı veya yaklaşımlarınızı seçin ve iki yaklaşımı benimsemeye yönelik aşağıdaki konuları gözden geçirin:  
@@ -219,7 +219,7 @@ Yukarıdaki tabloyu inceleyerek dağıtım yaklaşımınızı veya yaklaşımlar
 
 ## <a name="configure-your-device-settings"></a>Cihaz ayarlarınızı yapılandırın
 
-Azure portal, kuruluşunuzda Azure AD 'ye katılmış cihazların dağıtımını denetlemenize olanak tanır. İlgili ayarları yapılandırmak için, **Azure Active Directory sayfasında**, öğesini seçin `Devices > Device settings` .
+Azure portal, kuruluşunuzda Azure AD 'ye katılmış cihazların dağıtımını denetlemenize olanak tanır. İlgili ayarları yapılandırmak için, **Azure Active Directory sayfasında** , öğesini seçin `Devices > Device settings` .
 
 ### <a name="users-may-join-devices-to-azure-ad"></a>Kullanıcılar cihazları Azure AD’ye ekleyebilir
 
@@ -243,13 +243,13 @@ Cihazların Azure AD 'ye katılırken MFA gerçekleştirmesini gerektiriyorsa, *
 
 Mobility ayarlarınızı yapılandırmadan önce, önce bir MDM sağlayıcısı eklemeniz gerekebilir.
 
-**MDM sağlayıcısı eklemek için**:
+**MDM sağlayıcısı eklemek için** :
 
-1. **Azure Active Directory sayfasında**, **Yönet** bölümünde, ' ye tıklayın `Mobility (MDM and MAM)` . 
-1. **Uygulama Ekle**' ye tıklayın.
+1. **Azure Active Directory sayfasında** , **Yönet** bölümünde, ' ye tıklayın `Mobility (MDM and MAM)` . 
+1. **Uygulama Ekle** ' ye tıklayın.
 1. Listeden MDM sağlayıcınızı seçin.
 
-   ![Uygulama ekleme](./media/azureadjoin-plan/04.png)
+   :::image type="content" source="./media/azureadjoin-plan/04.png" alt-text="Azure Active Directory uygulama ekleme sayfasının ekran görüntüsü. Birkaç M D M sağlayıcı listelenir." border="false":::
 
 İlgili ayarları yapılandırmak için MDM sağlayıcınızı seçin. 
 
@@ -261,8 +261,8 @@ Dağıtımınızın kapsamına göre **bazılarını** veya **Tümünü** seçin
 
 Kapsamınızı temel alarak aşağıdakilerden biri olur: 
 
-- **Kullanıcı MDM kapsamında**: Azure AD Premium bir aboneliğiniz varsa, MDM kaydı Azure AD JOIN ile birlikte otomatikleştirilir. Tüm kapsamlı kullanıcıların MDM 'niz için uygun bir lisansı olmalıdır. MDM kaydı bu senaryoda başarısız olursa, Azure AD JOIN de geri alınacaktır.
-- **Kullanıcı MDM kapsamında**değil: kullanıcılar MDM kapsamında değilse, hiçbir MDM kaydı olmadan Azure AD JOIN işlemi tamamlanır. Bu, yönetilmeyen bir cihaza neden olur.
+- **Kullanıcı MDM kapsamında** : Azure AD Premium bir aboneliğiniz varsa, MDM kaydı Azure AD JOIN ile birlikte otomatikleştirilir. Tüm kapsamlı kullanıcıların MDM 'niz için uygun bir lisansı olmalıdır. MDM kaydı bu senaryoda başarısız olursa, Azure AD JOIN de geri alınacaktır.
+- **Kullanıcı MDM kapsamında** değil: kullanıcılar MDM kapsamında değilse, hiçbir MDM kaydı olmadan Azure AD JOIN işlemi tamamlanır. Bu, yönetilmeyen bir cihaza neden olur.
 
 ### <a name="mdm-urls"></a>MDM URL’leri
 
@@ -272,7 +272,7 @@ MDM yapılandırmanızla ilgili üç URL vardır:
 - MDM bulma URL'si 
 - MAM uyumluluk URL’si
 
-![Uygulama ekleme](./media/azureadjoin-plan/06.png)
+:::image type="content" source="./media/azureadjoin-plan/06.png" alt-text="Azure Active Directory uygulama ekleme sayfasının ekran görüntüsü. Birkaç M D M sağlayıcı listelenir." border="false":::
 
 Her URL’de önceden tanımlanmış varsayılan bir değer vardır. Bu alanlar boşsa, daha fazla bilgi için lütfen MDM sağlayıcınızla iletişim kurun.
 
@@ -284,7 +284,7 @@ MAM, Azure AD 'ye katılması için geçerlidir.
 
 Kullanıcıların ayarlarını cihazlar arasında eşitleyebilmesi için Azure AD 'de durum dolaşımı etkinleştirmek istiyorsanız, bkz. [Azure Active Directory Enterprise State Roaming etkinleştirme](enterprise-state-roaming-enable.md). 
 
-**Öneri**: karma Azure AD 'ye katılmış cihazlar için bile bu ayarı etkinleştirin.
+**Öneri** : karma Azure AD 'ye katılmış cihazlar için bile bu ayarı etkinleştirin.
 
 ## <a name="configure-conditional-access"></a>Koşullu erişimi yapılandırma
 

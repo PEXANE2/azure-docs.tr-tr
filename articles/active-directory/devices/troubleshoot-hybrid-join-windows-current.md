@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ec59c07d66150bf7b184c149a9b1ed9015c17645
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e235bf90568a1382a5ecee3ff4d2283aaa32f10b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89433662"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083225"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Hibrit Azure Active Directory'ye katılmış cihazlarla ilgili sorunları giderme
 
@@ -95,16 +95,16 @@ Aşağıdaki alanları gözden geçirin ve beklenen değerlere sahip oldukların
 
 #### <a name="domainjoined--yes"></a>Domainkatılmış: Evet
 
-Bu alan, cihazın şirket içi Active Directory katılıp katılmadığını gösterir. Değer **Hayır**ise, cihaz karma Azure AD katılımı gerçekleştiremez.
+Bu alan, cihazın şirket içi Active Directory katılıp katılmadığını gösterir. Değer **Hayır** ise, cihaz karma Azure AD katılımı gerçekleştiremez.
 
 #### <a name="workplacejoined--no"></a>Iş Placekatılacak: Hayır
 
-Bu alan, cihazın Azure AD 'ye kişisel bir cihaz olarak kaydedilip kaydedilmediğini belirtir ( *çalışma alanına katılmış*olarak işaretlenir). Bu değer, aynı zamanda karma Azure AD 'ye katılmış bir etki alanına katılmış **bilgisayar için olmamalıdır** . Değer **Evet**ise, hibrit Azure AD katılımı tamamlanmadan önce bir iş veya okul hesabı eklenmiştir. Bu durumda, Windows 10 sürüm 1607 veya sonraki bir sürümü kullanılırken hesap yok sayılır.
+Bu alan, cihazın Azure AD 'ye kişisel bir cihaz olarak kaydedilip kaydedilmediğini belirtir ( *çalışma alanına katılmış* olarak işaretlenir). Bu değer, aynı zamanda karma Azure AD 'ye katılmış bir etki alanına katılmış **bilgisayar için olmamalıdır** . Değer **Evet** ise, hibrit Azure AD katılımı tamamlanmadan önce bir iş veya okul hesabı eklenmiştir. Bu durumda, Windows 10 sürüm 1607 veya sonraki bir sürümü kullanılırken hesap yok sayılır.
 
 #### <a name="azureadjoined--yes"></a>Azureadkatıldı: Evet
 
 Bu alan, cihazın katılıp katılmadığını gösterir. Cihaz bir Azure AD 'ye katılmış cihaz ya da karma Azure AD 'ye katılmış bir cihaz ise değer **Evet** olur.
-Değer **Hayır**Ise Azure AD 'ye ekleme henüz tamamlanmamıştır.
+Değer **Hayır** Ise Azure AD 'ye ekleme henüz tamamlanmamıştır.
 
 Daha fazla sorun giderme için sonraki adımlara geçin.
 
@@ -135,9 +135,9 @@ Ekleme hatalarıyla ilgili aşamayı ve hata kodunu bulmak için Olay Görüntü
 1. Olay Görüntüleyicisi 'nde **Kullanıcı cihaz kaydı** olay günlüklerini açın. **Uygulamalar ve hizmetler günlüğü**  >  **Microsoft**  >  **Windows**  >  **Kullanıcı cihaz kaydı** altında bulunur
 2. Aşağıdaki EventIDs 304, 305, 307 olan olayları arayın.
 
-![Hata günlüğü olayı](./media/troubleshoot-hybrid-join-windows-current/1.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/1.png" alt-text="Olay Görüntüleyicisi 'nin ekran görüntüsü. I D 304 içeren bir olay seçilidir ve bilgileri, hata kodu ve aşama vurgulanmış olarak görüntülenir." border="false":::
 
-![Hata günlüğü olayı](./media/troubleshoot-hybrid-join-windows-current/2.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/2.png" alt-text="Olay Görüntüleyicisi 'nin ekran görüntüsü. I D 304 içeren bir olay seçilidir ve bilgileri, hata kodu ve aşama vurgulanmış olarak görüntülenir." border="false":::
 
 ### <a name="step-4-check-for-possible-causes-and-resolutions-from-the-lists-below"></a>4. Adım: Aşağıdaki listelerden olası nedenleri ve çözümleri denetleyin
 
@@ -210,7 +210,7 @@ Ekleme hatalarıyla ilgili aşamayı ve hata kodu hatasını bulmak için Olay G
 1. Olay Görüntüleyicisi 'nde **Kullanıcı cihaz kaydı** olay günlüklerini açın. **Uygulamalar ve hizmetler günlüğü**  >  **Microsoft**  >  **Windows**  >  **Kullanıcı cihaz kaydı** altında bulunur
 2. Aşağıdaki EventIDs 201 'e sahip olayları arayın
 
-![Hata günlüğü olayı](./media/troubleshoot-hybrid-join-windows-current/5.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/5.png" alt-text="Olay Görüntüleyicisi 'nin ekran görüntüsü. I D 304 içeren bir olay seçilidir ve bilgileri, hata kodu ve aşama vurgulanmış olarak görüntülenir." border="false":::
 
 ###### <a name="network-errors"></a>Ağ hataları
 
@@ -255,7 +255,7 @@ Hata kodu, alt hata kodu, sunucu hata kodu ve sunucu hata iletisini bulmak için
 1. Olay Görüntüleyicisi 'nde **Kullanıcı cihaz kaydı** olay günlüklerini açın. **Uygulamalar ve hizmetler günlüğü**  >  **Microsoft**  >  **Windows**  >  **Kullanıcı cihaz kaydı** altında bulunur
 2. Aşağıdaki EventID 305 'e sahip olayları arayın
 
-![Hata günlüğü olayı](./media/troubleshoot-hybrid-join-windows-current/3.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/3.png" alt-text="Olay Görüntüleyicisi 'nin ekran görüntüsü. I D 304 içeren bir olay seçilidir ve bilgileri, hata kodu ve aşama vurgulanmış olarak görüntülenir." border="false":::
 
 ##### <a name="configuration-errors"></a>Yapılandırma hataları
 
@@ -330,7 +330,7 @@ Ekleme hatalarıyla ilgili aşamayı ve hata kodu hatasını bulmak için Olay G
 1. Olay Görüntüleyicisi 'nde **Kullanıcı cihaz kaydı** olay günlüklerini açın. **Uygulamalar ve hizmetler günlüğü**  >  **Microsoft**  >  **Windows**  >  **Kullanıcı cihaz kaydı** altında bulunur
 2. Aşağıdaki EventIDs 204 'e sahip olayları arayın
 
-![Hata günlüğü olayı](./media/troubleshoot-hybrid-join-windows-current/4.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/4.png" alt-text="Olay Görüntüleyicisi 'nin ekran görüntüsü. I D 304 içeren bir olay seçilidir ve bilgileri, hata kodu ve aşama vurgulanmış olarak görüntülenir." border="false":::
 
 ##### <a name="http-errors-returned-from-drs-server"></a>DRS sunucusundan gelen HTTP hataları döndürüldü
 
@@ -389,12 +389,12 @@ Ekleme hatalarıyla ilgili aşamayı ve hata kodu hatasını bulmak için Olay G
 
 Dosya Auth.zip şuradan indirin [https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
 
-1. Dosyaları sıkıştırmasını açın ve eklenen dosyaları **start-auth.txt** yeniden adlandırın ve **Start-Auth. cmd** ve **stop-auth. cmd**' ye **stop-auth.txt** .
-1. Yükseltilmiş bir komut isteminden **Start-Auth. cmd**' yi çalıştırın.
+1. Dosyaları sıkıştırmasını açın ve eklenen dosyaları **start-auth.txt** yeniden adlandırın ve **Start-Auth. cmd** ve **stop-auth. cmd** ' ye **stop-auth.txt** .
+1. Yükseltilmiş bir komut isteminden **Start-Auth. cmd** ' yi çalıştırın.
 1. Sorun kullanıcısı ile başka bir oturuma geçiş yapmak için anahtar hesabını kullanın.
 1. Sorunu yeniden üretin.
 1. İzlemeyi çalıştıran yönetici oturumuna geri dönmek için anahtar hesabını kullanın.
-1. Yükseltilmiş bir komut isteminden **stop-Auth. cmd**' yi çalıştırın.
+1. Yükseltilmiş bir komut isteminden **stop-Auth. cmd** ' yi çalıştırın.
 1. ZIP ve klasör **kimlik doğrulama günlüklerini** komut dosyalarının yürütüldüğü klasörden gönderin.
 
 ## <a name="troubleshoot-post-join-issues"></a>Ekleme sonrası sorunlar hakkında sorun giderme
@@ -404,7 +404,7 @@ Dosya Auth.zip şuradan indirin [https://github.com/CSS-Windows/WindowsDiag/tree
 #### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet: YES ve AzureADPrt: YES
 
 Bu alanlar, kullanıcının cihazda oturum açarken Azure AD 'ye başarıyla kimlik doğrulaması yapıp belirtmediğini belirtir.
-Değerler **Hayır**ise bunun nedeni şu olabilir:
+Değerler **Hayır** ise bunun nedeni şu olabilir:
 
 - Kayıt sırasında cihazla ilişkili TPM 'de hatalı depolama anahtarı (yükseltilmiş çalıştırılırken KeySignTest denetimini denetleyin).
 - Alternatif oturum açma KIMLIĞI

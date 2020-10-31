@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 08/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 8d04c670010e3595d8f30c7ffcd34d99e27374cb
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: cd80e98d0838cb06228c92c7ea7efeb3fc30a0ed
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488461"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082887"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Anahtar değer deposu olarak Azure Cosmos DB-maliyete genel bakış
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB, yüksek oranda kullanılabilir ve büyük ölçekli uygulamaları kolayca oluşturmaya yönelik küresel olarak dağıtılmış, çok modelli bir veritabanı hizmetidir. Varsayılan olarak, Azure Cosmos DB tüm verileri otomatik olarak ve etkin şekilde dizine alır. Bu, verilerde hızlı ve tutarlı [SQL](./sql-query-getting-started.md) (ve [JavaScript](stored-procedures-triggers-udfs.md)) sorguları sunar. 
 
@@ -22,7 +23,7 @@ Bu makalede, anahtar/değer deposu olarak kullanıldığında basit yazma ve oku
 
 ## <a name="why-we-use-request-units-rus"></a>Neden Istek birimleri (ru) kullanıyoruz?
 
-Azure Cosmos DB performans, [Istek birimleri](request-units.md) (ru/s) ile ifade edilen sağlanan aktarım hızı miktarına bağlıdır. Sağlama ikinci bir ayrıntı düzeyine sahiptir ve RU/s 'de satın alınır ([saatlik faturalandırma ile karıştırılmamalıdır](https://azure.microsoft.com/pricing/details/cosmos-db/)). Ru, uygulama için gerekli aktarım hızı sağlamayı kolaylaştıran bir mantıksal soyutlama (bir para birimi) olarak düşünülmelidir. Kullanıcıların okuma ve yazma verimlilik arasında ayrım yapması gerekmez. Tek para birimi modeli, sağlanan kapasiteyi okuma ve yazma işlemleri arasında paylaşmak için verimlilik oluşturuyor. Bu sağlanan kapasite modeli **, hizmetin öngörülebilir ve tutarlı bir işleme, garantili düşük gecikme süresi ve yüksek kullanılabilirlik**sağlamasına olanak sağlar. Son olarak, her sağlanan RU, üretilen iş miktarını belirleyen bir miktar kaynak (örn. bellek, çekirdek/CPU ve ıOPS) miktarına de sahiptir.
+Azure Cosmos DB performans, [Istek birimleri](request-units.md) (ru/s) ile ifade edilen sağlanan aktarım hızı miktarına bağlıdır. Sağlama ikinci bir ayrıntı düzeyine sahiptir ve RU/s 'de satın alınır ([saatlik faturalandırma ile karıştırılmamalıdır](https://azure.microsoft.com/pricing/details/cosmos-db/)). Ru, uygulama için gerekli aktarım hızı sağlamayı kolaylaştıran bir mantıksal soyutlama (bir para birimi) olarak düşünülmelidir. Kullanıcıların okuma ve yazma verimlilik arasında ayrım yapması gerekmez. Tek para birimi modeli, sağlanan kapasiteyi okuma ve yazma işlemleri arasında paylaşmak için verimlilik oluşturuyor. Bu sağlanan kapasite modeli **, hizmetin öngörülebilir ve tutarlı bir işleme, garantili düşük gecikme süresi ve yüksek kullanılabilirlik** sağlamasına olanak sağlar. Son olarak, her sağlanan RU, üretilen iş miktarını belirleyen bir miktar kaynak (örn. bellek, çekirdek/CPU ve ıOPS) miktarına de sahiptir.
 
 Küresel olarak dağıtılmış bir veritabanı sistemi olarak, Cosmos DB gecikme süresi, aktarım hızı, tutarlılık ve yüksek kullanılabilirliği kapsayan kapsamlı SLA 'Lar sağlayan tek Azure hizmetidir. Sağladığınız üretilen iş, Cosmos hesabınızla ilişkilendirilen her bölgeye uygulanır. Okuma için Cosmos DB, aralarından seçim yapabileceğiniz birden çok, iyi tanımlanmış [tutarlılık düzeyi](consistency-levels.md) sunar. 
 

@@ -11,14 +11,19 @@ ms.topic: quickstart
 ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 99f2197732a332e860af421f46d1049c2388043c
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 52efd103bf510e7cca8a1e4a1d682948b498d64c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221239"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084859"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Hızlı başlangıç: C kullanarak Bing Varlık Arama REST API arama isteği gönderme #
+
+> [!WARNING]
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
+> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
 
 Bing Varlık Arama API'si ilk çağrısını yapmak ve JSON yanıtını görüntülemek için bu hızlı başlangıcı kullanın. Bu basit C# uygulaması, API 'ye bir haber arama sorgusu gönderir ve yanıtı görüntüler. Bu uygulamanın kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingEntitySearchv7.cs)' da kullanılabilir.
 
@@ -38,9 +43,9 @@ Bu uygulama C# dilinde yazılsa da, API birçok programlama dili ile uyumlu olan
 
 1. Visual Studio 'da yeni bir C# konsol çözümü oluşturun. 
 1. NuGet paketine [Newtonsoft.Js](https://www.nuget.org/packages/Newtonsoft.Json/) ekleyin.
-    1. **Çözüm Gezgini**' de projenize sağ tıklayın.
-    2. **NuGet Paketlerini Yönet**' i seçin.
-    3. Araması yapın ve * üzerindeNewtonsoft.Js*seçin ve ardından paketi yükler.
+    1. **Çözüm Gezgini** ' de projenize sağ tıklayın.
+    2. **NuGet Paketlerini Yönet** ' i seçin.
+    3. Araması yapın ve *üzerindeNewtonsoft.Js* seçin ve ardından paketi yükler.
 1. Ardından, aşağıdaki ad alanlarını ana kod dosyasına ekleyin:
     
     ```csharp

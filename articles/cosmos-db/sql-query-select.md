@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
-ms.openlocfilehash: f33cf20b76655a893fe7eebd9e6e6569d35de98f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d518461f8526a742a59d92140e2cf323e8bfc16
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83005946"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082564"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>Azure Cosmos DB yan tümce SEÇIN
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Her sorgu `SELECT` , ANSI SQL standartlarına göre her bir yan tümce ve from ve [WHERE](sql-query-where.md) yan [tümcelerinden](sql-query-from.md) oluşur. Genellikle, `FROM` yan tümcesindeki kaynak numaralandırılır ve `WHERE` yan TÜMCE, JSON öğelerinin bir alt kümesini almak için kaynak üzerinde bir filtre uygular. `SELECT`Yan tümcesi daha sonra seçim listesinde Istenen JSON değerlerini projeler.
 

@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: f8c98915ad3b682af00492acc7bc51672ec874a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c40916d975b8acabaa7083cf57259291f09b40a9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74870743"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082616"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Azure Cosmos DB SQL sorgularında skaler ifadeler
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 [Select yan tümcesi](sql-query-select.md) skaler ifadeleri destekler. Skaler bir ifade, tek bir değer elde etmek için değerlendirilebilen bir sembol ve işleç birleşimidir. Skalar ifade örnekleri şunlardır: sabitler, özellik başvuruları, dizi öğesi başvuruları, diğer ad başvuruları veya işlev çağrıları. Skalar ifadeler, işleçler kullanılarak karmaşık ifadelerle birleştirilebilir.
 
@@ -55,7 +56,7 @@ ms.locfileid: "74870743"
 - `input_alias`  
   
    Yan tümcesinde tanıtılan tarafından tanımlanan bir değeri temsil eder `input_alias` `FROM` .  
-  Bu değerin **tanımsız** olmaması garanti edilir – girişte**tanımsız** değerler atlanır.  
+  Bu değerin **tanımsız** olmaması garanti edilir – girişte **tanımsız** değerler atlanır.  
   
 - `<scalar_expression>.property_name`  
   
