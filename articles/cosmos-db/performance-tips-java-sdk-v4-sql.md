@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: b14910bc37fc8f3d7f105f382de64ae52fd19a47
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 49827b7387edc1e914bbd58c63df2db74f4ed17b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475235"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091285"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 için performans ipuçları
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Java SDK’sı v4](performance-tips-java-sdk-v4-sql.md)
@@ -38,7 +39,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 * **Bağlantı modu: doğrudan modu kullan**
 <a id="direct-connection"></a>
     
-    Java SDK varsayılan bağlantı modu doğrudan ' dir. İstemci oluşturucusunda bağlantı modunu aşağıda gösterildiği gibi *directmode ()* veya *gatewaymode ()* yöntemlerini kullanarak yapılandırabilirsiniz. Her iki modu varsayılan ayarlarla yapılandırmak için bağımsız değişkenler olmadan iki yöntemi çağırın. Aksi halde, bağımsız değişken olarak bir yapılandırma ayarları sınıf örneği geçirin ( *directmode ()* Için*directconnectionconfig* , gatewaymode için *gatewayconnectionconfig* *()*.). Farklı bağlantı seçenekleri hakkında daha fazla bilgi edinmek için [bağlantı modları](sql-sdk-connection-modes.md) makalesine bakın.
+    Java SDK varsayılan bağlantı modu doğrudan ' dir. İstemci oluşturucusunda bağlantı modunu aşağıda gösterildiği gibi *directmode ()* veya *gatewaymode ()* yöntemlerini kullanarak yapılandırabilirsiniz. Her iki modu varsayılan ayarlarla yapılandırmak için bağımsız değişkenler olmadan iki yöntemi çağırın. Aksi halde, bağımsız değişken olarak bir yapılandırma ayarları sınıf örneği geçirin ( *directmode ()* Için *directconnectionconfig* , gatewaymode için *gatewayconnectionconfig* *()* .). Farklı bağlantı seçenekleri hakkında daha fazla bilgi edinmek için [bağlantı modları](sql-sdk-connection-modes.md) makalesine bakın.
     
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK 'Sı
 
@@ -106,7 +107,7 @@ Daha fazla ayrıntı için lütfen [Windows](../virtual-network/create-vm-accele
 
 * **Uygulamanız için gereken en düşük tutarlılık düzeyini kullanın**
 
-    Bir *CosmosClient*oluşturduğunuzda, açıkça bir *oturum*ayarlanmamışsa kullanılan varsayılan tutarlılık. Uygulama mantığınızın *oturum* tutarlılığı gerekmiyorsa, *tutarlılığı* *nihai*olarak ayarlayın. Note: Azure Cosmos DB değişiklik akışı işlemcisini kullanan uygulamalarda en az *oturum* tutarlılığı kullanılması önerilir.
+    Bir *CosmosClient* oluşturduğunuzda, açıkça bir *oturum* ayarlanmamışsa kullanılan varsayılan tutarlılık. Uygulama mantığınızın *oturum* tutarlılığı gerekmiyorsa, *tutarlılığı* *nihai* olarak ayarlayın. Note: Azure Cosmos DB değişiklik akışı işlemcisini kullanan uygulamalarda en az *oturum* tutarlılığı kullanılması önerilir.
 
 * **Sağlanan aktarım hızını mak için zaman uyumsuz API kullanma**
 
@@ -148,11 +149,11 @@ Daha fazla ayrıntı için lütfen [Windows](../virtual-network/create-vm-accele
 
     Java SDK 'Sı v4 Azure Cosmos DB, doğrudan modu, en iyi iş yükleriyle veritabanı performansını geliştirmek için en iyi seçenektir. 
 
-    * ***Doğrudan moda genel bakış**_
+    * ***Doğrudan moda genel bakış** _
 
         :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Azure Cosmos DB bağlantı ilkesinin çizimi" border="false":::
 
-        Doğrudan modda çalışan istemci tarafı mimarisi, tahmin edilebilir ağ kullanımı ve Azure Cosmos DB çoğaltmaya çoğullanmış erişim sağlar. Yukarıdaki diyagramda, doğrudan modunun Cosmos DB arka uçtaki çoğaltmalara istemci isteklerini nasıl yönlendirdiğini gösterir. Doğrudan mod mimarisi, VERITABANı çoğaltması başına istemci tarafında en fazla 10 _*Kanal** ayırır. Kanal, 30 istekten oluşan bir istek arabelleğinin önünde yer aldığı bir TCP bağlantısıdır. Bir çoğaltmaya ait olan kanallar, çoğaltmanın **hizmet uç noktası**tarafından gerektiği şekilde dinamik olarak ayrılır. Kullanıcı doğrudan modda bir istek verdiği zaman, **Transportclient** , isteği bölüm anahtarına göre uygun hizmet uç noktasına yönlendirir. **Istek kuyruğu** , hizmet uç noktasından önceki istekleri arabelleğe alır.
+        Doğrudan modda çalışan istemci tarafı mimarisi, tahmin edilebilir ağ kullanımı ve Azure Cosmos DB çoğaltmaya çoğullanmış erişim sağlar. Yukarıdaki diyagramda, doğrudan modunun Cosmos DB arka uçtaki çoğaltmalara istemci isteklerini nasıl yönlendirdiğini gösterir. Doğrudan mod mimarisi, VERITABANı çoğaltması başına istemci tarafında en fazla 10 _ *Kanal* * ayırır. Kanal, 30 istekten oluşan bir istek arabelleğinin önünde yer aldığı bir TCP bağlantısıdır. Bir çoğaltmaya ait olan kanallar, çoğaltmanın **hizmet uç noktası** tarafından gerektiği şekilde dinamik olarak ayrılır. Kullanıcı doğrudan modda bir istek verdiği zaman, **Transportclient** , isteği bölüm anahtarına göre uygun hizmet uç noktasına yönlendirir. **Istek kuyruğu** , hizmet uç noktasından önceki istekleri arabelleğe alır.
 
     * ***Doğrudan mod _ Için yapılandırma seçenekleri**
 
@@ -180,7 +181,7 @@ Daha fazla ayrıntı için lütfen [Windows](../virtual-network/create-vm-accele
 
         Verilerin sorguya göre tüm bölümler arasında eşit bir şekilde dağıtılması halinde paralel sorguların en iyi avantajları ürettiğine dikkat edin. Bölümlenmiş koleksiyon, bir sorgu tarafından döndürülen verilerin tümünün veya çoğunluğunun birkaç bölümde (en kötü durumda bir bölüm) yoğunlaşarak bir şekilde bölümlenmişse, sorgunun performansı bu bölümler tarafından bottlenecked olacaktır.
 
-    _ ***Ayarlama setMaxBufferedItemCount \: **_
+    _ * **Ayarlama setMaxBufferedItemCount \:** _
     
         Parallel query is designed to pre-fetch results while the current batch of results is being processed by the client. The pre-fetching helps in overall latency improvement of a query. setMaxBufferedItemCount limits the number of pre-fetched results. Setting setMaxBufferedItemCount to the expected number of results returned (or a higher number) enables the query to receive maximum benefit from pre-fetching.
 
@@ -196,7 +197,7 @@ _ **Istemcinizi genişleme-iş yükü**
 
 * **Daha iyi performans için, sorguların/okunan akışların sayfa boyutunu ayarlayın**
 
-    Belgeleri oku (örneğin, *readItems*) kullanarak veya bir SQL sorgusu (*QueryItems*) verirken belge okuma işlemi gerçekleştirirken sonuçlar, sonuç kümesi çok büyükse, bölümlenmiş bir biçimde döndürülür. Varsayılan olarak, sonuçlar 100 öğe veya 1 MB Öbekle döndürülür, bu sınır ilk önce dönüştürülür.
+    Belgeleri oku (örneğin, *readItems* ) kullanarak veya bir SQL sorgusu ( *QueryItems* ) verirken belge okuma işlemi gerçekleştirirken sonuçlar, sonuç kümesi çok büyükse, bölümlenmiş bir biçimde döndürülür. Varsayılan olarak, sonuçlar 100 öğe veya 1 MB Öbekle döndürülür, bu sınır ilk önce dönüştürülür.
 
     Uygulamanızın Azure Cosmos DB bir sorgu sağladığını ve uygulamanızın, görevi tamamlaması için tam sorgu sonuçları kümesi gerektirdiğini varsayalım. Tüm geçerli sonuçları almak için gereken ağ gidiş dönüşlerin sayısını azaltmak için, [x-MS-Max-item-Count](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) istek üst bilgisi alanını ayarlayarak sayfa boyutunu artırabilirsiniz. 
 
@@ -231,11 +232,11 @@ _ **Istemcinizi genişleme-iş yükü**
 
     Çeşitli nedenlerle, yüksek istek aktarım hızı üreten bir iş parçacığında günlük kaydı eklemeniz gerekebilir. Amacınız, bu iş parçacığı tarafından oluşturulan isteklerle bir kapsayıcının sağlanmış iş verimini tamamen kısaltmak isterse, günlüğe kaydetme iyileştirmeleri performansı büyük ölçüde iyileştirebilir.
 
-    * ***Zaman uyumsuz günlükçü yapılandırma**_
+    * ***Zaman uyumsuz günlükçü yapılandırma** _
 
         Zaman uyumlu bir günlükçü gecikmesi, istek oluşturma iş parçacığınız için genel gecikme süresi hesaplamasına yönelik bir etken olması halinde. Yüksek performanslı uygulama iş parçacıklarından günlüğe kaydetme ek yükünü ayırmak için [log4j2](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flogging.apache.org%2Flog4j%2Flog4j-2.3%2Fmanual%2Fasync.html&data=02%7C01%7CCosmosDBPerformanceInternal%40service.microsoft.com%7C36fd15dea8384bfe9b6b08d7c0cf2113%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637189868158267433&sdata=%2B9xfJ%2BWE%2F0CyKRPu9AmXkUrT3d3uNA9GdmwvalV3EOg%3D&reserved=0) gibi bir zaman uyumsuz günlükçü önerilir.
 
-    _ ***Netty 'nin günlüğünü devre dışı bırak**_
+    _ * **Netty 'nin günlüğünü devre dışı bırak** _
 
         Netty library logging is chatty and needs to be turned off (suppressing sign in the configuration may not be enough) to avoid additional CPU costs. If you are not in debugging mode, disable netty's logging altogether. So if you are using log4j to remove the additional CPU costs incurred by ``org.apache.log4j.Category.callAppenders()`` from netty add the following line to your codebase:
 

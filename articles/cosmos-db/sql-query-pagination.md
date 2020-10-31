@@ -6,14 +6,15 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 2e899e76a1e68e120e0419926f8169785146bbfc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 08f8095670b48fcefccb0a9adf477b83ce2537d3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485044"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089245"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Azure Cosmos DB sayfalandırma
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB, sorgularda birden fazla sonuç sayfası olabilir. Bu belgede sorgu sonuçlarının birden çok sayfaya bölünmeyeceğine karar vermek için Azure Cosmos DB sorgu altyapısının kullandığı ölçütler açıklanmaktadır. İsteğe bağlı olarak, birden çok sayfayı kapsayan sorgu sonuçlarını yönetmek için devamlılık belirteçlerini kullanabilirsiniz.
 
@@ -23,7 +24,7 @@ Bazen sorgu sonuçları birden çok sayfaya bölünecektir. Her sayfanın sonuç
 
 Bir sorgu tarafından döndürülen en fazla öğe sayısını ayarlayarak belirtebilirsiniz `MaxItemCount` . , `MaxItemCount` İstek başına belirtilir ve sorgu altyapısının bu öğe sayısını veya daha az sayıda dönemeyeceğini söyler. `MaxItemCount` `-1` Sorgu yürütme başına sonuç sayısı için bir sınır koymak istemiyorsanız, öğesini olarak ayarlayabilirsiniz.
 
-Ayrıca, sorgu altyapısının sorgu sonuçlarını birden çok sayfaya bölünmesi gerekebilecek başka nedenler de vardır. Bu modüller şunlardır:
+Ayrıca, sorgu altyapısının sorgu sonuçlarını birden çok sayfaya bölünmesi gerekebilecek başka nedenler de vardır. Bunlar:
 
 - Kapsayıcı daraltıldı ve daha fazla sorgu sonucu döndürecek RUs kullanılamıyor
 - Sorgu yürütmesinin yanıtı çok büyüktü
@@ -45,12 +46,13 @@ Birden çok sayfalı sorgulardan sonuçları işlemek için bazı örnekler şun
 
 ## <a name="continuation-tokens"></a>Devamlılık belirteçleri
 
-.NET SDK ve Java SDK 'sında, isteğe bağlı olarak, sorgu ilerleme durumu için devam belirteçlerini bir yer işareti olarak kullanabilirsiniz. Azure Cosmos DB sorgu yürütmeleri sunucu tarafında durum bilgisiz olur ve devamlılık belirteci kullanılarak herhangi bir zamanda devam edebilir. Devamlılık belirteçleri Node.js SDK veya Python SDK 'da desteklenmez.
+.NET SDK ve Java SDK 'sında, isteğe bağlı olarak, sorgu ilerleme durumu için devam belirteçlerini bir yer işareti olarak kullanabilirsiniz. Azure Cosmos DB sorgu yürütmeleri sunucu tarafında durum bilgisiz olur ve devamlılık belirteci kullanılarak herhangi bir zamanda devam edebilir. Devamlılık belirteçleri Node.js SDK 'da desteklenmez. Python SDK 'Sı için, tek bölüm sorguları için desteklenir ve sorgunun kendisi içinde olması yeterli olmadığından, Seçenekler nesnesinde PK belirtilmesi gerekir.
 
 Devamlılık belirteçlerini kullanmak için bazı örnekler şunlardır:
 
 - [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/samples/code-samples/Queries/Program.cs#L699-L734)
 - [Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L216)
+- [Python SDK'sı](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/test/test_query.py#L533)
 
 Sorgu bir devamlılık belirteci döndürürse ek sorgu sonuçları vardır.
 

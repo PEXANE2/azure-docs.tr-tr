@@ -9,15 +9,15 @@ ms.topic: quickstart
 ms.date: 09/22/2020
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 4678ab34de169a8406f0d73b63906152ef1185f0
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 4b62b591c408f663fd28d5077af924f785ee66c8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281906"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090418"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Hızlı başlangıç: Azure Cosmos DB SQL API verilerini yönetmek için bir Java uygulaması oluşturma
-
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
@@ -34,7 +34,7 @@ Bu hızlı başlangıçta, Azure portal Azure Cosmos DB bir SQL API hesabı olu�
 > Bu hızlı başlangıç yalnızca Azure Cosmos DB Java SDK v4 içindir. Daha fazla bilgi için lütfen Azure Cosmos DB Java SDK v4 [sürüm notları](sql-api-sdk-java-v4.md), [maven deposu](https://mvnrepository.com/artifact/com.azure/azure-cosmos), Azure Cosmos DB Java SDK v4 [Performans ipuçları](performance-tips-java-sdk-v4-sql.md)ve Azure Cosmos DB Java SDK v4 [sorun giderme kılavuzunu](troubleshoot-java-sdk-v4-sql.md) görüntüleyin. Şu anda v4 'den daha eski bir sürüm kullanıyorsanız, v4 'ye yükseltme konusunda yardım için [Azure Cosmos DB Java SDK 'sı v4](migrate-java-v4-sdk.md) Kılavuzu ' na bakın.
 >
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/) . [Azure Cosmos DB öykünücüsünü](https://aka.ms/cosmosdb-emulator) bir URI ve anahtar ile de kullanabilirsiniz `https://localhost:8081` `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` .
 - [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). `JAVA_HOME`Ortam değişkeninizi JDK 'nin yüklü olduğu klasöre işaret edin.
@@ -43,15 +43,15 @@ Bu hızlı başlangıçta, Azure portal Azure Cosmos DB bir SQL API hesabı olu�
 
 ## <a name="introductory-notes"></a>Giriş notları
 
-*Cosmos DB hesabının yapısı.* API veya programlama dilinden bağımsız olarak, bir Cosmos DB *hesabı* sıfır veya daha fazla *veritabanı*içerir, bir *veritabanı* (DB) sıfır veya daha fazla *kapsayıcı*içerir ve bir *kapsayıcı* , aşağıdaki diyagramda gösterildiği gibi sıfır veya daha fazla öğe içerir:
+*Cosmos DB hesabının yapısı.* API veya programlama dilinden bağımsız olarak, bir Cosmos DB *hesabı* sıfır veya daha fazla *veritabanı* içerir, bir *veritabanı* (DB) sıfır veya daha fazla *kapsayıcı* içerir ve bir *kapsayıcı* , aşağıdaki diyagramda gösterildiği gibi sıfır veya daha fazla öğe içerir:
 
 :::image type="content" source="./media/account-databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos hesabı varlıkları" border="false":::
 
-Burada veritabanları, kapsayıcılar ve öğeler hakkında daha fazla bilgi edinebilirsiniz [.](account-databases-containers-items.md) Birkaç önemli özellik, kapsayıcı düzeyinde, *sağlanan aktarım hızı* ve *bölüm anahtarı*arasında tanımlanır. 
+Burada veritabanları, kapsayıcılar ve öğeler hakkında daha fazla bilgi edinebilirsiniz [.](account-databases-containers-items.md) Birkaç önemli özellik, kapsayıcı düzeyinde, *sağlanan aktarım hızı* ve *bölüm anahtarı* arasında tanımlanır. 
 
-Sağlanan aktarım hızı, parasal bir fiyata sahip olan Istek*birimleri (ru*) cinsinden ölçülür ve hesabın işletim maliyetinde faktörü önemli ölçüde belirler. Sağlanan aktarım hızı kapsayıcı başına ayrıntı düzeyi veya veritabanı başına ayrıntı düzeyinde seçilebilir, ancak kapsayıcı düzeyinde üretilen iş belirtimi genellikle tercih edilir. Burada üretilen iş sağlama hakkında daha fazla bilgi alabilirsiniz [.](set-throughput.md)
+Sağlanan aktarım hızı, parasal bir fiyata sahip olan Istek *birimleri (ru* ) cinsinden ölçülür ve hesabın işletim maliyetinde faktörü önemli ölçüde belirler. Sağlanan aktarım hızı kapsayıcı başına ayrıntı düzeyi veya veritabanı başına ayrıntı düzeyinde seçilebilir, ancak kapsayıcı düzeyinde üretilen iş belirtimi genellikle tercih edilir. Burada üretilen iş sağlama hakkında daha fazla bilgi alabilirsiniz [.](set-throughput.md)
 
-Öğeler bir Cosmos DB kapsayıcısına eklendikçe, istekleri işlemek için daha fazla depolama ve işlem eklenerek veritabanı yatay olarak artar. Depolama ve işlem kapasitesi, *bölümler*olarak bilinen ayrı birimlere eklenir ve belgelerinizdeki bir alanı her belgeyi bir bölüme eşleyen bölüm anahtarı olacak şekilde seçmeniz gerekir. Bölümlerin yönetilme şekli, her bölüme bölüm anahtarı değerlerinin aralığından kabaca eşit bir dilim atanabileceği; Bu nedenle, görece rastgele veya eşit olarak dağıtılan bir bölüm anahtarı seçmeniz önerilir. Aksi halde, bazı bölümler önemli ölçüde daha az istek *(**soğuk bölüm*) görür ve bu da kaçınılmaz. [Burada](partitioning-overview.md)bölümlendirme hakkında daha fazla bilgi edinebilirsiniz.
+Öğeler bir Cosmos DB kapsayıcısına eklendikçe, istekleri işlemek için daha fazla depolama ve işlem eklenerek veritabanı yatay olarak artar. Depolama ve işlem kapasitesi, *bölümler* olarak bilinen ayrı birimlere eklenir ve belgelerinizdeki bir alanı her belgeyi bir bölüme eşleyen bölüm anahtarı olacak şekilde seçmeniz gerekir. Bölümlerin yönetilme şekli, her bölüme bölüm anahtarı değerlerinin aralığından kabaca eşit bir dilim atanabileceği; Bu nedenle, görece rastgele veya eşit olarak dağıtılan bir bölüm anahtarı seçmeniz önerilir. Aksi halde, bazı bölümler önemli ölçüde daha az istek *(**soğuk bölüm* ) görür ve bu da kaçınılmaz. [Burada](partitioning-overview.md)bölümlendirme hakkında daha fazla bilgi edinebilirsiniz.
 
 ## <a name="create-a-database-account"></a>Veritabanı hesabı oluşturma
 

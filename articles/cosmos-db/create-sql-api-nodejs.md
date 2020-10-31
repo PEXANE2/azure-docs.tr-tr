@@ -9,20 +9,21 @@ ms.topic: quickstart
 ms.date: 09/22/2020
 ms.author: anfeldma
 ms.custom: devx-track-js
-ms.openlocfilehash: 25e5d583b2ae94277b155e8e03d61a308a88ec8d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b4ed27e1515e898a71fb503bb0f260c608ef9f6f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91322759"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090214"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabından bağlanmak ve veri sorgulamak için Node.js kullanma
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > - [.NET V3](create-sql-api-dotnet.md)
 > - [.NET V4](create-sql-api-dotnet-V4.md)
 > - [Java SDK’sı v4](create-sql-api-java.md)
-> * [Spring Data v3](create-sql-api-spring-data.md)
+> * [Spring Verileri v3](create-sql-api-spring-data.md)
 > - [Node.js](create-sql-api-nodejs.md)
 > - [Python](create-sql-api-python.md)
 > - [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -47,7 +48,7 @@ Bu hızlı başlangıç amacıyla Azure Cosmos hesabı oluşturmak için [Azure 
 
 1. [Ücretsiz deneme Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) sayfasına gidin.
 
-1. **SQL** API hesabı ' nı seçin ve **Oluştur**' u seçin. Microsoft hesabı kullanarak oturum açın.
+1. **SQL** API hesabı ' nı seçin ve **Oluştur** ' u seçin. Microsoft hesabı kullanarak oturum açın.
 
 1. Oturum açma başarılı olduktan sonra Azure Cosmos hesabınız hazırlanmalıdır. Yeni oluşturulan hesabı açmak için **Azure Portal aç '** ı seçin.
 
@@ -57,7 +58,7 @@ Bu hızlı başlangıç amacıyla Azure Cosmos hesabı oluşturmak için [Azure 
 
 Artık bir veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgini aracı 'nı kullanabilirsiniz.
 
-1. Yeni **Veri Gezgini**  >  **kapsayıcı**seçin.
+1. Yeni **Veri Gezgini**  >  **kapsayıcı** seçin.
 
    **Kapsayıcı Ekle** alanı en sağda görüntülenir, görmek için sağa kaydırmanız gerekebilir.
 
@@ -74,7 +75,7 @@ Artık bir veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgin
 
    Önceki ayarlara ek olarak, kapsayıcı için isteğe bağlı olarak **benzersiz anahtarlar** ekleyebilirsiniz. Bu örnekte bu alanı boş bırakalım. Benzersiz anahtarlar sayesinde geliştiriciler veritabanına bir veri bütünlüğü katmanı ekleyebilir. Bir kapsayıcı oluştururken benzersiz bir anahtar ilkesi oluşturarak, bölüm anahtarı başına bir veya daha fazla değerin benzersizliği olduğundan emin olursunuz. Daha fazla bilgi edinmek için [Azure Cosmos DB'de benzersiz anahtarlar](unique-keys.md) makalesine bakın.
 
-   **Tamam**’ı seçin. Veri Gezgini, yeni veritabanını ve kapsayıcıyı görüntüler.
+   **Tamam** ’ı seçin. Veri Gezgini, yeni veritabanını ve kapsayıcıyı görüntüler.
 
 ## <a name="add-sample-data"></a>Örnek verileri ekleme
 
@@ -98,7 +99,7 @@ Artık bir veritabanı ve kapsayıcı oluşturmak için Azure portal Veri Gezgin
 
 Bu adım isteğe bağlıdır. Azure Cosmos veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmeye ilgileniyorsanız, aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi durumda, [Bağlantı dizenizi güncelleştirme](#update-your-connection-string) bölümüne atlayabilirsiniz.
 
-SQL JavaScript SDK 'sının önceki sürümüne alışkın değilseniz _, hüküm ve_ _belge_koşullarını görmek için kullanabilirsiniz. Azure Cosmos DB [birden çok API modelini](introduction.md)desteklediğinden, [JavaScript SDK 'sının 2.0 + sürümü](https://www.npmjs.com/package/@azure/cosmos) bir koleksiyon, grafik veya tablo olabilecek genel terimler _kapsayıcısını_ve kapsayıcının içeriğini açıklayan _öğeyi_ kullanır.
+SQL JavaScript SDK 'sının önceki sürümüne alışkın değilseniz _, hüküm ve_ _belge_ koşullarını görmek için kullanabilirsiniz. Azure Cosmos DB [birden çok API modelini](introduction.md)desteklediğinden, [JavaScript SDK 'sının 2.0 + sürümü](https://www.npmjs.com/package/@azure/cosmos) bir koleksiyon, grafik veya tablo olabilecek genel terimler _kapsayıcısını_ ve kapsayıcının içeriğini açıklayan _öğeyi_ kullanır.
 
 Cosmos DB JavaScript SDK 'Sı "" olarak adlandırılır @azure/cosmos ve NPM 'den yüklenebilir...
 
@@ -175,17 +176,17 @@ Aşağıdaki kod parçacıklarının tamamı, _app.js_ dosyasından alınmışt�
 
 Şimdi Azure Cosmos hesabınızın bağlantı dizesi ayrıntılarını almak için Azure portal geri dönün. Veritabanınıza bağlanabilmeleri için bağlantı dizesini uygulamaya kopyalayın.
 
-1. [Azure portal](https://portal.azure.com/)Azure Cosmos DB hesabınızda, sol gezinti bölmesinde **anahtarlar** ' ı seçin ve ardından **okuma-yazma anahtarları**' nı seçin. Bir sonraki adımda _app.js_ dosyasına URI ve birincil anahtar kopyalamak için ekranın sağ tarafındaki kopyalama düğmelerini kullanın.
+1. [Azure portal](https://portal.azure.com/)Azure Cosmos DB hesabınızda, sol gezinti bölmesinde **anahtarlar** ' ı seçin ve ardından **okuma-yazma anahtarları** ' nı seçin. Bir sonraki adımda _app.js_ dosyasına URI ve birincil anahtar kopyalamak için ekranın sağ tarafındaki kopyalama düğmelerini kullanın.
 
    :::image type="content" source="./media/create-sql-api-dotnet/keys.png" alt-text="Azure portalındaki Veri Gezgini, Kapsayıcı Ekle bölmesi":::
 
 2. İçinde _config.js_ dosyasını açın.
 
-3. Portaldan URI değerini kopyalayın (kopyalama düğmesini kullanarak) ve _config.js_uç nokta anahtarının değeri yapın.
+3. Portaldan URI değerini kopyalayın (kopyalama düğmesini kullanarak) ve _config.js_ uç nokta anahtarının değeri yapın.
 
    `endpoint: "<Your Azure Cosmos account URI>"`
 
-4. Ardından, portaldan BIRINCIL anahtar değerini kopyalayın ve `config.key` _config.js_değeri yapın. Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken tüm bilgileri eklemiş oldunuz.
+4. Ardından, portaldan BIRINCIL anahtar değerini kopyalayın ve `config.key` _config.js_ değeri yapın. Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken tüm bilgileri eklemiş oldunuz.
 
    `key: "<Your Azure Cosmos account key>"`
 

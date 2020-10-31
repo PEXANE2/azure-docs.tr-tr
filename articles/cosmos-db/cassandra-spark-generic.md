@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/01/2019
-ms.openlocfilehash: 662b85bb2b928cbbcfb1b88adecb2c125c9ae5df
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d25e168e342e22af9dc41d31dd7e18530aaa22b8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486625"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090520"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Spark'tan Azure Cosmos DB Cassandra API’sine bağlama
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Bu makale, Spark 'tan Azure Cosmos DB Cassandra API tümleştirmede bir dizi makale arasından biridir. Makalelerdeki bağlantı, veri tanımlama dili (DDL) işlemleri, temel veri Işleme dili (DML) işlemleri ve gelişmiş Azure Cosmos DB Cassandra API Spark 'dan tümleştirme ele alınmaktadır. 
 
@@ -43,11 +44,11 @@ Aşağıdaki tabloda bağlayıcı tarafından sunulan Cassandra API özgü işle
 | **Özellik adı** | **Varsayılan değer** | **Açıklama** |
 |---------|---------|---------|
 | spark.cassandra.output.batch. size. Rows |  1 |Tek toplu iş başına satır sayısı. Bu parametreyi 1 olarak ayarlayın. Bu parametre ağır iş yükleri için daha yüksek performans elde etmek için kullanılır. |
-| spark.cassandra.connection.connections_per_executor_max  | Hiçbiri | Yürütücü başına düğüm başına en fazla bağlantı sayısı. 10 * n, n düğümlü Cassandra kümesinde düğüm başına 10 bağlantıyla eşdeğerdir. Bu nedenle, 5 düğümlü Cassandra kümesi için her düğüm için düğüm başına 5 bağlantı gerekiyorsa, bu yapılandırmayı 25 olarak ayarlamanız gerekir. Bu değeri, paralellik derecesini veya Spark işlerinizin yapılandırıldığı yürütme sayısını temel alarak değiştirin.   |
+| spark.cassandra.connection.connections_per_executor_max  | Yok | Yürütücü başına düğüm başına en fazla bağlantı sayısı. 10 * n, n düğümlü Cassandra kümesinde düğüm başına 10 bağlantıyla eşdeğerdir. Bu nedenle, 5 düğümlü Cassandra kümesi için her düğüm için düğüm başına 5 bağlantı gerekiyorsa, bu yapılandırmayı 25 olarak ayarlamanız gerekir. Bu değeri, paralellik derecesini veya Spark işlerinizin yapılandırıldığı yürütme sayısını temel alarak değiştirin.   |
 | spark. Cassandra. Output. eşzamanlı. yazmaları  |  100 | Yürütücü başına gerçekleşebileceğini paralel yazma sayısını tanımlar. "Batch. size. Rows" değerini 1 olarak ayarladığınızdan, bu değeri uygun şekilde ölçeklendirdiğinizden emin olun. Bu değeri, paralellik derecesini veya iş yükünüz için elde etmek istediğiniz aktarım hızını temel alarak değiştirin. |
 | spark. Cassandra. eşzamanlı. okumalar |  512 | Yürütücü başına gerçekleşebileceğini paralel okumaların sayısını tanımlar. Bu değeri, paralellik derecesini veya iş yükünüz için elde etmek istediğiniz aktarım hızını temel alarak değiştirin  |
-| spark.cassandra.output.throughput_mb_per_sec  | Hiçbiri | Yürütücü başına toplam yazma aktarım hızını tanımlar. Bu parametre, Spark iş aktarım hızı için üst sınır olarak kullanılabilir ve Cosmos kapsayıcılarınızın sağlanan iş hızına dayandırın.   |
-| spark.cassandra.input.reads_per_sec| Hiçbiri   | Yürütücü başına toplam okuma aktarım hızını tanımlar. Bu parametre, Spark iş aktarım hızı için üst sınır olarak kullanılabilir ve Cosmos kapsayıcılarınızın sağlanan iş hızına dayandırın.  |
+| spark.cassandra.output.throughput_mb_per_sec  | Yok | Yürütücü başına toplam yazma aktarım hızını tanımlar. Bu parametre, Spark iş aktarım hızı için üst sınır olarak kullanılabilir ve Cosmos kapsayıcılarınızın sağlanan iş hızına dayandırın.   |
+| spark.cassandra.input.reads_per_sec| Yok   | Yürütücü başına toplam okuma aktarım hızını tanımlar. Bu parametre, Spark iş aktarım hızı için üst sınır olarak kullanılabilir ve Cosmos kapsayıcılarınızın sağlanan iş hızına dayandırın.  |
 | spark.cassandra.output.batch. Grouping. buffer. size |  1000  | Cassandra API gönderilmeden önce bellekte depolanabilecek tek Spark görevi başına toplu iş sayısını tanımlar |
 | spark.cassandra.connection.keep_alive_ms | 60000 | Kullanılmayan bağlantıların kullanılabilir olduğu süreyi tanımlar. | 
 

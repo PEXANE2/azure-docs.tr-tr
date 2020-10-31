@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: cbd5dbd81cf8cda117447a15d4a73ae8a546f181
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0d5aded62c9c3990a3fa102863f4850bbfda6702
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482528"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088695"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API bir hesabı ölçeklendirin
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Cassandra için Azure Cosmos DB API 'sinin elastik yapısını keşfetmeye yönelik çeşitli seçenekler vardır. Azure Cosmos DB etkin bir şekilde ölçeklendirmenin nasıl yapılacağını anlamak için, sisteminizdeki performans taleplerini hesaba eklemek üzere doğru istek birimi (RU/sn) miktarına nasıl sağlanacağını anlamak önemlidir. İstek birimleri hakkında daha fazla bilgi için bkz. [İstek birimleri](request-units.md) makalesi. 
 
@@ -62,7 +63,7 @@ Bu yaklaşımın avantajı, ölçek ihtiyaçlarına dinamik olarak ve uygulaman�
 
 Standart (el ile) veya üretilen iş sağlamaya yönelik programlama yöntemine ek olarak, Azure Cosmos kapsayıcılarını de otomatik ölçeklendirme sağlanan aktarım hızına yapılandırabilirsiniz. Otomatik ölçeklendirme, SLA 'Lara ödün vermeden belirtilen RU aralıklarında tüketim gereksinimlerinize otomatik olarak ve anında ölçeklenecektir. Daha fazla bilgi edinmek için [Otomatik ölçeklendirme makalesinde Azure Cosmos kapsayıcıları ve veritabanları oluşturma](provision-throughput-autoscale.md) makalesine bakın.
 
-Bu yaklaşımın avantajı, sisteminizdeki ölçekleme ihtiyaçlarını yönetmenin en kolay yoludur. **YAPıLANDıRıLAN ru aralıkları içinde**hız sınırlaması uygulamaz. Dezavantajı, sisteminizdeki ölçekleme ihtiyaçları tahmin edilebilir ise, otomatik ölçeklendirme, yukarıda bahsedilen beslenme denetim düzlemi veya SDK düzeyi yaklaşımlarını kullanmaktan daha az uygun maliyetli bir yol olabilir.
+Bu yaklaşımın avantajı, sisteminizdeki ölçekleme ihtiyaçlarını yönetmenin en kolay yoludur. **YAPıLANDıRıLAN ru aralıkları içinde** hız sınırlaması uygulamaz. Dezavantajı, sisteminizdeki ölçekleme ihtiyaçları tahmin edilebilir ise, otomatik ölçeklendirme, yukarıda bahsedilen beslenme denetim düzlemi veya SDK düzeyi yaklaşımlarını kullanmaktan daha az uygun maliyetli bir yol olabilir.
 
 CQL kullanarak otomatik ölçeklendirme için maksimum üretilen iş (ru) ayarlamak veya değiştirmek için aşağıdakileri kullanın (anahtar alanı/tablo adını uygun şekilde değiştirin):
 

@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: apimpm
-ms.openlocfilehash: c37224a3a455abcf3de62998cb65e1d66a1bb0f2
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 92d108304f788279a636b1dc5e1c4e6c103ede3d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910721"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088888"
 ---
 # <a name="cicd-for-api-management-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak API Management için CI/CD
 
@@ -67,7 +67,8 @@ API geliştiricileri Kaynak Yöneticisi şablonlarıyla çalışırken zorluk so
 
 * API yayımcıları çekme isteğini doğrulayabilir ve değişikliklerin güvenli ve uyumlu olmasını sağlayabilir. Örneğin, API ile yalnızca HTTPS iletişim kurmasına izin verilip verilmeyeceğini kontrol edebilirler. Çoğu doğrulama, CI/CD işlem hattındaki bir adım olarak otomatikleştirilebilir.
 
-* Değişiklikler onaylandıktan ve başarıyla birleştirildikten sonra, API yayımcıları bunları zamanlamaya göre ya da isteğe bağlı olarak üretim örneğine dağıtmayı seçebilirler. [GitHub eylemleri](https://github.com/Azure/apimanagement-devops-samples), [Azure Pipelines](/devops/pipelines/), [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md), [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)veya diğer araçları kullanarak şablonların dağıtımını otomatik hale getirebilir.
+* Değişiklikler onaylandıktan ve başarıyla birleştirildikten sonra, API yayımcıları bunları zamanlamaya göre ya da isteğe bağlı olarak üretim örneğine dağıtmayı seçebilirler. Şablonların dağıtımı, [GitHub eylemleri](https://github.com/Azure/apimanagement-devops-samples), [Azure Pipelines](/azure/devops/pipelines), [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md), [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)veya diğer araçları kullanarak otomatikleştirilebilir.
+
 
 Bu yaklaşım sayesinde bir kuruluş, API değişikliklerinin API Management örneklerine dağıtımını otomatikleştirebilir ve değişiklikleri bir ortamdan diğerine kolayca yükseltebilirsiniz. Farklı API geliştirme takımları farklı API şablonu ve dosya kümelerinde çalışacağından, farklı takımlar arasında girişim yapılmasını önler.
 

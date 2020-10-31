@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: dech
-ms.openlocfilehash: f7fd40c48f94b4337c5ec342499203f83763299b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: d8a6471d53ad4b2428504f9c53cbec6bc1967c49
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909939"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089650"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>Standart (el ile) ve otomatik ölçeklendirme sağlanan aktarım hızını seçme 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB, iki türü veya sağlanan aktarım hızı tekliflerini destekler: Standart (el ile) ve otomatik ölçeklendirme. Her iki işleme türü, yüksek performans ve ölçek gerektiren görev açısından kritik iş yükleri için uygundur ve aktarım hızı, kullanılabilirlik, gecikme süresi ve tutarlılık üzerinde aynı Azure Cosmos DB SLA 'Lar tarafından desteklenir.
 

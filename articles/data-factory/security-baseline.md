@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a917ade5da6938487076b983bd42ce9b27672c49
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 09c35ff8c045fa7d912324886fb31b02e606d2f8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637012"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089092"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory için Azure Güvenlik temeli
 
@@ -688,9 +688,9 @@ Integration Runtime bir Azure sanal makinesinde (VM) çalıştırıyorsanız, sa
 
 Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm müşteri içeriklerini gizli olarak değerlendirir ve müşteri veri kaybına ve açığa çıkmasına karşı koruma sağlamak için harika uzunluklara gider. Azure 'daki müşteri verilerinin güvende kalmasını sağlamak için Microsoft, bir dizi güçlü veri koruma denetimi ve özelliği uygulamıştır ve bakımını yapar.
 
-* [Azure 'da Güncelleştirme Yönetimi çözümü](https://docs.microsoft.com/azure/automation/automation-update-management)
+* [Azure 'da Güncelleştirme Yönetimi çözümü](https://docs.microsoft.com/azure/automation/update-management/overview)
 
-* [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](https://docs.microsoft.com/azure/automation/automation-tutorial-update-management)
+* [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](https://docs.microsoft.com/azure/automation/update-management/manage-updates-for-vm)
 
 * [Azure 'da müşteri veri korumasını anlama](../security/fundamentals/protection-customer-data.md)
 
@@ -702,9 +702,9 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 **Rehberlik** : Integration Runtime bir Azure sanal MAKINESINDE (VM) çalıştırıyorsanız, üçüncü taraf bir düzeltme eki yönetimi çözümü kullanabilirsiniz. Sanal makineleriniz için güncelleştirmeleri ve düzeltme eklerini yönetmek üzere Azure Güncelleştirme Yönetimi çözümünü kullanabilirsiniz. Güncelleştirme Yönetimi, desteklenen Windows sistemlerine yama yapmak için yerel olarak yapılandırılmış güncelleştirme deposuna bağımlıdır. System Center Updates Publisher (Updates Publisher) gibi araçlar, Windows Server Update Services (WSUS) içinde özel güncelleştirmeler yayımlamanıza olanak sağlar. Bu senaryo Güncelleştirme Yönetimi, üçüncü taraf yazılımlarla güncelleştirme deposu olarak Configuration Manager kullanan makinelere yaması sağlar.
 
-* [Azure 'da Güncelleştirme Yönetimi çözümü](https://docs.microsoft.com/azure/automation/automation-update-management)
+* [Azure 'da Güncelleştirme Yönetimi çözümü](https://docs.microsoft.com/azure/automation/update-management/overview)
 
-* [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](https://docs.microsoft.com/azure/automation/automation-tutorial-update-management)
+* [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](https://docs.microsoft.com/azure/automation/update-management/manage-updates-for-vm)
 
 **Azure Güvenlik Merkezi izleme** : Şu anda kullanılamıyor
 

@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: macolso
 ms.author: macolso
-ms.openlocfilehash: 1c45999dbb354e8c2d550be82cdf37a6694d2dbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2cad98267ef1654c4f2d9ad2db75f769dbc0780
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825674"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091364"
 ---
 # <a name="encrypt-deployment-data"></a>Dağıtım verilerini şifreleme
 
@@ -33,7 +33,7 @@ Kapsayıcı verilerinizin şifrelenebilmesi için Microsoft tarafından yönetil
 
 Belgenin geri kalanı, acı dağıtım verilerinizi anahtarınızla (müşteri tarafından yönetilen anahtar) şifrelemek için gereken adımları ele alır. 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="encrypt-data-with-a-customer-managed-key"></a>Müşteri tarafından yönetilen anahtar ile verileri şifreleme
 
@@ -73,7 +73,7 @@ Anahtar kasanızın özellikleri için aşağıdaki yönergeleri kullanın:
 
 ### <a name="generate-a-new-key"></a>Yeni bir anahtar oluştur 
 
-Anahtar kasanızın oluşturulduktan sonra Azure portal içindeki kaynağa gidin. Kaynak dikey penceresinin sol gezinti menüsünde, Ayarlar ' ın altında **anahtarlar**' a tıklayın. "Anahtarlar" görünümünde, yeni bir anahtar oluşturmak için "oluştur/Al" düğmesine tıklayın. Bu anahtar için herhangi bir benzersiz ad ve gereksinimlerinize göre diğer tercihleri kullanın. 
+Anahtar kasanızın oluşturulduktan sonra Azure portal içindeki kaynağa gidin. Kaynak dikey penceresinin sol gezinti menüsünde, Ayarlar ' ın altında **anahtarlar** ' a tıklayın. "Anahtarlar" görünümünde, yeni bir anahtar oluşturmak için "oluştur/Al" düğmesine tıklayın. Bu anahtar için herhangi bir benzersiz ad ve gereksinimlerinize göre diğer tercihleri kullanın. 
 
 ![Yeni bir anahtar oluştur](./media/container-instances-encrypt-data/generate-key.png)
 
@@ -81,10 +81,10 @@ Anahtar kasanızın oluşturulduktan sonra Azure portal içindeki kaynağa gidin
 
 ACı hizmetinin anahtarınıza erişmesine izin vermek için yeni bir erişim ilkesi oluşturun.
 
-* Anahtarınız oluşturulduktan sonra Anahtar Kasası kaynak dikey pencerenize geri dönün, Ayarlar ' ın altında, **erişim ilkeleri**' ne tıklayın.
-* Anahtar kasanızın "erişim Ilkeleri" sayfasında, **erişim Ilkesi Ekle**' ye tıklayın.
+* Anahtarınız oluşturulduktan sonra Anahtar Kasası kaynak dikey pencerenize geri dönün, Ayarlar ' ın altında, **erişim ilkeleri** ' ne tıklayın.
+* Anahtar kasanızın "erişim Ilkeleri" sayfasında, **erişim Ilkesi Ekle** ' ye tıklayın.
 * Anahtar *izinlerini* , **Get** ve **Unwrap anahtar** ![ kümesi anahtar izinlerini içerecek şekilde ayarlayın](./media/container-instances-encrypt-data/set-key-permissions.png)
-* *Asıl seçin*Için **Azure Container Instance hizmeti** ' ni seçin.
+* *Asıl seçin* Için **Azure Container Instance hizmeti** ' ni seçin.
 * Alt kısımdaki **Ekle** 'ye tıklayın 
 
 Erişim ilkesinin artık anahtar kasasının erişim ilkelerinde gösterilmesi gerekir.

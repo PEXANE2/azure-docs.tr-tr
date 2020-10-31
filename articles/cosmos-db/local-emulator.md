@@ -7,14 +7,15 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperfq1
-ms.openlocfilehash: 9455ac3520192274e80f2d9e0fdfd1c8f8a238a3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b1a0382b6bb650b6761897f4a16f988e5ce00c1e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482630"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088752"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Yerel geliştirme ve test için Azure Cosmos öykünücüsü 'nü yükleyip kullanın
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos öykünücüsü, Azure Cosmos DB hizmetini geliştirme amacıyla taklit eden bir yerel ortam sağlar. Azure Cosmos öykünücüsünü kullanarak, Azure aboneliği oluşturmadan veya herhangi bir ücret ödemeden uygulamanızı yerel olarak geliştirebilir ve test edebilirsiniz. Uygulamanızın Azure Cosmos öykünücüsünde nasıl çalıştığı konusunda memnun kaldığınızda, bulutta bir Azure Cosmos hesabı kullanarak geçiş yapabilirsiniz. Bu makalede, Emulator 'un Windows, Linux, macOS ve Windows Docker ortamlarında nasıl yükleneceği ve kullanılacağı açıklanmaktadır.
 
@@ -80,7 +81,7 @@ Yükleme sonrasında, varsayılan ayarları kullandıysanız öykünücüye kar�
 
 ## <a name="use-the-emulator-on-windows"></a><a id="run-on-windows"></a>Windows üzerinde öykünücü kullanma
 
-Azure Cosmos öykünücüsü, `C:\Program Files\Azure Cosmos DB Emulator` Varsayılan olarak konuma yüklenir. Windows üzerinde Azure Cosmos öykünücüsü 'nü başlatmak için **Başlat** düğmesini seçin veya Windows tuşuna basın. **Azure Cosmos öykünücüsü**yazmaya başlayın ve uygulama listesinden öykünücü ' ı seçin.
+Azure Cosmos öykünücüsü, `C:\Program Files\Azure Cosmos DB Emulator` Varsayılan olarak konuma yüklenir. Windows üzerinde Azure Cosmos öykünücüsü 'nü başlatmak için **Başlat** düğmesini seçin veya Windows tuşuna basın. **Azure Cosmos öykünücüsü** yazmaya başlayın ve uygulama listesinden öykünücü ' ı seçin.
 
 :::image type="content" source="./media/local-emulator/database-local-emulator-start.png" alt-text="Başlat düğmesini seçin veya Windows tuşuna basın, Azure Cosmos öykünücüsü yazmaya başlayın ve uygulama listesinden öykünücü ' ı seçin":::
 
@@ -98,7 +99,7 @@ Azure Cosmos öykünücüsü, bağlantı noktası 8081 ' ü dinleyen yerel makin
 
 Azure Cosmos öykünücüsü 'nü Windows Docker kapsayıcısında çalıştırabilirsiniz. Docker pull komutu için [Docker Hub 'ına](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/) [GitHub](https://github.com/Azure/azure-cosmos-db-emulator-docker) `Dockerfile` ve daha fazla bilgi için GitHub ' a bakın. Şu anda öykünücü Oracle Linux için Docker üzerinde çalışmıyor. Docker for Windows üzerinde öykünücü çalıştırmak için aşağıdaki yönergeleri kullanın:
 
-1. [Docker for Windows](https://www.docker.com/docker-windows) yükledikten sonra, araç çubuğundaki Docker simgesine sağ tıklayıp **Windows kapsayıcılarına geç**' i seçerek Windows kapsayıcılarına geçiş yapın.
+1. [Docker for Windows](https://www.docker.com/docker-windows) yükledikten sonra, araç çubuğundaki Docker simgesine sağ tıklayıp **Windows kapsayıcılarına geç** ' i seçerek Windows kapsayıcılarına geçiş yapın.
 
 1. Daha sonra sık kullandığınız kabuktan aşağıdaki komutu çalıştırarak Docker Hub'dan Öykünücü görüntüsünü çekin.
 
@@ -293,7 +294,7 @@ Mac üzerinde çalışıyorsanız aşağıdaki adımları kullanın:
 
 1. Sertifika listesini açın ve adı ile ayırt edin `localhost` .
 
-1. Söz konusu öğe için bağlam menüsünü açın, *öğeyi al* ' ı seçin ve *güven*altında,  >  *Bu sertifikayı kullanırken* *her zaman güven*' i seçin. 
+1. Söz konusu öğe için bağlam menüsünü açın, *öğeyi al* ' ı seçin ve *güven* altında,  >  *Bu sertifikayı kullanırken* *her zaman güven* ' i seçin. 
 
    :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="Başlat düğmesini seçin veya Windows tuşuna basın, Azure Cosmos öykünücüsü yazmaya başlayın ve uygulama listesinden öykünücü ' ı seçin":::
   
@@ -328,7 +329,7 @@ Tek bir ağ kullanan birden fazla makineniz varsa ve öykünücüyü bir makined
 
 Yerel bir ağ üzerinde öykünücüyü çalıştırabilirsiniz. Ağ erişimini etkinleştirmek için, `/AllowNetworkAccess` ya da belirtmenizi gerektiren [komut satırında](emulator-command-line-parameters.md)seçeneğini belirtin `/Key=key_string` `/KeyFile=file_name` . `/GenKeyFile=file_name`Rastgele bir anahtarla bir dosya oluşturmak için ' i kullanabilirsiniz. Daha sonra, veya öğesine geçirebilirsiniz `/KeyFile=file_name` `/Key=contents_of_file` .
 
-Ağ erişimini ilk kez etkinleştirmek için, Kullanıcı öykünücüyü kapatıp öykünücü veri dizinini *%LocalAppData%\cosmosdbemulator*olarak siler.
+Ağ erişimini ilk kez etkinleştirmek için, Kullanıcı öykünücüyü kapatıp öykünücü veri dizinini *%LocalAppData%\cosmosdbemulator* olarak siler.
 
 ## <a name="authenticate-connections-when-using-emulator"></a><a id="authenticate-requests"></a>Öykünücü kullanırken bağlantı kimlik doğrulaması
 
@@ -458,11 +459,11 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 Öykünücüyü kaldırmak için aşağıdaki adımları kullanın:
 
-1. Sistem tepsisindeki **Azure Cosmos öykünücü** simgesine sağ tıklayıp **Çıkış**' ı seçerek yerel öykünücüsünün tüm açık örneklerinden çıkın. Tüm örneklerin çıkması bir dakika sürebilir.
+1. Sistem tepsisindeki **Azure Cosmos öykünücü** simgesine sağ tıklayıp **Çıkış** ' ı seçerek yerel öykünücüsünün tüm açık örneklerinden çıkın. Tüm örneklerin çıkması bir dakika sürebilir.
 
 1. Windows Arama kutusuna **uygulamalar & Özellikler** yazın ve **uygulamalar & Özellikler (sistem ayarları)** sonucu ' nı seçin.
 
-1. Uygulamalar listesinde **Azure Cosmos DB öykünücüsü**' ne gidin, seçin, **Kaldır**' ı tıklatın ve ardından yeniden **Kaldır** ' ı seçin.
+1. Uygulamalar listesinde **Azure Cosmos DB öykünücüsü** ' ne gidin, seçin, **Kaldır** ' ı tıklatın ve ardından yeniden **Kaldır** ' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

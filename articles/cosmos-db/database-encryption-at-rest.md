@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: ceb2b8812b52b1ca2030a0fd0006c9388630c05e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: abe4bb3a53e3177857cb8041fd255ec916985054
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487492"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089874"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Azure Cosmos DB'de veri şifreleme 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Bekleyen şifreleme, genellikle katı hal sürücüleri (SSD 'Ler) ve sabit disk sürücüleri (HDD 'Ler) gibi kalıcı depolama cihazlarındaki verilerin şifrelenmesini ifade eden bir tümceciktir. Cosmos DB, birincil veritabanlarını SSD 'lerde depolar. Medya ekleri ve yedeklemeleri, genellikle HDD 'Ler tarafından yedeklenen Azure Blob depolama alanında depolanır. Cosmos DB için bekleyen şifreleme sürümü ile tüm veritabanlarınız, medya ekleri ve yedeklemeleriniz şifrelenir. Verileriniz artık aktarım sırasında (ağ üzerinden) ve bekleyen (kalıcı depolama), uçtan uca şifreleme sağlayan bir biçimde şifrelenir.
 

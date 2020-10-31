@@ -4,62 +4,31 @@ description: AKS kümesi iş yüklerinizde gecikme süresini azaltmak için yak�
 services: container-service
 manager: gwallace
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 10/19/2020
 author: jluk
-ms.openlocfilehash: 5b3dc3803cfb89f4a74d082b5913e69df1d03a00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a96489495abe3bfbed3030b3e08ff121c5c7cddf
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87986721"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090806"
 ---
-# <a name="reduce-latency-with-proximity-placement-groups-preview"></a>Yakınlık yerleştirme gruplarıyla gecikme süresini azaltma (Önizleme)
+# <a name="reduce-latency-with-proximity-placement-groups"></a>Yakınlık yerleştirme gruplarıyla gecikme süresini azaltma
 
 > [!Note]
 > AKS üzerinde yakınlık yerleşimi grupları kullanırken, birlikte bulundurma yalnızca aracı düğümleri için geçerlidir. Düğümden düğüme ve ilgili barındırılan Pod 'ın Pod gecikme süresine kadar geliştirildi. Birlikte bulundurma, kümenin denetim düzlemi yerleştirmesini etkilemez.
 
 Uygulamanızı Azure 'da dağıttığınızda, sanal makine (VM) örneklerinin bölgeler veya kullanılabilirlik alanları arasında yayılması ağ gecikmesi oluşturur ve bu da uygulamanızın genel performansını etkileyebilir. Yakınlık yerleşimi grubu, Azure işlem kaynaklarının fiziksel olarak birbirlerine yakın bir yerde bulunduğundan emin olmak için kullanılan mantıksal bir gruplandırmadır. Oyun, mühendislik benzetimleri ve yüksek frekanslı ticaret (HFT) gibi bazı uygulamalar, düşük gecikme süresi ve hızla tamamlanan görevler gerektirir. Bunlar gibi yüksek performanslı bilgi işlem (HPC) senaryolarında, kümenizin düğüm havuzları için [yakınlık yerleşimi grupları](../virtual-machines/linux/co-location.md#proximity-placement-groups) (PPG) kullanmayı düşünün.
 
-## <a name="limitations"></a>Sınırlamalar
+## <a name="before-you-begin"></a>Başlamadan önce
+
+Bu makalede, Azure CLı sürüm 2,14 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
+
+### <a name="limitations"></a>Sınırlamalar
 
 * Yakınlık yerleşimi grubu en fazla bir kullanılabilirlik bölgesine eşlenir.
 * Bir yakınlık yerleşimi grubunu ilişkilendirmek için bir düğüm havuzunun sanal makine ölçek kümelerini kullanması gerekir.
 * Düğüm havuzu, yalnızca düğüm havuzu oluşturma zamanında bir yakınlık yerleşimi grubunu ilişkilendirebilir.
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-## <a name="before-you-begin"></a>Başlamadan önce
-
-Aşağıdaki kaynakların yüklü olması gerekir:
-
-- Aks-Preview 0.4.53 uzantısı
-
-### <a name="set-up-the-preview-feature-for-proximity-placement-groups"></a>Yakınlık yerleşimi grupları için önizleme özelliğini ayarlama
-
-> [!IMPORTANT]
-> AKS düğüm havuzlarıyla yakınlık yerleştirme grupları kullanırken, birlikte bulundurma yalnızca aracı düğümleri için geçerlidir. Düğümden düğüme ve ilgili barındırılan Pod 'ın Pod gecikme süresine kadar geliştirildi. Birlikte bulundurma, kümenin denetim düzlemi yerleştirmesini etkilemez.
-
-```azurecli-interactive
-# register the preview feature
-az feature register --namespace "Microsoft.ContainerService" --name "ProximityPlacementGroupPreview"
-```
-
-Kayıt için bu işlem birkaç dakika sürebilir. Özelliğin kaydedildiğini doğrulamak için aşağıdaki komutu kullanın:
-
-```azurecli-interactive
-# Verify the feature is registered:
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/ProximityPlacementGroupPreview')].{Name:name,State:properties.state}"
-```
-
-Önizleme süresince, yakınlık yerleşimi gruplarını kullanabilmeniz için *aks-Preview* CLI uzantısının olması gerekir. [Az Extension Add][az-extension-add] komutunu kullanın ve [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeler olup olmadığını denetleyin:
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
 
 ## <a name="node-pools-and-proximity-placement-groups"></a>Düğüm havuzları ve yakınlık yerleştirme grupları
 

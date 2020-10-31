@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/22/2019
 ms.author: dech
-ms.openlocfilehash: 4c485bf6b9eb34e68e399c24e51286428f47586f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf8da4379a7770e44e86663c02cc7a57da9d3452
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85261911"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089806"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Azure Cosmos DB hesapları için not defterlerini etkinleştirme (Önizleme)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!IMPORTANT]
 > Azure Cosmos DB için yerleşik Not defterleri Şu anda şu Azure bölgelerinde sunulmaktadır: Avustralya Doğu, Doğu ABD, Doğu ABD 2, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, Batı Avrupa ve Batı ABD 2. Not defterlerini kullanmak için, bu bölgelerden birindeki mevcut bir hesapta not defterleri [ile yeni bir hesap oluşturun](#enable-notebooks-in-a-new-cosmos-account) veya Not [defterlerini etkinleştirin](#enable-notebooks-in-an-existing-cosmos-account) .
@@ -23,12 +24,12 @@ Azure Cosmos DB 'daki yerleşik jupi Not defterleri, Azure portal verilerinizi a
 ## <a name="enable-notebooks-in-a-new-cosmos-account"></a>Yeni bir Cosmos hesabındaki not defterlerini etkinleştir
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
-1. Azure Cosmos DB **kaynak veritabanları oluştur**' u seçin  >  **Databases**  >  **Azure Cosmos DB**.
-1. **Azure Cosmos DB hesabı oluştur** sayfasında, **Not defterleri**' ni seçin. 
+1. Azure Cosmos DB **kaynak veritabanları oluştur** ' u seçin  >  **Databases**  >  **Azure Cosmos DB** .
+1. **Azure Cosmos DB hesabı oluştur** sayfasında, **Not defterleri** ' ni seçin. 
  
     :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks.png" alt-text="Azure Cosmos DB dikey pencere Oluştur bölümünde Not defterleri seçeneğini belirleyin":::
 
-1. **Gözden geçir ve oluştur**’u seçin. **Ağ** ve **Etiketler** seçeneğini atlayabilirsiniz. 
+1. **Gözden geçir ve oluştur** ’u seçin. **Ağ** ve **Etiketler** seçeneğini atlayabilirsiniz. 
 1. Hesap ayarlarını gözden geçirip **Oluştur** seçeneğini belirleyin. Hesabın oluşturulması birkaç dakika sürer. Portal sayfasında **Dağıtımınız tamamlandı** iletisinin görüntülenmesini bekleyin. 
 
    :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks-complete.png" alt-text="Azure Cosmos DB dikey pencere Oluştur bölümünde Not defterleri seçeneğini belirleyin":::
@@ -46,7 +47,7 @@ Azure Cosmos DB 'daki yerleşik jupi Not defterleri, Azure portal verilerinizi a
 Ayrıca, mevcut hesaplarda not defterlerini etkinleştirebilirsiniz. Bu adımın hesap başına yalnızca bir kez yapılması gerekir.
 
 1. Cosmos hesabınızda **Veri Gezgini** bölmesine gidin.
-1. **Not defterlerini etkinleştir**' i seçin.
+1. **Not defterlerini etkinleştir** ' i seçin.
 
     :::image type="content" source="media/enable-notebooks/enable-notebooks-workspace.png" alt-text="Azure Cosmos DB dikey pencere Oluştur bölümünde Not defterleri seçeneğini belirleyin":::
 
@@ -57,7 +58,7 @@ Ayrıca, mevcut hesaplarda not defterlerini etkinleştirebilirsiniz. Bu adımın
 
 Not defterlerini kullanacağınızı doğrulamak için örnek Not defterleri altındaki not defterlerinden birini seçin. Bu işlem, Not defterinin bir kopyasını çalışma alanınıza kaydeder ve açar.
 
-Bu örnekte, **gettingstarted. ipynb**' yi kullanacağız. 
+Bu örnekte, **gettingstarted. ipynb** ' yi kullanacağız. 
 
 :::image type="content" source="media/enable-notebooks/select-getting-started-notebook.png" alt-text="Azure Cosmos DB dikey pencere Oluştur bölümünde Not defterleri seçeneğini belirleyin":::
 

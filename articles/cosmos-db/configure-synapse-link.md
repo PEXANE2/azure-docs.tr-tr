@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: d3e7eca546adbcac8af882ff4cd5b09d3d643d4c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: e62128edf6558e461bf2c61f16d513c4085241e7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489277"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090401"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Cosmos DB için Azure SYNAPSE bağlantısı 'nı yapılandırma ve kullanma (Önizleme)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
 
 [Azure Cosmos DB Için Azure SYNAPSE bağlantısı](synapse-link.md) , Azure Cosmos DB ' de işletimsel veriler üzerinde neredeyse gerçek zamanlı analizler çalıştırmanıza olanak tanıyan, bulut tabanlı bir karma işlem ve analitik Işleme (htap) özelliğidir. SYNAPSE link, Azure Cosmos DB ile Azure SYNAPSE Analytics arasında sıkı sorunsuz bir tümleştirme oluşturur.
 
@@ -32,7 +33,7 @@ Azure SYNAPSE link, Azure Cosmos DB SQL API kapsayıcıları veya Mongo DB kolek
 
 ## <a name="enable-azure-synapse-link-for-azure-cosmos-db-accounts"></a><a id="enable-synapse-link"></a>Azure Cosmos DB hesapları için Azure SYNAPSE bağlantısını etkinleştirme
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
@@ -44,7 +45,7 @@ Azure SYNAPSE link, Azure Cosmos DB SQL API kapsayıcıları veya Mongo DB kolek
 
    :::image type="content" source="./media/configure-synapse-link/find-synapse-link-feature.png" alt-text="SYNAPSE link Preview özelliğini bulma":::
 
-1. Bundan sonra hesabınızda SYNAPSE bağlantısını etkinleştirmenizi ister. **Etkinleştir**’i seçin. Bu işlemin tamamlanması 1 ila 5 dakika sürebilir.
+1. Bundan sonra hesabınızda SYNAPSE bağlantısını etkinleştirmenizi ister. **Etkinleştir** ’i seçin. Bu işlemin tamamlanması 1 ila 5 dakika sürebilir.
 
    :::image type="content" source="./media/configure-synapse-link/enable-synapse-link-feature.png" alt-text="SYNAPSE link Preview özelliğini bulma":::
 
@@ -60,7 +61,7 @@ Kapsayıcıyı oluştururken Azure Cosmos kapsayıcısında analitik depoyu aça
 > [!NOTE]
 > Şu anda analitik depoyu **Yeni** kapsayıcılar için (hem yeni hem de mevcut hesaplarda) etkinleştirebilirsiniz. [Azure Cosmos DB geçiş araçları](cosmosdb-migrationchoices.md) 'nı kullanarak, mevcut kapsayıcılarınızdaki verileri yeni kapsayıcılara geçirebilirsiniz.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 1. [Azure Portal](https://portal.azure.com/) veya [Azure Cosmos Gezgini](https://cosmos.azure.com/)' nde oturum açın.
 
@@ -70,11 +71,11 @@ Kapsayıcıyı oluştururken Azure Cosmos kapsayıcısında analitik depoyu aça
 
    :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="SYNAPSE link Preview özelliğini bulma":::
 
-1. Bu hesapta daha önce SYNAPSE bağlantısı etkinleştirilmemişse, analitik depo özellikli bir kapsayıcı oluşturmak için önkoşul olduğundan bunu yapmanız istenir. İstenirse, **SYNAPSE bağlantısını etkinleştir**' i seçin. Bu işlemin tamamlanması 1 ila 5 dakika sürebilir.
+1. Bu hesapta daha önce SYNAPSE bağlantısı etkinleştirilmemişse, analitik depo özellikli bir kapsayıcı oluşturmak için önkoşul olduğundan bunu yapmanız istenir. İstenirse, **SYNAPSE bağlantısını etkinleştir** ' i seçin. Bu işlemin tamamlanması 1 ila 5 dakika sürebilir.
 
-1. Azure Cosmos kapsayıcısını etkin bir analitik mağaza oluşturmak için **Tamam**' ı seçin.
+1. Azure Cosmos kapsayıcısını etkin bir analitik mağaza oluşturmak için **Tamam** ' ı seçin.
 
-1. Kapsayıcı oluşturulduktan sonra, **Ayarlar**' a tıklayıp Veri Gezgini ' deki belgeler ' e tıklayarak analitik deponun etkinleştirildiğini doğrulayın ve **analitik depo süresinin canlı** olup olmadığını denetleyin.
+1. Kapsayıcı oluşturulduktan sonra, **Ayarlar** ' a tıklayıp Veri Gezgini ' deki belgeler ' e tıklayarak analitik deponun etkinleştirildiğini doğrulayın ve **analitik depo süresinin canlı** olup olmadığını denetleyin.
 
 ### <a name="net-sdk"></a>.NET SDK
 
@@ -166,7 +167,7 @@ except exceptions.CosmosResourceExistsError:
 
 Analiz deposunu belirli bir TTL değeriyle etkinleştirdikten sonra ilerleyen zamanlarda farklı bir geçerli değer kullanarak güncelleştirebilirsiniz. Değeri güncelleştirmek için Azure portalını veya SDK'ları kullanabilirsiniz. Çeşitli analitik TTL yapılandırma seçenekleri hakkında daha fazla bilgi için bkz. [ANALITIK TTL desteklenen değerler](analytical-store-introduction.md#analytical-ttl) makalesi.
 
-#### <a name="azure-portal"></a>Azure portalı
+#### <a name="azure-portal"></a>Azure portal
 
 Azure portal aracılığıyla analitik mağaza etkin bir kapsayıcı oluşturduysanız, varsayılan bir analitik TTL-1 ' i içerir. Bu değeri güncelleştirmek için aşağıdaki adımları kullanın:
 
@@ -179,7 +180,7 @@ Azure portal aracılığıyla analitik mağaza etkin bir kapsayıcı oluşturduy
   * **Ölçek & ayarları** penceresini açın.
   * Bul **ayarı** altında, * * gerçek zamanlı analitik depolama süresi * *.
   * **Açık (varsayılan)** **seçeneğini belirleyin veya SEÇIN ve bir** TTL değeri ayarlayın
-  * Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
+  * Değişiklikleri kaydetmek için **Kaydet** ’e tıklayın.
 
 #### <a name="net-sdk"></a>.NET SDK
 
@@ -217,7 +218,7 @@ SYNAPSE Spark ile sorgulama hakkında [analitik depo makalesindeki sorgu Azure C
 
 ## <a name="query-the-analytical-store-using-synapse-sql-serverless"></a><a id="query-analytical-store-sql-on-demand"></a> SYNAPSE SQL sunucusuz kullanarak analitik depoyu sorgulama
 
-SYNAPSE SQL sunucusuz (daha önce **isteğe bağlı SQL**olarak adlandırılan bir önizleme özelliği), Azure SYNAPSE bağlantısı ile etkinleştirilen Azure Cosmos DB kapsayıcılarınızdaki verileri sorgulamanızı ve çözümlemenize olanak tanır. İşlemsel iş yüklerinizin performansını etkilemeden verileri neredeyse gerçek zamanlı olarak analiz edebilirsiniz. Analitik depodan veri sorgulama ve T-SQL arabirimi aracılığıyla çok çeşitli bı ve geçici sorgulama araçlarıyla tümleşik bağlantı sunan tanıdık bir T-SQL söz dizimi sunar. Daha fazla bilgi için bkz. [SYNAPSE SQL sunucusuz makalesini kullanarak analitik depoyu sorgulama](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) .
+SYNAPSE SQL sunucusuz (daha önce **isteğe bağlı SQL** olarak adlandırılan bir önizleme özelliği), Azure SYNAPSE bağlantısı ile etkinleştirilen Azure Cosmos DB kapsayıcılarınızdaki verileri sorgulamanızı ve çözümlemenize olanak tanır. İşlemsel iş yüklerinizin performansını etkilemeden verileri neredeyse gerçek zamanlı olarak analiz edebilirsiniz. Analitik depodan veri sorgulama ve T-SQL arabirimi aracılığıyla çok çeşitli bı ve geçici sorgulama araçlarıyla tümleşik bağlantı sunan tanıdık bir T-SQL söz dizimi sunar. Daha fazla bilgi için bkz. [SYNAPSE SQL sunucusuz makalesini kullanarak analitik depoyu sorgulama](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) .
 
 ## <a name="use-synapse-sql-serverless-to-analyze-and-visualize-data-in-power-bi"></a><a id="analyze-with-powerbi"></a>Power BI verileri analiz etmek ve görselleştirmek için SYNAPSE SQL sunucusuz kullanın
 

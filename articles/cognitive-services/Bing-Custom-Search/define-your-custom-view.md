@@ -10,14 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: fa518900b05ba552cb066fbf55e4dbeaa6c681e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57edc16f4396e0fe71380d4f51fa9e0dcca1ef03
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86183214"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090826"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Bing Özel Arama deneyiminizi yapılandırın
+
+> [!WARNING]
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
+> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
 
 Özel bir arama örneği, arama deneyimini yalnızca kullanıcılarınızın ilgilenme Web sitelerinden içerik içerecek şekilde uyarlamanızı sağlar. Bing, web genelinde bir arama gerçekleştirmek yerine yalnızca sizi ilgilendiren Web Slice 'ları arar. Size özel web görünümünü oluşturmak için Bing Özel Arama [portalını](https://customsearch.ai) kullanın.
 
@@ -82,9 +87,9 @@ Bu API 'Ler, özel olmayan [Bing resim arama](../Bing-Image-Search/overview.md) 
 
 Arama sorguları göndermek ve sonuçları görüntülemek için portalın sağ tarafındaki önizleme bölmesini kullanarak arama örneğinizi test edebilirsiniz. 
 
-1. Arama kutusunun altında **örneğim**' ı seçin. **Bing**' i seçerek arama deneyiminizdeki sonuçları Bing ile karşılaştırabilirsiniz. 
+1. Arama kutusunun altında **örneğim** ' ı seçin. **Bing** ' i seçerek arama deneyiminizdeki sonuçları Bing ile karşılaştırabilirsiniz. 
 2. Güvenli bir arama filtresi seçin ve hangi pazarın aranmasına (bkz. [Sorgu parametrelerine](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)bakın).
-3. Geçerli yapılandırmanın sonuçlarını görüntülemek için bir sorgu girin ve ENTER tuşuna basın veya arama simgesine tıklayın. İlgili sonuçları almak için **Web**, **resim**veya **video** ' ya tıklayarak gerçekleştirdiğiniz arama türünü değiştirebilirsiniz. 
+3. Geçerli yapılandırmanın sonuçlarını görüntülemek için bir sorgu girin ve ENTER tuşuna basın veya arama simgesine tıklayın. İlgili sonuçları almak için **Web** , **resim** veya **video** ' ya tıklayarak gerçekleştirdiğiniz arama türünü değiştirebilirsiniz. 
 
 <a name="adjustrank"></a>
 
@@ -120,7 +125,7 @@ Bir Web sayfasını en üste iki şekilde sabitleyebilir:
 
 * Sabitlenmiş sekmesine, en üste **sabitlediğiniz** Web sayfasının URL 'sini ve ilgili sorguyu girin.
 
-* **Önizleme** bölmesinde bir arama sorgusu girin ve ara ' ya tıklayın. Sorgunuz için sabitlemek istediğiniz Web sayfasını bulun ve **en üste sabitle**' ye tıklayın. Web sayfası ve sorgu **sabitlenmiş** listeye eklenecektir.
+* **Önizleme** bölmesinde bir arama sorgusu girin ve ara ' ya tıklayın. Sorgunuz için sabitlemek istediğiniz Web sayfasını bulun ve **en üste sabitle** ' ye tıklayın. Web sayfası ve sorgu **sabitlenmiş** listeye eklenecektir.
 
 ### <a name="specify-the-pins-match-condition"></a>PIN 'in eşleşme koşulunu belirtin
 

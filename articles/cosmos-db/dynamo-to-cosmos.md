@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: mansha
-ms.openlocfilehash: 167d1f21a2eb7ea4c685b5bbbb5d8d64fcc1367e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c621f11e00d418ca46be1bc04676403e6b0e2357
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278695"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089778"
 ---
 # <a name="migrate-your-application-from-amazon-dynamodb-to-azure-cosmos-db"></a>Uygulamanızı Amazon DynamoDB konumundan Azure Cosmos DB geçirin
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB, ölçeklenebilir, global olarak dağıtılmış, tam olarak yönetilen bir veritabanıdır. Verilerinize garantili düşük gecikme süresi erişimi sağlar. Azure Cosmos DB hakkında daha fazla bilgi edinmek için [genel bakış](introduction.md) makalesine bakın. Bu makalede, .NET uygulamanızın en az kod değişiklikleriyle Azure Cosmos DB için DynamoDB 'den nasıl geçirileceği açıklanır.
 
@@ -39,7 +40,7 @@ Azure Cosmos DB ve DynamoDB arasındaki önemli kavramsal farklılıklar aşağ�
 
 Azure Cosmos DB, DynamoDB ile karşılaştırıldığında daha basit bir JSON yapısına sahiptir. Aşağıdaki örnekte farklar gösterilmektedir
 
-**Dynamodb**:
+**Dynamodb** :
 
 Aşağıdaki JSON nesnesi, DynamoDB 'deki veri biçimini temsil eder
 
@@ -73,7 +74,7 @@ ProvisionedThroughput: {
 }
  ```
 
-**Azure Cosmos DB**:
+**Azure Cosmos DB** :
 
 Aşağıdaki JSON nesnesi Azure Cosmos DB veri biçimini temsil eder
 
@@ -122,7 +123,7 @@ Install-Package Microsoft.Azure.Cosmos
 
 ### <a name="establish-connection"></a>Bağlantı kurma
 
-**Dynamodb**:
+**Dynamodb** :
 
 Amazon DynamoDB 'de, bağlanmak için aşağıdaki kod kullanılır:
 
@@ -132,7 +133,7 @@ Amazon DynamoDB 'de, bağlanmak için aşağıdaki kod kullanılır:
         try { aws_dynamodbclient = new AmazonDynamoDBClient( addbConfig ); }
 ```
 
-**Azure Cosmos DB**:
+**Azure Cosmos DB** :
 
 Azure Cosmos DB bağlanmak için kodunuzu şu şekilde güncelleştirin:
 
@@ -164,7 +165,7 @@ Azure Cosmos DB, bağlantınızı iyileştirmek için aşağıdaki seçenekleri 
 
 ### <a name="provision-the-container"></a>Kapsayıcıyı sağlama
 
-**Dynamodb**:
+**Dynamodb** :
 
 Verileri Amazon DynamoDB 'ye depolamak için önce tabloyu oluşturmanız gerekir. Bu işlemde, aşağıdaki kodda gösterildiği gibi şemayı, anahtar türünü ve öznitelikleri tanımlarsınız:
 
@@ -220,7 +221,7 @@ request = new CreateTableRequest
 };
 ```
 
-**Azure Cosmos DB**:
+**Azure Cosmos DB** :
 
 Amazon DynamoDB 'de, okuma işlem birimleri & yazma işlem birimleri sağlamanız gerekir. Azure Cosmos DB ' de, dinamik olarak herhangi bir işlem için kullanılabilen [Istek birimleri (ru/s)](request-units.md)olarak üretilen işi belirtirsiniz. Veriler veritabanı olarak düzenlenir--> kapsayıcı--> öğe. Aktarım hızını veritabanı düzeyinde veya koleksiyon düzeyinde ya da her ikisi de belirtebilirsiniz.
 
@@ -238,7 +239,7 @@ await cosmosDatabase.CreateContainerIfNotExistsAsync(new ContainerProperties() {
 
 ### <a name="load-the-data"></a>Verileri yükleme
 
-**Dynamodb**:
+**Dynamodb** :
 
 Aşağıdaki kod, Amazon DynamoDB içindeki verilerin nasıl yükleneceğini gösterir. MoviesArray, JSON belgesi listesinden oluşur ve JSON belgesini Amazon DynamoDB içine yüklemeniz gerekir:
 
@@ -262,7 +263,7 @@ for( int i = 0, j = 99; i < n; i++ )
     await putItem;
 ```
 
-**Azure Cosmos DB**:
+**Azure Cosmos DB** :
 
 Azure Cosmos DB, akış ve yazma için tercih edebilirsiniz `moviesContainer.CreateItemStreamAsync()` . Ancak, bu örnekte, tür atama özelliğini göstermek için JSON, *Moviemodel* türünde seri durumdan çıkarılacak. Kod çok iş parçacıklı olduğundan Azure Cosmos DB dağıtılmış mimarisini kullanır ve yüklemeyi hızlandıracak:
 
@@ -297,7 +298,7 @@ await Task.WhenAll(concurrentTasks);
 
 ### <a name="create-a-document"></a>Belge oluşturma
 
-**Dynamodb**:
+**Dynamodb** :
 
 Amazon DynamoDB 'de yeni bir belge yazmak tür kullanımı güvenli değildir, aşağıdaki örnek belge türü olarak NewItem kullanır:
 
@@ -306,7 +307,7 @@ Task<Document> writeNew = moviesTable.PutItemAsync(newItem, token);
 await writeNew;
 ```
 
-**Azure Cosmos DB**:
+**Azure Cosmos DB** :
 
 Azure Cosmos DB, veri modeli aracılığıyla bir tür güvenliği sağlar. ' MovieModel ' adlı veri modelini kullanıyoruz:
 
@@ -357,7 +358,7 @@ Azure Cosmos DB NewItem, MovieModel olacaktır:
 
 ### <a name="read-a-document"></a>Belge okuma
 
-**Dynamodb**:
+**Dynamodb** :
 
 Amazon DynamoDB içinde okumak için, temelleri tanımlamanız gerekir:
 
@@ -370,7 +371,7 @@ Primitive range = new Primitive(title, false);
   movie_record = await readMovie;
 ```
 
-**Azure Cosmos DB**:
+**Azure Cosmos DB** :
 
 Ancak, Azure Cosmos DB sorgu doğal (LINQ) ile birlikte:
 
@@ -391,13 +392,13 @@ Yukarıdaki örnekteki belgeler koleksiyonu şu şekilde olacaktır:
 
 ### <a name="update-an-item"></a>Öğeyi güncelleştirme
 
-**Dynamodb**: Amazon dynamodb içindeki öğeyi güncelleştirmek için:
+**Dynamodb** : Amazon dynamodb içindeki öğeyi güncelleştirmek için:
 
 ```csharp
 updateResponse = await client.UpdateItemAsync( updateRequest );
 ````
 
-**Azure Cosmos DB**:
+**Azure Cosmos DB** :
 
 Azure Cosmos DB, güncelleştirme, mevcut değilse belgeyi yerleştir olarak kabul edilecek.
 
@@ -407,7 +408,7 @@ await moviesContainer.UpsertItemAsync<MovieModel>(updatedMovieModel);
 
 ### <a name="delete-a-document"></a>Bir belgeyi silme
 
-**Dynamodb**:
+**Dynamodb** :
 
 Amazon DynamoDB içindeki bir öğeyi silmek için, temel elemanlarına düşecek şekilde yeniden ihtiyacınız vardır:
 
@@ -422,7 +423,7 @@ Primitive hash = new Primitive(year.ToString(), true);
         deletedItem = await delItem;
 ```
 
-**Azure Cosmos DB**:
+**Azure Cosmos DB** :
 
 Azure Cosmos DB, belgeyi alabilir ve zaman uyumsuz olarak silebilirsiniz:
 
@@ -440,7 +441,7 @@ while (result.HasMoreResults)
 
 ### <a name="query-documents"></a>Belgeleri sorgulama
 
-**Dynamodb**:
+**Dynamodb** :
 
 Amazon DynamoDB 'de, API işlevleri verileri sorgulamak için gereklidir:
 
@@ -454,7 +455,7 @@ QueryOperationConfig config = new QueryOperationConfig( );
   search = moviesTable.Query( config ); 
 ```
 
-**Azure Cosmos DB**:
+**Azure Cosmos DB** :
 
 Azure Cosmos DB, bir basit SQL sorgusu içinde projeksiyon ve filtreleme yapabilirsiniz:
 
@@ -494,7 +495,7 @@ var result = moviesContainer.GetItemQueryIterator<MovieModel>(
 
 ### <a name="delete-a-container"></a>Kapsayıcı silme
 
-**Dynamodb**:
+**Dynamodb** :
 
 Amazon DynamoDB içindeki tabloyu silmek için şunları belirtebilirsiniz:
 
@@ -502,7 +503,7 @@ Amazon DynamoDB içindeki tabloyu silmek için şunları belirtebilirsiniz:
 client.DeleteTableAsync( tableName );
 ```
 
-**Azure Cosmos DB**:
+**Azure Cosmos DB** :
 
 Koleksiyonu Azure Cosmos DB silmek için şunları belirtebilirsiniz:
 
