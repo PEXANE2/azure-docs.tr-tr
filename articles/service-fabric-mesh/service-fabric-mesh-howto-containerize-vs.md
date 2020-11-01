@@ -5,12 +5,12 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 11/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: a995f30872216a8b704d3d1714bbece4bb8271f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f236292fff0d0e806e6eec32e1e058cbf67545c
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840073"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93144486"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>Mevcut bir .NET uygulamasını Service Fabric Mesh için kapsayıcılı hale getirme
 
@@ -21,7 +21,7 @@ Visual Studio 2017 ' de, tam .NET Framework kullanan ASP.NET ve konsol projeleri
 > [!NOTE]
 > .NET **Core** projeleri Şu anda desteklenmiyor.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturabilirsiniz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
@@ -39,21 +39,27 @@ Bir örnek denemek isterseniz [eShop](https://github.com/MikkelHegn/ContainersSF
 git clone https://github.com/MikkelHegn/ContainersSFLab.git
 ```
 
-Yüklendikten sonra Visual Studio 2017 Open **Containerssflab\eshoplegacywebformssolution\eshoplegacywebforms.sln**içinde.
+Yüklendikten sonra Visual Studio 2017 Open **Containerssflab\eshoplegacywebformssolution\eshoplegacywebforms.sln** içinde.
 
 ## <a name="add-container-support"></a>Kapsayıcı desteği ekle
  
 Service Fabric kafes araçlarını kullanarak mevcut bir ASP.NET veya konsol projesine kapsayıcı düzenleme desteğini aşağıdaki gibi ekleyin:
 
-Visual Studio Çözüm Gezgini 'nde, proje adına (örneğin, **eshoplegacywebforms**) sağ tıklayın ve ardından **Add**  >  **kapsayıcı Orchestrator desteği**Ekle ' yi seçin.
+Visual Studio Çözüm Gezgini 'nde, proje adına (örneğin, **eshoplegacywebforms** ) sağ tıklayın ve ardından **Add**  >  **kapsayıcı Orchestrator desteği** Ekle ' yi seçin.
 **Kapsayıcı Orchestrator desteği ekle** iletişim kutusu görünür.
 
 ![Visual Studio kapsayıcı Orchestrator iletişim kutusu Ekle](./media/service-fabric-mesh-howto-containerize-vs/add-container-orchestration-support.png)
 
-Açılan listeden **Service Fabric kafes** ' i seçin ve ardından **Tamam**' a tıklayın.
+Açılan listeden **Service Fabric kafes** ' i seçin ve ardından **Tamam** ' a tıklayın.
+
+
+>[!NOTE]
+> 2 Kasım 2020 ' den itibaren geçerli olan Docker Hub 'a yönelik anonim ve kimliği doğrulanmış istekler, Docker Ücretsiz plan hesaplarından [uygulanır](https://docs.docker.com/docker-hub/download-rate-limit/) ve IP adresi tarafından zorlanır. Daha ayrıntılı bilgi için bkz. [Docker Hub Ile kimlik doğrulama](https://docs.microsoft.com/azure/container-registry/buffer-gate-public-content#authenticate-with-docker-hub).
+>
+> Oran sınırlı olmamak için, `FROM microsoft/aspnet:4.7.2-windowsservercore-1803 AS base` Dockerfile dosyanızdaki varsayılan değer ile değiştirildiğinden emin olun `FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-1803 AS base`
 
 Araç daha sonra Docker 'ın yüklü olduğunu doğrular, projenize bir Dockerfile ekler ve projeniz için bir Docker görüntüsü çeker.  
-Çözümünüze bir Service Fabric kafes uygulama projesi eklenir. Ağ yayımlama profillerinizi ve yapılandırma dosyalarını içerir. Projenin adı, projenin adı ile aynıdır (örneğin, **Eshoplegacywebformsapplication**gibi). 
+Çözümünüze bir Service Fabric kafes uygulama projesi eklenir. Ağ yayımlama profillerinizi ve yapılandırma dosyalarını içerir. Projenin adı, projenin adı ile aynıdır (örneğin, **Eshoplegacywebformsapplication** gibi). 
 
 Yeni kafes projesinde, dikkat etmeniz gereken iki klasör görürsünüz:
 - Ağ gibi ek kafes kaynaklarını tanımlayan YAML dosyalarını içeren **uygulama kaynakları** .

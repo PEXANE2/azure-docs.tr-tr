@@ -14,10 +14,10 @@ ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 04e1d35ab17a49dd1c4e9bd2bd19289de2b8658a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "89565863"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Kuruluşunuzun Azure Active Directory oturum açma sayfasına marka ekleyin
@@ -37,7 +37,7 @@ Kullanıcılarınızın www office.com gibi sitelere gitmesi durumunda özel mar
 ### <a name="to-customize-your-branding"></a>Markanızı özelleştirmek için
 1. Dizin için bir Genel yönetici hesabı kullanarak [Azure portalda](https://portal.azure.com/) oturum açın.
 
-2. **Azure Active Directory**' yi seçin ve ardından **Şirket markası**' ni seçin ve ardından **Yapılandır**' ı seçin.
+2. **Azure Active Directory** ' yi seçin ve ardından **Şirket markası** ' ni seçin ve ardından **Yapılandır** ' ı seçin.
 
     ![Contoso-Şirket markası sayfası, seçeneği vurgulanmış şekilde yapılandırın](media/customize-branding/company-branding-configure-button.png)
 
@@ -86,7 +86,7 @@ Kullanıcılarınızın www office.com gibi sitelere gitmesi durumunda özel mar
     
         - **Kare logosu resmi, Koyu tema.** Yukarıdaki kare logosu görüntüsüyle aynı. Bu logo resmi, kutu dışı deneyim (OOBE) sırasında Windows 10 Azure AD 'ye katılmış ekranları gibi koyu bir arka planla birlikte kullanıldığında kare logosu görüntüsünün yerini alır.  Logonuz beyaz, koyu mavi ve siyah arka planlar üzerinde iyi görünüyorsa, bu görüntüyü eklemeniz gerekmez. 
         
-        - **Oturum açmış durumda kalma seçeneğini göster.** Kullanıcılarınızın açık olarak oturumu açana kadar Azure AD 'de oturum açmış kalmasına izin verebilirsiniz. **Hayır**' ı seçerseniz, bu seçenek gizlidir ve kullanıcıların tarayıcının her kapatılışında ve yeniden açıldığı her seferinde oturum açması gerekir.
+        - **Oturum açmış durumda kalma seçeneğini göster.** Kullanıcılarınızın açık olarak oturumu açana kadar Azure AD 'de oturum açmış kalmasına izin verebilirsiniz. **Hayır** ' ı seçerseniz, bu seçenek gizlidir ve kullanıcıların tarayıcının her kapatılışında ve yeniden açıldığı her seferinde oturum açması gerekir.
 
             Bu özellik, dile özgü herhangi bir nesne için değil, yalnızca varsayılan marka nesnesi üzerinde kullanılabilir. Oturum açmış durumda kalma seçeneğini yapılandırma ve sorun giderme hakkında daha fazla bilgi edinmek için bkz. [Azure AD hesapları için ' oturum açmış durumda kal? ' Istemi yapılandırma](keep-me-signed-in.md)
         
@@ -94,7 +94,7 @@ Kullanıcılarınızın www office.com gibi sitelere gitmesi durumunda özel mar
             >SharePoint Online ve Office 2010’un bazı özellikleri kullanıcıların oturumun açık kalmasını seçebilmesine bağlıdır. Bu ayarı **Hayır** olarak ayarlarsanız kullanıcılarınız oturum açmaya yönelik ek ve beklenmeyen istemler görebilir.
    
 
-3. Markanızı eklemeyi bitirdikten sonra **Kaydet**' i seçin.
+3. Markanızı eklemeyi bitirdikten sonra **Kaydet** ' i seçin.
 
     Bu işlem ilk özel marka yapılandırmanızı oluşturursa, kiracınız için varsayılan değer olur. Ek yapılandırmalar varsa, varsayılan yapılandırmanızı seçebileceksiniz.
     
@@ -107,13 +107,13 @@ Kullanıcılarınızın www office.com gibi sitelere gitmesi durumunda özel mar
 ### <a name="to-edit-your-custom-branding"></a>Özel markanızı düzenlemek için
 1. Dizin için bir Genel yönetici hesabı kullanarak [Azure portalda](https://portal.azure.com/) oturum açın.
 
-2. **Azure Active Directory**' yi seçin ve ardından **Şirket markası**' ni seçin ve ardından **Yapılandır**' ı seçin.
+2. **Azure Active Directory** ' yi seçin ve ardından **Şirket markası** ' ni seçin ve ardından **Yapılandır** ' ı seçin.
 
     ![Contoso-Şirket markası sayfası, varsayılan yapılandırma gösteriliyor](media/customize-branding/company-branding-default-config.png)
 
 3. **Şirket markasını Yapılandır** sayfasında, bu MAKALENIN [Azure AD oturum açma sayfasını özelleştirme](#customize-your-azure-ad-sign-in-page) bölümünde yer alan açıklamalara göre bilgileri ekleyin, kaldırın veya değiştirin.
 
-4. **Kaydet**’i seçin.
+4. **Kaydet** ’i seçin.
 
    Oturum açma sayfası markasında yaptığınız değişikliklerin görünmesi bir saate kadar sürebilir.
 
@@ -124,13 +124,13 @@ Kullanıcılarınızın www office.com gibi sitelere gitmesi durumunda özel mar
 
 1. Dizin için bir Genel yönetici hesabı kullanarak [Azure portalda](https://portal.azure.com/) oturum açın.
 
-2. **Azure Active Directory**' yi seçin ve ardından **Şirket markası**' ni seçin ve ardından **Yeni dil**' i seçin.
+2. **Azure Active Directory** ' yi seçin ve ardından **Şirket markası** ' ni seçin ve ardından **Yeni dil** ' i seçin.
 
     ![Contoso-Şirket marka sayfası, yeni dil seçeneği vurgulanmış](media/customize-branding/company-branding-new-language.png)
 
 3. **Şirket markasını Yapılandır** sayfasında, dilinizi (örneğin, Fransızca) seçin ve ardından bu MAKALENIN [Azure AD oturum açma sayfasını özelleştirme](#customize-your-azure-ad-sign-in-page) bölümündeki açıklamalara göre çevrilmiş bilgilerinizi ekleyin.
 
-4. **Kaydet**’i seçin.
+4. **Kaydet** ’i seçin.
 
     **Contoso – Company marka** sayfası, yeni Fransızca yapılandırmanızı gösterecek şekilde güncelleştirilir.
 

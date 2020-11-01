@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 7be326e0f01ed6a00244c0f5b9ed6a960b2b6e0b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "86171865"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Azure arka uç bağlantı özelliklerinde birlikte çalışabilirlik: test yapılandırması ayrıntıları
@@ -23,17 +23,17 @@ Bu makalede, [Test kurulumunun][Setup]yapılandırma ayrıntıları açıklanmak
 
 ## <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>VNet eşlemesi kullanarak bağlı olan VNet bağlantısı
 
-Aşağıdaki şekilde, bir bağlı bileşen sanal ağının (VNet) Azure sanal ağ eşleme ayrıntıları gösterilmektedir. İki sanal ağ arasında eşleme ayarlamayı öğrenmek için bkz. [VNET eşlemesini yönetme][VNet-Config]. Bağlı olan VNet 'in hub VNet 'e bağlı ağ geçitlerini kullanmasını istiyorsanız **uzak ağ geçitlerini kullan**' ı seçin.
+Aşağıdaki şekilde, bir bağlı bileşen sanal ağının (VNet) Azure sanal ağ eşleme ayrıntıları gösterilmektedir. İki sanal ağ arasında eşleme ayarlamayı öğrenmek için bkz. [VNET eşlemesini yönetme][VNet-Config]. Bağlı olan VNet 'in hub VNet 'e bağlı ağ geçitlerini kullanmasını istiyorsanız **uzak ağ geçitlerini kullan** ' ı seçin.
 
 [![1]][1]
 
-Aşağıdaki şekilde, hub VNet 'in VNet eşleme ayrıntıları gösterilmektedir. Hub VNet 'in bağlı olan VNet 'in hub ağ geçitlerini kullanmasına izin vermek istiyorsanız, **ağ geçidi aktarımına Izin ver**' i seçin.
+Aşağıdaki şekilde, hub VNet 'in VNet eşleme ayrıntıları gösterilmektedir. Hub VNet 'in bağlı olan VNet 'in hub ağ geçitlerini kullanmasına izin vermek istiyorsanız, **ağ geçidi aktarımına Izin ver** ' i seçin.
 
 [![iki]][2]
 
 ## <a name="branch-vnet-connectivity-by-using-a-site-to-site-vpn"></a>Siteden siteye VPN kullanarak dal VNet bağlantısı
 
-Azure VPN Gateway 'de VPN ağ geçitlerini kullanarak Merkez ve dal sanal ağları arasında siteden siteye VPN bağlantısı kurun. Varsayılan olarak, VPN ağ geçitleri ve Azure ExpressRoute ağ geçitleri, **65515**özel bir otonom sistem numarası (ASN) değeri kullanır. VPN Gateway ASN değerini değiştirebilirsiniz. Test kurulumunda, şube VNet VPN ağ geçidinin ASN değeri, hub ve dal sanal ağları arasındaki eBGP yönlendirmeyi desteklemek için **65516** olarak değiştirilir.
+Azure VPN Gateway 'de VPN ağ geçitlerini kullanarak Merkez ve dal sanal ağları arasında siteden siteye VPN bağlantısı kurun. Varsayılan olarak, VPN ağ geçitleri ve Azure ExpressRoute ağ geçitleri, **65515** özel bir otonom sistem numarası (ASN) değeri kullanır. VPN Gateway ASN değerini değiştirebilirsiniz. Test kurulumunda, şube VNet VPN ağ geçidinin ASN değeri, hub ve dal sanal ağları arasındaki eBGP yönlendirmeyi desteklemek için **65516** olarak değiştirilir.
 
 
 [![03]][3]

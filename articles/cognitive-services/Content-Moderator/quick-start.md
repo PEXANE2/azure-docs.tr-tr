@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: Web üzerinde Content Moderator deneyin'
 titleSuffix: Azure Cognitive Services
-description: Herhangi bir kod yazmak zorunda kalmadan Content Moderator temel işlevselliğini test etmek için çevrimiçi Content Moderator gözden geçirme aracını kullanın.
+description: Bu hızlı başlangıçta, herhangi bir kod yazmak zorunda kalmadan Content Moderator temel işlevselliğini test etmek için çevrimiçi Content Moderator gözden geçirme aracını kullanacaksınız.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -12,12 +12,12 @@ ms.date: 09/29/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: İçerik Aracı, içerik denetleme
-ms.openlocfilehash: 025c8fcf98a31d7b3380ee2530428d08428493fb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d1d9315986f7a6c57c1da012b9034e4f1a3730bc
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91596807"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93143739"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Hızlı başlangıç: Web üzerinde Content Moderator deneyin
 
@@ -27,15 +27,14 @@ Bu hızlı başlangıçta, herhangi bir kod yazmak zorunda kalmadan Content Mode
 
 - Bir Web tarayıcısı
 
-## <a name="set-up-the-review-tool"></a>Inceleme aracını ayarlama
-
-Content Moderator Inceleme Aracı, insan gözden geçirenlerin kararlar verirken bilişsel hizmete yardımcı olmasını sağlayan Web tabanlı bir araçtır. Bu kılavuzda, Content Moderator hizmetinin nasıl çalıştığını görebilmeniz için, gözden geçirme aracını ayarlama işleminin kısa bir sürecine gidecaksınız. [Content moderator gözden geçirme aracı](https://contentmoderator.cognitive.microsoft.com/) sitesine gidin ve kaydolun.
+## <a name="set-up-the-review-tool"></a>İnceleme aracını ayarlama
+Content Moderator Inceleme Aracı, insan gözden geçirenlerin kararlar verirken bilişsel hizmete yardımcı olmasını sağlayan Web tabanlı bir araçtır. Bu kılavuzda, Content Moderator hizmetinin nasıl çalıştığını görebilmeniz için İnceleme aracını ayarlamaya yönelik kısa bir işlem öğreneceksiniz. [Content moderator gözden geçirme aracı](https://contentmoderator.cognitive.microsoft.com/) sitesine gidin ve kaydolun.
 
 ![Content Moderator giriş sayfası](images/homepage.PNG)
 
 ## <a name="create-a-review-team"></a>Bir gözden geçirme ekibi oluşturun
 
-Sonra, bir gözden geçirme ekibi oluşturun. Çalışan bir senaryoda bu, hizmetin denetleme kararlarını el ile gözden geçirebilen kişi grubu olacaktır. Bir ekip oluşturmak için bir **bölge**seçmeniz ve bir **Takım adı** ve **Takım Kimliği**sağlamanız gerekir. İş arkadaşlarınızı takıma davet etmek isterseniz, e-posta adreslerini buraya girerek yapabilirsiniz.
+Sonra, bir gözden geçirme ekibi oluşturun. Bu ekip, çalışan bir senaryoda hizmetin denetleme kararlarını el ile gözden geçirenler grubu olacaktır. Bir ekip oluşturmak için bir **bölge** seçmeniz ve bir **Takım adı** ve **Takım Kimliği** sağlamanız gerekir. İş arkadaşlarınızı takıma davet etmek isterseniz, e-posta adreslerini buraya girerek yapabilirsiniz.
 
 > [!NOTE]
 > **Ekip adı** , gözden geçirme ekibiniz için kolay bir addır. Bu ad Azure portal görüntülenir. **EKIP kimliği** , gözden geçirme takımınızın program aracılığıyla tanımlamak için kullanılan şeydir.
@@ -43,31 +42,35 @@ Sonra, bir gözden geçirme ekibi oluşturun. Çalışan bir senaryoda bu, hizme
 > [!div class="mx-imgBorder"]
 > ![Takım üyesini davet et](images/create-team.png)
 
-Verileri müşteri tarafından yönetilen bir anahtarla (CMK) şifrelemeyi seçerseniz, E0 fiyatlandırma katmanında Content Moderator kaynağınız için **kaynak kimliği** istenir. Sağladığınız kaynak yeni olmalıdır. 
+Verileri müşteri tarafından yönetilen bir anahtarla (CMK) şifrelemeyi seçerseniz, E0 fiyatlandırma katmanında Content Moderator kaynağınız için **kaynak kimliği** istenir. Sağladığınız kaynağın bu takım için benzersiz olması gerekir. 
 
 > [!div class="mx-imgBorder"]
 > ![Takım üyesini CMK ile davet et](images/create-team-cmk.png)
 
-Bir Content Moderator kaynağını yeniden kullanmaya çalışırsanız şu uyarıyı görürsünüz: 
-
-> [!div class="mx-imgBorder"]
-> ![CMK hatası](images/create-team-cmk-fail.png)
-
 ## <a name="upload-sample-content"></a>Örnek içeriği karşıya yükle
 
-Şimdi örnek içerik yüklemeye hazırsınız. **> görüntüsünü dene**' yi seçin, **metni > deneyin**veya **> video kullanmayı deneyin**.
+Şimdi örnek içerik yüklemeye hazırsınız. **> görüntüsünü dene** ' yi seçin, **metni > deneyin** veya **> video kullanmayı deneyin** .
 
-![Görüntüyü veya metin yönetimini deneyin](images/tryimagesortext.png)
+> [!div class="mx-imgBorder"]
+> ![Görüntüyü veya metin yönetimini deneyin](images/tryimagesortext.png)
 
-İçeriğinizi denetleme için gönderme. Dahili olarak, gözden geçirme aracı içeriğinizi taramak için denetleme API 'Lerini çağırır. Tarama tamamlandıktan sonra, incelemenizi bekleyen sonuçlar olduğunu bildiren bir ileti görürsünüz.
+İçeriğinizi denetleme için gönderme. Aşağıdaki örnek metin içeriğini kullanabilirsiniz:
 
-![Orta dosyalar](images/submitted.png)
+```
+Is this a grabage email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555.
+Crap is the profanity here. Is this information PII? phone 4255550111
+```
+
+Dahili olarak, gözden geçirme aracı içeriğinizi taramak için denetleme API 'Lerini çağırır. Tarama tamamlandıktan sonra, incelemenizi bekleyen sonuçlar olduğunu bildiren bir ileti görürsünüz.
+
+> [!div class="mx-imgBorder"]
+> ![Orta dosyalar](images/submitted.png)
 
 ## <a name="review-moderation-tags"></a>Denetleme etiketlerini gözden geçirme
 
-Uygulanan denetleme etiketlerini gözden geçirin. İçeriğinize hangi etiketlerin uygulandığını ve her bir kategoride skor olduğunu görebilirsiniz. Farklı içerik etiketlerinin neleri belirtdikleriniz hakkında daha fazla bilgi edinmek için [görüntü](image-moderation-api.md), [metin](text-moderation-api.md)ve [video](video-moderation-api.md) Denetleme konularına bakın.
+Uygulanan denetleme etiketlerini gözden geçirin. İçeriğinize hangi etiketlerin uygulandığını ve her bir kategoride skor olduğunu görebilirsiniz. Farklı içerik etiketlerinin neleri belirtdikleriyle ilgili daha fazla bilgi edinmek için [görüntü](image-moderation-api.md), [metin](text-moderation-api.md)ve [video](video-moderation-api.md) denetleme makalelerine bakın.
 
-![Sonuçları gözden geçirme](images/reviewresults_text.png)
+<!-- ![Review results](images/reviewresults_text.png) -->
 
 Bir projede, sizin veya gözden geçirme ekibiniz bu etiketleri değiştirebilir veya gerektiğinde daha fazla etiket ekleyebilir. Bu değişiklikleri **İleri** düğmesiyle gönderebilirsiniz. İş uygulamanız yönetici API 'Lerini çağırdığında, etiketli içerik burada sıraya alınır ve insan gözden geçirme ekipleri tarafından incelenmeye hazırdır. Bu yaklaşımı kullanarak büyük hacimlerde içerik hızla gözden geçirebilirsiniz.
 

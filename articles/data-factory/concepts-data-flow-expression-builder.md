@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/14/2020
-ms.openlocfilehash: ee82d3f35b6b2b50b001e065eb81447738526b1c
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 10/30/2020
+ms.openlocfilehash: 8257be28344ac7a03738c80a003c1229282ae305
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635380"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145725"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Eşleme veri akışında derleme ifadeleri
 
@@ -30,15 +30,15 @@ Eşleme veri akışı ' nda birçok dönüştürme özelliği ifadeler olarak gi
 
 [Filtre](data-flow-filter.md)gibi bazı dönüşümlerdeki mavi ifade metin kutusuna tıkladığınızda ifade Oluşturucusu açılır. 
 
-![Mavi ifade kutusu](media/data-flow/expressionbox.png "İfade Oluşturucusu")
+![Mavi ifade kutusu](media/data-flow/expressionbox.png "Mavi ifade kutusu")
 
 Bir eşleşen veya gruplandırma koşulunda sütunlara başvuru yaptığınızda bir ifade, sütunlardaki değerleri ayıklayabilir. Bir ifade oluşturmak için, **hesaplanan sütun** ' u seçin.
 
-![Hesaplanan sütun seçeneği](media/data-flow/computedcolumn.png "İfade Oluşturucusu")
+![Hesaplanan sütun seçeneği](media/data-flow/computedcolumn.png "Hesaplanan sütun seçeneği")
 
 Bir ifadenin veya değişmez değerin geçerli girişler olduğu durumlarda, değişmez değer olarak değerlendirilen bir ifade oluşturmak için **dinamik Içerik Ekle** ' yi seçin.
 
-![Dinamik içerik Ekle seçeneği](media/data-flow/add-dynamic-content.png "İfade Oluşturucusu")
+![Dinamik içerik Ekle seçeneği](media/data-flow/add-dynamic-content.png "Dinamik içerik Ekle seçeneği")
 
 ## <a name="expression-elements"></a>İfade öğeleri
 
@@ -72,6 +72,16 @@ Veri akışınız, herhangi bir kaynağında tanımlı bir şema kullanıyorsa, 
 ### <a name="parameters"></a>Parametreler
 
 Parametreler, bir işlem hattından çalışma zamanında bir veri akışına geçirilen değerlerdir. Bir parametreye başvurmak için, **ifade öğeleri** görünümünden parametreye tıklayın veya adın önünde bir dolar işareti ile başvuru yapın. Örneğin, parametre1 adlı bir parametreye tarafından başvurulur `$parameter1` . Daha fazla bilgi edinmek için bkz. [eşleme veri akışlarını parametrize](parameters-data-flow.md)etme.
+
+### <a name="cached-lookup"></a>Önbelleğe alınan arama
+
+Önbelleğe alınmış bir arama, önbelleğe alınmış bir havuzun çıktısının satır içi aramasını yapmanıza olanak sağlar. Her havuzda kullanabileceğiniz iki işlev bulunur `lookup()` ve `outputs()` . Bu işlevlere başvuran sözdizimi `cacheSinkName#functionName()` . Daha fazla bilgi için bkz. [önbellek havuzları](data-flow-sink.md#cache-sink).
+
+`lookup()` geçerli dönüşümdeki eşleşen sütunları parametreler olarak alır ve önbellek havuzunda anahtar sütunlarla eşleşen satıra eşit bir karmaşık sütun döndürür. Döndürülen karmaşık sütun, önbellek havuzunda eşlenen her sütun için bir alt sütun içerir. Örneğin, `errorCodeCache` kod üzerinde ve adlı bir sütunda eşleşen bir anahtar sütunu olan bir hata kodu önbellek havuzunuzla karşılaşırsanız `Message` . Çağırmak, `errorCodeCache#lookup(errorCode).Message` iletilen kodla eşleşen iletiyi döndürür. 
+
+`outputs()` Hiçbir parametre alır ve tüm önbellek havuzunu karmaşık sütun dizisi olarak döndürür. Bu, havuzda anahtar sütunları belirtilmişse ve yalnızca önbellek havuzunda az sayıda satır varsa kullanılmalıdır. Yaygın kullanım durumu, bir artırma anahtarının en büyük değerini ekleme. Önbelleğe alınmış tek toplanmış bir satır `CacheMaxKey` bir sütun içeriyorsa `MaxKey` , çağırarak ilk değere başvurabilirsiniz `CacheMaxKey#outputs()[1].MaxKey` .
+
+![Önbelleğe alınan arama](media/data-flow/cached-lookup-example.png "Önbelleğe alınan arama")
 
 ### <a name="locals"></a>Ayarlanmalıdır
 

@@ -3,21 +3,21 @@ title: Azure Data Factory zamanlama Tetikleyicileri oluşturma
 description: Bir zamanlamaya göre işlem hattı çalıştıran Azure Data Factory tetikleyici oluşturmayı öğrenin.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: chez-charlie
+ms.author: chez
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/23/2018
+ms.date: 10/30/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 5dd51f7bcaaa876285f6f514ea98603ff28e7ffa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f147a317b16a4a581fad18bd48dbd38059e9a8c
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87872608"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146079"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Bir zamanlamaya göre işlem hattı çalıştıran bir tetikleyici oluşturma
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -38,28 +38,35 @@ Aşağıdaki bölümlerde, farklı yollarla bir zamanlama tetikleyicisi oluştur
 
     ![Düzen sekmesine geçin](./media/how-to-create-schedule-trigger/switch-edit-tab.png)
 
-1. Menüde **tetikleyici** ' yi seçin ve ardından **Yeni/Düzenle**' yi seçin. 
+1. Menüde **tetikleyici** ' yi seçin ve ardından **Yeni/Düzenle** ' yi seçin. 
 
     ![Yeni tetikleyici menüsü](./media/how-to-create-schedule-trigger/new-trigger-menu.png)
 
-1. **Tetikleyici Ekle** sayfasında **tetikleyici seç...** öğesini seçin ve **+ Yeni**' yi seçin. 
+1. **Tetikleyici Ekle** sayfasında **tetikleyici seç...** öğesini seçin ve **+ Yeni** ' yi seçin. 
 
     ![Tetikleyici ekle - yeni tetikleyici](./media/how-to-create-schedule-trigger/add-trigger-new-button.png)
 
 1. **Yeni tetikleyici** sayfasında, aşağıdaki adımları uygulayın: 
 
-    1. **Tür**için **zamanlamanın** seçili olduğunu onaylayın. 
-    1. **Başlangıç tarihi (UTC)** tetikleyicisinin başlangıç tarih/saati ' ni belirtin. Varsayılan olarak geçerli tarih/saat değerine ayarlanır. 
-    1. Tetikleyici için **yinelenme** belirtin. Açılan listeden (her dakika, saatlik, günlük, haftalık ve aylık) değerlerden birini seçin. Metin kutusuna çarpanı girin. Örneğin, tetikleyicinin her 15 dakikada bir kez çalışmasını istiyorsanız, **her dakikayı**seçer ve metin kutusuna **15** girersiniz. 
-    1. **Bitiş** alanı için, tetikleyici için bir bitiş tarih saati belirtmek Istemiyorsanız, **bitiş yok**' u seçin. Bir bitiş tarihi belirtmek için, **Tarih**' i seçin ve bitiş tarih saatini belirtin ve ardından **Tamam**' ı seçin. Her işlem hattı çalıştırmasının bir maliyeti vardır. Test ediyorsanız, işlem hattının yalnızca birkaç kez tetiklendiğinden emin olmak isteyebilirsiniz. Öte yandan, yayımlama saatiyle bitiş saati arasında işlem hattının çalıştırılmasına yetecek kadar zaman olduğundan emin olun. Tetikleyici siz çözümü kullanıcı arabiriminde kaydettiğinizde değil ancak Data Factory'de yayımladığınızda devreye girer.
+    1. **Tür** için **zamanlamanın** seçili olduğunu onaylayın.
+    1. **Başlangıç tarihi** tetikleyicisinin başlangıç tarih/saati ' ni belirtin. Varsayılan olarak Eşgüdümlü Evrensel Saat (UTC) olarak geçerli tarih saat değerine ayarlanır.
+    1. Tetikleyicinin oluşturulacağı saat dilimini belirtin. Saat dilimi ayarı, gelişmiş yinelenme seçeneklerinde **Başlangıç tarihi** , **bitiş tarihi** ve **zamanlama yürütme süreleri** için geçerlidir. Saat dilimi ayarını değiştirmek, başlangıç tarihini otomatik olarak değiştirmez. Başlangıç tarihinin belirtilen saat diliminde doğru olduğundan emin olun
 
-        ![Tetikleyici ayarları](./media/how-to-create-schedule-trigger/trigger-settings.png)
+        > [!NOTE]
+        > Gün ışığından yararlanma süresini gözlemleyecek saat dilimleri için, tetikleme süresi iki kez bir yıl değişikliği için otomatik olarak ayarlar. Günışığından yararlanma değişikliğini devre dışı bırakmak için lütfen gün ışığından yararlanma, örneğin UTC gibi bir saat dilimi seçin
 
-1. **Yeni tetikleyici** penceresinde, **etkin** seçeneğinde **Evet** ' i seçin ve ardından **Tamam**' ı seçin. Bu onay kutusunu kullanarak tetikleyiciyi daha sonra devre dışı bırakabilirsiniz. 
+    1. Tetikleyici için **yinelenme** belirtin. Açılan listeden (her dakika, saatlik, günlük, haftalık ve aylık) değerlerden birini seçin. Metin kutusuna çarpanı girin. Örneğin, tetikleyicinin her 15 dakikada bir kez çalışmasını istiyorsanız, **her dakikayı** seçer ve metin kutusuna **15** girersiniz. 
+    1. Bir bitiş tarihi belirtmek için **bitiş tarihi belirt** ' i seçin ve _bitişi_ belirtin ve ardından **Tamam** ' ı seçin. Her işlem hattı çalıştırmasının bir maliyeti vardır. Test ediyorsanız, işlem hattının yalnızca birkaç kez tetiklendiğinden emin olmak isteyebilirsiniz. Öte yandan, yayımlama saatiyle bitiş saati arasında işlem hattının çalıştırılmasına yetecek kadar zaman olduğundan emin olun. Tetikleyici siz çözümü kullanıcı arabiriminde kaydettiğinizde değil ancak Data Factory'de yayımladığınızda devreye girer.
+
+        ![Tetikleyici ayarları](./media/how-to-create-schedule-trigger/trigger-settings-01.png)
+
+        ![Bitiş tarihi için tetikleyici ayarları](./media/how-to-create-schedule-trigger/trigger-settings-02.png)
+
+1. **Yeni tetikleyici** penceresinde, **etkin** seçeneğinde **Evet** ' i seçin ve ardından **Tamam** ' ı seçin. Bu onay kutusunu kullanarak tetikleyiciyi daha sonra devre dışı bırakabilirsiniz. 
 
     ![Tetikleyici ayarları - İleri düğmesi](./media/how-to-create-schedule-trigger/trigger-settings-next.png)
 
-1. **Yeni tetikleyici** penceresinde, uyarı iletisini gözden geçirin ve **Tamam**' ı seçin.
+1. **Yeni tetikleyici** penceresinde, uyarı iletisini gözden geçirin ve **Tamam** ' ı seçin.
 
     ![Tetikleyici ayarları - Son düğmesi](./media/how-to-create-schedule-trigger/new-trigger-finish.png)
 
@@ -71,7 +78,7 @@ Aşağıdaki bölümlerde, farklı yollarla bir zamanlama tetikleyicisi oluştur
 
     ![Tetiklenen çalıştırmaları izleme](./media/how-to-create-schedule-trigger/monitor-triggered-runs.png)
 
-1. **Tetikleyici Çalıştırmaları** görünümüne geçin. 
+1. **Tetikleyici çalıştırma**  \  **zamanlaması** görünümüne geçin. 
 
     ![Tetikleme çalıştırmalarını izleme](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
 
@@ -95,8 +102,9 @@ Bu bölümde, bir zamanlama tetikleyicisi oluşturmak, başlatmak ve izlemek iç
                 "recurrence": {
                     "frequency": "Minute",
                     "interval": 15,
-                    "startTime": "2017-12-08T00:00:00",
-                    "endTime": "2017-12-08T01:00:00"
+                    "startTime": "2017-12-08T00:00:00Z",
+                    "endTime": "2017-12-08T01:00:00Z",
+                    "timeZone": "UTC"
                 }
             },
             "pipelines": [{
@@ -117,9 +125,16 @@ Bu bölümde, bir zamanlama tetikleyicisi oluşturmak, başlatmak ve izlemek iç
     JSON kod parçacığında:
     - Tetikleyicinin **Type** öğesi "scheduletrigger" olarak ayarlanır.
     - **Sıklık** öğesi "Minute" olarak ayarlanır ve **Interval** öğesi 15 olarak ayarlanır. Bu nedenle tetikleyici, ardışık düzeni başlangıç ve bitiş zamanları arasında 15 dakikada bir çalıştırır.
+    - **TimeZone** öğesi, tetikleyicinin oluşturulduğu saat dilimini belirtir. Bu ayar hem **StartTime** hem de **bitişsaati** etkiler.
     - **BitişZamanı** öğesi, **StartTime** öğesinin değerinden sonraki bir saattir. Bu nedenle tetikleyici, işlem hattını 15 dakika, 30 dakika ve başlangıç zamanından 45 dakika sonra çalıştırır. Başlangıç saatini geçerli UTC zamanına ve bitiş saatini başlangıç zamanından geçen bir saate güncelleştirmeyi unutmayın. 
+
+        > [!IMPORTANT]
+        > UTC saat dilimi için startTime ve bitişsaati ' yyyy-MM-ddTHH: mm: SS **Z** ' biçimini izlemelidir, diğer Timezones için StartTime ve bitişsaati ' yyyy-mm-ddTHH: mm: ss ' izler. 
+        > 
+        > ISO 8601 standardı başına, zaman damgasına olan _Z_ son eki, tarih saat değerini UTC saat dilimine işaret edin ve saat dilimi alanını gereksiz şekilde işler UTC saat dilimi için _Z_ soneki eksik olsa da, _etkinleştirme_ tetiklenmesi sırasında hata oluşmasına neden olur.
+
     - Tetikleyici **Adfv2QuickStartPipeline** işlem hattı ile ilişkilendirilir. Birden çok işlem hattını bir tetikleyici ile ilişkilendirmek için daha fazla **pipelineReference** bölümü ekleyin.
-    - Hızlı başlangıçtaki işlem hattı iki **parametre** değeri alır: **ınputpath** ve **OutputPath**. Bu nedenle, bu parametrelerin değerlerini tetikleyiciden geçirirsiniz.
+    - Hızlı başlangıçtaki işlem hattı iki **parametre** değeri alır: **ınputpath** ve **OutputPath** . Ve bu parametrelerin değerlerini tetikleyiciden geçirirsiniz.
 
 1. **Set-AzDataFactoryV2Trigger** cmdlet 'ini kullanarak bir tetikleyici oluşturun:
 
@@ -151,7 +166,11 @@ Bu bölümde, bir zamanlama tetikleyicisi oluşturmak, başlatmak ve izlemek iç
     Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
     ```
     
+    > [!NOTE]
+    > Zamanlama Tetikleyicileri tetikleme süresi UTC zaman damgasında belirtilir. _Triggerrunstartedadfter_ ve _Triggerrunstartedbefore_ Ayrıca UTC zaman damgasını bekliyor
+
     Tetikleyici çalıştırmalarını ve Azure portal işlem hattı çalıştırmalarını izlemek için bkz. işlem [hattı çalıştırmalarını izleme](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
+
 
 
 ## <a name="net-sdk"></a>.NET SDK
@@ -207,6 +226,16 @@ Her 15 dakikada bir çalışan bir zamanlama tetikleyicisi oluşturmak ve başla
             client.Triggers.Start(resourceGroup, dataFactoryName, triggerName);
 ```
 
+Farklı bir saat diliminde (UTC dışında) Tetikleyiciler oluşturmak için aşağıdaki ayarlar gereklidir:
+```csharp
+<<ClientInstance>>.SerializationSettings.DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat;
+<<ClientInstance>>.SerializationSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Unspecified;
+<<ClientInstance>>.SerializationSettings.DateParseHandling = DateParseHandling.None;
+<<ClientInstance>>.DeserializationSettings.DateParseHandling = DateParseHandling.None;
+<<ClientInstance>>.DeserializationSettings.DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat;
+<<ClientInstance>>.DeserializationSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Unspecified;
+```
+
 Bir tetikleyici çalıştırmasını izlemek için örnekteki son deyimin önüne aşağıdaki kodu ekleyin `Console.WriteLine` :
 
 ```csharp
@@ -240,7 +269,7 @@ Bu bölümde, bir tetikleyiciyi oluşturmak, başlatmak ve izlemek için Python 
 ```python
     # Create a trigger
     tr_name = 'mytrigger'
-    scheduler_recurrence = ScheduleTriggerRecurrence(frequency='Minute', interval='15',start_time='2017-12-12T04:00:00', end_time='2017-12-12T05:00:00', time_zone='UTC')
+    scheduler_recurrence = ScheduleTriggerRecurrence(frequency='Minute', interval='15',start_time='2017-12-12T04:00:00Z', end_time='2017-12-12T05:00:00Z', time_zone='UTC')
     pipeline_parameters = {'inputPath':'adftutorial/input', 'outputPath':'adftutorial/output'}
     pipelines_to_run = []
     pipeline_reference = PipelineReference('copyPipeline')
@@ -258,7 +287,7 @@ Tetikleyici çalıştırmalarını ve Azure portal işlem hattı çalıştırmal
 Bir tetikleyici oluşturmak için Azure Resource Manager şablonu kullanabilirsiniz. Adım adım yönergeler için, bkz. [Kaynak Yöneticisi şablonu kullanarak Azure Veri Fabrikası oluşturma](quickstart-create-data-factory-resource-manager-template.md).  
 
 ## <a name="pass-the-trigger-start-time-to-a-pipeline"></a>Tetikleyici başlangıç zamanını bir işlem hattına geçirme
-Azure Data Factory sürüm 1, sistem değişkenlerini kullanarak bölümlenmiş verileri okumayı veya yazmayı destekler: LogFiles **Estart**, **daeend**, **windowstart**ve **windowend**. Geçerli Azure Data Factory sürümünde, işlem hattı parametresini kullanarak bu davranışı elde edebilirsiniz. Tetikleyici için başlangıç zamanı ve zamanlanan saat, işlem hattı parametresinin değeri olarak ayarlanır. Aşağıdaki örnekte, tetikleyicisinin zamanlanan saati, ardışık düzen **Scheduledruntime** parametresine bir değer olarak geçirilir:
+Azure Data Factory sürüm 1, sistem değişkenlerini kullanarak bölümlenmiş verileri okumayı veya yazmayı destekler: LogFiles **Estart** , **daeend** , **windowstart** ve **windowend** . Geçerli Azure Data Factory sürümünde, işlem hattı parametresini kullanarak bu davranışı elde edebilirsiniz. Tetikleyici için başlangıç zamanı ve zamanlanan saat, işlem hattı parametresinin değeri olarak ayarlanır. Aşağıdaki örnekte, tetikleyicisinin zamanlanan saati, ardışık düzen **Scheduledruntime** parametresine bir değer olarak geçirilir:
 
 ```json
 "parameters": {
@@ -322,24 +351,46 @@ Aşağıdaki tabloda bir tetikleyicinin yinelenmesi ve zamanlanmasıyla ilgili a
 
 | JSON özelliği | Açıklama |
 |:--- |:--- |
-| **startTime** | Bir Tarih-Saat değeri. Basit zamanlamalar için **startTime** özelliğinin değeri ilk oluşum için geçerli olur. Karmaşık zamanlamalar için tetikleyici belirtilen **startTime** değerinden önce başlamaz. |
-| **endTime** | Tetikleyicinin bitiş tarihi ve saati. Tetikleyici belirtilen bitiş tarihi ve saatinden sonra yürütülmez. Bu özelliğin değeri geçmişte olamaz. Bu özellik isteğe bağlıdır. |
-| **TI** | Saat dilimi. Şu anda yalnızca UTC saat dilimi desteklenmektedir. |
-| **yinelemeyi** | Tetikleyici için yinelenme kurallarını belirten bir yinelenme nesnesi. recurrence nesnesi şu öğeleri destekler: **frequency**, **interval**, **endTime**, **count** ve **schedule**. Bir yinelenme nesnesi tanımlanırken **frequency** öğesi gereklidir. Yinelenme nesnesinin diğer öğeleri isteğe bağlıdır. |
-| **frequency** | Tetikleyicinin yineleneceği sıklık birimi. “Minute”, “hour”, “day”, “week” ve “month” değerleri desteklenir. |
+| **startTime** | Bir Tarih-Saat değeri. Basit zamanlamalar için **startTime** özelliğinin değeri ilk oluşum için geçerli olur. Karmaşık zamanlamalar için tetikleyici belirtilen **startTime** değerinden önce başlamaz. <br> UTC saat dilimi için biçim, `'yyyy-MM-ddTHH:mm:ssZ'` diğer saat dilimi için biçimindedir `'yyyy-MM-ddTHH:mm:ss'` . |
+| **endTime** | Tetikleyicinin bitiş tarihi ve saati. Tetikleyici belirtilen bitiş tarihi ve saatinden sonra yürütülmez. Bu özelliğin değeri geçmişte olamaz. Bu özellik isteğe bağlıdır.  <br> UTC saat dilimi için biçim, `'yyyy-MM-ddTHH:mm:ssZ'` diğer saat dilimi için biçimindedir `'yyyy-MM-ddTHH:mm:ss'` . |
+| **TI** | Tetikleyicinin oluşturulduğu saat dilimi. Bu ayar **StartTime** , **bitişsaati** ve **zamanlamayı** etkiler. [Desteklenen saat dilimi listesini](#time-zone-option) görüntüleyin |
+| **yinelemeyi** | Tetikleyici için yinelenme kurallarını belirten bir yinelenme nesnesi. recurrence nesnesi şu öğeleri destekler: **frequency** , **interval** , **endTime** , **count** ve **schedule** . Bir yinelenme nesnesi tanımlanırken **frequency** öğesi gereklidir. Yinelenme nesnesinin diğer öğeleri isteğe bağlıdır. |
+| **lemiyor** | Tetikleyicinin yineleneceği sıklık birimi. “Minute”, “hour”, “day”, “week” ve “month” değerleri desteklenir. |
 | **interval** | Tetikleyicinin çalışma sıklığını belirten **frequency** değerinin aralığını gösteren bir pozitif tamsayı. Örneğin **interval** değeri 3, **frequency** değeri de "week" ise tetikleyici 3 haftada bir yinelenir. |
 | **çizelgesini** | Tetikleyicinin yinelenme zamanlaması. **frequency** değeri belirtilen bir tetikleyici, yinelenmesini bir yinelenme zamanlamasına göre değiştirir. **schedule** özelliği, yinelenme için dakika, saat, haftanın günü, ayın günü ve hafta numarası tabanlı değişiklikleri içerir.
 
+> [!IMPORTANT]
+> UTC saat dilimi için startTime ve bitişsaati ' yyyy-MM-ddTHH: mm: SS **Z** ' biçimini izlemelidir, diğer Timezones için StartTime ve bitişsaati ' yyyy-mm-ddTHH: mm: ss ' izler. 
+> 
+> ISO 8601 standardı başına, zaman damgasına olan _Z_ son eki, tarih saat değerini UTC saat dilimine işaret edin ve saat dilimi alanını gereksiz şekilde işler UTC saat dilimi için _Z_ soneki eksik olsa da, _etkinleştirme_ tetiklenmesi sırasında hata oluşmasına neden olur.
 
 ### <a name="schema-defaults-limits-and-examples"></a>Şema varsayılanları, sınırlar ve örnekler
 
 | JSON özelliği | Tür | Gerekli | Varsayılan değer | Geçerli değerler | Örnek |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | Dize | Evet | Yok | ISO-8601 Tarih-Saatleri | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **yinelemeyi** | Nesne | Evet | Yok | Yinelenme nesnesi | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **startTime** | Dize | Yes | Yok | ISO-8601 Tarih-Saatleri | UTC saat dilimi için `"startTime" : "2013-01-09T09:30:00-08:00Z"` <br> diğer saat dilimi için `"2013-01-09T09:30:00-08:00"` |
+| **TI** | Dize | Yes | Yok | [Saat dilimi değerleri](#time-zone-option)  | `"UTC"` |
+| **yinelemeyi** | Nesne | Yes | Yok | Yinelenme nesnesi | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | Sayı | Hayır | 1 | 1-1.000 | `"interval":10` |
-| **endTime** | Dize | Evet | Yok | Gelecekteki bir zamanı temsil eden Tarih-Saat değeri. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **endTime** | Dize | Yes | Yok | Gelecekteki bir zamanı temsil eden Tarih-Saat değeri. | UTC saat dilimi için `"endTime" : "2013-02-09T09:30:00-08:00Z"` <br> diğer saat dilimi için `"endTime" : "2013-02-09T09:30:00-08:00"`|
 | **çizelgesini** | Nesne | Hayır | Yok | Zamanlama nesnesi | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+
+### <a name="time-zone-option"></a>Saat dilimi seçeneği
+
+Zamanlama Tetikleyicileri için desteklenen bazı saat dilimleri aşağıda verilmiştir:
+
+| Saat Dilimi | UTC kayması (yaz dışı kaydetme) | Saat dilimi değeri | Yaz 'ın kaydedilmesini gözlemleyin | Zaman damgası biçimi |
+| :--- | :--- | :--- | :--- | :--- |
+| Eşgüdümlü Evrensel Saat | 0 | `UTC` | Hayır | `'yyyy-MM-ddTHH:mm:ssZ'`|
+| Pasifik saati (PT) | -8 | `Pacific Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
+| Orta saat (CT) | -6 | `Central Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
+| Doğu saati (ET) | -5 | `Eastern Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
+| Greenwich saati (GMT) | 0 | `GMT Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
+| Orta Avrupa standart saati | +1 | `W. Europe Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
+| Hindistan Standart Saati (IST) | + 5:30 | `India Standard Time` | Hayır | `'yyyy-MM-ddTHH:mm:ss'` |
+| Çin standart saati | + 8 | `China Standard Time` | Hayır | `'yyyy-MM-ddTHH:mm:ss'` |
+
+Bu liste eksik. Saat dilimi seçeneklerinin tüm listesi için Data Factory Portal [tetikleyicisi oluşturma sayfasında](#data-factory-ui) araştırma yapın
 
 ### <a name="starttime-property"></a>startTime özelliği
 Aşağıdaki tabloda **startTime** özelliğinin bir tetikleyici çalıştırmasını nasıl denetlediği gösterilmektedir:
@@ -351,9 +402,9 @@ Aşağıdaki tabloda **startTime** özelliğinin bir tetikleyici çalıştırmas
 
 Başlangıç zamanı geçmişte olduğunda ve bir yinelenme olmasına rağmen zamanlama olmadığında neler olacağını gösteren bir örneğe bakalım. Geçerli zamanın `2017-04-08 13:00`, başlangıç zamanının `2017-04-07 14:00` ve yinelenmenin iki günde bir olduğunu varsayalım. ( **Yinelenme** değeri, **Sıklık** özelliği "Day" ve **Interval** özelliği 2 olarak ayarlanarak tanımlanır.) **StartTime** değerinin geçmişte olduğuna ve geçerli zamandan önce gerçekleşdiğine dikkat edin.
 
-Bu şartlar altında ilk çalıştırma zamanı `2017-04-09 at 14:00` olacaktır. Zamanlayıcı altyapısı çalıştırma yinelenmelerini başlangıç zamanından itibaren hesaplar. Geçmişteki örnekler dikkate alınmaz. Altyapı gelecekte gerçekleşen bir sonraki örneği kullanır. Bu senaryoda startTime `2017-04-07 at 2:00pm` ve sonraki örnek bu zamandan iki gün sonrası olan `2017-04-09 at 2:00pm` olur.
+Bu koşullar altında ilk yürütme at ' dır `2017-04-09` `14:00` . Zamanlayıcı altyapısı çalıştırma yinelenmelerini başlangıç zamanından itibaren hesaplar. Geçmişteki örnekler dikkate alınmaz. Altyapı gelecekte gerçekleşen bir sonraki örneği kullanır. Bu senaryoda başlangıç saati ' dir, bu `2017-04-07` `2:00pm` nedenle sonraki örnek bu saatten iki gündür ve ' de olur `2017-04-09` `2:00pm` .
 
-İlk yürütme zamanı **startTime** değeri `2017-04-05 14:00` veya `2017-04-01 14:00` olsa bile değişmez. İlk yürütme sonrasındaki yürütmeler zamanlama kullanılarak hesaplanır. Bu nedenle, sonraki yürütmeler sırasıyla `2017-04-11 at 2:00pm`, `2017-04-13 at 2:00pm`, `2017-04-15 at 2:00pm` itibarıyla gerçekleşir ve bu düzende devam eder.
+İlk yürütme zamanı **startTime** değeri `2017-04-05 14:00` veya `2017-04-01 14:00` olsa bile değişmez. İlk yürütme sonrasındaki yürütmeler zamanlama kullanılarak hesaplanır. Bu nedenle, sonraki yürütmeler `2017-04-11` konumunda, sonra, vb. ' de yer alır `2:00pm` `2017-04-13` `2:00pm` `2017-04-15` `2:00pm` .
 
 Son olarak, bir tetikleyicinin zamanlamasında saatler veya dakikalar ayarlanmazsa varsayılan olarak ilk yürütmenin saat veya dakikaları kullanılır.
 
@@ -397,7 +448,7 @@ Bu bölümde yinelenme zamanlaması örnekleri sağlanmış ve **schedule** nesn
 | `{"minutes":[0,15,30,45], "weekDays":["monday", "tuesday", "wednesday", "thursday", "friday"]}` | Haftanın her günü 15 dakikada bir çalıştır. |
 | `{"minutes":[0,15,30,45], "hours": [9, 10, 11, 12, 13, 14, 15, 16] "weekDays":["monday", "tuesday", "wednesday", "thursday", "friday"]}` | Haftanın her günü 09.00 ile 16.45 arasında 15 dakikada bir çalıştır. |
 | `{"weekDays":["tuesday", "thursday"]}` | Salı ve Perşembe günleri belirtilen başlangıç saatinde çalıştır. |
-| `{"minutes":[0], "hours":[6], "monthDays":[28]}` | Her ayın 28. gününde saat 06.00'da çalıştır (**frequency** değerinin “month” olduğu kabul edilir). |
+| `{"minutes":[0], "hours":[6], "monthDays":[28]}` | Her ayın 28. gününde saat 06.00'da çalıştır ( **frequency** değerinin “month” olduğu kabul edilir). |
 | `{"minutes":[0], "hours":[6], "monthDays":[-1]}` | Ayın son günü saat 06.00'da çalıştır. Bir tetikleyiciyi ayın son gününde çalıştırmak için 28, 29, 30 veya 31 yerine -1 değerini kullanın. |
 | `{"minutes":[0], "hours":[6], "monthDays":[1,-1]}` | Her ayın ilk ve son günü saat 06.00'da çalıştır. |
 | `{monthDays":[1,14]}` | Her ayın birinci ve 14. gününde belirtilen başlangıç zamanında çalıştır. |

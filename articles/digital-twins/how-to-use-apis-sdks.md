@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 54b6415b3d9ef9f9d5a5c9f5745c0d1ff81dc6e3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7bb336c6c1f483160b760b266e01249b7e1ee04e
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93071479"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145557"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins API’lerini ve SDK’larını kullanma
 
@@ -59,7 +59,7 @@ Veri düzlemi API 'Lerini kullanmak için:
    - örnek bir klasör içeren SDK kaynağını GitHub 'da bulabilirsiniz: [.net Için Azure IoT dijital TWINS istemci kitaplığı](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
    - Bu makalenin [.net (C#) SDK (veri düzlemi)](#net-c-sdk-data-plane) bölümüne devam ederek ayrıntılı bilgi ve kullanım örnekleri görebilirsiniz.
 * **Java** SDK 'sını kullanabilirsiniz. Java SDK 'sını kullanmak için...
-   - paketi Maven 'ten görüntüleyebilir ve yükleyebilirsiniz: [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar)
+   - paketi Maven 'ten görüntüleyebilir ve yükleyebilirsiniz: [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0/jar)
    - [SDK başvuru belgelerini](/java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-preview) görüntüleyebilirsiniz
    - SDK kaynağını GitHub 'da bulabilirsiniz: [Java Için Azure IoT dijital TWINS istemci kitaplığı](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
 * **JavaScript** SDK 'sını kullanabilirsiniz. JavaScript SDK 'sını kullanmak için...
@@ -120,8 +120,8 @@ try {
     Console.WriteLine($"Load model: {rex.Status}:{rex.Message}");
 }
 // Read a list of models back from the service
-AsyncPageable<ModelData> modelDataList = client.GetModelsAsync();
-await foreach (ModelData md in modelDataList)
+AsyncPageable<DigitalTwinsModelData> modelDataList = client.GetModelsAsync();
+await foreach (DigitalTwinsModelData md in modelDataList)
 {
     Console.WriteLine($"Type name: {md.DisplayName}: {md.Id}");
 }
@@ -131,13 +131,13 @@ TWINS oluşturma ve sorgulama:
 
 ```csharp
 // Initialize twin metadata
-BasicDigitalTwin twinData = new BasicDigitalTwin();
+BasicDigitalTwin updateTwinData = new BasicDigitalTwin();
 
 twinData.Id = $"firstTwin";
 twinData.Metadata.ModelId = "dtmi:com:contoso:SampleModel;1";
-twinData.CustomProperties.Add("data", "Hello World!");
+twinData.Contents.Add("data", "Hello World!");
 try {
-    await client.CreateDigitalTwinAsync("firstTwin", JsonSerializer.Serialize(twinData));
+    await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>("firstTwin", updateTwinData);
 } catch(RequestFailedException rex) {
     Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  
 }
@@ -174,20 +174,18 @@ Kullanılabilir yardımcı sınıfları şunlardır:
 Ya da gibi tercih ettiğiniz JSON kitaplığını kullanarak ikizi verilerinin serisini her zaman kaldırabilirsiniz `System.Test.Json` `Newtonsoft.Json` . Bir ikizi temel erişimi için yardımcı sınıflar bunu biraz daha uygun hale getirir.
 
 ```csharp
-Response<string> res = client.GetDigitalTwin(twin_id);
-BasicDigitalTwin twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+Response<BasicDigitalTwin> twin = client.GetDigitalTwin(twin_id);
 Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
 ```
 
 `BasicDigitalTwin`Yardımcı sınıfı ayrıca, ile ikizi üzerinde tanımlanan özelliklere erişmenizi sağlar `Dictionary<string, object>` . İkizi özelliklerini listelemek için şunu kullanabilirsiniz:
 
 ```csharp
-Response<string> res = client.GetDigitalTwin(twin_id);
-BasicDigitalTwin twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+Response<BasicDigitalTwin> twin = client.GetDigitalTwin(twin_id);
 Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
-foreach (string prop in twin.CustomProperties.Keys)
+foreach (string prop in twin.Contents.Keys)
 {
-    if (twin.CustomProperties.TryGetValue(prop, out object value))
+    if (twin.Contents.TryGetValue(prop, out object value))
         Console.WriteLine($"Property '{prop}': {value}");
 }
 ```
@@ -203,9 +201,9 @@ twin.Metadata.ModelId = "dtmi:example:Room;1";
 // Initialize properties
 Dictionary<string, object> props = new Dictionary<string, object>();
 props.Add("Temperature", 25.0);
-twin.CustomProperties = props;
+twin.Contents = props;
 
-client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>("myNewRoomID", twin);
 ```
 
 Yukarıdaki kod, aşağıdaki "el ile" varyanta eşdeğerdir:
@@ -220,28 +218,26 @@ Dictionary<string, object> twin = new Dictionary<string, object>()
     { "$metadata", meta },
     { "Temperature", 25.0 }
 };
-client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<Dictionary<string, object>>(twin));
+client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>("myNewRoomID", twin);
 ```
 
 ##### <a name="deserialize-a-relationship"></a>İlişki serisini kaldırma
 
-Her zaman, veya gibi tercih ettiğiniz JSON kitaplığını kullanarak ilişki verilerinin serisini kaldırabilirsiniz `System.Test.Json` `Newtonsoft.Json` . Bir ilişkiye temel erişim için yardımcı sınıflar bunu biraz daha uygun hale getirir.
+İlişki verilerinin her zaman seçtiğiniz bir türle serisini kaldırabilirsiniz. Bir ilişkiye temel erişim için türü kullanın `BasicRelationship` .
 
 ```csharp
-Response<string> res = client.GetRelationship(twin_id, rel_id);
-BasicRelationship rel = JsonSerializer.Deserialize<BasicRelationship>(res.Value);
+BasicRelationship res = client.GetRelationship<BasicRelationship>(twin_id, rel_id);
 Console.WriteLine($"Relationship Name: {rel.Name}");
 ```
 
-`BasicRelationship`Yardımcı sınıfı ayrıca, bir ile ilişkisi üzerinde tanımlanan özelliklere erişmenizi sağlar `Dictionary<string, object>` . Özellikleri listelemek için şunları kullanabilirsiniz:
+`BasicRelationship`Yardımcı sınıfı ayrıca, bir ile ilişki üzerinde tanımlanan özelliklere erişmenizi sağlar `IDictionary<string, object>` . Özellikleri listelemek için şunları kullanabilirsiniz:
 
 ```csharp
-Response<string> res = client.GetRelationship(twin_id, rel_id);
-BasicRelationship rel = JsonSerializer.Deserialize<BasicRelationship>(res.Value);
+BasicRelationship res = client.GetRelationship<BasicRelationship>(twin_id, rel_id);
 Console.WriteLine($"Relationship Name: {rel.Name}");
-foreach (string prop in rel.CustomProperties.Keys)
+foreach (string prop in rel.Contents.Keys)
 {
-    if (twin.CustomProperties.TryGetValue(prop, out object value))
+    if (twin.Contents.TryGetValue(prop, out object value))
         Console.WriteLine($"Property '{prop}': {value}");
 }
 ```
@@ -257,21 +253,22 @@ rel.Name = "contains"; // a relationship with this name must be defined in the m
 // Initialize properties
 Dictionary<string, object> props = new Dictionary<string, object>();
 props.Add("active", true);
-rel.CustomProperties = props;
-client.CreateRelationship("mySourceTwin", "rel001", JsonSerializer.Serialize<BasicRelationship>(rel));
+rel.Properties = props;
+client.CreateOrReplaceRelationshipAsync("mySourceTwin", "rel001", rel);
 ```
 
 ##### <a name="create-a-patch-for-twin-update"></a>İkizi güncelleştirmesi için bir düzeltme eki oluşturma
 
-TWINS ve ilişkiler için yapılan çağrıları güncelleştirme, [JSON Patch](http://jsonpatch.com/) yapısını kullanır. JSON yama işlemleri listesi oluşturmak için, `UpdateOperationsUtility` sınıfını aşağıda gösterildiği gibi kullanabilirsiniz.
+TWINS ve ilişkiler için yapılan çağrıları güncelleştirme, [JSON Patch](http://jsonpatch.com/) yapısını kullanır. JSON yama işlemleri listesi oluşturmak için, `JsonPatchDocument` aşağıda gösterildiği gibi kullanabilirsiniz.
 
 ```csharp
-UpdateOperationsUtility uou = new UpdateOperationsUtility();
-uou.AppendAddOp("/Temperature", 25.0);
-uou.AppendAddOp("/myComponent/Property", "Hello");
+var updateTwinData = new JsonPatchDocument();
+updateTwinData.AppendAddOp("/Temperature", 25.0);
+updateTwinData.AppendAddOp("/myComponent/Property", "Hello");
 // Un-set a property
-uou.AppendRemoveOp("/Humidity");
-client.UpdateDigitalTwin("myTwin", uou.Serialize());
+updateTwinData.AppendRemoveOp("/Humidity");
+
+client.UpdateDigitalTwin("myTwin", updateTwinData);
 ```
 
 ## <a name="general-apisdk-usage-notes"></a>Genel API/SDK kullanım notları

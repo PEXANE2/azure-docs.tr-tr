@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 9c7b08b92fad07cddbdb2783f2d68cdb9be034a4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 91ba36a0bffab6c66020bab41ace65659ed084f7
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097082"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146322"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Azure dijital TWINS 'in içindeki ve dışındaki olayları yönlendirme
 
@@ -73,19 +73,19 @@ Denetim düzleminde kullanılabilen uç nokta API 'Leri şunlardır:
  
 Bir olay yolu oluşturmak için Azure dijital TWINS [**veri düzlemi API 'leri**](how-to-manage-routes-apis-cli.md#create-an-event-route), [**clı komutları**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)veya [**Azure Portal**](how-to-manage-routes-portal.md#create-an-event-route)kullanabilirsiniz. 
 
-`CreateEventRoute` [.Net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) çağrısını kullanarak bir istemci uygulaması içinde bir olay yolu oluşturma örneği aşağıda verilmiştir: 
+`CreateOrReplaceEventRouteAsync` [.Net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) çağrısını kullanarak bir istemci uygulaması içinde bir olay yolu oluşturma örneği aşağıda verilmiştir: 
 
 ```csharp
-EventRoute er = new EventRoute("endpointName");
-er.Filter("true"); //Filter allows all messages
-await client.CreateEventRoute("routeName", er);
+string eventFilter = "$eventType = 'DigitalTwinTelemetryMessages' or $eventType = 'DigitalTwinLifecycleNotification'";
+var er = new DigitalTwinsEventRoute("endpointName", eventFilter);
+await client.CreateOrReplaceEventRouteAsync("routeName", er);
 ```
 
-1. İlk olarak, bir `EventRoute` nesne oluşturulur ve Oluşturucu bir uç noktanın adını alır. Bu `endpointName` alan, bir olay hub 'ı, Event Grid veya Service Bus gibi bir uç noktayı tanımlar. Bu uç noktaların aboneliğinizde oluşturulması ve bu kayıt çağrısını yapmadan önce denetim düzlemi API 'Leri kullanılarak Azure Digital TWINS 'e eklenmesi gerekir.
+1. İlk olarak, bir `DigitalTwinsEventRoute` nesne oluşturulur ve Oluşturucu bir uç noktanın adını alır. Bu `endpointName` alan, bir olay hub 'ı, Event Grid veya Service Bus gibi bir uç noktayı tanımlar. Bu uç noktaların aboneliğinizde oluşturulması ve bu kayıt çağrısını yapmadan önce denetim düzlemi API 'Leri kullanılarak Azure Digital TWINS 'e eklenmesi gerekir.
 
 2. Olay Yönlendirme nesnesi Ayrıca, bu yolu izleyen olay türlerini kısıtlamak için kullanılabilecek bir [**filtre**](how-to-manage-routes-apis-cli.md#filter-events) alanına sahiptir. Bir filtresi `true` , ek filtre olmadan rotayı etkinleştirilir (bir filtre `false` yolu devre dışı bırakır). 
 
-3. Bu olay yolu nesnesi daha sonra `CreateEventRoute` yol için bir adla birlikte öğesine geçirilir.
+3. Bu olay yolu nesnesi daha sonra `CreateOrReplaceEventRouteAsync` yol için bir adla birlikte öğesine geçirilir.
 
 > [!TIP]
 > Tüm SDK işlevleri, zaman uyumlu ve zaman uyumsuz sürümlerde gelir.

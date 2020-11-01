@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: 3727e9a83827261bf9e8a526ffedb6d3fc644afa
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b02c16c63d83fc33be5512d26eafb0ca0d6c9b98
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745979"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145897"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Öğretici: Şablon kullanarak Service Fabric Mesh’e uygulama dağıtma
 
@@ -34,7 +34,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -103,6 +103,11 @@ Kayıt defteri oluşturulduğunda aşağıdakilere benzer bir çıkış görürs
 Bu öğreticide örnek olarak Yapılacaklar Listesi örnek uygulaması kullanılmıştır.  [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) ve [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) hizmetlerine ait kapsayıcı görüntüleri Docker Hub'da mevcuttur. Visual Studio 'da uygulama oluşturma hakkında bilgi için bkz. [Service Fabric kafes Web uygulaması oluşturma](service-fabric-mesh-tutorial-create-dotnetcore.md) . Service Fabric Mesh, Windows veya Linux Docker kapsayıcılarıyla çalışabilir.  Linux kapsayıcılarıyla çalışıyorsanız Docker'da **Switch to Linux containers** (Linux kapsayıcılarına geç) öğesini seçin.  Windows kapsayıcılarıyla çalışıyorsanız Docker'da **Switch to Windows containers** (Windows kapsayıcılarına geç) öğesini seçin.
 
 ACR örneğine görüntü gönderebilmeniz için önce bir kapsayıcı görüntünüz olmalıdır. Yerel kapsayıcı görüntünüz yoksa [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) komutunu kullanarak [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) ve [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) görüntülerini Docker Hub'dan çekin.
+
+>[!NOTE]
+> 2 Kasım 2020 ' den itibaren geçerli olan Docker Hub 'a yönelik anonim ve kimliği doğrulanmış istekler, Docker Ücretsiz plan hesaplarından [uygulanır](https://docs.docker.com/docker-hub/download-rate-limit/) ve IP adresi tarafından zorlanır. 
+> 
+> Bu komutlar Docker Hub 'ından ortak görüntüleri kullanır. Oran sınırlı olabileceğini lütfen unutmayın. Daha ayrıntılı bilgi için bkz. [Docker Hub Ile kimlik doğrulama](https://docs.microsoft.com/azure/container-registry/buffer-gate-public-content#authenticate-with-docker-hub).
 
 Şu Windows görüntülerini çekin:
 

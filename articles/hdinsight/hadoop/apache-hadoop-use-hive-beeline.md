@@ -6,18 +6,20 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.date: 08/21/2020
-ms.custom: contperfq1
-ms.openlocfilehash: f6d8f804fa26383435d191af27289ffd2ecb3e0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/28/2020
+ms.custom: contperfq1, contperfq2
+ms.openlocfilehash: 756c87299db85e426b4793d51bea833aa694a830
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88755101"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145965"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Apache Beeline istemcisini Apache Hive ile kullanma
 
-HDInsight 'ta Apache Hive sorguları çalıştırmak için [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) nasıl kullanacağınızı öğrenin.
+Bu makalede, bir SSH bağlantısı üzerinden Apache Hive sorguları oluşturmak ve yürütmek için komut satırı [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) istemcisinin nasıl kullanılacağı açıklanır.
+
+## <a name="background"></a>Arka Plan
 
 Beeline, HDInsight kümenizin baş düğümlerine eklenen bir Hive istemcanıdır. HDInsight kümenize yüklenmiş Beeline istemcisine bağlanmak veya Beeline yerel olarak yüklemek için bkz. [Apache Beeline bağlanma veya yükleme](connect-install-beeline.md). Beeline, HDInsight kümenizde barındırılan bir hizmet olan HiveServer2 'e bağlanmak için JDBC kullanır. Ayrıca, HDInsight 'ta Internet üzerinden uzaktan erişim sağlamak için Beeline da kullanabilirsiniz. Aşağıdaki örneklerde, Beeline 'dan HDInsight 'a bağlanmak için kullanılan en yaygın bağlantı dizeleri sağlanmaktadır.
 
@@ -27,9 +29,7 @@ Beeline, HDInsight kümenizin baş düğümlerine eklenen bir Hive istemcanıdı
 
 * Kümenizin birincil depolama alanı için URI düzenine dikkat edin. Örneğin,  `wasb://` Azure depolama için, `abfs://` Azure Data Lake Storage 2. veya `adl://` Azure Data Lake Storage 1. için. Azure depolama için güvenli aktarım etkinse URI olur `wasbs://` . Daha fazla bilgi için bkz. [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md).
 
-* Seçenek 1: bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md). Bu belgedeki adımların çoğu, kümeye bir SSH oturumundan Beeline kullandığınızı varsayar.
-
-* Seçenek 2: yerel bir Beeline istemcisi.
+* Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md). Bu belgedeki adımların çoğu, kümeye bir SSH oturumundan Beeline kullandığınızı varsayar. Yerel bir Beeline istemcisini de kullanabilirsiniz, ancak bu adımlar bu makalede ele alınmıştır.
 
 ## <a name="run-a-hive-query"></a>Hive sorgusu çalıştırma
 
@@ -56,7 +56,7 @@ Bu örnek, bir SSH bağlantısından Beeline istemcisinin kullanılmasına dayal
     show tables;
     ```
 
-    Yeni bir kümede yalnızca bir tablo listelenir: **hivesampletable**.
+    Yeni bir kümede yalnızca bir tablo listelenir: **hivesampletable** .
 
 4. Hivesampletable için şemayı göstermek üzere aşağıdaki komutu kullanın:
 
@@ -109,7 +109,7 @@ Bu örnek, bir SSH bağlantısından Beeline istemcisinin kullanılmasına dayal
 
     |Deyim |Açıklama |
     |---|---|
-    |TABLOYU BıRAK|Tablo varsa, silinir.|
+    |DROP TABLE|Tablo varsa, silinir.|
     |DıŞ TABLO OLUŞTUR|Hive içinde bir **dış** tablo oluşturur. Dış tablolar yalnızca tablo tanımını Hive içinde depolar. Veriler özgün konumda bırakılır.|
     |SATıR BIÇIMI|Verilerin biçimlendirilmesi. Bu durumda, her günlükteki alanlar boşlukla ayrılır.|
     |TEXTFILE KONUMU OLARAK DEPOLANDı|Verilerin depolandığı yer ve dosya biçimi.|
@@ -157,13 +157,13 @@ Bu örnek, bir SSH bağlantısından Beeline istemcisinin kullanılmasına dayal
 
 Bu örnek, önceki örnekteki devamlılık örneğidir. Bir dosya oluşturmak için aşağıdaki adımları kullanın, ardından Beeline kullanarak çalıştırın.
 
-1. **Query. HQL**adlı bir dosya oluşturmak için aşağıdaki komutu kullanın:
+1. **Query. HQL** adlı bir dosya oluşturmak için aşağıdaki komutu kullanın:
 
     ```bash
     nano query.hql
     ```
 
-1. Dosyanın içeriği olarak aşağıdaki metni kullanın. Bu sorgu **errorlogs**adlı yeni bir ' internal ' tablosu oluşturur:
+1. Dosyanın içeriği olarak aşağıdaki metni kullanın. Bu sorgu **errorlogs** adlı yeni bir ' internal ' tablosu oluşturur:
 
     ```hiveql
     CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
@@ -181,7 +181,7 @@ Bu örnek, önceki örnekteki devamlılık örneğidir. Bir dosya oluşturmak i�
     > [!NOTE]  
     > Dış tablolardan farklı olarak, iç tablo bırakılırken temel alınan veriler de silinir.
 
-1. Dosyayı kaydetmek için **CTRL** + **X**kullanın, **Y**girin ve son olarak **girin**.
+1. Dosyayı kaydetmek için **CTRL** + **X** kullanın, **Y** girin ve son olarak **girin** .
 
 1. Dosyayı Beeline kullanarak çalıştırmak için aşağıdakileri kullanın:
 
@@ -192,7 +192,7 @@ Bu örnek, önceki örnekteki devamlılık örneğidir. Bir dosya oluşturmak i�
     > [!NOTE]  
     > `-i`Parametresi, Beeline başlar ve dosyadaki deyimleri çalıştırır `query.hql` . Sorgu tamamlandıktan sonra, `jdbc:hive2://headnodehost:10001/>` istemde bir uyarı alırsınız. Ayrıca `-f` , sorgu tamamlandıktan sonra Beeline çıkış eden parametresini kullanarak bir dosya çalıştırabilirsiniz.
 
-1. **Errorlogs** tablosunun oluşturulduğunu doğrulamak Için, **hata günlüklerinden**tüm satırları döndürmek için aşağıdaki ifadeyi kullanın:
+1. **Errorlogs** tablosunun oluşturulduğunu doğrulamak Için, **hata günlüklerinden** tüm satırları döndürmek için aşağıdaki ifadeyi kullanın:
 
     ```hiveql
     SELECT * from errorLogs;

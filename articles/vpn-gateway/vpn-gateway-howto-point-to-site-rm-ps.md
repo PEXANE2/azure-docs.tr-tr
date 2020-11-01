@@ -1,6 +1,6 @@
 ---
 title: "Bilgisayar-P2S VPN ve yerel Azure sertifika kimlik doğrulamasından VNet 'e bağlanma: PowerShell"
-description: P2S ve otomatik olarak imzalanan veya CA tarafından verilen sertifikaları kullanarak Windows ve Mac OS X istemcilerini bir Azure sanal ağa güvenli bir şekilde bağlayın. Bu makalede PowerShell kullanılmıştır.
+description: P2S ve otomatik olarak imzalanan veya CA tarafından verilen sertifikaları kullanarak Windows ve macOS istemcilerini Azure Virtual Network 'e güvenli bir şekilde bağlayın. Bu makalede PowerShell kullanılmıştır.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -8,29 +8,22 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5d2902222dea3e84ebed04d80d7349167f83cae1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b6df7aa919721576aad10d6a476be976ef81df7d
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93076050"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145880"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Yerel Azure sertifikası kimlik doğrulaması kullanarak bir VNet 'e Noktadan siteye VPN bağlantısı yapılandırma: PowerShell
 
-Bu makale Windows, Linux veya Mac OS X çalıştıran ayrı istemcileri bir Azure VNet 'e güvenli bir şekilde bağlamanıza yardımcı olur. Uçtan Siteye VPN bağlantıları, evden veya bir konferanstan bir konferans yaparken sanal ağınıza uzak bir konumdan bağlanmak istediğinizde faydalıdır. Bir sanal ağa bağlanması gereken yalnızca birkaç istemciniz olduğunda Siteden Siteye VPN yerine P2S’yi de kullanabilirsiniz. Noktadan siteye bağlantılar için bir VPN cihazına veya genel kullanıma yönelik bir IP adresine gerek yoktur. P2S, VPN bağlantısını SSTP (Güvenli Yuva Tünel Protokolü) veya IKEv2 üzerinden oluşturur.
+Bu makale Windows, Linux veya macOS çalıştıran ayrı istemcileri bir Azure VNet 'e güvenli bir şekilde bağlamanıza yardımcı olur. Uçtan Siteye VPN bağlantıları, evden veya bir konferanstan bir konferans yaparken sanal ağınıza uzak bir konumdan bağlanmak istediğinizde faydalıdır. Bir sanal ağa bağlanması gereken yalnızca birkaç istemciniz olduğunda Siteden Siteye VPN yerine P2S’yi de kullanabilirsiniz. Noktadan siteye bağlantılar için bir VPN cihazına veya genel kullanıma yönelik bir IP adresine gerek yoktur. P2S, VPN bağlantısını SSTP (Güvenli Yuva Tünel Protokolü) veya IKEv2 üzerinden oluşturur.
 
 :::image type="content" source="./media/vpn-gateway-how-to-point-to-site-rm-ps/point-to-site-diagram.png" alt-text="Bir bilgisayardan Azure VNet 'e bağlanma-Noktadan siteye bağlantı diyagramı":::
 
 Noktadan siteye VPN hakkında daha fazla bilgi için bkz. [noktadan sıteye VPN hakkında](point-to-site-about.md). Azure portal kullanarak bu yapılandırmayı oluşturmak için, bkz. [Azure Portal kullanarak noktadan sıteye VPN yapılandırma](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
 
-## <a name="architecture"></a>Mimari
-
-Noktadan siteye yerel Azure sertifika kimlik doğrulaması bağlantıları, Bu alıştırmada yapılandırdığınız aşağıdaki öğeleri kullanır:
-
-* RouteBased VPN ağ geçidi.
-* Azure’a yüklenmiş bir kök sertifikanın ortak anahtarı (.cer dosyası). Sertifika karşıya yüklendikten sonra güvenilen bir sertifika olarak kabul edilir ve kimlik doğrulaması için kullanılır.
-* Kök sertifikasından oluşturulan bir istemci sertifikası. Sanal ağa bağlanacak her istemci bilgisayarda yüklü olan istemci sertifikası. Bu sertifika, istemci kimlik doğrulaması için kullanılır.
-* VPN istemcisi yapılandırması. VPN istemci yapılandırması dosyaları, istemcinin sanal ağa bağlanması için gerekli bilgileri içerir. Dosyalar, işletim sisteminde yerel olarak bulunan VPN istemcisini yapılandırır. Bağlanan her istemcinin yapılandırma dosyalarındaki ayarlar kullanılarak yapılandırılması gerekir.
+[!INCLUDE [P2S basic architecture](../../includes/vpn-gateway-p2s-architecture.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -42,7 +35,7 @@ Azure aboneliğiniz olduğunu doğrulayın. Henüz Azure aboneliğiniz yoksa [MS
 > Bu makaledeki adımların birçoğu Azure Cloud Shell kullanabilir. Ancak, sertifika oluşturmak için Cloud Shell kullanamazsınız. Ayrıca, kök sertifika ortak anahtarını karşıya yüklemek için Azure PowerShell yerel olarak veya Azure portal kullanmanız gerekir.
 >
 
-[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
+[!INCLUDE [PowerShell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ## <a name="1-sign-in"></a><a name="signin"></a>1. oturum aç
 

@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.date: 02/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4
-ms.openlocfilehash: 2e3544bee5158a855467f8cb142f176df2187ef5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64f1c83a570e936759d674f40db201fb2f2cd0e5
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318305"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146271"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>Bir mantıksal uygulamadan Machine Learning işlem hattının çalıştırılmasını tetikleme
 
 Yeni veriler göründüğünde Azure Machine Learning işlem hattının çalıştırılmasını tetikleyin. Örneğin, BLOB depolama hesabında yeni veriler göründüğünde yeni bir modeli eğitemak üzere işlem hattını tetiklemek isteyebilirsiniz. Tetikleyiciyi [Azure Logic Apps](../logic-apps/logic-apps-overview.md)ayarlayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
@@ -49,7 +49,7 @@ Mantıksal uygulamanız sağlandıktan sonra, işlem hattınızda bir tetikleyic
     > [!div class="mx-imgBorder"]
     > ![Boş şablon](media/how-to-trigger-published-pipeline/blank-template.png)
 
-1. Tasarımcıda **BLOB**' u arayın. **Bir blob eklendiğinde veya değiştirildiğinde (yalnızca Özellikler)** tetikleyicisi ' ni seçin ve bu tetikleyiciyi mantıksal uygulamanıza ekleyin.
+1. Tasarımcıda **BLOB** ' u arayın. **Bir blob eklendiğinde veya değiştirildiğinde (yalnızca Özellikler)** tetikleyicisi ' ni seçin ve bu tetikleyiciyi mantıksal uygulamanıza ekleyin.
     > [!div class="mx-imgBorder"]
     > ![Tetikleyici ekleme](media/how-to-trigger-published-pipeline/add-trigger.png)
 
@@ -60,7 +60,7 @@ Mantıksal uygulamanız sağlandıktan sonra, işlem hattınızda bir tetikleyic
     > [!NOTE]
     > Bu tetikleyici seçili kapsayıcıyı izler, ancak alt klasörleri izlemez.
 
-1. Yeni veya değiştirilmiş bir blob algılandığında çalışacak bir HTTP eylemi ekleyin. **+ Yeni adım**' ı seçin ve ardından http eylemini arayın ve seçin.
+1. Yeni veya değiştirilmiş bir blob algılandığında çalışacak bir HTTP eylemi ekleyin. **+ Yeni adım** ' ı seçin ve ardından http eylemini arayın ve seçin.
 
   > [!div class="mx-imgBorder"]
   > ![HTTP eylemi ara](media/how-to-trigger-published-pipeline/search-http.png)
@@ -94,6 +94,9 @@ Mantıksal uygulamanız sağlandıktan sonra, işlem hattınızda bir tetikleyic
     > ![HTTP ayarları](media/how-to-trigger-published-pipeline/http-settings.png)
 
 1. **Kaydet** ' i seçin ve zamanlamanız artık hazırdır.
+
+> [!IMPORTANT]
+> İşlem hattınızı erişimi yönetmek için rol tabanlı erişim denetimi (RBAC) kullanıyorsanız, işlem [hattı senaryonuz için izinleri ayarlayın (eğitim veya Puanlama)](how-to-assign-roles.md#q-what-are-the-permissions-needed-to-perform-some-common-scenarios-in-the-azure-machine-learning-service)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

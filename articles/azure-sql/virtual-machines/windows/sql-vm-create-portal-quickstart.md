@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d7d82db7fc8a39a0865e80ee7873ee849627c583
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 454dc593dca216d3805036ce78ec9986cf317d4e
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791078"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145863"
 ---
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir Windows sanal makinesinde 2017 SQL Server oluşturun
 
@@ -47,7 +47,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 1. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. **SQL sanal makineler** kutucuğunda **Ayrıntıları göster** ' i seçerek ek bilgileri görüntüleyebilirsiniz.
 1. Açılan menüden **ücretsiz SQL Server Lisansı: Windows Server 2016 üzerinde SQL Server 2017 Developer '** ı seçin.
 
-   ![Yeni arama penceresi](./media/sql-vm-create-portal-quickstart/select-sql-2017-vm-image.png)
+   ![Ücretsiz SQL Server lisansını seçtiğiniz yeri gösteren ekran görüntüsü: SQL Server 2017 Developer for Windows Server 2016 Image.](./media/sql-vm-create-portal-quickstart/select-sql-2017-vm-image.png)
 
 1. **Oluştur** ’u seçin.
 

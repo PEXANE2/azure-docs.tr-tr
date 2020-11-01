@@ -1,20 +1,20 @@
 ---
-title: PowerShell ile SYNAPSE Studio (Önizleme) ile bağlantı sorunlarını giderme
+title: SYNAPSE Studio bağlantısı sorunlarını giderme
 description: PowerShell kullanarak Azure SYNAPSE Studio bağlantısı sorunlarını giderme
-author: julieMSFT
+author: saveenr
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.author: jrasnick
+ms.date: 10/30/2020
+ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7cf9f18701317482284a3f1fa4b69a2c2927f64a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5e433fd857f638c1c13e4545c19e0b6314ee62e
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287721"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146515"
 ---
-# <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>PowerShell betiği ile Azure SYNAPSE Studio (Önizleme) bağlantı sorunlarını tanılama
+# <a name="troubleshoot-synapse-studio-connectivity-with-powershell"></a>PowerShell ile SYNAPSE Studio bağlantısı sorunlarını giderme
 
 Azure SYNAPSE Studio (Önizleme), bir Web API uç noktası kümesine düzgün şekilde çalışacak şekilde bağlıdır. Bu kılavuz, şu durumlarda bağlantı sorunlarının nedenlerini belirlemenize yardımcı olur:
 - Azure SYNAPSE Studio 'Ya erişmek için yerel ağınızı (bir kurumsal güvenlik duvarının arkasındaki ağ gibi) yapılandırma.

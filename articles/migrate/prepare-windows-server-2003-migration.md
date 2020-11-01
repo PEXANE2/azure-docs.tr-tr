@@ -3,16 +3,21 @@ title: Windows Server 2003 sunucularını Azure geçişi ile geçiş için hazı
 description: Windows Server 2003 sunucularının Azure geçişi ile geçiş için nasıl hazırlanacağını öğrenin.
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: 5e33742d59972d491c1efb8d0f1453c1226d4625
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 350eab98a2b40d5ca1382bbfc24245e7cb47b48e
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86103951"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146850"
 ---
 # <a name="prepare-windows-server-2003-machines-for-migration"></a>Windows Server 2003 makinelerini geçiş için hazırlama
 
 Bu makalede, Windows Server 2003 çalıştıran makinelerin Azure 'a geçiş için nasıl hazırlanacağı açıklanmaktadır. 
+
+
+> [!NOTE]
+> [Windows Server 2003 genişletilmiş desteği](/troubleshoot/azure/virtual-machines/run-win-server-2003#microsoft-windows-server-2003-end-of-support) 14 Temmuz 2015 tarihinde sona erdi.  Azure destek ekibi, Azure 'da Windows Server 2003 ' i çalıştırmaya yönelik sorunları gidermeye yardımcı olmaya devam etmektedir. Ancak, bu destek, işletim sistemi düzeyinde sorun giderme veya düzeltme eki gerektirmeyen sorunlarla sınırlıdır. Uygulamalarınızı Windows Server 'ın daha yeni bir sürümünü çalıştıran Azure örneklerine geçirmek, Azure bulutunun esnekliğini ve güvenilirliğini etkili bir şekilde kullandığınızdan emin olmak için önerilen yaklaşımdır. Ancak, Windows Server 2003 ' ı Azure 'a geçirmeyi hala seçerseniz, Windows sunucunuz VMware veya Hyper-V üzerinde çalışan bir sanal makine ise Azure geçişi: sunucu geçiş aracı ' nı kullanabilirsiniz.
+
 
 - [Hyper-V VM](tutorial-migrate-hyper-v.md) 'Lerini ve [VMware VM](tutorial-migrate-vmware.md) 'lerini Azure 'a geçirmek için aracısız geçiş kullanabilirsiniz.
 - Geçişten sonra Azure VM 'lerine bağlanmak için, Azure VM 'de Hyper-V tümleştirme hizmetlerinin yüklü olması gerekir. Windows Server 2003 makineler bu varsayılan olarak yüklü değildir.
@@ -27,18 +32,18 @@ Geçişten önce, Hyper-V tümleştirme hizmetlerinin yüklü olup olmadığın�
 
 1. Yüklü olup olmadığını denetlemek için [Bu yönergeleri](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#turn-an-integration-service-on-or-off-using-hyper-v-manager) izleyin.
 2. Yüklü değilse, Hyper-V rolüyle Windows Server 2012 R2/Windows Server 2012 çalıştıran bir makinede oturum açın.
-3. **C:\windows\system32\vmguest.exe**konumundaki yükleme dosyasına gidin ve dosyayı bağlayın.
+3. **C:\windows\system32\vmguest.exe** konumundaki yükleme dosyasına gidin ve dosyayı bağlayın.
 2. Yükleme klasörünü Windows Server 2003 makinesine kopyalayın ve Tümleştirme Hizmetleri 'ni yükleme.
 4. Yükleme sonrasında, Tümleştirme Hizmetleri ' nde varsayılan ayarları bırakabilirsiniz. 
 
 ## <a name="install-on-vmware-vms"></a>VMware VM 'lerine yüklemesi
 
 1. Hyper-V rolüyle Windows Server 2012 R2/Windows Server 2012 çalıştıran bir makinede oturum açın.
-2. **C:\windows\system32\vmguest.exe**konumundaki yükleme dosyasına gidin ve dosyayı bağlayın.
+2. **C:\windows\system32\vmguest.exe** konumundaki yükleme dosyasına gidin ve dosyayı bağlayın.
 3. Yükleme klasörünü VMware VM 'ye kopyalayın.
 4. VM 'deki komut satırından komutunu çalıştırın ```gpedit.msc``` .
 5. **Bilgisayar yapılandırması**  >  **Windows ayarları**  >  **betikleri (başlatma/kapatır)** öğesini açın.
-6. **Başlangıç**  >  **Add**  >  **betik adı**Ekle ' de setup.exe adresini yazın.
+6. **Başlangıç**  >  **Add**  >  **betik adı** Ekle ' de setup.exe adresini yazın.
 7. Azure 'a geçişten sonra betik, Azure VM ilk kez başlatıldığında çalışır.
 8. Azure VM 'yi el ile yeniden başlatın. Önyükleme tanılamasında bir yeniden başlatmanın gerekli olduğunu belirten bir açılır pencere vardır.
 9. Betiği çalıştıktan ve Azure VM 'de Hyper-V Tümleştirme Hizmetleri yüklendikten sonra, betiği başlangıçtan kaldırabilirsiniz.

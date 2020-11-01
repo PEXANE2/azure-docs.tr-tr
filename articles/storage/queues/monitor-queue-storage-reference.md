@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 6164617c66401811715007548de59ebbf5ff253b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ec82ec6613b6d2e68d01815d5669bfb169037e72
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787491"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146578"
 ---
 # <a name="azure-queue-storage-monitoring-data-reference"></a>Azure kuyruk depolama izleme verileri başvurusu
 
@@ -26,7 +26,7 @@ Aşağıdaki tablolarda, Azure depolama için toplanan platform ölçümleri lis
 
 ### <a name="capacity-metrics"></a>Kapasite ölçümleri
 
-Kapasite ölçümleri değerleri her saat Azure Izleyici 'ye gönderilir. Değerler günlük olarak yenilenir. Zaman dilimi, ölçüm değerlerinin sunulduğu zaman aralığını tanımlar. Tüm kapasite ölçümleri için desteklenen zaman dilimi bir saattir (PT1H).
+Kapasite ölçümleri değerleri günlük olarak (24 saate kadar) yenilenir. Zaman dilimi, ölçüm değerlerinin sunulduğu zaman aralığını tanımlar. Tüm kapasite ölçümleri için desteklenen zaman dilimi bir saattir (PT1H).
 
 Azure depolama, Azure Izleyici 'de aşağıdaki kapasite ölçümlerini sağlar.
 

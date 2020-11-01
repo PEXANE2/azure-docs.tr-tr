@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 4ddafd9fbeda1752a782085244597aea3ccbdd2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12ba0900f2499965f7843672183310dfecfbab2b
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271911"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146680"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>Günlük diskini Ultra diske geçir
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -44,15 +44,15 @@ Uyumluluğu etkinleştirmek için şu adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com/)sanal makinenize gidin. 
 1. Sanal makineyi durdurun/serbest bırakın. 
-1. **Ayarlar** altında **diskler** ' i seçin ve ardından **ek ayarlar**' ı seçin. 
+1. **Ayarlar** altında **diskler** ' i seçin ve ardından **ek ayarlar** ' ı seçin. 
 
    :::image type="content" source="media/storage-migrate-to-ultradisk/additional-disks-settings-azure-portal.png" alt-text="Azure portal ayarlar altında diskler için ek ayarları seçin":::
 
-1. **Ultra disk uyumluluğunu etkinleştirmek**için **Evet** ' i seçin. 
+1. **Ultra disk uyumluluğunu etkinleştirmek** için **Evet** ' i seçin. 
 
    :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="Azure portal ayarlar altında diskler için ek ayarları seçin":::
 
-1. **Kaydet**’i seçin. 
+1. **Kaydet** ’i seçin. 
 
 
 
@@ -83,7 +83,7 @@ Yeni günlük sürücüsünü kullanmak için SQL Server yapılandırın. Bunu T
 1. SQL Server tarafından kullanılan hizmet hesabını doğrulayın. SQL Server Yapılandırma Yöneticisi veya Services. msc kullanarak bunu yapabilirsiniz.
 1. Yeni diskinize gidin. 
 1. Günlük dosyanız için kullanılacak bir klasör (veya birden çok klasör) oluşturun. 
-1. Klasöre sağ tıklayın ve **Özellikler**' i seçin.
+1. Klasöre sağ tıklayın ve **Özellikler** ' i seçin.
 1. **Güvenlik** sekmesinde, SQL Server hizmet hesabına tam denetim erişimi verin. 
 1. Ayarlarınızı kaydetmek için **Tamam ' ı**  seçin. 
 1. SQL verilerinin olmasını planladığınız her kök düzeyi klasör için bunu tekrarlayın. 
@@ -143,14 +143,14 @@ Bu noktada, veritabanı yeni konumdaki günlük ile çevrimiçi olarak gelir.
 SSMS kullanarak var olan dosyaları yeni bir konuma taşıyın:
 
 1. SQL Server Management Studio (SSMS) ' de veritabanınıza bağlanın. 
-1. Veritabanına sağ tıklayın, **Özellikler** ' i seçin ve ardından **dosyalar**' ı seçin. 
+1. Veritabanına sağ tıklayın, **Özellikler** ' i seçin ve ardından **dosyalar** ' ı seçin. 
 1. Mevcut dosyaların yolunu aklınızda edin. 
 1. İletişim kutusunu kapatmak için **Tamam ' ı** seçin. 
-1. Veritabanına sağ tıklayın, **Görevler**  >  **Ayır**' ı seçin. 
+1. Veritabanına sağ tıklayın, **Görevler**  >  **Ayır** ' ı seçin. 
 1. Veritabanını ayırmak için Sihirbazı izleyin. 
 1. Günlük dosyasını el ile yeni konuma taşımak için dosya Gezgini 'ni kullanın.
 1. Veritabanını SQL Server Management Studio iliştirme
-   1. **Nesne Gezgini** **veritabanları** ' na sağ tıklayın ve **veritabanı Ekle**' yi seçin. 
+   1. **Nesne Gezgini** **veritabanları** ' na sağ tıklayın ve **veritabanı Ekle** ' yi seçin. 
    1. İletişim kutusunu kullanarak, günlük dosyası dahil olmak üzere her dosyayı yeni konumuna ekleyin. 
    1. Veritabanını iliştirmek için **Tamam ' ı** seçin. 
 

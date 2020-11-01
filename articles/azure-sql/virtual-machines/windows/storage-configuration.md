@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: ebeee228d8c936732465359dfa264d822cbecb1e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3a4b7d68d7cd21ccb4b7eb8b97e0d331fb236e96
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793084"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146731"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM’leri için depolama yapılandırması
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,7 +28,7 @@ Bu konu, Azure 'un sağlama ve mevcut VM 'Ler için SQL Server sanal makinelerin
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Otomatik depolama yapılandırma ayarlarını kullanmak için, sanal makineniz aşağıdaki özellikleri gerektirir:
 
@@ -44,7 +44,7 @@ Aşağıdaki bölümlerde, yeni SQL Server sanal makineler için depolamanın na
 
 SQL Server Galeri görüntüsü kullanarak bir Azure VM sağlarken, **SQL Server ayarları** sekmesinde **yapılandırmayı Değiştir** ' i seçerek performans için iyileştirilmiş depolama yapılandırması sayfasını açın. Değerleri varsayılan olarak bırakabilir ya da iş yükünüze göre gereksinimlerinize en uygun disk yapılandırma türünü değiştirebilirsiniz. 
 
-![Sağlama sırasında depolama yapılandırması SQL Server VM](./media/storage-configuration/sql-vm-storage-configuration-provisioning.png)
+![SQL Server ayarları sekmesini ve yapılandırma Değiştir seçeneğini vurgulayan ekran görüntüsü.](./media/storage-configuration/sql-vm-storage-configuration-provisioning.png)
 
 **Depolama iyileştirmesi** altında SQL Server dağıttığınız iş yükünün türünü seçin. **Genel** iyileştirme seçeneğiyle, varsayılan olarak en fazla 5000 IOPS içeren bir veri diskine sahip olursunuz ve bu sürücüyü verileriniz, işlem günlüğü ve tempdb depolaması için kullanacaksınız. **İşlemsel işleme** (OLTP) veya **veri depolama** alanı seçildiğinde veriler için ayrı bir disk, işlem günlüğü için ayrı bir disk oluşturulur ve tempdb için yerel SSD kullanılır. **İşlemsel işleme** ve **veri depolama** arasında bir depolama farkı yoktur, ancak [Stripe yapılandırmanızı ve izleme bayraklarını](#workload-optimization-settings)değiştirir. Premium Depolama ' yı seçtiğinizde, veri sürücüsü için önbelleğe alma özelliği *ReadOnly* olarak ayarlanır ve günlük sürücü için [SQL Server VM performans En Iyi uygulamalarına](performance-guidelines-best-practices.md)göre *yoktur* . 
 
@@ -103,7 +103,7 @@ Mevcut SQL Server VM 'Ler için Azure portal bazı depolama ayarlarını değiş
 
 Depolama ayarlarını değiştirmek için **Ayarlar** altında **Yapılandır** ' ı seçin. 
 
-![Mevcut SQL Server VM için depolamayı yapılandırma](./media/storage-configuration/sql-vm-storage-configuration-existing.png)
+![Yapılandırma seçeneğini ve depolama kullanımı bölümünü vurgulayan ekran görüntüsü.](./media/storage-configuration/sql-vm-storage-configuration-existing.png)
 
 SQL Server VM oluşturma işlemi sırasında yapılandırılmış sürücüler için disk ayarlarını değiştirebilirsiniz. **Sürücüyü Genişlet** ' i seçtiğinizde sürücü değiştirme sayfası açılır ve bu da disk türünü değiştirmenize ve ek diskler eklemenize olanak tanır. 
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 09/03/2020
+ms.date: 10/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 2d895a6703123d8725a375e29e2e26b64b621f23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9090c778771436a4fcf60139f3ee59812051057a
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89436859"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145625"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Nasıl yapılır: uygulamanıza isteğe bağlı talepler sağlama
 
@@ -42,7 +42,7 @@ Standart talepler listesi için bkz. [erişim belirteci](access-tokens.md) ve [i
 
 ## <a name="v10-and-v20-optional-claims-set"></a>v 1.0 ve v 2.0 isteğe bağlı talepler kümesi
 
-Varsayılan olarak, uygulamaların kullanması için kullanılabilen isteğe bağlı talepler kümesi aşağıda listelenmiştir. Uygulamanıza yönelik özel isteğe bağlı talepler eklemek için aşağıdaki [Dizin uzantıları](#configuring-directory-extension-optional-claims)bölümüne bakın. **Erişim belirtecine**talepler eklenirken, talepler uygulama *tarafından* istenen talepler değil, uygulama (bir Web API) *için* istenen erişim belirteçlerine uygulanır. İstemci, API 'nize nasıl eriştiğine bakılmaksızın, API 'niz üzerinde kimlik doğrulaması yapmak için kullanılan erişim belirtecinde doğru veriler vardır.
+Varsayılan olarak, uygulamaların kullanması için kullanılabilen isteğe bağlı talepler kümesi aşağıda listelenmiştir. Uygulamanıza yönelik özel isteğe bağlı talepler eklemek için aşağıdaki [Dizin uzantıları](#configuring-directory-extension-optional-claims)bölümüne bakın. **Erişim belirtecine** talepler eklenirken, talepler uygulama *tarafından* istenen talepler değil, uygulama (bir Web API) *için* istenen erişim belirteçlerine uygulanır. İstemci, API 'nize nasıl eriştiğine bakılmaksızın, API 'niz üzerinde kimlik doğrulaması yapmak için kullanılan erişim belirtecinde doğru veriler vardır.
 
 > [!NOTE]
 > Bu taleplerin çoğu, v 1.0 ve v 2.0 belirteçleri için JWTs 'ye dahil edilebilir, ancak belirteç türü sütununda belirtilenler dışında SAML belirteçleri olamaz. Tüketici hesapları, bu taleplerin bir alt kümesini destekler ve "Kullanıcı türü" sütununda işaretlenir.  Listelenen taleplerin birçoğu tüketici kullanıcılarına uygulanmaz (hiçbir kiracı yoktur, bu nedenle bir `tenant_ctry` değer yoktur).
@@ -67,7 +67,7 @@ Varsayılan olarak, uygulamaların kullanması için kullanılabilen isteğe ba�
 | `email`                    | Kullanıcının bir tane varsa, bu kullanıcı için adreslenebilir e-posta.  | JWT, SAML | MSA, Azure AD | Bu değer, Kullanıcı Kiracıdaki bir konuk ise varsayılan olarak dahil edilir.  Yönetilen kullanıcılar (kiracının içindeki kullanıcılar) için, bu isteğe bağlı talep veya yalnızca v 2.0 üzerinde, OpenID kapsamı ile istenmesi gerekir.  Yönetilen kullanıcılar için, e-posta adresinin [Office Yönetim Portalı](https://portal.office.com/adminportal/home#/users)'nda ayarlanması gerekir.|
 | `acct`                | Kiracıdaki Kullanıcı hesabı durumu | JWT, SAML | | Kullanıcı kiracının üyesiyse, değeri olur `0` . Bunlar bir konuğlarsa değer olur `1` . |
 | `groups`| Grup talepleri için isteğe bağlı biçimlendirme |JWT, SAML| |[Uygulama bildiriminde](reference-app-manifest.md), aynı zamanda ayarlanması gereken Groupmembershipclaim ayarıyla birlikte kullanılır. Ayrıntılar için aşağıdaki [Grup taleplerini](#configuring-groups-optional-claims) inceleyin. Grup talepleri hakkında daha fazla bilgi için bkz. [Grup taleplerini yapılandırma](../hybrid/how-to-connect-fed-group-claims.md)
-| `upn`                      | UserPrincipalName | JWT, SAML  |           | Bu talep otomatik olarak dahil edilse de, Konuk Kullanıcı kasasında davranışını değiştirmek üzere ek özellikler eklemek için isteğe bağlı bir talep olarak belirtebilirsiniz.  |
+| `upn`                      | UserPrincipalName | JWT, SAML  |           | Kullanıcı için username_hint parametresiyle kullanılabilecek bir tanımlayıcı.  Kullanıcı için dayanıklı bir tanımlayıcı değildir ve Kullanıcı bilgilerini (örneğin, bir veritabanı anahtarı olarak) benzersiz olarak kimlik için kullanılmamalıdır. Bunun yerine, Kullanıcı nesnesi KIMLIĞINI ( `oid` ) bir veritabanı anahtarı olarak kullanın. [Alternatif bir oturum açma kimliğiyle](/azure/active-directory/authentication/howto-authentication-use-email-signin) oturum açan kullanıcılar, Kullanıcı asıl adı (UPN) gösterilmemelidir. Bunun yerine, kullanıcının oturum açma durumunu görüntülemek için aşağıdaki KIMLIK belirteci taleplerini kullanın: `preferred_username` ya da `unique_name` v1 belirteçleri ve `preferred_username` v2 belirteçleri için. Bu talep otomatik olarak dahil edilse de, Konuk Kullanıcı kasasında davranışını değiştirmek üzere ek özellikler eklemek için isteğe bağlı bir talep olarak belirtebilirsiniz.  |
 | `idtyp`                    | Belirteç türü   | JWT erişim belirteçleri | Özel: yalnızca yalnızca uygulama erişim belirteçlerinde |  Değer, `app` belirtecin yalnızca uygulama belirteci olduğu değerdir. Bu, bir API 'nin bir uygulama belirteci veya bir uygulama + kullanıcı belirteci olup olmadığını belirlemesi için en doğru yoldur.|
 
 ## <a name="v20-specific-optional-claims-set"></a>v 2.0'a özgü isteğe bağlı talepler kümesi
@@ -85,7 +85,7 @@ Bu talepler her zaman v 1.0 Azure AD belirteçlerine dahil edilmiştir, ancak is
 | `in_corp`     | İç Şirket Ağı        | İstemci şirket ağından oturum açıyorsanız bildirir. Aksi takdirde talep dahil edilmez.   |  MFA 'daki [Güvenilen IP 'lerin](../authentication/howto-mfa-mfasettings.md#trusted-ips) ayarlarını temel alarak.    |
 | `family_name` | Soyadı                       | Kullanıcı nesnesinde tanımlandığı şekilde kullanıcının soyadı, soyadı veya aile adını sağlar. <br>"family_name": "Miller" | MSA ve Azure AD 'de desteklenir. Kapsam gerektirir `profile` .   |
 | `given_name`  | Ad                      | Kullanıcı nesnesinde ayarlandığı gibi, kullanıcının ilk veya "verilen" adını sağlar.<br>"given_name": "filiz"                   | MSA ve Azure AD 'de desteklenir.  Kapsam gerektirir `profile` . |
-| `upn`         | Kullanıcı Asıl Adı | Kullanıcı için username_hint parametresiyle kullanılabilecek bir tanımlayıcı.  Kullanıcı için dayanıklı bir tanımlayıcı değildir ve anahtar verileri için kullanılmamalıdır. | Talebin yapılandırması için aşağıdaki [ek özelliklere](#additional-properties-of-optional-claims) bakın. Kapsam gerektirir `profile` .|
+| `upn`         | Kullanıcı Asıl Adı | Kullanıcı için username_hint parametresiyle kullanılabilecek bir tanımlayıcı.  Kullanıcı için dayanıklı bir tanımlayıcı değildir ve Kullanıcı bilgilerini (örneğin, bir veritabanı anahtarı olarak) benzersiz olarak kimlik için kullanılmamalıdır. Bunun yerine, Kullanıcı nesnesi KIMLIĞINI ( `oid` ) bir veritabanı anahtarı olarak kullanın. [Alternatif bir oturum açma kimliğiyle](/azure/active-directory/authentication/howto-authentication-use-email-signin) oturum açan kullanıcılar, Kullanıcı asıl adı (UPN) gösterilmemelidir. Bunun yerine, kullanıcının oturum açma durumunu görüntülemek için aşağıdaki KIMLIK belirteci taleplerini kullanın: `preferred_username` ya da `unique_name` v1 belirteçleri ve `preferred_username` v2 belirteçleri için. | Talebin yapılandırması için aşağıdaki [ek özelliklere](#additional-properties-of-optional-claims) bakın. Kapsam gerektirir `profile` .|
 
 ### <a name="additional-properties-of-optional-claims"></a>İsteğe bağlı taleplerin ek özellikleri
 
@@ -124,25 +124,25 @@ Bu Optionalclaim nesnesi, istemciye döndürülen KIMLIK belirtecinin ek ana kir
 
 Kullanıcı arabirimi veya uygulama bildirimi aracılığıyla uygulamanız için isteğe bağlı talepler yapılandırabilirsiniz.
 
-1. [Azure portalına](https://portal.azure.com) gidin. **Azure Active Directory**'yi bulun ve seçin.
-1. **Yönet** bölümünden **uygulama kayıtları**' yi seçin.
+1. [Azure portalına](https://portal.azure.com) gidin. **Azure Active Directory** 'yi bulun ve seçin.
+1. **Yönet** bölümünden **uygulama kayıtları** ' yi seçin.
 1. Listede için isteğe bağlı talepler yapılandırmak istediğiniz uygulamayı seçin.
 
 **Kullanıcı arabirimi aracılığıyla isteğe bağlı talepler yapılandırma:**
 
 [![Kullanıcı arabiriminde isteğe bağlı talepler yapılandırma](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
 
-1. **Yönet** bölümünde **belirteç yapılandırması**' nı seçin.
-1. **İsteğe bağlı talep Ekle**' yi seçin.
+1. **Yönet** bölümünde **belirteç yapılandırması** ' nı seçin.
+1. **İsteğe bağlı talep Ekle** ' yi seçin.
 1. Yapılandırmak istediğiniz belirteç türünü seçin.
 1. Eklenecek isteğe bağlı talepler ' i seçin.
-1. **Ekle**’yi seçin.
+1. **Ekle** ’yi seçin.
 
 **Uygulama bildirimi aracılığıyla isteğe bağlı talepler Yapılandırılıyor:**
 
 [![Uygulama bildirimini kullanarak isteğe bağlı taleplerin nasıl yapılandırılacağını gösterir](./media/active-directory-optional-claims/app-manifest.png)](./media/active-directory-optional-claims/app-manifest.png)
 
-1. **Yönet** bölümünde, **bildirim**' ı seçin. Web tabanlı bir bildirim Düzenleyicisi açılarak, bildirimi düzenlemenize olanak tanır. İsteğe bağlı olarak **İndir** seçeneğini belirleyip bildirimi yerel ortamda düzenledikten sonra **Yükle** seçeneğiyle uygulamanıza yeniden uygulayabilirsiniz. Uygulama bildirimi hakkında daha fazla bilgi için bkz. [Azure AD uygulama bildirimini anlama makalesi](reference-app-manifest.md).
+1. **Yönet** bölümünde, **bildirim** ' ı seçin. Web tabanlı bir bildirim Düzenleyicisi açılarak, bildirimi düzenlemenize olanak tanır. İsteğe bağlı olarak **İndir** seçeneğini belirleyip bildirimi yerel ortamda düzenledikten sonra **Yükle** seçeneğiyle uygulamanıza yeniden uygulayabilirsiniz. Uygulama bildirimi hakkında daha fazla bilgi için bkz. [Azure AD uygulama bildirimini anlama makalesi](reference-app-manifest.md).
 
     Aşağıdaki uygulama bildirimi girişi, KIMLIK, erişim ve SAML belirteçlerine auth_time, IPADDR ve UPN isteğe bağlı taleplerini ekler.
 
@@ -174,7 +174,7 @@ Kullanıcı arabirimi veya uygulama bildirimi aracılığıyla uygulamanız içi
     }
     ```
 
-2. İşiniz bittiğinde **Kaydet**' i seçin. Artık belirtilen isteğe bağlı talepler, uygulamanızın belirteçlerine dahil edilecek.
+2. İşiniz bittiğinde **Kaydet** ' i seçin. Artık belirtilen isteğe bağlı talepler, uygulamanızın belirteçlerine dahil edilecek.
 
 ### <a name="optionalclaims-type"></a>Optionalclaim türü
 
@@ -238,9 +238,9 @@ Bu bölüm, Grup taleplerinde kullanılan grup özniteliklerinin, şirket içi W
 1. Listede için isteğe bağlı talepler yapılandırmak istediğiniz uygulamayı seçin
 1. **Yönet** bölümünde, **belirteç yapılandırması** ' nı seçin.
 1. **Grup Ekle talebi** seçin
-1. Döndürülecek Grup türlerini (**güvenlik grupları**veya **Dizin rolleri**, **tüm gruplar**ve/veya **uygulamaya atanan gruplar**) seçin. **Uygulama seçeneğine atanan gruplar** yalnızca uygulamaya atanan grupları içerir. **Tüm gruplar** seçeneği **SecurityGroup**, **directoryrole**ve **distributionlist**içerir, ancak **uygulamaya atanan grupları**içermez. 
+1. Döndürülecek Grup türlerini ( **güvenlik grupları** veya **Dizin rolleri** , **tüm gruplar** ve/veya **uygulamaya atanan gruplar** ) seçin. **Uygulama seçeneğine atanan gruplar** yalnızca uygulamaya atanan grupları içerir. **Tüm gruplar** seçeneği **SecurityGroup** , **directoryrole** ve **distributionlist** içerir, ancak **uygulamaya atanan grupları** içermez. 
 1. İsteğe bağlı: gruplar talep değerini, şirket içi grup özniteliklerini içerecek şekilde değiştirmek veya talep türünü bir rol olarak değiştirmek için belirli belirteç türü özelliklerini seçin
-1. **Kaydet**’i seçin
+1. **Kaydet** 'i seçin
 
 **Grupları uygulama bildirimi aracılığıyla isteğe bağlı talepler yapılandırma:**
 
@@ -381,19 +381,19 @@ Aşağıdaki örnekte, uygulamanız için tasarlanan erişim, KIMLIK ve SAML bel
 
 1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
 
-1. **Yönet** bölümünün altında **uygulama kayıtları**' yi seçin.
+1. **Yönet** bölümünün altında **uygulama kayıtları** ' yi seçin.
 
 1. Listede için isteğe bağlı talepler yapılandırmak istediğiniz uygulamayı bulun ve seçin.
 
-1. **Yönet** bölümünde, **belirteç yapılandırması**' nı seçin.
+1. **Yönet** bölümünde, **belirteç yapılandırması** ' nı seçin.
 
-1. **İsteğe bağlı talep Ekle**' yi seçin **, kimlik** belirteci türünü seçin, talepler listesinden **UPN** ' yi seçin ve ardından **Ekle**' yi seçin.
+1. **İsteğe bağlı talep Ekle** ' yi seçin **, kimlik** belirteci türünü seçin, talepler listesinden **UPN** ' yi seçin ve ardından **Ekle** ' yi seçin.
 
-1. **İsteğe bağlı talep Ekle**' yi seçin **, erişim** belirteci türünü seçin, talepler listesinden **auth_time** ' ı seçin ve ardından **Ekle**' yi seçin.
+1. **İsteğe bağlı talep Ekle** ' yi seçin **, erişim** belirteci türünü seçin, talepler listesinden **auth_time** ' ı seçin ve ardından **Ekle** ' yi seçin.
 
-1. Belirteç yapılandırması genel bakış ekranından **UPN**' nin yanındaki kurşun kalem simgesini seçin, **dışarıdan kimliği doğrulanmış** geçiş ' i seçin ve ardından **Kaydet**' i seçin.
+1. Belirteç yapılandırması genel bakış ekranından **UPN** ' nin yanındaki kurşun kalem simgesini seçin, **dışarıdan kimliği doğrulanmış** geçiş ' i seçin ve ardından **Kaydet** ' i seçin.
 
-1. **İsteğe bağlı talep Ekle**' yi seçin, **SAML** belirteci türünü seçin, talepler listesinden **Extn. sktypeınfo kimliğini** seçin (yalnızca sktypeınfo adlı bir Azure AD Kullanıcı nesnesi oluşturduysanız geçerlidir) ve ardından **Ekle**' yi seçin.
+1. **İsteğe bağlı talep Ekle** ' yi seçin, **SAML** belirteci türünü seçin, talepler listesinden **Extn. sktypeınfo kimliğini** seçin (yalnızca sktypeınfo adlı bir Azure AD Kullanıcı nesnesi oluşturduysanız geçerlidir) ve ardından **Ekle** ' yi seçin.
 
     [![SAML belirteci için isteğe bağlı talepler](./media/active-directory-optional-claims/token-config-example.png)](./media/active-directory-optional-claims/token-config-example.png)
 

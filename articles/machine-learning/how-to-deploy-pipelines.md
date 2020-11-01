@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: de2b12bca10382d7e885626222fe463af27f9953
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ae20b339ae3eec694140621b14db26606c9d5ab3
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128784"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145574"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Makine öğrenimi işlem hatlarını yayımlama ve izleme
 
@@ -72,6 +72,9 @@ Machine Learning işlem hatları, Machine Learning görevleri için yeniden kull
 ## <a name="run-a-published-pipeline"></a>Yayımlanmış bir işlem hattı çalıştırma
 
 Yayımlanan tüm işlem hatları bir REST uç noktasına sahiptir. Ardışık düzen uç noktasıyla, Python olmayan istemciler de dahil olmak üzere herhangi bir dış sistemlerden işlem hattının çalıştırılmasını tetikleyebilirsiniz. Bu uç nokta, toplu Puanlama ve yeniden eğitim senaryolarında "Managed yinelenebilirlik" öğesini sunar.
+
+> [!IMPORTANT]
+> İşlem hattınızı erişimi yönetmek için rol tabanlı erişim denetimi (RBAC) kullanıyorsanız, işlem [hattı senaryonuz (eğitim veya Puanlama) için izinleri ayarlayın](how-to-assign-roles.md#q-what-are-the-permissions-needed-to-perform-some-common-scenarios-in-the-azure-machine-learning-service).
 
 Önceki işlem hattının çalıştırılmasını çağırmak için bir Azure Active Directory kimlik doğrulaması üst bilgisi belirtecine ihtiyacınız vardır. Bu tür bir belirteci almak, [Azurecliauthentication sınıf](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py&preserve-view=true) başvurusunda ve Azure Machine Learning not defterindeki [kimlik doğrulamasında](https://aka.ms/pl-restep-auth) açıklanmıştır.
 

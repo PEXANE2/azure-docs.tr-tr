@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 09/03/2020
+ms.date: 10/30/2020
 ms.author: juliako
-ms.openlocfilehash: e2b45ebf9acea7334678110015d8cfd3022675f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f7bf41bd864f6780eee00938f35bb34d2336eb5
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89505354"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145761"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer sürüm notları
 
@@ -29,6 +29,21 @@ En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmek
 * Bilinen sorunlar
 * Hata düzeltmeleri
 * Kullanım dışı işlevsellik
+
+## <a name="october-2020"></a>Ekim 2020
+
+### <a name="animated-character-identification-improvements"></a>Animasyonlu karakter tanımlama geliştirmeleri  
+
+Video Indexer, bilişsel hizmetler özel Vision ile tümleştirme yoluyla animasyonlu içerikte karakterlerin algılanmasını, gruplanmasını ve tanınmasını destekler. Bu AI algoritmasına, algılama ve karakterler tanımada önemli bir geliştirme ekledik. bu nedenle, sonuç öngörüleri doğruluğu ve tanımlanan karakterler önemli ölçüde iyileştirilmiştir.
+
+### <a name="planned-video-indexer-website-authenticatication-changes"></a>Planlı Video Indexer Web sitesi kimlik doğrulama değişiklikleri
+
+1 Ocak 2021 ' den itibaren, Facebook veya LinkedIn kullanarak [video Indexer](https://www.videoindexer.ai/) Web sitesinde (deneme teklifi) Kaydolmayacak ve oturum açamazsınız.
+
+Şu sağlayıcılardan birini kullanarak kaydolabilir ve oturum açabilirsiniz: Azure AD, Microsoft ve Google.
+
+> [!NOTE]
+> LinkedIn ve Facebook 'a bağlı olan hesaplar silinecek ve içerik artık erişilebilir olmayacak olduğundan, içeriğinizi 1 Ocak 2021 ' den önce dışarı aktarmanız önerilir.
 
 ## <a name="august-2020"></a>Ağustos 2020
 
@@ -123,7 +138,7 @@ Güncelleştirilmiş tasarımla başlatılan yeni bir oyuncu kaplaması.
     * URL 'yi Video Indexer pencere öğesi API 'Lerine işaret eden bir URL ile değiştirme (örneğin, [Öngörüler pencere öğesi](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget))
     * Yeni bir katıştırılmış URL oluşturmak için Video Indexer Web sitesini kullanma:
          
-         Videonun sayfasına ulaşmak için **oynat** 'a basın-> ** &lt; / &gt; ekleme** düğmesine tıklayın-> URL 'yi uygulamanıza kopyalayın:
+         Videonun sayfasına ulaşmak için **oynat** 'a basın-> **&lt; / &gt; ekleme** düğmesine tıklayın-> URL 'yi uygulamanıza kopyalayın:
    
     Bölgesel URL 'Ler desteklenmez ve önümüzdeki haftalarda engellenecektir.
 

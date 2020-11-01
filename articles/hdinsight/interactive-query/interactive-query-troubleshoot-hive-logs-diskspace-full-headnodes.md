@@ -1,32 +1,32 @@
 ---
-title: Apache Hive günlük doldurma disk alanı-Azure HDInsight
-description: Apache Hive Günlükler, Azure HDInsight 'taki baş düğümlerdeki disk alanını doldurana.
+title: 'Sorun giderme: Apache Hive Günlükler disk alanını doldurabilir-Azure HDInsight'
+description: Bu makalede, Apache Hive Günlükler Azure HDInsight 'taki baş düğümlerdeki disk alanını doldururken izlenecek sorun giderme adımları sağlanmaktadır.
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: nisgoel
 ms.author: nisgoel
 ms.reviewer: jasonh
 ms.date: 10/05/2020
-ms.openlocfilehash: 5554a66927fc70f22ec552b938ae62038a04acb9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 64bf5714f5eb99df9929a47fef414a827ec680af
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533028"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145642"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>Senaryo: Apache Hive Günlükler Azure HDInsight 'taki baş düğümlerdeki disk alanını dolduriyor
 
-Bu makalede, Azure HDInsight kümelerinde baş düğümlerde yeterli disk alanı olmadığından ilgili sorunlar için sorun giderme adımları ve olası çözümleri açıklanmaktadır.
+Bu makalede, Azure HDInsight kümelerinde baş düğümlerdeki yetersiz disk alanı ile ilgili sorunlar için sorun giderme adımları ve olası çözümler açıklanmaktadır.
 
 ## <a name="issue"></a>Sorun
 
-Apache Hive/LLAP kümesinde, istenmeyen Günlükler baş düğümlerdeki tüm disk alanını kaplar. Bu nedenle, aşağıdaki sorunlar görülebilir.
+Apache Hive/LLAP kümesinde, istenmeyen Günlükler baş düğümlerdeki tüm disk alanını kaplar. Bu durum aşağıdaki sorunlara neden olabilir:
 
-1. Baş düğümde hiç boşluk kalmadı, SSH erişimi başarısız olur.
-2. Ambarı *http hatası veriyor: 503 hizmeti kullanılamıyor* .
-3. HiveServer2 etkileşimli yeniden başlatılamadı.
+- Baş düğümde hiçbir boşluk ayrılmadığından SSH erişimi başarısız olur.
+- Ambarı oluşturan *http hatası: 503 hizmeti kullanılamıyor* .
+- HiveServer2 etkileşimli yeniden başlatılamadı.
 
-`ambari-agent`Sorun oluştuğunda günlükler aşağıdaki gibi görünür.
+`ambari-agent`Bu, sorun oluştuğunda günlükler aşağıdaki girişleri içerir:
 ```
 ambari_agent - Controller.py - [54697] - Controller - ERROR - Error:[Errno 28] No space left on device
 ```
@@ -36,17 +36,17 @@ ambari_agent - HostCheckReportFileHandler.py - [54697] - ambari_agent.HostCheckR
 
 ## <a name="cause"></a>Nedeni
 
-Gelişmiş Hive-Log4J yapılandırmalarında, geçerli varsayılan silme zamanlaması, son değiştirilme tarihine bağlı olarak 30 günden eski dosyalar için ayarlanır.
+Gelişmiş Hive Log4J yapılandırmalarında, geçerli varsayılan silme zamanlaması, son değiştirilme tarihine bağlı olarak 30 günden eski olan dosyaları silmektir.
 
 ## <a name="resolution"></a>Çözüm
 
-1. Ambarı portalındaki Hive bileşen Özeti ' ne gidin ve sekme ' ye tıklayın `Configs` .
+1. Ambarı portalındaki Hive bileşen Özeti ' ne gidin ve **configs** sekmesini seçin.
 
-2. `Advanced hive-log4j`Gelişmiş ayarlar içindeki bölüme gidin.
+2. `Advanced hive-log4j` **Gelişmiş ayarlar** ' da bölümüne gidin.
 
-3. `appender.RFA.strategy.action.condition.age`Parametreyi tercih ettiğiniz bir yaşa ayarlayın. 14 gün için örnek: `appender.RFA.strategy.action.condition.age = 14D`
+3. `appender.RFA.strategy.action.condition.age`Parametresini tercih ettiğiniz bir yaş olarak ayarlayın. Bu örnek, yaşı 14 gün olarak ayarlar: `appender.RFA.strategy.action.condition.age = 14D`
 
-4. İlgili ayarları görmüyorsanız, lütfen aşağıdaki ayarları ekleyin.
+4. İlgili ayarları görmüyorsanız, şu ayarları ekleyin:
     ```
     # automatically delete hive log
     appender.RFA.strategy.action.type = Delete
@@ -57,7 +57,7 @@ Gelişmiş Hive-Log4J yapılandırmalarında, geçerli varsayılan silme zamanla
     appender.RFA.strategy.action.PathConditions.regex = hive*.*log.*
     ```
 
-5. `hive.root.logger` `INFO,RFA` Aşağıdaki şekilde ayarlayın. Varsayılan ayar, günlükleri çok büyük hale getiren hata AYıKLA.
+5. `hive.root.logger` `INFO,RFA` Aşağıdaki örnekte gösterildiği gibi olarak ayarlanır. Varsayılan ayar, `DEBUG` günlükleri büyük yapar.
 
     ```
     # Define some default values that can be overridden by system properties
@@ -67,7 +67,7 @@ Gelişmiş Hive-Log4J yapılandırmalarında, geçerli varsayılan silme zamanla
     hive.log.file=hive.log
     ```
 
-6. Yapılandırmaları kaydedin ve gerekli bileşenleri yeniden başlatın.
+6. Konfigürasyonları kaydedin ve gerekli bileşenleri yeniden başlatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

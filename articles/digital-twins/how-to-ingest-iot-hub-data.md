@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1fa14c4341c449c32fd6a5f6b3274b057478c01c
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: d2606f793c7ab2e3ac29b1eb869e60a2c8e634ad
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495826"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145931"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Azure dijital TWINS 'e alma IoT Hub telemetrisi
 
@@ -25,7 +25,7 @@ Bu nasıl yapılır belgesi, IoT Hub telemetri alabilen bir Azure işlevi yazma 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu örneğe devam etmeden önce aşağıdaki kaynakları önkoşul olarak ayarlamanız gerekir:
-* **IoT Hub 'ı**. Yönergeler için, [bu IoT Hub hızlı başlangıç](../iot-hub/quickstart-send-telemetry-cli.md)konusunun *IoT Hub oluşturma* bölümüne bakın.
+* **IoT Hub 'ı** . Yönergeler için, [bu IoT Hub hızlı başlangıç](../iot-hub/quickstart-send-telemetry-cli.md)konusunun *IoT Hub oluşturma* bölümüne bakın.
 * Dijital ikizi örneğinizi çağırmak için doğru izinlere sahip **bir Azure işlevi** . Yönergeler için bkz. [*nasıl yapılır: verileri işlemek için bir Azure Işlevi ayarlama*](how-to-create-azure-function.md). 
 * Cihaz telemetrinizi alacak **bir Azure dijital TWINS örneği** . Yönergeler için bkz. [*nasıl yapılır: Azure dijital TWINS örneği ve kimlik doğrulaması ayarlama*](./how-to-set-up-instance-portal.md).
 
@@ -62,13 +62,13 @@ Model şöyle görünür:
 }
 ```
 
-**Bu modeli TWINS örneğinizle karşıya yüklemek**IÇIN Azure CLI 'yı açın ve şu komutu çalıştırın:
+**Bu modeli TWINS örneğinizle karşıya yüklemek** IÇIN Azure CLI 'yı açın ve şu komutu çalıştırın:
 
 ```azurecli-interactive
 az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",  "@type": "Interface",  "@context": "dtmi:dtdl:context;2",  "contents": [    {      "@type": "Property",      "name": "Temperature",      "schema": "double"    }  ]}' -n {digital_twins_instance_name}
 ```
 
-Daha sonra **Bu modeli kullanarak bir ikizi oluşturmanız**gerekecektir. Bir ikizi oluşturmak ve ilk sıcaklık değeri olarak 0,0 ayarlamak için aşağıdaki komutu kullanın.
+Daha sonra **Bu modeli kullanarak bir ikizi oluşturmanız** gerekecektir. Bir ikizi oluşturmak ve ilk sıcaklık değeri olarak 0,0 ayarlamak için aşağıdaki komutu kullanın.
 
 ```azurecli-interactive
 az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
@@ -117,9 +117,9 @@ Sonraki kod örneği, KIMLIĞI ve sıcaklık değerini alır ve bu ikizi "Patch"
 
 ```csharp
 //Update twin using device temperature
-var uou = new UpdateOperationsUtility();
-uou.AppendReplaceOp("/Temperature", temperature.Value<double>());
-await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
+var updateTwinData = new JsonPatchDocument();
+updateTwinData.AppendReplace("/Temperature", temperature.Value<double>());
+await client.UpdateDigitalTwinAsync(deviceId, updateTwinData);
 ...
 ```
 
@@ -176,9 +176,9 @@ namespace IotHubtoTwins
                     log.LogInformation($"Device:{deviceId} Temperature is:{temperature}");
 
                     //Update twin using device temperature
-                    var uou = new UpdateOperationsUtility();
-                    uou.AppendReplaceOp("/Temperature", temperature.Value<double>());
-                    await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
+                    var updateTwinData = new JsonPatchDocument();
+                    updateTwinData.AppendReplace("/Temperature", temperature.Value<double>());
+                    await client.UpdateDigitalTwinAsync(deviceId, updateTwinData);
                 }
             }
             catch (Exception e)
@@ -210,25 +210,25 @@ Başarılı bir yayımladıktan sonra çıktıyı aşağıda gösterildiği gibi
 ## <a name="connect-your-function-to-iot-hub"></a>İşlevinizi IoT Hub bağlama
 
 Hub verileri için bir olay hedefi ayarlayın.
-[Azure Portal](https://portal.azure.com/), [*önkoşullar*](#prerequisites) bölümünde oluşturduğunuz IoT Hub örneğine gidin. **Olaylar**' ın altında, Azure işleviniz için bir abonelik oluşturun.
+[Azure Portal](https://portal.azure.com/), [*önkoşullar*](#prerequisites) bölümünde oluşturduğunuz IoT Hub örneğine gidin. **Olaylar** ' ın altında, Azure işleviniz için bir abonelik oluşturun.
 
 :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Akış grafiğini gösteren diyagram. Grafikte, bir IoT Hub cihaz, Azure Digital TWINS 'teki bir ikizi üzerinde sıcaklık özelliğini güncelleştiren bir Azure Işlevine IoT Hub aracılığıyla sıcaklık telemetri gönderir.":::
 
 **Olay aboneliği oluştur** sayfasında, alanları aşağıdaki gibi girin:
-  1. **Ad**' ın altında, aboneliği istediğiniz şekilde adlandırın.
-  2. **Olay şeması**altında _Event Grid şeması_' nı seçin.
-  3. **Olay türleri**altında _cihaz telemetri_ onay kutusunu seçin ve diğer olay türlerinin işaretini kaldırın.
-  4. **Uç nokta türü**altında _Azure işlevi_' ni seçin.
-  5. Uç **nokta ' ın**altında bir uç nokta oluşturmak için _uç nokta bağlantısını seçin_ öğesini seçin.
+  1. **Ad** ' ın altında, aboneliği istediğiniz şekilde adlandırın.
+  2. **Olay şeması** altında _Event Grid şeması_ ' nı seçin.
+  3. **Olay türleri** altında _cihaz telemetri_ onay kutusunu seçin ve diğer olay türlerinin işaretini kaldırın.
+  4. **Uç nokta türü** altında _Azure işlevi_ ' ni seçin.
+  5. Uç **nokta ' ın** altında bir uç nokta oluşturmak için _uç nokta bağlantısını seçin_ öğesini seçin.
     
 :::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="Akış grafiğini gösteren diyagram. Grafikte, bir IoT Hub cihaz, Azure Digital TWINS 'teki bir ikizi üzerinde sıcaklık özelliğini güncelleştiren bir Azure Işlevine IoT Hub aracılığıyla sıcaklık telemetri gönderir.":::
 
 Açılan _Azure Işlevi Seç_ sayfasında, aşağıdaki ayrıntıları doğrulayın.
- 1. **Abonelik**: Azure aboneliğiniz
- 2. **Kaynak grubu**: kaynak grubunuz
- 3. **İşlev uygulaması**: işlev uygulamanızın adı
- 4. **Yuva**: _Üretim_
- 5. **İşlev**: açılan listeden Azure işlevinizi seçin.
+ 1. **Abonelik** : Azure aboneliğiniz
+ 2. **Kaynak grubu** : kaynak grubunuz
+ 3. **İşlev uygulaması** : işlev uygulamanızın adı
+ 4. **Yuva** : _Üretim_
+ 5. **İşlev** : açılan listeden Azure işlevinizi seçin.
 
 _Seçim onaylama_ düğmesini seçerek ayrıntılarınızı kaydedin.            
       

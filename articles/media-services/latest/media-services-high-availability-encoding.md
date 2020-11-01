@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 0b6233552501fbe1578f3abe4e203d725ecddb4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2493a3a1e4fbb49c0b7f6dad29771b6e9faae8e
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707805"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146816"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Media Services ve Isteğe bağlı video (VOD) ile yüksek kullanılabilirlik
 
@@ -26,7 +26,7 @@ ms.locfileid: "91707805"
 
 ## <a name="high-availability-for-vod"></a>VOD için yüksek kullanılabilirlik
 
-Azure mimarisi belgelerinde [Geodes](/azure/architecture/patterns/geodes) adlı yüksek kullanılabilirliğe sahip bir tasarım deseninin olması vardır. Ölçeklenebilirlik ve dayanıklılık sağlamak için yinelenen kaynakların farklı coğrafi bölgelere nasıl dağıtıldığını açıklar.  Yedeklilik, sistem durumu izleme, yük dengeleme ve veri yedekleme ve kurtarma gibi birçok yüksek kullanılabilirliğe sahip tasarım konularını kapsayacak şekilde bu tür bir mimari oluşturmak için Azure hizmetlerini kullanabilirsiniz.  Bu tür bir mimaride, çözümde kullanılan her bir hizmetle ilgili ayrıntıların yanı sıra, VOD uygulamanız için yüksek kullanılabilirlik mimarisi oluşturmak üzere bireysel hizmetlerin nasıl kullanılabileceği aşağıda açıklanmaktadır.
+Azure mimarisi belgelerinde [Geodes](https://docs.microsoft.com/azure/architecture/patterns/geodes) adlı yüksek kullanılabilirliğe sahip bir tasarım deseninin olması vardır. Ölçeklenebilirlik ve dayanıklılık sağlamak için yinelenen kaynakların farklı coğrafi bölgelere nasıl dağıtıldığını açıklar.  Yedeklilik, sistem durumu izleme, yük dengeleme ve veri yedekleme ve kurtarma gibi birçok yüksek kullanılabilirliğe sahip tasarım konularını kapsayacak şekilde bu tür bir mimari oluşturmak için Azure hizmetlerini kullanabilirsiniz.  Bu tür bir mimaride, çözümde kullanılan her bir hizmetle ilgili ayrıntıların yanı sıra, VOD uygulamanız için yüksek kullanılabilirlik mimarisi oluşturmak üzere bireysel hizmetlerin nasıl kullanılabileceği aşağıda açıklanmaktadır.
 
 ### <a name="sample"></a>Örnek
 
@@ -55,7 +55,7 @@ Bu üst düzey diyagramda, yüksek kullanılabilirlik ve Medya Hizmetleri ile ç
 
 [![İsteğe bağlı video (VOD) yüksek düzey mimari diyagramı ](media/media-services-high-availability-encoding/high-availability-architecture.svg)](media/media-services-high-availability-encoding/high-availability-architecture.svg#lightbox)
 
-## <a name="best-practices"></a>Önerilen uygulamalar
+## <a name="best-practices"></a>En iyi uygulamalar
 
 ### <a name="regions"></a>Bölgeler
 
@@ -87,4 +87,4 @@ Bu üst düzey diyagramda, yüksek kullanılabilirlik ve Medya Hizmetleri ile ç
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Kod örneklerine](/samples/browse/?products=azure-media-services) göz atın
+* [Kod örneklerine](https://docs.microsoft.com/samples/browse/?products=azure-media-services) göz atın

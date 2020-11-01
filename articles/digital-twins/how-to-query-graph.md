@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ea12b3eb72ce05f2672f6ca0912cc67345413c3c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8aad0d9fde30a235903364d57a73c1c53f08ecce
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461286"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145795"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital TWINS ikizi grafiğini sorgulama
 
@@ -50,18 +50,19 @@ WHERE ...
 Bir sonuç kümesindeki öğelerin sayısını yan tümcesini kullanarak saymanız gerekir `Select COUNT` :
 
 ```sql
-SELECT COUNT() 
+SELECT COUNT()
 FROM DIGITALTWINS
-``` 
+```
 
 `WHERE`Belirli bir ölçütü karşılayan öğelerin sayısını saymak için bir yan tümce ekleyin. İkizi modelinin türüne göre uygulanan bir filtre ile saymaya yönelik bazı örnekler aşağıda verilmiştir (Bu söz dizimi hakkında daha fazla bilgi için, aşağıdaki [*modele göre sorgulama*](#query-by-model) bölümüne bakın):
 
 ```sql
-SELECT COUNT() 
-FROM DIGITALTWINS 
-WHERE IS_OF_MODEL('dtmi:sample:Room;1') 
-SELECT COUNT() 
-FROM DIGITALTWINS c 
+SELECT COUNT()
+FROM DIGITALTWINS
+WHERE IS_OF_MODEL('dtmi:sample:Room;1')
+
+SELECT COUNT()
+FROM DIGITALTWINS c
 WHERE IS_OF_MODEL('dtmi:sample:Room;1') AND c.Capacity > 20
 ```
 
@@ -74,72 +75,73 @@ JOIN LightPanel RELATED Room.contains
 JOIN LightBulb RELATED LightPanel.contains  
 WHERE IS_OF_MODEL(LightPanel, 'dtmi:contoso:com:lightpanel;1')  
 AND IS_OF_MODEL(LightBulb, 'dtmi:contoso:com:lightbulb ;1')  
-AND Room.$dtId IN ['room1', 'room2'] 
+AND Room.$dtId IN ['room1', 'room2']
 ```
 
 ### <a name="specify-return-set-with-projections"></a>Yansıtmalar ile dönüş kümesi belirtme
 
-Projeksiyonlar kullanarak, bir sorgunun hangi sütunları döndürdönebileceği seçebilirsiniz. 
+Projeksiyonlar kullanarak, bir sorgunun hangi sütunları döndürdönebileceği seçebilirsiniz.
 
 >[!NOTE]
->Şu anda karmaşık özellikler desteklenmez. Projeksiyon özelliklerinin geçerli olduğundan emin olmak için projeksiyonu bir denetim ile birleştirin `IS_PRIMITIVE` . 
+>Şu anda karmaşık özellikler desteklenmez. Projeksiyon özelliklerinin geçerli olduğundan emin olmak için projeksiyonu bir denetim ile birleştirin `IS_PRIMITIVE` .
 
-Aşağıda, TWINS ve ilişkiler döndürmek için projeksiyonu kullanan bir sorgu örneği verilmiştir. Aşağıdaki *sorgu, bir* *üretici kimliği* olan *fabrikasının* bir *Factory. Customer*ilişkisi aracılığıyla *tüketiciyle* *ilgili olduğu ve* bu ilişki *kenar*olarak sunulur. *Edge*
+Aşağıda, TWINS ve ilişkiler döndürmek için projeksiyonu kullanan bir sorgu örneği verilmiştir. Aşağıdaki *sorgu, bir* *üretici kimliği* olan *fabrikasının* bir *Factory. Customer* ilişkisi aracılığıyla *tüketiciyle* *ilgili olduğu ve* bu ilişki *kenar* olarak sunulur. *Edge*
 
 ```sql
-SELECT Consumer, Factory, Edge 
-FROM DIGITALTWINS Factory 
-JOIN Consumer RELATED Factory.customer Edge 
-WHERE Factory.$dtId = 'ABC' 
+SELECT Consumer, Factory, Edge
+FROM DIGITALTWINS Factory
+JOIN Consumer RELATED Factory.customer Edge
+WHERE Factory.$dtId = 'ABC'
 ```
 
-Ayrıca, bir ikizi özelliğini döndürmek için projeksiyonu de kullanabilirsiniz. Aşağıdaki sorgu, *Factory. Customer*ile ilgili bir ilişki aracılığıyla BIR *ABC* kimliğiyle *fabrikaya* ilişkin *tüketicilerle* ilgili *ad* özelliğini projeler. 
+Ayrıca, bir ikizi özelliğini döndürmek için projeksiyonu de kullanabilirsiniz. Aşağıdaki sorgu, *Factory. Customer* ile ilgili bir ilişki aracılığıyla BIR *ABC* kimliğiyle *fabrikaya* ilişkin *tüketicilerle* ilgili *ad* özelliğini projeler.
 
 ```sql
-SELECT Consumer.name 
-FROM DIGITALTWINS Factory 
-JOIN Consumer RELATED Factory.customer Edge 
-WHERE Factory.$dtId = 'ABC' 
+SELECT Consumer.name
+FROM DIGITALTWINS Factory
+JOIN Consumer RELATED Factory.customer Edge
+WHERE Factory.$dtId = 'ABC'
 AND IS_PRIMITIVE(Consumer.name)
 ```
 
-Ayrıca, bir ilişkinin özelliğini döndürmek için projeksiyonu de kullanabilirsiniz. Önceki örnekte olduğu gibi, aşağıdaki sorgu, Factory ile ilgili *tüketicilerinin* *Name* özelliğini, *Factory. Customer*ilişkisi aracılığıyla bir *ABC* *kimliğiyle birlikte projeler* ; Ancak artık, *Prop1* ve *Prop2*ilişkisinin iki özelliğini de döndürür. Bu, ilişki *ucunu* adlandırarak ve özelliklerini toplarken bunu yapar.  
+Ayrıca, bir ilişkinin özelliğini döndürmek için projeksiyonu de kullanabilirsiniz. Önceki örnekte olduğu gibi, aşağıdaki sorgu, Factory ile ilgili *tüketicilerinin* *Name* özelliğini, *Factory. Customer* ilişkisi aracılığıyla bir *ABC* *kimliğiyle birlikte projeler* ; Ancak artık, *Prop1* ve *Prop2* ilişkisinin iki özelliğini de döndürür. Bu, ilişki *ucunu* adlandırarak ve özelliklerini toplarken bunu yapar.  
 
 ```sql
-SELECT Consumer.name, Edge.prop1, Edge.prop2, Factory.area 
-FROM DIGITALTWINS Factory 
-JOIN Consumer RELATED Factory.customer Edge 
-WHERE Factory.$dtId = 'ABC' 
+SELECT Consumer.name, Edge.prop1, Edge.prop2, Factory.area
+FROM DIGITALTWINS Factory
+JOIN Consumer RELATED Factory.customer Edge
+WHERE Factory.$dtId = 'ABC'
 AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)
 ```
 
 Ayrıca, projeksiyonlarla sorguları basitleştirmek için takma adlar kullanabilirsiniz.
 
-Aşağıdaki sorgu, önceki örnekle aynı işlemleri yapar, ancak özellik adları,, ve olarak diğer ad `consumerName` `first` `second` `factoryArea` . 
- 
+Aşağıdaki sorgu, önceki örnekle aynı işlemleri yapar, ancak özellik adları,, ve olarak diğer ad `consumerName` `first` `second` `factoryArea` .
+
 ```sql
-SELECT Consumer.name AS consumerName, Edge.prop1 AS first, Edge.prop2 AS second, Factory.area AS factoryArea 
-FROM DIGITALTWINS Factory 
-JOIN Consumer RELATED Factory.customer Edge 
-WHERE Factory.$dtId = 'ABC' 
-AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)" 
+SELECT Consumer.name AS consumerName, Edge.prop1 AS first, Edge.prop2 AS second, Factory.area AS factoryArea
+FROM DIGITALTWINS Factory
+JOIN Consumer RELATED Factory.customer Edge
+WHERE Factory.$dtId = 'ABC'
+AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)"
 ```
 
-Yukarıdaki gibi aynı kümeyi sorgulayan, ancak yalnızca *Consumer.Name* özelliğini projeler `consumerName` ve bir Ikizi olarak tüm *fabrikalara* bağlayan benzer bir sorgu aşağıda verilmiştir. 
+Yukarıdaki gibi aynı kümeyi sorgulayan, ancak yalnızca *Consumer.Name* özelliğini projeler `consumerName` ve bir Ikizi olarak tüm *fabrikalara* bağlayan benzer bir sorgu aşağıda verilmiştir.
 
 ```sql
-SELECT Consumer.name AS consumerName, Factory 
-FROM DIGITALTWINS Factory 
-JOIN Consumer RELATED Factory.customer Edge 
-WHERE Factory.$dtId = 'ABC' 
-AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) 
+SELECT Consumer.name AS consumerName, Factory
+FROM DIGITALTWINS Factory
+JOIN Consumer RELATED Factory.customer Edge
+WHERE Factory.$dtId = 'ABC'
+AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name)
 ```
 
 ### <a name="query-by-property"></a>Özelliğe göre sorgu
 
 **Özelliklere** göre dijital TWINS al (kimlik ve meta veriler dahil):
+
 ```sql
-SELECT  * 
+SELECT  *
 FROM DigitalTwins T  
 WHERE T.firmwareVersion = '1.1'
 AND T.$dtId in ['123', '456']
@@ -149,20 +151,20 @@ AND T.Temperature = 70
 > [!TIP]
 > Dijital bir ikizi KIMLIĞI, meta veri alanı kullanılarak sorgulanır `$dtId` .
 
-Ayrıca, **belirli bir özelliğin tanımlanıp tanımlanmadığına**göre TWINS de alabilirsiniz. Tanımlı bir *konum* özelliği olan TWINS 'i alan bir sorgu aşağıda verilmiştir:
+Ayrıca, **belirli bir özelliğin tanımlanıp tanımlanmadığına** göre TWINS de alabilirsiniz. Tanımlı bir *konum* özelliği olan TWINS 'i alan bir sorgu aşağıda verilmiştir:
 
 ```sql
 SELECT *
 FROM DIGITALTWINS WHERE IS_DEFINED(Location)
 ```
 
-Bu, [dijital TWINS 'e etiket ekleme](how-to-use-tags.md)başlığı altında açıklandığı gibi, kendi *etiket* özelliklerine göre TWINS 'leri almanıza yardımcı olabilir. *Kırmızı*ile etiketlenmiş tüm TWINS 'leri alan bir sorgu aşağıda verilmiştir:
+Bu, [dijital TWINS 'e etiket ekleme](how-to-use-tags.md)başlığı altında açıklandığı gibi, kendi *etiket* özelliklerine göre TWINS 'leri almanıza yardımcı olabilir. *Kırmızı* ile etiketlenmiş tüm TWINS 'leri alan bir sorgu aşağıda verilmiştir:
 
 ```sql
-select * from digitaltwins where is_defined(tags.red) 
+select * from digitaltwins where is_defined(tags.red)
 ```
 
-Ayrıca, **bir özelliğin türüne**göre TWINS de edinebilirsiniz. *Sıcaklık* özelliği bir sayı olan TWINS 'i alan bir sorgu aşağıda verilmiştir:
+Ayrıca, **bir özelliğin türüne** göre TWINS de edinebilirsiniz. *Sıcaklık* özelliği bir sayı olan TWINS 'i alan bir sorgu aşağıda verilmiştir:
 
 ```sql
 SELECT * FROM DIGITALTWINS T
@@ -171,7 +173,14 @@ WHERE IS_NUMBER(T.Temperature)
 
 ### <a name="query-by-model"></a>Modele göre sorgu
 
-`IS_OF_MODEL`İşleci, ikizi 'in [**modeline**](concepts-models.md)göre filtrelemek için kullanılabilir. Devralmayı destekler ve birkaç aşırı yükleme seçeneği içerir.
+`IS_OF_MODEL`İşleci, ikizi 'in [**modeline**](concepts-models.md)göre filtrelemek için kullanılabilir.
+
+[Devralma](concepts-models.md#model-inheritance) ve [Sürüm sıralama](how-to-manage-model.md#update-models) semantiğini dikkate alır ve ikizi şu koşullardan birini karşılıyorsa, belirli bir ikizi için **true** olarak değerlendirilir:
+
+* İkizi, için belirtilen modeli doğrudan uygular `IS_OF_MODEL()` ve ikizi üzerindeki modelin sürüm numarası, belirtilen modelin sürüm numarasından *büyük veya bu değere eşit*
+* İkizi, için belirtilen modeli *genişleten* bir model uygular `IS_OF_MODEL()` ve ikizi 'ın genişletilmiş modeli sürüm numarası, belirtilen modelin sürüm numarasından *büyük veya bu değere eşittir*
+
+Bu yöntemde birkaç aşırı yükleme seçeneği vardır.
 
 En basit kullanımı `IS_OF_MODEL` yalnızca bir parametre alır `twinTypeName` : `IS_OF_MODEL(twinTypeName)` .
 Bu parametreye bir değer geçiren sorgu örneği aşağıda verilmiştir:
@@ -203,12 +212,12 @@ SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1', ex
 
 ### <a name="query-based-on-relationships"></a>İlişkileri temel alan sorgu
 
-Dijital TWINS ' **ilişkilerine**göre sorgulama yaparken Azure Digital TWINS sorgu dilinin özel bir sözdizimi vardır.
+Dijital TWINS ' **ilişkilerine** göre sorgulama yaparken Azure Digital TWINS sorgu dilinin özel bir sözdizimi vardır.
 
-İlişkiler, yan tümcesindeki sorgu kapsamına çekilir `FROM` . "Klasik" SQL-Type dillerinden önemli bir ayrım, bu `FROM` yan tümcedeki her bir ifadenin bir tablo olmaması değildir; Bunun yerine `FROM` yan tümce bir çapraz varlık ilişki geçişini ifade eder ve Azure Digital TWINS sürümü ile yazılır `JOIN` . 
+İlişkiler, yan tümcesindeki sorgu kapsamına çekilir `FROM` . "Klasik" SQL-Type dillerinden önemli bir ayrım, bu `FROM` yan tümcedeki her bir ifadenin bir tablo olmaması değildir; Bunun yerine `FROM` yan tümce bir çapraz varlık ilişki geçişini ifade eder ve Azure Digital TWINS sürümü ile yazılır `JOIN` .
 
 Azure dijital TWINS [modeli](concepts-models.md) özellikleri ile, ilişkilerin, TWINS 'den bağımsız olarak mevcut olmadığını geri çekin. Bu, Azure Digital TWINS sorgu dilinin `JOIN` Genel SQL 'den biraz farklı olduğu anlamına gelir `JOIN` , burada ilişkiler bağımsız olarak sorgulanamaz ve bir ikizi bağlı olması gerekir.
-Bu farkı eklemek için, `RELATED` `JOIN` yan tümcesinde ikizi 'in ilişki kümesine başvurmak için kullanılır. 
+Bu farkı eklemek için, `RELATED` `JOIN` yan tümcesinde ikizi 'in ilişki kümesine başvurmak için kullanılır.
 
 Aşağıdaki bölümde bunun nasıl göründüğü hakkında birkaç örnek verilmiştir.
 
@@ -219,22 +228,22 @@ Aşağıdaki bölümde bunun nasıl göründüğü hakkında birkaç örnek veri
 
 İlişkiler içeren bir veri kümesini almak için, bir deyimi ve `FROM` ardından N deyimlerini kullanın `JOIN` , burada `JOIN` deyimler bir Previous veya deyimin sonucu üzerinde ilişki alır `FROM` `JOIN` .
 
-Örnek bir ilişki tabanlı sorgu aşağıda verilmiştir. Bu kod parçacığı, ' ABC ' öğesinin *ID* özelliğine sahip tüm dijital TWINS 'leri ve bu dijital TWINS ile ilgili tüm dijital TWINS 'leri, bir *içerir* ilişki aracılığıyla seçer. 
+Örnek bir ilişki tabanlı sorgu aşağıda verilmiştir. Bu kod parçacığı, ' ABC ' öğesinin *ID* özelliğine sahip tüm dijital TWINS 'leri ve bu dijital TWINS ile ilgili tüm dijital TWINS 'leri, bir *içerir* ilişki aracılığıyla seçer.
 
 ```sql
 SELECT T, CT
 FROM DIGITALTWINS T
 JOIN CT RELATED T.contains
-WHERE T.$dtId = 'ABC' 
+WHERE T.$dtId = 'ABC'
 ```
 
->[!NOTE] 
+>[!NOTE]
 > Geliştiricinin `JOIN` yan tümcesindeki anahtar değeriyle ilişkilendirilmesi gerekmez `WHERE` (veya tanımıyla birlikte satır içi bir anahtar değeri belirtebilirsiniz `JOIN` ). İlişki özelliklerinin kendisi hedef varlığı tanımlarında, bu bağıntı sistem tarafından otomatik olarak hesaplanır.
 
 #### <a name="query-the-properties-of-a-relationship"></a>Bir ilişkinin özelliklerini sorgulama
 
-Benzer şekilde, dijital TWINS 'nin DTDL aracılığıyla tanımlanan özellikleri vardır, ilişkilerin de özellikleri olabilir. , **İlişkilerinin özelliklerine göre**TWINS 'i sorgulayabilirsiniz.
-Azure Digital TWINS sorgu dili, yan tümce içindeki ilişkiye bir diğer ad atayarak ilişkilerin filtrelenmesini ve projeksiyonunu sağlar `JOIN` . 
+Benzer şekilde, dijital TWINS 'nin DTDL aracılığıyla tanımlanan özellikleri vardır, ilişkilerin de özellikleri olabilir. , **İlişkilerinin özelliklerine göre** TWINS 'i sorgulayabilirsiniz.
+Azure Digital TWINS sorgu dili, yan tümce içindeki ilişkiye bir diğer ad atayarak ilişkilerin filtrelenmesini ve projeksiyonunu sağlar `JOIN` .
 
 Örnek olarak, *Reportedcondition* özelliği olan bir *servicedBy* ilişkisini göz önünde bulundurun. Aşağıdaki sorguda, özelliğine başvurmak için bu ilişkiye ' R ' diğer adı verilir.
 
@@ -242,7 +251,7 @@ Azure Digital TWINS sorgu dili, yan tümce içindeki ilişkiye bir diğer ad ata
 SELECT T, SBT, R
 FROM DIGITALTWINS T
 JOIN SBT RELATED T.servicedBy R
-WHERE T.$dtId = 'ABC' 
+WHERE T.$dtId = 'ABC'
 AND R.reportedCondition = 'clean'
 ```
 
@@ -250,25 +259,25 @@ Yukarıdaki örnekte, *Reportedcondition* 'ın *servicedBy* ilişkisinin kendisi
 
 ### <a name="query-with-multiple-joins"></a>Birden çok birleştirme içeren sorgu
 
-Şu anda önizleme aşamasında olan en fazla beş `JOIN` sn tek bir sorguda desteklenir. Bu, aynı anda birden çok ilişki seviyelerine çapraz geçiş yapmanıza olanak sağlar.
+Tek bir sorguda en fazla beş adet `JOIN` desteklenir. Bu, aynı anda birden çok ilişki seviyelerine çapraz geçiş yapmanıza olanak sağlar.
 
 Burada, Oda 1 ve 2 ' deki açık panellerde bulunan tüm hafif bultların yer aldığı çok sayıda JOIN sorgusuna bir örnek verilmiştir.
 
 ```sql
-SELECT LightBulb 
-FROM DIGITALTWINS Room 
-JOIN LightPanel RELATED Room.contains 
-JOIN LightBulb RELATED LightPanel.contains 
-WHERE IS_OF_MODEL(LightPanel, 'dtmi:contoso:com:lightpanel;1') 
-AND IS_OF_MODEL(LightBulb, 'dtmi:contoso:com:lightbulb ;1') 
-AND Room.$dtId IN ['room1', 'room2'] 
+SELECT LightBulb
+FROM DIGITALTWINS Room
+JOIN LightPanel RELATED Room.contains
+JOIN LightBulb RELATED LightPanel.contains
+WHERE IS_OF_MODEL(LightPanel, 'dtmi:contoso:com:lightpanel;1')
+AND IS_OF_MODEL(LightBulb, 'dtmi:contoso:com:lightbulb ;1')
+AND Room.$dtId IN ['room1', 'room2']
 ```
 
 ### <a name="other-compound-query-examples"></a>Diğer bileşik sorgu örnekleri
 
 Tek bir sorguda daha fazla ayrıntı dahil etmek için, birleşim işleçlerini kullanarak yukarıdaki sorgu türlerinden herhangi birini **birleştirebilirsiniz** . Aynı anda birden fazla ikizi tanımlayıcısı için sorgu oluşturan bileşik sorguların bazı ek örnekleri aşağıda verilmiştir.
 
-| Description | Sorgu |
+| Açıklama | Sorgu |
 | --- | --- |
 | *Oda 123* ' nin sahip olduğu cihazların dışında, işleç rolüne sunan mxyonga cihazlarını döndürün | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contosocom:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
 | KIMLIĞI *ID1* olan başka bir Ikizi ile *Contains* adlı bir ilişkiye sahip olan TWINS 'i alma | `SELECT Room`<br>`FROM DIGITALTWINS Room`<br>`JOIN Thermostat RELATED Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
@@ -312,27 +321,30 @@ Aşağıdaki dize işlevleri desteklenir:
 
 ## <a name="run-queries-with-an-api-call"></a>Sorguları bir API çağrısıyla çalıştırma
 
-Bir sorgu dizesine karar verdikten sonra **sorgu API**'sine bir çağrı yaparak onu yürütün.
+Bir sorgu dizesine karar verdikten sonra **sorgu API** 'sine bir çağrı yaparak onu yürütün.
 Aşağıdaki kod parçacığı, istemci uygulamasından bu çağrıyı gösterir:
 
 ```csharp
-var client = new AzureDigitalTwinsAPIClient(<your-credentials>);
-client.BaseUri = new Uri(<your-Azure-Digital-Twins-instance-URL>);
 
-QuerySpecification spec = new QuerySpecification("SELECT * FROM digitaltwins");
-QueryResult result = await client.Query.QueryTwinsAsync(spec);
+var adtInstanceEndpoint = new Uri(your-Azure-Digital-Twins-instance-URL>);
+var tokenCredential = new DefaultAzureCredential();
+
+var client = new DigitalTwinsClient(adtInstanceEndpoint, tokenCredential);
+
+string query = "SELECT * FROM digitaltwins";
+AsyncPageable<string> result = await client.QueryAsync<string>(query);
 ```
 
-Bu çağrı sorgu sonuçlarını bir QueryResult nesnesi biçiminde döndürür. 
+Bu çağrı sorgu sonuçlarını dize nesnesi biçiminde döndürür.
 
-Sorgu çağrıları sayfalama destekler. Hata işleme ve sayfalama içeren bir örnek aşağıda verilmiştir:
+Sorgu çağrıları sayfalama destekler. İşte `BasicDigitalTwin` hata işleme ve sayfalama içeren sorgu sonuç türü olarak kullanılan bir örnek:
 
 ```csharp
 string query = "SELECT * FROM digitaltwins";
 try
 {
-    AsyncPageable<string> qresult = client.QueryAsync(query);
-    await foreach (string item in qresult) 
+    AsyncPageable<BasicDigitalTwin> qresult = client.QueryAsync<BasicDigitalTwin>(query);
+    await foreach (BasicDigitalTwin item in qresult)
     {
         // Do something with each result
     }
@@ -340,7 +352,7 @@ try
 catch (RequestFailedException e)
 {
     Log.Error($"Error {e.Status}: {e.Message}");
-    return null;
+    throw;
 }
 ```
 
@@ -348,10 +360,11 @@ catch (RequestFailedException e)
 
 Örneğinizdeki değişiklikler sorgularda yansıtılmadan önce 10 saniyeye kadar bir gecikme olabilir. Örneğin, Digitaltwıns API 'SI ile TWINS oluşturma veya silme gibi bir işlemi tamamladıysanız, sonuç sorgu API 'si isteklerinde hemen yansıtılmayabilir. Bir kısa dönemin beklenmesi, çözülmesi için yeterli olmalıdır.
 
-Önizleme sırasında kullanmayla ilgili ek sınırlamalar vardır `JOIN` .
+Kullanarak ek sınırlamalar vardır `JOIN` .
+
 * İfadesinde hiçbir alt sorgu desteklenmez `FROM` .
 * `OUTER JOIN` semantikler desteklenmez, yani ilişkinin sıfır sıralaması varsa, tüm "satır" çıkış sonuç kümesinden kaldırılır.
-* Önizleme süresince grafik çapraz geçiş derinliği `JOIN` sorgu başına beş düzey ile kısıtlıdır.
+* Grafik çapraz geçiş derinliği `JOIN` sorgu başına beş düzey ile sınırlıdır.
 * `JOIN`İşlem kaynağı kısıtlanmış: sorgu, sorgunun başladığı TWINS 'i bildirmelidir.
 
 ## <a name="query-best-practices"></a>En iyi sorgu yöntemleri
@@ -360,30 +373,38 @@ Azure dijital TWINS ile sorgulama için bazı ipuçları aşağıda verilmiştir
 
 * Model tasarım aşamasında sorgu modelini göz önünde bulundurun. Tek bir sorguda yanıtlanması gereken ilişkilerin tek düzeyli ilişki olarak modellendirildiğinden emin olun.
 * Özellikleri grafik çapraz geçişinin büyük sonuç kümelerinden kaçınacak şekilde tasarlayın.
-* Bir TWINS dizisi oluşturup işleçle sorgulama yaparak ihtiyacınız olan sorguların sayısını önemli ölçüde azaltabilirsiniz `IN` . Örneğin, *binaların* *katlara* ve *katlara* *Oda*içerdiği bir senaryoyu düşünün. Sık kullanılan bir bina içindeki odaları aramak için şunları yapabilirsiniz:
+* Bir TWINS dizisi oluşturup işleçle sorgulama yaparak ihtiyacınız olan sorguların sayısını önemli ölçüde azaltabilirsiniz `IN` . Örneğin, *binaların* *katlara* ve *katlara* *Oda* içerdiği bir senaryoyu düşünün. Sık kullanılan bir bina içindeki odaları aramak için şunları yapabilirsiniz:
 
     1. İlişkiye göre binaları bulun `contains`
+
         ```sql
         SELECT Floor
         FROM DIGITALTWINS Building
         JOIN Floor RELATED Building.contains
         WHERE Building.$dtId = @buildingId
-        ``` 
+        ```
+
     2. Odaları bulmak için, tek tek bir kat katınızı göz önünde bulundurarak ve `JOIN` her birinin odasını bulmak üzere bir sorgu çalıştırırken, binadaki katların bir koleksiyonu ile sorgulayabilirsiniz (aşağıdaki sorguda yer alarak adlandırılmış *taban* ).
 
         İstemci uygulaması:
+
         ```csharp
         var floors = "['floor1','floor2', ..'floorn']"; 
         ```
+
         Sorguda:
+
         ```sql
+
         SELECT Room
         FROM DIGITALTWINS Floor
         JOIN Room RELATED Floor.contains
         WHERE Floor.$dtId IN ['floor1','floor2', ..'floorn']
         AND Room. Temperature > 72
         AND IS_OF_MODEL(Room, 'dtmi:com:contoso:Room;1')
+
         ```
+
 * Özellik adları ve değerleri büyük/küçük harfe duyarlıdır, bu nedenle modellerdeki tanımlı tam adları kullanın. Özellik adları yanlış yazılmıştır veya yanlış bir şekilde ayarlandıysa, sonuç kümesi hiçbir hata döndürülmeden boştur.
 
 ## <a name="next-steps"></a>Sonraki adımlar

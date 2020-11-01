@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 69a66c49d64ab9ba589050e1f20399f7f193b76e
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: d98f2390be3b3f4b3770125185cb33daa5ff6371
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912965"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93143648"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>İçerik denetleme incelemeleri, iş akışları ve işler
 
@@ -23,9 +23,24 @@ Content Moderator, gerçek dünyada senaryolar için en iyi denetleme sürecini 
 
 ## <a name="reviews"></a>İncelemeler
 
-İnceleme içinde içerik gözden geçirme aracına yüklenir ve **Gözden geçirme** sekmesi altında görüntülenir. Buradan, kullanıcılar uygulanan etiketleri değiştirebilir ve kendi özel etiketlerini uygun şekilde uygulayabilir. Bir Kullanıcı bir gözden geçirme gönderdiğinde, sonuçlar belirtilen geri çağırma uç noktasına gönderilir ve içerik siteden kaldırılır.
+İnceleme içinde içerik gözden geçirme aracına yüklenir. Panoda, Pano üzerinde **gözden geçir** sekmesinde bulunan içerik türü ' ne tıklayarak bu görünümü görüntüleyebilirsiniz. İnceleme ekranından, uygulanan etiketleri değiştirebilir ve kendi özel etiketlerinizi uygun şekilde uygulayabilirsiniz. Bir gözden geçirme gönderdiğinizde, sonuçlar belirtilen geri çağırma uç noktasına gönderilir ve içerik siteden kaldırılır.
 
-![Inceleme sekmesinde bir tarayıcıda açık olan araç Web sitesini gözden geçirme](./Review-Tool-user-Guide/images/image-workflow-review.png)
+> [!div class="mx-imgBorder"]
+> ![Inceleme sekmesi seçiliyken araç sitesini gözden geçir](./Review-Tool-user-Guide/images/review-tab.png)
+
+### <a name="manage-reviews"></a>İncelemeleri yönetme
+
+Panodan yönetici **Admin**  ->  ekranını görüntülemek için yönetici **gözden geçirmeleri Yönet** ' e gidin. Burada, tüm incelemelerinin bir listesini görebilirsiniz (bekliyor ve tamamlandı).
+
+Her incelemede üç noktalı **Eylemler** düğmesi İnceleme ekranına gitmenizi veya gözden geçirin geçmişini incelemenizi sağlar.
+
+> [!div class="mx-imgBorder"]
+> ![Inceleme ekranında araç Web sitesini gözden geçirin](./Review-Tool-user-Guide/images/manage-reviews.png)
+
+Gözden geçirme durumu, Etiketler, içerik türü, alt takımlar, atanan kullanıcılar ve oluşturulma/değiştirilme tarihi gibi çeşitli kategorilere göre İncelemeleri sıralamak için **arama** araç çubuğunu kullanın.
+
+> [!div class="mx-imgBorder"]
+> ![Inceleme sekmesi seçiliyken araç sitesini gözden geçir](./Review-Tool-user-Guide/images/review-search.png)
 
 İncelemeleri oluşturmaya başlamak için [İnceleme aracı kılavuzuna](./review-tool-user-guide/review-moderated-images.md) bakın veya bunu programlı olarak nasıl yapacağınızı öğrenmek için [REST API kılavuzuna](./try-review-api-review.md) bakın.
 
@@ -35,11 +50,12 @@ Bir iş akışı, içerik için bulut tabanlı özelleştirilmiş bir filtredir.
 
 ### <a name="view-workflows"></a>İş akışlarını görüntüle
 
-Mevcut iş akışlarınızı görüntülemek için [İnceleme aracına](https://contentmoderator.cognitive.microsoft.com/) gidin ve **Ayarlar**  >  **iş akışları** ' nı seçin.
+Mevcut iş akışlarınızı görüntülemek için [İnceleme aracına](https://contentmoderator.cognitive.microsoft.com/) gidin ve **yönetici**  >  **iş akışları** ' nı seçin.
 
-![Varsayılan iş akışı](images/default-workflow-listed.PNG)
+> [!div class="mx-imgBorder"]
+> ![Varsayılan iş akışı](images/default-workflow-list.png)
 
-İş akışları tamamen JSON dizeleri olarak açıklanabilir, bu da programlı bir şekilde erişilebilir hale gelir. İş akışınız için **Düzenle** seçeneğini belirleyip **JSON** sekmesini seçerseniz, aşağıdaki gibi bir JSON ifadesi görürsünüz:
+İş akışları JSON dizeleri olarak tanımlanır ve bu, programlı olarak erişilebilir hale gelir. İş akışınız için **Düzenle** seçeneğini belirleyip **JSON** sekmesini seçerseniz, aşağıdaki gibi bir JSON ifadesi görürsünüz:
 
 ```json
 {
@@ -68,7 +84,7 @@ Mevcut iş akışlarınızı görüntülemek için [İnceleme aracına](https://
 
 ## <a name="jobs"></a>İşler
 
-Bir denetleme işi, içerik denetleme, iş akışları ve İncelemeler işlevleri için bir sarmalayıcı türü görevi görür. İş, Content Moderator görüntü denetleme API 'SI veya metin denetleme API 'sini kullanarak içeriğinizi tarar ve ardından belirlenen iş akışına karşı denetler. İş akışı sonuçlarına bağlı olarak, [Gözden geçirme aracında](./review-tool-user-guide/human-in-the-loop.md)içerik için bir gözden geçirme oluşturmayabilir veya olmayabilir. Her iki İnceleme ve iş akışı kendi API 'Leriyle oluşturulup yapılandırılabileceği sürece, iş API 'SI işlemin tamamına (belirtilen geri çağırma uç noktasına gönderilebilir) ilişkin ayrıntılı bir rapor elde etmenizi sağlar.
+Bir denetleme işi, içerik denetleme, iş akışı ve gözden geçirme işlevleri için bir sarmalayıcı türü görevi görür. İş, Content Moderator görüntü denetleme API 'SI veya metin denetleme API 'sini kullanarak içeriğinizi tarar ve ardından belirlenen iş akışına karşı denetler. İş akışı sonuçlarına bağlı olarak, [Gözden geçirme aracında](./review-tool-user-guide/human-in-the-loop.md)içerik için bir gözden geçirme oluşturmayabilir veya olmayabilir. Her iki İnceleme ve iş akışı kendi API 'Leriyle oluşturulup yapılandırılabileceği sürece, iş API 'SI işlemin tamamına (belirtilen geri çağırma uç noktasına gönderilebilir) ilişkin ayrıntılı bir rapor elde etmenizi sağlar.
 
 İşleri kullanmaya başlamak için [REST API kılavuzuna](./try-review-api-job.md) bakın.
 

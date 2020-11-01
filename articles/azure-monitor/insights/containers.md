@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 07/06/2020
-ms.openlocfilehash: b681e3fa4963a8fe899ccbad8dbf1bbdfbe452ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a02ea022bedd92e9deaa0730cc1be051a9d20c88
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326911"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145693"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Azure Izleyici 'de kapsayıcı Izleme çözümü
 
@@ -116,7 +116,7 @@ Windows çalıştıran bilgisayarlarda Docker altyapılarını yüklemek ve yap�
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Linux kapsayıcı Konakları yükleyip yapılandırma
 
-Docker 'ı yükledikten sonra, aracıyı Docker ile kullanılmak üzere yapılandırmak için kapsayıcı ana bilgisayarınız için aşağıdaki ayarları kullanın. İlk olarak, Azure portal bulabileceğiniz Log Analytics çalışma alanı KIMLIĞINIZ ve anahtarınız olmalıdır. Çalışma alanınızda, **Quick Start**  >  **çalışma alanı kimliğinizi** ve **birincil anahtarınızı**görüntülemek için hızlı başlangıç**bilgisayarlar** ' a tıklayın.  Her ikisini de kopyalayıp sık kullandığınız bir düzenleyiciye yapıştırın.
+Docker 'ı yükledikten sonra, aracıyı Docker ile kullanılmak üzere yapılandırmak için kapsayıcı ana bilgisayarınız için aşağıdaki ayarları kullanın. İlk olarak, Azure portal bulabileceğiniz Log Analytics çalışma alanı KIMLIĞINIZ ve anahtarınız olmalıdır. Çalışma alanınızda, **Quick Start**  >  **çalışma alanı kimliğinizi** ve **birincil anahtarınızı** görüntülemek için hızlı başlangıç **bilgisayarlar** ' a tıklayın.  Her ikisini de kopyalayıp sık kullandığınız bir düzenleyiciye yapıştırın.
 
 **CoreOS hariç tüm Linux kapsayıcı konakları için:**
 
@@ -476,12 +476,12 @@ Linux Kubernetes ortamınızda Log Analytics Aracısı dağıtmak üzere Held 'y
  
     RESOURCES:
     ==> v1/Secret
-    NAME            TYPE    DATA  AGE
-    omsagent-msoms  Opaque  3     17m
+    NAME            TYPE    DATA  AGE
+    omsagent-msoms  Opaque  3     17m
  
     ==> v1beta1/DaemonSet
-    NAME            DESIRED  CURRENT  READY  UP-TO-DATE  AVAILABLE  NODE-SELECTOR  AGE
-    omsagent-msoms  3        3        3      3           3          <none>         17m
+    NAME            DESIRED  CURRENT  READY  UP-TO-DATE  AVAILABLE  NODE-SELECTOR  AGE
+    omsagent-msoms  3        3        3      3           3          <none>         17m
     ```
    
     Daha fazla bilgi için lütfen [kapsayıcı çözümü HELI grafiğini](https://aka.ms/omscontainerhelm)ziyaret edin.
@@ -513,11 +513,11 @@ Windows ve Hyper-V kapsayıcı izlemesini etkinleştirmek için, kapsayıcı Kon
 
 Service Fabric üzerinde çalışan Windows kapsayıcılarını izleyebilirsiniz. Ancak, yalnızca [Azure 'da çalışan sanal makineler](../learn/quick-collect-azurevm.md) ve [Şirket içi ortamınızda Windows çalıştıran bilgisayarlar](../platform/agent-windows.md) Service Fabric için desteklenmektedir.
 
-Kapsayıcı Izleme çözümünün Windows için doğru şekilde ayarlandığını doğrulayabilirsiniz. Yönetim paketinin doğru şekilde indirilip indirilmediğini denetlemek için *ContainerManagement.xxx*bakın. Dosyalar, C:\Program Files\Microsoft Monitoring Sk\k\sistem sağlığı hizmeti State\Management Packs klasöründe olmalıdır.
+Kapsayıcı Izleme çözümünün Windows için doğru şekilde ayarlandığını doğrulayabilirsiniz. Yönetim paketinin doğru şekilde indirilip indirilmediğini denetlemek için *ContainerManagement.xxx* bakın. Dosyalar, C:\Program Files\Microsoft Monitoring Sk\k\sistem sağlığı hizmeti State\Management Packs klasöründe olmalıdır.
 
 ## <a name="solution-components"></a>Çözüm bileşenleri
 
-Azure portal, *Çözüm Galerisi* gidin ve **kapsayıcı izleme çözümünü**ekleyin. Windows aracılarını kullanıyorsanız, bu çözümü eklediğinizde aşağıdaki yönetim paketi bir aracı olan her bilgisayara yüklenir. Yönetim Paketi için yapılandırma veya bakım gerekli değildir.
+Azure portal, *Çözüm Galerisi* gidin ve **kapsayıcı izleme çözümünü** ekleyin. Windows aracılarını kullanıyorsanız, bu çözümü eklediğinizde aşağıdaki yönetim paketi bir aracı olan her bilgisayara yüklenir. Yönetim Paketi için yapılandırma veya bakım gerekli değildir.
 
 - *ContainerManagement.xxx* , C:\Program Files\Microsoft Monitoring Tors T\k\sistem sağlığı hizmeti State\Management paketlerine yüklendi
 
@@ -574,7 +574,7 @@ Kutucukta, ortamda kaç kapsayıcının olduğunu ve başarısız, çalışıyor
 
 Panonun her alanı, toplanan verilerde çalıştırılan bir aramanın görsel gösterimidir.
 
-![Kapsayıcılar panosu](./media/containers/containers-dash01.png)
+![Toplanan verileri görüntülemek için bir pano gösteren ekran görüntüsü. ](./media/containers/containers-dash01.png)
 
 ![Kapsayıcılar panosu](./media/containers/containers-dash02.png)
 
@@ -599,9 +599,9 @@ Log Analytics sıfır olmayan bir çıkış kodu ile çıkış yaptıysanız kap
 2. Log Analytics açılır ve kapsayıcılarınızın durumunu aşağıdakine benzer şekilde görüntüler.  
    ![kapsayıcılar durumu](./media/containers/containers-log-search.png)
 3. Başarısız satırı genişletin ve ölçütünü sorguya eklemek için + simgesini tıklatın. Sonra sorgudaki özetleme satırını açıklama satırı yapın.
-   ![başarısız kapsayıcılar](./media/containers/containers-state-failed-select.png)  
+   ![Açıklama oluşturulması gereken çizgiyi gösteren ekran görüntüsü.](./media/containers/containers-state-failed-select.png)  
 1. Sorguyu çalıştırın ve ardından sonuçlarda bir satırı genişleterek görüntü KIMLIĞINI görüntüleyin.  
-   ![başarısız kapsayıcılar](./media/containers/containers-state-failed.png)  
+   ![Görüntü KIMLIĞINI görüntülemeyi gösteren ekran görüntüsü.](./media/containers/containers-state-failed.png)  
 1. Günlük sorgusuna aşağıdakini yazın. `ContainerImageInventory | where ImageID == <ImageID>` görüntü boyutu ve durdurulma ve başarısız görüntü sayısı gibi görüntüyle ilgili ayrıntıları görmek için.  
    ![başarısız kapsayıcılar](./media/containers/containers-failed04.png)
 

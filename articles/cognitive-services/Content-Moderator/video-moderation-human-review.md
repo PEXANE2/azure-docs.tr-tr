@@ -1,5 +1,5 @@
 ---
-title: İnsan incelemesi ile video denetleme-Content Moderator
+title: Inceleme aracı ile video denetleme-Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Uygun olmayan içeriğe sahip olan makine yardımlı video denetleme ve gözden geçirme aracını kullanın
 services: cognitive-services
@@ -8,97 +8,95 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/20/2020
 ms.author: pafarley
-ms.openlocfilehash: 0c031a890efc7fad7e5d9caefce3b0e66c515d90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 392cc06c6e0bce7ec2304da61033fc508d940bbb
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81404247"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93143816"
 ---
-# <a name="video-moderation-with-human-review"></a>İnsan incelemesinin bulunduğu video denetlemesi
+# <a name="video-moderation-with-the-review-tool"></a>Inceleme aracı ile video denetleme
 
 İşletmeniz için en iyi sonuçları elde etmek için Content Moderator makine yardımlı [video denetleme](video-moderation-api.md) ve [izleme aracını](Review-Tool-User-Guide/human-in-the-loop.md) , Yetişkin (açık) ve kcy (müstesel) içeriğe yönelik orta ve geri betikler için kullanın.
 
-## <a name="video-trained-classifier-preview"></a>Video eğitilen sınıflandırıcı (Önizleme)
+## <a name="view-videos-under-review"></a>İnceleme altında videoları görüntüleme
 
-Görüntü eğitilen modeller veya video eğitilen modeller ile makine destekli video sınıflandırması elde edilir. Görüntü eğitilen video sınıflandırıcılarından farklı olarak, Microsoft 'un yetişkinlere yönelik video sınıflandırıcıları videolar ile eğitilir. Bu yöntem, daha iyi eşleşme kalitesine neden olur.
+Panoda, video içerik türü içinde gözden geçirme kuyrukları ' nı seçin. Bu, bir gözden geçirme başlatır ve video içerik denetleme sayfasını açar.
 
-## <a name="shot-detection"></a>Görüntü algılama
+> [!div class="mx-imgBorder"]
+> ![Inceleme aracında video denetleme ayrıntılı görünümü](./Review-Tool-User-Guide/images/video-moderation-detailed.png)
 
-Sınıflandırma ayrıntılarının çıktıları sırasında, ek video zekası videoları çözümlemede daha fazla esneklik sağlar. Microsoft 'un video denetleme hizmeti, yalnızca çerçevelerin çıktısını almak yerine, görüntü düzeyinde bilgiler de sağlar. Artık videolarınızı, görüntü düzeyinde ve çerçeve düzeyinde analiz etme seçeneğiniz vardır.
+### <a name="review-count"></a>Gözden geçirme sayısı
 
-## <a name="key-frame-detection"></a>Anahtar çerçeve algılama
+Sayfada görüntülenmesini istediğiniz gözden geçirmeler sayısını ayarlamak için sağ üstteki kaydırıcıyı kullanın.
 
-Video denetleme hizmeti, düzenli aralıklarla çerçeve almak yerine yalnızca tamamlanmış olabilecek (iyi) çerçeveleri tanımlar ve verir. Özelliği, çerçeve düzeyinde yetişkinlere yönelik ve hızlı analizler için verimli çerçeve oluşturulmasına olanak sağlar.
+### <a name="view-type"></a>Görünüm türü
 
-Aşağıdaki ayıklama, olası görüntüler, anahtar çerçeveler ve yetişkin ve kcy puanlarını içeren kısmi bir yanıt gösterir:
+Farklı içerik girişlerini kutucuk olarak veya ayrıntılı bir görünümde görüntüleyebilirsiniz. **Ayrıntı** görünümü, seçili video hakkında önemli çerçeveleri ve diğer bilgileri görmenizi sağlayacak. 
 
-```json
-"fragments":[  
-  {  
-    "start":0,
-    "duration":18000
-  },
-  {  
-    "start":18000,
-    "duration":3600,
-    "interval":3600,
-    "events":[  
-      [  
-        {  
-          "reviewRecommended":false,
-          "adultScore":0.00001,
-          "racyScore":0.03077,
-          "index":5,
-          "timestamp":18000,
-          "shotIndex":0
-        }
-      ]
-    ]
-  },
-  {  
-    "start":18386372,
-    "duration":119149,
-    "interval":119149,
-    "events":[  
-      [  
-        {  
-          "reviewRecommended":true,
-          "adultScore":0.00000,
-          "racyScore":0.91902,
-          "index":5085,
-          "timestamp":18386372,
-          "shotIndex":62
-        }
-      ]
-    ]
-```
+> [!NOTE]
+> Video denetleme hizmeti, düzenli aralıklarla çerçeve almak yerine yalnızca tamamlanmış olabilecek (iyi) çerçeveleri tanımlar ve verir. Bu özellik, çerçeve düzeyinde yetişkinlere yönelik ve hızlı analizler için verimli çerçeve oluşturulmasına olanak sağlar.
 
-## <a name="visualization-for-human-reviews"></a>İnsan incelemeleri için görselleştirme
+**Döşenmiş** görünüm her videoyu tek bir kutucuk olarak gösterir. Videoyu büyütmek ve diğerlerini gizlemek için bir video çerçevesinin üzerindeki Genişlet düğmesini seçin.
 
-Daha fazla sayıda durumda, işletmeler video, çerçeve ve makine tarafından atanan etiketleri işlemek için bir insan incelemesi çözümüne ihtiyaç duyar. Videoları ve kareleri inceleyen insan BT yöneticileri, öngörülerin tamamen bir görünümünü alır, etiketleri değiştirebilir ve kararlarını gönderir.
+### <a name="content-obscuring-effects"></a>Content-obscuring etkileri
 
-![video inceleme aracı varsayılan görünümü](images/video-review-default-view.png)
+Bu Content-obscuring efektlerini ayarlamak için **Tümünü Bulanıklaştır** ve **siyah beyaz** geçiş tuşlarını kullanın. Varsayılan olarak açıktır. **Döşenmiş** görünümde, her bir video için etkileri tek tek değiştirebilirsiniz.
 
-## <a name="player-view-for-video-level-review"></a>Video düzeyinde inceleme için oynatıcı görünümü
+## <a name="check-video-details"></a>Video ayrıntılarını denetle
 
-Video düzeyinde ikili kararlar, olası yetişkinlere ve kcy çerçevelerini gösteren bir video oynatıcı görünümüyle mümkün hale getirilir. İnsan gözden geçirenler, sahneleri incelemek için çeşitli hız seçenekleriyle videoda gezinenler. Bunlar, etiketleri değiştirerek kararlarını doğrulamalar.
+**Ayrıntı** görünümünde sağ bölmede, size video hakkında ayrıntılar veren çeşitli sekmeler gösterilir.
 
-![video İnceleme araç oynatıcı görünümü](images/video-review-player-view.PNG)
+* Videolarınıza özel notlar eklemek için **Notlar** sekmesini seçin.
+* **Transcript** &mdash; Hizmetin videodaki herhangi bir konuşmayı otomatik olarak çıkaran video dökümünü görmek için dökümü sekmesini seçin. Metnin bir bölümünü seçtiğinizde video oynatıcı videonun bu bölümüne atlayacaktır.
+* Video dosyası meta verilerini görüntülemek için **meta veri** sekmesini seçin.
+* İnceleme geçmişini (oluşturulduğu tarih ve nasıl değiştirildiği gibi) görmek için **Geçmiş** sekmesini seçin.
 
-## <a name="frames-view-for-detailed-reviews"></a>Ayrıntılı incelemeler için çerçeveler görünümü
+> [!div class="mx-imgBorder"]
+> ![Video denetleme toplu etiketleri düğmesi](./Review-Tool-User-Guide/images/video-moderation-video-details.png)
 
-Çerçeve tabanlı bir görünümle çerçeve başına analiz için ayrıntılı bir video incelemesi yapılabilir. İnsan gözden geçirenler bir veya daha fazla kare inceleyerek, kararları almak için bir veya daha fazla kare ve geçiş etiketi seçer İsteğe bağlı bir sonraki adım, rahatsız edici çerçevelerin veya içeriğin bir kopyası olur.
+## <a name="apply-moderation-tags"></a>Denetleme etiketlerini Uygula
 
-![video İnceleme araç çerçeveleri görünümü](images/video-review-frames-view-apply-tags.PNG)
+Video incelemesinin ana görevi videolarda veya videoların parçaları üzerinde denetleme etiketleri uygulamak veya kaldırmak.
 
-## <a name="transcript-moderation"></a>Transkripti denetleme
+### <a name="bulk-tagging"></a>Toplu etiketleme
 
-Videolar genellikle, rahatsız edici bir konuşma için gereken bir sestir. Konuşmayı metne dönüştürmek ve Content Moderator İnceleme API 'sini kullanarak İnceleme aracında metin denetlemesi için dökümü göndermek üzere Azure Media Indexer hizmetini kullanın.
+**Toplu Etiketler** araç çubuğu, birden fazla seçili videoya tek seferde Etiketler eklemenize olanak tanır. Bir veya daha fazla video seçip uygulamak istediğiniz etiketleri seçin ve **Gönder** ' e tıklayın. 
 
-![video inceleme aracı dökümü görünümü](images/video-review-transcript-view.png)
+> [!div class="mx-imgBorder"]
+> ![Video denetleme toplu etiketleri düğmesi](./Review-Tool-User-Guide/images/video-moderation-bulk-tags.png)
+
+
+### <a name="key-frame-tagging"></a>Anahtar çerçeve etiketleme
+
+Ayrıca, belirli anahtar çerçevelerine denetleme etiketleri de ekleyebilirsiniz. Anahtar çerçevesi kutucuk bölmesinden çerçeveler ' i seçin ve ardından istediğiniz etiketleri uygulamak için **ana kare etiketleri +** ' ni seçin.
+
+> [!NOTE]
+> Hizmet anahtar çerçevelerini ayıklayamadığınızda, anahtar çerçevesi kutucuk bölmesi **kullanılabilir bir çerçeve** göstermez ve anahtar çerçeveler seçme seçeneği gri renkte görünür. Bu durumda, videoya yalnızca bir bütün olarak etiketleri uygulayabilirsiniz ( **video etiketleri +** düğmesini kullanarak).
+
+> [!div class="mx-imgBorder"]
+> ![Inceleme aracında video denetleme ayrıntılı görünümü](./Review-Tool-User-Guide/images/video-moderation-tagging-options.png)
+
+## <a name="put-a-review-on-hold"></a>Beklemeye bir gözden geçirme koy
+
+Video bölmesinin alt kısmındaki **tut** düğmesi, geri alma ve daha sonra tamamlayabilmeniz için bir gözden geçirme koymanızı sağlar. Bunu, şu anda kullanılamayan başka bir takım üyesi veya yöneticisinden bir danışmayı gerektiren bir gözden geçirme için yapabilirsiniz. 
+
+Ekranın üst kısmındaki **tut** düğmesine tıklayarak videoları beklemeye alabilirsiniz. Tut bölmesi sağ tarafta görünür. Buradan, bekletme sırasında birden fazla inceleme seçebilir ve bunları kuyruğa geri bırakabilir ya da sona erme süresini ayarlayabilirsiniz. Önceden yapılandırılmış sürenin ardından, bekletme gözden geçirmeleri sıraya geri yayımlanır. Şu anda seçili olan süre sonu zamanından önce saymak için **Kaydet** ' i seçin.
+
+> [!div class="mx-imgBorder"]
+> ![Inceleme aracında video denetleme ayrıntılı görünümü](./Review-Tool-User-Guide/images/video-moderation-hold.png)
+
+## <a name="submit-a-review"></a>İnceleme gönder
+
+Etiketlerinizi uyguladıktan sonra video bölmesinin alt kısmındaki **Gönder** düğmesini seçin. Birden çok video etiketlediyseniz, bunları tek bir gözden geçirme altında veya ayrı incelemeler halinde gönderebilirsiniz.
+
+## <a name="limbo-state"></a>Limbo durumu
+
+Bir gözden geçirmeyi gönderdikten sonra, video, ekranın üst kısmındaki **limbo** düğmesini seçerek görüntüleyebileceğiniz **limbo** durumuna taşınır. Videolar önceden yapılandırılmış bir süre için limbo durumunda kalır (alt kısımdaki menüde değişebilir) veya yeniden gözden geçirilip veya el ile gönderilene kadar olur.
+
+Videoların limbo 'dan sona erdiğinde, İncelemeleri Tamam olarak işaretlenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -9,18 +9,18 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 02/07/2019
-ms.openlocfilehash: f8b5e344fc963d466571e75ff16f17367dc32971
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37086a925d65a80f219c8e0a3358c834a2691701
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87844856"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145659"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Postman ile FHıR için Azure API 'sine erişme
 
 İstemci uygulaması bir [REST API](https://www.hl7.org/fhir/http.html)aracılığıyla bir FHıR API 'sine erişir. Ayrıca, uygulamalar oluştururken, örneğin hata ayıklama amacıyla, FHıR sunucusuyla doğrudan etkileşim kurmak isteyebilirsiniz. Bu öğreticide, bir FHıR sunucusuna erişmek için [Postman](https://www.getpostman.com/) 'ı kullanmak için gereken adımları adım adım göstereceğiz. Postman, API 'Lere erişen uygulamalar oluştururken genellikle hata ayıklama için kullanılan bir araçtır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure 'da bir FHıR uç noktası. Azure için, FHıR için yönetilen Azure API 'sini veya açık kaynaklı FHıR sunucusunu kullanarak bu ayarı yapabilirsiniz. [Azure Portal](fhir-paas-portal-quickstart.md), [POWERSHELL](fhir-paas-powershell-quickstart.md)veya [Azure CLI](fhir-paas-cli-quickstart.md)kullanarak FHıR için yönetilen Azure API 'sini ayarlayın.
 - FHıR hizmetine erişmek için kullanacağınız bir [istemci uygulaması](register-confidential-azure-ad-client-app.md)
@@ -121,7 +121,7 @@ Artık geçerli bir erişim belirteciniz olduğuna göre. Yeni bir hasta ekleyeb
 
 "Gönder" düğmesine basın ve hasta 'in başarıyla oluşturulduğunu görmeniz gerekir:
 
-![Hasta oluşturuldu](media/tutorial-postman/postman-patient-created.png)
+![Hasta 'in başarıyla oluşturulduğunu gösteren ekran görüntüsü.](media/tutorial-postman/postman-patient-created.png)
 
 Hasta aramasını yinelediğiniz takdirde hasta kaydını görmeniz gerekir:
 

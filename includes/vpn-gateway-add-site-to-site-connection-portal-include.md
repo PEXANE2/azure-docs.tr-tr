@@ -9,14 +9,14 @@ ms.date: 10/22/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 48f33514510618abadf329a11a9ab71a020be0bd
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "92479585"
 ---
-1. Sanal ağ geçidinizin sayfasını açın. Ağ geçidine, **sanal ağınızın adına gidip > genel bakış ' ı > bağlı cihazlar-> adı**' na giderek çok daha fazla farklı yol olsa da gidebilirsiniz.
-1. Ağ geçidinin sayfasında **Bağlantılar**' ı seçin. Bağlantılar sayfasının en üstünde **+ Ekle** ' yi seçerek **bağlantı ekle** sayfasını açın.
+1. Sanal ağ geçidinizin sayfasını açın. Ağ geçidine, **sanal ağınızın adına gidip > genel bakış ' ı > bağlı cihazlar-> adı** ' na giderek çok daha fazla farklı yol olsa da gidebilirsiniz.
+1. Ağ geçidinin sayfasında **Bağlantılar** ' ı seçin. Bağlantılar sayfasının en üstünde **+ Ekle** ' yi seçerek **bağlantı ekle** sayfasını açın.
 
    :::image type="content" source="./media/vpn-gateway-add-site-to-site-connection-portal-include/connection.png" alt-text="Siteden siteye bağlantı":::
 1. **Bağlantı ekle** sayfasında, bağlantınız için değerleri yapılandırın.
@@ -28,8 +28,8 @@ ms.locfileid: "92479585"
    * **Paylaşılan Anahtar:** Buradaki değer, yerel şirket için VPN cihazınız için kullandığınız değerle eşleşmelidir. Örnekte 'abc123' değeri kullanılmıştır, ancak siz daha karmaşık bir değer kullanabilirsiniz (ve kullanmalısınız). Önemli olan, burada belirttiğiniz değerin VPN cihazınızı yapılandırırken belirttiğiniz değerle aynı olmasıdır.
    * **Azure özel IP adresini kullan** ' ın işaretini kaldırın.
    * **BGP etkinleştirme** işaretini kaldırın.
-   * **Ikev2**öğesini seçin.
-   * **Abonelik**, **Kaynak Grubu** ve **Konum** için kalan değerler sabittir.
+   * **Ikev2** öğesini seçin.
+   * **Abonelik** , **Kaynak Grubu** ve **Konum** için kalan değerler sabittir.
 
 1. Bağlantınızı oluşturmak için **Tamam ' ı** seçin. Ekranda yanıp sönen *Bağlantısı Oluşturuluyor* yazısını göreceksiniz.
 1. Bağlantıyı sanal ağ geçidinin **Bağlantılar** sayfasında görüntüleyebilirsiniz. *Bilinmiyor* Durumu *Bağlanıyor* olarak ve ardından *Başarılı* olarak değişir.

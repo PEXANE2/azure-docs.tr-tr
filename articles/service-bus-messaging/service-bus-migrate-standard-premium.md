@@ -4,10 +4,10 @@ description: Mevcut Azure Service Bus standart ad alanlarının Premium 'a geçi
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1ed09a077f086390c658e6650171c552b361008d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "85340743"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Mevcut Azure Service Bus standart ad alanlarını Premium katmanına geçirin
@@ -21,11 +21,11 @@ Bu makalede, mevcut standart katman ad alanlarının Premium katmana nasıl geç
 
 Aklınızda bazı noktaları:
 
-- Bu geçişin, mevcut gönderici ve alıcı uygulamalarının **kod veya yapılandırmada herhangi bir değişiklik gerektirmeyeceği**anlamına gelir. Var olan bağlantı dizesi otomatik olarak yeni Premium ad alanına işaret eder.
+- Bu geçişin, mevcut gönderici ve alıcı uygulamalarının **kod veya yapılandırmada herhangi bir değişiklik gerektirmeyeceği** anlamına gelir. Var olan bağlantı dizesi otomatik olarak yeni Premium ad alanına işaret eder.
 - Geçişin başarılı olması için **Premium** ad alanının içinde **hiç varlık olmaması** gerekir.
 - Standart ad alanındaki tüm **varlıklar** , geçiş işlemi sırasında Premium ad alanına **kopyalanır** .
 - Geçiş, Premium katmandaki **mesajlaşma birimi başına 1.000 varlıklarını** destekler. Kaç tane mesajlaşma birimine ihtiyacınız olduğunu belirlemek için, geçerli standart ad alanı üzerinde sahip olduğunuz varlıkların sayısıyla başlayın.
-- **Temel katmandan** **Premium katmanına**doğrudan geçiş yapamazsınız, ancak temel bir sonraki adımda standart ' dan Premium ' a geçiş yaparak bunu dolaylı olarak yapabilirsiniz.
+- **Temel katmandan** **Premium katmanına** doğrudan geçiş yapamazsınız, ancak temel bir sonraki adımda standart ' dan Premium ' a geçiş yaparak bunu dolaylı olarak yapabilirsiniz.
 
 ## <a name="migration-steps"></a>Geçiş adımları
 
@@ -89,14 +89,14 @@ Azure CLı veya PowerShell aracını kullanarak Service Bus standart ad alanın�
 
 Azure portal kullanılarak geçiş, komutları kullanılarak geçişle aynı mantıksal akışa sahiptir. Azure portal kullanarak geçiş yapmak için aşağıdaki adımları izleyin.
 
-1. Sol bölmedeki **Gezinti** menüsünde, **Premium 'a geçir**' i seçin. Sonraki sayfaya devam etmek için **Başlarken** düğmesine tıklayın.
+1. Sol bölmedeki **Gezinti** menüsünde, **Premium 'a geçir** ' i seçin. Sonraki sayfaya devam etmek için **Başlarken** düğmesine tıklayın.
     ![Geçiş giriş sayfası][]
 
-1. **Kurulumu**tamamladıktan sonra.
+1. **Kurulumu** tamamladıktan sonra.
    ![Kurulum ad alanı][]
    1. Varolan standart ad alanını içine geçirmek için Premium ad alanını oluşturun ve atayın.
         ![Kurulum ad alanı-Premium ad alanı oluşturma][]
-   1. **Geçiş sonrası bir ad**seçin. Geçiş tamamlandıktan sonra bu adı standart ad alanına erişmek için kullanacaksınız.
+   1. **Geçiş sonrası bir ad** seçin. Geçiş tamamlandıktan sonra bu adı standart ad alanına erişmek için kullanacaksınız.
         ![Kurulum ad alanı-geçiş sonrası adı seçme][]
    1. Devam etmek için **' ileri '** seçeneğini belirleyin.
 1. Standart ve Premium ad alanları arasında varlıkları eşitleyin.

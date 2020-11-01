@@ -1,18 +1,18 @@
 ---
 title: Sık karşılaşılan hataları giderme
 description: İlke tanımları, çeşitli SDK ve Kubernetes için eklenti oluşturma sorunlarını giderme hakkında bilgi edinin.
-ms.date: 10/05/2020
+ms.date: 10/30/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 98b5f1658a7d3fc7c4a7db7145b92bb6065befc5
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 74b622dd41fb28e845a35780e5d06588189ec029
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999888"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146288"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Azure Ilkesini kullanarak hatalarda sorun giderme
 
-İlke tanımları oluştururken, SDK ile çalışırken veya [Kubernetes eklentisi Için Azure ilkesini](../concepts/policy-for-kubernetes.md) ayarlarken hatalarla karşılaşabilirsiniz. Bu makalede, oluşabilecek çeşitli hatalar ve bunların nasıl çözümleneceği açıklanmaktadır.
+İlke tanımları oluştururken, SDK ile çalışırken veya [Kubernetes eklentisi Için Azure ilkesini](../concepts/policy-for-kubernetes.md) ayarlarken hatalarla karşılaşabilirsiniz. Bu makalede, oluşabilecek çeşitli genel hatalar ve bunların nasıl çözümleneceği açıklanır.
 
 ## <a name="finding-error-details"></a>Hata ayrıntılarını bulma
 
@@ -56,7 +56,7 @@ Yeni bir ilke veya girişim atamasının uygulanması yaklaşık 30 dakika süre
 
 #### <a name="issue"></a>Sorun
 
-Kaynak, bu kaynak için beklenen, _uyumlu_ veya _uyumsuz_olan değerlendirme durumunda değil.
+Kaynak, bu kaynak için beklenen, _uyumlu_ veya _uyumsuz_ olan değerlendirme durumunda değil.
 
 #### <a name="cause"></a>Nedeni
 
@@ -88,14 +88,14 @@ Azure Ilkesi tarafından işlem yapılması beklenen bir kaynak değildir ve [Az
 
 #### <a name="cause"></a>Nedeni
 
-İlke ataması, _Disabled_'ın [Enforcementmode](../concepts/assignment-structure.md#enforcement-mode) için yapılandırılmış. Zorlama modu devre dışı olsa da, ilke efekti zorlanmaz ve etkinlik günlüğünde giriş yoktur.
+İlke ataması, _Disabled_ 'ın [Enforcementmode](../concepts/assignment-structure.md#enforcement-mode) için yapılandırılmış. Zorlama modu devre dışı olsa da, ilke efekti zorlanmaz ve etkinlik günlüğünde giriş yoktur.
 
 #### <a name="resolution"></a>Çözüm
 
 İlke atamalarınızın zorlanmasıyla ilgili sorunları gidermek için aşağıdaki adımları izleyin:
 
 1. İlk olarak, bir değerlendirmenin tamamlanmasını ve uyumluluk sonuçlarının Azure portal veya SDK 'da kullanılabilir hale gelmesi için uygun süreyi bekleyin. Azure PowerShell veya REST API ile yeni bir değerlendirme taraması başlatmak için bkz. [isteğe bağlı değerlendirme taraması](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
-1. Atama parametrelerinin ve atama kapsamının doğru ayarlandığından ve **Enforcementmode** 'un _etkin_olduğundan emin olun. 
+1. Atama parametrelerinin ve atama kapsamının doğru ayarlandığından ve **Enforcementmode** 'un _etkin_ olduğundan emin olun. 
 1. [İlke tanımı modunu](../concepts/definition-structure.md#mode) denetleyin:
    - Tüm kaynak türleri için ' All ' modu.
    - İlke tanımı etiketleri veya konumu denetlediğinde ' dizinli ' modu.
@@ -135,7 +135,7 @@ Veya gibi desteklenen işlevleri kullanarak `parameter()` `resourceGroup()` , il
 
 Bir işlevi bir ilke tanımının parçası olacak şekilde geçirmek için, tüm dizeyi, özelliği gibi görünecek şekilde kaçış `[` `[[resourceGroup().tags.myTag]` . Kaçış karakteri, şablonu işlerken Kaynak Yöneticisi değeri bir dize olarak işlemesine neden olur. Daha sonra Azure Ilkesi, işlevin beklenen şekilde dinamik olmasını sağlayan ilkeyi ilke tanımına koyar. Daha fazla bilgi için bkz. [Azure Resource Manager şablonlarındaki sözdizimi ve ifadeler](../../../azure-resource-manager/templates/template-expressions.md).
 
-## <a name="add-on-installation-errors"></a>Eklenti yükleme hataları
+## <a name="add-on-for-kubernetes-installation-errors"></a>Kubernetes yükleme hataları için eklenti
 
 ### <a name="scenario-install-using-helm-chart-fails-on-password"></a>Senaryo: parola üzerinde Held grafik kullanarak Install başarısız oluyor
 
@@ -188,10 +188,131 @@ Ayrıntılı bir anlatım için aşağıdaki blog gönderisine bakın:
 
 [Konuk yapılandırma denetim ilkeleri için önemli değişiklik yayınlandı](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
 
+## <a name="add-on-for-kubernetes-general-errors"></a>Kubernetes genel hataları için eklenti
+
+### <a name="scenario-add-on-doesnt-work-with-aks-clusters-on-version-119-preview"></a>Senaryo: eklenti 1,19 sürümündeki AKS kümeleriyle birlikte çalışmıyor (Önizleme)
+
+#### <a name="issue"></a>Sorun
+
+Sürüm 1,19 kümeleri, ağ geçidi denetleyicisi ve ilke Web kancası pods aracılığıyla bu hatayı döndürür:
+
+```
+2020/09/22 20:06:55 http: TLS handshake error from 10.244.1.14:44282: remote error: tls: bad certificate
+```
+
+#### <a name="cause"></a>Nedeni
+
+1,19 (Önizleme) sürümündeki AKS clusers henüz Azure Ilke eklentisi ile uyumlu değil.
+
+#### <a name="resolution"></a>Çözüm
+
+Azure Ilke eklentisi ile Kubernetes 1,19 (Önizleme) kullanmaktan kaçının. Eklenti, 1,16, 1,17 veya 1,18 gibi desteklenen herhangi bir genel kullanıma sunulan sürümle birlikte kullanılabilir.
+
+### <a name="scenario-add-on-is-unable-to-reach-the-azure-policy-service-endpoint-due-to-egress-restrictions"></a>Senaryo: eklenti, çıkış kısıtlamaları nedeniyle Azure Ilke hizmeti uç noktasına ulaşamıyor
+
+#### <a name="issue"></a>Sorun
+
+Eklenti Azure Ilke hizmeti uç noktasına ulaşamıyor ve aşağıdaki hatalardan birini döndürür:
+
+- `failed to fetch token, service not reachable`
+- `Error getting file "Get https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/template.yaml: dial tcp 151.101.228.133.443: connect: connection refused`
+
+#### <a name="cause"></a>Nedeni
+
+Bu sorunlar, bir küme çıkışı kilitlendiğinde oluşur.
+
+#### <a name="resolution"></a>Çözüm
+
+Aşağıdaki makalelerdeki etki alanlarının ve bağlantı noktalarının açık olduğundan emin olun:
+
+- [AKS kümeleri için gerekli giden ağ kuralları ve FQDN 'Ler](../../../aks/limit-egress-traffic.md#required-outbound-network-rules-and-fqdns-for-aks-clusters)
+- [Azure Arc etkin Kubernetes için Azure Policy eklentisini yükler (Önizleme)](../concepts/policy-for-kubernetes.md#install-azure-policy-add-on-for-azure-arc-enabled-kubernetes)
+
+### <a name="scenario-add-on-is-unable-to-reach-the-azure-policy-service-endpoint-due-to-aad-pod-identity-configuration"></a>Senaryo: eklenti, AAD-Pod kimlik yapılandırması nedeniyle Azure Ilke hizmeti uç noktasına ulaşamıyor
+
+#### <a name="issue"></a>Sorun
+
+Eklenti Azure Ilke hizmeti uç noktasına ulaşamıyor ve aşağıdaki hatalardan birini döndürür:
+
+- `azure.BearerAuthorizer#WithAuthorization: Failed to refresh the Token for request to https://gov-prod-policy-data.trafficmanager.net/checkDataPolicyCompliance?api-version=2019-01-01-preview: StatusCode=404`
+- `adal: Refresh request failed. Status Code = '404'. Response body: getting assigned identities for pod kube-system/azure-policy-8c785548f-r882p in CREATED state failed after 16 attempts, retry duration [5]s, error: <nil>`
+
+#### <a name="cause"></a>Nedeni
+
+Bu hata, kümeye _Add-Pod kimliği_ yüklendiğinde ve _Kuto-System_ 'ların _AAD-Pod kimliği_ 'nde dışlanmadığı durumlarda oluşur.
+
+_AAD-Pod kimliği_ bileşen düğümü yönetilen kimliği (NMI) Pod, Azure örnek meta veri uç noktası çağrılarını ele almak için düğümlerin Iptables 'larını değiştirir. Bu kurulum, Pod 'ın _AAD-Pod kimliği_ kullanmasa bile meta veri uç noktasına yapılan tüm istekler nmi tarafından ele getirilir anlamına gelir.
+**AzurePodIdentityException** CRD, _AAD_ 'de tanımlanan etiketlerle eşleşen bir pod 'dan kaynaklanan meta veri uç noktası isteklerinin, NMI içinde herhangi bir işlem yapılmadan proxy olması gerektiğini bildirmek üzere yapılandırılabilir.
+
+#### <a name="resolution"></a>Çözüm
+
+`kubernetes.azure.com/managedby: aks` **AzurePodIdentityException** CRD 'yi yapılandırarak _AAD-Pod-identity_ içindeki _kuin-System_ ad alanındaki etiketli sistem yığınlarını hariç tutun.
+
+Daha fazla bilgi için bkz. [belirli bir pod/uygulama IÇIN AAD Pod kimliğini devre dışı bırakma](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
+
+Bir özel durum yapılandırmak için aşağıdaki örneğe bakın:
+
+```yaml
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzurePodIdentityException
+metadata:
+  name: mic-exception
+  namespace: default
+spec:
+  podLabels:
+    app: mic
+    component: mic
+---
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzurePodIdentityException
+metadata:
+  name: aks-addon-exception
+  namespace: kube-system
+spec:
+  podLabels:
+    kubernetes.azure.com/managedby: aks
+```
+
+### <a name="scenario-the-resource-provider-isnt-registered"></a>Senaryo: kaynak sağlayıcı kayıtlı değil
+
+#### <a name="issue"></a>Sorun
+
+Eklenti Azure Ilke hizmeti uç noktasına ulaşabilir, ancak şu hatayı görür:
+
+```
+The resource provider 'Microsoft.PolicyInsights' is not registered in subscription '{subId}'. See https://aka.ms/policy-register-subscription for how to register subscriptions.
+```
+
+#### <a name="cause"></a>Nedeni
+
+`Microsoft.PolicyInsights`Kaynak sağlayıcısı kayıtlı değil ve ilke tanımlarını almak ve uyumluluk verilerini döndürmek için eklenti için kayıtlı olması gerekir.
+
+#### <a name="resolution"></a>Çözüm
+
+`Microsoft.PolicyInsights`Kaynak sağlayıcısını kaydedin. Yönergeler için bkz. [kaynak sağlayıcısını kaydetme](../../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
+
+### <a name="scenario-the-subscript-is-disabled"></a>Senaryo: alt simge devre dışı
+
+#### <a name="issue"></a>Sorun
+
+Eklenti Azure Ilke hizmeti uç noktasına ulaşabilir, ancak şu hatayı görür:
+
+```
+The subscription '{subId}' has been disabled for azure data-plane policy. Please contact support.
+```
+
+#### <a name="cause"></a>Nedeni
+
+Bu hata, aboneliğin sorunlu olduğu belirlenen ve aboneliği engelleyecek Özellik bayrağının eklendiği anlamına gelir `Microsoft.PolicyInsights/DataPlaneBlocked` .
+
+#### <a name="resolution"></a>Çözüm
+
+`azuredg@microsoft.com`Bu sorunu araştırmak ve çözmek için özellik ekibine başvurun. 
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
 
 - [Microsoft Q&A](/answers/topics/azure-policy.html)aracılığıyla uzmanlardan yanıt alın.
 - [@AzureSupport](https://twitter.com/azuresupport)Azure Community 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
-- Daha fazla yardıma ihtiyacınız varsa, bir Azure destek olayı dosyası gönderebilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.
+- Daha fazla yardıma ihtiyacınız varsa, bir Azure destek olayı dosyası gönderebilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al** ' ı seçin.

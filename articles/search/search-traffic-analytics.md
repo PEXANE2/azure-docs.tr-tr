@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 03/18/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: d93ced4b45befec207494909de61d30a98d2a67e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "91333741"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>Arama trafiği analizi için telemetri verilerini toplama
@@ -49,11 +49,11 @@ Application Insights bir kaynağınız olduğunda, uygulamanızı kaydetmek içi
 
 Bazı Visual Studio proje türleri için çalışma için bir kısayol aşağıdaki adımlarda yansıtılır. Bir kaynak oluşturur ve uygulamanızı yalnızca birkaç tıklamayla kaydeder.
 
-1. Visual Studio ve ASP.NET geliştirme için çözümünüzü açın ve **Proje**  >  **Ekle Application Insights telemetri**' yi seçin.
+1. Visual Studio ve ASP.NET geliştirme için çözümünüzü açın ve **Proje**  >  **Ekle Application Insights telemetri** ' yi seçin.
 
 1. **Get Started** düğmesine tıklayın.
 
-1. Microsoft hesabı, Azure aboneliği ve bir Application Insights kaynağı (varsayılan olarak yeni bir kaynak) sağlayarak uygulamanızı kaydedin. **Kaydet**’e tıklayın.
+1. Microsoft hesabı, Azure aboneliği ve bir Application Insights kaynağı (varsayılan olarak yeni bir kaynak) sağlayarak uygulamanızı kaydedin. **Kaydet** ’e tıklayın.
 
 Bu noktada, uygulamanız uygulama izleme için ayarlanır. Bu, tüm sayfa yüklemelerinin varsayılan ölçümlerle izlendiği anlamına gelir. Önceki adımlar hakkında daha fazla bilgi için bkz. [sunucu tarafı telemetrisini Application Insights etkinleştirme](../azure-monitor/app/asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio).
 
@@ -129,12 +129,12 @@ var searchId = request.getResponseHeader('x-ms-azs-searchid');
 
 Bir kullanıcı tarafından her bir arama isteği verildiğinde, bir Application Insights özel olayında aşağıdaki şemaya sahip bir arama olayı olarak oturum açmanız gerekir. Yalnızca Kullanıcı tarafından oluşturulan arama sorgularının günlüğe kaydetmeyi unutmayın.
 
-+ **SearchServiceName**: (dize) arama hizmeti adı
-+ **Searchıd**: (GUID) arama sorgusunun benzersiz tanımlayıcısı (arama yanıtında gelir)
-+ **IndexName**: (dize) Sorgulanacak arama hizmeti dizini
-+ **Queryterms**: (dize) Kullanıcı tarafından girilen arama terimleri
-+ **Resultcount**: (int) döndürülen belge sayısı (arama yanıtında gelir)
-+ **ScoringProfile**: (dize) kullanılan Puanlama profili adı
++ **SearchServiceName** : (dize) arama hizmeti adı
++ **Searchıd** : (GUID) arama sorgusunun benzersiz tanımlayıcısı (arama yanıtında gelir)
++ **IndexName** : (dize) Sorgulanacak arama hizmeti dizini
++ **Queryterms** : (dize) Kullanıcı tarafından girilen arama terimleri
++ **Resultcount** : (int) döndürülen belge sayısı (arama yanıtında gelir)
++ **ScoringProfile** : (dize) kullanılan Puanlama profili adı
 
 > [!NOTE]
 > Arama sorgunuza $count = true ekleyerek kullanıcı tarafından oluşturulan sorguların sayısını isteyin. Daha fazla bilgi için bkz. [arama belgeleri (REST)](/rest/api/searchservice/search-documents#counttrue--false).
@@ -172,10 +172,10 @@ appInsights.trackEvent("Search", {
 
 Bir kullanıcının bir belgeyi tıkladığı her seferinde, arama analizi amacıyla günlüğe kaydedilecek bir sinyal olan bu bir sinyaldir. Bu olayları aşağıdaki şemayla günlüğe kaydetmek için Application Insights özel olaylar kullanın:
 
-+ **ServiceName**: (dize) arama hizmeti adı
-+ **Searchıd**: (GUID) ilgili arama sorgusunun benzersiz tanımlayıcısı
-+ **Docid eşleyicisinde**: (dize) belge tanımlayıcısı
-+ **Konum**: (int) arama sonuçları sayfasında belgenin derecesi
++ **ServiceName** : (dize) arama hizmeti adı
++ **Searchıd** : (GUID) ilgili arama sorgusunun benzersiz tanımlayıcısı
++ **Docid eşleyicisinde** : (dize) belge tanımlayıcısı
++ **Konum** : (int) arama sonuçları sayfasında belgenin derecesi
 
 > [!NOTE]
 > Konum, uygulamanızdaki önemli bir sıraya başvurur. Bu numarayı, her zaman aynı olduğu sürece, karşılaştırmaya izin verecek şekilde ayarlayabilirsiniz.
@@ -209,19 +209,19 @@ appInsights.trackEvent("Click", {
 
 Uygulamanızı doldurduktan ve uygulamanızın Application Insights doğru şekilde bağlandığını doğruladıktan sonra, Power BI masaüstündeki verileri çözümlemek için önceden tanımlanmış bir rapor şablonu indirirler. Rapor, arama trafiği analizi için yakalanan ek verileri çözümlemek için yararlı olan grafikleri ve tabloları içerir.
 
-1. Azure Bilişsel Arama panosu sol gezinti bölmesinde, **Ayarlar**' ın altında, **Trafik Analizi ara**' ya tıklayın.
+1. Azure Bilişsel Arama panosu sol gezinti bölmesinde, **Ayarlar** ' ın altında, **Trafik Analizi ara** ' ya tıklayın.
 
 1. **Arama trafiği analizi** sayfasında, adım 3 ' te, Power BI yüklemek Için **Power BI Desktop al** ' a tıklayın.
 
    ![Power BI raporlarını al](./media/search-traffic-analytics/get-use-power-bi.png "Power BI raporlarını al")
 
-1. Aynı sayfada **Power BI raporu indir**' e tıklayın.
+1. Aynı sayfada **Power BI raporu indir** ' e tıklayın.
 
 1. Rapor Power BI Desktop açılır ve Application Insights bağlanmanız ve kimlik bilgilerini sağlamanız istenir. Application Insights kaynağınızın Azure portal sayfalarında bağlantı bilgilerini bulabilirsiniz. Kimlik bilgileri için, Portal oturum açma için kullandığınız kullanıcı adını ve parolayı belirtin.
 
    ![Application Insights'a Bağlan](./media/search-traffic-analytics/connect-to-app-insights.png "Application Insights'a Bağlan")
 
-1. **Yükle**' ye tıklayın.
+1. **Yükle** ' ye tıklayın.
 
 Rapor, arama performansınızı ve ilginizi geliştirmek için daha bilinçli kararlar almanıza yardımcı olan grafikleri ve tabloları içerir.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
-ms.openlocfilehash: 06d114c500722259d02a940633a76d043b83064a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 0832c975ecb410b97a24c975f9fc0f4799120abd
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077499"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145523"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Azure API Management hizmetini iç sanal ağ ile kullanma
 Azure API Management, Azure sanal ağları ile internet 'te erişilemeyen API 'Leri yönetebilir. Bağlantıyı yapmak için bir dizi VPN teknolojisi mevcuttur. API Management, bir sanal ağ içindeki iki ana modda dağıtılabilir:
@@ -43,11 +43,11 @@ API Management kullanarak, iç modda aşağıdaki senaryolar elde edebilirsiniz:
 
 Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız gerekir:
 
-+ **Etkin bir Azure aboneliği**.
++ **Etkin bir Azure aboneliği** .
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-+ **Azure API Management örneği**. Daha fazla bilgi için bkz. [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
++ **Azure API Management örneği** . Daha fazla bilgi için bkz. [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
 + Bir sanal ağda API Management hizmeti dağıtıldığında, [bağlantı noktalarının listesi](./api-management-using-with-vnet.md#required-ports) kullanılır ve açılması gerekir. 
 
 ## <a name="creating-an-api-management-in-an-internal-virtual-network"></a><a name="enable-vpn"> </a>İç sanal ağda API Management oluşturma
@@ -56,21 +56,23 @@ Dahili bir sanal ağdaki API Management hizmeti, [iç yük dengeleyici (klasik)]
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Azure portal kullanarak bir sanal ağ bağlantısını etkinleştirme
 
 1. [Azure Portal](https://portal.azure.com/)Azure API Management örneğinizi inceleyin.
-2. **Sanal ağ**' ı seçin.
+2. **Sanal ağ** ' ı seçin.
 3. API Management örneğini sanal ağın içine dağıtılacak şekilde yapılandırın.
 
     ![İç sanal ağda Azure API Management ayarlama menüsü][api-management-using-internal-vnet-menu]
 
-4. **Kaydet**'i seçin.
+4. **Kaydet** ’i seçin.
 
 Dağıtım başarılı olduktan sonra, genel bakış dikey penceresinde API Management hizmetinizin **özel** sanal IP adresini ve **genel** sanal IP adresini görmeniz gerekir. **Özel** sanal IP adresi,, `gateway` `portal` `management` ve `scm` bitiş noktalarına erişilebilen API Management alt ağ içinden gelen yük dengeli bir IP adresidir. **Ortak** sanal IP adresi **yalnızca** , `management` 3443 numaralı bağlantı noktası üzerinden uç noktaya giden denetim düzlemi trafiği Için kullanılır ve [apimana,][ServiceTags] servicetag öğesine kilitlenebilir.
 
 ![Dahili bir sanal ağ yapılandırılmış API Management panosu][api-management-internal-vnet-dashboard]
 
 > [!NOTE]
-> Azure portalında kullanılabilen test konsolu, ağ geçidi URL 'Si genel DNS 'de kayıtlı olmadığından, **iç** VNET tarafından dağıtılan hizmet için çalışmaz. Bunun yerine, **Geliştirici Portalında**sunulan test konsolunu kullanmanız gerekir.
+> Azure portalında kullanılabilen test konsolu, ağ geçidi URL 'Si genel DNS 'de kayıtlı olmadığından, **iç** VNET tarafından dağıtılan hizmet için çalışmaz. Bunun yerine, **Geliştirici Portalında** sunulan test konsolunu kullanmanız gerekir.
 
-### <a name="enable-a-virtual-network-connection-by-using-powershell-cmdlets"></a>PowerShell cmdlet 'lerini kullanarak sanal ağ bağlantısını etkinleştirme
+### <a name="deploy-api-management-into-virtual-network"></a><a name="deploy-apim-internal-vnet"> </a>API Management sanal ağa dağıtma
+
+[![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-management-create-with-internal-vnet%2Fazuredeploy.json)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

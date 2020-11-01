@@ -8,19 +8,19 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: 53887b7487c3f0bb70c9f8cc7cd61246fabc0b37
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 158d22ffb3bc5486e0523c07cc2c022c49f2ee9c
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970138"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145608"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Oto Rest kullanarak Azure dijital TWINS için özel SDK 'lar oluşturma
 
 Şu anda, Azure Digital TWINS API 'Leri ile etkileşime yönelik yalnızca yayımlanan veri düzlemi SDK 'Ları .NET (C#), JavaScript ve Java içindir. Bu SDK 'Lar hakkında genel bilgi edinmek için bkz. [*nasıl yapılır: Azure dijital TWINS API 'leri ve SDK 'Larını kullanma*](how-to-use-apis-sdks.md). Başka bir dilde çalışıyorsanız, bu makalede, oto Rest kullanarak kendi veri düzlemi SDK 'sını tercih ettiğiniz dilde nasıl oluşturabileceğiniz gösterilecektir.
 
 >[!NOTE]
-> Ayrıca, dilerseniz bir denetim düzlemi SDK 'Sı oluşturmak için, oto Rest 'i de kullanabilirsiniz. Bunu yapmak için, bu makaledeki adımları [Denetim düzlemi Swagger klasörü]] (veri düzlemi yerine) en son **Denetim düzlemi Swagger** (openapı) dosyasını kullanarak doldurun https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) .
+> Ayrıca, dilerseniz bir denetim düzlemi SDK 'Sı oluşturmak için, oto Rest 'i de kullanabilirsiniz. Bunu yapmak için, veri düzlemi yerine [Denetim düzlemi Swagger klasöründen](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) en son **Denetim düzlemi Swagger** (openapı) dosyasını kullanarak bu makaledeki adımları izleyin.
 
 ## <a name="set-up-your-machine"></a>Makinenizi kurma
 
@@ -47,7 +47,7 @@ Azure dijital TWINS Swagger dosyasında oto Rest 'i çalıştırmak için aşağ
 autorest --input-file=digitaltwins.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
 ```
 
-Sonuç olarak, çalışma dizininizde *Adtapı* adlı yeni bir klasör görürsünüz. Oluşturulan SDK dosyaları *Adtapı*ad alanına sahip olacaktır. Bu makaledeki kullanım örneklerinin geri kalanı aracılığıyla bu ad alanını kullanmaya devam edersiniz.
+Sonuç olarak, çalışma dizininizde *Adtapı* adlı yeni bir klasör görürsünüz. Oluşturulan SDK dosyaları *Adtapı* ad alanına sahip olacaktır. Bu makaledeki kullanım örneklerinin geri kalanı aracılığıyla bu ad alanını kullanmaya devam edersiniz.
 
 Oto Rest, çok çeşitli dil kodu oluşturucuları destekler.
 
@@ -64,7 +64,7 @@ Adımlar şunlardır:
 3. Çözüm Gezgini ' nde, oluşturulan çözümün *Adtapi* projesini sağ seçin ve *> var olan öğe Ekle ' yi seçin...*
 4. SDK 'Yı oluşturduğunuz klasörü bulun ve kök düzeyindeki dosyaları seçin
 5. "Tamam" düğmesine basın
-6. Projeye bir klasör ekleyin (Çözüm Gezgini içinde projeyi sağ seçin ve *> yeni klasör ekle*' yi seçin.
+6. Projeye bir klasör ekleyin (Çözüm Gezgini içinde projeyi sağ seçin ve *> yeni klasör ekle* ' yi seçin.
 7. Klasör *modellerini* adlandırın
 8. Çözüm Gezgini ' nde *modeller* klasörünü sağ seçin ve *> var olan öğeyi Ekle ' yi seçin...*
 9. Oluşturulan SDK 'nın *modeller* klasöründeki dosyaları seçin ve "Tamam" düğmesine basın
@@ -73,7 +73,7 @@ SDK 'Yı başarılı bir şekilde derlemek için, projenizin bu başvurulara iht
 * `Microsoft.Rest.ClientRuntime`
 * `Microsoft.Rest.ClientRuntime.Azure`
 
-Bunları eklemek için *NuGet paket yöneticisi > açık araçlar > çözüm Için NuGet Paketlerini Yönet...*.
+Bunları eklemek için *NuGet paket yöneticisi > açık araçlar > çözüm Için NuGet Paketlerini Yönet...* .
 
 1. Panelde, *tarayıcı* sekmesinin seçili olduğundan emin olun
 2. *Microsoft. Rest* 'i arayın
@@ -117,40 +117,25 @@ Oto Rest, SDK için iki tür sayfalama deseni üretir:
 * Sorgu API 'SI hariç tüm API 'Ler için bir tane
 * Bir sorgu API 'SI için
 
-Sorgu olmayan sayfalama düzeninde her çağrının iki sürümü vardır:
-* Başlangıç çağrısını yapmak için bir sürüm (gibi `DigitalTwins.ListEdges()` )
-* Aşağıdaki sayfaları almak için bir sürüm. Bu çağrılar "Next" (gibi) sonekine sahiptir `DigitalTwins.ListEdgesNext()`
+Sorgu olmayan sayfalama düzeninde, Azure dijital TWINS 'ten gelen giden ilişkilerin disk belleğine alınmış bir listesini almayı gösteren bir kod parçacığı aşağıda verilmiştir:
 
-Azure dijital TWINS 'ten gelen giden ilişkilerin disk belleğine alınmış bir listesini almayı gösteren bir kod parçacığı aşağıda verilmiştir:
 ```csharp
-try
-{
-    // List to hold the results in
-    List<object> relList = new List<object>();
-    // Enumerate the IPage object returned to get the results
-    // ListAsync will throw if an error occurs
-    IPage<object> relPage = await client.DigitalTwins.ListEdgesAsync(id);
-    relList.AddRange(relPage);
-    // If there are more pages, the NextPageLink in the page is set
-    while (relPage.NextPageLink != null)
+ try 
+ {
+     // List the relationships.
+    AsyncPageable<BasicRelationship> results = client.GetRelationshipsAsync<BasicRelationship>(srcId);
+    Console.WriteLine($"Twin {srcId} is connected to:");
+    // Iterate through the relationships found.
+    int numberOfRelationships = 0;
+    await foreach (string rel in results)
     {
-        // Get more pages...
-        relPage = await client.DigitalTwins.ListEdgesNextAsync(relPage.NextPageLink);
-        relList.AddRange(relPage);
+         ++numberOfRelationships;
+         // Do something with each relationship found
+         Console.WriteLine($"Found relationship-{rel.Name}->{rel.TargetId}");
     }
-    Console.WriteLine($"Found {relList.Count} relationships on {id}");
-    // Do something with each object found
-    // As relationships are custom types, they are JSON.Net types
-    foreach (JObject r in relList)
-    {
-        string relId = r.Value<string>("$edgeId");
-        string relName = r.Value<string>("$relationship");
-        Console.WriteLine($"Found relationship {relId} from {id}");
-    }
-}
-catch (ErrorResponseException e)
-{
-    Console.WriteLine($"*** Error retrieving relationships on {id}: {e.Response.StatusCode}");
+    Console.WriteLine($"Found {numberOfRelationships} relationships on {srcId}");
+} catch (RequestFailedException rex) {
+    Console.WriteLine($"Relationship retrieval error: {rex.Status}:{rex.Message}");   
 }
 ```
 

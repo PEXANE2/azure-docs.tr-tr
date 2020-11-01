@@ -10,12 +10,12 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: f6a4045308aa0ae8488839b0d5ea4d476c4dc883
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 6d154d8b35c175b88e91545ddc1e78f58f9be685
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776332"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146833"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Hızlı başlangıç: Azure App Service Java uygulaması oluşturma
 
@@ -80,7 +80,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
 
 1. **Abonelik** seçeneği ile sorulduğunda, `Subscription` satır başından başlayarak Yazdır numarasını girerek uygun seçeneği belirleyin.
 1. **Web uygulaması** seçeneğinde sorulduğunda, ENTER tuşuna basarak, bu seçeneği kabul edin `<create>` .
-1. **Işletim sistemi** seçeneğinde sorulduğunda, girerek **Windows** ' u seçin `2` .
+1. **Işletim sistemi** seçeneğinde sorulduğunda, girerek **Windows** ' u seçin `3` .
 1. Varsayılan Java sürümü olan 1,8 ' i kullanarak ENTER tuşuna basın.
 1. Son olarak, Seçimlerinizi onaylamak için son sorulduğunda ENTER tuşuna basın.
 
@@ -213,8 +213,8 @@ Gerekirse, App Service yapılandırmasını doğrudan ' de değiştirebilirsiniz
 `<subscriptionId>` | yanlış | Abonelik kimliğini belirtin. | 0.1.0 +
 `<resourceGroup>` | true | Web uygulamanız için Azure Kaynak grubu. | 0.1.0 +
 `<appName>` | true | Web uygulamanızın adı. | 0.1.0 +
-`<region>` | true | Web uygulamanızın barındırılacak bölgeyi belirtir; Varsayılan değer **westeurope**' dir. [Desteklenen bölgelerde](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) tüm geçerli bölgeler bölümü. | 0.1.0 +
-`<pricingTier>` | yanlış | Web uygulamanız için fiyatlandırma katmanı. Varsayılan değer **P1V2**' dir.| 0.1.0 +
+`<region>` | true | Web uygulamanızın barındırılacak bölgeyi belirtir; Varsayılan değer **westeurope** ' dir. [Desteklenen bölgelerde](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) tüm geçerli bölgeler bölümü. | 0.1.0 +
+`<pricingTier>` | yanlış | Web uygulamanız için fiyatlandırma katmanı. Varsayılan değer **P1V2** ' dir.| 0.1.0 +
 `<runtime>` | true | Çalışma zamanı ortamı yapılandırması, [burada](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)ayrıntıları görebilirsiniz. | 0.1.0 +
 `<deployment>` | true | Dağıtım yapılandırması, ayrıntıları [burada](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)görebilirsiniz. | 0.1.0 +
 

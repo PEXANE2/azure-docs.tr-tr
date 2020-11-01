@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7f5ca063bcc784498dddf87f34f0f7974b95ecaf
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: b929632318de41470412811885b9f1bd3054783a
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027322"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145982"
 ---
 # <a name="write-client-app-authentication-code"></a>İstemci uygulaması kimlik doğrulama kodunu yaz
 
@@ -31,12 +31,14 @@ Devam etmek için, kodunuzu yazdığınız bir istemci uygulaması projesine iht
 ## <a name="common-authentication-methods-with-azureidentity"></a>Azure. Identity ile ortak kimlik doğrulama yöntemleri
 
 `Azure.Identity` , bir taşıyıcı belirteç almak ve SDK 'inizle kimlik doğrulamak için kullanabileceğiniz çeşitli kimlik bilgileri alma yöntemleri sağlayan bir istemci kitaplığıdır. Bu makale C# dilinde örnekler sağlasa da `Azure.Identity` dahil olmak üzere çeşitli diller için görüntüleyebilirsiniz...
+
 * [.NET (C#)](/dotnet/api/azure.identity?preserve-view=true&view=azure-dotnet)
 * [Java](/java/api/overview/azure/identity-readme?preserve-view=true&view=azure-java-stable)
 * [JavaScript](/javascript/api/overview/azure/identity-readme?preserve-view=true&view=azure-node-latest)
 * [Python](/python/api/overview/azure/identity-readme?preserve-view=true&view=azure-python)
 
 Üç ortak kimlik bilgisi-içindeki yöntemleri alma `Azure.Identity` :
+
 * [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) `TokenCredential` , Azure 'a dağıtılacak uygulamalar için varsayılan bir kimlik doğrulama akışı sağlar ve **yerel geliştirme için önerilen seçenektir** . Ayrıca, bu makalede önerilen diğer iki yöntemi denemek için de etkinleştirilebilir; `ManagedIdentityCredential` `InteractiveBrowserCredential` bir yapılandırma değişkeniyle birlikte kaydırılır ve buna erişebilir.
 * [Managedıdentitycredential](/dotnet/api/azure.identity.managedidentitycredential?preserve-view=true&view=azure-dotnet) , [YÖNETILEN kimlikler (MSI)](../active-directory/managed-identities-azure-resources/overview.md)gerektiren durumlarda harika çalışır ve Azure Işlevleri ile çalışmaya ve Azure hizmetlerine dağıtmaya yönelik iyi bir adaydır.
 * [Interactivebrowsercredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) etkileşimli uygulamalara yöneliktir ve kimliği DOĞRULANMıŞ bir SDK istemcisi oluşturmak için kullanılabilir

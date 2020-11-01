@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 10/06/2020
-ms.openlocfilehash: 54775d7e9923505c6e68a47feed6726b9cb84c47
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0d22e10a71c3eee2026f55a73074ba02c68c2b78
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129941"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146186"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Teklif türüne göre yayımlama kılavuzu
 
@@ -39,10 +39,8 @@ Aşağıdaki tabloda, Iş Ortağı Merkezi 'nde ticari Market teklif türleri g�
 | [**IoT Edge modülü**](iot-edge-module.md) | Azure IoT Edge modüller, IoT Edge tarafından yönetilen en düşük hesaplama birimleridir ve Microsoft hizmetlerini (Azure Stream Analytics), 3. taraf hizmetleri veya kendi çözümüne özgü kodunuzu içerebilir. |
 | [**Yönetilen hizmet**](partner-center-portal/create-new-managed-service-offer.md) | Yönetilen hizmet teklifleri oluşturabilir ve [Azure açık Thouse](../lighthouse/overview.md)aracılığıyla müşteri tarafından atanan abonelikleri veya kaynak gruplarını yönetebilirsiniz.|
 | [**Power BI uygulaması** <br/> **Microsoft 365**](appsource-offer-publishing-guide.md) | Power BI ve Microsoft 365 oluşturan AppSource tekliflerini yayımlayabilirsiniz.|
-| [**Hizmet olarak yazılım**](plan-saas-offer.md) | Müşterinizin SaaS tabanlı, teknik çözümünüzü bir abonelik olarak satın almasını sağlamak için hizmet olarak yazılım (SaaS) teklif türünü kullanın. |
+| [**Hizmet olarak yazılım**](plan-saas-offer.md) | Müşterinizin SaaS tabanlı, teknik çözümünüzü bir abonelik olarak satın almasını sağlamak için hizmet olarak yazılım (SaaS) teklif türünü kullanın. SaaS tekliflerine yönelik çoklu oturum açma gereksinimleri hakkında bilgi için bkz. [ticari Market 'Te Azure AD ve transactable SaaS teklifleri](azure-ad-saas.md). |
 
-
-Seçenekleri ve teklif türlerini listeleyerek çoklu oturum açma gereksinimleri hakkında bilgi için bkz. [**Azure AD gereksinimleri**](enable-appsource-marketplace-using-azure-ad.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

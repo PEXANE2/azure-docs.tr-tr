@@ -8,10 +8,10 @@ ms.custom:
 - devx-track-csharp
 - contperfq1
 ms.openlocfilehash: 1bacb0c71c05aeb983bfa9ebf71873a22fea39a1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "91277708"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch uygulama paketleriyle işlem düğümlerine uygulama dağıtma
@@ -33,7 +33,7 @@ Bir Batch hesabı içindeki uygulama ve uygulama paketlerinin sayısı ve en faz
 
 ## <a name="understand-applications-and-application-packages"></a>Uygulamaları ve uygulama paketlerini anlama
 
-Azure Batch içinde bir *uygulama* , havuzunuzdaki işlem düğümlerine otomatik olarak indirilebilen bir sürümlü ikili dosyalar kümesine başvurur. Uygulama, uygulamanın farklı sürümlerini temsil eden bir veya daha fazla *uygulama paketi*içerir.
+Azure Batch içinde bir *uygulama* , havuzunuzdaki işlem düğümlerine otomatik olarak indirilebilen bir sürümlü ikili dosyalar kümesine başvurur. Uygulama, uygulamanın farklı sürümlerini temsil eden bir veya daha fazla *uygulama paketi* içerir.
 
 Her *uygulama paketi* , uygulama ikililerini ve destekleyici dosyaları içeren bir. zip dosyasıdır. Yalnızca. zip biçimi desteklenir.
 
@@ -69,7 +69,7 @@ Henüz bir depolama hesabı yapılandırmadıysanız, Batch hesabınızdaki **uy
 İki hesabı bağladıktan sonra toplu Işlem, bağlantılı depolama hesabında depolanan paketleri işlem düğümlerine otomatik olarak dağıtabilir.
 
 > [!IMPORTANT]
-> Uygulama paketlerini [güvenlik duvarı kurallarıyla](../storage/common/storage-network-security.md)yapılandırılmış Azure depolama hesaplarıyla veya **hiyerarşik ad alanı** **etkin**olarak ayarlanmış şekilde kullanamazsınız.
+> Uygulama paketlerini [güvenlik duvarı kurallarıyla](../storage/common/storage-network-security.md)yapılandırılmış Azure depolama hesaplarıyla veya **hiyerarşik ad alanı** **etkin** olarak ayarlanmış şekilde kullanamazsınız.
 
 Batch hizmeti, uygulama paketlerinizi blok blob 'ları olarak depolamak için Azure Storage 'ı kullanır. Blok Blobu verileri için [normal olarak ücretlendirilirsiniz](https://azure.microsoft.com/pricing/details/storage/) ve her bir paketin boyutu, Blok Blobu boyutunun üst sınırını aşamaz. Daha fazla bilgi için bkz. [depolama hesapları Için Azure Storage ölçeklenebilirlik ve performans hedefleri](../storage/blobs/scalability-targets.md). Maliyetleri en aza indirmek için uygulama paketlerinizin boyutunu ve sayısını göz önünde bulundurduğunuzdan emin olun ve kullanım dışı bırakılan paketleri düzenli olarak kaldırın.
 
@@ -81,33 +81,33 @@ Batch hesabınızdaki uygulamaları görüntülemek için sol gezinti menüsünd
 
 Bu menü seçeneği belirlendiğinde **uygulamalar** penceresi açılır. Bu pencere, hesabınızdaki her uygulamanın KIMLIĞINI ve aşağıdaki özellikleri görüntüler:
 
-- **Paketler**: Bu uygulamayla ilişkili sürümlerin sayısı.
-- **Varsayılan sürüm**: varsa, uygulamayı dağıttığınızda sürüm belirtilmemişse yüklenecek uygulama sürümü.
-- **Güncelleştirmelere Izin ver**: paket güncelleştirmelerine ve silmelerini izin verilip verilmeyeceğini belirtir.
+- **Paketler** : Bu uygulamayla ilişkili sürümlerin sayısı.
+- **Varsayılan sürüm** : varsa, uygulamayı dağıttığınızda sürüm belirtilmemişse yüklenecek uygulama sürümü.
+- **Güncelleştirmelere Izin ver** : paket güncelleştirmelerine ve silmelerini izin verilip verilmeyeceğini belirtir.
 
-Uygulama paketinin [dosya yapısını](files-and-directories.md) bir işlem düğümünde görmek Için Azure Portal Batch hesabınıza gidin. **Havuzlar**' ı seçin. ardından işlem düğümünü içeren havuzu seçin. Uygulama paketinin yüklü olduğu işlem düğümünü seçin ve **uygulamalar** klasörünü açın.
+Uygulama paketinin [dosya yapısını](files-and-directories.md) bir işlem düğümünde görmek Için Azure Portal Batch hesabınıza gidin. **Havuzlar** ' ı seçin. ardından işlem düğümünü içeren havuzu seçin. Uygulama paketinin yüklü olduğu işlem düğümünü seçin ve **uygulamalar** klasörünü açın.
 
 ### <a name="view-application-details"></a>Uygulama ayrıntılarını görüntüle
 
 Bir uygulamanın ayrıntılarını görmek için **uygulamalar** penceresinde seçin. Uygulamanız için aşağıdaki ayarları yapılandırabilirsiniz.
 
-- **Güncelleştirmelere Izin ver**: uygulama paketlerinin [güncelleştirilip güncelleştirilmediğini veya silinemeyeceğini](#update-or-delete-an-application-package)gösterir. Varsayılan değer **Evet**’tir. **Hayır**olarak ayarlanırsa, mevcut uygulama paketleri güncelleştirilemiyor veya silinemez, ancak yeni uygulama paketi sürümleri yine de eklenebilir.
-- **Varsayılan sürüm**: sürüm belirtilmemişse, uygulama dağıtıldığında kullanılacak varsayılan uygulama paketi.
-- **Görünen ad**: Batch çözümünüzün uygulama hakkında bilgi görüntülediğinde kullanabileceği kolay bir ad. Örneğin, bu ad Batch aracılığıyla müşterilerinize sağladığınız bir hizmetin Kullanıcı arabiriminde kullanılabilir.
+- **Güncelleştirmelere Izin ver** : uygulama paketlerinin [güncelleştirilip güncelleştirilmediğini veya silinemeyeceğini](#update-or-delete-an-application-package)gösterir. Varsayılan değer **Evet** ’tir. **Hayır** olarak ayarlanırsa, mevcut uygulama paketleri güncelleştirilemiyor veya silinemez, ancak yeni uygulama paketi sürümleri yine de eklenebilir.
+- **Varsayılan sürüm** : sürüm belirtilmemişse, uygulama dağıtıldığında kullanılacak varsayılan uygulama paketi.
+- **Görünen ad** : Batch çözümünüzün uygulama hakkında bilgi görüntülediğinde kullanabileceği kolay bir ad. Örneğin, bu ad Batch aracılığıyla müşterilerinize sağladığınız bir hizmetin Kullanıcı arabiriminde kullanılabilir.
 
 ### <a name="add-a-new-application"></a>Yeni uygulama ekle
 
 Yeni bir uygulama oluşturmak için, bir uygulama paketi ekleyin ve benzersiz bir uygulama KIMLIĞI belirtin.
 
-Batch hesabınızda, **uygulamalar** ' ı seçin ve ardından **Ekle**' yi seçin.
+Batch hesabınızda, **uygulamalar** ' ı seçin ve ardından **Ekle** ' yi seçin.
 
 :::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="Uygulamaların ve uygulama paketlerinin üst düzey görünümünü gösteren diyagram.":::
 
 Aşağıdaki bilgileri girin:
 
-- **Uygulama kimliği**: yenı uygulamanızın kimliği.
-- **Sürüm**": karşıya yüklediğiniz uygulama paketinin sürümü.
-- Uygulama **paketi**: uygulamayı yürütmek için gerekli olan uygulama ikililerini ve destekleyici dosyaları içeren. zip dosyası.
+- **Uygulama kimliği** : yenı uygulamanızın kimliği.
+- **Sürüm** ": karşıya yüklediğiniz uygulama paketinin sürümü.
+- Uygulama **paketi** : uygulamayı yürütmek için gerekli olan uygulama ikililerini ve destekleyici dosyaları içeren. zip dosyası.
 
 Girdiğiniz **uygulama kimliği** ve **sürümü** şu gereksinimlere uymalıdır:
 
@@ -116,13 +116,13 @@ Girdiğiniz **uygulama kimliği** ve **sürümü** şu gereksinimlere uymalıdı
 - Batch hesabı dahilinde benzersiz olmalıdır.
 - Kimlikler büyük/küçük harf koruma ve büyük/küçük harfe duyarlı değildir.
 
-Hazırsanız **Gönder**' i seçin. . Zip dosyası Azure depolama hesabınıza yüklendikten sonra, Portal bir bildirim görüntüler. Karşıya yüklediğiniz dosyanın boyutuna ve ağ bağlantınızın hızına bağlı olarak bu işlem biraz zaman alabilir.
+Hazırsanız **Gönder** ' i seçin. . Zip dosyası Azure depolama hesabınıza yüklendikten sonra, Portal bir bildirim görüntüler. Karşıya yüklediğiniz dosyanın boyutuna ve ağ bağlantınızın hızına bağlı olarak bu işlem biraz zaman alabilir.
 
 ### <a name="add-a-new-application-package"></a>Yeni bir uygulama paketi Ekle
 
-Mevcut bir uygulama için bir uygulama paketi sürümü eklemek istiyorsanız, Batch hesabınızın **uygulamalar** bölümünde uygulamayı seçin, sonra **Ekle**' yi seçin.
+Mevcut bir uygulama için bir uygulama paketi sürümü eklemek istiyorsanız, Batch hesabınızın **uygulamalar** bölümünde uygulamayı seçin, sonra **Ekle** ' yi seçin.
 
-Yeni uygulama için yaptığınız gibi, yeni paketinizin **sürümünü** belirtin,. zip dosyanızı **uygulama paketi** alanına yükleyin ve ardından **Gönder**' i seçin.
+Yeni uygulama için yaptığınız gibi, yeni paketinizin **sürümünü** belirtin,. zip dosyanızı **uygulama paketi** alanına yükleyin ve ardından **Gönder** ' i seçin.
 
 ### <a name="update-or-delete-an-application-package"></a>Uygulama paketini güncelleştirme veya silme
 
@@ -130,9 +130,9 @@ Var olan bir uygulama paketini güncelleştirmek veya silmek için Batch hesabı
 
 :::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="Uygulamaların ve uygulama paketlerinin üst düzey görünümünü gösteren diyagram.":::
 
-**Güncelleştir**' i seçerseniz, yeni bir. zip dosyasını karşıya yükleyebilirsiniz. Bu, bu sürüm için karşıya yüklediğiniz önceki. zip dosyasının yerini alır.
+**Güncelleştir** ' i seçerseniz, yeni bir. zip dosyasını karşıya yükleyebilirsiniz. Bu, bu sürüm için karşıya yüklediğiniz önceki. zip dosyasının yerini alır.
 
-**Sil**' i seçerseniz, bu sürümün silinmesini onaylamanız istenir. **Tamam**' ı seçtiğinizde Batch, Azure depolama hesabınızdan. zip dosyasını silecektir. Bir uygulamanın varsayılan sürümünü silerseniz, bu uygulama için **varsayılan sürüm** ayarı kaldırılır.
+**Sil** ' i seçerseniz, bu sürümün silinmesini onaylamanız istenir. **Tamam** ' ı seçtiğinizde Batch, Azure depolama hesabınızdan. zip dosyasını silecektir. Bir uygulamanın varsayılan sürümünü silerseniz, bu uygulama için **varsayılan sürüm** ayarı kaldırılır.
 
 ## <a name="install-applications-on-compute-nodes"></a>İşlem düğümlerine uygulama yükler
 
@@ -225,7 +225,7 @@ AZ_BATCH_APP_PACKAGE_blender_2_7
 
 Bir uygulama paketini karşıya yüklediğinizde, işlem düğümleriniz için dağıtım yapmak üzere varsayılan bir sürüm belirtebilirsiniz. Bir uygulama için varsayılan bir sürüm belirttiyseniz, uygulamaya başvuru yaptığınızda sürüm sonekini atlayabilirsiniz. **Uygulamalar penceresinde,** [uygulamaları karşıya yükleme ve yönetme](#upload-and-manage-applications)bölümünde gösterildiği gibi, varsayılan uygulama sürümünü Azure Portal belirleyebilirsiniz.
 
-Örneğin, uygulama *blender*için varsayılan sürüm olarak "2,7" ayarlarsanız ve görevleriniz aşağıdaki ortam değişkenine Başvurdıysanız, Windows düğümleriniz 2,7 sürümünü yürütür:
+Örneğin, uygulama *blender* için varsayılan sürüm olarak "2,7" ayarlarsanız ve görevleriniz aşağıdaki ortam değişkenine Başvurdıysanız, Windows düğümleriniz 2,7 sürümünü yürütür:
 
 `AZ_BATCH_APP_PACKAGE_BLENDER`
 

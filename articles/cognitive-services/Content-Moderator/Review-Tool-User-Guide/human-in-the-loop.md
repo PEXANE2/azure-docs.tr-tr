@@ -10,18 +10,16 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.author: pafarley
-ms.openlocfilehash: a23e6d46ee6e79fd7a5cabf4434c561f7d83b31b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddf4d17cd2631f5bc299e392c46bd9065bb13744
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76169497"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146646"
 ---
 # <a name="content-moderator-review-tool"></a>Content Moderator Inceleme aracı
 
-Azure Content Moderator, makine öğrenimi içerik Incelemesini insan incelemeleri ile birleştirmek için hizmetler sağlar ve [Gözden geçirme aracı](https://contentmoderator.cognitive.microsoft.com) Web sitesi, bu hizmetlere ayrıntılı erişim sağlayan Kullanıcı dostu bir ön uçdır.
-
-![Tarayıcıda inceleme aracı panosu](./images/0-dashboard.png)
+Azure Content Moderator, makine öğrenimi içerik yönetimini insan incelemeleriyle birleştiren hizmetler sağlar. [İnceleme aracı](https://contentmoderator.cognitive.microsoft.com) Web sitesi, bu hizmetlere ayrıntılı erişim sağlayan Kullanıcı dostu bir ön uçdır.
 
 ## <a name="what-it-does"></a>Ne yapar?
 
@@ -32,20 +30,27 @@ Makine destekli denetleme API 'Leriyle birlikte kullanıldığında [İnceleme a
 - İçerik kategorilerine veya deneyim düzeyine göre düzenlenmiş şekilde, birden çok gözden geçirme ekiplerine içerik incelemeleri atayın veya ilerletin.
 - Herhangi bir kod yazmadan içeriği sıralamak ve izlemek için varsayılan veya özel mantık filtreleri ([iş akışları](../review-api.md#workflows)) kullanın.
 - Content Moderator API 'Lerine ek olarak Microsoft PhotoDNA, Metin Analizi ve yüz Hizmetleri ile içerik işlemek için [bağlayıcıları](./configure.md#connectors) kullanın.
-- Herhangi bir API veya iş işlemi için iş akışları oluşturmak üzere kendi bağlayıcınızı oluşturun.
 - İçerik denetleme işlemlerinizde önemli performans ölçümlerini alın.
 
 ## <a name="review-tool-dashboard"></a>Araç panosunu gözden geçir
 
-**Pano** sekmesinde, araç içinde yapılan içerik incelemeleri için temel ölçümleri görebilirsiniz. Görüntü, metin ve video içeriği için toplam, tam ve bekleyen incelemeler sayısını görün. Ayrıca, yapılan gözden geçirmeler ve uygulanan denetleme etiketlerinin yanı sıra, yapılan İncelemeleri içeren Kullanıcı ve takımların dökümünü de görebilirsiniz.
+**Pano** sekmesinde, araç içinde yapılan içerik incelemeleri için temel ölçümleri görebilirsiniz. Görüntü, metin ve video içeriği için toplam, tam ve bekleyen incelemeler sayısını görün. 
 
-![Panoyu görüntüle](images/0-dashboard.png)
+**Bekleyen incelemeler** tablosu, bekleyen veya tamamlanmış İncelemeleri olan kullanıcıların ve alt takımların dökümünü, Ayrıca kalan SLA süresini gösterir. Gözden geçirmelerine gitmek için tablodaki öğeleri seçebilirsiniz. Tablonun üzerindeki arama kutusu, sonuçları takım adına göre filtrelemenize izin verir ve **filtre** simgesi diğer ölçümlere göre filtrelemenize izin verir.
+
+**Tamamlanan incelemeler** sekmesine geçiş yapmak, kullanıcılar ve alt takımlar tarafından işlenen veya tamamlanan toplam öğe sayısını gösterir. Bu verileri bekleyen incelemeleriyle aynı şekilde filtreleyebilirsiniz.
+
+Panonun sağ üst köşesindeki metne tıkladığınızda her bir içerik türü için tamamlanan gözden geçirmeler sayısını raporlayan günlük kişisel ölçümler görüntülenir.
+
+> [!div class="mx-imgBorder"]
+> ![Tarayıcıda inceleme aracı panosu](images/0-dashboard.png)
 
 ## <a name="review-tool-credentials"></a>Araç kimlik bilgilerini gözden geçirme
 
-[İnceleme aracı](https://contentmoderator.cognitive.microsoft.com)ile kaydolduğunuzda, hesabınız Için bir Azure bölgesi seçmeniz istenir. Bunun nedeni, [Gözden geçirme aracının](https://contentmoderator.cognitive.microsoft.com) Azure Content moderator Hizmetleri için ücretsiz bir deneme anahtarı üretmesine yöneliktir; bir REST çağrısından veya istemci SDK 'sından hizmetlerden herhangi birine erişmek için bu anahtara ihtiyacınız olacak. Anahtar ve API uç nokta URL 'nizi, **Ayarlar**  >  **kimlik bilgileri**' ni seçerek görüntüleyebilirsiniz.
+[İnceleme aracı](https://contentmoderator.cognitive.microsoft.com)ile kaydolduğunuzda, hesabınız Için bir Azure bölgesi seçmeniz istenir. Bunun nedeni, [Gözden geçirme aracının](https://contentmoderator.cognitive.microsoft.com) Azure Content moderator Hizmetleri için ücretsiz bir deneme anahtarı üretmesine neden olur. Bu anahtar, bir REST çağrısından veya istemci SDK 'sından hizmetlerden herhangi birine erişmek için gereklidir. Anahtar ve API uç nokta URL 'nizi, **yönetici**  >  **kimlik bilgileri** ' ni seçerek görüntüleyebilirsiniz.
 
-![Content Moderator kimlik bilgileri](images/settings-6-credentials.png)
+> [!div class="mx-imgBorder"]
+> ![Content Moderator kimlik bilgileri](images/settings-6-credentials.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

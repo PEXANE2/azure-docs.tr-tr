@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 05d7316ceccd67a8eeb1d081843307162ff210c1
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 989115224489ff8fff360a34b27c338ea3e33058
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558644"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145829"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Kapsayıcı kayıt defterleri için Azure Defender 'a giriş
 
@@ -32,6 +32,12 @@ Güvenlik Merkezi, tarayıcıdan bulguları filtreler ve sınıflandırır. Bir 
 
 Güvenlik Merkezi, yalnızca sorun olduğunda bilgilendirerek istenmeyen bilgi uyarıları için potansiyelini azaltır.
 
+
+> [!TIP]
+> Güvenlik Merkezi 'nin kapsayıcı güvenlik özellikleri hakkında daha fazla bilgi edinmek için bkz.:
+>
+> - [Azure Güvenlik Merkezi ve kapsayıcı güvenliği](container-security.md)
+> - [Kubernetes için Azure Defender 'a giriş](defender-for-kubernetes-introduction.md)
 
 ## <a name="when-are-images-scanned"></a>Görüntüler ne zaman taranır?
 
@@ -81,10 +87,5 @@ Evet. Bir bulmayı yok saymanız gereken bir kuruluş varsa, bunu düzeltmek yer
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Güvenlik Merkezi 'nin kapsayıcı güvenlik özellikleri hakkında daha fazla bilgi edinmek için bkz.:
-
-- [Azure Güvenlik Merkezi ve kapsayıcı güvenliği](container-security.md)
-
-- [Kubernetes için Azure Defender 'a giriş](defender-for-kubernetes-introduction.md)
-
-
+> [!div class="nextstepaction"]
+> [Güvenlik açıkları için görüntülerinizi tarayın](defender-for-container-registries-usage.md)

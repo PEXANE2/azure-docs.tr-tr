@@ -11,15 +11,15 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.custom: mvc
-ms.topic: tutorial
+ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 9a654454c1ef3d5ea1ff7e6eb525bb153f7875c1
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 0cdad245981ad02d3cdaefba447d131c775e242f
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168214"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145778"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>Geliştirici portalı sayfalarının stilini özelleştirme
 
@@ -45,21 +45,21 @@ Bu makalede, eski **Geliştirici** portalının sayfalarında öğelerin stilini
 
 ## <a name="customize-the-developer-portal"></a>Geliştirici Portalını Özelleştirme
 
-1. **Genel bakış**'ı seçin.
+1. **Genel bakış** 'ı seçin.
 2. **Genel bakış** penceresinin en üstündeki **Geliştirici Portalı (eski)** düğmesine tıklayın.
 3. Ekranın sol üst tarafında, iki boya fırçasından oluşan bir simge görürsünüz. Portal özelleştirme menüsünü açmak için bu simgenin üzerine gelin.
 
     ![İki boya fırçasından oluşan simgeyi vurgulayan ekran görüntüsü.](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
-4. Stil özelleştirme bölmesini açmak için menüden **Stiller**’i seçin.
+4. Stil özelleştirme bölmesini açmak için menüden **Stiller** ’i seçin.
 
-    **Stilleri**’i kullanarak özelleştirebileceğiniz tüm öğeler sayfada görüntülenir
+    **Stilleri** ’i kullanarak özelleştirebileceğiniz tüm öğeler sayfada görüntülenir
 5. **Geliştirici portalı görünümünü özelleştirmek için değişken değerleri değiştirin:** alanında "headings-color" değerini girin.
 
-    Sayfada ** \@ başlıklar-Color** öğesi görünür. Bu değişken metnin rengini denetler.
+    Sayfada **\@ başlıklar-Color** öğesi görünür. Bu değişken metnin rengini denetler.
 
     ![stili özelleştir](./media/modify-developer-portal-style/modify-developer-portal-style02.png)
     
-6. ** \@ Başlıklar-Color** değişkeninin alanına tıklayın. 
+6. **\@ Başlıklar-Color** değişkeninin alanına tıklayın. 
     
     Renk seçici açılır menüsü açılır.
 7. Renk seçici açılır menüsünden yeni bir renk seçin.
@@ -67,8 +67,8 @@ Bu makalede, eski **Geliştirici** portalının sayfalarında öğelerin stilini
     > [!TIP]
     > Tüm değişiklikler için gerçek zamanlı önizleme kullanılabilir. Özelleştirme bölmesinin yukarısında bir ilerleme göstergesi görünür. Birkaç saniye sonra üst bilgi metni rengi yeni seçilen renge değişir.
 
-8. Özelleştirme bölmesi menüsünde sol alt tarafta **Yayımla**’yı seçin.
-9. Değişiklikleri genel olarak kullanılabilir yapmak için **Özelleştirmeleri yayımla**’yı seçin.
+8. Özelleştirme bölmesi menüsünde sol alt tarafta **Yayımla** ’yı seçin.
+9. Değişiklikleri genel olarak kullanılabilir yapmak için **Özelleştirmeleri yayımla** ’yı seçin.
 
 ## <a name="view-your-change"></a>Değişikliğinizi görüntüleme
 

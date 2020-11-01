@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: b6df25b525975f2d4fe6a02064e81f359a804c58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 192aca589c3b1e660667dbe8377afe7802b56f17
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81416262"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146203"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Service Fabric kümenizi Dengeleme
 Service Fabric kümesi Kaynak Yöneticisi, dinamik yükleme değişikliklerini destekler, düğümlerin veya hizmetlerin eklemeleri veya çıkartılması için yeniden davranır. Ayrıca, kısıtlama ihlallerini otomatik olarak düzeltir ve kümeyi yeniden dengeler. Ancak bu eylemler ne sıklıkla alınır ve ne sıklıkta tetiklenir?
@@ -74,12 +74,12 @@ Tek başına dağıtımlar veya Azure 'da barındırılan kümeler için Templat
 
 Küme Kaynak Yöneticisi, her zaman sırayla bu eylemlerden birini gerçekleştirir. Bu nedenle bu zamanlayıcılar "minimum aralıklar" olarak ve zamanlayıcılar "ayar bayrakları" olarak kapatıldığında gerçekleştirilecek eylemler "olarak adlandırıyoruz. Örneğin Küme Kaynak Yöneticisi, kümeyi dengelemeden önce hizmetleri oluşturmak için bekleyen isteklerden yararlanır. Belirtilen varsayılan zaman aralıklarıyla görebileceğiniz gibi Küme Kaynak Yöneticisi, sık yapılması gereken her şeyi tarar. Normalde bu, her adım için yapılan değişiklik kümesinin küçük olduğu anlamına gelir. Küçük değişiklikler yapmak genellikle küme Kaynak Yöneticisi kümede meydana geldiğinde yanıt vermesini sağlar. Aynı türde olayların birçoğu aynı anda gerçekleşdiğinden, varsayılan zamanlayıcılar bazı toplu işlem sağlar. 
 
-Örneğin, düğümler başarısız olduğunda, her seferinde hata etki alanlarının tamamını yapabilir. Bu hataların hepsi, *Plbrefreshgap*sonrasında bir sonraki durum güncelleştirmesi sırasında yakalanır. Düzeltmeler, aşağıdaki yerleştirme, kısıtlama denetimi ve dengeleme çalıştırmaları sırasında belirlenir. Varsayılan olarak, Küme Kaynak Yöneticisi kümedeki değişikliklere göre tarama değildir ve tüm değişiklikleri tek seferde ele almaya çalışıyor. Bunun yapılması, karmaşıklığın dalgalanmasına neden olur.
+Örneğin, düğümler başarısız olduğunda, her seferinde hata etki alanlarının tamamını yapabilir. Bu hataların hepsi, *Plbrefreshgap* sonrasında bir sonraki durum güncelleştirmesi sırasında yakalanır. Düzeltmeler, aşağıdaki yerleştirme, kısıtlama denetimi ve dengeleme çalıştırmaları sırasında belirlenir. Varsayılan olarak, Küme Kaynak Yöneticisi kümedeki değişikliklere göre tarama değildir ve tüm değişiklikleri tek seferde ele almaya çalışıyor. Bunun yapılması, karmaşıklığın dalgalanmasına neden olur.
 
-Küme Kaynak Yöneticisi, kümenin dengeskümi olup olmadığını tespit etmek için bazı ek bilgiler de gerektirir. Bunun için iki farklı yapılandırma parçası vardır: *BalancingThresholds* ve *activityeşikleri*.
+Küme Kaynak Yöneticisi, kümenin dengeskümi olup olmadığını tespit etmek için bazı ek bilgiler de gerektirir. Bunun için iki farklı yapılandırma parçası vardır: *BalancingThresholds* ve *activityeşikleri* .
 
 ## <a name="balancing-thresholds"></a>Dengeleme eşikleri
-Dengeleme eşiği, yeniden dengelemeyi tetiklemenin ana denetimidir. Bir ölçümün Dengeleme eşiği bir _orandır_. En az yüklenen düğümdeki yük miktarına göre ayrılmış olan bir ölçüm için yük, bu ölçüm 'in *BalancingThreshold*değerini aşarsa, küme imlenebilir olur. Bir sonuç dengeleme olarak küme Kaynak Yöneticisi bir sonraki denetim sırasında tetiklenir. *MinLoadBalancingInterval* Zamanlayıcı, yeniden dengelemenin gerekli olup olmadığını Kaynak Yöneticisi kümenin ne sıklıkla denetlemesi gerektiğini tanımlar. Denetim, her şeyin meydana geldiğini ifade etmez. 
+Dengeleme eşiği, yeniden dengelemeyi tetiklemenin ana denetimidir. Bir ölçümün Dengeleme eşiği bir _orandır_ . En az yüklenen düğümdeki yük miktarına göre ayrılmış olan bir ölçüm için yük, bu ölçüm 'in *BalancingThreshold* değerini aşarsa, küme imlenebilir olur. Bir sonuç dengeleme olarak küme Kaynak Yöneticisi bir sonraki denetim sırasında tetiklenir. *MinLoadBalancingInterval* Zamanlayıcı, yeniden dengelemenin gerekli olup olmadığını Kaynak Yöneticisi kümenin ne sıklıkla denetlemesi gerektiğini tanımlar. Denetim, her şeyin meydana geldiğini ifade etmez. 
 
 Dengeleme eşikleri, küme tanımının bir parçası olarak her ölçüm temelinde tanımlanır. Ölçümler hakkında daha fazla bilgi için [Bu makaleye](service-fabric-cluster-resource-manager-metrics.md)göz atın.
 
@@ -130,7 +130,7 @@ Alt örnekte, bir düğüm üzerindeki en fazla yük 10 ' dur, en az iki ise, be
 > "Dengeleme", kümenizde yükün yönetilmesi için iki farklı strateji yönetir. Kümenin Kaynak Yöneticisi kullandığı varsayılan strateji, yükü kümedeki düğümler arasında dağıtmaktır. Diğer strateji [birleştirme](service-fabric-cluster-resource-manager-defragmentation-metrics.md). Birleştirme, aynı Dengeleme çalıştırması sırasında gerçekleştirilir. Dengeleme ve birleştirme stratejileri aynı küme içindeki farklı ölçümler için kullanılabilir. Bir hizmette hem Dengeleme hem de birleştirme ölçümleri bulunabilir. Birleştirme ölçümleri için, küme içindeki yüklerin oranı, Dengeleme eşiğinin _altında_ olduğunda yeniden dengelenmesini tetikler. 
 >
 
-Aşağıdaki Dengeleme eşiğinin alınması açık bir hedef değildir. Dengeleme eşikleri yalnızca bir *tetikleyiciden*yapılır. Dengeleme çalıştırıldığında küme Kaynak Yöneticisi, varsa hangi geliştirmelerin yapabileceğini belirler. Yalnızca bir dengeleme araması devre dışı bırakıldığı için herhangi bir şeyin hiçbir şekilde taşınmadığı anlamına gelir. Bazen küme, bazı durumlarda de daha fazla kısıtlanmış olabilir. Alternatif olarak, iyileştirmeler çok [maliyetli](service-fabric-cluster-resource-manager-movement-cost.md)hareketler gerektirir.
+Aşağıdaki Dengeleme eşiğinin alınması açık bir hedef değildir. Dengeleme eşikleri yalnızca bir *tetikleyiciden* yapılır. Dengeleme çalıştırıldığında küme Kaynak Yöneticisi, varsa hangi geliştirmelerin yapabileceğini belirler. Yalnızca bir dengeleme araması devre dışı bırakıldığı için herhangi bir şeyin hiçbir şekilde taşınmadığı anlamına gelir. Bazen küme, bazı durumlarda de daha fazla kısıtlanmış olabilir. Alternatif olarak, iyileştirmeler çok [maliyetli](service-fabric-cluster-resource-manager-movement-cost.md)hareketler gerektirir.
 
 ## <a name="activity-thresholds"></a>Etkinlik eşikleri
 Bazen düğümler görece olarak dengeli olsa da, kümedeki yükün *Toplam* miktarı düşüktür. Yük eksikliği geçici bir DIP olabilir veya küme yenidir ve yalnızca önyüklendi alınıyor. Her iki durumda da, kazanılması çok fazla olduğundan kümeyi dengelemeye zaman harcamayı tercih edebilirsiniz. Küme Dengeleme gerçekleştiriyorsa, büyük bir *mutlak* fark yapmadan ağ ve bilgi işlem kaynaklarını bir şeyler arasında hareket ettirmek için harcaymanız gerekir. Gereksiz taşımaları önlemek için, etkinlik eşikleri olarak bilinen başka bir denetim vardır. Etkinlik eşikleri, etkinlik için bazı mutlak alt sınır belirtmenize olanak tanır. Bu eşiğin üzerinde hiçbir düğüm yoksa Dengeleme, Dengeleme eşiğine ulaşılsa bile tetiklenmez.
@@ -189,7 +189,7 @@ Burada nereye gittiğimiz hakkında bilgi edinebilirsiniz: bir zincir var! Yaln�
 
 <center>
 
-![Hizmetleri birlikte Dengeleme][Image4]
+![Hizmetlerin birlikte nasıl dengelenmesi gerektiğini gösteren diyagram.][Image4]
 </center>
 
 Bu zincir nedeniyle, ölçümler 1-4 ' deki bir dengesizliği, hizmetler 1-3 ' e ait çoğaltmalara veya örneklere yol açabilir. Ayrıca, ölçüm 1, 2 veya 3 ' teki bir dengesizin service4 içinde hareketlerine neden olmadığını da biliyoruz. Service4 ' ye ait çoğaltmaları veya örnekleri taşımaya yönelik bir nokta yoktur, ölçüm 1-3 ' inin bakiyesini etkilemek için kesinlikle hiçbir şey yapmaz.
@@ -198,7 +198,7 @@ Küme Kaynak Yöneticisi hangi hizmetlerin ilişkili olduğunu otomatik olarak b
 
 <center>
 
-![Hizmetleri birlikte Dengeleme][Image5]
+![Bu küme Kaynak Yöneticisi hangi hizmetlerin ilgili olduğunu belirten diyagram.][Image5]
 </center>
 
 ## <a name="next-steps"></a>Sonraki adımlar

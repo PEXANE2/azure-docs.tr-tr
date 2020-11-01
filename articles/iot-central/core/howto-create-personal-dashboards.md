@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f7dca7352a49e668231f64632371a445985e4de3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68bb4e2ac525270004a698471cd44955cd25fefc
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83634615"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146118"
 ---
 # <a name="create-and-manage-multiple-dashboards"></a>Birden çok pano oluşturma ve yönetme
 
@@ -42,7 +42,7 @@ Uygulamanın yöneticisiyseniz, kişisel **admin** düzey pano veya uygulama dü
 
 1. Bir **cihaz şablonu** seçin
 1. Bir pano kutucuğunda görmek istediğiniz cihaz için **cihazlardan** bir cihaz seçin. Daha sonra, kutucukta kullanılabilecek cihaz özelliklerinin bir listesini görürsünüz.
-1. Kutucuğu panoda oluşturmak için **sıcaklık** ' ya tıklayın ve Pano alanına sürükleyin. Ayrıca, **sıcaklık** ' ın yanındaki onay kutusuna ve **kutucuk Ekle**' ye tıklayabilirsiniz. Aşağıdaki ekran görüntüsünde bir cihaz şablonu ve cihazı seçip panoda bir sıcaklık telemetri kutucuğu oluşturulması gösterilmektedir.
+1. Kutucuğu panoda oluşturmak için **sıcaklık** ' ya tıklayın ve Pano alanına sürükleyin. Ayrıca, **sıcaklık** ' ın yanındaki onay kutusuna ve **kutucuk Ekle** ' ye tıklayabilirsiniz. Aşağıdaki ekran görüntüsünde bir cihaz şablonu ve cihazı seçip panoda bir sıcaklık telemetri kutucuğu oluşturulması gösterilmektedir.
 1. Değişikliklerinizi panoya kaydetmek için sol üst kısımdaki **Kaydet** ' i seçin.
 
 > [!div class="mx-imgBorder"]
@@ -51,7 +51,7 @@ Uygulamanın yöneticisiyseniz, kişisel **admin** düzey pano veya uygulama dü
 Artık kişisel panonuzu görüntülediğinizde, cihaz için **sıcaklık** ayarıyla yeni kutucuğu görürsünüz:
 
 > [!div class="mx-imgBorder"]
-> ![Denetim, sıcaklık kutucuğunun ayrıntılarını içeren sekmesi](media/howto-create-personal-dashboards/temperature-tile-complete.png)
+> ![Cihaz için sıcaklıklar ayarıyla yeni kutucuğu gösteren ekran görüntüsü.](media/howto-create-personal-dashboards/temperature-tile-complete.png)
 
 Kişisel panolarınızı daha fazla özelleştirmeyi öğrenmek için Kitaplıktaki diğer döşeme türlerini keşfedebilirsiniz.
 
@@ -64,7 +64,7 @@ Birkaç kişisel panonuz olabilir ve bunlar arasında geçiş yapabilir ya da va
 > [!div class="mx-imgBorder"]
 > ![Panolar arasında geçiş yap](media/howto-create-personal-dashboards/switch-dashboards.png)
 
-Kişisel panolarınızı düzenleyebilir ve artık ihtiyacınız olmayan panoları silebilirsiniz. **Yönetici**kullanıyorsanız, uygulama düzeyi panoları da düzenleme veya silme imkanına sahip olursunuz.
+Kişisel panolarınızı düzenleyebilir ve artık ihtiyacınız olmayan panoları silebilirsiniz. **Yönetici** kullanıyorsanız, uygulama düzeyi panoları da düzenleme veya silme imkanına sahip olursunuz.
 
 > [!div class="mx-imgBorder"]
 > ![Panoları silme](media/howto-create-personal-dashboards/delete-dashboards.png)
