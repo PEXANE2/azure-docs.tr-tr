@@ -7,13 +7,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/28/2020
-ms.openlocfilehash: 70787f1d918064b48d37ce051bfdd2aba49472ea
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 10/30/2020
+ms.openlocfilehash: 7ed1d9db09357b0702188c01a802600ff6350aff
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040185"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147275"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Eşleme veri akışında arama dönüşümü
 
@@ -68,6 +68,10 @@ Hata ayıklama modundaki arama dönüşümünü veri önizleme ile sınarken, k�
 Birleşimler, aramalar ve mevcut dönüşümde, bir veya her iki veri akışı çalışan düğümü belleğine sığması halinde **yayını** etkinleştirerek performansı iyileştirebilirsiniz. Spark altyapısı, varsayılan olarak bir kenar yayınlanıp yayınlanmayacağını otomatik olarak karar verir. Hangi tarafın yayınlanmak üzere el ile seçmek için, **sabit** ' i seçin.
 
 Birleşimlerinizin zaman aşımı hatalarıyla çalışmadığı **durumlar dışında yayınlamayı** devre dışı bırakmanız önerilmez.
+
+## <a name="cached-lookup"></a>Önbelleğe alınan arama
+
+Aynı kaynakta birden çok daha küçük arama yapıyorsanız, önbelleğe alınmış havuz ve arama arama dönüşümünüze göre daha iyi bir kullanım örneği olabilir. Bir önbellek havuzunun daha iyi bir veri deposunda en büyük değeri, bir hata iletisi veritabanına eşleşen hata kodlarını arayabileceği yaygın örnekler. Daha fazla bilgi için, [önbellek havuzları](data-flow-sink.md#cache-sink) ve [önbelleğe alınmış aramalar](concepts-data-flow-expression-builder.md#cached-lookup)hakkında bilgi edinin.
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 

@@ -4,28 +4,28 @@ description: Azure 'da Linux sanal makinesine bağlanmak için bir Windows bilgi
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.date: 07/09/2020
+ms.date: 10/31/2020
 ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: 7e99c9191e93562211f6294cf671f431a5db455d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 183b601a4521c3ff3e4578784f7adadd01045b0e
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87825574"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147156"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Azure 'da Windows ile SSH anahtarlarını kullanma
 
 Bu makale, Azure 'da Linux sanal makinelerine (VM 'Ler) [bağlanmak](#connect-to-your-vm) için *Güvenli Kabuk* (SSH) anahtarları [oluşturup](#create-an-ssh-key-pair) kullanmak isteyen Windows kullanıcılarına yöneliktir. Ayrıca, portalda VM oluştururken kullanmak üzere [Azure Portal SSH anahtarları oluşturup saklayabilirsiniz](../ssh-keys-portal.md) .
 
 
-Bir Linux veya macOS istemcisinden SSH anahtarları kullanmak için bkz. [hızlı](mac-create-ssh-keys.md). SSH hakkında daha ayrıntılı bir genel bakış için bkz. [ayrıntılı adımlar: Azure 'da bir LINUX sanal makinesine kimlik doğrulaması IÇIN SSH anahtarları oluşturma ve yönetme](create-ssh-keys-detailed.md).
+Bir Linux veya macOS istemcisinden SSH anahtarları kullanmak için [hızlı adımlara](mac-create-ssh-keys.md)bakın. SSH hakkında daha ayrıntılı bir genel bakış için bkz. [ayrıntılı adımlar: Azure 'da bir LINUX sanal makinesine kimlik doğrulaması IÇIN SSH anahtarları oluşturma ve yönetme](create-ssh-keys-detailed.md).
 
 ## <a name="overview-of-ssh-and-keys"></a>SSH ve anahtarlara genel bakış
 
-[SSH](https://www.ssh.com/ssh/) , güvenli olmayan bağlantılarda güvenli oturum açma işlemlerinin yapılmasına izin veren şifreli bir bağlantı protokolüdür. SSH, Azure 'da barındırılan Linux VM 'Leri için varsayılan bağlantı protokolüdür. SSH 'in kendisi şifreli bir bağlantı sağlamasına karşın, SSH ile parolaların kullanılması, VM 'yi deneme yanılma saldırılarına karşı savunmasız bırakır. *SSH anahtarları*olarak da bilinen ortak özel anahtar ÇIFTINI kullanarak SSH ÜZERINDEN bir VM 'ye bağlanmanızı öneririz. 
+[SSH](https://www.ssh.com/ssh/) , güvenli olmayan bağlantılarda güvenli oturum açma işlemlerinin yapılmasına izin veren şifreli bir bağlantı protokolüdür. SSH, Azure 'da barındırılan Linux VM 'Leri için varsayılan bağlantı protokolüdür. SSH 'in kendisi şifreli bir bağlantı sağlamasına karşın, SSH ile parolaların kullanılması, VM 'yi deneme yanılma saldırılarına karşı savunmasız bırakır. *SSH anahtarları* olarak da bilinen ortak özel anahtar ÇIFTINI kullanarak SSH ÜZERINDEN bir VM 'ye bağlanmanızı öneririz. 
 
-Ortak özel anahtar çifti, ön kapılarınızın kilidi gibidir. Kilit **herkese**açıktır, doğru anahtara sahip herkes kapıyı açabilir. Anahtar **özeldir**ve yalnızca güvendiğiniz kişilere verilir ve kapısının kilidini açmak için kullanılabilir. 
+Ortak özel anahtar çifti, ön kapılarınızın kilidi gibidir. Kilit **herkese** açıktır, doğru anahtara sahip herkes kapıyı açabilir. Anahtar **özeldir** ve yalnızca güvendiğiniz kişilere verilir ve kapısının kilidini açmak için kullanılabilir. 
 
 - *Ortak anahtar* , VM 'Yi oluştururken Linux sanal makinenize yerleştirilir. 
 

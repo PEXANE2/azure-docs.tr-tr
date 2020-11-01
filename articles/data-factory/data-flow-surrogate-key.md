@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/08/2020
-ms.openlocfilehash: ade2fd6011bbcdaed4ce31ce70bfb4235429bb0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/30/2020
+ms.openlocfilehash: d1f8993b1adc297b1bfadba114df76a66e59afa2
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81606290"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147193"
 ---
 # <a name="surrogate-key-transformation-in-mapping-data-flow"></a>Eşleme veri akışında vekil anahtar dönüşümü 
 
@@ -31,9 +31,9 @@ Her bir veri satırına bir artırma anahtarı değeri eklemek için vekil anaht
 
 ## <a name="increment-keys-from-existing-sources"></a>Mevcut kaynaklardan anahtarları artırma
 
-Bir kaynakta bulunan bir değerden dizinizi başlatmak için, yedek anahtar dönüşümünüzü takip eden bir türetilmiş sütun dönüşümü kullanarak iki değeri birlikte ekleyin:
+Bir kaynakta bulunan bir değerden dizinizi başlatmak için, bu değeri kaydetmek için bir önbellek havuzu kullanmanız ve iki değeri birlikte eklemek için türetilmiş bir sütun dönüşümü kullanmanız önerilir. Çıktıyı almak ve oluşturulan anahtara eklemek için önbelleğe alınmış bir arama kullanın. Daha fazla bilgi için, [önbellek havuzları](data-flow-sink.md#cache-sink) ve [önbelleğe alınmış aramalar](concepts-data-flow-expression-builder.md#cached-lookup)hakkında bilgi edinin.
 
-![SK en fazla Ekle](media/data-flow/sk006.png "Vekil anahtar dönüştürme en fazla Ekle")
+![Vekil anahtar arama](media/data-flow/cached-lookup-example.png "Vekil anahtar arama")
 
 ### <a name="increment-from-existing-maximum-value"></a>Varolan en büyük değerden artış
 
@@ -41,23 +41,22 @@ Anahtar değerini önceki maksimum ile temel almak için, kaynak verilerinizin b
 
 #### <a name="database-sources"></a>Veritabanı kaynakları
 
-Kaynağınızdan MAX () ' i seçmek için bir SQL sorgu seçeneği kullanın. Örneğin, `Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
+Kaynağınızdan MAX () ' i seçmek için bir SQL sorgu seçeneği kullanın. Örneğin, `Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`.
 
-![Vekil anahtar sorgusu](media/data-flow/sk002.png "Vekil anahtar dönüştürme sorgusu")
+![Vekil anahtar sorgusu](media/data-flow/surrogate-key-max-database.png "Vekil anahtar dönüştürme sorgusu")
 
 #### <a name="file-sources"></a>Dosya kaynakları
 
 Önceki en büyük değer bir dosya içinde ise, `max()` önceki en büyük değeri almak için toplu dönüşümde işlevini kullanın:
 
-![Vekil anahtar dosyası](media/data-flow/sk008.png "Vekil anahtar dosyası")
+![Vekil anahtar dosyası](media/data-flow/surrogate-key-max-file.png "Vekil anahtar dosyası")
 
-Her iki durumda da, gelen yeni verilerinizi önceki maksimum değeri içeren kaynakla birlikte katılmanız gerekir.
+Her iki durumda da bir önbellek havuzuna yazmanız ve değeri yapmanız gerekir. 
 
-![Vekil anahtar birleşimi](media/data-flow/sk004.png "Vekil anahtar birleşimi")
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
-### <a name="syntax"></a>Sözdizimi
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream> 

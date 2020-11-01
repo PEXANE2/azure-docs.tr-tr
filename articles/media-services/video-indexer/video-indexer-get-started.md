@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: quickstart
-ms.date: 10/19/2020
+ms.date: 10/30/2020
 ms.author: juliako
-ms.openlocfilehash: 6b154db25f1f13b60e4110d1b1866308ee952487
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 9ad004f65335d79205cbaddaa190b92a19c327d5
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219809"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147292"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Hızlı başlangıç: nasıl kaydolun ve ilk videonuzu karşıya yükleyebilirsiniz
 
@@ -27,8 +27,10 @@ Video Indexer hesabınızı oluştururken ücretsiz bir deneme hesabı (belirli 
 
 Video Indexer ile geliştirmeye başlamak için [Video Indexer](https://www.videoindexer.ai/) web sitesine gidip kaydolun.
 
+Video Indexer kullanmaya başladıktan sonra, tüm depolanmış verileriniz ve karşıya yüklenen içerikler, Microsoft tarafından yönetilen bir anahtarla geri kalanında şifrelenir.
+
 > [!NOTE]
-> Video Indexer kullanmaya başladıktan sonra, tüm depolanmış verileriniz ve karşıya yüklenen içerikler, Microsoft tarafından yönetilen bir anahtarla geri kalanında şifrelenir.
+> [Planlı video Indexer Web sitesi kimlik doğrulama değişikliklerini](release-notes.md#planned-video-indexer-website-authenticatication-changes)gözden geçirin.
 
 ## <a name="upload-a-video-using-the-video-indexer-website"></a>Video Indexer web sitesini kullanarak karşıya video yükleme
 

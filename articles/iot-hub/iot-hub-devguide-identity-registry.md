@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 3157eda4e2a21b0d153e7300db54f445fdb6878d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2d9b0d97fa1823314f5109a1c7fc79054806c148
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547767"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146935"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>IoT Hub 'ınızdaki kimlik kayıt defterini anlayın
 
@@ -112,7 +112,7 @@ IoT Hub, yaşam döngüsü bildirimleri göndererek bir kimlik oluşturulduğund
 
 Cihaz için bildirim iletisi:
 
-| Name | Değer |
+| Ad | Değer |
 | --- | --- |
 |$content türü | uygulama/json |
 |$iothub-enqueuedtime |  Bildirimin gönderildiği zaman |
@@ -148,7 +148,7 @@ Gövde: Bu bölüm JSON biçimindedir ve oluşturulan cihaz kimliğinin ikizi te
 ```
 Modül için bildirim iletisi:
 
-| Name | Değer |
+| Ad | Değer |
 | --- | --- |
 $content türü | uygulama/json |
 $iothub-enqueuedtime |  Bildirimin gönderildiği zaman |
@@ -200,7 +200,7 @@ Cihaz kimlikleri aşağıdaki özelliklerle JSON belgeleri olarak temsil edilir:
 | statusUpdateTime |salt okunur |Son durum güncelleştirmesinin tarih ve saatini gösteren zamana bağlı bir gösterge. |
 | connectionState |salt okunur |Bağlantı durumunu gösteren bir alan: **bağlı** veya **bağlantısı kesildi** . Bu alan, cihaz bağlantı durumunun IoT Hub görünümünü temsil eder. **Önemli** : Bu alan yalnızca geliştirme/hata ayıklama amacıyla kullanılmalıdır. Bağlantı durumu yalnızca MQTT veya AMQP kullanan cihazlar için güncelleştirilir. Ayrıca, protokol düzeyinde pingler (MQTT pingleri veya AMQP pingler) temel alır ve en fazla 5 dakikalık bir gecikme olabilir. Bu nedenlerden dolayı, bağlı olarak bildirilen ancak bağlantısı kesilen cihazlar gibi hatalı pozitif sonuçlar olabilir. |
 | connectionStateUpdatedTime |salt okunur |Bağlantı durumunun güncelleştirildiği tarihi ve son saati gösteren zamana bağlı bir gösterge. |
-| lastActivityTime |salt okunur |Cihazın bağlandığı, aldığı veya ileti gönderdiği tarihi ve son saati gösteren zamana bağlı bir gösterge. |
+| lastActivityTime |salt okunur |Cihazın bağlandığı, aldığı veya ileti gönderdiği tarihi ve son saati gösteren zamana bağlı bir gösterge. Bu özellik sonunda tutarlıdır, ancak 5 ila 10 dakikaya kadar gecikebilir. Bu nedenle, üretim senaryolarında kullanılmamalıdır. |
 
 > [!NOTE]
 > Bağlantı durumu yalnızca bağlantı durumunun IoT Hub görünümünü temsil edebilir. Bu durum için güncelleştirmeler ağ koşullarına ve yapılandırmalara bağlı olarak gecikebilir.

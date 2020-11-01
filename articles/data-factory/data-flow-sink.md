@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/27/2020
-ms.openlocfilehash: 6354b0a1df9d8c331de0731b230d628ac4e435df
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.date: 10/30/2020
+ms.openlocfilehash: 8a9c022400f739276060c3d8a275d06bc5ea8579
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891396"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147244"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Eşleme veri akışında havuz dönüştürme
 
@@ -72,6 +72,23 @@ Aşağıdaki videoda, metin ile ayrılmış dosya türleri için birçok farklı
 **Tempdb kullan:** Varsayılan olarak Data Factory, verileri yükleme işleminin bir parçası olarak depolamak için genel geçici bir tablo kullanacaktır. Alternatif olarak, "TempDB kullan" seçeneğinin işaretini kaldırın ve bunun yerine, geçici saklama tablosunu bu havuz için kullanılmakta olan veritabanında bulunan bir kullanıcı veritabanında depolamasını Data Factory isteyebilirsiniz.
 
 !['Nin](media/data-flow/tempdb.png "'Nin")
+
+## <a name="cache-sink"></a>Önbellek havuzu
+ 
+*Önbellek havuzu* , veri akışı veri deposu yerine Spark önbelleğine yazar. Veri akışlarını eşleme bölümünde, bir *önbellek araması* kullanarak bu veriye birçok kez aynı Flow dahilinde başvuru yapabilirsiniz. Bu, bir ifadenin parçası olarak verilere başvurmak istediğinizde ancak sütunlara açıkça dahil etmek istemediğinizde yararlıdır. Bir önbellek havuzunun, bir veri deposunda en yüksek değer ve bir hata iletisi veritabanına eşleşen hata kodları arayan yaygın örnekleri. 
+
+Önbellek havuzuna yazmak için bir havuz dönüştürmesi ekleyin ve havuz türü olarak **önbellek** ' yi seçin. Diğer havuz türlerinden farklı olarak, bir dış depoya yazmamak istemediğiniz için bir veri kümesi veya bağlı hizmet seçmeniz gerekmez. 
+
+![Önbellek havuzunu seçin](media/data-flow/select-cache-sink.png "Önbellek havuzunu seçin")
+
+Havuz ayarları ' nda, isteğe bağlı olarak önbellek havuzunun anahtar sütunlarını belirtebilirsiniz. Bu, `lookup()` işlevi bir önbellek aramasında kullanırken eşleşen koşullar olarak kullanılır. Anahtar sütunları belirtirseniz, `outputs()` işlevi bir önbellek aramasında kullanamazsınız. Önbellek arama sözdizimi hakkında daha fazla bilgi edinmek için bkz. [önbelleğe alınmış aramalar](concepts-data-flow-expression-builder.md#cached-lookup).
+
+![Önbellek havuzu anahtar sütunları](media/data-flow/cache-sink-key-columns.png "Önbellek havuzu anahtar sütunları")
+
+Örneğin, adlı bir önbellek havuzunda tek bir anahtar sütunu belirtdiğimde `column1` `cacheExample` , çağırma `cacheExample#lookup()` tek bir parametreye sahip olur ve önbellek havuzunda hangi satırın eşleştiğini belirtir. İşlevi, eşlenen her sütun için alt sütunlarla tek bir karmaşık sütun verir.
+
+> [!NOTE]
+> Önbellek havuzu, bir önbellek araması aracılığıyla buna başvuran dönüşümden tamamen bağımsız bir veri akışında olmalıdır. Önbellek havuzu ayrıca yazılan ilk havuz olmalıdır. 
 
 ## <a name="field-mapping"></a>Alan eşlemesi
 
