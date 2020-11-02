@@ -6,17 +6,17 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/13/2020
+ms.date: 11/02/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 0e9c669f2994e896205762c5f3f4df1b5fe214ae
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e73126cfc54294a7b9d54ff62c406d5e686ac470
+ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637233"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93186782"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS Integration Runtime'ı sanal ağa bağlama
 
@@ -99,7 +99,7 @@ Sanal ağınızı bu gereksinimleri karşılayacak şekilde ayarlayın:
 
 - Sanal ağın kaynak grubunun (veya kendi genel IP adreslerini getirdiğinizden genel IP adreslerinin ' kaynak grubunun) belirli Azure ağ kaynaklarını oluşturup silebileceklerini doğrulayın. Daha fazla bilgi için bkz. [kaynak grubunu ayarlama](#resource-group). 
 
-- [Azure-SSIS IR Için özel kurulumda](./how-to-configure-azure-ssis-ir-custom-setup.md)açıklandığı gibi Azure-SSIS IR özelleştirirseniz Azure-SSIS IR düğümleriniz, önceden tanımlanmış bir 172.16.0.0 aralığından 172.31.255.255 'e özel IP adresleri alır. Bu nedenle, sanal veya şirket içi ağlarınızın özel IP adresi aralıklarının bu aralıkla çakışmıyor olduğundan emin olun.
+- [Azure-SSIS IR Için özel kurulum](./how-to-configure-azure-ssis-ir-custom-setup.md)'da açıklandığı gibi Azure-SSIS IR özelleştirirseniz, düğümlerini yönetme iç sürecimiz, önceden tanımlanmış bir 172.16.0.0 aralığından 172.31.255.255 'e özel IP adresleri tüketir. Sonuç olarak, lütfen sanal veya şirket içi ağlarınızın özel IP adresi aralıklarının bu aralıkla çakışmıyor olduğundan emin olun.
 
 Bu diyagramda Azure-SSIS IR için gereken bağlantılar gösterilmektedir:
 
@@ -338,7 +338,7 @@ Bir Azure-SSIS IR katılmayı denemeden önce Azure Resource Manager sanal ağı
 
 1. Microsoft Edge veya Google Chrome 'ı başlatın. Şu anda yalnızca bu Web tarayıcıları Data Factory Kullanıcı arabirimini destekler. 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
 
 1. **Diğer hizmetler** ' i seçin. **Sanal ağları** filtreleyin ve seçin. 
 
@@ -368,7 +368,7 @@ Bir Azure-SSIS IR katılmayı denemeden önce, klasik sanal ağı yapılandırma
 
 1. Microsoft Edge veya Google Chrome 'ı başlatın. Şu anda yalnızca bu Web tarayıcıları Data Factory Kullanıcı arabirimini destekler. 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
 
 1. **Diğer hizmetler** ' i seçin. **Sanal ağlar (klasik)** için filtre uygulayın ve seçin. 
 

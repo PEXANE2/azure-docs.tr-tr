@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d2f5b87fe313f7d152a80a35671bc7e0da3bb7c7
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: f142c8abfc9056e0f8ca1d921f2c6bfc72292730
+ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341558"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93186629"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>SYNAPSE çalışma alanınızın güvenliğini sağlama (Önizleme) 
 
@@ -36,7 +36,7 @@ Bir Synapse çalışma alanını (Önizleme) güvenli hale getirmek için, aşa�
 
 Bu belge yönergeleri basitleştirmek için standart adları kullanır. Bunları dilediğiniz adlarla değiştirin.
 
-|Ayar | Örnek değer | Description |
+|Ayar | Örnek değer | Açıklama |
 | :------ | :-------------- | :---------- |
 | **SYNAPSE çalışma alanı** | WS1 |  SYNAPSE çalışma alanının sahip olacağı ad. |
 | **ADLSGEN2 hesabı** | STG1 | Çalışma alanınız ile kullanılacak ADLS hesabı. |
@@ -51,8 +51,6 @@ Bu belge yönergeleri basitleştirmek için standart adları kullanır. Bunları
 - **WS1 \_ WSAdmins** : çalışma alanı üzerinde tamamen denetim gerektiren kullanıcılar için
 - **WS1 \_ Mini Yöneticiler** – çalışma alanının Spark yönleri üzerinde tümüyle denetim gerektiren kullanıcılar için
 - **WS1 \_ SQLAdmins** – çalışma ALANıNıN SQL yönleri üzerinde tümüyle denetim gerektiren kullanıcılar için
-- **WS1 \_ SQLAdmins** 'e **WS1 \_ wsadmins** ekleyin
-- **WS1 \_ wsadmins** 'yi **WS1 \_ mini Yöneticiler** 'e Ekle
 
 ## <a name="step-2-prepare-your-data-lake-storage-gen2-account"></a>2. Adım: Data Lake Storage 2. hesabınızı hazırlama
 
@@ -78,7 +76,7 @@ Depolama bilgileriniz hakkında bu bilgileri tanımla:
 - Çalışma alanını WS1 olarak adlandırın
 - Depolama hesabı için STG1 öğesini seçin. "FileSystem" olarak kullanılmakta olan kapsayıcı için CNT1 seçin.
 - WS1 'i SYNAPSE Studio 'da aç
-- **Manage**  >  Aşağıdaki SYNAPSE rollerine güvenlik grupları atamak**Access Control** Yönet ' i seçin.
+- **Manage**  >  Aşağıdaki SYNAPSE rollerine güvenlik grupları atamak **Access Control** Yönet ' i seçin.
   - SYNAPSE çalışma alanı yöneticilerine **WS1 \_ wsadmins** atama
   - SYNAPSE Spark yöneticilerine **WS1 \_ mini Yöneticiler** atama
   - SYNAPSE SQL yöneticilerine **WS1 \_ SQLAdmins** atama
@@ -98,7 +96,7 @@ SYNAPSE çalışma alanı, işlem hatlarını çalıştırmak ve sistem görevle
 
 - Azure portalını açın
 - WS1 adresine gidin
-- **Ayarlar**altında, **SQL Active Directory Yöneticisi** ' ni seçin.
+- **Ayarlar** altında, **SQL Active Directory Yöneticisi** ' ni seçin.
 - **Yönetici ayarla** ' yı SEÇIN ve WS1 SQLAdmins öğesini seçin. \_
 
 ## <a name="step-6-maintain-access-control"></a>6. Adım: erişim denetimini koruma
