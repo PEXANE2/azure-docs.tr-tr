@@ -179,7 +179,7 @@
               href: storage-blob-rehydration.md
             - name: Performans katmanları
               href: storage-blob-performance-tiers.md
-            - name: Azure Blob depolama yaşam döngüsünü yönetme
+            - name: Erişim katmanlarının yaşam döngüsünü otomatikleştirme
               href: storage-lifecycle-management-concepts.md
         - name: Olağanüstü durum kurtarma ve yük devretme
           href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -367,7 +367,7 @@
                       href: storage-blob-user-delegation-sas-create-cli.md
                     - name: .NET
                       href: storage-blob-user-delegation-sas-create-dotnet.md
-                - name: Hizmet SAS’ı oluşturma (.NET)
+                - name: Hizmet SAS’si oluşturma
                   href: storage-blob-service-sas-create-dotnet.md
                 - name: Hesap SAS’ı oluşturma (.NET)
                   href: ../common/storage-account-sas-create-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json

@@ -28,6 +28,8 @@
       href: deployment-overview.md
     - name: Güvenlik iş ortağı sağlayıcıları
       href: trusted-security-partners.md
+    - name: Check Point Cloudguard Connect kullanarak merkezlerin güvenliğini sağlama
+      href: check-point-overview.md
     - name: IP Grupları
       href: ip-groups.md
     - name: Kural işleme mantığı

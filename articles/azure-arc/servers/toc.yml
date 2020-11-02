@@ -37,11 +37,13 @@
           href: onboard-service-principal.md
         - name: PowerShell DSC ile makineleri Azure Arc’a bağlama
           href: onboard-dsc.md
+        - name: Windows Admin Center’dan makine bağlama
+          href: onboard-windows-admin-center.md
         - name: Makineleri PowerShell ile Azure Arc’a bağlama
           href: onboard-powershell.md
     - name: Yönetme
       items:
-        - name: Azure VM uzantıları
+        - name: VM uzantıları
           items:
             - name: Genel Bakış
               href: manage-vm-extensions.md

@@ -113,6 +113,8 @@
       href: ../../virtual-network/public-ip-security-baseline.md
     - name: Azure Kaynak Grafı güvenlik temeli
       href: ../../governance/resource-graph/concepts/azure-security-benchmark-baseline.md
+    - name: Azure Resource Manager güvenlik temeli
+      href: ../../azure-resource-manager/management/security-baseline.md
     - name: Azure Sentinel güvenlik temeli
       href: ../../sentinel/security-baseline.md
     - name: Azure SQL Veritabanı güvenlik temeli

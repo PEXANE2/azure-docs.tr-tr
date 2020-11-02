@@ -5,7 +5,7 @@
     - name: Azure İlkesi nedir?
       displayName: 'rbac, assign, initiative, parameters, count'
       href: overview.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   expanded: true
   items:
     - name: İlke atama - Portal
@@ -32,6 +32,9 @@
     - name: İlke atama - ARM şablonu
       displayName: 'assign, compliance, resource manager'
       href: ./assign-policy-template.md
+    - name: İlke atama - Terraform
+      displayName: 'assign, compliance, hcl, provider'
+      href: ./assign-policy-terraform.md
 - name: Öğreticiler
   items:
     - name: Azure İlkesi oluşturma ve yönetme
@@ -191,7 +194,15 @@
           href: ../../azure-monitor/deploy-scale.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
         - name: VM’ler için Azure İzleyici’yi etkinleştirme (önizleme)
           displayName: 'monitor, insights, log analytics, builtin'
-          href: ../../azure-monitor/insights/vminsights-enable-policy.md?bc=%2fazure%2fgovernance%2fpolicy%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fgovernance%2fpolicy%2ftoc.json
+          href: ../../azure-monitor/insights/vminsights-enable-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+    - name: Azure Depolama tümleştirmesi
+      items:
+        - name: Azure İlkesi ile TLS denetimi
+          href: ../../storage/common/transport-layer-security-configure-minimum-version.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json#use-azure-policy-to-enforce-the-minimum-tls-version
+    - name: Azure Web Uygulaması Güvenlik Duvarı tümleştirmesi
+      items:
+        - name: Azure İlkesi ile WAF tümleştirmesi
+          href: ../../web-application-firewall/shared/waf-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
 - name: Sorun giderme
   items:
     - name: Genel sorunlar
@@ -200,7 +211,7 @@
       href: 'https://github.com/azure/azure-policy#known-issues'
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/policy
     - name: Azure PowerShell
       items:
@@ -264,6 +275,16 @@
           href: /azure/templates/microsoft.authorization/policydefinitions
         - name: Girişim Tanımları
           href: /azure/templates/microsoft.authorization/policysetdefinitions
+    - name: Terraform kaynakları
+      items:
+        - name: Atama
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_assignment.html'
+        - name: Tanım
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_definition.html'
+        - name: Girişim (Tanım Ayarlama)
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_set_definition.html'
+        - name: Düzeltme
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_remediation.html'
 - name: Kaynaklar
   items:
     - name: GitHub - Azure İlkesi örnekleri
@@ -280,6 +301,8 @@
           href: 'https://www.azadvertizer.net/'
         - name: Azure İdare Görselleştiricisi
           href: 'https://github.com/julianhayward/azure-mg-sub-governance-reporting'
+        - name: Azure İzleyici için Azure İlkesi betikleri
+          href: 'https://github.com/JimGBritt/AzurePolicy/tree/master/AzureMonitor/Scripts'
     - name: Geri bildirim ve destek
       items:
         - name: Azure İlkesi için Microsoft Soru-Cevap

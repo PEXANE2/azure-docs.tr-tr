@@ -6,7 +6,7 @@
       href: intro-kubernetes.md
     - name: Çözüm mimarileri
       href: /azure/architecture/reference-architectures/containers/aks-start-here?bc=%2fazure%2faks%2fbreadcrumb%2ftoc.json&toc=%2fazure%2faks%2ftoc.json
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   expanded: true
   items:
     - name: AKS Kümesi oluşturma
@@ -142,7 +142,7 @@
           href: upgrade-cluster.md
         - name: Çalışma Süresi SLA’sını kullanma
           href: uptime-sla.md
-        - name: Yakınlık yerleştirme gruplarını kullanma (önizleme)
+        - name: Yakın yerleştirilen grupları kullanma
           href: reduce-latency-ppg.md
         - name: Düğüm görüntüsünü yükseltme
           href: node-image-upgrade.md
@@ -166,7 +166,7 @@
           items:
             - name: Birden fazla düğüm havuzu kullanma
               href: use-multiple-node-pools.md
-            - name: Spot düğüm havuzlarını kullanma (önizleme)
+            - name: Spot düğüm havuzlarını kullanma
               href: spot-node-pool.md
             - name: Sistem düğüm havuzlarını kullanma
               href: use-system-pools.md

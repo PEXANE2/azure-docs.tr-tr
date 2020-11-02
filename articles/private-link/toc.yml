@@ -37,6 +37,8 @@
       items:
         - name: SQL Server’a bağlanma - Portal
           href: tutorial-private-endpoint-sql-portal.md
+        - name: SQL Server’a bağlanma - PowerShell
+          href: tutorial-private-endpoint-sql-powershell.md
 - name: Kavramlar
   items:
     - name: Özel Uç Nokta

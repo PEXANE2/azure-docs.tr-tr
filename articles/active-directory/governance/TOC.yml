@@ -9,6 +9,8 @@
       href: entitlement-management-overview.md
     - name: Erişim gözden geçirmeleri nedir?
       href: access-reviews-overview.md
+    - name: Kimlik yaşam döngüsü yönetimi nedir?
+      href: what-is-identity-lifecycle-management.md
 - name: Öğreticiler
   expanded: true
   items:
@@ -23,6 +25,16 @@
           href: entitlement-management-delegate.md
         - name: İstek işlemi ve e-postalar
           href: entitlement-management-process.md
+    - name: Kimlik yaşam döngüsü yönetimi
+      items:
+        - name: Sağlama nedir?
+          href: what-is-provisioning.md
+        - name: İK temelli sağlama nedir?
+          href: what-is-hr-driven-provisioning.md
+        - name: Uygulama sağlama nedir?
+          href: what-is-app-provisioning.md
+        - name: Dizinler arası sağlama nedir?
+          href: what-is-inter-directory-provisioning.md
     - name: Erişim gözden geçirmeleri
       items:
         - name: Gözden geçirmelerle konuk erişimini yönetme
