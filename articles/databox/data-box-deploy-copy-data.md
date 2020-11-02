@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/29/2019
+ms.date: 10/20/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 9427ec4530ac249d5b8059d04fc85f1183c0081c
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: ced33bb17e9c24faa127b27adacce9cab011e1d8
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123900"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426248"
 ---
 ::: zone target="docs"
 
@@ -70,15 +70,15 @@ Aşağıdaki tabloda, Data Box üzerindeki paylaşımların UNC yolu ve verileri
 
 Windows Server ana bilgisayarı kullanıyorsanız Data Box'a bağlanmak için aşağıdaki adımları izleyin.
 
-1. İlk adım kimlik doğrulamasından geçmek ve oturum başlatmaktır. **Bağlan ve kopyala**'ya gidin. Depolama hesabınızla ilişkilendirilmiş paylaşımların erişim kimlik bilgilerini almak için **SMB**’yi seçin. 
+1. İlk adım kimlik doğrulamasından geçmek ve oturum başlatmaktır. **Bağlan ve kopyala** 'ya gidin. Depolama hesabınızla ilişkilendirilmiş paylaşımların erişim kimlik bilgilerini almak için **SMB** ’yi seçin. 
 
     ![SMB paylaşımları için paylaşım kimlik bilgilerini alma](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
-2. Paylaşıma erişme ve veri kopyalama iletişim kutusunda paylaşıma karşılık gelen **Kullanıcı adı** ve **Parola** değerlerini kopyalayın. **Tamam**’ı seçin.
+2. Paylaşıma erişme ve veri kopyalama iletişim kutusunda paylaşıma karşılık gelen **Kullanıcı adı** ve **Parola** değerlerini kopyalayın. Parolada özel karakterler varsa bunlardan önce ve sonra çift tırnak işareti ekleyin. Ardından **Tamam** ’ı seçin.
     
     ![Bir paylaşım için kullanıcı adı ve parola alma](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
-3. Ana bilgisayarınızdan depolama hesabınızla (aşağıdaki örnekte *utsac1*) ilişkili paylaşımlara erişmek için bir komut penceresi açın. Komut istemine şunları yazın:
+3. Ana bilgisayarınızdan depolama hesabınızla (aşağıdaki örnekte *utsac1* ) ilişkili paylaşımlara erişmek için bir komut penceresi açın. Komut istemine şunları yazın:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -95,7 +95,7 @@ Windows Server ana bilgisayarı kullanıyorsanız Data Box'a bağlanmak için a�
     The command completed successfully.
     ```
 
-4. Windows + R tuşlarına basın. **Çalıştır** penceresinde `\\<device IP address>` değerini belirtin. Dosya Gezgini’ni açmak için **Tamam**’ı seçin.
+4. Windows + R tuşlarına basın. **Çalıştır** penceresinde `\\<device IP address>` değerini belirtin. Dosya Gezgini’ni açmak için **Tamam** ’ı seçin.
     
     ![Dosya Gezgini aracılığıyla paylaşıma bağlanma](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
@@ -103,7 +103,7 @@ Windows Server ana bilgisayarı kullanıyorsanız Data Box'a bağlanmak için a�
     
     ![Dosya Gezgini’nde gösterilen paylaşımlar](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
 
-    **Her zaman kopyalamayı düşündüğünüz dosyalar için paylaşımda bir klasör oluşturun ve ardından dosyaları bu klasöre kopyalayın**. Blok blobu ve sayfa blobu paylaşımları altında oluşturulan klasör, verilerin blob olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları depolama hesabındaki *root* klasörüne doğrudan kopyalayamazsınız.
+    **Her zaman kopyalamayı düşündüğünüz dosyalar için paylaşımda bir klasör oluşturun ve ardından dosyaları bu klasöre kopyalayın** . Blok blobu ve sayfa blobu paylaşımları altında oluşturulan klasör, verilerin blob olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları depolama hesabındaki *root* klasörüne doğrudan kopyalayamazsınız.
     
 Bir Linux istemcisi kullanıyorsanız, SMB paylaşımını bağlamak için aşağıdaki komutu kullanın. Aşağıdaki "vers" parametresi, Linux ana bilgisayarınızın desteklediği SMB sürümüdür. Aşağıdaki komutta verilen uygun sürümü takın. Data Box’ın desteklediği SMB sürümleri için bkz. [Linux istemcileri için desteklenen dosya sistemleri](./data-box-system-requirements.md#supported-file-transfer-protocols-for-clients) 
 
@@ -227,7 +227,7 @@ Kopyalama işlemi sırasında hatalarla karşılaşırsanız bir bildirim görü
 
 ![Bağlan ve kopyala adımında bir kopyalama hatası bildirimi](media/data-box-deploy-copy-data/view-errors-1.png)
 
-**Sorun listesini indir**’i seçin.
+**Sorun listesini indir** ’i seçin.
 
 ![Bağlan ve kopyala adımındaki hataları indirip görüntüleme 2](media/data-box-deploy-copy-data/view-errors-2.png)
 
@@ -288,7 +288,7 @@ Adım adım yönergeler için [Öğretici: REST API’leri aracılığıyla Azur
 
 Veri kopyalama hizmeti aracılığıyla veri kopyalamak için:
 
-1. Veri kopyalama hizmetini kullanarak veri kopyalamak için bir iş oluşturmanız gerekir. Data Box yerel web kullanıcı arabiriminde **Yönet > Verileri kopyala > Oluştur**'a gidin.
+1. Veri kopyalama hizmetini kullanarak veri kopyalamak için bir iş oluşturmanız gerekir. Data Box yerel web kullanıcı arabiriminde **Yönet > Verileri kopyala > Oluştur** 'a gidin.
 2. Parametreleri doldurun ve bir iş oluşturun.
 
 Adım adım yönergeler için [Öğretici: Veri kopyalama hizmetini kullanarak Azure Data Box’a veri kopyalama](data-box-deploy-copy-data-via-copy-service.md) bölümüne gidin.

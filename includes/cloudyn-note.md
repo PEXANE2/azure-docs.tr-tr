@@ -2,14 +2,15 @@
 author: bandersmsft
 ms.author: banders
 ms.service: cost-management-billing
+ms.subservice: cloudyn
 ms.topic: include
-ms.date: 03/20/2020
-ms.openlocfilehash: fbcb962d45fbe0f701a3d42fcbe144b0d02ae29e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 10/23/2020
+ms.openlocfilehash: 7824f25e9c78b2c3fd3ea892616ba96977d58754
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065874"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537362"
 ---
 > [!NOTE]
-> Cloudyn 2020’nin sonunda kullanımdan kaldırılıyor. Mevcut Cloudyn özellikleri mümkün olduğunca doğrudan Azure portalıyla tümleştiriliyor. CSP müşterileri dışında, şu anda hiçbir yeni müşteri eklenemez. Mevcut ürün için destek, ürün tamamen kullanımdan kaldırılana kadar devam edecek. Maliyet yönetimi ihtiyaçlarınıza Azure Maliyet Yönetimi’nin mi yoksa Cloudyn’in mi en uygun olduğunu saptama hakkında bilgi için bkz. [Azure Maliyet Yönetimi ile Cloudyn arasında seçim yapma](../articles/cost-management-billing/costs/choose-between-azure-cost-management-cloudyn.md).
+> Cloudyn 2020’nin sonunda kullanımdan kaldırılıyor. Mevcut Cloudyn özellikleri mümkün olduğunca doğrudan Azure portalıyla tümleştiriliyor. Şu anda yeni müşteri eklenemiyor. Mevcut ürün için destek, ürün tamamen kullanımdan kaldırılana kadar devam edecek.

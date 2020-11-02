@@ -3,33 +3,29 @@ title: Azure'da Cloudyn’e genel bakış
 description: Cloudyn, Azure ve diğer bulut kaynaklarını kullanmanıza yardımcı olan çoklu bulut maliyet yönetimi çözümüdür.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/12/2020
+ms.date: 10/23/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.reviewer: benshy
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3acc13ca535808f14cb01d50e38f6bd4d12902fc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 74d171a4c694f6d720ec3882f97d18e43aecc63f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684448"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543296"
 ---
 # <a name="what-is-the-cloudyn-service"></a>Cloudyn hizmeti nedir?
 
-Microsoft’un bir bağlı şirketi olan Cloudyn, Azure kaynaklarınızın yanı sıra AWS ve Google dahil diğer bulut sağlayıcıları için bulut kullanımınızı ve harcamalarınızı izlemenize imkan tanır. Anlaşılması kolay pano raporları, maliyet ayırma ve ücret hesaplama/yansıtma konusunda yardımcı olur. Cloudyn, yönetip ayarlamak isteyeceğiniz az kullanılan kaynakları belirleyerek bulut harcamalarınızı en iyi duruma getirmenize yardımcı olur.
+Microsoft’un bir bağlı şirketi olan Cloudyn, Azure kaynaklarınıza ilişkin bulut kullanımınızı ve harcamalarınızı izlemenize olanak verir. Anlaşılması kolay pano raporları, maliyet ayırma ve ücret hesaplama/yansıtma konusunda yardımcı olur. Cloudyn, yönetip ayarlamak isteyeceğiniz az kullanılan kaynakları belirleyerek bulut harcamalarınızı en iyi duruma getirmenize yardımcı olur.
 
 Tanıtım videosunu izlemek için bkz. [Azure Cloudyn’e Giriş](https://azure.microsoft.com/resources/videos/azure-cost-management-overview-and-demo/).
  
 Azure Maliyet Yönetimi, Cloudyn'e benzer işlevler sunar. Azure Maliyet Yönetimi, yerel Azure maliyet yönetimi çözümüdür. Maliyet analizi yapmanıza, bütçe oluşturup yönetmenize, verileri dışarı aktarmanıza ve tasarruf önerilerini gözden geçirip gerekli eylemleri gerçekleştirmenize yardımcı olur. Daha fazla bilgi için bkz. [Azure Maliyet Yönetimi](../cost-management-billing-overview.md).
  
 [!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
-
-İşletmenizin ihtiyaçlarına göre Azure Maliyet Yönetimi veya Cloudyn kullanmanız gereken durumlarla ilgili öneriler için [Azure Maliyet Yönetimi ve Cloudyn videosunu](https://www.youtube.com/watch?v=15DzKPMBRxM) izleyin.
- 
->[!VIDEO https://www.youtube.com/embed/15DzKPMBRxM]
 
 ## <a name="monitor-usage-and-spending"></a>Kullanımı ve harcamayı izleyin
 
@@ -56,6 +52,4 @@ AWS Ayrılmış Örnekleri sağladıysanız satın alma önerilerini görüntül
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık Cloudyn ile tanıştığınıza göre bir sonraki adım bulut ortamınızı kaydetmek ve verilerinizi keşfetmeye başlamaktır.
-
-- [CSP İş Ortağı programına kaydolun ve maliyetle ilgili verileri görüntüleyin](quick-register-csp.md)
+- [Kullanımı ve maliyetleri gözden geçirme](tutorial-review-usage.md)

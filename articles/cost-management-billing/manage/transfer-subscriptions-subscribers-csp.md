@@ -6,18 +6,22 @@ ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 10/22/2020
 ms.author: banders
-ms.openlocfilehash: ae504072e2a2cc481217933478ccbfb7bc3372b3
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 69d6544485e356741634749dd91ba6485cfbb31c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132372"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460691"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Azure aboneliklerini aboneler ile CSP'ler arasında aktarma
 
 Bu makalede Azure aboneliklerini Bulut Çözümü Sağlayıcıları (CSP) iş ortakları ile müşterileri arasında aktarmayla ilgili üst düzey adımlara yer verilmiştir. Buradaki bilgiler Azure abonesinin iş ortağıyla eşgüdümlü çalışmasına yardım etmek için hazırlanmıştır. Microsoft iş ortaklarının aktarım işleminde kullandığı bilgiler [Müşterinin Azure aboneliklerini başka bir iş ortağına aktarmayı öğrenin](/partner-center/switch-azure-subscriptions-to-a-different-partner) başlığı altında belgelenmiştir.
+
+Aktarım isteğine başlamadan önce, saklamak istediğiniz tüm maliyet ve faturalama bilgilerini indirmeniz veya dışarı aktarmanız gerekir. Faturalama ve kullanım bilgileri abonelikle birlikte aktarılmaz. Maliyet yönetimi verilerini dışarı aktarma hakkında daha fazla bilgi için bkz. [Dışarı aktarılan verileri oluşturma ve yönetme](../costs/tutorial-export-acm-data.md). Faturanızı ve kullanım verilerinizi indirme hakkında daha fazla bilgi için bkz. [Azure faturanızı ve günlük kullanım verilerinizi indirme veya görüntüleme](download-azure-invoice-daily-usage-date.md).
+
+Aboneliği aktardıktan sonra mevcut rezervasyonlarınız uygulanmaya devam etmez. Aboneliği aktarmadan önce [tüm rezervasyonları iptal edip para iadesi aldığınızdan](../reservations/exchange-and-refund-azure-reservations.md) emin olun.
 
 ## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>CSP iş ortağına EA aboneliklerinin aktarılması
 

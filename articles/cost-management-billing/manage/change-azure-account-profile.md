@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 10/26/2020
 ms.author: banders
-ms.custom: contperfq1
-ms.openlocfilehash: be3de838e340400da09ad261d82328f6793aed2e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: contperfq2
+ms.openlocfilehash: 05b93fd02ec229306d4e3e150b1e8baab072b597
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297734"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671993"
 ---
 # <a name="change-contact-information-for-an-azure-billing-account"></a>Azure faturalama hesabının kişi bilgilerini değiştirme
 
@@ -27,26 +27,26 @@ Azure Active Directory kullanıcı profili bilgilerinizi güncelleştirmek istiy
 
 *Fatura adresi* - Fatura adresi, kuruluşun veya bir ödeme hesabı için oluşturulan faturalardan sorumlu kişinin adresi ve iletişim bilgileridir. Bir Microsoft Çevrimiçi Hizmet Programı (MOSP) için ödeme hesabının, hesap için oluşturulan tüm faturalarda görüntülenen bir fatura adresi vardır. Bir Microsoft Müşteri Sözleşmesi (MCA) için ödeme hesabının, her faturalama profili için bir fatura adresi vardır ve bu, faturalama profili için oluşturulan faturada gösterilir.
 
-*Hizmet ve pazarlama e-postaları için iletişim e-posta adresi*: Azure hesabınız hakkında önemli faturalandırma, hizmet ve önerilerle ilgili bildirimleri almak için, oturum açarken kullandığınız e-posta adresinden farklı bir e-posta adresi belirtebilirsiniz. Acil güvenlik sorunları, fiyat değişiklikleri veya hesabınız tarafından kullanılan hizmetlerdeki hataya neden olan değişiklikler gibi hizmet bildirimi e-postaları her zaman oturum açma adresinize gönderilir.
+*Hizmet ve pazarlama e-postaları için iletişim e-posta adresi* : Azure hesabınız hakkında önemli faturalandırma, hizmet ve önerilerle ilgili bildirimleri almak için, oturum açarken kullandığınız e-posta adresinden farklı bir e-posta adresi belirtebilirsiniz. Acil güvenlik sorunları, fiyat değişiklikleri veya hesabınız tarafından kullanılan hizmetlerdeki hataya neden olan değişiklikler gibi hizmet bildirimi e-postaları her zaman oturum açma adresinize gönderilir.
 
 ## <a name="update-an-mosp-billing-account-address"></a>MOSP faturalama hesabı adresini güncelleştirme
 
-1. Hesapta hesap yöneticisi izni olan e-posta adresini kullanarak [Azure portalında](https://portal.azure.com/) oturum açın.
+1. Hesapta hesap yöneticisi izni olan e-posta adresini kullanarak Azure portalında oturum açın.
 1. **Maliyet Yönetimi + Faturalama** araması yapın.  
     ![Azure portalda maliyet yönetimi + faturalamanın nerede aranacağını gösteren ekran görüntüsü](./media/change-azure-account-profile/search-cmb.png)
-1. Sol taraftan **Özellikler**’i seçin.  
+1. Sol taraftan **Özellikler** ’i seçin.  
     ![MOSP faturalama hesabı özelliklerini gösteren ekran görüntüsü](./media/change-azure-account-profile/update-contact-information-select-properties.png)
-1. Satılan ve fatura adresi adreslerini güncelleştirmek için **Fatura adresini güncelleştir**’i seçin. Yeni adresi girin ve **Kaydet**’i seçin.  
+1. Satılan ve fatura adresi adreslerini güncelleştirmek için **Fatura adresini güncelleştir** ’i seçin. Yeni adresi girin ve **Kaydet** ’i seçin.  
     ![MSOP faturalama hesabı için adres güncelleştirme işlemini gösteren ekran görüntüsü](./media/change-azure-account-profile/update-contact-information-mosp.png)
 
 ## <a name="update-an-mca-billing-account-sold-to-address"></a>Bir MCA ödeme hesabının satılan adresini güncelleştirme
 
-1. Microsoft Müşteri Sözleşmesi için ödeme hesabında sahip veya katkıda bulunan rolü olan e-posta adresini kullanarak [Azure portalında](https://portal.azure.com/) oturum açın.
+1. Microsoft Müşteri Sözleşmesi için ödeme hesabında sahip veya katkıda bulunan rolü olan e-posta adresini kullanarak Azure portalında oturum açın.
 1. **Maliyet Yönetimi + Faturalama** araması yapın.  
     ![Azure portalda nerede aranacağını gösteren ekran görüntüsü](./media/change-azure-account-profile/search-cmb.png)
-1. Sol taraftan **Özellikler**'i ve ardından **Satılan adresi güncelleştir**'i seçin.  
+1. Sol taraftan **Özellikler** 'i ve ardından **Satılan adresi güncelleştir** 'i seçin.  
     ![Satılan adresin değiştirilebileceği MCA faturalama hesabının özelliklerini gösteren ekran görüntüsü](./media/change-azure-account-profile/update-sold-to-list-properties-mca.png)
-1. Yeni adresi girin ve **Kaydet**’i seçin.  
+1. Yeni adresi girin ve **Kaydet** ’i seçin.  
     ![MCA hesabı için satılan adresinin güncelleştirilmesini gösteren ekran görüntüsü](./media/change-azure-account-profile/update-sold-to-save-mca.png)
 
     > [!IMPORTANT]
@@ -54,20 +54,20 @@ Azure Active Directory kullanıcı profili bilgilerinizi güncelleştirmek istiy
 
 ## <a name="update-an-mca-billing-account-address"></a>MCA ödeme hesabı adresini güncelleştirme
 
-1. MCA için bir ödeme hesabı veya faturalama profili üzerinde sahip veya katkıda bulunan rolü olan e-posta adresini kullanarak [Azure portalında](https://portal.azure.com/) oturum açın.
+1. MCA için bir ödeme hesabı veya faturalama profili üzerinde sahip veya katkıda bulunan rolü olan e-posta adresini kullanarak Azure portalında oturum açın.
 1. **Maliyet Yönetimi + Faturalama** araması yapın.  
 1. Soldaki **Faturalama profilleri** seçeneğini belirleyin.
 1. Fatura adresini güncelleştirmek için bir faturalama profili seçin.  
     ![Faturalama profilini seçtiğiniz Faturalama profilleri sayfasını gösteren ekran görüntüsü](./media/change-azure-account-profile/update-bill-to-list-profiles-mca.png)
-1. Sol taraftan **Özellikler**’i seçin.
-1. **Adresi güncelleştir**’i seçin.  
+1. Sol taraftan **Özellikler** ’i seçin.
+1. **Adresi güncelleştir** ’i seçin.  
     ![Adresin nerede güncelleştirileceğini gösteren ekran görüntüsü](./media/change-azure-account-profile/update-bill-to-list-properties-mca.png)
-1. Yeni adresi girin ve **Kaydet**’i seçin.  
+1. Yeni adresi girin ve **Kaydet** ’i seçin.  
     ![Adresi güncelleştirmeyi gösteren ekran görüntüsü](./media/change-azure-account-profile/update-bill-to-save-mca.png)
 
 ## <a name="service-and-marketing-emails"></a>Hizmet ve pazarlama e-postaları
 
-[Azure portalında](https://portal.azure.com), 90 günde bir e-posta adresinizi doğrulamanız veya güncelleştirmeniz istenir. Microsoft, bu e-posta adresine aşağıdakiler için Azure hesabıyla ilgili bilgileri içeren e-postalar gönderir:
+Azure portalında, 90 günde bir e-posta adresinizi doğrulamanız veya güncelleştirmeniz istenir. Microsoft, bu e-posta adresine aşağıdakiler için Azure hesabıyla ilgili bilgileri içeren e-postalar gönderir:
 
 - Hizmet bildirimleri
 - Güvenlik uyarıları
@@ -84,9 +84,9 @@ Hesabınızla ilgili iletişimleri almak istediğiniz e-posta adresini girin. Bi
 
 Aşağıdaki yöntemlerden birini kullanarak iletişim e-posta adresinizi değiştirebilirsiniz. İletişim e-posta adresinizi güncelleştirdiğinizde, oturum açmak için kullandığınız e-posta adresi güncelleştirilmez.
 
-1. Bir MOSP hesabı için hesap yöneticisiyseniz, [MOSP faturalama hesabı adresini güncelleştirme](#update-an-mosp-billing-account-address) bölümündeki yönergeleri izleyin ve son adımda **Kişi bilgilerini güncelleştir**’i seçin. Ardından yeni e-posta adresini girin.
+1. Bir MOSP hesabı için hesap yöneticisiyseniz, [MOSP faturalama hesabı adresini güncelleştirme](#update-an-mosp-billing-account-address) bölümündeki yönergeleri izleyin ve son adımda **Kişi bilgilerini güncelleştir** ’i seçin. Ardından yeni e-posta adresini girin.
 1. Azure portalında [İletişim bilgileri](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) alanına gidin ve yeni e-posta adresini girin. 
-1. [Azure portalında](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade), adınızın baş harflerini veya resminizi içeren simgeyi seçin. Ardından açılır menüyü ( **...** ) seçin. Sonra menüden **İletişim Bilgilerim**’i seçin ve yeni e-posta adresini girin.
+1. Azure portalında, adınızın baş harflerini veya resminizi içeren simgeyi seçin. Ardından açılır menüyü ( **...** ) seçin. Sonra menüden **İletişim Bilgilerim** ’i seçin ve yeni e-posta adresini girin.
 
 ![Azure’da e-posta adresini güncelleştirme örneği](./media/change-azure-account-profile/azure-contact-information.png)
 
@@ -95,14 +95,14 @@ Aşağıdaki yöntemlerden birini kullanarak iletişim e-posta adresinizi deği�
 Pazarlama e-postalarını almayı geri çevirmek için:
 
 1. Profil e-posta adresinizi kullanarak bir istek göndermek için [istek formuna](https://account.microsoft.com/profile/permissions-link-request) gidin. Tercihlerinizi güncelleştirmek için e-postayla bir bağlantı alırsınız.
-1. **İletişim izinlerini yönetme** sayfasını açmak için bağlantıyı seçin. Bu sayfada, e-posta adresinin kabul edildiği pazarlama iletişimi türleri gösterilir. Geri çevirmek istediğiniz seçimlerin işaretini kaldırın ve sonra **Kaydet**’i seçin.  
+1. **İletişim izinlerini yönetme** sayfasını açmak için bağlantıyı seçin. Bu sayfada, e-posta adresinin kabul edildiği pazarlama iletişimi türleri gösterilir. Geri çevirmek istediğiniz seçimlerin işaretini kaldırın ve sonra **Kaydet** ’i seçin.  
     ![İletişim izinlerini yönetme sayfası örneği](./media/change-azure-account-profile/manage-communication-permissions.png)
 
 Pazarlama iletişimlerini geri çevirdiğinizde, hesabınıza göre hizmet bildirimleri almaya devam edersiniz.
 
 ## <a name="update-the-email-address-that-you-sign-in-with"></a>Oturum açmak için kullandığınız e-posta adresini güncelleştirme
 
-Hesabınıza erişmek için kullandığınız e-posta adresini güncelleştiremezsiniz. Ancak, bir MOSP için ödeme hesabınız varsa, yeni e-posta adresini kullanarak başka bir hesaba kaydolabilir ve aboneliklerinizin sahipliğini yeni hesaba aktarabilirsiniz. Bir MCA ödeme hesabı için, [hesabınızda yeni e-posta adresine izin verebilirsiniz](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
+Hesabınıza erişmek için kullandığınız e-posta adresini güncelleştiremezsiniz. Ancak, bir MOSP için ödeme hesabınız varsa, yeni e-posta adresini kullanarak başka bir hesaba kaydolabilir ve aboneliklerinizin sahipliğini yeni hesaba aktarabilirsiniz. Bir MCA ödeme hesabı için, hesabınızda yeni e-posta adresine izin verebilirsiniz.
 
 ## <a name="update-your-credit-card"></a>Kredi kartınızı güncelleştirme
 
@@ -114,10 +114,10 @@ Mevcut bir hesabın ülkesini veya bölgesini değiştirme desteklenmiyor. Ancak
 
 ## <a name="change-the-subscription-name"></a>Abonelik adını değiştirme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın, sol bölmeden **Abonelik**’i seçin ve sonra yeniden adlandırmak istediğiniz aboneliği seçin.
-1. **Genel Bakış**’ı seçin ve sonra komut çubuğundan **Yeniden Adlandır**’ı seçin.  
+1. Azure portalda oturum açın, sol bölmeden **Abonelik** ’i seçin ve sonra yeniden adlandırmak istediğiniz aboneliği seçin.
+1. **Genel Bakış** ’ı seçin ve sonra komut çubuğundan **Yeniden Adlandır** ’ı seçin.  
     ![Azure aboneliğini yeniden adlandırma örneği](./media/change-azure-account-profile/rename-sub.png)
-1. Adı değiştirdikten sonra **Kaydet**’i seçin.
+1. Adı değiştirdikten sonra **Kaydet** ’i seçin.
 
 ## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 

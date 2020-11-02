@@ -3,17 +3,17 @@ title: Azure Maliyet Yönetimi ile AWS tümleştirmesini ayarlama
 description: Bu makale, AWS Maliyet ve Kullanım raporu ile Azure Maliyet Yönetimi tümleştirmesini ayarlama ve yapılandırma adımlarında size yol gösterecektir.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/28/2020
+ms.date: 10/23/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: 8bf3df25d4702b4a0cc6361f20ad08e618e7d62b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e900d63ba7e521cbf7e63d8580d22b08726d1ef6
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266127"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517353"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>AWS Maliyet ve Kullanım raporu tümleştirmesini ayarlama ve yapılandırma
 
@@ -32,25 +32,23 @@ Maliyet ve Kullanım raporu kullanmak, AWS maliyetlerini toplamak ve işlemek i�
 Aşağıdaki adımları izleyerek bir Maliyet ve Kullanım raporu oluşturmak için AWS'deki Faturalandırma ve Maliyet Yönetimi konsolunuzun **Maliyet ve Kullanım Raporları** sayfasını kullanın:
 
 1. AWS Yönetim Konsolunda oturum açıp [Faturalandırma ve Maliyet Yönetimi konsolunu](https://console.aws.amazon.com/billing) açın.
-2. Gezinti bölmesinde **Maliyet ve Kullanım Raporları**'nı seçin.
-3. **Rapor oluştur**’u seçin.
+2. Gezinti bölmesinde **Maliyet ve Kullanım Raporları** 'nı seçin.
+3. **Rapor oluştur** ’u seçin.
 4. **Rapor adı** alanına raporunuz için bir ad girin.
-5. **Ek rapor ayrıntıları** bölümünde **Kaynak kimliklerini dahil et**'i seçin.
+5. **Ek rapor ayrıntıları** bölümünde **Kaynak kimliklerini dahil et** 'i seçin.
 6. **Veri yenileme ayarları** bölümünde faturanız tamamlandıktan sonra AWS tarafından hesabınızda para iadesi, kredi veya destek ücreti uygulanması halinde AWS Maliyet ve Kullanım raporunun yenilenmesini isteyip istemediğinizi seçin. Rapor yenilendiğinde Amazon S3'e yeni bir rapor yüklenir. Bu ayarı seçili olarak bırakmanız önerilir.
-7. **İleri**’yi seçin.
-8. **S3 demeti** için **Yapılandır**'ı seçin.
-9. S3 Demetini Yapılandır iletişim kutusunda aşağıdakilerden birini yapın:
-    1. Açılan listeden bir demet seçin ve **İleri**'yi seçin.
-    2. Demet adı ve yeni demeti oluşturmak istediğiniz Bölgeyi yazıp **İleri**'yi seçin.
-10.    **Bu ilkenin doğru olduğunu onayladım**'ı seçip **Kaydet**'e tıklayın.
-11.    (İsteğe bağlı) Rapor yolu ön eki alanına raporunuzun adına eklenmesini istediğiniz rapor yolu ön ekini girin.
+7. **İleri** ’yi seçin.
+8. **S3 demeti** için **Yapılandır** 'ı seçin.
+9. S3 Demetini Yapılandır iletişim kutusunda, demet adını ve yeni demeti oluşturmak istediğiniz Bölgeyi yazıp **İleri** ’yi seçin.
+10. **Bu ilkenin doğru olduğunu onayladım** 'ı seçip **Kaydet** 'e tıklayın.
+11. (İsteğe bağlı) Rapor yolu ön eki alanına raporunuzun adına eklenmesini istediğiniz rapor yolu ön ekini girin.
 Ön ek belirtmezseniz varsayılan ön ek rapor için belirttiğiniz ad olur. Tarih aralığı `/report-name/date-range/` biçimindedir.
 12. **Zaman birimi** alanında **Her saat** girişini seçin.
-13.    **Rapor sürümü oluşturma** alanında raporunuzun yeni sürümlerinin eski sürümün üzerinde yazması veya ek yeni rapor oluşturulması yönündeki tercihinizi belirtin.
+13. **Rapor sürümü oluşturma** alanında raporunuzun yeni sürümlerinin eski sürümün üzerinde yazması veya ek yeni rapor oluşturulması yönündeki tercihinizi belirtin.
 14. **Şunun için veri tümleştirmesini etkinleştir:** alanında seçim yapmanıza gerek yoktur.
-15. **Sıkıştırma** bölümünde **GZIP**'i seçin.
-16. **İleri**’yi seçin.
-17. Raporunuzun ayarlarını inceledikten sonra **Gözden geçir ve tamamla**'yı seçin.
+15. **Sıkıştırma** bölümünde **GZIP** 'i seçin.
+16. **İleri** ’yi seçin.
+17. Raporunuzun ayarlarını inceledikten sonra **Gözden geçir ve tamamla** 'yı seçin.
 
     Rapor adını not edin. Sonraki adımlarda kullanacaksınız.
 
@@ -64,54 +62,54 @@ Maliyet Yönetimi'nde AWS hesabına rol tabanlı erişin sağlamak için gerekli
 
 Yeni Rol Oluştur sihirbazını kullanın:
 
-1. AWS konsolunuzda oturum açın ve **Hizmetler**'i seçin.
+1. AWS konsolunuzda oturum açın ve **Hizmetler** 'i seçin.
 2. Hizmetler listesinde **IAM** girişini seçin.
-3. **Roller**'i ve ardından **Rol Oluştur**'u seçin.
-4. Bir sonraki sayfada **Başka bir AWS hesabı**'nı seçin.
+3. **Roller** 'i ve ardından **Rol Oluştur** 'u seçin.
+4. Bir sonraki sayfada **Başka bir AWS hesabı** 'nı seçin.
 5. **Hesap Kimliği** alanına **432263259397** girin.
 6. **Seçenekler** bölümünde **Dış kimlik gerekir (Bu rolün üçüncü tarafın kullanımında olacağı durumlarda en iyi yöntemdir)** girişini seçin.
 7. **Dış Kimlik** bölümünde AWS rolü ile Azure Maliyet Yönetimi arasındaki paylaşılan geçiş kodu olan dış kimliği girin. Bu dış kimlik, Maliyet Yönetimi'ndeki **Yeni Bağlayıcı** sayfasında da kullanılır. Microsoft, dış kimliği girerken güçlü bir geçiş kodu ilkesi kullanmanızı önerir.
     > [!NOTE]
     > **MFA Gerektir** seçimini değiştirmeyin. İşaretlenmemiş şekilde kalmalıdır.
-8. Şunu seçin: **İleri: İzinler**.
-9. **İlke oluştur**'u seçin. Yeni bir tarayıcı sekmesi açılır. İlkeler burada oluşturulur.
-10. **Bir hizmet seçin**'i seçin.
+8. Şunu seçin: **İleri: İzinler** .
+9. **İlke oluştur** 'u seçin. Yeni bir tarayıcı sekmesi açılır. İlkeler burada oluşturulur.
+10. **Bir hizmet seçin** 'i seçin.
 
 Maliyet ve Kullanım raporu için izinleri yapılandırın:
 
 1. **Maliyet ve Kullanım Raporu** yazın.
 2. **Erişim düzeyi** > **Okuma** > **DescribeReportDefinitions** yolunu izleyin. Bu adım, Maliyet Yönetimi'nin CUR raporlarının nasıl tanımlandığını okumasını ve rapor tanımı önkoşulunu karşılayıp karşılamadığını belirlemesini sağlar.
-3. **Ek izin ekle**'yi seçin.
+3. **Ek izin ekle** 'yi seçin.
 
 S3 demetiniz ve nesneleriniz için izinleri yapılandırın:
 
-1. **Bir hizmet seçin**'i seçin.
+1. **Bir hizmet seçin** 'i seçin.
 2. **S3** yazın.
 3. **Erişim düzeyi** > **Listeleme** > **ListBucket** yolunu izleyin. Bu eylem, S3 Demetinin içindeki nesnelerin listesini alır.
 4. **Erişim düzeyi** > **Okuma** > **GetObject** yolunu izleyin. Bu eylem faturalandırma dosyalarının indirilmesini sağlar.
-5. **Kaynaklar**'ı seçin.
-6. **Demet - ARN Ekle**'yi seçin.
+5. **Kaynaklar** 'ı seçin.
+6. **Demet - ARN Ekle** 'yi seçin.
 7. **Demet adı** alanına CUR dosyalarını depolamak için kullanılan demeti girin.
-8. **Nesne - ARN Ekle**'yi seçin.
+8. **Nesne - ARN Ekle** 'yi seçin.
 9. **Demet adı** alanına CUR dosyalarını depolamak için kullanılan demeti girin.
-10. **Nesne adı** bölümünde **Herhangi biri**'ni seçin.
-11. **Ek izin ekle**'yi seçin.
+10. **Nesne adı** bölümünde **Herhangi biri** 'ni seçin.
+11. **Ek izin ekle** 'yi seçin.
 
 Maliyet Gezgini için gerekli izinleri yapılandırın:
 
-1. **Bir hizmet seçin**'i seçin.
+1. **Bir hizmet seçin** 'i seçin.
 2. **Maliyet Gezgini Hizmeti** yazın.
 3. **Tüm Maliyet Gezgini Hizmeti eylemleri (ce:\*)** girişini seçin. Bu eylem, koleksiyonun doğru olup olmadığını doğrular.
-4. **Ek izin ekle**'yi seçin.
+4. **Ek izin ekle** 'yi seçin.
 
 AWS Kuruluşları için izin ekleme:
 
-1. **Kuruluşlar**'a girin.
+1. **Kuruluşlar** 'a girin.
 2. **Erişim düzeyi** > **Listeleme** > **ListAccounts** yolunu izleyin. Bu eylem, hesap adlarını alır.
-3. **Gözden Geçirme İlkesi** alanında yeni ilke için bir ad girin. Doğru bilgileri girdiğinizden emin olun ve ardından **İlke Oluştur**'u seçin.
+3. **Gözden Geçirme İlkesi** alanında yeni ilke için bir ad girin. Doğru bilgileri girdiğinizden emin olun ve ardından **İlke Oluştur** 'u seçin.
 4. Önceki sekmeye geri dönün ve tarayıcınızdaki Web sayfasını yenileyin. Arama çubuğunda yeni ilkenizi arayın.
-5. Şunu seçin: **İleri: Gözden Geçir**.
-6. Yeni rolün adını girin. Doğru bilgileri girdiğinizden emin olun ve ardından **Rol Oluştur**'u seçin.
+5. Şunu seçin: **İleri: Gözden Geçir** .
+6. Yeni rolün adını girin. Doğru bilgileri girdiğinizden emin olun ve ardından **Rol Oluştur** 'u seçin.
 
     Yukarıdaki adımlarda rolü oluştururken kullandığınız rol ARN'si ve dış kimlik değerlerini not edin. Bunları daha sonra Azure Maliyet Yönetimi bağlayıcısını ayarlarken kullanacaksınız.
 
@@ -152,18 +150,18 @@ AWS Kuruluşları için izin ekleme:
 Bir AWS bağlayıcısı oluşturmak ve AWS maliyetlerinizi izlemeye başlamak için aşağıdaki bilgileri kullanın:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. **Maliyet Yönetimi + Faturalama** > **Maliyet Yönetimi**'ne gidin.
-3. **Ayarlar**'ın altında **AWS için Bağlayıcılar**'ı seçin.  
-4. Bağlayıcı oluşturmak için sayfanın üst kısmındaki **+ Ekle**'yi seçin.  
+2. **Maliyet Yönetimi + Faturalama** > **Maliyet Yönetimi** 'ne gidin.
+3. **Ayarlar** 'ın altında **AWS için Bağlayıcılar** 'ı seçin.  
+4. Bağlayıcı oluşturmak için sayfanın üst kısmındaki **+ Ekle** 'yi seçin.  
     :::image type="content" source="./media/aws-integration-setup-configure/aws-connector.png" alt-text="AWS için Bağlayıcılar ayarını gösteren örnek" :::
 1. **Bağlayıcı oluştur** sayfasının **Görünen ad** alanında bağlayıcınız için bir ad girin.  
-    :::image type="content" source="./media/aws-integration-setup-configure/create-aws-connector01.png" alt-text="AWS bağlayıcısı oluşturma sayfasının örneği" :::
+    :::image type="content" source="./media/aws-integration-setup-configure/create-aws-connector01.png" alt-text="AWS için Bağlayıcılar ayarını gösteren örnek" :::
 1. İsterseniz varsayılan yönetim grubunu seçebilirsiniz. Bulunan tüm bağlı hesaplar orada depolanır. Bunu daha sonra da ayarlayabilirsiniz.
 1. **Faturalama** bölümünde, sürekli çalışmayı güvence altına almak istiyorsanız **Otomatik Yenileme** için **Açık** seçin. Otomatik seçeneğini belirtirseniz bir faturalandırma aboneliği seçmeniz gerekir.
 1. **Rol ARN'si** için AWS'de rolü ayarlarken kullandığınız değeri girin.
 1. **Dış Kimlik** için AWS'de rolü ayarlarken kullandığınız değeri girin.
 1. **Rapor adı** için AWS'de oluşturduğunuz adı girin.
-1. **İleri**’yi ve ardından **Oluştur**’u seçin.
+1. **İleri** ’yi ve ardından **Oluştur** ’u seçin.
 
 Yeni AWS kapsamlarının, AWS birleştirilmiş hesabının, AWS bağlı hesaplarının ve maliyet verilerinin görünmesi birkaç saat sürebilir.
 
@@ -174,8 +172,8 @@ Bulma işleminden sonra kullanıcılara bağlayıcı izinlerinin atanması, bu i
 ## <a name="take-additional-steps"></a>Ek adımları gerçekleştirin
 
 - Henüz yapmadıysanız [yönetim gruplarını ayarlayın](../../governance/management-groups/overview.md#initial-setup-of-management-groups).
-- Kapsam seçiciye yeni kapsamların ayarlandığından emin olun. En son verileri görüntülemek için **Yenile**'yi seçin.
-- **Bulut bağlayıcıları** sayfasından bağlayıcınızı seçin ve **Faturalama hesabına gidin**'i seçerek bağlı hesabı yönetim gruplarına atayın.
+- Kapsam seçiciye yeni kapsamların ayarlandığından emin olun. En son verileri görüntülemek için **Yenile** 'yi seçin.
+- **Bulut bağlayıcıları** sayfasından bağlayıcınızı seçin ve **Faturalama hesabına gidin** 'i seçerek bağlı hesabı yönetim gruplarına atayın.
 
 > [!NOTE]
 > Yönetim grupları şu anda Microsoft Müşteri Sözleşmesi (MCA) müşterileri için desteklenmemektedir. MCA müşterileri bağlayıcıyı oluşturup AWS verilerini görüntüleyebilir. Öte yandan MCA müşterileri Azure maliyetleri ile AWS maliyetlerini yönetim grubu altında birlikte görüntüleyemez.
@@ -184,12 +182,12 @@ Bulma işleminden sonra kullanıcılara bağlayıcı izinlerinin atanması, bu i
 
 **AWS için Bağlayıcılar** sayfasında bir bağlayıcı seçtiğinizde şunları yapabilirsiniz:
 
-- **Faturalama hesabına gidin**'i seçerek birleştirilmiş AWS hesabıyla ilgili bilgileri görüntüleyebilirsiniz.
-- Bağlayıcının rol atamasını yönetmek için **Erişim Denetimi**'ni seçebilirsiniz.
-- Bağlayıcıyı güncelleştirmek için **Düzenle**'yi seçebilirsiniz. Rol ARN'sinde göründüğünden AWS hesap numarasını değiştiremezsiniz. Ancak yeni bir bağlayıcı oluşturabilirsiniz.
-- Maliyet Yönetimi'nin bağlayıcı ayarlarını kullanarak verileri toplayabildiğini doğrulamak için doğrulama testini yeniden çalıştırmak üzere **Doğrula**'yı seçin.
+- **Faturalama hesabına gidin** 'i seçerek birleştirilmiş AWS hesabıyla ilgili bilgileri görüntüleyebilirsiniz.
+- Bağlayıcının rol atamasını yönetmek için **Erişim Denetimi** 'ni seçebilirsiniz.
+- Bağlayıcıyı güncelleştirmek için **Düzenle** 'yi seçebilirsiniz. Rol ARN'sinde göründüğünden AWS hesap numarasını değiştiremezsiniz. Ancak yeni bir bağlayıcı oluşturabilirsiniz.
+- Maliyet Yönetimi'nin bağlayıcı ayarlarını kullanarak verileri toplayabildiğini doğrulamak için doğrulama testini yeniden çalıştırmak üzere **Doğrula** 'yı seçin.
 
-:::image type="content" source="./media/aws-integration-setup-configure/aws-connector-details.png" alt-text="Örnek AWS bağlayıcısı ayrıntıları" :::
+:::image type="content" source="./media/aws-integration-setup-configure/aws-connector-details.png" alt-text="AWS için Bağlayıcılar ayarını gösteren örnek" :::
 
 ## <a name="set-up-azure-management-groups"></a>Azure yönetim gruplarını ayarlama
 
@@ -201,12 +199,12 @@ Maliyetleri ayırmak istiyorsanız yalnızca bağlı AWS hesaplarını içeren b
 
 AWS birleştirilmiş hesabı, birden fazla AWS hesabı için faturalandırma ve ödeme süreçlerini birleştirir. Ayrıca bağlı AWS hesabı olarak görev yapar. AWS bağlayıcısı sayfasındaki bağlantıyı kullanarak AWS birleştirilmiş hesabınızın ayrıntılarını görüntüleyebilirsiniz. 
 
-:::image type="content" source="./media/aws-integration-setup-configure/aws-consolidated-account01.png" alt-text="Birleştirilmiş AWS hesabı için örnek ayrıntılar" :::
+:::image type="content" source="./media/aws-integration-setup-configure/aws-consolidated-account01.png" alt-text="AWS için Bağlayıcılar ayarını gösteren örnek" :::
 
 Sayfada şunları yapabilirsiniz:
 
-- **Güncelleştir**'i seçerek bağlı AWS hesaplarını toplu olarak bir yönetim grubuyla güncelleştirebilirsiniz.
-- Kapsam için rol atamasını yönetmek üzere **Erişim Denetimi**'ni seçebilirsiniz.
+- **Güncelleştir** 'i seçerek bağlı AWS hesaplarını toplu olarak bir yönetim grubuyla güncelleştirebilirsiniz.
+- Kapsam için rol atamasını yönetmek üzere **Erişim Denetimi** 'ni seçebilirsiniz.
 
 ### <a name="permissions-for-an-aws-consolidated-account"></a>AWS birleştirilmiş hesabı için izinler
 
@@ -220,10 +218,10 @@ Bağlı AWS hesabı, AWS kaynaklarının oluşturulduğu ve yönetildiği yerdir
 
 Bu sayfada şunları yapabilirsiniz:
 
-- **Güncelleştir**'i seçerek bağlı AWS hesabını bir yönetim grubuyla güncelleştirebilirsiniz.
-- Kapsam için rol atamasını yönetmek üzere **Erişim Denetimi**'ni seçebilirsiniz.
+- **Güncelleştir** 'i seçerek bağlı AWS hesabını bir yönetim grubuyla güncelleştirebilirsiniz.
+- Kapsam için rol atamasını yönetmek üzere **Erişim Denetimi** 'ni seçebilirsiniz.
 
-:::image type="content" source="./media/aws-integration-setup-configure/aws-linked-account01.png" alt-text="Bağlı AWS hesabı sayfası örneği" :::
+:::image type="content" source="./media/aws-integration-setup-configure/aws-linked-account01.png" alt-text="AWS için Bağlayıcılar ayarını gösteren örnek" :::
 
 ### <a name="permissions-for-an-aws-linked-account"></a>Bağlı AWS hesabı için izinler
 
