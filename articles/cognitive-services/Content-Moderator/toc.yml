@@ -6,6 +6,8 @@
     - name: Content Moderator nedir?
       href: overview.md
       expanded: true
+    - name: Yenilikler
+      href: whats-new.md
 - name: Hızlı Başlangıçlar
   items:
     - name: Web üzerinde Content Moderator'ı deneme

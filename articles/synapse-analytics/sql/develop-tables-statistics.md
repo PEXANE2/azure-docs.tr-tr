@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: cefc6cc72ed8d74663464f4ac2d672369cd9d31c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 368d43283d713b8d4e101c2ee26724242f29756c
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288673"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148261"
 ---
 # <a name="statistics-in-synapse-sql"></a>SYNAPSE SQL istatistikleri
 
@@ -74,7 +74,7 @@ Bu deyimler istatistiklerin otomatik olarak oluşturulmasını tetikler:
 > [!NOTE]
 > Farklı bir kullanıcı bağlamı altında [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) , istatistik oluşturma işlemi günlüğe kaydedilir.
 
-Otomatik istatistikler oluşturulduğunda şu biçimi alır: _WA_Sys_<8 basamaklı sütun kimliği onaltılık>_<8 basamaklı tablo kimliği onaltılık>. Zaten oluşturulmuş istatistikleri [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) komutunu çalıştırarak görüntüleyebilirsiniz:
+Otomatik istatistikler oluşturulduğunda şu biçimi alır: _WA_Sys_ <8 basamaklı sütun kimliği onaltılık>_<8 basamaklı tablo kimliği onaltılık>. Zaten oluşturulmuş istatistikleri [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) komutunu çalıştırarak görüntüleyebilirsiniz:
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -245,7 +245,7 @@ Tam başvuru için bkz. [Istatistik oluşturma](/sql/t-sql/statements/create-sta
 > [!NOTE]
 > Sorgu sonucundaki satır sayısını tahmin etmek için kullanılan histogramı yalnızca istatistik nesne tanımında listelenen ilk sütunda kullanılabilir.
 
-Bu örnekte, histogram *ürün \_ kategorisinde*bulunur. Çapraz sütun istatistikleri *ürün \_ kategorisinde* ve *ürün \_ sub_category*hesaplanır:
+Bu örnekte, histogram *ürün \_ kategorisinde* bulunur. Çapraz sütun istatistikleri *ürün \_ kategorisinde* ve *ürün \_ sub_category* hesaplanır:
 
 ```sql
 CREATE STATISTICS stats_2cols
@@ -254,7 +254,7 @@ CREATE STATISTICS stats_2cols
     WITH SAMPLE = 50 PERCENT;
 ```
 
-*Ürün \_ kategorisi* ile *ürün \_ alt \_ kategorisi*arasında bir bağıntı bulunduğundan, bu sütunlara aynı anda erişildiğinde çok sütunlu bir istatistik nesnesi yararlı olabilir.
+*Ürün \_ kategorisi* ile *ürün \_ alt \_ kategorisi* arasında bir bağıntı bulunduğundan, bu sütunlara aynı anda erişildiğinde çok sütunlu bir istatistik nesnesi yararlı olabilir.
 
 #### <a name="create-statistics-on-all-columns-in-a-table"></a>Tablodaki tüm sütunlarda istatistik oluşturma
 
@@ -616,7 +616,7 @@ Veriler ekleme, silme veya değişiklik aracılığıyla önemli ölçüde deği
 İstatistiklerinizi güncelleştirmek için aşağıdaki temel ilkeler verilmiştir:
 
 - Veri kümesinde en az bir istatistik nesnesinin güncelleştirildiğinden emin olun. Bu güncelleştirme, istatistik güncelleştirmesinin bir parçası olarak boyut (satır sayısı ve sayfa sayısı) bilgileri.
-- JOIN, GROUP BY, ORDER BY ve DISTINCT yan tümcelerinde yer alan sütunlara odaklanın.
+- WHERE, JOIN, GROUP BY, ORDER BY ve DISTINCT yan tümcelerinde yer alan sütunlara odaklanın.
 - Bu değerler istatistik histogramı ' ne dahil edilmeyeceği için işlem tarihleri gibi "artan anahtar" sütunlarını güncelleştirin.
 - Statik dağıtım sütunlarını daha az sıklıkta güncelleştirin.
 
@@ -629,12 +629,12 @@ Aşağıdaki örneklerde, istatistik oluşturmak için çeşitli seçeneklerin n
 > [!NOTE]
 > Yalnızca şu an için tek sütunlu istatistikler oluşturabilirsiniz.
 >
-> Yordam sp_create_file_statistics sp_create_openrowset_statistics olarak yeniden adlandırılacaktır. Ortak veritabanı rolü sp_create_file_statistics ve sp_drop_file_statistics üzerinde yürütme izinlerine sahip olan genel sunucu rolünde Toplu IŞLEMLERI Yönet izni verildi. Bu durum gelecekte değiştirilebilir.
+> Sp_create_openrowset_statistics ve sp_drop_openrowset_statistics yürütmek için aşağıdaki izinler gerekir: Toplu IŞLEMLERI yönetme veya VERITABANı toplu IŞLEMLERINI yönetme.
 
 Aşağıdaki saklı yordam istatistik oluşturmak için kullanılır:
 
 ```sql
-sys.sp_create_file_statistics [ @stmt = ] N'statement_text'
+sys.sp_create_openrowset_statistics [ @stmt = ] N'statement_text'
 ```
 
 Bağımsız değişkenler: [ @stmt =] N ' statement_text '-istatistikler için kullanılacak sütun değerlerini döndürecek bir Transact-SQL Ifadesini belirtir. Kullanılacak veri örneklerini belirtmek için, "can" kullanabilirsiniz. Bu belirtilmemişse, FULLSCAN kullanılacaktır.
@@ -666,7 +666,7 @@ SECRET = ''
 GO
 */
 
-EXEC sys.sp_create_file_statistics N'SELECT year
+EXEC sys.sp_create_openrowset_statistics N'SELECT year
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/csv/population/population.csv'',
         FORMAT = ''CSV'',
@@ -698,7 +698,7 @@ SECRET = ''
 GO
 */
 
-EXEC sys.sp_create_file_statistics N'SELECT payment_type
+EXEC sys.sp_create_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''
@@ -712,18 +712,18 @@ FROM OPENROWSET(
 İstatistikleri güncelleştirmek için, istatistikleri bırakıp, oluşturmanız gerekir. İstatistikleri bırakmak için aşağıdaki saklı yordam kullanılır:
 
 ```sql
-sys.sp_drop_file_statistics [ @stmt = ] N'statement_text'
+sys.sp_drop_openrowset_statistics [ @stmt = ] N'statement_text'
 ```
 
 > [!NOTE]
-> Yordam sp_drop_file_statistics sp_drop_openrowset_statistics olarak yeniden adlandırılacaktır. Ortak veritabanı rolü sp_create_file_statistics ve sp_drop_file_statistics üzerinde yürütme izinlerine sahip olan genel sunucu rolünde Toplu IŞLEMLERI Yönet izni verildi. Bu durum gelecekte değiştirilebilir.
+> Sp_create_openrowset_statistics ve sp_drop_openrowset_statistics yürütmek için aşağıdaki izinler gerekir: Toplu IŞLEMLERI yönetme veya VERITABANı toplu IŞLEMLERINI yönetme.
 
 Bağımsız değişkenler: [ @stmt =] N ' statement_text '-istatistikler oluşturulduğunda kullanılan Transact-SQL Ifadesini belirtir.
 
 population.csv dosyasını temel alan veri kümesindeki yıl sütununun istatistiklerini güncelleştirmek için, istatistikleri bırakıp oluşturmanız gerekir:
 
 ```sql
-EXEC sys.sp_drop_file_statistics N'SELECT payment_type
+EXEC sys.sp_drop_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''
@@ -743,7 +743,7 @@ SECRET = ''
 GO
 */
 
-EXEC sys.sp_create_file_statistics N'SELECT payment_type
+EXEC sys.sp_create_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''

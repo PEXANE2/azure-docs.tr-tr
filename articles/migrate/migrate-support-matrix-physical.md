@@ -3,12 +3,12 @@ title: Azure geçişi 'nde fiziksel sunucu değerlendirmesi desteği
 description: Azure geçişi sunucu değerlendirmesi ile fiziksel sunucu değerlendirmesi desteği hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: d9f7dea69c78bb038c06e5cb276628eba0381bb2
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 58ecba6bcedc036e31046aef292e482085ad7cc6
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319296"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148414"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Fiziksel sunucu değerlendirmesi için destek matrisi 
 
@@ -31,11 +31,21 @@ Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calcul
 
 ## <a name="physical-server-requirements"></a>Fiziksel sunucu gereksinimleri
 
-| **Destek**                | **Ayrıntılar**               
-| :-------------------       | :------------------- |
-| **Fiziksel sunucu dağıtımı**       | Fiziksel sunucu tek başına olabilir veya bir kümede dağıtılabilir. |
-| **İzinler**           | **Windows:** Etki alanına katılan makineler için bir etki alanı hesabı ve etki alanına katılmayan makineler için bir yerel hesap kullanın. Kullanıcı hesabı şu gruplara eklenmelidir: Uzaktan Yönetim Kullanıcıları, Performans İzleyicisi Kullanıcıları ve Performans Günlüğü Kullanıcıları. <br/><br/> **Linux:** Bulmak istediğiniz Linux sunucularında bir kök hesabın olması gerekir. <br/> Alternatif olarak, aşağıdaki komutları kullanarak gerekli yeteneklerin ayarlandığından emin olun. <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/Fdisk <br/> setcap CAP_DAC_READ_SEARCH + EIP/sbin/Fdisk (/usr/sbin/Fdisk yoksa) <br/> setcap "cap_dac_override, cap_dac_read_search, cap_fowner, cap_fsetid, cap_setuid, cap_setpcap, cap_net_bind_service, cap_net_admin, cap_sys_chroot, cap_sys_admin, cap_sys_resource, cap_audit_control, cap_setfcap = + EIP"/sbin/LVM <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/dmidecode <br/> chmod a + r/sys/Class/DMI/ID/product_uuid
-| **İşletim sistemi** | Geçiş için tüm Windows ve Linux işletim sistemleri değerlendirilenebilir. |
+**Fiziksel sunucu dağıtımı:** Fiziksel sunucu tek başına olabilir veya bir kümede dağıtılabilir.
+
+**İşletim sistemi:** Geçiş için tüm Windows ve Linux işletim sistemleri değerlendirilenebilir.
+
+**İzinleri**
+- Windows sunucularında, etki alanına katılmış makineler için bir etki alanı hesabı ve etki alanına katılmamış makineler için yerel bir hesap kullanın. Kullanıcı hesabı şu gruplara eklenmelidir: Uzaktan Yönetim Kullanıcıları, Performans İzleyicisi Kullanıcıları ve Performans Günlüğü Kullanıcıları.
+- Linux sunucuları için, bulmak istediğiniz Linux sunucularında bir kök hesabın olması gerekir. Alternatif olarak, aşağıdaki komutları kullanarak kök olmayan bir hesabı gerekli yetenekler olarak ayarlayabilirsiniz:
+
+**Komut** | **Amaç**
+--- | --- |
+setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/Fdisk <br></br> setcap CAP_DAC_READ_SEARCH + EIP/sbin/Fdisk _(/usr/sbin/Fdisk yoksa)_ | Disk yapılandırma verilerini toplamak için
+setcap "cap_dac_override, cap_dac_read_search, cap_fowner, cap_fsetid, cap_setuid,<br>cap_setpcap, cap_net_bind_service, cap_net_admin, cap_sys_chroot, cap_sys_admin,<br>cap_sys_resource, cap_audit_control, cap_setfcap = + EIP "/sbin/LVM | Disk performans verilerini toplamak için
+setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/dmidecode | BIOS seri numarasını toplamak için
+chmod a + r/sys/Class/DMI/ID/product_uuid | BIOS GUID 'sini toplamak için
+
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Geçişi aleti gereksinimleri

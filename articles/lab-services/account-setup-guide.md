@@ -3,12 +3,12 @@ title: Azure Lab Services için hızlandırılmış laboratuvar hesabı kurulum 
 description: Bu kılavuz, yöneticilerin okuldaki kullanım için hızlı bir şekilde laboratuvar hesabı ayarlamış yardımcı olur.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c186560b27ebcb543a23785dc5fbc556614f64b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0855e59aced37e50c088cfe89ffeb3d0af9fcdca
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85445432"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148312"
 ---
 # <a name="lab-account-setup-guide"></a>Laboratuvar hesabı kurulum kılavuzu
 
@@ -29,6 +29,10 @@ Hızlıca kullanmaya başlamak için tek bir laboratuar hesabı oluşturun ve da
 ### <a name="who-should-be-owners-and-contributors-of-the-lab-account"></a>Laboratuvar hesabının sahipleri ve katkıda bulunanlar kim olmalıdır?
 
 Yöneticileriniz genellikle laboratuvar hesabı için sahipler ve katkıda bulunanlar. Laboratuvar hesabındaki tüm laboratuvarlara uygulanan ilkeleri yönetmekten sorumludur. Laboratuvar hesabını oluşturan kişi otomatik olarak bir sahip olur. Genellikle aboneliğinizle ilişkili olan Azure Active Directory (Azure AD) kiracısından ek sahipler ve katkıda bulunanlar ekleyebilirsiniz. Bu, laboratuvar hesabı düzeyinde sahip veya katkıda bulunan rolü atayarak bir laboratuvar hesabının yönetilmesine yardımcı olmak için yararlı olabilir.
+
+[!INCLUDE [Select a tenant](./includes/multi-tenant-support.md)]
+
+Laboratuvar kullanıcıları yalnızca Azure Lab Services içindeki kiracılar arasında erişimi olan sanal makinelerin tek bir listesini görür.
 
 ### <a name="who-will-be-allowed-to-create-and-manage-labs"></a>Laboratuvarları oluşturmalarına ve yönetmesine izin verilecek kim?
 

@@ -14,14 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: ad0486c9d2eb6c651b507f4b0a44f4a6fc2b018f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d3c0ba55541baf3f31952b82a2fa357b48a5f1a9
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100669"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148363"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Azure Sentinel 'de Kullanıcı ve varlık davranış analizi (UEBA) ile gelişmiş tehditleri tanımla
+
+> [!IMPORTANT]
+>
+> - Artık UEBA ve varlık sayfaları özellikleri şu Azure Sentinel coğrafi bölgeler ve bölgelerde **genel kullanıma** sunulmuştur:
+>    - Birleşik Devletler Coğrafya
+>    - Avrupa Batı Bölgesi
+>    - Avustralya Coğrafya
+>
+> - Diğer tüm coğrafi bölgeler ve bölgelerde, bu özellikler **genel önizlemede** olmaya devam eder ve hizmet düzeyi sözleşmesi olmadan sağlanır. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>Kullanıcı ve varlık davranış analizi (UEBA) nedir?
 

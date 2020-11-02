@@ -79,8 +79,6 @@
   items:
     - name: Teklif türüne göre yayımlama kılavuzu
       href: publisher-guide-by-offer-type.md
-    - name: Azure AD ile kimlik doğrulaması teklifini etkinleştirme
-      href: enable-appsource-marketplace-using-azure-ad.md
     - name: Azure uygulama teklifleri
       items:
         - name: Çözüm şablonu teklifi planlama

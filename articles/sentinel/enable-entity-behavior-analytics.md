@@ -14,16 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 4587ab5e2cf36dce65cd02b167656c88cfde10a1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b769703f7e7054571a3b65a021c0123d8ae07078
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096963"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148244"
 ---
 # <a name="enable-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Azure Sentinel 'de Kullanıcı ve varlık davranış analizlerini (UEBA) etkinleştirme 
 
-
+> [!IMPORTANT]
+>
+> - UEBA özelliği artık aşağıdaki Azure Sentinel coğrafi bölgeler ve bölgelerde **genel kullanıma** sunulmuştur:
+>    - Birleşik Devletler Coğrafya
+>    - Avrupa Batı Bölgesi
+>    - Avustralya Coğrafya
+>
+> - Diğer tüm coğrafi bölgeler ve bölgelerde, bu özellik **genel önizlemede** olmaya devam eder ve hizmet düzeyi sözleşmesi olmadan sağlanır. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -41,7 +48,7 @@ Bu özelliği etkinleştirmek veya devre dışı bırakmak için (Bu önkoşulla
 
 ## <a name="how-to-enable-user-and-entity-behavior-analytics"></a>Kullanıcı ve varlık davranışı analizlerini etkinleştirme
 
-1. Azure Sentinel gezinti menüsünden varlık davranışı ' nı **(Önizleme)** seçin.
+1. Azure Sentinel gezinti menüsünde **varlık davranışı** ' nı seçin.
 
 1. Başlık ' ın altında **Aç** ' a geçiş **yapın.**
 
