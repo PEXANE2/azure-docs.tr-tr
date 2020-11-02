@@ -9,10 +9,10 @@ ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 843d0b8cfd75e8cbdf45ac535cc9486aa42442d6
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "91761842"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak ExpressRoute için sanal ağ geçidi yapılandırma
@@ -25,12 +25,12 @@ ms.locfileid: "91761842"
 
 Bu öğretici, önceden var olan VNet için bir sanal ağ geçidi ekleme adımlarında size yol gösterir. Bu makalede, önceden var olan VNet için bir sanal ağ (VNet) ağ geçidi ekleme, yeniden boyutlandırma ve kaldırma adımlarında adım adım gösterilmektedir. Bu yapılandırmaya yönelik adımlar, bir ExpressRoute yapılandırmasında kullanılacak Kaynak Yöneticisi dağıtım modeli kullanılarak oluşturulan sanal ağlar içindir. ExpressRoute için sanal ağ geçitleri ve ağ geçidi yapılandırma ayarları hakkında daha fazla bilgi için bkz. [ExpressRoute için sanal ağ geçitleri hakkında](expressroute-about-virtual-network-gateways.md). 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > - Ağ geçidi alt ağı oluşturun.
 > - Sanal Ağ Geçidi oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu görevin adımları aşağıdaki yapılandırma başvurusu listesindeki değerleri temel alarak bir sanal ağ kullanır. Bu listeyi örnek adımlarımızda kullanırız. Bir başvuru olarak kullanmak için listeyi kopyalayabilir ve değerleri kendi değerlerinizle değiştirin.
 
@@ -42,7 +42,7 @@ Bu görevin adımları aşağıdaki yapılandırma başvurusu listesindeki değe
     * Alt ağ adres alanı = "192.168.1.0/24"
 * Kaynak grubu = "TestRG"
 * Konum = "Doğu ABD"
-* Ağ geçidi alt ağ adı: "GatewaySubnet" her zaman bir ağ geçidi alt ağı *gatewaysubnet*adını vermelisiniz.
+* Ağ geçidi alt ağ adı: "GatewaySubnet" her zaman bir ağ geçidi alt ağı *gatewaysubnet* adını vermelisiniz.
     * Ağ geçidi alt ağ adres alanı = "192.168.200.0/26"
 * Ağ geçidi adı = "ERGW"
 * Ağ Geçidi genel IP adı = "Myergwvıp"
@@ -64,7 +64,7 @@ Yapılandırmanıza başlamadan önce bu adımların bir [videosunu](https://azu
 
 ## <a name="create-the-virtual-network-gateway"></a>Sanal ağ geçidini oluşturma
 
-1. Portalda, sol taraftaki **kaynak oluştur**' u seçin ve arama alanına ' sanal ağ geçidi ' yazın. Arama dönüşindeki **sanal ağ geçidini** bulun ve girişi seçin. **Sanal ağ geçidi** sayfasında **Oluştur**' u seçin.
+1. Portalda, sol taraftaki **kaynak oluştur** ' u seçin ve arama alanına ' sanal ağ geçidi ' yazın. Arama dönüşindeki **sanal ağ geçidini** bulun ve girişi seçin. **Sanal ağ geçidi** sayfasında **Oluştur** ' u seçin.
 1. **Sanal ağ geçidi oluştur** sayfasında, girin veya şu ayarları seçin:
 
     | Ayar | Değer |
@@ -72,20 +72,20 @@ Yapılandırmanıza başlamadan önce bu adımların bir [videosunu](https://azu
     | Abonelik | Doğru aboneliğin seçildiğini doğrulayın. |
     | Kaynak Grubu | Sanal ağı seçtikten sonra kaynak grubu otomatik olarak seçilir. | 
     | Name | Ağ geçidinizi adlandırın. Bu, bir ağ geçidi alt ağını adlandırmayla aynı değildir. Bu, oluşturmakta olduğunuz ağ geçidi nesnesinin adıdır.|
-    | Bölge | **Bölge** alanını, sanal ağınızın bulunduğu konuma işaret etmek üzere değiştirin. Konum, sanal ağınızın bulunduğu bölgeyi işaret ettikten sonra, sanal ağ ' sanal ağ seçin ' açılır listesinde görünmez. |
+    | Region | **Bölge** alanını, sanal ağınızın bulunduğu konuma işaret etmek üzere değiştirin. Konum, sanal ağınızın bulunduğu bölgeyi işaret ettikten sonra, sanal ağ ' sanal ağ seçin ' açılır listesinde görünmez. |
     | Ağ geçidi türü | **ExpressRoute** seçin|
     | SKU | Açılan listeden ağ geçidi SKU 'sunu seçin. |
-    | Sanal ağ | *Testvnet*' i seçin. |
-    | Genel IP adresi | **Yeni oluştur**’u seçin.|
+    | Sanal ağ | *Testvnet* ' i seçin. |
+    | Genel IP adresi | **Yeni oluştur** ’u seçin.|
     | Genel IP adresi adı | Genel IP adresi için bir ad girin. |
 
-1. Ağ geçidini oluşturmaya başlamak için **gözden geçir + oluştur**' u ve ardından **Oluştur** ' u seçin. Ayarlar doğrulanır ve ağ geçidi dağıtılır. Sanal ağ geçidi oluşturma işleminin tamamlanması 45 dakika sürebilir.
+1. Ağ geçidini oluşturmaya başlamak için **gözden geçir + oluştur** ' u ve ardından **Oluştur** ' u seçin. Ayarlar doğrulanır ve ağ geçidi dağıtılır. Sanal ağ geçidi oluşturma işleminin tamamlanması 45 dakika sürebilir.
 
     :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/gateway.png" alt-text="Ağ geçidi alt ağı ekleme":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-ExpressRoute ağ geçidine artık ihtiyacınız yoksa, sanal ağ kaynak grubundaki ağ geçidini bulun ve **Sil**' i seçin. Ağ geçidinin bir devreye bağlantı içermediğinden emin olun.
+ExpressRoute ağ geçidine artık ihtiyacınız yoksa, sanal ağ kaynak grubundaki ağ geçidini bulun ve **Sil** ' i seçin. Ağ geçidinin bir devreye bağlantı içermediğinden emin olun.
 
 :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/delete-gateway.png" alt-text="Ağ geçidi alt ağı ekleme":::
 

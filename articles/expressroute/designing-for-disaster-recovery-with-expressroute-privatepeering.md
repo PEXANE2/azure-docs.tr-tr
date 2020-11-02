@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 05/25/2019
 ms.author: duau
 ms.openlocfilehash: 2a5730cd75ccb76d25897e9109555113f7355c2f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "92202422"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>ExpressRoute özel eşlemesi ile olağanüstü durum kurtarma için tasarlama
 
 ExpressRoute, Microsoft kaynaklarına yönelik taşıyıcı sınıfı özel ağ bağlantısı sağlamak için yüksek kullanılabilirlik için tasarlanmıştır. Diğer bir deyişle, Microsoft ağı içindeki ExpressRoute yolunda tek bir hata noktası yoktur. ExpressRoute devresinin kullanılabilirliğini en üst düzeye çıkarmak için tasarım konuları için bkz. [ExpressRoute ile yüksek kullanılabilirlik Için tasarlama][HA].
 
-Bununla birlikte, Murphy 'in popüler AdAge 'yi almak*için bir şey yanlış gidecekse*, bu makalede tek bir ExpressRoute bağlantı hattı kullanılarak ele alınan hatalardan çok daha fazla geçen çözümlere odaklanalım. Bu makalede, diğer bir deyişle, coğrafi olarak yedekli ExpressRoute devreleri kullanarak olağanüstü durum kurtarma için sağlam arka uç ağ bağlantısı oluşturmaya yönelik ağ mimarisi konularına bakmamıza izin verir.
+Bununla birlikte, Murphy 'in popüler AdAge 'yi almak *için bir şey yanlış gidecekse* , bu makalede tek bir ExpressRoute bağlantı hattı kullanılarak ele alınan hatalardan çok daha fazla geçen çözümlere odaklanalım. Bu makalede, diğer bir deyişle, coğrafi olarak yedekli ExpressRoute devreleri kullanarak olağanüstü durum kurtarma için sağlam arka uç ağ bağlantısı oluşturmaya yönelik ağ mimarisi konularına bakmamıza izin verir.
 
 >[!NOTE]
 >Bu makalede açıklanan kavramlar, sanal WAN veya bunun dışında bir ExpressRoute bağlantı hattı oluşturulduğunda geçerlidir.

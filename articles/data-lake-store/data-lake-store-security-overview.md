@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
 ms.openlocfilehash: 240018381a3139a6378141d78514e43ae469de5d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "92146324"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. güvenlik
 
 Birçok kuruluş, iş öngörüleri için büyük veri analizinden yararlanarak akıllı kararlar almasına yardımcı olur. Bir kuruluş karmaşık ve düzenlenmiş bir ortama sahip olabilir ve birçok farklı kullanıcı sayısını artırır. Bir kuruluş için kritik iş verilerinin bireysel kullanıcılara verilen doğru erişim düzeyiyle daha güvenli bir şekilde saklandığından emin olması çok önemlidir. Azure Data Lake Storage 1., bu güvenlik gereksinimlerinin karşılamasına yardımcı olmak için tasarlanmıştır. Bu makalede, aşağıdakiler de dahil olmak üzere Data Lake Storage 1. güvenlik özellikleri hakkında bilgi edinin:
 
-* Kimlik Doğrulaması
+* Kimlik doğrulaması
 * Yetkilendirme
 * Ağ yalıtımı
 * Veri koruma
@@ -52,7 +52,7 @@ Roller hesap yönetimi için atanmış olsa da, bazı rollerin verilere erişimi
 
 | Roller | Yönetim hakları | Veri erişim hakları | Açıklama |
 | --- | --- | --- | --- |
-| Atanan rol yok |Yok |ACL 'ye tabidir |Kullanıcı Data Lake Storage 1. taramak için Azure portal veya Azure PowerShell cmdlet 'lerini kullanamaz. Kullanıcı yalnızca komut satırı araçlarını kullanabilir. |
+| Atanan rol yok |Hiçbiri |ACL 'ye tabidir |Kullanıcı Data Lake Storage 1. taramak için Azure portal veya Azure PowerShell cmdlet 'lerini kullanamaz. Kullanıcı yalnızca komut satırı araçlarını kullanabilir. |
 | Sahip |Tümü |Tümü |Sahip rolü bir süper kullanıcı. Bu rol her şeyi yönetebilir ve verilere tam erişim sağlayabilir. |
 | Okuyucu |Salt okunur |ACL 'ye tabidir |Okuyucu rolü, hesap yönetimiyle ilgili her şeyi görüntüleyebilir, örneğin hangi rolün atandığı kullanıcı. Okuyucu rolü herhangi bir değişiklik yapamaz. |
 | Katılımcı |Rol Ekle ve Kaldır dışında tümü |ACL 'ye tabidir |Katkıda bulunan rolü, bir hesabın dağıtım ve uyarı oluşturma ve yönetme gibi bazı yönlerini yönetebilir. Katkıda bulunan rolü rol ekleyemez veya kaldıramaz. |

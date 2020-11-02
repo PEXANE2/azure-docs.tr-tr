@@ -9,10 +9,10 @@ ms.date: 10/31/2019
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: af4ef156cccded6afe2db09628446a6ffe1ad53a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "92204648"
 ---
 # <a name="verifying-expressroute-connectivity"></a>ExpressRoute bağlantısını doğrulama
@@ -85,7 +85,7 @@ Azure portal ExpressRoute devre dikey penceresini açın. Dikey pencerenin ![3][
 
 ExpressRoute Essentials 'da, *devre durumu* Microsoft tarafında devre 'nın durumunu gösterir. *Sağlayıcı durumu* , devre dışı bırakıldığını/hizmet sağlayıcı tarafında *sağlanıp sağlanmadığını* gösterir. 
 
-Bir ExpressRoute bağlantı hattının işlemsel olması için *devre durumunun* *etkinleştirilmesi* ve *sağlayıcı durumunun* *sağlanması*gerekir.
+Bir ExpressRoute bağlantı hattının işlemsel olması için *devre durumunun* *etkinleştirilmesi* ve *sağlayıcı durumunun* *sağlanması* gerekir.
 
 > [!NOTE]
 > Bir ExpressRoute devresini yapılandırdıktan sonra, *devre durumu* etkin değil durumunda olduğunda [Microsoft desteği][Support]başvurun. Öte yandan, *sağlayıcının durumu* sağlanmamış durumunda değilse hizmet sağlayıcınıza başvurun.
@@ -165,7 +165,7 @@ Azure portal, ExpressRoute bağlantı hattı eşlemesinin durumu ExpressRoute ba
 Yukarıdaki örnekte, belirtilen Azure özel eşlemesi sağlandığı için Azure genel ve Microsoft eşlemeleri sağlanmamıştır. Başarılı bir şekilde sağlanmış eşleme bağlamı, listelenen birincil ve ikincil noktadan noktaya alt ağları da içermelidir. /30 alt ağları, Mgördüğü ve CEs/PE-MSEE Arabirim IP adresi için kullanılır. Sağlanan eşlemeler için, liste yapılandırmayı en son kimin değiştirdiğini de belirtir. 
 
 > [!NOTE]
-> Bir eşlemenin etkinleştirilmesi başarısız olursa, atanan birincil ve ikincil alt ağların bağlı CE/PE-MSEE yapılandırmasıyla eşleşip eşleşmediği kontrol edin. Ayrıca, MSEE doğru *Vlanıd*, *Azureasn*ve *peerasn* 'nın kullanıldığını ve bu değerlerin bağlı CE/PE-MSEE ile eşlenenlere eşlendiğini kontrol edin. MD5 karma seçilirse, paylaşılan anahtar MSEE ve PE-MSEE/CE çifti ile aynı olmalıdır. Önceden yapılandırılmış paylaşılan anahtar, güvenlik nedenleriyle gösterilmeyecek. Bir MSEE yönlendiricisinde bu yapılandırmanın herhangi birini değiştirmeniz gerekir, [bir ExpressRoute bağlantı hattı için yönlendirme oluşturma ve değiştirme][CreatePeering]bölümüne bakın.  
+> Bir eşlemenin etkinleştirilmesi başarısız olursa, atanan birincil ve ikincil alt ağların bağlı CE/PE-MSEE yapılandırmasıyla eşleşip eşleşmediği kontrol edin. Ayrıca, MSEE doğru *Vlanıd* , *Azureasn* ve *peerasn* 'nın kullanıldığını ve bu değerlerin bağlı CE/PE-MSEE ile eşlenenlere eşlendiğini kontrol edin. MD5 karma seçilirse, paylaşılan anahtar MSEE ve PE-MSEE/CE çifti ile aynı olmalıdır. Önceden yapılandırılmış paylaşılan anahtar, güvenlik nedenleriyle gösterilmeyecek. Bir MSEE yönlendiricisinde bu yapılandırmanın herhangi birini değiştirmeniz gerekir, [bir ExpressRoute bağlantı hattı için yönlendirme oluşturma ve değiştirme][CreatePeering]bölümüne bakın.  
 >
 
 > [!NOTE]
@@ -228,7 +228,7 @@ At line:1 char:1
 ```
 
 > [!NOTE]
-> Bir eşlemenin etkinleştirilmesi başarısız olursa, atanan birincil ve ikincil alt ağların bağlı CE/PE-MSEE yapılandırmasıyla eşleşip eşleşmediği kontrol edin. Ayrıca, MSEE doğru *Vlanıd*, *Azureasn*ve *peerasn* 'nın kullanıldığını ve bu değerlerin bağlı CE/PE-MSEE ile eşlenenlere eşlendiğini kontrol edin. MD5 karma seçilirse, paylaşılan anahtar MSEE ve PE-MSEE/CE çifti ile aynı olmalıdır. Önceden yapılandırılmış paylaşılan anahtar, güvenlik nedenleriyle gösterilmeyecek. Bir MSEE yönlendiricisinde bu yapılandırmanın herhangi birini değiştirmeniz gerekir, [bir ExpressRoute bağlantı hattı için yönlendirme oluşturma ve değiştirme][CreatePeering]bölümüne bakın.  
+> Bir eşlemenin etkinleştirilmesi başarısız olursa, atanan birincil ve ikincil alt ağların bağlı CE/PE-MSEE yapılandırmasıyla eşleşip eşleşmediği kontrol edin. Ayrıca, MSEE doğru *Vlanıd* , *Azureasn* ve *peerasn* 'nın kullanıldığını ve bu değerlerin bağlı CE/PE-MSEE ile eşlenenlere eşlendiğini kontrol edin. MD5 karma seçilirse, paylaşılan anahtar MSEE ve PE-MSEE/CE çifti ile aynı olmalıdır. Önceden yapılandırılmış paylaşılan anahtar, güvenlik nedenleriyle gösterilmeyecek. Bir MSEE yönlendiricisinde bu yapılandırmanın herhangi birini değiştirmeniz gerekir, [bir ExpressRoute bağlantı hattı için yönlendirme oluşturma ve değiştirme][CreatePeering]bölümüne bakın.  
 >
 >
 
@@ -278,7 +278,7 @@ Path    : 123##
 ```
 
 > [!NOTE]
-> Bir MSEE ve bir CE/PE-MSEE arasındaki eBGP eşlemesinin durumu etkin veya boşta ise, birincil ve ikincil eş alt ağlarının bağlı CE/PE-MSEE yapılandırmasıyla eşleşip eşleşmediğinden emin olun. Ayrıca, MSEE doğru *Vlanıd*, *Azureasn*ve *peerasn* 'nın kullanıldığını ve bu değerlerin bağlı PE-MSEE/CE üzerinde kullanılanlara eşlendiğini kontrol edin. MD5 karma seçilirse, paylaşılan anahtar MSEE ve CE/PE-MSEE çiftiyle aynı olmalıdır. Bir MSEE yönlendiricisinde bu yapılandırmanın herhangi birini değiştirmeniz gerekir, [bir ExpressRoute bağlantı hattı için yönlendirme oluşturma ve değiştirme][CreatePeering]bölümüne bakın.
+> Bir MSEE ve bir CE/PE-MSEE arasındaki eBGP eşlemesinin durumu etkin veya boşta ise, birincil ve ikincil eş alt ağlarının bağlı CE/PE-MSEE yapılandırmasıyla eşleşip eşleşmediğinden emin olun. Ayrıca, MSEE doğru *Vlanıd* , *Azureasn* ve *peerasn* 'nın kullanıldığını ve bu değerlerin bağlı PE-MSEE/CE üzerinde kullanılanlara eşlendiğini kontrol edin. MD5 karma seçilirse, paylaşılan anahtar MSEE ve CE/PE-MSEE çiftiyle aynı olmalıdır. Bir MSEE yönlendiricisinde bu yapılandırmanın herhangi birini değiştirmeniz gerekir, [bir ExpressRoute bağlantı hattı için yönlendirme oluşturma ve değiştirme][CreatePeering]bölümüne bakın.
 >
 
 

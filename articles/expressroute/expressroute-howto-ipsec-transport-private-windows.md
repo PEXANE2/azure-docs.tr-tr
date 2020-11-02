@@ -9,10 +9,10 @@ ms.date: 10/17/2018
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 2dcb8489d94b9afc3ae4df829b37dd9785383d85
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "92208252"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>ExpressRoute özel eşlemesi için IPSec aktarım modunu yapılandırma
@@ -43,7 +43,7 @@ Bu diyagramda, ExpressRoute özel eşlemesindeki iletimde IPSec tünelleri göst
 ### <a name="working-with-ipsec-policy"></a>IPSec ilkesiyle çalışma
 
 Windows 'ta şifreleme, IPSec ilkesiyle ilişkilendirilir. IPSec ilkesi, hangi IP trafiğinin güvenli olduğunu ve IP paketlerine uygulanan güvenlik mekanizmasını belirler.
-**IPSec ilkeleri** şu öğelerden oluşur: **filtre listeleri**, **filtre eylemleri**ve **güvenlik kuralları**.
+**IPSec ilkeleri** şu öğelerden oluşur: **filtre listeleri** , **filtre eylemleri** ve **güvenlik kuralları** .
 
 IPSec ilkesini yapılandırırken, aşağıdaki IPSec ilkesi terminolojisini anlamanız önemlidir:
 
@@ -84,9 +84,9 @@ Aşağıdaki önkoşulları karşıladığınızdan emin olun:
 ### <a name="workflow"></a>İş akışı
 
 1. Bir GPO oluşturun ve onu OU ile ilişkilendirin.
-2. IPSec **filtre eylemi**tanımlayın.
-3. Bir IPSec **filtre listesi**tanımlayın.
-4. **Güvenlik kuralları**Ile bir IPSec ilkesi oluşturun.
+2. IPSec **filtre eylemi** tanımlayın.
+3. Bir IPSec **filtre listesi** tanımlayın.
+4. **Güvenlik kuralları** Ile bir IPSec ilkesi oluşturun.
 5. IPSec GPO 'sunu OU 'ya atayın.
 
 ### <a name="example-values"></a>Örnek değerler
@@ -101,10 +101,10 @@ Aşağıdaki önkoşulları karşıladığınızdan emin olun:
 
 ## <a name="1-create-a-gpo"></a><a name="creategpo"></a>1. bir GPO oluşturun
 
-1. Bir OU 'ya bağlı yeni bir GPO oluşturmak için, grup ilkesi Yönetimi ek bileşenini açın ve GPO 'nun bağlanacağı OU 'yu bulun. Örnekte, OU adı **Ipsecou**olarak adlandırılmıştır. 
+1. Bir OU 'ya bağlı yeni bir GPO oluşturmak için, grup ilkesi Yönetimi ek bileşenini açın ve GPO 'nun bağlanacağı OU 'yu bulun. Örnekte, OU adı **Ipsecou** olarak adlandırılmıştır. 
 
    [![9]][9]
-2. Grup ilkesi Yönetimi ek bileşeninde OU ' yı seçin ve sağ tıklayın. Açılan menüde, "**Bu etki alanında GPO oluştur ve buraya bağla...**" seçeneğine tıklayın.
+2. Grup ilkesi Yönetimi ek bileşeninde OU ' yı seçin ve sağ tıklayın. Açılan menüde, " **Bu etki alanında GPO oluştur ve buraya bağla...** " seçeneğine tıklayın.
 
    [![10]][10]
 3. Daha sonra kolayca bulabilmeniz için GPO 'YU sezgisel bir ad olarak adlandırın. GPO oluşturmak ve bağlamak için **Tamam** ' ı tıklatın.
@@ -116,38 +116,38 @@ Aşağıdaki önkoşulları karşıladığınızdan emin olun:
 GPO 'yu OU 'ya uygulamak için GPO yalnızca OU 'ya bağlanmamalıdır, ancak bağlantının da etkinleştirilmesi gerekir.
 
 1. Oluşturduğunuz GPO 'YU bulun, sağ tıklayın ve açılan listeden **Düzenle** ' yi seçin.
-2. GPO 'YU OU 'ya uygulamak için **bağlantı etkin**' i seçin.
+2. GPO 'YU OU 'ya uygulamak için **bağlantı etkin** ' i seçin.
 
    [![12]][12]
 
 ## <a name="3-define-the-ip-filter-action"></a><a name="filteraction"></a>3. IP filtre eylemini tanımlayın
 
-1. Açılan listeden **Active Directory IP güvenlik ilkesi**' ne sağ tıklayın ve ardından **IP filtresi listelerini yönet ve eylemleri filtrele...** öğesine tıklayın.
+1. Açılan listeden **Active Directory IP güvenlik ilkesi** ' ne sağ tıklayın ve ardından **IP filtresi listelerini yönet ve eylemleri filtrele...** öğesine tıklayın.
 
    [![15]][15]
-2. "**Filtre eylemlerini yönet**" sekmesinde **Ekle**' ye tıklayın.
+2. " **Filtre eylemlerini yönet** " sekmesinde **Ekle** ' ye tıklayın.
 
    [![16]][16]
 
-3. **IP güvenlik filtresi eylem sihirbazında**, **İleri**' ye tıklayın.
+3. **IP güvenlik filtresi eylem sihirbazında** , **İleri** ' ye tıklayın.
 
    [![17]][17]
-4. Daha sonra bulabilmeniz için filtre eylemini sezgisel bir ad olarak adlandırın. Bu örnekte, filtre eylemi **Myencryption**olarak adlandırılmıştır. Ayrıca, bir açıklama ekleyebilirsiniz. Ardından **İleri**' ye tıklayın.
+4. Daha sonra bulabilmeniz için filtre eylemini sezgisel bir ad olarak adlandırın. Bu örnekte, filtre eylemi **Myencryption** olarak adlandırılmıştır. Ayrıca, bir açıklama ekleyebilirsiniz. Ardından **İleri** ' ye tıklayın.
 
    [![18]][18]
-5. **Negotiate Güvenlik** , IPSec 'in başka bir bilgisayarla kurulamazsa davranışı tanımlamanızı sağlar. **Negotiate Güvenlik**' i seçin ve ardından **İleri**' ye tıklayın.
+5. **Negotiate Güvenlik** , IPSec 'in başka bir bilgisayarla kurulamazsa davranışı tanımlamanızı sağlar. **Negotiate Güvenlik** ' i seçin ve ardından **İleri** ' ye tıklayın.
 
    [![19]][19]
-6. IPSec 'i **desteklemeyen bilgisayarlarla Iletişim kurma** sayfasında **güvenli olmayan iletişime izin verme**' yi seçin ve ardından **İleri**' ye tıklayın.
+6. IPSec 'i **desteklemeyen bilgisayarlarla Iletişim kurma** sayfasında **güvenli olmayan iletişime izin verme** ' yi seçin ve ardından **İleri** ' ye tıklayın.
 
    [![20]][20]
-7. **IP trafiği ve güvenlik** sayfasında, **özel**' i seçin ve **ayarlar...**' a tıklayın.
+7. **IP trafiği ve güvenlik** sayfasında, **özel** ' i seçin ve **ayarlar...** ' a tıklayın.
 
    [![21]][21]
-8. **Özel güvenlik yöntemi ayarları** sayfasında, **veri bütünlüğü ve şifreleme (ESP): SHA1, 3DES '** i seçin. Ardından **Tamam**' a tıklayın.
+8. **Özel güvenlik yöntemi ayarları** sayfasında, **veri bütünlüğü ve şifreleme (ESP): SHA1, 3DES '** i seçin. Ardından **Tamam** ' a tıklayın.
 
    [![22]][22]
-9. **Filtre eylemlerini yönet** sayfasında, **Myencryption** filtresinin başarıyla eklendiğini görebilirsiniz. **Kapat**’a tıklayın.
+9. **Filtre eylemlerini yönet** sayfasında, **Myencryption** filtresinin başarıyla eklendiğini görebilirsiniz. **Kapat** ’a tıklayın.
 
    [![23]][23]
 
@@ -155,28 +155,28 @@ GPO 'yu OU 'ya uygulamak için GPO yalnızca OU 'ya bağlanmamalıdır, ancak ba
 
 Hedef bağlantı noktası 8080 ile şifrelenmiş HTTP trafiği belirten bir filtre listesi oluşturun.
 
-1. Hangi trafik türlerinin şifrelendiğini nitelemek için bir **IP filtre listesi**kullanın. **IP filtresi listelerini yönet** sekmesinde **Ekle** ' ye tıklayarak yeni bir IP filtresi listesi ekleyin.
+1. Hangi trafik türlerinin şifrelendiğini nitelemek için bir **IP filtre listesi** kullanın. **IP filtresi listelerini yönet** sekmesinde **Ekle** ' ye tıklayarak yeni bir IP filtresi listesi ekleyin.
 
    [![24]][24]
-2. **Ad:** ALANıNA, IP filtresi listeniz için bir ad yazın. Örneğin, **Azure-OnPremises-HTTP8080**. Ardından **Ekle**' ye tıklayın.
+2. **Ad:** ALANıNA, IP filtresi listeniz için bir ad yazın. Örneğin, **Azure-OnPremises-HTTP8080** . Ardından **Ekle** ' ye tıklayın.
 
    [![25]][25]
-3. **IP filtresi açıklaması ve yansıtmalı Özellik** sayfasında, **yansıtılmış**' ı seçin. Yansıtılmış ayar, iki yönlü iletişime olanak sağlayan paketlerle her iki yönde de eşleşir. Ardından **İleri**'ye tıklayın.
+3. **IP filtresi açıklaması ve yansıtmalı Özellik** sayfasında, **yansıtılmış** ' ı seçin. Yansıtılmış ayar, iki yönlü iletişime olanak sağlayan paketlerle her iki yönde de eşleşir. Ardından **İleri** 'ye tıklayın.
 
    [![26]][26]
-4. **IP trafiği kaynağı** sayfasında, **kaynak adresi:** AÇıLAN menüsünde **belirli bir IP adresi veya alt ağ**seçin. 
+4. **IP trafiği kaynağı** sayfasında, **kaynak adresi:** AÇıLAN menüsünde **belirli bir IP adresi veya alt ağ** seçin. 
 
    [![27]][27]
-5. IP trafiğinin kaynak adresi **IP adresini veya alt ağını** belirtin ve ardından **İleri**' ye tıklayın.
+5. IP trafiğinin kaynak adresi **IP adresini veya alt ağını** belirtin ve ardından **İleri** ' ye tıklayın.
 
    [![28]][28]
-6. **Hedef adresini belirtin:** IP adresi veya alt ağ. Ardından **İleri**' ye tıklayın.
+6. **Hedef adresini belirtin:** IP adresi veya alt ağ. Ardından **İleri** ' ye tıklayın.
 
    [![29]][29]
-7. **IP protokol türü** sayfasında **TCP**' yi seçin. Ardından **İleri**' ye tıklayın.
+7. **IP protokol türü** sayfasında **TCP** ' yi seçin. Ardından **İleri** ' ye tıklayın.
 
    [![30]][30]
-8. **IP protokolü bağlantı noktası** sayfasında, **herhangi bir bağlantı** noktasından ve **Bu bağlantı noktasına**seçim yapın:. Metin kutusuna **8080** yazın. Bu ayarlar yalnızca hedef bağlantı noktası 8080 ' deki HTTP trafiğinin şifrelenmesini belirtir. Ardından **İleri**' ye tıklayın.
+8. **IP protokolü bağlantı noktası** sayfasında, **herhangi bir bağlantı** noktasından ve **Bu bağlantı noktasına** seçim yapın:. Metin kutusuna **8080** yazın. Bu ayarlar yalnızca hedef bağlantı noktası 8080 ' deki HTTP trafiğinin şifrelenmesini belirtir. Ardından **İleri** ' ye tıklayın.
 
    [![31]][31]
 9. IP filtresi listesini görüntüleyin.  **Azure-OnPremises-HTTP8080** IP filtresi listesinin yapılandırması, aşağıdaki ölçütlere uyan tüm trafik için şifrelemeyi tetikler:
@@ -192,10 +192,10 @@ Hedef bağlantı noktası 8080 ile şifrelenmiş HTTP trafiği belirten bir filt
 
 Aynı türde trafiği ters yönde şifrelemek için (Şirket içi konaktan Azure VM 'ye) ikinci bir IP filtresine ihtiyacınız vardır. Yeni filtrenin ayarlanması işlemi, ilk IP filtresini ayarlamak için kullandığınız işlemdir. Tek farklar kaynak alt ağ ve hedef alt ağıdır.
 
-1. IP filtresi listesine yeni bir IP filtresi eklemek için **Düzenle**' yi seçin.
+1. IP filtresi listesine yeni bir IP filtresi eklemek için **Düzenle** ' yi seçin.
 
    [![33]][33]
-2. **IP filtresi listesi** sayfasında, **Ekle**' ye tıklayın.
+2. **IP filtresi listesi** sayfasında, **Ekle** ' ye tıklayın.
 
    [![34]][34]
 3. Aşağıdaki örnekteki ayarları kullanarak ikinci bir IP filtresi oluşturun:
@@ -211,16 +211,16 @@ Bir uygulamayı korumak için şirket içi bir konum ve bir Azure alt ağı aras
 
 Güvenlik kuralları ile bir IPSec ilkesi oluşturun.
 
-1. OU ile ilişkili **Active Directory 'de IPI ilkelerini** seçin. Sağ tıklayın ve **IP Güvenlik Ilkesi oluştur**' u seçin.
+1. OU ile ilişkili **Active Directory 'de IPI ilkelerini** seçin. Sağ tıklayın ve **IP Güvenlik Ilkesi oluştur** ' u seçin.
 
    [![37]][37]
-2. Güvenlik ilkesini adlandırın. Örneğin, **ilke-Azure-OnPremises**. Ardından **İleri**' ye tıklayın.
+2. Güvenlik ilkesini adlandırın. Örneğin, **ilke-Azure-OnPremises** . Ardından **İleri** ' ye tıklayın.
 
    [![38]][38]
 3. Onay kutusunu seçmeden **İleri** ' ye tıklayın.
 
    [![39]][39]
-4. **Özellikleri Düzenle** onay kutusunun seçili olduğundan emin olun ve ardından **son**' a tıklayın.
+4. **Özellikleri Düzenle** onay kutusunun seçili olduğundan emin olun ve ardından **son** ' a tıklayın.
 
    [![40]][40]
 
@@ -228,10 +228,10 @@ Güvenlik kuralları ile bir IPSec ilkesi oluşturun.
 
 IPSec ilkesine, daha önce yapılandırdığınız **IP filtre listesi** ve **filtreleme eylemine** ekleyin.
 
-1. HTTP ilkesi özellikleri **kuralları** sekmesinde **Ekle**' ye tıklayın.
+1. HTTP ilkesi özellikleri **kuralları** sekmesinde **Ekle** ' ye tıklayın.
 
    [![41]][41]
-2. Hoş Geldiniz sayfasında **İleri**'ye tıklayın.
+2. Hoş Geldiniz sayfasında **İleri** 'ye tıklayın.
 
    [![42]][42]
 3. Bir kural, IPSec modunu tanımlama seçeneği sağlar: tünel modu veya aktarım modu.
@@ -240,22 +240,22 @@ IPSec ilkesine, daha önce yapılandırdığınız **IP filtre listesi** ve **fi
 
    * Aktarım modu yalnızca yükü ve ESP artbilgisini şifreler; özgün paketin IP üstbilgisi şifrelenmedi. Aktarım modunda, paketlerin IP kaynağı ve IP hedefi değiştirilmez.
 
-   **Bu kural bir tünel belirtmez**' ı seçin ve ardından **İleri**' ye tıklayın.
+   **Bu kural bir tünel belirtmez** ' ı seçin ve ardından **İleri** ' ye tıklayın.
 
    [![43]][43]
-4. **Ağ türü** , hangi ağ bağlantısının güvenlik ilkesiyle ilişkilendirildiğini tanımlar. **Tüm ağ bağlantıları**' nı seçin ve ardından **İleri**' ye tıklayın.
+4. **Ağ türü** , hangi ağ bağlantısının güvenlik ilkesiyle ilişkilendirildiğini tanımlar. **Tüm ağ bağlantıları** ' nı seçin ve ardından **İleri** ' ye tıklayın.
 
    [![44]][44]
-5. Daha önce oluşturduğunuz IP filtresi listesini,  **Azure-OnPremises-HTTP8080**' ı seçin ve ardından **İleri**' ye tıklayın.
+5. Daha önce oluşturduğunuz IP filtresi listesini,  **Azure-OnPremises-HTTP8080** ' ı seçin ve ardından **İleri** ' ye tıklayın.
 
    [![45]][45]
 6. Daha önce oluşturduğunuz mevcut filtre **eylemi '** ni seçin.
 
    [![46]][46]
-7. Windows dört farklı kimlik doğrulaması türünü destekler: Kerberos, sertifikalar, NTLMv2 ve önceden paylaşılan anahtar. Etki alanına katılmış konaklarla çalıştıyoruz, **Active Directory varsayılan (Kerberos V5 protokolü)** öğesini seçin ve ardından **İleri**' ye tıklayın.
+7. Windows dört farklı kimlik doğrulaması türünü destekler: Kerberos, sertifikalar, NTLMv2 ve önceden paylaşılan anahtar. Etki alanına katılmış konaklarla çalıştıyoruz, **Active Directory varsayılan (Kerberos V5 protokolü)** öğesini seçin ve ardından **İleri** ' ye tıklayın.
 
    [![47]][47]
-8. Yeni ilke güvenlik kuralını oluşturur: **Azure-OnPremises-HTTP8080**. **Tamam**'a tıklayın.
+8. Yeni ilke güvenlik kuralını oluşturur: **Azure-OnPremises-HTTP8080** . **Tamam** ’a tıklayın.
 
    [![48]][48]
 
@@ -266,7 +266,7 @@ IPSec ilkesi, 8080 hedef bağlantı noktasındaki tüm HTTP bağlantılarının 
 1. İlkeyi görüntüleyin. Güvenlik grubu ilkesi tanımlanmış, ancak henüz atanmadı.
 
    [![49]][49]
-2. Güvenlik grubu ilkesini OU **ıpsecou**'ya atamak için güvenlik ilkesine sağ tıklayıp **ata**' yı seçin.
+2. Güvenlik grubu ilkesini OU **ıpsecou** 'ya atamak için güvenlik ilkesine sağ tıklayıp **ata** ' yı seçin.
    OU 'ya ait olan her bilgisayar için güvenlik grubu ilkesi atanır.
 
    [![50]][50]
