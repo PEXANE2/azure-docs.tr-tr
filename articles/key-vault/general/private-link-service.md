@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 07be83527fa781f87ed1de06fa41bd6d08ee9dc4
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 74669036a40048ca21aae56856981197defe1c35
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426572"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286534"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault'u Azure Özel Bağlantı ile tümleştirme
 
@@ -23,7 +23,7 @@ Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir 
 
 Daha fazla bilgi için bkz. [Azure özel bağlantısı nedir?](../../private-link/private-link-overview.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir anahtar kasasını Azure özel bağlantısıyla bütünleştirmek için şunlar gerekir:
 
@@ -67,7 +67,7 @@ Artık yapılandırılmış özel uç noktayı görebileceksiniz. Artık bu öze
 
 Zaten bir anahtar kasanız varsa, aşağıdaki adımları izleyerek bir özel bağlantı bağlantısı oluşturabilirsiniz:
 
-1. Azure Portal’da oturum açın. 
+1. Azure portalında oturum açın. 
 1. Arama çubuğuna "Anahtar Kasası" yazın
 1. Özel uç nokta eklemek istediğiniz listeden anahtar kasasını seçin.
 1. Ayarlar altında "ağ" sekmesini seçin
@@ -243,14 +243,14 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 
 * Özel DNS bölge kaynağınız olduğundan emin olun. 
     1. Tam adı olan bir Özel DNS Zone kaynağınız olmalıdır: privatelink.vaultcore.azure.net. 
-    2. Bu ayarı nasıl ayarlayacağınızı öğrenmek için lütfen aşağıdaki bağlantıya bakın. [Özel DNS bölgeler](https://docs.microsoft.com/azure/dns/private-dns-privatednszone)
+    2. Bu ayarı nasıl ayarlayacağınızı öğrenmek için lütfen aşağıdaki bağlantıya bakın. [Özel DNS bölgeler](../../dns/private-dns-privatednszone.md)
     
 * Özel DNS Bölgesini denetleyerek Sanal Ağ ile bağlantılı olmadığından emin olun. Hala genel IP adresini almaya devam ediyorsanız bu sorun olabilir. 
     1. Özel bölge DNS sanal ağa bağlı değilse, sanal ağdan kaynaklanan DNS sorgusu, anahtar kasasının genel IP adresini döndürür. 
     2. Azure portal Özel DNS bölgesi kaynağına gidin ve sanal ağ bağlantıları seçeneğine tıklayın. 
     4. Anahtar kasasına çağrı gerçekleştirecek sanal ağın listelenmesi gerekir. 
     5. Bu yoksa, ekleyin. 
-    6. Ayrıntılı adımlar için, [sanal ağın özel DNS bölgeye bağlanması için](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network) aşağıdaki belgeye bakın
+    6. Ayrıntılı adımlar için, [sanal ağın özel DNS bölgeye bağlanması için](../../dns/private-dns-getstarted-portal.md#link-the-virtual-network) aşağıdaki belgeye bakın
 
 * Özel DNS bölgesinde Anahtar Kasası için bir kaydın eksik olmadığından emin olun. 
     1. Özel DNS bölgesi sayfasına gidin. 
@@ -270,13 +270,13 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 > [!NOTE]
 > Abonelik başına etkin olan özel uç noktaları olan anahtar kasalarının sayısı, ayarlanabilir bir kısıtlamadır. Aşağıda gösterilen sınır varsayılan sınırdır. Hizmetiniz için sınır artışı istemek istiyorsanız lütfen adresine bir e-posta gönderin akv-privatelink@microsoft.com . Bu istekleri durum temelinde onaylayacağız.
 
-**Fiyatlandırma**: fiyatlandırma bilgileri için bkz. [Azure özel bağlantı fiyatlandırması](https://azure.microsoft.com/pricing/details/private-link/).
+**Fiyatlandırma** : fiyatlandırma bilgileri için bkz. [Azure özel bağlantı fiyatlandırması](https://azure.microsoft.com/pricing/details/private-link/).
 
-**Sınırlamalar**: Azure Key Vault Için özel uç nokta yalnızca Azure genel bölgelerinde kullanılabilir.
+**Sınırlamalar** : Azure Key Vault Için özel uç nokta yalnızca Azure genel bölgelerinde kullanılabilir.
 
-**Key Vault başına en fazla özel uç nokta sayısı**: 64.
+**Key Vault başına en fazla özel uç nokta sayısı** : 64.
 
-**Abonelik başına özel uç noktalara sahip anahtar kasalarının varsayılan sayısı**: 400.
+**Abonelik başına özel uç noktalara sahip anahtar kasalarının varsayılan sayısı** : 400.
 
 Daha fazla bilgi için bkz [. Azure özel bağlantı hizmeti: sınırlamalar](../../private-link/private-link-service-overview.md#limitations)
 

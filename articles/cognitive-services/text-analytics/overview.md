@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 09/09/2020
+ms.date: 11/02/2020
 ms.author: aahi
 keywords: metin araştırma, yaklaşım analizi, metin analizi
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 544de4adb1891c3d558a524466a076daefb42aa4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d58c501af3d90fec1eea43d13fa2383c8e847f18
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89647458"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289686"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Metin Analizi API'si nedir?
 
@@ -29,7 +29,9 @@ API, geliştirme projeleriniz için bulutta makine öğrenimi ve AI algoritmalar
 
 ## <a name="sentiment-analysis"></a>Yaklaşım analizi
 
-Yaklaşım [analizini](how-tos/text-analytics-how-to-sentiment-analysis.md) kullanın ve olumlu veya olumsuz yaklaşım hakkında ipuçları için metni inceleyerek markanızı veya konuyu düşündüğünü öğrenin. Bu API özelliği her belge için 0 ile 1 arasında bir yaklaşım puanı, 1 ise en pozitif bir değer döndürür.
+Yaklaşım [analizini](how-tos/text-analytics-how-to-sentiment-analysis.md) kullanın ve olumlu veya olumsuz yaklaşım hakkında ipuçları için metni inceleyerek markanızı veya konuyu düşündüğünü öğrenin. 
+
+Özelliği, bir tümce ve belge düzeyinde hizmet tarafından bulunan en yüksek güvenilirlik puanına bağlı olarak yaklaşım etiketleri ("negatif", "nötr" ve "pozitif" gibi) sağlar. Bu özellik aynı zamanda, her belge için 0 ile 1 arasında, pozitif, nötr ve negatif yaklaşım için, içindeki her bir bir tümce &. Ayrıca, hizmetini [bir kapsayıcı kullanarak](how-tos/text-analytics-how-to-install-containers.md)şirket içinde de çalıştırabilirsiniz.
 
 V 3.1 önizlemeden başlayarak, görüşme madenciliği bir Yaklaşım Analizi özelliğidir. Doğal dil Işlemede (NLP) en boy tabanlı Yaklaşım Analizi olarak da bilinen bu özellik, metinle ilgili, özelliklerle (ürünlerin veya hizmetlerin öznitelikleri gibi) ilgili daha ayrıntılı bilgiler sağlar.
 

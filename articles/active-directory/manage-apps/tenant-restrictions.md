@@ -12,12 +12,12 @@ ms.date: 10/26/2020
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce96eb5e91ccc4cb9f69711f9e6fd8fd59ce65bc
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: d69755c36bf37dd591e81bea7983e25905798d4d
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669941"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286203"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>SaaS bulut uygulamalarına erişimi yönetmek için kiracı kısıtlamalarını kullanın
 
@@ -33,7 +33,7 @@ Bu makale Microsoft 365 için kiracı kısıtlamalarına odaklanır, ancak bu ö
 
 Genel çözüm aşağıdaki bileşenleri içerir:
 
-1. **Azure AD** : varsa `Restrict-Access-To-Tenants: <permitted tenant list>` , Azure AD izin verilen kiracılar için yalnızca güvenlik belirteçleri verir.
+1. **Azure AD** : `Restrict-Access-To-Tenants: <permitted tenant list>` üst bilgi varsa, Azure AD izin verilen kiracılar için yalnızca güvenlik belirteçleri verir.
 
 2. **Şirket içi proxy sunucu altyapısı** : Bu altyapı, aktarım katmanı GÜVENLIĞI (TLS) denetimi yapabilen bir ara sunucu aygıtıdır. Azure AD 'ye yönelik trafiğe izin verilen kiracılar listesini içeren üstbilgiyi eklemek için proxy 'yi yapılandırmanız gerekir.
 
@@ -57,17 +57,17 @@ Kiracı kısıtlamalarını kullanmak için, istemcilerinizin kimlik doğrulamas
 
 Proxy altyapınız aracılığıyla kiracı kısıtlamalarını etkinleştirmek için aşağıdaki yapılandırma gereklidir. Bu kılavuz geneldir, bu nedenle belirli uygulama adımları için proxy satıcınızın belgelerine başvurmalısınız.
 
-#### <a name="prerequisites"></a>Ön koşullar
+#### <a name="prerequisites"></a>Önkoşullar
 
 - Ara sunucu, FQDN/URL 'Leri kullanarak TLS yakasını, HTTP üst bilgisi eklemeyi ve filtre hedeflerini gerçekleştirebilmelidir.
 
 - İstemciler, TLS iletişimleri için proxy tarafından sunulan sertifika zincirine güvenmelidir. Örneğin, bir iç [ortak anahtar altyapısı (PKI)](/windows/desktop/seccertenroll/public-key-infrastructure) sertifikaları kullanılırsa, iç veren kök sertifika yetkilisi sertifikası güvenilir olmalıdır.
 
-- Bu özellik Microsoft 365 aboneliklerine dahildir, ancak diğer SaaS uygulamalarına erişimi denetlemek için kiracı kısıtlamalarını kullanmak istiyorsanız, Azure AD Premium 1 lisans gerekir.
+- Azure AD Premium 1 lisans, kiracı kısıtlamalarının kullanımı için gereklidir. 
 
 #### <a name="configuration"></a>Yapılandırma
 
-Login.microsoftonline.com, login.microsoft.com ve login.windows.net için gelen her istek için iki HTTP üst bilgisi ekleyin: *Restrict-Access-to-kiracılar* ve *Restrict-Access-Context* .
+Login.microsoftonline.com, login.microsoft.com ve login.windows.net için gelen her istek için iki HTTP üst bilgisi ekleyin: *Restrict-Access-to-kiracılar* ve *Restrict-Access-Context*.
 
 > [!NOTE]
 > SSL yakalanması ve üst bilgi ekleme 'yi yapılandırırken trafiğin https://device.login.microsoftonline.com dışlandığından emin olun. Bu URL, cihaz kimlik doğrulaması için kullanılır ve TLS kesme işlemini gerçekleştirerek, cihaz kaydı ve cihaz tabanlı koşullu erişim ile ilgili sorunlara neden olabilecek Istemci sertifikası kimlik doğrulaması ile karışabilir.
@@ -126,7 +126,7 @@ Azure portal diğer raporlar gibi, raporunuzun kapsamını belirtmek için filtr
 - **MFA auth ayrıntısı** (çok faktörlü kimlik doğrulama ayrıntısı)
 - **MFA sonucu**
 - **IP adresi**
-- **İstemcilerinin**
+- **İstemci**
 - **Kullanıcı adı**
 - **Konum**
 - **Hedef kiracı KIMLIĞI**
@@ -146,7 +146,7 @@ Modern kimlik doğrulamasını destekleyen Outlook ve Skype Kurumsal istemcileri
 
 Müşteriler Windows üzerinde Outlook için, son kullanıcıların profillerine onaylanmamış posta hesapları eklemesini engelleyen kısıtlamalar uygulamayı seçebilirler. Örneğin, [varsayılan olmayan Exchange hesaplarını eklemeyi engelle](https://gpsearch.azurewebsites.net/default.aspx?ref=1) Grup İlkesi ayarını inceleyin.
 
-## <a name="testing"></a>Test Etme
+## <a name="testing"></a>Sınama
 
 Kiracı kısıtlamalarını tüm kuruluşunuz için uygulamadan önce denemek istiyorsanız, iki seçeneğiniz vardır: Fiddler gibi bir araç kullanan ana bilgisayar tabanlı bir yaklaşım veya bir ara sunucu ayarları sunumu.
 

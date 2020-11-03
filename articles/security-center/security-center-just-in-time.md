@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 6091ccbb64ec880224e861e1b8ee2bd39363385c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 9a01dabbd0a3e9d76caaead544be655b9505030d
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342391"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289203"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Tam zamanında erişim ile yönetim bağlantı noktalarınızın güvenliğini sağlama
 
@@ -37,7 +37,7 @@ Bu sayfa, güvenlik programınıza JıT ekleme hakkında öğretir. Şunları ö
 |Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir|
 |Desteklenen VM 'Ler:|![](./media/icons/yes-icon.png)Azure Resource Manager aracılığıyla dağıtılan Evet VM 'leri.<br>![](./media/icons/no-icon.png)Klasik dağıtım modelleriyle dağıtılan VM yok. [Bu dağıtım modelleri hakkında daha fazla bilgi edinin](../azure-resource-manager/management/deployment-models.md).<br>![Azure ](./media/icons/no-icon.png) [güvenlik duvarı Yöneticisi](../firewall-manager/overview.md) tarafından denetlenen Azure Güvenlik duvarları tarafından korunan VM yok|
 |Gerekli roller ve izinler:|**Reader** ve **securityreader** ROLLERININ her ikisi de JIT durumunu ve parametrelerini görüntüleyebilir.<br>JıT ile çalışan özel Roller oluşturmak için bkz. JıT 'i [yapılandırmak ve kullanmak Için hangi izinler gereklidir?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit).<br>Bir VM 'ye JıT erişimi istemesi ve başka bir JıT işlemi gerçekleştirihtiyacı olmayan kullanıcılar için en az ayrıcalıklı bir rol oluşturmak üzere, güvenlik merkezi GitHub topluluk sayfalarından [set-Jleastprivilegedrole betiğini](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) kullanın.|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
@@ -57,7 +57,7 @@ Bu seçeneklerin her biri aşağıdaki ayrı bir sekmede açıklanmıştır.
 
 Güvenlik Merkezi 'nden JıT VM erişimini etkinleştirebilir ve yapılandırabilirsiniz.
 
-1. Azure Defender panosunu açın ve gelişmiş koruma alanından **tam ZAMANıNDA VM erişimi**' ni seçin.
+1. Azure Defender panosunu açın ve gelişmiş koruma alanından **tam ZAMANıNDA VM erişimi** ' ni seçin.
 
     **Tam ZAMANıNDA VM erişimi** sayfası, VM 'leriniz aşağıdaki sekmelerde gruplandırılarak açılır:
 
@@ -72,7 +72,7 @@ Güvenlik Merkezi 'nden JıT VM erişimini etkinleştirebilir ve yapılandırabi
       - Klasik VM-JıT, ' klasik dağıtım ' değil Azure Resource Manager aracılığıyla dağıtılan VM 'Leri destekler. [Klasik vs Azure Resource Manager dağıtım modelleri hakkında daha fazla bilgi edinin](../azure-resource-manager/management/deployment-models.md).
       - Diğer-VM 'Niz, aboneliğin veya kaynak grubunun güvenlik ilkesinde devre dışı bırakılmışsa Bu sekmede olabilir.
 
-1. **Yapılandırılmadı** SEKMESINDE, JIT Ile korunacak VM 'leri Işaretleyin ve **VM 'Lerde JIT 'i etkinleştir**' i seçin. 
+1. **Yapılandırılmadı** SEKMESINDE, JIT Ile korunacak VM 'leri Işaretleyin ve **VM 'Lerde JIT 'i etkinleştir** ' i seçin. 
 
     Güvenlik Merkezi 'nin korumayı önerdiği bağlantı noktalarını listelemek için JıT VM erişimi sayfası açılır:
     - 22-SSH
@@ -80,7 +80,7 @@ Güvenlik Merkezi 'nden JıT VM erişimini etkinleştirebilir ve yapılandırabi
     - 5985-WinRM 
     - 5986-WinRM
 
-    Varsayılan ayarları kabul etmek için **Kaydet**' i seçin.
+    Varsayılan ayarları kabul etmek için **Kaydet** ' i seçin.
 
 1. JıT seçeneklerini özelleştirmek için:
 
@@ -89,15 +89,15 @@ Güvenlik Merkezi 'nden JıT VM erişimini etkinleştirebilir ve yapılandırabi
 
     Her bağlantı noktası için (özel ve varsayılan) **bağlantı noktası yapılandırması Ekle** bölmesi aşağıdaki seçenekleri sunar:
 
-    - **Protokol**-bir istek onaylandığında bu bağlantı noktasında izin verilen protokol
-    - **Izin verilen kaynak IP 'leri**-bir istek onaylandığında bu bağlantı noktasında ızın verilen IP aralıkları
-    - **En fazla istek süresi**-belirli bir bağlantı noktasının açılabileceği en uzun zaman penceresi
+    - **Protokol** -bir istek onaylandığında bu bağlantı noktasında izin verilen protokol
+    - **Izin verilen kaynak IP 'leri** -bir istek onaylandığında bu bağlantı noktasında ızın verilen IP aralıkları
+    - **En fazla istek süresi** -belirli bir bağlantı noktasının açılabileceği en uzun zaman penceresi
 
      1. Bağlantı noktası güvenliğini gereksinimlerinize göre ayarlayın.
 
-     1. **Tamam**’ı seçin.
+     1. **Tamam** ’ı seçin.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet** ’i seçin.
 
 
 
@@ -107,15 +107,15 @@ Bu VM için koruma için yeni bir bağlantı noktası ekleyip yapılandırarak v
 
 Bir VM için mevcut JıT kurallarını düzenlemek için:
 
-1. Azure Defender panosunu açın ve gelişmiş koruma alanından **Uyarlamalı uygulama denetimleri**' ni seçin.
+1. Azure Defender panosunu açın ve gelişmiş koruma alanından **Uyarlamalı uygulama denetimleri** ' ni seçin.
 
 1. **Yapılandırılmış** sekmesinden, bağlantı noktası eklemek istediğiniz sanal makineye sağ tıklayın ve Düzenle ' yi seçin. 
 
     ![Azure Güvenlik Merkezi 'nde bir JıT VM erişim yapılandırmasını düzenle](./media/security-center-just-in-time/jit-policy-edit-security-center.png)
 
-1. **JıT VM erişimi yapılandırması**altında, zaten korumalı bir bağlantı noktasının var olan ayarlarını düzenleyebilir ya da yeni bir özel bağlantı noktası ekleyebilirsiniz.
+1. **JıT VM erişimi yapılandırması** altında, zaten korumalı bir bağlantı noktasının var olan ayarlarını düzenleyebilir ya da yeni bir özel bağlantı noktası ekleyebilirsiniz.
 
-1. Bağlantı noktalarını düzenledikten sonra **Kaydet**' i seçin.
+1. Bağlantı noktalarını düzenledikten sonra **Kaydet** ' i seçin.
  
 
 
@@ -130,13 +130,13 @@ Azure portal Azure sanal makineler sayfalarından bir VM 'de JıT 'i etkinleşti
 > [!TIP]
 > Bir VM 'nin zaten etkin bir şekilde etkinleştirilmesi durumunda, yapılandırma sayfasına gittiğinizde, tam zamanında etkin olduğunu görürsünüz ve bağlantıyı, güvenlik merkezi 'nde tam zamanında VM erişimi sayfasını açmak için kullanabilir ve ayarları görüntüleyebilir ve değiştirebilirsiniz.
 
-1. [Azure Portal](https://ms.portal.azure.com), **sanal makineleri**arayıp seçin. 
+1. [Azure Portal](https://ms.portal.azure.com), **sanal makineleri** arayıp seçin. 
 
 1. JıT ile korumak istediğiniz sanal makineyi seçin.
 
-1. Menüde **yapılandırma**' yı seçin.
+1. Menüde **yapılandırma** ' yı seçin.
 
-1. **Tam zamanında erişim**altında, **tam zamanında etkinleştir**' i seçin. 
+1. **Tam zamanında erişim** altında, **tam zamanında etkinleştir** ' i seçin. 
 
     Bu, aşağıdaki varsayılan ayarları kullanarak VM için tam zamanında erişim imkanı sunar:
 
@@ -151,15 +151,15 @@ Azure portal Azure sanal makineler sayfalarından bir VM 'de JıT 'i etkinleşti
 
 1. Bu değerlerden herhangi birini düzenlemek veya JıT yapılandırmanıza daha fazla bağlantı noktası eklemek için Azure Güvenlik Merkezi 'nin tam zamanında sayfasını kullanın:
 
-    1. Güvenlik Merkezi menüsünde, **tam ZAMANıNDA VM erişimi**' ni seçin.
+    1. Güvenlik Merkezi menüsünde, **tam ZAMANıNDA VM erişimi** ' ni seçin.
 
     1. **Yapılandırılmış** sekmesinden, bağlantı noktası eklemek istediğiniz sanal makineye sağ tıklayın ve Düzenle ' yi seçin. 
 
         ![Azure Güvenlik Merkezi 'nde bir JıT VM erişim yapılandırmasını düzenle](./media/security-center-just-in-time/jit-policy-edit-security-center.png)
 
-    1. **JıT VM erişimi yapılandırması**altında, zaten korumalı bir bağlantı noktasının var olan ayarlarını düzenleyebilir ya da yeni bir özel bağlantı noktası ekleyebilirsiniz.
+    1. **JıT VM erişimi yapılandırması** altında, zaten korumalı bir bağlantı noktasının var olan ayarlarını düzenleyebilir ya da yeni bir özel bağlantı noktası ekleyebilirsiniz.
 
-    1. Bağlantı noktalarını düzenledikten sonra **Kaydet**' i seçin.
+    1. Bağlantı noktalarını düzenledikten sonra **Kaydet** ' i seçin.
 
 
 ### <a name="powershell"></a>[**PowerShell**](#tab/jit-config-powershell)
@@ -184,13 +184,13 @@ Aşağıdaki PowerShell komutları bu JıT yapılandırmasını oluşturur:
         id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";
         ports=(@{
              number=22;
-             protocol="\*";
-             allowedSourceAddressPrefix=@("\*");
+             protocol="*";
+             allowedSourceAddressPrefix=@("*");
              maxRequestAccessDuration="PT3H"},
              @{
              number=3389;
-             protocol="\*";
-             allowedSourceAddressPrefix=@("\*");
+             protocol="*";
+             allowedSourceAddressPrefix=@("*");
              maxRequestAccessDuration="PT3H"})})
     ```
 
@@ -241,7 +241,7 @@ Bu seçeneklerin her biri aşağıdaki ayrı bir sekmede açıklanmıştır.
 
 Bir sanal makinede JıT etkin olduğunda, bu sunucuya bağlanmak için erişim istemeniz gerekir. JıT 'i etkinleştirmenizin ne olursa olsun, desteklenen yollarla erişim isteğinde buluntırabilirsiniz.
 
-:::image type="content" source="./media/security-center-just-in-time/jit-request-security-center.gif" alt-text="Azure Güvenlik Merkezi 'nde JıT VM erişimini yapılandırma":::
+:::image type="content" source="./media/security-center-just-in-time/jit-request-security-center.gif" alt-text="Güvenlik Merkezi 'nden JıT erişimi isteme":::
 
 1. **Tam ZAMANıNDA VM erişimi** sayfasında, **yapılandırılan** sekmesini seçin.
 
@@ -251,11 +251,11 @@ Bir sanal makinede JıT etkin olduğunda, bu sunucuya bağlanmak için erişim i
 
     - **Bağlantı ayrıntıları** sütunu, VM 'yi bağlamak için gereken bilgileri ve açık bağlantı noktalarını sağlar.
 
-1. **Erişim iste**' yi seçin. **Erişim iste** penceresi açılır.
+1. **Erişim iste** ' yi seçin. **Erişim iste** penceresi açılır.
 
-1. **Erişim iste**, her VM için, açmak istediğiniz bağlantı noktalarını ve bağlantı noktasının açık olduğu kaynak IP adreslerini ve bağlantı noktasının açılacağı zaman penceresini yapılandırın. Yalnızca yapılandırılan bağlantı noktalarına erişim istemek mümkün olacaktır. Her bağlantı noktasının, oluşturduğunuz JıT yapılandırmasından elde edilen izin verilen en uzun süre vardır.
+1. **Erişim iste** , her VM için, açmak istediğiniz bağlantı noktalarını ve bağlantı noktasının açık olduğu kaynak IP adreslerini ve bağlantı noktasının açılacağı zaman penceresini yapılandırın. Yalnızca yapılandırılan bağlantı noktalarına erişim istemek mümkün olacaktır. Her bağlantı noktasının, oluşturduğunuz JıT yapılandırmasından elde edilen izin verilen en uzun süre vardır.
 
-1. **Açık bağlantı noktaları**' nı seçin.
+1. **Açık bağlantı noktaları** ' nı seçin.
 
 > [!NOTE]
 > Erişim isteyen bir Kullanıcı proxy 'nin arkasındaysa, **alanım** seçeneği çalışmayabilir. Kuruluşun tam IP adres aralığını tanımlamanız gerekebilir.
@@ -344,7 +344,7 @@ Tam zamanında VM erişimi özelliği Azure Güvenlik Merkezi API 'SI aracılı�
 
 Günlük aramasını kullanarak VM etkinlikleri hakkında öngörüler elde edebilirsiniz. Günlükleri görüntülemek için:
 
-1. **Tam ZAMANıNDA VM erişimi**' nden **yapılandırılmış** sekmesini seçin.
+1. **Tam ZAMANıNDA VM erişimi** ' nden **yapılandırılmış** sekmesini seçin.
 
 1. Denetlemek istediğiniz VM için, satırın sonundaki üç nokta menüsünü açın.
  
@@ -354,7 +354,7 @@ Günlük aramasını kullanarak VM etkinlikleri hakkında öngörüler elde edeb
 
    Etkinlik günlüğü, o VM için zaman, tarih ve abonelikle birlikte önceki işlemlerin filtrelenmiş bir görünümünü sağlar.
 
-1. Günlük bilgilerini indirmek için **CSV olarak indir**' i seçin.
+1. Günlük bilgilerini indirmek için **CSV olarak indir** ' i seçin.
 
 
 

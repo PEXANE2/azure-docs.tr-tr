@@ -8,16 +8,16 @@ ms.date: 08/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 66c331a79a4da7b8fb397e7d0209b24e00645783
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 20b2f74b33ae57016188ee66af29570f7ec1b529
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741707"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289268"
 ---
 # <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure CLı-özel bağlantılarla yönetilen diskler için içeri/dışarı aktarma erişimini kısıtlama
 
-Yönetilen diskler ile özel bağlantılar için destek şu anda önizlemededir. [Özel uç noktaları](../../private-link/private-endpoint-overview.md) , yönetilen disklerin dışarı ve içeri aktarılmasını kısıtlamak ve Azure sanal ağınızdaki istemcilerden [özel bir bağlantı](../../private-link/private-link-overview.md) üzerinden güvenli bir şekilde erişmek için kullanabilirsiniz. Özel uç nokta, yönetilen diskler hizmetiniz için sanal ağ adres alanından bir IP adresi kullanır. Sanal ağı ve yönetilen disklerdeki istemciler arasındaki ağ trafiği, Microsoft omurga ağı üzerinde yalnızca sanal ağ ve özel bir bağlantı üzerinden geçiş yaparken, genel İnternet 'ten etkilenme olasılığını ortadan kaldırır.
+[Özel uç noktaları](../../private-link/private-endpoint-overview.md) , yönetilen disklerin dışarı ve içeri aktarılmasını kısıtlamak ve Azure sanal ağınızdaki istemcilerden [özel bir bağlantı](../../private-link/private-link-overview.md) üzerinden güvenli bir şekilde erişmek için kullanabilirsiniz. Özel uç nokta, yönetilen diskler hizmetiniz için sanal ağ adres alanından bir IP adresi kullanır. Sanal ağı ve yönetilen disklerdeki istemciler arasındaki ağ trafiği, Microsoft omurga ağı üzerinde yalnızca sanal ağ ve özel bir bağlantı üzerinden geçiş yaparken, genel İnternet 'ten etkilenme olasılığını ortadan kaldırır.
 
 Yönetilen diskleri içeri/dışarı aktarmaya yönelik özel bağlantıları kullanmak için, önce bir disk erişim kaynağı oluşturup, özel bir uç nokta oluşturarak bu aboneliği aynı abonelikte bir sanal ağa bağlarsınız. Daha sonra bir disk veya anlık görüntüyü disk erişimi örneğiyle ilişkilendirin. Son olarak, diskin NetworkAccessPolicy özelliğini veya anlık görüntüsünü olarak ayarlayın `AllowPrivate` . Bu, sanal ağınıza erişimi sınırlandırır. 
 

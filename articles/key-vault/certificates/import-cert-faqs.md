@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 3b87d68fb9b5fa5f5f8dec43c39ea8b7dbf08b93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7d34b61e584b63c517b6c0f8af4cb4adcc7fefe
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651850"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289501"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Azure Key Vault sertifikaları içeri aktarma hakkında SSS
 
@@ -25,7 +25,7 @@ Bu makalede Azure Key Vault sertifikalarını içeri aktarma hakkında sık soru
 
 ### <a name="how-can-i-import-a-certificate-in-azure-key-vault"></a>Azure Key Vault sertifikayı nasıl içeri aktarabilirim?
 
-Bir sertifika içeri aktarma işlemi için Azure Key Vault iki sertifika dosyası biçimini kabul eder: pek ve PFX. Yalnızca ortak bölümü olan ped dosyaları olsa da, Key Vault yalnızca özel anahtarı olan bir ped veya PFX dosyası gerektirir. Daha fazla bilgi için bkz. [Key Vault bir sertifikayı Içeri aktarma](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-import-certificate#import-a-certificate-to-key-vault).
+Bir sertifika içeri aktarma işlemi için Azure Key Vault iki sertifika dosyası biçimini kabul eder: pek ve PFX. Yalnızca ortak bölümü olan ped dosyaları olsa da, Key Vault yalnızca özel anahtarı olan bir ped veya PFX dosyası gerektirir. Daha fazla bilgi için bkz. [Key Vault bir sertifikayı Içeri aktarma](./tutorial-import-certificate.md#import-a-certificate-to-key-vault).
 
 ### <a name="after-i-import-a-password-protected-certificate-to-key-vault-and-then-download-it-why-cant-i-see-the-password-thats-associated-with-it"></a>Parola korumalı bir sertifikayı Key Vault aldıktan sonra karşıdan yükledikten sonra, onunla ilişkili parolayı neden göremiyorum?
     
@@ -35,7 +35,7 @@ Bir sertifika içeri aktarıldıktan ve Key Vault bir şekilde korunduktan sonra
 
 Bir sertifikayı içeri aktardığınızda, anahtarın dosyaya eklendiğinden emin olmanız gerekir. Ayrı olarak farklı biçimde depolanan bir özel anahtarınız varsa, anahtarı sertifikayla birleştirmeniz gerekir. Bazı sertifika yetkilileri (CA 'Lar) diğer biçimlerde sertifika sağlar. Bu nedenle, sertifikayı içeri aktarmadan önce, bunun pek veya PFX dosya biçiminde olduğundan ve anahtarın Rivest – Shamir – Adleman (RSA) veya eliptik-eğri şifreleme (ECC) şifrelemesi kullandığından emin olun. 
 
-Daha fazla bilgi için bkz. [sertifika gereksinimleri](https://docs.microsoft.com/azure/key-vault/certificates/certificate-scenarios#formats-of-import-we-support) ve [sertifika anahtarı gereksinimleri](https://docs.microsoft.com/azure/key-vault/keys/about-keys#cryptographic-protection).
+Daha fazla bilgi için bkz. [sertifika gereksinimleri](./certificate-scenarios.md#formats-of-import-we-support) ve [sertifika anahtarı gereksinimleri](../keys/about-keys.md).
 
 ###  <a name="can-i-import-a-certificate-by-using-an-arm-template"></a>ARM şablonunu kullanarak bir sertifikayı içeri aktarabilir miyim?
 
@@ -43,20 +43,20 @@ Hayır, bir Azure Resource Manager (ARM) şablonu kullanarak sertifika işlemler
 
 ### <a name="when-i-import-a-certificate-via-the-azure-portal-i-get-a-something-went-wrong-error-how-can-i-investigate-further"></a>Azure portal aracılığıyla bir sertifikayı içeri aktardığımda, "sorun oluştu" hatası alıyorum. Nasıl daha fazla araştırma yapabilirim?
     
-Daha açıklayıcı bir hata görüntülemek için, [Azure CLI](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import) veya [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0)kullanarak sertifika dosyasını içeri aktarın.
+Daha açıklayıcı bir hata görüntülemek için, [Azure CLI](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import) veya [PowerShell](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0)kullanarak sertifika dosyasını içeri aktarın.
 
 ### <a name="how-can-i-resolve-error-type-access-denied-or-user-is-unauthorized-to-import-certificate"></a>"Hata türü: erişim engellendi veya Kullanıcı sertifikayı içeri aktarma yetkisi yok" hatasını nasıl çözebilirim?
     
-İçeri aktarma işlemi, erişim ilkeleri altına sertifikayı içeri aktarmak için kullanıcıya izin vermenizi gerektirir. Bunu yapmak için, anahtar kasanıza gidin, **erişim ilkeleri**  >  **Ekle erişim ilkesi Ekle**  >  **sertifika izinleri**  >  **sorumlusu**seçin, Kullanıcı için arama yapın ve ardından kullanıcının e-posta adresini ekleyin. 
+İçeri aktarma işlemi, erişim ilkeleri altına sertifikayı içeri aktarmak için kullanıcıya izin vermenizi gerektirir. Bunu yapmak için, anahtar kasanıza gidin, **erişim ilkeleri**  >  **Ekle erişim ilkesi Ekle**  >  **sertifika izinleri**  >  **sorumlusu** seçin, Kullanıcı için arama yapın ve ardından kullanıcının e-posta adresini ekleyin. 
 
-Sertifikayla ilgili erişim ilkeleri hakkında daha fazla bilgi için bkz. [Azure Key Vault sertifikaları hakkında](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#certificate-access-control).
+Sertifikayla ilgili erişim ilkeleri hakkında daha fazla bilgi için bkz. [Azure Key Vault sertifikaları hakkında](./about-certificates.md#certificate-access-control).
 
 
 ### <a name="how-can-i-resolve-error-type-conflict-when-creating-a-certificate"></a>"Hata türü: sertifika oluştururken çakışma" hatasını nasıl çözebilirim?
     
-Her sertifika adının benzersiz olması gerekir. Aynı ada sahip bir sertifika, geçici olarak silinmiş bir durumda olabilir. Ayrıca, [bir sertifikanın](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate)oluşturulmasına göre, yeni sertifika oluşturulduğunda aynı ada sahip bir adreslenebilir gizli dizi oluşturur. bu nedenle, sertifikanız için belirtmeye çalıştığınız ada sahip anahtar kasasında başka bir anahtar veya gizli dizi varsa, sertifika oluşturma başarısız olur ve bu anahtarı veya parolayı kaldırmanız ya da sertifikanız için farklı bir ad kullanmanız gerekir. 
+Her sertifika adının benzersiz olması gerekir. Aynı ada sahip bir sertifika, geçici olarak silinmiş bir durumda olabilir. Ayrıca, [bir sertifikanın](./about-certificates.md#composition-of-a-certificate)oluşturulmasına göre, yeni sertifika oluşturulduğunda aynı ada sahip bir adreslenebilir gizli dizi oluşturur. bu nedenle, sertifikanız için belirtmeye çalıştığınız ada sahip anahtar kasasında başka bir anahtar veya gizli dizi varsa, sertifika oluşturma başarısız olur ve bu anahtarı veya parolayı kaldırmanız ya da sertifikanız için farklı bir ad kullanmanız gerekir. 
 
-Daha fazla bilgi için bkz. [sertifika silme işlemi](https://docs.microsoft.com/rest/api/keyvault/getdeletedcertificate/getdeletedcertificate).
+Daha fazla bilgi için bkz. [sertifika silme işlemi](/rest/api/keyvault/getdeletedcertificate/getdeletedcertificate).
 
 ### <a name="why-am-i-getting-error-type-char-length-is-too-long"></a>Neden "hata türü: karakter uzunluğu çok uzun" alıyorum?
 Bu hata iki nedenden kaynaklanabilir:    
@@ -83,4 +83,4 @@ Sertifikayı başarıyla aldıysanız, **gizli** dizi bölmesine giderek doğrul
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Key Vault sertifikaları](/azure/key-vault/certificates/about-certificates)
+- [Azure Key Vault sertifikaları](./about-certificates.md)

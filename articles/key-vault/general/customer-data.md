@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9b320c765b258473acd6fa553831b4f075cca9ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7155e1517ba5ff203f11ee834af3c0d1dd1fa065
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983235"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289469"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault müşteri verileri özellikleri
 
@@ -56,10 +56,10 @@ Kişisel verileri içeren Azure Key Vault tanılama günlükleri, Kullanıcı Gi
 
 - [Azure Key Vault geçici silmeye genel bakış](soft-delete-cli.md)
 
-- [Azure Key Vault anahtar işlemleri](https://docs.microsoft.com/rest/api/keyvault/key-operations)
+- [Azure Key Vault anahtar işlemleri](/rest/api/keyvault/key-operations)
 
-- [Azure Key Vault gizli işlemler](https://docs.microsoft.com/rest/api/keyvault/secret-operations)
+- [Azure Key Vault gizli işlemler](/rest/api/keyvault/secret-operations)
 
-- [Sertifikaları ve ilkeleri Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/certificates-and-policies)
+- [Sertifikaları ve ilkeleri Azure Key Vault](/rest/api/keyvault/certificates-and-policies)
 
-- [Depolama hesabı işlemlerini Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/storage-account-key-operations)
+- [Depolama hesabı işlemlerini Azure Key Vault](/rest/api/keyvault/storage-account-key-operations)

@@ -10,18 +10,18 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: cea061c1fd36bed9fa1e43c874fbca347707f78d
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: a85656909df5538f9f57e05d79ae768623d7eba6
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925876"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289608"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Key Vault 'de CSR oluşturma ve birleştirme
 
 Azure Key Vault, Anahtar Kasanızda tercih ettiğiniz herhangi bir sertifika yetkilisi tarafından verilen dijital sertifikayı depolamayı destekler. Seçili herhangi bir sertifika yetkilisi tarafından imzalanabilir özel ortak anahtar çiftiyle sertifika imzalama isteği oluşturulmasını destekler. İç kuruluş CA 'sı veya dış genel CA olabilir. Sertifika imzalama isteği (CSR veya sertifika isteği), dijital bir sertifikanın verilmesini istemek için Kullanıcı tarafından bir sertifika yetkilisine (CA) gönderilen bir iletidir.
 
-Sertifikalar hakkında daha fazla genel bilgi için bkz. [Azure Key Vault sertifikaları](/azure/key-vault/certificates/about-certificates).
+Sertifikalar hakkında daha fazla genel bilgi için bkz. [Azure Key Vault sertifikaları](./about-certificates.md).
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -34,7 +34,7 @@ Aşağıdaki adımlar, Key Vault iş ortağı olmayan sertifika yetkililerinden 
 
 
 
-1.  İlk olarak, **sertifika ilkesi oluşturun** . Key Vault, bu senaryoda seçilen CA desteklenmediğinden sertifikayı verenin Kullanıcı adına kaydetmeyecektir veya yenilemez ve bu nedenle IssuerName bilinmiyor olarak ayarlanır.
+1.  İlk olarak, **sertifika ilkesi oluşturun**. Key Vault, bu senaryoda seçilen CA desteklenmediğinden sertifikayı verenin Kullanıcı adına kaydetmeyecektir veya yenilemez ve bu nedenle IssuerName bilinmiyor olarak ayarlanır.
 
     ```azurepowershell
     $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=www.contosoHRApp.com" -ValidityInMonths 1  -IssuerName Unknown

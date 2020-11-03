@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: b04bd6975a2ba8824124c769e66da1e4ebe7534a
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 585f5998eb953c8ed90a47922d76f32897c0f915
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309930"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285831"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Anahtar kasasına güvenli erişim
 
@@ -26,9 +26,9 @@ Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault hakkında](over
 
 Bir anahtar kasasına erişim, iki arabirim aracılığıyla denetlenir: **Yönetim düzlemi** ve **veri düzlemi**. Yönetim düzlemi Key Vault kendisini yönettiğiniz yerdir. Bu düzlemdeki işlemler, anahtar kasalarını oluşturmayı ve silmeyi, Key Vault özelliklerini almayı ve erişim ilkelerini güncelleştirmeyi içerir. Veri düzlemi, bir anahtar kasasında depolanan verilerle çalıştığınız yerdir. Anahtarlar, gizli diziler ve sertifikalar ekleyebilir, silebilir ve değiştirebilirsiniz.
 
-Her iki düzlem de kimlik doğrulaması için [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) kullanır. Yetkilendirme için, yönetim düzlemi [Azure rol tabanlı erişim denetimi 'ni (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) kullanır ve veri düzlemi, [Key Vault veri düzlemi işlemleri (önizleme) için](https://docs.microsoft.com/azure/key-vault/general/rbac-guide) [Key Vault erişim ilkesi](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal) ve Azure RBAC kullanır.
+Her iki düzlem de kimlik doğrulaması için [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) kullanır. Yetkilendirme için, yönetim düzlemi [Azure rol tabanlı erişim denetimi 'ni (RBAC)](../../role-based-access-control/overview.md) kullanır ve veri düzlemi, [Key Vault veri düzlemi işlemleri (önizleme) için](./rbac-guide.md) [Key Vault erişim ilkesi](./assign-access-policy-portal.md) ve Azure RBAC kullanır.
 
-Her iki düzlemde bir anahtar kasasına erişmek için, tüm çağıranların (kullanıcılar veya uygulamalar) uygun kimlik doğrulaması ve yetkilendirmesi olması gerekir. Kimlik doğrulama, arayanın kimliğini belirler. Yetkilendirme, çağıranın hangi işlemleri yürütebileceğini belirler. Key Vault kimlik doğrulaması, herhangi bir **güvenlik sorumlusunun**kimliğini kimlik doğrulamasından getirmekten sorumlu olan [Azure ACTIVE DIRECTORY (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis)ile birlikte çalışıyor.
+Her iki düzlemde bir anahtar kasasına erişmek için, tüm çağıranların (kullanıcılar veya uygulamalar) uygun kimlik doğrulaması ve yetkilendirmesi olması gerekir. Kimlik doğrulama, arayanın kimliğini belirler. Yetkilendirme, çağıranın hangi işlemleri yürütebileceğini belirler. Key Vault kimlik doğrulaması, herhangi bir **güvenlik sorumlusunun** kimliğini kimlik doğrulamasından getirmekten sorumlu olan [Azure ACTIVE DIRECTORY (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md)ile birlikte çalışıyor.
 
 Güvenlik sorumlusu, Azure kaynaklarına erişim isteyen bir Kullanıcı, Grup, hizmet veya uygulamayı temsil eden bir nesnedir. Azure her güvenlik sorumlusuna benzersiz bir **nesne kimliği** atar.
 
@@ -36,7 +36,7 @@ Güvenlik sorumlusu, Azure kaynaklarına erişim isteyen bir Kullanıcı, Grup, 
 
 * Bir **Grup** güvenlik sorumlusu Azure Active Directory içinde oluşturulan bir kullanıcı kümesini tanımlar. Gruba atanan tüm roller veya izinler, Grup içindeki tüm kullanıcılara verilir.
 
-* **Hizmet sorumlusu** , bir uygulama veya hizmet için bir kullanıcı veya Grup yerine bir kod parçası olan bir güvenlik sorumlusu türüdür. Hizmet sorumlusunun nesne KIMLIĞI, **ISTEMCI kimliği** olarak bilinir ve Kullanıcı adı gibi davranır. Hizmet sorumlusunun **istemci gizli** dizisi veya **sertifikası** , parolası gibi davranır. Birçok Azure hizmeti, [yönetilen kimliğin](/azure/active-directory/managed-identities-azure-resources/overview) **istemci kimliği** ve **sertifika**otomatik yönetimiyle atanmasını destekler. Yönetilen kimlik, Azure 'da kimlik doğrulaması için en güvenli ve önerilen seçenektir.
+* **Hizmet sorumlusu** , bir uygulama veya hizmet için bir kullanıcı veya Grup yerine bir kod parçası olan bir güvenlik sorumlusu türüdür. Hizmet sorumlusunun nesne KIMLIĞI, **ISTEMCI kimliği** olarak bilinir ve Kullanıcı adı gibi davranır. Hizmet sorumlusunun **istemci gizli** dizisi veya **sertifikası** , parolası gibi davranır. Birçok Azure hizmeti, [yönetilen kimliğin](../../active-directory/managed-identities-azure-resources/overview.md) **istemci kimliği** ve **sertifika** otomatik yönetimiyle atanmasını destekler. Yönetilen kimlik, Azure 'da kimlik doğrulaması için en güvenli ve önerilen seçenektir.
 
 Key Vault kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure Key Vault kimlik](authentication.md) doğrulama
 
@@ -44,11 +44,11 @@ Key Vault kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure Key 
 
 Bir Azure aboneliğinde bir Anahtar Kasası oluşturduğunuzda, bu, aboneliğin Azure AD kiracısı ile otomatik olarak ilişkilendirilir. Her iki düzlemdeki tüm çağıranlar bu kiracıya kaydolmalıdır ve anahtar kasasına erişmek için kimliğini doğrular. Her iki durumda da, uygulamalar üç şekilde Key Vault erişebilir:
 
-- **Yalnızca uygulama**: uygulama bir hizmet sorumlusunu veya yönetilen kimliği temsil eder. Bu kimlik, anahtar kasasından düzenli olarak sertifikalara, anahtarlara veya gizli uygulamalara erişmesi gereken uygulamalar için en yaygın senaryolardır. Bu senaryonun çalışması için, `objectId` uygulamanın erişim ilkesinde belirtilmesi gerekir ve `applicationId` belirtilmemelidir veya olması gerekir _not_ `null` .
-- **Yalnızca Kullanıcı**: Kullanıcı, kiracıda kayıtlı herhangi bir uygulamadan anahtar kasasına erişir. Bu tür erişimin örnekleri Azure PowerShell ve Azure portal içerir. Bu senaryonun çalışması için, `objectId` kullanıcının erişim ilkesinde belirtilmesi ve `applicationId` belirtilmemelidir veya olması _gerekir_ `null` .
-- **Uygulama-Plus-Kullanıcı** (bazen _bileşik kimlik_olarak adlandırılır): kullanıcının belirli bir uygulamadan anahtar kasasına erişmesi _ve_ uygulamanın, kullanıcının kimliğine bürünmek için, Kullanıcı adına kimlik doğrulaması (OBO) akışı kullanması gerekir. Bu senaryonun çalışması için, her ikisi `applicationId` de `objectId` erişim ilkesinde belirtilmelidir. , `applicationId` Gerekli uygulamayı tanımlar ve `objectId` kullanıcıyı tanımlar. Şu anda bu seçenek, Azure RBAC (Önizleme) veri düzlemi için kullanılamaz.
+- **Yalnızca uygulama** : uygulama bir hizmet sorumlusunu veya yönetilen kimliği temsil eder. Bu kimlik, anahtar kasasından düzenli olarak sertifikalara, anahtarlara veya gizli uygulamalara erişmesi gereken uygulamalar için en yaygın senaryolardır. Bu senaryonun çalışması için, `objectId` uygulamanın erişim ilkesinde belirtilmesi gerekir ve `applicationId` belirtilmemelidir veya olması gerekir _not_ `null` .
+- **Yalnızca Kullanıcı** : Kullanıcı, kiracıda kayıtlı herhangi bir uygulamadan anahtar kasasına erişir. Bu tür erişimin örnekleri Azure PowerShell ve Azure portal içerir. Bu senaryonun çalışması için, `objectId` kullanıcının erişim ilkesinde belirtilmesi ve `applicationId` belirtilmemelidir veya olması _gerekir_ `null` .
+- **Uygulama-Plus-Kullanıcı** (bazen _bileşik kimlik_ olarak adlandırılır): kullanıcının belirli bir uygulamadan anahtar kasasına erişmesi _ve_ uygulamanın, kullanıcının kimliğine bürünmek için, Kullanıcı adına kimlik doğrulaması (OBO) akışı kullanması gerekir. Bu senaryonun çalışması için, her ikisi `applicationId` de `objectId` erişim ilkesinde belirtilmelidir. , `applicationId` Gerekli uygulamayı tanımlar ve `objectId` kullanıcıyı tanımlar. Şu anda bu seçenek, Azure RBAC (Önizleme) veri düzlemi için kullanılamaz.
 
-Tüm erişim türlerinde, uygulama Azure AD ile kimlik doğrulaması yapar. Uygulama, uygulama türüne göre desteklenen herhangi bir [kimlik doğrulama yöntemini](../../active-directory/develop/authentication-scenarios.md) kullanır. Uygulama, erişim izni vermek için düzlemdeki bir kaynak için bir belirteç alır. Kaynak, Azure ortamına göre yönetim veya veri düzleminde bir uç noktadır. Uygulama belirteci kullanır ve Key Vault bir REST API isteği gönderir. Daha fazla bilgi edinmek için [tüm kimlik doğrulama akışını](../../active-directory/develop/v2-oauth2-auth-code-flow.md)gözden geçirin.
+Tüm erişim türlerinde, uygulama Azure AD ile kimlik doğrulaması yapar. Uygulama, uygulama türüne göre desteklenen herhangi bir [kimlik doğrulama yöntemini](../../active-directory/develop/authentication-vs-authorization.md) kullanır. Uygulama, erişim izni vermek için düzlemdeki bir kaynak için bir belirteç alır. Kaynak, Azure ortamına göre yönetim veya veri düzleminde bir uç noktadır. Uygulama belirteci kullanır ve Key Vault bir REST API isteği gönderir. Daha fazla bilgi edinmek için [tüm kimlik doğrulama akışını](../../active-directory/develop/v2-oauth2-auth-code-flow.md)gözden geçirin.
 
 Her iki düzlemde kimlik doğrulama için tek bir mekanizmanın çeşitli avantajları vardır:
 
@@ -69,17 +69,17 @@ Aşağıdaki tabloda yönetim ve veri düzlemleri için uç noktalar gösterilme
 
 ## <a name="management-plane-and-azure-rbac"></a>Yönetim düzlemi ve Azure RBAC
 
-Yönetim düzleminde, bir çağıranın yürütebileceği işlemleri yetkilendirmek için [Azure rol tabanlı erişim denetimi (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) kullanırsınız. Azure RBAC modelinde, her Azure aboneliğinin bir Azure AD örneği vardır. Bu dizinden kullanıcılara, gruplara ve uygulamalara erişim izni verirsiniz. Azure aboneliğindeki Azure Resource Manager dağıtım modelini kullanan kaynakları yönetmek için erişim izni verilir.
+Yönetim düzleminde, bir çağıranın yürütebileceği işlemleri yetkilendirmek için [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) kullanırsınız. Azure RBAC modelinde, her Azure aboneliğinin bir Azure AD örneği vardır. Bu dizinden kullanıcılara, gruplara ve uygulamalara erişim izni verirsiniz. Azure aboneliğindeki Azure Resource Manager dağıtım modelini kullanan kaynakları yönetmek için erişim izni verilir.
 
-Bir kaynak grubunda bir Anahtar Kasası oluşturup Azure AD 'yi kullanarak erişimi yönetebilirsiniz. Kullanıcılara veya gruplara bir kaynak grubundaki anahtar kasalarını yönetme yeteneği vermiş olursunuz. Uygun Azure rolleri atayarak erişimi belirli bir kapsam düzeyinde verirsiniz. Anahtar kasalarını yönetmek üzere bir kullanıcıya erişim izni vermek için, belirli bir kapsamdaki kullanıcıya önceden tanımlı bir [Key Vault katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-contributor) rolü atarsınız. Aşağıdaki kapsamlar düzeyleri bir Azure rolüne atanabilir:
+Bir kaynak grubunda bir Anahtar Kasası oluşturup Azure AD 'yi kullanarak erişimi yönetebilirsiniz. Kullanıcılara veya gruplara bir kaynak grubundaki anahtar kasalarını yönetme yeteneği vermiş olursunuz. Uygun Azure rolleri atayarak erişimi belirli bir kapsam düzeyinde verirsiniz. Anahtar kasalarını yönetmek üzere bir kullanıcıya erişim izni vermek için, belirli bir kapsamdaki kullanıcıya önceden tanımlı bir [Key Vault katılımcısı](../../role-based-access-control/built-in-roles.md#key-vault-contributor) rolü atarsınız. Aşağıdaki kapsamlar düzeyleri bir Azure rolüne atanabilir:
 
-- **Abonelik**: abonelik düzeyinde atanan bir Azure rolü, bu aboneliğin içindeki tüm kaynak grupları ve kaynaklar için geçerlidir.
-- **Kaynak grubu**: kaynak grubu düzeyinde atanan bir Azure rolü, bu kaynak grubundaki tüm kaynaklar için geçerlidir.
-- **Belirli kaynak**: belirli bir kaynak için atanan bir Azure rolü bu kaynak için geçerlidir. Bu durumda, kaynak belirli bir Anahtar Kasası olur.
+- **Abonelik** : abonelik düzeyinde atanan bir Azure rolü, bu aboneliğin içindeki tüm kaynak grupları ve kaynaklar için geçerlidir.
+- **Kaynak grubu** : kaynak grubu düzeyinde atanan bir Azure rolü, bu kaynak grubundaki tüm kaynaklar için geçerlidir.
+- **Belirli kaynak** : belirli bir kaynak için atanan bir Azure rolü bu kaynak için geçerlidir. Bu durumda, kaynak belirli bir Anahtar Kasası olur.
 
 Önceden tanımlanmış birkaç rol vardır. Önceden tanımlanmış bir rol gereksinimlerinize uygun değilse, kendi rolünüzü tanımlayabilirsiniz. Daha fazla bilgi için bkz. [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md). 
 
-`Microsoft.Authorization/roleAssignments/write` `Microsoft.Authorization/roleAssignments/delete` [Kullanıcı erişimi Yöneticisi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) veya [sahibi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) gibi izinlerinizin ve izninizin olması gerekir
+`Microsoft.Authorization/roleAssignments/write` `Microsoft.Authorization/roleAssignments/delete` [Kullanıcı erişimi Yöneticisi](../../role-based-access-control/built-in-roles.md#user-access-administrator) veya [sahibi](../../role-based-access-control/built-in-roles.md#owner) gibi izinlerinizin ve izninizin olması gerekir
 
 > [!IMPORTANT]
 > Bir kullanıcının bir `Contributor` Anahtar Kasası yönetim düzlemine izinleri varsa, kullanıcı Key Vault erişim ilkesi ayarlayarak kendilerine veri düzlemine erişim izni verebilir. `Contributor`Anahtar kasalarınıza kimin rol erişimi olduğunu sıkı bir şekilde denetleyebilirsiniz. Anahtar kasalarınızı, anahtarlarınızı, sırları ve sertifikalarınızı yalnızca yetkili kişilerin erişebildiğinden ve yönetebilmesi için emin olun.
@@ -92,7 +92,7 @@ Bir Anahtar Kasası için Key Vault erişim ilkeleri ayarlayarak veri düzlemi e
 
 Bir anahtar kasasındaki anahtarlar veya gizlilikler için belirli işlemleri yürütmek üzere bir Kullanıcı, Grup veya uygulama erişimi verirsiniz. Key Vault, bir Anahtar Kasası için en fazla 1.024 erişim ilkesi girişini destekler. Birkaç kullanıcıya veri düzlemi erişimi sağlamak için bir Azure AD güvenlik grubu oluşturun ve bu gruba kullanıcı ekleyin.
 
-Kasa ve gizli dizi işlemlerinin tam listesini şurada görebilirsiniz: [Key Vault Işlem başvurusu](https://docs.microsoft.com/rest/api/keyvault/#vault-operations)
+Kasa ve gizli dizi işlemlerinin tam listesini şurada görebilirsiniz: [Key Vault Işlem başvurusu](/rest/api/keyvault/#vault-operations)
 
 <a id="key-vault-access-policies"></a> Key Vault erişim ilkeleri, izinleri anahtarlar, gizlilikler ve sertifikaya ayrı olarak verir.  Anahtarlar, gizli diziler ve sertifikalar için erişim izinleri kasa düzeyindedir. 
 
@@ -109,13 +109,13 @@ Azure rol tabanlı erişim denetimi, tek tek anahtar kasaları üzerinde etkinle
 
 Azure AD güvenlik sorumlusuna bir Azure rolü atandığında Azure, bu güvenlik sorumlusu için bu kaynaklara erişim izni verir. Erişim, aboneliğin düzeyi, kaynak grubu, Anahtar Kasası veya tek bir anahtar, gizli dizi ya da sertifika kapsamına eklenebilir. Azure AD güvenlik sorumlusu, bir Kullanıcı, Grup, uygulama hizmeti sorumlusu veya [Azure kaynakları için yönetilen bir kimlik](../../active-directory/managed-identities-azure-resources/overview.md)olabilir.
 
-Kasa erişim ilkeleri üzerinde Azure RBAC iznini kullanmanın önemli avantajları, merkezi erişim denetimi yönetimi ve [Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure)ile Tümleştirmesidir. Privileged Identity Management, önem verdiğiniz kaynaklarda aşırı, gereksiz veya kötüye erişim izinlerinin riskini azaltmak için zamana dayalı ve onay tabanlı rol etkinleştirmesi sağlar.
+Kasa erişim ilkeleri üzerinde Azure RBAC iznini kullanmanın önemli avantajları, merkezi erişim denetimi yönetimi ve [Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md)ile Tümleştirmesidir. Privileged Identity Management, önem verdiğiniz kaynaklarda aşırı, gereksiz veya kötüye erişim izinlerinin riskini azaltmak için zamana dayalı ve onay tabanlı rol etkinleştirmesi sağlar.
 
 RBAC ile Key Vault veri düzlemi hakkında daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi ile Key Vault anahtarlar, sertifikalar ve gizli diziler (Önizleme)](rbac-guide.md)
 
 ## <a name="firewalls-and-virtual-networks"></a>Güvenlik duvarları ve sanal ağlar
 
-Ek bir güvenlik katmanı için güvenlik duvarlarını ve sanal ağ kurallarını yapılandırabilirsiniz. Key Vault güvenlik duvarlarını ve sanal ağları, varsayılan olarak tüm ağlardan gelen trafiğe (internet trafiği dahil) erişimi reddedecek şekilde yapılandırabilirsiniz. Belirli [Azure sanal ağlarından](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) ve genel İnternet IP adresi aralıklarından trafiğe erişim izni vererek uygulamalarınız için güvenli bir ağ sınırı oluşturabilirsiniz.
+Ek bir güvenlik katmanı için güvenlik duvarlarını ve sanal ağ kurallarını yapılandırabilirsiniz. Key Vault güvenlik duvarlarını ve sanal ağları, varsayılan olarak tüm ağlardan gelen trafiğe (internet trafiği dahil) erişimi reddedecek şekilde yapılandırabilirsiniz. Belirli [Azure sanal ağlarından](../../virtual-network/virtual-networks-overview.md) ve genel İnternet IP adresi aralıklarından trafiğe erişim izni vererek uygulamalarınız için güvenli bir ağ sınırı oluşturabilirsiniz.
 
 Hizmet uç noktalarını nasıl kullanabileceğinizi gösteren bazı örnekler şunlardır:
 
@@ -134,32 +134,32 @@ Genel olarak Key Vault açığa çıkmasına tamamen engel olmak için bir [Azur
 
 Azure hizmetleri için özel bağlantı kullanımı için genel senaryolar:
 
-- **Azure platformunda özel olarak erişim Hizmetleri**: Sanal ağınızı, kaynak veya hedef üzerinde genel bir IP adresi olmadan Azure 'daki hizmetlere bağlayın. Hizmet sağlayıcıları kendi sanal ağındaki hizmetlerini işleyebilir ve tüketiciler kendi yerel sanal ağında bu hizmetlere erişebilir. Özel bağlantı platformu, Azure omurga ağı üzerinden tüketici ve hizmetler arasındaki bağlantıyı işleymeyecektir. 
+- **Azure platformunda özel olarak erişim Hizmetleri** : Sanal ağınızı, kaynak veya hedef üzerinde genel bir IP adresi olmadan Azure 'daki hizmetlere bağlayın. Hizmet sağlayıcıları kendi sanal ağındaki hizmetlerini işleyebilir ve tüketiciler kendi yerel sanal ağında bu hizmetlere erişebilir. Özel bağlantı platformu, Azure omurga ağı üzerinden tüketici ve hizmetler arasındaki bağlantıyı işleymeyecektir. 
  
-- Şirket **içi ve eşlenmiş ağlar**: Azure 'Da, ExpressRoute özel EŞLEMESI, VPN tünelleri ve eşlenmiş sanal ağlar üzerinden şirket içinden çalışan hizmetlere özel uç noktalar kullanarak erişin. Hizmete ulaşmak için genel eşlemeyi ayarlama veya internet 'e çapraz geçiş yapma gereksinimi yoktur. Özel bağlantı, iş yüklerini Azure 'a geçirmek için güvenli bir yol sağlar.
+- Şirket **içi ve eşlenmiş ağlar** : Azure 'Da, ExpressRoute özel EŞLEMESI, VPN tünelleri ve eşlenmiş sanal ağlar üzerinden şirket içinden çalışan hizmetlere özel uç noktalar kullanarak erişin. Hizmete ulaşmak için genel eşlemeyi ayarlama veya internet 'e çapraz geçiş yapma gereksinimi yoktur. Özel bağlantı, iş yüklerini Azure 'a geçirmek için güvenli bir yol sağlar.
  
-- **Veri sızıntılarına karşı koruma**: özel bir uç nokta, tüm hizmet yerine bir PaaS kaynağı örneğine eşlenir. Tüketiciler yalnızca belirli bir kaynağa bağlanabilir. Hizmette başka bir kaynağa erişim engellenir. Bu mekanizma, veri sızıntısı risklerine karşı koruma sağlar. 
+- **Veri sızıntılarına karşı koruma** : özel bir uç nokta, tüm hizmet yerine bir PaaS kaynağı örneğine eşlenir. Tüketiciler yalnızca belirli bir kaynağa bağlanabilir. Hizmette başka bir kaynağa erişim engellenir. Bu mekanizma, veri sızıntısı risklerine karşı koruma sağlar. 
  
-- **Küresel erişim**: diğer bölgelerde çalışan hizmetlere özel olarak bağlanın. Tüketicinin sanal ağı A bölgesinde olabilir ve B bölgesinde özel bağlantı arkasındaki hizmetlere bağlanabilir.  
+- **Küresel erişim** : diğer bölgelerde çalışan hizmetlere özel olarak bağlanın. Tüketicinin sanal ağı A bölgesinde olabilir ve B bölgesinde özel bağlantı arkasındaki hizmetlere bağlanabilir.  
  
-- **Kendi hizmetlerinizi genişletin**: hizmetinizi Azure 'daki tüketicilere özel olarak işlemek için aynı deneyimi ve işlevselliği etkinleştirin. Hizmetinizi standart bir Azure Load Balancer arkasına yerleştirerek özel bağlantı için etkinleştirebilirsiniz. Tüketici daha sonra kendi sanal ağında özel bir uç nokta kullanarak doğrudan hizmetinize bağlanabilir. Bağlantı isteklerini bir onay çağrı akışı kullanarak yönetebilirsiniz. Azure özel bağlantısı, farklı Azure Active Directory kiracılarına ait tüketiciler ve hizmetler için geçerlidir. 
+- **Kendi hizmetlerinizi genişletin** : hizmetinizi Azure 'daki tüketicilere özel olarak işlemek için aynı deneyimi ve işlevselliği etkinleştirin. Hizmetinizi standart bir Azure Load Balancer arkasına yerleştirerek özel bağlantı için etkinleştirebilirsiniz. Tüketici daha sonra kendi sanal ağında özel bir uç nokta kullanarak doğrudan hizmetinize bağlanabilir. Bağlantı isteklerini bir onay çağrı akışı kullanarak yönetebilirsiniz. Azure özel bağlantısı, farklı Azure Active Directory kiracılarına ait tüketiciler ve hizmetler için geçerlidir. 
 
-Özel uç noktalar hakkında daha fazla bilgi için bkz. [Azure özel bağlantısı ile Key Vault](https://docs.microsoft.com/azure/key-vault/general/private-link-service)
+Özel uç noktalar hakkında daha fazla bilgi için bkz. [Azure özel bağlantısı ile Key Vault](./private-link-service.md)
 
 ## <a name="example"></a>Örnek
 
 Bu örnekte, TLS/SSL için bir sertifika, verileri depolamak için Azure depolama ve Azure Storage 'daki verileri şifrelemek için RSA 2.048 bitlik bir anahtar kullanan bir uygulama geliştiriyoruz. Uygulamamız bir Azure sanal makinesinde (VM) (veya bir sanal makine ölçek kümesi) çalışır. Uygulama gizli dizileri depolamak için bir Anahtar Kasası kullanabiliriz. Azure AD ile kimlik doğrulaması yapmak için uygulama tarafından kullanılan önyükleme sertifikasını depolayabiliriz.
 
 Aşağıdaki depolanmış anahtarlar ve gizli anahtarlara erişmeniz gerekir:
-- **TLS/SSL sertifikası**: TLS/SSL için kullanılır.
-- **Depolama anahtarı**: depolama hesabına erişmek için kullanılır.
-- **RSA 2.048 bit anahtarı**: Azure depolama tarafından sarmalama/sarmalama verileri şifreleme anahtarı için kullanılır.
-- **Uygulama tarafından yönetilen kimlik**: Azure AD kimlik doğrulaması için kullanılır. Key Vault Erişimi verildikten sonra, uygulama depolama anahtarını ve sertifikayı getirebilir.
+- **TLS/SSL sertifikası** : TLS/SSL için kullanılır.
+- **Depolama anahtarı** : depolama hesabına erişmek için kullanılır.
+- **RSA 2.048 bit anahtarı** : Azure depolama tarafından sarmalama/sarmalama verileri şifreleme anahtarı için kullanılır.
+- **Uygulama tarafından yönetilen kimlik** : Azure AD kimlik doğrulaması için kullanılır. Key Vault Erişimi verildikten sonra, uygulama depolama anahtarını ve sertifikayı getirebilir.
 
 Uygulamamızı kimin yönetebileceğini, dağıtabileceğinizi ve denetleyeceğinizi belirlemek için aşağıdaki rolleri tanımlamanız gerekir:
-- **Güvenlik ekibi**: CSO (Güvenlik Müdürü) veya benzer katkıda bulunanlar ofisindeki BT personeli. Güvenlik ekibi, gizli dizileri doğru bir şekilde ping işlemi yapmaktan sorumludur. Gizlilikler, TLS/SSL sertifikaları, şifreleme için RSA anahtarları, bağlantı dizeleri ve depolama hesabı anahtarları içerebilir.
-- **Geliştiriciler ve işleçler**: uygulamayı geliştiren ve Azure 'da dağıtan personel. Bu ekibin üyeleri güvenlik personelinin bir parçası değildir. Bunlar TLS/SSL sertifikaları ve RSA anahtarları gibi hassas verilere erişemez. Yalnızca dağıttıkları uygulamanın gizli verilere erişimi olmalıdır.
-- **Denetçiler**: Bu rol, geliştirme veya genel BT personelinin üyesi olmayan katkıda bulunanlar içindir. Güvenlik standartlarıyla uyumluluğu sağlamak için sertifikaların, anahtarların ve parolaların kullanımını ve bakımını gözden geçirir.
+- **Güvenlik ekibi** : CSO (Güvenlik Müdürü) veya benzer katkıda bulunanlar ofisindeki BT personeli. Güvenlik ekibi, gizli dizileri doğru bir şekilde ping işlemi yapmaktan sorumludur. Gizlilikler, TLS/SSL sertifikaları, şifreleme için RSA anahtarları, bağlantı dizeleri ve depolama hesabı anahtarları içerebilir.
+- **Geliştiriciler ve işleçler** : uygulamayı geliştiren ve Azure 'da dağıtan personel. Bu ekibin üyeleri güvenlik personelinin bir parçası değildir. Bunlar TLS/SSL sertifikaları ve RSA anahtarları gibi hassas verilere erişemez. Yalnızca dağıttıkları uygulamanın gizli verilere erişimi olmalıdır.
+- **Denetçiler** : Bu rol, geliştirme veya genel BT personelinin üyesi olmayan katkıda bulunanlar içindir. Güvenlik standartlarıyla uyumluluğu sağlamak için sertifikaların, anahtarların ve parolaların kullanımını ve bakımını gözden geçirir.
 
 Uygulamamızın kapsamı dışında başka bir rol var: abonelik (veya kaynak grubu) Yöneticisi. Abonelik Yöneticisi güvenlik ekibi için ilk erişim izinlerini ayarlar. Uygulama için gerekli kaynaklara sahip bir kaynak grubunu kullanarak güvenlik ekibine erişim izni verir.
 
@@ -184,11 +184,11 @@ Aşağıdaki tabloda rollerimiz ve uygulamamız için erişim izinleri özetlenm
 
 | Rol | Yönetim düzlemi izinleri | Veri düzlemi izinleri-kasa erişim ilkeleri | Veri düzlemi izinleri-Azure RBAC (Önizleme)  |
 | --- | --- | --- | --- |
-| Güvenlik ekibi | [Katkıda bulunan Key Vault](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-contributor) | Sertifikalar: tüm işlemler <br> Anahtarlar: tüm işlemler <br> Gizlilikler: tüm işlemler | [Key Vault Yöneticisi (Önizleme)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-administrator-preview) |
-| Geliştiriciler ve &nbsp; işleçler | Key Vault dağıtma izni<br><br> **Note**: Bu izin, dağıtılan VM 'lerin bir anahtar kasasından gizli dizileri almasına izin verir. | Yok | Yok |
-| Denetçiler | Yok | Sertifikalar: liste <br> Anahtarlar: listeleme<br>Parolalar: listeleme<br><br> **Not**: Bu izin, denetçilerin, günlüklere yayılmayan anahtarlar ve gizli diziler için öznitelikleri (Etiketler, etkinleştirme tarihleri, sona erme tarihleri) incelemeye olanak sağlar. | [Key Vault okuyucu (Önizleme)]https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview |
-| Azure Depolama Hesabı | Yok | Anahtarlar: get, List, wrapKey, unwrapKey <br> | [Key Vault şifreleme hizmeti şifrelemesi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-crypto-service-encryption-preview) |
-| Uygulama | Yok | Gizlilikler: get, List <br> Sertifikalar: get, List | [Key Vault okuyucu (Önizleme)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview), [Key Vault gizli Kullanıcı (Önizleme)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-secrets-user-preview) |
+| Güvenlik ekibi | [Katkıda bulunan Key Vault](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | Sertifikalar: tüm işlemler <br> Anahtarlar: tüm işlemler <br> Gizlilikler: tüm işlemler | [Key Vault Yöneticisi (Önizleme)](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) |
+| Geliştiriciler ve &nbsp; işleçler | Key Vault dağıtma izni<br><br> **Note** : Bu izin, dağıtılan VM 'lerin bir anahtar kasasından gizli dizileri almasına izin verir. | Yok | Yok |
+| Denetçiler | Yok | Sertifikalar: liste <br> Anahtarlar: listeleme<br>Parolalar: listeleme<br><br> **Not** : Bu izin, denetçilerin, günlüklere yayılmayan anahtarlar ve gizli diziler için öznitelikleri (Etiketler, etkinleştirme tarihleri, sona erme tarihleri) incelemeye olanak sağlar. | [Key Vault okuyucu (Önizleme)]https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview |
+| Azure Depolama Hesabı | Yok | Anahtarlar: get, List, wrapKey, unwrapKey <br> | [Key Vault şifreleme hizmeti şifrelemesi](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-preview) |
+| Uygulama | Yok | Gizlilikler: get, List <br> Sertifikalar: get, List | [Key Vault okuyucu (Önizleme)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview), [Key Vault gizli Kullanıcı (Önizleme)](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
 
 Üç takım rolünün, Key Vault izinlerle birlikte diğer kaynaklara erişmesi gerekir. VM 'Leri (veya Azure App Service Web Apps özelliğini) dağıtmak için, geliştiricilere ve operatörlere erişim dağıtımı gerekir. Denetçilerin Key Vault günlüklerinin depolandığı depolama hesabına okuma erişimi olması gerekir.
 
@@ -200,10 +200,10 @@ Aşağıdaki tabloda rollerimiz ve uygulamamız için erişim izinleri özetlenm
 ## <a name="resources"></a>Kaynaklar
 
 - [Azure Key Vault hakkında](overview.md)
-- [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
+- [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)
 - [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)
-- [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
-- [Özel Bağlantı](https://docs.microsoft.com/azure/private-link/private-link-overview)
+- [Azure RBAC](../../role-based-access-control/overview.md)
+- [Özel Bağlantı](../../private-link/private-link-overview.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

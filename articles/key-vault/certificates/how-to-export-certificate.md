@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: 8a594d06fa84bb6e5ef502b02e1bec8244062ccb
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: e7ea3ef16b60e53450436bda66ce3dde091c81c2
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233976"
+ms.locfileid: "93289553"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Sertifikaları Azure Key Vault dışarı aktarma
 
@@ -23,11 +23,11 @@ Azure Key Vault sertifikaların nasıl dışarı aktarılacağını öğrenin. S
 
 ## <a name="about-azure-key-vault-certificates"></a>Azure Key Vault sertifikaları hakkında
 
-Azure Key Vault ağınız için dijital sertifikaları kolayca sağlamanıza, yönetmenize ve dağıtmanıza olanak tanır. Ayrıca, uygulamalar için güvenli iletişimler da sunar. Daha fazla bilgi için bkz. [Azure Key Vault sertifikaları](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates) .
+Azure Key Vault ağınız için dijital sertifikaları kolayca sağlamanıza, yönetmenize ve dağıtmanıza olanak tanır. Ayrıca, uygulamalar için güvenli iletişimler da sunar. Daha fazla bilgi için bkz. [Azure Key Vault sertifikaları](./about-certificates.md) .
 
 ### <a name="composition-of-a-certificate"></a>Sertifika oluşturma
 
-Bir Key Vault sertifikası oluşturulduğunda, aynı ada sahip bir adreslenebilir *anahtar* ve *gizli* dizi oluşturulur. Key Vault anahtar, anahtar işlemlerine izin verir. Key Vault parolası, sertifika değerinin gizli olarak alınmasına izin verir. Bir Key Vault sertifikası ortak x509 sertifika meta verilerini de içerir. Daha fazla bilgi için [bir sertifikanın kompozisyonunu](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate) ziyaret edin.
+Bir Key Vault sertifikası oluşturulduğunda, aynı ada sahip bir adreslenebilir *anahtar* ve *gizli* dizi oluşturulur. Key Vault anahtar, anahtar işlemlerine izin verir. Key Vault parolası, sertifika değerinin gizli olarak alınmasına izin verir. Bir Key Vault sertifikası ortak x509 sertifika meta verilerini de içerir. Daha fazla bilgi için [bir sertifikanın kompozisyonunu](./about-certificates.md#composition-of-a-certificate) ziyaret edin.
 
 ### <a name="exportable-and-non-exportable-keys"></a>Dışarı aktarılabilir ve dışarı aktarılamayan anahtarlar
 
@@ -36,9 +36,9 @@ Bir Key Vault sertifikası oluşturulduktan sonra, özel anahtarla adreslenebili
 - **Dışarı aktarılabilir** : sertifikayı oluşturmak için kullanılan ilke, anahtarın dışarı aktarılabilir olduğunu gösterir.
 - **Dışarı aktarılabilir** değil: sertifikayı oluşturmak için kullanılan ilke, anahtarın dışarı aktarılamaz olduğunu gösterir. Bu durumda, özel anahtar bir gizli dizi olarak alındığında değerin bir parçası değildir.
 
-Desteklenen KeyTypes: RSA, RSA-HSM, EC, EC-HSM, Eki ( [burada](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)listelenen) dışarı AKTARıLABILIR yalnızca RSA, EC ile kullanılabilir. HSM anahtarları dışarı aktarılabilir değildir.
+Desteklenen KeyTypes: RSA, RSA-HSM, EC, EC-HSM, Eki ( [burada](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)listelenen) dışarı AKTARıLABILIR yalnızca RSA, EC ile kullanılabilir. HSM anahtarları dışarı aktarılabilir değildir.
 
-Daha fazla bilgi için bkz. [Azure Key Vault sertifikaları hakkında](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#exportable-or-non-exportable-key) .
+Daha fazla bilgi için bkz. [Azure Key Vault sertifikaları hakkında](./about-certificates.md#exportable-or-non-exportable-key) .
 
 ## <a name="export-stored-certificates"></a>Depolanan sertifikaları dışarı aktar
 
@@ -61,7 +61,7 @@ az keyvault certificate download --file
                                  [--version]
 ```
 
-Daha fazla bilgi için [örnekleri ve parametre tanımlarını](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-download) görüntüleyin.
+Daha fazla bilgi için [örnekleri ve parametre tanımlarını](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-download) görüntüleyin.
 
 Sertifika olarak indirme, genel bölümü elde etmek anlamına gelir. Hem özel anahtar hem de genel meta verileri isterseniz, parolayı gizli olarak indirebilirsiniz.
 
@@ -75,7 +75,7 @@ az keyvault secret download -–file {nameofcert.pfx}
                             [--version]
 ```
 
-Daha fazla bilgi için bkz. [parametre tanımları](https://docs.microsoft.com/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-download).
+Daha fazla bilgi için bkz. [parametre tanımları](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-download).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -102,7 +102,7 @@ $pfxFileByte = $x509Cert.Export($type, $password)
 ```
 
 Bu komut, tüm sertifika zincirini özel anahtarla dışa aktarır. Sertifika, parola korumalı.
-**Get-azkeyvaultcertificate** komutu ve parametreleri hakkında daha fazla bilgi için bkz. [Get-azkeyvaultcertificate-örnek 2](https://docs.microsoft.com/powershell/module/az.keyvault/Get-AzKeyVaultCertificate?view=azps-4.4.0).
+**Get-azkeyvaultcertificate** komutu ve parametreleri hakkında daha fazla bilgi için bkz. [Get-azkeyvaultcertificate-örnek 2](/powershell/module/az.keyvault/Get-AzKeyVaultCertificate?view=azps-4.4.0).
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -121,4 +121,4 @@ Daha fazla bilgi için [Azure App Service sertifikaları dışarı aktarma](http
 ---
 
 ## <a name="read-more"></a>Daha fazla bilgi edinin
-* [Çeşitli sertifika dosyası türleri ve tanımları](https://docs.microsoft.com/archive/blogs/kaushal/various-ssltls-certificate-file-typesextensions)
+* [Çeşitli sertifika dosyası türleri ve tanımları](/archive/blogs/kaushal/various-ssltls-certificate-file-typesextensions)

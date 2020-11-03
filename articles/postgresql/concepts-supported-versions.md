@@ -7,15 +7,16 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cfe4b92dbed69440ee2c07cff758faad7e01293f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f03016c9a44968db49cd68bfec025c328861fc07
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707923"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286424"
 ---
 # <a name="supported-postgresql-major-versions"></a>Desteklenen PostgreSQL ana sürümleri
-Microsoft amaçlar, PostgreSQL için Azure veritabanı 'nda PostgreSQL altyapısının n-2 sürümlerini desteklemeye yöneliktir-tek sunucu. Sürümler, Azure 'daki geçerli ana sürümdür (n) ve önceki iki ana sürüm (-2) olacaktır.
+
+Destek ilkesi ayrıntıları için lütfen [PostgreSQL Için Azure veritabanı sürüm oluşturma ilkesine](concepts-version-policy.md) bakın.
 
 PostgreSQL için Azure veritabanı şu anda aşağıdaki ana sürümleri desteklemektedir:
 
@@ -35,6 +36,7 @@ Geçerli ikincil sürüm 9.5.20. Bu küçük sürümdeki geliştirmeler ve düze
 PostgreSQL projesi, bildirilen hataları çözmek için düzenli olarak küçük yayınlar yayınlar. PostgreSQL için Azure veritabanı, hizmetin aylık dağıtımları sırasında küçük yayınlar içeren sunucuları otomatik olarak ekler. 
 
 Ana sürümler için otomatik yerinde yükseltmeler desteklenmez. Bir sonraki ana sürüme yükseltmek için, şunları yapabilirsiniz 
+   * [Döküm ve geri yükleme kullanarak ana sürüm yükseltmelerini](./how-to-upgrade-using-dump-and-restore.md) inceleyin
    * Yeni altyapı sürümüyle oluşturulan bir sunucuya bir veritabanını taşımak için [pg_dump ve pg_restore](./howto-migrate-using-dump-and-restore.md) kullanın
    * Alternatif olarak, [Azure veritabanı geçiş hizmeti](..\dms\tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) 'Ni kullanarak PostgreSQL 10 ' dan 11 ' e yükseltebilirsiniz
 

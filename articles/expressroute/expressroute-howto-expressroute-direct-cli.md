@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0bdf2c4dda3e272ae04681f886f6e4da31dcebd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7931ad9e55d62d5fa2b1828d276e56f7c8cd02e1
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569830"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286482"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Azure CLı kullanarak ExpressRoute Direct 'i yapılandırma
 
@@ -152,7 +152,7 @@ ExpressRoute Direct, dünya genelinde stratejik olarak dağıtılan eşleme konu
    ```
 
    > [!NOTE]
-   > Ayrıca, **kapsülleme** özniteliğini **Dot1Q**olarak da ayarlayabilirsiniz. 
+   > Ayrıca, **kapsülleme** özniteliğini **Dot1Q** olarak da ayarlayabilirsiniz. 
    >
 
    **Örnek çıkış**
@@ -209,19 +209,11 @@ ExpressRoute Direct, dünya genelinde stratejik olarak dağıtılan eşleme konu
    }  
    ```
 
-## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>Yetkilendirme (LOA) harfini oluşturma
-
-En son oluşturulan ExpressRoute doğrudan kaynak adı, kaynak grubu adı ve bir müşteri adı ile LOA 'yı yazın ve (isteğe bağlı olarak) belgeyi depolamak için bir dosya konumu tanımlayın. Bir dosya yoluna başvurulmuyorsa, belge geçerli dizine indirilir.
-
-```azurecli
-az network express-route port generate-loa -n Contoso-Direct -g Contoso-Direct-rg --customer-name Contoso --destination C:\Users\SampleUser\Downloads\LOA.pdf
-```
-
 ## <a name="change-adminstate-for-links"></a><a name="state"></a>Bağlantıların AdminState 'i Değiştir
 
 Katman 1 testi yürütmek için bu işlemi kullanın. Her bir çapraz bağlantının, birincil ve ikincil bağlantı noktalarında her bir yönlendiricide düzgün bir şekilde düzeltme içinde olduğundan emin olun.
 
-1. Bağlantıları **etkin**olarak ayarlayın. Her bağlantıyı **etkin**olarak ayarlamak için bu adımı tekrarlayın.
+1. Bağlantıları **etkin** olarak ayarlayın. Her bağlantıyı **etkin** olarak ayarlamak için bu adımı tekrarlayın.
 
    [0] bağlantıları birincil bağlantı noktasıdır ve [1] bağlantıları ikincil bağlantı noktasıdır.
 

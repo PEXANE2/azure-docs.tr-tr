@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 59b57e292275888140045bf94ff36995f312b6c1
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 2d981e902f829eb0fa8283b6a38ae376a780bcc9
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927490"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289749"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>Öğretici: Key Vault içinde sertifika otomatik döndürmeyi yapılandırma
 
@@ -41,13 +41,13 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-vault"></a>Kasa oluşturma
 
-İşlem gerçekleştirmek için bir Anahtar Kasası oluşturun veya mevcut kasalarınızı seçin (bkz. [Anahtar Kasası oluşturma adımları](../quick-create-portal.md)). Örnekte, Anahtar Kasası adı **örnek kasadır** .
+İşlem gerçekleştirmek için bir Anahtar Kasası oluşturun veya mevcut kasalarınızı seçin (bkz. [Anahtar Kasası oluşturma adımları](../secrets/quick-create-portal.md)). Örnekte, Anahtar Kasası adı **örnek kasadır**.
 
 ![Anahtar Kasası oluşturma işlemi tamamlandıktan sonra çıkış](../media/certificates/tutorial-import-cert/vault-properties.png)
 
 ## <a name="create-a-certificate-in-key-vault"></a>Key Vault bir sertifika oluşturun
 
-Bir sertifika oluşturun veya bir sertifikayı anahtar kasasına aktarın (bkz. [Key Vault sertifika oluşturma adımları](../quick-create-portal.md)). Bu durumda, **examplecertificate** adlı bir sertifika üzerinde çalışacaksınız.
+Bir sertifika oluşturun veya bir sertifikayı anahtar kasasına aktarın (bkz. [Key Vault sertifika oluşturma adımları](../secrets/quick-create-portal.md)). Bu durumda, **examplecertificate** adlı bir sertifika üzerinde çalışacaksınız.
 
 ## <a name="update-certificate-lifecycle-attributes"></a>Sertifika yaşam döngüsü özniteliklerini güncelleştirme
 
@@ -134,7 +134,7 @@ Set-AzureKeyVaultCertificatePolicy -VaultName $vaultName
 > }
 >  ```
 > 
-Parametreler hakkında daha fazla bilgi edinmek için bkz. [az keykasa Certificate](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-set-attributes).
+Parametreler hakkında daha fazla bilgi edinmek için bkz. [az keykasa Certificate](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-set-attributes).
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -152,5 +152,5 @@ Portalı kullanarak kaynak grubunu silmek için:
 
 Bu öğreticide, bir sertifikanın yaşam döngüsü özniteliklerini güncelleştirmiş olursunuz. Key Vault ve uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere geçin:
 
-- [Azure Key Vault 'de sertifika oluşturmayı yönetme](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios)hakkında daha fazla bilgi edinin.
+- [Azure Key Vault 'de sertifika oluşturmayı yönetme](./create-certificate-scenarios.md)hakkında daha fazla bilgi edinin.
 - [Key Vault genel bakışı](../general/overview.md)gözden geçirin.

@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1052ad06400eb70fe41617421b54978bddd9e50
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: cd0a2b44fd54eb716b5e1b8f9eabc923ccd7977f
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441377"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285854"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B işbirliği kullanıcısının özellikleri
 
@@ -28,7 +28,7 @@ Kuruluşun ihtiyaçlarına bağlı olarak, bir Azure AD B2B işbirliği kullanı
 - Durum 1: Azure AD 'nin dış bir örneğinde bulunan ve davet edilen kuruluşta Konuk Kullanıcı olarak gösterilen. Bu durumda, B2B kullanıcısı, davet edilen kiracıya ait olan bir Azure AD hesabı kullanarak oturum açar. İş ortağı kuruluşu Azure AD kullanmıyorsa, Azure AD 'de Konuk Kullanıcı hala oluşturulur. Gereksinimler, davetlerinin yanı sıra Azure AD 'nin e-posta adreslerini doğrular. Bu düzenleme, tam zamanında (JıT) kiracı veya "viral" kiramı olarak da adlandırılır.
 
    > [!IMPORTANT]
-   > Microsoft, **31 mart 2021**' den ıtıbaren, B2B işbirliği senaryoları Için YÖNETILMEYEN Azure AD hesapları ve kiracılar oluşturarak artık davetlerin kullanımını desteklememektedir. Hazırlık aşamasında, müşterilerin [e-posta bir kerelik geçiş kodu kimlik doğrulamasını](one-time-passcode.md)kabul etmelerini öneririz. Bu genel önizleme özelliğiyle ilgili geri bildirimlerinize hoş geldiniz ve işbirliği yapmak için daha fazla yol oluşturmak heyecanlıyız.
+   > Microsoft, **31 mart 2021** ' den ıtıbaren, B2B işbirliği senaryoları Için YÖNETILMEYEN Azure AD hesapları ve kiracılar oluşturarak artık davetlerin kullanımını desteklememektedir. Hazırlık aşamasında, müşterilerin [e-posta bir kerelik geçiş kodu kimlik doğrulamasını](one-time-passcode.md)kabul etmelerini öneririz. Bu genel önizleme özelliğiyle ilgili geri bildirimlerinize hoş geldiniz ve işbirliği yapmak için daha fazla yol oluşturmak heyecanlıyız.
 
 - Durum 2: bir Microsoft veya diğer hesapta barındırın ve konak kuruluşunda Konuk Kullanıcı olarak temsil edilir. Bu durumda, Konuk Kullanıcı Microsoft hesabı veya sosyal hesap (google.com veya benzeri) ile oturum açar. Davet edilen kullanıcının kimliği, teklifi satın alma sırasında, davet edilen kuruluşun dizininde bir Microsoft hesabı olarak oluşturulur.
 
@@ -43,7 +43,7 @@ Kuruluşun ihtiyaçlarına bağlı olarak, bir Azure AD B2B işbirliği kullanı
 
 ### <a name="before-invitation-redemption"></a>Davet almadan önce
 
-Durum 1 ve durum 2 hesapları, konuk kullanıcıların kendi kimlik bilgilerini kullanarak, Konuk kullanıcıları işbirliği yapmaya davet etmenin sonucudur. Davet ilk olarak Konuk kullanıcıya gönderildiğinde, dizininizde bir hesap oluşturulur. Kimlik doğrulama, Konuk kullanıcının kimlik sağlayıcısı tarafından gerçekleştirildiğinden, bu hesabın kendisiyle ilişkili bir kimlik bilgisi yok. Dizininizdeki Konuk Kullanıcı hesabının **kaynak** özelliği, **davet edilen Kullanıcı**olarak ayarlanır. 
+Durum 1 ve durum 2 hesapları, konuk kullanıcıların kendi kimlik bilgilerini kullanarak, Konuk kullanıcıları işbirliği yapmaya davet etmenin sonucudur. Davet ilk olarak Konuk kullanıcıya gönderildiğinde, dizininizde bir hesap oluşturulur. Kimlik doğrulama, Konuk kullanıcının kimlik sağlayıcısı tarafından gerçekleştirildiğinden, bu hesabın kendisiyle ilişkili bir kimlik bilgisi yok. Dizininizdeki Konuk Kullanıcı hesabının **kaynak** özelliği, **davet edilen Kullanıcı** olarak ayarlanır. 
 
 ![Teklifin önermesinin önüne Kullanıcı özelliklerini gösteren ekran görüntüsü](media/user-properties/before-redemption.png)
 
@@ -59,7 +59,7 @@ Durum 2 ' deki Konuk kullanıcılar için, **kaynak** **Microsoft hesabıdır**.
 
 ![Durum 2 teklif kullanım sonrasında Konuk Kullanıcı](media/user-properties/after-redemption-state2.png)
 
-Durum 3 ve durum 4 ' te Konuk kullanıcılar için, **kaynak** özelliği, sonraki bölümde açıklandığı gibi **Azure Active Directory** veya **Windows Server Active Directory**olarak ayarlanır.
+Durum 3 ve durum 4 ' te Konuk kullanıcılar için, **kaynak** özelliği, sonraki bölümde açıklandığı gibi **Azure Active Directory** veya **Windows Server Active Directory** olarak ayarlanır.
 
 ## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Azure AD B2B işbirliği kullanıcısının temel özellikleri
 ### <a name="usertype"></a>UserType
@@ -70,6 +70,8 @@ Bu özellik kullanıcının konak kiralamanın ilişkisini gösterir. Bu özelli
 
   > [!NOTE]
   > UserType Kullanıcı oturum açma ile ilgili hiçbir ilişkiye, kullanıcının dizin rolüne ve bu şekilde devam eder. Bu özellik yalnızca kullanıcının konak kuruluşla ilişkisini belirtir ve kuruluşun bu özelliğe bağlı olan ilkeleri zorlayabilmesine izin verir.
+
+Fiyatlandırmayla ilgili ayrıntılar için lütfen [Azure Active Directory fiyatlandırmaya](https://azure.microsoft.com/pricing/details/active-directory)başvurun.
 
 ### <a name="source"></a>Kaynak
 Bu özellik kullanıcının nasıl oturum açdığını gösterir.

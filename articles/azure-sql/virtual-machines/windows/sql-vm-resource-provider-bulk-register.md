@@ -13,17 +13,17 @@ ms.workload: iaas-sql-server
 ms.date: 09/21/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b83a44db98907f505c7bf0d8302470cf3031a967
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d6900d0fdf656fa8309b18971691bb35587f7f4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761269"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286079"
 ---
 # <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>SQL VM kaynak sağlayıcısı ile Azure 'da birden çok SQL sanal makinesi kaydetme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Bu makalede, PowerShell cmdlet 'ini kullanarak SQL Server sanal makinelerinizin (VM) SQL VM kaynak sağlayıcısı ile Azure 'da toplu olarak nasıl kaydedileceği açıklanmaktadır `Register-SqlVMs` .
+Bu makalede, PowerShell cmdlet 'ini kullanarak SQL Server sanal makinelerinizin (VM) SQL VM kaynak sağlayıcısı ile Azure 'da toplu olarak nasıl kaydedileceği açıklanmaktadır `Register-SqlVMs` . SQL VM kaynak sağlayıcısı ile kaydolmak [SQL IaaS Aracısı uzantısını](sql-server-iaas-agent-extension-automate-management.md)yüklenir.
 
 Bu makale, SQL Server VM 'Leri toplu olarak kaydetmenizi öğretir. Alternatif olarak, [tüm SQL Server sanal makinelerini otomatik olarak](sql-vm-resource-provider-automatic-registration.md) veya [tek SQL Server sanal makineleri](sql-vm-resource-provider-register.md)kaydedebilirsiniz. 
 
@@ -33,14 +33,14 @@ Bu makale, SQL Server VM 'Leri toplu olarak kaydetmenizi öğretir. Alternatif o
 
 Kayıt işlemi risk içermez, kapalı kalma süresi yoktur ve SQL Server veya sanal makineyi yeniden başlatmaz. 
 
-Kaynak sağlayıcısı hakkında daha fazla bilgi için bkz. [SQL VM kaynak sağlayıcısı](sql-vm-resource-provider-register.md). 
+Daha fazla bilgi için bkz. [SQL VM kaynak sağlayıcısı](sql-vm-resource-provider-register.md). 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 SQL Server VM kaynak sağlayıcısına kaydetmek için şunlar gerekir: 
 
 - [Kaynak sağlayıcısına kayıtlı](sql-vm-resource-provider-register.md#register-subscription-with-rp) ve kaydedilmemiş SQL Server sanal makineler Içeren bir [Azure aboneliği](https://azure.microsoft.com/free/) . 
-- Sanal makineleri kaydetmek için kullanılan istemci kimlik bilgileri şu Azure rollerinin hiçbirinde bulunuyor: **sanal makine katılımcısı**, **katkıda bulunan**veya **sahip**. 
+- Sanal makineleri kaydetmek için kullanılan istemci kimlik bilgileri şu Azure rollerinin hiçbirinde bulunuyor: **sanal makine katılımcısı** , **katkıda bulunan** veya **sahip**. 
 - En son [az PowerShell](/powershell/azure/new-azureps-module-az)sürümü. 
 - En son [az. SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0)sürümü.
 
@@ -227,7 +227,7 @@ Hatalar `VMsNotRegisteredDueToError<Timestamp>.log` , komut dosyasının başlat
 
 Kaynak sağlayıcıya SQL Server VM 'Leri, belirtilen betiği kullanarak kaydettiğinizde aşağıdakileri göz önünde bulundurun:
 
-- Kaynak sağlayıcısına kayıt, SQL Server VM çalışan bir Konuk Aracısı gerektirir. Windows Server 2008 görüntülerinin Konuk Aracısı yoktur, bu nedenle bu sanal makineler başarısız olur ve [Noagent yönetim modu](sql-vm-resource-provider-register.md#management-modes)kullanılarak el ile kaydedilmelidir.
+- Kaynak sağlayıcısına kayıt, SQL Server VM çalışan bir Konuk Aracısı gerektirir. Windows Server 2008 görüntülerinin Konuk Aracısı yoktur, bu nedenle bu sanal makineler başarısız olur ve [Noagent yönetim modu](sql-server-iaas-agent-extension-automate-management.md#management-modes)kullanılarak el ile kaydedilmelidir.
 - Saydam hataları aşmak için yeniden deneme mantığı yerleşik olarak bulunur. Sanal makine başarıyla kaydedilmişse, hızlı bir işlemdir. Ancak kayıt başarısız olursa, her sanal makine yeniden denenir.  Bu nedenle, kayıt işlemini tamamlamaya yönelik önemli bir zamana izin vermeniz gerekir; ancak gerçek zamanlı gereksinim, hataların türüne ve sayısına bağlıdır. 
 
 ## <a name="full-script"></a>Tam betik
@@ -240,7 +240,7 @@ Tam betiği kopyalayın ve olarak kaydedin `RegisterSqLVMs.psm1` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için aşağıdaki makaleleri inceleyin: 
+Daha fazla bilgi için aşağıdaki makalelere bakın: 
 
 * [Windows VM 'de SQL Server genel bakış](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows VM 'de SQL Server hakkında SSS](frequently-asked-questions-faq.md)

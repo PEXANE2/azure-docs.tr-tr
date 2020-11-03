@@ -4,15 +4,15 @@ description: Dizin oluşturma ilkelerini yönetmeyi, dizin oluşturma işleminde
 author: timsander1
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 08/04/2020
+ms.date: 11/02/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 96ae4162c78f66b75d8c1ef2a8cec16995a5f016
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 335eac64bd5dff5b466fd97f5b2e093f2f56ee79
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075713"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289928"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB'de dizin oluşturma ilkelerini yönetme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,7 +47,7 @@ Burada, Azure portal üzerinde sunulduklarında, [JSON biçiminde](index-policy.
     }
 ```
 
-Bu dizin oluşturma ilkesi,, ve değerlerini el ile ayarlayan, ```kind``` ```dataType``` ve ```precision``` varsayılan değerlerine eşdeğerdir. Bu özelliklerin artık açıkça ayarlanması gerekmez ve bunları Dizin ilkenizde tamamen atlayabilirsiniz (Yukarıdaki örnekte gösterildiği gibi).
+Bu dizin oluşturma ilkesi,, ve değerlerini el ile ayarlayan, ```kind``` ```dataType``` ve ```precision``` varsayılan değerlerine eşdeğerdir. Bu özelliklerin artık açıkça ayarlanması gerekmez ve bunları Dizin ilkenizde tamamen atlayın (Yukarıdaki örnekte gösterildiği gibi).
 
 ```json
     {
@@ -101,7 +101,7 @@ Bu dizin oluşturma ilkesi,, ve değerlerini el ile ayarlayan, ```kind``` ```dat
     }
 ```
 
-Bu dizin oluşturma ilkesi,, ve değerlerini el ile ayarlayan, ```kind``` ```dataType``` ve ```precision``` varsayılan değerlerine eşdeğerdir. Bu özelliklerin artık açıkça ayarlanması gerekmez ve bunları Dizin ilkenizde tamamen atlayabilirsiniz (Yukarıdaki örnekte gösterildiği gibi).
+Bu dizin oluşturma ilkesi,, ve değerlerini el ile ayarlayan, ```kind``` ```dataType``` ve ```precision``` varsayılan değerlerine eşdeğerdir. Bu özelliklerin artık açıkça ayarlanması gerekmez ve bunları Dizin ilkenizde tamamen atlayın (Yukarıdaki örnekte gösterildiği gibi).
 
 ```json
     {
@@ -143,7 +143,7 @@ Bu dizin oluşturma ilkesi,, ve değerlerini el ile ayarlayan, ```kind``` ```dat
 ```
 
 > [!NOTE]
-> Azure Cosmos DB, modelinize eklenebilen yeni bir özelliğin önceden oluşturulmasını sağlamak için bir **kabul etme** dizin oluşturma ilkesinin kullanılması genellikle önerilir.
+> Azure Cosmos DB, veri modelinize eklenebilen yeni bir özelliğin etkin bir şekilde dizinlemesini sağlamak için, bir **kabul etme** dizin oluşturma ilkesinin kullanılması genellikle önerilir.
 
 ### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>Yalnızca belirli bir özellik yolunda uzamsal dizin kullanma
 
@@ -177,7 +177,7 @@ Bu dizin oluşturma ilkesi,, ve değerlerini el ile ayarlayan, ```kind``` ```dat
 
 ## <a name="composite-indexing-policy-examples"></a>Bileşik dizin oluşturma ilkesi örnekleri
 
-Tek tek özellikler için yolların dahil edilmesi veya dışlanması buna ek olarak, bileşik bir dizin de belirtebilirsiniz. `ORDER BY`Birden çok özellik için yan tümcesi içeren bir sorgu gerçekleştirmek istiyorsanız, bu özelliklerde bir [bileşik dizin](index-policy.md#composite-indexes) gereklidir. Ayrıca, bileşik dizinlerin filtre içeren sorgularda bir performans avantajı ve farklı özelliklerde ORDER BY yan tümcesi vardır.
+Tek tek özellikler için yolların dahil edilmesi veya dışlanması buna ek olarak, bileşik bir dizin de belirtebilirsiniz. `ORDER BY`Birden çok özellik için yan tümcesi içeren bir sorgu gerçekleştirmek istiyorsanız, bu özelliklerde bir [bileşik dizin](index-policy.md#composite-indexes) gereklidir. Ayrıca, bileşik dizinlerin birden çok filtresi veya bir filtre ve ORDER BY yan tümcesi içeren sorgular için bir performans avantajı olacaktır.
 
 > [!NOTE]
 > `/?`Yalnızca bu yoldaki skaler değerin dizini oluşturulduğundan bileşik yolların bir örtük değeri vardır. `/*`Joker yollarda joker karakter desteklenmez. `/?` `/*` Bileşik bir yol belirtmemeniz gerekir.
@@ -314,7 +314,7 @@ Sıralamayı belirtmek için isteğe bağlıdır. Belirtilmemişse, düzen artan
 
 ### <a name="excluding-all-property-paths-but-keeping-indexing-active"></a>Tüm özellik yollarını dışlama ancak dizin oluşturmayı etkin tutma
 
-Bu ilke, [yaşam süresi (TTL) özelliğinin](time-to-live.md) etkin olduğu, ancak ikincil dizin gerekmediği durumlarda (Azure Cosmos DB saf anahtar-değer deposu olarak kullanmak için) kullanılabilir.
+Bu ilke, [yaşam süresi (TTL) özelliğinin](time-to-live.md) etkin olduğu, ancak ek dizinlerin gerekli olmadığı durumlarda (Azure Cosmos DB saf anahtar-değer deposu olarak kullanmak için) kullanılabilir.
 
 ```json
     {
@@ -350,11 +350,11 @@ Dizin [oluşturma ilkesi güncelleştirmesi](index-policy.md#modifying-the-index
 > [!NOTE]
 > Dizin oluşturma ilkesi güncelleştirilirken Azure Cosmos DB yazma işlemleri kesintiye uğramadan olur. [Dizin oluşturma dönüştürmeleri](index-policy.md#modifying-the-indexing-policy) hakkında daha fazla bilgi edinin
 
-## <a name="use-the-azure-portal"></a>Azure portalını kullanma
+## <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
 Azure Cosmos kapsayıcıları dizin oluşturma ilkelerini, Azure portal doğrudan düzenlemenize izin veren bir JSON belgesi olarak depolar.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. Yeni bir Azure Cosmos hesabı oluşturun veya var olan bir hesabı seçin.
 
@@ -368,7 +368,7 @@ Azure Cosmos kapsayıcıları dizin oluşturma ilkelerini, Azure portal doğruda
 
 :::image type="content" source="./media/how-to-manage-indexing-policy/indexing-policy-portal.png" alt-text="Azure portal kullanarak dizin oluşturmayı yönetme":::
 
-## <a name="use-the-azure-cli"></a>Azure CLI'yi kullanma
+## <a name="use-the-azure-cli"></a>Azure CLI kullanma
 
 Özel bir dizin oluşturma ilkesiyle kapsayıcı oluşturmak için bkz. [CLI kullanarak özel dizin ilkesiyle kapsayıcı oluşturma](manage-with-cli.md#create-a-container-with-a-custom-index-policy)
 

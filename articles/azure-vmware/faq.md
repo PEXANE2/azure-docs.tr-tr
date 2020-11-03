@@ -4,12 +4,12 @@ description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtla
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 64b2955b1417d6931172b41f83f05d5f1b560708
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 68eee2d55e3c22b502d17a91f4ba4509c292c31c
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911894"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288682"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
@@ -79,6 +79,9 @@ Bant genişliği ve gecikme süresi gereksinimleri nedeniyle Hayır.
 #### <a name="can-azure-bastion-be-used-for-connecting-to-azure-vmware-solution-vms"></a>Azure, Azure VMware Çözüm VM 'lerine bağlanmak için kullanılabilir mi?
 Azure 'da, Azure VMware çözümünün Internet 'e sunulmasını engellemek için bağlantı kutusu 'na bağlanmanız önerilir. Azure IaaS nesneleri olmadığından Azure VMware Çözüm VM 'lerine bağlanmak için Azure savunma 'yi kullanamazsınız.
 
+#### <a name="can-azure-load-balancer-internal-be-used-for-azure-vmware-solution-vms"></a>Azure VMware Çözüm VM 'Leri için Azure Load Balancer dahili olarak kullanılabilir mi?
+Hayır. Azure Load Balancer iç yalnızca Azure IaaS VM 'lerini destekler. Azure Load Balancer, IP tabanlı arka uç havuzlarını desteklemez; yalnızca Azure VMware Çözüm VM 'lerinin Azure nesneleri olmayan Azure VM 'Leri veya sanal makine ölçek kümesi (VMSS) nesneleri.
+
 #### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>Azure VMware çözümüne bağlanmak için mevcut bir ExpressRoute ağ geçidi kullanılabilir mi?
 Evet, sanal ağ başına dört ExpressRoute bağlantı hattı sınırını aşmadığı sürece Azure VMware çözümüne bağlanmak için mevcut bir ExpressRoute ağ geçidini kullanabilirsiniz.  Bununla birlikte, ExpressRoute aracılığıyla şirket içi Azure VMware çözümüne erişmek için ExpressRoute Global Reach sahip olmanız gerekir. Bu, ExpressRoute ağ geçidi, bağlı olan devreler arasında geçişli yönlendirme sağlamamalıdır.
 
@@ -118,7 +121,7 @@ Bu yedekleme çözümleri müşteriler tarafından yüklenip yönetildiğinden, 
 
 #### <a name="what-is-the-correct-storage-policy-for-the-dedupe-setup"></a>Yinelenenleri kaldırma kurulumu için doğru depolama ilkesi nedir?
 
-VM şablonunuz için *thin_provision* depolama ilkesini kullanın.  Varsayılan değer *thick_provision* .
+VM şablonunuz için *thin_provision* depolama ilkesini kullanın.  Varsayılan değer *thick_provision*.
 
 #### <a name="are-the-snmp-infrastructure-logs-shared"></a>SNMP altyapı günlükleri paylaşılıyor mu?
 

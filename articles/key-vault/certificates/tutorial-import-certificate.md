@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: b58f402766e369894fcf014836ab9f24c231c489
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 8689b6851ae219ee6f41ebf58736692e557b2344
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927507"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289722"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Öğretici: Azure Key Vault sertifikayı Içeri aktarma
 
@@ -55,7 +55,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 Aşağıda listelenen iki özelliği not edin:
 
-* **Kasa adı** : örnekte bu **örnek kasadır** . Bu adı diğer adımlar için kullanacaksınız.
+* **Kasa adı** : örnekte bu **örnek kasadır**. Bu adı diğer adımlar için kullanacaksınız.
 * **Kasa URI’si** : Örnekte bu: https://example-vault.vault.azure.net/. REST API'si aracılığıyla kasanızı kullanan uygulamaların bu URI'yi kullanması gerekir.
 
 Bu noktada Azure hesabınız, bu yeni anahtar kasasında işlemler gerçekleştirmeye yetkili olan tek hesaptır.
@@ -104,9 +104,9 @@ az keyvault certificate import --file
                                [--tags]
 ```
 
-[Parametreler](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import)hakkında daha fazla bilgi edinin.
+[Parametreler](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import)hakkında daha fazla bilgi edinin.
 
-Sertifikayı içeri aktardıktan sonra sertifika [göster](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show) 'i kullanarak sertifikayı görüntüleyebilirsiniz
+Sertifikayı içeri aktardıktan sonra sertifika [göster](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show) 'i kullanarak sertifikayı görüntüleyebilirsiniz
 
 
 ```azurecli
@@ -135,7 +135,7 @@ Import-AzureKeyVaultCertificate
       [<CommonParameters>]
 ```
 
-[Parametreler](https://docs.microsoft.com/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0)hakkında daha fazla bilgi edinin.
+[Parametreler](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0)hakkında daha fazla bilgi edinin.
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
@@ -152,6 +152,6 @@ Artık gerek kalmadığında kaynak grubunu silin; bunu yaptığınızda Key Vau
 
 Bu öğreticide bir Key Vault oluşturdunuz ve bir sertifikayı içeri aktardınız. Key Vault ve uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere ilerleyin.
 
-- [Azure Key Vault 'da sertifika oluşturmayı yönetme](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios) hakkında daha fazla bilgi edinin
+- [Azure Key Vault 'da sertifika oluşturmayı yönetme](./create-certificate-scenarios.md) hakkında daha fazla bilgi edinin
 - [REST API 'Leri kullanarak sertifika alma](/rest/api/keyvault/importcertificate/importcertificate) örneklerine bakın
 - [En iyi uygulamaları](../general/best-practices.md) gözden geçirin Azure Key Vault

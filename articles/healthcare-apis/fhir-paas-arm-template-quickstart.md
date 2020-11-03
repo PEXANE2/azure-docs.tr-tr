@@ -1,19 +1,19 @@
 ---
 title: 'Hızlı başlangıç: ARM şablonunu kullanarak FHıR için Azure API dağıtma'
 description: Bu hızlı başlangıçta, bir Azure Resource Manager şablonu (ARM şablonu) kullanarak hızlı sağlık birlikte çalışabilirlik kaynakları (FHıR®) için Azure API 'yi dağıtmayı öğrenin.
-author: mgblythe
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: mblythe
+ms.author: cavoeg
 ms.date: 10/06/2020
-ms.openlocfilehash: 0d045aac63daf99bf67ec79438f55eedd5f200d9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: c04bb82810bf55d6ac55b2697f5010896e0eb9b4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521450"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289279"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-api-for-fhir"></a>Hızlı başlangıç: FHıR için Azure API 'yi dağıtmak üzere ARM şablonu kullanma
 
@@ -69,23 +69,23 @@ Replace the line above with the following line once https://docs.microsoft.com/a
 
 Azure portal 'de ARM şablonunu kullanarak FHıR için Azure API 'sini dağıtmak üzere aşağıdaki bağlantıyı seçin:
 
-[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure portal bir ARM şablonu kullanarak FHıR hizmeti için Azure API 'sine dağıtım yapın.":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-azure-api-for-fhir%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure portal ARM şablonunu kullanarak FHıR hizmeti için Azure API 'sine dağıtım yapın.":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-azure-api-for-fhir%2fazuredeploy.json)
 
 **FHıR Için Azure API dağıtma** sayfasında:
 
 1. İsterseniz, **aboneliği** varsayılan değerinden farklı bir aboneliğe değiştirin.
 
-2. **Kaynak grubu**Için **Yeni oluştur**' u seçin, yeni kaynak grubu için bir ad girin ve **Tamam**' ı seçin.
+2. **Kaynak grubu** Için **Yeni oluştur** ' u seçin, yeni kaynak grubu için bir ad girin ve **Tamam** ' ı seçin.
 
 3. Yeni bir kaynak grubu oluşturduysanız, kaynak grubu için bir **bölge** seçin.
 
 4. Yeni bir **hizmet adı** girin ve fhır IÇIN Azure API 'sinin **konumunu** seçin. Konum, kaynak grubunun bölgesiyle aynı veya farklı olabilir.
 
-    :::image type="content" source="./media/fhir-paas-arm-template-quickstart/deploy-azure-api-fhir.png" alt-text="Azure portal bir ARM şablonu kullanarak FHıR hizmeti için Azure API 'sine dağıtım yapın.":::
+    :::image type="content" source="./media/fhir-paas-arm-template-quickstart/deploy-azure-api-fhir.png" alt-text="Azure portal ARM şablonunu kullanarak FHıR için Azure API 'sini dağıtın.":::
 
-5. **Gözden geçir + oluştur**’u seçin.
+5. **Gözden geçir + oluştur** ’u seçin.
 
-6. Hüküm ve koşulları okuyun ve ardından **Oluştur**' u seçin.
+6. Hüküm ve koşulları okuyun ve ardından **Oluştur** ' u seçin.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
@@ -150,7 +150,7 @@ read -p "Press [ENTER] to continue: "
 
 FHıR hizmetine yönelik yeni Azure API 'nize genel bir bakış için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com), **Fhır IÇIN Azure API 'yi**arayın ve seçin.
+1. [Azure Portal](https://portal.azure.com), **Fhır IÇIN Azure API 'yi** arayın ve seçin.
 
 2. FHıR listesinde yeni hizmetinizi seçin. FHıR hizmeti için yeni Azure API 'SI için **genel bakış** sayfası görüntülenir.
 
@@ -196,13 +196,13 @@ Artık gerekli olmadığında kaynak grubundaki kaynakları silen kaynak grubunu
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. [Azure Portal](https://portal.azure.com), **kaynak gruplarını**arayıp seçin.
+1. [Azure Portal](https://portal.azure.com), **kaynak gruplarını** arayıp seçin.
 
 2. Kaynak grubu listesinde, kaynak grubunuzun adını seçin.
 
-3. Kaynak grubunuzun **genel bakış** sayfasında **kaynak grubunu sil**' i seçin.
+3. Kaynak grubunuzun **genel bakış** sayfasında **kaynak grubunu sil** ' i seçin.
 
-4. Onay iletişim kutusunda, kaynak grubunuzun adını yazın ve ardından **Sil**' i seçin.
+4. Onay iletişim kutusunda, kaynak grubunuzun adını yazın ve ardından **Sil** ' i seçin.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 

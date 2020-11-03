@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/13/2019
-ms.openlocfilehash: 92cce0751a400e17f9975d7ae3d10e6612017823
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8bac53cd08629e8b0a9cb91e596856c0ae6b5a2f
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533640"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289124"
 ---
 # <a name="unable-to-access-data-lake-storage-files-in-azure-hdinsight"></a>Azure HDInsight 'ta Data Lake depolama dosyalarına erişilemiyor
 
@@ -32,7 +32,7 @@ Kullanıcı, dosyalar/klasörler üzerinde hizmet sorumlusu (SP) izinlerini ipta
 
 ### <a name="resolution"></a>Çözüm
 
-1. SP 'nin yol üzerinde çapraz geçiş yapmak için ' x ' iznine sahip olduğundan emin olun. Daha fazla bilgi için bkz. [izinler](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html). Data Lake depolama hesabındaki dosyalara/klasörlere erişimi denetlemek için örnek DFS komutu:
+1. SP 'nin yol üzerinde çapraz geçiş yapmak için ' x ' iznine sahip olduğundan emin olun. Daha fazla bilgi için bkz. [izinler](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html). `dfs`Data Lake depolama hesabındaki dosyalara/klasörlere erişimi denetlemek için örnek komut:
 
     ```
     hdfs dfs -ls /<path to check access>
@@ -54,13 +54,13 @@ Token Refresh failed - Received invalid http response: 500
 
 Hizmet sorumlusu erişimi için belirtilen sertifikanın geçerliliği bitmiş olabilir.
 
-1. Yayın düğümüne SSH. Aşağıdaki DFS komutunu kullanarak depolama hesabına erişimi denetleyin:
+1. Yayın düğümüne SSH. Aşağıdaki komutu kullanarak depolama hesabına erişimi denetleyin `dfs` :
 
     ```
     hdfs dfs -ls /
     ```
 
-1. Hata iletisinin aşağıdakine benzer olduğunu onaylayın:
+1. Hata iletisinin aşağıdaki çıktıya benzer olduğunu onaylayın:
 
     ```
     {"stderr": "-ls: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://gw0-abccluster.24ajrd4341lebfgq5unsrzq0ue.fx.internal.cloudapp.net:909/api/oauthtoken}}...
@@ -161,16 +161,10 @@ Invoke-AzureRmResourceAction `
 
 ```
 
-Mevcut sertifikayı atamak için bir sertifika oluşturun,. pfx dosyası ve parola hazırlayın. Sertifikayı kümenin oluşturulduğu hizmet sorumlusu ile ilişkilendirin ve AppID 'ye hazırlanın.
+Mevcut sertifikayı atamak için bir sertifika oluşturun,. pfx dosyası ve parola hazırlayın. AppID 'yi kullanarak, sertifikayı kümenin oluşturulduğu hizmet sorumlusu ile ilişkilendirin.
 
 Parametreleri gerçek değerlerle değiştirdikten sonra PowerShell komutunu yürütün.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
-
-* Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
-
-* [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
-
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](../../azure-portal/supportability/how-to-create-azure-support-request.md)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

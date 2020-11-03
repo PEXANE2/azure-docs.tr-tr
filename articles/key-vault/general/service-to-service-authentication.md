@@ -8,25 +8,25 @@ ms.author: mbaldwin
 ms.date: 09/04/2020
 ms.topic: how-to
 ms.service: key-vault
-ms.openlocfilehash: 1a6ec20d860a409bbe7d3114c54e1e46a75968a0
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ac3ee108fc63441b2a9381b9e7624631bdca4e5b
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970121"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289823"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET kullanarak Azure Key Vault için hizmetten hizmete kimlik doğrulaması
 
 > [!NOTE]
-> **Microsoft. Azure. Services. AppAuthentication** artık yenı Key Vault SDK ile kullanılması önerilmez. .NET, Java, TypeScript ve Python için sunulan yeni **Azure Identity istemci kitaplığı** ile değiştirilmiştir ve tüm yeni geliştirmeler için kullanılmalıdır. Daha fazla bilgiye buradan ulaşabilirsiniz: [kodda Key Vault kimlik doğrulaması](https://docs.microsoft.com/azure/key-vault/general/developers-guide#azure-identity-client-libraries).
+> **Microsoft. Azure. Services. AppAuthentication** artık yenı Key Vault SDK ile kullanılması önerilmez. .NET, Java, TypeScript ve Python için sunulan yeni **Azure Identity istemci kitaplığı** ile değiştirilmiştir ve tüm yeni geliştirmeler için kullanılmalıdır. Daha fazla bilgiye buradan ulaşabilirsiniz: [kodda Key Vault kimlik doğrulaması](./developers-guide.md#azure-identity-client-libraries).
 
 Azure Key Vault kimlik doğrulaması yapmak için, paylaşılan bir gizli dizi ya da sertifika olan bir Azure Active Directory (Azure AD) kimlik bilgisine sahip olmanız gerekir.
 
 Bu kimlik bilgilerini yönetmek zor olabilir. Kimlik bilgilerini kaynak veya yapılandırma dosyalarına dahil ederek bir uygulamaya paketlemekte olması mümkündür. `Microsoft.Azure.Services.AppAuthentication`.NET kitaplığı için bu sorunu basitleştirir. Yerel geliştirme sırasında kimlik doğrulaması yapmak için geliştiricinin kimlik bilgilerini kullanır. Çözüm daha sonra Azure 'a dağıtıldığında, kitaplık otomatik olarak uygulama kimlik bilgilerine geçer. Geliştirici kimlik bilgilerini yerel geliştirme sırasında kullanmak daha güvenlidir, çünkü Azure AD kimlik bilgileri oluşturmanız veya geliştiriciler arasında kimlik bilgileri paylaşmanız gerekmez.
 
-`Microsoft.Azure.Services.AppAuthentication`Kitaplık kimlik doğrulamasını otomatik olarak yönetir, bu da kimlik bilgileriniz yerine çözümünüze odaklanmanıza olanak tanır. Microsoft Visual Studio, Azure CLı veya Azure AD Tümleşik kimlik doğrulamasıyla yerel geliştirmeyi destekler. Yönetilen bir kimliği destekleyen bir Azure kaynağına dağıtıldığında, kitaplık otomatik olarak [Azure kaynakları için Yönetilen kimlikler](../../active-directory/msi-overview.md)kullanır. Kod veya yapılandırma değişikliği gerekli değildir. Kitaplık Ayrıca, yönetilen bir kimlik olmadığında veya geliştiricinin güvenlik bağlamı yerel geliştirme sırasında belirlenemediğinde Azure AD [istemci kimlik bilgilerinin](../../azure-resource-manager/resource-group-authenticate-service-principal.md) doğrudan kullanımını destekler.
+`Microsoft.Azure.Services.AppAuthentication`Kitaplık kimlik doğrulamasını otomatik olarak yönetir, bu da kimlik bilgileriniz yerine çözümünüze odaklanmanıza olanak tanır. Microsoft Visual Studio, Azure CLı veya Azure AD Tümleşik kimlik doğrulamasıyla yerel geliştirmeyi destekler. Yönetilen bir kimliği destekleyen bir Azure kaynağına dağıtıldığında, kitaplık otomatik olarak [Azure kaynakları için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md)kullanır. Kod veya yapılandırma değişikliği gerekli değildir. Kitaplık Ayrıca, yönetilen bir kimlik olmadığında veya geliştiricinin güvenlik bağlamı yerel geliştirme sırasında belirlenemediğinde Azure AD [istemci kimlik bilgilerinin](../../active-directory/develop/howto-authenticate-service-principal-powershell.md) doğrudan kullanımını destekler.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Visual studio 2019](https://www.visualstudio.com/downloads/) veya [Visual Studio 2017 v 15.5](https://blogs.msdn.microsoft.com/visualstudio/2017/10/11/visual-studio-2017-version-15-5-preview/).
 
@@ -36,7 +36,7 @@ Bu kimlik bilgilerini yönetmek zor olabilir. Kimlik bilgilerini kaynak veya yap
 
 .NET uygulamaları için, yönetilen kimlik ile çalışmanın en kolay yolu paket üzerinden yapılır `Microsoft.Azure.Services.AppAuthentication` . Şu şekilde başlayabilirsiniz:
 
-1. **Tools**  >  **NuGet Package Manager**  >  Projenize [Microsoft. Azure. Services. appauthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) ve [Microsoft. Azure. keykasanuget](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) paketlerine başvurular eklemek için Araçlar NuGet Paket Yöneticisi**çözüm için NuGet Paketlerini Yönet** ' i seçin.
+1. **Tools**  >  **NuGet Package Manager**  >  Projenize [Microsoft. Azure. Services. appauthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) ve [Microsoft. Azure. keykasanuget](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) paketlerine başvurular eklemek için Araçlar NuGet Paket Yöneticisi **çözüm için NuGet Paketlerini Yönet** ' i seçin.
 
 1. Şu kodu ekleyin:
 
@@ -55,7 +55,7 @@ Bu kimlik bilgilerini yönetmek zor olabilir. Kimlik bilgilerini kaynak veya yap
 
 İş parçacığı güvenli `AzureServiceTokenProvider` sınıfı, belirteci bellekte önbelleğe alır ve süresi dolmadan hemen önce Azure AD 'den alır. Bu, yöntemi çağırmadan önce belirtecin kullanım süresini denetlemeniz gerekmediği anlamına gelir `GetAccessTokenAsync` . 
 
-`GetAccessTokenAsync`Yöntemi bir kaynak tanımlayıcısı gerektirir. Microsoft Azure hizmetleri hakkında daha fazla bilgi edinmek için bkz. [Azure kaynakları için Yönetilen kimlikler](../../active-directory/msi-overview.md).
+`GetAccessTokenAsync`Yöntemi bir kaynak tanımlayıcısı gerektirir. Microsoft Azure hizmetleri hakkında daha fazla bilgi edinmek için bkz. [Azure kaynakları için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="local-development-authentication"></a>Yerel geliştirme kimlik doğrulaması
 
@@ -65,19 +65,19 @@ Yerel geliştirme için iki birincil kimlik doğrulama senaryosu vardır: [Azure
 
 Yerel makineler, Azure kaynakları için yönetilen kimlikleri desteklemez. Sonuç olarak, kitaplık, `Microsoft.Azure.Services.AppAuthentication` Geliştirici kimlik bilgilerinizi yerel geliştirme ortamınızda çalıştırmak için kullanır. Çözüm Azure 'a dağıtıldığında, kitaplık bir OAuth 2,0 istemci kimlik bilgisi verme akışına geçiş yapmak için yönetilen bir kimlik kullanır. Bu yaklaşım, endişelenmeden aynı kodu yerel olarak ve uzaktan sınaymanız anlamına gelir.
 
-Yerel geliştirme için, `AzureServiceTokenProvider` **Visual Studio**, **Azure komut satırı arabirimi** (CLI) veya **Azure AD Tümleşik kimlik doğrulaması**kullanarak belirteçleri getirir. Her seçenek sırayla denenir ve kitaplık başarılı olan ilk seçeneği kullanır. Hiçbir seçenek çalışmadıysanız, `AzureServiceTokenProviderException` ayrıntılı bilgilerle bir özel durum oluşturulur.
+Yerel geliştirme için, `AzureServiceTokenProvider` **Visual Studio** , **Azure komut satırı arabirimi** (CLI) veya **Azure AD Tümleşik kimlik doğrulaması** kullanarak belirteçleri getirir. Her seçenek sırayla denenir ve kitaplık başarılı olan ilk seçeneği kullanır. Hiçbir seçenek çalışmadıysanız, `AzureServiceTokenProviderException` ayrıntılı bilgilerle bir özel durum oluşturulur.
 
 #### <a name="authenticating-with-visual-studio"></a>Visual Studio ile kimlik doğrulama
 
 Visual Studio kullanarak kimlik doğrulaması yapmak için:
 
-1. Visual Studio 'da oturum açın ve **Tools** &nbsp; > &nbsp; **seçenekleri**açmak için Araçlar**seçeneklerini** kullanın.
+1. Visual Studio 'da oturum açın ve **Tools** &nbsp; > &nbsp; **seçenekleri** açmak için Araçlar **seçeneklerini** kullanın.
 
-1. **Azure hizmeti kimlik doğrulaması**' nı seçin, yerel geliştirme için bir hesap seçin ve **Tamam**' ı seçin.
+1. **Azure hizmeti kimlik doğrulaması** ' nı seçin, yerel geliştirme için bir hesap seçin ve **Tamam** ' ı seçin.
 
 Belirteç sağlayıcı dosyasını içeren hatalar gibi Visual Studio 'Yu kullanarak sorunlarla karşılaşırsanız, önceki adımları dikkatle gözden geçirin.
 
-Geliştirici belirtecinizi yeniden kimlik doğrulaması yapmanız gerekebilir. Bunu yapmak için **Araçlar** &nbsp; > &nbsp; **Seçenekler**' i seçin ve ardından **Azure &nbsp; hizmeti &nbsp; kimlik doğrulaması**' nı seçin. Seçili hesap altında bir **yeniden kimlik doğrulaması** bağlantısı arayın. Kimlik doğrulamak için seçin.
+Geliştirici belirtecinizi yeniden kimlik doğrulaması yapmanız gerekebilir. Bunu yapmak için **Araçlar** &nbsp; > &nbsp; **Seçenekler** ' i seçin ve ardından **Azure &nbsp; hizmeti &nbsp; kimlik doğrulaması** ' nı seçin. Seçili hesap altında bir **yeniden kimlik doğrulaması** bağlantısı arayın. Kimlik doğrulamak için seçin.
 
 #### <a name="authenticating-with-azure-cli"></a>Azure CLı ile kimlik doğrulama
 
@@ -85,11 +85,11 @@ Azure CLı 'yı yerel geliştirme için kullanmak için [Azure CLI v 2.0.12](/cl
 
 Azure CLı 'yi kullanmak için:
 
-1. Windows görev çubuğunda Azure CLı araması yapın **Microsoft Azure komut istemi**' ni açın.
+1. Windows görev çubuğunda Azure CLı araması yapın **Microsoft Azure komut istemi** ' ni açın.
 
 1. Azure portal oturum açın: Azure 'da oturum açmak için *az oturum* açın.
 
-1. *Az Account Get-Access-Token--Resource https: \/ /Vault.Azure.net*girerek erişimi doğrulayın. Bir hata alırsanız, doğru Azure CLı sürümünün düzgün yüklendiğini kontrol edin.
+1. *Az Account Get-Access-Token--Resource https: \/ /Vault.Azure.net* girerek erişimi doğrulayın. Bir hata alırsanız, doğru Azure CLı sürümünün düzgün yüklendiğini kontrol edin.
 
    Azure CLı varsayılan dizine yüklenmemişse, `AzureServiceTokenProvider` Azure CLI yolunu bulamamayan bir hata bildirimi alabilirsiniz. Azure CLı yükleme klasörünü tanımlamak için **Azureclipath** ortam değişkenini kullanın. `AzureServiceTokenProvider` gerekli olduğunda, **Azureclipath** ortam değişkeninde belirtilen dizini **Path** ortam değişkenine ekler.
 
@@ -101,7 +101,7 @@ Bu komut yalnızca hata durumunda çıktı üretir. Geçerli hesap ayarlarını 
 
 Azure AD kimlik doğrulamasını kullanmak için şunları doğrulayın:
 
-- Şirket içi Active Directory Azure AD 'ye eşitlenir. Daha fazla bilgi için bkz. [Azure Active Directory karma kimliği nedir?](../../active-directory/connect/active-directory-aadconnect.md).
+- Şirket içi Active Directory Azure AD 'ye eşitlenir. Daha fazla bilgi için bkz. [Azure Active Directory karma kimliği nedir?](../../active-directory/hybrid/whatis-hybrid-identity.md).
 
 - Kodunuz, etki alanına katılmış bir bilgisayarda çalışıyor.
 
@@ -131,7 +131,7 @@ Bu yaklaşım yalnızca yerel geliştirme için geçerlidir. Çözümünüz Azur
 
 ## <a name="running-the-application-using-managed-identity-or-user-assigned-identity"></a>Yönetilen kimlik veya Kullanıcı tarafından atanan kimlik kullanılarak uygulamayı çalıştırma
 
-Kodunuzu bir Azure App Service veya yönetilen bir kimlik etkin bir Azure VM 'de çalıştırdığınızda, kitaplık yönetilen kimliği otomatik olarak kullanır. Kod değişikliği gerekmez, ancak yönetilen kimliğin Anahtar Kasası için *Al* izinleri olmalıdır. Anahtar kasasının *erişim ilkeleri*aracılığıyla yönetilen kimliğe *Al* izinleri verebilirsiniz.
+Kodunuzu bir Azure App Service veya yönetilen bir kimlik etkin bir Azure VM 'de çalıştırdığınızda, kitaplık yönetilen kimliği otomatik olarak kullanır. Kod değişikliği gerekmez, ancak yönetilen kimliğin Anahtar Kasası için *Al* izinleri olmalıdır. Anahtar kasasının *erişim ilkeleri* aracılığıyla yönetilen kimliğe *Al* izinleri verebilirsiniz.
 
 Alternatif olarak, Kullanıcı tarafından atanan bir kimlikle kimlik doğrulaması yapabilirsiniz. Kullanıcı tarafından atanan kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları Için Yönetilen kimlikler hakkında](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types). Kullanıcı tarafından atanan bir kimlikle kimlik doğrulamak için, bağlantı dizesinde kullanıcı tarafından atanan kimliğin Istemci KIMLIĞINI belirtmeniz gerekir. Bağlantı dizesi [bağlantı dizesi desteğiyle](#connection-string-support)belirtilir.
 
@@ -167,7 +167,7 @@ Uygulamanızı çalıştırmak için hizmet sorumlusu kullanmanın üç birincil
           CertificateStoreLocation={CertificateStore}
     ```
 
-    *{AppID}*, *{tenantıd}* ve *{parmak izi}* değerlerini adım 1 ' de oluşturulan değerlerle değiştirin. Dağıtım planınıza bağlı olarak, *{certificatestore}* öğesini *LocalMachine*' veya *CurrentUser*ile değiştirin.
+    *{AppID}* , *{tenantıd}* ve *{parmak izi}* değerlerini adım 1 ' de oluşturulan değerlerle değiştirin. Dağıtım planınıza bağlı olarak, *{certificatestore}* öğesini *LocalMachine* ' veya *CurrentUser* ile değiştirin.
 
 1. Uygulamayı çalıştırın.
 
@@ -185,7 +185,7 @@ Uygulamanızı çalıştırmak için hizmet sorumlusu kullanmanın üç birincil
     RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}
     ```
 
-    _{AppID}_, _{tenantıd}_ ve _{ClientSecret}_ değerlerini 1. adımda oluşturulan değerlerle değiştirin.
+    _{AppID}_ , _{tenantıd}_ ve _{ClientSecret}_ değerlerini 1. adımda oluşturulan değerlerle değiştirin.
 
 1. Uygulamayı çalıştırın.
 
@@ -217,7 +217,7 @@ Hizmet sorumlusu kimlik doğrulaması için bir istemci sertifikası kullanmak i
     RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}
     ```
 
-    Örneğin, anahtar kasanıza *Mykeykasası* çağrılırsa ve *mycert*adlı bir sertifika oluşturduysanız, sertifika tanımlayıcısı şöyle olacaktır:
+    Örneğin, anahtar kasanıza *Mykeykasası* çağrılırsa ve *mycert* adlı bir sertifika oluşturduysanız, sertifika tanımlayıcısı şöyle olacaktır:
 
     ```azurecli
     RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier=https://myKeyVault.vault.azure.net/secrets/myCert
@@ -229,7 +229,7 @@ Varsayılan olarak, `AzureServiceTokenProvider` bir belirteci almak için aşağ
 
 - [Azure kaynakları için yönetilen bir kimlik](../..//active-directory/managed-identities-azure-resources/overview.md)
 - Visual Studio kimlik doğrulaması
-- [Azure CLı kimlik doğrulaması](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
+- [Azure CLı kimlik doğrulaması](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
 - [Tümleşik Windows kimlik doğrulaması](/aspnet/web-api/overview/security/integrated-windows-authentication)
 
 İşlemi denetlemek için, `AzureServiceTokenProvider` oluşturucuya geçirilmiş veya *AzureServicesAuthConnectionString* ortam değişkeninde belirtilen bir bağlantı dizesi kullanın.  Aşağıdaki seçenekler desteklenir:
@@ -262,7 +262,7 @@ Varsayılan olarak, `AzureServiceTokenProvider` bir belirteci almak için aşağ
 
 #### <a name="azure-cli-is-not-installed-youre-not-logged-in-or-you-dont-have-the-latest-version"></a>Azure CLı yüklü değil, oturum açmamışsınız veya en son sürüme sahip değilsiniz
 
-Azure CLı 'nın sizin için bir belirteç gösterdiğini görmek için *az Account Get-Access-Token* ' i çalıştırın. **Böyle bir program bulunmazsa**, [Azure CLI 'nın en son sürümünü](/cli/azure/install-azure-cli?view=azure-cli-latest)yükler. Oturum açmanız istenebilir.
+Azure CLı 'nın sizin için bir belirteç gösterdiğini görmek için *az Account Get-Access-Token* ' i çalıştırın. **Böyle bir program bulunmazsa** , [Azure CLI 'nın en son sürümünü](/cli/azure/install-azure-cli?view=azure-cli-latest)yükler. Oturum açmanız istenebilir.
 
 #### <a name="azureservicetokenprovider-cant-find-the-path-for-azure-cli"></a>AzureServiceTokenProvider Azure CLı yolunu bulamıyor
 
@@ -270,13 +270,13 @@ AzureServiceTokenProvider, Azure CLı 'yi varsayılan yüklemesi konumlarında a
 
 #### <a name="youre-logged-into-azure-cli-using-multiple-accounts-the-same-account-has-access-to-subscriptions-in-multiple-tenants-or-you-get-an-access-denied-error-when-trying-to-make-calls-during-local-development"></a>Azure CLı 'de birden çok hesap kullanarak oturum açtınız, aynı hesabın birden çok Kiracıdaki aboneliğe erişimi vardır veya yerel geliştirme sırasında çağrı yapmaya çalışırken bir erişim reddedildi hatası alırsınız
 
-Azure CLı kullanarak, varsayılan aboneliği kullanmak istediğiniz hesabı olan bir hesaba ayarlayın. Aboneliğin erişmek istediğiniz kaynakla aynı kiracıda olması gerekir: **az hesap kümesi--abonelik [abonelik-kimliği]**. Hiçbir çıkış görülemeyen için başarılı oldu. Doğru hesabın artık **az Account List**kullanılarak varsayılan olduğunu doğrulayın.
+Azure CLı kullanarak, varsayılan aboneliği kullanmak istediğiniz hesabı olan bir hesaba ayarlayın. Aboneliğin erişmek istediğiniz kaynakla aynı kiracıda olması gerekir: **az hesap kümesi--abonelik [abonelik-kimliği]**. Hiçbir çıkış görülemeyen için başarılı oldu. Doğru hesabın artık **az Account List** kullanılarak varsayılan olduğunu doğrulayın.
 
 ### <a name="common-issues-across-environments"></a>Ortamlar arasında yaygın sorunlar
 
 #### <a name="unauthorized-access-access-denied-forbidden-or-similar-error"></a>Yetkisiz erişim, erişim engellendi, yasak veya benzer hata
 
-Kullanılan sorumlunun erişmeye çalıştığı kaynağa erişimi yok. Bir kaynağa kullanıcı hesabınızı veya App Service MSI "katkıda bulunan" erişimini verin. Bunlardan biri, örneği yerel bilgisayarınızda çalıştırıp çalıştırdığınıza veya Azure 'da App Service Azure 'da dağıttığınıza bağlı olarak değişir. Anahtar kasaları gibi bazı kaynaklarda, kullanıcılar, uygulamalar ve gruplar gibi sorumlular için erişim izni vermek üzere kendi [erişim ilkeleri](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#data-plane-and-access-policies) de vardır.
+Kullanılan sorumlunun erişmeye çalıştığı kaynağa erişimi yok. Bir kaynağa kullanıcı hesabınızı veya App Service MSI "katkıda bulunan" erişimini verin. Bunlardan biri, örneği yerel bilgisayarınızda çalıştırıp çalıştırdığınıza veya Azure 'da App Service Azure 'da dağıttığınıza bağlı olarak değişir. Anahtar kasaları gibi bazı kaynaklarda, kullanıcılar, uygulamalar ve gruplar gibi sorumlular için erişim izni vermek üzere kendi [erişim ilkeleri](./secure-your-key-vault.md#data-plane-and-access-policies) de vardır.
 
 ### <a name="common-issues-when-deployed-to-azure-app-service"></a>Azure App Service dağıtılan yaygın sorunlar
 
@@ -289,11 +289,11 @@ Ortam değişkenlerini denetleyin MSI_ENDPOINT ve MSI_SECRET [kudu hata ayıklam
 #### <a name="cant-retrieve-tokens-when-debugging-app-in-iis"></a>IIS 'de uygulamada hata ayıklarken belirteçler alınamıyor
 
 Varsayılan olarak, AppAuth IIS 'de farklı bir kullanıcı bağlamında çalışır. Bu nedenle, erişim belirteçlerini almak için geliştirici kimliğinizi kullanma erişimi yoktur. Aşağıdaki iki adımla IIS 'yi Kullanıcı bağlamla çalışacak şekilde yapılandırabilirsiniz:
-- Web uygulaması için uygulama havuzunu geçerli kullanıcı hesabınız olarak çalışacak şekilde yapılandırın. Daha fazla bilgi için [buraya](https://docs.microsoft.com/iis/manage/configuring-security/application-pool-identities#configuring-iis-application-pool-identities) bakın
-- "SetProfileEnvironment" öğesini "true" olarak yapılandırın. Daha fazla bilgi için [buraya](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)bakın. 
+- Web uygulaması için uygulama havuzunu geçerli kullanıcı hesabınız olarak çalışacak şekilde yapılandırın. Daha fazla bilgi için [buraya](/iis/manage/configuring-security/application-pool-identities#configuring-iis-application-pool-identities) bakın
+- "SetProfileEnvironment" öğesini "true" olarak yapılandırın. Daha fazla bilgi için [buraya](/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)bakın. 
 
     - % Windir% \System32\inetsrv\config\applicationHost.config git
     - "SetProfileEnvironment" araması yapın. "False" olarak ayarlanırsa, "true" olarak değiştirin. Mevcut değilse, processModel öğesine () bir özniteliği olarak ekleyin /configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment ve bunu "true" olarak ayarlayın.
 
 - [Azure kaynakları için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/index.yml)hakkında daha fazla bilgi edinin.
-- [Azure AD kimlik doğrulama senaryoları](../../active-directory/develop/active-directory-authentication-scenarios.md)hakkında daha fazla bilgi edinin.
+- [Azure AD kimlik doğrulama senaryoları](../../active-directory/develop/authentication-vs-authorization.md)hakkında daha fazla bilgi edinin.

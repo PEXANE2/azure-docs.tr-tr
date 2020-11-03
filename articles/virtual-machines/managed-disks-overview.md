@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperfq1
-ms.openlocfilehash: cb310861edc2ba1ee183bc6f996cb1593457e3c7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 839ba1f8a5215c9059cfeff6e2158165b154f1f7
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972042"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289356"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure yönetilen disklerine giriş
 
@@ -27,7 +27,7 @@ Yönetilen diskleri kullanarak kazanmanızın avantajlarından bazılarını inc
 
 ### <a name="highly-durable-and-available"></a>Yüksek oranda dayanıklı ve kullanılabilir
 
-Yönetilen diskler% 99,999 kullanılabilirlik için tasarlanmıştır. Yönetilen diskler, verilerinizin üç kopyasını sunarak, yüksek dayanıklılık elde etmenizi sağlar. Bir veya iki çoğaltma sorunu yaşalıyorsa, kalan çoğaltmalar verilerinizin kalıcılığını ve hatalara karşı yüksek tolerans sağlanmasına yardımcı olur. Bu mimari, sektördeki bir hizmet olarak altyapı (IaaS) diskleri için Azure 'un kurumsal düzeyde dayanıklılık kazandığını, sektör lideri %0 yıllık hata oranı ile sürekli olarak sunmamıza yardımcı oldu.
+Yönetilen diskler% 99,999 kullanılabilirlik için tasarlanmıştır. Yönetilen diskler bu kullanılabilirlik düzeyini mümkün kılmak için verilerinizin üç kopyasını sunar ve yüksek dayanıklılık sağlar. Bir veya iki çoğaltmada sorun olsa dahi diğer çoğaltmalar verilerinizin kalıcı ve hatalara karşı dayanıklı olmasına yardımcı olur. Bu mimari, sektördeki bir hizmet olarak altyapı (IaaS) diskleri için Azure 'un kurumsal düzeyde dayanıklılık kazandığını, sektör lideri %0 yıllık hata oranı ile sürekli olarak sunmamıza yardımcı oldu.
 
 ### <a name="simple-and-scalable-vm-deployment"></a>Basit ve ölçeklenebilir VM dağıtımı
 
@@ -59,7 +59,7 @@ VHD 'nizi Azure 'a aktarmayı öğrenmek için bkz. [CLI](linux/disks-upload-vhd
 
 ### <a name="private-links"></a>Özel bağlantılar
 
-Yönetilen diskler için özel bağlantı desteği şu anda önizlemededir ve ağınıza bir yönetilen diski içeri veya dışarı aktarmak için kullanılabilir. Özel bağlantılar, eklenmemiş yönetilen diskler ve bu verileri bölgesel genişletme, olağanüstü durum kurtarma ve Forli analiz için diğer bölgelere dışarı aktarmak için kullanabileceğiniz bir zamana bağlı paylaşılan erişim Imzası (SAS) URI 'SI oluşturmanıza olanak tanır. Ayrıca, bir VHD 'yi Şirket içindeki boş bir diske doğrudan yüklemek için SAS URI 'sini de kullanabilirsiniz. Artık, yönetilen disklerin içeri ve dışarı aktarılmasını kısıtlamak için [özel bağlantılardan](../private-link/private-link-overview.md) yararlanarak yalnızca Azure sanal ağınızda yer alabilir. Özel bağlantılar verilerinizin yalnızca güvenli Microsoft omurga ağı içinde hareket etmenizi sağlamanıza olanak tanır.
+Yönetilen diskler için özel bağlantı desteği, ağınıza dahili bir yönetilen diski içeri veya dışarı aktarmak için kullanılabilir. Özel bağlantılar, eklenmemiş yönetilen diskler ve bu verileri bölgesel genişletme, olağanüstü durum kurtarma ve Forli analiz için diğer bölgelere dışarı aktarmak için kullanabileceğiniz bir zamana bağlı paylaşılan erişim Imzası (SAS) URI 'SI oluşturmanıza olanak tanır. Ayrıca, bir VHD 'yi Şirket içindeki boş bir diske doğrudan yüklemek için SAS URI 'sini de kullanabilirsiniz. Artık, yönetilen disklerin içeri ve dışarı aktarılmasını kısıtlamak için [özel bağlantılardan](../private-link/private-link-overview.md) yararlanarak yalnızca Azure sanal ağınızda yer alabilir. Özel bağlantılar verilerinizin yalnızca güvenli Microsoft omurga ağı içinde hareket etmenizi sağlamanıza olanak tanır.
 
 Yönetilen bir diski içeri veya dışarı aktarmaya yönelik özel bağlantıları nasıl etkinleştireceğinizi öğrenmek için bkz. [CLI](linux/disks-export-import-private-links-cli.md) veya [Portal](disks-enable-private-links-for-import-export-portal.md) makaleleri.
 

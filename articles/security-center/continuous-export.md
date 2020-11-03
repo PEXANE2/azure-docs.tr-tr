@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: cd4f2198721e0d92abe22b1b6d95dceda2dc874d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 59cfe7b990523e5cb165d1037291b3c1b1301624
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789191"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289242"
 ---
 # <a name="continuously-export-security-center-data"></a>Güvenlik Merkezi verilerini sürekli dışa aktarma
 
@@ -41,7 +41,7 @@ Bu makalede Log Analytics çalışma alanlarına veya Azure Event Hubs sürekli 
 |Yayın durumu:|Genel olarak kullanılabilir (GA)|
 |Fiyat|Ücretsiz|
 |Gerekli roller ve izinler:|<ul><li>Kaynak grubundaki **Güvenlik Yöneticisi** veya **sahibi**</li><li>Hedef kaynak için yazma izinleri</li><li>Aşağıda açıklanan Azure Ilkesi ' DeployIfNotExist ' ilkelerini kullanıyorsanız, ilke atama izinlerine de ihtiyacınız olacaktır</li></ul>|
-|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) US Gov<br>![Evet](./media/icons/yes-icon.png) Çin gov (Olay Hub 'ına), diğer gov|
+|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) US Gov, diğer gov<br>![Evet](./media/icons/yes-icon.png) Çin gov (Olay Hub 'ına)|
 |||
 
 
@@ -52,7 +52,7 @@ Bu makalede Log Analytics çalışma alanlarına veya Azure Event Hubs sürekli 
 
 Azure portal, güvenlik merkezi REST API aracılığıyla veya sağlanan Azure Ilke şablonlarını kullanarak ölçekteki Güvenlik Merkezi sayfalarından sürekli dışarı aktarmayı yapılandırabilirsiniz. Her birinin ayrıntıları için aşağıdaki uygun sekmeyi seçin.
 
-### <a name="use-the-azure-portal"></a>[**Azure portalını kullanma**](#tab/azure-portal)
+### <a name="use-the-azure-portal"></a>[**Azure portalı kullanma**](#tab/azure-portal)
 
 ### <a name="configure-continuous-export-from-the-security-center-pages-in-azure-portal"></a>Azure portal 'de Güvenlik Merkezi sayfalarından sürekli dışarı aktarmayı yapılandırma
 
@@ -71,12 +71,12 @@ Aşağıdaki adımlar Log Analytics çalışma alanına veya Azure Event Hubs s�
 
     Bu önerilerin bulgularını dahil etmek için **güvenlik bulgularını dahil et** seçeneğini etkinleştirin.
 
-    :::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Sürekli dışa aktarma yapılandırmasında güvenlik bulgularını dahil et&quot; :::
+    :::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Sürekli dışa aktarma yapılandırmasında güvenlik bulgularını dahil et" :::
 
-1. &quot;Dışarı aktarma hedefi" alanından, verilerin kaydedilmesini istediğiniz yeri seçin. Veriler farklı bir abonelikteki hedefe kaydedilebilir (örneğin, merkezi bir olay hub 'ı örneği veya merkezi bir Log Analytics çalışma alanı).
+1. "Dışarı aktarma hedefi" alanından, verilerin kaydedilmesini istediğiniz yeri seçin. Veriler farklı bir abonelikteki hedefe kaydedilebilir (örneğin, merkezi bir olay hub 'ı örneği veya merkezi bir Log Analytics çalışma alanı).
 1. **Kaydet** ’i seçin.
 
-### <a name="use-the-rest-api"></a>[**REST API’sini kullanma**](#tab/rest-api)
+### <a name="use-the-rest-api"></a>[**REST API kullanma**](#tab/rest-api)
 
 ### <a name="configure-continuous-export-using-the-rest-api"></a>REST API kullanarak sürekli dışarı aktarmayı yapılandırma
 
@@ -124,15 +124,11 @@ Kuruluşunuzda sürekli dışarı aktarma yapılandırmalarınızı dağıtmak i
     > [!TIP]
     > Ayrıca, Azure Ilkesi 'ni arayarak bunları bulabilirsiniz:
     > 1. Azure Ilkesini açın.
-    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="Sürekli dışa aktarma yapılandırmasında güvenlik bulgularını dahil et&quot; :::
-
-1. &quot;Dışarı aktarma hedefi":::
+    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="Azure Ilkesine erişme":::
     > 2. Azure Ilke menüsünden **tanımlar** ' ı seçin ve adları ada göre arayın. 
 
 1. İlgili Azure Ilkesi sayfasında **ata** ' yı seçin.
-    :::image type="content" source="./media/continuous-export/export-policy-assign.png" alt-text="Sürekli dışa aktarma yapılandırmasında güvenlik bulgularını dahil et&quot; :::
-
-1. &quot;Dışarı aktarma hedefi":::
+    :::image type="content" source="./media/continuous-export/export-policy-assign.png" alt-text="Azure Ilkesi atama":::
 
 1. Her sekmeyi açın ve parametreleri istediğiniz şekilde ayarlayın:
     1. **Temel bilgiler** sekmesinde, ilke kapsamını ayarlayın. Merkezi Yönetim 'i kullanmak için, ilkeyi sürekli dışa aktarma yapılandırması kullanacak olan abonelikleri içeren yönetim grubuna atayın. 
@@ -141,9 +137,7 @@ Kuruluşunuzda sürekli dışarı aktarma yapılandırmalarınızı dağıtmak i
         > Her parametrenin size sunulan seçenekleri açıklayan bir araç ipucu vardır.
         >
         > Azure Ilkesinin Parametreler sekmesi (1), güvenlik merkezi 'nin sürekli dışa aktarma sayfası (2) olarak benzer yapılandırma seçeneklerine erişim sağlar.
-        > :::image type="content" source="./media/continuous-export/azure-policy-next-to-continuous-export.png" alt-text="Sürekli dışa aktarma yapılandırmasında güvenlik bulgularını dahil et&quot; :::
-
-1. &quot;Dışarı aktarma hedefi" lightbox="./media/continuous-export/azure-policy-next-to-continuous-export.png":::
+        > :::image type="content" source="./media/continuous-export/azure-policy-next-to-continuous-export.png" alt-text="Azure Ilkesiyle sürekli dışarı aktarmada parametreleri karşılaştırma" lightbox="./media/continuous-export/azure-policy-next-to-continuous-export.png":::
     1. İsteğe bağlı olarak, bu atamayı mevcut aboneliklere uygulamak için **Düzeltme** sekmesini açın ve bir düzeltme görevi oluşturma seçeneğini belirleyin.
 1. Özet sayfasını gözden geçirin ve **Oluştur** ' u seçin.
 

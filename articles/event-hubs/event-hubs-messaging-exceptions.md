@@ -2,13 +2,13 @@
 title: Azure Event Hubs özel durumlar (eski)
 description: Bu makale, Azure Event Hubs mesajlaşma özel durumlarının ve önerilen eylemlerin bir listesini sağlar.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 5a7ca32893a106cd59df548ae3118665acaea654
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/02/2020
+ms.openlocfilehash: adaf7242530727a1f77a9662110a43341e57e80a
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318492"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289337"
 ---
 # <a name="event-hubs-messaging-exceptions---net-legacy"></a>Event Hubs mesajlaşma özel durumları-.NET (eski)
 Bu bölümde, .NET Framework API 'Leri tarafından oluşturulan .NET özel durumları listelenmektedir. 
@@ -70,7 +70,7 @@ Aşağıdaki tabloda mesajlaşma özel durum türleri ve nedenleri ve gerçekle�
 | [Microsoft. ServiceBus. Messaging MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception) <br /><br/> [Microsoft. Azure. EventHubs MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception) | İşlemle ilişkili varlık yok veya silinmiş. | Varlığın mevcut olduğundan emin olun. | Yeniden deneme, yardım etmez. |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) | İstemci, Olay Hub 'ına bir bağlantı kuramıyor. |Sağlanan ana bilgisayar adının doğru olduğundan ve konağın erişilebilir olduğundan emin olun. | Yeniden dene, aralıklı bağlantı sorunları olup olmadığı konusunda yardımcı olabilir. |
 | [Microsoft. ServiceBus. Messaging Serverbusyıexception](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) <br /> <br/>[Microsoft. Azure. EventHubs Serverbusonexception](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) | Hizmet şu anda isteği işleyemiyor. | İstemci bir süre bekleyip işlemi yeniden deneyin. <br /> Bkz. [Serverbusyıexception](#serverbusyexception). | İstemci belirli bir aralıktan sonra yeniden deneyebilir. Yeniden deneme farklı bir özel durumla sonuçlanırsa, bu özel durumun yeniden deneme davranışını denetleyin. |
-| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) | Aşağıdaki durumlarda oluşturulabilecek genel mesajlaşma özel durumu: farklı bir varlık türüne (örneğin, bir konu) ait olan bir ad veya yol kullanarak bir [Queueclient](/dotnet/api/microsoft.servicebus.messaging.queueclient) oluşturmak için girişimde bulunuldu. 1 MB 'den büyük bir ileti göndermek için bir girişimde bulunuldu. Sunucu veya hizmet, isteğin işlenmesi sırasında bir hatayla karşılaştı. Ayrıntılar için özel durum iletisine bakın. Bu özel durum genellikle geçici bir özel durumdur. | Kodu denetleyin ve ileti gövdesi için yalnızca serileştirilebilir nesnelerin kullanıldığından emin olun (veya özel bir seri hale getirici kullanın). Özelliklerin desteklenen değer türleri için belgeleri denetleyin ve yalnızca desteklenen türleri kullanın. [Isgeçici](/dotnet/api/microsoft.servicebus.messaging.messagingexception) özelliğini denetleyin. **Doğru**ise işlemi yeniden deneyebilirsiniz. | Yeniden deneme davranışı tanımsız ve yardım olmayabilir. |
+| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) | Aşağıdaki durumlarda oluşturulabilecek genel mesajlaşma özel durumu: farklı bir varlık türüne (örneğin, bir konu) ait olan bir ad veya yol kullanarak bir [Queueclient](/dotnet/api/microsoft.servicebus.messaging.queueclient) oluşturmak için girişimde bulunuldu. 1 MB 'den büyük bir ileti göndermek için bir girişimde bulunuldu. Sunucu veya hizmet, isteğin işlenmesi sırasında bir hatayla karşılaştı. Ayrıntılar için özel durum iletisine bakın. Bu özel durum genellikle geçici bir özel durumdur. | Kodu denetleyin ve ileti gövdesi için yalnızca serileştirilebilir nesnelerin kullanıldığından emin olun (veya özel bir seri hale getirici kullanın). Özelliklerin desteklenen değer türleri için belgeleri denetleyin ve yalnızca desteklenen türleri kullanın. [Isgeçici](/dotnet/api/microsoft.servicebus.messaging.messagingexception) özelliğini denetleyin. **Doğru** ise işlemi yeniden deneyebilirsiniz. | Yeniden deneme davranışı tanımsız ve yardım olmayabilir. |
 | [Messagingentityalreadyvartsexception](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) | Bu hizmet ad alanındaki başka bir varlık tarafından zaten kullanılan bir ada sahip bir varlık oluşturma girişimi. | Mevcut varlığı silin veya oluşturulacak varlık için farklı bir ad seçin. | Yeniden deneme, yardım etmez. |
 | [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) | Mesajlaşma varlığı izin verilen en büyük boyuta ulaştı. Bu özel durum, müşteri başına grup düzeyinde en fazla alıcı sayısı (5 ' i) zaten açıldıysa meydana gelebilir. | Varlıktan veya onun alt sıraları üzerinden ileti alarak varlıkta alan oluşturun. <br /> Bkz. [QuotaExceededException](#quotaexceededexception) | Yeniden deneme, iletilerin bu sırada kaldırılıp kaldırılmadığı konusunda yardımcı olabilir. |
 | [MessagingEntityDisabledException](/dotnet/api/microsoft.servicebus.messaging.messagingentitydisabledexception) | Devre dışı bırakılmış bir varlık üzerinde çalışma zamanı işlemi isteği. |Varlığı etkinleştirin. | Yeniden deneme, varlığın geçici bir şekilde etkinleştirilmiş olup olmadığı konusunda yardımcı olabilir. |
@@ -107,17 +107,29 @@ Bu hata, iki nedenden biri nedeniyle oluşabilir:
 
 - Yük, Olay Hub 'ındaki tüm bölümler arasında eşit olarak dağıtılmaz ve bir bölüm yerel üretilen iş birimi sınırlamasını aşmaktadır.
     
-    **Çözüm**: Bölüm dağıtım stratejisini düzeltme ya da [Eventhubclient. Send (eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) yardımcı olabilecek.
+    **Çözüm** : Bölüm dağıtım stratejisini düzeltme ya da [Eventhubclient. Send (eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) yardımcı olabilecek.
 
 - Event Hubs ad alanı yeterli işleme birimi içermiyor (onaylamak için [Azure portal](https://portal.azure.com) Event Hubs ad alanı penceresinde **ölçümler** ekranını kontrol edebilirsiniz). Portal toplanmış (1 dakikalık) bilgileri gösterir, ancak aktarım hızını gerçek zamanlı olarak ölçyoruz; bu nedenle yalnızca bir tahmindir.
 
-    **Çözüm**: ad alanındaki üretilen iş birimlerinin artırılması yardımcı olabilir. Bu işlemi portalda Event Hubs ad alanı ekranının **Ölçek** penceresinde yapabilirsiniz. Ya da [Otomatik Şişir](event-hubs-auto-inflate.md)kullanabilirsiniz.
+    **Çözüm** : ad alanındaki üretilen iş birimlerinin artırılması yardımcı olabilir. 
+
+    İşleme birimlerini, Azure portal **Event Hubs ad alanı** sayfanızın **Ölçek** sayfasında veya **genel bakış** sayfasında yapılandırabilirsiniz. Ya da, kullanım ihtiyaçlarını karşılamak için üretilen iş birimi sayısını artırarak otomatik olarak ölçeklendirilen [Otomatik Şişir](event-hubs-auto-inflate.md)kullanabilirsiniz.
+
+    İşleme birimleri (DTU 'lar) bir Event Hubs ad alanındaki tüm olay hub 'larına uygulanır. Bu, ad alanı düzeyinde bir tüs satın almanızı ve bu ad alanı altındaki Olay Hub 'ları arasında paylaşılmanızı anlamına gelir. Her bir TU, ad alanını aşağıdaki yetenekler sahibine:
+
+    - Saniyede 1 MB 'a kadar giriş olayı (bir olay hub 'ına gönderilen olaylar), ancak saniyede 1000 giriş olayı, yönetim işlemi veya denetim API çağrısı yok.
+    - Saniyede 2 MB 'a kadar çıkış olayı (bir olay hub 'ından tüketilen olaylar), ancak 4096 'den fazla çıkış olayı yoktur.
+    - 84 GB 'a kadar olay depolama (varsayılan 24 saatlik saklama süresi için yeterlidir).
+    
+    **Genel bakış** sayfasında **ölçümleri göster** bölümünde, **üretilen iş** sekmesine geçin. X ekseninde 1 dakikalık aralıklar içeren daha büyük bir pencerede açmak için grafiği seçin. En yüksek değerlere bakın ve gelen bayt/saniye veya giden bayt/saniye almak için bunları 60 göre bölün. **İstekler** sekmesinde, saniye başına istek sayısını hesaplamak için benzer bir yaklaşım kullanın. 
+
+    İzleme Sayısı * limitinden (giriş/saniye için 1000 saniyede 1 MB) daha yüksek değerler görürseniz (çıkış için saniyede 2 MB), daha yüksek bir şekilde ölçeklendirilmesi veya Event Hubs [Otomatik](event-hubs-auto-inflate.md) olarak ölçeklendirmek için bir Event Hubs ad alanının **Ölçek** (sol menü) sayfasını kullanarak, DTU sayısını artırın. Otomatik olarak Şişir yalnızca 20 ' ye kadar artış olabileceğini unutmayın. Bunu tam 40 bir şekilde yükseltmek için bir [destek isteği](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)gönderebilirsiniz.
 
 ### <a name="error-code-50001"></a>Hata kodu 50001
 
 Bu hata nadiren gerçekleşmelidir. Ad alanınız için kodu çalıştıran kapsayıcı, Event Hubs yük dengeleyici başlamadan önce birkaç saniyeden daha fazla değil, CPU üzerinde düşük olduğunda gerçekleşir.
 
-**Çözüm**: GetRuntimeInformation metodu çağrılarında sınırlayın. Azure Event Hubs, saniye başına Getruntimeınfo 'ya saniyede en fazla 50 çağrı destekler. Sınıra ulaşıldığında aşağıdakine benzer bir özel durum alabilirsiniz:
+**Çözüm** : GetRuntimeInformation metodu çağrılarında sınırlayın. Azure Event Hubs, saniye başına Getruntimeınfo 'ya saniyede en fazla 50 çağrı destekler. Sınıra ulaşıldığında aşağıdakine benzer bir özel durum alabilirsiniz:
 
 ```
 ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50001. Please wait 10 seconds and try again.

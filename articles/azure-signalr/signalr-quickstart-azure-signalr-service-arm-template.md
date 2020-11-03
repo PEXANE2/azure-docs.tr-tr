@@ -1,18 +1,18 @@
 ---
 title: 'Hızlı başlangıç: Azure SignalR hizmeti-ARM şablonu oluşturma'
 description: Bu hızlı başlangıçta, bir Azure Resource Manager şablonu kullanarak Azure SignalR hizmeti oluşturmayı öğrenin (ARM şablonu).
-author: mgblythe
+author: sffamily
 ms.service: signalr
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: mblythe
+ms.author: zhshang
 ms.date: 10/02/2020
-ms.openlocfilehash: f38bd6ed91788343c028ec5834ba28f4bad3ba43
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a7e8183f21ab49fe4662470d30e52977dd89153a
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487832"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289915"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-signalr-service"></a>Hızlı başlangıç: Azure SignalR hizmeti dağıtmak için ARM şablonu kullanma
 
@@ -60,28 +60,28 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 
 Azure portal ARM şablonunu kullanarak Azure SignalR hizmetini dağıtmak için aşağıdaki bağlantıyı seçin:
 
-[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure SignalR hizmetini Azure portal bir ARM şablonu kullanarak Azure 'a dağıtma düğmesi.":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-signalr%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure SignalR hizmetini Azure portal ARM şablonunu kullanarak Azure 'a dağıtmaya yönelik düğme.":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-signalr%2fazuredeploy.json)
 
 **Azure SignalR hizmeti dağıtma** sayfasında:
 
 1. İsterseniz, **aboneliği** varsayılan ' dan değiştirin.
 
-2. **Kaynak grubu**Için **Yeni oluştur**' u seçin, yeni kaynak grubu için bir ad girin ve **Tamam**' ı seçin.
+2. **Kaynak grubu** Için **Yeni oluştur** ' u seçin, yeni kaynak grubu için bir ad girin ve **Tamam** ' ı seçin.
 
 3. Yeni bir kaynak grubu oluşturduysanız, kaynak grubu için bir **bölge** seçin.
 
-4. İsterseniz, Azure SignalR hizmetinin yeni bir **adını** ve **konumunu** (örneğin, **eastus2**) girin. Bir ad belirtmezseniz, otomatik olarak oluşturulur. Azure SignalR hizmetinin konumu, kaynak grubunun bölgesiyle aynı veya farklı olabilir. Bir konum belirtmezseniz, kaynak grubuyla aynı bölgeye ayarlanır.
+4. İsterseniz, Azure SignalR hizmetinin yeni bir **adını** ve **konumunu** (örneğin, **eastus2** ) girin. Bir ad belirtmezseniz, otomatik olarak oluşturulur. Azure SignalR hizmetinin konumu, kaynak grubunun bölgesiyle aynı veya farklı olabilir. Bir konum belirtmezseniz, kaynak grubuyla aynı bölgeye ayarlanır.
 
-5. **Fiyatlandırma katmanını** (**Free_F1** veya **Standard_S1**) seçin, **kapasiteyi** (SignalR birimi sayısını) girin ve **varsayılan** bir **hizmet modu** seçin (hub sunucusu gerektirir), **sunucusuz** (herhangi bir sunucu bağlantısına izin vermez) veya **Klasik** (hub sunucusu bağlantısı varsa hub sunucusuna yönlendirilir). Sonra **bağlantı günlüklerinin** etkinleştirilip etkinleştirilmeyeceğini seçin veya **mesajlaşma günlüklerini etkinleştirin**.
+5. **Fiyatlandırma katmanını** ( **Free_F1** veya **Standard_S1** ) seçin, **kapasiteyi** (SignalR birimi sayısını) girin ve **varsayılan** bir **hizmet modu** seçin (hub sunucusu gerektirir), **sunucusuz** (herhangi bir sunucu bağlantısına izin vermez) veya **Klasik** (hub sunucusu bağlantısı varsa hub sunucusuna yönlendirilir). Sonra **bağlantı günlüklerinin** etkinleştirilip etkinleştirilmeyeceğini seçin veya **mesajlaşma günlüklerini etkinleştirin**.
 
     > [!NOTE]
     > **Free_F1** fiyatlandırma katmanı için kapasite 1 birimle sınırlıdır.
 
-    :::image type="content" source="./media/signalr-quickstart-azure-signalr-service-arm-template/deploy-azure-signalr-service-arm-template-portal.png" alt-text="Azure SignalR hizmetini Azure portal bir ARM şablonu kullanarak Azure 'a dağıtma düğmesi.":::
+    :::image type="content" source="./media/signalr-quickstart-azure-signalr-service-arm-template/deploy-azure-signalr-service-arm-template-portal.png" alt-text="Azure portal Azure SignalR hizmeti oluşturmak için ARM şablonunun ekran görüntüsü.":::
 
-6. **Gözden geçir + oluştur**’u seçin.
+6. **Gözden geçir + oluştur** ’u seçin.
 
-7. Hüküm ve koşulları okuyun ve ardından **Oluştur**' u seçin.
+7. Hüküm ve koşulları okuyun ve ardından **Oluştur** ' u seçin.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
@@ -92,12 +92,12 @@ ARM şablonunu kullanarak Azure SignalR hizmetini dağıtmak için aşağıdaki 
 
 * Yeni Azure SignalR hizmeti 'nin adı ve bölgesi
 * Yeni bir kaynak grubunun adı ve bölgesi
-* Azure Fiyatlandırma Katmanı (**Free_F1** veya **Standard_S1**)
+* Azure Fiyatlandırma Katmanı ( **Free_F1** veya **Standard_S1** )
 * SignalR birim kapasitesi (1, 2, 5, 10, 20, 50 veya 100)
   > [!NOTE]
   > **Free_F1** fiyatlandırma katmanı için kapasite 1 birimle sınırlıdır.
 * Hizmet modu: bir hub sunucusu istemek için **varsayılan** , herhangi bir sunucu bağlantısına izin vermemek Için **sunucusuz** ya da hub 'ın bir sunucu bağlantısı varsa hub sunucusuna yönlendirmek için **Klasik**
-* Bağlantı veya mesajlaşma için günlüklerin etkinleştirilip etkinleştirilmeyeceğini belirtir (**true** veya **false**)
+* Bağlantı veya mesajlaşma için günlüklerin etkinleştirilip etkinleştirilmeyeceğini belirtir ( **true** veya **false** )
 
 ```azurepowershell-interactive
 $serviceName = Read-Host -Prompt "Enter a name for the new Azure SignalR Service"
@@ -137,12 +137,12 @@ ARM şablonunu kullanarak Azure SignalR hizmetini dağıtmak için aşağıdaki 
 
 * Yeni Azure SignalR hizmeti 'nin adı ve bölgesi
 * Yeni bir kaynak grubunun adı ve bölgesi
-* Azure Fiyatlandırma Katmanı (**Free_F1** veya **Standard_S1**)
+* Azure Fiyatlandırma Katmanı ( **Free_F1** veya **Standard_S1** )
 * SignalR birim kapasitesi (1, 2, 5, 10, 20, 50 veya 100)
     > [!NOTE]
     > **Free_F1** fiyatlandırma katmanı için kapasite 1 birimle sınırlıdır.
 * Hizmet modu: bir hub sunucusu istemek için **varsayılan** , herhangi bir sunucu bağlantısına izin vermemek Için **sunucusuz** ya da hub 'ın bir sunucu bağlantısı varsa hub sunucusuna yönlendirmek için **Klasik**
-* Bağlantı veya mesajlaşma için günlüklerin etkinleştirilip etkinleştirilmeyeceğini belirtir (**true** veya **false**)
+* Bağlantı veya mesajlaşma için günlüklerin etkinleştirilip etkinleştirilmeyeceğini belirtir ( **true** veya **false** )
 
 ```azurecli-interactive
 read -p "Enter a name for the new Azure SignalR Service: " serviceName &&
@@ -173,7 +173,7 @@ read -p "Press [ENTER] to continue: "
 
 Yeni Azure SignalR hizmetinize genel bir bakış için şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com), **SignalR**öğesini arayıp seçin.
+1. [Azure Portal](https://portal.azure.com), **SignalR** öğesini arayıp seçin.
 
 2. SignalR listesinde yeni hizmetinizi seçin. Yeni Azure SignalR hizmeti için **genel bakış** sayfası görüntülenir.
 
@@ -209,13 +209,13 @@ Artık gerekli olmadığında kaynak grubundaki kaynakları silen kaynak grubunu
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. [Azure Portal](https://portal.azure.com), **kaynak gruplarını**arayıp seçin.
+1. [Azure Portal](https://portal.azure.com), **kaynak gruplarını** arayıp seçin.
 
 2. Kaynak grubu listesinde, kaynak grubunuzun adını seçin.
 
-3. Kaynak grubunuzun **genel bakış** sayfasında **kaynak grubunu sil**' i seçin.
+3. Kaynak grubunuzun **genel bakış** sayfasında **kaynak grubunu sil** ' i seçin.
 
-4. Onay iletişim kutusunda, kaynak grubunuzun adını yazın ve ardından **Sil**' i seçin.
+4. Onay iletişim kutusunda, kaynak grubunuzun adını yazın ve ardından **Sil** ' i seçin.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 

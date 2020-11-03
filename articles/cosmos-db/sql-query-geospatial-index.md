@@ -4,14 +4,14 @@ description: Uzamsal verileri Azure Cosmos DB ile dizinle
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/03/2020
+ms.date: 11/03/2020
 ms.author: tisande
-ms.openlocfilehash: f250c15dbb30736e3e89a301fc236a848bd05da2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 347617fb13041a8fb31c28f259aaf761baae2e53
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092067"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286307"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Azure Cosmos DB Jeo uzamsal verileri dizinle
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -20,14 +20,12 @@ Azure Cosmos DB veritabanı altyapısını gerçekten şema belirsiz olacak şek
 
 Bir Nutshell 'de geometri, coğrafi olmayan koordinatlardan 2B düzlemin üzerine yansıtıldıysa, daha sonra **quadtree** kullanılarak hücrelere aşamalı olarak bölünür. Bu hücreler, noktaların yerini koruyan bir **Tepbert alanı doldurma eğrisi** içindeki hücrenin konumuna göre 1G ile eşleştirilir. Ayrıca, konum verileri dizinlendiğinde, **mozaik döşeme** olarak bilinen bir işlemden geçer, diğer bir deyişle, bir konumdan kesişen tüm hücreler Azure Cosmos DB dizininde anahtar olarak tanımlanır ve saklanır. Sorgu zamanında, işaret ve çokgenler gibi bağımsız değişkenler de ilgili hücre KIMLIĞI aralıklarını ayıklamak için de tesseldir ve sonra dizinden veri almak için kullanılır.
 
-/* (Tüm yollar) için uzamsal dizin içeren bir dizin oluşturma ilkesi belirtirseniz, kapsayıcıda bulunan tüm veriler etkili uzamsal sorgular için dizinlenir.
+(Tüm yollar) için uzamsal dizin içeren bir dizin oluşturma ilkesi belirtirseniz `/*` , kapsayıcıda bulunan tüm veriler etkili uzamsal sorgular için dizinlenir.
 
 > [!NOTE]
-> Azure Cosmos DB noktaların, LineStrings, çokgenler ve MultiPolygon dizinlemesini destekler
->
->
+> Azure Cosmos DB noktaların, LineStrings, çokgenler ve MultiPolygon dizinini oluşturmayı destekler. Bu türlerden birini dizinlemek istiyorsanız, diğer tüm türleri otomatik olarak dizinliyoruz. Diğer bir deyişle, poligonları dizinleriniz, ayrıca noktaları, LineStrings ve MultiPolygon dizinliyoruz. Yeni bir uzamsal türün dizinlemesi, bu türde geçerli bir GeoJSON verisi olmadığı müddetçe, yazma RU ücreti veya dizin boyutunu etkilemez.
 
-## <a name="modifying-geospatial-data-type"></a>Jeo-uzamsal veri türünü değiştirme
+## <a name="modifying-geospatial-configuration"></a>Jeo-uzamsal yapılandırması değiştiriliyor
 
 Kapsayıcıda Jeo-uzamsal **yapılandırması** , uzamsal verilerin nasıl dizine alınacağını belirtir. Kapsayıcı başına bir **Jeo-uzamsal yapılandırma** belirtin: Coğrafya veya Geometry.
 

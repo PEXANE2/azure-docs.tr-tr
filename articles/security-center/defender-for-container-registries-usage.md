@@ -7,18 +7,18 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b46c72730922a977dd754d8422d07db479a62b6c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a1357f263c450605025b6f1e9b7bdea47d0d4f58
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370551"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289214"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Azure Defender 'ı kapsayıcı kayıt defterleri için kullanarak görüntülerinizi güvenlik açıklarına karşı tarayın
 
 Bu sayfada, yerleşik güvenlik açığı tarayıcısının Azure Resource Manager tabanlı Azure Container Registry depolanan kapsayıcı görüntülerini taramak için nasıl kullanılacağı açıklanmaktadır.
 
-**Kapsayıcı kayıt defterleri Için Azure Defender** etkinleştirildiğinde, Kayıt defterinize gönderdiğiniz herhangi bir görüntü anında taranır. Ayrıca, son 30 gün içinde çekilen tüm görüntü de taranır. 
+**Kapsayıcı kayıt defterleri için Azure Defender** etkinleştirildiğinde, kayıt defterinize gönderdiğiniz her görüntü anında taranır. Ayrıca, son 30 gün içinde çekilen tüm görüntü de taranır. 
 
 Tarayıcı güvenlik merkezi 'ne güvenlik açıkları bildirdiğinde Güvenlik Merkezi, bulguları ve ilgili bilgileri öneriler olarak sunar. Ayrıca, bulgular düzeltme adımları, ilgili cileri, CVSS puanları ve daha fazlası gibi ilgili bilgileri içerir. Bir veya daha fazla abonelik veya belirli bir kayıt defteri için tanımlanan güvenlik açıklarını görüntüleyebilirsiniz.
 
@@ -31,7 +31,7 @@ Tarayıcı güvenlik merkezi 'ne güvenlik açıkları bildirdiğinde Güvenlik 
 |Desteklenen kayıt defterleri ve görüntüler:|ACR kayıt defterlerine Linux görüntüleri, Shell erişimiyle genel İnternet 'ten erişilebilir|
 |Desteklenmeyen kayıt defterleri ve görüntüler:|Windows görüntüleri<br>' Özel ' kayıt defterleri<br>Erişime sahip kayıt defterleri, güvenlik duvarı, hizmet uç noktası veya Azure özel bağlantı gibi özel uç noktalar ile sınırlıdır<br>[Docker karalama](https://hub.docker.com/_/scratch/) görüntüleri gibi süper minimuz görüntüler veya yalnızca bir uygulama ve çalışma zamanı bağımlılıklarını bir paket yöneticisi, kabuk veya işletim sistemi olmadan Içeren "Distrodaha az" görüntüler|
 |Gerekli roller ve izinler:|**Güvenlik okuyucu** ve [Azure Container Registry okuyucu rolü](../container-registry/container-registry-roles.md)|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Evet ](./media/icons/yes-icon.png) ticari bulutlar<br>![Evet ](./media/icons/yes-icon.png) US gov-Şu anda yalnızca anında iletme özelliği destekleniyor. [Resimlerin ne zaman tarandığı](defender-for-container-registries-introduction.md#when-are-images-scanned) hakkında daha fazla bilgi edinin?<br>![](./media/icons/no-icon.png)Çin gov, diğer gov yok|
 |||
 
 
@@ -134,22 +134,22 @@ Aşağıdaki ölçütlerden herhangi birini kullanabilirsiniz:
 - Kategori
 - Güvenlik denetimi 
 - CVSS v3 puanları
-- Önem Derecesi 
+- Önem derecesi 
 - Patchable durumu 
 
 Bir kural oluşturmak için:
 
-1. **Azure Container Registry görüntülerde güvenlik açıklarına**yönelik öneriler ayrıntısı sayfasında, **kuralı devre dışı bırak**' ı seçin.
+1. **Azure Container Registry görüntülerde güvenlik açıklarına** yönelik öneriler ayrıntısı sayfasında, **kuralı devre dışı bırak** ' ı seçin.
 1. İlgili kapsamı seçin.
 1. Ölçütlerinizi tanımlayın.
-1. **Kural Uygula**' yı seçin.
+1. **Kural Uygula** ' yı seçin.
 
     :::image type="content" source="./media/defender-for-container-registries-usage/new-disable-rule-for-registry-finding.png" alt-text="Kayıt defterindeki VA bulguları için devre dışı bırakma kuralı oluşturma":::
 
 1. Bir kuralı görüntülemek, geçersiz kılmak veya silmek için: 
-    1. **Kuralı devre dışı bırak**seçeneğini belirleyin.
-    1. Kapsam listesinden, etkin kuralların bulunduğu abonelikler **kural uygulandı**olarak gösterilir.
-        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="Kayıt defterindeki VA bulguları için devre dışı bırakma kuralı oluşturma":::
+    1. **Kuralı devre dışı bırak** seçeneğini belirleyin.
+    1. Kapsam listesinden, etkin kuralların bulunduğu abonelikler **kural uygulandı** olarak gösterilir.
+        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="Mevcut bir kuralı değiştirme veya silme":::
     1. Kuralı görüntülemek veya silmek için üç nokta menüsünü ("...") seçin.
 
 

@@ -9,34 +9,37 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/21/2020
-ms.openlocfilehash: b986832e5febbb2a0f88b65213f9acf0dd4c5ab5
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 23ecc3bdfb0ca85caf219fc262348937923f53c3
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996888"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286116"
 ---
 # <a name="automatic-registration-with-sql-vm-resource-provider"></a>SQL VM kaynak sağlayıcısı ile otomatik kayıt
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Azure portal otomatik kayıt özelliğini etkinleştirin ve Azure VM 'lerinde tüm geçerli ve gelecekteki SQL Server, basit modda SQL VM kaynak sağlayıcısı ile otomatik olarak kaydeder.
+Azure portal otomatik kayıt özelliğini etkinleştirin ve Azure sanal makinelerinde (VM) bulunan tüm geçerli ve gelecekteki SQL Server, basit modda SQL VM kaynak sağlayıcısına otomatik olarak kaydeder. SQL VM kaynak sağlayıcısı ile kaydolmak [SQL IaaS Aracısı uzantısını](sql-server-iaas-agent-extension-automate-management.md)yüklenir.
 
 Bu makale, otomatik kayıt özelliğini etkinleştirmenizi öğretir. Alternatif olarak, [tek BIR VM 'yi kaydedebilir](sql-vm-resource-provider-register.md)veya VM 'LERINIZI SQL VM kaynak sağlayıcısı ile [toplu olarak kaydedebilirsiniz](sql-vm-resource-provider-bulk-register.md) . 
 
 ## <a name="overview"></a>Genel Bakış
 
-[SQL VM kaynak sağlayıcısı](sql-vm-resource-provider-register.md#overview) , Azure Portal SQL Server VM yönetmenizi sağlar. Ayrıca, kaynak sağlayıcısı [otomatik düzeltme eki uygulama](automated-patching.md), [otomatik yedekleme](automated-backup.md)ve izleme ve yönetilebilirlik yeteneklerini de kapsayan güçlü bir özellik kümesi sunar. Ayrıca [lisanslama](licensing-model-azure-hybrid-benefit-ahb-change.md) ve [Sürüm](change-sql-server-edition.md) esnekliğini de kaldırır. Daha önce, bu özellikler yalnızca Azure Marketi 'nden dağıtılan SQL Server VM görüntülerle sunulmaktadır. 
+SQL Server VM SQL VM kaynak sağlayıcısı ile kaydettirmek [SQL IaaS Aracısı uzantısını](sql-server-iaas-agent-extension-automate-management.md)kurar. 
 
-Otomatik kayıt özelliği, müşterilerin Azure aboneliğindeki tüm geçerli ve gelecekteki SQL Server VM 'Leri SQL VM kaynak sağlayıcısı ile otomatik olarak kaydetmelerini sağlar. Bu, yalnızca geçerli SQL Server VM 'Lere odaklanarak el ile kayıt işleminden farklıdır. 
+Otomatik kayıt etkinleştirildiğinde bir iş, abonelikteki tüm kayıtlı VM 'lerde SQL Server yüklenip yüklenmediğini algılamak için günlük olarak çalıştırılır. Bu işlem SQL IaaS Aracısı uzantısı ikili dosyalarını VM 'ye kopyalayarak ve ardından SQL Server kayıt defteri kovanını denetleyen bir kerelik yardımcı program çalıştırarak yapılır. SQL Server Hive algılanırsa, sanal makine [SQL VM kaynak sağlayıcısına](sql-vm-resource-provider-register.md) hafif modda kaydedilir. Kayıt defterinde SQL Server Hive yoksa, ikili dosyalar kaldırılır.
 
-Otomatik kayıt SQL Server sanal makinelerinizi hafif modda kaydeder. Tam özellikler kümesinden yararlanmak için yine de [tam yönetilebilirlik moduna el ile yükseltmeniz](sql-vm-resource-provider-register.md#upgrade-to-full) gerekir. 
+Bir abonelik için otomatik kayıt etkinleştirildikten sonra, SQL Server yüklü olan tüm mevcut ve gelecekteki VM 'Ler, SQL VM kaynak sağlayıcısı ile hafif modda kaydedilir. Tam özellikler kümesinden yararlanmak için yine de [tam yönetilebilirlik moduna el ile yükseltmeniz](sql-vm-resource-provider-register.md#upgrade-to-full) gerekir. 
+
+> [!IMPORTANT]
+> SQL IaaS Aracısı uzantısı, Azure sanal makineler 'de SQL Server kullanırken müşterilere isteğe bağlı avantajlar vermek için veri toplar. Microsoft, bu verileri müşterinin öncelikli onayı olmadan lisanslama denetimleri için kullanmaz. Daha fazla bilgi için [SQL Server Gizlilik Eki](/sql/sql-server/sql-server-privacy#non-personal-data) ' ne bakın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 SQL Server VM kaynak sağlayıcısına kaydetmek için şunlar gerekir: 
 
 - Bir [Azure aboneliği](https://azure.microsoft.com/free/).
-- Azure kaynak modeli [Windows sanal makinesi](../../../virtual-machines/windows/quick-create-portal.md) , genel veya Azure Kamu bulutuna dağıtılan [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads) . 
+- Azure kaynak modeli [Windows Server 2008 R2 (veya üzeri) sanal makinesini](../../../virtual-machines/windows/quick-create-portal.md) , genel veya Azure Kamu bulutuna dağıtılan [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads) . Windows Server 2008 desteklenmez. 
 
 
 ## <a name="enable"></a>Etkinleştir
@@ -50,7 +53,7 @@ Azure portal SQL Server sanal makinelerinizin otomatik olarak kaydedilmesini etk
    :::image type="content" source="media/sql-vm-resource-provider-automatic-registration/automatic-registration.png" alt-text="Otomatik kayıt sayfasını açmak için otomatik SQL Server VM kaydını seçin":::
 
 1. Açılır listeden aboneliğinizi seçin. 
-1. Koşulları okuyun ve **kabul ediyorsanız kabul ediyorum**' u seçin. 
+1. Koşulları okuyun ve **kabul ediyorsanız kabul ediyorum** ' u seçin. 
 1. Özelliği etkinleştirmek için **Kaydet** ' i seçin ve tüm geçerli ve gelecekteki SQL Server VM 'LERI SQL VM kaynak sağlayıcısı ile otomatik olarak kaydedin. Bu işlem, VM 'lerden hiçbirinde SQL Server hizmetini yeniden başlatmaz. 
 
 ## <a name="disable"></a>Devre Dışı Bırak
@@ -67,7 +70,7 @@ Azure CLı kullanarak otomatik kaydı devre dışı bırakmak için aşağıdaki
 az feature unregister --namespace Microsoft.SqlVirtualMachine --name BulkRegistration
 ```
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 Azure PowerShell kullanarak otomatik kaydı devre dışı bırakmak için aşağıdaki komutu çalıştırın: 
 
@@ -89,7 +92,7 @@ Bunu yapmak için aşağıdaki adımları izleyin:
 1. Komut dosyasını yürütün ve abonelik kimliklerini şu şekilde parametreler olarak geçirerek   
    `.\EnableBySubscription.ps1 -SubscriptionList SubscriptionId1,SubscriptionId2`
 
-   Örnek: 
+   Örneğin: 
 
    ```console
    .\EnableBySubscription.ps1 -SubscriptionList a1a1a-aa11-11aa-a1a1-a11a111a1,b2b2b2-bb22-22bb-b2b2-b2b2b2bb

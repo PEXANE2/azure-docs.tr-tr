@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7aa33bb062abf748031b27df46d42e8f13aabfc3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b60f290f6d3ca184e25edd2984ad5b2d1ff2bdf
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819968"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289677"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault azaltma yönergeleri
 
@@ -41,14 +41,14 @@ Yukarıdakilerden hala gereksinimlerinizi karşılamadığını fark ediyorsanı
 
 | Kasa adı | Kasa bölgesi | Nesne türü (gizli, anahtar veya sertifika) | İşlemler * | Anahtar türü | Anahtar uzunluğu veya eğrisi | HSM anahtarı?| Sabit durum RPS gerekli | Gerekli en yüksek RPS |
 |--|--|--|--|--|--|--|--|--|
-| https://mykeyvault.vault.azure.net/ | | Anahtar | İşaret | EC | P-256 | Hayır | 200 | 1000 |
+| https://mykeyvault.vault.azure.net/ | | Anahtar | İşaret | EC | P-256 | No | 200 | 1000 |
 
 \* Olası değerlerin tam listesi için bkz. [Azure Key Vault işlemler](/rest/api/keyvault/key-operations).
 
 Ek kapasite onaylanırsa, kapasitenin sonucu arttıkça lütfen aşağıdakileri unutmayın:
 1. Veri tutarlılığı modeli değişiklikleri. Kasa, ek aktarım hızı kapasitesine izin vertikten sonra, Key Vault Service veri tutarlılığı garantisi (temeldeki Azure depolama hizmeti devam edemediğinden daha yüksek hacimli RPS 'yi karşılamak için gereklidir).  Bir Nutshell 'de:
-  1. **Listeye izin verme olmadan**: Key Vault hizmeti bir yazma işleminin sonuçlarını yansıtır (örn. SecretSet, CreateKey) sonraki çağrılarda hemen (ör. SecretGet, KeySign).
-  1. **İzin verilenler listesi ile**: Key Vault hizmeti bir yazma işleminin sonuçlarını yansıtır (örn. SecretSet, CreateKey) sonraki çağrılarda 60 saniye içinde (örn. SecretGet, KeySign).
+  1. **Listeye izin verme olmadan** : Key Vault hizmeti bir yazma işleminin sonuçlarını yansıtır (örn. SecretSet, CreateKey) sonraki çağrılarda hemen (ör. SecretGet, KeySign).
+  1. **İzin verilenler listesi ile** : Key Vault hizmeti bir yazma işleminin sonuçlarını yansıtır (örn. SecretSet, CreateKey) sonraki çağrılarda 60 saniye içinde (örn. SecretGet, KeySign).
 1. İstemci kodu, 429 yeniden deneme için geri dönüş ilkesini kabul etmelidir. Key Vault hizmetini çağıran istemci kodu, 429 yanıt kodu aldığında istekleri Key Vault anında yeniden denememelidir.  Burada yayımlanan Azure Key Vault daraltma Kılavuzu, 429 http yanıt kodu alınırken üstel geri alma uygulanmasını önerir.
 
 Daha yüksek kısıtlama limitleri için geçerli bir iş örneğine sahipseniz lütfen bizimle iletişime geçin.
@@ -98,5 +98,4 @@ Bu noktada, HTTP 429 yanıt kodları alma kullanmamalısınız.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-Microsoft Bulut azaltma daha derin bir yönü için bkz. [daraltma kriteri](https://docs.microsoft.com/azure/architecture/patterns/throttling).
-
+Microsoft Bulut azaltma daha derin bir yönü için bkz. [daraltma kriteri](/azure/architecture/patterns/throttling).

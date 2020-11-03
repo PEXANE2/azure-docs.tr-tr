@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: e22400016eae0642c4e25fcfd4fcaaaab22a27a8
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 8faf9c913ea9bab2feaf698efeb6fd5b3ca63179
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280583"
+ms.locfileid: "93289623"
 ---
 # <a name="speech-service-release-notes"></a>Konuşma hizmeti sürüm notları
 
@@ -24,21 +24,13 @@ ms.locfileid: "93280583"
 
 **Note** : Windows üzerinde konuşma SDK 'Sı, Visual Studio 2015, 2017 ve 2019 için paylaşılan Microsoft Visual C++ yeniden dağıtılabilir 'e bağlıdır. [Buradan](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)indirin.
 
-**Konuşma CLı (SPX olarak da bilinir)**<br>
-SPX, Azure konuşma hizmetini kod yazmadan kullanmak için komut satırı arabirimidir. En son sürümü [buradan](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-basics)indirin.
-- `spx csr dataset upload --kind audio|language|acoustic` – yalnızca URL 'lerden değil yerel verilerden veri kümeleri oluşturun.
-- `spx csr evaluation create|status|list|update|delete` – yeni modelleri temel Truth/diğer modellerle karşılaştırın.
-- `spx * list` – disk belleğine alınmayan deneyimi destekler (--top X--Skip X ' i gerektirmez).
-- `spx * --http header A=B` – özel üst bilgileri destekleme (özel kimlik doğrulaması için Office 'e eklendi). 
-- `spx help` – Geliştirilmiş metin ve arka onay metin rengi (mavi).
-
 **Yeni özellikler**
 - **Linux** : de, 10 ve Ubuntu 20,04 LTS için destek eklendi.
 - **Python/amaç-C** : API için destek eklendi `KeywordRecognizer` . Belgeler [burada](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-keyword-basics)görünür.
 - **C++/Java/c #** : aracılığıyla herhangi bir `HttpHeader` anahtar/değer ayarlamak için destek eklendi `ServicePropertyChannel::HttpHeader` .
 - **JavaScript** : API için destek eklendi `ConversationTranscriber` . Belgeleri [buradan](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-conversation-transcription?pivots=programming-language-javascript)okuyun. 
-- **C++/c #** : yeni `AudioDataStream FromFile` Yöntem eklendi (okuma için. WAV dosyaları) [burada (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audiodatastream) ve [burada (C#)](
-https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream.fromfile).
+- **C++/c #** : yeni `AudioDataStream FromWavFileInput` Yöntem eklendi (okuma için. WAV dosyaları) [burada (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/audiodatastream) ve [burada (C#)](
+https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet).
 -  **C++/c #/Java/Python/Objective-C/Swift** : `stopSpeakingAsync()` metin okuma senmetini durdurmak için bir yöntem eklendi. Burada başvuru belgelerini [(C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace), burada ( [C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet), burada ( [Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech?view=azure-java-stable), burada ( [Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)ve [burada (hedef-C/Swift)](https://docs.microsoft.com/objectivec/cognitive-services/speech/)okuyun.
 - **C#, C++, Java** : `FromDialogServiceConnector()` `Connection` sınıfına yönelik bağlantı ve bağlantı kesme olaylarını izlemek için kullanılabilecek bir işlev eklendi `DialogServiceConnector` . Başvuru belgelerini [burada (C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet), [burada (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)ve [burada (Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection?view=azure-java-stable)okuyun.
 <!-- - **C++/C#/Java/Python/Objective-C/Swift**: Added support for Pronunciation Assessment, which evaluates speech pronunciation and gives speakers feedback on the accuracy and fluency of spoken audio. Read the documentation [here](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment). -->
@@ -72,6 +64,16 @@ https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audioda
 
 **Covıd-19 ortak test:** Son birkaç hafta içinde uzaktan çalışma nedeniyle, normalde yaptığımız için el ile doğrulama testi yapamadık. Herhangi bir şeyi bozduğumuz ve otomatikleştirilmiş testlerimiz geçtiğinden hiçbir değişiklik yapmadık. Bir şey kaçırdığımız olası bir olayda, lütfen [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen)'da bize bildirin.<br>
 Sağlıklı olun!
+
+## <a name="speech-cli-also-known-as-spx-2020-october-release"></a>Konuşma CLı (SPX olarak da bilinir): 2020-Ekim yayını
+SPX, Azure konuşma hizmetini kod yazmadan kullanmak için komut satırı arabirimidir. En son sürümü [buradan](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-basics)indirin. <br>
+
+**Yeni özellikler**
+- `spx csr dataset upload --kind audio|language|acoustic` – yalnızca URL 'lerden değil yerel verilerden veri kümeleri oluşturun.
+- `spx csr evaluation create|status|list|update|delete` – yeni modelleri temel Truth/diğer modellerle karşılaştırın.
+- `spx * list` – disk belleğine alınmayan deneyimi destekler (--top X--Skip X ' i gerektirmez).
+- `spx * --http header A=B` – özel üst bilgileri destekleme (özel kimlik doğrulaması için Office 'e eklendi). 
+- `spx help` – Geliştirilmiş metin ve arka onay metin rengi (mavi).
 
 
 ## <a name="text-to-speech-2020-august-release"></a>Metinden konuşmaya 2020-Ağustos yayını

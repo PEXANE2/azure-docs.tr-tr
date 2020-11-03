@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 32a323e8cc56a8c45b18737bb55ebe19d4be27c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59ba81944ecdf4f2b6322f4298e61df33f5b1da8
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89381250"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289192"
 ---
 # <a name="assign-a-key-vault-access-policy"></a>Key Vault erişim ilkesi atama
 
@@ -29,7 +29,7 @@ Azure CLı kullanarak Azure Active Directory Grup oluşturma hakkında daha fazl
 
 1. Azure CLı komutlarını yerel olarak çalıştırmak için [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)'yı yüklemelisiniz.
  
-    Komutları bulutta doğrudan çalıştırmak için [Azure Cloud Shell](/azure/cloud-shell/overview)kullanın.
+    Komutları bulutta doğrudan çalıştırmak için [Azure Cloud Shell](../../cloud-shell/overview.md)kullanın.
 
 1. Yalnızca yerel CLı: kullanarak Azure 'da oturum açın `az login` :
 

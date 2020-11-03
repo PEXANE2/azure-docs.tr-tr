@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: f916fdcf632cc369d1fb7e2faefad6dddafd1e15
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: dde6cf40e7609e902540e08fcaff65d9fe32c85c
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677243"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289651"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>VNet ve güvenlik duvarının arkasındaki depolama hesabına yönelik denetim yazma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -33,14 +33,14 @@ VNet kavramları, En Iyi uygulamalar ve çok daha fazlası hakkında daha fazla 
 
 Sanal ağ oluşturma hakkında daha fazla bilgi edinmek için bkz. [hızlı başlangıç: Azure Portal kullanarak sanal ağ oluşturma](../../virtual-network/quick-create-portal.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 VNet veya güvenlik duvarının arkasındaki bir depolama hesabına yazma denetimi için aşağıdaki Önkoşullar gereklidir:
 
 > [!div class="checklist"]
 >
 > * Genel amaçlı v2 depolama hesabı. Genel amaçlı bir v1 veya blob depolama hesabınız varsa, [genel amaçlı v2 depolama hesabına yükseltin](../../storage/common/storage-account-upgrade.md). Daha fazla bilgi için bkz. [depolama hesabı türleri](../../storage/common/storage-account-overview.md#types-of-storage-accounts).
-> * Depolama hesabının aynı abonelikte ve [MANTıKSAL SQL Server](logical-servers.md)ile aynı konumda olması gerekir.
+> * Depolama hesabının aynı abonelikte ve [mantıksal SQL Server](logical-servers.md)aynı konumda olması gerekir.
 > * Azure depolama hesabı gerekir `Allow trusted Microsoft services to access this storage account` . Bunu depolama hesabı **güvenlik duvarları ve sanal ağlarda** ayarlayın.
 > * `Microsoft.Authorization/roleAssignments/write`Seçili depolama hesabı üzerinde izninizin olması gerekir. Daha fazla bilgi için bkz. [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md).
 
@@ -77,7 +77,7 @@ Bu bölümdeki örnek betikler, çalıştırmadan önce betiği güncelleştirme
 |:-----|:-----|
 |`<subscriptionId>`| Azure abonelik KIMLIĞI|
 |`<resource group>`| Kaynak grubu|
-|`<logical SQL server>`| Sunucu adı|
+|`<logical SQL Server>`| Sunucu adı|
 |`<administrator login>`| Yönetici hesabı |
 |`<complex password>`| Yönetici hesabı için karmaşık parola|
 
@@ -153,7 +153,7 @@ Aşağıdaki örnekte gösterildiği gibi [Azure Resource Manager](../../azure-r
 > [!IMPORTANT]
 > Sanal ağın ve güvenlik duvarının arkasındaki depolama hesabını kullanmak için **isStorageBehindVnet** parametresini true olarak ayarlamanız gerekir
 
-- [Denetim günlüklerini blob depolamaya yazmak için etkin denetim ile Azure SQL Server dağıtma](https://azure.microsoft.com/resources/templates/201-sql-auditing-server-policy-to-blob-storage)
+- [Denetim günlüklerini blob depolamaya yazmak için etkinleştirilen bir Azure SQL Server dağıtma](https://azure.microsoft.com/resources/templates/201-sql-auditing-server-policy-to-blob-storage)
 
 > [!NOTE]
 > Bağlantılı örnek, bir dış ortak havuzda bulunur ve ' olduğu gibi ', garanti olmadan ve herhangi bir Microsoft destek programı/hizmeti kapsamında desteklenmez.

@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3e5476b01ac78af992f548efbeb87de5104dead0
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 45c0108ed87dd5264b9192f5dd69e0198bd59fc1
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126782"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289779"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Azure Key Vault sertifikaları hakkında
 
@@ -44,7 +44,7 @@ Bir Key Vault sertifikası oluşturulduğunda, bu, özel anahtarla birlikte adre
 
 Adreslenebilir anahtar, dışarı aktarılabilir KV sertifikalarıyla daha da alakalı olur. Adreslenebilir kV anahtarının işlemleri, KV sertifikasını oluşturmak için kullanılan kV sertifika ilkesinin *KeyUsage uzantısında* alanından eşleştirilir.  
 
- - Desteklenen KeyTypes: RSA, RSA-HSM, EC, EC-HSM, Eki ( [burada](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)listelenen) dışarı AKTARıLABILIR yalnızca RSA, EC ile kullanılabilir. HSM anahtarları dışarı aktarılabilir değildir.
+ - Desteklenen KeyTypes: RSA, RSA-HSM, EC, EC-HSM, Eki ( [burada](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)listelenen) dışarı AKTARıLABILIR yalnızca RSA, EC ile kullanılabilir. HSM anahtarları dışarı aktarılabilir değildir.
 
 
 ## <a name="certificate-attributes-and-tags"></a>Sertifika öznitelikleri ve Etiketler
@@ -57,14 +57,14 @@ Sertifika öznitelikleri, bir adreslenebilir anahtar ve KV sertifikası oluştur
 
 Bir Key Vault sertifikası aşağıdaki özniteliklere sahiptir:  
 
--   *etkin*: Boolean, isteğe bağlı, varsayılan değer **true**'dur. , Sertifika verilerinin anahtar olarak gizli veya çalıştırılabilir olarak alınıp alınamayacağını göstermek için belirtilebilir. Ayrıca *, NBF ve* *Exp*arasında bir işlem gerçekleştiğinde, *NBF* ve *Exp* ile birlikte de kullanılır ve yalnızca etkin değeri true olarak ayarlandıysa izin verilir. *NBF* ve *Exp* penceresinin dışındaki işlemlere otomatik olarak izin verilmez.  
+-   *etkin* : Boolean, isteğe bağlı, varsayılan değer **true** 'dur. , Sertifika verilerinin anahtar olarak gizli veya çalıştırılabilir olarak alınıp alınamayacağını göstermek için belirtilebilir. Ayrıca *, NBF ve* *Exp* arasında bir işlem gerçekleştiğinde, *NBF* ve *Exp* ile birlikte de kullanılır ve yalnızca etkin değeri true olarak ayarlandıysa izin verilir. *NBF* ve *Exp* penceresinin dışındaki işlemlere otomatik olarak izin verilmez.  
 
 Yanıtta bulunan ek salt okuma öznitelikleri vardır:
 
--   *oluşturma*: intdate: sertifikanın bu sürümünün ne zaman oluşturulduğunu gösterir.  
--   *güncelleştirildi*: intdate: sertifikanın bu sürümünün ne zaman güncelleştirildiğini gösterir.  
--   *Exp*: intdate: x509 sertifikasının süre sonu tarihinin değerini içerir.  
--   *NBF*: intdate: x509 sertifikası tarihinin değerini içerir.  
+-   *oluşturma* : intdate: sertifikanın bu sürümünün ne zaman oluşturulduğunu gösterir.  
+-   *güncelleştirildi* : intdate: sertifikanın bu sürümünün ne zaman güncelleştirildiğini gösterir.  
+-   *Exp* : intdate: x509 sertifikasının süre sonu tarihinin değerini içerir.  
+-   *NBF* : intdate: x509 sertifikası tarihinin değerini içerir.  
 
 > [!Note] 
 > Key Vault sertifikasının süresi dolarsa adreslenebilir anahtarı ve gizli dizisi çalışmaz.  
@@ -82,11 +82,11 @@ Sertifika ilkesi, bir Key Vault sertifikasının yaşam döngüsünü oluşturma
 
 Sıfırdan bir Key Vault sertifikası oluşturulduğunda, bir ilkenin sağlanması gerekir. İlke, bu Key Vault sertifikası sürümünün veya sonraki Key Vault sertifika sürümünün nasıl oluşturulacağını belirtir. Bir ilke kurulduktan sonra, gelecekteki sürümler için art arda oluşturma işlemlerinde bu gerekli değildir. Bir Key Vault sertifikasının tüm sürümleri için bir ilkenin yalnızca bir örneği bulunur.  
 
-Yüksek düzeyde, bir sertifika ilkesi aşağıdaki bilgileri içerir (tanımları [burada](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)bulunabilir):  
+Yüksek düzeyde, bir sertifika ilkesi aşağıdaki bilgileri içerir (tanımları [burada](/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)bulunabilir):  
 
 -   X509 sertifika özellikleri: bir x509 sertifika isteği oluşturmak için kullanılan konu adını, konu diğer adlarını ve diğer özellikleri Içerir.  
 -   Anahtar özellikleri: anahtar türü, anahtar uzunluğu, dışarı aktarılabilir ve Reusekeyonyenilemesi alanlarını içerir. Bu alanlar anahtar kasasının nasıl oluşturulacağını gösteren anahtar kasasına yönlendirir. 
-     - Desteklenen KeyTypes: RSA, RSA-HSM, EC, EC-HSM, Oct ( [burada](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)listelenir) 
+     - Desteklenen KeyTypes: RSA, RSA-HSM, EC, EC-HSM, Oct ( [burada](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)listelenir) 
 -   Gizli özellikler: sertifikayı gizli olarak almak için, gizli değeri oluşturmak üzere adreslenebilir gizli dizi içerik türü gibi gizli özellikler içerir.  
 -   Ömür Işlemleri: KV sertifikası için ömür eylemleri içerir. Her ömür eylemi şunları içerir:  
 
@@ -103,14 +103,14 @@ Aşağıdaki tablo, x509 anahtar kullanımı ilkesinin Key Vault sertifikası ol
 
 |**X509 anahtar kullanım bayrakları**|**Key Vault anahtar Ops**|**Varsayılan davranış**|
 |----------|--------|--------|
-|Veri şifreleme|şifreleme, şifre çözme| YOK |
-|Yalnızca çözülemez|çözülemiyor| YOK  |
+|Veri şifreleme|şifreleme, şifre çözme| Yok |
+|Yalnızca çözülemez|çözülemiyor| Yok  |
 |DigitalSignature|imzala, Doğrula| Sertifika oluşturma sırasında kullanım belirtimi olmadan varsayılan Key Vault | 
-|Yalnızca şifreleme|şifrele| YOK |
-|KeyCertSign|imzala, Doğrula|YOK|
+|Yalnızca şifreleme|şifrele| Yok |
+|KeyCertSign|imzala, Doğrula|Yok|
 |KeyEncipherment|wrapKey, unwrapKey| Sertifika oluşturma sırasında kullanım belirtimi olmadan varsayılan Key Vault | 
-|Kabullenme|imzala, Doğrula| YOK |
-|crlsign|imzala, Doğrula| YOK |
+|Kabullenme|imzala, Doğrula| Yok |
+|crlsign|imzala, Doğrula| Yok |
 
 ## <a name="certificate-issuer"></a>Sertifikayı veren
 
@@ -133,7 +133,7 @@ Bir sertifika verenin bir Key Vault oluşturulabilmesi için, önkoşul 1 ve 2 '
 
     -   Anahtar kasasında sağlayıcının veren nesnesini oluşturmak için kullanılacak yapılandırmayı sağlar  
 
-Sertifika portalından veren nesneleri oluşturma hakkında daha fazla bilgi için [Key Vault sertifikaları bloguna](https://aka.ms/kvcertsblog) bakın  
+Sertifika portalından veren nesneleri oluşturma hakkında daha fazla bilgi için [Key Vault sertifikaları bloguna](/archive/blogs/kv/manage-certificates-via-azure-key-vault) bakın  
 
 Key Vault, farklı veren sağlayıcı yapılandırmasına sahip birden çok veren nesne oluşturulmasına izin verir. Bir veren nesnesi oluşturulduktan sonra, adının bir veya birden çok sertifika ilkesiyle başvurusu yapılabilir. Veren nesnesine başvurmak, sertifika oluşturma ve yenileme sırasında CA sağlayıcısından x509 sertifikası istenirken sertifikayı veren nesnesinde belirtilen yapılandırmayı kullanmak Key Vault söyler.  
 

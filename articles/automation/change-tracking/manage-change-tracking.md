@@ -3,14 +3,14 @@ title: Azure Otomasyonu 'nda Değişiklik İzleme ve stoku yönetme
 description: Bu makalede, ortamınızdaki yazılım ve Microsoft hizmet değişikliklerini izlemek için Değişiklik İzleme ve envanterin nasıl kullanılacağı açıklanır.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 10/14/2020
+ms.date: 11/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: a599bb6f07683540f5b12c6a69d6565161f89a4f
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 99cdc4191320efb37b37e4ec38e808f3961a1207
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92210467"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288744"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Değişiklik İzleme ve Stok yönetimi
 
@@ -35,31 +35,38 @@ Dosya ve klasör/dizinlerdeki değişiklikleri izlemek için Değişiklik İzlem
 
 Windows bilgisayarlarda dosya izlemeyi yapılandırmak için aşağıdaki adımları kullanın:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-2. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Otomasyon** yazın. Yazmaya başladığınızda liste, giriş listenize göre öneriler uygular. **Automation Hesapları**’nı seçin.
+2. Azure portal, **tüm hizmetler** ' i seçin. Kaynak listesinde **Otomasyon** yazın. Yazmaya başladığınızda liste, giriş listenize göre öneriler uygular. **Automation Hesapları** ’nı seçin.
 
 3. Otomasyon hesapları listenizde, Değişiklik İzleme ve envanteri etkinleştirildiğinde seçtiğiniz hesabı seçin.
 
-4. Otomasyon hesabınızda **yapılandırma yönetimi**altında **değişiklik izleme** ' yi seçin.
+4. Otomasyon hesabınızda **yapılandırma yönetimi** altında **değişiklik izleme** ' yi seçin.
 
 5. **Ayarları Düzenle** (dişli simgesi) seçeneğini belirleyin.
 
-6. Çalışma alanı yapılandırması sayfasında **Windows dosyaları**' nı seçin ve ardından **+ Ekle** ' ye tıklayarak izlenecek yeni bir dosya ekleyin.
+6. Çalışma alanı yapılandırması sayfasında **Windows dosyaları** ' nı seçin ve ardından **+ Ekle** ' ye tıklayarak izlenecek yeni bir dosya ekleyin.
 
-7. Değişiklik İzleme için Windows dosyası Ekle bölmesinde, izlenecek dosya veya klasör için bilgileri girin ve **Kaydet**' e tıklayın. Aşağıdaki tabloda, bilgiler için kullanabileceğiniz özellikler tanımlanmaktadır.
+7. Değişiklik İzleme için Windows dosyası Ekle bölmesinde, izlenecek dosya veya klasör için bilgileri girin ve **Kaydet** ' e tıklayın. Aşağıdaki tabloda, bilgiler için kullanabileceğiniz özellikler tanımlanmaktadır.
 
     |Özellik  |Açıklama  |
     |---------|---------|
     |Etkin     | Ayar uygulanmışsa true, aksi takdirde false.        |
     |Öğe Adı     | İzlenecek dosyanın kolay adı.        |
     |Grup     | Dosyaları mantıksal olarak gruplandırmak için bir grup adı.        |
-    |Yolu girin     | Dosyanın denetlenecek yol (örneğin, **c:\Temp \\ \* . txt**). Ayrıca, gibi ortam değişkenlerini de kullanabilirsiniz `%winDir%\System32\\\*.*` .       |
+    |Yolu girin     | Dosyanın denetlenecek yol (örneğin, **c:\Temp \\ \* . txt** ). Ayrıca, gibi ortam değişkenlerini de kullanabilirsiniz `%winDir%\System32\\\*.*` .       |
     |Yol Türü     | Yolun türü. Olası değerler dosya ve klasördür.        |    
     |Özyineleme     | Bu öğeyi izlenecek öğe ararken, aksi takdirde false ise true.        |    
     |Dosya içeriğini karşıya yükle | İzlenen değişikliklerle dosya içeriğini karşıya yüklemek için true, aksi durumda false.|
 
-8. **Dosya Içeriğini karşıya yüklemek**Için true değerini belirttiğinizden emin olun. Bu ayar, belirtilen dosya yolu için dosya içeriği izlemeyi etkinleştirilir.
+    Joker karakterler kullanarak dosya ve klasörlerin izlenmesini yapılandırmayı planlıyorsanız şunları göz önünde bulundurun:
+
+    - Birden çok dosyayı izlemek için joker karakterler gereklidir.
+    - Joker karakterler yalnızca bir yolun son kesiminde kullanılabilir (örneğin, *C:\folder\file* veya */etc/*. conf *)
+    - Bir ortam değişkeni geçerli olmayan bir yol içeriyorsa, doğrulama başarılı olur ancak sayım çalıştırıldığında yol başarısız olur.
+    - Yolu ayarlarken, *c:*. * * gibi genel yollardan kaçının ve çok fazla klasör çapraz olarak sonuçlanır.
+
+8. **Dosya Içeriğini karşıya yüklemek** Için true değerini belirttiğinizden emin olun. Bu ayar, belirtilen dosya yolu için dosya içeriği izlemeyi etkinleştirilir.
 
 ### <a name="configure-file-tracking-on-linux"></a>Linux 'ta dosya izlemeyi yapılandırma
 
@@ -67,9 +74,9 @@ Linux bilgisayarlarda dosya izlemeyi yapılandırmak için aşağıdaki adımlar
 
 1. **Ayarları Düzenle** (dişli simgesi) seçeneğini belirleyin.
 
-2. Çalışma alanı yapılandırma sayfasında, **Linux dosyaları**' nı seçin ve ardından **+ Ekle** ' yi seçerek izlenecek yeni bir dosya ekleyin.
+2. Çalışma alanı yapılandırma sayfasında, **Linux dosyaları** ' nı seçin ve ardından **+ Ekle** ' yi seçerek izlenecek yeni bir dosya ekleyin.
 
-3. **Değişiklik izleme Için Linux dosyası Ekle** sayfasında, izlenecek dosya veya dizin bilgilerini girin ve ardından **Kaydet**' i seçin. Aşağıdaki tabloda, bilgiler için kullanabileceğiniz özellikler tanımlanmaktadır.
+3. **Değişiklik izleme Için Linux dosyası Ekle** sayfasında, izlenecek dosya veya dizin bilgilerini girin ve ardından **Kaydet** ' i seçin. Aşağıdaki tabloda, bilgiler için kullanabileceğiniz özellikler tanımlanmaktadır.
 
     |Özellik  |Açıklama  |
     |---------|---------|
@@ -83,7 +90,7 @@ Linux bilgisayarlarda dosya izlemeyi yapılandırmak için aşağıdaki adımlar
     |Bağlantılar     | Dizinler arasında geçiş yaparken sembolik bağlantılarla nasıl başa çıkılacağını belirleyen ayar. Olası değerler şunlardır:<br> Ignore-sembolik bağlantıları yoksayar ve başvurulan dosya/dizinleri içermez.<br>Takip et-özyineleme sırasında sembolik bağlantıları Izler ve başvurulan dosya/dizinleri de içerir.<br>Yönet-sembolik bağlantıları Izler ve döndürülen içeriğin değiştirilmesine izin verir.<br>**Note:** Dosya içeriğini almayı desteklemediğinden Yönet seçeneği önerilmez.    |
     |Dosya içeriğini karşıya yükle | İzlenen değişikliklerle dosya içeriğini karşıya yüklemek için true, aksi durumda false. |
 
-4. **Dosya Içeriğini karşıya yüklemek**Için **true değerini** belirttiğinizden emin olun. Bu ayar, belirtilen dosya yolu için dosya içeriği izlemeyi etkinleştirilir.
+4. **Dosya Içeriğini karşıya yüklemek** Için **true değerini** belirttiğinizden emin olun. Bu ayar, belirtilen dosya yolu için dosya içeriği izlemeyi etkinleştirilir.
 
    ![Linux dosyası Ekle](./media/manage-change-tracking/add-linux-file.png)
 
@@ -102,7 +109,7 @@ Dosya içeriklerinde yapılan değişikliklere yönelik izlemeyi etkinleştirmek
 
 1. **Ayarları Düzenle** (dişli simgesi) seçeneğini belirleyin.
 
-2. **Dosya içeriği** ' ni seçin ve ardından **bağlantı**' yı seçin. Bu seçim, **değişiklik izleme Için Içerik konumu Ekle** sayfasını açar.
+2. **Dosya içeriği** ' ni seçin ve ardından **bağlantı** ' yı seçin. Bu seçim, **değişiklik izleme Için Içerik konumu Ekle** sayfasını açar.
 
    ![İçerik konumu Ekle](./media/manage-change-tracking/enable.png)
 
@@ -112,7 +119,7 @@ Dosya içeriklerinde yapılan değişikliklere yönelik izlemeyi etkinleştirmek
 
    ![Depolama hesabı ayarla](./media/manage-change-tracking/storage-account.png)
 
-6. Değişiklik İzleme ve Inventory, dosya içeriği değişiklik izlemeyi etkinleştirdiğinden depolama hesabı ve paylaşılan erişim Imzası (SAS) URI 'Lerini gösterir. İmzaların kullanım süreleri 365 gün sonra doluyor ve yeniden **Oluştur**' u seçerek yeniden oluşturabilirsiniz.
+6. Değişiklik İzleme ve Inventory, dosya içeriği değişiklik izlemeyi etkinleştirdiğinden depolama hesabı ve paylaşılan erişim Imzası (SAS) URI 'Lerini gösterir. İmzaların kullanım süreleri 365 gün sonra doluyor ve yeniden **Oluştur** ' u seçerek yeniden oluşturabilirsiniz.
 
    ![Hesap anahtarlarını listeleme](./media/manage-change-tracking/account-keys.png)
 
@@ -134,11 +141,11 @@ Windows bilgisayarlarda kayıt defteri anahtarı izlemeyi yapılandırmak için 
 
 1. Otomasyon hesabınızdan **değişiklik izleme** sayfasında **Ayarları Düzenle** (dişli simgesi) seçeneğini belirleyin.
 
-2. Çalışma alanı yapılandırması sayfasında **Windows kayıt defteri**' ni seçin.
+2. Çalışma alanı yapılandırması sayfasında **Windows kayıt defteri** ' ni seçin.
 
 3. İzlemek üzere yeni bir kayıt defteri anahtarı eklemek için **+ Ekle** ' yi seçin.
 
-4. **Değişiklik izleme Için Windows kayıt defteri Ekle** sayfasında, izlenecek anahtarın bilgilerini girin ve ardından **Kaydet**' i seçin. Aşağıdaki tabloda, bilgiler için kullanabileceğiniz özellikler tanımlanmaktadır.
+4. **Değişiklik izleme Için Windows kayıt defteri Ekle** sayfasında, izlenecek anahtarın bilgilerini girin ve ardından **Kaydet** ' i seçin. Aşağıdaki tabloda, bilgiler için kullanabileceğiniz özellikler tanımlanmaktadır. Bir kayıt defteri yolu belirtirken, bir değer değil, anahtar olması gerekir.
 
     |Özellik  |Açıklama  |
     |---------|---------|

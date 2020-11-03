@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 10/27/2020
+ms.date: 11/03/2020
 ms.custom: generated
-ms.openlocfilehash: d9881fe91885a9a97b51da176be98a9ed6d007ba
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 3f192493dfd6bfc2fb3d5802b1dd94cd4ca3a9a9
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900766"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285216"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure Kaynak sağlayıcısı işlemleri
 
@@ -81,7 +81,7 @@ Bu bölümde, yerleşik rollerde kullanılan Azure Kaynak sağlayıcılarının 
 | [Microsoft.Kusto](#microsoftkusto) |
 | [Microsoft. Powerbiadanmış](#microsoftpowerbidedicated) |
 | [Microsoft. StreamAnalytics](#microsoftstreamanalytics) |
-| **Blok zinciri** |
+| **Blok Zinciri** |
 | [Microsoft. Blockzinciri](#microsoftblockchain) |
 | **AI + makine öğrenimi** |
 | [Microsoft. BotService](#microsoftbotservice) |
@@ -843,7 +843,6 @@ Azure hizmeti: [Application Gateway](../application-gateway/index.yml), [Azure](
 > | Microsoft. Network/azureFirewalls/networkRuleCollections/Read | Azure Güvenlik Duvarı NetworkRuleCollection 'ı alır |
 > | Microsoft. Network/azureFirewalls/networkRuleCollections/Write | CreatesOrUpdates Azure Güvenlik Duvarı NetworkRuleCollection |
 > | Microsoft. Network/azureFirewalls/networkRuleCollections/Delete | Azure Güvenlik Duvarı NetworkRuleCollection 'ı siler |
-> | Microsoft. Network/azureWebCategories/Read | Azure Web kategorilerini alır |
 > | Microsoft. Network/bastionHosts/okuma | Bir savunma ana bilgisayarı alır |
 > | Microsoft. Network/Bastionkonakları/yazma | Savunma Konağı oluşturma veya güncelleştirme |
 > | Microsoft. Network/Bastionkonakları/silme | Bir savunma konağını siler |
@@ -1243,8 +1242,6 @@ Azure hizmeti: [Application Gateway](../application-gateway/index.yml), [Azure](
 > | Microsoft. Network/Virtualhub 'Ları/bgpConnections/Read | Sanal hub 'ın bir hub BGP bağlantısı alt kaynağını alır |
 > | Microsoft. Network/Virtualhub 'Ları/bgpConnections/Write | Sanal hub 'ın bir hub BGP bağlantısı alt kaynağını oluşturur veya güncelleştirir |
 > | Microsoft. Network/Virtualhub 'Ları/bgpConnections/Delete | Sanal hub 'ın bir hub BGP bağlantısı alt kaynağını siler |
-> | Microsoft. Network/Virtualhub 'Ları/bgpConnections/Advertisedrotalar/Action | Bir virtualrouter tanıtılan yolları alır |
-> | Microsoft. Network/Virtualhub 'Ları/bgpConnections/Öğrennedroutes/eylem | Virtualrouter öğrenilen yollarını alır |
 > | Microsoft. Network/Virtualhub 'Ları/hubRouteTables/Read | Sanal hub 'ın bir rota tablosu alt kaynağını alır |
 > | Microsoft. Network/Virtualhub 'Ları/hubRouteTables/Write | Sanal hub 'ın bir rota tablosu alt kaynağını oluşturur veya güncelleştirir |
 > | Microsoft. Network/Virtualhub 'Ları/hubRouteTables/Delete | Sanal hub 'ın bir rota tablosu alt kaynağını siler |
@@ -1332,9 +1329,6 @@ Azure hizmeti: [Application Gateway](../application-gateway/index.yml), [Azure](
 > | Microsoft. Network/vpngateway/startpacketcapture/Action | Bağlı kaynakla VPN Gateway paket yakalamayı Başlat |
 > | Microsoft. Network/vpngateway/stoppacketcapture/Action | SasURL ile VPN Gateway paket yakalamayı durdur |
 > | Microsoft. Network/vpngateway/listvpnconnectionshegizli/Action | Bir VpnGateway 'de bir bağlantı kümesinin tümü veya bir alt kümesi için bağlantı durumunu alır |
-> | Microsoft. Network/Vpngateway/natRules/Read | Bir NAT kuralı kaynağı alır |
-> | Microsoft. Network/Vpngateway/natRules/Write | NAT kuralı kaynağı koyar |
-> | Microsoft. Network/Vpngateway/natRules/Delete | NAT kuralı kaynağını siler |
 > | Microsoft. Network/Vpngateway/vpnConnections/Read | Bir VpnConnection alır. |
 > | Microsoft. Network/Vpngateway/vpnConnections/Write | Bir VpnConnection koyar. |
 > | Microsoft. Network/Vpngateway/vpnConnections/Delete | Bir VpnConnection 'ı siler. |
@@ -1522,6 +1516,7 @@ Azure hizmeti: [depolama](../storage/index.yml)
 > | Microsoft. Storage/konumlar/kullanımlar/okuma | Belirtilen abonelikteki kaynaklar için sınırı ve geçerli kullanım sayısını döndürür |
 > | Microsoft. Storage/işlemler/okuma | Zaman uyumsuz bir işlemin durumunu yoklar. |
 > | Microsoft. Storage/SKU/okuma | Microsoft. Storage tarafından desteklenen SKU 'Ları listeler. |
+> | Microsoft. Storage/storageAccounts/Updateınternalproperties/Action |  |
 > | Microsoft. Storage/storageAccounts/hnsonmigration/eylem | Müşteri, depolama hesabında devam eden bir HNS geçişini iptal edebilir |
 > | Microsoft. Storage/storageAccounts/hnsonmigration/eylem | Müşteri, HNS hesap türüne geçirebiliyor |
 > | Microsoft. Storage/storageAccounts/restoreBlobRanges/eylem | Blob aralıklarını belirtilen sürenin durumuna geri yükle |
@@ -1572,6 +1567,7 @@ Azure hizmeti: [depolama](../storage/index.yml)
 > | Microsoft. Storage/storageAccounts/fileServices/paylaşımlar/okuma | Dosya paylaşımlarını Listele |
 > | Microsoft. Storage/storageAccounts/fileServices/paylaşımlar/yazma | Dosya paylaşma oluştur veya güncelleştir |
 > | Microsoft. Storage/storageAccounts/ınventorypolicies/Delete |  |
+> | Microsoft. Storage/storageAccounts/ınventorypolicies/Read |  |
 > | Microsoft. Storage/storageAccounts/ınventorypolicies/Read |  |
 > | Microsoft. Storage/storageAccounts/ınventorypolicies/Write |  |
 > | Microsoft. Storage/storageAccounts/localUsers/Delete | Yerel kullanıcıyı sil |
@@ -2128,18 +2124,19 @@ Azure hizmeti: [Azure SignalR hizmeti](../azure-signalr/index.yml)
 > | Microsoft. SignalRService/SignalR/privateEndpointConnections/Read | Özel bir uç nokta bağlantısını oku |
 > | Microsoft. SignalRService/SignalR/privateLinkResources/Read | Tüm SignalR özel bağlantı kaynaklarını listeleyin |
 > | **DataAction** | **Açıklama** |
-> | Microsoft. SignalRService/SignalR/serverConnection/Action | Sunucu bağlantısı başlatın. |
-> | Microsoft. SignalRService/SignalR/clientConnection/Action | Gruplardan istemci bağlantıları Ekle/Kaldır veya bir istemci bağlantısını kapat. |
-> | Microsoft. SignalRService/SignalR/Kullanıcı/eylem | Gruplardan Kullanıcı ekleyin/kaldırın. |
-> | Microsoft. SignalRService/SignalR/clientConnection/Read | Bağlantı varlığını denetleyin. |
-> | Microsoft. SignalRService/SignalR/clientConnection/Write | İletileri doğrudan bir istemci bağlantısına gönderin. |
-> | Microsoft. SignalRService/SignalR/grup/okuma | Grup varlığını denetleyin. |
-> | Microsoft. SignalRService/SignalR/grup/yazma | Bir gruptaki veya bazı gruplarda istemci bağlantılarına ileti yayınlayın. |
-> | Microsoft. SignalRService/SignalR/hub/Write | Bu hub 'a bağlı tüm istemci bağlantılarına ileti yayınlayın. |
-> | Microsoft. SignalRService/SignalR/Service/accessKey/Action | Clienttoken imzalamak için geçici bir AccessKey alın. |
-> | Microsoft. SignalRService/SignalR/Service/clientToken/Action | İstemci bağlantısı başlatmak için bir ClientToken alın. |
-> | Microsoft. SignalRService/SignalR/Kullanıcı/okuma | Kullanıcı varlığını ve bir grup içinde olup olmadığını denetleyin. |
-> | Microsoft. SignalRService/SignalR/Kullanıcı/yazma | Birden çok istemci bağlantısına sahip olabilecek bir kullanıcıya ileti gönderin. |
+> | Microsoft. SignalRService/SignalR/auth/accessKey/Action | Clienttoken imzalamak için geçici bir AccessKey oluşturun. |
+> | Microsoft. SignalRService/SignalR/auth/clientToken/Action | İstemci bağlantısı başlatmak için bir ClientToken oluşturun. |
+> | Microsoft. SignalRService/SignalR/clientConnection/Send/ACTION | İletileri doğrudan bir istemci bağlantısına gönderin. |
+> | Microsoft. SignalRService/SignalR/clientConnection/Read | İstemci bağlantısı varlığını denetleyin. |
+> | Microsoft. SignalRService/SignalR/clientConnection/Write | İstemci bağlantısını kapatın. |
+> | Microsoft. SignalRService/SignalR/grup/Send/ACTION | Gruba yayın iletisi. |
+> | Microsoft. SignalRService/SignalR/grup/okuma | Grup varlığını veya Kullanıcı varlığını denetleyin. |
+> | Microsoft. SignalRService/SignalR/grup/yazma | Grubu birleştir/bırak. |
+> | Microsoft. SignalRService/SignalR/hub/Send/ACTION | Hub 'daki tüm istemci bağlantılarına ileti yayınlayın. |
+> | Microsoft. SignalRService/SignalR/serverConnection/Write | Sunucu bağlantısı başlatın. |
+> | Microsoft. SignalRService/SignalR/Kullanıcı/gönderme/eylem | Kullanıcıya birden çok istemci bağlantısından oluşabilen iletiler gönderin. |
+> | Microsoft. SignalRService/SignalR/Kullanıcı/okuma | Kullanıcı varlığını denetleyin. |
+> | Microsoft. SignalRService/SignalR/Kullanıcı/yazma |  |
 
 ### <a name="microsoftweb"></a>Microsoft. Web
 
@@ -3256,6 +3253,11 @@ Azure hizmeti: [Data Factory](../data-factory/index.yml)
 > | Microsoft. DataFactory/Factory/linkedServices/Read | Bağlı hizmeti okur. |
 > | Microsoft. DataFactory/Factory/linkedServices/Delete | Bağlı hizmeti siler. |
 > | Microsoft. DataFactory/Factory/linkedServices/Write | Bağlı hizmet oluştur veya güncelleştir |
+> | Microsoft. DataFactory/Factory/managedVirtualNetworks/Read | Yönetilen sanal ağı okuyun. |
+> | Microsoft. DataFactory/Factory/managedVirtualNetworks/Write | Yönetilen sanal ağ oluşturun veya güncelleştirin. |
+> | Microsoft. DataFactory/Factory/managedVirtualNetworks/managedPrivateEndpoints/okuma | Yönetilen özel uç noktayı okuyun. |
+> | Microsoft. DataFactory/Factory/managedVirtualNetworks/managedPrivateEndpoints/Write | Yönetilen özel uç nokta oluşturun veya güncelleştirin. |
+> | Microsoft. DataFactory/Factory/managedVirtualNetworks/managedPrivateEndpoints/Delete | Yönetilen özel uç noktayı silin. |
 > | Microsoft. DataFactory/Factory/operationResults/Read | İşlem sonuçlarını alır. |
 > | Microsoft. DataFactory/Factory/ardışık düzen eylemsizlik/okunan | İşlem hattı çalıştırmalarını okur. |
 > | Microsoft. DataFactory/Factory/ardışık düzen eylemsizlik/iptal/eylem | Çalıştırma KIMLIĞI tarafından belirtilen işlem hattı çalıştırmasını iptal eder. |
@@ -3862,6 +3864,8 @@ Azure hizmeti: [Azure SQL veritabanı](../azure-sql/database/index.yml), [Azure 
 > | Microsoft. SQL/ınstancehavuzlar/Delete | Bir örnek havuzunu siler |
 > | Microsoft. SQL/ınstancepools/kullanımlar/okuma | Örnek havuzunun kullanım bilgilerini alır |
 > | Microsoft. SQL/konumlar/okuma | Belirli bir abonelik için kullanılabilir konumları alır |
+> | Microsoft. SQL/Locations/Yönetimtokızureasyncoperation/Read | Yönetilen örnek Azure zaman uyumsuz yönetici işlemleri sonucunu alır. |
+> | Microsoft. SQL/Locations/Yönetimtoroperationresults/Read | Yönetilen örnek Yöneticisi işlemler sonucunu alır. |
 > | Microsoft. SQL/Locations/auditingSettingsAzureAsyncOperation/Read | Genişletilmiş sunucu blobu denetim ilkesi ayarlama işleminin sonucunu al |
 > | Microsoft. SQL/Locations/auditingSettingsOperationResults/Read | Sunucu blobu denetim ilkesi ayarlama işleminin sonucunu al |
 > | Microsoft. SQL/konumlar/yetenekler/okuma | Belirli bir konumdaki bu aboneliğin yeteneklerini alır |
@@ -3883,6 +3887,8 @@ Azure hizmeti: [Azure SQL veritabanı](../azure-sql/database/index.yml), [Azure 
 > | Microsoft. SQL/konumlar/extendedAuditingSettingsOperationResults/Read | Genişletilmiş sunucu blobu denetim ilkesi ayarlama işleminin sonucunu al |
 > | Microsoft. SQL/Locations/firewallRulesAzureAsyncOperation/Read | Bir güvenlik duvarı kuralı işleminin durumunu alır. |
 > | Microsoft. SQL/Locations/firewallRulesOperationResults/Read | Bir güvenlik duvarı kuralı işleminin durumunu alır. |
+> | Microsoft. SQL/konumlar/hybridLinkAzureAsyncOperation/Read | Azure SQL yönetilen örneği 'nde uzun süreli karma bağlantı zaman uyumsuz işleminin durumunu alır. |
+> | Microsoft. SQL/Locations/hybridLinkOperationResults/Read | Uzun süreli karma bağlantı zaman uyumsuz işleminin durumunu alır. |
 > | Microsoft. SQL/Locations/ınstancefailovergroups/Read | Örnek yük devretme grupları listesini döndürür veya belirtilen örnek yük devretme grubu için özellikleri alır. |
 > | Microsoft. SQL/Locations/ınstancefailovergroups/Write | Belirtilen parametrelerle bir örnek yük devretme grubu oluşturur veya belirtilen örnek yük devretme grubu için özellikleri veya etiketleri güncelleştirir. |
 > | Microsoft. SQL/Locations/ınstancefailovergroups/Delete | Var olan bir örnek yük devretme grubunu siler. |
@@ -3998,6 +4004,9 @@ Azure hizmeti: [Azure SQL veritabanı](../azure-sql/database/index.yml), [Azure 
 > | Microsoft. SQL/ManagedInstances/encryptionProtector/yeniden doğrula/eylem | Belirtilen sunucu şifreleme koruyucusu için özellikleri güncelleştirin. |
 > | Microsoft. SQL/ManagedInstances/encryptionProtector/Read | Sunucu şifreleme koruyucuları listesini döndürür veya belirtilen sunucu şifreleme koruyucusu için özellikleri alır. |
 > | Microsoft. SQL/ManagedInstances/encryptionProtector/Write | Belirtilen sunucu şifreleme koruyucusu için özellikleri güncelleştirin. |
+> | Microsoft. SQL/ManagedInstances/hybridLink/Read | Karma bağlantılar listesini döndürün veya belirtilen dağıtılmış kullanılabilirlik grubunun özelliklerini alır. |
+> | Microsoft. SQL/ManagedInstances/hybridLink/Write | Belirtilen parametrelerle karma bağlantı oluşturur veya güncelleştirir. |
+> | Microsoft. SQL/ManagedInstances/hybridLink/Delete | Belirtilen dağıtılmış kullanılabilirlik grubuyla karma bağlantıyı siler. |
 > | Microsoft. SQL/ManagedInstances/ınbleblemanageddatabases/Read | Yönetilen bir örnekteki erişilemeyen yönetilen veritabanlarının listesini alır |
 > | Microsoft. SQL/ManagedInstances/anahtarlar/okuma | Yönetilen örnek anahtarlarının listesini döndürün veya belirtilen yönetilen örnek anahtarı için özellikleri alır. |
 > | Microsoft. SQL/ManagedInstances/anahtarlar/Write | Belirtilen parametrelerle bir anahtar oluşturur veya belirtilen yönetilen örnek anahtarı için özellikleri veya etiketleri güncelleştirir. |
@@ -4672,7 +4681,7 @@ Azure hizmeti: [Stream Analytics](../stream-analytics/index.yml)
 > | Microsoft. StreamAnalytics/streamingjobs/dönüşümler/okuma | Stream Analytics Işi dönüşümünü oku |
 > | Microsoft. StreamAnalytics/streamingjobs/dönüşümler/yazma | Stream Analytics Işi dönüşümünü yaz |
 
-## <a name="blockchain"></a>Blok zinciri
+## <a name="blockchain"></a>Blok Zinciri
 
 ### <a name="microsoftblockchain"></a>Microsoft. Blockzinciri
 
@@ -6541,6 +6550,9 @@ Azure hizmeti: [Key Vault](../key-vault/index.yml)
 > | Microsoft. Keykasası/Vaults/eventGridFilters/Read | Microsoft. Keykasasına Key Vault için bir EventGrid aboneliğinin görüntülendiğini bildirir |
 > | Microsoft. Keykasası/Vaults/eventGridFilters/Write | Microsoft. Keykasasında Key Vault yeni bir EventGrid aboneliğinin oluşturulduğunu bildirir |
 > | Microsoft. Keykasası/Vaults/eventGridFilters/Delete | Microsoft. Keykasasına Key Vault için bir EventGrid aboneliğinin silinmekte olduğunu bildirir |
+> | Microsoft. Keykasası/Vaults/anahtarlar/okuma | Belirtilen bir kasadaki anahtarları listeleyin veya belirtilen anahtarın geçerli sürümünü okuyun. |
+> | Microsoft. Keykasası/Vaults/anahtarlar/yazma | Yeni bir anahtar oluşturun veya var olan bir anahtarı güncelleştirin. |
+> | Microsoft. Keykasası/Vaults/anahtarlar/sürümler/okuma | Belirtilen bir anahtarın sürümlerini listeleyin veya bir anahtarın belirtilen sürümünü okuyun. |
 > | Microsoft. Keykasası/Kasaults/gizlilikler/Read | Gizli anahtar özelliklerini görüntüleyin, ancak değerini değil. |
 > | Microsoft. Keykasası/kasa/gizli dizi/yazma | Yeni bir gizli dizi oluşturun veya var olan bir parolanın değerini güncelleştirin. |
 > | **DataAction** | **Açıklama** |
@@ -8283,6 +8295,7 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 > | Microsoft. Operationalınsights/Workspaces/sorgu/SqlDataClassification/Read | SqlDataClassification tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/Workspaces/Query/SQLQueryPerformance/Read | SQLQueryPerformance tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/Workspaces/Query/SQL,, ıyassessmentresult/Read | SQLbir bu sonuç tablosundan verileri oku |
+> | Microsoft. Operationalınsights/Workspaces/Query/SQL,, ıyassessmentscanstatus/Read | SQLbir ve daha fazla veri okuma durumu tablosundan verileri oku |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/Storagebloblogları/okuma | Storagebloblogları tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/StorageFileLogs/okuma | StorageFileLogs tablosundan verileri okuma |
 > | Microsoft. Operationalınsights/çalışma alanları/sorgu/StorageQueueLogs/Read | StorageQueueLogs tablosundan verileri okuma |

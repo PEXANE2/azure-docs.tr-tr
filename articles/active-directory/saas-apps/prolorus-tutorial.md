@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: c1d339582ead7d851f9be79904d2d4de6e02b4a8
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 4582970a048a98c728a96ab707790be61d236e0e
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135262"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289421"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-prolorus"></a>Öğretici: Prolorus ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -31,7 +31,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Prolorus tümleştirme ha
 Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Prolorus çoklu oturum açma (SSO) etkin aboneliği.
+* Bir Prolorus çoklu oturum açma (SSO) aboneliği etkin.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -83,7 +83,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.prolorus.app/SAML/AssertionConsumerService`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Prolorus istemci destek ekibine](mailto:infrastructure@prolorus.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için, [Prolorus istemci destek ekibine](mailto:infrastructure@prolorus.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -118,11 +118,11 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, Probus 'ye eri�
 
 ## <a name="configure-prolorus-sso"></a>Prolorus SSO 'yu yapılandırma
 
-**Prolorus** tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal olan uygun URL 'leri [prolorus destek ekibine](mailto:infrastructure@prolorus.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+Üretim **tarafında çoklu** oturum açmayı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal olan uygun URL 'Leri, [prolorus destek ekibine](mailto:infrastructure@prolorus.com)göndermeniz gerekir. Göndermeden önce sertifikayı gönderdikten sonra herhangi bir e-posta sistemi tarafından engellenmemesini güvence altına alır. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-prolorus-test-user"></a>Prolorus test kullanıcısı oluşturma
 
-Bu bölümde, Prolorus 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. Prolorus platformunda kullanıcıları eklemek için [prolorus destek ekibi](mailto:infrastructure@prolorus.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Prolorus 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. Prolorus platformunda kullanıcıları eklemek için, [prolorus destek ekibi](mailto:infrastructure@prolorus.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
