@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: eb285f7ef536ac19d0ea7328a4428f33a47cd368
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e22400016eae0642c4e25fcfd4fcaaaab22a27a8
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129635"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280583"
 ---
 # <a name="speech-service-release-notes"></a>Konuşma hizmeti sürüm notları
 
@@ -41,7 +41,7 @@ SPX, Azure konuşma hizmetini kod yazmadan kullanmak için komut satırı arabir
 https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream.fromfile).
 -  **C++/c #/Java/Python/Objective-C/Swift** : `stopSpeakingAsync()` metin okuma senmetini durdurmak için bir yöntem eklendi. Burada başvuru belgelerini [(C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace), burada ( [C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet), burada ( [Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech?view=azure-java-stable), burada ( [Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)ve [burada (hedef-C/Swift)](https://docs.microsoft.com/objectivec/cognitive-services/speech/)okuyun.
 - **C#, C++, Java** : `FromDialogServiceConnector()` `Connection` sınıfına yönelik bağlantı ve bağlantı kesme olaylarını izlemek için kullanılabilecek bir işlev eklendi `DialogServiceConnector` . Başvuru belgelerini [burada (C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet), [burada (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)ve [burada (Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection?view=azure-java-stable)okuyun.
-- **C++/c #/Java/Python/Objective-C/Swift** : konuşma söylenişini değerlendiren ve konuşmadan elde edilecek doğruluk ve akıcı hale karşı konuşmacıya geri bildirimde bulunan telaffuz değerlendirmesi için destek eklendi. [Buradaki](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment)belgeleri okuyun.
+<!-- - **C++/C#/Java/Python/Objective-C/Swift**: Added support for Pronunciation Assessment, which evaluates speech pronunciation and gives speakers feedback on the accuracy and fluency of spoken audio. Read the documentation [here](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment). -->
 
 **Hata düzeltmeleri**
 - **Tümü** : `SetServiceProperty` belirli özel karakterlere sahip olan değerlerin yoksayıldı durumunda 1,13 gerileme düzeltildi.
@@ -64,7 +64,7 @@ https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audioda
 **Örnekler**
 - **ObjectiveC** : [buraya](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios/speech-samples)anahtar sözcük tanıma örneği eklendi.
 - **C#/JavaScript** : burada konuşma dökümü için hızlı başlangıç eklendi [(c#)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/conversation-transcription) ve [burada (JavaScript)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/conversation-transcription).
-- **C++/c #/Java/Python/Swift/ObjectiveC** : telaffuz değerlendirmesi için [buraya](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples) örnek eklendi
+<!-- - **C++/C#/Java/Python/Swift/ObjectiveC**: Added sample for pronunciation assessment [here](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples) -->
 - **Xamarin** : hızlı başlangıç, en son Visual Studio [şablonuna güncelleştirildi](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/xamarin).
 
 **Bilinen Sorun**
@@ -78,11 +78,11 @@ Sağlıklı olun!
 
 ### <a name="new-features"></a>Yeni özellikler
 
-* **Sınır TTS: yeni konuşma stili `en-US` Aria sesi** . AriaNeural, haberleri okurken bir haber kasaseine benzer. ' Newscast-resmi ' stili daha ciddi bir şekilde, ' newscast-normal ' stili daha gevşek ve resmi olmayan bir şekilde ses. Bkz. [SSML 'de konuşma stillerini kullanma](speech-synthesis-markup.md).
+* **Sınır TTS: yeni konuşma stili `en-US` Aria sesi**. AriaNeural, haberleri okurken bir haber kasaseine benzer. ' Newscast-resmi ' stili daha ciddi bir şekilde, ' newscast-normal ' stili daha gevşek ve resmi olmayan bir şekilde ses. Bkz. [SSML 'de konuşma stillerini kullanma](speech-synthesis-markup.md).
 
-* **Özel ses: eğitim verileri kalitesini otomatik olarak denetlemek için yeni bir özellik yayımlanmıştır** . Verilerinizi karşıya yüklediğinizde, sistem sesli ve döküm verilerinizin çeşitli yönlerini inceler ve ses modelinin kalitesini artırmak için sorunları otomatik olarak düzeltir veya filtreler. Bu, ses ve betik biçimine ek olarak sesinizin sesini, gürültü düzeyini, konuşma okunuşini, normalleştirmenin normalleştirilmiş metinle, sesin sessizliği ile hizalamasını ele alır. 
+* **Özel ses: eğitim verileri kalitesini otomatik olarak denetlemek için yeni bir özellik yayımlanmıştır**. Verilerinizi karşıya yüklediğinizde, sistem sesli ve döküm verilerinizin çeşitli yönlerini inceler ve ses modelinin kalitesini artırmak için sorunları otomatik olarak düzeltir veya filtreler. Bu, ses ve betik biçimine ek olarak sesinizin sesini, gürültü düzeyini, konuşma okunuşini, normalleştirmenin normalleştirilmiş metinle, sesin sessizliği ile hizalamasını ele alır. 
 
-* **Ses Içeriği oluşturma: daha güçlü ses ayarlama ve ses yönetimi özelliklerini etkinleştirmeye yönelik yeni özellikler kümesi** .
+* **Ses Içeriği oluşturma: daha güçlü ses ayarlama ve ses yönetimi özelliklerini etkinleştirmeye yönelik yeni özellikler kümesi**.
 
     * Telaffuz: telaffuz ayarlama özelliği en son Fonem kümesine güncelleştirilir. Kitaplıktan doğru Fonem öğesini seçebilir ve seçtiğiniz sözcüklerin söylenişini geliştirebilirsiniz. 
 
@@ -92,7 +92,7 @@ Sağlıklı olun!
 
     * SSML belgeleri: tüm ayarlama özelliklerinin nasıl kullanılacağına ilişkin kuralları kontrol etmenize yardımcı olmak için SSML belgesine bağlanır.
 
-* **Ses listesi API 'Si, Kullanıcı dostu bir ekran adı ve sinir sesleri için desteklenen konuşma stillerini içerecek şekilde güncelleştirilir** .
+* **Ses listesi API 'Si, Kullanıcı dostu bir ekran adı ve sinir sesleri için desteklenen konuşma stillerini içerecek şekilde güncelleştirilir**.
 
 ### <a name="general-tts-voice-quality-improvements"></a>Genel TTS ses kalitesi geliştirmeleri
 
