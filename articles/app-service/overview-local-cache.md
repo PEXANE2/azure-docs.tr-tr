@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: b3c8f6015b4627d86a0665865fba2f3fdd39589d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9e43cb9188df8274d5bafa7fd9bc90c24339237
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88080720"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286834"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service yerel önbelleğe genel bakış
 
@@ -36,7 +36,7 @@ Azure App Service yerel önbellek özelliği, içeriğinizin bir Web rolü gör�
 
 ## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Yerel önbelleğin App Service davranışını nasıl değiştirdiği
 * _D:\home_ , uygulama başlatıldığında VM örneğinde oluşturulan yerel önbelleğe işaret eder. _D:\Local_ , VM 'ye özgü geçici depolamaya işaret etmeye devam ediyor.
-* Yerel önbellek, sırasıyla _D:\home\site_ ve _D:\home\siteextensions_konumundaki paylaşılan içerik deposunun _/site_ ve _/siteextensions_ klasörlerinin tek seferlik bir kopyasını içerir. Dosyalar, uygulama başladığında yerel önbelleğe kopyalanır. Her bir uygulama için iki klasörün boyutu varsayılan olarak 1 GB ile sınırlıdır, ancak 2 GB 'a artırılabilir. Önbellek boyutunun arttıkça önbelleğin yüklenmesi daha uzun sürer. Yerel önbellek sınırını 2 GB olarak artırdıysanız ve kopyalanan dosyalar en fazla 2 GB boyutunu aşarsa, App Service sessizce yerel önbelleği yoksayar ve uzak dosya paylaşımından okur. Sınır tanımlanmazsa veya sınır 2 GB 'den daha düşük bir şeye ayarlanmışsa ve kopyalanan dosyalar sınırı aşarsa, dağıtım veya değiştirme bir hata vererek başarısız olabilir.
+* Yerel önbellek, sırasıyla _D:\home\site_ ve _D:\home\siteextensions_ konumundaki paylaşılan içerik deposunun _/site_ ve _/siteextensions_ klasörlerinin tek seferlik bir kopyasını içerir. Dosyalar, uygulama başladığında yerel önbelleğe kopyalanır. Her bir uygulama için iki klasörün boyutu varsayılan olarak 1 GB ile sınırlıdır, ancak 2 GB 'a artırılabilir. Önbellek boyutunun arttıkça önbelleğin yüklenmesi daha uzun sürer. Yerel önbellek sınırını 2 GB olarak artırdıysanız ve kopyalanan dosyalar en fazla 2 GB boyutunu aşarsa, App Service sessizce yerel önbelleği yoksayar ve uzak dosya paylaşımından okur. Sınır tanımlanmazsa veya sınır 2 GB 'den daha düşük bir şeye ayarlanmışsa ve kopyalanan dosyalar sınırı aşarsa, dağıtım veya değiştirme bir hata vererek başarısız olabilir.
 * Yerel önbellek okuma-yazma ' dır. Ancak, uygulama sanal makineleri taşıdığında veya yeniden başlatıldığında herhangi bir değişiklik atılır. Görev açısından kritik verileri içerik deposunda depolayan uygulamalar için yerel önbellek kullanmayın.
 * _D:\home\logfiles_ ve _d:\home\data_ günlük dosyalarını ve uygulama verilerini içerir. İki alt klasör, sanal makine örneğinde yerel olarak depolanır ve paylaşılan içerik deposuna düzenli olarak kopyalanır. Uygulamalar, günlük dosyalarını ve verileri bu klasörlere yazarak kalıcı hale getirebilirler. Ancak, paylaşılan içerik deposuna yapılan kopya en iyi çaba olduğundan, bir VM örneğinin ani kilitlenmesi nedeniyle günlük dosyaları ve verilerin kaybedilmesi mümkündür.
 * [Günlük akışı](troubleshoot-diagnostic-logs.md#stream-logs) , en iyi çaba kopyasından etkilenir. Akışlı günlüklerde bir dakikalık gecikmeye kadar gözlemleyebilirsiniz.
@@ -45,10 +45,14 @@ Azure App Service yerel önbellek özelliği, içeriğinizin bir Web rolü gör�
 * Desteklenen herhangi bir yöntem aracılığıyla uygulama dağıtımı, doğrudan kalıcı paylaşılan içerik deposuna yayınlar. Yerel önbellekteki _D:\home\site_ ve _D:\home\siteextensions_ klasörlerini yenilemek için uygulamanın yeniden başlatılması gerekiyor. Yaşam döngüsünü sorunsuz hale getirmek için bu makalenin ilerleyen kısımlarında bulunan bilgilere bakın.
 * SCM sitesinin varsayılan içerik görünümü, paylaşılan içerik deposundan olmaya devam eder.
 
-## <a name="enable-local-cache-in-app-service"></a>App Service 'de yerel önbelleği etkinleştir
+## <a name="enable-local-cache-in-app-service"></a>App Service 'de yerel önbelleği etkinleştir 
+
+> [!NOTE]
+> Yerel önbellek **F1** veya **D1** katmanında desteklenmez. 
+
 Yerel önbelleği, ayrılmış uygulama ayarları birleşimini kullanarak yapılandırırsınız. Aşağıdaki yöntemleri kullanarak bu uygulama ayarlarını yapılandırabilirsiniz:
 
-* [Azure portalındaki](#Configure-Local-Cache-Portal)
+* [Azure Portal](#Configure-Local-Cache-Portal)
 * [Azure Resource Manager](#Configure-Local-Cache-ARM)
 
 ### <a name="configure-local-cache-by-using-the-azure-portal"></a>Azure portal kullanarak yerel önbelleği yapılandırma
@@ -83,7 +87,7 @@ Yerel önbelleği bu uygulama ayarını kullanarak Web uygulaması başına teme
 ```
 
 ## <a name="change-the-size-setting-in-local-cache"></a>Yerel önbellekteki boyut ayarını değiştir
-Varsayılan olarak, yerel önbellek boyutu **1 GB**'tır. Bu, içerik deposundan kopyalanmış olan/site ve/siteextensions klasörlerinin yanı sıra yerel olarak oluşturulan tüm Günlükler ve veri klasörlerini içerir. Bu sınırı artırmak için uygulama ayarını kullanın `WEBSITE_LOCAL_CACHE_SIZEINMB` . Uygulama başına en fazla **2 GB** (2000 MB) boyutunu artırabilirsiniz. Boyut arttıkça yerel önbelleğin yüklenmesi daha uzun sürer.
+Varsayılan olarak, yerel önbellek boyutu **1 GB** 'tır. Bu, içerik deposundan kopyalanmış olan/site ve/siteextensions klasörlerinin yanı sıra yerel olarak oluşturulan tüm Günlükler ve veri klasörlerini içerir. Bu sınırı artırmak için uygulama ayarını kullanın `WEBSITE_LOCAL_CACHE_SIZEINMB` . Uygulama başına en fazla **2 GB** (2000 MB) boyutunu artırabilirsiniz. Boyut arttıkça yerel önbelleğin yüklenmesi daha uzun sürer.
 
 ## <a name="best-practices-for-using-app-service-local-cache"></a>App Service yerel önbellek kullanmaya yönelik en iyi uygulamalar
 Yerel önbelleği, [hazırlama ortamları](../app-service/deploy-staging-slots.md) özelliğiyle birlikte kullanmanızı öneririz.

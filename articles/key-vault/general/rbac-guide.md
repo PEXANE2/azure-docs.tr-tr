@@ -9,25 +9,25 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 38072e95ed89d8fbc095e2f8ed41ea1381636300
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: f3775e73ce8f152fe39bc8170bbeba054f856630
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015164"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286604"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Azure rol tabanlı erişim denetimi (Önizleme) ile Key Vault anahtarlarına, sertifikalara ve gizli anahtarlara erişim sağlama
 
 > [!NOTE]
-> Key Vault kaynak sağlayıcısı iki kaynak türünü destekler: **kasa** ve **yönetilen HSM**'ler. Bu makalede açıklanan erişim denetimi yalnızca kasaların için **geçerlidir**. Yönetilen HSM için erişim denetimi hakkında daha fazla bilgi edinmek için bkz. [YÖNETILEN HSM erişim denetimi](../managed-hsm/access-control.md).
+> Key Vault kaynak sağlayıcısı iki kaynak türünü destekler: **kasa** ve **yönetilen HSM** 'ler. Bu makalede açıklanan erişim denetimi yalnızca kasaların için **geçerlidir**. Yönetilen HSM için erişim denetimi hakkında daha fazla bilgi edinmek için bkz. [YÖNETILEN HSM erişim denetimi](../managed-hsm/access-control.md).
 
-Azure rol tabanlı erişim denetimi (Azure RBAC), Azure kaynakları üzerinde ayrıntılı erişim yönetimi sağlayan [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) yerleşik bir yetkilendirme sistemidir.
+Azure rol tabanlı erişim denetimi (Azure RBAC), Azure kaynakları üzerinde ayrıntılı erişim yönetimi sağlayan [Azure Resource Manager](../../azure-resource-manager/management/overview.md) yerleşik bir yetkilendirme sistemidir.
 
 Azure RBAC, kullanıcıların anahtar, gizli dizi ve sertifika izinlerini yönetmesine olanak tanır. Tüm Anahtar kasaları genelinde tüm izinleri yönetmek için bir yer sağlar. 
 
 Azure RBAC modeli, farklı kapsam düzeylerinde izin ayarlamanıza olanak sağlar: yönetim grubu, abonelik, kaynak grubu veya ayrı kaynaklar.  Anahtar Kasası için Azure RBAC, tek tek anahtarlar, gizlilikler ve sertifikalar üzerinde ayrı izinler sağlama olanağı da sağlar
 
-Daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview).
+Daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ## <a name="best-practices-for-individual-keys-secrets-and-certificates"></a>Tek tek anahtarlar, gizlilikler ve sertifikalar için en iyi uygulamalar
 
@@ -59,18 +59,18 @@ Azure Key Vault yönetim yönergeleri hakkında daha fazla bilgi için bkz.:
 | Key Vault gizli bilgileri Müdürü (Önizleme)| Anahtar kasasının gizli dizileri üzerinde, izinleri yönet dışında herhangi bir işlem gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
 | Key Vault gizli dizi kullanıcısı (Önizleme)| Gizli dizi içeriğini okuyun. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 4633458b-17de-408A-b874-0445c86b69e6 |
 
-Azure yerleşik rol tanımları hakkında daha fazla bilgi için bkz. [Azure yerleşik rolleri](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+Azure yerleşik rol tanımları hakkında daha fazla bilgi için bkz. [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="using-azure-rbac-secret-key-and-certificate-permissions-with-key-vault"></a>Azure RBAC gizli anahtarı, anahtar ve sertifika izinlerini Key Vault ile kullanma
 
 Anahtar Kasası için yeni Azure RBAC izin modeli, kasa erişimi ilkesi izin modeli için alternatif sağlar. 
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Rol atamaları eklemek için şunları yapmanız gerekir:
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-- `Microsoft.Authorization/roleAssignments/write`ve `Microsoft.Authorization/roleAssignments/delete` [Kullanıcı erişimi Yöneticisi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) veya [sahibi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) gibi izinler
+- `Microsoft.Authorization/roleAssignments/write`ve `Microsoft.Authorization/roleAssignments/delete` [Kullanıcı erişimi Yöneticisi](../../role-based-access-control/built-in-roles.md#user-access-administrator) veya [sahibi](../../role-based-access-control/built-in-roles.md#owner) gibi izinler
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>Key Vault Azure RBAC izinlerini etkinleştirme
 
@@ -194,7 +194,7 @@ Yeni gizli dizi oluştur (gizlilikler \> + Generate/Import) aşağıdaki hatayı
 
 ### <a name="creating-custom-roles"></a>Özel roller oluşturma 
 
-[az role Definition Create komutu](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create)
+[az role Definition Create komutu](/cli/azure/role/definition#az-role-definition-create)
 
 **(CLı Bash betiği)</br>**
 ```azurecli
@@ -216,7 +216,7 @@ az role definition create --role-definition '{ \
 
 Özel roller oluşturma hakkında daha fazla bilgi için bkz.:
 
-[Özel Azure rolleri](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
+[Özel Azure rolleri](../../role-based-access-control/custom-roles.md)
 
 ## <a name="known-limits-and-performance"></a>Bilinen sınırlar ve performans
 
@@ -226,5 +226,5 @@ az role definition create --role-definition '{ \
 
 ## <a name="learn-more"></a>Daha fazla bilgi edinin
 
-- [Azure RBAC genel bakış](https://docs.microsoft.com/azure/role-based-access-control/overview)
-- [Özel roller öğreticisi](https://docs.microsoft.com/azure/role-based-access-control/tutorial-custom-role-cli)
+- [Azure RBAC genel bakış](../../role-based-access-control/overview.md)
+- [Özel roller öğreticisi](../../role-based-access-control/tutorial-custom-role-cli.md)

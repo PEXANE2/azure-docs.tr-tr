@@ -3,12 +3,12 @@ title: Azure VMware çözüm dağıtımını planlama
 description: Bu makalede bir Azure VMware Çözüm dağıtımı iş akışı özetlenmektedir.  Nihai sonuç, sanal makine (VM) oluşturma ve geçirme için hazırlanma ortamıdır.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: e30692f26af786097f3cdb81690be617bfea0c79
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 9b6d04e1e7a60bf812ca2b1e370c5075d306c432
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517370"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287062"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Azure VMware çözüm dağıtımını planlama
 
@@ -17,7 +17,7 @@ Bu makalede, dağıtım sırasında kullanılan verileri belirleyip toplayacağ�
 Bu hızlı başlangıç işlemlerine, sanal makineler (VM 'Ler) ve geçiş için üretime hazırlı bir ortam ile sonuçlanır. 
 
 >[!IMPORTANT]
->Azure VMware Çözüm kaynağınızı oluşturmadan önce, düğümlerinizin ayrılmasını sağlamak üzere bir destek bileti göndermek için [Azure VMware Çözüm kaynağını etkinleştirme](enable-azure-vmware-solution.md) makalesini izleyin. Destek ekibi isteğinizi aldıktan sonra, isteğinizi doğrulamak ve düğümlerinizi ayırmak için beş iş günü sürer. Mevcut bir Azure VMware çözümü özel bulutunuz varsa ve daha fazla düğüm ayırdıysanız, aynı işleme gidebilirsiniz. 
+>Azure VMware Çözüm kaynağınızı oluşturmadan önce, konaklarınızın ayrılmaları için bir destek bileti göndermek üzere [Azure VMware Çözüm kaynağını etkinleştirme](enable-azure-vmware-solution.md) makalesini izleyin. Destek ekibi isteğinizi aldıktan sonra, isteğinizi doğrulamak ve konaklarınızı ayırmak için beş iş günü sürer. Mevcut bir Azure VMware çözümü özel bulutunuz varsa ve daha fazla ana bilgisayar ayırmak istiyorsanız, aynı işlemden geçmeniz gerekir. 
 
 
 ## <a name="subscription"></a>Abonelik
@@ -31,7 +31,7 @@ Azure VMware çözümünü dağıtmak için kullanmayı planladığınız abonel
 
 Azure VMware çözümünüz için kullanmak istediğiniz kaynak grubunu belirler.  Genellikle, Azure VMware çözümü için bir kaynak grubu oluşturulur, ancak var olan bir kaynak grubunu kullanabilirsiniz.
 
-## <a name="region"></a>Bölge
+## <a name="region"></a>Region
 
 Azure VMware çözümünün dağıtılmasını istediğiniz bölgeyi belirler.  Daha fazla bilgi için bkz. [bölgeye göre kullanılabilir Azure ürünleri kılavuzu](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=azure-vmware).
 
@@ -39,9 +39,9 @@ Azure VMware çözümünün dağıtılmasını istediğiniz bölgeyi belirler.  
 
 Dağıtım sırasında kullanacağınız kaynak adını tanımlayın.  Kaynak adı, Azure VMware çözümünüz özel bulutunuzu başlık olarak kullanabileceğiniz kolay ve açıklayıcı bir addır.
 
-## <a name="size-nodes"></a>Boyut düğümleri
+## <a name="size-hosts"></a>Ana bilgisayarları Boyutlandır
 
-Azure VMware çözümünü dağıttığınızda kullanmak istediğiniz boyut düğümlerini belirler.  Tüm liste için bkz. [Azure VMware çözümü özel bulutlar ve kümeler](concepts-private-clouds-clusters.md#hosts) belgeleri.
+Azure VMware çözümünü dağıttığınızda kullanmak istediğiniz boyut konaklarınızı belirler.  Tüm liste için bkz. [Azure VMware çözümü özel bulutlar ve kümeler](concepts-private-clouds-clusters.md#hosts) belgeleri.
 
 ## <a name="number-of-hosts"></a>Ana bilgisayar sayısı
 
@@ -79,7 +79,7 @@ Oluşturulan tüm IP segmentlerinin Azure ve şirket içi parmak izinizdeki benz
 
 **Örnek:** 10.0.4.0/24
 
-:::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="IP adresi kesimini tanımla" border="false":::     
+:::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="Sanal makine iş yükleri için IP adresi kesimini tanımla" border="false":::     
 
 ## <a name="optional-extend-networks"></a>Seçim Ağları Genişlet
 
@@ -96,7 +96,7 @@ Ağ kesimlerini Şirket içinden Azure VMware çözümüne genişletebilirsiniz 
 
 **Örnek:** 10.1.0.0/29
 
-:::image type="content" source="media/pre-deployment/expressroute-global-reach-ip-diagram.png" alt-text="IP adresi kesimini tanımla" border="false":::
+:::image type="content" source="media/pre-deployment/expressroute-global-reach-ip-diagram.png" alt-text="Tanımla-ExpressRoute Global Reach eşleme ağı" border="false":::
 
 ## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Azure VMware çözümü eklemek için Azure sanal ağı
 
@@ -119,7 +119,7 @@ Her iki şekilde de, bu adımda ne yapmak istediğinizi belgeleyin.
 >[!NOTE]
 >Bu sanal ağ, şirket içi ortamınız ve Azure VMware çözümünüz tarafından görülür, bu nedenle bu sanal ağda kullandığınız IP segmentinin ve alt ağların çakışmadığından emin olun.
 
-:::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="IP adresi kesimini tanımla" border="false":::
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="Kimlik-Azure VMware çözümü eklemek için Azure sanal ağı" border="false":::
 
 ## <a name="vmware-hcx-network-segments"></a>VMware HCX ağ kesimleri
 

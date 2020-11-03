@@ -3,14 +3,14 @@ title: Azure Işlevleri güvenilir olay işleme
 description: Azure Işlevlerinde eksik olay hub 'ı iletilerinden kaçının
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/01/2020
 ms.author: cshoe
-ms.openlocfilehash: 93a12d40e876293eb587ffba865a1d3b1f5f4983
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aaafe6d4080d85822ec5af9639c27fc8c55c2ce6
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86506035"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287232"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Işlevleri güvenilir olay işleme
 
@@ -50,7 +50,7 @@ Azure Işlevleri aşağıdaki adımlarla geçiş yaparken Olay Hub olaylarını 
 
 Bu davranış birkaç önemli noktayı ortaya çıkarır:
 
-- *İşlenmemiş özel durumlar iletileri kaybetmenize neden olabilir.* Bir özel durumla sonuçlanan yürütmeler, işaretçinin devam etmesine devam edecektir.
+- *İşlenmemiş özel durumlar iletileri kaybetmenize neden olabilir.* Bir özel durumla sonuçlanan yürütmeler, işaretçinin devam etmesine devam edecektir.  [Yeniden deneme ilkesi](./functions-bindings-error-pages.md#retry-policies) ayarlandığında, tüm yeniden deneme ilkesi değerlendirilene kadar işaretçinin ilerlediğini erteler.
 - *İşlevler, en az bir kez teslim garantisi verir.* Kodunuz ve bağımlı sistemleriniz [, aynı iletinin iki kez alınabilmesi için hesaba](./functions-idempotent.md)sahip olabilir.
 
 ## <a name="handling-exceptions"></a>Özel durum işleme
@@ -59,9 +59,9 @@ Genel bir kural olarak, her işlev en yüksek kod düzeyinde bir [try/catch blo�
 
 ### <a name="retry-mechanisms-and-policies"></a>Yeniden deneme mekanizmaları ve ilkeleri
 
-Bazı özel durumlar geçici olarak geçicidir ve bir işlem daha sonra tekrar denendiğinde yeniden görünmez. İlk adımın işlemi her zaman yeniden denemesi budur. Yeniden deneme oluşturma kurallarını kendiniz yazabilirsiniz, ancak bu çok sayıda araç mevcuttur. Bu kitaplıkların kullanılması, işleme sırasını korumaya yardımcı olabilecek güçlü yeniden deneme ilkeleri tanımlamanızı sağlar.
+Bazı özel durumlar geçici olarak geçicidir ve bir işlem daha sonra tekrar denendiğinde yeniden görünmez. İlk adımın işlemi her zaman yeniden denemesi budur.  İşlev yürütmesi içinde uygulama [yeniden deneme ilkeleri](./functions-bindings-error-pages.md#retry-policies) veya yazar yeniden deneme mantığı özelliğinden yararlanabilirsiniz.
 
-İşlevleriniz için hata işleme kitaplıklarını tanıtma hem temel hem de gelişmiş yeniden deneme ilkelerini tanımlamanızı sağlar. Örneğin, aşağıdaki kurallara göre gösterilen bir iş akışını izleyen bir ilke uygulayabilirsiniz:
+İşlevlerinizi hata işleme davranışlarına giriş, hem temel hem de gelişmiş yeniden deneme ilkelerini tanımlamanızı sağlar. Örneğin, aşağıdaki kurallara göre gösterilen bir iş akışını izleyen bir ilke uygulayabilirsiniz:
 
 - Üç kez bir ileti eklemeyi deneyin (büyük olasılıkla denemeler arasındaki gecikme süresi ile).
 - Tüm yeniden denemeler için nihai sonuç bir hata ise, işleme akışta devam edebilmesi için bir kuyruğa ileti ekleyin.
@@ -69,10 +69,6 @@ Bazı özel durumlar geçici olarak geçicidir ve bir işlem daha sonra tekrar d
 
 > [!NOTE]
 > [Polly](https://github.com/App-vNext/Polly) , C# uygulamaları için esnekliği ve geçici hata işleme kitaplığı örneğidir.
-
-Önceden karmaşıklu C# sınıf kitaplıklarıyla çalışırken, [özel durum filtreleri](/dotnet/csharp/language-reference/keywords/try-catch) işlenmeyen bir özel durum oluştuğunda kodu çalıştırmanızı sağlar.
-
-Özel durum filtrelerinin nasıl kullanılacağını gösteren örnekler, [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) deposunda bulunabilir.
 
 ## <a name="non-exception-errors"></a>Özel durum olmayan hatalar
 

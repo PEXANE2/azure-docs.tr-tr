@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 155837802bd19ec1bb4e41484e229e1f5daef658
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1437ef8675d0ddc96eb7fc641b3663b66c3ea11b
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125261"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285245"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Azure Anahtar Kasası erişim ilkesi sorunlarını giderme
 
@@ -20,11 +20,11 @@ ms.locfileid: "92125261"
 
 ### <a name="how-can-i-identify-how-and-when-key-vaults-are-accessed"></a>Anahtar kasalarına nasıl ve ne zaman erişildiğini nasıl tanımlayabilirim?
 
-Bir veya daha fazla Anahtar Kasası oluşturduktan sonra muhtemelen anahtar kasalarınızın nasıl ve ne zaman erişildiğini ve kim tarafından yapılacağını izlemek isteyeceksiniz. Azure Key Vault günlük kaydını etkinleştirerek izleme yapabilirsiniz, günlük kaydını etkinleştirmek için adım adım kılavuz için [daha fazla bilgi edinin](https://docs.microsoft.com/azure/key-vault/general/logging).
+Bir veya daha fazla Anahtar Kasası oluşturduktan sonra muhtemelen anahtar kasalarınızın nasıl ve ne zaman erişildiğini ve kim tarafından yapılacağını izlemek isteyeceksiniz. Azure Key Vault günlük kaydını etkinleştirerek izleme yapabilirsiniz, günlük kaydını etkinleştirmek için adım adım kılavuz için [daha fazla bilgi edinin](./logging.md).
 
 ### <a name="how-can-i-monitor-vault-availability-service-latency-periods-or-other-performance-metrics-for-key-vault"></a>Kasa kullanılabilirliğini, hizmet gecikme sürelerini veya Anahtar Kasası için diğer performans ölçümlerini nasıl izleyebilirim?
 
-Hizmetinizi ölçeklendirmeye başladığınızda, anahtar kasanıza gönderilen isteklerin sayısı artacaktır. Bu talep, isteklerinizin gecikme süresini artırmak ve olağanüstü durumlarda, hizmetinizin performansını etkileyecek olan isteklerinizin kısıtlanmasına neden olur. Anahtar Kasası performans ölçümlerini izleyebilir ve belirli eşiklere göre uyarı alabilir, izlemeyi yapılandırmaya yönelik adım adım kılavuz için [daha fazla](https://docs.microsoft.com/azure/key-vault/general/alert)bilgi edinebilirsiniz.
+Hizmetinizi ölçeklendirmeye başladığınızda, anahtar kasanıza gönderilen isteklerin sayısı artacaktır. Bu talep, isteklerinizin gecikme süresini artırmak ve olağanüstü durumlarda, hizmetinizin performansını etkileyecek olan isteklerinizin kısıtlanmasına neden olur. Anahtar Kasası performans ölçümlerini izleyebilir ve belirli eşiklere göre uyarı alabilir, izlemeyi yapılandırmaya yönelik adım adım kılavuz için [daha fazla](./alert.md)bilgi edinebilirsiniz.
 
 ### <a name="i-am-not-able-to-modify-access-policy-how-can-it-be-enabled"></a>Erişim ilkesini değiştiremem mümkün değil mi?
 Kullanıcının erişim ilkesini değiştirmek için yeterli AAD izinleri olması gerekir. Bu durumda, kullanıcının daha yüksek katkıda bulunan rolüne sahip olması gerekir.
@@ -53,7 +53,7 @@ Uygulamanın Ayrıca anahtar kasasına atanmış en az bir kimlik ve erişim yö
 
 Key Vault yeniden dağıtımı, Key Vault erişim ilkesini siler ve ARM şablonundaki erişim ilkesiyle değiştirir. Key Vault erişim ilkeleri için artımlı bir seçenek yoktur. Key Vault erişim ilkelerini korumak için, Key Vault içindeki mevcut erişim ilkelerini okumanız ve ARM şablonunu bu ilkelerle doldurmanız gerekir.
 
-Bu senaryo için yardımcı olabilecek başka bir seçenek, erişim ilkelerine alternatif olarak RBAC rollerini kullanmaktır. RBAC ile, ilkeyi yeniden belirtmeden anahtar kasasını yeniden dağıtabilirsiniz. Bu [çözümü daha fazla bulabilirsiniz.](https://docs.microsoft.com/azure/key-vault/general/rbac-guide)
+Bu senaryo için yardımcı olabilecek başka bir seçenek, erişim ilkelerine alternatif olarak RBAC rollerini kullanmaktır. RBAC ile, ilkeyi yeniden belirtmeden anahtar kasasını yeniden dağıtabilirsiniz. Bu [çözümü daha fazla bulabilirsiniz.](./rbac-guide.md)
 
 ### <a name="recommended-troubleshooting-steps-for-following-error-types"></a>Aşağıdaki hata türleri için önerilen sorun giderme adımları
 

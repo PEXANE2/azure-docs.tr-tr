@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d16d14ff51cb9a7e71193d93c6755a8e4cb93ed0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9277d100eb6744adfc20fbba9f96b822654e64a3
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89481418"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287705"
 ---
 # <a name="assign-a-key-vault-access-policy-using-the-azure-portal"></a>Azure portal kullanarak Key Vault erişim ilkesi atama
 
@@ -23,21 +23,21 @@ Key Vault erişim ilkesi, belirli bir hizmet sorumlusunun bir uygulama veya Kull
 
 [!INCLUDE [key-vault-access-policy-limits.md](../../../includes/key-vault-access-policy-limits.md)]
 
-Azure portal üzerinden Azure Active Directory Grup oluşturma hakkında daha fazla bilgi için bkz. [temel Grup oluşturma ve üye ekleme](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)
+Azure portal üzerinden Azure Active Directory Grup oluşturma hakkında daha fazla bilgi için bkz. [temel Grup oluşturma ve üye ekleme](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
 
 ## <a name="assign-an-access-policy"></a>Erişim ilkesi atama
 
 1.  [Azure portal](https://portal.azure.com)Key Vault kaynağına gidin. 
 
-1.  **Ayarlar**altında **erişim ilkeleri**' ni seçin ve ardından **erişim ilkesi Ekle**' yi seçin:
+1.  **Ayarlar** altında **erişim ilkeleri** ' ni seçin ve ardından **erişim ilkesi Ekle** ' yi seçin:
 
     ![Erişim ilkeleri ' ni seçin, rol ataması Ekle seçeneğini belirleyin](../media/authentication/assign-policy-portal-01.png)
 
-1.  **Sertifika izinleri**, **anahtar izinleri**ve **gizli izinler**altında istediğiniz izinleri seçin. Ayrıca, ortak izin birleşimlerini içeren bir şablon seçebilirsiniz:
+1.  **Sertifika izinleri** , **anahtar izinleri** ve **gizli izinler** altında istediğiniz izinleri seçin. Ayrıca, ortak izin birleşimlerini içeren bir şablon seçebilirsiniz:
 
     ![Erişim ilkesi izinlerini belirtme](../media/authentication/assign-policy-portal-02.png)
 
-1. **Asıl seçin**' in altında, **Seçili** değil bağlantısını seçerek **sorumlu** seçim bölmesini açın. Arama alanına uygulama veya hizmet sorumlusu adını girin, uygun sonucu seçin ve ardından **Seç**' i seçin.
+1. **Asıl seçin** ' in altında, **Seçili** değil bağlantısını seçerek **sorumlu** seçim bölmesini açın. Arama alanına uygulama veya hizmet sorumlusu adını girin, uygun sonucu seçin ve ardından **Seç** ' i seçin.
 
     ![Erişim ilkesi için hizmet sorumlusu seçme](../media/authentication/assign-policy-portal-03.png)
 
@@ -47,7 +47,7 @@ Azure portal üzerinden Azure Active Directory Grup oluşturma hakkında daha fa
 
     ![Erişim ilkesini atanan hizmet sorumlusu ile ekleme](../media/authentication/assign-policy-portal-04.png)
 
-1. **Erişim ilkeleri** sayfasına geri döndüğünüzde, erişim Ilkenizin **Geçerli erişim ilkeleri**altında listelendiğini doğrulayın ve **Kaydet**' i seçin. Erişim ilkeleri, kaydedilinceye kadar uygulanmaz.
+1. **Erişim ilkeleri** sayfasına geri döndüğünüzde, erişim Ilkenizin **Geçerli erişim ilkeleri** altında listelendiğini doğrulayın ve **Kaydet** ' i seçin. Erişim ilkeleri, kaydedilinceye kadar uygulanmaz.
 
     ![Erişim ilkesi değişiklikleri kaydediliyor](../media/authentication/assign-policy-portal-05.png)
 

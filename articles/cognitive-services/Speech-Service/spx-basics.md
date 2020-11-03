@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 1255333e9bde54fcdf76dd40a9aaa4bc68fd103e
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 7ca290b7b7df9e4e03aec78b611361ba52942523
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242135"
+ms.locfileid: "93286685"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Konuşma CLı 'nın temellerini öğrenin
 
@@ -182,4 +182,4 @@ spx synthesize --foreach audio.output;text in @C:\your\path\to\text_synthesis.ts
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* SDK ['yı kullanarak konuşma tanımayı](./quickstarts/speech-to-text-from-microphone.md) veya [konuşma senşliğini](./quickstarts/text-to-speech.md) hızlı başlangıçlara tamamlayabilirsiniz.
+* Konuşma [tanıma özelliğini](get-started-speech-to-text.md?pivots=programmer-tool-spx) kullanarak konuşma tanımayı veya konuşma [sentiğimiz](get-started-text-to-speech.md?pivots=programmer-tool-spx) hızlı başlangıçlarını doldurun.

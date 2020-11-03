@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 6971e62b20dc1155b875f69eb1d4da9d7b6e6887
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f4e1def81fc79ec159ce6be825793a9bd8d0ce7
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627015"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286950"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory uygulama bildirimi
 
@@ -34,7 +34,7 @@ Bir uygulamanın özniteliklerini Azure portal veya [REST API](/graph/api/resour
 Uygulama bildirimini yapılandırmak için:
 
 1. [Azure portalına](https://portal.azure.com) gidin. **Azure Active Directory** hizmetini arayıp seçin.
-1. **Uygulama kayıtları**’nı seçin.
+1. **Uygulama kayıtları** ’nı seçin.
 1. Yapılandırmak istediğiniz uygulamayı seçin.
 1. Uygulamanın **Genel Bakış** sayfasında, **Bildirim** bölümünü seçin. Web tabanlı bir bildirim Düzenleyicisi açılır ve bu, portalı içindeki bildirimi düzenlemenize olanak tanır. İsteğe bağlı olarak, bildirimi yerel olarak düzenlemek için **İndir** ' i seçip uygulamanıza yeniden uygulamak Için **karşıya yükle** ' yi kullanabilirsiniz.
 
@@ -194,6 +194,7 @@ Desteklenmez.
 
 - `"None"`
 - `"SecurityGroup"` (güvenlik grupları ve Azure AD rolleri için)
+- `"ApplicationGroup"` (Bu seçenek yalnızca uygulamaya atanan grupları içerir)
 - `"All"` (Bu, oturum açan kullanıcının üyesi olduğu tüm güvenlik gruplarını, dağıtım gruplarını ve Azure AD dizin rollerini alır.
 
 Örnek:
@@ -624,7 +625,7 @@ Geçerli uygulama için hangi Microsoft hesaplarının desteklendiğini belirtir
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| etiketler | Dize dizisi  |
+| tags | Dize dizisi  |
 
 Uygulamayı kategorilere ayırmak ve tanımlamak için kullanılabilen özel dizeler.
 

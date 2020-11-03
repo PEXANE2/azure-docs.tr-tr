@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: c8d2304017a8fccd83c9c64559b8c5edf48481b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e8f1d2964f42c480026d13bed59921dd3f07610
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91604446"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286229"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Key Vault Kimlik Doğrulamasının temelleri
 
@@ -24,8 +24,8 @@ Yönetici olarak, hangi kullanıcıların ve uygulamaların anahtar kasanıza er
 
 Bu belgede aşağıdaki kavramlar hakkında bilgi sahibi olduğunuz varsayılır. Bu kavramlardan herhangi birini tanımıyorsanız, devam etmeden önce yardım bağlantılarını izleyin.
 
-* Azure Active Directory [bağlantısı](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
-* Güvenlik sorumluları [bağlantısı](https://docs.microsoft.com/azure/key-vault/general/authentication#app-identity-and-security-principals)
+* Azure Active Directory [bağlantısı](../../active-directory/fundamentals/active-directory-whatis.md)
+* Güvenlik sorumluları [bağlantısı](./authentication.md#app-identity-and-security-principals)
 
 ## <a name="key-vault-configuration-steps-summary"></a>Key Vault yapılandırma adımları Özeti
 
@@ -42,8 +42,8 @@ Bir kullanıcı veya uygulama, Anahtar Kasası 'na istek yaptığında, önce is
 Azure Active Directory bir kullanıcı veya uygulamayı nasıl kaydedeceğinizi öğrenmek için aşağıdaki belge bağlantılarını izleyin.
 **Kullanıcı kaydı ve uygulamalar için istemci parolası ya da istemci sertifikası kimlik bilgileri için bir parola oluşturduğunuzdan emin olun.**
 
-* Azure Active Directory [bağlantısına](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory) Kullanıcı kaydetme
-* Azure Active Directory [bağlantısına](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app) uygulama kaydetme
+* Azure Active Directory [bağlantısına](../../active-directory/fundamentals/add-users-azure-active-directory.md) Kullanıcı kaydetme
+* Azure Active Directory [bağlantısına](../../active-directory/develop/quickstart-register-app.md) uygulama kaydetme
 
 ## <a name="assign-your-security-principal-a-role-in-azure-active-directory"></a>Güvenlik sorumlusuna rol atama Azure Active Directory
 
@@ -57,8 +57,8 @@ Anahtar Kasası bağlamında, bu rol atamaları, anahtar kasasının yönetim d�
 >[!NOTE]
 > Bir kullanıcıya Azure Active Directory kiracı düzeyinde bir rol ataması atadığınızda, bu izin kümesi, atama kapsamındaki tüm abonelikler, kaynak grupları ve kaynaklara göre yapılır. En az ayrıcalığın sorumlusunu izlemek için, bu rol atamasını daha ayrıntılı bir kapsamda yapabilirsiniz. Örneğin, bir kullanıcıya abonelik düzeyinde bir okuyucu rolü ve tek bir Anahtar Kasası için sahip rolü atayabilirsiniz. Daha ayrıntılı bir kapsamda rol ataması yapmak için bir aboneliğin, kaynak grubunun veya anahtar kasasının kimlik erişim yönetimi (ıAM) ayarlarına gidin.
 
-* Azure Active Directory rolleri [bağlantısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) hakkında daha fazla bilgi edinmek için
-* Rol [atamaları atama](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) veya kaldırma hakkında daha fazla bilgi edinmek için
+* Azure Active Directory rolleri [bağlantısı](../../role-based-access-control/built-in-roles.md) hakkında daha fazla bilgi edinmek için
+* Rol [atamaları atama](../../role-based-access-control/role-assignments-portal.md) veya kaldırma hakkında daha fazla bilgi edinmek için
 
 ## <a name="configure-key-vault-access-policies-for-your-security-principal"></a>Güvenlik sorumlusu için Anahtar Kasası erişim ilkelerini yapılandırma
 
@@ -121,8 +121,8 @@ Key Vault rol atamaları, anahtarlara, sırları ve sertifikalara erişmek için
 
 RBAC Key Vault hakkında daha fazla bilgi için aşağıdaki belgelere bakın:
 
-* RBAC [bağlantısı](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#management-plane-and-azure-rbac) Azure Key Vault
-* RBAC rollerini Azure Key Vault (Önizleme) [bağlantısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-administrator-preview)
+* RBAC [bağlantısı](./secure-your-key-vault.md#management-plane-and-azure-rbac) Azure Key Vault
+* RBAC rollerini Azure Key Vault (Önizleme) [bağlantısı](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview)
 
 ## <a name="configure-key-vault-firewall"></a>Key Vault güvenlik duvarını yapılandırma
 
@@ -132,9 +132,9 @@ Anahtar Kasası güvenlik duvarını etkinleştirmek için, Anahtar Kasası port
 
 * Anahtar Kasası güvenlik duvarı izin verilenler listesine IPv4 adresleri ekleyin. Bu seçenek, statik IP adresleri olan uygulamalar için en iyi şekilde kullanılır.
 
-* Anahtar Kasası güvenlik duvarına bir sanal ağ ekleyin. Bu seçenek, sanal makineler gibi dinamik IP adreslerine sahip Azure kaynakları için en iyi şekilde geçerlidir. Azure kaynaklarını bir sanal ağa ekleyebilir ve sanal ağı Anahtar Kasası güvenlik duvarı izin verilenler listesine ekleyebilirsiniz. Bu seçenek, sanal ağ içinde özel bir IP adresi olan bir hizmet uç noktası kullanır. Bu, ek bir koruma katmanı sağlar, böylece Anahtar Kasası ve sanal ağınız arasında hiçbir trafik genel İnternet üzerinden yönlendirilir. Hizmet uç noktası hakkında daha fazla bilgi için aşağıdaki belgelere bakın. [bağlantısının](https://docs.microsoft.com/azure/key-vault/general/network-security)
+* Anahtar Kasası güvenlik duvarına bir sanal ağ ekleyin. Bu seçenek, sanal makineler gibi dinamik IP adreslerine sahip Azure kaynakları için en iyi şekilde geçerlidir. Azure kaynaklarını bir sanal ağa ekleyebilir ve sanal ağı Anahtar Kasası güvenlik duvarı izin verilenler listesine ekleyebilirsiniz. Bu seçenek, sanal ağ içinde özel bir IP adresi olan bir hizmet uç noktası kullanır. Bu, ek bir koruma katmanı sağlar, böylece Anahtar Kasası ve sanal ağınız arasında hiçbir trafik genel İnternet üzerinden yönlendirilir. Hizmet uç noktası hakkında daha fazla bilgi için aşağıdaki belgelere bakın. [bağlantısının](./network-security.md)
 
-* Anahtar kasasına özel bağlantı bağlantısı ekleyin. Bu seçenek, Sanal ağınızı, anahtar kasasının sanal ağınızın içinde etkin bir şekilde bir araya getiren bir Anahtar Kasası örneğine doğrudan bağlar. Bir özel uç nokta bağlantısını Anahtar Kasası ile yapılandırma hakkında daha fazla bilgi edinmek için aşağıdaki [bağlantıya](https://docs.microsoft.com/azure/key-vault/general/private-link-service) bakın
+* Anahtar kasasına özel bağlantı bağlantısı ekleyin. Bu seçenek, Sanal ağınızı, anahtar kasasının sanal ağınızın içinde etkin bir şekilde bir araya getiren bir Anahtar Kasası örneğine doğrudan bağlar. Bir özel uç nokta bağlantısını Anahtar Kasası ile yapılandırma hakkında daha fazla bilgi edinmek için aşağıdaki [bağlantıya](./private-link-service.md) bakın
 
 ## <a name="test-your-service-principals-ability-to-access-key-vault"></a>Hizmet sorumlunun anahtar kasasına erişme yeteneğini test etme
 
@@ -142,11 +142,11 @@ Yukarıdaki adımların tümünü izledikten sonra anahtar kasanızdan gizli diz
 
 ### <a name="authentication-process-for-users-examples"></a>Kullanıcılar için kimlik doğrulama işlemi (örnekler)
 
-* Kullanıcılar, anahtar kasasını kullanmak için Azure portal oturum açabilirler. [Key Vault portalı hızlı başlangıç](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal)
+* Kullanıcılar, anahtar kasasını kullanmak için Azure portal oturum açabilirler. [Key Vault portalı hızlı başlangıç](./quick-create-portal.md)
 
-* Kullanıcı, anahtar kasasını kullanmak için Azure CLı kullanabilir. [Azure CLı hızlı başlangıç Key Vault](https://docs.microsoft.com/azure/key-vault/general/quick-create-cli)
+* Kullanıcı, anahtar kasasını kullanmak için Azure CLı kullanabilir. [Azure CLı hızlı başlangıç Key Vault](./quick-create-cli.md)
 
-* Kullanıcı, anahtar kasasını kullanmak için Azure PowerShell kullanabilir. [Key Vault Azure PowerShell hızlı başlangıç](https://docs.microsoft.com/azure/key-vault/general/quick-create-powershell)
+* Kullanıcı, anahtar kasasını kullanmak için Azure PowerShell kullanabilir. [Key Vault Azure PowerShell hızlı başlangıç](./quick-create-powershell.md)
 
 ### <a name="azure-active-directory-authentication-process-for-applications-or-services-examples"></a>Uygulamalar veya hizmetler için Azure Active Directory kimlik doğrulama işlemi (örnekler)
 
@@ -156,7 +156,7 @@ Yukarıdaki adımların tümünü izledikten sonra anahtar kasanızdan gizli diz
 
 * Azure kaynağı Azure Active Directory belirtecini almak için MSI kimlik doğrulamasını kullanır. 
 
-* MSI kimlik doğrulaması [bağlantısı](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) hakkında daha fazla bilgi edinin
+* MSI kimlik doğrulaması [bağlantısı](../../active-directory/managed-identities-azure-resources/overview.md) hakkında daha fazla bilgi edinin
 
 ### <a name="authentication-process-for-application-python-example"></a>Uygulama için kimlik doğrulama işlemi (Python örneği)
 
@@ -196,4 +196,4 @@ if __name__ == "__main__":
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Anahtar Kasası kimlik doğrulaması hakkında daha ayrıntılı bilgi edinmek için aşağıdaki belgeye bakın. [Key Vault Kimlik Doğrulaması](https://docs.microsoft.com/azure/key-vault/general/authentication)
+Anahtar Kasası kimlik doğrulaması hakkında daha ayrıntılı bilgi edinmek için aşağıdaki belgeye bakın. [Key Vault Kimlik Doğrulaması](./authentication.md)

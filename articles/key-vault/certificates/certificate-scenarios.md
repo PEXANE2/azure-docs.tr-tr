@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c4c8d1101bd83b580c010132dd70284b78569392
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 9c1a08161dafa500e9cab2038621c2329cfe6d27
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124230"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286897"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault sertifikalarını kullanmaya başlama
 Aşağıdaki senaryolarda, Anahtar Kasanızda ilk sertifikanızı oluşturmak için gereken ek adımlar da dahil olmak üzere Key Vault sertifika yönetimi hizmetinin birincil kullanımlarından bazıları ana hatlarıyla verilmiştir.
@@ -37,7 +37,7 @@ Sertifikalar, bir Key Vault sertifikası olarak birbirine bağlı üç ilişkili
 
 **Adım 1** -sertifika YETKILISI (CA) sağlayıcıları  
 -   BT Yöneticisi, PKI Yöneticisi veya CA 'larla hesapları yöneten herkes, belirli bir şirket için (örn. Contoso) Key Vault sertifikaları kullanmanın bir önkoşuludur.  
-    Aşağıdaki CA 'Lar Key Vault ile geçerli iş ortağı sağlayıcılarıdır. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate#partnered-ca-providers)   
+    Aşağıdaki CA 'Lar Key Vault ile geçerli iş ortağı sağlayıcılarıdır. [Daha fazla bilgi edinin](./create-certificate.md#partnered-ca-providers)   
     -   DigiCert-Key Vault, DigiCert ile OV TLS/SSL sertifikaları sunmaktadır.  
     -   GlobalSign-Key Vault, GlobalSign ile OV TLS/SSL sertifikaları sunmaktadır.  
 
@@ -50,7 +50,7 @@ Sertifikalar, bir Key Vault sertifikası olarak birbirine bağlı üç ilişkili
     -   Sağlayıcı  
     -   Kimlik bilgileri – CA hesabı kimlik bilgileri. Her CA 'nın kendine özgü verileri vardır.  
 
-    CA sağlayıcılarıyla hesap oluşturma hakkında daha fazla bilgi için [Key Vault blogdaki](https://aka.ms/kvcertsblog)ilgili gönderisine bakın.  
+    CA sağlayıcılarıyla hesap oluşturma hakkında daha fazla bilgi için [Key Vault blogdaki](/archive/blogs/kv/manage-certificates-via-azure-key-vault)ilgili gönderisine bakın.  
 
 **Adım 3,1** -bildirimler için [sertifika kişilerini](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts) ayarlama. Bu, Key Vault kullanıcısına yönelik kişdir. Key Vault bu adımı zorlamaz.  
 
@@ -82,7 +82,7 @@ Bu süreç, 3,1. adım ile bir kerelik işlemidir.
       -   Oluşturma gecikmesi nedeniyle, bir iptal işlemi başlatılabilir. İptal etme etkili olabilir veya olmayabilir.  
 
 ### <a name="network-security-and-access-policies-associated-with-integrated-ca"></a>Tümleşik CA ile ilişkili ağ güvenliği ve erişim ilkeleri
-Key Vault hizmet istekleri CA 'ya gönderir (giden trafik). Bu nedenle, Güvenlik Duvarı etkin anahtar kasaları ile tamamen uyumludur. Key Vault, CA ile erişim ilkelerini paylaşmaz. CA imzalama isteklerini bağımsız kabul edecek şekilde yapılandırılmalıdır. [Güvenilen CA 'yı tümleştirme Kılavuzu](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)
+Key Vault hizmet istekleri CA 'ya gönderir (giden trafik). Bu nedenle, Güvenlik Duvarı etkin anahtar kasaları ile tamamen uyumludur. Key Vault, CA ile erişim ilkelerini paylaşmaz. CA imzalama isteklerini bağımsız kabul edecek şekilde yapılandırılmalıdır. [Güvenilen CA 'yı tümleştirme Kılavuzu](./how-to-integrate-certificate-authority.md)
 
 ## <a name="import-a-certificate"></a>Sertifikayı içeri aktar  
  Alternatif olarak, bir sertifika Key Vault – PFX veya ped içine aktarılabilir.  

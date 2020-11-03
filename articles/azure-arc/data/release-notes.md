@@ -9,18 +9,20 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 10/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: e7312ffd4d55f0403359f8aad2d0a8433a716f77
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 2da8bd0b36b553a4b5f85b6f79987ab1a7b8d5a7
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280378"
+ms.locfileid: "93286559"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Sürüm notları-Azure Arc etkin veri Hizmetleri (Önizleme)
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="october-2020"></a>Ekim 2020 
+
+Azure Data CLı ( `azdata` ) sürüm numarası: 20.2.3. Adresinden indirin [https://aka.ms/azdata](https://aka.ms/azdata) .
 
 ### <a name="breaking-changes"></a>Yeni değişiklikler
 
@@ -32,7 +34,7 @@ Bu sürümde aşağıdaki son değişiklikler tanıtılmaktadır:
 
 ### <a name="additional-changes"></a>Ek değişiklikler
 
-* Çağrılan yeni bir isteğe bağlı parametre eklendi `azdata arc postgres server create` `--volume-claim mounts` . Değer, birim talebi TAK'nin bir virgülle ayrılmış listesidir. Birim talebi bağlama, birim türü ve PVC adı çiftidir. Artık için birim türü yalnızca izin verir `backup` .  PostgreSQL içinde, birim türü olduğunda, `backup` PVC öğesine bağlanır `/mnt/db-backups` .  Bu, bir Postgres örneğinin yedeğinin başka bir yerde geri yüklenebilmesi için Postgres örnekleri arasında yedeklemelerin paylaşılmasını mümkün bir şekilde sunar.
+* Çağrılan yeni bir isteğe bağlı parametre eklendi `azdata arc postgres server create` `--volume-claim mounts` . Değer, birim talebi TAK'nin bir virgülle ayrılmış listesidir. Birim talebi bağlama, birim türü ve PVC adı çiftidir. Şu anda desteklenen tek birim türü `backup` .  PostgreSQL içinde, birim türü olduğunda, `backup` PVC öğesine bağlanır `/mnt/db-backups` .  Bu, bir PostgresSQL örneğinin yedeğinin başka bir örneğe geri yüklenebilmesi için PostgresSQL örnekleri arasında yedeklemelerin paylaşılmasını mümkün bir şekilde sunar.
 
 * PostgresSQL özel kaynak tanımlarına yönelik yeni bir kısa ad: 
 
@@ -56,7 +58,9 @@ Bu sürümde aşağıdaki son değişiklikler tanıtılmaktadır:
 
 * SQL yönetilen örnek yönetici adı özelliği, Azure portal genel bakış dikey penceresinin sağ sütununa eklendi.
 
+* Azure Data Studio, bir sunucu grubu için çalışan düğüm sayısı, sanal çekirdek ve bellek ayarlarının yapılandırılmasını destekler. 
 
+* Önizleme, Postgres sürüm 11 ve 12 için yedekleme/geri yüklemeyi destekler.
 
 ## <a name="september-2020"></a>Eylül 2020
 
@@ -69,7 +73,7 @@ Yönergeler için bkz. [Azure Arc etkin veri Hizmetleri nedir?](overview.md)
 
 ## <a name="known-limitations-and-issues"></a>Bilinen sınırlamalar ve sorunlar
 
-- SQL yönetilen örnek adları en fazla 13 karakter uzunluğunda olabilir
+- Örnek adları en fazla 13 karakter uzunluğunda olabilir
 - Azure Arc veri denetleyicisi veya veritabanı örnekleri için yerinde yükseltme yok.
 - Arc özellikli veri hizmetleri kapsayıcı görüntüleri imzalanmadı.  Kubernetes düğümlerinizi, imzasız kapsayıcı görüntülerine çekilmesine izin verecek şekilde yapılandırmanız gerekebilir.  Örneğin, kapsayıcı çalışma zamanı olarak Docker kullanıyorsanız, DOCKER_CONTENT_TRUST = 0 ortam değişkenini ayarlayabilir ve yeniden başlatabilirsiniz.  Diğer kapsayıcı çalışma zamanları [OpenShift](https://docs.openshift.com/container-platform/4.5/openshift_images/image-configuration.html#images-configuration-file_image-configuration)'te olduğu gibi benzer seçeneklere sahiptir.
 - Azure portal Azure Arc etkin SQL yönetilen örnekleri veya PostgreSQL hiper ölçek sunucu grupları oluşturulamıyor.
@@ -78,10 +82,20 @@ Yönergeler için bkz. [Azure Arc etkin veri Hizmetleri nedir?](overview.md)
 - Openshıft üzerinde bir veri denetleyicisi oluşturmak için gevşek güvenlik kısıtlamaları gerekir.  Ayrıntılar için belgelere bakın.
 - PostgresSQL hiper ölçek _çalışan düğümlerinin sayısını küçültme desteklenmiyor._
 - Azure Arc veri denetleyicisi ve veritabanı örnekleri ile Azure Stack hub 'ında Azure Kubernetes hizmet altyapısı 'nı (AKS motoru) kullanıyorsanız, daha yeni bir Kubernetes sürümüne yükseltme desteklenmez. Kubernetes kümesini yükseltmeden önce Azure Arc veri denetleyicisi 'ni ve tüm veritabanı örneklerini kaldırın.
-- Önizleme, Postgres sürüm 11 altyapısı için yedekleme/geri yükleme özelliğini desteklemez. Yalnızca Postgres sürüm 12 için yedekleme/geri yüklemeyi destekler.
+- Önizleme, Postgres sürüm 11 altyapısı için yedekleme/geri yükleme özelliğini desteklemez. (Ekim, 2020 ' de çözümlendi) Yalnızca Postgres sürüm 12 için yedekleme/geri yüklemeyi destekler.
 - Azure Kubernetes hizmeti (AKS), [birden çok kullanılabilirlik bölgesini](../../aks/availability-zones.md) kapsayan kümeler Şu anda Azure Arc etkin veri Hizmetleri için desteklenmiyor. Bu sorundan kaçınmak için, Azure portal ' de AKS kümesi oluşturduğunuzda, bölgelerin kullanılabildiği bir bölgeyi seçerseniz seçim denetiminden tüm bölgeleri temizleyin. Aşağıdaki resme bakın:
 
    :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="Hiçbirini belirtmek için her bir bölgenin onay kutularını temizleyin.":::
+
+
+### <a name="known-issues-for-azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc etkin PostgreSQL hiper ölçek için bilinen sorunlar   
+
+- Yeni silinen bir sunucu grubunun adı ile bir sunucu grubu yeniden oluşturmak başarısız olabilir veya askıda kalabilir. 
+   - **Geçici çözüm** Bir sunucu grubunu yeniden oluşturduğunuzda veya daha önce silinen sunucu grubunun yük dengeleyiciyi/dış hizmetini beklerken aynı adı yeniden kullanmayın. Sildiğiniz sunucu grubunun adının olduğunu `postgres01` ve bir ad alanında barındırıldığını varsayarsak, `arc` aynı ada sahip bir sunucu grubunu yeniden oluşturmadan önce, `postgres01-external-svc` kubectl komutunun çıkışında bu işlemi gösterene kadar bekleyin `kubectl get svc -n arc` .
+ 
+- Azure Data Studio genel bakış sayfası ve Işlem + depolama yapılandırması sayfasını yüklemek yavaş. 
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
   

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/22/2020
 ms.author: sudbalas
-ms.openlocfilehash: 931aea02d0a3c26bb5c2e7158f9c4360976d3af5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: c55c87cd8ab1b2cd1dbaf2c877eb341744d822ef
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440527"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287467"
 ---
 # <a name="azure-key-vault-backup"></a>Azure Key Vault yedekleme
 
@@ -25,9 +25,9 @@ Bu belgede, Anahtar Kasanızda saklanan gizli dizileri, anahtarları ve sertifik
 
 Azure Key Vault, kullanılabilirliği korumanıza ve veri kaybını önlemenize yardımcı olacak özellikler otomatik olarak sağlanır. Gizli dizileri yalnızca kritik bir iş gerekçenizi yedeklemeniz durumunda yedekleyin. Anahtar Kasanızda gizli dizi yedeklemesi, parolaların süre dolduğunda veya döndürürken birden çok günlük, izin ve yedek kümesini koruma gibi işlem sorunları ortaya çıkarabilir.
 
-Key Vault olağanüstü durum senaryolarında kullanılabilirliği korur ve Kullanıcı müdahalesi olmadan eşleştirilmiş bir bölgeye istekleri otomatik olarak devreder. Daha fazla bilgi için bkz. [kullanılabilirlik ve yedeklilik Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/disaster-recovery-guidance).
+Key Vault olağanüstü durum senaryolarında kullanılabilirliği korur ve Kullanıcı müdahalesi olmadan eşleştirilmiş bir bölgeye istekleri otomatik olarak devreder. Daha fazla bilgi için bkz. [kullanılabilirlik ve yedeklilik Azure Key Vault](./disaster-recovery-guidance.md).
 
-Gizli dizileri yanlışlıkla veya kötü amaçlı olarak silmeye karşı koruma istiyorsanız, Anahtar Kasanızda geçici silme ve koruma özelliklerini temizleyin. Daha fazla bilgi için bkz. [Azure Key Vault geçici genel bakış](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview).
+Gizli dizileri yanlışlıkla veya kötü amaçlı olarak silmeye karşı koruma istiyorsanız, Anahtar Kasanızda geçici silme ve koruma özelliklerini temizleyin. Daha fazla bilgi için bkz. [Azure Key Vault geçici genel bakış](./soft-delete-overview.md).
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -46,7 +46,7 @@ Ayrıca aşağıdaki sonuçları göz önünde bulundurun:
 
 Gizli dizi, anahtar veya sertifika gibi bir Anahtar Kasası nesnesini yedeklerken, yedekleme işlemi nesneyi şifreli bir blob olarak indirir. Bu Blobun Azure dışından şifresi çözülemiyor. Bu bloba kullanılabilir verileri almak için, blobu aynı Azure aboneliği ve [Azure Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/)içindeki bir anahtar kasasında geri yüklemeniz gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir Anahtar Kasası nesnesini yedeklemek için, şunları yapmanız gerekir: 
 
@@ -67,11 +67,11 @@ Azure portal kullanarak nesneleri yedeklemek ve geri yüklemek için bu bölümd
     ![Anahtar kasasındaki anahtarlar ayarının ve bir nesnenin nerede seçileceğini gösteren ekran görüntüsü.](../media/backup-1.png)
 
 4. Nesneyi seçin.
-5. **Yedeklemeyi indir**' i seçin.
+5. **Yedeklemeyi indir** ' i seçin.
 
     ![Anahtar kasasında yedeği Indir düğmesinin nerede seçileceğini gösteren ekran görüntüsü.](../media/backup-2.png)
     
-6. **İndir**'i seçin.
+6. **İndir** 'i seçin.
 
     ![Anahtar kasasında Indir düğmesinin nerede seçileceğini gösteren ekran görüntüsü.](../media/backup-3.png)
     
@@ -82,12 +82,12 @@ Azure portal kullanarak nesneleri yedeklemek ve geri yüklemek için bu bölümd
 1. Azure portala gidin.
 2. Anahtar kasanızı seçin.
 3. Geri yüklemek istediğiniz nesne türüne (gizli, anahtar veya sertifika) gidin.
-4. **Yedeği geri yükle**' yi seçin.
+4. **Yedeği geri yükle** ' yi seçin.
 
     ![Anahtar kasasında yedeklemenin geri yükleme seçimini gösteren ekran görüntüsü.](../media/backup-4.png)
     
 5. Şifrelenmiş blob 'u depoladığınız konuma gidin.
-6. **Tamam**’ı seçin.
+6. **Tamam** ’ı seçin.
 
 ## <a name="back-up-and-restore-from-the-azure-cli"></a>Azure CLı 'dan yedekleme ve geri yükleme
 
@@ -123,4 +123,4 @@ az keyvault secret restore --file {File Path} --vault-name {Key Vault Name} --su
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Key Vault için [günlüğe kaydetmeyi ve izlemeyi](https://docs.microsoft.com/azure/key-vault/general/logging) açın.
+Key Vault için [günlüğe kaydetmeyi ve izlemeyi](./logging.md) açın.

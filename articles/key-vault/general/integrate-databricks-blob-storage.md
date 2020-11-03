@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/16/2020
-ms.openlocfilehash: bb574bb3dd000682090c6c3f861e885761753e19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba80d78cbc7d34b1496daffbd489a1d0dbfed8b4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588526"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285666"
 ---
 # <a name="tutorial-access-azure-blob-storage-using-azure-databricks-and-azure-key-vault"></a>Öğretici: Azure Databricks ve Azure Key Vault kullanarak Azure Blob depolamaya erişin
 
@@ -29,11 +29,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-Bu öğreticiye başlamadan önce [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)'yı yükleyebilirsiniz.
+Bu öğreticiye başlamadan önce [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)'yı yükleyebilirsiniz.
 
 ## <a name="create-a-storage-account-and-blob-container-with-azure-cli"></a>Azure CLı ile bir depolama hesabı ve BLOB kapsayıcısı oluşturma
 
-Blob 'ları kullanmak için önce genel amaçlı bir depolama hesabı oluşturmanız gerekir. Bir [kaynak grubunuz](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create)yoksa, komutu çalıştırmadan önce bir tane oluşturun. Aşağıdaki komut, depolama kapsayıcısının meta verilerini oluşturur ve görüntüler. **Kimliği**kopyalayın.
+Blob 'ları kullanmak için önce genel amaçlı bir depolama hesabı oluşturmanız gerekir. Bir [kaynak grubunuz](/cli/azure/group?view=azure-cli-latest#az-group-create)yoksa, komutu çalıştırmadan önce bir tane oluşturun. Aşağıdaki komut, depolama kapsayıcısının meta verilerini oluşturur ve görüntüler. **Kimliği** kopyalayın.
 
 ```azurecli
 az storage account create --name contosoblobstorage5 --resource-group contosoResourceGroup --location eastus --sku Standard_ZRS --encryption-services blob
@@ -41,7 +41,7 @@ az storage account create --name contosoblobstorage5 --resource-group contosoRes
 
 ![Yukarıdaki komutun konsol çıktısı. Son kullanıcının göreceği KIMLIK için yeşil renkle vurgulanır.](../media/databricks-command-output-1.png)
 
-Blobu karşıya yüklemek üzere bir kapsayıcı oluşturabilmeniz için önce [Depolama Blobu veri katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) rolünü kendinize atamanız gerekir. Bu örnekte, rol daha önce yaptığınız depolama hesabına atanır.
+Blobu karşıya yüklemek üzere bir kapsayıcı oluşturabilmeniz için önce [Depolama Blobu veri katılımcısı](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) rolünü kendinize atamanız gerekir. Bu örnekte, rol daha önce yaptığınız depolama hesabına atanır.
 
 ```azurecli
 az role assignment create --role "Storage Blob Data Contributor" --assignee t-trtr@microsoft.com --scope "/subscriptions/885e24c8-7a36-4217-b8c9-eed31e110504/resourceGroups/contosoResourceGroup5/providers/Microsoft.Storage/storageAccounts/contosoblobstorage5
@@ -77,7 +77,7 @@ az storage account keys list -g contosoResourceGroup5 -n contosoblobstorage5
 
 ## <a name="create-a-key-vault-and-set-a-secret"></a>Key Vault oluşturma ve gizli anahtar ayarlama
 
-Aşağıdaki komutu kullanarak bir Key Vault oluşturacaksınız. Bu komut Key Vault meta verilerini de görüntüler. **Kimliği** ve **Vaulturi**'yi kopyalayın.
+Aşağıdaki komutu kullanarak bir Key Vault oluşturacaksınız. Bu komut Key Vault meta verilerini de görüntüler. **Kimliği** ve **Vaulturi** 'yi kopyalayın.
 
 ```azurecli
 az keyvault create --name contosoKeyVault10 --resource-group contosoResourceGroup5 --location eastus
@@ -94,7 +94,7 @@ az keyvault secret set --vault-name contosoKeyVault10 --name storageKey --value 
 
 ## <a name="create-an-azure-databricks-workspace-and-add-key-vault-secret-scope"></a>Azure Databricks çalışma alanı oluşturma ve Key Vault gizli dizi kapsamı ekleme
 
-Bu bölüm komut satırı aracılığıyla tamamlanamaz. Bu [Kılavuzu](https://docs.microsoft.com/azure/azure-databricks/store-secrets-azure-key-vault#create-an-azure-databricks-workspace-and-add-a-secret-scope)izleyin. [Azure Portal](https://ms.portal.azure.com/#home) şu şekilde erişmeniz gerekir:
+Bu bölüm komut satırı aracılığıyla tamamlanamaz. Bu [Kılavuzu](/azure/databricks/scenarios/store-secrets-azure-key-vault#create-an-azure-databricks-workspace-and-add-a-secret-scope)izleyin. [Azure Portal](https://ms.portal.azure.com/#home) şu şekilde erişmeniz gerekir:
 
 1. Azure Databricks kaynağınızı oluşturma
 1. Çalışma alanınızı başlatın
@@ -102,7 +102,7 @@ Bu bölüm komut satırı aracılığıyla tamamlanamaz. Bu [Kılavuzu](https://
 
 ## <a name="access-your-blob-container-from-azure-databricks-workspace"></a>Azure Databricks çalışma alanından blob kapsayıcınıza erişin
 
-Bu bölüm komut satırı aracılığıyla tamamlanamaz. Bu [Kılavuzu](https://docs.microsoft.com/azure/azure-databricks/store-secrets-azure-key-vault#access-your-blob-container-from-azure-databricks)izleyin. Şunları yapmak için Azure Databricks çalışma alanını kullanmanız gerekir:
+Bu bölüm komut satırı aracılığıyla tamamlanamaz. Bu [Kılavuzu](/azure/databricks/scenarios/store-secrets-azure-key-vault#access-your-blob-container-from-azure-databricks)izleyin. Şunları yapmak için Azure Databricks çalışma alanını kullanmanız gerekir:
 
 1. **Yeni küme** oluştur
 1. Yeni bir **Not defteri** oluşturun
@@ -124,4 +124,4 @@ df.show()
 
 Key Vault kurtarılabilir olduğundan emin olun:
 > [!div class="nextstepaction"]
-> [Kaynaklarınızı temizleme](https://docs.microsoft.com/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-powershell)
+> [Kaynaklarınızı temizleme](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell)

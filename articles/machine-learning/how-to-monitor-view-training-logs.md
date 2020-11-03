@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: aa4b55cb0700a47d9235a1d526ef1b1678d6db8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11e4b79bf76a4612728992f7c16000d840b9c639
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333826"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285958"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML çalıştırma günlüklerini ve ölçümlerini izleme ve görüntüleme
 
@@ -45,7 +45,7 @@ Tarayıcınızdan belirli bir işlem hedefine ait çalıştırmaları izlemek i�
 
     ![Eğitim kümesini seçin](./media/how-to-track-experiments/select-training-compute.png)
 
-1. __Çalıştırmalar__' ı seçin. Bu kümeyi kullanan çalıştırmaların listesi görüntülenir. Belirli bir çalıştırmanın ayrıntılarını görüntülemek için __Çalıştır__ sütunundaki bağlantıyı kullanın. Deneme ayrıntılarını görüntülemek için, __deneme__ sütunundaki bağlantıyı kullanın.
+1. __Çalıştırmalar__ ' ı seçin. Bu kümeyi kullanan çalıştırmaların listesi görüntülenir. Belirli bir çalıştırmanın ayrıntılarını görüntülemek için __Çalıştır__ sütunundaki bağlantıyı kullanın. Deneme ayrıntılarını görüntülemek için, __deneme__ sütunundaki bağlantıyı kullanın.
 
     ![Eğitim kümesi için çalıştırmaları seçin](./media/how-to-track-experiments/show-runs-for-compute.png)
     
@@ -93,7 +93,7 @@ RunDetails(run).show()
 
 ## <a name="show-output-upon-completion"></a>Tamamlama sırasında çıktıyı göster
 
-**ScriptRunConfig**kullandığınızda, ```run.wait_for_completion(show_output = True)``` model eğitiminin ne zaman tamamlandığını göstermek için kullanabilirsiniz. ```show_output```Bayrak size ayrıntılı çıkış verir. Daha fazla bilgi için bkz. [günlük kaydını etkinleştirme](how-to-track-experiments.md#scriptrun-logs)ScriptRunConfig bölümü.
+**ScriptRunConfig** kullandığınızda, ```run.wait_for_completion(show_output = True)``` model eğitiminin ne zaman tamamlandığını göstermek için kullanabilirsiniz. ```show_output```Bayrak size ayrıntılı çıkış verir. Daha fazla bilgi için bkz. [günlük kaydını etkinleştirme](how-to-track-experiments.md#scriptrun-logs)ScriptRunConfig bölümü.
 
 <a id="queryrunmetrics"></a>
 ## <a name="query-run-metrics"></a>Sorgu çalıştırma ölçümleri
@@ -105,7 +105,9 @@ RunDetails(run).show()
 
 Günlüğe kaydedilen ölçümler de dahil olmak üzere tamamlanan çalışma kayıtlarına gidebilirsiniz [Azure Machine Learning Studio](https://ml.azure.com).
 
-**Denemeleri** sekmesine gidin ve denemenizin seçimini yapın. Deneme çalıştırması panosunda, her çalıştırma için izlenen ölçümleri ve günlükleri görebilirsiniz. 
+**Denemeleri** sekmesine gidin. Çalışma alanınızdaki tüm çalıştırmalarınızı denemeleri genelinde görüntülemek için **Tüm çalıştırmalar** sekmesini seçin. En üstteki menü çubuğuna deneme filtresini uygulayarak belirli denemeleri için çalıştırmalar üzerinde ayrıntıya gidebilirsiniz. 
+
+Bireysel deneme görünümü için **tüm denemeleri** sekmesini seçin. Deneme çalıştırması panosunda, her çalıştırma için izlenen ölçümleri ve günlükleri görebilirsiniz. 
 
 Belirli bir çalıştırmaya gitmeyi, çıktılarını veya günlüklerini görüntülemek veya denemeler klasörünü başkalarıyla paylaşmak için deneme anlık görüntüsünü indirmek.
 

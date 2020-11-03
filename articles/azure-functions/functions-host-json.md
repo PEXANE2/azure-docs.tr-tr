@@ -3,12 +3,12 @@ title: Azure Işlevleri 2. x için başvuru host.js
 description: Azure Işlevleri için başvuru belgeleri v2 çalışma zamanı ile dosyada host.js.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: f58eefd636b2bd59d6b3656bf162f7d601f7ff85
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 0b6fbe2553541b6260697584fa7066cdcb1fe122
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167669"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93284508"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure İşlevleri 2.x ve üzeri için host.json başvurusu 
 
@@ -117,6 +117,11 @@ Sürüm 2. x + için aşağıdaki örnek *host.js* , belirtilen tüm seçenekler
     "managedDependency": {
         "enabled": true
     },
+    "retry": {
+      "strategy": "fixedDelay",
+      "maxRetryCount": 5,
+      "delayInterval": "00:00:05"
+    },
     "singleton": {
       "lockPeriod": "00:00:15",
       "listenerLockPeriod": "00:01:00",
@@ -145,7 +150,7 @@ Tüm JSON yapısı için bkz. önceki [örnek host.jsdosyası](#sample-hostjson-
 > [!NOTE]
 > Günlük örnekleme, bazı yürütmelerin Application Insights İzleyicisi dikey penceresinde gösterilmemesine neden olabilir. Günlük örneklemeyi önlemek için `excludedTypes: "Request"` `samplingSettings` değere ekleyin.
 
-| Özellik | Varsayılan | Description |
+| Özellik | Varsayılan | Açıklama |
 | --------- | --------- | --------- | 
 | samplingSettings | yok | Bkz. [ApplicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
 | Enableliveölçümleri | true | Canlı ölçüm toplamayı etkin bir şekilde sunar. |
@@ -157,7 +162,7 @@ Tüm JSON yapısı için bkz. önceki [örnek host.jsdosyası](#sample-hostjson-
 
 ### <a name="applicationinsightssamplingsettings"></a>ApplicationInsights. samplingSettings
 
-|Özellik | Varsayılan | Description |
+|Özellik | Varsayılan | Açıklama |
 | --------- | --------- | --------- | 
 | IsEnabled | true | Örneklemeyi etkinleştirilir veya devre dışı bırakır. | 
 | maxTelemetryItemsPerSecond | 20 | Her bir sunucu konağında saniyede günlüğe kaydedilen telemetri öğelerinin hedef sayısı. Uygulamanız birçok ana bilgisayarda çalışıyorsa, bu değeri, genel hedef trafik hızında kalacak şekilde küçültün. | 
@@ -167,13 +172,13 @@ Tüm JSON yapısı için bkz. önceki [örnek host.jsdosyası](#sample-hostjson-
 | samplingPercentageDecreaseTimeout | 00:00:01 | Örnekleme yüzdesi değeri değiştiğinde, bu özellik daha sonra daha az veri yakalamak için örnekleme yüzdesini yeniden ne kadar küçük bir süre sonra Application Insights izin verileceğini belirler. |
 | Minörneklingpercentage | 0.1 | Örnekleme yüzdesi farklılık gösterdiğinden, bu özellik izin verilen minimum örnekleme yüzdesini belirler. |
 | maxSamplingPercentage | 100,0 | Örnekleme yüzdesi farklılık gösterdiğinden, bu özellik izin verilen en fazla örnekleme yüzdesini belirler. |
-| movingAverageRatio | 1.0 | Hareketli ortalama hesaplamasında, en son değere atanan ağırlık. 1 ' den küçük veya buna eşit bir değer kullanın. Daha küçük değerler, algoritmayı ani değişikliklere karşı daha az reaktif hale getirir. |
+| movingAverageRatio | 1,0 | Hareketli ortalama hesaplamasında, en son değere atanan ağırlık. 1 ' den küçük veya buna eşit bir değer kullanın. Daha küçük değerler, algoritmayı ani değişikliklere karşı daha az reaktif hale getirir. |
 | excludedTypes | null | Örneklemeyi istemediğiniz türlerin noktalı virgülle ayrılmış listesi. Tanınan türler şunlardır: `Dependency` , `Event` , `Exception` , `PageView` , `Request` , ve `Trace` . Belirtilen türlerin tüm örnekleri iletilir; belirtilmeyen türler örneklenir. |
 | ıncludedtypes | null | Örneklemeyi yapmak istediğiniz türlerin noktalı virgülle ayrılmış listesi; boş liste tüm türleri gösterir. `excludedTypes`Burada listelenen geçersiz kılma türlerinde listelenen tür. Tanınan türler şunlardır: `Dependency` , `Event` , `Exception` , `PageView` , `Request` , ve `Trace` . Belirtilen türlerin örnekleri örneklenir; belirtilmemiş veya zımni türler, örnekleme olmadan iletilir. |
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>ApplicationInsights. httpAutoCollectionOptions
 
-|Özellik | Varsayılan | Description |
+|Özellik | Varsayılan | Açıklama |
 | --------- | --------- | --------- | 
 | Enablehttptriggerextendedınınfocollection | true | HTTP Tetikleyicileri için genişletilmiş HTTP isteği bilgilerini etkinleştirilir veya devre dışı bırakır: gelen istek bağıntı üstbilgileri, çok izleme anahtarları desteği, HTTP yöntemi, yol ve yanıt. |
 | enableW3CDistributedTracing | true | W3C dağıtılmış izleme protokolünün desteğini etkinleştirir veya devre dışı bırakır (ve eski bağıntı şemasını etkinleştirir). True ise varsayılan olarak etkindir `enableHttpTriggerExtendedInfoCollection` . `enableHttpTriggerExtendedInfoCollection`Yanlış ise, bu bayrak gelen isteklere değil yalnızca giden istekler için geçerlidir. |
@@ -183,7 +188,7 @@ Tüm JSON yapısı için bkz. önceki [örnek host.jsdosyası](#sample-hostjson-
 
 Anlık görüntüler hakkında daha fazla bilgi için bkz. [.NET uygulamalarında özel durumlarla Ilgili hata ayıklama anlık görüntüleri](../azure-monitor/app/snapshot-debugger.md) ve [Application Insights Snapshot Debugger veya anlık görüntüleri görüntüleme sorunlarını giderme](../azure-monitor/app/snapshot-debugger-troubleshoot.md).
 
-|Özellik | Varsayılan | Description |
+|Özellik | Varsayılan | Açıklama |
 | --------- | --------- | --------- | 
 | Tendtendpoint | null | Application Insights Snapshot Debugger hizmetine bağlanmak için kullanılan uç nokta. Null ise, varsayılan bir uç nokta kullanılır. |
 | captureSnapshotMemoryWeight | 0,5 | Anlık görüntü almak için yeterli bellek olup olmadığı denetlenirken geçerli işlem belleği boyutuna verilen ağırlık. Beklenen değer 0 ' dan büyük bir doğru kesenden (0 < CaptureSnapshotMemoryWeight < 1) fazla. |
@@ -275,7 +280,7 @@ Tüm işlevler için zaman aşımı süresini gösterir. TimeSpan dize biçimini
 }
 ```
 
-|Özellik  |Varsayılan | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
 |enabled|true|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
 |Healthcheckınterval|10 saniye|Düzenli arka plan sistem durumu denetimleri arasındaki zaman aralığı. | 
@@ -307,7 +312,7 @@ Application Insights dahil olmak üzere, işlev uygulamasının günlük davran�
 }
 ```
 
-|Özellik  |Varsayılan | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
 |fileLoggingMode|yalnızca Debug|Hangi dosya günlüğü düzeyinin etkin olduğunu tanımlar.  Seçenekler `never` , `always` , `debugOnly` . |
 |logLevel|yok|Uygulamadaki işlevler için günlük kategorisi filtrelemeyi tanımlayan nesne. Sürüm 2. x ve üzeri, günlük kategorisi filtrelemesi için ASP.NET Core düzeni izler. Bu ayar, belirli işlevler için günlüğü filtrelemenizi sağlar. Daha fazla bilgi için ASP.NET Core belgelerine [günlük filtreleme](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&preserve-view=true#log-filtering) bölümüne bakın. |
@@ -330,7 +335,7 @@ Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir. Hata ayık
 }
 ```
 
-|Özellik  |Varsayılan | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
 |IsEnabled|yanlış|Konsol günlüğünü etkinleştir veya devre dışı bırakır.| 
 
@@ -349,6 +354,28 @@ Yönetilen bağımlılık Şu anda yalnızca PowerShell tabanlı işlevlerde des
 ## <a name="queues"></a>klarında
 
 Yapılandırma ayarları, [depolama kuyruğu Tetikleyicileri ve bağlamaları](functions-bindings-storage-queue-output.md#host-json)bölümünde bulunabilir.  
+
+## <a name="retry"></a>retry
+
+Uygulamadaki tüm yürütmeler için [yeniden deneme ilkesi](./functions-bindings-error-pages.md#retry-policies) seçeneklerini denetler.
+
+```json
+{
+    "retry": {
+        "strategy": "fixedDelay",
+        "maxRetryCount": 2,
+        "delayInterval": "00:00:03"  
+    }
+}
+```
+
+|Özellik  |Varsayılan | Açıklama |
+|---------|---------|---------| 
+|inize|null|Gereklidir. Kullanılacak yeniden deneme stratejisi. Geçerli değerler veya ' dir `fixedDelay` `exponentialBackoff` .|
+|maxRetryCount|null|Gereklidir. İşlev yürütmesi başına izin verilen en fazla yeniden deneme sayısı. `-1` süresiz olarak yeniden deneneceği anlamına gelir.|
+|Delayınterval|null|Bir stratejiyle denemeler arasında kullanılan gecikme `fixedDelay` .|
+|MinimumInterval|null|Strateji kullanılırken en düşük yeniden deneme gecikmesi `exponentialBackoff` .|
+|Maximumınterval|null|Strateji kullanılırken en fazla yeniden deneme gecikmesi `exponentialBackoff` .| 
 
 ## <a name="sendgrid"></a>sendGrid
 
@@ -374,7 +401,7 @@ Tek kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için bk
 }
 ```
 
-|Özellik  |Varsayılan | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
 |Kilit dönemi|00:00:15|İşlev düzeyi kilitlerinin alındığı dönem için. Kilitleri otomatik yenileme.| 
 |listenerLockPeriod|00:01:00|Dinleyici kilitlerinin alındığı dönem.| 

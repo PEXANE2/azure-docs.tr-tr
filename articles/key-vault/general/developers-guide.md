@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 6bdf008c13a1466ec47134c303902a1f9d19545b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 707b6d0f8a5fa3cff89339b9b0465d96b5369a34
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072773"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287596"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault Geliştirici Kılavuzu
 
@@ -33,9 +33,9 @@ Düzenli olarak, yeni bir Key Vault özelliğinin genel önizlemesini yayınlar�
 
 ## <a name="creating-and-managing-key-vaults"></a>Anahtar kasaları oluşturma ve yönetme
 
-Diğer Azure hizmetlerine benzer Key Vault yönetimi, Azure Resource Manager hizmeti aracılığıyla yapılır. Azure Resource Manager, Azure için dağıtım ve yönetim hizmetidir. Azure hesabınızda kaynak oluşturma, güncelleştirme ve silme işlemlerini gerçekleştirmenizi sağlayan bir yönetim katmanı sunar. Daha fazla bilgi için bkz. [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)
+Diğer Azure hizmetlerine benzer Key Vault yönetimi, Azure Resource Manager hizmeti aracılığıyla yapılır. Azure Resource Manager, Azure için dağıtım ve yönetim hizmetidir. Azure hesabınızda kaynak oluşturma, güncelleştirme ve silme işlemlerini gerçekleştirmenizi sağlayan bir yönetim katmanı sunar. Daha fazla bilgi için bkz. [Azure Resource Manager](../../azure-resource-manager/management/overview.md)
 
-Yönetim katmanına erişim, [Azure rol tabanlı erişim denetimi](https://docs.microsoft.com/azure/role-based-access-control/overview)tarafından denetlenir. Yönetim katmanı, yönetim veya denetim düzlemi olarak da bilinen Key Vault, erişim ilkeleri de dahil olmak üzere anahtar kasalarını ve özniteliklerini oluşturmanıza ve yönetmenize izin verir, ancak bu, veri düzlemine göre yönetilen anahtarlar, gizli diziler ve sertifikalar değildir. `Key Vault Contributor`Key Vault için yönetim erişimi vermek üzere önceden tanımlı rolü kullanabilirsiniz.     
+Yönetim katmanına erişim, [Azure rol tabanlı erişim denetimi](../../role-based-access-control/overview.md)tarafından denetlenir. Yönetim katmanı, yönetim veya denetim düzlemi olarak da bilinen Key Vault, erişim ilkeleri de dahil olmak üzere anahtar kasalarını ve özniteliklerini oluşturmanıza ve yönetmenize izin verir, ancak bu, veri düzlemine göre yönetilen anahtarlar, gizli diziler ve sertifikalar değildir. `Key Vault Contributor`Key Vault için yönetim erişimi vermek üzere önceden tanımlı rolü kullanabilirsiniz.     
 
 **Anahtar Kasası yönetimi için API 'ler ve SDK 'lar:**
 
@@ -45,7 +45,7 @@ Yönetim katmanına erişim, [Azure rol tabanlı erişim denetimi](https://docs.
 
 Bkz. yükleme paketleri ve kaynak kodu için [Istemci kitaplıkları](client-libraries.md) .
 
-Key Vault yönetim düzlemi hakkında daha fazla bilgi için bkz. [Key Vault yönetim düzlemi](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#management-plane-and-azure-rbac)
+Key Vault yönetim düzlemi hakkında daha fazla bilgi için bkz. [Key Vault yönetim düzlemi](./secure-your-key-vault.md#management-plane-and-azure-rbac)
 
 ## <a name="authenticate-to-key-vault-in-code"></a>Kodda Key Vault kimlik doğrulaması
 
@@ -53,14 +53,14 @@ Key Vault, Azure AD kimlik doğrulamasını kullanarak erişim izni vermesini ge
 
 ### <a name="authentication-best-practices"></a>En iyi kimlik doğrulama uygulamaları
 
-Azure 'a dağıtılan uygulamalar için yönetilen kimlik kullanılması önerilir. Yönetilen kimliği desteklemeyen veya şirket içinde dağıtılan uygulamalar için Azure hizmetlerini kullanıyorsanız, [sertifikaya sahip hizmet sorumlusu](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) olası bir alternatiftir. Bu senaryoda, sertifika Key Vault depolanmalıdır ve genellikle döndürülmelidir. Gizli hizmet sorumlusu, geliştirme ve test ortamları için ve yerel olarak veya Cloud Shell Kullanıcı sorumlusu kullanılarak kullanılması önerilir.
+Azure 'a dağıtılan uygulamalar için yönetilen kimlik kullanılması önerilir. Yönetilen kimliği desteklemeyen veya şirket içinde dağıtılan uygulamalar için Azure hizmetlerini kullanıyorsanız, [sertifikaya sahip hizmet sorumlusu](../../active-directory/develop/howto-create-service-principal-portal.md) olası bir alternatiftir. Bu senaryoda, sertifika Key Vault depolanmalıdır ve genellikle döndürülmelidir. Gizli hizmet sorumlusu, geliştirme ve test ortamları için ve yerel olarak veya Cloud Shell Kullanıcı sorumlusu kullanılarak kullanılması önerilir.
 
 Ortam başına önerilen güvenlik sorumluları:
-- **Üretim ortamı**:
+- **Üretim ortamı** :
   - Bir sertifikayla yönetilen kimlik veya hizmet sorumlusu
-- **Test ve geliştirme ortamları**:
+- **Test ve geliştirme ortamları** :
   - Yönetilen kimlik, sertifika veya gizli hizmet sorumlusu olan hizmet sorumlusu
-- **Yerel geliştirme**:
+- **Yerel geliştirme** :
   - Gizli anahtar içeren Kullanıcı sorumlusu veya hizmet sorumlusu
 
 Yukarıdaki kimlik doğrulama senaryoları, **Azure Identity istemci kitaplığı** tarafından desteklenir ve Key Vault SDK 'lar ile tümleşiktir. Azure kimlik kitaplığı, kodunuzu değiştirmeden farklı ortamlar ve platformlar arasında kullanılabilir. Azure Identity Ayrıca Azure CLı, Visual Studio, Visual Studio Code ve diğer kişilerle Azure User 'a oturum açmış olan kimlik doğrulama belirtecini otomatik olarak alır. 
@@ -70,12 +70,12 @@ Azure Identity Client Libarary hakkında daha fazla bilgi için bkz.:
 ### <a name="azure-identity-client-libraries"></a>Azure Identity istemci kitaplıkları
 | .NET | Python | Java | JavaScript |
 |--|--|--|--|
-|[Azure Identity SDK .NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)|[Azure Identity SDK Python](https://docs.microsoft.com/python/api/overview/azure/identity-readme)|[Azure Identity SDK 'Sı Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme)|[Azure Identity SDK JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)|     
+|[Azure Identity SDK .NET](/dotnet/api/overview/azure/identity-readme)|[Azure Identity SDK Python](/python/api/overview/azure/identity-readme)|[Azure Identity SDK 'Sı Java](/java/api/overview/azure/identity-readme)|[Azure Identity SDK JavaScript](/javascript/api/overview/azure/identity-readme)|     
 
 Uygulamalarda Key Vault kimlik doğrulaması hakkında öğreticiler için bkz.:
-- [.NET 'te VM 'de barındırılan uygulamada Key Vault kimlik doğrulaması](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-virtual-machine)
-- [Python 'da VM 'de barındırılan uygulamada Key Vault kimlik doğrulaması](https://docs.microsoft.com/azure/key-vault/general/tutorial-python-virtual-machine)
-- [App Service Key Vault için kimlik doğrulama](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app)
+- [.NET 'te VM 'de barındırılan uygulamada Key Vault kimlik doğrulaması](./tutorial-net-virtual-machine.md)
+- [Python 'da VM 'de barındırılan uygulamada Key Vault kimlik doğrulaması](./tutorial-python-virtual-machine.md)
+- [App Service Key Vault için kimlik doğrulama](./tutorial-net-create-vault-azure-web-app.md)
 
 ## <a name="manage-keys-certificates-and-secrets"></a>Anahtarları, sertifikaları ve gizli dizileri yönetme
 
@@ -86,14 +86,14 @@ Anahtarlar, gizlilikler ve sertifikalara erişim veri düzlemine göre denetleni
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Başvuru](/cli/azure/keyvault/key)<br>[Hızlı Başlangıç](../keys/quick-create-cli.md)|[Başvuru](/powershell/module/az.keyvault/)<br>[Hızlı Başlangıç](../keys/quick-create-powershell.md)|[Başvuru](/rest/api/keyvault/#key-operations)|YOK|[Başvuru](/dotnet/api/azure.security.keyvault.keys)|[Başvuru](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[Hızlı Başlangıç](../keys/quick-create-python.md)|[Başvuru](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)|[Başvuru](/javascript/api/@azure/keyvault-keys/)|
+|[Başvuru](/cli/azure/keyvault/key)<br>[Hızlı Başlangıç](../keys/quick-create-cli.md)|[Başvuru](/powershell/module/az.keyvault/)<br>[Hızlı Başlangıç](../keys/quick-create-powershell.md)|[Başvuru](/rest/api/keyvault/#key-operations)|Yok|[Başvuru](/dotnet/api/azure.security.keyvault.keys)|[Başvuru](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[Hızlı Başlangıç](../keys/quick-create-python.md)|[Başvuru](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)|[Başvuru](/javascript/api/@azure/keyvault-keys/)|
 
 **Sertifikalar API 'Leri ve SDK 'Ları**
 
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Başvuru](/cli/azure/keyvault/certificate)<br>[Hızlı Başlangıç](../certificates/quick-create-cli.md)|[Başvuru](/powershell/module/az.keyvault)<br>[Hızlı Başlangıç](../certificates/quick-create-powershell.md)|[Başvuru](/rest/api/keyvault/#certificate-operations)|YOK|[Başvuru](/dotnet/api/azure.security.keyvault.certificates)|[Başvuru](/python/api/overview/azure/keyvault-certificates-readme)<br>[Hızlı Başlangıç](../certificates/quick-create-python.md)|[Başvuru](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)|[Başvuru](/javascript/api/@azure/keyvault-certificates/)|
+|[Başvuru](/cli/azure/keyvault/certificate)<br>[Hızlı Başlangıç](../certificates/quick-create-cli.md)|[Başvuru](/powershell/module/az.keyvault)<br>[Hızlı Başlangıç](../certificates/quick-create-powershell.md)|[Başvuru](/rest/api/keyvault/#certificate-operations)|Yok|[Başvuru](/dotnet/api/azure.security.keyvault.certificates)|[Başvuru](/python/api/overview/azure/keyvault-certificates-readme)<br>[Hızlı Başlangıç](../certificates/quick-create-python.md)|[Başvuru](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)|[Başvuru](/javascript/api/@azure/keyvault-certificates/)|
 
 **Gizlilikler API 'Leri ve SDK 'ları**
 
@@ -104,7 +104,7 @@ Anahtarlar, gizlilikler ve sertifikalara erişim veri düzlemine göre denetleni
 
 Bkz. yükleme paketleri ve kaynak kodu için [Istemci kitaplıkları](client-libraries.md) .
 
-Veri düzlemi güvenliği Key Vault hakkında daha fazla bilgi için bkz. [Key Vault veri düzlemi ve erişim ilkeleri](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#data-plane-and-access-policies) ve [Key Vault VERI düzlemi ve RBAC (Önizleme)](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#data-plane-and-azure-rbac-preview)
+Veri düzlemi güvenliği Key Vault hakkında daha fazla bilgi için bkz. [Key Vault veri düzlemi ve erişim ilkeleri](./secure-your-key-vault.md#data-plane-and-access-policies) ve [Key Vault VERI düzlemi ve RBAC (Önizleme)](./secure-your-key-vault.md#data-plane-and-azure-rbac-preview)
 
 ### <a name="code-examples"></a>Kod örnekleri
 
@@ -117,8 +117,8 @@ Uygulamalarınızla Key Vault kullanan tüm örnekler için bkz.:
 Aşağıdaki makaleler ve senaryolar Azure Key Vault çalışmak için göreve özgü rehberlik sağlar:
 
 - [Güvenlik duvarının arkasındaki Key Vault erişme](access-behind-firewall.md) -anahtar kasasına erişmek için Anahtar Kasası istemci uygulamanızın çeşitli işlevlere ilişkin birden çok uç noktaya erişebilmesi gerekir.
-- Key Vault- [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows), [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) 'tan sanal makinelere sertifika DAĞıTMA-Azure 'da VM 'de çalışan bir bulut uygulaması, bir sertifika gerektirir. Bu sertifikayı bugün bu sanal makineye nasıl alırsınız?
-- [Azure Web App sertifikasını Key Vault aracılığıyla dağıtma](https://docs.microsoft.com/azure/app-service/configure-ssl-certificate#import-a-certificate-from-key-vault)
+- Key Vault- [Windows](../../virtual-machines/extensions/key-vault-windows.md), [Linux](../../virtual-machines/extensions/key-vault-linux.md) 'tan sanal makinelere sertifika DAĞıTMA-Azure 'da VM 'de çalışan bir bulut uygulaması, bir sertifika gerektirir. Bu sertifikayı bugün bu sanal makineye nasıl alırsınız?
+- [Azure Web App sertifikasını Key Vault aracılığıyla dağıtma](../../app-service/configure-ssl-certificate.md#import-a-certificate-from-key-vault)
 - Erişim ilkesi atama ([CLI](assign-access-policy-cli.md)  |  [PowerShell](assign-access-policy-powershell.md)  |  [portalı](assign-access-policy-portal.md)). 
 - [CLI ile geçici silme Key Vault kullanımı](soft-delete-cli.md) , anahtar kasasının kullanımı ve yaşam döngüsü boyunca ve geçici silme etkin olan çeşitli Anahtar Kasası nesnelerinde size rehberlik eder.
 - [Dağıtım sırasında güvenli değerleri (parolalar](../../azure-resource-manager/templates/key-vault-parameter.md) gibi) geçirme-dağıtım sırasında bir parametre olarak güvenli bir değer (parola gibi) iletmeniz gerektiğinde, bu değeri bir Azure Key Vault gizli olarak saklayabilir ve diğer kaynak yöneticisi şablonlarındaki değere başvurabilirsiniz.
@@ -127,13 +127,13 @@ Aşağıdaki makaleler ve senaryolar Azure Key Vault çalışmak için göreve �
 
 Bu makaleler, Key Vault kullanan veya ile tümleştirilebilen diğer senaryolar ve hizmetlerle ilgilidir.
 
-- [Rest 'de şifreleme](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) , kalıcı olduğunda verilerin kodlamasına (şifrelemeye) izin verir. Veri şifreleme anahtarları genellikle, erişimi daha fazla sınırlandırmak için Azure Key Vault bir anahtar şifreleme anahtarıyla şifrelenir.
+- [Rest 'de şifreleme](../../security/fundamentals/encryption-atrest.md) , kalıcı olduğunda verilerin kodlamasına (şifrelemeye) izin verir. Veri şifreleme anahtarları genellikle, erişimi daha fazla sınırlandırmak için Azure Key Vault bir anahtar şifreleme anahtarıyla şifrelenir.
 - [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) kendi kiracı anahtarınızı yöneticinize etmenizi sağlar. Örneğin, kiracı anahtarınızı Microsoft 'un yönetmesi yerine (varsayılan), kuruluşunuz için uygun olan belirli düzenlemelere uymak üzere kendi kiracı anahtarınızı yönetebilirsiniz. Kendi kiracı anahtarınızın yönetilmesi, kendi anahtarını getir (BYOK) olarak da bilinir.
 - [Azure özel bağlantı hizmeti](private-link-service.md) , Azure hizmetlerine (örneğin, Azure Key Vault, Azure depolama ve Azure Cosmos DB) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki özel bir uç nokta üzerinden erişmenizi sağlar.
-- [Event Grid](https://docs.microsoft.com/azure/event-grid/event-schema-key-vault) ile tümleştirme Key Vault, Anahtar Kasası 'nda depolanan bir gizli dizinin durumu değiştiğinde kullanıcılara bildirim gönderilmesini sağlar. Kesintileri engellemek için, parolaların yeni bir sürümünü uygulamalara dağıtabilir veya süre sonu gizli dizilerini döndürebilirsiniz.
-- [Azure DevOps](https://docs.microsoft.com/azure/devops/pipelines/release/azure-key-vault) gizli dizilerinizi Key Vault, istenmeyen erişimden koruyabilirsiniz.
-- [Azure depolama 'ya bağlanmak için DataBricks 'te Key Vault depolanan gizli dizi kullanın](https://docs.microsoft.com/azure/key-vault/general/integrate-databricks-blob-storage)
-- Kubernetes üzerinde [gizli depolama CSI sürücüsü](https://docs.microsoft.com/azure/key-vault/general/key-vault-integrate-kubernetes) için Azure Key Vault sağlayıcısını yapılandırın ve çalıştırın
+- [Event Grid](../../event-grid/event-schema-key-vault.md) ile tümleştirme Key Vault, Anahtar Kasası 'nda depolanan bir gizli dizinin durumu değiştiğinde kullanıcılara bildirim gönderilmesini sağlar. Kesintileri engellemek için, parolaların yeni bir sürümünü uygulamalara dağıtabilir veya süre sonu gizli dizilerini döndürebilirsiniz.
+- [Azure DevOps](/azure/devops/pipelines/release/azure-key-vault) gizli dizilerinizi Key Vault, istenmeyen erişimden koruyabilirsiniz.
+- [Azure depolama 'ya bağlanmak için DataBricks 'te Key Vault depolanan gizli dizi kullanın](./integrate-databricks-blob-storage.md)
+- Kubernetes üzerinde [gizli depolama CSI sürücüsü](./key-vault-integrate-kubernetes.md) için Azure Key Vault sağlayıcısını yapılandırın ve çalıştırın
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault genel bakış ve kavramlar
 
@@ -143,5 +143,5 @@ Bu makaleler, Key Vault kullanan veya ile tümleştirilebilen diğer senaryolar 
 
 ## <a name="social"></a>Sosyal
 
-- [Key Vault blogu](https://aka.ms/kvblog)
+- [Key Vault blogu](/archive/blogs/kv/)
 - [Key Vault Forumu](https://aka.ms/kvforum)

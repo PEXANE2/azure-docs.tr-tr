@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: sudbalas
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c375defe5fd8356d64879a65d6f09f40ea30271d
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: d1b1c27fe0136220d5a1851af4a5c24102a37da1
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042482"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288629"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma
 
@@ -27,13 +27,13 @@ Bu bölüm Azure Key Vault güvenlik duvarının yapılandırılabilme farklı y
 
 ### <a name="key-vault-firewall-disabled-default"></a>Key Vault güvenlik duvarı devre dışı (varsayılan)
 
-Varsayılan olarak, yeni bir Anahtar Kasası oluşturduğunuzda Azure Key Vault güvenlik duvarı devre dışı bırakılır. Tüm uygulamalar ve Azure hizmetleri anahtar kasasına erişebilir ve istekleri anahtar kasasına gönderebilir. Bu yapılandırma, herhangi bir kullanıcının anahtar kasasında işlem gerçekleştirebileceği anlamına gelmez. Anahtar Kasası hala Azure Active Directory kimlik doğrulaması ve erişim ilkesi izinleri gerektirerek Anahtar Kasası 'nda depolanan gizli dizileri, anahtarları ve sertifikaları kısıtlar. Anahtar Kasası kimlik doğrulamasını daha ayrıntılı olarak anlamak için, [burada](https://docs.microsoft.com/azure/key-vault/general/authentication-fundamentals)Anahtar Kasası kimlik doğrulaması temelleri belgesine bakın.
+Varsayılan olarak, yeni bir Anahtar Kasası oluşturduğunuzda Azure Key Vault güvenlik duvarı devre dışı bırakılır. Tüm uygulamalar ve Azure hizmetleri anahtar kasasına erişebilir ve istekleri anahtar kasasına gönderebilir. Bu yapılandırma, herhangi bir kullanıcının anahtar kasasında işlem gerçekleştirebileceği anlamına gelmez. Anahtar Kasası hala Azure Active Directory kimlik doğrulaması ve erişim ilkesi izinleri gerektirerek Anahtar Kasası 'nda depolanan gizli dizileri, anahtarları ve sertifikaları kısıtlar. Anahtar Kasası kimlik doğrulamasını daha ayrıntılı olarak anlamak için, [burada](./authentication-fundamentals.md)Anahtar Kasası kimlik doğrulaması temelleri belgesine bakın.
 
 ### <a name="key-vault-firewall-enabled-trusted-services-only"></a>Key Vault Güvenlik Duvarı etkin (yalnızca güvenilir hizmetler)
 
 Key Vault güvenlik duvarını etkinleştirdiğinizde, ' güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına Izin ver ' seçeneği sunulur. Güvenilen hizmetler listesi, her bir Azure hizmetini kapsamaz. Örneğin, Azure DevOps güvenilir Hizmetler listesinde değildir. **Bu, güvenilir Hizmetler listesinde görünmeyen hizmetlerin güvenilir veya güvenli olmayan olduğunu göstermez.** Güvenilen hizmetler listesi, Microsoft 'un hizmette çalışan tüm kodu denetlediği hizmetleri kapsar. Kullanıcılar Azure DevOps gibi Azure hizmetlerinde özel kod yazabileceği için, Microsoft bu hizmet için bir paket onayı oluşturma seçeneği sağlamaz. Ayrıca, bir hizmet Güvenilen hizmet listesinde göründüğünden, tüm senaryolarda izin verilmediği anlamına gelmez.
 
-Kullanmaya çalıştığınız bir hizmetin güvenilir hizmet listesinde olup olmadığını öğrenmek için lütfen [aşağıdaki belgeye bakın](https://docs.microsoft.com/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services).
+Kullanmaya çalıştığınız bir hizmetin güvenilir hizmet listesinde olup olmadığını öğrenmek için lütfen [aşağıdaki belgeye bakın](./overview-vnet-service-endpoints.md#trusted-services).
 
 ### <a name="key-vault-firewall-enabled-ipv4-addresses-and-ranges---static-ips"></a>Key Vault Güvenlik Duvarı etkin (IPv4 adresleri ve aralıkları-statik IP 'Ler)
 
@@ -63,7 +63,7 @@ Bu durumda, kaynağı bir sanal ağ içinde oluşturmanız ve ardından belirli 
 
 ### <a name="key-vault-firewall-enabled-private-link"></a>Key Vault Güvenlik Duvarı etkin (özel bağlantı)
 
-Anahtar Kasanızda bir özel bağlantı bağlantısının nasıl yapılandırılacağını anlamak için [lütfen belgeye bakın](https://docs.microsoft.com/azure/key-vault/general/private-link-service).
+Anahtar Kasanızda bir özel bağlantı bağlantısının nasıl yapılandırılacağını anlamak için [lütfen belgeye bakın](./private-link-service.md).
 
 > [!IMPORTANT]
 > Güvenlik duvarı kuralları etkin olduktan sonra, kullanıcılar, istekleri izin verilen sanal ağlardan veya IPv4 adres aralıklarından başlatıldığında yalnızca Key Vault [veri düzlemi](secure-your-key-vault.md#data-plane-access-control) işlemleri gerçekleştirebilir. Bu, Azure portal Key Vault erişmek için de geçerlidir. Kullanıcılar Azure portal bir anahtar kasasına gözatabilse de, istemci makineleri izin verilenler listesinde yoksa anahtarları, parolaları veya sertifikaları listelemeyebilir. Bu, diğer Azure hizmetleri tarafından Key Vault seçiciyi de etkiler. Kullanıcılar, güvenlik duvarı kuralları istemci makinesini engelliyorsa, anahtar kasalarının listesini görebilirler, ancak liste anahtarlarını göremez.
@@ -71,29 +71,29 @@ Anahtar Kasanızda bir özel bağlantı bağlantısının nasıl yapılandırıl
 > [!NOTE]
 > Aşağıdaki yapılandırma sınırlamalarından haberdar olun:
 > * En fazla 127 sanal ağ kuralına ve 127 IPv4 kuralına izin verilir. 
-> * IP ağ kurallarına yalnızca genel IP adresleri için izin verilir. Özel ağlar için ayrılan IP adresi aralıklarına (RFC 1918 ' de tanımlandığı gibi) IP kurallarında izin verilmez. Özel ağlarda **10.**, **172.16-31**ve 192,168 ile başlayan adresler bulunur **.** 
+> * IP ağ kurallarına yalnızca genel IP adresleri için izin verilir. Özel ağlar için ayrılan IP adresi aralıklarına (RFC 1918 ' de tanımlandığı gibi) IP kurallarında izin verilmez. Özel ağlarda **10.** , **172.16-31** ve 192,168 ile başlayan adresler bulunur **.** 
 > * Şu anda yalnızca IPv4 adresleri destekleniyor.
 
-## <a name="use-the-azure-portal"></a>Azure portalını kullanma
+## <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
 Azure portal kullanarak Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma:
 
 1. Güvenli hale getirmek istediğiniz anahtar kasasını inceleyin.
-2. **Ağ iletişimi**' ni seçin ve ardından **güvenlik duvarları ve sanal ağlar** sekmesini seçin.
-3. **Erişime Izin ver**' ın altında **Seçili ağlar**' ı seçin.
-4. Var olan sanal ağları güvenlik duvarları ve sanal ağ kurallarına eklemek için **+ var olan sanal ağları Ekle**' yi seçin.
-5. Açılan yeni dikey pencerede, bu Anahtar Kasası 'na erişime izin vermek istediğiniz aboneliği, sanal ağları ve alt ağları seçin. Seçtiğiniz sanal ağlarda ve alt ağlarda hizmet uç noktaları etkinleştirilmemişse, hizmet uç noktalarını etkinleştirmek istediğinizi onaylayın ve **Etkinleştir**' i seçin. Etkili olması 15 dakika kadar sürebilir.
-6. **IP ağları**altında [CIDR (sınıfsız etki alanları arası yönlendirme) gösteriminde](https://tools.ietf.org/html/rfc4632) veya tek tek IP adreslerinde IPv4 adresi aralıklarını yazarak IPv4 adres aralıkları ekleyin.
-7. Microsoft güvenilen hizmetlerin Key Vault güvenlik duvarını atlamasına izin vermek istiyorsanız ' Evet ' seçeneğini belirleyin. Geçerli Key Vault güvenilen hizmetlerin tam listesi için lütfen aşağıdaki bağlantıya bakın. [Güvenilen Hizmetleri Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services)
-7. **Kaydet**'i seçin.
+2. **Ağ iletişimi** ' ni seçin ve ardından **güvenlik duvarları ve sanal ağlar** sekmesini seçin.
+3. **Erişime Izin ver** ' ın altında **Seçili ağlar** ' ı seçin.
+4. Var olan sanal ağları güvenlik duvarları ve sanal ağ kurallarına eklemek için **+ var olan sanal ağları Ekle** ' yi seçin.
+5. Açılan yeni dikey pencerede, bu Anahtar Kasası 'na erişime izin vermek istediğiniz aboneliği, sanal ağları ve alt ağları seçin. Seçtiğiniz sanal ağlarda ve alt ağlarda hizmet uç noktaları etkinleştirilmemişse, hizmet uç noktalarını etkinleştirmek istediğinizi onaylayın ve **Etkinleştir** ' i seçin. Etkili olması 15 dakika kadar sürebilir.
+6. **IP ağları** altında [CIDR (sınıfsız etki alanları arası yönlendirme) gösteriminde](https://tools.ietf.org/html/rfc4632) veya tek tek IP adreslerinde IPv4 adresi aralıklarını yazarak IPv4 adres aralıkları ekleyin.
+7. Microsoft güvenilen hizmetlerin Key Vault güvenlik duvarını atlamasına izin vermek istiyorsanız ' Evet ' seçeneğini belirleyin. Geçerli Key Vault güvenilen hizmetlerin tam listesi için lütfen aşağıdaki bağlantıya bakın. [Güvenilen Hizmetleri Azure Key Vault](./overview-vnet-service-endpoints.md#trusted-services)
+7. **Kaydet** ’i seçin.
 
-Ayrıca yeni sanal ağlar ve alt ağlar ekleyebilir ve ardından **+ Yeni sanal ağ ekle**' yi seçerek yeni oluşturulan sanal ağlar ve alt ağlar için hizmet uç noktalarını etkinleştirebilirsiniz. Ardından istemleri izleyin.
+Ayrıca yeni sanal ağlar ve alt ağlar ekleyebilir ve ardından **+ Yeni sanal ağ ekle** ' yi seçerek yeni oluşturulan sanal ağlar ve alt ağlar için hizmet uç noktalarını etkinleştirebilirsiniz. Ardından istemleri izleyin.
 
-## <a name="use-the-azure-cli"></a>Azure CLI'yi kullanma 
+## <a name="use-the-azure-cli"></a>Azure CLI kullanma 
 
 Azure CLı kullanarak Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma
 
-1. [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 'yı yükleyip [oturum açın](https://docs.microsoft.com/cli/azure/authenticate-azure-cli).
+1. [Azure CLI](/cli/azure/install-azure-cli) 'yı yükleyip [oturum açın](/cli/azure/authenticate-azure-cli).
 
 2. Kullanılabilir sanal ağ kurallarını listeleyin. Bu anahtar kasası için herhangi bir kural ayarlamadıysanız liste boş olur.
    ```azurecli
@@ -132,7 +132,7 @@ Azure CLı kullanarak Key Vault güvenlik duvarlarını ve sanal ağları yapıl
 
 PowerShell kullanarak Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma:
 
-1. En son [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)yükleyip [oturum açın](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+1. En son [Azure PowerShell](/powershell/azure/install-az-ps)yükleyip [oturum açın](/powershell/azure/authenticate-azureps).
 
 2. Kullanılabilir sanal ağ kurallarını listeleyin. Bu anahtar kasası için herhangi bir kural ayarlanmamışsa liste boş olur.
    ```powershell
@@ -166,9 +166,9 @@ PowerShell kullanarak Key Vault güvenlik duvarlarını ve sanal ağları yapıl
    ```
 
 ## <a name="references"></a>Başvurular
-* ARM şablon başvurusu: [Azure Key Vault ARM şablon başvurusu](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/vaults)
-* Azure CLı komutları: [az keykasa Network-Rule](https://docs.microsoft.com/cli/azure/keyvault/network-rule?view=azure-cli-latest)
-* Azure PowerShell cmdlet 'leri: [Get-Azkeykasa,](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvault) [Add-azkeyvaultnetworkrule](https://docs.microsoft.com/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-azkeyvaultnetworkrule](https://docs.microsoft.com/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-azkeyvaultnetworkruleset](https://docs.microsoft.com/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
+* ARM şablon başvurusu: [Azure Key Vault ARM şablon başvurusu](/azure/templates/Microsoft.KeyVault/vaults)
+* Azure CLı komutları: [az keykasa Network-Rule](/cli/azure/keyvault/network-rule?view=azure-cli-latest)
+* Azure PowerShell cmdlet 'leri: [Get-Azkeykasa,](/powershell/module/az.keyvault/get-azkeyvault) [Add-azkeyvaultnetworkrule](/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-azkeyvaultnetworkrule](/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-azkeyvaultnetworkruleset](/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

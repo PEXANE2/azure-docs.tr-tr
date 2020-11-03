@@ -7,32 +7,33 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 09/23/2020
+ms.date: 11/03/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 1db3b224d23664c83f21e77dcb445b0fb043a4c3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 607060851a8afa48b9570dfcb17732279a3629ee
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737858"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286664"
 ---
 # <a name="use-stored-procedures-in-synapse-sql"></a>SYNAPSE SQL 'de saklı yordamları kullanma
 
-Çözüm geliştirmek için SYNAPSE SQL havuzunda saklı yordamları uygulamaya yönelik ipuçları.
+SYNAPSE SQL tarafından sağlanan ve sunucusuz havuzlar, karmaşık veri işleme mantığını SQL saklı yordamlarına yerleştirmenizi sağlar. Saklı yordamlar, SQL kodunuzu kapsüllemek ve veri ambarındaki verilerinize yakın bir şekilde depolamak için harika bir yoldur. Saklı yordamlar, kodu yönetilebilir birimlere kapsülleyerek ve kodun daha fazla yeniden kullanılabilirliğini kolaylaştırarak geliştiricilerin çözümlerini modüler hale getirmenize yardımcı olur. Her saklı yordam aynı zamanda parametreleri daha da esnek hale getirmek için kabul edebilir.
+Bu makalede, çözüm geliştirmeye yönelik SYNAPSE SQL havuzunda saklı yordamları uygulamaya yönelik bazı ipuçları bulacaksınız.
 
 ## <a name="what-to-expect"></a>Beklentiler
 
-SYNAPSE SQL SQL Server ' de kullanılan T-SQL özelliklerinin çoğunu destekler. Daha da önemlisi, çözümünüzün performansını en üst düzeye çıkarmak için kullanabileceğiniz genişleme özel özellikleri vardır.
+SYNAPSE SQL SQL Server ' de kullanılan T-SQL özelliklerinin çoğunu destekler. Daha da önemlisi, çözümünüzün performansını en üst düzeye çıkarmak için kullanabileceğiniz genişleme özel özellikleri vardır. Bu makalede, saklı yordamlarda yerleştirebileceğiniz özellikler hakkında bilgi edineceksiniz.
 
 > [!NOTE]
-> Yordam gövdesinde yalnızca SYNAPSE SQL Surface alanında desteklenen özellikleri kullanabilirsiniz. Saklı yordamlarda kullanılabilecek nesneleri ve deyimleri belirlemek için [Bu makaleyi](overview-features.md) gözden geçirin. Bu makalelerdeki örneklerde, hem sunucusuz hem de sağlanan yüzey alanında kullanılabilen genel Özellikler kullanılır.
+> Yordam gövdesinde yalnızca SYNAPSE SQL Surface alanında desteklenen özellikleri kullanabilirsiniz. Saklı yordamlarda kullanılabilecek nesneleri ve deyimleri belirlemek için [Bu makaleyi](overview-features.md) gözden geçirin. Bu makalelerdeki örneklerde, hem sunucusuz hem de sağlanan yüzey alanında kullanılabilen genel Özellikler kullanılır. Bu makalenin sonundaki [sağlanan ve sunucusuz SYNAPSE SQL havuzlarındaki ek sınırlamalara](#limitations) bakın.
 
 SQL havuzunun ölçeğini ve performansını korumak için, davranış farklılıkları ve bazıları desteklenmeyen bazı özellikler ve işlevler de vardır.
 
 ## <a name="stored-procedures-in-synapse-sql"></a>SYNAPSE SQL 'de saklı yordamlar
 
-Saklı yordamlar, SQL kodunuzu kapsüllemek ve veri ambarındaki verilerinize yakın bir şekilde depolamak için harika bir yoldur. Saklı yordamlar, kodun yönetilebilir birimlere kapsülleyerek geliştiricilerin daha fazla yeniden kullanılabilirliğini kolaylaştırarak çözümlerini modüler hale getirmenize yardımcı olur. Her saklı yordam aynı zamanda parametreleri daha da esnek hale getirmek için kabul edebilir. Aşağıdaki örnekte, veritabanında varsa dış nesneleri bırakma yordamlarını görebilirsiniz:
+Aşağıdaki örnekte, veritabanında varsa dış nesneleri bırakma yordamlarını görebilirsiniz:
 
 ```sql
 CREATE PROCEDURE drop_external_table_if_exists @name SYSNAME
@@ -184,23 +185,26 @@ EXEC clean_up 'mytest'  -- This call is nest level 1
 
 ## <a name="insertexecute"></a>INSERT..EXECUTE
 
-SYNAPSE SQL, bir INSERT ifadesiyle saklı yordamın sonuç kümesini kullanmanıza izin vermez. Kullanabileceğiniz alternatif bir yaklaşım vardır. Örnek için, sağlanan SYNAPSE SQL havuzu için [geçici tablolarda](develop-tables-temporary.md) bulunan makaleye bakın.
+Sağlanan SYNAPSE SQL havuzu, bir INSERT ifadesiyle saklı yordamın sonuç kümesini kullanmanıza izin vermez. Kullanabileceğiniz alternatif bir yaklaşım vardır. Örnek için, sağlanan SYNAPSE SQL havuzu için [geçici tablolarda](develop-tables-temporary.md) bulunan makaleye bakın.
 
 ## <a name="limitations"></a>Sınırlamalar
 
 SYNAPSE SQL 'de uygulanmayan Transact-SQL saklı yordamlarının bazı yönleri vardır; örneğin:
 
-* geçici saklı yordamlar
-* numaralandırılmış saklı yordamlar
-* Genişletilmiş saklı yordamlar
-* CLR saklı yordamları
-* şifreleme seçeneği
-* çoğaltma seçeneği
-* tablo değerli parametreler
-* salt okuma parametreleri
-* Varsayılan parametreler (sağlanan havuzda)
-* Yürütme bağlamları
-* Return deyimi
+| Özellik/seçenek | Sağlanan | Sunucusuz |
+| --- | --- |
+| Geçici saklı yordamlar | Hayır | Evet |
+| Numaralandırılmış saklı yordamlar | Hayır | Hayır |
+| Genişletilmiş saklı yordamlar | Hayır | Hayır |
+| CLR saklı yordamları | Hayır | Hayır |
+| Şifreleme seçeneği | Hayır | Evet |
+| Çoğaltma seçeneği | Hayır | Hayır |
+| Tablo değerli parametreler | Hayır | Hayır |
+| Salt okuma parametreleri | Hayır | Hayır |
+| Varsayılan parametreler | Hayır | Evet |
+| Yürütme bağlamları | Hayır | Hayır |
+| Return ekstresi | Hayır | Evet |
+| IÇINE EKLE.. EXEC | Hayır | Evet |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

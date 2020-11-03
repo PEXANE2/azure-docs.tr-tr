@@ -7,12 +7,12 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 3ec831bada19aa8d3872440ba628ac06bc64f749
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3fdc9a9f99b239f68022067a5aedbc7e6e0d12a4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099428"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287495"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Azure Key Vault'ta kimliği doğrulama
 
@@ -20,7 +20,7 @@ Azure Key Vault, gizli dizileri depolamanıza ve bunların dağıtımını, uygu
 
 ## <a name="app-identity-and-security-principals"></a>Uygulama kimliği ve güvenlik sorumluları
 
-Key Vault kimlik doğrulaması, herhangi bir **güvenlik sorumlusunun** kimliğini kimlik doğrulamasından getirmekten sorumlu olan [Azure ACTIVE DIRECTORY (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis)ile birlikte çalışıyor.
+Key Vault kimlik doğrulaması, herhangi bir **güvenlik sorumlusunun** kimliğini kimlik doğrulamasından getirmekten sorumlu olan [Azure ACTIVE DIRECTORY (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md)ile birlikte çalışıyor.
 
 Güvenlik sorumlusu, Azure kaynaklarına erişim isteyen bir Kullanıcı, Grup, hizmet veya uygulamayı temsil eden bir nesnedir. Azure her güvenlik sorumlusuna benzersiz bir **nesne kimliği** atar.
 
@@ -36,9 +36,9 @@ Uygulamalar için hizmet sorumlusu almanın iki yolu vardır:
 
     Yönetilen kimlik ile Azure, uygulamanın hizmet sorumlusunu dahili olarak yönetir ve uygulamanın diğer Azure hizmetleriyle kimliğini otomatik olarak doğrular. Yönetilen kimlik, çeşitli hizmetlere dağıtılan uygulamalar için kullanılabilir.
 
-    Daha fazla bilgi için bkz. [yönetilen kimliğe genel bakış](/azure/active-directory/managed-identities-azure-resources/overview). Ayrıca, belirli hizmetler (örneğin App Service, Azure Işlevleri, sanal makineler vb.) için yönetilen kimliğin nasıl etkinleştireceğinizi açıklayan makalelere bağlanan [Azure hizmetlerini destekleyen Azure hizmetleri](/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)de bölümüne bakın.
+    Daha fazla bilgi için bkz. [yönetilen kimliğe genel bakış](../../active-directory/managed-identities-azure-resources/overview.md). Ayrıca, belirli hizmetler (örneğin App Service, Azure Işlevleri, sanal makineler vb.) için yönetilen kimliğin nasıl etkinleştireceğinizi açıklayan makalelere bağlanan [Azure hizmetlerini destekleyen Azure hizmetleri](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)de bölümüne bakın.
 
-* Yönetilen kimliği kullandıysanız, bunun yerine uygulamayı Azure AD kiracınızla **kaydedin** . [hızlı başlangıç: Azure Identity platformu ile uygulama kaydetme](/azure/active-directory/develop/quickstart-register-app). Kayıt Ayrıca, tüm kiracıların genelinde uygulamayı tanımlayan ikinci bir uygulama nesnesi oluşturur.
+* Yönetilen kimliği kullandıysanız, bunun yerine uygulamayı Azure AD kiracınızla **kaydedin** . [hızlı başlangıç: Azure Identity platformu ile uygulama kaydetme](../../active-directory/develop/quickstart-register-app.md). Kayıt Ayrıca, tüm kiracıların genelinde uygulamayı tanımlayan ikinci bir uygulama nesnesi oluşturur.
 
 ## <a name="authorize-a-security-principal-to-access-key-vault"></a>Güvenlik sorumlusunu Key Vault erişim yetkisi verme
 
@@ -56,13 +56,13 @@ Key Vault iki ayrı yetkilendirme düzeyiyle kullanılabilir:
  
     Rolleri atamak ve yönetmek için aşağıdaki makalelere bakın:
 
-    - [Azure Portal](/azure/role-based-access-control/role-assignments-portal)
-    - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
-    - [Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell)
+    - [Azure Portal](../../role-based-access-control/role-assignments-portal.md)
+    - [Azure CLI](../../role-based-access-control/role-assignments-cli.md)
+    - [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
 
-    Key Vault Şu anda, Key Vault kaynaklarında yönetim işlemlerine izin veren [katkıda](/azure/role-based-access-control/built-in-roles#key-vault-contributor) bulunan rolünü desteklemektedir. Diğer birçok rol Şu anda önizlemededir. Ayrıca, [Azure özel rolleri](/azure/role-based-access-control/custom-roles)' nde açıklandığı gibi özel roller de oluşturabilirsiniz.
+    Key Vault Şu anda, Key Vault kaynaklarında yönetim işlemlerine izin veren [katkıda](../../role-based-access-control/built-in-roles.md#key-vault-contributor) bulunan rolünü desteklemektedir. Diğer birçok rol Şu anda önizlemededir. Ayrıca, [Azure özel rolleri](../../role-based-access-control/custom-roles.md)' nde açıklandığı gibi özel roller de oluşturabilirsiniz.
 
-    Roller hakkında genel bilgi için bkz. [Azure Role-Based Access Control (RBAC) nedir?](/azure/role-based-access-control/overview).
+    Roller hakkında genel bilgi için bkz. [Azure Role-Based Access Control (RBAC) nedir?](../../role-based-access-control/overview.md).
 
 
 > [!IMPORTANT]
@@ -72,7 +72,7 @@ Key Vault iki ayrı yetkilendirme düzeyiyle kullanılabilir:
 
 Varsayılan olarak, Key Vault genel IP adresleri aracılığıyla kaynaklara erişime izin verir. Daha fazla güvenlik için belirli IP aralıklarına, hizmet uç noktalarına, sanal ağlara veya özel uç noktalara erişimi de kısıtlayabilirsiniz.
 
-Daha fazla bilgi için bkz. [erişim Azure Key Vault bir güvenlik duvarı arkasında](/azure/key-vault/general/access-behind-firewall).
+Daha fazla bilgi için bkz. [erişim Azure Key Vault bir güvenlik duvarı arkasında](./access-behind-firewall.md).
 
 
 ## <a name="the-key-vault-authentication-flow"></a>Key Vault kimlik doğrulama akışı
@@ -80,7 +80,7 @@ Daha fazla bilgi için bkz. [erişim Azure Key Vault bir güvenlik duvarı arkas
 1. Azure AD 'de kimlik doğrulaması yapmak için bir hizmet sorumlusu istekleri, örneğin:
     * Kullanıcı Kullanıcı adı ve parola kullanarak Azure portal oturum açar.
     * Bir uygulama, bir istemci KIMLIĞI ve gizli dizi ya da istemci sertifikası sunarak Azure REST API çağırır.
-    * Yönetilen kimliğe sahip bir sanal makine gibi bir Azure kaynağı, erişim belirteci almak için [azure Instance Metadata Service (ıMDS)](/azure/virtual-machines/windows/instance-metadata-service) REST uç noktasıyla iletişim kurar.
+    * Yönetilen kimliğe sahip bir sanal makine gibi bir Azure kaynağı, erişim belirteci almak için [azure Instance Metadata Service (ıMDS)](../../virtual-machines/windows/instance-metadata-service.md) REST uç noktasıyla iletişim kurar.
 
 1. Azure AD ile kimlik doğrulaması başarılı olursa, hizmet sorumlusuna bir OAuth belirteci verilir.
 
@@ -89,7 +89,7 @@ Daha fazla bilgi için bkz. [erişim Azure Key Vault bir güvenlik duvarı arkas
 1. Key Vault güvenlik duvarı aşağıdaki ölçütleri denetler. Herhangi bir ölçüt karşılanırsa, çağrıya izin verilir. Aksi takdirde, çağrı engellenir ve yasaklanmış bir yanıt döndürülür.
 
     * Güvenlik duvarı devre dışı bırakılır ve Key Vault genel uç noktasına genel İnternet üzerinden erişilebilir.
-    * Çağıran [Key Vault güvenilir bir hizmettir](/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services)ve güvenlik duvarının atlanmasını sağlar.
+    * Çağıran [Key Vault güvenilir bir hizmettir](./overview-vnet-service-endpoints.md#trusted-services)ve güvenlik duvarının atlanmasını sağlar.
     * Arayan, IP adresi, sanal ağ veya hizmet uç noktası tarafından güvenlik duvarında listelenir.
     * Çağıran, yapılandırılmış bir özel bağlantı bağlantısı üzerinden Key Vault alabilir.    
 
@@ -109,20 +109,20 @@ Aşağıdaki tablo, söz konusu dilin Azure SDK kitaplıklarını kullanarak uyg
 
 | Key Vault gizli dizileri | Key Vault anahtarları | Key Vault sertifikaları |
 |  --- | --- | --- |
-| [Python](/azure/key-vault/secrets/quick-create-python) | [Python](/azure/key-vault/keys/quick-create-python) | [Python](/azure/key-vault/certificates/quick-create-python) | 
-| [.NET (SDK v4)](/azure/key-vault/secrets/quick-create-net) | -- | -- |
+| [Python](../secrets/quick-create-python.md) | [Python](../keys/quick-create-python.md) | [Python](../certificates/quick-create-python.md) | 
+| [.NET (SDK v4)](../secrets/quick-create-net.md) | -- | -- |
 | [.NET (SDK v3)](https://dotnet.microsoft.com/download/dotnet-core/3.0) | -- | -- |
-| [Java](/azure/key-vault/secrets/quick-create-java) | -- | -- |
-| [JavaScript](/azure/key-vault/secrets/quick-create-node) | -- | -- | 
+| [Java](../secrets/quick-create-java.md) | -- | -- |
+| [JavaScript](../secrets/quick-create-node.md) | -- | -- | 
 | | | |
-| [Azure Portal](/azure/key-vault/secrets/quick-create-portal) | [Azure Portal](/azure/key-vault/keys/quick-create-portal) | [Azure Portal](/azure/key-vault/certificates/quick-create-portal) |
-| [Azure CLI](/azure/key-vault/secrets/quick-create-cli) | [Azure CLI](/azure/key-vault/keys/quick-create-cli) | [Azure CLI](/azure/key-vault/certificates/quick-create-cli) |
-| [Azure PowerShell](/azure/key-vault/secrets/quick-create-powershell) | [Azure PowerShell](/azure/key-vault/keys/quick-create-powershell) | [Azure PowerShell](/azure/key-vault/certificates/quick-create-powershell) |
-| [ARM şablonu](/azure/key-vault/secrets/quick-create-net) | -- | -- |
+| [Azure Portal](../secrets/quick-create-portal.md) | [Azure Portal](../keys/quick-create-portal.md) | [Azure Portal](../certificates/quick-create-portal.md) |
+| [Azure CLI](../secrets/quick-create-cli.md) | [Azure CLI](../keys/quick-create-cli.md) | [Azure CLI](../certificates/quick-create-cli.md) |
+| [Azure PowerShell](../secrets/quick-create-powershell.md) | [Azure PowerShell](../keys/quick-create-powershell.md) | [Azure PowerShell](../certificates/quick-create-powershell.md) |
+| [ARM şablonu](../secrets/quick-create-net.md) | -- | -- |
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
 - [Key Vault erişim ilkesi sorunlarını giderme](troubleshooting-access-issues.md)
 - [Key Vault REST API hata kodları](rest-error-codes.md)
 - [Geliştirici Kılavuzu Key Vault](developers-guide.md)
-- [Azure Role-Based Access Control (RBAC) nedir?](/azure/role-based-access-control/overview)
+- [Azure Role-Based Access Control (RBAC) nedir?](../../role-based-access-control/overview.md)

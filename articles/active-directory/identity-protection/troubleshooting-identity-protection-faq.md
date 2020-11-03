@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b1c0ef42454b085c5d4dbcdc14162b2c829c6a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ec45ce7634b7bc0a8f38f354112cdc2e172f1e17
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074823"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288371"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory 'de sık sorulan sorular kimlik koruması
 
@@ -27,14 +27,6 @@ Klasik kimlik koruması ' nda **Kullanıcı riskini** kapatma, kullanıcının k
 Kimlik koruması ' nda **Kullanıcı riskini kapat** kullanıcının kimlik koruması olan risk geçmişinde aktör olarak ayarlanır **\<Admin’s name with a hyperlink pointing to user’s blade\>** .
 
 Kullanıcı riski geri ayırma akışında gecikmeye neden olan geçerli bir bilinen sorun var. "Kullanıcı risk ilkeniz" varsa, bu ilke "Kullanıcı riskini kapat" seçeneğine tıklanarak kapatılan kullanıcılara uygulamayı durdurur. Ancak, UX ile kapatılan kullanıcıların "risk durumunu" yenilemesinin bilinen gecikmeleri vardır. Geçici bir çözüm olarak, en son kullanıcıyı "risk durumu" görmek için tarayıcı düzeyindeki sayfayı yenileyin.
-
-## <a name="risky-users-report-known-issues"></a>Riskli kullanıcılar bilinen sorunları raporlar
-
-**Kullanıcı** adı alanındaki sorgular büyük/küçük harfe duyarlıdır, ancak **ad** alanındaki sorgular büyük/küçük harfe duyarlıdır.
-
-**Tarihleri göster** değiştirme, **RISK Son güncelleme** sütununu gizler. Sütunu yeniden eklemek için riskli kullanıcılar dikey penceresinin en üstündeki **sütunlar** ' a tıklayın.
-
-Klasik kimlik korumasında **tüm olayları kapat** risk algılamalarının durumunu **Kapalı (çözüldü)** olarak ayarlar.
 
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular

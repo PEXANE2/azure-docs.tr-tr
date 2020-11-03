@@ -1,18 +1,18 @@
 ---
-title: Azure Işlevleri hata işleme Kılavuzu
-description: Azure Işlevlerinde belirli bağlama hatalarının bağlantılarıyla ilgili hataları işleme hakkında bilgi edinin.
+title: Azure Işlevleri hata işleme ve yeniden deneme Kılavuzu
+description: Belirli bağlama hatalarının bağlantılarıyla birlikte, Azure Işlevlerinde hata ve yeniden deneme olaylarını gerçekleştirmeyi öğrenin.
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 09/11/2019
+ms.date: 10/01/2020
 ms.author: cshoe
-ms.openlocfilehash: 0617d55f7c67c788b1e898d963f7d509cef72d49
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: e52babd5b0612b4590f1422a941b25ba30c3f169
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096853"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93284459"
 ---
-# <a name="azure-functions-error-handling"></a>Azure Işlevleri hata işleme
+# <a name="azure-functions-error-handling-and-retries"></a>Azure Işlevleri hata işleme ve yeniden denemeleri
 
 Azure Işlevlerinde hataları işleme, kayıp verilerin, unutulan olayların olmaması ve uygulamanızın durumunu izlemek için önemlidir.
 
@@ -20,7 +20,7 @@ Bu makalede, bağlama özgü hataların bağlantılarıyla birlikte hata işleme
 
 ## <a name="handling-errors"></a>Hataları işleme
 
-[!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
+[!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-retries.md)]
 
 ## <a name="binding-error-codes"></a>Bağlama hata kodları
 

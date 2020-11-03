@@ -7,14 +7,14 @@ author: NatiNimni
 ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: fdc0ae3fef2fb70b7372ab4fb28497ea6a6400a4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: dfea03270dfea3699f7c3508b9f5275a2dd26372
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635471"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287155"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Azure Bilişsel Arama veri şifrelemesi için müşteri tarafından yönetilen anahtarları yapılandırma
 
@@ -41,15 +41,13 @@ Anahtarların tümünün aynı anahtar kasasında olması gerekmez. Tek bir aram
 
 Farklı bir bölge veya 1 Ağustos 'Tan önce oluşturulmuş bir hizmet kullanıyorsanız CMK şifrelemeniz, hizmet tarafından kullanılan geçici diskler hariç yalnızca veri diski ile sınırlıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu örnekte aşağıdaki araçlar ve hizmetler kullanılır. 
+Bu senaryoda aşağıdaki araçlar ve hizmetler kullanılır.
 
-+ [Bir bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)bir hizmet bulun. 
-
-+ [Azure Key Vault bir kaynak oluşturun](../key-vault/secrets/quick-create-portal.md#create-a-vault) veya var olan bir kaynağı bulun. Hem Key Vault hem de Bilişsel Arama aynı abonelikte olmalıdır. Anahtar kasasında **geçici silme** ve **Temizleme koruması** etkinleştirilmiş olmalıdır.
-
-+ Bir uygulamayı kaydetmek ve uygulamanız tarafından kimlik doğrulaması için kullanılan gizli bir dize oluşturmak için [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) . Bir tane yoksa, [Yeni bir kiracı kurun](../active-directory/develop/quickstart-create-new-tenant.md).
++ [Azure bilişsel arama](search-create-service-portal.md) , [faturalandırılabilir katmanda](search-sku-tier.md#tiers) (herhangi bir bölgedeki temel veya üstü).
++ Azure Bilişsel Arama ile aynı abonelikte [Azure Key Vault](../key-vault/secrets/quick-create-portal.md#create-a-vault) . Anahtar kasasında **geçici silme** ve **Temizleme koruması** etkinleştirilmiş olmalıdır.
++ [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md). Bir tane yoksa, [Yeni bir kiracı kurun](../active-directory/develop/quickstart-create-new-tenant.md).
 
 Şifrelenmiş nesneyi oluşturabileceğiniz bir arama uygulamasına sahip olmanız gerekir. Bu koda, bir Anahtar Kasası anahtarına ve Active Directory kayıt bilgilerine başvurabileceksiniz. Bu kod, çalışan bir uygulama veya [C# kod örneği DotNetHowToEncryptionUsingCMK](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK)gibi prototip kodu olabilir.
 
@@ -134,7 +132,7 @@ Azure Key Vault ' de bir anahtarınız zaten varsa bu adımı atlayın.
 
    [Dotnethowtoencryptionusingcmk](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK)aracılığıyla adımladıysanız, bu değeri dosyadaki **appsettings.js** yapıştırın.
 
-   :::image type="content" source="media/search-manage-encryption-keys/cmk-application-id.png" alt-text="Yeni bir anahtar kasası anahtarı oluştur":::
+   :::image type="content" source="media/search-manage-encryption-keys/cmk-application-id.png" alt-text="Temel bileşenler bölümündeki uygulama KIMLIĞI":::
 
 1. Ardından, sol taraftaki **sertifikalar & parolaları** ' nı seçin.
 
@@ -142,7 +140,7 @@ Azure Key Vault ' de bir anahtarınız zaten varsa bu adımı atlayın.
 
 1. Uygulama gizli dizesini kopyalayın. Örnek içinde adımlarken, bu değeri dosyadaki **appsettings.js** yapıştırın.
 
-   :::image type="content" source="media/search-manage-encryption-keys/cmk-application-secret.png" alt-text="Yeni bir anahtar kasası anahtarı oluştur":::
+   :::image type="content" source="media/search-manage-encryption-keys/cmk-application-secret.png" alt-text="Uygulama gizli dizisi":::
 
 ## <a name="4---grant-key-access-permissions"></a>4-anahtar erişim izinleri verme
 
@@ -154,11 +152,11 @@ Erişim izinleri belirli bir zamanda iptal edilebilir. Bu Anahtar Kasası 'nı k
 
 1. Sol taraftaki **erişim ilkelerini** seçin ve **+ erişim ilkesi Ekle** ' yi seçin.
 
-   :::image type="content" source="media/search-manage-encryption-keys/cmk-add-access-policy.png" alt-text="Yeni bir anahtar kasası anahtarı oluştur":::
+   :::image type="content" source="media/search-manage-encryption-keys/cmk-add-access-policy.png" alt-text="Yeni Anahtar Kasası erişim ilkesi Ekle":::
 
 1. **Sorumlu Seç** ' i seçin ve Active Directory kaydettiğiniz uygulamayı seçin. Adına göre arama yapabilirsiniz.
 
-   :::image type="content" source="media/search-manage-encryption-keys/cmk-access-policy-permissions.png" alt-text="Yeni bir anahtar kasası anahtarı oluştur":::
+   :::image type="content" source="media/search-manage-encryption-keys/cmk-access-policy-permissions.png" alt-text="Anahtar Kasası erişim ilkesi sorumlusunu seçin":::
 
 1. **Anahtar izinler** ' de *Al* , *anahtar kaydırmayı kaldır* ve *anahtarı sarmalama* ' i seçin.
 

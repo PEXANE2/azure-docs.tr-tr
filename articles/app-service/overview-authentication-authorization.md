@@ -1,17 +1,17 @@
 ---
-title: Kimlik doğrulaması ve yetkilendirme
+title: Kimlik doğrulama ve yetkilendirme
 description: Azure App Service ve Azure Işlevlerinde yerleşik kimlik doğrulama ve yetkilendirme desteği hakkında bilgi edinin ve uygulamanızın yetkisiz erişime karşı nasıl güvenli hale getirilmesine yardımcı olabilir.
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: e984332e6e93fc9a42123d06f320a66073585bff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09460e4e38ea1842d58ecf3a9b3cd00a072c271e
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89596048"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286907"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service ve Azure Işlevlerinde kimlik doğrulama ve yetkilendirme
 
@@ -90,7 +90,7 @@ App Service, üçüncü taraf bir kimlik sağlayıcısının sizin için Kullan�
 | Sağlayıcı | Oturum açma uç noktası |
 | - | - |
 | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) | `/.auth/login/aad` |
-| [Microsoft Hesabı](../active-directory/develop/v2-overview.md) | `/.auth/login/microsoftaccount` |
+| [Microsoft hesabı](../active-directory/develop/v2-overview.md) | `/.auth/login/microsoftaccount` |
 | [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
 | [Google](https://developers.google.com/identity/choose-auth) | `/.auth/login/google` |
 | [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` |
@@ -104,8 +104,8 @@ Diğer kimlik sağlayıcıları veya özel bir kimlik doğrulama çözümüyle t
 
 Kimlik doğrulama akışı tüm sağlayıcılar için aynıdır, ancak sağlayıcının SDK 'Sı ile oturum açmak isteyip istemediğinize bağlı olarak farklılık gösterir:
 
-- Sağlayıcı SDK 'Sı olmadan: uygulama App Service için Federasyon oturum açma temsilcisi sağlar. Bu durum genellikle, sağlayıcının oturum açma sayfasını kullanıcıya sunmanızı sağlayan tarayıcı uygulamaları ile aynıdır. Sunucu kodu, oturum açma işlemini yönetir, bu nedenle _sunucu yönlendirmeli akış_ veya _sunucu akışı_olarak da adlandırılır. Bu durum tarayıcı uygulamaları için geçerlidir. SDK, kullanıcıların App Service kimlik doğrulamasıyla oturum açmasını sağlamak üzere bir Web görünümü açtığından Mobile Apps istemci SDK 'sını kullanarak kullanıcıları imzalayasağlayan yerel uygulamalar için de geçerlidir. 
-- Sağlayıcı SDK ile: uygulama, kullanıcıları sağlayıcıya el ile imzalar ve doğrulama için App Service kimlik doğrulama belirtecini gönderir. Bu durum genellikle, sağlayıcının oturum açma sayfasını kullanıcıya sunamıyoruz ve tarayıcı tarafından daha az uygulamalar için kullanılır. Uygulama kodu, oturum açma işlemini yönetir, bu nedenle _istemci yönlendirmeli akış_ veya _istemci akışı_olarak da adlandırılır. Bu durum REST API 'Leri, [Azure işlevleri](../azure-functions/functions-overview.md)ve JavaScript tarayıcı istemcileri için, oturum açma sürecinde daha fazla esneklik gerektiren tarayıcı uygulamaları için de geçerlidir. Ayrıca, sağlayıcının SDK 'sını kullanarak kullanıcıları imzalayasağlayan yerel mobil uygulamalar için de geçerlidir.
+- Sağlayıcı SDK 'Sı olmadan: uygulama App Service için Federasyon oturum açma temsilcisi sağlar. Bu durum genellikle, sağlayıcının oturum açma sayfasını kullanıcıya sunmanızı sağlayan tarayıcı uygulamaları ile aynıdır. Sunucu kodu, oturum açma işlemini yönetir, bu nedenle _sunucu yönlendirmeli akış_ veya _sunucu akışı_ olarak da adlandırılır. Bu durum tarayıcı uygulamaları için geçerlidir. SDK, kullanıcıların App Service kimlik doğrulamasıyla oturum açmasını sağlamak üzere bir Web görünümü açtığından Mobile Apps istemci SDK 'sını kullanarak kullanıcıları imzalayasağlayan yerel uygulamalar için de geçerlidir. 
+- Sağlayıcı SDK ile: uygulama, kullanıcıları sağlayıcıya el ile imzalar ve doğrulama için App Service kimlik doğrulama belirtecini gönderir. Bu durum genellikle, sağlayıcının oturum açma sayfasını kullanıcıya sunamıyoruz ve tarayıcı tarafından daha az uygulamalar için kullanılır. Uygulama kodu, oturum açma işlemini yönetir, bu nedenle _istemci yönlendirmeli akış_ veya _istemci akışı_ olarak da adlandırılır. Bu durum REST API 'Leri, [Azure işlevleri](../azure-functions/functions-overview.md)ve JavaScript tarayıcı istemcileri için, oturum açma sürecinde daha fazla esneklik gerektiren tarayıcı uygulamaları için de geçerlidir. Ayrıca, sağlayıcının SDK 'sını kullanarak kullanıcıları imzalayasağlayan yerel mobil uygulamalar için de geçerlidir.
 
 > [!NOTE]
 > App Service bir güvenilen tarayıcı uygulamasından App Service veya [Azure işlevlerinde](../azure-functions/functions-overview.md) başka bir REST API olan çağrılar, sunucu ile yönlendirilen Flow kullanılarak doğrulanabilir. Daha fazla bilgi için bkz. [App Service kimlik doğrulaması ve yetkilendirmeyi özelleştirme](app-service-authentication-how-to.md).
@@ -140,12 +140,15 @@ Bu seçenek, anonim istekleri işlemek için daha fazla esneklik sağlar. Örne�
 
 ### <a name="allow-only-authenticated-requests"></a>Yalnızca kimliği doğrulanmış isteklere izin ver
 
-Seçeneği ** \<provider> Ile oturum açın **. App Service, tüm anonim istekleri `/.auth/login/<provider>` seçtiğiniz sağlayıcıya yönlendirir. Anonim istek yerel bir mobil uygulamadan geliyorsa, döndürülen yanıt bir olur `HTTP 401 Unauthorized` .
+Seçeneği **\<provider> Ile oturum açın**. App Service, tüm anonim istekleri `/.auth/login/<provider>` seçtiğiniz sağlayıcıya yönlendirir. Anonim istek yerel bir mobil uygulamadan geliyorsa, döndürülen yanıt bir olur `HTTP 401 Unauthorized` .
 
 Bu seçenekle, uygulamanızda herhangi bir kimlik doğrulama kodu yazmanız gerekmez. Role özgü yetkilendirme gibi daha ayrıntılı yetkilendirme, kullanıcının taleplerini inceleyerek (bkz. [erişim kullanıcı talepleri](app-service-authentication-how-to.md#access-user-claims)) işlenebilir.
 
 > [!CAUTION]
 > Erişimin bu şekilde kısıtlanması, uygulamanıza yönelik tüm çağrılar için geçerlidir. Bu, birçok tek sayfalı uygulamalarda olduğu gibi genel kullanıma açık bir giriş sayfası gerektiren uygulamalar için istenmeyebilir.
+
+> [!NOTE]
+> Varsayılan olarak, Azure AD kiracınızdaki herhangi bir Kullanıcı Azure AD 'den uygulamanız için bir belirteç talep edebilir. Uygulamanıza erişimi tanımlı bir Kullanıcı kümesiyle kısıtlamak istiyorsanız [, Azure AD 'de uygulamayı yapılandırabilirsiniz](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md) .
 
 ## <a name="more-resources"></a>Diğer kaynaklar
 

@@ -8,22 +8,21 @@ ms.author: chalton
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: 6a4dcec2b50a13a256c82e4a5ec54c9b22aa973f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 11/02/2020
+ms.openlocfilehash: f0295c27f1d193b0dcd7829a11b4aabe0edb659b
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791996"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286344"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>Azure Bilişsel Arama blob Dizinleyicileri ve becerileri kullanarak şifrelenmiş Blobların dizinini oluşturma
 
-Bu makalede, [Azure Key Vault](../key-vault/general/overview.md)kullanılarak [Azure Blob depolama](../storage/blobs/storage-blobs-introduction.md) alanında daha önce şifrelenen belgeleri dizine eklemek için [Azure bilişsel arama](search-what-is-azure-search.md) nasıl kullanılacağı gösterilmektedir. Normalde, bir Dizin Oluşturucu şifreleme anahtarına erişimi olmadığından şifrelenmiş dosyalardan içerik ayıklayamaz. Bununla birlikte, [Decryptblobdosya](https://github.com/Azure-Samples/azure-search-power-skills/blob/master/Utils/DecryptBlobFile) özel becerilerinden ve ardından [Belgetextractionbeceri](cognitive-search-skill-document-extraction.md)' ndan yararlanarak, dosyaların şifresini çözmek ve sonra içerikten ayıklanmak üzere anahtara denetimli erişim sağlayabilirsiniz. Bu, bekleyen verilerin şifrelenmemiş olarak depolanmasından endişelenmenize gerek kalmadan, bu belgeleri dizinleyebilme özelliğini de kaldırır.
+Bu makalede, Azure [bilişsel arama](search-what-is-azure-search.md) kullanarak daha önce [Azure Key Vault](../key-vault/general/overview.md)kullanılarak [Azure Blob depolama](../storage/blobs/storage-blobs-introduction.md) içinde şifrelenmiş olan belgeleri nasıl dizinleyen gösterilmektedir. Normalde, bir Dizin Oluşturucu şifreleme anahtarına erişimi olmadığından şifrelenmiş dosyalardan içerik ayıklayamaz. Bununla birlikte, [Decryptblobdosya](https://github.com/Azure-Samples/azure-search-power-skills/blob/master/Utils/DecryptBlobFile) özel becerilerinden ve ardından [Belgetextractionbeceri](cognitive-search-skill-document-extraction.md)' ndan yararlanarak, dosyaların şifresini çözmek ve sonra içerikten ayıklanmak üzere anahtara denetimli erişim sağlayabilirsiniz. Bu, saklı belgelerinizin şifreleme durumuyla ödün vermeden bu belgeleri dizine alma imkanını kaldırır.
 
-Bu kılavuzda, aşağıdaki görevleri gerçekleştirmek için Postman ve arama REST API 'Leri kullanılmaktadır:
+Azure Blob depolamada PDF, HTML, DOCX ve PPTX gibi daha önce şifrelenen tüm belgeler (yapılandırılmamış metin) ile başlayarak, bu kılavuzda aşağıdaki görevleri gerçekleştirmek için Postman ve arama REST API 'Leri kullanılmaktadır:
 
 > [!div class="checklist"]
-> * Azure Key Vault kullanılarak şifrelenmiş Azure Blob depolamada PDF, HTML, DOCX ve PPTX gibi tüm belgeler (yapılandırılmamış metin) ile başlayın.
 > * Belgelerin şifresini çözdüğü ve metinden çıkaran bir işlem hattı tanımlayın.
 > * Çıktıyı depolamak için bir dizin tanımlayın.
 > * Dizini oluşturmak ve yüklemek için işlem hattını yürütün.
@@ -31,18 +30,15 @@ Bu kılavuzda, aşağıdaki görevleri gerçekleştirmek için Postman ve arama 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) açın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu örnekte, dosyalarınızı zaten Azure Blob depolama alanına yüklediğinizi ve bunları süreçte şifrelediğinizi varsaymış olursunuz. Dosyalarınızı başlangıçta karşıya yüklenmiş ve şifreli olarak almak için yardıma ihtiyacınız varsa, bunun nasıl yapılacağını öğrenmek için [Bu öğreticiye](../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md) göz atın.
 
 + [Azure Depolama](https://azure.microsoft.com/services/storage/)
-+ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
++ Azure Bilişsel Arama ile aynı abonelikte [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) . Anahtar kasasında **geçici silme** ve **Temizleme koruması** etkinleştirilmiş olmalıdır.
++ [Faturalanabilir katmanda](search-sku-tier.md#tiers) [Azure bilişsel arama](search-create-service-portal.md) (herhangi bir bölgedeki temel veya üstü)
 + [Azure İşlevi](https://azure.microsoft.com/services/functions/)
 + [Postman masaüstü uygulaması](https://www.getpostman.com/)
-+ [Mevcut bir arama hizmeti](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) [oluşturun](search-create-service-portal.md) veya bulun 
-
-> [!Note]
-> Bu kılavuzda ücretsiz hizmeti kullanabilirsiniz. Ücretsiz arama hizmeti, üç Dizin, üç dizin oluşturma, üç veri kaynağı ve üç becerileri için sizi sınırlandırır. Bu kılavuzda her biri oluşturulur. Başlamadan önce, hizmetinize yeni kaynakları kabul etmek için yeriniz olduğundan emin olun.
 
 ## <a name="1---create-services-and-collect-credentials"></a>1-hizmet oluşturma ve kimlik bilgilerini toplama
 

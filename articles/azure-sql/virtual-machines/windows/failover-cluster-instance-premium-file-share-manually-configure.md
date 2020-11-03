@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: b6e33f32c6adcea12952474e3f09b45834b85c1e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 1994cda9dbf22a81216408ee07d51f635e89cff4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164423"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285272"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Premium dosya paylaşımıyla bir FCı oluşturma (Azure VM 'lerinde SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,8 +41,8 @@ Bu makaledeki yönergeleri tamamlamadan önce Şu durumda olmalıdır:
 
 ## <a name="mount-premium-file-share"></a>Premium dosya paylaşma bağlama
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. ve depolama hesabınıza gidin.
-1. **Dosya hizmeti**altında **dosya paylaşımları** ' na gidin ve ardından SQL depolaması için kullanmak istediğiniz Premium dosya paylaşımını seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. ve depolama hesabınıza gidin.
+1. **Dosya hizmeti** altında **dosya paylaşımları** ' na gidin ve ardından SQL depolaması için kullanmak istediğiniz Premium dosya paylaşımını seçin.
 1. Dosya paylaşımınızın bağlantı dizesini görüntülemek için **Bağlan** ' ı seçin.
 1. Açılan listede, kullanmak istediğiniz sürücü harfini seçin ve ardından her iki kod bloğunu Not defteri 'ne kopyalayın.
 
@@ -69,11 +69,11 @@ Bu makaledeki yönergeleri tamamlamadan önce Şu durumda olmalıdır:
 1. [Yük devretme kümelemesini her bir sanal makineye ekleyin](availability-group-manually-configure-prerequisites-tutorial.md#add-failover-clustering-features-to-both-sql-server-vms).
 
    Yük devretme kümelemesini kullanıcı arabiriminden yüklemek için her iki sanal makinede şunları yapın:
-   1. **Sunucu Yöneticisi**, **Yönet**' i seçin ve ardından **rol ve Özellik Ekle**' yi seçin.
+   1. **Sunucu Yöneticisi** , **Yönet** ' i seçin ve ardından **rol ve Özellik Ekle** ' yi seçin.
    1. **Rol ve özellik ekleme** Sihirbazı ' nda, **özellikleri seçerken** **İleri** ' yi seçin.
-   1. **Özellikleri Seç**bölümünde **Yük Devretme Kümelemesi**' ni seçin. Tüm gerekli özellikleri ve yönetim araçlarını dahil edin. 
-   1. **Özellik Ekle**' yi seçin.
-   1. **İleri**' yi seçin ve sonra özellikleri yüklemek için **son** ' u seçin.
+   1. **Özellikleri Seç** bölümünde **Yük Devretme Kümelemesi** ' ni seçin. Tüm gerekli özellikleri ve yönetim araçlarını dahil edin. 
+   1. **Özellik Ekle** ' yi seçin.
+   1. **İleri** ' yi seçin ve sonra özellikleri yüklemek için **son** ' u seçin.
 
    PowerShell 'i kullanarak Yük Devretme Kümelemesi 'ni yüklemek için sanal makinelerden birindeki yönetici PowerShell oturumundan aşağıdaki betiği çalıştırın:
 
@@ -88,15 +88,25 @@ Kümeyi Kullanıcı arabiriminde veya PowerShell kullanarak doğrulayın.
 
 Kullanıcı arabirimini kullanarak kümeyi doğrulamak için sanal makinelerden birinde şunları yapın:
 
-1. **Sunucu Yöneticisi**altında **Araçlar**' ı seçin ve **Yük devretme kümesi Yöneticisi**' i seçin.
-1. **Yük devretme kümesi Yöneticisi**altında **eylem**' i seçin ve ardından **Yapılandırmayı Doğrula**' yı seçin.
-1. **İleri**’yi seçin.
-1. **Sunucu veya küme Seç**altında, her iki sanal makinenin adını da girin.
-1. **Test seçenekleri**altında **yalnızca Seçdiğim Testleri Çalıştır**' ı seçin. 
-1. **İleri**’yi seçin.
-1. **Test seçimi**altında, **depolama** ve **depolama alanları doğrudan**dışındaki tüm testleri aşağıda gösterildiği gibi seçin:
+1. **Sunucu Yöneticisi** altında **Araçlar** ' ı seçin ve **Yük devretme kümesi Yöneticisi** ' i seçin.
+1. **Yük devretme kümesi Yöneticisi** altında **eylem** ' i seçin ve ardından **Yapılandırmayı Doğrula** ' yı seçin.
+1. **İleri** ’yi seçin.
+1. **Sunucu veya küme Seç** altında, her iki sanal makinenin adını da girin.
+1. **Test seçenekleri** altında **yalnızca Seçdiğim Testleri Çalıştır** ' ı seçin. 
+1. **İleri** ’yi seçin.
+1. **Test seçimi** altında, **depolama** ve **depolama alanları doğrudan** dışındaki tüm testleri aşağıda gösterildiği gibi seçin:
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="Her iki PowerShell komutunu da dosya paylaşımının Connect portalından Kopyala"
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="Küme doğrulama testlerini seçin":::
+
+1. **İleri** ’yi seçin.
+1. **Onay** altında **İleri** ' yi seçin.
+
+**Yapılandırma doğrulama** Sihirbazı doğrulama testlerini çalıştırır.
+
+PowerShell 'i kullanarak kümeyi doğrulamak için sanal makinelerden birindeki yönetici PowerShell oturumundan aşağıdaki betiği çalıştırın:
+
+   ```powershell
+   Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
    ```
 
 Kümeyi doğruladıktan sonra, yük devretme kümesini oluşturun.
@@ -139,9 +149,9 @@ Daha fazla bilgi için bkz. [Yük devretme kümesi: küme ağ nesnesi](https://b
 
 ## <a name="test-cluster-failover"></a>Test kümesi yük devretmesi
 
-Kümenizin yük devretmesini test edin. **Yük devretme kümesi Yöneticisi**, kümenize sağ tıklayın, **diğer eylemler**' i  >  **taşıyın çekirdek küme kaynağı**  >  **Seç düğümünü**seçin ve ardından kümenin diğer düğümünü seçin. Çekirdek küme kaynağını kümenin her düğümüne taşıyın ve ardından birincil düğüme geri taşıyın. Kümeyi her düğüme başarıyla taşıyabiliyorsanız SQL Server yüklemeye hazırsınız demektir.  
+Kümenizin yük devretmesini test edin. **Yük devretme kümesi Yöneticisi** , kümenize sağ tıklayın, **diğer eylemler** ' i  >  **taşıyın çekirdek küme kaynağı**  >  **Seç düğümünü** seçin ve ardından kümenin diğer düğümünü seçin. Çekirdek küme kaynağını kümenin her düğümüne taşıyın ve ardından birincil düğüme geri taşıyın. Kümeyi her düğüme başarıyla taşıyabiliyorsanız SQL Server yüklemeye hazırsınız demektir.  
 
-:::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Her iki PowerShell komutunu da dosya paylaşımının Connect portalından Kopyala":::
+:::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Çekirdek kaynağı diğer düğümlere taşıyarak küme yük devretmesini test etme":::
 
 
 ## <a name="create-sql-server-fci"></a>SQL Server FCı oluştur
@@ -150,27 +160,27 @@ Yük devretme kümesini yapılandırdıktan sonra, SQL Server FCı 'yi oluştura
 
 1. RDP kullanarak ilk sanal makineye bağlanın.
 
-1. **Yük devretme kümesi Yöneticisi**, tüm çekirdek küme kaynaklarının ilk sanal makinede olduğundan emin olun. Gerekirse, tüm kaynakları bu sanal makineye taşıyın.
+1. **Yük devretme kümesi Yöneticisi** , tüm çekirdek küme kaynaklarının ilk sanal makinede olduğundan emin olun. Gerekirse, tüm kaynakları bu sanal makineye taşıyın.
 
 1. Yükleme medyasını bulun. Sanal makine Azure Marketi görüntülerinden birini kullanıyorsa medya konumunda bulunur `C:\SQLServer_<version number>_Full` . 
 
-1. **Kurulum 'u**seçin.
+1. **Kurulum 'u** seçin.
 
-1. **SQL Server Yükleme Merkezi**'nde **yükleme**' yi seçin.
+1. **SQL Server Yükleme Merkezi** 'nde **yükleme** ' yi seçin.
 
-1. **Yeni SQL Server yük devretme kümesi yükleme**' yi seçin ve ardından sihirbazdaki yönergeleri izleyerek SQL Server FCI 'yi yükleme.
+1. **Yeni SQL Server yük devretme kümesi yükleme** ' yi seçin ve ardından sihirbazdaki yönergeleri izleyerek SQL Server FCI 'yi yükleme.
 
    FCı veri dizinlerinin Premium dosya paylaşımında olması gerekir. Paylaşımın tam yolunu şu biçimde girin: `\\storageaccountname.file.core.windows.net\filesharename\foldername` . Veri dizini olarak bir dosya sunucusu belirtmiş olduğunu söyleyen bir uyarı görüntülenir. Bu uyarı beklenmektedir. Dosya paylaşımından kalıcı hale geldiğinde, sanal makineye RDP aracılığıyla erişmek için kullandığınız kullanıcı hesabının, SQL Server hizmetin olası hatalardan kaçınmak için kullandığı hesapla aynı olduğundan emin olun.
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="Her iki PowerShell komutunu da dosya paylaşımının Connect portalından Kopyala":::
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="Dosya paylaşımının SQL veri dizinleri olarak kullanılması":::
 
 1. Sihirbazdaki adımları tamamladıktan sonra, kurulum ilk düğümde bir SQL Server FCı yükler.
 
 1. Kurulum, ilk düğümde FCı 'yı yükledikten sonra, RDP kullanarak ikinci düğüme bağlanın.
 
-1. **SQL Server yükleme merkezini**açın ve ardından **yükleme**' yi seçin.
+1. **SQL Server yükleme merkezini** açın ve ardından **yükleme** ' yi seçin.
 
-1. **SQL Server yük devretme kümesine düğüm Ekle**' yi seçin. SQL Server yüklemek ve sunucuyu FCı 'ye eklemek için sihirbazdaki yönergeleri izleyin.
+1. **SQL Server yük devretme kümesine düğüm Ekle** ' yi seçin. SQL Server yüklemek ve sunucuyu FCı 'ye eklemek için sihirbazdaki yönergeleri izleyin.
 
    >[!NOTE]
    >SQL Server ile bir Azure Marketi Galeri görüntüsü kullandıysanız, görüntüye SQL Server Araçlar eklenmiştir. Bu görüntülerden birini kullanmıyorsanız, SQL Server araçlarını ayrı olarak yükleyebilirsiniz. Daha fazla bilgi için bkz. [Download SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
@@ -200,7 +210,7 @@ Trafiği geçerli birincil düğüme uygun bir şekilde yönlendirmek için, ort
 
 - Microsoft Dağıtılmış İşlem Düzenleyicisi (MSDTC), Windows Server 2016 ve önceki sürümlerde desteklenmez. 
 - Premium dosya paylaşımıyla yük devretme kümesi için FILESTREAM desteklenmez. FILESTREAM kullanmak için, [depolama alanları doğrudan](failover-cluster-instance-storage-spaces-direct-manually-configure.md) veya [Azure Paylaşılan disklerini](failover-cluster-instance-azure-shared-disks-manually-configure.md) kullanarak kümenizi dağıtın.
-- Yalnızca [basit yönetim MODUNDAKI](sql-vm-resource-provider-register.md#management-modes) SQL VM kaynak sağlayıcısı ile kaydolma desteklenir. 
+- Yalnızca [basit yönetim MODUNDAKI](sql-server-iaas-agent-extension-automate-management.md#management-modes) SQL VM kaynak sağlayıcısı ile kaydolma desteklenir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: add94fe05eecd2fb77ba0d6d79fe6765afe3baaa
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 5558a57812414f6f1bb1be053a089af98533155a
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091024"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288334"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure sayfa bloblarına genel bakış
 
@@ -24,6 +24,10 @@ Azure depolama, üç tür BLOB depolama alanı sunar: blok Blobları, ekleme Blo
 Sayfa Blobları, rastgele bayt aralıklarını okuma/yazma özelliği sağlayan 512 baytlık sayfaların koleksiyonudur. Bu nedenle, sayfa Blobları, sanal makineler ve veritabanları için işletim sistemi ve veri diskleri gibi dizin tabanlı ve seyrek veri yapılarını depolamak için idealdir. Örneğin, Azure SQL DB, veritabanı için temeldeki kalıcı depolama olarak sayfa bloblarını kullanır. Ayrıca, sayfa Blobları genellikle Range-Based güncelleştirmeleri olan dosyalar için de kullanılır.  
 
 Azure sayfa bloblarının temel özellikleri, REST arabirimidir, temeldeki depolamanın dayanıklılığı ve Azure 'a sorunsuz geçiş özellikleri sağlar. Bu özellikler, sonraki bölümde daha ayrıntılı olarak ele alınmıştır. Ayrıca, Azure sayfa Blobları Şu anda iki tür depolama üzerinde desteklenmektedir: Premium Depolama ve standart depolama. Premium Depolama özellikle yüksek performans ve düşük gecikme gerektiren iş yükleri için tasarlanmıştır ve Premium sayfa Blobları yüksek performanslı depolama senaryoları için idealdir. Standart depolama hesapları, gecikme süresine duyarsız iş yüklerini çalıştırmaya daha uygun maliyetli bir hesapdır.
+
+## <a name="restrictions"></a>Kısıtlamalar
+
+Sayfa Blobları yalnızca **sık** erişimli erişim katmanını **kullanabilir, seyrek erişimli veya** **Arşiv** katmanlarını kullanamaz. Erişim katmanları hakkında daha fazla bilgi için bkz. [Azure Blob depolama Için erişim katmanları-sık erişimli, seyrek erişimli ve arşiv](storage-blob-storage-tiers.md).
 
 ## <a name="sample-use-cases"></a>Kullanım örnekleri
 
@@ -59,7 +63,7 @@ Aşağıdaki diyagramda hesap, kapsayıcılar ve sayfa Blobları arasındaki gen
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
-Bir Sayfa Blobu oluşturmak için ilk olarak, aşağıdaki örnekte gösterildiği gibi, depolama hesabınız için blob depolamaya (Şekil 1 ' de*pbaccount* ) birlikte **Storagecredentialsaccountandkey** NESNESIYLE erişmek için temel URI Ile bir **cloudblobclient** nesnesi oluşturacağız. Örnek daha sonra **Cloudblobcontainer** nesnesine bir başvuru oluşturmayı ve daha önce mevcut değilse kapsayıcıyı (*testvhd*'ler) oluşturmayı gösterir. Daha sonra **Cloudblobcontainer** nesnesini kullanarak erişmek için Sayfa Blobu adını (OS4. vhd) belirterek **cloudpageblob** nesnesine bir başvuru oluşturun. Sayfa Blobu oluşturmak için, oluşturulacak blob 'un en büyük boyutunu geçirerek [Cloudpageblob. Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)' ı çağırın. *Blobsize* , 512 baytlık bir katı olmalıdır.
+Bir Sayfa Blobu oluşturmak için ilk olarak, aşağıdaki örnekte gösterildiği gibi, depolama hesabınız için blob depolamaya (Şekil 1 ' de *pbaccount* ) birlikte **Storagecredentialsaccountandkey** NESNESIYLE erişmek için temel URI Ile bir **cloudblobclient** nesnesi oluşturacağız. Örnek daha sonra **Cloudblobcontainer** nesnesine bir başvuru oluşturmayı ve daha önce mevcut değilse kapsayıcıyı ( *testvhd* 'ler) oluşturmayı gösterir. Daha sonra **Cloudblobcontainer** nesnesini kullanarak erişmek için Sayfa Blobu adını (OS4. vhd) belirterek **cloudpageblob** nesnesine bir başvuru oluşturun. Sayfa Blobu oluşturmak için, oluşturulacak blob 'un en büyük boyutunu geçirerek [Cloudpageblob. Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)' ı çağırın. *Blobsize* , 512 baytlık bir katı olmalıdır.
 
 ```csharp
 using Microsoft.Azure;

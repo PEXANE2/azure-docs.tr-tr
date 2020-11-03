@@ -1,26 +1,21 @@
 ---
-title: Kullanıcının bir uygulamaya erişimini kaldırma | Microsoft Docs
-description: Bir kullanıcının uygulamaya erişiminin nasıl kaldırılacağını anlayın
+title: Kullanıcının Azure Active Directory bir uygulamaya erişimini kaldırma
+description: Kullanıcının Azure Active Directory bir uygulamaya erişiminin nasıl kaldırılacağını anlayın
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 10/17/2018
+ms.date: 11/02/2020
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f9626c256755e2fce81b593d95b8680f4bb55ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8544c35d77dfc32ece9b21a602f301ab15c22439
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763168"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288325"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>Kullanıcının bir uygulamaya erişimini kaldırma
 
@@ -36,29 +31,13 @@ Bir uygulamaya tüm Kullanıcı oturum açma işlemlerini devre dışı bırakma
 
 ## <a name="i-want-to-delete-an-application-entirely"></a>Bir uygulamayı tamamen silmek istiyorum
 
-**Bir uygulamayı silmek**için şu yönergeleri izleyin:
-
-1. [**Azure Portal**](https://portal.azure.com/) açın ve **genel yönetici** veya **ortak yönetici** olarak oturum açın.
-
-2. Sol taraftaki Gezinti menüsünün en üstündeki **tüm hizmetler** ' i tıklatarak **Azure Active Directory uzantısını** açın.
-
-3. Filtre arama kutusuna **"Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
-
-4. Azure Active Directory sol taraftaki gezinti menüsünden **Kurumsal uygulamalar** ' a tıklayın.
-
-5. Tüm uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' a tıklayın.
-
-   * Burada görünmesini istediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin** en üstündeki **filtre** denetimini kullanın ve **göster** seçeneğini **tüm uygulamalar** olarak ayarlayın.
-
-6. Silmek istediğiniz uygulamayı seçin.
-
-7. Uygulama yüklendikten sonra üst uygulamanın **genel bakış** bölmesindeki **Sil** simgesine tıklayın.
+[Uygulama yönetiminde hızlı başlangıç serisi](delete-application-portal.md) , Azure Active Directory kiracınızdan bir uygulamayı silmeye yönelik yönergeler içerir.
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Tüm gelecek Kullanıcı onay işlemlerini herhangi bir uygulamaya devre dışı bırakmak istiyorum
 
 Tüm dizininiz için Kullanıcı onayını devre dışı bırakmak, son kullanıcıların herhangi bir uygulamaya yarışmasını önler. Yöneticiler kullanıcı adına yine de izin verebilir. Uygulama onayı hakkında daha fazla bilgi edinmek ve bunu yapmak istememenizin nedeni, [Kullanıcı ve yönetici onayını anlama](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)konusunu okuyun. Ayrıca bkz. [izinler ve onay](../develop/v2-permissions-and-consent.md).
 
-Tüm **dizininizde tüm gelecek Kullanıcı onay işlemlerini devre dışı bırakmak**için şu yönergeleri izleyin:
+Tüm **dizininizde tüm gelecek Kullanıcı onay işlemlerini devre dışı bırakmak** için şu yönergeleri izleyin:
 
 1.  [**Azure Portal**](https://portal.azure.com/) açın ve **genel yönetici** olarak oturum açın.
 
@@ -66,7 +45,7 @@ Tüm **dizininizde tüm gelecek Kullanıcı onay işlemlerini devre dışı bır
 
 3.  Gezinti menüsünde **Kurumsal uygulamalar** ' a tıklayın.
 
-5.  **Kullanıcı ayarları**' na tıklayın.
+5.  **Kullanıcı ayarları** ' na tıklayın.
 
 6.  Kullanıcılar, **uygulamaların kendi adına şirket verilerine erişmesine izin** verebilir **Hayır** ' a geçiş yapar ve Kaydet düğmesine tıklayın.
 

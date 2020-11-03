@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 162e40555e11dff716b58eec4b1168728257693e
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 5423fc27ecc58bcd79b36a845e4b7569f342f712
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131182"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286696"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault günlüğü
 
@@ -26,7 +26,7 @@ Kayıt bilgilerinizi 10 dakika (en çok) Anahtar Kasası işleminden sonra eriş
 * Günlüklerinize erişebilecek kişileri kısıtlayarak güvenliklerini sağlamak için standart Azure erişim denetimi yöntemlerini kullanın.
 * Artık depolama hesabınızda tutmak istemediğiniz günlükleri silin.
 
-Key Vault hakkında genel bilgi için bkz. [Azure Key Vault nedir?](overview.md). Key Vault nerede kullanılabildiği hakkında daha fazla bilgi için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/key-vault/)bakın. [Key Vault Için Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview)kullanma hakkında bilgi için.
+Key Vault hakkında genel bilgi için bkz. [Azure Key Vault nedir?](overview.md). Key Vault nerede kullanılabildiği hakkında daha fazla bilgi için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/key-vault/)bakın. [Key Vault Için Azure izleyici](../../azure-monitor/insights/key-vault-insights-overview.md)kullanma hakkında bilgi için.
 
 ## <a name="interpret-your-key-vault-logs"></a>Anahtar Kasası günlüklerinizi yorumlama
 
@@ -59,9 +59,9 @@ Tek tek bloblar JSON blobu olarak biçimlendirilip metin olarak depolanır. Bir 
 
 Aşağıdaki tabloda alan adları ve açıklamaları listelenmektedir:
 
-| Alan adı | Description |
+| Alan adı | Açıklama |
 | --- | --- |
-| **time** |UTC olarak tarih ve saat. |
+| **ışınızda** |UTC olarak tarih ve saat. |
 | **RESOURCEID** |Azure Resource Manager kaynak KIMLIĞI. Key Vault günlükleri için, her zaman Key Vault kaynak KIMLIĞI olur. |
 | **operationName** |Sonraki tabloda belirtildiği gibi işlemin adı. |
 | **operationVersion** |İstemci tarafından istenen sürümü REST API. |
@@ -73,9 +73,9 @@ Aşağıdaki tabloda alan adları ve açıklamaları listelenmektedir:
 | **callerIpAddress** |İsteği yapan istemcinin IP adresi. |
 | **ID** |İstemci tarafı günlüklerini hizmet tarafı (Anahtar Kasası) günlükleriyle ilişkilendirmek için istemcinin geçirebileceği isteğe bağlı bir GUID. |
 | **IDENTITY** |REST API isteğinde sunulan belirteçten kimlik. Bu, genellikle bir "Kullanıcı," bir "hizmet sorumlusu" veya "Kullanıcı + AppID" birleşimidir ve bir Azure PowerShell cmdlet 'inin sonucu olan bir istekte bulunur. |
-| **özelliklerinin** |İşleme göre farklılık gösteren bilgiler (**OperationName**). Çoğu durumda bu alan istemci bilgilerini (istemci tarafından geçirilen kullanıcı aracısı dizesi), tam REST API istek URI 'sini ve HTTP durum kodunu içerir. Ayrıca, bir nesne bir isteğin sonucu olarak döndürüldüğünde (örneğin, **Keycreate** veya **vaultget**), anahtar URI (as `id` ), kasa URI 'si veya gizli URI 'yi de içerir. |
+| **özelliklerinin** |İşleme göre farklılık gösteren bilgiler ( **OperationName** ). Çoğu durumda bu alan istemci bilgilerini (istemci tarafından geçirilen kullanıcı aracısı dizesi), tam REST API istek URI 'sini ve HTTP durum kodunu içerir. Ayrıca, bir nesne bir isteğin sonucu olarak döndürüldüğünde (örneğin, **Keycreate** veya **vaultget** ), anahtar URI (as `id` ), kasa URI 'si veya gizli URI 'yi de içerir. |
 
-**OperationName** alan değerleri *objectverb* biçimindedir. Örnek:
+**OperationName** alan değerleri *objectverb* biçimindedir. Örneğin:
 
 * Tüm Anahtar Kasası işlemleri `Vault<action>` , ve gibi biçimdedir `VaultGet` `VaultCreate` .
 * Tüm anahtar işlemleri `Key<action>` , ve gibi biçimdedir `KeySign` `KeyList` .
@@ -88,32 +88,32 @@ Aşağıdaki tabloda, **OperationName** değerleri ve karşılık gelen REST API
 | operationName | REST API komutu |
 | --- | --- |
 | **Kimlik Doğrulaması** |Azure Active Directory uç noktası aracılığıyla kimlik doğrulaması |
-| **VaultGet** |[Bir anahtar kasası hakkında bilgi edinme](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
-| **VaultPut** |[Bir anahtar kasası oluşturma veya güncelleştirme](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
-| **VaultDelete** |[Bir anahtar kasasını silme](https://msdn.microsoft.com/library/azure/mt620022.aspx) |
-| **VaultPatch** |[Bir anahtar kasasını güncelleştirme](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
-| **VaultList** |[Bir kaynak grubundaki tüm anahtar kasalarını listeleme](https://msdn.microsoft.com/library/azure/mt620027.aspx) |
-| **KeyCreate** |[Bir anahtar oluşturma](https://msdn.microsoft.com/library/azure/dn903634.aspx) |
-| **KeyGet** |[Bir anahtar hakkında bilgi edinme](https://msdn.microsoft.com/library/azure/dn878080.aspx) |
-| **KeyImport** |[Bir kasaya bir anahtar aktarma](https://msdn.microsoft.com/library/azure/dn903626.aspx) |
-| **KeyBackup** |[Anahtar yedekleme](https://msdn.microsoft.com/library/azure/dn878058.aspx) |
-| **KeyDelete** |[Bir anahtarı silme](https://msdn.microsoft.com/library/azure/dn903611.aspx) |
-| **KeyRestore** |[Bir anahtarı geri yükleme](https://msdn.microsoft.com/library/azure/dn878106.aspx) |
-| **KeySign** |[Bir anahtar ile oturum açma](https://msdn.microsoft.com/library/azure/dn878096.aspx) |
-| **KeyVerify** |[Bir anahtar ile doğrulama](https://msdn.microsoft.com/library/azure/dn878082.aspx) |
-| **KeyWrap** |[Bir anahtarı sarmalama](https://msdn.microsoft.com/library/azure/dn878066.aspx) |
-| **KeyUnwrap** |[Bir anahtarı kaydırma](https://msdn.microsoft.com/library/azure/dn878079.aspx) |
-| **KeyEncrypt** |[Bir anahtar ile şifreleme](https://msdn.microsoft.com/library/azure/dn878060.aspx) |
-| **KeyDecrypt** |[Bir anahtar ile şifre çözme](https://msdn.microsoft.com/library/azure/dn878097.aspx) |
-| **KeyUpdate** |[Bir anahtarı güncelleştirme](https://msdn.microsoft.com/library/azure/dn903616.aspx) |
-| **KeyList** |[Bir kasadaki anahtarları listeleme](https://msdn.microsoft.com/library/azure/dn903629.aspx) |
-| **KeyListVersions** |[Bir anahtarın sürümlerini listeleme](https://msdn.microsoft.com/library/azure/dn986822.aspx) |
-| **SecretSet** |[Gizli anahtar oluşturma](https://msdn.microsoft.com/library/azure/dn903618.aspx) |
-| **SecretGet** |[Gizli dizi alın](https://msdn.microsoft.com/library/azure/dn903633.aspx) |
-| **SecretUpdate** |[Gizli anahtarı güncelleştirme](https://msdn.microsoft.com/library/azure/dn986818.aspx) |
-| **SecretDelete** |[Gizli anahtarı silme](https://msdn.microsoft.com/library/azure/dn903613.aspx) |
-| **SecretList** |[Bir kasadaki gizli anahtarları listeleme](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
-| **SecretListVersions** |[Bir gizli anahtarın sürümlerini listeleme](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
+| **VaultGet** |[Bir anahtar kasası hakkında bilgi edinme](/rest/api/keyvault/vaults) |
+| **VaultPut** |[Bir anahtar kasası oluşturma veya güncelleştirme](/rest/api/keyvault/vaults) |
+| **VaultDelete** |[Bir anahtar kasasını silme](/rest/api/keyvault/vaults) |
+| **VaultPatch** |[Bir anahtar kasasını güncelleştirme](/rest/api/keyvault/vaults) |
+| **VaultList** |[Bir kaynak grubundaki tüm anahtar kasalarını listeleme](/rest/api/keyvault/vaults) |
+| **KeyCreate** |[Bir anahtar oluşturma](/rest/api/keyvault/createkey) |
+| **KeyGet** |[Bir anahtar hakkında bilgi edinme](/rest/api/keyvault/getkey) |
+| **KeyImport** |[Bir kasaya bir anahtar aktarma](/rest/api/keyvault/vaults) |
+| **KeyBackup** |[Anahtar yedekleme](/rest/api/keyvault/backupkey) |
+| **KeyDelete** |[Bir anahtarı silme](/rest/api/keyvault/deletekey) |
+| **KeyRestore** |[Bir anahtarı geri yükleme](/rest/api/keyvault/restorekey) |
+| **KeySign** |[Bir anahtar ile oturum açma](/rest/api/keyvault/sign) |
+| **KeyVerify** |[Bir anahtar ile doğrulama](/rest/api/keyvault/vaults) |
+| **KeyWrap** |[Bir anahtarı sarmalama](/rest/api/keyvault/wrapkey) |
+| **KeyUnwrap** |[Bir anahtarı kaydırma](/rest/api/keyvault/unwrapkey) |
+| **KeyEncrypt** |[Bir anahtar ile şifreleme](/rest/api/keyvault/encrypt) |
+| **KeyDecrypt** |[Bir anahtar ile şifre çözme](/rest/api/keyvault/decrypt) |
+| **KeyUpdate** |[Bir anahtarı güncelleştirme](/rest/api/keyvault/updatekey) |
+| **KeyList** |[Bir kasadaki anahtarları listeleme](/rest/api/keyvault/vaults) |
+| **KeyListVersions** |[Bir anahtarın sürümlerini listeleme](/rest/api/keyvault/getkeyversions) |
+| **SecretSet** |[Gizli anahtar oluşturma](/rest/api/keyvault/updatecertificate) |
+| **SecretGet** |[Gizli dizi alın](/rest/api/keyvault/getsecret) |
+| **SecretUpdate** |[Gizli anahtarı güncelleştirme](/rest/api/keyvault/updatesecret) |
+| **SecretDelete** |[Gizli anahtarı silme](/rest/api/keyvault/deletesecret) |
+| **SecretList** |[Bir kasadaki gizli anahtarları listeleme](/rest/api/keyvault/vaults) |
+| **SecretListVersions** |[Bir gizli anahtarın sürümlerini listeleme](/rest/api/keyvault/getsecretversions) |
 | **VaultAccessPolicyChangedEventGridNotification** | Kasa erişimi ilkesi değiştirilmiş olayı yayınlandı |
 | **Secretyaklaştığında Expiryeventgridnotification** |Süre sonu olayı yayımlanan gizli dizi |
 | **Secretexpio Ventgridnotification** |Gizli zaman aşımına uğradı olayı yayımlandı |

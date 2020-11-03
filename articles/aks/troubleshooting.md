@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) kullanırken karşılaşılan yaygı
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: dcbfed4fc83b980b3e54a808406b8d27e1e6c919
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: d15e381baf3abdb77f63b17cbd1d33b24f5d3321
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074422"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286769"
 ---
 # <a name="aks-troubleshooting"></a>AKS sorunlarını giderme
 
@@ -113,8 +113,8 @@ AKS kümesi içindeki aracı düğümlerinde bulunan etiketleri değiştirdiğin
 Bu hata, kümeler birden çok nedenden dolayı başarısız bir durum girerken oluşur. Daha önce başarısız olan işlemi yeniden denemeden önce kümenizin başarısız durumunu çözümlemek için aşağıdaki adımları izleyin:
 
 1. Kümenin `failed` durumu olmadığından `upgrade` ve `scale` işlemler başarılı olmayacaktır. Ortak kök sorunları ve çözümleri şunları içerir:
-    * **Yetersiz işlem (CRP) kotasıyla**ölçekleme. Çözümlemek için, önce kümenizi kotanın içindeki kararlı bir hedef durumuna ölçeklendirin. Ardından, ilk kota limitlerinin ötesinde daha fazla ölçeklendirmeyi denemeden önce [bir işlem kotası artışı istemek için bu adımları](../azure-portal/supportability/resource-manager-core-quotas-request.md) izleyin.
-    * Gelişmiş ağ ve **yetersiz alt ağ (ağ) kaynaklarıyla**bir kümeyi ölçeklendirin. Çözümlemek için, önce kümenizi kotanın içindeki kararlı bir hedef durumuna ölçeklendirin. Ardından ilk kota limitlerinin ötesinde daha fazla ölçeklendirmeyi denemeden önce [bir kaynak kotası artışı istemek için bu adımları](../azure-resource-manager/templates/error-resource-quota.md#solution) izleyin.
+    * **Yetersiz işlem (CRP) kotasıyla** ölçekleme. Çözümlemek için, önce kümenizi kotanın içindeki kararlı bir hedef durumuna ölçeklendirin. Ardından, ilk kota limitlerinin ötesinde daha fazla ölçeklendirmeyi denemeden önce [bir işlem kotası artışı istemek için bu adımları](../azure-portal/supportability/resource-manager-core-quotas-request.md) izleyin.
+    * Gelişmiş ağ ve **yetersiz alt ağ (ağ) kaynaklarıyla** bir kümeyi ölçeklendirin. Çözümlemek için, önce kümenizi kotanın içindeki kararlı bir hedef durumuna ölçeklendirin. Ardından ilk kota limitlerinin ötesinde daha fazla ölçeklendirmeyi denemeden önce [bir kaynak kotası artışı istemek için bu adımları](../azure-resource-manager/templates/error-resource-quota.md#solution) izleyin.
 2. Yükseltme hatasının temeldeki nedeni çözümlendikten sonra, kümenizin başarılı bir durumda olması gerekir. Başarılı bir durum doğrulandıktan sonra, özgün işlemi yeniden deneyin.
 
 ## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-upgraded-or-has-failed-upgrade"></a>Bu durumun yükseltilme veya ölçeklendirilmesi sırasında hata alıyorum veya yükseltme başarısız oldu
@@ -154,10 +154,10 @@ Bir AKS kümesini doğru şekilde oluşturmak için uygun belge içindeki *başl
 Adlandırma kısıtlamaları hem Azure platformu hem de AKS tarafından uygulanır. Bir kaynak adı veya parametresi bu kısıtlamaların birini keserse, farklı bir giriş sağlamanızı isteyen bir hata döndürülür. Aşağıdaki ortak adlandırma yönergeleri geçerlidir:
 
 * Küme adları 1-63 karakter olmalıdır. Yalnızca harfler, rakamlar, tireler ve alt çizgi olmak üzere izin verilen karakterler. İlk ve son karakter bir harf veya sayı olmalıdır.
-* AKS düğümü/*Mc_* kaynak grubu adı, kaynak grubu adını ve kaynak adını birleştirir. Otomatik olarak oluşturulan sözdiziminin `MC_resourceGroupName_resourceName_AzureRegion` 80 karakterden büyük olmaması gerekir. Gerekirse, kaynak grubu adınızın veya AKS kümesi adınızın uzunluğunu azaltın. Ayrıca, [düğüm kaynağı grubu adınızı özelleştirebilirsiniz](cluster-configuration.md#custom-resource-group-name)
+* AKS düğümü/ *Mc_* kaynak grubu adı, kaynak grubu adını ve kaynak adını birleştirir. Otomatik olarak oluşturulan sözdiziminin `MC_resourceGroupName_resourceName_AzureRegion` 80 karakterden büyük olmaması gerekir. Gerekirse, kaynak grubu adınızın veya AKS kümesi adınızın uzunluğunu azaltın. Ayrıca, [düğüm kaynağı grubu adınızı özelleştirebilirsiniz](cluster-configuration.md#custom-resource-group-name)
 * *Dnspredüzeltmesini* alfasayısal değerlerle başlamalı ve bitmeli ve 1-54 karakter arasında olmalıdır. Geçerli karakterler alfasayısal değerleri ve kısa çizgileri (-) içerir. *Dnspredüzeltmesini* nokta (.) gibi özel karakterler içeremez.
 * AKS düğüm havuzu adları küçük harfle yazılmalıdır ve Linux düğüm havuzları için 1-11 karakter ve Windows düğüm havuzları için 1-6 karakter olmalıdır. Ad bir harf ile başlamalı ve yalnızca harf ve rakam olmak üzere yalnızca izin verilen karakterler olmalıdır.
-* Linux düğümleri için yönetici kullanıcı adını ayarlayan *Yönetici-Kullanıcı adı*, bir harfle başlamalıdır, yalnızca harf, sayı, kısa çizgi ve alt çizgi içerebilir ve en fazla 64 karakter uzunluğunda olabilir.
+* Linux düğümleri için yönetici kullanıcı adını ayarlayan *Yönetici-Kullanıcı adı* , bir harfle başlamalıdır, yalnızca harf, sayı, kısa çizgi ve alt çizgi içerebilir ve en fazla 64 karakter uzunluğunda olabilir.
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Küme oluşturmaya, güncelleştirmeye, ölçeklendirmeye, silmeye veya yükseltmeye çalışırken hata alıyorum, devam eden başka bir işlem olduğundan bu işleme izin verilmiyor.
 
@@ -167,7 +167,7 @@ Adlandırma kısıtlamaları hem Azure platformu hem de AKS tarafından uygulan�
 
 Küme durumunun çıkışına göre:
 
-* Küme, *başarılı* veya *başarısız*dışında bir sağlama durumundaysa, Işlem (*yükseltme/güncelleştirme/oluşturma/ölçeklendirme/silme/geçirme*) bitene kadar bekleyin. Önceki işlem tamamlandığında, en son küme işleminizi yeniden deneyin.
+* Küme, *başarılı* veya *başarısız* dışında bir sağlama durumundaysa, Işlem ( *yükseltme/güncelleştirme/oluşturma/ölçeklendirme/silme/geçirme* ) bitene kadar bekleyin. Önceki işlem tamamlandığında, en son küme işleminizi yeniden deneyin.
 
 * Kümenin başarısız bir yükseltmesi varsa, ana belirtilen adımları izleyerek [Kümemin başarısız durumunda olduğunu ve yükseltme ya da ölçeklendirmeyi düzeltilene kadar çalışmayacaktır](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed).
 
@@ -198,7 +198,7 @@ AKS kümesinden çıkış trafiği kısıtlandığında, [gerekli ve isteğe ba�
 
 Ayarlarınızın gerekli veya isteğe bağlı önerilen giden bağlantı noktaları/ağ kuralları ve FQDN/uygulama kurallarından hiçbiriyle çakışmadığını doğrulayın.
 
-## <a name="im-receiving-429---too-many-requests-errors"></a>"429-çok fazla Istek" hatası alıyorum 
+## <a name="im-receiving-429---too-many-requests-errors"></a>"429-çok fazla Istek" hatası alıyorum
 
 Azure 'daki bir Kubernetes kümesi (AKS veya No) sıklıkla bir ölçek artırma/azaltma veya küme otomatik olarak (CA) kullandığında, bu işlemler, atanan abonelik kotasının önde gelen hata olarak aşıldığı çok sayıda HTTP çağrısı oluşmasına neden olabilir. Hatalar şöyle görünür
 
@@ -213,6 +213,12 @@ AKS mühendislik ekibinin retıoni, en az 1.18. x sürümünü çalıştırıyor
 Bu azaltma hataları, abonelik düzeyinde ölçülerek, şu durumlarda yine de gerçekleşmeyebilirsiniz:
 - GET istekleri oluşturan üçüncü taraf uygulamalar vardır (örn. izleme uygulamaları, vs...). Öneri, bu çağrıların sıklığını azaltmaktır.
 - VMSS 'de çok sayıda AKS kümesi/nodepools vardır. Olağan önerisi, belirli bir abonelikte 20-30 ' den az kümeniz olmalıdır.
+
+## <a name="my-clusters-provisioning-status-changed-from-ready-to-failed-with-or-without-me-performing-an-operation-what-should-i-do"></a>Kümenizin sağlama durumu, bir işlem gerçekleştirmeme veya bir işlem gerçekleştirmeksizin başarısız olarak değiştirildi. Ne yapmalıyım?
+
+Kümenizin sağlama durumu, herhangi bir işlem gerçekleştirmeksizin veya ile *başarısız* *olarak değişirse* , ancak kümenizdeki uygulamalar çalışmaya devam edersek, bu sorun hizmet tarafından otomatik olarak çözülebilir ve uygulamalarınız etkilenmemelidir.
+
+Kümenizin sağlama durumu *başarısız* olarak kalırsa veya kümenizdeki uygulamalar çalışmayı durdurduktan sonra [bir destek isteği gönderebilirsiniz](https://azure.microsoft.com/support/options/#submit).
 
 
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Azure depolama ve AKS sorunlarını giderme
@@ -230,14 +236,14 @@ Bu azaltma hataları, abonelik düzeyinde ölçülerek, şu durumlarda yine de g
 
 Kubernetes sürüm 1,10 ' de, Bağlamabirimi. WaitForAttach bir Azure disk uzaktan bağlantısı ile başarısız olabilir.
 
-Linux 'ta yanlış bir DevicePath biçim hatası görebilirsiniz. Örnek:
+Linux 'ta yanlış bir DevicePath biçim hatası görebilirsiniz. Örneğin:
 
 ```console
 MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
   Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
 ```
 
-Windows 'ta yanlış bir DevicePath (LUN) numarası hatası görebilirsiniz. Örnek:
+Windows 'ta yanlış bir DevicePath (LUN) numarası hatası görebilirsiniz. Örneğin:
 
 ```console
 Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
@@ -250,7 +256,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 |--|:--:|
 | 1.10 | 1.10.2 veya üzeri |
 | 1,11 | 1.11.0 veya üzeri |
-| 1,12 ve üzeri | YOK |
+| 1,12 ve üzeri | Yok |
 
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Azure diski için mountOptions 'da uid ve GID ayarlanırken hata oluştu
@@ -284,7 +290,7 @@ spec:
   >[!NOTE]
   > GID ve uid, varsayılan olarak kök veya 0 olarak bağlandığından. GID veya Uid, kök olmayan olarak ayarlandıysa, örneğin 1000, Kubernetes `chown` Bu disk altındaki tüm dizinleri ve dosyaları değiştirmek için kullanılır. Bu işlem zaman alabilir ve diski bağlama işlemi çok yavaş olabilir.
 
-* `chown`GID ve uid ayarlamak Için ınitcontainers içinde kullanın. Örnek:
+* `chown`GID ve uid ayarlamak Için ınitcontainers içinde kullanın. Örneğin:
 
 ```yaml
 initContainers:
@@ -307,7 +313,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 | 1.12 | 1.12.9 veya üzeri |
 | 1.13 | 1.13.6 veya üzeri |
 | 1,14 | 1.14.2 veya üzeri |
-| 1,15 ve üzeri | YOK |
+| 1,15 ve üzeri | Yok |
 
 Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız ve düğümünüz eski bir disk listesine sahipse, mevcut olmayan tüm diskleri VM 'den toplu bir işlem olarak ayırarak azaltabilirsiniz. **Mevcut olmayan diskleri tek tek ayırmak başarısız olabilir.**
 
@@ -326,7 +332,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 | 1.12 | 1.12.10 veya üzeri |
 | 1.13 | 1.13.8 veya üzeri |
 | 1,14 | 1.14.4 veya üzeri |
-| 1,15 ve üzeri | YOK |
+| 1,15 ve üzeri | Yok |
 
 Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız ve düğümünüz hatalı durumdaysa, aşağıdakilerden birini kullanarak VM durumunu el ile güncelleştirerek azaltabilirsiniz:
 
@@ -359,7 +365,7 @@ Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız 
 | 1.12.0-1.12.1 | 0755 |
 | 1.12.2 ve üzeri | 0777 |
 
-Bağlama seçenekleri, depolama sınıfı nesnesinde belirtilebilir. Aşağıdaki örnek *0777*olarak ayarlanır:
+Bağlama seçenekleri, depolama sınıfı nesnesinde belirtilebilir. Aşağıdaki örnek *0777* olarak ayarlanır:
 
 ```yaml
 kind: StorageClass
@@ -382,7 +388,7 @@ parameters:
 Bazı ek kullanışlı *Mountoptions* ayarları:
 
 * *mfsymlinks* , Azure dosyaları bağlama (CIFS) sembolik bağlantıları destekliyor
-* *nobrl* , bayt aralığı kilit isteklerinin sunucuya gönderilmesini engelleyecek. Bu ayar, CIFS stili zorunlu bayt aralığı kilitleriyle kesen belirli uygulamalar için gereklidir. Çoğu CIFS sunucusu henüz danışmanlık bayt aralığı kilitlerini istemeyi desteklemez. *Nobrl*kullanmıyorsanız, CIFS stili zorunlu bayt aralığı kilitleri ile kesen uygulamalar aşağıdakine benzer hata iletilerine neden olabilir:
+* *nobrl* , bayt aralığı kilit isteklerinin sunucuya gönderilmesini engelleyecek. Bu ayar, CIFS stili zorunlu bayt aralığı kilitleriyle kesen belirli uygulamalar için gereklidir. Çoğu CIFS sunucusu henüz danışmanlık bayt aralığı kilitlerini istemeyi desteklemez. *Nobrl* kullanmıyorsanız, CIFS stili zorunlu bayt aralığı kilitleri ile kesen uygulamalar aşağıdakine benzer hata iletilerine neden olabilir:
     ```console
     Error: SQLITE_BUSY: database is locked
     ```
@@ -415,7 +421,7 @@ AKS 'de dinamik sağlama için kullanılan bir depolama hesabındaki *Seçili a�
 persistentvolume-controller (combined from similar events): Failed to provision volume with StorageClass "azurefile": failed to create share kubernetes-dynamic-pvc-xxx in account xxx: failed to create file share, err: storage: service returned error: StatusCode=403, ErrorCode=AuthorizationFailure, ErrorMessage=This request is not authorized to perform this operation.
 ```
 
-Bu hata, *Seçili ağdan erişime izin ver*ayarı yapılırken, Kubernetes *persistentvolume-Controller tarafından* seçilen ağ üzerinde olmayan bir hatadır.
+Bu hata, *Seçili ağdan erişime izin ver* ayarı yapılırken, Kubernetes *persistentvolume-Controller tarafından* seçilen ağ üzerinde olmayan bir hatadır.
 
 [Azure dosyaları ile statik sağlamayı](azure-files-volume.md)kullanarak sorunu azaltabilirsiniz.
 
@@ -435,7 +441,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 |--|:--:|
 | 1.12 | 1.12.6 veya üzeri |
 | 1.13 | 1.13.4 veya üzeri |
-| 1,14 ve üzeri | YOK |
+| 1,14 ve üzeri | Yok |
 
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>Azure dosyaları bağlama, depolama hesabı anahtarı değiştiği için başarısız oluyor
 
@@ -443,13 +449,13 @@ Depolama hesabı anahtarınız değiştiyse Azure dosyaları bağlama hatalarıy
 
 `azurestorageaccountkey`Base64 ile kodlanmış depolama hesabı anahtarınızla Azure dosya gizli anahtarındaki alanı el ile güncelleştirerek azaltabilirsiniz.
 
-Depolama hesabı anahtarınızı Base64 olarak kodlamak için kullanabilirsiniz `base64` . Örnek:
+Depolama hesabı anahtarınızı Base64 olarak kodlamak için kullanabilirsiniz `base64` . Örneğin:
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
 ```
 
-Azure gizli dosyanızı güncelleştirmek için kullanın `kubectl edit secret` . Örnek:
+Azure gizli dosyanızı güncelleştirmek için kullanın `kubectl edit secret` . Örneğin:
 
 ```console
 kubectl edit secret azure-storage-account-{storage-account-name}-secret
@@ -470,11 +476,8 @@ Bu hata, bir yukarı akış kümesi otomatik Scaler yarış durumu nedeniyle olu
 
 ### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>Yavaş disk eki, GetAzureDiskLun 10 ila 15 dakika sürer ve bir hata alırsınız
 
-**1.15.0 ' den eski**Kubernetes sürümlerinde, **hata waitforattach for disk için LUN bulunamıyor**gibi bir hata alabilirsiniz.  Bu sorunun geçici çözümü yaklaşık 15 dakika bekleyip yeniden denenecektir.
+**1.15.0 ' den eski** Kubernetes sürümlerinde, **hata waitforattach for disk için LUN bulunamıyor** gibi bir hata alabilirsiniz.  Bu sorunun geçici çözümü yaklaşık 15 dakika bekleyip yeniden denenecektir.
 
-<!-- LINKS - internal -->
-[view-master-logs]: view-master-logs.md
-[cluster-autoscaler]: cluster-autoscaler.md
 
 ### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>Kubernetes 1,16 yükseltmesi, kubernetes.io ön ekiyle düğüm etiketleri kullanılırken başarısız olur
 
@@ -487,3 +490,9 @@ Sonuç olarak, bunu azaltmak için şunları yapabilirsiniz:
 3. Eski nodepool Sil
 
 AKS, bu hafifletme kalitesini artırmak için bir nodepool üzerindeki etkin etiketlere muyalara yönelik bir özellik araştırmaktadır.
+
+
+
+<!-- LINKS - internal -->
+[view-master-logs]: view-master-logs.md
+[cluster-autoscaler]: cluster-autoscaler.md

@@ -9,18 +9,18 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8a975673bec3b3579eaa699f873fe8c4b1481d38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e0007f3b0dad8a68e9d81cebbe9fe24b5a7db3c
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744989"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285646"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>Key Vault günlüğü etkinleştirme
 
 Bir veya daha fazla Anahtar Kasası oluşturduktan sonra muhtemelen anahtar kasalarınızın nasıl ve ne zaman erişildiğini ve kim tarafından yapılacağını izlemek isteyeceksiniz. Özelliği hakkında tam Ayrıntılar için bkz. [Key Vault Logging](logging.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakilere sahip olmanız gerekir:
 
@@ -64,7 +64,7 @@ Set-AzContext -SubscriptionId "<subscriptionID>"
 
 Günlüklerinizin mevcut bir depolama hesabını kullanabilseniz de, Key Vault günlüklerine adanmış yeni bir depolama hesabı oluşturacağız. 
 
-Daha fazla yönetim kolaylığı için, anahtar kasasını içeren kaynakla aynı kaynak grubunu da kullanacağız. [Azure CLI hızlı başlangıç](quick-create-cli.md) ve [Azure PowerShell hızlı başlangıç](quick-create-powershell.md)bölümünde, bu kaynak grubu **myresourcegroup**olarak adlandırılmıştır ve konum *eastus*olur. Bu değerleri, varsa, kendi değerlerinizle değiştirin. 
+Daha fazla yönetim kolaylığı için, anahtar kasasını içeren kaynakla aynı kaynak grubunu da kullanacağız. [Azure CLI hızlı başlangıç](quick-create-cli.md) ve [Azure PowerShell hızlı başlangıç](quick-create-powershell.md)bölümünde, bu kaynak grubu **myresourcegroup** olarak adlandırılmıştır ve konum *eastus* olur. Bu değerleri, varsa, kendi değerlerinizle değiştirin. 
 
 Ayrıca, bir depolama hesabı adı sağlamamız gerekir. Depolama hesabı adları benzersiz olmalı, 3 ila 24 karakter uzunluğunda olmalıdır ve yalnızca sayılar ve küçük harfler kullanılmalıdır.  Son olarak, "Standard_LRS" SKU 'sunda bir depolama hesabı oluşturacağız.
 
@@ -147,7 +147,7 @@ Günlüğe kaydedilen:
   * Bu anahtarları veya parolaları oluşturma, değiştirme veya silme.
   * Anahtarları imzalama, doğrulama, şifreleme, şifre çözme, sarmalama ve kaldırma, gizli dizileri alma ve anahtarları ve gizli dizileri (ve bunların sürümlerini) listeleme.
 * Bir 401 yanıtına neden olan kimliği doğrulanmamış istekler. Örnek olarak, hatalı biçimlendirilmiş veya geçerliliği olmayan ya da geçersiz bir belirtece sahip bir taşıyıcı belirteci olmayan isteklerdir.  
-* Süresi dolmak üzere olan, süre sonu ve kasa erişimi ilkesi değişti (yeni sürüm olayı günlüğe kaydedilmez). Event Grid Anahtar kasasında olay aboneliği oluşturulmuş olmasına bakılmaksızın olaylar günlüğe kaydedilir. Daha fazla bilgi için bkz. [Key Vault için olay şeması Event Grid](https://docs.microsoft.com/azure/event-grid/event-schema-key-vault)
+* Süresi dolmak üzere olan, süre sonu ve kasa erişimi ilkesi değişti (yeni sürüm olayı günlüğe kaydedilmez). Event Grid Anahtar kasasında olay aboneliği oluşturulmuş olmasına bakılmaksızın olaylar günlüğe kaydedilir. Daha fazla bilgi için bkz. [Key Vault için olay şeması Event Grid](../../event-grid/event-schema-key-vault.md)
 
 ## <a name="access-your-logs"></a>Günlüklerinize erişme
 

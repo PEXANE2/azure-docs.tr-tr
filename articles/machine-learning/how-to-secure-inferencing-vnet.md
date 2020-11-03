@@ -11,14 +11,14 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperfq4, tracking-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 20f0d6a9d87caa8e95e7f9fa0b29ff45ed1195c2
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: a6b453b11c892b5d81c41cac9451b07be69aa4d3
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735480"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285923"
 ---
-# <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning ınvenli bir ortamın güvenliğini sağlama
+# <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning çıkarım ortamının güvenliğini sağlama
 
 Bu makalede, Azure Machine Learning ' de sanal ağ ile ınırel korumalı ortamların güvenliğini nasıl sağlayacağınızı öğreneceksiniz.
 
@@ -36,7 +36,7 @@ Bu makalede, bir sanal ağda aşağıdaki ınırm kaynaklarını güvenli hale g
 > - Azure Container Instances (ACI)
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + Genel sanal ağ senaryolarını ve genel sanal ağ mimarisini anlamak için [ağ güvenliğine genel bakış](how-to-network-security-overview.md) makalesini okuyun.
 
@@ -217,6 +217,9 @@ except:
 az ml computetarget create aks -n myaks --load-balancer-type InternalLoadBalancer
 ```
 
+> [!IMPORTANT]
+> CLı kullanarak yalnızca iç yük dengeleyiciye sahip bir AKS kümesi oluşturabilirsiniz. Mevcut bir kümeyi iç yük dengeleyiciyi kullanacak şekilde yükseltmek için az ml komutu yoktur.
+
 Daha fazla bilgi için, [az ml computetarget Create aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-aks) Reference bölümüne bakın.
 
 ---
@@ -260,6 +263,9 @@ Azure Container Instances, bir model dağıtıldığında dinamik olarak oluştu
 
 2. [AciWebservice.deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py&preserve-view=true#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true)kullanarak modeli dağıtın, `vnet_name` ve `subnet_name` parametrelerini kullanın. Bu parametreleri, temsilciyi etkinleştirdiğiniz sanal ağ adı ve alt ağa ayarlayın.
 
+## <a name="limit-outbound-connectivity-from-the-virtual-network"></a>Sanal ağ ile giden bağlantıyı sınırlayın
+
+Varsayılan giden kurallarını kullanmak istemiyorsanız ve sanal ağınızın giden erişimini sınırlandırmak istiyorsanız, Azure Container Registry erişimine izin vermeniz gerekir. Örneğin, ağ güvenlik gruplarınızı (NSG), ' {RegionName} öğesinin bir Azure bölgesinin adı olduğu __AzureContainerRegistry. RegionName__ hizmet etiketine erişime izin veren bir kural içerdiğinden emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
