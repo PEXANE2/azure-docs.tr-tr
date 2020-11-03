@@ -8,12 +8,12 @@ author: troy0820
 ms.author: b-trconn
 keywords: Aro, OpenShift, az Aro, Red hat, CLI
 ms.custom: mvc
-ms.openlocfilehash: 49ffc33310564299131e2831b74154719b7cf7c7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: febee51a20f57d71d633243145a1aa0c8fb9b437
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078587"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233687"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-backup"></a>Azure Red Hat OpenShift 4 küme uygulaması yedeklemesi oluşturma
 
@@ -22,6 +22,9 @@ Bu makalede, ortamınızı bir Azure Red Hat OpenShift 4 küme uygulaması yedek
 > [!div class="checklist"]
 > * Önkoşulları kurun ve gerekli araçları kurun
 > * Azure Red Hat OpenShift 4 uygulama yedeklemesi oluşturma
+
+> [!NOTE] 
+> Velero, Azure Red Hat OpenShift etcd anahtar-değer deposu verilerini yedeklemez. Etcd 'yi yedeklemeniz gerekiyorsa bkz. [etcd](https://docs.openshift.com/container-platform/4.5/backup_and_restore/backing-up-etcd.html)'yi yedekleme.
 
 CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Azure CLı sürüm 2.6.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest).
 

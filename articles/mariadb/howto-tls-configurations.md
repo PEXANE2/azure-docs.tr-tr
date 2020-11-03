@@ -1,17 +1,17 @@
 ---
 title: TLS yapılandırması-Azure portal-MariaDB için Azure veritabanı
 description: MariaDB için Azure veritabanınız için Azure portal kullanarak TLS yapılandırması ayarlamayı öğrenin
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 06/02/2020
-ms.openlocfilehash: fac719daf05e8b319db7c86d0dbc61c2814b0a0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55a664ceb3524a0c545e037dcba7a2af90034ad4
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86120356"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241993"
 ---
 # <a name="configuring-tls-settings-in-azure-database-for-mariadb-using-azure-portal"></a>Azure portal kullanarak MariaDB için Azure veritabanı 'nda TLS ayarlarını yapılandırma
 
@@ -31,13 +31,13 @@ MariaDB sunucusu en düşük TLS sürümünü ayarlamak için şu adımları izl
 
 1. [Azure Portal](https://portal.azure.com/), var olan MariaDB sunucusu Için Azure veritabanınızı seçin.
 
-1. MariaDB sunucusu sayfasında, **Ayarlar**altında **bağlantı güvenliği** ' ne tıklayarak bağlantı güvenliği yapılandırması sayfasını açın.
+1. MariaDB sunucusu sayfasında, **Ayarlar** altında **bağlantı güvenliği** ' ne tıklayarak bağlantı güvenliği yapılandırması sayfasını açın.
 
-1. **En düşük TLS sürümü**' nde, MariaDB sunucunuz için TLS 1,2 ' den düşük olan bağlantıları reddetmek için **1,2** ' ı seçin.
+1. **En düşük TLS sürümü** ' nde, MariaDB sunucunuz için TLS 1,2 ' den düşük olan bağlantıları reddetmek için **1,2** ' ı seçin.
 
     ![MariaDB için Azure veritabanı TLS yapılandırması](./media/howto-tls-configurations/tls-configurations.png)
 
-1. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
+1. Değişiklikleri kaydetmek için **Kaydet** ’e tıklayın.
 
 1. Bildirim, bağlantı güvenliği ayarının başarıyla etkinleştirildiğini onaylanır.
 

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: c768f6564884ade5d27199a64843437f5ce725f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a594d06fa84bb6e5ef502b02e1bec8244062ccb
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90019164"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233976"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Sertifikaları Azure Key Vault dışarı aktarma
 
@@ -33,8 +33,8 @@ Bir Key Vault sertifikası oluşturulduğunda, aynı ada sahip bir adreslenebili
 
 Bir Key Vault sertifikası oluşturulduktan sonra, özel anahtarla adreslenebilir gizli alanından alabilirsiniz. PFX veya pek biçimindeki sertifikayı alın.
 
-- **Dışarı aktarılabilir**: sertifikayı oluşturmak için kullanılan ilke, anahtarın dışarı aktarılabilir olduğunu gösterir.
-- **Dışarı aktarılabilir**değil: sertifikayı oluşturmak için kullanılan ilke, anahtarın dışarı aktarılamaz olduğunu gösterir. Bu durumda, özel anahtar bir gizli dizi olarak alındığında değerin bir parçası değildir.
+- **Dışarı aktarılabilir** : sertifikayı oluşturmak için kullanılan ilke, anahtarın dışarı aktarılabilir olduğunu gösterir.
+- **Dışarı aktarılabilir** değil: sertifikayı oluşturmak için kullanılan ilke, anahtarın dışarı aktarılamaz olduğunu gösterir. Bu durumda, özel anahtar bir gizli dizi olarak alındığında değerin bir parçası değildir.
 
 Desteklenen KeyTypes: RSA, RSA-HSM, EC, EC-HSM, Eki ( [burada](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)listelenen) dışarı AKTARıLABILIR yalnızca RSA, EC ile kullanılabilir. HSM anahtarları dışarı aktarılabilir değildir.
 
@@ -79,18 +79,26 @@ Daha fazla bilgi için bkz. [parametre tanımları](https://docs.microsoft.com/c
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-**ContosoKV01**adlı anahtar kasasından **TestCert01** adlı sertifikayı almak için Azure PowerShell ' de bu komutu kullanın. Sertifikayı PFX dosyası olarak indirmek için aşağıdaki komutu çalıştırın. Bu komutlar **Secretıd**'ye erişir ve sonra IÇERIĞI bir PFX dosyası olarak kaydeder.
+**ContosoKV01** adlı anahtar kasasından **TestCert01** adlı sertifikayı almak için Azure PowerShell ' de bu komutu kullanın. Sertifikayı PFX dosyası olarak indirmek için aşağıdaki komutu çalıştırın. Bu komutlar **Secretıd** 'ye erişir ve sonra IÇERIĞI bir PFX dosyası olarak kaydeder.
 
 ```azurepowershell
 $cert = Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
-$kvSecret = Get-AzKeyVaultSecret -VaultName "ContosoKV01" -Name $Cert.Name
-$kvSecretBytes = [System.Convert]::FromBase64String($kvSecret.SecretValueText)
-$certCollection = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2Collection
-$certCollection.Import($kvSecretBytes,$null,[System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable)
-$password = '******'
-$protectedCertificateBytes = $certCollection.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Pkcs12, $password)
-$pfxPath = [Environment]::GetFolderPath("Desktop") + "\MyCert.pfx"
-[System.IO.File]::WriteAllBytes($pfxPath, $protectedCertificateBytes)
+$secret = Get-AzKeyVaultSecret -VaultName $vaultName -Name $cert.Name
+$secretValueText = '';
+$ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
+try {
+    $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
+} finally {
+    [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
+}
+$secretByte = [Convert]::FromBase64String($secretValueText)
+$x509Cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2
+$x509Cert.Import($secretByte, "", "Exportable,PersistKeySet")
+$type = [System.Security.Cryptography.X509Certificates.X509ContentType]::Pfx
+$pfxFileByte = $x509Cert.Export($type, $password)
+
+# Write to a file
+[System.IO.File]::WriteAllBytes("KeyVault.pfx", $pfxFileByte)
 ```
 
 Bu komut, tüm sertifika zincirini özel anahtarla dışa aktarır. Sertifika, parola korumalı.
@@ -100,13 +108,13 @@ Bu komut, tüm sertifika zincirini özel anahtarla dışa aktarır. Sertifika, p
 
 Azure portal sertifika dikey penceresinde bir sertifikayı oluşturduktan/içeri aktardıktan sonra **, sertifikanın başarıyla** oluşturulduğunu belirten bir bildirim alırsınız. İndirme seçeneğini görmek için sertifikayı ve geçerli sürümü seçin.
 
-Sertifikayı indirmek için, **cer biçiminde indir** veya **PFX/ped biçiminde indir**' i seçin.
+Sertifikayı indirmek için, **cer biçiminde indir** veya **PFX/ped biçiminde indir** ' i seçin.
 
 ![Sertifika indirme](../media/certificates/quick-create-portal/current-version-shown.png)
 
 **Azure App Service sertifikalarını dışarı aktarma**
 
-Azure App Service sertifikalar, SSL sertifikaları satın almanın kolay bir yoludur. Bunları portalın içinden Azure uygulamalarına atayabilirsiniz. Ayrıca bu sertifikaları portaldan başka bir yerde kullanılacak PFX dosyaları olarak dışarı aktarabilirsiniz. İçeri aktardıktan sonra App Service sertifikaları **gizli**dizileri altında bulunur.
+Azure App Service sertifikalar, SSL sertifikaları satın almanın kolay bir yoludur. Bunları portalın içinden Azure uygulamalarına atayabilirsiniz. Ayrıca bu sertifikaları portaldan başka bir yerde kullanılacak PFX dosyaları olarak dışarı aktarabilirsiniz. İçeri aktardıktan sonra App Service sertifikaları **gizli** dizileri altında bulunur.
 
 Daha fazla bilgi için [Azure App Service sertifikaları dışarı aktarma](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx)adımlarına bakın.
 

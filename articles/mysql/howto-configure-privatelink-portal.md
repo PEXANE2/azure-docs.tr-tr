@@ -1,17 +1,17 @@
 ---
 title: Özel bağlantı-Azure portal-MySQL için Azure veritabanı
 description: Azure portal 'ten MySQL için Azure veritabanı için özel bağlantıyı yapılandırmayı öğrenin
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: b6a2725c6e4d72e8e79e3e45cc60060c02d90cac
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: fbc75df0b22ba452b8c91dfcb21ca13aaed557a3
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545013"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242407"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Portal kullanarak MySQL için Azure veritabanı için özel bağlantı oluşturma ve yönetme
 
@@ -23,7 +23,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 > Özel bağlantı özelliği yalnızca Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında MySQL için Azure veritabanı sunucuları için kullanılabilir. Veritabanı sunucusunun bu fiyatlandırma katmanlarından birinde olduğundan emin olun.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
 ## <a name="create-an-azure-vm"></a>Azure VM oluşturma
 
@@ -37,7 +37,7 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Adı | *MyVirtualNetwork* girin. |
+    | Ad | *MyVirtualNetwork* girin. |
     | Adres alanı | *10.1.0.0/16* girin. |
     | Abonelik | Aboneliğinizi seçin.|
     | Kaynak grubu | **Yeni oluştur** ' u seçin, *myresourcegroup* yazın ve ardından **Tamam** ' ı seçin. |
@@ -60,8 +60,8 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
     | Kaynak grubu | **myResourceGroup** öğesini seçin. Bu, önceki bölümde oluşturdunuz.  |
     | **ÖRNEK AYRıNTıLARı** |  |
     | Sanal makine adı | *Myvm* ' i girin. |
-    | Bölge | **Batı Avrupa** 'yı seçin. |
-    | Kullanılabilirlik seçenekleri | Varsayılan **altyapı yedekliliği gerekli değildir** . |
+    | Region | **Batı Avrupa** 'yı seçin. |
+    | Kullanılabilirlik seçenekleri | Varsayılan **altyapı yedekliliği gerekli değildir**. |
     | Görüntü | **Windows Server 2019 Datacenter** öğesini seçin. |
     | Boyut | Varsayılan **Standart DS1 v2** ' i bırakın. |
     | **YÖNETİCİ HESABI** |  |
@@ -74,7 +74,7 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
     | Zaten bir Windows lisansınız var mı? | Varsayılan **Hayır** olarak bırakın. |
     |||
 
-1. **İleri ' yi seçin: diskler** .
+1. **İleri ' yi seçin: diskler**.
 
 1. **Sanal makine oluştur - Diskler** bölümünde varsayılan değerleri değiştirmeyin ve **Sonraki: Ağ** seçeneğini belirleyin.
 
@@ -145,7 +145,7 @@ Bu bölümde bir MySQL sunucusu oluşturacak ve kendisine özel bir uç nokta ek
     | Kaynak grubu | **myResourceGroup** öğesini seçin. Bu, önceki bölümde oluşturdunuz.|
     | **Örnek ayrıntıları** |  |
     | Name | *myPrivateEndpoint* değerini girin. Bu ad alındıysanız, benzersiz bir ad oluşturun. |
-    |Bölge|**Batı Avrupa** 'yı seçin.|
+    |Region|**Batı Avrupa** 'yı seçin.|
     |||
 
 5. **Sonraki: kaynak** ' ı seçin.
@@ -159,7 +159,7 @@ Bu bölümde bir MySQL sunucusu oluşturacak ve kendisine özel bir uç nokta ek
     | Kaynak |*Sunucum* seçin|
     |Hedef alt kaynak |*MySQLServer* seçin|
     |||
-7. Ileri 'yi seçin **: yapılandırma** .
+7. Ileri 'yi seçin **: yapılandırma**.
 8. **Özel uç nokta oluşturma-yapılandırma** ' da bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
@@ -178,7 +178,7 @@ Bu bölümde bir MySQL sunucusu oluşturacak ve kendisine özel bir uç nokta ek
 1. **Gözden geçir ve oluştur** ’u seçin. Azure’ın yapılandırmanızı doğrulayacağı **Gözden geçir ve oluştur** sayfasına yönlendirilirsiniz. 
 2. **Doğrulama başarılı** iletisini gördüğünüzde **Oluştur** ’u seçin. 
 
-    :::image type="content" source="media/concepts-data-access-and-security-private-link/show-mysql-private-link.png" alt-text="Özel bağlantıya genel bakış":::
+    :::image type="content" source="media/concepts-data-access-and-security-private-link/show-mysql-private-link.png" alt-text="Özel bağlantı oluşturuldu":::
 
     > [!NOTE] 
     > Müşteri DNS ayarındaki FQDN, yapılandırılan özel IP 'ye çözümlenmez. [Burada](../dns/dns-operations-recordsets-portal.md)gösterildiği gibi, yapılandırılmış FQDN IÇIN bir DNS bölgesi oluşturmanız gerekir.

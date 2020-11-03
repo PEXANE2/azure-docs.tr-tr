@@ -1,17 +1,17 @@
 ---
 title: Durdur/Başlat-Azure portal-MySQL için Azure veritabanı sunucusu
 description: Bu makalede, MySQL için Azure veritabanı 'nda işlemleri durdurma/başlatma işlemi açıklanır.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
-ms.openlocfilehash: 95be6aa576d9d059ce419443f8c7e32af5ff397a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 047a24133dfdf68e2176b20cf31a871d11f0d4f9
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826212"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241166"
 ---
 # <a name="stopstart-an-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nı Durdur/Başlat
 
@@ -20,7 +20,7 @@ ms.locfileid: "91826212"
 
 Bu makalede, tek sunucu durdurma ve başlatma işlemleri gerçekleştirmeye yönelik adım adım yordamlar sunulmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 
@@ -48,7 +48,7 @@ Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 
 2.  **Genel bakış** sayfasında, araç çubuğundaki **Başlat** düğmesine tıklayın.
 
-    :::image type="content" source="./media/howto-stop-start-server/mysql-start-server.png" alt-text="MySQL için Azure veritabanı sunucuyu durdur":::
+    :::image type="content" source="./media/howto-stop-start-server/mysql-start-server.png" alt-text="MySQL için Azure veritabanı başlangıç sunucusu":::
 
     > [!NOTE]
     > Sunucu başlatıldıktan sonra, tüm yönetim işlemleri artık tek bir sunucu için kullanılabilir.

@@ -1,17 +1,17 @@
 ---
 title: Veri şifreleme sorunlarını giderme-MySQL için Azure veritabanı
 description: MySQL için Azure veritabanı 'nda veri şifreleme sorunlarını giderme hakkında bilgi edinin
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 02/13/2020
-ms.openlocfilehash: 8fba55dcca46b313c7b9a847412615215ad57c72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95b5a7650e0990f13149daeed87da8e261ec37e4
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86118588"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241132"
 ---
 # <a name="troubleshoot-data-encryption-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda veri şifreleme sorunlarını giderme
 
@@ -19,7 +19,7 @@ Bu makalede, müşteri tarafından yönetilen anahtar kullanılarak veri şifrel
 
 ## <a name="introduction"></a>Giriş
 
-Veri şifrelemesini Azure Key Vault bir müşteri tarafından yönetilen anahtar kullanacak şekilde yapılandırdığınızda, sunucular anahtara sürekli erişim gerektirir. Sunucu, Azure Key Vault müşterinin yönettiği anahtara erişimi kaybederse, tüm bağlantıları reddeder, uygun hata iletisini döndürür ve durumunu Azure portal ***erişilemez*** olarak değiştirir.
+Veri şifrelemesini Azure Key Vault bir müşteri tarafından yönetilen anahtar kullanacak şekilde yapılandırdığınızda, sunucular anahtara sürekli erişim gerektirir. Sunucu, Azure Key Vault müşterinin yönettiği anahtara erişimi kaybederse, tüm bağlantıları reddeder, uygun hata iletisini döndürür ve Azure portal durumunu * **erişilemeyen** _ olarak değiştirir.
 
 Artık bir MySQL için Azure veritabanı sunucusuna erişim gerekmiyorsa, maliyetleri durdurmak için bunu silebilirsiniz. Anahtar kasasına erişim geri yüklenene ve sunucu kullanılabilir olana kadar sunucuda başka bir eyleme izin verilmez. Ayrıca, `Yes` `No` müşteri tarafından yönetilen bir anahtarla şifrelendiğinde erişilemeyen bir sunucuda veri şifreleme seçeneğini (müşteri tarafından yönetilen) olarak değiştirmek mümkün değildir. Sunucuya yeniden erişilebilmesi için anahtarı el ile yeniden doğrulamanız gerekecektir. Bu eylem, müşteri tarafından yönetilen anahtar izinleri iptal edilirken verileri yetkisiz erişimden korumak için gereklidir.
 
@@ -44,12 +44,12 @@ Aşağıdaki yapılandırma hataları Azure Key Vault anahtarları kullanan veri
 #### <a name="disabled-key-vault"></a>Devre dışı Anahtar Kasası
 
 - `AzureKeyVaultKeyDisabledMessage`
-- **Açıklama**: Azure Key Vault anahtarı devre dışı bırakıldığından, işlem sunucuda tamamlanamadı.
+- _ * Açıklama * *: Azure Key Vault anahtarı devre dışı olduğundan, işlem sunucuda tamamlanamadı.
 
 #### <a name="missing-key-vault-permissions"></a>Anahtar Kasası izinleri eksik
 
 - `AzureKeyVaultMissingPermissionsMessage`
-- **Açıklama**: sunucu, Azure Key Vault Için gereken get, Wrap ve Unwrap izinlerine sahip değil. Hizmet sorumlusuna KIMLIĞI olan eksik izinleri verin.
+- **Açıklama** : sunucu, Azure Key Vault Için gereken get, Wrap ve Unwrap izinlerine sahip değil. Hizmet sorumlusuna KIMLIĞI olan eksik izinleri verin.
 
 ### <a name="mitigation"></a>Risk azaltma
 

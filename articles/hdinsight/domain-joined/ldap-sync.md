@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 99bd1ac156b12a5be7b8c5c17eb5b568b7070a25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0779ac261fbb4ee91bf63021bb0cc685a371c2b2
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77463225"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234078"
 ---
 # <a name="ldap-sync-in-ranger-and-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight 'ta Ranger ve Apache ambarı 'nda LDAP eşitlemesi
 
@@ -20,16 +20,19 @@ HDInsight Kurumsal Güvenlik Paketi (ESP) kümeleri yetkilendirme için Ranger k
 
 ## <a name="general-guidelines"></a>Genel yönergeler
 
-* Kümeleri gruplar ile her zaman dağıtın.
-* Ambarı ve Ranger içindeki Grup filtrelerini değiştirmek yerine, tüm bunları Azure AD 'de yönetmeyi ve iç içe grupları kullanarak gerekli kullanıcıları getirin.
-* Kullanıcı eşitlendikten sonra, Kullanıcı grupların parçası olmasa bile kaldırılmaz.
-* LDAP filtrelerini doğrudan değiştirmeniz gerekiyorsa, bazı doğrulamalar içerdiğinden önce Kullanıcı arabirimini kullanın.
+* Kümeleri her zaman bir veya daha fazla grup ile dağıtın.
+* Kümede daha fazla grup kullanmak istiyorsanız, Azure Active Directory (Azure AD) ' de grup üyeliklerini güncelleştirmek için bir anlamlı olup olmadığını denetleyin.
+* Küme gruplarını değiştirmek istiyorsanız, ambarı kullanarak eşitleme filtrelerini değiştirebilirsiniz.
+* Azure AD 'deki tüm grup üyeliği değişiklikleri kümeye sonraki eşitlemeler içinde yansıtılır. Değişikliklerin önce Azure AD Domain Services (Azure AD DS) ve sonra kümelere eşitlenmesi gerekir.
+* HDInsight kümeleri, küme düğümlerinde grup üyeliklerini proje için Samba/winbind kullanır.
+* Grup üyeleri, hem ambarı hem de Ranger için geçişli (tüm alt gruplar ve bunların üyeleri) eşitlenmiş olarak eşitlenir. 
 
 ## <a name="users-are-synced-separately"></a>Kullanıcılar ayrı olarak eşitlenir
 
-İki farklı amaca hizmet ettiğinden, ambarı ve Ranger Kullanıcı veritabanını paylaşmaz. Bir kullanıcının, ambarı Kullanıcı ARABIRIMINI kullanması gerekiyorsa, kullanıcının ambarı ile eşitlenmesi gerekir. Kullanıcı ambarı ile eşitlenmemişse, ambarı kullanıcı ARABIRIMI/API 'SI reddeder, ancak sistemin diğer bölümleri çalışacaktır (Bunlar, Ranger veya Kaynak Yöneticisi ve ambarı değil) tarafından korunur. Kullanıcıyı bir Ranger ilkesine eklemek istiyorsanız, kullanıcıyı Ranger ile eşitleyin.
-
-Güvenli bir küme dağıtıldığında, Grup üyeleri geçişli olarak (tüm alt gruplar ve bunların üyeleri) hem ambarı hem de Ranger için eşitlenir. 
+ * İki farklı amaca hizmet ettiğinden, ambarı ve Ranger Kullanıcı veritabanını paylaşmaz. 
+   * Bir kullanıcının, ambarı Kullanıcı ARABIRIMINI kullanması gerekiyorsa, kullanıcının ambarı ile eşitlenmesi gerekir. 
+   * Kullanıcı ambarı ile eşitlenmemişse, ambarı kullanıcı ARABIRIMI/API 'SI reddeder, ancak sistemin diğer bölümleri çalışır (Bunlar, Sırasistemi tarafından değil, derecelendirmeden veya Kaynak Yöneticisi tarafından korunur).
+   * Ranger ilkelerine Kullanıcı veya grup eklemek için, sorumluların Ranger 'da açıkça eşitlenmesi gerekir.
 
 ## <a name="ambari-user-sync-and-configuration"></a>Ambarı Kullanıcı eşitleme ve yapılandırma
 
@@ -37,28 +40,20 @@ Kullanıcı eşitlemesini zamanlamak için bir cron işi olan baş düğümlerde
 
 Günlüklerin içinde olması gerekir `/var/log/ambari-server/ambari-server.log` . Daha fazla bilgi için bkz. [ambarı günlüğü düzeyini yapılandırma](https://docs.cloudera.com/HDPDocuments/Ambari-latest/administering-ambari/content/amb_configure_ambari_logging_level.html).
 
-Data Lake kümelerinde, Kullanıcı sonrası oluşturma kancası, eşitlenen kullanıcılar için giriş klasörleri oluşturmak için kullanılır ve giriş klasörlerinin sahibi olarak ayarlanır. Kullanıcı, doğru şekilde ambarla eşitlenmemişse, hazırlama ve diğer geçici klasörlere erişme sırasında Kullanıcı hatalara karşı başarısız olabilir.
-
-### <a name="update-groups-to-be-synced-to-ambari"></a>Ambarı ile eşitlenecek güncelleştirme grupları
-
-Azure AD 'de grup üyeliklerini yönetebilmeniz için iki seçeneğiniz vardır:
-
-* [LDAP kullanıcılarını ve gruplarını eşitleme](https://docs.cloudera.com/HDPDocuments/HDP3/latest/ambari-authentication-ldap-ad/content/authe_ldapad_synchronizing_ldap_users_and_groups.html)konusunda daha fazla bilgi için bir kerelik eşitleme gerçekleştirin. Grup üyeliği değiştiğinde, bu eşitlemeyi yeniden yapmanız gerekir.
-
-* Bir cron işi yazın, yeni gruplar ile [AMBARı API 'sini düzenli olarak](https://community.cloudera.com/t5/Support-Questions/How-do-I-automate-the-Ambari-LDAP-sync/m-p/96634) çağırın.
+Data Lake kümelerinde, Kullanıcı sonrası oluşturma kancası, eşitlenen kullanıcılar için giriş klasörleri oluşturmak için kullanılır ve giriş klasörlerinin sahibi olarak ayarlanır. Kullanıcı doğru şekilde ambarla eşitlenmemişse, giriş klasörü doğru şekilde ayarlanmamasından dolayı Kullanıcı çalışan işleri hatalara açabilir.
 
 ## <a name="ranger-user-sync-and-configuration"></a>Ranger Kullanıcı eşitleme ve yapılandırma
 
-Ranger, kullanıcıların eşitlenmesi için saatte bir çalışan, yerleşik bir eşitleme altyapısına sahiptir. Kullanıcı veritabanını ambarı ile paylaşmaz. HDInsight, yönetici kullanıcıyı, izleme kullanıcısını ve küme oluşturma sırasında belirtilen grubun üyelerini eşitlemek için arama filtresini yapılandırır. Grup üyeleri geçişli olarak eşitlenir:
+Ranger, kullanıcıların eşitlenmesi için her saat çalışan yerleşik bir eşitleme motoruna sahiptir. Kullanıcı veritabanını ambarı ile paylaşmaz. HDInsight, yönetici kullanıcıyı, izleme kullanıcısını ve küme oluşturma sırasında belirtilen grubun üyelerini eşitlemek için arama filtresini yapılandırır. Grup üyeleri geçişli olarak eşitlenir:
 
-* Artımlı eşitlemeyi devre dışı bırakın.
-* Kullanıcı grubu eşitleme haritasını etkinleştirin.
-* Geçişli grup üyelerini dahil etmek için arama filtresi belirtin.
-* Gruplar için sAMAccountName for Users ve Name özniteliğini eşitleyin.
+1. Artımlı eşitlemeyi devre dışı bırakın.
+1. Kullanıcı grubu eşitleme haritasını etkinleştirin.
+1. Geçişli grup üyelerini dahil etmek için arama filtresi belirtin.
+1. Kullanıcılar için sAMAccountName özniteliğini ve gruplar için Name özniteliğini eşitleyin.
 
 ### <a name="group-or-incremental-sync"></a>Grup veya artımlı eşitleme
 
-Ranger bir grup eşitleme seçeneğini destekler, ancak Kullanıcı filtresiyle kesişme olarak da kullanılır. Grup üyelikleri ve Kullanıcı filtresi arasında bir birleşim değil. Ranger içindeki Grup eşitleme filtresi için tipik kullanım durumu-grup filtresi: (DN = clusteradmingroup), Kullanıcı filtresi: (City = Seattle).
+Ranger bir grup eşitleme seçeneğini destekler, ancak grup üyelikleri ve Kullanıcı filtresi arasında birleşim olarak değil, Kullanıcı filtresiyle bir kesişim olarak da kullanılır. Ranger içindeki Grup eşitleme filtresi için tipik kullanım durumu-grup filtresi: (DN = clusteradmingroup), Kullanıcı filtresi: (City = Seattle).
 
 Artımlı eşitleme yalnızca zaten eşitlenmiş olan kullanıcılar (ilk kez) için geçerlidir. Artımlı, ilk eşitlemeden sonra gruplara eklenen yeni kullanıcıları eşitmez.
 
@@ -73,8 +68,12 @@ Ranger Kullanıcı eşitlemesi, her iki yayın düğümünden de oluşabilir. G�
 1. Ambarı 'nda oturum açın.
 1. Ranger yapılandırma bölümüne gidin.
 1. Gelişmiş **usersync-Log4J** bölümüne gidin.
-1. Öğesini `log4j.rootLogger` olarak değiştirin `DEBUG` (değiştirme sonrasında, şöyle görünmelidir `log4j.rootLogger = DEBUG,logFile,FilterLog` ).
+1. Öğesini `log4j.rootLogger` olarak değiştirin `DEBUG` . (Değiştirildikten sonra, şöyle görünmelidir `log4j.rootLogger = DEBUG,logFile,FilterLog` ).
 1. Yapılandırmayı kaydedin ve Ranger 'ı yeniden başlatın.
+
+## <a name="known-issues-with-ranger-user-sync"></a>Ranger Kullanıcı eşitlemeyle ilgili bilinen sorunlar
+* Grup adında Unicode karakterler varsa, Ranger eşitlemesi bu nesneyi eşitleyemez. Bir kullanıcı uluslararası karakterler içeren bir gruba aitse, Ranger kısmi grup üyeliğini eşitler
+* Kullanıcı adı (sAMAccountName) ve grup adı (ad) 20 karakter uzunluğunda veya daha az olmalıdır. Grup adı daha uzunsa, kullanıcılar, izinleri hesaplarken gruba ait olmadıkları gibi kabul edilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

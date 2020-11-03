@@ -15,12 +15,12 @@ ms.custom: devx-track-csharp
 ms.topic: how-to
 ms.date: 02/15/2018
 ms.author: allensu
-ms.openlocfilehash: fefa19e8dfee295d34231d36df079b80d1e82768
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d8eb450d2010bf2a525a26f1c5ff48f59732ce43
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778592"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240979"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Azure CDN'de web içeriğinin süre sonunu yönetme
 > [!div class="op_single_selector"]
@@ -73,9 +73,9 @@ Bir Web sunucusunun üst bilgisini ayarlamak için tercih edilen yöntem `Cache-
 
 1. **Özel önbelleğe alma kuralları** altında, iki eşleşme koşulu oluşturun:
 
-     a. İlk eşleşme koşulu için **eşleşme koşulu** ' nı **yol** olarak ayarlayın ve `/webfolder1/*` **eşleşme değeri** için girin. **Önbelleğe alma davranışını** **geçersiz kılmak** için ayarlayın ve **saat** kutusuna 4 girin.
+     a. İlk eşleşme koşulu için **eşleşme koşulu** ' nı **yol** olarak ayarlayın ve `/webfolder1/*` **eşleşme değeri** için girin. **Önbelleğe alma davranışını** **geçersiz kılmak** için ayarlayın ve **günler** kutusuna 4 girin.
 
-     b. İkinci eşleşme koşulu için **eşleşme koşulu** ' nı **yol** olarak ayarlayın ve `/webfolder1/file1.txt` **eşleşme değeri** için girin. **Önbelleğe alma davranışını** **geçersiz kılmak** için ayarlayın ve **saat** kutusuna 2 girin.
+     b. İkinci eşleşme koşulu için **eşleşme koşulu** ' nı **yol** olarak ayarlayın ve `/webfolder1/file1.txt` **eşleşme değeri** için girin. **Önbelleğe alma davranışını** **geçersiz kılmak** için ayarlayın ve **günler** kutusuna 2 girin.
 
     ![CDN özel önbelleğe alma kuralları örneği](./media/cdn-manage-expiration-of-cloud-service-content/cdn-custom-caching-rules-example.png)
 

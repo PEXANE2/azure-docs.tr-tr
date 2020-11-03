@@ -1,17 +1,17 @@
 ---
 title: Ortak ağ erişimini reddetme-Azure portal-MariaDB için Azure veritabanı
 description: MariaDB için Azure veritabanınız için Azure portal kullanarak genel ağ erişimini reddetme işlemini nasıl yapılandıracağınızı öğrenin
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: f33dbfa0b96d7f6d85443005ff7e8b1a780c75a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3117ebfd258c72bb97432871c2ea74d30c52f669
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86104393"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242199"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-mariadb-using-azure-portal"></a>Azure portal kullanarak MariaDB için Azure veritabanı 'nda genel ağ erişimini reddetme
 
@@ -29,13 +29,13 @@ MariaDB sunucusunu genel ağ erişimini engelle ' yi ayarlamak için şu adımla
 
 1. [Azure Portal](https://portal.azure.com/), var olan MariaDB sunucusu Için Azure veritabanınızı seçin.
 
-1. MariaDB sunucusu sayfasında, **Ayarlar**altında **bağlantı güvenliği** ' ne tıklayarak bağlantı güvenliği yapılandırması sayfasını açın.
+1. MariaDB sunucusu sayfasında, **Ayarlar** altında **bağlantı güvenliği** ' ne tıklayarak bağlantı güvenliği yapılandırması sayfasını açın.
 
 1. Ortak ağ erişimini engelle ' de, MariaDB sunucunuz için genel erişimi Reddet ' i etkinleştirmek için **Evet** ' i seçin.
 
     ![MariaDB için Azure veritabanı ağ erişimini reddet](./media/howto-deny-public-network-access/deny-public-network-access.PNG)
 
-1. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
+1. Değişiklikleri kaydetmek için **Kaydet** ’e tıklayın.
 
 1. Bildirim, bağlantı güvenliği ayarının başarıyla etkinleştirildiğini onaylanır.
 

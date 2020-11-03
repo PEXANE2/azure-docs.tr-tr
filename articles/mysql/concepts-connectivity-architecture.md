@@ -1,17 +1,17 @@
 ---
 title: Bağlantı mimarisi-MySQL için Azure veritabanı
 description: MySQL için Azure veritabanı sunucunuza yönelik bağlantı mimarisini açıklar.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 73178a9707d35fe7337210b11e76504794bc93ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d3842675cf4b36dfaa95ed6041bf8c6f0978a53
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90896399"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242883"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda bağlantı mimarisi
 Bu makalede, MySQL için Azure veritabanı bağlantı mimarisinin yanı sıra trafiğin Azure 'daki ve dışındaki istemcilerden gelen MySQL için Azure veritabanı örneğine nasıl yönlendirildiği açıklanmaktadır.
@@ -55,9 +55,9 @@ Aşağıdaki tabloda, tüm veri bölgeleri için MySQL için Azure veritabanı G
 | Güney Kore - Orta | 52.231.32.42   |
 | Güney Kore - Güney | 52.231.200.86    |
 | Orta Kuzey ABD | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    |
-| Kuzey Avrupa | 40.113.93.91, 191.235.193.75, 52.138.224.6, 52.138.224.7    |
-| Güney Afrika Kuzey  | 102.133.152.0    |
-| Güney Afrika Batı | 102.133.24.0   |
+| North Europe | 40.113.93.91, 191.235.193.75, 52.138.224.6, 52.138.224.7    |
+| Güney Afrika - Kuzey  | 102.133.152.0    |
+| Güney Afrika - Batı | 102.133.24.0   |
 | Orta Güney ABD |13.66.62.124, 23.98.162.75, 104.214.16.39, 20.45.120.0   |
 | Güneydoğu Asya | 104.43.15.0, 23.100.117.95, 40.78.233.2, 23.98.80.12     |
 | BAE Orta | 20.37.72.64  |
@@ -72,7 +72,7 @@ Aşağıdaki tabloda, tüm veri bölgeleri için MySQL için Azure veritabanı G
 
 ## <a name="connection-redirection"></a>Bağlantı yeniden yönlendirme
 
-MySQL için Azure veritabanı, istemci uygulamaları ve MySQL sunucuları arasındaki ağ gecikmesini azaltmaya yardımcı olan ek bir bağlantı ilkesini, **yeniden yönlendirmeyi**destekler. Bu özellik ile, ilk TCP oturumu MySQL sunucusu için Azure veritabanı 'na kurulduktan sonra sunucu, MySQL sunucusunu istemciye barındıran düğümün arka uç adresini döndürür. Bundan sonra, sonraki tüm paketler doğrudan sunucuya akar ve ağ geçidini atlar. Paketler doğrudan sunucuya akar, gecikme süresi ve aktarım hızı performansı artırılmıştır.
+MySQL için Azure veritabanı, istemci uygulamaları ve MySQL sunucuları arasındaki ağ gecikmesini azaltmaya yardımcı olan ek bir bağlantı ilkesini, **yeniden yönlendirmeyi** destekler. Bu özellik ile, ilk TCP oturumu MySQL sunucusu için Azure veritabanı 'na kurulduktan sonra sunucu, MySQL sunucusunu istemciye barındıran düğümün arka uç adresini döndürür. Bundan sonra, sonraki tüm paketler doğrudan sunucuya akar ve ağ geçidini atlar. Paketler doğrudan sunucuya akar, gecikme süresi ve aktarım hızı performansı artırılmıştır.
 
 Bu özellik, 5,6, 5,7 ve 8,0 Altyapı sürümleriyle MySQL sunucuları için Azure veritabanı 'nda desteklenir.
 

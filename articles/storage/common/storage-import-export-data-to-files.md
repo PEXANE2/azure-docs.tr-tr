@@ -5,23 +5,24 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/20/2020
+ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 1cd1145411fbf4ec4441d612f9552997704f9e5e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7d969392c3245eb81ed07889bd956d2b8e8fb82f
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782408"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234111"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Azure Dosyaları'na veri aktarmak için Azure İçeri/Dışarı Aktarma hizmetini kullanma
 
-Bu makalede, Azure Içeri/dışarı aktarma hizmeti 'nin büyük miktarlarda verileri Azure dosyalarına güvenli bir şekilde aktarmak için nasıl kullanılacağı hakkında adım adım yönergeler sağlanmaktadır. Verileri içeri aktarmak için hizmet, verilerinizi içeren desteklenen disk sürücülerinin bir Azure veri merkezine sevk etmeniz gerekir.  
+Bu makalede, Azure Içeri/dışarı aktarma hizmeti 'nin büyük miktarlarda verileri Azure dosyalarına güvenli bir şekilde aktarmak için nasıl kullanılacağı hakkında adım adım yönergeler sağlanmaktadır. Verileri içeri aktarmak için hizmet, verilerinizi içeren desteklenen disk sürücülerinin bir Azure veri merkezine sevk etmeniz gerekir.
 
 Içeri/dışarı aktarma hizmeti, Azure depolama 'ya yalnızca Azure dosyalarını içeri aktarmayı destekler. Azure dosyalarını dışarı aktarma desteklenmiyor.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure dosyalarına veri aktarmaya yönelik bir içeri aktarma işi oluşturmadan önce, aşağıdaki önkoşul listesini dikkatle gözden geçirin ve doldurun. Şunları yapmanız gerekir:
 
@@ -30,7 +31,7 @@ Azure dosyalarına veri aktarmaya yönelik bir içeri aktarma işi oluşturmadan
 - [Desteklenen türlerde](storage-import-export-requirements.md#supported-disks)yeterli sayıda disk vardır.
 - [Desteklenen BIR işletim sistemi sürümünü](storage-import-export-requirements.md#supported-operating-systems)çalıştıran bir Windows sistemine sahiptir.
 - Windows sisteminde [Waımportexport sürüm 2](https://aka.ms/waiev2) ' nı indirin. Varsayılan klasöre ayıklayın `waimportexport` . Örneğin, `C:\WaImportExport`.
-- FedEx/DHL hesabınız olmalıdır. FedEx/DHL dışında bir taşıyıcı kullanmak istiyorsanız, ' de Azure Data Box Işlemler ekibine başvurun `adbops@microsoft.com` .  
+- FedEx/DHL hesabınız olmalıdır. FedEx/DHL dışında bir taşıyıcı kullanmak istiyorsanız, ' de Azure Data Box Işlemler ekibine başvurun `adbops@microsoft.com` .
     - Hesap geçerli olmalıdır, bakiyesi olmalıdır ve dönüş teslim özelliklerine sahip olmalıdır.
     - Dışarı aktarma işi için bir izleme numarası oluştur.
     - Her iş ayrı bir izleme numarasına sahip olmalıdır. Aynı izleme numarasına birden fazla işin eklenmesi desteklenmez.
@@ -48,7 +49,7 @@ Sürücüleri hazırlamak için aşağıdaki adımları gerçekleştirin.
 
 1. Windows sistemine SATA bağlayıcıları aracılığıyla disk sürücülerimizi bağlayın.
 2. Her sürücüde tek bir NTFS birimi oluşturun. Birime bir sürücü harfi atayın. Bağlama noktalarını kullanmayın.
-3. Aracın bulunduğu kök klasördeki *dataset.csv* dosyasını değiştirin. Bir dosyayı veya klasörü veya her ikisini de içeri aktarmak istediğinize bağlı olarak, *dataset.csv* dosyasına aşağıdaki örneklere benzer girdiler ekleyin.  
+3. Aracın bulunduğu kök klasördeki *dataset.csv* dosyasını değiştirin. Bir dosyayı veya klasörü veya her ikisini de içeri aktarmak istediğinize bağlı olarak, *dataset.csv* dosyasına aşağıdaki örneklere benzer girdiler ekleyin.
 
    - **Bir dosyayı içeri aktarmak için** : aşağıdaki örnekte kopyalanacak veriler F: sürücüsünde yer alır. Dosya *MyFile1.txt*  , *MyAzureFileshare1* köküne kopyalanır. *MyAzureFileshare1* yoksa, Azure depolama hesabında oluşturulur. Klasör yapısı korunur.
 
@@ -241,6 +242,102 @@ Azure CLı 'de bir içeri aktarma işi oluşturmak için aşağıdaki adımları
     ```azurecli
     az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true
     ```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Azure PowerShell içinde bir içeri aktarma işi oluşturmak için aşağıdaki adımları kullanın.
+
+[!INCLUDE [azure-powershell-requirements-h3.md](../../../includes/azure-powershell-requirements-h3.md)]
+
+> [!IMPORTANT]
+> **Az. ımportexport** PowerShell modülü önizlemedeyken, cmdlet 'ini kullanarak ayrı olarak yüklenmelidir `Install-Module` . Bu PowerShell modülü genel kullanıma sunulduğunda, gelecekteki az PowerShell modülü sürümlerinin bir parçası olur ve Azure Cloud Shell içinden varsayılan olarak kullanılabilir.
+
+```azurepowershell-interactive
+Install-Module -Name Az.ImportExport
+```
+
+### <a name="create-a-job"></a>İş oluşturma
+
+1. Var olan bir kaynak grubunu kullanabilir veya bir tane oluşturabilirsiniz. Bir kaynak grubu oluşturmak için [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 'ini çalıştırın:
+
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name myierg -Location westus
+   ```
+
+1. Mevcut bir depolama hesabını kullanabilir veya bir tane oluşturabilirsiniz. Bir depolama hesabı oluşturmak için [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) cmdlet 'ini çalıştırın:
+
+   ```azurepowershell-interactive
+   New-AzStorageAccount -ResourceGroupName myierg -AccountName myssdocsstorage -SkuName Standard_RAGRS -Location westus -EnableHttpsTrafficOnly $true
+   ```
+
+1. Diskleri sevk etmek için kullanabileceğiniz konumların bir listesini almak için [Get-Azımportexportlocation](/powershell/module/az.importexport/get-azimportexportlocation) cmdlet 'ini kullanın:
+
+   ```azurepowershell-interactive
+   Get-AzImportExportLocation
+   ```
+
+1. `Get-AzImportExportLocation` `Name` Bölgenize ait konumları almak için cmdlet 'ini parametresiyle birlikte kullanın:
+
+   ```azurepowershell-interactive
+   Get-AzImportExportLocation -Name westus
+   ```
+
+1. Aşağıdaki [New-Azımportexport](/powershell/module/az.importexport/new-azimportexport) örneğini çalıştırarak bir içeri aktarma işi oluşturun:
+
+   ```azurepowershell-interactive
+   $driveList = @(@{
+     DriveId = '9CA995BA'
+     BitLockerKey = '439675-460165-128202-905124-487224-524332-851649-442187'
+     ManifestFile = '\\DriveManifest.xml'
+     ManifestHash = '69512026C1E8D4401816A2E5B8D7420D'
+     DriveHeaderHash = 'AZ31BGB1'
+   })
+
+   $Params = @{
+      ResourceGroupName = 'myierg'
+      Name = 'MyIEjob1'
+      Location = 'westus'
+      BackupDriveManifest = $true
+      DiagnosticsPath = 'waimportexport'
+      DriveList = $driveList
+      JobType = 'Import'
+      LogLevel = 'Verbose'
+      ShippingInformationRecipientName = 'Microsoft Azure Import/Export Service'
+      ShippingInformationStreetAddress1 = '3020 Coronado'
+      ShippingInformationCity = 'Santa Clara'
+      ShippingInformationStateOrProvince = 'CA'
+      ShippingInformationPostalCode = '98054'
+      ShippingInformationCountryOrRegion = 'USA'
+      ShippingInformationPhone = '4083527600'
+      ReturnAddressRecipientName = 'Gus Poland'
+      ReturnAddressStreetAddress1 = '1020 Enterprise way'
+      ReturnAddressCity = 'Sunnyvale'
+      ReturnAddressStateOrProvince = 'CA'
+      ReturnAddressPostalCode = '94089'
+      ReturnAddressCountryOrRegion = 'USA'
+      ReturnAddressPhone = '4085555555'
+      ReturnAddressEmail = 'gus@contoso.com'
+      ReturnShippingCarrierName = 'FedEx'
+      ReturnShippingCarrierAccountNumber = '123456789'
+      StorageAccountId = '/subscriptions/<SubscriptionId>/resourceGroups/myierg/providers/Microsoft.Storage/storageAccounts/myssdocsstorage'
+   }
+   New-AzImportExport @Params
+   ```
+
+   > [!TIP]
+   > Tek bir kullanıcı için bir e-posta adresi belirtmek yerine, bir grup e-postası sağlayın. Bu, bir yönetici ayrılsa bile bildirimleri almanızı sağlar.
+
+1. Myierg kaynak grubu için tüm işleri görmek için [Get-Azımportexport](/powershell/module/az.importexport/get-azimportexport) cmdlet 'ini kullanın:
+
+   ```azurepowershell-interactive
+   Get-AzImportExport -ResourceGroupName myierg
+   ```
+
+1. İşinizi güncelleştirmek veya işinizi iptal etmek için [Update-Azımportexport](/powershell/module/az.importexport/update-azimportexport) cmdlet 'ini çalıştırın:
+
+   ```azurepowershell-interactive
+   Update-AzImportExport -Name MyIEjob1 -ResourceGroupName myierg -CancelRequested
+   ```
 
 ---
 

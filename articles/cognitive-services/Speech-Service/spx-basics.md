@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: bceffe5c53b9cbc863fd9c923ffa4718ebd50436
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 1255333e9bde54fcdf76dd40a9aaa4bc68fd103e
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893824"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242135"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Konuşma CLı 'nın temellerini öğrenin
 
@@ -65,15 +65,16 @@ Konuşma tanıma ve birleştirme özelliğine ek olarak konuşma CLı ile konuş
 spx translate --microphone --source en-US --target ru-RU --output file C:\some\file\path\russian_translation.txt
 ```
 
-Bu komutta, hem kaynak **(çevrilecek**dil) hem de hedef (çevrilecek **dil) dillerini**belirtirsiniz. `--microphone`Bağımsız değişkeninin kullanılması, geçerli etkin giriş cihazında ses dinlemek ve ' a bastıktan sonra duracaktır `ENTER` . Çıktı, bir metin dosyasına yazılan hedef dile bir metin dönüştürmesidir.
+Bu komutta, hem kaynak **(çevrilecek** dil) hem de hedef (çevrilecek **dil) dillerini** belirtirsiniz. `--microphone`Bağımsız değişkeninin kullanılması, geçerli etkin giriş cihazında ses dinlemek ve ' a bastıktan sonra duracaktır `ENTER` . Çıktı, bir metin dosyasına yazılan hedef dile bir metin dönüştürmesidir.
 
 > [!NOTE]
 > Tüm desteklenen dillerin bir listesi için ilgili yerel ayar kodlarıyla birlikte [dil ve yerel ayar makalesine](language-support.md) bakın.
 
 ### <a name="configuration-files-in-the-datastore"></a>Veri deposundaki yapılandırma dosyaları
 
-Konuşma CLı, yapılandırma dosyalarında yerel konuşma CLı veri deposunda depolanan birden çok ayarı okuyup yazabilir ve bir @ symbol kullanan konuşma CLı çağrıları içinde adlandırılır. Konuşma CLı, yeni bir ayarı `./spx/data` geçerli çalışma dizininde oluşturduğu yeni bir alt dizinde kaydetmeye çalışır.
-Bir yapılandırma değeri ararken, konuşma CLı geçerli çalışma dizininizde ve sonra `./spx/data` yolunda görünür.
+Konuşma CLı 'nın davranışı, yapılandırma dosyalarındaki ayarlara bağlı olabilir. Bu, bir @ simgesi kullanarak konuşma CLı çağrıları içinde başvurabilirsiniz.
+Konuşma CLı, yeni bir ayarı `./spx/data` geçerli çalışma dizininde oluşturduğu yeni bir alt dizine kaydeder.
+Bir yapılandırma değeri ararken, konuşma CLı geçerli çalışma dizininizi, ardından üzerindeki veri deposunda `./spx/data` ve daha sonra diğer veri depolarında, ikili dosyada son salt okuma veri deposu da dahil olmak üzere `spx` .
 Daha önce, ve değerlerini kaydetmek için veri deposunu `@key` kullandınız `@region` , bu nedenle bunları her bir komut satırı çağrısıyla belirtmeniz gerekmez.
 Yapılandırma dosyalarını kendi yapılandırma ayarlarınızı depolamak için de kullanabilir veya çalışma zamanında oluşturulan URL 'Leri ya da diğer dinamik içeriği geçirmek için kullanabilirsiniz.
 

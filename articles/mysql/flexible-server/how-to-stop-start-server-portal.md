@@ -1,17 +1,17 @@
 ---
 title: Durdur/Başlat-Azure portal-MySQL için Azure veritabanı esnek sunucu
 description: Bu makalede, Azure portal aracılığıyla MySQL için Azure veritabanı 'nda işlemleri durdurma/başlatma işlemi açıklanır.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: e3e08ae9bbf00e1c9a44e6ba913cac1d842928b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15b08ea67afe0d307470b5a4fb0f7d26e0f4ea82
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567525"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241931"
 ---
 # <a name="stopstart-an-azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanını durdurma/başlatma-esnek sunucu (Önizleme)
 
@@ -20,7 +20,7 @@ ms.locfileid: "91567525"
 
 Bu makalede esnek sunucu durdurma ve başlatma işlemleri için adım adım yordamlar sunulmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 
@@ -36,7 +36,7 @@ Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 
 3.  Sunucunuzu durdurmayı onaylamak için **Evet** ' e tıklayın.
 
-    :::image type="content" source="media/how-to-stop-start-server-portal/confirm-stop.png" alt-text="Esnek sunucuyu durdurun."::: 
+    :::image type="content" source="media/how-to-stop-start-server-portal/confirm-stop.png" alt-text="Esnek sunucu durdurmayı onaylayın."::: 
 
 > [!NOTE]
 > Sunucu durdurulduktan sonra, esnek sunucu için diğer yönetim işlemleri kullanılamaz.
@@ -47,7 +47,7 @@ Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 
 2.  **Genel bakış** sayfasında, araç çubuğundaki **Başlat** düğmesine tıklayın.
 
-    :::image type="content" source="media/how-to-stop-start-server-portal/start-server.png" alt-text="Esnek sunucuyu durdurun.":::  
+    :::image type="content" source="media/how-to-stop-start-server-portal/start-server.png" alt-text="Esnek sunucuyu başlatın.":::  
 
 > [!NOTE]
 > Sunucu başlatıldıktan sonra, tüm yönetim işlemleri artık esnek sunucu için kullanılabilir.

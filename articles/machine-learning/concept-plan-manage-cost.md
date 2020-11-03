@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 1e6e59ad237cdc1f23181375894512e69eba86ff
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: f73643baa92956280d67d0d931459af3a80925ee
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042182"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233757"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Azure Machine Learning maliyetlerini planlayın ve yönetin
 
@@ -96,7 +96,7 @@ az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 
 
 AmlCompute bir [Kota (veya limit) yapılandırmasıyla](how-to-manage-quotas.md#azure-machine-learning-compute)gelir. Bu kota, VM ailesine göre (örneğin, Dv2 serisi, NCv3 serisi) ve her abonelik için bölgeye göre değişir. Abonelikler, sizin için küçük varsayılanlar ile başlar, ancak aboneliğinizde kullanılacak Amlcompute kaynaklarının miktarını denetlemek için bu ayarı kullanın. 
 
-Ayrıca, bir abonelik içindeki her çalışma alanı için, [VM ailesine göre çalışma alanı düzeyi kotasını](how-to-manage-quotas.md#workspace-level-quota)yapılandırın. Bunun yapılması, her bir çalışma alanının potansiyel olarak olası ve belirli VM ailelerini kısıtlayabileceği maliyetler üzerinde daha ayrıntılı denetime sahip olmasını sağlar. 
+Ayrıca, bir abonelik içindeki her çalışma alanı için, [VM ailesine göre çalışma alanı düzeyi kotasını](how-to-manage-quotas.md#workspace-level-quotas)yapılandırın. Bunun yapılması, her bir çalışma alanının potansiyel olarak olası ve belirli VM ailelerini kısıtlayabileceği maliyetler üzerinde daha ayrıntılı denetime sahip olmasını sağlar. 
 
 Çalışma alanı düzeyinde kotalar ayarlamak için [Azure Portal](https://portal.azure.com)başlatın.  Aboneliğinizdeki herhangi bir çalışma alanını seçin ve sol bölmedeki **kullanımlar + kotalar** ' ı seçin. Sonra kotaları görüntülemek için **kotaları Yapılandır** sekmesini seçin. Birden çok çalışma alanını etkileyen bir ayar olduğundan kotayı ayarlamak için abonelik kapsamında ayrıcalıklarınız olması gerekir.
 

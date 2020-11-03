@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 355e300ec9f3671cf29ccc763e211a9bb3806f64
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2ef09fd81aaeca92e87be2a0fddbc9be16ebac1d
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474793"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242050"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>OPENROWSET 'yi isteğe bağlı SQL ile kullanma (Önizleme)
 
@@ -95,6 +95,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 [ , FIELDQUOTE = 'quote_characters' ]
 [ , DATA_COMPRESSION = 'data_compression_method' ]
 [ , PARSER_VERSION = 'parser_version' ]
+[ , HEADER_ROW = { TRUE | FALSE } ]
 ```
 
 ## <a name="arguments"></a>Bağımsız değişkenler
@@ -144,12 +145,13 @@ Aşağıdaki örnekte, unstructured_data_path = ise `https://mystorageaccount.df
 WıTH yan tümcesi, dosyalardan okumak istediğiniz sütunları belirtmenize olanak tanır.
 
 - CSV veri dosyaları için tüm sütunları okumak üzere sütun adlarını ve bunların veri türlerini belirtin. Sütunların bir alt kümesini isterseniz, kaynak veri dosyalarından sütunları sıralı olarak seçmek için sıralı numaraları kullanın. Sütunlar sıra atamağına göre bağlanacaktır. 
-
-    > [!IMPORTANT]
-    > WıTH yan tümcesi CSV dosyaları için zorunludur.
-    >
+    > [!TIP]
+    > CSV dosyaları için yan tümcesini de atlayabilirsiniz. Veri türleri, dosya içeriğinden otomatik olarak algılanır. HEADER_ROW bağımsız değişkenini kullanarak, sütun adlarının üst bilgi satırından okunacaktır. Ayrıntılar için [Otomatik şema bulmayı](#automatic-schema-discovery)denetleyin.
     
-- Parquet veri dosyaları için, kaynak veri dosyalarındaki sütun adlarıyla eşleşen sütun adları sağlayın. Sütunlar ada göre bağlanacaktır. WıTH yan tümcesi atlanırsa, Parquet dosyalarındaki tüm sütunlar döndürülür.
+- Parquet veri dosyaları için, kaynak veri dosyalarındaki sütun adlarıyla eşleşen sütun adları sağlayın. Sütunlar ada göre bağlanacaktır ve büyük/küçük harfe duyarlıdır. WıTH yan tümcesi atlanırsa, Parquet dosyalarındaki tüm sütunlar döndürülür.
+    > [!IMPORTANT]
+    > Parquet dosyalarındaki sütun adları büyük/küçük harfe duyarlıdır. Parquet dosyasında sütun adından büyük küçük harfe sahip sütun adı belirtirseniz, bu sütun için NULL değerler döndürülür.
+
 
 çıkış sütununun adı column_name. Sağlanmışsa, bu ad kaynak dosyadaki sütun adını geçersiz kılar.
 
@@ -205,6 +207,10 @@ Dosyalar okunurken kullanılacak ayrıştırıcı sürümünü belirtir. Şu and
 
 CSV Ayrıştırıcısı sürüm 1,0, varsayılan ve özellik açısından zengin bir özelliktir. Sürüm 2,0, performans için oluşturulmuştur ve tüm seçenekleri ve kodlamaları desteklemez. 
 
+CSV Ayrıştırıcısı sürüm 1,0 özellikleri:
+
+- Şu seçenekler desteklenmez: HEADER_ROW.
+
 CSV Ayrıştırıcısı sürüm 2,0 özellikleri:
 
 - Tüm veri türleri desteklenmez.
@@ -212,22 +218,93 @@ CSV Ayrıştırıcısı sürüm 2,0 özellikleri:
 - Şu seçenekler desteklenmez: DATA_COMPRESSION.
 - Tırnak işareti boş dize ("") boş dize olarak yorumlanır.
 
+HEADER_ROW = {TRUE | YANLÝÞ
+
+CSV dosyasının üst bilgi satırını içerip içermediğini belirtir. Varsayılan değer FALSE 'dur. PARSER_VERSION = ' 2.0 ' içinde desteklenir. TRUE ise, ilk satırdan FIRSTROW bağımsız değişkenine göre sütun adları okunacaktır.
+
+## <a name="fast-delimited-text-parsing"></a>Hızlı sınırlandırılmış metin ayrıştırma
+
+Kullanabileceğiniz iki sınırlı metin ayrıştırıcısı sürümü vardır. CSV Ayrıştırıcısı sürüm 1,0, çözümleyici sürüm 2,0 performans için yapılandırıldığında varsayılan ve özellik bakımından zengin bir özelliktir. Ayrıştırıcı 2,0 ' de performans iyileştirmesi gelişmiş Ayrıştırma tekniklerinden ve çoklu iş parçacığından gelir. Dosya boyutu büyüdükçe hızdaki fark daha büyük olacaktır.
+
+## <a name="automatic-schema-discovery"></a>Otomatik şema bulma
+
+WıTH yan tümcesini atlayarak hem CSV hem de Parquet dosyalarını, şemayı bilmeden veya belirtmeden kolayca sorgulayabilirsiniz. Sütun adları ve veri türleri dosyalardan çıkarsdolacak.
+
+Parquet dosyalarında okunacak sütun meta verileri, tür eşlemeleri de [Parquet için tür eşlemelerde](#type-mapping-for-parquet)bulunabilir. Örnekler için [şema belirtmeden Parquet dosyalarını okumayı](#read-parquet-files-without-specifying-schema) denetleyin.
+
+CSV dosyaları için sütun adları, üst bilgi satırından okunabilir. Üst bilgi satırının HEADER_ROW bağımsız değişkenini kullanarak mevcut olup olmadığını belirtebilirsiniz. HEADER_ROW = FALSE ise, genel sütun adları kullanılacaktır: C1, C2,... CN burada n, dosyadaki sütun sayısıdır. Veri türleri ilk 100 veri satırlarından çıkarsedilir. Örnekler için [şema BELIRTMEDEN CSV dosyaları okumayı](#read-csv-files-without-specifying-schema) denetleyin.
+
+> [!IMPORTANT]
+> Bunun yerine uygun veri türü çıkarsanamıyor ve daha büyük veri türü kullanılacağı durumlar vardır. Bu performans yükünü taşır ve varchar (8000) olarak gösterilen karakter sütunları için özellikle önemlidir. Dosyalarınızda karakter sütunları varsa ve Şema çıkarımı kullanıyorsanız, en iyi performans için lütfen [gösterilen veri türlerini denetleyin](best-practices-sql-on-demand.md#check-inferred-data-types) ve [uygun veri türlerini kullanın](best-practices-sql-on-demand.md#use-appropriate-data-types).
+
+### <a name="type-mapping-for-parquet"></a>Parquet için tür eşleme
+
+Parquet dosyaları her sütun için tür açıklamalarını içerir. Aşağıdaki tabloda, Parquet türlerinin SQL yerel türleriyle nasıl eşlendiği açıklanmaktadır.
+
+| Parquet türü | Parquet mantıksal türü (ek açıklama) | SQL veri türü |
+| --- | --- | --- |
+| BOOLEAN | | bit |
+| IKILI/BYTE_ARRAY | | ikili |
+| ÇIFT | | float |
+| FLOAT | | real |
+| INT32 | | int |
+| INT64 | | bigint |
+| INT96 | |datetime2 |
+| FIXED_LEN_BYTE_ARRAY | |ikili |
+| Ý |UTF8 |varchar \* (UTF8 harmanlama) |
+| Ý |DIZISINDE |varchar \* (UTF8 harmanlama) |
+| Ý |YARDıMıNıN|varchar \* (UTF8 harmanlama) |
+| Ý |EDIN |uniqueidentifier |
+| Ý |KATEGORI |decimal |
+| Ý |JSON |varchar (max) \* (UTF8 harmanlama) |
+| Ý |BSON |varbinary (max) |
+| FIXED_LEN_BYTE_ARRAY |KATEGORI |decimal |
+| BYTE_ARRAY |ARALıĞıNDA |, standartlaştırılmış biçimde seri hale getirilmiş varchar (max) |
+| INT32 |TAMSAYı (8, doğru) |smallint |
+| INT32 |INT (16, doğru) |smallint |
+| INT32 |INT (32, doğru) |int |
+| INT32 |INT (8, false) |tinyint |
+| INT32 |INT (16, false) |int |
+| INT32 |INT (32, false) |bigint |
+| INT32 |DATE |date |
+| INT32 |KATEGORI |decimal |
+| INT32 |SAAT (MILIMETRE)|time |
+| INT64 |INT (64, true) |bigint |
+| INT64 |INT (64, false) |ondalık (20, 0) |
+| INT64 |KATEGORI |decimal |
+| INT64 |SAAT (MIKRO S/NANOS) |time |
+|INT64 |ZAMAN DAMGASı (MILIMETRE/MIKRO S/NANOS) |datetime2 |
+|[Karmaşık tür](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |LISTELE |JSON ile seri hale getirilmiş varchar (max) |
+|[Karmaşık tür](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|HARITA|JSON ile seri hale getirilmiş varchar (max) |
+
 ## <a name="examples"></a>Örnekler
 
-Aşağıdaki örnek, population*. csv dosyalarından yalnızca 1 ve 4 sıralı numaralarına sahip iki sütun döndürür. Dosyalarda üstbilgi satırı olmadığından, ilk satırdan okumaya başlar:
+### <a name="read-csv-files-without-specifying-schema"></a>Şemayı belirtmeden CSV dosyalarını okuma
+
+Aşağıdaki örnek, sütun adları ve veri türleri belirtmeden üst bilgi satırını içeren CSV dosyasını okur: 
 
 ```sql
-SELECT * 
+SELECT 
+    *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population*.csv',
-        FORMAT = 'CSV',
-        FIRSTROW = 1
-    )
-WITH (
-    [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2 1,
-    [population] bigint 4
-) AS [r]
+    BULK 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
+    FORMAT = 'CSV',
+    PARSER_VERSION = '2.0',
+    HEADER_ROW = TRUE) as [r]
 ```
+
+Aşağıdaki örnek, sütun adları ve veri türleri belirtmeden üst bilgi satırı içermeyen CSV dosyasını okur: 
+
+```sql
+SELECT 
+    *
+FROM OPENROWSET(
+    BULK 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
+    FORMAT = 'CSV',
+    PARSER_VERSION = '2.0') as [r]
+```
+
+### <a name="read-parquet-files-without-specifying-schema"></a>Şema belirtmeden Parquet dosyalarını okuma
 
 Aşağıdaki örnek, görselleştirmenizdeki veri kümesindeki ilk satırın tüm sütunlarını, Parquet biçiminde ve sütun adlarını ve veri türlerini belirtmeden döndürür: 
 
@@ -241,6 +318,42 @@ FROM
     ) AS [r]
 ```
 
+### <a name="read-specific-columns-from-csv-file"></a>CSV dosyasından belirli sütunları oku
+
+Aşağıdaki örnek, population*. csv dosyalarından yalnızca 1 ve 4 sıralı numaralarına sahip iki sütun döndürür. Dosyalarda üstbilgi satırı olmadığından, ilk satırdan okumaya başlar:
+
+```sql
+SELECT 
+    * 
+FROM OPENROWSET(
+        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population*.csv',
+        FORMAT = 'CSV',
+        FIRSTROW = 1
+    )
+WITH (
+    [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2 1,
+    [population] bigint 4
+) AS [r]
+```
+
+### <a name="read-specific-columns-from-parquet-file"></a>Parquet dosyasından belirli sütunları okuma
+
+Aşağıdaki örnek, Parquet biçiminde görselleştirmenizdeki veri kümesindeki ilk satırın yalnızca iki sütununu döndürür: 
+
+```sql
+SELECT 
+    TOP 1 *
+FROM  
+    OPENROWSET(
+        BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        FORMAT='PARQUET'
+    )
+WITH (
+    [stateName] VARCHAR (50),
+    [population] bigint
+) AS [r]
+```
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla örnek için bkz [query data storage quickstart](query-data-storage.md) `OPENROWSET` . [CSV](query-single-csv-file.md), [Parquet](query-parquet-files.md)ve [JSON](query-json-files.md) dosya biçimlerini okumak için nasıl kullanacağınızı öğrenmek için Query Data Storage hızlı başlangıcı. Ayrıca, [Cetas](develop-tables-cetas.md)kullanarak sorgunuzun sonuçlarını Azure depolama 'ya kaydetmeyi de öğrenebilirsiniz.
+Daha fazla örnek için bkz [query data storage quickstart](query-data-storage.md) `OPENROWSET` . [CSV](query-single-csv-file.md), [Parquet](query-parquet-files.md)ve [JSON](query-json-files.md) dosya biçimlerini okumak için nasıl kullanacağınızı öğrenmek için Query Data Storage hızlı başlangıcı. En iyi performansı elde etmek için [en iyi uygulamaları](best-practices-sql-on-demand.md) denetleyin. Ayrıca, [Cetas](develop-tables-cetas.md)kullanarak sorgunuzun sonuçlarını Azure depolama 'ya kaydetmeyi de öğrenebilirsiniz.

@@ -4,17 +4,17 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
-ms.openlocfilehash: b62e5057d8f144fc56d0e35927d17de27a1c8863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cec44bbabdb7d528c30a8d3396b819f2eb3c5386
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91255272"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93235886"
 ---
-Özelliği kolayca ayarlanabilir, ancak bu deneyim deneyiminizin ücretsiz olacağı anlamına gelmez. İstediğiniz uç noktaya erişmede sorun yaşarsanız, uygulama konsolundan bağlantıyı test etmek için kullanabileceğiniz bazı yardımcı programlar vardır. Kullanabileceğiniz iki konsol vardır. Birisi kudu konsoludur ve diğeri Azure portal konsoludur. Uygulamaınızdan kudu konsoluna ulaşmak için **Araçlar**  >  **kudu**' ye gidin. Ayrıca, Kudo konsoluna [SiteName]. scm. azurewebsites. net adresinden ulaşabilirsiniz. Web sitesi yüklendikten sonra, **hata ayıklama konsolu** sekmesine gidin. Uygulamanızdaki Azure Portal barındırılan konsola ulaşmak için **Araçlar**  >  **konsolu**' na gidin.
+Özelliği kolayca ayarlanabilir, ancak bu deneyim deneyiminizin ücretsiz olacağı anlamına gelmez. İstediğiniz uç noktaya erişmede sorun yaşarsanız, uygulama konsolundan bağlantıyı test etmek için kullanabileceğiniz bazı yardımcı programlar vardır. Kullanabileceğiniz iki konsol vardır. Birisi kudu konsoludur ve diğeri Azure portal konsoludur. Uygulamaınızdan kudu konsoluna ulaşmak için **Araçlar**  >  **kudu** ' ye gidin. Ayrıca, Kudo konsoluna [SiteName]. scm. azurewebsites. net adresinden ulaşabilirsiniz. Web sitesi yüklendikten sonra, **hata ayıklama konsolu** sekmesine gidin. Uygulamanızdaki Azure Portal barındırılan konsola ulaşmak için **Araçlar**  >  **konsolu** ' na gidin.
 
 #### <a name="tools"></a>Araçlar
-Yerel Windows uygulamalarında, **ping**, **nslookup**ve **tracert** araçları güvenlik kısıtlamaları nedeniyle konsolda çalışmaz ( [özel Windows kapsayıcılarında](../articles/app-service/quickstart-custom-container.md)çalışırlar). Void öğesini dolduracak şekilde iki ayrı araç eklenir. DNS işlevselliğini test etmek için **nameresolver.exe**adlı bir araç ekledik. Söz dizimi aşağıdaki gibidir:
+Yerel Windows uygulamalarında, **ping** , **nslookup** ve **tracert** araçları güvenlik kısıtlamaları nedeniyle konsolda çalışmaz ( [özel Windows kapsayıcılarında](../articles/app-service/quickstart-custom-container.md)çalışırlar). Void öğesini dolduracak şekilde iki ayrı araç eklenir. DNS işlevselliğini test etmek için **nameresolver.exe** adlı bir araç ekledik. Söz dizimi aşağıdaki gibidir:
 
 ```console
 nameresolver.exe hostname [optional: DNS Server]
@@ -46,12 +46,12 @@ Bu öğeler sorunlarınızı yanıtlamazsanız, şunun gibi şeyler için göz a
 * Hedef, RFC1918 olmayan bir adres değil ve WEBSITE_VNET_ROUTE_ALL 1 olarak ayarlanmamış.
 * Tümleştirme alt ağınızdan çıkış bloke bir NSG var mı?
 * Azure ExpressRoute veya VPN üzerinden devam ediyorsanız şirket içi ağ geçidiniz trafiği Azure 'a yeniden yönlendirmek üzere yapılandırılmış mı? Sanal ağınızdaki, şirket içi olmayan uç noktalara ulaşabilseniz, rotalarınızı denetleyin.
-* Tümleştirme alt ağında temsili ayarlamak için yeterli izinlere sahip misiniz? Bölgesel VNet tümleştirme yapılandırması sırasında, tümleştirme alt ağınız Microsoft. Web 'e devredildi. VNet Integration UI, alt ağı Microsoft. Web 'e otomatik olarak devreder. Hesabınız temsilci seçmek için yeterli ağ izinlerine sahip değilse, alt ağı devretmek için tümleştirme alt ağlarınızın özniteliklerini ayarlayabilen bir kişiye ihtiyacınız vardır. Tümleştirme alt ağını el ile atamak için Azure sanal ağ alt ağı Kullanıcı arabirimine gidin ve Microsoft. Web için temsilciyi ayarlayın.
+* Tümleştirme alt ağında temsili ayarlamak için yeterli izinlere sahip misiniz? Bölgesel VNet tümleştirme yapılandırması sırasında, tümleştirme alt ağınız Microsoft. Web/Servergrupları için temsilci olarak oluşturulur. VNet Integration UI, alt ağı Microsoft. Web/ServerFarm 'e otomatik olarak devreder. Hesabınız temsilci seçmek için yeterli ağ izinlerine sahip değilse, alt ağı devretmek için tümleştirme alt ağlarınızın özniteliklerini ayarlayabilen bir kişiye ihtiyacınız vardır. Tümleştirme alt ağını el ile devretmek için Azure sanal ağ alt ağı Kullanıcı arabirimine gidin ve Microsoft. Web/ServerFarm temsilcisini ayarlayın.
 
 **Ağ Geçidi-gerekli VNet tümleştirmesi**
 * , RFC 1918 aralıklarında (10.0.0.0-10.255.255.255/172.16.0.0-172.31.255.255/192.168.0.0-192.168.255.255) Noktadan siteye adres aralığıdır mi?
 * Ağ Geçidi portalda mi çalışıyor? Ağ geçidinizin kapalıysa, daha sonra geri getirin.
-* Sertifikalar eşitlenmiş olarak gösteriliyor mu veya ağ yapılandırmasının değiştiğini kuşkulu mı?  Sertifikalarınız eşitlenmemiş veya sanal ağ yapılandırmanızda ASPs 'niz ile eşitlenmemiş bir değişikliğin yapıldığından şüphelenirseniz, **eşitleme ağı**' nı seçin.
+* Sertifikalar eşitlenmiş olarak gösteriliyor mu veya ağ yapılandırmasının değiştiğini kuşkulu mı?  Sertifikalarınız eşitlenmemiş veya sanal ağ yapılandırmanızda ASPs 'niz ile eşitlenmemiş bir değişikliğin yapıldığından şüphelenirseniz, **eşitleme ağı** ' nı seçin.
 * VPN üzerinden çalışıyorsanız, trafiği Azure 'a yönlendirmek için şirket içi ağ geçidi yapılandırılmış mı? Sanal ağınızdaki, şirket içi olmayan uç noktalara ulaşabilseniz, rotalarınızı denetleyin.
 * Hem site hem de ExpressRoute 'a işaret eden bir birlikte bulunma ağ geçidi kullanmayı deniyor musunuz? Birlikte bulunma ağ geçitleri, VNet tümleştirmesinde desteklenmez.
 
@@ -68,13 +68,13 @@ Uygulamanızın gerçekten kullandığı adresi bilemezsiniz. Tümleştirme alt 
 
 Ek hata ayıklama adımları şunlardır:
 
-* Sanal ağınızdaki bir VM 'ye bağlanın ve kaynak konağınız üzerinde bağlantı noktasını buradan ulaşmaya çalışın. TCP erişimini test etmek için PowerShell komut **testi-NetConnection**komutunu kullanın. Söz dizimi aşağıdaki gibidir:
+* Sanal ağınızdaki bir VM 'ye bağlanın ve kaynak konağınız üzerinde bağlantı noktasını buradan ulaşmaya çalışın. TCP erişimini test etmek için PowerShell komut **testi-NetConnection** komutunu kullanın. Söz dizimi aşağıdaki gibidir:
 
 ```powershell
 test-netconnection hostname [optional: -Port]
 ```
 
-* Bir VM üzerinde bir uygulama açın ve **tcup**kullanarak konsolundan konsoldan bu konağa ve bağlantı noktasına erişimi test edin.
+* Bir VM üzerinde bir uygulama açın ve **tcup** kullanarak konsolundan konsoldan bu konağa ve bağlantı noktasına erişimi test edin.
 
 #### <a name="on-premises-resources"></a>Şirket içi kaynaklar ####
 

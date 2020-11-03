@@ -1,6 +1,6 @@
 ---
-title: Azure Arc etkin veri denetleyicisi sorunlarını gidermek için günlükleri al
-description: Azure Arc etkin veri denetleyicisinde sorun gidermek için hizmet günlüklerini alın.
+title: Azure Arc etkin veri hizmetleri sorunlarını gidermek için günlükleri alın
+description: Azure Arc etkin veri hizmetleri sorunlarını gidermek için bir veri denetleyicisinden günlük dosyaları almayı öğrenin.
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,27 +9,27 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 625092e0557d40051e1ffd538a496c20edc0222f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 0c4cff7583f08fe27649cee464fcef802cddd88f
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320197"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234060"
 ---
-# <a name="get-azure-arc-enabled-data-services-logs"></a>Azure Arc etkin veri Hizmetleri günlüklerini al
+# <a name="get-logs-to-troubleshoot-azure-arc-enabled-data-services"></a>Azure Arc etkin veri hizmetleri sorunlarını gidermek için günlükleri alın
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Devam etmeden önce şunları yapmanız gerekir:
 
-* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]. [Yükleme yönergeleri](./install-client-tools.md).
-* Azure Arc etkin veri Hizmetleri denetleyicisinde oturum açmak için bir yönetici hesabı.
+* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]. Daha fazla bilgi için bkz. [Azure Arc veri hizmetlerini dağıtmak ve yönetmek için istemci araçlarını kurma](./install-client-tools.md).
+* Azure Arc etkin veri denetleyicisinde oturum açmak için bir yönetici hesabı.
 
-## <a name="get-azure-arc-enabled-data-services-logs"></a>Azure Arc etkin veri Hizmetleri günlüklerini al
+## <a name="get-log-files"></a>Günlük dosyalarını al
 
-Sorun giderme amacıyla tüm yığınların veya belirli yığınların tamamında Azure Arc 'ın etkin olduğu veri Hizmetleri günlüklerini alabilirsiniz. Bunu, komutu gibi standart Kubernetes araçlarını kullanarak yapabilirsiniz. bu `kubectl logs` makalede [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] , tüm günlüklerin tek seferde daha kolay bir şekilde alınacağını sağlayan aracı kullanacaksınız.
+Sorun giderme amacıyla tüm yığınlara veya belirli bir FID genelinde hizmet günlüklerini alabilirsiniz. Tek yönlü, komutu gibi standart Kubernetes araçlarını kullanmaktır `kubectl logs` . Bu makalede, [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] Tüm günlüklerin aynı anda daha kolay bir şekilde alınacağını sağlayan aracını kullanacaksınız.
 
 1. Veri denetleyicisinde bir yönetici hesabıyla oturum açın.
 
@@ -53,15 +53,15 @@ Veri denetleyicisi, adlı bir alt dizinde geçerli çalışma dizininde bulunan 
 
 ## <a name="options"></a>Seçenekler
 
-`azdata arc dc debug copy-logs` çıktıyı yönetmek için aşağıdaki seçenekleri sağlar.
+`azdata arc dc debug copy-logs`Komutu çıktıyı yönetmek için aşağıdaki seçenekleri sağlar:
 
-* Günlük dosyalarını parametresini kullanarak farklı bir dizine çıktı `--target-folder` .
+* Parametresini kullanarak günlük dosyalarını farklı bir dizine çıktı `--target-folder` .
 * Parametreyi atlayarak dosyaları sıkıştırın `--skip-compress` .
-* ' İ atlayarak bellek dökümlerini tetikleyip dahil edin `--exclude-dumps` . Microsoft Desteği bellek dökümlerini istemediği takdirde bu yöntem önerilmez. Bellek dökümü almak için veri denetleyicisi ayarının `allowDumps` `true` veri denetleyicisi oluşturma zamanına ayarlanmış olması gerekir.
+* ' İ atlayarak bellek dökümlerini tetikleyin ve dahil edin `--exclude-dumps` . Bellek dökümlerini Microsoft Desteği istemediği müddetçe bu yöntemi önermiyoruz. Bellek dökümünden yararlanmak için veri denetleyicisi ayarının `allowDumps` veri denetleyicisi oluşturulduğunda olarak ayarlanmış olması gerekir `true` .
 * Yalnızca belirli bir pod ( `--pod` ) veya Container () için bir ada göre günlükleri toplamak üzere filtreleyin `--container` .
-* Ve parametresini geçirerek belirli bir özel kaynağın günlüklerini toplamak için filtreleyin `--resource-kind` `--resource-name` . `resource-kind`Parametre değeri, komut tarafından alınabilecek özel kaynak tanımı adlarından biri olmalıdır `kubectl get customresourcedefinition` .
+* Ve parametrelerini geçirerek belirli bir özel kaynağın günlüklerini toplamak için filtreleyin `--resource-kind` `--resource-name` . `resource-kind`Parametre değeri özel kaynak tanımı adlarından biri olmalıdır. Bu adları komutunu kullanarak alabilirsiniz `kubectl get customresourcedefinition` .
 
-Bu parametrelerle, `<parameters>` Aşağıdaki örnekteki öğesini değiştirebilirsiniz. 
+Bu parametrelerle, `<parameters>` Aşağıdaki örnekte öğesini değiştirebilirsiniz: 
 
 ```console
 azdata arc dc debug copy-logs --target-folder <desired folder> --exclude-dumps --skip-compress -resource-kind <custom resource definition name> --resource-name <resource name> --namespace <namespace name>
@@ -73,7 +73,7 @@ azdata arc dc debug copy-logs --target-folder <desired folder> --exclude-dumps -
 #azdata arc dc debug copy-logs --target-folder C:\temp\logs --exclude-dumps --skip-compress --resource-kind postgresql-12 --resource-name pg1 --namespace arc
 ```
 
-Klasör hiyerarşisi örneği. Klasör hiyerarşisi Pod adı, ardından kapsayıcı ve sonra kapsayıcı içindeki dizin hiyerarşisine göre düzenlenir.
+Aşağıdaki klasör hiyerarşisi bir örnektir. Bu, Pod adı, ardından kapsayıcı ve sonra kapsayıcı içindeki dizin hiyerarşisine göre düzenlenmiştir.
 
 ```output
 <export directory>

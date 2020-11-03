@@ -12,12 +12,12 @@ ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a5cff53ee9e742e93a6183eb5d506bf8f1a08deb
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 4bd738197c84d7dce36f087d170f61a55d8e9f32
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130196"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241336"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD Kimlik Doğrulaması ve yetkilendirme hata kodları
 
@@ -251,7 +251,7 @@ Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADS
 | AADSTS90051 | Invalidülke Alcloudıd-Ulusal bulut tanımlayıcısı geçersiz bir bulut tanımlayıcısı içeriyor. |
 | AADSTS90055 | Tenantkısıtlar Lingerror-çok fazla gelen istek var. Bu özel durum engellenen kiracılar için oluşturulur. |
 | AADSTS90056 | BadResourceRequest-bir erişim belirtecinin kodunu kullanmak Için, uygulamanın uç noktaya bir POST isteği gönderilmesi gerekir `/token` . Ayrıca, bundan önce bir yetkilendirme kodu sağlamalı ve bunu uç noktaya gönder isteğinde göndermeniz gerekir `/token` . OAuth 2,0 yetkilendirme kodu akışına genel bakış için bu makaleye başvurun: [.. /azuread-dev/v1-Protocols-OAuth-Code.exe](../azuread-dev/v1-protocols-oauth-code.md). Kullanıcıyı `/authorize` bir authorization_code döndürecek uç noktaya yönlendirin. `/token`Uç noktaya istek göndererek, Kullanıcı erişim belirtecini alır. Azure portal oturum açın ve iki uç noktanın doğru şekilde yapılandırıldığını onaylamak için **Uygulama kayıtları > uç noktalarına** bakın. |
-| AADSTS90072 | PassThroughUserMfaError-kullanıcının oturum açtığı kiracı üzerinde oturum açtığı dış hesap yok; Böylece Kullanıcı kiracının MFA gereksinimlerini karşılayamaz. Hesabın, önce kiracıda bir dış Kullanıcı olarak eklenmesi gerekir. Oturumu kapatın ve farklı bir Azure AD kullanıcı hesabıyla oturum açın. |
+| AADSTS90072 | PassThroughUserMfaError-kullanıcının oturum açtığı kiracı üzerinde oturum açtığı dış hesap yok; Böylece Kullanıcı kiracının MFA gereksinimlerini karşılayamaz. Bu hata, kullanıcılar eşitlendiğinde da gerçekleşebilir, ancak Active Directory ile Azure AD arasındaki ImmutableID (Sourcetutturucu) özniteliğinde bir uyumsuzluk vardır. Hesabın, önce kiracıda bir dış Kullanıcı olarak eklenmesi gerekir. Oturumu kapatın ve farklı bir Azure AD kullanıcı hesabıyla oturum açın. |
 | AADSTS90081 | OrgIdWsFederationMessageInvalid-hizmet bir WS-Federation iletisini işlemeye çalışırken hata oluştu. İleti geçerli değil. |
 | AADSTS90082 | OrgIdWsFederationNotSupported-istek için seçilen kimlik doğrulama ilkesi Şu anda desteklenmiyor. |
 | AADSTS90084 | Bu site için OrgIdWsFederationGuestNotAllowed-Guest hesaplarına izin verilmez. |

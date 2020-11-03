@@ -1,5 +1,5 @@
 ---
-title: Kimlik doğrulaması ve yetkilendirme
+title: Kimlik doğrulama ve yetkilendirme
 description: Bir uygulama veya hizmetin Azure uzamsal bağlayıcıların kimliğini doğrulayabileceği çeşitli yollar ve uzamsal Tutturucuların erişimini geçit halinde denetleyebilmeniz gereken denetim düzeylerini öğrenin.
 author: craigktreasure
 manager: vriveras
@@ -9,12 +9,12 @@ ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 12f9a91995eb35fa61a7df5f3ead5255aea0f071
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a3d88c8d5d42e3dec2142df1ede7a9ee50898e92
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93089041"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242356"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure uzamsal Tutturucuların kimlik doğrulaması ve yetkilendirmesi
 
@@ -103,7 +103,7 @@ Azure Active Directory kullanıcıları hedefleyen uygulamalar için, Kullanıc�
     3.  **Mixedreality** altında **mixedreality. SignIn** ' ı seçin.
     4.  **Izin Ekle** ' yi seçin.
 3.  **Yönetici Izni ver** ' i seçin.
-    
+
 2. Uygulamanıza veya kullanıcılarınıza kaynağınızın erişimini verin:
    1.    Azure portal uzamsal bağlayıcılarınızın kaynağına gidin.
    2.    **Erişim denetimi (IAM)** sekmesine gidin.
@@ -118,7 +118,7 @@ Azure Active Directory kullanıcıları hedefleyen uygulamalar için, Kullanıc�
         1.    Uygulamanız **yalnızca Kuruluşumu** destekliyorsa, bu DEĞERI **kiracı kimliğiniz** veya **kiracı adınızla** değiştirin. Örneğin, contoso.microsoft.com.
         2.    Uygulamanız **herhangi bir kuruluş dizinindeki hesapları** destekliyorsa, bu değeri **kuruluşlar** ile değiştirin.
         3.    Uygulamanız **tüm Microsoft hesabı kullanıcıları** destekliyorsa, bu değeri **ortak** ile değiştirin.
-3.    Belirteç isteğiniz üzerinde, **kapsamı** **" https://sts.mixedreality.azure.com//.default "** olarak ayarlayın. Bu kapsam, Azure AD 'ye, uygulamanızın karma gerçeklik güvenlik belirteci hizmeti (STS) için bir belirteç istediğini gösterir.
+3.    Belirteç isteğiniz içinde, **kapsamı** **" `https://sts.<account-domain>//.default` "** olarak ayarlayın. burada, `<account-domain>` Azure uzamsal bağlayıcı hesabınızın **hesap etki alanı** ile değiştirilmiştir. Doğu ABD 2 hesabı etki alanındaki bir Azure uzamsal bağlayıcı hesabı için örnek kapsam **" `https://sts.mixedreality.azure.com//.default` "** dir. Bu kapsam, Azure AD 'ye, uygulamanızın karma gerçeklik güvenlik belirteci hizmeti (STS) için bir belirteç istediğini gösterir.
 
 Bu adımları tamamladıktan sonra, uygulamanız MSAL bir Azure AD belirteci ile elde edebilmelidir. Bu Azure AD belirtecini, `authenticationToken` bulut oturumu yapılandırma nesneniz üzerinde olarak ayarlayabilirsiniz:
 
@@ -177,27 +177,27 @@ Azure AD erişim belirteci [msal](../../active-directory/develop/msal-overview.m
         1.    Azure portal **Azure Active Directory** ' i seçin ve **uygulama kayıtları** ' yı seçin.
         2.    **Yeni kayıt** seçeneğini belirleyin.
         3.    Uygulamanızın adını girin, uygulama türü olarak **Web uygulaması/API** ' yi seçin ve hizmetinizin kimlik doğrulama URL 'sini girin. **Oluştur** ’u seçin.
-4.    Uygulamada, **Ayarlar** ' ı seçin ve ardından **Sertifikalar ve gizlilikler** sekmesini seçin. Yeni bir istemci parolası oluşturun, bir süre seçin ve ardından **Ekle** ' yi seçin. Gizli anahtar değerini kaydettiğinizden emin olun. Web hizmetinizin koduna dahil etmeniz gerekir.
-2.    Uygulamanıza ve/veya kullanıcılarınızın kaynağına erişmesine izin verin:
+2.    Uygulamada, **Ayarlar** ' ı seçin ve ardından **Sertifikalar ve gizlilikler** sekmesini seçin. Yeni bir istemci parolası oluşturun, bir süre seçin ve ardından **Ekle** ' yi seçin. Gizli anahtar değerini kaydettiğinizden emin olun. Web hizmetinizin koduna dahil etmeniz gerekir.
+3.    Uygulamanıza ve/veya kullanıcılarınızın kaynağına erişmesine izin verin:
         1.    Azure portal uzamsal bağlayıcılarınızın kaynağına gidin.
         2.    **Erişim denetimi (IAM)** sekmesine gidin.
         3.    **Rol ataması ekle** ’yi seçin.
-        1.    [Bir rol seçin](#azure-role-based-access-control).
-        2.    **Seç** kutusunda, erişim atamak istediğiniz uygulamaların adını veya adlarını girin. Uygulamanızın kullanıcılarının uzamsal bağlayıcı hesabına karşı farklı rollere sahip olmasını istiyorsanız, Azure AD 'de birden çok uygulamayı kaydedin ve her birine ayrı bir rol atayın. Ardından, kullanıcılarınız için doğru rolü kullanmak üzere yetkilendirme mantığınızı uygulayın.
-        
-              > [!NOTE] 
-              > **Rol ataması Ekle** bölmesinde, **erişim ata** ' da **Azure AD Kullanıcı, Grup veya hizmet sorumlusu** ' nı seçin.
-    
-      3.    **Kaydet** ’i seçin.
-    
-**Kodunuzda** 
+        4.    [Bir rol seçin](#azure-role-based-access-control).
+        5.    **Seç** kutusunda, erişim atamak istediğiniz uygulamaların adını veya adlarını girin. Uygulamanızın kullanıcılarının uzamsal bağlayıcı hesabına karşı farklı rollere sahip olmasını istiyorsanız, Azure AD 'de birden çok uygulamayı kaydedin ve her birine ayrı bir rol atayın. Ardından, kullanıcılarınız için doğru rolü kullanmak üzere yetkilendirme mantığınızı uygulayın.
 
->[!NOTE] 
+              > [!NOTE]
+              > **Rol ataması Ekle** bölmesinde, **erişim ata** ' da **Azure AD Kullanıcı, Grup veya hizmet sorumlusu** ' nı seçin.
+
+        6.    **Kaydet** ’i seçin.
+
+**Kodunuzda**
+
+>[!NOTE]
 > GitHub 'da bulunan hizmet örneğini kullanabilirsiniz.
 
 1.    MSAL ' de **ISTEMCI kimliği** , **gizli anahtar** ve **redirecturı** parametreleri olarak kendi Azure AD uygulamanızın uygulama kimliği, uygulama gizli anahtarı ve yeniden yönlendirme URI 'sini kullandığınızdan emin olun.
 2.    Kiracı KIMLIĞINI MSAL ' deki **yetkili** parametresinde kendı Azure AD kiracı kimliğiniz olarak ayarlayın.
-3.    Belirteç isteğiniz üzerinde, **kapsamı** **" https://sts.mixedreality.azure.com//.default "** olarak ayarlayın.
+3.    Belirteç isteğiniz içinde, **kapsamı** **" `https://sts.<account-domain>//.default` "** olarak ayarlayın. burada, `<account-domain>` Azure uzamsal bağlayıcı hesabınızın **hesap etki alanı** ile değiştirilmiştir. Doğu ABD 2 hesabı etki alanındaki bir Azure uzamsal bağlayıcı hesabı için örnek kapsam **" `https://sts.mixedreality.azure.com//.default` "** dir.
 
 Bu adımları tamamladıktan sonra, arka uç hizmetiniz bir Azure AD belirtecini alabilir. Daha sonra, istemciye geri dönecektir için bunu bir MR belirteci için değiş tokuş edebilir. Bir MR belirtecini almak için Azure AD belirtecinin kullanılması bir REST çağrısıyla yapılır. Örnek bir çağrı aşağıda verilmiştir:
 
@@ -266,9 +266,9 @@ configuration.AccessToken(LR"(MyAccessToken)");
 
 Hizmetinizin uygulamalarına, hizmetlerine veya Azure AD kullanıcılarına verilen erişim düzeyini denetlemenize yardımcı olması için, bu önceden mevcut rolleri Azure uzamsal bağlayıcı hesaplarınıza göre gerektiği gibi atayabilirsiniz:
 
-- **Uzamsal bağlayıcı hesap sahibi** . Bu role sahip uygulamalar veya kullanıcılar uzamsal bağlayıcı oluşturabilir, bunları sorgulayabilir ve silebilir. Hesap anahtarlarını kullanarak hesabınızda kimlik doğrulaması yaptığınızda, uzamsal bağlayıcı hesabı sahibi rolü kimliği doğrulanmış sorumluya atanır.
-- **Uzamsal bağlayıcı hesabı katılımcısı** . Bu role sahip uygulamalar veya kullanıcılar kendileri için uzamsal bağlayıcı ve sorgu oluşturabilir, ancak bunları silemez.
-- **Uzamsal bağlayıcı hesap okuyucu** . Bu role sahip uygulamalar veya kullanıcılar yalnızca uzamsal bağlantıları sorgulayabilir. Yenilerini oluşturamazlar, var olanları silemez veya meta verileri güncelleştiremez. Bu rol genellikle, bazı kullanıcıların ortamı seçmekte olduğu ancak diğerlerinin ortamda daha önce yer aldığı bağlantıları geri çekebileceği uygulamalar için kullanılır.
+- **Uzamsal bağlayıcı hesap sahibi**. Bu role sahip uygulamalar veya kullanıcılar uzamsal bağlayıcı oluşturabilir, bunları sorgulayabilir ve silebilir. Hesap anahtarlarını kullanarak hesabınızda kimlik doğrulaması yaptığınızda, uzamsal bağlayıcı hesabı sahibi rolü kimliği doğrulanmış sorumluya atanır.
+- **Uzamsal bağlayıcı hesabı katılımcısı**. Bu role sahip uygulamalar veya kullanıcılar kendileri için uzamsal bağlayıcı ve sorgu oluşturabilir, ancak bunları silemez.
+- **Uzamsal bağlayıcı hesap okuyucu**. Bu role sahip uygulamalar veya kullanıcılar yalnızca uzamsal bağlantıları sorgulayabilir. Yenilerini oluşturamazlar, var olanları silemez veya meta verileri güncelleştiremez. Bu rol genellikle, bazı kullanıcıların ortamı seçmekte olduğu ancak diğerlerinin ortamda daha önce yer aldığı bağlantıları geri çekebileceği uygulamalar için kullanılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,18 +1,18 @@
 ---
 title: Veri şifreleme-Azure CLı-MySQL için Azure veritabanı
 description: Azure CLı kullanarak MySQL için Azure veritabanı için veri şifrelemeyi ayarlamayı ve yönetmeyi öğrenin.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eb83cd4fe7e98b1cde6dcee5d3f25fa5e35f1d2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07d2e9fa98c24695a119c651539d4003ecd8524a
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87799828"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242101"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Azure CLı kullanarak MySQL için Azure veritabanı için veri şifreleme
 
@@ -50,7 +50,7 @@ Azure CLı kullanarak MySQL için Azure veritabanı için veri şifrelemeyi ayar
 * Anahtar, müşteri tarafından yönetilen anahtar olarak kullanmak için aşağıdaki özniteliklere sahip olmalıdır:
   * Sona erme tarihi yok
   * Devre dışı değil
-  * **Al**, **sarmalama**, **geri** alınamaz işlemleri gerçekleştirin
+  * **Al** , **sarmalama** , **geri** alınamaz işlemleri gerçekleştirin
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>Anahtar işlemleri için doğru izinleri ayarla
 
@@ -68,7 +68,7 @@ Azure CLı kullanarak MySQL için Azure veritabanı için veri şifrelemeyi ayar
    az mysql server update --name  <server name>  -g <resource_group> --assign-identity
    ```
 
-2. MySQL sunucusunun adı olan **asıl öğe**için **anahtar izinlerini** (**Get**, **Wrap**, **Unwrap**) ayarlayın.
+2. MySQL sunucusunun adı olan **asıl öğe** için **anahtar izinlerini** ( **Get** , **Wrap** , **Unwrap** ) ayarlayın.
 
     ```azurecli-interactive
     az keyvault set-policy --name -g <resource_group> --key-permissions get unwrapKey wrapKey --object-id <principal id of the server>

@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 08/04/2020
 ms.author: allensu
-ms.openlocfilehash: b272426f865636640e0a2fafde46cbebbe6eb363
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a0f4456f38939632026645500dd48acbf7dbc88
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327502"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242217"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Azure CDN için standart kural altyapısı başvurusu
 
@@ -20,7 +20,7 @@ Azure Content Delivery Network için [standart kurallar altyapısında](cdn-stan
 
 Kural altyapısı, belirli istek türlerinin standart Azure CDN nasıl işlendiği konusunda son yetkili olacak şekilde tasarlanmıştır.
 
-**Kuralların ortak kullanımları**:
+**Kuralların ortak kullanımları** :
 
 - Özel bir önbellek ilkesini geçersiz kılın veya tanımlayın.
 - İstekleri yeniden yönlendirin.
@@ -36,6 +36,9 @@ Her kurala en fazla on eşleşme koşulu ve beş eylem olabilir. Her Azure CDN u
 
 Bu sınıra dahil edilen varsayılan bir *genel kuraldır*. Genel kural eşleşme koşullarına sahip değildir; bir genel kuralda tanımlanan eylemler her zaman tetiklenir.
 
+   > [!IMPORTANT]
+   > Birden çok kuralın listelenme sırası kuralların işlenme sırasını etkiler. Bir kuralda belirtilen eylemlerin sonraki bir kuralla üzerine yazılabilir.
+
 ## <a name="limits-and-pricing"></a>Sınırlar ve fiyatlandırma 
 
 Her Azure CDN uç noktası en fazla 25 kurala sahip olabilir. Her kurala en fazla on eşleşme koşulu ve beş eylem olabilir. Kural altyapısı için fiyatlandırma aşağıdaki boyutları izler: 
@@ -43,7 +46,7 @@ Her Azure CDN uç noktası en fazla 25 kurala sahip olabilir. Her kurala en fazl
 - Işlenen istek sayısı: milyon istek başına $0,60
 - İlk 5 kural ücretsiz kalacak
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 Kural içinde özel karakterlerin nasıl ele alındığı, farklı eşleşme koşullarının ve eylemlerin metin değerlerini nasıl işleydiğine göre farklılık gösterir. Bir eşleştirme koşulu veya eylemi, aşağıdaki yollarla metni yorumlayabilir:
 

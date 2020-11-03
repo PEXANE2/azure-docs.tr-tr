@@ -1,17 +1,17 @@
 ---
 title: Müşteri tarafından yönetilen anahtar ile veri şifreleme-MySQL için Azure veritabanı
 description: Müşteri tarafından yönetilen bir anahtarla MySQL için Azure veritabanı veri şifrelemesi, bekleyen veri koruması için Kendi Anahtarını Getir (BYOK) sağlar. Kuruluşlar bu sayede anahtarların ve verilerin yönetiminde görev ayrımı yapabilir.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: c7b4d4cf61c1d605bd632ac6fe210171b2ebe01b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 23cf8a79c4978ccb3a65ad968b2ed5a01bb3d0ec
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544129"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242339"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Müşteri tarafından yönetilen bir anahtarla MySQL için Azure veritabanı veri şifrelemesi
 
@@ -80,7 +80,7 @@ Müşteri tarafından yönetilen bir anahtar kullanarak veri şifrelemeyi kullan
 * MySQL için Key Vault ve Azure veritabanı 'nın aynı bölgede bulunduğundan emin olun ve bu DEK sarmalama için daha hızlı bir erişim sağlayın ve sarmalama işlemlerini geri sarın.
 * Azure Keykasasını yalnızca **Özel uç nokta ve seçili ağlarda** kilitleyin ve yalnızca *Güvenilen Microsoft* hizmetlerinin kaynakları güvenli hale getirmeye izin verin.
 
-    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Kendi Anahtarını Getir bir genel bakış gösteren diyagram":::
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Güvenilen-hizmet-AKV":::
 
 Müşteri tarafından yönetilen anahtarı yapılandırmaya yönelik öneriler aşağıda verilmiştir:
 
@@ -135,7 +135,7 @@ MySQL için Azure veritabanı 'nda, müşteriler tarafından yönetilen anahtar 
 * Bu özellik yalnızca 16 TB'a kadar depolamayı destekleyen bölgelerde ve sunucularda desteklenir. 16 TB 'a kadar depolamayı destekleyen Azure bölgelerinin listesi için [buradaki](concepts-pricing-tiers.md#storage) belgelerde bulunan depolama bölümüne bakın
 
     > [!NOTE]
-    > - Yukarıda listelenen bölgelerde oluşturulan tüm yeni MySQL sunucuları, müşteri yöneticisi anahtarlarıyla şifreleme desteği **mevcuttur** . Geri yüklenen zaman noktası (INR) sunucusu veya okuma çoğaltması, teorik olarak ' New ' olarak nitelendirilecektir.
+    > - Yukarıda listelenen bölgelerde oluşturulan tüm yeni MySQL sunucuları, müşteri yöneticisi anahtarlarıyla şifreleme desteği **mevcuttur**. Geri yüklenen zaman noktası (INR) sunucusu veya okuma çoğaltması, teorik olarak ' New ' olarak nitelendirilecektir.
     > - Sağlanan sunucunuzun 16 TB 'a kadar destekleyip desteklemediğini doğrulamak için, portalda fiyatlandırma katmanı dikey penceresine gidebilir ve sağlanan sunucunuzun desteklediği en fazla depolama boyutunu görebilirsiniz. Kaydırıcıyı 4TB 'a kadar taşıyabiliyorsanız, sunucunuz müşterinin yönettiği anahtarlarla şifrelemeyi desteklemiyor olabilir. Ancak, veriler hizmet tarafından yönetilen anahtarlar kullanılarak her zaman şifrelenir. Sorularınız varsa lütfen öğesine ulaşın AskAzureDBforMySQL@service.microsoft.com .
 
 * Şifreleme yalnızca RSA 2048 şifreleme anahtarıyla desteklenir.

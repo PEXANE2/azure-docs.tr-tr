@@ -1,18 +1,18 @@
 ---
 title: Bölge yedekli yüksek kullanılabilirliği yönetme-Azure portal-MySQL için Azure veritabanı esnek sunucu
 description: Bu makalede, Azure portal aracılığıyla MySQL için Azure veritabanı esnek sunucusu 'nda bölge yedekli yüksek kullanılabilirliğinin nasıl etkinleştirileceği veya devre dışı bırakılacağı açıklanır.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
 ms.custom: references_regions
-ms.openlocfilehash: 09cd7428519cbf84c785efa16b61b9507a3c0b94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d65b074385311e74444929ef74901e402e29ec03
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90942051"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241744"
 ---
 # <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-preview"></a>MySQL için Azure veritabanı esnek sunucusu 'nda bölge yedekli yüksek kullanılabilirliği yönetme (Önizleme)
 
@@ -32,18 +32,18 @@ Bu sayfa, yüksek kullanılabilirliği nasıl etkinleştirebilirim veya devre d�
 
 Bu bölüm, özellikle de HA ile ilgili alanlar için ayrıntılar sağlar. Esnek sunucunuzu oluştururken yüksek kullanılabilirlik dağıtmak için bu adımları izleyebilirsiniz.
 
-1.   [Azure Portal](https://portal.azure.com/)esnek sunucu ' yı seçin ve **Oluştur**' a tıklayın.  **Abonelik**, **kaynak grubu**, **sunucu adı**, **bölge**ve diğer alanlar gibi ayrıntıların nasıl doldurulması gerektiği hakkında ayrıntılı bilgi için bkz. sunucu oluşturma için nasıl yapılır belgeleri.
+1.  [Azure Portal](https://portal.azure.com/)esnek sunucu ' yı seçin ve **Oluştur** ' a tıklayın.  **Abonelik** , **kaynak grubu** , **sunucu adı** , **bölge** ve diğer alanlar gibi ayrıntıların nasıl doldurulması gerektiği hakkında ayrıntılı bilgi için bkz. sunucu oluşturma için nasıl yapılır belgeleri.
 
 2.  Kullanılabilirlik seçeneğinde **bölge yedekli yüksek kullanılabilirlik** onay kutusuna tıklayın.
 
-3.  Varsayılan işlem ve depolamayı değiştirmek istiyorsanız,  **sunucuyu Yapılandır**' a tıklayın.
+3.  Varsayılan işlem ve depolamayı değiştirmek istiyorsanız,  **sunucuyu Yapılandır** ' a tıklayın.
 
 4.  Yüksek kullanılabilirlik seçeneği işaretliyse, Burstable katman seçim için kullanılamaz. **Genel amaçlı** ya da **bellek için iyileştirilmiş** işlem katmanları seçebilirsiniz.
 
     > [!IMPORTANT]
-    > ***Genel amaçlı*** ve ***bellek için iyileştirilmiş*** fiyatlandırma katmanı için yalnızca bölge yedekli yüksek kullanılabilirliğini destekliyoruz.
+    > * *_Genel amaçlı_* ve _*_bellek için iyileştirilmiş_*_ fiyatlandırma katmanı için yalnızca bölge yedekli yüksek kullanılabilirliğini destekliyoruz.
 
-5.  Açılır menüden istediğiniz **işlem boyutunu** seçin.
+5.  Açılan listeden tercih ettiğiniz _ *işlem boyutu* * ' nu seçin.
 
 6.  Kayan çubuğu kullanarak GiB 'de **depolama boyutu** ' nu seçin ve **yedekleme saklama süresini** 7 gün ile 35 gün arasında seçin.   
 
@@ -51,11 +51,11 @@ Bu bölüm, özellikle de HA ile ilgili alanlar için ayrıntılar sağlar. Esne
 
 Zaten bölge yedekliği ile yapılandırılmış esnek sunucunuz için yüksek kullanılabilirliği devre dışı bırakmak üzere bu adımları izleyin.
 
-1.   [Azure Portal](https://portal.azure.com/), MySQL Için mevcut Azure veritabanı esnek sunucusunu seçin.
+1.  [Azure Portal](https://portal.azure.com/), MySQL Için mevcut Azure veritabanı esnek sunucusunu seçin.
 
-2.  Esnek sunucu sayfasında, yüksek kullanılabilirlik sayfasını açmak için ön panelinden **yüksek kullanılabilirlik** ' e tıklayın.
+2.  Esnek sunucu sayfasında, yüksek kullanılabilirlik sayfasını açmak için ön panelinden **yüksek kullanılabilirlik** ' e tıklayın.
 
-3.  Seçeneği devre dışı bırakmak için **bölge yedekli yüksek kullanılabilirlik** onay kutusuna tıklayın ve değişikliği kaydetmek için **Kaydet**' e tıklayın   .
+3.  Seçeneği devre dışı bırakmak için **bölge yedekli yüksek kullanılabilirlik** onay kutusuna tıklayın ve değişikliği kaydetmek için **Kaydet** ' e tıklayın.
 
 4.  HA 'nın devre dışı bırakılmasını doğrulayabileceğiniz bir onay iletişim kutusu gösterilir.
 
@@ -66,4 +66,4 @@ Zaten bölge yedekliği ile yapılandırılmış esnek sunucunuz için yüksek k
 ## <a name="next-steps"></a>Sonraki adımlar
 
 -   [İş sürekliliği](./concepts-business-continuity.md) hakkında bilgi edinin
--    [Bölge yedekli yüksek kullanılabilirlik](./concepts-high-availability.md) hakkında bilgi edinin
+-   [Bölge yedekli yüksek kullanılabilirlik](./concepts-high-availability.md) hakkında bilgi edinin

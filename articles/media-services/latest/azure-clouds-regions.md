@@ -1,122 +1,72 @@
 ---
-title: Azure Media Services v3 'nin kullanılabildiği bulutlar ve bölgeler
+title: Azure Media Services v3 bulutları ve bölgeleri kullanılabilirliği
 description: Bu makalede, Azure Media Services v3 'nin kullanılabildiği Azure bulutları ve bölgeleri hakkında bilgi sağlanır.
 services: media-services
-documentationcenter: ''
 author: IngridAtMicrosoft
 manager: femila
-editor: ''
 ms.service: media-services
-ms.workload: ''
-ms.topic: article
-ms.date: 08/31/2020
+ms.topic: reference
+ms.date: 10/28/2020
 ms.author: inhenkel
-ms.custom: references_regions
-ms.openlocfilehash: 9c54482dc188141c4fc697bd43628b81e0ddc29f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20c025cfabf6ed3cedd838f8be964bec06ad595e
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597123"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242721"
 ---
-# <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Azure Media Services v3 'nin bulunduğu bulutlar ve bölgeler
+# <a name="azure-media-services-v3-clouds-and-regions-availability"></a>Azure Media Services v3 bulutları ve bölgeleri kullanılabilirliği
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Azure Media Services v3, küresel Azure, Azure Kamu, Azure Almanya, Azure Çin 21Vianet ' te Azure Resource Manager bildirimi aracılığıyla kullanılabilir. Ancak tüm Azure bulutlarında tüm Media Services özellikleri kullanılamaz. Bu belgede ana Media Services v3 bileşenlerinin kullanılabilirliği özetlenmektedir.
+Azure Media Services v3 Azure Resource Manager ile kullanılabilir. Ancak tüm Azure bulutlarında tüm Media Services özellikleri kullanılamaz. Bu belgede ana Media Services v3 bileşenlerinin kullanılabilirliği özetlenmektedir. Aşağıdaki tablolarda, her bölgede hangi Media Services özelliklerinin kullanılabildiği gösterilmektedir.  
 
-## <a name="feature-availability-in-azure-clouds"></a>Azure bulutlarında özellik kullanılabilirliği
+[!INCLUDE [reference-feature-availability-us](./includes/regions-availability-table-key.md)]
 
-| Özellik|Küresel Azure bölgeleri | Azure Kamu|Azure Almanya|Azure China 21Vianet|
-| --- | --- | --- | --- | --- |
-| [Azure EventGrid](reacting-to-media-services-events.md) | Kullanılabilir | Kullanılamaz | Kullanılamaz | Kullanılamaz |
-| [Videoanaliz Zerönayar](analyzing-video-audio-files-concept.md) |  Kullanılabilir | Kullanılamaz | Kullanılamaz | Kullanılamaz |
-| [Audioanaliz Zerönayar](analyzing-video-audio-files-concept.md) |  Kullanılabilir | Kullanılamaz | Kullanılamaz | Kullanılamaz |
-| [Standardencoderönayar](encoding-concept.md) | Kullanılabilir | Kullanılabilir | Kullanılabilir | Kullanılabilir |
-| [Canlı olaylar](live-streaming-overview.md) | Kullanılabilir | Kullanılabilir | Kullanılabilir | Kullanılabilir |
-| [Streammingendpoints](streaming-endpoint-concept.md) | Kullanılabilir | Kullanılabilir | Kullanılabilir | Kullanılabilir |
+İlgilendiğiniz bölgeyi bulmak için sağ taraftaki gezintiyi kullanın.
 
-## <a name="feature-availability-in-preview"></a>Önizlemede özellik kullanılabilirliği
-
-[Livetranscription](live-transcription.md) aşağıdaki bölgelerde kullanılabilir:
-
-- Güneydoğu Asya
-- West Europe
-- Kuzey Avrupa
-- Doğu ABD
-- Central US
-- Orta Güney ABD
-- Batı ABD 2
-- Brezilya Güney
+<!-- US and US Gov -->
+[!INCLUDE [reference-feature-availability-us](./includes/reference-feature-availability-us.md)]
+[!INCLUDE [reference-feature-availability-usgov](./includes/reference-feature-availability-usgov.md)]
+<!-- Africa -->
+[!INCLUDE [reference-feature-availability-africa](./includes/reference-feature-availability-africa.md)]
+<!-- APAC -->
+[!INCLUDE [reference-feature-availability-apac](./includes/reference-feature-availability-apac.md)]
+<!-- Australia -->
+[!INCLUDE [reference-feature-availability-australia](./includes/reference-feature-availability-australia.md)]
+<!-- Brazil -->
+[!INCLUDE [reference-feature-availability-brazil](./includes/reference-feature-availability-brazil.md)]
+<!-- Canada -->
+[!INCLUDE [reference-feature-availability-canada](./includes/reference-feature-availability-canada.md)]
+<!-- China -->
+[!INCLUDE [reference-feature-availability-china](./includes/reference-feature-availability-china.md)]
+<!-- Europe -->
+[!INCLUDE [reference-feature-availability-europe](./includes/reference-feature-availability-europe.md)]
+<!-- Germany -->
+[!INCLUDE [reference-feature-availability-germany](./includes/reference-feature-availability-germany.md)]
+<!-- India -->
+[!INCLUDE [reference-feature-availability-india](./includes/reference-feature-availability-india.md)]
+<!-- Japan -->
+[!INCLUDE [reference-feature-availability-japan](./includes/reference-feature-availability-japan.md)]
+<!-- Korea -->
+[!INCLUDE [reference-feature-availability-korea](./includes/reference-feature-availability-korea.md)]
+<!-- Norway -->
+[!INCLUDE [reference-feature-availability-norway](./includes/reference-feature-availability-norway.md)]
+<!-- Switzerland -->
+[!INCLUDE [reference-feature-availability-switzerland](./includes/reference-feature-availability-switzerland.md)]
+<!-- UAE -->
+[!INCLUDE [reference-feature-availability-uae](./includes/reference-feature-availability-uae.md)]
+<!-- UK -->
+[!INCLUDE [reference-feature-availability-uk](./includes/reference-feature-availability-uk.md)]
 
 ## <a name="regionsgeographieslocations"></a>Bölgeler/geographler/konumlar
 
 [Azure Media Services hizmetinin dağıtıldığı bölgeler](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
 
-### <a name="region-code-name"></a>Bölge kodu adı
-
-**Konum** parametresini sağlamanız gerektiğinde **konum** değeri olarak bölge kodu adını belirtmeniz gerekir. Hesabınızın bulunduğu bölgenin kod adını almak ve çağrın ' a yönlendirilmek için, [Azure CLI](/cli/azure/?view=azure-cli-latest) 'de aşağıdaki satırı çalıştırabilirsiniz
-
-```azurecli-interactive
-az account list-locations
-```
-
-Yukarıda gösterilen satırı çalıştırdığınızda tüm Azure bölgelerinin bir listesini alırsınız. Aradığınız *DisplayName* 'e sahip Azure bölgesine gidin ve **konum** parametresi için *ad* değerini kullanın.
-
-Örneğin, Azure bölgesi Batı ABD 2 için (aşağıda görüntülenir), **konum** parametresi için "westus2" kullanacaksınız.
-
-```json
-   {
-      "displayName": "West US 2",
-      "id": "/subscriptions/00000000-23da-4fce-b59c-f6fb9513eeeb/locations/westus2",
-      "latitude": "47.233",
-      "longitude": "-119.852",
-      "name": "westus2",
-      "subscriptionId": null
-    }
-```
-
-## <a name="endpoints"></a>Uç Noktalar  
-
-Aşağıdaki uç noktalar, farklı ulusal Azure bulutlarından Media Services hesaplarına bağlanırken bilmemiz için önemlidir.
-
-### <a name="global-azure"></a>Küresel Azure
-
-| Hizmet | Uç Noktası |
-| ------- | -------- |
-| Azure Resource Manager |  `https://management.azure.com/` |
-| Kimlik Doğrulaması | `https://login.microsoftonline.com/` |
-| Belirteç hedef kitlesi | `https://management.core.windows.net/` |
-
-### <a name="azure-government"></a>Azure Kamu
-
-| Hizmet | Uç Noktası |
-| ------- | -------- |
-| Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
-| Kimlik Doğrulaması | `https://login.microsoftonline.us/` |
-| Belirteç hedef kitlesi | `https://management.core.usgovcloudapi.net/` |
-
-[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
-
-### <a name="azure-germany"></a>Azure Almanya
-
-| Hizmet | Uç Noktası |
-| ------- | -------- |
-| Azure Resource Manager | `https://management.cloudapi.de/` |
-| Kimlik Doğrulaması | `https://login.microsoftonline.de/` |
-| Belirteç hedef kitlesi | `https://management.core.cloudapi.de/`|
-
-### <a name="azure-china-21vianet"></a>Azure China 21Vianet
-
-| Hizmet | Uç Noktası |
-| ------- | -------- |
-| Azure Resource Manager | `https://management.chinacloudapi.cn/` |
-| Kimlik Doğrulaması | `https://login.chinacloudapi.cn/` |
-| Belirteç hedef kitlesi |  `https://management.core.chinacloudapi.cn/` |
-
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Azure bölgeleri](https://azure.microsoft.com/global-infrastructure/regions/)
+* [Bölgesel kod adları ve uç noktaları](azure-regions-code-names.md)
 * [Azure coğrafyaları](https://azure.microsoft.com/global-infrastructure/geographies/)
 * [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/)
 

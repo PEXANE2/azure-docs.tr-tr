@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 422f8106ac52c85f0680d54e420d0f1b4d326910
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 185bb47677e978a3098f39024995da6399f90658
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017701"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241778"
 ---
 # <a name="outbound-proxy-azure-load-balancer"></a>Giden proxy Azure Load Balancer
 
@@ -42,9 +42,9 @@ Gelen bağlantılar için bir bağlantı noktası kullanılıyorsa, bu bağlant�
 
 Giden bir bağlantı kurmak için, hedefe iletişim kurmak ve ayrı bir trafik akışının bakımını yapmak üzere bir bağlantı noktası sağlamak üzere **geçici bir bağlantı noktası** kullanılması gerekir. 
 
-Her IP adresi 65.535 bağlantı noktasına sahiptir. İlk 1024 bağlantı noktaları, **sistem bağlantı noktaları**olarak ayrılmıştır. Her bağlantı noktası, TCP ve UDP için gelen veya giden bağlantılar için kullanılabilir. 
+Her IP adresi 65.535 bağlantı noktasına sahiptir. İlk 1024 bağlantı noktaları, **sistem bağlantı noktaları** olarak ayrılmıştır. Her bağlantı noktası, TCP ve UDP için gelen veya giden bağlantılar için kullanılabilir. 
 
-Azure, kalan bağlantı noktalarında, **kısa ömürlü bağlantı noktaları**olarak kullanılmak üzere 64.000 sağlar. Bir IP adresi, ön uç IP yapılandırması olarak eklendiğinde, bu kısa ömürlü bağlantı noktaları SNAT için kullanılabilir.
+Azure, kalan bağlantı noktalarında, **kısa ömürlü bağlantı noktaları** olarak kullanılmak üzere 64.000 sağlar. Bir IP adresi, ön uç IP yapılandırması olarak eklendiğinde, bu kısa ömürlü bağlantı noktaları SNAT için kullanılabilir.
 
 Giden kuralları aracılığıyla, bu SNAT bağlantı noktaları, giden bağlantılar için yük dengeleyicinin genel IP 'leri paylaşmasını sağlamak üzere arka uç örneklerine dağıtılabilir.
 
@@ -52,7 +52,7 @@ Her arka uç örneği için konaktaki ağ, bir giden bağlantının parçası ol
 
 ## <a name="exhausting-ports"></a><a name="scenarios"></a> Bağlantı noktaları tüketilme
 
-Aynı hedef IP ve hedef bağlantı noktasına yapılan her bağlantı için bir SNAT bağlantı noktası kullanılır. Bu bağlantı, arka uç örneğinden veya **istemcisinden** bir **sunucuya**ayrı bir **trafik akışı** sağlar. Bu işlem, sunucuya trafiğin ele alınacağı ayrı bir bağlantı noktası sağlar. Bu işlem olmadan, istemci makinesi bir paketin bir parçası olduğu farkında değildir.
+Aynı hedef IP ve hedef bağlantı noktasına yapılan her bağlantı için bir SNAT bağlantı noktası kullanılır. Bu bağlantı, arka uç örneğinden veya **istemcisinden** bir **sunucuya** ayrı bir **trafik akışı** sağlar. Bu işlem, sunucuya trafiğin ele alınacağı ayrı bir bağlantı noktası sağlar. Bu işlem olmadan, istemci makinesi bir paketin bir parçası olduğu farkında değildir.
 
 Birden çok tarayıcıyı giderek düşünün https://www.microsoft.com :
 
@@ -92,7 +92,7 @@ Aşağıdaki <a name="snatporttable"></a> tabloda, arka uç havuz boyutlarının
 | 801-1000 | 32 | 
 
 >[!NOTE]
-> En fazla 6 boyutuna sahip bir arka uç havuzunuz varsa, açık bir giden kuralı tanımlarsanız her örnek 64000/10 = 6.400 bağlantı noktasına sahip olabilir. Yukarıdaki tabloya göre her biri yalnızca otomatik ayırmayı seçerseniz 1.024 olur.
+> En fazla 10 boyutuna sahip bir arka uç havuzunuz varsa, açık bir giden kuralı tanımlarsanız her örnek 64000/10 = 6.400 bağlantı noktasına sahip olabilir. Yukarıdaki tabloya göre her biri yalnızca otomatik ayırmayı seçerseniz 1.024 olur.
 
 ## <a name="outbound-rules-and-virtual-network-nat"></a><a name="outboundrules"></a> Giden kuralları ve sanal ağ NAT
 

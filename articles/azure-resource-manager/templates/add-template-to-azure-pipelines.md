@@ -3,12 +3,12 @@ title: Azure Pipelines ve şablonlar ile CI/CD
 description: Azure Resource Manager şablonları kullanarak Azure Pipelines sürekli tümleştirmenin nasıl yapılandırılacağını açıklar. Bir PowerShell betiğini kullanmayı veya dosyaları bir hazırlama konumuna kopyalamayı ve buradan dağıtmayı gösterir.
 ms.topic: conceptual
 ms.date: 10/01/2020
-ms.openlocfilehash: 6784df30340e4c54b8b1d6e82b45046666824315
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86ad2839375b73bf9595cf3369960e614ec03e67
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653409"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233823"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>ARM şablonlarını Azure Pipelines ile tümleştirme
 
@@ -34,11 +34,11 @@ Bu makalede, ARM şablonunuz ve Azure DevOps kuruluşunuzun işlem hattını olu
 
 ## <a name="create-pipeline"></a>İşlem hattı oluşturma
 
-1. Daha önce bir işlem hattı eklemediyseniz yeni bir işlem hattı oluşturmanız gerekir. Azure DevOps kuruluşunuzdan işlem **hatları** ve **Yeni işlem hattı**' nı seçin.
+1. Daha önce bir işlem hattı eklemediyseniz yeni bir işlem hattı oluşturmanız gerekir. Azure DevOps kuruluşunuzdan işlem **hatları** ve **Yeni işlem hattı** ' nı seçin.
 
    ![Yeni işlem hattı Ekle](./media/add-template-to-azure-pipelines/new-pipeline.png)
 
-1. Kodunuzun depolanacağı yeri belirtin. Aşağıdaki görüntüde **Git Azure Repos**seçme gösterilmektedir.
+1. Kodunuzun depolanacağı yeri belirtin. Aşağıdaki görüntüde **Git Azure Repos** seçme gösterilmektedir.
 
    ![Kod kaynağı seç](./media/add-template-to-azure-pipelines/select-source.png)
 
@@ -46,13 +46,13 @@ Bu makalede, ARM şablonunuz ve Azure DevOps kuruluşunuzun işlem hattını olu
 
    ![Depo seçin](./media/add-template-to-azure-pipelines/select-repo.png)
 
-1. Oluşturulacak işlem hattının türünü seçin. **Başlatıcı işlem hattı**' nı seçebilirsiniz.
+1. Oluşturulacak işlem hattının türünü seçin. **Başlatıcı işlem hattı** ' nı seçebilirsiniz.
 
    ![İşlem hattı seçin](./media/add-template-to-azure-pipelines/select-pipeline.png)
 
 Azure PowerShell bir görev ya da Dosya Kopyala ve görevleri dağıt 'a hazırsınız.
 
-## <a name="azure-powershell-task"></a>Azure PowerShell görev
+## <a name="azure-powershell-task"></a>Azure PowerShell görevi
 
 Bu bölümde, projenizde PowerShell betiğini çalıştıran tek bir görev kullanılarak sürekli dağıtımın nasıl yapılandırılacağı gösterilmektedir. Şablon dağıtan bir PowerShell betiğine ihtiyacınız varsa, bkz. [Deploy-AzTemplate.ps1](https://github.com/Azure/azure-quickstart-templates/blob/master/Deploy-AzTemplate.ps1) veya [Deploy-AzureResourceGroup.ps1](https://github.com/Azure/azure-quickstart-templates/blob/master/Deploy-AzureResourceGroup.ps1).
 
@@ -70,7 +70,7 @@ steps:
   inputs:
     azureSubscription: 'script-connection'
     ScriptType: 'FilePath'
-    ScriptPath: './Deploy-Template.ps1'
+    ScriptPath: './Deploy-AzTemplate.ps1'
     ScriptArguments: -Location 'centralus' -ResourceGroupName 'demogroup' -TemplateFile templates\mainTemplate.json
     azurePowerShellVersion: 'LatestVersion'
 ```
@@ -101,7 +101,7 @@ ScriptPath: '<your-relative-path>/<script-file-name>.ps1'
 ScriptArguments: -Location 'centralus' -ResourceGroupName 'demogroup' -TemplateFile templates\mainTemplate.json
 ```
 
-**Kaydet**' i seçtiğinizde, derleme işlem hattı otomatik olarak çalıştırılır. Derleme işlem hattınızla ilgili özete dönün ve durumu izleyin.
+**Kaydet** ' i seçtiğinizde, derleme işlem hattı otomatik olarak çalıştırılır. Derleme işlem hattınızla ilgili özete dönün ve durumu izleyin.
 
 ![Sonuçları görüntüleme](./media/add-template-to-azure-pipelines/view-results.png)
 
@@ -226,7 +226,7 @@ steps:
     deploymentName: 'deploy1'
 ```
 
-**Kaydet**' i seçtiğinizde, derleme işlem hattı otomatik olarak çalıştırılır. Derleme işlem hattınızla ilgili özete dönün ve durumu izleyin.
+**Kaydet** ' i seçtiğinizde, derleme işlem hattı otomatik olarak çalıştırılır. Derleme işlem hattınızla ilgili özete dönün ve durumu izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

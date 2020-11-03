@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 99c74547d5f48f57af56af69f47190d80d9cd350
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 5d74b17bdd9c264a983bfdd2e374001dd4a0e2c0
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074966"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242118"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure uygulama yapılandırma hakkında SSS
 
@@ -86,16 +86,16 @@ Her iki uygulama yapılandırma katmanı da yapılandırma ayarları, özellik b
 
 Katman seçme konusunda dikkate alınması gereken noktalar aşağıda verilmiştir.
 
-- **Abonelik başına kaynaklar**: bir kaynak tek bir yapılandırma deposundan oluşur. Her abonelik, ücretsiz katmandaki bir yapılandırma deposuyla sınırlıdır. Abonelikler Standart katmanda sınırsız sayıda yapılandırma deposu olabilir.
-- **Kaynak başına depolama**: Ücretsiz katmanda, her yapılandırma deposu 10 MB depolama alanı ile sınırlıdır. Standart katmanda, her yapılandırma deposu en fazla 1 GB depolama kullanabilir.
-- **Anahtar geçmişi**: uygulama yapılandırması anahtarlar üzerinde yapılan tüm değişikliklerin geçmişini depolar. Ücretsiz katmanda bu geçmiş yedi gün boyunca depolanır. Standart katmanda bu geçmiş 30 gün boyunca depolanır.
-- **Gün başına istek**: ücretsiz katman depoları, günde 1.000 istek ile sınırlıdır. Bir mağaza 1.000 istek ulaştığında, gece yarısı UTC tarihine kadar tüm istekler için 429 HTTP durum kodunu döndürür.
+- **Abonelik başına kaynaklar** : bir kaynak tek bir yapılandırma deposundan oluşur. Her abonelik, ücretsiz katmandaki bir yapılandırma deposuyla sınırlıdır. Abonelikler Standart katmanda sınırsız sayıda yapılandırma deposu olabilir.
+- **Kaynak başına depolama** : Ücretsiz katmanda, her yapılandırma deposu 10 MB depolama alanı ile sınırlıdır. Standart katmanda, her yapılandırma deposu en fazla 1 GB depolama kullanabilir.
+- **Düzeltme geçmişi** : uygulama yapılandırması anahtarlar üzerinde yapılan tüm değişikliklerin geçmişini depolar. Ücretsiz katmanda bu geçmiş yedi gün boyunca depolanır. Standart katmanda bu geçmiş 30 gün boyunca depolanır.
+- **İstek kotası** : ücretsiz katman depoları, günde 1.000 istek ile sınırlıdır. Bir mağaza 1.000 istek ulaştığında, gece yarısı UTC 'ye kadar tüm istekler için 429 HTTP durum kodunu döndürür.
 
-    Standart katman depoları için her gün ilk 200.000 istek günlük ücretine dahil edilir. Ek istekler fazla kullanım olarak faturalandırılır.
+    Standart katman depoları, saat başına 20.000 istek ile sınırlıdır. Kota tükendiğinde, saatin sonuna kadar tüm istekler için HTTP durum kodu 429 döndürülür.
 
-- **Hizmet düzeyi sözleşmesi**: Standart katmanda% 99,9 kullanılabilirlik SLA 'sı vardır. Ücretsiz katmanda bir SLA yoktur.
-- **Güvenlik özellikleri**: her iki katmanda da Microsoft tarafından yönetilen anahtarlarla ŞIFRELEME, HMAC veya Azure Active Directory, Azure RBAC desteği ve yönetilen kimlik aracılığıyla kimlik doğrulaması dahil temel güvenlik işlevleri bulunur. Standart katmanda özel bağlantı desteği ve müşteri tarafından yönetilen Anahtarlarla Şifreleme dahil daha gelişmiş güvenlik işlevleri sunulmaktadır.
-- **Maliyet**: Standart katman mağazalarında günlük kullanım ücreti vardır. Günlük ayırmanın ötesinde istekler için de fazla kullanım ücreti de vardır. Ücretsiz katman deposu kullanma maliyeti yoktur.
+- **Hizmet düzeyi sözleşmesi** : Standart katmanda% 99,9 kullanılabilirlik SLA 'sı vardır. Ücretsiz katmanda bir SLA yoktur.
+- **Güvenlik özellikleri** : her iki katmanda da Microsoft tarafından yönetilen anahtarlarla ŞIFRELEME, HMAC veya Azure Active Directory, Azure RBAC desteği, yönetilen kimlik ve hizmet etiketleri aracılığıyla kimlik doğrulaması dahil olmak üzere temel güvenlik işlevleri bulunur. Standart katmanda özel bağlantı desteği ve müşteri tarafından yönetilen Anahtarlarla Şifreleme dahil daha gelişmiş güvenlik işlevleri sunulmaktadır.
+- **Maliyet** : Standart katman mağazalarında günlük kullanım ücreti vardır. Her gün ilk 200.000 istek günlük ücretlerine dahil edilir. Günlük ayırmanın ötesinde istekler için de fazla kullanım ücreti de vardır. Ücretsiz katman deposu kullanma maliyeti yoktur.
 
 ## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>Bir mağazayı ücretsiz katmandan Standart katmana yükseltebilir miyim? Standart katmandaki bir deponun ücretsiz katmana indirgenmesini sağlayabilir miyim?
 
@@ -111,7 +111,7 @@ Bir depo sınıra ulaştığında, zaman aralığı sona erene kadar yapılan t�
 
 Uygulamanız düzenli olarak HTTP durum kodu 429 yanıtlarını yaşıyorsa, yapılan istek sayısını azaltmak için yeniden tasarlamayı düşünün. Daha fazla bilgi için bkz. [uygulama yapılandırmasına yapılan Istekleri azaltma](./howto-best-practices.md#reduce-requests-made-to-app-configuration)
 
-## <a name="my-application-receives-http-status-code-429-responses-why"></a>Uygulamam HTTP durum kodu 429 yanıtlarını alıyor. Neden mi?
+## <a name="my-application-receives-http-status-code-429-responses-why"></a>Uygulamam HTTP durum kodu 429 yanıtlarını alıyor. Neden?
 
 Şu koşullarda bir HTTP durum kodu 429 yanıtı alacaksınız:
 

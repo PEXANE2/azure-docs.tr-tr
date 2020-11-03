@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 3ee7761d43710e0833eb8002851e286ce5449983
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: c56c52193f433571f16e4acf7bd6e7b89641b26f
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636128"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233959"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Denetimi veri akışındaki dönüştürme işlevleri
 
@@ -25,7 +25,7 @@ Azure Data Factory 'de denetimi veri akışı, bulut ölçeğinde kod ücretsiz 
 
 Şu anda tüm Power Query M işlevleri, yazma sırasında kullanılabilir olmasına rağmen veri denetimi için desteklenmez. Denetimi veri akışlarınızı oluştururken, bir işlev desteklenmiyorsa aşağıdaki hata iletisiyle karşılaşırsınız:
 
-`The wrangling data flow is invalid. Expression.Error: The transformation logic isn't supported. Please try a simpler expression`
+`The Wrangling Data Flow is invalid. Expression.Error: The transformation logic is not supported. Please try a simpler expression.`
 
 Desteklenen Power Query d işlevlerinin listesi aşağıda verilmiştir.
 
@@ -76,7 +76,7 @@ Aşağıdaki koşullara göre filtrelemek için, [. SelectRows.](/powerquery-m/t
 
 Değerleri toplamak için [Table. Group](/powerquery-m/table-group) kullanın.
 * Bir toplama işleviyle birlikte kullanılması gerekir
-* Desteklenen toplama işlevleri:   [Table. RowCount](/powerquery-m/table-rowcount),   [List. Sum](/powerquery-m/list-sum),   [List. Count](/powerquery-m/list-count),   [List. Average](/powerquery-m/list-average),   [List. min](/powerquery-m/list-min),   [List. Max](/powerquery-m/list-max),   [List. standardsapması](/powerquery-m/list-standarddeviation),   [List. First](/powerquery-m/list-first),   [List. Last](/powerquery-m/list-last)
+* Desteklenen toplama işlevleri:   [List. Sum](/powerquery-m/list-sum),   [List. Count](/powerquery-m/list-count),   [List. Average](/powerquery-m/list-average),   [List. min](/powerquery-m/list-min),   [List. Max](/powerquery-m/list-max),   [List. standardsap,](/powerquery-m/list-standarddeviation)   [List. First](/powerquery-m/list-first),   [List. Last](/powerquery-m/list-last)
 
 ## <a name="sorting"></a>Sıralama
 
@@ -96,7 +96,7 @@ Bağımsız tut ve çıkar, aralığı tut (karşılık gelen k işlevleri, yaln
 | Table.NestedJoin | Yalnızca bir birleşimi yapmanız doğrulama hatasına neden olur. Çalışması için sütunların genişletilmesi gerekir. |
 | Table.Distinct | Yinelenen satırları kaldırma desteklenmiyor. |
 | Table.RemoveLastN | Alt satırları kaldır desteklenmiyor. |
-| Table.RowCount | Desteklenmez, ancak tüm hücreler boş olan bir Ekle sütunuyla elde edilebilir (koşul sütunu kullanılabilir) ve ardından bu sütunda Group By kullanılıyor. Table. Group desteklenir. | 
+| Table.RowCount | Desteklenmez, ancak 1 değerini içeren özel bir sütun eklenerek ve sonra bu sütunu List. Sum ile toplayarak elde edilebilir. Table. Group desteklenir. | 
 | Satır düzeyi hata işleme | Satır düzeyi hata işleme Şu anda desteklenmiyor. Örneğin, bir sütundan sayısal olmayan değerleri filtrelemek için, bir yaklaşım metin sütununu bir sayıya dönüştürmelidir. Dönüştürülemezse her hücre bir hata durumunda olur ve filtrelenebilir. Bu senaryo, denetimi veri akışında mümkün değildir. |
 | Table.Transpose | Desteklenmez |
 | Table.Pivot | Desteklenmez |

@@ -1,17 +1,17 @@
 ---
 title: Bağlantı mimarisi-MariaDB için Azure veritabanı
 description: MariaDB sunucusu için Azure veritabanı 'nın bağlantı mimarisini açıklar.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: c3f557c757a46252b9fa0416cc62a827b233f1b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9c1331b7d868c29fddf7b709912e87d55d73c45
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88065361"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241455"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda bağlantı mimarisi
 Bu makalede, MariaDB bağlantı mimarisi için Azure veritabanı 'nın yanı sıra trafiğin Azure 'daki ve dışındaki istemcilerden MariaDB örneğine nasıl yönlendirildiği açıklanmaktadır.
@@ -57,9 +57,9 @@ Aşağıdaki tabloda, tüm veri bölgeleri için MariaDB ağ geçidi için Azure
 | Güney Kore - Orta | 52.231.32.42   |
 | Güney Kore - Güney | 52.231.200.86    |
 | Orta Kuzey ABD | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    |
-| Kuzey Avrupa | 40.113.93.91, 191.235.193.75, 52.138.224.6, 52.138.224.7    |
-| Güney Afrika Kuzey  | 102.133.152.0    |
-| Güney Afrika Batı | 102.133.24.0   |
+| North Europe | 40.113.93.91, 191.235.193.75, 52.138.224.6, 52.138.224.7    |
+| Güney Afrika - Kuzey  | 102.133.152.0    |
+| Güney Afrika - Batı | 102.133.24.0   |
 | Orta Güney ABD |13.66.62.124, 23.98.162.75, 104.214.16.39, 20.45.120.0   |
 | Güneydoğu Asya | 104.43.15.0, 23.100.117.95, 40.78.233.2, 23.98.80.12     |
 | BAE Orta | 20.37.72.64  |
@@ -74,7 +74,7 @@ Aşağıdaki tabloda, tüm veri bölgeleri için MariaDB ağ geçidi için Azure
 
 ## <a name="connection-redirection"></a>Bağlantı yeniden yönlendirme
 
-MariaDB için Azure veritabanı, istemci uygulamaları ve MariaDB sunucuları arasındaki ağ gecikmesini azaltmaya yardımcı olan ek bir bağlantı ilkesini, **yeniden yönlendirmeyi**destekler. Bu özellik ile, ilk TCP oturumu MariaDB sunucusu için Azure veritabanı 'na kurulduktan sonra sunucu, MariaDB sunucusunu istemciye barındıran düğümün arka uç adresini döndürür. Bundan sonra, sonraki tüm paketler doğrudan sunucuya akar ve ağ geçidini atlar. Paketler doğrudan sunucuya akar, gecikme süresi ve aktarım hızı performansı artırılmıştır.
+MariaDB için Azure veritabanı, istemci uygulamaları ve MariaDB sunucuları arasındaki ağ gecikmesini azaltmaya yardımcı olan ek bir bağlantı ilkesini, **yeniden yönlendirmeyi** destekler. Bu özellik ile, ilk TCP oturumu MariaDB sunucusu için Azure veritabanı 'na kurulduktan sonra sunucu, MariaDB sunucusunu istemciye barındıran düğümün arka uç adresini döndürür. Bundan sonra, sonraki tüm paketler doğrudan sunucuya akar ve ağ geçidini atlar. Paketler doğrudan sunucuya akar, gecikme süresi ve aktarım hızı performansı artırılmıştır.
 
 Bu özellik, 10,2 ve 10,3 altyapı sürümleriyle MariaDB sunucuları için Azure veritabanı 'nda desteklenir.
 

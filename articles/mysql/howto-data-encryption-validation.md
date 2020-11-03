@@ -1,17 +1,17 @@
 ---
 title: MySQL için Azure veritabanı 'nın doğrulanmasını güvence altına alma-veri şifreleme
 description: Müşteriler tarafından yönetilen anahtarı kullanarak MySQL için Azure veritabanı şifrelemesini doğrulama hakkında bilgi edinin.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 04/28/2020
-ms.openlocfilehash: e7b747bd2babeeccb210bb30c3eb28f22d4befe7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f47b3d5679b70461eaba64b5815770162cb6fda
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905800"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241081"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı veri şifrelemesini doğrulama
 
@@ -25,15 +25,15 @@ Bu makale, MySQL için Azure veritabanı 'nda müşteri tarafından yönetilen a
 
     * Azure Portal **Azure Key Vault**  ->  **anahtarlarına** gidin
     * Sunucu şifrelemesi için kullanılan anahtarı seçin.
-    * **Etkin** anahtarın durumunu **Hayır**olarak ayarlayın.
+    * **Etkin** anahtarın durumunu **Hayır** olarak ayarlayın.
   
-       Bir süre sonra (yaklaşık**15 dakika**), MySQL Için Azure veritabanı sunucu **durumu** **erişilemez**olmalıdır. Sunucu üzerinde gerçekleştirilen g/ç işlemleri, sunucunun aslında müşteriler anahtarıyla şifrelenmiş olduğunu ve anahtarın şu anda geçerli olmadığını doğrulayan başarısız olur.
+       Bir süre sonra (yaklaşık **15 dakika** ), MySQL Için Azure veritabanı sunucu **durumu** **erişilemez** olmalıdır. Sunucu üzerinde gerçekleştirilen g/ç işlemleri, sunucunun aslında müşteriler anahtarıyla şifrelenmiş olduğunu ve anahtarın şu anda geçerli olmadığını doğrulayan başarısız olur.
     
        Sunucuyu karşı **kullanılabilir** hale getirmek için anahtarı yeniden doğrulayabilirsiniz. 
     
-    * Key Vault anahtarın durumunu **Evet**olarak ayarlayın.
-    * Sunucu **veri şifrelemesi**üzerinde **anahtarı yeniden doğrula**' yı seçin.
-    * Anahtarın yeniden doğrulanması başarılı olduktan sonra sunucu **durumu** **kullanılabilir**olarak değişir.
+    * Key Vault anahtarın durumunu **Evet** olarak ayarlayın.
+    * Sunucu **veri şifrelemesi** üzerinde **anahtarı yeniden doğrula** ' yı seçin.
+    * Anahtarın yeniden doğrulanması başarılı olduktan sonra sunucu **durumu** **kullanılabilir** olarak değişir.
 
 2. Azure portal, şifreleme anahtarının ayarlanmış olduğundan emin olmak için, veriler Azure portal kullanılan müşteriler anahtarı kullanılarak şifrelenir.
 

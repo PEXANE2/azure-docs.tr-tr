@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7bebfeba6da1493557d51777ba8438747e160750
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9de3e3503d63cf6dcaa98adc318d86df7700458d
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85476283"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241880"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te isteğe bağlı SQL (Önizleme) için en iyi uygulamalar
 
@@ -60,17 +60,17 @@ Sorgunuzda kullandığınız veri türleri performansı etkiler. Aşağıdaki y�
 
 - Olası en büyük değere uyum sağlayacak en küçük veri boyutunu kullanın.
   - En fazla karakter değeri uzunluğu 30 karakter ise, 30 uzunluğunda bir karakter veri türü kullanın.
-  - Tüm karakter sütun değerleri sabit boyutlardır **char** veya **nchar**kullanın. Aksi takdirde, **varchar** veya **nvarchar**kullanın.
-  - En büyük tamsayı sütun değeri 500 ise, bu değere sahip olabilecek en küçük veri türü olduğundan, **smallint** kullanın. [Bu makalede](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql?view=sql-server-ver15), tamsayı veri türü aralıklarını bulabilirsiniz.
-- Mümkünse, **nvarchar** ve **nchar**yerine **varchar** ve **char** kullanın.
+  - Tüm karakter sütun değerleri sabit boyutlardır **char** veya **nchar** kullanın. Aksi takdirde, **varchar** veya **nvarchar** kullanın.
+  - En büyük tamsayı sütun değeri 500 ise, bu değere sahip olabilecek en küçük veri türü olduğundan, **smallint** kullanın. [Bu makalede](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql?view=sql-server-ver15&preserve-view=true), tamsayı veri türü aralıklarını bulabilirsiniz.
+- Mümkünse, **nvarchar** ve **nchar** yerine **varchar** ve **char** kullanın.
 - Mümkünse tamsayı tabanlı veri türlerini kullanın. İşlemler, karakter verilerinden daha fazla tamsayı üzerinde tamamlanır, BIRLEŞTIRIN ve GRUPLANDıRıN.
 - Şema çıkarımı kullanıyorsanız, [gösterilen veri türlerini kontrol](#check-inferred-data-types)edin.
 
 ## <a name="check-inferred-data-types"></a>Gösterilen veri türlerini denetle
 
-[Şema çıkarımı](query-parquet-files.md#automatic-schema-inference) , dosya şemalarını bilmeden sorguları hızlı bir şekilde yazmanıza ve verileri araştırmanıza yardımcı olur. Bu rahatlığının maliyeti, gösterilen veri türlerinin gerçek veri türlerinden daha büyük olması. Bu, uygun veri türünün kullanıldığından emin olmak için kaynak dosyalarında yeterli bilgi olmadığında oluşur. Örneğin, Parquet dosyaları en fazla karakter sütun uzunluğu hakkında meta veri içermez. Bu nedenle, SQL isteğe bağlı, onu varchar (8000) olarak algılar.
+[Şema çıkarımı](query-parquet-files.md#automatic-schema-inference) , dosya şemalarını bilmeden sorguları hızlı bir şekilde yazmanıza ve verileri araştırmanıza yardımcı olur. Bu rahatlığının maliyeti, gösterilen veri türlerinin gerçek veri türlerinden daha büyük olması olabilir. Bu, uygun veri türünün kullanıldığından emin olmak için kaynak dosyalarında yeterli bilgi olmadığında oluşur. Örneğin, Parquet dosyaları en fazla karakter sütun uzunluğu hakkında meta veri içermez. Bu nedenle, SQL isteğe bağlı, onu varchar (8000) olarak algılar.
 
-Sorgunuzun elde edilen veri türlerini denetlemek için [sp_describe_first_results_set](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql?view=sql-server-ver15) kullanabilirsiniz.
+Sorgunuzun elde edilen veri türlerini denetlemek için [sp_describe_first_results_set](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql?view=sql-server-ver15&preserve-view=true) kullanabilirsiniz.
 
 Aşağıdaki örnek, çıkarılan veri türlerini nasıl iyileştiribileceğinizi göstermektedir. Bu yordam, çıkarılan veri türlerini göstermek için kullanılır: 
 ```sql  

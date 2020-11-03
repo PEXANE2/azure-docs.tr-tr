@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/29/2020
 ms.author: jeedes
-ms.openlocfilehash: 58ba0819866f3eddfad8a9147c10da7b5e59362d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d68305087264d6ba2306ba4c345064693b595c94
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135285"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234027"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nature-research"></a>Öğretici: doğa Research ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -61,7 +61,6 @@ Azure AD SSO 'yu doğa Research ile yapılandırmak ve test etmek için aşağı
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
     1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
 1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[doğa Research SSO 'Yu yapılandırın](#configure-nature-research-sso)** .
-    1. Kullanıcı Azure AD gösterimi ile bağlantılı olan doğa Research 'ta B. Simon 'a sahip olmak için, **[doğa Research test kullanıcısı oluşturun](#create-nature-research-test-user)** .
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
@@ -76,15 +75,15 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak Istiyorsanız, tanımlayıcı ve yanıt URL 'si değerleri zaten Azure Ile önceden doldurulmuştur ancak geçiş durumu değerini girmeniz gerekir.
 
-    **Geçiş durumu** metin kutusuna URL 'yi yazın:`https://idp.nature.com/debug`  
+    **Geçiş durumu** metin kutusuna URL 'yi yazın:`https://www.nature.com`  
     **Kaydet** ' e tıklayın.
 
 1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımları gerçekleştirin:
 
-    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`http://sp.nature.com/saml/login?targetUrl=https%3A%2F%2Fidp.nature.com%2Fdebug&idp=<IDP_ENTITY_ID>`
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://sp.nature.com/saml/login?idp=<IDP_ENTITY_ID>`
 
     > [!NOTE]
-    > Sign-On URL değeri gerçek değil. Değeri gerçek Sign-On URL 'siyle güncelleştirin. Bu değerleri almak için, [doğa araştırma istemci destek ekibine](mailto:identity@springernature.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Sign-On URL değeri gerçek değil. `<IDP_ENTITY_ID>` Azure AD tanımlayıcısı, yapı **yapısını ayarla** bölümünden kopyalanır. Ayrıca, Azure portal temel SAML yapılandırması bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. **Kaydet** ’e tıklayın.
 
@@ -118,11 +117,7 @@ Bu bölümde, B. Simon özelliğini, doğası araştırması için erişim izni 
 
 ## <a name="configure-nature-research-sso"></a>Doğa araştırma SSO 'SU yapılandırma
 
-**Doğa araştırma** tarafında çoklu oturum açmayı yapılandırmak Için, **uygulama Federasyon meta verileri URL 'sini** [doğa araştırma destek ekibine](mailto:identity@springernature.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
-
-### <a name="create-nature-research-test-user"></a>Doğa araştırma testi kullanıcısı oluştur
-
-Bu bölümde, doğa araştırmada Britta Simon adlı bir Kullanıcı oluşturacaksınız. Doğa araştırma platformunda kullanıcıları eklemek için, [doğa Research destek ekibi](mailto:identity@springernature.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+**Doğa araştırma** tarafında çoklu oturum açmayı yapılandırmak Için, **uygulama Federasyon meta verileri URL 'sini** [doğa araştırma destek ekibine](mailto:onlineservice@springernature.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
