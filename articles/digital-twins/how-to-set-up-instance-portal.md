@@ -7,13 +7,13 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: contperfq
-ms.openlocfilehash: da0eb80352409bbbbe29a80fe18a52f54540ae62
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: contperfq2
+ms.openlocfilehash: bd8fec0ae5b6ece1626049953b1f4afd3a581d97
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93071496"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280590"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (portal) ayarlama
 
@@ -38,7 +38,7 @@ Portalda bir kez, Azure Hizmetleri giriş sayfası menüsünde _kaynak oluştur_
 
 Arama kutusunda *Azure dijital TWINS* araması yapın ve sonuçlardan **Azure dijital TWINS** hizmetini seçin. Yeni bir hizmet örneği oluşturmak için _Oluştur_ düğmesini seçin.
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Azure portal ana sayfasından ' kaynak oluştur ' seçeneği seçiliyor":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Azure dijital TWINS hizmeti sayfasından ' oluştur ' seçeneğini belirleme":::
 
 Aşağıdaki *kaynak oluştur* sayfasında, aşağıda verilen değerleri girin:
 * **Abonelik** : kullandığınız Azure aboneliği
@@ -46,7 +46,7 @@ Aşağıdaki *kaynak oluştur* sayfasında, aşağıda verilen değerleri girin:
 * **Konum** : dağıtım Için bir Azure dijital TWINS özellikli bölgesi. Bölgesel destek hakkında daha fazla bilgi için [*bölgeye göre sunulan Azure ürünlerini ziyaret edin (Azure dijital TWINS)*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
 * **Kaynak adı** : Azure dijital TWINS örneğiniz için bir ad. Yeni örneğin adı, aboneliğinizin bölgesi içinde benzersiz olmalıdır (yani, aboneliğiniz seçtiğiniz adı kullanan bölgede başka bir Azure dijital TWINS örneğine sahipse, farklı bir ad seçmeniz istenir).
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="Azure portal ana sayfasından ' kaynak oluştur ' seçeneği seçiliyor":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="Azure dijital TWINS kaynağı oluşturmak için açıklanan değerleri doldurma":::
 
 İşiniz bittiğinde, _gözden geçir + oluştur_ ' u seçin. Bu işlem sizi, girdiğiniz örnek ayrıntılarını gözden geçirebileceğiniz ve _Oluştur_ 'a vurtabileceğiniz bir özet sayfasına götürür. 
 
@@ -54,7 +54,7 @@ Aşağıdaki *kaynak oluştur* sayfasında, aşağıda verilen değerleri girin:
 
 *Oluşturma* 'yı gönderdikten sonra, Azure bildirimlerinde, örnek dağıtımının durumunu Portal simgesi çubuğunun yanı da görebilirsiniz. Bildirim dağıtımın başarılı olduğunu gösterir ve oluşturduğunuz örneği görüntülemek için _Kaynağa Git_ düğmesini seçebileceksiniz.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="Azure portal ana sayfasından ' kaynak oluştur ' seçeneği seçiliyor":::
+:::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="Başarılı bir dağıtım gösteren ve ' kaynağa git ' düğmesini vurgulayan Azure bildirimlerinin görünümü":::
 
 Alternatif olarak, dağıtım başarısız olursa bildirim neden olduğunu gösterecektir. Hata iletisindeki önerileri gözlemleyin ve örneği oluşturmayı yeniden deneyin.
 
@@ -63,7 +63,7 @@ Alternatif olarak, dağıtım başarısız olursa bildirim neden olduğunu göst
 
 Örneğin *genel bakış* sayfasından *adına* , *kaynak grubuna* ve *ana bilgisayar adına* göz atın. Bunlar, Azure dijital TWINS örneğiniz ile çalışmaya devam ederken ihtiyacınız olabilecek tüm önemli değerlerdir. Diğer kullanıcılar örnekle programlama yapacaktır, bu değerleri bunlarla paylaşmanız gerekir.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Azure portal ana sayfasından ' kaynak oluştur ' seçeneği seçiliyor":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Örneğin genel bakış sayfasından önemli değerleri vurgulama":::
 
 Artık hazır bir Azure dijital TWINS örneğiniz var. Daha sonra, uygun Azure Kullanıcı izinlerini yönetmek için size izin verirsiniz.
 
@@ -73,7 +73,7 @@ Artık hazır bir Azure dijital TWINS örneğiniz var. Daha sonra, uygun Azure K
 
 İlk olarak, Azure portal Azure dijital TWINS örneğinizin sayfasını açın. Örneğin menüsünde, *erişim denetimi (IAM)* seçeneğini belirleyin. *Rol ataması Ekle* altında *Ekle* düğmesini seçin.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Azure portal ana sayfasından ' kaynak oluştur ' seçeneği seçiliyor":::
+:::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="' Erişim denetimi (ıAM) ' sayfasından rol ataması eklemeyi seçme":::
 
 Aşağıdaki *rol ataması Ekle* sayfasında, değerleri girin (Azure aboneliğinde [yeterli izinlere](#prerequisites-permission-requirements) sahip bir kullanıcı tarafından tamamlanmalıdır):
 * **Rol** : açılan menüden *Azure dijital TWINS veri sahibini* seçin
@@ -82,7 +82,7 @@ Aşağıdaki *rol ataması Ekle* sayfasında, değerleri girin (Azure aboneliği
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-2.png" alt-text="Azure portal ana sayfasından ' kaynak oluştur ' seçeneği seçiliyor":::
+        :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-2.png" alt-text="Listelenen alanlar ' rol ataması Ekle ' iletişim kutusunda dolduruluyor":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -94,7 +94,7 @@ Ayrıntıları girmeyi tamamladığınızda *Kaydet* düğmesine basın.
 
 *Erişim denetimi (IAM)* altında ayarladığınız rol atamasını rol atamaları > görüntüleyebilirsiniz. Kullanıcının bir *Azure dijital TWINS veri sahibi* rolüyle listede gösterilmesi gerekir. 
 
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Azure portal ana sayfasından ' kaynak oluştur ' seçeneği seçiliyor":::
+:::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Azure portal bir Azure dijital TWINS örneği için rol atamalarının görünümü":::
 
 Artık bir Azure dijital TWINS örneğiniz var ve bunu yönetmek için izinler atandı.
 

@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 59ea0258d6262f652e9ac563bbda5ec89c4c5819
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40d1ae4da07e159c24970c065d1c39e22b89a29a
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91580694"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280204"
 ---
 # <a name="install-and-use-the-dtdl-authoring-tools"></a>DTDL yazma araçlarını yükle ve kullan
 
@@ -36,9 +36,9 @@ Uzantıyı yüklediğinizde, VS Code 'da DTDL model dosyalarını yazmanıza yar
 
 - DTDL modellerini düzenlediğinizde IntelliSense ve AutoComplete kullanın:
 
-    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-intellisense.png" alt-text="VS Code 'de model doğrulaması":::
+    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-intellisense.png" alt-text="VS Code 'de DTDL modelleri için IntelliSense kullanın":::
 
-- Yeni bir DTDL arabirimi oluşturun. Aşağıdaki komut, yeni bir arabirimi olan bir JSON dosyası oluşturur. Arabirim örnek telemetri, özellik ve komut tanımları içerir.
+- Yeni bir DTDL arabirimi oluşturun. **Dtdl: Create Interface** komutu, yeni bir ARABIRIMLE bir JSON dosyası oluşturur. Arabirim örnek telemetri, özellik ve komut tanımları içerir.
 
 ## <a name="install-and-use-the-visual-studio-extension"></a>Visual Studio uzantısını yükleyip kullanma
 
@@ -53,11 +53,11 @@ Uzantıyı yüklediğinizde, Visual Studio 'da DTDL model dosyalarını yazmanı
 
 - Uzantı, DTDL model dosyalarında sözdizimi doğrulaması sağlar ve aşağıdaki ekran görüntüsünde gösterildiği gibi hataları vurgular:
 
-    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-validation-2.png" alt-text="VS Code 'de model doğrulaması":::
+    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-validation-2.png" alt-text="Visual Studio 'da model doğrulaması":::
 
 - DTDL modellerini düzenlediğinizde IntelliSense ve AutoComplete kullanın:
 
-    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-intellisense-2.png" alt-text="VS Code 'de model doğrulaması":::
+    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-intellisense-2.png" alt-text="Visual Studio 'da DTDL modelleri için IntelliSense kullanma":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

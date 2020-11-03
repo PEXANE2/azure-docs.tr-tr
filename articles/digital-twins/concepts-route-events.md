@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 91ba36a0bffab6c66020bab41ace65659ed084f7
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: d085d59dc1dbe09c014dcaf5aa239805824354f0
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146322"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279955"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Azure dijital TWINS 'in içindeki ve dışındaki olayları yönlendirme
 
@@ -73,7 +73,7 @@ Denetim düzleminde kullanılabilen uç nokta API 'Leri şunlardır:
  
 Bir olay yolu oluşturmak için Azure dijital TWINS [**veri düzlemi API 'leri**](how-to-manage-routes-apis-cli.md#create-an-event-route), [**clı komutları**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)veya [**Azure Portal**](how-to-manage-routes-portal.md#create-an-event-route)kullanabilirsiniz. 
 
-`CreateOrReplaceEventRouteAsync` [.Net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) çağrısını kullanarak bir istemci uygulaması içinde bir olay yolu oluşturma örneği aşağıda verilmiştir: 
+`CreateOrReplaceEventRouteAsync` [.Net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) çağrısını kullanarak bir istemci uygulaması içinde bir olay yolu oluşturma örneği aşağıda verilmiştir: 
 
 ```csharp
 string eventFilter = "$eventType = 'DigitalTwinTelemetryMessages' or $eventType = 'DigitalTwinLifecycleNotification'";

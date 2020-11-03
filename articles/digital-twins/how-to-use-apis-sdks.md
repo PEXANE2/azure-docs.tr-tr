@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7bb336c6c1f483160b760b266e01249b7e1ee04e
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: ed4bc60fbffbfbc553d41d7f7d44709551b620dc
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145557"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280337"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins API’lerini ve SDK’larını kullanma
 
@@ -31,7 +31,7 @@ En güncel Denetim düzlemi API sürümü _**2020-10-31**_ ' dir.
 Denetim düzlemi API 'Lerini kullanmak için:
 * [Denetim düzlemi Swagger klasöründeki](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)en son Swagger 'A başvurarak API 'leri doğrudan çağırabilirsiniz. Bu depo ayrıca kullanımı gösteren örneklerin bir klasörünü de içerir.
 * Şu anda, içindeki denetim API 'Leri için SDK 'Lara erişebilirsiniz...
-  - [.Net (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([başvuru [otomatik olarak oluşturulan]](/dotnet/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-dotnet-preview)) ([kaynak](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
+  - [.Net (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([başvuru [otomatik olarak oluşturulan]](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true)) ([kaynak](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
   - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([başvuru [otomatik olarak oluşturulan]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview)) ([kaynak](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31))
   - [JavaScript](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([kaynak](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
   - [Python](https://pypi.org/project/azure-mgmt-digitaltwins/) ([kaynak](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins))
@@ -55,7 +55,7 @@ Veri düzlemi API 'Lerini kullanmak için:
    - [API başvuru belgelerini](/rest/api/azure-digitaltwins/)görüntüleme.
 * **.Net (C#)** SDK 'sını kullanabilirsiniz. .NET SDK 'Yı kullanmak için...
    - paketi NuGet: [Azure. DigitalTwins. Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core)' dan görüntüleyebilir ve ekleyebilirsiniz. 
-   - [SDK başvuru belgelerini](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)görüntüleyebilirsiniz.
+   - [SDK başvuru belgelerini](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)görüntüleyebilirsiniz.
    - örnek bir klasör içeren SDK kaynağını GitHub 'da bulabilirsiniz: [.net Için Azure IoT dijital TWINS istemci kitaplığı](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
    - Bu makalenin [.net (C#) SDK (veri düzlemi)](#net-c-sdk-data-plane) bölümüne devam ederek ayrıntılı bilgi ve kullanım örnekleri görebilirsiniz.
 * **Java** SDK 'sını kullanabilirsiniz. Java SDK 'sını kullanmak için...
@@ -274,7 +274,7 @@ client.UpdateDigitalTwin("myTwin", updateTwinData);
 ## <a name="general-apisdk-usage-notes"></a>Genel API/SDK kullanım notları
 
 > [!NOTE]
-> Azure dijital TWINS 'in Şu anda **çıkış noktaları arası kaynak paylaşımını (CORS)** desteklemediğini lütfen unutmayın. Etki ve çözüm stratejileri hakkında daha fazla bilgi için bkz. *Kavramlar: Azure dijital TWINS çözümleri Için güvenlik* . [*Cross-Origin Resource Sharing (CORS)*](concepts-security.md#cross-origin-resource-sharing-cors)
+> Azure dijital TWINS 'in Şu anda **çıkış noktaları arası kaynak paylaşımını (CORS)** desteklemediğini lütfen unutmayın. Etki ve çözüm stratejileri hakkında daha fazla bilgi için bkz. *Kavramlar: Azure dijital TWINS çözümleri Için güvenlik*. [*Cross-Origin Resource Sharing (CORS)*](concepts-security.md#cross-origin-resource-sharing-cors)
 
 Aşağıdaki listede, API 'Leri ve SDK 'ları kullanmaya yönelik ek ayrıntılar ve genel yönergeler verilmiştir.
 

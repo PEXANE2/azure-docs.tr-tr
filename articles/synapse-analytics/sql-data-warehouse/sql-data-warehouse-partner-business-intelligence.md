@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 909ea33ed96225c75a2d093f5bf2f4878ea51d2e
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: a21cee6806c4200a73b35afba73cf04d7ca60308
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939193"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280019"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure SYNAPSE Analytics Business Intelligence iş ortakları
 
@@ -35,6 +35,7 @@ Veri ambarı çözümünüzü oluşturmak için çeşitli sektör lideri araçla
 | ![LogiAnalytics](./media/sql-data-warehouse-partner-business-intelligence/logianalytics_logo.png) |**Logi Analizi**<br>Logi Analizi birlikte, kuruluşunuzun dünyanın en büyük ve en geniş veri kümelerini toplamasına, çözümlemesine ve anında hareket etmesine olanak sağlar. |[Ürün sayfası](https://www.logianalytics.com/)<br>|
 | ![Looker](./media/sql-data-warehouse-partner-business-intelligence/looker_logo.png) |**Looker bı**<br>Looker, şirketinizdeki herkese işletmenizi destekleyen verileri araştırıp anlayabilme olanağı tanır. Ayrıca, veri analistini, verileri denetlemek ve silmek için esnek ve yeniden kullanılabilir bir modelleme katmanına de sağlar.  Şirketler, Catalyst olarak Looki kullanarak kültürünü temelde dönüştürtü.|[Ürün sayfası](https://looker.com/partners/microsoft-azure/)<br> [Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/looker.looker-analytics-platform-6_20)<br> |
 | ![Mikro strateji](./media/sql-data-warehouse-partner-business-intelligence/microstrategy_logo.png) |**Mikro strateji**<br>Mikro strateji platformu, kuruluşların iş verilerinden değer almasını sağlayan kapsamlı bir iş zekası ve analiz özellikleri kümesi sunar. Mikro stratejinin güçlü analitik altyapısı, kapsamlı araç kümeleri, çeşitli veri bağlayıcıları ve açık mimari, her ekip genelinde Analize erişimi uzatmak için ihtiyacınız olan her şeye sahip olmanızı sağlar.|[Ürün sayfası](https://www.microstrategy.com/us/product/analytics)<br> [Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/microstrategy.microstrategy_enterprise_platform_vm)<br> |
+| ![Mod Analizi](./media/sql-data-warehouse-partner-business-intelligence/mode-logo.png) |**Mod**<br>Modu, ekiplerin makul olmayan hızlı ve beklenmedik şekilde izinsiz veri analizi aracılığıyla kararlar almasına yardımcı olan modern bir analiz ve BI çözümüdür. Veri takımları, SQL, Python, R ve görsel analizi birleştiren tercih edilen bir iş akışı aracılığıyla daha hızlı hareket ederken, paydaşlar, verileri kendi kendine keşfetirken ve paylaşarak iş akışları üzerinde çalışır. Verilerin herkesin erişimine açık olması sayesinde sorulardan yanıtlara kadar olan mesafeyi kısaltıp işletmelerin daha hızlı bir şekilde daha fazla kararlar almasına yardımcı olun.|[Ürün sayfası](https://mode.com/)<br> |
 | ![Qlik](./media/sql-data-warehouse-partner-business-intelligence/qlik_logo.png) |**Qlik Sense Enterprise**<br>Herkesin kullanabileceği veri görselleştirme uygulamasıyla Öngörüler bulmayı sürücü ile tanıyın. Qlik Sense sayesinde kuruluşunuzdaki herkes kolayca esnek, etkileşimli görselleştirmeler oluşturabilir ve anlamlı kararlar verebilir. |[Ürün sayfası](https://www.qlik.com/us/products/qlik-sense/enterprise)<br> [Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/qlik.qlik-sense) |
 | ![SiSense](./media/sql-data-warehouse-partner-business-intelligence/sisense_logo.png) |**SiSense**<br>SiSense, bir işletmenin verileri analiz etmek ve görselleştirmek için gereken araçlarla birlikte sunulan bir tam yığın Iş zekası yazılımıdır: yüksek performanslı bir analitik veritabanı, birden fazla kaynağa katılabilme, basit veri ayıklama (ETL) ve Web tabanlı veri görselleştirme. SiSense bı ve Analytics ile büyük veri kümelerini çözümlemeye ve görselleştirmeye başlayın. |[Ürün sayfası](https://www.sisense.com/product/)<br> |
 | ![Tableau](./media/sql-data-warehouse-partner-business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>Tableau self servis Analytics, verileri basit dosyalardan veritabanlarına birçok veri üzerinde görme ve anlama konusunda yardımcı olur. Tableau, hem canlı verileri hem de bellek içi analizleri destekleyen, SYNAPSE SQL Pool 'a yönelik yerel ve iyileştirilmiş bir bağlayıcıya sahiptir. |[Ürün sayfası](https://www.tableau.com/)<br> [Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/tableau.tableau-server)<br>|

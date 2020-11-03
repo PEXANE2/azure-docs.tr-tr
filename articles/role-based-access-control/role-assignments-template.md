@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/29/2020
+ms.date: 11/02/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 400f0b1b55136f133c9ad01fd0ba4b5dbc5e6bcb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d65b2db9c69d006476ae1d08a1af3e60efe48930
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612753"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280564"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Azure rol atamaları ekleme
 
@@ -305,7 +305,9 @@ Aşağıda, şablonu dağıttıktan sonra bir depolama hesabı için kullanıcı
 
 ### <a name="new-service-principal"></a>Yeni hizmet sorumlusu
 
-Yeni bir hizmet sorumlusu oluşturur ve bu hizmet sorumlusuna hemen bir rol atamayı denerseniz, bu rol ataması bazı durumlarda başarısız olabilir. Örneğin, yeni bir yönetilen kimlik oluşturup aynı Azure Resource Manager şablonunda bu hizmet sorumlusuna bir rol atamayı denerseniz, rol ataması başarısız olabilir. Bu hatanın nedeni büyük olasılıkla çoğaltma gecikmesi. Hizmet sorumlusu tek bir bölgede oluşturulur; Ancak, rol ataması henüz hizmet sorumlusunu çoğaltılmamış farklı bir bölgede gerçekleşebilir. Bu senaryoya yönelik olarak, `principalType` rol atamasını oluştururken özelliğini olarak ayarlamanız gerekir `ServicePrincipal` .
+Yeni bir hizmet sorumlusu oluşturur ve bu hizmet sorumlusuna hemen bir rol atamayı denerseniz, bu rol ataması bazı durumlarda başarısız olabilir. Örneğin, yeni bir yönetilen kimlik oluşturup aynı Azure Resource Manager şablonunda bu hizmet sorumlusuna bir rol atamayı denerseniz, rol ataması başarısız olabilir. Bu hatanın nedeni büyük olasılıkla çoğaltma gecikmesi. Hizmet sorumlusu tek bir bölgede oluşturulur; Ancak, rol ataması henüz hizmet sorumlusunu çoğaltılmamış farklı bir bölgede gerçekleşebilir.
+
+Bu senaryoya yönelik olarak, `principalType` rol atamasını oluştururken özelliğini olarak ayarlamanız gerekir `ServicePrincipal` . `apiVersion`Rol atamasının öğesini `2018-09-01-preview` veya daha sonra da ayarlamanız gerekir.
 
 Aşağıdaki şablonda şunları gösterilmektedir:
 

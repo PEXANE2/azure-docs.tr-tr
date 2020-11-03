@@ -3,7 +3,7 @@ title: 'Öğretici: Postgres ile Python Docgo uygulaması dağıtma'
 description: PostgreSQL veritabanı ile bir Python web uygulaması oluşturun ve Azure 'a dağıtın. Öğretici Docgo çerçevesini kullanır ve uygulama Linux üzerinde Azure App Service barındırılır.
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 10/09/2020
+ms.date: 11/02/2020
 ms.custom:
 - mvc
 - seodec18
@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 63fdee6036580df42f7f965244b5f888c1ec082d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f6b845ec92a4d0d5365ec0615064bfbc238fd1ba
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540763"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279701"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Öğretici: Azure App Service içindeki PostgreSQL ile Docgo Web uygulaması dağıtma
 
@@ -111,10 +111,10 @@ Docgoapp örneği, Docgo belgelerine [Ilk Docgo uygulamanızı yazmayı](https:/
 
 Örnek ayrıca App Service gibi bir üretim ortamında çalışacak şekilde değiştirilmiştir:
 
-- Üretim ayarları *azuresite/Production. Kopyala* dosyasında bulunur. Geliştirme ayrıntıları *azuresite/Settings. Kopyala* ' da bulunur.
-- Uygulama, `DJANGO_ENV` ortam değişkeni "üretim" olarak ayarlandığında üretim ayarlarını kullanır. Bu ortam değişkenini daha sonra öğreticide, PostgreSQL veritabanı yapılandırması için kullanılan diğer kullanıcılarla birlikte oluşturursunuz.
+- Üretim ayarları *azuresite/Production. Kopyala* dosyasında bulunur. Geliştirme ayarları *azuresite/Settings. Kopyala* ' da bulunur.
+- Uygulama, `WEBSITE_HOSTNAME` ortam değişkeni ayarlandığında üretim ayarlarını kullanır. Azure App Service, bu değişkeni, gibi Web uygulamasının URL 'sine otomatik olarak ayarlar `msdocs-django.azurewebsites.net` .
 
-Bu değişiklikler, DMİ git 'in herhangi bir üretim ortamında çalıştırılmasını ve App Service özel olmadığını yapılandırmaya özgüdür. Daha fazla bilgi için bkz. [Docgo dağıtım denetim listesi](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/). Ayrıca, bazı değişiklikler hakkında ayrıntılı bilgi için bkz. [Azure 'Da Docgo Için üretim ayarları](configure-language-python.md#production-settings-for-django-apps) .
+Üretim ayarları, Docgo 'nın herhangi bir üretim ortamında çalıştırılmasını ve App Service özel olmadığını yapılandırmaya özgüdür. Daha fazla bilgi için bkz. [Docgo dağıtım denetim listesi](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/). Ayrıca, bazı değişiklikler hakkında ayrıntılı bilgi için bkz. [Azure 'Da Docgo Için üretim ayarları](configure-language-python.md#production-settings-for-django-apps) .
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/DjangoCLITutorialHelp)
 
@@ -196,26 +196,23 @@ Dağıtım başarılı olduğunda, komut aşağıdaki örnekte olduğu gibi JSON
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/DjangoCLITutorialHelp)
 
-> [!NOTE]
-> Bu noktada uygulamanın URL 'sini ziyaret etmeye çalışırsanız, "DisallowedHost/" hatasıyla karşılaşırsınız. Bu hata, uygulamayı daha önce bahsedilen üretim ayarlarını kullanmak üzere henüz yapılandırmadıysanız aşağıdaki bölümde yaptığınız için oluşur.
-
 ### <a name="configure-environment-variables-to-connect-the-database"></a>Veritabanını bağlamak için ortam değişkenlerini yapılandırma
 
 Kod artık App Service dağıtılır ve sonraki adım, uygulamayı Azure 'daki Postgres veritabanına bağlayabilmektedir.
 
-Uygulama kodu,,, ve adlı dört ortam değişkeni içinde veritabanı bilgilerini bulmayı bekler `DBHOST` `DBNAME` `DBUSER` `DBPASS` . Üretim ayarlarını kullanmak için, Ayrıca, `DJANGO_ENV` ortam değişkeninin olarak ayarlanmış olması gerekir `production` .
+Uygulama kodu,,, ve adlı dört ortam değişkeni içinde veritabanı bilgilerini bulmayı bekler `DBHOST` `DBNAME` `DBUSER` `DBPASS` .
 
 App Service ortam değişkenlerini ayarlamak için, aşağıdaki [az WebApp config appSettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) komutuyla "uygulama ayarları" oluşturun.
 
 ```azurecli
-az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<postgres-server-name>" DBNAME="pollsdb" DBUSER="<username>" DBPASS="<password>"
+az webapp config appsettings set --settings DBHOST="<postgres-server-name>" DBNAME="pollsdb" DBUSER="<username>" DBPASS="<password>"
 ```
 
 - *\<postgres-server-name>* Daha önce komutuyla kullandığınız adla değiştirin `az postgres up` . *Azuresite/Production.* kay içindeki kod, `.postgres.database.azure.com` tam Postgres sunucu URL 'sini oluşturmak için otomatik olarak ekler.
 - *\<username>* Ve *\<password>* ' yi önceki komutla kullandığınız yönetici kimlik bilgileriyle `az postgres up` veya `az postgres up` sizin için oluşturulan yöneticilerle değiştirin. *Azuresite/Production.* kay içindeki kod, ve ' deki tam Postgres Kullanıcı adını otomatik olarak oluşturur `DBUSER` , bu `DBHOST` nedenle `@server` bölümü içermez. (Ayrıca, daha önce belirtildiği gibi, `$` Linux ortam değişkenleri için özel bir anlam içerdiğinden, karakteri her iki değerde de kullanmamalısınız.)
 - Kaynak grubu ve uygulama adları, *. Azure/config* dosyasındaki önbelleğe alınmış değerlerden çizilir.
 
-Python kodunuzda bu ayarlara, gibi deyimlerle ortam değişkenleri olarak erişirsiniz `os.environ.get('DJANGO_ENV')` . Daha fazla bilgi için bkz. [ortam değişkenlerine erişin](configure-language-python.md#access-environment-variables).
+Python kodunuzda bu ayarlara, gibi deyimlerle ortam değişkenleri olarak erişirsiniz `os.environ.get('DBHOST')` . Daha fazla bilgi için bkz. [ortam değişkenlerine erişin](configure-language-python.md#access-environment-variables).
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/DjangoCLITutorialHelp)
 
@@ -352,7 +349,7 @@ Uygulamayı aşağıdaki adımlarla yerel olarak test edin:
 
 1. *Http: \/ /localhost: 8000* ' e gidin ve uygulamayı test etmek için soruyu yanıtlayın. 
 
-1. **CTRL** C tuşlarına basarak Docgo sunucusunu durdurun + **C** .
+1. **CTRL** C tuşlarına basarak Docgo sunucusunu durdurun + **C**.
 
 Yerel olarak çalıştırılırken, uygulama yerel bir SQLite3 veritabanı kullanıyor ve üretim veritabanınızı engellemez. İsterseniz üretim ortamınızın benzetimini yapmak için bir yerel PostgreSQL veritabanı da kullanabilirsiniz.
 

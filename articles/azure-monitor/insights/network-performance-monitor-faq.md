@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: b8c8e7539b888141a22e92378d78282edd1ce6ff
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: dd6c6248fcdf30350daecaa4857a81447bbdb7a8
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92208031"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280326"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Ağ Performansı İzleyicisi çözümü SSS
 
@@ -34,7 +34,7 @@ Aşağıda, NPM 'nin çeşitli özellikleri için Platform gereksinimleri verilm
 - NPM 'nin ExpressRoute Izleyici özelliği yalnızca Windows Server (2008 SP1 veya üzeri) işletim sistemini destekler.
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>Linux makinelerini NPM 'de izleme düğümleri olarak kullanabilir miyim?
-Linux tabanlı düğümleri kullanarak ağları izleme özelliği şu anda önizlemededir. Daha fazla bilgi edinmek için hesap yöneticinize ulaşın. Linux Agents yalnızca NPM 'nin performans Izleyicisi özelliği için izleme özelliği sağlar ve hizmet bağlantısı Izleyicisi ile ExpressRoute Izleyici özellikleri için kullanılamaz
+Linux tabanlı düğümleri kullanarak ağları izleme özelliği şu anda önizlemededir. Aracıyı [buradan](../../virtual-machines/extensions/oms-linux.md)öğrenebilirsiniz. Daha fazla bilgi edinmek için hesap yöneticinize ulaşın. Linux Agents yalnızca NPM 'nin performans Izleyicisi özelliği için izleme özelliği sağlar ve hizmet bağlantısı Izleyicisi ile ExpressRoute Izleyici özellikleri için kullanılamaz
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>NPM tarafından izleme için kullanılacak düğümlerin boyut gereksinimleri nelerdir?
 Ağları izlemek üzere düğüm VM 'lerinde NPM çözümünü çalıştırmak için düğümlerin en az 500 MB ve bir çekirdeğe sahip olması gerekir. NPM 'yi çalıştırmak için ayrı düğümler kullanmanız gerekmez. Çözüm, üzerinde çalışan diğer iş yükleri olan düğümlerde çalıştırılabilir. Çözüm, %5 ' ten fazla CPU kullanıyorsa izleme işlemini durdurma özelliğine sahiptir.

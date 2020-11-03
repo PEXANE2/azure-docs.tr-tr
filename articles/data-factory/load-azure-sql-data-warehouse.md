@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/08/2020
-ms.openlocfilehash: ffda2b1d096b3c84e3f1df10e37c44922bab16ef
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 10/30/2020
+ms.openlocfilehash: dcf3db33818448116da53d8a01d0c62aca7bc1af
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632422"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280162"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SYNAPSE Analytics 'e veri yükleme
 
@@ -38,7 +38,7 @@ Bu makalede, _Azure SQL veritabanından Azure SYNAPSE Analytics 'e veri yükleme
 > [!NOTE]
 > Daha fazla bilgi için bkz. [Azure Data Factory kullanarak Azure SYNAPSE Analytics 'e veri kopyalama](connector-azure-sql-data-warehouse.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği: bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 * Azure SYNAPSE Analytics: veri ambarı, SQL veritabanından kopyalandığı verileri tutar. Azure SYNAPSE analizlerinizi bilmiyorsanız [Azure SYNAPSE Analytics oluşturma](../synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md)' daki yönergelere bakın.
@@ -113,9 +113,6 @@ Bu makalede, _Azure SQL veritabanından Azure SYNAPSE Analytics 'e veri yükleme
     d. Kaynak olarak yeni oluşturulan bağlantılı havuz hizmetini seçin ve **İleri** 'ye tıklayın.
 
 7. **Tablo eşleme** sayfasında, içeriği gözden geçirin ve **İleri** ' yi seçin. Akıllı tablo eşleştirmesi görüntülenir. Kaynak tablolar, tablo adlarına göre hedef tablolarla eşleştirilir. Hedefte bir kaynak tablosu yoksa, Azure Data Factory varsayılan olarak aynı ada sahip bir hedef tablo oluşturur. Ayrıca, bir kaynak tabloyu var olan bir hedef tabloyla eşleyebilirsiniz.
-
-   > [!NOTE]
-   > Azure SYNAPSE Analytics havuzu için otomatik tablo oluşturma, SQL Server veya Azure SQL veritabanı kaynak olduğunda geçerlidir. Verileri başka bir kaynak veri deposundan kopyalarsanız, veri kopyasını yürütmeden önce şemayı Azure SYNAPSE Analytics 'te önceden oluşturmanız gerekir.
 
    ![Tablo eşleme sayfası](./media/load-azure-sql-data-warehouse/table-mapping.png)
 

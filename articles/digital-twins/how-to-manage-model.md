@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5bcb6df1b03b0c1c835e198818813ad8d914c630
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: b31e3d44cc66e97506b29b81cef5b8d981d05e39
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147122"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279415"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure dijital TWINS modellerini yönetme
 
-Azure Digital TWINS örneğinizin, [**Digitaltwinmodeller API 'leri**](/rest/api/digital-twins/dataplane/models), [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)veya [Azure dijital TWINS CLI](how-to-use-cli.md)'yi kullanma hakkında bilgi sahibi olan [modelleri](concepts-models.md) yönetebilirsiniz. 
+Azure Digital TWINS örneğinizin, [**Digitaltwinmodeller API 'leri**](/rest/api/digital-twins/dataplane/models), [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)veya [Azure dijital TWINS CLI](how-to-use-cli.md)'yi kullanma hakkında bilgi sahibi olan [modelleri](concepts-models.md) yönetebilirsiniz. 
 
 Yönetim işlemlerine, modellerin karşıya yüklenmesi, doğrulanması, alınması ve silinmesi dahildir. 
 

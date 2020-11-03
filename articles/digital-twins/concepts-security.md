@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 6784ca9dbc32811a02f4454be94d220c634318f5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 349f57299387b616373bb5fb4d295da8df8ee493
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503326"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279898"
 ---
 # <a name="secure-azure-digital-twins"></a>Güvenli Azure dijital TWINS
 
@@ -26,7 +26,7 @@ Azure RBAC, [Azure Active Directory](../active-directory/fundamentals/active-dir
 
 Bir Kullanıcı, Grup veya uygulama hizmeti sorumlusu olabilecek bir *güvenlik sorumlusu* için izin vermek üzere Azure RBAC kullanabilirsiniz. Güvenlik sorumlusu Azure AD tarafından doğrulanır ve döndürülen bir OAuth 2,0 belirteci alır. Bu belirteç, bir Azure dijital TWINS örneğine erişim isteği yetkilendirmek için kullanılabilir.
 
-### <a name="authentication-and-authorization"></a>Kimlik doğrulaması ve yetkilendirme
+### <a name="authentication-and-authorization"></a>Kimlik doğrulama ve yetkilendirme
 
 Azure AD ile, erişim iki adımlı bir işlemdir. Bir güvenlik sorumlusu (bir Kullanıcı, Grup veya uygulama) Azure dijital TWINS 'e erişmeyi denediğinde, isteğin *kimliğinin doğrulanması* ve *yetkilendirilmiş* olması gerekir. 
 
@@ -56,8 +56,8 @@ Azure, Azure dijital TWINS [veri düzlemi API 'lerine](how-to-use-apis-sdks.md#o
 
 >[!NOTE]
 > Bu roller yakın zamanda Önizlemedeki önceki adlarından yeniden adlandırıldı:
-> * *Azure dijital TWINS veri sahibi* , daha önce *Azure Digital TWINS sahibiydi (Önizleme)* .
-> * *Azure dijital TWINS veri okuyucu* daha önce *Azure Digital TWINS okuyucu (Önizleme)* .
+> * *Azure dijital TWINS veri sahibi* , daha önce *Azure Digital TWINS sahibiydi (Önizleme)*.
+> * *Azure dijital TWINS veri okuyucu* daha önce *Azure Digital TWINS okuyucu (Önizleme)*.
 
 Rolleri iki şekilde atayabilirsiniz:
 * Azure portal Azure dijital TWINS için erişim denetimi (ıAM) bölmesi aracılığıyla (bkz [*. Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma*](../role-based-access-control/role-assignments-portal.md))
@@ -72,7 +72,7 @@ Yerleşik rollerin nasıl tanımlandığı hakkında daha fazla bilgi için bkz.
 Otomatikleştirilmiş senaryolardaki rollere başvuru yaparken, bunlara adları yerine **kimliklerini** yazmanız önerilir. Adlar yayınlar arasında değişebilir, ancak kimlikler bu şekilde Otomasyon 'da daha kararlı bir başvuru haline getirir.
 
 > [!TIP]
-> (Başvuru) gibi bir cmdlet 'e sahip rolleriniz assiging `New-AzRoleAssignment` ,[reference](/powershell/module/az.resources/new-azroleassignment?view=azps-4.8.0) `-RoleDefinitionId` `-RoleDefinitionName` rol için bir ad yerine kimliği geçirmek yerine parametresini kullanabilirsiniz.
+> (Başvuru) gibi bir cmdlet 'e sahip rolleriniz assiging `New-AzRoleAssignment` ,[reference](/powershell/module/az.resources/new-azroleassignment) `-RoleDefinitionId` `-RoleDefinitionName` rol için bir ad yerine kimliği geçirmek yerine parametresini kullanabilirsiniz.
 
 ### <a name="permission-scopes"></a>İzin kapsamları
 
@@ -88,6 +88,32 @@ Aşağıdaki listede, Azure dijital TWINS kaynaklarına erişimi kapsama ekleyeb
 ### <a name="troubleshooting-permissions"></a>İzinlerin sorunlarını giderme
 
 Bir kullanıcı rolü tarafından izin verilmeyen bir eylem gerçekleştirmeye çalışırsa, hizmet isteği okumada bir hata alabilir `403 (Forbidden)` . Daha fazla bilgi ve sorun giderme adımları için bkz. [*sorun giderme: Azure dijital TWINS isteği şu durumla başarısız oldu: 403 (yasak)*](troubleshoot-error-403.md).
+
+## <a name="service-tags"></a>Hizmet etiketleri
+
+**Hizmet etiketi** , belirli bir Azure HIZMETINDEN bir IP adresi önekleri grubunu temsil eder. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir ve ağ güvenlik kuralları için sık sık güncelleştirmelerin karmaşıklığını en aza indirir. Hizmet etiketleri hakkında daha fazla bilgi için bkz.  [*sanal ağ etiketleri*](../virtual-network/service-tags-overview.md). 
+
+ [network security groups](../virtual-network/network-security-groups-overview.md#security-rules)   Güvenlik KURALLARı oluştururken belirli IP adreslerinin yerine hizmet etiketleri kullanarak ağ güvenlik gruplarında veya [Azure Güvenlik duvarında](../firewall/service-tags.md)ağ erişim denetimleri tanımlamak için hizmet etiketlerini kullanabilirsiniz. Bir kuralın uygun *kaynak* veya hedef alanındaki hizmet etiketi adını (Bu durumda **AzureDigitalTwins** ) belirterek    *destination*   , karşılık gelen hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. 
+
+Aşağıda **AzureDigitalTwins** hizmeti etiketinin ayrıntıları verilmiştir.
+
+| Etiket | Amaç | Gelen veya giden trafiği kullanabilir miyim? | Bölgesel olabilir mi? | Azure Güvenlik Duvarı ile kullanılabilir mi? |
+| --- | --- | --- | --- | --- |
+| AzureDigitalTwins | Azure Digital Twins<br>Note: Bu etiket veya bu etiketin kapsadığı IP adresleri, [olay yolları](concepts-route-events.md)için yapılandırılmış uç noktalara erişimi kısıtlamak için kullanılabilir. | Gelen | Hayır | Evet |
+
+### <a name="using-service-tags-for-accessing-event-route-endpoints"></a>Olay yolu uç noktalarına erişmek için hizmet etiketleri kullanma 
+
+Azure dijital TWINS ile hizmet etiketlerini kullanarak [olay yönlendirme](concepts-route-events.md) uç noktalarına erişme adımları aşağıda verilmiştir.
+
+1. İlk olarak, Azure IP aralıklarını ve hizmet etiketlerini gösteren bu JSON dosyası başvurusunu indirin: [*Azure IP aralıkları ve hizmet etiketleri*](https://www.microsoft.com/download/details.aspx?id=56519). 
+
+2. JSON dosyasında "AzureDigitalTwins" IP aralıklarını arayın.  
+
+3. Bu kaynakla ilgili IP filtrelerini nasıl ayarlayaöğrenmek için uç noktaya bağlı dış kaynağın (örneğin, [Event Grid](../event-grid/overview.md), [Olay Hub](../event-hubs/event-hubs-about.md)'ı, [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)veya [atılacak ileti olayları](concepts-route-events.md#dead-letter-events)için [Azure Storage](../storage/blobs/storage-blobs-overview.md) ) belgelerine bakın.
+
+4. *2. ADıMDAKI* IP aralıklarını kullanarak dış kaynaklar üzerinde IP filtreleri ayarlayın.  
+
+5. IP aralıklarını gerektiği şekilde düzenli olarak güncelleştirin. Aralıklar zaman içinde değişebilir, bu nedenle bunları düzenli olarak denetlemek ve gerektiğinde yenilemek iyi bir fikirdir. Bu güncelleştirmelerin sıklığı farklılık gösterebilir, ancak bunları haftada bir kez denetlemek iyi bir fikirdir.
 
 ## <a name="encryption-of-data-at-rest"></a>Bekleyen verilerin şifrelenmesi
 

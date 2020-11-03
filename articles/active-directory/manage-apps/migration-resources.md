@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/29/2020
 ms.author: kenwith
 ms.reviewer: baselden
-ms.openlocfilehash: 327e59d3fee6f23d2635b846e9fb5ab422e0139e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a49dff0e4ac41670800073c02c5a507eb433c326
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87429026"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280435"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>Azure Active Directory uygulamalara geçiş kaynakları
 
@@ -26,6 +26,7 @@ Uygulama erişimini ve kimlik doğrulamasını Azure Active Directory (Azure AD)
 |:-----------|:-------------|
 |[Uygulamalarınızı Azure AD 'ye geçirme](https://aka.ms/migrateapps/whitepaper) | Bu Teknik İnceleme, geçişin avantajlarının yanı sıra, açıkça Seviyelendirilmiş dört aşamada geçişin nasıl planlanacağını açıklar: bulma, sınıflandırma, geçiş ve devam eden yönetim. İşlemin nasıl düşündüğünü ve projenizi kullanımı kolay parçalara nasıl başlayacağınızı öğreneceksiniz. Belge genelinde, bu şekilde size yardımcı olacak önemli kaynakların bağlantıları bulunur. |
 |[Çözüm Kılavuzu: uygulamaları Active Directory Federasyon Hizmetleri (AD FS) (AD FS) 'den Azure AD 'ye geçirme](https://aka.ms/migrateapps/adfssolutionguide) | Bu çözüm kılavuzu, geçiş teknik incelemesi 'nde daha yüksek bir düzeyde açıklanan uygulama geçiş projesini planlama ve yürütmenin aynı dört aşamada size kılavuzluk eder. Bu kılavuzda, bir uygulamayı Azure Directory Federasyon Hizmetleri 'nden (AD FS) Azure AD 'ye taşımaya yönelik belirli bir hedefe bu aşamaları nasıl uygulayacağınızı öğreneceksiniz.|
+|[Geliştirici öğreticisi: geliştiriciler için Azure AD uygulama geçişi PlayBook 'a AD FS](https://aka.ms/adfsplaybook) | Bu ASP.NET kod örnekleri ve eşlik eden öğreticiler, Active Directory Federasyon Hizmetleri (AD FS) (AD FS) ile tümleştirilmiş uygulamalarınızı Azure Active Directory (Azure AD) ile güvenli bir şekilde nasıl geçirebileceğinizi öğrenmenize yardımcı olur. Bu öğreticide, hem AD FS hem de Azure AD 'de uygulama yapılandırma hakkında bilgi edinmeleri ve aynı zamanda kod tabanı bu işlemde gereken değişikliklere ve ne kadar emin olmaya ihtiyaç duyan geliştiricilere odaklanılmıştır.|
 | [Araç: Active Directory Federasyon Hizmetleri (AD FS) geçiş hazırlığı betiği](https://aka.ms/migrateapps/adfstools) | Bu, şirket içi Active Directory Federasyon Hizmetleri (AD FS) (AD FS) sunucunuzda çalıştırabileceğiniz ve Azure AD 'ye geçiş için uygulamaların hazır olduğunu belirleyebilmeniz için kullanabileceğiniz bir betiktir.|
 | [Dağıtım planı: AD FS 'den Parola karması eşitlemesine geçiş](https://aka.ms/ADFSTOPHSDPDownload) | Parola karması eşitlemeyle, kullanıcı parolalarının karmaları şirket içi Active Directory Azure AD 'ye eşitlenir. Bu, Azure AD 'nin şirket içi Active Directory etkileşime girmeden kullanıcıların kimliğini doğrulamasına olanak sağlar.| 
 | [Dağıtım planı: AD FS 'den geçişli kimlik doğrulamaya geçiş](https://aka.ms/ADFSTOPTADPDownload)|Azure AD geçişli kimlik doğrulaması, kullanıcıların aynı parolayı kullanarak hem şirket içi hem de bulut tabanlı uygulamalarda oturum açmalarına yardımcı olur. Bu özellik, daha az bir parolaya sahip olmaları gerektiğinden kullanıcılarınıza daha iyi bir deneyim sağlar. Ayrıca, kullanıcıların yalnızca bir parolayı hatırlamaları gerektiğinde nasıl oturum açabileceğini unutmaları daha az olduğu için BT yardım masası maliyetlerini de azaltır. Kullanıcılar Azure AD'de oturum açtığında bu özellik parolaları doğrudan şirket için Active Directory dizininizde doğrular.|

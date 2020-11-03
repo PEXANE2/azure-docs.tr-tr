@@ -14,12 +14,12 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22b0ba97a0f3eddda9a0e0d4f5e5392d12f21eef
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: a07130e55339ed689b65b48e6fd83e65f36d155e
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026097"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280548"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Active Directory Federasyon Hizmetleri (AD FS) uygulama kimlik doğrulamasını Azure Active Directory olarak taşıma
 
@@ -489,5 +489,8 @@ Dağıtım tamamlandıktan sonra, başarılı dağıtım kullanıcılarına bir 
 Dış kullanıcılarla iletişim: Bu Kullanıcı grubu genellikle sorunlar durumunda en kritik düzeyde etkilendi. Bu özellikle, güvenlik sonrası, dış iş ortakları için farklı koşullu erişim kuralları veya risk profilleri kümesini belirlemesi durumunda geçerlidir. Dış iş ortaklarının, bulut geçiş zamanlamasının farkında olduğundan ve dış işbirliğine özgü tüm akışları test eden bir pilot dağıtıma katılması gereken bir zaman dilimi bulunduğundan emin olun. Son olarak, sorun olması durumunda yardım masasına erişmek için bir yol olduğundan emin olun.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
+
 [Uygulama kimlik doğrulamasını Azure AD 'ye geçirme](https://aka.ms/migrateapps/whitepaper)<p>
 [Koşullu erişimi](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) ve [MFA](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) 'yı ayarlama
+
+Adım adım bir kod örneği deneyin:[geliştiriciler Için Azure AD uygulama geçiş PlayBook 'a AD FS](https://aka.ms/adfsplaybook)

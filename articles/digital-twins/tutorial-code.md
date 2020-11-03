@@ -4,19 +4,19 @@ titleSuffix: Azure Digital Twins
 description: .NET (C#) SDK 'SıNı kullanarak bir istemci uygulaması için en düşük kodu yazma öğreticisi.
 author: baanders
 ms.author: baanders
-ms.date: 05/05/2020
+ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 11b2d4d9ec914839b2b4730419ca5ef67b66a2f5
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 3225fff1c82822dee990804f934ada86068841e8
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93144503"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280275"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Öğretici: Azure dijital TWINS API 'Leri ile kodlama
 
-Azure dijital TWINS ile çalışan geliştiriciler, Azure dijital TWINS hizmeti örneğiyle etkileşim kurmak üzere bir istemci uygulaması yazmak için yaygındır. Bu geliştirici odaklı öğreticide, [.net Için Azure dijital TWINS SDK 'sını (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)kullanarak Azure dijital TWINS hizmetinde programlamaya yönelik bir giriş sunulmaktadır. Bir C# Konsolu istemci uygulaması adımını sıfırdan başlayarak adım adım yazma konusunda size kılavuzluk eder.
+Azure dijital TWINS ile çalışan geliştiriciler, Azure dijital TWINS hizmeti örneğiyle etkileşim kurmak üzere bir istemci uygulaması yazmak için yaygındır. Bu geliştirici odaklı öğreticide, [.net Için Azure dijital TWINS SDK 'sını (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)kullanarak Azure dijital TWINS hizmetinde programlamaya yönelik bir giriş sunulmaktadır. Bir C# Konsolu istemci uygulaması adımını sıfırdan başlayarak adım adım yazma konusunda size kılavuzluk eder.
 
 > [!div class="checklist"]
 > * Projeyi ayarla
@@ -47,7 +47,7 @@ Makinenizde bir komut istemi veya başka bir konsol penceresi açın ve bu öğr
 
 Yeni dizine gidin.
 
-Proje dizininde bir kez, **boş bir .NET konsol uygulaması projesi oluşturun** . Komut penceresinde, konsol için en az C# projesi oluşturmak üzere aşağıdaki komutu çalıştırabilirsiniz:
+Proje dizininde bir kez, **boş bir .NET konsol uygulaması projesi oluşturun**. Komut penceresinde, konsol için en az C# projesi oluşturmak üzere aşağıdaki komutu çalıştırabilirsiniz:
 
 ```cmd/sh
 dotnet new console
@@ -58,7 +58,7 @@ Bu, kodunuzun büyük bir kısmını yazacağınız bir *program.cs* dahil olmak
 Öğreticinin tamamında kullanmaya devam edebileceksiniz, komut penceresini açık tutun.
 
 Ardından, projenize Azure dijital TWINS ile çalışmak için gerekli olacak **iki bağımlılık ekleyin** . Aşağıdaki bağlantıları kullanarak, her birinin en son sürümünü projenize eklemek için konsol komutlarının (.NET CLı için de dahil olmak üzere) bulabileceğiniz NuGet üzerindeki paketlere gidebilirsiniz.
-* [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Bu paket, [.net Için Azure Digital TWINS SDK 'sına](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)yöneliktir. 
+* [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Bu paket, [.net Için Azure Digital TWINS SDK 'sına](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)yöneliktir. 
 * [**Azure. Identity**](https://www.nuget.org/packages/Azure.Identity). Bu kitaplık, Azure 'da kimlik doğrulamaya yardımcı olacak araçlar sağlar.
 
 ## <a name="get-started-with-project-code"></a>Proje kodu ile çalışmaya başlama
@@ -123,8 +123,8 @@ dotnet run
 ```
 
 Bu işlem, ilk çalıştırmada bağımlılıkları geri yükler ve ardından programı yürütür. 
-* Bir hata oluşursa, program *oluşturulan hizmet istemcisini Yazdır-başlamaya hazırlanın* .
-* Bu projede henüz herhangi bir hata işleme olmadığından, bir şey yanlış olursa kod tarafından oluşturulan bir özel durum görürsünüz.
+* Bir hata oluşursa, program *oluşturulan hizmet istemcisini Yazdır-başlamaya hazırlanın*.
+* Bu projede henüz bir hata işleme olmadığından, herhangi bir sorun oluşursa, kod tarafından oluşturulan bir özel durum görürsünüz.
 
 ### <a name="upload-a-model"></a>Bir modeli karşıya yükleyin
 
@@ -136,7 +136,7 @@ Projenizi oluşturduğunuz dizinde, *üzerindeSampleModel.js* adlı yeni bir *. 
 
 ```json
 {
-  "@id": "dtmi:com:contoso:SampleModel;1",
+  "@id": "dtmi:example:SampleModel;1",
   "@type": "Interface",
   "displayName": "SampleModel",
   "contents": [
@@ -199,21 +199,23 @@ Komut pencerenizde, programı şu komutla çalıştırın:
 ```cmd/sh
 dotnet run
 ```
-"Bir modeli karşıya yükle" çıktıda yazdırılacaktır, ancak modellerin başarıyla yüklenip yüklenmediğini göstermek için henüz çıktı yok.
+"Bir modeli karşıya yükle", bu koda ulaşıldığını belirten çıktıda yazdırılır, ancak henüz karşıya yüklemenin başarılı olup olmadığını belirtmek için bir çıktı yok.
 
-Modellerin gerçekten başarıyla karşıya yüklenip yüklenmediğini belirten bir yazdırma ekstresi eklemek için önceki bölümden sonra aşağıdaki kodu ekleyin:
+Örneğe başarıyla yüklenmiş tüm modelleri gösteren bir Print ifadesini eklemek için, önceki bölümden hemen sonra aşağıdaki kodu ekleyin:
 
 ```csharp
 // Read a list of models back from the service
+Console.WriteLine("Models uploaded to the instance:");
 AsyncPageable<DigitalTwinsModelData> modelDataList = client.GetModelsAsync();
 await foreach (DigitalTwinsModelData md in modelDataList)
 {
-    Console.WriteLine($"Type name: {md.DisplayName}: {md.Id}");
+    Console.WriteLine($"{md.Id}");
 }
 ```
-Bu yeni kodu test etmek için programı yeniden çalıştırmadan önce, programı son kez çalıştırdığınızda modelinizi zaten karşıya yüklediğinize geri çekin. Azure dijital TWINS aynı modeli iki kez karşıya yüklemeye izin vermeyecektir. bu nedenle, aynı modeli yeniden yüklemeye çalışırsanız programın bir özel durum oluşturması gerekir.
 
-Şimdi, komut pencerenizde bu komutla programı yeniden çalıştırın:
+**Bu yeni kodu test etmek için programı yeniden çalıştırmadan önce** , programı son kez çalıştırdığınızda modelinizi zaten karşıya yüklediğinize geri çekin. Azure dijital TWINS aynı modeli iki kez karşıya yüklemeye izin vermeyecektir. bu nedenle, aynı modeli yeniden yüklemeye çalışırsanız programın bir özel durum oluşturması gerekir.
+
+Bu göz önünde bulundurularak, komut pencerenizde bu komutla programı yeniden çalıştırın:
 
 ```cmd/sh
 dotnet run
@@ -225,7 +227,7 @@ Sonraki bölümde, bu gibi özel durumlar ve kodunuzda nasıl ele alınacağın�
 
 ### <a name="catch-errors"></a>Hataları yakala
 
-Programın çökmesini önlemek için, model karşıya yükleme kodunun etrafına özel durum kodu ekleyebilirsiniz. Mevcut istemci çağrısını `client.CreateModelsAsync` bir Try/Catch işleyicisine kaydırın, örneğin:
+Programın çökmesini önlemek için, model karşıya yükleme kodunun etrafına özel durum kodu ekleyebilirsiniz. Mevcut istemci çağrısını `await client.CreateModelsAsync(typeList)` bir Try/Catch işleyicisine kaydırın, örneğin:
 
 ```csharp
 try {
@@ -234,27 +236,10 @@ try {
     Console.WriteLine($"Load model: {rex.Status}:{rex.Message}");
 }
 ```
-Programı `dotnet run` komut pencerenize Şimdi çalıştırırsanız, bir hata kodu geri almanızı göreceksiniz. Çıktı şuna benzer:
 
-```cmd/sh
-Hello World!
-Service client created - ready to go
+Şimdi komut pencerenizde programını ile çalıştırırsanız `dotnet run` , bir hata kodu geri almanızı göreceksiniz. Model oluşturma kodundaki çıkış şu hatayı gösterir:
 
-Upload a model
-Load model: 409:Service request failed.
-Status: 409 (Conflict)
-
-Content:
-{"error":{"code":"ModelAlreadyExists","message":"Model with same ID already exists dtmi:com:contoso:SampleModel;1. Use Model_List API to view models that already exist. See the Swagger example. (http://aka.ms/ModelListSwSmpl):}}
-
-Headers:
-api-supported-versions: REDACTED
-Date: Thu, 10 Sep 2020 01:57:51 GMT
-Content-Length: 115
-Content-Type: application/json; charset=utf-8
-
-Type name: : dtmi:com:contoso:SampleModel;1
-```
+:::image type="content" source= "media/tutorial-code/model-error.png" alt-text="Program çıktısı, ' 409: hizmet isteği başarısız oldu iletisini gösterir. Durum: 409 (çakışma). ', ardından dtmı: örnek: SampleModel; 1 olduğunu belirten bir hata çıktısı var":::
 
 Bu noktadan itibaren öğreticide, try/catch işleyicilerindeki hizmet yöntemlerine yapılan tüm çağrılar kaydırılır.
 
@@ -262,25 +247,19 @@ Bu noktadan itibaren öğreticide, try/catch işleyicilerindeki hizmet yöntemle
 
 Azure dijital TWINS 'e bir model yüklediğinize göre, bu model tanımını **dijital TWINS** oluşturmak için kullanabilirsiniz. [Dijital TWINS](concepts-twins-graph.md) , bir modelin örnekleridir ve iş ortamınızdaki varlıkları, bir gruptaki sensörlerden, binadaki odaların veya bir otomobilde ışıkların bulunduğu şeyleri temsil eder. Bu bölümde, daha önce karşıya yüklediğiniz modele göre birkaç dijital TWINS oluşturulur.
 
-Bu yeni `using` ifadeyi en üste ekleyin, bu kod örneği içinde yerleşik .net JSON serileştiricisini kullanır `System.Text.Json` :
-
-```csharp
-using System.Text.Json;
-```
-
-Ardından, `Main` Bu modele göre üç dijital TWINS oluşturmak ve başlatmak için yönteminin sonuna aşağıdaki kodu ekleyin.
+`Main`Bu modele göre üç dijital TWINS oluşturmak ve başlatmak için yönteminin sonuna aşağıdaki kodu ekleyin.
 
 ```csharp
 // Initialize twin data
-BasicDigitalTwin updateTwinData = new BasicDigitalTwin();
-updateTwinData.Metadata.ModelId = "dtmi:com:contoso:SampleModel;1";
-updateTwinData.Contents.Add("data", $"Hello World!");
+BasicDigitalTwin twinData = new BasicDigitalTwin();
+twinData.Metadata.ModelId = "dtmi:example:SampleModel;1";
+twinData.Contents.Add("data", $"Hello World!");
 
 string prefix="sampleTwin-";
 for(int i=0; i<3; i++) {
     try {
         twinData.Id = $"{prefix}{i}";
-        await client.client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(twinData.Id, updateTwinData);
+        await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(twinData.Id, twinData);
         Console.WriteLine($"Created twin: {prefix}{i}");
     } catch(RequestFailedException rex) {
         Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  
@@ -288,15 +267,17 @@ for(int i=0; i<3; i++) {
 }
 ```
 
-Komut pencerenizde, programını ile çalıştırın `dotnet run` . Ardından, programı yeniden çalıştırmak için tekrarlayın. 
+Komut pencerenizde, programını ile çalıştırın `dotnet run` . Çıktıda, *sampleTwin-0* , *sampleTwin-1* ve *sampleTwin-2* ' nin oluşturulduğu yazdırma iletilerini arayın. 
 
-TWINS, ilk çalıştırmadan sonra zaten mevcut olsa bile, ikinci kez oluşturulan bir hata olmadığını unutmayın. Model oluşturma işleminden farklı olarak, ikizi oluşturma, *upsert* semantik bir *PUT* çağrısı olan Rest düzeyinde olur. Bu, bir ikizi zaten varsa, yeniden oluşturmaya çalışılması durumunda yalnızca bunun yerine geçecek olması anlamına gelir. Hata gerekli değil.
+Sonra, programı yeniden çalıştırın. 
+
+TWINS, ilk çalıştırmadan sonra zaten mevcut olsa bile, ikinci kez oluşturulan bir hata olmadığını unutmayın. Model oluşturma işleminden farklı olarak, ikizi oluşturma, *upsert* semantik bir *PUT* çağrısı olan Rest düzeyinde olur. Yani, bir ikizi zaten varsa, aynı ikizi yeniden oluşturma girişimi yalnızca özgün ikizi yerine geçecek. Hiçbir hata oluşturulmaz.
 
 ### <a name="create-relationships"></a>İlişki oluştur
 
 Daha sonra, oluşturduğunuz TWINS arasında **ilişkiler** oluşturarak bunları bir **ikizi grafiğine** bağlayabilirsiniz. [İkizi grafikleri](concepts-twins-graph.md) , tüm ortamınızı temsil etmek için kullanılır.
 
-`Program`Sınıfına, yönteminin altına yeni bir static yöntem ekleyin `Main` :
+Yöntemine, yönteminin altına **Yeni bir static yöntem** ekleyin `Program` `Main` (şimdi kodda iki yöntem vardır):
 
 ```csharp
 public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId)
@@ -327,15 +308,15 @@ await CreateRelationship(client, "sampleTwin-0", "sampleTwin-1");
 await CreateRelationship(client, "sampleTwin-0", "sampleTwin-2");
 ```
 
-Komut pencerenizde, programını ile çalıştırın `dotnet run` .
+Komut pencerenizde, programını ile çalıştırın `dotnet run` . Çıktıda, iki ilişkinin başarıyla oluşturulduğunu belirten Print deyimlerini arayın.
 
-Azure dijital TWINS 'in aynı KIMLIĞE sahip olan bir ilişki oluşturmanıza izin vermediğini unutmayın. programı birden çok kez çalıştırırsanız, ilişki oluşturma konusunda özel durumlar görürsünüz. Bu kod özel durumları yakalar ve bunları yoksayar. 
+Aynı KIMLIĞE sahip başka bir ilişki zaten varsa Azure Digital TWINS 'in bir ilişki oluşturmanıza izin vermediğini unutmayın. programı birden çok kez çalıştırırsanız, ilişki oluşturma konusunda özel durumlar görürsünüz. Bu kod özel durumları yakalar ve bunları yoksayar. 
 
 ### <a name="list-relationships"></a>Liste ilişkileri
 
 Ekleyeceğiniz bir sonraki kod, oluşturduğunuz ilişkilerin listesini görmenizi sağlar.
 
-`Program` sınıfına aşağıdaki yeni yöntemi ekleyin:
+Sınıfına aşağıdaki **yeni yöntemi** ekleyin `Program` :
 
 ```csharp
 public async static Task ListRelationships(DigitalTwinsClient client, string srcId)
@@ -360,26 +341,9 @@ Daha sonra, `Main` kodu çağırmak için yönteminin sonuna aşağıdaki kodu e
 await ListRelationships(client, "sampleTwin-0");
 ```
 
-Komut pencerenizde, programını ile çalıştırın `dotnet run` . Oluşturduğunuz tüm ilişkilerin bir listesini görmeniz gerekir.
+Komut pencerenizde, programını ile çalıştırın `dotnet run` . Aşağıdaki gibi görünen bir çıktı bildiriminde oluşturduğunuz tüm ilişkilerin bir listesini görmeniz gerekir:
 
-Örnek bir çıktı aşağıda verilmiştir:
-
-```cmd/sh
-Hello World!
-Service client created - ready to go
-
-Upload a model
-Type name: System.Collections.Generic.Dictionary'2[System.String,System.String]: dtmi:contosocom:DigitalTwins:SampleModel;1
-Create twin: sampleTwin-0
-Create twin: sampleTwin-1
-Create twin: sampleTwin-2
-Created relationship successfully
-Created relationship successfully
-Twin sampleTwin-0 is connected to:
--contains->sampleTwin-1
--contains->sampleTwin-2
-
-```
+:::image type="content" source= "media/tutorial-code/list-relationships.png" alt-text="' Ikizi sampleTwin-0 ' a bağlı olduğunu belirten bir ileti gösteren program çıktısı: Contains->sampleTwin-1,-Contains->sampleTwin-2 '":::
 
 ### <a name="query-digital-twins"></a>Dijital TWINS sorgula
 
@@ -387,16 +351,22 @@ Azure dijital TWINS 'in ana özelliği, ortamınız hakkında soruları yanıtla
 
 Bu öğreticide eklenecek kodun son bölümü Azure dijital TWINS örneğinde bir sorgu çalıştırır. Bu örnekte kullanılan sorgu, örnekteki tüm dijital TWINS 'i döndürür.
 
-Yönteminin sonuna aşağıdaki kodu ekleyin `Main` :
+Bu `using` ifadeyi, `JsonSerializer` dijital ikizi bilgilerinin sunulmasını sağlamak üzere sınıfının kullanımını etkinleştirmek için ekleyin:
 
 ```csharp
-// Run a query    
-AsyncPageable<string> result = client.QueryAsync("Select * From DigitalTwins");
-await foreach (string twin in result)
+using System.Text.Json;
+```
+
+Ardından, yönteminin sonuna aşağıdaki kodu ekleyin `Main` :
+
+```csharp
+// Run a query for all twins   
+string query = "SELECT * FROM digitaltwins";
+AsyncPageable<BasicDigitalTwin> result = client.QueryAsync<BasicDigitalTwin>(query);
+
+await foreach (BasicDigitalTwin twin in result)
 {
-    object jsonObj = JsonSerializer.Deserialize<object>(twin);
-    string prettyTwin = JsonSerializer.Serialize(jsonObj, new JsonSerializerOptions { WriteIndented = true });
-    Console.WriteLine(prettyTwin);
+    Console.WriteLine(JsonSerializer.Serialize(twin));
     Console.WriteLine("---------------");
 }
 ```
@@ -415,7 +385,6 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Generic;
 using Azure;
-using Azure.DigitalTwins.Core.Serialization;
 using System.Text.Json;
 
 namespace minimal
@@ -445,22 +414,23 @@ namespace minimal
                 Console.WriteLine($"Load model: {rex.Status}:{rex.Message}");
             }
             // Read a list of models back from the service
+            Console.WriteLine("Models uploaded to the instance:");
             AsyncPageable<DigitalTwinsModelData> modelDataList = client.GetModelsAsync();
             await foreach (DigitalTwinsModelData md in modelDataList)
             {
-                Console.WriteLine($"Type name: {md.DisplayName}: {md.Id}");
+                Console.WriteLine($"{md.Id}");
             }
 
             // Initialize twin data
-            BasicDigitalTwin updateTwinData = new BasicDigitalTwin();
-            updateTwinData.Metadata.ModelId = "dtmi:com:contoso:SampleModel;1";
-            updateTwinData.Contents.Add("data", $"Hello World!");
-    
+            BasicDigitalTwin twinData = new BasicDigitalTwin();
+            twinData.Metadata.ModelId = "dtmi:example:SampleModel;1";
+            twinData.Contents.Add("data", $"Hello World!");
+            
             string prefix="sampleTwin-";
             for(int i=0; i<3; i++) {
                 try {
-                    updateTwinData.Id = $"{prefix}{i}";
-                    await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(updateTwinData.Id, updateTwinData);
+                    twinData.Id = $"{prefix}{i}";
+                    await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(twinData.Id, twinData);
                     Console.WriteLine($"Created twin: {prefix}{i}");
                 } catch(RequestFailedException rex) {
                     Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  
@@ -474,13 +444,13 @@ namespace minimal
             //List the relationships
             await ListRelationships(client, "sampleTwin-0");
 
-            // Run a query    
-            AsyncPageable<string> result = client.QueryAsync("Select * From DigitalTwins");
-            await foreach (string twin in result)
+            // Run a query for all twins   
+            string query = "SELECT * FROM digitaltwins";
+            AsyncPageable<BasicDigitalTwin> result = client.QueryAsync<BasicDigitalTwin>(query);
+            
+            await foreach (BasicDigitalTwin twin in result)
             {
-                object jsonObj = JsonSerializer.Deserialize<object>(twin);
-                string prettyTwin = JsonSerializer.Serialize(jsonObj, new JsonSerializerOptions { WriteIndented = true });
-                Console.WriteLine(prettyTwin);
+                Console.WriteLine(JsonSerializer.Serialize(twin));
                 Console.WriteLine("---------------");
             }
         }
@@ -509,7 +479,7 @@ namespace minimal
             try {
                 AsyncPageable<BasicRelationship> results = client.GetRelationshipsAsync<BasicRelationship>(srcId);
                 Console.WriteLine($"Twin {srcId} is connected to:");
-                await foreach (string rel in results)
+                await foreach (BasicRelationship rel in results)
                 {
                     Console.WriteLine($" -{rel.Name}->{rel.TargetId}");
                 }

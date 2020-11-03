@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0851838b89a9a2bdc54526ac40014f645f3d88a2
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: f8eae6381a438f6820f525a4d66cb5dc388eefb0
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146595"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280381"
 ---
 # <a name="manage-digital-twins"></a>Dijital ikizleri yönetme
 
-Ortamınızdaki varlıklar [dijital TWINS](concepts-twins-graph.md)tarafından temsil edilir. Dijital iklerinizi yönetmek oluşturma, değiştirme ve kaldırma işlemini içerebilir. Bu işlemleri yapmak için, [**Digitaltwins API 'lerini**](/rest/api/digital-twins/dataplane/twins), [.net (C#) SDK 'Sını](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)veya [Azure dijital TWINS CLI](how-to-use-cli.md)' yi kullanabilirsiniz.
+Ortamınızdaki varlıklar [dijital TWINS](concepts-twins-graph.md)tarafından temsil edilir. Dijital iklerinizi yönetmek oluşturma, değiştirme ve kaldırma işlemini içerebilir. Bu işlemleri yapmak için, [**Digitaltwins API 'lerini**](/rest/api/digital-twins/dataplane/twins), [.net (C#) SDK 'Sını](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)veya [Azure dijital TWINS CLI](how-to-use-cli.md)' yi kullanabilirsiniz.
 
 Bu makale, dijital TWINS yönetimine odaklanır; ilişkiler ve [ikizi Graf](concepts-twins-graph.md) bir bütün olarak çalışmak için bkz. [*nasıl yapılır: ilişkiler Ile ikizi grafiğini yönetme*](how-to-manage-graph.md).
 
