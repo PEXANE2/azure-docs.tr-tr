@@ -1,6 +1,6 @@
 ---
 title: Kaynak Denetimi Tümleştirmesi
-description: Azure Repos (git ve GitHub) kullanarak yerel kaynak denetimi tümleştirmesiyle SQL havuzu için kurumsal sınıf veritabanı DevOps deneyimi.
+description: Azure Repos (git ve GitHub) kullanarak yerel kaynak denetimi tümleştirmesiyle adanmış SQL havuzu için kurumsal sınıf veritabanı DevOps deneyimi.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 84abfea39cb7311e7cd60346d936c08c28c334d4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4751f3cf213098873b0c53b15df82f57d155787a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89441424"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313294"
 ---
-# <a name="source-control-integration-for-sql-pool"></a>SQL havuzu için kaynak denetimi tümleştirmesi
+# <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu için kaynak denetimi tümleştirmesi
 
-Bu öğreticide, SQL Server veri araçları (SSDT) veritabanı projenizi kaynak denetimiyle tümleştirme özetlenmektedir.  Kaynak denetimi tümleştirmesi, Azure SYNAPSE Analytics 'te SQL havuzu kaynağıyla sürekli tümleştirme ve dağıtım işlem hattınızı oluşturmanın ilk adımıdır.
+Bu öğreticide, SQL Server veri araçları (SSDT) veritabanı projenizi kaynak denetimiyle tümleştirme özetlenmektedir.  Kaynak denetimi tümleştirmesi, Azure SYNAPSE Analytics 'te adanmış SQL havuzu kaynağıyla sürekli tümleştirme ve dağıtım işlem hattınızı oluşturmanın ilk adımıdır.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -33,15 +33,15 @@ Bu öğreticide, SQL Server veri araçları (SSDT) veritabanı projenizi kaynak 
 
    ![Proje oluştur](./media/sql-data-warehouse-source-control-integration/1-create-project-azure-devops.png "Proje oluştur")
 
-2. Visual Studio 'Yu açın ve **Bağlantıyı Yönet**' i seçerek Azure DevOps kuruluşunuza ve projenize bir adım daha bağlanın.
+2. Visual Studio 'Yu açın ve **Bağlantıyı Yönet** ' i seçerek Azure DevOps kuruluşunuza ve projenize bir adım daha bağlanın.
 
    ![Bağlantıları Yönet](./media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Bağlantıları Yönet")
 
-3. **Bağlantıları Yönet**' i seçip **projeye bağlanın**.
+3. **Bağlantıları Yönet** ' i seçip **projeye bağlanın**.
  ![Connect1](./media/sql-data-warehouse-source-control-integration/3-connect-project.png "Bağlan")
 
 
-4. Birinci adımda oluşturduğunuz projeyi bulun, **Bağlan**' ı seçin.
+4. Birinci adımda oluşturduğunuz projeyi bulun, **Bağlan** ' ı seçin.
 ![Connect2](./media/sql-data-warehouse-source-control-integration/3.5-connect.png "Bağlan")
 
 
@@ -53,7 +53,7 @@ Visual Studio kullanarak projeleri bağlama hakkında daha fazla bilgi için [Ta
 
 ## <a name="create-and-connect-your-project"></a>Projenizi oluşturun ve bağlayın
 
-1. Visual Studio 'da, **Yerel kopyalanmış deponuzda**hem dizin hem de yerel Git deposu ile yeni bir SQL Server veritabanı projesi oluşturun.
+1. Visual Studio 'da, **Yerel kopyalanmış deponuzda** hem dizin hem de yerel Git deposu ile yeni bir SQL Server veritabanı projesi oluşturun.
 
    ![Yeni proje oluşturma](./media/sql-data-warehouse-source-control-integration/5-create-new-project.png "Yeni proje oluşturma")  
 
@@ -85,8 +85,8 @@ Visual Studio kullanarak projeleri bağlama hakkında daha fazla bilgi için [Ta
 
    ![Doğrula](./media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "Değişiklikleri doğrulama")
 
-4. (**Isteğe bağlı**) Azure depo deponuzdaki nesne tanımlarının ve yerel deponun veri Ambarınızı yansıttığından emin olmak için, SSDT kullanarak hedef veri ambarınızdaki değişiklikleri güncelleştirin.
+4. ( **Isteğe bağlı** ) Azure depo deponuzdaki nesne tanımlarının ve yerel deponun veri Ambarınızı yansıttığından emin olmak için, SSDT kullanarak hedef veri ambarınızdaki değişiklikleri güncelleştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [SQL havuzu için geliştirme](sql-data-warehouse-overview-develop.md)
+- [Adanmış SQL havuzu için geliştirme](sql-data-warehouse-overview-develop.md)

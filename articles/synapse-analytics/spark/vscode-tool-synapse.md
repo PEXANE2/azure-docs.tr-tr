@@ -1,6 +1,6 @@
 ---
 title: VSCode için bkz. Spark & Hive araçları (Spark uygulaması)
-description: Öğretici-Python 'da yazılmış Spark uygulamaları geliştirmek ve bunları bir Apache Spark havuzuna (Önizleme) göndermek üzere VSCode için Spark & Hive araçları 'nı kullanın.
+description: Öğretici-Python 'da yazılmış Spark uygulamaları geliştirmek ve bunları sunucusuz bir Apache Spark havuzuna (Önizleme) göndermek için, VSCode için Spark & Hive araçları 'nı kullanın.
 services: synapse-analytics
 author: hrasheed-msft
 ms.author: jejiang
@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 09/03/2020
-ms.openlocfilehash: 6778d78ff5e342d97c1c9bc477c1a88eca42a10a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99b2b04d0f29d92b503cc0bed2460b79cfa6c354
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91348635"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315662"
 ---
 # <a name="tutorial-create-an-apache-spark-applications-with-vscode-using-a-synapse-workspace"></a>Öğretici: SYNAPSE çalışma alanı kullanarak VSCode ile Apache Spark uygulamaları oluşturma
 
@@ -26,23 +26,23 @@ Spark & Hive araçları, Visual Studio Code tarafından desteklenen platformlar 
 
 Bu makaledeki adımları tamamlamak için aşağıdaki öğeler gereklidir:
 
-- Bir Apache Spark Havuzu. Apache Spark havuzu oluşturmak için, bkz. [Azure Portal kullanarak Apache Spark havuzu oluşturma](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md).
+- Sunucusuz Apache Spark Havuzu. Sunucusuz Apache Spark havuzu oluşturmak için, bkz. [Azure Portal kullanarak Apache Spark havuzu oluşturma](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md).
 - [Visual Studio Code](https://code.visualstudio.com/).
 - [Mono](https://www.mono-project.com/docs/getting-started/install/). Mono yalnızca Linux ve macOS için gereklidir.
 - [Visual Studio Code Için PySpark etkileşimli ortamı](../../hdinsight/set-up-pyspark-interactive-environment.md).
-- Yerel bir dizin. Bu makalede  **C:\HD\Synaseexample**kullanılmıştır.
+- Yerel bir dizin. Bu makalede  **C:\HD\Synaseexample** kullanılmıştır.
 
 ## <a name="install-spark--hive-tools"></a>Spark & Hive araçları 'nı yükler
 
 Önkoşulları karşıladıktan sonra, aşağıdaki adımları izleyerek Visual Studio Code için Spark & Hive araçları 'nı yükleyebilirsiniz:
 
-1. Visual Studio Code’u açın.
+1. Visual Studio Code'u açın.
 
-2. Menü çubuğundan **Görünüm**  >  **uzantıları**' na gidin.
+2. Menü çubuğundan **Görünüm**  >  **uzantıları** ' na gidin.
 
-3. Arama kutusuna **Spark & Hive**girin.
+3. Arama kutusuna **Spark & Hive** girin.
 
-4. Arama sonuçlarından **Spark & Hive araçları** ' nı seçin ve ardından **Install**' ı seçin:
+4. Arama sonuçlarından **Spark & Hive araçları** ' nı seçin ve ardından **Install** ' ı seçin:
 
      ![Visual Studio Code Python yüklemesi için Spark & Hive](./media/vscode-tool-synapse/install-hdInsight-plugin.png)
 
@@ -52,13 +52,13 @@ Bu makaledeki adımları tamamlamak için aşağıdaki öğeler gereklidir:
 
 Bir iş klasörü açmak ve Visual Studio Code bir dosya oluşturmak için aşağıdaki adımları izleyin:
 
-1. Menü çubuğundan **Dosya**aç klasörü ' ne gidin  >  **...**  >  **C:\HD\Synaseexample**ve ardından **Klasör Seç** düğmesini seçin. Klasör sol taraftaki **Gezgin** görünümünde görüntülenir.
+1. Menü çubuğundan **Dosya** aç klasörü ' ne gidin  >  **...**  >  **C:\HD\Synaseexample** ve ardından **Klasör Seç** düğmesini seçin. Klasör sol taraftaki **Gezgin** görünümünde görüntülenir.
 
 2. **Gezgin** görünümü ' nde, **Synaseexample** klasörünü seçin ve sonra Iş klasörünün yanındaki **yeni dosya** simgesini seçin:
 
      ![Visual Studio Code yeni dosya simgesi](./media/vscode-tool-synapse/visual-studio-code-new-file.png)
 
-3. Yeni dosyayı `.py` (Spark betiği) dosya uzantısını kullanarak adlandırın. Bu örnek, **HelloWorld.py**kullanır.
+3. Yeni dosyayı `.py` (Spark betiği) dosya uzantısını kullanarak adlandırın. Bu örnek, **HelloWorld.py** kullanır.
 
 ## <a name="connect-to-your-spark-pools"></a>Spark havuzlarınız ile bağlantı kurmak
 
@@ -68,7 +68,7 @@ Spark havuzlarınız ile bağlantı kurmak için Azure aboneliğinde oturum aç�
 
 Azure 'a bağlanmak için şu adımları izleyin:
 
-1. Menü çubuğundan, **görüntüleme**  >  **komut paleti...**' a gidin ve **Azure: oturum aç**' ı girin:
+1. Menü çubuğundan, **görüntüleme**  >  **komut paleti...** ' a gidin ve **Azure: oturum aç** ' ı girin:
 
      ![Visual Studio Code oturum açma için Spark & Hive araçları](./media/vscode-tool-synapse/hdinsight-for-vscode-extension-login.png)
 
@@ -80,7 +80,7 @@ Azure 'a bağlanmak için şu adımları izleyin:
 
 2. [Daha önce](#open-a-work-folder)oluşturulan **HelloWorld.py** dosyasını seçin. Betik düzenleyicisinde açılır.
 
-3. Betik Düzenleyicisi ' ne sağ tıklayın ve ardından **SYNAPSE: varsayılan Spark havuzunu ayarla**' yı seçin.  
+3. Betik Düzenleyicisi ' ne sağ tıklayın ve ardından **SYNAPSE: varsayılan Spark havuzunu ayarla** ' yı seçin.  
 
 4. Henüz yapmadıysanız Azure hesabınıza [bağlanın](#connect-to-your-spark-pools) .
 
@@ -130,7 +130,7 @@ for (word, count) in sortedCollection:
 
      ![pyspark çekirdeğini yükler](./media/vscode-tool-synapse/install-the-pyspark-kernel.png)
 
-5. Daha sonra yüklemeniz gerekiyorsa, **Dosya**  >  **tercihi**  >  **ayarları**' na gidebilir ve ardından **HDInsight: ayarlarda pyspark yükleme işlemini etkinleştir** ' i kaldırabilirsiniz. 
+5. Daha sonra yüklemeniz gerekiyorsa, **Dosya**  >  **tercihi**  >  **ayarları** ' na gidebilir ve ardından **HDInsight: ayarlarda pyspark yükleme işlemini etkinleştir** ' i kaldırabilirsiniz. 
     
      ![pyspark yüklemesini atlamayı etkinleştir](./media/vscode-tool-synapse/enable-skip-pyspark-installation.png)
 
@@ -146,7 +146,7 @@ for (word, count) in sortedCollection:
 
      ![aşağıdaki seçeneği seçin](./media/vscode-tool-synapse/choose-the-below-option.png)
     
-9. Menü çubuğundan **Görünüm**  >  **komut paleti...** ' ya gidin veya **SHIFT + CTRL + P** klavye kısayolunu kullanın ve **Geliştirici: yeniden yükle penceresini**girin.
+9. Menü çubuğundan **Görünüm**  >  **komut paleti...** ' ya gidin veya **SHIFT + CTRL + P** klavye kısayolunu kullanın ve **Geliştirici: yeniden yükle penceresini** girin.
 
      ![pencereyi yeniden yükle](./media/vscode-tool-synapse/reload-window.png)
 
@@ -156,9 +156,9 @@ for (word, count) in sortedCollection:
 
      ![pyspark etkileşimli bağlam menüsü](./media/vscode-tool-synapse/pyspark-interactive-right-click.png)
 
-12. Varsayılan bir Spark havuzu belirtmediyse Spark havuzunu seçin. Birkaç dakika sonra **Python etkileşimli** sonuçları yeni bir sekmede görüntülenir. **SYNAPSE PySpark**olarak değiştirmek Için pyspark öğesine tıklayın, ardından seçilen kodu tekrar gönderebilirsiniz ve kod başarıyla çalıştırılır. Araçlar ayrıca bağlam menüsünü kullanarak tüm betik dosyası yerine bir kod bloğu göndermenize olanak tanır:
+12. Varsayılan bir Spark havuzu belirtmediyse Spark havuzunu seçin. Birkaç dakika sonra **Python etkileşimli** sonuçları yeni bir sekmede görüntülenir. **SYNAPSE PySpark** olarak değiştirmek Için pyspark öğesine tıklayın, ardından seçilen kodu tekrar gönderebilirsiniz ve kod başarıyla çalıştırılır. Araçlar ayrıca bağlam menüsünü kullanarak tüm betik dosyası yerine bir kod bloğu göndermenize olanak tanır:
 
-     ![etkileşimli](./media/vscode-tool-synapse/pyspark-interactive-python-interactive-window.png)
+     ![LiDE](./media/vscode-tool-synapse/pyspark-interactive-python-interactive-window.png)
 
 ### <a name="perform-interactive-query-in-py-file-using-a--comment"></a>% #% Açıklaması kullanarak Kopyala dosyasında etkileşimli sorgu gerçekleştir
 
@@ -166,7 +166,7 @@ for (word, count) in sortedCollection:
 
      ![% # Ekle](./media/vscode-tool-synapse/run-cell.png)
 
-2. **Hücreyi Çalıştır**' a tıklayın. Birkaç dakika sonra Python etkileşimli sonuçları yeni bir sekmede görüntülenir. PySpark öğesine tıklayarak çekirdeği **SYNAPSE PySpark**olarak değiştirin, sonra **hücreyi yeniden çalıştır** ' a tıklayın ve kod başarıyla çalıştırılır. 
+2. **Hücreyi Çalıştır** ' a tıklayın. Birkaç dakika sonra Python etkileşimli sonuçları yeni bir sekmede görüntülenir. PySpark öğesine tıklayarak çekirdeği **SYNAPSE PySpark** olarak değiştirin, sonra **hücreyi yeniden çalıştır** ' a tıklayın ve kod başarıyla çalıştırılır. 
 
      ![hücre sonuçlarını Çalıştır](./media/vscode-tool-synapse/run-cell-get-results.png)
 
@@ -178,7 +178,7 @@ for (word, count) in sortedCollection:
 
      ![Varsayılan Spark havuzunu ayarlama ve yeniden yükleme](./media/vscode-tool-synapse/set-the-default-spark-pool-and-reload.png)
 
-3. Bkz. PySpark 'a tıklayarak çekirdeği **SYNAPSE Pyspark**olarak değiştirin ve ardından **hücre Çalıştır**' a tıklayarak bir süre sonra sonuç görüntülenir.
+3. Bkz. PySpark 'a tıklayarak çekirdeği **SYNAPSE Pyspark** olarak değiştirin ve ardından **hücre Çalıştır** ' a tıklayarak bir süre sonra sonuç görüntülenir.
 
      ![ipynb sonuçlarını Çalıştır](./media/vscode-tool-synapse/run-ipynb-file-results.png)
 
@@ -222,7 +222,7 @@ for (word, count) in sortedCollection:
 
 4. Henüz yapmadıysanız Azure hesabınıza [bağlanın](#connect-to-your-spark-pools) .
 
-5. Betik düzenleyicisine sağ tıklayın ve ardından **SYNAPSE: PySpark Batch**' i seçin.
+5. Betik düzenleyicisine sağ tıklayın ve ardından **SYNAPSE: PySpark Batch** ' i seçin.
 
 6. PySpark işinizi şu şekilde göndermek için bir Spark havuzu seçin:
 
@@ -238,13 +238,13 @@ VSCode için bir Spark & Hive araçları içinde Azure Explorer 'da farklı işl
 
 ### <a name="launch-workspace"></a>Çalışma alanını Başlat
 
-1. Azure Explorer 'da **SYNAPSE**adresine gidin, genişletin ve SYNAPSE abonelik listesini görüntüleyin.
+1. Azure Explorer 'da **SYNAPSE** adresine gidin, genişletin ve SYNAPSE abonelik listesini görüntüleyin.
 
      ![SYNAPSE Gezgini](./media/vscode-tool-synapse/synapse-explorer.png)
 
 2. SYNAPSE çalışma alanı aboneliği ' ne tıklayın, genişletin ve çalışma alanı listesini görüntüleyin.
 
-3. Bir çalışma alanına sağ tıklayın ve ardından **Apache Spark uygulamaları görüntüle**' yi seçin, SYNAPSE Studio web sitesindeki Apache Spark uygulama sayfası açılır.
+3. Bir çalışma alanına sağ tıklayın ve ardından **Apache Spark uygulamaları görüntüle** ' yi seçin, SYNAPSE Studio web sitesindeki Apache Spark uygulama sayfası açılır.
 
      ![çalışma alanına sağ tıklayın](./media/vscode-tool-synapse/right-click-on-workspace.png)
 
@@ -252,19 +252,19 @@ VSCode için bir Spark & Hive araçları içinde Azure Explorer 'da farklı işl
 
 4. Bir çalışma alanını genişletin, **varsayılan depolama** ve **Spark havuzları** görüntülenir.
 
-5. **Varsayılan depolama alanı**' na sağ tıklayın, **tam yolu Kopyala** ve **SYNAPSE Studio 'da aç** görüntülenir. 
+5. **Varsayılan depolama alanı** ' na sağ tıklayın, **tam yolu Kopyala** ve **SYNAPSE Studio 'da aç** görüntülenir. 
 
      ![Varsayılan depolamaya sağ tıklayın](./media/vscode-tool-synapse/right-click-on-default-storage.png)
 
-     - **Tam yolu Kopyala**' ya tıklayın, birincil ADLS 2. hesap URL 'si kopyalanacak,. gereken yere yapıştırabilirsiniz
+     - **Tam yolu Kopyala** ' ya tıklayın, birincil ADLS 2. hesap URL 'si kopyalanacak,. gereken yere yapıştırabilirsiniz
 
-     - **SYNAPSE Studio 'Da aç**' a tıkladığınızda, birincil depolama hesabı SYNAPSE Studio 'da açılır.
+     - **SYNAPSE Studio 'Da aç** ' a tıkladığınızda, birincil depolama hesabı SYNAPSE Studio 'da açılır.
 
      ![SYNAPSE Studio 'da varsayılan depolama](./media/vscode-tool-synapse/default-storage-in-synapse-studio.png)
 
-6. **Varsayılan depolamayı**genişletin, birincil depolama hesabı görüntülenir.
+6. **Varsayılan depolamayı** genişletin, birincil depolama hesabı görüntülenir.
 
-7. **Spark havuzlarını**genişletin, çalışma alanındaki tüm Spark havuzları görüntülenir.
+7. **Spark havuzlarını** genişletin, çalışma alanındaki tüm Spark havuzları görüntülenir.
 
      ![depolama havuzunu Genişlet](./media/vscode-tool-synapse/expand-storage-pool.png)
 

@@ -1,6 +1,6 @@
 ---
-title: İsteğe bağlı SQL 'de (Önizleme) depolama üzerindeki dosyalara erişin
-description: SYNAPSE SQL 'de isteğe bağlı SQL (Önizleme) kaynaklarını kullanarak depolama dosyalarının sorgulanmasını açıklar.
+title: Sunucusuz SQL havuzunda (Önizleme) depolama üzerindeki dosyalara erişin
+description: Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullanılarak depolama dosyalarının sorgulanmasını açıklar.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8884f62ba015cc4b33b75a133f21264dac6430e5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 73a5414a979742c4a7df16dcd2a5edda3748abef
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288996"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315931"
 ---
-# <a name="access-external-storage-in-synapse-sql-on-demand"></a>SYNAPSE SQL 'de dış depolamaya erişme (isteğe bağlı)
+# <a name="access-external-storage-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullanarak dış depolamaya erişme
 
-Bu belgede, SYNAPSE SQL 'de (isteğe bağlı) Azure depolama 'da depolanan dosyalardaki verileri nasıl okuyabileceğinizi açıklar. Kullanıcılar depolamaya erişmek için aşağıdaki seçeneklere sahiptir:
+Bu belgede, kullanıcıların sunucusuz SQL havuzunda Azure Storage 'da depolanan dosyalardan verileri nasıl okuyaabileceği açıklanır. Kullanıcılar depolamaya erişmek için aşağıdaki seçeneklere sahiptir:
 
 - Azure depolama 'daki dosyalar üzerinde geçici sorgular sağlayan [OPENROWSET](develop-openrowset.md) işlevi.
 - Dış dosyalar kümesinin üzerine inşa edilen önceden tanımlanmış bir veri yapısı olan [dış tablo](develop-tables-external-tables.md) .
@@ -27,7 +27,7 @@ Kullanıcı, Azure AD PASSTHROUGH kimlik doğrulaması (Azure AD sorumluları i�
 
 ## <a name="query-files-using-openrowset"></a>OPENROWSET kullanarak dosyaları sorgulama
 
-OPENROWSET, kullanıcıların depolama üzerinde erişimi olan Azure Storage 'daki dış dosyaları sorgulamasına olanak sağlar. SYNAPSE SQL isteğe bağlı uç noktasına bağlı olan Kullanıcı, Azure depolama 'daki dosyaların içeriğini okumak için aşağıdaki sorguyu kullanmalıdır:
+OPENROWSET, kullanıcıların depolama erişimi varsa Azure Storage 'daki dış dosyaları sorgulamasına olanak sağlar. Sunucusuz SQL havuzuna bağlı olan bir Kullanıcı, Azure depolama 'daki dosyaların içeriğini okumak için aşağıdaki sorguyu kullanmalıdır:
 
 ```sql
 SELECT * FROM

@@ -1,6 +1,6 @@
 ---
-title: İsteğe bağlı SQL 'de dış tablo tanımları için Apache Spark eşitlemesi (Önizleme)
-description: İsteğe bağlı SQL (Önizleme) kullanarak Spark tablolarının nasıl sorgulanmasına genel bakış
+title: Sunucusuz SQL havuzundaki dış tablo tanımlarına yönelik Apache Spark eşitler (Önizleme)
+description: Sunucusuz SQL Havuzu (Önizleme) kullanarak Spark tablolarının nasıl sorgulanmasına genel bakış
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
@@ -9,24 +9,24 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3e9f688a31d2847505e974ab6a1557aa6a7b2047
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ea4e7cd009be8a78faa0dcfab44371a350b6a200
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87046844"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315827"
 ---
-# <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-sql-on-demand-preview"></a>İsteğe bağlı SQL 'de Azure SYNAPSE dış tablo tanımlarına yönelik Apache Spark eşitlemesini (Önizleme)
+# <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-serverless-sql-pool-preview"></a>Sunucusuz SQL havuzundaki Azure SYNAPSE dış tablo tanımlarına yönelik Apache Spark eşitlemesini (Önizleme)
 
-İsteğe bağlı SQL (Önizleme), Azure SYNAPSE havuzları için Apache Spark meta verileri otomatik olarak eşitleyebilir. Spark havuzlarında (Önizleme) bulunan her veritabanı için bir SQL isteğe bağlı veritabanı oluşturulur. 
+Sunucusuz SQL Havuzu (Önizleme), Apache Spark meta verileri otomatik olarak eşitleyebilir. Sunucusuz Apache Spark havuzları (Önizleme) içinde bulunan her veritabanı için sunucusuz bir SQL havuzu veritabanı oluşturulacaktır. 
 
-Parquet tabanlı ve Azure depolamada bulunan her Spark dış tablosu için, SQL isteğe bağlı veritabanında bir dış tablo oluşturulur. Bu nedenle Spark havuzlarınızı kapatabilir ve yine de SQL isteğe bağlı olarak Spark dış tablolarını sorgulayabilirsiniz.
+Parquet tabanlı ve Azure depolamada bulunan her Spark dış tablosu için, sunucusuz SQL havuzu veritabanında bir dış tablo oluşturulur. Bu nedenle, Spark havuzlarınızı kapatabilir ve yine de sunucusuz SQL havuzundan Spark dış tablolarını sorgulayabilirsiniz.
 
-Bir tablo Spark 'ta bölümlendiğinde, depolama alanındaki dosyalar klasörlere göre düzenlenir. İsteğe bağlı SQL, Bölüm meta verilerini kullanır ve yalnızca sorgunuz için ilgili klasörleri ve dosyaları hedefler.
+Bir tablo Spark 'ta bölümlendiğinde, depolama alanındaki dosyalar klasörlere göre düzenlenir. Sunucusuz SQL havuzu, Bölüm meta verilerini kullanır ve yalnızca sorgunuz için ilgili klasörleri ve dosyaları hedefleyin.
 
-Meta veri eşitleme, Azure SYNAPSE çalışma alanında sağlanan her Spark havuzu için otomatik olarak yapılandırılır. Spark dış tablolarını anında sorgulamaya başlayabilirsiniz.
+Meta veri eşitleme, Azure SYNAPSE çalışma alanında sağlanan her bir sunucusuz Apache Spark havuzu için otomatik olarak yapılandırılır. Spark dış tablolarını anında sorgulamaya başlayabilirsiniz.
 
-Azure depolama 'da bulunan her Spark Parquet dış tablosu, bir SQL isteğe bağlı veritabanına karşılık gelen bir dbo şemasında dış tablo ile temsil edilir. 
+Azure depolama 'da bulunan her Spark Parquet dış tablosu, sunucusuz bir SQL havuzu veritabanına karşılık gelen bir dbo şeması içindeki bir dış tablo ile temsil edilir. 
 
 Spark dış tablo sorguları için, dış [spark_table] hedefleyen bir sorgu çalıştırın. Aşağıdaki örneği çalıştırmadan önce, dosyaların bulunduğu [depolama hesabına doğru erişiminizin](develop-storage-files-storage-access-control.md) olduğundan emin olun.
 
@@ -35,14 +35,14 @@ SELECT * FROM [db].dbo.[spark_table]
 ```
 
 > [!NOTE]
-> Bir sütun için ekleme, bırakma veya alter Spark dış tablo komutları, SQL isteğe bağlı SQL 'de dış tabloya yansıtılmayacaktır.
+> Bir sütun için Add, Drop veya alter Spark External Table komutları sunucusuz SQL havuzundaki dış tabloya yansıtılmayacaktır.
 
 ## <a name="apache-spark-data-types-to-sql-data-types-mapping"></a>Veri türlerini SQL veri türleri eşlemesine Apache Spark
 
 | Spark veri türü | SQL veri türü               |
 | --------------- | --------------------------- |
 | ByteType        | smallint                    |
-| Kısa tür       | smallint                    |
+| Kısa tür      | smallint                    |
 | IntegerType     | int                         |
 | LongType        | bigint                      |
 | FloatType       | real                        |
@@ -50,16 +50,16 @@ SELECT * FROM [db].dbo.[spark_table]
 | DecimalType     | decimal                     |
 | TimestampType   | datetime2                   |
 | Tarih türü        | date                        |
-| StringType      | varchar (max) *               |
+| StringType      | varchar(maks.)\*               |
 | BinaryType      | ikili                   |
 | BooleanType     | bit                         |
-| ArrayType       | varchar (max) * (JSON 'a) * * |
-| MapType         | varchar (max) * (JSON 'a) * * |
-| StructType      | varchar (max) * (JSON 'a) * * |
+| ArrayType       | varchar (max) \* (JSON)\** |
+| MapType         | varchar (max) \* (JSON)\** |
+| StructType      | varchar (max) \* (JSON)\** |
 
 \* Kullanılan harmanlama Latin1_General_100_BIN2_UTF8.
 
-* * ArrayType, MapType ve StructType, Jdönemleri olarak temsil edilir.
+\** ArrayType, MapType ve StructType, Jdönemleri olarak temsil edilir.
 
 
 

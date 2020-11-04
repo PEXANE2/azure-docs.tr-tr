@@ -11,14 +11,14 @@ author: blackmist
 ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a36f69c9956dd05c5fbd85d7e37b90c0b1e4c21e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09eeafa99c14984f74f8807014f646379c7507f0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897651"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314216"
 ---
-# <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>ML Web hizmeti uç noktalarından verileri izleme ve toplama
+# <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>ML web hizmet uç noktalarından verileri izleme ve toplama
 
 
 Bu makalede, Azure Kubernetes Service (AKS) veya Azure Container Instances (acı) içindeki Web hizmeti uç noktalarına dağıtılan modellerden nasıl veri toplayacağınızı öğreneceksiniz. [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) kullanarak bir uç noktadan aşağıdaki verileri toplayın:
@@ -26,13 +26,13 @@ Bu makalede, Azure Kubernetes Service (AKS) veya Azure Container Instances (acı
 * Yanıtlar
 * İstek ücretleri, yanıt süreleri ve hata oranları
 * Bağımlılık oranları, yanıt süreleri ve hata oranları
-* Özel Durumlar
+* Özel durumlar
 
 [Enable-App-Insights-in-Production-Service. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) Not defteri, bu makaledeki kavramları gösterir.
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
  
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
@@ -144,12 +144,12 @@ Azure Application Insights Azure Machine Learning Studio 'dan da etkinleştirebi
 
 1. Konumundaki Studio 'da oturum açın https://ml.azure.com .
 1. **Modeller** ' e gidin ve dağıtmak istediğiniz modeli seçin.
-1. **+ Dağıt**' ı seçin.
+1. **+ Dağıt** ' ı seçin.
 1. **Dağıtım modeli** formunu doldurun.
 1. **Gelişmiş** menüsünü genişletin.
 
     ![Formu dağıt](./media/how-to-enable-app-insights/deploy-form.png)
-1. **Tanılamayı ve veri toplamayı etkinleştir Application Insights**seçin.
+1. **Tanılamayı ve veri toplamayı etkinleştir Application Insights** seçin.
 
     ![App Insights 'ı etkinleştir](./media/how-to-enable-app-insights/enable-app-insights.png)
 
@@ -172,13 +172,13 @@ logs = service.get_logs()
 Azure Application Insights, hizmet günlüklerinizi Azure Machine Learning çalışma alanıyla aynı kaynak grubunda depolar. Studio 'yu kullanarak verilerinizi görüntülemek için aşağıdaki adımları kullanın:
 
 1. [Studio](https://ml.azure.com/)'daki Azure Machine Learning çalışma alanınıza gidin.
-1. **Uç noktaları**seçin.
+1. **Uç noktaları** seçin.
 1. Dağıtılan hizmeti seçin.
 1. **Application Insights URL** bağlantısını seçin.
 
     [![Application Insights URL 'sini bul](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 
-1. Application Insights, **genel bakış** sekmesinde veya __izleme__ bölümünde __Günlükler__' i seçin.
+1. Application Insights, **genel bakış** sekmesinde veya __izleme__ bölümünde __Günlükler__ ' i seçin.
 
     [![İzlemenin Genel Bakış sekmesi](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
@@ -204,9 +204,9 @@ Web hizmeti istek bilgilerini günlüğe kaydetmek için `print` Score.py dosyan
 ## <a name="export-data-for-retention-and-processing"></a>Bekletme ve işleme için verileri dışarı aktarma
 
 >[!Important]
-> Azure Application Insights yalnızca blob depolamaya dışarı aktarmaları destekler. Bu uygulamanın sınırları hakkında daha fazla bilgi için bkz. [Application Insights 'tan telemetri dışarı aktarma](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry#continuous-export-advanced-storage-configuration).
+> Azure Application Insights yalnızca blob depolamaya dışarı aktarmaları destekler. Bu uygulamanın sınırları hakkında daha fazla bilgi için bkz. [Application Insights 'tan telemetri dışarı aktarma](../azure-monitor/app/export-telemetry.md#continuous-export-advanced-storage-configuration).
 
-Verileri, bekletme ayarlarını tanımlayabileceğiniz bir BLOB depolama hesabına aktarmak için Application Insights ' [sürekli dışarı aktarma](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) ' yı kullanın. Application Insights verileri JSON biçiminde dışarı aktarır. 
+Verileri, bekletme ayarlarını tanımlayabileceğiniz bir BLOB depolama hesabına aktarmak için Application Insights ' [sürekli dışarı aktarma](../azure-monitor/app/export-telemetry.md) ' yı kullanın. Application Insights verileri JSON biçiminde dışarı aktarır. 
 
 :::image type="content" source="media/how-to-enable-app-insights/continuous-export-setup.png" alt-text="Sürekli dışarı aktarma":::
 
@@ -215,8 +215,8 @@ Verileri, bekletme ayarlarını tanımlayabileceğiniz bir BLOB depolama hesabı
 Bu makalede, Web hizmeti uç noktaları için günlük kaydını etkinleştirmeyi ve günlükleri görüntülemeyi öğrendiniz. Sonraki adımlar için bu makaleleri deneyin:
 
 
-* [AKS kümesine model dağıtma](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service)
+* [AKS kümesine model dağıtma](./how-to-deploy-azure-kubernetes-service.md)
 
-* [Azure Container Instances model dağıtma](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-container-instance)
+* [Azure Container Instances model dağıtma](./how-to-deploy-azure-container-instance.md)
 
-* Mlops: üretimde modellerden toplanan verileri kullanma hakkında daha fazla bilgi edinmek için [modelleri Azure Machine Learning Ile yönetin, dağıtın ve izleyin](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment) . Bu tür veriler, Machine Learning işleminizi sürekli olarak iyileştirmenize yardımcı olabilir.
+* Mlops: üretimde modellerden toplanan verileri kullanma hakkında daha fazla bilgi edinmek için [modelleri Azure Machine Learning Ile yönetin, dağıtın ve izleyin](./concept-model-management-and-deployment.md) . Bu tür veriler, Machine Learning işleminizi sürekli olarak iyileştirmenize yardımcı olabilir.

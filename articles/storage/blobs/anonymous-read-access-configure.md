@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/22/2020
+ms.date: 11/03/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 7ea0cbfb8ddfa2991e2a362bcb321418428cb16b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a808a6bb0d4dc75f02147bbfdd74d17b34e96f6e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288138"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313974"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Kapsayıcılar ve BLOB 'lar için anonim genel okuma erişimini yapılandırma
 
@@ -51,7 +51,7 @@ Depolama hesabı için genel erişime izin vermemek, bu hesaptaki tüm kapsayıc
 > [!IMPORTANT]
 > Bir depolama hesabı için genel erişime izin vermemek, bu depolama hesabındaki tüm kapsayıcılar için genel erişim ayarlarını geçersiz kılar. Depolama hesabı için genel erişime izin verilse, bu hesaba yönelik ileride yapılacak anonim istekler başarısız olur. Bu ayarı değiştirmeden önce, Depolama hesabınızdaki verilere anonim olarak erişebilecek istemci uygulamalarının etkilerini anladığınızdan emin olun. Daha fazla bilgi için bkz. [kapsayıcılar ve bloblara anonim genel okuma erişimini engelleme](anonymous-read-access-prevent.md).
 
-Bir depolama hesabı için genel erişime izin vermek veya bu erişimi engellemek için, hesabın **Allowblobpublicaccess** özelliğini yapılandırın. Bu özellik, Azure genel bulutundaki veya Azure Kamu bulutlarında Azure Resource Manager dağıtım modeliyle oluşturulan tüm depolama hesapları için kullanılabilir. Daha fazla bilgi için bkz. [depolama hesabına genel bakış](../common/storage-account-overview.md).
+Bir depolama hesabı için genel erişime izin vermek veya bu erişimi engellemek için, hesabın **Allowblobpublicaccess** özelliğini yapılandırın. Bu özellik, Azure Resource Manager dağıtım modeliyle oluşturulan tüm depolama hesapları için kullanılabilir. Daha fazla bilgi için bkz. [depolama hesabına genel bakış](../common/storage-account-overview.md).
 
 **Allowblobpublicaccess** özelliği varsayılan olarak ayarlı değildir ve açıkça ayarlanana kadar bir değer döndürmez. Özellik değeri **null** ya da **doğru** olduğunda depolama hesabı ortak erişime izin verir.
 

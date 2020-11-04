@@ -1,6 +1,6 @@
 ---
-title: Kapasite sınırları-Azure SYNAPSE Analytics (eski adıyla SQL DW)
-description: Azure SYNAPSE 'de SYNAPSE SQL havuzunun çeşitli bileşenleri için izin verilen en yüksek değer.
+title: Adanmış SQL havuzu için kapasite sınırları
+description: Azure SYNAPSE Analytics 'te adanmış SQL havuzunun çeşitli bileşenleri için izin verilen en yüksek değer.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,22 +11,22 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4e06dbee5b1edbb4fd1a3379ee2d9aa06f9949ab
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: dac2a60b6b9db082a10d2473eb22b86d8097eee0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742456"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313152"
 ---
-# <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) kapasite sınırları
+# <a name="capacity-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu için kapasite sınırları
 
-Çeşitli Azure SYNAPSE bileşenleri için izin verilen en yüksek değer.
+Azure SYNAPSE Analytics 'te adanmış SQL havuzunun çeşitli bileşenleri için izin verilen en yüksek değer.
 
 ## <a name="workload-management"></a>İş yükü yönetimi
 
 | Kategori | Açıklama | Maksimum |
 |:--- |:--- |:--- |
-| [Veri ambarı birimleri (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Tek bir SQL Havuzu (veri ambarı) birimi için maksimum DWU | Gen1: DW6000<br></br>Gen2: DW30000c |
+| [Veri ambarı birimleri (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Tek bir adanmış SQL Havuzu (veri ambarı) birimi için maksimum DWU | Gen1: DW6000<br></br>Gen2: DW30000c |
 | [Veri ambarı birimleri (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Sunucu başına varsayılan DTU |54.000<br></br>Varsayılan olarak, her SQL Server (örneğin, myserver.database.windows.net), DW5000c 'e kadar izin veren bir DTU kotasına sahiptir 54.000. Bu kota yalnızca bir güvenlik sınırıdır. [Bir destek bileti oluşturarak](sql-data-warehouse-get-started-create-support-ticket.md) ve istek türü olarak *Kota* ' yı seçerek kotanızı artırabilirsiniz.  DTU gereksinimlerinizi hesaplamak için gereken toplam DWU ile 7,5 ' i çarpıp, gereken toplam cDWU ile 9,5 ' i çarpın. Örneğin:<br></br>DW6000 x 7,5 = 45.000 DTU<br></br>DW5000c x 9,5 = 47.500 DTU.<br></br>Geçerli DTU tüketiminizi, portalda SQL Server seçeneğinden görüntüleyebilirsiniz. DTU kotasında hem duraklatılmış hem de duraklatılmamış veritabanları sayılır. |
 | Veritabanı bağlantısı |Maksimum eş zamanlı açık oturum |1024<br/><br/>Eş zamanlı açık oturumların sayısı, seçilen DWU 'ya göre değişiklik gösterecektir. DWU600c ve üzeri, en fazla 1024 açık oturumu destekler. DWU500c ve altı, en fazla eşzamanlı açık oturum sınırı olan 512 ' i destekler. Aynı anda yürütebileceğini sorgu sayısı için sınırlamalar olduğunu unutmayın. Eşzamanlılık sınırı aşıldığında, istek işlenmek üzere beklediği bir iç sıraya gider. |
 | Veritabanı bağlantısı |Hazırlanan deyimler için maksimum bellek |20 MB |
@@ -62,7 +62,7 @@ ms.locfileid: "92742456"
 | Kategori | Açıklama | Maksimum |
 |:--- |:--- |:--- |
 | PolyBase yükleri |Satır başına MB |1<br/><br/>PolyBase, 1 MB 'tan küçük satırları yükler. LOB veri türlerini kümelenmiş bir columnstore dizini (CCı) olan tablolara yüklemek desteklenmez.<br/> |
-|PolyBase yükleri|Toplam dosya sayısı|1.000.000<br/><br/>PolyBase yükleri, en fazla 1M dosyayı aşamaz. Şu hatayla karşılaşabilirsiniz: **bölme sayısı 1000000 üst sınırını aştığından işlem başarısız oldu** .|
+|PolyBase yükleri|Toplam dosya sayısı|1.000.000<br/><br/>PolyBase yükleri, en fazla 1M dosyayı aşamaz. Şu hatayla karşılaşabilirsiniz: **bölme sayısı 1000000 üst sınırını aştığından işlem başarısız oldu**.|
 
 ## <a name="queries"></a>Sorgular
 

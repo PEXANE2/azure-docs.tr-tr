@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 5a04e5a7136ac1a33766bf543a27ff7794498c26
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: be2afad7e7cb08d9c677e589846f3d67cf43e708
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996361"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314226"
 ---
 # <a name="collect-data-from-models-in-production"></a>Üretim içindeki modellerden veri toplama
 
@@ -67,11 +67,11 @@ Blob 'daki çıkış verilerinin yolu şu sözdizimini izler:
 
 - Bir AKS kümeniz olması gerekir. Oluşturma ve dağıtma hakkında daha fazla bilgi için bkz. [nasıl dağıtılır ve nerede](how-to-deploy-and-where.md).
 
-- [Ortamınızı ayarlayın](how-to-configure-environment.md) ve [Azure Machine Learning izleme SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)kurun.
+- [Ortamınızı ayarlayın](how-to-configure-environment.md) ve [Azure Machine Learning izleme SDK 'sını](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)kurun.
 
 ## <a name="enable-data-collection"></a>Veri toplamayı etkinleştirme
 
-Azure Machine Learning veya diğer araçlarla dağıttığınız modelden bağımsız olarak [veri toplamayı](https://docs.microsoft.com/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?view=azure-ml-py&preserve-view=true) etkinleştirebilirsiniz.
+Azure Machine Learning veya diğer araçlarla dağıttığınız modelden bağımsız olarak [veri toplamayı](/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?preserve-view=true&view=azure-ml-py) etkinleştirebilirsiniz.
 
 Veri toplamayı etkinleştirmek için şunları yapmanız gerekir:
 
@@ -91,7 +91,7 @@ Veri toplamayı etkinleştirmek için şunları yapmanız gerekir:
     prediction_dc = ModelDataCollector("best_model", designation="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
-    *CorrelationId* isteğe bağlı bir parametredir. Modeliniz gerekmiyorsa kullanmanız gerekmez. *CorrelationId* kullanımı, *Krete numarası* veya *CustomerID*gibi diğer verilerle daha kolay bir şekilde eşleşmenizin sağlanmasına yardımcı olur.
+    *CorrelationId* isteğe bağlı bir parametredir. Modeliniz gerekmiyorsa kullanmanız gerekmez. *CorrelationId* kullanımı, *Krete numarası* veya *CustomerID* gibi diğer verilerle daha kolay bir şekilde eşleşmenizin sağlanmasına yardımcı olur.
     
     *Tanımlayıcı* parametresi daha sonra Blobun klasör yapısını oluşturmak için kullanılır. Ham verileri işlenen verilerden ayırt etmek için kullanabilirsiniz.
 
@@ -138,7 +138,7 @@ Blob depolamadaki toplanan verileri analiz etmek için tercih ettiğiniz bir ara
 
 1. Çalışma alanınızı açın.
 
-1. **Depolama**’yı seçin.
+1. **Depolama** ’yı seçin.
 
     [![Depolama seçeneğini belirleyin](./media/how-to-enable-data-collection/StorageLocation.png)](././media/how-to-enable-data-collection/StorageLocation.png#lightbox)
 
@@ -153,13 +153,13 @@ Blob depolamadaki toplanan verileri analiz etmek için tercih ettiğiniz bir ara
 
 1. [Power BI Desktop](https://www.powerbi.com)indirip açın.
 
-1. **Veri al** ' ı seçin ve [**Azure Blob depolama**](https://docs.microsoft.com/power-bi/desktop-data-sources)' yı seçin.
+1. **Veri al** ' ı seçin ve [**Azure Blob depolama**](/power-bi/desktop-data-sources)' yı seçin.
 
     [![Power BI blob kurulumu](./media/how-to-enable-data-collection/PBIBlob.png)](././media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
 1. Depolama hesabınızın adını ekleyin ve depolama anahtarınızı girin. Bu bilgileri, Blobun **Ayarlar**  >  **erişim anahtarları** ' nı seçerek bulabilirsiniz.
 
-1. **Model veri** kapsayıcısını seçin ve **Düzenle**' yi seçin.
+1. **Model veri** kapsayıcısını seçin ve **Düzenle** ' yi seçin.
 
     [![Power BI Gezgini](./media/how-to-enable-data-collection/pbiNavigator.png)](././media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
 
@@ -175,7 +175,7 @@ Blob depolamadaki toplanan verileri analiz etmek için tercih ettiğiniz bir ara
 
     [![Power BI Içerik](./media/how-to-enable-data-collection/pbiContent.png)](././media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
-1. **Tamam**’ı seçin. Veriler önceden yüklenir.
+1. **Tamam** ’ı seçin. Veriler önceden yüklenir.
 
     [![Dosyaları birleştirme Power BI](./media/how-to-enable-data-collection/pbiCombine.png)](././media/how-to-enable-data-collection/pbiCombine.png#lightbox)
 
@@ -187,15 +187,15 @@ Blob depolamadaki toplanan verileri analiz etmek için tercih ettiğiniz bir ara
 
 ### <a name="analyze-model-data-using-azure-databricks"></a><a id="databricks"></a> Azure Databricks kullanarak model verilerini analiz etme
 
-1. [Azure Databricks çalışma alanı](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)oluşturun.
+1. [Azure Databricks çalışma alanı](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)oluşturun.
 
 1. Databricks çalışma alanınıza gidin.
 
-1. Databricks çalışma alanınızda **verileri karşıya yükle**' yi seçin.
+1. Databricks çalışma alanınızda **verileri karşıya yükle** ' yi seçin.
 
     [![Databricks veri yükleme seçeneğini belirleme](./media/how-to-enable-data-collection/dbupload.png)](././media/how-to-enable-data-collection/dbupload.png#lightbox)
 
-1. **Yeni tablo oluştur** ' u seçin ve **diğer veri kaynakları**' nı seçin  >  **Azure Blob Storage**  >  **tablo oluştur Not defteri**.
+1. **Yeni tablo oluştur** ' u seçin ve **diğer veri kaynakları** ' nı seçin  >  **Azure Blob Storage**  >  **tablo oluştur Not defteri**.
 
     [![Databricks tablosu oluşturma](./media/how-to-enable-data-collection/dbtable.PNG)](././media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 

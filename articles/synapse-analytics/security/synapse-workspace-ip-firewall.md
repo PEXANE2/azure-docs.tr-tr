@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2bac9645fa66cd33c7cda79f16628c1104e27d7d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 00b4f38f4a2a44b88718224db2b2442033816f83
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480556"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313893"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules-preview"></a>Azure SYNAPSE Analytics IP güvenlik duvarı kuralları (Önizleme)
 
@@ -21,7 +21,7 @@ Bu makalede IP güvenlik duvarı kuralları açıklanacaktır ve bunları Azure 
 
 ## <a name="ip-firewall-rules"></a>IP güvenlik duvarı kuralları
 
-IP güvenlik duvarı kuralları, her isteğin kaynak IP adresine göre SYNAPSE çalışma alanınıza erişim izni verir veya erişimi reddeder. Çalışma alanınız için IP güvenlik duvarı kurallarını yapılandırabilirsiniz. Çalışma alanı düzeyinde yapılandırılan IP güvenlik duvarı kuralları, çalışma alanının tüm genel uç noktaları için geçerlidir (SQL havuzları, istek üzerine SQL ve geliştirme).
+IP güvenlik duvarı kuralları, her isteğin kaynak IP adresine göre SYNAPSE çalışma alanınıza erişim izni verir veya erişimi reddeder. Çalışma alanınız için IP güvenlik duvarı kurallarını yapılandırabilirsiniz. Çalışma alanı düzeyinde yapılandırılan IP güvenlik duvarı kuralları, çalışma alanının tüm genel uç noktalarına uygulanır (adanmış SQL havuzları, sunucusuz SQL havuzu ve geliştirme).
 
 ## <a name="create-and-manage-ip-firewall-rules"></a>IP güvenlik duvarı kuralları oluşturma ve yönetme
 
@@ -31,13 +31,13 @@ IP Güvenlik Duvarı kurallarının bir Synapse çalışma alanına Eklenme iki 
 
 ![Azure portal SYNAPSE çalışma alanı IP yapılandırması.](./media/synpase-workspace-ip-firewall/ip-firewall-2.png)
 
-Ayrıca, çalışma alanı oluşturulduktan sonra bir Synapse çalışma alanına IP güvenlik duvarı kuralları ekleyebilirsiniz. Azure portal güvenlik altında **güvenlik** **duvarları** ' nı seçin. Yeni bir IP güvenlik duvarı kuralı eklemek için, buna bir ad, başlangıç IP 'si ve bitiş IP 'si verin. Tümünü seçtikten sonra **Kaydet**'i seçin.
+Ayrıca, çalışma alanı oluşturulduktan sonra bir Synapse çalışma alanına IP güvenlik duvarı kuralları ekleyebilirsiniz. Azure portal güvenlik altında **güvenlik** **duvarları** ' nı seçin. Yeni bir IP güvenlik duvarı kuralı eklemek için, buna bir ad, başlangıç IP 'si ve bitiş IP 'si verin. Tümünü seçtikten sonra **Kaydet** 'i seçin.
 
 ![Azure portal 'de Azure SYNAPSE Workspace IP yapılandırması.](./media/synpase-workspace-ip-firewall/ip-firewall-3.png)
 
 ## <a name="connect-to-synapse-from-your-own-network"></a>Kendi ağınızdan Synapse’e bağlanma
 
-SYNAPSE Studio kullanarak SYNAPSE çalışma alanınıza bağlanabilirsiniz. Çalışma alanınızdaki SQL kaynaklarına (SQL havuzları ve isteğe bağlı SQL) bağlanmak için SQL Server Management Studio (SSMS) de kullanabilirsiniz.
+SYNAPSE Studio kullanarak SYNAPSE çalışma alanınıza bağlanabilirsiniz. Çalışma alanınızdaki SQL kaynaklarına (adanmış SQL havuzları ve sunucusuz SQL havuzu) bağlanmak için SQL Server Management Studio (SSMS) de kullanabilirsiniz.
 
 Ağınızdaki ve yerel bilgisayarınızdaki güvenlik duvarının SYNAPSE Studio için 80, 443 ve 1443 TCP bağlantı noktalarında giden iletişime izin verdiğinden emin olun.
 

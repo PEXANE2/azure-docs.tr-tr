@@ -9,12 +9,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 09/17/2020
-ms.openlocfilehash: 65a627cc009699660de0897ce853acaa78381f6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0ee83cdf3ea710974ce6985db3fc8ce8782351c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275991"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315801"
 ---
 # <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>Azure 'da Ubuntu Veri Bilimi Sanal Makinesi veri bilimi
 
@@ -22,14 +22,14 @@ Bu izlenecek yol, Ubuntu Veri Bilimi Sanal Makinesi (DSVM) kullanarak birkaç or
 
 Bu izlenecek yolda, [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) veri kümesini çözümliyoruz. Spambase, istenmeyen veya ham (istenmeyen posta değil) olarak işaretlenmiş bir e-posta kümesidir. Spambase, e-postaların içeriğiyle ilgili bazı istatistikler de içerir. Anlatımın ilerleyen kısımlarında yer aldığı istatistikleri konuşuyoruz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir Linux DSVM kullanabilmeniz için aşağıdaki önkoşullara sahip olmanız gerekir:
 
 * **Azure aboneliği**. Azure aboneliği almak için, bkz. [ücretsiz Azure hesabınızı hemen oluşturun](https://azure.microsoft.com/free/).
 
-* [**Ubuntu veri bilimi sanal makinesi**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Sanal makineyi sağlama hakkında daha fazla bilgi için bkz. [Ubuntu veri bilimi sanal makinesi sağlama](linux-dsvm-intro.md).
-* [**X2Go**](https://wiki.x2go.org/doku.php) açık bir XFCE oturumuyla bilgisayarınızda yüklü. Daha fazla bilgi için bkz. [X2Go Istemcisini yükleyip yapılandırma](linux-dsvm-intro.md#x2go).
+* [**Ubuntu veri bilimi sanal makinesi**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Sanal makineyi sağlama hakkında daha fazla bilgi için bkz. [Ubuntu veri bilimi sanal makinesi sağlama](./release-notes.md).
+* [**X2Go**](https://wiki.x2go.org/doku.php) açık bir XFCE oturumuyla bilgisayarınızda yüklü. Daha fazla bilgi için bkz. [X2Go Istemcisini yükleyip yapılandırma](dsvm-ubuntu-intro.md#x2go).
 * Daha yumuşak bir kaydırma deneyimi için DSVM 'nin Firefox Web tarayıcısında `gfx.xrender.enabled` bayrağını değiştirin `about:config` . [Daha fazla bilgi edinin](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). ' İ de `mousewheel.enable_pixel_scrolling` olarak ayarlamayı düşünün `False` . [Daha fazla bilgi edinin](https://support.mozilla.org/questions/981140).
 
 ## <a name="download-the-spambase-dataset"></a>Spambase veri kümesini indirin
@@ -62,8 +62,8 @@ mv headers spambaseHeaders.data
 
 Veri kümesinde her e-posta için çeşitli istatistik türleri vardır:
 
-* **Sözcük \_ FREQ \_ _sözcüğü_ ** gibi sütunlar, e- *postadaki kelimeyle*eşleşen sözcüklerin yüzdesini gösterir. Örneğin, **sözcük \_ FREQ \_ ** **1**ise, e-postadaki tüm sözcüklerin %1 ' i *haline*getirin.
-* Karakter ** \_ FREQ \_ _karakteri_ ** gibi sütunlar, e-postadaki *karakter olan tüm*karakterlerin yüzdesini belirtir.
+* **Sözcük \_ FREQ \_ _sözcüğü_** gibi sütunlar, e- *postadaki kelimeyle* eşleşen sözcüklerin yüzdesini gösterir. Örneğin, **sözcük \_ FREQ \_** **1** ise, e-postadaki tüm sözcüklerin %1 ' i *haline* getirin.
+* Karakter **\_ FREQ \_ _karakteri_** gibi sütunlar, e-postadaki *karakter olan tüm* karakterlerin yüzdesini belirtir.
 * **büyük \_ çalışma \_ uzunluğu \_ en uzun** , büyük harflerin bir dizisinin en uzun uzunluğudur.
 * **büyük \_ çalışma \_ uzunluğu \_ ortalaması** , büyük harflerin tüm sıralarının ortalama uzunluğudur.
 * **sermaye \_ çalışma \_ uzunluğu \_ toplamı** , tüm büyük harflerin tüm sıralarının toplam uzunluğudur.
@@ -213,7 +213,7 @@ accuracy
 
 - [Görüntülerde ürünleri algılamaya yönelik uçtan uca bir çözüm oluşturmak için nasıl yapılır Kılavuzu](https://github.com/Azure/cortana-intelligence-product-detection-from-images): görüntü algılama, görüntüleri içindeki nesneleri bulup sınıflandırmanın bir tekniğidir. Teknoloji, çok sayıda gerçek hayatta iş etki alanında büyük bir rekele sunmayı mümkün hale getirir. Örneğin, satıcılar bu tekniği kullanarak bir müşterinin rafı hangi ürüne kullandığını tespit edebilir. Sırasıyla bu bilgiler, ürün envanterini yönetme mağazalarına yardımcı olur. 
 
-- [Ses Için derin öğrenme](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/): Bu öğreticide, [kentsel sesler veri kümesinde](https://urbansounddataset.weebly.com/)ses olayı algılaması için derin bir öğrenme modelinin nasıl eğeceği gösterilmektedir. Öğretici, ses verileriyle çalışma hakkında genel bakış sağlar.
+- [Ses Için derin öğrenme](/archive/blogs/machinelearning/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure): Bu öğreticide, [kentsel sesler veri kümesinde](https://urbansounddataset.weebly.com/)ses olayı algılaması için derin bir öğrenme modelinin nasıl eğeceği gösterilmektedir. Öğretici, ses verileriyle çalışma hakkında genel bakış sağlar.
 
 - [Metin belgelerinin sınıflandırılması](https://github.com/anargyri/lstm_han): Bu kılavuzda iki farklı sinir ağ mimarisi oluşturma ve eğitme gösterilmektedir: hiyerarşik dikkat ağı ve uzun kısa süreli bellek (lstm). Bu sinir Networks, metin belgelerinin sınıflandırılmasında derin öğrenme için keras API 'sini kullanır. Keras, en popüler derin öğrenme çerçevelerinin üçüne (Microsoft Cognitive Toolkit, TensorFlow ve Ano) önde bir ön uçdır.
 
@@ -315,7 +315,7 @@ DSVM 'de birden çok örnek Not defteri zaten yüklü:
 
 ### <a name="rattle"></a>Rattle
 
-[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (*R* *A*Nalitik *T*OOL *T*o *L*kazanmak *)* veri araştırma için bir grafik R aracıdır. Rattle, verileri yüklemeyi, keşfetmenizi ve dönüştürmeyi, modelleri derlemeyi ve değerlendirmeyi kolaylaştıran sezgisel bir arabirime sahiptir. [Rattle: R Için bir veri madenciliği GUI](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) , Rattle 'in özelliklerini gösteren bir anlatım sağlar.
+[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) ( *R* *A* Nalitik *T* OOL *T* o *L* kazanmak *)* veri araştırma için bir grafik R aracıdır. Rattle, verileri yüklemeyi, keşfetmenizi ve dönüştürmeyi, modelleri derlemeyi ve değerlendirmeyi kolaylaştıran sezgisel bir arabirime sahiptir. [Rattle: R Için bir veri madenciliği GUI](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) , Rattle 'in özelliklerini gösteren bir anlatım sağlar.
 
 Aşağıdaki komutları çalıştırarak Rattle 'i yükleyip başlatın:
 
@@ -328,34 +328,34 @@ rattle()
 > [!NOTE]
 > DSVM 'ye Rattle yüklemeniz gerekmez. Ancak, Rattle açıldığında ek paketler kurmanız istenebilir.
 
-Rattle, sekme tabanlı bir arabirim kullanır. Sekmelerin çoğu, veri yükleme veya verileri keşfetme gibi [ekip veri bilimi işlemindeki](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)adımlara karşılık gelir. Veri bilimi işlemi, sekmeler aracılığıyla soldan sağa doğru akar. Son sekme, Rattle tarafından çalıştırılan R komutlarının günlüğünü içerir.
+Rattle, sekme tabanlı bir arabirim kullanır. Sekmelerin çoğu, veri yükleme veya verileri keşfetme gibi [ekip veri bilimi işlemindeki](../team-data-science-process/index.yml)adımlara karşılık gelir. Veri bilimi işlemi, sekmeler aracılığıyla soldan sağa doğru akar. Son sekme, Rattle tarafından çalıştırılan R komutlarının günlüğünü içerir.
 
 Veri kümesini yüklemek ve yapılandırmak için:
 
 1. Dosyayı yüklemek için **veri** sekmesini seçin.
-1. **Dosya adı**' nın yanındaki seçiciyi seçin ve ardından **Spambaseheaders. Data**öğesini seçin.
-1. Dosyasını yükleyin. **Yürüt**' ü seçin. Tanımlı veri türü de dahil olmak üzere her bir sütunun özetini görmeniz gerekir. bir giriş, hedef ya da başka bir değişken türü olsun; ve benzersiz değer sayısı.
-1. Rattle, **istenmeyen posta** sütununu hedef olarak doğru şekilde tanımladı. **İstenmeyen posta** sütununu seçin ve ardından **hedef veri türünü** **kategoric**olarak ayarlayın.
+1. **Dosya adı** ' nın yanındaki seçiciyi seçin ve ardından **Spambaseheaders. Data** öğesini seçin.
+1. Dosyasını yükleyin. **Yürüt** ' ü seçin. Tanımlı veri türü de dahil olmak üzere her bir sütunun özetini görmeniz gerekir. bir giriş, hedef ya da başka bir değişken türü olsun; ve benzersiz değer sayısı.
+1. Rattle, **istenmeyen posta** sütununu hedef olarak doğru şekilde tanımladı. **İstenmeyen posta** sütununu seçin ve ardından **hedef veri türünü** **kategoric** olarak ayarlayın.
 
 Verileri incelemek için:
 
 1. **Keşfet** sekmesini seçin.
-1. Değişken türleri ve bazı Özet istatistikleri hakkındaki bilgileri görmek için **Özet**  >  **yürütme**' yi seçin.
-1. Her değişkenle ilgili diğer istatistik türlerini görüntülemek için, **açıkla** veya **temel bilgiler**gibi diğer seçenekleri belirleyin.
+1. Değişken türleri ve bazı Özet istatistikleri hakkındaki bilgileri görmek için **Özet**  >  **yürütme** ' yi seçin.
+1. Her değişkenle ilgili diğer istatistik türlerini görüntülemek için, **açıkla** veya **temel bilgiler** gibi diğer seçenekleri belirleyin.
 
 Ayrıca, öngörülü çizimler oluşturmak için **keşfet** sekmesini de kullanabilirsiniz. Verilerin histogramını çizmek için:
 
-1. **Dağıtımları**seçin.
-1. **Word_freq_remove** ve **word_freq_you**için **histogram**' ı seçin.
-1. **Yürüt**’ü seçin. Tek bir grafik penceresinde her iki yoğunluk işaretini de görmeniz gerekir. burada, e-postalardan _Kaldır_' a kadar çok daha sık _gördüğünüz sözcük burada_ görünür.
+1. **Dağıtımları** seçin.
+1. **Word_freq_remove** ve **word_freq_you** için **histogram** ' ı seçin.
+1. **Yürüt** ’ü seçin. Tek bir grafik penceresinde her iki yoğunluk işaretini de görmeniz gerekir. burada, e-postalardan _Kaldır_ ' a kadar çok daha sık _gördüğünüz sözcük burada_ görünür.
 
 **Bağıntı** çizimleri de ilginç. Bir çizim oluşturmak için:
 
-1. **Tür**için **bağıntı**' yı seçin.
-1. **Yürüt**’ü seçin.
+1. **Tür** için **bağıntı** ' yı seçin.
+1. **Yürüt** ’ü seçin.
 1. Rattle, en fazla 40 değişken önerdiği konusunda sizi uyarır. Çizimi görüntülemek için **Evet** ' i seçin.
 
-Daha fazla ilgi çekici bağıntılı ilişkiler vardır: _teknoloji_ , örneğin, _HP_ ve _Labs_'e özellikle yöneliktir. Ayrıca, veri kümesinin alan kodu 650 olduğundan, _650_ ile de kesinlikle bağıntılı olur.
+Daha fazla ilgi çekici bağıntılı ilişkiler vardır: _teknoloji_ , örneğin, _HP_ ve _Labs_ 'e özellikle yöneliktir. Ayrıca, veri kümesinin alan kodu 650 olduğundan, _650_ ile de kesinlikle bağıntılı olur.
 
 Sözcükler arasındaki eş ilişkilerin sayısal değerleri, **keşfet** penceresinde kullanılabilir. Örneğin, bu _teknolojinin_ ve _paradan_ _olumsuz şekilde bağıntılı_ olduğunu unutmayın.
 
@@ -374,20 +374,20 @@ Rattle, küme analizini de çalıştırabilir. Çıktının daha kolay okunması
 * word_freq_business
 * istenmeyen posta
 
-**Küme** sekmesine dönün. **Kortalamalar**' ı seçin ve ardından **küme sayısını** **4**olarak ayarlayın. **Yürüt**’ü seçin. Sonuçlar çıkış penceresinde görüntülenir. Bir kümede yüksek düzeyde _George_ ve _HP_vardır ve büyük olasılıkla yasal bir iş e-postadır.
+**Küme** sekmesine dönün. **Kortalamalar** ' ı seçin ve ardından **küme sayısını** **4** olarak ayarlayın. **Yürüt** ’ü seçin. Sonuçlar çıkış penceresinde görüntülenir. Bir kümede yüksek düzeyde _George_ ve _HP_ vardır ve büyük olasılıkla yasal bir iş e-postadır.
 
 Temel bir karar ağacı makine öğrenimi modeli oluşturmak için:
 
 1. **Model** sekmesini seçin,
-1. **Tür**için **ağaç**' ı seçin.
+1. **Tür** için **ağaç** ' ı seçin.
 1. Çıkış penceresinde ağacı metin biçiminde göstermek için **Yürüt** ' ü seçin.
 1. Grafik sürümünü görüntülemek için **Çiz** düğmesini seçin. Karar ağacı, daha önce rpart kullanarak elde ettiğimiz ağaca benzer.
 
 Rattle 'ın yararlı bir özelliği, birkaç makine öğrenimi yöntemi çalıştırma ve bunları hızlı bir şekilde değerlendirme yeteneğidir. Adımlar şunlardır:
 
-1. **Tür**için **Tümü**' nü seçin.
-1. **Yürüt**’ü seçin.
-1. Rattle çalışmayı bitirdiğinde, **SVM**gibi herhangi bir **tür** değeri seçebilir ve sonuçları görüntüleyebilirsiniz.
+1. **Tür** için **Tümü** ' nü seçin.
+1. **Yürüt** ’ü seçin.
+1. Rattle çalışmayı bitirdiğinde, **SVM** gibi herhangi bir **tür** değeri seçebilir ve sonuçları görüntüleyebilirsiniz.
 1. Ayrıca, **değerlendirme** sekmesini kullanarak doğrulama kümesindeki modellerin performansını karşılaştırabilirsiniz. Örneğin, **hata matrisi** seçimi, doğrulama kümesindeki her bir model için karışıklık matrisi, genel hata ve Ortalama sınıf hatası gösterir. Ayrıca, ROC eğrileri çizdirebilirsiniz, duyarlılık analizini çalıştırabilir ve diğer model değerlendirmesi türlerini gerçekleştirebilirsiniz.
 
 Model oluşturma işiniz bittiğinde, oturumunuz sırasında Rattle tarafından çalıştırılan R kodunu görüntülemek için **günlük** sekmesini seçin. **Dışarı aktar** düğmesini seçerek bunu kaydedebilirsiniz.
@@ -464,23 +464,23 @@ CREATE TABLE data (word_freq_make real, word_freq_address real, word_freq_all re
 
 Başlamak için, **uygulamalar** menüsünde, SQUIRREL SQL ' i açın. Sürücüyü ayarlamak için:
 
-1. **Windows**  >  **Görünüm sürücülerini**seçin.
-1. **PostgreSQL** öğesine sağ tıklayıp **sürücüyü değiştir**' i seçin.
-1. **Ek sınıf yolu**  >  **Ekle**' yi seçin.
-1. **Dosya adı**için **/usr/share/Java/jdbcdrivers/PostgreSQL-9.4.1208.jre6.jar**girin.
-1. **Aç**’ı seçin.
-1. **Liste sürücülerini**seçin. **Sınıf adı**için, **org. PostgreSQL. Driver**' ı seçin ve ardından **Tamam**' ı seçin.
+1. **Windows**  >  **Görünüm sürücülerini** seçin.
+1. **PostgreSQL** öğesine sağ tıklayıp **sürücüyü değiştir** ' i seçin.
+1. **Ek sınıf yolu**  >  **Ekle** ' yi seçin.
+1. **Dosya adı** için **/usr/share/Java/jdbcdrivers/PostgreSQL-9.4.1208.jre6.jar** girin.
+1. **Aç** ’ı seçin.
+1. **Liste sürücülerini** seçin. **Sınıf adı** için, **org. PostgreSQL. Driver** ' ı seçin ve ardından **Tamam** ' ı seçin.
 
 Yerel sunucuyla bağlantı kurmak için:
 
 1. **Windows**  >  **Görünüm diğer adlarını seçin.**
-1. **+** Yeni bir diğer ad oluşturmak için düğmeyi seçin. Yeni diğer ad için **Istenmeyen posta veritabanı**girin. 
-1. **Sürücü**Için **PostgreSQL**' i seçin.
-1. URL 'YI **JDBC: PostgreSQL://localhost/spam**olarak ayarlayın.
+1. **+** Yeni bir diğer ad oluşturmak için düğmeyi seçin. Yeni diğer ad için **Istenmeyen posta veritabanı** girin. 
+1. **Sürücü** Için **PostgreSQL** ' i seçin.
+1. URL 'YI **JDBC: PostgreSQL://localhost/spam** olarak ayarlayın.
 1. Kullanıcı adınızı ve parolanızı girin.
-1. **Tamam**’ı seçin.
+1. **Tamam** ’ı seçin.
 1. **Bağlantı** penceresini açmak Için, **istenmeyen posta veritabanı** diğer adına çift tıklayın.
-1. **Bağlan**'ı seçin.
+1. **Bağlan** ’ı seçin.
 
 Bazı sorguları çalıştırmak için:
 
@@ -494,7 +494,7 @@ Bu verileri araştırmak için çalıştırabileceğiniz birçok sorgu daha vard
 SELECT avg(word_freq_make), spam from data group by spam;
 ```
 
-Ya da, genellikle *3B*içeren e-posta özellikleri nelerdir?
+Ya da, genellikle *3B* içeren e-posta özellikleri nelerdir?
 
 ```SQL
 SELECT * from data order by word_freq_3d desc;
@@ -538,5 +538,3 @@ GO
 ```
 
 Ayrıca, SQUIRREL SQL kullanarak da sorgulama yapabilirsiniz. SQL Server JDBC sürücüsünü kullanarak PostgreSQL 'e benzer adımları izleyin. JDBC sürücüsü/usr/share/Java/jdbcdrivers/sqljdbc42.jar klasöründedir.
-
-

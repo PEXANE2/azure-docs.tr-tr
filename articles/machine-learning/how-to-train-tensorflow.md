@@ -10,12 +10,12 @@ author: mx-iao
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 21a0672db5a7038fbcdeb01e4cf07bcd760cf7ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: deedfacc4ff9caa7a8d8e4559cb29b8c34c2868a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743004"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314478"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>TensorFlow modellerini Azure Machine Learning ölçeklendirerek eğitme
 
@@ -25,7 +25,7 @@ Bu örnek, derin sinir ağı (DNN) kullanarak el ile yapılan rakamları sınıf
 
 Baştan sona bir iş akışı modeli geliştirmenize veya [mevcut bir modeli](how-to-deploy-existing-model.md) buluta verdiğinize göre, üretim sınıfı modellerini derlemek, dağıtmak, sürüm ve izlemek üzere açık kaynaklı eğitim işlerini ölçeklendirmek için Azure Machine Learning kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kodu şu ortamlardan birinde çalıştırın:
 
@@ -36,7 +36,7 @@ Bu kodu şu ortamlardan birinde çalıştırın:
  
  - Kendi Jupyter Notebook sunucunuz
 
-    - [Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) (>= 1.15.0) yükler.
+    - [Azure Machine Learning SDK 'sını](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.15.0) yükler.
     - [Bir çalışma alanı yapılandırma dosyası oluşturun](how-to-configure-environment.md#workspace).
     - [Örnek betik dosyalarını indirin](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow/train-hyperparameter-tune-deploy-with-tensorflow) `tf_mnist.py` ' `utils.py`
      
@@ -65,7 +65,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>Çalışma alanını başlatma
 
-[Azure Machine Learning çalışma alanı](concept-workspace.md) , hizmet için en üst düzey kaynaktır. Oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Python SDK 'sında bir nesne oluşturarak çalışma alanı yapıtlarına erişebilirsiniz [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) .
+[Azure Machine Learning çalışma alanı](concept-workspace.md) , hizmet için en üst düzey kaynaktır. Oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Python SDK 'sında bir nesne oluşturarak çalışma alanı yapıtlarına erişebilirsiniz [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) .
 
 `config.json` [Önkoşullar bölümünde](#prerequisites)oluşturulan dosyadan bir çalışma alanı nesnesi oluşturun.
 
@@ -75,7 +75,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-file-dataset"></a>Dosya veri kümesi oluşturma
 
-`FileDataset`Nesne, çalışma alanı veri deposundaki veya genel URL 'lerdeki bir veya birden çok dosyaya başvurur. Dosyalar herhangi bir biçimde olabilir ve sınıfı, size dosyaları indirme veya işleme özelliğini sağlar. Bir oluşturarak `FileDataset` , veri kaynağı konumuna bir başvuru oluşturursunuz. Veri kümesine herhangi bir dönüştürme uyguladıysanız, bunlar veri kümesinde da depolanır. Veriler mevcut konumunda kalır, bu nedenle ek depolama maliyeti tahakkuk etmemesi gerekir. [how-to](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) `Dataset` Daha fazla bilgi için bkz. paketteki nasıl yapılır Kılavuzu.
+`FileDataset`Nesne, çalışma alanı veri deposundaki veya genel URL 'lerdeki bir veya birden çok dosyaya başvurur. Dosyalar herhangi bir biçimde olabilir ve sınıfı, size dosyaları indirme veya işleme özelliğini sağlar. Bir oluşturarak `FileDataset` , veri kaynağı konumuna bir başvuru oluşturursunuz. Veri kümesine herhangi bir dönüştürme uyguladıysanız, bunlar veri kümesinde da depolanır. Veriler mevcut konumunda kalır, bu nedenle ek depolama maliyeti tahakkuk etmemesi gerekir. [how-to](./how-to-create-register-datasets.md) `Dataset` Daha fazla bilgi için bkz. paketteki nasıl yapılır Kılavuzu.
 
 ```python
 from azureml.core.dataset import Dataset
@@ -193,7 +193,7 @@ Ortamları oluşturma ve kullanma hakkında daha fazla bilgi için, bkz. [Azure 
 
 ### <a name="create-a-scriptrunconfig"></a>ScriptRunConfig oluşturma
 
-Eğitim betiğinizi, kullanılacak ortamı ve üzerinde çalıştırılacak işlem hedefini de içeren eğitim işinizin yapılandırma ayrıntılarını belirtmek için bir [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) nesnesi oluşturun. Eğitim betiğinizdeki bağımsız değişkenler, parametresinde belirtilmişse komut satırı aracılığıyla geçirilir `arguments` .
+Eğitim betiğinizi, kullanılacak ortamı ve üzerinde çalıştırılacak işlem hedefini de içeren eğitim işinizin yapılandırma ayrıntılarını belirtmek için bir [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) nesnesi oluşturun. Eğitim betiğinizdeki bağımsız değişkenler, parametresinde belirtilmişse komut satırı aracılığıyla geçirilir `arguments` .
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -221,7 +221,7 @@ ScriptRunConfig ile işleri yapılandırma hakkında daha fazla bilgi için bkz.
 
 ### <a name="submit-a-run"></a>Bir çalıştırma gönder
 
-[Run nesnesi](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) , iş çalışırken ve tamamlandıktan sonra çalışma geçmişi için arabirim sağlar.
+[Run nesnesi](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) , iş çalışırken ve tamamlandıktan sonra çalışma geçmişi için arabirim sağlar.
 
 ```Python
 run = Experiment(workspace=ws, name='tf-mnist').submit(src)
@@ -230,13 +230,13 @@ run.wait_for_completion(show_output=True)
 ### <a name="what-happens-during-run-execution"></a>Çalıştırma yürütme sırasında ne olur?
 Çalıştırma yürütüldüğü için aşağıdaki aşamalardan geçer:
 
-- **Hazırlama**: bir Docker görüntüsü, tanımlanan ortama göre oluşturulur. Görüntü, çalışma alanının kapsayıcı kayıt defterine yüklenir ve daha sonra çalışacak şekilde önbelleğe alınır. Günlükler, çalıştırma geçmişine de kaydedilir ve ilerlemeyi izlemek için görüntülenebilir. Bunun yerine, seçkin bir ortam belirtilmişse, bu eklenen ortamı destekleyen önbelleğe alınmış görüntü kullanılacaktır.
+- **Hazırlama** : bir Docker görüntüsü, tanımlanan ortama göre oluşturulur. Görüntü, çalışma alanının kapsayıcı kayıt defterine yüklenir ve daha sonra çalışacak şekilde önbelleğe alınır. Günlükler, çalıştırma geçmişine de kaydedilir ve ilerlemeyi izlemek için görüntülenebilir. Bunun yerine, seçkin bir ortam belirtilmişse, bu eklenen ortamı destekleyen önbelleğe alınmış görüntü kullanılacaktır.
 
-- **Ölçeklendirme**: Batch AI kümesi, çalışmayı yürütmek için daha fazla düğüm gerektiriyorsa, küme ölçeği büyütmeyi dener ve şu anda kullanılabilir.
+- **Ölçeklendirme** : Batch AI kümesi, çalışmayı yürütmek için daha fazla düğüm gerektiriyorsa, küme ölçeği büyütmeyi dener ve şu anda kullanılabilir.
 
-- **Çalışıyor**: betik klasöründeki tüm betikler işlem hedefine yüklenir, veri depoları bağlanır veya kopyalanır ve `script` yürütülür. Stdout ve **./logs** klasörü çıkışları, çalıştırma geçmişine akışla kaydedilir ve çalıştırmayı izlemek için kullanılabilir.
+- **Çalışıyor** : betik klasöründeki tüm betikler işlem hedefine yüklenir, veri depoları bağlanır veya kopyalanır ve `script` yürütülür. Stdout ve **./logs** klasörü çıkışları, çalıştırma geçmişine akışla kaydedilir ve çalıştırmayı izlemek için kullanılabilir.
 
-- **Işlem sonrası**: çalıştırmanın **./çıktılar** klasörü, çalışma geçmişine kopyalanır.
+- **Işlem sonrası** : çalıştırmanın **./çıktılar** klasörü, çalışma geçmişine kopyalanır.
 
 ## <a name="register-or-download-a-model"></a>Bir modeli kaydetme veya indirme
 
@@ -290,7 +290,7 @@ dependencies:
   - horovod==0.19.5
 ```
 
-Azure ML üzerinde MPı/Horovod kullanarak dağıtılmış bir işi yürütmek için, ScriptRunConfig oluşturucusunun parametresine bir [Mpicontısıdiation](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true) belirtmeniz gerekir `distributed_job_config` . Aşağıdaki kod, düğüm başına bir işlem çalıştıran 2 düğümlü dağıtılmış bir işi yapılandırır. Düğüm başına birden çok işlem çalıştırmak istiyorsanız (örneğin, küme SKU 'sunda birden fazla GPU varsa), ek olarak, `process_count_per_node` Mpiconation (varsayılan değer) parametresinde parametreyi de belirtin `1` .
+Azure ML üzerinde MPı/Horovod kullanarak dağıtılmış bir işi yürütmek için, ScriptRunConfig oluşturucusunun parametresine bir [Mpicontısıdiation](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py) belirtmeniz gerekir `distributed_job_config` . Aşağıdaki kod, düğüm başına bir işlem çalıştıran 2 düğümlü dağıtılmış bir işi yapılandırır. Düğüm başına birden çok işlem çalıştırmak istiyorsanız (örneğin, küme SKU 'sunda birden fazla GPU varsa), ek olarak, `process_count_per_node` Mpiconation (varsayılan değer) parametresinde parametreyi de belirtin `1` .
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -310,7 +310,7 @@ Azure ML 'de Horovod ile dağıtılmış TensorFlow 'u çalıştırmaya ilişkin
 
 Eğitim kodunuzda [Yerel dağıtılmış TensorFlow](https://www.tensorflow.org/guide/distributed_training) kullanıyorsanız (örneğin, TensorFlow 2. x ' in API 'si), `tf.distribute.Strategy` Dağıtılmış işi Azure ML aracılığıyla da başlatabilirsiniz. 
 
-Bunu yapmak için, ScriptRunConfig oluşturucusunun parametresine yönelik bir [Tensorflowconfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py&preserve-view=true) belirtin `distributed_job_config` . Kullanıyorsanız, `tf.distribute.experimental.MultiWorkerMirroredStrategy` `worker_count` eğitim işinizin düğüm sayısına karşılık gelen TensorflowConfiguration içinde öğesini belirtin.
+Bunu yapmak için, ScriptRunConfig oluşturucusunun parametresine yönelik bir [Tensorflowconfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?preserve-view=true&view=azure-ml-py) belirtin `distributed_job_config` . Kullanıyorsanız, `tf.distribute.experimental.MultiWorkerMirroredStrategy` `worker_count` eğitim işinizin düğüm sayısına karşılık gelen TensorflowConfiguration içinde öğesini belirtin.
 
 ```python
 import os

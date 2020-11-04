@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to
-ms.openlocfilehash: 116dd65bf04c01f513e196a2f1b37d54aacbf1fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8868b930abe28ed205446df0c6c9b0f111213eb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841365"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312782"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Azure Machine Learning Studio ile verilere bağlanma
 
@@ -31,7 +31,7 @@ Aşağıdaki tabloda, veri depolarının ve veri kümelerinin avantajları tanı
 
 Datamağazaların ve veri kümelerinin Azure Machine Learning genel veri erişimi iş akışına uygun olduğunu anlamak için, [güvenli erişim verileri](concept-data.md#data-workflow) makalesine bakın.
 
-Kod ilk deneyimi için, [Azure Machine Learning Python SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) kullanmak için aşağıdaki makalelere bakın:
+Kod ilk deneyimi için, [Azure Machine Learning Python SDK 'sını](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) kullanmak için aşağıdaki makalelere bakın:
 * [Veri depolarıyla Azure Storage Services 'A bağlanın](how-to-access-data.md). 
 * [Azure Machine Learning veri kümeleri oluşturun](how-to-create-register-datasets.md). 
 
@@ -48,21 +48,21 @@ Kod ilk deneyimi için, [Azure Machine Learning Python SDK 'sını](https://docs
 
 ## <a name="create-datastores"></a>Veri depoları oluşturma
 
-[Bu Azure depolama çözümlerinden](how-to-access-data.md#matrix)veri depoları oluşturabilirsiniz. **Desteklenmeyen depolama çözümleri için**ve ml denemeleri sırasında veri çıkış maliyetini kaydetmek için, verilerinizi desteklenen bir Azure depolama çözümüne [taşımanız](how-to-access-data.md#move) gerekir. [Veri depoları hakkında daha fazla bilgi edinin](how-to-access-data.md). 
+[Bu Azure depolama çözümlerinden](how-to-access-data.md#matrix)veri depoları oluşturabilirsiniz. **Desteklenmeyen depolama çözümleri için** ve ml denemeleri sırasında veri çıkış maliyetini kaydetmek için, verilerinizi desteklenen bir Azure depolama çözümüne [taşımanız](how-to-access-data.md#move) gerekir. [Veri depoları hakkında daha fazla bilgi edinin](how-to-access-data.md). 
 
 
 
 Azure Machine Learning Studio ile birkaç adımda yeni bir veri deposu oluşturun.
 
 > [!IMPORTANT]
-> Veri depolama hesabınız bir sanal ağda ise, Studio 'nun verilerinize erişebildiğinden emin olmak için ek yapılandırma adımları gereklidir. Uygun yapılandırma adımlarının uygulandığından emin olmak için bkz. [ağ yalıtımı & gizliliği](how-to-enable-virtual-network.md#machine-learning-studio) .
+> Veri depolama hesabınız bir sanal ağda ise, Studio 'nun verilerinize erişebildiğinden emin olmak için ek yapılandırma adımları gereklidir. Uygun yapılandırma adımlarının uygulandığından emin olmak için bkz. [ağ yalıtımı & gizliliği](how-to-enable-studio-virtual-network.md) .
 
 1. [Azure Machine Learning Studio](https://ml.azure.com/)'da oturum açın.
-1. **Yönet**altında sol bölmedeki **veri depoları** ' nı seçin.
-1. **+ Yeni veri deposu**seçin.
+1. **Yönet** altında sol bölmedeki **veri depoları** ' nı seçin.
+1. **+ Yeni veri deposu** seçin.
 1. Yeni bir veri deposu için formu doldurun. Form, Azure depolama türü ve kimlik doğrulama türü seçimlerinize göre kendisini akıllıca güncelleştirir. Kimlik doğrulama kimlik bilgilerini nerede bulacağınızı öğrenmek için, bu formu doldurmanız gereken [depolama erişimi ve izinler bölümüne](#access-validation) bakın.
 
-Aşağıdaki örnek, bir **Azure blob veri deposu**oluştururken formun nasıl göründüğünü göstermektedir:
+Aşağıdaki örnek, bir **Azure blob veri deposu** oluştururken formun nasıl göründüğünü göstermektedir:
 
 ![Yeni veri deposu için form](media/how-to-connect-data-ui/new-datastore-form.png)
 
@@ -86,7 +86,7 @@ Studio 'da bir veri kümesi oluşturmak için:
 1. Veri kümenizin kaynağını seçmek için **veri kümesi oluştur** ' u seçin. Bu kaynak yerel dosyalar, bir veri deposu, genel URL veya [Azure açık veri kümeleri](../open-datasets/how-to-create-azure-machine-learning-dataset-from-open-dataset.md)olabilir.
 1. Veri kümesi türü için **tablo** veya **Dosya** seçin.
 1. **Veri deposu ve dosya seçim** formunu açmak için **İleri ' yi** seçin. Bu formda, oluşturulduktan sonra veri kümenizin saklanacağı yeri ve veri kümeniz için kullanılacak veri dosyalarını seçin.
-    1. Verileriniz bir sanal ağda ise doğrulamayı atlamayı etkinleştirin. [Sanal ağ yalıtımı ve gizliliği](how-to-enable-virtual-network.md#machine-learning-studio)hakkında daha fazla bilgi edinin.
+    1. Verileriniz bir sanal ağda ise doğrulamayı atlamayı etkinleştirin. [Sanal ağ yalıtımı ve gizliliği](how-to-enable-studio-virtual-network.md)hakkında daha fazla bilgi edinin.
     1. Tablo veri kümeleri için, veri kümenizde zaman ilişkili işlemleri etkinleştirmek üzere bir ' timeseries ' nitelik belirtebilirsiniz. [Veri kümenize zaman serisi nitelik eklemeyi](how-to-monitor-datasets.md#studio-dataset)öğrenin.
 1. **Ayarları ve önizleme** ve **şema** formlarını doldurmak için **İleri ' yi** seçin; Bunlar dosya türüne göre akıllıca doldurulmuştur ve veri kümenizi bu formlarda oluşturmadan önce daha sonra yapılandırabilirsiniz. 
 1. **Ayrıntıları Onayla** formunu gözden geçirmek için **İleri ' yi** seçin. Seçimlerinizi denetleyin ve veri kümeniz için isteğe bağlı bir veri profili oluşturun. [Veri profili oluşturma](#profile)hakkında daha fazla bilgi edinin.
@@ -120,8 +120,8 @@ Veri ayarlanmış olup olmadığını doğrulamak için veri kümesi genelinde �
 |Tür dağılımı| Bir sütun içindeki türlerin satır içi değer sayısı. Null değerler kendi türlerdir, bu nedenle bu görselleştirme tek veya eksik değerleri algılamak için yararlıdır.
 |Tür|Sütunun Çıkarsanan türü. Olası değerler şunlardır: dizeler, Boole değerleri, tarihler ve ondalıklar.
 |Min| Sütunun minimum değeri. Boş girdiler, türü bir devralınan sıralamaya (örneğin, Boolean) sahip olmayan özellikler için görünür.
-|Max| Sütunun en büyük değeri. 
-|Sayı| Sütundaki eksik ve eksik olmayan girdilerin toplam sayısı.
+|En yüksek değer| Sütunun en büyük değeri. 
+|Count| Sütundaki eksik ve eksik olmayan girdilerin toplam sayısı.
 |Eksik sayı yok| Sütundaki eksik girdi sayısı. Boş dizeler ve hatalar değer olarak değerlendirilir ve bu nedenle "eksik sayısı" öğesine katkıda bulunmazlar.
 |Dağılım Dilimleri| Verilerin dağıtılması hakkında bir fikir sağlamak için her bir satışla yaklaşık değerler.
 |Ortalama| Sütunun aritmetik ortalaması veya ortalaması.
@@ -136,13 +136,13 @@ Azure depolama hizmetinize güvenli bir şekilde bağlanabildiğinizden emin olm
 
 ### <a name="virtual-network"></a>Sanal ağ
 
-Veri depolama hesabınız bir **Sanal ağda**ise Azure Machine Learning verilerinize erişiminin olduğundan emin olmak için ek yapılandırma adımları gerekir. Veri deposundan oluşturduğunuz ve kayıt yaptırdığınızda uygun yapılandırma adımlarının uygulandığından emin olmak için bkz. [ağ yalıtımı & gizliliği](how-to-enable-virtual-network.md#machine-learning-studio) .  
+Veri depolama hesabınız bir **Sanal ağda** ise Azure Machine Learning verilerinize erişiminin olduğundan emin olmak için ek yapılandırma adımları gerekir. Veri deposundan oluşturduğunuz ve kayıt yaptırdığınızda uygun yapılandırma adımlarının uygulandığından emin olmak için bkz. [ağ yalıtımı & gizliliği](how-to-enable-studio-virtual-network.md) .  
 
 ### <a name="access-validation"></a>Erişim doğrulaması
 
-**İlk veri deposu oluşturma ve kayıt sürecinin bir parçası olarak**, Azure Machine Learning otomatik olarak temel alınan depolama hizmetinin olduğunu ve belirtilen kullanıcının (Kullanıcı adı, hizmet sorumlusu veya SAS belirteci) belirtilen depolama alanına erişimi olduğunu doğrular.
+**İlk veri deposu oluşturma ve kayıt sürecinin bir parçası olarak** , Azure Machine Learning otomatik olarak temel alınan depolama hizmetinin olduğunu ve belirtilen kullanıcının (Kullanıcı adı, hizmet sorumlusu veya SAS belirteci) belirtilen depolama alanına erişimi olduğunu doğrular.
 
-**Veri deposu oluşturulduktan sonra**, bu doğrulama yalnızca, veri deposu nesneleri her alınışında **değil** , temeldeki depolama kapsayıcısına erişim gerektiren yöntemler için gerçekleştirilir. Örneğin, veri deposundan dosyaları indirmek isterseniz doğrulama gerçekleşir; ancak yalnızca varsayılan veri deposundan değişiklik yapmak istiyorsanız doğrulama gerçekleşmez.
+**Veri deposu oluşturulduktan sonra** , bu doğrulama yalnızca, veri deposu nesneleri her alınışında **değil** , temeldeki depolama kapsayıcısına erişim gerektiren yöntemler için gerçekleştirilir. Örneğin, veri deposundan dosyaları indirmek isterseniz doğrulama gerçekleşir; ancak yalnızca varsayılan veri deposundan değişiklik yapmak istiyorsanız doğrulama gerçekleşmez.
 
 Temel depolama hizmetine erişiminizin kimliğini doğrulamak için, oluşturmak istediğiniz veri deposu türüne göre hesap anahtarınızı, paylaşılan erişim imzaları (SAS) belirteçlerini veya hizmet sorumlusunu sağlayabilirsiniz. [Depolama türü matrisi](how-to-access-data.md#matrix) , her veri deposu türüne karşılık gelen desteklenen kimlik doğrulama türlerini listeler.
 
@@ -153,7 +153,7 @@ Hesap anahtarını, SAS belirtecini ve hizmet sorumlusu bilgilerini [Azure Porta
       1. Hesap anahtarları için, **Ayarlar** bölmesinde **erişim tuşları** ' na gidin.
       1. SAS belirteçleri için, **Ayarlar** bölmesinde **paylaşılan erişim imzaları** ' na gidin.
 
-* Kimlik doğrulaması için bir [hizmet sorumlusu](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) kullanmayı planlıyorsanız, **uygulama kayıtları** gidin ve kullanmak istediğiniz uygulamayı seçin.
+* Kimlik doğrulaması için bir [hizmet sorumlusu](../active-directory/develop/howto-create-service-principal-portal.md) kullanmayı planlıyorsanız, **uygulama kayıtları** gidin ve kullanmak istediğiniz uygulamayı seçin.
     * Kendisine karşılık gelen **genel bakış** sayfası, Kiracı kimliği ve istemci kimliği gibi gerekli bilgileri içerir.
 
 > [!IMPORTANT]
@@ -161,7 +161,7 @@ Hesap anahtarını, SAS belirtecini ve hizmet sorumlusu bilgilerini [Azure Porta
 
 ### <a name="permissions"></a>İzinler
 
-Azure Blob kapsayıcısı ve Azure Data Lake Gen 2 depolaması için, kimlik doğrulama kimlik bilgilerinizin **Depolama Blobu veri okuyucusu** erişimi olduğundan emin olun. [Depolama Blobu veri okuyucu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)hakkında daha fazla bilgi edinin. 
+Azure Blob kapsayıcısı ve Azure Data Lake Gen 2 depolaması için, kimlik doğrulama kimlik bilgilerinizin **Depolama Blobu veri okuyucusu** erişimi olduğundan emin olun. [Depolama Blobu veri okuyucu](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)hakkında daha fazla bilgi edinin. 
 
 ## <a name="train-with-datasets"></a>Veri kümeleriyle eğitme
 

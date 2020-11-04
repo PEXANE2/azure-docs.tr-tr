@@ -10,19 +10,19 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 9124bbfc7300f3a5116c572d569b41e15356ab8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f08d0f1be166630d9cf4b0b9236d78228fd78aae
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983836"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312798"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısında veri dönüştürme
 
 
 Bu makalede, Machine Learning için kendi verilerinizi hazırlayabilmeniz için Azure Machine Learning tasarımcısında veri kümelerini dönüştürmeyi ve kaydetmeyi öğreneceksiniz.
 
-İki veri kümesi hazırlamak için örnek [yetişkinlere yönelik gelir ikili sınıflandırma](sample-designer-datasets.md) veri kümesini kullanacaksınız: yalnızca Birleşik Devletler ve ABD dışı yetişkinler 'den görselleştirmenizdeki bilgilerini içeren bir veri kümesi.
+İki veri kümesi hazırlamak için örnek [yetişkinlere yönelik gelir ikili sınıflandırma](./samples-designer.md) veri kümesini kullanacaksınız: yalnızca Birleşik Devletler ve ABD dışı yetişkinler 'den görselleştirmenizdeki bilgilerini içeren bir veri kümesi.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -48,13 +48,13 @@ Bu bölümde, örnek veri kümesini içeri aktarmayı ve verileri ABD ve ABD dı
 
 1. İşlem hattını çalıştırmak için varsayılan bir işlem hedefi seçin.
 
-1. Ardışık düzen tuvalinin sol tarafında bir veri kümesi ve modül paleti bulunur. **Veri kümelerini**seçin. Ardından **örnekler** bölümünü görüntüleyin.
+1. Ardışık düzen tuvalinin sol tarafında bir veri kümesi ve modül paleti bulunur. **Veri kümelerini** seçin. Ardından **örnekler** bölümünü görüntüleyin.
 
 1. **Yetişkin Census gelir ikili sınıflandırma** veri kümesini tuvale sürükleyip bırakın.
 
 1. **Yetişkinlere yönelik gelir** veri kümesi modülünü seçin.
 
-1. Tuvalin sağında görüntülenen Ayrıntılar bölmesinde, **çıktılar**' i seçin.
+1. Tuvalin sağında görüntülenen Ayrıntılar bölmesinde, **çıktılar** ' i seçin.
 
 1. Görselleştir simgesini seçin ![Görselleştir simgesi](media/how-to-designer-transform-data/visualize-icon.png).
 
@@ -72,9 +72,9 @@ Bu bölümde, "yerel-ülke" sütununda "Birleşik Devletler" içeren satırları
 
 1. **Bölünmüş veri** modülünü seçin.
 
-1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde **bölme modunu** **normal ifade**olarak ayarlayın.
+1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde **bölme modunu** **normal ifade** olarak ayarlayın.
 
-1. **Normal ifadeyi**girin: `\"native-country" United-States` .
+1. **Normal ifadeyi** girin: `\"native-country" United-States` .
 
     **Normal ifade** modu bir değer için tek bir sütunu sınar. Bölünmüş veri modülü hakkında daha fazla bilgi için, ilgili [algoritma modülü başvurusu sayfasına](algorithm-module-reference/split-data.md)bakın.
 
@@ -97,36 +97,36 @@ Bu bölümde, "yerel-ülke" sütununda "Birleşik Devletler" içeren satırları
 
     ![Dışarı aktarma veri modüllerinin nasıl bağlanacağını gösteren ekran görüntüsü](media/how-to-designer-transform-data/export-data-pipeline.png).
 
-1. **Bölünmüş veri** modülünün en *sol*bağlantı noktasına bağlı olan **verileri dışarı aktar** modülünü seçin.
+1. **Bölünmüş veri** modülünün en *sol* bağlantı noktasına bağlı olan **verileri dışarı aktar** modülünü seçin.
 
     **Bölünmüş veri** modülüne göre çıkış bağlantı noktalarının sırası. İlk çıkış bağlantı noktası, normal ifadenin doğru olduğu satırları içerir. Bu durumda, ilk bağlantı noktası ABD tabanlı gelir için satırlar içerir ve ikinci bağlantı noktası ABD tabanlı olmayan gelir için satırlar içerir.
 
 1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, aşağıdaki seçenekleri ayarlayın:
     
-    **Veri deposu türü**: Azure Blob depolama
+    **Veri deposu türü** : Azure Blob depolama
 
-    **Veri deposu**: mevcut bir veri deposunu seçin veya Şimdi bir tane oluşturmak Için "yeni veri deposu" seçeneğini belirleyin
+    **Veri deposu** : mevcut bir veri deposunu seçin veya Şimdi bir tane oluşturmak Için "yeni veri deposu" seçeneğini belirleyin
 
-    **Yol**: `/data/us-income`
+    **Yol** : `/data/us-income`
 
-    **Dosya biçimi**: CSV
+    **Dosya biçimi** : CSV
 
     > [!NOTE]
     > Bu makalede, geçerli Azure Machine Learning çalışma alanına kayıtlı bir veri deposuna erişiminizin olduğu varsayılır. Bir veri deposu ayarlama hakkında yönergeler için bkz. [Azure Storage Services 'A bağlanma](how-to-connect-data-ui.md#create-datastores).
 
     Bir veri deposu yoksa, şimdi bir tane oluşturabilirsiniz. Örneğin, bu makalede veri kümeleri, çalışma alanıyla ilişkili varsayılan BLOB depolama hesabına kaydedilir. Veri kümelerini, `azureml` adlı yeni bir klasörde kapsayıcıya kaydeder `data` .
 
-1.  **Bölünmüş veri** modülünün en *sağ*bağlantı noktasına bağlı olan **verileri dışarı aktar** modülünü seçin.
+1.  **Bölünmüş veri** modülünün en *sağ* bağlantı noktasına bağlı olan **verileri dışarı aktar** modülünü seçin.
 
 1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, aşağıdaki seçenekleri ayarlayın:
     
-    **Veri deposu türü**: Azure Blob depolama
+    **Veri deposu türü** : Azure Blob depolama
 
-    **Veri deposu**: Yukarıdaki ile aynı veri deposunu seçin
+    **Veri deposu** : Yukarıdaki ile aynı veri deposunu seçin
 
-    **Yol**: `/data/non-us-income`
+    **Yol** : `/data/non-us-income`
 
-    **Dosya biçimi**: CSV
+    **Dosya biçimi** : CSV
 
 1. **Bölünmüş verilerin** sol bağlantı noktasına bağlı **dışarı aktarma veri** modülünün **yolu** olduğunu doğrulayın `/data/us-income` .
 
@@ -140,7 +140,7 @@ Bu bölümde, "yerel-ülke" sütununda "Birleşik Devletler" içeren satırları
 
 İşlem hattınızda verileri bölüye ve dışarı aktarmaya yönelik bir işlem hattı çalıştırması gönderilir.
 
-1. Tuvalin üst kısmında **Gönder**' i seçin.
+1. Tuvalin üst kısmında **Gönder** ' i seçin.
 
 1. İşlem **hattı çalıştırmasını ayarla** iletişim kutusunda **Yeni oluştur** ' u seçerek bir deneme oluşturun.
 
@@ -148,7 +148,7 @@ Bu bölümde, "yerel-ülke" sütununda "Birleşik Devletler" içeren satırları
 
 1. "Split-Census-Data" gibi açıklayıcı bir deneme adı sağlayın.
 
-1. **Gönder**’i seçin.
+1. **Gönder** ’i seçin.
 
 ## <a name="view-results"></a>Sonuçları görüntüleme
 
@@ -156,7 +156,7 @@ Bu bölümde, "yerel-ülke" sütununda "Birleşik Devletler" içeren satırları
 
 1. **Bölünmüş veri** modülünü seçin.
 
-1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, **çıktılar + Günlükler**' i seçin. 
+1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, **çıktılar + Günlükler** ' i seçin. 
 
 1. Sonuçlar DataSet1 ' ın yanındaki Görselleştir simgesini görselleştirin ![ simgesini seçin ](media/how-to-designer-transform-data/visualize-icon.png) . **Results dataset1** 
 

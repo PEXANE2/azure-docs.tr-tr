@@ -9,38 +9,38 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: a9bb3ac7d3028937a422f2cd94aca4f4f4f41b58
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: a5a958228d79c86550604109d7aaf19e68593a57
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167544"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314916"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>SYNAPSE SQL ile dış tabloları kullanma
 
-Dış tablo, Hadoop, Azure Depolama Blobu veya Azure Data Lake Storage bulunan verilere işaret eder. Dış tablolar, dosyalardaki verileri okumak veya Azure Storage 'daki dosyalara veri yazmak için kullanılır. SYNAPSE SQL ile, dış tabloları SQL havuzuna veya isteğe bağlı SQL 'e (Önizleme) veri okumak ve yazmak için kullanabilirsiniz.
+Dış tablo, Hadoop, Azure Depolama Blobu veya Azure Data Lake Storage bulunan verilere işaret eder. Dış tablolar, dosyalardaki verileri okumak veya Azure Storage 'daki dosyalara veri yazmak için kullanılır. SYNAPSE SQL ile, dış tabloları kullanarak adanmış SQL havuzu veya sunucusuz SQL Havuzu (Önizleme) ile verileri okuyabilir ve yazabilirsiniz.
 
-## <a name="external-tables-in-synapse-sql-pool-and-on-demand"></a>SYNAPSE SQL havuzundaki dış tablolar ve isteğe bağlı
+## <a name="external-tables-in-dedicated-sql-pool-and-serverless-sql-pool"></a>Adanmış SQL havuzunda ve sunucusuz SQL havuzundaki dış tablolar
 
-### <a name="sql-pool"></a>[SQL havuzu](#tab/sql-pool) 
+### <a name="dedicated-sql-pool"></a>[Adanmış SQL havuzu](#tab/sql-pool) 
 
-SQL havuzunda, bir dış tablo kullanarak şunları yapabilirsiniz:
+Adanmış SQL havuzunda, bir dış tablo kullanarak şunları yapabilirsiniz:
 
 - Azure Blob depolama ve Azure Data Lake Gen2 Transact-SQL deyimleriyle sorgulayın.
-- Azure Blob depolamadan ve Azure Data Lake Storage verileri SQL Pool 'a aktarın ve depolayın.
+- Azure Blob depolamadan ve Azure Data Lake Storage verileri özel SQL havuzuna aktarın ve depolayın.
 
 [Create Table Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ifadesiyle birlikte kullanıldığında, dış tablo ' ın seçilmesi, verileri SQL havuzundaki bir tabloya aktarır. [Copy ifadesine](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)ek olarak, dış tablolar verileri yüklemek için faydalıdır. 
 
 Yükleme öğreticisi için bkz. [Azure Blob depolamadan veri yüklemek Için PolyBase kullanma](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
-### <a name="sql-on-demand"></a>[İsteğe bağlı SQL](#tab/sql-on-demand)
+### <a name="serverless-sql-pool"></a>[Sunucusuz SQL havuzu](#tab/sql-on-demand)
 
-İsteğe bağlı SQL için bir dış tablo kullanacaksınız:
+Sunucusuz SQL havuzu için bir dış tablo kullanarak şunları yapabilirsiniz:
 
 - Azure Blob depolamada veya Azure Data Lake Storage Transact-SQL deyimleriyle veri sorgulama
-- Azure Blob depolamada veya Azure Data Lake Storage [Cetas](develop-tables-cetas.md) kullanarak SQL isteğe bağlı sorgu sonuçlarını depolama
+- Azure Blob depolamada veya Azure Data Lake Storage [Cetas](develop-tables-cetas.md) kullanarak dosya için SUNUCUSUZ SQL havuzu sorgu sonuçlarını depolayın
 
-Aşağıdaki adımlar aracılığıyla, SQL 'i isteğe bağlı olarak kullanarak dış tablolar oluşturabilirsiniz:
+Aşağıdaki adımlar aracılığıyla sunucusuz SQL havuzu kullanarak dış tablolar oluşturabilirsiniz:
 
 1. DıŞ VERI KAYNAĞı OLUŞTUR
 2. CREATE EXTERNAL FILE FORMAT
@@ -56,7 +56,7 @@ Dış tablo, aşağıdaki kurallar kullanılarak veri kaynağında tanımlanan v
 - Veri kaynağında, dış tabloların yalnızca SAS belirtecini veya çalışma alanı yönetilen kimliğini kullanarak Azure Storage 'daki dosyalara erişmesine olanak tanıyan kimlik bilgileri bulunabilir; örnekler Için bkz. [depolama dosyalarını geliştirme depolama erişim denetimi](develop-storage-files-storage-access-control.md#examples) makalesi.
 
 > [!IMPORTANT]
-> SQL havuzunda, creadas olmadan DataSource, Azure AD kullanıcısının Azure AD kimliklerini kullanarak depolama dosyalarına erişmesine olanak sağlar. İsteğe bağlı SQL 'de, özelliği olan veritabanı kapsamlı kimlik bilgileriyle veri kaynağı oluşturmanız gerekir `IDENTITY='User Identity'` ; [örneklere buraya](develop-storage-files-storage-access-control.md#examples)bakın.
+> Adanmış SQL havuzunda, kimlik bilgisi olmadan oluşturulan veri kaynağı, Azure AD kullanıcılarının Azure AD kimliklerini kullanarak depolama dosyalarına erişmesine olanak sağlar. Sunucusuz SQL havuzunda, özelliği olan veritabanı kapsamlı kimlik bilgileri ile bir veri kaynağı oluşturmanız gerekir `IDENTITY='User Identity'` . [buraya örneklere](develop-storage-files-storage-access-control.md#examples)bakın.
 
 ## <a name="create-external-data-source"></a>DıŞ VERI KAYNAĞı OLUŞTUR
 
@@ -64,7 +64,7 @@ Dış veri kaynakları, depolama hesaplarına bağlanmak için kullanılır. Tü
 
 ### <a name="syntax-for-create-external-data-source"></a>Dış VERI kaynağı oluşturma söz dizimi
 
-#### <a name="sql-pool"></a>[SQL havuzu](#tab/sql-pool)
+#### <a name="dedicated-sql-pool"></a>[Adanmış SQL havuzu](#tab/sql-pool)
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
@@ -76,7 +76,7 @@ WITH
 [;]
 ```
 
-#### <a name="sql-on-demand"></a>[İsteğe bağlı SQL](#tab/sql-on-demand)
+#### <a name="serverless-sql-pool"></a>[Sunucusuz SQL havuzu](#tab/sql-on-demand)
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
@@ -110,16 +110,16 @@ LOCATION = `'<prefix>://<path>'`   -dış veri kaynağının bağlantı protokol
 #### <a name="credential"></a>Kimlik Bilgisi
 CREDENTIAL = `<database scoped credential>` Azure depolamada kimlik doğrulaması için kullanılacak isteğe bağlı kimlik bilgileridir. Kimlik bilgisi olmayan dış veri kaynağı, ortak depolama hesabına erişebilir. 
 
-SQL havuzunda kimlik bilgisi olmayan dış veri kaynakları, depolamadaki dosyalara erişmek için çağıranlar Azure AD Identity 'yi de kullanabilir. Kimlik bilgisine sahip dış veri kaynağı, dosyalara erişmek için kimlik bilgilerinde belirtilen kimlik bilgisini kullanıyor.
-- SQL havuzunda, veritabanı kapsamlı kimlik bilgileri özel uygulama kimliği, çalışma alanı yönetilen kimliği veya SAK anahtarı belirtebilir. 
-- İsteğe bağlı SQL 'de, veritabanı kapsamlı kimlik bilgileri çağıranın Azure AD kimliğini, çalışma alanı yönetilen kimliğini veya SAS anahtarını belirtebilir. 
+Adanmış SQL havuzunda kimlik bilgisi olmayan dış veri kaynakları, depolamadaki dosyalara erişmek için çağıranın Azure AD kimliğini kullanır. Kimlik bilgisine sahip sunucusuz SQL havuzu için bir dış veri kaynağı  `IDENTITY='User Identity'` , dosyalara erişmek için çağıranın Azure AD kimliğini kullanır.
+- Adanmış SQL havuzunda, veritabanı kapsamlı kimlik bilgileri özel uygulama kimliği, çalışma alanı yönetilen kimliği veya SAK anahtarı belirtebilir. 
+- Sunucusuz SQL havuzunda, veritabanı kapsamlı kimlik bilgileri çağıranın Azure AD kimliğini, çalışma alanı yönetilen kimliğini veya SAS anahtarını belirtebilir. 
 
 #### <a name="type"></a>TÜR
-TYPE = `HADOOP` SQL havuzunda zorunlu bir seçenektir ve temel alınan dosyalara erişmek Için PolyBase teknolojisinin kullanıldığını belirtir. Bu parametre yerleşik yerel okuyucu kullanan, isteğe bağlı SQL hizmetinde kullanılamaz.
+TYPE = `HADOOP` ADANMıŞ SQL havuzunda zorunlu seçenektir ve temel alınan dosyalara erişmek Için PolyBase teknolojisinin kullanıldığını belirtir. Bu parametre yerleşik yerel okuyucu kullanan sunucusuz SQL havuzunda kullanılamaz.
 
 ### <a name="example-for-create-external-data-source"></a>Dış VERI kaynağı oluşturma örneği
 
-#### <a name="sql-pool"></a>[SQL havuzu](#tab/sql-pool)
+#### <a name="dedicated-sql-pool"></a>[Adanmış SQL havuzu](#tab/sql-pool)
 
 Aşağıdaki örnek, New York veri kümesine işaret eden Azure Data Lake Gen2 için bir dış veri kaynağı oluşturur:
 
@@ -133,7 +133,7 @@ WITH
   ) ;
 ```
 
-#### <a name="sql-on-demand"></a>[İsteğe bağlı SQL](#tab/sql-on-demand)
+#### <a name="serverless-sql-pool"></a>[Sunucusuz SQL havuzu](#tab/sql-on-demand)
 
 Aşağıdaki örnek, SAS kimlik bilgileri kullanılarak erişilebilen Azure Data Lake Gen2 için bir dış veri kaynağı oluşturur:
 
@@ -195,7 +195,7 @@ WITH (
 }
 ```
 
-#### <a name="sql-on-demand"></a>[İsteğe bağlı SQL](#tab/sql-on-demand)
+#### <a name="serverless-sql-pool"></a>[Sunucusuz SQL havuzu](#tab/sql-on-demand)
 
 ```syntaxsql
 -- Create an external file format for PARQUET files.  
@@ -266,7 +266,7 @@ DOĞRU-metin dosyasından veri alıyorsanız, dış tablo tanımındaki karşıl
 
 FALSE-tüm eksik değerleri NULL olarak depola. Sınırlandırılmış metin dosyasında NULL sözcüğü kullanılarak depolanan NULL değerler ' NULL ' dizesi olarak içeri aktarılır.
 
-Kodlama = {' UTF8 ' | ' UTF16 '}-isteğe bağlı SQL, UTF8 ve UTF16 kodlamalı sınırlandırılmış metin dosyalarını okuyabilir.
+Kodlama = {' UTF8 ' | ' UTF16 '}-sunucusuz SQL havuzu UTF8 ve UTF16 kodlamalı sınırlandırılmış metin dosyalarını okuyabilir.
 
 DATA_COMPRESSION = *data_compression_method* -bu bağımsız değişken dış veriler için veri sıkıştırma yöntemini belirtir. 
 
@@ -321,7 +321,7 @@ column_name <data_type>
 
 *{veritabanı_adı. schema_name. table_name | schema_name. table_name | table_name}*
 
-Oluşturulacak tablonun üç bölümden oluşan bir adı. Dış tablo için, isteğe bağlı SQL yalnızca tablo meta verilerini depolar. İsteğe bağlı SQL 'de hiçbir gerçek veri taşınmaz veya depolanmaz.
+Oluşturulacak tablonun üç bölümden oluşan bir adı. Bir dış tablo için sunucusuz SQL havuzu yalnızca tablo meta verilerini depolar. Sunucusuz SQL havuzunda hiçbir gerçek veri taşınmaz veya depolanmaz.
 
 <column_definition>,... *n* ]
 
@@ -332,16 +332,16 @@ DıŞ tablo oluşturma, sütun adı, veri türü, null olabilme ve harmanlama ya
 
 Parquet dosyalarından okurken yalnızca okumak istediğiniz sütunları belirtebilir ve geri kalanını atlayabilirsiniz.
 
-KONUM = '*folder_or_filepath*'
+KONUM = ' *folder_or_filepath* '
 
 Azure Blob depolamada gerçek verilerin klasörünü veya dosya yolunu ve dosya adını belirtir. Konum kök klasörden başlar. Kök klasör, dış veri kaynağında belirtilen veri konumudur.
 
-Bir klasör konumu belirtirseniz, SQL isteğe bağlı bir sorgu dış tablodan seçim yapılır ve klasörden dosyaları alır.
+Bir klasör konumu belirtirseniz, sunucusuz bir SQL havuzu sorgusu dış tablodan seçim yapılır ve klasörden dosyaları alır.
 
 > [!NOTE]
-> Hadoop ve PolyBase 'in aksine, SQL isteğe bağlı alt klasörler döndürmez. Dosya adının altı çizili (_) veya nokta (.) ile başladığı dosyaları döndürür.
+> Hadoop ve PolyBase 'den farklı olarak sunucusuz SQL havuzu alt klasörler döndürmez. Dosya adının altı çizili (_) veya nokta (.) ile başladığı dosyaları döndürür.
 
-Bu örnekte, LOCATION = '/Webdata/' ise, bir SQL isteğe bağlı sorgusu, mydata.txt ve _hidden.txt satırları döndürür. Bir alt klasörde bulunduğundan mydata2.txt ve mydata3.txt döndürmez.
+Bu örnekte, bir sunucusuz SQL havuzu sorgusu olan LOCATION = '/Webdata/' ise mydata.txt ve _hidden.txt satırları döndürür. Bir alt klasörde bulunduğundan mydata2.txt ve mydata3.txt döndürmez.
 
 ![Dış tablolar için özyinelemeli veriler](./media/develop-tables-external-tables/folder-traversal.png)
 
@@ -381,7 +381,7 @@ SELECT TOP 1 * FROM census_external_table
 
 ## <a name="create-and-query-external-tables-from-a-file-in-azure-data-lake"></a>Azure Data Lake bir dosyadan dış tablolar oluşturun ve sorgulayın
 
-Data Lake keşif yeteneklerini kullanarak artık, SQL havuzunu veya isteğe bağlı SQL 'i kullanarak bir dış tablo oluşturabilir ve sorgu üzerinde basit bir sağ tıklamayla sorgulama yapabilirsiniz.
+Data Lake keşif yeteneklerini kullanarak artık özel SQL havuzunu veya sunucusuz SQL havuzunu kullanarak bir dış tablo oluşturabilir ve sorgulayabilirsiniz ve bu dosya üzerinde basit bir sağ tıklamayı kullanabilirsiniz.
 
 ### <a name="prerequisites"></a>Önkoşullar
 
@@ -395,7 +395,7 @@ Veri panelinden, dış tabloyu oluşturmak istediğiniz dosyayı seçin:
 > [!div class="mx-imgBorder"]
 >![externaltable1](./media/develop-tables-external-tables/external-table-1.png)
 
-Bir iletişim kutusu penceresi açılır. SQL havuzu veya isteğe bağlı SQL ' i seçin, tabloya bir ad verin ve betiği aç ' ı seçin:
+Bir iletişim kutusu penceresi açılır. Adanmış SQL havuzu veya sunucusuz SQL havuzu ' nu seçin, tabloya bir ad verin ve betiği aç ' ı seçin:
 
 > [!div class="mx-imgBorder"]
 >![externaltable2](./media/develop-tables-external-tables/external-table-2.png)

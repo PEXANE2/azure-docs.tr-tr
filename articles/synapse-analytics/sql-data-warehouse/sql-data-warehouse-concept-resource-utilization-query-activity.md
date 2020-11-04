@@ -11,12 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 334d37ad36336d1aa737894482fd8f66e929c822
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f66efb9112a9342122f5b56ab11b862ce3c7c61b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87077688"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314432"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te kaynak kullanımını ve sorgu etkinliğini izleme
 
@@ -31,8 +31,8 @@ Aşağıdaki ölçümler, SYNAPSE SQL için Azure portal kullanılabilir. Bu öl
 | CPU yüzdesi          | Veri ambarı için tüm düğümlerde CPU kullanımı      | Ortalama, en düşük, en fazla    |
 | Veri G/Ç yüzdesi      | Veri ambarı için tüm düğümlerde GÇ kullanımı       | Ortalama, en düşük, en fazla    |
 | Bellek yüzdesi       | Veri ambarı için tüm düğümlerde bellek kullanımı (SQL Server) | Ortalama, en düşük, en fazla   |
-| Etkin sorgular          | Sistemde yürütülen etkin sorguların sayısı             | Sum              |
-| Kuyruğa alınmış sorgular          | Yürütülmeye başlamak için bekleyen sıraya alınmış sorgu sayısı          | Sum              |
+| Etkin sorgular          | Sistemde yürütülen etkin sorguların sayısı             | Toplam              |
+| Kuyruğa alınmış sorgular          | Yürütülmeye başlamak için bekleyen sıraya alınmış sorgu sayısı          | Toplam              |
 | Başarılı bağlantılar  | Veritabanına yönelik başarılı bağlantı sayısı (oturum açma) | Toplam, sayı       |
 | Başarısız Bağlantılar      | Veritabanına karşı başarısız bağlantı sayısı (oturum açma) | Toplam, sayı       |
 | Güvenlik duvarı tarafından engellendi     | Engellenen veri ambarına ait oturum açma sayısı     | Toplam, sayı       |
@@ -53,7 +53,7 @@ Aşağıdaki ölçümler, SYNAPSE SQL için Azure portal kullanılabilir. Bu öl
 
 T-SQL aracılığıyla SYNAPSE SQL 'i izlerken bir programlama deneyimi için, hizmet bir dizi dinamik yönetim görünümü (DMVs) sağlar. Bu görünümler, iş yükünüzün performans sorunlarını etkin bir şekilde gidermeye ve tanımlamaya yönelik olarak faydalıdır.
 
-SYNAPSE SQL 'e uygulanan DMVs listesini görüntülemek için bu [belgeye](../sql/reference-tsql-system-views.md#sql-pool-dynamic-management-views-dmvs)bakın. 
+SYNAPSE SQL 'e uygulanan DMVs listesini görüntülemek için bu [belgeye](../sql/reference-tsql-system-views.md#dedicated-sql-pool-dynamic-management-views-dmvs)bakın. 
 
 ## <a name="metrics-and-diagnostics-logging"></a>Ölçümler ve tanılama günlükleri 
 

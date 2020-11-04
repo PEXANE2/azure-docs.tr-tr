@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 374320c0becfecc6691af91b36a1d80b087300e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c958de5e49fbb7519ae71b13e9deba9af0c698de
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361952"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312878"
 ---
 # <a name="manage-experiment-runs-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio deneme çalışmalarını yönetme (klasik)
 
-**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Tahmine dayalı analiz modelinin geliştirilmesi yinelemeli bir işlemdir. denemenizin çeşitli işlevlerini ve parametrelerini değiştirirken sonuçlar, eğitilen, etkin bir modeliniz olduğundan memnun kalana kadar yakınlardır. Bu işleme yönelik anahtar, deneme parametrelerinizin ve yapılandırmalarınızın çeşitli yinelemelerini izliyor.
@@ -33,7 +33,7 @@ Tüm denemeleri çalıştırmalarını dilediğiniz zaman gözden geçirebilir, 
 ## <a name="view-the-prior-run"></a>Önceki çalıştırmayı görüntüleme
 En az bir kez çalıştırdığınız denemenizin bulunduğu bir deneyiniz varsa, Özellikler bölmesinde **önceki Çalıştır** ' a tıklayarak deneme sürümünün önceki çalıştırmasını görüntüleyebilirsiniz.
 
-Örneğin, deneme sürümü oluşturduğunuzu ve 11:23, 11:42 ve 11:55 sürümlerini çalıştırın. Deneme sürümü (11:55) öğesini açıp **önceki çalıştırma**' ya tıkladığınızda, 11:42 ' de çalıştırdığınız sürüm açılır.
+Örneğin, deneme sürümü oluşturduğunuzu ve 11:23, 11:42 ve 11:55 sürümlerini çalıştırın. Deneme sürümü (11:55) öğesini açıp **önceki çalıştırma** ' ya tıkladığınızda, 11:42 ' de çalıştırdığınız sürüm açılır.
 
 ## <a name="view-the-run-history"></a>Çalıştırma geçmişini görüntüleme
 Bir deneyin önceki çalıştırmalarını, açık bir deneyime göre **Çalıştır geçmişini görüntüle** ' ye tıklayarak görüntüleyebilirsiniz.
@@ -47,7 +47,7 @@ Bir deneyin önceki çalıştırmalarını, açık bir deneyime göre **Çalış
 | 0.4 |9/11/2014 4:28:36 PM |
 | 0,5 |9/11/2014 4:33:31 PM |
 
-**Çalışma geçmişini görüntüle**' ye tıklarsanız, tüm bu çalıştırmaların bir listesini görürsünüz:
+**Çalışma geçmişini görüntüle** ' ye tıklarsanız, tüm bu çalıştırmaların bir listesini görürsünüz:
 
 ![Örnek çalışma geçmişi](./media/manage-experiment-iterations/viewrunhistory.jpg)
 
@@ -58,22 +58,22 @@ Bir deneyin önceki çalıştırmalarını, açık bir deneyime göre **Çalış
 > 
 > 
 
-Machine Learning Studio (klasik) içindeki **denemeleri** sekmesinde bulunan denemeleri listesi her zaman bir denemenin en son sürümünü görüntüler. Deneme sürümü ' nü (önceki **çalıştırma** veya **Görünüm çalıştırma geçmişi**kullanarak) açarsanız, **çalışma geçmişini görüntüle** ' ye tıklayarak ve **düzenlenebilir** **durumuna** sahip yinelemeyi seçerek Taslak sürümüne dönebilirsiniz.
+Machine Learning Studio (klasik) içindeki **denemeleri** sekmesinde bulunan denemeleri listesi her zaman bir denemenin en son sürümünü görüntüler. Deneme sürümü ' nü (önceki **çalıştırma** veya **Görünüm çalıştırma geçmişi** kullanarak) açarsanız, **çalışma geçmişini görüntüle** ' ye tıklayarak ve **düzenlenebilir** **durumuna** sahip yinelemeyi seçerek Taslak sürümüne dönebilirsiniz.
 
 ## <a name="run-a-previous-experiment"></a>Önceki bir deneme çalıştırın
 Önceki **çalıştırma** veya **Görünüm çalıştırma geçmişi** ' ne tıkladığınızda ve önceki bir çalıştırmayı açtığınızda, tamamlanmış bir denemeyi salt okuma modunda görüntüleyebilirsiniz.
 
-Denemenizin bir yinelemesini önceki bir çalıştırma için yapılandırdığınız şekilde kullanmaya başlamak istiyorsanız, çalıştırmayı açıp **farklı kaydet**' e tıklayarak bunu yapabilirsiniz. Bu yeni bir deneme oluşturur, yeni bir başlık, boş bir çalıştırma geçmişi ve önceki çalıştırmanın tüm bileşenleri ve parametre değerleri. Bu yeni deneme Machine Learning Studio (klasik) giriş sayfasındaki **denemeleri** sekmesinde listelenir ve bu denemenizin bu yinelemesi için yeni bir çalıştırma geçmişi başlatarak onu değiştirebilir ve çalıştırabilirsiniz. 
+Denemenizin bir yinelemesini önceki bir çalıştırma için yapılandırdığınız şekilde kullanmaya başlamak istiyorsanız, çalıştırmayı açıp **farklı kaydet** ' e tıklayarak bunu yapabilirsiniz. Bu yeni bir deneme oluşturur, yeni bir başlık, boş bir çalıştırma geçmişi ve önceki çalıştırmanın tüm bileşenleri ve parametre değerleri. Bu yeni deneme Machine Learning Studio (klasik) giriş sayfasındaki **denemeleri** sekmesinde listelenir ve bu denemenizin bu yinelemesi için yeni bir çalıştırma geçmişi başlatarak onu değiştirebilir ve çalıştırabilirsiniz. 
 
 Örneğin, önceki bölümde gösterilen deneme çalıştırması geçmişine sahip olduğunuzu varsayalım. **Öğrenme oranı** parametresini 0,4 olarak ayarladığınızda ne olacağını gözlemlemek ve **eğitim dönemleri sayısı** için farklı değerler denemeniz gerekir.
 
 1. **Çalışma geçmişini görüntüle** ' ye tıklayın ve 4:28:36 PM 'de çalıştırdığınız denemenin yinelemesini açın (içinde parametre değerini 0,4 olarak ayarlarsınız).
-2. **Farklı kaydet**' e tıklayın.
+2. **Farklı kaydet** ' e tıklayın.
 3. Yeni bir başlık girin ve **Tamam** onay işaretine tıklayın. Denemenin yeni bir kopyası oluşturulur.
 4. **Eğitim dönemleri numarasını** değiştirin.
-5. **Çalıştır**' a tıklayın.
+5. **Çalıştır** ' a tıklayın.
 
 Şimdi, denemenizin bu sürümünü değiştirmeye ve çalıştırmaya devam edebilir, çalışmanızı kaydetmek için yeni bir çalışma geçmişi oluşturabilirsiniz.
 
 <!-- Module References -->
-[linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
+[linear-regression]: /azure/machine-learning/studio-module-reference/linear-regression

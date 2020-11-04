@@ -1,6 +1,6 @@
 ---
-title: İsteğe bağlı SQL 'de dış tablolar oluşturma ve kullanma (Önizleme)
-description: Bu bölümde, SQL isteğe bağlı (Önizleme) içinde dış tabloları oluşturmayı ve kullanmayı öğreneceksiniz.
+title: Sunucusuz SQL havuzunda dış tablolar oluşturma ve kullanma (Önizleme)
+description: Bu bölümde, sunucusuz SQL havuzunda (Önizleme) dış tablo oluşturmayı ve kullanmayı öğreneceksiniz.
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 182deba959144f6a3992bb41243f29023bad5e5c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0a52db131311d9956cf7217d910f22c3a4f07738
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91289336"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314724"
 ---
-# <a name="create-and-use-external-tables-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Azure SYNAPSE Analytics kullanarak SQL isteğe bağlı (Önizleme) içinde dış tablolar oluşturma ve kullanma
+# <a name="create-and-use-external-tables-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullanarak dış tablolar oluşturma ve kullanma
 
-Bu bölümde, SQL isteğe bağlı (Önizleme) içinde [dış tabloları](develop-tables-external-tables.md) oluşturmayı ve kullanmayı öğreneceksiniz. Dış tablolar, SQL isteğe bağlı SQL 'de dış verilere erişimi denetlemek istediğinizde ve Power BI gibi araçlar kullanmak istiyorsanız, isteğe bağlı SQL ile birlikte yararlı olur. Dış tablolar, iki tür depolama alanına erişebilir:
+Bu bölümde, sunucusuz SQL havuzunda (Önizleme) [dış tablo](develop-tables-external-tables.md) oluşturmayı ve kullanmayı öğreneceksiniz. Dış tablolar, sunucusuz SQL havuzundaki dış verilere erişimi denetlemek istediğinizde ve Power BI gibi araçları, sunucusuz SQL havuzuyla birlikte kullanmak istiyorsanız yararlıdır. Dış tablolar, iki tür depolama alanına erişebilir:
 - Kullanıcıların ortak depolama dosyalarına erişebileceği ortak depolama.
 - Kullanıcıların SAS kimlik bilgilerini, Azure AD kimliğini veya SYNAPSE çalışma alanının yönetilen kimliğini kullanarak depolama dosyalarına erişebileceği korumalı depolama.
 

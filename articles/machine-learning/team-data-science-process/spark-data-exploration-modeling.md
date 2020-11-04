@@ -11,20 +11,20 @@ ms.topic: sample
 ms.date: 06/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: 406092466b7ab5ca729a08f7c703bcb30812901d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7a361319c3fc6c80c6dac80c48fb10155a3ff5b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86027520"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314845"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Spark ile veri keşfi ve modelleme
 
 Spark MLlib kullanarak TAXI tarifeli havayolu tahmine yönelik makine öğrenimi modellerini eğitmek için HDInsight Spark 'ı kullanmayı öğrenin.
 
-Bu örnek, [ekip veri bilimi işlemindeki](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)çeşitli adımları gösterir. NYC TAXI seyahat ve tarifeli havayolu 2013 veri kümesinin bir alt kümesi, verileri yüklemek, araştırmak ve hazırlamak için kullanılır. Daha sonra Spark MLlib, ikili sınıflandırma ve regresyon modelleri kullanılarak seyahat için bir tıp ödenip ödenmeyeceğini tahmin etmek ve tıp tutarını tahmin etmek için eğitilen.
+Bu örnek, [ekip veri bilimi işlemindeki](./index.yml)çeşitli adımları gösterir. NYC TAXI seyahat ve tarifeli havayolu 2013 veri kümesinin bir alt kümesi, verileri yüklemek, araştırmak ve hazırlamak için kullanılır. Daha sonra Spark MLlib, ikili sınıflandırma ve regresyon modelleri kullanılarak seyahat için bir tıp ödenip ödenmeyeceğini tahmin etmek ve tıp tutarını tahmin etmek için eğitilen.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu izlenecek yolu tamamlamak için bir Azure hesabı ve Spark 1,6 (veya Spark 2,0) HDInsight kümesine ihtiyacınız vardır. Bu gereksinimleri nasıl karşılacağınız hakkında yönergeler için bkz. [Azure HDInsight 'Ta Spark kullanarak veri bilimine genel bakış](spark-overview.md) . Bu konuda Ayrıca, burada kullanılan NYC 2013 TAXI verilerinin açıklaması ve Spark kümesindeki bir Jupyter Not defterinden kod yürütme yönergeleri de yer alır. 
 
@@ -92,7 +92,7 @@ Jupyter Not defterleri ile birlikte sunulan pyspark çekirdekler 'in önceden ay
 PySpark çekirdeği,%% ile çağırabilmeniz için özel komutlar olan önceden tanımlanmış bazı "mıknatıcs" sağlar. Bu kod örneklerinde kullanılan iki komut vardır.
 
 * **%% Yerel** Sonraki satırlardaki kodun yerel olarak yürütüleceğini belirtir. Kod geçerli bir Python kodu olmalıdır.
-* **%% SQL-o \<variable name> ** SqlContext 'e karşı bir Hive sorgusu yürütür. -O parametresi geçirilirse, sorgunun sonucu%% yerel Python bağlamında Pandas DataFrame olarak kalıcı hale getirilir.
+* **%% SQL-o \<variable name>** SqlContext 'e karşı bir Hive sorgusu yürütür. -O parametresi geçirilirse, sorgunun sonucu%% yerel Python bağlamında Pandas DataFrame olarak kalıcı hale getirilir.
 
 Jupyter Notebook çekirdekler ve önceden tanımlanmış "mıknatık" hakkında daha fazla bilgi için bkz. [HDInsight 'ta HDInsight Spark Linux kümeleri içeren Jupyter Not defterleri için sunulan çekirdekler](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
@@ -181,7 +181,7 @@ Veriler Spark 'a alındıktan sonra, veri bilimi sürecinin bir sonraki adımı,
 Bu kod ve sonraki parçacıklar, verileri çizmek için örneği ve yerel Magic 'i sorgulamak için SQL Magic kullanır.
 
 * **SQL Magic ( `%%sql` )** HDInsight Pyspark çekirdeği, SqlContext 'e karşı kolay satır Içi hiveql sorgularını destekler. (-O VARIABLE_NAME) bağımsız değişkeni, SQL sorgusunun çıkışını jupi sunucusunda bir Pandas DataFrame olarak devam ettirir. Bu ayar, çıktıyı yerel modda kullanılabilir hale getirir.
-* ** `%%local` MAGIC** , HDInsight kümesinin baş düğümüne olan jupyıter sunucusunda yerel olarak kod çalıştırmak için kullanılır. Genellikle, Magic `%%local` `%%sql` with-o parametresiyle birlikte sihirli kullanırsınız. -O parametresi SQL sorgusunun çıkışını yerel olarak kalıcı hale getirecağından%% Local Magic, yerel olarak kalıcı olan SQL sorgularının çıktısına karşı yerel olarak çalışacak bir sonraki kod parçacığı kümesini tetikler
+* **`%%local` MAGIC** , HDInsight kümesinin baş düğümüne olan jupyıter sunucusunda yerel olarak kod çalıştırmak için kullanılır. Genellikle, Magic `%%local` `%%sql` with-o parametresiyle birlikte sihirli kullanırsınız. -O parametresi SQL sorgusunun çıkışını yerel olarak kalıcı hale getirecağından%% Local Magic, yerel olarak kalıcı olan SQL sorgularının çıktısına karşı yerel olarak çalışacak bir sonraki kod parçacığı kümesini tetikler
 
 Kodu çalıştırdıktan sonra çıkış otomatik olarak görselleştirilebilir.
 
@@ -697,7 +697,7 @@ Hücrenin yürütülmesi için geçen süre: 57,61 saniye
 
 **ROC eğrisini çiz.**
 
-*PredictionAndLabelsDF* , önceki hücrede *tmp_results*tablo olarak kaydedilir. *tmp_results* , çizim Için SQLResults veri çerçevesinde sorgu ve çıkış sonuçları yapmak için kullanılabilir. Kod şöyledir.
+*PredictionAndLabelsDF* , önceki hücrede *tmp_results* tablo olarak kaydedilir. *tmp_results* , çizim Için SQLResults veri çerçevesinde sorgu ve çıkış sonuçları yapmak için kullanılabilir. Kod şöyledir.
 
 ```python
 # QUERY RESULTS                              
@@ -1119,4 +1119,4 @@ Spark MlLib ile gerileme ve sınıflandırma modelleri oluşturduğunuza göre, 
 
 **Model tüketimi:** Bu konuda oluşturulan sınıflandırma ve regresyon modellerini Puanlama ve değerlendirme hakkında bilgi edinmek için bkz. [Spark tarafından oluşturulan Machine Learning modellerini Puanlama ve değerlendirme](spark-model-consumption.md).
 
-**Çapraz doğrulama ve hiper parametre**kullanımı: modellerin çapraz doğrulama ve hiper parametre tatkiyle nasıl eğitilmesine ilişkin [Spark ile gelişmiş veri araştırması ve modellemeye](spark-advanced-data-exploration-modeling.md) bakın
+**Çapraz doğrulama ve hiper parametre** kullanımı: modellerin çapraz doğrulama ve hiper parametre tatkiyle nasıl eğitilmesine ilişkin [Spark ile gelişmiş veri araştırması ve modellemeye](spark-advanced-data-exploration-modeling.md) bakın

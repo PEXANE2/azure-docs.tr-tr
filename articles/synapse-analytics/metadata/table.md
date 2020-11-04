@@ -1,6 +1,6 @@
 ---
 title: Paylaşılan meta veri tabloları
-description: Azure SYNAPSE Analytics, verileri çoğaltmadan SQL 'in isteğe bağlı (Önizleme) ve SQL havuzu altyapılarından erişilebilir hale getirmek için Apache Spark bir tablo oluşturmanın paylaşılan bir meta veri modeli sağlar.
+description: Azure SYNAPSE Analytics, sunucusuz Apache Spark havuzunda tablo oluşturmak, verileri çoğaltmadan sunucusuz SQL havuzundan (Önizleme) ve adanmış SQL havuzundan erişilebilir hale getirir.
 services: sql-data-warehouse
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,30 +10,30 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d19376d21081d899d8ff7226c6d7c5b76267fabf
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: f269217908bea4b5e8ef3c0004a9cec9d5d682c7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280452"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314531"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure SYNAPSE Analytics paylaşılan meta veri tabloları
 
 [!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Azure SYNAPSE Analytics, farklı çalışma alanı hesaplama altyapılarının, Apache Spark havuzları (Önizleme) ile SQL isteğe bağlı (Önizleme) altyapısı arasında veritabanlarını ve Parquet tarafından desteklenen tabloları paylaşmasına izin verir.
+Azure SYNAPSE Analytics, farklı çalışma alanı hesaplama altyapılarının, Apache Spark havuzları (Önizleme) ve sunucusuz SQL Havuzu (Önizleme) arasında veritabanlarını ve Parquet tarafından desteklenen tabloları paylaşmasına izin verir.
 
 Bir Spark işi tarafından bir veritabanı oluşturulduktan sonra, depolama biçimi olarak Parquet kullanan Spark ile birlikte tablo oluşturabilirsiniz. Bu tablolar, Azure SYNAPSE çalışma alanı Spark havuzlarından herhangi biri tarafından sorgulanarak hemen kullanılabilir hale gelir. Bunlar ayrıca, izinlerle ilgili Spark işlerinin herhangi birinden de kullanılabilir.
 
-Spark oluşturulan, yönetilen ve dış tablolar, SQL isteğe bağlı olarak karşılık gelen eşitlenmiş veritabanında aynı ada sahip dış tablolar olarak da sunulur. [SQL 'de Spark tablosunun kullanıma](#expose-a-spark-table-in-sql) sunulması tablo eşitlemesi hakkında daha fazla ayrıntı sağlar.
+Spark oluşturulan, yönetilen ve dış tablolar aynı zamanda sunucusuz SQL havuzundaki karşılık gelen eşitlenmiş veritabanında aynı ada sahip harici tablolar olarak da kullanılabilir hale getirilir. [SQL 'de Spark tablosunun kullanıma](#expose-a-spark-table-in-sql) sunulması tablo eşitlemesi hakkında daha fazla ayrıntı sağlar.
 
-Tablolar, istek üzerine zaman uyumsuz olarak SQL ile eşitlendiğinden, görünene kadar bir gecikme olur.
+Tablolar sunucusuz SQL havuzunun zaman uyumsuz olarak eşitlendiğinden, görünene kadar bir gecikme olur.
 
 ## <a name="manage-a-spark-created-table"></a>Spark tarafından oluşturulan bir tabloyu yönetme
 
-Spark tarafından oluşturulan veritabanlarını yönetmek için Spark 'ı kullanın. Örneğin, bir Spark havuzu işi aracılığıyla silin ve Spark ' dan tablo oluşturun.
+Spark tarafından oluşturulan veritabanlarını yönetmek için Spark 'ı kullanın. Örneğin, bir sunucusuz Apache Spark havuzu işi aracılığıyla silin ve Spark ' dan tablo oluşturun.
 
-Bu tür bir veritabanında SQL isteğe bağlı olarak nesne oluşturursanız veya veritabanını bırakmaya çalışırsanız, işlem başarılı olur ancak özgün Spark veritabanı değiştirilmez.
+Bu tür bir veritabanında sunucusuz SQL havuzundan nesne oluşturursanız veya veritabanını bırakmaya çalışırsanız, işlem başarılı olur ancak özgün Spark veritabanı değiştirilmez.
 
 ## <a name="expose-a-spark-table-in-sql"></a>SQL 'de Spark tablosu kullanıma sunma
 
@@ -95,9 +95,9 @@ Klasörler ve dosyalar üzerinde izinlerin nasıl ayarlanacağı hakkında daha 
 
 ## <a name="examples"></a>Örnekler
 
-### <a name="create-a-managed-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>Spark ve SQL isteğe bağlı sorgu 'da Parquet tarafından desteklenen yönetilen bir tablo oluşturma
+### <a name="create-a-managed-table-backed-by-parquet-in-spark-and-query-from-serverless-sql-pool"></a>Spark ve sunucusuz SQL havuzundan sorgu ile desteklenen bir yönetilen tablo oluşturun
 
-Bu senaryoda adlı bir Spark veritabanınız vardır `mytestdb` . Bkz. [isteğe bağlı SQL Ile Spark veritabanı oluşturma ve bu veritabanına bağlanma](database.md#create-and-connect-to-spark-database-with-sql-on-demand).
+Bu senaryoda adlı bir Spark veritabanınız vardır `mytestdb` . Bkz. [sunucusuz SQL havuzu Ile Spark veritabanı oluşturma ve bu veritabanına bağlanma](database.md#create-and-connect-to-spark-database-with-serverless-sql-pool).
 
 Aşağıdaki komutu çalıştırarak, mini bir SQL ile yönetilen Spark tablosu oluşturun:
 
@@ -105,7 +105,7 @@ Aşağıdaki komutu çalıştırarak, mini bir SQL ile yönetilen Spark tablosu 
     CREATE TABLE mytestdb.myParquetTable(id int, name string, birthdate date) USING Parquet
 ```
 
-Bu komut, tabloyu `myParquetTable` veritabanında oluşturur `mytestdb` . Kısa bir gecikmeden sonra, tabloyu SQL isteğe bağlı olarak görebilirsiniz. Örneğin, isteğe bağlı SQL 'de aşağıdaki ifadeyi çalıştırın.
+Bu komut, tabloyu `myParquetTable` veritabanında oluşturur `mytestdb` . Kısa bir gecikmeden sonra, tabloyu sunucusuz SQL havuzunuzdaki görebilirsiniz. Örneğin, sunucusuz SQL havuzunuzdaki aşağıdaki ifadeyi çalıştırın.
 
 ```sql
     USE mytestdb;
@@ -140,7 +140,7 @@ var df = spark.CreateDataFrame(data, schema);
 df.Write().Mode(SaveMode.Append).InsertInto("mytestdb.myParquetTable");
 ```
 
-Artık SQL isteğe bağlı verileri şu şekilde okuyabilirsiniz:
+Artık sunucusuz SQL havuzunuzdaki verileri şu şekilde okuyabilirsiniz:
 
 ```sql
 SELECT * FROM mytestdb.dbo.myParquetTable WHERE name = 'Alice';
@@ -154,7 +154,7 @@ id | name | birthdate
 1 | Alice | 2010-01-01
 ```
 
-### <a name="create-an-external-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>Spark ve SQL isteğe bağlı olarak sorgulama içinde Parquet tarafından desteklenen bir dış tablo oluşturun
+### <a name="create-an-external-table-backed-by-parquet-in-spark-and-query-from-serverless-sql-pool"></a>Spark ve sunucusuz SQL havuzundan sorgu ile desteklenen bir dış tablo oluşturun
 
 Bu örnekte, yönetilen tablo için önceki örnekte oluşturulan Parquet veri dosyaları üzerinde bir dış Spark tablosu oluşturun.
 
@@ -168,7 +168,7 @@ CREATE TABLE mytestdb.myExternalParquetTable
 
 Yer tutucusunu, `<fs>` çalışma alanı varsayılan dosya sistemi olan dosya sistemi adıyla ve `<synapse_ws>` Bu örneği çalıştırmak için kullandığınız SYNAPSE çalışma alanının adı ile birlikte yer tutucu ile değiştirin.
 
-Önceki örnekte, tablosu veritabanında oluşturulur `myExtneralParquetTable` `mytestdb` . Kısa bir gecikmeden sonra, tabloyu SQL isteğe bağlı olarak görebilirsiniz. Örneğin, isteğe bağlı SQL 'de aşağıdaki ifadeyi çalıştırın.
+Önceki örnekte, tablosu veritabanında oluşturulur `myExtneralParquetTable` `mytestdb` . Kısa bir gecikmeden sonra, tabloyu sunucusuz SQL havuzunuzdaki görebilirsiniz. Örneğin, sunucusuz SQL havuzunuzdaki aşağıdaki ifadeyi çalıştırın.
 
 ```sql
 USE mytestdb;
@@ -177,7 +177,7 @@ SELECT * FROM sys.tables;
 
 `myExternalParquetTable`Sonuçlara dahil edildiğini doğrulayın.
 
-Artık SQL isteğe bağlı verileri şu şekilde okuyabilirsiniz:
+Artık sunucusuz SQL havuzunuzdaki verileri şu şekilde okuyabilirsiniz:
 
 ```sql
 SELECT * FROM mytestdb.dbo.myExternalParquetTable WHERE name = 'Alice';

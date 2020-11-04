@@ -1,6 +1,6 @@
 ---
-title: Silinen bir SQL havuzunu geri yükleme
-description: Silinen bir SQL havuzunu geri yükleme kılavuzu.
+title: Silinen ayrılmış bir SQL havuzunu geri yükleme
+description: Azure SYNAPSE Analytics 'te silinen bir SQL havuzunu geri yükleme kılavuzu.
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,34 +11,34 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 879844efdc5c2b40f69ee5f79305d4dfa596fd27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29edf6ebd451bf05fe24249eeacb416a70001d56
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460737"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313565"
 ---
-# <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>Azure SYNAPSE Analytics kullanarak silinen bir SQL havuzunu geri yükleme
+# <a name="restore-a-deleted-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te silinmiş ayrılmış bir SQL havuzunu geri yükleme
 
-Bu makalede, Azure portal veya PowerShell kullanarak bir SQL geri yüklemeyi öğreneceksiniz.
+Bu makalede, Azure portal veya PowerShell kullanarak adanmış bir SQL havuzunu geri yüklemeyi öğreneceksiniz.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**DTU kapasitenizi doğrulayın.** Her SQL havuzu, varsayılan DTU kotasına sahip bir [MANTıKSAL SQL Server](../../azure-sql/database/logical-servers.md) (örneğin, myserver.Database.Windows.net) tarafından barındırılır.  Sunucuda geri yüklenmekte olan veritabanı için kalan DTU kotasının yeterli olduğunu doğrulayın. DTU 'yu nasıl hesaplayacağınızı veya daha fazla DTU isteğinde bulunmanız için bkz. [DTU kota değişikliği isteme](sql-data-warehouse-get-started-create-support-ticket.md).
+**DTU kapasitenizi doğrulayın.** Her adanmış SQL havuzu, varsayılan DTU kotasına sahip bir [MANTıKSAL SQL Server](../../azure-sql/database/logical-servers.md) (örneğin, myserver.Database.Windows.net) tarafından barındırılır.  Sunucuda geri yüklenmekte olan veritabanı için kalan DTU kotasının yeterli olduğunu doğrulayın. DTU 'yu nasıl hesaplayacağınızı veya daha fazla DTU isteğinde bulunmanız için bkz. [DTU kota değişikliği isteme](sql-data-warehouse-get-started-create-support-ticket.md).
 
 ## <a name="restore-a-deleted-data-warehouse-through-powershell"></a>Silinen bir veri ambarını PowerShell aracılığıyla geri yükleme
 
-Silinen bir SQL havuzunu geri yüklemek için [restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) cmdlet 'ini kullanın. Karşılık gelen sunucu da silinmişse, bu veri ambarını geri alamazsınız.
+Silinen ayrılmış bir SQL havuzunu geri yüklemek için [restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) cmdlet 'ini kullanın. Karşılık gelen sunucu da silinmişse, bu veri ambarını geri alamazsınız.
 
 1. Başlamadan önce [Azure PowerShell](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)' yi yüklediğinizden emin olun.
 2. PowerShell’i açın.
 3. Azure hesabınıza bağlanın ve hesabınızla ilişkili tüm abonelikleri listeleyin.
-4. Geri yüklenecek silinen SQL havuzunu içeren aboneliği seçin.
+4. Geri yüklenecek silinmiş adanmış SQL havuzunu içeren aboneliği seçin.
 5. Silinen belirli veri ambarını alın.
-6. Silinen SQL havuzunu geri yükleme
-    1. Silinen SQL havuzunu farklı bir sunucuya geri yüklemek için diğer sunucu adını belirttiğinizden emin olun.  Bu sunucu, farklı bir kaynak grubunda ve bölgede de olabilir.
+6. Silinen adanmış SQL havuzunu geri yükleme
+    1. Silinen adanmış SQL havuzunu farklı bir sunucuya geri yüklemek için diğer sunucu adını belirttiğinizden emin olun.  Bu sunucu, farklı bir kaynak grubunda ve bölgede de olabilir.
     1. Farklı bir aboneliğe geri dönmek için [Taşı](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#use-the-portal) düğmesini kullanarak sunucuyu başka bir aboneliğe taşıyın.
 7. Geri yüklenen veri ambarının çevrimiçi olduğunu doğrulayın.
 8. Geri yükleme tamamlandıktan sonra, [kurtarma sonrasında veritabanınızı yapılandırma](../../azure-sql/database/disaster-recovery-guidance.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)' yı izleyerek kurtarılan veri Ambarınızı yapılandırabilirsiniz.
@@ -71,7 +71,7 @@ $RestoredDatabase.status
 
 ## <a name="restore-a-deleted-database-using-the-azure-portal"></a>Silinen veritabanını Azure portal kullanarak geri yükleme
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Silinen veri ambarınızın barındırıldığı sunucuya gidin.
 3. İçindekiler tablosunda **silinen veritabanları** simgesini seçin.
 
@@ -87,5 +87,5 @@ $RestoredDatabase.status
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-- [Mevcut bir SQL havuzunu geri yükleme](sql-data-warehouse-restore-active-paused-dw.md)
-- [Coğrafi yedekleme SQL havuzundan geri yükleme](sql-data-warehouse-restore-from-geo-backup.md)
+- [Mevcut ayrılmış bir SQL havuzunu geri yükleme](sql-data-warehouse-restore-active-paused-dw.md)
+- [Coğrafi yedekleme adanmış SQL havuzundan geri yükleme](sql-data-warehouse-restore-from-geo-backup.md)

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 0cc367b86507d6d819608795851052e8a0c1c73b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67d17af4f615907ca50b27ce8fa26973e5869608
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890316"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314243"
 ---
 # <a name="score-model"></a>Puanlama Modeli
 
@@ -48,8 +48,8 @@ Puan veya tahmin edilen değer, modele ve giriş verilerinize bağlı olarak bir
 
 ## <a name="publish-scores-as-a-web-service"></a>Puanları Web hizmeti olarak yayımlama
 
-Puanlama kullanımı, bir tahmine dayalı Web hizmetinin parçası olarak çıktıyı döndürmemelidir. Daha fazla bilgi için, Azure Machine Learning tasarımcısında bir işlem hattına göre gerçek zamanlı bir uç noktanın nasıl dağıtılacağı hakkında [Bu öğreticiye](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy) bakın.
+Puanlama kullanımı, bir tahmine dayalı Web hizmetinin parçası olarak çıktıyı döndürmemelidir. Daha fazla bilgi için, Azure Machine Learning tasarımcısında bir işlem hattına göre gerçek zamanlı bir uç noktanın nasıl dağıtılacağı hakkında [Bu öğreticiye](../tutorial-designer-automobile-price-deploy.md) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın.

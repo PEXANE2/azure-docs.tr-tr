@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e387d5f7ee0b1926457717b30b03bbfeb8d70a1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8be878cf40967356d68e9be0765e898c81b5ba0a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86027435"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314622"
 ---
 # <a name="process-data-in-sql-server-virtual-machine-on-azure"></a><a name="heading"></a>Azure üzerindeki SQL Server Sanal Makinesi verilerini işleme
 Bu belgede, Azure 'daki bir SQL Server VM depolanan veriler için verilerin nasıl araştırılacak ve özelliklerin nasıl oluşturulacağı ele alınmaktadır. Bu hedef, SQL kullanılarak veya Python gibi bir programlama dili kullanılarak veri denetimi tarafından tamamlanabilir.
@@ -98,7 +98,7 @@ Latitude/Boylam konum verilerine ilişkin kısa bir açıklama aşağıda verilm
 * Beşinci ondalık basamak 1,1 e kadar olur: ağaçları birbirinden ayırır. Ticari GPS birimleri ile bu düzeyin doğruluğu yalnızca değişiklik düzeltme ile elde edilebilir.
 * Altıncı ondalık basamak 0,11 ' ye kadar olur: bu yapıyı, yapıları tasarlamak için, ara dscapes 'yi tasarlamak için kullanabilirsiniz. Bu, glatik ve Rivers hareketlerini izlemek için yeterince iyi olmalıdır. Bu, aynı şekilde düzeltilen GPS gibi, GPS ile sorunsuz ölçümler alınarak elde edilebilir.
 
-Konum bilgileri, bölge, konum ve şehir bilgilerini ayırarak aşağıdaki şekilde değiştirilebilir. Ayrıca, bölge/bölge bilgilerini almak için [noktaya göre konum bul](https://msdn.microsoft.com/library/ff701710.aspx) ' da bulunan Bing Haritalar API 'si gıbı bir REST uç noktasını çağırabilirsiniz.
+Konum bilgileri, bölge, konum ve şehir bilgilerini ayırarak aşağıdaki şekilde değiştirilebilir. Ayrıca, bölge/bölge bilgilerini almak için [noktaya göre konum bul](/bingmaps/rest-services/locations/find-a-location-by-point) ' da bulunan Bing Haritalar API 'si gıbı bir REST uç noktasını çağırabilirsiniz.
 
 ```sql
 select 
@@ -116,7 +116,7 @@ from <tablename>
 Bu konum tabanlı özellikler, daha önce açıklandığı gibi ek sayı özellikleri oluşturmak için daha fazla kullanılabilir. 
 
 > [!TIP]
-> Seçtiğiniz dili kullanarak kayıtları program aracılığıyla ekleyebilirsiniz. Yazma verimliliğini artırmak için verileri parçalara eklemeniz gerekebilir (pyodbc kullanarak bunun nasıl yapılacağı hakkında bir örnek için bkz. [Python Ile SqlServer 'e erişmek Için HelloWorld örneği](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)). Diğer bir seçenek de [bcp yardımcı programını](https://msdn.microsoft.com/library/ms162802.aspx)kullanarak veritabanına veri eklemedir.
+> Seçtiğiniz dili kullanarak kayıtları program aracılığıyla ekleyebilirsiniz. Yazma verimliliğini artırmak için verileri parçalara eklemeniz gerekebilir (pyodbc kullanarak bunun nasıl yapılacağı hakkında bir örnek için bkz. [Python Ile SqlServer 'e erişmek Için HelloWorld örneği](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)). Diğer bir seçenek de [bcp yardımcı programını](/sql/tools/bcp-utility)kullanarak veritabanına veri eklemedir.
 > 
 > 
 
@@ -152,5 +152,4 @@ Genel bir veri kümesi kullanan Azure veri bilimi Işleminin uçtan uca bir anla
 
 
 <!-- Module References -->
-[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-
+[import-data]: /azure/machine-learning/studio-module-reference/import-data

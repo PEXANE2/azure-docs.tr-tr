@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick,
-ms.openlocfilehash: da4cef50610b219689e2271e9f70fd1adb1a235f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 979e360bb920fc3b34a201b1287b50b141bffa9b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540515"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313616"
 ---
 # <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>Öğretici: Azure otomatik ML ve Apache Spark kullanarak denemeleri çalıştırma
 
@@ -29,13 +29,16 @@ Bu öğreticide aşağıdaki görevleri öğreneceksiniz:
 - Model doğruluğunu hesapla
 
 ### <a name="before-you-begin"></a>Başlamadan önce
-- [Apache Spark Havuzu Oluşturma öğreticisini](../quickstart-create-apache-spark-pool-studio.md)Izleyerek Apache Spark havuzu oluşturun.
+
+- [Sunucusuz Apache Spark havuzu oluşturma hızlı](../quickstart-create-apache-spark-pool-studio.md)başlangıcı ' nı izleyerek sunucusuz Apache Spark havuzu oluşturun.
 - Mevcut bir Azure Machine Learning çalışma alanınız yoksa [Azure Machine Learning çalışma alanı kurulum öğreticisini](https://docs.microsoft.com/azure/machine-learning/tutorial-1st-experiment-sdk-setup) doldurun. 
 
 ### <a name="understand-regression-models"></a>Gerileme modellerini anlama
+
 *Regresyon modelleri* , bağımsız tahmine göre sayısal çıkış değerlerini tahmin eder. Gerileme ' de amaç, bir değişkenin diğerlerini nasıl etkilediğini tahmin ederek bu bağımsız tahmine dayalı değişkenler arasında ilişki kurmaya yardımcı olur.  
 
 ### <a name="regression-analysis-example-on-the-nyc-taxi-data"></a>NYC TAXI verilerinde regresyon analizi örneği
+
 Bu örnekte, New York 'dan TAXI Seyahat ipucu verilerinde bazı analizler gerçekleştirmek için Spark kullanacaksınız. Veriler [Azure açık veri kümeleri](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)aracılığıyla kullanılabilir. Veri kümesinin bu alt kümesi, her seyahat hakkında bilgiler, başlangıç ve bitiş saati ve konumları, maliyet ve diğer ilgi çekici öznitelikler dahil olmak üzere sarı TAXI seyahatleriyle ilgili bilgiler içerir.
 
 > [!IMPORTANT]
@@ -143,7 +146,7 @@ ws = Workspace(workspace_name = workspace_name,
 ```
 
 ## <a name="convert-a-dataframe-to-an-azure-machine-learning-dataset"></a>Bir veri çerçevesini Azure Machine Learning veri kümesine dönüştürme
-Bir uzaktan deneme göndermek için veri kümemizi bir Azure Machine Learning dönüştürmemiz gerekir ```TabularDatset``` . [Tabulardataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) , belirtilen dosyaları ayrıştırarak verileri tablolu biçimde temsil eder.
+Bir uzaktan deneme göndermek için veri kümemizi bir Azure Machine Learning dönüştürmemiz gerekir ```TabularDatset``` . [Tabulardataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) , belirtilen dosyaları ayrıştırarak verileri tablolu biçimde temsil eder.
 
 Aşağıdaki kod, mevcut çalışma alanını ve varsayılan Azure Machine Learning varsayılan veri deposunu alır. Daha sonra yeni bir oluşturmak için veri deposu ve dosya konumlarını yol parametresine geçirir ```TabularDataset``` . 
 
@@ -165,7 +168,7 @@ dataset_training = Dataset.Tabular.from_delimited_files(path = [(datastore, 'tra
 
 ![Karşıya yüklenen veri kümesinin resmi.](./media/apache-spark-machine-learning-aml-notebook/upload-dataset.png)
 
-## <a name="submit-an-auto-ml-experiment"></a>Auto ML denemesi gönder
+## <a name="submit-an-automl-experiment"></a>Bir oto ml denemesi gönder
 
 #### <a name="define-training-settings"></a>Eğitim ayarlarını tanımlama
 

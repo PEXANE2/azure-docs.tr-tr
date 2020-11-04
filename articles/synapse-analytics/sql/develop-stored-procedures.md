@@ -1,6 +1,6 @@
 ---
 title: Saklı yordamları kullanma
-description: Çözümleri geliştirmek için SYNAPSE SQL 'de saklı yordamları uygulamaya yönelik ipuçları.
+description: Çözüm geliştirme için Azure SYNAPSE Analytics 'te SYNAPSE SQL kullanarak saklı yordamları uygulamaya yönelik ipuçları.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 11/03/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 607060851a8afa48b9570dfcb17732279a3629ee
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 3940d762dbc249e0303ddf905acbeeed7f96aa4f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286664"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315555"
 ---
-# <a name="use-stored-procedures-in-synapse-sql"></a>SYNAPSE SQL 'de saklı yordamları kullanma
+# <a name="stored-procedures-using-synapse-sql-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE SQL kullanan saklı yordamlar
 
 SYNAPSE SQL tarafından sağlanan ve sunucusuz havuzlar, karmaşık veri işleme mantığını SQL saklı yordamlarına yerleştirmenizi sağlar. Saklı yordamlar, SQL kodunuzu kapsüllemek ve veri ambarındaki verilerinize yakın bir şekilde depolamak için harika bir yoldur. Saklı yordamlar, kodu yönetilebilir birimlere kapsülleyerek ve kodun daha fazla yeniden kullanılabilirliğini kolaylaştırarak geliştiricilerin çözümlerini modüler hale getirmenize yardımcı olur. Her saklı yordam aynı zamanda parametreleri daha da esnek hale getirmek için kabul edebilir.
 Bu makalede, çözüm geliştirmeye yönelik SYNAPSE SQL havuzunda saklı yordamları uygulamaya yönelik bazı ipuçları bulacaksınız.
@@ -27,7 +27,7 @@ Bu makalede, çözüm geliştirmeye yönelik SYNAPSE SQL havuzunda saklı yordam
 SYNAPSE SQL SQL Server ' de kullanılan T-SQL özelliklerinin çoğunu destekler. Daha da önemlisi, çözümünüzün performansını en üst düzeye çıkarmak için kullanabileceğiniz genişleme özel özellikleri vardır. Bu makalede, saklı yordamlarda yerleştirebileceğiniz özellikler hakkında bilgi edineceksiniz.
 
 > [!NOTE]
-> Yordam gövdesinde yalnızca SYNAPSE SQL Surface alanında desteklenen özellikleri kullanabilirsiniz. Saklı yordamlarda kullanılabilecek nesneleri ve deyimleri belirlemek için [Bu makaleyi](overview-features.md) gözden geçirin. Bu makalelerdeki örneklerde, hem sunucusuz hem de sağlanan yüzey alanında kullanılabilen genel Özellikler kullanılır. Bu makalenin sonundaki [sağlanan ve sunucusuz SYNAPSE SQL havuzlarındaki ek sınırlamalara](#limitations) bakın.
+> Yordam gövdesinde yalnızca SYNAPSE SQL Surface alanında desteklenen özellikleri kullanabilirsiniz. Saklı yordamlarda kullanılabilecek nesneleri ve deyimleri belirlemek için [Bu makaleyi](overview-features.md) gözden geçirin. Bu makalelerdeki örneklerde, hem sunucusuz hem de adanmış yüzey alanında kullanılabilen genel Özellikler kullanılır. Bu makalenin sonundaki [sağlanan ve sunucusuz SYNAPSE SQL havuzlarındaki ek sınırlamalara](#limitations) bakın.
 
 SQL havuzunun ölçeğini ve performansını korumak için, davranış farklılıkları ve bazıları desteklenmeyen bazı özellikler ve işlevler de vardır.
 

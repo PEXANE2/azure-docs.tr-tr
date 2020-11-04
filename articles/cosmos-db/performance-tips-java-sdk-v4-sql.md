@@ -7,13 +7,13 @@ ms.devlang: java
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: anfeldma
-ms.custom: devx-track-java
-ms.openlocfilehash: 49827b7387edc1e914bbd58c63df2db74f4ed17b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: devx-track-java, contperfq2
+ms.openlocfilehash: c65cd4012d29146061183ea13749a0f42c03b1eb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091285"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314343"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 için performans ipuçları
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -39,11 +39,11 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 * **Bağlantı modu: doğrudan modu kullan**
 <a id="direct-connection"></a>
     
-    Java SDK varsayılan bağlantı modu doğrudan ' dir. İstemci oluşturucusunda bağlantı modunu aşağıda gösterildiği gibi *directmode ()* veya *gatewaymode ()* yöntemlerini kullanarak yapılandırabilirsiniz. Her iki modu varsayılan ayarlarla yapılandırmak için bağımsız değişkenler olmadan iki yöntemi çağırın. Aksi halde, bağımsız değişken olarak bir yapılandırma ayarları sınıf örneği geçirin ( *directmode ()* Için *directconnectionconfig* , gatewaymode için *gatewayconnectionconfig* *()* .). Farklı bağlantı seçenekleri hakkında daha fazla bilgi edinmek için [bağlantı modları](sql-sdk-connection-modes.md) makalesine bakın.
+    Java SDK varsayılan bağlantı modu doğrudan ' dir. İstemci oluşturucusunda bağlantı modunu aşağıda gösterildiği gibi *directmode ()* veya *gatewaymode ()* yöntemlerini kullanarak yapılandırabilirsiniz. Her iki modu varsayılan ayarlarla yapılandırmak için bağımsız değişkenler olmadan iki yöntemi çağırın. Aksi halde, bağımsız değişken olarak bir yapılandırma ayarları sınıf örneği geçirin ( *directmode ()* Için *directconnectionconfig* , gatewaymode için *gatewayconnectionconfig* *()*.). Farklı bağlantı seçenekleri hakkında daha fazla bilgi edinmek için [bağlantı modları](sql-sdk-connection-modes.md) makalesine bakın.
     
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK 'Sı
 
-    # <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
+    # <a name="async"></a>[Eş](#tab/api-async)
 
     Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
@@ -61,7 +61,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK 'Sı
 
-    # <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
+    # <a name="async"></a>[Eş](#tab/api-async)
 
     Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
@@ -129,7 +129,7 @@ Daha fazla ayrıntı için lütfen [Windows](../virtual-network/create-vm-accele
 
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK 'Sı
 
-    # <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
+    # <a name="async"></a>[Eş](#tab/api-async)
 
     Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
@@ -151,7 +151,7 @@ Daha fazla ayrıntı için lütfen [Windows](../virtual-network/create-vm-accele
 
     * ***Doğrudan moda genel bakış** _
 
-        :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Azure Cosmos DB bağlantı ilkesinin çizimi" border="false":::
+        :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Doğrudan mod mimarisinin çizimi" border="false":::
 
         Doğrudan modda çalışan istemci tarafı mimarisi, tahmin edilebilir ağ kullanımı ve Azure Cosmos DB çoğaltmaya çoğullanmış erişim sağlar. Yukarıdaki diyagramda, doğrudan modunun Cosmos DB arka uçtaki çoğaltmalara istemci isteklerini nasıl yönlendirdiğini gösterir. Doğrudan mod mimarisi, VERITABANı çoğaltması başına istemci tarafında en fazla 10 _ *Kanal* * ayırır. Kanal, 30 istekten oluşan bir istek arabelleğinin önünde yer aldığı bir TCP bağlantısıdır. Bir çoğaltmaya ait olan kanallar, çoğaltmanın **hizmet uç noktası** tarafından gerektiği şekilde dinamik olarak ayrılır. Kullanıcı doğrudan modda bir istek verdiği zaman, **Transportclient** , isteği bölüm anahtarına göre uygun hizmet uç noktasına yönlendirir. **Istek kuyruğu** , hizmet uç noktasından önceki istekleri arabelleğe alır.
 
@@ -270,7 +270,7 @@ _ **Istemcinizi genişleme-iş yükü**
 
     Nokta yazma performansını geliştirmek için, aşağıda gösterildiği gibi, nokta yazma API çağrısındaki öğe bölüm anahtarını belirtin:
 
-    # <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
+    # <a name="async"></a>[Eş](#tab/api-async)
 
     Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
@@ -286,7 +286,7 @@ _ **Istemcinizi genişleme-iş yükü**
 
     yalnızca öğe örneğini sağlamak yerine aşağıda gösterildiği gibi:
 
-    # <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
+    # <a name="async"></a>[Eş](#tab/api-async)
 
     Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
@@ -327,7 +327,7 @@ _ **Istemcinizi genişleme-iş yükü**
 
     Herhangi bir işlemin (oluşturma, güncelleştirme veya silme) yükünü ölçmek için, bu işlemler tarafından tüketilen istek birimi sayısını ölçmek üzere [x-MS-Request-şarj](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) üst bilgisini inceleyin. Ayrıca, Resourceres, FeedResponse içindeki eşdeğer Requestücretözelliğine de bakabilirsiniz \<T> \<T> .
 
-    # <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
+    # <a name="async"></a>[Eş](#tab/api-async)
 
     Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 

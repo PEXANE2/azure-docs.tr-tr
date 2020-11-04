@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 93f23cdcfb3fb7107e3b1838b48b3e58ccc2d028
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d0805aaf694f1569e613ab74135c95e454adbdc0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288775"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315070"
 ---
 # <a name="cetas-with-synapse-sql"></a>SYNAPSE SQL ile CETAS
 
-Aşağıdaki görevleri gerçekleştirmek için SQL havuzunda veya SQL isteğe bağlı (Önizleme) içinde dış tablo oluştur (CETAS) SEÇENEĞINI kullanabilirsiniz:  
+Aşağıdaki görevleri gerçekleştirmek için adanmış SQL havuzu veya sunucusuz SQL Havuzu (Önizleme) içinde dış tablo oluştur (CETAS) SEÇENEĞINI kullanabilirsiniz:  
 
 - Dış tablo oluşturma
 - Bir Transact-SQL SELECT ifadesinin sonuçlarını paralel olarak dışarı aktarın:
@@ -27,13 +27,13 @@ Aşağıdaki görevleri gerçekleştirmek için SQL havuzunda veya SQL isteğe b
   - Azure Depolama Blobu
   - Azure Data Lake Storage Gen2
 
-## <a name="cetas-in-sql-pool"></a>SQL havuzunda CETAS 'lar
+## <a name="cetas-in-dedicated-sql-pool"></a>Adanmış SQL havuzunda CETAS 'lar
 
-SQL havuzu, CETAS kullanımı ve sözdizimi için [dış tablo oluştur 'U seçin](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) makalesini denetleyin. Ek olarak, SQL havuzunu kullanarak CTAS hakkında rehberlik için, [Create Table seçme](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) makalesine bakın.
+Adanmış SQL havuzu, CETAS kullanımı ve sözdizimi için [dış tablo oluştur 'U seçin](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) makalesini denetleyin. Ayrıca, Özel SQL havuzunu kullanan CTAS hakkındaki yönergeler için, [Create Table seçme](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) makalesine bakın.
 
-## <a name="cetas-in-sql-on-demand"></a>İsteğe bağlı SQL 'de CETAS
+## <a name="cetas-in-serverless-sql-pool"></a>Sunucusuz SQL havuzunda CETAS
 
-İsteğe bağlı SQL ' i kullanırken CETAS, dış tablo oluşturmak ve sorgu sonuçlarını Azure Depolama Blobu veya Azure Data Lake Storage 2. dışarı aktarmak için kullanılır.
+Sunucusuz SQL havuzu kullanırken CETAS, dış tablo oluşturmak ve sorgu sonuçlarını Azure Depolama Blobu veya Azure Data Lake Storage 2. dışarı aktarmak için kullanılır.
 
 ## <a name="syntax"></a>Söz dizimi
 
@@ -56,7 +56,7 @@ CREATE EXTERNAL TABLE [ [database_name  . [ schema_name ] . ] | schema_name . ] 
 
 *[[ *database_name* . [ *schema_name* ]. ] | *schema_name* . ] *table_name**
 
-Oluşturulacak tablonun üç bölümden oluşan bir adı. Dış tablo için, isteğe bağlı SQL yalnızca tablo meta verilerini depolar. İsteğe bağlı SQL 'de hiçbir gerçek veri taşınmaz veya depolanmaz.
+Oluşturulacak tablonun üç bölümden oluşan bir adı. Bir dış tablo için sunucusuz SQL havuzu yalnızca tablo meta verilerini depolar. Sunucusuz SQL havuzunda hiçbir gerçek veri taşınmaz veya depolanmaz.
 
 Konum = *' path_to_folder '*
 
@@ -145,7 +145,7 @@ CETAS, sonuç kümelerini aşağıdaki SQL veri türleriyle depolamak için kull
 - char
 - varchar
 - date
-- saat
+- time
 - datetime2
 - decimal
 - sayısal
@@ -164,7 +164,7 @@ Aşağıdaki veri türleri, CETAS 'ın SEÇIM bölümünde kullanılamaz:
 
 - nchar
 - nvarchar
-- tarih saat
+- datetime
 - girişin
 - türünde
 - etmenize

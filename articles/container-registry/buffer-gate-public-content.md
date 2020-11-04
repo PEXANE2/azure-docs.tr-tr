@@ -5,12 +5,12 @@ author: dlepow
 ms.topic: article
 ms.author: danlep
 ms.date: 10/29/2020
-ms.openlocfilehash: e5fd70cdde6be431f7bb1950a42ca43e81b34e36
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: bb185e7d5803219135fddf421b7d6a89edd296b0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130859"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315810"
 ---
 # <a name="manage-public-content-with-azure-container-registry"></a>Azure Container Registry ortak içeriği yönetme
 
@@ -25,16 +25,14 @@ Doğru denetimler olmadan, ortak kayıt defteri içeriğine bağımlılıklar ol
 
 ## <a name="authenticate-with-docker-hub"></a>Docker Hub ile kimlik doğrulama
 
-İlk adım olarak, bir derleme veya dağıtım iş akışının parçası olarak Docker Hub 'ından ortak görüntüler çekiyorsanız, anonim bir çekme isteği yapmak yerine bir Docker Hub hesabı kullanarak kimlik doğrulaması yapmanızı öneririz.
+İlk adım olarak, bir derleme veya dağıtım iş akışının parçası olarak Docker Hub 'ından ortak görüntüler çekiyorsanız, anonim bir çekme isteği yapmak yerine [bir Docker Hub hesabı kullanarak kimlik doğrulaması](https://docs.docker.com/docker-hub/download-rate-limit/#how-do-i-authenticate-pull-requests) yapmanızı öneririz.
 
 > [!NOTE]
-> 2 Kasım 2020 ' den itibaren geçerli olan Docker Hub 'a yönelik anonim ve kimliği doğrulanmış istekler, Docker Ücretsiz plan hesaplarından uygulanır ve IP adresi tarafından zorlanır. 
+> 2 Kasım 2020 ' den itibaren [geçerli olan](https://docs.docker.com/docker-hub/download-rate-limit) Docker Hub 'a yönelik anonim ve kimliği doğrulanmış Istekler, Docker Ücretsiz plan HESAPLARıNDAN ve IP adresi ve DOCKER ID tarafından zorlanır. 
 >
-> Çekme isteklerinizin sayısını tahmin etmek için, bulut sağlayıcısı hizmetlerini kullanırken veya bir kurumsal NAT 'ın arkasında çalışırken birden çok Kullanıcı, IP adreslerinin bir alt kümesi olarak toplama bölümünde yer alan Docker Hub 'ına sunulur.  Docker Hub 'a yapılan isteklere Docker ücretli hesap kimlik doğrulaması eklemek, hız sınırı azaltma nedeniyle olası hizmet kesintilerine engel olur.
+> Çekme isteklerinizin sayısını tahmin etmek için, bulut sağlayıcısı hizmetlerini kullanırken veya bir kurumsal NAT 'ın arkasında çalışırken birden çok Kullanıcı, IP adreslerinin bir alt kümesi olarak toplama bölümünde yer alan Docker Hub 'ına sunulur. Docker Hub 'a yapılan isteklere Docker ücretli hesap kimlik doğrulaması eklemek, hız sınırı azaltma nedeniyle olası hizmet kesintilerine engel olur.
 >
 > Ayrıntılar için bkz. [Docker fiyatlandırma ve abonelikler](https://www.docker.com/pricing) ve [Docker hizmet koşulları](https://www.docker.com/legal/docker-terms-service).
-
-Kimlik doğrulama örnekleri ve senaryolar için bkz. [indirme hız sınırı](https://docs.docker.com/docker-hub/download-rate-limit/).
 
 ### <a name="docker-hub-access-token"></a>Docker Hub erişim belirteci
 

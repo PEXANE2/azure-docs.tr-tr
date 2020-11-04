@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: sngun
-ms.custom: devx-track-dotnet
-ms.openlocfilehash: 824c48646ab32e02c627fb623dbab60c3050ad96
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: devx-track-dotnet, contperfq2
+ms.openlocfilehash: a1c986663c42b87e7e5d4530b26200d48fe612cb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080728"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314264"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Azure Cosmos DB ve .NET SDK v2 için performans ipuçları
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,7 +47,7 @@ Gelişmiş performans için Windows 64 bit ana bilgisayar işlemesini öneririz.
 
 - VSTest tabanlı test projeleri için, **Test**  >  **Test Settings**  >  Visual Studio **Test** menüsünde test test ayarları **Varsayılan işlemci mimarisi x64 olarak** ' yi seçerek konak işlemeyi değiştirebilirsiniz.
 
-- Yerel olarak dağıtılan ASP.NET Web uygulamaları için, **Araçlar** seçenekler projeler ve çözümler Web projeleri altındaki **Web siteleri ve projeleri için IIS Express 64 bitlik sürümünü kullan** ' ı seçerek konak işlemeyi değiştirebilirsiniz  >  **Options**  >  **Projects and Solutions**  >  **Web Projects** .
+- Yerel olarak dağıtılan ASP.NET Web uygulamaları için, **Araçlar** seçenekler projeler ve çözümler Web projeleri altındaki **Web siteleri ve projeleri için IIS Express 64 bitlik sürümünü kullan** ' ı seçerek konak işlemeyi değiştirebilirsiniz  >  **Options**  >  **Projects and Solutions**  >  **Web Projects**.
 
 - Azure 'da dağıtılan ASP.NET Web uygulamaları için Azure portal **uygulama ayarlarında** **64 bitlik** platformu seçerek konak işlemeyi değiştirebilirsiniz.
 
