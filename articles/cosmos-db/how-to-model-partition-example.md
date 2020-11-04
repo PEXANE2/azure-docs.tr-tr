@@ -3,16 +3,17 @@ title: Gerçek dünyada bir örnekle Azure Cosmos DB verileri modelleme ve böl�
 description: Azure Cosmos DB Core API 'sini kullanarak gerçek dünyada bir örnek modelleyip bölümleyeceğinizi öğrenin
 author: ThomasWeiss
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: 92d15337f511f534c23ff97d274b344714812a5e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ef999d4b452f3f31942e1fb2ddb46efe760acff0
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100261"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342156"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Gerçek dünyadan bir örnek kullanarak Azure Cosmos DB'de verileri modelleme ve bölümleme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -138,7 +139,7 @@ Yalnızca kapsayıcıda bir öğe oluştururken veya güncelleştirtiğimiz içi
 
 Kullanıcının alınması, kapsayıcıdan karşılık gelen öğe okunarak yapılır `users` .
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q1.png" alt-text="Kullanıcılar kapsayıcısına tek bir öğe yazma" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q1.png" alt-text="Kullanıcılar kapsayıcısından tek bir öğe alma" border="false":::
 
 | **Gecikme süresi** | **RU ücreti** | **Performans** |
 | --- | --- | --- |
@@ -148,7 +149,7 @@ Kullanıcının alınması, kapsayıcıdan karşılık gelen öğe okunarak yap�
 
 **[C1]** benzer şekilde, kapsayıcıya yazmanız yeterlidir `posts` .
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Kullanıcılar kapsayıcısına tek bir öğe yazma" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Gönderi kapsayıcısına tek bir öğe yazma" border="false":::
 
 | **Gecikme süresi** | **RU ücreti** | **Performans** |
 | --- | --- | --- |
@@ -158,7 +159,7 @@ Kullanıcının alınması, kapsayıcıdan karşılık gelen öğe okunarak yap�
 
 İlgili belgeyi kapsayıcıdan alarak başlayacağız `posts` . Bu, belirtimizin uyarınca, bu kadar çok sayıda yorum ve bu gönderideki kaç tane beğeneni (3 ek SQL sorgusunun verilmek üzere) toplamamız gerekir.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q2.png" alt-text="Kullanıcılar kapsayıcısına tek bir öğe yazma" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q2.png" alt-text="Gönderi alma ve ek veri toplama" border="false":::
 
 Ek sorguların her biri, ilgili kapsayıcısının bölüm anahtarında filtreleyip performansı ve ölçeklenebilirliği en üst düzeye çıkarmak istiyoruz. Ancak sonunda, tek bir gönderi döndürmek için dört işlem gerçekleştirmemiz gerekir, bu nedenle bir sonraki yinelemede bunu iyileştireceğiz.
 
@@ -170,7 +171,7 @@ Ek sorguların her biri, ilgili kapsayıcısının bölüm anahtarında filtrele
 
 İlk olarak, belirli bir kullanıcıya karşılık gelen gönderileri getiren bir SQL sorgusuyla istenen gönderileri almamız gerekir. Ancak yazarın Kullanıcı adını ve yorumların sayısını ve beğeni toplamak için ek sorgular da vermek istiyoruz.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q3.png" alt-text="Kullanıcılar kapsayıcısına tek bir öğe yazma" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q3.png" alt-text="Bir kullanıcının tüm gönderilerini alma ve ek verilerini toplama" border="false":::
 
 Bu uygulama birçok sakıncalar sunar:
 
@@ -185,7 +186,7 @@ Bu uygulama birçok sakıncalar sunar:
 
 Kapsayıcıda karşılık gelen öğe yazılarak bir açıklama oluşturulur `posts` .
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Kullanıcılar kapsayıcısına tek bir öğe yazma" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Gönderi kapsayıcısına tek bir öğe yazma" border="false":::
 
 | **Gecikme süresi** | **RU ücreti** | **Performans** |
 | --- | --- | --- |
@@ -195,7 +196,7 @@ Kapsayıcıda karşılık gelen öğe yazılarak bir açıklama oluşturulur `po
 
 Bu gönderiyle ilgili tüm açıklamaları getiren bir sorgu ile başlıyoruz ve bir kez daha, her yorum için de Kullanıcı adlarını ayrı olarak topladık.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q4.png" alt-text="Kullanıcılar kapsayıcısına tek bir öğe yazma" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q4.png" alt-text="Bir gönderi için tüm açıklamaları alma ve ek verilerini toplama" border="false":::
 
 Ana sorgu kapsayıcının bölüm anahtarına filtre uygulayabilir, ancak kullanıcı adlarını genel performansa göre ayrı olarak toplayarak penalizes. Daha sonra bu sürümü iyileştireceğiz.
 
@@ -207,7 +208,7 @@ Ana sorgu kapsayıcının bölüm anahtarına filtre uygulayabilir, ancak kullan
 
 Yalnızca **[C3]** gibi, kapsayıcıda karşılık gelen öğeyi oluşturacağız `posts` .
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Kullanıcılar kapsayıcısına tek bir öğe yazma" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Gönderi kapsayıcısına tek bir öğe yazma" border="false":::
 
 | **Gecikme süresi** | **RU ücreti** | **Performans** |
 | --- | --- | --- |
@@ -217,7 +218,7 @@ Yalnızca **[C3]** gibi, kapsayıcıda karşılık gelen öğeyi oluşturacağı
 
 Tıpkı **[S4]** gibi, bu gönderi için beğeneni sorgulıyoruz ve sonra Kullanıcı adlarını topladık.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q5.png" alt-text="Kullanıcılar kapsayıcısına tek bir öğe yazma" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q5.png" alt-text="Bir gönderi için tüm beğeni alma ve ek verilerini toplama" border="false":::
 
 | **Gecikme süresi** | **RU ücreti** | **Performans** |
 | --- | --- | --- |
@@ -227,7 +228,7 @@ Tıpkı **[S4]** gibi, bu gönderi için beğeneni sorgulıyoruz ve sonra Kullan
 
 `posts`Kapsayıcıyı azalan oluşturma tarihine göre sıralanmış olarak sorgulayarak en son gönderileri, sonra da her gönderi için Kullanıcı adlarını ve açıklama sayılarını ve beğeni toplar.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q6.png" alt-text="Kullanıcılar kapsayıcısına tek bir öğe yazma" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q6.png" alt-text="En son postaların alınması ve ek verilerinin toplamı alınıyor" border="false":::
 
 Bir kez daha, ilk sorgumuz kapsayıcının bölüm anahtarını filtreleyip `posts` maliyetli bir fanı tetikler. Bu, çok daha büyük bir sonuç kümesini hedeflediğimizden ve sonuçları bir yan tümcesiyle sıraladığımızda daha kötüleştik, bu da `ORDER BY` İstek birimleri açısından daha pahalı hale gelir.
 
@@ -338,7 +339,7 @@ Kullanıcı adları, kullanıcılar farklı bölümlerde, ancak farklı bir kaps
 
 Bizim örneğimizde, `users` Kullanıcıların Kullanıcı adlarını güncelleştirdiğinde tepki vermek için kapsayıcının değişiklik akışını kullanırız. Bu durumda, kapsayıcıda başka bir saklı yordam çağırarak değişikliği yayıyoruz `posts` :
 
-:::image type="content" source="./media/how-to-model-partition-example/denormalization-1.png" alt-text="Kullanıcılar kapsayıcısına tek bir öğe yazma" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/denormalization-1.png" alt-text="Gönderi kapsayıcısına Kullanıcı adları eşitleniyor" border="false":::
 
 ```javascript
 function updateUsernames(userId, username) {
@@ -378,7 +379,7 @@ Bu saklı yordam, kullanıcının KIMLIĞINI ve kullanıcının yeni kullanıcı
 
 Artık izin verdiğimiz için, bu isteği işlemek üzere yalnızca tek bir öğe getirmesi gerekir.
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q2.png" alt-text="Kullanıcılar kapsayıcısına tek bir öğe yazma" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q2.png" alt-text="Gönderi kapsayıcısından tek bir öğe alma" border="false":::
 
 | **Gecikme süresi** | **RU ücreti** | **Performans** |
 | --- | --- | --- |
@@ -388,7 +389,7 @@ Artık izin verdiğimiz için, bu isteği işlemek üzere yalnızca tek bir öğ
 
 Burada, Kullanıcı adlarını getirilen ek istekleri yedekleyebilir ve bölüm anahtarında filtre uygulayan tek bir sorgu ile bitiyoruz.
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q4.png" alt-text="Kullanıcılar kapsayıcısına tek bir öğe yazma" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q4.png" alt-text="Gönderi için tüm açıklamaları alma" border="false":::
 
 | **Gecikme süresi** | **RU ücreti** | **Performans** |
 | --- | --- | --- |
@@ -398,7 +399,7 @@ Burada, Kullanıcı adlarını getirilen ek istekleri yedekleyebilir ve bölüm 
 
 Beğeni listelenirken aynı durum kesin.
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q5.png" alt-text="Kullanıcılar kapsayıcısına tek bir öğe yazma" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q5.png" alt-text="Gönderi için tüm beğeni alma" border="false":::
 
 | **Gecikme süresi** | **RU ücreti** | **Performans** |
 | --- | --- | --- |
@@ -406,13 +407,13 @@ Beğeni listelenirken aynı durum kesin.
 
 ## <a name="v3-making-sure-all-requests-are-scalable"></a>V3: tüm isteklerin ölçeklenebilir olduğundan emin olma
 
-Genel performans geliştirmelerimize baktığınızda, tam olarak iyileştirildiğimiz iki istek vardır: **[Q3]** ve **[Q6]** . Bunlar, hedefleytikleri kapsayıcıların bölüm anahtarını filtrelememe sorguları içeren isteklerdir.
+Genel performans geliştirmelerimize baktığınızda, tam olarak iyileştirildiğimiz iki istek vardır: **[Q3]** ve **[Q6]**. Bunlar, hedefleytikleri kapsayıcıların bölüm anahtarını filtrelememe sorguları içeren isteklerdir.
 
 ### <a name="q3-list-a-users-posts-in-short-form"></a>S3 Kullanıcı Gönderilerini kısa biçimde listeleme
 
 Bu istek, ek sorguları kapsayan v2 sürümünde tanıtılan geliştirmelerden zaten faydalanır.
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q3.png" alt-text="Kullanıcılar kapsayıcısına tek bir öğe yazma" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q3.png" alt-text="Kısa biçimli bir kullanıcının gönderilerini listelemek üzere sorgu gösteren diyagram." border="false":::
 
 Ancak kalan sorgu hala kapsayıcının bölüm anahtarında filtrelenemiyor `posts` .
 
@@ -456,11 +457,11 @@ Bu nedenle, tüm gönderileri kapsayıcıyla çoğaltarak ikinci bir kat düzeyi
 
 Bu eğilimi başarmak için, değişiklik akışını yeniden kullanırız. Bu kez, kapsayıcıya `posts` Yeni veya güncelleştirilmiş bir gönderi göndermek için kapsayıcının değişiklik akışına tepki veririz `users` . Ve liste gönderilerinin tam içeriğini döndürmesi gerekli olmadığı için, bu işlemleri işlemden kesebiliriz.
 
-:::image type="content" source="./media/how-to-model-partition-example/denormalization-2.png" alt-text="Kullanıcılar kapsayıcısına tek bir öğe yazma" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/denormalization-2.png" alt-text="Kullanıcılar kapsayıcısına gönderi gönderme" border="false":::
 
 Şimdi sorgumuzu `users` kapsayıcıya yönlendirebilir ve kapsayıcının bölüm anahtarında filtre uygulayabilirsiniz.
 
-:::image type="content" source="./media/how-to-model-partition-example/V3-Q3.png" alt-text="Kullanıcılar kapsayıcısına tek bir öğe yazma" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V3-Q3.png" alt-text="Bir kullanıcının tüm gönderilerini alma" border="false":::
 
 | **Gecikme süresi** | **RU ücreti** | **Performans** |
 | --- | --- | --- |
@@ -470,7 +471,7 @@ Bu eğilimi başarmak için, değişiklik akışını yeniden kullanırız. Bu k
 
 Burada benzer bir durumla uğraşmanız gerekir: Sparing ' de sunulan ek sorgular gereksiz hale gelse bile, kalan sorgu kapsayıcının bölüm anahtarında filtrelemez:
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q6.png" alt-text="Kullanıcılar kapsayıcısına tek bir öğe yazma" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q6.png" alt-text="Kısa biçimde oluşturulan en son x gönderilerini listelemek için sorguyu gösteren diyagram." border="false":::
 
 Aynı yaklaşımdan sonra, bu isteğin performansını ve ölçeklenebilirliğini en üst düzeye çıkarmak, yalnızca bir bölüme ait olması gerekir. Yalnızca sınırlı sayıda öğe döndürtiğimiz için bu Conceivable. Blog platformumuzu giriş sayfamızı doldurmak için, tüm veri kümesi üzerinde ilerlemeden yalnızca en son 100 gönderi almanız gerekir.
 
@@ -495,7 +496,7 @@ Bu kapsayıcı `type` , her zaman `post` öğelerimizde olacak şekilde bölüml
 
 Daha fazla işlem yapmak için, daha önce bu yeni kapsayıcıya gönderdiğimiz değişiklik akışı ardışık düzenine ulaşmanız gerekir. Göz önünde bulundurmanız gereken önemli bir şey; yalnızca en son 100 gönderi depolıyoruz. Aksi takdirde, kapsayıcının içeriği bir bölümün en büyük boyutunun ötesine çıkabilir. Bu işlem, kapsayıcıya bir belge eklendiğinde bir [son tetikleyici](stored-procedures-triggers-udfs.md#triggers) çağırarak yapılır:
 
-:::image type="content" source="./media/how-to-model-partition-example/denormalization-3.png" alt-text="Kullanıcılar kapsayıcısına tek bir öğe yazma" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/denormalization-3.png" alt-text="Akış kapsayıcısına gönderi gönderme" border="false":::
 
 Koleksiyonu kesen tetiklemenin gövdesi aşağıda verilmiştir:
 
@@ -546,7 +547,7 @@ function truncateFeed() {
 
 Son adım sorgumuzu yeni kapsayıcımızda yeniden yönlendirimdir `feed` :
 
-:::image type="content" source="./media/how-to-model-partition-example/V3-Q6.png" alt-text="Kullanıcılar kapsayıcısına tek bir öğe yazma" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V3-Q6.png" alt-text="En son gönderilerin alınması" border="false":::
 
 | **Gecikme süresi** | **RU ücreti** | **Performans** |
 | --- | --- | --- |

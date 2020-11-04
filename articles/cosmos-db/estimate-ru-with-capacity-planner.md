@@ -3,15 +3,16 @@ title: Azure Cosmos DB kapasite planlayıcısını kullanarak maliyetleri tahmin
 description: Azure Cosmos DB kapasite planlayıcısı, iş yükünüz için gereken aktarım hızını (RU/s) ve maliyeti tahmin etmenize olanak tanır. Bu makalede, gereken verimlilik ve maliyeti tahmin etmek için kapasite planlayıcısı 'nın yeni sürümünün nasıl kullanılacağı açıklanır.
 author: deborahc
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: dech
-ms.openlocfilehash: 460f47ce453f183821ec0f49c38865c44b15ba9f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 017aeaaa24e8ac2d493d0de81a7abb655bae5611
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096725"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342088"
 ---
 # <a name="estimate-rus-using-the-azure-cosmos-db-capacity-planner"></a>Azure Cosmos DB kapasite planlayıcısını kullanarak RU/s 'yi tahmin etme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -63,7 +64,7 @@ Oturum açtıktan sonra, temel moddaki alanlarla karşılaştırılan ek alanlar
 
 Geçerli tahmini içeren bir CSV dosyasını indirmek için **tahmin kaydet** düğmesini de kullanabilirsiniz. 
 
-:::image type="content" source="./media/estimate-ru-with-capacity-planner/advanced-mode.png" alt-text="Kapasite planlayıcısı temel modu":::
+:::image type="content" source="./media/estimate-ru-with-capacity-planner/advanced-mode.png" alt-text="Kapasite planlayıcısı Gelişmiş modu":::
 
 Azure Cosmos DB kapasite planlayıcısı 'nda gösterilen fiyatlar, üretilen iş ve depolama için genel fiyatlandırma ücretlerine göre tahminlerdir. Tüm fiyatlar ABD Doları cinsinden gösterilmiştir. Bölgelere göre tüm oranları görmek için [Azure Cosmos DB fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın.  
 

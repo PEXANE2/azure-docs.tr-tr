@@ -3,16 +3,17 @@ title: Azure Cosmos DB'de dizin oluşturma ilkelerini yönetme
 description: Dizin oluşturma ilkelerini yönetmeyi, dizin oluşturma işleminden bir özelliği dahil etme veya dışlama, farklı Azure Cosmos DB SDK 'Ları kullanarak dizin oluşturmayı tanımlama hakkında bilgi edinin
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 335eac64bd5dff5b466fd97f5b2e093f2f56ee79
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: cd51210a64223fab5d2d48a91bd3d0a6521a9627
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289928"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341323"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB'de dizin oluşturma ilkelerini yönetme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -354,7 +355,7 @@ Dizin [oluşturma ilkesi güncelleştirmesi](index-policy.md#modifying-the-index
 
 Azure Cosmos kapsayıcıları dizin oluşturma ilkelerini, Azure portal doğrudan düzenlemenize izin veren bir JSON belgesi olarak depolar.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Yeni bir Azure Cosmos hesabı oluşturun veya var olan bir hesabı seçin.
 

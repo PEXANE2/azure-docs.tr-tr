@@ -4,15 +4,16 @@ description: Birincil anahtarlar, salt okuma anahtarları, kullanıcılar ve izi
 author: thomasweiss
 ms.author: thweiss
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 68f3fd34081868884782e007885befff59fa05da
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 936e98b3efa27f2d0a85c373ccae0ab223f4fd95
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096130"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340915"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB'de verilere erişimin güvenliğini sağlama
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -90,7 +91,7 @@ Kaynak belirteçlerinin istendiği, üretibildiği ve istemcilere teslim edilece
 7. Telefon uygulaması, kaynak belirteci tarafından tanımlanan izinlerle ve kaynak belirtecinin izin verdiği aralığa göre Cosmos DB kaynaklarına doğrudan erişmek için kaynak belirtecini kullanmaya devam edebilir.
 8. Kaynak belirtecinin süresi dolmuşsa, sonraki istekler 401 Yetkisiz bir özel durum alır.  Bu noktada, telefon uygulaması kimliği yeniden oluşturur ve yeni bir kaynak belirteci ister.
 
-    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Azure portal-gösteren NoSQL veritabanı güvenliğine birincil anahtar döndürme" border="false":::
+    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Kaynak belirteçleri Azure Cosmos DB iş akışı" border="false":::
 
 Kaynak belirteci oluşturma ve yönetimi, yerel Cosmos DB istemci kitaplıkları tarafından işlenir; Ancak REST kullanırsanız istek/kimlik doğrulama üst bilgilerini oluşturmanız gerekir. REST için kimlik doğrulama üstbilgileri oluşturma hakkında daha fazla bilgi için, bkz. [Access Control Cosmos DB kaynakları](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) veya [.net SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/Authorization/AuthorizationHelper.cs) veya [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)'mız için kaynak kodu.
 

@@ -3,15 +3,16 @@ title: Azure Cosmos DB Cassandra API ölçek ile esnek
 description: Bir Azure Cosmos DB Cassandra API hesabı ve bunların avantajları/dezavantajlarını ölçeklendirmeye yönelik seçenekler hakkında bilgi edinin
 author: TheovanKraay
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: 0d5aded62c9c3990a3fa102863f4850bbfda6702
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: aad2e80598146be7b45a8a7b8a02cfe050163102
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088695"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340966"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API bir hesabı ölçeklendirin
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -39,7 +40,7 @@ Gecikme süresini en aza indirmek isterseniz, Cassandra API ölçek ve sağlama 
 
 Aşağıdaki bölümlerde her yaklaşımın avantajları ve dezavantajları açıklanmaktadır. Daha sonra, çözümünüzün ölçeklendirme ihtiyaçlarını, genel maliyet ve gereksinimlerinize yönelik verimlilik ihtiyaçlarını dengelemek için en iyi stratejiye karar verebilirsiniz.
 
-## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>Azure portalını kullanma
+## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>Azure portalı kullanma
 
 Azure Cosmos DB Cassandra API hesabındaki kaynakları Azure portal kullanarak ölçeklendirebilirsiniz. Daha fazla bilgi edinmek için [kapsayıcılar ve veritabanlarında üretilen Iş sağlama](set-throughput.md)başlıklı makaleye bakın. Bu makalede, Azure portal [veritabanı](set-throughput.md#set-throughput-on-a-database) ya da [kapsayıcı](set-throughput.md#set-throughput-on-a-container) düzeyinde üretilen işi ayarlamanın göreli avantajları açıklanmaktadır. Bu makalelerde bahsedilen "veritabanı" ve "kapsayıcı" terimleri, Cassandra API için sırasıyla "keyspace" ve "Table" ile eşlenir.
 

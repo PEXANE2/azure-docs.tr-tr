@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 76b82d3c008ede99e69f3a19a56911fbfecd5642
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 54193c9333c75fd8b973ebe33470fca3617e2f2d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148760"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341850"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Kullanıcı kaydı ve ürün aboneliği temsilcisi seçme
 
@@ -44,7 +44,7 @@ Başlamak için ilk olarak istekleri, yetkilendirme uç noktanız aracılığıy
 * Özel temsili uç noktanızın URL 'sinin ne olacağına karar verin ve bunu, **temsili uç nokta URL 'si** alanına girin. 
 * Yetkilendirme kimlik doğrulaması anahtarı alanında, isteğin Azure API Management gerçekten geldiğinden emin olmak için, doğrulama için sağlanmış bir imzayı hesaplamak üzere kullanılacak bir gizli dizi girin. Sizin için rastgele bir anahtar oluşturmak API Management **oluşturmak için Oluştur** düğmesine tıklayabilirsiniz.
 
-Şimdi, **Yetkilendirme uç noktası**oluşturmanız gerekir. Birkaç işlem yapması gerekebilir:
+Şimdi, **Yetkilendirme uç noktası** oluşturmanız gerekir. Birkaç işlem yapması gerekebilir:
 
 1. Aşağıdaki biçimde bir istek alın:
    
@@ -52,18 +52,18 @@ Başlamak için ilk olarak istekleri, yetkilendirme uç noktanız aracılığıy
    
     Oturum açma/kaydolma çalışması için sorgu parametreleri:
    
-   * **işlem**: ne tür bir temsilcinin olduğunu tanımlar; bu durumda yalnızca **oturum** açabilir
-   * **ReturnUrl**: kullanıcının oturum açma veya kaydolma bağlantısında tıklattığı sayfanın URL 'si
-   * **anahtar**: güvenlik karmasında işlem yapmak için kullanılan özel bir anahtar dizesi
-   * **SIG**: kendi hesaplanmış karmaınızla karşılaştırmak için kullanılacak bir hesaplanan güvenlik karması
+   * **işlem** : ne tür bir temsilcinin olduğunu tanımlar; bu durumda yalnızca **oturum** açabilir
+   * **ReturnUrl** : kullanıcının oturum açma veya kaydolma bağlantısında tıklattığı sayfanın URL 'si
+   * **anahtar** : güvenlik karmasında işlem yapmak için kullanılan özel bir anahtar dizesi
+   * **SIG** : kendi hesaplanmış karmaınızla karşılaştırmak için kullanılacak bir hesaplanan güvenlik karması
 2. İsteğin Azure API Management geldiğini doğrulayın (isteğe bağlı, ancak güvenlik için önemle önerilir)
    
-   * **ReturnUrl** ve **anahtar** sorgu PARAMETRELERINE göre BIR dizenin HMAC-SHA512 olur karmasını hesaplama ([aşağıda belirtilen örnek kod]):
+   * **ReturnUrl** ve **anahtar** sorgu PARAMETRELERINE göre BIR dizenin HMAC-SHA512 olur karmasını hesaplama ( [aşağıda belirtilen örnek kod]):
      
-     > HMAC (**anahtar** + ' \n ' + **ReturnUrl**)
+     > HMAC ( **anahtar** + ' \n ' + **ReturnUrl** )
 
    * Yukarıdaki hesaplanmış karmayı **SIG** sorgu parametresinin değeriyle karşılaştırın. İki karma eşleşiyorsa, sonraki adıma geçin, aksi takdirde isteği reddedin.
-3. Oturum açma/kaydolma için bir istek aldığınızı doğrulayın: **işlem** sorgu parametresi "**SignIn**" olarak ayarlanacak.
+3. Oturum açma/kaydolma için bir istek aldığınızı doğrulayın: **işlem** sorgu parametresi " **SignIn** " olarak ayarlanacak.
 4. Kullanıcıyı oturum açmak veya kaydolmak için kullanıcı ARABIRIMI ile sunun
 5. Kullanıcı kaydolduktan sonra, API Management için bunlara karşılık gelen bir hesap oluşturmanız gerekir. API Management REST API [bir kullanıcı oluşturun] . Bunu yaparken, kullanıcı KIMLIĞINI Kullanıcı deponuzdaki aynı değere veya izlediğiniz bir KIMLIĞE ayarlamış olduğunuzdan emin olun.
 6. Kullanıcının kimliği başarıyla doğrulandığında:
@@ -71,7 +71,7 @@ Başlamak için ilk olarak istekleri, yetkilendirme uç noktanız aracılığıy
    * API Management ile [paylaşılan erişim belirteci isteme] REST API
    * Yukarıdaki API çağrısından aldığınız SSO URL 'sine bir returnUrl sorgu parametresi ekleyin:
      
-     > Örneğin, `https://customer.portal.azure-api.net/signin-sso?token=<URL-encoded token>&returnUrl=<URL-encoded URL, for example: %2Freturn%2Furl>` 
+     > Örneğin, `https://<developer portal domain, for example: contoso.developer.azure-api.net>/signin-sso?token=<URL-encoded token>&returnUrl=<URL-encoded URL, for example: %2Freturn%2Furl>` 
      
    * Kullanıcıyı yukarıda üretilen URL 'ye yönlendir
 
@@ -84,10 +84,10 @@ Başlamak için ilk olarak istekleri, yetkilendirme uç noktanız aracılığıy
 
 Hesap yönetimi işlemleri için aşağıdaki sorgu parametrelerini geçirmeniz gerekir.
 
-* **işlem**: ne tür bir temsili isteğin olduğunu tanımlar (ChangePassword, changeprofile veya closeaccount)
-* **Kullanıcı**kimliği: yönetilecek HESABıN Kullanıcı kimliği
-* **anahtar**: güvenlik karmasında işlem yapmak için kullanılan özel bir anahtar dizesi
-* **SIG**: kendi hesaplanmış karmaınızla karşılaştırmak için kullanılacak bir hesaplanan güvenlik karması
+* **işlem** : ne tür bir temsili isteğin olduğunu tanımlar (ChangePassword, changeprofile veya closeaccount)
+* **Kullanıcı** kimliği: yönetilecek HESABıN Kullanıcı kimliği
+* **anahtar** : güvenlik karmasında işlem yapmak için kullanılan özel bir anahtar dizesi
+* **SIG** : kendi hesaplanmış karmaınızla karşılaştırmak için kullanılacak bir hesaplanan güvenlik karması
 
 ## <a name="delegating-product-subscription"></a><a name="delegate-product-subscription"> </a>Ürün aboneliğine temsilci seçme
 
@@ -97,7 +97,7 @@ Hesap yönetimi işlemleri için aşağıdaki sorgu parametrelerini geçirmeniz 
 2. Tarayıcı, yetkilendirme uç noktasına yönlendirilir.
 3. Yetkilendirme uç noktası gerekli ürün abonelik adımlarını gerçekleştirir. Adımları tasarlamak sizin için. Fatura bilgilerini istemek, ek sorular sormak veya yalnızca bilgileri depolamak ve herhangi bir kullanıcı eylemi gerektirmeksizin, başka bir sayfaya yönlendirmeyi de içerebilir.
 
-İşlevselliği etkinleştirmek için, **temsilci seçme** sayfasında **ürün aboneliğine temsilci seç**' e tıklayın.
+İşlevselliği etkinleştirmek için, **temsilci seçme** sayfasında **ürün aboneliğine temsilci seç** ' e tıklayın.
 
 Ardından, yetkilendirme uç noktasının aşağıdaki eylemleri kullandığından emin olun:
 
@@ -108,21 +108,21 @@ Ardından, yetkilendirme uç noktasının aşağıdaki eylemleri kullandığınd
    
     Ürün abonelik durumu için sorgu parametreleri:
    
-   * **işlem**: ne tür bir temsili isteğin olduğunu tanımlar. Ürün aboneliği istekleri için geçerli seçenekler şunlardır:
+   * **işlem** : ne tür bir temsili isteğin olduğunu tanımlar. Ürün aboneliği istekleri için geçerli seçenekler şunlardır:
      * "Abone ol": kullanıcıyı sağlanan KIMLIĞE sahip belirli bir ürüne abone olma isteği (aşağıya bakın)
      * "Abonelikten çıkma": bir kullanıcının üründen aboneliğini kaldırma isteği
      * "Yenile": bir aboneliği yenileme isteği (örneğin, süresi dolacak)
-   * **ProductID**: *Subscribe* -kullanıcının abone olması istediği ürünün kimliği
-   * **SubscriptionID**: *abonelik kaldırma* ve *yenileme* -ürün aboneliğinin kimliği
-   * **Kullanıcı kimliği**: *abone ol* -isteğin yapıldığı kullanıcının kimliği
-   * **anahtar**: güvenlik karmasında işlem yapmak için kullanılan özel bir anahtar dizesi
-   * **SIG**: kendi hesaplanmış karmaınızla karşılaştırmak için kullanılacak bir hesaplanan güvenlik karması
+   * **ProductID** : *Subscribe* -kullanıcının abone olması istediği ürünün kimliği
+   * **SubscriptionID** : *abonelik kaldırma* ve *yenileme* -ürün aboneliğinin kimliği
+   * **Kullanıcı kimliği** : *abone ol* -isteğin yapıldığı kullanıcının kimliği
+   * **anahtar** : güvenlik karmasında işlem yapmak için kullanılan özel bir anahtar dizesi
+   * **SIG** : kendi hesaplanmış karmaınızla karşılaştırmak için kullanılacak bir hesaplanan güvenlik karması
 
 2. İsteğin Azure API Management geldiğini doğrulayın (isteğe bağlı, ancak güvenlik için önemle önerilir)
    
-   * **ProductID**, **UserID**ve **anahtar** sorgu PARAMETRELERINE göre bir dizenin HMAC-SHA512 olur ' ı hesaplama:
+   * **ProductID** , **UserID** ve **anahtar** sorgu PARAMETRELERINE göre bir dizenin HMAC-SHA512 olur ' ı hesaplama:
      
-     > HMAC (**anahtar** + ' \n ' + **ProductID** + ' \n ' + **Kullanıcı kimliği**)
+     > HMAC ( **anahtar** + ' \n ' + **ProductID** + ' \n ' + **Kullanıcı kimliği** )
      > 
      > 
    * Yukarıdaki hesaplanmış karmayı **SIG** sorgu parametresinin değeriyle karşılaştırın. İki karma eşleşiyorsa, sonraki adıma geçin, aksi takdirde isteği reddedin.
@@ -133,7 +133,7 @@ Ardından, yetkilendirme uç noktasının aşağıdaki eylemleri kullandığınd
 
 Bu kod örnekleri şunları gösterir:
 
-* Yayımcı portalının temsili ekranında ayarlanan *temsili doğrulama anahtarını*alın
+* Yayımcı portalının temsili ekranında ayarlanan *temsili doğrulama anahtarını* alın
 * Daha sonra, geçirilen returnUrl 'nin geçerliliğini sağlamak için imzayı doğrulamak için kullanılan bir HMAC oluşturun.
 
 Aynı kod, ProductID ve UserID için hafif değişiklikle birlikte da geçerlidir.

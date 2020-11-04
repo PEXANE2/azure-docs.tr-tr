@@ -1,6 +1,6 @@
 ---
-title: PostgreSQL için Azure veritabanı ile Java ve JDBC kullanma
-description: Bir PostgreSQL için Azure veritabanı ile Java ve JDBC kullanmayı öğrenin.
+title: 'Hızlı başlangıç: PostgreSQL için Azure veritabanı ile Java ve JDBC kullanma'
+description: Bu hızlı başlangıçta, bir PostgreSQL için Azure veritabanı ile Java ve JDBC kullanmayı öğreneceksiniz.
 author: jdubois
 ms.author: judubois
 ms.service: postgresql
@@ -8,14 +8,14 @@ ms.custom: mvc, devcenter, devx-track-azurecli
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
-ms.openlocfilehash: 402e69606196ecb1030023c49fa5afefd31b9e94
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 42547338c0f5f2f3105833b12e499d40b6209b05
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92734976"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341425"
 ---
-# <a name="use-java-and-jdbc-with-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı ile Java ve JDBC kullanma
+# <a name="quickstart-use-java-and-jdbc-with-azure-database-for-postgresql"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı ile Java ve JDBC kullanma
 
 Bu konu başlığı altında, [PostgreSQL Için Azure veritabanı](./index.yml)'nda bilgi depolamak ve almak üzere Java ve [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) kullanan bir örnek uygulama oluşturma gösterilmektedir.
 
@@ -485,7 +485,7 @@ Ana sınıfın yürütülmesi şu çıktıyı üretmelidir:
 [INFO   ] Closing database connection 
 ```
 
-## <a name="conclusion-and-resources-clean-up"></a>Sonuç ve kaynak Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Tebrikler! PostgreSQL için Azure veritabanı 'ndan veri depolamak ve almak için JDBC kullanan bir Java uygulaması oluşturdunuz.
 

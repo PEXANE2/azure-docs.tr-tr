@@ -5,15 +5,16 @@ author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8694a884b26194c61cc77d00848692a24e3009be
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 243f6f26be592e2db82d8f46df3de9aafcd2078b
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073715"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340483"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB ölçümlerle izleme ve hata ayıklama
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -52,13 +53,13 @@ Başlamak için [Azure Portal](https://portal.azure.com) gidin ve **ölçümler*
 
 En yaygın hata durum kodu 429 ' dir (hız sınırlandırma/azaltma). Bu hata, Azure Cosmos DB isteklerinin sağlanan aktarım hızına göre daha fazla olduğu anlamına gelir. Bu sorunun en yaygın çözümü, belirtilen koleksiyon için [Rus ölçeğini ölçeklendirmektir](./set-throughput.md) .
 
-:::image type="content" source="media/use-metrics/metrics-12.png" alt-text="Azure portal Cosmos DB performans ölçümleri":::
+:::image type="content" source="media/use-metrics/metrics-12.png" alt-text="Dakika başına istek sayısı":::
 
 ## <a name="determine-the-throughput-distribution-across-partitions"></a>Bölümler arasında üretilen iş dağıtımını belirleme
 
 Bölüm anahtarlarınızın iyi bir önemliliğine sahip olmak, ölçeklenebilir bir uygulama için gereklidir. Bölümlere göre ayrılmış herhangi bir bölümlenmiş kapsayıcının üretilen iş dağıtımını öğrenmek için [Azure Portal](https://portal.azure.com) **ölçümler dikey penceresine** gidin. **Aktarım hızı** sekmesinde, depolama dökümü **her bir fiziksel bölüm GRAFIĞININ en fazla ru/saniye** cinsinden gösterilir. Aşağıdaki grafik, en soldaki çarpıtılmış bölümde gösterildiği gibi verilerin yanlış dağıtımına ilişkin bir örnek gösterir.
 
-:::image type="content" source="media/use-metrics/metrics-17.png" alt-text="Azure portal Cosmos DB performans ölçümleri":::
+:::image type="content" source="media/use-metrics/metrics-17.png" alt-text="Tek bölüm yoğun kullanımı görüntüleme":::
 
 Düzensiz bir üretilen iş dağıtımı, kısıtlanmış isteklere yol açabilecek ve yeniden bölümleme gerektirebilecek *etkin* bölümlere neden olabilir. Azure Cosmos DB bölümlendirme hakkında daha fazla bilgi için bkz. [Azure Cosmos DB bölüm ve ölçek](./partitioning-overview.md).
 
@@ -66,11 +67,11 @@ Düzensiz bir üretilen iş dağıtımı, kısıtlanmış isteklere yol açabile
 
 Tüm ölçeklenebilir uygulamalar için bölümünüzün iyi bir önemliliğine sahip olmak önemlidir. Bölümlere göre ayrılmış herhangi bir bölümlenmiş kapsayıcının depolama dağılımını öğrenmek için [Azure Portal](https://portal.azure.com)ölçümler dikey penceresine gidin. Depolama alanı sekmesinde, depolama dökümü üst bölüm anahtarları tarafından tüketilen veri + dizin depolaması bölümünde gösterilir. Aşağıdaki grafik, en soldaki asimetrik bölümde gösterildiği gibi veri depolamanın kötü bir dağıtımını gösterir.
 
-:::image type="content" source="media/use-metrics/metrics-07.png" alt-text="Azure portal Cosmos DB performans ölçümleri":::
+:::image type="content" source="media/use-metrics/metrics-07.png" alt-text="Kötü veri dağıtımı örneği":::
 
 Grafikteki bölüme tıklayarak, hangi bölüm anahtarının dağıtımı eğriltir.
 
-:::image type="content" source="media/use-metrics/metrics-05.png" alt-text="Azure portal Cosmos DB performans ölçümleri":::
+:::image type="content" source="media/use-metrics/metrics-05.png" alt-text="Bölüm anahtarı dağılımı eğriltme":::
 
 Hangi bölüm anahtarının dağıtım içinde eğilmesine neden olduğunu tanımladıktan sonra, kapsayıcınızı daha fazla Dağıtılmış bölüm anahtarıyla yeniden bölümlemeniz gerekebilir. Azure Cosmos DB bölümlendirme hakkında daha fazla bilgi için bkz. [Azure Cosmos DB bölüm ve ölçek](./partitioning-overview.md).
 

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: 4ee442d1983e4f7c1825690e1c780454272971aa
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b59bc33698be516ec5a2e289b52dafcb9e9efcbe
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521314"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341867"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Azure bölgeleri arasında Azure VM 'Leri taşıma desteği
 
@@ -101,7 +101,7 @@ SUSE Linux Enterprise Server 15 ve 15 SP1 |  Tüm hisse senedi SUSE 15 ve 15 çe
 **Ayar** | **Destek** | **Ayrıntılar**
 --- | --- | ---
 Boyut | En az iki CPU çekirdeği ve 1 GB RAM içeren herhangi bir Azure VM boyutu | [Azure sanal makine boyutlarını](../virtual-machines/sizes-general.md)doğrulayın.
-Kullanılabilirlik kümeleri | Şu anda desteklenmiyor | Bir kullanılabilirlik kümesine sahip bir Azure VM 'yi taşıma koleksiyonuna varsayılan seçeneklerle eklerseniz, hazırlama işlemi başarısız olur. VM 'yi tek bir örnek VM olarak taşımak için bir kullanılabilirlik bölgesine taşımayı ya da seçebilirsiniz. Bu ayarları, hedef özelliklerini Düzenle sayfasında değiştirebilirsiniz.
+Kullanılabilirlik kümeleri | Desteklenir | Destekleniyor.
 Kullanılabilirlik alanları | Desteklenir | Hedef bölge desteğine bağlı olarak desteklenir.
 Azure galeri görüntüleri (Microsoft tarafından yayımlanan) | Desteklenir | VM desteklenen bir işletim sisteminde çalışıyorsa desteklenir.
 Azure galeri görüntüleri (üçüncü taraf tarafından yayımlanan)  | Desteklenir | VM desteklenen bir işletim sisteminde çalışıyorsa desteklenir.

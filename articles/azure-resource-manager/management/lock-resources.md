@@ -2,14 +2,14 @@
 title: Değişiklikleri engellemek için kaynakları kilitle
 description: Kullanıcıların, tüm kullanıcılar ve roller için bir kilit uygulayarak kritik Azure kaynaklarını güncelleştirmesini veya silmelerini önleyin.
 ms.topic: conceptual
-ms.date: 10/20/2020
+ms.date: 11/03/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3830c7e78cf3cc607c7abfca63e6ae74f89b7aff
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 57b4fecd0293c714dfd910ae2ad4866397646ce8
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281737"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340150"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Beklenmeyen değişiklikleri önlemek için kaynakları kilitleme
 
@@ -24,7 +24,7 @@ Yönetici olarak kuruluşunuzdaki diğer kullanıcıların yanlışlıkla silmes
 
 Rol tabanlı erişim denetiminin aksine, yönetim kilitlerini tüm kullanıcılar ve rollere kısıtlama getirmek için kullanırsınız. Kullanıcılar ve roller için izinleri ayarlama hakkında bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).
 
-Resource Manager kilitleri yalnızca yönetim düzleminde gerçekleşen ve `https://management.azure.com` adresine gönderilen işlemlere uygulanır. Kilitler kaynakların kendi işlevlerini gerçekleştirmesine bir kısıtlama getirmez. Kaynak değişiklikleri kısıtlanır ama kaynak işlemleri kısıtlanmaz. Örneğin, bir SQL veritabanı üzerinde salt okunur bir kilit, veritabanını silmenizi veya değiştirmenizi önler. Veritabanında veri oluşturmanızı, mevcut verileri güncelleştirmenizi veya silmenizi engellemez. Bu işlemler `https://management.azure.com` hedefine gönderilmediğinden veri işlemlerine izin verilir.
+Resource Manager kilitleri yalnızca yönetim düzleminde gerçekleşen ve `https://management.azure.com` adresine gönderilen işlemlere uygulanır. Kilitler kaynakların kendi işlevlerini gerçekleştirmesine bir kısıtlama getirmez. Kaynak değişiklikleri kısıtlanır ama kaynak işlemleri kısıtlanmaz. Örneğin, bir SQL veritabanı mantıksal sunucusu üzerinde salt okunur bir kilit, sunucuyu silmenizi veya değiştirmenizi önler. Bu, sunucusundaki veritabanlarında veri oluşturmanızı, güncelleştirmenizi veya silmenizi engellemez. Bu işlemler `https://management.azure.com` hedefine gönderilmediğinden veri işlemlerine izin verilir.
 
 ## <a name="considerations-before-applying-locks"></a>Kilitleri uygulamadan önce dikkat edilecek noktalar
 
@@ -58,7 +58,7 @@ Yönetilen uygulamalar için, dağıttığınız hizmeti seçin.
 
 ![Hizmet seçin](./media/lock-resources/select-service.png)
 
-Hizmetin **yönetilen kaynak grubu**için bir bağlantı içerdiğine dikkat edin. Bu kaynak grubu altyapıyı barındırır ve kilitlidir. Doğrudan silinemez.
+Hizmetin **yönetilen kaynak grubu** için bir bağlantı içerdiğine dikkat edin. Bu kaynak grubu altyapıyı barındırır ve kilitlidir. Doğrudan silinemez.
 
 ![Yönetilen grubu göster](./media/lock-resources/show-managed-group.png)
 
@@ -76,17 +76,17 @@ Kilitli altyapı kaynak grubu dahil olmak üzere hizmetin her şeyi silmek için
 
 Kilidi dağıtmak için bir Kaynak Yöneticisi şablonu kullanırken, kilit kapsamına bağlı olarak ad ve tür için farklı değerler kullanırsınız.
 
-Bir **kaynağa**bir kilit uygularken aşağıdaki biçimleri kullanın:
+Bir **kaynağa** bir kilit uygularken aşağıdaki biçimleri kullanın:
 
 * ada `{resourceName}/Microsoft.Authorization/{lockName}`
 * türüyle `{resourceProviderNamespace}/{resourceType}/providers/locks`
 
-Bir **kaynak grubuna** veya **aboneliğe**bir kilit uygularken aşağıdaki biçimleri kullanın:
+Bir **kaynak grubuna** veya **aboneliğe** bir kilit uygularken aşağıdaki biçimleri kullanın:
 
 * ada `{lockName}`
 * türüyle `Microsoft.Authorization/locks`
 
-Aşağıdaki örnek, Web sitesinde bir App Service planı, bir Web sitesi ve bir kilit oluşturan bir şablon gösterir. Kilidin kaynak türü, kilitlenecek kaynak ve **/providers/kilitleri**kaynak türüdür. Kilit adı, kaynak adı **/Microsoft.Authorization/** ile ve kilidin adı ile birleştirerek oluşturulur.
+Aşağıdaki örnek, Web sitesinde bir App Service planı, bir Web sitesi ve bir kilit oluşturan bir şablon gösterir. Kilidin kaynak türü, kilitlenecek kaynak ve **/providers/kilitleri** kaynak türüdür. Kilit adı, kaynak adı **/Microsoft.Authorization/** ile ve kilidin adı ile birleştirerek oluşturulur.
 
 ```json
 {
@@ -186,7 +186,7 @@ $lockId = (Get-AzResourceLock -ResourceGroupName exampleresourcegroup -ResourceN
 Remove-AzResourceLock -LockId $lockId
 ```
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Dağıtılan kaynakları, [az Lock Create](/cli/azure/lock#az-lock-create) komutunu kullanarak Azure CLI ile kilitlersiniz.
 
@@ -237,7 +237,7 @@ Bir kilit oluşturmak için şunu çalıştırın:
 PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
 ```
 
-Kapsam bir abonelik, kaynak grubu veya kaynak olabilir. Kilit adı, kilidi çağırmak istediğiniz her şey olur. API sürümü için **2016-09-01**kullanın.
+Kapsam bir abonelik, kaynak grubu veya kaynak olabilir. Kilit adı, kilidi çağırmak istediğiniz her şey olur. API sürümü için **2016-09-01** kullanın.
 
 İstekte, kilidin özelliklerini belirten bir JSON nesnesi ekleyin.
 

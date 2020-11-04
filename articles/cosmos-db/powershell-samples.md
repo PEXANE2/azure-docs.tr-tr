@@ -3,15 +3,16 @@ title: Azure Cosmos DB Core (SQL) API 'SI için Azure PowerShell örnekleri
 description: Çekirdek (SQL) API 'SI için Azure Cosmos DB ortak görevleri gerçekleştirmek üzere Azure PowerShell örnekleri alın
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: e9ec15f757b6d798a8adf3eb6970321cec112afe
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 95b3bdf7c0f232655b4f64f3700579f3672eb3b8
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096164"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341986"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-core-sql-api"></a>Azure Cosmos DB Core (SQL) API 'SI için Azure PowerShell örnekleri
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

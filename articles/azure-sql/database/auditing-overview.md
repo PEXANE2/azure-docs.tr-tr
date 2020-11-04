@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 8fd794822e9e4fe282d6ef8a8ccf1eb908c03560
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9339ac86595a1edbbd996e410d416074680695ed
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321655"
+ms.locfileid: "93340048"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için denetim
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -104,6 +104,13 @@ Microsoft Desteği işlemlerinin (Önizleme) denetlenmesini etkinleştirmek içi
   > Microsoft destek işlemlerinin (Önizleme) denetlenmesi, depolama hesabı hedefini desteklemez. Özelliği etkinleştirmek için, bir Log Analytics çalışma alanı veya bir olay hub 'ı hedefi yapılandırılmalıdır.
 
 ![Microsoft Desteği Işlemlerinin ekran görüntüsü](./media/auditing-overview/support-operations.png)
+
+Log Analytics çalışma alanınızdaki Microsoft Desteği işlemlerin denetim günlüklerini gözden geçirmek için aşağıdaki sorguyu kullanın:
+
+```kusto
+AzureDiagnostics
+| where Category == "DevOpsOperationsAudit"
+```
 
 ### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>Depolama hedefine yönelik denetim
 
@@ -205,9 +212,7 @@ Denetim günlüklerini bir Azure depolama hesabına yazmayı seçerseniz, günl�
 - Ek Yöntemler:
 
   - Birden çok dosya veya günlük dosyası içeren bir alt klasör indirdikten sonra, daha önce açıklanan SSMS birleştirme denetim dosyaları yönergeleri bölümünde açıklandığı gibi yerel olarak birleştirebilirsiniz.
-  - Blob denetim günlüklerini programlı olarak görüntüle:
-
-    - PowerShell kullanarak [genişletilmiş olaylar dosyalarını sorgulayın](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/) .
+  - Blob denetim günlüklerini programlı olarak görüntüle: PowerShell kullanarak [genişletilmiş olaylar dosyalarını sorgulama](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/) .
 
 ## <a name="production-practices"></a><a id="production-practices"></a>Üretim uygulamaları
 

@@ -4,12 +4,12 @@ description: Azure 'da kaynak Web uygulamanızı, bulut hizmetinizi, sanal makin
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: b43b7488f2bb3fec810e8a9de67829a676f6b599
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e0c9770e2065002a4e2acc1198ed096dc588f8e5
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369276"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342224"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 'da otomatik ölçeklendirme ile çalışmaya başlama
 Bu makalede, Microsoft Azure portal kaynağınız için otomatik ölçeklendirme ayarlarınızı nasıl ayarlayabileceğinizi açıklar.
@@ -32,32 +32,32 @@ Belirli bir kaynak grubundaki kaynakları, belirli kaynak türlerini veya belirl
 
 Her kaynak için geçerli örnek sayısını ve otomatik ölçeklendirme durumunu bulacaksınız. Otomatik ölçeklendirme durumu şu olabilir:
 
-- **Yapılandırılmadı**: Bu kaynak Için otomatik ölçeklendirmeyi henüz etkinleştirmediyseniz.
-- **Etkin**: Bu kaynak Için otomatik ölçeklendirmeyi etkinleştirdiniz.
-- **Devre dışı**: Bu kaynak Için otomatik ölçeklendirmeyi devre dışı bırakmış olabilirsiniz.
+- **Yapılandırılmadı** : Bu kaynak Için otomatik ölçeklendirmeyi henüz etkinleştirmediyseniz.
+- **Etkin** : Bu kaynak Için otomatik ölçeklendirmeyi etkinleştirdiniz.
+- **Devre dışı** : Bu kaynak Için otomatik ölçeklendirmeyi devre dışı bırakmış olabilirsiniz.
 
 ## <a name="create-your-first-autoscale-setting"></a>İlk otomatik ölçeklendirme ayarınızı oluşturma
 
 Şimdi ilk otomatik ölçeklendirme ayarınızı oluşturmak için basit bir adım adım izlenecek yol ile başlayalım.
 
 1. Azure Izleyici 'de **Otomatik ölçeklendirme** dikey penceresini açın ve ölçeklendirmek istediğiniz kaynağı seçin. (Aşağıdaki adımlarda bir Web uygulamasıyla ilişkili bir App Service planı kullanılır. [İlk ASP.NET Web uygulamanızı, 5 dakikada Azure 'da oluşturabilirsiniz.][4])
-1. Geçerli örnek sayısının 1 olduğunu unutmayın. **Otomatik ölçeklendirmeyi etkinleştir**' e tıklayın.
+1. Geçerli örnek sayısının 1 olduğunu unutmayın. **Otomatik ölçeklendirmeyi etkinleştir** ' e tıklayın.
   ![Yeni Web uygulaması için ölçek ayarı][5]
-1. Ölçek ayarı için bir ad girin ve ardından **Kural Ekle**' ye tıklayın. Sağ tarafta bağlam bölmesi olarak açan ölçek kuralı seçeneklerine dikkat edin. Bu, varsayılan olarak, kaynağın CPU yüzdesi yüzde 70 ' ü aşarsa, örnek sayınız 1 ' i ölçeklendirmeye yönelik seçeneği ayarlar. Varsayılan değerlerinde bırakın ve **Ekle**' ye tıklayın.
+1. Ölçek ayarı için bir ad girin ve ardından **Kural Ekle** ' ye tıklayın. Sağ tarafta bağlam bölmesi olarak açan ölçek kuralı seçeneklerine dikkat edin. Bu, varsayılan olarak, kaynağın CPU yüzdesi yüzde 70 ' ü aşarsa, örnek sayınız 1 ' i ölçeklendirmeye yönelik seçeneği ayarlar. Varsayılan değerlerinde bırakın ve **Ekle** ' ye tıklayın.
   ![Web uygulaması için ölçek ayarı oluşturma][6]
 1. Şimdi ilk ölçek kuralınızı oluşturdunuz. UX en iyi uygulamaları önerdiğine ve "kuralda en az bir ölçeğe sahip olmanız önerilir." Bunun için:
 
-    a. **Kural ekle**'ye tıklayın.
+    a. **Kural ekle** 'ye tıklayın.
 
     b. **İşleci** **küçüktür olarak ayarlayın**.
 
-    c. **Eşiği** **20**olarak ayarlayın.
+    c. **Eşiği** **20** olarak ayarlayın.
 
-    d. **Sayıyı sayısını azaltmak**için **işlemi** ayarlayın.
+    d. **Sayıyı sayısını azaltmak** için **işlemi** ayarlayın.
 
    Artık CPU kullanımına göre ölçeklendirilmesi/ölçeklendirmeye yönelik bir ölçek ayarınız olmalıdır.
    ![CPU 'ya göre ölçeklendirin][8]
-1. **Kaydet**’e tıklayın.
+1. **Kaydet** ’e tıklayın.
 
 Tebrikler! Artık, Web uygulamanızı CPU kullanımına göre otomatik olarak ölçeklendirmek için ilk ölçek ayarınızı başarıyla oluşturdunuz.
 
@@ -68,7 +68,7 @@ Tebrikler! Artık, Web uygulamanızı CPU kullanımına göre otomatik olarak ö
 ### <a name="scale-based-on-a-schedule"></a>Zamanlamaya göre ölçeklendirin
 CPU 'ya göre Ölçeklendirmeye ek olarak, ölçeklendirmenizi haftanın belirli günlerinde farklı şekilde ayarlayabilirsiniz.
 
-1. **Ölçek koşulu Ekle**' ye tıklayın.
+1. **Ölçek koşulu Ekle** ' ye tıklayın.
 1. Ölçek modunu ve kuralları ayarlamak, varsayılan koşulla aynıdır.
 1. Zamanlama için **belirli günleri Yinele** ' yi seçin.
 1. Ölçek koşulunun uygulanması gereken günleri ve başlangıç/bitiş saatini seçin.
@@ -77,7 +77,7 @@ CPU 'ya göre Ölçeklendirmeye ek olarak, ölçeklendirmenizi haftanın belirli
 ### <a name="scale-differently-on-specific-dates"></a>Belirli tarihlerde farklı ölçeklendirin
 CPU 'ya göre Ölçeklendirmeye ek olarak, ölçeklendirmenizi belirli tarihler için farklı şekilde ayarlayabilirsiniz.
 
-1. **Ölçek koşulu Ekle**' ye tıklayın.
+1. **Ölçek koşulu Ekle** ' ye tıklayın.
 1. Ölçek modunu ve kuralları ayarlamak, varsayılan koşulla aynıdır.
 1. Zamanlama için **Başlangıç/bitiş tarihlerini belirt** ' i seçin.
 1. Ölçek koşulunun uygulanması gereken başlangıç/bitiş tarihlerini ve başlangıç/bitiş saatini seçin.
@@ -89,7 +89,7 @@ Kaynağınız yukarı veya aşağı ölçeklendirildiğinde, etkinlik günlüğ�
 
 ![Çalıştırma geçmişi][11]
 
-Tüm ölçek geçmişini (90 güne kadar) görüntülemek istiyorsanız, **daha fazla ayrıntı görmek için buraya tıklayın ' ı**seçin. Etkinlik günlüğü açılır ve kaynak ve kategorim için otomatik ölçeklendirme önceden seçilir.
+Tüm ölçek geçmişini (90 güne kadar) görüntülemek istiyorsanız, **daha fazla ayrıntı görmek için buraya tıklayın ' ı** seçin. Etkinlik günlüğü açılır ve kaynak ve kategorim için otomatik ölçeklendirme önceden seçilir.
 
 ### <a name="view-the-scale-definition-of-your-resource"></a>Kaynağınızın ölçek tanımını görüntüleyin
 Otomatik ölçeklendirme bir Azure Resource Manager kaynağıdır. **JSON sekmesine geçerek** , JSON 'da ölçek tanımını görüntüleyebilirsiniz.
@@ -111,17 +111,17 @@ Artık ölçeklendirmek istediğiniz örneklerin sayısını el ile ayarlayabili
 
 ![El ile ölçek ayarla][14]
 
-**Otomatik ölçeklendirmeyi etkinleştir** ' i ve sonra **Kaydet**' e tıklayarak her zaman otomatik ölçeklendirmeyi geri dönebilirsiniz.
+**Otomatik ölçeklendirmeyi etkinleştir** ' i ve sonra **Kaydet** ' e tıklayarak her zaman otomatik ölçeklendirmeyi geri dönebilirsiniz.
 
 ## <a name="route-traffic-to-healthy-instances-app-service"></a>Trafiği sağlıklı örneklere yönlendir (App Service)
 
-Birden çok örneğe ölçeklendirilen zaman, App Service yalnızca sağlıklı örneklere trafik yönlendirmek için örneklerinizi üzerinde sistem durumu denetimleri gerçekleştirebilir. Bunu yapmak için, portalı App Service açın ve ardından **izleme**altında **sistem durumu denetimi** ' ni seçin. **Etkinleştir** ' i seçin ve uygulamanızda, veya gibi GEÇERLI bir URL yolu sağlayın `/health` `/api/health` . **Kaydet**’e tıklayın.
+Birden çok örneğe ölçeklendirilen zaman, App Service yalnızca sağlıklı örneklere trafik yönlendirmek için örneklerinizi üzerinde sistem durumu denetimleri gerçekleştirebilir. Bunu yapmak için, portalı App Service açın ve ardından **izleme** altında **sistem durumu denetimi** ' ni seçin. **Etkinleştir** ' i seçin ve uygulamanızda, veya gibi GEÇERLI bir URL yolu sağlayın `/health` `/api/health` . **Kaydet** ’e tıklayın.
 
 Özelliği ARM şablonlarıyla etkinleştirmek için, `healthcheckpath` `Microsoft.Web/sites` kaynağın özelliğini sitenizdeki sistem durumu denetim yolu olarak ayarlayın, örneğin: `"/api/health/"` . Özelliği devre dışı bırakmak için, özelliğini boş dizeye geri ayarlayın `""` .
 
 ### <a name="health-check-path"></a>Sistem durumu denetim yolu
 
-Yol, 200 ve 299 (dahil) arasında bir durum kodu ile bir dakika içinde yanıt vermelidir. Yol bir dakika içinde yanıt vermezse veya aralığın dışında bir durum kodu döndürürse, örnek "sağlıksız" olarak değerlendirilir. App Service sistem durumu denetim yolundaki 302 yeniden yönlendirmeleri izlemez. Sistem durumu denetimi, App Service kimlik doğrulaması ve yetkilendirme özellikleriyle tümleşir, bu özellik özellikleri etkin olsa bile sistem uç noktaya ulaşacaktır. Kendi kimlik doğrulama sisteminizi kullanıyorsanız, sistem durumu denetimi yolu anonim erişime izin vermelidir. Site yalnızca HTTP**s**etkinse, healthcheck Isteği http**s**aracılığıyla gönderilir.
+Yol, 200 ve 299 (dahil) arasında bir durum kodu ile bir dakika içinde yanıt vermelidir. Yol bir dakika içinde yanıt vermezse veya aralığın dışında bir durum kodu döndürürse, örnek "sağlıksız" olarak değerlendirilir. App Service sistem durumu denetim yolundaki 302 yeniden yönlendirmeleri izlemez. Sistem durumu denetimi, App Service kimlik doğrulaması ve yetkilendirme özellikleriyle tümleşir, bu özellik özellikleri etkin olsa bile sistem uç noktaya ulaşacaktır. Kendi kimlik doğrulama sisteminizi kullanıyorsanız, sistem durumu denetimi yolu anonim erişime izin vermelidir. Site yalnızca HTTP **s** etkinse, healthcheck Isteği http **s** aracılığıyla gönderilir.
 
 Sistem durumu denetim yolu, uygulamanızın kritik bileşenlerini denetlemelidir. Örneğin, uygulamanız bir veritabanına ve bir mesajlaşma sistemine bağımlıysa, sistem durumu denetimi uç noktasının bu bileşenlere bağlanması gerekir. Uygulama kritik bir bileşene bağlanamıyorsa, uygulamanın sağlıksız olduğunu göstermek için yol 500 düzeyinde bir yanıt kodu döndürmelidir.
 
@@ -131,7 +131,7 @@ Büyük kuruluşlarda bulunan geliştirme ekipleri, genellikle sunulan API 'Ler 
 
 ### <a name="behavior"></a>Davranış
 
-Sistem durumu denetim yolu sağlandığında, App Service tüm örneklerdeki yolu ping yapar. Başarılı bir yanıt kodu 5 pingden sonra alınmıyorsa, bu örnek "sağlıksız" olarak değerlendirilir. Sağlıksız örnek, yük dengeleyici dönüşünün dışında bırakılacak. Ayrıca, ölçeği büyütme veya küçültme sırasında, yeni örneklerin istekler için hazır olduğundan emin olmak için App Service sistem durumu Denetim yolunu ping yapar.
+Sistem durumu denetim yolu sağlandığında, App Service tüm örneklerdeki yolu ping yapar. Başarılı bir yanıt kodu 5 pingden sonra alınmıyorsa, bu örnek "sağlıksız" olarak değerlendirilir. Sağlıksız örnek, yük dengeleyici dönüşünün dışında bırakılacak. Uygulama ayarıyla gereken başarısız Ping sayısını yapılandırabilirsiniz `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` . Bu uygulama ayarı, 2 ile 10 arasında herhangi bir tamsayıya ayarlanabilir. Örneğin, bu olarak ayarlanırsa `2` , örneklerinizin iki başarısız Ping sonrasında yük dengeleyiciden kaldırılması gerekir. Ayrıca, ölçeği büyütme veya küçültme sırasında App Service, yeni örneklerin yük dengeleyiciye eklenmeden önce isteklere hazır olmasını sağlamak için sistem durumu denetim yoluna ping yapar.
 
 Kalan sağlıklı örnekler daha fazla yük yaşayabilir. Kalan örneklerin aşırı bir kısmını ortadan kaldırmak için, örneklerinizin yarısını hariç tutulamayacak. Örneğin, bir App Service planı 4 örneğe ölçeklenirse ve 3 ' ü sağlıksız olan 3 tanesi, yük dengeleyici dönüşüyle dışarıda bırakılır. Diğer 2 örnek (1 sağlıklı ve 1 sağlıksız) istekleri almaya devam edecektir. Tüm örneklerin sağlıksız olduğu en kötü durum senaryosunda, hiçbiri dışlanacaktır. Bu davranışı geçersiz kılmak istiyorsanız, `WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` uygulama ayarını ve arasında bir değer olarak ayarlayabilirsiniz `0` `100` . Bunun daha yüksek bir değere ayarlanması, sağlıksız örneklerin kaldırıldığı anlamına gelir (varsayılan değer 50 ' dir).
 

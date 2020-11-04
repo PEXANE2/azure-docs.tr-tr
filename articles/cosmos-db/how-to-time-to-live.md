@@ -3,16 +3,17 @@ title: Azure Cosmos DB içinde yaşam süresi yapılandırma ve yönetme
 description: Bir kapsayıcıda ve Azure Cosmos DB bir öğede yaşam süresi yapılandırma ve yönetme hakkında bilgi edinin
 author: anfeldma-ms
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 7cf0f91a655901373b02a51004cf77eb25c8cf8e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2ddba95f9ccc25d536638dbc68c41027d26e71c7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085896"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341017"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Azure Cosmos DB yaşam süresi yapılandırma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

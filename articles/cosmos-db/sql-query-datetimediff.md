@@ -3,20 +3,20 @@ title: Azure Cosmos DB sorgu dilinde Datetımediff
 description: Azure Cosmos DB 'de SQL sistem işlevi Datetımediff hakkında bilgi edinin.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: d51c8774a8646a4b961906ee77913d8edbe752ee
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 09b801c48bf2998a2d8926009cae76287c1ac9b6
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095841"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342275"
 ---
 # <a name="datetimediff-azure-cosmos-db"></a>DateTimeDiff (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
-
 Belirtilen *StartDate* ve *EndDate* arasında çapraz belirtilen datetimepart sınırlarının sayısını (işaretli tamsayı değeri olarak) döndürür.
   
 ## <a name="syntax"></a>Söz dizimi

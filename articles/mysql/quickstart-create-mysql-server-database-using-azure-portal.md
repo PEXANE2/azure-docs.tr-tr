@@ -1,22 +1,24 @@
 ---
 title: 'Hızlı başlangıç: sunucu oluşturma-Azure portal-MySQL için Azure veritabanı'
-description: Bu makalede, Azure portalını kullanarak örnek bir MySQL için Azure Veritabanı sunucusunu yaklaşık beş dakika içinde hızlıca oluşturma adımları verilmektedir.
+description: Bu hızlı başlangıç, yaklaşık beş dakikada bir MySQL için Azure veritabanı sunucusunu hızlı bir şekilde oluşturmak üzere Azure portal kullanma adımlarını adım adım sağlar.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 7/15/2020
-ms.openlocfilehash: a3438293bcbf656a371b55605c64a005ae4d599a
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2cae0187643eb596bd98bcd99a588a4d214e6f6e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541409"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341221"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal MySQL için Azure veritabanı sunucusu oluşturma
 
-MySQL için Azure Veritabanı, bulutta yüksek oranda kullanılabilir olan MySQL veritabanları çalıştırmak, yönetmek ve ölçeklendirmek için kullanılan, yönetilen bir hizmettir. Bu Hızlı Başlangıçta, Azure portalını kullanarak yaklaşık beş dakikada nasıl MySQL için Azure Veritabanı sunucusu oluşturacağınız gösterilir.  
+MySQL için Azure Veritabanı, bulutta yüksek oranda kullanılabilir olan MySQL veritabanları çalıştırmak, yönetmek ve ölçeklendirmek için kullanılan, yönetilen bir hizmettir. Bu Hızlı Başlangıçta, Azure portalını kullanarak yaklaşık beş dakikada nasıl MySQL için Azure Veritabanı sunucusu oluşturacağınız gösterilir.
+
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 
@@ -39,7 +41,7 @@ MySQL için Azure veritabanı sunucusu oluşturmak üzere şu adımları uygulay
 3. Yeni sunucu ayrıntıları formunu aşağıdaki bilgilerle doldurun:
     
 >[!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/4-create-form.png" alt-text="MySQL için Azure Veritabanı seçeneği":::
+> :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/4-create-form.png" alt-text="Sunucu oluşturma formu":::
 
 **Ayar** | **Önerilen değer** | **Alan açıklaması** 
 ---|---|---
@@ -61,13 +63,13 @@ Sürüm | *En son ana sürüm*| En son ana sürüm (başka bir sürüm gerektire
    
 5. Araç çubuğunda **Bildirimler** ’i (zil simgesi) seçip dağıtım işlemini izleyin.
    
-Varsayılan olarak, sunucunuz altında aşağıdaki veritabanları oluşturulur: **information_schema** , **mysql** , **performance_schema** ve **sys** .
+Varsayılan olarak, sunucunuz altında aşağıdaki veritabanları oluşturulur: **information_schema** , **mysql** , **performance_schema** ve **sys**.
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Sunucu düzeyinde güvenlik duvarı kuralı oluşturma
 Varsayılan olarak, oluşturulan sunucu bir güvenlik duvarıyla korunur ve genel erişime açık değildir. IP 'nize erişim sağlamak için, Azure portal sunucu kaynağına gidin ve sunucu kaynağınız için sol taraftaki menüden **bağlantı güvenliği** ' ni seçin. Kaynağı nasıl bulacağınızı bilmiyorsanız bkz. [kaynak açma](../azure-resource-manager/management/manage-resources-portal.md#open-resources).
 
 >[!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/add-current-ip-firewall.png" alt-text="MySQL için Azure Veritabanı seçeneği":::
+> :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/add-current-ip-firewall.png" alt-text="Bağlantı güvenliği - Güvenlik duvarı kuralları":::
    
 Şimdi **geçerli ISTEMCI IP adresi ekle** ' yi seçin ve ardından **Kaydet** ' i seçin. Bu IP 'lerden sunucunuza bağlanmak için ek IP 'Ler ekleyebilir veya bir IP aralığı sağlayabilirsiniz. Daha fazla bilgi için bkz. [MySQL Için Azure veritabanı sunucusunda güvenlik duvarı kurallarını yönetme](./concepts-firewall-rules.md)
 
@@ -83,7 +85,7 @@ Yerel ortamınızdan sunucusuna bağlanmak için [mysql.exe](https://dev.mysql.c
     >Cloud Shell 'i ilk kez çalıştırırsanız, bir kaynak grubu, depolama hesabı oluşturmak için bir istem görürsünüz. Bu bir kerelik bir adımdır ve tüm oturumlar için otomatik olarak eklenir. 
 
    >[!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/use-in-cloud-shell.png" alt-text="MySQL için Azure Veritabanı seçeneği":::
+   > :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/use-in-cloud-shell.png" alt-text="Portal tam görünüm Cloud Shell":::
 2. Bu komutu Azure Cloud Shell terminalde çalıştırın. Değerleri gerçek sunucu adı ve Yönetici Kullanıcı oturum açma adınızla değiştirin. Yönetici Kullanıcı adı, \<servername> MySQL Için Azure veritabanı için aşağıda gösterildiği gibi ' @ ' gerektirir  
 
   ```azurecli-interactive
@@ -136,10 +138,8 @@ Bir kaynak grubunda MySQL için Azure veritabanı sunucusunu başarıyla oluştu
 
 Sunucuyu silmek için aşağıda gösterildiği gibi sunucunuzun **genel bakış** sayfasında **Sil** düğmesine tıklayabilirsiniz:
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png" alt-text="MySQL için Azure Veritabanı seçeneği":::
+> :::image type="content" source="media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png" alt-text="Kaynaklarınızı silme":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
->MySQL ile Windows [üzerinde BIR php uygulaması derleme](../app-service/tutorial-php-mysql-app.md) 
-> MySQL ile Linux ['TA php uygulaması derleme](../app-service/tutorial-php-mysql-app.md?pivots=platform-linux%253fpivots%253dplatform-linux) 
-> [MySQL Ile Java tabanlı Spring uygulaması derleme](/azure/developer/java/spring-framework/spring-app-service-e2e?tabs=bash)
+>[MySQL ile Windows üzerinde bir PHP uygulaması derleme](../app-service/tutorial-php-mysql-app.md)

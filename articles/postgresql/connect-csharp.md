@@ -8,18 +8,18 @@ ms.custom: mvc, devcenter, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 10/18/2020
-ms.openlocfilehash: 96a655c99a5b6846e5f286e31d22a3756e69d06e
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 8820fd7b0812d925af6aca923a2b205d5bc92f3e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912132"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341459"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için .NET (C#) kullanma-tek sunucu
 
 Bu hızlı başlangıçta, C# uygulaması kullanılarak PostgreSQL için Azure Veritabanı'na nasıl bağlanılacağı gösterilmiştir. Ayrıca veritabanında veri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini nasıl kullanacağınız da gösterilmiştir. Bu makaledeki adımlarda, C# kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve PostgreSQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu hızlı başlangıç için şunlar gerekir:
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free).
@@ -321,6 +321,16 @@ namespace Driver
     }
 }
 
+```
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bu hızlı başlangıç sırasında kullanılan tüm kaynakları temizlemek için, aşağıdaki komutu kullanarak kaynak grubunu silin:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

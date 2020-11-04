@@ -3,16 +3,17 @@ title: .NET SDK V3 için Azure Cosmos DB performans ipuçları
 description: Azure Cosmos DB .NET v3 SDK performansını artırmaya yardımcı olmak için istemci yapılandırma seçeneklerini öğrenin.
 author: j82w
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet, contperfq2
-ms.openlocfilehash: 8c042032fb12e63ae32eb5a51b06e07386e5fbfc
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ab9fc4f08b96fc10a20125c30af2d6b8050c7606
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308843"
+ms.locfileid: "93341748"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB ve .NET için performans ipuçları
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

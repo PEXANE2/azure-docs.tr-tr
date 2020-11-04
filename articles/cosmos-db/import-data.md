@@ -3,15 +3,16 @@ title: 'Öğretici: Azure Cosmos DB için veritabanı geçiş aracı'
 description: 'Öğretici: MongoDB, SQL Server, tablo depolama, Amazon DynamoDB, CSV ve JSON dosyaları gibi çeşitli kaynaklardan Azure Cosmos DB verileri içeri aktarmak için açık kaynaklı Azure Cosmos DB veri geçiş araçlarını nasıl kullanacağınızı öğrenin. CSV’yi JSON’a dönüştürme.'
 author: deborahc
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: dech
-ms.openlocfilehash: 7084458d8d3fbae45819fc29daa502423c919bbf
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 5cc65a9eeab76f4f816c5d5a0d23c64c1735607c
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101621"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339929"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Öğretici: Verilerinizi Azure Cosmos DB'ye geçirmek için Veri Geçiş Aracı'nı kullanma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,7 +35,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Farklı veri kaynaklarından verileri içeri aktarma
 > * Azure Cosmos DB’den JSON’a dışarı aktarma
 
-## <a name="prerequisites"></a><a id="Prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a><a id="Prerequisites"></a>Ön koşullar
 
 Bu makaledeki yönergeleri uygulamadan önce aşağıdaki adımları belirttiğinizden emin olun:
 
@@ -100,7 +101,7 @@ Bağlantı dizesi aşağıdaki biçimdedir:
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>`
 
 * , `<CosmosDB Endpoint>` Uç nokta URI 'sidir. Bu değeri Azure portal alabilir. Azure Cosmos hesabınıza gidin. **Genel bakış** bölmesini açın ve **URI** değerini kopyalayın.
-* , `<AccountKey>` "Parola" veya **birincil anahtardır** . Bu değeri Azure portal alabilir. Azure Cosmos hesabınıza gidin. **Bağlantı dizelerini** veya **anahtarlar** bölmesini açın ve "parola" veya **birincil anahtar** değerini kopyalayın.
+* , `<AccountKey>` "Parola" veya **birincil anahtardır**. Bu değeri Azure portal alabilir. Azure Cosmos hesabınıza gidin. **Bağlantı dizelerini** veya **anahtarlar** bölmesini açın ve "parola" veya **birincil anahtar** değerini kopyalayın.
 * , `<CosmosDB Database>` CosmosDB veritabanı adıdır.
 
 Örnek: `AccountEndpoint=https://myCosmosDBName.documents.azure.com:443/;AccountKey=wJmFRYna6ttQ79ATmrTMKql8vPri84QBiHTt6oinFkZRvoe7Vv81x9sn6zlVlBY10bEPMgGM982wfYXpWXWB9w==;Database=myDatabaseName`
@@ -134,7 +135,7 @@ dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t
 
 MongoDB kaynak alma seçeneği ile, tek bir MongoDB koleksiyonundan içeri aktarabilir, isteğe bağlı olarak belgeleri bir sorgu kullanarak filtreleyebilir ve bir projeksiyon kullanarak belge yapısını değiştirebilirsiniz.  
 
-:::image type="content" source="./media/import-data/mongodbsource.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+:::image type="content" source="./media/import-data/mongodbsource.png" alt-text="MongoDB kaynağı seçeneklerinin ekran görüntüsü":::
 
 Bağlantı dizesi, standart MongoDB biçimindedir:
 
@@ -162,7 +163,7 @@ dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<po
 
 MongoDB dışarı aktarma JSON dosyası kaynak içeri aktarıcı seçeneği, mongoexport yardımcı programından üretilen bir veya daha fazla JSON dosyasını içeri aktarmanıza olanak sağlar.  
 
-:::image type="content" source="./media/import-data/mongodbexportsource.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+:::image type="content" source="./media/import-data/mongodbexportsource.png" alt-text="MongoDB dışarı aktarma kaynağı seçeneklerinin ekran görüntüsü":::
 
 İçeri aktarma için MongoDB dışa aktarma JSON dosyalarını içeren klasörler eklenirken, alt klasörlerdeki dosyaları yinelemeli olarak arama seçeneğiniz vardır.
 
@@ -176,7 +177,7 @@ dt.exe /s:MongoDBExport /s.Files:D:\mongoemployees.json /t:DocumentDBBulk /t.Con
 
 SQL kaynak içeri aktarıcı seçeneği, tek bir SQL Server veritabanından içeri aktarma işlemi yapmanıza ve isteğe bağlı şekilde bir sorgu kullanarak içeri aktarılacak kayıtları filtrelemenize olanak sağlar. Ayrıca bir iç içe geçirme ayırıcısı belirterek de belge yapısını değiştirebilirsiniz (kısa bir süre sonra bununla ilgili daha fazla bilgi verilecektir).  
 
-:::image type="content" source="./media/import-data/sqlexportsource.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+:::image type="content" source="./media/import-data/sqlexportsource.png" alt-text="SQL kaynak seçeneklerinin ekran görüntüsü: veritabanı geçişi araçları":::
 
 Bağlantı dizesinin biçimi, standart SQL bağlantı dizesi biçimindedir.
 
@@ -189,7 +190,11 @@ Bağlantı dizesinin biçimi, standart SQL bağlantı dizesi biçimindedir.
 
 Aşağıdaki (kısmi) sonuçları döndürür:
 
-:::image type="content" source="./media/import-data/sqlqueryresults.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları" } }*
+:::image type="content" source="./media/import-data/sqlqueryresults.png" alt-text="SQL sorgusu sonuçlarının ekran görüntüsü":::
+
+Address.AddressType ve Address.Location.StateProvinceName gibi diğer adlara dikkat edin. İç içe geçirme ayırıcısı olarak '.' öğesi belirtildiğinde içeri aktarma aracı içeri aktarma sırasında Address ve Address.Location alt belgelerini oluşturur. Aşağıda, Azure Cosmos DB’de elde edilen bir belge örneği verilmiştir:
+
+*{ "id": "956", "Name": "Finer Sales and Service", "Address": { "AddressType": "Main Office", "AddressLine1": "#500-75 O'Connor Street", "Location": { "City": "Ottawa", "StateProvinceName": "Ontario" }, "PostalCode": "K4B 1S2", "CountryRegionName": "Canada" } }*
 
 Aşağıda, SQL Server’dan içeri aktarılacak bazı komut satırı örnekleri verilmiştir:
 
@@ -205,11 +210,22 @@ dt.exe /s:SQL /s.ConnectionString:"Data Source=<server>;Initial Catalog=Adventur
 
 CSV dosyası kaynak içeri aktarıcı seçeneği, bir veya daha fazla CSV dosyasını içeri aktarmanıza olanak sağlar. İçeri aktarma için CSV dosyaları olan klasörler eklenirken, alt klasörlerdeki dosyaları yinelemeli olarak arama seçeneğiniz vardır.
 
-:::image type="content" source="media/import-data/csvsource.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+:::image type="content" source="media/import-data/csvsource.png" alt-text="CSV kaynak seçeneklerinin ekran görüntüsü: CSV’den JSON’a":::
 
 SQL kaynağına benzer şekilde, içeri aktarma sırasında hiyerarşik ilişkiler (alt belgeler) oluşturmak için iç içe geçirme ayırıcısı özelliği kullanılabilir. Aşağıdaki CSV üst bilgisi satırını ve veri satırlarını dikkate alın:
 
-:::image type="content" source="./media/import-data/csvsample.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları" dize olarak değerlendirilir).
+:::image type="content" source="./media/import-data/csvsample.png" alt-text="CSV örnek kayıtlarının ekran görüntüsü: CSV’den JSON’a":::
+
+DomainInfo.Domain_Name ve RedirectInfo.Redirecting gibi diğer adlara dikkat edin. İç içe geçirme ayırıcısı olarak '.' öğesi belirtildiğinde içeri aktarma aracı içeri aktarma sırasında DomainInfo ve RedirectInfo alt belgelerini oluşturur. Aşağıda, Azure Cosmos DB’de elde edilen bir belge örneği verilmiştir:
+
+*{"DomainInfo": {"Domain_Name": "ACUS.GOV", "Domain_Name_Address": "https: \/ /www.ACUS.gov"}, "Federal kurum": "Birleşik Devletler Yönetici Konferansı", "Redirectınfo": {"yeniden yönlendirme": "0", "Redirect_Destination": ""}, "kimlik": "9cc565c5-EBCD-1c03-ebd3-cc3e2ecd814d"}*
+
+İçeri aktarma aracı, CSV dosyalarındaki tırnak içine alınmış olmayan değerler için tür bilgilerini çıkarmaya çalışır (tırnak içinde değerler her zaman dize olarak değerlendirilir).  Türler şu sırayla tanımlanır: sayı, tarih saat, boole.  
+
+CSV içeri aktarımı ile ilgili dikkat edilecek iki şey daha vardır:
+
+1. Varsayılan olarak, tırnak içine alınmayan değerler her zaman sekmeler ve boşluklar için kırpılırken, tırnak içine alınan değerler olduğu gibi korunur. Tırnak içine alınan değerleri kırp onay kutusu veya /s.TrimQuoted komut satırı seçeneği ile bu davranış geçersiz kılınabilir.
+2. Varsayılan olarak, tırnak içine alınmayan null değer, null değer olarak değerlendirilir. Tırnak içine alınmayan NULL değeri dize olarak değerlendir onay kutusu veya /s.NoUnquotedNulls komut satırı seçeneği ile bu davranış geçersiz kılınabilir (başka bir deyişle, tırnak içine alınmayan null değer, "null" dize olarak değerlendirilir).
 
 Aşağıda, CSV içeri aktarımı için bir komut satırı örneği verilmiştir:
 
@@ -223,7 +239,7 @@ Azure Tablo depolama kaynak içeri aktarıcı seçeneği, tek bir Azure Tablo de
 
 Azure Tablo depolamadan içeri aktarılan verileri, Tablo API'si kullanım için Azure Cosmos DB tablo ve varlıklara aktarmak üzere çıktısını alabilirsiniz. İçeri aktarılan veriler, SQL API 'SI ile kullanılmak üzere koleksiyonlar ve belgeler için de çıktı olabilir. Ancak, Tablo API'si yalnızca komut satırı yardımcı programında hedef olarak kullanılabilir. Veri geçiş aracı Kullanıcı arabirimini kullanarak Tablo API'si dışarı aktarabilirsiniz. Daha fazla bilgi için bkz. [Azure Cosmos DB Tablo API’si ile kullanılmak üzere verileri içeri aktarma](table-import.md).
 
-:::image type="content" source="./media/import-data/azuretablesource.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+:::image type="content" source="./media/import-data/azuretablesource.png" alt-text="Azure Tablo depolama kaynağı seçeneklerinin ekran görüntüsü":::
 
 Azure Tablo depolama bağlantı dizesinin biçimi şöyledir:
 
@@ -253,9 +269,9 @@ dt.exe /s:AzureTable /s.ConnectionString:"DefaultEndpointsProtocol=https;Account
 
 Amazon DynamoDB kaynağı alma seçeneği, tek bir Amazon DynamoDB tablosundan içeri aktarmanızı sağlar. Bu, isteğe bağlı olarak içeri aktarılacak varlıkları filtreleyebilirler. İçeri aktarımın mümkün olduğunca kolay şekilde ayarlanması için birçok şablon sağlanır.
 
-:::image type="content" source="./media/import-data/dynamodbsource1.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+:::image type="content" source="./media/import-data/dynamodbsource1.png" alt-text="Amazon DynamoDB kaynak seçenekleri-veritabanı geçiş araçları ekran görüntüsü.":::
 
-:::image type="content" source="./media/import-data/dynamodbsource2.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+:::image type="content" source="./media/import-data/dynamodbsource2.png" alt-text="Kaynak-veritabanı geçiş araçlarıyla Amazon DynamoDB kaynak seçeneklerinin ekran görüntüsü.":::
 
 Amazon DynamoDB bağlantı dizesinin biçimi şöyledir:
 
@@ -274,14 +290,19 @@ dt.exe /s:DynamoDB /s.ConnectionString:ServiceURL=https://dynamodb.us-east-1.ama
 
 JSON dosyası, MongoDB dışarı aktarma dosyası ve CSV dosyası kaynak içeri aktarıcı seçenekleri, Azure Blob depolama alanından bir veya daha fazla dosyayı içeri aktarmanıza olanak sağlar. Bir Blob kapsayıcı URL’si ve Hesap Anahtarı belirttikten sonra, içeri aktarılacak dosyaları seçmek için bir normal ifade sağlayın.
 
-:::image type="content" source="./media/import-data/blobsource.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:doctest
+:::image type="content" source="./media/import-data/blobsource.png" alt-text="Blob dosya kaynağı seçeneklerinin ekran görüntüsü":::
+
+Aşağıda, Azure Blob depolama alanından JSON dosyalarını içeri aktarmak için komut satırı örneği verilmiştir:
+
+```console
+dt.exe /s:JsonFile /s.Files:"blobs://<account key>@account.blob.core.windows.net:443/importcontainer/.*" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:doctest
 ```
 
 ## <a name="import-from-a-sql-api-collection"></a><a id="SQLSource"></a>SQL API koleksiyonundan içeri aktarma
 
 Azure Cosmos DB kaynak içeri aktarma seçeneği, bir veya daha fazla Azure Cosmos kapsayıcılarından verileri içeri aktarmanıza ve isteğe bağlı olarak belgeleri bir sorgu kullanarak filtrelemenize olanak tanır.  
 
-:::image type="content" source="./media/import-data/documentdbsource.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+:::image type="content" source="./media/import-data/documentdbsource.png" alt-text="Azure Cosmos DB kaynağı seçeneklerinin ekran görüntüsü":::
 
 Azure Cosmos DB bağlantı dizesinin biçimi şöyledir:
 
@@ -306,7 +327,7 @@ Azure Cosmos DB kaynağı içeri aktarıcı seçeneği aşağıdaki gelişmiş s
 3. Yeniden Deneme Aralığı: Geçici hatalar (örneğin, ağ bağlantısı kesintisi) olması durumunda Azure Cosmos DB’ye yapılacak bağlantı yeniden denemeleri arasında beklenecek süreyi belirtir.
 4. Bağlantı Modu: Azure Cosmos DB ile kullanılacak bağlantı modunu belirtir. Kullanılabilir seçenekler, DirectTcp, DirectHttps ve Gateway seçenekleridir. Doğrudan bağlantı modları daha hızlıyken, ağ geçidi modu ise yalnızca 443 numaralı bağlantı noktasını kullandığından güvenlik duvarıyla daha kolay kullanılabilir.
 
-:::image type="content" source="./media/import-data/documentdbsourceoptions.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+:::image type="content" source="./media/import-data/documentdbsourceoptions.png" alt-text="Azure Cosmos DB kaynağı gelişmiş seçeneklerinin ekran görüntüsü":::
 
 > [!TIP]
 > İçeri aktarma aracı, varsayılan olarak DirectTcp bağlantı moduna geçer. Güvenlik duvarıyla ilgili sorun yaşarsanız, Ağ Geçidi bağlantı moduna geçin; bu yalnızca 443 numaralı bağlantı noktasını gerektirir.
@@ -331,9 +352,9 @@ dt.exe /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;Ac
 
 HBase kaynak içeri aktarıcı seçeneği, bir HBase tablosundan verileri içeri aktarmanıza ve isteğe bağlı olarak verileri filtrelemenize olanak sağlar. İçeri aktarımın mümkün olduğunca kolay şekilde ayarlanması için birçok şablon sağlanır.
 
-:::image type="content" source="./media/import-data/hbasesource1.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+:::image type="content" source="./media/import-data/hbasesource1.png" alt-text="HBase kaynak seçeneklerinin ekran görüntüsü.":::
 
-:::image type="content" source="./media/import-data/hbasesource2.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+:::image type="content" source="./media/import-data/hbasesource2.png" alt-text="Filtre bağlamsal menüsü genişletilmiş HBase kaynak seçeneklerinin ekran görüntüsü.":::
 
 HBase Stargate bağlantı dizesinin biçimi şöyledir:
 
@@ -352,7 +373,7 @@ dt.exe /s:HBase /s.ConnectionString:ServiceURL=<server-address>;Username=<userna
 
 Azure Cosmos DB Toplu içeri aktarıcı, verimlilik için bir Azure Cosmos DB saklı yordamını kullanarak kullanılabilir kaynak seçeneklerden herhangi birinden içeri aktarma işlemi yapmanıza olanak sağlar. Araç, tek bölümlenmiş bir Azure Cosmos kapsayıcısına içeri aktarmayı destekler. Ayrıca, verilerin birden fazla tek bölümlenmiş Azure Cosmos kapsayıcısına bölünmesinin parçalı içeri aktarmayı da destekler. Verileri bölümleme hakkında daha fazla bilgi için bkz. [Azure Cosmos DB'de bölümleme ve ölçeklendirme](partitioning-overview.md). Araç, saklı yordam oluşturur, yürütür ve sonra hedef koleksiyonlardan saklı yordamı siler.  
 
-:::image type="content" source="./media/import-data/documentdbbulk.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+:::image type="content" source="./media/import-data/documentdbbulk.png" alt-text="Azure Cosmos DB toplu seçeneklerinin ekran görüntüsü":::
 
 Azure Cosmos DB bağlantı dizesinin biçimi şöyledir:
 
@@ -382,11 +403,11 @@ Birden fazla koleksiyona aktardığınızda, içeri aktarma aracı karma tabanl�
 
 İçeri aktarma sırasında kullanılabilen birçok gelişmiş seçenek vardır. İlk olarak, araç varsayılan bir toplu içeri aktarma saklı yordamı (BulkInsert.js) içerse de, kendi içeri aktarma saklı yordamınızı belirtmeyi seçebilirsiniz:
 
- :::image type="content" source="./media/import-data/bulkinsertsp.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+ :::image type="content" source="./media/import-data/bulkinsertsp.png" alt-text="Azure Cosmos DB toplu ekleme sproc seçeneğinin ekran görüntüsü":::
 
 Ayrıca veri türlerini içeri aktarırken (örneğin, SQL Server veya MongoDB’den) üç içeri aktarma seçeneği arasından seçim yapabilirsiniz:
 
- :::image type="content" source="./media/import-data/datetimeoptions.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+ :::image type="content" source="./media/import-data/datetimeoptions.png" alt-text="Azure Cosmos DB tarih saat içeri aktarma seçeneklerinin ekran görüntüsü":::
 
 * Dize: Dize değeri olarak kalıcı olur
 * Dönem: Bir Dönem sayı değeri olarak kalıcı olur
@@ -402,7 +423,7 @@ Azure Cosmos DB Toplu içeri aktarıcı aşağıdaki ek gelişmiş seçenekleri 
 6. Yeniden Deneme Aralığı: Geçici hatalar (örneğin, ağ bağlantısı kesintisi) olması durumunda Azure Cosmos DB’ye yapılacak bağlantı yeniden denemeleri arasında beklenecek süreyi belirtir.
 7. Bağlantı Modu: Azure Cosmos DB ile kullanılacak bağlantı modunu belirtir. Kullanılabilir seçenekler, DirectTcp, DirectHttps ve Gateway seçenekleridir. Doğrudan bağlantı modları daha hızlıyken, ağ geçidi modu ise yalnızca 443 numaralı bağlantı noktasını kullandığından güvenlik duvarıyla daha kolay kullanılabilir.
 
-:::image type="content" source="./media/import-data/docdbbulkoptions.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+:::image type="content" source="./media/import-data/docdbbulkoptions.png" alt-text="Azure Cosmos DB toplu içeri aktarma gelişmiş seçeneklerinin ekran görüntüsü":::
 
 > [!TIP]
 > İçeri aktarma aracı, varsayılan olarak DirectTcp bağlantı moduna geçer. Güvenlik duvarıyla ilgili sorun yaşarsanız, Ağ Geçidi bağlantı moduna geçin; bu yalnızca 443 numaralı bağlantı noktasını gerektirir.
@@ -411,7 +432,7 @@ Azure Cosmos DB Toplu içeri aktarıcı aşağıdaki ek gelişmiş seçenekleri 
 
 Azure Cosmos DB sıralı kayıt alma programı, kayıt temelinde bulunan kullanılabilir bir kaynak seçeneğinden içeri aktarmanızı sağlar. Saklı yordam kotasına ulaşmış olan mevcut bir koleksiyona içeri aktarma işlemi yapıyorsanız bu seçeneği belirleyebilirsiniz. Araç tek bir (tek bölümlü ve çok bölgeli) Azure Cosmos kapsayıcısına aktarmayı destekler. Ayrıca, verilerin birden fazla tek bölümlü veya çok bölgeli Azure Cosmos kapsayıcısına bölümlenmesi halinde bulunan parçalı içeri aktarmayı destekler. Verileri bölümleme hakkında daha fazla bilgi için bkz. [Azure Cosmos DB'de bölümleme ve ölçeklendirme](partitioning-overview.md).
 
-:::image type="content" source="./media/import-data/documentdbsequential.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+:::image type="content" source="./media/import-data/documentdbsequential.png" alt-text="Azure Cosmos DB sıralı kayıt içeri aktarma seçeneklerinin ekran görüntüsü":::
 
 Azure Cosmos DB bağlantı dizesinin biçimi şöyledir:
 
@@ -441,7 +462,7 @@ Birden fazla koleksiyona içeri aktarırken, içeri aktarma aracı karma tabanl�
 
 İçeri aktarma sırasında kullanılabilen birçok gelişmiş seçenek vardır. İlk olarak, veri türlerini içeri aktarırken (örneğin, SQL Server veya MongoDB’den) üç içeri aktarma seçeneği arasından seçim yapabilirsiniz:
 
- :::image type="content" source="./media/import-data/datetimeoptions.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+ :::image type="content" source="./media/import-data/datetimeoptions.png" alt-text="Azure Cosmos DB tarih saat içeri aktarma seçeneklerinin ekran görüntüsü":::
 
 * Dize: Dize değeri olarak kalıcı olur
 * Dönem: Bir Dönem sayı değeri olarak kalıcı olur
@@ -456,7 +477,7 @@ Azure Cosmos DB: Sıralı kayıt içeri aktarıcı aşağıdaki ek gelişmiş se
 5. Yeniden deneme aralığı: geçici hatalarda Azure Cosmos DB bağlantının yeniden deneneceği (örneğin, ağ bağlantısı kesintisi) arasında ne kadar bekleneceğini belirtir.
 6. Bağlantı Modu: Azure Cosmos DB ile kullanılacak bağlantı modunu belirtir. Kullanılabilir seçenekler, DirectTcp, DirectHttps ve Gateway seçenekleridir. Doğrudan bağlantı modları daha hızlıyken, ağ geçidi modu ise yalnızca 443 numaralı bağlantı noktasını kullandığından güvenlik duvarıyla daha kolay kullanılabilir.
 
-:::image type="content" source="./media/import-data/documentdbsequentialoptions.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+:::image type="content" source="./media/import-data/documentdbsequentialoptions.png" alt-text="Azure Cosmos DB sıralı kayıt içeri aktarma gelişmiş seçeneklerinin ekran görüntüsü":::
 
 > [!TIP]
 > İçeri aktarma aracı, varsayılan olarak DirectTcp bağlantı moduna geçer. Güvenlik duvarıyla ilgili sorun yaşarsanız, Ağ Geçidi bağlantı moduna geçin; bu yalnızca 443 numaralı bağlantı noktasını gerektirir.
@@ -465,7 +486,7 @@ Azure Cosmos DB: Sıralı kayıt içeri aktarıcı aşağıdaki ek gelişmiş se
 
 Geçiş aracının, içeri aktarma sırasında Azure Cosmos DB SQL API koleksiyonları oluşturmasına izin verdiğinizde koleksiyonların dizin oluşturma ilkesini belirtebilirsiniz. Azure Cosmos DB Sıralı kayıt seçenekleri ve Azure Cosmos DB Toplu içeri aktarmanın gelişmiş seçenekler bölümünde Dizin Oluşturma İlkesi bölümüne gidin.
 
-:::image type="content" source="./media/import-data/indexingpolicy1.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+:::image type="content" source="./media/import-data/indexingpolicy1.png" alt-text="Azure Cosmos DB Dizin oluşturma Ilkesi gelişmiş seçeneklerinin ekran görüntüsü.":::
 
 Dizin Oluşturma İlkesi gelişmiş seçeneğini kullanarak, bir dizin oluşturma ilkesi dosyası seçebilir, kendiniz bir dizin oluşturma ilkesi girebilir veya varsayılan şablonlar kümesi içinden seçim yapabilirsiniz (dizin oluşturma ilkesi metin kutusuna sağ tıklayarak).
 
@@ -474,7 +495,7 @@ Aracın sağladığı ilke şablonları şunlardır:
 * Varsayılan. Bu ilke, dizelerde eşitlik sorguları gerçekleştirdiğinizde en iyi seçenektir. Ayrıca, sayılar için SıRALAMA ölçütü, Aralık ve eşitlik sorguları kullanıyorsanız da kullanılabilir. Bu ilkenin, Aralıktan daha düşük dizin depolama yükü vardır.
 * Aralık. Bu ilke, hem sayılar hem de dizeler üzerinde SıRALAMA, Aralık ve eşitlik sorguları kullandığınızda en iyisidir. Bu ilkenin, Varsayılan veya Karmadan daha yüksek dizin depolama yükü vardır.
 
-:::image type="content" source="./media/import-data/indexingpolicy2.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+:::image type="content" source="./media/import-data/indexingpolicy2.png" alt-text="Hedef bilgileri belirten Azure Cosmos DB Dizin oluşturma Ilkesi gelişmiş seçenekleri ekran görüntüsü.":::
 
 > [!NOTE]
 > Bir dizin oluşturma ilkesi belirtmezseniz, varsayılan ilke uygulanır. Dizin oluşturma ilkeleri hakkında daha fazla bilgi için bkz: [Azure Cosmos DB dizin oluşturma ilkeleri](index-policy.md).
@@ -483,9 +504,43 @@ Aracın sağladığı ilke şablonları şunlardır:
 
 Azure Cosmos DB JSON dışarı aktarıcı, kullanılabilir kaynak seçeneklerinden herhangi birini JSON belgelerinin dizisine sahip bir JSON dosyasına vermenize olanak tanır. Araç, dışarı aktarmayı sizin için işler. Alternatif olarak, elde edilen geçiş komutunu görüntülemeyi ve komutu kendiniz çalıştırmayı tercih edebilirsiniz. Sonuçta elde edilen JSON dosyası, yerel olarak veya Azure Blob depolama alanında depolanabilir.
 
-:::image type="content" source="./media/import-data/jsontarget.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+:::image type="content" source="./media/import-data/jsontarget.png" alt-text="Azure Cosmos DB JSON yerel dosya dışarı aktarma seçeneğinin ekran görüntüsü":::
 
-:::image type="content" source="./media/import-data/jsontarget2.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları"
+:::image type="content" source="./media/import-data/jsontarget2.png" alt-text="Azure Cosmos DB JSON Azure Blob depolama alanı dışarı aktarma seçeneğinin ekran görüntüsü":::
+
+İsteğe bağlı olarak, sonuçta elde edilen JSON 'ı önceden belirleyebilirsiniz. Bu eylem, içeriğin daha fazla okunabilir hale getirilmesi sırasında elde edilen belgenin boyutunu artırır.
+
+* Standart JSON dışarı aktarma
+
+  ```JSON
+  [{"id":"Sample","Title":"About Paris","Language":{"Name":"English"},"Author":{"Name":"Don","Location":{"City":"Paris","Country":"France"}},"Content":"Don's document in Azure Cosmos DB is a valid JSON document as defined by the JSON spec.","PageViews":10000,"Topics":[{"Title":"History of Paris"},{"Title":"Places to see in Paris"}]}]
+  ```
+
+* Önceden bağlı JSON dışarı aktarma
+
+  ```JSON
+    [
+     {
+    "id": "Sample",
+    "Title": "About Paris",
+    "Language": {
+      "Name": "English"
+    },
+    "Author": {
+      "Name": "Don",
+      "Location": {
+        "City": "Paris",
+        "Country": "France"
+      }
+    },
+    "Content": "Don's document in Azure Cosmos DB is a valid JSON document as defined by the JSON spec.",
+    "PageViews": 10000,
+    "Topics": [
+      {
+        "Title": "History of Paris"
+      },
+      {
+        "Title": "Places to see in Paris"
       }
     ]
     }]
@@ -508,23 +563,23 @@ Gelişmiş yapılandırma ekranında, hataların yazılmasını istediğiniz gü
 3. Var olan bir dosyayı seçerseniz, dosyanın üzerine yazılır, hiçbir ekleme seçeneği yoktur.
 4. Daha sonra tüm hata iletilerinin mi, kritik hata iletilerinin mi günlüğe kaydedileceğini yoksa hiçbir hata iletisinin günlüğe kaydedilmeyeceğini mi seçin. Son olarak, ekrandaki aktarım iletisinin ilerleme durumunun ne sıklıkla güncelleştirileceğine karar verin.
 
-   :::image type="content" source="./media/import-data/AdvancedConfiguration.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+   :::image type="content" source="./media/import-data/AdvancedConfiguration.png" alt-text="Gelişmiş yapılandırma ekranının görüntüsü":::
 
 ## <a name="confirm-import-settings-and-view-command-line"></a>İçeri aktarma ayarlarını Onayla ve komut satırını görüntüle
 
 1. Kaynak bilgilerini, hedef bilgileri ve gelişmiş yapılandırmayı belirttikten sonra, geçiş özetini gözden geçirin ve isterseniz, elde edilen geçiş komutunu görüntüleyin veya kopyalayın. (Komutu kopyalamak, içeri aktarma işlemlerini otomatikleştirmek için yararlıdır.)
 
-    :::image type="content" source="./media/import-data/summary.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+    :::image type="content" source="./media/import-data/summary.png" alt-text="Özet ekranının ekran görüntüsü.":::
 
-    :::image type="content" source="./media/import-data/summarycommand.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+    :::image type="content" source="./media/import-data/summarycommand.png" alt-text="Komut satırı önizlemesiyle Özet ekranının ekran görüntüsü.":::
 
 2. Kaynak ve hedef seçeneklerden memnun kaldığınızda **İçeri Aktar** ’a tıklayın. İçeri aktarma devam ettikçe, geçen süre, aktarılan sayı ve hata bilgileri (Gelişmiş yapılandırma bölümünde bir dosya adı sağlamadıysanız) güncelleştirilir. Tamamlandıktan sonra, sonuçları dışarı aktarabilirsiniz (örneğin, içeri aktarma hatalarıyla ilgilenmek için).
 
-    :::image type="content" source="./media/import-data/viewresults.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+    :::image type="content" source="./media/import-data/viewresults.png" alt-text="JSON dışarı aktarma seçeneğinin Azure Cosmos DB ekran görüntüsü.":::
 
 3. Ayrıca, tüm değerleri sıfırlayarak veya var olan ayarları tutarak yeni bir içeri aktarma işlemi başlatabilirsiniz. (Örneğin, bağlantı dizesi bilgilerini, kaynak ve hedef seçimi ve daha fazlasını tutmayı seçebilirsiniz.)
 
-    :::image type="content" source="./media/import-data/newimport.png" alt-text="JSON dosya kaynağı seçeneklerinin ekran görüntüsü: Veritabanı geçişi araçları":::
+    :::image type="content" source="./media/import-data/newimport.png" alt-text="Yeni Içeri aktarma onayı iletişim kutusuyla Azure Cosmos DB JSON dışarı aktarma seçeneğinin ekran görüntüsü.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

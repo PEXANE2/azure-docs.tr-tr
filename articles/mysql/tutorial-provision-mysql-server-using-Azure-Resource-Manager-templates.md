@@ -8,18 +8,18 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 66d09503f5db95811f807aa7faa83b92facca992
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a6923f0a1d568cc695b86d1538ba55a3eb3444da
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543704"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341493"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Öğretici: Azure Resource Manager şablonu kullanarak MySQL için Azure veritabanı sunucusu sağlama
 
 [MySQL Için Azure veritabanı REST API](/rest/api/mysql/) DevOps mühendislerinin Azure 'Daki yönetilen MySQL sunucularının ve veritabanlarının sağlama, yapılandırma ve işlemlerini otomatikleştirmesini ve tümleştirmesini sağlar.  API, MySQL için Azure veritabanı hizmeti için MySQL sunucularının ve veritabanlarının oluşturulmasına, numaralandırılmasına, yönetimine ve silinmesine izin verir.
 
-Azure Resource Manager, dağıtım için gereken Azure kaynaklarını bildirmek ve bir kod kavramı olarak altyapıyla hizalamak için temel alınan REST API faydalanır. Şablon, Azure Kaynak adı, SKU, ağ, güvenlik duvarı yapılandırması ve ayarlarını bir kez oluşturup birden çok kez kullanılmasını sağlayacak şekilde parametreleştirir.  Azure Resource Manager şablonlar, [Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) veya [Visual Studio Code](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=CLI)kullanılarak kolayca oluşturulabilir. Bunlar, DevOps CI/CD ardışık düzeninde tümleştirilebilen uygulama paketleme, standartlaştırma ve Dağıtım Otomasyonu 'nu etkinleştirir.  Örneğin, bir Web uygulamasını MySQL için Azure veritabanı arka ucu ile hızlıca dağıtmak istiyorsanız, GitHub galerisinden bu [hızlı başlangıç şablonunu](https://azure.microsoft.com/resources/templates/101-webapp-managed-mysql/) kullanarak uçtan uca dağıtım gerçekleştirebilirsiniz.
+Azure Resource Manager, altyapıda dağıtım için gereken Azure kaynaklarını bildirmek ve kod kavramı olarak altyapı ile hizalamak için temel REST API yararlanır. Şablon, Azure Kaynak adı, SKU, ağ, güvenlik duvarı yapılandırması ve ayarlarını bir kez oluşturup birden çok kez kullanılmasını sağlayacak şekilde parametreleştirir.  Azure Resource Manager şablonlar, [Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) veya [Visual Studio Code](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=CLI)kullanılarak kolayca oluşturulabilir. Bunlar, DevOps CI/CD ardışık düzeninde tümleştirilebilen uygulama paketleme, standartlaştırma ve Dağıtım Otomasyonu 'nu etkinleştirir.  Örneğin, bir Web uygulamasını MySQL için Azure veritabanı arka ucu ile hızlıca dağıtmak istiyorsanız, GitHub galerisinden bu [hızlı başlangıç şablonunu](https://azure.microsoft.com/resources/templates/101-webapp-managed-mysql/) kullanarak uçtan uca dağıtım gerçekleştirebilirsiniz.
 
 Bu öğreticide, aşağıdakileri nasıl yapacağınızı öğrenmek için Azure Resource Manager şablonu ve diğer yardımcı programları kullanacaksınız:
 
@@ -29,6 +29,8 @@ Bu öğreticide, aşağıdakileri nasıl yapacağınızı öğrenmek için Azure
 > * Örnek verileri yükleme
 > * Verileri sorgulama
 > * Verileri güncelleştirme
+
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 
@@ -199,13 +201,47 @@ Siz veri aldıkça satır güncelleştirilir.
 SELECT * FROM inventory;
 ```
 
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Artık gerekli olmadığında kaynak grubundaki kaynakları silen kaynak grubunu silin.
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. [Azure Portal](https://portal.azure.com), **kaynak gruplarını** arayıp seçin.
+
+2. Kaynak grubu listesinde, kaynak grubunuzun adını seçin.
+
+3. Kaynak grubunuzun **genel bakış** sayfasında **kaynak grubunu sil** ' i seçin.
+
+4. Onay iletişim kutusunda, kaynak grubunuzun adını yazın ve ardından **Sil** ' i seçin.
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+Remove-AzResourceGroup -Name $resourceGroupName
+Write-Host "Press [ENTER] to continue..."
+```
+
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+az group delete --name $resourceGroupName &&
+echo "Press [ENTER] to continue ..."
+```
+
+---
+
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > [!div class="checklist"]
 > * Azure Resource Manager şablonunu kullanarak sanal ağ hizmeti uç noktası ile MySQL için Azure veritabanı sunucusu oluşturma
-> * Veritabanı oluşturmak için [mysql komut satırı aracı](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) kullanma
+> * Veritabanı oluşturmak için mysql komut satırı aracı kullanma
 > * Örnek verileri yükleme
 > * Verileri sorgulama
 > * Verileri güncelleştirme
-> 
+
+> [!div class="nextstepaction"]
 > [MySQL için Azure Veritabanına nasıl uygulama bağlanır](./howto-connection-string.md)

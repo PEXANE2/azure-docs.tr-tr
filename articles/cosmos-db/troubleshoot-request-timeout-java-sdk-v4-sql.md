@@ -3,18 +3,21 @@ title: Azure Cosmos DB HTTP 408 sorunlarını giderin veya Java v4 SDK ile zaman
 description: Java v4 SDK 'Sı ile Java SDK 'Sı istek zaman aşımı özel durumlarını tanılamayı ve gidermeyi öğrenin.
 author: kushagrathapar
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 10/28/2020
 ms.author: kuthapar
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 45452109582be40f007ae57a00c2a151f216bdb8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 442d6638e88462b1dc87e9321dc631fe0a4f3a10
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93103169"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340094"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-java-v4-sdk-request-timeout-exceptions"></a>Java v4 SDK isteği zaman aşımı özel durumları Azure Cosmos DB tanılama ve sorun giderme
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 SDK, zaman aşımı sınırı gerçekleşmeden önce isteği tamamlayamadıysa HTTP 408 hatası oluşur.
 
 ## <a name="troubleshooting-steps"></a>Sorun giderme adımları

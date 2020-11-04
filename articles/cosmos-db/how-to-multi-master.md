@@ -3,16 +3,17 @@ title: Azure Cosmos DB içinde çok bölgeli yazmaları yapılandırma
 description: Azure Cosmos DB 'de farklı SDK 'Ları kullanarak uygulamalarınız için çok bölgeli yazma işlemlerini nasıl yapılandıracağınızı öğrenin.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: mjbrown
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 2c91b330f52733a91fbceb1dc9ca2309c0d10547
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a2b1ca8434c40eca610f95a3031e677782866e04
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317119"
+ms.locfileid: "93342020"
 ---
 # <a name="configure-multi-region-writes-in-your-applications-that-use-azure-cosmos-db"></a>Azure Cosmos DB kullanan uygulamalarınızda çok bölgeli yazmaları yapılandırma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

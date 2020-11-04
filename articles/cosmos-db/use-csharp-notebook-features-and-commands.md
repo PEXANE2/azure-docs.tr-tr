@@ -3,16 +3,17 @@ title: Azure Cosmos DB C# not defterlerinde yerleşik Not defteri komutlarını 
 description: Azure Cosmos DB yerleşik C# not defterlerini kullanarak genel işlemleri yapmak için yerleşik komutları ve özellikleri nasıl kullanacağınızı öğrenin.
 author: deborahc
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 5fab63a0a0a34cd0417eb0a891133ac256ef3ac0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 67fe71d8e2d6ab239989cb30e9bf5a1b4d731037
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099173"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340490"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-c-notebooks-preview"></a>Azure Cosmos DB C# not defterlerinde yerleşik Not defteri komutlarını ve özelliklerini kullanma (Önizleme)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -118,12 +119,12 @@ Yerleşik [nteryasası Veri Gezgini](https://blog.nteract.io/designing-the-ntera
 
 :::image type="content" source="media/use-notebook-features-and-commands/csharp-query-cell.png" alt-text="CSharp sorgu hücresi":::
 
-:::image type="content" source="media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png" alt-text="CSharp sorgu hücresi":::
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png" alt-text="nteryasası Veri Gezgini":::
 
 ## <a name="use-built-in-dictionary-viewer"></a>Yerleşik sözlük görüntüleyicisini kullan
 Bir değişkeni görüntülemek için yerleşik sözlük görüntüleyicisini kullanabilirsiniz. Bir hücrede, son satırda görselleştirmek istediğiniz değişkeni koyun ve bu, hücre çalıştırıldığında otomatik olarak görüntülenir.
 
-:::image type="content" source="media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png" alt-text="CSharp sorgu hücresi":::
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png" alt-text="Yerleşik sözlük Görüntüleyicisi":::
 
 ## <a name="upload-json-items-to-a-container"></a>JSON öğelerini bir kapsayıcıya yükleme
 ``%%upload``BIR JSON dosyasındaki verileri belirtilen Azure Cosmos kapsayıcısına yüklemek için Magic komutunu kullanabilirsiniz. Öğeleri karşıya yüklemek için aşağıdaki komutu kullanın:
@@ -161,7 +162,7 @@ Total RUs consumed : 25022.58
 ## <a name="reset-notebooks-workspace"></a>Not defteri çalışma alanını Sıfırla
 Not defteri çalışma alanını varsayılan ayarlara sıfırlamak için komut çubuğundan **çalışma alanını Sıfırla** ' yı seçin. Bu, tüm özel yüklü paketleri kaldıracak ve jupi sunucusunu yeniden başlatacak. Not defterleriniz, dosyalarınız ve Azure Cosmos kaynaklarınızın etkilenmemesi gerekir.  
 
-:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="CSharp sorgu hücresi":::
+:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="Not defteri çalışma alanını Sıfırla":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

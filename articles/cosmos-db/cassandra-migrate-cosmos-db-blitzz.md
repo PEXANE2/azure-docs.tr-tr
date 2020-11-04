@@ -3,16 +3,17 @@ title: Cassandra 'dan Azure Cosmos DB Cassandra API Blitzz kullanarak geçirme
 description: Apache Cassandra veritabanından Blitzz kullanarak Azure Cosmos DB Cassandra API nasıl veri geçireceğinizi öğrenin.
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 25c171cf20d86244958dbeb4565760115d6d7075
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c26d21e74e9808fe65890b7f4eba31ee742552a4
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092424"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339997"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Cassandra 'dan Azure Cosmos DB Cassandra API hesabına Blitzz kullanarak veri geçirme
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -55,7 +56,7 @@ Bu bölümde, Blitzz 'yi ayarlamak ve Apache Cassandra veritabanından Azure Cos
 
    :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/blitzz-replicant-download.png" alt-text="Blitzz Replicant aracı indirmesi":::
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/replicant-files.png" alt-text="Blitzz Replicant aracı indirmesi":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/replicant-files.png" alt-text="Blitzz Replicant dosyaları":::
 
 1. CLı terminalinde, kaynak veritabanı yapılandırmasını ayarlayın. Yapılandırma dosyasını komutunu kullanarak açın **`vi conf/conn/cassandra.yml`** ve Cassandra düğümlerinin, bağlantı noktası numarasının, Kullanıcı adının, parolasının ve diğer gerekli AYRıNTıLARıN IP adreslerinin virgülle ayrılmış bir listesini ekleyin. Yapılandırma dosyasındaki içeriklerin bir örneği aşağıda verilmiştir:
 
@@ -72,9 +73,9 @@ Bu bölümde, Blitzz 'yi ayarlamak ve Apache Cassandra veritabanından Azure Cos
 
    ```
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/open-connection-editor-cassandra.png" alt-text="Blitzz Replicant aracı indirmesi":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/open-connection-editor-cassandra.png" alt-text="Cassandra bağlantı düzenleyicisini aç":::
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-connection-configuration.png" alt-text="Blitzz Replicant aracı indirmesi":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-connection-configuration.png" alt-text="Cassandra bağlantı yapılandırması":::
 
    Yapılandırma ayrıntılarını doldurduktan sonra dosyayı kaydedin ve kapatın.
 
@@ -93,7 +94,7 @@ Bu bölümde, Blitzz 'yi ayarlamak ve Apache Cassandra veritabanından Azure Cos
 
 1. Verileri geçirmeden önce, uygulamanızın hızla geçirilmesi için gereken miktarda kapsayıcı aktarım hızını artırın. Örneğin, aktarım hızını 100000 ru olarak artırabilirsiniz. Geçiş işlemine başlamadan önce üretilen iş verimini ölçeklendirirken verilerinizi daha az zaman geçirmeye yardımcı olur.
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/scale-throughput.png" alt-text="Blitzz Replicant aracı indirmesi":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/scale-throughput.png" alt-text="Genelinde Azure Cosmos kapsayıcısını ölçeklendirin":::
 
    Geçiş işlemi tamamlandıktan sonra üretilen işi azaltın. Her işlem için gerekli olan ve RUs veri miktarına bağlı olarak, veri geçişten sonra gereken aktarım hızını tahmin edebilirsiniz. Gerekli olan RUs 'yi tahmin etme hakkında daha fazla bilgi edinmek için bkz. [kapsayıcılar ve veritabanları üzerinde üretilen Iş sağlama](set-throughput.md) ve [Azure Cosmos DB kapasite PLANLAYıCıSı makalelerini kullanarak ru/s 'yi tahmin](estimate-ru-with-capacity-planner.md) etme.
 
@@ -129,7 +130,7 @@ Bu bölümde, Blitzz 'yi ayarlamak ve Apache Cassandra veritabanından Azure Cos
 
    Replicant Kullanıcı arabirimi, çoğaltma ilerlemesini gösterir. Şema geçişi ve anlık görüntü işlemi tamamlandıktan sonra, ilerleme %100 gösterir. Geçiş işlemi tamamlandıktan sonra hedef Azure Cosmos veritabanındaki verileri doğrulayabilirsiniz.
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-data-migration-output.png" alt-text="Blitzz Replicant aracı indirmesi":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-data-migration-output.png" alt-text="Cassandra veri geçiş çıkışı":::
 
 
 1. Geçiş için tam modu kullandığınız için, kaynak Apache Cassandra veritabanında veri ekleme, güncelleştirme veya silme gibi işlemler gerçekleştirebilirsiniz. Daha sonra, hedef Azure Cosmos veritabanında gerçek zamanlı olarak çoğaltıldıklarından emin olarak doğrulayın. Geçişten sonra, Azure Cosmos Kapsayıcınız için yapılandırılmış aktarım hızını azalttığınızdan emin olun.

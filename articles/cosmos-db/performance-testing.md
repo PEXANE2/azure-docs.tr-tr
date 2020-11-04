@@ -3,16 +3,17 @@ title: Azure Cosmos DB ile performans ve ölçek testi
 description: Azure Cosmos DB ile ölçek ve performans testi yapmayı öğrenin. Daha sonra, yüksek performanslı uygulama senaryoları için Azure Cosmos DB işlevlerini değerlendirebilirsiniz.
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: b89c48b5040c198cb1b4a6ce383baed51dfac19e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f27e4f9f8e9f027233db89838614b523c5d0fe1f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097422"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341782"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Azure Cosmos DB ile performans ve ölçek testi
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

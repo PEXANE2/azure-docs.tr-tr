@@ -4,16 +4,18 @@ description: Başarılı veya başarısız olan bir grup nokta işlemini gerçek
 author: stefArroyo
 ms.author: esarroyo
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: c27eb2b4e0dc0d269e1cffc9e213cebeb93443e2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 1f541b947c04619892291e47002ea9b0dbb6d38d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93328738"
+ms.locfileid: "93340575"
 ---
 # <a name="transactional-batch-operations-in-azure-cosmos-db-using-the-net-sdk"></a>.NET SDK kullanarak Azure Cosmos DB işlem toplu işlem işlemleri
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 İşlem toplu işi, bir kapsayıcıda aynı bölüm anahtarıyla başarılı veya başarısız olması gereken bir dizi nokta işlemi tanımlar. .NET SDK 'sında, `TranscationalBatch` sınıfı bu işlem toplu işlemini tanımlamak için kullanılır. Tüm işlemler, işlem toplu işlem içinde açıklandıkları sırada başarılı olursa, işlem kaydedilir. Ancak, herhangi bir işlem başarısız olursa, tüm işlem geri alınır.
 

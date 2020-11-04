@@ -3,17 +3,18 @@ title: Gerçek zamanlı veri analizlerini görselleştirmek için Azure Cosmos D
 description: Bu makalede, Kullanıcı düzenlerini anlamak, gerçek zamanlı veri analizi ve görselleştirme gerçekleştirmek için bir perakende şirketi tarafından değişiklik akışını nasıl kullanabileceğiniz açıklanır
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: 1206d67b6a9d3823220b1ce1b7bd5b4b45e672fe
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d0eef49ea82afe50c5e178de9ad5e82bcb0db0eb
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93072714"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342173"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Gerçek zamanlı veri analizlerini görselleştirmek için Azure Cosmos DB değişiklik akışını kullanın
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -55,7 +56,7 @@ Aşağıdaki diyagram, çözüme dahil olan veri akışını ve bileşenlerini t
 
 7. **Power BI:** Power BI, Azure Stream Analytics tarafından gönderilen verileri görselleştirmek için kullanılır. Ölçümlerin gerçek zamanlı olarak nasıl değişmediklerini görmek için bir pano oluşturabilirsiniz.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Microsoft .NET Framework 4.7.1 veya üzeri
 
@@ -171,7 +172,7 @@ Değişiklik akışı 'nın bir e-ticaret sitesinde yeni eylemleri nasıl işley
 
 3. **Koleksiyonu** ve **veritabanı** adlarını ekleyin. (Bu **Adların, farklı** bir şekilde ad olarak isimsiz olarak isimsiz olarak isimsiz olarak **isimsiz olarak** isimsiz olarak isimsiz bir şekilde
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="Proje görseli":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="Bağlantı dizelerini Güncelleştir":::
  
 4. Değişiklikleri düzenlenen tüm dosyalar üzerinde kaydedin.  
 
@@ -181,7 +182,7 @@ Değişiklik akışı 'nın bir e-ticaret sitesinde yeni eylemleri nasıl işley
 
 7. [Azure Portal](https://portal.azure.com/) ' a ve ardından kaynak grubunuzdaki Cosmos DB hesaba giderek **Veri Gezgini** istiyorsanız, değişiklik yaptığınız rastgele verileri **changefeedlabcollection** içinde görürsünüz.
  
-   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="Proje görseli":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="Portalda oluşturulan veriler":::
 
 ## <a name="set-up-a-stream-analytics-job"></a>Stream Analytics işini ayarlama
 
@@ -191,7 +192,7 @@ Azure Stream Analytics, akış verilerinin gerçek zamanlı işlemesi için tam 
 
 2. Aşağıda gösterildiği gibi **girdileri** seçin.  
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="Proje görseli":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="Giriş oluştur":::
 
 3. **+ Akış girişi Ekle** ' yi seçin. Ardından açılan menüden **Olay Hub 'ını** seçin.  
 
@@ -223,7 +224,20 @@ Azure Stream Analytics, akış verilerinin gerçek zamanlı işlemesi için tam 
 
 8. Ardından **streamjob1** adresine dönün ve **Sorguyu Düzenle** ' yi seçin.
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="Proje görseli" olarak değiştirilir.
+   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="Sorguyu Düzenle":::
+ 
+9. Sorgu penceresine aşağıdaki sorguyu yapıştırın. **Ortalama fiyat** sorgusu, kullanıcılar tarafından görüntülenen tüm öğelerin ortalama fiyatını, kullanıcıların HTS öğelerine eklenen tüm öğelerin ortalama fiyatını ve kullanıcılar tarafından satın alınan tüm öğelerin ortalama fiyatını hesaplar. Bu ölçüm, e-ticaret şirketlerinin, ne kadar madde satacağına ve hangi envanterde yatırmaya karar vermesine yardımcı olabilir. Örneğin, görüntülenen öğelerin ortalama fiyatı satın alınan öğelerin ortalama fiyatından çok daha yüksekse, bir şirket envanterine daha ucuz öğeler eklemeyi tercih edebilir.
+
+   ```sql
+   /*AVERAGE PRICE*/      
+   SELECT System.TimeStamp AS Time, Action, AVG(Price)  
+    INTO averagePriceOutput  
+    FROM input  
+    GROUP BY Action, TumblingWindow(second,5) 
+   ```
+10. Sonra sol üst köşedeki **Kaydet** ' i seçin.  
+
+11. Şimdi **streamjob1** sayfasına dönüp sayfanın üst kısmındaki **Başlat** düğmesini seçin. Azure Stream Analytics başlatılması birkaç dakika sürebilir, ancak sonunda "başlangıç" iken "çalışıyor" olarak değiştirilir.
 
 ## <a name="connect-to-power-bi"></a>Power BI'a bağlanma
 
@@ -303,7 +317,7 @@ Power BI, veri çözümlemek ve öngörü paylaşmak için kullanılan iş anali
 
    Örnek Pano şu grafiklerle nasıl görünür:
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="Proje görseli":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="Ekran görüntüsünde, eylem, benzersiz ziyaretçi, gelir ve satın alınan En Iyi 5 öğeden oluşan ortalama öğe fiyatı adlı grafiklerle birlikte örnek bir pano gösterilir.":::
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>İsteğe bağlı: bir E-ticaret sitesiyle görselleştirin
 
@@ -317,13 +331,13 @@ Artık gerçek bir e-ticaret sitesiyle bağlantı kurmak için yeni veri analizi
 
 2. TopItems **topItems** koleksiyonunu seçin ve **ölçek ve ayarlar** ' ın **altında,** TopItems her **30 saniyede bir** güncelleştirilir.
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="Proje görseli":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="Yaşam süresi":::
 
 3. **TopItems** koleksiyonunu en sık satın alınan öğelerle doldurmak için, **streamjob1** adresine gidin ve yeni bir **Çıkış** ekleyin. **Cosmos DB** seçin.
 
 4. Gerekli alanları aşağıda gösterildiği gibi girin.
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="Proje görseli":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="Cosmos çıkışı":::
  
 5. Laboratuvarın önceki bölümünde isteğe bağlı Ilk 5 sorgu eklediyseniz, 5A bölümüne ilerleyin. Aksi takdirde, bölüm 5b ' e geçin.
 

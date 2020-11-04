@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5059b051b16107ac7508e509d319159651de11e3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e7713239391b49663328a7a058f8f6fd5b444335
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324408"
+ms.locfileid: "93341340"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullanarak OPENROWSET kullanma
 
@@ -96,6 +96,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 [ , DATA_COMPRESSION = 'data_compression_method' ]
 [ , PARSER_VERSION = 'parser_version' ]
 [ , HEADER_ROW = { TRUE | FALSE } ]
+[ , DATAFILETYPE = { 'char' | 'widechar' } ]
 ```
 
 ## <a name="arguments"></a>Bağımsız değişkenler
@@ -112,7 +113,7 @@ Verilerin yolunu oluşturan unstructured_data_path mutlak veya göreli bir yol o
 - ' \<prefix> ://' Biçimindeki mutlak yol, \<storage_account_path> / \<storage_path> bir kullanıcının dosyaları doğrudan okumasını sağlar.
 - ' <storage_path> ' biçimindeki göreli yol, parametresiyle kullanılması gerekir `DATA_SOURCE` ve <storage_account_path> konum içindeki dosya modelini tanımlar `EXTERNAL DATA SOURCE` . 
 
- Aşağıda, <storage account path> belirli dış veri kaynağınıza bağlanacak ilgili değerleri bulacaksınız. 
+Aşağıda, <storage account path> belirli dış veri kaynağınıza bağlanacak ilgili değerleri bulacaksınız. 
 
 | Dış veri kaynağı       | Ön ek | Depolama hesabı yolu                                 |
 | -------------------------- | ------ | ---------------------------------------------------- |
@@ -125,16 +126,18 @@ Verilerin yolunu oluşturan unstructured_data_path mutlak veya göreli bir yol o
 
 '\<storage_path>'
 
- Depolama alanınızı, okumak istediğiniz klasörü veya dosyayı işaret eden bir yolu belirtir. Yol bir kapsayıcıya veya klasöre işaret ediyorsa, tüm dosyalar söz konusu kapsayıcı veya klasörden okunacaktır. Alt klasörlerdeki dosyalar dahil değildir. 
+Depolama alanınızı, okumak istediğiniz klasörü veya dosyayı işaret eden bir yolu belirtir. Yol bir kapsayıcıya veya klasöre işaret ediyorsa, tüm dosyalar söz konusu kapsayıcı veya klasörden okunacaktır. Alt klasörlerdeki dosyalar dahil değildir. 
 
- Birden çok dosya veya klasörü hedeflemek için joker karakterler kullanabilirsiniz. Ardışık olmayan birden çok joker karakter kullanımına izin verilir.
+Birden çok dosya veya klasörü hedeflemek için joker karakterler kullanabilirsiniz. Ardışık olmayan birden çok joker karakter kullanımına izin verilir.
 Aşağıda, */CSV/popülasyonu* ile başlayan tüm klasörlerden *popülasyon* ile başlayan tüm *CSV* dosyalarını okuyan bir örnek verilmiştir:  
 `https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
 Unstructured_data_path bir klasör olacak şekilde belirtirseniz, sunucusuz bir SQL havuzu sorgusu bu klasörden dosyaları alacaktır. 
 
+Yolun sonunda/* belirterek, daha az SQL havuzunun klasörlere geçiş yapmasını sağlayabilirsiniz: `https://sqlondemandstorage.blob.core.windows.net/csv/population/**`
+
 > [!NOTE]
-> Hadoop ve PolyBase 'den farklı olarak sunucusuz SQL havuzu alt klasörler döndürmez. Ayrıca, Hadoop ve PolyBase 'den farklı olarak sunucusuz SQL havuzu, dosya adının altı çizili (_) veya nokta (.) ile başladığı dosyaları döndürür.
+> Hadoop ve PolyBase 'in aksine, yolun sonunda/* * belirtmediğiniz müddetçe sunucusuz SQL havuzu alt klasör döndürmez. Ayrıca, Hadoop ve PolyBase 'den farklı olarak sunucusuz SQL havuzu, dosya adının altı çizili (_) veya nokta (.) ile başladığı dosyaları döndürür.
 
 Aşağıdaki örnekte, unstructured_data_path = ise `https://mystorageaccount.dfs.core.windows.net/webdata/` , sunucusuz BIR SQL havuzu sorgusu mydata.txt ve _hidden.txt satırları döndürür. Bir alt klasörde bulunduğundan mydata2.txt ve mydata3.txt döndürmez.
 
@@ -222,6 +225,10 @@ HEADER_ROW = {TRUE | YANLÝÞ
 
 CSV dosyasının üst bilgi satırını içerip içermediğini belirtir. Varsayılan değer FALSE 'dur. PARSER_VERSION = ' 2.0 ' içinde desteklenir. TRUE ise, ilk satırdan FIRSTROW bağımsız değişkenine göre sütun adları okunacaktır.
 
+DATAFILETYPE = {' Char ' | ' widechar '}
+
+Kodlamayı belirtir: bir karakter UTF8 için kullanılır, UTF16 dosyaları için geniş karakter kullanılır.
+
 ## <a name="fast-delimited-text-parsing"></a>Hızlı sınırlandırılmış metin ayrıştırma
 
 Kullanabileceğiniz iki sınırlı metin ayrıştırıcısı sürümü vardır. CSV Ayrıştırıcısı sürüm 1,0, çözümleyici sürüm 2,0 performans için yapılandırıldığında varsayılan ve özellik bakımından zengin bir özelliktir. Ayrıştırıcı 2,0 ' de performans iyileştirmesi gelişmiş Ayrıştırma tekniklerinden ve çoklu iş parçacığından gelir. Dosya boyutu büyüdükçe hızdaki fark daha büyük olacaktır.
@@ -235,7 +242,7 @@ Parquet dosyalarında okunacak sütun meta verileri, tür eşlemeleri de [Parque
 CSV dosyaları için sütun adları, üst bilgi satırından okunabilir. Üst bilgi satırının HEADER_ROW bağımsız değişkenini kullanarak mevcut olup olmadığını belirtebilirsiniz. HEADER_ROW = FALSE ise, genel sütun adları kullanılacaktır: C1, C2,... CN burada n, dosyadaki sütun sayısıdır. Veri türleri ilk 100 veri satırlarından çıkarsedilir. Örnekler için [şema BELIRTMEDEN CSV dosyaları okumayı](#read-csv-files-without-specifying-schema) denetleyin.
 
 > [!IMPORTANT]
-> Bunun yerine uygun veri türü çıkarsanamıyor ve daha büyük veri türü kullanılacağı durumlar vardır. Bu performans yükünü taşır ve varchar (8000) olarak gösterilen karakter sütunları için özellikle önemlidir. Dosyalarınızda karakter sütunları varsa ve Şema çıkarımı kullanıyorsanız, en iyi performans için lütfen [gösterilen veri türlerini denetleyin](best-practices-sql-on-demand.md#check-inferred-data-types) ve [uygun veri türlerini kullanın](best-practices-sql-on-demand.md#use-appropriate-data-types).
+> Bunun yerine uygun veri türü çıkarsanamıyor ve daha büyük veri türü kullanılacağı durumlar vardır. Bu performans yükünü taşır ve varchar (8000) olarak gösterilen karakter sütunları için özellikle önemlidir. En iyi performansı elde etmek için lütfen [gösterilen veri türlerini kontrol](best-practices-sql-on-demand.md#check-inferred-data-types) edin ve [uygun veri türlerini kullanın](best-practices-sql-on-demand.md#use-appropriate-data-types).
 
 ### <a name="type-mapping-for-parquet"></a>Parquet için tür eşleme
 

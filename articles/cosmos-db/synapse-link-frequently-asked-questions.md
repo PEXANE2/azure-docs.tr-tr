@@ -6,15 +6,15 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: 30f139c92fe426369c609dabd826a7bff1617e72
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0791ed6882feedeab47b75eff6a69bf0a49ab7ee
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098051"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341303"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Synapse Link hakkında sık sorulan sorular
-[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 Azure Cosmos DB için Azure SYNAPSE bağlantısı Azure Cosmos DB ile Azure SYNAPSE Analytics arasında sıkı bir tümleştirme oluşturur. Müşterilerin, işletimsel iş yüklerinden ve ETL işlem hattı olmadan tam performans yalıtımıyla neredeyse gerçek zamanlı analizler çalıştırmasına olanak sağlar. Bu makalede Azure Cosmos DB için Synapse Link hakkında sık sorulan soruların yanıtları yer almaktadır.
 
@@ -157,7 +157,7 @@ Analitik depo ile etkinleştirilen bir Azure Cosmos DB kapsayıcısı aşağıda
 
 Bir işlem deposu kapsayıcısı aşağıdaki simgeyle temsil edilir:
 
-:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="Analitik depolama ile etkin Azure Cosmos DB kapsayıcısı-simge":::
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="İşlem deposu ile etkin Azure Cosmos DB kapsayıcısı-simge":::
  
 ### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-azure-synapse-studio"></a>Azure SYNAPSE Studio 'dan Azure Cosmos DB kimlik bilgilerini nasıl geçitirsiniz?
 

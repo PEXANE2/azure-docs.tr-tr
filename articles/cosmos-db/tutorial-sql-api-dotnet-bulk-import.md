@@ -4,16 +4,17 @@ description: Verileri içeri aktarmak için gereken üretilen iş üretimini (RU
 author: ealsur
 ms.author: maquaran
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: tutorial
 ms.date: 09/21/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e80a67890dcf76d115464ea62c0729aedd444667
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6e50fe1f5b1658458a2d561f8157f04d1cbceb41
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099241"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341257"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>.NET SDK kullanarak verileri Azure Cosmos DB SQL API hesabına toplu olarak içeri aktarma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -29,7 +30,7 @@ Bu öğreticinin içindekiler:
 > * Toplu destek etkin olan bir Azure Cosmos hesabına bağlanma
 > * Eşzamanlı oluşturma işlemleri aracılığıyla veri içeri aktarma gerçekleştirme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki yönergeleri izleyerek önce aşağıdaki kaynaklara sahip olduğunuzdan emin olun:
 

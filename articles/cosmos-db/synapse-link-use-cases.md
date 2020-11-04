@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 3132f19bd80d6958d4d073f63eb6a01c103c2776
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7621a19b510d302454465f9fcbacec27a14dddf9
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101358"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340184"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Cosmos DB için Azure Synapse Link: Gerçek zamanlıya yakın analiz için kullanım örnekleri
-[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 Azure Cosmos DB için [Azure SYNAPSE bağlantısı](synapse-link.md) , işletimsel veriler üzerinde neredeyse gerçek zamanlı analizler çalıştırmanızı sağlayan bir bulut Yerel karma işlem ve analitik Işleme (htap) özelliğidir. SYNAPSE link, Azure Cosmos DB ile Azure SYNAPSE Analytics arasında sıkı sorunsuz bir tümleştirme oluşturur.
 
@@ -71,7 +71,7 @@ Aşağıda toplu iş & akışı verileri Azure Cosmos DB içine veri tümleştir
 
 Günümüzde satıcılar, hem müşterilerin hem de işletmenin taleplerini karşılayan güvenli ve ölçeklenebilir e-ticaret çözümleri dermelidir. Bu e-ticaret çözümlerinin, müşterileri özelleştirilmiş ürünler ve tekliflerle, işlemleri hızlı ve güvenli bir şekilde işlemesi, işleme ve müşteri hizmetleri 'ne odaklanmanız gerekir. Azure Cosmos DB için en son SYNAPSE bağlantısı ile birlikte Azure Cosmos DB, perakendecilerin müşteriler için gerçek zamanlı olarak kişiselleştirilmiş öneriler oluşturmasına izin verir. Bunlar, aşağıdaki mimaride gösterildiği gibi anında Öngörüler için düşük gecikme süresi ve tunlı tutarlılık ayarlarını kullanırlar:
 
-:::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="Tedarik zinciri analizinden Azure Cosmos DB için Azure SYNAPSE bağlantısı " border="false":::
+:::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="Gerçek zamanlı kişiselleştirme Azure Cosmos DB için Azure SYNAPSE bağlantısı" border="false":::
 
 Azure Cosmos DB kullanım durumu için SYNAPSE bağlantısı:
 
@@ -83,7 +83,7 @@ Endüstriyel ıOT yenilikleri, makinelerin alt zamanlarını büyük ölçüde a
 
 IoT tahmine dayalı bakımda Azure Cosmos DB için Azure SYNAPSE bağlantısının bulut Yerel HTAP özelliklerini kullanan bir mimari aşağıda verilmiştir:
 
-:::image type="content" source="./media/synapse-link-use-cases/iot-predictive-maintenance.png" alt-text="Tedarik zinciri analizinden Azure Cosmos DB için Azure SYNAPSE bağlantısı " border="false" :::
+:::image type="content" source="./media/synapse-link-use-cases/iot-predictive-maintenance.png" alt-text="IOT tahmine dayalı bakımda Azure Cosmos DB için Azure SYNAPSE bağlantısı" border="false" :::
 
 Azure Cosmos DB kullanım örnekleri için SYNAPSE bağlantısı:
 
@@ -105,7 +105,7 @@ Aşağıdaki listede, Azure Cosmos DB kullanılarak işletimsel verilerle destek
 
 Azure SYNAPSE Azure Cosmos DB bağlantısı, yalnızca işlemsel iş yüklerini güçlendirin ve ayrıca geçmiş işletimsel veriler üzerinde neredeyse gerçek zamanlı analitik iş yükleri gerçekleştirebilir. İşlem iş yüklerinden hiçbir ETL gereksinimi ve garantili performans yalıtımı olmadan gerçekleşir.
 
-Aşağıdaki görüntüde Azure Cosmos DB kullanarak iş yükü desenleri gösterilmektedir: :::image type="content" source="./media/synapse-link-use-cases/synapse-link-workload-patterns.png" alt-text="Tedarik zinciri analizinden Azure Cosmos DB için Azure SYNAPSE bağlantısı " border="false":::
+Aşağıdaki görüntüde Azure Cosmos DB kullanarak iş yükü desenleri gösterilmektedir: :::image type="content" source="./media/synapse-link-use-cases/synapse-link-workload-patterns.png" alt-text="Azure Cosmos DB iş yükü desenleri Için Azure SYNAPSE link" border="false":::
 
 Tek bir gerçek zamanlı veritabanı, bir envanter yönetimi platformunun hem işlem hem de analitik gereksinimlerini güçlendiren şekilde Azure Cosmos DB seçme avantajlarının yanı sıra, bir e-ticaret şirketi şirket xyz örneğini 20 ülkede/bölgede küresel işlemlerle birlikte ele alalım.
 

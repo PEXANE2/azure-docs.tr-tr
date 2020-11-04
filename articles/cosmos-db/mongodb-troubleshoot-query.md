@@ -4,15 +4,16 @@ description: MongoDB sorgu sorunları için Azure Cosmos DB API 'sini belirlemey
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
+ms.subservice: cosmosdb-mongo
 ms.date: 10/12/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: ece814ea316fe62bc2b8b64036b08983f65ccbef
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 88ef081c75a64b5cb7517ba6994834b3a64a0e6f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096368"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340898"
 ---
 # <a name="troubleshoot-query-issues-when-using-the-azure-cosmos-db-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API kullanırken sorgu sorunlarını giderme
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -263,7 +264,7 @@ Herhangi bir zamanda yazma veya okuma kullanılabilirliği üzerinde hiçbir etk
 
 Çoğu durumda, MongoDB için Azure Cosmos DB API 'sindeki toplama işlemleri kısmi olarak dizinleri kullanacaktır. Genellikle, sorgu altyapısı önce eşitlik ve Aralık filtrelerini uygular ve dizinleri kullanır. Bu filtreleri uyguladıktan sonra sorgu altyapısı, ek filtreleri değerlendirebilir ve gerekirse toplamı hesaplamak için kalan belgeleri yüklemeyi çare olarak gerçekleştirebilir. 
 
-Aşağıda bir örnek verilmiştir:
+İşte bir örnek:
 
 ```
 db.coll.aggregate( [

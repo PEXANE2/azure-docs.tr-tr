@@ -2,16 +2,17 @@
 title: Azure Cosmos DB yapay bir bölüm anahtarı oluşturma
 description: Verileri ve iş yükünü bölüm anahtarları arasında eşit bir şekilde dağıtmak için Azure Cosmos kapsayıcılarınızdaki yapay bölüm anahtarlarını nasıl kullanacağınızı öğrenin
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
-ms.openlocfilehash: d6868859247fc430ee96581ae85fb7077af04999
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6b8bc44f1ba5624c37620205aaa574e618ef395f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098034"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340662"
 ---
 # <a name="create-a-synthetic-partition-key"></a>Yapay bölüm anahtarı oluşturma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

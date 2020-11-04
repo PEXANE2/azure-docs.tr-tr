@@ -1,20 +1,20 @@
 ---
-title: Azure kanıtlama ilkesini yazma ve imzalama
-description: Bir kanıtlama ilkesini yazmak ve imzalamak için bir açıklama.
+title: Azure kanıtlama ilkesi yazma
+description: Kanıtlama ilkesi yazma hakkında bir açıklama.
 services: attestation
 author: msmbaldwin
 ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c8ffdcd0615913649e80b20f6873d005f4ad4410
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 3e36de62b79788e2efdc3e9abf711924c4fba0c4
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675990"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341816"
 ---
-# <a name="how-to-author-and-sign-an-attestation-policy"></a>Kanıtlama ilkesi yazma ve imzalama
+# <a name="how-to-author-an-attestation-policy"></a>Kanıtlama ilkesi yazma
 
 Kanıtlama ilkesi, Microsoft Azure kanıtlama için karşıya yüklenen bir dosyadır. Azure kanıtlama, bir ilkeyi kanıtlamayı özgü bir ilke biçiminde karşıya yükleme esnekliği sunar. Alternatif olarak, JSON Web Imzasında, ilkenin kodlanmış bir sürümü de karşıya yüklenebilir. İlke Yöneticisi, kanıtlama ilkesini yazmadan sorumludur. Çoğu kanıtlama senaryosunda, bağlı olan taraf ilke Yöneticisi olarak görev yapar. Kanıtlama çağrısını yapan istemci, hizmetin gelen taleplere (özellikler, değer kümesi) ayrıştırdığı ve dönüştürdüğü kanıtlama kanıtını gönderir. Daha sonra hizmet, ilkede tanımlandığına göre talepleri işler ve hesaplanan sonucu döndürür.
 
@@ -134,41 +134,6 @@ Bir ilke dosyası oluşturduktan sonra, bir ilkeyi JWS biçiminde karşıya yük
 3. JWS 'yi karşıya yükleyin ve ilkeyi doğrulayın.
      - İlke dosyası sözdizimi hatalarından muaf değilse, ilke dosyası hizmet tarafından kabul edilir.
      - İlke dosyası sözdizimi hataları içeriyorsa, ilke dosyası hizmet tarafından reddedilir.
-
-## <a name="signing-the-policy"></a>İlke imzalanıyor
-
-Aşağıda, ilke imzalama işleminin nasıl gerçekleştirileceği hakkında örnek bir Python betiği verilmiştir
-
-```python
-from OpenSSL import crypto
-import jwt
-import getpass
-       
-def cert_to_b64(cert):
-              cert_pem = crypto.dump_certificate(crypto.FILETYPE_PEM, cert)
-              cert_pem_str = cert_pem.decode('utf-8')
-              return ''.join(cert_pem_str.split('\n')[1:-2])
-       
-print("Provide the path to the PKCS12 file:")
-pkcs12_path = str(input())
-pkcs12_password = getpass.getpass("\nProvide the password for the PKCS12 file:\n")
-pkcs12_bin = open(pkcs12_path, "rb").read()
-pkcs12 = crypto.load_pkcs12(pkcs12_bin, pkcs12_password.encode('utf8'))
-ca_chain = pkcs12.get_ca_certificates()
-ca_chain_b64 = []
-for chain_cert in ca_chain:
-   ca_chain_b64.append(cert_to_b64(chain_cert))
-   signing_cert_pkey = crypto.dump_privatekey(crypto.FILETYPE_PEM, pkcs12.get_privatekey())
-signing_cert_b64 = cert_to_b64(pkcs12.get_certificate())
-ca_chain_b64.insert(0, signing_cert_b64)
-
-print("Provide the path to the policy text file:")
-policy_path = str(input())
-policy_text = open(policy_path, "r").read()
-encoded = jwt.encode({'text': policy_text }, signing_cert_pkey, algorithm='RS256', headers={'x5c' : ca_chain_b64})
-print("\nAttestation Policy JWS:")
-print(encoded.decode('utf-8'))
-```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [PowerShell kullanarak Azure kanıtlama ayarlama](quickstart-powershell.md)

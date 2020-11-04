@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 71ed590440a8c7e37a071b4eadfc09977ef91d5e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 424a1ef7a73b5abbdba0d89ededb44cb9efdd116
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310832"
+ms.locfileid: "93340997"
 ---
 # <a name="query-folders-and-multiple-files"></a>Klasörleri ve birden çok dosyayı sorgulama  
 
@@ -22,14 +22,14 @@ Bu makalede, Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullan
 
 Sunucusuz SQL havuzu, Windows işletim sisteminde kullanılan Joker karakterlere benzer bir joker karakter kullanarak birden çok dosya/klasör okumayı destekler. Ancak, birden çok Joker karakterlere izin verildiğinden daha fazla esneklik mevcuttur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 İlk adımınız sorguları yürütebileceğiniz **bir veritabanı oluşturmaktır** . Sonra bu veritabanında [kurulum betiğini](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) yürüterek nesneleri başlatın. Bu kurulum betiği, veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve bu örneklerde kullanılan harici dosya biçimlerini oluşturacaktır.
 
 Örnek sorguları izlemek için *CSV/Taxi* klasörünü kullanacaksınız. Bu, NYC Taxi-sarı TAXI 'yi içerir 2016 Temmuz 'dan 2018 Haziran 'a kadar verileri kaydeder. *CSV/TAXI* içindeki dosyalar şu model kullanılarak yıl ve ay sonra adlandırılır: yellow_tripdata_ <year> - <month> . csv
 
 ## <a name="read-all-files-in-folder"></a>Klasördeki tüm dosyaları oku
-    
+
 Aşağıdaki örnek, *CSV/TAXI* klasöründeki tüm NYC sarı TAXI veri dosyalarını okur ve yıl boyunca toplam pasger ve bayıldığı sayısını döndürür. Ayrıca toplam işlevlerin kullanımını gösterir.
 
 ```sql
@@ -180,6 +180,49 @@ ORDER BY
 > Tek OPENROWSET ile erişilen tüm dosyalar aynı yapıya sahip olmalıdır (yani, sütun sayısı ve veri türleri).
 
 Ölçütlerle eşleşen yalnızca bir klasörünüz olduğundan, sorgu sonucu [klasördeki tüm dosyaları okuma](#read-all-files-in-folder)ile aynıdır.
+
+## <a name="traverse-folders-recursively"></a>Klasörleri yinelemeli olarak gez
+
+Yolun sonunda/* * belirtirseniz, sunucusuz SQL havuzu klasörlere özyinelemeli olarak çapraz geçiş yapabilir. Aşağıdaki sorgu, *CSV* klasöründe yer alan tüm klasör ve alt klasörlerdeki tüm dosyaları okuyacaktır.
+
+```sql
+SELECT
+    YEAR(pickup_datetime) as [year],
+    SUM(passenger_count) AS passengers_total,
+    COUNT(*) AS [rides_total]
+FROM OPENROWSET(
+        BULK 'csv/taxi/**', 
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
+        FIRSTROW = 2
+    )
+    WITH (
+        vendor_id VARCHAR(100) COLLATE Latin1_General_BIN2, 
+        pickup_datetime DATETIME2, 
+        dropoff_datetime DATETIME2,
+        passenger_count INT,
+        trip_distance FLOAT,
+        rate_code INT,
+        store_and_fwd_flag VARCHAR(100) COLLATE Latin1_General_BIN2,
+        pickup_location_id INT,
+        dropoff_location_id INT,
+        payment_type INT,
+        fare_amount FLOAT,
+        extra FLOAT,
+        mta_tax FLOAT,
+        tip_amount FLOAT,
+        tolls_amount FLOAT,
+        improvement_surcharge FLOAT,
+        total_amount FLOAT
+    ) AS nyc
+GROUP BY
+    YEAR(pickup_datetime)
+ORDER BY
+    YEAR(pickup_datetime);
+```
+
+> [!NOTE]
+> Tek OPENROWSET ile erişilen tüm dosyalar aynı yapıya sahip olmalıdır (yani, sütun sayısı ve veri türleri).
 
 ## <a name="multiple-wildcards"></a>Birden çok joker karakter
 

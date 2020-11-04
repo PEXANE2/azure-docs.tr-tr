@@ -3,12 +3,12 @@ title: Azure Site Recovery yenilikleri
 description: Azure Site Recovery hizmetindeki yeni özelliklerin ve en son güncelleştirmelerin özetini sağlar.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 0c35c8e041e47f02d53c680b5812b10d25d75a67
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 2e85ee19012f6ae13c18e26b3aa0b5ae28bcaade
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425710"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341357"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery'deki yenilikler
 
@@ -31,6 +31,7 @@ Site Recovery bileşenleri için n-4 sürümlerini destekliyoruz, burada N en so
 
 Güncelleştirme yükleme ve destek hakkında [daha fazla bilgi edinin](service-updates-how-to.md) .
 
+## <a name="updates-october-2020"></a>Güncelleştirmeler (Ekim 2020)
 
 ### <a name="update-rollup-51"></a>Güncelleştirme paketi 51
 
@@ -41,7 +42,9 @@ Güncelleştirme yükleme ve destek hakkında [daha fazla bilgi edinin](service-
 **Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları toplu olarak, toplamada ayrıntılı olarak güncelleştirir.
 **Sorun düzeltmeleri/geliştirmeler** | Mobility hizmeti için yeni Linux desteği de dahil olmak üzere, toplu olarak ayrıntılı bir dizi düzeltmeler ve geliştirmeler.
 
-## <a name="update-september-2020"></a>Güncelleştirme (Eylül 2020)
+## <a name="updates-september-2020"></a>Güncelleştirmeler (Eylül 2020)
+
+### <a name="update-rollup-50"></a>Güncelleştirme paketi 50
 
 [Güncelleştirme paketi 50](https://support.microsoft.com/help/4582666/update-rollup-50-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar:
 

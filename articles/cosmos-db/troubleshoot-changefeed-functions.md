@@ -3,16 +3,17 @@ title: Cosmos DB için Azure Işlevleri tetikleyicisi 'ni kullanırken karşıla
 description: Cosmos DB için Azure Işlevleri tetikleyicisi kullanılırken yaygın sorunlar, geçici çözümler ve Tanılama adımları
 author: ealsur
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 03/13/2020
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 9da07dc76bdd9273b70f68ee1abcddfa04519fda
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9fc5da214a50cb000d2154d08bb9b6f6f98ac5ec
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101043"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340541"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB için Azure Işlevleri tetikleyicisi 'ni kullanırken sorunları tanılayın ve sorun giderin
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -32,7 +33,7 @@ Bu makale, açıkça belirtilmediği takdirde, her zaman çalışma zamanına he
 
 Uzantı paketinin temel işlevselliği, Cosmos DB için Azure Işlevleri tetikleyicisi ve bağlamaları için destek sağlamaktır. Ayrıca, tetikleyici ve bağlamaları kullanmadan Azure Cosmos DB programlı bir şekilde etkileşim kurmak istiyorsanız yararlı olacak [Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet-core.md)' yı da içerir.
 
-Azure Cosmos DB SDK 'yı kullanmak istiyorsanız, projenize başka bir NuGet paket başvurusu eklemediğinizden emin olun. Bunun yerine, **SDK başvurusunun Azure işlevleri ' uzantı paketi aracılığıyla çözümlenmesine izin verin** . Azure Cosmos DB SDK 'sını tetikleyiciden ve bağlamalardan ayrı kullanın
+Azure Cosmos DB SDK 'yı kullanmak istiyorsanız, projenize başka bir NuGet paket başvurusu eklemediğinizden emin olun. Bunun yerine, **SDK başvurusunun Azure işlevleri ' uzantı paketi aracılığıyla çözümlenmesine izin verin**. Azure Cosmos DB SDK 'sını tetikleyiciden ve bağlamalardan ayrı kullanın
 
 Ayrıca, [Azure Cosmos DB SDK istemcisinin](./sql-api-sdk-dotnet-core.md)kendi örneğinizi el ile oluşturuyorsanız, tek [bir desenli yaklaşım kullanarak](../azure-functions/manage-connections.md#documentclient-code-example-c)istemcinin yalnızca bir örneğine sahip olma örüntüsünün izlenmesi gerekir. Bu işlem, işlemlerinizin olası yuva sorunlarından kaçınacaktır.
 

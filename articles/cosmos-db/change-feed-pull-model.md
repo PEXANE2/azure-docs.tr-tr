@@ -4,16 +4,17 @@ description: Değişiklik akışını ve çekme modeli ve değişiklik akışı 
 author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 6d2f39eae94b217ad1f95a6a559aa3e1044d10da
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b3f7a8fbe2afcf9b5603f288fe6e3bc429b14532
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93072688"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340204"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Azure Cosmos DB akış çekme modelini değiştirme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,7 +48,7 @@ Aşağıda, değişiklik akışı işlemcisi ve çekme modeli arasındaki bazı 
 | Gelecekteki değişiklikler için yoklama | Kullanıcı tarafından belirtilen değişiklikleri otomatik olarak denetler `WithPollInterval` | El ile |
 | Yeni değişiklik olmadığı davranış | Otomatik olarak bekle `WithPollInterval` ve yeniden denetle | Özel durum yakalanmalıdır ve el ile yeniden denetlenecektir |
 | Tüm kapsayıcılardan değişiklikleri işle | Evet ve aynı kapsayıcıdan birden çok iş parçacığı/makine tarafından otomatik olarak paralelleştirildi| Evet ve Feedtoken kullanarak manuel olarak paralelleştirildi |
-| Yalnızca tek bir bölüm anahtarından değişiklikleri işle | Desteklenmez | Yes|
+| Yalnızca tek bir bölüm anahtarından değişiklikleri işle | Desteklenmez | Evet|
 | Destek düzeyi | Genel kullanıma sunuldu | Önizleme |
 
 > [!NOTE]

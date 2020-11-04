@@ -3,15 +3,16 @@ title: Azure Cosmos DB 'de çıkış noktaları arası kaynak paylaşımı (CORS
 description: Bu makalede Azure portal ve Azure Resource Manager şablonları kullanılarak Azure Cosmos DB arası kaynak paylaşımının (CORS) nasıl yapılandırılacağı açıklanmaktadır.
 author: deborahc
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/11/2019
 ms.author: dech
-ms.openlocfilehash: 863c31ecac13337ea3f91d7a7ced49b0f7141e58
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: eba49ff45ba9ab1f5cfaa1d75973d656ac32ca6a
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93086423"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339912"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>Çıkış noktaları arası kaynak paylaşımını (CORS) yapılandırma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/18/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: d21b59b8822684598ac2fc3fd813278c1cf0c698
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8aae75aca585c30c0678c88247a8ecfe8a0b801d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319812"
+ms.locfileid: "93340269"
 ---
 # <a name="virtual-network-service-tags"></a>Sanal ağ hizmeti etiketleri
 <a name="network-service-tags"></a>
@@ -84,7 +84,6 @@ Varsayılan olarak, hizmet etiketleri tüm bulutun aralıklarını yansıtır. B
 | **DataFactory**  | Azure Data Factory | Her ikisi | Hayır | Hayır |
 | **DataFactoryManagement** | Azure Data Factory için yönetim trafiği. | Giden | Hayır | Hayır |
 | **Dynamics365ForMarketingEmail** | Dynamics 365 pazarlama e-posta hizmeti için adres aralıkları. | Giden | Evet | Hayır |
-| **ElasticAFD** | Elastik Azure ön kapısı. | Her ikisi | Hayır | Hayır |
 | **EventHub** | Azure Event Hubs. | Giden | Evet | Evet |
 | **GatewayManager** | Azure VPN Gateway ve Application Gateway adanmış dağıtımlar için yönetim trafiği. | Gelen | Hayır | Hayır |
 | **GuestAndHybridManagement** | Azure Otomasyonu ve konuk yapılandırması. | Giden | Hayır | Evet |

@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: 30a960c3ed76788158b15022947fec49a95ae299
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: baa260e911673ea99b292ab5dc9895840d0098ef
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89375219"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340343"
 ---
 # <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>GPT bölümü olan bir işletim sistemi diskini yeniden boyutlandırma
 
@@ -34,7 +34,7 @@ Bu makalede, Linux 'ta GPT bölümü olan bir işletim sistemi diskinin boyutunu
 
 ### <a name="mbr-partition"></a>MBR bölümü
 
-Aşağıdaki çıktıda, **bölüm tablosunda** **Msdos**değeri gösterilmektedir. Bu değer bir MBR bölümünü tanımlar.
+Aşağıdaki çıktıda, **bölüm tablosunda** **Msdos** değeri gösterilmektedir. Bu değer bir MBR bölümünü tanımlar.
 
 ```
 [user@myvm ~]# parted -l /dev/sda
@@ -50,7 +50,7 @@ Number  Start   End     Size    Type     File system  Flags
 
 ### <a name="gpt-partition"></a>GPT bölümü
 
-Aşağıdaki çıktıda, **bölüm tablosu** **GPT**değerini gösterir. Bu değer bir GPT bölümünü tanımlar.
+Aşağıdaki çıktıda, **bölüm tablosu** **GPT** değerini gösterir. Bu değer bir GPT bölümünü tanımlar.
 
 ```
 [user@myvm ~]# parted -l /dev/sda
@@ -177,7 +177,7 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
 
 1. Dosya sistemi türüne göre, dosya sistemini yeniden boyutlandırmak için uygun komutları kullanın.
    
-   **XFS**için aşağıdaki komutu kullanın:
+   **XFS** için aşağıdaki komutu kullanın:
    
    ```
    #xfs_growfs /
@@ -200,13 +200,13 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
    data blocks changed from 7470331 to 12188923
    ```
    
-   **Ext4**için aşağıdaki komutu kullanın:
+   **Ext4** için aşağıdaki komutu kullanın:
    
    ```
    #resize2fs /dev/sda4
    ```
    
-1. Aşağıdaki komutu kullanarak **df**için daha fazla dosya sistemi boyutunu doğrulayın:
+1. Aşağıdaki komutu kullanarak **df** için daha fazla dosya sistemi boyutunu doğrulayın:
    
    ```
    #df -Thl
@@ -231,7 +231,7 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
    
    Yukarıdaki örnekte, işletim sistemi diski için dosya sistemi boyutunun arttığını görebiliriz.
 
-### <a name="rhel"></a>RHEL
+### <a name="rhel-lvm"></a>RHEL LVM
 
 RHEL 7. x içindeki işletim sistemi diskinin boyutunu LVM ile artırmak için:
 
@@ -351,6 +351,129 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
 
 > [!NOTE]
 > Diğer mantıksal birimleri yeniden boyutlandırmak için aynı yordamı kullanmak için 7. adımda **LV** adını değiştirin.
+
+### <a name="rhel-raw"></a>RHEL RAW
+>[!NOTE]
+>İşletim sistemi disk boyutunu arttırmadan önce her zaman sanal makinenin anlık görüntüsünü alın.
+
+RHEL içindeki işletim sistemi diskinin boyutunu ham bölümle artırmak için:
+
+VM'yi durdurun.
+Portaldan işletim sistemi diskinin boyutunu artırın.
+VM’yi başlatın.
+VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
+
+1. Aşağıdaki komutu kullanarak sanal makinenize **kök** Kullanıcı olarak erişin:
+ 
+   ```
+   sudo su
+   ```
+
+1. İşletim sistemi diskinin boyutunu artırmak için gereken **gptfdisk** paketini yükler.
+
+   ```
+   yum install gdisk -y
+   ```
+
+1.  Diskte bulunan tüm kesimleri görmek için şu komutu çalıştırın:
+    ```
+    gdisk -l /dev/sda
+    ```
+
+1. Bölüm türünü bildiren ayrıntıları görürsünüz. GPT olduğundan emin olun. Kök bölümü belirler. Önyükleme bölümünü (BIOS önyükleme bölümü) ve sistem bölümünü değiştirme veya silme (' EFı sistem bölümü ')
+
+1. Bölümlemeyi ilk kez başlatmak için aşağıdaki komutu kullanın. 
+    ```
+    gdisk /dev/sda
+    ```
+
+1. Şimdi bir sonraki komuta (' komut:?) soran bir ileti görürsünüz. yardım için '). 
+
+   ```
+   w
+   ```
+
+1. Şöyle bir uyarı alacaksınız "uyarı! İkincil üst bilgi diskte çok erken yerleştirilmiş! Bu sorunu düzeltmek istiyor musunuz? (E/H): ". ' Y ' tuşuna basmanız gerekir
+
+   ```
+   Y
+   ```
+
+1. Son denetimlerin tamamlandığını bildiren ve onay isteyen bir ileti görmeniz gerekir. ' Y ' tuşuna basın
+
+   ```
+   Y
+   ```
+
+1. Partaraştırması komutu kullanılarak her şeyin doğru şekilde gerçekleştiğini denetleyin
+
+   ```
+   partprobe
+   ```
+
+1. Yukarıdaki adımlarda ikincil GPT üstbilgisinin sonuna yerleştirilmiş olması gerekir. Sonraki adım, GDisk aracını tekrar kullanarak yeniden boyutlandırma sürecini başlatmakta. Aşağıdaki komutu kullanın.
+
+   ```
+   gdisk /dev/sda
+   ```
+1. Komut menüsünde, bölüm listesini görmek için ' p ' tuşuna basın. Kök bölümü (adımlarda, sda2 kök bölüm olarak kabul edilir) ve önyükleme bölümünü (adımlarda, sda3, önyükleme bölümü olarak kabul edilir) belirler 
+
+   ```
+   p
+   ```
+    ![Kök bölüm ve önyükleme bölümü](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw1.png)
+
+1. Bölümü silmek için ' a basın ve önyükleme için atanan bölüm numarasını seçin (Bu örnekte, ' 3 ')
+   ```
+   d
+   3
+   ```
+1. Bölümü silmek için ' a basın ve önyükleme için atanan bölüm numarasını seçin (Bu örnekte, ' 2 ' olur)
+   ```
+   d
+   2
+   ```
+    ![Kök bölümü ve önyükleme bölümünü Sil](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw2.png)
+
+1. Kök bölümü artan boyut ile yeniden oluşturmak için, ' n ' tuşuna basın, daha önce kök için sildiğiniz bölüm numarasını (Bu örnek için ' 2 ') girin ve Ilk kesimi ' varsayılan değer ', son sektör ' son sektör değeri-önyükleme boyutu kesimi ' (Bu durumda, 2MB önyüklemesine karşılık gelen ' 4096 ') ve onaltılık kod ' 8300 ' olarak seçin
+   ```
+   n
+   2
+   (Enter default)
+   (Calculateed value of Last sector value - 4096)
+   8300
+   ```
+1. Önyükleme bölümünü yeniden oluşturmak için ' n ' tuşuna basın, daha önce önyükleme için sildiğiniz bölüm numarasını (Bu örnek için ' 3 ') girin ve Ilk kesimi ' varsayılan değer ', son kesim ' varsayılan değer ' ve onaltılık kod ' EF02 ' olarak seçin
+   ```
+   n
+   3
+   (Enter default)
+   (Enter default)
+   EF02
+   ```
+
+1. Değişiklikleri ' w ' komutuyla yazın ve ' Y ' tuşuna basın
+   ```
+   w
+   Y
+   ```
+1. Disk kararlılığını denetlemek için ' partaraştırması ' komutunu çalıştırın
+   ```
+   partprobe
+   ```
+1. VM 'yi yeniden başlatın ve kök bölüm boyutu artmıştır
+   ```
+   reboot
+   ```
+
+   ![Yeni kök bölüm ve önyükleme bölümü](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw3.png)
+
+1. Yeniden boyutlandırmak için bölümdeki xfs_growfs komutunu çalıştırın
+   ```
+   xfs_growfs /dev/sda2
+   ```
+
+   ![XFS büyüme FS](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw4.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

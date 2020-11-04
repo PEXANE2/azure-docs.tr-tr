@@ -11,12 +11,12 @@ ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: fe20304341d6e99eb77ad2818e675b0063efd693
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a50554c73958400f1f16348d3b8fb2bac88ac61b
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319524"
+ms.locfileid: "93340286"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE SQL sorunlarını giderme
 
@@ -67,8 +67,6 @@ Bu makalede, SYNAPSE SQL 'de genel sorun giderme sorunları listelenmektedir.
 | :------------------------------------ | :----------------------------------------------------------- |
 | Desteklenmeyen SQL veritabanı özellikleri     | [Desteklenmeyen tablo özelliklerine](sql-data-warehouse-tables-overview.md#unsupported-table-features)bakın. |
 | Desteklenmeyen SQL veritabanı veri türleri   | [Desteklenmeyen veri türlerine](sql-data-warehouse-tables-data-types.md#identify-unsupported-data-types)bakın.        |
-| SILME ve GÜNCELLEŞTIRME sınırlamaları         | [Desteklenmeyen güncelleştirme ve silme sözdizimini çözmek için](sql-data-warehouse-develop-ctas.md)bkz. [geçici çözümleri güncelleştirme](sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-update-statements), [geçici çözümleri silme](sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-delete-statements) ve CTAS kullanma. |
-| MERGE deyimleri desteklenmiyor      | Bkz. [birleştirme geçici çözümleri](sql-data-warehouse-develop-ctas.md#replace-merge-statements).                  |
 | Saklı yordam sınırlamaları          | Saklı yordamların bazı sınırlamalarını anlamak için [saklı yordam sınırlamaları](sql-data-warehouse-develop-stored-procedures.md#limitations) bölümüne bakın. |
 | UDF 'ler SELECT deyimlerini desteklemez | Bu, UDF 'lerimizin geçerli bir sınırlamasıdır.  Destekliyoruz sözdizimi için bkz. [oluşturma işlevi](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) . |
 

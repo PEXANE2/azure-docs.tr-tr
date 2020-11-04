@@ -6,22 +6,21 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
-ms.openlocfilehash: 38077dca1b8a27098e8db17354b82340a651b880
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 55a73ada39f4f48aeb22c5482bd85d1092d54c35
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305178"
+ms.locfileid: "93342258"
 ---
-# <a name="use-power-bi-and-serverless-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>SYNAPSE bağlantısı ile Azure Cosmos DB verileri çözümlemek için Power BI ve sunucusuz SQL havuzu kullanma (Önizleme)
-
-[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
+# <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>SYNAPSE bağlantısı ile Azure Cosmos DB verileri çözümlemek için Power BI ve sunucusuz SYNAPSE SQL havuzunu kullanın (Önizleme) 
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 Bu makalede, Azure Cosmos DB için SYNAPSE link üzerinden sunucusuz bir SQL havuzu veritabanı ve görünümleri oluşturmayı öğreneceksiniz. Azure Cosmos DB kapsayıcıları sorgulayıp, ardından bu görünümler üzerinde Power BI olan ve bu sorguyu yansıtan bir model oluşturacaksınız.
 
 Bu senaryoda, bir iş ortağı perakende deposunda Surface ürün satışları hakkında kukla verileri kullanacaksınız. Her mağaza için gelir, büyük bir evye yakınlık ve belirli bir hafta için tanıtım etkisi doğrultusunda analiz edersiniz. Bu makalede, **RetailSales** ve **storedemographics** adlı iki görünüm ve aralarında bir sorgu oluşturacaksınız. Bu [GitHub](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) deposundan örnek ürün verilerini alabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdaki kaynakları oluşturduğunuzdan emin olun:
 

@@ -3,12 +3,12 @@ title: Özel bağlantıyı ayarla
 description: Bir kapsayıcı kayıt defterinde özel bir uç nokta ayarlayın ve yerel bir sanal ağdaki özel bir bağlantı üzerinden erişimi etkinleştirin. Özel bağlantı erişimi, Premium hizmet katmanının bir özelliğidir.
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: d5193efc1b1def2dc51411630ab6a2305d369cf4
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 3193c65a2021d29f03bd9ae6cbc00fd6c349d9bf
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026131"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342309"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Azure özel bağlantısını kullanarak bir Azure Container Registry 'ye özel olarak bağlanma
 
@@ -21,7 +21,7 @@ Bu özellik **Premium** kapsayıcı kayıt defteri hizmet katmanında kullanıla
 
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bu makalede Azure CLı adımlarını kullanmak için, Azure CLı sürüm 2.6.0 veya sonraki bir sürümü önerilir. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli]. Veya [Azure Cloud Shell](../cloud-shell/quickstart.md)içinde çalıştırın.
 * Zaten bir kapsayıcı kayıt defteriniz yoksa, bir tane oluşturun (Premium katman gereklidir) ve Microsoft Container Registry gibi örnek bir ortak görüntü [içeri aktarın](container-registry-import-images.md) `mcr.microsoft.com/hello-world` . Örneğin, [Azure Portal][quickstart-portal] veya [Azure CLI][quickstart-cli] kullanarak bir kayıt defteri oluşturun.
@@ -240,7 +240,7 @@ Bir kayıt defteri oluşturduğunuzda özel bir bağlantı kurun veya var olan b
     | Kaynak grubu | Mevcut bir grubun adını girin veya yeni bir grup oluşturun.|
     | **Örnek ayrıntıları** |  |
     | Name | Bir ad girin. |
-    |Bölge|Bir bölge seçin.|
+    |Region|Bir bölge seçin.|
     |||
 5. **Sonraki: kaynak** ' ı seçin.
 6. Aşağıdaki bilgileri girin veya seçin:
@@ -253,7 +253,7 @@ Bir kayıt defteri oluşturduğunuzda özel bir bağlantı kurun veya var olan b
     | Kaynak |Kayıt defterinizin adını seçin|
     |Hedef alt kaynak |**Kayıt defteri** seçin|
     |||
-7. Ileri 'yi seçin **: yapılandırma** .
+7. Ileri 'yi seçin **: yapılandırma**.
 8. Bilgileri girin veya seçin:
 
     | Ayar | Değer |
@@ -387,7 +387,12 @@ Daha sonra yeni bir çoğaltma eklerseniz, bu bölgedeki veri uç noktası için
 
 Bu örnekteki özel uç nokta, temel bir sanal ağla ilişkili özel bir DNS bölgesi ile tümleşir. Bu kurulum, kayıt defterinin genel FQDN 'sini sanal ağdaki özel IP adresine çözümlemek için doğrudan Azure tarafından sağlanmış DNS hizmetini kullanır. 
 
-Özel bağlantı özel DNS çözümleriyle birlikte özel bölgeyi kullanan ek DNS yapılandırma senaryolarını destekler. Örneğin, sanal ağda dağıtılan özel bir DNS çözümünüz veya bir ağdaki şirket içinde bir VPN ağ geçidi kullanarak sanal ağa bağlanırsınız. Kayıt defterinin genel FQDN 'sini bu senaryolardaki özel IP adresine çözümlemek için, Azure DNS hizmetine sunucu düzeyinde bir iletici yapılandırmanız gerekir (168.63.129.16). Tam yapılandırma seçenekleri ve adımlar, mevcut ağlarınıza ve DNS 'ye bağlıdır. Örnekler için bkz. [Azure özel uç nokta DNS yapılandırması](../private-link/private-endpoint-dns.md).
+Özel bağlantı özel DNS çözümleriyle birlikte özel bölgeyi kullanan ek DNS yapılandırma senaryolarını destekler. Örneğin, sanal ağda veya şirket içinde dağıtılan özel bir DNS çözümünüz bir VPN ağ geçidi veya Azure ExpressRoute kullanarak sanal ağa bağlanırsınız. 
+
+Kayıt defterinin genel FQDN 'sini bu senaryolardaki özel IP adresine çözümlemek için, Azure DNS hizmetine sunucu düzeyinde bir iletici yapılandırmanız gerekir (168.63.129.16). Tam yapılandırma seçenekleri ve adımlar, mevcut ağlarınıza ve DNS 'ye bağlıdır. Örnekler için bkz. [Azure özel uç nokta DNS yapılandırması](../private-link/private-endpoint-dns.md).
+
+> [!IMPORTANT]
+> Çok sayıda bölgede özel uç noktalar oluşturduğunuz için yüksek kullanılabilirlik varsa, her bölgede ayrı bir kaynak grubu kullanmanızı ve sanal ağı ve ilişkili özel DNS bölgesini buna yerleştirmeniz önerilir. Bu yapılandırma aynı zamanda aynı özel DNS bölgesinin paylaşılarak öngörülemeyen DNS çözümlemesini de engeller.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
