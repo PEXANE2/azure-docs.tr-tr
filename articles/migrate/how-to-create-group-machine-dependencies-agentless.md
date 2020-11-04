@@ -3,12 +3,12 @@ title: Azure geçişi sunucu değerlendirmesi ' nde aracısız bağımlılık an
 description: Azure geçişi sunucu değerlendirmesi ' nde aracısız bağımlılık analizini ayarlayın.
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: 57e5add810cf4fac232bce08fc7ca96df0a7c3a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8893b0f41bb7a06c02a6c2aa28002980144b582a
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667478"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337702"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>Makine bağımlılıklarını analiz etme (aracısız)
 
@@ -19,13 +19,13 @@ Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde aracısız bağımlı
 > Aracısız bağımlılık görselleştirmesi Şu anda Azure geçişi: Sunucu değerlendirmesi aracında bulunan VMware VM 'Leri için önizleme aşamasındadır.
 > Özellikler sınırlı veya tamamlanmamış olabilir.
 > Bu önizleme müşteri desteği kapsamında ele alınmıştır ve üretim iş yükleri için kullanılabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 
 - Bağımlılık analizi görünümünde, şu anda bir gruptan bir sunucu ekleyemez veya kaldırabilirsiniz.
 - Bir sunucu grubu için bağımlılık eşlemesi Şu anda kullanılamıyor.
-- Bağımlılık verileri toplama, 1000 sunucuları için aynı anda ayarlanabilir. 1000 toplu işler halinde sıralama yaparak daha yüksek sayıda sunucu çözümleyebilirsiniz.
+- Bir Azure geçişi projesinde, bağımlılık verileri koleksiyonu 1000 sunucuları için aynı anda ayarlanabilir. 1000 toplu işler halinde sıralama yaparak daha yüksek sayıda sunucu çözümleyebilirsiniz.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
@@ -48,10 +48,10 @@ Kullanıcı hesabını gereç öğesine ekleyin.
 
 1. Gereç Yönetimi uygulamasını açın. 
 2. **VCenter ayrıntıları sağla** paneline gidin.
-3. **VM 'lerde uygulama ve bağımlılıkları keşfet**bölümünde **kimlik bilgileri ekle** ' ye tıklayın.
-3. **İşletim sistemini**seçin, hesap için bir kolay ad ve **Kullanıcı adı** / **parolasını** girin
-6. **Kaydet**’e tıklayın.
-7. **Kaydet ve bulmayı Başlat**' a tıklayın.
+3. **VM 'lerde uygulama ve bağımlılıkları keşfet** bölümünde **kimlik bilgileri ekle** ' ye tıklayın.
+3. **İşletim sistemini** seçin, hesap için bir kolay ad ve **Kullanıcı adı** / **parolasını** girin
+6. **Kaydet** ’e tıklayın.
+7. **Kaydet ve bulmayı Başlat** ' a tıklayın.
 
     ![VM Kullanıcı hesabı ekle](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)
 
@@ -59,12 +59,12 @@ Kullanıcı hesabını gereç öğesine ekleyin.
 
 Üzerinde bağımlılık bulmayı etkinleştirmek istediğiniz makineleri seçin. 
 
-1. **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucular**' a tıklayın.
+1. **Azure geçişi: Sunucu değerlendirmesi** ' nde, **bulunan sunucular** ' a tıklayın.
 2. **Bağımlılık Analizi** simgesine tıklayın.
-3. **Sunucu Ekle**' ye tıklayın.
+3. **Sunucu Ekle** ' ye tıklayın.
 4. **Sunucu Ekle** sayfasında, ilgili makineleri bulan gereci seçin.
 5. Makine listesinden makineleri seçin.
-6. **Sunucu Ekle**' ye tıklayın.
+6. **Sunucu Ekle** ' ye tıklayın.
 
     ![Bağımlılık bulmayı Başlat](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
@@ -72,7 +72,7 @@ Bağımlılık bulmayı başlattıktan sonra altı saat etrafında bağımlılı
 
 ## <a name="visualize-dependencies"></a>Bağımlılıkları görselleştirin
 
-1. **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucular**' a tıklayın.
+1. **Azure geçişi: Sunucu değerlendirmesi** ' nde, **bulunan sunucular** ' a tıklayın.
 2. Görüntülemek istediğiniz makineyi arayın.
 3. **Bağımlılıklar** sütununda, **bağımlılıkları görüntüle** ' ye tıklayın.
 4. **Zaman süresi** açılan listesini kullanarak Haritayı görüntülemek istediğiniz zaman aralığını değiştirin.
@@ -93,12 +93,12 @@ Bağımlılık bulmayı başlattıktan sonra altı saat etrafında bağımlılı
 
 ## <a name="export-dependency-data"></a>Bağımlılık verilerini dışarı aktar
 
-1. **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucular**' a tıklayın.
+1. **Azure geçişi: Sunucu değerlendirmesi** ' nde, **bulunan sunucular** ' a tıklayın.
 2. **Bağımlılık Analizi** simgesine tıklayın.
-3. **Uygulama bağımlılıklarını dışarı aktar**' a tıklayın.
+3. **Uygulama bağımlılıklarını dışarı aktar** ' a tıklayın.
 4. **Uygulama bağımlılıklarını dışarı aktar** sayfasında, ilgili makineleri bulan gereci seçin.
 5. Başlangıç saatini ve bitiş saatini seçin. Verileri yalnızca son 30 güne indirebileceğinizi unutmayın.
-6. **Bağımlılığı dışarı aktar**öğesine tıklayın.
+6. **Bağımlılığı dışarı aktar** öğesine tıklayın.
 
 Bağımlılık verileri bir CSV biçiminde verilir ve indirilir. İndirilen dosya, bağımlılık analizi için etkinleştirilen tüm makinelerde bağımlılık verilerini içerir. 
 
@@ -127,12 +127,12 @@ Hedef bağlantı noktası | Hedef makinedeki bağlantı noktası numarası
 
 Üzerinde bağımlılık bulmayı durdurmak istediğiniz makineleri seçin. 
 
-1. **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucular**' a tıklayın.
+1. **Azure geçişi: Sunucu değerlendirmesi** ' nde, **bulunan sunucular** ' a tıklayın.
 2. **Bağımlılık Analizi** simgesine tıklayın.
-3. **Sunucuları kaldır**' a tıklayın.
+3. **Sunucuları kaldır** ' a tıklayın.
 3. **Sunucuları kaldır** sayfasında, bağımlılık bulmayı durdurmayı planladığınız VM 'leri bulmak **için gereken gereci** seçin.
 4. Makine listesinden makineleri seçin.
-5. **Sunucuları kaldır**' a tıklayın.
+5. **Sunucuları kaldır** ' a tıklayın.
 
 Birden çok makinede bağımlılığı durdurmak istiyorsanız, [PowerShell](#start-or-stop-dependency-discovery-using-powershell) 'i kullanarak bunu yapabilirsiniz.
 
@@ -234,7 +234,7 @@ Azure geçişi, aynı anda birçok sunucunun ağ bağlantılarını görselleşt
     - Araç çubuğundan **veri al** ' a tıklayın. 
     - Ortak veri kaynaklarından **metin/CSV** ' yi seçin.
     - İndirilen bağımlılıklar dosyasını seçin.
-    - **Yükle**' ye tıklayın.
+    - **Yükle** ' ye tıklayın.
     - CSV dosyasının adıyla bir tablo alındığını görürsünüz. Tabloyu sağ taraftaki alanlar çubuğunda görebilirsiniz. AzMig_Dependencies olarak yeniden adlandırın
     - Araç çubuğundan Yenile ' ye tıklayın.
 

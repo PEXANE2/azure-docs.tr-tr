@@ -1,5 +1,5 @@
 ---
-title: MySQL için Azure veritabanı ile Java ve JDBC kullanma
+title: 'Hızlı başlangıç: MySQL için Azure veritabanı ile Java ve JDBC kullanma'
 description: Bir MySQL veritabanı için Azure veritabanı ile Java ve JDBC kullanmayı öğrenin.
 author: jdubois
 ms.author: judubois
@@ -8,14 +8,14 @@ ms.custom: mvc, devcenter, devx-track-azurecli
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
-ms.openlocfilehash: b7db124f8f5ba56f760dc054491990889e4e738f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 457f7e07391c647d2ab0e7d78197086f6f5e2cf7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745274"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337448"
 ---
-# <a name="use-java-and-jdbc-with-azure-database-for-mysql"></a>MySQL için Azure veritabanı ile Java ve JDBC kullanma
+# <a name="quickstart-use-java-and-jdbc-with-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı ile Java ve JDBC kullanma
 
 Bu konu başlığı altında, [MySQL Için Azure veritabanı](./index.yml)'nda bilgi depolamak ve almak üzere Java ve [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) kullanan bir örnek uygulama oluşturma gösterilmektedir.
 
@@ -493,7 +493,7 @@ Ana sınıfın yürütülmesi şu çıktıyı üretmelidir:
 [INFO   ] Closing database connection 
 ```
 
-## <a name="conclusion-and-resources-clean-up"></a>Sonuç ve kaynak Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Tebrikler! MySQL için Azure veritabanı 'ndan veri depolamak ve almak için JDBC kullanan bir Java uygulaması oluşturdunuz.
 

@@ -3,15 +3,16 @@ title: Azure Cosmos DB diziler ve nesnelerle çalışma
 description: Azure Cosmos DB diziler ve nesneler oluşturmak için SQL sözdizimini öğrenin. Bu makalede, dizi nesnelerinde işlemler gerçekleştirmek için bazı örnekler de sağlanmaktadır
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 357653e89e2581dba7726e41f8a08304c619d2fb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 80d158e209943d65b9934d5425ccce7d69422bc4
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077200"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338375"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Azure Cosmos DB diziler ve nesnelerle çalışma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

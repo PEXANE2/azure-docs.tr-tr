@@ -1,20 +1,20 @@
 ---
-title: Kimlik bilgisi yönetimi için KIMLIK Aracısı (Önizleme) kullanma-Azure HDInsight
+title: Azure HDInsight KIMLIK Aracısı (HIB)
 description: Etki alanına katılmış Apache Hadoop kümeleri için kimlik doğrulamasını basitleştirmek üzere Azure HDInsight KIMLIK Aracısı hakkında bilgi edinin.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
-ms.date: 09/23/2020
-ms.openlocfilehash: 6617c778c0b79a55058eafb40fd9b49b627819ea
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 11/03/2020
+ms.openlocfilehash: df4faf367951402914abb03285498e0da6f3105f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043256"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337685"
 ---
-# <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight KIMLIK Aracısı (Önizleme)
+# <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight KIMLIK Aracısı (HIB)
 
 Bu makalede, Azure HDInsight ID Broker özelliğinin nasıl ayarlanacağı ve kullanılacağı açıklanır. Bu özelliği kullanarak Apache ambarı 'na modern OAuth kimlik doğrulaması, Azure Active Directory Domain Services (Azure AD DS) üzerinde eski parola karmaları gerekmeden çok faktörlü kimlik doğrulaması zorlaması sağlayabilirsiniz.
 
@@ -45,7 +45,7 @@ Yalnızca temel kimlik doğrulamasını (yani, Kullanıcı adı ve parola) deste
 
 Aşağıdaki diyagramda, Federasyon kullanıcıları için temel kimlik doğrulama akışı gösterilmektedir. İlk olarak, ağ geçidi, [Ropc akışını](../../active-directory/develop/v2-oauth-ropc.md)kullanarak kimlik doğrulamasını tamamlamaya çalışır. Azure AD ile eşitlenen Parola karması yoksa, AD FS uç noktasının keşfedilmesinden ve AD FS uç noktasına erişerek kimlik doğrulamasının tamamlanmasını geri döner.
 
-:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="HDInsight ID broker ile kimlik doğrulama akışını gösteren diyagram.":::
+:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Temel kimlik doğrulaması ile mimariyi gösteren diyagram.":::
 
 
 ## <a name="enable-hdinsight-id-broker"></a>HDInsight KIMLIK Aracısı 'nı etkinleştir

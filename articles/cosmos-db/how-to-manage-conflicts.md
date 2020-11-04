@@ -3,16 +3,17 @@ title: Azure Cosmos DB bölgeler arasındaki çakışmaları yönetme
 description: Son yazıcı-WINS veya özel bir çakışma çözümleme ilkesi oluşturarak Azure Cosmos DB çakışmaların nasıl yönetileceğini öğrenin
 author: anfeldma-ms
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7370642f5a325867c901d7ebd362e6dfa68e098f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8f98c2201159350f5774f4d2b05102384f31f3af
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101519"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339351"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Azure Cosmos DB çakışma çözümleme ilkelerini yönetme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -57,7 +58,7 @@ Container container = await createClient.GetDatabase(this.databaseName)
 
 ### <a name="java-v4-sdk"></a><a id="create-custom-conflict-resolution-policy-lww-javav4"></a> Java v4 SDK 'Sı
 
-# <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
+# <a name="async"></a>[Eş](#tab/api-async)
 
    Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
@@ -113,7 +114,7 @@ const { container: lwwContainer } = await database.containers.createIfNotExists(
 );
 ```
 
-### <a name="python-sdk"></a><a id="create-custom-conflict-resolution-policy-lww-python"></a>Python SDK 'Sı
+### <a name="python-sdk"></a><a id="create-custom-conflict-resolution-policy-lww-python"></a>Python SDK'sı
 
 ```python
 udp_collection = {
@@ -245,7 +246,7 @@ await container.Scripts.CreateStoredProcedureAsync(
 
 ### <a name="java-v4-sdk"></a><a id="create-custom-conflict-resolution-policy-stored-proc-javav4"></a> Java v4 SDK 'Sı
 
-# <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
+# <a name="async"></a>[Eş](#tab/api-async)
 
    Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
@@ -308,7 +309,7 @@ const { container: udpContainer } = await database.containers.createIfNotExists(
 
 Kapsayıcınız oluşturulduktan sonra `resolver` saklı yordamı oluşturmanız gerekir.
 
-### <a name="python-sdk"></a><a id="create-custom-conflict-resolution-policy-stored-proc-python"></a>Python SDK 'Sı
+### <a name="python-sdk"></a><a id="create-custom-conflict-resolution-policy-stored-proc-python"></a>Python SDK'sı
 
 ```python
 udp_collection = {
@@ -360,7 +361,7 @@ Container container = await createClient.GetDatabase(this.databaseName)
 
 ### <a name="java-v4-sdk"></a><a id="create-custom-conflict-resolution-policy-javav4"></a> Java v4 SDK 'Sı
 
-# <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
+# <a name="async"></a>[Eş](#tab/api-async)
 
    Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
@@ -415,7 +416,7 @@ const {
 });
 ```
 
-### <a name="python-sdk"></a><a id="create-custom-conflict-resolution-policy-python"></a>Python SDK 'Sı
+### <a name="python-sdk"></a><a id="create-custom-conflict-resolution-policy-python"></a>Python SDK'sı
 
 ```python
 database = client.ReadDatabase("dbs/" + self.database_name)

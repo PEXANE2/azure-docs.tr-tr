@@ -2,17 +2,18 @@
 title: Couşbase 'ten Azure Cosmos DB SQL API 'sine geçiş
 description: Couşbase 'ten Azure Cosmos DB SQL API 'sine geçiş için adım adım yönergeler
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: 0f286b5586a0d74afed0bb185179454bb1efff95
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 73d6fe0233eccea9ebf1d82beb509c56fb45f4da
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097558"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339521"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Couşbase 'ten Azure Cosmos DB SQL API 'sine geçiş
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 28bf7e631c8693434d686022891bb2e45152f0ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c72a2b134fc2c24789ebb75f61d9b64d63d3d48e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597903"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339487"
 ---
 # <a name="understand-saml-based-single-sign-on"></a>SAML tabanlı çoklu oturum açmayı anlama
 
@@ -30,9 +30,9 @@ Azure AD 'nin kimlik sağlayıcısı (IDP) olarak kullanılması ve çoklu oturu
 [Hızlı başlangıç serisinde](add-application-portal-setup-sso.md), çoklu oturum açmayı yapılandırma hakkında bir makale vardır. Bu uygulamada, bir uygulamanın SAML yapılandırma sayfasına erişmeyi öğreneceksiniz. SAML yapılandırması sayfası beş bölümden oluşur. Bu bölümler, bu makalede ayrıntılı olarak ele alınmıştır.
 
 > [!IMPORTANT] 
-> **Kurumsal uygulamalarda**bir uygulama Için gezintide **Çoklu oturum açma** seçeneğinin mevcut olmadığı bazı senaryolar vardır. 
+> **Kurumsal uygulamalarda** bir uygulama Için gezintide **Çoklu oturum açma** seçeneğinin mevcut olmadığı bazı senaryolar vardır. 
 >
-> Uygulama **uygulama kayıtları** kullanılarak kaydedilmişse, çoklu oturum açma özelliği varsayılan olarak OIDC OAuth kullanacak şekilde yapılandırılır. Bu durumda, **Çoklu oturum açma** seçeneği, **Kurumsal uygulamalar**altındaki gezinmede gösterilmez. Özel uygulamanızı eklemek için **uygulama kayıtları** kullandığınızda, bildirim dosyasındaki seçenekleri yapılandırırsınız. Bildirim dosyası hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory uygulama bildirimi](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest). SSO standartları hakkında daha fazla bilgi edinmek için bkz. [Microsoft Identity platform kullanarak kimlik doğrulama ve yetkilendirme](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform). 
+> Uygulama **uygulama kayıtları** kullanılarak kaydedilmişse, çoklu oturum açma özelliği varsayılan olarak OIDC OAuth kullanacak şekilde yapılandırılır. Bu durumda, **Çoklu oturum açma** seçeneği, **Kurumsal uygulamalar** altındaki gezinmede gösterilmez. Özel uygulamanızı eklemek için **uygulama kayıtları** kullandığınızda, bildirim dosyasındaki seçenekleri yapılandırırsınız. Bildirim dosyası hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory uygulama bildirimi](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest). SSO standartları hakkında daha fazla bilgi edinmek için bkz. [Microsoft Identity platform kullanarak kimlik doğrulama ve yetkilendirme](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform). 
 >
 > Bir uygulamanın başka bir kiracıda barındırıldığı veya hesabınızın gerekli izinleri (genel yönetici, bulut uygulaması Yöneticisi, uygulama Yöneticisi veya hizmet sorumlusu sahibi) yoksa, **Çoklu oturum açma** 'nın gezinmede eksik olduğu diğer senaryolar. İzinler Ayrıca **Çoklu oturum** açmayı açabiliyor ancak kaydedemeyeceksiniz bir senaryoya neden olabilir. Azure AD Yönetim rolleri hakkında daha fazla bilgi için bkz https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) . (.
 
@@ -60,7 +60,7 @@ Kullanıcı uygulamanın kimliğini doğruladığında Azure AD, uygulamayı ben
 > Birçok uygulama önceden yapılandırılmıştır ve uygulama galerisinde, Kullanıcı ve grup taleplerini ayarlamaya endişelenmeniz gerekmez. [Hızlı başlangıç serisi](add-application-portal.md) , uygulama ekleme ve yapılandırma konusunda size yol gösterir.
 
 
-**Benzersiz kullanıcı tanımlayıcı (ad kimliği)** tanımlayıcı değeri, gerekli bir taleple ve önemlidir. Varsayılan değer *User. UserPrincipalName*' dir. Kullanıcı tanımlayıcısı, uygulama içinde her kullanıcıyı benzersiz olarak tanımlar. Örneğin e-posta adresi hem kullanıcı adı hem de benzersiz tanıtıcı olarak kullanılıyorsa değeri *user.mail* olarak ayarlayın.
+**Benzersiz kullanıcı tanımlayıcı (ad kimliği)** tanımlayıcı değeri, gerekli bir taleple ve önemlidir. Varsayılan değer *User. UserPrincipalName* ' dir. Kullanıcı tanımlayıcısı, uygulama içinde her kullanıcıyı benzersiz olarak tanımlar. Örneğin e-posta adresi hem kullanıcı adı hem de benzersiz tanıtıcı olarak kullanılıyorsa değeri *user.mail* olarak ayarlayın.
 
 SAML taleplerini özelleştirme hakkında daha fazla bilgi edinmek için bkz. [nasıl yapılır: kurumsal uygulamalar IÇIN SAML belirtecinde verilen talepleri özelleştirme](../develop/active-directory-saml-claims-customization.md).
 
@@ -85,21 +85,24 @@ Azure AD 'den, etkin Sertifikayı Base64 veya ham biçimde doğrudan bir **SAML 
 
 Bir sertifikayı doğrulamak için denetlenecek bazı yaygın şeyler şunlardır: 
    - *Doğru sona erme tarihi.* Son kullanma tarihini üç yıla kadar gelecek şekilde yapılandırabilirsiniz.
-   - *Doğru sertifika için etkin durumu.* Durum **etkin**değilse, durumu **etkin**olarak değiştirin. Durumu değiştirmek için sertifikanın satırına sağ tıklayın ve **sertifikayı etkin yap**' ı seçin.
+   - *Doğru sertifika için etkin durumu.* Durum **etkin** değilse, durumu **etkin** olarak değiştirin. Durumu değiştirmek için sertifikanın satırına sağ tıklayın ve **sertifikayı etkin yap** ' ı seçin.
    - *Doğru imzalama seçeneği ve algoritması.*
    - *Doğru bildirim e-posta adresleri (es).* Etkin sertifika sona erme tarihi yaklaştığında Azure AD, bu alanda yapılandırılan e-posta adresine bir bildirim gönderir.
 
 Bazen sertifikayı indirmeniz gerekebilir. Bunu kaydettiğiniz yerde dikkatli olun! Sertifikayı indirmek için Base64 biçimi, ham biçim veya Federasyon meta veri XML seçeneklerinden birini seçin. Azure AD Ayrıca, uygulama **Federasyon meta veri URL 'sini** de sağlar `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>` .
 
+> [!NOTE]
+> Uygulama, kullanılırken işlenen XML 'de bulunan bayt sırası Işaretçisini işleyebilmelidir https://login.microsoftonline.com/{tenant-id}/federationmetadata/2007-06/federationmetadata.xml?appid={app-id} . Bayt sırası işareti, yazdırılamaz bir ASCII karakteri» ¿olarak temsil edilir ve onaltılı düzende XML verilerini gözden geçirirken EF BB BF olarak gösterilir.
+
 Sertifika değişiklikleri yapmak için Düzenle düğmesini seçin. **SAML Imzalama sertifikası** sayfasında yapabileceğiniz birkaç şey vardır:
-   - Yeni bir sertifika oluşturun: **Yeni sertifika**' yı seçin, **sona erme tarihini**seçin ve ardından **Kaydet**' i seçin. Sertifikayı etkinleştirmek için bağlam menüsünü (**...**) seçin ve **sertifikayı etkin yap**' ı seçin.
-   - Özel anahtar ve PFX kimlik bilgileri içeren bir sertifikayı karşıya yükleyin: **sertifikayı Içeri aktar** ' ı seçin ve sertifikaya gidin. **PFX parolasını**girin ve ardından **Ekle**' yi seçin.  
+   - Yeni bir sertifika oluşturun: **Yeni sertifika** ' yı seçin, **sona erme tarihini** seçin ve ardından **Kaydet** ' i seçin. Sertifikayı etkinleştirmek için bağlam menüsünü ( **...** ) seçin ve **sertifikayı etkin yap** ' ı seçin.
+   - Özel anahtar ve PFX kimlik bilgileri içeren bir sertifikayı karşıya yükleyin: **sertifikayı Içeri aktar** ' ı seçin ve sertifikaya gidin. **PFX parolasını** girin ve ardından **Ekle** ' yi seçin.  
    - Gelişmiş Sertifika imzalamayı yapılandırın. Bu seçenekler hakkında daha fazla bilgi için bkz. [Gelişmiş sertifika imzalama seçenekleri](certificate-signing-options.md).
    - Etkin sertifikanın sona erme tarihi yaklaştığında ek kişilere bildir: **bildirim e-posta adresleri** alanlarına e-posta adreslerini girin.
 
 ## <a name="set-up-the-application-to-use-azure-ad"></a>Uygulamayı Azure AD kullanacak şekilde ayarlama
 
-**Ayarla \<applicationName> ** bölümünde, Azure AD 'yi bir SAML kimlik sağlayıcısı olarak kullanacak şekilde uygulamada yapılandırılması gereken değerler listelenmiştir. Uygulamalar Web sitesinde yapılandırma sayfasında değerleri ayarlarsınız. Örneğin, GitHub yapılandırıyorsanız github.com sitesine gidip değerleri ayarlarsınız. Uygulama zaten önceden yapılandırıldıysa ve Azure AD galerisinde, **adım adım yönergeleri görüntülemek**için bir bağlantı bulacaksınız. Aksi takdirde, yapılandırdığınız uygulamanın belgelerini bulmanız gerekecektir. 
+**Ayarla \<applicationName>** bölümünde, Azure AD 'yi bir SAML kimlik sağlayıcısı olarak kullanacak şekilde uygulamada yapılandırılması gereken değerler listelenmiştir. Uygulamalar Web sitesinde yapılandırma sayfasında değerleri ayarlarsınız. Örneğin, GitHub yapılandırıyorsanız github.com sitesine gidip değerleri ayarlarsınız. Uygulama zaten önceden yapılandırıldıysa ve Azure AD galerisinde, **adım adım yönergeleri görüntülemek** için bir bağlantı bulacaksınız. Aksi takdirde, yapılandırdığınız uygulamanın belgelerini bulmanız gerekecektir. 
 
 **Oturum açma URL 'si** ve **oturum kapatma URL 'Si** değerleri, Azure AD kiracısı için SAML istek işleme uç noktası olan aynı uç noktaya çözümlenir. 
 
@@ -119,7 +122,7 @@ Bir hata iletisi görünürse, aşağıdaki adımları izleyin:
 
     ![Çözüm rehberliği alın](media/configure-single-sign-on-non-gallery-applications/error-guidance.png)
 
-2. **Çözüm kılavuzunu al**' ı seçin. Kök nedeni ve çözüm kılavuzu görüntülenir.  Bu örnekte, Kullanıcı uygulamaya atanmamıştır.
+2. **Çözüm kılavuzunu al** ' ı seçin. Kök nedeni ve çözüm kılavuzu görüntülenir.  Bu örnekte, Kullanıcı uygulamaya atanmamıştır.
 
 3. Çözüm kılavuzunu okuyun ve ardından sorunu düzeltmeye çalışın.
 

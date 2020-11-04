@@ -1,5 +1,5 @@
 ---
-title: Uygulamanızı Azure AD uygulama galerisine yayımlayın
+title: Uygulamanızı Azure Active Directory Uygulama Galerisine yayımlayın
 description: Azure Active Directory Uygulama galerisinde çoklu oturum açmayı destekleyen bir uygulamayı nasıl listeleyeceğinizi öğrenin.
 services: active-directory
 author: kenwith
@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/19/2020
+ms.date: 11/03/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 5ade98e04853ae8293f762f237b3b3154c876f7e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d6df94cca46d82c3e066779cd28584c84f12fbce
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275738"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339444"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Uygulamanızı Azure AD uygulama galerisine yayımlayın
 
@@ -60,11 +60,28 @@ Uygulamanızı Azure AD uygulama galerisinde yayımlama adımları şunlardır:
 5. Uygulamanızı gönderebilirsiniz.
 6. Microsoft iş ortağı ağı ' na katın.
 
+## <a name="what-is-the-azure-ad-application-gallery"></a>Azure AD Uygulama Galerisi nedir?
+
+- Müşteriler olası en iyi çoklu oturum açma deneyimini bulur.
+- Uygulamanın yapılandırması basit ve en düşüktür.
+- Hızlı arama, uygulamanızı galeride bulur.
+- Ücretsiz, temel ve Premium Azure AD müşterilerinin hepsi bu tümleştirmeyi kullanabilir.
+- Karşılıklı müşteriler, adım adım bir yapılandırma öğreticisini alır.
+- Etki alanları arası kimlik yönetimi ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) için sistemi kullanan müşteriler aynı uygulama için sağlama kullanabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 En az iki Kullanıcı kayıtlı olarak test için kalıcı bir hesaba ihtiyacınız vardır.
 
+- Federasyon uygulamaları (açık KIMLIK ve SAML/WS-beslenir) için, uygulamanın Azure AD uygulama galerisinde listelenen hizmet olarak yazılım (SaaS) modelini desteklemesi gerekir. Kurumsal Galeri uygulamaları, belirli bir müşteriyi değil birden çok müşteri yapılandırmasını desteklemelidir.
+- Açık KIMLIK bağlantısı için, uygulamanın çok kiracılı olması ve [Azure AD onay çerçevesinin](../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) uygulama için uygun şekilde uygulanması gerekir. Kullanıcı, herhangi bir müşterinin uygulamaya onay sağlayabilmesi için, oturum açma isteğini ortak bir uç noktaya gönderebilir. Kullanıcı erişimini, kiracı KIMLIĞINE ve Kullanıcı belirtecine göre belirteçte alınan UPN 'yi kontrol edebilirsiniz.
+- SAML 2.0/WS-beslenir için, uygulamanızın SP veya ıDP modunda SAML/WS-Beslilik tümleştirmesi tümleştirme yeteneği olmalıdır. İsteği göndermeden önce bu özelliğin düzgün çalıştığından emin olun.
+- Parola SSO 'SU için, uygulamanızın form kimlik doğrulamasını desteklediğinden emin olun ve bu sayede, tek oturum açma için beklenen şekilde çalışmaya başlayın.
+- En az iki Kullanıcı kayıtlı olarak test için kalıcı bir hesaba ihtiyacınız vardır.
+
+**Geliştiriciler için Azure AD nasıl alınır?**
+
+Tüm Premium Azure AD özellikleriyle 90 gün ücretsiz olan ücretsiz bir test hesabı alabilir ve geliştirme yaparken sizinle birlikte çalışırken genişletilebilir. https://docs.microsoft.com/office/developer-program/office-365-developer-program
 
 ## <a name="step-1---choose-the-right-single-sign-on-standard-for-your-app"></a>1. adım-uygulamanız için sağ çoklu oturum açma standardını seçme
 
@@ -159,9 +176,9 @@ Alternatif olarak, Azure AD kiracısı her Microsoft 365 abonelikle birlikte gel
 
 Kiracınız olduktan sonra, tek oturum açma erişimini etkinleştirip test etmeniz gerekir. 
 
-**OıDC veya Oath uygulamaları için**uygulamanızı çok kiracılı bir uygulama olarak [kaydedin](quickstart-register-app.md) . Desteklenen hesap türlerinde herhangi bir kurumsal dizin ve kişisel Microsoft hesabı seçeneğinde bulunan hesapları seçin.
+**OıDC veya Oath uygulamaları için** uygulamanızı çok kiracılı bir uygulama olarak [kaydedin](quickstart-register-app.md) . Desteklenen hesap türlerinde herhangi bir kurumsal dizin ve kişisel Microsoft hesabı seçeneğinde bulunan hesapları seçin.
 
-**SAML ve WS-Bessel tabanlı uygulamalar için**, Azure AD 'de genel bir SAML şablonu kullanarak [SAML tabanlı çoklu oturum açma uygulamalarını yapılandırırsınız](../manage-apps/configure-saml-single-sign-on.md) .
+**SAML ve WS-Bessel tabanlı uygulamalar için** , Azure AD 'de genel bir SAML şablonu kullanarak [SAML tabanlı çoklu oturum açma uygulamalarını yapılandırırsınız](../manage-apps/configure-saml-single-sign-on.md) .
 
 Ayrıca, gerekirse [tek kiracılı bir uygulamayı birden çok kiracıya dönüştürebilirsiniz](howto-convert-app-to-be-multi-tenant.md) .
 
@@ -202,7 +219,7 @@ Portalda ilk kez oturum açmaya çalıştığınızda, iki ekranda bir tane gör
 
 "İşe yaramadı" iletisini alırsanız, [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurmanız gerekecektir. İsteği göndermek için kullanmak istediğiniz e-posta hesabını belirtin. Gibi bir iş e-posta adresi `name@yourbusiness.com` tercih edilir. Azure AD ekibi, hesabı Microsoft uygulama ağı portalına ekler.
 
-"Erişim ıste" sayfası görürseniz, iş gerekçe ' nı doldurup **erişim iste**' yi seçin.
+"Erişim ıste" sayfası görürseniz, iş gerekçe ' nı doldurup **erişim iste** ' yi seçin.
 
 Hesap eklendikten sonra, Microsoft uygulama ağı portalında oturum açabilir ve giriş sayfasında **Isteği gönder (ISV)** kutucuğunu seçerek isteği gönderebilirsiniz.
 
@@ -236,7 +253,7 @@ Uygulamanızı OpenID Connect kullanarak galerinin listesine eklemek istiyorsan�
 
 ![Galerideki bir OpenID Connect uygulamasını listeleme](./media/howto-app-gallery-listing/openid.png)
 
-**Saml 2,0** veya **WS-besu**kullanarak uygulamanızı Galeriye eklemek Istiyorsanız, gösterildiği gıbı **SAML 2.0/WS-beslenir** ' i seçin.
+**Saml 2,0** veya **WS-besu** kullanarak uygulamanızı Galeriye eklemek Istiyorsanız, gösterildiği gıbı **SAML 2.0/WS-beslenir** ' i seçin.
 
 ![Bir SAML 2,0 veya WS-Fed uygulamasını galeride listeleme](./media/howto-app-gallery-listing/saml.png)
 
@@ -256,6 +273,16 @@ Mevcut Galeri uygulamasını [Microsoft uygulama ağı portalında](https://micr
 
 > [!NOTE]
 > Erişim ile ilgili herhangi bir sorununuz varsa, hesabınızı oluşturmak için önceki bölüme bakın. Bu işe yaramazsa [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun.
+
+### <a name="list-requests-by-customers"></a>İstekleri müşterilere göre Listele
+
+Müşteriler, **müşterilerin**  >  **yeni istek göndermesi** için uygulama istekleri seçerek bir uygulamayı listeleme isteği gönderebilir.
+
+![Müşteri tarafından istenen uygulamalar kutucuğunu gösterir](./media/howto-app-gallery-listing/customer-submit-request.png)
+
+Müşteri tarafından istenen uygulamaların akışı aşağıda verilmiştir.
+
+![Müşteri tarafından istenen uygulamalar akışını gösterir](./media/howto-app-gallery-listing/customer-request-2.png)
 
 
 ### <a name="timelines"></a>Zaman çizelgeleri

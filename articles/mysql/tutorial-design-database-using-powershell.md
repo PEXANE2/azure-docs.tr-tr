@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: tutorial
 ms.date: 04/29/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: b5dd66b16674e1441865f796153e7508acc854d0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 23f95c3f144be5d2a48de698ec336bfbc329c892
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543755"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337243"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-powershell"></a>Öğretici: PowerShell kullanarak MySQL için Azure veritabanı tasarlama
 
@@ -28,7 +28,7 @@ MySQL için Azure Veritabanı, MySQL Community Edition veritabanı altyapısın�
 > - Verileri güncelleştirme
 > - Verileri geri yükleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -207,6 +207,24 @@ Geri yüklenen sunucu için konum ve fiyatlandırma katmanı değerleri, özgün
 Geri yükleme işlemi tamamlandıktan sonra, yeni sunucuyu bulun ve verilerin beklendiği gibi geri yüklendiğini doğrulayın. Yeni sunucu, geri yükleme başlatıldığı sırada mevcut sunucu için geçerli olan Sunucu Yöneticisi oturum açma adı ve parolaya sahiptir. Parola, yeni sunucunun **genel bakış** sayfasından değiştirilebilir.
 
 Geri yükleme sırasında oluşturulan yeni sunucu, özgün sunucuda var olan VNet hizmeti uç noktalarına sahip değildir. Bu kuralların yeni sunucu için ayrı olarak ayarlanması gerekir. Özgün sunucudan gelen güvenlik duvarı kuralları geri yüklendi.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bu öğreticide oluşturulan kaynaklar başka bir hızlı başlangıç veya öğretici için gerekmiyorsa, aşağıdaki örneği çalıştırarak bunları silebilirsiniz.
+
+> [!CAUTION]
+> Aşağıdaki örnek, belirtilen kaynak grubunu ve içinde yer alan tüm kaynakları siler.
+> Bu öğreticinin kapsamı dışındaki kaynaklar belirtilen kaynak grubunda mevcutsa, bunlar da silinir.
+
+```azurepowershell-interactive
+Remove-AzResourceGroup -Name myresourcegroup
+```
+
+Kaynak grubunu silmeden yalnızca bu öğreticide oluşturulan sunucuyu silmek için `Remove-AzMySqlServer` cmdlet 'ini kullanın.
+
+```azurepowershell-interactive
+Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

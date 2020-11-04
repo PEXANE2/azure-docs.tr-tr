@@ -3,17 +3,18 @@ title: Azure Cosmos DB Sync Java SDK v2 için performans ipuçları
 description: Eşitleme Java SDK v2 için Azure Cosmos veritabanı performansını iyileştirecek istemci yapılandırma seçeneklerini öğrenin
 author: anfeldma-ms
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 4b5c8e1a1e810deb9e5315816c122c0ac09ce778
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9a074b872ed19a7d3e6b3e410c69da0f2b78e85e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085556"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339708"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-sync-java-sdk-v2"></a>Azure Cosmos DB Sync Java SDK v2 için performans ipuçları
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -73,7 +74,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
     Mümkün olduğunda Azure Cosmos veritabanıyla aynı bölgedeki Azure Cosmos DB çağıran tüm uygulamaları yerleştirin. Yaklaşık bir karşılaştırma için, 1-2 ms içinde aynı bölgedeki Azure Cosmos DB çağrıları tamamlanır, ancak ABD 'nin batı ve Doğu yakası arasındaki gecikme 50 MS >. Bu gecikme süresi büyük olasılıkla istemciden Azure veri merkezi sınırına geçerken istek tarafından alınan yola bağlı olarak istek üzerine farklılık gösterebilir. Olası en düşük gecikme süresi, çağıran uygulamanın sağlanan Azure Cosmos DB uç noktası ile aynı Azure bölgesinde bulunduğundan emin olarak elde edilir. Kullanılabilir bölgelerin listesi için bkz. [Azure bölgeleri](https://azure.microsoft.com/regions/#services).
 
-    :::image type="content" source="./media/performance-tips/same-region.png" alt-text="Diyagram Azure Cosmos D B bağlantı ilkesini gösterir." border="false":::
+    :::image type="content" source="./media/performance-tips/same-region.png" alt-text="Diyagramda, bilgisayarların bir Cosmos D B hesabına orta katman hizmetleri aracılığıyla bağlanacağı iki bölgedeki istekler ve yanıtlar gösterilmektedir." border="false":::
    
 ## <a name="sdk-usage"></a>SDK kullanımı
 1. **En son SDK 'Yı yükler**

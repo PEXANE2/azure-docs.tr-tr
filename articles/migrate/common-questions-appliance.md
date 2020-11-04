@@ -3,12 +3,12 @@ title: Azure geçişi gereç hakkında SSS
 description: Azure geçişi gereci hakkında sık sorulan soruların yanıtlarını alın.
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: e0fd170859de2d4a9d38fdba0fff0575921c6d32
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 7be6260a7d3eb25ce2854f6949554e2c66019980
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314774"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337600"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure geçişi gereci: genel sorular
 
@@ -42,12 +42,13 @@ Gereç şu şekilde dağıtılabilir:
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Gereç Azure 'a nasıl bağlanır?
 
-Gereç Internet üzerinden veya Azure ExpressRoute kullanarak bağlanabilir. Bu [URL 'Lerin](./migrate-appliance.md#url-access) Azure 'a bağlanmasına yönelik gereç için onaylanmış olduğundan emin olun.
+Gereç Internet üzerinden veya Azure ExpressRoute kullanarak bağlanabilir. 
 
-- Azure ExpressRoute 'u Azure geçişi çoğaltma trafiği için kullanmak üzere Microsoft eşlemesi veya var olan bir genel eşleme gerekir (genel eşleme, yeni ER oluşturmaları için kullanım dışıdır).
-- Azure ExpressRoute üzerinden (yalnızca) özel eşleme etkin olan çoğaltma desteklenmez.
+- Gerecin bu [Azure URL 'lerine](./migrate-appliance.md#url-access)bağlanabildiğinizden emin olun. 
+- ExpressRoute 'ı Microsoft eşlemesi ile birlikte kullanabilirsiniz.  Ortak eşleme kullanım dışıdır ve yeni ExpressRoute devreleri için kullanılamaz.
+- Yalnızca özel eşleme desteklenmez.
 
-Microsoft eşlemesi yapılandırılmış Azure ExpressRoute, çoğaltma trafiği için önerilen yönlendirme etki alanıdır.
+
 
 ## <a name="does-appliance-analysis-affect-performance"></a>Gereç Analizi performansı etkiler mi?
 
@@ -65,9 +66,9 @@ Gerecin Azure URL 'Lerine erişmesi gerekiyor. URL listesini [gözden geçirin](
 
 Azure geçişi gerecinin VM 'lerde topladığı veriler hakkında bilgi edinmek için aşağıdaki makalelere bakın:
 
-- **VMware VM**: toplanan verileri [gözden geçirin](migrate-appliance.md#collected-data---vmware) .
-- **Hyper-V VM**: toplanan verileri [gözden geçirin](migrate-appliance.md#collected-data---hyper-v) .
-- **Fiziksel veya sanal sunucular**: toplanan verileri[gözden geçirin](migrate-appliance.md#collected-data---physical) .
+- **VMware VM** : toplanan verileri [gözden geçirin](migrate-appliance.md#collected-data---vmware) .
+- **Hyper-V VM** : toplanan verileri [gözden geçirin](migrate-appliance.md#collected-data---hyper-v) .
+- **Fiziksel veya sanal sunucular** : toplanan verileri [gözden geçirin](migrate-appliance.md#collected-data---physical) .
 
 ## <a name="how-is-data-stored"></a>Veriler nasıl depolanır?
 

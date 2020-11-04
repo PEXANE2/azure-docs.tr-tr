@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3e851c47e67ac6e42d81b7688e457c2f9e17725b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: dadf710f726a89184e73189041b6735c548d7d75
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543959"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337238"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Öğretici: Azure CLI’yı kullanarak MySQL için Azure Veritabanı tasarlama
 
@@ -27,6 +27,8 @@ MySQL için Azure Veritabanı, MySQL Community Edition veritabanı altyapısın�
 > * Verileri sorgulama
 > * Verileri güncelleştirme
 > * Verileri geri yükleme
+
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 
@@ -196,12 +198,25 @@ Bir sunucu zaman içinde bir noktaya geri yüklendiğinde, özgün sunucunun bel
 
 Komut zaman uyumludur ve sunucu geri yüklendikten sonra döndürülür. Geri yükleme tamamlandığında, oluşturulan yeni sunucuyu bulun. Verilerin beklenen şekilde geri yüklendiğini doğrulayın.
 
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+Bu kaynaklara başka bir hızlı başlangıç/öğretici için gereksinim duymuyorsanız aşağıdaki komutu çalıştırarak kaynakları silebilirsiniz: 
+
+```azurecli-interactive
+az group delete --name myresourcegroup
+```
+
+Yeni oluşturulan sunucuyu silmek istiyorsanız [az mysql server delete](/cli/azure/mysql/server#az-mysql-server-delete) komutunu kullanabilirsiniz.
+
+```azurecli-interactive
+az mysql server delete --resource-group myresourcegroup --name mydemoserver
+```
+
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > [!div class="checklist"]
 > * MySQL için Azure Veritabanı sunucusu oluşturma
 > * Sunucu güvenlik duvarını yapılandırma
-> * Veritabanı oluşturmak için [mysql komut satırı aracı](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) kullanma
+> * Veritabanı oluşturmak için mysql komut satırı aracı kullanma
 > * Örnek verileri yükleme
 > * Verileri sorgulama
 > * Verileri güncelleştirme

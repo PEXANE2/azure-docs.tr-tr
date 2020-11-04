@@ -3,15 +3,16 @@ title: Azure Cosmos DB ORDER BY yan tümcesi
 description: Azure Cosmos DB için SQL ORDER BY yan tümcesi hakkında bilgi edinin. SQL 'i Azure Cosmos DB JSON sorgu dili olarak kullanın.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: tisande
-ms.openlocfilehash: fdbe0f9754cc82ef790409cf2b36a7203b90855b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 887dc13eb5e351688718d2a221e69499557b23e5
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099292"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338314"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB ORDER BY yan tümcesi
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

@@ -4,16 +4,15 @@ description: Azure Izleyici kullanarak Azure Cosmos DB için uyarıları ayarlam
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
-ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 07/16/2020
-ms.openlocfilehash: 1042638dc622e6675c997bc6db8df1d072824816
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e29db7e31438bc7f6ac609384d0d9b92c275e813
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099921"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339555"
 ---
 # <a name="create-alerts-for-azure-cosmos-db-using-azure-monitor"></a>Azure Izleyici kullanarak Azure Cosmos DB uyarı oluşturma
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -84,7 +83,7 @@ Bu bölümde, istekler hız sınırlı olduğunda alınan 429 HTTP durum kodunu 
 
    * Eyleminiz için bir ad girin ve **eylem türü** olarak **e-posta/SMS iletisi/gönderim/ses** ' i seçin. Aşağıdaki ekran görüntüsünde eylem türünün ayrıntıları gösterilmektedir:
 
-     :::image type="content" source="./media/create-alerts/configure-alert-action-type.png" alt-text="Fiyat sınırlı/429 istekleri için uyarı almak üzere mantığı yapılandırma":::
+     :::image type="content" source="./media/create-alerts/configure-alert-action-type.png" alt-text="Uyarı almak için e-posta bildirimi gibi eylem türünü yapılandırın":::
 
 1. **Uyarı kuralı ayrıntıları** bölümünü doldurun:
 

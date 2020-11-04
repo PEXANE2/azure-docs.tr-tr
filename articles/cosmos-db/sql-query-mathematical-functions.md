@@ -3,16 +3,17 @@ title: Azure Cosmos DB sorgu dilinde matematik işlevleri
 description: Bağımsız değişkenler olarak sunulan giriş değerlerine göre bir hesaplama gerçekleştirmek için Azure Cosmos DB matematik işlevleri hakkında bilgi edinin ve sayısal bir değer döndürün.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: b6b2c47d5a4cb71ecf46d1eb1c33e2f667fa8052
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9dc3631b738da78df83113d89d23051033674d11
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078263"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338382"
 ---
 # <a name="mathematical-functions-azure-cosmos-db"></a>Matematik işlevleri (Azure Cosmos DB)  
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -56,7 +57,7 @@ Aşağıdaki desteklenen yerleşik matematik işlevleri, genellikle giriş bağ�
 * [SIGN](sql-query-sign.md)
 * [SIN](sql-query-sin.md)
 * [SQRT](sql-query-sqrt.md)
-* [KARE](sql-query-square.md)
+* [SQUARE](sql-query-square.md)
 * [TAN](sql-query-tan.md)
 * [TRUNC](sql-query-trunc.md)
 

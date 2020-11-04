@@ -7,18 +7,18 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: ce045da7d21c2af0dfde5ee896b4f7f343ce6545
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 57e740e6c47d9518c12a49473e103d0abe772618
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541273"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337022"
 ---
-# <a name="use-github-actions-to-connect-to-azure-mysql"></a>Azure MySQL 'e bağlanmak için GitHub eylemlerini kullanma
+# <a name="quickstart-use-github-actions-to-connect-to-azure-mysql"></a>Hızlı başlangıç: Azure MySQL 'e bağlanmak için GitHub eylemlerini kullanma
 
 [MySQL Için Azure veritabanı](https://azure.microsoft.com/services/mysql/)'na veritabanı güncelleştirmelerini dağıtmak üzere bir iş akışı kullanarak [GitHub eylemleri](https://docs.github.com/en/actions) ile çalışmaya başlayın. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Şunlara ihtiyacınız vardır: 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).

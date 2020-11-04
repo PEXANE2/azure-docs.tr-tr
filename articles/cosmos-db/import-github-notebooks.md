@@ -4,14 +4,15 @@ description: GitHub 'a bağlanmayı ve not defterlerini bir GitHub deposundan Az
 author: deborahc
 ms.author: dech
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: 46170a0f723e912c370eb6e068542a02b9959948
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8315369d2100036a50aae770267aa04bceb2dfb0
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101485"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339810"
 ---
 # <a name="import-notebooks-from-a-github-repo-into-azure-cosmos-db"></a>Not defterlerini GitHub deposundan Azure Cosmos DB içine aktarma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -30,17 +31,15 @@ Azure Cosmos DB içindeki not defterlerini okumak, yazmak ve paylaşmak için ke
 
 1. Yalnızca **ortak depoya** veya **genel ve özel** depolara bağlanmayı seçebileceğiniz bir sekme açılır.  Gerekli seçeneği belirledikten sonra, **erişimi Yetkilendir** ' i seçin. GitHub hesabınızdaki depolara erişmek için Azure Cosmos DB yetkilendirme gerekir.
 
-   :::image type="content" source="./media/import-github-notebooks/authorize-access-github.png" alt-text="GitHub Depolarınıza erişmek için Azure Cosmos DB yetkilendirme&quot;:::
+   :::image type="content" source="./media/import-github-notebooks/authorize-access-github.png" alt-text="GitHub Depolarınıza erişmek için Azure Cosmos DB yetkilendirme":::
 
-1. Yetkilendirmeyi doğrulayabileceğiniz &quot;github.com" Web sayfasına yönlendirilirsiniz. **Yetkilendir Azulersmosdbnotebook** düğmesini seçin ve komut istemine GitHub hesabı parolanızı girin.
+1. Yetkilendirmeyi doğrulayabileceğiniz "github.com" Web sayfasına yönlendirilirsiniz. **Yetkilendir Azulersmosdbnotebook** düğmesini seçin ve komut istemine GitHub hesabı parolanızı girin.
 
 1. Yetkilendirme başarılı olduktan sonra, sizi Azure Cosmos hesabınıza geri götürür. Daha sonra GitHub hesabınızdan tüm ortak/özel depoları görebilirsiniz. Mevcut listeden bir depoyu seçebilirsiniz veya doğrudan URL 'sini kullanarak bir depoyu ekleyebilirsiniz.
 
 1. Gerekli depoyu seçtiğinizde depo girişi, **ayrılmış** depolardan **sabitlenmiş** depolar bölümüne gider. Gerekirse, not defterlerini içeri aktarmak için ilgili deponun belirli bir dalını de seçebilirsiniz.
 
-   :::image type="content" source="./media/import-github-notebooks/choose-repo-branch.png" alt-text="GitHub Depolarınıza erişmek için Azure Cosmos DB yetkilendirme&quot;:::
-
-1. Yetkilendirmeyi doğrulayabileceğiniz &quot;github.com":::
+   :::image type="content" source="./media/import-github-notebooks/choose-repo-branch.png" alt-text="Bir depo ve dal seçin":::
 
 1. İçeri aktarma işlemini gerçekleştirmek için **Tamam ' ı** seçin. Deponuzın seçili dalında bulunan tüm not defterleri Azure Cosmos hesabınıza aktarılır.
 
@@ -56,9 +55,7 @@ Mevcut bir not defterini düzenledikten sonra **Kaydet** ' i seçin. Yaptığın
 
 Değişiklikleri kaydettikten sonra normal GitHub akışında, genellikle değişiklikleri uzak bir ile gönderirsiniz. Bununla birlikte, bu durumda COMMIT seçeneği, güncelleştirmelerinizi GitHub 'a "hazırlama, yürütme ve gönderme" amacını sunar.
 
-:::image type="content" source="./media/import-github-notebooks/commit-changes-github.png" alt-text="GitHub Depolarınıza erişmek için Azure Cosmos DB yetkilendirme&quot;:::
-
-1. Yetkilendirmeyi doğrulayabileceğiniz &quot;github.com":::
+:::image type="content" source="./media/import-github-notebooks/commit-changes-github.png" alt-text="Not defterlerini Düzenle ve değişiklikleri GitHub 'a Kaydet":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

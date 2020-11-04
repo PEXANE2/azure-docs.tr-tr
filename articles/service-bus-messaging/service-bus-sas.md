@@ -2,14 +2,14 @@
 title: Paylaşılan erişim Imzaları ile erişim denetimi Azure Service Bus
 description: Paylaşılan erişim Imzaları ile ilgili Service Bus erişim denetimine genel bakış, Azure Service Bus ile SAS yetkilendirmesi hakkında ayrıntılar.
 ms.topic: article
-ms.date: 07/30/2020
+ms.date: 11/03/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fb90b2ae290752753b58b5e96c6c8a8b23f4c168
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f71320613682f7d4b9f3b706845e68f581b3dc10
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012084"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339419"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Paylaşılan erişim Imzaları ile erişim denetimi Service Bus
 
@@ -36,7 +36,7 @@ Service Bus içinde SAS kimlik doğrulaması, ilişkili erişim hakları olan ad
 
 Her bir Service Bus ad alanı ve her Service Bus varlığı, kurallarından oluşan bir paylaşılan erişim yetkilendirme ilkesine sahiptir. Ad alanı düzeyindeki ilke, bireysel ilke yapılandırmasından bağımsız olarak ad alanındaki tüm varlıklar için geçerlidir.
 
-Her yetkilendirme ilkesi kuralı için üç bilgi parçasına karar verirsiniz: **ad**, **kapsam**ve **haklar**. **Ad** yalnızca bu şekilde yapılır; Bu kapsam içindeki benzersiz bir ad. Kapsam yeterince kolay: Bu, söz konusu kaynağın URI 'sidir. Service Bus ad alanı için kapsam, gibi tam etki alanı adıdır (FQDN) `https://<yournamespace>.servicebus.windows.net/` .
+Her yetkilendirme ilkesi kuralı için üç bilgi parçasına karar verirsiniz: **ad** , **kapsam** ve **haklar**. **Ad** yalnızca bu şekilde yapılır; Bu kapsam içindeki benzersiz bir ad. Kapsam yeterince kolay: Bu, söz konusu kaynağın URI 'sidir. Service Bus ad alanı için kapsam, gibi tam etki alanı adıdır (FQDN) `https://<yournamespace>.servicebus.windows.net/` .
 
 İlke kuralına göre Rights basıp basmadığını değerlendirerek, şunların bir birleşimi olabilir:
 
@@ -48,17 +48,31 @@ Her yetkilendirme ilkesi kuralı için üç bilgi parçasına karar verirsiniz: 
 
 Bir ad alanı veya varlık ilkesi, her biri temel hakları ve gönderme ve dinleme birleşimini kapsayan, en fazla 12 paylaşılan erişim yetkilendirme kuralını tutabilir, üç kural kümesine yer sağlar Bu sınır, SAS ilke deposunun bir kullanıcı veya hizmet hesabı deposu olması amaçlanmayan alt çizgileri çizer. Uygulamanızın Kullanıcı veya hizmet kimliklerine göre Service Bus erişim vermesi gerekiyorsa, bir kimlik doğrulama ve erişim denetiminden sonra SAS belirteçleri veren bir güvenlik belirteci hizmeti uygulamalıdır.
 
-Bir yetkilendirme kuralına *birincil anahtar* ve *İkincil anahtar*atanır. Bunlar şifreli olarak güçlü anahtarlardır. Onları kaybetmeyin veya sızmayın; [Azure Portal][Azure portal]her zaman kullanılabilir. Oluşturulan anahtarlardan birini kullanabilir ve istediğiniz zaman yeniden oluşturabilirsiniz. İlkede bir anahtarı yeniden oluşturursanız veya değiştirirseniz, o anahtara göre daha önce verilen tüm belirteçler anında geçersiz olur. Ancak, bu tür belirteçlere göre oluşturulan devam eden bağlantılar, belirtecin süresi dolana kadar çalışmaya devam edecektir.
+Bir yetkilendirme kuralına *birincil anahtar* ve *İkincil anahtar* atanır. Bunlar şifreli olarak güçlü anahtarlardır. Onları kaybetmeyin veya sızmayın; [Azure Portal][Azure portal]her zaman kullanılabilir. Oluşturulan anahtarlardan birini kullanabilir ve istediğiniz zaman yeniden oluşturabilirsiniz. İlkede bir anahtarı yeniden oluşturursanız veya değiştirirseniz, o anahtara göre daha önce verilen tüm belirteçler anında geçersiz olur. Ancak, bu tür belirteçlere göre oluşturulan devam eden bağlantılar, belirtecin süresi dolana kadar çalışmaya devam edecektir.
 
 Bir Service Bus ad alanı oluşturduğunuzda, ad alanı için **RootManageSharedAccessKey** adlı bir ilke kuralı otomatik olarak oluşturulur. Bu ilke, tüm ad alanı için yönetme izinlerine sahiptir. Bu kuralı bir yönetim **kök** hesabı gibi işlemeniz önerilir ve uygulamanızda kullanmayın. Portalda ad alanı için **yapılandırma** sekmesinde PowerShell veya Azure CLI aracılığıyla ek ilke kuralları oluşturabilirsiniz.
+
+## <a name="best-practices-when-using-sas"></a>SAS kullanırken en iyi uygulamalar
+Uygulamalarınızda paylaşılan erişim imzaları kullandığınızda, iki olası riski bilmeniz gerekir:
+
+- SAS sızsa, onu alan herkes tarafından kullanılabilir ve bu da Event Hubs kaynaklarınızın güvenliğini sağlayabilir.
+- Bir istemci uygulaması için belirtilen bir SAS dolarsa ve uygulama hizmetinizden yeni bir SAS alamadıysa, uygulamanın işlevselliği ipuçda olabilir.
+
+Paylaşılan erişim imzalarını kullanmaya yönelik aşağıdaki öneriler, bu riskleri azaltmaya yardımcı olabilir:
+
+- **Gerektiğinde ISTEMCILERIN SAS 'yi otomatik olarak yenilemesini sağlama** : SAS sağlayan hizmet kullanılamıyorsa, yeniden denemeler için zaman aşımına izin vermek üzere istemcilerin sa 'yı sona ermeden önce yenilemesi gerekir. SAS 'nizin, sona erme döneminde tamamlanması beklenen kısa süreli, kısa süreli işlemler için kullanılması gerekiyorsa, SAS 'nin yenilenmesi beklenmediğinden bu işlem gereksiz olabilir. Ancak, SAS üzerinden düzenli olarak istek yapan istemciniz varsa, süre sonu olma olasılığı oynatma olur. Temel olarak, istemcinin yenilemeyi yeterince erken istediğini güvence altına almak için (daha önce belirtildiği gibi), istemcinin yenileme gereksinimini yeterince erken (daha önce belirtildiği gibi) dengelenmesi gerekir (başarılı bir yenilemeden önce SAS süresi dolduğunda kesintiye uğramamak için).
+- **SAS başlangıç zamanına dikkat** edın: SAS için başlangıç saatini **Şimdi** olarak ayarlarsanız, saat farkı (farklı makinelere göre geçerli zaman farkları) nedeniyle, hatalardan bazıları ilk birkaç dakika boyunca zaman zaman gözlemlenebilir. Genel olarak, başlangıç saatini geçmişte en az 15 dakika olacak şekilde ayarlayın. Ya da, hiç ayarlama yapmayın, bu, tüm durumlarda hemen geçerli hale gelir. Aynı genellikle süre sonu zamanı için de geçerlidir. Her türlü isteğe bağlı olarak 15 dakikalık saatin ölçeğini çarpıtmanız gerektiğini unutmayın. 
+- **Erişilecek kaynağa özel olun** : en iyi güvenlik uygulaması, kullanıcıya gereken en düşük ayrıcalıkları sağlamaktır. Bir kullanıcının yalnızca tek bir varlığa okuma erişimi olması gerekiyorsa, tüm varlıklara okuma/yazma/silme erişimi değil, onlara bu tek varlığa yönelik okuma erişimi izni verin. Bu, SAS 'nin bir saldırgan içinde daha az gücü olduğundan, SAS tehlikeye atılırsa hasar azaltır.
+- **Her zaman SAS kullanma** : bazen Event Hubs karşı belirli bir işlemle ilişkili RISKLER, SAS avantajlarından yararlanır. Bu gibi işlemler için, iş kuralı doğrulama, kimlik doğrulama ve denetim sonrasında Event Hubs yazan bir orta katman hizmeti oluşturun.
+- **Her zaman https kullan** : SAS oluşturmak veya dağıtmak için her zaman https kullanın. Bir SAS HTTP üzerinden geçirilirse ve bu bağlantıyı ele alırsanız bir saldırgan, SAS 'yi okuyabilir ve bunu amaçlanan kullanıcının sahip olduğu gibi kullanabilir, önemli verilerin güvenliğini sağlayabilir veya kötü amaçlı kullanıcı tarafından verilerin bozulmasına izin verebilir.
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>Paylaşılan erişim Imzası kimlik doğrulaması yapılandırması
 
 [Sharedaccessauthorizationrule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) kuralını Service Bus ad alanları, kuyruklar veya konular üzerinde yapılandırabilirsiniz. Bir Service Bus abonelikte [Sharedaccessauthorizationrule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) yapılandırması şu anda desteklenmiyor, ancak aboneliklerde erişim sağlamak için bir ad alanı veya konu üzerinde yapılandırılan kuralları kullanabilirsiniz. Bu yordamı gösteren bir çalışan örnek için, [Service Bus abonelikleri Ile paylaşılan erişim imzası (SAS) kimlik doğrulamasını kullanma](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) örneği ' ne bakın.
 
-!['LARıNıN](./media/service-bus-sas/service-bus-namespace.png)
+![SAS](./media/service-bus-sas/service-bus-namespace.png)
 
-Bu şekilde, her ikisi de S1 ve konu başlığı için aşağıdaki sıraya yönelik *listenRuleNS* *olarak,* *Listenruleq* ve *Sendruleq* *Only, S1*ve *sendrulet* yalnızca T1 konusunda geçerlidir.
+Bu şekilde, her ikisi de S1 ve konu başlığı için aşağıdaki sıraya yönelik *listenRuleNS* *olarak,* *Listenruleq* ve *Sendruleq* *Only, S1* ve *sendrulet* yalnızca T1 konusunda geçerlidir.
 
 ## <a name="generate-a-shared-access-signature-token"></a>Paylaşılan erişim Imza belirteci oluştur
 
@@ -73,7 +87,7 @@ SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-e
 * **`sr`** -Erişilmekte olan kaynağın URI 'SI.
 * **`sig`** İmza.
 
-, `signature-string` Kaynak URI üzerinden (önceki bölümde açıklandığı gibi**kapsam** ) ve LF ile ayrılmış olarak belirteç süre sonu anlık öğesinin dize GÖSTERIMINE göre hesaplanan SHA-256 karmasıdır.
+, `signature-string` Kaynak URI üzerinden (önceki bölümde açıklandığı gibi **kapsam** ) ve LF ile ayrılmış olarak belirteç süre sonu anlık öğesinin dize GÖSTERIMINE göre hesaplanan SHA-256 karmasıdır.
 
 Karma hesaplama aşağıdaki sözde koda benzer ve 256 bit/32 baytlık karma değer döndürür.
 
@@ -85,7 +99,7 @@ Belirteç, karma değeri aynı parametrelerle yeniden hesaplanabilmesi, böylece
 
 Kaynak URI 'SI, erişimin talep aldığı Service Bus kaynağın tam URI 'sidir. Örneğin, veya,,, `http://<namespace>.servicebus.windows.net/<entityPath>` `sb://<namespace>.servicebus.windows.net/<entityPath>` `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3` . 
 
-**URI [yüzde kodlamalı](/dotnet/api/system.web.httputility.urlencode?view=netcore-3.1)olmalıdır.**
+**URI [yüzde kodlamalı](/dotnet/api/system.web.httputility.urlencode)olmalıdır.**
 
 İmzalama için kullanılan paylaşılan erişim yetkilendirme kuralı, bu URI tarafından belirtilen varlıkta veya hiyerarşik üst öğelerinden biri ile yapılandırılmış olmalıdır. Örneğin, `http://contoso.servicebus.windows.net/contosoTopics/T1` veya `http://contoso.servicebus.windows.net` Önceki örnekte.
 
@@ -160,7 +174,7 @@ sendClient.Send(helloMessage);
 
 Belirteç sağlayıcıyı, diğer istemcilere geçirilecek belirteçleri vermek için doğrudan de kullanabilirsiniz.
 
-Bağlantı dizeleri bir kural adı (*Sharedaccesskeyname*) ve kural anahtarı (*Sharedaccesskey*) veya daha önce verilen bir belirteç (*sharedaccesssignature*) içerebilir. Bir bağlantı dizesini kabul eden herhangi bir oluşturucuya veya fabrika yöntemine geçirilen bağlantı dizesinde mevcut olduğunda, SAS belirteç sağlayıcısı otomatik olarak oluşturulur ve doldurulur.
+Bağlantı dizeleri bir kural adı ( *Sharedaccesskeyname* ) ve kural anahtarı ( *Sharedaccesskey* ) veya daha önce verilen bir belirteç ( *sharedaccesssignature* ) içerebilir. Bir bağlantı dizesini kabul eden herhangi bir oluşturucuya veya fabrika yöntemine geçirilen bağlantı dizesinde mevcut olduğunda, SAS belirteç sağlayıcısı otomatik olarak oluşturulur ve doldurulur.
 
 Service Bus geçişleri ile SAS yetkilendirmesi kullanmak için Service Bus ad alanında yapılandırılmış SAS anahtarlarını kullanabileceğinizi unutmayın. Ad alanında ( [RelayDescription](/dotnet/api/microsoft.servicebus.messaging.relaydescription)) bir[nesne olarak açıkça](/dotnet/api/microsoft.servicebus.namespacemanager) bir geçiş oluşturursanız, bu geçiş için SAS kurallarını ayarlayabilirsiniz. Service Bus abonelikleriyle SAS yetkilendirmesi kullanmak için, Service Bus bir ad alanında veya bir konuda yapılandırılmış SAS anahtarlarını kullanabilirsiniz.
 

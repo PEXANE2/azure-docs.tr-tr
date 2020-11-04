@@ -4,16 +4,17 @@ description: 'Öğretici: sorgu PLAYIN kullanarak Azure Cosmos DB SQL sorguları
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: af26d0e6c2ada299798aea5b57b704d85874147d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c206b68495b09988e49f37433ccd5616acd29cb7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073817"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337787"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Öğretici: SQL API’sini kullanarak Azure Cosmos DB’yi sorgulama
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -65,7 +66,7 @@ Mevcut örnek veri kümesinde sorgular çalıştıran [Sorgu oyun alanı](https:
 SQL sorguları hakkında daha fazla bilgi için bkz:
 * [SQL sorgusu ve SQL sözdizimi](sql-query-getting-started.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide, bir Azure Cosmos DB hesabınız ve koleksiyonunuz olduğu varsayılır. Bu kaynaklardan hiçbiri yok mu? [5 dakikalık hızlı başlangıcı](create-cosmosdb-resources-portal.md) tamamlayın.
 

@@ -3,15 +3,16 @@ title: Azure Işlevleri zamanlayıcısını kullanarak zamanlamaya göre Azure C
 description: PowerShell ve Azure Işlevleri kullanarak Azure Cosmos DB aktarım hızını nasıl ölçeklendireceğinizi öğrenin.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 1db64ecc231a55e59321a5c94097668f3ddc91d8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c60f3fc6b4ce4a1aead273fedb81e39de697f576
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085420"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339266"
 ---
 # <a name="scale-azure-cosmos-db-throughput-by-using-azure-functions-timer-trigger"></a>Azure Işlevleri Zamanlayıcı tetikleyicisi kullanarak Azure Cosmos DB aktarım hızını ölçeklendirme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

@@ -3,15 +3,16 @@ title: Bı Analytics araçlarını kullanarak Azure Cosmos DB bağlanma
 description: Azure Cosmos DB ODBC sürücüsünü kullanarak tablo ve görünüm oluşturma hakkında bilgi edinin ve bu sayede, normalleştirilmiş verilerin bı ve Data Analytics yazılımında görüntülenmesini sağlayabilirsiniz.
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: 7df9a34923ed8cd0db45df9af4feb28520d45e3a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e7d6a67f5322c5bb640430f66ccb0917f6faada1
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097609"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339793"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>ODBC sürücüsü ile bı Analytics araçlarını kullanarak Azure Cosmos DB bağlanma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -57,16 +58,27 @@ Bu, ODBC sürücüsünün geldiği yerdir. ODBC sürücüsünü kullanarak, Azur
 
 1. **Azure Cosmos DB ODBC sürücüsü SDN kurulumu** penceresinde, aşağıdaki bilgileri girin: 
 
-    :::image type="content" source="./media/odbc-driver/odbc-driver-dsn-setup.png" alt-text="ODBC veri kaynağı Yöneticisi Azure Cosmos DB":::
+    :::image type="content" source="./media/odbc-driver/odbc-driver-dsn-setup.png" alt-text="Azure Cosmos DB ODBC sürücüsü DSN kurulum penceresi":::
     - **Veri kaynağı adı** : ODBC DSN için kendi kolay adınız. Bu ad Azure Cosmos DB hesabınızda benzersizdir, bu nedenle birden çok hesabınız varsa bunu uygun şekilde adlandırın.
     - **Açıklama** : veri kaynağının kısa bir açıklaması.
     - **Ana bilgisayar** : Azure Cosmos DB hesabınız için URI. Bunu, aşağıdaki ekran görüntüsünde gösterildiği gibi Azure portal Azure Cosmos DB Keys sayfasından alabilirsiniz. 
     - **Erişim anahtarı** : aşağıdaki ekran görüntüsünde gösterildiği gibi Azure Portal Azure Cosmos DB anahtarları sayfasından birincil veya ikincil, salt okuma veya salt yazılır anahtar. DSN salt okuma veri işleme ve raporlama için kullanılıyorsa, salt okunurdur anahtarını kullanmanızı öneririz.
-    :::image type="content" source="./media/odbc-driver/odbc-cosmos-account-keys.png" alt-text="ODBC veri kaynağı Yöneticisi Azure Cosmos DB" alt anahtarına gidin.
+    :::image type="content" source="./media/odbc-driver/odbc-cosmos-account-keys.png" alt-text="Azure Cosmos DB Keys sayfası":::
+    - **Için erişim anahtarını şifreleyin** : Bu makinenin kullanıcılarına göre en iyi seçimi seçin. 
+    
+1. Azure Cosmos DB hesabınıza bağlanabildiğinizden emin olmak için **Test** düğmesine tıklayın. 
+
+1.  **Gelişmiş Seçenekler** ' e tıklayın ve aşağıdaki değerleri ayarlayın:
+    *  **REST API sürüm** : işlemlerinizin [REST API sürümünü](/rest/api/cosmos-db/) seçin. Varsayılan 2015-12-16. [Büyük bölüm anahtarları](large-partition-keys.md) olan kapsayıcınız varsa ve REST API sürüm 2018-12-31 ' yı gerekliyse:
+        - REST API sürümü için **2018-12-31** yazın
+        - **Kayıt defteri Düzenleyicisi** uygulamasını bulmak ve açmak için **Başlat** menüsünde "regedit" yazın.
+        - Kayıt Defteri Düzenleyicisi 'nde yola gidin: **Computer\HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC.INI**
+        - DSN 'niz ile aynı ada sahip yeni bir alt anahtar oluşturun, örn. "contoso hesabı ODBC DSN".
+        - "Contoso hesabı ODBC DSN" alt anahtarına gidin.
         - Yeni bir **dize** değeri eklemek için sağ tıklayın:
             - Değer adı: **ıgnoresessiontoken**
             - Değer verisi: **1** 
-             :::image type="content" source="./media/odbc-driver/cosmos-odbc-edit-registry.png" alt-text="ODBC veri kaynağı Yöneticisi Azure Cosmos DB":::
+             :::image type="content" source="./media/odbc-driver/cosmos-odbc-edit-registry.png" alt-text="kayıt defteri Düzenleyicisi ayarları":::
     - **Sorgu tutarlılığı** : işlemlerinizin [tutarlılık düzeyini](consistency-levels.md) seçin. Varsayılan değer oturumdur.
     - **Yeniden deneme sayısı** : hizmet hızı sınırlaması nedeniyle ilk istek tamamlanmazsa bir işlemin yeniden denenme sayısını girin.
     - **Şema dosyası** : burada birkaç seçeneğiniz vardır.
@@ -76,15 +88,15 @@ Bu, ODBC sürücüsünün geldiği yerdir. ODBC sürücüsünü kullanarak, Azur
 
 1. **Azure Cosmos DB ODBC sürücüsü DSN kurulum** penceresini tamamlayıp kapattıktan sonra, yenı Kullanıcı DSN 'SI Kullanıcı DSN sekmesine eklenir.
 
-    :::image type="content" source="./media/odbc-driver/odbc-driver-user-dsn.png" alt-text="ODBC veri kaynağı Yöneticisi Azure Cosmos DB":::
+    :::image type="content" source="./media/odbc-driver/odbc-driver-user-dsn.png" alt-text="Kullanıcı DSN sekmesinde yeni Azure Cosmos DB ODBC DSN 'SI":::
 
 ## <a name="step-3-create-a-schema-definition-using-the-container-mapping-method"></a><a id="#container-mapping"></a>3. Adım: kapsayıcı eşleme yöntemini kullanarak bir şema tanımı oluşturma
 
-Kullanabileceğiniz iki tür örnekleme yöntemi vardır: **kapsayıcı eşleme** veya **tablo sınırlayıcıları** . Örnekleme oturumu her iki örnekleme yönteminden yararlanabilir, ancak her kapsayıcı yalnızca belirli bir örnekleme yöntemi kullanabilir. Aşağıdaki adımlar, kapsayıcı eşleme yöntemi kullanılarak bir veya daha fazla kapsayıcıdaki veriler için bir şema oluşturur. Bu örnekleme yöntemi, verilerin yapısını belirleyebilmek için bir kapsayıcının sayfasındaki verileri alır. ODBC tarafındaki bir tabloya kapsayıcı atar. Bu örnekleme yöntemi, bir kapsayıcıdaki veriler hogenou olduğunda etkilidir ve hızlıdır. Bir kapsayıcı farklı türde veriler içeriyorsa, kapsayıcıdaki veri yapılarını belirlemede daha sağlam bir örnekleme yöntemi sağladığından [tablo sınırlandırıcı eşleme yöntemini](#table-mapping) kullanmanızı öneririz. 
+Kullanabileceğiniz iki tür örnekleme yöntemi vardır: **kapsayıcı eşleme** veya **tablo sınırlayıcıları**. Örnekleme oturumu her iki örnekleme yönteminden yararlanabilir, ancak her kapsayıcı yalnızca belirli bir örnekleme yöntemi kullanabilir. Aşağıdaki adımlar, kapsayıcı eşleme yöntemi kullanılarak bir veya daha fazla kapsayıcıdaki veriler için bir şema oluşturur. Bu örnekleme yöntemi, verilerin yapısını belirleyebilmek için bir kapsayıcının sayfasındaki verileri alır. ODBC tarafındaki bir tabloya kapsayıcı atar. Bu örnekleme yöntemi, bir kapsayıcıdaki veriler hogenou olduğunda etkilidir ve hızlıdır. Bir kapsayıcı farklı türde veriler içeriyorsa, kapsayıcıdaki veri yapılarını belirlemede daha sağlam bir örnekleme yöntemi sağladığından [tablo sınırlandırıcı eşleme yöntemini](#table-mapping) kullanmanızı öneririz. 
 
 1. [Azure Cosmos veritabanınıza bağlanma](#connect)bölümündeki 1-4 adımlarını tamamladıktan sonra, **Azure Cosmos DB ODBC sürücüsü DSN kurulum** penceresinde **şema Düzenleyicisi** ' ne tıklayın.
 
-    :::image type="content" source="./media/odbc-driver/odbc-driver-schema-editor.png" alt-text="ODBC veri kaynağı Yöneticisi Azure Cosmos DB":::
+    :::image type="content" source="./media/odbc-driver/odbc-driver-schema-editor.png" alt-text="Azure Cosmos DB ODBC sürücüsü DSN kurulum penceresinde şema Düzenleyicisi düğmesi":::
 1. **Şema Düzenleyicisi** penceresinde **Yeni oluştur** ' a tıklayın.
     **Şema oluştur** penceresi Azure Cosmos DB hesabındaki tüm kapsayıcıları görüntüler. 
 
@@ -101,7 +113,7 @@ Kullanabileceğiniz iki tür örnekleme yöntemi vardır: **kapsayıcı eşleme*
 
 ## <a name="step-4-create-a-schema-definition-using-the-table-delimiters-mapping-method"></a><a id="table-mapping"></a>4. Adım: tablo sınırlayıcıları eşleme yöntemini kullanarak bir şema tanımı oluşturma
 
-Kullanabileceğiniz iki tür örnekleme yöntemi vardır: **kapsayıcı eşleme** veya **tablo sınırlayıcıları** . Örnekleme oturumu her iki örnekleme yönteminden yararlanabilir, ancak her kapsayıcı yalnızca belirli bir örnekleme yöntemi kullanabilir. 
+Kullanabileceğiniz iki tür örnekleme yöntemi vardır: **kapsayıcı eşleme** veya **tablo sınırlayıcıları**. Örnekleme oturumu her iki örnekleme yönteminden yararlanabilir, ancak her kapsayıcı yalnızca belirli bir örnekleme yöntemi kullanabilir. 
 
 Aşağıdaki adımlarda **tablo sınırlayıcıları** eşleme yöntemi kullanılarak bir veya daha fazla kapsayıcıda bulunan veriler için bir şema oluşturulur. Bu örnekleme yöntemini, kapsayıcılarınız heterojen veri türü içerdiğinde kullanmanızı öneririz. Bu yöntemi, örneklemeyi bir öznitelikler kümesi ve buna karşılık gelen değerlerle sınırlamak için kullanabilirsiniz. Örneğin, bir belge "tür" özelliği içeriyorsa, örneklemeyi bu özelliğin değerleriyle kapsamını belirleyebilirsiniz. Örneklemenin nihai sonucu, belirttiğiniz türe ilişkin her bir değer için bir tablo kümesi olacaktır. Örneğin, Type = düzlemi bir düzlem tablosu üretirken Type = otomobil bir otomobil tablosu oluşturacak.
 
@@ -152,7 +164,7 @@ Bağlı sunucu bağlantısı ayarlayarak, SQL Server Management Studio (SSMS) Az
     
 Yeni bağlı sunucu adını görmek için bağlı sunucular listesini yenileyin.
 
-:::image type="content" source="./media/odbc-driver/odbc-driver-linked-server-ssms.png" alt-text="ODBC veri kaynağı Yöneticisi Azure Cosmos DB":::
+:::image type="content" source="./media/odbc-driver/odbc-driver-linked-server-ssms.png" alt-text="SSMS 'de bağlı sunucu":::
 
 ### <a name="query-linked-database"></a>Bağlantılı veritabanını sorgula
 
@@ -186,7 +198,7 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 
 Verilerinize yönelik bir görünüm oluşturmak için **şema Düzenleyicisi** penceresinde, **tanımları görüntüle** sütununda, kapsayıcının örneğine örnek olarak **Ekle** ' ye tıklayın. 
 
-:::image type="content" source="./media/odbc-driver/odbc-driver-create-view.png" alt-text="ODBC veri kaynağı Yöneticisi Azure Cosmos DB":::
+:::image type="content" source="./media/odbc-driver/odbc-driver-create-view.png" alt-text="Verilerin görünümünü oluşturma":::
 
 
 Ardından **tanımları görüntüle** penceresinde şunları yapın:
@@ -195,7 +207,7 @@ Ardından **tanımları görüntüle** penceresinde şunları yapın:
 
 1. **Görünüm düzenleme** penceresinde bir Azure Cosmos DB sorgusu girin. Bu, örneğin [Azure Cosmos DB BIR SQL sorgusu](./sql-query-getting-started.md)olmalıdır `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Manager FROM c WHERE c.City = "Seattle"` ve ardından **Tamam** ' a tıklayın.
 
-    :::image type="content" source="./media/odbc-driver/odbc-driver-create-view-2.png" alt-text="ODBC veri kaynağı Yöneticisi Azure Cosmos DB":::
+    :::image type="content" source="./media/odbc-driver/odbc-driver-create-view-2.png" alt-text="Görünüm oluştururken sorgu Ekle":::
 
 
 Dilediğiniz kadar çok görünüm oluşturabilirsiniz. Görünümleri tanımlamayı tamamladıktan sonra verileri örnekleyebilirsiniz. 
@@ -208,21 +220,21 @@ Tüm ODBC uyumlu araçlarla Azure Cosmos DB bağlanmak için yeni DSN 'nizi kull
 
 1. **Veri al** ' a tıklayın.
 
-    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data.png" alt-text="ODBC veri kaynağı Yöneticisi Azure Cosmos DB":::
+    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data.png" alt-text="Power BI Desktop veri al":::
 
 1. **Veri al** penceresinde **diğer**  |  **ODBC**  |  **bağlantısı** ' na tıklayın.
 
-    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-2.png" alt-text="ODBC veri kaynağı Yöneticisi Azure Cosmos DB":::
+    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-2.png" alt-text="Veri Al Power BI ODBC veri kaynağını seçin":::
 
 1. **ODBC** penceresinde, oluşturduğunuz veri kaynağı adını seçin ve ardından **Tamam** ' a tıklayın. **Gelişmiş Seçenekler** girdilerini boş bırakabilirsiniz.
 
-   :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-3.png" alt-text="ODBC veri kaynağı Yöneticisi Azure Cosmos DB":::
+   :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-3.png" alt-text="Verileri al Power BI veri kaynağı adı (DSN) seçin":::
 
 1. **BIR ODBC sürücüsü kullanarak bir veri kaynağına erişin** penceresinde, **varsayılan veya özel** ' i seçin ve ardından **Bağlan** ' a tıklayın. **Kimlik bilgisi bağlantı dizesi özelliklerini** eklemeniz gerekmez.
 
 1. **Gezgin** penceresinde, sol bölmede veritabanını, şemayı genişletin ve ardından tabloyu seçin. Sonuçlar bölmesi, oluşturduğunuz şemayı kullanarak verileri içerir.
 
-    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-4.png" alt-text="ODBC veri kaynağı Yöneticisi Azure Cosmos DB":::
+    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-4.png" alt-text="Veri Al Power BI tablo seçin":::
 
 1. Power BI masaüstündeki verileri görselleştirmek için tablo adının önündeki kutuyu işaretleyin ve ardından **Yükle** ' ye tıklayın.
 

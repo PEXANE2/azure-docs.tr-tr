@@ -3,15 +3,16 @@ title: Azure Cosmos DB SQL sabitleri
 description: Azure Cosmos DB içindeki SQL sorgu sabitlerinin belirli bir veri değerini göstermek için nasıl kullanıldığı hakkında bilgi edinin
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: ebc1f66e68d4cf37546e7d33a9b723385330395c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b0973dca980b65b85ac66cc1b3c9ed45f0f9c779
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100873"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339215"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>SQL sorgu sabitlerini Azure Cosmos DB  
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,7 +25,7 @@ ms.locfileid: "93100873"
 |-|-|  
 |**Tanımlayan**|Tek değer: **tanımsız**|  
 |**Null**|Tek değer: **null**|  
-|**Boolean**|Değerler: **false** , **true** .|  
+|**Boole**|Değerler: **false** , **true**.|  
 |**Sayı**|Bir çift duyarlıklı kayan noktalı sayı, IEEE 754 standardı.|  
 |**Dize**|Sıfır veya daha fazla Unicode karakterden oluşan bir dizi. Dizeler tek veya çift tırnak içine alınmalıdır.|  
 |**Dizide**|Sıfır veya daha fazla öğe dizisi. Her öğe, **tanımsız** bir değer hariç herhangi bir skaler veri türü değeri olabilir.|  

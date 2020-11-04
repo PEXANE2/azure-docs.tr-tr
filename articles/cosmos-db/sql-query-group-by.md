@@ -3,15 +3,16 @@ title: Azure Cosmos DB içindeki GROUP BY yan tümcesi
 description: Azure Cosmos DB için GROUP BY yan tümcesi hakkında bilgi edinin.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: tisande
-ms.openlocfilehash: 48f272ea9005d8eb24f639b4039a84163441cffa
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 71314e6999031f52ebbfc582b43684ab5a17a261
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101451"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338827"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB içindeki GROUP BY yan tümcesi
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

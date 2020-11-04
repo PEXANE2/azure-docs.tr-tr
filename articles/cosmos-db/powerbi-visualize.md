@@ -3,15 +3,16 @@ title: Azure Cosmos DB Bağlayıcısı için Power BI öğreticisi
 description: JSON 'u içeri aktarmak, öngörülü raporlar oluşturmak ve Azure Cosmos DB ve Power BI bağlayıcısını kullanarak verileri görselleştirmek için bu Power BI öğreticisini kullanın.
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: c6da4eef15f8f0946e17e910fa39aee1f34fccf0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3b47c7e8f31b51d51f5fad20cc068debb1dc2927
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096385"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339742"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Power BI bağlayıcısını kullanarak Azure Cosmos DB verilerini görselleştirme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -26,7 +27,7 @@ Bu makalede Azure Cosmos DB hesabını Power BI Desktop'a bağlamak için gereke
 > [!NOTE]
 > Power BI Bağlayıcısı ile Azure Cosmos DB bağlantı şu anda yalnızca Azure Cosmos DB SQL API ve Gremlin API hesapları için desteklenmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu Power BI öğreticideki yönergeleri takip etmeden önce aşağıdaki kaynaklara erişiminizin olduğundan emin olun:
 
 * [En son Power BI Desktop sürümünü indirin](https://powerbi.microsoft.com/desktop).
@@ -83,7 +84,7 @@ Azure Cosmos DB hesabından Volcano verilerini alıp etkileşimli bir Power BI r
 
 4. **Azure** ' a tıklayın, **Azure Cosmos DB (Beta)** öğesini seçin ve ardından **Bağlan** ' a tıklayın. 
 
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbigetdata.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbigetdata.png" alt-text="Veri Al-Power BI Bağlayıcısı Power BI Desktop":::
 
 5. **Önizleme Bağlayıcısı** sayfasında **devam** ' a tıklayın. **Azure Cosmos DB** penceresi görüntülenir.
 
@@ -99,36 +100,36 @@ Azure Cosmos DB hesabından Volcano verilerini alıp etkileşimli bir Power BI r
 
 10. Şimdi, alınacak verileri içeren bir koleksiyon seçin, **volcano1** (koleksiyon adınız farklı olabilir) seçeneğini belirleyin.
     
-    Önizleme bölmesi, **kayıt** öğelerinin bir listesini gösterir.  Belge, Power BI bir **kayıt** türü olarak gösterilir. Benzer şekilde, bir belge içinde iç içe geçmiş bir JSON bloğu da bir **kayıttır** .
+    Önizleme bölmesi, **kayıt** öğelerinin bir listesini gösterir.  Belge, Power BI bir **kayıt** türü olarak gösterilir. Benzer şekilde, bir belge içinde iç içe geçmiş bir JSON bloğu da bir **kayıttır**.
     
-    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbinavigator.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
+    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbinavigator.png" alt-text="Azure Cosmos DB Power BI Bağlayıcısı için Power BI öğreticisi-Gezgin penceresi":::
 
 12. Verileri dönüştürmek için sorgu düzenleyicisini yeni bir pencerede başlatmak üzere **Düzenle** ' ye tıklayın.
 
 ## <a name="flattening-and-transforming-json-documents"></a>JSON belgelerini düzleştirme ve dönüştürme
 1. Orta bölmedeki **belge** sütununun bulunduğu Power BI Sorgu Düzenleyicisi penceresine geçin.
 
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png" alt-text="Power BI Desktop Sorgu Düzenleyicisi":::
 
 1. **Belge** sütun üstbilgisinin sağ tarafındaki genişleticiye tıklayın.  Bir alan listesi ile bağlam menüsü görüntülenir.  Raporunuz için ihtiyacınız olan alanları seçin; örneğin, Volcano adı, ülke, bölge, konum, yükseltme, tür, durum ve son bilgi alma. **Özgün sütun adını önek olarak kullan** kutusunun işaretini kaldırın ve ardından **Tamam** ' a tıklayın.
    
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png" alt-text="Azure Cosmos DB Power BI Bağlayıcısı için Power BI öğreticisi-Belgeleri Genişlet":::
 
 1. Orta bölmede, seçili alanlarla sonucun önizlemesi görüntülenir.
    
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflatten.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflatten.png" alt-text="Azure Cosmos DB Power BI Bağlayıcısı için Power BI öğreticisi-sonuçları Düzleştir":::
 
 1. Örneğimizde Location özelliği bir belgedeki GeoJSON bloğudur.  Görebileceğiniz gibi, konum Power BI Desktop bir **kayıt** türü olarak gösterilir.  
 
 1. Belge. Location sütun üstbilgisinin sağ tarafındaki genişleticiye tıklayın.  Tür ve koordinat alanları içeren bağlam menüsü görüntülenir.  Koordinatlar alanını seçelim, **ön ek seçili olmadığından özgün sütun adını kullan** ' ın seçili olduğundan emin olun ve **Tamam** ' a tıklayın.
    
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png" alt-text="Azure Cosmos DB Power BI Bağlayıcısı-konum kaydı için Power BI öğreticisi":::
 
 1. Orta bölmede artık **liste** türü bir koordinat sütunu gösteriliyor.  Öğreticinin başlangıcında gösterildiği gibi, bu öğreticideki GeoJSON verileri, koordinatlar dizisine kaydedilmiş Enlem ve boylam değerlerini içeren nokta türüdür.
    
    Koordinatlar [0] öğesi, [1] koordinatları enlem temsil ettiğinde Boylam temsil ediyor.
 
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png" alt-text="Azure Cosmos DB Power BI bağlayıcı koordinatları listesi için Power BI öğreticisi":::
 
 1. Koordinatları dizisini düzleştirmek için, LatLong adlı **özel bir sütun** oluşturun.  **Sütun Ekle** şeridini seçin ve **özel sütun** ' a tıklayın.  **Özel sütun** penceresi görüntülenir.
 
@@ -138,28 +139,28 @@ Azure Cosmos DB hesabından Volcano verilerini alıp etkileşimli bir Power BI r
    
    DAX işlevleri de dahil olmak üzere veri çözümleme Ifadeleri (DAX) hakkında daha fazla bilgi için lütfen [Power BI Desktop Içindeki Dax temel](/power-bi/desktop-quickstart-learn-dax-basics)bilgilerini ziyaret edin.
    
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png" alt-text="Azure Cosmos DB Power BI Bağlayıcısı için Power BI öğreticisi-özel sütun Ekle":::
 
 1. Şimdi, Orta bölmede, değerlerle doldurulan yeni bir ve daha fazla sütun gösterilmektedir.
     
-    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
+    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png" alt-text="Azure Cosmos DB Power BI Bağlayıcısı için Power BI öğreticisi-özel LatLong sütunu":::
     
     Yeni sütunda bir hata alırsanız, sorgu ayarları altındaki uygulanan adımların aşağıdaki şekilde eşleştiğinden emin olun:
     
-    :::image type="content" source="./media/powerbi-visualize/power-bi-applied-steps.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
+    :::image type="content" source="./media/powerbi-visualize/power-bi-applied-steps.png" alt-text="Uygulanan adımlar kaynak, gezinti, genişletilmiş belge, genişletilmiş belge. location, özel eklendi":::
     
     Adımlarınız farklıysa, ek adımları silip özel sütunu yeniden eklemeyi deneyin. 
 
 1. Veri modelini kaydetmek için **Kapat ve Uygula** ' ya tıklayın.
 
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicloseapply.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicloseapply.png" alt-text="Azure Cosmos DB Power BI Bağlayıcısı için Power BI öğreticisi-kapat & Uygula":::
 
 <a id="build-the-reports"></a>
 ## <a name="build-the-reports"></a>Raporları oluşturma
 
 Power BI Desktop rapor görünümü, verileri görselleştirmek için rapor oluşturmaya başlayabileceğiniz yerdir.  **Rapor** tuvalinde alanları sürükleyip bırakarak raporlar oluşturabilirsiniz.
 
-:::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbireportview2.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
+:::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbireportview2.png" alt-text="Power BI Desktop rapor görünümü-gerekli alanları sürükleyip bırakın":::
 
 Rapor görünümünde şunları bulmanız gerekir:
 
@@ -187,18 +188,18 @@ Raporunuzu paylaşmak için PowerBI.com içinde bir hesabınız olması gerekir.
 1. Kimlik bilgisinin kimliği doğrulandıktan sonra, rapor seçtiğiniz hedefe yayımlanır.
 1. Raporunuzu PowerBI.com üzerinde görmek ve paylaşmak için **Power BI içinde ' Powerbituon. pbix ' öğesini aç** ' a tıklayın.
    
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_open_in_powerbi.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_open_in_powerbi.png" alt-text="Power BI başarılı bir şekilde yayımlanıyor! Öğreticiyi Power BI açın":::
 
 ## <a name="create-a-dashboard-in-powerbicom"></a>Power BI.com'da bir pano oluşturun
 Artık bir raporunuz olduğuna göre, PowerBI.com 'de paylaşma olanağı sağlar
 
 Raporunuzu Power BI Desktop 'den PowerBI.com 'e yayımladığınızda, PowerBI.com kiracınızda bir **rapor** ve **veri kümesi** oluşturur. Örneğin, PowerBI.com 'e **powerbituon** adlı bir rapor yayımladıktan sonra, PowerBI.com 'deki **raporlar** ve **veri kümeleri** bölümlerinde powerbituon ' u görürsünüz.
 
-   :::image type="content" source="./media/powerbi-visualize/powerbi-reports-datasets.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
+   :::image type="content" source="./media/powerbi-visualize/powerbi-reports-datasets.png" alt-text="PowerBI.com içinde yeni raporun ve veri kümesinin ekran görüntüsü":::
 
 Paylaşılabilir bir pano oluşturmak için PowerBI.com raporunuzda **canlı sabitleme sayfası** düğmesine tıklayın.
 
-   :::image type="content" source="./media/powerbi-visualize/power-bi-pin-live-tile.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
+   :::image type="content" source="./media/powerbi-visualize/power-bi-pin-live-tile.png" alt-text="Bir raporun PowerBI.com 'e nasıl sabitlenediğinin ekran görüntüsü":::
 
 Ardından, yeni bir pano oluşturmak için [bir rapordan kutucuk sabitleme](https://powerbi.microsoft.com/documentation/powerbi-service-pin-a-tile-to-a-dashboard-from-a-report/#pin-a-tile-from-a-report) bölümündeki yönergeleri izleyin. 
 
@@ -209,13 +210,13 @@ There are two ways to refresh data, ad hoc and scheduled.
 
 For an ad hoc refresh, simply click on the eclipses (…) by the **Dataset**, e.g. PowerBITutorial. You should see a list of actions including **Refresh Now**. Click **Refresh Now** to refresh the data.
 
-:::image type="content" source="./media/powerbi-visualize/power-bi-refresh-now.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
+:::image type="content" source="./media/powerbi-visualize/power-bi-refresh-now.png" alt-text="Screenshot of Refresh Now in PowerBI.com":::
 
 For a scheduled refresh, do the following.
 
 1. Click **Schedule Refresh** in the action list. 
 
-    :::image type="content" source="./media/powerbi-visualize/power-bi-schedule-refresh.png" alt-text="Power BI Desktop rapor görünümü-Power BI Bağlayıcısı":::
+    :::image type="content" source="./media/powerbi-visualize/power-bi-schedule-refresh.png" alt-text="Screenshot of the Schedule Refresh in PowerBI.com":::
 2. In the **Settings** page, expand **Data source credentials**. 
 3. Click on **Edit credentials**. 
    

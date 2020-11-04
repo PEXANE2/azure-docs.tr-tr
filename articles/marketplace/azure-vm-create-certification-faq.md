@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 25eaca08202bd01ad4777fdb73eb75abff458c29
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f065b1bc98eab86542ecff73e1471e4d90cd4182
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677907"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339543"
 ---
 # <a name="vm-certification-troubleshooting"></a>VM sertifikasyonu sorunlarını giderme
 
@@ -81,6 +81,45 @@ Sağlama sorunları aşağıdaki başarısızlık senaryolarını içerebilir:
 > VM Genelleştirme hakkında daha fazla bilgi için bkz.
 > - [Linux belgeleri](azure-vm-create-using-approved-base.md#generalize-the-image)
 > - [Windows belgeleri](../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep)
+
+
+## <a name="vhd-specifications"></a>VHD belirtimleri
+
+### <a name="conectix-cookie-and-other-vhd-specifications"></a>Conectix tanımlama bilgisi ve diğer VHD belirtimleri
+' Conectix ' dizesi, VHD belirtiminin bir parçasıdır ve dosya oluşturucuyu tanımlayan aşağıdaki VHD altbilgisinde 8 byte ' Cookie ' olarak tanımlanır. Microsoft tarafından oluşturulan tüm VHD dosyaları bu tanımlama bilgisine sahiptir. 
+
+Bir VHD biçimli blob 512 bayt altbilgisi içermelidir; Bu, VHD altbilgisi biçimidir:
+
+|Sabit disk altbilgisi alanları|Boyut (bayt)|
+|---|---|
+Bilgilerinin|8
+Özellikler|4
+Dosya biçimi sürümü|4
+Veri boşluğu|8
+Zaman Damgası|4
+Oluşturan uygulama|4
+Oluşturucu sürümü|4
+Oluşturucu konak işletim sistemi|4
+Özgün Boyut|8
+Geçerli boyut|8
+Disk geometrisi|4
+Disk Türü|4
+Sağlama|4
+Benzersiz Kimlik|16
+Kaydedilen durum|1
+Ayrılmıştır|427
+
+
+### <a name="vhd-specifications"></a>VHD belirtimleri
+Sorunsuz bir yayımlama deneyimi sağlamak için, VHD 'nin **aşağıdaki ölçütlere uyduğundan** emin olun:
+* Tanımlama bilgisinin "conectix" dizesini içermesi gerekir
+* Disk türü düzeltilmelidir
+* VHD 'nin sanal boyutu en az 20 MB
+* VHD hizalı (yani sanal boyut 1 MB 'ın katları olmalıdır)
+* VHD blob uzunluğu = sanal boyut + VHD altbilgisi uzunluğu (512)
+
+VHD belirtimini [buradan indirebilirsiniz.](https://www.microsoft.com/download/details.aspx?id=23850)
+
 
 ## <a name="software-compliance-for-windows"></a>Windows için yazılım uyumluluğu
 

@@ -3,15 +3,16 @@ title: Azure Cosmos DB PDF sorgu sayfası sayfaları
 description: Verilerinizi sorgulamak için Azure Cosmos DB SQL, MongoDB, Graph ve tablo API 'Lerini kullanmanıza yardımcı olan yazdırılabilir PDF belgesi sayfaları
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 0e9010ba79e4253d7569a0bba79fa05423e1a1ec
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2ef8aed7243e8956ad9ca62b630cda0efbd2deb9
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93081765"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339657"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB tabloları sorgula
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -29,7 +30,7 @@ Letter boyutlu kağıda yazdıracaksanız (8,5 "x 11"), [Azure Cosmos DB Letter 
 ## <a name="oversized-cheat-sheets"></a>Büyük/büyük yemek sayfaları
 A3 boyutlu kağıda (11,7 "x 16,5") bir çizici veya büyük ölçekli bir yazıcı kullanarak yazdıracaksanız [Azure Cosmos DB a3 boyutlu sorgu oluşturma sayfalarını](https://go.microsoft.com/fwlink/?linkid=870413) indirin.
 
-:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png" alt-text="Azure Cosmos DB, SQL API 'SI, JavaScript, MongoDB, Gremlin ve Tablo API'si sorguları ve işlevleri ile sayfaları tek tek harf ölçekli olarak sorgulama" border="false":::
+:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png" alt-text="SQL API, JavaScript, MongoDB, Gremlin ve Tablo API'si sorguları ve işlevleri ile bir arada bulunan sayfaları (a3-boyutlu) sorgulama Azure Cosmos DB" border="false":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Sorgu yazma hakkında daha fazla yardım için aşağıdaki makalelere bakın:

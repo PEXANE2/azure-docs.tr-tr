@@ -3,15 +3,16 @@ title: Azure Cosmos DB’de dizin oluşturma
 description: Dizin oluşturmanın Azure Cosmos DB, Aralık, uzamsal, bileşik dizinler gibi farklı türlerde dizinlerin nasıl çalıştığını anlayın.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: acb0396ece32c568a4d8c384bebcbabd7480eb09
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4211f13324b9fda0b0823b2d035eb03863cb686d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101468"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339767"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB’de dizin oluşturma - Genel bakış
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -181,7 +182,7 @@ Verileri dizinlerken ayıklanan yollar, bir sorgu işlenirken dizinde arama yapm
 
 Örneğin, aşağıdaki sorguyu göz önünde bulundurun: `SELECT location FROM location IN company.locations WHERE location.country = 'France'` . Sorgu koşulu (herhangi bir konumda ülke/bölge olarak "Fransa" bulunduğu öğeler üzerinde filtreleme) aşağıdaki kırmızı renkle eşleşir:
 
-:::image type="content" source="./media/index-overview/matching-path.png" alt-text="Ağaç olarak temsil edilen önceki öğe" border="false":::
+:::image type="content" source="./media/index-overview/matching-path.png" alt-text="Ağaç içindeki belirli bir yolu eşleştirme" border="false":::
 
 > [!NOTE]
 > `ORDER BY`Tek bir özelliğe göre siparişlerin *her zaman* bir Aralık dizinine ihtiyacı olan ve başvurduğu yolun bir tane yoksa başarısız olacağı bir yan tümce. Benzer şekilde, `ORDER BY` birden çok özelliğe göre siparişlerin *her zaman* bir bileşik dizine ihtiyacı olan bir sorgu.
