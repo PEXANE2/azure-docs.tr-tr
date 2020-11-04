@@ -1,6 +1,6 @@
 ---
-title: Verileri bir SQL havuzuna alma
-description: Azure SYNAPSE Analytics 'te bir SQL havuzuna veri alma hakkında bilgi edinin
+title: Adanmış bir SQL havuzuna veri alma
+description: Azure SYNAPSE Analytics 'te özel bir SQL havuzuna veri alma hakkında bilgi edinin
 services: synapse-analytics
 author: djpmsft
 ms.service: synapse-analytics
@@ -9,22 +9,22 @@ ms.subservice: sql
 ms.date: 11/03/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 40f8834a69101682abaaa7eac8ec9cafe8ef3d9e
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 44d17bafe534fea2d408c92a3a01efb699250a78
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279376"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317790"
 ---
-# <a name="ingest-data-into-a-sql-pool"></a>Verileri bir SQL havuzuna alma
+# <a name="ingest-data-into-a-dedicated-sql-pool"></a>Adanmış bir SQL havuzuna veri alma
 
-Bu makalede, Azure SYNAPSE Analytics kullanarak bir Azure Data Lake Gen 2 depolama hesabından bir SQL havuzuna veri alma hakkında bilgi edineceksiniz.
+Bu makalede, Azure SYNAPSE Analytics 'teki bir Azure Data Lake Gen 2 depolama hesabından özel bir SQL havuzuna veri alma hakkında bilgi edineceksiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * **Azure aboneliği** : Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * **Azure depolama hesabı** : Azure Data Lake Storage Gen 2 ' nı *kaynak* veri deposu olarak kullanırsınız. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
-* **Azure SYNAPSE Analytics** : bir SQL havuzunu *Havuz* veri deposu olarak kullanırsınız. Azure SYNAPSE Analytics örneğiniz yoksa, oluşturma adımları için bkz. [SQL havuzu oluşturma](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
+* **Azure SYNAPSE Analytics** : ADANMıŞ bir SQL havuzunu *Havuz* veri deposu olarak kullanırsınız. Azure SYNAPSE Analytics örneğiniz yoksa, oluşturma adımları için [Özel BIR SQL havuzu oluşturma](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) konusuna bakın.
 
 ## <a name="create-linked-services"></a>Bağlı hizmetler oluşturma
 
@@ -39,7 +39,7 @@ Azure SYNAPSE Analytics 'te, bağlı bir hizmet, bağlantı bilgilerinizi diğer
 
 ## <a name="create-pipeline"></a>İşlem hattı oluşturma
 
-İşlem hattı, bir dizi etkinliğin yürütülmesi için mantıksal akışı içerir. Bu bölümde, verileri bir SQL havuzuna ADLS 2. veren bir kopyalama etkinliği içeren bir işlem hattı oluşturacaksınız.
+İşlem hattı, bir dizi etkinliğin yürütülmesi için mantıksal akışı içerir. Bu bölümde, verileri ADLS 2. özel bir SQL havuzuna veren bir kopyalama etkinliği içeren bir işlem hattı oluşturacaksınız.
 
 1. **Tümleştirin** sekmesine gidin. Ardışık düzen üstbilgisinin yanındaki artı simgesini seçin ve işlem **hattı** ' nı seçin.
 1. Etkinlikler bölmesinde **taşıma ve dönüştürme** ' nın altında, verileri ardışık düzen tuvaline **Kopyala** ' yı sürükleyin.
@@ -68,7 +68,7 @@ Bu adımda, önceki adımda yayınlanan işlem hattını el ile tetiklersiniz.
 1. Araç çubuğunda **tetikleyici Ekle** ' yi seçin ve sonra **Şimdi Tetikle** ' yi seçin. **İşlem Hattı Çalıştırma** sayfasında **Son** ’u seçin.  
 1. Sol kenar çubuğunda bulunan **izleyici** sekmesine gidin. El ile tetikleme tarafından tetiklenmiş bir işlem hattı çalıştırması görürsünüz. Etkinlik ayrıntılarını görüntülemek ve Işlem hattını yeniden çalıştırmak için **Eylemler** sütunundaki bağlantıları kullanabilirsiniz.
 1. İşlem hattı çalıştırmalarıyla ilişkili etkinlik çalıştırmalarını görmek için **Eylemler** sütunundaki **Etkinlik Çalıştırmalarını Görüntüle** bağlantısını seçin. Bu örnekte yalnızca bir etkinlik bulunur, bu nedenle listede yalnızca bir giriş görürsünüz. Kopyalama işlemiyle ilgili ayrıntılar için **Eylemler** sütunundaki **Ayrıntılar** bağlantısını (gözlük simgesi) seçin. İşlem hattı çalıştırmaları görünümüne dönmek için üstteki işlem **hattı çalıştırmalarını** seçin. Görünümü yenilemek için **Yenile** ’yi seçin.
-1. Verilerinizin SQL havuzunda doğru yazıldığından emin olun.
+1. Verilerinizin adanmış SQL havuzunda doğru yazıldığından emin olun.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

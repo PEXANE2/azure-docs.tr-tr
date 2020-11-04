@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e48261c4c6aeb75556663e1bf77c675557bcd1b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b638cb2b33f24220e7ceb852402862c707cc7bc6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91315499"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315994"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Team Data Science süreci: Azure SYNAPSE Analytics 'i kullanma
 Bu öğreticide, genel kullanıma açık bir veri kümesi ( [NYC TAXI gezileri](https://www.andresmh.com/nyctaxitrips/) veri kümesi) Için Azure SYNAPSE Analytics 'i kullanarak bir makine öğrenimi modeli oluşturma ve dağıtma konusunda size kılavuzluk ederiz. Oluşturulan ikili sınıflandırma modeli, seyahat için bir tıp ödenip ödenmediğini tahmin eder.  Modeller birden çok Lass sınıflandırması (bir ipucu olup olmadığına bakılmaksızın) ve gerileme (ücretli ücret miktarları için dağıtım) içerir.
 
-Yordam, [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) iş akışını izler. Veri bilimi ortamının nasıl ayarlanacağını, verilerin Azure SYNAPSE Analytics 'e nasıl yükleneceğini ve modele veri ve mühendislik özelliklerini araştırmak için Azure SYNAPSE Analytics ya da bir IPython Not defteri nasıl kullanılacağını göstereceğiz. Daha sonra Azure Machine Learning ile model derleyip dağıtmayı göstereceğiz.
+Yordam, [Team Data Science Process (TDSP)](./index.yml) iş akışını izler. Veri bilimi ortamının nasıl ayarlanacağını, verilerin Azure SYNAPSE Analytics 'e nasıl yükleneceğini ve modele veri ve mühendislik özelliklerini araştırmak için Azure SYNAPSE Analytics ya da bir IPython Not defteri nasıl kullanılacağını göstereceğiz. Daha sonra Azure Machine Learning ile model derleyip dağıtmayı göstereceğiz.
 
 ## <a name="the-nyc-taxi-trips-dataset"></a><a name="dataset"></a>NYC TAXI gidiş veri kümesi
 NYC TAXI seyahat verileri yaklaşık 20 GB sıkıştırılmış CSV dosyasından oluşur (~ 48 GB sıkıştırılmamış), her seyahat için ' den fazla ayrı gidiş ve ödenen far173.000.000 ktan daha fazla kayıt yapılır. Her seyahat kaydı, toplama ve bırakma konumlarını ve zamanlarını, anonim olarak bulunan Hack (sürücü) lisans numarasını ve medalon (TAXI 'nin benzersiz KIMLIĞI) numarasını içerir. Veriler, 2013 yılında yapılan tüm döngüleri kapsamakta ve her ay için aşağıdaki iki veri kümelerinde sunulmaktadır:
@@ -63,8 +63,8 @@ Seyahat verilerini ve seyahat tarifeli havayolu birleştirmek için kullanılan 
 ## <a name="address-three-types-of-prediction-tasks"></a><a name="mltasks"></a>Üç tahmin görevi türünü ele edin
 Üç tahmin sorununu, üç tür modelleme görevini göstermek üzere *tıp \_ miktarına* göre şekillarız:
 
-1. **İkili sınıflandırma**: bir ucun seyahat için ödenip ödenmediğini tahmin etmek için, $0 'den büyük bir tıp * \_ miktarı* pozitif bir örnektir, ancak bir $0 *İpucu \_ miktarı* negatif bir örnektir.
-2. **Birden çok Lass sınıflandırması**: seyahat için ödenen ipucu aralığını tahmin etmek için. *İpucu \_ miktarını* beş bölmeye veya sınıfa böyoruz:
+1. **İkili sınıflandırma** : bir ucun seyahat için ödenip ödenmediğini tahmin etmek için, $0 'den büyük bir tıp *\_ miktarı* pozitif bir örnektir, ancak bir $0 *İpucu \_ miktarı* negatif bir örnektir.
+2. **Birden çok Lass sınıflandırması** : seyahat için ödenen ipucu aralığını tahmin etmek için. *İpucu \_ miktarını* beş bölmeye veya sınıfa böyoruz:
 
 `Class 0 : tip_amount = $0`
 
@@ -76,15 +76,15 @@ Seyahat verilerini ve seyahat tarifeli havayolu birleştirmek için kullanılan 
 
 `Class 4 : tip_amount > $20`
 
-3. **Regresyon görevi**: seyahat için ödenen ipucu miktarını tahmin etmek için.
+3. **Regresyon görevi** : seyahat için ödenen ipucu miktarını tahmin etmek için.
 
 ## <a name="set-up-the-azure-data-science-environment-for-advanced-analytics"></a><a name="setup"></a>Gelişmiş analiz için Azure veri bilimi ortamını ayarlama
 Azure veri bilimi ortamınızı ayarlamak için aşağıdaki adımları izleyin.
 
 **Kendi Azure Blob depolama hesabınızı oluşturun**
 
-* Kendi Azure Blob depolama alanınızı sağladığınızda, Azure Blob depolama alanınızı bir coğrafi konum seçin veya **Orta Güney ABD**, bu, NYC TAXI verilerinin saklandığı yerdir. Veriler, genel BLOB depolama kapsayıcısından gelen AzCopy kullanılarak kendi depolama hesabınızdaki bir kapsayıcıya kopyalanacak. Azure Blob depolama alanınızı daha yakından Orta Güney ABD, bu görevin daha hızlı (4. adım) tamamlanması tamamlanacaktır.
-* Kendi Azure depolama hesabınızı oluşturmak için [Azure depolama hesapları hakkında](../../storage/common/storage-create-storage-account.md)bölümünde açıklanan adımları izleyin. Bu kılavuzda daha sonra gerekli olacağı için, aşağıdaki depolama hesabı kimlik bilgileri değerlerini not aldığınızdan emin olun.
+* Kendi Azure Blob depolama alanınızı sağladığınızda, Azure Blob depolama alanınızı bir coğrafi konum seçin veya **Orta Güney ABD** , bu, NYC TAXI verilerinin saklandığı yerdir. Veriler, genel BLOB depolama kapsayıcısından gelen AzCopy kullanılarak kendi depolama hesabınızdaki bir kapsayıcıya kopyalanacak. Azure Blob depolama alanınızı daha yakından Orta Güney ABD, bu görevin daha hızlı (4. adım) tamamlanması tamamlanacaktır.
+* Kendi Azure depolama hesabınızı oluşturmak için [Azure depolama hesapları hakkında](../../storage/common/storage-account-create.md)bölümünde açıklanan adımları izleyin. Bu kılavuzda daha sonra gerekli olacağı için, aşağıdaki depolama hesabı kimlik bilgileri değerlerini not aldığınızdan emin olun.
 
   * **Depolama hesabı adı**
   * **Depolama hesabı anahtarı**
@@ -93,7 +93,7 @@ Azure veri bilimi ortamınızı ayarlamak için aşağıdaki adımları izleyin.
 **Azure SYNAPSE Analytics örneğinizi sağlayın.**
 Azure SYNAPSE Analytics örneği sağlamak için [Azure Portal Azure SYNAPSE Analytics oluşturma ve sorgulama bölümündeki](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) belgeleri izleyin. Sonraki adımlarda kullanılacak aşağıdaki Azure SYNAPSE Analytics kimlik bilgileri üzerinde gösterimler olduğunuzdan emin olun.
 
-* **Sunucu adı**: \<server Name> . Database.Windows.net
+* **Sunucu adı** : \<server Name> . Database.Windows.net
 * **SQLDW (veritabanı) adı**
 * **Kullanıcı adı**
 * **Parola**
@@ -103,7 +103,7 @@ Azure SYNAPSE Analytics örneği sağlamak için [Azure Portal Azure SYNAPSE Ana
 **Visual Studio ile Azure SYNAPSE Analytics 'e bağlanın.** Yönergeler için bkz. Adım 1 & 2 [Azure SYNAPSE Analytics 'TE SQL Analytics 'e bağlanma](../../synapse-analytics/sql/connect-overview.md).
 
 > [!NOTE]
-> **Bir ana anahtar oluşturmak**Için, Azure SYNAPSE Analytics 'te oluşturduğunuz veritabanında (bağlantı konusunun 3. adımında belirtilen sorgu yerine) aşağıdaki SQL sorgusunu çalıştırın.
+> **Bir ana anahtar oluşturmak** Için, Azure SYNAPSE Analytics 'te oluşturduğunuz veritabanında (bağlantı konusunun 3. adımında belirtilen sorgu yerine) aşağıdaki SQL sorgusunu çalıştırın.
 >
 >
 
@@ -120,7 +120,7 @@ END CATCH;
 **Azure aboneliğiniz altında bir Azure Machine Learning çalışma alanı oluşturun.** Yönergeler için bkz. [Azure Machine Learning çalışma alanı oluşturma](../classic/create-workspace.md).
 
 ## <a name="load-the-data-into-azure-synapse-analytics"></a><a name="getdata"></a>Verileri Azure SYNAPSE Analytics 'e yükleme
-Bir Windows PowerShell komut konsolunu açın. GitHub 'da sizinle paylaşdığımız örnek SQL komut dosyalarını, *-DestDir*parametresiyle belirttiğiniz yerel bir dizine indirmek Için aşağıdaki PowerShell komutlarını çalıştırın. *-DestDir* parametresinin değerini herhangi bir yerel dizin olarak değiştirebilirsiniz. *-DestDir* yoksa, PowerShell betiği tarafından oluşturulur.
+Bir Windows PowerShell komut konsolunu açın. GitHub 'da sizinle paylaşdığımız örnek SQL komut dosyalarını, *-DestDir* parametresiyle belirttiğiniz yerel bir dizine indirmek Için aşağıdaki PowerShell komutlarını çalıştırın. *-DestDir* parametresinin değerini herhangi bir yerel dizin olarak değiştirebilirsiniz. *-DestDir* yoksa, PowerShell betiği tarafından oluşturulur.
 
 > [!NOTE]
 > *DestDir* dizininizin bu dosyayı oluşturmak veya yazmak için yönetici ayrıcalıklarına ihtiyacı varsa, aşağıdaki PowerShell betiğini yürütürken **yönetici olarak çalıştırmanız** gerekebilir.
@@ -135,11 +135,11 @@ $wc.DownloadFile($source, $ps1_dest)
 .\Download_Scripts_SQLDW_Walkthrough.ps1 –DestDir 'C:\tempSQLDW'
 ```
 
-Başarılı yürütmeden sonra, geçerli çalışma dizininiz *-DestDir*olarak değişir. Aşağıdaki gibi bir ekran görebilmelisiniz:
+Başarılı yürütmeden sonra, geçerli çalışma dizininiz *-DestDir* olarak değişir. Aşağıdaki gibi bir ekran görebilmelisiniz:
 
 ![Geçerli çalışma dizini değişiklikleri][19]
 
-*-DestDir*' de, aşağıdaki PowerShell betiğini yönetici modunda yürütün:
+*-DestDir* ' de, aşağıdaki PowerShell betiğini yönetici modunda yürütün:
 
 ```azurepowershell
 ./SQLDW_Data_Import.ps1
@@ -383,12 +383,12 @@ Başarılı bir yürütmeden sonra aşağıdaki gibi bir ekran göreceksiniz:
 ![Başarılı bir betik yürütmenin çıkışı][20]
 
 ## <a name="data-exploration-and-feature-engineering-in-azure-synapse-analytics"></a><a name="dbexplore"></a>Azure SYNAPSE Analytics 'te veri araştırması ve özellik Mühendisliği
-Bu bölümde, **Visual Studio veri araçları**kullanarak doğrudan Azure SYNAPSE Analytics 'e karşı SQL sorguları çalıştırarak veri keşif ve özellik oluşturma gerçekleştiririz. Bu bölümde kullanılan tüm SQL sorguları *SQLDW_Explorations. SQL*adlı örnek betikte bulunabilir. Bu dosya, PowerShell betiği tarafından yerel dizininize zaten indirildi. Ayrıca, [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql)'dan da alabilirsiniz. Ancak GitHub 'daki dosyada Azure SYNAPSE Analytics bilgileri takılı değildir.
+Bu bölümde, **Visual Studio veri araçları** kullanarak doğrudan Azure SYNAPSE Analytics 'e karşı SQL sorguları çalıştırarak veri keşif ve özellik oluşturma gerçekleştiririz. Bu bölümde kullanılan tüm SQL sorguları *SQLDW_Explorations. SQL* adlı örnek betikte bulunabilir. Bu dosya, PowerShell betiği tarafından yerel dizininize zaten indirildi. Ayrıca, [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql)'dan da alabilirsiniz. Ancak GitHub 'daki dosyada Azure SYNAPSE Analytics bilgileri takılı değildir.
 
 Azure SYNAPSE Analytics oturum açma adı ve parolasıyla Visual Studio 'Yu kullanarak Azure SYNAPSE Analytics 'e bağlanın ve veritabanını ve tabloları içeri aktardığından emin olmak için **SQL nesne Gezgini** açın. *SQLDW_Explorations. SQL* dosyasını alın.
 
 > [!NOTE]
-> Bir paralel veri ambarı (PDW) sorgu Düzenleyicisi açmak için, **SQL nesne Gezgini**'da PDW seçildiğinde **Yeni sorgu** komutunu kullanın. Standart SQL sorgu Düzenleyicisi, PDW tarafından desteklenmez.
+> Bir paralel veri ambarı (PDW) sorgu Düzenleyicisi açmak için, **SQL nesne Gezgini** 'da PDW seçildiğinde **Yeni sorgu** komutunu kullanın. Standart SQL sorgu Düzenleyicisi, PDW tarafından desteklenmez.
 >
 >
 
@@ -396,7 +396,7 @@ Bu bölümde gerçekleştirilen veri keşif ve özellik oluşturma görevlerinin
 
 * Değişen zaman pencereleri içinde birkaç alanın veri dağıtımlarını araştırma.
 * Boylam ve enlem alanlarının veri kalitesini araştırın.
-* **Tıp \_ miktarına**göre ikili ve çoklu sınıf sınıflandırma etiketleri oluşturun.
+* **Tıp \_ miktarına** göre ikili ve çoklu sınıf sınıflandırma etiketleri oluşturun.
 * Özellik oluşturun ve seyahat mesafelerini karşılaştırın.
 * İki tabloyu birleştirin ve modelleri derlemek için kullanılacak rastgele bir örnek ayıklayın.
 
@@ -418,7 +418,7 @@ Bu sorgular, PolyBase 'in paralel toplu içeri aktarması kullanılarak daha ön
 **Çıkış:** 173.179.759 satır ve 14 sütun almalısınız.
 
 ### <a name="exploration-trip-distribution-by-medallion"></a>Araştırma: medtalon tarafından seyahat dağılımı
-Bu örnek sorgu, belirli bir süre içinde 100 ' den fazla dönüşten fazla geçen bir aralıktaki (TAXI numaralarını) bir sorgu tanımlar. Sorgu, **toplama \_ Tarih/saat değerinin**bölüm şeması tarafından koşullu olduğundan, bölümlenmiş tablo erişiminizden faydalanır. Tam veri kümesini sorgulamak bölümlenmiş tablo ve/veya dizin taramasını de kullanır.
+Bu örnek sorgu, belirli bir süre içinde 100 ' den fazla dönüşten fazla geçen bir aralıktaki (TAXI numaralarını) bir sorgu tanımlar. Sorgu, **toplama \_ Tarih/saat değerinin** bölüm şeması tarafından koşullu olduğundan, bölümlenmiş tablo erişiminizden faydalanır. Tam veri kümesini sorgulamak bölümlenmiş tablo ve/veya dizin taramasını de kullanır.
 
 ```sql
 SELECT medallion, COUNT(*)
@@ -547,7 +547,7 @@ AND pickup_longitude != '0' AND dropoff_longitude != '0'
 ```
 
 ### <a name="feature-engineering-using-sql-functions"></a>SQL işlevleri kullanarak özellik Mühendisliği
-Bazen SQL işlevleri Özellik Mühendisliği için etkili bir seçenek olabilir. Bu kılavuzda, toplama ve bırakma konumları arasındaki doğrudan mesafeyi hesaplamak için bir SQL işlevi tanımladık. **Visual Studio veri araçları**'NDA aşağıdaki SQL betiklerini çalıştırabilirsiniz.
+Bazen SQL işlevleri Özellik Mühendisliği için etkili bir seçenek olabilir. Bu kılavuzda, toplama ve bırakma konumları arasındaki doğrudan mesafeyi hesaplamak için bir SQL işlevi tanımladık. **Visual Studio veri araçları** 'NDA aşağıdaki SQL betiklerini çalıştırabilirsiniz.
 
 Distance işlevini tanımlayan SQL betiği aşağıda verilmiştir.
 
@@ -609,7 +609,7 @@ AND pickup_longitude != '0' AND dropoff_longitude != '0'
 | 3 |40,761456 |-73,999886 |40,766544 |-73,988228 |0.7037227967 |
 
 ### <a name="prepare-data-for-model-building"></a>Model oluşturma için verileri hazırlama
-Aşağıdaki sorgu **nyctaxi \_ seyahat** ve **nyctaxi \_ tarifeli havayolu** tablolarını birleştirir, bir ikili sınıflandırma etiketi olarak **eğimli**, çok sınıflı bir sınıflandırma etiketi **İpucu \_ sınıfı**oluşturur ve tam olarak birleştirilmiş veri kümesinden bir örnek ayıklar. Örnekleme zamanına göre dönüşlerin bir alt kümesini alarak örnekleme yapılır.  Bu sorgu, Azure 'daki SQL veritabanı örneğinden doğrudan veri alımı için [Azure Machine Learning Studio (klasik)](https://studio.azureml.net) [içeri aktarma verileri][içeri aktarma-veri] modülünde kopyalanabilir. Sorgu kayıtları yanlış (0, 0) koordinatlarla dışlar.
+Aşağıdaki sorgu **nyctaxi \_ seyahat** ve **nyctaxi \_ tarifeli havayolu** tablolarını birleştirir, bir ikili sınıflandırma etiketi olarak **eğimli** , çok sınıflı bir sınıflandırma etiketi **İpucu \_ sınıfı** oluşturur ve tam olarak birleştirilmiş veri kümesinden bir örnek ayıklar. Örnekleme zamanına göre dönüşlerin bir alt kümesini alarak örnekleme yapılır.  Bu sorgu, Azure 'daki SQL veritabanı örneğinden doğrudan veri alımı için [Azure Machine Learning Studio (klasik)](https://studio.azureml.net) [içeri aktarma verileri][içeri aktarma-veri] modülünde kopyalanabilir. Sorgu kayıtları yanlış (0, 0) koordinatlarla dışlar.
 
 ```sql
 SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
@@ -634,7 +634,7 @@ Azure Machine Learning devam etmeye hazırsanız şunlardan birini yapabilirsini
 2. Model oluşturma için kullanmayı planladığınız örneklenmiş ve uygulanan verileri yeni bir Azure SYNAPSE Analytics tablosunda kalıcı hale getirin ve yeni tabloyu Azure Machine Learning [içeri aktarma verileri Içeri aktar][-veri] modülünde kullanın. Önceki adımda bulunan PowerShell betiği sizin için bu görevi tamamladınız. Veri Içeri aktarma modülündeki bu tablodan doğrudan okuma yapabilirsiniz.
 
 ## <a name="data-exploration-and-feature-engineering-in-ipython-notebook"></a><a name="ipnb"></a>IPython not defterinde veri araştırması ve özellik Mühendisliği
-Bu bölümde, daha önce oluşturulan Azure SYNAPSE Analytics 'te hem Python hem de SQL sorguları kullanarak veri araştırması ve özellik oluşturma işlemi gerçekleştiririz. **SQLDW_Explorations. ipynb** adlı bir örnek IPython Not defteri ve bir Python betik dosyası **SQLDW_Explorations_Scripts. Kopyala** yerel dizininize indirildi. Bunlar [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/SQLDW)'da da kullanılabilir. Bu iki dosya Python betiklerine benzer. Python betik dosyası, bir IPython Not defteri sunucunuz olmadığı durumlarda size sağlanır. Bu iki örnek Python dosyası, **Python 2,7**altında tasarlanmıştır.
+Bu bölümde, daha önce oluşturulan Azure SYNAPSE Analytics 'te hem Python hem de SQL sorguları kullanarak veri araştırması ve özellik oluşturma işlemi gerçekleştiririz. **SQLDW_Explorations. ipynb** adlı bir örnek IPython Not defteri ve bir Python betik dosyası **SQLDW_Explorations_Scripts. Kopyala** yerel dizininize indirildi. Bunlar [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/SQLDW)'da da kullanılabilir. Bu iki dosya Python betiklerine benzer. Python betik dosyası, bir IPython Not defteri sunucunuz olmadığı durumlarda size sağlanır. Bu iki örnek Python dosyası, **Python 2,7** altında tasarlanmıştır.
 
 Örnek IPython Not defteri ve yerel makinenize indirilen Python betik dosyasındaki gerekli Azure SYNAPSE Analytics bilgileri, daha önce PowerShell betiği tarafından prize takılmış. Bunlar herhangi bir değişiklik yapılmadan çalıştırılabilir.
 
@@ -643,13 +643,13 @@ Zaten bir Azure Machine Learning çalışma alanı ayarladıysanız, örnek IPyt
 1. Azure Machine Learning çalışma alanınızda oturum açın, üstteki **Studio "** ya ve Web sayfasının sol tarafındaki **Not defterleri** ' ne tıklayın.
 
     ![Stüdyo ve Not DEFTERLERI ' ne tıklayın][22]
-2. Web sayfasının sol alt köşesinde **Yeni** ' ye tıklayın ve **Python 2**' yi seçin. Ardından, not defterine bir ad verin ve yeni boş IPython Not defteri oluşturmak için onay işaretine tıklayın.
+2. Web sayfasının sol alt köşesinde **Yeni** ' ye tıklayın ve **Python 2** ' yi seçin. Ardından, not defterine bir ad verin ve yeni boş IPython Not defteri oluşturmak için onay işaretine tıklayın.
 
     ![YENI ' ye tıklayıp Python 2 ' yi seçin][23]
 3. Yeni IPython Not defterinin sol üst köşesindeki **Jupyter** simgesine tıklayın.
 
     ![Jupyıter simgesine tıklayın][24]
-4. Örnek IPython Not defterini sürükleyip, AzureML VMM 'nizin **ağaç** sayfasına bırakın ve **karşıya yükle**' ye tıklayın. Ardından, örnek IPython Not defteri, AzureML ıdion Not defteri hizmetine yüklenir.
+4. Örnek IPython Not defterini sürükleyip, AzureML VMM 'nizin **ağaç** sayfasına bırakın ve **karşıya yükle** ' ye tıklayın. Ardından, örnek IPython Not defteri, AzureML ıdion Not defteri hizmetine yüklenir.
 
     ![Karşıya yükle 'ye tıklayın][25]
 
@@ -814,7 +814,7 @@ pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
 ![Satır çizim çıkışı][4]
 
 ### <a name="visualization-scatterplot-examples"></a>Görselleştirme: dağınık Terçiz örnekleri
-Bir bağıntı olup olmadığını görmek için **seyahat \_ süresi ile \_ \_ saniye cinsinden** seyahat ** \_ mesafesini** gösteren dağılım çizimi gösteriliyor
+Bir bağıntı olup olmadığını görmek için **seyahat \_ süresi ile \_ \_ saniye cinsinden** seyahat **\_ mesafesini** gösteren dağılım çizimi gösteriliyor
 
 ```sql
 plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
@@ -822,7 +822,7 @@ plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
 
 ![Zaman ve uzaklık arasındaki ilişkinin dağınık terçiz çıkışı][6]
 
-Benzer şekilde, **oran \_ kodu** ve **seyahat \_ mesafesi**arasındaki ilişkiyi kontrol edebilirsiniz.
+Benzer şekilde, **oran \_ kodu** ve **seyahat \_ mesafesi** arasındaki ilişkiyi kontrol edebilirsiniz.
 
 ```sql
 plt.scatter(df1['passenger_count'], df1['trip_distance'])
@@ -937,9 +937,9 @@ pd.read_sql(query,conn)
 ## <a name="build-models-in-azure-machine-learning"></a><a name="mlmodel"></a>Azure Machine Learning modelleri derleme
 Artık [Azure Machine Learning](https://studio.azureml.net)' de model oluşturma ve model dağıtımına devam etmeye hazırsınız. Veriler, daha önce tanımlanan tüm tahmin sorunlarından birinde kullanılmak üzere hazırlanmıştır, yani:
 
-1. **İkili sınıflandırma**: bir ipucunun seyahat için ödenip ödenmediğini tahmin etmek için.
-2. **Birden çok Lass sınıflandırması**: önceden tanımlanmış sınıflara göre ücretli ipucu aralığını tahmin etmek için.
-3. **Regresyon görevi**: seyahat için ödenen ipucu miktarını tahmin etmek için.
+1. **İkili sınıflandırma** : bir ipucunun seyahat için ödenip ödenmediğini tahmin etmek için.
+2. **Birden çok Lass sınıflandırması** : önceden tanımlanmış sınıflara göre ücretli ipucu aralığını tahmin etmek için.
+3. **Regresyon görevi** : seyahat için ödenen ipucu miktarını tahmin etmek için.
 
 Modelleme alıştırmaya başlamak için **Azure Machine Learning (klasik)** çalışma alanınızda oturum açın. Henüz bir Machine Learning çalışma alanı oluşturmadıysanız, bkz. [Azure Machine Learning Studio (klasik) çalışma alanı oluşturma](../classic/create-workspace.md).
 
@@ -968,7 +968,7 @@ Bu alıştırmada, Azure SYNAPSE Analytics 'te verileri araştırmış ve sunuyo
 2. **Özellikler** panelinde **veri kaynağı** olarak **Azure SQL veritabanı** ' nı seçin.
 3. Veritabanı **sunucusu adı** ALANıNA veritabanı DNS adını girin. Formatını `tcp:<your_virtual_machine_DNS_name>,1433`
 4. Karşılık gelen alana **veritabanı adını** girin.
-5. **Sunucu Kullanıcı hesabı adı**' na *SQL Kullanıcı adı* ' nı ve **sunucu Kullanıcı hesabı parolasıyla** *parolayı* girin.
+5. **Sunucu Kullanıcı hesabı adı** ' na *SQL Kullanıcı adı* ' nı ve **sunucu Kullanıcı hesabı parolasıyla** *parolayı* girin.
 7. **Veritabanı sorgusu** düzenleme metin alanında, gerekli veritabanı alanlarını (Etiketler gibi hesaplanan alanlar da dahil olmak üzere) çıkaran sorguyu yapıştırın ve verileri istenen örnek boyutuna doğru örnekleyin.
 
 İkili sınıflandırmanın bir örneği, doğrudan Azure SYNAPSE Analytics veritabanından veri okumayı deneyin (tablo adlarını nyctaxi_trip ve nyctaxi_fare şema adına ve kılavuzlarda kullandığınız tablo adlarına göre. Birden çok Lass sınıflandırması ve gerileme sorunları için benzer denemeleri oluşturulabilir.
@@ -976,7 +976,7 @@ Bu alıştırmada, Azure SYNAPSE Analytics 'te verileri araştırmış ve sunuyo
 ![Azure ML eğitme][10]
 
 > [!IMPORTANT]
-> Önceki bölümlerde sağlanan modelleme veri ayıklama ve örnekleme sorgusu örneklerinde, **üç modellemeye yönelik tüm Etiketler sorguya dahil**edilmiştir. Modelleme alýþtýrmalarının her birinde önemli (gerekli) bir adım, diğer iki soruna ve diğer **hedef sızıntılara**yönelik gereksiz etiketleri **dışlayamazsınız** . Örneğin, ikili sınıflandırma kullanırken, **eğimli** etiketini kullanın ve alanları **İpucu \_ sınıfı**, **tıp \_ tutarı**ve **Toplam \_ miktarı**hariç tutun. İkincisi, ücretli olduğunu gösterdiğinden bu yana hedef sızıntılardır.
+> Önceki bölümlerde sağlanan modelleme veri ayıklama ve örnekleme sorgusu örneklerinde, **üç modellemeye yönelik tüm Etiketler sorguya dahil** edilmiştir. Modelleme alýþtýrmalarının her birinde önemli (gerekli) bir adım, diğer iki soruna ve diğer **hedef sızıntılara** yönelik gereksiz etiketleri **dışlayamazsınız** . Örneğin, ikili sınıflandırma kullanırken, **eğimli** etiketini kullanın ve alanları **İpucu \_ sınıfı** , **tıp \_ tutarı** ve **Toplam \_ miktarı** hariç tutun. İkincisi, ücretli olduğunu gösterdiğinden bu yana hedef sızıntılardır.
 >
 > Gereksiz sütunları veya hedef sızıntılarını dışlamak için, [veri kümesi modülünde sütunları seç][select-columns] veya [verileri Düzenle][edit-metadata]' yi kullanabilirsiniz. Daha fazla bilgi için bkz. [veri kümesindeki sütunları seçme][select-columns] ve [meta veri][edit-metadata] başvuru sayfalarını düzenleme.
 >
@@ -1046,6 +1046,6 @@ Bu örnek izlenecek yol ve birlikte gelen betikler ve IPython Not defteri, Micro
 
 
 <!-- Module References -->
-[edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
-[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[edit-metadata]: /azure/machine-learning/studio-module-reference/edit-metadata
+[select-columns]: /azure/machine-learning/studio-module-reference/select-columns-in-dataset
+[import-data]: /azure/machine-learning/studio-module-reference/import-data

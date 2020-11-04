@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 30979f49a48954280942d786af7e7ff592089062
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 65451ed99580d9f2d66bd28518f0ec40a21ffe65
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521076"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317083"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Azure Otomasyonu 'nda runbook 'ları yönetme
 
@@ -28,7 +28,7 @@ Azure portal veya Windows PowerShell kullanarak Azure Otomasyonu 'nda yeni bir r
 
 1. Azure portalında, Otomasyon hesabınızı açın.
 2. Hub 'dan runbook listesini açmak için **Işlem Otomasyonu** altında **runbook 'lar** ' ı seçin.
-3. **Runbook oluştur ' a**tıklayın.
+3. **Runbook oluştur ' a** tıklayın.
 4. Runbook için bir ad girin ve [türünü](automation-runbook-types.md)seçin. Runbook adı bir harfle başlamalıdır ve harfler, rakamlar, alt çizgiler ve kısa çizgiler içerebilir.
 5. Runbook 'u oluşturmak için **Oluştur** ' a tıklayın ve düzenleyiciyi açın.
 
@@ -45,7 +45,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 ## <a name="import-a-runbook"></a>Runbook 'u içeri aktarma
 
-Kendi runbook 'unuzu oluşturmak için bir PowerShell veya PowerShell Iş akışı (**. ps1**) betiği, bir grafik runbook 'u (. graphrunbook) veya bir Python 2 betiği (**.****çıgrafı**) içeri aktarabilirsiniz. İçeri aktarma sırasında oluşturulan [runbook 'un türünü](automation-runbook-types.md) belirtmeniz gerekir ve aşağıdaki noktaları dikkate alın.
+Kendi runbook 'unuzu oluşturmak için bir PowerShell veya PowerShell Iş akışı ( **. ps1** ) betiği, bir grafik runbook 'u (. graphrunbook) veya bir Python 2 betiği ( **.****çıgrafı** ) içeri aktarabilirsiniz. İçeri aktarma sırasında oluşturulan [runbook 'un türünü](automation-runbook-types.md) belirtmeniz gerekir ve aşağıdaki noktaları dikkate alın.
 
 * Bir [PowerShell runbook](automation-runbook-types.md#powershell-runbooks) 'Una veya [PowerShell iş akışı runbook](automation-runbook-types.md#powershell-workflow-runbooks)'unda iş akışı içermeyen bir **. ps1** dosyasını içeri aktarabilirsiniz. Bir PowerShell Iş akışı runbook 'una içeri aktarırsanız, bir iş akışına dönüştürülür. Bu durumda, yapılan değişiklikleri anlatmak için Runbook 'a açıklamalar dahildir.
 
@@ -64,11 +64,11 @@ Bir betik dosyasını Azure Otomasyonu 'na aktarmak için aşağıdaki yordamı 
 
 1. Azure portalında, Otomasyon hesabınızı açın.
 2. Runbook 'ların listesini açmak için **Işlem Otomasyonu** altında **runbook 'lar** ' ı seçin.
-3. **Runbook 'U Içeri Aktar ' a**tıklayın.
+3. **Runbook 'U Içeri Aktar ' a** tıklayın.
 4. **Runbook dosyası** ' na tıklayın ve içeri aktarılacak dosyayı seçin.
 5. **Ad** alanı etkinleştirilirse, runbook adını değiştirme seçeneğiniz vardır. Ad bir harfle başlamalıdır ve harfler, rakamlar, alt çizgiler ve kısa çizgiler içerebilir.
 6. [Runbook türü](automation-runbook-types.md) otomatik olarak seçilir, ancak ilgili kısıtlamaları hesaba aldıktan sonra türü değiştirebilirsiniz.
-7. **Oluştur**’a tıklayın. Yeni runbook, Otomasyon hesabı için Runbook 'lar listesinde görüntülenir.
+7. **Oluştur** 'a tıklayın. Yeni runbook, Otomasyon hesabı için Runbook 'lar listesinde görüntülenir.
 8. Çalıştırmak için [runbook 'u yayımlamanız](#publish-a-runbook) gerekir.
 
 > [!NOTE]
@@ -228,7 +228,7 @@ Start-AzAutomationRunbook `
 
 ## <a name="test-a-runbook"></a>Bir runbook'u test etme
 
-Bir runbook 'u test ettiğinizde [taslak sürümü](#publish-a-runbook) yürütülür ve gerçekleştirdiği tüm işlemler tamamlanır. İş geçmişi oluşturulmaz, ancak [Çıkış](automation-runbook-output-and-messages.md#use-the-output-stream) ve [uyarı ve hata](automation-runbook-output-and-messages.md#monitor-message-streams) akışları test çıkış bölmesinde görüntülenir. [Ayrıntılı akışa](automation-runbook-output-and-messages.md#monitor-message-streams) Iletiler yalnızca [VerbosePreference](automation-runbook-output-and-messages.md#work-with-preference-variables) değişkeni olarak ayarlandıysa çıkış bölmesinde görüntülenir `Continue` .
+Bir runbook 'u test ettiğinizde [taslak sürümü](#publish-a-runbook) yürütülür ve gerçekleştirdiği tüm işlemler tamamlanır. İş geçmişi oluşturulmaz, ancak [Çıkış](automation-runbook-output-and-messages.md#use-the-output-stream) ve [uyarı ve hata](automation-runbook-output-and-messages.md#working-with-message-streams) akışları test çıkış bölmesinde görüntülenir. [Ayrıntılı akışa](automation-runbook-output-and-messages.md#write-output-to-verbose-stream) Iletiler yalnızca [VerbosePreference](automation-runbook-output-and-messages.md#work-with-preference-variables) değişkeni olarak ayarlandıysa çıkış bölmesinde görüntülenir `Continue` .
 
 Taslak sürümü çalıştırılsa da runbook hala normal şekilde yürütülür ve ortamdaki kaynaklara karşı herhangi bir eylem gerçekleştirir. Bu nedenle, yalnızca üretim dışı kaynaklarda runbook 'ları test etmelisiniz.
 
@@ -249,7 +249,7 @@ Yeni bir runbook oluşturduğunuzda veya içeri aktardığınızda, çalıştır
 ### <a name="publish-a-runbook-in-the-azure-portal"></a>Azure portal runbook yayımlama
 
 1. Runbook 'u Azure portal açın.
-2. **Düzenle**’ye tıklayın.
+2. **Düzenle** ’ye tıklayın.
 3. Doğrulama iletisine yanıt olarak **Yayımla** ' ya ve ardından **Evet** ' e tıklayın.
 
 ### <a name="publish-a-runbook-using-powershell"></a>PowerShell kullanarak runbook yayımlama
@@ -270,19 +270,19 @@ Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 Runbook 'u yayımlandığında, işlem için zamanlayabilirsiniz:
 
 1. Runbook 'u Azure portal açın.
-2. **Kaynaklar**altında **zamanlamalar** ' ı seçin.
-3. **Zamanlama Ekle ' yi**seçin.
-4. Runbook 'U zamanla bölmesinde, **runbook 'una bir zamanlama bağla**' yı seçin.
+2. **Kaynaklar** altında **zamanlamalar** ' ı seçin.
+3. **Zamanlama Ekle ' yi** seçin.
+4. Runbook 'U zamanla bölmesinde, **runbook 'una bir zamanlama bağla** ' yı seçin.
 5. Zamanlama bölmesinde **Yeni bir zamanlama oluştur ' a** tıklayın.
 6. Yeni zamanlama bölmesine bir ad, açıklama ve diğer parametreleri girin.
-7. Zamanlama oluşturulduktan sonra, vurgulayın ve **Tamam**' a tıklayın. Artık runbook 'ıza bağlanmalıdır.
+7. Zamanlama oluşturulduktan sonra, vurgulayın ve **Tamam** ' a tıklayın. Artık runbook 'ıza bağlanmalıdır.
 8. Runbook 'un durumunu bildirmek için posta kutunuzda bir e-posta arayın.
 
 ## <a name="obtain-job-statuses"></a>İş durumlarını al
 
 ### <a name="view-statuses-in-the-azure-portal"></a>Azure portal durumları görüntüleme
 
-Azure Automation 'da iş işleme ayrıntıları [işler](automation-runbook-execution.md#jobs)' de verilmiştir. Runbook işlerinizi görmeyi hazırsanız Azure portal kullanın ve otomasyon hesabınıza erişin. Sağ tarafta, **Iş istatistikleri**' nde tüm runbook işlerinin özetini görebilirsiniz.
+Azure Automation 'da iş işleme ayrıntıları [işler](automation-runbook-execution.md#jobs)' de verilmiştir. Runbook işlerinizi görmeyi hazırsanız Azure portal kullanın ve otomasyon hesabınıza erişin. Sağ tarafta, **Iş istatistikleri** ' nde tüm runbook işlerinin özetini görebilirsiniz.
 
 ![İş Istatistikleri kutucuğu](./media/manage-runbooks/automation-account-job-status-summary.png)
 
@@ -292,13 +292,13 @@ Kutucuğa tıkladığınızda, yürütülen tüm işlerin özetlenen listesini i
 
 :::image type="content" source="./media/manage-runbooks/automation-account-jobs-status-blade.png" alt-text="Işler sayfasının ekran görüntüsü.":::
 
-İş listesini **filtre işleri**' ni seçerek filtreleyebilirsiniz. Belirli bir runbook 'u, iş durumunu veya açılan listeden bir seçimi filtreleyin ve arama için zaman aralığını belirtin.
+İş listesini **filtre işleri** ' ni seçerek filtreleyebilirsiniz. Belirli bir runbook 'u, iş durumunu veya açılan listeden bir seçimi filtreleyin ve arama için zaman aralığını belirtin.
 
 ![İş durumunu filtrele](./media/manage-runbooks/automation-account-jobs-filter.png)
 
-Alternatif olarak, belirli bir runbook için iş Özeti ayrıntılarını Otomasyon hesabınızdaki runbook 'Lar sayfasından seçip **işler**' i seçerek görüntüleyebilirsiniz. Bu eylem Işler sayfasını gösterir. Buradan, ayrıntılarını ve çıktısını görüntülemek için bir iş kaydına tıklayabilirsiniz.
+Alternatif olarak, belirli bir runbook için iş Özeti ayrıntılarını Otomasyon hesabınızdaki runbook 'Lar sayfasından seçip **işler** ' i seçerek görüntüleyebilirsiniz. Bu eylem Işler sayfasını gösterir. Buradan, ayrıntılarını ve çıktısını görüntülemek için bir iş kaydına tıklayabilirsiniz.
 
-:::image type="content" source="./media/manage-runbooks/automation-runbook-job-summary-blade.png" alt-text="Işler sayfasının ekran görüntüsü.":::
+:::image type="content" source="./media/manage-runbooks/automation-runbook-job-summary-blade.png" alt-text="Hatalar düğmesinin vurgulandığı Işler sayfasının ekran görüntüsü.":::
 
 ### <a name="retrieve-job-statuses-using-powershell"></a>PowerShell kullanarak iş durumlarını alma
 

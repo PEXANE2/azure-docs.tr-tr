@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 10/15/2020
-ms.openlocfilehash: 85ddda4bbb6702ed8c82a40d603c8ca87ffb7053
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: c13b71858915ab262ab3e0e99ab8c482d19160ea
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217550"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318498"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Veritabanı ve Azure Synapse Analytics'ten veri paylaşma ve alma
 
@@ -36,7 +36,7 @@ Veriler tabloya alındığında ve hedef tablo henüz yoksa, Azure veri paylaş�
 SQL kaynağından veri paylaşmaya yönelik önkoşulların listesi aşağıda verilmiştir. Önkoşulları yapılandırmak için adım adım [tanıtımı](https://youtu.be/hIE-TjJD8Dc) ' nı da izleyebilirsiniz.
 
 * Paylaşmak istediğiniz tablolar ve görünümler içeren bir Azure SQL veritabanı veya Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı).
-* *Microsoft. SQL/Servers/veritabanları/Write*'TA bulunan SQL Server 'da veritabanlarına yazma izni. Bu izin Katkıda Bulunan rolünde vardır.
+* *Microsoft. SQL/Servers/veritabanları/Write* 'TA bulunan SQL Server 'da veritabanlarına yazma izni. Bu izin Katkıda Bulunan rolünde vardır.
 * Veri ambarına erişmek için veri paylaşımının izni. Bu, aşağıdaki adımlarla yapılabilir: 
     1. Azure portal, SQL Server 'a gidin ve kendiniz Azure Active Directory yöneticisi olarak ayarlayın.
     1. [Sorgu Düzenleyicisi](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory) 'Ni kullanarak Azure SQL veritabanı/veri ambarı 'na bağlanın veya Azure Active Directory kimlik doğrulamasıyla SQL Server Management Studio. 
@@ -52,13 +52,13 @@ SQL kaynağından veri paylaşmaya yönelik önkoşulların listesi aşağıda v
 
 * Güvenlik duvarı erişimi SQL Server. Bu, aşağıdaki adımlarla yapılabilir: 
     1. Azure portal 'deki SQL Server 'da *güvenlik duvarları ve sanal ağlar* ' a gidin.
-    1. *Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin vermek*için **Evet** ' i tıklatın.
-    1. **+ İstemci IP 'Si Ekle**' ye tıklayın. İstemci IP adresi değişebilir. Bu işlemin bir sonraki Azure portal SQL verilerini paylaşışınızda tekrarlanması gerekebilir. Ayrıca, bir IP aralığı ekleyebilirsiniz.
-    1. **Kaydet**’e tıklayın. 
+    1. *Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin vermek* için **Evet** ' i tıklatın.
+    1. **+ İstemci IP 'Si Ekle** ' ye tıklayın. İstemci IP adresi değişebilir. Bu işlemin bir sonraki Azure portal SQL verilerini paylaşışınızda tekrarlanması gerekebilir. Ayrıca, bir IP aralığı ekleyebilirsiniz.
+    1. **Kaydet** ’e tıklayın. 
 
 ### <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 ### <a name="create-a-data-share-account"></a>Veri paylaşma hesabı oluşturma
 
@@ -66,9 +66,9 @@ Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
 
 1. Portalın sol üst köşesindeki menü düğmesini seçin ve ardından **kaynak oluştur** (+) seçeneğini belirleyin.
 
-1. *Veri paylaşımında*arama yapın.
+1. *Veri paylaşımında* arama yapın.
 
-1. Veri paylaşma ' yı seçin ve **Oluştur**' u seçin.
+1. Veri paylaşma ' yı seçin ve **Oluştur** ' u seçin.
 
 1. Aşağıdaki bilgilerle Azure veri paylaşma kaynağınızın temel ayrıntılarını doldurun. 
 
@@ -77,12 +77,12 @@ Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
     | Abonelik | Aboneliğiniz | Veri paylaşma hesabınız için kullanmak istediğiniz Azure aboneliğini seçin.|
     | Kaynak grubu | *test-resource-group* | Mevcut bir kaynak grubunu kullanın veya yeni bir kaynak grubu oluşturun. |
     | Konum | *Doğu ABD 2* | Veri paylaşma hesabınız için bir bölge seçin.
-    | Ad | *datashareaccount* | Veri paylaşma hesabınız için bir ad belirtin. |
+    | Name | *datashareaccount* | Veri paylaşma hesabınız için bir ad belirtin. |
     | | |
 
-1. Veri paylaşma hesabınızı sağlamak için **gözden geçir + oluştur**' u seçin ve **Oluştur** ' a tıklayın. Yeni bir veri paylaşma hesabının sağlanması genellikle yaklaşık 2 dakika veya daha kısa sürer. 
+1. Veri paylaşma hesabınızı sağlamak için **gözden geçir + oluştur** ' u seçin ve **Oluştur** ' a tıklayın. Yeni bir veri paylaşma hesabının sağlanması genellikle yaklaşık 2 dakika veya daha kısa sürer. 
 
-1. Dağıtım tamamlandığında **Kaynağa Git**' i seçin.
+1. Dağıtım tamamlandığında **Kaynağa Git** ' i seçin.
 
 ### <a name="create-a-share"></a>Bir paylaşma oluşturun
 
@@ -90,17 +90,17 @@ Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
 
     ![Verilerinizi paylaşma](./media/share-receive-data.png "Verilerinizi paylaşma") 
 
-1. **Verilerinizi paylaşmayı Başlat**' ı seçin.
+1. **Verilerinizi paylaşmayı Başlat** ' ı seçin.
 
-1. **Oluştur**’u seçin.   
+1. **Oluştur** ’u seçin.   
 
 1. Paylaşımınızın ayrıntılarını doldurun. Bir ad, paylaşma türü, içerik paylaşma açıklaması ve kullanım koşulları (isteğe bağlı) belirtin. 
 
     ![EnterShareDetails](./media/enter-share-details.png "Paylaşma ayrıntılarını girin") 
 
-1. **Devam**’ı seçin.
+1. **Devam** ’ı seçin.
 
-1. Paylaşımınıza veri kümeleri eklemek için **veri kümesi Ekle**' yi seçin. 
+1. Paylaşımınıza veri kümeleri eklemek için **veri kümesi Ekle** ' yi seçin. 
 
     ![Paylaşımınıza veri kümeleri ekleme](./media/datasets.png "Veri kümeleri")
 
@@ -116,7 +116,7 @@ Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
 
     ![AddRecipients](./media/add-recipient.png "Alıcı ekleme") 
 
-1. **Devam**’ı seçin.
+1. **Devam** ’ı seçin.
 
 1. Anlık görüntü paylaşma türü ' nu seçtiyseniz, veri tüketicisine verilerinizin güncelleştirmelerini sağlamak için anlık görüntü zamanlamasını yapılandırabilirsiniz. 
 
@@ -124,9 +124,9 @@ Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
 
 1. Bir başlangıç saati ve yinelenme aralığı seçin. 
 
-1. **Devam**’ı seçin.
+1. **Devam** ’ı seçin.
 
-1. Gözden geçir + Oluştur sekmesinde paket Içeriklerinizi, ayarlarınızı, alıcılarını ve eşitleme ayarlarınızı gözden geçirin. **Oluştur**’u seçin.
+1. Gözden geçir + Oluştur sekmesinde paket Içeriklerinizi, ayarlarınızı, alıcılarını ve eşitleme ayarlarınızı gözden geçirin. **Oluştur** ’u seçin.
 
 Azure veri paylaşımınız artık oluşturulmuştur ve veri paylaşımınızın alıcısı artık davetinizi kabul etmeye hazırdır. 
 
@@ -145,13 +145,13 @@ Bir veri paylaşma davetini kabul etmeden önce tüm önkoşulların tümünün 
 Azure depolama 'ya veri almayı seçerseniz, önkoşul listesi aşağıda verilmiştir.
 
 * Azure depolama hesabı: henüz yoksa bir [Azure depolama hesabı](../storage/common/storage-account-create.md)oluşturabilirsiniz. 
-* *Microsoft. Storage/storageAccounts/Write*içinde bulunan depolama hesabına yazma izni. Bu izin Katkıda Bulunan rolünde vardır. 
-* *Microsoft. Authorization/role atamalar/Write*' de bulunan depolama hesabına rol ataması ekleme izni. Bu izin Sahip rolünde vardır.  
+* *Microsoft. Storage/storageAccounts/Write* içinde bulunan depolama hesabına yazma izni. Bu izin Katkıda Bulunan rolünde vardır. 
+* *Microsoft. Authorization/role atamalar/Write* ' de bulunan depolama hesabına rol ataması ekleme izni. Bu izin Sahip rolünde vardır.  
 
 ### <a name="prerequisites-for-sql-target"></a>SQL hedefi önkoşulları
 Azure SQL veritabanı 'na veri almayı seçerseniz Azure SYNAPSE Analytics, önkoşul listesidir. Önkoşulları yapılandırmak için adım adım [tanıtımı](https://youtu.be/aeGISgK1xro) ' nı da izleyebilirsiniz.
 
-* *Microsoft. SQL/Servers/veritabanları/Write*'TA bulunan SQL Server 'da veritabanlarına yazma izni. Bu izin Katkıda Bulunan rolünde vardır. 
+* *Microsoft. SQL/Servers/veritabanları/Write* 'TA bulunan SQL Server 'da veritabanlarına yazma izni. Bu izin Katkıda Bulunan rolünde vardır. 
 * Azure SQL veritabanı veya Azure SYNAPSE Analytics 'e erişmek için veri paylaşımının yönetilen kimliği izni. Bu, aşağıdaki adımlarla yapılabilir: 
     1. Azure portal, SQL Server 'a gidin ve kendiniz Azure Active Directory yöneticisi olarak ayarlayın.
     1. [Sorgu Düzenleyicisi](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory) 'Ni kullanarak Azure SQL veritabanı/veri ambarı 'na bağlanın veya Azure Active Directory kimlik doğrulamasıyla SQL Server Management Studio. 
@@ -167,19 +167,19 @@ Azure SQL veritabanı 'na veri almayı seçerseniz Azure SYNAPSE Analytics, önk
 
 * Güvenlik duvarı erişimi SQL Server. Bu, aşağıdaki adımlarla yapılabilir: 
     1. Azure portal 'deki SQL Server 'da *güvenlik duvarları ve sanal ağlar* ' a gidin.
-    1. *Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin vermek*için **Evet** ' i tıklatın.
-    1. **+ İstemci IP 'Si Ekle**' ye tıklayın. İstemci IP adresi değişebilir. Bu işlemin bir sonraki Azure portal SQL verilerini paylaşışınızda tekrarlanması gerekebilir. Ayrıca, bir IP aralığı ekleyebilirsiniz.
-    1. **Kaydet**’e tıklayın. 
+    1. *Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin vermek* için **Evet** ' i tıklatın.
+    1. **+ İstemci IP 'Si Ekle** ' ye tıklayın. İstemci IP adresi değişebilir. Bu işlemin bir sonraki Azure portal SQL verilerini paylaşışınızda tekrarlanması gerekebilir. Ayrıca, bir IP aralığı ekleyebilirsiniz.
+    1. **Kaydet** ’e tıklayın. 
 
 ### <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 ### <a name="open-invitation"></a>Daveti aç
 
 1. Daveti e-postayla veya doğrudan Azure portal açabilirsiniz. 
 
-   E-postadaki daveti açmak için, veri sağlayıcınızdan bir davet için gelen kutunuza bakın. Davet, ' **den <yourdataprovider@domain.com> Azure veri paylaşma daveti **başlıklı Microsoft Azure. Azure 'da davetinizi görmek için **daveti görüntüle** ' ye tıklayın. 
+   E-postadaki daveti açmak için, veri sağlayıcınızdan bir davet için gelen kutunuza bakın. Davet, ' **den <yourdataprovider@domain.com> Azure veri paylaşma daveti** başlıklı Microsoft Azure. Azure 'da davetinizi görmek için **daveti görüntüle** ' ye tıklayın. 
 
    Daveti doğrudan Azure portal açmak için Azure portal **veri paylaşma davetlerini** arayın. Bu, sizi veri paylaşma davetlerinin listesine götürür.
 
@@ -188,23 +188,23 @@ Azure SQL veritabanı 'na veri almayı seçerseniz Azure SYNAPSE Analytics, önk
 1. Görüntülemek istediğiniz paylaşma seçeneğini belirleyin. 
 
 ### <a name="accept-invitation"></a>Daveti kabul et
-1. **Kullanım koşulları**dahil olmak üzere tüm alanların incelendiğini doğrulayın. Kullanım koşullarını kabul ediyorsanız, kabul ettiğinizi belirtmek için kutuyu denetlemeniz gerekir. 
+1. **Kullanım koşulları** dahil olmak üzere tüm alanların incelendiğini doğrulayın. Kullanım koşullarını kabul ediyorsanız, kabul ettiğinizi belirtmek için kutuyu denetlemeniz gerekir. 
 
    ![Kullanım koşulları](./media/terms-of-use.png "Kullanım koşulları") 
 
-1. *Hedef veri paylaşma hesabı*altında, veri paylaşımınızı dağıtmak istediğiniz aboneliği ve kaynak grubunu seçin. 
+1. *Hedef veri paylaşma hesabı* altında, veri paylaşımınızı dağıtmak istediğiniz aboneliği ve kaynak grubunu seçin. 
 
    **Veri** paylaşma hesabı alanı için, mevcut bir veri paylaşma hesabınız yoksa **Yeni oluştur** ' u seçin. Aksi takdirde, veri paylaşımınızı kabul etmek istediğiniz mevcut bir veri paylaşma hesabı seçin. 
 
    **Alınan paylaşma adı** alanı için, veriler tarafından belirtilen varsayılanı bırakabilir veya alınan paylaşıma yönelik yeni bir ad belirtebilirsiniz. 
 
-   Kullanım koşullarını kabul ettikten ve alınan paylaşımınızı yönetmek için bir veri paylaşma hesabı belirttikten sonra **kabul et ve Yapılandır**' ı seçin. Bir paylaşma aboneliği oluşturulacak. 
+   Kullanım koşullarını kabul ettikten ve alınan paylaşımınızı yönetmek için bir veri paylaşma hesabı belirttikten sonra **kabul et ve Yapılandır** ' ı seçin. Bir paylaşma aboneliği oluşturulacak. 
 
    ![Kabul etme seçenekleri](./media/accept-options.png "Kabul etme seçenekleri") 
 
    Bu sizi, veri paylaşma hesabınızda alınan paylaşımınızdan size götürür. 
 
-   Daveti kabul etmek istemiyorsanız *Reddet*' i seçin. 
+   Daveti kabul etmek istemiyorsanız *Reddet* ' i seçin. 
 
 ### <a name="configure-received-share"></a>Alınan paylaşma yapılandırma
 Verileri almak istediğiniz yeri yapılandırmak için aşağıdaki adımları izleyin.
@@ -217,18 +217,18 @@ Verileri almak istediğiniz yeri yapılandırmak için aşağıdaki adımları i
 
    ![Hedef depolama hesabı](./media/dataset-map-target-sql.png "Hedef veri deposu") 
 
-1. Anlık görüntü tabanlı paylaşım için, veri sağlayıcısı verilere düzenli güncelleştirme sağlamak üzere bir anlık görüntü zamanlaması oluşturmışsa, anlık görüntü **zamanlama** sekmesini seçerek de anlık görüntü zamanlamasını etkinleştirebilirsiniz. Anlık görüntü zamanlamasının yanındaki kutuyu işaretleyin ve **+ Etkinleştir**' i seçin.
+1. Anlık görüntü tabanlı paylaşım için, veri sağlayıcısı verilere düzenli güncelleştirme sağlamak üzere bir anlık görüntü zamanlaması oluşturmışsa, anlık görüntü **zamanlama** sekmesini seçerek de anlık görüntü zamanlamasını etkinleştirebilirsiniz. Anlık görüntü zamanlamasının yanındaki kutuyu işaretleyin ve **+ Etkinleştir** ' i seçin.
 
    ![Anlık görüntü zamanlamasını etkinleştir](./media/enable-snapshot-schedule.png "Anlık görüntü zamanlamasını etkinleştir")
 
 ### <a name="trigger-a-snapshot"></a>Anlık görüntü tetikleyin
 Bu adımlar yalnızca anlık görüntü tabanlı paylaşım için geçerlidir.
 
-1. **Ayrıntılar** sekmesini ve ardından **tetikleyici anlık görüntüsünü**seçerek bir anlık görüntü tetikleyebilirsiniz. Burada, verilerinizin tam veya artımlı anlık görüntüsünü tetikleyebilirsiniz. Veri sağlayıcınızdan ilk kez veri alıyorsanız tam kopya ' ı seçin. SQL kaynakları için yalnızca tam anlık görüntü desteklenir.
+1. **Ayrıntılar** sekmesini ve ardından **tetikleyici anlık görüntüsünü** seçerek bir anlık görüntü tetikleyebilirsiniz. Burada, verilerinizin tam veya artımlı anlık görüntüsünü tetikleyebilirsiniz. Veri sağlayıcınızdan ilk kez veri alıyorsanız tam kopya ' ı seçin. SQL kaynakları için yalnızca tam anlık görüntü desteklenir.
 
    ![Görüntüyü Tetikle](./media/trigger-snapshot.png "Görüntüyü Tetikle") 
 
-1. Son çalıştırma durumu *başarılı*olduğunda, alınan verileri görüntülemek için hedef veri deposuna gidin. **Veri kümeleri**' ni seçin ve Hedef yoldaki bağlantıya tıklayın. 
+1. Son çalıştırma durumu *başarılı* olduğunda, alınan verileri görüntülemek için hedef veri deposuna gidin. **Veri kümeleri** ' ni seçin ve Hedef yoldaki bağlantıya tıklayın. 
 
    ![Tüketici veri kümeleri](./media/consumer-datasets.png "Tüketici veri kümesi eşleme") 
 
@@ -244,13 +244,13 @@ SQL kaynağından veri paylaştığınızda aşağıdaki eşleme, anlık görün
 | ikili |Byte [] |
 | bit |Boole |
 | char |Dize, Char [] |
-| tarih |DateTime |
+| date |DateTime |
 | Tarih saat |DateTime |
 | datetime2 |DateTime |
 | Türünde |DateTimeOffset |
 | Ondalık |Ondalık |
 | FıLESTREAM özniteliği (varbinary (max)) |Byte [] |
-| Kayan |Çift |
+| Float |Çift |
 | image |Byte [] |
 | int |Int32 |
 | etmenize |Ondalık |
@@ -275,7 +275,7 @@ SQL kaynağından veri paylaştığınızda aşağıdaki eşleme, anlık görün
 
 >[!NOTE]
 > 1. Ondalık geçici türle eşlenen veri türleri için şu anda anlık görüntü, 28 ' ye kadar duyarlık destekler. 28 ' den büyük bir duyarlık gerektiren verileriniz varsa, bir dizeye dönüştürmeyi düşünün. 
-> 1.  Azure SQL veritabanındaki verileri Azure SYNAPSE Analytics 'e paylaşıyorsanız, tüm veri türleri desteklenmez. Ayrıntılar için [SYNAPSE SQL havuzundaki tablo veri türleri](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types.md) bölümüne bakın. 
+> 1.  Azure SQL veritabanındaki verileri Azure SYNAPSE Analytics 'e paylaşıyorsanız, tüm veri türleri desteklenmez. Ayrıntılar için [ADANMıŞ SQL havuzundaki tablo veri türleri](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types.md) bölümüne bakın. 
 
 ## <a name="sql-always-encrypted-or-dynamic-data-masking"></a>SQL Always Encrypted veya dinamik veri maskeleme
 Şu anda Azure veri paylaşımında Always Encrypted yapılandırılmış Azure SQL veritabanlarını desteklemez. 

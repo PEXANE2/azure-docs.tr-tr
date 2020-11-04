@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 11e4b79bf76a4612728992f7c16000d840b9c639
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 7929c80f4f90de82c516b746310b5e58819a16bc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285958"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316673"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML çalıştırma günlüklerini ve ölçümlerini izleme ve görüntüleme
 
@@ -58,7 +58,7 @@ Bir çalıştırma tamamlandıktan sonra bu sayfada artık görüntülenmez. Tam
 
 ## <a name="monitor-runs-using-the-jupyter-notebook-widget"></a>Jupyter Not defteri pencere öğesini kullanarak izleme çalıştırmaları
 
-Çalıştırmaları göndermek için **ScriptRunConfig** yöntemini kullandığınızda, [Jupyıter pencere öğesini](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)kullanarak çalıştırmanın ilerlemesini izleyebilirsiniz. Çalıştırma gönderimi gibi pencere öğesi de zaman uyumsuzdur ve iş tamamlanana kadar her 10-15 saniyede bir canlı güncelleştirmeler sağlar.
+Çalıştırmaları göndermek için **ScriptRunConfig** yöntemini kullandığınızda, [Jupyıter pencere öğesini](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)kullanarak çalıştırmanın ilerlemesini izleyebilirsiniz. Çalıştırma gönderimi gibi pencere öğesi de zaman uyumsuzdur ve iş tamamlanana kadar her 10-15 saniyede bir canlı güncelleştirmeler sağlar.
 
 Çalıştırmanın tamamlanmasını beklerken Jupyıter pencere öğesini görüntüleyin.
     
@@ -134,4 +134,3 @@ Azure Machine Learning kullanmayı öğrenmek için bu sonraki adımları deneyi
 * [Azure Machine Learning tasarımcısında denemeleri ve günlükleri etkinleştirme](how-to-track-designer-experiments.md)hakkında bilgi edinin.
 
 * En iyi modeli kaydetme ve dağıtma öğreticisi için bkz. [Azure Machine Learning ile görüntü sınıflandırma modeli eğitme](tutorial-train-models-with-aml.md).
-

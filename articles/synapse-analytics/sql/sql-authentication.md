@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8edf782c03300cf22bd349548da425669f492bc1
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 460fed7244ba8094da41ae6b5b8161de3d9efe65
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093540"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317283"
 ---
 # <a name="sql-authentication"></a>SQL Kimlik Doğrulaması
 
@@ -22,20 +22,20 @@ Azure SYNAPSE Analytics, kaynak tüketiminizi denetlemenizi sağlayan iki SQL fo
 
 SYNAPSE SQL 'e yetki vermek için iki yetkilendirme türü kullanabilirsiniz:
 
-- AAD yetkilendirmesi
+- Azure Active Directory yetkilendirmesi
 - SQL yetkilendirmesi
 
-AAD yetkilendirmesi Azure Active Directory kullanır ve Kullanıcı yönetimi için tek bir yer kullanmanıza olanak sağlar. SQL yetkilendirmesi eski uygulamaların SYNAPSE SQL 'i iyi tanıdık bir şekilde kullanmasına olanak sağlar.
+Azure Active Directory, Kullanıcı yönetimi için tek bir yer kullanmanıza olanak sağlar. SQL yetkilendirmesi eski uygulamaların SYNAPSE SQL 'i iyi tanıdık bir şekilde kullanmasına olanak sağlar.
 
 ## <a name="administrative-accounts"></a>Yönetim hesapları
 
-Yönetici işlevlerine sahip iki yönetici hesabı (**Sunucu yöneticisi** ve **Active Directory yöneticisi**) vardır. SQL sunucunuz için bu yönetici hesaplarını belirlemek için, Azure portal açın ve SYNAPSE SQL 'nizin Özellikler sekmesine gidin.
+Yönetici işlevlerine sahip iki yönetici hesabı ( **Sunucu yöneticisi** ve **Active Directory yöneticisi** ) vardır. SQL sunucunuz için bu yönetici hesaplarını belirlemek için, Azure portal açın ve SYNAPSE SQL 'nizin Özellikler sekmesine gidin.
 
 ![SQL Server Yöneticileri](./media/sql-authentication/sql-admins.png)
 
 - **Sunucu yöneticisi**
 
-  Bir Azure SYNAPSE Analizi oluşturduğunuzda, bir **Sunucu Yöneticisi oturum açma**adı vermelisiniz. SQL Server, bu hesabı ana veritabanında oturum açma bilgileri olarak oluşturur. Bu hesap SQL Server kimlik doğrulaması (kullanıcı adı ve parola) kullanarak bağlanır. Bu hesaplardan yalnızca biri mevcut olabilir.
+  Bir Azure SYNAPSE Analizi oluşturduğunuzda, bir **Sunucu Yöneticisi oturum açma** adı vermelisiniz. SQL Server, bu hesabı ana veritabanında oturum açma bilgileri olarak oluşturur. Bu hesap SQL Server kimlik doğrulaması (kullanıcı adı ve parola) kullanarak bağlanır. Bu hesaplardan yalnızca biri mevcut olabilir.
 
 - **Azure Active Directory yöneticisi**
 
@@ -51,18 +51,18 @@ Yönetici işlevlerine sahip iki yönetici hesabı (**Sunucu yöneticisi** ve **
 - , Ve rollerine üye ekleyebilir veya kaldırabilir `dbmanager` `loginmanager` .
 - , `sys.sql_logins` Sistem tablosunu görüntüleyebilir.
 
-## <a name="sql-on-demand-preview"></a>[İsteğe bağlı SQL (Önizleme)](#tab/serverless)
+## <a name="serverless-sql-pool-preview"></a>[Sunucusuz SQL Havuzu (Önizleme)](#tab/serverless)
 
-İsteğe bağlı SQL 'e erişimi olan kullanıcıları yönetmek için aşağıdaki yönergeleri kullanabilirsiniz.
+Sunucusuz SQL havuzuna erişimi olan kullanıcıları yönetmek için aşağıdaki yönergeleri kullanabilirsiniz.
 
-İsteğe bağlı SQL 'de oturum açma oluşturmak için aşağıdaki sözdizimini kullanın:
+Sunucusuz SQL havuzu 'nda oturum açmak için aşağıdaki sözdizimini kullanın:
 
 ```sql
 CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
 -- or
 CREATE LOGIN Mary@domainname.net FROM EXTERNAL PROVIDER;
 ```
-Oturum açma mevcut olduğunda, SQL isteğe bağlı uç noktasındaki ayrı veritabanlarında kullanıcılar oluşturabilir ve bu kullanıcılara gerekli izinleri verebilirsiniz. Bir kullanım oluşturmak için aşağıdaki sözdizimini kullanabilirsiniz:
+Oturum açma mevcut olduğunda, tek tek veritabanlarında sunucusuz SQL havuzu uç noktasındaki kullanıcıları oluşturabilir ve bu kullanıcılara gerekli izinleri verebilirsiniz. Bir kullanım oluşturmak için aşağıdaki sözdizimini kullanabilirsiniz:
 ```sql
 CREATE USER Mary FROM LOGIN Mary;
 -- or
@@ -77,7 +77,7 @@ Oturum açma ve Kullanıcı oluşturulduktan sonra, haklar vermek için normal S
 
 ### <a name="administrator-access-path"></a>Yönetici erişim yolu
 
-Sunucu düzeyi güvenlik duvarı doğru şekilde yapılandırıldığında **SQL sunucu yöneticisi** ve **Azure Active Directory yöneticisi**, SQL Server Management Studio veya SQL Server Veri Araçları gibi istemci araçlarını kullanarak bağlantı kurabilir. Tüm özellikler ve yetenekler yalnızca en güncel araçlar tarafından sunulur. 
+Sunucu düzeyi güvenlik duvarı doğru şekilde yapılandırıldığında **SQL sunucu yöneticisi** ve **Azure Active Directory yöneticisi** , SQL Server Management Studio veya SQL Server Veri Araçları gibi istemci araçlarını kullanarak bağlantı kurabilir. Tüm özellikler ve yetenekler yalnızca en güncel araçlar tarafından sunulur. 
 
 Aşağıdaki diyagramda, iki yönetici hesabı için tipik bir yapılandırma gösterilmektedir:
  
@@ -158,7 +158,7 @@ Azure SQL veritabanı veya SYNAPSE sunucusuz 'de, ifadesini kullanın `ALTER ROL
 ALTER ROLE db_owner ADD MEMBER Mary;
 ```
 
-SQL havuzunda [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)kullanın.
+Adanmış SQL havuzunda [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)kullanın.
 
 ```sql
 EXEC sp_addrolemember 'db_owner', 'Mary';
@@ -187,7 +187,7 @@ Verimli erişim yönetimi için bireysel kullanıcılar yerine gruplara ve rolle
 
 - SQL Server kimlik doğrulamasını kullanırken veritabanında bağımsız veritabanı kullanıcılarını oluşturun. Bir veya daha fazla veritabanı kullanıcılarını bir [veritabanı rolüne](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ekleyin ve [izinleri](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) veritabanı rolüne atayın.
 
-Veritabanı rolleri **db_owner**, **db_ddladmin**, **db_datawriter**, **db_datareader**, **db_denydatawriter** ve **db_denydatareader** gibi yerleşik roller olabilir. Birkaç kullanıcıya tam izin vermek için genelde **db_owner** kullanılır. Diğer sabit veritabanı rolleri, geliştirme aşamasında basit bir veritabanını hızlı bir şekilde kullanıma almak için kullanışlıdır ancak çoğu üretim veritabanı için önerilmez. 
+Veritabanı rolleri **db_owner** , **db_ddladmin** , **db_datawriter** , **db_datareader** , **db_denydatawriter** ve **db_denydatareader** gibi yerleşik roller olabilir. Birkaç kullanıcıya tam izin vermek için genelde **db_owner** kullanılır. Diğer sabit veritabanı rolleri, geliştirme aşamasında basit bir veritabanını hızlı bir şekilde kullanıma almak için kullanışlıdır ancak çoğu üretim veritabanı için önerilmez. 
 
 Örneğin **db_datareader** sabit veritabanı rolü, veritabanındaki tüm tablolara okuma izni verir ve bu durum genelde ihtiyaç duyulandan fazlasıdır. 
 
@@ -208,7 +208,7 @@ SQL veritabanında oturum açma işlemlerini ve kullanıcıları yönetirken aş
 - Deyimlerini yürütürken **ana** veritabanına bağlı olmanız gerekir `CREATE/ALTER/DROP DATABASE` .
 - **Sunucu Yöneticisi** oturum açma bilgilerine karşılık gelen veritabanı kullanıcısı değiştirilemez veya bırakılamaz.
 - **Sunucu yöneticisi** oturum açma bilgilerinin varsayılan dili ABD-İngilizce olarak belirlenmiştir.
-- Yalnızca yöneticiler (**Sunucu yöneticisi** oturum açma bilgileri veya Azure AD yöneticisi) ve **ana** veritabanındaki **dbmanager** veritabanı rolünün üyeleri `CREATE DATABASE` ve `DROP DATABASE` deyimlerini yürütme iznine sahiptir.
+- Yalnızca yöneticiler ( **Sunucu yöneticisi** oturum açma bilgileri veya Azure AD yöneticisi) ve **ana** veritabanındaki **dbmanager** veritabanı rolünün üyeleri `CREATE DATABASE` ve `DROP DATABASE` deyimlerini yürütme iznine sahiptir.
 - `CREATE/ALTER/DROP LOGIN` deyimlerini yürütürken ana veritabanına bağlanmış olmanız gerekir. Ancak oturum açma bilgilerinin kullanılması önerilmez. Bunun yerine bağımsız veritabanı kullanıcılarını kullanmanız önerilir.
 - Bir kullanıcı veritabanına bağlanmak için bağlantı dizesinde veritabanının adını belirtmeniz gerekir.
 - Yalnızca sunucu düzeyi asıl oturum açma bilgisi ve **ana** veritabanındaki **loginmanager** veritabanı rolünün üyeleri `CREATE LOGIN`,`ALTER LOGIN` ve `DROP LOGIN` deyimlerini yürütme iznine sahiptir.

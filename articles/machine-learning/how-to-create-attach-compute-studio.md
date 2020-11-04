@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: c22593fbd1e1653efa98c760d5bbb73b03761059
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6cb455880852295d7176e813208a93919a2c14bb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708404"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318254"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'da model eğitimi ve dağıtımı için işlem hedefleri oluşturma
 
@@ -30,7 +30,7 @@ Bu makalede, Azure Machine Studio 'da işlem hedefleri oluşturmayı ve yönetme
 * Azure Machine Learning için [vs Code uzantısı](how-to-manage-resources-vscode.md#compute-clusters) .
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)
@@ -45,7 +45,7 @@ Azure Machine Learning, modelinizi toplu olarak [__işlem hedefleri__](concept-a
 
 1. [Azure Machine Learning Studio](https://ml.azure.com)'ya gidin.
  
-1. __Yönet__altında __işlem__' i seçin.
+1. __Yönet__ altında __işlem__ ' i seçin.
 
 1. Her bir işlem hedefi türünü göstermek için üstteki sekmeleri seçin.
 
@@ -59,11 +59,11 @@ Azure Machine Learning, modelinizi toplu olarak [__işlem hedefleri__](concept-a
 
 1. İşlem hedefi yoksa, sayfanın ortasında  **Oluştur** ' u seçin.
   
-    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="İşlem hedefleri listesini görüntüle":::
+    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="İşlem hedefi oluştur":::
 
 1. İşlem kaynaklarının bir listesini görürseniz, listenin üstündeki **+ Yeni** ' yi seçin.
 
-    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="İşlem hedefleri listesini görüntüle":::
+    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="Yeni ' yi seçin":::
 
 
 1. İşlem türü için formu doldurun:
@@ -73,18 +73,18 @@ Azure Machine Learning, modelinizi toplu olarak [__işlem hedefleri__](concept-a
   * [Çıkarım kümeleri](#inference-clusters)
   * [Bağlı işlem](#attached-compute)
 
-1. __Oluştur__’u seçin.
+1. __Oluştur__ ’u seçin.
 
 1. Listeden işlem hedefini seçerek oluşturma işleminin durumunu görüntüleyin:
 
-    :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="İşlem hedefleri listesini görüntüle":::
+    :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="Bir listeden işlem durumunu görüntüleme":::
 
 
 ### <a name="compute-instance"></a>İşlem örneği
 
 İşlem örneğini oluşturmak için [Yukarıdaki adımları](#portal-create) kullanın.  Daha sonra formu aşağıdaki gibi doldurun:
 
-:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="İşlem hedefleri listesini görüntüle":::
+:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="Yeni bir işlem örneği oluştur":::
 
 
 |Alan  |Açıklama  |
@@ -93,7 +93,7 @@ Azure Machine Learning, modelinizi toplu olarak [__işlem hedefleri__](concept-a
 |Sanal makine türü |  CPU veya GPU seçin. Bu tür, oluşturulduktan sonra değiştirilemez     |
 |Sanal makine boyutu     |  Desteklenen sanal makine boyutları bölgenizde kısıtlanmış olabilir. [Kullanılabilirlik listesini](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) denetleme     |
 |SSH erişimini etkinleştirme/devre dışı bırakma     |   SSH erişimi varsayılan olarak devre dışıdır.  SSH erişimi olamaz. oluşturulduktan sonra değiştirildi. [Vs Code uzak](how-to-set-up-vs-code-remote.md) ile etkileşimli olarak hata ayıklamayı planlıyorsanız erişimi etkinleştirdiğinizden emin olun   |
-|Gelişmiş ayarlar     |  İsteğe bağlı. Bir sanal ağ yapılandırın. Bir Azure sanal ağı (VNet) içinde işlem örneği oluşturmak için **kaynak grubu**, **sanal ağ**ve **alt ağ** belirtin. Daha fazla bilgi için, VNET için bu [ağ gereksinimlerine](how-to-enable-virtual-network.md#compute-instance) bakın.  |
+|Gelişmiş ayarlar     |  İsteğe bağlı. Bir sanal ağ yapılandırın. Bir Azure sanal ağı (VNet) içinde işlem örneği oluşturmak için **kaynak grubu** , **sanal ağ** ve **alt ağ** belirtin. Daha fazla bilgi için, VNET için bu [ağ gereksinimlerine](./how-to-secure-training-vnet.md) bakın.  |
 
 ### <a name="compute-clusters"></a><a name="amlcompute"></a> İşlem kümeleri
 
@@ -104,17 +104,17 @@ Eğitim, toplu iş veya pekiştirmeye dayalı öğrenme iş yükleriniz için te
 |---------|---------|
 |İşlem adı     |  <li>Ad gereklidir ve 3 ila 24 karakter uzunluğunda olmalıdır.</li><li>Geçerli karakterler büyük ve küçük harfler, rakamlar ve  **-** karakterdir.</li><li>Ad bir harfle başlamalıdır</li><li>Adın, bir Azure bölgesindeki tüm mevcut hesaplar arasında benzersiz olması gerekir. Seçtiğiniz ad benzersiz değilse bir uyarı görürsünüz</li><li>**-** Karakter kullanılıyorsa, daha sonra adının sonunda en az bir harf gelmelidir</li>     |
 |Sanal makine türü |  CPU veya GPU seçin. Bu tür, oluşturulduktan sonra değiştirilemez     |
-|Sanal makine önceliği | **Adanmış** veya **düşük öncelik**seçin.  Düşük öncelikli sanal makineler, daha ucuz ancak işlem düğümlerini garanti etmez. İşiniz bozulmuş olabilir.
+|Sanal makine önceliği | **Adanmış** veya **düşük öncelik** seçin.  Düşük öncelikli sanal makineler, daha ucuz ancak işlem düğümlerini garanti etmez. İşiniz bozulmuş olabilir.
 |Sanal makine boyutu     |  Desteklenen sanal makine boyutları bölgenizde kısıtlanmış olabilir. [Kullanılabilirlik listesini](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) denetleme     |
 |Minimum düğüm sayısı | Sağlamak istediğiniz düğüm sayısı alt sınırı. Adanmış sayıda düğüm istiyorsanız, bu sayıyı buraya ayarlayın. En az 0 olarak ayarlanarak tasarruf yaparak, küme boşta kaldığında hiçbir düğüm için ödeme yapmazsınız. |
 |En fazla düğüm sayısı | Sağlamak istediğiniz en fazla düğüm sayısı. Bir iş gönderildiğinde işlem bu düğüm sayısı üst sınırına göre otomatik olarak ayarlanır. |
-|Gelişmiş ayarlar     |  İsteğe bağlı. Bir sanal ağ yapılandırın. Bir Azure sanal ağı (VNet) içinde işlem örneği oluşturmak için **kaynak grubu**, **sanal ağ**ve **alt ağ** belirtin. Daha fazla bilgi için, VNET için bu [ağ gereksinimlerine](how-to-enable-virtual-network.md#compute-instance) bakın.   Ayrıca kaynaklara erişim izni vermek için [Yönetilen kimlikler](#managed-identity) iliştirme     |
+|Gelişmiş ayarlar     |  İsteğe bağlı. Bir sanal ağ yapılandırın. Bir Azure sanal ağı (VNet) içinde işlem örneği oluşturmak için **kaynak grubu** , **sanal ağ** ve **alt ağ** belirtin. Daha fazla bilgi için, VNET için bu [ağ gereksinimlerine](./how-to-secure-training-vnet.md) bakın.   Ayrıca kaynaklara erişim izni vermek için [Yönetilen kimlikler](#managed-identity) iliştirme     |
 
 #### <a name="set-up-managed-identity"></a><a name="managed-identity"></a> Yönetilen kimliği ayarlama
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-intro.md)]
 
-Küme oluşturma sırasında veya işlem kümesi ayrıntılarını düzenlediğinizde, **Gelişmiş ayarlar**' da **yönetilen kimlik ata** ' yı açıp sistem tarafından atanan bir kimlik veya Kullanıcı tarafından atanan kimlik belirtin.
+Küme oluşturma sırasında veya işlem kümesi ayrıntılarını düzenlediğinizde, **Gelişmiş ayarlar** ' da **yönetilen kimlik ata** ' yı açıp sistem tarafından atanan bir kimlik veya Kullanıcı tarafından atanan kimlik belirtin.
 
 #### <a name="managed-identity-usage"></a>Yönetilen kimlik kullanımı
 
@@ -132,16 +132,16 @@ Büyük ölçekli ikinci kullanım için bir Azure Kubernetes hizmeti (AKS) küm
 |---------|---------|
 |İşlem adı     |  <li>Ad gereklidir. Ad, 2 ila 16 karakter arasında olmalıdır. </li><li>Geçerli karakterler büyük ve küçük harfler, rakamlar ve  **-** karakterdir.</li><li>Ad bir harfle başlamalıdır</li><li>Adın, bir Azure bölgesindeki tüm mevcut hesaplar arasında benzersiz olması gerekir. Seçtiğiniz ad benzersiz değilse bir uyarı görürsünüz</li><li>**-** Karakter kullanılıyorsa, daha sonra adının sonunda en az bir harf gelmelidir</li>     |
 |Kubernetes Hizmeti | **Yeni oluştur** ' u seçin ve formun geri kalanını doldurun.  Veya **var olanı kullan** ' ı seçin ve ardından aboneliğinizden mevcut bir aks kümesi seçin.
-|Bölge |  Kümenin oluşturulacağı bölgeyi seçin |
+|Region |  Kümenin oluşturulacağı bölgeyi seçin |
 |Sanal makine boyutu     |  Desteklenen sanal makine boyutları bölgenizde kısıtlanmış olabilir. [Kullanılabilirlik listesini](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) denetleme     |
 |Küme amacı  | **Üretim** veya **geliştirme testi** seçin |
 |Düğüm sayısı | Sanal makinenin çekirdek sayısıyla (vCPU 'Lar) çarpıldığı düğüm sayısı 12 ' den büyük veya buna eşit olmalıdır. |
-| Ağ yapılandırması | Mevcut bir sanal ağ içinde işlem oluşturmak için **Gelişmiş** ' i seçin. Bir sanal ağdaki AKS hakkında daha fazla bilgi için bkz. [Özel uç noktalar ve sanal ağlarla eğitim ve çıkarım sırasında ağ yalıtımı](how-to-enable-virtual-network.md#aksvnet). |
+| Ağ yapılandırması | Mevcut bir sanal ağ içinde işlem oluşturmak için **Gelişmiş** ' i seçin. Bir sanal ağdaki AKS hakkında daha fazla bilgi için bkz. [Özel uç noktalar ve sanal ağlarla eğitim ve çıkarım sırasında ağ yalıtımı](./how-to-secure-inferencing-vnet.md). |
 | SSL yapılandırmasını etkinleştir | İşlem üzerinde SSL sertifikası yapılandırmak için bunu kullanın |
 
 ### <a name="attached-compute"></a>Bağlı işlem
 
-Azure Machine Learning çalışma alanı dışında oluşturulan işlem hedeflerini kullanmak için, onları iliştirmeli. İşlem hedefini iliştirmek, çalışma alanınız için kullanılabilir hale getirir.  **Eğitim**için bir işlem hedefi eklemek üzere **bağlı işlem** kullanın.  **Inım**için bir aks kümesi iliştirmek üzere çıkarma **kümelerini** kullanın.
+Azure Machine Learning çalışma alanı dışında oluşturulan işlem hedeflerini kullanmak için, onları iliştirmeli. İşlem hedefini iliştirmek, çalışma alanınız için kullanılabilir hale getirir.  **Eğitim** için bir işlem hedefi eklemek üzere **bağlı işlem** kullanın.  **Inım** için bir aks kümesi iliştirmek üzere çıkarma **kümelerini** kullanın.
 
 Bir işlem eklemek için [Yukarıdaki adımları](#portal-create) kullanın.  Daha sonra formu aşağıdaki gibi doldurun:
 
@@ -157,10 +157,10 @@ Bir işlem eklemek için [Yukarıdaki adımları](#portal-create) kullanın.  Da
     > [!NOTE]
     > Microsoft, parolalardan daha güvenli olan SSH anahtarlarını kullanmanızı önerir. Parolalar, deneme yanılma saldırılarına karşı savunmasızdır. SSH anahtarları şifreleme imzaları kullanır. Azure sanal makineler ile kullanmak üzere SSH anahtarları oluşturma hakkında bilgi için aşağıdaki belgelere bakın:
     >
-    > * [Linux veya macOS 'ta SSH anahtarları oluşturma ve kullanma](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
-    > * [Windows 'da SSH anahtarları oluşturma ve kullanma](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
+    > * [Linux veya macOS 'ta SSH anahtarları oluşturma ve kullanma](../virtual-machines/linux/mac-create-ssh-keys.md)
+    > * [Windows 'da SSH anahtarları oluşturma ve kullanma](../virtual-machines/linux/ssh-from-windows.md)
 
-1. __Ekle__' yi seçin. 
+1. __Ekle__ ' yi seçin. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -176,4 +176,4 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 * [Öğretici: bir modeli eğitme](tutorial-train-models-with-aml.md) bir modeli eğmek için yönetilen bir işlem hedefi kullanır.
 * Daha iyi modeller oluşturmak için [hiper parametreleri verimli](how-to-tune-hyperparameters.md) bir şekilde ayarlamayı öğrenin.
 * Eğitilen bir modelden sonra [modellerin nasıl ve nereye dağıtılacağını](how-to-deploy-and-where.md)öğrenin.
-* [Azure sanal ağları ile Azure Machine Learning kullanma](how-to-enable-virtual-network.md)
+* [Azure sanal ağları ile Azure Machine Learning kullanma](./how-to-network-security-overview.md)

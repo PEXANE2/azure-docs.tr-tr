@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 7a0d3c60841cb12f2999a929eb4af351716abda7
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: a34f2e50a5eb4ab87a02a5128cb912fa220849f1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635788"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317067"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory yönetilen sanal ağ (Önizleme)
 
@@ -51,7 +51,7 @@ Yönetilen özel uç noktalar, Azure kaynaklarına özel bir bağlantı kurarak 
 
 ![Yeni yönetilen özel uç nokta](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
 
-Azure Data Factory özel bağlantıları destekler. Özel bağlantı, Azure (PaaS) hizmetlerine (Azure depolama, Azure Cosmos DB, Azure SYNAPSE Analytics (eskiden Azure SQL veri ambarı)) erişmenizi sağlar.
+Azure Data Factory özel bağlantıları destekler. Özel bağlantı, Azure (PaaS) hizmetlerine (Azure depolama, Azure Cosmos DB, Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı)) erişmenizi sağlar.
 
 Özel bir bağlantı kullandığınızda, veri depolarınız ve yönetilen sanal ağınız arasındaki trafik tamamen Microsoft omurga ağı üzerinden geçer. Özel bağlantı, veri savunma risklerine karşı koruma sağlar. Özel bir uç nokta oluşturarak kaynağa özel bir bağlantı kurarsınız.
 
@@ -81,7 +81,7 @@ ADF tarafından yönetilen sanal ağdan özel bağlantı üzerinden bağlanmak i
 - Azure Dosyaları
 - Azure Data Lake Gen2
 - Azure SQL veritabanı (Azure SQL yönetilen örneği dahil değil)
-- Azure Synapse Analytics (eski adı Azure SQL Veri Ambarı)
+- Azure Synapse Analytics (eski adı SQL Veri Ambarı)
 - Azure CosmosDB SQL
 - Azure Key Vault
 - Azure özel bağlantı hizmeti
@@ -98,7 +98,7 @@ ADF tarafından yönetilen sanal ağdan özel bağlantı üzerinden bağlanmak i
 - Batı ABD 2
 - Orta Güney ABD
 - Central US
-- Kuzey Avrupa
+- North Europe
 - West Europe
 - Güney Birleşik Krallık
 - Güneydoğu Asya

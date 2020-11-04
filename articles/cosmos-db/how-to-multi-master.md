@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: mjbrown
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 35c0b5529cd9ada612caf4884683fbeaacb25b33
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2c91b330f52733a91fbceb1dc9ca2309c0d10547
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100142"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317119"
 ---
 # <a name="configure-multi-region-writes-in-your-applications-that-use-azure-cosmos-db"></a>Azure Cosmos DB kullanan uygulamalarınızda çok bölgeli yazmaları yapılandırma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -21,6 +21,22 @@ Birden fazla yazma bölgesi etkinken bir hesap oluşturulduktan sonra, Azure Cos
 
 > [!Note]
 > Başlangıçta tek bir yazma bölgesi ile yapılandırılan Cosmos hesapları, sıfır saati olan birden fazla yazma bölgesine yapılandırılabilir. Daha fazla bilgi edinmek için bkz. [birden çok yazma bölgelerini yapılandırma](how-to-manage-database-account.md#configure-multiple-write-regions)
+
+## <a name="azure-portal"></a><a id="portal"></a> Azure portal
+
+Azure portal ' den çok bölgeli yazmaları etkinleştirmek için aşağıdaki adımları kullanın:
+
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
+
+1. Azure Cosmos hesabınıza gidin ve menüden **verileri küresel olarak Çoğalt** bölmesini açın.
+
+1. **Çok bölgeli yazma** seçeneği altında **Etkinleştir** ' i seçin. Otomatik olarak, mevcut bölgeleri okuma ve yazma bölgelerine ekler.
+
+1. Haritadaki simgeleri seçerek veya **bölge Ekle** düğmesini seçerek ek bölgeler ekleyebilirsiniz. Eklediğiniz tüm bölgelerde hem okuma hem de yazma işlemleri etkinleştirilir.
+
+1. Bölge listesini güncelleştirdikten sonra değişiklikleri uygulamak için **Kaydet** ' i seçin.
+
+   :::image type="content" source="./media/how-to-multi-master/enable-multi-region-writes.png" alt-text="Azure portal kullanarak çok bölgeli yazmaları etkinleştirme ekran görüntüsü" lightbox="./media/how-to-multi-master/enable-multi-region-writes.png":::
 
 ## <a name="net-sdk-v2"></a><a id="netv2"></a>.NET SDK v2
 
@@ -61,7 +77,7 @@ CosmosClient client = cosmosClientBuilder.Build();
 
 Uygulamanızda çok bölgeli yazma işlemlerini etkinleştirmek için `.multipleWriteRegionsEnabled(true)` ve `.preferredRegions(preferredRegions)` istemci Oluşturucu 'da ve `preferredRegions` `List` uygulamanın dağıtıldığı bölge olan ve Cosmos DB nerede çoğaltılacağı bir öğe olan istemci Oluşturucusu 'nda öğesini çağırın:
 
-# <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
+# <a name="async"></a>[Eş](#tab/api-async)
 
    [Java SDK v4](sql-api-sdk-java-v4.md) (Maven [com. Azure:: Azure-Cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) zaman uyumsuz API
 
@@ -109,7 +125,7 @@ const client = new CosmosClient({
 });
 ```
 
-## <a name="python-sdk"></a><a id="python"></a>Python SDK 'Sı
+## <a name="python-sdk"></a><a id="python"></a>Python SDK'sı
 
 Uygulamanızda çok bölgeli yazmaları etkinleştirmek için `connection_policy.UseMultipleWriteLocations` olarak ayarlayın `true` . Ayrıca, `connection_policy.PreferredLocations` uygulamanın dağıtıldığı bölgeye ve Cosmos DB nerede çoğaltıldığına ayarlanır.
 

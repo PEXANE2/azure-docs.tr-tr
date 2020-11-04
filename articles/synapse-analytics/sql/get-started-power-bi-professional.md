@@ -1,6 +1,6 @@
 ---
 title: Power BI Professional ile SYNAPSE SQL 'e bağlanma
-description: Bu öğreticide, Power BI Desktop 'ı isteğe bağlı SQL (Önizleme) ile nasıl bağlayacağız adımları öğreneceksiniz.
+description: Bu öğreticide, Power BI Desktop 'ı sunucusuz SQL havuzuna (Önizleme) bağlama adımlarını inceleyeceğiz.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: d88406646099a136d196a104f9cf4352a367f6d2
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 97b611c449302c95d4b24c305ce50ee7683e85ea
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899127"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316478"
 ---
-# <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Power BI Professional ile SYNAPSE SQL 'e bağlanma
+# <a name="connect-to-serverless-sql-pool-with-power-bi-professional"></a>Power BI Professional ile sunucusuz SQL havuzuna bağlanma
 
 > [!div class="op_single_selector"]
 >
@@ -26,7 +26,7 @@ ms.locfileid: "92899127"
 > - [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > - [SSMS](get-started-ssms.md)
 
-Bu öğreticide, Power BI Desktop 'ı isteğe bağlı SQL (Önizleme) hizmetine bağlama adımlarını inceleyeceğiz.
+Bu öğreticide, Power BI Desktop 'ı sunucusuz SQL havuzuna (Önizleme) bağlama adımlarını inceleyeceğiz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -43,17 +43,17 @@ Parametreler:
 
 | Parametre                                 | Açıklama                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| SQL isteğe bağlı hizmet uç noktası adresi    | Sunucu adı olarak kullanılacak                                   |
-| SQL isteğe bağlı hizmet uç noktası bölgesi     | Örneklerde hangi depolamanın kullanılacağını belirlemek için kullanılır |
+| Sunucusuz SQL havuzu hizmeti uç noktası adresi    | Sunucu adı olarak kullanılacak                                   |
+| Sunucusuz SQL havuzu hizmet uç noktası bölgesi     | Örneklerde hangi depolamanın kullanılacağını belirlemek için kullanılır |
 | Uç nokta erişimi için Kullanıcı adı ve parola | Uç noktaya erişmek için kullanılacak                               |
-| Görünümler oluşturmak için kullanacağınız veritabanı     | Bu veritabanı, örneklerde başlangıç noktası olarak kullanılacaktır       |
+| Görünümler oluşturmak için kullanacağınız veritabanı       | Bu veritabanı, örneklerde başlangıç noktası olarak kullanılacaktır       |
 
 ## <a name="first-time-setup"></a>İlk kez kurulum
 
 Örnek kullanılmadan önce iki adım vardır:
 
 1. Görünümleriniz için veritabanı oluşturma
-2. Depolamadaki dosyalara erişmek için SQL isteğe bağlı olarak kullanılacak kimlik bilgilerini oluşturun
+2. Depolama alanındaki dosyalara erişmek için sunucusuz SQL havuzu tarafından kullanılacak kimlik bilgilerini oluşturma
 
 ### <a name="create-database"></a>Veritabanı oluşturma
 
@@ -70,10 +70,10 @@ DROP DATABASE IF EXISTS demo;
 
 ### <a name="create-credentials"></a>Kimlik bilgileri oluştur
 
-Sorguları çalıştırabilmeniz için önce kimlik bilgileri oluşturuyoruz. Bu kimlik bilgisi, depolama alanındaki dosyalara erişmek için SQL isteğe bağlı hizmeti tarafından kullanılır.
+Sorguları çalıştırabilmeniz için önce kimlik bilgileri oluşturuyoruz. Bu kimlik bilgileri, depolama alanındaki dosyalara erişmek için sunucusuz SQL havuzu hizmeti tarafından kullanılacaktır.
 
 > [!NOTE]
-> Depolama hesabı erişimi için kimlik bilgileri oluşturmanız gerekir. İsteğe bağlı SQL, farklı bölgelerdeki depolamaya erişebilse de depolama ve Azure SYNAPSE çalışma alanının aynı bölgede bulunması daha iyi bir performans deneyimi sağlar.
+> Depolama hesabı erişimi için kimlik bilgileri oluşturmanız gerekir. Sunucusuz SQL havuzu farklı bölgelerdeki depolamaya erişebilse de depolama ve Azure SYNAPSE çalışma alanının aynı bölgede bulunması daha iyi bir performans deneyimi sağlar.
 
 **Census veri kapsayıcıları için kimlik bilgileri oluşturma hakkında kod parçacığı** , şunu çalıştırın:
 
@@ -108,5 +108,4 @@ Veritabanının URL 'sini ve görünümün bulunduğu veritabanının adını ya
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Data Studio kullanarak SQL isteğe bağlı olarak nasıl bağlanacağınızı öğrenmek için [sorgu depolama dosyalarına](get-started-azure-data-studio.md) ilerleyin.
- 
+Azure Data Studio kullanarak sunucusuz SQL havuzuna nasıl bağlanacağınızı öğrenmek için [sorgu depolama dosyalarına](get-started-azure-data-studio.md) ilerleyin.

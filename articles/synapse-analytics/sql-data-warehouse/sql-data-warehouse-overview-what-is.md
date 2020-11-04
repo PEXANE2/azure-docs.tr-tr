@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: ce4efe0250ea1b85e2e2d77b7ee69bdf3dbcab26
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8840791c7b18d1efa499c2826a6eaf041a6da787
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480404"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317488"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) nedir?
 
@@ -28,17 +28,17 @@ Azure SYNAPSE, kurumsal veri depolama ve büyük veri analizlerini birlikte geti
 Azure SYNAPSE dört bileşene sahiptir:
 
 - SYNAPSE SQL: tam T-SQL tabanlı analiz – genel kullanıma sunuldu
-  - SQL Havuzu (sağlanan DWU başına ödeme)
-  - İstek üzerine SQL (işlenen TB başına ödeme) (Önizleme)
+  - Adanmış SQL Havuzu (sağlanan DWU başına ödeme)
+  - Sunucusuz SQL Havuzu (işlenen TB başına ödeme) (Önizleme)
 - Spark: derin tümleşik Apache Spark (Önizleme)
 - SYNAPSE işlem hatları: karma veri tümleştirmesi (Önizleme)
 - Studio: birleştirilmiş kullanıcı deneyimi. (önizleme)
 
-## <a name="synapse-sql-pool-in-azure-synapse"></a>Azure SYNAPSE 'de SYNAPSE SQL havuzu
+## <a name="dedicated-sql-pool-in-azure-synapse"></a>Azure 'da adanmış SQL havuzu SYNAPSE
 
-SYNAPSE SQL havuzu, Azure SYNAPSE 'de genel kullanıma sunulan kurumsal veri ambarı özelliklerini ifade eder.
+Adanmış SQL havuzu, Azure SYNAPSE 'da genel kullanıma sunulan kurumsal veri ambarı özelliklerini ifade eder.
 
-SQL havuzu, SYNAPSE SQL kullanılırken sağlanmakta olan analitik kaynakların koleksiyonunu temsil eder. SQL havuzunun boyutu, veri ambarı birimleri (DWU) tarafından belirlenir.
+Adanmış SQL havuzu, SYNAPSE SQL kullanılırken sağlanmakta olan analitik kaynakların koleksiyonunu temsil eder. Adanmış bir SQL havuzunun boyutu, veri ambarı birimleri (DWU) tarafından belirlenir.
 
 Basit [PolyBase](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL sorgularıyla büyük verileri içeri aktarın ve ardından yüksek performanslı analiz çalıştırmak için dağıtılmış sorgu altyapısının gücünü kullanın. Verileri tümleştirdiğinizde ve analiz ettiğiniz için SYNAPSE SQL, işletmenizin daha hızlı ve daha sağlam Öngörüler için üzerine gelebilmesi için tek bir Truth sürümü olacaktır. 
 
@@ -48,16 +48,16 @@ Veri depolama, bulut tabanlı, uçtan uca büyük veri çözümünün temel bir 
 
 ![Veri ambarı çözümü](./media/sql-data-warehouse-overview-what-is/data-warehouse-solution.png)
 
-Bulut veri çözümlerinde, farklı kaynaklarda yer alan veriler büyük veri depolarına alınır. Büyük veri deposuna alınan veriler Hadoop, Spark ve makine öğrenmesi algoritmaları ile hazırlanır ve eğitilir. Veriler karmaşık Analize hazırlanmaya hazırsanız, SYNAPSE SQL havuzu büyük veri depolarını sorgulamak için PolyBase 'i kullanır. PolyBase, verileri SYNAPSE SQL havuzu tablolarına getirmek için Standart T-SQL sorgularını kullanır.
+Bulut veri çözümlerinde, farklı kaynaklarda yer alan veriler büyük veri depolarına alınır. Büyük veri deposuna alınan veriler Hadoop, Spark ve makine öğrenmesi algoritmaları ile hazırlanır ve eğitilir. Veriler karmaşık Analize hazırlanmaya hazırsanız, adanmış SQL havuzu büyük veri depolarını sorgulamak için PolyBase 'i kullanır. PolyBase, verileri adanmış SQL havuzu tablolarına getirmek için Standart T-SQL sorgularını kullanır.
 
-SYNAPSE SQL Pool, verileri sütunlu depolama ile ilişkisel tablolarda depolar. Bu biçim veri depolama maliyetlerini önemli ölçüde düşürürken sorgu performansını artırır. Veriler depolandıktan sonra geniş ölçekte analiz işlemleri gerçekleştirebilirsiniz. Analiz işlemleri geleneksel veritabanı sistemlerine kıyasla dakikalar yerine saniyeler veya günler yerine saatler içinde tamamlanır.
+Adanmış SQL havuzu, verileri sütunlu depolama ile ilişkisel tablolarda depolar. Bu biçim veri depolama maliyetlerini önemli ölçüde düşürürken sorgu performansını artırır. Veriler depolandıktan sonra geniş ölçekte analiz işlemleri gerçekleştirebilirsiniz. Analiz işlemleri geleneksel veritabanı sistemlerine kıyasla dakikalar yerine saniyeler veya günler yerine saatler içinde tamamlanır.
 
 Analiz sonuçları dünya çapındaki raporlama veritabanlarına veya uygulamalarına iletilebilir. Ardından iş analistleri işlerle ilgili destekli kararlar almak üzere öngörü sahibi olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure SYNAPSE mimarisini](massively-parallel-processing-mpp-architecture.md) keşfet
-- Hızlıca [BIR SQL havuzu oluşturun](create-data-warehouse-portal.md)
+- [Adanmış BIR SQL havuzu hızlı bir şekilde oluşturun](create-data-warehouse-portal.md)
 - [Örnek verileri yükleyin](load-data-from-azure-blob-storage-using-polybase.md).
 - [Videoları](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse) keşfet
 

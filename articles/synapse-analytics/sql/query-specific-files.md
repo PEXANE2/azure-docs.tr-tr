@@ -9,22 +9,22 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: c03051e2c8fddc21e4399375faeff6a40fb4d0d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b4755d1d2e14b8ce3b05cfef6d30d7f6102905d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288112"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318823"
 ---
-# <a name="use-file-metadata-in-queries"></a>Sorgularda dosya meta verilerini kullan
+# <a name="use-file-metadata-in-serverless-sql-pool-queries"></a>Sunucusuz SQL havuzu sorgularında dosya meta verilerini kullan
 
-SQL isteğe bağlı, [sorgu klasörleri ve birden çok dosya](query-folders-multiple-csv-files.md) makalesinde açıklandığı şekilde birden çok dosya ve klasörü ele alabilir. Bu makalede, sorgularda dosya ve klasör adları hakkında meta veri bilgilerini nasıl kullanacağınızı öğreneceksiniz.
+Sunucusuz SQL havuzu, [sorgu klasörleri ve birden çok dosya](query-folders-multiple-csv-files.md) makalesinde açıklandığı gibi birden çok dosya ve klasörü ele alabilir. Bu makalede, sorgularda dosya ve klasör adları hakkında meta veri bilgilerini nasıl kullanacağınızı öğreneceksiniz.
 
 Bazen, sonuç kümesindeki belirli bir satırla hangi dosya veya klasör kaynağının ilişkili olduğunu bilmeniz gerekebilir.
 
 `filepath` `filename` Sonuç kümesindeki dosya adlarını ve/veya yolu döndürmek için işlevini kullanabilirsiniz. Ya da bunları, dosya adı ve/veya klasör yoluna göre filtrelemek için kullanabilirsiniz. Bu işlevler, [dosya adı işlevi](query-data-storage.md#filename-function) ve [FilePath işlevinde](query-data-storage.md#filepath-function)sözdizimi bölümünde açıklanmaktadır. Aşağıdaki bölümlerde, örnekler üzerinde kısa açıklamalar bulacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İlk adımınız, depolama hesabına başvuran bir veri kaynağı ile **veritabanı oluşturmaktır** . Sonra bu veritabanında [kurulum betiğini](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) yürüterek nesneleri başlatın. Bu kurulum betiği, veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve bu örneklerde kullanılan harici dosya biçimlerini oluşturacaktır.
 

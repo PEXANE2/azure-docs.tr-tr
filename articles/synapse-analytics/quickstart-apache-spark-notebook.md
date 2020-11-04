@@ -1,6 +1,6 @@
 ---
-title: "Hızlı başlangıç: Web araçlarını kullanarak Azure SYNAPSE Analytics 'te Apache Spark havuzu oluşturma"
-description: Bu hızlı başlangıçta, Azure SYNAPSE Analytics 'te bir Apache Spark havuzu oluşturmak ve Spark SQL sorgusu çalıştırmak için web araçlarının nasıl kullanılacağı gösterilmektedir.
+title: 'Hızlı başlangıç: Web araçlarını kullanarak sunucusuz Apache Spark havuzu oluşturma'
+description: Bu hızlı başlangıçta, Azure SYNAPSE Analytics 'te sunucusuz Apache Spark havuzu oluşturmak için web araçlarının nasıl kullanılacağı ve Spark SQL sorgusunun nasıl çalıştırılacağı gösterilmektedir.
 services: synapse-analytics
 author: euangMS
 ms.author: euang
@@ -9,31 +9,31 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 10/16/2020
-ms.openlocfilehash: a4583e7fbf1eeaf4447e1e717c716159af645bfa
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b20f2ce88695cb68de496d126c5e3cd52f9eb6c8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742538"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316145"
 ---
-# <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Hızlı başlangıç: Web araçlarını kullanarak Azure SYNAPSE Analytics 'te Apache Spark havuzu oluşturma
+# <a name="quickstart-create-a-serverless-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Hızlı başlangıç: Web araçlarını kullanarak Azure SYNAPSE Analytics 'te sunucusuz Apache Spark havuzu oluşturma
 
-Bu hızlı başlangıçta, Web araçlarını kullanarak Azure SYNAPSE 'de Apache Spark Havuzu (Önizleme) oluşturmayı öğreneceksiniz. Daha sonra Apache Spark havuzuna bağlanmayı ve dosyalar ve tablolar için Spark SQL sorguları çalıştırmayı öğreneceksiniz. Apache Spark, bellek içi işleme kullanarak hızlı veri analizi ve küme hesaplama sağlar. Azure SYNAPSE Spark hakkında daha fazla bilgi için bkz. [genel bakış: Azure SYNAPSE üzerinde Apache Spark](./spark/apache-spark-overview.md).
+Bu hızlı başlangıçta, Web araçlarını kullanarak Azure SYNAPSE 'da sunucusuz Apache Spark Havuzu (Önizleme) oluşturmayı öğreneceksiniz. Daha sonra Apache Spark havuzuna bağlanmayı ve dosyalar ve tablolar için Spark SQL sorguları çalıştırmayı öğreneceksiniz. Apache Spark, bellek içi işleme kullanarak hızlı veri analizi ve küme hesaplama sağlar. Azure SYNAPSE Spark hakkında daha fazla bilgi için bkz. [genel bakış: Azure SYNAPSE üzerinde Apache Spark](./spark/apache-spark-overview.md).
 
 > [!IMPORTANT]
 > Spark örnekleri için faturalandırma, bunları kullanıp kullanmayacağınızı de dakika başına eşit olarak dağıtılır. Kullanmayı bitirdikten sonra Spark örneğinizi kapattığınızdan emin olun veya kısa bir zaman aşımı ayarlayın. Daha fazla bilgi için bu makalenin **Kaynakları temizleme** bölümüne bakın.
 
 Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [SYNAPSE Analytics çalışma alanı](quickstart-create-workspace.md)
-- [Apache Spark havuzu](quickstart-create-apache-spark-pool-studio.md)
+- [Sunucusuz Apache Spark havuzu](quickstart-create-apache-spark-pool-studio.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/)’ında oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
@@ -132,9 +132,12 @@ Yapılandırılmış Sorgu Dili (SQL), verileri sorgulamak ve tanımlamak için 
 
 11. Daha önce yürütülen hücrelerden her birinin **Geçmiş sunucusuna** ve **izlemeye** gitme seçeneği vardı. Bağlantılara tıkladığınızda kullanıcı deneyiminin farklı bölümlerine gidersiniz.
 
+> [!NOTE]
+> [Apache Spark resmi belgelerden](https://spark.apache.org/docs/latest/) bazıları, SYNAPSE Spark 'Da kullanılamayan Spark konsolunun kullanılmasına bağımlıdır. Bunun yerine [Not defteri](quickstart-apache-spark-notebook.md) veya [IntelliJ](./spark/intellij-tool-synapse.md) deneyimlerini kullanın.
+
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Azure SYNAPSE, verilerinizi Azure Data Lake Storage kaydeder. Bir Spark örneğinin kullanımda olmadığı bir şekilde kapatılmasını güvenle sağlayabilirsiniz. Bir Azure SYNAPSE Apache Spark havuzu, kullanımda olmadığında bile çalıştığı sürece ücretlendirilirsiniz. 
+Azure SYNAPSE, verilerinizi Azure Data Lake Storage kaydeder. Bir Spark örneğinin kullanımda olmadığı bir şekilde kapatılmasını güvenle sağlayabilirsiniz. Bir sunucusuz Apache Spark havuzu, kullanımda olmadığında bile çalıştığı sürece ücretlendirilirsiniz. 
 
 Havuzun ücretleri depolama ücretinden çok daha fazla olduğundan, Spark örneklerinin kullanımda olmadıkları sırada kapatılmasını sağlamak için ekonomik bir fikir verir.
 
@@ -142,11 +145,10 @@ Spark örneğinin kapatıldığından emin olmak için, bağlı olan tüm oturum
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Azure SYNAPSE Apache Spark havuzu oluşturmayı ve temel Spark SQL sorgusunu çalıştırmayı öğrendiniz.
+Bu hızlı başlangıçta, sunucusuz Apache Spark havuzu oluşturmayı ve temel Spark SQL sorgusunu çalıştırmayı öğrendiniz.
 
 - [Azure Synapse Analytics](overview-what-is.md)
 - [Apache Spark belgeleri için .NET](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [Resmi belgeleri Apache Spark](https://spark.apache.org/docs/latest/)
 
->[!NOTE]
-> Bazı resmi Apache Spark belgeleri, Azure SYNAPSE Spark 'da kullanılamayan Spark konsolunun kullanılmasına bağımlıdır. Bunun yerine [Not defteri](quickstart-apache-spark-notebook.md) veya [IntelliJ](./spark/intellij-tool-synapse.md) deneyimlerini kullanın.
+
+

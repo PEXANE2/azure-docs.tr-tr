@@ -11,30 +11,30 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 56ab5ba93545ffdbfd36850c08eda78cc239f694
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: ce80c6bbd3e4a5154e80317c3918776c771e67fb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207130"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318217"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Azure Machine Learning işlem kümesi oluşturma
 
 Azure Machine Learning çalışma alanınızda bir [işlem kümesi](concept-compute-target.md#azure-machine-learning-compute-managed) oluşturmayı ve yönetmeyi öğrenin.
 
-Bulutta bir CPU veya GPU işlem düğümleri kümesi üzerinde eğitim veya toplu çıkarım işlemi dağıtmak için Azure Machine Learning işlem kümesi kullanabilirsiniz. GPU 'ları içeren VM boyutları hakkında daha fazla bilgi için bkz. [GPU ile iyileştirilmiş sanal makine boyutları](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu). 
+Bulutta bir CPU veya GPU işlem düğümleri kümesi üzerinde eğitim veya toplu çıkarım işlemi dağıtmak için Azure Machine Learning işlem kümesi kullanabilirsiniz. GPU 'ları içeren VM boyutları hakkında daha fazla bilgi için bkz. [GPU ile iyileştirilmiş sanal makine boyutları](../virtual-machines/sizes-gpu.md). 
 
 Bu makalede şunları yapmayı öğreneceksiniz:
 
 * İşlem kümesi oluşturma
 * İşlem kümesi maliyetinizi düşürün
-* Küme için [yönetilen bir kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) ayarlama
+* Küme için [yönetilen bir kimlik](../active-directory/managed-identities-azure-resources/overview.md) ayarlama
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
-* [Machine Learning hizmeti Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)veya [Azure Machine Learning Visual Studio Code uzantısı](tutorial-setup-vscode-extension.md).
+* [Machine Learning hizmeti Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)veya [Azure Machine Learning Visual Studio Code uzantısı](tutorial-setup-vscode-extension.md).
 
 ## <a name="what-is-a-compute-cluster"></a>İşlem kümesi nedir?
 
@@ -48,7 +48,7 @@ Azure Machine Learning işlem kümesi, kolayca tek veya çok düğümlü bir iş
 
     Bir işlem hedefini yeniden iliştirmek istiyorsanız (örneğin, küme yapılandırma ayarlarını değiştirmek için), önce var olan eki kaldırmanız gerekir.
 
-* Bu belgede listelenen senaryolardan bazıları __Önizleme__olarak işaretlendi. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+* Bu belgede listelenen senaryolardan bazıları __Önizleme__ olarak işaretlendi. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 * Azure Machine Learning Işlem, ayrılabilen çekirdek sayısı gibi varsayılan sınırlara sahiptir. Daha fazla bilgi için bkz. [Azure kaynakları için kotaları yönetme ve isteme](how-to-manage-quotas.md).
 
@@ -60,7 +60,7 @@ Azure Machine Learning işlem kümesi, kolayca tek veya çok düğümlü bir iş
 
 ## <a name="create"></a>Oluştur
 
-**Tahmini süre**: yaklaşık 5 dakika.
+**Tahmini süre** : yaklaşık 5 dakika.
 
 Azure Machine Learning Işlem, çalıştırmalar arasında yeniden kullanılabilir. İşlem, çalışma alanındaki diğer kullanıcılarla paylaşılabilir ve çalıştırmalar arasında korunur, gönderilen çalışma sayısına ve kümenizde ayarlanan max_nodes göre otomatik olarak düğümleri yukarı veya aşağı ölçeklendirin. Min_nodes ayarı kullanılabilir en düşük düğümleri denetler.
 
@@ -74,13 +74,13 @@ VM ailesi kotası başına bölge başına adanmış çekirdekler ve hesaplama k
 
 Python 'da kalıcı bir Azure Machine Learning Işlem kaynağı oluşturmak için **vm_size** ve **max_nodes** özelliklerini belirtin. Azure Machine Learning daha sonra diğer özellikler için akıllı Varsayılanları kullanır. 
     
-* **vm_size**: Azure Machine Learning işlem tarafından oluşturulan düğümlerin VM ailesi.
-* **max_nodes**: Azure Machine Learning işlem sırasında bir işi çalıştırdığınızda otomatik olarak en fazla düğüm sayısı.
+* **vm_size** : Azure Machine Learning işlem tarafından oluşturulan düğümlerin VM ailesi.
+* **max_nodes** : Azure Machine Learning işlem sırasında bir işi çalıştırdığınızda otomatik olarak en fazla düğüm sayısı.
 
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
 
-Ayrıca, Azure Machine Learning Işlem oluştururken birçok gelişmiş özelliği de yapılandırabilirsiniz. Özellikler, sabit boyutlu kalıcı bir küme oluşturmanıza veya mevcut bir Azure Sanal Ağa gelen aboneliğinizden bu.  Ayrıntılar için [Amlcompute sınıfına](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true) bakın.
+Ayrıca, Azure Machine Learning Işlem oluştururken birçok gelişmiş özelliği de yapılandırabilirsiniz. Özellikler, sabit boyutlu kalıcı bir küme oluşturmanıza veya mevcut bir Azure Sanal Ağa gelen aboneliğinizden bu.  Ayrıntılar için [Amlcompute sınıfına](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?preserve-view=true&view=azure-ml-py) bakın.
 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -90,7 +90,7 @@ Ayrıca, Azure Machine Learning Işlem oluştururken birçok gelişmiş özelli�
 az ml computetarget create amlcompute -n cpu --min-nodes 1 --max-nodes 1 -s STANDARD_D3_V2
 ```
 
-Daha fazla bilgi için bkz. [az ml computetarget Create amlcompute](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute&preserve-view=true).
+Daha fazla bilgi için bkz. [az ml computetarget Create amlcompute](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute&preserve-view=true).
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
@@ -217,4 +217,4 @@ Bkz. [Studio 'da yönetilen kimliği ayarlama](how-to-create-attach-compute-stud
 İşlem kümenizi kullanarak şunları yapın:
 
 * [Eğitim çalışması gönder](how-to-set-up-training-targets.md) 
-* [Toplu çıkarımı çalıştırın](how-to-use-parallel-run-step.md).
+* [Toplu çıkarımı çalıştırın](./tutorial-pipeline-batch-scoring-classification.md).

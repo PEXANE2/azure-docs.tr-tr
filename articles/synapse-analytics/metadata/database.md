@@ -1,6 +1,6 @@
 ---
 title: Paylaşılan veritabanı
-description: Azure SYNAPSE Analytics, Apache Spark bir veritabanı oluşturmak için SQL isteğe bağlı (Önizleme) ve SQL havuzu altyapılarından erişilebilen bir paylaşılan meta veri modeli sağlar.
+description: Azure SYNAPSE Analytics, sunucusuz Apache Spark havuzundaki bir veritabanı oluşturmak için sunucusuz SQL Havuzu (Önizleme) ve SQL havuzu altyapılarından erişilebilen bir paylaşılan meta veri modeli sağlar.
 services: synapse-analytics
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,36 +10,36 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 58c1aea944d89872a79d0672a925b1696791c1a8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e17eb44a5f4f4aace9ce9d541b8218b35db0f5d3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91260861"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317837"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Azure SYNAPSE Analytics paylaşılan veritabanı
 
-Azure SYNAPSE Analytics, farklı hesaplama çalışma alanı altyapılarının Spark havuzları (Önizleme) ile SQL isteğe bağlı (Önizleme) altyapısı arasında veritabanlarını ve tabloları paylaşmasına izin verir.
+Azure SYNAPSE Analytics, farklı hesaplama çalışma alanı altyapılarının, sunucusuz Apache Spark havuzları (Önizleme) ve sunucusuz SQL Havuzu (Önizleme) altyapısı arasında veritabanlarını ve tabloları paylaşmasına izin verir.
 
 [!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Spark işiyle oluşturulmuş bir veritabanı, SQL isteğe bağlı altyapısı dahil, çalışma alanındaki tüm geçerli ve gelecekteki Spark havuzlarıyla (Önizleme) aynı ad ile görünür hale gelir.
+Spark işiyle oluşturulmuş bir veritabanı, sunucusuz SQL havuzu altyapısı dahil, çalışma alanındaki tüm geçerli ve gelecekteki Spark havuzlarıyla (Önizleme) aynı ad ile görünür hale gelir.
 
-Adlı Spark varsayılan veritabanı, `default` SQL isteğe bağlı bağlamı içinde adlı veritabanı olarak da görünür `default` .
+Adlı Spark varsayılan veritabanı, `default` adlı veritabanı olarak sunucusuz SQL havuzu bağlamında da görünür olacaktır `default` .
 
-Veritabanları istek üzerine zaman uyumsuz olarak eşitlendiğinden, görünene kadar bir gecikme olur.
+Veritabanları sunucusuz SQL havuzu ile zaman uyumsuz olarak eşitlendiğinden, görünene kadar bir gecikme olur.
 
 ## <a name="manage-a-spark-created-database"></a>Spark tarafından oluşturulan bir veritabanını yönetme
 
 Spark tarafından oluşturulan veritabanlarını yönetmek için Spark 'ı kullanın. Örneğin, bir Spark havuzu işi aracılığıyla silin ve Spark ' dan tablo oluşturun.
 
-SQL isteğe bağlı SQL kullanarak Spark tarafından oluşturulan bir veritabanında nesneler oluşturursanız veya veritabanını bırakmaya çalışırsanız, işlem başarılı olur. Ancak özgün Spark veritabanı değiştirilmez.
+Sunucusuz SQL havuzu kullanarak Spark oluşturulmuş bir veritabanında nesneler oluşturursanız veya veritabanını bırakmaya çalışırsanız, işlem başarılı olur. Ancak özgün Spark veritabanı değiştirilmez.
 
 ## <a name="how-name-conflicts-are-handled"></a>Ad çakışmalarının işlenme şekli
 
-Spark veritabanının adı var olan bir SQL isteğe bağlı veritabanının adıyla çakışıyorsa, bir sonek SQL 'e Spark veritabanına eklenir. İsteğe bağlı SQL 'de son ek `_<workspace name>-ondemand-DefaultSparkConnector` .
+Spark veritabanının adı, var olan bir sunucusuz SQL havuzu veritabanının adıyla çakışıyorsa, sunucusuz SQL havuzunda Spark veritabanına bir sonek eklenir. Sunucusuz SQL havuzundaki sonek `_<workspace name>-ondemand-DefaultSparkConnector` .
 
-Örneğin, Azure SYNAPSE çalışma alanında aranan bir Spark veritabanı varsa `mydb` `myws` ve bu adı taşıyan bir SQL isteğe bağlı veritabanı zaten mevcutsa, SQL isteğe bağlı olarak Spark veritabanının adı kullanılarak başvurulması gerekir `mydb_myws-ondemand-DefaultSparkConnector` .
+Örneğin, `mydb` Azure SYNAPSE çalışma alanında adlı bir Spark veritabanı oluşturulduysa `myws` ve bu ada sahip SUNUCUSUZ bir SQL havuzu veritabanı zaten mevcutsa, sunucusuz SQL havuzundaki Spark veritabanının adı kullanılarak başvurulması gerekir `mydb_myws-ondemand-DefaultSparkConnector` .
 
 > [!CAUTION]
 > Dikkat: Bu davranışa bir bağımlılık uygulamanız gerekmez.
@@ -58,7 +58,7 @@ Bir güvenlik sorumlusu bir veritabanında nesne oluşturma veya nesneleri bıra
 
 ## <a name="examples"></a>Örnekler
 
-### <a name="create-and-connect-to-spark-database-with-sql-on-demand"></a>İsteğe bağlı SQL ile Spark veritabanı oluşturun ve bu veritabanına bağlanın
+### <a name="create-and-connect-to-spark-database-with-serverless-sql-pool"></a>Sunucusuz SQL havuzu ile Spark veritabanı oluşturun ve bu veritabanına bağlanın
 
 İlk `mytestdb` olarak, çalışma alanınızda zaten oluşturmuş olduğunuz Spark kümesi kullanılarak adlı yeni bir Spark veritabanı oluşturun. Bunun için, örneğin, aşağıdaki .NET Spark ifadesiyle bir Spark C# Not defteri kullanarak bunu yapabilirsiniz:
 
@@ -66,7 +66,7 @@ Bir güvenlik sorumlusu bir veritabanında nesne oluşturma veya nesneleri bıra
 spark.Sql("CREATE DATABASE mytestdb")
 ```
 
-Kısa bir gecikmeden sonra, veritabanını isteğe bağlı SQL 'den görebilirsiniz. Örneğin, isteğe bağlı SQL 'de aşağıdaki ifadeyi çalıştırın.
+Kısa bir gecikmeden sonra, veritabanını sunucusuz SQL havuzundan görebilirsiniz. Örneğin, sunucusuz SQL havuzundan aşağıdaki ifadeyi çalıştırın.
 
 ```sql
 SELECT * FROM sys.databases;

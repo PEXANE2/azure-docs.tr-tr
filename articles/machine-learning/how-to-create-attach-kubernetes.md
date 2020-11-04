@@ -1,7 +1,7 @@
 ---
 title: Azure Kubernetes hizmeti oluşturma ve iliştirme
 titleSuffix: Azure Machine Learning
-description: Azure Kubernetes hizmeti (AKS), bir makine öğrenimi modelini Web hizmeti olarak dağıtmak için kullanılabilir. Azure Machine Learning aracılığıyla yeni bir AKS kümesi oluşturmayı öğrenin. Ayrıca, Azure Machine Learning çalışma alanınıza mevcut bir AKS kümesi eklemeyi öğreneceksiniz.
+description: Azure Machine Learning aracılığıyla yeni bir Azure Kubernetes hizmet kümesi oluşturmayı veya var olan bir AKS kümesini çalışma alanınıza eklemeyi öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,40 +11,40 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: 1126798bdf07f54811c83b932af9928f3e3115dc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9b14ba12c9f9b679d1d63008d31825647f42619d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792013"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318066"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesi oluşturma ve iliştirme
 
 Azure Machine Learning, eğitilen makine öğrenimi modellerini Azure Kubernetes hizmetine dağıtabilir. Ancak, önce Azure ML çalışma alanınızdan bir Azure Kubernetes hizmeti (AKS) kümesi __oluşturmanız__ ya da mevcut bir aks kümesini __eklemeniz__ gerekir. Bu makalede, küme oluşturma ve ekleme hakkında bilgi sağlanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
-- [Machine Learning hizmeti Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)veya [Azure Machine Learning Visual Studio Code uzantısı](tutorial-setup-vscode-extension.md).
+- [Machine Learning hizmeti Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)veya [Azure Machine Learning Visual Studio Code uzantısı](tutorial-setup-vscode-extension.md).
 
-- Azure ML çalışma alanınız ve AKS kümesi arasındaki iletişimin güvenliğini sağlamak için bir Azure sanal ağı kullanmayı planlıyorsanız, [eğitim & çıkarım makalesi sırasında Ağ yalıtımını](how-to-enable-virtual-network.md) okuyun.
+- Azure ML çalışma alanınız ve AKS kümesi arasındaki iletişimin güvenliğini sağlamak için bir Azure sanal ağı kullanmayı planlıyorsanız, [eğitim & çıkarım makalesi sırasında Ağ yalıtımını](./how-to-network-security-overview.md) okuyun.
 
 ## <a name="limitations"></a>Sınırlamalar
 
 - Temel bir Load Balancer (BLB) yerine kümenizde dağıtılan bir **Standart Load Balancer (SLB)** gerekiyorsa, aks PORTALıNDA/CLı/SDK ' da bir küme oluşturun ve ardından AML çalışma alanına **ekleyin** .
 
-- Genel IP adreslerinin oluşturulmasını kısıtlayan bir Azure Ilkeniz varsa, AKS kümesi oluşturma işlemi başarısız olur. AKS, [çıkış trafiği](/azure/aks/limit-egress-traffic)için genel bir IP gerektirir. Çıkış trafiği makalesi, bazı tam etki alanı adları dışında, genel IP aracılığıyla kümeden çıkış trafiğini kilitlemek için rehberlik sağlar. Genel IP 'yi etkinleştirmenin 2 yolu vardır:
+- Genel IP adreslerinin oluşturulmasını kısıtlayan bir Azure Ilkeniz varsa, AKS kümesi oluşturma işlemi başarısız olur. AKS, [çıkış trafiği](../aks/limit-egress-traffic.md)için genel bir IP gerektirir. Çıkış trafiği makalesi, bazı tam etki alanı adları dışında, genel IP aracılığıyla kümeden çıkış trafiğini kilitlemek için rehberlik sağlar. Genel IP 'yi etkinleştirmenin 2 yolu vardır:
     - Küme, varsayılan olarak BLB veya SLB ile oluşturulan genel IP 'yi kullanabilir veya
-    - Küme, genel IP olmadan oluşturulabilir ve ardından genel IP, Kullanıcı tanımlı bir yol ile bir güvenlik duvarıyla yapılandırılır. Daha fazla bilgi için bkz. [Kullanıcı tanımlı rota ile küme çıkışı özelleştirme](/azure/aks/egress-outboundtype).
+    - Küme, genel IP olmadan oluşturulabilir ve ardından genel IP, Kullanıcı tanımlı bir yol ile bir güvenlik duvarıyla yapılandırılır. Daha fazla bilgi için bkz. [Kullanıcı tanımlı rota ile küme çıkışı özelleştirme](../aks/egress-outboundtype.md).
     
     AML denetim düzlemi bu genel IP ile iletişim kurmadı. Dağıtımlar için AKS denetim düzlemiyle konuşuyor. 
 
-- [API sunucusuna erişim Için yetkilendirilmiş BIR IP aralığı etkin](/azure/aks/api-server-authorized-ip-ranges) **olan bir** aks KÜMESI eklerseniz, aks kümesi için AML denetim düzlemi IP aralıklarını etkinleştirin. AML denetim düzlemi eşleştirilmiş bölgeler arasında dağıtılır ve aks kümesinde çıkarım Pod dağıtır. API sunucusuna erişim olmadan, çıkarım 'ler dağıtılamaz. Bir AKS kümesindeki IP aralıklarını etkinleştirirken, her iki [eşleştirilmiş bölge](/azure/best-practices-availability-paired-regions) Için de [IP aralıklarını](https://www.microsoft.com/download/confirmation.aspx?id=56519) kullanın.
+- [API sunucusuna erişim Için yetkilendirilmiş BIR IP aralığı etkin](../aks/api-server-authorized-ip-ranges.md) **olan bir** aks KÜMESI eklerseniz, aks kümesi için AML denetim düzlemi IP aralıklarını etkinleştirin. AML denetim düzlemi eşleştirilmiş bölgeler arasında dağıtılır ve aks kümesinde çıkarım Pod dağıtır. API sunucusuna erişim olmadan, çıkarım 'ler dağıtılamaz. Bir AKS kümesindeki IP aralıklarını etkinleştirirken, her iki [eşleştirilmiş bölge](../best-practices-availability-paired-regions.md) Için de [IP aralıklarını](https://www.microsoft.com/download/confirmation.aspx?id=56519) kullanın.
 
     Yetkilendirilmiş IP aralıkları yalnızca Standart Load Balancer ile kullanılabilir.
 
-- Özel bir AKS kümesi (Azure özel bağlantısı kullanarak) kullanmak istiyorsanız, önce kümeyi oluşturmanız ve ardından çalışma alanına **bağlamanız** gerekir. Daha fazla bilgi için bkz. [özel Azure Kubernetes hizmet kümesi oluşturma](/azure/aks/private-clusters).
+- Özel bir AKS kümesi (Azure özel bağlantısı kullanarak) kullanmak istiyorsanız, önce kümeyi oluşturmanız ve ardından çalışma alanına **bağlamanız** gerekir. Daha fazla bilgi için bkz. [özel Azure Kubernetes hizmet kümesi oluşturma](../aks/private-clusters.md).
 
 - AKS kümesinin işlem adı, Azure ML çalışma alanınız içinde benzersiz OLMALıDıR.
     - Ad gereklidir ve 3 ila 24 karakter uzunluğunda olmalıdır.
@@ -70,7 +70,7 @@ Azure Machine Learning, eğitilen makine öğrenimi modellerini Azure Kubernetes
 
 ## <a name="azure-kubernetes-service-version"></a>Azure Kubernetes hizmet sürümü
 
-Azure Kubernetes hizmeti, çeşitli Kubernetes sürümlerini kullanarak bir küme oluşturmanıza olanak sağlar. Kullanılabilir sürümler hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmetinde desteklenen Kubernetes sürümleri](/azure/aks/supported-kubernetes-versions).
+Azure Kubernetes hizmeti, çeşitli Kubernetes sürümlerini kullanarak bir küme oluşturmanıza olanak sağlar. Kullanılabilir sürümler hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmetinde desteklenen Kubernetes sürümleri](../aks/supported-kubernetes-versions.md).
 
 Aşağıdaki yöntemlerden birini kullanarak bir Azure Kubernetes hizmet kümesi **oluştururken** , oluşturulan kümenin *sürümünde bir seçeneğiniz* yoktur:
 
@@ -124,7 +124,7 @@ Result
 1.16.13
 ```
 
-**Kullanılabilir sürümleri programlı olarak denetlemek** Isterseniz, [kapsayıcı hizmeti istemci listesi düzenleyiciler](https://docs.microsoft.com/rest/api/container-service/container%20service%20client/listorchestrators) REST API kullanın. Kullanılabilir sürümleri bulmak için, olduğu girişlere bakın `orchestratorType` `Kubernetes` . İlişkili `orchestrationVersion` girişler, çalışma alanınıza **iliştirilebilecek** kullanılabilir sürümleri içerir.
+**Kullanılabilir sürümleri programlı olarak denetlemek** Isterseniz, [kapsayıcı hizmeti istemci listesi düzenleyiciler](/rest/api/container-service/container%20service%20client/listorchestrators) REST API kullanın. Kullanılabilir sürümleri bulmak için, olduğu girişlere bakın `orchestratorType` `Kubernetes` . İlişkili `orchestrationVersion` girişler, çalışma alanınıza **iliştirilebilecek** kullanılabilir sürümleri içerir.
 
 Azure Machine Learning aracılığıyla küme **oluştururken** kullanılan varsayılan sürümü bulmak için, ve olduğu girişi bulun `orchestratorType` `Kubernetes` `default` `true` . İlişkili `orchestratorVersion` değer varsayılan sürümdür. Aşağıdaki JSON kod parçacığında bir örnek girişi gösterilmektedir:
 
@@ -183,10 +183,10 @@ aks_target.wait_for_completion(show_output = True)
 
 Bu örnekte kullanılan sınıflar, Yöntemler ve parametreler hakkında daha fazla bilgi için, aşağıdaki başvuru belgelerine bakın:
 
-* [AksCompute. Clusteramacını](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py&preserve-view=true)
+* [AksCompute. Clusteramacını](/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?preserve-view=true&view=azure-ml-py)
 * [AksCompute.provisioning_configuration](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
-* [ComputeTarget. Create](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#create-workspace--name--provisioning-configuration-)
-* [ComputeTarget.wait_for_completion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#wait-for-completion-show-output-false-)
+* [ComputeTarget. Create](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#create-workspace--name--provisioning-configuration-)
+* [ComputeTarget.wait_for_completion](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#wait-for-completion-show-output-false-)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -194,7 +194,7 @@ Bu örnekte kullanılan sınıflar, Yöntemler ve parametreler hakkında daha fa
 az ml computetarget create aks -n myaks
 ```
 
-Daha fazla bilgi için, [az ml computetarget Create aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-aks) Reference bölümüne bakın.
+Daha fazla bilgi için, [az ml computetarget Create aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-aks) Reference bölümüne bakın.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -215,12 +215,12 @@ Azure aboneliğinizde zaten AKS kümeniz varsa ve sürüm 1,17 veya daha düşü
 > [!WARNING]
 > Çalışma alanınızdan aynı AKS kümesine birden çok, eşzamanlı ek oluşturmayın. Örneğin, iki farklı ad kullanarak bir AKS kümesini çalışma alanına ekleme. Her yeni ek önceki mevcut ekleri keser.
 >
-> Bir AKS kümesini yeniden eklemek istiyorsanız (örneğin, TLS veya başka bir küme yapılandırma ayarını değiştirmek için), önce, bu eki,, [Akscompute. detach ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#detach--)kullanarak kaldırmanız gerekir.
+> Bir AKS kümesini yeniden eklemek istiyorsanız (örneğin, TLS veya başka bir küme yapılandırma ayarını değiştirmek için), önce, bu eki,, [Akscompute. detach ()](/python/api/azureml-core/azureml.core.compute.akscompute?preserve-view=true&view=azure-ml-py#detach--)kullanarak kaldırmanız gerekir.
 
 Azure CLı veya portalını kullanarak bir AKS kümesi oluşturma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-* [AKS kümesi oluşturma (CLI)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest&preserve-view=true#az-aks-create)
-* [AKS kümesi oluşturma (portal)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest&preserve-view=true)
+* [AKS kümesi oluşturma (CLI)](/cli/azure/aks?bc=%252fazure%252fbread%252ftoc.json&preserve-view=true&toc=%252fazure%252faks%252fTOC.json&view=azure-cli-latest#az-aks-create)
+* [AKS kümesi oluşturma (portal)](../aks/kubernetes-walkthrough-portal.md?preserve-view=true&view=azure-cli-latest)
 * [AKS kümesi oluşturma (Azure hızlı başlangıç şablonlarında ARM şablonu)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
 
 Aşağıdaki örnek, var olan bir AKS kümesinin çalışma alanınıza nasıl ekleneceğini göstermektedir:
@@ -248,8 +248,8 @@ aks_target.wait_for_completion(show_output = True)
 Bu örnekte kullanılan sınıflar, Yöntemler ve parametreler hakkında daha fazla bilgi için, aşağıdaki başvuru belgelerine bakın:
 
 * [AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
-* [AksCompute. Clusteramacını](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py&preserve-view=true)
-* [AksCompute. Attach](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#attach-workspace--name--attach-configuration-)
+* [AksCompute. Clusteramacını](/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?preserve-view=true&view=azure-ml-py)
+* [AksCompute. Attach](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#attach-workspace--name--attach-configuration-)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -271,7 +271,7 @@ Mevcut kümeyi çalışma alanınıza eklemek için aşağıdaki komutu kullanı
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
 ```
 
-Daha fazla bilgi için, [az ml computetarget Attach aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-attach-aks) başvurusuna bakın.
+Daha fazla bilgi için, [az ml computetarget Attach aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks) başvurusuna bakın.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -284,7 +284,7 @@ Portala AKS kümesi ekleme hakkında daha fazla bilgi için, bkz. [Azure Machine
 Bir kümeyi çalışma alanınızdan ayırmak için aşağıdaki yöntemlerden birini kullanın:
 
 > [!WARNING]
-> Bir AKS kümesini ayırmak için Machine Learning 'in Azure Machine Learning Studio, SDK veya Azure CLı uzantısının kullanılması **AKS kümesini silmez** . Kümeyi silmek için bkz. [Azure CLI 'Yı AKS Ile kullanma](/azure/aks/kubernetes-walkthrough#delete-the-cluster).
+> Bir AKS kümesini ayırmak için Machine Learning 'in Azure Machine Learning Studio, SDK veya Azure CLı uzantısının kullanılması **AKS kümesini silmez**. Kümeyi silmek için bkz. [Azure CLI 'Yı AKS Ile kullanma](../aks/kubernetes-walkthrough.md#delete-the-cluster).
 
 # <a name="python"></a>[Python](#tab/python)
 

@@ -1,6 +1,6 @@
 ---
 title: Veritabanını güvenli hale getirme
-description: Bir veritabanını güvenli hale getirme ve bir Synapse SQL havuzu kaynağında çözüm geliştirme ipuçları.
+description: Adanmış bir SQL havuzunu güvenli hale getirme ve Azure SYNAPSE Analytics 'te çözüm geliştirme ipuçları.
 author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
@@ -11,14 +11,14 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: c94924c973a1095a4bebf6231d9853968facc1b2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f6c1370cab573926183a937b8e749ef490c19334
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516892"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317701"
 ---
-# <a name="secure-a-database-in-azure-synapse"></a>Azure 'da bir veritabanının güvenliğini sağlama SYNAPSE
+# <a name="secure-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış bir SQL havuzunun güvenliğini sağlama
 
 > [!div class="op_single_selector"]
 >
@@ -27,7 +27,7 @@ ms.locfileid: "92516892"
 > * [Şifreleme (portal)](sql-data-warehouse-encryption-tde.md)
 > * [Şifreleme (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 
-Bu makale, SYNAPSE SQL havuzunuzu güvenli hale getirmenin temel bilgileri konusunda size kılavuzluk eder. Özellikle bu makale, SQL havuzu kullanılarak sağlanan bir veritabanında erişimi sınırlandırma, verileri koruma ve etkinlikleri izlemeye yönelik kaynakları kullanmaya başlamanızı temin ediyor.
+Bu makale, adanmış SQL havuzunuzu güvenli hale getirmenin temel bilgileri konusunda size kılavuzluk eder. Özellikle bu makale, Özel SQL havuzu kullanarak erişimi sınırlandırma, verileri koruma ve etkinlikleri izleme kaynakları ile çalışmaya başlamanızı gösterir.
 
 ## <a name="connection-security"></a>Bağlantı güvenliği
 
@@ -35,15 +35,15 @@ Bağlantı Güvenliği, veritabanı bağlantılarını güvenlik duvarı kuralla
 
 Güvenlik duvarı kuralları, açıkça onaylanmamış IP adreslerinden gelen bağlantı girişimlerini reddetmek için hem [MANTıKSAL SQL Server](../../azure-sql/database/logical-servers.md) hem de veritabanları tarafından kullanılır. Uygulamanızın veya istemci makinenizin ortak IP adresinden gelen bağlantılara izin vermek için, önce Azure portal, REST API veya PowerShell 'i kullanarak sunucu düzeyinde bir güvenlik duvarı kuralı oluşturmanız gerekir.
 
-En iyi uygulama olarak, sunucu düzeyi güvenlik duvarınız aracılığıyla izin verilen IP adresi aralıklarını mümkün olduğunca kısıtlamalısınız.  Yerel bilgisayarınızdan SQL havuzuna erişmek için, ağınızdaki ve yerel bilgisayarınızdaki güvenlik duvarının TCP bağlantı noktası 1433 ' de giden iletişime izin verdiğinden emin olun.  
+En iyi uygulama olarak, sunucu düzeyi güvenlik duvarınız aracılığıyla izin verilen IP adresi aralıklarını mümkün olduğunca kısıtlamalısınız.  Yerel bilgisayarınızdan adanmış SQL havuzunuza erişmek için, ağınızdaki ve yerel bilgisayarınızdaki güvenlik duvarının TCP bağlantı noktası 1433 ' de giden iletişime izin verdiğinden emin olun.  
 
 Azure SYNAPSE Analytics, sunucu düzeyinde IP güvenlik duvarı kuralları kullanır. Veritabanı düzeyinde IP güvenlik duvarı kurallarını desteklemez. Daha fazla bilgi için bkz. [Azure SQL veritabanı güvenlik duvarı kuralları](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
-SQL havuzunuza bağlantılar varsayılan olarak şifrelenir.  Şifrelemeyi devre dışı bırakmak için bağlantı ayarlarını değiştirme yok sayılır.
+Adanmış SQL havuzunuzun bağlantıları varsayılan olarak şifrelenir.  Şifrelemeyi devre dışı bırakmak için bağlantı ayarlarını değiştirme yok sayılır.
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
 
-Kimlik doğrulaması, veritabanına bağlanırken kimliğinizi nasıl kanıtlayacağınızı belirtir. SQL havuzu şu anda Kullanıcı adı ve parolayla SQL Server kimlik doğrulamasını destekler ve Azure Active Directory.
+Kimlik doğrulaması, veritabanına bağlanırken kimliğinizi nasıl kanıtlayacağınızı belirtir. Adanmış SQL havuzu şu anda Kullanıcı adı ve parolayla SQL Server kimlik doğrulamasını destekler ve Azure Active Directory.
 
 Veritabanınız için sunucuyu oluşturduğunuzda, bir Kullanıcı adı ve parolayla "Sunucu Yöneticisi" oturum açma adı belirttiniz. Bu kimlik bilgilerini kullanarak, bu sunucuda veritabanı sahibi olarak veya SQL Server kimlik doğrulaması aracılığıyla "dbo" olarak herhangi bir veritabanında kimlik doğrulaması yapabilirsiniz.
 
@@ -57,7 +57,7 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-Ardından, Sunucu Yöneticisi oturum açma bilgilerinizi kullanarak **SQL havuzu veritabanınıza** bağlanın ve oluşturduğunuz sunucu oturumuna göre bir veritabanı kullanıcısı oluşturun.
+Daha sonra, Sunucu Yöneticisi oturum açma bilgileriyle **ADANMıŞ SQL havuzu veritabanınıza** bağlanın ve oluşturduğunuz sunucu oturumuna göre bir veritabanı kullanıcısı oluşturun.
 
 ```sql
 -- Connect to the database and create a database user
@@ -104,4 +104,4 @@ SQL veritabanında, veritabanı şifreleme anahtarı yerleşik bir sunucu sertif
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Farklı protokollerle ambarınıza bağlanma hakkındaki ayrıntılar ve örnekler için bkz. [SQL Pool 'A bağlanma](../sql/connect-overview.md).
+Farklı protokollerle ambarınıza bağlanma hakkındaki ayrıntılar ve örnekler için bkz. [ADANMıŞ SQL havuzuna bağlanma](../sql/connect-overview.md).

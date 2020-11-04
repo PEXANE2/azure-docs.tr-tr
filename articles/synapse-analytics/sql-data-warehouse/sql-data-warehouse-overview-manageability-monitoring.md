@@ -1,6 +1,6 @@
 ---
 title: Yönetilebilirlik ve izleme-genel bakış
-description: SYNAPSE SQL havuzu ile kaynak kullanımı, günlük ve sorgu etkinliği, öneriler ve veri koruması (yedekleme ve geri yükleme) için izleme ve yönetilebilirlik açısından genel bakış.
+description: Azure SYNAPSE Analytics 'te adanmış SQL havuzu ile kaynak kullanımı, günlük ve sorgu etkinliği, öneriler ve veri koruması (yedekleme ve geri yükleme) için izleme ve yönetilebilirlik açısından genel bakış.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 08/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 19b2b4aecedbaa66c258b9076c517b02034a46fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4792842eddac3e8082be2d3a67736824a02dfebd
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85200996"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317495"
 ---
-# <a name="manageability-and-monitoring-with-synapse-sql-pool"></a>SYNAPSE SQL havuzu ile yönetilebilirlik ve izleme
+# <a name="manageability-and-monitoring-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu ile yönetilebilirlik ve izleme
 
-SYNAPSE SQL, SQL havuzu aracılığıyla bir veri ambarı sağlamanıza olanak tanır. Aşağıdaki makaleler, veri Ambarınızı yönetmenize ve izlemenize yardımcı olur. Ayrıca, veri ambarının kullanımını ve performansını iyileştirmenin yollarını öğreneceksiniz.
+SYNAPSE SQL, adanmış SQL havuzu aracılığıyla bir veri ambarı sağlamanıza olanak tanır. Aşağıdaki makaleler, veri Ambarınızı yönetmenize ve izlemenize yardımcı olur. Ayrıca, veri ambarının kullanımını ve performansını iyileştirmenin yollarını öğreneceksiniz.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -33,4 +33,4 @@ SYNAPSE SQL, SQL havuzu aracılığıyla bir veri ambarı sağlamanıza olanak t
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Nasıl yapılır kılavuzlarında bkz. [SQL havuzunuzu izleme ve ayarlama](sql-data-warehouse-manage-monitor.md).
+Nasıl yapılır kılavuzlarında, bkz. [ADANMıŞ SQL havuzunuzu izleme ve ayarlama](sql-data-warehouse-manage-monitor.md).

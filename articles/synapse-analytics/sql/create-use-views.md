@@ -1,6 +1,6 @@
 ---
-title: SQL isteğe bağlı olarak görünüm oluşturma ve kullanma (Önizleme)
-description: Bu bölümde, SQL isteğe bağlı (Önizleme) sorgularını kaydırmak için görünümleri oluşturmayı ve kullanmayı öğreneceksiniz. Görünümler bu sorguları yeniden kullanmanıza olanak sağlayacak. Ayrıca, Power BI gibi araçlar kullanmak istiyorsanız, isteğe bağlı SQL ile birlikte görünümler de gereklidir.
+title: Sunucusuz SQL havuzunda görünüm oluşturma ve kullanma (Önizleme)
+description: Bu bölümde, sunucusuz SQL Havuzu (Önizleme) sorgularını kaydırmak için görünümleri oluşturmayı ve kullanmayı öğreneceksiniz. Görünümler bu sorguları yeniden kullanmanıza olanak sağlayacak. Ayrıca, Power BI gibi araçları kullanmak istiyorsanız, sunucusuz SQL havuzu ile birlikte, görünümler de gereklidir.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: c965b27fde80e1cb8d52b1061917d83e5cd7f5d6
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: d578529839afb5393dd013cb10f48c755f08addd
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927813"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316232"
 ---
-# <a name="create-and-use-views-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Azure SYNAPSE Analytics kullanarak SQL isteğe bağlı (Önizleme) görünümleri oluşturma ve kullanma
+# <a name="create-and-use-views-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullanarak görünümler oluşturma ve kullanma
 
-Bu bölümde, SQL isteğe bağlı (Önizleme) sorgularını kaydırmak için görünümleri oluşturmayı ve kullanmayı öğreneceksiniz. Görünümler bu sorguları yeniden kullanmanıza olanak sağlayacak. Ayrıca, Power BI gibi araçlar kullanmak istiyorsanız, isteğe bağlı SQL ile birlikte görünümler de gereklidir.
+Bu bölümde, sunucusuz SQL Havuzu (Önizleme) sorgularını kaydırmak için görünümleri oluşturmayı ve kullanmayı öğreneceksiniz. Görünümler bu sorguları yeniden kullanmanıza olanak sağlayacak. Ayrıca, Power BI gibi araçları kullanmak istiyorsanız, sunucusuz SQL havuzu ile birlikte, görünümler de gereklidir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

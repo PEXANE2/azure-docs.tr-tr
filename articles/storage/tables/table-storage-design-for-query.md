@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
-ms.openlocfilehash: a15415ab7f5e01619a4a022d7254ef3995a825b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43ae21d97bc9d8292270ae62006e649f4bcf540b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88236344"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316155"
 ---
 # <a name="design-for-querying"></a>Sorgulama için tasarım
 Tablo hizmeti çözümleri yoğun bir şekilde okunabilir, yoğun yazma veya ikisinin karışımı olabilir. Bu makalede, tablo hizmetinizi, okuma işlemlerini verimli bir şekilde destekleyecek şekilde tasarlarken göz önünde bulundurmanız gereken noktalar ele alınmaktadır. Genellikle, okuma işlemlerini etkin şekilde destekleyen bir tasarım, yazma işlemleri için de etkilidir. Bununla birlikte, [veri değişikliği Için tasarım tasarımında](table-storage-design-for-modification.md)bahsedilen yazma işlemlerini desteklemek için tasarlanırken dikkate alınması gereken ek hususlar vardır.
@@ -44,15 +44,15 @@ Aşağıdaki örneklerde, tablo hizmetinin çalışan varlıklarını aşağıda
 | **Age** |Tamsayı |
 | **EmailAddress** |Dize |
 
-[Azure Tablo depolama genel bakış](table-storage-overview.md) makalesi, Azure Tablo hizmeti 'nin sorgu tasarımı üzerinde doğrudan bir etkisi olan temel özelliklerden bazılarını açıklar. Bunlar, tablo hizmeti sorguları tasarlamak için aşağıdaki genel yönergelere yol açabilir. Aşağıdaki örneklerde kullanılan filtre sözdiziminin tablo hizmeti REST API olduğunu unutmayın. daha fazla bilgi için bkz. [Sorgu varlıkları](https://docs.microsoft.com/rest/api/storageservices/Query-Entities).  
+[Azure Tablo depolama genel bakış](table-storage-overview.md) makalesi, Azure Tablo hizmeti 'nin sorgu tasarımı üzerinde doğrudan bir etkisi olan temel özelliklerden bazılarını açıklar. Bunlar, tablo hizmeti sorguları tasarlamak için aşağıdaki genel yönergelere yol açabilir. Aşağıdaki örneklerde kullanılan filtre sözdiziminin tablo hizmeti REST API olduğunu unutmayın. daha fazla bilgi için bkz. [Sorgu varlıkları](/rest/api/storageservices/Query-Entities).  
 
-* ***Nokta sorgusu*** , en verimli arama ve en düşük gecikme süresi gerektiren aramalar için kullanılması önerilir. Bu tür bir sorgu, her iki **partitionkey** ve **rowkey** değerlerini belirterek, her bir varlığı çok verimli bir şekilde bulmak için dizinleri kullanabilir. Örneğin: $filter = (PartitionKey EQ ' Sales ') ve (RowKey EQ ' 2 ')  
-* İkinci değer en iyisi, birden fazla varlık döndürmek için **partitionkey** değerlerini bir aralıktaki **rowkey** değerleri ve filtreleri kullanan bir ***Aralık sorgusudur*** . **Partitionkey** değeri belirli bir bölümü tanımlar ve **rowkey** değerleri söz konusu bölümdeki varlıkların bir alt kümesini tanımlar. Örneğin: $filter = PartitionKey EQ ' Sales ' ve RowKey Ge ' ve RowKey lt 'T '  
-* Üçüncü en iyisi, bir diğer anahtar olmayan özellikte ve birden fazla varlık döndürebilen **Partitionkey** ve Filters kullanan bir ***bölüm taramasından*** biridir. **Partitionkey** değeri belirli bir bölümü tanımlar ve özellik değerleri söz konusu bölümdeki varlıkların bir alt kümesini seçer. Örneğin: $filter = PartitionKey EQ ' Sales ' ve LastName EQ ' Smith '  
-* ***Tablo taraması*** **partitionkey** içermez ve tüm eşleşen varlıklar için tabloyu oluşturan tüm bölümleri aradığı için çok verimsiz olur. Filtrenizin **Rowkey**kullanıp kullanmadığını bakılmaksızın tablo taraması gerçekleştirir. Örneğin: $filter = LastName EQ ' Jones '  
+* * **Nokta sorgusu** _, kullanım açısından en verimli aramadır ve en düşük gecikme süresi gerektiren yüksek hacimli aramalar veya aramalar için kullanılması önerilir. Bu tür bir sorgu, _ *partitionkey* * ve **rowkey** değerlerinin her ikisini de belirterek, her bir varlığı çok verimli bir şekilde bulmak için dizinleri kullanabilir. Örneğin: $filter = (PartitionKey EQ ' Sales ') ve (RowKey EQ ' 2 ')  
+* İkinci en iyi, _ *partitionkey* * ve birden fazla varlık döndürmek için bir dizi **rowkey** değeri üzerinde filtreleri kullanan bir * **Range sorgusu** _. **Partitionkey** değeri belirli bir bölümü tanımlar ve **rowkey** değerleri söz konusu bölümdeki varlıkların bir alt kümesini tanımlar. Örneğin: $filter = PartitionKey EQ ' Sales ' ve RowKey Ge ' ve RowKey lt 'T '  
+* Üçüncü en iyisi _ *Partitionkey* * ' i ve anahtar olmayan başka bir özelliğe göre filtreleri ve birden fazla varlık döndürebilen bir * **bölüm taramasından** biridir. **Partitionkey** değeri belirli bir bölümü tanımlar ve özellik değerleri söz konusu bölümdeki varlıkların bir alt kümesini seçer. Örneğin: $filter = PartitionKey EQ ' Sales ' ve LastName EQ ' Smith '  
+* * **Tablo taraması** _, _ *partitionkey* * öğesini içermez ve tüm eşleşen varlıklar için tablonuzu oluşturan tüm bölümleri aradığı için çok verimsiz olur. Filtrenizin **Rowkey** kullanıp kullanmadığını bakılmaksızın tablo taraması gerçekleştirir. Örneğin: $filter = LastName EQ ' Jones '  
 * Birden çok varlık döndüren sorgular, bunları **partitionkey** ve **rowkey** sırasına göre sıralanmış olarak döndürür. İstemcideki varlıkları yeniden kullanmaktan kaçınmak için en yaygın sıralama düzenini tanımlayan bir **Rowkey** seçin.  
 
-**Rowkey** değerlerini temel alan bir filtre belirtmek için "**veya**" kullanmanın, Bölüm taramasına neden olduğunu ve Aralık sorgusu olarak değerlendirilmediğini unutmayın. Bu nedenle, şu gibi filtreler kullanan sorgulardan kaçınmalısınız: $filter = PartitionKey EQ ' Sales ' ve (RowKey EQ ' 121 ' veya RowKey EQ ' 322 ')  
+**Rowkey** değerlerini temel alan bir filtre belirtmek için " **veya** " kullanmanın, Bölüm taramasına neden olduğunu ve Aralık sorgusu olarak değerlendirilmediğini unutmayın. Bu nedenle, şu gibi filtreler kullanan sorgulardan kaçınmalısınız: $filter = PartitionKey EQ ' Sales ' ve (RowKey EQ ' 121 ' veya RowKey EQ ' 322 ')  
 
 Etkili sorgular yürütmek için depolama Istemci kitaplığını kullanan istemci tarafı kodu örnekleri için, bkz.:  
 
@@ -79,7 +79,7 @@ Bir Extreme 'de, tüm varlıklarınızı tek bir bölümde saklayabilirsiniz, an
 Varlık **anahtarınız** , varlıkları ekleme, güncelleştirme ve silme ile ilgili ek hususlar vardır. Daha fazla bilgi için bkz. [veri değişikliği için tabloları tasarlama](table-storage-design-for-modification.md).  
 
 ## <a name="optimizing-queries-for-the-table-service"></a>Tablo hizmeti için sorguları iyileştirme
-Tablo hizmeti, tek bir kümelenmiş dizindeki **partitionkey** ve **rowkey** değerlerini kullanarak varlıklarınızı otomatik olarak dizinlenir, bu nedenle nokta sorgularının kullanım açısından en verimli olması neden olur. Ancak, **partitionkey** ve **rowkey**üzerindeki kümelenmiş dizinin dışında başka bir dizin yoktur.
+Tablo hizmeti, tek bir kümelenmiş dizindeki **partitionkey** ve **rowkey** değerlerini kullanarak varlıklarınızı otomatik olarak dizinlenir, bu nedenle nokta sorgularının kullanım açısından en verimli olması neden olur. Ancak, **partitionkey** ve **rowkey** üzerindeki kümelenmiş dizinin dışında başka bir dizin yoktur.
 
 Birçok tasarım, varlıkların birden çok ölçüte göre aramasını etkinleştirmek için gereksinimlere uymalıdır. Örneğin, e-posta, çalışan KIMLIĞI veya soyadı temelinde çalışan varlıklarını bulma. [Tablo tasarım desenlerinde](table-storage-design-patterns.md) açıklanan desenler, bu tür gereksinimleri ele almaz ve tablo hizmetinin ikincil dizinler sağlamadığı gerçeğe geçici çözüm yolları açıklanmaktadır:  
 
@@ -88,7 +88,7 @@ Birçok tasarım, varlıkların birden çok ölçüte göre aramasını etkinle�
 * [Dizin varlıkları model](table-storage-design-patterns.md#index-entities-pattern) -varlık listeleri döndüren etkili aramaları etkinleştirmek için Dizin varlıklarını koruyun.  
 
 ## <a name="sorting-data-in-the-table-service"></a>Tablo hizmetindeki verileri sıralama
-Tablo hizmeti, **partitionkey** ve sonra **rowkey**'e göre artan sırada sıralanan varlıkları döndürür. Bu anahtarlar dize değerleridir ve sayısal değerlerin doğru şekilde sıralanmasını sağlamak için, bunları sabit bir uzunluğa dönüştürmeniz ve sıfırlarla birlikte ayarlayabilmeniz gerekir. Örneğin, **Rowkey** olarak KULLANDıĞıNıZ çalışan kimliği değeri bir tamsayı değeri ise, **123** çalışan kimliğini **00000123**olarak dönüştürmeniz gerekir.  
+Tablo hizmeti, **partitionkey** ve sonra **rowkey** 'e göre artan sırada sıralanan varlıkları döndürür. Bu anahtarlar dize değerleridir ve sayısal değerlerin doğru şekilde sıralanmasını sağlamak için, bunları sabit bir uzunluğa dönüştürmeniz ve sıfırlarla birlikte ayarlayabilmeniz gerekir. Örneğin, **Rowkey** olarak KULLANDıĞıNıZ çalışan kimliği değeri bir tamsayı değeri ise, **123** çalışan kimliğini **00000123** olarak dönüştürmeniz gerekir.  
 
 Birçok uygulamanın, farklı siparişlerde sıralanmış verileri kullanma gereksinimleri vardır: Örneğin, çalışanları ada göre veya birleştirme tarihine göre sıralama. Aşağıdaki desenler, varlıklarınız için sıralama emirlerinin nasıl farklı olduğunu ele almalardır:  
 

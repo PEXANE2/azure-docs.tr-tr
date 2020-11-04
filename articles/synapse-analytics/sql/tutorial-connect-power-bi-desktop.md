@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: isteğe bağlı SQL 'i Power BI Desktop & rapor oluşturmak için bağlama"
-description: Bu öğreticide, Azure SYNAPSE Analytics 'te Azure 'da isteğe bağlı SQL 'i Power BI masaüstüne bağlamayı ve bir görünümü temel alan bir demo raporu oluşturmayı öğrenin.
+title: 'Öğretici: sunucusuz SQL havuzunu Power BI Desktop & rapor oluşturmak için bağlama'
+description: Bu öğreticide, Azure SYNAPSE Analytics 'te sunucusuz SQL havuzunu Power BI masaüstüne bağlamayı ve bir görünümü temel alan bir demo raporu oluşturmayı öğrenin.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5c86825d6dce8681e114ec930add751b6beae085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc2b068dd7c5e7fb3f9e3505f93245515d90ae23
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539563"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317186"
 ---
-# <a name="tutorial-use-sql-on-demand-with-power-bi-desktop--create-a-report"></a>Öğretici: Power BI Desktop & bir rapor oluşturmak için isteğe bağlı SQL kullanma
+# <a name="tutorial-use-serverless-sql-pool-with-power-bi-desktop--create-a-report"></a>Öğretici: Power BI Desktop & bir rapor oluşturmak için sunucusuz SQL havuzu kullanma
 
 Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
@@ -24,7 +24,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 >
 > - Demo veritabanı oluştur
 > - Rapor için kullanılan görünüm oluştur
-> - İsteğe bağlı SQL 'e Power BI Desktop bağlama
+> - Power BI Desktop sunucusuz SQL havuzuna bağlama
 > - Görünümü temel alan rapor oluştur
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -42,8 +42,8 @@ Aşağıdaki parametrelerin değerleri:
 
 | Parametre                                 | Açıklama                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| SQL isteğe bağlı hizmet uç noktası adresi    | Sunucu adı olarak kullanılır                                   |
-| SQL isteğe bağlı hizmet uç noktası bölgesi     | Örneklerde kullanılan depolamayı belirlemede kullanılır |
+| Sunucusuz SQL havuzu hizmeti uç noktası adresi    | Sunucu adı olarak kullanılır                                   |
+| Sunucusuz SQL havuzu hizmet uç noktası bölgesi     | Örneklerde kullanılan depolamayı belirlemede kullanılır |
 | Uç nokta erişimi için Kullanıcı adı ve parola | Uç noktaya erişmek için kullanılır                               |
 | Görünümler oluşturmak için kullanacağınız veritabanı     | Örneklerde başlangıç noktası olarak kullanılan veritabanı       |
 
@@ -65,7 +65,7 @@ GO
 
 ## <a name="2---create-data-source"></a>2-veri kaynağı oluşturma
 
-İsteğe bağlı SQL hizmeti için depolama alanındaki dosyalara erişmek üzere bir veri kaynağı gereklidir. Uç noktanız ile aynı bölgede bulunan bir depolama hesabı için veri kaynağını oluşturun. İsteğe bağlı SQL, farklı bölgelerdeki depolama hesaplarına erişebilse de depolama ve uç noktanın aynı bölgede bulunması daha iyi performans sağlar.
+Sunucusuz SQL havuzu hizmetinin depolama alanındaki dosyalara erişmesi için bir veri kaynağı gereklidir. Uç noktanız ile aynı bölgede bulunan bir depolama hesabı için veri kaynağını oluşturun. Sunucusuz SQL havuzu farklı bölgelerdeki depolama hesaplarına erişebilse de, depolama ve uç noktanın aynı bölgede bulunması daha iyi performans sağlar.
 
 Aşağıdaki Transact-SQL (T-SQL) betiğini çalıştırarak veri kaynağını oluşturun:
 
@@ -109,15 +109,15 @@ Demo verileri aşağıdaki veri kümelerini içerir:
 
 Aşağıdaki adımları kullanarak Power BI Desktop raporu oluşturun:
 
-1. Power BI Desktop uygulamasını açın ve **veri al**' ı seçin.
+1. Power BI Desktop uygulamasını açın ve **veri al** ' ı seçin.
 
    ![Power BI Masaüstü uygulamasını açın ve veri al ' ı seçin.](./media/tutorial-connect-power-bi-desktop/step-0-open-powerbi.png)
 
-2. **Azure**  >  **Azure SQL veritabanı**' nı seçin. 
+2. **Azure**  >  **Azure SQL veritabanı** ' nı seçin. 
 
    ![Veri kaynağını seçin.](./media/tutorial-connect-power-bi-desktop/step-1-select-data-source.png)
 
-3. Veritabanının **sunucu** alanında bulunduğu sunucunun adını yazın ve ardından `Demo` veritabanı adını yazın. **Içeri aktarma** seçeneğini belirleyip **Tamam**' ı seçin. 
+3. Veritabanının **sunucu** alanında bulunduğu sunucunun adını yazın ve ardından `Demo` veritabanı adını yazın. **Içeri aktarma** seçeneğini belirleyip **Tamam** ' ı seçin. 
 
    ![Uç noktada veritabanı ' nı seçin.](./media/tutorial-connect-power-bi-desktop/step-2-db.png)
 
@@ -132,11 +132,11 @@ Aşağıdaki adımları kullanarak Power BI Desktop raporu oluşturun:
         ![SQL oturum açma kullanın.](./media/tutorial-connect-power-bi-desktop/step-2.2-select-sql-auth.png)
 
 
-5. Görünümü seçin `usPopulationView` ve ardından **Yükle**' yi seçin. 
+5. Görünümü seçin `usPopulationView` ve ardından **Yükle** ' yi seçin. 
 
    ![Seçili veritabanında bir görünüm seçin.](./media/tutorial-connect-power-bi-desktop/step-3-select-view.png)
 
-6. İşlemin tamamlanmasını bekleyin ve ardından bir açılır pencere görüntülenir `There are pending changes in your queries that haven't been applied` . **Değişiklikleri Uygula**' yı seçin. 
+6. İşlemin tamamlanmasını bekleyin ve ardından bir açılır pencere görüntülenir `There are pending changes in your queries that haven't been applied` . **Değişiklikleri Uygula** ' yı seçin. 
 
    ![Değişiklikleri Uygula ' ya tıklayın.](./media/tutorial-connect-power-bi-desktop/step-4-apply-changes.png)
 

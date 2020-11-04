@@ -1,7 +1,7 @@
 ---
 title: Kimlik doğrulamasını ayarlama
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning çeşitli kaynaklar ve iş akışları için kimlik doğrulamasını ayarlamayı ve yapılandırmayı öğrenin. Hizmet içinde kimlik doğrulamasını yapılandırmanın ve kullanmanın birden çok yolu vardır; geliştirme veya test amaçları için basit UI tabanlı kimlik doğrulamasından, tam Azure Active Directory hizmet sorumlusu kimlik doğrulamasına kadar birçok yol vardır.
+description: Azure Machine Learning çeşitli kaynaklar ve iş akışları için kimlik doğrulamasını ayarlamayı ve yapılandırmayı öğrenin.
 services: machine-learning
 author: cjgronlund
 ms.author: cgronlun
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: a23f44e60bd68e51c26cc6a0bbf3e85e64914135
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: fd6f933e1b3c1e7c003f62e03215273e3d28ea5c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125776"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318538"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama
 
@@ -38,7 +38,7 @@ Kullanılan kimlik doğrulama türü ne olursa olsun, kaynaklara izin verilen er
 ## <a name="interactive-authentication"></a>Etkileşimli kimlik doğrulaması
 
 > [!IMPORTANT]
-> Etkileşimli kimlik doğrulaması tarayıcınızı kullanır ve tanımlama bilgileri gerektirir (3. taraf tanımlama bilgileri dahil). Tanımlama bilgilerini devre dışı bırakırsanız, "oturum açılamadı" gibi bir hata alabilirsiniz. Bu hata, [Azure Multi-Factor Authentication](/azure/active-directory/authentication/concept-mfa-howitworks)'ı etkinleştirdiyseniz da oluşabilir.
+> Etkileşimli kimlik doğrulaması tarayıcınızı kullanır ve tanımlama bilgileri gerektirir (3. taraf tanımlama bilgileri dahil). Tanımlama bilgilerini devre dışı bırakırsanız, "oturum açılamadı" gibi bir hata alabilirsiniz. Bu hata, [Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)'ı etkinleştirdiyseniz da oluşabilir.
 
 Belgelerde ve örneklerde birçok örnek etkileşimli kimlik doğrulaması kullanır. Örneğin, SDK kullanırken, otomatik olarak Kullanıcı arabirimi tabanlı kimlik doğrulama akışı isteyen iki işlev çağrısı vardır:
 
@@ -77,7 +77,7 @@ Hizmet sorumlusu (SP) kimlik doğrulamasını kullanmak için, önce SP 'yi olu�
 >
 > En az erişim verme nedeni, hizmet sorumlusunun kimlik doğrulaması için bir parola kullanması ve parolanın bir Otomasyon betiğinin parçası olarak depolanması olabilir. Parolanın sızmış olması halinde, belirli bir görev için gereken en düşük erişime sahip olmak, SP 'nin kötü amaçlı kullanımını en aza indirir.
 
-SP oluşturmanın en kolay yolu [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)'yı kullanarak çalışma alanınıza erişim izni vermenizi sağlar. Bir hizmet sorumlusu oluşturmak ve çalışma alanınıza erişim sağlamak için aşağıdaki adımları kullanın:
+SP oluşturmanın en kolay yolu [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)'yı kullanarak çalışma alanınıza erişim izni vermenizi sağlar. Bir hizmet sorumlusu oluşturmak ve çalışma alanınıza erişim sağlamak için aşağıdaki adımları kullanın:
 
 > [!NOTE]
 > Bu adımların tümünü gerçekleştirmek için abonelikte yönetici olmanız gerekir.
@@ -92,7 +92,7 @@ SP oluşturmanın en kolay yolu [Azure CLI](https://docs.microsoft.com/cli/azure
 
     [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-    Diğer kimlik doğrulama yöntemleri için bkz. [Azure CLI Ile oturum açma](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true).
+    Diğer kimlik doğrulama yöntemleri için bkz. [Azure CLI Ile oturum açma](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest).
 
 1. Azure Machine Learning uzantısını yükler:
 
@@ -190,11 +190,11 @@ ws.get_details()
 
 ### <a name="use-a-service-principal-from-the-azure-cli"></a>Azure CLı 'dan bir hizmet sorumlusu kullanma
 
-Azure CLı komutları için hizmet sorumlusu kullanabilirsiniz. Daha fazla bilgi için bkz. [hizmet sorumlusu kullanarak oturum açma](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest&preserve-view=true#sign-in-using-a-service-principal).
+Azure CLı komutları için hizmet sorumlusu kullanabilirsiniz. Daha fazla bilgi için bkz. [hizmet sorumlusu kullanarak oturum açma](/cli/azure/create-an-azure-service-principal-azure-cli?preserve-view=true&view=azure-cli-latest#sign-in-using-a-service-principal).
 
 ### <a name="use-a-service-principal-with-the-rest-api-preview"></a>REST API (Önizleme) ile hizmet sorumlusu kullanma
 
-Hizmet sorumlusu Ayrıca Azure Machine Learning [REST API](https://docs.microsoft.com/rest/api/azureml/) (Önizleme) kimlik doğrulaması için de kullanılabilir. Otomatik iş akışlarında gözetimsiz kimlik doğrulaması için hizmetten hizmete çağrılara izin veren Azure Active Directory [istemci kimlik bilgileri verme akışı](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)' nı kullanırsınız. Örnekler hem Python hem de Node.js için [adal kitaplığı](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) ile uygulanır, ancak OpenID Connect 1,0 'yi destekleyen herhangi bir açık kaynak kitaplığı da kullanabilirsiniz.
+Hizmet sorumlusu Ayrıca Azure Machine Learning [REST API](/rest/api/azureml/) (Önizleme) kimlik doğrulaması için de kullanılabilir. Otomatik iş akışlarında gözetimsiz kimlik doğrulaması için hizmetten hizmete çağrılara izin veren Azure Active Directory [istemci kimlik bilgileri verme akışı](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)' nı kullanırsınız. Örnekler hem Python hem de Node.js için [adal kitaplığı](../active-directory/azuread-dev/active-directory-authentication-libraries.md) ile uygulanır, ancak OpenID Connect 1,0 'yi destekleyen herhangi bir açık kaynak kitaplığı da kullanabilirsiniz.
 
 > [!NOTE]
 > MSAL.js, ADAL 'dan daha yeni bir kitaplıktır, ancak özellikle belirli bir kullanıcıya bağlı etkileşimli/UI kimlik doğrulaması için tasarlanan bir istemci tarafı kitaplığı olduğundan, MSAL.js istemci kimlik bilgilerini kullanarak hizmetten hizmete kimlik doğrulaması yapılamaz. REST API ile otomatikleştirilmiş iş akışları oluşturmak için aşağıda gösterildiği gibi ADAL kullanmanızı öneririz.
@@ -391,7 +391,7 @@ Bir Web hizmeti için belirteç kimlik doğrulamasını etkinleştirdiğinizde, 
 
 * Belirteç kimlik doğrulaması, Azure Kubernetes hizmetine dağıtırken **Varsayılan olarak devre dışıdır** .
 * Azure Container Instances ' a dağıtırken belirteç kimlik doğrulaması **desteklenmez** .
-* Belirteç kimlik doğrulaması **, anahtar tabanlı kimlik doğrulama ile aynı anda kullanılamaz** .
+* Belirteç kimlik doğrulaması **, anahtar tabanlı kimlik doğrulama ile aynı anda kullanılamaz**.
 
 Belirteç kimlik doğrulamasını denetlemek için, `token_auth_enabled` bir dağıtım oluştururken veya güncelleştirdiğinizde parametresini kullanın:
 

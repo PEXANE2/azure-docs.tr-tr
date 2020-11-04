@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: 1c8958062c7430f98db0925c2b3996887bfe5548
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 11f4e7c50acc8256722949a50760c574d3b9d9e9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637369"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318251"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Azure Data Factory ve Azure veri paylaşma kullanarak veri tümleştirme
 
@@ -26,7 +26,7 @@ Bu atölyde Azure Data Factory (ADF) kullanarak Azure SQL veritabanındaki veril
 
 Bu laboratuvarda kullanılan veriler New York City TAXI verileri. SQL veritabanı 'nda veritabanınıza içeri aktarmak için, [TAXI-Data bacpac dosyasını](https://github.com/djpmsft/ADF_Labs/blob/master/sample-data/taxi-data.bacpac)indirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Azure aboneliği** : Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
@@ -320,7 +320,7 @@ Bir veri paylaşımının oluşturulduktan sonra, HATS 'yi değiştireceksiniz v
 
     ![Portal reklamları](media/lab-data-flow-data-share/portal-ads.png)
 
-1. Adda ' Provider ' olan veri paylaşma hesabını seçin. Örneğin, **DataProvider0102** . 
+1. Adda ' Provider ' olan veri paylaşma hesabını seçin. Örneğin, **DataProvider0102**. 
 
 1. **Verilerinizi paylaşmayı Başlat** ' ı seçin
 
@@ -346,8 +346,6 @@ Bir veri paylaşımının oluşturulduktan sonra, HATS 'yi değiştireceksiniz v
 
     ![Veri kümesi SQL ekleme](media/lab-data-flow-data-share/add-dataset-sql.png)
 
-> [!NOTE]
-> SQL veri ambarı artık Azure SYNAPSE Analytics olarak biliniyor
 
 1. Devam edebilmeniz için önce çalıştırılacak bir komut dosyası verilecek. Belirtilen betik, Azure veri paylaşımının MSI adına kimlik doğrulaması yapmasına izin vermek için SQL veritabanında bir kullanıcı oluşturur. 
 
@@ -436,7 +434,7 @@ Bir abonelik seçmeniz istenebilir. Bu laboratuvar için çalıştığınız abo
 
 1. **Veri paylaşma hesabı** Için **dataconsumer** ' ı seçin. Ayrıca, yeni bir veri paylaşma hesabı da oluşturabilirsiniz. 
 
-1. **Alınan paylaşma adı** ' nın yanında, varsayılan paylaşımın adının veri sağlayıcısı tarafından belirtilen ad olduğunu fark edeceksiniz. Paylaşıma, almak üzere olduğunuz verileri açıklayan kolay bir ad verin, örneğin, **Taxıdatashare** .
+1. **Alınan paylaşma adı** ' nın yanında, varsayılan paylaşımın adının veri sağlayıcısı tarafından belirtilen ad olduğunu fark edeceksiniz. Paylaşıma, almak üzere olduğunuz verileri açıklayan kolay bir ad verin, örneğin, **Taxıdatashare**.
 
     ![Davet kabul eder](media/lab-data-flow-data-share/consumer-accept.png)
 

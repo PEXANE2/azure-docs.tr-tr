@@ -11,19 +11,19 @@ author: lostmygithubaccount
 ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8f54ece9a932ed4cc0adc29747e1c58ee22646c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ee2280aba99606d9e31a0e565a67cd6202df3c2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333877"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317019"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Veri kümelerinde veri kayması (Önizleme) Algıla
 
 
 > [!IMPORTANT]
 > Veri kümelerinde verileri algılama Şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Veri fazlamlarını izlemeyi ve, DRT yüksekse uyarıları ayarlamayı öğrenin.  
 
@@ -36,14 +36,14 @@ Azure Machine Learning veri kümesi izleyicileri (Önizleme) ile şunları yapab
 
 İzlemeyi oluşturmak için bir [Azure Machine Learning veri kümesi](how-to-create-register-datasets.md) kullanılır. Veri kümesi bir zaman damgası sütunu içermelidir.
 
-Python SDK ile veya Azure Machine Learning Studio 'da veri drimetrikleri görüntüleyebilirsiniz.  Diğer ölçümler ve Öngörüler, Azure Machine Learning çalışma alanıyla ilişkili [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) kaynağı aracılığıyla kullanılabilir.
+Python SDK ile veya Azure Machine Learning Studio 'da veri drimetrikleri görüntüleyebilirsiniz.  Diğer ölçümler ve Öngörüler, Azure Machine Learning çalışma alanıyla ilişkili [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) kaynağı aracılığıyla kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Veri kümesi izleyicileri oluşturmak ve bunlarla çalışmak için şunlar gerekir:
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md).
-* Azureml [için Azure Machine Learning SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true), azureml veri kümesi paketini içerir.
+* Azureml [için Azure Machine Learning SDK 'sı](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py), azureml veri kümesi paketini içerir.
 * Dosya yolunda belirtilen bir zaman damgasına sahip yapılandırılmış (tablolu) veriler, dosya adı veya veri sütunu.
 
 ## <a name="what-is-data-drift"></a>Veri kayması nedir?
@@ -73,7 +73,7 @@ Veri kümesi izleyicisinde şunları yapabilirsiniz:
 
 Veri drara algoritması, verilerde bir değişikliğin genel bir ölçüsünü ve daha fazla araştırmadan hangi özelliklerin sorumlu olduğunu belirtir. Veri kümesi izleyicileri, veri kümesindeki yeni verileri profilleyerek birçok farklı ölçüm üretir `timeseries` . 
 
-Özel uyarı, [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)aracılığıyla izleyici tarafından oluşturulan tüm ölçümlerde ayarlanabilir. Veri kümesi izleyicileri, veri sorunlarını hızla yakalamak ve olası nedenleri tanımlayarak sorun ayıklama süresini azaltmak için kullanılabilir.  
+Özel uyarı, [Azure Application Insights](../azure-monitor/app/app-insights-overview.md)aracılığıyla izleyici tarafından oluşturulan tüm ölçümlerde ayarlanabilir. Veri kümesi izleyicileri, veri sorunlarını hızla yakalamak ve olası nedenleri tanımlayarak sorun ayıklama süresini azaltmak için kullanılabilir.  
 
 Kavramsal olarak, Azure Machine Learning veri kümesi izleyicileri ayarlamaya yönelik üç birincil senaryo vardır.
 
@@ -102,7 +102,7 @@ Hedef veri kümesi, `timeseries` verilerdeki bir sütundan ya da dosyaların yol
 
 ### <a name="python-sdk"></a><a name="sdk-dataset"></a>Python SDK'sı
 
-[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)Class [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) yöntemi veri kümesi için zaman damgası sütununu tanımlar.
+[`Dataset`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)Class [`with_timestamp_columns()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) yöntemi veri kümesi için zaman damgası sütununu tanımlar.
 
 ```python 
 from azureml.core import Workspace, Dataset, Datastore
@@ -129,7 +129,7 @@ dset = dset.with_timestamp_columns('date')
 dset = dset.register(ws, 'target')
 ```
 
-Nitelik of veri kümelerini kullanmanın tam bir örneği için `timeseries` bkz. [örnek Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb) veya [veri kümesi SDK belgeleri](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-).
+Nitelik of veri kümelerini kullanmanın tam bir örneği için `timeseries` bkz. [örnek Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb) veya [veri kümesi SDK belgeleri](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-).
 
 ### <a name="azure-machine-learning-studio"></a><a name="studio-dataset"></a>Azure Machine Learning Studio
 
@@ -145,7 +145,7 @@ Aşağıdaki örnekte, *Noaaisdflorde/2019* alt klasörü altındaki tüm verile
 
 Verileriniz tarihe göre bölümlenmemişse, burada olduğu gibi partition_timestamp de belirtebilirsiniz.  Bu, tarihlerin daha verimli işlenmesini sağlar.
 
-:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="Zaman damgasını ayarla":::
+:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="Bölüm zaman damgası":::
 
 
 ## <a name="create-dataset-monitors"></a>Veri kümesi izleyicileri oluşturma
@@ -208,12 +208,12 @@ Bir veri kümesi ve veri kayması algılayıcısı ayarlama hakkında tam bir ö
 
 1. [Studio 'nun giriş sayfasına](https://ml.azure.com)gidin.
 1. Sol taraftaki **veri kümeleri** sekmesini seçin. 
-1. **Veri kümesi izleyicileri**seçin.
+1. **Veri kümesi izleyicileri** seçin.
    ![İzleme listesi](./media/how-to-monitor-datasets/monitor-list.png)
 
-1. **+ Izleyici oluştur** düğmesine tıklayın ve **İleri**' ye tıklayarak sihirbaza devam edin.  
+1. **+ Izleyici oluştur** düğmesine tıklayın ve **İleri** ' ye tıklayarak sihirbaza devam edin.  
 
-:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="Zaman damgasını ayarla":::
+:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="İzleme oluşturma Sihirbazı":::
 
 * **Hedef veri kümesini seçin**.  Hedef veri kümesi, veri kayması için analiz edilecek zaman damgası sütunuyla belirtilen tablo veri kümesidir. Hedef veri kümesinde, temel veri kümesiyle ortak olan özellikler olmalıdır ve `timeseries` yeni verilerin eklendiği bir veri kümesi olmalıdır. Hedef veri kümesindeki geçmiş verileri analiz edilebilir veya yeni veriler izlenebilir.
 
@@ -223,12 +223,12 @@ Bir veri kümesi ve veri kayması algılayıcısı ayarlama hakkında tam bir ö
 
     | Ayar | Açıklama | İpuçları | Değiştirilebilir | 
     | ------- | ----------- | ---- | ------- |
-    | Adı | Veri kümesi izleyicisinin adı. | | Hayır |
+    | Name | Veri kümesi izleyicisinin adı. | | No |
     | Özellikler | Zaman içinde veri kayması için analiz edilecek özelliklerin listesi. | Bir modelin, kavram SLA 'ları ölçmek için çıkış özelliklerine ayarlayın. Zamana göre (ay, yıl, Dizin vb.) bir zaman içinde olan özellikleri içermez. Özellik listesini ayarladıktan sonra, var olan veri kayması izleyicisini geri doldurabilir. | Evet | 
     | İşlem hedefi | Veri kümesi izleyici işlerini çalıştırmak için işlem hedefini Azure Machine Learning. | | Evet | 
     | Etkinleştir | Veri kümesi izleyici ardışık düzeninde zamanlamayı etkinleştirme veya devre dışı bırakma | Geri doldurma ayarıyla geçmiş verileri çözümleme zamanlamasını devre dışı bırakın. Veri kümesi İzleyicisi oluşturulduktan sonra etkinleştirilebilir. | Evet | 
-    | Frequency | Ardışık düzen işini zamanlamak ve geri doldurma çalıştırıyorsa geçmiş verileri çözümlemek için kullanılacak sıklık. Seçenekler günlük, haftalık veya aylık olarak verilebilir. | Her çalıştırma, hedef veri kümesindeki verileri sıklık sıklığına göre karşılaştırır: <li>Günlük: hedef veri kümesindeki en son tamamlanan günü taban çizgisiyle karşılaştırın <li>Haftalık: hedef veri kümesindeki en son tam haftayı (Pazartesi-Pazar) temel alarak karşılaştırın <li>Aylık: hedef veri kümesindeki en son tamamlanan ayı taban çizgisiyle karşılaştırın | Hayır | 
-    | Gecikme süresi | Saat olarak, verilerin veri kümesine gelmesi için zaman alır. Örneğin, verilerin veri kümesi kapsülleyen SQL DB 'ye gelmesi üç gün sürüyorsa, gecikme süresini 72 olarak ayarlayın. | Veri kümesi İzleyicisi oluşturulduktan sonra değiştirilemez | Hayır | 
+    | Sıklık | Ardışık düzen işini zamanlamak ve geri doldurma çalıştırıyorsa geçmiş verileri çözümlemek için kullanılacak sıklık. Seçenekler günlük, haftalık veya aylık olarak verilebilir. | Her çalıştırma, hedef veri kümesindeki verileri sıklık sıklığına göre karşılaştırır: <li>Günlük: hedef veri kümesindeki en son tamamlanan günü taban çizgisiyle karşılaştırın <li>Haftalık: hedef veri kümesindeki en son tam haftayı (Pazartesi-Pazar) temel alarak karşılaştırın <li>Aylık: hedef veri kümesindeki en son tamamlanan ayı taban çizgisiyle karşılaştırın | No | 
+    | Gecikme süresi | Saat olarak, verilerin veri kümesine gelmesi için zaman alır. Örneğin, verilerin veri kümesi kapsülleyen SQL DB 'ye gelmesi üç gün sürüyorsa, gecikme süresini 72 olarak ayarlayın. | Veri kümesi İzleyicisi oluşturulduktan sonra değiştirilemez | No | 
     | E-posta adresleri | Veri DRIP yüzdesi eşiğini ihlal eden uyarı için e-posta adresleri. | E-postalar Azure Izleyici aracılığıyla gönderilir. | Evet | 
     | Eşik | E-posta uyarısı için veri kayması yüzdesi eşiği. | Daha fazla uyarı ve olay, çalışma alanının ilişkili Application Insights kaynağındaki diğer birçok ölçümde ayarlanabilir. | Evet |
 
@@ -240,7 +240,7 @@ Bu bölümde, Azure Studio 'daki veri **kümeleri**  /  **veri kümesi izleyicil
 
 En üst düzey Öngörüler ile veri kayması ve daha fazla Araştırılması gereken özellikler vurgulaması ile başlayın.
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="Zaman damgasını ayarla":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="Drift genel bakış":::
 
 
 | Ölçüm | Açıklama | 
@@ -253,7 +253,7 @@ En üst düzey Öngörüler ile veri kayması ve daha fazla Araştırılması ge
 
 Veri kümesinin, belirtilen dönemde hedef veri kümesinden farklı olduğunu görün.  Daha fazla %100, iki veri kümesi farklılık gösterir.
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="Zaman damgasını ayarla":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="Sürücü büyüklüğü eğilimi":::
 
 ### <a name="drift-magnitude-by-features"></a>Özelliklere göre DRT büyüklüğü
 
@@ -263,7 +263,7 @@ Hedef veri kümesi zaman içinde de profili oluşturulmuş olur. Her bir özelli
 
 Azure Machine Learning Studio 'da, bu tarihin Özellik düzeyi ayrıntılarını görmek için grafikteki bir çubuğa tıklayın. Varsayılan olarak, temel veri kümesinin dağıtımını ve en son çalıştırmanın aynı özelliğin dağıtımını görürsünüz.
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="Zaman damgasını ayarla":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="Özelliklere göre DRT büyüklüğü":::
 
 Bu ölçümler Ayrıca `get_metrics()` bir nesne üzerindeki yöntemi aracılığıyla Python SDK ' da alınabilir `DataDriftDetector` .
 
@@ -271,7 +271,7 @@ Bu ölçümler Ayrıca `get_metrics()` bir nesne üzerindeki yöntemi aracılı�
 
 Son olarak, her bir özelliğin ayrıntılarını görüntülemek için aşağı kaydırın.  Özelliği seçmek için grafiğin üzerindeki açılan listeleri kullanın ve ayrıca görüntülemek istediğiniz ölçümü seçin.
 
-:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="Zaman damgasını ayarla":::
+:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="Sayısal Özellik grafiği ve karşılaştırması":::
 
 Grafikteki ölçümler özelliğin türüne bağlıdır.
 
@@ -288,16 +288,16 @@ Grafikteki ölçümler özelliğin türüne bağlıdır.
     
     | Ölçüm | Açıklama |  
     | ------ | ----------- |  
-    | Eucliyen uzaklığı     |  Kategorik sütunlar için hesaplanır.Euclidean bir mesafe iki vektörde hesaplanır, iki veri kümesinden de aynı kategorik sütunun empırical dağılımesinden oluşturulur.0, empırik dağıtımlarıyla bir fark olmadığını gösterir.0 ' dan fazla farklılık gösterir, bu sütunda daha fazla düzeltebilecekler vardır.Eğilimler, bu ölçümün zaman serisi çiziminde gözlemlenebilir ve bir dral oluşturma özelliğinin yanı sıra faydalı olabilir.  |
+    | Eucliyen uzaklığı     |  Kategorik sütunlar için hesaplanır. Euclidean bir mesafe iki vektörde hesaplanır, iki veri kümesinden de aynı kategorik sütunun empırical dağılımesinden oluşturulur. 0, empırik dağıtımlarıyla bir fark olmadığını gösterir.  0 ' dan fazla farklılık gösterir, bu sütunda daha fazla düzeltebilecekler vardır. Eğilimler, bu ölçümün zaman serisi çiziminde gözlemlenebilir ve bir dral oluşturma özelliğinin yanı sıra faydalı olabilir.  |
     | Benzersiz değerler | Özelliğin benzersiz değerlerinin (kardinalite) sayısı. |
 
 Bu grafikte, görüntülenecek özellik için hedef ve bu tarih arasındaki özellik dağıtımını karşılaştırmak için tek bir tarih seçin. Sayısal özellikler için, bu iki olasılık dağıtımlarını gösterir.  Özellik sayısal ise, bir çubuk grafik görüntülenir.
 
-:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="Zaman damgasını ayarla":::
+:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="Hedefle Karşılaştırılacak bir tarih seçin":::
 
 ## <a name="metrics-alerts-and-events"></a>Ölçümler, uyarılar ve olaylar
 
-Ölçümler, Machine Learning çalışma alanı ile ilişkili [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) kaynağında sorgulanabilir. E-posta/SMS/Push/Voice veya Azure Işlevi gibi bir eylemi tetiklemek için özel uyarı kuralları ve eylem grupları için ayarlama dahil Application Insights tüm özelliklerine erişebilirsiniz. Ayrıntılar için Application Insights tüm belgeleri inceleyin. 
+Ölçümler, Machine Learning çalışma alanı ile ilişkili [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) kaynağında sorgulanabilir. E-posta/SMS/Push/Voice veya Azure Işlevi gibi bir eylemi tetiklemek için özel uyarı kuralları ve eylem grupları için ayarlama dahil Application Insights tüm özelliklerine erişebilirsiniz. Ayrıntılar için Application Insights tüm belgeleri inceleyin. 
 
 Başlamak için [Azure Portal](https://portal.azure.com) gidin ve çalışma alanınızın **genel bakış** sayfasını seçin.  İlişkili Application Insights kaynağı en sağda:
 
@@ -322,6 +322,6 @@ Küme Koşulları karşılandığında gerçekleştirilecek eylemi tanımlamak i
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Bir veri kümesi izleyicisini ayarlamak için [Azure Machine Learning Studio](https://ml.azure.com) 'Ya veya [Python not defterine](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datadrift-tutorial/datadrift-tutorial.ipynb) gidin.
-* Bkz. [Azure Kubernetes hizmetine dağıtılan modellerde](how-to-monitor-data-drift.md)veri drları ayarlama.
+* Bkz. [Azure Kubernetes hizmetine dağıtılan modellerde](./how-to-enable-data-collection.md)veri drları ayarlama.
 * [Olay kılavuzuyla](how-to-use-event-grid.md)veri kümesi DRFT izleyicileri ayarlayın. 
 * Sorun yaşıyorsanız bu ortak [sorun giderme ipuçlarına](resource-known-issues.md#data-drift) bakın.

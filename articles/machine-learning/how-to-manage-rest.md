@@ -1,7 +1,7 @@
 ---
 title: ML kaynaklarını yönetmek için REST kullanma
 titleSuffix: Azure Machine Learning
-description: REST API 'Lerini kullanarak Azure ML kaynakları oluşturma, çalıştırma ve silme
+description: Çalışma alanı gibi Azure Machine Learning kaynaklarını oluşturmak, çalıştırmak ve silmek için REST API 'Lerini kullanma veya modelleri kaydetme.
 author: lobrien
 ms.author: laobri
 services: machine-learning
@@ -10,18 +10,18 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b733fbc44deefe46e3496e288ebad525346ef005
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09a0580adbe6d51e4de811a57ee17203d65a2435
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322317"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316904"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>REST kullanarak Azure ML kaynakları oluşturma, çalıştırma ve silme
 
 
 
-Azure ML kaynaklarınızı yönetmenin birkaç yolu vardır. [Portal](https://portal.azure.com/), [komut satırı ARABIRIMI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true)veya [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)'yı kullanabilirsiniz. Ya da REST API seçebilirsiniz. REST API, kaynakları oluşturmak, almak, güncelleştirmek ve silmek için standart bir şekilde HTTP fiillerini kullanır. REST API, HTTP istekleri yapan herhangi bir dil veya araçla birlikte çalışabilir. REST 'in doğrudan yapısı, komut dosyası ortamlarında ve MLOps otomasyonunda iyi bir seçenek sunar. 
+Azure ML kaynaklarınızı yönetmenin birkaç yolu vardır. [Portal](https://portal.azure.com/), [komut satırı ARABIRIMI](/cli/azure/?preserve-view=true&view=azure-cli-latest)veya [Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)'yı kullanabilirsiniz. Ya da REST API seçebilirsiniz. REST API, kaynakları oluşturmak, almak, güncelleştirmek ve silmek için standart bir şekilde HTTP fiillerini kullanır. REST API, HTTP istekleri yapan herhangi bir dil veya araçla birlikte çalışabilir. REST 'in doğrudan yapısı, komut dosyası ortamlarında ve MLOps otomasyonunda iyi bir seçenek sunar. 
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -33,12 +33,12 @@ Bu makalede şunları öğreneceksiniz:
 > * Kaynakları temizlemek için SILME isteklerini kullanma 
 > * Dağıtılan modellere puan vermek için anahtar tabanlı yetkilendirmeyi kullanma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Yönetici haklarına sahip olduğunuz bir **Azure aboneliği** . Bu tür bir aboneliğiniz yoksa [ücretsiz veya ücretli kişisel aboneliği](https://aka.ms/AMLFree) deneyin
-- Bir [Azure Machine Learning çalışma alanı](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
-- Yönetim REST istekleri hizmet sorumlusu kimlik doğrulamasını kullanır. Çalışma alanınızda hizmet sorumlusu oluşturmak için [Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulama ayarlama](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication) bölümündeki adımları izleyin
-- **Kıvrımlı** yardımcı programı. **Kıvrımlı** program, [Linux Için Windows alt sistemi](https://aka.ms/wslinstall/) veya herhangi bir UNIX dağıtımı ile kullanılabilir. PowerShell **'de,** **çağırma-WebRequest** için bir diğer addır ve `curl -d "key=val" -X POST uri` olur `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri` . 
+- Bir [Azure Machine Learning çalışma alanı](./how-to-manage-workspace.md)
+- Yönetim REST istekleri hizmet sorumlusu kimlik doğrulamasını kullanır. Çalışma alanınızda hizmet sorumlusu oluşturmak için [Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulama ayarlama](./how-to-setup-authentication.md#service-principal-authentication) bölümündeki adımları izleyin
+- **Kıvrımlı** yardımcı programı. **Kıvrımlı** program, [Linux Için Windows alt sistemi](/windows/wsl/install-win10) veya herhangi bir UNIX dağıtımı ile kullanılabilir. PowerShell **'de,** **çağırma-WebRequest** için bir diğer addır ve `curl -d "key=val" -X POST uri` olur `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri` . 
 
 ## <a name="retrieve-a-service-principal-authentication-token"></a>Hizmet sorumlusu kimlik doğrulama belirtecini alma
 
@@ -48,7 +48,7 @@ Yönetim REST isteklerinin kimliği OAuth2 örtük bir akışta doğrulanır. Bu
 - İstemci KIMLIĞINIZ (oluşturulan belirteçle ilişkilendirilecektir)
 - İstemci gizli anahtarı (korunması gerekir)
 
-Hizmet sorumlunuzu oluşturma yanıtından bu değerlerin olması gerekir. Bu değerleri almak [Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication)bölümünde ele alınmıştır. Şirket aboneliğinizi kullanıyorsanız, hizmet sorumlusu oluşturma izniniz olmayabilir. Bu durumda, [ücretsiz ya da ücretli bir kişisel abonelik](https://aka.ms/AMLFree)kullanmanız gerekir.
+Hizmet sorumlunuzu oluşturma yanıtından bu değerlerin olması gerekir. Bu değerleri almak [Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama](./how-to-setup-authentication.md#service-principal-authentication)bölümünde ele alınmıştır. Şirket aboneliğinizi kullanıyorsanız, hizmet sorumlusu oluşturma izniniz olmayabilir. Bu durumda, [ücretsiz ya da ücretli bir kişisel abonelik](https://aka.ms/AMLFree)kullanmanız gerekir.
 
 Bir belirteci almak için:
 
@@ -236,7 +236,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/com
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-Adlandırılmış bir işlem kaynağı oluşturmak veya üzerine yazmak için bir PUT isteği kullanırsınız. Aşağıdaki şekilde,,,, ve değerlerinin,,,, ve değerlerinin yanı sıra,,,, ve değerleri için de bilinen `your-subscription-id` `your-resource-group` `your-workspace-name` `your-access-token` `your-compute-name` değişimler buna `location` `vmSize` `vmPriority` `scaleSettings` `adminUserName` ek olarak `adminUserPassword` . [Machine Learning işlem oluşturma veya GÜNCELLEŞTIRME SDK başvurusunda](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate)belirtilen şekilde, aşağıdaki komut, 30 dakika sonra ölçeklenebilen ayrılmış, tek düğümlü bir Standard_D1 (temel bir CPU işlem kaynağı) oluşturur:
+Adlandırılmış bir işlem kaynağı oluşturmak veya üzerine yazmak için bir PUT isteği kullanırsınız. Aşağıdaki şekilde,,,, ve değerlerinin,,,, ve değerlerinin yanı sıra,,,, ve değerleri için de bilinen `your-subscription-id` `your-resource-group` `your-workspace-name` `your-access-token` `your-compute-name` değişimler buna `location` `vmSize` `vmPriority` `scaleSettings` `adminUserName` ek olarak `adminUserPassword` . [Machine Learning işlem oluşturma veya GÜNCELLEŞTIRME SDK başvurusunda](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate)belirtilen şekilde, aşağıdaki komut, 30 dakika sonra ölçeklenebilen ayrılmış, tek düğümlü bir Standard_D1 (temel bir CPU işlem kaynağı) oluşturur:
 
 ```bash
 curl -X PUT \
@@ -271,7 +271,7 @@ Başarılı bir istek bir yanıt alır `201 Created` , ancak bu yanıtın sağla
 
 ### <a name="create-an-experimental-run"></a>Deneysel çalıştırma oluşturma
 
-Bir deneme içinde bir çalıştırmaya başlamak için, eğitim betiğinizi ve ilgili dosyaları içeren bir ZIP klasörü ve bir çalıştırma tanımı JSON dosyası gerekir. ZIP klasörü, kök dizininde Python giriş dosyasına sahip olmalıdır. Örnek olarak, aşağıdaki gibi, **train.zip**adlı bir klasör gibi, önemsiz bir Python programını ZIP.
+Bir deneme içinde bir çalıştırmaya başlamak için, eğitim betiğinizi ve ilgili dosyaları içeren bir ZIP klasörü ve bir çalıştırma tanımı JSON dosyası gerekir. ZIP klasörü, kök dizininde Python giriş dosyasına sahip olmalıdır. Örnek olarak, aşağıdaki gibi, **train.zip** adlı bir klasör gibi, önemsiz bir Python programını ZIP.
 
 ```python
 # hello.py
@@ -279,7 +279,7 @@ Bir deneme içinde bir çalıştırmaya başlamak için, eğitim betiğinizi ve 
 print("Hello, REST!")
 ```
 
-Bu sonraki kod parçacığını **definition.js**olarak kaydedin. "Komut dosyası" değerinin, yeni sıkıştırdığınız Python dosyası adıyla eşleştiğinden emin olun. "Hedef" değerinin kullanılabilir bir işlem kaynağı adıyla eşleştiğini doğrulayın. 
+Bu sonraki kod parçacığını **definition.js** olarak kaydedin. "Komut dosyası" değerinin, yeni sıkıştırdığınız Python dosyası adıyla eşleştiğinden emin olun. "Hedef" değerinin kullanılabilir bir işlem kaynağı adıyla eşleştiğini doğrulayın. 
 
 ```json
 {
@@ -349,7 +349,7 @@ curl 'https://{regional-api-server}/history/v1.0/subscriptions/{your-subscriptio
 
 ### <a name="delete-resources-you-no-longer-need"></a>Artık ihtiyacınız olmayan kaynakları silme
 
-Bazıları, ancak tüm kaynakları SIL fiilini desteklemez. Silme kullanım örnekleri için REST API işlemeden önce [API başvurusunu](https://docs.microsoft.com/rest/api/azureml/) denetleyin. Örneğin, bir modeli silmek için şunu kullanabilirsiniz:
+Bazıları, ancak tüm kaynakları SIL fiilini desteklemez. Silme kullanım örnekleri için REST API işlemeden önce [API başvurusunu](/rest/api/azureml/) denetleyin. Örneğin, bir modeli silmek için şunu kullanabilirsiniz:
 
 ```bash
 curl
@@ -422,6 +422,6 @@ Azure Machine Learning çalışma alanı bazı işlemler için Azure Container R
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Tüm [AzureML REST API başvurusunu](https://docs.microsoft.com/rest/api/azureml/)gezin.
-- Tasarımcı [ile otomobil fiyatını tahmin](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score)etmek için tasarımcıyı nasıl kullanacağınızı öğrenin.
-- [Jupi Not defterleri ile Azure Machine Learning](https://docs.microsoft.com/azure//machine-learning/samples-notebooks)keşfedebilirsiniz.
+- Tüm [AzureML REST API başvurusunu](/rest/api/azureml/)gezin.
+- Tasarımcı [ile otomobil fiyatını tahmin](./tutorial-designer-automobile-price-train-score.md)etmek için tasarımcıyı nasıl kullanacağınızı öğrenin.
+- [Jupi Not defterleri ile Azure Machine Learning](..//machine-learning/samples-notebooks.md)keşfedebilirsiniz.

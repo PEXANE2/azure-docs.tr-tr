@@ -1,7 +1,7 @@
 ---
 title: Özel Python paketlerini kullanma
 titleSuffix: Azure Machine Learning
-description: Özel Python paketlerine Azure Machine Learning ortamlarından güvenli bir şekilde erişin.
+description: Azure Machine Learning ortamlarınızdaki özel Python paketleriyle güvenli bir şekilde nasıl çalışacağınızı öğrenin.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 58bb08cad111e0744f7831783169901cd76caef4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a722746c8e06a691e702b095d3081f1530645de
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91772643"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318925"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>Azure Machine Learning ile özel Python paketleri kullanma
 
@@ -27,16 +27,16 @@ Bu makalede, Azure Machine Learning içinde özel Python paketlerini güvenli bi
 
 Önerilen yaklaşım, tek bir Azure Machine Learning çalışma alanı için birkaç pakete veya bir kuruluştaki tüm çalışma alanları için tüm paket deposuna sahip olmanıza bağlı olarak değişir.
 
-Özel paketler, [ortam](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment) sınıfı aracılığıyla kullanılır. Bir ortam içinde, özel olanlar dahil olmak üzere hangi Python paketlerinin kullanılacağını bildirirsiniz. Azure Machine Learning ortam hakkında genel bilgi edinmek için bkz. [ortamları kullanma](how-to-use-environments.md). 
+Özel paketler, [ortam](/python/api/azureml-core/azureml.core.environment.environment) sınıfı aracılığıyla kullanılır. Bir ortam içinde, özel olanlar dahil olmak üzere hangi Python paketlerinin kullanılacağını bildirirsiniz. Azure Machine Learning ortam hakkında genel bilgi edinmek için bkz. [ortamları kullanma](how-to-use-environments.md). 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
- * [Python için Azure Machine Learning SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
+ * [Python için Azure Machine Learning SDK 'sı](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)
  * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)
 
 ## <a name="use-small-number-of-packages-for-development-and-testing"></a>Geliştirme ve test için az sayıda paket kullanın
 
-Tek bir çalışma alanı için az sayıda özel paket için, statik [`Environment.add_private_pip_wheel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#&preserve-view=trueadd-private-pip-wheel-workspace--file-path--exist-ok-false-) yöntemi kullanın. Bu yaklaşım, çalışma alanına hızlıca özel bir paket eklemenize olanak sağlar ve geliştirme ve test amaçlarıyla idealdir.
+Tek bir çalışma alanı için az sayıda özel paket için, statik [`Environment.add_private_pip_wheel()`](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=trueadd-private-pip-wheel-workspace--file-path--exist-ok-false-) yöntemi kullanın. Bu yaklaşım, çalışma alanına hızlıca özel bir paket eklemenize olanak sağlar ve geliştirme ve test amaçlarıyla idealdir.
 
 Dosya yolu bağımsız değişkenini yerel bir tekerlek dosyasına getirin ve ```add_private_pip_wheel``` komutunu çalıştırın. Komutu, çalışma alanınızdaki paketin konumunu izlemek için kullanılan bir URL döndürür. Depolama URL 'sini yakalayın ve `add_pip_package()` metodunu geçirin.
 
@@ -52,13 +52,13 @@ Dahili olarak, Azure Machine Learning hizmet URL 'YI güvenli SAS URL 'si ile de
 
 ## <a name="use-a-repository-of-packages-from-azure-devops-feed"></a>Azure DevOps akışından paket deposu kullanma
 
-Machine Learning uygulamanız için Python paketlerini etkin bir şekilde geliştiriyorsanız, bunları bir Azure DevOps deposunda yapıtlar olarak barındırabilir ve akış olarak yayımlayabilirsiniz. Bu yaklaşım, Azure Machine Learning Çalışma Alanı paket oluşturmak için DevOps iş akışını tümleştirmenize olanak sağlar. Azure DevOps kullanarak Python akışlarını ayarlamayı öğrenmek için [Azure Artifacts 'Da Python paketlerini kullanmaya başlayın](https://docs.microsoft.com/azure/devops/artifacts/quickstarts/python-packages?view=azure-devops&preserve-view=true) makalesini okuyun
+Machine Learning uygulamanız için Python paketlerini etkin bir şekilde geliştiriyorsanız, bunları bir Azure DevOps deposunda yapıtlar olarak barındırabilir ve akış olarak yayımlayabilirsiniz. Bu yaklaşım, Azure Machine Learning Çalışma Alanı paket oluşturmak için DevOps iş akışını tümleştirmenize olanak sağlar. Azure DevOps kullanarak Python akışlarını ayarlamayı öğrenmek için [Azure Artifacts 'Da Python paketlerini kullanmaya başlayın](/azure/devops/artifacts/quickstarts/python-packages?preserve-view=true&view=azure-devops) makalesini okuyun
 
 Bu yaklaşım, depoya karşı kimlik doğrulaması yapmak için kişisel erişim belirtecini kullanır. Aynı yaklaşım, özel GitHub depoları gibi belirteç tabanlı kimlik doğrulaması olan diğer depolar için de geçerlidir. 
 
- 1. Azure DevOps örneğiniz için [bir kişisel erişim belirteci (Pat) oluşturun](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&preserve-view=true&tabs=preview-page#create-a-pat) . Belirtecin kapsamını __paketlemek > okundu__olarak ayarlayın. 
+ 1. Azure DevOps örneğiniz için [bir kişisel erişim belirteci (Pat) oluşturun](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?preserve-view=true&tabs=preview-page&view=azure-devops#create-a-pat) . Belirtecin kapsamını __paketlemek > okundu__ olarak ayarlayın. 
 
- 2. [Workspace.set_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#&preserve-view=trueset-connection-name--category--target--authtype--value-) yöntemini kullanarak Azure DEVOPS URL 'SINI ve Pat 'yi çalışma alanı özellikleri olarak ekleyin.
+ 2. [Workspace.set_connection](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py#&preserve-view=trueset-connection-name--category--target--authtype--value-) yöntemini kullanarak Azure DEVOPS URL 'SINI ve Pat 'yi çalışma alanı özellikleri olarak ekleyin.
 
      ```python
     from azureml.core import Workspace

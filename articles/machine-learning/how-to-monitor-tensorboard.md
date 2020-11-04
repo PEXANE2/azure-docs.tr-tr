@@ -10,17 +10,17 @@ ms.author: minxia
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 2ed8910db8b903dab3b81d9db6c9b5798d2b6b69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7642fe6642c1b938645e520c15ac367e12630f91
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542062"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316665"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>TensorBoard ve Azure Machine Learning deneme çalıştırmalarını ve ölçümlerini görselleştirin
 
 
-Bu makalede, deneme çalışmalarınızı ve ölçümlerini, ana Azure Machine Learning SDK 'daki [ `tensorboard` paketi](https://docs.microsoft.com/python/api/azureml-tensorboard/?view=azure-ml-py&preserve-view=true) kullanarak tensorboard 'da görüntülemeyi öğreneceksiniz. Deneme çalışmalarınızı inceledikten sonra Machine Learning modellerinizi daha iyi ayarlayabilir ve yeniden eğitebilirsiniz.
+Bu makalede, deneme çalışmalarınızı ve ölçümlerini, ana Azure Machine Learning SDK 'daki [ `tensorboard` paketi](/python/api/azureml-tensorboard/?preserve-view=true&view=azure-ml-py) kullanarak tensorboard 'da görüntülemeyi öğreneceksiniz. Deneme çalışmalarınızı inceledikten sonra Machine Learning modellerinizi daha iyi ayarlayabilir ve yeniden eğitebilirsiniz.
 
 [Tensorboard](https://www.tensorflow.org/tensorboard/r1/overview) , deneme yapınızı ve performansınızı incelemek ve anlamak için bir Web uygulamaları paketidir.
 
@@ -32,7 +32,7 @@ Azure Machine Learning denemeleri ile TensorBoard 'ı nasıl başladığınıza,
 > [!TIP]
 > Bu belgedeki bilgiler öncelikli olarak, model eğitimi sürecini izlemek isteyen veri bilimcileri ve geliştiricileri içindir. Kotalar, tamamlanan eğitim çalıştırmaları veya tamamlanmış model dağıtımları gibi Azure Machine Learning 'den kaynak kullanımını ve olayları izlemeyi ilgilenen bir yöneticiyseniz, bkz. [izleme Azure Machine Learning](monitor-azure-machine-learning.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * TensorBoard 'u başlatmak ve deneme çalışma geçmişlerinizi görüntülemek için, denemeleri ' nin, ölçümlerini ve performansını izlemek için daha önce günlüğe kaydetme özelliğinin etkinleştirilmesi gerekir.  
 * Bu belgedeki kod aşağıdaki ortamların birinde çalıştırılabilir: 
@@ -42,7 +42,7 @@ Azure Machine Learning denemeleri ile TensorBoard 'ı nasıl başladığınıza,
             * **Nasıl yapılır-> > > >---------------------------kullanımı**
             * **nasıl kullanılır-azureml > izleme ve izleme-denemeleri > tensorboard > > tensorboard. ipynb**
     * Kendi Juptyer Not defteri sunucunuz
-       * [Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) ek Ile birlikte yükleyip `tensorboard`
+       * [Azure Machine Learning SDK 'sını](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) ek Ile birlikte yükleyip `tensorboard`
         * [Azure Machine Learning çalışma alanı oluşturun](how-to-manage-workspace.md).  
         * [Bir çalışma alanı yapılandırma dosyası oluşturun](how-to-configure-environment.md#workspace).
 
@@ -166,7 +166,7 @@ run = exp.submit(src)
 
 Çalışma sırasında veya tamamlandıktan sonra TensorBoard 'ı başlatabilirsiniz. Aşağıda, ' `tb` de yüklenen deneme çalıştırması geçmişini alan `run` ve ardından tensorboard 'ı yöntemiyle Başlatan bir tensorboard nesne örneği oluşturacağız `start()` . 
   
-[Tensorboard Oluşturucusu](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py&preserve-view=true) bir çalıştırma dizisi alır, bu yüzden emin olun ve tek öğeli dizi olarak geçirin.
+[Tensorboard Oluşturucusu](/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?preserve-view=true&view=azure-ml-py) bir çalıştırma dizisi alır, bu yüzden emin olun ve tek öğeli dizi olarak geçirin.
 
 ```python
 from azureml.tensorboard import Tensorboard
@@ -247,7 +247,7 @@ for alpha in tqdm(alphas):
 
 ### <a name="export-runs-to-tensorboard"></a>Çalıştırmaları TensorBoard 'a dışarı aktarma
 
-SDK 'nın [export_to_tensorboard ()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.export?view=azure-ml-py&preserve-view=true) yöntemiyle, Azure Machine Learning denemızın çalıştırma geçmişini tensorboard günlüklerine verebiliriz, böylece bunları tensorboard aracılığıyla görüntüleyebiliriz.  
+SDK 'nın [export_to_tensorboard ()](/python/api/azureml-tensorboard/azureml.tensorboard.export?preserve-view=true&view=azure-ml-py) yöntemiyle, Azure Machine Learning denemızın çalıştırma geçmişini tensorboard günlüklerine verebiliriz, böylece bunları tensorboard aracılığıyla görüntüleyebiliriz.  
 
 Aşağıdaki kodda, klasörü `logdir` geçerli çalışma dizinimizde oluşturacağız. Bu klasör, deneme çalıştırması geçmişimizi ve Günlüklerimizi nereden dışarı aktarmamız `root_run` ve sonra bu çalışmayı tamamlandı olarak işaretliyoruz. 
 
@@ -273,7 +273,7 @@ root_run.complete()
 > Ayrıca, çalıştırmanın adını belirterek belirli bir çalıştırmayı TensorBoard öğesine dışarı aktarabilirsiniz.  `export_to_tensorboard(run_name, logdir)`
 
 ### <a name="start-and-stop-tensorboard"></a>TensorBoard başlatma ve durdurma
-Bu deneme için çalıştırma geçmişimiz verildikten sonra, TensorBoard 'ı [Start ()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py&preserve-view=true#&preserve-view=truestart-start-browser-false-) yöntemiyle başlatabiliriz. 
+Bu deneme için çalıştırma geçmişimiz verildikten sonra, TensorBoard 'ı [Start ()](/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?preserve-view=true&view=azure-ml-py#&preserve-view=truestart-start-browser-false-) yöntemiyle başlatabiliriz. 
 
 ```Python
 from azureml.tensorboard import Tensorboard
@@ -285,7 +285,7 @@ tb = Tensorboard([], local_root=logdir, port=6006)
 tb.start()
 ```
 
-İşiniz bittiğinde, TensorBoard nesnesinin [Stop ()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py&preserve-view=true#&preserve-view=truestop--) yöntemini çağırdığınızdan emin olun. Aksi halde, ana bilgisayar çekirdeğini kapatıncaya kadar TensorBoard çalışmaya devam edecektir. 
+İşiniz bittiğinde, TensorBoard nesnesinin [Stop ()](/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?preserve-view=true&view=azure-ml-py#&preserve-view=truestop--) yöntemini çağırdığınızdan emin olun. Aksi halde, ana bilgisayar çekirdeğini kapatıncaya kadar TensorBoard çalışmaya devam edecektir. 
 
 ```python
 tb.stop()
@@ -296,4 +296,4 @@ tb.stop()
 Bu nasıl yapılır ki, iki denemeleri oluşturdunuz ve olası ayarlama ve yeniden eğitimlere yönelik bölgeleri belirlemek için, çalışma geçmişlerine göre TensorBoard 'i nasıl başlatacağınızı öğrendiniz. 
 
 * Modelinize memnun kaldıysanız [model dağıtma](how-to-deploy-and-where.md) makalesini okuyun. 
-* [Hyperparameter ayarlaması](how-to-tune-hyperparameters.md)hakkında daha fazla bilgi edinin. 
+* [Hyperparameter ayarlaması](how-to-tune-hyperparameters.md)hakkında daha fazla bilgi edinin.

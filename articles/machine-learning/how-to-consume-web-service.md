@@ -1,7 +1,7 @@
 ---
 title: Web hizmeti olarak dağıtılan model için istemci oluştur
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning bir model dağıtıldığında oluşturulan bir Web hizmeti uç noktasını çağırmayı öğrenin. Uç nokta, modeliyle çıkarımı gerçekleştirmek için çağrabilmeniz için bir REST API sunar. Tercih ettiğiniz programlama dilini kullanarak bu API için istemcileri oluşturun.
+description: Azure Machine Learning bir model dağıtıldığında oluşturulan bir Web hizmeti uç noktasını çağırmayı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,19 +11,19 @@ ms.reviewer: larryfr
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 5ffdb7a3bb177092d728fbd469aa8cf95e93edb5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 03b077c7cadbfd101705c040e485c5766909c2de
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966109"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318163"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web hizmeti olarak dağıtılan bir Azure Machine Learning modelini kullanma
 
 
-Bir Azure Machine Learning modelini Web hizmeti olarak dağıtmak bir REST API uç noktası oluşturur. Bu uç noktaya veri gönderebilir ve modelin döndürdüğü tahmini alabilirsiniz. Bu belgede, C#, Go, Java ve Python kullanarak Web hizmeti için istemci oluşturma hakkında bilgi edinin.
+Bir Azure Machine Learning modelini Web hizmeti olarak dağıtmak bir REST API uç noktası oluşturur. Bu uç noktaya veri gönderebilir ve model tarafından döndürülen tahmini alabilirsiniz. Bu belgede, C#, Go, Java ve Python kullanarak Web hizmeti için istemci oluşturma hakkında bilgi edinin.
 
-Yerel ortamınıza bir model dağıtırken, Azure Container Instances, Azure Kubernetes hizmeti veya alanı programlanabilir kapı dizileri (FPGA) için bir Web hizmeti oluşturursunuz. Web hizmetine erişmek için kullanılan URI 'yi [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)kullanarak alırsınız. Kimlik doğrulaması etkinleştirilirse, kimlik doğrulama anahtarlarını veya belirteçlerini almak için SDK 'Yı da kullanabilirsiniz.
+Yerel ortamınıza bir model dağıtırken, Azure Container Instances, Azure Kubernetes hizmeti veya alanı programlanabilir kapı dizileri (FPGA) için bir Web hizmeti oluşturursunuz. Web hizmetine erişmek için kullanılan URI 'yi [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)kullanarak alırsınız. Kimlik doğrulaması etkinleştirilirse, kimlik doğrulama anahtarlarını veya belirteçlerini almak için SDK 'Yı da kullanabilirsiniz.
 
 Machine Learning Web hizmeti kullanan bir istemci oluşturmak için genel iş akışı:
 
@@ -39,7 +39,7 @@ Machine Learning Web hizmeti kullanan bir istemci oluşturmak için genel iş ak
 > [!NOTE]
 > Web hizmeti bilgilerini almak için Azure Machine Learning SDK 'sını kullanın. Bu bir Python SDK 'sına sahiptir. Hizmet için bir istemci oluşturmak üzere herhangi bir dili kullanabilirsiniz.
 
-[Azureml. Core. WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true) sınıfı, istemci oluşturmak için gereken bilgileri sağlar. Aşağıdaki `Webservice` Özellikler bir istemci uygulaması oluşturmak için yararlıdır:
+[Azureml. Core. WebService](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py) sınıfı, istemci oluşturmak için gereken bilgileri sağlar. Aşağıdaki `Webservice` Özellikler bir istemci uygulaması oluşturmak için yararlıdır:
 
 * `auth_enabled` -Anahtar kimlik doğrulaması etkinse `True` ; Aksi takdirde, `False` .
 * `token_auth_enabled` -Belirteç kimlik doğrulaması etkinse `True` ; Aksi takdirde, `False` .
@@ -59,7 +59,7 @@ Dağıtılan Web Hizmetleri için bu bilgileri almanın birkaç yolu vardır:
     print(service.swagger_uri)
     ```
 
-* `Webservice.list`Çalışma alanınızdaki modeller için dağıtılan Web Hizmetleri listesini almak için kullanabilirsiniz. Döndürülen bilgi listesini daraltmak için filtre ekleyebilirsiniz. Ne filtrelenebilir hakkında daha fazla bilgi için, bkz. [WebService. List](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py&preserve-view=true) başvuru belgeleri.
+* `Webservice.list`Çalışma alanınızdaki modeller için dağıtılan Web Hizmetleri listesini almak için kullanabilirsiniz. Döndürülen bilgi listesini daraltmak için filtre ekleyebilirsiniz. Ne filtrelenebilir hakkında daha fazla bilgi için, bkz. [WebService. List](/python/api/azureml-core/azureml.core.webservice.webservice.webservice?preserve-view=true&view=azure-ml-py) başvuru belgeleri.
 
     ```python
     services = Webservice.list(ws)
@@ -77,7 +77,7 @@ Dağıtılan Web Hizmetleri için bu bilgileri almanın birkaç yolu vardır:
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Dağıtılan hizmetin adını biliyorsanız [az ml Service Show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) komutunu kullanın:
+Dağıtılan hizmetin adını biliyorsanız [az ml Service Show](/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) komutunu kullanın:
 
 ```azurecli
 az ml service show -n <service-name>
@@ -85,7 +85,7 @@ az ml service show -n <service-name>
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure Machine Learning Studio 'dan __uç noktalar__, __gerçek zamanlı uç noktalar__ve sonra uç nokta adı ' nı seçin. Uç nokta için Ayrıntılar bölümünde, __REST uç noktası__ alanı Puanlama URI 'sini içerir. __Swagger URI__ 'SI Swagger URI 'sini içerir.
+Azure Machine Learning Studio 'dan __uç noktalar__ , __gerçek zamanlı uç noktalar__ ve sonra uç nokta adı ' nı seçin. Uç nokta için Ayrıntılar bölümünde, __REST uç noktası__ alanı Puanlama URI 'sini içerir. __Swagger URI__ 'SI Swagger URI 'sini içerir.
 
 ---
 
@@ -119,7 +119,7 @@ Azure Machine Learning, Web hizmetlerinizi erişimi denetlemek için iki yol sa�
 
 Bir anahtara veya belirteçle güvenli hale getirilmiş bir hizmete istek gönderilirken, anahtar veya belirteci geçirmek için __Yetkilendirme__ üst bilgisini kullanın. Anahtar veya belirtecin olarak biçimlendirilmesi gerekir `Bearer <key-or-token>` , burada `<key-or-token>` anahtar veya belirteç değeridir.
 
-Anahtarlar ve belirteçler arasındaki başlıca fark, **anahtarların statik olduğu ve el ile yeniden üretilme**ve **belirteçlerin süre sonu üzerine yenilenmesi gerektiği**. Anahtar tabanlı kimlik doğrulaması, Azure Container Instance ve Azure Kubernetes hizmeti tarafından dağıtılan Web Hizmetleri için desteklenir ve belirteç tabanlı kimlik doğrulaması **yalnızca** Azure Kubernetes hizmet dağıtımları için kullanılabilir. Daha fazla bilgi ve belirli kod örnekleri için bkz. [nasıl yapılır](how-to-setup-authentication.md#web-service-authentication) kimlik doğrulaması.
+Anahtarlar ve belirteçler arasındaki başlıca fark, **anahtarların statik olduğu ve el ile yeniden üretilme** ve **belirteçlerin süre sonu üzerine yenilenmesi gerektiği**. Anahtar tabanlı kimlik doğrulaması, Azure Container Instance ve Azure Kubernetes hizmeti tarafından dağıtılan Web Hizmetleri için desteklenir ve belirteç tabanlı kimlik doğrulaması **yalnızca** Azure Kubernetes hizmet dağıtımları için kullanılabilir. Daha fazla bilgi ve belirli kod örnekleri için bkz. [nasıl yapılır](how-to-setup-authentication.md#web-service-authentication) kimlik doğrulaması.
 
 
 #### <a name="authentication-with-keys"></a>Anahtarlar ile kimlik doğrulama
@@ -139,7 +139,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Bir anahtarı yeniden oluşturmanız gerekiyorsa kullanın [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true) .
+> Bir anahtarı yeniden oluşturmanız gerekiyorsa kullanın [`service.regen_key`](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py) .
 
 #### <a name="authentication-with-tokens"></a>Belirteçlerle kimlik doğrulama
 
@@ -527,7 +527,7 @@ Döndürülen sonuçlar aşağıdaki JSON belgesine benzer:
 
 ## <a name="web-service-schema-openapi-specification"></a>Web hizmeti şeması (Openapı belirtimi)
 
-Dağıtımınızla otomatik şema oluşturma kullandıysanız, [swagger_uri özelliğini](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=trueswagger-uri)kullanarak hizmetin openapı belirtiminin adresini alabilirsiniz. (Örneğin, `print(service.swagger_uri)` .) Belirtimi almak için bir GET isteği kullanın veya bir tarayıcıda URI 'yi açın.
+Dağıtımınızla otomatik şema oluşturma kullandıysanız, [swagger_uri özelliğini](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=trueswagger-uri)kullanarak hizmetin openapı belirtiminin adresini alabilirsiniz. (Örneğin, `print(service.swagger_uri)` .) Belirtimi almak için bir GET isteği kullanın veya bir tarayıcıda URI 'yi açın.
 
 Aşağıdaki JSON belgesi, bir dağıtım için oluşturulan bir şemanın (Openapı belirtimi) bir örneğidir:
 
@@ -669,15 +669,15 @@ Belirtiden istemci kitaplıkları oluşturabileceğiniz bir yardımcı program i
 
 
 > [!TIP]
-> Hizmeti dağıttıktan sonra şema JSON belgesini alabilirsiniz. Yerel Web hizmetinin Swagger dosyasına URI 'yi almak için dağıtılan Web hizmetindeki [swagger_uri özelliğini](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=trueswagger-uri) kullanın (örneğin, `service.swagger_uri` ).
+> Hizmeti dağıttıktan sonra şema JSON belgesini alabilirsiniz. Yerel Web hizmetinin Swagger dosyasına URI 'yi almak için dağıtılan Web hizmetindeki [swagger_uri özelliğini](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=trueswagger-uri) kullanın (örneğin, `service.swagger_uri` ).
 
-## <a name="consume-the-service-from-power-bi"></a>Hizmeti Power BI’dan kullanma
+## <a name="consume-the-service-from-power-bi"></a>Hizmeti Power BI tüketme
 
 Power BI, Power BI verileri tahmine dayalı olarak zenginleştirmek için Azure Machine Learning Web hizmetlerinin kullanımını destekler. 
 
-Power BI, tüketim için desteklenen bir Web hizmeti oluşturmak için, şemanın Power BI gereken biçimi desteklemesi gerekir. [Power BI tarafından desteklenen bir şema oluşturmayı öğrenin](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#example-entry-script).
+Power BI, tüketim için desteklenen bir Web hizmeti oluşturmak için, şemanın Power BI gereken biçimi desteklemesi gerekir. [Power BI tarafından desteklenen bir şema oluşturmayı öğrenin](./how-to-deploy-advanced-entry-script.md#power-bi-compatible-endpoint).
 
-Web hizmeti dağıtıldıktan sonra, Power BI veri akışlarından tüketilebilir. [Power BI bir Azure Machine Learning Web hizmeti kullanmayı öğrenin](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
+Web hizmeti dağıtıldıktan sonra Power BI iş akışlarından kullanılabilir. [Power BI bir Azure Machine Learning Web hizmeti kullanmayı öğrenin](/power-bi/service-machine-learning-integration).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

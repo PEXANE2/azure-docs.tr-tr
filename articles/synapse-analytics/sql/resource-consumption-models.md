@@ -9,22 +9,22 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 394521156d6192d25c3a4d254ac2c9b94c6231f5
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 1a78142ded7be46bdc06c49d6e0a26ef8b266300
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093557"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318392"
 ---
 # <a name="synapse-sql-resource-consumption"></a>SYNAPSE SQL kaynak tüketimi
 
 Bu makalede, SYNAPSE SQL (Önizleme) kaynak tüketim modelleri açıklanmaktadır.
 
-## <a name="sql-on-demand"></a>İsteğe bağlı SQL
+## <a name="serverless-sql-pool"></a>Sunucusuz SQL havuzu
 
-İsteğe bağlı SQL, doğru boyutu seçmenizi gerektirmeyen, sorgu hizmeti başına ödeme yapar. Sistem gereksinimlerinize göre otomatik olarak ayarlanır ve altyapınızı yönetme ve çözümünüz için doğru boyutu seçme konusunda sizi serbest bırakır.
+Sunucusuz SQL havuzu, doğru boyutu seçmenizi gerektirmeyen, sorgu hizmeti başına bir ödeme olur. Sistem gereksinimlerinize göre otomatik olarak ayarlanır ve altyapınızı yönetme ve çözümünüz için doğru boyutu seçme konusunda sizi serbest bırakır.
 
-## <a name="sql-pool---data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>SQL havuzu-veri ambarı birimleri (DWU) ve işlem verileri ambarı birimleri (cDWUs)
+## <a name="dedicated-sql-pool---data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Adanmış SQL havuzu-veri ambarı birimleri (DWU) ve işlem verileri ambarı birimleri (cDWUs)
 
 Fiyat ve performansı iyileştirmek için ideal sayıda veri ambarı birimi (DWU) seçmeye ve birim sayısını değiştirmeye yönelik öneriler.
 
@@ -50,12 +50,12 @@ DWUs 'yi artırma:
 
 Hizmet düzeyi hedefi (SLO), veri ambarınızın maliyet ve performans düzeyini belirleyen ölçeklenebilirlik ayarıdır. Gen2 için hizmet düzeyleri, işlem verileri ambarı birimlerinde (cDWU) ölçülür (örneğin, DW2000c). Gen1 hizmet düzeyleri DWUs içinde ölçülür, örneğin DW2000.
 
-Hizmet düzeyi hedefi (SLO), veri ambarınızın maliyet ve performans düzeyini belirleyen ölçeklenebilirlik ayarıdır. Gen2 SQL havuzu için hizmet düzeyleri, veri ambarı birimleri (DWU) ile ölçülür (örneğin, DW2000c).
+Hizmet düzeyi hedefi (SLO), veri ambarınızın maliyet ve performans düzeyini belirleyen ölçeklenebilirlik ayarıdır. Gen2 adanmış SQL havuzu için hizmet düzeyleri veri ambarı birimleri (DWU) ile ölçülür (örneğin, DW2000c).
 
 > [!NOTE]
 > Azure SYNAPSE Analytics Gen2, en kısa süre önce işlem katmanlarını 100 cDWU olarak destekleyecek şekilde daha fazla ölçek özelliği ekledi. Daha düşük işlem katmanları gerektiren Gen1 üzerinde şu anda mevcut olan veri ambarları artık ek bir ücret ödemeden mevcut olan bölgelerde Gen2 'ye yükseltilebilir.  Bölgeniz henüz desteklenmiyorsa desteklenen bir bölgeye de yükseltme yapabilirsiniz. Daha fazla bilgi için bkz. [Gen2 sürümüne yükseltme](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
-T-SQL ' de SERVICE_OBJECTIVE ayarı, SQL havuzunuzun hizmet düzeyini ve performans katmanını belirler.
+T-SQL ' de SERVICE_OBJECTIVE ayarı, adanmış SQL havuzunuzun hizmet düzeyini ve performans katmanını belirler.
 
 ```sql
 CREATE DATABASE mySQLDW
@@ -125,11 +125,11 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 DWUs 'yi değiştirmek için:
 
-1. [Azure Portal](https://portal.azure.com)açın, veritabanınızı açın ve **Ölçek**' i seçin.
+1. [Azure Portal](https://portal.azure.com)açın, veritabanınızı açın ve **Ölçek** ' i seçin.
 
-2. **Ölçek**altında, DWU ayarını değiştirmek için kaydırıcıyı sola veya sağa taşıyın.
+2. **Ölçek** altında, DWU ayarını değiştirmek için kaydırıcıyı sola veya sağa taşıyın.
 
-3. **Kaydet**’i seçin. Bir onay iletisi görüntülenir. Onaylamak için **Evet** ' i, iptal etmek için **Hayır** 'ı seçin.
+3. **Kaydet** ’i seçin. Bir onay iletisi görüntülenir. Onaylamak için **Evet** ' i, iptal etmek için **Hayır** 'ı seçin.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -204,7 +204,7 @@ AND       major_resource_id = 'MySQLDW'
 ;
 ```
 
-Bu DMV, SQL havuzunuzdaki işlem ve işlem durumu gibi IN_PROGRESS ya da tamamlanmış olan çeşitli yönetim işlemleri hakkında bilgi döndürür.
+Bu DMV, işlem gibi özel SQL havuzunuzdaki çeşitli yönetim işlemleri ve IN_PROGRESS ya da tamamlanmış olan işlem durumu hakkında bilgi döndürür.
 
 ### <a name="the-scaling-workflow"></a>Ölçeklendirme iş akışı
 

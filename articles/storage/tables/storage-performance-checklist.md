@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9d3f7d5f496634f10b48e7509c21cd634fd92d3c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 71b1f3cfa1df86b417c468d56f67cd7fe8d71d73
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89458341"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316185"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Tablo depolaması için performans ve ölçeklenebilirlik denetim listesi
 
@@ -153,7 +153,7 @@ Herhangi bir bağlantıyı açmadan önce bağlantı sınırını ayarlayın.
 
 Diğer programlama dilleri için, bağlantı sınırının nasıl ayarlanacağını öğrenmek için bu dilin belgelerine bakın.  
 
-Daha fazla bilgi için [Web Hizmetleri: eşzamanlı bağlantılar](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/)' a bakın.  
+Daha fazla bilgi için [Web Hizmetleri: eşzamanlı bağlantılar](/archive/blogs/darrenj/web-services-concurrent-connections)' a bakın.  
 
 ### <a name="increase-minimum-number-of-threads"></a>En az iş parçacığı sayısını artır
 
@@ -171,7 +171,7 @@ Paralellik performansı performans için harika olsa da, sınırsız paralellik 
 
 ## <a name="client-libraries-and-tools"></a>İstemci kitaplıkları ve araçları
 
-En iyi performans için, her zaman Microsoft tarafından sunulan en son istemci kitaplıklarını ve araçları kullanın. Azure depolama istemci kitaplıkları, çeşitli diller için kullanılabilir. Azure depolama, PowerShell ve Azure CLı 'yı da destekler. Microsoft bu istemci kitaplıklarını ve araçları göz önünde bulundurularak etkin bir şekilde geliştirir, en son hizmet sürümleriyle güncel tutar ve kendini kanıtlamış performans uygulamalarının çoğunu dahili olarak işlemesini sağlar. Daha fazla bilgi için bkz. [Azure depolama başvurusu belgeleri](/azure/storage/#reference).
+En iyi performans için, her zaman Microsoft tarafından sunulan en son istemci kitaplıklarını ve araçları kullanın. Azure depolama istemci kitaplıkları, çeşitli diller için kullanılabilir. Azure depolama, PowerShell ve Azure CLı 'yı da destekler. Microsoft bu istemci kitaplıklarını ve araçları göz önünde bulundurularak etkin bir şekilde geliştirir, en son hizmet sürümleriyle güncel tutar ve kendini kanıtlamış performans uygulamalarının çoğunu dahili olarak işlemesini sağlar.
 
 ## <a name="handle-service-errors"></a>Hizmet hatalarını işleme
 
@@ -197,7 +197,7 @@ Bu bölümde, tablo hizmetinde önemli performans iyileştirmeleri yapmak için 
 
 Storage hizmeti sürüm 2013-08-15 ' den başlayarak tablo hizmeti, tablo verilerini aktarmak için XML tabanlı AtomPub biçimi yerine JSON kullanımını destekler. JSON kullanımı, yük boyutunu %75 kadar azaltabilir ve uygulamanızın performansını önemli ölçüde iyileştirebilir.
 
-Daha fazla bilgi için bkz. Gönderi [Microsoft Azure tabloları:](https://docs.microsoft.com/archive/blogs/windowsazurestorage/windows-azure-tables-introducing-json) [tablo HIZMETI işlemleri Için JSON ve yük biçimine](https://msdn.microsoft.com/library/azure/dn535600.aspx)giriş.
+Daha fazla bilgi için bkz. Gönderi [Microsoft Azure tabloları:](/archive/blogs/windowsazurestorage/windows-azure-tables-introducing-json) [tablo HIZMETI işlemleri Için JSON ve yük biçimine](/rest/api/storageservices/Payload-Format-for-Table-Service-Operations)giriş.
 
 ### <a name="disable-nagle"></a>Nagle 'ı devre dışı bırak
 
@@ -243,7 +243,7 @@ Bu bölümde, tablo hizmetini sorgulamak için kanıtlanmış uygulamalar açık
 
 Sorgulanacak varlık aralığını belirtmek için birkaç yol vardır. Aşağıdaki listede sorgu kapsamı için her bir seçenek açıklanır.
 
-- **Nokta sorguları:**-nokta sorgusu, alınacak varlığın bölüm anahtarını ve satır anahtarını belirterek tam olarak bir varlık alır. Bu sorgular verimlidir ve bunları mümkün olan yerlerde kullanmanız gerekir.
+- **Nokta sorguları:** -nokta sorgusu, alınacak varlığın bölüm anahtarını ve satır anahtarını belirterek tam olarak bir varlık alır. Bu sorgular verimlidir ve bunları mümkün olan yerlerde kullanmanız gerekir.
 - **Bölüm sorguları:** Bölüm sorgusu, ortak bir bölüm anahtarını paylaşan bir veri kümesini alan bir sorgudur. Genellikle sorgu, bölüm anahtarına ek olarak, bazı varlık özelliklerine ilişkin bir dizi satır anahtarı veya bir değer aralığı belirtir. Bu sorgular nokta sorgularından daha az verimlidir ve gelişigüzel kullanılmalıdır.
 - **Tablo sorguları:** Tablo sorgusu, ortak bir bölüm anahtarını paylaşmayan bir varlık kümesini alan bir sorgudur. Bu sorgular etkili değildir ve mümkünse bunları kullanmaktan kaçının.
 
@@ -273,10 +273,10 @@ Toplu işlemler, Azure depolama 'da varlık grubu işlemleri olarak bilinir. Bir
 
 #### <a name="upsert"></a>Upsert
 
-Mümkün olan her yerde tablo ön **Ekle** işlemlerini kullanın. Her ikisi de geleneksel bir **ekleme** ve **güncelleştirme** işlemlerinden daha verimli olabilecek iki tür **upsert**vardır:  
+Mümkün olan her yerde tablo ön **Ekle** işlemlerini kullanın. Her ikisi de geleneksel bir **ekleme** ve **güncelleştirme** işlemlerinden daha verimli olabilecek iki tür **upsert** vardır:  
 
-- **Insertormerge**: varlığın özelliklerinin bir alt kümesini karşıya yüklemek istediğinizde bu işlemi kullanın, ancak varlığın zaten var olup olmadığından emin olun. Varlık varsa, bu çağrı, **upsert** işleme dahil olan özellikleri güncelleştirir ve tüm mevcut özellikleri olduğu gibi bırakır; varlık yoksa, yeni varlığı ekler. Bu, bir sorguda projeksiyon kullanılmasına benzerdir, ancak yalnızca değişen özellikleri karşıya yüklemeniz yeterlidir.
-- **Insertorreplace**: tamamen yeni bir varlık yüklemek istediğinizde bu işlemi kullanın, ancak zaten var olup olmadığını doğrulayın. Yeni yüklenen varlığın tamamen doğru olduğunu bildiğiniz ve eski varlığın üzerine yazmadığı için bu işlemi kullanın. Örneğin, uygulamanın daha önce Kullanıcı için konum verilerini depoladığına bakılmaksızın kullanıcının geçerli konumunu depolayan varlığı güncelleştirmek istersiniz; Yeni konum varlığı tamamlanmıştır ve önceki varlıklardan herhangi bir bilgi almanız gerekmez.
+- **Insertormerge** : varlığın özelliklerinin bir alt kümesini karşıya yüklemek istediğinizde bu işlemi kullanın, ancak varlığın zaten var olup olmadığından emin olun. Varlık varsa, bu çağrı, **upsert** işleme dahil olan özellikleri güncelleştirir ve tüm mevcut özellikleri olduğu gibi bırakır; varlık yoksa, yeni varlığı ekler. Bu, bir sorguda projeksiyon kullanılmasına benzerdir, ancak yalnızca değişen özellikleri karşıya yüklemeniz yeterlidir.
+- **Insertorreplace** : tamamen yeni bir varlık yüklemek istediğinizde bu işlemi kullanın, ancak zaten var olup olmadığını doğrulayın. Yeni yüklenen varlığın tamamen doğru olduğunu bildiğiniz ve eski varlığın üzerine yazmadığı için bu işlemi kullanın. Örneğin, uygulamanın daha önce Kullanıcı için konum verilerini depoladığına bakılmaksızın kullanıcının geçerli konumunu depolayan varlığı güncelleştirmek istersiniz; Yeni konum varlığı tamamlanmıştır ve önceki varlıklardan herhangi bir bilgi almanız gerekmez.
 
 #### <a name="storing-data-series-in-a-single-entity"></a>Veri serisini tek bir varlıkta depolama
 

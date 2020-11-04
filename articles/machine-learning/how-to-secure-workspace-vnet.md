@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 1dc7c343087e4fc11aef20e95bc9cafea20a99b4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 8082694b9f08023653d47e1f7fb442219cf8b475
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672867"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316700"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning çalışma alanının güvenliğini sağlama
 
@@ -37,7 +37,7 @@ Bu makalede, bir sanal ağda aşağıdaki çalışma alanı kaynaklarını nası
 > - Azure Key Vault
 > - Azure Container Registry
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + Genel sanal ağ senaryolarını ve genel sanal ağ mimarisini anlamak için [ağ güvenliğine genel bakış](how-to-network-security-overview.md) makalesini okuyun.
 
@@ -48,7 +48,7 @@ Bu makalede, bir sanal ağda aşağıdaki çalışma alanı kaynaklarını nası
     - Sanal ağ kaynağında "Microsoft. Network/virtualNetworks/JOIN/Action".
     - Alt ağ kaynağında "Microsoft. Network/virtualNetworks/subnet/JOIN/Action".
 
-    Ağ ile Azure RBAC hakkında daha fazla bilgi için bkz. [ağ yerleşik rolleri](/azure/role-based-access-control/built-in-roles#networking)
+    Ağ ile Azure RBAC hakkında daha fazla bilgi için bkz. [ağ yerleşik rolleri](../role-based-access-control/built-in-roles.md#networking)
 
 
 ## <a name="secure-the-workspace-with-private-endpoint"></a>Çalışma alanını özel uç noktayla güvenli hale getirin
@@ -66,7 +66,7 @@ Azure Machine Learning, hizmet uç noktalarını veya özel uç noktaları kulla
 >
 > Varsayılan depolama hesabı, bir çalışma alanı oluşturduğunuzda otomatik olarak sağlanır.
 >
-> Varsayılan olmayan depolama hesapları için, `storage_account` [ `Workspace.create()` işlevindeki](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-&preserve-view=true) parametresi Azure kaynak kimliği 'ne göre özel bir depolama hesabı belirtmenizi sağlar.
+> Varsayılan olmayan depolama hesapları için, `storage_account` [ `Workspace.create()` işlevindeki](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-&preserve-view=true) parametresi Azure kaynak kimliği 'ne göre özel bir depolama hesabı belirtmenizi sağlar.
 
 Bir sanal ağdaki çalışma alanı için bir Azure depolama hesabı kullanmak için aşağıdaki adımları kullanın:
 
@@ -188,7 +188,7 @@ Bir sanal ağın arkasındaki Azure Key Vault Azure Machine Learning deneme yete
 
 Bir sanal ağ içinde Azure Container Registry kullanmak için aşağıdaki gereksinimleri karşılamanız gerekir:
 
-* Azure Container Registry Premium sürüm olmalıdır. Yükseltme hakkında daha fazla bilgi için bkz. [SKU 'Ları değiştirme](/azure/container-registry/container-registry-skus#changing-skus).
+* Azure Container Registry Premium sürüm olmalıdır. Yükseltme hakkında daha fazla bilgi için bkz. [SKU 'Ları değiştirme](../container-registry/container-registry-skus.md#changing-tiers).
 
 * Azure Container Registry, eğitim veya çıkarım için kullanılan depolama hesabı ve işlem hedefleri ile aynı sanal ağ ve alt ağ içinde olmalıdır.
 
@@ -233,7 +233,7 @@ Bu gereksinimler karşılandıktan sonra, Azure Container Registry etkinleştirm
     > [!IMPORTANT]
     > Depolama hesabınız, işlem kümeniz ve Azure Container Registry hepsi sanal ağın aynı alt ağında olmalıdır.
     
-    Daha fazla bilgi için [Update ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-&preserve-view=true) Yöntem başvurusuna bakın.
+    Daha fazla bilgi için [Update ()](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-&preserve-view=true) Yöntem başvurusuna bakın.
 
 1. Aşağıdaki Azure Resource Manager şablonunu uygulayın. Bu şablon, çalışma alanınızın ACR ile iletişim kurmasını sağlar.
 
@@ -289,7 +289,7 @@ Bu gereksinimler karşılandıktan sonra, Azure Container Registry etkinleştirm
 
     Bu şablon, çalışma alanından ACR 'nize ağ erişimi için _özel bir uç nokta_ oluşturur. Aşağıdaki ekran görüntüsünde, bu özel uç noktanın bir örneği gösterilmektedir.
 
-    :::image type="content" source="media/how-to-secure-workspace-vnet/acr-private-endpoint.png" alt-text="Çalışma alanı için Azure Container Registry":::
+    :::image type="content" source="media/how-to-secure-workspace-vnet/acr-private-endpoint.png" alt-text="ACR özel uç nokta ayarları":::
 
     > [!IMPORTANT]
     > Bu uç noktayı silmeyin! Yanlışlıkla silerseniz, yeni bir tane oluşturmak için bu adımda şablonu yeniden uygulayabilirsiniz.
