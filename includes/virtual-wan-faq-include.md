@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 38aea30c5f716df927b5924754eb07e7f94c7ebc
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: da2535a9764c909af3a491402311fe263dbb48fb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92038434"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331043"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Azure sanal WAN, GA 'de mi?
 
@@ -70,7 +70,7 @@ P2S istemcileri için DNS sunucuları eklemenin iki seçeneği vardır. İlk yö
 
    // Re-generate Vpn profile either from PS/Portal for Vpn clients to have the specified dns servers
    ```
-2. Ya da Windows 10 için Azure VPN istemcisini kullanıyorsanız, indirilen profil XML dosyasını değiştirebilir ve içeri aktarmadan önce ** \<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers> ** etiketleri ekleyebilirsiniz.
+2. Ya da Windows 10 için Azure VPN istemcisini kullanıyorsanız, indirilen profil XML dosyasını değiştirebilir ve içeri aktarmadan önce **\<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers>** etiketleri ekleyebilirsiniz.
 
    ```powershell
       <azvpnprofile>
@@ -259,6 +259,8 @@ Evet. Bu seçenek şu anda yalnızca PowerShell aracılığıyla kullanılabilir
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Sanal WAN 'da IPv6 desteği var mı?
 
 IPv6, sanal WAN hub 'ında ve ağ geçitlerinde desteklenmez. IPv4 ve IPv6 desteği olan bir VNet 'iniz varsa ve VNet 'i sanal WAN 'a bağlamak istiyorsanız, bu senaryo şu anda desteklenmemektedir. 
+
+Azure Güvenlik Duvarı aracılığıyla internet 'e işaret eden site (Kullanıcı) VPN senaryosunda, sanal WAN hub 'ına trafiği zorlamak için istemci cihazınızda IPv6 bağlantısını kapatmanız gerekecektir. Bunun nedeni, modern cihazların varsayılan olarak varsayılan olarak IPv6 adreslerini kullanmasına yöneliktir.
 
 ### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionalities"></a>Çeşitli sanal WAN işlevlerini otomatikleştirerek betikler tarafından kullanılacak önerilen API sürümü nedir?
 

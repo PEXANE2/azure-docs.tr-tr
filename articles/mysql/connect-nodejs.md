@@ -8,12 +8,12 @@ ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-t
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 48e6a2a6bcf20e22edbf0d2f98607b8310d2f22d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 55c352df83e8f72a418452dd28d621556b207e5e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91307866"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332177"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Node.js kullanma
 
@@ -21,7 +21,7 @@ Bu hızlı başlangıçta Node.js kullanarak MySQL için Azure veritabanı 'na b
 
 Bu konuda, Node.js kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve MySQL için Azure veritabanı ile çalışmaya yeni başladığınızı varsaymaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - MySQL için Azure veritabanı sunucusu. [Azure Portal kullanarak MySQL Için Azure veritabanı sunucusu oluşturun](quickstart-create-mysql-server-database-using-azure-portal.md) veya [Azure CLI kullanarak MySQL için Azure veritabanı sunucusu oluşturun](quickstart-create-mysql-server-database-using-azure-cli.md).
@@ -50,7 +50,7 @@ Platformunuza bağlı olarak, [Node.js](https://nodejs.org)yüklemek için uygun
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 
-1. **Node.js**’yi ve Node.js’nin paket yöneticisi olan **npm**’yi yüklemek için aşağıdaki komutları çalıştırın.
+1. **Node.js** ’yi ve Node.js’nin paket yöneticisi olan **npm** ’yi yüklemek için aşağıdaki komutları çalıştırın.
 
    ```bash
    sudo apt-get install -y nodejs npm
@@ -66,9 +66,9 @@ Platformunuza bağlı olarak, [Node.js](https://nodejs.org)yüklemek için uygun
    ```
 3. NPM listesi çıkış metnini denetleyerek yüklemeyi doğrulayın. Yeni yamalar yayımlandıkça sürüm numarası değişebilir.
 
-### <a name="mac-os"></a>Mac OS
+### <a name="macos"></a>macOS
 
-1. Mac OS X ve **Node.js**’ye yönelik kullanımı kolay bir paket yöneticisi olan **brew** programını yüklemek için aşağıdaki komutları girin.
+1. MacOS ve **Node.js** için kullanımı kolay bir paket yöneticisi olan **Brew** 'ı yüklemek için aşağıdaki komutları girin.
 
    ```bash
    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -90,9 +90,9 @@ Platformunuza bağlı olarak, [Node.js](https://nodejs.org)yüklemek için uygun
 MySQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerini alın. Tam sunucu adına ve oturum açma kimlik bilgilerine ihtiyacınız vardır.
 
 1. [Azure Portal](https://portal.azure.com/)oturum açın.
-2. Azure Portal sol taraftaki menüden **tüm kaynaklar**' ı seçin ve oluşturduğunuz sunucuyu (örneğin, **demosunucum**) arayın.
+2. Azure Portal sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve oluşturduğunuz sunucuyu (örneğin, **demosunucum** ) arayın.
 3. Sunucu adını seçin.
-4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı**’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
+4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı** ’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
  :::image type="content" source="./media/connect-nodejs/server-name-azure-database-mysql.png" alt-text="MySQL için Azure Veritabanı sunucu adı":::
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>Node.js’de JavaScript kodunu çalıştırma
@@ -319,6 +319,16 @@ function deleteData(){
                 else  console.log('Done.') 
         });
 };
+```
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bu hızlı başlangıç sırasında kullanılan tüm kaynakları temizlemek için, aşağıdaki komutu kullanarak kaynak grubunu silin:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

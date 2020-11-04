@@ -5,14 +5,15 @@ description: NoSQL veritabanlarında veri modelleme hakkında bilgi edinin, ili�
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 0868b0d3e917b857d09c89e3a35d03872c42a23e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a141177846def9c94216684c1083d0d336eeda1e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096657"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333265"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Azure Cosmos DB veri modellemesi
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -300,7 +301,7 @@ Yukarıdaki örnekte, yayımcı belgesinde, sınırlandırılmamış koleksiyonu
 İlişkisel bir veritabanında *birçok: birçok* ilişki genellikle kayıtları diğer tablolardan birlikte birleştiren JOIN tablolarıyla modellenir.
 
 
-:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="İlişkisel veritabanı modeli" border="false":::
+:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="Tabloları Birleştir" border="false":::
 
 Belgeleri kullanarak aynı şeyi çoğaltmak ve aşağıdakine benzer bir veri modeli oluşturmak isteyebilirsiniz.
 

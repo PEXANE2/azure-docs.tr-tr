@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 73f5dc6bdc976bd0166cfb1f2621f57f558f944c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 70edf224494fdf1395d59d1c591d0369b9b20557
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92478601"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333027"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-powershell"></a>Öğretici: PowerShell kullanarak bir PostgreSQL için Azure veritabanı tasarlama-tek sunucu
 
@@ -28,7 +28,7 @@ PostgreSQL için Azure veritabanı, Microsoft bulut 'da PostgreSQL Community Edi
 > - Verileri güncelleştirme
 > - Verileri geri yükleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -66,7 +66,7 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 
 Cmdlet 'i ile PostgreSQL için Azure veritabanı sunucusu oluşturun `New-AzPostgreSqlServer` . Bir sunucu birden çok veritabanını yönetebilir. Genellikle her proje veya kullanıcı için farklı bir veritabanı kullanılır.
 
-Aşağıdaki örnek, **myresourcegroup** kaynak grubundaki **demosunucum** adlı **Batı ABD** bölgesinde **myadmin**Sunucu Yöneticisi oturum açma bilgilerini içeren bir PostgreSQL sunucusu oluşturur. 2 sanal çekirdek ve coğrafi olarak yedekli yedeklemeler etkin olan genel amaçlı fiyatlandırma katmanında bir gen 5 sunucusudur. Örnek, PostgreSQL Sunucu Yöneticisi hesabının parolası olduğundan, örneğin ilk satırında kullanılan parolayı belgeleyin.
+Aşağıdaki örnek, **myresourcegroup** kaynak grubundaki **demosunucum** adlı **Batı ABD** bölgesinde **myadmin** Sunucu Yöneticisi oturum açma bilgilerini içeren bir PostgreSQL sunucusu oluşturur. 2 sanal çekirdek ve coğrafi olarak yedekli yedeklemeler etkin olan genel amaçlı fiyatlandırma katmanında bir gen 5 sunucusudur. Örnek, PostgreSQL Sunucu Yöneticisi hesabının parolası olduğundan, örneğin ilk satırında kullanılan parolayı belgeleyin.
 
 > [!TIP]
 > Sunucu adı bir DNS adıyla eşleşir ve bunun Azure'da benzersiz olması gerekir.
@@ -104,7 +104,7 @@ New-AzPostgreSqlFirewallRule -Name AllowMyIP -ResourceGroupName myresourcegroup 
 
 ## <a name="get-the-connection-information"></a>Bağlantı bilgilerini alma
 
-Sunucunuza bağlanmak için ana bilgisayar bilgilerini ve erişim kimlik bilgilerini sağlamanız gerekir. Bağlantı bilgilerini öğrenmek için aşağıdaki örneği kullanın. **Fullyıqualifieddomainname** ve **tınlogin**değerlerini bir yere göz önünde koyun.
+Sunucunuza bağlanmak için ana bilgisayar bilgilerini ve erişim kimlik bilgilerini sağlamanız gerekir. Bağlantı bilgilerini öğrenmek için aşağıdaki örneği kullanın. **Fullyıqualifieddomainname** ve **tınlogin** değerlerini bir yere göz önünde koyun.
 
 ```azurepowershell-interactive
 Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
@@ -142,7 +142,7 @@ mydemoserver.postgresql.database.azure.com       myadmin
    CREATE DATABASE mypgsqldb;
    ```
 
-1. Komut isteminde, bağlantıyı yeni oluşturulan **mypgsqldb**veritabanına geçirmek için aşağıdaki komutu yürütün:
+1. Komut isteminde, bağlantıyı yeni oluşturulan **mypgsqldb** veritabanına geçirmek için aşağıdaki komutu yürütün:
 
    ```sql
    \c mypgsqldb
@@ -216,6 +216,10 @@ Geri yüklenen sunucu için konum ve fiyatlandırma katmanı değerleri, özgün
 Geri yükleme işlemi tamamlandıktan sonra, yeni sunucuyu bulun ve verilerin beklendiği gibi geri yüklendiğini doğrulayın. Yeni sunucu, geri yükleme başlatıldığı sırada mevcut sunucu için geçerli olan Sunucu Yöneticisi oturum açma adı ve parolaya sahiptir. Parola, yeni sunucunun **genel bakış** sayfasından değiştirilebilir.
 
 Geri yükleme sırasında oluşturulan yeni sunucu, özgün sunucuda var olan VNet hizmeti uç noktalarına sahip değildir. Bu kuralların yeni sunucu için ayrı olarak ayarlanması gerekir. Özgün sunucudan gelen güvenlik duvarı kuralları geri yüklendi.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Yukarıdaki adımlarda, bir sunucu grubunda Azure kaynakları oluşturdunuz. Gelecekte bu kaynaklara ihtiyaç duymazsanız, sunucu grubunu silin. Sunucu grubunuzun *genel bakış* sayfasında *Sil* düğmesine basın. Bir açılır sayfada istendiğinde, sunucu grubunun adını onaylayın ve son *Sil* düğmesine tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

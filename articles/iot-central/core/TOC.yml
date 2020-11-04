@@ -221,6 +221,8 @@
           href: ../../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
     - name: IoT Central API başvurusu
       href: /rest/api/iotcentral/
+    - name: Müşteri verisi yerleşimi
+      href: iot-central-customer-data-residency.md
     - name: Müşteri verisi istekleri
       href: iot-central-customer-data-requests.md
     - name: Desteklenen tarayıcılar

@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/28/2020
-ms.openlocfilehash: 2ee616bfe9e88f2f3da37f1e4963ec7a73d59468
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: db94a82112f2670facd4d89178f11653c5316c36
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912098"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331786"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Python kullanma-tek sunucu
 
@@ -23,7 +23,7 @@ Bu hızlı başlangıçta, PostgreSQL için Azure veritabanı 'nda veritabanına
 > PostgreSQL ile bir Docgo uygulaması oluşturmak istiyorsanız öğreticiyi kullanıma alın ve [PostgreSQL öğreticisi ile bir docgo Web uygulaması dağıtın](../app-service/tutorial-python-postgresql-app.md) .
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu hızlı başlangıç için şunlar gerekir:
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free).
@@ -101,7 +101,7 @@ conn.close()
 
 Kod başarıyla çalıştırıldığında, şu çıktıyı üretir:
 
-:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="PostgreSQL için Azure Veritabanı sunucu adı":::
+:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="Komut satırı çıkışı":::
 
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin](https://aka.ms/postgres-doc-feedback)
@@ -149,6 +149,16 @@ print("Deleted 1 row of data")
 ```
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin](https://aka.ms/postgres-doc-feedback)
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bu hızlı başlangıç sırasında kullanılan tüm kaynakları temizlemek için, aşağıdaki komutu kullanarak kaynak grubunu silin:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]

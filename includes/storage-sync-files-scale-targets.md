@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 47eae616ffc62e42448da23fb02152dae17aa548
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 29518fb971649087d8a5afa39d69c7fc2c014f98
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92116678"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331076"
 ---
 | Kaynak | Hedef | Sabit sınır |
 |----------|--------------|------------|
@@ -21,12 +21,12 @@ ms.locfileid: "92116678"
 | Depolama eşitleme hizmeti başına eşitleme grupları | 200 eşitleme grupları | Evet |
 | Depolama eşitleme hizmeti başına kayıtlı sunucular | 99 sunucu | Evet |
 | Eşitleme grubu başına bulut uç noktaları | 1 bulut uç noktası | Evet |
-| Eşitleme grubu başına sunucu uç noktaları | 50 sunucu uç noktaları | Hayır |
+| Eşitleme grubu başına sunucu uç noktaları | 100 sunucu uç noktaları | Evet |
 | Sunucu başına sunucu uç noktaları | 30 sunucu uç noktası | Evet |
-| Eşitleme grubu başına dosya sistemi nesneleri (dizinler ve dosyalar) | 100.000.000 nesneleri | Hayır |
+| Eşitleme grubu başına dosya sistemi nesneleri (dizinler ve dosyalar) | 100.000.000 nesneleri | No |
 | Bir dizindeki en fazla dosya sistemi nesnesi (Dizin ve dosya) sayısı | 5.000.000 nesneleri | Evet |
 | En fazla nesne (dizinler ve dosyalar) güvenlik tanımlayıcısı boyutu | 64 KiB | Evet |
-| Dosya boyutu | 100 GiB | Hayır |
+| Dosya boyutu | 100 GiB | No |
 | Katman oluşturulacak bir dosya için en küçük dosya boyutu | V9 ve daha yeni: dosya sistemi kümesi boyutuna (çift dosya sistemi kümesi boyutu) göre. Örneğin, dosya sistemi kümesi boyutu 4kb ise, en küçük dosya boyutu 8 KB olur.<br> V8 ve üzeri: 64 KiB  | Evet |
 
 > [!Note]  

@@ -3,12 +3,12 @@ title: Azure geçişi 'nde VMware değerlendirmesi desteği
 description: Azure geçişi sunucu değerlendirmesi ile VMware VM değerlendirmesi desteği hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 0fd884a7d95edaf6586e7eecd644400c05c15e5a
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 9d5c954be2a6f05e5132a5f57f8169f436719a8d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315804"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332279"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware değerlendirmesi için destek matrisi 
 
@@ -34,7 +34,7 @@ Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calcul
 **VMware** | **Ayrıntılar**
 --- | ---
 **vCenter Server** | Keşfetmek ve değerlendirmek istediğiniz makineler vCenter Server sürüm 5,5, 6,0, 6,5, 6,7 veya 7,0 tarafından yönetilmelidir.<br/><br/> Gereç içinde ESXi ana bilgisayar ayrıntıları sağlayarak VMware VM 'lerinin bulunması Şu anda desteklenmiyor.
-**İzinler** | Sunucu değerlendirmesi bulma ve değerlendirme için vCenter Server salt okuma hesabına ihtiyaç duyuyor.<br/><br/> Uygulama bulma veya bağımlılık görselleştirmesi yapmak istiyorsanız, **sanal makinelerin**  >  **Konuk işlemlerinde**ayrıcalıkların etkinleştirilmesi gerekir.
+**İzinler** | Sunucu değerlendirmesi bulma ve değerlendirme için vCenter Server salt okuma hesabına ihtiyaç duyuyor.<br/><br/> Uygulama bulma veya bağımlılık görselleştirmesi yapmak istiyorsanız, **sanal makinelerin**  >  **Konuk işlemlerinde** ayrıcalıkların etkinleştirilmesi gerekir.
 
 ## <a name="vm-requirements"></a>VM gereksinimleri
 **VMware** | **Ayrıntılar**
@@ -66,14 +66,14 @@ Sunucu değerlendirmesi, makineleri keşfetmenin yanı sıra makinelerde çalı�
 
 **Destek** | **Ayrıntılar**
 --- | ---
-**Desteklenen makineler** | Uygulama bulma Şu anda yalnızca VMware VM 'Leri için destekleniyor.
+**Desteklenen makineler** | Uygulama bulma Şu anda yalnızca VMware VM 'Leri için destekleniyor. Her bir Azure geçişi gerecinden en fazla 10000 VMware VM 'ye yüklenmiş uygulamaları bulabilirsiniz.
 **Bulma** | Uygulama bulma aracısız. Makine konuk kimlik bilgilerini kullanır ve WMI ve SSH çağrılarını kullanarak makinelere uzaktan erişir.
 **VM desteği** | Uygulama bulma, tüm Windows ve Linux sürümlerini çalıştıran VM 'Ler için desteklenir.
-**vCenter** | Değerlendirme için kullanılan vCenter Server salt oku hesabı, **Virtual Machines**  >  uygulama bulma için VM ile etkileşime geçmek üzere sanal makineler**Konuk işlemleri**için etkinleştirilmiş ayrıcalıklara ihtiyaç duyuyor.
+**vCenter** | Değerlendirme için kullanılan vCenter Server salt oku hesabı, **Virtual Machines**  >  uygulama bulma için VM ile etkileşime geçmek üzere sanal makineler **Konuk işlemleri** için etkinleştirilmiş ayrıcalıklara ihtiyaç duyuyor.
 **VM erişimi** | Uygulama bulma 'nın uygulama bulma için VM 'de yerel bir kullanıcı hesabı olması gerekir.<br/><br/> Azure geçişi Şu anda tüm Windows sunucuları için bir kimlik bilgisi ve tüm Linux sunucuları için bir kimlik bilgisi kullanımını desteklemektedir.<br/><br/> Windows VM 'ler için bir Konuk Kullanıcı hesabı ve tüm Linux sanal makineleri için normal/normal kullanıcı hesabı (sudo erişimi olmayan) oluşturursunuz.
 **VMware araçları** | Keşif yapmak istediğiniz VM 'lerde VMware araçları yüklü ve çalışır olmalıdır. <br/><br/> VMware araçları sürümü 10.2.0 'dan daha sonra olmalıdır.
 **PowerShell** | VM 'Lerin PowerShell sürüm 2,0 veya sonraki bir sürümü yüklü olmalıdır.
-**Bağlantı noktası erişimi** | Bulmayı istediğiniz VM 'Leri çalıştıran ESXi konağında, Azure geçiş gereci 443 numaralı TCP bağlantı noktasına bağlanabilmelidir.
+**Bağlantı noktası erişimi** | Azure geçişi gereci, uygulamaları bulmayı istediğiniz VM 'Leri çalıştıran ESXi konaklarında TCP bağlantı noktası 443 ' e bağlanabilmelidir. VCenter Server, uygulama bilgilerini içeren dosyayı indirmek için bir ESXI ana bilgisayar bağlantısı döndürür.
 **Sınırlar** | Uygulama bulma için, her bir Azure geçişi gereci üzerinde en fazla 10000 VM bulabilirsiniz.
 
 

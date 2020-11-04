@@ -3,15 +3,16 @@ title: Azure Cosmos DB ve Azure Işlevleri ile sunucusuz veritabanı hesaplama
 description: Azure Cosmos DB ve Azure Işlevlerinin nasıl birlikte kullanılabileceğini, olay odaklı sunucusuz bilgi işlem uygulamaları oluşturmayı öğrenin.
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 5264fb44f8088ae8f942abf95bc8c0ef6d917413
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 73a34cc27eaba33d04f4d31585c7f494f58e7274
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096147"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334086"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB ve Azure Işlevleri 'ni kullanarak sunucusuz veritabanı hesaplama
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -62,7 +63,7 @@ IoT uygulamalarında, bağlı bir otomobilde Check Engine ışığı görüntül
 
 Aşağıdaki görüntüde, bu tetikleyici için Azure portal yazılan kod gösterilmektedir.
 
-:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="Azure Cosmos DB ve Azure Işlevleri nasıl tümleştirilir?":::
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="Azure portal Cosmos DB için bir Azure Işlevleri tetikleyicisi oluşturun":::
 
 ### <a name="financial-use-case---timer-trigger-and-input-binding"></a>Finansal kullanım örneği-Zamanlayıcı tetikleyicisi ve giriş bağlama
 
@@ -76,9 +77,9 @@ Mali uygulamalarda, banka hesabı bakiyesi belirli bir miktarın altına düşt�
 
 Aşağıdaki resimlerde, bu senaryonun Azure portal kodu gösterilmektedir.
 
-:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="Azure Cosmos DB ve Azure Işlevleri nasıl tümleştirilir?":::
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text=" Finansal senaryo için bir Zamanlayıcı tetikleyicisinin dosyasıIndex.js":::
 
-:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="Azure Cosmos DB ve Azure Işlevleri nasıl tümleştirilir?":::
+:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="Finansal senaryo için bir Zamanlayıcı tetikleyicisi için. CSX dosyasını çalıştır":::
 
 ### <a name="gaming-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>Oyun kullanım örneği-Cosmos DB için Azure Işlevleri tetikleme ve çıkış bağlama 
 
@@ -125,21 +126,21 @@ Azure Cosmos DB, aşağıdaki nedenlerden dolayı sunucusuz bilgi işlem mimarin
 
 * **Tüm verilerinize anında erişim** : Azure Cosmos DB tüm verileri [otomatik olarak dizinleyen](index-policy.md) ve bu dizinlerin hemen kullanılabilmesini sağlayan her değere ayrıntılı olarak erişebilirsiniz. Bu, veritabanınıza sürekli olarak sorgu, güncelleştirme ve yeni öğe ekleme ve Azure Işlevleri aracılığıyla anında erişim sağlayabilmeniz anlamına gelir.
 
-* **Şeless** . Azure Cosmos DB şesız olduğundan, bir Azure Işlevinden alınan tüm veri çıkışlarını benzersiz bir şekilde işleyebiliyor. Bu "her şeyi işle" yaklaşımı, tüm çıktının Azure Cosmos DB için bir bütün olarak çeşitli Işlevler oluşturmayı basit hale getirir.
+* **Şeless**. Azure Cosmos DB şesız olduğundan, bir Azure Işlevinden alınan tüm veri çıkışlarını benzersiz bir şekilde işleyebiliyor. Bu "her şeyi işle" yaklaşımı, tüm çıktının Azure Cosmos DB için bir bütün olarak çeşitli Işlevler oluşturmayı basit hale getirir.
 
-* **Ölçeklenebilir üretilen iş** . Verimlilik, Azure Cosmos DB anında yukarı ve aşağı ölçeklendirilebilir. Aynı kapsayıcıya sorgu ve yazma yüzlerce veya binlerce Işlevleriniz varsa, yükü işlemek için [ru/s](request-units.md) 'nizi ölçeklendirebilirsiniz. Tüm işlevler, ayrılmış RU/s 'niz kullanılarak paralel çalışabilir ve verilerinizin [tutarlı](consistency-levels.md)olması garanti edilir.
+* **Ölçeklenebilir üretilen iş**. Verimlilik, Azure Cosmos DB anında yukarı ve aşağı ölçeklendirilebilir. Aynı kapsayıcıya sorgu ve yazma yüzlerce veya binlerce Işlevleriniz varsa, yükü işlemek için [ru/s](request-units.md) 'nizi ölçeklendirebilirsiniz. Tüm işlevler, ayrılmış RU/s 'niz kullanılarak paralel çalışabilir ve verilerinizin [tutarlı](consistency-levels.md)olması garanti edilir.
 
-* **Genel çoğaltma** . [Dünyayı etrafında](distribute-data-globally.md) Azure Cosmos DB verileri çoğaltıp, verilerinizi kullanıcılarınızın bulunduğu yere en yakın şekilde coğrafi olarak bulabilirsiniz. Tüm Azure Cosmos DB sorgularında olduğu gibi, olay odaklı tetikleyicilerden gelen veriler, kullanıcıya en yakın Azure Cosmos DB okunan verileri okur.
+* **Genel çoğaltma**. [Dünyayı etrafında](distribute-data-globally.md) Azure Cosmos DB verileri çoğaltıp, verilerinizi kullanıcılarınızın bulunduğu yere en yakın şekilde coğrafi olarak bulabilirsiniz. Tüm Azure Cosmos DB sorgularında olduğu gibi, olay odaklı tetikleyicilerden gelen veriler, kullanıcıya en yakın Azure Cosmos DB okunan verileri okur.
 
 Verileri depolamak ve derin dizin oluşturmak için Azure Işlevleriyle tümleştiriyorsanız veya ekleri ve medya dosyalarını depolamanız gerekiyorsa, [Azure Blob depolama tetikleyicisi](../azure-functions/functions-bindings-storage-blob.md) daha iyi bir seçenek olabilir.
 
 Azure Işlevlerinin avantajları: 
 
-* **Olay odaklı** . Azure Işlevleri olay odaklı ve Azure Cosmos DB bir değişiklik akışını dinleyebilir. Bu, dinleme mantığı oluşturmanız gerekmediği anlamına gelir, yalnızca dinleki yaptığınız değişiklikler için göz önünde tutmanız yeterlidir. 
+* **Olay odaklı**. Azure Işlevleri olay odaklı ve Azure Cosmos DB bir değişiklik akışını dinleyebilir. Bu, dinleme mantığı oluşturmanız gerekmediği anlamına gelir, yalnızca dinleki yaptığınız değişiklikler için göz önünde tutmanız yeterlidir. 
 
-* **Sınırsız** . İşlevler paralel olarak yürütülür ve hizmet, gerek duyduğunuz kadar fazla döner. Parametreleri ayarlarsınız.
+* **Sınırsız**. İşlevler paralel olarak yürütülür ve hizmet, gerek duyduğunuz kadar fazla döner. Parametreleri ayarlarsınız.
 
-* **Hızlı Görevler Için iyi** . Hizmet, bir olay her tetiklendiğinde yeni işlev örneklerini alır ve işlev tamamlanır almaz bunları kapatır. Yalnızca işlevlerinizin çalıştığı süre için ödeme yaparsınız.
+* **Hızlı Görevler Için iyi**. Hizmet, bir olay her tetiklendiğinde yeni işlev örneklerini alır ve işlev tamamlanır almaz bunları kapatır. Yalnızca işlevlerinizin çalıştığı süre için ödeme yaparsınız.
 
 Flow, Logic Apps, Azure Işlevleri veya Web Işlerinin uygulamanız için en iyi şekilde olup olmadığından emin değilseniz, bkz. [Flow, Logic Apps, işlevler ve Web işleri arasında seçim](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md)yapın.
 

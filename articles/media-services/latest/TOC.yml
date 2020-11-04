@@ -392,7 +392,7 @@
           href: /python/api/overview/azure/mediaservices/management
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Go
+        - name: Başlayın
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.media/allversions
@@ -437,5 +437,7 @@
       href: limits-quotas-constraints.md
     - name: Azure bulutları ve bölgeleri
       href: azure-clouds-regions.md
+    - name: Bölgesel kod adları ve uç noktalar
+      href: azure-regions-code-names.md
     - name: Belge güncelleştirmeleri
       href: docs-release-notes.md

@@ -8,12 +8,12 @@ ms.custom: mvc, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 475c2dfecbc882575955627d73b7159fa33ac4d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 019e6e738ea312b7e6a16c44354c7dcd54e24f2f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710218"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331905"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Öğretici: Azure CLı kullanarak bir PostgreSQL için Azure veritabanı tasarlama-tek sunucu 
 Bu öğreticide, şunları nasıl yapacağınızı öğrenmek için Azure CLI (komut satırı arabirimi) ve diğer yardımcı programları kullanırsınız:
@@ -27,6 +27,9 @@ Bu öğreticide, şunları nasıl yapacağınızı öğrenmek için Azure CLI (k
 > * Verileri geri yükleme
 
 Bu öğreticideki komutları çalıştırmak için tarayıcıda Azure Cloud Shell kullanabilir veya kendi bilgisayarınıza [Azure CLI]( /cli/azure/install-azure-cli) yükleyebilirsiniz.
+
+## <a name="prerequisites"></a>Ön koşullar
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -142,7 +145,7 @@ Sonuç JSON biçimindedir. **administratorLogin** ve **fullyQualifiedDomainName*
    CREATE DATABASE mypgsqldb;
    ```
 
-3. Komut isteminde, bağlantıyı yeni oluşturulan **mypgsqldb**veritabanına geçirmek için aşağıdaki komutu yürütün:
+3. Komut isteminde, bağlantıyı yeni oluşturulan **mypgsqldb** veritabanına geçirmek için aşağıdaki komutu yürütün:
    ```sql
    \c mypgsqldb
    ```
@@ -199,9 +202,9 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 
 `az postgres server restore` komutu için aşağıdaki parametreler gerekir:
 
-| Ayar | Önerilen değer | Açıklama  |
+| Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Kaynak sunucunun bulunduğu kaynak grubu.  |
+| resource-group |  myresourcegroup |  Kaynak sunucunun bulunduğu kaynak grubu.  |
 | name | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Zaman içinde geri yüklenecek bir nokta seçin. Bu tarih ve saat, kaynak sunucunun yedekleme saklama dönemi içinde olmalıdır. ISO8601 tarih ve saat biçimini kullanın. Örneğin, `2017-04-13T05:59:00-08:00` şeklinde kendi yerel saat diliminizi ya da `2017-04-13T13:59:00Z` şeklindeki UTC Zulu biçimini kullanabilirsiniz. |
 | source-server | mydemoserver | Geri yükleme kaynağı olarak kullanılacak sunucunun adı veya kimliği. |
@@ -210,16 +213,21 @@ Bir sunucu zaman içinde bir noktaya geri yüklendiğinde, özgün sunucunun bel
 
 Komut zaman uyumludur ve sunucu geri yüklendikten sonra döndürülür. Geri yükleme tamamlandığında, oluşturulan yeni sunucuyu bulun. Verilerin beklenen şekilde geri yüklendiğini doğrulayın.
 
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Yukarıdaki adımlarda, bir sunucu grubunda Azure kaynakları oluşturdunuz. Gelecekte bu kaynaklara ihtiyaç duymazsanız, sunucu grubunu silin. Sunucu grubunuzun *genel bakış* sayfasında *Sil* düğmesine basın. Bir açılır sayfada istendiğinde, sunucu grubunun adını onaylayın ve son *Sil* düğmesine tıklayın.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu öğreticide, Azure CLI (komut satırı arabirimi) ve diğer yardımcı programları kullanarak aşağıdakileri nasıl yapabileceğinizi öğrendiniz:
 > [!div class="checklist"]
 > * PostgreSQL için Azure Veritabanı sunucusu oluşturma
 > * Sunucu güvenlik duvarını yapılandırma
-> * Veritabanı oluşturmak için [**psql**](https://www.postgresql.org/docs/9.6/static/app-psql.html) yardımcı programını kullanma
+> * Bir veritabanı oluşturmak için **psql** yardımcı programını kullanma
 > * Örnek verileri yükleme
 > * Verileri sorgulama
 > * Verileri güncelleştirme
 > * Verileri geri yükleme
 
-Daha sonra, Azure portalını kullanarak benzer görevleri nasıl yapabileceğinizi öğrenmek için şu öğreticiyi gözden geçirin: [Azure portalını kullanarak ilk PostgreSQL için Azure Veritabanınızı tasarlama](tutorial-design-database-using-azure-portal.md)
+> [!div class="nextstepaction"]
+> [Azure portalını kullanarak ilk PostgreSQL için Azure Veritabanınızı tasarlama](tutorial-design-database-using-azure-portal.md)

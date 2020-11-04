@@ -116,6 +116,8 @@
           items:
             - name: Yedekleme ve geri yükleme
               href: backup-restore-postgresql-hyperscale.md
+            - name: PostgreSQL bağlantı noktasını değiştirme
+              href: change-postgresql-port.md
             - name: Yapılandırma ve ölçeklendirme
               items:
                 - name: Yapılandırmayı gösterme

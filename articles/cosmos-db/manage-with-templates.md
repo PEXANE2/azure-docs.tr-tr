@@ -3,15 +3,16 @@ title: Kaynak Yöneticisi şablonlarla Azure Cosmos DB oluşturma ve yönetme
 description: Çekirdek (SQL) API için Azure Cosmos DB oluşturmak ve yapılandırmak üzere Azure Resource Manager şablonları kullanma
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: mjbrown
-ms.openlocfilehash: 7dc00a59ccd7d82e86e1519b59ba4b8ca1e8fe16
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 32c79360606a67cc7e85a43a226bb34c105d5b7a
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088562"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333401"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-with-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarıyla Azure Cosmos DB Core (SQL) API kaynaklarını yönetme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

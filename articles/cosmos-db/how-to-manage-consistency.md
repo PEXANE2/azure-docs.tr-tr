@@ -3,16 +3,17 @@ title: Azure Cosmos DB tutarlılığı yönetme
 description: Azure portal, .NET SDK, Java SDK ve çeşitli diğer SDK 'Ları kullanarak Azure Cosmos DB tutarlılık düzeylerini yapılandırma ve yönetme hakkında bilgi edinin
 author: anfeldma-ms
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 4be2b8cdd987b6357df283f0791593c51417dfc7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b0c03c2f5313605fbdf288a9262df0852e066efd
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101509"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333487"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB'deki tutarlılık düzeylerini yönetme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -96,7 +97,7 @@ var response = await client.GetContainer(databaseName, containerName)
 
 ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK 'Sı
 
-# <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
+# <a name="async"></a>[Eş](#tab/api-async)
 
    Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
@@ -112,7 +113,7 @@ var response = await client.GetContainer(databaseName, containerName)
 
 ### <a name="java-v2-sdks"></a><a id="override-default-consistency-javav2"></a> Java v2 SDK 'Ları
 
-# <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
+# <a name="async"></a>[Eş](#tab/api-async)
 
 Async Java v2 SDK (Maven com. Microsoft. Azure:: Azure-cosmosdb)
 
@@ -152,7 +153,7 @@ const client = new CosmosClient({
 const { body } = await item.read({ consistencyLevel: ConsistencyLevel.Eventual });
 ```
 
-### <a name="python-sdk"></a><a id="override-default-consistency-python"></a>Python SDK 'Sı
+### <a name="python-sdk"></a><a id="override-default-consistency-python"></a>Python SDK'sı
 
 ```python
 # Override consistency at the client level
@@ -197,7 +198,7 @@ ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(sa
 
 ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK 'Sı
 
-# <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
+# <a name="async"></a>[Eş](#tab/api-async)
 
    Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
@@ -213,7 +214,7 @@ ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(sa
 
 ### <a name="java-v2-sdks"></a><a id="utilize-session-tokens-javav2"></a>Java v2 SDK 'Ları
 
-# <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
+# <a name="async"></a>[Eş](#tab/api-async)
 
 Async Java v2 SDK (Maven com. Microsoft. Azure:: Azure-cosmosdb)
 
@@ -264,7 +265,7 @@ const sessionToken = headers["x-ms-session-token"];
 const { body } = await item.read({ sessionToken });
 ```
 
-### <a name="python-sdk"></a><a id="utilize-session-tokens-python"></a>Python SDK 'Sı
+### <a name="python-sdk"></a><a id="utilize-session-tokens-python"></a>Python SDK'sı
 
 ```python
 // Get the session token from the last response headers
@@ -280,9 +281,9 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>Olasılığa Dayalı Sınırlanmış Eskime Durumu (PBS) ölçümünü izleme
 
-Ne kadar nihai tutarlılık? Ortalama durumda, sürüm geçmişi ve saatine göre, eskime sınırları sunarız. [**Olasılığa göre sınırlı stalet (PBS)**](https://pbs.cs.berkeley.edu/) ölçümü, eskime olasılığını ölçmenizi ve bunu bir ölçüm olarak gösterir. PBS ölçüsünü görüntülemek için Azure portal Azure Cosmos hesabınıza gidin. **Ölçümler** bölmesini açın ve **tutarlılık** sekmesini seçin. **İş yükünüze göre sağlam tutarlı okumaların olasılığı adlı grafiğe bakın (bkz. PBS)** .
+Ne kadar nihai tutarlılık? Ortalama durumda, sürüm geçmişi ve saatine göre, eskime sınırları sunarız. [**Olasılığa göre sınırlı stalet (PBS)**](https://pbs.cs.berkeley.edu/) ölçümü, eskime olasılığını ölçmenizi ve bunu bir ölçüm olarak gösterir. PBS ölçüsünü görüntülemek için Azure portal Azure Cosmos hesabınıza gidin. **Ölçümler** bölmesini açın ve **tutarlılık** sekmesini seçin. **İş yükünüze göre sağlam tutarlı okumaların olasılığı adlı grafiğe bakın (bkz. PBS)**.
 
-:::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="Azure portal tutarlılık menüsü":::
+:::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="Azure portal PBS grafiği":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

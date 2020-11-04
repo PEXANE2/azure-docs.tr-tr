@@ -74,7 +74,7 @@
           href: tutorial-routing-view-message-routing-results.md
     - name: İleti zenginleştirmeleri
       href: tutorial-message-enrichments.md
-    - name: Ölçümleri ve tanılama günlüklerini kullanma
+    - name: Ölçümleri ve günlükleri kullanma
       href: tutorial-use-metrics-and-diags.md
     - name: El ile yük devretme işlemi gerçekleştirme
       href: tutorial-manual-failover.md

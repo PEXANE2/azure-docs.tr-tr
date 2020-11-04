@@ -21,13 +21,13 @@
     - name: 1 Synapse çalışma alanı oluşturma
       href: get-started-create-workspace.md
       displayName: 'get, started'
-    - name: 2 SQL Havuzu kullanarak analiz etme
+    - name: 2 Ayrılmış SQL Havuzu kullanarak analiz etme
       href: get-started-analyze-sql-pool.md
       displayName: 'get, started'
     - name: 3 Spark kullanarak analiz etme
       href: get-started-analyze-spark.md
       displayName: 'get, started'
-    - name: 4 İsteğe bağlı SQL kullanarak analiz etme
+    - name: 4 Sunucusuz SQL Havuzu kullanarak analiz etme
       href: get-started-analyze-sql-on-demand.md
       displayName: 'get, started'
     - name: 5 Depolama hesabındaki verileri analiz etme
@@ -119,7 +119,7 @@
                   href: ../sql-database/sql-database-control-access.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Synapse çalışma alanı yönetilen kimlik
                   href: ./security/synapse-workspace-managed-identity.md
-                - name: Havuz ve isteğe bağlı
+                - name: SQL havuzları
                   href: ./sql/access-control.md
                   displayname: 'access, control'
         - name: 'Araç tümleştirmesi (AI, ETL, BI)'
@@ -149,6 +149,8 @@
                   displayname: links
                 - name: Yönetilen Sanal Ağ ile bağlı hizmeti sağlama ve güvenlik altına alma
                   href: ./data-integration/linked-service.md
+                - name: Kısıtlanmış ağdan Synapse çalışma alanına bağlanma
+                  href: security/how-to-connect-to-workspace-from-restricted-network.md
 - name: Synapse SQL
   items:
     - name: Genel Bakış
@@ -156,10 +158,10 @@
         - name: Synapse SQL mimarisi
           href: sql/overview-architecture.md
           displayName: overview
-        - name: İsteğe bağlı SQL
+        - name: Sunucusuz SQL havuzu
           href: sql/on-demand-workspace-overview.md
           displayname: overview
-        - name: SQL havuzu
+        - name: Ayrılmış SQL havuzu
           href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
           displayname: overview
         - name: Mimari
@@ -168,17 +170,17 @@
           href: sql/overview-features.md
         - name: Kaynak tüketimi modelleri
           href: sql/resource-consumption-models.md
-        - name: İsteğe bağlı SQL en iyi yöntemleri
+        - name: Sunucusuz SQL havuzu için en iyi yöntemler
           href: sql/best-practices-sql-on-demand.md
-        - name: SQL havuzu en iyi yöntemleri
+        - name: Ayrılmış SQL havuzu için en iyi yöntemler
           href: sql/best-practices-sql-pool.md
     - name: Hızlı Başlangıçlar
       items:
-        - name: Synapse Studio kullanarak SQL havuzu oluşturma
+        - name: Synapse Studio kullanarak ayrılmış SQL havuzu oluşturma
           href: quickstart-create-sql-pool-studio.md
-        - name: Azure portal kullanarak SQL havuzu oluşturma
+        - name: Azure portal kullanarak ayrılmış SQL havuzu oluşturma
           href: quickstart-create-sql-pool-portal.md
-        - name: SQL havuzlarıyla verileri yükleme
+        - name: Ayrılmış SQL havuzlarıyla verileri yükleme
           items:
             - name: COPY ifadesi
               href: ./sql-data-warehouse/quickstart-bulk-load-copy-tsql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -189,11 +191,11 @@
             - name: Synapse Studio
               href: quickstart-load-studio-sql-pool.md
               displayname: sql pool
-        - name: İsteğe bağlı SQL kullanma
+        - name: Sunucusuz SQL havuzu kullanma
           href: quickstart-sql-on-demand.md
     - name: Öğreticiler
       items:
-        - name: Veri analizi için isteğe bağlı SQL kullanma
+        - name: Sunucusuz SQL havuzu kullanarak verileri analiz etme
           href: ./sql/tutorial-data-analyst.md
         - name: Power BI Desktop
           href: ./sql/tutorial-connect-power-bi-desktop.md
@@ -489,7 +491,7 @@
               items:
                 - name: Apache Spark ile verileri içeri ve dışarı aktarma
                   href: ./spark/synapse-spark-sql-pool-import-export.md
-- name: Synapse bağlantısı
+- name: Synapse Link
   items:
     - name: Hızlı Başlangıçlar
       items:
@@ -517,12 +519,16 @@
           href: ../cosmos-db/synapse-link-power-bi.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Apache Spark ile Azure Cosmos DB analiz deposunu sorgulama
           href: ./synapse-link/how-to-query-analytical-store-spark.md
-        - name: Apache Spark kullanarak Synapse Link’ten bir SQL havuzuna veri kopyalama
+        - name: Apache Spark kullanarak Synapse Link’ten ayrılmış bir SQL havuzuna veri kopyalama
           href: ./synapse-link/how-to-copy-to-sql-pool.md
-        - name: İsteğe bağlı SQL ile Azure Cosmos DB analiz deposunu sorgulama
+        - name: Sunucusuz SQL havuzu ile Azure Cosmos DB analiz deposunu sorgulama
           href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
 - name: İşlem hattı ve veri akışı
   items:
+    - name: Hızlı Başlangıçlar
+      items:
+        - name: Kopyalama etkinliği kullanarak SQL havuzlarına veri yükleme
+          href: quickstart-copy-activity-load-sql-pool.md
     - name: Kavramlar
       items:
         - name: İşlem hattı ve etkinlik
@@ -1013,7 +1019,7 @@
       href: ./sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Müşteri kendi kendine yardımı
       items:
-        - name: İsteğe bağlı SQL
+        - name: sunucusuz SQL havuzu
           href: sql/resources-self-help-sql-on-demand.md
     - name: İş Ortakları
       items:

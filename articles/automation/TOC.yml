@@ -128,7 +128,7 @@
               href: graphical-runbook-sdk.md
         - name: Runbook’ları izleme
           items:
-            - name: Runbook çıkışını izleme
+            - name: Runbook çıkışını yapılandırma
               href: automation-runbook-output-and-messages.md
             - name: Grafik temelli runbook’larda hataları ele alma
               href: automation-runbook-graphical-error-handling.md

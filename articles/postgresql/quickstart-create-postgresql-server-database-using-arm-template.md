@@ -1,18 +1,18 @@
 ---
 title: 'Hızlı başlangıç: PostgreSQL için Azure DB-ARM şablonu oluşturma'
-description: Bu makalede, bir Azure Resource Manager şablonu kullanarak PostgreSQL için Azure veritabanı oluşturma hakkında bilgi edinin.
+description: Bu hızlı başlangıçta, bir Azure Resource Manager şablonu kullanarak PostgreSQL için Azure veritabanı oluşturma hakkında bilgi edinin.
 author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/14/2020
-ms.openlocfilehash: bf53b6673da57428b648c0043a1454560f64e4bb
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 9b022f83ed2a4e3a23165cc6bda298a53c008c7c
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042931"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331650"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: bir ARM şablonu kullanarak PostgreSQL için Azure veritabanı oluşturma-tek sunucu
 
@@ -24,7 +24,7 @@ Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakk�
 
 [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure 'a dağıtma":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -66,7 +66,7 @@ PostgreSQL için Azure veritabanı şablon örnekleri, [Azure hızlı başlangı
 
 Azure portal PostgreSQL için Azure veritabanı sunucu şablonunu dağıtmak için aşağıdaki bağlantıyı seçin:
 
-[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure 'a dağıtma":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure’a dağıtın":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
 
 **VNET Ile PostgreSQL Için Azure veritabanı 'Nı dağıtma** sayfası:
 
@@ -76,7 +76,7 @@ Azure portal PostgreSQL için Azure veritabanı sunucu şablonunu dağıtmak iç
 
 3. **Sunucu adı** , **yönetici oturumu açma** ve **yönetici oturum açma parolası** girin.
 
-    :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-arm-template/deploy-azure-database-for-postgresql-with-vnet.png" alt-text="Azure 'a dağıtma":::
+    :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-arm-template/deploy-azure-database-for-postgresql-with-vnet.png" alt-text="VNet ile PostgreSQL için Azure veritabanı 'nı dağıtma, Azure hızlı başlangıç şablonu, Azure portal":::
 
 4. İsterseniz diğer varsayılan ayarları değiştirin:
 

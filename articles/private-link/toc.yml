@@ -39,6 +39,8 @@
           href: tutorial-private-endpoint-sql-portal.md
         - name: SQL Server’a bağlanma - PowerShell
           href: tutorial-private-endpoint-sql-powershell.md
+        - name: SQL Server’a bağlanma - Azure CLI
+          href: tutorial-private-endpoint-sql-cli.md
 - name: Kavramlar
   items:
     - name: Özel Uç Nokta

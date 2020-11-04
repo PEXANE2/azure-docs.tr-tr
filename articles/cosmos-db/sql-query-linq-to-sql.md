@@ -3,15 +3,16 @@ title: Azure Cosmos DB LINQ to SQL çevirisi
 description: Desteklenen LINQ işleçlerini ve LINQ sorgularının Azure Cosmos DB içindeki SQL sorgularıyla nasıl eşleştirildiğini öğrenin.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 7/29/2020
 ms.author: tisande
-ms.openlocfilehash: c7d47b0bb167b3211b3859a47b0c8e11876b1614
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 38d37d03c99bd3a39b00276da110ea0ef6bb962e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075410"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332381"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ to SQL çevirisi
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -84,7 +85,7 @@ SQL .NET SDK 'sına dahil edilen LINQ sağlayıcısı aşağıdaki işleçleri d
 - **Burada** : filtreler [nereye](sql-query-where.md)çeviriye çevirir ve `&&` ,, `||` ve ile `!` SQL işleçleri arasındaki çeviriyi destekler
 - **SelectMany** : dizilerin [JOIN](sql-query-join.md) yan tümcesine geri sarıya izin verir. Dizi öğelerinde filtrelemek için ifadeleri zincirlemek veya iç içe yerleştirmek için kullanın.
 - **OrderBy** ve **OrderByDescending** : ASC veya DESC ile [order by](sql-query-order-by.md) 'a çevirin.
-- [Toplama](sql-query-aggregates.md)için **Count** , **Sum** , **Min** , **Max** ve **Average** işleçleri ve zaman uyumsuz eşdeğerleri **countasync** , **SumAsync** , **minasync** , **maxasync** ve **averageasync** .
+- [Toplama](sql-query-aggregates.md)için **Count** , **Sum** , **Min** , **Max** ve **Average** işleçleri ve zaman uyumsuz eşdeğerleri **countasync** , **SumAsync** , **minasync** , **maxasync** ve **averageasync**.
 - **CompareTo** : Aralık karşılaştırmaları ' ne çevirir. Genellikle dizeler için kullanılır, çünkü .NET ' de karşılaştırılabilir değildir.
 - **Atla** ve **Al** : sorgunun sonuçlarını sınırlandırma ve sayfalandırma IŞLEMLERI için [uzaklığa ve sınıra](sql-query-offset-limit.md) çevirir.
 - **Matematik işlevleri** : .net,,,,,,,, `Abs` `Acos` ,, `Asin` `Atan` `Ceiling` `Cos` `Exp` `Floor` `Log` `Log10` `Pow` , `Round` , `Sign` , `Sin` , `Sqrt` , `Tan` ve ile `Truncate` eşdeğer [yerleşik matematik işlevlerine](sql-query-mathematical-functions.md)çeviriyi destekler.

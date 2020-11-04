@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 8a9661f7f5cdd66dc0aab6d937701cda48048219
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1ddc8c2b9531dd78c1c6746e28b8ff5864af563e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488036"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331990"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak PostgreSQL için Azure veritabanı sunucusu oluşturma
 
@@ -24,7 +24,7 @@ Bu hızlı başlangıçta, beş dakikada bir PostgreSQL için Azure veritabanı 
 > [!TIP]
 > Şu anda önizleme aşamasında olan daha basit [az Postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) Azure CLI komutunu kullanmayı deneyin. [Hızlı](./quickstart-create-server-up-azure-cli.md)başlangıcı deneyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makale, Azure CLı sürüm 2,0 veya üstünü yerel olarak çalıştırmanızı gerektirir. Yüklü sürümü görmek için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
 [Az Login](/cli/azure/reference-index#az-login) komutunu kullanarak hesabınızda oturum açmanız gerekir. Azure hesabınızın **ABONELIK kimliğini** ifade eden **ID** özelliğine göz önüne alın. 
@@ -61,9 +61,9 @@ Yukarıdaki bağımsız değişkenlerin ayrıntıları aşağıda verilmiştir:
 name | mydemoserver | PostgreSQL için Azure veritabanı sunucunuzu tanımlayan benzersiz ad. Sunucu adı yalnızca küçük harf, sayı ve kısa çizgi (-) karakterini içerebilir. 3 ile 63 arasında karakter içermelidir. Daha fazla bilgi için bkz. [PostgreSQL Için Azure veritabanı adlandırma kuralları](../azure-resource-manager/management/resource-name-rules.md#microsoftdbforpostgresql).
 resource-group | myresourcegroup | Azure Kaynak grubunun adı.
 location | westus | Sunucu için Azure konumu.
-admin-user | myadmin | Yönetici oturumu için Kullanıcı adı. **Azure_superuser** **, yönetici**, **yönetici**, **kök**, **Konuk**veya **ortak**olamaz.
+admin-user | myadmin | Yönetici oturumu için Kullanıcı adı. **Azure_superuser** **, yönetici** , **yönetici** , **kök** , **Konuk** veya **ortak** olamaz.
 admin-password | *güvenli parola* | Yönetici kullanıcısının parolası. Şu kategorilerden üçünden 8 ile 128 karakter içermesi gerekir: Ingilizce büyük harfler, Ingilizce küçük harfler, sayılar ve alfasayısal olmayan karakterler.
-sku-name|GP_Gen5_2| Fiyatlandırma katmanının adı ve işlem yapılandırması. Toplu olarak {fiyatlandırma katmanı}_{COMPUTE Generation}_{vçekirdekler} kuralını izleyin. Daha fazla bilgi için bkz. [PostgreSQL Için Azure veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/postgresql/server/).
+sku-name|GP_Gen5_2| Fiyatlandırma katmanının adı ve işlem yapılandırması. Toplu olarak {fiyatlandırma katmanı} _{COMPUTE Generation}_ {vçekirdekler} kuralını izleyin. Daha fazla bilgi için bkz. [PostgreSQL Için Azure veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/postgresql/server/).
 
 >[!IMPORTANT] 
 >- Sunucunuzdaki varsayılan PostgreSQL sürümü 9,6 ' dir. Desteklenen tüm sürümleri görmek için bkz. [desteklenen PostgreSQL ana sürümleri](./concepts-supported-versions.md).
@@ -123,7 +123,7 @@ Sonuç JSON biçimindedir. **Tınlogın** ve **Fullyıqualifieddomainname** değ
 ```
 
 ## <a name="connect-to-the-azure-database-for-postgresql-server-by-using-psql"></a>Psql kullanarak PostgreSQL için Azure veritabanı sunucusuna bağlanma
-[Psql](https://www.postgresql.org/docs/current/static/app-psql.html) Client, PostgreSQL sunucularına bağlanmak için popüler bir seçenektir. [Azure Cloud Shell](../cloud-shell/overview.md)ile psql kullanarak sunucunuza bağlanabilirsiniz. Ayrıca, varsa, yerel ortamınızda psql 'yi de kullanabilirsiniz. Boş bir veritabanı, **Postgres**, yeni bir PostgreSQL sunucusuyla otomatik olarak oluşturulur. Aşağıdaki kodda gösterildiği gibi bu veritabanını psql ile bağlantı kurmak için kullanabilirsiniz. 
+[Psql](https://www.postgresql.org/docs/current/static/app-psql.html) Client, PostgreSQL sunucularına bağlanmak için popüler bir seçenektir. [Azure Cloud Shell](../cloud-shell/overview.md)ile psql kullanarak sunucunuza bağlanabilirsiniz. Ayrıca, varsa, yerel ortamınızda psql 'yi de kullanabilirsiniz. Boş bir veritabanı, **Postgres** , yeni bir PostgreSQL sunucusuyla otomatik olarak oluşturulur. Aşağıdaki kodda gösterildiği gibi bu veritabanını psql ile bağlantı kurmak için kullanabilirsiniz. 
 
    ```bash
  psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
@@ -153,7 +153,3 @@ az postgres server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
 > [Dışarı aktarma ve içeri aktarma kullanarak veritabanınızı geçirme](./howto-migrate-using-export-and-import.md)
-> 
-> [PostgreSQL ile Docgo Web uygulaması dağıtma](../app-service/tutorial-python-postgresql-app.md)
->
-> [Node.JS uygulamayla bağlantı](./connect-nodejs.md)

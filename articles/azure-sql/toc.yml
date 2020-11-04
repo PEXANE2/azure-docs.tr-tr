@@ -361,7 +361,7 @@
               href: database/network-access-controls-overview.md
             - name: DNS diğer adları
               href: database/dns-alias-overview.md
-            - name: vNet uç noktaları
+            - name: Sanal ağ uç noktaları
               href: database/vnet-service-endpoint-rule-overview.md
             - name: Özel Bağlantı
               href: database/private-endpoint-overview.md
@@ -993,6 +993,8 @@
                   href: virtual-machines/windows/application-patterns-development-strategies.md
             - name: Yönetim
               items:
+                - name: SQL IaaS Aracısı uzantısı
+                  href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
                 - name: Ayrılmış konak
                   href: virtual-machines/windows/dedicated-host.md
                 - name: SQL 2008 ve R2 için genişletilmiş destek
@@ -1021,12 +1023,14 @@
                   href: virtual-machines/windows/change-sql-server-version.md
                 - name: Depolama
                   href: virtual-machines/windows/storage-configuration.md
+                - name: Otomatik Düzeltme Eki Uygulama
+                  href: virtual-machines/windows/automated-patching.md
                 - name: Azure Anahtar Kasası Tümleştirme
                   href: virtual-machines/windows/azure-key-vault-integration-configure.md
                 - name: Depolamayı UltraSSD'ye geçirme
                   href: virtual-machines/windows/storage-migrate-to-ultradisk.md
-                - name: SQL VM RP ile kaydolma
-                  displayName: 'resource provider, registration'
+                - name: SQL Server IaaS Aracısı uzantısını yükleme
+                  displayName: 'resource provider, registration, sql vm rp'
                   items:
                     - name: Otomatik kayıt
                       href: virtual-machines/windows/sql-vm-resource-provider-automatic-registration.md
@@ -1034,12 +1038,6 @@
                       href: virtual-machines/windows/sql-vm-resource-provider-register.md
                     - name: Birden fazla VM'yi toplu kaydetme
                       href: virtual-machines/windows/sql-vm-resource-provider-bulk-register.md
-                - name: Yönetim görevlerini otomatik hale getirme
-                  items:
-                    - name: SQL Server IaaS Aracısı Uzantısını kullanma
-                      href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
-                    - name: Otomatik Düzeltme Eki Uygulama
-                      href: virtual-machines/windows/automated-patching.md
             - name: Geçiş
               items:
                 - name: SQL Server veritabanından VM'ye

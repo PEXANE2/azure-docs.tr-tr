@@ -127,6 +127,8 @@
       href: ../../web-application-firewall/security-baseline.md
     - name: Batch güvenlik temeli
       href: ../../batch/security-baseline.md
+    - name: Cloud Services güvenlik temeli
+      href: ../../cloud-services/security-baseline.md
     - name: Cloud Shell güvenlik temeli
       href: ../../cloud-shell/security-baseline.md
     - name: Bilişsel Hizmetler güvenlik temeli
@@ -177,5 +179,7 @@
       href: ../../virtual-machines/windows/security-baseline.md
     - name: Sanal Ağ güvenlik temeli
       href: ../../virtual-network/security-baseline.md
+    - name: Sanal WAN güvenlik temeli
+      href: ../../virtual-wan/security-baseline.md
     - name: VPN Gateway güvenlik temeli
       href: ../../vpn-gateway/security-baseline.md

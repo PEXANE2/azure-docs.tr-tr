@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 11/3/2020
 ms.author: cynthn
-ms.openlocfilehash: 73a7090afe771eef82523753c4067399d9f5dd5e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f6bf436110e9822d687419b74a8a22bad7a6d700
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048092"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333473"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Önizleme: görüntüleri şifrelemek için müşteri tarafından yönetilen anahtarları kullanın
 
@@ -23,9 +23,9 @@ Görüntülerinizin şifrelenmesi için platform tarafından yönetilen anahtarl
 
 Müşteri tarafından yönetilen anahtarlar kullanılarak sunucu tarafı şifreleme Azure Key Vault kullanır. [RSA anahtarlarınızı](../key-vault/keys/hsm-protected-keys.md) Key Vault içeri aktarabilir ya da Azure Key Vault yeni RSA anahtarları oluşturabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu makalede, görüntünüz için kullanmak üzere bir disk şifrelemesi ayarlamış olmanız gerekir.
+Bu makalede, görüntünüzü çoğaltmak istediğiniz her bölgede zaten bir disk şifrelemesi ayarlamış olmanız gerekir.
 
 - Yalnızca müşteri tarafından yönetilen bir anahtar kullanmak için bkz. [Azure Portal](./disks-enable-customer-managed-keys-portal.md) veya [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset)'i kullanarak, **müşteri tarafından yönetilen anahtarları sunucu tarafı şifrelemesiyle etkinleştirme** .
 
@@ -48,7 +48,7 @@ Paylaşılan görüntü Galerisi görüntülerini şifrelemek için müşteri ta
 
 > [!IMPORTANT]
 > Müşteri tarafından yönetilen anahtarları kullanarak şifreleme Şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
 ## <a name="powershell"></a>PowerShell
@@ -125,7 +125,7 @@ New-AzGalleryImageVersion `
    -TargetRegion $targetRegion
 ```
 
-### <a name="create-a-vm"></a>VM oluşturma
+### <a name="create-a-vm"></a>VM oluştur
 
 Paylaşılan görüntü galerisinden bir VM oluşturabilir ve diskleri şifrelemek için müşterinin yönettiği anahtarları kullanabilirsiniz. Söz dizimi, bir görüntüden [Genelleştirilmiş](vm-generalized-image-version-powershell.md) veya [özel](vm-specialized-image-version-powershell.md) bir VM oluşturma ile aynıdır, genişletilmiş parametre kümesini kullanmanız ve `Set-AzVMOSDisk -Name $($vmName +"_OSDisk") -DiskEncryptionSetId $diskEncryptionSet.Id -CreateOption FromImage` VM yapılandırmasına eklemeniz gerekir.
 
@@ -210,12 +210,12 @@ Portalda görüntü sürümünüzü oluşturduğunuzda, depolama şifreleme küm
 
 
 1. **Görüntü sürümü oluştur** sayfasında **şifreleme** sekmesini seçin.
-2. **Şifreleme türü**' nde, **müşteri tarafından yönetilen bir anahtarla** veya **platform tarafından yönetilen ve müşteri tarafından yönetilen anahtarlarla çift Şifrelemeli**şifreleme ' yi seçin. 
+2. **Şifreleme türü** ' nde, **müşteri tarafından yönetilen bir anahtarla** veya **platform tarafından yönetilen ve müşteri tarafından yönetilen anahtarlarla çift Şifrelemeli** şifreleme ' yi seçin. 
 3. Görüntüdeki her disk için, açılan listeden kullanılacak **disk şifrelemesi kümesini** seçin. 
 
 ### <a name="create-the-vm"></a>Sanal makineyi oluşturma
 
-Bir görüntü sürümünden bir VM oluşturabilir ve diskleri şifrelemek için müşteri tarafından yönetilen anahtarları kullanabilirsiniz. Portalda VM oluştururken, **diskler** sekmesinde, **müşteri tarafından yönetilen anahtarlar** veya **şifreleme türü**Için müşteri tarafından yönetilen **anahtarlar ile çift şifreleme** ile bekleyen şifreleme ' yi seçin. Daha sonra açılan listeden şifreleme kümesini seçebilirsiniz.
+Bir görüntü sürümünden bir VM oluşturabilir ve diskleri şifrelemek için müşteri tarafından yönetilen anahtarları kullanabilirsiniz. Portalda VM oluştururken, **diskler** sekmesinde, **müşteri tarafından yönetilen anahtarlar** veya **şifreleme türü** Için müşteri tarafından yönetilen **anahtarlar ile çift şifreleme** ile bekleyen şifreleme ' yi seçin. Daha sonra açılan listeden şifreleme kümesini seçebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,18 +7,18 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 5ec6aab8aaa63b848131d44f78867100f154d251
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 57bd8348977270de9b0e445e0a40c006b65d8392
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90896324"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332049"
 ---
 # <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için MySQL çalışma ekranı kullanma
 
 Bu hızlı başlangıçta MySQL Workbench uygulamasını kullanarak MySQL için Azure Veritabanı'na nasıl bağlanacağınız gösterilmiştir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıçta, başlangıç noktası olarak şu kılavuzlardan birinde oluşturulan kaynaklar kullanılmaktadır:
 - [Azure portalını kullanarak MySQL için Azure Veritabanı sunucusu oluşturma](./quickstart-create-mysql-server-database-using-azure-portal.md)
@@ -35,11 +35,11 @@ MySQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerin
 
 1. [Azure Portal](https://portal.azure.com/)oturum açın.
 
-2. Azure portalında sol taraftaki menüden **Tüm kaynaklar**'a tıklayın ve oluşturduğunuz sunucuyu (örneğin, **mydemoserver**) arayın.
+2. Azure portalında sol taraftaki menüden **Tüm kaynaklar** 'a tıklayın ve oluşturduğunuz sunucuyu (örneğin, **mydemoserver** ) arayın.
 
 3. Sunucunun adına tıklayın.
 
-4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı**’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
+4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı** ’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
  :::image type="content" source="./media/connect-php/1_server-overview-name-login.png" alt-text="MySQL için Azure Veritabanı sunucu adı":::
 
 ## <a name="connect-to-the-server-by-using-mysql-workbench"></a>MySQL Workbench kullanarak sunucuya bağlanma 
@@ -49,7 +49,7 @@ MySQL Workbench GUI aracını kullanarak Azure MySQL Sunucusuna bağlanmak için
 
 2.    **Yeni Bağlantı Oluştur** iletişim kutusundaki **Parametreler** sekmesine aşağıdaki bilgileri girin:
 
-:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="MySQL için Azure Veritabanı sunucu adı":::
+:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="yeni bağlantı oluştur":::
 
 | **Ayar** | **Önerilen değer** | **Alan açıklaması** |
 |---|---|---|
@@ -57,12 +57,12 @@ MySQL Workbench GUI aracını kullanarak Azure MySQL Sunucusuna bağlanmak için
 | Bağlantı Yöntemi | Standart (TCP/IP) | Standart (TCP/IP) yeterlidir. |
 | Konak adı | *sunucu adı* | MySQL için Azure Veritabanını oluştururken kullandığınız sunucu adı değerini belirtin. Gösterilen örnek sunucumuz: mydemoserver.mysql.database.azure.com. Örnekte gösterildiği gibi tam etki alanı adını (\*.mysql.database.azure.com) kullanın. Sunucu adınızı anımsamıyorsanız bağlantı bilgilerini almak için bir önceki bölümdeki adımları izleyin.  |
 | Bağlantı noktası | 3306 | MySQL Azure veritabanına bağlanırken her zaman bağlantı noktası olarak 3306 kullanın. |
-| Kullanıcı adı |  *Sunucu Yöneticisi oturum açma adı* | MySQL için Azure Veritabanını oluştururken girdiğiniz sunucu yöneticisi oturum açma kullanıcı adını yazın. Bizim örnek kullanıcı adımız myadmin@mydemoserver. Kullanıcı adını anımsamıyorsanız bağlantı bilgilerini almak için bir önceki bölümdeki adımları izleyin. Biçim *kullanıcıadı \@ sunucuadı*' dir.
+| Kullanıcı adı |  *Sunucu Yöneticisi oturum açma adı* | MySQL için Azure Veritabanını oluştururken girdiğiniz sunucu yöneticisi oturum açma kullanıcı adını yazın. Bizim örnek kullanıcı adımız myadmin@mydemoserver. Kullanıcı adını anımsamıyorsanız bağlantı bilgilerini almak için bir önceki bölümdeki adımları izleyin. Biçim *kullanıcıadı \@ sunucuadı* ' dir.
 | Parola | parolanız | Parolayı kaydetmek için **Kasada Depola...** düğmesine tıklayın. |
 
-3.   Tüm parametrelerin doğru yapılandırılıp yapılandırılmadığını test etmek için **Bağlantıyı Sına**’ya tıklayın. 
+3.   Tüm parametrelerin doğru yapılandırılıp yapılandırılmadığını test etmek için **Bağlantıyı Sına** ’ya tıklayın. 
 
-4.   Bağlantıyı kaydetmek için **Tamam**’a tıklayın. 
+4.   Bağlantıyı kaydetmek için **Tamam** ’a tıklayın. 
 
 5.   **MySQL Bağlantıları** listesinde sunucunuza karşılık gelen kutucuğa tıklayıp bağlantının kurulmasını bekleyin.
 
@@ -103,13 +103,23 @@ MySQL Workbench GUI aracını kullanarak Azure MySQL Sunucusuna bağlanmak için
 
     Ekran görüntüsünde, SQL Workbench’te örnek bir SQL kodu ve kod çalıştırıldıktan sonra oluşan çıktı gösterilmektedir.
     
-    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="MySQL için Azure Veritabanı sunucu adı":::
+    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="Örnek SQL kodunu çalıştırmak için MySQL Workbench SQL Sekmesi":::
 
 2. Örnek SQL Kodunu çalıştırmak için **SQL Dosyası** sekmesindeki araç çubuğunda bulunan şimşek simgesine tıklayın.
 3. Sayfanın ortasındaki **Sonuç Izgarası** bölümünde üç sekme halinde sonuçların yer aldığına dikkat edin. 
 4. Sayfanın en altındaki **Çıktı** listesine dikkat edin. Her komutun durumu gösterilir. 
 
 MySQL Workbench kullanarak MySQL için Azure Veritabanı’na bağlandınız ve SQL dilini kullanarak verileri sorguladınız.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bu hızlı başlangıç sırasında kullanılan tüm kaynakları temizlemek için, aşağıdaki komutu kullanarak kaynak grubunu silin:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]

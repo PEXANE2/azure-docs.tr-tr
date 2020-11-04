@@ -11,12 +11,12 @@ ms.custom:
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: a08145ba5ffb5b30eb2c472d3eb8f608703f44a0
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 8d181483032deed35adfd6eebcbf870b89593407
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743463"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332075"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Python kullanma
 
@@ -24,7 +24,7 @@ Bu hızlı başlangıçta Python kullanarak MySQL için Azure veritabanı 'na ba
 
 Bu konuda, Python kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve MySQL için Azure veritabanı ile çalışmaya yeni başladığınızı varsaymaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - MySQL için Azure veritabanı sunucusu. [Azure Portal kullanarak MySQL Için Azure veritabanı sunucusu oluşturun](quickstart-create-mysql-server-database-using-azure-portal.md) veya [Azure CLI kullanarak MySQL için Azure veritabanı sunucusu oluşturun](quickstart-create-mysql-server-database-using-azure-cli.md).
@@ -61,13 +61,13 @@ Azure portal MySQL için Azure veritabanı 'na bağlanmak üzere gereken bağlan
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
    
-1. Portal arama çubuğunda, oluşturduğunuz MySQL sunucusu için Azure veritabanı 'nı ( **demosunucum**gibi) arayın ve seçin.
+1. Portal arama çubuğunda, oluşturduğunuz MySQL sunucusu için Azure veritabanı 'nı ( **demosunucum** gibi) arayın ve seçin.
    
    :::image type="content" source="./media/connect-python/1_server-overview-name-login.png" alt-text="MySQL için Azure Veritabanı sunucu adı":::
    
-1. Sunucunun **genel bakış** sayfasında **sunucu adı** ve **Sunucu Yöneticisi oturum açma adı**' nı bir yere göz atın. Parolanızı unutursanız, bu sayfadan parolayı da sıfırlayabilirsiniz.
+1. Sunucunun **genel bakış** sayfasında **sunucu adı** ve **Sunucu Yöneticisi oturum açma adı** ' nı bir yere göz atın. Parolanızı unutursanız, bu sayfadan parolayı da sıfırlayabilirsiniz.
    
-   :::image type="content" source="./media/connect-python/azure-database-for-mysql-server-overview-name-login.png" alt-text="MySQL için Azure Veritabanı sunucu adı":::
+   :::image type="content" source="./media/connect-python/azure-database-for-mysql-server-overview-name-login.png" alt-text="MySQL için Azure veritabanı sunucu adı 2":::
 
 ## <a name="run-the-python-examples"></a>Python örneklerini çalıştırma
 
@@ -75,11 +75,11 @@ Bu makaledeki her kod örneği için:
 
 1. Metin düzenleyicisinde yeni bir dosya oluşturun.
 1. Kod örneğini dosyaya ekleyin. Kodda,,, `<mydemoserver>` `<myadmin>` `<mypassword>` ve `<mydatabase>` yer tutucuları MySQL sunucunuzun ve veritabanınızın değerleriyle değiştirin.
-1. Dosyayı, *C:\pythonmysql\createtable.py* veya */Home/username/pythonmysql/CreateTable.py*gibi *. Kopyala* uzantısıyla bir proje klasörüne kaydedin.
+1. Dosyayı, *C:\pythonmysql\createtable.py* veya */Home/username/pythonmysql/CreateTable.py* gibi *. Kopyala* uzantısıyla bir proje klasörüne kaydedin.
 1. Kodu çalıştırmak için, bir komut istemi veya kabuğu açın `bash` ve dizini proje klasörünüze değiştirin (örneğin,) `cd pythonmysql` . `python`Komutun ardından dosya adını yazın `python createtable.py` ve ENTER tuşuna basın. 
    
    > [!NOTE]
-   > Windows 'ta *python.exe* BULUNAMAZSA, yol ortam değişkeninizin Python yolunu eklemeniz veya örneğin *python.exe*tam yolunu sağlamanız gerekebilir `C:\python27\python.exe createtable.py` .
+   > Windows 'ta *python.exe* BULUNAMAZSA, yol ortam değişkeninizin Python yolunu eklemeniz veya örneğin *python.exe* tam yolunu sağlamanız gerekebilir `C:\python27\python.exe createtable.py` .
 
 ## <a name="create-a-table-and-insert-data"></a>Tablo oluşturma ve veri ekleme
 
@@ -270,6 +270,16 @@ else:
   cursor.close()
   conn.close()
   print("Done.")
+```
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bu hızlı başlangıç sırasında kullanılan tüm kaynakları temizlemek için, aşağıdaki komutu kullanarak kaynak grubunu silin:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
