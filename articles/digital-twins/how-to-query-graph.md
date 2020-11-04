@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 8aad0d9fde30a235903364d57a73c1c53f08ecce
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 7bb38824f2071e2575877940795f9b90a2a384b4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145795"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325766"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital TWINS ikizi grafiğini sorgulama
 
@@ -175,39 +175,41 @@ WHERE IS_NUMBER(T.Temperature)
 
 `IS_OF_MODEL`İşleci, ikizi 'in [**modeline**](concepts-models.md)göre filtrelemek için kullanılabilir.
 
-[Devralma](concepts-models.md#model-inheritance) ve [Sürüm sıralama](how-to-manage-model.md#update-models) semantiğini dikkate alır ve ikizi şu koşullardan birini karşılıyorsa, belirli bir ikizi için **true** olarak değerlendirilir:
+[Devralma](concepts-models.md#model-inheritance) ve model [sürüm oluşturmayı](how-to-manage-model.md#update-models)düşünür ve ikizi şu koşullardan birini karşılıyorsa, belirli bir ikizi için **true** olarak değerlendirilir:
 
 * İkizi, için belirtilen modeli doğrudan uygular `IS_OF_MODEL()` ve ikizi üzerindeki modelin sürüm numarası, belirtilen modelin sürüm numarasından *büyük veya bu değere eşit*
 * İkizi, için belirtilen modeli *genişleten* bir model uygular `IS_OF_MODEL()` ve ikizi 'ın genişletilmiş modeli sürüm numarası, belirtilen modelin sürüm numarasından *büyük veya bu değere eşittir*
 
-Bu yöntemde birkaç aşırı yükleme seçeneği vardır.
+Örneğin, modelin TWINS 'i için sorgulama yaparsanız `dtmi:example:widget;4` , sorgu tüm TWINS 'leri **sürüm 4** ' ü veya **pencere** öğesi modeli ' ne daha büyük ' i ve ayrıca pencere öğesi ' ne ait sürüm 4 ' ü **ya** da **pencere öğesini öğeden kalıtımla** alan herhangi bir modeli temel alarak döndürür.
+
+`IS_OF_MODEL` birkaç farklı parametre alabilir ve bu bölümün geri kalanı farklı aşırı yükleme seçeneklerine ayrılmıştır.
 
 En basit kullanımı `IS_OF_MODEL` yalnızca bir parametre alır `twinTypeName` : `IS_OF_MODEL(twinTypeName)` .
 Bu parametreye bir değer geçiren sorgu örneği aşağıda verilmiştir:
 
 ```sql
-SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1')
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:example:thing;1')
 ```
 
 Birden fazla olduğunda (örneğin kullanıldığında) arama yapılacak bir ikizi koleksiyonu belirtmek için `JOIN` , `twinCollection` parametresini ekleyin: `IS_OF_MODEL(twinCollection, twinTypeName)` .
 Bu parametre için bir değer ekleyen bir sorgu örneği aşağıda verilmiştir:
 
 ```sql
-SELECT * FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1')
+SELECT * FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:example:thing;1')
 ```
 
 Tam eşleşme yapmak için şu `exact` parametreyi ekleyin: `IS_OF_MODEL(twinTypeName, exact)` .
 Bu parametre için bir değer ekleyen bir sorgu örneği aşağıda verilmiştir:
 
 ```sql
-SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1', exact)
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:example:thing;1', exact)
 ```
 
 Üç bağımsız değişkeni de bir araya geçirebilirsiniz: `IS_OF_MODEL(twinCollection, twinTypeName, exact)` .
 Aşağıda, üç parametre için bir değer belirten bir sorgu örneği verilmiştir:
 
 ```sql
-SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1', exact)
+SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:example:thing;1', exact)
 ```
 
 ### <a name="query-based-on-relationships"></a>İlişkileri temel alan sorgu

@@ -9,23 +9,23 @@ author: peterclu
 ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: 0064509c1158d8b016413046cb528bfd125b5f2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 158541d34568b7ea02ea82dbfe90f5801824716f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362325"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325783"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Klasik bir Studio (klasik) Web hizmetini yeniden eğitme ve dağıtma
 
-**Uygulama hedefi:** ![ Yeşil onay işareti. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ X olmadığını belirten.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**Uygulama hedefi:** ![ Yeşil onay işareti. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ X olmadığını belirten. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Makine öğrenimi modellerini yeniden eğitmek, uygun olan en uygun verilere göre ve bunların doğru kalmasını sağlamanın bir yoludur. Bu makalede, klasik bir Studio (klasik) Web hizmetini yeniden eğitme konusu gösterilmektedir. Yeni bir Studio (klasik) Web hizmetini yeniden eğitme hakkında bir kılavuz için, [Bu nasıl yapılır makalesini görüntüleyin.](retrain-machine-learning-model.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu makalede, hem yeniden eğitim denemenize hem de tahmine dayalı denemenize sahip olduğunuz varsayılır. Bu adımlar, [makine öğrenimi modelini yeniden eğitme ve dağıtma](/azure/machine-learning/studio/retrain-machine-learning-model) bölümünde açıklanmaktadır. Ancak, makine öğrenimi modelinizi yeni bir Web hizmeti olarak dağıtmak yerine, tahmine dayalı denemenizi klasik bir Web hizmeti olarak dağıtacaksınız.
+Bu makalede, hem yeniden eğitim denemenize hem de tahmine dayalı denemenize sahip olduğunuz varsayılır. Bu adımlar, [makine öğrenimi modelini yeniden eğitme ve dağıtma](./retrain-machine-learning-model.md) bölümünde açıklanmaktadır. Ancak, makine öğrenimi modelinizi yeni bir Web hizmeti olarak dağıtmak yerine, tahmine dayalı denemenizi klasik bir Web hizmeti olarak dağıtacaksınız.
      
 ## <a name="add-a-new-endpoint"></a>Yeni uç nokta Ekle
 
@@ -47,8 +47,8 @@ Bu [GitHub deposunda](https://github.com/hning86/azuremlps#add-amlwebserviceendp
 ### <a name="use-the-azure-web-services-portal-to-add-an-endpoint"></a>Uç nokta eklemek için Azure Web Hizmetleri portalını kullanma
 
 1. Machine Learning Studio (klasik) ' de, sol gezinti sütununda Web Hizmetleri ' ne tıklayın.
-1. Web hizmeti panosunun en altında, **uç nokta önizlemeyi Yönet**' e tıklayın.
-1. **Ekle**'ye tıklayın.
+1. Web hizmeti panosunun en altında, **uç nokta önizlemeyi Yönet** ' e tıklayın.
+1. **Ekle** 'ye tıklayın.
 1. Yeni uç nokta için bir ad ve açıklama yazın. Günlüğe kaydetme düzeyini ve örnek verilerin etkinleştirilip etkinleştirilmeyeceğini seçin. Günlüğe kaydetme hakkında daha fazla bilgi için bkz. [Machine Learning Web Hizmetleri için günlüğü etkinleştirme](web-services-logging.md).
 
 ## <a name="update-the-added-endpoints-trained-model"></a>Eklenen uç noktanın eğitilen modelini Güncelleştir
@@ -60,7 +60,7 @@ Web portalını kullanarak doğru düzeltme eki URL 'sini almak için aşağıda
 1. [Azure Machine Learning Web Hizmetleri](https://services.azureml.net/) portalında oturum açın.
 1. En üstteki **Web Hizmetleri** veya **Klasik Web Hizmetleri** ' ne tıklayın.
 1. Üzerinde çalıştığınız Puanlama Web hizmeti ' ne tıklayın (Web hizmetinin varsayılan adını değiştirmediyseniz, "[Puanlama exp.]" içinde sona acaktır).
-1. **+ Yeni**seçeneğine tıklayın.
+1. **+ Yeni** seçeneğine tıklayın.
 1. Uç nokta eklendikten sonra uç nokta adına tıklayın.
 1. **Düzeltme Eki** URL 'Si altında **API yardımı** ' na tıklayarak düzeltme eki uygulama yardım sayfasını açın.
 
@@ -76,7 +76,7 @@ YAMA yardım sayfası, kullanmanız gereken düzeltme eki URL 'sini içerir ve b
 
 Artık, daha önce oluşturduğunuz Puanlama bitiş noktasını güncelleştirmek için eğitilen modeli kullanabilirsiniz.
 
-Aşağıdaki örnek kod, uç noktayı güncelleştirmek için *Baselocation*, *relativelocation*, *SASBLOBTOKEN*ve Patch URL 'sini nasıl kullanacağınızı gösterir.
+Aşağıdaki örnek kod, uç noktayı güncelleştirmek için *Baselocation* , *relativelocation* , *SASBLOBTOKEN* ve Patch URL 'sini nasıl kullanacağınızı gösterir.
 
 ```csharp
 private async Task OverwriteModel()
@@ -122,13 +122,13 @@ private async Task OverwriteModel()
 
 *Kaynaklardaki* *ad* parametresinin değeri, tahmine dayalı deneyde kaydedilen eğitilen modelin kaynak adıyla eşleşmelidir. Kaynak adını almak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Sol menüden **Machine Learning**' ye tıklayın.
-1. Ad ' ın altında, çalışma alanınıza ve ardından **Web Hizmetleri**' ne tıklayın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. Sol menüden **Machine Learning** ' ye tıklayın.
+1. Ad ' ın altında, çalışma alanınıza ve ardından **Web Hizmetleri** ' ne tıklayın.
 1. Ad ' ın altında, **Census modeli [tahmine dayalı exp.]** öğesine tıklayın.
 1. Eklediğiniz yeni uç noktaya tıklayın.
-1. Uç nokta panosunda **Kaynağı Güncelleştir**' e tıklayın.
-1. Web hizmetinin kaynak API belgelerini Güncelleştir sayfasında, **kaynak adını** **güncelleştirilebilir kaynaklar**altında bulabilirsiniz.
+1. Uç nokta panosunda **Kaynağı Güncelleştir** ' e tıklayın.
+1. Web hizmetinin kaynak API belgelerini Güncelleştir sayfasında, **kaynak adını** **güncelleştirilebilir kaynaklar** altında bulabilirsiniz.
 
 Uç noktayı güncelleştirmeden önce SAS belirtecinizin süresi dolarsa, yeni bir belirteç edinmek için Iş KIMLIĞIYLE birlikte bir alma işlemi gerçekleştirmeniz gerekir.
 
