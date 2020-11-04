@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: e09b44504623516d41b6d310a82e78619477367c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e8d1704b7f6048c14528b784f22d60b01592b54f
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93304991"
+ms.locfileid: "93347616"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Ortak olay biçimini kullanarak dış çözümünüzü bağlama
 
@@ -57,7 +57,7 @@ Günlük ileticisi olarak kullandığınız Linux makinenin aşağıdaki işleti
   - Amazon Linux 2017,09
   - Oracle Linux 7
   - Red Hat Enterprise Linux (RHEL) Server 7 ve 8, alt sürümler dahil (6 değil)
-  - Borçlu GNU/Linux 8, 9 ve 10
+  - Borçlu GNU/Linux 8 ve 9
   - Ubuntu Linux 14,04 LTS, 16,04 LTS ve 18,04 LTS
   - SUSE Linux Enterprise Server 12, 15
 
@@ -65,7 +65,7 @@ Günlük ileticisi olarak kullandığınız Linux makinenin aşağıdaki işleti
   - CentOS 7 ve 8, alt sürümler dahil (6 değil)
   - Oracle Linux 7
   - Red Hat Enterprise Linux (RHEL) Server 7 ve 8, alt sürümler dahil (6 değil)
-  - Borçlu GNU/Linux 8, 9 ve 10
+  - Borçlu GNU/Linux 8 ve 9
   - Ubuntu Linux 14,04 LTS ve 16,04 LTS
  
 - Daemon sürümleri

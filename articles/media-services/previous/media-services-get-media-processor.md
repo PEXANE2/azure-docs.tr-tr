@@ -3,7 +3,7 @@ title: .NET için Azure Media Services SDK kullanarak medya işlemcisi oluşturm
 description: Azure Media Services için medya içeriğini kodlamak, dönüştürmek, şifrelemek veya şifresini çözmek için bir medya işlemcisi bileşeni oluşturmayı öğrenin. Kod örnekleri C# dilinde yazılır ve .NET için Media Services SDK kullanır.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: dbf9496f-c6f0-42a7-aa36-70f89dcb8ea2
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 11/03/2020
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df89acb7d3686a478c87c12bbf8a42962597dca6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3215eef337ca1c9a84f2f4d917dbea8ea2e090f0
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269395"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346698"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>Nasıl yapılır: medya Işlemcisi örneği alma
 
@@ -29,18 +29,17 @@ ms.locfileid: "89269395"
 > [!div class="op_single_selector"]
 > * [.NET](media-services-get-media-processor.md)
 > * [REST](media-services-rest-get-media-processor.md)
-> 
-> 
 
 ## <a name="overview"></a>Genel Bakış
+
 Media Services bir medya işlemcisi, kodlama, biçim dönüştürme, şifreleme veya medya içeriğini çözme gibi belirli bir işleme görevini işleyen bir bileşendir. Medya içeriğini kodlamak, şifrelemek veya dönüştürmek için bir görev oluştururken genellikle bir medya işlemcisi oluşturursunuz.
 
-## <a name="azure-media-processors"></a>Azure Medya işlemcileri 
+## <a name="azure-media-processors"></a>Azure Medya işlemcileri
 
 Aşağıdaki konuda medya işlemcilerin listesi verilmiştir:
 
-* [Kodlama medya işleyicileri](scenarios-and-availability.md#encoding-media-processors)
-* [Analiz medya işlemcileri](scenarios-and-availability.md#analytics-media-processors)
+* [Kodlama medya işleyicileri](scenarios-and-availability.md)
+* [Analiz medya işlemcileri](scenarios-and-availability.md)
 
 ## <a name="get-media-processor"></a>Medya Işlemcisini al
 
@@ -59,13 +58,14 @@ private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcess
 }
 ```
 
-
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
+
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Geri bildirimde bulunma
+
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-Bir medya işlemcisi örneğinin nasıl alınacağını öğrenmiş olduğunuza göre, bir varlığı kodlamak için Media Encoder Standard nasıl kullanacağınızı gösteren [bir varlık kodlama](media-services-dotnet-encode-with-media-encoder-standard.md) konusuna gidin.
 
+Bir medya işlemcisi örneğinin nasıl alınacağını öğrenmiş olduğunuza göre, bir varlığı kodlamak için Media Encoder Standard nasıl kullanacağınızı gösteren [bir varlık kodlama](media-services-dotnet-encode-with-media-encoder-standard.md) konusuna gidin.

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/04/2020
-ms.openlocfilehash: dfa5d77077b8827bed1cbd8c7a46a5dbf361f139
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 699271316eccec1244db886ed2296f87c52f91ae
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125725"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348364"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>Ticari Market 'te ücretsiz veya deneme SaaS teklifinizin giriş sayfasını oluşturun
 
@@ -95,7 +95,7 @@ KIMLIK belirteci, kullanıcıyı tanımlamak için temel bilgileri içerir, anca
 | surname | Kullanıcının soyadı. |
 |||
 
-Kullanıcı şirketinin adı veya Kullanıcı konumu (ülke) gibi ek özellikler, isteğe eklenmek üzere seçilebilir. Daha ayrıntılı bilgi için bkz. [Kullanıcı kaynak türü özellikleri](/graph/api/resources/user?view=graph-rest-1.0#properties).
+Kullanıcı şirketinin adı veya Kullanıcı konumu (ülke) gibi ek özellikler, isteğe eklenmek üzere seçilebilir. Daha ayrıntılı bilgi için bkz. [Kullanıcı kaynak türü özellikleri](/graph/api/resources/user?view=graph-rest-1.0&preserve-view=true#properties).
 
 Azure AD 'ye kayıtlı uygulamaların çoğu, kullanıcının şirketinin Azure AD kiracısından bilgilerini okumak için temsilci izinleri verir. Bu bilgilere yönelik Microsoft Graph yönelik istekler, kimlik doğrulama olarak bir erişim belirteciyle birlikte gelmelidir. Erişim belirtecini oluşturmaya yönelik belirli adımlar, kullanmakta olduğunuz teknoloji yığınına bağlıdır, ancak örnek kod bir örnek içerir. Daha fazla bilgi için bkz. [Kullanıcı adına erişim edinme](/graph/auth-v2-user).
 

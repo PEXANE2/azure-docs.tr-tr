@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: 957695892c39dd3ddfd9dc45d60158c89eb22698
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 62cb8db094cf1bfd7d81b1da06dd7a1b743ec045
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130638"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347491"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>IoT Edge modül teklifi oluşturma
 
@@ -131,7 +131,7 @@ Burada, Market 'te görüntülenen teklif ayrıntılarını tanımlayacaksınız
 > [!NOTE]
 > Teklif açıklaması, "Bu uygulama yalnızca [Ingilizce olmayan dil] bölümünde kullanılabilir" ifadesi ile başlıyorsa, teklif ayrıntılarının Ingilizce olması gerekmez. Ayrıca, teklif listesi ayrıntılarından farklı bir dilde içerik sunmak için faydalı bir bağlantı sağlamak da yararlı olabilir.
 
-### <a name="name"></a>Ad
+### <a name="name"></a>Name
 
 Buraya girdiğiniz ad teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
 
@@ -234,7 +234,7 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 3. Destek adresi (bağlantı)
 4. hüküm ve koşullar
 5. Gizlilik ilkesi adresi (bağlantı)
-6. Ad
+6. Name
 7. Özet
 8. Açıklama
 9. Yararlı bağlantılar
@@ -242,7 +242,7 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 
 <br>Azure Marketi arama sonuçlarında teklif bilgilerinin nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
 
-:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="Bu teklifin Azure Marketi 'nde nasıl göründüğünü gösterir.":::
+:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="Bu teklifin Azure Marketi arama sonuçlarında nasıl göründüğünü gösterir.":::
 
 #### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
@@ -252,7 +252,7 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 
 <br>Teklif bilgilerinin Azure portal nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
 
-:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="Bu teklifin Azure Marketi 'nde nasıl göründüğünü gösterir.":::
+:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="Bu teklifin Azure portal nasıl göründüğünü gösterir.":::
 
 #### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
@@ -263,7 +263,7 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 
 <br>Teklif bilgilerinin Azure portal arama sonuçlarında nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
 
-:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="Bu teklifin Azure Marketi 'nde nasıl göründüğünü gösterir.":::
+:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="Bu teklifin Azure portal arama sonuçlarında nasıl göründüğünü gösterir.":::
 
 #### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
@@ -362,7 +362,7 @@ Bu alanları tamamladıktan sonra **Taslağı kaydet** ' i seçin.
 
 Azure Market planı ayrıntılarına bir örnektir (listelenen tüm fiyatlar yalnızca örnek amaçlıdır ve gerçek maliyetlerin yansıtılmasından sorumlu değildir):
 
-:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="Bu teklifin Azure Marketi 'nde nasıl göründüğünü gösterir.":::
+:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="Azure Market planı ayrıntılarını gösterir.":::
 
 #### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
@@ -372,7 +372,7 @@ Azure Market planı ayrıntılarına bir örnektir (listelenen tüm fiyatlar yal
 
 <br>Aşağıda, Azure portal planı ayrıntılarına bir örnek verilmiştir (listelenen tüm fiyatlar yalnızca örnek amaçlıdır ve gerçek maliyetlerin yansıtılmasından sorumlu değildir):
 
-:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="Bu teklifin Azure Marketi 'nde nasıl göründüğünü gösterir.":::
+:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="Azure portal planı ayrıntılarını gösterir.":::
 
 #### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
@@ -413,15 +413,15 @@ Birden çok platformu hedefleyebilir ve Etiketler kullanarak modül kapsayıcı 
 
 **Azure Container Registry Için Yönetici Kullanıcı adı** : kapsayıcı yansımanıza sahip Azure Container Registry ilişkili [Yönetici Kullanıcı adı](../../container-registry/container-registry-authentication.md#admin-account). Şirketinizin kayıt defterine erişiminin olduğundan emin olmak için Kullanıcı adı ve parola gereklidir. Yönetici Kullanıcı adını ve parolasını almak için, Azure Command-Line arabirimi (CLı) kullanarak **yönetici özellikli** özelliği **true** olarak ayarlayın. İsteğe bağlı olarak, Azure portal **yönetici kullanıcıyı** **etkinleştirmek** için ayarlayabilirsiniz.
 
-:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="Bu teklifin Azure Marketi 'nde nasıl göründüğünü gösterir.":::
+:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="Kapsayıcı kayıt defterini Güncelleştir iletişim kutusunu gösterir.":::
 
 #### <a name="call-out-description"></a>Çağrı açıklaması
 
 1. Yönetici kullanıcı
 
-<br>**Azure Container Registry parolası** : Azure Container Registry ilişkili Yönetici Kullanıcı adı için parola belirtin ve kapsayıcı görüntünüzü içerir. Şirketinizin kayıt defterine erişiminin olduğundan emin olmak için Kullanıcı adı ve parola gereklidir. Azure Portal parolayı **Container Registry**  >  **erişim anahtarlarına** giderek veya [göster komutunu](/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show) kullanarak Azure CLI ile öğrenebilirsiniz.
+<br>**Azure Container Registry parolası** : Azure Container Registry ilişkili Yönetici Kullanıcı adı için parola belirtin ve kapsayıcı görüntünüzü içerir. Şirketinizin kayıt defterine erişiminin olduğundan emin olmak için Kullanıcı adı ve parola gereklidir. Azure Portal parolayı **Container Registry**  >  **erişim anahtarlarına** giderek veya [göster komutunu](/cli/azure/acr/credential#az-acr-credential-show) kullanarak Azure CLI ile öğrenebilirsiniz.
 
-:::image type="content" source="media/example-iot-access-keys.png" alt-text="Bu teklifin Azure Marketi 'nde nasıl göründüğünü gösterir.":::
+:::image type="content" source="media/example-iot-access-keys.png" alt-text="Azure portal erişim tuşu ekranını gösterir.":::
 
 #### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
@@ -429,19 +429,19 @@ Birden çok platformu hedefleyebilir ve Etiketler kullanarak modül kapsayıcı 
 2. Kullanıcı adı
 3. Parola
 
-**Azure Container Registry Içinde Depo adı** . Yansımanıza sahip Azure Container Registry deposunun adını sağlayın. Görüntüyü kayıt defterine gönderdiğinizde deponun adını belirtirsiniz. Deponun adını [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **depoları sayfasına** giderek bulabilirsiniz. Daha fazla bilgi için bkz. [Azure Portal kapsayıcı kayıt defteri depolarını Görüntüleme](../../container-registry/container-registry-repositories.md). Ad ayarlandıktan sonra değiştirilemez. Hesabınızdaki her teklif için benzersiz bir ad kullanın.
+**Azure Container Registry Içinde Depo adı**. Yansımanıza sahip Azure Container Registry deposunun adını sağlayın. Görüntüyü kayıt defterine gönderdiğinizde deponun adını belirtirsiniz. Deponun adını [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **depoları sayfasına** giderek bulabilirsiniz. Daha fazla bilgi için bkz. [Azure Portal kapsayıcı kayıt defteri depolarını Görüntüleme](../../container-registry/container-registry-repositories.md). Ad ayarlandıktan sonra değiştirilemez. Hesabınızdaki her teklif için benzersiz bir ad kullanın.
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>Teklifinizin yeni sürümleri için görüntü etiketleri
 
 Bir güncelleştirme yayımladığınızda müşterilerin Azure Marketi 'nden güncelleştirmeleri otomatik olarak alabilmesi gerekir. Güncelleştirmek istemlerse, görüntünüzün belirli bir sürümünde kalabilmeleri gerekir. Görüntüde her güncelleştirme yaptığınızda bunu yeni resim etiketleri ekleyerek yapabilirsiniz.
 
-**Resim etiketi** . Bu alan, tüm desteklenen platformlarda görüntünüzün en son sürümüne işaret eden **en son** bir etiketi içermelidir. Ayrıca, sürüm etiketi de içermelidir (örneğin, xx. xx. xx ile başlayarak xx bir sayıdır). Müşteriler birden çok platformu hedeflemek için [bildirim etiketlerini](https://github.com/estesp/manifest-tool) kullanmalıdır. Bir bildirim etiketi tarafından başvurulan tüm Etiketler de karşıya yüklenebilmemiz için eklenmelidir. Tüm bildirim etiketleri (en son etiketi hariç), X. Y-veya X. Y. Z ile başlamalı; burada X, Y ve Z tamsayılardır. Örneğin, en son bir etiket 1.0.1-Linux-x64, 1.0.1-Linux-ARM32 ve 1.0.1-Windows-ARM32 ' y i gösteriyorsa, bu altı etiket bu alana eklenmelidir. Etiketler ve sürüm oluşturma hakkında daha fazla bilgi için bkz [. IoT Edge modülünüzü hazırlama teknik varlıkları.](create-iot-edge-module-asset.md)
+**Resim etiketi**. Bu alan, tüm desteklenen platformlarda görüntünüzün en son sürümüne işaret eden **en son** bir etiketi içermelidir. Ayrıca, sürüm etiketi de içermelidir (örneğin, xx. xx. xx ile başlayarak xx bir sayıdır). Müşteriler birden çok platformu hedeflemek için [bildirim etiketlerini](https://github.com/estesp/manifest-tool) kullanmalıdır. Bir bildirim etiketi tarafından başvurulan tüm Etiketler de karşıya yüklenebilmemiz için eklenmelidir. Tüm bildirim etiketleri (en son etiketi hariç), X. Y-veya X. Y. Z ile başlamalı; burada X, Y ve Z tamsayılardır. Örneğin, en son bir etiket 1.0.1-Linux-x64, 1.0.1-Linux-ARM32 ve 1.0.1-Windows-ARM32 ' y i gösteriyorsa, bu altı etiket bu alana eklenmelidir. Etiketler ve sürüm oluşturma hakkında daha fazla bilgi için bkz [. IoT Edge modülünüzü hazırlama teknik varlıkları.](create-iot-edge-module-asset.md)
 
 ### <a name="default-deployment-settings-optional"></a>Varsayılan dağıtım ayarları (isteğe bağlı)
 
 IoT Edge modülünüzü dağıtmak için en yaygın ayarları tanımlayın. Bu varsayılan ayarlarla IoT Edge modülünüzü kullanıma hazır hale getirerek müşteri dağıtımlarını iyileştirin.
 
-**Varsayılan yollar** . IoT Edge hub, modüller, IoT Hub ve cihazlar arasındaki iletişimi yönetir. Modüller ve IoT Hub arasında veri girişi ve çıkış için yollar ayarlayabilir ve bu, iletileri işlemek veya ek kod yazmak için ek hizmetlere gerek kalmadan gitmeleri gereken yerlere ileti gönderme esnekliği sağlar. Yollar ad/değer çiftleri kullanılarak oluşturulur. En fazla beş varsayılan yol adı tanımlayabilirsiniz, her biri 512 karakter uzunluğunda olabilir.
+**Varsayılan yollar**. IoT Edge hub, modüller, IoT Hub ve cihazlar arasındaki iletişimi yönetir. Modüller ve IoT Hub arasında veri girişi ve çıkış için yollar ayarlayabilir ve bu, iletileri işlemek veya ek kod yazmak için ek hizmetlere gerek kalmadan gitmeleri gereken yerlere ileti gönderme esnekliği sağlar. Yollar ad/değer çiftleri kullanılarak oluşturulur. En fazla beş varsayılan yol adı tanımlayabilirsiniz, her biri 512 karakter uzunluğunda olabilir.
 
 Yol değerindeki doğru [yol söz dizimini](../../iot-edge/module-composition.md#declare-routes)kullandığınızdan emin olun (genellikle from/Message/* $upstream olarak tanımlanmıştır). Diğer bir deyişle, herhangi bir modül tarafından gönderilen tüm iletiler IoT Hub gider. Modülize başvurmak için, varsayılan modül adını kullanın, bu ad, boşluk veya özel karakterler olmadan **teklif adınız** olacaktır. Henüz bilinen diğer modüllere başvurmak için, <FROM_MODULE_NAME> kuralını kullanarak müşterilerinizin bu bilgileri güncelleştirmesi gerektiğini bilmesini sağlayın. IoT Edge yolları hakkında daha fazla bilgi için bkz. [yolları bildirme](../../iot-edge/module-composition.md#declare-routes)).
 
@@ -452,21 +452,21 @@ Yol değerindeki doğru [yol söz dizimini](../../iot-edge/module-composition.md
 - Ad #2: FromContosoModuleToCloud
 - Değer #2:/messages/modules/ContonsoModule/outputs/ContosoOutput 'den $upstream
 
-**Varsayılan modül ikizi istenen özellikleri** . Modül ikizi, istenen özellikler dahil olmak üzere bir modül örneği için durum bilgilerini depolayan IoT Hub JSON belgesidir. İstenen özellikler, modül yapılandırmalarını veya koşullarını eşitlemeye yönelik bildirilen özelliklerle birlikte kullanılır. Çözüm arka ucu istenen özellikleri ayarlayabilir ve modül bunları okuyabilir. Modül, istenen özelliklerde değişiklik bildirimleri de alabilir. İstenen özellikler en fazla beş ad/değer çifti kullanılarak oluşturulur ve her varsayılan değer 512 karakterden kısa olmalıdır. En fazla beş ad/değer ikizi istenen özellikleri tanımlayabilirsiniz. İkizi Desired özelliklerinin değerleri, en yüksek iç içe geçmiş dört düzey hiyerarşisine sahip diziler olmadan geçerli bir JSON, kaçışsız olmalıdır. Varsayılan değer için gereken bir parametrenin anlamlı olmadığı bir senaryoda (örneğin, bir müşterinin sunucusunun IP adresi), varsayılan değer olarak bir parametre ekleyebilirsiniz. İkizi istenen özellikler hakkında daha fazla bilgi edinmek için bkz. [istenen özellikleri tanımlama veya güncelleştirme](../../iot-edge/module-composition.md#define-or-update-desired-properties).
+**Varsayılan modül ikizi istenen özellikleri**. Modül ikizi, istenen özellikler dahil olmak üzere bir modül örneği için durum bilgilerini depolayan IoT Hub JSON belgesidir. İstenen özellikler, modül yapılandırmalarını veya koşullarını eşitlemeye yönelik bildirilen özelliklerle birlikte kullanılır. Çözüm arka ucu istenen özellikleri ayarlayabilir ve modül bunları okuyabilir. Modül, istenen özelliklerde değişiklik bildirimleri de alabilir. İstenen özellikler en fazla beş ad/değer çifti kullanılarak oluşturulur ve her varsayılan değer 512 karakterden kısa olmalıdır. En fazla beş ad/değer ikizi istenen özellikleri tanımlayabilirsiniz. İkizi Desired özelliklerinin değerleri, en yüksek iç içe geçmiş dört düzey hiyerarşisine sahip diziler olmadan geçerli bir JSON, kaçışsız olmalıdır. Varsayılan değer için gereken bir parametrenin anlamlı olmadığı bir senaryoda (örneğin, bir müşterinin sunucusunun IP adresi), varsayılan değer olarak bir parametre ekleyebilirsiniz. İkizi istenen özellikler hakkında daha fazla bilgi edinmek için bkz. [istenen özellikleri tanımlama veya güncelleştirme](../../iot-edge/module-composition.md#define-or-update-desired-properties).
 
 Örneğin, bir modül ikizi istenen özellikleri kullanarak dinamik olarak yapılandırılabilir yenileme oranını destekliyorsa, aşağıdaki varsayılan ikizi istenen özelliği tanımlamak mantıklı olur:
 
 - Ad #1: RefreshRate
 - Değer #1:60
 
-**Varsayılan ortam değişkenleri** . Ortam değişkenleri, yapılandırma işlemine yardımcı olan bir modüle ek bilgiler sağlar. Ortam değişkenleri ad/değer çiftleri kullanılarak oluşturulur. Her varsayılan ortam değişkeni adı ve değeri 512 karakterden kısa olmalıdır ve en fazla beş karakter tanımlayabilirsiniz. Varsayılan bir değer için gereken bir parametre anlamlı olmadığında (örneğin, bir müşterinin sunucusunun IP adresi), varsayılan değer olarak bir parametre ekleyebilirsiniz.
+**Varsayılan ortam değişkenleri**. Ortam değişkenleri, yapılandırma işlemine yardımcı olan bir modüle ek bilgiler sağlar. Ortam değişkenleri ad/değer çiftleri kullanılarak oluşturulur. Her varsayılan ortam değişkeni adı ve değeri 512 karakterden kısa olmalıdır ve en fazla beş karakter tanımlayabilirsiniz. Varsayılan bir değer için gereken bir parametre anlamlı olmadığında (örneğin, bir müşterinin sunucusunun IP adresi), varsayılan değer olarak bir parametre ekleyebilirsiniz.
 
 Örneğin, bir modülün başlamadan önce kullanım koşullarını kabul etmesi gerekiyorsa, aşağıdaki ortam değişkenini tanımlayabilirsiniz:
 
 - Ad #1: ACCEPT_EULA
 - Değer #1: Y
 
-**Varsayılan kapsayıcı oluşturma seçenekleri** . Kapsayıcı oluşturma seçenekleri IoT Edge modülü Docker kapsayıcısının oluşturulmasını doğrudan yönlendirir. IoT Edge Docker Engine API 'SI kapsayıcı oluşturma seçeneklerini destekler. [Liste kapsayıcılarındaki](https://docs.docker.com/engine/api/v1.30/#operation/ContainerList) tüm seçeneklere bakın. Oluşturma seçenekleri alanı geçerli bir JSON, kaçışsız ve 512 karakterden daha az olmalıdır.
+**Varsayılan kapsayıcı oluşturma seçenekleri**. Kapsayıcı oluşturma seçenekleri IoT Edge modülü Docker kapsayıcısının oluşturulmasını doğrudan yönlendirir. IoT Edge Docker Engine API 'SI kapsayıcı oluşturma seçeneklerini destekler. [Liste kapsayıcılarındaki](https://docs.docker.com/engine/api/v1.30/#operation/ContainerList) tüm seçeneklere bakın. Oluşturma seçenekleri alanı geçerli bir JSON, kaçışsız ve 512 karakterden daha az olmalıdır.
 
 Örneğin, bir modül bağlantı noktası bağlamayı gerektiriyorsa, aşağıdaki oluşturma seçeneklerini tanımlayın:
 
@@ -492,4 +492,4 @@ Teklifin bir önizleme sürümünün gözden geçirilmesi ve onaylanmak üzere k
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ticari Market 'te mevcut bir teklifi güncelleştirme](//azure/marketplace/partner-center-portal/update-existing-offer)
+- [Ticari Market 'te mevcut bir teklifi güncelleştirme](update-existing-offer.md)

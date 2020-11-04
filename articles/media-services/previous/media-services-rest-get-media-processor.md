@@ -3,7 +3,7 @@ title: REST kullanarak medya Işlemcisi örneği alma | Microsoft Docs
 description: Azure Media Services için medya içeriğini kodlamak, dönüştürmek, şifrelemek veya şifresini çözmek için bir medya işlemcisi bileşeni oluşturmayı öğrenin.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: f9ff1997-0da6-4528-aaed-792837e5be41
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: ba625aa048360a4c201b91b4a5a4a7ca4dd6277b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/03/2020
+ms.author: inhenkel
+ms.openlocfilehash: e1ac2a2408e16c3f8057c49c69c354ebb1e377c7
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269514"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348500"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>Medya Işlemcisi örneği alma
 
@@ -28,18 +28,18 @@ ms.locfileid: "89269514"
 > [!div class="op_single_selector"]
 > * [.NET](media-services-get-media-processor.md)
 > * [REST](media-services-rest-get-media-processor.md)
-> 
-> 
+
 
 ## <a name="overview"></a>Genel Bakış
-Medya Işlemcileri kodlama, biçim dönüştürme, şifreleme veya medya içeriğini çözme gibi belirli bir video veya ses işleme görevini işleyen bir bileşendir. Media Services gönderilen tüm görevler, video veya ses içeriğini kodlamak, şifrelemek veya dönüştürmek için bir medya işlemcisi gerektirir. 
 
-## <a name="azure-media-processors"></a>Azure Medya işlemcileri 
+Medya Işlemcileri kodlama, biçim dönüştürme, şifreleme veya medya içeriğini çözme gibi belirli bir video veya ses işleme görevini işleyen bir bileşendir. Media Services gönderilen tüm görevler, video veya ses içeriğini kodlamak, şifrelemek veya dönüştürmek için bir medya işlemcisi gerektirir.
+
+## <a name="azure-media-processors"></a>Azure Medya işlemcileri
 
 Aşağıdaki konuda medya işlemcilerin listesi verilmiştir:
 
-* [Kodlama medya işleyicileri](scenarios-and-availability.md#encoding-media-processors)
-* [Analiz medya işlemcileri](scenarios-and-availability.md#analytics-media-processors)
+* [Kodlama medya işleyicileri](scenarios-and-availability.md)
+* [Analiz medya işlemcileri](scenarios-and-availability.md)
 
 >[!NOTE]
 >Media Services varlıklara erişirken, HTTP isteklerinizin belirli üstbilgi alanlarını ve değerlerini ayarlamanız gerekir. Daha fazla bilgi için bkz. [Media Services REST API Geliştirme Için kurulum](media-services-rest-how-to-use.md).
@@ -51,7 +51,7 @@ AMS API 'sine bağlanma hakkında daha fazla bilgi için bkz. [Azure AD kimlik d
 
 ## <a name="get-a-media-processor"></a>Medya işlemcisi al
 
-Aşağıdaki REST çağrısı, bir medya işlemcisi örneğinin ada göre nasıl alınacağını gösterir (Bu durumda, **Media Encoder Standard**). 
+Aşağıdaki REST çağrısı, bir medya işlemcisi örneğinin ada göre nasıl alınacağını gösterir (Bu durumda, **Media Encoder Standard** ). 
 
 İstek:
 

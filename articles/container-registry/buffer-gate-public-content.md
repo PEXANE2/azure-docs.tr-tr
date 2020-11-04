@@ -5,12 +5,12 @@ author: dlepow
 ms.topic: article
 ms.author: danlep
 ms.date: 10/29/2020
-ms.openlocfilehash: bb185e7d5803219135fddf421b7d6a89edd296b0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: def1c3a9b8a1086f453c7e71d766ab0dd89b0c2d
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315810"
+ms.locfileid: "93347531"
 ---
 # <a name="manage-public-content-with-azure-container-registry"></a>Azure Container Registry ortak içeriği yönetme
 
@@ -28,7 +28,7 @@ Doğru denetimler olmadan, ortak kayıt defteri içeriğine bağımlılıklar ol
 İlk adım olarak, bir derleme veya dağıtım iş akışının parçası olarak Docker Hub 'ından ortak görüntüler çekiyorsanız, anonim bir çekme isteği yapmak yerine [bir Docker Hub hesabı kullanarak kimlik doğrulaması](https://docs.docker.com/docker-hub/download-rate-limit/#how-do-i-authenticate-pull-requests) yapmanızı öneririz.
 
 > [!NOTE]
-> 2 Kasım 2020 ' den itibaren [geçerli olan](https://docs.docker.com/docker-hub/download-rate-limit) Docker Hub 'a yönelik anonim ve kimliği doğrulanmış Istekler, Docker Ücretsiz plan HESAPLARıNDAN ve IP adresi ve DOCKER ID tarafından zorlanır. 
+> 2 Kasım [2020 ' den itibaren geçerli olan](https://docs.docker.com/docker-hub/download-rate-limit) Docker Hub 'a yönelik anonim ve kimliği doğrulanmış Istekler, Docker Ücretsiz plan hesaplarından ve sırasıyla IP adresi ve DOCKER ID tarafından zorlanır. 
 >
 > Çekme isteklerinizin sayısını tahmin etmek için, bulut sağlayıcısı hizmetlerini kullanırken veya bir kurumsal NAT 'ın arkasında çalışırken birden çok Kullanıcı, IP adreslerinin bir alt kümesi olarak toplama bölümünde yer alan Docker Hub 'ına sunulur. Docker Hub 'a yapılan isteklere Docker ücretli hesap kimlik doğrulaması eklemek, hız sınırı azaltma nedeniyle olası hizmet kesintilerine engel olur.
 >

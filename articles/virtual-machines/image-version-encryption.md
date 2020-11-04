@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/3/2020
 ms.author: cynthn
-ms.openlocfilehash: f6bf436110e9822d687419b74a8a22bad7a6d700
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e0534fa6eaccbfb9318369e0a4224d84fa8de7c8
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333473"
+ms.locfileid: "93347718"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Önizleme: görüntüleri şifrelemek için müşteri tarafından yönetilen anahtarları kullanın
 
@@ -23,7 +23,7 @@ Görüntülerinizin şifrelenmesi için platform tarafından yönetilen anahtarl
 
 Müşteri tarafından yönetilen anahtarlar kullanılarak sunucu tarafı şifreleme Azure Key Vault kullanır. [RSA anahtarlarınızı](../key-vault/keys/hsm-protected-keys.md) Key Vault içeri aktarabilir ya da Azure Key Vault yeni RSA anahtarları oluşturabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, görüntünüzü çoğaltmak istediğiniz her bölgede zaten bir disk şifrelemesi ayarlamış olmanız gerekir.
 
@@ -134,7 +134,7 @@ Veri disklerinde, `-DiskEncryptionSetId $setID` [Add-AzVMDataDisk](/powershell/m
 
 ## <a name="cli"></a>CLI 
 
-Genel önizleme için önce özelliği kaydetmeniz gerekir.
+Genel önizleme için öncelikle bu özelliğe kaydolmanız gerekir. Kayıt yaklaşık 30 dakika sürer.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name SIGEncryption

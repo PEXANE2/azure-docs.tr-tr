@@ -2,19 +2,19 @@
 title: Azure VM 'den Azure Otomasyonu Güncelleştirme Yönetimi etkinleştirme
 description: Bu makalede bir Azure VM 'den Güncelleştirme Yönetimi nasıl etkinleştirileceği açıklanır.
 services: automation
-ms.date: 09/16/2020
+ms.date: 11/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 2d81b822986f641e64b9211300f83e3b254f316d
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 1ed4ad3e1bae34b5007d13c7d092f46e972ac8a8
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92223048"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347089"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>Azure VM’den Güncelleştirme Yönetimi’ni etkinleştirme
 
-Bu makalede, diğer makinelerde [güncelleştirme yönetimi](overview.md) özelliğini etkinleştirmek Için BIR Azure VM 'yi nasıl kullanabileceğiniz açıklanır. Azure VM 'lerini ölçekli olarak etkinleştirmek için, Güncelleştirme Yönetimi kullanarak var olan bir VM 'yi etkinleştirmeniz gerekir.
+Bu makalede, bir veya daha fazla Azure sanal makinesi (VM) üzerinde [güncelleştirme yönetimi](overview.md) özelliğini nasıl etkinleştirebileceğinizi anlatmaktadır. Azure VM 'lerini ölçekli olarak etkinleştirmek için, Güncelleştirme Yönetimi kullanarak mevcut bir Azure VM 'yi etkinleştirmeniz gerekir.
 
 > [!NOTE]
 > Güncelleştirme Yönetimi etkinleştirilirken, bir Log Analytics çalışma alanını ve bir Otomasyon hesabını bağlamak için yalnızca belirli bölgeler desteklenir. Desteklenen eşleme çiftlerinin bir listesi için bkz. [Otomasyon hesabı ve Log Analytics çalışma alanı Için bölge eşleme](../how-to/region-mappings.md).
@@ -35,7 +35,7 @@ Bu makalede, diğer makinelerde [güncelleştirme yönetimi](overview.md) özell
 
 2. Güncelleştirme Yönetimi etkinleştirmek istediğiniz VM 'yi seçin. Otomasyon hesabınızın konumu ne olduğuna bakılmaksızın, VM 'Ler herhangi bir bölgede bulunabilir. Siz
 
-3. VM sayfasında, **işlemler**altında **Konuk + ana bilgisayar güncelleştirmeleri**' ni seçin.
+3. VM sayfasında, **işlemler** altında **Konuk + ana bilgisayar güncelleştirmeleri** ' ni seçin.
 
     ![Sol bölmeden Konuk + ana bilgisayar güncelleştirmelerini seçin](media/enable-from-vm/select-guest-and-os-updates.png)
 

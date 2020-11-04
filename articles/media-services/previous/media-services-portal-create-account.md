@@ -3,7 +3,7 @@ title: Azure portalı ile Azure Media Services hesabı oluşturma | Microsoft Be
 description: Bu öğretici, Azure portalıyla bir Azure Media Services hesabı oluşturma adımlarında size kılavuzluk eder.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: c551e158-aad6-47b4-931e-b46260b3ee4c
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/01/2019
-ms.author: juliako
-ms.openlocfilehash: 2f8718b108ca5af0034d4d70c10422d6ac73e892
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/03/2020
+ms.author: inhenkel
+ms.openlocfilehash: 2ca47e49af06ab0a6dffc1f4011d7dceb58830be
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89260858"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348517"
 ---
 # <a name="create-a-media-services-account-using-the-azure-portal"></a>Azure portal kullanarak Media Services hesabı oluşturma
 
@@ -35,30 +35,30 @@ Media Services hesabı ve onunla ilişkili tüm depolama hesaplarının aynı Az
 Bu makalede Azure portal kullanılarak Media Services hesabının nasıl oluşturulacağı gösterilmektedir.
 
 > [!NOTE]
-> Azure Media Services özelliklerinin farklı bölgelerde kullanılabilirliği hakkında bilgi için bkz. [Veri merkezleri arasında AMS özelliklerinin kullanılabilirliği](scenarios-and-availability.md#availability).
+> Farklı bölgelerdeki Azure Media Services özelliklerinin kullanılabilirliği hakkında daha fazla bilgi için bkz. [bölgeler arasında AMS özellikleri](availability-regions-v-2.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/). 
+Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="create-an-ams-account"></a>AMS hesabı oluşturma
 
 Bu bölümdeki adımlar bir AMS hesabının nasıl oluşturulacağını gösterir.
 
 1. [Azure portalda](https://portal.azure.com/) oturum açın.
-2. **+ Kaynak**  >  **medyası**oluştur  >  **Media Services**' a tıklayın.
-3. **MEDYA HİZMETLERİ HESABI OLUŞTUR**’a gerekli değerleri girin.
+2. **+ Kaynak**  >  **medyası** oluştur  >  **Media Services** ' a tıklayın.
+3. **MEDYA HİZMETLERİ HESABI OLUŞTUR** ’a gerekli değerleri girin.
 
-   1. **Hesap Adı**’nda, yeni AMS hesabının adını girin. Media Services hesabı adı, boşluk olmadan, tümü sayı ve küçük harften oluşmalı ve 3-24 karakter uzunluğunda olmalıdır.
+   1. **Hesap Adı** ’nda, yeni AMS hesabının adını girin. Media Services hesabı adı, boşluk olmadan, tümü sayı ve küçük harften oluşmalı ve 3-24 karakter uzunluğunda olmalıdır.
    2. Abonelik’te, erişiminiz bulunan farklı Azure abonelikleri arasından seçim yapın.
-   3. **Kaynak Grubu**’nda yeni veya mevcut bir kaynağı seçin.  Kaynak grubu; yaşam döngüsünü, izinleri ve ilkeleri paylaşan kaynakların bir koleksiyonudur. [Burada](../../azure-resource-manager/management/overview.md#resource-groups) daha fazla bilgi edinin.
-   4. **Konum**’da, Media Services hesabınız için medya ve meta veri kayıtlarını depolamak üzere kullanılacak coğrafi bölgeyi seçin. Bu bölge medyanızı işlemek ve akışını sağlamak için kullanılır. Yalnızca Media Services kullanılabilen bölgeler açılır listede görüntülenir. 
+   3. **Kaynak Grubu** ’nda yeni veya mevcut bir kaynağı seçin.  Kaynak grubu; yaşam döngüsünü, izinleri ve ilkeleri paylaşan kaynakların bir koleksiyonudur. [Burada](../../azure-resource-manager/management/overview.md#resource-groups) daha fazla bilgi edinin.
+   4. **Konum** ’da, Media Services hesabınız için medya ve meta veri kayıtlarını depolamak üzere kullanılacak coğrafi bölgeyi seçin. Bu bölge medyanızı işlemek ve akışını sağlamak için kullanılır. Yalnızca Media Services kullanılabilen bölgeler açılır listede görüntülenir. 
    5. **Depolama Hesabı** alanında, Media Services hesabınızdan gelen medya içeriğine blob depolama sağlamak üzere bir depolama hesabı seçin. Media Services hesabınızla aynı coğrafi bölgede bulunan mevcut bir depolama hesabını seçebilir ya da bir depolama hesabı oluşturabilirsiniz. Aynı bölgede yeni bir depolama hesabı oluşturulur. Depolama hesabı adları için kurallar Media Services hesapları ile aynıdır.
-      
+
        Depolama hakkında daha fazla bilgi [burada](../../storage/common/storage-introduction.md).
-   6. Hesap dağıtımını ilerleme durumunu görmek için **Panoya sabitle**’yi seçin.
-4. Formun alt kısmındaki **Oluştur**’a tıklayın.
-   
+   6. Hesap dağıtımını ilerleme durumunu görmek için **Panoya sabitle** ’yi seçin.
+4. Formun alt kısmındaki **Oluştur** ’a tıklayın.
+
     Hesap başarıyla oluşturulduktan sonra genel bakış sayfası yüklenir. Akış uç noktası tablosunda hesapta **Durdurulmuş** durumda bir varsayılan akış uç noktası yer alır. 
 
     >[!NOTE]
@@ -66,7 +66,7 @@ Bu bölümdeki adımlar bir AMS hesabının nasıl oluşturulacağını gösteri
    
 ## <a name="to-manage-your-ams-account"></a>AMS hesabınızı yönetmek için
 
-AMS hesabınızı yönetmek için (örneğin, AMS API’ye programlama aracılığıyla bağlanarak karşıya video yükleme, varlıkları kodlama, içerik korumayı yapılandırma, iş ilerleme durumunu izleme) portalın sol tarafında bulunan **Ayarlar**’ı seçin. **Ayarlar**’da, kullanılabilir dikey pencerelerden birine (örneğin **API Erişimi**, **Varlıklar**, **İşler**, **İçerik koruma**) gidin.
+AMS hesabınızı yönetmek için (örneğin, AMS API’ye programlama aracılığıyla bağlanarak karşıya video yükleme, varlıkları kodlama, içerik korumayı yapılandırma, iş ilerleme durumunu izleme) portalın sol tarafında bulunan **Ayarlar** ’ı seçin. **Ayarlar** ’da, kullanılabilir dikey pencerelerden birine (örneğin **API Erişimi** , **Varlıklar** , **İşler** , **İçerik koruma** ) gidin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

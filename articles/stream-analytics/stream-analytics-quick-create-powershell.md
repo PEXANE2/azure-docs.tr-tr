@@ -7,12 +7,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: b36a71899be43f40ec16c76b5e53c8c3e7fb3552
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2ea92ad2e9c81b568e11ff97d7b6a88eeb4f188e
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124535"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346613"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak Stream Analytics işi oluşturma
 
@@ -28,7 +28,7 @@ Azure PowerShell modülü, PowerShell cmdlet 'leri veya betikleri kullanılarak 
 
 * Bu hızlı başlangıç Azure PowerShell modülünü gerektirir. Yerel makinenizde yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](/powershell/azure/install-Az-ps).
 
-* Bazı IoT Hub eylemleri Azure PowerShell desteklenmez ve Azure CLI sürüm 2.0.70 veya üzeri ile Azure CLı için IoT uzantısı kullanılarak tamamlanmalıdır. [Azure CLI 'Yı yükleyip](/cli/azure/install-azure-cli?view=azure-cli-latest) `az extension add --name azure-iot` IoT uzantısını yüklemek için kullanın.
+* Bazı IoT Hub eylemleri Azure PowerShell desteklenmez ve Azure CLI sürüm 2.0.70 veya üzeri ile Azure CLı için IoT uzantısı kullanılarak tamamlanmalıdır. [Azure CLI 'Yı yükleyip](/cli/azure/install-azure-cli) `az extension add --name azure-iot` IoT uzantısını yüklemek için kullanın.
 
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
@@ -68,9 +68,9 @@ Stream Analytics işini tanımlamadan önce, işe girdi olarak yapılandırılan
 
 Aşağıdaki Azure CLı kod bloğu, iş için gereken giriş verilerini hazırlamak için birçok komut yapar. Kodu anlamak için bölümleri gözden geçirin.
 
-1. PowerShell pencerenizde, Azure hesabınızda oturum açmak için [az Login](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) komutunu çalıştırın.
+1. PowerShell pencerenizde, Azure hesabınızda oturum açmak için [az Login](/cli/azure/authenticate-azure-cli) komutunu çalıştırın.
 
-    Başarıyla oturum açtığınızda Azure CLı, aboneliklerinizin bir listesini döndürür. Bu hızlı başlangıç için kullanmakta olduğunuz aboneliği kopyalayın ve bu aboneliği seçmek için [az Account set](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription) komutunu çalıştırın. Önceki bölümde PowerShell ile seçtiğiniz aboneliği seçin. Öğesini aboneliğinizin adıyla değiştirdiğinizden emin olun `<your subscription name>` .
+    Başarıyla oturum açtığınızda Azure CLı, aboneliklerinizin bir listesini döndürür. Bu hızlı başlangıç için kullanmakta olduğunuz aboneliği kopyalayın ve bu aboneliği seçmek için [az Account set](/cli/azure/manage-azure-subscriptions-azure-cli#change-the-active-subscription) komutunu çalıştırın. Önceki bölümde PowerShell ile seçtiğiniz aboneliği seçin. Öğesini aboneliğinizin adıyla değiştirdiğinizden emin olun `<your subscription name>` .
 
     ```azurecli
     az login
@@ -84,7 +84,7 @@ Aşağıdaki Azure CLı kod bloğu, iş için gereken giriş verilerini hazırla
     az iot hub create --name "<your IoT Hub name>" --resource-group $resourceGroup --sku S1
     ```
 
-    IoT Hub 'ı oluşturulduktan sonra, [az IoT Hub Show-Connection-String](/cli/azure/iot/hub?view=azure-cli-latest) komutunu kullanarak IoT Hub bağlantı dizesini alın. IoT Hub, Stream Analytics işinize girdi olarak eklediğinizde, tüm bağlantı dizesini kopyalayın ve kaydedin.
+    IoT Hub 'ı oluşturulduktan sonra, [az IoT Hub Show-Connection-String](/cli/azure/iot/hub) komutunu kullanarak IoT Hub bağlantı dizesini alın. IoT Hub, Stream Analytics işinize girdi olarak eklediğinizde, tüm bağlantı dizesini kopyalayın ve kaydedin.
 
     ```azurecli
     az iot hub show-connection-string --hub-name "MyASAIoTHub"

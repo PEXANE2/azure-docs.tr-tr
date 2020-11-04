@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: seo-javascript-october2019, devx-track-python
-ms.openlocfilehash: 0b4592b846477fe16e5ebcff7c9adfb45f7fe559
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ac75b89548d346945901d752672ef0f08601ccfb
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790517"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345661"
 ---
 # <a name="how-to-use-azure-queue-storage-from-python"></a>Python 'da Azure kuyruk depolama kullanma
 
@@ -33,7 +33,7 @@ Bu makaledeki örnekler Python 'da yazılmıştır ve [Python Için Azure kuyruk
 ## <a name="download-and-install-azure-storage-sdk-for-python"></a>Python için Azure depolama SDK 'sını indirme ve yükleme
 
 [Python Için Azure depolama SDK 'sı](https://github.com/azure/azure-storage-python) , python sürüm 2,7, 3,3 veya üstünü gerektirir.
- 
+
 ### <a name="install-via-pypi"></a>PyPI aracılığıyla yüklemesi
 
 Python paket dizini (Pypı) aracılığıyla yüklemek için şunu yazın:
@@ -73,7 +73,7 @@ Alternatif yükleme yöntemleri için bkz. [Python Için Azure SDK].
 
 ```python
 from azure.storage.queue import (
-        QueueService, 
+        QueueService,
         QueueMessageFormat
 )
 
@@ -297,9 +297,9 @@ queue_service.delete_queue(queue_name)
 
 Sıra depolamanın temellerini öğrendiğinize göre, daha fazla bilgi edinmek için bu bağlantıları izleyin.
 
-* [Azure Kuyrukları Python API başvurusu](/python/api/azure-storage-queue)
-* [Python Geliştirici Merkezi](https://azure.microsoft.com/develop/python/)
-* [Azure Storage Hizmetleri REST API’si](/rest/api/storageservices/)
+- [Azure Kuyrukları Python API başvurusu](/python/api/azure-storage-queue)
+- [Python Geliştirici Merkezi](https://azure.microsoft.com/develop/python/)
+- [Azure Storage Hizmetleri REST API’si](/rest/api/storageservices/)
 
 [Python için Azure kuyruk depolama istemci kitaplığı]: https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue
 [Python için Azure SDK]: https://github.com/azure/azure-sdk-for-python

@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 23684dbbc5cb8c2d5fc4880ae8fe1999450928e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d661800c53cc0795efde1f411675d17661fb968
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400579"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345542"
 ---
 # <a name="tutorial-work-with-azure-storage-queues-in-net"></a>Öğretici: .NET 'te Azure depolama kuyrukları ile çalışma
 
@@ -47,9 +47,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="create-the-app"></a>Uygulama oluşturma
 
-**Queueapp**adlı bir .NET Core uygulaması oluşturun. Kolaylık olması için, bu uygulama sıra aracılığıyla ileti gönderir ve alır.
+**Queueapp** adlı bir .NET Core uygulaması oluşturun. Kolaylık olması için, bu uygulama sıra aracılığıyla ileti gönderir ve alır.
 
-1. Konsol penceresinde (CMD, PowerShell veya Azure CLı gibi), `dotnet new` **queueapp**adlı yeni bir konsol uygulaması oluşturmak için komutunu kullanın. Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: **program.cs**.
+1. Konsol penceresinde (CMD, PowerShell veya Azure CLı gibi), `dotnet new` **queueapp** adlı yeni bir konsol uygulaması oluşturmak için komutunu kullanın. Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: **program.cs**.
 
    ```console
    dotnet new console -n QueueApp
@@ -94,6 +94,8 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
    C:\Tutorials\QueueApp>_
    ```
+
+<!-- markdownlint-disable MD023 -->
 
 ## <a name="add-the-azure-client-libraries"></a>Azure istemci kitaplıklarını ekleme
 
@@ -204,13 +206,13 @@ Kuyruğa ileti göndermek için yeni bir yöntem oluşturun.
 
    # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
-    Süreleri dolan bir ileti eklemek için `Timespan.FromSeconds(-1)` **SendMessageAsync**çağrısında kullanın.
+    Süreleri dolan bir ileti eklemek için `Timespan.FromSeconds(-1)` **SendMessageAsync** çağrısında kullanın.
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Initial.cs" id="snippet_SendNonExpiringMessage":::
 
    # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-    Kullanım süreleri dolan bir ileti eklemek için `Timespan.FromSeconds(-1)` **Addmessageasync**çağrısında kullanın.
+    Kullanım süreleri dolan bir ileti eklemek için `Timespan.FromSeconds(-1)` **Addmessageasync** çağrısında kullanın.
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Initial.cs" id="snippet_SendNonExpiringMessage":::
 
@@ -262,7 +264,7 @@ Uygulamaya geçirilen herhangi bir komut satırı bağımsız değişkeni varsa,
 
 Komut satırı bağımsız değişkeni yoksa alma işlemini deneyin. Sıradaki bir sonraki iletiyi almak için, **Alaevenextmessageasync** metodunu çağırın.
 
-Son olarak, **Console. ReadLine**'u çağırarak çıkmadan önce Kullanıcı girişini bekleyin.
+Son olarak, **Console. ReadLine** 'u çağırarak çıkmadan önce Kullanıcı girişini bekleyin.
 
 1. Komut satırı bağımsız değişkenlerini denetlemek ve Kullanıcı girişini beklemek için **Main** yöntemini genişletin.
 

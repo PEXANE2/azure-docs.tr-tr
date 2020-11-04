@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/10/2020
-ms.openlocfilehash: f81b6dabbd9053a69ff60d1a3c71d03fff38f627
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 29f02f80aa5bff1304dc593d68954e15fe6e66bb
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129771"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346443"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Azure Stream Analytics işinizin kimliğini doğrulamak için yönetilen kimliği kullanın Power BI
 
@@ -45,7 +45,7 @@ Bu özelliği kullanmak için aşağıdakiler gereklidir:
 
 ## <a name="azure-resource-manager-deployment"></a>Azure Resource Manager dağıtımı
 
-Azure Resource Manager, Stream Analytics işinizin dağıtımını tamamen otomatikleştirmenizi sağlar. Azure PowerShell ya da [Azure CLI](/cli/azure/?view=azure-cli-latest)kullanarak kaynak yöneticisi şablonlarını dağıtabilirsiniz. Aşağıdaki örneklerde Azure CLı kullanılır.
+Azure Resource Manager, Stream Analytics işinizin dağıtımını tamamen otomatikleştirmenizi sağlar. Azure PowerShell ya da [Azure CLI](/cli/azure/)kullanarak kaynak yöneticisi şablonlarını dağıtabilirsiniz. Aşağıdaki örneklerde Azure CLı kullanılır.
 
 
 1. Kaynak Yöneticisi şablonunuzun kaynak bölümüne aşağıdaki özelliği ekleyerek, yönetilen bir kimlikle bir **Microsoft. StreamAnalytics/streamingjobs** kaynağı oluşturabilirsiniz:

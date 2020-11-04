@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ca3b218da7835ee9f3e9e8653f4829767a1ffb07
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a62aa9df818bb6ff7026d95daa625acabe66b990
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783479"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345644"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Hızlı başlangıç: .NET için Azure kuyruk depolama istemci kitaplığı V12
 
@@ -21,26 +21,26 @@ ms.locfileid: "92783479"
 
 .NET için Azure kuyruk depolama istemci kitaplığı V12 ' nı kullanarak şunları yapın:
 
-* Bir kuyruk oluşturma
-* Bir kuyruğa ileti ekleme
-* Kuyruktaki iletilere göz atın
-* Kuyruktaki bir iletiyi güncelleştirme
-* Kuyruktan ileti alma
-* Kuyruktaki iletileri silme
-* Bir kuyruk silme
+- Bir kuyruk oluşturma
+- Bir kuyruğa ileti ekleme
+- Kuyruktaki iletilere göz atın
+- Kuyruktaki bir iletiyi güncelleştirme
+- Kuyruktan ileti alma
+- Kuyruktaki iletileri silme
+- Bir kuyruk silme
 
 Ek kaynaklar:
 
-* [API başvuru belgeleri](/dotnet/api/azure.storage.queues)
-* [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues)
-* [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
-* [Örnekler](../common/storage-samples-dotnet.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
+- [API başvuru belgeleri](/dotnet/api/azure.storage.queues)
+- [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues)
+- [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
+- [Örnekler](../common/storage-samples-dotnet.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* Azure depolama hesabı- [depolama hesabı oluşturma](../common/storage-account-create.md)
-* İşletim sisteminiz için geçerli [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) . Çalışma zamanını değil, SDK 'Yı aldığınızdan emin olun.
+- Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
+- Azure depolama hesabı- [depolama hesabı oluşturma](../common/storage-account-create.md)
+- İşletim sisteminiz için geçerli [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) . Çalışma zamanını değil, SDK 'Yı aldığınızdan emin olun.
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
@@ -50,7 +50,7 @@ Bu bölümde, bir projeyi .NET için Azure kuyruk depolama istemci kitaplığı 
 
 *QueuesQuickstartV12* adlı bir .NET Core uygulaması oluşturun.
 
-1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` *QueuesQuickstartV12* adlı yeni bir konsol uygulaması oluşturmak için komutunu kullanın. Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs* .
+1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` *QueuesQuickstartV12* adlı yeni bir konsol uygulaması oluşturmak için komutunu kullanın. Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs*.
 
    ```console
    dotnet new console -n QueuesQuickstartV12
@@ -79,8 +79,6 @@ Proje dizininden:
 1. `using`Yönergeler ekleme
 1. `Main` [Zaman uyumsuz kodu desteklemek](/dotnet/csharp/whats-new/csharp-7#async-main) için yöntem bildirimini güncelleştirme
 
-
-
 Kod şu şekildedir:
 
 ```csharp
@@ -107,9 +105,9 @@ namespace QueuesQuickstartV12
 
 Azure Kuyruk depolama, çok sayıda iletiyi depolamaya yönelik bir hizmettir. Kuyruk iletisi boyutu 64 KB 'ye kadar olabilir. Bir kuyruk, depolama hesabının toplam kapasite sınırına kadar milyonlarca ileti içerebilir. Kuyruklar genellikle zaman uyumsuz olarak işlenecek iş biriktirme listesi oluşturmak için kullanılır. Kuyruk depolama, üç tür kaynak sunar:
 
-* Depolama hesabı
-* Depolama hesabındaki bir kuyruk
-* Kuyruktaki iletiler
+- Depolama hesabı
+- Depolama hesabındaki bir kuyruk
+- Kuyruktaki iletiler
 
 Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 
@@ -117,22 +115,22 @@ Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 
 Şu kaynaklarla etkileşim kurmak için aşağıdaki .NET sınıflarını kullanın:
 
-* [QueueServiceClient](/dotnet/api/azure.storage.queues.queueserviceclient):, `QueueServiceClient` Depolama hesabınızdaki tüm kuyrukları yönetmenizi sağlar.
-* [Queueclient](/dotnet/api/azure.storage.queues.queueclient): `QueueClient` sınıfı, tek bir kuyruğu ve iletilerini yönetmenizi ve düzenlemenizi sağlar.
-* [Queuemessage](/dotnet/api/azure.storage.queues.models.queuemessage): `QueueMessage` sınıf, bir kuyrukta [receivemessages](/dotnet/api/azure.storage.queues.queueclient.receivemessages) çağrılırken döndürülen ayrı nesneleri temsil eder.
+- [QueueServiceClient](/dotnet/api/azure.storage.queues.queueserviceclient):, `QueueServiceClient` Depolama hesabınızdaki tüm kuyrukları yönetmenizi sağlar.
+- [Queueclient](/dotnet/api/azure.storage.queues.queueclient): `QueueClient` sınıfı, tek bir kuyruğu ve iletilerini yönetmenizi ve düzenlemenizi sağlar.
+- [Queuemessage](/dotnet/api/azure.storage.queues.models.queuemessage): `QueueMessage` sınıf, bir kuyrukta [receivemessages](/dotnet/api/azure.storage.queues.queueclient.receivemessages) çağrılırken döndürülen ayrı nesneleri temsil eder.
 
 ## <a name="code-examples"></a>Kod örnekleri
 
 Bu örnek kod parçacıkları, .NET için Azure kuyruk depolama istemci kitaplığı ile aşağıdaki işlemlerin nasıl yapılacağını göstermektedir:
 
-* [Bağlantı dizesini alma](#get-the-connection-string)
-* [Bir kuyruk oluşturma](#create-a-queue)
-* [Bir kuyruğa ileti ekleme](#add-messages-to-a-queue)
-* [Kuyruktaki iletilere göz atın](#peek-at-messages-in-a-queue)
-* [Kuyruktaki bir iletiyi güncelleştirme](#update-a-message-in-a-queue)
-* [Kuyruktan ileti alma](#receive-messages-from-a-queue)
-* [Kuyruktaki iletileri silme](#delete-messages-from-a-queue)
-* [Bir kuyruk silme](#delete-a-queue)
+- [Bağlantı dizesini alma](#get-the-connection-string)
+- [Bir kuyruk oluşturma](#create-a-queue)
+- [Bir kuyruğa ileti ekleme](#add-messages-to-a-queue)
+- [Kuyruktaki iletilere göz atın](#peek-at-messages-in-a-queue)
+- [Kuyruktaki bir iletiyi güncelleştirme](#update-a-message-in-a-queue)
+- [Kuyruktan ileti alma](#receive-messages-from-a-queue)
+- [Kuyruktaki iletileri silme](#delete-messages-from-a-queue)
+- [Bir kuyruk silme](#delete-a-queue)
 
 ### <a name="get-the-connection-string"></a>Bağlantı dizesini alma
 
@@ -158,7 +156,6 @@ Yeni sıra için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğundan emin
 
 > [!IMPORTANT]
 > Kuyruk adları yalnızca küçük harf, sayı ve kısa çizgi içerebilir ve bir harf veya sayı ile başlamalıdır. Her kısa çizginin önünde ve arkasında kısa çizgi dışında bir karakter bulunmalıdır. Ad ayrıca 3 ila 63 karakter uzunluğunda olmalıdır. Adlandırma sıraları hakkında daha fazla bilgi için bkz. [adlandırma sıraları ve meta verileri](/rest/api/storageservices/naming-queues-and-metadata).
-
 
 [Queueclient](/dotnet/api/azure.storage.queues.queueclient) sınıfının bir örneğini oluşturun. Ardından, depolama hesabınızda kuyruğu oluşturmak için [Createasync](/dotnet/api/azure.storage.queues.queueclient.createasync) yöntemini çağırın.
 
@@ -336,6 +333,6 @@ Bu hızlı başlangıçta, bir kuyruk oluşturmayı ve zaman uyumsuz .NET kodu k
 > [!div class="nextstepaction"]
 > [.NET ve .NET Core geliştiricileri için Azure](/dotnet/azure/)
 
-* Daha fazla bilgi edinmek için bkz. [.net Için Azure depolama kitaplıkları](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage).
-* Daha fazla Azure kuyruk depolama örnek uygulaması görmek için [Azure kuyruk depolama v12 .NET istemci kitaplığı örneklerine](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)geçin.
-* .NET Core hakkında daha fazla bilgi için bkz. [10 dakika içinde .NET kullanmaya başlama](https://www.microsoft.com/net/learn/get-started/).
+- Daha fazla bilgi edinmek için bkz. [.net Için Azure depolama kitaplıkları](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage).
+- Daha fazla Azure kuyruk depolama örnek uygulaması görmek için [Azure kuyruk depolama v12 .NET istemci kitaplığı örneklerine](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)geçin.
+- .NET Core hakkında daha fazla bilgi için bkz. [10 dakika içinde .NET kullanmaya başlama](https://www.microsoft.com/net/learn/get-started/).

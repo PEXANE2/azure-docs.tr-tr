@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 09/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 4c65ca24b3fa4dccb2bb0060996ade50c90bd02a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a2cddc9bbe868a2d18ee8111aabf6db7dc8643cf
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148520"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347004"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry hakkında sık sorulan sorular
 
@@ -262,7 +262,8 @@ Görüntü karantina Şu anda ACR 'nin önizleme özelliğidir. Yalnızca güven
 Anonim (genel) çekme erişimi için bir Azure Kapsayıcı kayıt defteri ayarlama Şu anda bir önizleme özelliğidir. Kayıt defterinizde herhangi bir [kapsam eşlemeniz (Kullanıcı) veya belirteç kaynağınız](./container-registry-repository-scoped-permissions.md) varsa, lütfen bir destek bileti oluşturmadan önce bunları silin (sistem kapsamı eşlemeleri yoksayılabilir). Genel erişimi etkinleştirmek için lütfen adresinde bir destek bileti açın https://aka.ms/acr/support/create-ticket . Ayrıntılar için bkz. [Azure geri bildirim Forumu](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries).
 
 > [!NOTE]
-> Yalnızca bilinen bir görüntüyü çekmek için gereken API 'Ler anonim olarak erişilebilir. Etiket listesi veya depo listesi gibi işlemler için başka API 'Ler anonim olarak erişilebilir değildir.
+> * Yalnızca bilinen bir görüntüyü çekmek için gereken API 'Ler anonim olarak erişilebilir. Etiket listesi veya depo listesi gibi işlemler için başka API 'Ler anonim olarak erişilebilir değildir.
+> * Anonim çekme işlemini denemeden önce, `docker logout` tüm mevcut Docker kimlik bilgilerini temizlemenizi sağlamak için öğesini çalıştırın.
 
 ## <a name="diagnostics-and-health-checks"></a>Tanılama ve durum denetimleri
 
@@ -321,7 +322,7 @@ unauthorized: authentication required
 ```
 
 Hatayı gidermek için:
-1. `--signature-verification=false`Docker Daemon yapılandırma dosyasına seçeneğini ekleyin `/etc/sysconfig/docker` . Örnek:
+1. `--signature-verification=false`Docker Daemon yapılandırma dosyasına seçeneğini ekleyin `/etc/sysconfig/docker` . Örneğin:
    
    `OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'`
    
@@ -508,10 +509,10 @@ Bu ayar komut için de geçerlidir `az acr run` .
 
 | Git hizmeti | Kaynak bağlamı | El ile derleme | Tamamlama tetikleyicisi aracılığıyla otomatik derleme |
 |---|---|---|---|
-| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Evet | Yes |
-| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Yes | Yes |
-| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Yes | Hayır |
-| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Yes | Hayır |
+| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Evet | Evet |
+| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Evet | Evet |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Evet | Hayır |
+| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Evet | Hayır |
 
 ## <a name="run-error-message-troubleshooting"></a>Çalıştırma hata Iletisi sorun giderme
 

@@ -3,12 +3,12 @@ title: Bulut öğreticiden buluta sürekli video kaydı ve kayıttan yürütme �
 description: Bu öğreticide, Azure IoT Edge üzerinde Azure Live video analizi 'ni kullanarak buluta sürekli olarak video kaydetme ve Azure Media Services kullanarak bu videonun herhangi bir bölümünü akışa alma hakkında bilgi edineceksiniz.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 4333ceb9c02f39629e4bd06d3d9634b97bb2e2d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e8bf1202e95cb4e76b54473f9d84076d24accea
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91774037"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346375"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Öğretici: buluta sürekli video kaydetme ve buluttan kayıttan yürütme
 
@@ -66,7 +66,7 @@ Medya [grafiği kavram](media-graph-concept.md) makalesinde açıklandığı gib
 
 Bu öğreticide, bir RTSP kamerasının benzetimini yapmak için [Live555 Media Server](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) kullanılarak oluşturulan bir kenar modülünü kullanacaksınız. Medya grafiğinde, bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü kullanarak canlı akışı alabilir ve videoyu bir varlığa kaydeden [varlık havuzu düğümüne](media-graph-concept.md#asset-sink)gönderebilirsiniz.
 
-## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı kurma
+## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı ayarlama
 
 Başlamadan önce, [önkoşullardan](#prerequisites)üçüncü madde işaretini tamamladığınızdan emin olun. Kaynak kurulum betiği bittikten sonra, klasör yapısını göstermek için süslü ayraçları seçin. ~/CloudDrive/LVA-Sample dizininde oluşturulmuş birkaç dosya görürsünüz.
 
@@ -74,14 +74,14 @@ Başlamadan önce, [önkoşullardan](#prerequisites)üçüncü madde işaretini 
 
 Bu öğreticide ilgilendiğiniz dosyalar şunlardır:
 
-* **~/CloudDrive/LVA-Sample/Edge-Deployment/.exe**: Visual Studio Code bir uç cihaza modül dağıtmak için kullandığı özellikleri içerir.
-* **~/CloudDrive/LVA-Sample/appsettings.json**: örnek kodu çalıştırmak için Visual Studio Code tarafından kullanılır.
+* **~/CloudDrive/LVA-Sample/Edge-Deployment/.exe** : Visual Studio Code bir uç cihaza modül dağıtmak için kullandığı özellikleri içerir.
+* **~/CloudDrive/LVA-Sample/appsettings.json** : örnek kodu çalıştırmak için Visual Studio Code tarafından kullanılır.
 
 Bu adımlar için dosyalar gereklidir:
 
 1. GitHub bağlantısından depoyu kopyalayın https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp .
 1. Visual Studio Code başlatın ve depoyu indirdiğiniz klasörü açın.
-1. Visual Studio Code, src/buluttan cihaza-Console-App klasörüne gidin ve ** üzerindeappsettings.js**adlı bir dosya oluşturun. Bu dosya, programı çalıştırmak için gereken ayarları içerir.
+1. Visual Studio Code, src/buluttan cihaza-Console-App klasörüne gidin ve **üzerindeappsettings.js** adlı bir dosya oluşturun. Bu dosya, programı çalıştırmak için gereken ayarları içerir.
 1. Dosyadaki ~/CloudDrive/LVA-Sample/appsettings.jsiçeriğini kopyalayın. Metin şöyle görünmelidir:
     ```
     {  
@@ -92,8 +92,8 @@ Bu adımlar için dosyalar gereklidir:
     ```
     IoT Hub bağlantı dizesi, Azure IoT Hub aracılığıyla Edge modüllerine komut göndermek için Visual Studio Code kullanmanıza olanak sağlar.
     
-1. Ardından src/Edge klasörüne gidin ve **. env**adlı bir dosya oluşturun.
-1. ~/CloudDrive/LVA-Sample/.exe adlı dosyadaki içeriği kopyalayın. Metin şöyle görünmelidir:
+1. Ardından src/Edge klasörüne gidin ve **. env** adlı bir dosya oluşturun.
+1. ~/CloudDrive/LVA-Sample/Edge-Deployment/.exe dosyasında içeriğini kopyalayın. Metin şöyle görünmelidir:
 
     ```
     SUBSCRIPTION_ID="<Subscription ID>"  
@@ -114,14 +114,14 @@ Bu adımlar için dosyalar gereklidir:
 
 Visual Studio Code içinde src/Edge/deployment.template.jsaçın. Bu şablon, sınır cihazına (Azure Linux VM) hangi Edge modüllerinin dağıtılacağını tanımlar. **Modüller** bölümünde aşağıdaki adlarla iki giriş vardır:
 
-* **Lvaedge**: bu, IoT Edge modülündeki canlı video analizinden.
-* **rtspsim**: Bu RTSP simülatör.
+* **Lvaedge** : bu, IoT Edge modülündeki canlı video analizinden.
+* **rtspsim** : Bu RTSP simülatör.
 
 Ardından src/buluttan cihaza-Console-App klasörüne gidin. Burada, oluşturduğunuz dosyada, diğer birkaç dosyayla birlikte appsettings.jsgörürsünüz:
 
-* **C2D-Console-App. csproj**: Visual Studio Code için proje dosyası.
-* **operations.js**: Bu dosya, çalıştırdığınız farklı işlemleri listeler.
-* **Program.cs**: örnek program kodu:
+* **C2D-Console-App. csproj** : Visual Studio Code için proje dosyası.
+* **operations.js** : Bu dosya, çalıştırdığınız farklı işlemleri listeler.
+* **Program.cs** : örnek program kodu:
     * Uygulama ayarlarını yükler.
     * IoT Edge modülünde canlı video analizi tarafından kullanıma sunulan doğrudan yöntemleri çağırır. [Doğrudan yöntemlerini](direct-methods.md)çağırarak canlı video akışlarını çözümlemek için modülünü kullanabilirsiniz.
     * , **TERMINAL** penceresinde programın çıkışını ve **Çıkış** penceresinde modül tarafından oluşturulan olayları incelemeniz için duraklamalar.
@@ -135,16 +135,16 @@ Dağıtım bildirimi, bir sınır cihazına hangi modüllerin dağıtıldığın
 1. Sol alt köşedeki **Azure ıOT hub** bölmesinin yanındaki **daha fazla eylem** simgesini seçerek IoT Hub bağlantı dizesini ayarlayın. Dosyayı src/buluttan-cihazdan-Console-App/appsettings.jsdosyasından kopyalayın. 
 
     ![IoT Hub bağlantı dizesi ayarla](./media/quickstarts/set-iotconnection-string.png)
-1. Dosyasında src/Edge/deployment.template.jsöğesine sağ tıklayın ve **IoT Edge dağıtım bildirimi oluştur**' u seçin. Visual Studio Code, dağıtım şablonu dosyasında bulunan değişkenleri değiştirmek için. env dosyasındaki değerleri kullanır. Bu eylem, ** üzerindedeployment.amd64.js**adlı src/Edge/config klasöründe bir bildirim dosyası oluşturur.
+1. Dosyasında src/Edge/deployment.template.jsöğesine sağ tıklayın ve **IoT Edge dağıtım bildirimi oluştur** ' u seçin. Visual Studio Code, dağıtım şablonu dosyasında bulunan değişkenleri değiştirmek için. env dosyasındaki değerleri kullanır. Bu eylem, **üzerindedeployment.amd64.js** adlı src/Edge/config klasöründe bir bildirim dosyası oluşturur.
 
    ![IoT Edge dağıtım bildirimi oluştur](./media/quickstarts/generate-iot-edge-deployment-manifest.png)
-1. Dosyasında src/Edge/config/deployment.amd64.jsöğesine sağ tıklayın ve **tek cihaz Için dağıtım oluştur**' u seçin.
+1. Dosyasında src/Edge/config/deployment.amd64.jsöğesine sağ tıklayın ve **tek cihaz Için dağıtım oluştur** ' u seçin.
 
    ![Tek cihaz için dağıtım oluştur](./media/quickstarts/create-deployment-single-device.png)
-1. Daha sonra **IoT Hub bir cihaz seçmeniz**istenir. Aşağı açılan listeden LVA-örnek-cihaz ' ı seçin.
+1. Daha sonra **IoT Hub bir cihaz seçmeniz** istenir. Aşağı açılan listeden LVA-örnek-cihaz ' ı seçin.
 1. Yaklaşık 30 saniye içinde, sol alt bölümdeki Azure IoT Hub yenileyin. Edge cihazında aşağıdaki modüllerin dağıtıldığını görmeniz gerekir:
-    * IoT Edge 'da canlı video analizi (modül adı **Lvaedge**)
-    * RTSP simülatör (modül adı **rtspsım**)
+    * IoT Edge 'da canlı video analizi (modül adı **Lvaedge** )
+    * RTSP simülatör (modül adı **rtspsım** )
  
     ![IoT Hub](./media/continuous-video-recording-tutorial/iot-hub.png)
 
@@ -154,20 +154,73 @@ Canlı video akışını kaydetmek için IoT Edge modülünde canlı video anali
 
 1. Visual Studio Code Gezgin bölmesini açın ve sol alt köşedeki **Azure IoT Hub** arayın.
 1. **Cihazlar** düğümünü genişletin.
-1. LVA-örnek-cihaz dosyasına sağ tıklayın ve **Izlemeyi Başlat yerleşik olay uç noktası**' nı seçin.
+1. LVA-örnek-cihaz dosyasına sağ tıklayın ve **Izlemeyi Başlat yerleşik olay uç noktası** ' nı seçin.
 
     ![Yerleşik olay uç noktasını Izlemeye başla](./media/quickstarts/start-monitoring-iothub-events.png)
 
 ## <a name="run-the-program"></a>Programı çalıştırma 
 
 1. Visual Studio Code, **Uzantılar** sekmesini açın (veya CTRL + SHIFT + X tuşlarına basın) ve Azure IoT Hub aratın.
-1. Sağ tıklayıp **uzantı ayarları**' nı seçin.
+1. Sağ tıklayıp **uzantı ayarları** ' nı seçin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Medya grafiği" i arayın ve etkinleştirin.
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Uzantı ayarları":::
+1. "Ayrıntılı Iletiyi göster" i arayın ve etkinleştirin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Medya grafiği"
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Ayrıntılı Iletiyi göster":::
+1. <!--In Visual Studio Code, go-->Src/buluttan cihaza-Console-App/operations.js' a gidin.
+1. **Graphtopologyset** düğümü altında aşağıdakileri düzenleyin:
+
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json" `
+1. Ardından, **Graphınstanceset** ve **Graphtopologydelete** düğümlerinin altında, **topologyname** değerinin önceki grafik topolojisinde **Name** özelliğinin değeriyle eşleştiğinden emin olun:
+
+    `"topologyName" : "CVRToAMSAsset"`  
+1. [Topolojiyi](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json) bir tarayıcıda açın ve assetNamePattern bölümüne bakın. Benzersiz bir ada sahip bir varlığınızın olduğundan emin olmak için dosyadaki operations.jsgrafik örneği adını (örnek grafik-1 ' in varsayılan değerinden) değiştirmek isteyebilirsiniz.
+
+    `"assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}"`    
+1. F5 ' i seçerek bir hata ayıklama oturumu başlatın. **TERMINAL** penceresinde yazdırılmış bazı iletiler görürsünüz.
+1. operations.jsdosya üzerinde Graphtopologyılist ve Graphınstancelist çağrıları ile başlatılır. Önceki hızlı başlangıçlardan veya öğreticilerden sonra kaynakları temizlediyseniz, bu eylem boş listeler döndürür ve aşağıdaki gibi **ENTER** ' u seçmeniz için duraklamalar:
+
+    ```
+    --------------------------------------------------------------------------
+    Executing operation GraphTopologyList
+    -----------------------  Request: GraphTopologyList  --------------------------------------------------
+    {
+      "@apiVersion": "1.0"
+    }
+    ---------------  Response: GraphTopologyList - Status: 200  ---------------
+    {
+      "value": []
+    }
+    --------------------------------------------------------------------------
+    Executing operation WaitForInput
+    Press Enter to continue
+    ```
+
+1. **TERMINAL** penceresinde **ENTER** seçeneğini belirledikten sonra, bir sonraki doğrudan yöntem çağrısı kümesi yapılır:
+   * Önceki Topologyıurl kullanarak Graphtopologyıset çağrısı
+   * Aşağıdaki gövdeyi kullanarak Graphınstanceset öğesine çağrı
+     
+     ```
+     {
+       "@apiVersion": "1.0",
+       "name": "Sample-Graph-1",
+       "properties": {
+         "topologyName": "CVRToAMSAsset",
+         "description": "Sample graph description",
+         "parameters": [
+           {
+             "name": "rtspUrl",
+             "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
+           },
+           {
+             "name": "rtspUserName",
+             "value": "testuser"
+           },
+           {
+             "name": "rtspPassword",
+             "value": "testpassword"
            }
          ]
        }
@@ -179,7 +232,7 @@ Canlı video akışını kaydetmek için IoT Edge modülünde canlı video anali
 1. Artık Visual Studio Code **Çıkış** penceresine geçerseniz, IoT Edge modülündeki canlı video analizi tarafından IoT Hub gönderilen iletileri görürsünüz.
 
    Bu iletiler aşağıdaki bölümde ele alınmıştır.
-1. Grafik örneği çalışmaya devam eder ve videoyu kaydeder. RTSP simülatörü kaynak videoyu döngüye sokmaya devam eder. Kaydı durdurmak için, **TERMINAL** penceresine dönün ve **ENTER**' u seçin. Bir sonraki çağrı dizisi, kullanarak kaynakları temizlemek için yapılır:
+1. Grafik örneği çalışmaya devam eder ve videoyu kaydeder. RTSP simülatörü kaynak videoyu döngüye sokmaya devam eder. Kaydı durdurmak için, **TERMINAL** penceresine dönün ve **ENTER** ' u seçin. Bir sonraki çağrı dizisi, kullanarak kaynakları temizlemek için yapılır:
 
    * Graph örneğini devre dışı bırakmak için Graphınstancedeactivate öğesine bir çağrı.
    * Örneği silmek için Graphınstancedelete öğesine çağrı.
@@ -316,7 +369,7 @@ Medya grafiği tarafından oluşturulan Media Services varlığı, Azure portal 
 
     ![Yeni varlık](./media/continuous-video-recording-tutorial/new-asset.png)
 
-1. Açılan sihirbazda, varsayılan seçenekleri kabul edin ve **Ekle**' yi seçin. Daha fazla bilgi için bkz. [video kayıttan yürütme](video-playback-concept.md).
+1. Açılan sihirbazda, varsayılan seçenekleri kabul edin ve **Ekle** ' yi seçin. Daha fazla bilgi için bkz. [video kayıttan yürütme](video-playback-concept.md).
 
     > [!TIP]
     > [Akış uç noktanızın çalıştığından](../latest/streaming-endpoint-concept.md)emin olun.

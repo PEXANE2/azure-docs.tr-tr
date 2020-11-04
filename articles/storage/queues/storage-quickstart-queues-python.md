@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 57fc0ebc10158b41539d4802aa6a8ebdd466dd90
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 50f15d041f9bcea66400eda0877e9d7914335d74
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783309"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345730"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>Hızlı başlangıç: Python için Azure kuyruk depolama istemci kitaplığı V12
 
@@ -21,26 +21,26 @@ Python için Azure kuyruk depolama istemci kitaplığı sürüm 12 ile çalışm
 
 Python için Azure kuyruk depolama istemci kitaplığı V12 şu şekilde kullanın:
 
-* Bir kuyruk oluşturma
-* Bir kuyruğa ileti ekleme
-* Kuyruktaki iletilere göz atın
-* Kuyruktaki bir iletiyi güncelleştirme
-* Kuyruktan ileti alma
-* Kuyruktaki iletileri silme
-* Bir kuyruk silme
+- Bir kuyruk oluşturma
+- Bir kuyruğa ileti ekleme
+- Kuyruktaki iletilere göz atın
+- Kuyruktaki bir iletiyi güncelleştirme
+- Kuyruktan ileti alma
+- Kuyruktaki iletileri silme
+- Bir kuyruk silme
 
 Ek kaynaklar:
 
-* [API başvuru belgeleri](/python/api/azure-storage-queue/index)
-* [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)
-* [Paket (Python paket dizini)](https://pypi.org/project/azure-storage-queue/)
-* [Örnekler](../common/storage-samples-python.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
+- [API başvuru belgeleri](/python/api/azure-storage-queue/index)
+- [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)
+- [Paket (Python paket dizini)](https://pypi.org/project/azure-storage-queue/)
+- [Örnekler](../common/storage-samples-python.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* Azure depolama hesabı- [depolama hesabı oluşturma](../common/storage-account-create.md)
-* İşletim sisteminiz için [Python](https://www.python.org/downloads/) -2,7, 3,5 veya üzeri
+- Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
+- Azure depolama hesabı- [depolama hesabı oluşturma](../common/storage-account-create.md)
+- İşletim sisteminiz için [Python](https://www.python.org/downloads/) -2,7, 3,5 veya üzeri
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
@@ -48,7 +48,7 @@ Bu bölüm, Python için Azure kuyruk depolama istemci kitaplığı V12 ile çal
 
 ### <a name="create-the-project"></a>Proje oluşturma
 
-Kuyruklar adlı bir Python uygulaması oluşturma *-hızlı başlangıç-V12* .
+Kuyruklar adlı bir Python uygulaması oluşturma *-hızlı başlangıç-V12*.
 
 1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), proje için yeni bir dizin oluşturun.
 
@@ -101,9 +101,9 @@ Bu komut, Python paketi için Azure kuyruk depolama istemci kitaplığını ve b
 
 Azure Kuyruk depolama, çok sayıda iletiyi depolamaya yönelik bir hizmettir. Kuyruk iletisi boyutu 64 KB 'ye kadar olabilir. Bir kuyruk, depolama hesabının toplam kapasite sınırına kadar milyonlarca ileti içerebilir. Kuyruklar genellikle zaman uyumsuz olarak işlenecek iş biriktirme listesi oluşturmak için kullanılır. Kuyruk depolama, üç tür kaynak sunar:
 
-* Depolama hesabı
-* Depolama hesabındaki bir kuyruk
-* Kuyruktaki iletiler
+- Depolama hesabı
+- Depolama hesabındaki bir kuyruk
+- Kuyruktaki iletiler
 
 Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 
@@ -111,22 +111,22 @@ Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 
 Şu kaynaklarla etkileşim kurmak için aşağıdaki Python sınıflarını kullanın:
 
-* [QueueServiceClient](/python/api/azure-storage-queue/azure.storage.queue.queueserviceclient):, `QueueServiceClient` Depolama hesabınızdaki tüm kuyrukları yönetmenizi sağlar.
-* [Queueclient](/python/api/azure-storage-queue/azure.storage.queue.queueclient): `QueueClient` sınıfı, tek bir kuyruğu ve iletilerini yönetmenizi ve düzenlemenizi sağlar.
-* [Queuemessage](/python/api/azure-storage-queue/azure.storage.queue.queuemessage): `QueueMessage` sınıfı, bir kuyrukta [receive_messages](/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) çağrılırken döndürülen ayrı nesneleri temsil eder.
+- [QueueServiceClient](/python/api/azure-storage-queue/azure.storage.queue.queueserviceclient):, `QueueServiceClient` Depolama hesabınızdaki tüm kuyrukları yönetmenizi sağlar.
+- [Queueclient](/python/api/azure-storage-queue/azure.storage.queue.queueclient): `QueueClient` sınıfı, tek bir kuyruğu ve iletilerini yönetmenizi ve düzenlemenizi sağlar.
+- [Queuemessage](/python/api/azure-storage-queue/azure.storage.queue.queuemessage): `QueueMessage` sınıfı, bir kuyrukta [receive_messages](/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) çağrılırken döndürülen ayrı nesneleri temsil eder.
 
 ## <a name="code-examples"></a>Kod örnekleri
 
 Bu örnek kod parçacıkları, Python için Azure kuyruk depolama istemci kitaplığı ile aşağıdaki eylemleri nasıl yapılacağını gösterir:
 
-* [Bağlantı dizesini alma](#get-the-connection-string)
-* [Bir kuyruk oluşturma](#create-a-queue)
-* [Bir kuyruğa ileti ekleme](#add-messages-to-a-queue)
-* [Kuyruktaki iletilere göz atın](#peek-at-messages-in-a-queue)
-* [Kuyruktaki bir iletiyi güncelleştirme](#update-a-message-in-a-queue)
-* [Kuyruktan ileti alma](#receive-messages-from-a-queue)
-* [Kuyruktaki iletileri silme](#delete-messages-from-a-queue)
-* [Bir kuyruk silme](#delete-a-queue)
+- [Bağlantı dizesini alma](#get-the-connection-string)
+- [Bir kuyruk oluşturma](#create-a-queue)
+- [Bir kuyruğa ileti ekleme](#add-messages-to-a-queue)
+- [Kuyruktaki iletilere göz atın](#peek-at-messages-in-a-queue)
+- [Kuyruktaki bir iletiyi güncelleştirme](#update-a-message-in-a-queue)
+- [Kuyruktan ileti alma](#receive-messages-from-a-queue)
+- [Kuyruktaki iletileri silme](#delete-messages-from-a-queue)
+- [Bir kuyruk silme](#delete-a-queue)
 
 ### <a name="get-the-connection-string"></a>Bağlantı dizesini alma
 
@@ -316,5 +316,5 @@ Bu hızlı başlangıçta, bir sıranın nasıl oluşturulacağını ve Python k
 > [!div class="nextstepaction"]
 > [Python Geliştiricileri için Azure](/azure/python/)
 
-* Daha fazla bilgi edinmek için bkz. [Python Için Azure depolama kitaplıkları](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage).
-* Daha fazla Azure kuyruk depolama örnek uygulaması görmek için [Azure kuyruk depolama V12 Python istemci kitaplığı örneklerine](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)geçin.
+- Daha fazla bilgi edinmek için bkz. [Python Için Azure depolama kitaplıkları](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage).
+- Daha fazla Azure kuyruk depolama örnek uygulaması görmek için [Azure kuyruk depolama V12 Python istemci kitaplığı örneklerine](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)geçin.

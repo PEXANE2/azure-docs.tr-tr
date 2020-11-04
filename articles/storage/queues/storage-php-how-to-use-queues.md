@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: aefd03b9d0ce726e086dff96a648e5f3a6b28e6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e5b7ed75f22659a9a38ac761cc61c841102a067
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84809212"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345848"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>PHP’den Kuyruk depolama kullanma
 
@@ -38,7 +38,7 @@ Bu kılavuzda, yerel olarak bir PHP uygulaması içinde veya Azure 'da bir Web u
 ### <a name="install-via-composer"></a>Besteci aracılığıyla Install
 
 1. Projenizin kökünde **composer.js** adlı bir dosya oluşturun ve bu dosyaya aşağıdaki kodu ekleyin:
-   
+
     ```json
     {
       "require": {
@@ -46,9 +46,10 @@ Bu kılavuzda, yerel olarak bir PHP uygulaması içinde veya Azure 'da bir Web u
       }
     }
     ```
+
 2. Proje kökünde **[besteci. phar][composer-phar]** 'yi indirin.
 3. Bir komut istemi açın ve proje kökünde aşağıdaki komutu yürütün
-   
+
     ```
     php composer.phar install
     ```
@@ -89,8 +90,9 @@ UseDevelopmentStorage=true
 
 Azure Kuyruk hizmeti istemcisi oluşturmak için **Queuerestproxy** sınıfını kullanmanız gerekir. Aşağıdaki tekniklerden birini kullanabilirsiniz:
 
-* Bağlantı dizesini doğrudan ona geçirin.
-* Bağlantı dizesini depolamak için Web uygulamanızdaki ortam değişkenlerini kullanın. Bağlantı dizelerini yapılandırmak için bkz. [Azure Web uygulaması yapılandırma ayarları](../../app-service/configure-common.md) belgesi.
+- Bağlantı dizesini doğrudan ona geçirin.
+- Bağlantı dizesini depolamak için Web uygulamanızdaki ortam değişkenlerini kullanın. Bağlantı dizelerini yapılandırmak için bkz. [Azure Web uygulaması yapılandırma ayarları](../../app-service/configure-common.md) belgesi.
+
 Burada özetlenen örnekler için bağlantı dizesi doğrudan geçirilir.
 
 ```php
@@ -139,12 +141,10 @@ catch(ServiceException $e){
 
 > [!NOTE]
 > Meta veri anahtarları için büyük/küçük harf duyarlılığı kullanmamalısınız. Tüm anahtarlar hizmetten küçük harfle okunurdur.
-> 
-> 
 
 ## <a name="add-a-message-to-a-queue"></a>Kuyruğa ileti ekleme
 
-Bir kuyruğa ileti eklemek için **Queuerestproxy->createMessage**kullanın. Yöntemi sıra adını, ileti metnini ve ileti seçeneklerini (isteğe bağlı) alır.
+Bir kuyruğa ileti eklemek için **Queuerestproxy->createMessage** kullanın. Yöntemi sıra adını, ileti metnini ve ileti seçeneklerini (isteğe bağlı) alır.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -174,7 +174,7 @@ catch(ServiceException $e){
 
 ## <a name="peek-at-the-next-message"></a>Sonraki iletiye gözatın
 
-**Queuerestproxy->peekMessages**' i çağırarak sıradan kaldırmadan kuyruğun önünde bir iletiye (veya iletilere) göz atmayı sağlayabilirsiniz. Varsayılan olarak, **peekMessage** yöntemi tek bir ileti döndürür, ancak **PeekMessagesOptions->setnumberofmessages** yöntemini kullanarak bu değeri değiştirebilirsiniz.
+**Queuerestproxy->peekMessages** ' i çağırarak sıradan kaldırmadan kuyruğun önünde bir iletiye (veya iletilere) göz atmayı sağlayabilirsiniz. Varsayılan olarak, **peekMessage** yöntemi tek bir ileti döndürür, ancak **PeekMessagesOptions->setnumberofmessages** yöntemini kullanarak bu değeri değiştirebilirsiniz.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -223,7 +223,7 @@ else{
 
 ## <a name="de-queue-the-next-message"></a>Sonraki iletiyi sıradan çıkarmak
 
-Kodunuz bir iletiyi iki adımda kuyruktan kaldırır. Önce **Queuerestproxy->listMessages**' i çağırarak iletiyi kuyruktan okuyan diğer herhangi bir koda görünmez hale getirir. Varsayılan olarak bu ileti 30 saniye görünmez kalır. (İleti bu zaman diliminde silinmeziyorsa, kuyrukta yeniden görünür hale gelir.) İletiyi kuyruktan kaldırmayı tamamlaması için **Queuerestproxy->deleteMessage**' ı çağırmanız gerekir. Bir iletiyi kaldırmanın bu iki adımlı işlemi, kodunuz, donanım veya yazılım arızasından kaynaklanan bir iletiyi işleyemediğinde, kodunuzun başka bir örneğinin aynı mesajı almasını ve yeniden denemesini sağlar. Kodunuz, ileti işlendikten hemen sonra **deleteMessage** ' i çağırır.
+Kodunuz bir iletiyi iki adımda kuyruktan kaldırır. Önce **Queuerestproxy->listMessages** ' i çağırarak iletiyi kuyruktan okuyan diğer herhangi bir koda görünmez hale getirir. Varsayılan olarak bu ileti 30 saniye görünmez kalır. (İleti bu zaman diliminde silinmeziyorsa, kuyrukta yeniden görünür hale gelir.) İletiyi kuyruktan kaldırmayı tamamlaması için **Queuerestproxy->deleteMessage** ' ı çağırmanız gerekir. Bir iletiyi kaldırmanın bu iki adımlı işlemi, kodunuz, donanım veya yazılım arızasından kaynaklanan bir iletiyi işleyemediğinde, kodunuzun başka bir örneğinin aynı mesajı almasını ve yeniden denemesini sağlar. Kodunuz, ileti işlendikten hemen sonra **deleteMessage** ' i çağırır.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -265,7 +265,7 @@ catch(ServiceException $e){
 
 ## <a name="change-the-contents-of-a-queued-message"></a>Kuyruğa alınan iletinin içeriğini değiştirme
 
-Kuyruktaki bir iletinin içeriğini **Queuerestproxy->updateMessage**komutunu çağırarak sırada değiştirebilirsiniz. Eğer ileti bir iş görevini temsil ediyorsa, bu özelliği kullanarak iş görevinin durumunu güncelleştirebilirsiniz. Aşağıdaki kod kuyruk iletisini yeni içerikle güncelleştirir ve görünürlük zaman aşımını başka bir 60 saniye uzatmak üzere ayarlar. Bu, iletiyle ilişkili çalışmanın durumunu kaydeder ve istemciye ileti üzerinde çalışmaya devam etmesi için başka bir dakika verir. Bir işleme adımı donanım veya yazılım arızasından dolayı başarısız olursa baştan başlamanıza gerek kalmadan kuyruk iletilerindeki çok adımlı iş akışlarını izlemek için bu yöntemi kullanabilirsiniz. Genellikle bir yeniden deneme sayacı tutmanı gerekir ve bir ileti *n* seferden daha fazla yeniden denenirse, silebilirsiniz. Bu, her işlendiğinde bir uygulama hatası tetikleyen bir iletiye karşı koruma sağlar.
+Kuyruktaki bir iletinin içeriğini **Queuerestproxy->updateMessage** komutunu çağırarak sırada değiştirebilirsiniz. Eğer ileti bir iş görevini temsil ediyorsa, bu özelliği kullanarak iş görevinin durumunu güncelleştirebilirsiniz. Aşağıdaki kod kuyruk iletisini yeni içerikle güncelleştirir ve görünürlük zaman aşımını başka bir 60 saniye uzatmak üzere ayarlar. Bu, iletiyle ilişkili çalışmanın durumunu kaydeder ve istemciye ileti üzerinde çalışmaya devam etmesi için başka bir dakika verir. Bir işleme adımı donanım veya yazılım arızasından dolayı başarısız olursa baştan başlamanıza gerek kalmadan kuyruk iletilerindeki çok adımlı iş akışlarını izlemek için bu yöntemi kullanabilirsiniz. Genellikle bir yeniden deneme sayacı tutmanı gerekir ve bir ileti *n* seferden daha fazla yeniden denenirse, silebilirsiniz. Bu, her işlendiğinde bir uygulama hatası tetikleyen bir iletiye karşı koruma sağlar.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -425,8 +425,8 @@ catch(ServiceException $e){
 
 Azure kuyruk depolama hakkında temel bilgileri öğrendiğinize göre, daha karmaşık depolama görevleri hakkında daha fazla bilgi edinmek için aşağıdaki bağlantıları izleyin:
 
-* [Azure Storage php Istemci kitaplığı Için API başvurusunu](https://azure.github.io/azure-storage-php/) ziyaret edin
-* [Gelişmiş kuyruk örneğine](https://github.com/Azure/azure-storage-php/blob/master/samples/QueueSamples.php)bakın.
+- [Azure Storage php Istemci kitaplığı Için API başvurusunu](https://azure.github.io/azure-storage-php/) ziyaret edin
+- [Gelişmiş kuyruk örneğine](https://github.com/Azure/azure-storage-php/blob/master/samples/QueueSamples.php)bakın.
 
 Daha fazla bilgi için bkz. [php Geliştirici Merkezi](https://azure.microsoft.com/develop/php/).
 

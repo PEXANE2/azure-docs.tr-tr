@@ -11,16 +11,16 @@ ms.author: tamram
 ms.reviewer: ozguns
 ms.subservice: queues
 ms.custom: contperfq1
-ms.openlocfilehash: 2593f1b7ea4cfabe0243fe6f830d718896e68473
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc6c4e57d0e04cc85bd83c11ba583b3f0b24fa82
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715517"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346001"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-in-the-azure-portal"></a>Azure portal kuyruk verilerine erişim yetkisi verme seçeneğini belirleyin
 
-[Azure Portal](https://portal.azure.com)kullanarak kuyruk verilerine eriştiğinizde, Portal, kapsamakta olan Azure depolama 'ya istek yapar. Azure depolama 'ya yönelik bir isteğe Azure AD hesabınız veya depolama hesabı erişim anahtarı kullanılarak yetki atanabilir. Portal hangi yöntemi kullandığınızı gösterir ve uygun izinleriniz varsa iki arasında geçiş yapmanızı sağlar.  
+[Azure Portal](https://portal.azure.com)kullanarak kuyruk verilerine eriştiğinizde, Portal, kapsamakta olan Azure depolama 'ya istek yapar. Azure depolama 'ya yönelik bir isteğe Azure AD hesabınız veya depolama hesabı erişim anahtarı kullanılarak yetki atanabilir. Portal hangi yöntemi kullandığınızı gösterir ve uygun izinleriniz varsa iki arasında geçiş yapmanızı sağlar.
 
 ## <a name="permissions-needed-to-access-queue-data"></a>Kuyruk verilerine erişmek için gereken izinler
 
@@ -28,16 +28,16 @@ Azure portal kuyruk verilerine erişimi nasıl yetkilendirmek istediğinize bağ
 
 ### <a name="use-the-account-access-key"></a>Hesap erişim anahtarını kullan
 
-Hesap erişim anahtarıyla kuyruk verilerine erişmek için, size atanmış bir Azure rolüne sahip olmanız gerekir. Bu işlem, **Microsoft. Storage/storageAccounts/ListKeys/Action**Azure RBAC eylemini içerir. Bu Azure rolü yerleşik veya özel bir rol olabilir. **Microsoft. Storage/storageAccounts/ListKeys/Action** 'ı destekleyen yerleşik roller şunlardır:
+Hesap erişim anahtarıyla kuyruk verilerine erişmek için, size atanmış bir Azure rolüne sahip olmanız gerekir. Bu işlem, **Microsoft. Storage/storageAccounts/ListKeys/Action** Azure RBAC eylemini içerir. Bu Azure rolü yerleşik veya özel bir rol olabilir. **Microsoft. Storage/storageAccounts/ListKeys/Action** 'ı destekleyen yerleşik roller şunlardır:
 
 - Azure Resource Manager [Owner](../../role-based-access-control/built-in-roles.md#owner) rolü
 - Azure Resource Manager [katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor) rolü
 - [Depolama hesabı katılımcısı](../../role-based-access-control/built-in-roles.md#storage-account-contributor) rolü
 
-Azure portal kuyruk verilerine erişmeye çalıştığınızda, portal önce **Microsoft. Storage/storageAccounts/ListKeys/Action**ile bir rol atanıp atanmadığını denetler. Bu eylemle bir rol atanmışsa, Portal kuyruk verilerine erişmek için hesap anahtarını kullanır. Bu eylemle bir rol atanmamışsa, Portal Azure AD hesabınızı kullanarak verilere erişmeye çalışır.
+Azure portal kuyruk verilerine erişmeye çalıştığınızda, portal önce **Microsoft. Storage/storageAccounts/ListKeys/Action** ile bir rol atanıp atanmadığını denetler. Bu eylemle bir rol atanmışsa, Portal kuyruk verilerine erişmek için hesap anahtarını kullanır. Bu eylemle bir rol atanmamışsa, Portal Azure AD hesabınızı kullanarak verilere erişmeye çalışır.
 
 > [!NOTE]
-> Klasik abonelik yöneticisi rolleri hizmet yöneticisi ve Co-Administrator Azure Resource Manager [sahip](../../role-based-access-control/built-in-roles.md#owner) rolünün eşdeğerini içerir. **Sahip** rolü, **Microsoft. Storage/storageaccounts/ListKeys/ACTION**dahil olmak üzere tüm eylemleri içerir, bu nedenle bu yönetici rollerinden birine sahip bir kullanıcı da hesap anahtarıyla kuyruk verilerine erişebilir. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
+> Klasik abonelik yöneticisi rolleri hizmet yöneticisi ve Co-Administrator Azure Resource Manager [sahip](../../role-based-access-control/built-in-roles.md#owner) rolünün eşdeğerini içerir. **Sahip** rolü, **Microsoft. Storage/storageaccounts/ListKeys/ACTION** dahil olmak üzere tüm eylemleri içerir, bu nedenle bu yönetici rollerinden birine sahip bir kullanıcı da hesap anahtarıyla kuyruk verilerine erişebilir. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
 
 ### <a name="use-your-azure-ad-account"></a>Azure AD hesabınızı kullanın
 
@@ -58,11 +58,11 @@ Kuyruk verilerinize erişimi destekleyen yerleşik roller şunlardır:
 Klasik abonelik Yöneticisi rolüne sahip sıraların listelenmesi desteklenmez. Kuyrukları listelemek için, bir kullanıcının bunlara Azure Resource Manager **okuyucu** rolüne, **depolama kuyruğu veri okuyucusu** rolüne veya **depolama kuyruğu verileri katılımcısı** rolüne atanmış olması gerekir.
 
 > [!IMPORTANT]
-> Azure portal Depolama Gezgini önizleme sürümü, kuyruk verilerini görüntülemek ve değiştirmek için Azure AD kimlik bilgilerini kullanmayı desteklemez. Azure portal Depolama Gezgini, her zaman verilere erişmek için hesap anahtarlarını kullanır. Azure portal Depolama Gezgini kullanmak için **Microsoft. Storage/storageAccounts/ListKeys/Action**içeren bir rol atanmalıdır.
+> Azure portal Depolama Gezgini önizleme sürümü, kuyruk verilerini görüntülemek ve değiştirmek için Azure AD kimlik bilgilerini kullanmayı desteklemez. Azure portal Depolama Gezgini, her zaman verilere erişmek için hesap anahtarlarını kullanır. Azure portal Depolama Gezgini kullanmak için **Microsoft. Storage/storageAccounts/ListKeys/Action** içeren bir rol atanmalıdır.
 
 ## <a name="navigate-to-queues-in-the-azure-portal"></a>Azure portal kuyruklara gitme
 
-Portalda kuyruk verilerini görüntülemek için depolama hesabınıza **Genel Bakış ' a** gidin ve **kuyruklara**yönelik bağlantılara tıklayın. Alternatif olarak, menüdeki **kuyruk hizmeti** bölümlerine gidebilirsiniz.
+Portalda kuyruk verilerini görüntülemek için depolama hesabınıza **Genel Bakış ' a** gidin ve **kuyruklara** yönelik bağlantılara tıklayın. Alternatif olarak, menüdeki **kuyruk hizmeti** bölümlerine gidebilirsiniz.
 
 :::image type="content" source="media/authorize-queue-access-portal/queue-access-portal.png" alt-text="Azure portal kuyruk verilerine nasıl gidebileceğiniz gösteren ekran görüntüsü":::
 
@@ -74,11 +74,11 @@ Bir kuyruğa gittiğinizde, Azure portal kimlik doğrulaması için şu anda hes
 
 Hesap erişim anahtarını kullanarak kimlik doğrulaması yapıyorsanız, portalda kimlik doğrulama yöntemi olarak belirtilen **erişim anahtarı** ' nı görürsünüz:
 
-:::image type="content" source="media/authorize-queue-access-portal/auth-method-access-key.png" alt-text="Azure portal kuyruk verilerine nasıl gidebileceğiniz gösteren ekran görüntüsü":::
+:::image type="content" source="media/authorize-queue-access-portal/auth-method-access-key.png" alt-text="Hesap anahtarı ile Şu anda kuyruklara erişen kullanıcı gösteren ekran görüntüsü":::
 
 Azure AD hesabı 'nı kullanmaya geçiş yapmak için görüntüde vurgulanan bağlantıya tıklayın. Size atanan Azure rolleri aracılığıyla uygun izinleriniz varsa, devam edebilirsiniz. Ancak doğru izinleriniz yoksa, aşağıdakine benzer bir hata iletisi görürsünüz:
 
-:::image type="content" source="media/authorize-queue-access-portal/auth-error-azure-ad.png" alt-text="Azure portal kuyruk verilerine nasıl gidebileceğiniz gösteren ekran görüntüsü":::
+:::image type="content" source="media/authorize-queue-access-portal/auth-error-azure-ad.png" alt-text="Azure AD hesabı erişimi desteklemiyorsa gösterilen hata":::
 
 Azure AD hesabınızda görüntüleme izinleri yoksa listede hiçbir kuyruk görünmediğine dikkat edin. Kimlik doğrulaması için erişim anahtarını yeniden kullanmak üzere **anahtara erişmek için** anahtara tıklayın.
 
@@ -86,7 +86,7 @@ Azure AD hesabınızda görüntüleme izinleri yoksa listede hiçbir kuyruk gör
 
 Azure AD hesabınızı kullanarak kimlik doğrulaması yapıyorsanız, portalda kimlik doğrulama yöntemi olarak belirtilen **Azure AD Kullanıcı hesabını** görürsünüz:
 
-:::image type="content" source="media/authorize-queue-access-portal/auth-method-azure-ad.png" alt-text="Azure portal kuyruk verilerine nasıl gidebileceğiniz gösteren ekran görüntüsü":::
+:::image type="content" source="media/authorize-queue-access-portal/auth-method-azure-ad.png" alt-text="Azure AD hesabı ile Şu anda kuyruklara erişen kullanıcı gösteren ekran görüntüsü":::
 
 Hesap erişim anahtarını kullanmaya geçiş yapmak için görüntüde vurgulanan bağlantıya tıklayın. Hesap anahtarına erişiminiz varsa, devam edebilirsiniz. Ancak, hesap anahtarına erişiminizin olmaması durumunda Azure portal bir hata mesajı görüntüler.
 

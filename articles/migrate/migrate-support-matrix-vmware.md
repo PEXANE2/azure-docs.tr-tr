@@ -3,12 +3,12 @@ title: Azure geçişi 'nde VMware değerlendirmesi desteği
 description: Azure geçişi sunucu değerlendirmesi ile VMware VM değerlendirmesi desteği hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 9d5c954be2a6f05e5132a5f57f8169f436719a8d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 8b119b56e7e4c7fac74c57cc5c48fb44f91a7ee6
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93332279"
+ms.locfileid: "93345440"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware değerlendirmesi için destek matrisi 
 
@@ -67,12 +67,11 @@ Sunucu değerlendirmesi, makineleri keşfetmenin yanı sıra makinelerde çalı�
 **Destek** | **Ayrıntılar**
 --- | ---
 **Desteklenen makineler** | Uygulama bulma Şu anda yalnızca VMware VM 'Leri için destekleniyor. Her bir Azure geçişi gerecinden en fazla 10000 VMware VM 'ye yüklenmiş uygulamaları bulabilirsiniz.
+**İşletim sistemleri** | Uygulama bulma, tüm Windows ve Linux sürümlerini çalıştıran VM 'Ler için desteklenir.
+**VM gereksinimleri** | VMware araçlarının, uygulamaları keşfetmesini istediğiniz VM 'lerde yüklü ve çalışıyor olması gerekir. <br/><br/> VMware araçları sürümü 10.2.0 'dan daha sonra olmalıdır.<br/><br/> VM 'Lerin PowerShell sürüm 2,0 veya sonraki bir sürümü yüklü olmalıdır.
 **Bulma** | Uygulama bulma aracısız. Makine konuk kimlik bilgilerini kullanır ve WMI ve SSH çağrılarını kullanarak makinelere uzaktan erişir.
-**VM desteği** | Uygulama bulma, tüm Windows ve Linux sürümlerini çalıştıran VM 'Ler için desteklenir.
 **vCenter** | Değerlendirme için kullanılan vCenter Server salt oku hesabı, **Virtual Machines**  >  uygulama bulma için VM ile etkileşime geçmek üzere sanal makineler **Konuk işlemleri** için etkinleştirilmiş ayrıcalıklara ihtiyaç duyuyor.
 **VM erişimi** | Uygulama bulma 'nın uygulama bulma için VM 'de yerel bir kullanıcı hesabı olması gerekir.<br/><br/> Azure geçişi Şu anda tüm Windows sunucuları için bir kimlik bilgisi ve tüm Linux sunucuları için bir kimlik bilgisi kullanımını desteklemektedir.<br/><br/> Windows VM 'ler için bir Konuk Kullanıcı hesabı ve tüm Linux sanal makineleri için normal/normal kullanıcı hesabı (sudo erişimi olmayan) oluşturursunuz.
-**VMware araçları** | Keşif yapmak istediğiniz VM 'lerde VMware araçları yüklü ve çalışır olmalıdır. <br/><br/> VMware araçları sürümü 10.2.0 'dan daha sonra olmalıdır.
-**PowerShell** | VM 'Lerin PowerShell sürüm 2,0 veya sonraki bir sürümü yüklü olmalıdır.
 **Bağlantı noktası erişimi** | Azure geçişi gereci, uygulamaları bulmayı istediğiniz VM 'Leri çalıştıran ESXi konaklarında TCP bağlantı noktası 443 ' e bağlanabilmelidir. VCenter Server, uygulama bilgilerini içeren dosyayı indirmek için bir ESXI ana bilgisayar bağlantısı döndürür.
 **Sınırlar** | Uygulama bulma için, her bir Azure geçişi gereci üzerinde en fazla 10000 VM bulabilirsiniz.
 

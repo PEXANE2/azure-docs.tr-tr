@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 8f0df92eadc4db132d567e708abe6e28e82642d6
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 3f878389f22f3928bc1fc8c89b04353583326da6
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129567"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346052"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Kubernetes Yetkilendirmesi için Azure RBAC kullanma (önizleme)
 
@@ -72,7 +72,6 @@ az extension update --name aks-preview
 - [Yönetilen Azure AD tümleştirmesi](managed-aad.md)gerektirir.
 - Önizleme sırasında Kubernetes yetkilendirmesi için Azure RBAC 'yi var olan kümelerle tümleştirmezsiniz, ancak genel kullanıma (GA) erişebilirsiniz.
 - [Kubectl v 1.18.3 +][az-aks-install-cli]kullanın.
-- Önizleme sırasında, Azure CLı aracılığıyla yalnızca *ad alanı düzeyindeki* izinleri ekleyebilirsiniz.
 - CRD 'Ler varsa ve özel rol tanımları oluşturuyorsanız, şimdi CRDs 'yi kapsamanın tek yolu sağlamaktır `Microsoft.ContainerService/managedClusters/*/read` . AKS, CRD 'Ler için daha ayrıntılı izinler sağlamaya çalışır. Kalan nesneler için, belirli API gruplarını kullanabilirsiniz, örneğin: `Microsoft.ContainerService/apps/deployments/read` .
 - Yeni rol atamalarının, bir yetkilendirme sunucusu tarafından yayılması ve güncellenmesi en fazla 5 dakika sürebilir.
 - Kimlik doğrulaması için yapılandırılmış Azure AD kiracının, AKS kümesini tutan aboneliğin kiracısıyla aynı olması gerekir. 

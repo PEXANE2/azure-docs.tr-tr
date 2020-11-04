@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7cf3caa0e309c1640db6ca2817a91f9db71c5110
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 03655e88d4d4c9183bff71e04bf447f470fcf557
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129924"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348415"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>Stream Analytics için Azure Güvenlik temeli
 
@@ -238,9 +238,9 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](../sec
 
 **Kılavuz** : Azure AD 'nin açıkça atanması gereken yerleşik rolleri vardır. Rolleri, üyeliği bulacak şekilde sorgulabilirler. Yönetim gruplarının üyesi olan hesapları bulmaya yönelik geçici sorgular gerçekleştirmek için Azure AD PowerShell modülünü kullanın.
 
-* [Azure AD 'de PowerShell ile dizin rolü alma](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [Azure AD 'de PowerShell ile dizin rolü alma](/powershell/module/azuread/get-azureaddirectoryrole)
 
-* [Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Azure Güvenlik Merkezi izleme** : Evet
 
@@ -260,7 +260,7 @@ Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](../sec
 
 **Rehberlik** : yönetici rollerine en az ayrıcalıklı erişim ilkesi dahil olmak üzere en iyi uygulamaları takip eden bir kimlik yönetimi ve rol güvenlik planı oluşturun. Azure AD ve Azure kaynaklarına tam zamanında ayrıcalıklı erişim sağlamak için Azure Privileged Identity Management (PıM) kullanın. Yönetim hesaplarının etkinliğini izlemek için Azure PıM uyarılarını ve denetim geçmişini kullanın. Güvenliği aşılmış olabilecek yönetim hesaplarını belirlemenize yardımcı olması için Azure AD güvenlik raporlarını kullanın.
 
-* [Daha fazla bilgi](../active-directory/privileged-identity-management/index.yml)
+* [Daha fazla bilgi edinin](../active-directory/privileged-identity-management/index.yml)
 
 **Azure Güvenlik Merkezi izleme** : Evet
 
@@ -542,7 +542,7 @@ Klasik Azure kaynakları kaynak Graph aracılığıyla bulunabilse de, ileri do�
 
 * [Azure Kaynak Graf ile sorgu oluşturma](../governance/resource-graph/first-query-portal.md)
 
-* [Azure aboneliklerinizi görüntüleme](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure aboneliklerinizi görüntüleme](/powershell/module/az.accounts/get-azsubscription)
 
 * [Azure RBAC 'yi anlama](../role-based-access-control/overview.md)
 
@@ -682,7 +682,7 @@ Ayrıca, Azure Kaynak Grafiği 'ni kullanarak abonelikler içindeki kaynakları 
 
 **Rehberlik** : Azure Stream Analytics yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak Için "Microsoft. StreamAnalytics" ad alanındaki Azure ilke diğer adlarını kullanın. Ayrıca, Azure Stream Analytics ile ilgili yerleşik ilke tanımlarını kullanabilirsiniz; Örneğin, Azure Stream Analytics içindeki tanılama günlükleri etkinleştirilmelidir
 
-* [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](/powershell/module/az.resources/get-azpolicyalias)
 
 * [Azure Ilkesi yerleşik ilke tanımları](../governance/policy/samples/built-in-policies.md)
 
@@ -724,7 +724,7 @@ Ayrıca, Azure Kaynak Grafiği 'ni kullanarak abonelikler içindeki kaynakları 
 
 **Kılavuz** : özel Azure ilkeleri, Azure Resource Manager şablonları, Istenen durum yapılandırma betikleri, Kullanıcı tanımlı işlevler, sorgular dahil olmak üzere kodunuzu güvenli bir şekilde depolamak ve yönetmek için Azure Repos kullanın. Azure DevOps 'da yönettiğiniz kaynaklara erişmek için, Azure DevOps ile tümleşikse veya TFS ile tümleşikse Active Directory belirli kullanıcılara, yerleşik güvenlik gruplarına veya Azure Active Directory (Azure AD) tanımlanmış gruplara izin verebilir veya vermeyebilirsiniz.
 
-* [Azure DevOps 'da kod depolama](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Azure DevOps 'da kod depolama](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
 
 * [Azure DevOps 'da izinler ve gruplar hakkında](/azure/devops/organizations/security/about-permissions)
 
@@ -880,7 +880,7 @@ Depolama hesabı tarafından desteklenen hizmetlerden verileri yedeklemek için 
 
 Müşteri tarafından yönetilen/sunulan anahtarlar Azure CLı veya PowerShell kullanarak Azure Key Vault içinde yönetilebilir.
 
-* [Azure 'da Anahtar Kasası anahtarlarını yedekleme](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure 'da Anahtar Kasası anahtarlarını yedekleme](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Azure Güvenlik Merkezi izleme** : Şu anda kullanılamıyor
 

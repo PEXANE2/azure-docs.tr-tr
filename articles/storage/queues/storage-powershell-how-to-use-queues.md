@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e558b8ca6498b8419ce6d7ce5ff1b161c05ef3c6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a2f1229ab8a292b06dfc43b95d9047ed8d233523
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791146"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345732"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure PowerShell ile Azure Kuyruk depolama işlemleri gerçekleştirme
 
@@ -22,12 +22,12 @@ Azure kuyruk depolama, dünyanın her yerinden HTTP veya HTTPS aracılığıyla 
 
 > [!div class="checklist"]
 >
-> * Bir kuyruk oluşturma
-> * Kuyruğu alma
-> * İleti ekleme
-> * İletiyi oku
-> * İleti silme
-> * Bir kuyruk silme
+> - Bir kuyruk oluşturma
+> - Kuyruğu alma
+> - İleti ekleme
+> - İletiyi oku
+> - İleti silme
+> - Bir kuyruk silme
 
 Bu nasıl yapılır, Azure PowerShell modülünü az sürüm 0,7 veya üstünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps).
 
@@ -127,7 +127,7 @@ $queue.CloudQueue.AddMessageAsync($QueueMessage)
 
 ## <a name="read-a-message-from-the-queue-then-delete-it"></a>Kuyruktaki bir iletiyi okuyun ve silin
 
-İletiler en iyi deneme-ilk çıkar sırasına göre okundu. Bu garanti edilmez. İletiyi kuyruktan okuduğunuzda, kuyruğa bakıyor diğer tüm işlemlerin görünmez hale gelir. Bu, bir donanım veya yazılım arızası nedeniyle kodunuzun iletiyi işleyememesi durumunda, kodunuzun başka bir örneğinin aynı mesajı almasını ve yeniden denemesini sağlar.  
+İletiler en iyi deneme-ilk çıkar sırasına göre okundu. Bu garanti edilmez. İletiyi kuyruktan okuduğunuzda, kuyruğa bakıyor diğer tüm işlemlerin görünmez hale gelir. Bu, bir donanım veya yazılım arızası nedeniyle kodunuzun iletiyi işleyememesi durumunda, kodunuzun başka bir örneğinin aynı mesajı almasını ve yeniden denemesini sağlar.
 
 Bu **geçersiz zaman aşımı** , iletinin işlenmek üzere yeniden kullanılabilmesi için önce ne kadar süreyle görünmez kalabileceğini tanımlar. Varsayılan değer 30 saniyedir.
 
@@ -185,17 +185,17 @@ Bu nasıl yapılır makalesinde, aşağıdakiler dahil olmak üzere PowerShell i
 
 > [!div class="checklist"]
 >
-> * Bir kuyruk oluşturma
-> * Kuyruğu alma
-> * İleti ekleme
-> * Sonraki iletiyi okuyun
-> * İleti silme
-> * Bir kuyruk silme
+> - Bir kuyruk oluşturma
+> - Kuyruğu alma
+> - İleti ekleme
+> - Sonraki iletiyi okuyun
+> - İleti silme
+> - Bir kuyruk silme
 
 ### <a name="microsoft-azure-powershell-storage-cmdlets"></a>Microsoft Azure PowerShell Storage cmdlet 'leri
 
-* [Depolama PowerShell cmdlet’leri](/powershell/module/az.storage)
+- [Depolama PowerShell cmdlet’leri](/powershell/module/az.storage)
 
 ### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Depolama Gezgini
 
-* [Microsoft Azure Depolama Gezgini](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json), Microsoft’un Windows, macOS ve Linux üzerinde Azure Depolama verileriyle görsel olarak çalışmanızı sağlayan ücretsiz ve tek başına uygulamasıdır.
+- [Microsoft Azure Depolama Gezgini](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json), Microsoft’un Windows, macOS ve Linux üzerinde Azure Depolama verileriyle görsel olarak çalışmanızı sağlayan ücretsiz ve tek başına uygulamasıdır.

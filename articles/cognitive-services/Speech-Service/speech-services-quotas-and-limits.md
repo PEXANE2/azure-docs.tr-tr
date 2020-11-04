@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 11/04/2020
 ms.author: alexeyo
-ms.openlocfilehash: 7e22b772ec35ff9b63c99acd81ad6bb5abe328a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a304628e05054124fde6ffe5c2b63177991d8cfd
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567171"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345406"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Konuşma Hizmet Kotaları ve Sınırları
 
@@ -24,20 +24,35 @@ Bu makalede, Azure bilişsel konuşma Hizmetleri kotaları ve tüm [fiyatlandır
 ## <a name="quotas-and-limits-quick-reference"></a>Kotalar ve sınırlar hızlı başvuru
 [Metin okuma kotaları ve sınırlarına](#text-to-speech-quotas-and-limits-per-speech-resource) atlayın
 ### <a name="speech-to-text-quotas-and-limits-per-speech-resource"></a>Konuşma kaynağı başına Konuşmayı Metne Dönüştürme Kotaları ve Sınırları
-"Ayarlanamaz" satırı olmayan parametrelerin altındaki tabloda tüm fiyat katmanları **için ayarlanamaz.**
+Aşağıdaki tablolarda, "ayarlanamaz" satırı olmayan parametreler, tüm fiyat katmanları **için ayarlanamaz.**
+
+#### <a name="online-transcription"></a>Çevrimiçi döküm
 
 | Kota | Ücretsiz (F0)<sup>1</sup> | Standart (S0) |
 |--|--|--|
-| **Çevrimiçi döküm eşzamanlı Istek sınırı (temel ve özel modeller)** |  |  |
-| Varsayılan değer | 1 | 20 |
+| **Eşzamanlı Istek sınırı (temel ve özel modeller)** | 1 | 20 (varsayılan değer) |
 | Ayarlanabilir | <sup>2</sup> yok | Evet<sup>2</sup> |
-| **REST API Istek sınırı ([API Management](../../api-management/api-management-key-concepts.md) uç noktalar)** | 10 saniye başına 100 istek | 10 saniye başına 100 istek |
-| **Veri Içeri aktarma için en büyük veri kümesi dosya boyutu** | 2 GB | 2 GB |
-| **Toplu Iş dökümü için maksimum giriş blobu boyutu** | Yok | 2,5 GB |
-| **Toplu Iş dökümü için maksimum blob kapsayıcısı boyutu** | Yok | 5 GB |
-| **Toplu Iş dökümü için kapsayıcı başına en fazla BLOB sayısı** | Yok | 10000 |
-| **Toplu Iş dökümü için döküm isteği başına en fazla dosya sayısı (giriş olarak birden çok içerik URL 'Si kullanılırken)** | Yok | 1000  |
-| **Toplu Iş dökümü için eşzamanlı çalışan en fazla iş sayısı** | Yok | 2000  |
+
+#### <a name="batch-transcription"></a>Toplu iş dökümü
+| Kota | Ücretsiz (F0)<sup>1</sup> | Standart (S0) |
+|--|--|--|
+| REST API sınırı | Toplu iş dökümü F0 için kullanılamaz | dakikada 300 istek |
+| Maksimum ses girişi dosya boyutu | Yok | 1 GB |
+| Maksimum giriş blobu boyutu (örneğin, bir ZIP arşivinde birden fazla dosya içerebilir; yukarıdaki dosya boyutu sınırını aklınızda bulundurtığınızdan emin olun) | Yok | 2,5 GB |
+| En büyük blob kapsayıcısı boyutu | Yok | 5 GB |
+| Kapsayıcı başına en fazla BLOB sayısı | Yok | 10000 |
+| İstek başına en fazla dosya sayısı (giriş olarak birden çok içerik URL 'Si kullanılırken) | Yok | 1000  |
+| Eşzamanlı çalışan en fazla iş sayısı | Yok | 2000  |
+
+#### <a name="model-customization"></a>Model özelleştirmesi
+| Kota | Ücretsiz (F0)<sup>1</sup> | Standart (S0) |
+|--|--|--|
+| REST API sınırı | dakikada 300 istek | dakikada 300 istek |
+| En fazla konuşma veri kümesi sayısı | 2 | 500 |
+| Veri Içeri aktarma için maksimum akustik veri kümesi dosya boyutu | 2 GB | 2 GB |
+| Veri Içeri aktarma için en büyük dil veri kümesi dosya boyutu | 200 MB | 1,5 GB |
+| Veri Içeri aktarma için maksimum Söyleniş veri kümesi dosya boyutu | 1 KB | 1 MB |
+| `text` [Model oluşturma](https://westcentralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateModel/) API 'si isteğinde parametre kullanılırken maksimum metin boyutu | 200 KB | 500 KB |
 
 <sup>1</sup> **ücretsiz (F0)** fiyatlandırma katmanı için bkz. [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)Ayrıca aylık allowsuyum.<br/>
 <sup>2</sup> [ek açıklamalar](#detailed-description-quota-adjustment-and-best-practices), [en iyi uygulamalar](#general-best-practices-to-mitigate-throttling-during-autoscaling)ve [ayarlama yönergelerine](#speech-to-text-increasing-online-transcription-concurrent-request-limit)bakın.<br/> 
@@ -57,7 +72,7 @@ Bu makalede, Azure bilişsel konuşma Hizmetleri kotaları ve tüm [fiyatlandır
 | **WebSocket 'e özgü kotalar** |  |  |
 |Her açma için üretilen maksimum ses uzunluğu | 10 dakika | 10 dakika |
 |Her açma için en fazla SSML Ileti boyutu |64 KB |64 KB |
-| **REST API Isteği sınırı** | dakikada 20 istek | 5 saniye başına 25 istek |
+| **REST API sınırı** | dakikada 20 istek | 5 saniye başına 25 istek |
 
 
 <sup>3</sup> **ücretsiz (F0)** fiyatlandırma katmanı için bkz. [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)Ayrıca aylık allowsuyum.<br/>
@@ -84,7 +99,7 @@ Varsayılan olarak, eş zamanlı istek sayısı her konuşma kaynağı (temel mo
 
 Eşzamanlı Istek limitini **artırmak, maliyetlerinizi doğrudan etkilemez** . Konuşma Hizmetleri "yalnızca kullandığınız kadar ödeyin" modeli kullanır. Sınır, hizmetin isteklerinizi kısıtlama başlamadan önce ne kadar yüksek ölçeklenebileceğini tanımlar.
 
-**Taban** ve **özel** modellerin eşzamanlı istek sınırları **ayrı ayrı**ayarlanması gerekir.
+**Taban** ve **özel** modellerin eşzamanlı istek sınırları **ayrı ayrı** ayarlanması gerekir.
 
 Eşzamanlı Istek sınırı parametresinin mevcut değeri Azure portal, Command-Line araçları veya API istekleri aracılığıyla görünür **değil** . Mevcut değeri doğrulamak için bir Azure destek Isteği oluşturun.
 
@@ -92,22 +107,22 @@ Eşzamanlı Istek sınırı parametresinin mevcut değeri Azure portal, Command-
 >Kapsayıcılar yalnızca barındırıldığı donanımın CPU 'Ları ile sınırlandırıldığından, [konuşma kapsayıcıları](speech-container-howto.md) eşzamanlı istek sınırı artışı gerektirmez.
 
 #### <a name="have-the-required-information-ready"></a>Gerekli bilgileri hazırlayın:
-- **Taban model**için:
+- **Taban model** için:
   - Konuşma kaynak KIMLIĞI
-  - Bölge
-- **Özel model**için: 
-  - Bölge
+  - Region
+- **Özel model** için: 
+  - Region
   - Özel uç nokta KIMLIĞI
 
-- **Bilgi alma (temel model)**:  
+- **Bilgi alma (temel model)** :  
   - [Azure Portal](https://portal.azure.com/) git
   - Eşzamanlılık Istek sınırını artırmak istediğiniz konuşma kaynağını seçin
-  - *Özellikleri* seçin (*kaynak yönetim* grubu) 
+  - *Özellikleri* seçin ( *kaynak yönetim* grubu) 
   - Aşağıdaki alanların değerlerini kopyalayın ve kaydedin:
     - **Kaynak kimliği**
     - **Konum** (uç nokta bölgeniz)
 
-- **Bilgi alma (özel model)**:
+- **Bilgi alma (özel model)** :
   - [Konuşma Studio](https://speech.microsoft.com/) portalına git
   - Gerekirse oturum açın
   - Özel Konuşma Tanıma Git
@@ -124,7 +139,7 @@ Kaynağınız için eşzamanlı Istek sınırının artışını başlatın veya
 - [Gerekli bilgilere](#have-the-required-information-ready) sahip olduğunuzdan emin olun
 - [Azure Portal](https://portal.azure.com/) git
 - Eşzamanlılık Isteği sınırını artırmak (veya denetlemek için) istediğiniz konuşma kaynağını seçin
-- *Yeni destek isteği* seçin (*destek + sorun giderme* grubu) 
+- *Yeni destek isteği* seçin ( *destek + sorun giderme* grubu) 
 - Azure aboneliğiniz ve Azure kaynağınız hakkında otomatik doldurulmuş bilgilerle yeni bir pencere görüntülenir
 - *Özet* girin ("STT eşzamanlılık Istek sınırını Artır" gibi)
 - *Sorun türü* "kota veya abonelik sorunları" seçeneğini belirleyin
@@ -176,7 +191,7 @@ Kaynağınız için eşzamanlı Istek sınırının artışını başlatın veya
 - [Gerekli bilgilere](#prepare-the-required-information) sahip olduğunuzdan emin olun
 - [Azure Portal](https://portal.azure.com/) git
 - Eşzamanlılık Isteği sınırını artırmak (veya denetlemek için) istediğiniz konuşma kaynağını seçin
-- *Yeni destek isteği* seçin (*destek + sorun giderme* grubu) 
+- *Yeni destek isteği* seçin ( *destek + sorun giderme* grubu) 
 - Azure aboneliğiniz ve Azure kaynağınız hakkında otomatik doldurulmuş bilgilerle yeni bir pencere görüntülenir
 - *Özet* girin ("TTS özel uç nokta eşzamanlılık Istek sınırını Artır" gibi)
 - *Sorun türü* "kota veya abonelik sorunları" seçeneğini belirleyin

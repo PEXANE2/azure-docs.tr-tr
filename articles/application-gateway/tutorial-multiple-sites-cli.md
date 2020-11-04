@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4baafe9f3356e3134626c819c47939b96ab48a79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e72a98ddd5219662c8850326b4f43b25e545177
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595871"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348177"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Azure CLı kullanarak birden çok Web sitesini barındıran bir uygulama ağ geçidi oluşturma
 
-Bir [uygulama ağ geçidi](overview.md) oluştururken Azure CLI’sini [birden çok web sitesi barındırmayı yapılandırmak](multiple-site-overview.md) için kullanabilirsiniz. Bu makalede, sanal makine ölçek kümelerini kullanarak arka uç adres havuzları tanımlarsınız. Ardından sahip olduğunuz dinleyicileri ve kuralları, web trafiğinin havuzlardaki uygun sunuculara ulaşması için yapılandırırsınız. Bu makalede, birden çok etki alanına sahip olduğunuz ve *www \. contoso.com* ve *www \. fabrikam.com*örneklerini kullanan varsayılmaktadır.
+Bir [uygulama ağ geçidi](overview.md) oluştururken Azure CLI’sini [birden çok web sitesi barındırmayı yapılandırmak](multiple-site-overview.md) için kullanabilirsiniz. Bu makalede, sanal makine ölçek kümelerini kullanarak arka uç adres havuzları tanımlarsınız. Ardından sahip olduğunuz dinleyicileri ve kuralları, web trafiğinin havuzlardaki uygun sunuculara ulaşması için yapılandırırsınız. Bu makalede, birden çok etki alanına sahip olduğunuz ve *www \. contoso.com* ve *www \. fabrikam.com* örneklerini kullanan varsayılmaktadır.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -77,7 +77,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
-Uygulama ağ geçidini oluşturmak için [az network application-gateway create](/cli/azure/network/application-gateway#az-network-application-gateway-create) komutunu kullanabilirsiniz. Azure CLI kullanarak bir uygulama ağ geçidi oluşturduğunuzda, kapasite, sku ve HTTP ayarları gibi yapılandırma bilgilerini belirtirsiniz. Uygulama ağ geçidi, *myAGSubnet*’e ve daha önce oluşturduğunuz *myAGPublicIPAddress*’e atanır. 
+Uygulama ağ geçidini oluşturmak için [az network application-gateway create](/cli/azure/network/application-gateway#az-network-application-gateway-create) komutunu kullanabilirsiniz. Azure CLI kullanarak bir uygulama ağ geçidi oluşturduğunuzda, kapasite, sku ve HTTP ayarları gibi yapılandırma bilgilerini belirtirsiniz. Uygulama ağ geçidi, *myAGSubnet* ’e ve daha önce oluşturduğunuz *myAGPublicIPAddress* ’e atanır. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -97,11 +97,11 @@ az network application-gateway create \
 
 Uygulama ağ geçidinin oluşturulması birkaç dakika sürebilir. Uygulama ağ geçidi oluşturulduktan sonra şu yeni özellikleri görürsünüz:
 
-- *appGatewayBackendPool*: Bir uygulama ağ geçidi en az bir arka uç adres havuzuna sahip olmalıdır.
-- *appGatewayBackendHttpSettings*: İletişim için 80 numaralı bağlantı noktasının ve HTTP protokolünün kullanıldığını belirtir.
-- *appGatewayHttpListener*: *appGatewayBackendPool* ile ilişkili varsayılan dinleyicidir.
-- *appGatewayFrontendIP*: *appGatewayHttpListener*’a *myAGPublicIPAddress*’i atar.
-- *kural 1*: *appGatewayHttpListener* ile ilişkili varsayılan yönlendirme kuralıdır.
+- *appGatewayBackendPool* : Bir uygulama ağ geçidi en az bir arka uç adres havuzuna sahip olmalıdır.
+- *appGatewayBackendHttpSettings* : İletişim için 80 numaralı bağlantı noktasının ve HTTP protokolünün kullanıldığını belirtir.
+- *appGatewayHttpListener* : *appGatewayBackendPool* ile ilişkili varsayılan dinleyicidir.
+- *appGatewayFrontendIP* : *appGatewayHttpListener* ’a *myAGPublicIPAddress* ’i atar.
+- *kural 1* : *appGatewayHttpListener* ile ilişkili varsayılan yönlendirme kuralıdır.
 
 ### <a name="add-the-backend-pools"></a>Arka uç havuzlarını ekleme
 
@@ -124,7 +124,7 @@ az network application-gateway address-pool create \
 
 >[!NOTE]
 > Application Gateway veya WAF v2 SKU 'SU ile dinleyici başına 5 adede kadar ana bilgisayar adı yapılandırabilir ve ana bilgisayar adında joker karakterler kullanabilirsiniz. Daha fazla bilgi için bkz. [dinleyicide joker ana bilgisayar adları](multiple-site-overview.md#wildcard-host-names-in-listener-preview) .
->Azure CLı kullanarak bir dinleyicide birden çok konak adı ve joker karakter kullanmak için yerine kullanmanız gerekir `--host-names` `--host-name` . Ana bilgisayar adları ile, en fazla 5 ana bilgisayar adını virgülle ayrılmış değerler olarak belirtebilirsiniz. Örneğin, `--host-names "*.contoso.com,*.fabrikam.com"`
+>Azure CLı kullanarak bir dinleyicide birden çok konak adı ve joker karakter kullanmak için yerine kullanmanız gerekir `--host-names` `--host-name` . Ana bilgisayar adları ile en fazla beş ana bilgisayar adını boşlukla ayrılmış değerler olarak belirtebilirsiniz. Örneğin, `--host-names "*.contoso.com *.fabrikam.com"`
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -175,7 +175,7 @@ az network application-gateway rule delete \
 
 ## <a name="create-virtual-machine-scale-sets"></a>Sanal makine ölçek kümesi oluşturma
 
-Bu örnekte uygulama ağ geçidinde üç arka uç havuzunu destekleyen üç sanal makine ölçek kümesi oluşturursunuz. Oluşturduğunuz ölçek kümeleri *myvmss1*, *myvmss2* ve *myvmss3* olarak adlandırılır. Her bir ölçek kümesi IIS yükleyeceğiniz iki sanal makine örneği içerir.
+Bu örnekte uygulama ağ geçidinde üç arka uç havuzunu destekleyen üç sanal makine ölçek kümesi oluşturursunuz. Oluşturduğunuz ölçek kümeleri *myvmss1* , *myvmss2* ve *myvmss3* olarak adlandırılır. Her bir ölçek kümesi IIS yükleyeceğiniz iki sanal makine örneği içerir.
 
 ```azurecli-interactive
 for i in `seq 1 2`; do

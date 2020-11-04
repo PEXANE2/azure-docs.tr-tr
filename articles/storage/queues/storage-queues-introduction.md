@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: overview
 ms.reviewer: dineshm
-ms.openlocfilehash: d1ec251edf384e8032a67dc66982787d17c75dbd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: f618b7203cdbf99d79079cf81de38c6d15c91981
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781473"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345576"
 ---
 # <a name="what-are-azure-queues"></a>Azure kuyrukları nedir?
 
@@ -23,23 +23,23 @@ Azure Kuyruk Depolama, çok sayıda iletiyi depolamaya yönelik bir hizmettir. H
 
 Kuyruk hizmetinde şu bileşenler bulunur:
 
-![Bir depolama hesabı, kuyruklar ve iletiler arasındaki ilişkiyi gösteren diyagram](./media/storage-queues-introduction/queue1.png)
+![Bir depolama hesabı, kuyruklar ve iletiler arasındaki ilişkiyi gösteren diyagram.](./media/storage-queues-introduction/queue1.png)
 
-* **URL biçimi:** Kuyruklar şu URL biçimi kullanılarak adreslenebilir:
+- **URL biçimi:** Kuyruklar şu URL biçimi kullanılarak adreslenebilir:
 
-    `https://<storage account>.queue.core.windows.net/<queue>`
-  
-    Aşağıdaki URL diyagramdaki bir kuyruğun adresini belirtir:  
-  
-    `https://myaccount.queue.core.windows.net/images-to-download`
+  `https://<storage account>.queue.core.windows.net/<queue>`
 
-* **Depolama hesabı:** Tüm Azure depolama erişimi bir depolama hesabı üzerinden yapılır. Depolama hesabı kapasitesi hakkında daha fazla bilgi için bkz. [Standart depolama hesapları Için ölçeklenebilirlik ve performans hedefleri](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).
+  Aşağıdaki URL diyagramdaki bir kuyruğun adresini belirtir:
 
-* **Kuyruk:** Kuyrukta bir dizi ileti vardır. Sıra **adı tamamen küçük harfle yazılmalıdır.** Kuyrukların adlandırılması hakkında daha fazla bilgi için bkz. [Kuyrukları ve Meta Verileri Adlandırma](/rest/api/storageservices/Naming-Queues-and-Metadata).
+  `https://myaccount.queue.core.windows.net/images-to-download`
 
-* **İleti:** İleti, biçimi ne olursa olsun en çok 64 KB büyüklüktedir. Sürüm 2017-07-29 ' den önce, izin verilen maksimum yaşam süresi yedi gündür. Sürüm 2017-07-29 veya üzeri için, en fazla yaşam süresi herhangi bir pozitif sayı veya iletinin süresinin dolmadığını belirten-1 olabilir. Bu parametre atlanırsa, varsayılan yaşam süresi yedi gündür.
+- **Depolama hesabı:** Tüm Azure depolama erişimi bir depolama hesabı üzerinden yapılır. Depolama hesabı kapasitesi hakkında daha fazla bilgi için bkz. [Standart depolama hesapları Için ölçeklenebilirlik ve performans hedefleri](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).
+
+- **Kuyruk:** Kuyrukta bir dizi ileti vardır. Sıra **adı tamamen küçük harfle yazılmalıdır.** Kuyrukların adlandırılması hakkında daha fazla bilgi için bkz. [Kuyrukları ve Meta Verileri Adlandırma](/rest/api/storageservices/Naming-Queues-and-Metadata).
+
+- **İleti:** İleti, biçimi ne olursa olsun en çok 64 KB büyüklüktedir. Sürüm 2017-07-29 ' den önce, izin verilen maksimum yaşam süresi yedi gündür. Sürüm 2017-07-29 veya üzeri için, en fazla yaşam süresi herhangi bir pozitif sayı veya iletinin süresinin dolmadığını belirten-1 olabilir. Bu parametre atlanırsa, varsayılan yaşam süresi yedi gündür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Depolama hesabı oluşturma](../common/storage-account-create.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json)
-* [.NET kullanarak kuyruklar ile çalışmaya başlama](storage-dotnet-how-to-use-queues.md)
+- [Depolama hesabı oluşturma](../common/storage-account-create.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json)
+- [.NET kullanarak kuyruklar ile çalışmaya başlama](storage-dotnet-how-to-use-queues.md)

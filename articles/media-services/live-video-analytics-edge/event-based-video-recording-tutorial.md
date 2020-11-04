@@ -3,12 +3,12 @@ title: Bulut öğreticiden buluta ve kayıttan yürütmeye yönelik olay tabanl�
 description: Bu öğreticide, bulutta olay tabanlı bir video kaydı kaydetmek ve buluttan kayıttan yürütmek için Azure Live video analizinin Azure IoT Edge nasıl kullanılacağını öğreneceksiniz.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: a2388a01544d2158e7ca6f1692df07b14ec03a93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03c97854673b369db9fe1cb026161a1e81a6bf31
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91773561"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346664"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Öğretici: buluta yönelik olay tabanlı video kaydı ve buluttan kayıttan yürütme
 
@@ -63,7 +63,7 @@ Olay tabanlı video kaydı, bir olay tarafından tetiklenen videoyu kaydetme sü
 Alternatif olarak, yalnızca bir ınpoger hizmeti belirli bir olayın oluştuğunu algıladığında kayıt tetikleyebilirsiniz. Bu öğreticide, bir otobana hareket eden bir eğitim videosunu kullanacaksınız ve her kamyon algılandığında video kliplerini kaydedeceksiniz.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording-tutorial/overview.svg" alt-text="Medya grafiği&quot;:::
+> :::image type="content" source="./media/event-based-video-recording-tutorial/overview.svg" alt-text="Medya grafiği":::
 
 Diyagram, bir [medya grafiğinin](media-graph-concept.md) ve istenen senaryoyu gerçekleştiren ek modüllerin bir resim gösterimidir. Dört IoT Edge modül dahil edilir:
 
@@ -75,26 +75,30 @@ Diyagram, bir [medya grafiğinin](media-graph-concept.md) ve istenen senaryoyu g
 Diyagramda gösterildiği gibi, trafiğin sanal bir şekilde canlı videosunu yakalamak ve bu videoyu iki yola göndermek için medya grafiğinde bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü kullanacaksınız:
 
 * İlk yol, video çerçevelerini belirtilen (azaltılmış) kare hızında çıkaran bir [kare hızı filtre işlemcisi](media-graph-concept.md#frame-rate-filter-processor) düğümüdür. Bu video çerçeveleri bir HTTP uzantısı düğümüne gönderilir. Düğüm daha sonra çerçeveleri görüntüler olarak, bir nesne algılayıcısı olan YOLO v3 olan AI modülüne geçirir. Düğüm, model tarafından algılanan nesneler (bir trafikte araçlar) olan sonuçları alır. HTTP uzantısı düğümü daha sonra IoT Hub ileti havuzu düğümü aracılığıyla sonuçları IoT Edge hub 'ına yayınlar.
-* ObjectCounter modülü, nesne algılama sonuçlarını (trafikte araçlar) içeren IoT Edge hub 'ından ileti alacak şekilde ayarlanır. Modül, bu iletileri denetler ve bir ayar aracılığıyla yapılandırılan belirli bir türdeki nesneleri arar. Böyle bir nesne bulunduğunda bu modül IoT Edge hub 'ına bir ileti gönderir. Bu &quot;nesne bulundu" iletileri daha sonra medya grafiğinin IoT Hub kaynak düğümüne yönlendirilir. Böyle bir ileti alındığında, medya grafiğindeki IoT Hub kaynak düğümü, [sinyal kapısı işlemci](media-graph-concept.md#signal-gate-processor) düğümünü tetikler. Sinyal kapısı işlemci düğümü daha sonra yapılandırılan bir süre için açılır. Video, o süre için varlık havuzu düğümüne ağ geçidi üzerinden akar. Canlı akışın bu bölümü daha sonra [varlık havuzu](media-graph-concept.md#asset-sink) düğümü aracılığıyla Azure Media Services hesabınızdaki bir [varlığa](terminology.md#asset) kaydedilir.
+* ObjectCounter modülü, nesne algılama sonuçlarını (trafikte araçlar) içeren IoT Edge hub 'ından ileti alacak şekilde ayarlanır. Modül, bu iletileri denetler ve bir ayar aracılığıyla yapılandırılan belirli bir türdeki nesneleri arar. Böyle bir nesne bulunduğunda bu modül IoT Edge hub 'ına bir ileti gönderir. Bu "nesne bulundu" iletileri daha sonra medya grafiğinin IoT Hub kaynak düğümüne yönlendirilir. Böyle bir ileti alındığında, medya grafiğindeki IoT Hub kaynak düğümü, [sinyal kapısı işlemci](media-graph-concept.md#signal-gate-processor) düğümünü tetikler. Sinyal kapısı işlemci düğümü daha sonra yapılandırılan bir süre için açılır. Video, o süre için varlık havuzu düğümüne ağ geçidi üzerinden akar. Canlı akışın bu bölümü daha sonra [varlık havuzu](media-graph-concept.md#asset-sink) düğümü aracılığıyla Azure Media Services hesabınızdaki bir [varlığa](terminology.md#asset) kaydedilir.
 
-## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı kurma
+## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı ayarlama
 
 Başlamadan önce, [önkoşullardan](#prerequisites)üçüncü madde işaretini tamamladığınızdan emin olun. Kaynak kurulum betiği bittikten sonra, klasör yapısını göstermek için süslü ayraçları seçin. ~/CloudDrive/LVA-Sample dizininde oluşturulmuş birkaç dosya görürsünüz.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstarts/clouddrive.png" alt-text="Medya grafiği&quot;:::
+> :::image type="content" source="./media/quickstarts/clouddrive.png" alt-text="Uygulama ayarları":::
 
-Diyagram, bir [medya grafiğinin](media-graph-concept.md) ve istenen senaryoyu gerçekleştiren ek modüllerin bir resim gösterimidir. Dört IoT Edge modül dahil edilir:
+Bu öğreticide ilgilendiğiniz dosyalar şunlardır:
 
-* IoT Edge modülünde canlı video analizi.
-* Bir HTTP uç noktasının arkasında bir AI modeli çalıştıran bir Edge modülü. Bu AI modülü, birçok nesne türünü tespit eden [Yolo v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modelini kullanır.
-* Diyagramda bir nesne sayacı olarak adlandırılan nesneleri saymak ve filtrelemek için özel bir modül. Bir nesne sayacı oluşturup bu öğreticide dağıtırsınız.
-* Bir RTSP kamerasının benzetimini yapmak için bir [RTSP simülatör modülü](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) .
-    
-Diyagramda gösterildiği gibi, trafiğin sanal bir şekilde canlı videosunu yakalamak ve bu videoyu iki yola göndermek için medya grafiğinde bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü kullanacaksınız:
+* **~/CloudDrive/LVA-Sample/Edge-Deployment/.exe** : Visual Studio Code bir uç cihaza modül dağıtmak için kullandığı özellikleri içerir.
+* **~/CloudDrive/LVA-Sample/appsetting.json** : örnek kodu çalıştırmak için Visual Studio Code tarafından kullanılır.
 
-* İlk yol, video çerçevelerini belirtilen (azaltılmış) kare hızında çıkaran bir [kare hızı filtre işlemcisi](media-graph-concept.md#frame-rate-filter-processor) düğümüdür. Bu video çerçeveleri bir HTTP uzantısı düğümüne gönderilir. Düğüm daha sonra çerçeveleri görüntüler olarak, bir nesne algılayıcısı olan YOLO v3 olan AI modülüne geçirir. Düğüm, model tarafından algılanan nesneler (bir trafikte araçlar) olan sonuçları alır. HTTP uzantısı düğümü daha sonra IoT Hub ileti havuzu düğümü aracılığıyla sonuçları IoT Edge hub 'ına yayınlar.
-* ObjectCounter modülü, nesne algılama sonuçlarını (trafikte araçlar) içeren IoT Edge hub 'ından ileti alacak şekilde ayarlanır. Modül, bu iletileri denetler ve bir ayar aracılığıyla yapılandırılan belirli bir türdeki nesneleri arar. Böyle bir nesne bulunduğunda bu modül IoT Edge hub 'ına bir ileti gönderir. Bu &quot;nesne bulundu" : "HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX",  
+Bu adımlar için dosyalara ihtiyacınız olacaktır.
+
+1. GitHub bağlantısından depoyu kopyalayın https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp .
+1. Visual Studio Code başlatın ve depoyu indirdiğiniz klasörü açın.
+1. Visual Studio Code, src/buluttan cihaza-Console-App klasörüne gidin ve **üzerindeappsettings.js** adlı bir dosya oluşturun. Bu dosya, programı çalıştırmak için gereken ayarları içerir.
+1. Dosyadaki ~/CloudDrive/LVA-Sample/appsettings.jsiçeriğini kopyalayın. Metin şöyle görünmelidir:
+
+    ```
+    {  
+        "IoThubConnectionString" : "HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX",  
         "deviceId" : "lva-sample-device",  
         "moduleId" : "lvaEdge"  
     }
@@ -102,8 +106,8 @@ Diyagramda gösterildiği gibi, trafiğin sanal bir şekilde canlı videosunu ya
 
     IoT Hub bağlantı dizesi, Azure IoT Hub aracılığıyla Edge modüllerine komut göndermek için Visual Studio Code kullanmanıza olanak sağlar.
     
-1. Ardından src/Edge klasörüne gidin ve **. env**adlı bir dosya oluşturun.
-1. ~/CloudDrive/LVA-Sample/.exe adlı dosyadaki içeriği kopyalayın. Metin şöyle görünmelidir:
+1. Ardından src/Edge klasörüne gidin ve **. env** adlı bir dosya oluşturun.
+1. ~/CloudDrive/LVA-Sample/Edge-Deployment/.exe dosyasında içeriğini kopyalayın. Metin şöyle görünmelidir:
 
     ```
     SUBSCRIPTION_ID="<Subscription ID>"  
@@ -128,10 +132,10 @@ Visual Studio Code, src/Edge öğesine gidin. Oluşturduğunuz. env dosyası ve 
 
 Src/Edge/deployment.objectCounter.template.jsaçın. **Modüller** bölümünde, önceki "kavramlar" bölümünde listelenen öğelere karşılık gelen dört giriş vardır:
 
-* **Lvaedge**: bu, IoT Edge modülündeki canlı video analizinden.
-* **yolov3**: Bu, Yolo v3 modeli KULLANıLARAK oluşturulan AI modülüdür.
-* **rtspsim**: Bu RTSP simülatör.
-* **Objectcounter**: yolov3 'deki sonuçlarda belirli nesneler için görünen modüldür.
+* **Lvaedge** : bu, IoT Edge modülündeki canlı video analizinden.
+* **yolov3** : Bu, Yolo v3 modeli KULLANıLARAK oluşturulan AI modülüdür.
+* **rtspsim** : Bu RTSP simülatör.
+* **Objectcounter** : yolov3 'deki sonuçlarda belirli nesneler için görünen modüldür.
 
 ObjectCounter modülü için, "görüntü" değeri için kullanılan dizeye ($ {MODULES. objectCounter}) bakın. Bu, IoT Edge modülünü geliştirmeye yönelik [öğreticiye](../../iot-edge/tutorial-develop-for-linux.md) dayanır. Visual Studio Code, objectCounter modülünün kodunun src/Edge/modules/objectCounter altında olduğunu otomatik olarak tanır. 
 
@@ -151,40 +155,16 @@ Dağıtım bildirimi, bir sınır cihazına hangi modüllerin dağıtıldığın
 Visual Studio Code kullanarak Docker 'da oturum açmak için [Bu yönergeleri](../../iot-edge/tutorial-develop-for-linux.md#build-and-push-your-solution) izleyin. Ardından **IoT Edge çözüm oluştur ve Gönder '** i seçin. Bu adım için src/Edge/deployment.objectCounter.template.jskullanın.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording-tutorial/build-push.png" alt-text="Medya grafiği&quot;:::
-
-Diyagram, bir [medya grafiğinin](media-graph-concept.md) ve istenen senaryoyu gerçekleştiren ek modüllerin bir resim gösterimidir. Dört IoT Edge modül dahil edilir:
-
-* IoT Edge modülünde canlı video analizi.
-* Bir HTTP uç noktasının arkasında bir AI modeli çalıştıran bir Edge modülü. Bu AI modülü, birçok nesne türünü tespit eden [Yolo v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modelini kullanır.
-* Diyagramda bir nesne sayacı olarak adlandırılan nesneleri saymak ve filtrelemek için özel bir modül. Bir nesne sayacı oluşturup bu öğreticide dağıtırsınız.
-* Bir RTSP kamerasının benzetimini yapmak için bir [RTSP simülatör modülü](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) .
-    
-Diyagramda gösterildiği gibi, trafiğin sanal bir şekilde canlı videosunu yakalamak ve bu videoyu iki yola göndermek için medya grafiğinde bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü kullanacaksınız:
-
-* İlk yol, video çerçevelerini belirtilen (azaltılmış) kare hızında çıkaran bir [kare hızı filtre işlemcisi](media-graph-concept.md#frame-rate-filter-processor) düğümüdür. Bu video çerçeveleri bir HTTP uzantısı düğümüne gönderilir. Düğüm daha sonra çerçeveleri görüntüler olarak, bir nesne algılayıcısı olan YOLO v3 olan AI modülüne geçirir. Düğüm, model tarafından algılanan nesneler (bir trafikte araçlar) olan sonuçları alır. HTTP uzantısı düğümü daha sonra IoT Hub ileti havuzu düğümü aracılığıyla sonuçları IoT Edge hub 'ına yayınlar.
-* ObjectCounter modülü, nesne algılama sonuçlarını (trafikte araçlar) içeren IoT Edge hub 'ından ileti alacak şekilde ayarlanır. Modül, bu iletileri denetler ve bir ayar aracılığıyla yapılandırılan belirli bir türdeki nesneleri arar. Böyle bir nesne bulunduğunda bu modül IoT Edge hub 'ına bir ileti gönderir. Bu &quot;nesne bulundu":::
+> :::image type="content" source="./media/event-based-video-recording-tutorial/build-push.png" alt-text="IoT Edge çözümü oluşturun ve gönderin":::
 
 Bu eylem nesne sayma için objectCounter modülünü oluşturur ve görüntüyü Azure Container Registry iter.
 
 * Ortam değişkenlerinin. env dosyasında tanımlı CONTAINER_REGISTRY_USERNAME_myacr ve CONTAINER_REGISTRY_PASSWORD_myacr sahip olup olmadığını denetleyin.
 
-Bu adım, üzerinde src/Edge/config/deployment.objectCounter.amd64.jsüzerinde IoT Edge dağıtım bildirimi oluşturur. Bu dosyaya sağ tıklayın ve **tek cihaz Için dağıtım oluştur**' u seçin.
+Bu adım, üzerinde src/Edge/config/deployment.objectCounter.amd64.jsüzerinde IoT Edge dağıtım bildirimi oluşturur. Bu dosyaya sağ tıklayın ve **tek cihaz Için dağıtım oluştur** ' u seçin.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstarts/create-deployment-single-device.png" alt-text="Medya grafiği&quot;:::
-
-Diyagram, bir [medya grafiğinin](media-graph-concept.md) ve istenen senaryoyu gerçekleştiren ek modüllerin bir resim gösterimidir. Dört IoT Edge modül dahil edilir:
-
-* IoT Edge modülünde canlı video analizi.
-* Bir HTTP uç noktasının arkasında bir AI modeli çalıştıran bir Edge modülü. Bu AI modülü, birçok nesne türünü tespit eden [Yolo v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modelini kullanır.
-* Diyagramda bir nesne sayacı olarak adlandırılan nesneleri saymak ve filtrelemek için özel bir modül. Bir nesne sayacı oluşturup bu öğreticide dağıtırsınız.
-* Bir RTSP kamerasının benzetimini yapmak için bir [RTSP simülatör modülü](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) .
-    
-Diyagramda gösterildiği gibi, trafiğin sanal bir şekilde canlı videosunu yakalamak ve bu videoyu iki yola göndermek için medya grafiğinde bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü kullanacaksınız:
-
-* İlk yol, video çerçevelerini belirtilen (azaltılmış) kare hızında çıkaran bir [kare hızı filtre işlemcisi](media-graph-concept.md#frame-rate-filter-processor) düğümüdür. Bu video çerçeveleri bir HTTP uzantısı düğümüne gönderilir. Düğüm daha sonra çerçeveleri görüntüler olarak, bir nesne algılayıcısı olan YOLO v3 olan AI modülüne geçirir. Düğüm, model tarafından algılanan nesneler (bir trafikte araçlar) olan sonuçları alır. HTTP uzantısı düğümü daha sonra IoT Hub ileti havuzu düğümü aracılığıyla sonuçları IoT Edge hub 'ına yayınlar.
-* ObjectCounter modülü, nesne algılama sonuçlarını (trafikte araçlar) içeren IoT Edge hub 'ından ileti alacak şekilde ayarlanır. Modül, bu iletileri denetler ve bir ayar aracılığıyla yapılandırılan belirli bir türdeki nesneleri arar. Böyle bir nesne bulunduğunda bu modül IoT Edge hub 'ına bir ileti gönderir. Bu &quot;nesne bulundu":::
+> :::image type="content" source="./media/quickstarts/create-deployment-single-device.png" alt-text="Tek bir cihaz için dağıtım oluşturma":::
 
 IoT Edge üzerinde canlı video analiziyle ilgili ilk öğreticeniz varsa, Visual Studio Code IoT Hub bağlantı dizesini girmenizi ister. Dosyadaki appsettings.jskopyalayabilirsiniz.
 
@@ -194,19 +174,7 @@ Bu aşamada, Edge modüllerinin IoT Edge cihazınıza dağıtılması başladı.
 Yaklaşık 30 saniye içinde, Visual Studio Code sol alt bölümdeki Azure IoT Hub yenileyin. LvaEdge, rtspsim, yolov3 ve objectCounter adlı dört modülün dağıtıldığını görmeniz gerekir.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording-tutorial/iot-hub.png" alt-text="Medya grafiği&quot;:::
-
-Diyagram, bir [medya grafiğinin](media-graph-concept.md) ve istenen senaryoyu gerçekleştiren ek modüllerin bir resim gösterimidir. Dört IoT Edge modül dahil edilir:
-
-* IoT Edge modülünde canlı video analizi.
-* Bir HTTP uç noktasının arkasında bir AI modeli çalıştıran bir Edge modülü. Bu AI modülü, birçok nesne türünü tespit eden [Yolo v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modelini kullanır.
-* Diyagramda bir nesne sayacı olarak adlandırılan nesneleri saymak ve filtrelemek için özel bir modül. Bir nesne sayacı oluşturup bu öğreticide dağıtırsınız.
-* Bir RTSP kamerasının benzetimini yapmak için bir [RTSP simülatör modülü](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) .
-    
-Diyagramda gösterildiği gibi, trafiğin sanal bir şekilde canlı videosunu yakalamak ve bu videoyu iki yola göndermek için medya grafiğinde bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü kullanacaksınız:
-
-* İlk yol, video çerçevelerini belirtilen (azaltılmış) kare hızında çıkaran bir [kare hızı filtre işlemcisi](media-graph-concept.md#frame-rate-filter-processor) düğümüdür. Bu video çerçeveleri bir HTTP uzantısı düğümüne gönderilir. Düğüm daha sonra çerçeveleri görüntüler olarak, bir nesne algılayıcısı olan YOLO v3 olan AI modülüne geçirir. Düğüm, model tarafından algılanan nesneler (bir trafikte araçlar) olan sonuçları alır. HTTP uzantısı düğümü daha sonra IoT Hub ileti havuzu düğümü aracılığıyla sonuçları IoT Edge hub 'ına yayınlar.
-* ObjectCounter modülü, nesne algılama sonuçlarını (trafikte araçlar) içeren IoT Edge hub 'ından ileti alacak şekilde ayarlanır. Modül, bu iletileri denetler ve bir ayar aracılığıyla yapılandırılan belirli bir türdeki nesneleri arar. Böyle bir nesne bulunduğunda bu modül IoT Edge hub 'ına bir ileti gönderir. Bu &quot;nesne bulundu":::
+> :::image type="content" source="./media/event-based-video-recording-tutorial/iot-hub.png" alt-text="Dört modül dağıtıldı":::
 
 ## <a name="prepare-for-monitoring-events"></a>İzleme olaylarını hazırlama
 
@@ -214,57 +182,71 @@ ObjectCounter modülünün ve IoT Edge modülündeki canlı video analizinden ol
 
 1. Visual Studio Code Gezgin bölmesini açın ve sol alt köşedeki **Azure IoT Hub** arayın.
 1. **Cihazlar** düğümünü genişletin.
-1. LVA-örnek-cihaz dosyasına sağ tıklayın ve **Izlemeyi Başlat yerleşik olay uç noktası**' nı seçin.
+1. LVA-örnek-cihaz dosyasına sağ tıklayın ve **Izlemeyi Başlat yerleşik olay uç noktası** ' nı seçin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstarts/start-monitoring-iothub-events.png" alt-text="Medya grafiği&quot;:::
-
-Diyagram, bir [medya grafiğinin](media-graph-concept.md) ve istenen senaryoyu gerçekleştiren ek modüllerin bir resim gösterimidir. Dört IoT Edge modül dahil edilir:
-
-* IoT Edge modülünde canlı video analizi.
-* Bir HTTP uç noktasının arkasında bir AI modeli çalıştıran bir Edge modülü. Bu AI modülü, birçok nesne türünü tespit eden [Yolo v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modelini kullanır.
-* Diyagramda bir nesne sayacı olarak adlandırılan nesneleri saymak ve filtrelemek için özel bir modül. Bir nesne sayacı oluşturup bu öğreticide dağıtırsınız.
-* Bir RTSP kamerasının benzetimini yapmak için bir [RTSP simülatör modülü](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) .
-    
-Diyagramda gösterildiği gibi, trafiğin sanal bir şekilde canlı videosunu yakalamak ve bu videoyu iki yola göndermek için medya grafiğinde bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü kullanacaksınız:
-
-* İlk yol, video çerçevelerini belirtilen (azaltılmış) kare hızında çıkaran bir [kare hızı filtre işlemcisi](media-graph-concept.md#frame-rate-filter-processor) düğümüdür. Bu video çerçeveleri bir HTTP uzantısı düğümüne gönderilir. Düğüm daha sonra çerçeveleri görüntüler olarak, bir nesne algılayıcısı olan YOLO v3 olan AI modülüne geçirir. Düğüm, model tarafından algılanan nesneler (bir trafikte araçlar) olan sonuçları alır. HTTP uzantısı düğümü daha sonra IoT Hub ileti havuzu düğümü aracılığıyla sonuçları IoT Edge hub 'ına yayınlar.
-* ObjectCounter modülü, nesne algılama sonuçlarını (trafikte araçlar) içeren IoT Edge hub 'ından ileti alacak şekilde ayarlanır. Modül, bu iletileri denetler ve bir ayar aracılığıyla yapılandırılan belirli bir türdeki nesneleri arar. Böyle bir nesne bulunduğunda bu modül IoT Edge hub 'ına bir ileti gönderir. Bu &quot;nesne bulundu":::
+    > :::image type="content" source="./media/quickstarts/start-monitoring-iothub-events.png" alt-text="Yerleşik olay uç noktasını izlemeye başla":::
     
 ## <a name="run-the-program"></a>Programı çalıştırma
 
 1. Visual Studio Code, **Uzantılar** sekmesini açın (veya CTRL + SHIFT + X tuşlarına basın) ve Azure IoT Hub aratın.
-1. Sağ tıklayıp **uzantı ayarları**' nı seçin.
+1. Sağ tıklayıp **uzantı ayarları** ' nı seçin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Medya grafiği&quot;:::
-
-Diyagram, bir [medya grafiğinin](media-graph-concept.md) ve istenen senaryoyu gerçekleştiren ek modüllerin bir resim gösterimidir. Dört IoT Edge modül dahil edilir:
-
-* IoT Edge modülünde canlı video analizi.
-* Bir HTTP uç noktasının arkasında bir AI modeli çalıştıran bir Edge modülü. Bu AI modülü, birçok nesne türünü tespit eden [Yolo v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modelini kullanır.
-* Diyagramda bir nesne sayacı olarak adlandırılan nesneleri saymak ve filtrelemek için özel bir modül. Bir nesne sayacı oluşturup bu öğreticide dağıtırsınız.
-* Bir RTSP kamerasının benzetimini yapmak için bir [RTSP simülatör modülü](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) .
-    
-Diyagramda gösterildiği gibi, trafiğin sanal bir şekilde canlı videosunu yakalamak ve bu videoyu iki yola göndermek için medya grafiğinde bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü kullanacaksınız:
-
-* İlk yol, video çerçevelerini belirtilen (azaltılmış) kare hızında çıkaran bir [kare hızı filtre işlemcisi](media-graph-concept.md#frame-rate-filter-processor) düğümüdür. Bu video çerçeveleri bir HTTP uzantısı düğümüne gönderilir. Düğüm daha sonra çerçeveleri görüntüler olarak, bir nesne algılayıcısı olan YOLO v3 olan AI modülüne geçirir. Düğüm, model tarafından algılanan nesneler (bir trafikte araçlar) olan sonuçları alır. HTTP uzantısı düğümü daha sonra IoT Hub ileti havuzu düğümü aracılığıyla sonuçları IoT Edge hub 'ına yayınlar.
-* ObjectCounter modülü, nesne algılama sonuçlarını (trafikte araçlar) içeren IoT Edge hub 'ından ileti alacak şekilde ayarlanır. Modül, bu iletileri denetler ve bir ayar aracılığıyla yapılandırılan belirli bir türdeki nesneleri arar. Böyle bir nesne bulunduğunda bu modül IoT Edge hub 'ına bir ileti gönderir. Bu &quot;nesne bulundu" i arayın ve etkinleştirin.
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Uzantı ayarları":::
+1. "Ayrıntılı Iletiyi göster" i arayın ve etkinleştirin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Medya grafiği&quot;:::
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Ayrıntılı Iletiyi göster":::
+1. <!--In Visual Studio Code, go-->Src/buluttan cihaza-Console-App/operations.js' a gidin.
+1. **Graphtopologyset** düğümü altında aşağıdakileri düzenleyin:
 
-Diyagram, bir [medya grafiğinin](media-graph-concept.md) ve istenen senaryoyu gerçekleştiren ek modüllerin bir resim gösterimidir. Dört IoT Edge modül dahil edilir:
-
-* IoT Edge modülünde canlı video analizi.
-* Bir HTTP uç noktasının arkasında bir AI modeli çalıştıran bir Edge modülü. Bu AI modülü, birçok nesne türünü tespit eden [Yolo v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modelini kullanır.
-* Diyagramda bir nesne sayacı olarak adlandırılan nesneleri saymak ve filtrelemek için özel bir modül. Bir nesne sayacı oluşturup bu öğreticide dağıtırsınız.
-* Bir RTSP kamerasının benzetimini yapmak için bir [RTSP simülatör modülü](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) .
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json"`
     
-Diyagramda gösterildiği gibi, trafiğin sanal bir şekilde canlı videosunu yakalamak ve bu videoyu iki yola göndermek için medya grafiğinde bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü kullanacaksınız:
+1. Ardından, **Graphınstanceset** ve **Graphtopologydelete** düğümlerinin altında şunları düzenleyin:
 
-* İlk yol, video çerçevelerini belirtilen (azaltılmış) kare hızında çıkaran bir [kare hızı filtre işlemcisi](media-graph-concept.md#frame-rate-filter-processor) düğümüdür. Bu video çerçeveleri bir HTTP uzantısı düğümüne gönderilir. Düğüm daha sonra çerçeveleri görüntüler olarak, bir nesne algılayıcısı olan YOLO v3 olan AI modülüne geçirir. Düğüm, model tarafından algılanan nesneler (bir trafikte araçlar) olan sonuçları alır. HTTP uzantısı düğümü daha sonra IoT Hub ileti havuzu düğümü aracılığıyla sonuçları IoT Edge hub 'ına yayınlar.
-* ObjectCounter modülü, nesne algılama sonuçlarını (trafikte araçlar) içeren IoT Edge hub 'ından ileti alacak şekilde ayarlanır. Modül, bu iletileri denetler ve bir ayar aracılığıyla yapılandırılan belirli bir türdeki nesneleri arar. Böyle bir nesne bulunduğunda bu modül IoT Edge hub 'ına bir ileti gönderir. Bu &quot;nesne bulundu"
+    `"topologyName" : "EVRtoAssetsOnObjDetect"`
+1. F5 ' i seçerek bir hata ayıklama oturumu başlatın. **TERMINAL** penceresinde yazdırılmış bazı iletiler görürsünüz.
+1. operations.jsdosya üzerinde Graphtopologyılist ve Graphınstancelist çağrıları ile başlatılır. Önceki hızlı başlangıçlardan veya öğreticilerden sonra kaynakları temizlediyseniz, bu eylem, gösterildiği gibi, **ENTER** ' u seçmeniz için boş listeler ve duraklamalar döndürür:
+
+    ```
+    --------------------------------------------------------------------------
+    Executing operation GraphTopologyList
+    -----------------------  Request: GraphTopologyList  --------------------------------------------------
+    {
+      "@apiVersion": "1.0"
+    }
+    ---------------  Response: GraphTopologyList - Status: 200  ---------------
+    {
+      "value": []
+    }
+    --------------------------------------------------------------------------
+    Executing operation WaitForInput
+    Press Enter to continue
+    ```
+1. **TERMINAL** penceresinde **ENTER** seçeneğini belirledikten sonra, bir sonraki doğrudan yöntem çağrısı kümesi yapılır:
+   * Önceki Topologyıurl kullanarak Graphtopologyıset çağrısı
+   * Aşağıdaki gövdeyi kullanarak Graphınstanceset öğesine çağrı
+     
+        ```
+        {
+          "@apiVersion": "1.0",
+          "name": "Sample-Graph-1",
+          "properties": {
+            "topologyName": "EVRtoAssetsOnObjDetect",
+            "description": "Sample graph description",
+            "parameters": [
+              {
+                "name": "rtspUrl",
+                "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
+              },
+              {
+                "name": "rtspUserName",
+                "value": "testuser"
+              },
+              {
+                "name": "rtspPassword",
+                "value": "testpassword"
               }
             ]
           }
@@ -278,7 +260,7 @@ Diyagramda gösterildiği gibi, trafiğin sanal bir şekilde canlı videosunu ya
 1. Artık Visual Studio Code **Çıkış** penceresine geçerseniz, IoT Edge modülündeki canlı video analizi tarafından IoT Hub gönderilen iletileri görürsünüz.
 
    Bu iletiler aşağıdaki bölümde ele alınmıştır.
-1. Grafik örneği çalışmaya devam eder ve videoyu kaydeder. RTSP simülatörü kaynak videoyu döngüye sokmaya devam eder. Aşağıdaki bölümde açıklandığı gibi iletileri gözden geçirin. Ardından, örneği durdurmak için, **TERMINAL** penceresine dönün ve **ENTER**' u seçin. Bir sonraki çağrı dizisi, kullanarak kaynakları temizlemek için yapılır:
+1. Grafik örneği çalışmaya devam eder ve videoyu kaydeder. RTSP simülatörü kaynak videoyu döngüye sokmaya devam eder. Aşağıdaki bölümde açıklandığı gibi iletileri gözden geçirin. Ardından, örneği durdurmak için, **TERMINAL** penceresine dönün ve **ENTER** ' u seçin. Bir sonraki çağrı dizisi, kullanarak kaynakları temizlemek için yapılır:
 
    * Graph örneğini devre dışı bırakmak için Graphınstancedeactivate öğesine bir çağrı.
    * Örneği silmek için Graphınstancedelete öğesine çağrı.
@@ -419,38 +401,14 @@ Grafik tarafından oluşturulan Media Services varlığını, Azure portal oturu
 1. **Media Services** listesinden **varlıklar** ' ı seçin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/continuous-video-recording-tutorial/assets.png" alt-text="Medya grafiği&quot;:::
-
-Diyagram, bir [medya grafiğinin](media-graph-concept.md) ve istenen senaryoyu gerçekleştiren ek modüllerin bir resim gösterimidir. Dört IoT Edge modül dahil edilir:
-
-* IoT Edge modülünde canlı video analizi.
-* Bir HTTP uç noktasının arkasında bir AI modeli çalıştıran bir Edge modülü. Bu AI modülü, birçok nesne türünü tespit eden [Yolo v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modelini kullanır.
-* Diyagramda bir nesne sayacı olarak adlandırılan nesneleri saymak ve filtrelemek için özel bir modül. Bir nesne sayacı oluşturup bu öğreticide dağıtırsınız.
-* Bir RTSP kamerasının benzetimini yapmak için bir [RTSP simülatör modülü](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) .
-    
-Diyagramda gösterildiği gibi, trafiğin sanal bir şekilde canlı videosunu yakalamak ve bu videoyu iki yola göndermek için medya grafiğinde bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü kullanacaksınız:
-
-* İlk yol, video çerçevelerini belirtilen (azaltılmış) kare hızında çıkaran bir [kare hızı filtre işlemcisi](media-graph-concept.md#frame-rate-filter-processor) düğümüdür. Bu video çerçeveleri bir HTTP uzantısı düğümüne gönderilir. Düğüm daha sonra çerçeveleri görüntüler olarak, bir nesne algılayıcısı olan YOLO v3 olan AI modülüne geçirir. Düğüm, model tarafından algılanan nesneler (bir trafikte araçlar) olan sonuçları alır. HTTP uzantısı düğümü daha sonra IoT Hub ileti havuzu düğümü aracılığıyla sonuçları IoT Edge hub 'ına yayınlar.
-* ObjectCounter modülü, nesne algılama sonuçlarını (trafikte araçlar) içeren IoT Edge hub 'ından ileti alacak şekilde ayarlanır. Modül, bu iletileri denetler ve bir ayar aracılığıyla yapılandırılan belirli bir türdeki nesneleri arar. Böyle bir nesne bulunduğunda bu modül IoT Edge hub 'ına bir ileti gönderir. Bu &quot;nesne bulundu":::
+    > :::image type="content" source="./media/continuous-video-recording-tutorial/assets.png" alt-text="Sürekli video kaydı":::
 1. SampleAssetFromEVR-LVAEdge-{DateTime} adıyla listelenmiş bir varlık bulacaksınız. Bu, RecordingStarted olayının outputLocation özelliğinde verilen addır. Topolojideki assetNamePattern, bu adın nasıl oluşturulduğunu belirler.
 1. Varlığı seçin.
 1. Varlık ayrıntıları sayfasında **akış URL 'si** metin kutusunda **Yeni oluştur** ' u seçin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/continuous-video-recording-tutorial/new-asset.png" alt-text="Medya grafiği&quot;:::
-
-Diyagram, bir [medya grafiğinin](media-graph-concept.md) ve istenen senaryoyu gerçekleştiren ek modüllerin bir resim gösterimidir. Dört IoT Edge modül dahil edilir:
-
-* IoT Edge modülünde canlı video analizi.
-* Bir HTTP uç noktasının arkasında bir AI modeli çalıştıran bir Edge modülü. Bu AI modülü, birçok nesne türünü tespit eden [Yolo v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modelini kullanır.
-* Diyagramda bir nesne sayacı olarak adlandırılan nesneleri saymak ve filtrelemek için özel bir modül. Bir nesne sayacı oluşturup bu öğreticide dağıtırsınız.
-* Bir RTSP kamerasının benzetimini yapmak için bir [RTSP simülatör modülü](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) .
-    
-Diyagramda gösterildiği gibi, trafiğin sanal bir şekilde canlı videosunu yakalamak ve bu videoyu iki yola göndermek için medya grafiğinde bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü kullanacaksınız:
-
-* İlk yol, video çerçevelerini belirtilen (azaltılmış) kare hızında çıkaran bir [kare hızı filtre işlemcisi](media-graph-concept.md#frame-rate-filter-processor) düğümüdür. Bu video çerçeveleri bir HTTP uzantısı düğümüne gönderilir. Düğüm daha sonra çerçeveleri görüntüler olarak, bir nesne algılayıcısı olan YOLO v3 olan AI modülüne geçirir. Düğüm, model tarafından algılanan nesneler (bir trafikte araçlar) olan sonuçları alır. HTTP uzantısı düğümü daha sonra IoT Hub ileti havuzu düğümü aracılığıyla sonuçları IoT Edge hub 'ına yayınlar.
-* ObjectCounter modülü, nesne algılama sonuçlarını (trafikte araçlar) içeren IoT Edge hub 'ından ileti alacak şekilde ayarlanır. Modül, bu iletileri denetler ve bir ayar aracılığıyla yapılandırılan belirli bir türdeki nesneleri arar. Böyle bir nesne bulunduğunda bu modül IoT Edge hub 'ına bir ileti gönderir. Bu &quot;nesne bulundu":::
-1. Açılan sihirbazda, varsayılan seçenekleri kabul edin ve **Ekle**' yi seçin. Daha fazla bilgi için bkz. [video kayıttan yürütme](video-playback-concept.md).
+    > :::image type="content" source="./media/continuous-video-recording-tutorial/new-asset.png" alt-text="Yeni varlık":::
+1. Açılan sihirbazda, varsayılan seçenekleri kabul edin ve **Ekle** ' yi seçin. Daha fazla bilgi için bkz. [video kayıttan yürütme](video-playback-concept.md).
 
     > [!TIP]
     > [Akış uç noktanızın çalıştığından](../latest/streaming-endpoint-concept.md)emin olun.

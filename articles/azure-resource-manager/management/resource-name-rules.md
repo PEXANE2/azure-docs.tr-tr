@@ -3,12 +3,12 @@ title: Kaynak adlandırma kısıtlamaları
 description: Azure kaynaklarını adlandırmayla ilgili kuralları ve kısıtlamaları gösterir.
 ms.topic: conceptual
 ms.date: 10/01/2020
-ms.openlocfilehash: ff92eff9351e944f8baa11cf981e8511ad8e4ae1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 206bd6604ecd9dfece9c946c653b2720e75ff1e3
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653375"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347803"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları
 
@@ -107,7 +107,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | batchAccounts | Bölge | 3-24 | Küçük harfler ve rakamlar. |
+> | batchAccounts | Region | 3-24 | Küçük harfler ve rakamlar. |
 > | batchAccounts/uygulamalar | Batch hesabı | 1-64 | Alfasayısal, alt çizgi ve kısa çizgi. |
 > | batchAccounts/sertifikalar | Batch hesabı | 5-45 | Alfasayısal, alt çizgi ve kısa çizgi. |
 > | batchAccounts/havuzlar | Batch hesabı | 1-64 | Alfasayısal, alt çizgi ve kısa çizgi. |
@@ -494,6 +494,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | firewallPolicies | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi sonu. |
 > | firewallPolicies/ruleGroups | güvenlik duvarı ilkesi | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi sonu. |
 > | Frontkapıların | global | 5-64 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
+> | frontdoorWebApplicationFirewallPolicies | kaynak grubu | 1-128 | Alfasayısal karakterler.<br><br>Mektup ile başlayın. |
 > | loadBalancers | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi sonu. |
 > | loadBalancers/ınboundnatrules | yük dengeleyici | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi sonu. |
 > | Localnetworkgateway 'ler | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi sonu. |
@@ -604,7 +605,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | öznitelikleri | global | 6-50 | Alfasayısal karakterler ve kısa çizgiler.<br><br>En başta bir harf kullanın. Bir harf veya sayıyla biter.<br><br>Daha fazla bilgi için bkz. [ad alanı oluşturma](/rest/api/servicebus/create-namespace). |
 > | ad alanları/AuthorizationRules | ad alanı | 1-50 | Alfasayısal, nokta, kısa çizgi ve alt çizgi.<br><br>Alphnumeric ile başlatın ve sonlandırın. |
 > | ad alanları/Diskalrecoveryconfigs | global | 6-50 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Mektup ile başlayın. Alfasayısal ile biter. |
-> | ad alanları/migrationConfigurations | ad alanı |  | Her zaman **$Default**olmalıdır. |
+> | ad alanları/migrationConfigurations | ad alanı |  | Her zaman **$Default** olmalıdır. |
 > | ad alanları/kuyruklar | ad alanı | 1-260 | Alfasayısal, nokta, tire, alt çizgi ve eğik çizgi.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
 > | ad alanları/kuyruklar/authorizationRules | kuyruk | 1-50 | Alfasayısal, nokta, kısa çizgi ve alt çizgi.<br><br>Alphnumeric ile başlatın ve sonlandırın. |
 > | ad alanları/konular | ad alanı | 1-260 | Alfasayısal, nokta, tire, alt çizgi ve eğik çizgi.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
@@ -653,7 +654,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | storageAccounts/managementPolicies | depolama hesabı |  | Olmalıdır `default` . |
 > | blob | kapsayıcı | 1-1024 | Herhangi bir URL karakteri, büyük/küçük harfe duyarlı |
 > | kuyruk | depolama hesabı | 3-63 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Kısa çizgi ile başlayamaz veya bitemez. Ardışık tireler kullanılamaz. |
-> | tablo | depolama hesabı | 3-63 | Alfasayısal karakterler.<br><br>Mektup ile başlayın. |
+> | table | depolama hesabı | 3-63 | Alfasayısal karakterler.<br><br>Mektup ile başlayın. |
 
 ## <a name="microsoftstoragesync"></a>Microsoft. Storagessync
 

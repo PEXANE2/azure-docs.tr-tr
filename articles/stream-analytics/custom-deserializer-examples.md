@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 87f3e2014281580cc35f941ad62046dcb24539df
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9a69ca707577ceddc56ae691d6e5e701458cae28
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129414"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346610"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>.NET özel seri hale getiriciler kullanarak her biçimdeki girişi oku
 
@@ -201,7 +201,7 @@ namespace ExampleCustomCode.Serialization
 
 ## <a name="serialization-format-for-rest-apis"></a>REST API 'Leri için serileştirme biçimi
 
-Her Stream Analytics girişinin bir **serileştirme biçimi** vardır. Giriş seçenekleri hakkında daha fazla bilgi için bkz. [giriş REST API](./stream-analytics-define-inputs.md) belgeleri.
+Her Stream Analytics girişinin bir **serileştirme biçimi** vardır. Giriş seçenekleri hakkında daha fazla bilgi için bkz. [giriş REST API](/rest/api/streamanalytics/2016-03-01/inputs) belgeleri.
 
 Aşağıdaki JavaScript kodu, REST API kullanılırken .NET seri hale getirici serileştirme biçiminin bir örneğidir:
 

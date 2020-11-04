@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
-ms.openlocfilehash: 11c6cdff852a0695d4b2071f1d0a60c05dba2410
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0ee3d9c26d6972da9e528660d034432ce696aa45
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88213482"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347208"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Hızlı başlangıç: kuyruk oluşturma ve Azure portal bir ileti ekleme
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıçta, Azure depolama 'da bir sıra oluşturmak ve ileti ekl
 Azure portal bir sıra oluşturmak için aşağıdaki adımları izleyin:
 
 1. Azure portalında yeni depolama hesabınıza gidin.
-2. Depolama hesabının sol menüsünde **kuyruk hizmeti** bölümüne gidin ve **Kuyruklar**' ı seçin.
+2. Depolama hesabının sol menüsünde **kuyruk hizmeti** bölümüne gidin ve **Kuyruklar** ' ı seçin.
 3. **+ Queue** düğmesini seçin.
 4. Yeni kuyruğunuz için bir ad yazın. Kuyruk adı küçük harfle yazılmalıdır, bir harf veya sayıyla başlamalıdır ve yalnızca harf, rakam ve tire (-) karakterini içerebilir.
 6. Kuyruğu oluşturmak için **Tamam ' ı** seçin.
@@ -55,9 +55,9 @@ Bir ileti ekledikten sonra Azure portal kuyruktaki tüm iletilerin bir listesini
 
 ## <a name="dequeue-a-message"></a>Bir iletiyi kuyruktan çıkarma
 
-Azure portal kuyruğun önünden bir iletiyi sıradan silebilirsiniz. İletiyi sıradan kaldırdığınızda ileti silinir. 
+Azure portal kuyruğun önünden bir iletiyi sıradan silebilirsiniz. İletiyi sıradan kaldırdığınızda ileti silinir.
 
-Sıradan çıkarıcı her zaman kuyruktaki en eski iletiyi kaldırır. 
+Sıradan çıkarıcı her zaman kuyruktaki en eski iletiyi kaldırır.
 
 ![Portaldan bir iletinin nasıl sıradan alınacağını gösteren ekran görüntüsü](media/storage-quickstart-queues-portal/dequeue-message.png)
 

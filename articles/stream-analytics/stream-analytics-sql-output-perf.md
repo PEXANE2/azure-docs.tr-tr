@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: db396bbd2f26638c39f2573fb6014cd2602279d0
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 362c16a87e5a24c35b3aa637171b6a3f77aa62a6
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129754"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346341"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure SQL veritabanı 'na Azure Stream Analytics çıkışı
 
@@ -35,7 +35,7 @@ Azure Stream Analytics içindeki SQL çıktısı, bir seçenek olarak paralel ya
 
 ## <a name="sql-azure"></a>SQL Azure
 
-- **Bölümlenmiş tablo ve dizinler** [– bölümlemeli bir SQL](/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) tablosu ve bölümlenmiş dizinleri, Bölüm anahtarınızla aynı sütunla (örneğin, PartitionID) kullanarak, yazma işlemleri sırasında bölümler arasındaki çekişmeleri önemli ölçüde azaltabilir. Bölümlenmiş bir tablo için, BIRINCIL dosya grubunda bir [bölüm işlevi](/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017) ve bir [bölüm düzeni](/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017) oluşturmanız gerekir. Bu, yeni veriler yüklenirken mevcut verilerin kullanılabilirliğini de artırır. Günlük GÇ sınırı, SKU ile yükseltilerek artırılabilir olan bölüm sayısına bağlı olarak gelebilir.
+- **Bölümlenmiş tablo ve dizinler** [– bölümlemeli bir SQL](/sql/relational-databases/partitions/partitioned-tables-and-indexes) tablosu ve bölümlenmiş dizinleri, Bölüm anahtarınızla aynı sütunla (örneğin, PartitionID) kullanarak, yazma işlemleri sırasında bölümler arasındaki çekişmeleri önemli ölçüde azaltabilir. Bölümlenmiş bir tablo için, BIRINCIL dosya grubunda bir [bölüm işlevi](/sql/t-sql/statements/create-partition-function-transact-sql) ve bir [bölüm düzeni](/sql/t-sql/statements/create-partition-scheme-transact-sql) oluşturmanız gerekir. Bu, yeni veriler yüklenirken mevcut verilerin kullanılabilirliğini de artırır. Günlük GÇ sınırı, SKU ile yükseltilerek artırılabilir olan bölüm sayısına bağlı olarak gelebilir.
 
 - **Benzersiz anahtar Ihlallerinden kaçının** – Azure Stream Analytics etkinlik günlüğünde [birden çok anahtar ihlali uyarı iletisi](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) alırsanız, işinizin kurtarma durumları sırasında gerçekleşmesi muhtemel olan benzersiz kısıtlama ihlallerinden etkilenmediğinden emin olun. Dizininizdeki [ \_ \_ anahtar yok sayma](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) seçeneği ayarlanarak bu kaçınılabilir.
 

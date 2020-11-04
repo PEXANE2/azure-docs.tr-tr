@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 10/30/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 91de9aff154dec1a61360477edebc90b7a13cf24
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0a97286564f7d2c04268034d6f70b1a178cbb5a5
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125181"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348347"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Ticari Market iş ortağı ve müşteri kullanımı attributıon
 
@@ -150,7 +150,7 @@ Müşteri kullanımı atısyonu 'nı etkinleştirmek için, API aramalarınızı
 
 #### <a name="example-the-python-sdk"></a>Örnek: Python SDK 'Sı
 
-Python için, **config** özniteliğini kullanın. Özniteliği yalnızca bir UserAgent öğesine ekleyebilirsiniz. Aşağıda bir örnek verilmiştir:
+Python için, **config** özniteliğini kullanın. Özniteliği yalnızca bir UserAgent öğesine ekleyebilirsiniz. İşte bir örnek:
 
 ![Özniteliği bir kullanıcı aracısına ekleyin](media/marketplace-publishers-guide/python-for-lu.PNG)
 
@@ -159,7 +159,7 @@ Python için, **config** özniteliğini kullanın. Özniteliği yalnızca bir Us
 
 #### <a name="example-the-net-sdk"></a>Örnek: .NET SDK
 
-.NET için Kullanıcı aracısını ayarladığınızdan emin olun. [Microsoft. Azure. Management. Floent](/dotnet/api/microsoft.azure.management.fluent?view=azure-dotnet) kitaplığı, Kullanıcı aracısını aşağıdaki kodla (C# dilinde örnek) ayarlamak için kullanılabilir:
+.NET için Kullanıcı aracısını ayarladığınızdan emin olun. [Microsoft. Azure. Management. Floent](/dotnet/api/microsoft.azure.management.fluent) kitaplığı, Kullanıcı aracısını aşağıdaki kodla (C# dilinde örnek) ayarlamak için kullanılabilir:
 
 ```csharp
 

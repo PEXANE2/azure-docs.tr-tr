@@ -4,12 +4,12 @@ description: Linux için Azure Ilkesi Konuk yapılandırma ilkesi oluşturmayı 
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c0559e284f1e7022510a458209ec8d985ffc6324
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 240f22a076b5f185ebe3028b201b66d187c9bb2d
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305542"
+ms.locfileid: "93346885"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux için Konuk Yapılandırma ilkelerini oluşturma
 
@@ -24,7 +24,11 @@ Linux’ı denetlerken Konuk Yapılandırması [Chef InSpec](https://www.inspec.
 Bir Azure veya Azure dışı makinenin durumunu doğrulamak üzere kendi yapılandırmanızı oluşturmak için aşağıdaki eylemleri kullanın.
 
 > [!IMPORTANT]
+> Azure Kamu ve Azure Çin ortamlarında Konuk yapılandırması olan özel ilke tanımları bir önizleme özelliğidir.
+>
 > Konuk Yapılandırma uzantısı Azure sanal makinelerinde denetim gerçekleştirmek için gereklidir. Uzantıyı tüm Linux makinelerinde ölçeklendirerek dağıtmak için aşağıdaki ilke tanımını atayın: `Deploy prerequisites to enable Guest Configuration Policy on Linux VMs`
+> 
+> Özel içerik paketlerinde gizli dizileri veya gizli bilgileri kullanmayın.
 
 ## <a name="install-the-powershell-module"></a>PowerShell modülünü yükleme
 
@@ -49,7 +53,9 @@ Modülün yüklenebildiği işletim sistemleri:
 - Windows
 
 > [!NOTE]
-> ' Test-GuestConfigurationPackage ' cmdlet 'i, OMı üzerindeki bir bağımlılık nedeniyle OpenSSL sürüm 1,0 gerektirir. Bu, OpenSSL 1,1 veya üzeri ile herhangi bir ortamda hata oluşmasına neden olur.
+> `Test-GuestConfigurationPackage`OMI üzerindeki bir bağımlılık nedeniyle cmdlet, OpenSSL sürüm 1,0 gerektirir. Bu, OpenSSL 1,1 veya üzeri ile herhangi bir ortamda hata oluşmasına neden olur.
+>
+> Cmdlet 'i çalıştırmak `Test-GuestConfigurationPackage` yalnızca Windows for Guest yapılandırma modülü sürüm 2.1.0 'de desteklenir.
 
 Konuk yapılandırması kaynak modülü için aşağıdaki yazılımlar gereklidir:
 
@@ -319,13 +325,16 @@ Configuration AuditFilePathExists
 
 ## <a name="policy-lifecycle"></a>İlke yaşam döngüsü
 
-İlke tanımına bir güncelleştirmeyi bırakmak için dikkat gerektiren iki alan vardır.
+İlke tanımına bir güncelleştirmeyi bırakmak için dikkat gerektiren üç alan vardır.
 
-- **Sürüm** : `New-GuestConfigurationPolicy` cmdlet 'ini çalıştırdığınızda, şu anda yayımlanmış olandan daha büyük bir sürüm numarası belirtmeniz gerekir. Özelliği, Konuk yapılandırma atamasının sürümünü, aracının güncelleştirilmiş paketi tanımasını sağlayacak şekilde güncelleştirir.
+> [!NOTE]
+> `version`Konuk yapılandırma atamasının özelliği yalnızca Microsoft tarafından barındırılan etkiler. Özel içerik sürümü oluşturma için en iyi yöntem, dosyanın dosya adına dahil edileceğini içerir.
+
+- **Sürüm** : `New-GuestConfigurationPolicy` cmdlet 'ini çalıştırdığınızda, şu anda yayımlanmış olandan daha büyük bir sürüm numarası belirtmeniz gerekir.
+- **contentUri** : `New-GuestConfigurationPolicy` cmdlet 'ini çalıştırdığınızda, PAKETIN konumuna bir URI belirtmeniz gerekir. Dosya adında bir paket sürümü de dahil olmak üzere, bu özelliğin değeri her sürümde değişir.
 - **contentHash** : Bu özellik, cmdlet 'i tarafından otomatik olarak güncelleştirilir `New-GuestConfigurationPolicy` . Tarafından oluşturulan paketin karma değeridir `New-GuestConfigurationPackage` . Özelliği, yayımladığınız dosya için doğru olmalıdır `.zip` . Yalnızca **contentUri** özelliği güncelleştirilirse, uzantı içerik paketini kabul etmez.
 
 Güncelleştirilmiş bir paketi yayımlamanın en kolay yolu, bu makalede açıklanan süreci tekrarlamanız ve güncelleştirilmiş bir sürüm numarası sağlamaktır. Bu işlem, tüm özelliklerin doğru şekilde güncelleştirildiğinden emin garanti eder.
-
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>Etiketleri kullanarak Konuk yapılandırma ilkelerini filtreleme
 

@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 2f61fef58485a905b96bdada32b915106e60d1a8
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c2ee32b3ced8fdcd5f9f889c4fd0183e46ad5d8d
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425129"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346018"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>Java’dan Kuyruk depolama kullanma
 
@@ -22,7 +22,7 @@ ms.locfileid: "92425129"
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu kılavuzda, Azure kuyruk depolama hizmetini kullanarak yaygın senaryolar için nasıl kod yapılacağı gösterilir. Örnekler Java dilinde yazılır ve [Java için Azure Depolama SDK’sı][Azure Storage SDK for Java] kullanır. Senaryolar, sıra iletilerini **ekleme**, göz **atma**, **alma**ve **silmeyi** içerir. Sıra **oluşturma** ve **silme** için kod de ele alınmıştır. Kuyruklar hakkında daha fazla bilgi için [sonraki adımlar](#next-steps) bölümüne bakın.
+Bu kılavuzda, Azure kuyruk depolama hizmetini kullanarak yaygın senaryolar için nasıl kod yapılacağı gösterilir. Örnekler Java dilinde yazılır ve [Java için Azure Depolama SDK’sı][Azure Storage SDK for Java] kullanır. Senaryolar, sıra iletilerini **ekleme** , göz **atma** , **alma** ve **silmeyi** içerir. Sıra **oluşturma** ve **silme** için kod de ele alınmıştır. Kuyruklar hakkında daha fazla bilgi için [sonraki adımlar](#next-steps) bölümüne bakın.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -34,9 +34,9 @@ Bu kılavuzda, Azure kuyruk depolama hizmetini kullanarak yaygın senaryolar iç
 
 İlk olarak, geliştirme sisteminizin [Java V12 Için Azure kuyruk depolama istemci kitaplığı](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)'nda listelenen önkoşulları karşıladığını doğrulayın.
 
-Kuyruklar adlı bir Java uygulaması oluşturmak için *-nasıl yapılır-V12*:
+Kuyruklar adlı bir Java uygulaması oluşturmak için *-nasıl yapılır-V12* :
 
-1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), Maven kullanarak *Kuyruklar-nasıl yapılır-V12*adlı yeni bir konsol uygulaması oluşturun. "Hello World!" oluşturmak için aşağıdaki **MVN** komutunu yazın Java projesi.
+1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), Maven kullanarak *Kuyruklar-nasıl yapılır-V12* adlı yeni bir konsol uygulaması oluşturun. "Hello World!" oluşturmak için aşağıdaki **MVN** komutunu yazın Java projesi.
 
    ```bash
     mvn archetype:generate \
@@ -152,7 +152,8 @@ final String storageConnectionString =
     "AccountName=your_storage_account;" +
     "AccountKey=your_storage_account_key";
 ```
-Bu dizeyi *ServiceConfiguration. cscfg*adlı hizmet yapılandırma dosyasında saklayabilirsiniz. Microsoft Azure rolü içinde çalışan bir uygulama için, **Roleenvironment. getConfigurationSettings**çağırarak bağlantı dizesine erişin. *StorageConnectionString*adlı bir **ayar** öğesinden bağlantı dizesi alma örneği aşağıda verilmiştir:
+
+Bu dizeyi *ServiceConfiguration. cscfg* adlı hizmet yapılandırma dosyasında saklayabilirsiniz. Microsoft Azure rolü içinde çalışan bir uygulama için, **Roleenvironment. getConfigurationSettings** çağırarak bağlantı dizesine erişin. *StorageConnectionString* adlı bir **ayar** öğesinden bağlantı dizesi alma örneği aşağıda verilmiştir:
 
 ```java
 // Retrieve storage account from connection-string.
@@ -246,7 +247,7 @@ catch (Exception e)
 
 ## <a name="how-to-peek-at-the-next-message"></a>Nasıl yapılır: bir sonraki iletiye göz atma
 
-**PeekMessage**çağırarak bir kuyruğun ön tarafındaki iletiye göz atmayı sağlayabilirsiniz.
+**PeekMessage** çağırarak bir kuyruğun ön tarafındaki iletiye göz atmayı sağlayabilirsiniz.
 
 # <a name="java-v12"></a>[Java V12](#tab/java)
 
@@ -393,13 +394,13 @@ Bir kuyruktaki ileti sayısı ile ilgili bir tahmin alabilirsiniz.
 
 # <a name="java-v12"></a>[Java V12](#tab/java)
 
-**GetProperties** yöntemi, kuyruk hizmeti birkaç geçerli değeri ister. Değerlerden biri, bir kuyrukta kaç ileti olduğunu gösteren bir sayısıdır. Sayım yalnızca, isteğiniz sonunda iletiler eklenebildiğinden veya kaldırılacağından yaklaşık olur. **Getapproximatemessagecount** yöntemi, kuyruk hizmeti çağırılmadan **GetProperties**çağrısı tarafından alınan son değeri döndürür.
+**GetProperties** yöntemi, kuyruk hizmeti birkaç geçerli değeri ister. Değerlerden biri, bir kuyrukta kaç ileti olduğunu gösteren bir sayısıdır. Sayım yalnızca, isteğiniz sonunda iletiler eklenebildiğinden veya kaldırılacağından yaklaşık olur. **Getapproximatemessagecount** yöntemi, kuyruk hizmeti çağırılmadan **GetProperties** çağrısı tarafından alınan son değeri döndürür.
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_GetQueueLength":::
 
 # <a name="java-v8"></a>[Java V8](#tab/java8)
 
-**Downloadattributes** yöntemi, kuyruk hizmeti birkaç geçerli değeri ister. Değerlerden biri, bir kuyrukta kaç ileti olduğunu gösteren bir sayısıdır. Sayım yalnızca, isteğiniz sonunda iletiler eklenebildiğinden veya kaldırılacağından yaklaşık olur. **Getapproximatemessagecount** metodu, kuyruk hizmeti çağırılmadan **downloadattributes**çağrısının aldığı son değeri döndürür.
+**Downloadattributes** yöntemi, kuyruk hizmeti birkaç geçerli değeri ister. Değerlerden biri, bir kuyrukta kaç ileti olduğunu gösteren bir sayısıdır. Sayım yalnızca, isteğiniz sonunda iletiler eklenebildiğinden veya kaldırılacağından yaklaşık olur. **Getapproximatemessagecount** metodu, kuyruk hizmeti çağırılmadan **downloadattributes** çağrısının aldığı son değeri döndürür.
 
 ```java
 try
@@ -436,13 +437,13 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[Java V12](#tab/java)
 
-Kodunuz, iki adımda bir kuyruktan bir ileti sırasını kaldırır. **ReceiveMessage**' ı çağırdığınızda, sıradaki bir sonraki iletiyi alırsınız. **ReceiveMessage** 'ten döndürülen bir ileti, bu kuyruktan gelen diğer kod okuma iletileri için görünmez hale gelir. Varsayılan olarak bu ileti 30 saniye görünmez kalır. İletiyi kuyruktan kaldırmayı tamamlaması için, **deleteMessage**' ı da çağırmanız gerekir. Kodunuz bir iletiyi işleyemezse, bu iki adımlı işlem aynı iletiyi almanızı ve yeniden denemeyi sağlar. Kodunuz, ileti işlendikten hemen sonra **deleteMessage** ' i çağırır.
+Kodunuz, iki adımda bir kuyruktan bir ileti sırasını kaldırır. **ReceiveMessage** ' ı çağırdığınızda, sıradaki bir sonraki iletiyi alırsınız. **ReceiveMessage** 'ten döndürülen bir ileti, bu kuyruktan gelen diğer kod okuma iletileri için görünmez hale gelir. Varsayılan olarak bu ileti 30 saniye görünmez kalır. İletiyi kuyruktan kaldırmayı tamamlaması için, **deleteMessage** ' ı da çağırmanız gerekir. Kodunuz bir iletiyi işleyemezse, bu iki adımlı işlem aynı iletiyi almanızı ve yeniden denemeyi sağlar. Kodunuz, ileti işlendikten hemen sonra **deleteMessage** ' i çağırır.
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_DequeueMessage":::
 
 # <a name="java-v8"></a>[Java V8](#tab/java8)
 
-Kodunuz, iki adımda bir kuyruktan bir ileti sırasını kaldırır. **Retrievemessage**çağırdığınızda bir kuyruktaki sonraki iletiyi alırsınız. **Retrievemessage** 'ten döndürülen bir ileti, bu kuyruktan gelen diğer kod okuma iletileri için görünmez hale gelir. Varsayılan olarak bu ileti 30 saniye görünmez kalır. İletiyi kuyruktan kaldırmayı tamamlaması için, **deleteMessage**' ı da çağırmanız gerekir. Kodunuz bir iletiyi işleyemezse, bu iki adımlı işlem aynı iletiyi almanızı ve yeniden denemeyi sağlar. Kodunuz, ileti işlendikten hemen sonra **deleteMessage** ' i çağırır.
+Kodunuz, iki adımda bir kuyruktan bir ileti sırasını kaldırır. **Retrievemessage** çağırdığınızda bir kuyruktaki sonraki iletiyi alırsınız. **Retrievemessage** 'ten döndürülen bir ileti, bu kuyruktan gelen diğer kod okuma iletileri için görünmez hale gelir. Varsayılan olarak bu ileti 30 saniye görünmez kalır. İletiyi kuyruktan kaldırmayı tamamlaması için, **deleteMessage** ' ı da çağırmanız gerekir. Kodunuz bir iletiyi işleyemezse, bu iki adımlı işlem aynı iletiyi almanızı ve yeniden denemeyi sağlar. Kodunuz, ileti işlendikten hemen sonra **deleteMessage** ' i çağırır.
 
 ```java
 try
@@ -481,13 +482,13 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[Java V12](#tab/java)
 
-Aşağıdaki kod örneği, bir çağrıda 20 ileti almak için **receivemessages** yöntemini kullanır. Sonra her iletiyi bir **for** döngüsü kullanarak işler. Ayrıca, her ileti için geçersiz kılma zaman aşımını beş dakikaya (300 saniye) ayarlar. Zaman aşımı, tüm iletiler için aynı anda başlar. **Receivemessages**çağrısından bu yana beş dakika geçtiğinde, silinmeyen iletiler yeniden görünür hale gelir.
+Aşağıdaki kod örneği, bir çağrıda 20 ileti almak için **receivemessages** yöntemini kullanır. Sonra her iletiyi bir **for** döngüsü kullanarak işler. Ayrıca, her ileti için geçersiz kılma zaman aşımını beş dakikaya (300 saniye) ayarlar. Zaman aşımı, tüm iletiler için aynı anda başlar. **Receivemessages** çağrısından bu yana beş dakika geçtiğinde, silinmeyen iletiler yeniden görünür hale gelir.
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_DequeueMessages":::
 
 # <a name="java-v8"></a>[Java V8](#tab/java8)
 
-Aşağıdaki kod örneği, tek bir çağrıda 20 ileti almak için **retrievemessages** yöntemini kullanır. Sonra her iletiyi bir **for** döngüsü kullanarak işler. Ayrıca, her ileti için geçersiz kılma zaman aşımını beş dakikaya (300 saniye) ayarlar. Zaman aşımı, tüm iletiler için aynı anda başlar. **Retrievemessages**çağrısından bu yana beş dakika geçtiğinde, silinmeyen iletiler yeniden görünür hale gelir.
+Aşağıdaki kod örneği, tek bir çağrıda 20 ileti almak için **retrievemessages** yöntemini kullanır. Sonra her iletiyi bir **for** döngüsü kullanarak işler. Ayrıca, her ileti için geçersiz kılma zaman aşımını beş dakikaya (300 saniye) ayarlar. Zaman aşımı, tüm iletiler için aynı anda başlar. **Retrievemessages** çağrısından bu yana beş dakika geçtiğinde, silinmeyen iletiler yeniden görünür hale gelir.
 
 ```java
 try
@@ -600,10 +601,10 @@ catch (Exception e)
 
 Sıra depolamanın temellerini öğrendiğinize göre, daha karmaşık depolama görevleri hakkında bilgi edinmek için bu bağlantıları izleyin.
 
-* [Java için Azure Depolama SDK'sı][Azure Storage SDK for Java]
-* [Azure Depolama İstemcisi SDK Başvurusu][Azure Storage Client SDK Reference]
-* [Azure Storage Hizmetleri REST API’si][Azure Storage Services REST API]
-* [Azure Depolama Ekibi Blogu][Azure Storage Team Blog]
+- [Java için Azure Depolama SDK'sı][Azure Storage SDK for Java]
+- [Azure Depolama İstemcisi SDK Başvurusu][Azure Storage Client SDK Reference]
+- [Azure Storage Hizmetleri REST API’si][Azure Storage Services REST API]
+- [Azure Depolama Ekibi Blogu][Azure Storage Team Blog]
 
 [Azure SDK for Java]: https://github.com/azure/azure-sdk-for-java
 [Azure Storage SDK for Java]: https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage

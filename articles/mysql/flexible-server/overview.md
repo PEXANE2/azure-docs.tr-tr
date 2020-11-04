@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 4cb706bfa1c10e941e6d2d44358c784549973302
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: f6ec6bced9c84e4e5b0f04cc32eebb438052bd6c
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927983"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348296"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı-esnek sunucu (Önizleme)
 
@@ -50,7 +50,7 @@ Bölgesel olarak yedekli yüksek kullanılabilirlik yapılandırılmışsa, hizm
 
 Daha fazla ayrıntı için bkz. [yüksek kullanılabilirlik kavramları](concepts-high-availability.md) .
 
-:::image type="content" source="media/overview/3-flexible-server-overview-zone-redundant-ha.png" alt-text="Tek bölge yüksek kullanılabilirlik kavramsal diyagramı"::: 
+:::image type="content" source="media/overview/3-flexible-server-overview-zone-redundant-ha.png" alt-text="Bölge yedekli yüksek kullanılabilirliği kavramsal diyagramı"::: 
 
 ## <a name="automated-patching-with-managed-maintenance-window"></a>Yönetilen bakım penceresiyle otomatik düzeltme eki uygulama
 
@@ -66,7 +66,7 @@ Daha fazla bilgi için bkz. [yedekleme kavramları](concepts-backup-restore.md) 
 
 ## <a name="network-isolation"></a>Ağ Yalıtımı
 
-MySQL için Azure veritabanı esnek sunucusuna bağlanmak için iki ağ seçeneğiniz vardır. Seçenekler **özel erişim (VNET tümleştirmesi)** ve **genel erişim (izin verilen IP adresleri)** . 
+MySQL için Azure veritabanı esnek sunucusuna bağlanmak için iki ağ seçeneğiniz vardır. Seçenekler **özel erişim (VNET tümleştirmesi)** ve **genel erişim (izin verilen IP adresleri)**. 
 
 * **Özel erişim (VNET tümleştirmesi)** – esnek sunucunuzu [Azure sanal ağınıza](../../virtual-network/virtual-networks-overview.md)dağıtabilirsiniz. Azure sanal ağları özel ve güvenli ağ iletişimi sağlar. Bir sanal ağdaki kaynaklar özel IP adresleri üzerinden iletişim kurabilir.
 
@@ -89,7 +89,7 @@ Daha fazla bilgi için bkz. [işlem ve depolama kavramları](concepts-compute-st
 
 MySQL, İnternet ölçeğinde Web ve mobil uygulamaları çalıştırmaya yönelik popüler veritabanı altyapılarından biridir. Müşterilerimizin birçoğu, çevrimiçi eğitim hizmetleri, video akış Hizmetleri, dijital ödeme çözümleri, e-ticaret platformları, Oyun Hizmetleri, haber portalları, kamu ve sağlık Web siteleri için bunu kullanır. Web veya mobil uygulamadaki trafik arttıkça bu hizmetlerin hizmet vermesi ve ölçeklendirilmesi gerekir.
 
-Uygulamalar tarafında, uygulama genellikle Java veya php 'de geliştirilmiştir ve [Azure sanal makine ölçek kümeleri](/azure/virtual-machine-scale-sets/overview.md)   veya [Azure Uygulama hizmetlerinde](/azure/app-service/overview.md)çalışacak şekilde geçirilir   ya da [Azure KUBERNETES hizmeti (aks)](/azure/aks/intro-kubernetes.md)üzerinde çalışmak üzere Kapsayıcılı hale getirilir. Arka plandaki altyapı olarak sanal makine ölçek kümesi, App Service veya AKS ile, uygulama ölçekleme, anında yeni VM 'Ler sunarak basitleştirilir ve isteklerin durum bilgisiz bileşenleri, isteklere geçmek için, ancak genellikle veritabanı, Merkezi durum bilgisi olan bir bileşen olarak performans sorunlarına neden olur.
+Uygulamalar tarafında, uygulama genellikle Java veya php 'de geliştirilmiştir ve [Azure sanal makine ölçek kümeleri](../../virtual-machine-scale-sets/overview.md)   veya [Azure Uygulama hizmetlerinde](../../app-service/overview.md)çalışacak şekilde geçirilir   ya da [Azure KUBERNETES hizmeti (aks)](../../aks/intro-kubernetes.md)üzerinde çalışmak üzere Kapsayıcılı hale getirilir. Arka plandaki altyapı olarak sanal makine ölçek kümesi, App Service veya AKS ile, uygulama ölçekleme, anında yeni VM 'Ler sunarak basitleştirilir ve isteklerin durum bilgisiz bileşenleri, isteklere geçmek için, ancak genellikle veritabanı, Merkezi durum bilgisi olan bir bileşen olarak performans sorunlarına neden olur.
 
 Çoğaltma oku özelliği, MySQL için Azure veritabanı esnek sunucusu 'na ait verileri salt okunurdur bir sunucuya çoğaltmanıza olanak sağlar. Kaynak sunucudan 10 ' a **kadar** çoğaltma yapabilirsiniz. Çoğaltmalar, MySQL altyapısının yerel [ikili günlük (binlog) dosya konumu tabanlı çoğaltma teknolojisi](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)kullanılarak zaman uyumsuz olarak güncelleştirilir. Uygulama yeniden düzenleme maliyeti olmadan çoğaltmaları okumak için uygulama iş yükünüzü sorunsuz bir şekilde genişletmek için [Proxysql](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042) gibi yük dengeleyici ara sunucu çözümünü kullanabilirsiniz. 
 
@@ -133,7 +133,7 @@ Hizmet MySQL 'in topluluk sürümünü çalıştırır. Bu, tam uygulama uyumlul
 Azure 'da iş yükünüzü çalıştırmanın avantajlarından biri küresel erişime sahip. MySQL için Azure veritabanı esnek sunucusu şu Azure bölgelerinde bugün kullanılabilir:
 
 - West Europe
-- Kuzey Avrupa
+- North Europe
 - Güney Birleşik Krallık
 - Doğu ABD 2
 - Batı ABD 2

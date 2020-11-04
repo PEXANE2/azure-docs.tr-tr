@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5e4e5f4c1a50c814174dbbd5d419fe24b2e9f88e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: f89dd6b7926baf6c1c64cff81e8b613461a3e925
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336689"
+ms.locfileid: "93345508"
 ---
 # <a name="how-to-use-batch-transcription"></a>Toplu iş dökümünü kullanma
 
@@ -39,7 +39,7 @@ Aşağıdaki yöntemleri çağırmak için Batch transcripts REST API 'Lerini ku
 Toplu iş dökümü işleri en iyi çaba temelinde zamanlanır.
 Bir işin çalışma durumuna ne zaman değişene, ancak normal sistem yükü altında dakikalar içinde gerçekleşmesi gerekir. Çalışma durumunda, döküm, ses çalışma zamanı kayıttan yürütme hızından daha hızlı gerçekleşir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Konuşma hizmetinin tüm özelliklerinde olduğu gibi, [kullanmaya başlama kılavuzumuzu](overview.md#try-the-speech-service-for-free)izleyerek [Azure Portal](https://portal.azure.com) bir abonelik anahtarı oluşturursunuz.
 
@@ -49,7 +49,7 @@ Konuşma hizmetinin tüm özelliklerinde olduğu gibi, [kullanmaya başlama kıl
 Modelleri özelleştirmeyi planlıyorsanız, [akustik özelleştirme](how-to-customize-acoustic-models.md) ve [dil özelleştirme](how-to-customize-language-model.md)bölümündeki adımları izleyin. Toplu iş dökümlerinde oluşturulan modelleri kullanmak için model konumuyla ihtiyacınız vardır. Modelin ayrıntılarını inceleyebileceğiniz zaman model konumunu alabilirsiniz ( `self` özellik). Toplu iş dökümü hizmeti için dağıtılan özel bir uç nokta *gerekli değildir* .
 
 >[!NOTE]
-> REST API bir parçası olarak toplu Iş dökümü, gözden geçirmeyi teşvik ettiğimiz bir [Kotalar ve sınırlar](speech-services-quotas-and-limits.md#speech-to-text-quotas-and-limits-per-speech-resource)kümesine sahiptir. Toplu geçiş yeteneğinin çok sayıda ses dosyası olmasını verimli bir şekilde sağlamak için, istek başına birden çok dosya göndermeyi veya bir BLOB depolama kapsayıcısını, bu dosyanın dökümünü alacak şekilde bir BLOB depolama kapsayıcısına işaret etmenizi öneririz. Hizmet, dosyaları aynı anda azaltma süresini azaltır. Tek bir istekte birden çok dosya kullanılması çok basittir ve kolay bir şekilde [yapılandırma](#configuration) bölümüne bakın. 
+> REST API bir parçası olarak toplu Iş dökümü, gözden geçirmeyi teşvik ettiğimiz bir [Kotalar ve sınırlar](speech-services-quotas-and-limits.md#batch-transcription)kümesine sahiptir. Toplu geçiş yeteneğinin çok sayıda ses dosyası olmasını verimli bir şekilde sağlamak için, istek başına birden çok dosya göndermeyi veya bir BLOB depolama kapsayıcısını, bu dosyanın dökümünü alacak şekilde bir BLOB depolama kapsayıcısına işaret etmenizi öneririz. Hizmet, dosyaları aynı anda azaltma süresini azaltır. Tek bir istekte birden çok dosya kullanılması çok basittir ve kolay bir şekilde [yapılandırma](#configuration) bölümüne bakın. 
 
 ## <a name="batch-transcription-api"></a>Toplu iş dökümü API 'SI
 

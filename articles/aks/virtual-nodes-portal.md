@@ -5,22 +5,23 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 21bbe15a37e95df297f580064beb63ebd5debe57
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 9becd6341baad54a74f10ae2f38cf9ccf1fd3037
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899907"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347905"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Azure portal sanal düğümleri kullanmak için bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma ve yapılandırma
 
-Azure Kubernetes Service (AKS) kümesinde iş yüklerini hızlıca dağıtmak için sanal düğümleri kullanabilirsiniz. Sanal düğümlerde, yığınların hızlı bir şekilde sağlanması ve yürütme süresi boyunca yalnızca saniye başına ödeme yaparsınız. Bir ölçeklendirme senaryosunda, Kubernetes kümesi otomatik Scaler ' ı ek düğüm işlemlerini çalıştırmak için VM işlem düğümlerini dağıtmaya beklemeniz gerekmez. Sanal düğümler yalnızca Linux Pod ve düğümleri ile desteklenir.
+Bu makalede, sanal düğümlerin etkinleştirildiği sanal ağ kaynaklarını ve AKS kümesini oluşturmak ve yapılandırmak için Azure portal nasıl kullanılacağı gösterilmektedir.
 
-Bu makalede, sanal düğümlerin etkin olduğu sanal ağ kaynaklarının ve AKS kümesinin nasıl oluşturulacağı ve yapılandırılacağı gösterilir.
+> [!NOTE]
+> [Bu makale](virtual-nodes.md) , sanal düğümleri kullanan bölge kullanılabilirliğine ve sınırlamalara genel bir bakış sunar.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Sanal düğümler Azure Container Instances (aci) ve aks kümesinde çalışan Pod 'ler arasında ağ iletişimini sağlar. Bu iletişim sağlamak için bir sanal ağ alt ağı oluşturulur ve temsilci izinleri atanır. Sanal düğümler yalnızca *Gelişmiş* ağ kullanılarak oluşturulan aks kümeleriyle çalışır. Varsayılan olarak, AKS kümeleri *temel* ağ ile oluşturulur. Bu makalede, bir sanal ağ ve alt ağ oluşturma ve ardından Gelişmiş ağ kullanan bir AKS kümesi dağıtma işlemleri gösterilir.
+Sanal düğümler Azure Container Instances (aci) ve aks kümesinde çalışan Pod 'ler arasında ağ iletişimini sağlar. Bu iletişim sağlamak için bir sanal ağ alt ağı oluşturulur ve temsilci izinleri atanır. Sanal düğümler yalnızca *Gelişmiş* ağ (Azure CNI) kullanılarak oluşturulan aks kümeleriyle çalışır. Varsayılan olarak, AKS kümeleri *temel* ağ (kubenet) ile oluşturulur. Bu makalede, bir sanal ağ ve alt ağ oluşturma ve ardından Gelişmiş ağ kullanan bir AKS kümesi dağıtma işlemleri gösterilir.
 
 Daha önce ACI kullandıysanız, hizmet sağlayıcısını aboneliğiniz ile kaydedin. Aşağıdaki örnekte gösterildiği gibi [az Provider List][az-provider-list] komutunu kullanarak aci sağlayıcı kaydının durumunu denetleyebilirsiniz:
 
@@ -42,34 +43,6 @@ Sağlayıcı *Notregistered* olarak gösteriyorsa, aşağıdaki örnekte göster
 az provider register --namespace Microsoft.ContainerInstance
 ```
 
-## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
-
-Sanal düğüm dağıtımları için aşağıdaki bölgeler desteklenir:
-
-* Avustralya Doğu (australiaeast)
-* Orta ABD (merkezde ABD)
-* Doğu ABD (eastus)
-* Doğu ABD 2 (eastus2)
-* Japonya Doğu (japaneast)
-* Kuzey Avrupa (northeurope)
-* Güneydoğu Asya (Güneydoğu)
-* Orta Batı ABD (westcentralus)
-* Batı Avrupa (westeurope)
-* Batı ABD (westus)
-* Batı ABD 2 (westus2)
-
-## <a name="known-limitations"></a>Bilinen sınırlamalar
-Sanal düğümler işlevselliği, ACI 'nin özellik kümesine yoğun bir şekilde bağımlıdır. [Azure Container Instances kotaları ve limitlerine](../container-instances/container-instances-quotas.md)ek olarak, aşağıdaki senaryolar sanal düğümlerde henüz desteklenmez:
-
-* ACR görüntülerini çekmek için hizmet sorumlusu kullanma. [Geçici çözüm](https://github.com/virtual-kubelet/azure-aci/blob/master/README.md#private-registry) , [Kubernetes gizli](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) dizileri kullanmaktır
-* VNet eşlemesi, Kubernetes ağ ilkeleri ve ağ güvenlik gruplarıyla internet 'e giden trafik dahil [sanal ağ sınırlamaları](../container-instances/container-instances-virtual-network-concepts.md) .
-* Init kapsayıcıları
-* [Ana bilgisayar diğer adları](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
-* ACI 'da exec için [bağımsız değişkenler](../container-instances/container-instances-exec.md#restrictions)
-* [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) , sanal düğüme Pod dağıtmayacak
-* Sanal düğümler, Linux pods zamanlamasını destekler. Açık kaynak [sanal Kubelet aci](https://github.com/virtual-kubelet/azure-aci) sağlayıcısını, Windows Server kapsayıcılarını acı 'ye zamanlamak için el ile yükleyebilirsiniz.
-* Sanal düğümler Azure CNı ağı ile AKS kümeleri gerektirir
-
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 https://portal.azure.com adresinden Azure portalında oturum açın.
@@ -82,8 +55,8 @@ Azure Portal sol üst köşesinde **kaynak oluştur**  >  **Kubernetes hizmeti**
 
 - *PROJE AYRINTILARI* : Bir Azure aboneliği seçtikten sonra bir Azure kaynak grubu seçin veya *myResourceGroup* adıyla yeni bir tane oluşturun. **Kubernetes kümesi adı** alanına *myAKSCluster* gibi bir ad girin.
 - *KÜME AYRINTILARI* : AKS kümesi için bölge, Kubernetes sürümü ve DNS adı ön eki seçin.
-- *BIRINCIL düğüm havuzu* : aks düğümleri IÇIN bir VM boyutu seçin. AKS kümesi dağıtıldıktan sonra, sanal makine boyutu **değiştirilemez** .
-     - Kümeye dağıtılacak düğüm sayısını seçin. Bu makalede, **düğüm sayısını** *1* olarak ayarlayın. Küme dağıtıldıktan sonra düğüm sayısı **ayarlanabilir** .
+- *BIRINCIL düğüm havuzu* : aks düğümleri IÇIN bir VM boyutu seçin. AKS kümesi dağıtıldıktan sonra, sanal makine boyutu **değiştirilemez**.
+     - Kümeye dağıtılacak düğüm sayısını seçin. Bu makalede, **düğüm sayısını** *1* olarak ayarlayın. Küme dağıtıldıktan sonra düğüm sayısı **ayarlanabilir**.
 
 **İleri: ölçek** öğesine tıklayın.
 
@@ -95,7 +68,7 @@ Varsayılan olarak, bir Azure Active Directory hizmet sorumlusu oluşturulur. Bu
 
 Küme, Gelişmiş ağ için de yapılandırılır. Sanal düğümler kendi Azure sanal ağ alt ağını kullanacak şekilde yapılandırılır. Bu alt ağ, AKS kümesi arasında Azure kaynaklarını bağlama izinlerine temsilci seçti. Henüz temsilci alt ağınız yoksa, Azure portal Azure sanal ağını ve alt ağını sanal düğümlerle kullanılmak üzere oluşturur ve yapılandırır.
 
-**Gözden geçir ve oluştur** ’u seçin. Doğrulama tamamlandıktan sonra **Oluştur** ' u seçin.
+**Gözden geçir + oluştur** ’u seçin. Doğrulama tamamlandıktan sonra **Oluştur** ' u seçin.
 
 AKS kümesinin oluşturulması ve kullanıma hazır olması birkaç dakika sürer.
 
@@ -241,5 +214,5 @@ Sanal düğümler, AKS 'teki bir ölçeklendirme çözümünün bir bileşenidir
 [aks-hpa]: tutorial-kubernetes-scale.md
 [aks-cluster-autoscaler]: cluster-autoscaler.md
 [aks-basic-ingress]: ingress-basic.md
-[az-provider-list]: /cli/azure/provider#az-provider-list
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register
+[az-provider-list]: /cli/azure/provider&preserve-view=true#az-provider-list
+[az-provider-register]: /cli/azure/provider?view=azure-cli-latest&preserve-view=true#az-provider-register

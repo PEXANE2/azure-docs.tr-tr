@@ -4,18 +4,22 @@ description: Python ile işlev geliştirmeyi anlama
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 0de25cc804844b5aa414e521fa641761d9a4b4f4
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3d459f4249c65f2d09f9d8df6e7958adf852a2ea
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108431"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346324"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
 Bu makale, Python kullanarak Azure Işlevleri geliştirmeye giriş niteliğindedir. Aşağıdaki içerik [Azure işlevleri geliştirici kılavuzunu](functions-reference.md)zaten okuduğunuzu varsayar.
 
-Python 'da tek başına Işlev örnek projeleri için bkz. [Python işlevleri örnekleri](/samples/browse/?products=azure-functions&languages=python).
+Python geliştiricisi olarak, aşağıdaki makalelerden biriyle de ilgileniyor olabilirsiniz:
+
+| Başlarken | Kavramlar| Senaryolar/örnekler |
+| -- | -- | -- | 
+| <ul><li>[Visual Studio Code kullanarak Python işlevi](./functions-create-first-function-vs-code.md?pivots=programming-language-python)</li><li>[Terminal/komut istemiyle Python işlevi](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)</li></ul> | <ul><li>[Geliştirici kılavuzu](functions-reference.md)</li><li>[Barındırma seçenekleri](functions-scale.md)</li><li>[Performans &nbsp; konuları](functions-best-practices.md)</li></ul> | <ul><li>[PyTorch ile görüntü sınıflandırması](machine-learning-pytorch.md)</li><li>[Azure Otomasyonu örneği](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[TensorFlow ile Machine Learning](functions-machine-learning-tensorflow.md)</li><li>[Python örneklerine gözatamıyorum](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
 ## <a name="programming-model"></a>Programlama modeli
 
@@ -44,7 +48,7 @@ def main(req: azure.functions.HttpRequest) -> str:
     return f'Hello, {user}!'
 ```
 
-Yöntemlerinizi giriş ve çıkışları bağlamak için [Azure. Functions. *](/python/api/azure-functions/azure.functions?view=azure-python) paketinde bulunan Python ek açıklamalarını kullanın.
+Yöntemlerinizi giriş ve çıkışları bağlamak için [Azure. Functions. *](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true) paketinde bulunan Python ek açıklamalarını kullanın.
 
 ## <a name="alternate-entry-point"></a>Alternatif giriş noktası
 
@@ -83,19 +87,19 @@ Python Işlevleri projesi için önerilen klasör yapısı aşağıdaki örneğe
 ```
 Ana proje klasörü ( \_ \_ uygulama \_ \_ ) aşağıdaki dosyaları içerebilir:
 
-* *local.settings.json*: yerel olarak çalışırken uygulama ayarlarını ve bağlantı dizelerini depolamak için kullanılır. Bu dosya Azure 'da yayınlanmıyor. Daha fazla bilgi için bkz. [Local. Settings. File](functions-run-local.md#local-settings-file).
-* *requirements.txt*: Azure 'a yayımlarken sistemin yüklediği paketlerin listesini içerir.
-* *host.js*:: bir işlev uygulamasındaki tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu dosya Azure 'da yayımlanır. Yerel olarak çalışırken tüm seçenekler desteklenmez. Daha fazla bilgi için bkz. [host.json](functions-host-json.md).
-* *. funcignore*: (isteğe bağlı) Azure 'da yayımlanmaması gereken dosyaları bildirir.
-* *Dockerfile*: (isteğe bağlı) projenizi [özel kapsayıcıda](functions-create-function-linux-custom-image.md)yayımlarken kullanılır.
+* *local.settings.json* : yerel olarak çalışırken uygulama ayarlarını ve bağlantı dizelerini depolamak için kullanılır. Bu dosya Azure 'da yayınlanmıyor. Daha fazla bilgi için bkz. [Local. Settings. File](functions-run-local.md#local-settings-file).
+* *requirements.txt* : Azure 'a yayımlarken sistemin yüklediği paketlerin listesini içerir.
+* *host.js* :: bir işlev uygulamasındaki tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu dosya Azure 'da yayımlanır. Yerel olarak çalışırken tüm seçenekler desteklenmez. Daha fazla bilgi için bkz. [host.json](functions-host-json.md).
+* *. funcignore* : (isteğe bağlı) Azure 'da yayımlanmaması gereken dosyaları bildirir.
+* *Dockerfile* : (isteğe bağlı) projenizi [özel kapsayıcıda](functions-create-function-linux-custom-image.md)yayımlarken kullanılır.
 
 Her işlevin kendi kod dosyası ve bağlama yapılandırma dosyası (function.js) vardır.
 
-Projenizi Azure 'daki bir işlev uygulamasına dağıttığınızda, ana proje (* \_ \_ uygulama \_ \_ *) klasörünün tüm içeriği pakete dahil edilmelidir, ancak klasörün kendisi değil. Bu örnekte, testlerinizi proje klasöründen ayrı bir klasörde tutmanızı öneririz `tests` . Bu, uygulamanıza test kodu dağıtmanızı önler. Daha fazla bilgi için bkz. [birim testi](#unit-testing).
+Projenizi Azure 'daki bir işlev uygulamasına dağıttığınızda, ana proje ( *\_ \_ uygulama \_ \_* ) klasörünün tüm içeriği pakete dahil edilmelidir, ancak klasörün kendisi değil. Bu örnekte, testlerinizi proje klasöründen ayrı bir klasörde tutmanızı öneririz `tests` . Bu, uygulamanıza test kodu dağıtmanızı önler. Daha fazla bilgi için bkz. [birim testi](#unit-testing).
 
 ## <a name="import-behavior"></a>İçeri aktarma davranışı
 
-İşlev kodunuzda modülleri, hem açık göreli hem de mutlak başvurular kullanarak içeri aktarabilirsiniz. Yukarıda gösterilen klasör yapısına bağlı olarak, aşağıdaki içeri aktarmalar * \_ \_ App \_ \_ \_ \first \_ Function \\ _ \_ init \_ \_ . Kopyala*işlev dosyası içinden çalışır:
+İşlev kodunuzda modülleri, hem açık göreli hem de mutlak başvurular kullanarak içeri aktarabilirsiniz. Yukarıda gösterilen klasör yapısına bağlı olarak, aşağıdaki içeri aktarmalar *\_ \_ App \_ \_ \_ \first \_ Function \\ _ \_ init \_ \_ . Kopyala* işlev dosyası içinden çalışır:
 
 ```python
 from . import example #(explicit relative)
@@ -127,7 +131,7 @@ from example import some_helper_code
 import shared_code
 ```
 
-Paylaşılan kod, * \_ \_ uygulamadaki \_ \_ *ayrı bir klasörde tutulmalıdır. *Paylaşılan \_ kod* klasöründeki modüllere başvurmak için aşağıdaki sözdizimini kullanabilirsiniz:
+Paylaşılan kod, *\_ \_ uygulamadaki \_ \_* ayrı bir klasörde tutulmalıdır. *Paylaşılan \_ kod* klasöründeki modüllere başvurmak için aşağıdaki sözdizimini kullanabilirsiniz:
 
 ```python
 from __app__.shared_code import my_first_helper_function
@@ -194,7 +198,7 @@ def main(req: func.HttpRequest,
 
 Bir işlevin dönüş değerini çıkış bağlamasının değeri olarak kullanmak için, `name` bağlamanın özelliği içinde olarak ayarlanmalıdır `$return` `function.json` .
 
-Birden çok çıkış oluşturmak için, `set()` [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python) bağlamaya bir değer atamak üzere arabirim tarafından sunulan yöntemi kullanın. Örneğin, aşağıdaki işlev bir kuyruğa ileti gönderebilir ve ayrıca bir HTTP yanıtı döndürebilir.
+Birden çok çıkış oluşturmak için, `set()` [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) bağlamaya bir değer atamak üzere arabirim tarafından sunulan yöntemi kullanın. Örneğin, aşağıdaki işlev bir kuyruğa ileti gönderebilir ve ayrıca bir HTTP yanıtı döndürebilir.
 
 ```json
 {
@@ -310,7 +314,7 @@ Performansı iyileştirmeye yönelik bir anahtar, uygulamanızın kaynakları na
 
 Varsayılan yapılandırma, Azure Işlevleri uygulamalarının çoğu için uygundur. Ancak, iş yükü profilinize göre yapılandırma uygulayarak uygulamalarınızın aktarım hızı performansını artırabilirsiniz. İlk adım, çalıştırdığınız iş yükünün türünü anlamaktır.
 
-|| G/ç bağlantılı iş yükü | CPU ile bağlantılı iş yükü |
+|&nbsp;| G/ç bağlantılı iş yükü | CPU ile bağlantılı iş yükü |
 |--| -- | -- |
 |İşlev uygulaması özellikleri| <ul><li>Uygulamanın birçok eşzamanlı çağırma işlemesi gerekiyor.</li> <li> Uygulama, ağ çağrıları ve disk okuma/yazma gibi çok sayıda g/ç olayını işler.</li> </ul>| <ul><li>Uygulama, görüntü yeniden boyutlandırma gibi uzun süre çalışan hesaplamalar yapar.</li> <li>Uygulama veri dönüşümünü yapar.</li> </ul> |
 |Örnekler| <ul><li>Web API'leri</li><ul> | <ul><li>Veri işleme</li><li> Makine öğrenimi çıkarımı</li><ul>|
@@ -381,9 +385,9 @@ FUNCTIONS_WORKER_PROCESS_COUNT, uygulamanızın talebi karşılamak üzere ölç
 
 ## <a name="context"></a>Bağlam
 
-Yürütme sırasında bir işlevin çağırma bağlamını almak için, [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) bağımsız değişkenini imzasına ekleyin.
+Yürütme sırasında bir işlevin çağırma bağlamını almak için, [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) bağımsız değişkenini imzasına ekleyin.
 
-Örnek:
+Örneğin:
 
 ```python
 import azure.functions
@@ -394,7 +398,7 @@ def main(req: azure.functions.HttpRequest,
     return f'{context.invocation_id}'
 ```
 
-[**Bağlam**](/python/api/azure-functions/azure.functions.context?view=azure-python) sınıfı aşağıdaki dize özniteliklerine sahiptir:
+[**Bağlam**](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) sınıfı aşağıdaki dize özniteliklerine sahiptir:
 
 `function_directory` İşlevin çalıştığı dizin.
 
@@ -746,7 +750,7 @@ Tüm bilinen sorunlar ve özellik istekleri [GitHub sorunları](https://github.c
 
 Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
-* [Azure Işlevleri paket API 'SI belgeleri](/python/api/azure-functions/azure.functions?view=azure-python)
+* [Azure Işlevleri paket API 'SI belgeleri](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true)
 * [Azure İşlevleri için en iyi uygulamalar](functions-best-practices.md)
 * [Azure Işlevleri Tetikleyicileri ve bağlamaları](functions-triggers-bindings.md)
 * [BLOB depolama bağlamaları](functions-bindings-storage-blob.md)
@@ -755,5 +759,5 @@ Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 * [Süreölçer tetikleyicisi](functions-bindings-timer.md)
 
 
-[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python
-[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python
+[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python&preserve-view=true
+[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python&preserve-view=true

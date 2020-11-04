@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: bc630fc5ea9407c284e2e2e879c349a83302cd9f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 6942fd68625fd8eac18ea899330fd99f31f771f7
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93122632"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346120"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics çıkışları sorunlarını giderme
 
@@ -91,7 +91,7 @@ SQL çıktısı olan Stream Analytics bir iş, ilk olay toplu işlemini aldığ�
 2. İş, hedef tablonun şemasını getirir.
 3. İş, sütun adlarını ve türlerini hedef tablo şemasına göre doğrular.
 4. İş, toplu işteki çıktı kayıtlarından bir bellek içi veri tablosu hazırlar.
-5. İş, veri tablosunu BulkCopy [API](/dotnet/api/system.data.sqlclient.sqlbulkcopy.writetoserver?view=dotnet-plat-ext-3.1)kullanarak SQL 'e yazar.
+5. İş, veri tablosunu BulkCopy [API](/dotnet/api/system.data.sqlclient.sqlbulkcopy.writetoserver)kullanarak SQL 'e yazar.
 
 Bu adımlar sırasında, SQL çıktısı aşağıdaki hata türleriyle karşılaşabilir:
 

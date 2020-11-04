@@ -9,12 +9,12 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3f6e10d3e5b33a07c223a3913bba0b220df2ff64
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6e86950581255bd4e3a78b0b4a3f599a24a3cad0
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787389"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345763"
 ---
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>Kuyruk depolama için performans ve ölçeklenebilirlik denetim listesi
 
@@ -60,18 +60,17 @@ Belirli bir abonelik/bölge birleşimi için izin verilen en fazla depolama hesa
 
 ### <a name="capacity-and-transaction-targets"></a>Kapasite ve işlem hedefleri
 
-Uygulamanız tek bir depolama hesabı için ölçeklenebilirlik hedeflerine yaklaşıyorsa, aşağıdaki yaklaşımlardan birini benimsede düşünün:  
+Uygulamanız tek bir depolama hesabı için ölçeklenebilirlik hedeflerine yaklaşıyorsa, aşağıdaki yaklaşımlardan birini benimsede düşünün:
 
 - Kuyruklar için ölçeklenebilirlik hedefleri uygulamanız için yeterli değilse, birden çok kuyruk kullanın ve iletileri bunlar arasında dağıtın.
 - Uygulamanızın ölçeklenebilirlik hedefini yaklaşımını veya aşmasına neden olan iş yükünü yeniden değerlendirin. Daha az bant genişliği veya kapasite veya daha az işlem kullanmak için farklı bir şekilde tasarlayabilirsiniz mi?
 - Uygulamanız ölçeklenebilirlik hedeflerinin birini aşmanız gerekiyorsa, birden çok depolama hesabı oluşturun ve uygulama verilerinizi bu birden çok depolama hesabı genelinde bölümleyin. Bu kalıbı kullanırsanız, daha sonra yük dengelemeye yönelik daha fazla depolama hesabı ekleyebilmeniz için uygulamanızı tasarlayadığınızdan emin olun. Depolama hesaplarının kendileri, depolanan veri, işlem yapılan veya aktarılan veri açısından kullanımınız dışında bir ücret içermez.
-- Uygulamanız bant genişliği hedeflerine yaklaşıyorsa, verileri Azure depolama 'ya göndermek için gereken bant genişliğini azaltmak için istemci tarafındaki verileri sıkıştırmayı göz önünde bulundurun.
-    Verilerin sıkıştırılması bant genişliğini kaydedebilir ve ağ performansını iyileştireken performansı olumsuz etkileyebilir. İstemci tarafında veri sıkıştırma ve açma için ek işleme gereksinimlerinin performans etkisini değerlendirin. Sıkıştırılmış verilerin depolanması sorun gidermeyi daha zor hale getirir, çünkü verileri standart araçlar kullanarak görüntülemek daha zor olabilir.
+- Uygulamanız bant genişliği hedeflerine yaklaşıyorsa, verileri Azure depolama 'ya göndermek için gereken bant genişliğini azaltmak için istemci tarafındaki verileri sıkıştırmayı göz önünde bulundurun. Verilerin sıkıştırılması bant genişliğini kaydedebilir ve ağ performansını iyileştireken performansı olumsuz etkileyebilir. İstemci tarafında veri sıkıştırma ve açma için ek işleme gereksinimlerinin performans etkisini değerlendirin. Sıkıştırılmış verilerin depolanması sorun gidermeyi daha zor hale getirir, çünkü verileri standart araçlar kullanarak görüntülemek daha zor olabilir.
 - Uygulamanız ölçeklenebilirlik hedeflerine yaklaşıyorsa, yeniden denemeler için bir üstel geri alma kullandığınızdan emin olun. Bu makalede açıklanan önerileri uygulayarak ölçeklenebilirlik hedeflerine ulaşmaktan kaçınmak en iyisidir. Ancak, yeniden denemeler için bir üstel geri alma kullanılması, uygulamanızın hızlı bir şekilde yeniden denenmesini engelleyecek ve bu da azaltmayı daha kötüleşmektedir. Daha fazla bilgi için [zaman aşımı ve sunucu meşgul hataları](#timeout-and-server-busy-errors)başlıklı bölüme bakın.
 
 ## <a name="networking"></a>Ağ
 
-Uygulamanın fiziksel ağ kısıtlamalarının performans üzerinde önemli bir etkisi olabilir. Aşağıdaki bölümlerde, kullanıcıların karşılaşabileceği bazı sınırlamalar açıklanır.  
+Uygulamanın fiziksel ağ kısıtlamalarının performans üzerinde önemli bir etkisi olabilir. Aşağıdaki bölümlerde, kullanıcıların karşılaşabileceği bazı sınırlamalar açıklanır.
 
 ### <a name="client-network-capability"></a>İstemci ağ özelliği
 
@@ -83,11 +82,11 @@ Bant genişliği için genellikle bu sorun istemcinin yeteneklerine yöneliktir.
 
 #### <a name="link-quality"></a>Bağlantı kalitesi
 
-Her türlü ağ kullanımında olduğu gibi, ağ koşullarının hatalara ve paket kaybına neden olacağını aklınızda bulundurun.  WireShark veya NetMon kullanmak bu sorunu tanılamanıza yardımcı olabilir.  
+Her türlü ağ kullanımında olduğu gibi, ağ koşullarının hatalara ve paket kaybına neden olacağını aklınızda bulundurun. WireShark veya NetMon kullanmak bu sorunu tanılamanıza yardımcı olabilir.
 
 ### <a name="location"></a>Konum
 
-Dağıtılmış bir ortamda, istemciyi sunucuya eklemek en iyi performansı sağlar. En düşük gecikme süresi ile Azure depolama erişimi için, istemciniz için en iyi konum aynı Azure bölgesi içindedir. Örneğin, Azure Storage kullanan bir Azure Web uygulamanız varsa, bunları her ikisi de ABD Batı veya Asya Güneydoğu gibi tek bir bölge içinde bulun. Ortak bulma kaynakları, tek bir bölgedeki bant genişliği kullanımı ücretsizdir gecikme süresini ve maliyeti azaltır.  
+Dağıtılmış bir ortamda, istemciyi sunucuya eklemek en iyi performansı sağlar. En düşük gecikme süresi ile Azure depolama erişimi için, istemciniz için en iyi konum aynı Azure bölgesi içindedir. Örneğin, Azure Storage kullanan bir Azure Web uygulamanız varsa, bunları her ikisi de ABD Batı veya Asya Güneydoğu gibi tek bir bölge içinde bulun. Ortak bulma kaynakları, tek bir bölgedeki bant genişliği kullanımı ücretsizdir gecikme süresini ve maliyeti azaltır.
 
 İstemci uygulamaları Azure depolama 'ya erişebilse ancak mobil cihaz uygulamaları veya şirket içi kurumsal hizmetler gibi Azure 'da barındırılandıklarında, bu istemcilere yakın bir bölgede depolama hesabını bulma gecikme süresini azaltabilir. İstemcileriniz büyük ölçüde dağıtılırsa (örneğin, Kuzey Amerika ve bazıları Avrupa 'da), her bölge için bir depolama hesabı kullanmayı düşünün. Uygulamanın depoladığı veriler bireysel kullanıcılara özgü ise ve depolama hesapları arasında veri çoğaltmayı gerektirmiyorsa, bu yaklaşım daha kolay bir şekilde uygulanır.
 
@@ -95,17 +94,17 @@ Dağıtılmış bir ortamda, istemciyi sunucuya eklemek en iyi performansı sağ
 
 Kullanıcının Web tarayıcısında veya mobil telefon uygulamasında çalışan JavaScript gibi bir kodu, Azure depolama 'daki verilere erişmek için yetkilendirmeniz gerektiğini varsayalım. Bir yaklaşım, proxy görevi gören bir hizmet uygulaması oluşturmaktır. Kullanıcının cihazının kimliği, hizmet ile doğrulanır, bu da Azure depolama kaynaklarına erişim yetkisi verir. Bu şekilde, depolama hesabı anahtarlarınızı güvenli olmayan cihazlarda açığa çıkarmaktan kaçınabilirsiniz. Ancak, bu yaklaşım, kullanıcının cihazı ile Azure depolama arasında aktarılan tüm verilerin hizmet uygulamasından geçmesi gerektiğinden, hizmet uygulamasına önemli bir ek yük koyar.
 
-Paylaşılan erişim imzalarını (SAS) kullanarak Azure depolama için bir hizmet uygulaması proxy 'si kullanmaktan kaçınabilirsiniz. SAS kullanarak, sınırlı erişim belirtecini kullanarak, kullanıcının cihazını doğrudan Azure depolama 'ya istek yapmasını sağlayabilirsiniz. Örneğin, bir Kullanıcı uygulamanıza fotoğraf yüklemek isterse, hizmet uygulamanız SAS oluşturup kullanıcının cihazına gönderebilir. SAS belirteci, belirli bir zaman aralığı için bir Azure depolama kaynağına yazma izni verebilir ve sonrasında SAS belirtecinin süresi dolar. SAS hakkında daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](../common/storage-sas-overview.md).  
+Paylaşılan erişim imzalarını (SAS) kullanarak Azure depolama için bir hizmet uygulaması proxy 'si kullanmaktan kaçınabilirsiniz. SAS kullanarak, sınırlı erişim belirtecini kullanarak, kullanıcının cihazını doğrudan Azure depolama 'ya istek yapmasını sağlayabilirsiniz. Örneğin, bir Kullanıcı uygulamanıza fotoğraf yüklemek isterse, hizmet uygulamanız SAS oluşturup kullanıcının cihazına gönderebilir. SAS belirteci, belirli bir zaman aralığı için bir Azure depolama kaynağına yazma izni verebilir ve sonrasında SAS belirtecinin süresi dolar. SAS hakkında daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](../common/storage-sas-overview.md).
 
 Genellikle, bir Web tarayıcısı, başka bir etki alanına yazma işlemleri gibi belirli işlemleri gerçekleştirmek için bir etki alanında Web sitesi tarafından barındırılan bir sayfada JavaScript 'e izin vermez. Aynı-kaynak ilkesi olarak bilinen bu ilke, bir sayfadaki kötü amaçlı kodun başka bir Web sayfasındaki verilere erişim sağlamasını önler. Ancak, bulutta bir çözüm oluşturulurken aynı kaynak ilkesi bir kısıtlama olabilir. Çıkış noktaları arası kaynak paylaşımı (CORS), hedef etki alanının kaynak etki alanında yer alan isteklere güvendiği tarayıcıyla iletişim kurmasını sağlayan bir tarayıcı özelliğidir.
 
-Örneğin, Azure 'da çalışan bir Web uygulamasının bir kaynak için bir Azure depolama hesabına yönelik bir istek oluşturduğunu varsayalım. Web uygulaması, kaynak etki alanıdır ve depolama hesabı hedef etki alanıdır. Azure depolama hizmetlerinden herhangi biri için CORS 'yi, kaynak etki alanından gelen istekleri Azure depolama tarafından güvenilen Web tarayıcısıyla iletişim kuracak şekilde yapılandırabilirsiniz. CORS hakkında daha fazla bilgi için bkz. [Azure depolama için çıkış noktaları arası kaynak paylaşımı (CORS) desteği](/rest/api/storageservices/Cross-Origin-Resource-Sharing--CORS--Support-for-the-Azure-Storage-Services).  
-  
-Hem SAS hem de CORS, Web uygulamanızda gereksiz yükün oluşmasını önlemenize yardımcı olabilir.  
+Örneğin, Azure 'da çalışan bir Web uygulamasının bir kaynak için bir Azure depolama hesabına yönelik bir istek oluşturduğunu varsayalım. Web uygulaması, kaynak etki alanıdır ve depolama hesabı hedef etki alanıdır. Azure depolama hizmetlerinden herhangi biri için CORS 'yi, kaynak etki alanından gelen istekleri Azure depolama tarafından güvenilen Web tarayıcısıyla iletişim kuracak şekilde yapılandırabilirsiniz. CORS hakkında daha fazla bilgi için bkz. [Azure depolama için çıkış noktaları arası kaynak paylaşımı (CORS) desteği](/rest/api/storageservices/Cross-Origin-Resource-Sharing--CORS--Support-for-the-Azure-Storage-Services).
+
+Hem SAS hem de CORS, Web uygulamanızda gereksiz yükün oluşmasını önlemenize yardımcı olabilir.
 
 ## <a name="net-configuration"></a>.NET yapılandırması
 
-.NET Framework kullanılıyorsa, bu bölümde önemli performans iyileştirmeleri yapmak için kullanabileceğiniz çeşitli hızlı yapılandırma ayarları listelenir.  Diğer dilleri kullanıyorsanız, seçtiğiniz dilde benzer kavramların uygulayıp uygulamamın olup olmadığını kontrol edin.  
+.NET Framework kullanılıyorsa, bu bölümde önemli performans iyileştirmeleri yapmak için kullanabileceğiniz çeşitli hızlı yapılandırma ayarları listelenir. Diğer dilleri kullanıyorsanız, seçtiğiniz dilde benzer kavramların uygulayıp uygulamamın olup olmadığını kontrol edin.
 
 ### <a name="use-net-core"></a>.NET Core kullanın
 
@@ -118,17 +117,17 @@ Performans geliştirmelerinden faydalanmak için .NET Core 2,1 veya sonraki bir 
 
 ### <a name="increase-default-connection-limit"></a>Varsayılan bağlantı sınırını artır
 
-.NET ' te aşağıdaki kod, varsayılan bağlantı sınırını (genellikle bir istemci ortamında 2 veya bir sunucu ortamında 10 ' a) 100 olarak artırır. Genellikle, değerini uygulamanız tarafından kullanılan iş parçacığı sayısı için yaklaşık olarak ayarlamanız gerekir.  
+.NET ' te aşağıdaki kod, varsayılan bağlantı sınırını (genellikle bir istemci ortamında 2 veya bir sunucu ortamında 10 ' a) 100 olarak artırır. Genellikle, değerini uygulamanız tarafından kullanılan iş parçacığı sayısı için yaklaşık olarak ayarlamanız gerekir.
 
 ```csharp
 ServicePointManager.DefaultConnectionLimit = 100; //(Or More)  
 ```
 
-Herhangi bir bağlantıyı açmadan önce bağlantı sınırını ayarlayın.  
+Herhangi bir bağlantıyı açmadan önce bağlantı sınırını ayarlayın.
 
-Diğer programlama dilleri için, bağlantı sınırının nasıl ayarlanacağını öğrenmek için bu dilin belgelerine bakın.  
+Diğer programlama dilleri için, bağlantı sınırının nasıl ayarlanacağını öğrenmek için bu dilin belgelerine bakın.
 
-Daha fazla bilgi için [Web Hizmetleri: eşzamanlı bağlantılar](/archive/blogs/darrenj/web-services-concurrent-connections)' a bakın.  
+Daha fazla bilgi için [Web Hizmetleri: eşzamanlı bağlantılar](/archive/blogs/darrenj/web-services-concurrent-connections)' a bakın.
 
 ### <a name="increase-minimum-number-of-threads"></a>En az iş parçacığı sayısını artır
 
@@ -138,11 +137,11 @@ Zaman uyumsuz görevlerle birlikte zaman uyumlu çağrılar kullanıyorsanız, i
 ThreadPool.SetMinThreads(100,100); //(Determine the right number for your application)  
 ```
 
-Daha fazla bilgi için bkz [. ThreadPool. SetMinThreads](/dotnet/api/system.threading.threadpool.setminthreads) metodu.  
+Daha fazla bilgi için bkz [. ThreadPool. SetMinThreads](/dotnet/api/system.threading.threadpool.setminthreads) metodu.
 
 ## <a name="unbounded-parallelism"></a>Sınırlandırılmamış paralellik
 
-Paralellik performansı performans için harika olsa da, sınırsız paralellik kullanma konusunda dikkatli olun, yani iş parçacığı sayısı veya paralel istekler üzerinde hiçbir sınır uygulanmaz. Verileri karşıya yükleme veya indirme, aynı depolama hesabındaki birden çok bölüme erişmek veya aynı bölümdeki birden çok öğeye erişmek için paralel istekleri sınırlandırdığınızdan emin olun. Paralellik sınırsız ise, uygulamanız istemci cihazının yeteneklerini veya depolama hesabının ölçeklenebilirlik hedeflerini aşacağından, daha uzun gecikme süreleri ve azaltma olanakları elde edebilir.  
+Paralellik performansı performans için harika olsa da, sınırsız paralellik kullanma konusunda dikkatli olun, yani iş parçacığı sayısı veya paralel istekler üzerinde hiçbir sınır uygulanmaz. Verileri karşıya yükleme veya indirme, aynı depolama hesabındaki birden çok bölüme erişmek veya aynı bölümdeki birden çok öğeye erişmek için paralel istekleri sınırlandırdığınızdan emin olun. Paralellik sınırsız ise, uygulamanız istemci cihazının yeteneklerini veya depolama hesabının ölçeklenebilirlik hedeflerini aşacağından, daha uzun gecikme süreleri ve azaltma olanakları elde edebilir.
 
 ## <a name="client-libraries-and-tools"></a>İstemci kitaplıkları ve araçları
 
@@ -154,9 +153,9 @@ Hizmet bir isteği işleye, Azure Storage bir hata döndürüyor. Belirli bir se
 
 ### <a name="timeout-and-server-busy-errors"></a>Zaman aşımı ve sunucu meşgul hataları
 
-Ölçeklenebilirlik sınırlarına yaklaşırsa, Azure Storage uygulamanızı kısıtlayabilir. Bazı durumlarda, Azure Storage bazı geçici bir durum nedeniyle isteği işleyemeyebilir. Her iki durumda da hizmet 503 (sunucu meşgul) veya 500 (zaman aşımı) hatası döndürebilir. Bu hatalar, hizmet daha yüksek aktarım hızına izin vermek için veri bölümlerinin yeniden dengelenmesi durumunda da meydana gelebilir. İstemci uygulaması genellikle bu hatalardan birine neden olan işlemi yeniden dener. Bununla birlikte, ölçeklenebilirlik hedeflerini aştığından Azure Storage uygulamanızı azaltsa veya hizmet isteği başka bir nedenle hizmet veremese bile, agresif yeniden denemeler sorunu kötüleşme edebilir. Bir üstel geri deneme ilkesi kullanılması önerilir ve istemci kitaplıkları varsayılan olarak bu davranışa sahiptir. Örneğin, uygulamanız 2 saniye sonra, 4 saniye, sonra 10 saniye, 30 saniye sonra yeniden deneyebilir ve ardından tamamen daha fazla verebilir. Bu şekilde, uygulamanız exacerbating davranışı yerine hizmetin yükünü önemli ölçüde azaltır.  
+Ölçeklenebilirlik sınırlarına yaklaşırsa, Azure Storage uygulamanızı kısıtlayabilir. Bazı durumlarda, Azure Storage bazı geçici bir durum nedeniyle isteği işleyemeyebilir. Her iki durumda da hizmet 503 (sunucu meşgul) veya 500 (zaman aşımı) hatası döndürebilir. Bu hatalar, hizmet daha yüksek aktarım hızına izin vermek için veri bölümlerinin yeniden dengelenmesi durumunda da meydana gelebilir. İstemci uygulaması genellikle bu hatalardan birine neden olan işlemi yeniden dener. Bununla birlikte, ölçeklenebilirlik hedeflerini aştığından Azure Storage uygulamanızı azaltsa veya hizmet isteği başka bir nedenle hizmet veremese bile, agresif yeniden denemeler sorunu kötüleşme edebilir. Bir üstel geri deneme ilkesi kullanılması önerilir ve istemci kitaplıkları varsayılan olarak bu davranışa sahiptir. Örneğin, uygulamanız 2 saniye sonra, 4 saniye, sonra 10 saniye, 30 saniye sonra yeniden deneyebilir ve ardından tamamen daha fazla verebilir. Bu şekilde, uygulamanız exacerbating davranışı yerine hizmetin yükünü önemli ölçüde azaltır.
 
-Bağlantı hataları, azaltma sonucu olmadığı ve geçici olması beklenen için hemen yeniden denenebilir.  
+Bağlantı hataları, azaltma sonucu olmadığı ve geçici olması beklenen için hemen yeniden denenebilir.
 
 ### <a name="non-retryable-errors"></a>Yeniden denenmeyen hatalar
 
@@ -170,17 +169,17 @@ Nagle 'ın algoritması, TCP/IP ağlarında yaygın olarak, ağ performansının
 
 ## <a name="message-size"></a>İleti boyutu
 
-İleti boyutu arttıkça kuyruk performansı ve ölçeklenebilirlik azalmasını azaltır. Yalnızca alıcının ihtiyacı olan bilgileri bir ileti içine alın.  
+İleti boyutu arttıkça kuyruk performansı ve ölçeklenebilirlik azalmasını azaltır. Yalnızca alıcının ihtiyacı olan bilgileri bir ileti içine alın.
 
 ## <a name="batch-retrieval"></a>Toplu iş alımı
 
-Tek bir işlemde bir kuyruktan en fazla 32 ileti alabilirsiniz. Toplu iş alımı, özellikle mobil cihazlar gibi yüksek gecikme süresine sahip olan ortamlar için yararlı olan istemci uygulamasından gelen gidiş dönüş sayısını azaltabilir.  
+Tek bir işlemde bir kuyruktan en fazla 32 ileti alabilirsiniz. Toplu iş alımı, özellikle mobil cihazlar gibi yüksek gecikme süresine sahip olan ortamlar için yararlı olan istemci uygulamasından gelen gidiş dönüş sayısını azaltabilir.
 
 ## <a name="queue-polling-interval"></a>Sıra yoklama aralığı
 
-Çoğu uygulama, bu uygulama için en büyük işlem kaynaklarından biri olabilen bir kuyruktaki iletileri yoklamalıdır. Yoklama sıklığından daha seyrek seçim yapın: çok sık yoklama, uygulamanızın sıraya yönelik ölçeklenebilirlik hedeflerine yaklaşımına neden olabilir. Ancak, $0,01 (yazma sırasında) için 200.000 işlem sırasında, ayda her saniye bir kez tek bir işlemci yoklaması 15 aldan düşük bir değer olduğundan, maliyet genellikle yoklama aralığı seçiminizi etkileyen bir faktör değildir.  
+Çoğu uygulama, bu uygulama için en büyük işlem kaynaklarından biri olabilen bir kuyruktaki iletileri yoklamalıdır. Yoklama sıklığından daha seyrek seçim yapın: çok sık yoklama, uygulamanızın sıraya yönelik ölçeklenebilirlik hedeflerine yaklaşımına neden olabilir. Ancak, $0,01 (yazma sırasında) için 200.000 işlem sırasında, ayda her saniye bir kez tek bir işlemci yoklaması 15 aldan düşük bir değer olduğundan, maliyet genellikle yoklama aralığı seçiminizi etkileyen bir faktör değildir.
 
-Güncel maliyet bilgileri için bkz. [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).  
+Güncel maliyet bilgileri için bkz. [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="use-update-message"></a>Güncelleştirme Iletisi kullan
 
@@ -188,10 +187,10 @@ Hatalı bir zaman aşımını artırmak veya bir iletinin durum bilgilerini gün
 
 ## <a name="application-architecture"></a>Uygulama mimarisi
 
-Uygulama mimarinizi ölçeklenebilir hale getirmek için kuyrukları kullanın. Aşağıda, uygulamanızı daha ölçeklenebilir hale getirmek için kuyrukları kullanabileceğiniz bazı yollar listelenmiştir:  
+Uygulama mimarinizi ölçeklenebilir hale getirmek için kuyrukları kullanın. Aşağıda, uygulamanızı daha ölçeklenebilir hale getirmek için kuyrukları kullanabileceğiniz bazı yollar listelenmiştir:
 
 - Uygulamanızdaki iş yüklerini işlemek ve düzgünleştirmek için biriktirme listeleri oluşturmak üzere kuyrukları kullanabilirsiniz. Örneğin, karşıya yüklenen görüntüleri yeniden boyutlandırma gibi işlemci yoğunluklu işleri gerçekleştirmek için kullanıcılardan gelen istekleri sıraya alabilirsiniz.
-- Sıralarını bağımsız olarak ölçeklendirebilmeniz için, uygulamanızın parçalarını ayırmak için kuyrukları kullanabilirsiniz. Örneğin, bir Web ön ucu, daha sonra analiz ve depolama için kullanıcılardan anket sonuçlarını bir kuyruğa yerleştirebilir. Sıra verilerini gerektiği gibi işlemek için daha fazla çalışan rolü örneği ekleyebilirsiniz.  
+- Sıralarını bağımsız olarak ölçeklendirebilmeniz için, uygulamanızın parçalarını ayırmak için kuyrukları kullanabilirsiniz. Örneğin, bir Web ön ucu, daha sonra analiz ve depolama için kullanıcılardan anket sonuçlarını bir kuyruğa yerleştirebilir. Sıra verilerini gerektiği gibi işlemek için daha fazla çalışan rolü örneği ekleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

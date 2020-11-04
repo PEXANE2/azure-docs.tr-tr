@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: bba7da0343f234d8cc057ac4ecfa2a4f2e5b7242
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 3527bdbbf1ba337d24dc390f97ed090c8dfbe039
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129890"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348398"
 ---
 # <a name="service-bus-queues-output-from-azure-stream-analytics"></a>Azure Stream Analytics Service Bus kuyruk çıktısı
 
@@ -66,13 +66,13 @@ Aşağıdaki örnekte, alanları `DeviceId` ve `DeviceStatus` meta verilere ekle
 
 Aşağıdaki görüntü, [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)kullanılarak EventHub ' de incelenen beklenen çıkış iletisi özellikleridir.
 
-:::image type="content" source="media/service-bus-queues-output/custom-properties.png" alt-text="Özellik sütunları":::
+:::image type="content" source="media/service-bus-queues-output/custom-properties.png" alt-text="Olay özel özellikleri":::
 
 ## <a name="system-properties"></a>Sistem özellikleri
 
-Sorgu sütunlarını, giden hizmet veri yolu kuyruğunuza veya konu iletilerinize [Sistem Özellikleri](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true) olarak iliştirebilirsiniz.
+Sorgu sütunlarını, giden hizmet veri yolu kuyruğunuza veya konu iletilerinize [Sistem Özellikleri](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties) olarak iliştirebilirsiniz.
 
-Bu sütunlar, karşılık gelen BrokeredMessage [sistem özelliği](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true) sorgu sütunu değerleriyle doldurulduğundan yük içine gitmez.
+Bu sütunlar, karşılık gelen BrokeredMessage [sistem özelliği](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties) sorgu sütunu değerleriyle doldurulduğundan yük içine gitmez.
 Bu sistem özellikleri desteklenir- `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc` .
 
 Bu sütunların dize değerleri karşılık gelen sistem özelliği değer türü olarak ayrıştırılır ve Ayrıştırma hataları veri hatası olarak değerlendirilir.

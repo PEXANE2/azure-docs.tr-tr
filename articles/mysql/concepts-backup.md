@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: bbeb1248fef846afbd1641a668c6db3be4870ca6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 00cd5a76a52e1b58bc2f01315dd3a1a859074a58
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93082105"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348466"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda yedekleme ve geri yükleme
 
@@ -42,9 +42,9 @@ Genel amaçlı depolama, [genel amaçlı](concepts-pricing-tiers.md) ve [bellek 
 
 #### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>16 TB 'a kadar depolama alanı içeren genel amaçlı depolama sunucuları
 
-[Azure bölgelerinin](/azure/mysql/concepts-pricing-tiers#storage)bir alt kümesinde, tüm yeni sağlanan sunucular, 16 TB 'a kadar genel amaçlı depolama alanını destekleyebilir. Diğer bir deyişle, 16 TB 'a kadar depolama alanı, desteklendiği tüm [bölgeler](/azure/mysql/concepts-pricing-tiers#storage) için varsayılan genel amaçlı depolama alanı olur. Bu 16 TB depolama sunucularındaki yedeklemeler anlık görüntü tabanlıdır. İlk tam anlık görüntü yedeklemesi, sunucu oluşturulduktan hemen sonraya zamanlanır. Bu ilk tam anlık görüntü yedeklemesi sunucunun temel yedeklemesi olarak tutulur. Sonraki anlık görüntü yedeklemeleri yalnızca değişiklik yedeğidir.
+[Azure bölgelerinin](/azure/mysql/concepts-pricing-tiers#storage)bir alt kümesinde, tüm yeni sağlanan sunucular, 16 TB 'a kadar genel amaçlı depolama alanını destekleyebilir. Diğer bir deyişle, 16 TB 'a kadar depolama alanı, desteklendiği tüm [bölgeler](concepts-pricing-tiers.md#storage) için varsayılan genel amaçlı depolama alanı olur. Bu 16 TB depolama sunucularındaki yedeklemeler anlık görüntü tabanlıdır. İlk tam anlık görüntü yedeklemesi, sunucu oluşturulduktan hemen sonraya zamanlanır. Bu ilk tam anlık görüntü yedeklemesi sunucunun temel yedeklemesi olarak tutulur. Sonraki anlık görüntü yedeklemeleri yalnızca değişiklik yedeğidir.
 
-[Azure bölgelerinin](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)bir alt kümesinde, tüm yeni sağlanan sunucular, 16 TB 'a kadar genel amaçlı depolama alanını destekleyebilir. Diğer bir deyişle, 16 TB 'a kadar depolama alanı, desteklendiği tüm [bölgeler](/concepts-pricing-tiers.md#storage) için varsayılan genel amaçlı depolama alanı olur. Bu 16 TB depolama sunucularındaki yedeklemeler anlık görüntü tabanlıdır. İlk tam anlık görüntü yedeklemesi, sunucu oluşturulduktan hemen sonraya zamanlanır. Bu ilk tam anlık görüntü yedeklemesi sunucunun temel yedeklemesi olarak tutulur. Sonraki anlık görüntü yedeklemeleri yalnızca değişiklik yedeğidir.
+[Azure bölgelerinin](concepts-pricing-tiers.md#storage)bir alt kümesinde, tüm yeni sağlanan sunucular, 16 TB 'a kadar genel amaçlı depolama alanını destekleyebilir. Diğer bir deyişle, 16 TB 'a kadar depolama alanı, desteklendiği tüm [bölgeler](concepts-pricing-tiers.md#storage) için varsayılan genel amaçlı depolama alanı olur. Bu 16 TB depolama sunucularındaki yedeklemeler anlık görüntü tabanlıdır. İlk tam anlık görüntü yedeklemesi, sunucu oluşturulduktan hemen sonraya zamanlanır. Bu ilk tam anlık görüntü yedeklemesi sunucunun temel yedeklemesi olarak tutulur. Sonraki anlık görüntü yedeklemeleri yalnızca değişiklik yedeğidir.
 
 Anlık görüntü değişiklik yedekleri günde en az bir kez gerçekleştirilir. Anlık görüntü değişiklik yedekleri belirli bir plana göre gerçekleştirilmez. Değişiklik anlık görüntüsü yedeklemeleri, son fark yedeklemesinden bu yana işlem günlüğü (MySQL içindeki binlog) 50 GB 'yi aşmadığı takdirde 24 saatte bir gerçekleşir. Bir gün içinde en fazla altı anlık görüntü değişiklik yedeği alınabilir.
 
