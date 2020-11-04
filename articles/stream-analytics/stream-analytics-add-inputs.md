@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: a9f48d95281971fc49a6a3fda93e4ee13ed8d753
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: b344e9e24d15189b805f586227c7253395e8448e
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130791"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348993"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Azure Stream Analytics için girişleri anlayın
 
@@ -26,7 +26,7 @@ Stream Analytics giriş olarak dört tür kaynakla birinci sınıf tümleştirme
 
 Bu giriş kaynakları, Stream Analytics işiniz veya farklı bir abonelikle aynı Azure aboneliğinde bulunabilir.
 
-[Azure Portal](stream-analytics-quick-create-portal.md#configure-job-input), [Azure POWERSHELL](/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput), [.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [REST API](./stream-analytics-define-inputs.md)ve [Visual Studio 'yu](stream-analytics-tools-for-visual-studio-install.md) kullanarak Stream Analytics iş girişleri oluşturabilir, düzenleyebilir ve test edebilirsiniz.
+[Azure Portal](stream-analytics-quick-create-portal.md#configure-job-input), [Azure POWERSHELL](/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput), [.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [REST API](/rest/api/streamanalytics/2016-03-01/inputs)ve [Visual Studio 'yu](stream-analytics-tools-for-visual-studio-install.md) kullanarak Stream Analytics iş girişleri oluşturabilir, düzenleyebilir ve test edebilirsiniz.
 
 ## <a name="stream-and-reference-inputs"></a>Akış ve başvuru girişleri
 Veriler bir veri kaynağına gönderildiği için Stream Analytics işi tarafından kullanılır ve gerçek zamanlı olarak işlenir. Girişler iki türe ayrılır: veri akışı girişleri ve başvuru verisi girişleri.

@@ -5,16 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: d26354d8c247f0839bb96564c4e004158743bd88
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 36540de8924a1433f16f942d9aedc059efae05de
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742215"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348687"
 ---
 # <a name="update-management-overview"></a>Güncelleştirme Yönetimine genel bakış
 
-Azure 'da, şirket içi ortamlarda ve diğer bulut ortamlarında Windows ve Linux makineleriniz için işletim sistemi güncelleştirmelerini yönetmek üzere Azure Otomasyonu 'nda Güncelleştirme Yönetimi kullanabilirsiniz. Tüm aracı makinelerde kullanılabilir güncelleştirmelerin durumunu hızlı bir şekilde değerlendirebilir ve sunucular için gerekli güncelleştirmeleri yükleme işlemini yönetebilirsiniz.
+Azure Otomasyonu 'ndaki Güncelleştirme Yönetimi kullanarak Azure 'daki Windows ve Linux sanal makineleriniz için işletim sistemi güncelleştirmelerini, şirket içi ortamları ve diğer bulut ortamlarında yönetebilirsiniz. Tüm aracı makinelerde kullanılabilir güncelleştirmelerin durumunu hızlı bir şekilde değerlendirebilir ve sunucular için gerekli güncelleştirmeleri yükleme işlemini yönetebilirsiniz.
 
 > [!NOTE]
 > Azure Otomasyonu 'ndan özel betikleri çalıştırmak için Güncelleştirme Yönetimi ile yapılandırılmış bir makine kullanamazsınız. Bu makine, yalnızca Microsoft tarafından imzalanmış güncelleştirme betiğini çalıştırabilir.
@@ -25,12 +25,12 @@ Güncelleştirme Yönetimi dağıtılmadan ve makinelerinizi yönetim için etki
 
 ## <a name="about-update-management"></a>Güncelleştirme Yönetimi hakkında
 
-Güncelleştirme Yönetimi tarafından yönetilen makineler, değerlendirme gerçekleştirmek ve dağıtımları güncelleştirmek için aşağıdaki konfigürasyonları kullanır:
+Güncelleştirme Yönetimi tarafından yönetilen makineler, değerlendirmesi gerçekleştirmek ve güncelleştirmeleri dağıtmak için aşağıdakileri kullanır:
 
-* Windows veya Linux için Log Analytics Aracısı
+* Windows veya Linux için [Log Analytics Aracısı](../../azure-monitor/platform/log-analytics-agent.md)
 * Linux için PowerShell İstenen Durum Yapılandırması (DSC)
-* Otomasyon Karma Runbook Çalışanı
-* Windows makineleri için Microsoft Update veya Windows Server Update Services (WSUS)
+* Otomasyon karma Runbook Worker (makinede Güncelleştirme Yönetimi etkinleştirdiğinizde otomatik olarak yüklenir)
+* Windows makineleri için Microsoft Update veya [Windows Server Update Services](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) (WSUS)
 * Linux makineleri için özel veya ortak bir güncelleştirme deposu
 
 Aşağıdaki diyagramda, bir çalışma alanındaki tüm bağlı Windows Server ve Linux sunucularına nasıl Güncelleştirme Yönetimi değerlendirir ve güvenlik güncelleştirmelerinin uygulandığı gösterilmektedir:
@@ -64,7 +64,7 @@ Birden fazla Log Analytics çalışma alanında (aynı zamanda çoklu kayıt ola
 
 ### <a name="supported-client-types"></a>Desteklenen istemci türleri
 
-Aşağıdaki tabloda güncelleştirme değerlendirmeleri ve düzeltme eki uygulama için desteklenen işletim sistemleri listelenmektedir. Düzeltme eki uygulama karma Runbook Worker gerektirir. Karma Runbook Worker gereksinimleri hakkında bilgi için bkz. [Windows karma Runbook Worker dağıtımı](../automation-windows-hrw-install.md) ve [Linux karma Runbook Worker](../automation-linux-hrw-install.md)dağıtımı.
+Aşağıdaki tabloda güncelleştirme değerlendirmeleri ve düzeltme eki uygulama için desteklenen işletim sistemleri listelenmektedir. Düzeltme eki uygulama, Güncelleştirme Yönetimi tarafından yönetim için sanal makineyi veya sunucuyu etkinleştirdiğinizde otomatik olarak yüklenen karma Runbook Worker gerektirir. Karma Runbook Worker sistem gereksinimleri hakkında bilgi için bkz. [Windows karma Runbook Worker dağıtma](../automation-windows-hrw-install.md) ve [Linux karma Runbook Worker](../automation-linux-hrw-install.md)dağıtımı.
 
 > [!NOTE]
 > Linux makinelerin güncelleştirme değerlendirmesi yalnızca Otomasyon hesabı ve Log Analytics çalışma alanı [eşlemeleri tablosunda](../how-to/region-mappings.md#supported-mappings)listelenen belirli bölgelerde desteklenir.
@@ -97,7 +97,7 @@ Aşağıdaki bilgiler işletim sistemine özgü istemci gereksinimlerini açıkl
 
 #### <a name="windows"></a>Windows
 
-Windows aracılarının bir WSUS sunucusuyla iletişim kuracak şekilde yapılandırılması veya Microsoft Update erişmesi gerekir. Log Analytics Aracısı hakkında daha fazla bilgi için bkz. [Log Analytics aracısına genel bakış](../../azure-monitor/platform/log-analytics-agent.md). Hibrit makineler için, önce makinenizi [Azure Arc etkin sunucularına](../../azure-arc/servers/overview.md)bağlayarak ve ardından Azure ilkesi 'ni kullanarak, [dağıtım Log Analytics aracısını Windows Azure Arc machines](../../governance/policy/samples/built-in-policies.md#monitoring) yerleşik ilkesine atamak için Windows için Log Analytics Aracısı 'nı yüklemenizi öneririz. Makineleri VM'ler için Azure İzleyici de izlemeyi planlıyorsanız, bunun yerine [Enable VM'ler için Azure izleyici](../../governance/policy/samples/built-in-initiatives.md#monitoring) girişimi kullanın.
+Windows aracılarının bir WSUS sunucusuyla iletişim kuracak şekilde yapılandırılması veya Microsoft Update erişmesi gerekir. Karma makinelerde, önce makinenizi [Azure Arc etkin sunucularına](../../azure-arc/servers/overview.md)bağlayarak windows için Log Analytics aracısını yüklemenizi ve ardından Azure ilkesi 'ni kullanarak [Log Analytics aracısını Windows Azure Arc machines](../../governance/policy/samples/built-in-policies.md#monitoring) yerleşik ilkesine atamanız önerilir. Alternatif olarak, makineleri VM'ler için Azure İzleyici ile izlemeyi planlıyorsanız, bunun yerine [Enable VM'ler için Azure izleyici](../../governance/policy/samples/built-in-initiatives.md#monitoring) girişimi kullanın.
 
 Güncelleştirme Yönetimi, Microsoft uç nokta Configuration Manager ile kullanabilirsiniz. Tümleştirme senaryoları hakkında daha fazla bilgi için bkz. [Windows uç nokta Configuration Manager ile güncelleştirme yönetimi tümleştirme](mecmintegration.md). [Windows için Log Analytics Aracısı](../../azure-monitor/platform/agent-windows.md) , Configuration Manager ortamınızdaki siteler tarafından yönetilen Windows sunucuları için gereklidir. 
 
@@ -113,7 +113,7 @@ Linux için makinenin, özel veya genel olarak bir güncelleştirme deposuna eri
 > [!NOTE]
 > Linux makinelerin güncelleştirme değerlendirmesi yalnızca belirli bölgelerde desteklenir. Otomasyon hesabı ve Log Analytics çalışma alanı [eşlemeleri tablosuna](../how-to/region-mappings.md#supported-mappings)bakın.
 
-Log Analytics Aracısı hakkında daha fazla bilgi için bkz. [Log Analytics aracısına genel bakış](../../azure-monitor/platform/log-analytics-agent.md). Karma makinelerde, önce makinenizi [Azure Arc etkin sunucularına](../../azure-arc/servers/overview.md)bağlayarak linux için Log Analytics aracısını yüklemenizi ve ardından Azure ilkesi 'ni kullanarak [Log Analytics aracısını Linux Azure Arc machines](../../governance/policy/samples/built-in-policies.md#monitoring) yerleşik ilkesine atamanız önerilir. Makineleri VM'ler için Azure İzleyici de izlemeyi planlıyorsanız, bunun yerine [Enable VM'ler için Azure izleyici](../../governance/policy/samples/built-in-initiatives.md#monitoring) girişimi kullanın.
+Karma makinelerde, ilk olarak makinenizi [Azure Arc etkin sunucularına](../../azure-arc/servers/overview.md)bağlayarak linux için Log Analytics aracısını yüklemenizi ve ardından Azure ilkesi 'ni kullanarak [Log Analytics aracısını Linux Azure Arc makineler](../../governance/policy/samples/built-in-policies.md#monitoring) yerleşik ilkesine atamanız önerilir. Alternatif olarak, makineleri VM'ler için Azure İzleyici ile izlemeyi planlıyorsanız, bunun yerine [Enable VM'ler için Azure izleyici](../../governance/policy/samples/built-in-initiatives.md#monitoring) girişimi kullanın.
 
 Azure Marketi 'nde bulunan isteğe bağlı Red Hat Enterprise Linux (RHEL) görüntülerinden oluşturulan VM 'Ler, Azure 'da dağıtılan [Red Hat güncelleştirme altyapısına (rhuı)](../../virtual-machines/workloads/redhat/redhat-rhui.md) erişmek için kaydedilir. Diğer tüm Linux dağıtımı, dağıtım tarafından desteklenen yöntemler kullanılarak dağıtımın çevrimiçi dosya deposundan güncelleştirilmeleri gerekir.
 
@@ -247,9 +247,11 @@ Güncelleştirme Yönetimi etkinleştirip yönetilecek makineleri seçebileceği
 
 - Bir veya daha fazla Azure ve Azure dışı makineye yönelik [Otomasyon hesabınızdan](enable-from-automation-account.md) , yay özellikli sunucular da dahil olmak üzere.
 
-- Azure portal [Seçili bir Azure VM](enable-from-vm.md) Için, sanal makine sayfasında. Bu senaryo, Linux ve Windows VM 'Leri için kullanılabilir.
+- **Enable-AutomationSolution** [runbook](enable-from-runbook.md) yöntemi kullanılıyor.
 
-- [Birden çok Azure VM](enable-from-portal.md) Için Azure Portal sanal makineler sayfasında bunları seçerek.
+- Seçili bir [Azure VM](enable-from-vm.md) Için Azure Portal **sanal makineler** sayfasından. Bu senaryo, Linux ve Windows VM 'Leri için kullanılabilir.
+
+- [Birden çok Azure VM](enable-from-portal.md) Için Azure Portal **sanal makineler** sayfasında bunları seçerek.
 
 > [!NOTE]
 > Güncelleştirme Yönetimi, Otomasyon hesabınıza bir Log Analytics çalışma alanı bağlamayı gerektirir. Desteklenen bölgelerin kesin listesi için bkz. [Azure çalışma alanı eşlemeleri](../how-to/region-mappings.md). Bölge eşlemeleri, Otomasyon hesabınızdan ayrı bir bölgedeki VM 'Leri yönetme özelliğini etkilemez.

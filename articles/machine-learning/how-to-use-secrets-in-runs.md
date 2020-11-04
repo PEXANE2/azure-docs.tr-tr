@@ -1,7 +1,7 @@
 ---
 title: Eğitiminde kimlik doğrulama gizli dizileri
 titleSuffix: Azure Machine Learning
-description: Gizli dizi Azure Key Vault, çalışma alanınız ' nı kullanarak güvenli biçimde nasıl gizli dizi eğitimlere geçeceğinizi öğrenin.
+description: Çalışma alanınızın Azure Key Vault kullanarak güvenli biçimde nasıl gizli dizi eğitimlere gizli dizi geçireceğinizi öğrenin.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 60459579b277684355eaf5cb92ba2f75fb05cd28
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ce47041d888b8a7786f0f87f54e725919638e7f7
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305427"
+ms.locfileid: "93349027"
 ---
 # <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>Azure Machine Learning eğitim çalışmalarından kimlik doğrulama kimlik bilgileri gizli dizilerini kullanın
 

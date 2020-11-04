@@ -8,12 +8,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
-ms.openlocfilehash: 631717252abe956357cf8b588fa653890037bbc9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 97283a096d1b1549b2c7fa8f34a32b4bb4dca1eb
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322173"
+ms.locfileid: "93349061"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Hızlı başlangıç: Linux için Veri Bilimi Sanal Makinesi ayarlama (Ubuntu)
 
@@ -121,12 +121,16 @@ Ubuntu DSVM, çok kullanıcılı bir Jupyıter sunucusu olan [Juponterhub](https
 
    1. Yerel makinenizden bir Web tarayıcısı açın ve https: \/ /Your-VM-IP: 8000 ' e giderek daha önce bir yere göz ATTıĞıNıZ IP adresini kullanarak "sizin-VM-IP" yi değiştirin.
    1. Tarayıcınız büyük olasılıkla, bir sertifika hatası olduğunu söyleyen sayfayı doğrudan açmanızı önler. DSVM, otomatik olarak imzalanan bir sertifika aracılığıyla güvenlik sağlar. Tarayıcıların çoğu, bu uyarıdan sonra tıklama yapmanıza izin verir. Birçok tarayıcı, Web oturumunuzun tamamında sertifika hakkında bir tür görsel uyarı sağlamaya devam edecektir.
+
+      >[!NOTE]
+      > `ERR_EMPTY_RESPONSE`Tarayıcınızda hata iletisi görürseniz, *http* 'yi veya yalnızca Web adresini kullanarak değil, *https* protokolünü kullanarak makineye doğrudan erişebildiğinizden emin olun. Adres satırında olmadan Web adresini yazarsanız `https://` , çoğu tarayıcı varsayılan olarak olur `http` ve bu hatayı görürsünüz.
+
    1. VM 'yi oluşturmak için kullandığınız kullanıcı adını ve parolayı girin ve oturum açın. 
 
       ![Jupyıter oturumu gir](./media/dsvm-ubuntu-intro/jupyter-login.png)
 
->[!NOTE]
-> Bu aşamada 500 hatası alırsanız, Kullanıcı adınızla büyük harfli harfler kullanmış olabilirsiniz. Bu, JUPITER hub ve kullandığı Pamatımkimlik Cator arasındaki bilinen bir etkileşimdir. "Bu sayfaya ulaşılamıyor" hatası alırsanız, ağ güvenlik grubu izinlerinizin ayarlanması büyük olasılıkla olabilir. Azure portal, kaynak grubunuzun içindeki ağ güvenlik grubu kaynağını bulun. Genel Internet 'ten jupi Terhub 'a erişmek için, bağlantı noktası 8000 ' in açık olması gerekir. (Görüntü, bu VM 'nin tam zamanında erişim için yapılandırıldığını gösterir, bu da önemle önerilir. Bkz. [tam zamanında erişim ile yönetim bağlantı noktalarınızı güvenli hale](../../security-center/security-center-just-in-time.md)getirin.) ![Ağ güvenlik grubunun yapılandırması](./media/dsvm-ubuntu-intro/nsg-permissions.png)
+      >[!NOTE]
+      > Bu aşamada 500 hatası alırsanız, Kullanıcı adınızla büyük harfli harfler kullanmış olabilirsiniz. Bu, JUPITER hub ve kullandığı Pamatımkimlik Cator arasındaki bilinen bir etkileşimdir. "Bu sayfaya ulaşılamıyor" hatası alırsanız, ağ güvenlik grubu izinlerinizin ayarlanması büyük olasılıkla olabilir. Azure portal, kaynak grubunuzun içindeki ağ güvenlik grubu kaynağını bulun. Genel Internet 'ten jupi Terhub 'a erişmek için, bağlantı noktası 8000 ' in açık olması gerekir. (Görüntü, bu VM 'nin tam zamanında erişim için yapılandırıldığını gösterir, bu da önemle önerilir. Bkz. [tam zamanında erişim ile yönetim bağlantı noktalarınızı güvenli hale](../../security-center/security-center-just-in-time.md)getirin.) ![Ağ güvenlik grubunun yapılandırması](./media/dsvm-ubuntu-intro/nsg-permissions.png)
 
    1. Kullanılabilen birçok örnek Not defterini inceleyin.
 

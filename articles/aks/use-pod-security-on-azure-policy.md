@@ -4,13 +4,12 @@ description: Azure Kubernetes Service (aks) üzerinde Azure ilkesi ile pod güve
 services: container-service
 ms.topic: article
 ms.date: 09/22/2020
-author: jluk
-ms.openlocfilehash: 5178aa30c3bfec014dd10e2c4f3de182aaef7e68
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 8e437095b3d527647a453ba89adaa2ab62672177
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900115"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348534"
 ---
 # <a name="secure-pods-with-azure-policy"></a>Azure İlkesi ile pod güvenliğini sağlama
 
@@ -61,7 +60,7 @@ Aşağıdaki genel sınırlamalar, Kubernetes kümeleri için Azure Ilke eklenti
 Aşağıdaki sınırlamalar yalnızca AKS için Azure Ilke eklentisi için geçerlidir:
 
 - Aks [Pod güvenlik ilkesi (Önizleme)](use-pod-security-policies.md) ve aks Için Azure ilke eklentisi etkinleştirilebilir. 
-- Ad alanları, değerlendirme için Azure Ilke eklentisi tarafından otomatik olarak dışlanır: _KUVE sistem_ , _Gatekeeper-System_ ve _aks-Periscope_ .
+- Ad alanları, değerlendirme için Azure Ilke eklentisi tarafından otomatik olarak dışlanır: _KUVE sistem_ , _Gatekeeper-System_ ve _aks-Periscope_.
 
 ### <a name="recommendations"></a>Öneriler
 
@@ -121,8 +120,8 @@ Bir girişim uygulama dışında listedir uygulanabilecek ek Azure ilkeleri vard
 
 |[Pod güvenlik ilkesi denetimi](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)| Azure Ilke tanımı bağlantısı| Temel girişim 'ya ek olarak Uygula | Kısıtlanmış girişim 'ya ek olarak Uygula |
 |---|---|---|---|
-|Kapsayıcılar tarafından kullanılan AppArmor profilini tanımlama|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F511f5417-5d12-434d-ab2e-816901e72a5e) | İsteğe bağlı | İsteğe bağlı |
-|Salt okunmayan takmaları izin ver|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdf49d893-a74c-421d-bc95-c663042e5b80) | İsteğe bağlı | İsteğe bağlı |
+|Kapsayıcılar tarafından kullanılan AppArmor profilini tanımlama|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F511f5417-5d12-434d-ab2e-816901e72a5e) | İsteğe Bağlı | İsteğe Bağlı |
+|Salt okunmayan takmaları izin ver|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdf49d893-a74c-421d-bc95-c663042e5b80) | İsteğe Bağlı | İsteğe Bağlı |
 |Belirli FlexVolume sürücüleriyle kısıtla|[Genel bulut](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4a8fce0-2dd5-4c21-9a36-8f0ec809d663) | İsteğe bağlı-yalnızca FlexVolume sürücülerini kısıtlamak istiyorsanız kullanın, ancak diğerlerini "tanımlanan birim türlerinin kullanımını kısıtla" olarak ayarlayın. | Uygulanamaz-kısıtlanmış girişim, tüm FlexVolume sürücülerine izin vermeyen "tanımlanmış birim türlerinin kullanımını kısıtla" yı içerir |
 
 ### <a name="unsupported-built-in-policies-for-managed-aks-clusters"></a>Yönetilen AKS kümeleri için desteklenmeyen yerleşik ilkeler
@@ -150,7 +149,7 @@ If the built-in initiatives to address pod security do not match your requiremen
 > [!WARNING]
 > Bir kümenin sağlıklı kalması için, kuas-System gibi yönetici ad alanlarında bulunan pods 'lerin, gerekli bir sistem Pod 'ı nedeniyle ilke ihlallerini tetikleyebilmesi için, varsayılan dışlanan ad alanları listesinden gerekli bir ad alanının kaldırılması gerekir.
 
-AKS 'ler, DNS çözümlemesi gibi kritik hizmetleri sağlamak için sistem kimliklerinin bir kümede çalıştırılmasını gerektirir. Pod işlevselliğini sınırlayan ilkeler, sistem Pod kararlılığı özelliğini etkileyebilir. Sonuç olarak, aşağıdaki ad alanları, **oluşturma, güncelleştirme ve ilke denetimi sırasında giriş istekleri sırasında ilke değerlendirmesinden çıkarılır** . Bu, bu ad alanlarına yeni dağıtımları Azure ilkelerinden hariç tutulacak şekilde zorlar.
+AKS 'ler, DNS çözümlemesi gibi kritik hizmetleri sağlamak için sistem kimliklerinin bir kümede çalıştırılmasını gerektirir. Pod işlevselliğini sınırlayan ilkeler, sistem Pod kararlılığı özelliğini etkileyebilir. Sonuç olarak, aşağıdaki ad alanları, **oluşturma, güncelleştirme ve ilke denetimi sırasında giriş istekleri sırasında ilke değerlendirmesinden çıkarılır**. Bu, bu ad alanlarına yeni dağıtımları Azure ilkelerinden hariç tutulacak şekilde zorlar.
 
 1. kuin-sistem
 1. Gatekeeper-sistem

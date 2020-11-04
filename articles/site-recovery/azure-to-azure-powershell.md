@@ -7,12 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: 6a272294ca602e3f482156a7334084bf041f683e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1570bd9dfa62caa749d5a3983b93c2555be058ec
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307560"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348743"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Azure PowerShell kullanarak Azure sanal makinelerinde olağanüstü durum kurtarmayı ayarlama
 
@@ -36,7 +36,7 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce:
 - [Senaryo mimarisini ve bileşenlerini ](azure-to-azure-architecture.md) anladığınızdan emin olun.
@@ -249,6 +249,15 @@ Write-Output $TempASRJob.State
 $RecoveryProtContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $RecoveryFabric -Name "A2AWestUSProtectionContainer"
 ```
 
+#### <a name="fabric-and-container-creation-when-enabling-zone-to-zone-replication"></a>Bölge çoğaltma için bölgeyi etkinleştirirken doku ve kapsayıcı oluşturma
+
+Bölgenin bölge çoğaltmasına etkinleştirilirken yalnızca bir yapı oluşturulur. Ancak iki kapsayıcı olacaktır. Bölgenin Batı Avrupa olduğu varsayıldığında, birincil ve koruma kapsayıcılarını almak için aşağıdaki komutları kullanın-
+
+```azurepowershell
+$primaryProtectionContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric -Name "asr-a2a-default-westeurope-container"
+$recoveryPprotectionContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric -Name "asr-a2a-default-westeurope-t-container"
+```
+
 ### <a name="create-a-replication-policy"></a>Çoğaltma ilkesi oluşturma
 
 ```azurepowershell
@@ -287,6 +296,14 @@ Write-Output $TempASRJob.State
 $EusToWusPCMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $PrimaryProtContainer -Name "A2APrimaryToRecovery"
 ```
 
+#### <a name="protection-container-mapping-creation-when-enabling-zone-to-zone-replication"></a>Bölge çoğaltma için bölge etkinleştirilirken koruma kapsayıcısı eşleme oluşturma
+
+Bölgeyi bölge çoğaltmaya etkinleştirirken, koruma kapsayıcısı eşlemesi oluşturmak için aşağıdaki komutu kullanın. Bölgenin Batı Avrupa olduğu varsayıldığında, komut-
+
+```azurepowershell
+$protContainerMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $PrimprotectionContainer -Name "westeurope-westeurope-24-hour-retention-policy-s"
+```
+
 ### <a name="create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover"></a>Yeniden çalışma için bir koruma kapsayıcısı eşlemesi oluştur (yük devretmeden sonra çoğaltmayı tersine çevir)
 
 Yük devretmenin ardından, yükü devredilen sanal makineyi özgün Azure bölgesine geri getirmeye hazırsanız yeniden çalışma işlemi yapılır. Yük devretmek için yük devredilen sanal makine, yük devredilen bölgeden özgün bölgeye ters çoğaltılır. Ters çoğaltma için özgün bölgenin ve kurtarma bölgesi anahtarının rolleri. Özgün bölge artık yeni kurtarma bölgesi haline gelir ve başlangıçta kurtarma bölgesi artık birincil bölge haline gelir. Çoğaltmayı tersine çevirme için koruma kapsayıcısı eşlemesi, özgün ve kurtarma bölgelerinin anahtarlamalı rollerini temsil eder.
@@ -316,7 +333,7 @@ $WusToEusPCMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Protec
 $EastUSCacheStorageAccount = New-AzStorageAccount -Name "a2acachestorage" -ResourceGroupName "A2AdemoRG" -Location 'East US' -SkuName Standard_LRS -Kind Storage
 ```
 
-**Yönetilen diskler kullanmayan**sanal makinelerde, hedef depolama hesabı, sanal makinenin disklerinin çoğaltılacağı kurtarma bölgesindeki depolama hesabıdır. Hedef depolama hesabı bir standart depolama hesabı ya da bir Premium depolama hesabı olabilir. Diskler için veri değişim oranı (GÇ Yazma hızı) ve depolama türü için desteklenen Azure Site Recovery dalgalanma sınırları temelinde gereken depolama hesabı türünü seçin.
+**Yönetilen diskler kullanmayan** sanal makinelerde, hedef depolama hesabı, sanal makinenin disklerinin çoğaltılacağı kurtarma bölgesindeki depolama hesabıdır. Hedef depolama hesabı bir standart depolama hesabı ya da bir Premium depolama hesabı olabilir. Diskler için veri değişim oranı (GÇ Yazma hızı) ve depolama türü için desteklenen Azure Site Recovery dalgalanma sınırları temelinde gereken depolama hesabı türünü seçin.
 
 ```azurepowershell
 #Create Target storage account in the recovery region. In this case a Standard Storage account
@@ -396,7 +413,7 @@ Ağ eşlemesi, birincil bölgedeki sanal ağları kurtarma bölgesindeki sanal a
 
 ## <a name="replicate-azure-virtual-machine"></a>Azure sanal makinesini çoğaltma
 
-Azure sanal makinesini **yönetilen disklerle**çoğaltın.
+Azure sanal makinesini **yönetilen disklerle** çoğaltın.
 
 ```azurepowershell
 #Get the resource group that the virtual machine must be created in when failed over.
@@ -430,7 +447,7 @@ $diskconfigs += $OSDiskReplicationConfig, $DataDisk1ReplicationConfig
 $TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId
 ```
 
-Azure sanal makinesini **yönetilmeyen disklerle**çoğaltın.
+Azure sanal makinesini **yönetilmeyen disklerle** çoğaltın.
 
 ```azurepowershell
 #Specify replication properties for each disk of the VM that is to be replicated (create disk replication configuration)

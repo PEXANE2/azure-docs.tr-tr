@@ -3,12 +3,12 @@ title: Windows için Konuk Yapılandırma ilkeleri oluşturma
 description: Windows için Azure Ilke Konuk yapılandırma ilkesi oluşturmayı öğrenin.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 563b178b9ba92125967c779b59a78a8e105ec744
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 325b00ac1cc747555d38b4c250709638f5e74d95
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542871"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348891"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows için Konuk Yapılandırma ilkeleri oluşturma
 
@@ -23,8 +23,12 @@ Windows’u denetlerken, Konuk Yapılandırması yapılandırma dosyasını olu�
 Bir Azure veya Azure dışı makinenin durumunu doğrulamak üzere kendi yapılandırmanızı oluşturmak için aşağıdaki eylemleri kullanın.
 
 > [!IMPORTANT]
+> Azure Kamu ve Azure Çin ortamlarında Konuk yapılandırması olan özel ilke tanımları bir önizleme özelliğidir.
+>
 > Konuk Yapılandırma uzantısı Azure sanal makinelerinde denetim gerçekleştirmek için gereklidir.
 > Uzantıyı tüm Windows makineleri genelinde ölçekli olarak dağıtmak için aşağıdaki ilke tanımlarını atayın: `Deploy prerequisites to enable Guest Configuration Policy on Windows VMs`
+> 
+> Özel içerik paketlerinde gizli dizileri veya gizli bilgileri kullanmayın.
 
 ## <a name="install-the-powershell-module"></a>PowerShell modülünü yükleme
 
@@ -487,9 +491,13 @@ New-GuestConfigurationPackage `
 
 ## <a name="policy-lifecycle"></a>İlke yaşam döngüsü
 
-İlkeye bir güncelleştirme yayınlamak isterseniz, dikkat gerektiren iki alan vardır.
+İlkeye bir güncelleştirme yayınlamak istiyorsanız, dikkat gerektiren üç alan vardır.
 
-- **Sürüm** : `New-GuestConfigurationPolicy` cmdlet 'ini çalıştırdığınızda, şu anda yayımlanmış olandan daha büyük bir sürüm numarası belirtmeniz gerekir. Özelliği, Konuk yapılandırma atamasının sürümünü, aracının güncelleştirilmiş paketi tanımasını sağlayacak şekilde güncelleştirir.
+> [!NOTE]
+> `version`Konuk yapılandırma atamasının özelliği yalnızca Microsoft tarafından barındırılan etkiler. Özel içerik sürümü oluşturma için en iyi yöntem, dosyanın dosya adına dahil edileceğini içerir.
+
+- **Sürüm** : `New-GuestConfigurationPolicy` cmdlet 'ini çalıştırdığınızda, şu anda yayımlanmış olandan daha büyük bir sürüm numarası belirtmeniz gerekir.
+- **contentUri** : `New-GuestConfigurationPolicy` cmdlet 'ini çalıştırdığınızda, PAKETIN konumuna bir URI belirtmeniz gerekir. Dosya adında bir paket sürümü de dahil olmak üzere, bu özelliğin değeri her sürümde değişir.
 - **contentHash** : Bu özellik, cmdlet 'i tarafından otomatik olarak güncelleştirilir `New-GuestConfigurationPolicy` . Tarafından oluşturulan paketin karma değeridir `New-GuestConfigurationPackage` . Özelliği, yayımladığınız dosya için doğru olmalıdır `.zip` . Yalnızca **contentUri** özelliği güncelleştirilirse, uzantı içerik paketini kabul etmez.
 
 Güncelleştirilmiş bir paketi yayımlamanın en kolay yolu, bu makalede açıklanan süreci tekrarlamanız ve güncelleştirilmiş bir sürüm numarası sağlamaktır. Bu işlem, tüm özelliklerin doğru şekilde güncelleştirildiğinden emin garanti eder.

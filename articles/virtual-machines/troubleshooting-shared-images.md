@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 189fa12b1fc11e79ab64231a7ecd453113b8771a
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 18b980a868173b1fa721f9fc0986d7e1efb203af
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336019"
+ms.locfileid: "93348925"
 ---
 # <a name="troubleshooting-shared-image-galleries-in-azure"></a>Azure 'da paylaşılan görüntü galerileri sorunlarını giderme
 
@@ -223,8 +223,8 @@ Paylaşılan görüntü galerileri, görüntü tanımları ve görüntü sürüm
 **Neden** : bir veri diski görüntüsünde kullanılan disk şifrelemesi KÜMESININ kaynak kimliği geçersiz bir biçim kullanıyor.  
 **Geçici çözüm** : disk şifreleme KÜMESININ kaynak kimliğinin/Subscriptions/<SubscriptionID \> /ResourceGroups/<resourcegroupname \> /providers/Microsoft.COMPUTE/<diskencryptionsetname biçimini izlediği emin olun \> .
 
-*GalleryArtifactVersion. Properties. publishingProfile. Targetregion. encryption. Osdiskımage. Diskencryptionsetıd parametresinin değeri geçersiz.* 
- **Neden** : işletim sistemi diski görüntüsünde kullanılan disk şifrelemesi KÜMESININ kaynak kimliği geçersiz bir biçim kullanıyor  
+*GalleryArtifactVersion. Properties. publishingProfile. Targetregion. encryption. Osdiskımage. Diskencryptionsetıd parametresinin değeri geçersiz.*  
+**Neden** : işletim sistemi diski görüntüsünde kullanılan disk şifrelemesi KÜMESININ kaynak kimliği geçersiz bir biçim kullanıyor  
 **Geçici çözüm** : disk şifreleme KÜMESININ kaynak kimliğinin/Subscriptions/<SubscriptionID \> /ResourceGroups/<resourcegroupname \> /providers/Microsoft.COMPUTE/<diskencryptionsetname biçimini izlediği emin olun \> .
 
 *\> \> Güncelleştirme Galerisi görüntü sürümü isteği için [<Region] bölgesinde bir disk şifrelemesi kümesine sahip yeni veri diski görüntü şifreleme lun [<Number] belirtilemiyor. Bu sürümü güncelleştirmek için yeni LUN 'yi kaldırın. Veri diski görüntü şifreleme ayarlarını değiştirmeniz gerekiyorsa, doğru ayarlarla yeni bir galeri görüntüsü sürümü oluşturmanız gerekir.*  

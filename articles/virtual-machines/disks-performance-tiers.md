@@ -8,12 +8,12 @@ ms.date: 09/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 404f435e321e53694807a627121d84f6cbf6724d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4e31af3a66927e0c93caf477a7daf1b86eebf8f5
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359688"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348704"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>Yönetilen diskler için performans katmanları (Önizleme)
 
@@ -55,10 +55,6 @@ Fatura bilgileri için bkz. [yönetilen disk fiyatlandırması](https://azure.mi
 - Diskin katmanını değiştirmeden önce VM 'nizi serbest bırakabilir veya diski çalışan bir VM 'den ayırmanız gerekir.
 - P60, P70 ve P80 performans katmanlarının kullanılması 4.096 GiB veya üzeri disklerle kısıtlıdır.
 - Bir diskin performans katmanı, her 24 saatte bir yalnızca bir kez indirgenir.
-
-## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
-
-Yönetilen bir diskin performans katmanını ayarlama özelliği şu anda yalnızca Doğu ABD 2, Orta Güney ABD, Orta Batı ABD, Avustralya Güney Doğu bölgelerinde Premium SSD 'Ler üzerinde kullanılabilir.
 
 ## <a name="create-an-empty-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>Taban çizgisi katmanından daha yüksek bir katman ile boş bir veri diski oluşturma
 

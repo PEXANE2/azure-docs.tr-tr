@@ -8,34 +8,34 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/2/2020
-ms.openlocfilehash: fdd610be1dd7c5fe9c7aa574fde33df866116dd2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 022e2e25c96473f49468f2bd48e5ee997933baea
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128843"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348721"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Azure Stream Analytics çıkış çıkışları
 
 Azure Stream Analytics iş bir giriş, sorgu ve bir çıktıdan oluşur. Dönüştürülmüş verileri gönderebilmeniz için birkaç çıktı türü vardır. Bu makalede desteklenen Stream Analytics çıkışları listelenmektedir. Stream Analytics sorgunuzu tasarlarken, [from yan tümcesini](/stream-analytics-query/into-azure-stream-analytics)kullanarak çıkışın adına bakın. Sorguya birden çok yan tümce ekleyerek, iş başına tek bir çıktı veya akış işi başına birden fazla çıkış (ihtiyacınız varsa) kullanabilirsiniz.
 
-Stream Analytics iş çıktıları oluşturmak, düzenlemek ve test etmek için [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-output), [Azure POWERSHELL](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [REST API](/rest/api/streamanalytics/)ve [Visual Studio 'yu](stream-analytics-quick-create-vs.md)kullanabilirsiniz.
+Stream Analytics iş çıktıları oluşturmak, düzenlemek ve test etmek için [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-output), [Azure POWERSHELL](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations), [REST API](/rest/api/streamanalytics/)ve [Visual Studio 'yu](stream-analytics-quick-create-vs.md)kullanabilirsiniz.
 
 Bazı çıkış türleri [bölümleme](#partitioning)destekler ve [Çıkış toplu işlem boyutları](#output-batch-size) , üretilen işi iyileştirmek için farklılık gösterir. Aşağıdaki tabloda her çıkış türü için desteklenen özellikler gösterilmektedir:
 
 | Çıkış türü | Bölümleme | Güvenlik | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage 1. Nesil](azure-data-lake-storage-gen1-output.md)|Yes|Azure Active Directory Kullanıcı </br> MSI|
+|[Azure Data Lake Storage 1. Nesil](azure-data-lake-storage-gen1-output.md)|Evet|Azure Active Directory Kullanıcı </br> MSI|
 |[Azure SQL Veritabanı](sql-database-output.md)|Evet, isteğe bağlı.|SQL kullanıcı kimlik doğrulaması </br> MSI (Önizleme)|
-|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Yes|SQL kullanıcı kimlik doğrulaması|
-|[BLOB depolama ve Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Yes|MSI </br> Erişim anahtarı|
+|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Evet|SQL kullanıcı kimlik doğrulaması|
+|[BLOB depolama ve Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Evet|MSI </br> Erişim anahtarı|
 |[Azure Event Hubs](event-hubs-output.md)|Evet, çıkış yapılandırmasında bölüm anahtarı sütununu ayarlamanız gerekir.|Erişim anahtarı|
-|[Power BI](power-bi-output.md)|Hayır|Azure Active Directory Kullanıcı </br> MSI|
-|[Azure Tablo Depolama](table-storage-output.md)|Yes|Hesap anahtarı|
-|[Azure Service Bus kuyrukları](service-bus-queues-output.md)|Yes|Erişim anahtarı|
-|[Azure Service Bus konuları](service-bus-topics-output.md)|Yes|Erişim anahtarı|
-|[Azure Cosmos DB](azure-cosmos-db-output.md)|Yes|Erişim anahtarı|
-|[Azure İşlevleri](azure-functions-output.md)|Yes|Erişim anahtarı|
+|[Power BI](power-bi-output.md)|No|Azure Active Directory Kullanıcı </br> MSI|
+|[Azure Tablo Depolama](table-storage-output.md)|Evet|Hesap anahtarı|
+|[Azure Service Bus kuyrukları](service-bus-queues-output.md)|Evet|Erişim anahtarı|
+|[Azure Service Bus konuları](service-bus-topics-output.md)|Evet|Erişim anahtarı|
+|[Azure Cosmos DB](azure-cosmos-db-output.md)|Evet|Erişim anahtarı|
+|[Azure İşlevleri](azure-functions-output.md)|Evet|Erişim anahtarı|
 
 ## <a name="partitioning"></a>Bölümleme
 

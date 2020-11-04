@@ -1,97 +1,129 @@
 ---
-title: Azure VMware Çözüm dağıtımı veya sağlama hatalarıyla ilgili yardım alın
-description: Azure VMware Çözüm dağıtımı veya sağlama hatalarıyla ilgili bir hizmet isteği için Azure VMware Çözüm özel bulutunuzda gereken bilgileri alma.
+title: Azure VMware Çözüm dağıtımı veya sağlama hatası desteği
+description: Azure VMware Çözüm dağıtımı veya sağlama hatası için bir hizmet isteği sağlamak üzere Azure VMware Çözüm özel bulutunuzun bilgilerini alın.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 1f46dde895db417fd2b488a6203d5482e73d3c5e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6d609774b0d3a2de7809d04e4fa0c4e3e6593590
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779501"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93349129"
 ---
-# <a name="get-help-with-azure-vmware-solution-deployment-or-provisioning-failures"></a>Azure VMware Çözüm dağıtımı veya sağlama hatalarıyla ilgili yardım alın
+# <a name="open-a-support-request-for-an-azure-vmware-solution-deployment-or-provisioning-failure"></a>Azure VMware Çözüm dağıtımı veya sağlama hatası için bir destek isteği açın
 
-Bu makale, Azure VMware Çözüm dağıtımı ve sağlama hatalarıyla ilgili size yardımcı olur. Özel bulutunuzda hatalara sahip olduğunuzda, Azure portal bir [destek isteği](https://rc.portal.azure.com/#create/Microsoft.Support) (SR) açmanız gerekir. 
+Bu makalede bir [destek isteğinin](https://rc.portal.azure.com/#create/Microsoft.Support) nasıl açılacağı ve bir Azure VMware Çözüm dağıtımı veya sağlama hatası için anahtar bilgileri sağlayabilmeniz gösterilmektedir. 
 
-Ancak, Azure portal bazı önemli bilgileri toplamanız gerekir:
+Özel bulutunuzda bir hata olduğunda, Azure portal bir destek isteği açmanız gerekir. Bir destek isteği açmak için öncelikle Azure portal bazı önemli bilgileri alın:
 
 - Bağıntı Kimliği
-- ExpressRoute bağlantı hattı KIMLIĞI
+- Azure ExpressRoute bağlantı hattı KIMLIĞI
+- Hata iletileri
 
-## <a name="collect-the-correlation-id"></a>Bağıntı KIMLIĞINI toplayın
+## <a name="get-the-correlation-id"></a>Bağıntı KIMLIĞINI al
  
-Bir bağıntı KIMLIĞI, Azure 'da özel bir bulut veya herhangi bir kaynak oluşturduğunuzda üretilir. Her Azure Resource Manager dağıtımı da bir bağıntı KIMLIĞI oluşturur. Bu KIMLIK, daha hızlı SR oluşturma ve çözümleme sağlar. 
+Azure 'da özel bir bulut veya herhangi bir kaynak oluşturduğunuzda kaynak için bir bağıntı KIMLIĞI otomatik olarak oluşturulur. İsteği daha hızlı açmak ve çözmek için destek isteğinize özel bulut bağıntı KIMLIĞINI dahil edin.
+
+Azure portal, bir kaynağın bağıntı KIMLIĞINI iki şekilde edinebilirsiniz:
+
+* **Genel bakış** bölmesi
+* Dağıtım günlükleri
  
-Bağıntı KIMLIĞI vurgulanmış şekilde, başarısız bir özel bulut dağıtımının çıkışının bir örneği aşağıda verilmiştir.
+ ### <a name="get-the-correlation-id-from-the-resource-overview"></a>Kaynak genel bakış 'dan bağıntı KIMLIĞINI alın
 
-:::image type="content" source="media/fix-deployment-provisioning-failures/failed-private-cloud-deployment.png" alt-text="Bağıntı KIMLIĞIYLE özel bulut dağıtımı başarısız oldu.":::
+İlişki KIMLIĞI seçili olan başarısız bir özel bulut dağıtımının işlem ayrıntılarına bir örnek aşağıda verilmiştir:
 
-Hizmet isteğine dahil etmek için bu bağıntı KIMLIĞINI kopyalayın ve kaydedin. Ayrıntılar için bu makalenin sonundaki [destek Isteğinizi oluşturma](#create-your-support-request) bölümüne bakın.
+:::image type="content" source="media/fix-deployment-provisioning-failures/failed-private-cloud-deployment.png" alt-text="Bağıntı KIMLIĞI seçili olan başarısız bir özel bulut dağıtımını gösteren ekran görüntüsü.":::
 
-Başarısızlık ön doğrulama aşamasında oluşursa, hiçbir bağıntı KIMLIĞI oluşturulmaz. Bu durumda, aşağıdakiler dahil olmak üzere Azure VMware çözümü özel bulutu oluştururken kullandığınız bilgileri sağlayabilirsiniz:
+Özel bir buluta **genel bakış** bölmesinde dağıtım sonuçlarına erişmek için:
 
-- Konum
-- Kaynak grubu
-- Kaynak adı
+1. Azure portal özel bulutunuzu seçin.
+
+1. Sol menüde **genel bakış** ' ı seçin.
+
+Dağıtım başlatıldıktan sonra, dağıtımın sonuçları özel buluta **genel bakış** bölmesinde gösterilir.
+
+Hizmet isteğine dahil etmek için özel bulut dağıtımı bağıntı KIMLIĞINI kopyalayın ve kaydedin.
+
+### <a name="get-the-correlation-id-from-the-deployment-log"></a>Dağıtım günlüğünden bağıntı KIMLIĞI al
+
+Dağıtım etkinlik günlüğünü Azure portal arayarak başarısız bir dağıtım için bağıntı KIMLIĞINI alabilirsiniz.
+
+Dağıtım günlüğüne erişmek için:
+
+1. Azure portal özel bulutunuzu seçin ve ardından Bildirimler simgesini seçin.
+
+   :::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="Azure portal Bildirimler simgesini gösteren ekran görüntüsü.":::
+
+1. **Bildirimler** bölmesinde **etkinlik günlüğünde diğer olaylar** ' ı seçin:
+
+    :::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="Bildirimler bölmesinde seçilen etkinlik günlüğü bağlantısında daha fazla olayı gösteren ekran görüntüsü.":::
+
+1. Başarısız dağıtımı ve bağıntı KIMLIĞINI bulmak için kaynağın adını veya kaynağı oluşturmak için kullandığınız diğer bilgileri arayın. 
+
+    Aşağıdaki örnek, PC03 adlı bir özel bulut kaynağı için arama sonuçlarını gösterir.
  
-### <a name="collect-a-summary-of-errors"></a>Hataların özetini toplayın
-
-Hataların ayrıntıları sorununuzu çözmeye da yardımcı olabilir. Önceki ekrandan, hataların özetini görmek için uyarı iletisini seçin.
+    :::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="Örnek bir özel bulut kaynağı ve bir PrivateCloud oluştur veya Güncelleştir bölmesi için arama sonuçlarını gösteren ekran görüntüsü.":::
  
- :::image type="content" source="media/fix-deployment-provisioning-failures/summary-of-errors.png" alt-text="Bağıntı KIMLIĞIYLE özel bulut dağıtımı başarısız oldu.":::
+1. **Etkinlik günlüğü** bölmesindeki arama sonuçlarında, başarısız dağıtımın işlem adını seçin.
 
-Bu Özeti, SR 'ye dahil etmek için kopyalayıp kaydedin.
+1. **PrivateCloud oluştur veya Güncelleştir** bölmesinde **JSON** sekmesini seçin ve `correlationId` gösterilen günlükte öğesine bakın. Değeri, `correlationId` destek isteğinize dahil etmek için kopyalayın. 
  
-### <a name="retrieve-past-deployments"></a>Geçmiş dağıtımları al
+## <a name="copy-error-messages"></a>Hata iletilerini Kopyala
 
-Bildirimler simgesini seçerek dağıtım etkinlik günlüğü ' nde arayarak, başarısız olanlar da dahil olmak üzere geçmiş dağıtımları alabilirsiniz.
+Dağıtım sorununuzu çözmeye yardımcı olmak için Azure portal gösterilen tüm hata iletilerini ekleyin. Hataların özetini görmek için bir uyarı iletisi seçin:
+ 
+:::image type="content" source="media/fix-deployment-provisioning-failures/summary-of-errors.png" alt-text="Hatalar bölmesinin Özet sekmesinde, Kopyala simgesi seçili olarak hata ayrıntılarını gösteren ekran görüntüsü.":::
 
-:::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="Bağıntı KIMLIĞIYLE özel bulut dağıtımı başarısız oldu.":::
+Hata iletisini kopyalamak için Kopyala simgesini seçin. Kopyalanmış iletiyi, destek isteğinize dahil etmek üzere kaydedin.
+ 
+## <a name="get-the-expressroute-id-uri"></a>ExpressRoute KIMLIĞI (URI) Al
+ 
+Özel bulut ExpressRoute bağlantı hattını kullanarak var olan bir özel bulutu ölçeklendirmeye veya ona eşlemenize çalışıyor olabilirsiniz. Bu senaryoda, destek isteğinize dahil etmek için ExpressRoute KIMLIĞI gereklidir.
 
-Bildirimler ' de, **etkinlik günlüğünde daha fazla olay** seçin.
+ExpressRoute KIMLIĞINI kopyalamak için:
 
-:::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="Bağıntı KIMLIĞIYLE özel bulut dağıtımı başarısız oldu.":::
+1. Azure portal özel bulutunuzu seçin.
+1. Sol taraftaki menüde, **Yönet** altında **bağlantı** ' yı seçin. 
+1. Sağ bölmede **ExpressRoute** sekmesini seçin.
+1. **ExpressRoute kimliği** için Kopyala simgesini seçin ve destek talebinizdeki kullanılacak değeri kaydedin.
+ 
+:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="ExpressRoute KIMLIĞINI panoya kopyalayın."::: 
+ 
+## <a name="pre-validation-failures"></a>Ön doğrulama sorunları
 
-Ardından, başarısız dağıtımı ve onun bağıntı KIMLIĞINI bulmak üzere kaynağı oluşturmak için kullanılan kaynağın adını veya diğer bilgileri arayın. Aşağıdaki örnek, bir özel bulut kaynağında (PC03) arama sonuçlarını gösterir.
- 
-:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="Bağıntı KIMLIĞIYLE özel bulut dağıtımı başarısız oldu.":::
- 
-Başarısız dağıtımın işlem adını seçmek, ayrıntıları içeren bir pencere açar. JSON sekmesini seçin ve Bağıntıkimliği ' ı arayın. SR 'ye kopyalayın ve ekleyin. 
- 
-## <a name="collect-the-expressroute-id-uri"></a>ExpressRoute KIMLIĞINI (URI) toplayın
- 
-Özel bulut ExpressRoute bağlantı hattını kullanarak var olan bir özel bulutu ölçeklendirmeye veya ona eşlemenize çalışıyor olabilirsiniz. Bu durumda, ExpressRoute KIMLIĞI gerekir. 
+Özel bulut ön doğrulama denetimi başarısız olduysa (dağıtımdan önce), bir bağıntı KIMLIĞI üretilmez. Bu senaryoda, destek isteğinize aşağıdaki bilgileri verebilirsiniz:
 
-Azure portal, **bağlantı > ExpressRoute** ' ı seçin ve **ExpressRoute kimliğini** panonuza kopyalayın.
- 
-:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="Bağıntı KIMLIĞIYLE özel bulut dağıtımı başarısız oldu."::: 
- 
-> [!NOTE]
-> Bazen, ön doğrulama denetimleri dağıtımdan önce başarısız olabilir ve yalnızca kullanılabilir bilgiler hata ve hata iletileri olur. Bunlar, örneğin, kotayla ilgili sorunlar gibi birçok hatalarda yararlı olabilir ve bu iletilerin destek isteğine eklenmesi önemlidir. Bunları toplamak için önceki bölüme bakın ve [hata özetini toplayın](#collect-a-summary-of-errors).
+- Hata ve hata iletileri. Bu iletiler birçok hatalarda, örneğin, kotayla ilgili sorunlar için yardımcı olabilir. Bu iletileri kopyalamak ve bu makalede açıklandığı gibi destek isteğine eklemek önemlidir.
+- Aşağıdakiler dahil olmak üzere Azure VMware çözümü özel bulutu oluşturmak için kullandığınız bilgiler:
+  - Konum
+  - Kaynak grubu
+  - Kaynak adı
 
 ## <a name="create-your-support-request"></a>Destek isteğinizi oluşturun
 
-Destek isteğinizi oluşturma konusunda genel yönergeler için bkz. [Azure destek isteği oluşturma](../azure-portal/supportability/how-to-create-azure-support-request.md). 
+Destek isteği oluşturma hakkında genel bilgi için bkz. [Azure destek isteği oluşturma](../azure-portal/supportability/how-to-create-azure-support-request.md). 
 
-Azure VMware Çözüm dağıtımı veya sağlama hatalarıyla ilgili bir SR oluşturmak için aşağıda belirli bir kılavuzluk vardır.
+Azure VMware Çözüm dağıtımı veya sağlama hatası için bir destek isteği oluşturmak için:
 
-1. **Yardım** simgesini ve ardından **+ Yeni destek isteği** ' ni seçin.
+1. Azure portal, **Yardım** simgesini seçin ve ardından **Yeni destek isteği** ' ni seçin.
 
-    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="Bağıntı KIMLIĞIYLE özel bulut dağıtımı başarısız oldu.":::
+    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="Azure portal yeni destek isteği bölmesinin ekran görüntüsü.":::
 
-2. Tüm gerekli alanları ve **temel bilgiler** sekmesinde doldurabilirsiniz:
+1. Gerekli bilgileri girin veya seçin:
 
-    - **Sorun türü** için **yapılandırma ve kurulum sorunları** ' nı seçin.
+   1. **Temel Bilgiler** sekmesinde:
 
-    - **Sorun alt türü** için **özel bulut sağla** ' yı seçin.
+      1. **Sorun türü** için **yapılandırma ve kurulum sorunları** ' nı seçin.
 
-3. **Ayrıntılar** sekmesinde:
+      1. **Sorun alt türü** için **özel bulut sağla** ' yı seçin.
 
-    - Tüm gerekli alanları doldur.
+   1. **Ayrıntılar** sekmesinde:
 
-    - Bağıntı KIMLIĞINIZI veya ExpressRoute KIMLIĞINIZI, belirtilen belirli alanlara yapıştırın. Belirli bir alanı görmüyorsanız, **sorun hakkındaki ayrıntıları sağlamak** altındaki metin kutusuna yapıştırabilirsiniz.
+      1. Gerekli bilgileri girin veya seçin.
 
-    - Kopyaladığınız hataların Özeti dahil olmak üzere herhangi bir hata ayrıntılarını, **sorun hakkındaki ayrıntıları sağlayan** metin kutusuna yapıştırın.
+      1. Bağıntı KIMLIĞINIZI veya ExpressRoute KIMLIĞINIZI bu bilgilerin istendiği yere yapıştırın. Bu değerler için belirli bir metin kutusu görmüyorsanız, **sorunu, sorun hakkındaki ayrıntıları sağla** metin kutusuna yapıştırın.
 
-4. SR 'nizi oluşturmak için gözden geçirin ve **Oluştur** ' u seçin.
+    1. Kopyaladığınız hata veya hata iletileri dahil olmak üzere hata ayrıntılarını, **sorun hakkındaki ayrıntıları girin** metin kutusuna yapıştırın.
+
+1. Girdilerinizi gözden geçirin ve sonra destek isteğinizi oluşturmak için **Oluştur** ' u seçin.

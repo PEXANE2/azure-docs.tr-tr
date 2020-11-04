@@ -3,25 +3,25 @@ title: Windows için grup ilkesi taban çizgisinden Konuk yapılandırma ilkesi 
 description: Windows Server 2019 güvenlik taban çizgisinden grup ilkesi bir ilke tanımına nasıl dönüştüreceğiniz hakkında bilgi edinin.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: dce22885981ab01fe37fac8588899d12a5afb87d
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 7f7e2af70efa6771d94d7ceaa14d1408175b1d12
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893382"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348653"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Windows için grup ilkesi taban çizgisinden Konuk yapılandırma ilkesi tanımları oluşturma
 
 Özel ilke tanımları oluşturmadan önce, [Azure Ilke Konuk yapılandırması](../concepts/guest-configuration.md)' na kavramsal genel bakış bilgilerini okumak iyi bir fikirdir. Linux için özel konuk yapılandırma ilkesi tanımları oluşturma hakkında bilgi edinmek için bkz. [Linux Için Konuk yapılandırma ilkeleri oluşturma](./guest-configuration-create-linux.md). Windows için özel konuk yapılandırma ilkesi tanımları oluşturma hakkında bilgi edinmek için bkz. [Windows Için Konuk yapılandırma ilkeleri oluşturma](./guest-configuration-create.md).
 
-Windows’u denetlerken, Konuk Yapılandırması yapılandırma dosyasını oluşturmak için [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) kaynak modülünü kullanır. DSC yapılandırması makinenin olması gereken durumu tanımlar. Yapılandırmanın değerlendirmesi **uyumlu**değilse, *Auditınotexists* ilke efekti tetiklenir.
+Windows’u denetlerken, Konuk Yapılandırması yapılandırma dosyasını oluşturmak için [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) kaynak modülünü kullanır. DSC yapılandırması makinenin olması gereken durumu tanımlar. Yapılandırmanın değerlendirmesi **uyumlu** değilse, *Auditınotexists* ilke efekti tetiklenir.
 [Azure Ilke Konuk yapılandırması](../concepts/guest-configuration.md) yalnızca makineler içindeki ayarları denetler.
 
 > [!IMPORTANT]
-> Konuk yapılandırması olan özel ilke tanımları bir önizleme özelliğidir.
->
 > Konuk Yapılandırma uzantısı Azure sanal makinelerinde denetim gerçekleştirmek için gereklidir. Uzantıyı tüm Windows makineleri genelinde ölçekli olarak dağıtmak için aşağıdaki ilke tanımlarını atayın:
 > - [Windows VM 'lerinde Konuk yapılandırma Ilkesini etkinleştirmek için önkoşulları dağıtın.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+> 
+> Özel içerik paketlerinde gizli dizileri veya gizli bilgileri kullanmayın.
 
 DSC topluluğu, aktarılmış grup ilkesi şablonlarını DSC biçimine dönüştürmek için [Baselinemanagement modülünü](https://github.com/microsoft/BaselineManagement) yayımladı. GuestConfiguration cmdlet 'i ile birlikte BaselineManagement modülü, Windows için grup ilkesi içerikten Azure Ilke Konuk yapılandırma paketi oluşturur. BaselineManagement modülünü kullanma hakkında ayrıntılı bilgi için [hızlı başlangıç: Grup ILKESI DSC 'ye dönüştürme](/powershell/scripting/dsc/quickstarts/gpo-quickstart)makalesine bakın.
 
@@ -29,7 +29,7 @@ Bu kılavuzda, bir grup ilkesi nesnesinden (GPO) Azure Ilke Konuk yapılandırma
 
 ## <a name="download-windows-server-2019-security-baseline-and-install-related-powershell-modules"></a>Windows Server 2019 güvenlik temelini indirin ve ilgili PowerShell modüllerini yükleyin
 
-**DSC**, **guestconfiguration**, **taban çizgisi yönetimi**ve ilgili Azure modüllerini PowerShell 'e yüklemek için:
+**DSC** , **guestconfiguration** , **taban çizgisi yönetimi** ve ilgili Azure modüllerini PowerShell 'e yüklemek için:
 
 1. Bir PowerShell isteminden aşağıdaki komutu çalıştırın:
 
@@ -53,7 +53,7 @@ Bu kılavuzda, bir grup ilkesi nesnesinden (GPO) Azure Ilke Konuk yapılandırma
    Expand-Archive -Path C:\git\policyfiles\downloads\Server2019Baseline.zip -DestinationPath C:\git\policyfiles\downloads\
    ```
 
-1. **MapGuidsToGpoNames.ps1**kullanarak sunucu 2019 temel içeriğini doğrulayın.
+1. **MapGuidsToGpoNames.ps1** kullanarak sunucu 2019 temel içeriğini doğrulayın.
 
    ```azurepowershell-interactive
    # Show content details of downloaded GPOs
@@ -87,78 +87,12 @@ Ardından, indirilen sunucu 2019 taban çizgisini Konuk yapılandırma ve temel 
 
 ## <a name="create-azure-policy-guest-configuration"></a>Azure Ilke Konuk yapılandırması oluştur
 
-Sonraki adım, dosyayı Azure Blob depolama alanına yayımlamaktır. 
-
-1. Aşağıdaki komut dosyası, bu görevi otomatikleştirmek için kullanabileceğiniz bir işlevi içerir. İşlevde kullanılan komutların modülü gerektirdiğini göz önünde `publish` `Az.Storage` .
+1. Sonraki adım, dosyayı Azure Blob depolama alanına yayımlamaktır. Komut `Publish-GuestConfigurationPackage` `Az.Storage` modülü gerektiriyor.
 
    ```azurepowershell-interactive
-    function Publish-Configuration {
-        param(
-        [Parameter(Mandatory=$true)]
-        $resourceGroup,
-        [Parameter(Mandatory=$true)]
-        $storageAccountName,
-        [Parameter(Mandatory=$true)]
-        $storageContainerName,
-        [Parameter(Mandatory=$true)]
-        $filePath,
-        [Parameter(Mandatory=$true)]
-        $blobName
-        )
-
-        # Get Storage Context
-        $Context = Get-AzStorageAccount -ResourceGroupName $resourceGroup `
-            -Name $storageAccountName | `
-            ForEach-Object { $_.Context }
-
-        # Upload file
-        $Blob = Set-AzStorageBlobContent -Context $Context `
-            -Container $storageContainerName `
-            -File $filePath `
-            -Blob $blobName `
-            -Force
-
-        # Get url with SAS token
-        $StartTime = (Get-Date)
-        $ExpiryTime = $StartTime.AddYears('3')  # THREE YEAR EXPIRATION
-        $SAS = New-AzStorageBlobSASToken -Context $Context `
-            -Container $storageContainerName `
-            -Blob $blobName `
-            -StartTime $StartTime `
-            -ExpiryTime $ExpiryTime `
-            -Permission rl `
-            -FullUri
-
-        # Output
-        return $SAS
-    }
+   Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName  myResourceGroupName -StorageAccountName myStorageAccountName
    ```
 
-1. Benzersiz kaynak grubu, depolama hesabı ve kapsayıcıyı tanımlamak için parametreler oluşturun. 
-   
-   ```azurepowershell-interactive
-    # Replace the $resourceGroup, $storageAccount, and $storageContainer values below.
-    $resourceGroup = 'rfc_customguestconfig'
-    $storageAccount = 'guestconfiguration'
-    $storageContainer = 'content'
-    $path = 'c:\git\policyfiles\Server2019Baseline\Server2019Baseline.zip'
-    $blob = 'Server2019Baseline.zip' 
-    ```
-
-1. Konuk yapılandırma paketini ortak blob depolamaya yayımlamak için, atanan parametreleriyle Yayımla işlevini kullanın.
-
-
-   ```azurepowershell-interactive
-   $PublishConfigurationSplat = @{
-       resourceGroup = $resourceGroup
-       storageAccountName = $storageAccount
-       storageContainerName = $storageContainer
-       filePath = $path
-       blobName = $blob
-       FullUri = $true
-   }
-   $uri = Publish-Configuration @PublishConfigurationSplat
-    ```
 1. Konuk yapılandırması özel ilke paketi oluşturulduktan ve karşıya yüklendikten sonra, Konuk yapılandırma ilkesi tanımını oluşturun. `New-GuestConfigurationPolicy`Konuk yapılandırmasını oluşturmak için cmdlet 'ini kullanın.
 
    ```azurepowershell-interactive
@@ -172,7 +106,7 @@ Sonraki adım, dosyayı Azure Blob depolama alanına yayımlamaktır.
    New-GuestConfigurationPolicy @NewGuestConfigurationPolicySplat
    ```
     
-1. Cmdlet 'ini kullanarak ilke tanımlarını yayımlayın `Publish-GuestConfigurationPolicy` . Cmdlet 'i yalnızca tarafından oluşturulan JSON dosyalarının konumuna işaret eden **Path** parametresine sahiptir `New-GuestConfigurationPolicy` . Yayımla komutunu çalıştırmak için Azure 'da ilke tanımları oluşturma erişiminizin olması gerekir. Belirli yetkilendirme gereksinimleri, [Azure Ilkesine genel bakış](../overview.md#getting-started) sayfasında belgelenmiştir. En iyi yerleşik rol, **kaynak Ilkesi katılımcısı**' dir.
+1. Cmdlet 'ini kullanarak ilke tanımlarını yayımlayın `Publish-GuestConfigurationPolicy` . Cmdlet 'i yalnızca tarafından oluşturulan JSON dosyalarının konumuna işaret eden **Path** parametresine sahiptir `New-GuestConfigurationPolicy` . Yayımla komutunu çalıştırmak için Azure 'da ilke tanımları oluşturma erişiminizin olması gerekir. Belirli yetkilendirme gereksinimleri, [Azure Ilkesine genel bakış](../overview.md#getting-started) sayfasında belgelenmiştir. En iyi yerleşik rol, **kaynak Ilkesi katılımcısı** ' dir.
 
    ```azurepowershell-interactive
    Publish-GuestConfigurationPolicy -Path C:\git\policyfiles\policy\ -Verbose
@@ -185,7 +119,7 @@ Azure 'da oluşturulan ilkeyle, son adım girişimi atayacaktır. Bkz. girişim,
 > [!IMPORTANT]
 > Konuk yapılandırma ilkesi tanımlarının **her zaman** _auditınotexists_ ve _deployifnotexists_ ilkelerini birleştiren girişim kullanılarak atanması gerekir. Yalnızca _Auditınotexists_ ilkesi atanırsa, Önkoşullar dağıtılır ve ilke her zaman ' 0 ' sunucularının uyumlu olduğunu gösterir.
 
-Bir ilke tanımını _Deployifnotexists_ efektiyle atamak ek bir erişim düzeyi gerektirir. En az ayrıcalığa izin vermek için, **kaynak Ilkesi katılımcısı**'nı genişleten özel bir rol tanımı oluşturabilirsiniz. Aşağıdaki örnek, _Microsoft. Authorization/Roleatamalar/Write_ek Izniyle **kaynak ilkesi katılımcısı DINE** adlı bir rol oluşturur.
+Bir ilke tanımını _Deployifnotexists_ efektiyle atamak ek bir erişim düzeyi gerektirir. En az ayrıcalığa izin vermek için, **kaynak Ilkesi katılımcısı** 'nı genişleten özel bir rol tanımı oluşturabilirsiniz. Aşağıdaki örnek, _Microsoft. Authorization/Roleatamalar/Write_ ek Izniyle **kaynak ilkesi katılımcısı DINE** adlı bir rol oluşturur.
 
    ```azurepowershell-interactive
    $subscriptionid = '00000000-0000-0000-0000-000000000000'

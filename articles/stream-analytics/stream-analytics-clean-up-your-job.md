@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 124d2cf4380153bd3ea68de9233f6a1b5eb6ba78
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2652b97c9392d3016bbc52209d4b2bda81c31706
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130706"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348976"
 ---
 # <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Azure Stream Analytics işinizi durdurma veya silme
 
@@ -57,8 +57,8 @@ PowerShell 'i kullanarak bir işi durdurmak için [stop-AzStreamAnalyticsJob](/p
 
 ## <a name="stop-or-delete-a-job-using-azure-sdk-for-net"></a>.NET için Azure SDK 'Yı kullanarak bir işi durdurma veya silme
 
-.NET için Azure SDK 'yı kullanarak bir işi durdurmak için [Streamingjobsoperationsextensions. BeginStop](/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.beginstop?view=azure-dotnet) metodunu kullanın. .NET için Azure SDK, [Streamingjobsoperationsextensions. BeginDelete](/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.begindelete?view=azure-dotnet) yöntemi kullanarak bir işi silmek için.
+.NET için Azure SDK 'yı kullanarak bir işi durdurmak için [Streamingjobsoperationsextensions. BeginStop](/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.beginstop) metodunu kullanın. .NET için Azure SDK, [Streamingjobsoperationsextensions. BeginDelete](/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.begindelete) yöntemi kullanarak bir işi silmek için.
 
 ## <a name="stop-or-delete-a-job-using-rest-api"></a>REST API kullanarak bir işi durdurma veya silme
 
-REST API kullanarak bir işi durdurmak için [stop](/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#stop) yöntemine bakın. REST API kullanarak bir işi silmek için, [Delete](/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#delete) yöntemine bakın.
+REST API kullanarak bir işi durdurmak için [stop](/rest/api/streamanalytics/2016-03-01/streamingjobs/stop) yöntemine bakın. REST API kullanarak bir işi silmek için, [Delete](/rest/api/streamanalytics/2016-03-01/streamingjobs/delete) yöntemine bakın.

@@ -8,39 +8,40 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 25858ac3dc78803f59aec7e77e151dc9afcc4950
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: f31a883a2b10f37d6a4a7a91fff37739e340ac60
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781677"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348857"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>C++’tan Kuyruk Depolama kullanma
+
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Genel Bakış
+
 Bu kılavuzda, Azure kuyruk depolama hizmetini kullanarak genel senaryoları nasıl gerçekleştireceğiniz gösterilmektedir. Örnekler C++ dilinde yazılmıştır ve [C++ için Azure Depolama İstemci Kitaplığı](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)’nı kullanır. Kapsanan senaryolar sıra iletilerini **ekleme** , göz **atma** , **alma** ve **silme** , Ayrıca kuyruk **oluşturma ve silme** içerir.
 
 > [!NOTE]
 > Bu kılavuz C++ için Azure Depolama İstemci Kitaplığı sürüm 1.0.0 ve üzerini hedefler. Önerilen sürüm, [NuGet](https://www.nuget.org/packages/wastorage) ya da [GitHub](https://github.com/Azure/azure-storage-cpp/) üzerinden ulaşılabilen Depolama İstemci Kitaplığı 2.2.0’dır.
-> 
-> 
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-c-application"></a>C++ uygulaması oluşturma
+
 Bu kılavuzda, bir C++ uygulaması içinde çalıştırılabilen depolama özelliklerini kullanacaksınız.
 
 Bunu yapmak için, C++ için Azure Depolama İstemci Kitaplığı’nı yüklemeniz ve Azure aboneliğinizde bir Azure depolama hesabı oluşturmanız gerekir.
 
 C++ için Azure Depolama İstemci Kitaplığı’nı aşağıdaki yöntemleri kullanarak yükleyebilirsiniz:
 
-* **Linux:** [C++ Için Azure depolama Istemci KITAPLıĞı Benioku dosyasında verilen yönergeleri izleyin: Linux üzerinde çalışmaya](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux) başlama sayfası.
-* **Windows:** Windows üzerinde, Dependency Manager olarak [vcpkg](https://github.com/microsoft/vcpkg) kullanın. Vcpkg 'yi başlatmak için [hızlı](https://github.com/microsoft/vcpkg#quick-start) başlangıcı izleyin. Ardından, kitaplığı yüklemek için aşağıdaki komutu kullanın:
+- **Linux:** [C++ Için Azure depolama Istemci KITAPLıĞı Benioku dosyasında verilen yönergeleri izleyin: Linux üzerinde çalışmaya](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux) başlama sayfası.
+- **Windows:** Windows üzerinde, Dependency Manager olarak [vcpkg](https://github.com/microsoft/vcpkg) kullanın. Vcpkg 'yi başlatmak için [hızlı](https://github.com/microsoft/vcpkg#quick-start) başlangıcı izleyin. Ardından, kitaplığı yüklemek için aşağıdaki komutu kullanın:
 
 ```powershell
 .\vcpkg.exe install azure-storage-cpp
@@ -49,6 +50,7 @@ C++ için Azure Depolama İstemci Kitaplığı’nı aşağıdaki yöntemleri ku
 Kaynak kodu oluşturma ve [Benioku](https://github.com/Azure/azure-storage-cpp#download--install) dosyasında NuGet 'e aktarma hakkında bir kılavuz bulabilirsiniz.
 
 ## <a name="configure-your-application-to-access-queue-storage"></a>Uygulamanızı kuyruk depolamaya erişecek şekilde yapılandırma
+
 Kuyruklara erişmek için Azure depolama API 'Lerini kullanmak istediğiniz C++ dosyasının en üstüne aşağıdaki Include deyimlerini ekleyin:
 
 ```cpp
@@ -57,6 +59,7 @@ Kuyruklara erişmek için Azure depolama API 'Lerini kullanmak istediğiniz C++ 
 ```
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>Azure depolama bağlantı dizesi ayarlama
+
 Azure depolama istemcisi, veri yönetimi hizmetlerine erişmek üzere uç noktaları ve kimlik bilgilerini depolamak için bir depolama bağlantı dizesi kullanır. Bir istemci uygulamasında çalışırken, depolama hesabınızın adını ve *AccountName* ve *accountkey* değerleri için [Azure Portal](https://portal.azure.com) listelenen depolama hesabı için depolama erişim anahtarını kullanarak depolama bağlantı dizesini aşağıdaki biçimde sağlamanız gerekir. Depolama hesapları ve erişim anahtarları hakkında daha fazla bilgi için bkz. [Azure depolama hesapları hakkında](../common/storage-account-create.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json). Bu örnekte bağlantı dizesini tutmak için nasıl statik bir alan bildirebileceğiniz gösterilmektedir:
 
 ```cpp
@@ -76,6 +79,7 @@ Azurite 'yi başlatmak için bkz. [Yerel Azure depolama geliştirmesi Için Azur
 Aşağıdaki örnekler, depolama bağlantı dizesini almak için bu iki yöntemden birini kullandığınızı varsayar.
 
 ## <a name="retrieve-your-connection-string"></a>Bağlantı dizenizi alma
+
 Depolama hesabı bilgilerinizi temsil etmek için **cloud_storage_account** sınıfını kullanabilirsiniz. Depolama bağlantı dizesinden depolama hesabı bilgilerini almak için **parse** yöntemini kullanabilirsiniz.
 
 ```cpp
@@ -84,6 +88,7 @@ azure::storage::cloud_storage_account storage_account = azure::storage::cloud_st
 ```
 
 ## <a name="how-to-create-a-queue"></a>Nasıl yapılır: kuyruk oluşturma
+
 **Cloud_queue_client** nesnesi, kuyruklar için başvuru nesneleri almanızı sağlar. Aşağıdaki kod bir **cloud_queue_client** nesnesi oluşturur.
 
 ```cpp
@@ -105,6 +110,7 @@ azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sampl
 ```
 
 ## <a name="how-to-insert-a-message-into-a-queue"></a>Nasıl yapılır: bir kuyruğa ileti ekleme
+
 Mevcut bir sıraya bir ileti eklemek için, önce yeni bir **cloud_queue_message** oluşturun. Sonra **add_message** yöntemini çağırın. Bir **cloud_queue_message** bir dizeden ya da bir **bayt** dizisinden oluşturulabilir. Burada, bir kuyruk oluşturan (eğer yoksa) ve 'Hello, World' iletisini yerleştiren bir kod yer almaktadır:
 
 ```cpp
@@ -126,6 +132,7 @@ queue.add_message(message1);
 ```
 
 ## <a name="how-to-peek-at-the-next-message"></a>Nasıl yapılır: bir sonraki iletiye göz atma
+
 **Peek_message** yöntemini çağırarak sıradan kaldırmadan bir kuyruğun önündeki iletiye göz atmayı sağlayabilirsiniz.
 
 ```cpp
@@ -146,6 +153,7 @@ std::wcout << U("Peeked message content: ") << peeked_message.content_as_string(
 ```
 
 ## <a name="how-to-change-the-contents-of-a-queued-message"></a>Nasıl yapılır: kuyruğa alınan iletinin içeriğini değiştirme
+
 Kuyrukta yer alan bir iletinin içeriğini değiştirebilirsiniz. Eğer ileti bir iş görevini temsil ediyorsa, bu özelliği kullanarak iş görevinin durumunu güncelleştirebilirsiniz. Aşağıdaki kod kuyruk iletisini yeni içeriklerle güncelleştirir ve görünürlük zaman aşımını 60 saniye daha uzatır. Bu, ileti ile ilişkili işin durumunu kaydeder ve istemciye ileti üzerinde çalışmaya devam etmesi için bir dakika daha zaman verir. Bir işleme adımı donanım veya yazılım arızasından dolayı başarısız olursa baştan başlamanıza gerek kalmadan kuyruk iletilerindeki çok adımlı iş akışlarını izlemek için bu yöntemi kullanabilirsiniz. Genellikle bir yeniden deneme sayacı tutmanı gerekir ve bir ileti n seferden daha fazla yeniden denenirse, silebilirsiniz. Bu, her işlendiğinde bir uygulama hatası tetikleyen bir iletiye karşı koruma sağlar.
 
 ```cpp
@@ -172,6 +180,7 @@ std::wcout << U("Changed message content: ") << changed_message.content_as_strin
 ```
 
 ## <a name="how-to-de-queue-the-next-message"></a>Nasıl yapılır: sonraki iletiyi ön sıraya alma
+
 Kodunuz, bir iletiyi bir kuyruktan iki adımda çıkarır. **Get_message** çağırdığınızda sıradaki bir sonraki iletiyi alırsınız. **Get_message** döndürülen bir ileti, bu kuyruktan gelen diğer kod okuma iletileri için görünmez hale gelir. İletiyi kuyruktan kaldırma işleminin tamamlanabilmesi için, **delete_message** de çağırmanız gerekir. Bir iletinin iki adımlı kaldırılma süreci, donanım veya yazılım arızasından dolayı kodunuzun bir iletiyi işleyememesi durumunda kodunuzun başka bir örneğinin aynı iletiyi alıp yeniden denemesini sağlar. İleti işlendikten sonra kodunuz **delete_message** çağırır.
 
 ```cpp
@@ -193,6 +202,7 @@ queue.delete_message(dequeued_message);
 ```
 
 ## <a name="how-to-leverage-additional-options-for-de-queuing-messages"></a>Nasıl yapılır: iletileri devre dışı bırakmak için ek seçeneklerden yararlanın
+
 İletilerin bir kuyruktan alınma şeklini iki yöntemle özelleştirebilirsiniz. İlk olarak toplu iletiler alabilirsiniz (en fazla 32). İkinci olarak daha uzun veya daha kısa bir görünmezlik süresi ayarlayarak kodunuzun her iletiyi tamamen işlemesi için daha az veya daha fazla zaman tanıyabilirsiniz. Aşağıdaki kod örneğinde, tek bir çağrıda 20 ileti almak için **get_messages** yöntemi kullanılmaktadır. Sonra her iletiyi bir **for** döngüsü kullanarak işler. Ayrıca her ileti için görünmezlik zaman aşımı beş dakika olarak ayarlanır. 5 dakikalık tüm iletiler için aynı anda başlayacağını unutmayın. bu nedenle, **get_messages** çağrısından bu yana 5 dakika geçtikten sonra, silinmemiş olan tüm iletiler yeniden görünür hale gelir.
 
 ```cpp
@@ -221,6 +231,7 @@ for (auto it = messages.cbegin(); it != messages.cend(); ++it)
 ```
 
 ## <a name="how-to-get-the-queue-length"></a>Nasıl yapılır: kuyruk uzunluğunu alma
+
 Bir kuyruktaki ileti sayısı ile ilgili bir tahmin alabilirsiniz. **Download_attributes** yöntemi, ileti sayısı dahil olmak üzere kuyruk hizmeti kuyruk özniteliklerini almayı ister. **Approximate_message_count** yöntemi kuyruktaki iletilerin yaklaşık sayısını alır.
 
 ```cpp
@@ -244,6 +255,7 @@ std::wcout << U("Number of messages in queue: ") << cachedMessageCount << std::e
 ```
 
 ## <a name="how-to-delete-a-queue"></a>Nasıl yapılır: kuyruğu silme
+
 Bir kuyruğu ve içerdiği tüm iletileri silmek için, kuyruk nesnesi üzerinde **delete_queue_if_exists** yöntemi çağırın.
 
 ```cpp
@@ -261,10 +273,11 @@ queue.delete_queue_if_exists();
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Sıra depolamanın temellerini öğrendiğinize göre, Azure Storage hakkında daha fazla bilgi edinmek için bu bağlantıları izleyin.
 
-* [C++ ' dan blob depolamayı kullanma](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
-* [C++ ' dan Tablo Depolamayı kullanma](../../cosmos-db/table-storage-how-to-use-c-plus.md)
-* [C++ ' da Azure depolama kaynaklarını listeleme](../common/storage-c-plus-plus-enumeration.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
-* [C++ için depolama Istemci kitaplığı başvurusu](https://azure.github.io/azure-storage-cpp)
-* [Azure depolama belgeleri](https://azure.microsoft.com/documentation/services/storage/)
+- [C++ ' dan blob depolamayı kullanma](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
+- [C++ ' dan Tablo Depolamayı kullanma](../../cosmos-db/table-storage-how-to-use-c-plus.md)
+- [C++ ' da Azure depolama kaynaklarını listeleme](../common/storage-c-plus-plus-enumeration.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+- [C++ için depolama Istemci kitaplığı başvurusu](https://azure.github.io/azure-storage-cpp)
+- [Azure depolama belgeleri](https://azure.microsoft.com/documentation/services/storage/)

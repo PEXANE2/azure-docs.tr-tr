@@ -3,12 +3,12 @@ title: Kayıt defterinde oturum açma sorunlarını giderme
 description: Azure Container Registry 'de oturum açarken karşılaşılan sorunların belirtileri, nedenleri ve çözümleri
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: f7bac49a79d32af3a0e533f4c4e3431c62b82172
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a00db5cc34da6d90210a22005f33b0ad1bf20f1b
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148441"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348908"
 ---
 # <a name="troubleshoot-registry-login"></a>Kayıt defteri oturum açma sorunlarını giderme
 
@@ -51,12 +51,12 @@ Bkz. komut örnekleri için [Azure Container Registry 'nin sistem durumunu denet
 
 İlgili bağlantılar:
 
-* [Kimlik doğrulamasına genel bakış](container-registry-authentication.md#authentication-options)
+* [Kimlik Doğrulamasına genel bakış](container-registry-authentication.md#authentication-options)
 * [Kapsayıcı kayıt defteri SSS](container-registry-faq.md)
 
 ### <a name="specify-correct-registry-name"></a>Doğru kayıt defteri adını belirtin
 
-Kullanırken `docker login` , kayıt defterinin *myregistry.azurecr.io*gibi tam oturum açma sunucusu adını sağlayın. Yalnızca küçük harfler kullandığınızdan emin olun. Örnek:
+Kullanırken `docker login` , kayıt defterinin *myregistry.azurecr.io* gibi tam oturum açma sunucusu adını sağlayın. Yalnızca küçük harfler kullandığınızdan emin olun. Örnek:
 
 ```console
 docker login myregistry.azurecr.io
@@ -77,14 +77,15 @@ az acr login --name myregistry
 Senaryonuz için kullandığınız kimlik bilgilerinin geçerliliğini denetleyin veya size bir kayıt defteri sahibi tarafından sağlanmış olursunuz. Olası bazı sorunlar:
 
 * Active Directory hizmet sorumlusu kullanıyorsanız, Active Directory kiracısında doğru kimlik bilgilerini kullandığınızdan emin olun:
-  * Kullanıcı adı-hizmet sorumlusu uygulama KIMLIĞI ( *ISTEMCI kimliği*olarak da bilinir)
-  * Parola-hizmet sorumlusu parolası ( *istemci gizli anahtarı*da denir)
+  * Kullanıcı adı-hizmet sorumlusu uygulama KIMLIĞI ( *ISTEMCI kimliği* olarak da bilinir)
+  * Parola-hizmet sorumlusu parolası ( *istemci gizli anahtarı* da denir)
 * Kayıt defterine erişmek için Azure Kubernetes hizmeti veya Azure DevOps gibi bir Azure hizmeti kullanıyorsanız, hizmetinizin kayıt defteri yapılandırmasını onaylayın.
 * `az acr login` `--expose-token` Docker Daemon kullanılmadan kayıt defteri oturum açma imkanı sağlayan seçeneğiyle çalıştırdıysanız, Kullanıcı adıyla kimlik doğrulaması gerçekleştirdiğinizden emin olun `00000000-0000-0000-0000-000000000000` .
+* Kayıt defteriniz [anonim çekme erişimi](container-registry-faq.md#how-do-i-enable-anonymous-pull-access)için yapılandırıldıysa, önceki bir Docker oturumundan depolanan mevcut Docker kimlik bilgileri anonim erişimi engelleyebilir. `docker logout`Kayıt defterinde anonim çekme işlemini denemeden önce ' i çalıştırın.
 
 İlgili bağlantılar:
 
-* [Kimlik doğrulamasına genel bakış](container-registry-authentication.md#authentication-options)
+* [Kimlik Doğrulamasına genel bakış](container-registry-authentication.md#authentication-options)
 * [Azure AD ile bireysel oturum açma](container-registry-authentication.md#individual-login-with-azure-ad)
 * [Hizmet sorumlusu ile oturum açma](container-registry-auth-service-principal.md)
 * [Yönetilen kimlikle oturum açma](container-registry-authentication-managed-identity.md)

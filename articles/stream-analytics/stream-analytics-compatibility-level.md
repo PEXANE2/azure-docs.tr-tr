@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 87ee8a9c57fc456ba02f97bf56db25e4c91e9398
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 11014c5a5c5cd0cabae1b62083bd5e662be2c6b7
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129822"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348942"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics işleri için uyumluluk düzeyi
 
@@ -33,7 +33,7 @@ Yeni bir Stream Analytics iş oluşturduğunuzda, en son uyumluluk düzeyini kul
 
 ## <a name="set-the-compatibility-level"></a>Uyumluluk düzeyini ayarlama
 
-Stream Analytics işi için uyumluluk düzeyini Azure portal veya [iş oluştur REST API çağrısını](./stream-analytics-quick-create-portal.md)kullanarak ayarlayabilirsiniz.
+Stream Analytics işi için uyumluluk düzeyini Azure portal veya [iş oluştur REST API çağrısını](/rest/api/streamanalytics/2016-03-01/streamingjobs/createorreplace#compatibilitylevel)kullanarak ayarlayabilirsiniz.
 
 Azure portal işin uyumluluk düzeyini güncelleştirmek için:
 
@@ -75,15 +75,15 @@ Daha fazla bilgi için bkz. [bulut ve IoT Edge Azure Stream Analytics Jeo-uzamsa
 
 ### <a name="native-bulk-api-integration-with-cosmosdb-output"></a>CosmosDB çıkışıyla yerel toplu API Tümleştirmesi
 
-**Önceki düzeyler:** Upsert davranış *INSERT veya Merge* .
+**Önceki düzeyler:** Upsert davranış *INSERT veya Merge*.
 
 **1,2 düzeyi:** CosmosDB çıkışıyla yerel toplu API Tümleştirmesi aktarım hızını en üst düzeye çıkarır ve azaltma isteklerini verimli bir şekilde işler. Daha fazla bilgi için [Azure Cosmos DB çıktıyı Azure Stream Analytics sayfasına](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12)bakın.
 
-Upsert davranış *INSERT veya Replace* .
+Upsert davranış *INSERT veya Replace*.
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>SQL çıktısına yazarken DateTimeOffset
 
-**Önceki düzeyler:** [DateTimeOffset](/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) türleri UTC olarak ayarlandı.
+**Önceki düzeyler:** [DateTimeOffset](/sql/t-sql/data-types/datetimeoffset-transact-sql) türleri UTC olarak ayarlandı.
 
 **1,2 düzeyi:** DateTimeOffset artık ayarlanmamış.
 

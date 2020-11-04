@@ -2,18 +2,18 @@
 title: Azure Arc etkin sunucularına genel bakış
 description: Azure 'un dışında barındırılan sunucuları Azure kaynağı gibi yönetmek için Azure Arc etkin sunucularını nasıl kullanacağınızı öğrenin.
 keywords: Azure Otomasyonu, DSC, PowerShell, istenen durum yapılandırması, güncelleştirme yönetimi, değişiklik izleme, envanter, runbook 'lar, Python, grafik, karma
-ms.date: 10/15/2020
+ms.date: 11/04/2020
 ms.topic: overview
-ms.openlocfilehash: 01de579d2e1ea84c0e9da4ceafbd33dbad4c6e27
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 2c92d7c73ab17bd5a7bba980e20baa181899eb4e
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460861"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93349163"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Azure Arc özellikli sunucular nedir?
 
-Azure Arc etkin sunucuları, Azure dışında barındırılan Windows ve Linux makinelerinizi, yerel Azure sanal makinelerini yönetme gibi şirket ağınızda veya diğer bulut sağlayıcınızdan yönetmenize olanak sağlar. Bir karma makine Azure 'a bağlıyken, bağlı bir makine olur ve Azure 'da kaynak olarak kabul edilir. Her bağlı makinenin bir kaynak KIMLIĞI vardır, bir aboneliğin içindeki bir kaynak grubunun parçası olarak yönetilir ve Azure Ilkesi gibi standart Azure yapılarından ve Etiketler uygulayarak faydalanır. Bir müşterinin Şirket içi altyapısını yöneten hizmet sağlayıcıları, Azure Arc ile [Azure Hithouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) ' ı kullanarak, yerel Azure kaynaklarıyla, aynı anda birden çok müşteri ortamında olduğu gibi karma makinelerini yönetebilir.
+Azure Arc etkin sunucuları, Azure dışında barındırılan Windows ve Linux makinelerinizi, kurumsal ağınızda veya yerel Azure sanal makinelerini yönetme ile tutarlı diğer bulut sağlayıcılarından yönetmenize olanak sağlar. Bir karma makine Azure 'a bağlıyken, bağlı bir makine olur ve Azure 'da kaynak olarak kabul edilir. Her bağlı makinenin bir kaynak KIMLIĞI vardır, bir kaynak grubuna dahildir ve Azure Ilkesi gibi standart Azure yapılarından ve Etiketler uygulayarak faydalanır. Bir müşterinin Şirket içi altyapısını yöneten hizmet sağlayıcıları, Azure Arc ile [Azure Hithouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) ' ı kullanarak, yerel Azure kaynaklarıyla, aynı anda birden çok müşteri ortamında olduğu gibi karma makinelerini yönetebilir.
 
 Bu deneyimi Azure dışında barındırılan karma makinelerinizle birlikte sunmak için Azure 'a bağlanmayı planladığınız her makinede Azure bağlı makine aracısının yüklü olması gerekir. Bu aracı başka bir işlevsellik sunmaz ve Azure [Log Analytics aracısının](../../azure-monitor/platform/log-analytics-agent.md)yerini almaz. Makinede çalışan işletim sistemi ve iş yüklerini önceden izlemek, Otomasyon Runbook 'larını veya Güncelleştirme Yönetimi gibi çözümleri kullanarak yönetmek ya da [Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md)gibi diğer Azure hizmetlerini kullanmak istediğinizde Windows ve Linux için Log Analytics Aracısı gerekir.
 
@@ -29,7 +29,10 @@ Makinenizi Azure Arc etkin sunucularına bağladığınızda, aşağıdaki yapı
 
 - Azure Otomasyonu [Durum Yapılandırması](../../automation/automation-dsc-overview.md) ve azure izleyici Log Analytics çalışma alanı gibi diğer Azure hizmetleriyle dağıtımı, Azure olmayan Windows veya Linux makineniz Için desteklenen [Azure VM uzantılarını](manage-vm-extensions.md) kullanarak kolaylaştırın. Bu, dağıtım sonrası yapılandırma veya özel Betik uzantısı kullanılarak yazılım yükleme işlemlerini içerir.
 
-- Windows ve Linux sunucularınız için işletim sistemi güncelleştirmelerini yönetmek üzere Azure Otomasyonu 'nda [güncelleştirme yönetimi](../../automation/update-management/update-mgmt-overview.md) kullanın.
+- Windows ve Linux sunucularınız için işletim sistemi güncelleştirmelerini yönetmek üzere Azure Otomasyonu 'nda [güncelleştirme yönetimi](../../automation/update-management/update-mgmt-overview.md) kullanın
+
+    > [!NOTE]
+    > Şu anda, seçilen yay etkin sunucusundan Güncelleştirme Yönetimi etkinleştirilmesi desteklenmez. Gereksinimleri anlamak ve sunucunuz için nasıl etkinleştireceğinizi anlamak için bkz. [Otomasyon hesabınızdan güncelleştirme yönetimi etkinleştirme](../../automation/update-management/enable-from-automation-account.md) .
 
 - Azure [Güvenlik Merkezi](../../security-center/security-center-introduction.md)'ni kullanarak tehdit algılama için Azure dışı sunucularınızı ve olası güvenlik tehditlerini proaktif bir şekilde izlemeyi dahil edin.
 
@@ -45,7 +48,7 @@ Azure Arc etkin sunucularıyla desteklenen bölgelerin kesin bir listesi için b
 
 ### <a name="agent-status"></a>Aracı durumu
 
-Bağlı makine Aracısı, her 5 dakikada bir hizmete düzenli bir sinyal iletisi gönderir. Hizmet, bu sinyal mesajlarını bir makineden almayı durduruyor, bu makine çevrimdışı olarak değerlendirilir ve portalda 15 ila 30 dakika içinde otomatik olarak, durum **bağlantısı kesilecek** şekilde değiştirilir. Bağlı makine aracısından sonraki bir sinyal iletisi alındıktan sonra, durumu otomatik olarak **bağlı**olarak değiştirilir.
+Bağlı makine Aracısı, her 5 dakikada bir hizmete düzenli bir sinyal iletisi gönderir. Hizmet, bu sinyal mesajlarını bir makineden almayı durduruyor, bu makine çevrimdışı olarak değerlendirilir ve portalda 15 ila 30 dakika içinde otomatik olarak, durum **bağlantısı kesilecek** şekilde değiştirilir. Bağlı makine aracısından sonraki bir sinyal iletisi alındıktan sonra, durumu otomatik olarak **bağlı** olarak değiştirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

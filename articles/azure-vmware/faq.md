@@ -4,12 +4,12 @@ description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtla
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 68eee2d55e3c22b502d17a91f4ba4509c292c31c
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a1ca50e1e1374b5e819c9355be1a48e2b7c3e536
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288682"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93349095"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
@@ -59,13 +59,7 @@ Hizmette yapılan güncelleştirmeler, Microsoft Azure Standart değişiklik yö
 
 Yeni Azure VMware çözümüyle, Microsoft ve VMware 'nin doğrudan bir bulut sağlayıcısı ortaklığı vardır. Yeni çözüm, Microsoft tarafından tamamen tasarlanır, oluşturulmuştur ve desteklenir, VMware tarafından onaylanmıştır. Mimari türsel olarak, çözümler, VMware teknoloji yığınının adanmış bir Azure altyapısında çalışıyor olması bakımından tutarlıdır.
 
-#### <a name="are-red-hat-solutions-supported-on-azure-vmware-solution"></a>Red hat çözümleri Azure VMware çözümünde destekleniyor mu?
 
-Microsoft ve Red hat, Azure platformunda çalışan Red Hat ekosistemlerine yönelik Birleşik bir iletişim noktası sağlayan tümleşik, birlikte bulunan bir destek ekibini paylaşır.  Red Hat Enterprise Linux ile çalışan diğer Azure platformu hizmetleri gibi Azure VMware çözümü, bulut erişimi ve tümleşik destek şemsiye kapsamında bulunur ve Azure 'da Azure VMware çözümünün üzerinde çalışmak için Red Hat Enterprise Linux desteklenir.
-
-#### <a name="is-vmware-hcx-enterprise-edition-available-and-if-so-how-much-does-it-cost"></a>VMware HCX Enterprise Edition mevcuttur ve bu durumda ne kadar maliyetlidir?
-
-VMware HCX Enterprise Edition (EE), Azure VMware çözümüyle bir *Önizleme* işlevi/hizmeti olarak sunulmaktadır. Azure VMware çözümü için VMware HCX EE önizleme aşamasındadır. Bu, ücretsiz bir işlev/hizmet ve hizmet hüküm ve koşullarına tabidir. VMware HCX EE hizmeti GA olduktan sonra, faturalandırmaya geçiş yapılacak 30 günlük bir bildirim alırsınız. Hizmeti kapatabilir veya hizmetten vazgeçebilirsiniz.
 
 #### <a name="can-azure-vmware-solution-vms-be-managed-by-vmrc"></a>Azure VMware Çözüm VM 'Leri VMRC tarafından yönetiliyor mu?
 Evet, üzerinde yüklü olduğu sistem özel bulut vCenter 'a erişebilir ve ESXi ana bilgisayar adlarını çözümlemek için ortak DNS kullanıyor olabilir.
@@ -236,6 +230,14 @@ Microsoft, Azure VMware çözümü için destek sunar. Bir [destek isteği](http
 #### <a name="what-accounts-do-i-need-to-create-an-azure-vmware-solution-private-cloud"></a>Azure VMware çözümü özel bulutu oluşturmak için hangi hesaplara ihtiyacım var?
 
 Azure aboneliğinde bir Azure hesabınızın olması gerekir.
+
+#### <a name="are-red-hat-solutions-supported-on-azure-vmware-solution"></a>Red hat çözümleri Azure VMware çözümünde destekleniyor mu?
+
+Microsoft ve Red hat, Azure platformunda çalışan Red Hat ekosistemlerine yönelik Birleşik bir iletişim noktası sağlayan tümleşik, birlikte bulunan bir destek ekibini paylaşır.  Red Hat Enterprise Linux ile çalışan diğer Azure platformu hizmetleri gibi Azure VMware çözümü, bulut erişimi ve tümleşik destek şemsiye kapsamında bulunur ve Azure 'da Azure VMware çözümünün üzerinde çalışmak için Red Hat Enterprise Linux desteklenir.
+
+#### <a name="is-vmware-hcx-enterprise-edition-available-and-if-so-how-much-does-it-cost"></a>VMware HCX Enterprise Edition mevcuttur ve bu durumda ne kadar maliyetlidir?
+
+VMware HCX Enterprise Edition (EE), Azure VMware çözümüyle bir *Önizleme* işlevi/hizmeti olarak sunulmaktadır. Azure VMware çözümü için VMware HCX EE önizleme aşamasındadır. Bu, ücretsiz bir işlev/hizmet ve hizmet hüküm ve koşullarına tabidir. VMware HCX EE hizmeti GA olduktan sonra, faturalandırmaya geçiş yapılacak 30 günlük bir bildirim alırsınız. Hizmeti kapatabilir veya hizmetten vazgeçebilirsiniz.
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Nasıl yaparım? Azure VMware çözümü için bir konak kotası artışı ister misiniz?
 

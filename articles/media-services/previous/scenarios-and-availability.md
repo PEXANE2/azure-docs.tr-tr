@@ -1,9 +1,9 @@
 ---
-title: Microsoft Azure Media Services senaryoları ve özelliklerin veri merkezleri arasında kullanılabilirliği | Microsoft Docs
-description: Bu konu başlığı altında, Microsoft Azure Media Services senaryolarına ve özelliklerle hizmetlerin veri merkezleri arasında kullanılabilirliğine genel bir bakış sağlanır.
+title: Microsoft Azure Media Services yaygın senaryolar | Microsoft Docs
+description: Bu makale Microsoft Azure Media Services senaryolarına genel bakış sunar.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,33 +11,29 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 58ecca6251e4c428ae5f834379e8b45059b0efc9
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 11/3/2020
+ms.author: inhenkel
+ms.openlocfilehash: 001c535a2b39898673f2d587ee807d43b4d5f60a
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042776"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348551"
 ---
-# <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Senaryolar ve Media Services özelliklerinin veri merkezleri arasında kullanılabilirliği
+# <a name="microsoft-azure-media-services-common-scenarios"></a>Microsoft Azure Media Services yaygın senaryolar
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. [V3 Media Services](../latest/media-services-overview.md)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
 Microsoft Azure Media Services (AMS), çeşitli istemcilere (TV, PC ve mobil cihazlar gibi) isteğe bağlı olarak veya canlı akış halinde teslim amacıyla video ve ses içeriklerini güvenli bir şekilde karşıya yüklemenizi, depolamanızı, kodlamanızı ve paketlemenizi sağlar.
 
-AMS, dünyanın dört bir yanındaki birden fazla veri merkezinde çalışmaktadır. Bu veri merkezleri, coğrafi bölgeler halinde gruplandırılarak uygulamalarınızı oluşturacağınız yeri seçme esnekliği tanır. [Bölgeler ve konumlarının listesini](https://azure.microsoft.com/regions/) gözden geçirebilirsiniz. 
-
-Bu konuda, içeriğinizi [canlı](#live_scenarios) veya isteğe bağlı olarak sunmaya yönelik yaygın senaryolar gösterilmektedir. Bu konu başlığında, medya özellikleri ve hizmetlerinin veri merkezleri arasında kullanılabilirliği hakkındaki ayrıntılar da sağlanır.
+Bu makalede, içeriğinizi canlı veya isteğe bağlı olarak sunmaya yönelik yaygın senaryolar gösterilmektedir.
 
 ## <a name="overview"></a>Genel Bakış
 
 ### <a name="prerequisites"></a>Ön koşullar
-
-Azure Media Services’i kullanmaya başlamak için aşağıdakilerin bulunması gerekir:
 
 * Azure hesabı. Bir hesabınız yoksa, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com).
 * Bir Azure Media Services hesabı. Daha fazla bilgi için bkz. [Hesap Oluşturma](media-services-portal-create-account.md).
@@ -61,61 +57,46 @@ Modelin tamamını [buradan](https://media.windows.net/API/$metadata?api-version
 
 1. Yüksek kaliteli bir medya dosyasını bir varlığa yükleyin.
 
-    İçeriğinizi yükleme sırasında ve depolama alanında beklerken korumak için depolama şifrelemesi seçeneğini uygulamanız önerilir.
-2. Uyarlamalı bit hızlı bir MP4 dosyaları grubuna kodlayın.
+    Karşıya yükleme sırasında içeriğinizi korumak ve depolama alanına geri dönmek için depolama şifreleme seçeneğini varlığınıza uygulama
 
-    İçeriğinizi beklerken korumak için çıktı varlığına depolama şifrelemesi seçeneğini uygulamanız önerilir.
-3. Varlık teslim ilkesini (dinamik paketleme tarafından kullanılır) yapılandırın.
+1. Uyarlamalı bit hızlı bir MP4 dosyaları grubuna kodlayın.
 
-    Varlığınıza depolama şifrelemesi uygulanmışsa varlık teslim ilkesini yapılandırmanız **gerekir** .
-4. Bir OnDemand bulucu oluşturarak varlığı yayımlayın.
-5. Yayımlanan içeriği akışla aktarın.
+    Rest 'de içeriğinizi korumak için depolama şifreleme seçeneğini çıkış varlığına uygulamak önerilir.
 
-Veri merkezlerinde kullanılabilirlik hakkında bilgi için [Kullanılabilirlik](#availability) bölümüne bakın.
+1. Varlık teslim ilkesini (dinamik paketleme tarafından kullanılır) yapılandırın.
+
+    Varlığınıza depolama şifrelemesi uygulanmışsa varlık teslim ilkesini yapılandırmanız **gerekir**.
+1. Bir OnDemand bulucu oluşturarak varlığı yayımlayın.
+1. Yayımlanan içeriği akışla aktarın.
 
 ## <a name="protect-content-in-storage-deliver-dynamically-encrypted-streaming-media"></a>Depolama alanında içeriği koruma, dinamik olarak şifrelenmiş akan medya teslim etme
 
 ![PlayReady ile koruma](./media/media-services-content-protection-overview/media-services-content-protection-with-multi-drm.png)
 
 1. Yüksek kaliteli bir medya dosyasını bir varlığa yükleyin. Varlığa depolama şifrelemesi seçeneğini uygulayın.
-2. Uyarlamalı bit hızlı bir MP4 dosyaları grubuna kodlayın. Çıktı varlığına depolama şifrelemesi seçeneğini uygulayın.
-3. Kayıttan yürütme sırasında dinamik olarak şifrelenmesini istediğiniz varlık için şifreleme içerik anahtarı oluşturun.
-4. İçerik anahtarı yetkilendirme ilkesini yapılandırın.
-5. Varlık teslim ilkesini (dinamik paketleme ve dinamik şifreleme tarafından kullanılır) yapılandırın.
-6. Bir OnDemand bulucu oluşturarak varlığı yayımlayın.
-7. Yayımlanan içeriği akışla aktarın.
-
-Veri merkezlerinde kullanılabilirlik hakkında bilgi için [Kullanılabilirlik](#availability) bölümüne bakın.
-
-## <a name="use-media-analytics-to-derive-actionable-insights-from-your-videos"></a>Medya Analizi kullanarak videolarınızdan eyleme dönüştürülebilir öngörüler türetme
-
-Medya Analizi, kuruluş ve işletmelerin video dosyalarından eyleme dönüştürülebilir öngörüler türetmesini kolaylaştıran bir grup konuşma ve görme bileşenidir. Daha fazla bilgi için bkz. [Azure Media Services Analizi’ne Genel Bakış](./legacy-components.md).
-
-1. Yüksek kaliteli bir medya dosyasını bir varlığa yükleyin.
-2. Videolarınızı, [Medya Analizi’ne genel bakış](./legacy-components.md) bölümünde açıklanan Medya Analizi hizmetlerinden biriyle işleyin.
-3. Medya Analizi medya işlemcileri MP4 veya JSON dosyaları üretir. Medya işlemcisi bir MP4 dosyası oluşturduysa dosyayı aşamalı olarak indirebilirsiniz. Medya işlemcisi bir JSON dosyası oluşturduysa dosyayı Azure blob depolamadan indirebilirsiniz.
-
-Veri merkezlerinde kullanılabilirlik hakkında bilgi için [Kullanılabilirlik](#availability) bölümüne bakın.
+1. Uyarlamalı bit hızlı bir MP4 dosyaları grubuna kodlayın. Çıktı varlığına depolama şifrelemesi seçeneğini uygulayın.
+1. Kayıttan yürütme sırasında dinamik olarak şifrelenmesini istediğiniz varlık için şifreleme içerik anahtarı oluşturun.
+1. İçerik anahtarı yetkilendirme ilkesini yapılandırın.
+1. Varlık teslim ilkesini (dinamik paketleme ve dinamik şifreleme tarafından kullanılır) yapılandırın.
+1. Bir OnDemand bulucu oluşturarak varlığı yayımlayın.
+1. Yayımlanan içeriği akışla aktarın.
 
 ## <a name="deliver-progressive-download"></a>Aşamalı indirme teslimi
 
 1. Yüksek kaliteli bir medya dosyasını bir varlığa yükleyin.
-2. Tek bir MP4 dosyasına kodlayın.
-3. Bir OnDemand veya SAS bulucu oluşturarak varlığı yayımlayın.
+1. Tek bir MP4 dosyasına kodlayın.
+1. Bir OnDemand veya SAS bulucu oluşturarak varlığı yayımlayın. SAS Bulucu kullanıyorsanız içerik, Azure blob depolama alanından indirilir. Başlangıç durumunda akış uç noktaları olması gerekmez.
+1. Aşamalı olarak içerik indirin.
 
-    SAS Bulucu kullanıyorsanız içerik, Azure blob depolama alanından indirilir. Bu durumda, başlatılmış durumda akış uç noktası gerekli değildir.
-4. Aşamalı olarak içerik indirin.
-
-## <a name="delivering-live-streaming-events"></a><a id="live_scenarios"></a>Canlı akış olayları teslimi 
+## <a name="delivering-live-streaming-events"></a>Canlı akış olayları teslimi
 
 1. Çeşitli canlı akış protokollerini (RTMP veya Kesintisiz Akış gibi) kullanarak canlı içerik alın.
-2. (isteğe bağlı) Akışınızı, bit hızı uyarlamalı akışa kodlayın.
-3. Canlı akışınızın önizlemesini görüntüleyin.
-4. İçeriği yaygın akış protokolleri (örneğin MPEG DASH, Kesintisiz, HLS) aracılığıyla doğrudan müşterilerinize veya başkalarına dağıtım için bir Content Delivery Network’e (CDN) teslim edin.
-
-    -veya-
-
-    Alınan içeriği daha sonra akışla aktarmak üzere kaydedip depolayın (İsteğe Bağlı Video).
+1. (isteğe bağlı) Akışınızı, bit hızı uyarlamalı akışa kodlayın.
+1. Canlı akışınızın önizlemesini görüntüleyin.
+1. İçeriği şu şekilde teslim edin:
+    1. Yaygın akış protokolleri (örneğin, MPEG DASH, kesintisiz, HLS) doğrudan müşterileriniz için
+    1. Daha fazla dağıtım için bir Content Delivery Network (CDN) veya
+    1. Alınan içeriği daha sonra akışa almak için kaydedin ve depolayın (Isteğe bağlı video).
 
 Canlı akış yaparken, aşağıdaki yollardan birini seçebilirsiniz:
 
@@ -129,143 +110,42 @@ Daha fazla bilgi için bkz. [Şirket İçi Kodlayıcılardan Çoklu Bit Hızlı 
 
 ### <a name="working-with-channels-that-are-enabled-to-perform-live-encoding-with-azure-media-services"></a>Azure Media Services ile gerçek zamanlı kodlama gerçekleştirmek için etkinleştirilmiş kanallar ile çalışma
 
-Aşağıdaki diyagramda, AMS platformunun bir Kanalın, Media Services ile kodlama gerçekleştirmek için etkinleştirildiği Canlı Akış iş akışında rol oynayan başlıca parçaları gösterilmektedir.
+Aşağıdaki diyagramda, bir kanalın Media Services ile canlı kodlama yapmak üzere etkinleştirildiği canlı akış iş akışında yer alan AMS platformunun önemli kısımları gösterilmektedir.
 
 ![Canlı iş akışı](./media/scenarios-and-availability/media-services-live-streaming-new.png)
 
 Daha fazla bilgi için bkz. [Azure Media Services ile Gerçek Zamanlı Kodlama Gerçekleştirmek İçin Etkinleştirilmiş Kanallar ile Çalışma](media-services-manage-live-encoder-enabled-channels.md).
 
-Veri merkezlerinde kullanılabilirlik hakkında bilgi için [Kullanılabilirlik](#availability) bölümüne bakın.
-
 ## <a name="consuming-content"></a>İçerik kullanma
 
-Azure Media Services, şunlar dahil olmak üzere çoğu platform için zengin ve dinamik istemci oynatıcı uygulamaları oluştururken ihtiyacınız olan araçları sağlar: iOS Cihazları, Android Cihazları, Windows, Windows Phone, Xbox ve Alıcı kutuları. 
+Azure Media Services, şunlar dahil olmak üzere çoğu platform için zengin ve dinamik istemci oynatıcı uygulamaları oluştururken ihtiyacınız olan araçları sağlar: iOS Cihazları, Android Cihazları, Windows, Windows Phone, Xbox ve Alıcı kutuları.
 
 ## <a name="enabling-azure-cdn"></a>Azure CDN'yi etkinleştirme
 
 Media Services, Azure CDN ile tümleştirmeyi destekler. Azure CDN'yi etkinleştirme hakkında daha fazla bilgi için bkz. [Media Services Hesabında Akış Uç Noktalarını Yönetme](media-services-portal-manage-streaming-endpoints.md).
 
-## <a name="scaling-a-media-services-account"></a><a id="scaling"></a>Media Services hesabını ölçeklendirme
+## <a name="scaling-a-media-services-account"></a>Media Services hesabını ölçeklendirme
 
 AMS müşterileri akış uç noktalarını, medya işleme ve depolamayı kendi AMS hesaplarında ölçeklendirebilir.
 
-* Media Services müşterileri **Standart** akış uç noktası veya **Premium** akış uç noktası seçebilir. **Standart** akış uç noktası çoğu akış iş yükü için uygundur. **Premium** akış uç noktaları ile aynı özellikleri taşır ve giden bant genişliğini otomatik olarak ölçeklendirir. 
+* Media Services müşterileri **Standart** akış uç noktası veya **Premium** akış uç noktası seçebilir. **Standart** akış uç noktası çoğu akış iş yükü için uygundur. **Premium** akış uç noktaları ile aynı özellikleri taşır ve giden bant genişliğini otomatik olarak ölçeklendirir.
 
     **Premium** akış uç noktaları, adanmış ve ölçeklenebilir bant genişliği kapasitesi sağlar; dolayısıyla gelişmiş iş yükleri için uygundur. **Premium** akış uç noktası olan müşteriler, varsayılan olarak bir akış birimi (SU) alır. Akış uç noktası, SU’lar eklenerek ölçeklendirilebilir. Her SU, uygulamaya ek bant genişliği kapasitesi sağlar. **Premium** akış uç noktalarını ölçeklendirme hakkında daha fazla bilgi için, [Akış uç noktalarını ölçeklendirme](media-services-portal-scale-streaming-endpoints.md) konusuna bakın.
 
-* Media Services hesabı bir Ayrılmış Birim Türüyle ilişkilendirilir ve bu da medya işleme görevlerinizin ne hızda işleneceğini belirler. Şu ayrılmış birim türleri arasından seçim yapabilirsiniz: **S1** , **S2** veya **S3** . Örneğin, aynı kodlama işi **S2** ayrılmış birim türünü kullandığınızda **S1** türüne göre daha hızlı çalışır.
+* Media Services hesabı bir Ayrılmış Birim Türüyle ilişkilendirilir ve bu da medya işleme görevlerinizin ne hızda işleneceğini belirler. Şu ayrılmış birim türleri arasından seçim yapabilirsiniz: **S1** , **S2** veya **S3**. Örneğin, aynı kodlama işi **S2** ayrılmış birim türünü kullandığınızda **S1** türüne göre daha hızlı çalışır.
 
     Ayrılmış birim türünü belirtmenin yanı sıra, hesabınızı **ayrılmış birimler** (ru) ile sağlamayı belirtebilirsiniz. Sağlanan RU sayısı, verili bir hesapta eşzamanlı olarak işlenebilecek medya görevlerinin sayısını belirler.
 
-    >[!NOTE]
-    >RU, tüm medya işlemesini paralel hale getirmek için çalışır ve Azure Media Indexer’ın kullanıldığı dizin oluşturma işleri de buna dahildir. Bununla birlikte kodlamadan farklı olarak, dizin oluşturma işleri daha hızlı ayrılmış birimlerde daha hızlı işlenmez.
+    > [!NOTE]
+    > RU, tüm medya işlemesini paralel hale getirmek için çalışır ve Azure Media Indexer’ın kullanıldığı dizin oluşturma işleri de buna dahildir. Bununla birlikte kodlamadan farklı olarak, dizin oluşturma işleri daha hızlı ayrılmış birimlerde daha hızlı işlenmez.
 
     Daha fazla bilgi için bkz. [medya Işlemeyi ölçeklendirme](media-services-portal-scale-media-processing.md).
-* Media Services hesabınızı, depolama hesapları ekleyerek de ölçeklendirebilirsiniz. Her depolama hesabı 500 TB ile sınırlıdır. Depolama alanınızı varsayılan sınırlamaların ötesine genişletmek için, tek bir Media Services hesabına birden çok depolama hesabı eklemeyi seçebilirsiniz. Daha fazla bilgi için bkz. [Depolama hesaplarını yönetme](./media-services-managing-multiple-storage-accounts.md).
 
-## <a name="availability-of-media-services-features-across-datacenters"></a><a id="availability"></a> Media Services özelliklerinin veri merkezleri arasında kullanılabilirliği
-
-Bu bölümde, Media Services özelliklerinin veri merkezleri arasında kullanılabilirliği hakkındaki ayrıntılar sağlanır.
-
-### <a name="ams-accounts"></a>AMS hesapları
-
-#### <a name="availability"></a>Kullanılabilirlik
-
-Belirli bir veri merkezinde Media Services kullanılabilir olup olmadığını öğrenmek için [bölgeye göre Azure ürünlerini](https://azure.microsoft.com/global-infrastructure/services/?products=media-services&regions=all) kullanın.
-
-### <a name="streaming-endpoints"></a>Akış uç noktaları 
-
-Media Services müşterileri **Standart** akış uç noktası veya **Premium** akış uç noktası seçebilir. Daha fazla bilgi için [ölçeklendirme](#scaling) bölümüne bakın.
-
-#### <a name="availability"></a>Kullanılabilirlik
-
-|Name|Durum|Veri merkezleri
-|---|---|---|
-|Standart|GA|Tümü|
-|Premium|GA|Tümü|
-
-### <a name="live-encoding"></a>Live encoding
-
-#### <a name="availability"></a>Kullanılabilirlik
-
-Şu bölgeler hariç tüm veri merkezlerinde kullanılabilir: Almanya, Güney Brezilya, Hindistan Batı, Hindistan Güney ve Hindistan Orta. 
-
-### <a name="encoding-media-processors"></a>Kodlama medya işleyicileri
-
-AMS, isteğe bağlı iki kodlayıcı sunar: **Media Encoder Standard** ve **Media Encoder Premium İş Akışı** . Daha fazla bilgi için bkz. [Azure isteğe bağlı medya kodlayıcılarına genel bakış ve karşılaştırma](media-services-encode-asset.md). 
-
-#### <a name="availability"></a>Kullanılabilirlik
-
-|Medya işlemci adı|Durum|Veri merkezleri
-|---|---|---|
-|Media Encoder Standard|GA|Tümü|
-|Media Encoder Premium İş Akışı|GA|Çin dışında tümü|
-
-### <a name="analytics-media-processors"></a>Analiz medya işlemcileri
-
-Medya Analizi, kuruluş ve işletmelerin video dosyalarından eyleme dönüştürülebilir öngörüler türetmesini kolaylaştıran bir grup konuşma ve görme bileşenidir. Daha fazla bilgi için bkz. [Azure Media Services Analizi’ne Genel Bakış](./legacy-components.md).
-
-> [!NOTE]
-> Bazı Analytics medya işlemcileri kullanımdan kaldırılacak. Kullanımdan kaldırma tarihleri için, [eski bileşenler](legacy-components.md) konusuna bakın.
-
-#### <a name="availability"></a>Kullanılabilirlik
-
-|Medya işlemci adı|Durum|Veri merkezleri
-|---|---|---|
-|Azure Media Face Detector|Önizleme|Tümü|
-|Azure Media Indexer|GA|Tümü|
-|Azure Media Motion Detector|Önizleme|Tümü|
-|Azure Media OCR|Önizleme|Tümü|
-|Azure Media Redactor|GA|Tümü|
-|Azure Media Video Thumbnails|Önizleme|Tümü|
-
-### <a name="protection"></a>Koruma
-
-Microsoft Azure Media Services, medyanızı bilgisayarınızdan ayrıldığı andan başlayıp depolama, işleme ve teslim aşamaları boyunca güvenlik altına almanızı sağlar. Daha fazla bilgi için bkz. [AMS içeriğini koruma](media-services-content-protection-overview.md).
-
-#### <a name="availability"></a>Kullanılabilirlik
-
-|Şifreleme|Durum|Veri merkezleri|
-|---|---|---| 
-|Depolama|GA|Tümü|
-|AES-128 anahtarları|GA|Tümü|
-|Fairplay|GA|Tümü|
-|PlayReady|GA|Tümü|
-|Widevine|GA|Almanya, Federal Devlet ve Çin dışında tümü.
-
-### <a name="reserved-units-rus"></a>Ayrılmış birimler (RU)
-
-Sağlanan ayrılmış birim sayısı, verili bir hesapta eşzamanlı olarak işlenebilecek medya görevlerinin sayısını belirler. 
-
-Daha fazla bilgi için [ölçeklendirme](#scaling) bölümüne bakın.
-
-#### <a name="availability"></a>Kullanılabilirlik
-
-Tüm veri merkezlerinde kullanılabilir.
-
-### <a name="reserved-unit-ru-type"></a>Ayrılmış birim (RU) türü
-
-Media Services hesabı bir Ayrılmış birim türüyle ilişkilendirilir ve bu da medya işleme görevlerinizin ne hızda işleneceğini belirler. Şu ayrılmış birim türlerinden birini seçebilirsiniz: S1, S2 ve S3.
-
-Daha fazla bilgi için [ölçeklendirme](#scaling) bölümüne bakın.
-
-#### <a name="availability"></a>Kullanılabilirlik
-
-|RU türü adı|Durum|Veri merkezleri
-|---|---|---|
-|S1|GA|Tümü|
-|S2|GA|Güney Brezilya ve Hindistan Batı dışında tümü|
-|S3|GA|Hindistan Batı dışında tümü|
-
-## <a name="additional-notes"></a>Ek notlar
-
-* Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
+* Media Services hesabınızı, depolama hesapları ekleyerek de ölçeklendirebilirsiniz. Her depolama hesabı 500 TB ile sınırlıdır. Daha fazla bilgi için bkz. [Depolama hesaplarını yönetme](./media-services-managing-multiple-storage-accounts.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Media Services öğrenme yollarını gözden geçirin.
-
-[!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
+[Media Services v3’e geçirme](../latest/media-services-overview.md)
 
 ## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 05/12/2020
-ms.openlocfilehash: 3bea474ae61ba4a0213d880934d9536d6ad71796
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 1b8b95ea318dd7a82d9512908838209bc5cc2995
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131641"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93349112"
 ---
 # <a name="azure-cache-for-redis"></a>Redis için Azure Önbelleği
 Redsıs için Azure önbelleği, [redin](https://redis.io/) yazılımını temel alan bellek içi veri deposu sağlar. Redsıs, arka uç veri depolarında yoğun bir şekilde kullanılan bir uygulamanın performansını ve ölçeklenebilirliğini geliştirir. Sık erişilen verileri hızlı bir şekilde yazılabilen ve hızla okunabilen sunucu belleğinde tutarak, büyük hacimde uygulama isteğini işleyebilir. Redin, modern uygulamalara kritik düşük gecikmeli ve yüksek performanslı veri depolama çözümü getirir.
@@ -35,9 +35,6 @@ Redis için Azure önbelleği, genel uygulama mimarisi desenlerini destekleyerek
 
 Redsıs için Azure Cache, OSS redin sürüm 4. x ve önizleme olarak 6,0 ' i destekler. En son sürümü size getirmek için redin 5,0 ' i atlama kararı yaptık. Daha önce, Reda için Azure önbelleği yalnızca tek bir Redsıs sürümü ile korunur. Daha yeni bir ana sürüm yükseltmesi ve ileride en az bir eski kararlı sürüm sağlayacak. Hangi sürümün uygulamanız için en uygun olanı [seçebileceğinizi seçebilirsiniz](cache-how-to-version.md) .
 
-> [!NOTE]
-> Redsıs 6,0 şu anda önizleme aşamasındadır. ilgilendiğiniz durumlarda [bizimle iletişim kurun](mailto:azurecache@microsoft.com) . Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
 
 ## <a name="service-tiers"></a>Hizmet katmanları
 Redo için Azure Cache aşağıdaki katmanlarda kullanılabilir:
@@ -93,7 +90,7 @@ Kurumsal katmanlar redin Labs 'in ticari bir sürümü olan redsıs Enterprise '
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Redsıs örneği için Azure önbelleği oluşturma](quickstart-create-redis.md)
-* [Kurumsal katman önbelleği oluşturma](quickstart-create-redis-enterprise.md)
+* [Kurumsal katmanda önbellek oluşturma](quickstart-create-redis-enterprise.md)
 * [ASP.NET Web uygulamasında Redsıs için Azure önbelleğini kullanma](cache-web-app-howto.md)
 * [.NET Core 'da Redsıs için Azure önbelleğini kullanma](cache-dotnet-core-quickstart.md)
 * [Redsıs için Azure önbelleğini kullanın .NET Framework](cache-dotnet-how-to-use-azure-redis-cache.md)

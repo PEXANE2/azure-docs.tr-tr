@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: de504cc4209aea19925c4c3e2385c7feabceedeb
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2ad975840a2eab0ca51dd0a219e5d86c1bd1835c
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781626"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348874"
 ---
 # <a name="azure-queue-storage-reference"></a>Azure Kuyruk depolama başvurusu
 
@@ -89,7 +89,7 @@ Aşağıdaki tabloda, Azure kuyruk depolama REST API 'Leri için başvuru ve ör
 
 ### <a name="other-rest-reference"></a>Diğer REST başvurusu
 
-- [Azure Storage içeri aktarma-dışarı aktarma REST API ](/rest/api/storageimportexport/) , blob depolamadan veri aktarmak için içeri/dışarı aktarma işlerini yönetmenize yardımcı olur.
+- [Azure Storage içeri aktarma-dışarı aktarma REST API](/rest/api/storageimportexport/) , blob depolamadan veri aktarmak için içeri/dışarı aktarma işlerini yönetmenize yardımcı olur.
 
 ## <a name="other-languages-and-platforms"></a>Diğer diller ve platformlar
 

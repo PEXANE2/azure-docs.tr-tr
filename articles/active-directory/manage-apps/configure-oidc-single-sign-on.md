@@ -12,12 +12,12 @@ ms.date: 10/19/2020
 ms.author: kenwith
 ms.reviewer: arajpathak7
 ms.custom: contperfq2
-ms.openlocfilehash: e819073c3bc723a66f8beb2f9b2a094a07233ca9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 5fc0156b9b832f44fd38292ef2b9a25e39401610
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427691"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348670"
 ---
 # <a name="understand-oidc-based-single-sign-on"></a>OıDC tabanlı çoklu oturum açmayı anlama
 Uygulama yönetiminde [hızlı başlangıç serisinde](view-applications-portal.md) , Azure AD 'yi bir uygulama Için kimlik sağlayıcısı (IDP) olarak kullanmayı öğrendiniz. Bu makale, OpenID Connect standardını kullanan uygulamalar hakkında çoklu oturum açma uygulamak için daha fazla ayrıntıya gider. 
@@ -33,7 +33,7 @@ Azure Active Directory kiracınıza uygulama ekleme işlemi, uygulamanın uygula
 
 Azure Active Directory bir OıDC tabanlı uygulama ekleme
 
-> [!VIDEO https://www.youtube.com/embed/4kv-upsZCI0]
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4HoNI]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

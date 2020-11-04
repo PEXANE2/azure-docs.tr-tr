@@ -2,15 +2,15 @@
 title: Otomasyon hesabından Azure Otomasyonu Güncelleştirme Yönetimi etkinleştirme
 description: Bu makalede bir Otomasyon hesabından Güncelleştirme Yönetimi nasıl etkinleştirileceği açıklanır.
 services: automation
-ms.date: 10/26/2020
+ms.date: 11/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 9630b29def0c450ef907219895d1488d72fd78d1
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 6f14516f36975d84256f9bb1bd3b4949dbf80448
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669906"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348840"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Otomasyon hesabından Güncelleştirme Yönetimi’ni etkinleştirme
 
@@ -19,15 +19,15 @@ Bu makalede, [Azure Arc etkin sunucularına](../../azure-arc/servers/overview.md
 > [!NOTE]
 > Güncelleştirme Yönetimi etkinleştirilirken, bir Log Analytics çalışma alanını ve bir Otomasyon hesabını bağlamak için yalnızca belirli bölgeler desteklenir. Desteklenen eşleme çiftlerinin bir listesi için bkz. [Otomasyon hesabı ve Log Analytics çalışma alanı Için bölge eşleme](../how-to/region-mappings.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Henüz bir hesabınız yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
 * Makineleri yönetmek için [Otomasyon hesabı](../index.yml).
-* Bir [Azure sanal makinesi](../../virtual-machines/windows/quick-create-portal.md)veya Arc etkin sunucularla (Önizleme) kayıtlı VM veya sunucu. Azure dışı VM 'Ler veya sunucular, Windows veya Linux için [Log Analytics aracısına](../../azure-monitor/platform/log-analytics-agent.md) sahip olmalıdır ve otomasyon hesabına bağlı olan çalışma alanına rapor verebilir güncelleştirme yönetimi ' de etkinleştirilir. Windows veya Linux için Log Analytics aracısını, önce makinenizi [Azure Arc etkin sunucularına](../../azure-arc/servers/overview.md)bağlayarak ve ardından Azure ilkesi 'ni kullanarak, [ *Linux* veya *Windows* Azure Arc makineler yerleşik ilkesine dağıtım Log Analytics aracısını](../../governance/policy/samples/built-in-policies.md#monitoring) atamak için önerilir. Makineleri VM'ler için Azure İzleyici de izlemeyi planlıyorsanız, bunun yerine [Enable VM'ler için Azure izleyici](../../governance/policy/samples/built-in-initiatives.md#monitoring) girişimi kullanın.
+* Bir [Azure sanal makinesi](../../virtual-machines/windows/quick-create-portal.md)veya Arc etkin SUNUCULARLA kayıtlı VM veya sunucu. Azure dışı VM 'Ler veya sunucular, Windows veya Linux için [Log Analytics aracısına](../../azure-monitor/platform/log-analytics-agent.md) sahip olmalıdır ve otomasyon hesabına bağlı olan çalışma alanına rapor verebilir güncelleştirme yönetimi ' de etkinleştirilir. Windows veya Linux için Log Analytics aracısını, önce makinenizi [Azure Arc etkin sunucularına](../../azure-arc/servers/overview.md)bağlayarak ve ardından Azure ilkesi 'ni kullanarak, [ *Linux* veya *Windows* Azure Arc makineler yerleşik ilkesine dağıtım Log Analytics aracısını](../../governance/policy/samples/built-in-policies.md#monitoring) atamak için önerilir. Alternatif olarak, makineleri VM'ler için Azure İzleyici ile izlemeyi planlıyorsanız, bunun yerine [Enable VM'ler için Azure izleyici](../../governance/policy/samples/built-in-initiatives.md#monitoring) girişimi kullanın.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="enable-update-management"></a>Güncelleştirme Yönetimi’ni etkinleştirme
 

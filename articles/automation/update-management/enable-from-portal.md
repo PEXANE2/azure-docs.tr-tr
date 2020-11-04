@@ -5,16 +5,16 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 681c5e169acc30cc6708b56b5ba180d2729919e5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 73813ffbb6ac1839a48fc455dec5f6ad26ed0164
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222996"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348798"
 ---
 # <a name="enable-update-management-from-the-azure-portal"></a>Azure portalından Güncelleştirme Yönetimi’ni etkinleştirme
 
-Bu makalede, Azure portal göz atarak VM 'Ler için [güncelleştirme yönetimi](overview.md) özelliğini nasıl etkinleştirebileceğinizi açıklanmaktadır. Azure VM 'lerini ölçekli olarak etkinleştirmek için, Güncelleştirme Yönetimi kullanarak var olan bir VM 'yi etkinleştirmeniz gerekir.
+Bu makalede, Azure portal göz atarak VM 'Ler için [güncelleştirme yönetimi](overview.md) özelliğini nasıl etkinleştirebileceğinizi açıklanmaktadır. Azure VM 'lerini ölçekli olarak etkinleştirmek için, Güncelleştirme Yönetimi kullanarak mevcut bir Azure VM 'yi etkinleştirmeniz gerekir.
 
 VM 'lerinizi yönetmek için kullanabileceğiniz kaynak gruplarının sayısı [Kaynak Yöneticisi dağıtım limitleriyle](../../azure-resource-manager/templates/cross-scope-deployment.md)sınırlıdır. Güncelleştirme dağıtımlarıyla karıştırılmamalıdır Kaynak Yöneticisi dağıtımlar, dağıtım başına beş kaynak grubu ile sınırlıdır. Log Analytics çalışma alanını, Otomasyon hesabını ve ilgili kaynakları yapılandırmak için bu kaynak gruplarından ikisi ayrılmıştır. Bu, Güncelleştirme Yönetimi tarafından yönetim için seçilecek üç kaynak grubu ile birlikte kalır. Bu sınır, bir Otomasyon özelliği tarafından yönetilebilen kaynak gruplarının sayısını değil, yalnızca eşzamanlı kurulum için geçerlidir.
 
@@ -33,9 +33,9 @@ Adresinden Azure 'da oturum açın https://portal.azure.com .
 
 ## <a name="enable-update-management"></a>Güncelleştirme Yönetimi’ni etkinleştirme
 
-1. Azure portal, **sanal makineler**' e gidin.
+1. Azure portal, **sanal makineler** ' e gidin.
 
-2. Güncelleştirme Yönetimi eklenecek VM 'Leri seçmek için onay kutularını kullanın. Tek seferde en fazla üç farklı kaynak grubu için makine ekleyebilirsiniz. Otomasyon hesabınızın konumu ne olduğuna bakılmaksızın, Azure VM 'Leri herhangi bir bölgede bulunabilir.
+2. **Sanal makineler** sayfasında, güncelleştirme yönetimi eklenecek VM 'leri seçmek için onay kutularını kullanın. Tek seferde en fazla üç farklı kaynak grubu için makine ekleyebilirsiniz. Otomasyon hesabınızın konumu ne olduğuna bakılmaksızın, Azure VM 'Leri herhangi bir bölgede bulunabilir.
 
     ![VM 'lerin listesi](media/enable-from-portal/vmlist.png)
 
@@ -48,7 +48,7 @@ Adresinden Azure 'da oturum açın https://portal.azure.com .
 
 4. Sanal makinelerin listesi, yalnızca aynı abonelikte ve konumda bulunan sanal makineleri gösterecek şekilde filtrelenmiştir. Sanal makinelerinizde üçten fazla kaynak grubu varsa, ilk üç kaynak grubu seçilir.
 
-5. Mevcut bir Log Analytics çalışma alanı ve Otomasyon hesabı varsayılan olarak seçilidir. Farklı bir Log Analytics çalışma alanı ve Otomasyon hesabı kullanmak istiyorsanız, özel yapılandırma sayfasından seçmek için **özel** ' i seçin. Bir Log Analytics çalışma alanı seçtiğinizde, bir Otomasyon hesabıyla bağlanıp bağlanmadığını belirlemek için bir onay yapılır. Bağlı bir Otomasyon hesabı bulunursa, aşağıdaki ekranı görürsünüz. İşiniz bittiğinde **Tamam**’ı seçin.
+5. Mevcut bir Log Analytics çalışma alanı ve Otomasyon hesabı varsayılan olarak seçilidir. Farklı bir Log Analytics çalışma alanı ve Otomasyon hesabı kullanmak istiyorsanız, özel yapılandırma sayfasından seçmek için **özel** ' i seçin. Bir Log Analytics çalışma alanı seçtiğinizde, bir Otomasyon hesabıyla bağlanıp bağlanmadığını belirlemek için bir onay yapılır. Bağlı bir Otomasyon hesabı bulunursa, aşağıdaki ekranı görürsünüz. İşiniz bittiğinde **Tamam** ’ı seçin.
 
     [![Çalışma alanını ve hesabı seçin](./media/enable-from-portal/select-workspace-and-account.png)](./media/enable-from-portal/select-workspace-and-account-expanded.png#lightbox)
 

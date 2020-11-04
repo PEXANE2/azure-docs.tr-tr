@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bb53181355e292a885e8ffc2ac7c8a3aa48adaae
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: b59c7d2af33efd82f27af9e13fc9c1f36ca788ee
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787474"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348602"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>.NET kullanarak Azure Kuyruk Depolamaya başlayın
 
@@ -30,7 +30,7 @@ Bu öğreti, Azure kuyruk depolama kullanarak bazı genel senaryolar için .NET 
 
 **Tahmini tamamlanma süresi:** 45 dakika
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 - Bir [Azure depolama hesabı](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
@@ -39,7 +39,7 @@ Bu öğreti, Azure kuyruk depolama kullanarak bazı genel senaryolar için .NET 
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı kurma
+## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı ayarlama
 
 Ardından, geliştirme ortamınızı Visual Studio’da ayarlayın; böylece bu kılavuzdaki kod örneklerini denemeye hazır olursunuz.
 
@@ -69,7 +69,7 @@ Bu öğreticiyi tamamlayabilmeniz için projenizde aşağıdaki dört pakete ba�
 - [.Net Için Azure depolama kuyruğu kitaplığı](https://www.nuget.org/packages/Azure.Storage.Queues/): Bu paket, bir istemci tarafından erişilebilecek iletileri depolamak Için azure depolama kuyruk hizmeti birlikte çalışmaya izin verebilir.
 - [.NET için Configuration Manager kitaplığı](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/): Bu paket, istemci uygulamaları için yapılandırma dosyalarına erişim sağlar.
 
-Bu paketleri edinmek için NuGet kullanabilirsiniz. Şu adımları uygulayın:
+Bu paketleri edinmek için NuGet kullanabilirsiniz. Şu adımları izleyin:
 
 1. **Çözüm Gezgini** ' de projenize sağ tıklayın ve **NuGet Paketlerini Yönet** ' i seçin.
 1. **Gözatmayı** Seç
@@ -84,7 +84,7 @@ Bu öğreticiyi tamamlayabilmeniz için projenizde aşağıdaki üç pakete baş
 - [.NET için Microsoft Azure depolama kuyruk kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): Bu istemci kitaplığı, bir istemci tarafından erişilebilecek iletileri depolamak için Microsoft Azure depolama kuyruk hizmeti birlikte çalışmaya izin verebilir.
 - [.NET için Microsoft Azure Configuration Manager Kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): Bu paket, uygulamanızın nerede çalıştığına bakmaksızın yapılandırma dosyasından bağlantı dizesini ayrıştırmak için bir sınıf sağlar.
 
-Bu paketleri edinmek için NuGet kullanabilirsiniz. Şu adımları uygulayın:
+Bu paketleri edinmek için NuGet kullanabilirsiniz. Şu adımları izleyin:
 
 1. **Çözüm Gezgini** ' de projenize sağ tıklayın ve **NuGet Paketlerini Yönet** ' i seçin.
 1. **Gözatmayı** Seç
