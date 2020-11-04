@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 141cc47adb398cbd5730fbe33bcd90fece809ed3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2597aa1f0589fea75af0a3ac41244e3718d5eb3e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91543495"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307954"
 ---
 # <a name="quickstart-create-a-new-azure-machine-learning-linked-service-in-synapse"></a>Hızlı başlangıç: SYNAPSE 'de yeni Azure Machine Learning bağlantılı hizmet oluşturma
 
@@ -42,15 +42,15 @@ Bu hızlı başlangıçta, bir Synapse Analytics çalışma alanını Azure Mach
 Bu adım, yeni bir hizmet sorumlusu oluşturacak. Mevcut bir hizmet sorumlusunu kullanmak istiyorsanız, bu adımı atlayabilirsiniz.
 1. Azure portalını açın. 
 
-1. **Azure Active Directory**  ->  **uygulama kayıtları**gidin.
+1. **Azure Active Directory**  ->  **uygulama kayıtları** gidin.
 
-1. **Yeni kayıt**’a tıklayın. Ardından, yeni bir uygulama kaydetmek için Kullanıcı arabirimindeki yönergeleri izleyin.
+1. **Yeni kayıt** ’a tıklayın. Ardından, yeni bir uygulama kaydetmek için Kullanıcı arabirimindeki yönergeleri izleyin.
 
-1. Uygulama kaydedildikten sonra. Uygulama için bir gizli dizi oluşturun. Gizli dizi **Your application**  ->  **& uygulama sertifikanıza**gidin. Gizli dizi oluşturmak için **istemci parolası Ekle** ' ye tıklayın. Gizli anahtarı güvende tutun ve daha sonra kullanılacaktır.
+1. Uygulama kaydedildikten sonra. Uygulama için bir gizli dizi oluşturun. Gizli dizi **Your application**  ->  **& uygulama sertifikanıza** gidin. Gizli dizi oluşturmak için **istemci parolası Ekle** ' ye tıklayın. Gizli anahtarı güvende tutun ve daha sonra kullanılacaktır.
 
    ![Gizli dizi oluştur](media/quickstart-integrate-azure-machine-learning/quickstart-integrate-azure-machine-learning-createsp-00a.png)
 
-1. Uygulama için bir hizmet sorumlusu oluşturun. **Uygulamanıza**  ->  **genel bakış** ' a gidip **hizmet sorumlusu oluştur**' a tıklayın. Bazı durumlarda, bu hizmet sorumlusu otomatik olarak oluşturulur.
+1. Uygulama için bir hizmet sorumlusu oluşturun. **Uygulamanıza**  ->  **genel bakış** ' a gidip **hizmet sorumlusu oluştur** ' a tıklayın. Bazı durumlarda, bu hizmet sorumlusu otomatik olarak oluşturulur.
 
    ![Hizmet sorumlusu oluşturma](media/quickstart-integrate-azure-machine-learning/quickstart-integrate-azure-machine-learning-createsp-00b.png)
 
@@ -60,7 +60,7 @@ Bu adım, yeni bir hizmet sorumlusu oluşturacak. Mevcut bir hizmet sorumlusunu 
 
 ## <a name="create-a-linked-service"></a>Bağlı hizmet oluşturma
 
-1. Yeni Azure Machine Learning bağlı hizmetini oluşturmak istediğiniz SYNAPSE çalışma alanında **Yönetim**  ->  **bağlantılı hizmeti**' ne gidin, "Azure Machine Learning" türünde yeni bir bağlı hizmet oluşturun.
+1. Yeni Azure Machine Learning bağlı hizmetini oluşturmak istediğiniz SYNAPSE çalışma alanında **Yönetim**  ->  **bağlantılı hizmeti** ' ne gidin, "Azure Machine Learning" türünde yeni bir bağlı hizmet oluşturun.
 
    ![Bağlı hizmet oluştur](media/quickstart-integrate-azure-machine-learning/quickstart-integrate-azure-machine-learning-create-linked-service-00a.png)
 
@@ -73,11 +73,11 @@ Bu adım, yeni bir hizmet sorumlusu oluşturacak. Mevcut bir hizmet sorumlusunu 
 
    - Hizmet sorumlusu anahtarı: önceki bölümde oluşturulan gizli dizi.
 
-3. Yapılandırmanın doğru olup olmadığını doğrulamak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı testi geçerse **Kaydet**' e tıklayın.
+3. Yapılandırmanın doğru olup olmadığını doğrulamak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı testi geçerse **Kaydet** ' e tıklayın.
 
    Bağlantı testi başarısız olduysa, hizmet sorumlusu KIMLIĞI ve parolasının doğru olduğundan emin olun ve yeniden deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Öğretici: Machine Learning model Puanlama Sihirbazı-SQL havuzu](tutorial-sql-pool-model-scoring-wizard.md)
+- [Öğretici: Machine Learning model Puanlama Sihirbazı-adanmış SQL havuzu](tutorial-sql-pool-model-scoring-wizard.md)
 - [Azure SYNAPSE Analytics 'teki Machine Learning özellikleri (çalışma alanları Önizleme)](what-is-machine-learning.md)

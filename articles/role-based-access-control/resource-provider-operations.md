@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 11/03/2020
 ms.custom: generated
-ms.openlocfilehash: 3f192493dfd6bfc2fb3d5802b1dd94cd4ca3a9a9
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: e337cef9121dc5992f87b9996cfd01d16d9cc188
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285216"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309369"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure Kaynak sağlayıcısı işlemleri
 
@@ -4100,7 +4100,7 @@ Azure hizmeti: [Azure SQL veritabanı](../azure-sql/database/index.yml), [Azure 
 > | Microsoft. SQL/Servers/veritabanları/dataMaskingPolicies/Rules/Delete | Belirli bir veritabanı için veri maskeleme ilkesi kuralını Sil |
 > | Microsoft. SQL/Servers/veritabanları/dataWarehouseQueries/Read | Seçili sorgu KIMLIĞI için veri ambarı dağıtım sorgu bilgilerini döndürür |
 > | Microsoft. SQL/Servers/veritabanları/dataWarehouseQueries/dataWarehouseQuerySteps/Read | Seçilen adım KIMLIĞI için veri ambarı sorgusunun dağıtılmış sorgu adımı bilgilerini döndürür |
-> | Microsoft. SQL/Servers/veritabanları/dataWarehouseUserActivities/okundu | Çalışan ve askıya alınmış sorguları içeren bir SQL veri ambarı örneğinin Kullanıcı etkinliklerini alır |
+> | Microsoft. SQL/Servers/veritabanları/dataWarehouseUserActivities/okundu | Çalışan ve askıya alınmış sorguları içeren bir Azure SYNAPSE Analytics adanmış SQL havuzunun Kullanıcı etkinliklerini alır |
 > | Microsoft. SQL/Servers/veritabanları/extendedAuditingSettings/Read | Belirli bir veritabanında yapılandırılan genişletilmiş blob denetim ilkesinin ayrıntılarını alma |
 > | Microsoft. SQL/Servers/veritabanları/extendedAuditingSettings/Write | Belirli bir veritabanı için genişletilmiş blob denetim ilkesini değiştirme |
 > | Microsoft. SQL/Servers/veritabanları/uzantılar/okuma | Veritabanı için uzantıların bir koleksiyonunu alır. |

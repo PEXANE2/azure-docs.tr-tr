@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 15c3f3994b9d519a4144fa2c2e1418e92cdbd6ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 087679c49c3cc025268e6f895757ae5f5c47c917
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87012415"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309123"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Azure veri bilimi sanal makinelerinde makine öğrenimi ve veri bilimi araçları
 Azure veri bilimi sanal makineleri (DSVMs), Python, R ve Julia gibi popüler dillerde makine öğrenimi için zengin bir araç ve kitaplık kümesine sahiptir.
@@ -24,7 +24,7 @@ DSVMs üzerindeki makine öğrenimi araçlarından ve kitaplıklarından bazıla
 
 ## <a name="azure-machine-learning-sdk-for-python"></a>Python için Azure Machine Learning SDK'sı
 
-[Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml)'nın tam başvurusuna bakın.
+[Python için Azure MACHINE LEARNING SDK](../overview-what-is-azure-ml.md)'nın tam başvurusuna bakın.
 
 | Kategori | Değer |
 | ------------- | ------------- |
@@ -89,7 +89,7 @@ Dsvms üzerinde, `scikit-learn` dsvms Için Anaconda Python dağıtımının par
 | Nedir o?   |  Veri araştırma görevleri için makine öğrenimi algoritmalarının koleksiyonu. Algoritmalar doğrudan bir veri kümesine uygulanabilir ya da kendi Java kodınızdan çağrılabilir. WEKA, veri ön işleme, sınıflandırma, gerileme, kümeleme, ilişkilendirme kuralları ve görselleştirme için araçlar içerir. |
 | Desteklenen sürümler     | Windows, Linux     |
 | Tipik kullanımlar      | Genel makine öğrenme aracı     |
-| Nasıl kullanılır veya çalıştırılır      | Windows 'ta, **Başlat** menüsünde WEKA araması yapın. Linux 'ta X2Go ile oturum açın ve ardından **uygulamalar**  >  **geliştirme**  >  **WEKA**' ya gidin. |
+| Nasıl kullanılır veya çalıştırılır      | Windows 'ta, **Başlat** menüsünde WEKA araması yapın. Linux 'ta X2Go ile oturum açın ve ardından **uygulamalar**  >  **geliştirme**  >  **WEKA** ' ya gidin. |
 | Örneklere bağlantı      | [WEKA örnekleri](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | İlgili araçlar      |LightGBM, Rattle, XGBoost   |
 
@@ -113,5 +113,3 @@ Dsvms üzerinde, `scikit-learn` dsvms Için Anaconda Python dağıtımının par
 | Tipik kullanımlar      |  Ayıklama, dönüştürme, yükleme (ETL) gerekmeden yerinde veri araştırması için. CSV, JSON, ilişkisel tablolar ve Hadoop gibi farklı veri kaynaklarını ve biçimleri sorgulayın.     |
 | Kullanma ve çalıştırma      | Masaüstü kısayolu  <br/> [10 dakika içinde detaya gitmeyi kullanmaya başlayın](https://drill.apache.org/docs/drill-in-10-minutes/)  |
 | DSVM 'deki ilgili araçlar      |   Rattle, WEKA, SQL Server Management Studio      |
-
-

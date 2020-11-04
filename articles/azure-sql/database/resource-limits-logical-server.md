@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 09/15/2020
-ms.openlocfilehash: 813f229d414ab911169f404dfc6b3cbf93fa96b3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9dfe70cf6c91a0c12604f91e583a9a4eb9b4e088
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780793"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308821"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics sunucuları için kaynak sınırları
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -131,7 +131,7 @@ Azure SQL veritabanı kaynak İdaresi, doğası gereği hiyerarşik bir şekilde
 
 Veri GÇ yönetimi, Azure SQL veritabanı 'nda, hem okuma hem de yazma fiziksel GÇ 'yi bir veritabanının veri dosyalarına göre sınırlandırmak için kullanılan bir işlemdir. "Gürültülü komşu" efektini en aza indirmek, çok kiracılı hizmette kaynak ayırma eşitliği sağlamak ve temel alınan donanımın ve depolamanın özellikleri dahilinde kalmak için her bir hizmet düzeyi için ıOPS sınırları ayarlanır.
 
-Tek veritabanları için, iş yükü grubu sınırları veritabanına göre tüm depolama GÇ kaynaklarına uygulanır, ancak kaynak havuzu limitleri, veritabanı dahil olmak üzere aynı SQL havuzundaki tüm veritabanlarına yönelik tüm depolama ıO 'larda geçerlidir `tempdb` . Elastik havuzlar için iş yükü grubu sınırları havuzdaki her bir veritabanı için geçerlidir, ancak kaynak havuzu sınırı, `tempdb` havuzdaki tüm veritabanları arasında paylaşılan veritabanı da dahil olmak üzere tüm elastik havuz için geçerlidir. Genel olarak, kaynak havuzu limitleri bir veritabanında (tek veya havuza alınmış) iş yükü tarafından ulaşılabilir olamaz, çünkü iş yükü grubu sınırları kaynak havuzu limitinden daha düşüktür ve ıOPS/aktarım hızını daha erken sınırlayın. Ancak, havuz sınırlarına aynı havuzdaki birden fazla veritabanına karşı Birleşik iş yükü tarafından erişilebilir.
+Tek veritabanları için, iş yükü grubu sınırları veritabanına göre tüm depolama GÇ kaynaklarına uygulanır, ancak kaynak havuzu limitleri, veritabanı dahil olmak üzere aynı adanmış SQL havuzundaki tüm veritabanlarına karşı tüm depolama ıO 'larda geçerlidir `tempdb` . Elastik havuzlar için iş yükü grubu sınırları havuzdaki her bir veritabanı için geçerlidir, ancak kaynak havuzu sınırı, `tempdb` havuzdaki tüm veritabanları arasında paylaşılan veritabanı da dahil olmak üzere tüm elastik havuz için geçerlidir. Genel olarak, kaynak havuzu limitleri bir veritabanında (tek veya havuza alınmış) iş yükü tarafından ulaşılabilir olamaz, çünkü iş yükü grubu sınırları kaynak havuzu limitinden daha düşüktür ve ıOPS/aktarım hızını daha erken sınırlayın. Ancak, havuz sınırlarına aynı havuzdaki birden fazla veritabanına karşı Birleşik iş yükü tarafından erişilebilir.
 
 Örneğin, bir sorgu herhangi bir GÇ kaynak İdaresi olmadan 1000 ıOPS oluşturursa, ancak iş yükü grubu maksimum ıOPS sınırı 900 ıOPS olarak ayarlanırsa, sorgu en fazla 900 ıOPS oluşturamayacak. Ancak, kaynak havuzu maksimum ıOPS sınırı 1500 ıOPS olarak ayarlanmışsa ve kaynak havuzuyla ilişkili tüm iş yükü gruplarından gelen toplam GÇ 1500 ıOPS 'yi aşarsa, aynı sorgunun GÇ değeri, 900 ıOPS çalışma grubu sınırının altında azaltılabilir.
 

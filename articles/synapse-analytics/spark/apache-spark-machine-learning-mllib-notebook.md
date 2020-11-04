@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: b723c77b193b499286a692bd5145131a904a7f07
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d7c5bd2d1918ecebe2d2aabc213de43e7cdb1fef
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369344"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93306976"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Öğretici: Apache Spark MLlib ve Azure SYNAPSE Analytics ile Machine Learning uygulaması derleme
 
@@ -31,9 +31,9 @@ MLlib, için uygun olan yardımcı programlar dahil olmak üzere makine öğreni
 
 ## <a name="understand-classification-and-logistic-regression"></a>Sınıflandırmayı ve lojistik regresyonunu anlayın
 
-Popüler bir makine öğrenimi görevi *sınıflandırması*, giriş verilerini kategorilere sıralama işlemidir. Bu, sağladığınız giriş verilerine nasıl etiket atanacağını anlamak için bir sınıflandırma algoritmasının *işleridir* . Örneğin, stok bilgilerini girdi olarak kabul eden bir makine öğrenimi algoritmasını düşünebilirsiniz ve stoku iki kategoriye böler: satmanız gereken hisse senetleri ve tutmanız gereken hisse senetleri.
+Popüler bir makine öğrenimi görevi *sınıflandırması* , giriş verilerini kategorilere sıralama işlemidir. Bu, sağladığınız giriş verilerine nasıl etiket atanacağını anlamak için bir sınıflandırma algoritmasının *işleridir* . Örneğin, stok bilgilerini girdi olarak kabul eden bir makine öğrenimi algoritmasını düşünebilirsiniz ve stoku iki kategoriye böler: satmanız gereken hisse senetleri ve tutmanız gereken hisse senetleri.
 
-*Lojistik regresyon* , sınıflandırma için kullanabileceğiniz bir algoritmadır. Spark 'un lojistik regresyon API 'SI, *ikili sınıflandırmada*veya giriş verilerinin iki gruptan birinde sınıflandırılmasına yardımcı olur. Lojistik gerilemeleri hakkında daha fazla bilgi için bkz. [Vikipedi](https://en.wikipedia.org/wiki/Logistic_regression).
+*Lojistik regresyon* , sınıflandırma için kullanabileceğiniz bir algoritmadır. Spark 'un lojistik regresyon API 'SI, *ikili sınıflandırmada* veya giriş verilerinin iki gruptan birinde sınıflandırılmasına yardımcı olur. Lojistik gerilemeleri hakkında daha fazla bilgi için bkz. [Vikipedi](https://en.wikipedia.org/wiki/Logistic_regression).
 
 Özet olarak, lojistik regresyon süreci, bir giriş vektörünün bir grupta veya diğeri ait olma olasılığını tahmin etmek için kullanılabilecek bir *lojistik işlevi* üretir.
 
@@ -49,7 +49,7 @@ Aşağıdaki adımlarda, belirli bir yolculuğa bir tıp içerip içermediğini 
 ## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Apache Spark MLlib makine öğrenimi uygulaması oluşturma
 
 1. PySpark çekirdeğini kullanarak bir not defteri oluşturun. Yönergeler için bkz. [Not defteri oluşturma](../quickstart-apache-spark-notebook.md#create-a-notebook).
-2. Bu uygulama için gereken türleri içeri aktarın. Aşağıdaki kodu kopyalayıp boş bir hücreye yapıştırın ve sonra **SHIFT + enter**tuşlarına basın ya da kodun solundaki mavi yürütme simgesini kullanarak hücreyi çalıştırın.
+2. Bu uygulama için gereken türleri içeri aktarın. Aşağıdaki kodu kopyalayıp boş bir hücreye yapıştırın ve sonra **SHIFT + enter** tuşlarına basın ya da kodun solundaki mavi yürütme simgesini kullanarak hücreyi çalıştırın.
 
     ```python
     import matplotlib.pyplot as plt
@@ -71,7 +71,7 @@ Aşağıdaki adımlarda, belirli bir yolculuğa bir tıp içerip içermediğini 
 
 Ham veriler bir Parquet biçiminde olduğundan, dosyayı doğrudan veri çerçevesi olarak belleğe çekmek için Spark bağlamını kullanabilirsiniz. Aşağıdaki kod varsayılan seçenekleri kullandığından, gerekirse veri türlerinin ve diğer şema özniteliklerinin eşlenmesini zorlamak mümkündür.
 
-1. Kodu yeni bir hücreye yapıştırarak Spark dataframe oluşturmak için aşağıdaki satırları çalıştırın. Bu, verileri açık veri kümeleri API 'SI aracılığıyla alır. Bu verilerin tümünün çekilerek 1.500.000.000 satır hakkında bilgi oluşturulur. Spark havuzunuzun boyutuna (Önizleme) bağlı olarak, ham veriler çok büyük olabilir veya üzerinde çalışmak için çok fazla zaman alabilir. Bu verileri daha küçük bir değere filtreleyerek azaltabilirsiniz. Aşağıdaki kod örneği, verilerin tek bir ayı döndüren bir filtre uygulamak için start_date ve end_date kullanır.
+1. Kodu yeni bir hücreye yapıştırarak Spark dataframe oluşturmak için aşağıdaki satırları çalıştırın. Bu, verileri açık veri kümeleri API 'SI aracılığıyla alır. Bu verilerin tümünün çekilerek 1.500.000.000 satır hakkında bilgi oluşturulur. Sunucusuz Apache Spark havuzunuzun (Önizleme) boyutuna bağlı olarak, ham veriler çok büyük olabilir veya üzerinde çalışmak için çok fazla zaman alabilir. Bu verileri daha küçük bir değere filtreleyerek azaltabilirsiniz. Aşağıdaki kod örneği, verilerin tek bir ayı döndüren bir filtre uygulamak için start_date ve end_date kullanır.
 
     ```python
     from azureml.opendatasets import NycTlcYellow
@@ -193,7 +193,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 
 ## <a name="create-a-logistic-regression-model"></a>Lojistik regresyon modeli oluşturma
 
-Son görev, etiketli verileri Lojistik gerileme tarafından çözümlenebilecek bir biçime dönüştürmelidir. Lojistik regresyon algoritmasının girişi, *özellik vektörünün* giriş noktasını temsil eden bir sayı vektörü olduğu bir *etiket özelliği vektör çiftleri*kümesi olması gerekir. Bu nedenle, kategorik sütunları sayılara dönüştürmemiz gerekiyor. `trafficTimeBins`Ve `weekdayString` sütunlarının tamsayı temsillerine dönüştürülmesi gerekir. Dönüştürmeyi gerçekleştirmeye yönelik birden çok yaklaşım vardır, ancak bu örnekte gerçekleştirilen yaklaşım yaygın bir yaklaşım olan *Onehotenkodlamaya*sahiptir.
+Son görev, etiketli verileri Lojistik gerileme tarafından çözümlenebilecek bir biçime dönüştürmelidir. Lojistik regresyon algoritmasının girişi, *özellik vektörünün* giriş noktasını temsil eden bir sayı vektörü olduğu bir *etiket özelliği vektör çiftleri* kümesi olması gerekir. Bu nedenle, kategorik sütunları sayılara dönüştürmemiz gerekiyor. `trafficTimeBins`Ve `weekdayString` sütunlarının tamsayı temsillerine dönüştürülmesi gerekir. Dönüştürmeyi gerçekleştirmeye yönelik birden çok yaklaşım vardır, ancak bu örnekte gerçekleştirilen yaklaşım yaygın bir yaklaşım olan *Onehotenkodlamaya* sahiptir.
 
 ```python
 # Since the sample uses an algorithm that only works with numeric features, convert them so they can be consumed
@@ -225,7 +225,7 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 Artık iki veri çerçevesi olduğuna göre, bir sonraki görev model formülünü oluşturmak ve bunu eğitim veri çerçevesinde çalıştırmak ve ardından test veri çerçevesine karşı doğrulamak olacaktır. Farklı birleşimlerin etkilerini görmek için model formülünün farklı sürümleriyle denemeler yapmanız gerekir.
 
 > [!Note]
-> Modeli kaydetmek için Depolama Blobu verileri katılımcısı Azure rolüne ihtiyacınız olacaktır. Depolama hesabınız altında Access Control (ıAM) bölümüne gidin ve **rol ataması Ekle**' yi seçin. Depolama Blobu verileri katılımcısı Azure rolünü SQL veritabanı sunucunuza atayın. Yalnızca sahibi ayrıcalığına sahip Üyeler bu adımı gerçekleştirebilir. Çeşitli Azure yerleşik rolleri için bu [kılavuza](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)bakın.
+> Modeli kaydetmek için Depolama Blobu verileri katılımcısı Azure rolüne ihtiyacınız olacaktır. Depolama hesabınız altında Access Control (ıAM) bölümüne gidin ve **rol ataması Ekle** ' yi seçin. Depolama Blobu verileri katılımcısı Azure rolünü SQL veritabanı sunucunuza atayın. Yalnızca sahibi ayrıcalığına sahip Üyeler bu adımı gerçekleştirebilir. Çeşitli Azure yerleşik rolleri için bu [kılavuza](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)bakın.
 
 ```python
 ## Create a new LR object for the model

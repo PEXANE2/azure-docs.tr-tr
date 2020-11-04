@@ -1,6 +1,6 @@
 ---
-title: SQL havuzu için PolyBase veri yükleme stratejisi tasarlama
-description: ETL yerine, verileri veya SQL havuzunu yüklemek için bir ayıklama, yükleme ve dönüştürme (ELT) işlemi tasarlayın.
+title: Adanmış SQL havuzu için PolyBase veri yükleme stratejisi tasarlama
+description: ETL yerine, adanmış SQL ile veri yüklemek için bir ayıklama, yükleme ve dönüştürme (ELT) işlemi tasarlayın.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: dbbed2ccaa62a99bb54a6d3d2eecf0c644281404
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a57abd080bdbbaefbe07258a2b241c093dc8c441
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474674"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308741"
 ---
-# <a name="design-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Azure SYNAPSE SQL havuzu için PolyBase veri yükleme stratejisi tasarlama
+# <a name="design-a-polybase-data-loading-strategy-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu için PolyBase veri yükleme stratejisi tasarlama
 
 Geleneksel SMP veri ambarları, verileri yüklemek için bir ayıklama, dönüştürme ve yükleme (ETL) işlemi kullanır. Azure SQL havuzu, bilgi işlem ve depolama kaynaklarının ölçeklenebilirlik ve esnekliğinden faydalanan, yüksek düzeyde paralel işleme (MPP) mimarisidir. Ayıklama, yükleme ve dönüştürme (ELT) işleminin kullanılması, yerleşik olarak dağıtılan sorgu işleme özelliğinden yararlanabilir ve yüklemeden önce verileri dönüştürmek için gereken kaynakları ortadan kaldırabilir.
 
@@ -29,12 +29,12 @@ SQL havuzu BCP ve SQL BulkCopy API gibi PolyBase seçenekleri de dahil olmak üz
 
 Ayıklama, yükleme ve dönüştürme (ELT), verilerin bir kaynak sistemden ayıklandığı, bir veri ambarına yüklendiği ve sonra dönüştürülebileceği bir işlemdir.
 
-SQL havuzu için PolyBase ELT uygulamaya yönelik temel adımlar şunlardır:
+Adanmış SQL havuzu için PolyBase ELT uygulamaya yönelik temel adımlar şunlardır:
 
 1. Kaynak verileri metin dosyalarına ayıklayın.
 2. Verileri Azure Blob depolama alanına veya Azure Data Lake Store ekleyin.
 3. Verileri yükleme için hazırlayın.
-4. PolyBase kullanarak verileri SQL havuz hazırlama tablolarına yükleyin.
+4. PolyBase kullanarak verileri adanmış SQL havuzu hazırlama tablolarına yükleyin.
 5. Verileri dönüştürün.
 6. Verileri üretim tablolarına ekleyin.
 
@@ -85,11 +85,11 @@ Verileri Azure depolama 'ya taşımak için kullanabileceğiniz araçlar ve hizm
 
 - [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) hizmeti ağ aktarım hızını, performansı ve öngörülebilirlik geliştirir. ExpressRoute, verilerinizi Azure 'a adanmış bir özel bağlantıyla yönlendiren bir hizmettir. ExpressRoute bağlantıları, verileri genel İnternet üzerinden yönlendirmez. Bağlantılar, genel İnternet üzerinden tipik bağlantılardan daha fazla güvenilirlik, daha hızlı hız, daha düşük gecikme süreleri ve daha yüksek güvenlik sunar.
 - [AZCopy yardımcı programı](../../storage/common/storage-use-azcopy-v10.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , verileri genel Internet üzerinden Azure depolama 'ya taşıtabilecek. Bu, veri boyutlarınızın 10 TB 'den küçük olması durumunda geçerlidir. AZCopy ile düzenli olarak yükleme gerçekleştirmek için, kabul edilebilir olup olmadığını görmek için ağ hızını test edin.
-- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , yerel sunucunuza yükleyebileceğiniz bir ağ geçidine sahip olabilir. Daha sonra, yerel sunucunuzdaki verileri Azure depolama 'ya taşımak için bir işlem hattı oluşturabilirsiniz. SQL havuzu ile Data Factory kullanmak için bkz. [SQL Pool 'a veri yükleme](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , yerel sunucunuza yükleyebileceğiniz bir ağ geçidine sahip olabilir. Daha sonra, yerel sunucunuzdaki verileri Azure depolama 'ya taşımak için bir işlem hattı oluşturabilirsiniz. Adanmış SQL havuzu ile Data Factory kullanmak için bkz. [verileri ADANMıŞ SQL havuzuna yükleme](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 ## <a name="3-prepare-the-data-for-loading"></a>3. verileri yükleme için hazırlama
 
-Depolama hesabınızdaki verileri SQL havuzuna yüklemeden önce hazırlamanız ve temizlemeniz gerekebilir. Veriler kaynakta olduğunda veri hazırlama gerçekleştirilebilir, verileri metin dosyalarına dışarı aktardığınızda veya veriler Azure Storage 'dayken olur.  Mümkün olduğunca önce verilerle çalışmak en kolay yoldur.  
+Adanmış SQL havuzuna yüklemeden önce Depolama hesabınızdaki verileri hazırlamanız ve temizlemeniz gerekebilir. Veriler kaynakta olduğunda veri hazırlama gerçekleştirilebilir, verileri metin dosyalarına dışarı aktardığınızda veya veriler Azure Storage 'dayken olur.  Mümkün olduğunca önce verilerle çalışmak en kolay yoldur.  
 
 ### <a name="define-external-tables"></a>Dış tabloları tanımlama
 
@@ -110,7 +110,7 @@ Metin dosyalarını biçimlendirmek için:
 - SQL havuzu hedef tablosundaki sütunlar ve veri türleriyle hizalamak için metin dosyasındaki verileri biçimlendirin. Dış metin dosyalarındaki veri türleri arasındaki hatalı hizalanmış ve veri ambarı tablosu, yük sırasında satırların reddedilmesine neden olur.
 - Metin dosyasındaki alanları Sonlandırıcı ile ayırın.  Kaynak verilerinizde bulunmayan bir karakter veya karakter dizisi kullandığınızdan emin olun. [Dış dosya biçimi oluştur](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)ile belirttiğiniz sonlandırıcıyı kullanın.
 
-## <a name="4-load-the-data-into-sql-pool-staging-tables-using-polybase"></a>4. PolyBase kullanarak SQL havuzu hazırlama tablolarına verileri yükleme
+## <a name="4-load-the-data-into-dedicated-sql-pool-staging-tables-using-polybase"></a>4. PolyBase kullanarak verileri adanmış SQL havuzu hazırlama tablolarına yükleme
 
 Hazırlama tablosuna veri yüklemek en iyi uygulamadır. Hazırlama tabloları, üretim tablolarının kesintiye uğramadan hataları işleyebilmeniz için izin verir. Hazırlama tablosu, verileri üretim tablolarına eklemeden önce veri dönüştürmeleri için yerleşik olarak dağıtılan sorgu işleme yeteneklerini de kullanmanıza olanak sağlar.
 
@@ -125,7 +125,7 @@ PolyBase ile veri yüklemek için, bu yükleme seçeneklerinden herhangi birini 
 
 ### <a name="non-polybase-loading-options"></a>PolyBase yükleme seçenekleri
 
-Verileriniz PolyBase ile uyumlu değilse [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) veya [SqlBulkCopy API 'sini](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)kullanabilirsiniz. BCP, Azure Blob depolama alanına geçmeden doğrudan SQL havuzuna yükler ve yalnızca küçük yüklemeler için tasarlanmıştır. Bu seçeneklerin yük performansı, PolyBase 'den önemli ölçüde daha yavaştır.
+Verileriniz PolyBase ile uyumlu değilse [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) veya [SqlBulkCopy API 'sini](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)kullanabilirsiniz. BCP, Azure Blob depolama alanına geçmeden doğrudan adanmış SQL havuzuna yükler ve yalnızca küçük yüklemeler için tasarlanmıştır. Bu seçeneklerin yük performansı, PolyBase 'den önemli ölçüde daha yavaştır.
 
 ## <a name="5-transform-the-data"></a>5. verileri dönüştürme
 

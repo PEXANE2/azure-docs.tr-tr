@@ -11,16 +11,16 @@ ms.subservice: studio
 ms.topic: how-to
 ms.date: 03/28/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a963a9f10ee23c50f50e66191e92f0839c457d9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dc348318401c9362636893d70294496c7012408
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362857"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308464"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Veri Içeri aktarma ve veri dışa aktarma modülleri kullanan Azure Machine Learning Studio (klasik) Web hizmetlerini dağıtma
 
-**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Tahmine dayalı bir deneme oluşturduğunuzda, genellikle bir Web hizmeti girişi ve çıkışı eklersiniz. Denemeyi dağıttığınızda, müşteriler girişler ve çıktılar aracılığıyla Web hizmetinden veri gönderebilir ve alabilir. Bazı uygulamalarda, bir tüketicinin verileri bir veri akışından bulunabilir veya Azure Blob depolama gibi bir dış veri kaynağında yer alabilir. Bu durumlarda, Web hizmeti girişleri ve çıkışları kullanılarak okuma ve yazma verilerine gerek kalmaz. Bunun yerine, veri kaynağı alma modülünü kullanarak veri kaynağından veri okumak için Batch yürütme hizmeti 'ni (BES) kullanabilir ve veri dışa aktarma modülünü kullanarak Puanlama sonuçlarını farklı bir veri konumuna yazabilir.
@@ -41,7 +41,7 @@ Azure SQL tablosundan verileri okumak için:
 3. Sonuçlar listesinden, deneme tuvaline bir *veri Içeri aktarma* modülü ekleyin.
 4. *Veri alma* modülünün çıkışı, *Temizleme eksik veri* modülünün girişi.
 5. Özellikler bölmesinde, **veri kaynağı** açılan menüsünde **Azure SQL veritabanı** ' nı seçin.
-6. **Veritabanı sunucusu adı**, **veritabanı adı**, **Kullanıcı adı**ve **parola** alanlarına veritabanınız için uygun bilgileri girin.
+6. **Veritabanı sunucusu adı** , **veritabanı adı** , **Kullanıcı adı** ve **parola** alanlarına veritabanınız için uygun bilgileri girin.
 7. Veritabanı sorgusu alanına aşağıdaki sorguyu girin.
 
     ```tsql
@@ -62,7 +62,7 @@ Azure SQL tablosundan verileri okumak için:
         [income]
      from dbo.censusdata;
     ```
-8. Deneme tuvalinin alt kısmındaki **Çalıştır**' a tıklayın.
+8. Deneme tuvalinin alt kısmındaki **Çalıştır** ' a tıklayın.
 
 ## <a name="create-the-predictive-experiment"></a>Tahmine dayalı deneme oluşturma
 Daha sonra, Web hizmetinizi dağıttığınız tahmine dayalı deney 'yi ayarlarsınız.
@@ -73,19 +73,19 @@ Daha sonra, Web hizmetinizi dağıttığınız tahmine dayalı deney 'yi ayarlar
 4. Sonuçlar listesinden, deneme tuvaline bir *veri dışa aktarma* modülü ekleyin.
 5. *Puan modeli* modülünün çıkışı, *verileri dışarı aktarma* modülünün girişi.
 6. Özellikler bölmesinde, veri hedefi açılan menüsünde **Azure SQL veritabanı** ' nı seçin.
-7. **Veritabanı sunucusu adı**, **veritabanı adı**, **sunucu Kullanıcı hesabı adı**ve **sunucu Kullanıcı hesabı parolası** alanlarında, veritabanınız için uygun bilgileri girin.
+7. **Veritabanı sunucusu adı** , **veritabanı adı** , **sunucu Kullanıcı hesabı adı** ve **sunucu Kullanıcı hesabı parolası** alanlarında, veritabanınız için uygun bilgileri girin.
 8. **Kaydedilecek sütunların virgülle ayrılmış listesi** alanında, puanlanmış Etiketler yazın.
-9. **Veri tablosu adı alanına**dbo yazın. ScoredLabels. Tablo yoksa, deneme çalıştırıldığında veya Web hizmeti çağrıldığında oluşturulur.
+9. **Veri tablosu adı alanına** dbo yazın. ScoredLabels. Tablo yoksa, deneme çalıştırıldığında veya Web hizmeti çağrıldığında oluşturulur.
 10. **DataTable sütunları alanının virgülle ayrılmış listesinde** ScoredLabels yazın.
 
-Son Web hizmetini çağıran bir uygulama yazdığınızda, çalışma zamanında farklı bir giriş sorgusu veya hedef tablosu belirtmek isteyebilirsiniz. Bu giriş ve çıkışları yapılandırmak için Web hizmeti parametreleri özelliğini kullanarak *veri modülünü Içeri aktarma* veri *kaynağı* özelliğini ve *verileri dışarı aktar* veri hedefi özelliğini ayarlayın.  Web hizmeti parametreleri hakkında daha fazla bilgi için Cortana Intelligence ve blog Machine Learning [Azure Machine Learning Studio Web hizmeti parametreleri girişine](https://blogs.technet.microsoft.com/machinelearning/2014/11/25/azureml-web-service-parameters/) bakın.
+Son Web hizmetini çağıran bir uygulama yazdığınızda, çalışma zamanında farklı bir giriş sorgusu veya hedef tablosu belirtmek isteyebilirsiniz. Bu giriş ve çıkışları yapılandırmak için Web hizmeti parametreleri özelliğini kullanarak *veri modülünü Içeri aktarma* veri *kaynağı* özelliğini ve *verileri dışarı aktar* veri hedefi özelliğini ayarlayın.  Web hizmeti parametreleri hakkında daha fazla bilgi için Cortana Intelligence ve blog Machine Learning [Azure Machine Learning Studio Web hizmeti parametreleri girişine](/archive/blogs/machinelearning/azureml-web-service-parameters) bakın.
 
 İçeri aktarma sorgusu ve hedef tablo için Web hizmeti parametrelerini yapılandırmak için:
 
-1. *Veri Içeri aktarma* modülünün Özellikler bölmesinde, **veritabanı sorgu** alanının sağ üst kısmındaki simgeye tıklayın ve **Web hizmeti parametresi olarak ayarla**' yı seçin.
-2. *Veri dışarı aktarma* modülünün Özellikler bölmesinde, **veri tablosu adı** alanının sağ üst kısmındaki simgeye tıklayın ve **Web hizmeti parametresi olarak ayarla**' yı seçin.
+1. *Veri Içeri aktarma* modülünün Özellikler bölmesinde, **veritabanı sorgu** alanının sağ üst kısmındaki simgeye tıklayın ve **Web hizmeti parametresi olarak ayarla** ' yı seçin.
+2. *Veri dışarı aktarma* modülünün Özellikler bölmesinde, **veri tablosu adı** alanının sağ üst kısmındaki simgeye tıklayın ve **Web hizmeti parametresi olarak ayarla** ' yı seçin.
 3. *Veri modülünü dışarı aktar* Özellikler bölmesinin en altında, **Web hizmeti parametreleri** bölümünde veritabanı sorgusu ' na tıklayın ve sorguyu yeniden adlandırın.
-4. **Veri tablosu adı** ' na tıklayın ve bu **tabloyu**yeniden adlandırın.
+4. **Veri tablosu adı** ' na tıklayın ve bu **tabloyu** yeniden adlandırın.
 
 İşiniz bittiğinde, denemenizin aşağıdaki görüntüye benzer olması gerekir:
 
@@ -129,11 +129,11 @@ Klasik bir Web hizmeti olarak dağıtmak ve kullanmak üzere bir uygulama oluşt
 
 Yeni bir Web hizmeti olarak dağıtmak ve kullanmak üzere bir uygulama oluşturmak için:
 
-1. Deneme tuvalinin alt kısmındaki **Çalıştır**' a tıklayın.
+1. Deneme tuvalinin alt kısmındaki **Çalıştır** ' a tıklayın.
 2. Çalıştırma tamamlandığında **Web Hizmeti Dağıt** ' a tıklayın ve **Web Hizmeti Dağıt [yeni]** seçeneğini belirleyin.
-3. Deneme dağıtımı sayfasında, Web hizmetiniz için bir ad girin ve bir fiyatlandırma planı seçin ve **Dağıt**' a tıklayın.
-4. **Hızlı başlangıç** sayfasında, **tüketme**' ye tıklayın.
-5. **Örnek kod** bölümünde **Batch**' e tıklayın.
+3. Deneme dağıtımı sayfasında, Web hizmetiniz için bir ad girin ve bir fiyatlandırma planı seçin ve **Dağıt** ' a tıklayın.
+4. **Hızlı başlangıç** sayfasında, **tüketme** ' ye tıklayın.
+5. **Örnek kod** bölümünde **Batch** ' e tıklayın.
 6. Visual Studio 'da bir C# konsol uygulaması oluşturun: **Yeni**  >  **Proje**  >  **Visual C#**  >  **Windows Klasik Masaüstü**  >  **konsol uygulaması (.NET Framework)**.
 7. C# örnek kodunu kopyalayıp Program.cs dosyanıza yapıştırın.
 8. *Apikey* değişkeninin değerini **temel tüketim bilgisi** bölümünde bulunan **birincil anahtarla** güncelleştirin.
@@ -152,4 +152,3 @@ Yeni bir Web hizmeti olarak dağıtmak ve kullanmak üzere bir uygulama oluştur
     };
     ```
 10. Uygulamayı çalıştırın.
-

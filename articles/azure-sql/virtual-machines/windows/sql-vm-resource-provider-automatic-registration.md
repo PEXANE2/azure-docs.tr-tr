@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/21/2020
-ms.openlocfilehash: 23ecc3bdfb0ca85caf219fc262348937923f53c3
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: d4a2d9e43dadc53008c04b44ea1dda9cb337da99
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286116"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308345"
 ---
 # <a name="automatic-registration-with-sql-vm-resource-provider"></a>SQL VM kaynak sağlayıcısı ile otomatik kayıt
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ Bir abonelik için otomatik kayıt etkinleştirildikten sonra, SQL Server yükl�
 
 SQL Server VM kaynak sağlayıcısına kaydetmek için şunlar gerekir: 
 
-- Bir [Azure aboneliği](https://azure.microsoft.com/free/).
+- Bir [Azure aboneliği](https://azure.microsoft.com/free/) ve, en az [katkıda bulunan rol](../../../role-based-access-control/built-in-roles.md#all) izinleri.
 - Azure kaynak modeli [Windows Server 2008 R2 (veya üzeri) sanal makinesini](../../../virtual-machines/windows/quick-create-portal.md) , genel veya Azure Kamu bulutuna dağıtılan [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads) . Windows Server 2008 desteklenmez. 
 
 

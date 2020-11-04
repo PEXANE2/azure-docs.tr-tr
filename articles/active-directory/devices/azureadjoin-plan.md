@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a559b29502adb1c507b1543463d84eb3bd15d5a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3587ef6be9d6c9969dff5d1af2181ed51aea7d29
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083295"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308280"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Nasıl yapılır: Azure AD JOIN Uygulamanızı planlayın
 
@@ -119,7 +119,7 @@ Azure AD 'ye katılmış cihazları yönetmeye yönelik iki yaklaşım vardır:
 - **Yalnızca MDM** -cihaz, Intune gıbı bir MDM sağlayıcısı tarafından özel olarak yönetilir. Tüm ilkeler MDM kayıt sürecinin bir parçası olarak dağıtılır. Azure AD Premium veya EMS müşterileri için MDM kaydı, bir Azure AD birleştirmenin parçası olan otomatikleştirilmiş bir adımdır.
 - **Ortak yönetim** -bir cıhaz, MDM sağlayıcısı ve SCCM tarafından yönetilir. Bu yaklaşımda, SCCM Aracısı belirli yönleri yönetmek için MDM tarafından yönetilen bir cihaza yüklenir.
 
-Grup ilkeleri kullanıyorsanız, MDM [geçiş çözümleme aracı 'nı (MVADE)](https://github.com/WindowsDeviceManagement/MMAT)kullanarak MDM ilke eşliği değerlendirin. 
+Grup Ilkeleri kullanıyorsanız, Microsoft Endpoint Manager 'da [Grup İlkesi Analytics](/mem/intune/configuration/group-policy-analytics) kullanarak GPO ve MDM ilke eşliği değerlendirin. 
 
 Grup ilkeleri yerine bir MDM çözümü kullanıp kullanmayacağınızı öğrenmek için desteklenen ve desteklenmeyen ilkeleri gözden geçirin. Desteklenmeyen ilkeler için aşağıdakileri göz önünde bulundurun:
 
@@ -199,11 +199,11 @@ Bu üç yaklaşımdan oluşan bir karşılaştırma
  
 | Öğe | Self Servis kurulumu | Windows Autopilot | Toplu kayıt |
 | --- | --- | --- | --- |
-| Ayarlama için Kullanıcı etkileşimi gerektir | Yes | Yes | Hayır |
-| BT çabaları gerektir | Hayır | Yes | Evet |
+| Ayarlama için Kullanıcı etkileşimi gerektir | Evet | Evet | Hayır |
+| BT çabaları gerektir | Hayır | Evet | Evet |
 | Uygulanabilir akışlar | OOBE & ayarları | Yalnızca OOBE | Yalnızca OOBE |
 | Birincil kullanıcı için yerel yönetici hakları | Evet, varsayılan olarak | Yapılandırılabilir | Hayır |
-| Cihaz OEM desteği gerektir | Hayır | Yes | Hayır |
+| Cihaz OEM desteği gerektir | Hayır | Evet | Hayır |
 | Desteklenen sürümler | 1511 + | 1709 + | 1703 + |
  
 Yukarıdaki tabloyu inceleyerek dağıtım yaklaşımınızı veya yaklaşımlarınızı seçin ve iki yaklaşımı benimsemeye yönelik aşağıdaki konuları gözden geçirin:  
@@ -272,7 +272,7 @@ MDM yapılandırmanızla ilgili üç URL vardır:
 - MDM bulma URL'si 
 - MAM uyumluluk URL’si
 
-:::image type="content" source="./media/azureadjoin-plan/06.png" alt-text="Azure Active Directory uygulama ekleme sayfasının ekran görüntüsü. Birkaç M D M sağlayıcı listelenir." border="false":::
+:::image type="content" source="./media/azureadjoin-plan/06.png" alt-text="M d m alanı kullanım, bulma ve uyumluluk koşulları için U R m alanları ile Azure Active Directory M D M yapılandırma bölümünün bir kısmının ekran görüntüsü." border="false":::
 
 Her URL’de önceden tanımlanmış varsayılan bir değer vardır. Bu alanlar boşsa, daha fazla bilgi için lütfen MDM sağlayıcınızla iletişim kurun.
 

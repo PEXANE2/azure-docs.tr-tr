@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 658d18ed3c9eefeedffd82bbccedbde0621fe748
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1b3b4da4e21bca421b76f820c04ba68375be5ca0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145516"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307776"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Koşullu erişim: bulut uygulamaları veya eylemleri
 
@@ -36,7 +36,7 @@ Yöneticiler, Microsoft 'tan aşağıdaki bulut uygulamalarına koşullu erişim
 - [Office 365](#office-365)
 - Azure Analysis Services
 - Azure DevOps
-- [Azure SQL Veritabanı ve Veri Ambarı](../../azure-sql/database/conditional-access-configure.md)
+- [Azure SQL veritabanı ve Azure SYNAPSE Analytics](../../azure-sql/database/conditional-access-configure.md)
 - Dynamics CRM Online
 - Microsoft Application Insights Analytics
 - [Microsoft Azure Information Protection](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
@@ -125,7 +125,7 @@ Yöneticiler, Microsoft uygulamalarına ek olarak, koşullu erişim ilkelerine h
 
 ## <a name="user-actions"></a>Kullanıcı eylemleri
 
-Kullanıcı eylemleri, bir kullanıcı tarafından gerçekleştirilebilecek görevlerdir. Şu anda desteklenen tek eylem **güvenlik bilgilerini kaydeder**ve bu, Birleşik kayıt için etkinleştirilen kullanıcılar güvenlik bilgilerini kaydetmeye çalışırken koşullu erişim ilkesinin uygulanmasını sağlar. Daha fazla bilgi için, [Birleşik güvenlik bilgileri kaydı](../authentication/concept-registration-mfa-sspr-combined.md)başlıklı makaleye ulaşabilirsiniz.
+Kullanıcı eylemleri, bir kullanıcı tarafından gerçekleştirilebilecek görevlerdir. Şu anda desteklenen tek eylem **güvenlik bilgilerini kaydeder** ve bu, Birleşik kayıt için etkinleştirilen kullanıcılar güvenlik bilgilerini kaydetmeye çalışırken koşullu erişim ilkesinin uygulanmasını sağlar. Daha fazla bilgi için, [Birleşik güvenlik bilgileri kaydı](../authentication/concept-registration-mfa-sspr-combined.md)başlıklı makaleye ulaşabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

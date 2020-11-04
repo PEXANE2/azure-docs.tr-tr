@@ -11,12 +11,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 29f1949cbe9998ac569b0389986023a72e7845b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8c6ee3d5eecc02ac921d7b10f2394380af684c2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89070925"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309025"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Azure Veri Bilimi VM'si için derin öğrenme ve AI çerçeveleri
 DSVM üzerindeki derin öğrenme çerçeveleri aşağıda listelenmiştir.
@@ -55,7 +55,7 @@ DSVM üzerindeki derin öğrenme çerçeveleri aşağıda listelenmiştir.
 | Desteklenen sürüm (ler) | 10.0.130|
 | Desteklenen DSVM sürümleri      | Windows Server 2019<br>Ubuntu 18.04<br> Windows 2016<br> Ubuntu 16.04  |
 | DSVM 'de nasıl yapılandırılır/yüklenir?  |_NVIDIA-SMI_ sistem yolunda kullanılabilir.  |
-| Nasıl çalıştırılır?      | Bir komut istemi (Windows üzerinde) veya bir Terminal (Linux 'ta) açın ve ardından _NVIDIA-SMI_' yi çalıştırın. |
+| Nasıl çalıştırılır?      | Bir komut istemi (Windows üzerinde) veya bir Terminal (Linux 'ta) açın ve ardından _NVIDIA-SMI_ ' yi çalıştırın. |
 
 
 ## <a name="horovod"></a>[Horovod](https://github.com/uber/horovod)
@@ -76,7 +76,7 @@ DSVM üzerindeki derin öğrenme çerçeveleri aşağıda listelenmiştir.
 | DSVM 'de nasıl yapılandırılır/yüklenir?  | Keras, Python 3,6 ' ye Windows üzerinde ve Linux 'ta Python 3,5 ' de yüklendi |
 | Nasıl çalıştırılır?      | Terminalde doğru ortamı etkinleştirin ve Python 'u çalıştırın. |
 
-## <a name="microsoft-cognitive-toolkit-cntk"></a>[Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/)
+## <a name="microsoft-cognitive-toolkit-cntk"></a>[Microsoft Cognitive Toolkit (CNTK)](/cognitive-toolkit/)
 
 | Kategori | Değer |
 | ------------- | ------------- |
@@ -110,7 +110,7 @@ DSVM üzerindeki derin öğrenme çerçeveleri aşağıda listelenmiştir.
 | Desteklenen DSVM sürümleri      | Windows Server 2019<br>Ubuntu 18.04<br> Windows 2016<br> Ubuntu 16.04   |
 | Ne için? | GPU etkinliğini sorgulamak için NVıDıA aracı |
 | DSVM 'de nasıl yapılandırılır/yüklenir?  | `nvidia-smi` sistem yolunda. |
-| Nasıl çalıştırılır?      | **GPU 'nun bulunduğu**bir sanal makinede, bir komut istemi açın (Windows üzerinde) veya bir terminalde (Linux 'ta) ve ardından komutunu çalıştırın `nvidia-smi` . |
+| Nasıl çalıştırılır?      | **GPU 'nun bulunduğu** bir sanal makinede, bir komut istemi açın (Windows üzerinde) veya bir terminalde (Linux 'ta) ve ardından komutunu çalıştırın `nvidia-smi` . |
 
 ## <a name="pytorch"></a>[PyTorch](https://pytorch.org/)
 
@@ -146,5 +146,5 @@ DSVM üzerindeki derin öğrenme çerçeveleri aşağıda listelenmiştir.
 | ------------- | ------------- |
 | Desteklenen sürüm (ler) | 1.0.3 |
 | Desteklenen DSVM sürümleri      | Ubuntu 16.04 |
-| DSVM 'de nasıl yapılandırılır/yüklenir?  |Bu, Python 2,7 ' de (_root_) ve Python 3,5 (_py35_) ortamında yüklenir. |
+| DSVM 'de nasıl yapılandırılır/yüklenir?  |Bu, Python 2,7 ' de ( _root_ ) ve Python 3,5 ( _py35_ ) ortamında yüklenir. |
 | Nasıl çalıştırılır?      |  Terminal: istediğiniz Python sürümünü etkinleştirin (root veya py35), Python 'u çalıştırın ve ardından Ano içeri aktarın.<br/>* Jupyter: Python 2,7 veya 3,5 çekirdeğini seçin ve sonra da Ano içeri aktarın.  <br/>Son matematik çekirdek kitaplığı (MKL) hatasını geçici olarak çözmek için öncelikle MKL iş parçacığı katmanını aşağıdaki şekilde ayarlamanız gerekir:<br/><br/>`export MKL_THREADING_LAYER=GNU`  |

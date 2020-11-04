@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 11/02/2020
 ms.author: inhenkel
-ms.openlocfilehash: c03950d64c9ead17dfa5c07ef70ab2b7ee0e90bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 33aed32c30f298fd3432f4cebcc28b9c20974545
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89296660"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309058"
 ---
-# <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Azure Izleyici aracılığıyla Media Services ölçümleri ve tanılama günlüklerini izleme
+# <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>Azure Izleyici ile Media Services ölçümleri ve tanılama günlüklerini izleme
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -67,8 +67,10 @@ Aşağıdaki Media Services [akış uç noktası](/rest/api/media/streamingendpo
 |İstekler|İstekler|Akış uç noktası tarafından hizmet verilen toplam HTTP isteği sayısını sağlar.|
 |Çıkış|Çıkış|Akış uç noktası başına dakika başına toplam çıkış baytı.|
 |SuccessE2ELatency|Başarılı uçtan uca gecikme süresi|Akış uç noktasının, yanıtın son baytı gönderilirken isteği aldığı zaman süresi.|
+|CPU kullanımı| Premium akış uç noktaları için CPU kullanımı. Bu veriler standart akış uç noktaları için kullanılamaz. |
+|Çıkış bant genişliği | Bit/saniye cinsinden çıkış bant genişliği.|
 
-### <a name="why-would-i-want-to-use-metrics"></a>Ölçümleri neden kullanmak istiyorum?
+### <a name="metrics-are-useful"></a>Ölçümler faydalıdır
 
 İzleme Media Services ölçümlerinin uygulamalarınızın nasıl çalıştığını anlamanıza yardımcı olabilecek örnekler aşağıda verilmiştir. Media Services ölçümleriyle giderilebililecek bazı sorular şunlardır:
 
@@ -79,6 +81,8 @@ Aşağıdaki Media Services [akış uç noktası](/rest/api/media/streamingendpo
 * Başarısız olan isteklerin dökümünü nasıl görebilirim ve hataya neden olmuş olabilir?
 * Paketleyiciyi kaç tane HLS veya DASH isteğinin çekmekte olduğunu nasıl görebilirim?
 * Nasıl yaparım? başarısız isteklerin eşik değeri ne zaman isabet olduğunu bildirmek için bir uyarı ayarla.
+
+Eşzamanlılık, zaman içinde tek bir hesapta kullanılan akış uç noktası sayısıyla ilgili bir sorun haline gelir. Birden fazla protokol, birden çok DRM şifrelemesi ve dinamik paketleme gibi karmaşık yayımlama parametrelerine sahip eş zamanlı akış sayısı arasındaki ilişkiyi göz önünde bulundurmanız gerekir. Yayımlanan her bir canlı akış, akış uç noktasındaki CPU ve çıkış bant genişliğine ekler. Göz önünde bulundurmanız gereken şekilde, Azure Izleyici 'yi, akış uç noktasının kullanımını (CPU ve çıkış kapasitesi) yakından izlemek için kullanmanız gerekir (veya çok yüksek eşzamanlılık elde ediyorsanız trafiği birden çok akış uç noktası arasında bölmek).
 
 ### <a name="example"></a>Örnek
 

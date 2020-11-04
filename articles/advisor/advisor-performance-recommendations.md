@@ -3,12 +3,12 @@ title: Danışman ile Azure uygulamalarının performansını geliştirme
 description: İş açısından kritik uygulamalarınızın hızını ve yanıt hızını artırmak için Azure Danışmanı 'nda performans önerilerini kullanın.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 44252171a714acec0a9c0e83c9272b2f845560b3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 6a008411d4422853e6a98fad59bd4519b42a9548
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077822"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308680"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak Azure uygulamalarının performansını geliştirme
 
@@ -22,7 +22,7 @@ Azure Advisor, daha uzun TTL yapılandırılmış Traffic Manager profillerini t
 
 ## <a name="improve-database-performance-by-using-sql-database-advisor-temporarily-disabled"></a>SQL Veritabanı Danışmanı kullanarak veritabanı performansını iyileştirme (geçici olarak devre dışı)
 
-Azure Danışmanı, tüm Azure kaynaklarınız için önerilerin tutarlı, birleştirilmiş bir görünümünü sağlar. Veritabanlarınızın performansını iyileştirmeye yönelik öneriler getirmek için SQL Veritabanı Danışmanı ile tümleşir.SQL Veritabanı Danışmanı kullanım geçmişinizi çözümleyerek veritabanlarınızın performansını değerlendirir. Daha sonra veritabanının tipik iş yükünü çalıştırmaya en uygun öneriler sunar.
+Azure Danışmanı, tüm Azure kaynaklarınız için önerilerin tutarlı, birleştirilmiş bir görünümünü sağlar. Veritabanlarınızın performansını iyileştirmeye yönelik öneriler getirmek için SQL Veritabanı Danışmanı ile tümleşir. SQL Veritabanı Danışmanı kullanım geçmişinizi çözümleyerek veritabanlarınızın performansını değerlendirir. Daha sonra veritabanının tipik iş yükünü çalıştırmaya en uygun öneriler sunar.
 
 > [!NOTE]
 > Öneriler alabilmeniz için veritabanınızın bir hafta boyunca kullanımda olması gerekir ve bu hafta içinde bazı tutarlı etkinlik olması gerekir. SQL Veritabanı Danışmanı, rastgele ek etkinlik için daha kolay olan tutarlı sorgu desenleri için daha kolay iyileştirebilirler.
@@ -108,7 +108,7 @@ Advisor, veritabanınıza yüklerken toplu iş boyutunu artırarak yükleme perf
 
 ## <a name="co-locate-the-storage-account-in-the-same-region-to-minimize-latency-when-loading"></a>Yükleme sırasında gecikme süresini en aza indirmek için depolama hesabını aynı bölgede birlikte bulun
 
-Advisor, SQL havuzunuzdaki farklı bir bölgeden yükleme yapılıp yapılmayacağını algılar. Verileri yüklerken gecikme süresini en aza indirmek için SQL havuzunuzun bulunduğu bölgedeki bir depolama hesabından yüklemeyi göz önünde bulundurun. Bu değişiklik gecikme süresini en aza indirmenize ve yükleme performansını artırmaya yardımcı olur.
+Advisor, adanmış SQL havuzunuzdaki farklı bir bölgeden yükleme yapılıp yapılmayacağını algılar. Verileri yüklerken gecikme süresini en aza indirmek için adanmış SQL havuzunuzun bulunduğu bir depolama hesabından yüklemeyi göz önünde bulundurun. Bu değişiklik gecikme süresini en aza indirmenize ve yükleme performansını artırmaya yardımcı olur.
 
 ## <a name="use-a-supported-kubernetes-version"></a>Desteklenen bir Kubernetes sürümü kullanma
 
@@ -120,17 +120,17 @@ Advisor, desteklenmeyen Kubernetes sürümlerini algılar.
 CPU 'nun genişletilmiş bir süre boyunca yüksek kullanımı, iş yükünüz için yavaş sorgu performansına neden olabilir. CPU boyutunu artırmak, veritabanı sorgularının çalışma zamanının iyileştirilmesine ve genel performansı iyileştirmenize yardımcı olur. Danışman, büyük olasılıkla CPU kısıtlı iş yüklerini çalıştıran ve işlem izlemenizi ölçeklendirmenizi gerektiren yüksek CPU kullanımına sahip sunucuları tanımlar.
 
 ### <a name="reduce-memory-constraints-on-your-azure-database-for-mysql-azure-database-for-postgresql-and-azure-database-for-mariadb-servers-or-move-to-a-memory-optimized-sku"></a>MySQL için Azure veritabanı, PostgreSQL için Azure veritabanı ve MariaDB sunucuları için Azure veritabanı için bellek kısıtlamalarını azaltın veya bellek için Iyileştirilmiş bir SKU 'ya geçiş yapın
-Düşük önbellek isabet oranı, daha yavaş sorgu performansına ve daha fazla ıOPS oluşmasına neden olabilir. Bu durumun nedeni hatalı bir sorgu planı veya bellek açısından yoğun bir iş yükü olabilir. Sorgu planını [düzeltme veya](../postgresql/concepts-pricing-tiers.md) PostgreSQL Için Azure veritabanı, MySQL Için Azure veritabanı veya MariaDB sunucusu Için Azure veritabanı, veritabanı iş yükünün yürütülmesini iyileştirmenize yardımcı olur. Azure Advisor, bu yüksek arabellek havuzu karmaşıklığının etkilediği sunucuları tanımlar. Aşağıdaki eylemlerden birini yapmanızı önerir: 
+Düşük önbellek isabet oranı, daha yavaş sorgu performansına ve daha fazla ıOPS oluşmasına neden olabilir. Bu durumun nedeni hatalı bir sorgu planı veya bellek açısından yoğun bir iş yükü olabilir. Sorgu planını [düzeltme veya](../postgresql/concepts-pricing-tiers.md) PostgreSQL Için Azure veritabanı, MySQL Için Azure veritabanı veya MariaDB sunucusu Için Azure veritabanı, veritabanı iş yükünün yürütülmesini iyileştirmenize yardımcı olur. Azure Advisor, bu yüksek arabellek havuzu karmaşıklığının etkilediği sunucuları tanımlar. Aşağıdaki eylemlerden birini yapmanızı önerir: 
 - Sorgu planını çözme
 - Daha fazla belleğe sahip bir SKU 'ya taşıma 
 - Daha fazla ıOPS almak için depolama boyutunu artırın.
 
 ### <a name="use-an-azure-database-for-mysql-or-azure-database-for-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Okuma yoğunluğu yoğun iş yükleri için genişleme okumalarını genişletmek için MySQL için Azure veritabanı veya PostgreSQL için Azure veritabanı okuma çoğaltması kullanın
-Danışman, son yedi gün içinde sunucuda yazma işlemleri için okuma yoğunluklu iş yüklerini belirlemek üzere okuma oranı gibi iş yükü tabanlı buluşsal yöntemler kullanır. PostgreSQL için Azure veritabanı veya yüksek bir okuma/yazma oranına sahip MySQL için Azure veritabanı kaynağı, CPU veya bellek çekişmesine yol açabilir ve sorgu performansının yavaşlamasına neden olabilir.  [Çoğaltma](../postgresql/howto-read-replicas-portal.md) eklemek, Çoğaltma sunucusuna yapılan okumaların ölçeğini ölçeklendirmeye ve BIRINCIL sunucuda CPU veya bellek kısıtlamalarını engellemeye yardımcı olur. Danışman, okuma yoğunluklu iş yükleri olan sunucuları tanımlar ve [read replica](../postgresql/concepts-read-replicas.md)   bazı okuma iş yüklerini boşaltmak için bir okuma çoğaltması eklemenizi önerir.
+Danışman, son yedi gün içinde sunucuda yazma işlemleri için okuma yoğunluklu iş yüklerini belirlemek üzere okuma oranı gibi iş yükü tabanlı buluşsal yöntemler kullanır. PostgreSQL için Azure veritabanı veya yüksek bir okuma/yazma oranına sahip MySQL için Azure veritabanı kaynağı, CPU veya bellek çekişmesine yol açabilir ve sorgu performansının yavaşlamasına neden olabilir. [Çoğaltma](../postgresql/howto-read-replicas-portal.md) eklemek, Çoğaltma sunucusuna yapılan okumaların ölçeğini ölçeklendirmeye ve BIRINCIL sunucuda CPU veya bellek kısıtlamalarını engellemeye yardımcı olur. Danışman, okuma yoğunluklu iş yükleri olan sunucuları tanımlar ve bazı okuma iş yüklerini boşaltmak için bir [okuma çoğaltması](../postgresql/concepts-read-replicas.md) eklemenizi önerir.
 
 
 ### <a name="scale-your-azure-database-for-mysql-azure-database-for-postgresql-or-azure-database-for-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Bağlantı kısıtlamalarını engellemek için MySQL için Azure veritabanınızı, PostgreSQL için Azure veritabanı 'nı veya MariaDB sunucusu için Azure veritabanı 'nı daha yüksek bir SKU 'ya ölçeklendirin
-Veritabanı sunucunuza yönelik her yeni bağlantı belleği kaplar. Veritabanı sunucusunun performansı, bellekteki [üst sınır](../postgresql/concepts-limits.md) nedeniyle sunucu bağlantısı başarısız olursa düşer. Azure Advisor, çok sayıda bağlantı hatalarıyla çalışan sunucuları belirler. Aşağıdaki eylemlerden birini gerçekleştirerek sunucunuzun bağlantı sınırlarını sunucunuza daha fazla bellek sağlamak üzere yükseltmeyi önerir:
+Veritabanı sunucunuza yönelik her yeni bağlantı belleği kaplar. Veritabanı sunucusunun performansı, bellekteki [üst sınır](../postgresql/concepts-limits.md) nedeniyle sunucu bağlantısı başarısız olursa düşer. Azure Advisor, çok sayıda bağlantı hatalarıyla çalışan sunucuları belirler. Aşağıdaki eylemlerden birini gerçekleştirerek sunucunuzun bağlantı sınırlarını sunucunuza daha fazla bellek sağlamak üzere yükseltmeyi önerir:
 - İşlem ölçeğini ölçeklendirin. 
 - Çekirdek başına daha fazla işlem içeren bellek için Iyileştirilmiş SKU 'Ları kullanın.
 

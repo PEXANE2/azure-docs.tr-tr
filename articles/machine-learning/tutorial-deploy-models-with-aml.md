@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: f0d78fc55ca60fa883c742885acf2fa98ede61ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc048a523fabdd70c57cb5d75442d440a1753a79
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90896578"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309556"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Öğretici: Azure Container Instances bir görüntü sınıflandırma modeli dağıtma
 
@@ -45,7 +45,7 @@ Bu öğretici, kendi [Yerel ortamınızda](how-to-configure-environment.md#local
 > Bu makalenin geri kalanında not defterinde gördüğünüz içerikle aynı içerik yer almaktadır.  
 >
 > Kodu çalıştırırken okumak istiyorsanız, Jupyter not defterine şimdi geçin.
-> Bir not defterinde tek bir kod hücresini çalıştırmak için, kod hücresine tıklayın ve **SHIFT + enter**tuşuna basın. Ya da tüm not defteri ' ni üstteki araç çubuğundan **Çalıştır** ' ı seçerek çalıştırın.
+> Bir not defterinde tek bir kod hücresini çalıştırmak için, kod hücresine tıklayın ve **SHIFT + enter** tuşuna basın. Ya da tüm not defteri ' ni üstteki araç çubuğundan **Çalıştır** ' ı seçerek çalıştırın.
 
 ## <a name="set-up-the-environment"></a><a name="start"></a>Ortamı ayarlama
 
@@ -358,6 +358,6 @@ service.delete()
 
 + [Azure Machine Learning için dağıtım seçenekleri](how-to-deploy-and-where.md)hakkında bilgi edinin.
 + [Web hizmeti için istemci oluşturma](how-to-consume-web-service.md)hakkında bilgi edinin.
-+  [Büyük miktarlarda verileri zaman uyumsuz olarak tahmin edin](how-to-use-parallel-run-step.md) .
++  [Büyük miktarlarda verileri zaman uyumsuz olarak tahmin edin](./tutorial-pipeline-batch-scoring-classification.md) .
 + Azure Machine Learning modellerinizi [Application Insights](how-to-enable-app-insights.md)izleyin.
-+ [Otomatik algoritma seçim](tutorial-auto-train-models.md) öğreticisini deneyin. 
++ [Otomatik algoritma seçim](tutorial-auto-train-models.md) öğreticisini deneyin.

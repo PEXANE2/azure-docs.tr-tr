@@ -9,12 +9,12 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 205aed1811c3d9d21a10be7bc4f01c73eb7295b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17418b0255182934045acc9174b34cff2aefff99
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89254809"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307447"
 ---
 # <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>Azure Machine Learning ' de izleme denemeleri ve modelleri dağıtma
 
@@ -24,13 +24,13 @@ Aşağıdaki diyagramda, MLflow Izlemenin yanı sıra, Azure Machine Learning ç
 
 ![denemeleri izleme](./media/how-to-track-experiments/mlflow-diagram-track.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* [Bir Azure Machine Learning çalışma alanı](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace) sağlamanız gerekir
+* [Bir Azure Machine Learning çalışma alanı](../how-to-manage-workspace.md#create-a-workspace) sağlamanız gerekir
 
 ## <a name="create-a-new-notebook"></a>Yeni not defteri oluşturma
 
-Azure Machine Learning ve MLFlow SDK Veri Bilimi VM'si önceden yüklenir ve **azureml_py36_ \* ** Conda ortamından erişilebilir. Jupyterlab içinde, başlatıcı 'ye tıklayın ve aşağıdaki çekirdeği seçin:
+Azure Machine Learning ve MLFlow SDK Veri Bilimi VM'si önceden yüklenir ve * *azureml_py36_ \** _ Conda ortamından erişilebilir. Jupyterlab içinde, başlatıcı 'ye tıklayın ve aşağıdaki çekirdeği seçin:
 
 ![çekirdek seçimi](./media/how-to-track-experiments/experiment-tracking-1.png)
 
@@ -137,7 +137,7 @@ Bu bölümde, bir DSVM üzerinde eğitilen modellerin Azure Machine Learning iç
 
 __Yeni çıkarım kümesi__ bölmesindeki Fill details:
 
-* İşlem adı
+_ İşlem adı
 * Kubernetes hizmeti-yeni oluştur seçeneğini belirleyin
 * Bölgeyi seçin
 * VM boyutunu seçin (Bu öğreticinin amaçları doğrultusunda Standard_D3_v2 için varsayılan değer yeterlidir)
@@ -145,7 +145,7 @@ __Yeni çıkarım kümesi__ bölmesindeki Fill details:
 * Düğüm sayısı __1__ ' e eşit olmalıdır
 * Ağ yapılandırması-temel
 
-Sonra __Oluştur__' a tıklayın.
+Sonra __Oluştur__ ' a tıklayın.
 
 ![işlem ayrıntıları](./media/how-to-track-experiments/mlflow-experiments-7.png)
 
@@ -159,7 +159,7 @@ Sonra __Oluştur__' a tıklayın.
 
 Kod olmadan dağıtım, belirli bir Puanlama betiği belirtmeye gerek kalmadan model yapıtını doğrudan dağıtabileceğiniz anlamına gelir.
 
-Diabetes modelini dağıtmak için [Azure Machine Learning Studio](https://ml.azure.com) Sol menüye gidin ve __modeller__' ı seçin. Sonra, kayıtlı diabetes_model ' ye tıklayın:
+Diabetes modelini dağıtmak için [Azure Machine Learning Studio](https://ml.azure.com) Sol menüye gidin ve __modeller__ ' ı seçin. Sonra, kayıtlı diabetes_model ' ye tıklayın:
 
 ![Model Seç](./media/how-to-track-experiments/mlflow-experiments-3.png)
 
@@ -167,7 +167,7 @@ Ardından, model ayrıntıları bölmesindeki __Dağıt__ düğmesine tıklayın
 
 ![Dağıtma](./media/how-to-track-experiments/mlflow-experiments-4.png)
 
-Modeli, 1. adımda oluşturduğumuz çıkarım kümesine (Azure Kubernetes hizmeti) dağıtacağız. Hizmet için bir ad ve AKS işlem kümesinin adı (adım 1 ' de oluşturulur) sağlayarak aşağıdaki ayrıntıları girin. Ayrıca __CPU Reserve kapasitesini__ 1 ' e (0,1 ' den) ve __bellek ayırma kapasitesini__ 1 ' e (0,5 ' den) artırmanız önerilir. bu artışı __Gelişmiş__ ' e tıklayıp Ayrıntıları doldurarak yapabilirsiniz. Ardından __Dağıt__' a tıklayın.
+Modeli, 1. adımda oluşturduğumuz çıkarım kümesine (Azure Kubernetes hizmeti) dağıtacağız. Hizmet için bir ad ve AKS işlem kümesinin adı (adım 1 ' de oluşturulur) sağlayarak aşağıdaki ayrıntıları girin. Ayrıca __CPU Reserve kapasitesini__ 1 ' e (0,1 ' den) ve __bellek ayırma kapasitesini__ 1 ' e (0,5 ' den) artırmanız önerilir. bu artışı __Gelişmiş__ ' e tıklayıp Ayrıntıları doldurarak yapabilirsiniz. Ardından __Dağıt__ ' a tıklayın.
 
 ![Dağıtım ayrıntıları](./media/how-to-track-experiments/mlflow-experiments-5.png)
 
@@ -177,7 +177,7 @@ Model başarıyla dağıtıldığında, aşağıdakileri görmeniz gerekir (Bu s
 
 ![Modeli tüketme](./media/how-to-track-experiments/mlflow-experiments-8.png)
 
-Dağıtım durumunun __sağlıklı__duruma geçmeyeceğini görmeniz gerekir. __transitioning__ Buna ek olarak, bu ayrıntılar bölümü bir uygulama geliştiricisinin ML modelinizi uygulamalarıyla tümleştirmeleri için kullanabileceği REST uç noktası ve Swagger URL 'Lerini sağlar.
+Dağıtım durumunun __sağlıklı__ duruma geçmeyeceğini görmeniz gerekir. __transitioning__ Buna ek olarak, bu ayrıntılar bölümü bir uygulama geliştiricisinin ML modelinizi uygulamalarıyla tümleştirmeleri için kullanabileceği REST uç noktası ve Swagger URL 'Lerini sağlar.
 
 [Postman](https://www.postman.com/)kullanarak uç noktayı test edebilir veya AzureML SDK 'sını kullanabilirsiniz:
 
@@ -204,4 +204,4 @@ Adım 1 ' de oluşturduğunuz çıkarım işlemi, devam eden işlem ücretlerine
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-* [AzureML için model dağıtma](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where) hakkında daha fazla bilgi edinin
+* [AzureML için model dağıtma](../how-to-deploy-and-where.md) hakkında daha fazla bilgi edinin

@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 10/13/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: a8a04d9e1b17c7e65be946cb51bfc41019e0706d
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: 9bcf6ac9991c1ad070f823c97b5bd0460eff07c2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93234009"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309085"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning olan kaynaklar için kotaları yönetme ve artırma
 
@@ -52,7 +52,7 @@ Bu bölümde, aşağıdaki kaynaklar için varsayılan ve en yüksek kota sını
 + Azure Storage
 
 > [!IMPORTANT]
-> Sınırlar değişikliğe tabidir. En son bilgiler için bkz. Azure [aboneliği ve hizmet limitleri, Kotalar ve](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits/) tüm Azure için kısıtlamalar.
+> Sınırlar değişikliğe tabidir. En son bilgiler için bkz. Azure [aboneliği ve hizmet limitleri, Kotalar ve](../azure-resource-manager/management/azure-subscription-service-limits.md) tüm Azure için kısıtlamalar.
 
 ### <a name="virtual-machines"></a>Sanal makineler
 Her Azure aboneliğinin, tüm hizmetler genelinde sanal makine sayısıyla sınırlı bir limiti vardır. Sanal makine çekirdekleri, boyut serisi başına bölgesel toplam sınıra ve bölgesel sınıra sahiptir. Her iki sınır de ayrı olarak zorlanır.
@@ -100,7 +100,7 @@ Aşağıdaki tabloda, aşamazsınız ek sınırlar gösterilmektedir.
 
 ### <a name="container-instances"></a>Container Instances
 
-Daha fazla bilgi için bkz. [Container Instances sınırları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits).
+Daha fazla bilgi için bkz. [Container Instances sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md#container-instances-limits).
 
 ### <a name="storage"></a>Depolama
 Azure depolama 'nın, her abonelik için bölge başına 250 depolama hesabı sınırlaması vardır. Bu sınır, hem standart hem de Premium Depolama hesaplarını içerir.
@@ -156,7 +156,7 @@ Sınırı veya kotayı varsayılan sınırın üzerinde yükseltmek için, ücre
 Bir kota artışı istediğinizde, göz önünde bulundurmanız gereken hizmeti seçin. Örneğin Azure Machine Learning, Container Instances veya depolama ' yı seçin. Azure Machine Learning işlem için, önceki adımlarda kotayı görüntülerken **Kota iste** düğmesini seçebilirsiniz.
 
 > [!NOTE]
-> [Ücretsiz deneme abonelikleri](https://azure.microsoft.com/offers/ms-azr-0044p) sınır veya kota artışına uygun değildir. Ücretsiz bir deneme aboneliğiniz varsa, bir [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0003p/) aboneliğine yükseltebilirsiniz. Daha fazla bilgi için bkz. [Azure Ücretsiz deneme sürümünü Kullandıkça Öde](https://docs.microsoft.com/azure/cost-management-billing/manage/upgrade-azure-subscription) ve [ücretsiz Azure hesabına yükseltme hakkında SSS](https://azure.microsoft.com/free/free-account-faq).
+> [Ücretsiz deneme abonelikleri](https://azure.microsoft.com/offers/ms-azr-0044p) sınır veya kota artışına uygun değildir. Ücretsiz bir deneme aboneliğiniz varsa, bir [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0003p/) aboneliğine yükseltebilirsiniz. Daha fazla bilgi için bkz. [Azure Ücretsiz deneme sürümünü Kullandıkça Öde](../cost-management-billing/manage/upgrade-azure-subscription.md) ve [ücretsiz Azure hesabına yükseltme hakkında SSS](https://azure.microsoft.com/free/free-account-faq).
 
 ## <a name="private-endpoint-and-private-dns-quota-increases"></a>Özel uç nokta ve özel DNS kota artışları
 
@@ -172,7 +172,7 @@ Azure Machine Learning (müşteri) aboneliğinizde kaynak oluşturuyor, ancak ba
 
 Bu senaryolar için bir kesinti istemek üzere aşağıdaki adımları kullanın:
 
-1. [Bir Azure destek Isteği oluşturun](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request) ve __temel bilgiler__ bölümünde aşağıdaki seçenekleri belirleyin:
+1. [Bir Azure destek Isteği oluşturun](../azure-portal/supportability/how-to-create-azure-support-request.md#create-a-support-request) ve __temel bilgiler__ bölümünde aşağıdaki seçenekleri belirleyin:
 
     | Alan | Seçim |
     | ----- | ----- |

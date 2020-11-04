@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: mvc
-ms.openlocfilehash: c7bdf3e0300bffaffb7191aea019bed719cdc6fa
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 01ec0c7c0d2d060bbd930a099fe3db54de6cb150
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220644"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308962"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services v3'e genel bakış
 
@@ -59,14 +59,14 @@ Media Services, bulutta çeşitli medya iş akışları oluşturmanıza olanak t
 * Daha geniş bir hedef kitle (örneğin, işitme engelli kişiler veya farklı bir dilde okumak isteyen kişiler) için videolara alt yazı ve açıklamalı alt yazılar eklemek için [Azure bilişsel hizmetler API'si](../../index.yml?pivot=products&panel=ai) ile birlikte Azure Media Services kullanın.
 * Anında yüksek yükleri daha iyi işleyebilmek için büyük ölçeklemeye ulaşmak üzere Azure CDN etkinleştirin (örneğin, bir ürün başlatma olayının başlangıcı).
 
-## <a name="how-can-i-get-started-with-v3"></a>v3’ü kullanmaya nasıl başlayabilirim? 
+## <a name="how-can-i-get-started-with-v3"></a>v3’ü kullanmaya nasıl başlayabilirim?
 
 Media Services v3 ile içerik kodlama ve paketleme, Videoları isteğe bağlı olarak yayımlama ve canlı yayınlama hakkında bilgi edinin. Öğreticiler, API başvuruları ve diğer belgeler, güvenli bir biçimde milyonlarca kullanıcıya ölçeklendirilebilen, isteğe bağlı ve canlı video veya ses akışları sağlama ile ilgili bilgiler içerir.
 
 > [!TIP]
-> Geliştirmeye başlamadan önce şunları gözden geçirin:<br/>* [Temel kavramlar](concepts-overview.md) (paketleme, kodlama ve koruma gibi önemli kavramlar dahildir)<br/>* [Media Services v3 API 'leri Ile geliştirme](media-services-apis-overview.md) (API 'lere erişme, adlandırma kuralları vb.)
+> Geliştirmeye başlamadan önce, gözden geçirin: paketleme, kodlama ve koruma gibi önemli kavramlar ve API 'ler, adlandırma kuralları ve benzeri bilgiler içeren [Media Services v3 API 'leri Ile geliştirme](media-services-apis-overview.md) gibi [temel kavramlar](concepts-overview.md) .
 
-### <a name="sdks"></a>SDK’lar
+### <a name="sdks"></a>SDK
 
 [Azure Media Services v3 Istemci SDK 'ları](media-services-apis-overview.md#sdks)ile geliştirmeye başlayın.
 

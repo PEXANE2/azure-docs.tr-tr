@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6f2e0b9a797edb2d5529bb0645ed56c44df3121c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02fd6c1d4cbd1c2db287a38e086045042b5f220a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440037"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309538"
 ---
 # <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>SQL Server veritabanından SQL veritabanı 'na veri taşıma Azure Data Factory
 
@@ -43,16 +43,16 @@ ADF, verilerin düzenli aralıklarla taşınmasını yöneten basit JSON betikle
 * Azure Blob depolama hesabından Azure SQL veritabanı 'na veri kopyalama.
 
 > [!NOTE]
-> Burada gösterilen adımlar, ADF ekibi tarafından sunulan daha ayrıntılı öğreticiden uyarlanmıştır: [bir SQL Server veritabanından Azure Blob depolama başvurularına veri kopyalama](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) ilgili konunun ilgili bölümlerine, uygun olduğunda sağlanır.
+> Burada gösterilen adımlar, ADF ekibi tarafından sunulan daha ayrıntılı öğreticiden uyarlanmıştır: [bir SQL Server veritabanından Azure Blob depolama başvurularına veri kopyalama](../../data-factory/tutorial-hybrid-copy-portal.md) ilgili konunun ilgili bölümlerine, uygun olduğunda sağlanır.
 >
 >
 
-## <a name="prerequisites"></a><a name="prereqs"></a>Ön koşullar
+## <a name="prerequisites"></a><a name="prereqs"></a>Önkoşullar
 Bu öğreticide şunları kabul edersiniz:
 
 * Bir **Azure aboneliği**. Aboneliğiniz yoksa [ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
 * Bir **Azure depolama hesabı**. Bu öğreticide verileri depolamak için bir Azure depolama hesabı kullanın. Azure depolama hesabınız yoksa [Depolama hesabı oluşturma](../../storage/common/storage-account-create.md) makalesine bakın. Depolama hesabını oluşturduktan sonra, depolamaya erişmek için kullanılan hesap anahtarını edinmeniz gerekir. Bkz. [depolama hesabı erişim anahtarlarını yönetme](../../storage/common/storage-account-keys-manage.md).
-* **Azure SQL veritabanına**erişim. Azure SQL veritabanı ayarlamanız gerekirse [Microsoft Azure SQL veritabanı Ile çalışmaya](../../sql-database/sql-database-get-started.md) başlama konusu, Azure SQL veritabanı 'nın yeni bir örneğini sağlama hakkında bilgi sağlar.
+* **Azure SQL veritabanına** erişim. Azure SQL veritabanı ayarlamanız gerekirse [Microsoft Azure SQL veritabanı Ile çalışmaya](../../azure-sql/database/single-database-create-quickstart.md) başlama konusu, Azure SQL veritabanı 'nın yeni bir örneğini sağlama hakkında bilgi sağlar.
 * **Azure PowerShell** yerel olarak yüklendi ve yapılandırıldı. Yönergeler için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/).
 
 > [!NOTE]
@@ -66,12 +66,12 @@ Geçiş işlemini göstermek için [NYC TAXI veri kümesini](https://chriswhong.
 Burada belirtilen yordamı kendi verilerinizin kümesine uyarlayabilir veya NYC TAXI veri kümesini kullanarak açıklanan adımları izleyebilirsiniz. NYC TAXI veri kümesini SQL Server veritabanınıza yüklemek için, [verileri SQL Server veritabanına toplu Içeri aktarma](sql-walkthrough.md#dbload)bölümünde özetlenen yordamı izleyin.
 
 ## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a> Azure Data Factory oluşturma
-Yeni bir Azure Data Factory ve [Azure Portal](https://portal.azure.com/) kaynak grubu oluşturma yönergeleri [Azure Data Factory oluşturma](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory). Yeni ADF örneğini *adfdsp* olarak adlandırın ve kaynak grubunun adını *adfdsprg*olarak adlandırın.
+Yeni bir Azure Data Factory ve [Azure Portal](https://portal.azure.com/) kaynak grubu oluşturma yönergeleri [Azure Data Factory oluşturma](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory). Yeni ADF örneğini *adfdsp* olarak adlandırın ve kaynak grubunun adını *adfdsprg* olarak adlandırın.
 
 ## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Azure Data Factory Integration Runtime yükleyip yapılandırın
 Integration Runtime, farklı ağ ortamlarında veri tümleştirme özellikleri sağlamak için Azure Data Factory tarafından kullanılan müşteri tarafından yönetilen bir veri tümleştirme altyapısıdır. Bu çalışma zamanına daha önce "Veri Yönetimi Gateway" adı verilir.
 
-Ayarlamak için işlem [hattı oluşturma yönergelerini izleyin](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
+Ayarlamak için işlem [hattı oluşturma yönergelerini izleyin](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)
 
 ## <a name="create-linked-services-to-connect-to-the-data-resources"></a><a name="adflinkedservices"></a>Veri kaynaklarına bağlanmak için bağlı hizmetler oluşturma
 Bağlı bir hizmet Azure Data Factory bir veri kaynağına bağlanmak için gereken bilgileri tanımlar. Bu senaryoda bağlı hizmetlerin gerektiği üç kaynağı vardır:
@@ -87,7 +87,7 @@ Bağlı hizmetler oluşturmak için adım adım yordam, [bağlı hizmetler oluş
 Aşağıdaki komut dosyası tabanlı yordamlarla veri kümelerinin yapısını, konumunu ve kullanılabilirliğini belirten tablolar oluşturun. JSON dosyaları tabloları tanımlamak için kullanılır. Bu dosyaların yapısı hakkında daha fazla bilgi için bkz. [veri kümeleri](../../data-factory/concepts-datasets-linked-services.md).
 
 > [!NOTE]
-> `Add-AzureAccount`Komut yürütmesi için doğru Azure aboneliğinin seçili olduğunu onaylamak üzere [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) cmdlet 'ini yürütmeden önce cmdlet 'ini yürütmelisiniz. Bu cmdlet 'in belgeleri için bkz. [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount?view=azuresmps-3.7.0).
+> `Add-AzureAccount`Komut yürütmesi için doğru Azure aboneliğinin seçili olduğunu onaylamak üzere [New-AzureDataFactoryTable](/previous-versions/azure/dn835096(v=azure.100)) cmdlet 'ini yürütmeden önce cmdlet 'ini yürütmelisiniz. Bu cmdlet 'in belgeleri için bkz. [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount?view=azuresmps-3.7.0).
 >
 >
 
@@ -138,7 +138,7 @@ SQL Server için tablo tanımı aşağıdaki JSON dosyasında belirtilmiştir:
 
 Sütun adları buraya eklenmedi. Sütun adlarında bunları buraya ekleyerek seçebilirsiniz (Ayrıntılar için [ADF belgelerinin](../../data-factory/copy-activity-overview.md) konusunu inceleyin.
 
-Tablonun JSON tanımını dosyada *onpremtabledef.js* adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\onpremtabledef.js*olarak kabul edilir). ADF 'de aşağıdaki Azure PowerShell cmdlet 'ini kullanarak tablo oluşturun:
+Tablonun JSON tanımını dosyada *onpremtabledef.js* adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\onpremtabledef.js* olarak kabul edilir). ADF 'de aşağıdaki Azure PowerShell cmdlet 'ini kullanarak tablo oluşturun:
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
@@ -173,7 +173,7 @@ New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp �
 }
 ```
 
-Tablonun JSON tanımını dosyada *bloboutputtabledef.js* adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\bloboutputtabledef.js*olarak kabul edilir). ADF 'de aşağıdaki Azure PowerShell cmdlet 'ini kullanarak tablo oluşturun:
+Tablonun JSON tanımını dosyada *bloboutputtabledef.js* adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\bloboutputtabledef.js* olarak kabul edilir). ADF 'de aşağıdaki Azure PowerShell cmdlet 'ini kullanarak tablo oluşturun:
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
@@ -207,7 +207,7 @@ SQL Azure çıktısı için olan tablonun tanımı aşağıda verilmiştir (Bu �
 }
 ```
 
-Tablonun JSON tanımını dosyada *AzureSqlTable.js* adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\AzureSqlTable.js*olarak kabul edilir). ADF 'de aşağıdaki Azure PowerShell cmdlet 'ini kullanarak tablo oluşturun:
+Tablonun JSON tanımını dosyada *AzureSqlTable.js* adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\AzureSqlTable.js* olarak kabul edilir). ADF 'de aşağıdaki Azure PowerShell cmdlet 'ini kullanarak tablo oluşturun:
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
@@ -217,7 +217,7 @@ New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -F
 ## <a name="define-and-create-the-pipeline"></a><a name="adf-pipeline"></a>İşlem hattını tanımlama ve oluşturma
 İşlem hattına ait etkinlikleri belirtin ve aşağıdaki komut dosyası tabanlı yordamlarla işlem hattı oluşturun. Ardışık düzen özelliklerini tanımlamak için bir JSON dosyası kullanılır.
 
-* Betik, işlem **hattı adının** *Amldsprocesspipeline*olduğunu varsayar.
+* Betik, işlem **hattı adının** *Amldsprocesspipeline* olduğunu varsayar.
 * Ayrıca, işlem hattının dönemselliğini günlük olarak yürütüyoruz ve iş için varsayılan yürütme süresini (12. UTC) kullanacağınızı unutmayın.
 
 > [!NOTE]
@@ -294,7 +294,7 @@ Daha önce sunulan tablo tanımlarını kullanarak ADF 'nin işlem hattı tanım
 }
 ```
 
-İşlem hattının bu JSON tanımını dosyada *pipelinedef.js* adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\pipelinedef.js*olarak kabul edilir). Aşağıdaki Azure PowerShell cmdlet 'ini kullanarak ADF 'de işlem hattı oluşturun:
+İşlem hattının bu JSON tanımını dosyada *pipelinedef.js* adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\pipelinedef.js* olarak kabul edilir). Aşağıdaki Azure PowerShell cmdlet 'ini kullanarak ADF 'de işlem hattı oluşturun:
 
 ```azurepowershell
 New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json

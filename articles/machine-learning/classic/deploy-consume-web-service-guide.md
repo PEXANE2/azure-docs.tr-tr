@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 52404aa1514dc3189305117181408e25e233fce8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc71dc87ca972c52fabb91a6412eec702eee5460
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362410"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307426"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio (klasik) Web Hizmetleri: dağıtım ve tüketim
 
-**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 Makine öğrenimi iş akışlarını ve modellerini Web Hizmetleri olarak dağıtmak için Azure Machine Learning Studio (klasik) kullanabilirsiniz. Bu Web Hizmetleri daha sonra, gerçek zamanlı veya toplu işlem modunda tahmine dayalı olarak, makine öğrenimi modellerini Internet üzerinden uygulamalardan çağırmak için kullanılabilir. Web hizmetleri yeniden hazırlandığından, bunları .NET ve Java gibi çeşitli programlama dilleri ve platformlarından ve Excel gibi uygulamalardan çağırabilirsiniz.
 
@@ -44,7 +44,7 @@ Aşağıdaki bağlantılar, yeni bir Web hizmetinin nasıl dağıtılacağı hak
 
 Web Hizmetleri için Azure Machine Learning Studio (klasik) kaynak sağlayıcısı, REST API çağrılarını kullanarak Web hizmetlerinin dağıtılmasını ve yönetilmesine izin vermez. Daha fazla bilgi için [Machine Learning Web hizmeti (REST)](/rest/api/machinelearning/index) başvurusuna bakın.
 
-<!-- [Machine Learning Web Service (REST)](https://msdn.microsoft.com/library/azure/mt767538.aspx) reference. -->
+<!-- [Machine Learning Web Service (REST)](/rest/api/machinelearning/webservices) reference. -->
 
 ### <a name="with-powershell-cmdlets"></a>PowerShell cmdlet 'leri ile
 
@@ -69,7 +69,7 @@ Uygulama çalıştırıldığında bir Web hizmeti JSON şablonu oluşturulur. B
 
 Bunları, *Machinelearningworkspace* düğümü ile aynı düzeydeki *Özellikler* DÜĞÜMÜNÜN alt öğeleri olarak JSON şablonuna ekleyin.
 
-Aşağıda bir örnek verilmiştir:
+İşte bir örnek:
 
 ```json
 "StorageAccount": {
@@ -83,7 +83,7 @@ Aşağıda bir örnek verilmiştir:
 
 Ek ayrıntılar için aşağıdaki makalelere ve örnek koda bakın:
 
-* MSDN 'de [Azure Machine Learning Studio (klasik) cmdlet](https://docs.microsoft.com/powershell/module/az.machinelearning) başvurusu
+* MSDN 'de [Azure Machine Learning Studio (klasik) cmdlet](/powershell/module/az.machinelearning) başvurusu
 
 ## <a name="consume-the-web-services"></a>Web hizmetlerini kullanma
 

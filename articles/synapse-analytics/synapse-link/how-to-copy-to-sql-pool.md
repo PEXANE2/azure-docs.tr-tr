@@ -1,6 +1,6 @@
 ---
-title: Apache Spark kullanarak bir SQL havuzuna Azure Cosmos DB verileri için SYNAPSE bağlantısını kopyalama
-description: Verileri bir Spark veri çerçevesine yükleme, verileri oluşturma ve bir SQL havuzu tablosuna yükleme
+title: Apache Spark kullanarak adanmış bir SQL havuzuna Azure Cosmos DB verileri için SYNAPSE bağlantısını kopyalayın
+description: Verileri bir Spark veri çerçevesine yükleyin, verileri seçip özel bir SQL havuzu tablosuna yükleyin
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
@@ -9,35 +9,35 @@ ms.subservice: synapse-link
 ms.date: 08/10/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 409f1ecee5ccf42a0168d500b40337366e07bfc0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 13891f9614e658be39adbb69fed1503a0c66d5e4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91287859"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309219"
 ---
-# <a name="copy-data-from-azure-cosmos-db-into-a-sql-pool-using-apache-spark"></a>Apache Spark kullanarak Azure Cosmos DB bir SQL havuzuna veri kopyalama
+# <a name="copy-data-from-azure-cosmos-db-into-a-dedicated-sql-pool-using-apache-spark"></a>Apache Spark kullanarak Azure Cosmos DB verileri adanmış bir SQL havuzuna kopyalama
 
 Azure Cosmos DB için Azure SYNAPSE bağlantısı, kullanıcıların Azure Cosmos DB işletimsel veriler üzerinde neredeyse gerçek zamanlı analiz çalıştırmasına olanak sağlar. Ancak, veri ambarı kullanıcılarına yönelik olarak bazı verilerin toplanması ve zenginleştirilmesi gereken durumlar vardır. SYNAPSE bağlantısı verilerinin görselleştirme ve dışa aktarılması, bir not defterinde yalnızca birkaç hücre ile yapılabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 * İle [bir Synapse çalışma alanı sağlayın](../quickstart-create-workspace.md) :
-    * [Spark havuzu](../quickstart-create-apache-spark-pool-studio.md)
-    * [SQL havuzu](../quickstart-create-sql-pool-studio.md)
+    * [Sunucusuz Apache Spark havuzu](../quickstart-create-apache-spark-pool-studio.md)
+    * [adanmış SQL havuzu](../quickstart-create-sql-pool-studio.md)
 * [Veri içeren bir HTAP kapsayıcısına Cosmos DB hesabı sağlama](../../cosmos-db/configure-synapse-link.md)
 * [Azure Cosmos DB HTAP kapsayıcısını çalışma alanına bağlama](./how-to-connect-synapse-link-cosmos-db.md)
-* [Spark 'dan bir SQL havuzuna veri aktarmak için doğru kuruluma sahipsiniz](../spark/synapse-spark-sql-pool-import-export.md)
+* [Spark 'dan adanmış bir SQL havuzuna veri aktarmak için doğru kuruluma sahip](../spark/synapse-spark-sql-pool-import-export.md)
 
 ## <a name="steps"></a>Adımlar
 Bu öğreticide, işlem deposuna hiçbir etkilenmemesi için analitik depoya bağlanırsınız (herhangi bir Istek birimini tüketmez). Aşağıdaki adımlara gideceğiz:
 1. Cosmos DB HTAP kapsayıcısını Spark veri çerçevesine okuyun
 2. Sonuçları yeni bir veri çerçevesinde toplama
-3. Verileri bir SQL havuzuna alma
+3. Verileri adanmış bir SQL havuzuna alma
 
 [![Spark to SQL adımları 1](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png)](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png#lightbox)
 
-## <a name="data"></a>Veri
-Bu örnekte, **RetailSales**ADLı BIR htap kapsayıcısı kullanıyoruz. Bu, bağlı bir hizmetin **Connecteddata**adlı bir parçasıdır ve aşağıdaki şemaya sahiptir:
+## <a name="data"></a>Veriler
+Bu örnekte, **RetailSales** ADLı BIR htap kapsayıcısı kullanıyoruz. Bu, bağlı bir hizmetin **Connecteddata** adlı bir parçasıdır ve aşağıdaki şemaya sahiptir:
 * _rid: dize (Nullable = true)
 * _ts: Long (Nullable = true)
 * logQuantity: Double (Nullable = true)
@@ -50,7 +50,7 @@ Bu örnekte, **RetailSales**ADLı BIR htap kapsayıcısı kullanıyoruz. Bu, ba�
 * weekStarting: Long (Nullable = true)
 * _etag: dize (Nullable = true)
 
-Rapor amaçları doğrultusunda, *productCode* ve *weekby* Sales (*Miktar*, *gelir* (fiyat x miktarı) toplanacak satışları toplayacağız. Son olarak, bu verileri **dbo. ProductSales**ADLı bir SQL havuzu tablosuna aktaracağız.
+Rapor amaçları doğrultusunda, *productCode* ve *weekby* Sales ( *Miktar* , *gelir* (fiyat x miktarı) toplanacak satışları toplayacağız. Son olarak, bu verileri **dbo. ProductSales** adlı özel bir SQL havuzu tablosuna aktaracağız.
 
 ## <a name="configure-a-spark-notebook"></a>Spark Not defteri yapılandırma
 Ana dil olarak Scala as Spark (Scala) ile bir Spark Not defteri oluşturun. Oturum için Not defterinin varsayılan ayarını kullanıyoruz.
@@ -67,7 +67,7 @@ val df_olap = spark.read.format("cosmos.olap").
 
 ## <a name="aggregate-the-results-in-a-new-dataframe"></a>Sonuçları yeni bir veri çerçevesinde toplama
 
-İkinci hücrede, bir SQL havuzu veritabanına yüklemeden önce yeni veri çerçevesi için gereken dönüşümü ve toplamaları çalıştırdık.
+İkinci hücrede, özel bir SQL havuzu veritabanına yüklemeden önce yeni veri çerçevesi için gereken dönüşümü ve toplamaları çalıştırdık.
 
 ```java
 // Select relevant columns and create revenue
@@ -77,12 +77,12 @@ val df_olap_aggr = df_olap_step1.groupBy("productCode","weekStarting").agg(sum("
     withColumn("AvgPrice",col("Sum_revenue")/col("Sum_quantity"))
 ```
 
-## <a name="load-the-results-into-a-sql-pool"></a>Sonuçları bir SQL havuzuna yükleme
+## <a name="load-the-results-into-a-dedicated-sql-pool"></a>Sonuçları adanmış bir SQL havuzuna yükleme
 
-Üçüncü hücrede, verileri bir SQL havuzuna yükledik. İş tamamlandıktan sonra silinecek geçici bir dış tablo, dış veri kaynağı ve dış dosya biçimi otomatik olarak oluşturulur.
+Üçüncü hücrede, verileri adanmış bir SQL havuzuna yükledik. İş tamamlandıktan sonra silinecek geçici bir dış tablo, dış veri kaynağı ve dış dosya biçimi otomatik olarak oluşturulur.
 
 ```java
-df_olap_aggr.write.sqlanalytics("arnaudpool.dbo.productsales", Constants.INTERNAL)
+df_olap_aggr.write.sqlanalytics("userpool.dbo.productsales", Constants.INTERNAL)
 ```
 
 ## <a name="query-the-results-with-sql"></a>Sonuçları SQL ile sorgulama

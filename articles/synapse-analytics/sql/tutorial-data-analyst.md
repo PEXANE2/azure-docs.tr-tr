@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure SYNAPSE Studio 'da Azure açık veri kümelerini çözümlemek için isteğe bağlı SQL (Önizleme) kullanma (Önizleme)"
-description: Bu öğreticide, SQL isteğe bağlı (Önizleme) kullanarak farklı Azure açık veri kümeleri birleştiren keşif verileri analizini nasıl kolayca gerçekleştirebileceğiniz ve Azure SYNAPSE Studio 'daki sonuçları görselleştirebileceğiniz gösterilmektedir.
+title: "Öğretici: Azure SYNAPSE Studio 'da Azure açık veri kümelerini çözümlemek için sunucusuz SQL Havuzu (Önizleme) kullanma (Önizleme)"
+description: Bu öğreticide, sunucusuz SQL Havuzu (Önizleme) kullanarak farklı Azure açık veri kümeleri birleştiren keşif verileri analizini nasıl kolayca gerçekleştirebileceğiniz ve Azure SYNAPSE Studio 'daki sonuçları görselleştirebileceğiniz gösterilmektedir.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0471bd594dcf1b0654d6b4c496e5d39ade2739fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cec16041edd10a57088df4ae9cfe0587906919eb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539529"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309290"
 ---
-# <a name="tutorial-use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>Öğretici: Azure açık veri kümelerini analiz etmek ve sonuçları Azure SYNAPSE Studio 'da görselleştirmek için SQL isteğe bağlı olarak kullanın
+# <a name="tutorial-use-serverless-sql-pool-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>Öğretici: Azure Open veri kümelerini analiz etmek ve Azure SYNAPSE Studio 'da sonuçları görselleştirmek için sunucusuz SQL havuzu kullanma
 
-Bu öğreticide, Azure SYNAPSE Studio 'da SQL 'i isteğe bağlı olarak kullanarak farklı Azure açık veri kümelerini birleştirerek araştırmacı veri analizini gerçekleştirmeyi öğrenirsiniz.
+Bu öğreticide, sunucusuz SQL havuzu kullanarak farklı Azure açık veri kümelerini birleştirerek ve sonra Azure SYNAPSE Studio 'daki sonuçları görselleştirerek araştırmacı veri analizini nasıl gerçekleştireceğinizi öğreneceksiniz.
 
 Özellikle, şunu içeren [New York City (NYC) TAXI veri kümesini](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) analiz edersiniz:
 
@@ -102,7 +102,7 @@ Aşağıdaki kod parçacığında, yıllık sayıda TAXI rides için sonuç gös
 
 ![Yıllık TAXI bayıldığı sonuç parçacığı sayısı](./media/tutorial-data-analyst/4.png)
 
-Veriler, **tablodan** **grafik** görünümüne geçiş yaparak SYNAPSE Studio 'da görselleştirilebilir. **Alan**, **çubuk**, **sütun**, **çizgi**, **pasta**ve **dağılım**gibi farklı grafik türleri arasından seçim yapabilirsiniz. Bu durumda, **sütun** grafiğinin **Kategori** sütununu **current_year**olarak çizimiyle:
+Veriler, **tablodan** **grafik** görünümüne geçiş yaparak SYNAPSE Studio 'da görselleştirilebilir. **Alan** , **çubuk** , **sütun** , **çizgi** , **pasta** ve **dağılım** gibi farklı grafik türleri arasından seçim yapabilirsiniz. Bu durumda, **sütun** grafiğinin **Kategori** sütununu **current_year** olarak çizimiyle:
 
 ![Yıl başına bayıldığı gösteren sütun grafiği](./media/tutorial-data-analyst/5.png)
 
@@ -131,7 +131,7 @@ Aşağıdaki kod parçacığında bu sorgunun sonucu gösterilmektedir:
 
 ![2016 sonuç parçacığı için günlük sayıda bayıldığı](./media/tutorial-data-analyst/6.png)
 
-Daha sonra, **Kategori** sütunu **current_day** olarak ayarlanmış olan **sütun** grafiğini ve **gösterge (seri)** sütununu **rides_per_day**olarak belirterek verileri kolayca görselleştirebilirsiniz.
+Daha sonra, **Kategori** sütunu **current_day** olarak ayarlanmış olan **sütun** grafiğini ve **gösterge (seri)** sütununu **rides_per_day** olarak belirterek verileri kolayca görselleştirebilirsiniz.
 
 ![2016 için günlük olarak bayıldığı gösteren sütun grafiği](./media/tutorial-data-analyst/7.png)
 
@@ -213,9 +213,9 @@ Sorgunun sonuçları, şu nedenle oluşan vergilenme sayısının meydana gelen 
 - Bu, soğuk idi (sıcaklık 0 derecenin altında).
 - Bu, WINDY (~ 10 m/s) idi.
 
-Bu öğreticide, veri analistinin keşif veri analizini hızlı bir şekilde nasıl gerçekleştirebildiğini, isteğe bağlı SQL kullanarak farklı veri kümelerini kolayca nasıl birleştirebileceğini ve Azure SYNAPSE Studio 'Yu kullanarak sonuçları görselleştirmesini göstermiştir.
+Bu öğreticide, bir veri analistinin keşif veri analizini hızlı bir şekilde nasıl gerçekleştirebildiğini, sunucusuz SQL havuzu kullanarak farklı veri kümelerini kolayca nasıl birleştirebileceğini ve Azure SYNAPSE Studio 'Yu kullanarak sonuçları görselleştirmesini göstermiştir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SQL 'i Power BI Desktop ve rapor oluşturmak için isteğe bağlı olarak bağlama hakkında bilgi edinmek için bkz. [SQL isteğe bağlı olarak Power BI Desktop bağlama ve rapor oluşturma](tutorial-connect-power-bi-desktop.md).
+Sunucusuz SQL havuzunu Power BI Desktop ve rapor oluşturmaya nasıl bağlayacağınızı öğrenmek için bkz. [Power BI Desktop için sunucusuz SQL havuzunu bağlama ve rapor oluşturma](tutorial-connect-power-bi-desktop.md).
  

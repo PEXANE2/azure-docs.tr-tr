@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 5cfd76d6b2f6bb9429a7605ac05adb23d87a80d3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 76ecd811ab0bffe20b4bddcc4dc2eacaffaed588
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790891"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308330"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Müşteri tarafından yönetilen anahtarla Azure SQL Saydam Veri Şifrelemesi
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -95,7 +95,7 @@ Denetçiler, günlük etkinleştirildiyse Anahtar Kasası AuditEvent günlükler
 - Anahtar kasasında mevcut anahtarı içeri aktarıyorsanız, bu dosyayı desteklenen dosya biçimlerinde (. pfx,. bYok veya. Backup) sağladığınızdan emin olun.
 
 > [!NOTE]
-> Azure SQL artık, yönetilen bir HSM 'de TDE koruyucusu olarak depolanan bir RSA anahtarının kullanılmasını desteklemektedir. Bu özellik **genel önizlemede** . Azure Key Vault yönetilen HSM, FIPS 140-2 düzey 3 tarafından doğrulanan HSM 'leri kullanarak bulut uygulamalarınızın şifreleme anahtarlarını korumanıza olanak sağlayan, tam olarak yönetilen, yüksek oranda kullanılabilir, tek kiracılı ve standartlara uygun bir bulut hizmetidir. [Yönetilen HSM](../../key-vault/managed-hsm/index.yml)'ler hakkında daha fazla bilgi edinin.
+> Azure SQL artık, yönetilen bir HSM 'de TDE koruyucusu olarak depolanan bir RSA anahtarının kullanılmasını desteklemektedir. Bu özellik **genel önizlemede**. Azure Key Vault yönetilen HSM, FIPS 140-2 düzey 3 tarafından doğrulanan HSM 'leri kullanarak bulut uygulamalarınızın şifreleme anahtarlarını korumanıza olanak sağlayan, tam olarak yönetilen, yüksek oranda kullanılabilir, tek kiracılı ve standartlara uygun bir bulut hizmetidir. [Yönetilen HSM](../../key-vault/managed-hsm/index.yml)'ler hakkında daha fazla bilgi edinin.
 
 
 ## <a name="recommendations-when-configuring-customer-managed-tde"></a>Müşteri tarafından yönetilen TDE yapılandırılırken öneriler
@@ -156,7 +156,7 @@ Anahtar Kasası 'na yeterli erişim haklarına sahip birinin yanlışlıkla bu a
 
 - Azure Active Directory içindeki sunucunun yönetilen kimliğini silme
 
-[Veritabanının erişilemez hale gelmesi için yaygın nedenler](/sql/relational-databases/security/encryption/troubleshoot-tde?view=azuresqldb-current#common-errors-causing-databases-to-become-inaccessible)hakkında daha fazla bilgi edinin.
+[Veritabanının erişilemez hale gelmesi için yaygın nedenler](/sql/relational-databases/security/encryption/troubleshoot-tde?view=azuresqldb-current&preserve-view=true#common-errors-causing-databases-to-become-inaccessible)hakkında daha fazla bilgi edinin.
 
 ## <a name="monitoring-of-the-customer-managed-tde"></a>Müşteri tarafından yönetilen TDE 'nın izlenmesi
 
@@ -179,7 +179,7 @@ Bir yedeklemeyi geri yüklemek için gerekli olan anahtar artık hedef sunucu i�
 
 Bunu azaltmak için, hedef sunucu için [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) cmdlet 'ini veya hedef yönetilen örnek için [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) ' i çalıştırarak kullanılabilir anahtarların listesini döndürün ve eksik olanları tespit edin. Tüm yedeklemelerin geri yüklenebildiğinden emin olmak için, geri yükleme için hedef sunucunun gerekli tüm anahtarlara erişebildiğinden emin olun. Bu anahtarların TDE koruyucusu olarak işaretlenmesi gerekmez.
 
-SQL veritabanı için yedekleme kurtarması hakkında daha fazla bilgi edinmek için bkz. [SQL veritabanı 'nda veritabanını kurtarma](recovery-using-backups.md). SQL havuzu için yedekleme kurtarması hakkında daha fazla bilgi edinmek için bkz. [BIR SQL havuzunu kurtarma](../../synapse-analytics/sql-data-warehouse/backup-and-restore.md). SQL yönetilen örneği ile SQL Server yerel yedekleme/geri yükleme için bkz [. hızlı başlangıç: VERITABANıNı SQL yönetilen örneğine geri yükleme](../managed-instance/restore-sample-database-quickstart.md)
+SQL veritabanı için yedekleme kurtarması hakkında daha fazla bilgi edinmek için bkz. [SQL veritabanı 'nda veritabanını kurtarma](recovery-using-backups.md). Azure SYNAPSE Analytics 'te adanmış SQL havuzu için yedekleme kurtarması hakkında daha fazla bilgi edinmek için bkz. [ayrılmış BIR SQL havuzunu kurtarma](../../synapse-analytics/sql-data-warehouse/backup-and-restore.md). SQL yönetilen örneği ile SQL Server yerel yedekleme/geri yükleme için bkz [. hızlı başlangıç: VERITABANıNı SQL yönetilen örneğine geri yükleme](../managed-instance/restore-sample-database-quickstart.md)
 
 Günlük dosyaları için ek dikkat: yedeklenen günlük dosyaları, döndürülse bile özgün TDE koruyucusu ile şifrelenmeye devam eder ve veritabanı şimdi yeni bir TDE koruyucu kullanıyor.  Geri yükleme sırasında, veritabanını geri yüklemek için her iki anahtar de gerekecektir.  Günlük dosyası Azure Key Vault depolanan bir TDE koruyucu kullanıyorsa, veritabanı hizmet tarafından yönetilen TDE kullanacak şekilde değiştirilse bile, bu anahtar geri yükleme zamanında gerekecektir.
 

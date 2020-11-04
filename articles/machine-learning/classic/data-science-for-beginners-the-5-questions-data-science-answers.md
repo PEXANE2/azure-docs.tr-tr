@@ -9,12 +9,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: a0c99c05701c7f2d64fcfc2f70081f2d7475ce5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae4eca82df498f1aa8f9ef84691cecdf719d0d76
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91345630"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307482"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Yeni Başlayanlar için Veri Bilimi video 1: Veri bilimiyle ilgili 5 sorunun yanıtı
 
@@ -37,7 +37,7 @@ Bu ilk videoda, veri bilimi yanıt verebilir soru türleri hakkında bilgi sağl
 * Video 5: [diğer insanların işini veri bilimi olarak kopyalama](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 dakikalık 18 sn)*
 
 ## <a name="transcript-the-5-questions-data-science-answers"></a>Döküm: 5 soruda veri bilimi yanıtları
-Merhaba! *Yeni başlayanlar için video serisi veri bilimi*'ne hoş geldiniz.
+Merhaba! *Yeni başlayanlar için video serisi veri bilimi* 'ne hoş geldiniz.
 
 Veri bilimi, bu nedenle herhangi bir denklem veya jargon ile programlama yapmadan ilgili temel bilgileri açıklayacağız.
 
@@ -45,7 +45,7 @@ Bu ilk videoda, "5 sorudaki veri bilimi cevapları" hakkında konuşacağız.
 
 Veri bilimi, soruların yanıtlarını tahmin etmek için sayılar ve adlar (kategoriler veya Etiketler olarak da bilinir) kullanır.
 
-Sizi şaşırtabilir, ancak *veri bilimi yanıt veren beş soru*vardır:
+Sizi şaşırtabilir, ancak *veri bilimi yanıt veren beş soru* vardır:
 
 * Bu A veya B mi?
 * Bu tuhaf mi?
@@ -136,4 +136,4 @@ Yani bu, 5 soruda veri bilimi yanıt verebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Machine Learning Studio (klasik) ile ilk veri bilimi denemesini deneyin](create-experiment.md)
-* [Microsoft Azure Machine Learning bir giriş alın](/azure/machine-learning/overview-what-is-azure-ml)
+* [Microsoft Azure Machine Learning bir giriş alın](../overview-what-is-azure-ml.md)

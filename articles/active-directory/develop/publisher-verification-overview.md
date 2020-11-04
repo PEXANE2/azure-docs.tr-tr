@@ -12,16 +12,20 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 2a8f9734714f0439383f6242cda3b51690284852
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1e913e3a5356ad7f49d8b3066f5bd3da7eddd2c2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363428"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308773"
 ---
 # <a name="publisher-verification"></a>Yayımcı doğrulaması
 
-Yayımcı doğrulaması, yöneticilerin ve son kullanıcıların Microsoft Identity platformu ile tümleştirerek uygulama geliştiricilerinin orijinalliğini anlamalarına yardımcı olur. Bir uygulama, yayımcı doğrulanmış olarak işaretlendiğinde, yayımcının [doğrulama](/partner-center/verification-responses) işlemini tamamlamış bir [Microsoft iş ortağı ağı](https://partner.microsoft.com/membership) hesabı kullanarak kimliğini DOĞRULADıĞıNı ve bu MPN hesabını uygulama kaydıyla ilişkilendirdiğini anlamına gelir. 
+Yayımcı doğrulaması, yöneticilerin ve son kullanıcıların Microsoft Identity platformu ile tümleştirerek uygulama geliştiricilerinin orijinalliğini anlamalarına yardımcı olur. 
+
+> [!VIDEO https://www.youtube.com/embed/IYRN2jDl5dc]
+
+Bir uygulama, yayımcı doğrulanmış olarak işaretlendiğinde, yayımcının [doğrulama](/partner-center/verification-responses) işlemini tamamlamış bir [Microsoft iş ortağı ağı](https://partner.microsoft.com/membership) hesabı kullanarak kimliğini DOĞRULADıĞıNı ve bu MPN hesabını uygulama kaydıyla ilişkilendirdiğini anlamına gelir. 
 
 Azure AD onay istemi ve diğer ekranlarda mavi "doğrulanan" bir rozet görünür: ![ onay istemi](./media/publisher-verification-overview/consent-prompt.png)
 
@@ -29,11 +33,11 @@ Bu özellik, birincil olarak, OAuth 2,0 'den yararlanan çok kiracılı uygulama
 
 ## <a name="benefits"></a>Yararları
 Yayımcı doğrulaması aşağıdaki avantajları sağlar:
-- **Müşteriler Için daha fazla saydamlık ve risk azaltma**-bu özellik, müşterilerin kuruluşlarında kullanılan uygulamaları öğrendikleri geliştiriciler tarafından yayımlandığını anlamalarına yardımcı olur. 
+- **Müşteriler Için daha fazla saydamlık ve risk azaltma** -bu özellik, müşterilerin kuruluşlarında kullanılan uygulamaları öğrendikleri geliştiriciler tarafından yayımlandığını anlamalarına yardımcı olur. 
 
-- **Geliştirilmiş marka**-Azure AD [onay Istemi](application-consent-experience.md), kurumsal uygulamalar sayfasında ve son kullanıcılar ve YÖNETICILER tarafından kullanılan ek UX yüzeyleri üzerinde "doğrulanan" bir rozet görüntülenir. 
+- **Geliştirilmiş marka** -Azure AD [onay Istemi](application-consent-experience.md), kurumsal uygulamalar sayfasında ve son kullanıcılar ve YÖNETICILER tarafından kullanılan ek UX yüzeyleri üzerinde "doğrulanan" bir rozet görüntülenir. 
 
-- **Daha yumuşak bir kurumsal benimseme**-Yöneticiler, [Kullanıcı onay ilkelerini](../manage-apps/configure-user-consent.md), birincil ilke ölçütlerinden biri olarak yayımcı doğrulama durumuyla yapılandırabilir.
+- **Daha yumuşak bir kurumsal benimseme** -Yöneticiler, [Kullanıcı onay ilkelerini](../manage-apps/configure-user-consent.md), birincil ilke ölçütlerinden biri olarak yayımcı doğrulama durumuyla yapılandırabilir.
 
 > [!NOTE]
 > Son kullanıcılar artık 2020 Kasım 'Dan başlayarak, yeni kayıtlı çok kiracılı uygulamalara daha fazla yayımcı olmadan onay veremeyecektir. Bu, 8 Kasım 2020 ' den sonra kaydedilen uygulamalar için geçerlidir, temel oturum açma ve kullanıcı profilini okuma ötesinde izin istemek ve uygulamanın kaydolduktan farklı kiracılardaki kullanıcılardan izin istemek için OAuth 2.0 'ı kullanın. Onay ekranında, kullanıcılara bu uygulamaların riskli olduğunu ve doğrulanmamış yayımcıların olduğunu bildiren bir uyarı görüntülenir.    

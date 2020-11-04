@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: ff08af00649cf61134c3e27d07b329e40169ea66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbac7c8818300ffb09959969e6b79f949177f457
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91345700"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307668"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Verilerle yanıtlayabileceğiniz bir soru sorun
 ## <a name="video-3-data-science-for-beginners-series"></a>Video 3: yeni başlayanlar için veri bilimi serisi
@@ -69,9 +69,9 @@ Herhangi bir hedef veriniz yoksa bir miktar almanız gerekir. Sorunuzu bu olmada
 ## <a name="reformulate-your-question"></a>Sorunuzu yeniden formülleştirmek
 Bazen daha kullanışlı bir yanıt almak için sorunuzu tekrar deneyebilirsiniz.
 
-"Bu veri noktası A veya B?" sorusu bir şeyin kategorisini (veya adını veya etiketini) tahmin eder. Yanıt vermek için bir *Sınıflandırma algoritması*kullanıyoruz.
+"Bu veri noktası A veya B?" sorusu bir şeyin kategorisini (veya adını veya etiketini) tahmin eder. Yanıt vermek için bir *Sınıflandırma algoritması* kullanıyoruz.
 
-"Ne kadar çok?" sorusu ya da "kaç tane?" bir miktarı tahmin eder. Yanıt vermek için bir *gerileme algoritması*kullanıyoruz.
+"Ne kadar çok?" sorusu ya da "kaç tane?" bir miktarı tahmin eder. Yanıt vermek için bir *gerileme algoritması* kullanıyoruz.
 
 Bunları nasıl dönüştürebileceğinizi görmek için, "Bu okuyucuya en ilginç haber hikayesi nedir?" sorusuna göz atalım. Birçok olasılıktan tek bir seçim tahminini ister. diğer bir deyişle, "Bu A veya B veya C ya da D mi?" -ve bir sınıflandırma algoritması kullanır.
 
@@ -91,4 +91,4 @@ Verilerle cevaplandığınız bir soruyu sormak için bazı temel ilkeler hakkı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Machine Learning Studio (klasik) ile ilk veri bilimi denemesini deneyin](create-experiment.md)
-* [Microsoft Azure Machine Learning bir giriş alın](/azure/machine-learning/overview-what-is-azure-ml)
+* [Microsoft Azure Machine Learning bir giriş alın](../overview-what-is-azure-ml.md)

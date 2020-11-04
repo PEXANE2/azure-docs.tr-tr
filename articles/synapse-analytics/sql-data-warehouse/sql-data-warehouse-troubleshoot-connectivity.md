@@ -1,6 +1,6 @@
 ---
 title: Bağlantı sorunlarını giderme
-description: SYNAPSE SQL havuzunda bağlantı sorunlarını giderme.
+description: Adanmış SQL havuzunda bağlantı sorunlarını giderme.
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,47 +11,47 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-csharp
-ms.openlocfilehash: d32a51e391edbfd32cf57265562d4e0cb8fe0681
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82b9f988ef4a7f4a53cd0b451da28642b53bcb65
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362189"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308367"
 ---
-# <a name="troubleshooting-connectivity-issues-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda bağlantı sorunlarını giderme
+# <a name="troubleshooting-connectivity-issues-in-dedicated-sql-pool"></a>Adanmış SQL havuzunda bağlantı sorunlarını giderme
 
-Bu makalede, SQL havuzu veritabanınıza bağlanılmasıyla ilgili yaygın sorun giderme teknikleri listelenmektedir.
+Bu makalede, adanmış SQL havuzu veritabanınıza bağlanılmasıyla ilgili yaygın sorun giderme teknikleri listelenmektedir.
 
 ## <a name="check-service-availability"></a>Hizmet kullanılabilirliğini denetle
 
-Hizmetin kullanılabilir olup olmadığını denetleyin. Azure portal, bağlanmaya çalıştığınız SQL havuzuna gidin. Sol IÇINDEKILER panelinde, **sorunları Tanıla ve çöz**' e tıklayın.
+Hizmetin kullanılabilir olup olmadığını denetleyin. Azure portal, bağlanmaya çalıştığınız adanmış SQL havuzuna gidin. Sol IÇINDEKILER panelinde, **sorunları Tanıla ve çöz** ' e tıklayın.
 
 ![Kaynak durumunu seçin](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-SQL havuzunuzun durumu burada gösterilir. Hizmet **kullanılabilir**olarak görüntülenmiyorsa, daha fazla adım denetleyin.
+Adanmış SQL havuzunuzun durumu burada gösterilir. Hizmet **kullanılabilir** olarak görüntülenmiyorsa, daha fazla adım denetleyin.
 
 ![Hizmet kullanılabilir](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-Kaynak sistem durumunuzun SQL havuzu örneğinizin duraklatıldığını veya ölçeklendirilmesini gösteriyorsa, örneğinizi sürdürmeye yönelik yönergeleri izleyin.
+Kaynak sistem sağlığı, adanmış SQL havuzu örneğinizin duraklatıldığını veya ölçeklendirilmesini gösteriyorsa, örneğinizi sürdürmeye yönelik yönergeleri izleyin.
 
 ![Ekran görüntüsünde, duraklatılan veya ölçeklendirilen bir SQL veri ambarı örneği gösterilmektedir.](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png)
 Kaynak Durumu hakkında daha fazla bilgi burada bulunabilir.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Duraklatılmış veya ölçeklendirilen işlemleri denetleme
 
-SQL havuzu örneğinizin duraklatıldığını veya ölçeklendirilmesini görmek için portalı denetleyin.
+Adanmış SQL havuzu örneğinizin duraklatıldığını veya ölçeklendirilmesini görmek için portalı denetleyin.
 
 ![Ekran görüntüsünde bir veri ambarının duraklatıldığını denetleme işlemi gösterilir.](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-Hizmetinizin duraklatıldığını veya ölçeklendirilmesini görürseniz, bakım zamanlamanız sırasında olup olmadığını kontrol edin. SQL havuzuna *genel bakış*için portalda, seçili bakım zamanlamasını görürsünüz.
+Hizmetinizin duraklatıldığını veya ölçeklendirilmesini görürseniz, bakım zamanlamanız sırasında olup olmadığını kontrol edin. Özel SQL havuzuna *genel bakış* için portalda, seçili bakım zamanlamasını görürsünüz.
 
 ![Genel Bakış bakım zamanlaması](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-Aksi takdirde, bu bakımın zamanlanmış bir olay olmadığını doğrulamak için BT yöneticinize başvurun. SQL havuzu örneğini yeniden başlatmak için [aşağıdaki adımları](pause-and-resume-compute-portal.md)izleyin.
+Aksi takdirde, bu bakımın zamanlanmış bir olay olmadığını doğrulamak için BT yöneticinize başvurun. Adanmış SQL havuzu örneğini yeniden başlatmak için [aşağıdaki adımları](pause-and-resume-compute-portal.md)izleyin.
 
 ## <a name="check-your-firewall-settings"></a>Güvenlik duvarı ayarlarını denetleme
 
-SQL havuzu veritabanı 1433 bağlantı noktası üzerinden iletişim kurar.Bir şirket ağından bağlanmaya çalışıyorsanız ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı takdirde [mantıksal sunucunuza](../../azure-sql/database/logical-servers.md) bağlanamazsınız. Güvenlik Duvarı yapılandırmalarına ilişkin ek bilgilere [buradan](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)ulaşabilirsiniz.
+Adanmış SQL havuzu veritabanı 1433 bağlantı noktası üzerinden iletişim kurar.Bir şirket ağından bağlanmaya çalışıyorsanız ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı takdirde [mantıksal sunucunuza](../../azure-sql/database/logical-servers.md) bağlanamazsınız. Güvenlik Duvarı yapılandırmalarına ilişkin ek bilgilere [buradan](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)ulaşabilirsiniz.
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>Sanal Ağ/Hizmet Uç Noktası ayarlarınızı denetleme
 
@@ -61,7 +61,7 @@ SQL havuzu veritabanı 1433 bağlantı noktası üzerinden iletişim kurar.Bir �
 
 ### <a name="software"></a>Yazılım
 
-SQL havuzunuza bağlanmak için en son araçları kullandığınızdan emin olun:
+Adanmış SQL havuzunuza bağlanmak için en son araçları kullandığınızdan emin olun:
 
 - SSMS
 - Azure Data Studio
@@ -106,7 +106,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>Aralıklı bağlantı sorunları
 
-Sunucu üzerinde çok sayıda sıraya alınmış isteğin olduğu ağır yüklenme sorunu yaşayıp yaşamadığınızı denetleyin. Ek kaynaklar için SQL havuzunuzu ölçeklendirmeniz gerekebilir.
+Sunucu üzerinde çok sayıda sıraya alınmış isteğin olduğu ağır yüklenme sorunu yaşayıp yaşamadığınızı denetleyin. Ek kaynaklar için adanmış SQL havuzunuzu ölçeklendirmeniz gerekebilir.
 
 ## <a name="common-error-messages"></a>Genel hata iletileri
 

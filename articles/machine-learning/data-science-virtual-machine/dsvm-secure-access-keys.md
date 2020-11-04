@@ -10,20 +10,20 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: 1cb0c5094d49eac5a1c8f63406a28d2927d8fa94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5604e42c2c27463e10c136ccd18c3c21846fc5a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79477332"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309158"
 ---
 # <a name="store-access-credentials-securely-on-an-azure-data-science-virtual-machine"></a>Erişim kimlik bilgilerini Azure Veri Bilimi Sanal Makinesi güvenli bir şekilde depolayın
 
 Bulut uygulamalarındaki kodun, bulut hizmetlerinde kimlik doğrulaması için kimlik bilgilerini içermesi yaygındır. Bu kimlik bilgilerini yönetme ve güvenli hale getirme, bulut uygulamaları oluşturma konusunda iyi bilinen bir zorluk dır. İdeal olarak, kimlik bilgileri geliştirici iş istasyonlarında hiçbir şekilde gösterilmemelidir veya kaynak denetimine iade edilmelidir.
 
-[Azure kaynakları için Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) özelliği, azure hizmetlerine Azure Active Directory (Azure AD) içinde otomatik olarak yönetilen bir kimlik vererek bu sorunu daha kolay bir şekilde çözmenizi sağlar. Bu kimliği kullanarak, Azure AD kimlik doğrulamasını destekleyen tüm hizmetlerde kodunuzda kimlik bilgileri bulunmasına gerek kalmadan kimlik doğrulaması yapabilirsiniz.
+[Azure kaynakları için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md) özelliği, azure hizmetlerine Azure Active Directory (Azure AD) içinde otomatik olarak yönetilen bir kimlik vererek bu sorunu daha kolay bir şekilde çözmenizi sağlar. Bu kimliği kullanarak, Azure AD kimlik doğrulamasını destekleyen tüm hizmetlerde kodunuzda kimlik bilgileri bulunmasına gerek kalmadan kimlik doğrulaması yapabilirsiniz.
 
-Kimlik bilgilerini güvenli hale getirmenin bir yolu, gizli dizileri ve şifreleme anahtarlarını güvenli bir şekilde depolamak için yönetilen bir Azure hizmeti olan [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/)birlikte Wındows ınstaller (MSI) kullanmaktır. Yönetilen kimliği kullanarak bir anahtar kasasına erişebilir ve sonra anahtar kasasından yetkili gizli dizileri ve şifreleme anahtarlarını alın.
+Kimlik bilgilerini güvenli hale getirmenin bir yolu, gizli dizileri ve şifreleme anahtarlarını güvenli bir şekilde depolamak için yönetilen bir Azure hizmeti olan [Azure Key Vault](../../key-vault/index.yml)birlikte Wındows ınstaller (MSI) kullanmaktır. Yönetilen kimliği kullanarak bir anahtar kasasına erişebilir ve sonra anahtar kasasından yetkili gizli dizileri ve şifreleme anahtarlarını alın.
 
 Azure kaynakları ve Key Vault için Yönetilen kimlikler hakkındaki belgeler, bu hizmetlerle ilgili ayrıntılı bilgi için kapsamlı bir kaynak içerir. Bu makalenin geri kalanında, Azure kaynaklarına erişmek için MSI ve Veri Bilimi Sanal Makinesi (DSVM) üzerinde Key Vault temel kullanımı gösterilmektedir. 
 

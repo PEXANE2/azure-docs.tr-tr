@@ -1,6 +1,6 @@
 ---
 title: Synapse SQL mimarisi
-description: Azure SYNAPSE SQL 'in, yüksek performans ve ölçeklenebilirlik elde etmek için Azure depolama ile dağıtılmış sorgu Işleme özelliklerini nasıl birleştirdiğini öğrenin.
+description: Azure SYNAPSE SQL 'in, yüksek performans ve ölçeklenebilirlik elde etmek için Azure depolama ile dağıtılmış sorgu işleme özelliklerini nasıl birleştirdiğini öğrenin.
 services: synapse-analytics
 author: mlee3gsd
 manager: rothja
@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: ae3b54ca72c92722dffa370b0b8be1ca2c490f97
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 22cbd0b4ce512df70d13d89c5f2539420dac2b85
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476017"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307011"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure SYNAPSE SQL mimarisi 
 
@@ -27,9 +27,9 @@ Bu makalede, SYNAPSE SQL 'in mimari bileşenleri açıklanır.
 
 SYNAPSE SQL, verilerin birden çok düğüm arasında işlem işlemesini dağıtmak için bir genişleme mimarisinden yararlanır. İşlem depolama alanından ayrıdır ve bu işlem, sisteminizi sisteminizdeki verilerden bağımsız olarak ölçeklendirmenizi sağlar. 
 
-SQL havuzu için ölçek birimi, [veri ambarı birimi](resource-consumption-models.md)olarak bilinen bir işlem gücü soyutlamasıdır. 
+Adanmış SQL havuzunda, ölçek birimi, [veri ambarı birimi](resource-consumption-models.md)olarak bilinen bir işlem gücü soyutlamasıdır. 
 
-İsteğe bağlı SQL için sunucusuz olmak üzere, sorgu kaynak gereksinimlerine uyum sağlamak için ölçekleme otomatik olarak yapılır. Düğüm veya yük devretme ekleme, kaldırma işlemleri sırasında zaman içinde topoloji değişiklikleri yaparken, değişikliklere uyum sağlar ve sorgunuzun yeterli kaynak içerdiğinden ve başarıyla sonlandırdığından emin olur. Örneğin, aşağıdaki görüntüde bir sorgu yürütmek için, SQL isteğe bağlı 4 işlem düğümü kullanılarak gösterilmektedir.
+Sunucusuz SQL havuzu için sunucusuz olacak şekilde ölçekleme, sorgu kaynak gereksinimlerine uyum sağlamak için otomatik olarak yapılır. Düğüm veya yük devretme ekleme, kaldırma işlemleri sırasında zaman içinde topoloji değişiklikleri yaparken, değişikliklere uyum sağlar ve sorgunuzun yeterli kaynak içerdiğinden ve başarıyla sonlandırdığından emin olur. Örneğin, aşağıdaki görüntüde bir sorgu yürütmek için 4 işlem düğümü kullanan sunucusuz SQL havuzu gösterilmektedir.
 
 ![Synapse SQL mimarisi](./media//overview-architecture/sql-architecture.png)
 
@@ -37,21 +37,21 @@ SYNAPSE SQL, düğüm tabanlı bir mimari kullanır. Uygulamalar, T-SQL komutlar
 
 Azure SYNAPSE SQL denetim düğümü, paralel işleme için sorguları iyileştirmek üzere dağıtılmış bir sorgu altyapısını kullanır ve ardından çalışmalarını paralel olarak yapmak üzere işlem düğümlerine geçirir. 
 
-SQL isteğe bağlı denetim düğümü, Işlem düğümlerinde yürütülecek daha küçük sorgulara bölerek Kullanıcı sorgusunun dağıtılmış yürütülmesini iyileştirmek ve yönetmek için dağıtılmış sorgu Işleme (DQP) altyapısını kullanır. Her küçük sorgu görev olarak adlandırılır ve dağıtılmış yürütme birimini temsil eder. Depolamadan dosya (ler) i okur, diğer görevlerden alınan sonuçlara, grupların veya sipariş verilerinden oluşan sonuçları birleştirir. 
+Sunucusuz SQL havuzu denetim düğümü, dağıtılmış sorgu Işleme (DQP) altyapısını, Işlem düğümlerinde yürütülecek daha küçük sorgulara bölerek Kullanıcı sorgusunun dağıtılmış yürütmesini iyileştirmek ve düzenlemek için kullanır. Her küçük sorgu görev olarak adlandırılır ve dağıtılmış yürütme birimini temsil eder. Depolamadan dosya (ler) i okur, diğer görevlerden alınan sonuçlara, grupların veya sipariş verilerinden oluşan sonuçları birleştirir. 
 
 İşlem düğümleri tüm kullanıcı verilerini Azure Depolama’da depolar ve paralel sorgular çalıştırır. Veri Taşıma Hizmeti (DMS), sorguları paralel olarak çalıştırmak ve doğru sonuçlar döndürmek için verileri düğümler arasında taşıyan, sistem düzeyindeki bir dahili hizmettir. 
 
-Ayrılmış depolama ve işlem ile, SYNAPSE SQL 'in kullanılması, depolama ihtiyaçlarınıza bakılmaksızın işlem gücünün bağımsız boyutlandırmadan faydalanabilir. SQL için isteğe bağlı ölçeklendirme için otomatik olarak yapılır, ancak SQL havuzu için aşağıdakilerden biri olabilir:
+Ayrılmış depolama ve işlem ile, SYNAPSE SQL 'in kullanılması, depolama ihtiyaçlarınıza bakılmaksızın işlem gücünün bağımsız boyutlandırmadan faydalanabilir. Sunucusuz SQL havuzu ölçekleme için otomatik olarak yapılır, ancak adanmış SQL havuzu için bir tane şunları yapabilir:
 
-* Veri taşımadan bir SQL Havuzu (veri ambarı) içinde işlem gücünü büyütün veya küçültün.
+* Veri taşımadan, ayrılmış bir SQL havuzundaki işlem gücünü büyütün veya küçültün.
 * Verileri olduğu gibi bırakıp işlem kapasitesini duraklatır, böylece yalnızca depolama için ödeme yaparsınız.
 * Çalışma saatleri içinde işlem kapasitesini sürdürme.
 
-## <a name="azure-storage"></a>Azure Depolama
+## <a name="azure-storage"></a>Azure Storage
 
 SYNAPSE SQL, kullanıcı verilerinizi güvende tutmak için Azure Storage 'ı kullanır. Verileriniz Azure depolama tarafından depolandığından ve yönetildiğinden, depolama tüketiminize yönelik ayrı bir ücret alınır. 
 
-SQL isteğe bağlı, Veri Gölü dosyaları salt okuma biçiminde sorgulamanızı sağlar, ancak SQL havuzu verileri de almanızı sağlar. Veriler SQL Pool 'a eklendiğinde, sistem performansını iyileştirmek için veriler **dağıtımlarla** birleştirilir. Tabloyu tanımlarken verileri dağıtmak için kullanılacak parçalama düzeninin arasından seçim yapabilirsiniz. Bu parçalı desenler desteklenir:
+Sunucusuz SQL havuzu, Veri Gölü dosyaları salt okuma biçiminde sorgulamanızı sağlar, ancak SQL havuzu verileri de almanızı sağlar. Veriler adanmış SQL havuzuna eklendiğinde, sistem performansını iyileştirmek için veriler **dağıtımlarla** birleştirilir. Tabloyu tanımlarken verileri dağıtmak için kullanılacak parçalama düzeninin arasından seçim yapabilirsiniz. Bu parçalı desenler desteklenir:
 
 * Karma
 * Hepsini Bir Kez Deneme
@@ -61,34 +61,34 @@ SQL isteğe bağlı, Veri Gölü dosyaları salt okuma biçiminde sorgulamanız�
 
 Denetim düğümü mimarinin beynidir. Tüm uygulamalarla ve bağlantılarla etkileşim kuran ön uçtur. 
 
-SYNAPSE SQL 'de, dağıtılmış sorgu altyapısı Paralel sorguları iyileştirmek ve koordine etmek için denetim düğümünde çalışır. SQL havuzuna bir T-SQL sorgusu gönderdiğinizde denetim düğümü, her bir dağıtıma karşı paralel olarak çalışan sorgulara dönüştürür.
+SYNAPSE SQL 'de, dağıtılmış sorgu altyapısı Paralel sorguları iyileştirmek ve koordine etmek için denetim düğümünde çalışır. Adanmış SQL havuzuna bir T-SQL sorgusu gönderdiğinizde denetim düğümü, her bir dağıtıma karşı paralel olarak çalışan sorgulara dönüştürür.
 
-İsteğe bağlı SQL 'de DQP motoru, Işlem düğümlerinde yürütülecek daha küçük sorgulara bölerek Kullanıcı sorgusunun dağıtılmış yürütülmesini iyileştirmek ve koordine etmek için denetim düğümünde çalışır. Ayrıca, her düğüm tarafından işlenecek dosya kümelerini de atar.
+Sunucusuz SQL havuzunda, DQP altyapısı, Işlem düğümlerinde yürütülecek daha küçük sorgulara bölerek Kullanıcı sorgusunun dağıtılmış yürütülmesini iyileştirmek ve koordine etmek için denetim düğümünde çalışır. Ayrıca, her düğüm tarafından işlenecek dosya kümelerini de atar.
 
 ## <a name="compute-nodes"></a>İşlem düğümleri
 
 İşlem düğümleri, hesaplama gücü sağlar. 
 
-SQL havuzunda dağıtımlar, işlenmek üzere Işlem düğümlerine eşlenir. Daha fazla işlem kaynağı için ödeme yaparken, havuz dağıtımları kullanılabilir Işlem düğümlerine yeniden eşler. İşlem düğümlerinin sayısı 1 ile 60 arasında değişir ve SQL havuzu için hizmet düzeyi tarafından belirlenir. Her Işlem düğümünün sistem görünümlerinde görünür bir düğüm KIMLIĞI vardır. Adları sys.pdw_nodes ile başlayan sistem görünümlerindeki node_id sütununa bakarak Işlem düğümü KIMLIĞINI görebilirsiniz. Bu sistem görünümlerinin listesi için bkz. [SYNAPSE SQL System views](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest).
+Adanmış SQL havuzunda dağıtımlar, işlenmek üzere Işlem düğümlerine eşlenir. Daha fazla işlem kaynağı için ödeme yaparken, havuz dağıtımları kullanılabilir Işlem düğümlerine yeniden eşler. İşlem düğümlerinin sayısı 1 ile 60 arasında değişir ve adanmış SQL havuzunun hizmet düzeyi tarafından belirlenir. Her Işlem düğümünün sistem görünümlerinde görünür bir düğüm KIMLIĞI vardır. Adları sys.pdw_nodes ile başlayan sistem görünümlerindeki node_id sütununa bakarak Işlem düğümü KIMLIĞINI görebilirsiniz. Bu sistem görünümlerinin listesi için bkz. [SYNAPSE SQL System views](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest).
 
-İsteğe bağlı SQL 'de, her Işlem düğümüne görevi yürütmek için görev ve dosya kümesi atanır. Görev, aslında sorgu kullanıcısının gönderildiği bir parçası olan sorgu yürütme birimidir. Otomatik ölçeklendirme, Kullanıcı sorgusunu yürütmek için yeterli Işlem düğümlerinin kullanıldığını sağlamak üzere etkin olur.
+Sunucusuz SQL havuzunda, her Işlem düğümüne görevi yürütmek için görev ve dosya kümesi atanır. Görev, aslında sorgu kullanıcısının gönderildiği bir parçası olan sorgu yürütme birimidir. Otomatik ölçeklendirme, Kullanıcı sorgusunu yürütmek için yeterli Işlem düğümlerinin kullanıldığını sağlamak üzere etkin olur.
 
 ## <a name="data-movement-service"></a>Veri Taşıma Hizmeti
 
-Veri taşıma hizmeti (DMS), SQL havuzundaki Işlem düğümleri arasındaki veri hareketini koordine eden veri aktarımı teknolojisidir. Bazı sorgular paralel sorguların doğru sonuçlar döndürmesini sağlamak için veri hareketi gerektirir. Veri taşıma gerektiğinde, DMS doğru verinin doğru konuma gelmesini sağlar.
+Veri taşıma hizmeti (DMS), Özel SQL havuzunda Işlem düğümleri arasındaki veri hareketini koordine eden veri taşıma teknolojisidir. Bazı sorgular paralel sorguların doğru sonuçlar döndürmesini sağlamak için veri hareketi gerektirir. Veri taşıma gerektiğinde, DMS doğru verinin doğru konuma gelmesini sağlar.
 
 > [!VIDEO https://www.youtube.com/embed/PlyQ8yOb8kc]
 
 ## <a name="distributions"></a>Dağıtımları
 
-Dağıtım, SQL havuzundaki dağıtılmış veriler üzerinde çalışan paralel sorgular için temel depolama ve işleme birimidir. SQL havuzu bir sorgu çalıştırdığında, iş paralel olarak çalışan 60 daha küçük sorguya bölünür. 
+Dağıtım, adanmış SQL havuzundaki dağıtılmış veriler üzerinde çalışan paralel sorgular için temel depolama ve işleme birimidir. Adanmış SQL havuzu bir sorgu çalıştırdığında, iş paralel olarak çalışan 60 daha küçük sorguya bölünür. 
 
-60 küçük bir sorgu, veri dağıtımlarından birinde çalışır. Her Işlem düğümü bir veya daha fazla 60 dağıtımlarını yönetir. En fazla işlem kaynağına sahip bir SQL havuzunda Işlem düğümü başına bir dağıtım vardır. En düşük işlem kaynaklarına sahip bir SQL havuzunda tek bir işlem düğümündeki tüm dağıtımlar vardır. 
+60 küçük bir sorgu, veri dağıtımlarından birinde çalışır. Her Işlem düğümü bir veya daha fazla 60 dağıtımlarını yönetir. En fazla işlem kaynağına sahip adanmış bir SQL havuzunda Işlem düğümü başına bir dağıtım vardır. En düşük işlem kaynaklarıyla ayrılmış bir SQL havuzunda, tek bir işlem düğümündeki tüm dağıtımlar vardır. 
 
 ## <a name="hash-distributed-tables"></a>Karma dağıtılmış tablolar
 Karma dağıtılmış bir tablo, büyük tablolarsa birleştirmeler ve toplamalar için en yüksek sorgu performansını sunabilir. 
 
-Verileri karma olarak dağıtılan bir tabloya bölmek için SQL havuzu her bir satırı bir dağıtıma göre kesin bir şekilde atamak için bir karma işlevi kullanır. Tablo tanımında sütunlardan biri dağıtım sütunu olarak atanır. Karma işlevi, her satırı bir dağıtıma atamak için dağıtım sütunundaki değerleri kullanır.
+Karma olarak dağıtılan bir tabloya verileri bölmek için adanmış SQL havuzu her bir satırı bir dağıtıma göre kesin bir şekilde atamak için bir karma işlevi kullanır. Tablo tanımında sütunlardan biri dağıtım sütunu olarak atanır. Karma işlevi, her satırı bir dağıtıma atamak için dağıtım sütunundaki değerleri kullanır.
 
 Aşağıdaki diyagramda, tam (dağıtılmamış bir tablonun) karma olarak dağıtılan tablo olarak nasıl depolandığı gösterilmektedir. 
 
@@ -117,4 +117,4 @@ Aşağıdaki diyagramda, her işlem düğümündeki ilk dağıtım üzerinde ön
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık SYNAPSE SQL hakkında bir bit öğrenmiş olduğunuza göre hızlıca [BIR SQL havuzu oluşturmayı](../quickstart-create-sql-pool-portal.md) ve [örnek verileri yüklemeyi](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) öğrenin (./SQL-Data-Warehouse-Load-Sample-Databases.MD). Ya da [isteğe bağlı SQL kullanmaya](../quickstart-sql-on-demand.md)başlayabilirsiniz. Azure’da yeniyseniz yeni terimlerle karşılaşabileceğinizi için [Azure sözlüğünü](../../azure-glossary-cloud-terminology.md) yararlı bulabilirsiniz. 
+Artık SYNAPSE SQL hakkında bir bit öğrenmiş olduğunuza göre, kolayca [adanmış BIR SQL havuzu oluşturmayı](../quickstart-create-sql-pool-portal.md) ve [örnek verileri yüklemeyi](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) öğrenin (./SQL-Data-Warehouse-Load-Sample-Databases.MD). Ya da [sunucusuz SQL havuzunu kullanmaya](../quickstart-sql-on-demand.md)başlayabilirsiniz. Azure’da yeniyseniz yeni terimlerle karşılaşabileceğinizi için [Azure sözlüğünü](../../azure-glossary-cloud-terminology.md) yararlı bulabilirsiniz. 

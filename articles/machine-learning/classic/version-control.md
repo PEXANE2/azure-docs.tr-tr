@@ -8,16 +8,16 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 10/27/2016
-ms.openlocfilehash: 186289826273e85c9faa7f972b6f48d34e38416f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5c9e27e894541d71986fe929cbc5d6fde31bc18
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357395"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308817"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio 'de uygulama yaşam döngüsü yönetimi (klasik)
 
-**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Azure Machine Learning Studio (klasik), Azure bulut platformunda çalışır durumda olan Machine Learning denemeleri geliştirmeye yönelik bir araçtır. Visual Studio IDE ve ölçeklenebilir bulut hizmeti tek bir platformda birleştirilmiştir. Standart uygulama yaşam döngüsü yönetimi (ALM) uygulamalarını, çeşitli varlıkların dağıtımını otomatik yürütmeye ve dağıtıma, Azure Machine Learning Studio (klasik) içine ekleyebilirsiniz. Bu makalede bazı seçenekler ve yaklaşımların bazıları açıklanmaktadır.
@@ -46,7 +46,7 @@ Denemeyi silerseniz, bu denemenin tüm anlık görüntüleri silinir.
 JSON dosyası, bir veri kümesi veya eğitilen model gibi çalışma alanındaki varlıklara başvuru içerebilen deneme grafiğinin metinsel bir gösterimidir. Varlığın serileştirilmiş bir sürümünü içermez. JSON belgesini yeniden çalışma alanına aktarmaya çalışırsanız, başvurulan varlıkların denemeye başvuruda bulunulan varlık kimlikleri ile zaten mevcut olması gerekir. Aksi takdirde, içeri aktarılan denemenize erişemezsiniz.
 
 ## <a name="versioning-trained-model"></a>Eğitilen model sürümü
-Azure Machine Learning Studio (klasik) ' deki eğitilen bir model iLearner dosyası () olarak bilinen bir biçimde serileştirilir `.iLearner` ve çalışma alanıyla Ilişkili Azure Blob depolama hesabında depolanır. İLearner dosyasının bir kopyasını almanın bir yolu yeniden eğitim API 'sidir. [Bu makalede](/azure/machine-learning/studio/retrain-machine-learning-model) , yeniden eğitim API 'sinin nasıl çalıştığı açıklanır. Üst düzey adımlar:
+Azure Machine Learning Studio (klasik) ' deki eğitilen bir model iLearner dosyası () olarak bilinen bir biçimde serileştirilir `.iLearner` ve çalışma alanıyla Ilişkili Azure Blob depolama hesabında depolanır. İLearner dosyasının bir kopyasını almanın bir yolu yeniden eğitim API 'sidir. [Bu makalede](./retrain-machine-learning-model.md) , yeniden eğitim API 'sinin nasıl çalıştığı açıklanır. Üst düzey adımlar:
 
 1. Eğitim denemenizi ayarlayın.
 2. Eğitim modeli modülüne bir Web hizmeti çıkış bağlantı noktası ya da model Hyperparameter ayarlama veya R modeli oluşturma gibi eğitilen modeli üreten modüle ekleyin.
@@ -78,7 +78,7 @@ Zaman içinde, aynı Web hizmetinde oluşturulmuş çok sayıda uç nokta olabil
 Ayrıca, aynı etkiyi elde etmek için birçok özdeş Web hizmeti uç noktası oluşturabilir ve ardından iLearner dosyasının farklı sürümlerini uç noktaya indirebilirsiniz. [Bu makalede, bunun](create-models-and-endpoints-with-powershell.md) nasıl yapılacağı hakkında daha ayrıntılı bilgi verilmektedir.
 
 ### <a name="new-web-service"></a>Yeni Web hizmeti
-Yeni bir Azure Resource Manager tabanlı Web hizmeti oluşturursanız, uç nokta yapısı artık kullanılamaz. Bunun yerine, [Export-amlwebservicedefinitionfromexperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) PowerShell cmdlet 'ini kullanarak veya dağıtılan kaynak yöneticisi tabanlı bir Web hizmetinden [*Export-azmlwebservice*](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) PowerShell komutunu kullanarak Web hizmeti tanım (WSD) dosyalarını JSON biçiminde oluşturabilirsiniz.
+Yeni bir Azure Resource Manager tabanlı Web hizmeti oluşturursanız, uç nokta yapısı artık kullanılamaz. Bunun yerine, [Export-amlwebservicedefinitionfromexperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) PowerShell cmdlet 'ini kullanarak veya dağıtılan kaynak yöneticisi tabanlı bir Web hizmetinden [*Export-azmlwebservice*](/powershell/module/az.machinelearning/export-azmlwebservice) PowerShell komutunu kullanarak Web hizmeti tanım (WSD) dosyalarını JSON biçiminde oluşturabilirsiniz.
 
 İçe aktarılmış WSD dosyası ve sürüm denetimine sahip olduktan sonra, WSD 'yi farklı bir Azure bölgesindeki farklı bir Web hizmeti planına yeni bir Web hizmeti olarak da dağıtabilirsiniz. Yalnızca uygun depolama hesabı yapılandırmasını ve yeni Web hizmeti planı KIMLIĞINI girdiğinizden emin olun. Farklı iLearner dosyalarında düzeltme eki uygulamak için, WSD dosyasını değiştirebilir ve eğitilen modelin konum başvurusunu güncelleştirebilir ve yeni bir Web hizmeti olarak dağıtabilirsiniz.
 

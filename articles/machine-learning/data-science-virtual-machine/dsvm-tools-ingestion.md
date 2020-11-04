@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 736504febea16af53c2c05bc367513b2dde93ccf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89cf81f8d0a66c29a345f56676fbb97601743710
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87012323"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308984"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Veri Bilimi Sanal Makinesi veri alımı araçları
 
@@ -31,7 +31,7 @@ DSVM 'de bulunan bazı veri taşıma araçları aşağıda verilmiştir.
 | Desteklenen DSVM sürümleri      | Windows      |
 | Tipik kullanımlar      | Azure Blob depolamadan birden çok blob 'u Azure Data Lake Store içine aktarma.      |
 |  Nasıl kullanılır/çalıştırılır?    |   Yardım almak için bir komut istemi açın ve yazın `adlcopy` .    |
-| Örneklere bağlantılar      | [AdlCopy kullanma](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
+| Örneklere bağlantılar      | [AdlCopy kullanma](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)      |
 | DSVM 'deki ilgili araçlar      | AzCopy, Azure CLı     |
 
 ## <a name="azure-cli"></a>Azure CLI
@@ -42,7 +42,7 @@ DSVM 'de bulunan bazı veri taşıma araçları aşağıda verilmiştir.
 | Desteklenen DSVM sürümleri      | Windows, Linux     |
 | Tipik kullanımlar      | Azure depolama ve Azure Data Lake Store verileri içeri ve dışarı aktarma.      |
 |  Nasıl kullanılır/çalıştırılır?    |   Yardım almak için bir komut istemi açın ve yazın `az` .    |
-| Örneklere bağlantılar      | [Azure CLI’yı kullanma](https://docs.microsoft.com/cli/azure)     |
+| Örneklere bağlantılar      | [Azure CLI’yı kullanma](/cli/azure)     |
 | DSVM 'deki ilgili araçlar      | AzCopy, AdlCopy      |
 
 
@@ -54,7 +54,7 @@ DSVM 'de bulunan bazı veri taşıma araçları aşağıda verilmiştir.
 | Desteklenen DSVM sürümleri      | Windows      |
 | Tipik kullanımlar      | Azure Blob depolama alanına dosya kopyalama ve BLOB 'ları hesaplar arasında kopyalama.      |
 |  Nasıl kullanılır/çalıştırılır?    |   Yardım almak için bir komut istemi açın ve yazın `azcopy` .    |
-| Örneklere bağlantılar      | [Windows üzerinde AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)      |
+| Örneklere bağlantılar      | [Windows üzerinde AzCopy](../../storage/common/storage-use-azcopy-v10.md)      |
 | DSVM 'deki ilgili araçlar      | AdlCopy     |
 
 
@@ -66,7 +66,7 @@ DSVM 'de bulunan bazı veri taşıma araçları aşağıda verilmiştir.
 | Desteklenen DSVM sürümleri      | Windows      |
 | Tipik kullanımlar      | Bir VM 'den CosmosDB 'ye dosya aktarma, Azure Tablo depolama alanından CosmosDB 'ye veri aktarma ve bir Microsoft SQL Server veritabanından CosmosDB 'ye veri aktarma.     |
 |  Nasıl kullanılır/çalıştırılır?    |   Komut satırı sürümünü kullanmak için bir komut istemi açın ve yazın `dt` . GUI aracını kullanmak için bir komut istemi açın ve yazın `dtui` .    |
-| Örneklere bağlantılar      | [CosmosDB verileri Içeri aktarma](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
+| Örneklere bağlantılar      | [CosmosDB verileri Içeri aktarma](../../cosmos-db/import-data.md)      |
 | DSVM 'deki ilgili araçlar      | AzCopy, AdlCopy      |
 
 ## <a name="azure-storage-explorer"></a>Azure Depolama Gezgini
@@ -88,7 +88,7 @@ DSVM 'de bulunan bazı veri taşıma araçları aşağıda verilmiştir.
 | Desteklenen DSVM sürümleri      | Windows      |
 | Tipik kullanımlar      | Bir CSV dosyasını SQL Server tablosuna aktarma ve bir SQL Server tablosunu bir dosyaya aktarma.      |
 |  Nasıl kullanılır/çalıştırılır?    |   Yardım almak için bir komut istemi açın ve yazın `bcp` .    |
-| Örneklere bağlantılar      | [BCP yardımcı programı](https://docs.microsoft.com/sql/tools/bcp-utility)      |
+| Örneklere bağlantılar      | [BCP yardımcı programı](/sql/tools/bcp-utility)      |
 | DSVM 'deki ilgili araçlar      | SQL Server, sqlcmd      |
 
 ## <a name="blobfuse"></a>blobsigortası
