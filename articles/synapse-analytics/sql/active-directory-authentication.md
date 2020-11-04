@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: a3bd565b26d011e6186cc6957769db57f9cd1c9c
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 7518d6ac8bc0cde515ab8da2f3d9c1496cb93f08
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093421"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311719"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>SYNAPSE SQL ile kimlik doğrulaması için Azure Active Directory kimlik doğrulaması kullanma
 
@@ -39,7 +39,7 @@ Yapılandırma adımları Azure Active Directory kimlik doğrulaması yapıland�
 3. SYNAPSE çalışma alanında oluşturulan Azure Active Directory kimliğine rol atama (Önizleme)
 4. Azure AD kimliklerini kullanarak SYNAPSE Studio 'ya bağlanın.
 
-## <a name="aad-pass-through-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te AAD geçişi
+## <a name="azure-ad-pass-through-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Azure AD geçişi
 
 Azure SYNAPSE Analytics, Azure Active Directory kimliğinizi kullanarak Data Lake 'taki verilere erişmenizi sağlar.
 
@@ -49,13 +49,13 @@ Farklı veri altyapılarında yer alan dosyalarda ve verilerde erişim hakların
 
 Aşağıdaki üst düzey diyagram, Azure AD kimlik doğrulamasını SYNAPSE SQL ile kullanmayla ilgili çözüm mimarisini özetler. Azure AD yerel kullanıcı parolasını desteklemek için yalnızca bulut bölümü ve Azure AD/SYNAPSE SYNAPSE SQL kabul edilir. Federal kimlik doğrulamasını (veya Windows kimlik bilgileri için Kullanıcı/parola) desteklemek için, ADFS bloğundan iletişim gerekir. Oklar, iletişim yollarını gösterir.
 
-![aad kimlik doğrulama diyagramı](./media/aad-authentication/1-active-directory-authentication-diagram.png)
+![Azure AD kimlik doğrulama diyagramı](./media/aad-authentication/1-active-directory-authentication-diagram.png)
 
 Aşağıdaki diyagramda, bir istemcinin bir belirteci göndererek bir veritabanına bağlanmasına izin veren Federasyon, güven ve barındırma ilişkileri belirtilmektedir. Belirtecin kimliği bir Azure AD tarafından doğrulanır ve veritabanı tarafından güvenilir. 
 
 Müşteri 1, yerel kullanıcılar veya bir Azure AD ile federe kullanıcılarla bir Azure Active Directory temsil edebilir. Müşteri 2, içeri aktarılan kullanıcılar dahil olası bir çözümü temsil eder; Bu örnekte, ADFS ile Azure Active Directory eşitlenmiş bir federal Azure Active Directory geliyor. 
 
-Azure AD kimlik doğrulaması kullanarak bir veritabanına erişimin, barındırma aboneliğinin Azure AD ile ilişkilendirilmesini gerektirdiğini anlamak önemlidir. Azure SQL veritabanını veya SQL havuzunu barındıran SQL Server oluşturmak için aynı aboneliğin kullanılması gerekir.
+Azure AD kimlik doğrulaması kullanarak bir veritabanına erişimin, barındırma aboneliğinin Azure AD ile ilişkilendirilmesini gerektirdiğini anlamak önemlidir. Azure SQL veritabanını veya adanmış SQL havuzunu barındıran SQL Server oluşturmak için aynı aboneliğin kullanılması gerekir.
 
 ![Abonelik ilişkisi](./media/aad-authentication/2-subscription-relationship.png)
 
@@ -109,7 +109,7 @@ Azure Active Directory kimlik doğrulaması, Azure AD kimliklerini kullanarak bi
 - MFA ile evrensel Azure Active Directory
 - Uygulama belirteci kimlik doğrulamasını kullanma
 
-Aşağıdaki kimlik doğrulama yöntemleri Azure AD Server sorumluları (oturum açmalar) için desteklenir (**genel önizleme**):
+Aşağıdaki kimlik doğrulama yöntemleri Azure AD Server sorumluları (oturum açmalar) için desteklenir ( **genel önizleme** ):
 
 - Azure Active Directory parolası
 - Azure Active Directory tümleşik
@@ -119,10 +119,10 @@ Aşağıdaki kimlik doğrulama yöntemleri Azure AD Server sorumluları (oturum 
 
 - Yönetilebilirlik geliştirmek için, bir yönetici olarak adanmış bir Azure AD grubu sağlamanızı öneririz.
 - Yalnızca bir Azure AD Yöneticisi (bir kullanıcı veya grup), SYNAPSE SQL havuzu için dilediğiniz zaman yapılandırılabilir.
-  - İsteğe bağlı SQL (Önizleme) için Azure AD Server sorumlularını (oturum açma) ekleme, role eklenebilen birden çok Azure AD Server sorumlusu (oturum açma) oluşturma olasılığa izin verir `sysadmin` .
-- SYNAPSE SQL için yalnızca bir Azure AD yöneticisi başlangıçta Azure Active Directory bir hesabı kullanarak SYNAPSE SQL 'e bağlanabilir. Active Directory Yöneticisi, sonraki Azure AD veritabanı kullanıcılarını yapılandırabilir.
+  - SYNAPSE SQL (Önizleme) için Azure AD Server sorumlularını (oturum açma) ekleme, role eklenebilen birden çok Azure AD Server sorumlusu (oturum açma) oluşturma olasılığa izin verir `sysadmin` .
+- Yalnızca SYNAPSE SQL için bir Azure AD yöneticisi, Azure Active Directory bir hesabı kullanarak başlangıçta SYNAPSE SQL 'e bağlanabilir. Active Directory Yöneticisi, sonraki Azure AD veritabanı kullanıcılarını yapılandırabilir.
 - Bağlantı zaman aşımını 30 saniyeye ayarlamayı öneririz.
-- SQL Server 2016 Management Studio ve SQL Server Veri Araçları Visual Studio 2015 için (sürüm 14.0.60311.1 Nisan 2016 veya üzeri) Azure Active Directory kimlik doğrulamasını destekler. (Azure AD kimlik doğrulaması, **SqlServer için .NET Framework veri sağlayıcısı**tarafından desteklenir; en az sürüm .NET Framework 4,6). Bu nedenle, bu araçların ve veri katmanı uygulamalarının en yeni sürümleri (DAC ve. BACPAC), Azure AD kimlik doğrulaması kullanabilir.
+- SQL Server 2016 Management Studio ve SQL Server Veri Araçları Visual Studio 2015 için (sürüm 14.0.60311.1 Nisan 2016 veya üzeri) Azure Active Directory kimlik doğrulamasını destekler. (Azure AD kimlik doğrulaması, **SqlServer için .NET Framework veri sağlayıcısı** tarafından desteklenir; en az sürüm .NET Framework 4,6). Bu nedenle, bu araçların ve veri katmanı uygulamalarının en yeni sürümleri (DAC ve. BACPAC), Azure AD kimlik doğrulaması kullanabilir.
 - Version 15.0.1 sürümünden itibaren [sqlcmd yardımcı](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) programı ve [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ile etkileşimli kimlik doğrulama desteği Active Directory.
 - Visual Studio 2015 için SQL Server Veri Araçları, en az veri araçları 'nın 2016 Nisan sürümü (sürüm 14.0.60311.1) gerektirir. Şu anda, Azure AD kullanıcıları SSDT Nesne Gezgini gösterilmez. Geçici bir çözüm olarak, [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)kullanıcıları görüntüleyin.
 - [SQL Server Için MICROSOFT JDBC sürücüsü 6,0](https://www.microsoft.com/download/details.aspx?id=11774) , Azure AD kimlik doğrulamasını destekler. Ayrıca bkz. [bağlantı özelliklerini ayarlama](/sql/connect/jdbc/setting-the-connection-properties?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).

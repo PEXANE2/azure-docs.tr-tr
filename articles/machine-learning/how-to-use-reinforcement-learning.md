@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 6221b36263b55f54faef18d6596f97c5b3798d3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf4b321425ccaae877c2ff5c9b54f429d95a3515
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541722"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312311"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning ile pekiştirmeye dayalı öğrenme (Önizleme)
 
@@ -36,7 +36,7 @@ Bu makalede, şunları nasıl yapacağınızı öğreneceksiniz:
 
 Bu makale, Azure Machine Learning Not defteri [GitHub deposunda](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md)bulunan [Rllib Pong örneğini](https://aka.ms/azureml-rl-pong) temel alır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kodu aşağıdaki ortamlardan birinde çalıştırın. En hızlı başlangıç deneyimi için Azure Machine Learning işlem örneğini denemenizi öneririz. Pekiştirmeye dayalı örnek Not defterleri, Azure Machine Learning işlem örneğinde hızlı bir şekilde klonlamak ve çalıştırmak için kullanılabilir.
 
@@ -49,8 +49,8 @@ Bu kodu aşağıdaki ortamlardan birinde çalıştırın. En hızlı başlangı�
  
  - Kendi Jupyter Notebook sunucunuz
 
-    - [Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)yükler.
-    - [Azure MACHINE LEARNING rl SDK 'sını](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py&preserve-view=true)yükler:`pip install --upgrade azureml-contrib-reinforcementlearning`
+    - [Azure Machine Learning SDK 'sını](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)yükler.
+    - [Azure MACHINE LEARNING rl SDK 'sını](/python/api/azureml-contrib-reinforcementlearning/?preserve-view=true&view=azure-ml-py)yükler:`pip install --upgrade azureml-contrib-reinforcementlearning`
     - Bir [çalışma alanı yapılandırma dosyası](how-to-configure-environment.md#workspace)oluşturun.
     - Dağıtılmış pekiştirmeye dayalı öğrenimi için kullanılan ağ bağlantı noktalarını açmak için sanal ağ [Kurulum Not defterini](https://aka.ms/azure-rl-env-setup) çalıştırın.
 
@@ -59,7 +59,7 @@ Bu kodu aşağıdaki ortamlardan birinde çalıştırın. En hızlı başlangı�
 
 Pekiştirmeye dayalı Learning (RL), bir makine öğrenimine, bunu yaparak öğrenerek bir yaklaşıktır. Diğer makine öğrenimi teknikleri, çok büyük bir şekilde giriş verileri alarak ve içindeki desenleri bularak öğrenirken, RL, kararları etkin bir şekilde oluşturmak ve sonuçları öğrenmek için **eğitim aracılarını** kullanır.
 
-Eğitim aracılarınız, **sanal bir ortamda**Pong oynamasını öğrendiğinde. Eğitim aracıları, her oyunun çerçevesini artırma, azaltma veya yerinde kalma gibi bir karardır. Bir karar vermek için oyunun durumuna (ekranın RGB görüntüsü) bakar.
+Eğitim aracılarınız, **sanal bir ortamda** Pong oynamasını öğrendiğinde. Eğitim aracıları, her oyunun çerçevesini artırma, azaltma veya yerinde kalma gibi bir karardır. Bir karar vermek için oyunun durumuna (ekranın RGB görüntüsü) bakar.
 
 RL, kararlarının başarılı olup olmadığını aracıya bildirmek için **yeniden** kullanır. Bu ortamda, bir noktaya göre puanlandığında, aracı bir noktayı işaret ettikten sonra negatif bir ödül aldığında bir pozitif ödül alır. Eğitim Aracısı birçok yinelemeden sonra, beklenen gelecekteki yeniden temellerinin toplamını en iyi duruma getirir.
 
@@ -107,7 +107,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-reinforcement-learning-experiment"></a>Pekiştirmeye dayalı Learning denemesi oluşturun
 
-Pekiştirmeye dayalı Learning çalıştırmanızı izlemek için bir [deneme](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true) oluşturun. Azure Machine Learning, denemeleri, çalışma günlüklerini, geçmişi, çıkışları ve daha fazlasını düzenlemek için ilgili denemelerin mantıksal koleksiyonlarıdır.
+Pekiştirmeye dayalı Learning çalıştırmanızı izlemek için bir [deneme](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py) oluşturun. Azure Machine Learning, denemeleri, çalışma günlüklerini, geçmişi, çıkışları ve daha fazlasını düzenlemek için ilgili denemelerin mantıksal koleksiyonlarıdır.
 
 ```python
 experiment_name='rllib-pong-multi-node'
@@ -131,7 +131,7 @@ Bu örnek, Ray baş ve çalışanlar düğümleri için ayrı işlem hedefleri k
 
 Bu örnek, derin öğrenme performansını iyileştirmek için GPU donanımlı bir baş küme kullanır. Baş düğüm, aracının kararlar almak için kullandığı sinir ağını tratlar. Baş düğüm Ayrıca sinir ağını daha fazla eğitebilmeniz için çalışan düğümlerinden veri noktaları toplar.
 
-Baş işlem tek bir [ `STANDARD_NC6` sanal makine](https://docs.microsoft.com/azure/virtual-machines/nc-series) (VM) kullanır. 6 sanal CPU 'ya sahiptir ve bu, çalışma 6 çalışma CPU 'su arasında iş dağıtabileceği anlamına gelir.
+Baş işlem tek bir [ `STANDARD_NC6` sanal makine](../virtual-machines/nc-series.md) (VM) kullanır. 6 sanal CPU 'ya sahiptir ve bu, çalışma 6 çalışma CPU 'su arasında iş dağıtabileceği anlamına gelir.
 
 
 ```python
@@ -173,7 +173,7 @@ else:
 
 ### <a name="worker-computing-cluster"></a>Çalışan bilgi işlem kümesi
 
-Bu örnek, çalışan işlem hedefi için dört [ `STANDARD_D2_V2` VM](https://docs.microsoft.com/azure/virtual-machines/nc-series) kullanır. Her çalışan düğümünde toplam 8 kullanılabilir CPU paralel hale getirmek iş için 2 kullanılabilir CPU vardır.
+Bu örnek, çalışan işlem hedefi için dört [ `STANDARD_D2_V2` VM](../virtual-machines/nc-series.md) kullanır. Her çalışan düğümünde toplam 8 kullanılabilir CPU paralel hale getirmek iş için 2 kullanılabilir CPU vardır.
 
 Derin öğrenme gerçekleştirmediği için GPU 'Lar çalışan düğümleri için gerekli değildir. Çalışanlar oyun benzetimleri çalıştırır ve veri toplar.
 
@@ -213,7 +213,7 @@ else:
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>Pekiştirmeye dayalı Learning tahmin aracı oluşturma
 
-Bu bölümde, Azure Machine Learning için bir eğitim işi göndermek üzere [Reforcementlearningestimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py&preserve-view=true) ' ı nasıl kullanacağınızı öğreneceksiniz.
+Bu bölümde, Azure Machine Learning için bir eğitim işi göndermek üzere [Reforcementlearningestimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?preserve-view=true&view=azure-ml-py) ' ı nasıl kullanacağınızı öğreneceksiniz.
 
 Azure Machine Learning, çalışan yapılandırma bilgilerini kapsüllemek için tahmin aracı sınıflarını kullanır. Bu, bir komut dosyası yürütmenin nasıl yapılandırılacağını kolayca belirlemenizi sağlar. 
 
@@ -248,7 +248,7 @@ Giriş betiği, `pong_rllib.py` eğitim işinin nasıl yürütüleceğini tanım
 
 Doğru belirtmek, `num_workers` paralelleştirme çabalarınızın en iyi şekilde bir kısmını elde eder. Çalışan sayısını kullanılabilir CPU sayısıyla aynı olarak ayarlayın. Bu örnekte, bunu aşağıdaki gibi hesaplayabilirsiniz:
 
-Baş düğüm 6 vCPU içeren bir [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) . Çalışan kümesi, toplam 8 CPU için 2 CPU 'ya sahip 4 [Standard_D2_V2 VM](https://docs.microsoft.com/azure/cloud-services/cloud-services-sizes-specs#dv2-series) 'dir. Ancak, baş düğüm rolüne ayrılmanız gerektiğinden, çalışan sayısı 1 CPU 'YU çıkarmalısınız. 6 CPU + 8 CPU-1 baş CPU = 13 eşzamanlı çalışan. Azure Machine Learning, işlem kaynaklarını ayırt etmek için baş ve çalışan kümelerini kullanır. Ancak, Ray baş ve çalışan arasında ayrım yapmaz ve tüm CPU 'lar çalışan iş parçacığı yürütmesi için kullanılabilir CPU 'Larda bulunur.
+Baş düğüm 6 vCPU içeren bir [Standard_NC6](../virtual-machines/nc-series.md) . Çalışan kümesi, toplam 8 CPU için 2 CPU 'ya sahip 4 [Standard_D2_V2 VM](../cloud-services/cloud-services-sizes-specs.md#dv2-series) 'dir. Ancak, baş düğüm rolüne ayrılmanız gerektiğinden, çalışan sayısı 1 CPU 'YU çıkarmalısınız. 6 CPU + 8 CPU-1 baş CPU = 13 eşzamanlı çalışan. Azure Machine Learning, işlem kaynaklarını ayırt etmek için baş ve çalışan kümelerini kullanır. Ancak, Ray baş ve çalışan arasında ayrım yapmaz ve tüm CPU 'lar çalışan iş parçacığı yürütmesi için kullanılabilir CPU 'Larda bulunur.
 
 
 ```python
@@ -399,7 +399,7 @@ def on_train_result(info):
 
 ## <a name="submit-a-run"></a>Bir çalıştırma gönder
 
-[Çalıştır](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) işlemi devam eden veya tamamlanmış işlerin çalıştırma geçmişini işler. 
+[Çalıştır](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) işlemi devam eden veya tamamlanmış işlerin çalıştırma geçmişini işler. 
 
 ```python
 run = exp.submit(config=rl_estimator)

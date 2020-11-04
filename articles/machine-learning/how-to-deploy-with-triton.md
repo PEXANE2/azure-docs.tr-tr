@@ -1,7 +1,7 @@
 ---
 title: Triton ile hizmet veren yüksek performanslı model (Önizleme)
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning 'da Üçlü çıkarım sunucusuyla model dağıtmayı öğrenin
+description: Azure Machine Learning ' de NVıDıA Triton çıkarım sunucusu ile modelinizi dağıtmayı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.date: 09/23/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 3a3600c4065d331ca1cfc129cd55dd56add21424
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: afa1d958e054a769ea0f19b82afdf55a94c3d0cf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92428350"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309712"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Triton çıkarım sunucusuyla yüksek performanslı hizmet (Önizleme) 
 
@@ -24,19 +24,19 @@ Model çıkarımı için kullanılan Web hizmetinin performansını artırmak i�
 
 Çıkarımı için model dağıtma yöntemlerinden biri Web hizmeti olarak belirlenir. Örneğin, Azure Kubernetes hizmetine veya Azure Container Instances bir dağıtım. Varsayılan olarak, Azure Machine Learning Web hizmeti dağıtımları için tek iş parçacıklı, *genel amaçlı* Web çerçevesi kullanır.
 
-Triton, *çıkarım için iyileştirilmiş*bir çerçevedir. GPU 'ların daha iyi kullanımını ve düşük maliyetli çıkarımı sağlar. Sunucu tarafında, gelen istekleri işler ve bu toplu işlemleri çıkarımı için gönderir. Toplu işleme GPU kaynaklarını daha iyi kullanır ve önemli bir performans parçasıdır.
+Triton, *çıkarım için iyileştirilmiş* bir çerçevedir. GPU 'ların daha iyi kullanımını ve düşük maliyetli çıkarımı sağlar. Sunucu tarafında, gelen istekleri işler ve bu toplu işlemleri çıkarımı için gönderir. Toplu işleme GPU kaynaklarını daha iyi kullanır ve önemli bir performans parçasıdır.
 
 > [!IMPORTANT]
-> Azure Machine Learning dağıtım için Triton kullanımı Şu anda __Önizleme__aşamasındadır. Önizleme işlevselliği müşteri desteğinin kapsamına alınmayabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+> Azure Machine Learning dağıtım için Triton kullanımı Şu anda __Önizleme__ aşamasındadır. Önizleme işlevselliği müşteri desteğinin kapsamına alınmayabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 > [!TIP]
 > Bu belgedeki kod parçacıkları tanım amaçlıdır ve bir çözümü tamamen gösteremeyebilir. Çalışan örnek kod için [Azure Machine Learning üç aylık dönemin uçtan uca örneklerine](https://github.com/Azure/azureml-examples/tree/main/tutorials)bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 * Azure Machine Learning [bir modelin nasıl ve nasıl dağıtılacağı hakkında](how-to-deploy-and-where.md) benzerlik.
-* [Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py) **veya** [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) ve [Machine Learning uzantısı](reference-azure-machine-learning-cli.md).
+* [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/?view=azure-ml-py) **veya** [Azure CLI](/cli/azure/?view=azure-cli-latest) ve [Machine Learning uzantısı](reference-azure-machine-learning-cli.md).
 * Yerel test için çalışan bir Docker yüklemesi. Docker 'ı yükleme ve doğrulama hakkında daha fazla bilgi için bkz. Docker belgelerindeki [Yönlendirme ve kurulum](https://docs.docker.com/get-started/) .
 
 ## <a name="architectural-overview"></a>Mimariye genel bakış
@@ -47,18 +47,18 @@ Kendi modeliniz için Triton kullanmayı denemeden önce, Azure Machine Learning
 
 * Birden çok [Gunic,](https://gunicorn.org/) gelen istekleri eşzamanlı olarak işleyecek şekilde başlatılır.
 * Bu çalışanlar ön işleme, modeli çağırma ve işlem sonrası işlemleri işler. 
-* Çıkarım istekleri __Puanlama URI__'sini kullanır. Örneğin, `https://myserevice.azureml.net/score`.
+* Çıkarım istekleri __Puanlama URI__ 'sini kullanır. Örneğin, `https://myserevice.azureml.net/score`.
 
 :::image type="content" source="./media/how-to-deploy-with-triton/normal-deploy.png" alt-text="Normal, üç aylık olmayan dağıtım mimarisi diyagramı":::
 
 **Triton ile çıkarım yapılandırma dağıtımı**
 
 * Birden çok [Gunic,](https://gunicorn.org/) gelen istekleri eşzamanlı olarak işleyecek şekilde başlatılır.
-* İstekler, **Triton sunucusuna**iletilir. 
+* İstekler, **Triton sunucusuna** iletilir. 
 * Triton, GPU kullanımını en üst düzeye çıkarmak için istekleri toplu halde işler.
 * İstemci, istek yapmak için __Puanlama URI__ 'sini kullanır. Örneğin, `https://myserevice.azureml.net/score`.
 
-:::image type="content" source="./media/how-to-deploy-with-triton/inferenceconfig-deploy.png" alt-text="Normal, üç aylık olmayan dağıtım mimarisi diyagramı":::
+:::image type="content" source="./media/how-to-deploy-with-triton/inferenceconfig-deploy.png" alt-text="Triton ile ınenceconfig dağıtımı":::
 
 Model dağıtımınız için Triton kullanmak üzere iş akışı:
 
@@ -178,7 +178,7 @@ az ml model register --model-path='triton' \
 
 ## <a name="add-pre-and-post-processing"></a>Ön ve son işlem Ekle
 
-Web hizmetinin çalıştığını doğruladıktan sonra, bir _giriş betiği_tanımlayarak, ön ve son işleme kodu ekleyebilirsiniz. Bu dosya adı `score.py` . Giriş betikleri hakkında daha fazla bilgi için bkz. [bir giriş betiği tanımlama](how-to-deploy-and-where.md#define-an-entry-script).
+Web hizmetinin çalıştığını doğruladıktan sonra, bir _giriş betiği_ tanımlayarak, ön ve son işleme kodu ekleyebilirsiniz. Bu dosya adı `score.py` . Giriş betikleri hakkında daha fazla bilgi için bkz. [bir giriş betiği tanımlama](how-to-deploy-and-where.md#define-an-entry-script).
 
 İki ana adım, yönteinizde bir üç aylık HTTP istemcisini başlatmak `init()` ve işlevinizde bu istemciye çağırmak için kullanılır `run()` .
 
@@ -228,7 +228,7 @@ Bir çıkarım yapılandırması, Python SDK veya Azure CLı kullanarak Azure Ma
 > [!IMPORTANT]
 > `AzureML-Triton` [Seçkin ortamı](./resource-curated-environments.md)belirtmeniz gerekir.
 >
-> Python kod örneği `AzureML-Triton` adlı başka bir ortama klonlar `My-Triton` . Azure CLı kodu bu ortamı da kullanır. Ortam kopyalama hakkında daha fazla bilgi için [Environment. Clone ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#clone-new-name-) başvurusuna bakın.
+> Python kod örneği `AzureML-Triton` adlı başka bir ortama klonlar `My-Triton` . Azure CLı kodu bu ortamı da kullanır. Ortam kopyalama hakkında daha fazla bilgi için [Environment. Clone ()](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#clone-new-name-) başvurusuna bakın.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -283,7 +283,7 @@ az ml model deploy -n triton-densenet-onnx \
 
 ---
 
-Dağıtım tamamlandıktan sonra Puanlama URI 'SI görüntülenir. Bu yerel dağıtım için, olacaktır `http://localhost:6789/score` . Buluta dağıtırsanız, Puanlama URI 'sini almak için [az ml Service CLI göster](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) komutunu kullanabilirsiniz.
+Dağıtım tamamlandıktan sonra Puanlama URI 'SI görüntülenir. Bu yerel dağıtım için, olacaktır `http://localhost:6789/score` . Buluta dağıtırsanız, Puanlama URI 'sini almak için [az ml Service CLI göster](/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) komutunu kullanabilirsiniz.
 
 Puanlama URI 'sine çıkarım istekleri gönderen bir istemci oluşturma hakkında daha fazla bilgi için bkz. [Web hizmeti olarak dağıtılan bir modeli](how-to-consume-web-service.md)kullanma.
 
@@ -310,7 +310,7 @@ az ml service delete -n triton-densenet-onnx
 * [Azure Machine Learning üç aylık dönemin uçtan uca örneklerine bakın](https://aka.ms/aml-triton-sample)
 * [Triton istemci örneklerine](https://github.com/triton-inference-server/server/tree/master/src/clients/python/examples) göz atın
 * [Üç aylık çıkarım sunucusu belgelerini](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/index.html) okuyun
-* [Başarısız bir dağıtımda sorun giderme](how-to-troubleshoot-deployment.md)
+* [Başarısız bir dağıtımın sorunlarını giderme](how-to-troubleshoot-deployment.md)
 * [Azure Kubernetes Service’e dağıtma](how-to-deploy-azure-kubernetes-service.md)
 * [Web hizmetini güncelleştirme](how-to-deploy-update-web-service.md)
 * [Üretimde modeller için veri toplama](how-to-enable-data-collection.md)

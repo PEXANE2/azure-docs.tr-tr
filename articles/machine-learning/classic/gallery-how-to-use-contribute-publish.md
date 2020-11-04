@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 1c03f52802881bcf4c916ce3ed438e465e574090
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc405c56538ab305d6e0b8a22c1095458cb1264e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91346837"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309883"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Azure Yapay Zeka Galerisi kaynakları paylaşma ve bulma
 
-**Uygulama hedefi:** ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md) yok  
+**Uygulama hedefi:** ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) yok  
 
 
 
@@ -28,7 +28,7 @@ Galerinin kendi analiz çözümlerinizi geliştirmek için kullanabileceğiniz �
 
 ## <a name="what-can-i-find-in-the-gallery"></a>Galeride neleri bulabilirim?
 
-Azure Yapay Zeka Galerisi, Microsoft tarafından ve veri bilimi topluluğunun üyeleri tarafından katkıda bulunulan sayıda farklı kaynak içerir. Bu modüller şunlardır:
+Azure Yapay Zeka Galerisi, Microsoft tarafından ve veri bilimi topluluğunun üyeleri tarafından katkıda bulunulan sayıda farklı kaynak içerir. Bunlar:
 
 * **Denemeleri** -Galeri Azure Machine Learning Studio (klasik) ' de geliştirilmiş çok çeşitli denemeleri içerir. Bu, belirli bir makine öğrenimi tekniğinin yanı sıra karmaşık makine öğrenimi sorunları için tam olarak geliştirilen çözümlere yönelik olan hızlı prototip denemeleri tarafından görülebilir.
 * **Öğreticiler** -Machine Learning teknolojileri ve kavramları konusunda size yol gösterecek veya çeşitli makine öğrenimi sorunlarını çözmeye yönelik gelişmiş yöntemleri açıklayan birçok öğretici vardır.
@@ -48,26 +48,26 @@ LinkedIn veya Twitter 'ın paylaşma yeteneklerini kullanarak veya bir bağlant�
 
 Oturum açtığınızda Galeri topluluğunun bir üyesi olursunuz. Bu sayede, başkalarının bulduğunuz çözümlerden yararlanabilmesi için kaynakları indirebilir veya kendi Galeri öğelerinizi katkıda bulunun.
 
-Kendi analiz çözümlerinizi geliştirmek için kullanmak üzere **denemeleri**, **özel modüller** indirebilirsiniz.
-Galeriye **denemeleri**, **öğreticiler**ve **koleksiyonlar** katkıda bulunabilir.
+Kendi analiz çözümlerinizi geliştirmek için kullanmak üzere **denemeleri** , **özel modüller** indirebilirsiniz.
+Galeriye **denemeleri** , **öğreticiler** ve **koleksiyonlar** katkıda bulunabilir.
 
 ## <a name="download-experiments-modules"></a>Denemeleri, modülleri indir
 
-Kendi çözümlerinizi geliştirmek için kullanmak üzere kendi Machine Learning Studio (klasik) çalışma alanınıza **denemeleri**, **özel modüller** indirebilirsiniz.
+Kendi çözümlerinizi geliştirmek için kullanmak üzere kendi Machine Learning Studio (klasik) çalışma alanınıza **denemeleri** , **özel modüller** indirebilirsiniz.
 
 AI Galerisi içinden bir kaynağı indirmek için:
 
 1. Kaynağı AI galerisinde açın.
-1. **Studio 'Da aç**' a tıklayın.
+1. **Studio 'Da aç** ' a tıklayın.
 
 ![AI galerisinden bir öğe açma](./media/gallery-how-to-use-contribute-publish/open-experiment-from-gallery.png)
 
 Studio içinden bir kaynak indirmek için (klasik):
 
-1. Studio 'da (klasik) **Yeni**' yi seçin.
-1. **Modül**, **deneme**veya **Not defteri**seçin.
+1. Studio 'da (klasik) **Yeni** ' yi seçin.
+1. **Modül** , **deneme** veya **Not defteri** seçin.
 1. Galeri kaynağı bulmak için inceleyin veya arayın.
-1. Farenizi kaynağa getirin ve ardından **Studio 'Da aç**' ı seçin.
+1. Farenizi kaynağa getirin ve ardından **Studio 'Da aç** ' ı seçin.
     ![Galeri denemesini Machine Learning Studio içinden aç (klasik)](./media/gallery-how-to-use-contribute-publish/open-experiment-from-studio.png)
 
 Kaynak çalışma alanınızda olduktan sonra, bunu, Studio 'da oluşturduğunuz her şeyi (klasik) yaptığınız gibi özelleştirebilir ve kullanabilirsiniz.
@@ -75,7 +75,7 @@ Kaynak çalışma alanınızda olduktan sonra, bunu, Studio 'da oluşturduğunuz
 İçeri aktarılan özel modülü kullanmak için:
 
 1. Bir deneme oluşturun veya var olan bir denemeyi açın.
-1. Çalışma alanınızdaki özel modüllerin listesini genişletmek için, modül paletinde **özel**' i seçin. Modül paleti deneme tuvalinin solunda bulunur.
+1. Çalışma alanınızdaki özel modüllerin listesini genişletmek için, modül paletinde **özel** ' i seçin. Modül paleti deneme tuvalinin solunda bulunur.
 1. İçeri aktardığınız modülü seçin ve denemenize sürükleyin.
 
 ## <a name="contribute-experiments"></a>Katkıda bulun denemeleri
@@ -87,7 +87,7 @@ Ve katkılarınız hakkında yorum bildirimleri almak için Disqus gibi bir tart
 
 1. Denemeniz için Studio 'da (klasik) açın.
 
-1. Deneme tuvalinin altındaki Eylemler listesinde **Galeriye Yayımla**' yı seçin.
+1. Deneme tuvalinin altındaki Eylemler listesinde **Galeriye Yayımla** ' yı seçin.
 
 1. Galeride, açıklayıcı bir **ad** ve **Etiketler** girin. Kullandığınız teknikleri veya çözüm yaptığınız gerçek sorunu vurgulayın. Açıklayıcı bir deneme başlığına örnek olarak "Ikili sınıflandırma: Twitter Yaklaşım Analizi."
 
@@ -101,17 +101,17 @@ Ve katkılarınız hakkında yorum bildirimleri almak için Disqus gibi bir tart
    * Model açıklaması
    * Model performansının sonuçları ve değerlendirmesi
 
-   Açıklamanızı biçimlendirmek için markaşağı ' yı kullanabilirsiniz. Deneme açıklaması sayfasındaki girişlerinizin deneme yayımlandığında nasıl görüneceğini görmek için **Önizleme**' yi seçin.
+   Açıklamanızı biçimlendirmek için markaşağı ' yı kullanabilirsiniz. Deneme açıklaması sayfasındaki girişlerinizin deneme yayımlandığında nasıl görüneceğini görmek için **Önizleme** ' yi seçin.
 
    > [!TIP]
    > Markaşağı düzenlemesi ve önizlemesi için girilen metin kutuları küçüktür. Deneme belgelerinizi bir markı düzenleyicisine (örneğin, [Visual Studio Code](https://aka.ms/vscode)) yazmanızı ve sonra tamamlanan belgeleri kopyalayıp galerideki metin kutusuna yapıştırmayı öneririz.
 
 1. **Görüntü seçimi** sayfasında, denemenizin küçük bir görüntüsünü seçin. Küçük resim görüntüsü, deneme Ayrıntıları sayfasının en üstünde ve deneme kutucuğunda görünür. Diğer kullanıcılar galeriye gözatarken küçük resim görüntüsünü görür. Bilgisayarınızdan bir görüntü yükleyebilir veya galerinin bir hisse senedi görüntüsünü seçebilirsiniz.
 
-1. **Ayarlar** sayfasında, **görünürlük**' ın altında, Içeriğinizi herkese açık (**genel**) veya yalnızca sayfaya bağlantısı olan kişiler için erişilebilir hale mi (**listelenmemiş**) seçin.
+1. **Ayarlar** sayfasında, **görünürlük** ' ın altında, Içeriğinizi herkese açık ( **genel** ) veya yalnızca sayfaya bağlantısı olan kişiler için erişilebilir hale mi ( **listelenmemiş** ) seçin.
 
    > [!TIP]
-   > Ortak yayımlamadan önce belgelerinize doğru göründüğünden emin olmak istiyorsanız, önce denemeyi **listelenmemiş**şekilde yayımlayabilirsiniz. Daha sonra, deneme ayrıntıları sayfasında görünürlük ayarını **genel** olarak değiştirebilirsiniz. Bir denemeyi **herkese açık** olarak ayarladıktan sonra bundan sonra **listelenmemiş**olarak değiştiremezsiniz.
+   > Ortak yayımlamadan önce belgelerinize doğru göründüğünden emin olmak istiyorsanız, önce denemeyi **listelenmemiş** şekilde yayımlayabilirsiniz. Daha sonra, deneme ayrıntıları sayfasında görünürlük ayarını **genel** olarak değiştirebilirsiniz. Bir denemeyi **herkese açık** olarak ayarladıktan sonra bundan sonra **listelenmemiş** olarak değiştiremezsiniz.
 
 1. Denemeyi galeriye yayımlamak için **Tamam** onay işaretini seçin.
 
@@ -125,15 +125,15 @@ Denemeniz için aşağıdaki bilgilerden herhangi birini doğrudan galeride değ
 * Özet veya açıklama
 * Etiketler
 * Görüntü
-* Görünürlük ayarı (**genel** veya **listelenmemiş**)
+* Görünürlük ayarı ( **genel** veya **listelenmemiş** )
 
 Ayrıca, Galeriden deneyden da silebilirsiniz.
 
 Bu değişiklikleri yapabilir veya deneme ayrıntıları sayfasından veya galerideki profil sayfasından denemeyi silebilirsiniz.
 
-* Deneme ayrıntıları sayfasında, denemenizin ayrıntılarını değiştirmek için **Düzenle**' yi seçin. Ayrıntılar sayfası düzenleme moduna girer. Değişiklik yapmak için deneme adı, Özet veya etiketlerin yanındaki **Düzenle** ' yi seçin. Değişiklik yapmayı tamamladığınızda **bitti**' yi seçin. Deneyinin görünürlük ayarlarını değiştirmek (**genel** veya **listelenmemiş**) ya da bir deneyden denemeyi silmek için **Ayarlar** simgesini seçin.
+* Deneme ayrıntıları sayfasında, denemenizin ayrıntılarını değiştirmek için **Düzenle** ' yi seçin. Ayrıntılar sayfası düzenleme moduna girer. Değişiklik yapmak için deneme adı, Özet veya etiketlerin yanındaki **Düzenle** ' yi seçin. Değişiklik yapmayı tamamladığınızda **bitti** ' yi seçin. Deneyinin görünürlük ayarlarını değiştirmek ( **genel** veya **listelenmemiş** ) ya da bir deneyden denemeyi silmek için **Ayarlar** simgesini seçin.
 
-* Profil sayfanızda, deneme için aşağı oku seçin ve ardından **Düzenle**' yi seçin. Bu sizi, denemenizin ayrıntılar sayfasına, düzenleme modunda götürür. Değişiklik yapmayı tamamladığınızda **bitti**' yi seçin. Galerideki denemeyi silmek için **Sil**' i seçin.
+* Profil sayfanızda, deneme için aşağı oku seçin ve ardından **Düzenle** ' yi seçin. Bu sizi, denemenizin ayrıntılar sayfasına, düzenleme modunda götürür. Değişiklik yapmayı tamamladığınızda **bitti** ' yi seçin. Galerideki denemeyi silmek için **Sil** ' i seçin.
 
 ### <a name="tips-for-documenting-and-publishing-your-experiment"></a>Denemenizi belgeleme ve yayımlamaya yönelik ipuçları
 
@@ -150,18 +150,18 @@ Bir **öğreticiye** , makine öğrenimi kavramlarını açıklayan bir öğreti
 
 1. Sayfanın sağ üst köşesindeki görüntünüzü seçin ve ardından adınızı seçin.
 
-1. **Yeni Öğe**’yi seçin.
+1. **Yeni Öğe** ’yi seçin.
 
-1. **Açıklama** sayfasında, **öğe türü**için **öğretici** veya **koleksiyon**' ı seçin. Bir ad, kısa bir Özet, ayrıntılı bir açıklama ve diğer kullanıcıların katkılarınızı bulmasına yardımcı olabilecek Etiketler girin. Ardından **İleri**'ye tıklayın.
+1. **Açıklama** sayfasında, **öğe türü** için **öğretici** veya **koleksiyon** ' ı seçin. Bir ad, kısa bir Özet, ayrıntılı bir açıklama ve diğer kullanıcıların katkılarınızı bulmasına yardımcı olabilecek Etiketler girin. Ardından **İleri** 'ye tıklayın.
 
-1. **Görüntü seçimi** sayfasında katkısıyla görüntülenen bir görüntü seçin. Kendi resim dosyanızı karşıya yükleyebilir veya bir hisse senedi görüntüsü seçebilirsiniz. Kullanıcıların katkıınızın içeriğini ve amacını belirlemesine yardımcı olabilecek bir görüntü seçin. Ardından **İleri**'ye tıklayın.
+1. **Görüntü seçimi** sayfasında katkısıyla görüntülenen bir görüntü seçin. Kendi resim dosyanızı karşıya yükleyebilir veya bir hisse senedi görüntüsü seçebilirsiniz. Kullanıcıların katkıınızın içeriğini ve amacını belirlemesine yardımcı olabilecek bir görüntü seçin. Ardından **İleri** 'ye tıklayın.
 
-1. **Ayarlar** sayfasında, **görünürlük**Için, katkınızın **herkese açık** olup olmadığını seçin (herkes tarafından görüntülenebilir) veya **listelenmemiş** (yalnızca doğrudan bağlantı olan kişiler tarafından görüntülenebilir).
+1. **Ayarlar** sayfasında, **görünürlük** Için, katkınızın **herkese açık** olup olmadığını seçin (herkes tarafından görüntülenebilir) veya **listelenmemiş** (yalnızca doğrudan bağlantı olan kişiler tarafından görüntülenebilir).
 
    > [!TIP]
-   > Ortak yayımlamadan önce belgelerinize doğru göründüğünden emin olmak istiyorsanız, önce denemeyi **listelenmemiş**şekilde yayımlayabilirsiniz. Daha sonra, deneme ayrıntıları sayfasında görünürlük ayarını **genel** olarak değiştirebilirsiniz. Bir denemeyi **herkese açık** olarak ayarladıktan sonra bundan sonra **listelenmemiş**olarak değiştiremezsiniz.
+   > Ortak yayımlamadan önce belgelerinize doğru göründüğünden emin olmak istiyorsanız, önce denemeyi **listelenmemiş** şekilde yayımlayabilirsiniz. Daha sonra, deneme ayrıntıları sayfasında görünürlük ayarını **genel** olarak değiştirebilirsiniz. Bir denemeyi **herkese açık** olarak ayarladıktan sonra bundan sonra **listelenmemiş** olarak değiştiremezsiniz.
 
-1. **Oluştur**’u seçin.
+1. **Oluştur** ’u seçin.
 
 Katkılarınız artık Azure Yapay Zeka Galerisi. Katkılarınız, **öğeler** sekmesindeki hesap sayfanızda listelenir.
 
@@ -169,16 +169,16 @@ Katkılarınız artık Azure Yapay Zeka Galerisi. Katkılarınız, **öğeler** 
 
 Koleksiyonunuzda öğeleri iki şekilde ekleyebilirsiniz:
 
-* Koleksiyonu açın, **Düzenle**' yi seçin ve ardından **öğe Ekle**' yi seçin. Galerinize katkıda bulunan öğeleri ekleyebilir veya galerideki öğeleri eklemek için arama yapabilirsiniz. Eklemek istediğiniz öğeleri seçtikten sonra **Ekle**' ye tıklayın.
+* Koleksiyonu açın, **Düzenle** ' yi seçin ve ardından **öğe Ekle** ' yi seçin. Galerinize katkıda bulunan öğeleri ekleyebilir veya galerideki öğeleri eklemek için arama yapabilirsiniz. Eklemek istediğiniz öğeleri seçtikten sonra **Ekle** ' ye tıklayın.
 
-* Galeriye gözatarken eklemek istediğiniz bir öğe bulursanız, öğeyi açın ve **koleksiyona Ekle**' yi seçin. Öğeyi eklemek istediğiniz koleksiyonu seçin.
+* Galeriye gözatarken eklemek istediğiniz bir öğe bulursanız, öğeyi açın ve **koleksiyona Ekle** ' yi seçin. Öğeyi eklemek istediğiniz koleksiyonu seçin.
 
-**Düzenle**'yi seçerek koleksiyonunuzdaki öğeleri düzenleyebilirsiniz.
+**Düzenle** 'yi seçerek koleksiyonunuzdaki öğeleri düzenleyebilirsiniz.
 
 * Koleksiyonunuz için Özet, açıklama veya etiketleri değiştirebilirsiniz.
 * Bir öğenin yanındaki okları kullanarak koleksiyondaki öğelerin sırasını değiştirebilirsiniz.
-* Koleksiyonunuzdaki öğelere Not eklemek için bir öğenin sağ üst köşesini seçin ve **Not Ekle/Düzenle**' yi seçin.
-* Koleksiyonunuzdan bir öğeyi kaldırmak için bir öğenin sağ üst köşesini seçin ve ardından **Kaldır**' ı seçin.
+* Koleksiyonunuzdaki öğelere Not eklemek için bir öğenin sağ üst köşesini seçin ve **Not Ekle/Düzenle** ' yi seçin.
+* Koleksiyonunuzdan bir öğeyi kaldırmak için bir öğenin sağ üst köşesini seçin ve ardından **Kaldır** ' ı seçin.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 

@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 08981ad21c15b6fc375e2e0733564c40d54932ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce068f1b43fcd6611d4abf65029cbcc5de3b7d30
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708263"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311596"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Python 'da (Önizleme), ML modellerini & öngörülerini açıklamak için yorumlamalar paketini kullanın
 
@@ -354,7 +354,7 @@ Azure Machine Learning Studio 'daki görselleştirme panosuna erişmek için bu 
    [![Görselleştirme Panosu yerel özellik önem derecesi denemeleri içinde AzureML](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
 * **Modeller** bölmesi
-  1. [Azure Machine Learning ile modelleri dağıtma](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)bölümündeki adımları izleyerek orijinal modelinizi kaydettiniz, görüntülemek için sol bölmedeki **modeller** ' ı seçebilirsiniz.
+  1. [Azure Machine Learning ile modelleri dağıtma](./how-to-deploy-and-where.md)bölümündeki adımları izleyerek orijinal modelinizi kaydettiniz, görüntülemek için sol bölmedeki **modeller** ' ı seçebilirsiniz.
   1. Açıklama görselleştirme panosunu görüntülemek için bir model ve ardından **açıklamalar** sekmesini seçin.
 
 ## <a name="interpretability-at-inference-time"></a>Çıkarımı zamanında yorumlenebilirlik
@@ -419,7 +419,7 @@ Açıklama 'yi özgün modelle birlikte dağıtabilir ve yeni DataPoint için bi
 
 1. Aşağıdaki adımları izleyerek görüntüyü bir işlem hedefine dağıtın:
 
-   1. Gerekirse, [modelleri Azure Machine Learning Ile dağıtma](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)' daki adımları izleyerek orijinal tahmin modelinizi kaydedin.
+   1. Gerekirse, [modelleri Azure Machine Learning Ile dağıtma](./how-to-deploy-and-where.md)' daki adımları izleyerek orijinal tahmin modelinizi kaydedin.
 
    1. Puanlama dosyası oluşturma.
 
@@ -553,4 +553,3 @@ Açıklama 'yi özgün modelle birlikte dağıtabilir ve yeni DataPoint için bi
 [Model yorumlenebilirliği hakkında daha fazla bilgi edinin](how-to-machine-learning-interpretability.md)
 
 [Gözden geçirin Azure Machine Learning Yorumlenebilirliği örnek Not defterleri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)
-

@@ -10,23 +10,23 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 9abfbe03a4192411a3790bb6d6e488d674c13109
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: ab3f3765a0e988c7e93cca5782b47b3f2d32aef4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897169"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312553"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning çalışma alanları oluşturma ve yönetme 
 
-Bu makalede, [Python için](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) Azure Portal veya SDK kullanarak [Azure Machine Learning](overview-what-is-azure-ml.md)için [**Azure Machine Learning çalışma alanları**](concept-workspace.md) oluşturacaksınız, görüntüleyebilir ve silebilirsiniz.
+Bu makalede, [Python için](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) Azure Portal veya SDK kullanarak [Azure Machine Learning](overview-what-is-azure-ml.md)için [**Azure Machine Learning çalışma alanları**](concept-workspace.md) oluşturacaksınız, görüntüleyebilir ve silebilirsiniz.
 
 Gereksinimleriniz değiştikçe veya Otomasyon artışı için gereksinimler değiştikçe, [CLI kullanarak](reference-azure-machine-learning-cli.md)veya [vs Code uzantısı aracılığıyla](tutorial-setup-vscode-extension.md)çalışma alanları oluşturabilir ve silebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
-* Python SDK 'yı kullanıyorsanız SDK 'yı [yükler](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
+* Python SDK 'yı kullanıyorsanız SDK 'yı [yükler](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
@@ -62,7 +62,7 @@ Gereksinimleriniz değiştikçe veya Otomasyon artışı için gereksinimler de�
                 )
     ```
 
-* **[Sogeign bulutu](reference-machine-learning-cloud-parity.md)** . Bir bağımsız bulutu 'nda çalışıyorsanız Azure 'da kimlik doğrulaması yapmak için ek koda ihtiyacınız olacaktır.
+* **[Sogeign bulutu](reference-machine-learning-cloud-parity.md)**. Bir bağımsız bulutu 'nda çalışıyorsanız Azure 'da kimlik doğrulaması yapmak için ek koda ihtiyacınız olacaktır.
 
     ```python
     from azureml.core.authentication import InteractiveLoginAuthentication
@@ -78,7 +78,7 @@ Gereksinimleriniz değiştikçe veya Otomasyon artışı için gereksinimler de�
                 )
     ```
 
-* **Mevcut Azure kaynaklarını kullanın** .  Azure Kaynak KIMLIĞI biçimiyle mevcut Azure kaynaklarını kullanan bir çalışma alanı da oluşturabilirsiniz. Azure portal veya SDK ile ilgili Azure Kaynak kimliklerini bulun. Bu örnek, kaynak grubunun, depolama hesabının, anahtar kasasının, uygulama öngörülerinin ve kapsayıcı kayıt defterinin zaten var olduğunu varsayar.
+* **Mevcut Azure kaynaklarını kullanın**.  Azure Kaynak KIMLIĞI biçimiyle mevcut Azure kaynaklarını kullanan bir çalışma alanı da oluşturabilirsiniz. Azure portal veya SDK ile ilgili Azure Kaynak kimliklerini bulun. Bu örnek, kaynak grubunun, depolama hesabının, anahtar kasasının, uygulama öngörülerinin ve kapsayıcı kayıt defterinin zaten var olduğunu varsayar.
 
    ```python
    import os
@@ -105,7 +105,7 @@ Gereksinimleriniz değiştikçe veya Otomasyon artışı için gereksinimler de�
                              exist_ok=False)
    ```
 
-Daha fazla bilgi için bkz. [çalışma alanı SDK başvurusu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true).
+Daha fazla bilgi için bkz. [çalışma alanı SDK başvurusu](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py).
 
 Aboneliğinize erişim konusunda sorun yaşıyorsanız, bkz. [Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama ve](how-to-setup-authentication.md)Azure Machine Learning Not defteri ['nde kimlik doğrulama](https://aka.ms/aml-notebook-auth) .
 
@@ -130,7 +130,7 @@ Aboneliğinize erişim konusunda sorun yaşıyorsanız, bkz. [Azure Machine Lear
    Çalışma alanı adı |Çalışma alanınızı tanımlayan benzersiz bir ad girin. Bu örnekte **docs-WS** kullanıyoruz. Adlar, kaynak grubu genelinde benzersiz olmalıdır. Başkaları tarafından oluşturulan çalışma alanlarını birbirinden ayırmak ve geri çekmek için kolay bir ad kullanın. Çalışma alanı adı büyük/küçük harfe duyarlıdır.
    Abonelik |Kullanmak istediğiniz Azure aboneliğini seçin.
    Kaynak grubu | Aboneliğinizde mevcut kaynak gruplarından birini seçin veya bir ad girerek yeni bir kaynak grubu oluşturun. Kaynak grubu, bir Azure çözümü için ilgili kaynakları barındırır. Bu örnekte **docs-AML** kullanılır. Mevcut bir kaynak grubunu kullanmak için *katkıda bulunan* veya *sahip* rolünün olması gerekir.  Erişim hakkında daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanına erişimi yönetme](how-to-assign-roles.md).
-   Bölge | Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın Azure bölgesini ve veri kaynaklarını seçin.
+   Region | Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın Azure bölgesini ve veri kaynaklarını seçin.
 
     ![Çalışma alanınızı yapılandırma](./media/how-to-manage-workspace/create-workspace-form.png)
 
@@ -155,7 +155,7 @@ Aboneliğinize erişim konusunda sorun yaşıyorsanız, bkz. [Azure Machine Lear
 
 # <a name="python"></a>[Python](#tab/python)
 
-Azure Machine Learning Python SDK 'Sı, özel bir uç nokta ile bir çalışma alanı oluşturmak için [çalışma alanı. Create ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-&preserve-view=true) Ile kullanılabilen [privateendpointconfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py&preserve-view=true) sınıfını sağlar. Bu sınıf, var olan bir sanal ağ gerektirir.
+Azure Machine Learning Python SDK 'Sı, özel bir uç nokta ile bir çalışma alanı oluşturmak için [çalışma alanı. Create ()](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-&preserve-view=true) Ile kullanılabilen [privateendpointconfig](/python/api/azureml-core/azureml.core.privateendpointconfig?preserve-view=true&view=azure-ml-py) sınıfını sağlar. Bu sınıf, var olan bir sanal ağ gerektirir.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -165,7 +165,7 @@ Azure Machine Learning Python SDK 'Sı, özel bir uç nokta ile bir çalışma a
 
 1. __Özel uç nokta oluştur__ formunda, kullanılacak konumu, adı ve sanal ağı ayarlayın. Uç noktayı bir Özel DNS bölgesiyle kullanmak istiyorsanız, __özel DNS bölgesi Ile tümleştirin__ ' ı seçin ve __özel DNS bölgesi__ alanını kullanarak bölgeyi seçin. Uç noktayı oluşturmak için __Tamam ' ı__ seçin.   
 
-   :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="Özel uç nokta seçimi":::   
+   :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="Özel uç nokta oluşturma":::   
 
 1. Ağı yapılandırmayı bitirdiğinizde, __gözden geçir + oluştur__ ' u seçebilir veya Isteğe bağlı __Gelişmiş__ yapılandırmaya ilerleyebilirsiniz.
 
@@ -183,11 +183,11 @@ Azure Machine Learning Python SDK 'Sı, özel bir uç nokta ile bir çalışma a
 2. __Ayarlar__ ' da, __sanal ağ bağlantıları__ ' nı seçin.
 3. __Ekle__ ’yi seçin. __Sanal ağ bağlantısı ekle__ sayfasında, benzersiz bir __bağlantı adı__ girin ve eklenecek __sanal ağı__ seçin. Ağ bağlantısını eklemek için __Tamam ' ı__ seçin.
 
-Daha fazla bilgi için bkz. [Azure özel uç nokta DNS yapılandırması](/azure/private-link/private-endpoint-dns).
+Daha fazla bilgi için bkz. [Azure özel uç nokta DNS yapılandırması](../private-link/private-endpoint-dns.md).
 
 ### <a name="vulnerability-scanning"></a>Güvenlik açığı taraması
 
-Azure Güvenlik Merkezi, hibrit bulut iş yükleri arasında birleşik güvenlik yönetimi ve gelişmiş tehdit koruması sağlar. Azure Güvenlik Merkezi 'nin kaynaklarınızı tarayabilmesi ve önerilerini izlemesi gerekir. Daha fazla bilgi için bkz. Güvenlik Merkezi [Ile Azure Kubernetes hizmet tümleştirmesiyle](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration) [Azure Container Registry görüntü tarama](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration) .
+Azure Güvenlik Merkezi, hibrit bulut iş yükleri arasında birleşik güvenlik yönetimi ve gelişmiş tehdit koruması sağlar. Azure Güvenlik Merkezi 'nin kaynaklarınızı tarayabilmesi ve önerilerini izlemesi gerekir. Daha fazla bilgi için bkz. Güvenlik Merkezi [Ile Azure Kubernetes hizmet tümleştirmesiyle](../security-center/defender-for-kubernetes-introduction.md) [Azure Container Registry görüntü tarama](../security-center/defender-for-container-registries-introduction.md) .
 
 ### <a name="advanced"></a>Gelişmiş
 
@@ -210,7 +210,7 @@ Kendi anahtarınızı sağlamak için aşağıdaki adımları kullanın:
 > Bu adımları uygulamadan önce, önce aşağıdaki eylemleri gerçekleştirmeniz gerekir:   
 >
 > 1. __Machine Learning uygulamayı__ (kimlik ve erişim yönetimi 'nde) aboneliğinizde katkıda bulunan izinlerle yetkilendirin.  
-> 1. [Müşteri tarafından yönetilen anahtarları yapılandırma](/azure/cosmos-db/how-to-setup-cmk) bölümündeki adımları izleyerek şunları yapın:
+> 1. [Müşteri tarafından yönetilen anahtarları yapılandırma](../cosmos-db/how-to-setup-cmk.md) bölümündeki adımları izleyerek şunları yapın:
 >     * Azure Cosmos DB sağlayıcıyı kaydetme
 >     * Azure Key Vault oluşturma ve yapılandırma
 >     * Anahtar oluştur
@@ -240,11 +240,11 @@ from azureml.core import Workspace
 
 1. __Müşteri tarafından yönetilen anahtarlar__ ' ı seçin ve ardından __anahtar seçmek Için tıklayın ' ı__ seçin.
 
-    :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="Özel uç nokta seçimi":::
+    :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="Müşteri tarafından yönetilen anahtarlar":::
 
 1. __Azure Key Vault anahtarı seç__ formunda, var olan bir Azure Key Vault, içerdiği bir anahtarı ve anahtarın sürümünü seçin. Bu anahtar, Azure Cosmos DB depolanan verileri şifrelemek için kullanılır. Son olarak, bu anahtarı kullanmak için __Seç__ düğmesini kullanın.
 
-   :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="Özel uç nokta seçimi":::
+   :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="Anahtarı seçin":::
 
 ---
 
@@ -290,7 +290,7 @@ ws = Workspace.from_config()
     ws = Workspace.from_config(auth=interactive_auth)
     ```
 
-* **[Sogeign bulutu](reference-machine-learning-cloud-parity.md)** . Bir bağımsız bulutu 'nda çalışıyorsanız Azure 'da kimlik doğrulaması yapmak için ek koda ihtiyacınız olacaktır.
+* **[Sogeign bulutu](reference-machine-learning-cloud-parity.md)**. Bir bağımsız bulutu 'nda çalışıyorsanız Azure 'da kimlik doğrulaması yapmak için ek koda ihtiyacınız olacaktır.
 
     ```python
     from azureml.core.authentication import InteractiveLoginAuthentication
@@ -318,7 +318,7 @@ Workspace.list('<subscription-id>')
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. Üst arama alanına **Machine Learning** yazın.  
 
@@ -351,7 +351,7 @@ Varsayılan eylem, çalışma alanı, yani kapsayıcı kayıt defteri, depolama 
 
 [Azure Portal](https://portal.azure.com/), silmek istediğiniz çalışma alanının en üstünde bulunan **Sil** ' i seçin.
 
-:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="Özel uç nokta seçimi":::
+:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="Çalışma alanını sil":::
 
 ---
 

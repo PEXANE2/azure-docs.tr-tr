@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8a3a82e091791b39ddf36e39987590dcddea320f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 624409be4d7e2cfba37dbe16e083904766ae1389
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897503"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309656"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Uyarılar ve hata ayıklama için Application Insights makine öğrenimi ardışık düzen günlük dosyalarını toplayın
 
@@ -24,7 +24,7 @@ ms.locfileid: "90897503"
 
 Günlüklerinizin bir yerde olması, özel durumların ve hata iletilerinin geçmişini sağlar. Application Insights Azure uyarıları ile tümleştirilebildiğinden, Application Insights sorgularını temel alan uyarılar da oluşturabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure Machine Learning](./how-to-manage-workspace.md) çalışma alanı oluşturma ve [ilk işlem hattınızı oluşturma](./how-to-create-your-first-pipeline.md) adımlarını izleyin
 * Azure Machine Learning SDK 'Yı yüklemek için [geliştirme ortamınızı yapılandırın](./how-to-configure-environment.md) .
@@ -38,7 +38,7 @@ Günlüklerinizin bir yerde olması, özel durumların ve hata iletilerinin geç
 
 Bu bölüm, Azure Machine Learning bir işlem hattından OpenCensus kullanımına özgü bir giriş niteliğindedir. Ayrıntılı bir öğretici için bkz. [Opencensus Azure Izleyici Exporters](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
 
-Azure ML ardışık düzenine bir PythonScriptStep ekleyin. [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true) 'nizi opencensus-ext-Azure bağımlılığı ile yapılandırın. `APPLICATIONINSIGHTS_CONNECTION_STRING`Ortam değişkenini yapılandırın.
+Azure ML ardışık düzenine bir PythonScriptStep ekleyin. [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration?preserve-view=true&view=azure-ml-py) 'nizi opencensus-ext-Azure bağımlılığı ile yapılandırın. `APPLICATIONINSIGHTS_CONNECTION_STRING`Ortam değişkenini yapılandırın.
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies
@@ -153,7 +153,7 @@ Application Insights sonucu, günlük iletisini ve düzeyini, dosya yolunu ve ko
 
 ### <a name="additional-helpful-queries"></a>Ek faydalı sorgular
 
-Aşağıdaki bazı sorgular ' customDimensions. Level ' kullanır. Bu önem düzeyleri, Python günlüğünün ilk olarak gönderildiği düzeye karşılık gelir. Ek sorgu bilgileri için bkz. [Azure Izleyici günlük sorguları](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language).
+Aşağıdaki bazı sorgular ' customDimensions. Level ' kullanır. Bu önem düzeyleri, Python günlüğünün ilk olarak gönderildiği düzeye karşılık gelir. Ek sorgu bilgileri için bkz. [Azure Izleyici günlük sorguları](/azure/data-explorer/kusto/query/).
 
 | Kullanım örneği                                                               | Sorgu                                                                                              |
 |------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
@@ -166,4 +166,4 @@ Aşağıdaki bazı sorgular ' customDimensions. Level ' kullanır. Bu önem düz
 
 Application Insights Örneğinizde günlüklerinizi aldıktan sonra, [Azure izleyici uyarılarını](../azure-monitor/platform/alerts-overview.md#what-you-can-alert-on) sorgu sonuçlarına göre ayarlamak için kullanılabilirler.
 
-Ayrıca, ek Öngörüler için sorgulardan sonuçları bir [Azure panosuna](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards#add-logs-analytics-query) ekleyebilirsiniz.
+Ayrıca, ek Öngörüler için sorgulardan sonuçları bir [Azure panosuna](../azure-monitor/learn/tutorial-app-dashboards.md#add-logs-query) ekleyebilirsiniz.

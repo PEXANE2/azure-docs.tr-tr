@@ -1,6 +1,6 @@
 ---
 title: Geçici tablolar
-description: SYNAPSE SQL havuzunda geçici tabloları kullanmaya yönelik temel kılavuz, oturum düzeyi geçici tablolarının ilkelerini vurgulamalıdır.
+description: Geçici tabloları adanmış SQL havuzunda kullanmak için, oturum düzeyi geçici tablolarının ilkelerini vurgulayan temel kılavuz.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,30 +10,32 @@ ms.subservice: sql-dw
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 61cc351470c0446b58d83d2d7f9c998d959c3649
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 077782099d6d61982052dc1690d545e58e928d8c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85414411"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310672"
 ---
-# <a name="temporary-tables-in-synapse-sql-pool"></a>SYNAPSE SQL havuzundaki geçici tablolar
+# <a name="temporary-tables-in-dedicated-sql-pool"></a>Adanmış SQL havuzundaki geçici tablolar
+
 Bu makale, geçici tabloları kullanmaya yönelik temel kılavuz içerir ve oturum düzeyi geçici tablolarının ilkelerini vurgular. 
 
 Bu makaledeki bilgilerin kullanılması, kodunuzun kodlarınlığı ve bakım kolaylığını iyileştirmeye yardımcı olabilir.
 
 ## <a name="what-are-temporary-tables"></a>Geçici tablolar nelerdir?
-Geçici tablolar, özellikle de ara sonuçların geçici olduğu dönüştürme sırasında verileri işlerken yararlı olur. SQL havuzunda, geçici tablolar oturum düzeyinde mevcuttur.  
+
+Geçici tablolar, özellikle de ara sonuçların geçici olduğu dönüştürme sırasında verileri işlerken yararlı olur. Adanmış SQL havuzunda, geçici tablolar oturum düzeyinde mevcuttur.  
 
 Geçici tablolar yalnızca oluşturuldukları oturum için görünür ve bu oturum kapattığında otomatik olarak bırakılır.  
 
 Geçici tablolar, sonuçları uzak depolama yerine yerel olarak yazıldığı için bir performans avantajı sunar.
 
-Geçici tablolar, özellikle de ara sonuçların geçici olduğu dönüştürme sırasında verileri işlerken yararlı olur. SQL havuzu ile, geçici tablolar oturum düzeyinde mevcuttur.  Bunlar yalnızca oluşturuldukları oturum tarafından görülebilir. Bu nedenle, bu oturum kapattığında otomatik olarak bırakılır. 
+Geçici tablolar, özellikle de ara sonuçların geçici olduğu dönüştürme sırasında verileri işlerken yararlı olur. Adanmış SQL havuzu ile, geçici tablolar oturum düzeyinde bulunur.  Bunlar yalnızca oluşturuldukları oturum tarafından görülebilir. Bu nedenle, bu oturum kapattığında otomatik olarak bırakılır. 
 
-## <a name="temporary-tables-in-sql-pool"></a>SQL havuzundaki geçici tablolar
+## <a name="temporary-tables-in-dedicated-sql-pool"></a>Adanmış SQL havuzundaki geçici tablolar
 
-SQL havuzu kaynağında, sonuçları uzak depolama yerine yerel olarak yazıldığı için geçici tablolar bir performans avantajı sunar.
+Adanmış SQL havuzu kaynağında, sonuçları uzak depolama yerine yerel olarak yazıldığı için geçici tablolar bir performans avantajı sunar.
 
 ### <a name="create-a-temporary-table"></a>Geçici tablo oluşturma
 
@@ -205,7 +207,7 @@ Bu saklı yordam, bir oturum içinde birden çok kez çalıştırıldığında b
 
 Bununla birlikte, saklı yordamın `DROP TABLE` sonunda, saklı yordam tamamlandığında, saklı yordamın dışında okunabilmesi için oluşturulan tabloyu bırakır.  
 
-SQL havuzunda, diğer SQL Server veritabanlarının aksine, geçici tabloyu onu oluşturan yordamın dışında kullanmak mümkündür.  SQL havuzu geçici tabloları, oturum içinde **herhangi bir yerde** kullanılabilir. Bu özellik aşağıdaki örnekte olduğu gibi daha modüler ve yönetilebilir koda yol açabilir:
+Adanmış SQL havuzunda, diğer SQL Server veritabanlarının aksine, geçici tabloyu onu oluşturan yordamın dışında kullanmak mümkündür.  Adanmış SQL havuzu geçici tabloları, oturum içinde **herhangi bir yerde** kullanılabilir. Bu özellik aşağıdaki örnekte olduğu gibi daha modüler ve yönetilebilir koda yol açabilir:
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -227,11 +229,11 @@ DROP TABLE #stats_ddl;
 ```
 
 ## <a name="temporary-table-limitations"></a>Geçici tablo sınırlamaları
-SQL havuzu, geçici tablolar uygularken birkaç sınırlama uygular.  Şu anda yalnızca oturum kapsamlı geçici tablolar desteklenir.  Genel geçici tablolar desteklenmez.  
+Adanmış SQL havuzu, geçici tablolar uygularken birkaç sınırlama uygular.  Şu anda yalnızca oturum kapsamlı geçici tablolar desteklenir.  Genel geçici tablolar desteklenmez.  
 
 Ayrıca, görünümler geçici tablolarda oluşturulamaz.  Geçici tablolar yalnızca karma veya hepsini bir kez deneme dağıtımı ile oluşturulabilir.  Çoğaltılan geçici tablo dağıtımı desteklenmiyor. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tablo geliştirme hakkında daha fazla bilgi edinmek için [SYNAPSE SQL kaynaklarını kullanarak tabloları tasarlama](sql-data-warehouse-tables-overview.md) makalesini inceleyin.
+Tablo geliştirme hakkında daha fazla bilgi edinmek için [ADANMıŞ SQL havuzu kullanarak tabloları tasarlama](sql-data-warehouse-tables-overview.md) makalesini inceleyin.
 

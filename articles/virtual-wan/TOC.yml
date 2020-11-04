@@ -15,6 +15,10 @@
       href: virtual-wan-expressroute-portal.md
 - name: Kavramlar
   items:
+    - name: Güvenlik
+      items:
+        - name: Güvenlik Temeli
+          href: security-baseline.md
     - name: Uzaktan çalışma
       items:
         - name: Uzaktan çalışmaya yönelik destek

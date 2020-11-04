@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 2c60d2e874e861eebac54e24ba0cb949bfb9a57b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: e0625fd257ed9995fb567785ce07dcb0b0422c61
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207691"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311626"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Konuşma birleştirme biçimlendirme dili (SSML) ile senssıs 'yi geliştirme
 
@@ -218,7 +218,7 @@ Değişiklikler tümce düzeyinde uygulanır ve stiller sese göre farklılık g
 | Öznitelik | Açıklama | Gerekli/Isteğe bağlı |
 |-----------|-------------|---------------------|
 | `style` | Konuşma stilini belirtir. Şu anda konuşma stilleri sese özgüdür. | Sinir Voice için konuşma stilini ayarlarken gereklidir. Kullanıyorsanız `mstts:express-as` stilin sağlanması gerekir. Geçersiz bir değer sağlanmışsa, bu öğe yok sayılır. |
-| `styledegree` | Konuşma stilinin yoğunluğunu belirtir. **Kabul edilen değerler**: 0,01 ile 2 arasında. Varsayılan değer 1 ' dir ve önceden tanımlanmış stil yoğunluğu anlamına gelir. En küçük birim, hedef stili için biraz daha fazla sonuç olarak 0,01 ' dir. 2 değeri, varsayılan stil yoğunluğu kattılmasına neden olur.  | İsteğe bağlı (Şu anda `styledegree` yalnızca XiaoxiaoNeural destekler.)|
+| `styledegree` | Konuşma stilinin yoğunluğunu belirtir. **Kabul edilen değerler** : 0,01 ile 2 arasında. Varsayılan değer 1 ' dir ve önceden tanımlanmış stil yoğunluğu anlamına gelir. En küçük birim, hedef stili için biraz daha fazla sonuç olarak 0,01 ' dir. 2 değeri, varsayılan stil yoğunluğu kattılmasına neden olur.  | İsteğe bağlı (Şu anda `styledegree` yalnızca XiaoxiaoNeural destekler.)|
 
 Her sinir sesi için hangi konuşma stillerinin desteklendiğini öğrenmek için bu tabloyu kullanın.
 
@@ -233,6 +233,7 @@ Her sinir sesi için hangi konuşma stillerinin desteklendiğini öğrenmek içi
 | `en-US-JennyNeural`     | `style="customerservice"` | Müşteri desteği için kolay ve yararlı bir tonu ifade eder  |
 |                         | `style="chat"`            | Rastgele ve gevşek bir tonu ifade eder                         |
 |                         | `style="assistant"`       | Dijital yardımcılar için bir sıcak ve gevşek tonu ifade eder    |
+|                         | `style="newscast"`        | Genel haber teslimi için çok yönlü ve sıradan bir tonu ifade eder   |
 | `en-US-GuyNeural`       | `style="newscast"`        | Anlatım haberleri için resmi ve profesyonel tonu ifade eder |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Anlatım haberleri için resmi ve profesyonel tonu ifade eder |
 |                         | `style="customerservice"` | Müşteri desteği için kolay ve yararlı bir tonu ifade eder  |
@@ -539,7 +540,7 @@ Bürünsel öznitelik değerleri geniş bir aralığa göre değişebildiğinden
 | `range` | Metin için sıklık aralığını temsil eden bir değer. `range`' I betimleyen mutlak değerleri, göreli değerleri veya numaralandırma değerlerini kullanarak ifade edebilirsiniz `pitch` . | İsteğe Bağlı |
 | `rate` | Metnin konuşma oranını gösterir. Şöyle ifade edebilirsiniz `rate` :<ul><li>Varsayılan değer çarpanı olarak davranan sayı olarak ifade edilen göreli bir değer. Örneğin, *1* değeri, fiyata hiçbir değişikliğe neden olmaz. *0,5* değeri, oranın bir haline neden olur. *3* değeri, ücretle sonuçlanmasına neden olur.</li><li>Sabit değer:<ul><li>x-yavaş</li><li>dığını</li><li>orta</li><li>Hızlı</li><li>x-Fast</li><li>default</li></ul></li></ul> | İsteğe Bağlı |
 | `duration` | Konuşma birleştirme (TTS) hizmeti, metni saniye veya milisaniye olarak okurken geçmesi gereken süre. Örneğin, *2s* veya *1800ms*. Süre yalnızca standart sesleri destekler.| İsteğe Bağlı |
-| `volume` | Konuşma sesinizin birim düzeyini gösterir. Birimi şu şekilde ifade edebilirsiniz:<ul><li>*Deetest* 'den *loudest*'e kadar 0,0 ile 100,0 arasında bir sayı olarak ifade edilen mutlak bir değer. Örneğin, 75. Varsayılan değer 100,0 ' dir.</li><li>Birimin değiştirileceği miktarı belirten, "+" veya "-" işaretinden önce gelen sayı olarak ifade edilen göreli bir değer. Örneğin, + 10 veya-5,5.</li><li>Sabit değer:<ul><li>katılımı</li><li>x-Soft</li><li>yumuşatılmış</li><li>orta</li><li>DIN</li><li>x-yüksek</li><li>default</li></ul></li></ul> | İsteğe Bağlı |
+| `volume` | Konuşma sesinizin birim düzeyini gösterir. Birimi şu şekilde ifade edebilirsiniz:<ul><li>*Deetest* 'den *loudest* 'e kadar 0,0 ile 100,0 arasında bir sayı olarak ifade edilen mutlak bir değer. Örneğin, 75. Varsayılan değer 100,0 ' dir.</li><li>Birimin değiştirileceği miktarı belirten, "+" veya "-" işaretinden önce gelen sayı olarak ifade edilen göreli bir değer. Örneğin, + 10 veya-5,5.</li><li>Sabit değer:<ul><li>katılımı</li><li>x-Soft</li><li>yumuşatılmış</li><li>orta</li><li>DIN</li><li>x-yüksek</li><li>default</li></ul></li></ul> | İsteğe Bağlı |
 
 ### <a name="change-speaking-rate"></a>Konuşma hızını değiştir
 
@@ -630,7 +631,7 @@ Ve öznitelikleri için desteklenen içerik türleri aşağıda verilmiştir `in
 | `address` | | Metin bir adres olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />Yani "150th mahkeme, Kuzey Doğu Redmond Washington." |
 | `cardinal`, `number` | | Metin bir Kardinal sayı olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />"Üç alternatif vardır." |
 | `characters`, `spell-out` | | Metin, tek tek harfler (yazılmış) olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />"T E S T" olarak. |
-| `date` | DMY, mdy, yımd, yıdm, YM, My, MD, DM, d, m, y | Metin bir tarih olarak konuşulur. `format`Öznitelik, tarihin biçimini (*d = Day, m = month ve y = Year*) belirtir. Konuşma birleştirme motoru pronounces:<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />"Bugün Ekim, 2016. |
+| `date` | DMY, mdy, yımd, yıdm, YM, My, MD, DM, d, m, y | Metin bir tarih olarak konuşulur. `format`Öznitelik, tarihin biçimini ( *d = Day, m = month ve y = Year* ) belirtir. Konuşma birleştirme motoru pronounces:<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />"Bugün Ekim, 2016. |
 | `digits`, `number_digit` | | Metin, tek basamaklı bir dizi olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />"1 2 3 4 5 6 7 8 9" olarak |
 | `fraction` | | Metin kesirli bir sayı olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />"Bir inç üç sekizde biri." |
 | `ordinal` | | Metin bir sıra numarası olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />As "üçüncü seçeneği belirleyin". |
@@ -716,9 +717,9 @@ SSML belgesi başına yalnızca bir arka plan ses dosyasına izin verilir. Ancak
 | Öznitelik | Açıklama | Gerekli/Isteğe bağlı |
 |-----------|-------------|---------------------|
 | `src` | Arka plan ses dosyasının konumunu/URL 'sini belirtir. | SSML belgenizde arka plan sesi kullanılıyorsa gereklidir. |
-| `volume` | Arka plan ses dosyasının hacmini belirtir. **Kabul edilen değerler**: `0` `100` dahil. Varsayılan değer: `1`. | İsteğe Bağlı |
-| `fadein` | Arka plan sesinin "belirme süresi" süresini milisaniye olarak belirtir. Varsayılan değer `0` , belirme olmaması ile eşdeğerdir. **Kabul edilen değerler**: `0` `10000` dahil.  | İsteğe Bağlı |
-| `fadeout` | Arka plan sesinin milisaniye cinsinden silinme süresini belirtir. Varsayılan değer `0` , soluklaştırma eşdeğeri olan ' tir. **Kabul edilen değerler**: `0` `10000` dahil.  | İsteğe Bağlı |
+| `volume` | Arka plan ses dosyasının hacmini belirtir. **Kabul edilen değerler** : `0` `100` dahil. `1` varsayılan değerdir. | İsteğe Bağlı |
+| `fadein` | Arka plan sesinin "belirme süresi" süresini milisaniye olarak belirtir. Varsayılan değer `0` , belirme olmaması ile eşdeğerdir. **Kabul edilen değerler** : `0` `10000` dahil.  | İsteğe Bağlı |
+| `fadeout` | Arka plan sesinin milisaniye cinsinden silinme süresini belirtir. Varsayılan değer `0` , soluklaştırma eşdeğeri olan ' tir. **Kabul edilen değerler** : `0` `10000` dahil.  | İsteğe Bağlı |
 
 **Örnek**
 

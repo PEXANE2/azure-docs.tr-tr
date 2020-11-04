@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 31e129b9b1a4b5161ed33c27ea4da76168170dbe
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 345c925d3b1350dfc2ea69d65d8d14688c6930b9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495983"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310178"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning stüdyo nedir?
 
@@ -74,7 +74,7 @@ Deneyimli bir geliştirici olsanız bile, Studio çalışma alanı kaynakların�
 
 **Azure Machine Learning Studio** , proje yazma ve varlık yönetimi için düşük kod ve kod içermeyen seçenekler *içeren Azure Machine Learning bir* Web portalıdır. 
 
-Yeni kullanıcıların, en son veri bilimi araçları aralığı için ML Studio (klasik) yerine **Azure Machine Learning**seçmesini öneririz.
+Yeni kullanıcıların, en son veri bilimi araçları aralığı için ML Studio (klasik) yerine **Azure Machine Learning** seçmesini öneririz.
 
 ### <a name="feature-comparison"></a>Özellik karşılaştırması
 
@@ -83,7 +83,7 @@ Aşağıdaki tablo ML Studio (klasik) ve Azure Machine Learning arasındaki öne
 | Özellik | ML Studio (klasik) | Azure Machine Learning |
 |---| --- | --- |
 | Sürükle ve bırak arabirimi | Klasik deneyim | Güncelleştirilmiş deneyim- [Azure Machine Learning Tasarımcısı](concept-designer.md)| 
-| Kod SDK 'Ları | Desteklenmeyen | [Azure Machine Learning Python](https://docs.microsoft.com/python/api/overview/azure/ml/) ve [R](tutorial-1st-r-experiment.md) SDK 'leriyle tamamen tümleşik |
+| Kod SDK 'Ları | Desteklenmeyen | [Azure Machine Learning Python](/python/api/overview/azure/ml/) ve [R](tutorial-1st-r-experiment.md) SDK 'leriyle tamamen tümleşik |
 | Deneme | Ölçeklenebilir (10 GB eğitim veri limiti) | İşlem hedefi ile ölçeklendirme |
 | Eğitim işlem hedefleri | Özel işlem hedefi, yalnızca CPU desteği | Geniş kapsamlı özelleştirilebilir [eğitim işlem hedefleri](concept-compute-target.md#train). GPU ve CPU desteği içerir | 
 | Dağıtım işlem hedefleri | Özel Web hizmeti biçimi özelleştirilebilir değil | Geniş kapsamlı özelleştirilebilir [dağıtım işlem hedefleri](concept-compute-target.md#deploy). GPU ve CPU desteği içerir |
@@ -103,4 +103,3 @@ Aşağıdaki tablo ML Studio (klasik) ve Azure Machine Learning arasındaki öne
   + [& modellerini eğitmek için bir işlem örneğinde Jupyıter not defterlerini kullanma](tutorial-1st-experiment-sdk-setup.md)
   + [& dağıtım modellerini eğitme için otomatik makine öğrenimi kullanma](tutorial-first-experiment-automated-ml.md)  
   + [& modellerini eğitmek için tasarımcıyı kullanma](tutorial-designer-automobile-price-train-score.md)
-

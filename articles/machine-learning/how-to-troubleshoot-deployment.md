@@ -1,32 +1,32 @@
 ---
-title: Docker dağıtımı sorunlarını giderme
+title: Web hizmeti dağıtımı sorunlarını giderme
 titleSuffix: Azure Machine Learning
-description: Azure Kubernetes hizmeti ile genel Docker dağıtım hatalarını çözmenin, çözme ve sorunlarını giderme hakkında bilgi edinin ve Azure Machine Learning kullanarak Azure Container Instances.
+description: Azure Kubernetes hizmeti ve Azure Container Instances ile ilgili genel Docker dağıtım hatalarını çözmenin, çözme ve sorunlarını giderme hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: clauren42
-ms.author: clauren
+author: gvashishtha
+ms.author: gopalv
 ms.reviewer: jmartens
-ms.date: 08/06/2020
+ms.date: 11/02/2020
 ms.topic: troubleshooting
 ms.custom: contperfq4, devx-track-python, deploy
-ms.openlocfilehash: 259b5c789d2323dbc797116cf0d09045811a6873
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: dfbfea22738e6aeb0df31ad941b2ff10e53795a4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073351"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311300"
 ---
-# <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Azure Kubernetes hizmeti ve Azure Container Instances modelinin Docker dağıtımı sorunlarını giderin 
+# <a name="troubleshoot-model-deployment"></a>Model dağıtımı sorunlarını giderme
 
 Azure Machine Learning kullanarak Azure Container Instances (ACI) ve Azure Kubernetes Service (AKS) ile genel Docker dağıtım hatalarını nasıl giderebileceğinizi ve çözeceğinizi öğrenin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Bir **Azure aboneliği**. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
-* [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+* [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
 * [Azure Machine Learning Için CLI uzantısı](reference-azure-machine-learning-cli.md).
 * Yerel olarak hata ayıklamak için yerel sisteminizde çalışan bir Docker yüklemeniz olmalıdır.
 
@@ -34,66 +34,48 @@ Azure Machine Learning kullanarak Azure Container Instances (ACI) ve Azure Kuber
 
 ## <a name="steps-for-docker-deployment-of-machine-learning-models"></a>Makine öğrenimi modellerinin Docker dağıtımı için adımlar
 
-Bir modeli Azure Machine Learning dağıtırken, [model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 'sini ve bir [ortam](how-to-use-environments.md) nesnesini kullanırsınız. Hizmet, dağıtım aşaması sırasında bir temel Docker görüntüsü oluşturur ve tüm gerekli modelleri tek bir çağrıda takar. Temel dağıtım görevleri şunlardır:
+Azure Machine Learning, yerel olmayan bir işlem için bir modeli dağıtırken, aşağıdakiler gerçekleşir:
 
-1. Modeli çalışma alanı modeli kayıt defterine kaydedin.
+1. Inısenceconfig 'teki ortamlar nesneniz içinde belirttiğiniz Dockerfile, kaynak dizininizin içeriğiyle birlikte buluta gönderilir
+1. Daha önce oluşturulmuş bir görüntü, kapsayıcı kayıt defterinizde yoksa, bulutta yerleşik olarak yeni bir Docker görüntüsü oluşturulur ve çalışma alanınızın varsayılan kapsayıcı kayıt defterinde saklanır.
+1. Kapsayıcı kayıt defterinizin Docker görüntüsü işlem hedefinizden indirilir.
+1. Çalışma alanınızın varsayılan Blob deposu, işlem hedeflerinize bağlanır, böylece kayıtlı modellere erişebilirsiniz
+1. Web sunucunuz, giriş betiğinizin işlevi çalıştırılarak başlatılır `init()`
+1. Dağıtılan modeliniz bir istek aldığında, `run()` işleviniz bu isteği işler
 
-2. Çıkarım yapılandırmasını tanımla:
-    1. [Ortam](how-to-use-environments.md) nesnesi oluşturun. Bu nesne, bir ortam YAML dosyasındaki bağımlılıkları kullanarak, seçkin ortamlarımızın biri olabilir.
-    2. Ortama ve Puanlama betiğine göre bir çıkarım yapılandırması (ınenceconfig nesnesi) oluşturun.
+Yerel bir dağıtım kullanmanın asıl farkı, kapsayıcı görüntüsünün yerel makinenizde yerleşik olarak oluşturulması ve bu nedenle yerel bir dağıtım için Docker 'ın yüklü olması gerekir.
 
-3. Modeli Azure Container Instance (ACI) hizmetine veya Azure Kubernetes Service 'e (AKS) dağıtın.
+Bu üst düzey adımların anlaşılması hataların nerede olduğunu anlamanıza yardımcı olmalıdır.
 
-[Model yönetimi](concept-model-management-and-deployment.md) giriş bölümünde bu işlem hakkında daha fazla bilgi edinin.
+## <a name="get-deployment-logs"></a>Dağıtım günlüklerini al
 
-## <a name="before-you-begin"></a>Başlamadan önce
+Hata ayıklama hataındaki ilk adım, dağıtım günlüklerinizi almak için kullanılır. İlk olarak, çalışma alanınıza bağlanmak için [buradaki yönergeleri](how-to-deploy-and-where.md#connect-to-your-workspace) izleyin.
 
-Herhangi bir sorunla karşılaşırsanız, ilk yapılacak şey, sorunu yalıtmak için dağıtım görevinin (önceki adı daha önce açıklanan) bireysel adımlara bölünmemaktır.
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-Bir [ortam](how-to-use-environments.md) nesnesi olan [model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) öğesini giriş parametresi olarak kullanırken, kodunuz üç ana adıma ayrılabilir:
+Dağıtılan bir Web hizmetinden günlükleri almak için şunları yapın:
 
-1. Modeli kaydedin. Örnek kod aşağıda verilmiştir:
+```bash
+az ml service get-logs --verbose --workspace-name <my workspace name> --name <service name>
+```
 
-    ```python
-    from azureml.core.model import Model
-
-
-    # register a model out of a run record
-    model = best_run.register_model(model_name='my_best_model', model_path='outputs/my_model.pkl')
-
-    # or, you can register a file or a folder of files as a model
-    model = Model.register(model_path='my_model.pkl', model_name='my_best_model', workspace=ws)
-    ```
-
-2. Dağıtım için çıkarım yapılandırmasını tanımla:
-
-    ```python
-    from azureml.core.model import InferenceConfig
-    from azureml.core.environment import Environment
+# <a name="python"></a>[Python](#tab/python)
 
 
-    # create inference configuration based on the requirements defined in the YAML
-    myenv = Environment.from_conda_specification(name="myenv", file_path="myenv.yml")
-    inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
-    ```
+Çağrılan türünde bir nesneniz olduğu varsayılarak `azureml.core.Workspace` `ws` , şunları yapabilirsiniz:
 
-3. Önceki adımda oluşturulan çıkarım yapılandırmasını kullanarak modeli dağıtın:
+```python
+print(ws.webservices)
 
-    ```python
-    from azureml.core.webservice import AciWebservice
+# Choose the webservice you are interested in
 
+from azureml.core import Webservice
 
-    # deploy the model
-    aci_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)
-    aci_service = Model.deploy(workspace=ws,
-                           name='my-service',
-                           models=[model],
-                           inference_config=inference_config,
-                           deployment_config=aci_config)
-    aci_service.wait_for_deployment(show_output=True)
-    ```
+service = Webservice(ws, '<insert name of webservice>')
+print(service.get_logs())
+```
 
-E-dağıtım işleminin tek tek görevlere bölünmesi, daha yaygın hataların bazılarını belirlemeyi kolaylaştırır.
+---
 
 ## <a name="debug-locally"></a>Yerel olarak hata ayıkla
 
@@ -161,7 +143,7 @@ print(service.run(input_data=test_sample))
 > [!NOTE]
 > Betik, `InferenceConfig` hizmet tarafından kullanılan nesne tarafından belirtilen konumdan yeniden yüklenir.
 
-Modeli, Conda bağımlılıklarını veya dağıtım yapılandırmasını değiştirmek için [Update ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=trueupdate--args-)kullanın. Aşağıdaki örnek, hizmet tarafından kullanılan modeli güncelleştirir:
+Modeli, Conda bağımlılıklarını veya dağıtım yapılandırmasını değiştirmek için [Update ()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueupdate--args-)kullanın. Aşağıdaki örnek, hizmet tarafından kullanılan modeli güncelleştirir:
 
 ```python
 service.update([different_model], inference_config, deployment_config)
@@ -169,7 +151,7 @@ service.update([different_model], inference_config, deployment_config)
 
 ### <a name="delete-the-service"></a>Hizmeti Sil
 
-Hizmeti silmek için [Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete--)kullanın.
+Hizmeti silmek için [Delete ()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--)kullanın.
 
 ### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a> Docker günlüğünü İnceleme
 
@@ -187,7 +169,7 @@ Bir satırı `Booting worker with pid: <pid>` günlüklerde birden çok kez gör
  
 ## <a name="container-cannot-be-scheduled"></a>Kapsayıcı zamanlanamaz
 
-Bir Azure Kubernetes hizmet işlem hedefine bir hizmet dağıttığınızda, Azure Machine Learning hizmeti istenen miktarda kaynakla zamanlamayı dener. Kümede 5 dakikadan sonra uygun miktarda kaynağa sahip bir düğüm yoksa dağıtım başarısız olur. Hata iletisi `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` . Bu hatayı daha fazla düğüm ekleyerek, düğümlerinizin SKU 'sunu değiştirerek ya da hizmetinizin kaynak gereksinimlerini değiştirerek ele alabilirsiniz. 
+Azure Kubernetes Service işlem hedefine hizmet dağıtırken, Azure Machine Learning hizmeti istenen miktarda kaynakla zamanlamayı dener. Kümede 5 dakikadan sonra uygun miktarda kaynağa sahip bir düğüm yoksa dağıtım başarısız olur. Hata iletisi `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` . Bu hatayı daha fazla düğüm ekleyerek, düğümlerinizin SKU 'sunu değiştirerek ya da hizmetinizin kaynak gereksinimlerini değiştirerek ele alabilirsiniz. 
 
 Hata iletisi genellikle ne kaynak için daha fazla gereksinim duyacağını gösterir. Örneğin, `0/3 nodes are available: 3 Insufficient nvidia.com/gpu` hizmetin GPU gerektirdiğini ve kümede kullanılabilir GPU olmayan üç düğüm olduğunu belirten bir hata iletisi görürseniz. Bu, bir GPU SKU 'SU kullanıyorsanız daha fazla düğüm eklenerek, bir GPU etkin SKU 'ya geçiş yaparak, ortamınızda GPU gerektirmez.  
 
@@ -199,7 +181,7 @@ Günlükleri denetlemek için [Docker günlüğünü İnceleme](#dockerlog) böl
 
 ## <a name="function-fails-get_model_path"></a>İşlev başarısız oldu: get_model_path ()
 
-Genellikle, `init()` Puanlama betiğinin işlevindeki [model.get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) işlevi, bir model dosyasını veya kapsayıcıdaki model dosyalarının bir klasörünü bulmak için çağırılır. Model dosyası veya klasörü bulunamazsa, işlev başarısız olur. Bu hatada hata ayıklamanın en kolay yolu, kapsayıcı kabuğu 'nda aşağıdaki python kodunu çalıştırmalıdır:
+Genellikle, `init()` Puanlama betiğinin işlevindeki [model.get_model_path ()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) işlevi, bir model dosyasını veya kapsayıcıdaki model dosyalarının bir klasörünü bulmak için çağırılır. Model dosyası veya klasörü bulunamazsa işlev başarısız olur. Bu hatada hata ayıklamanın en kolay yolu, kapsayıcı kabuğu 'nda aşağıdaki python kodunu çalıştırmalıdır:
 
 ```python
 from azureml.core.model import Model
@@ -214,7 +196,7 @@ Günlüğe kaydetme düzeyinin hata ayıklama olarak ayarlanması ek bilgilerin 
 
 ## <a name="function-fails-runinput_data"></a>İşlev başarısız: çalıştırma (input_data)
 
-Hizmet başarıyla dağıtılırsa ancak Puanlama uç noktasına veri gönderdiğinizde çöktüğünde, `run(input_data)` bunun yerine ayrıntılı hata mesajı döndürmesi için işlevinize hata yakalama ifadesini ekleyebilirsiniz. Örnek:
+Hizmet başarıyla dağıtılırsa ancak Puanlama uç noktasına veri gönderdiğinizde çöktüğünde, `run(input_data)` bunun yerine ayrıntılı hata mesajı döndürmesi için işlevinize hata yakalama ifadesini ekleyebilirsiniz. Örneğin:
 
 ```python
 def run(input_data):
@@ -229,7 +211,7 @@ def run(input_data):
         return json.dumps({"error": result})
 ```
 
-**Note**: çağrıdan hata iletilerinin döndürülmesi `run(input_data)` yalnızca hata ayıklama amacıyla yapılmalıdır. Güvenlik nedenleriyle, bir üretim ortamında bu şekilde hata iletileri döndürmemelisiniz.
+**Note** : çağrıdan hata iletilerinin döndürülmesi `run(input_data)` yalnızca hata ayıklama amacıyla yapılmalıdır. Güvenlik nedenleriyle, bir üretim ortamında bu şekilde hata iletileri döndürmemelisiniz.
 
 ## <a name="http-status-code-502"></a>HTTP durum kodu 502
 
@@ -239,7 +221,7 @@ def run(input_data):
 
 Azure Kubernetes hizmet dağıtımları otomatik ölçeklendirmeyi destekler, bu da ek yükü desteklemek için çoğaltmaların eklenmesine izin verir. Otomatik Scaler, yükteki **aşamalı** değişiklikleri işlemek için tasarlanmıştır. Saniye başına isteklerde büyük ani artışlar alıyorsanız, istemciler bir HTTP durum kodu 503 alabilir. Otomatik olarak yeniden hareket etmekle birlikte, ek kapsayıcılar oluşturmak için önemli miktarda zaman alır.
 
-Ölçeği artırma/azaltma kararları, geçerli kapsayıcı çoğaltmalarının kullanımına dayanır. Meşgul olan çoğaltma sayısı (bir isteği işleme) geçerli çoğaltmanın toplam sayısına bölünmüş geçerli kullanımdır. Bu sayı aşarsa `autoscale_target_utilization` , daha fazla çoğaltma oluşturulur. Daha düşükse çoğaltmalar azalır. Çoğaltmaları ekleme kararları, ekip ve hızlı (1 saniye içinde). Çoğaltmaları kaldırma kararları (yaklaşık 1 dakika). Varsayılan olarak, otomatik ölçeklendirme hedef kullanımı **%70**olarak ayarlanır, bu da hizmetin saniyede %30 ' a **varan**(RPS) istek sayısını işleyebileceği anlamına gelir.
+Ölçeği artırma/azaltma kararları, geçerli kapsayıcı çoğaltmalarının kullanımına dayanır. Meşgul olan çoğaltma sayısı (bir isteği işleme) geçerli çoğaltmanın toplam sayısına bölünmüş geçerli kullanımdır. Bu sayı aşarsa `autoscale_target_utilization` , daha fazla çoğaltma oluşturulur. Daha düşükse çoğaltmalar azalır. Çoğaltmaları ekleme kararları, ekip ve hızlı (1 saniye içinde). Çoğaltmaları kaldırma kararları (yaklaşık 1 dakika). Varsayılan olarak, otomatik ölçeklendirme hedef kullanımı **%70** olarak ayarlanır, bu da hizmetin saniyede %30 ' a **varan** (RPS) istek sayısını işleyebileceği anlamına gelir.
 
 503 durum kodlarının önlenmesine yardımcı olabilecek iki şey vardır:
 
@@ -249,7 +231,7 @@ Azure Kubernetes hizmet dağıtımları otomatik ölçeklendirmeyi destekler, bu
 * Otomatik ölçeklendirmenin yeni çoğaltmalar oluşturduğu kullanım düzeyini değiştirin. `autoscale_target_utilization`Daha düşük bir değere ayarlayarak kullanım hedefini ayarlayabilirsiniz.
 
     > [!IMPORTANT]
-    > Bu değişiklik çoğaltmaların *daha hızlı*oluşturulmasına neden olmaz. Bunun yerine, daha düşük bir kullanım eşiğine göre oluşturulur. Hizmetin %70 olması beklenene kadar beklemek yerine %30 kullanım gerçekleştiğinde, çoğaltmanın oluşturulmasına neden olur.
+    > Bu değişiklik çoğaltmaların *daha hızlı* oluşturulmasına neden olmaz. Bunun yerine, daha düşük bir kullanım eşiğine göre oluşturulur. Hizmetin %70 olması beklenene kadar beklemek yerine %30 kullanım gerçekleştiğinde, çoğaltmanın oluşturulmasına neden olur.
     
     Web hizmeti zaten geçerli en fazla çoğaltmaları kullanıyorsa ve 503 durum kodu görmeye devam ediyorsanız, `autoscale_max_replicas` en fazla çoğaltma sayısını artırmak için değeri arttırın.
 
@@ -277,7 +259,7 @@ Azure Kubernetes hizmet dağıtımları otomatik ölçeklendirmeyi destekler, bu
     > [!NOTE]
     > Yeni en düşük çoğaltmalardan daha büyük istek ani artışları alırsanız, yeniden 503s alabilirsiniz. Örneğin, hizmetinizin trafiği arttıkça, en düşük çoğaltmaları artırmanız gerekebilir.
 
-, Ve için ayarları hakkında daha fazla bilgi için, `autoscale_target_utilization` `autoscale_max_replicas` `autoscale_min_replicas` bkz. [akswebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py&preserve-view=true) modül başvurusu.
+, Ve için ayarları hakkında daha fazla bilgi için, `autoscale_target_utilization` `autoscale_max_replicas` `autoscale_min_replicas` bkz. [akswebservice](/python/api/azureml-core/azureml.core.webservice.akswebservice?preserve-view=true&view=azure-ml-py) modül başvurusu.
 
 ## <a name="http-status-code-504"></a>HTTP durum kodu 504
 
@@ -287,11 +269,11 @@ Gereksiz çağrıları kaldırmak için score.py değiştirerek, zaman aşımın
 
 ## <a name="advanced-debugging"></a>Gelişmiş hata ayıklama
 
-Model dağıtımınızda bulunan Python kodunda etkileşimli olarak hata ayıklaması yapmanız gerekebilir. Örneğin, giriş betiği başarısız olursa ve neden ek günlüğe kaydetme ile saptanamaz. Visual Studio Code ve hata ayıklama GPY kullanarak, Docker kapsayıcısının içinde çalışan koda iliştirebilirsiniz.
+Model dağıtımınızda yer alan Python kodunda etkileşimli hata ayıklaması yapmanız gerekebilir. Örneğin, giriş betiği başarısız olursa ve neden ek günlüğe kaydetme ile saptanamaz. Visual Studio Code ve hata ayıklama GPY kullanarak, Docker kapsayıcısının içinde çalışan koda iliştirebilirsiniz.
 
 Daha fazla bilgi için [vs Code kılavuzunda etkileşimli hata ayıklamayı](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-deployments)ziyaret edin.
 
-## <a name="model-deployment-user-forum"></a>[Model dağıtımı kullanıcı forumu](https://docs.microsoft.com/answers/topics/azure-machine-learning-inference.html)
+## <a name="model-deployment-user-forum"></a>[Model dağıtımı kullanıcı forumu](/answers/topics/azure-machine-learning-inference.html)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

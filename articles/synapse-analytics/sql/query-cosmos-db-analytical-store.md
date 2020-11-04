@@ -1,6 +1,6 @@
 ---
 title: Azure SYNAPSE link 'te sunucusuz SQL havuzu kullanarak verileri Azure Cosmos DB sorgulama (Önizleme)
-description: Bu makalede, Azure SYNAPSE bağlantısı 'nda (Önizleme) SQL isteğe bağlı SQL kullanarak Azure Cosmos DB sorgulama hakkında bilgi edineceksiniz.
+description: Bu makalede, Azure SYNAPSE link (Önizleme) içinde sunucusuz SQL havuzu kullanarak Azure Cosmos DB sorgulamayı öğreneceksiniz.
 services: synapse analytics
 author: jovanpop-msft
 ms.service: synapse-analytics
@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2b1af6fa5b0ccb95476c4ae169481e4aaa15f4f9
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9f57d435134bffbb8e7576adffeacb92bf687124
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737843"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310310"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Azure SYNAPSE link 'te sunucusuz SQL havuzu ile Azure Cosmos DB verileri sorgulama (Önizleme)
 
 SYNAPSE sunucusuz SQL havuzu, işlem iş yüklerinizin performansını etkilemeden neredeyse gerçek zamanlı olarak [Azure SYNAPSE bağlantısı](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ile etkinleştirilen Azure Cosmos DB kapsayıcılarınızdaki verileri analiz etmenize olanak tanır. [Analitik depodan](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) veri sorgulama ve t-SQL arabirimi aracılığıyla çok çeşitli bı ve geçici sorgulama araçlarıyla tümleşik bağlantı sunan tanıdık bir T-SQL söz dizimi sunar.
 
-Azure Cosmos DB sorgulamak için, tam [seçim](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) yüzeyi alanı [SQL işlevlerinin ve işleçlerin](overview-features.md)çoğunluğu dahil olmak üzere [OPENROWSET](develop-openrowset.md) işlevi aracılığıyla desteklenir. Ayrıca, Azure Blob depolama alanındaki verilerle birlikte Azure Cosmos DB verileri okuyan sorgunun sonuçlarını veya [dış tablo oluştur](develop-tables-cetas.md#cetas-in-sql-on-demand)' u kullanarak Azure Data Lake Storage ' i seçin. Şu anda, [Cetas](develop-tables-cetas.md#cetas-in-sql-on-demand)kullanarak Azure Cosmos DB SUNUCUSUZ SQL havuzu sorgu sonuçlarını depolayamaz.
+Azure Cosmos DB sorgulamak için, tam [seçim](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) yüzeyi alanı [SQL işlevlerinin ve işleçlerin](overview-features.md)çoğunluğu dahil olmak üzere [OPENROWSET](develop-openrowset.md) işlevi aracılığıyla desteklenir. Ayrıca, Azure Blob depolama alanındaki verilerle birlikte Azure Cosmos DB verileri okuyan sorgunun sonuçlarını veya [dış tablo oluştur](develop-tables-cetas.md#cetas-in-serverless-sql-pool)' u kullanarak Azure Data Lake Storage ' i seçin. Şu anda, CETAS kullanarak Azure Cosmos DB sunucusuz SQL havuzu sorgu sonuçlarını depolayamaz. 
 
 Bu makalede, SYNAPSE bağlantısı etkinleştirilmiş Azure Cosmos DB kapsayıcılarından verileri sorgulayan sunucusuz SQL havuzu ile bir sorgu yazmayı öğreneceksiniz. Daha sonra, Azure Cosmos DB kapsayıcıları üzerinde sunucusuz SQL havuzu görünümleri oluşturma ve bunları [Bu](./tutorial-data-analyst.md) öğreticideki Power BI modellerine bağlama hakkında daha fazla bilgi edinebilirsiniz. 
 
@@ -358,6 +358,6 @@ Olası hatalar ve sorun giderme eylemleri aşağıdaki tabloda listelenmiştir:
 
 Daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Azure SYNAPSE bağlantısıyla Power BI ve sunucusuz SYNAPSE SQL havuzu kullanma](../../cosmos-db/synapse-link-power-bi.md)
-- [SQL 'de isteğe bağlı olarak görünüm oluşturma ve kullanma](create-use-views.md) 
-- [Azure Cosmos DB üzerinde SQL isteğe bağlı görünümler oluşturma ve bunları DirectQuery aracılığıyla Power BI modellerine bağlama hakkında öğretici](./tutorial-data-analyst.md)
+- [Azure SYNAPSE bağlantısıyla Power BI ve sunucusuz SQL havuzu kullanma](../../cosmos-db/synapse-link-power-bi.md)
+- [Sunucusuz SQL havuzunda görünüm oluşturma ve kullanma](create-use-views.md) 
+- [Azure Cosmos DB üzerinde sunucusuz SQL havuzu görünümleri oluşturma ve bunları DirectQuery aracılığıyla Power BI modellerine bağlama hakkında öğretici](./tutorial-data-analyst.md)

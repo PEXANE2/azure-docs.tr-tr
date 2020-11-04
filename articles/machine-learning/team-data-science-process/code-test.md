@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: fc837405e03ffac41d216a5ba18384208b07aaf1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bcebc568db4a0d2b4b287045ba0a67c88d9b8c92
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090306"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312692"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Team Data Science Işlemi ve Azure DevOps Services Azure 'da veri bilimi kodu testi
 Bu makale, bir veri bilimi iş akışındaki kodu test etmek için ön yönergeleri sağlar. Bu tür testler, veri bilimcilerinin, kodunuzun kalitesini ve beklenen sonucunu denetlemek için sistematik ve verimli bir yol sunar. Kod testinin nasıl yapılacağını göstermek için daha önce yayımladığımız [UCI yetişkin gelir veri kümesini kullanan](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) bir ekip veri bilimi IŞLEMI (TDSP) projesi kullanıyoruz. 
@@ -89,18 +89,18 @@ Derleme Aracısı ve Azure DevOps kullanarak kod testini ve otomatikleştirilmi�
 
       ![Tahmin değerlerini denetlemek için kod](./media/code-test/check_prediction_values.PNG)
 
-1. Tüm test işlevlerini birlikte **test_funcs. Kopyala**adlı bir Python betiğine yerleştirin:
+1. Tüm test işlevlerini birlikte **test_funcs. Kopyala** adlı bir Python betiğine yerleştirin:
 
     ![Test işlevleri için Python betiği](./media/code-test/create_file_test_func.PNG)
 
 
 1. Test kodları hazırlandıktan sonra, Visual Studio 'da test ortamı ayarlayabilirsiniz.
 
-   **Test1.py**adlı bir Python dosyası oluşturun. Bu dosyada, yapmak istediğiniz tüm testleri içeren bir sınıf oluşturun. Aşağıdaki örnek, hazırlanan altı testi göstermektedir:
+   **Test1.py** adlı bir Python dosyası oluşturun. Bu dosyada, yapmak istediğiniz tüm testleri içeren bir sınıf oluşturun. Aşağıdaki örnek, hazırlanan altı testi göstermektedir:
     
     ![Bir sınıftaki testlerin listesi ile Python dosyası](./media/code-test/create_file_test1_class.PNG)
 
-1. Bu testler, sınıfınızın adından sonra **CodeTEST. testCase** 'i yerleştirirseniz otomatik olarak bulunabilir. Sağ bölmedeki test Gezgini ' ni açın ve **Tümünü Çalıştır**' ı seçin. Tüm testler sırayla çalışır ve testin başarılı olup olmadığını bildirir.
+1. Bu testler, sınıfınızın adından sonra **CodeTEST. testCase** 'i yerleştirirseniz otomatik olarak bulunabilir. Sağ bölmedeki test Gezgini ' ni açın ve **Tümünü Çalıştır** ' ı seçin. Tüm testler sırayla çalışır ve testin başarılı olup olmadığını bildirir.
 
     ![Testleri çalıştırma](./media/code-test/run_tests.PNG)
 
@@ -112,7 +112,7 @@ Derleme Aracısı ve Azure DevOps kullanarak kod testini ve otomatikleştirilmi�
 
 1. Azure DevOps 'da otomatik derleme ve test ayarlama:
 
-    a. Proje deposunda, **Oluştur ve Yayınla**' yı seçin ve ardından yeni bir yapı işlemi oluşturmak Için **+ Yeni** ' yi seçin.
+    a. Proje deposunda, **Oluştur ve Yayınla** ' yı seçin ve ardından yeni bir yapı işlemi oluşturmak Için **+ Yeni** ' yi seçin.
 
     ![Yeni derleme işlemi başlatma seçimleri](./media/code-test/create_new_build.PNG)
 
@@ -120,11 +120,11 @@ Derleme Aracısı ve Azure DevOps kullanarak kod testini ve otomatikleştirilmi�
     
     ![Kaynak, ad, depo ve dal bilgileri](./media/code-test/fill_in_build_info.PNG)
 
-    c. Bir şablon seçin. Python proje şablonu olmadığından, **boş işlem**' i seçerek başlayın. 
+    c. Bir şablon seçin. Python proje şablonu olmadığından, **boş işlem** ' i seçerek başlayın. 
 
     ![Şablonların listesi ve "boş işlem" düğmesi](./media/code-test/start_empty_process_template.PNG)
 
-    d. Derlemeyi adlandırın ve aracıyı seçin. Derleme işlemini gerçekleştirmek için DSVM kullanmak istiyorsanız, varsayılan olarak bu seçeneği belirleyebilirsiniz. Aracıları ayarlama hakkında daha fazla bilgi için bkz. [derleme ve yayın aracıları](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts).
+    d. Derlemeyi adlandırın ve aracıyı seçin. Derleme işlemini gerçekleştirmek için DSVM kullanmak istiyorsanız, varsayılan olarak bu seçeneği belirleyebilirsiniz. Aracıları ayarlama hakkında daha fazla bilgi için bkz. [derleme ve yayın aracıları](/azure/devops/pipelines/agents/agents?view=vsts).
     
     ![Yapı ve aracı seçimleri](./media/code-test/select_agent.PNG)
 
@@ -134,7 +134,7 @@ Derleme Aracısı ve Azure DevOps kullanarak kod testini ve otomatikleştirilmi�
 
     f. PowerShell ayrıntılarında, PowerShell 'in adı ve sürümü gibi gerekli bilgileri girin. Tür olarak **satır Içi betiği** seçin. 
     
-    **Satır Içi betik**altındaki kutuya **Python test1.py**yazabilirsiniz. Ortam değişkeninin Python için doğru şekilde ayarlandığından emin olun. Python 'un farklı bir sürümüne veya çekirdeğe ihtiyacınız varsa, yolu şekilde gösterildiği gibi açıkça belirtebilirsiniz: 
+    **Satır Içi betik** altındaki kutuya **Python test1.py** yazabilirsiniz. Ortam değişkeninin Python için doğru şekilde ayarlandığından emin olun. Python 'un farklı bir sürümüne veya çekirdeğe ihtiyacınız varsa, yolu şekilde gösterildiği gibi açıkça belirtebilirsiniz: 
     
     ![PowerShell ayrıntıları](./media/code-test/powershell_scripts.PNG)
 
@@ -155,7 +155,7 @@ Uyarılar doğru ayarlandıysa, derleme bittiğinde e-posta ile bildirilir. Ayr�
 * Yukarıdaki ana hattı ve örnekleri, kendi veri bilimi projelerinizde UCı gelir tahmin senaryosundan izleyin.
 
 ## <a name="references"></a>Başvurular
-* [Team Data Science Process](https://aka.ms/tdsp)
+* [Team Data Science Process](./index.yml)
 * [Visual Studio test araçları](https://www.visualstudio.com/vs/features/testing-tools/)
 * [Azure DevOps sınama kaynakları](https://www.visualstudio.com/team-services/)
 * [Veri Bilimi Sanal Makineleri](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)

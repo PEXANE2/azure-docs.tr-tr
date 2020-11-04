@@ -8,27 +8,27 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 08ead12c99ae4919a2daf523065cfe332c644df1
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 54612bee5715cdb78141a8aacfa5d24c814269d1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487203"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312396"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>Çalışma alanı yönetilen kimliğine izin ver (Önizleme)
 
-Bu makalede, Azure SYNAPSE çalışma alanındaki yönetilen kimliğe nasıl izin vereceğiniz öğretilir. İzinler, sırasıyla, çalışma alanındaki SQL havuzlarının erişimine izin verir ve Azure portal aracılığıyla depolama hesabı ADLS 2..
+Bu makalede, Azure SYNAPSE çalışma alanındaki yönetilen kimliğe nasıl izin vereceğiniz öğretilir. İzinler, sırasıyla, çalışma alanındaki adanmış SQL havuzlarının erişimine izin verir ve Azure portal aracılığıyla depolama hesabı ADLS 2..
 
 >[!NOTE]
 >Bu çalışma alanı yönetilen kimliği, bu belgenin geri kalanı aracılığıyla yönetilen kimlik olarak anılacaktır.
 
-## <a name="grant-managed-identity-permissions-to-the-sql-pool"></a>SQL havuzuna yönetilen kimlik izinleri verme
+## <a name="grant-managed-identity-permissions-to-the-dedicated-sql-pool"></a>Adanmış SQL havuzuna yönetilen kimlik izinleri verme
 
-Yönetilen kimlik, çalışma alanındaki SQL havuzlarına izinler verir. İzinler verildiğinde, SQL havuzuyla ilgili etkinlikleri gerçekleştiren işlem hatlarını düzenleyebilirsiniz. Azure portal kullanarak bir Azure SYNAPSE çalışma alanı oluşturduğunuzda, SQL havuzlarında yönetilen kimlik denetımı izinleri verebilirsiniz.
+Yönetilen kimlik, çalışma alanındaki adanmış SQL havuzlarına izinler verir. İzinler verildiğinde, adanmış SQL havuzuyla ilgili etkinlikleri gerçekleştiren işlem hatlarını düzenleyebilirsiniz. Azure portal kullanarak bir Azure SYNAPSE çalışma alanı oluşturduğunuzda, adanmış SQL havuzlarında yönetilen kimlik denetımı izinleri verebilirsiniz.
 
-Azure SYNAPSE çalışma alanınızı oluştururken **güvenlik + ağ** ' ı seçin. Sonra **, SQL havuzlarındaki çalışma alanının yönetilen KIMLIĞINE denetim ver '** i seçin.
+Azure SYNAPSE çalışma alanınızı oluştururken **güvenlik** ' i seçin. Ardından, **SQL havuzlarına erişmek için işlem hatları (çalışma alanının sistem tarafından atanmış kimliği olarak çalışır)** seçeneğini belirleyin.
 
-![SQL havuzlarında DENETIM izni](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-16.png)
+![Adanmış SQL havuzlarında DENETIM izni](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-16.png)
 
 ## <a name="grant-the-managed-identity-permissions-to-adls-gen2-storage-account"></a>ADLS 2. depolama hesabına yönetilen kimlik izinleri verme
 
@@ -40,7 +40,7 @@ Azure SYNAPSE, Azure portal kullanarak Azure SYNAPSE çalışma alanını oluşt
 
 ![Çalışma alanı oluşturma akışındaki temel bilgiler sekmesi](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-1.png)
 
-**Hesap adı** ve **dosya sistemi adında**ADLS 2. depolama hesabı ve FileSystem ' ı seçin.
+**Hesap adı** ve **dosya sistemi adında** ADLS 2. depolama hesabı ve FileSystem ' ı seçin.
 
 ![ADLS 2. depolama hesabı ayrıntıları sağlama](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-2.png)
 
@@ -60,7 +60,7 @@ Azure SYNAPSE, Azure portal kullanarak Azure SYNAPSE çalışma alanını oluşt
 
 #### <a name="step-1-navigate-to-the-adls-gen2-storage-account-in-azure-portal"></a>1. Adım: ADLS 2. depolama hesabına gidin Azure portal
 
-Azure portal, ADLS 2. Depolama hesabını açın ve sol gezinden **genel bakış** ' ı seçin. Yalnızca *Depolama Blobu veri katılımcısı* rolünü kapsayıcı veya dosya sistemi düzeyinde atamanız gerekir. **Kapsayıcıları**seçin.  
+Azure portal, ADLS 2. Depolama hesabını açın ve sol gezinden **genel bakış** ' ı seçin. Yalnızca *Depolama Blobu veri katılımcısı* rolünü kapsayıcı veya dosya sistemi düzeyinde atamanız gerekir. **Kapsayıcıları** seçin.  
 ![ADLS 2. depolama hesabına genel bakış](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-5.png)
 
 #### <a name="step-2-select-the-container"></a>2. Adım: kapsayıcıyı seçin
@@ -80,7 +80,7 @@ Yönetilen kimliğe *Depolama Blobu veri katılımcısı* rolünü vermek için 
 
 #### <a name="step-4-add-a-new-role-assignment"></a>4. Adım: yeni bir rol ataması ekleme
 
-**+ Ekle**'yi seçin.
+**+ Ekle** öğesini seçin.
 
 ![Yeni rol ataması Ekle](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-9.png)
 
@@ -98,19 +98,19 @@ Yönetilen kimliğe *Depolama Blobu veri katılımcısı* rolünü vermek için 
 
 #### <a name="step-7-search-for-the-managed-identity"></a>7. Adım: yönetilen kimliği arama
 
-Yönetilen kimliğin adı aynı zamanda çalışma alanı adıdır. **Select**' de Azure SYNAPSE çalışma alanı adınızı girerek yönetilen kimliğinizi arayın. Yönetilen kimliği listelenmiş olarak görmeniz gerekir.
+Yönetilen kimliğin adı aynı zamanda çalışma alanı adıdır. **Select** ' de Azure SYNAPSE çalışma alanı adınızı girerek yönetilen kimliğinizi arayın. Yönetilen kimliği listelenmiş olarak görmeniz gerekir.
 
 ![Yönetilen Kimliği bulma](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-12.png)
 
 #### <a name="step-8-select-the-managed-identity"></a>8. Adım: yönetilen kimliği seçme
 
-**Seçilen üyelerin**yönetilen kimliğini seçin. Rol atamasını eklemek için **Kaydet** ' i seçin.
+**Seçilen üyelerin** yönetilen kimliğini seçin. Rol atamasını eklemek için **Kaydet** ' i seçin.
 
 ![Yönetilen kimliği seçin](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-13.png)
 
 #### <a name="step-9-verify-that-the-storage-blob-data-contributor-role-is-assigned-to-the-managed-identity"></a>9. Adım: Depolama Blobu veri katılımcısı rolünün yönetilen kimliğe atandığını doğrulayın
 
-**Access Control (IAM)** öğesini seçin ve ardından **rol atamaları**' nı seçin.
+**Access Control (IAM)** öğesini seçin ve ardından **rol atamaları** ' nı seçin.
 
 ![Rol atamasını doğrula](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-14.png)
 

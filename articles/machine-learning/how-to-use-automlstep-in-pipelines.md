@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b6c6d15b553e8b19fff2c464dfb856550f7bcbf0
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 9cde7fe32d1b7b13c5f95bf3d99497926f68c88e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494911"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311188"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Python 'da Azure Machine Learning işlem hattında otomatik ML kullanma
 
@@ -41,9 +41,9 @@ Bir işlem hattındaki otomatikleştirilen ML bir nesne tarafından temsil edili
 
 
 > [!TIP]
-> Ardışık düzen adımları arasında geçici verileri geçirmek için geliştirilmiş bir deneyim, genel önizleme sınıflarında ve ' de  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) bulunur [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) .  Bu sınıflar [deneysel](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true#&preserve-view=truestable-vs-experimental) önizleme özelliklerine sahiptir ve herhangi bir zamanda değişebilir.
+> Ardışık düzen adımları arasında geçici verileri geçirmek için geliştirilmiş bir deneyim, genel önizleme sınıflarında ve ' de  [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) bulunur [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) .  Bu sınıflar [deneysel](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental) önizleme özelliklerine sahiptir ve herhangi bir zamanda değişebilir.
 
-, `AutoMLStep` Bir nesnesi aracılığıyla yapılandırılır `AutoMLConfig` . `AutoMLConfig` , [Python 'da OTOMATIK ml denemeleri yapılandırma](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings)bölümünde anlatıldığı gibi esnek bir sınıftır. 
+, `AutoMLStep` Bir nesnesi aracılığıyla yapılandırılır `AutoMLConfig` . `AutoMLConfig` , [Python 'da OTOMATIK ml denemeleri yapılandırma](./how-to-configure-auto-train.md#configure-your-experiment-settings)bölümünde anlatıldığı gibi esnek bir sınıftır. 
 
 Bir `Pipeline` üzerinde çalışır `Experiment` . İşlem hattı, `Run` her adım bir alt öğe için içerir `StepRun` . Otomatikleştirilmiş ML 'nin çıkışları `StepRun` eğitim ölçümleri ve en yüksek performanslı modeldir.
 
@@ -106,7 +106,7 @@ compute_target = ws.compute_targets[compute_name]
 
 Veri hazırlama ve otomatik ML adımı arasındaki ara veri, çalışma alanının varsayılan veri deposunda depolanabilir, bu nedenle nesne üzerinde çağrıdan daha fazlasını yapmak zorunda kalmazsınız `get_default_datastore()` `Workspace` . 
 
-Bundan sonra kod, AML işlem hedefinin zaten var olup olmadığını denetler `'cpu-cluster'` . Aksi takdirde, küçük bir CPU tabanlı işlem hedefi istiyoruz. Otomatik ML 'nin derin öğrenme özelliklerini kullanmayı planlıyorsanız (örneğin, DNN desteği ile metin kullanımı), [GPU iyileştirmeli sanal makine boyutları](https://docs.microsoft.com/azure/virtual-machines/sizes-gpu)bölümünde açıklandığı gıbı güçlü GPU desteğiyle bir işlem seçmeniz gerekir. 
+Bundan sonra kod, AML işlem hedefinin zaten var olup olmadığını denetler `'cpu-cluster'` . Aksi takdirde, küçük bir CPU tabanlı işlem hedefi istiyoruz. Otomatik ML 'nin derin öğrenme özelliklerini kullanmayı planlıyorsanız (örneğin, DNN desteği ile metin kullanımı), [GPU iyileştirmeli sanal makine boyutları](../virtual-machines/sizes-gpu.md)bölümünde açıklandığı gıbı güçlü GPU desteğiyle bir işlem seçmeniz gerekir. 
 
 Kod, hedef sağlanana kadar engeller ve ardından yeni oluşturulan işlem hedefinin bazı ayrıntılarını yazdırır. Son olarak, adlandırılmış işlem hedefi çalışma alanından alınır ve öğesine atanır `compute_target` . 
 
@@ -137,7 +137,7 @@ else:
         pin_sdk_version=False)
 ```
 
-Yukarıdaki kodda bağımlılıkları işlemek için iki seçenek gösterilmektedir. , İle gösterildiği gibi `USE_CURATED_ENV = True` , yapılandırma, seçkin bir ortama dayalıdır. Seçkin ortamlar, ortak bağımlı kitaplıklar ile "önceden kullanıma hazır" olur ve çevrimiçi hale getirmek için önemli ölçüde daha hızlı olabilir. Seçkin ortamlar [Microsoft Container Registry](https://hub.docker.com/publishers/microsoftowner)önceden oluşturulmuş Docker görüntülerine sahiptir. Olarak değiştirirseniz gerçekleştirilecek yol, `USE_CURATED_ENV` `False` bağımlılıklarınızı açıkça ayarlamaya yönelik bir model gösterir. Bu senaryoda, yeni bir özel Docker görüntüsü oluşturulur ve kaynak grubunuzda bir Azure Container Registry kaydedilir (bkz. [Azure 'da özel Docker kapsayıcısı kayıt defterlerine giriş](https://docs.microsoft.com/azure/container-registry/container-registry-intro)). Bu görüntünün oluşturulması ve kaydedilmesi birkaç dakika sürer. 
+Yukarıdaki kodda bağımlılıkları işlemek için iki seçenek gösterilmektedir. , İle gösterildiği gibi `USE_CURATED_ENV = True` , yapılandırma, seçkin bir ortama dayalıdır. Seçkin ortamlar, ortak bağımlı kitaplıklar ile "önceden kullanıma hazır" olur ve çevrimiçi hale getirmek için önemli ölçüde daha hızlı olabilir. Seçkin ortamlar [Microsoft Container Registry](https://hub.docker.com/publishers/microsoftowner)önceden oluşturulmuş Docker görüntülerine sahiptir. Olarak değiştirirseniz gerçekleştirilecek yol, `USE_CURATED_ENV` `False` bağımlılıklarınızı açıkça ayarlamaya yönelik bir model gösterir. Bu senaryoda, yeni bir özel Docker görüntüsü oluşturulur ve kaynak grubunuzda bir Azure Container Registry kaydedilir (bkz. [Azure 'da özel Docker kapsayıcısı kayıt defterlerine giriş](../container-registry/container-registry-intro.md)). Bu görüntünün oluşturulması ve kaydedilmesi birkaç dakika sürer. 
 
 ## <a name="prepare-data-for-automated-machine-learning"></a>Otomatik makine öğrenimi için verileri hazırlama
 
@@ -251,11 +251,11 @@ dataprep_step = PythonScriptStep(
 `prepped_data_path`Nesne türündedir `PipelineOutputFileDataset` . `arguments`Ve bağımsız değişkenlerinde belirtildiğine dikkat edin `outputs` . Önceki adımı gözden geçirdikten sonra, veri hazırlama kodunda bağımsız değişkenin değeri, `'--output_path'` Parquet dosyasının yazıldığı dosya yolu olduğunu görürsünüz. 
 
 > [!TIP]
-> İşlem hattı adımları arasında ara verileri geçirmek için geliştirilmiş bir deneyim, genel önizleme sınıfı ile sunulmaktadır [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) . Sınıfını kullanan bir kod örneği için `OutputFileDatasetConfig` bkz. [ıkı adımlı ml işlem hattı oluşturma](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb).
+> İşlem hattı adımları arasında ara verileri geçirmek için geliştirilmiş bir deneyim, genel önizleme sınıfı ile sunulmaktadır [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) . Sınıfını kullanan bir kod örneği için `OutputFileDatasetConfig` bkz. [ıkı adımlı ml işlem hattı oluşturma](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb).
 
 ## <a name="train-with-automlstep"></a>Oto Mlstep ile eğitme
 
-Bir otomatik ML ardışık düzen adımını yapılandırma sınıfı ile yapılır `AutoMLConfig` . Bu esnek sınıf, [Python 'da OTOMATIK ml denemeleri yapılandırma](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)bölümünde açıklanmaktadır. Veri girişi ve çıkışı, bir ML ardışık düzeninde özel dikkat gerektiren yapılandırmanın tek yönlerine göre yapılır. İşlem hatlarında giriş ve çıkış `AutoMLConfig` aşağıda ayrıntılı olarak ele alınmıştır. Verilerin ötesinde, ML ardışık düzenleri avantajı farklı adımlar için farklı işlem hedefleri kullanabilme olanağıdır. `ComputeTarget`Yalnızca OTOMATIKLEŞTIRILMIŞ ml işlemi için daha güçlü bir işlem kullanmayı tercih edebilirsiniz. Bunun yapılması, nesnenin parametresine daha güçlü atama yapmak kadar basittir `RunConfiguration` `AutoMLConfig` `run_configuration` .
+Bir otomatik ML ardışık düzen adımını yapılandırma sınıfı ile yapılır `AutoMLConfig` . Bu esnek sınıf, [Python 'da OTOMATIK ml denemeleri yapılandırma](./how-to-configure-auto-train.md)bölümünde açıklanmaktadır. Veri girişi ve çıkışı, bir ML ardışık düzeninde özel dikkat gerektiren yapılandırmanın tek yönlerine göre yapılır. İşlem hatlarında giriş ve çıkış `AutoMLConfig` aşağıda ayrıntılı olarak ele alınmıştır. Verilerin ötesinde, ML ardışık düzenleri avantajı farklı adımlar için farklı işlem hedefleri kullanabilme olanağıdır. `ComputeTarget`Yalnızca OTOMATIKLEŞTIRILMIŞ ml işlemi için daha güçlü bir işlem kullanmayı tercih edebilirsiniz. Bunun yapılması, nesnenin parametresine daha güçlü atama yapmak kadar basittir `RunConfiguration` `AutoMLConfig` `run_configuration` .
 
 ### <a name="send-data-to-automlstep"></a>Verileri buraya gönder `AutoMLStep`
 
@@ -270,7 +270,7 @@ prepped_data = prepped_data_path.parse_parquet_files(file_extension=None)
 Yukarıdaki kod parçacığı, `PipelineOutputTabularDataset` `PipelineOutputFileDataset` veri hazırlama adımının çıktısından yüksek performanslı bir durum oluşturur.
 
 > [!TIP]
-> Genel Önizleme sınıfı, [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) , bir ' ın bir for, oto ml çalıştırmadaki tüketimine dönüştüren [read_delimited_files ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true#&preserve-view=trueread-delimited-files-include-path-false--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none--path-glob-none--set-column-types-none-) yöntemini içerir `OutputFileDatasetConfig` [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) .
+> Genel Önizleme sınıfı, [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) , bir ' ın bir for, oto ml çalıştırmadaki tüketimine dönüştüren [read_delimited_files ()](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py#&preserve-view=trueread-delimited-files-include-path-false--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none--path-glob-none--set-column-types-none-) yöntemini içerir `OutputFileDatasetConfig` [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) .
 
 Diğer bir seçenek `Dataset` de çalışma alanında kayıtlı nesneleri kullanmaktır:
 
@@ -315,7 +315,7 @@ Yukarıdaki kod parçacığında `PipelineData` ölçümler ve model çıktısı
 
 ### <a name="configure-and-create-the-automated-ml-pipeline-step"></a>Otomatik ML ardışık düzen adımını yapılandırma ve oluşturma
 
-Girişler ve çıktılar tanımlandıktan sonra, ve oluşturma zamanı `AutoMLConfig` `AutoMLStep` . Yapılandırma ayrıntıları, [Python 'da OTOMATIK ml denemeleri yapılandırma](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)başlığı altında açıklandığı gibi, görevinize bağlı olacaktır. Titanic Inval sınıflandırma görevi için aşağıdaki kod parçacığında basit bir yapılandırma gösterilmektedir.
+Girişler ve çıktılar tanımlandıktan sonra, ve oluşturma zamanı `AutoMLConfig` `AutoMLStep` . Yapılandırma ayrıntıları, [Python 'da OTOMATIK ml denemeleri yapılandırma](./how-to-configure-auto-train.md)başlığı altında açıklandığı gibi, görevinize bağlı olacaktır. Titanic Inval sınıflandırma görevi için aşağıdaki kod parçacığında basit bir yapılandırma gösterilmektedir.
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -353,7 +353,7 @@ Kod parçacığında ile yaygın olarak kullanılan bir deyim gösterilmektedir 
 - `task``classification`Bu örnek için olarak ayarlanır. Diğer geçerli değerler şunlardır `regression` ve `forecasting`
 - `path` ve `debug_log` hata ayıklama bilgilerinin yazılacağı projenin ve yerel bir dosyanın yolunu açıklama 
 - `compute_target` daha önce tanımlanan, `compute_target` Bu örnekte ucuz BIR CPU tabanlı makinedir. Oto ml 'nin derin öğrenme tesislerini kullanıyorsanız, işlem hedefini GPU tabanlı olacak şekilde değiştirmek isteyebilirsiniz
-- `featurization` , olarak ayarlanır `auto` . Diğer ayrıntılar, otomatik ML yapılandırma belgesinin [veri Korleştirme](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#data-featurization) bölümünde bulunabilir 
+- `featurization` , olarak ayarlanır `auto` . Diğer ayrıntılar, otomatik ML yapılandırma belgesinin [veri Korleştirme](./how-to-configure-auto-train.md#data-featurization) bölümünde bulunabilir 
 - `label_column_name` tahmin etmek için ilgilendiğiniz sütunu belirtir 
 - `training_data``PipelineOutputTabularDataset`veri hazırlama adımının çıktılarından yapılan nesnelere ayarlanır 
 
@@ -525,4 +525,4 @@ Son olarak, yukarıdaki "işlem hattı sonuçlarını Inceleme" bölümünde anl
 - Bu Jupyter Not defterini, taksi Fares 'yi tahmin etmek için regresyon kullanan bir işlem hattında [Otomatik ml 'nin tamamen bir örneğini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb) çalıştırın
 - [Kod yazmadan otomatik ML denemeleri oluşturma](how-to-use-automated-ml-for-ml-models.md)
 - [Otomatikleştirilen ml 'yi gösteren çeşitli jupi not defterlerini](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) keşfet
-- İşlem hattınızı [uçtan uca mlops](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment#automate-the-ml-lifecycle) 'ye tümleştirme veya [Mlops GitHub deposunu](https://github.com/Microsoft/MLOpspython) araştırma hakkında bilgi edinin 
+- İşlem hattınızı [uçtan uca mlops](./concept-model-management-and-deployment.md#automate-the-ml-lifecycle) 'ye tümleştirme veya [Mlops GitHub deposunu](https://github.com/Microsoft/MLOpspython) araştırma hakkında bilgi edinin

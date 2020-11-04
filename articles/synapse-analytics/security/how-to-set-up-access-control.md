@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: f142c8abfc9056e0f8ca1d921f2c6bfc72292730
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: 080e56a5b6be8ba68c901509fe87421632144643
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186629"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312035"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>SYNAPSE çalışma alanınızın güvenliğini sağlama (Önizleme) 
 
@@ -92,7 +92,7 @@ SYNAPSE çalışma alanı, işlem hatlarını çalıştırmak ve sistem görevle
   - Atanmadığını görmüyorsanız, atayın.
   - MSI, çalışma alanıyla aynı ada sahiptir. Bu durumda, &quot; WS1 olacaktır &quot; .
 
-## <a name="step-5-configure-admin-access-for-sql-pools"></a>5. Adım: SQL havuzları için yönetici erişimini yapılandırma
+## <a name="step-5-configure-admin-access-for-synapse-sql"></a>5. Adım: SYNAPSE SQL için yönetici erişimini yapılandırma
 
 - Azure portalını açın
 - WS1 adresine gidin
@@ -114,11 +114,11 @@ Her roldeki kullanıcıların aşağıdaki adımları tamamlaması gerekir:
 | Sayı | Adım | Çalışma alanı yöneticileri | Spark yöneticileri | SQL yöneticileri |
 | --- | --- | --- | --- | --- |
 | 1 | Bir Parquet dosyasını CNT1 'a yükleme | EVET | EVET | EVET |
-| 2 | İsteğe bağlı SQL kullanarak Parquet dosyasını okuyun | EVET | NO | EVET |
-| 3 | Spark havuzu oluşturma | EVET [1] | EVET [1] | NO  |
+| 2 | Sunucusuz SQL havuzu kullanarak Parquet dosyasını okuma | EVET | NO | EVET |
+| 3 | Sunucusuz Apache Spark havuzu oluşturma | EVET [1] | EVET [1] | NO  |
 | 4 | Parquet dosyasını bir not defteriyle okur | EVET | EVET | NO |
 | 5 | Not defterinden bir işlem hattı oluşturun ve ardışık düzeni şimdi çalışacak şekilde tetikleyin | EVET | NO | NO |
-| 6 | SQL havuzu oluşturun ve 1. Select gibi bir SQL betiği çalıştırın &quot;&quot; | EVET [1] | NO | EVET [1] |
+| 6 | Adanmış bir SQL havuzu oluşturun ve 1. Select gibi bir SQL betiği çalıştırın &quot;&quot; | EVET [1] | NO | EVET [1] |
 
 > [!NOTE]
 > [1] SQL veya Spark havuzları oluşturmak için kullanıcının SYNAPSE çalışma alanında en az katkıda bulunan rolüne sahip olması gerekir.
@@ -148,8 +148,8 @@ SYNAPSE Studio, Kullanıcı rollerine göre farklı davranır. Bir kullanıcı u
 | Veri merkezi/bkz. bağlı ADLS 2. hesapları ve kapsayıcıları | EVET [1] | EVET [1] | EVET [1] |
 | Veri merkezi/bkz. veritabanları | EVET | EVET | EVET |
 | Veri merkezi/veritabanlarındaki nesneleri görüntüle | EVET | EVET | EVET |
-| SQL havuzu veritabanlarındaki veri merkezi/erişim verileri | EVET   | NO   | EVET   |
-| SQL isteğe bağlı veritabanlarında veri merkezi/erişim verileri | EVET [2]  | NO  | EVET [2]  |
+| SYNAPSE SQL veritabanlarındaki veri merkezi/erişim verileri | EVET   | NO   | EVET   |
+| Sunucusuz SQL havuzu veritabanlarındaki veri merkezi/erişim verileri | EVET [2]  | NO  | EVET [2]  |
 | Spark veritabanlarındaki veri merkezi/erişim verileri | EVET [2] | EVET [2] | EVET [2] |
 | Geliştirme Merkezi 'ni kullanma | EVET | EVET | EVET |
 | Merkez/yazar SQL betikleri geliştirme | EVET | NO | EVET |
@@ -159,7 +159,7 @@ SYNAPSE Studio, Kullanıcı rollerine göre farklı davranır. Bir kullanıcı u
 | Orchestrate merkezini kullanma | EVET | EVET | EVET |
 | Merkeze göre düzenleme/işlem hatlarını kullanma | EVET | NO | NO |
 | Yönetim hub 'ını kullanma | EVET | EVET | EVET |
-| Hub/SQL havuzlarını yönetme | EVET | NO | EVET |
+| Hub/SYNAPSE SQL yönetme | EVET | NO | EVET |
 | Merkez/Spark havuzlarını yönetme | EVET | EVET | NO |
 | Hub/Tetikleyicileri yönetme | EVET | NO | NO |
 | Hub/bağlı hizmetleri yönetme | EVET | EVET | EVET |

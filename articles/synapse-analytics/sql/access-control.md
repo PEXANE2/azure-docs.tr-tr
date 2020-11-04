@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 708b8255f6cf7c60e2d2fc7fbd280b477c06a3d6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a0fbcab194b90bbe89948fee1efb604266dbbb0f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503292"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311755"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Çalışma alanları, veriler ve işlem hatları erişimini yönetme
 
@@ -64,7 +64,7 @@ Azure SYNAPSE çalışma alanına bir üretim dağıtımı için, ortamınızı,
 
 1. [ **Azure SYNAPSE Web Kullanıcı arabirimine** gidin](https://web.azuresynapse.net)
 2. **Manage**   >  **Güvenlik**  >  **erişimi denetimini** Yönet 'e gidin
-3. **Yönetici Ekle**' yi seçin ve`Synapse_WORKSPACENAME_Admins`
+3. **Yönetici Ekle** ' yi seçin ve`Synapse_WORKSPACENAME_Admins`
 
 ### <a name="step-4-configure-sql-admin-access-for-the-workspace"></a>4. Adım: çalışma alanı için SQL yönetici erişimini yapılandırma
 
@@ -74,7 +74,7 @@ Azure SYNAPSE çalışma alanına bir üretim dağıtımı için, ortamınızı,
 4. **Yönetici ayarla** ' yı seçin
 5. `Synapse_WORKSPACENAME_Admins` seçeneğini belirleyin
 6. **Seç ' i** seçin
-7. **Kaydet**’i seçin
+7. **Kaydet** 'i seçin
 
 > [!NOTE]
 > ÇALıŞMAALANıADı-bu bölümü gerçek çalışma alanı adınızla değiştirmelisiniz.
@@ -94,21 +94,21 @@ Azure SYNAPSE çalışma alanına bir üretim dağıtımı için, ortamınızı,
 Temel alınan verilere erişim denetimi üç parçaya bölünür:
 
 - Depolama hesabına veri düzlemi erişimi (adım 2 ' de yukarıda zaten yapılandırılmış)
-- SQL veritabanlarına veri düzlemi erişimi (SQL havuzları ve isteğe bağlı SQL için)
-- Depolama hesabı üzerinden SQL isteğe bağlı veritabanları için kimlik bilgisi oluşturma
+- SQL veritabanlarına veri düzlemi erişimi (adanmış SQL havuzları ve sunucusuz SQL havuzu için)
+- Depolama hesabı üzerinden sunucusuz SQL havuzu veritabanları için kimlik bilgisi oluşturma
 
 ## <a name="access-control-to-sql-databases"></a>SQL veritabanlarına erişim denetimi
 
 > [!TIP]
 > **Her** SQL veritabanı için, Kullanıcı bir sysadmin rolü atayabileceğiniz bölüm [sunucu düzeyi IZNI](#server-level-permission) hariç tüm SQL veritabanlarına Kullanıcı erişimi vermek için aşağıdaki adımların çalıştırılması gerekir.
 
-### <a name="sql-on-demand"></a>İsteğe bağlı SQL
+### <a name="serverless-sql-pool"></a>Sunucusuz SQL havuzu
 
 Bu bölümde, kullanıcıya belirli bir veritabanı veya tam sunucu izinleri için bir izin verme hakkında örnekler bulabilirsiniz.
 
 #### <a name="database-level-permission"></a>Veritabanı düzeyinde izin
 
-Bir kullanıcıya **tek** bir SQL isteğe bağlı veritabanına erişim izni vermek için bu örnekteki adımları izleyin:
+Bir kullanıcıya **tek** bir SUNUCUSUZ SQL havuzu veritabanına erişim izni vermek için bu örnekteki adımları izleyin:
 
 1. OTURUM açma oluştur
 
@@ -140,14 +140,14 @@ Bir kullanıcıya **tek** bir SQL isteğe bağlı veritabanına erişim izni ver
 
 #### <a name="server-level-permission"></a>Sunucu düzeyi izni
 
-Bir kullanıcıya **Tüm** SQL isteğe bağlı veritabanlarına tam erişim vermek için bu örnekteki adımı izleyin:
+Bir kullanıcıya **Tüm** SUNUCUSUZ SQL havuzu veritabanlarına tam erişim vermek için bu örnekteki adımı izleyin:
 
 ```sql
 CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
 ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
 ```
 
-### <a name="sql-pools"></a>SQL havuzları
+### <a name="dedicated-sql-pool"></a>Adanmış SQL havuzu
 
 Bir kullanıcıya **tek** bir SQL veritabanına erişim izni vermek için şu adımları izleyin:
 
@@ -167,18 +167,18 @@ Bir kullanıcıya **tek** bir SQL veritabanına erişim izni vermek için şu ad
 
 > [!IMPORTANT]
 > *db_datareader* ve *db_datawriter* , *db_owner* izin verilmesinin istenmeyen olması durumunda okuma/yazma izinleri için çalışabilir.
-> Spark kullanıcısının, bir SQL havuzundan doğrudan Spark 'tan/içinden okuması ve yazması için *db_owner* izin gerekir.
+> Spark kullanıcısının, özel bir SQL havuzundan doğrudan Spark 'tan/içinden okuması ve yazması için *db_owner* izin gerekir.
 
-Kullanıcıları oluşturduktan sonra, SQL isteğe bağlı, depolama hesabını sorgulayabilecek olduğunu doğrulayın.
+Kullanıcıları oluşturduktan sonra sunucusuz SQL havuzunu kullanarak depolama hesabını sorgulayacağınızı doğrulayın.
 
 ## <a name="access-control-to-workspace-pipeline-runs"></a>Çalışma alanı işlem hattı çalıştırmaları için erişim denetimi
 
 ### <a name="workspace-managed-identity"></a>Çalışma alanı tarafından yönetilen kimlik
 
 > [!IMPORTANT]
-> Bir SQL havuzuna başvuran veri kümelerini veya etkinlikleri içeren işlem hatlarını başarılı bir şekilde çalıştırmak için, çalışma alanı kimliğine doğrudan SQL havuzuna erişim verilmesi gerekir.
+> Adanmış bir SQL havuzuna başvuran veri kümelerini veya etkinlikleri içeren işlem hatlarını başarıyla çalıştırmak için, çalışma alanı kimliğine doğrudan SQL havuzuna erişim verilmesi gerekir.
 
-Çalışma alanı tarafından yönetilen kimliğin SQL havuzu veritabanında işlem hatlarını çalıştırmasına izin vermek için her bir SQL havuzunda aşağıdaki komutları çalıştırın:
+Çalışma alanı tarafından yönetilen kimliğin SQL havuzu veritabanında işlem hatlarını çalıştırmasına izin vermek için, her adanmış SQL havuzunda aşağıdaki komutları çalıştırın:
 
 ```sql
 --Create user in DB

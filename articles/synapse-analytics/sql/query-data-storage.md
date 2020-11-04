@@ -1,6 +1,6 @@
 ---
-title: İsteğe bağlı SQL kullanarak verileri depolamada sorgulama (Önizleme)
-description: Bu makalede, Azure SYNAPSE Analytics içindeki SQL isteğe bağlı (Önizleme) kaynağını kullanarak Azure Storage 'ın nasıl sorgulanyapılacağı açıklanır.
+title: Sunucusuz SQL Havuzu (Önizleme) ile veri depolamayı sorgulama
+description: Bu makalede, Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kaynağını kullanarak Azure Storage 'ın nasıl sorgulanyapılacağı açıklanır.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,27 +9,27 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0ac54eb5d6350cc234eb7036a3a1dc97a4f1b083
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3fd3a94efd6e7870ae3919a011fc24f66b97c559
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288384"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310947"
 ---
-# <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>SYNAPSE SQL 'de isteğe bağlı SQL (Önizleme) kaynaklarını kullanarak depolama dosyalarını sorgulama
+# <a name="query-storage-files-with-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) ile depolama dosyalarını sorgulama
 
-İsteğe bağlı SQL (Önizleme), Data Lake 'inizdeki verileri sorgulamanızı sağlar. Yarı yapılandırılmış ve yapılandırılmamış veri sorgularına uyum sağlayan bir T-SQL sorgu yüzeyi alanı sunar. Sorgulamak için aşağıdaki T-SQL yönleri desteklenir:
+Sunucusuz SQL Havuzu (Önizleme), Data Lake 'unuzdaki verileri sorgulamanızı sağlar. Yarı yapılandırılmış ve yapılandırılmamış veri sorgularına uyum sağlayan bir T-SQL sorgu yüzeyi alanı sunar. Sorgulamak için aşağıdaki T-SQL yönleri desteklenir:
 
 - [SQL işlevlerinin ve işleçlerin](overview-features.md)büyük çoğunluğu dahil olmak üzere tam [seçim](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) yüzeyi alanı.
 - SELECT ([Cetas](develop-tables-cetas.md)) olarak dış tablo oluşturma bir [dış tablo](develop-tables-external-tables.md) oluşturur ve ardından Transact-SQL SELECT ifadesinin sonuçlarını Azure Storage 'a aktarır.
 
-İle ilgili daha fazla bilgi için, şu anda desteklenmeyen [SQL 'e genel bakış](on-demand-workspace-overview.md) makalesini veya aşağıdaki makaleleri okuyun:
+Vs. ile ilgili daha fazla bilgi için, şu anda desteklenmeyen [sunucusuz SQL havuzuna genel bakış](on-demand-workspace-overview.md) makalesini veya aşağıdaki makaleleri okuyun:
 - Depolama alanından veri okumak için [dış tablo](develop-tables-external-tables.md) ve [OPENROWSET](develop-openrowset.md) işlevinin nasıl kullanılacağını öğrenilebileceğiniz [depolama erişimi geliştirin](develop-storage-files-overview.md) .
 - SYNAPSE SQL 'in SAS kimlik doğrulaması veya çalışma alanının yönetilen kimliğini kullanarak depolamaya erişmesini sağlayabileceğiniz, [depolama erişimini denetleyin](develop-storage-files-storage-access-control.md) .
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure depolama dosyalarında bulunan verilerin yerinde sorgulanmasına yönelik sorunsuz bir deneyim desteklemek için, SQL isteğe bağlı, ek yetenekler ile [OPENROWSET](develop-openrowset.md) işlevini kullanır:
+Azure depolama dosyalarında bulunan verilerin yerinde sorgulanmasında sorunsuz bir deneyim sağlamak için, sunucusuz SQL havuzu ek yetenekler ile [OPENROWSET](develop-openrowset.md) işlevini kullanır:
 
 - [Birden çok dosyayı veya klasörü sorgulama](#query-multiple-files-or-folders)
 - [PARQUET dosya biçimi](#query-parquet-files)
@@ -65,7 +65,7 @@ WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
 Özel CSv biçimine ayrıştırma kuralları ayarlamak için kullanılabilen bazı ek seçenekler vardır:
 - ESCAPE_CHAR = ' Char ', dosyanın kendisini ve tüm sınırlayıcı değerlerini kaçış için kullanılan dosyadaki karakteri belirtir. Kaçış karakterinin kendisi dışında bir değer veya sınırlayıcı değerlerinden herhangi biri gelmesi durumunda, değer okunurken kaçış karakteri bırakılır.
 ESCAPE_CHAR parametresi, FIELDQUOTE 'un etkin olup olmadığı veya etkinleştirilmediği için uygulanır. Tırnak işareti karakterini atlamak için kullanılmaz. Tırnak işareti karakteri başka bir tırnak işareti karakteriyle atlanmalıdır. Tırnak içine alma karakteri sütun değeri içinde, yalnızca değer tırnak içine alma karakterleriyle kapsüllense görünebilir.
-- FIELDSONLANDıRıCı = ' field_terminator ' kullanılacak alan sonlandırıcıyı belirtir. Varsayılan alan Sonlandırıcı bir virgül ("**,**")
+- FIELDSONLANDıRıCı = ' field_terminator ' kullanılacak alan sonlandırıcıyı belirtir. Varsayılan alan Sonlandırıcı bir virgül (" **,** ")
 - ROWSONLANDıRıCı = ' row_terminator ' kullanılacak satır sonlandırıcıyı belirtir. Varsayılan satır Sonlandırıcı bir yeni satır karakteri: **\r\n**.
 
 ## <a name="file-schema"></a>Dosya şeması
@@ -146,7 +146,7 @@ Dönüş veri türü nvarchar (1024). En iyi performans için, her zaman FilePat
 
 ## <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>Karmaşık türlerle ve iç içe veya yinelenen veri yapıları ile çalışma
 
-İç içe geçmiş veya yinelenen veri türlerinde depolanan verilerle ( [Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) dosyaları gibi) sorunsuz bir deneyim sağlamak IÇIN, SQL isteğe bağlı, izleyen uzantıları eklemiştir.
+İç içe geçmiş veya yinelenen veri türlerinde depolanan verilerle (örneğin, [Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) dosyalarında) sorunsuz bir deneyim sağlamak için SUNUCUSUZ SQL havuzu, izleyen uzantıları eklemiştir.
 
 #### <a name="project-nested-or-repeated-data"></a>Proje iç içe veya yinelenen veriler
 

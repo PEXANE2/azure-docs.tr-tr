@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 02f304af10ae1907326d3f77f318a058155a4c21
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ea765ae5ff93625cc6a0ed36776a8925e5fce836
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738762"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311145"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE Studio (Önizleme) Not defterleri oluşturma, geliştirme ve bakımını yapma
 
@@ -86,7 +86,7 @@ Aşağıdaki görüntü, bir **Spark (Scala)** not defterinde%% **pyspark** Magi
 
 Bir Synapse Studio not defterindeki farklı dillerdeki verilere veya değişkenlere doğrudan başvurulamıyor. Spark 'ta, diller arasında geçici bir tabloya başvuru yapılabilir. Bir `Scala` `PySpark` `SparkSQL` geçici çözüm olarak Spark geçici tablosunu kullanarak ve ' de bir veri çerçevesinin nasıl okunmasına ilişkin bir örnek aşağıda verilmiştir.
 
-1. 1. hücrede, Scala kullanarak SQL havuzu bağlayıcısından bir veri çerçevesini okuyun ve geçici bir tablo oluşturun.
+1. 1. hücrede, bir SQL havuzu bağlayıcısından Scala kullanarak bir veri çerçevesini okuyun ve geçici bir tablo oluşturun.
 
    ```scala
    %%scala
@@ -203,7 +203,7 @@ Bir adım adım hücre yürütme durumu, geçerli ilerlemesini görmenizi sağla
 
 ### <a name="spark-progress-indicator"></a>Spark ilerleme göstergesi
 
-Azure SYNAPSE Studio Not defteri yalnızca Spark tabanlıdır. Kod hücreleri Spark havuzunda uzaktan yürütülür. İş yürütme durumunu anlamanıza yardımcı olmak üzere gerçek zamanlı ilerleme çubuğu içeren bir Spark işi ilerleme göstergesi görünür.
+Azure SYNAPSE Studio Not defteri yalnızca Spark tabanlıdır. Kod hücreleri, sunucusuz Apache Spark havuzunda uzaktan yürütülür. İş yürütme durumunu anlamanıza yardımcı olmak üzere gerçek zamanlı ilerleme çubuğu içeren bir Spark işi ilerleme göstergesi görünür.
 Her iş veya aşama başına görev sayısı, Spark işinizin paralel düzeyini belirlemenize yardımcı olur. Ayrıca, iş (veya aşama) adındaki bağlantıyı seçerek belirli bir işin Spark Kullanıcı arabirimine (veya aşamasına) ayrıntılı olarak gidebilirsiniz.
 
 
@@ -294,7 +294,7 @@ Sütun <code>display(df, summary = True)</code> adı, sütun türü, benzersiz d
 
 ### <a name="render-html-or-interactive-libraries"></a>HTML veya etkileşimli kitaplıkları işleme
 
-HTML kodunu, **displayhtml ()** kullanarak **bokeh** gibi JavaScript, CSS, D3 veya etkileşimli kitaplıklar dahil olmak üzere işleyebilirsiniz.
+HTML kodunu, **Displayhtml ()** kullanarak **bokeh** gibi JavaScript, CSS, D3 veya etkileşimli kitaplıklar gibi işleyebilirsiniz.
 
 Aşağıdaki resim **bokeh** kullanarak bir harita üzerinde karakter çizme örneğidir.
 

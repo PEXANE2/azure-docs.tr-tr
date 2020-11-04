@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 85d7159edb1bc8608165264578d77519bf09efc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7770e929e51ee51b09060e4247c5f92b27d1035
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84195075"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311867"
 ---
 # <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Team Data Science Işleminin veri alımı ve anlama aşaması
 
@@ -67,8 +67,8 @@ Bu aşamada, veri işlem hattının çözüm mimarisini geliştirirsiniz. Veri b
 Bu aşamada teslim edilebilirler aşağıda verilmiştir:
 
    * [Veri kalitesi raporu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md): Bu rapor, veri özetlerini, her öznitelik ve hedef, değişken derecelendirmesi ve daha fazlasını içeren ilişkileri içerir. TDSP 'nin bir parçası olarak sunulan [ıdear](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) Aracı, bu raporu bir CSV dosyası veya ilişkisel tablo gibi tablosal veri kümesi üzerinde hızlı bir şekilde oluşturabilir. 
-   * **Çözüm mimarisi**: çözüm mimarisi, bir model oluşturduktan sonra yeni verilerde Puanlama veya tahmin çalıştırmak için kullandığınız veri işlem hattının bir diyagramı veya açıklaması olabilir. Ayrıca, yeni verilere göre modelinizi yeniden eğitme işlem hattını de içerir. TDSP dizin yapısı şablonunu kullandığınızda belgeyi [Proje](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) dizininde depolayın.
-   * **Kontrol noktası kararı**: tam özellik Mühendisliği ve model oluşturmaya başlamadan önce, beklenen değerin, söz konusu değeri uygulamaya devam etmek için yeterli olup olmadığını tespit etmek üzere projeyi yeniden değerlendirmeye başlayabilirsiniz. Örneğin, işleme hazırsanız, daha fazla veri toplamanız veya bu soruyu yanıtlamak için veriler mevcut olmadığından projeyi iptal etmeye de devam edebilirsiniz.
+   * **Çözüm mimarisi** : çözüm mimarisi, bir model oluşturduktan sonra yeni verilerde Puanlama veya tahmin çalıştırmak için kullandığınız veri işlem hattının bir diyagramı veya açıklaması olabilir. Ayrıca, yeni verilere göre modelinizi yeniden eğitme işlem hattını de içerir. TDSP dizin yapısı şablonunu kullandığınızda belgeyi [Proje](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) dizininde depolayın.
+   * **Kontrol noktası kararı** : tam özellik Mühendisliği ve model oluşturmaya başlamadan önce, beklenen değerin, söz konusu değeri uygulamaya devam etmek için yeterli olup olmadığını tespit etmek üzere projeyi yeniden değerlendirmeye başlayabilirsiniz. Örneğin, işleme hazırsanız, daha fazla veri toplamanız veya bu soruyu yanıtlamak için veriler mevcut olmadığından projeyi iptal etmeye de devam edebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -82,4 +82,4 @@ TDSP yaşam döngüsüyle her adımın bağlantıları aşağıda verilmiştir:
 
 Belirli senaryolar için işlemdeki tüm adımları gösteren tam izlenecek yollar sunuyoruz. [Örnek yönergeler](walkthroughs.md) makalesi, bağlantılar ve küçük resim açıklamaları olan senaryoların bir listesini sağlar. İzlenecek yollar, akıllı bir uygulama oluşturmak için bulut, şirket içi araçların ve hizmetlerin bir iş akışı veya işlem hattına nasıl birleştirileceğini gösterir. 
 
-Azure Machine Learning Studio kullanan TDSPs 'de adımların nasıl yürütüleceği hakkında örnekler için, bkz. [Azure Machine Learning Ile TDSP kullanma](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle-data).
+Azure Machine Learning Studio kullanan TDSPs 'de adımların nasıl yürütüleceği hakkında örnekler için, bkz. [Azure Machine Learning Ile TDSP kullanma]().

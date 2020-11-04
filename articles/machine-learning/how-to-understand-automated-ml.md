@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2
-ms.openlocfilehash: d66c5001d94d0c2d28ae3c55b468fbaf45871c98
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 681e965d5fb64e35374b580cbbb238defd619492
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280348"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311482"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Otomatik makine öğrenimi sonuçlarını değerlendir
 
@@ -41,7 +41,7 @@ Bu makalede otomatik makine öğrenimi, otomatik ml, denemeleri sonuçlarını g
 
 Otomatik makine öğrenimi denemeniz tamamlandıktan sonra, Machine Learning çalışma alanınızda [Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md)aracılığıyla çalıştırmaların bir geçmişi bulunabilir. 
 
-SDK denemeleri için, `RunDetails` [jupyıter pencere öğesini](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)kullandığınızda bir çalıştırma sırasında aynı sonuçları görebilirsiniz.
+SDK denemeleri için, `RunDetails` [jupyıter pencere öğesini](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)kullandığınızda bir çalıştırma sırasında aynı sonuçları görebilirsiniz.
 
 Aşağıdaki adımlar ve animasyon, Studio 'da belirli bir modelin çalıştırma geçmişi ve performans ölçümlerinin ve grafiklerinin nasıl görüntüleneceğini gösterir.
 

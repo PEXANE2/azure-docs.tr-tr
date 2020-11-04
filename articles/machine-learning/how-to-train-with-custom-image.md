@@ -1,7 +1,7 @@
 ---
 title: Özel bir Docker görüntüsü kullanarak bir modeli eğitme
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning 'da özel Docker görüntüleriyle modelleri eğitme hakkında bilgi edinin.
+description: Azure Machine Learning modelleri eğitebilmeniz için kendi Docker görüntülerinizi kullanmayı veya Microsoft 'tan nasıl seçeceğinizi öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 6ce0885cce1861b27d6230c3807350831603684b
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 23b59c80c8e44cf6473a2de9be9807eaf8a756c6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329126"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310541"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>Özel bir Docker görüntüsü kullanarak bir modeli eğitme
 
@@ -23,7 +23,7 @@ Bu makalede, Azure Machine Learning ile eğitim modelleriniz olduğunda özel bi
 
 Azure Machine Learning varsayılan bir Docker temel görüntüsü sağlar. Azure Machine Learning ortamlarını Ayrıca, korunan [Azure Machine Learning taban görüntülerinin](https://github.com/Azure/AzureML-Containers) veya kendi [özel yansımalarından](how-to-deploy-custom-docker-image.md#create-a-custom-base-image)biri gibi farklı bir temel görüntü belirtmek için de kullanabilirsiniz. Özel temel görüntüler, kendi bağımlılıklarınızı yakından yönetmenize ve eğitim işleri çalıştırırken bileşen sürümleri üzerinde daha sıkı bir denetim sürdürmenize imkan tanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Kodu şu ortamlardan birinde çalıştırın:
 
@@ -32,8 +32,8 @@ Kodu şu ortamlardan birinde çalıştırın:
   * Azure Machine Learning [örnekleri deposunda](https://github.com/Azure/azureml-examples), **notebooks**  >  **fastai**  >  **eğitme-pets-resnet34. ipynb** dizinine giderek tamamlanan bir not defteri bulun. 
 * Kendi Jupyter Notebook sunucunuz:
   * Bir [çalışma alanı yapılandırma dosyası](how-to-configure-environment.md#workspace)oluşturun.
-  * [Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)yükler. 
-  * İnternet 'te bulunan bir [Azure Container Registry](/azure/container-registry) veya diğer Docker kayıt defteri oluşturun.
+  * [Azure Machine Learning SDK 'sını](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)yükler. 
+  * İnternet 'te bulunan bir [Azure Container Registry](../container-registry/index.yml) veya diğer Docker kayıt defteri oluşturun.
 
 ## <a name="set-up-a-training-experiment"></a>Eğitim denemesi ayarlama
 
@@ -41,7 +41,7 @@ Bu bölümde, bir çalışma alanı başlatarak, ortamınızı tanımlayarak ve 
 
 ### <a name="initialize-a-workspace"></a>Çalışma alanını başlatma
 
-[Azure Machine Learning çalışma alanı](concept-workspace.md) , hizmet için en üst düzey kaynaktır. Sizin oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Python SDK 'sında bir nesne oluşturarak çalışma alanı yapıtlarına erişebilirsiniz [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) .
+[Azure Machine Learning çalışma alanı](concept-workspace.md) , hizmet için en üst düzey kaynaktır. Sizin oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Python SDK 'sında bir nesne oluşturarak çalışma alanı yapıtlarına erişebilirsiniz [`Workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) .
 
 `Workspace`Bir [Önkoşul](#prerequisites)olarak oluşturduğunuz dosyadaki config.jsbir nesne oluşturun.
 
@@ -163,7 +163,7 @@ run.wait_for_completion(show_output=True)
 ```
 
 > [!WARNING]
-> Azure Machine Learning, tüm kaynak dizinini kopyalayarak eğitim betikleri çalıştırır. Karşıya yüklemek istemediğiniz gizli verileriniz varsa, bir [. Ignore dosyası](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) kullanın veya kaynak dizine eklemeyin. Bunun yerine, veri [deposu](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py&preserve-view=true)kullanarak verilerinize erişin.
+> Azure Machine Learning, tüm kaynak dizinini kopyalayarak eğitim betikleri çalıştırır. Karşıya yüklemek istemediğiniz gizli verileriniz varsa, bir [. Ignore dosyası](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) kullanın veya kaynak dizine eklemeyin. Bunun yerine, veri [deposu](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py)kullanarak verilerinize erişin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede, özel bir Docker görüntüsü kullanarak bir model eğitiliniz. Azure Machine Learning hakkında daha fazla bilgi edinmek için şu makalelere bakın:

@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 47df04a0195c4cfcc4e40db5bf21387a284f682c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad84d3d3fd58edc6f7967c6f50440dcc90625617
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362257"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311277"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Azure Machine Learning ile otomatik makine öğrenimi modelleri oluşturun, gözden geçirin ve dağıtın
 
@@ -56,15 +56,15 @@ Aksi takdirde, SDK ile oluşturulanlar da dahil olmak üzere, son otomatik makin
 1. Depolama kapsayıcıınızdan bir veri kümesi seçin veya yeni bir veri kümesi oluşturun. Veri kümeleri yerel dosyalardan, Web URL 'lerinden, veri depolarından veya Azure açık veri kümelerinden oluşturulabilir. [Veri kümesi oluşturma](how-to-create-register-datasets.md)hakkında daha fazla bilgi edinin.  
 
     >[!Important]
-    > Eğitim verileri için gereksinimler:
+    > Eğitim verileriyle ilgili gereksinimler:
     >* Verilerin tablolu biçimde olması gerekir.
     >* Tahmin etmek istediğiniz değer (hedef sütun) verilerde bulunmalıdır.
 
-    1. Yerel bilgisayarınızdaki bir dosyadan yeni bir veri kümesi oluşturmak için **+ veri kümesi oluştur** ' u seçin ve ardından **yerel dosya**' yı seçin. 
+    1. Yerel bilgisayarınızdaki bir dosyadan yeni bir veri kümesi oluşturmak için **+ veri kümesi oluştur** ' u seçin ve ardından **yerel dosya** ' yı seçin. 
 
     1. **Temel bilgi** formunda, veri kümenize benzersiz bir ad verin ve isteğe bağlı bir açıklama sağlayın. 
 
-    1. **Veri deposu ve dosya seçim formunu**açmak için **İleri ' yi** seçin. Bu formda veri kümenizin nereye yükleneceğini seçersiniz; Çalışma alanım ile otomatik olarak oluşturulan varsayılan depolama kapsayıcısı veya deneme için kullanmak istediğiniz bir depolama kapsayıcısı seçin. 
+    1. **Veri deposu ve dosya seçim formunu** açmak için **İleri ' yi** seçin. Bu formda veri kümenizin nereye yükleneceğini seçersiniz; Çalışma alanım ile otomatik olarak oluşturulan varsayılan depolama kapsayıcısı veya deneme için kullanmak istediğiniz bir depolama kapsayıcısı seçin. 
     
         1. Verileriniz bir sanal ağın arkasındaysa, çalışma alanının verilerinize erişebildiğinden emin olmak için **doğrulamayı atla** işlevini etkinleştirmeniz gerekir. Daha fazla bilgi için bkz. [Azure sanal ağında Azure Machine Learning Studio 'Yu kullanma](how-to-enable-studio-virtual-network.md). 
     
@@ -80,7 +80,7 @@ Aksi takdirde, SDK ile oluşturulanlar da dahil olmak üzere, son otomatik makin
         Sütun başlıkları| Veri kümesinin üst bilgilerinin (varsa) nasıl değerlendirileceğini gösterir.
         Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.
     
-        **İleri**’yi seçin.
+        **İleri** ’yi seçin.
 
     1. **Şema** formu, **Ayarlar ve önizleme** formundaki seçimlere göre akıllıca doldurulur. Burada her bir sütun için veri türünü yapılandırın, sütun adlarını gözden geçirin ve denemenize **dahil olmayan** sütunları seçin. 
             
@@ -88,7 +88,7 @@ Aksi takdirde, SDK ile oluşturulanlar da dahil olmak üzere, son otomatik makin
 
     1. **Ayrıntıları Onayla** formu, daha önce **temel bilgi** ve **Ayarlar ve önizleme** formlarında doldurulmuş bilgilerin bir özetidir. Ayrıca, profil oluşturma etkinleştirilmiş bir işlem kullanarak veri kümeniz için bir veri profili oluşturma seçeneğiniz de vardır. [Veri profili oluşturma](how-to-connect-data-ui.md#profile)hakkında daha fazla bilgi edinin.
 
-        **İleri**’yi seçin.
+        **İleri** ’yi seçin.
 1. Yeni oluşturduğunuz veri kümenizi göründüğünde seçin. Ayrıca, veri kümesinin ve örnek istatistiklerin önizlemesini de görüntüleyebilirsiniz. 
 
 1. **Çalıştırma yapılandırması** formunda, benzersiz bir deneme adı girin.
@@ -108,27 +108,27 @@ Aksi takdirde, SDK ile oluşturulanlar da dahil olmak üzere, son otomatik makin
     En az/en fazla düğüm| Veri profili için, 1 veya daha fazla düğüm belirtmeniz gerekir. İşlem için en fazla düğüm sayısını girin. Varsayılan değer bir AML Işlem için 6 düğümünüz.
     Gelişmiş ayarlar | Bu ayarlar, denemeniz için bir kullanıcı hesabı ve var olan bir sanal ağ yapılandırmanıza olanak tanır. 
     
-    **Oluştur**’u seçin. Yeni bir işlem oluşturmak birkaç dakika sürebilir.
+    **Oluştur** ’u seçin. Yeni bir işlem oluşturmak birkaç dakika sürebilir.
 
     >[!NOTE]
-    > İşlem adınız, seçtiğiniz işlem *profil oluşturma*/oluşturma işleminin etkin olup olmadığını gösterir. (Daha fazla ayrıntı için bkz. [veri profili oluşturma](how-to-connect-data-ui.md#profile) bölümü).
+    > İşlem adınız, seçtiğiniz işlem *profil oluşturma* /oluşturma işleminin etkin olup olmadığını gösterir. (Daha fazla ayrıntı için bkz. [veri profili oluşturma](how-to-connect-data-ui.md#profile) bölümü).
 
-    **İleri**’yi seçin.
+    **İleri** ’yi seçin.
 
 1. **Görev türü ve ayarlar** formunda, görev türünü seçin: sınıflandırma, regresyon veya tahmin. Daha fazla bilgi için bkz. [desteklenen görev türleri](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast) .
 
-    1. **Sınıflandırma**için derin öğrenmeyi de etkinleştirebilirsiniz.
+    1. **Sınıflandırma** için derin öğrenmeyi de etkinleştirebilirsiniz.
     
-        Derin öğrenme etkinse, doğrulama _train_validation bölünmüş_ile sınırlıdır. [Doğrulama seçenekleri hakkında daha fazla bilgi edinin](how-to-configure-cross-validation-data-splits.md).
+        Derin öğrenme etkinse, doğrulama _train_validation bölünmüş_ ile sınırlıdır. [Doğrulama seçenekleri hakkında daha fazla bilgi edinin](how-to-configure-cross-validation-data-splits.md).
 
 
     1. **Tahmin** için şunları yapabilirsiniz 
     
         1. Derin öğrenmeyi etkinleştirin.
     
-        1. *Zaman sütununu*seçin: Bu sütun kullanılacak saat verilerini içerir.
+        1. *Zaman sütununu* seçin: Bu sütun kullanılacak saat verilerini içerir.
 
-        1. *Tahmin ufku*seçin: modelin kaç zaman birimi (dakika/saat/gün/hafta/ay/yıl) gelecek şekilde tahmin edemeyeceğini belirtin. Daha sonra modelin daha iyi tahmin edilmesi gerektiğinde, daha az doğru olacaktır. [Tahmin ve tahmin ufku hakkında daha fazla bilgi edinin](how-to-auto-train-forecast.md).
+        1. *Tahmin ufku* seçin: modelin kaç zaman birimi (dakika/saat/gün/hafta/ay/yıl) gelecek şekilde tahmin edemeyeceğini belirtin. Daha sonra modelin daha iyi tahmin edilmesi gerektiğinde, daha az doğru olacaktır. [Tahmin ve tahmin ufku hakkında daha fazla bilgi edinin](how-to-auto-train-forecast.md).
 
 1. Seçim Ek yapılandırma ayarlarını görüntüle: eğitim işini daha iyi denetleyebilmeniz için kullanabileceğiniz ek ayarlar. Aksi takdirde, denemeler seçimine ve verilerine göre varsayılan ayarlar uygulanır. 
 
@@ -136,10 +136,10 @@ Aksi takdirde, SDK ile oluşturulanlar da dahil olmak üzere, son otomatik makin
     ------|------
     Birincil ölçüm| Modelinize Puanlama için kullanılan ana ölçüm. [Model ölçümleri hakkında daha fazla bilgi edinin](how-to-configure-auto-train.md#primary-metric).
     En iyi modeli açıkla | Önerilen en iyi modelin açıklamalarını göstermek için etkinleştirmek veya devre dışı bırakmak için seçin. <br> Bu işlev, [belirli tahmin algoritmaları](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model)için şu anda kullanılamıyor. 
-    Engellenen algoritma| Eğitim işinden dışlamak istediğiniz algoritmaları seçin. <br><br> Algoritmaların izin verilmesi yalnızca [SDK denemeleri](how-to-configure-auto-train.md#supported-models)için kullanılabilir. <br> [Her görev türü için desteklenen modellere](https://docs.microsoft.com/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels?view=azure-ml-py&preserve-view=true)bakın.
-    Çıkış ölçütü| Bu ölçütlerden herhangi biri karşılandığında eğitim işi durdurulur. <br> *Eğitim işi süresi (saat)*: eğitim işinin ne kadar süreyle çalışmasına izin verme. <br> *Ölçüm puan eşiği*: tüm işlem hatları için en düşük ölçüm puanı. Bu, ulaşmak istediğiniz tanımlı bir hedef ölçüsünün olması durumunda eğitim işinde gerekli olandan daha fazla zaman harcamamanızı sağlar.
+    Engellenen algoritma| Eğitim işinden dışlamak istediğiniz algoritmaları seçin. <br><br> Algoritmaların izin verilmesi yalnızca [SDK denemeleri](how-to-configure-auto-train.md#supported-models)için kullanılabilir. <br> [Her görev türü için desteklenen modellere](/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels?preserve-view=true&view=azure-ml-py)bakın.
+    Çıkış ölçütü| Bu ölçütlerden herhangi biri karşılandığında eğitim işi durdurulur. <br> *Eğitim işi süresi (saat)* : eğitim işinin ne kadar süreyle çalışmasına izin verme. <br> *Ölçüm puan eşiği* : tüm işlem hatları için en düşük ölçüm puanı. Bu, ulaşmak istediğiniz tanımlı bir hedef ölçüsünün olması durumunda eğitim işinde gerekli olandan daha fazla zaman harcamamanızı sağlar.
     Doğrulama| Eğitim işinde kullanmak için çapraz doğrulama seçeneklerinden birini seçin. <br> [Çapraz doğrulama hakkında daha fazla bilgi edinin](how-to-configure-cross-validation-data-splits.md#prerequisites).<br> <br>Tahmin yalnızca k katlama çapraz doğrulamayı destekler.
-    Eşzamanlılık| *Maksimum eşzamanlı yineleme*: eğitim işinde sınanacak maksimum işlem hattı sayısı (yineleme). İş, belirtilen sayıda yinelemeden daha fazla çalıştırmayacak.
+    Eşzamanlılık| *Maksimum eşzamanlı yineleme* : eğitim işinde sınanacak maksimum işlem hattı sayısı (yineleme). İş, belirtilen sayıda yinelemeden daha fazla çalıştırmayacak.
 
 1. Seçim Özelliği görüntüleme ayarları: **ek yapılandırma ayarları** formunda **Otomatik** özelliği etkinleştirmeyi seçerseniz, varsayılan özellikler uygulanır. Görünüm özelliği **ayarları** ' nda bu Varsayılanları değiştirebilir ve uygun şekilde özelleştirebilirsiniz. [Korturleri özelleştirmeyi](#customize-featurization)öğrenin. 
 
@@ -198,7 +198,7 @@ Otomatik ML, modeli kod yazmadan dağıtmanıza yardımcı olur:
 
     Alan| Değer
     ----|----
-    Adı| Dağıtımınız için benzersiz bir ad girin.
+    Ad| Dağıtımınız için benzersiz bir ad girin.
     Açıklama| Bu dağıtımın ne için olduğunu daha iyi tanımlamak için bir açıklama girin.
     İşlem türü| Dağıtmak istediğiniz uç nokta türünü seçin: *Azure Kubernetes hizmeti (AKS)* veya *Azure Container Instance (acı)*.
     İşlem adı| *Yalnızca AKS Için geçerlidir:* Dağıtmak istediğiniz AKS kümesinin adını seçin.
@@ -210,13 +210,13 @@ Otomatik ML, modeli kod yazmadan dağıtmanıza yardımcı olur:
 
     *Gelişmiş* menüsünde [veri toplama](how-to-enable-app-insights.md) ve kaynak kullanımı ayarları gibi varsayılan dağıtım özellikleri yer alır. Varsayılan değerleri değiştirmek için bu menüyü kullanabilirsiniz.
 
-1. **Dağıt**'ı seçin. Dağıtımın tamamlanması yaklaşık 20 dakika sürer.
+1. **Dağıt** 'ı seçin. Dağıtımın tamamlanması yaklaşık 20 dakika sürer.
     Dağıtım başladıktan sonra **Model özeti** sekmesi görüntülenir. Dağıtımın ilerleme durumunu **Dağıtım durumu** bölümünde görebilirsiniz. 
 
 Artık tahminde bulunmak için kullanabileceğiniz çalışan bir web hizmetiniz var! Hizmeti [Power BI'ın yerleşik Azure Machine Learning desteği](how-to-consume-web-service.md#consume-the-service-from-power-bi) ile sorgulayarak tahminleri test edebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bir Web hizmetini kullanmayı öğrenin](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service).
+* [Bir Web hizmetini kullanmayı öğrenin](./how-to-consume-web-service.md).
 * [Otomatik makine öğrenimi sonuçlarını anlayın](how-to-understand-automated-ml.md).
 * [Otomatik makine öğrenimi ve Azure Machine Learning hakkında daha fazla bilgi edinin](concept-automated-ml.md) .

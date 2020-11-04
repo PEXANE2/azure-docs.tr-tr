@@ -11,12 +11,12 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: d063af3ba3b9261100af5e48a2c507a80ac76d98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f98e18abb8ba06ea632ee9c63c1a726879e825d2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322368"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311513"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure Machine Learning model yorumlenebilirliği (Önizleme)
 
@@ -39,7 +39,7 @@ Bir makine öğrenimi modelinin açıklanması özelliğinin etkinleştirilmesi,
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Azure Machine Learning ile yorumlenebilirlik
 
-Yorumlenebilirlik sınıfları şu SDK paketiyle kullanılabilir hale getirilir: ( [Azure Machine Learning IÇIN SDK paketlerini yüklemeyi](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)öğrenin)
+Yorumlenebilirlik sınıfları şu SDK paketiyle kullanılabilir hale getirilir: ( [Azure Machine Learning IÇIN SDK paketlerini yüklemeyi](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)öğrenin)
 
 * `azureml.interpret`, Microsoft tarafından desteklenen işlevleri içerir.
 
@@ -64,10 +64,10 @@ Desteklenen yorumlenebilirlik teknikleri, desteklenen makine öğrenimi modeller
 
 |Yorumlenebilirlik tekniği|Açıklama|Tür|
 |--|--|--------------------|
-|SHAP ağacı açıklama| Ağaç **ve Kümelemeler**ağaçlarına özgü polinom zaman hızlı Shap değer tahmini algoritmasına odaklanan [Shap](https://github.com/slundberg/shap)'nin Tree açıklama.|Modele özgü|
+|SHAP ağacı açıklama| Ağaç **ve Kümelemeler** ağaçlarına özgü polinom zaman hızlı Shap değer tahmini algoritmasına odaklanan [Shap](https://github.com/slundberg/shap)'nin Tree açıklama.|Modele özgü|
 |SHAP derin açıklama| SHAP 'nin açıklamasına göre, derin açıklama ", Shap [NıP](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)'Lerde açıklanan ayrıntılı bir bağlantı üzerinde bağlantı kurulan derin öğrenme MODELLERINDEKI Shap değerleri için yüksek hızda bir yaklaşık algoritmadır. TensorFlow arka ucunu kullanan **TensorFlow** modelleri ve **keras** modelleri desteklenir (Ayrıca, pytorch için de ön destek vardır) ".|Modele özgü|
-|SHAP doğrusal açıklama| SHAP 'nin doğrusal açıklama, **Doğrusal bir model**için Shap değerlerini hesaplar ve isteğe bağlı olarak yetenek ilişkileri için hesaplar.|Modele özgü|
-|SHAP Kernel açıklama| SHAP 'nin Kernel açıklama, **herhangi bir model**için Shap değerlerini tahmin etmek üzere özel ağırlıklı bir yerel doğrusal regresyon kullanır.|Model belirsiz|
+|SHAP doğrusal açıklama| SHAP 'nin doğrusal açıklama, **Doğrusal bir model** için Shap değerlerini hesaplar ve isteğe bağlı olarak yetenek ilişkileri için hesaplar.|Modele özgü|
+|SHAP Kernel açıklama| SHAP 'nin Kernel açıklama, **herhangi bir model** için Shap değerlerini tahmin etmek üzere özel ağırlıklı bir yerel doğrusal regresyon kullanır.|Model belirsiz|
 |Taklit açıklama (genel yedek)| Benzeme açıklama, kara kutu modellerini taklit etmek için [genel yedek modellerine](https://christophm.github.io/interpretable-ml-book/global.html) eğitim fikrini temel alır. Genel yedek modeli, **herhangi bir siyah kutu modelinin** tahmin edilebilmesini mümkün olduğunca doğru şekilde tahmin etmek için eğitilen bir doğası gereği ınterbox modelidir. Veri bilimcileri, siyah kutu modeli hakkında ekibinizle çizmek için yedek modeli yorumlayabilir. Aşağıdaki yorumlu modellerden birini yedek modeliniz olarak kullanabilirsiniz: LightGBM (LGBMExplainableModel), doğrusal regresyon (LinearExplainableModel), Stochastic gradyan Descent explainable model (SGDExplainableModel) ve karar ağacı (DecisionTreeExplainableModel).|Model belirsiz|
 |Permütasyon özelliği önem açıklama (PFı)| Permütasyon özelliği önem derecesi, [Breiman 'Nın rastgele ormanlar kağıdına](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) göre önemli olan sınıflandırma ve regresyon modellerini açıklamak için kullanılan bir tekniktir (bkz. Bölüm 10). Yüksek düzeyde, çalışma şekli, veri kümesinin tamamı için bir seferde bir özelliği rastgele karıştırarak ve ilgilendiğiniz performans ölçüsünün ne kadarını değiştirdiğine göre belirlenir. Değişiklik ne kadar büyükse, bu özellik o kadar önemli olur. PFı, **temel alınan tüm modelin** genel davranışını açıklayabilir, ancak bireysel tahminleri açıklamaz. |Model belirsiz|
 

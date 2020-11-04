@@ -1,6 +1,6 @@
 ---
 title: Visual Studio ve SSDT ile SYNAPSE SQL 'i bağlama ve sorgulama
-description: Azure SYNAPSE Analytics kullanarak SQL havuzunu sorgulamak için Visual Studio 'Yu kullanın.
+description: Azure SYNAPSE Analytics kullanarak adanmış SQL havuzunu sorgulamak için Visual Studio 'Yu kullanın.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,15 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 93c975bbbc69a43f1bd47bd4b1e7b857338ac1c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 098256c3174f5a737bec4f6a62cb1d2af99e6f4f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87089252"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311072"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Visual Studio ve SSDT ile SYNAPSE SQL 'e bağlanma
+
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
@@ -26,21 +27,22 @@ ms.locfileid: "87089252"
 > 
 > 
 
-Azure SYNAPSE Analytics kullanarak SQL havuzunu sorgulamak için Visual Studio 'Yu kullanın. Bu yöntem, Visual Studio 2019 ' de SQL Server Veri Araçları (SSDT) uzantısını kullanır. 
+Azure SYNAPSE Analytics kullanarak adanmış SQL havuzunu sorgulamak için Visual Studio 'Yu kullanın. Bu yöntem, Visual Studio 2019 ' de SQL Server Veri Araçları (SSDT) uzantısını kullanır. 
 
 > [!NOTE]
-> SQL isteğe bağlı (Önizleme) SSDT tarafından desteklenmiyor.
+> Sunucusuz SQL Havuzu (Önizleme) SSDT tarafından desteklenmez.
 
 ## <a name="prerequisites"></a>Önkoşullar
+
 Bu öğreticiyi kullanmak için aşağıdaki bileşenlere sahip olmanız gerekir:
 
-* Mevcut bir SQL Havuzu. Bir tane yoksa, bu önkoşulu gerçekleştirmek için bkz. [SQL havuzu oluşturma](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
+* Mevcut bir adanmış SQL Havuzu. Bir tane yoksa, bu önkoşulu tamamlamaya yönelik [adanmış BIR SQL havuzu oluşturma](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) bölümüne bakın.
 * Visual Studio için SSDT. Visual Studio kullanıyorsanız büyük olasılıkla bu bileşene sahipsiniz demektir. Yükleme yönergeleri ve seçenekleri için bkz. [Visual Studio’yu ve SSDT’yi yükleme](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
-* Tam SQL server adı. Bu sunucu adını bulmak için bkz. [SQL havuzuna bağlanma](connect-overview.md).
+* Tam SQL server adı. Bu sunucu adını bulmak için bkz. [adanmış BIR SQL havuzuna bağlanma](connect-overview.md).
 
-## <a name="1-connect-to-sql-pool"></a>1. SQL havuzuna Bağlan
+## <a name="1-connect-to-a-dedicated-sql-pool"></a>1. ayrılmış bir SQL havuzuna bağlanma
 1. Visual Studio 2019 ' i açın.
-2. **Görünüm**SQL Server Nesne Gezgini ' i seçerek SQL Server Nesne Gezgini açın  >  **SQL Server Object Explorer**.
+2. **Görünüm** SQL Server Nesne Gezgini ' i seçerek SQL Server Nesne Gezgini açın  >  **SQL Server Object Explorer**.
    
     ![SQL Server Nesne Gezgini](./media/get-started-visual-studio/open-ssdt.png)
 3. **SQL Server ekle** simgesine tıklayın.
@@ -50,10 +52,10 @@ Bu öğreticiyi kullanmak için aşağıdaki bileşenlere sahip olmanız gerekir
    
     ![Sunucuya bağlanma](./media/get-started-visual-studio/connection-dialog.png)
    
-   * **Sunucu adı**: daha önce tanımlanan **sunucu adını** girin.
-   * **Kimlik doğrulaması**: **SQL Server kimlik doğrulaması** veya **Active Directory tümleşik kimlik doğrulaması**seçin:
-   * **Kullanıcı adı** ve **parola**: yukarıda SQL Server kimlik doğrulaması seçildiyse, Kullanıcı adınızı ve parolanızı girin.
-   * **Bağlan**'a tıklayın.
+   * **Sunucu adı** : daha önce tanımlanan **sunucu adını** girin.
+   * **Kimlik doğrulaması** : **SQL Server kimlik doğrulaması** veya **Active Directory tümleşik kimlik doğrulaması** seçin:
+   * **Kullanıcı adı** ve **parola** : yukarıda SQL Server kimlik doğrulaması seçildiyse, Kullanıcı adınızı ve parolanızı girin.
+   * **Bağlan** 'a tıklayın.
 5. Araştırmak için Azure SQL sunucunuzu genişletin. Sunucuyla ilişkili veritabanlarını görüntüleyebilirsiniz. Örnek veritabanınızdaki tabolaları görmek için AdventureWorksDW'yi genişletin.
    
     ![AdventureWorksDW'yi araştırma](./media/get-started-visual-studio/explore-sample.png)
@@ -62,7 +64,7 @@ Bu öğreticiyi kullanmak için aşağıdaki bileşenlere sahip olmanız gerekir
 Artık veritabanınıza bir bağlantı kuruldığına göre bir sorgu yazacaksınız.
 
 1. SQL Server Nesne Gezgini'nde veritabanınıza sağ tıklayın.
-2. **Yeni Sorgu**’yu seçin. Yeni bir sorgu penceresi açılır.
+2. **Yeni Sorgu** ’yu seçin. Yeni bir sorgu penceresi açılır.
    
     ![Yeni sorgu](./media/get-started-visual-studio/new-query2.png)
 3. Aşağıdaki T-SQL sorgusunu sorgu penceresine kopyalayın:
@@ -79,5 +81,5 @@ Artık veritabanınıza bir bağlantı kuruldığına göre bir sorgu yazacaksı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Artık bağlanıp sorgulama yaptığınızda, [Power BI verileri görselleştirmeyi](get-started-power-bi-professional.md)deneyin.
-Ortamınızı Azure Active Directory kimlik doğrulaması için yapılandırmak üzere bkz. [SQL havuzunda kimlik](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)doğrulama.
+Ortamınızı Azure Active Directory kimlik doğrulaması için yapılandırmak üzere bkz. [ADANMıŞ SQL havuzunda kimlik doğrulama](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
  

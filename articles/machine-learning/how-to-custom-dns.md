@@ -11,29 +11,29 @@ author: jhirono
 ms.date: 10/05/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: b16c8873a1778b907b288486c204d74ee31683cb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 168dc342eaf61a9ede632fb429311f6f5c1d4be4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097966"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311564"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Çalışma alanınızı özel DNS sunucusuyla kullanma
 
-Bir sanal ağla Azure Machine Learning kullanırken, [DNS ad çözümlemesini işlemenin birkaç yolu](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances)vardır. Varsayılan olarak, Azure, çalışma alanınız ve özel uç noktanız için ad çözümlemesini otomatik olarak işler. Ancak, __kendi özel DNS sunucunuzu kullanırken__ , çalışma alanı için el ile DNS girdileri oluşturmanız gerekir.
+Bir sanal ağla Azure Machine Learning kullanırken, [DNS ad çözümlemesini işlemenin birkaç yolu](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)vardır. Varsayılan olarak, Azure, çalışma alanınız ve özel uç noktanız için ad çözümlemesini otomatik olarak işler. Ancak, __kendi özel DNS sunucunuzu kullanırken__ , çalışma alanı için el ile DNS girdileri oluşturmanız gerekir.
 
 > [!IMPORTANT]
 > Bu makalede, bu girdilerin yalnızca tam etki alanı adını (FQDN) ve IP adreslerini bulmak için DNS kayıtlarını yapılandırma hakkında bilgi sağlamayan bilgiler yer alır. Kayıt ekleme hakkında bilgi edinmek için DNS yazılımınızın belgelerine bakın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Kendı DNS sunucunuzu](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)kullanan bir Azure sanal ağı.
+- [Kendı DNS sunucunuzu](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)kullanan bir Azure sanal ağı.
 
 - Özel uç noktası olan bir Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
-- [Eğitim & çıkarımı sırasında ağ yalıtımının](how-to-enable-virtual-network.md)kullanılmasıyla ilgili benzerlik.
+- [Eğitim & çıkarımı sırasında ağ yalıtımının](./how-to-network-security-overview.md)kullanılmasıyla ilgili benzerlik.
 
-- İsteğe bağlı olarak, [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) veya [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- İsteğe bağlı olarak, [Azure CLI](/cli/azure/install-azure-cli) veya [Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="find-the-ip-addresses"></a>IP adreslerini bulma
 

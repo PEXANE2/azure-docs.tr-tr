@@ -7,13 +7,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 02/10/2020
-ms.openlocfilehash: afae49cf6ee44b138a55f58f415fc761308b7894
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/02/2020
+ms.openlocfilehash: e16cc8934407a5c54c84fd045c99e28116e656c9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542385"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310438"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps ve Enterprise Integration Pack kullanarak B2B AS2 iletileri alma ve onaylama
 
@@ -39,7 +39,7 @@ Bu makalede, bir Istek tetikleyicisi kullanarak HTTP isteği alan ve AS2 ve x12 
 
 * Tümleştirme hesabınızda zaten tanımlamış olduğunuz en az iki [ticari iş ortağı](../logic-apps/logic-apps-enterprise-integration-partners.md) , bu iş ortakları için [AS2 ve x12 sözleşmeleri](logic-apps-enterprise-integration-agreements.md) ile birlikte.
 
-## <a name="add-request-trigger"></a>Istek tetikleyicisi Ekle
+## <a name="add-the-request-trigger"></a>Istek tetikleyicisini ekleme
 
 Bu örnek Azure portal Logic App Designer 'ı kullanır, ancak Visual Studio 'daki Logic App Designer için benzer adımları izleyebilirsiniz.
 
@@ -53,31 +53,31 @@ Bu örnek Azure portal Logic App Designer 'ı kullanır, ancak Visual Studio 'da
 
    !["Istek gövdesi JSON şeması" boş bırakın](./media/logic-apps-enterprise-integration-b2b/receive-trigger-message-body-json-schema.png)
 
-1. İşiniz bittiğinde, Tasarımcı araç çubuğunda **Kaydet**' i seçin.
+1. İşiniz bittiğinde, Tasarımcı araç çubuğunda **Kaydet** ' i seçin.
 
    Bu adım, mantıksal uygulamayı tetikleyen isteği göndermek için kullanılacak **http post URL 'sini** oluşturur. Bu URL 'yi kopyalamak için URL 'nin yanındaki Kopyala simgesini seçin.
 
    ![Çağrıları almak için Istek tetikleyicisi için oluşturulan URL](./media/logic-apps-enterprise-integration-b2b/generated-url-request-trigger.png)
 
-## <a name="add-as2-decode-action"></a>AS2 kod çözme eylemi Ekle
+## <a name="add-the-as2-decode-action"></a>AS2 kod çözme eylemini ekleme
 
 Şimdi kullanmak istediğiniz B2B eylemlerini ekleyin. Bu örnek AS2 ve x12 eylemlerini kullanır.
 
-1. Tetikleyici altında **yeni adım**' ı seçin. Tetikleyici ayrıntılarını gizlemek için tetikleyicinin başlık çubuğuna tıklayın.
+1. Tetikleyici altında **yeni adım** ' ı seçin. Tetikleyici ayrıntılarını gizlemek için tetikleyicinin başlık çubuğuna tıklayın.
 
    ![Mantıksal uygulama iş akışınıza başka bir adım ekleyin](./media/logic-apps-enterprise-integration-b2b/add-new-action-under-trigger.png)
 
-1. **Eylem seçin**altında, arama kutusuna girin `as2 decode` ve **AS2 kodunu çöz (v2)** seçeneğini belirleyin.
+1. **Eylem seçin** altında, arama kutusuna girin `as2 decode` ve **AS2 kodunu çöz (v2)** seçeneğini belirleyin.
 
    !["AS2 kodunu çöz (v2)" öğesini bulun ve seçin](./media/logic-apps-enterprise-integration-b2b/add-as2-decode-action.png)
 
 1. **İleti kodunu çözmek** IÇIN, AS2 eyleminin kodu kodunu çözmek ISTEDIĞINIZ, `body` http istek tetikleyicisi tarafından alınan içerik olan girdiyi girin. Bu içeriği, dinamik içerik listesinden ya da bir ifade olarak belirtmek için birden çok yol vardır:
 
-   * Kullanılabilir tetikleyici çıkışlarını gösteren bir listeden seçmek için, **kodu çözmek Için ileti** kutusuna tıklayın. Dinamik içerik listesi görüntülendikten sonra, **BIR http isteği alındığında**altında **gövde** özelliği değeri ' ni seçin, örneğin:
+   * Kullanılabilir tetikleyici çıkışlarını gösteren bir listeden seçmek için, **kodu çözmek Için ileti** kutusuna tıklayın. Dinamik içerik listesi görüntülendikten sonra, **BIR http isteği alındığında** altında **gövde** özelliği değeri ' ni seçin, örneğin:
 
      ![Tetikleyiciden "gövde" değeri Seç](./media/logic-apps-enterprise-integration-b2b/select-body-content-from-trigger.png)
 
-   * Tetikleyicinin çıktısına başvuran bir ifade girmek için `body` , **kodu çözmek için ileti** kutusuna tıklayın. Dinamik içerik listesi görüntülendikten sonra **ifade**' i seçin. İfade düzenleyicisinde, ifadeyi buraya girin ve **Tamam**' ı seçin:
+   * Tetikleyicinin çıktısına başvuran bir ifade girmek için `body` , **kodu çözmek için ileti** kutusuna tıklayın. Dinamik içerik listesi görüntülendikten sonra **ifade** ' i seçin. İfade düzenleyicisinde, ifadeyi buraya girin ve **Tamam** ' ı seçin:
 
      `triggerOutputs()['body']`
 
@@ -91,21 +91,29 @@ Bu örnek Azure portal Logic App Designer 'ı kullanır, ancak Visual Studio 'da
 
 1. **İleti üstbilgileri** özelliği IÇIN, `headers` http istek tetikleyicisi tarafından alınan IÇERIK tarafından tanımlanan AS2 eylemi için gereken tüm üst bilgileri girin.
 
-   Tetikleyicinin çıktısına başvuran bir ifade girmek için `headers` **ileti üstbilgileri** kutusunun içine tıklayın. Dinamik içerik listesi görüntülendikten sonra **ifade**' i seçin. İfade düzenleyicisinde, ifadeyi buraya girin ve **Tamam**' ı seçin:
+   1. Tetikleyicinin çıktısına başvuran bir ifade girmek için `headers` **ileti üst bilgilerini metin moduna geçir** ' i seçin.
 
-   `triggerOutputs()['Headers']`
+      !["Ileti üst bilgilerini metin moduna geçir" i gösteren ekran görüntüsü.](./media/logic-apps-enterprise-integration-b2b/as2-decode-switch-text-mode.png)
 
-   Bu ifadeyi bu belirteç olarak çözmek için, tasarımcı ve kod görünümü arasında geçiş yapın, örneğin:
+   1. **İleti üstbilgileri** kutusunun içine tıklayın. Dinamik içerik listesi görüntülendikten sonra **ifade** ' i seçin. İfade düzenleyicisinde, ifadeyi buraya girin ve **Tamam** ' ı seçin:
 
-   ![Çözümlenmiş üstbilgiler çıkışı tetikleyiciden](./media/logic-apps-enterprise-integration-b2b/resolved-trigger-outputs-headers-expression.png)
+      `triggerOutputs()['Headers']`
+
+      AS2 kod çözme eyleminde, ifade şimdi bir belirteç olarak görünür:
+
+      ![" @triggerOutputs İleti üstbilgileri" kutusunda "() [' Headers ']" belirtecini gösteren ekran görüntüsü.](./media/logic-apps-enterprise-integration-b2b/as2-decode-message-header-expression.png)
+
+   1. **Üst bilgi** belirtecine çözülecek ifade belirtecini almak için tasarımcı ve kod görünümü arasında geçiş yapın. Bu adımdan sonra, AS2 kod çözme eylemi şu örneğe benzer şekilde görünür:
+
+      ![Çözümlenmiş üstbilgiler çıkışı tetikleyiciden](./media/logic-apps-enterprise-integration-b2b/resolved-trigger-outputs-headers-expression.png)
 
 ## <a name="add-response-action-for-message-receipt-notification"></a>İleti alındı bildirimi için yanıt ekleme eylemi
 
 Ticaret ortağına iletinin alındığını bildirmek için, **Yanıt** EYLEMINI kullanarak AS2 Ileti değerlendirmesi bildirimi (MDN) içeren bir yanıt döndürebilirsiniz. Bu eylemi, **AS2 kod çözme** eyleminden hemen sonra ekleyerek, bu eylem başarısız olursa, mantıksal uygulama işlemeye devam etmez.
 
-1. **AS2 kod çözme** eylemi altında **yeni adım**' ı seçin.
+1. **AS2 kod çözme** eylemi altında **yeni adım** ' ı seçin.
 
-1. **Eylem seçin**altında, arama kutusunda, **yerleşik**' i seçin. Arama kutusuna `condition` yazın. **Eylemler** listesinden **Koşul**'u seçin.
+1. **Eylem seçin** altında, arama kutusunda, **yerleşik** ' i seçin. Arama kutusuna `condition` yazın. **Eylemler** listesinden **Koşul** 'u seçin.
 
    !["Koşul" eylemini ekleyin](./media/logic-apps-enterprise-integration-b2b/add-condition-action.png)
 
@@ -123,7 +131,7 @@ Ticaret ortağına iletinin alındığını bildirmek için, **Yanıt** EYLEMINI
 
 1. Şimdi **AS2 kod çözme** eyleminin başarılı olup olmadığını döndüren yanıtları belirtin.
 
-   1. **AS2 kod çözme** eyleminin başarılı olması durumunda, **If true** şeklinde **bir eylem Ekle**' yi seçin. **Eylem seçin**altında, arama kutusuna girin `response` ve **Yanıt**' ı seçin.
+   1. **AS2 kod çözme** eyleminin başarılı olması durumunda, **If true** şeklinde **bir eylem Ekle** ' yi seçin. **Eylem seçin** altında, arama kutusuna girin `response` ve **Yanıt** ' ı seçin.
 
       !["Yanıt" eylemini bulup seçin](./media/logic-apps-enterprise-integration-b2b/select-http-response-action.png)
 
@@ -141,19 +149,19 @@ Ticaret ortağına iletinin alındığını bildirmek için, **Yanıt** EYLEMINI
 
       ![AS2 MDN erişimi için çözümlenen ifade](./media/logic-apps-enterprise-integration-b2b/response-action-success-resolved-expression.png)
 
-   1. **AS2 kod çözme** eyleminin başarısız olduğu durum Için, **IF false** şeklinde **bir eylem Ekle**' yi seçin. **Eylem seçin**altında, arama kutusuna girin `response` ve **Yanıt**' ı seçin. İstediğiniz durum ve hatayı döndürmek için **Yanıt** eylemini ayarlayın.
+   1. **AS2 kod çözme** eyleminin başarısız olduğu durum Için, **IF false** şeklinde **bir eylem Ekle** ' yi seçin. **Eylem seçin** altında, arama kutusuna girin `response` ve **Yanıt** ' ı seçin. İstediğiniz durum ve hatayı döndürmek için **Yanıt** eylemini ayarlayın.
 
 1. Mantıksal uygulamanızı kaydedin.
 
 ## <a name="add-decode-x12-message-action"></a>Kod çözme x12 ileti eylemi Ekle
 
-1. Şimdi **kod çözme x12 ileti** eylemini ekleyin. **Yanıt** eylemi altında **Eylem Ekle**' yi seçin.
+1. Şimdi **kod çözme x12 ileti** eylemini ekleyin. **Yanıt** eylemi altında **Eylem Ekle** ' yi seçin.
 
-1. **Eylem seçin**altında, arama kutusuna girin `x12 decode` ve **x12 ileti kodunu çöz**' ü seçin.
+1. **Eylem seçin** altında, arama kutusuna girin `x12 decode` ve **x12 ileti kodunu çöz** ' ü seçin.
 
    !["X12 ileti kodunu çöz" eylemini bul ve Seç](./media/logic-apps-enterprise-integration-b2b/add-x12-decode-action.png)
 
-1. X12 eylemi sizden bağlantı bilgilerini isterse, bağlantı adını belirtin, kullanmak istediğiniz tümleştirme hesabını seçin ve ardından **Oluştur**' u seçin.
+1. X12 eylemi sizden bağlantı bilgilerini isterse, bağlantı adını belirtin, kullanmak istediğiniz tümleştirme hesabını seçin ve ardından **Oluştur** ' u seçin.
 
    ![Tümleştirme hesabına x12 bağlantısı oluşturma](./media/logic-apps-enterprise-integration-b2b/create-x12-integration-account-connection.png)
 

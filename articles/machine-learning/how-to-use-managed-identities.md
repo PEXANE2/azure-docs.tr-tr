@@ -10,16 +10,16 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: c4ea7609c343532f17144e388be7583eab427eee
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3490e3004e5f5dd99795967f0deb8510200fa50b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440459"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311038"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Azure Machine Learning ile yönetilen kimlikler kullanma (Önizleme)
 
-[Yönetilen kimlikler](/azure/active-directory/managed-identities-azure-resources/overview) , çalışma alanınızı, *kaynaklara erişmek için gereken en düşük izinlerle*yapılandırmanıza olanak tanır. 
+[Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) , çalışma alanınızı, *kaynaklara erişmek için gereken en düşük izinlerle* yapılandırmanıza olanak tanır. 
 
 Azure Machine Learning çalışma alanını güvenilir şekilde yapılandırırken, çalışma alanıyla ilişkili farklı hizmetlerin doğru erişim düzeyine sahip olduğundan emin olmak önemlidir. Örneğin, Machine Learning iş akışı sırasında, çalışma alanının Docker görüntüleri için Azure Container Registry (ACR) ve eğitim verilerine yönelik depolama hesapları için erişimi olması gerekir. 
 
@@ -33,13 +33,13 @@ Bu makalede, yönetilen kimliklerin nasıl kullanılacağını şu şekilde öğ
 > [!IMPORTANT]
 > Azure Machine Learning ile kaynaklara erişimi denetlemek için yönetilen kimliklerin kullanılması şu anda önizleme aşamasındadır. Önizleme işlevselliği, destek veya hizmet düzeyi anlaşması garantisi olmadan "olduğu gibi" verilmiştir. Daha fazla bilgi için, [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bölümüne bakın.
  
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 - [Machine Learning hizmeti Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md)
-- [Python SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
-- Rol atamak için, Azure aboneliğiniz için oturum açma, [yönetilen kimlik operatörü](/azure/role-based-access-control/built-in-roles#managed-identity-operator) rolüne veya gerekli eylemlere (örneğin, __sahip__) izin veren başka bir role sahip olmalıdır.
-- [Yönetilen kimlikler](/azure/active-directory/managed-identities-azure-resources/overview)oluşturma ve bunlarla çalışma konusunda bilgi sahibi olmanız gerekir.
+- [Python SDK Azure Machine Learning](/python/api/overview/azure/ml/intro?view=azure-ml-py).
+- Rol atamak için, Azure aboneliğiniz için oturum açma, [yönetilen kimlik operatörü](../role-based-access-control/built-in-roles.md#managed-identity-operator) rolüne veya gerekli eylemlere (örneğin, __sahip__ ) izin veren başka bir role sahip olmalıdır.
+- [Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md)oluşturma ve bunlarla çalışma konusunda bilgi sahibi olmanız gerekir.
 
 ## <a name="configure-managed-identities"></a>Yönetilen kimlikleri yapılandırma
 
@@ -56,10 +56,10 @@ Yönetici Kullanıcı erişimini etkinleştirmeden ACR oluşturduğunuzda Yönet
 
 ACR yönetici kullanıcısına abonelik ilkesi tarafından izin verilmedikçe, önce yönetici kullanıcı olmadan ACR oluşturmanız ve ardından çalışma alanıyla ilişkilendirmeniz gerekir. Ayrıca, yönetici kullanıcı ile var olan ACR kullanıyorsanız, çalışma alanına iliştirebilirsiniz.
 
-Bağımsız değişken ayarlamadan [Azure CLI 'dan](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli) ```--admin-enabled``` veya yönetici kullanıcı etkinleştirilmeden Azure Portal 'Ten ACR oluşturun. Sonra, Azure Machine Learning çalışma alanı oluştururken ACR 'nin Azure Kaynak KIMLIĞINI belirtin. Aşağıdaki örnek, var olan bir ACR kullanan yeni bir Azure ML çalışma alanı oluşturmayı göstermektedir:
+Bağımsız değişken ayarlamadan [Azure CLI 'dan](../container-registry/container-registry-get-started-azure-cli.md) ```--admin-enabled``` veya yönetici kullanıcı etkinleştirilmeden Azure Portal 'Ten ACR oluşturun. Sonra, Azure Machine Learning çalışma alanı oluştururken ACR 'nin Azure Kaynak KIMLIĞINI belirtin. Aşağıdaki örnek, var olan bir ACR kullanan yeni bir Azure ML çalışma alanı oluşturmayı göstermektedir:
 
 > [!TIP]
-> Parametresinin değerini almak için `--container-registry` [az ACR Show](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az_acr_show) komutunu kullanarak ACR 'nizin bilgilerini görüntüleyin. `id`Alanı ACR 'nizin kaynak kimliğini içerir.
+> Parametresinin değerini almak için `--container-registry` [az ACR Show](/cli/azure/acr?view=azure-cli-latest#az_acr_show) komutunu kullanarak ACR 'nizin bilgilerini görüntüleyin. `id`Alanı ACR 'nizin kaynak kimliğini içerir.
 
 ```azurecli-interactive
 az ml workspace create -w <workspace name> \
@@ -106,7 +106,7 @@ Kendi ACR 'nizi getirmeyin, tek yapmanız gereken bir işlem gerçekleştirdiği
 
 # <a name="python"></a>[Python](#tab/python)
 
-[AmlComputeProvisioningConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration?view=azure-ml-py)ile bir işlem kümesi oluştururken, `identity_type` yönetilen kimlik türünü ayarlamak için parametresini kullanın.
+[AmlComputeProvisioningConfiguration](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration?view=azure-ml-py)ile bir işlem kümesi oluştururken, `identity_type` yönetilen kimlik türünü ayarlamak için parametresini kullanın.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -173,7 +173,7 @@ env.python.user_managed_dependencies = True
 
 Bu senaryoda Azure Machine Learning hizmeti, özel bir ACR 'den sağladığınız temel görüntünün üzerinde eğitim veya çıkarım ortamı oluşturur. Görüntü oluşturma görevi ACR görevlerini kullanarak çalışma alanında ACR görevlerini yaptığından, erişime izin vermek için ek adımlar gerçekleştirmeniz gerekir.
 
-1. __Kullanıcı tarafından atanan yönetilen kimlik__ oluşturun ve kimliği __özel ACR__'ye erişim izni verin.  
+1. __Kullanıcı tarafından atanan yönetilen kimlik__ oluşturun ve kimliği __özel ACR__ 'ye erişim izni verin.  
 1. Çalışma alanına __sistem tarafından atanan yönetilen kimliğe__ , önceki adımdan __Kullanıcı tarafından atanan yönetilen__ kimlik Için yönetilen bir kimlik operatörü rolü verin. Bu rol, çalışma alanının yönetilen ortamı oluşturmak için Kullanıcı tarafından atanan yönetilen kimliği ACR görevine atamasını sağlar. 
 
     1. Çalışma alanı sistem tarafından atanan yönetilen kimliğin asıl KIMLIĞINI edinin:
@@ -190,7 +190,7 @@ Bu senaryoda Azure Machine Learning hizmeti, özel bir ACR 'den sağladığını
 
         UAı kaynak KIMLIĞI, Kullanıcı tarafından atanan kimliğin Azure Kaynak KIMLIĞI biçimindedir `/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UAI name>` .
 
-1. [Workspace.set_connection yöntemi](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#set-connection-name--category--target--authtype--value-)kullanarak çalışma alanı bağlantılarında __Kullanıcı tarafından atanan yönetilen kimliğin__ dış ACR ve istemci kimliğini belirtin:
+1. [Workspace.set_connection yöntemi](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#set-connection-name--category--target--authtype--value-)kullanarak çalışma alanı bağlantılarında __Kullanıcı tarafından atanan yönetilen kimliğin__ dış ACR ve istemci kimliğini belirtin:
 
     ```python
     workspace.set_connection(
@@ -210,7 +210,7 @@ env = Environment(name="my-env")
 env.docker.base_image = "<acr url>/my-repo/my-image:latest"
 ```
 
-İsteğe bağlı olarak, yönetilen kimlik kaynak URL 'sini ve istemci KIMLIĞINI [registryıdentity](https://docs.microsoft.com/python/api/azureml-core/azureml.core.container_registry.registryidentity?view=azure-ml-py)kullanarak ortam tanımında belirtebilirsiniz. Kayıt defteri kimliğini açık olarak kullanırsanız, daha önce belirtilen tüm çalışma alanı bağlantılarını geçersiz kılar:
+İsteğe bağlı olarak, yönetilen kimlik kaynak URL 'sini ve istemci KIMLIĞINI [registryıdentity](/python/api/azureml-core/azureml.core.container_registry.registryidentity?view=azure-ml-py)kullanarak ortam tanımında belirtebilirsiniz. Kayıt defteri kimliğini açık olarak kullanırsanız, daha önce belirtilen tüm çalışma alanı bağlantılarını geçersiz kılar:
 
 ```python
 from azureml.core.container_registry import RegistryIdentity

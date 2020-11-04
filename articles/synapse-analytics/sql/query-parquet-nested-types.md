@@ -1,6 +1,6 @@
 ---
-title: İsteğe bağlı SQL kullanarak iç içe geçmiş türleri sorgulama (Önizleme)
-description: Bu makalede, SQL isteğe bağlı (Önizleme) kullanarak Parquet iç içe türlerini sorgulamayı öğreneceksiniz.
+title: Sunucusuz SQL Havuzu (Önizleme) kullanarak iç içe geçmiş türleri sorgulama
+description: Bu makalede, sunucusuz SQL Havuzu (Önizleme) kullanarak Parquet iç içe türlerini sorgulamayı öğreneceksiniz.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,22 +9,22 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 08502704515c791bf63f4803b7446a0471c0a869
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3463e4dfc423a3f12ce7a42cb0def36574bcb2d3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288265"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312014"
 ---
-# <a name="query-nested-types-in-parquet-and-json-files-by-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kullanarak Parquet ve JSON dosyalarındaki iç içe türler sorgulayın
+# <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullanarak iç içe türleri ve JSON dosyalarını sorgulama
 
-Bu makalede, Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kullanarak bir sorgu yazmayı öğreneceksiniz. Sorgu, Parquet iç içe geçmiş türlerini okur.
+Bu makalede, Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullanarak bir sorgu yazmayı öğreneceksiniz. Sorgu, Parquet iç içe geçmiş türlerini okur.
 İç içe türler, nesneleri veya dizileri temsil eden karmaşık yapılardır. İç içe türler, içinde depolanabilir: 
 - [Parquet](query-parquet-files.md), diziler ve nesneler içeren birden çok karmaşık sütunlarınız olabilir.
 - Karmaşık bir JSON belgesini tek bir sütun olarak okuyabileceğiniz hiyerarşik [JSON dosyaları](query-json-files.md).
 - Her belge karmaşık iç içe Özellikler içerebilen Koleksiyonlar (Şu anda geçitli genel önizleme kapsamında) Azure Cosmos DB.
 
-İsteğe bağlı Azure SYNAPSE SQL, iç içe geçmiş tüm türleri JSON nesneleri ve diziler olarak biçimlendirir. Bu nedenle, [JSON işlevleri kullanarak karmaşık nesneleri ayıklayabilir veya değiştirebilir](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) veya [OPENJSON işlevini kullanarak JSON verilerini ayrıştırtırabilirsiniz](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
+Sunucusuz SQL havuzu tüm iç içe geçmiş türleri JSON nesneleri ve diziler olarak biçimlendirir. Bu nedenle, [JSON işlevleri kullanarak karmaşık nesneleri ayıklayabilir veya değiştirebilir](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) veya [OPENJSON işlevini kullanarak JSON verilerini ayrıştırtırabilirsiniz](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
 
 Aşağıda, iç içe geçmiş nesneler içeren [Covı-19 açık araştırma veri kümesi](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) JSON dosyasındaki skaler ve nesne değerlerini ayıklayan bir sorgu örneği verilmiştir: 
 
@@ -47,7 +47,7 @@ FROM
 > [!IMPORTANT]
 > Bu örnek COVıD-19 açık araştırma veri kümesinden bir dosya kullanır. Bu [verilerin yapısına ve yapısına bakın](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İlk adım, DataSource 'un oluşturulacağı bir veritabanı oluşturmaktır. Ardından, veritabanında bir [kurulum betiği](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) çalıştırarak nesneleri başlatacaksınız. Kurulum betiği, örneklerde kullanılan veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve harici dosya biçimlerini oluşturacaktır.
 

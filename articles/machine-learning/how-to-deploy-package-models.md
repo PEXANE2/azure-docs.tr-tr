@@ -1,7 +1,7 @@
 ---
 title: Paket modelleri
 titleSuffix: Azure Machine Learning
-description: Bir modeli Dockerfile olarak paketleme
+description: Model paketleyin. Modeller, daha sonra indirebileceğiniz bir Docker görüntüsü olarak paketlenebilir ya da bir Dockerfile oluşturup görüntüyü oluşturmak için kullanabilirsiniz.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,18 +11,18 @@ ms.date: 07/31/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: edaae4f4c06f038d12267e35a2c356af430e1555
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 299eb316b534ddc9d5eee934cc15eae841276038
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998822"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312629"
 ---
 # <a name="how-to-package-a-registered-model-with-docker"></a>Docker ile kayıtlı bir modeli paketleme
 
 Bu makalede, kayıtlı bir Azure Machine Learning modelinin Docker ile nasıl paketlenecek gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, Machine Learning çalışma alanınızda zaten bir modeli eğitidiğinizi ve kaydettiğiniz varsayılmaktadır. Bir scikit-öğrenme modelini eğitme ve kaydetme hakkında bilgi edinmek için [Bu öğreticiyi izleyin](how-to-train-scikit-learn.md).
 
@@ -162,7 +162,7 @@ docker kill mycontainer
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Başarısız bir dağıtımda sorun giderme](how-to-troubleshoot-deployment.md)
+* [Başarısız bir dağıtımın sorunlarını giderme](how-to-troubleshoot-deployment.md)
 * [Azure Kubernetes Service’e dağıtma](how-to-deploy-azure-kubernetes-service.md)
 * [Web hizmetlerini kullanmak için istemci uygulamaları oluşturma](how-to-consume-web-service.md)
 * [Web hizmetini güncelleştirme](how-to-deploy-update-web-service.md)
