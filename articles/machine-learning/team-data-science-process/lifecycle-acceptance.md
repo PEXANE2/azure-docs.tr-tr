@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7224a7bb26ef491915df9fcb9b6b84ff171a9fc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2294ccb1d958b229a71e45bb502b8134d8d5c7f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76720529"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305665"
 ---
 # <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Işlem yaşam döngüsünün müşteri kabul aşaması
 
@@ -34,13 +34,13 @@ TDSP yaşam döngüsünün görsel bir gösterimi aşağıda verilmiştir:
 
 
 ## <a name="goal"></a>Hedef
-**Proje teslim edilebilirleri Sonlandır**: işlem hattının, modelin ve bir üretim ortamındaki dağıtımının müşterinin hedeflerini karşıladığından emin olun.
+**Proje teslim edilebilirleri Sonlandır** : işlem hattının, modelin ve bir üretim ortamındaki dağıtımının müşterinin hedeflerini karşıladığından emin olun.
 
 ## <a name="how-to-do-it"></a>Nasıl yapılır?
 Bu aşamada belirtilen iki ana görev vardır:
 
-   * **Sistem doğrulaması**: dağıtılan modelin ve işlem hattının müşterinin gereksinimlerini karşıladığını onaylayın.
-   * **Proje el ile**: projeyi üretimde çalıştırmaya devam eden varlığa bırakın.
+   * **Sistem doğrulaması** : dağıtılan modelin ve işlem hattının müşterinin gereksinimlerini karşıladığını onaylayın.
+   * **Proje el ile** : projeyi üretimde çalıştırmaya devam eden varlığa bırakın.
 
 Müşteri, sistemin kendi iş gereksinimlerini karşıladığını ve sistemin, istemci uygulaması tarafından kullanılmak üzere uygulamayı üretime dağıtmak için kabul edilebilir doğrulukla soruların yanıt verdiği doğrulaması gerekir. Tüm belgeler sonlandırılır ve gözden geçirilir. Proje, işlemlerden sorumlu varlığa devredilmiştir. Bu varlık, örneğin, bir BT veya müşteri veri bilimi ekibi ya da müşterinin üretimde sistem çalıştırmasından sorumlu bir aracı olabilir. 
 
@@ -60,4 +60,4 @@ TDSP yaşam döngüsüyle her adımın bağlantıları aşağıda verilmiştir:
 
 Belirli senaryolar için işlemdeki tüm adımları gösteren tam izlenecek yollar sunuyoruz. [Örnek yönergeler](walkthroughs.md) makalesi, bağlantılar ve küçük resim açıklamaları olan senaryoların bir listesini sağlar. İzlenecek yollar, akıllı bir uygulama oluşturmak için bulut, şirket içi araçların ve hizmetlerin bir iş akışı veya işlem hattına nasıl birleştirileceğini gösterir. 
 
-Azure Machine Learning Studio kullanan TDSPs 'de adımların nasıl yürütüleceği hakkında örnekler için, bkz. [Azure Machine Learning Ile TDSP kullanma](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Azure Machine Learning Studio kullanan TDSPs 'de adımların nasıl yürütüleceği hakkında örnekler için, bkz. [Azure Machine Learning Ile TDSP kullanma](./index.yml).

@@ -8,14 +8,14 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: 6b475e34c01ca26abd3d8ab1d904521de19f941b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 01efb5736d7becf1b46c7c2898c22648b0421dd1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947875"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305811"
 ---
-# <a name="create-and-delete-jobs-in-an-azure-stream-analytics-cluster"></a>Azure Stream Analytics kümesinde iş oluşturma ve silme
+# <a name="add-and-remove-jobs-in-an-azure-stream-analytics-cluster"></a>Azure Stream Analytics kümesinde iş ekleme ve kaldırma
 
 Birden çok Azure Stream Analytics işini bir Stream Analytics kümesinde çalıştırabilirsiniz. Bir kümede çalışan işleri basit bir 2 adımlı işlemdir: işi kümeye ekleyin ve işi başlatın. Bu makalede, var olan bir kümeden iş ekleme ve kaldırma işlemleri gösterilir. Henüz bir tane yoksa [Stream Analytics kümesi oluşturmak](create-cluster.md) için hızlı başlangıcı izleyin.
 
@@ -25,7 +25,7 @@ Kümelere yalnızca mevcut Stream Analytics işleri eklenebilir. Azure portal ku
 
 1. Azure portal Stream Analytics kümenizi bulun ve seçin.
 
-1. **Ayarlar**altında **Stream Analytics işler**' i seçin. Ardından, **mevcut Işi Ekle**' yi seçin.
+1. **Ayarlar** altında **Stream Analytics işler** ' i seçin. Ardından, **mevcut Işi Ekle** ' yi seçin.
 
 1. Kümeye eklemek istediğiniz aboneliği ve Stream Analytics işi seçin. Kümeye yalnızca kümeyle aynı bölgedeki işleri Stream Analytics eklenebilir.
 
@@ -41,9 +41,9 @@ Stream Analytics işlerin kümeden kaldırılabilmesi için önce durdurulmuş d
 
 1. Stream Analytics kümenizi bulun ve seçin.
 
-1. **Ayarlar**altında **Stream Analytics işler**' i seçin.
+1. **Ayarlar** altında **Stream Analytics işler** ' i seçin.
 
-1. Kümeden kaldırmak istediğiniz işleri seçin ve ardından **Kaldır**' ı seçin.
+1. Kümeden kaldırmak istediğiniz işleri seçin ve ardından **Kaldır** ' ı seçin.
 
    ![işi kümeden kaldır](./media/manage-jobs-cluster/remove-job.png)
 

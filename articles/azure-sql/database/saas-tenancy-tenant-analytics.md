@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: dd77305a1b2f7d11a2e371f7682855e15739ee7d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 98896b5b728a729a29f989b3b9a76f29131af8d7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790942"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305979"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Ayıklanan verileri kullanan çapraz kiracı Analizi-tek kiracılı uygulama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 Tüm veriler yalnızca bir çok kiracılı veritabanında olduğunda tüm kiracılar için verilere erişim basittir. Ancak erişim, büyük olasılıkla binlerce veritabanı üzerinde ölçekli olarak dağıtıldığında daha karmaşıktır. Karmaşıklığın bir yolu ve işlem verilerinde analiz sorgularının etkilerini en aza indirmek, verileri amacı tasarlanan bir analiz veritabanına veya veri ambarına ayıklamaya yönelik bir yoldur.
 
-Bu öğreticide, Wingtip bilet SaaS uygulaması için kapsamlı bir analiz senaryosu sunulmaktadır. İlk olarak, *elastik işler* her kiracı veritabanından veri ayıklamak ve bir analiz deposundaki hazırlama tablolarına yüklemek için kullanılır. Analytics Mağazası bir SQL veritabanı ya da SQL havuzu olabilir. Büyük ölçekli veri ayıklama için [Azure Data Factory](../../data-factory/introduction.md) önerilir.
+Bu öğreticide, Wingtip bilet SaaS uygulaması için kapsamlı bir analiz senaryosu sunulmaktadır. İlk olarak, *elastik işler* her kiracı veritabanından veri ayıklamak ve bir analiz deposundaki hazırlama tablolarına yüklemek için kullanılır. Analytics Mağazası bir SQL veritabanı ya da adanmış bir SQL havuzu olabilir. Büyük ölçekli veri ayıklama için [Azure Data Factory](../../data-factory/introduction.md) önerilir.
 
 Ardından, toplanmış veriler bir [yıldız şeması](https://www.wikipedia.org/wiki/Star_schema) tabloları kümesine dönüştürülür. Tablolar bir merkezi olgu tablosu ve ilgili boyut tablolarından oluşur.  Wingtip biletleri için:
 
@@ -55,7 +55,7 @@ Merkezi olgu ve boyut tabloları birlikte verimli analitik işleme sağlar. Bu �
  
 ![Mimari Tureoverview](./media/saas-tenancy-tenant-analytics/StarSchema.png)
 
-Son olarak, analitik mağaza, kiracı davranışı ve Wingtip bilet uygulamasının kullanımıyla ilgili öngörüleri vurgulamak için **PowerBI** kullanılarak sorgulanır. Şunu içeren sorguları çalıştırırsınız:
+Son olarak, analitik mağaza, kiracı davranışı ve Wingtip bilet uygulamasının kullanımıyla ilgili öngörüleri vurgulamak için **Power BI** kullanılarak sorgulanır. Şunu içeren sorguları çalıştırırsınız:
  
 - Her bir mekanın göreli popülerliğini göster
 - Farklı olaylar için bilet satışlarında desenleri vurgulama
@@ -65,7 +65,7 @@ Her bir kiracının hizmeti nasıl kullandığını anlamak, hizmeti Monaya çev
 
 ## <a name="setup"></a>Kurulum
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığından emin olun:
 
@@ -77,7 +77,7 @@ Bu öğreticiyi tamamlamak için aşağıdaki ön koşulların karşılandığı
 
 ### <a name="create-data-for-the-demo"></a>Demo için veri oluşturma
 
-Bu öğreticide, Bilet satış verilerinde analiz yapılır. Geçerli adımda, tüm kiracılara yönelik bilet verileri oluşturun.  Daha sonra bu veriler analiz için ayıklanır. *Daha önce açıklandığı gibi kiracılar toplu işlemini sağladığınızdan emin olun, böylece anlamlı bir veri miktarına sahip olursunuz* . Yeterince büyük miktarda veri, farklı bilet satın alma desenlerinin bir aralığını açığa çıkarır.
+Bu öğreticide, Bilet satış verilerinde analiz yapılır. Geçerli adımda, tüm kiracılara yönelik bilet verileri oluşturun.  Daha sonra bu veriler analiz için ayıklanır. *Daha önce açıklandığı gibi kiracılar toplu işlemini sağladığınızdan emin olun, böylece anlamlı bir veri miktarına sahip olursunuz*. Yeterince büyük miktarda veri, farklı bilet satın alma desenlerinin bir aralığını açığa çıkarır.
 
 1. PowerShell ıSE 'de *. ..\Learning Modules\işlemsel analiz Tics\tenant Analytics\Demo-TenantAnalytics.ps1* açın ve aşağıdaki değeri ayarlayın:
     - **$DemoScenario**  =  **1** tüm havalandırma olaylardaki olaylar için bilet satın al
@@ -107,7 +107,7 @@ Nesne Gezgini, aşağıdaki adımları gerçekleştirin:
 Analiz deposu düğümünü genişleterek SSMS Nesne Gezgini aşağıdaki veritabanı öğelerine bakın:
 
 - Tablo **biletleri** , ham veri ve **olayları** , işlenmemiş veri tutan verileri kiracı veritabanlarından ayıklamalıdır.
-- Yıldız şeması tabloları **fact_Tickets** , **dim_Customers** , **dim_Venues** , **dim_Events** ve **dim_Dates** .
+- Yıldız şeması tabloları **fact_Tickets** , **dim_Customers** , **dim_Venues** , **dim_Events** ve **dim_Dates**.
 - Saklı yordam, yıldız şeması tablolarını ham veri tablolarından doldurmak için kullanılır.
 
 ![SSMS Nesne Gezgini gösterilen veritabanı öğelerinin ekran görüntüsü.](./media/saas-tenancy-tenant-analytics/tenantAnalytics.png)
@@ -116,7 +116,7 @@ Analiz deposu düğümünü genişleterek SSMS Nesne Gezgini aşağıdaki verita
 
 ### <a name="create-target-groups"></a>Hedef grupları oluştur 
 
-Devam etmeden önce, iş hesabını ve jobaccount veritabanını dağıttığınızdan emin olun. Sonraki adımlarda, her bir kiracı veritabanından veri ayıklamak ve verileri analiz deposunda depolamak için esnek Işler kullanılır. Ardından ikinci iş, verileri shreds ve yıldızı-Schema 'daki tablolara depolar. Bu iki iş iki farklı hedef gruba karşı çalışır, yani **Tenantgroup** ve **analiz ticsgroup** . Ayıklama işi, tüm kiracı veritabanlarını içeren TenantGroup 'a karşı çalışır. Ayırma işi, yalnızca analiz deposunu içeren analiz Ticsgroup 'a karşı çalışır. Aşağıdaki adımları kullanarak hedef grupları oluşturun:
+Devam etmeden önce, iş hesabını ve jobaccount veritabanını dağıttığınızdan emin olun. Sonraki adımlarda, her bir kiracı veritabanından veri ayıklamak ve verileri analiz deposunda depolamak için esnek Işler kullanılır. Ardından ikinci iş, verileri shreds ve yıldızı-Schema 'daki tablolara depolar. Bu iki iş iki farklı hedef gruba karşı çalışır, yani **Tenantgroup** ve **analiz ticsgroup**. Ayıklama işi, tüm kiracı veritabanlarını içeren TenantGroup 'a karşı çalışır. Ayırma işi, yalnızca analiz deposunu içeren analiz Ticsgroup 'a karşı çalışır. Aşağıdaki adımları kullanarak hedef grupları oluşturun:
 
 1. SSMS 'de, Catalog-DPT-User içindeki **jobaccount** veritabanına bağlanın &lt; &gt; .
 2. SSMS 'de *. ..\Learning Modules\işlemsel analiz Tics\tenant Analytics \ TargetGroups. SQL* dosyasını açın 

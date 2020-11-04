@@ -4,12 +4,12 @@ description: Linux için Azure Ilkesi Konuk yapılandırma ilkesi oluşturmayı 
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6b072a615cfc31f250d1a605a20e1628d601bb25
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c0559e284f1e7022510a458209ec8d985ffc6324
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676628"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305542"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux için Konuk Yapılandırma ilkelerini oluşturma
 
@@ -160,7 +160,7 @@ Destekleyici dosyaların birlikte paketlenmesi gerekir. Tamamlanmış paket, Azu
 - **Ad** : Konuk yapılandırma paketi adı.
 - **Yapılandırma** : derlenen yapılandırma belgesi tam yolu.
 - **Yol** : çıkış klasörü yolu. Bu parametre isteğe bağlıdır. Belirtilmezse, paket geçerli dizinde oluşturulur.
-- **Chefprofilepath** : InSpec profile tam yolu. Bu parametre yalnızca Linux 'u denetlemek için içerik oluşturulurken desteklenir.
+- **Chefinspecprofilepath** : InSpec profiline yönelik tam yol. Bu parametre yalnızca Linux 'u denetlemek için içerik oluşturulurken desteklenir.
 
 Önceki adımda verilen yapılandırmayı kullanarak bir paket oluşturmak için aşağıdaki komutu çalıştırın:
 
@@ -191,7 +191,7 @@ Test-GuestConfigurationPackage `
 Cmdlet 'i PowerShell ardışık düzeninde girişi de destekler. Cmdlet 'inin çıkışını `New-GuestConfigurationPackage` `Test-GuestConfigurationPackage` cmdlet 'ine boru.
 
 ```azurepowershell-interactive
-New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefProfilePath './' | Test-GuestConfigurationPackage
+New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefInspecProfilePath './' | Test-GuestConfigurationPackage
 ```
 
 Sonraki adım, dosyayı Azure Blob depolama alanına yayımlamaktır.  Komut `Publish-GuestConfigurationPackage` `Az.Storage` modülü gerektiriyor.

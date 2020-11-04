@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: f3f35bb7002ea976305b31a27fa6efebecf07710
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e210c1683d5f14181bc0549e73a892eb91d2e746
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087172"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305706"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning anomali algılama API 'SI
 
@@ -28,9 +28,9 @@ ms.locfileid: "86087172"
 
 Bu API, zaman serisi verilerinde aşağıdaki türlerde anormal desenleri algılayabilir:
 
-* **Pozitif ve olumsuz eğilimler**: Örneğin, bellek kullanımını izlerken, Bellek sızıntısının bir göstergesi olabileceğinden, daha fazla bilgi
-* **Dinamik değer aralığındaki değişiklikler**: Örneğin, bir bulut hizmeti tarafından oluşturulan özel durumları izlerken, dinamik değer aralığındaki tüm değişiklikler hizmetin sistem durumunda dengesizmi olduğunu belirtebilir ve
-* **Ani artışlar ve DIB 'ler**: Örneğin, bir hizmette oturum açma hatalarının sayısını veya bir e-ticaret sitesinde kullanıma alma sayısını izlerken, ani veya DIB 'ler anormal davranışları gösterebilir.
+* **Pozitif ve olumsuz eğilimler** : Örneğin, bellek kullanımını izlerken, Bellek sızıntısının bir göstergesi olabileceğinden, daha fazla bilgi
+* **Dinamik değer aralığındaki değişiklikler** : Örneğin, bir bulut hizmeti tarafından oluşturulan özel durumları izlerken, dinamik değer aralığındaki tüm değişiklikler hizmetin sistem durumunda dengesizmi olduğunu belirtebilir ve
+* **Ani artışlar ve DIB 'ler** : Örneğin, bir hizmette oturum açma hatalarının sayısını veya bir e-ticaret sitesinde kullanıma alma sayısını izlerken, ani veya DIB 'ler anormal davranışları gösterebilir.
 
 Bu makine öğrenimi algılayıcıları, zaman içindeki değerlerde bu değişiklikleri izler ve değerlerinde devam eden değişiklikleri bildirir. Bunlar geçici eşik ayarlama gerektirmez ve bunların puanları, yanlış pozitif oranı denetlemek için kullanılabilir. Anomali algılama API 'SI, zaman içinde KPI 'Ları, arama sayısı gibi ölçümler aracılığıyla kullanım, tıklama sayısı, bellek, CPU, dosya okuma, vb. gibi sayaçlar aracılığıyla performans izleme gibi çeşitli senaryolarda yararlıdır.
 
@@ -46,13 +46,13 @@ Anomali algılama teklifi, başlamanıza yardımcı olan yararlı araçlarla bir
 -->
 
 ## <a name="api-deployment"></a>API dağıtımı
-API 'yi kullanabilmeniz için, bunu bir Azure Machine Learning Web hizmeti olarak barındırılacak Azure aboneliğinize dağıtmanız gerekir.  Bunu [Azure yapay zeka Galerisi](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2)yapabilirsiniz.  Bu işlem, Azure aboneliğinize iki Azure Machine Learning Studio (klasik) Web hizmeti (ve bunların ilgili kaynaklarını) dağıtır. Bu, mevsimsellik algılama ile anomali algılama ve bir mevsimlik algılama olmadan bir tane.  Dağıtım tamamlandıktan sonra API 'lerinizi [Azure Machine Learning Studio (klasik) Web Hizmetleri](https://services.azureml.net/webservices/) sayfasından yönetebileceksiniz.  Bu sayfadan, uç nokta konumları, API anahtarlarınızın yanı sıra API 'yi çağırmak için örnek kod de bulabilirsiniz.  Daha ayrıntılı yönergeler [burada](/azure/machine-learning/studio/manage-new-webservice)bulunabilir.
+API 'yi kullanabilmeniz için, bunu bir Azure Machine Learning Web hizmeti olarak barındırılacak Azure aboneliğinize dağıtmanız gerekir.  Bunu [Azure yapay zeka Galerisi](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2)yapabilirsiniz.  Bu işlem, Azure aboneliğinize iki Azure Machine Learning Studio (klasik) Web hizmeti (ve bunların ilgili kaynaklarını) dağıtır. Bu, mevsimsellik algılama ile anomali algılama ve bir mevsimlik algılama olmadan bir tane.  Dağıtım tamamlandıktan sonra API 'lerinizi [Azure Machine Learning Studio (klasik) Web Hizmetleri](https://services.azureml.net/webservices/) sayfasından yönetebileceksiniz.  Bu sayfadan, uç nokta konumları, API anahtarlarınızın yanı sıra API 'yi çağırmak için örnek kod de bulabilirsiniz.  Daha ayrıntılı yönergeler [burada](../classic/manage-new-webservice.md)bulunabilir.
 
 ## <a name="scaling-the-api"></a>API ölçeklendirme
 Varsayılan olarak, dağıtımınız 1.000 işlem/ay ve 2 işlem saati/ay içeren ücretsiz bir geliştirme/test faturalandırma planına sahip olacaktır.  Gereksinimlerinize göre başka bir plana yükseltebilirsiniz.  Farklı planların fiyatlandırmasıyla ilgili ayrıntıları [burada](https://azure.microsoft.com/pricing/details/machine-learning/) "ÜRETIM Web API fiyatlandırması" altında bulabilirsiniz.
 
 ## <a name="managing-aml-plans"></a>AML planlarını yönetme
-Faturalandırma planınızı [buradan](https://services.azureml.net/plans/)yönetebilirsiniz.  Plan adı, API 'yi dağıttığınızda seçtiğiniz kaynak grubu adına ve aboneliğinize özgü bir dizeye göre yapılır.  Planınızın nasıl yükseltileceğiyle ilgili yönergeler [burada](/azure/machine-learning/studio/manage-new-webservice) "Faturalandırma planlarını yönetme" bölümünde bulunabilir.
+Faturalandırma planınızı [buradan](https://services.azureml.net/plans/)yönetebilirsiniz.  Plan adı, API 'yi dağıttığınızda seçtiğiniz kaynak grubu adına ve aboneliğinize özgü bir dizeye göre yapılır.  Planınızın nasıl yükseltileceğiyle ilgili yönergeler [burada](../classic/manage-new-webservice.md) "Faturalandırma planlarını yönetme" bölümünde bulunabilir.
 
 ## <a name="api-definition"></a>API tanımı
 Web hizmeti, bir Web veya mobil uygulama, R, Python, Excel vb. gibi farklı yollarla tüketilen, HTTPS üzerinden REST tabanlı bir API sağlar.  Zaman serisi verilerinizi bu hizmete REST API bir çağrı aracılığıyla gönderirsiniz ve aşağıda açıklanan üç anomali türünün bir birleşimini çalıştırır.
@@ -135,12 +135,12 @@ Bu giriş parametreleriyle ilgili daha ayrıntılı bilgi aşağıdaki tabloda l
 | zspikealgılayıcı. duyarlılık |Zani algılayıcısı için duyarlılık |3 |tamsayı |1-10 |3-5 (daha az değer daha hassas anlamına gelir) |
 | postprocess. edilecek satırlar |Çıkış sonuçlarında tutulacak en son veri noktası sayısı |0 |tamsayı |0 (tüm veri noktalarını sakla) veya sonuçlarda tutulacak noktaların sayısını belirtin |Yok |
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 API, zaman serisi verilerinizde tüm algılayıcıları çalıştırır ve zaman içindeki her bir nokta için anomali puanlarını ve ikili ani değer göstergelerini döndürür. Aşağıdaki tabloda API 'den gelen çıktılar listelenmiştir.
 
 | Çıkışlar | Açıklama |
 | --- | --- |
-| Süre |Toplama (ve/veya) eksik veri imputation uygulanmışsa ham verilerden veya toplanmış (ve/veya) toplanan verilerin zaman damgaları |
+| Zaman |Toplama (ve/veya) eksik veri imputation uygulanmışsa ham verilerden veya toplanmış (ve/veya) toplanan verilerin zaman damgaları |
 | Veriler |Toplama (ve/veya) eksik veri imputation uygulanmışsa ham verilerden veya toplanmış (ve/veya) toplanan verilerin değerleri |
 | Tani |Tani algılayıcı tarafından bir ani algılanıp algılanmadığını belirten ikili gösterge |
 | Zani |Zani algılayıcı tarafından bir ani algılanıp algılanmadığını belirten ikili gösterge |
@@ -178,12 +178,12 @@ Bu giriş parametreleriyle ilgili daha ayrıntılı bilgi aşağıdaki tabloda l
 | mevsimsellik. dönüştürme |Anomali algılamayı uygulamadan önce mevsimlere (ve) eğilim bileşenlerinin kaldırılıp kaldırılmayacağı |yılsezon |numara |hiçbiri, demevsim, demevsimeğilimi |Yok |
 | postprocess. edilecek satırlar |Çıkış sonuçlarında tutulacak en son veri noktası sayısı |0 |tamsayı |0 (tüm veri noktalarını sakla) veya sonuçlarda tutulacak noktaların sayısını belirtin |Yok |
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 API, zaman serisi verilerinizde tüm algılayıcıları çalıştırır ve zaman içindeki her bir nokta için anomali puanlarını ve ikili ani değer göstergelerini döndürür. Aşağıdaki tabloda API 'den gelen çıktılar listelenmiştir.
 
 | Çıkışlar | Açıklama |
 | --- | --- |
-| Süre |Toplama (ve/veya) eksik veri imputation uygulanmışsa ham verilerden veya toplanmış (ve/veya) toplanan verilerin zaman damgaları |
+| Zaman |Toplama (ve/veya) eksik veri imputation uygulanmışsa ham verilerden veya toplanmış (ve/veya) toplanan verilerin zaman damgaları |
 | OriginalData |Toplama (ve/veya) eksik veri imputation uygulanmışsa ham verilerden veya toplanmış (ve/veya) toplanan verilerin değerleri |
 | ProcessedData |Aşağıdaki seçeneklerden birini kullanabilirsiniz: <ul><li>Önemli mevsimsellik tespit edildi ve zaman dönemi seçeneği işaretliyse, zaman serisini önemli bir şekilde ayarladı;</li><li>önemli mevsimsellik tespit edildi ve demevsimsel eğilim seçeneği işaretliyse, zaman serisini ayarlama ve zaman serisini azaltma</li><li>Aksi takdirde, bu seçenek OriginalData ile aynıdır</li> |
 | Tani |Tani algılayıcı tarafından bir ani algılanıp algılanmadığını belirten ikili gösterge |
@@ -197,4 +197,3 @@ API, zaman serisi verilerinizde tüm algılayıcıları çalıştırır ve zaman
 
 [1]: ./media/apps-anomaly-detection-api/anomaly-detection-score.png
 [2]: ./media/apps-anomaly-detection-api/anomaly-detection-seasonal.png
-

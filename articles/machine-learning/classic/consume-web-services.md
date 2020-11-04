@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-python, devx-track-js, devx-track-csharp
 ms.date: 05/29/2020
-ms.openlocfilehash: 66c9368d06960790c6dc960d2d95bd82be1a6e39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9922ddf0859e4f28d5759108581f5ef538f0c294
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91345961"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305560"
 ---
 # <a name="how-to-consume-a-machine-learning-studio-classic-web-service"></a>Machine Learning Studio (klasik) Web hizmetini kullanma
 
-**Uygulama hedefi:** ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md) yok  
+**Uygulama hedefi:** ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) yok  
 
 
 Bir Web hizmeti olarak Azure Machine Learning Studio (klasik) tahmine dayalı bir model dağıttıktan sonra, verileri göndermek ve öngörüleri almak için bir REST API kullanabilirsiniz. Verileri gerçek zamanlı veya toplu işlem modunda gönderebilirsiniz.
@@ -51,16 +51,16 @@ Yeni bir Machine Learning Web hizmeti için API anahtarını almak için:
 
 1. Azure Machine Learning Web Hizmetleri portalında, **Web Hizmetleri** üst menüsü ' ne tıklayın.
 2. Anahtarı almak istediğiniz Web hizmetine tıklayın.
-3. Üstteki menüde **tüketme**' ye tıklayın.
-4. **Birincil anahtarı**kopyalayın ve kaydedin.
+3. Üstteki menüde **tüketme** ' ye tıklayın.
+4. **Birincil anahtarı** kopyalayın ve kaydedin.
 
 Klasik bir Machine Learning Web hizmetine yönelik API anahtarını almak için:
 
 1. Azure Machine Learning Web Hizmetleri portalında, **Klasik Web Hizmetleri** üst menüsü ' ne tıklayın.
 2. Üzerinde çalıştığınız Web hizmeti ' ne tıklayın.
 3. Anahtarı almak istediğiniz uç noktaya tıklayın.
-4. Üstteki menüde **tüketme**' ye tıklayın.
-5. **Birincil anahtarı**kopyalayın ve kaydedin.
+4. Üstteki menüde **tüketme** ' ye tıklayın.
+5. **Birincil anahtarı** kopyalayın ve kaydedin.
 
 ### <a name="classic-web-service"></a>Klasik Web hizmeti
  Ayrıca, klasik Web hizmeti için Machine Learning Studio (klasik) için bir anahtar alabilirsiniz.
@@ -77,7 +77,7 @@ Machine Learning API yardımı, bir tahmin Web hizmeti hakkındaki ayrıntılar�
 
 1. Üzerinde çalıştığınız Web hizmeti ' ne tıklayın.
 2. API yardım sayfasını görüntülemek istediğiniz uç noktaya tıklayın.
-3. Üstteki menüde **tüketme**' ye tıklayın.
+3. Üstteki menüde **tüketme** ' ye tıklayın.
 4. Request-Response veya toplu yürütme uç noktaları altında **API Yardım sayfası** ' na tıklayın.
 
 **Yeni bir Web hizmeti için Machine Learning API yardımını görüntülemek için**
@@ -99,8 +99,8 @@ Bir Machine Learning Web hizmetine bağlanmak için **Microsoft. Aspnet. WebApi.
 **Visual Studio 'da Microsoft. AspNet. WebApi. Client NuGet 'i yükler**
 
 1. Indirme veri kümesini UCI: Yetişkin 2 sınıfı veri kümesi Web hizmetinden yayımlayın.
-2. **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu**' na tıklayın.
-3. **Install-Package Microsoft. Aspnet. WebApi. Client**öğesini seçin.
+2. **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu** ' na tıklayın.
+3. **Install-Package Microsoft. Aspnet. WebApi. Client** öğesini seçin.
 
 **Kod örneğini çalıştırmak için**
 

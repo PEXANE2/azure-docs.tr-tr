@@ -10,18 +10,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.custom: how-to
-ms.openlocfilehash: eb1a3c1f306b6941987d0981967cf5d096a68735
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: cb4e57cfe8b7494b7d5c38869f83190bff76ef2a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133772"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305760"
 ---
 # <a name="make-predictions-with-an-automl-onnx-model-in-net"></a>.NET 'teki bir oto ml ONNX modeliyle tahminlere sahip olun
 
 Bu makalede, ML.NET ile bir C# .NET Core konsol uygulamasında tahmine dayalı hale getirmek için otomatik ML (Otomatikml) Open sinir Network Exchange (ONNX) modelini nasıl kullanacağınızı öğreneceksiniz.
 
-[Ml.net](https://docs.microsoft.com/dotnet/machine-learning/) , .net ekosistemi için bir açık kaynaklı, platformlar arası, makine öğrenimi çerçevesidir ve C# ya da F # ' ta bir kod-birinci yaklaşım ve [Model Oluşturucu](https://docs.microsoft.com/dotnet/machine-learning/automate-training-with-model-builder) ve [ml.net CLI](https://docs.microsoft.com/dotnet/machine-learning/automate-training-with-cli)gibi düşük kod araçları aracılığıyla özel makine öğrenimi modellerini tükemenize ve kullanmanızı sağlar. Çerçeve ayrıca Genişletilebilir ve TensorFlow ve ONNX gibi diğer popüler makine öğrenimi çerçevelerinden yararlanmanızı sağlar.
+[Ml.net](/dotnet/machine-learning/) , .net ekosistemi için bir açık kaynaklı, platformlar arası, makine öğrenimi çerçevesidir ve C# ya da F # ' ta bir kod-birinci yaklaşım ve [Model Oluşturucu](/dotnet/machine-learning/automate-training-with-model-builder) ve [ml.net CLI](/dotnet/machine-learning/automate-training-with-cli)gibi düşük kod araçları aracılığıyla özel makine öğrenimi modellerini tükemenize ve kullanmanızı sağlar. Çerçeve ayrıca Genişletilebilir ve TensorFlow ve ONNX gibi diğer popüler makine öğrenimi çerçevelerinden yararlanmanızı sağlar.
 
 ONNX, AI modelleri için açık kaynaklı bir biçimdir. ONNX çerçeveler arasında birlikte çalışabilirliği destekler. Bu, bir modeli PyTorch gibi birçok popüler makine öğrenimi çerçevelerinden birinde eğitebileceğiniz, ONNX biçimine dönüştürebileceğiniz ve ML.NET gibi farklı bir çerçevede ONNX modelini tükettiğiniz anlamına gelir. Daha fazla bilgi edinmek için [Onnx Web sitesini](https://onnx.ai/)ziyaret edin.
 
@@ -34,7 +34,7 @@ ONNX, AI modelleri için açık kaynaklı bir biçimdir. ONNX çerçeveler aras�
 
 ## <a name="create-a-c-console-application"></a>C# konsol uygulaması oluşturma
 
-Bu örnekte, uygulamanızı oluşturmak için .NET Core CLI kullanırsınız ancak Visual Studio 'Yu kullanarak aynı görevleri gerçekleştirebilirsiniz. [.NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/)hakkında daha fazla bilgi edinin.
+Bu örnekte, uygulamanızı oluşturmak için .NET Core CLI kullanırsınız ancak Visual Studio 'Yu kullanarak aynı görevleri gerçekleştirebilirsiniz. [.NET Core CLI](/dotnet/core/tools/)hakkında daha fazla bilgi edinin.
 
 1. Bir Terminal açın ve yeni bir C# .NET Core konsol uygulaması oluşturun. Bu örnekte, uygulamanın adı `AutoMLONNXConsoleApp` . Uygulamanızın içeriğiyle aynı ada sahip bir dizin oluşturulur.
 
@@ -71,7 +71,7 @@ Bu örnekte, uygulamanızı oluşturmak için .NET Core CLI kullanırsınız anc
 
 ## <a name="add-a-reference-to-the-onnx-model"></a>ONNX modeline bir başvuru ekleyin
 
-Konsol uygulamasının ONNX modeline erişmesi için bir yol derleme çıkış dizinine eklemektir.  MSBuild ortak öğeleri hakkında daha fazla bilgi için bkz. [MSBuild Kılavuzu](https://docs.microsoft.com/visualstudio/msbuild/common-msbuild-project-items).
+Konsol uygulamasının ONNX modeline erişmesi için bir yol derleme çıkış dizinine eklemektir.  MSBuild ortak öğeleri hakkında daha fazla bilgi için bkz. [MSBuild Kılavuzu](/visualstudio/msbuild/common-msbuild-project-items).
 
 Uygulamanızdaki ONNX model dosyanıza bir başvuru ekleyin
 
@@ -161,7 +161,7 @@ public class OnnxInput
   
 Sayısal değerler için, ML.NET yalnızca [`Single`](xref:System.Single) değer türlerinde çalışır. Ancak, bazı sütunların özgün veri türü tamsayılardır. [`OnnxMapType`](xref:Microsoft.ML.Transforms.Onnx.OnnxMapTypeAttribute)Öznitelik, türü ONNX ve ml.net arasında eşlenir.
 
-Veri öznitelikleri hakkında daha fazla bilgi için bkz. [ml.net Load Data Guide](https://docs.microsoft.com/dotnet/machine-learning/how-to-guides/load-data-ml-net).
+Veri öznitelikleri hakkında daha fazla bilgi için bkz. [ml.net Load Data Guide](/dotnet/machine-learning/how-to-guides/load-data-ml-net).
 
 ### <a name="define-model-output-schema"></a>Model çıkış şemasını tanımla
 
@@ -179,7 +179,7 @@ Benzer şekilde `OnnxInput` , [`ColumnName`](xref:Microsoft.ML.Data.ColumnNameAt
 
 ## <a name="define-a-prediction-pipeline"></a>Tahmin işlem hattı tanımlama
 
-ML.NET içindeki bir işlem hattı genellikle çıkış oluşturmak için giriş verilerinde çalışan bir dizi zincir dönüşümlerdir. Veri dönüştürmeleri hakkında daha fazla bilgi için bkz. [ml.NET Data Transformation Guide](https://docs.microsoft.com/dotnet/machine-learning/resources/transforms).
+ML.NET içindeki bir işlem hattı genellikle çıkış oluşturmak için giriş verilerinde çalışan bir dizi zincir dönüşümlerdir. Veri dönüştürmeleri hakkında daha fazla bilgi için bkz. [ml.NET Data Transformation Guide](/dotnet/machine-learning/resources/transforms).
 
 1. Sınıf içinde çağrılan yeni bir yöntem oluştur `GetPredictionPipeline` `Program`
 
@@ -226,7 +226,7 @@ ML.NET içindeki bir işlem hattı genellikle çıkış oluşturmak için giriş
     [`Fit`](xref:Microsoft.ML.IEstimator%601.Fit%2A)Yöntemi, [`IDataView`](xref:Microsoft.ML.IDataView) üzerinde işlemleri gerçekleştirmek için bir as girişi bekler. [`IDataView`](xref:Microsoft.ML.IDataView), Ml.NET içindeki verileri tablolu biçim kullanarak temsil etmenin bir yoludur. Bu durumda, işlem hattı yalnızca tahminlerde kullanıldığında, [`IDataView`](xref:Microsoft.ML.IDataView) [`ITransformer`](xref:Microsoft.ML.ITransformer) gerekli giriş ve çıkış şeması bilgilerini sağlamak için boş değer sağlayabilirsiniz. Daha sonra, bu, [`ITransformer`](xref:Microsoft.ML.ITransformer) uygulamanızda daha fazla kullanım için döndürülür.
 
     > [!TIP]
-    > Bu örnekte, işlem hattı tanımlanır ve aynı uygulama içinde kullanılır. Ancak, tahminleri yapmak için işlem hattınızı tanımlamak ve kullanmak üzere ayrı uygulamalar kullanmanız önerilir. ML.NET ' de, işlem hatlarınız diğer .NET Son Kullanıcı uygulamalarında daha fazla kullanım için sıralanabilir ve kaydedilebilir. ML.NET, masaüstü uygulamaları, Web Hizmetleri, WebAssembly uygulamaları * ve çok daha fazlası gibi çeşitli dağıtım hedeflerini destekler. İşlem hatlarını kaydetme hakkında daha fazla bilgi için, bkz. [ml.net Save and Load eğitilen modeller Kılavuzu](https://docs.microsoft.com/dotnet/machine-learning/how-to-guides/save-load-machine-learning-models-ml-net).
+    > Bu örnekte, işlem hattı tanımlanır ve aynı uygulama içinde kullanılır. Ancak, tahminleri yapmak için işlem hattınızı tanımlamak ve kullanmak üzere ayrı uygulamalar kullanmanız önerilir. ML.NET ' de, işlem hatlarınız diğer .NET Son Kullanıcı uygulamalarında daha fazla kullanım için sıralanabilir ve kaydedilebilir. ML.NET, masaüstü uygulamaları, Web Hizmetleri, WebAssembly uygulamaları * ve çok daha fazlası gibi çeşitli dağıtım hedeflerini destekler. İşlem hatlarını kaydetme hakkında daha fazla bilgi için, bkz. [ml.net Save and Load eğitilen modeller Kılavuzu](/dotnet/machine-learning/how-to-guides/save-load-machine-learning-models-ml-net).
     >
     > * WebAssembly yalnızca .NET Core 5 veya daha sonraki bir sürümünde destekleniyor
 
@@ -284,9 +284,9 @@ Artık bir işlem hattına sahip olduğunuza göre, tahminleri tahmin etmek içi
     Predicted Fare: 15.621523
     ```
 
-ML.NET ' de tahminleri yapma hakkında daha fazla bilgi edinmek için bkz. [bir model kullanarak](https://docs.microsoft.com/dotnet/machine-learning/how-to-guides/machine-learning-model-predictions-ml-net)tahmine dayalı hale getirme Kılavuzu.
+ML.NET ' de tahminleri yapma hakkında daha fazla bilgi edinmek için bkz. [bir model kullanarak](/dotnet/machine-learning/how-to-guides/machine-learning-model-predictions-ml-net)tahmine dayalı hale getirme Kılavuzu.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Modelinizi ASP.NET Core Web API 'SI olarak dağıtma](https://docs.microsoft.com/dotnet/machine-learning/how-to-guides/serve-model-web-api-ml-net)
-- [Modelinizi sunucusuz .NET Azure Işlevi olarak dağıtın](https://docs.microsoft.com/dotnet/machine-learning/how-to-guides/serve-model-serverless-azure-functions-ml-net)
+- [Modelinizi ASP.NET Core Web API 'SI olarak dağıtma](/dotnet/machine-learning/how-to-guides/serve-model-web-api-ml-net)
+- [Modelinizi sunucusuz .NET Azure Işlevi olarak dağıtın](/dotnet/machine-learning/how-to-guides/serve-model-serverless-azure-functions-ml-net)

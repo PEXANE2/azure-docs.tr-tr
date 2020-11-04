@@ -1,7 +1,7 @@
 ---
 title: Bilişsel Arama ile kullanmak üzere bir model dağıtma
 titleSuffix: Azure Machine Learning
-description: Bu makalede, Azure Bilişsel Arama ile kullanmak üzere bir modeli dağıtmak için Azure Machine Learning kullanma öğretilir. Bilişsel Arama, arama deneyimini zenginleştirmek için Azure Machine Learning özel bir beceri olarak dağıtılan modelleri kullanabilir.
+description: Bilişsel Arama ile kullanmak üzere bir modeli dağıtmak için Azure Machine Learning nasıl kullanacağınızı öğrenin. Model, arama deneyimini zenginleştirmek için özel bir beceri olarak kullanılır.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: cjgronlund
 ms.reviewer: larryfr
 ms.date: 06/11/2020
 ms.custom: deploy
-ms.openlocfilehash: 5d198a27d7aeca679f1ee17f35d3f4384283f13c
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: e1eebf88b72c87ce9db02760c5c44a0aa25c57cc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998903"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305928"
 ---
 # <a name="deploy-a-model-for-use-with-cognitive-search"></a>Bilişsel Arama ile kullanmak üzere bir model dağıtma
 
@@ -25,7 +25,7 @@ Bu makalede, [Azure bilişsel arama](../search/search-what-is-azure-search.md)il
 
 Bilişsel Arama, heterojen içeriği üzerinde içerik işleme gerçekleştirerek, bu, insanlardan veya uygulamalarla sorgulanabilir hale gelir. Bu işlem, Azure Machine Learning dağıtılan bir model kullanılarak geliştirilebilir.
 
-Azure Machine Learning, eğitilen bir modeli Web hizmeti olarak dağıtabilir. Web hizmeti daha sonra işleme işlem hattının bir parçası haline gelen Bilişsel Arama bir _yeteneğe_katıştırılır.
+Azure Machine Learning, eğitilen bir modeli Web hizmeti olarak dağıtabilir. Web hizmeti daha sonra işleme işlem hattının bir parçası haline gelen Bilişsel Arama bir _yeteneğe_ katıştırılır.
 
 > [!IMPORTANT]
 > Bu makaledeki bilgiler, modelin dağıtımına özgüdür. Modelin Bilişsel Arama tarafından kullanılmasına izin veren desteklenen dağıtım yapılandırmalarına ilişkin bilgiler sağlar.
@@ -42,11 +42,11 @@ Bir modeli Azure Bilişsel Arama ile kullanmak üzere dağıttığınızda, dağ
 * Giriş betiği Ayrıca JSON verilerini girdi olarak kabul etmelidir ve JSON 'u çıkış olarak oluşturur.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
-* Azure Machine Learning SDK yüklü bir Python geliştirme ortamı. Daha fazla bilgi için bkz. [SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).  
+* Azure Machine Learning SDK yüklü bir Python geliştirme ortamı. Daha fazla bilgi için bkz. [SDK Azure Machine Learning](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).  
 
 * Kayıtlı bir model. Bir modeliniz yoksa, üzerinde örnek Not defteri ' ni kullanın [https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill) .
 
@@ -75,7 +75,7 @@ except:
 
 ## <a name="create-a-kubernetes-cluster"></a>Kubernetes kümesi oluşturma
 
-**Tahmini süre**: yaklaşık 20 dakika.
+**Tahmini süre** : yaklaşık 20 dakika.
 
 Bir Kubernetes kümesi, Kapsayıcılı uygulamalar çalıştırmak için kullanılan bir sanal makine örnekleri kümesidir (düğümler olarak adlandırılır).
 
@@ -252,7 +252,7 @@ from azureml.core.model import InferenceConfig
 inf_config = InferenceConfig(entry_script='score.py', environment=myenv)
 ```
 
-Daha fazla bilgi için bkz. [ınenceconfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true)için başvuru belgeleri.
+Daha fazla bilgi için bkz. [ınenceconfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py)için başvuru belgeleri.
 
 ## <a name="deploy-the-model"></a>Modeli dağıtma
 
@@ -277,7 +277,7 @@ aks_service.wait_for_deployment(show_output = True)
 print(aks_service.state)
 ```
 
-Daha fazla bilgi için bkz. [model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true)için başvuru belgeleri.
+Daha fazla bilgi için bkz. [model](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py)için başvuru belgeleri.
 
 ## <a name="issue-a-sample-query-to-your-service"></a>Hizmetinize örnek bir sorgu verme
 

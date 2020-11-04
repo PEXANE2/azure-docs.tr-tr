@@ -1,6 +1,6 @@
 ---
 title: Veri ambarı harmanlama türleri
-description: Azure SYNAPSE Analytics SQL havuzunda desteklenen harmanlama türleri.
+description: Azure SYNAPSE Analytics 'te adanmış SQL havuzu için desteklenen harmanlama türleri.
 services: synapse-analytics
 author: antvgski
 manager: igorstan
@@ -11,16 +11,16 @@ ms.date: 12/04/2019
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 08a008e2f2402072dce3069c5d059b297239b7dd
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 8d76d70c4c84f1d63d4643e1fba3f66d3541beff
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090463"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305256"
 ---
-# <a name="database-collation-support-for-azure-synapse-analytics-sql-pool"></a>Azure SYNAPSE Analytics SQL havuzu için veritabanı harmanlama desteği
+# <a name="database-collation-support-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu için veritabanı harmanlama desteği 
 
-Yeni bir Azure SYNAPSE SQL havuzu veritabanı oluştururken Azure portal varsayılan veritabanı harmanlamasını değiştirebilirsiniz. Bu özellik, 3800 desteklenen veritabanı harmanlamainden birini kullanarak yeni bir veritabanı oluşturulmasını kolaylaştırır.
+Yeni bir adanmış SQL havuzu veritabanı oluştururken Azure portal varsayılan veritabanı harmanlamasını değiştirebilirsiniz. Bu özellik, 3800 desteklenen veritabanı harmanlamainden birini kullanarak yeni bir veritabanı oluşturulmasını kolaylaştırır.
 
 Harmanlamalar karakter tabanlı veri türleri için yerel ayar, kod sayfası, sıralama düzeni ve karakter duyarlılığı kuralları sağlar. Seçildiğinde, harmanlama bilgilerini gerektiren tüm sütunlar ve ifadeler, seçili harmanlamayı veritabanı ayarından devralınır. Varsayılan devralma, karakter tabanlı bir veri türü için farklı bir harmanlama açıkça belirtilerek geçersiz kılınabilir.
 

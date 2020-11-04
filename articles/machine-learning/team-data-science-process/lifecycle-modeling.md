@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c3406b28c44644053fa984f2cf7739bb53ccf6c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3845c5e5d7cf6bb372744fb3c740c44aa2b94236
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336454"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305612"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Işlem yaşam döngüsünün modelleme aşaması
 
@@ -41,8 +41,8 @@ TDSP yaşam döngüsünün görsel bir gösterimi aşağıda verilmiştir:
 ## <a name="how-to-do-it"></a>Nasıl yapılır?
 Bu aşamada listelenen üç ana görev vardır:
 
-  * **Özellik Mühendisliği**: model eğitimini kolaylaştırmak için ham verilerden veri özellikleri oluşturun.
-  * **Model eğitimi**: başarı ölçümlerini karşılaştırarak soruyu en doğru şekilde yanıtlayan modeli bulun.
+  * **Özellik Mühendisliği** : model eğitimini kolaylaştırmak için ham verilerden veri özellikleri oluşturun.
+  * **Model eğitimi** : başarı ölçümlerini karşılaştırarak soruyu en doğru şekilde yanıtlayan modeli bulun.
   * Modelinizin **üretime uygun** olup olmadığını belirleme.
 
 ### <a name="feature-engineering"></a>Özellik mühendisliği
@@ -59,11 +59,11 @@ Model eğitimi işlemi aşağıdaki adımları içerir:
 
    * Modelleme verileri kümesine ve bir test veri kümesine modelleme için **giriş verilerini rastgele Böl** .
    * Eğitim veri kümesini kullanarak **modeller oluşturun** .
-   * Eğitimi ve test veri kümesini **değerlendirin** . Geçerli verilerle ilgili soruya yanıt verme sorusunu karşılayan çeşitli ilişkili ayarlama parametreleri ( *parametre tarama*olarak bilinir) ile birlikte, bir dizi rekabet makinesi öğrenme algoritması kullanın.
+   * Eğitimi ve test veri kümesini **değerlendirin** . Geçerli verilerle ilgili soruya yanıt verme sorusunu karşılayan çeşitli ilişkili ayarlama parametreleri ( *parametre tarama* olarak bilinir) ile birlikte, bir dizi rekabet makinesi öğrenme algoritması kullanın.
    * Diğer Yöntemler arasındaki başarı ölçümlerini karşılaştırarak soruyu yanıtlamak için **"en iyi" çözümü belirleme** .
 
 > [!NOTE]
-> **Sızıntıdan kaçının**: bir model veya makine öğrenimi algoritmasının, gerçekçi bir şekilde sağlam tahminler yapmasına izin veren eğitim verileri kümesinin dışından veri eklerseniz veri sızıntılarına neden olabilirsiniz. Sızıntı, veri bilimcilerinin, doğru olması için çok iyi sonuç veren tahmine dayalı sonuçlar edindiklerinde nervous elde ettikleri yaygın bir nedendir. Bu bağımlılıkların algılanması zor olabilir. Sızıntı olmaması için genellikle analiz veri kümesi oluşturma, model oluşturma ve sonuçların doğruluğunu değerlendirme arasında yineleme yapılması gerekir. 
+> **Sızıntıdan kaçının** : bir model veya makine öğrenimi algoritmasının, gerçekçi bir şekilde sağlam tahminler yapmasına izin veren eğitim verileri kümesinin dışından veri eklerseniz veri sızıntılarına neden olabilirsiniz. Sızıntı, veri bilimcilerinin, doğru olması için çok iyi sonuç veren tahmine dayalı sonuçlar edindiklerinde nervous elde ettikleri yaygın bir nedendir. Bu bağımlılıkların algılanması zor olabilir. Sızıntı olmaması için genellikle analiz veri kümesi oluşturma, model oluşturma ve sonuçların doğruluğunu değerlendirme arasında yineleme yapılması gerekir. 
 > 
 > 
 
@@ -74,7 +74,7 @@ Bu aşamada oluşturulan yapıtlar şunlardır:
 
    * [Özellik kümeleri](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md): modelleme için geliştirilen özellikler, **veri tanımı** raporunun **özellik kümeleri** bölümünde açıklanmaktadır. Özellik oluşturmak için kodun işaretçilerini ve özelliğin nasıl oluşturulduğunu gösteren bir açıklama içerir.
    * [Model raporu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): denenen her bir model için, her bir denemeye ilişkin ayrıntıları sağlayan standart, şablon tabanlı bir rapor oluşturulur.
-   * **Kontrol noktası kararı**: modelin üretim için yeterince performans yapıp gerçekleştirmediğini değerlendirin. Sorabileceğiniz bazı önemli sorular şunlardır:
+   * **Kontrol noktası kararı** : modelin üretim için yeterince performans yapıp gerçekleştirmediğini değerlendirin. Sorabileceğiniz bazı önemli sorular şunlardır:
      * Model, test verileri için yeterli güvenle sorusuna yanıt veriyor mu? 
      * Alternatif yaklaşımlar denemeli mi? Ek verileri toplamanız, daha fazla özellik mühendisi mi, yoksa diğer algoritmalardan mi denemeler yapmanız gerekir?
 
@@ -90,4 +90,4 @@ TDSP yaşam döngüsüyle her adımın bağlantıları aşağıda verilmiştir:
 
 Belirli senaryolar için işlemdeki tüm adımları gösteren eksiksiz bir uçtan uca izlenecek yol sunuyoruz. [Örnek yönergeler](walkthroughs.md) makalesi, bağlantılar ve küçük resim açıklamaları olan senaryoların bir listesini sağlar. İzlenecek yollar, akıllı bir uygulama oluşturmak için bulut, şirket içi araçların ve hizmetlerin bir iş akışı veya işlem hattına nasıl birleştirileceğini gösterir. 
 
-Azure Machine Learning Studio kullanan TDSPs 'de adımların nasıl yürütüleceği hakkında örnekler için, bkz. [Azure Machine Learning Ile TDSP kullanma](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/). 
+Azure Machine Learning Studio kullanan TDSPs 'de adımların nasıl yürütüleceği hakkında örnekler için, bkz. [Azure Machine Learning Ile TDSP kullanma](./index.yml).

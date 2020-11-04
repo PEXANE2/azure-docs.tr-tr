@@ -7,20 +7,20 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 04c315f593b90204faaeaec562c18e9e4be301d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b3bec9c4d4476b95279e35953ff89177f4488d4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90881889"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305836"
 ---
 # <a name="azure-synapse-analytics-output-from-azure-stream-analytics"></a>Azure Stream Analytics Azure SYNAPSE Analytics çıkışı
 
 [Azure SYNAPSE Analytics](https://azure.microsoft.com/services/synapse-analytics) (eskı adıyla SQL veri ambarı), kurumsal veri depolama ve büyük veri analizlerini birlikte getiren sınırsız bir analiz hizmetidir. 
 
-Azure Stream Analytics işleri, Azure SYNAPSE Analytics 'teki bir SQL havuz tablosuna çıkış yapabilir ve işleme hızını 200 MB/sn 'ye kadar işleyebilir. Bu, raporlama ve oluşturma gibi iş yükleri için en zorlu gerçek zamanlı analiz ve etkin yol veri işleme ihtiyaçlarını destekler.  
+Azure Stream Analytics işleri, Azure SYNAPSE Analytics 'te adanmış bir SQL havuzu tablosuna çıkış yapabilir ve işleme hızını 200 MB/sn 'ye kadar işleyebilir. Bu, raporlama ve oluşturma gibi iş yükleri için en zorlu gerçek zamanlı analiz ve etkin yol veri işleme ihtiyaçlarını destekler.  
 
-SQL havuzu tablosu, Stream Analytics işinize çıkış olarak ekleyebilmeniz için mevcut olmalıdır. Tablonun şeması, iş çıktısındaki alanlarla ve türleriyle eşleşmelidir. 
+Adanmış SQL havuzu tablosu, Stream Analytics işinize çıkış olarak ekleyebilmeniz için mevcut olmalıdır. Tablonun şeması, iş çıktısındaki alanlarla ve türleriyle eşleşmelidir. 
 
 Azure SYNAPSE 'i çıkış olarak kullanmak için, depolama hesabının yapılandırıldığından emin olmanız gerekir. Depolama hesabını yapılandırmak için depolama hesabı ayarları ' na gidin. Yalnızca tabloları destekleyen depolama hesabı türlerine izin verilir: genel amaçlı v2 ve genel amaçlı v1. Yalnızca Standart katman ' ı seçin. Premium katman desteklenmez.
 
@@ -31,7 +31,7 @@ Aşağıdaki tabloda, har Azure SYNAPSE Analytics çıkışı oluşturmaya yöne
 |Özellik adı|Açıklama|
 |-|-|
 |Çıktı diğer adı |Sorgu çıkışını bu veritabanına yönlendirmek için sorgularda kullanılan kolay bir ad. |
-|Veritabanı |Çıktunuzu gönderdiğiniz SQL havuzu adı. |
+|Veritabanı |çıktunuzu gönderdiğiniz adanmış SQL havuzu adı. |
 |Sunucu adı |Azure SYNAPSE sunucu adı.  |
 |Kullanıcı adı |Veritabanına yazma erişimi olan Kullanıcı adı. Stream Analytics yalnızca SQL kimlik doğrulamasını destekler. |
 |Parola |Veritabanına bağlanmak için parola. |

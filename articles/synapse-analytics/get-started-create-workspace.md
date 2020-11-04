@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: kullanmaya başlama SYNAPSE çalışma alanı oluşturma'
-description: Bu öğreticide, bir Synapse çalışma alanı, bir SQL havuzu ve bir Apache Spark havuzu oluşturmayı öğreneceksiniz.
+title: 'Hızlı başlangıç: Başlarken-SYNAPSE çalışma alanı oluşturma'
+description: Bu öğreticide, bir Synapse çalışma alanı, adanmış bir SQL havuzu ve sunucusuz Apache Spark havuzu oluşturmayı öğreneceksiniz.
 services: synapse-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,22 +10,22 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 10/07/2020
-ms.openlocfilehash: 11ff6ff5f7a999020a1b4bd3ffe933cc6a5db5a0
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 6e1eeba99e3ad98aa0fee2e6709bb817ff829ed9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147003"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93304740"
 ---
 # <a name="creating-a-synapse-workspace"></a>SYNAPSE çalışma alanı oluşturma
 
-Bu öğreticide, bir Synapse çalışma alanı, bir SQL havuzu ve bir Apache Spark havuzu oluşturmayı öğreneceksiniz. 
+Bu öğreticide, bir Synapse çalışma alanı, adanmış bir SQL havuzu ve sunucusuz Apache Spark havuzu oluşturmayı öğreneceksiniz. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticinin tüm adımlarını tamamlayabilmeniz için, **sahip** rolü atadığınız bir kaynak grubuna erişiminizin olması gerekir. Bu kaynak grubunda SYNAPSE çalışma alanını oluşturun.
 
-## <a name="create-a-synapse-workspace-in-the-azure-portal"></a>Azure portalında bir Synapse çalışma alanı oluşturma
+## <a name="create-a-synapse-workspace-in-the-azure-portal"></a>Azure portal bir Synapse çalışma alanı oluşturun
 
 1. [Azure Portal](https://portal.azure.com)açın ve en üstteki **SYNAPSE** için arama yapın.
 1. Arama sonuçlarında **Hizmetler** altında **Azure SYNAPSE Analytics (çalışma alanları Önizleme)** öğesini seçin.
@@ -48,7 +48,7 @@ Azure SYNAPSE çalışma alanınız oluşturulduktan sonra, SYNAPSE Studio 'Yu a
 * [Azure Portal](https://portal.azure.com)SYNAPSE çalışma alanınızı açın. **Genel bakış** bölümünün üst kısmında, **SYNAPSE Studio 'yu Başlat** ' ı seçin.
 * Adresine gidin `https://web.azuresynapse.net` ve çalışma alanınızda oturum açın.
 
-## <a name="create-a-sql-pool"></a>SQL havuzu oluşturma
+## <a name="create-a-dedicated-sql-pool"></a>Adanmış bir SQL havuzu oluşturma
 
 1. SYNAPSE Studio 'da, sol taraftaki bölmede **Manage**  >  **SQL havuzlarını** Yönet ' i seçin.
 1. **Yeni** ' yi seçin ve şu ayarları girin:
@@ -59,9 +59,9 @@ Azure SYNAPSE çalışma alanınız oluşturulduktan sonra, SYNAPSE Studio 'Yu a
     |**Performans düzeyi**|**DW100C**|
     |||
 
-1. **Gözden geçir ve oluştur** > **Oluştur** 'u seçin. SQL havuzunuz birkaç dakika içinde hazırlanacaktır. SQL havuzunuz, **SQLDB1** olarak da BILINEN bir SQL havuzu veritabanıyla ilişkilendirilir.
+1. **Gözden geçir ve oluştur** > **Oluştur** 'u seçin. Adanmış SQL havuzunuz birkaç dakika içinde hazırlanacaktır. Adanmış SQL havuzunuz, **SQLDB1** olarak da bilinen ayrılmış bir SQL havuzu veritabanıyla ilişkilidir.
 
-Bir SQL havuzu, etkin olduğu sürece faturalanabilir kaynakları tüketir. Daha sonra maliyetleri azaltmak için havuzu duraklatabilirsiniz.
+Adanmış bir SQL havuzu, etkin olduğu sürece faturalanabilir kaynakları kullanır. Daha sonra maliyetleri azaltmak için havuzu duraklatabilirsiniz.
 
 ## <a name="create-a-serverless-apache-spark-pool"></a>Sunucusuz Apache Spark havuzu oluşturma
 
@@ -81,11 +81,15 @@ Azure SYNAPSE 'te Spark etkinliği gerçekleştirdiğinizde, kullanmak için bir
 > [!NOTE]
 > Spark veritabanları Spark havuzlarından bağımsız olarak oluşturulur. Çalışma alanı her zaman **varsayılan** olarak adlandırılan bir Spark veritabanına sahiptir. Ek Spark veritabanları oluşturabilirsiniz.
 
-## <a name="the-sql-on-demand-pool"></a>SQL isteğe bağlı havuzu
+## <a name="the-serverless-sql-pool"></a>Sunucusuz SQL havuzu
 
-Her çalışma alanı, **SQL isteğe** bağlı olarak adlandırılan önceden oluşturulmuş bir havuz ile gelir. Bu havuz silinemiyor. SQL isteğe bağlı havuzu, Azure SYNAPSE 'de bir SQL havuzu oluşturmak veya yönetmek zorunda kalmadan SQL ile çalışmanıza olanak sağlar.
+Her çalışma alanı, **yerleşik** olarak adlandırılan önceden oluşturulmuş bir havuz ile gelir. Bu havuz silinemiyor. Sunucusuz SQL havuzu, Azure SYNAPSE 'da sunucusuz bir SQL havuzu oluşturmak veya yönetmek zorunda kalmadan SQL ile çalışmanıza olanak sağlar.
 
-Adanmış SQL havuzlarından farklı olarak, isteğe bağlı SQL için faturalandırma, sorguyu yürütmek için kullanılan kaynak sayısını değil, sorguyu çalıştırmak için taranan veri miktarına bağlıdır.
+
+Diğer havuz türlerinin aksine, sunucusuz SQL havuzu için faturalandırma, sorguyu yürütmek için kullanılan kaynak sayısını değil, sorguyu çalıştırmak için taranan veri miktarına bağlıdır.
+
+* Sunucusuz SQL havuzu, diğer sunucusuz SQL havuzlarından bağımsız olarak bulunan kendi veritabanlarına sahiptir.
+* Çalışma alanı her zaman **yerleşik** olarak adlandırılan bir SUNUCUSUZ SQL havuzu içerir.
 
 ## <a name="preparing-a-adlsgen2-storage-account"></a>ADLSGEN2 Storage hesabı hazırlanıyor
 
@@ -116,4 +120,4 @@ Adanmış SQL havuzlarından farklı olarak, isteğe bağlı SQL için faturalan
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [SQL havuzu kullanarak çözümleme](get-started-analyze-sql-pool.md)
+> [Adanmış bir SQL havuzu kullanarak çözümle](get-started-analyze-sql-pool.md)

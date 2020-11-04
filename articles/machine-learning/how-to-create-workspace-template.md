@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 4a80b1f9bfa5d477c47e340f1dec1b37e4c69258
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 70e3185257c7c70d74fdc8492cf0a2b4970c03b1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631062"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305479"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Machine Learning için bir çalışma alanı oluşturmak üzere Azure Resource Manager şablonu kullanma
 
@@ -26,11 +26,11 @@ Bu makalede, Azure Resource Manager şablonları kullanarak Azure Machine Learni
 
 Daha fazla bilgi için bkz. [Azure Resource Manager şablonuyla uygulama dağıtma](../azure-resource-manager/templates/deploy-powershell.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Bir **Azure aboneliği** . Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
+* Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
-* CLı 'dan bir şablon kullanmak için [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.2.0) ya da [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)gerekir.
+* CLı 'dan bir şablon kullanmak için [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) ya da [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)gerekir.
 
 * Bazı senaryolar için bir destek bileti açmanız gerekir. Bu senaryolar şunlardır:
 
@@ -59,7 +59,7 @@ Kaynak grubu, Hizmetleri tutan kapsayıcıdır. Azure Machine Learning çalışm
 
     Şablon, çoğu kaynak için seçtiğiniz konumu kullanacaktır. Özel durum, diğer hizmetlerin bulunduğu tüm konumlarda kullanılamayan Application Insights hizmetidir. Kullanılabilir olmayan bir konum seçerseniz, hizmet Orta Güney ABD konumunda oluşturulur.
 
-* Azure Machine Learning çalışma alanının kolay adı olan **Çalışmaalanıadı** .
+* Azure Machine Learning çalışma alanının kolay adı olan **Çalışmaalanıadı**.
 
     > [!NOTE]
     > Çalışma alanı adı büyük/küçük harfe duyarlıdır.
@@ -69,7 +69,7 @@ Kaynak grubu, Hizmetleri tutan kapsayıcıdır. Azure Machine Learning çalışm
 > [!TIP]
 > Bu belgeyle ilişkili şablon yeni bir Azure Container Registry oluştururken, kapsayıcı kayıt defteri oluşturmadan de yeni bir çalışma alanı oluşturabilirsiniz. Bir kapsayıcı kayıt defteri gerektiren bir işlem gerçekleştirdiğinizde bu bir tane oluşturulur. Örneğin, bir modeli eğitme veya dağıtma.
 >
-> Ayrıca, yeni bir tane oluşturmak yerine Azure Resource Manager şablonundaki mevcut bir kapsayıcı kayıt defterine veya depolama hesabına başvurabilirsiniz. Ancak, kullandığınız kapsayıcı kayıt defterinde __yönetici hesabının__ etkinleştirilmiş olması gerekir. Yönetici hesabını etkinleştirme hakkında daha fazla bilgi için bkz. [yönetici hesabı](/azure/container-registry/container-registry-authentication#admin-account).
+> Ayrıca, yeni bir tane oluşturmak yerine Azure Resource Manager şablonundaki mevcut bir kapsayıcı kayıt defterine veya depolama hesabına başvurabilirsiniz. Ancak, kullandığınız kapsayıcı kayıt defterinde __yönetici hesabının__ etkinleştirilmiş olması gerekir. Yönetici hesabını etkinleştirme hakkında daha fazla bilgi için bkz. [yönetici hesabı](../container-registry/container-registry-authentication.md#admin-account).
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
@@ -77,7 +77,7 @@ Kaynak grubu, Hizmetleri tutan kapsayıcıdır. Azure Machine Learning çalışm
 
 * [Azure Resource Manager şablonları yaz](../azure-resource-manager/templates/template-syntax.md)
 * [Azure Resource Manager şablonlarıyla uygulama dağıtma](../azure-resource-manager/templates/deploy-powershell.md)
-* [Microsoft. MachineLearningServices kaynak türleri](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
+* [Microsoft. MachineLearningServices kaynak türleri](/azure/templates/microsoft.machinelearningservices/allversions)
 
 ## <a name="deploy-template"></a>Şablon dağıtma
 
@@ -219,7 +219,7 @@ __To get the values__ `cmk_keyvault` Bu şablon için gereken (Key Vault kimliğ
 
 Müşteri tarafından yönetilen anahtarların kullanımını etkinleştirmek için, şablonu dağıttığınızda aşağıdaki parametreleri ayarlayın:
 
-* **Encryption_status** **etkin** .
+* **Encryption_status** **etkin**.
 * **cmk_keyvault** `cmk_keyvault` önceki adımlarda elde edilen değere cmk_keyvault.
 * **resource_cmk_uri** `resource_cmk_uri` önceki adımlarda elde edilen değere resource_cmk_uri.
 
@@ -539,9 +539,9 @@ New-AzResourceGroupDeployment `
 
 --- -->
 
-## <a name="use-the-azure-portal"></a>Azure portalını kullanma
+## <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
-1. [Özel şablondan kaynak dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)bölümündeki adımları izleyin. __Şablon seçin__ ekranına geldiğinizde, açılan listeden **201-Machine-Learning-Advanced** şablonunu seçin.
+1. [Özel şablondan kaynak dağıtma](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)bölümündeki adımları izleyin. __Şablon seçin__ ekranına geldiğinizde, açılan listeden **201-Machine-Learning-Advanced** şablonunu seçin.
 1. Şablonu kullanmak için __şablon seç__ ' i seçin. Dağıtım senaryonuza bağlı olarak aşağıdaki gerekli bilgileri ve diğer parametreleri sağlayın.
 
    * Abonelik: Bu kaynaklar için kullanılacak Azure aboneliğini seçin.
@@ -549,7 +549,7 @@ New-AzResourceGroupDeployment `
    * Bölge: kaynakların oluşturulacağı Azure bölgesini seçin.
    * Çalışma alanı adı: oluşturulacak Azure Machine Learning çalışma alanı için kullanılacak ad. Çalışma alanı adı 3 ile 33 karakter arasında olmalıdır. Yalnızca alfasayısal karakterler ve '-' içerebilir.
    * Konum: kaynakların oluşturulacağı konumu seçin.
-1. __Gözden geçir ve oluştur__ ’u seçin.
+1. __Gözden geçir + oluştur__ ’u seçin.
 1. __Gözden geçir + oluştur__ ekranında, listelenen hüküm ve koşulları kabul edin ve __Oluştur__ ' u seçin.
 
 Daha fazla bilgi için bkz. [özel şablondan kaynak dağıtma](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
@@ -576,7 +576,7 @@ Bu sorundan kaçınmak için aşağıdaki yaklaşımlardan birini öneririz:
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query properties.accessPolicies
     ```
 
-    Şablonun bölümünü kullanma hakkında daha fazla bilgi için `accessPolicies` [Accesspolicyentry nesne başvurusuna](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry)bakın.
+    Şablonun bölümünü kullanma hakkında daha fazla bilgi için `accessPolicies` [Accesspolicyentry nesne başvurusuna](/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry)bakın.
 
 * Key Vault kaynağının zaten var olup olmadığını denetleyin. Varsa, şablon aracılığıyla yeniden oluşturmayın. Örneğin, yeni bir tane oluşturmak yerine varolan Key Vault kullanmak için, şablonda aşağıdaki değişiklikleri yapın:
 

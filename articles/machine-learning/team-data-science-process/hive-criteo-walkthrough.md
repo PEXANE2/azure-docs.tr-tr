@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 99595e27b17db716b09325d5dd80633bf44ffb02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e66bd0a4e56f63185d8361355d6cf8e0e29bc30b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336658"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305931"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Ekip veri bilimi Işlemi, 1 TB 'lik bir veri kümesinde Azure HDInsight Hadoop kümesi kullanılarak yapılır.
 
@@ -50,11 +50,11 @@ Bu veri kümesindeki hem sayısal hem de kategorik sütunlarda eksik değerler v
 ## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>Tahmin görevlerinin örnekleri
 Bu izlenecek yolda iki örnek tahmin sorunu giderilmiştir:
 
-1. **İkili sınıflandırma**: bir kullanıcının bir ekleme tıkladığını tahmin eder:
+1. **İkili sınıflandırma** : bir kullanıcının bir ekleme tıkladığını tahmin eder:
 
    * Sınıf 0: tıklama yok
    * Sınıf 1: tıklama
-2. **Gerileme**: Kullanıcı özelliklerinden bir ad tıklama olasılığını tahmin eder.
+2. **Gerileme** : Kullanıcı özelliklerinden bir ad tıklama olasılığını tahmin eder.
 
 ## <a name="set-up-an-hdinsight-hadoop-cluster-for-data-science"></a><a name="setup"></a>Veri bilimi için bir HDInsight Hadoop kümesi ayarlama
 > [!NOTE]
@@ -63,7 +63,7 @@ Bu izlenecek yolda iki örnek tahmin sorunu giderilmiştir:
 Üç adımda HDInsight kümeleriyle tahmine dayalı analiz çözümleri oluşturmak için Azure veri bilimi ortamınızı ayarlayın:
 
 1. [Depolama hesabı oluştur](../../storage/common/storage-account-create.md): Bu depolama hesabı, verileri Azure Blob depolama alanında depolamak için kullanılır. HDInsight kümelerinde kullanılan veriler burada depolanır.
-2. [Veri bilimi için Azure HDInsight Hadoop kümelerini özelleştirme](customize-hadoop-cluster.md): Bu adım, tüm düğümlerde yüklü 64 bit Anaconda Python 2,7 ile bir Azure HDInsight Hadoop kümesi oluşturur. HDInsight kümesini özelleştirirken tamamlanacak iki önemli adım (Bu konu başlığı altında açıklanmıştır) vardır.
+2. [Veri bilimi için Azure HDInsight Hadoop kümelerini özelleştirme](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md): Bu adım, tüm düğümlerde yüklü 64 bit Anaconda Python 2,7 ile bir Azure HDInsight Hadoop kümesi oluşturur. HDInsight kümesini özelleştirirken tamamlanacak iki önemli adım (Bu konu başlığı altında açıklanmıştır) vardır.
 
    * Adım 1 ' de oluşturulan depolama hesabını HDInsight kümenizin oluşturulduğu sırada bağlayın. Bu depolama hesabı, küme içinde işlenebilecek verilere erişmek için kullanılır.
    * Oluşturulduktan sonra kümenin baş düğümüne uzaktan erişimi etkinleştirin. Burada belirttiğiniz uzaktan erişim kimlik bilgilerini hatırlayın (küme oluşturulurken belirtilen kimlik bilgilerinden farklı): aşağıdaki yordamları uygulayın.
@@ -76,7 +76,7 @@ Bağlantı kümesine tıklayarak, kullanım koşullarını kabul ederek ve bir a
 
 Veri kümesi ve kullanılabilirliği hakkında daha fazla bilgi için **indirmek Için devam** ' a tıklayın.
 
-Veriler bir [Azure Blob depolama](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) konumunda bulunuyor: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/ . "SLA b", Azure Blob depolama konumunu ifade eder.
+Veriler bir [Azure Blob depolama](../../storage/blobs/storage-quickstart-blobs-dotnet.md) konumunda bulunuyor: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/ . "SLA b", Azure Blob depolama konumunu ifade eder.
 
 1. Bu Azure Blob depolama alanındaki veriler, daraltılmış verilerin üç alt grubundan oluşur.
 
@@ -99,7 +99,7 @@ Sol tarafta, veri araştırması için çalışmamız olan "Hadoop komut satır�
 Şimdi ayarladığınız ve ilk kez başlamaya hazırsınız: Hive kullanarak veri araştırması ve Azure Machine Learning için hazır veri alma.
 
 ## <a name="create-hive-database-and-tables"></a><a name="hive-db-tables"></a> Hive veritabanı ve tabloları oluşturma
-Criteo veri kümeniz için Hive tabloları oluşturmak üzere baş düğümün masaüstündeki ***Hadoop komut satırını*** açın ve komutu girerek Hive dizinini girin
+Criteo veri kümeniz için Hive tabloları oluşturmak üzere baş düğümün masaüstündeki * *_Hadoop komut satırı_* _ ' i açın ve komutu girerek Hive dizinini girin
 
 ```console
 cd %hive_home%\bin
@@ -118,7 +118,7 @@ Hive REPL bir "Hive >" işareti ile görüntülendikten sonra, sorguyu yürütme
 
 Aşağıdaki kod, "Criteo" veritabanını oluşturur ve ardından dört tablo oluşturur:
 
-* gün 00 ile 20 gün arasında oluşturulan *sayıları oluşturmak için bir tablo* \_ \_ ,
+_ gün 00 ile 20 gün arasında oluşturulan *sayıları oluşturmak için bir tablo* \_ \_ ,
 * 21 *. günde oluşturulan eğitme veri kümesi olarak kullanılacak bir tablo* \_ ve
 * için iki tablo, sırasıyla 22 ve gün 23 gün içinde oluşturulmuş *test veri kümeleri olarak kullanılacak* \_ \_ .
 
@@ -161,7 +161,7 @@ Tüm bu tablolar, Azure Blob depolama (ILB) konumlarına işaret edebilmeniz iç
 
 **Hive sorgusu yürütmek için iki yol vardır:**
 
-* **HIVE REPL komut satırını kullanarak**: Birincisi bir "Hive" komutu vermektir ve Hive REPL komut satırına bir sorgu kopyalayıp yapıştırmaktır:
+* **HIVE REPL komut satırını kullanarak** : Birincisi bir "Hive" komutu vermektir ve Hive REPL komut satırına bir sorgu kopyalayıp yapıştırmaktır:
 
   ```console
   cd %hive_home%\bin
@@ -169,7 +169,7 @@ Tüm bu tablolar, Azure Blob depolama (ILB) konumlarına işaret edebilmeniz iç
   ```
 
      Şimdi REPL komut satırında, sorguyu kesip yapıştırarak yürütür.
-* **Sorguları bir dosyaya kaydetme ve komutu yürütme**: İkincisi, sorguları bir '. HQL ' dosyasına ([örnek&#95;Hive&#95;&#95;criteo&#95;veritabanı&#95;ve&#95;tabloları. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)) kaydederek sorguyu yürütmek için aşağıdaki komutu yayınlayamaz:
+* **Sorguları bir dosyaya kaydetme ve komutu yürütme** : İkincisi, sorguları bir '. HQL ' dosyasına ( [örnek&#95;Hive&#95;&#95;criteo&#95;veritabanı&#95;ve&#95;tabloları. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)) kaydederek sorguyu yürütmek için aşağıdaki komutu yayınlayamaz:
 
   ```console
   hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql
@@ -354,7 +354,7 @@ Bu şunları verir:
 Time taken: 448.116 seconds, Fetched: 1 row(s)
 ```
 
-Col15, 19D benzersiz değerlere sahip! Bu tür yüksek boyutlu kategorik değişkenleri kodlamak için "tek yönlü kodlama" gibi Naïve tekniklerin kullanılması uygulanamaz. Özellikle, bu sorunu etkili bir şekilde [öğrenirken, öğrenme](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) adlı güçlü ve güçlü bir tekniktir.
+Col15, 19D benzersiz değerlere sahip! Bu tür yüksek boyutlu kategorik değişkenleri kodlamak için "tek yönlü kodlama" gibi Naïve tekniklerin kullanılması uygulanamaz. Özellikle, bu sorunu etkili bir şekilde [öğrenirken, öğrenme](/archive/blogs/machinelearning/big-learning-made-easy-with-counts) adlı güçlü ve güçlü bir tekniktir.
 
 Son olarak bazı diğer kategorik sütunlar için benzersiz değer sayısına göz atın. [Örnek&#95;hive&#95;Criteo&#95;, birden çok&#95;categoricals. HQL&#95;benzersiz&#95;değerleri](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_multiple_categoricals.hql) olan içerikleri şunlardır:
 
@@ -472,7 +472,7 @@ Bu şekilde, Azure Machine Learning ' de modeller oluşturmak için, alt örnekl
 Azure Machine Learning 'e geçmeden önce son önemli bir bileşen vardır. Bu, sayı tablosu ile ilgilidir. Sonraki alt bölümde, Count tablosu bazı ayrıntılarla ele alınmıştır.
 
 ## <a name="a-brief-discussion-on-the-count-table"></a><a name="count"></a> Count tablosu hakkında kısa bir tartışma
-Gördüğünüz gibi, çeşitli kategorik değişkenlerin yüksek boyutlılık vardır. İzlenecek yolda, bu değişkenleri verimli ve sağlam bir şekilde kodlamak için [sayımlar Ile öğrenme](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) adlı güçlü bir teknik sunulmaktadır. Bu teknik hakkında daha fazla bilgi, girilen bağlantıdır.
+Gördüğünüz gibi, çeşitli kategorik değişkenlerin yüksek boyutlılık vardır. İzlenecek yolda, bu değişkenleri verimli ve sağlam bir şekilde kodlamak için [sayımlar Ile öğrenme](/archive/blogs/machinelearning/big-learning-made-easy-with-counts) adlı güçlü bir teknik sunulmaktadır. Bu teknik hakkında daha fazla bilgi, girilen bağlantıdır.
 
 >[!NOTE]
 >Bu kılavuzda, odak, yüksek boyutlu kategorik özelliklerin küçük temsillerini oluşturmak için Count tabloları kullanmaktır. Kategorik özellikleri kodlamak için tek yol bu değildir; diğer teknikler hakkında daha fazla bilgi edinmek için, kullanıcılar bir çok [yönlü kodlama](https://en.wikipedia.org/wiki/One-hot) ve [özellik karma](https://en.wikipedia.org/wiki/Feature_hashing)'i kullanıma alabilir.
@@ -492,7 +492,7 @@ Model oluşturma sürecimiz Azure Machine Learning şu adımları izler:
 Artık Azure Machine Learning Studio 'da model oluşturmaya hazırsınız. Aşağı örneklenmiş verilerimiz, kümeye Hive tabloları olarak kaydedilir. Bu verileri okumak için Azure Machine Learning **veri alma** modülünü kullanın. Bu kümenin depolama hesabına erişmek için gereken kimlik bilgileri aşağıda verilmiştir.
 
 ### <a name="step-1-get-data-from-hive-tables-into-azure-machine-learning-using-the-import-data-module-and-select-it-for-a-machine-learning-experiment"></a><a name="step1"></a> 1. Adım: verileri Içeri aktarma modülünü kullanarak Hive Azure Machine Learning tablolarından veri alma ve makine öğrenimi denemesi için seçme
-**Yeni**bir  ->  **deneme**  ->  **boş deneme**seçerek başlayın. Ardından, sol üstteki **arama** kutusundan "verileri içeri aktar" ifadesini aratın. Veri erişimi modülünü kullanmak için **veri Içeri aktarma** modülünü deneme tuvaline (ekranın orta bölümü) sürükleyin ve bırakın.
+**Yeni** bir  ->  **deneme**  ->  **boş deneme** seçerek başlayın. Ardından, sol üstteki **arama** kutusundan "verileri içeri aktar" ifadesini aratın. Veri erişimi modülünü kullanmak için **veri Içeri aktarma** modülünü deneme tuvaline (ekranın orta bölümü) sürükleyin ve bırakın.
 
 Yığın tablosundan veri alırken **Içeri aktarma verileri** şöyle görünür:
 
@@ -502,13 +502,13 @@ Yığın tablosundan veri alırken **Içeri aktarma verileri** şöyle görünü
 
 1. **Veri kaynağı** Için "Hive sorgusu" seçin
 2. **Hive veritabanı sorgu** kutusunda, veritabanınızın adını <basıt bir seçim * \_ \_ . \_ tablo \_ adı>-yeterlidir.
-3. **Hcatalog sunucusu URI 'si**: kümeniz "abc" ise, bu yalnızca: https: \/ /ABC.azurehdinsight.net
-4. **Hadoop Kullanıcı hesabı adı**: kümeyi komisyonlama sırasında seçilen Kullanıcı adı. (Uzaktan Erişim Kullanıcı adı DEĞIL!)
-5. **Hadoop Kullanıcı hesabı parolası**: kümeyi komisyonlama sırasında seçilen kullanıcı adının parolası. (Uzaktan erişim parolası DEĞIL!)
-6. **Çıkış verilerinin konumu**: "Azure" seçeneğini belirleyin
-7. **Azure depolama hesabı adı**: kümeyle ilişkili depolama hesabı
-8. **Azure depolama hesabı anahtarı**: kümeyle ilişkili depolama hesabının anahtarı.
-9. **Azure kapsayıcı adı**: küme adı "abc" ise, bu, genellikle "abc" olur.
+3. **Hcatalog sunucusu URI 'si** : kümeniz "abc" ise, bu yalnızca: https: \/ /ABC.azurehdinsight.net
+4. **Hadoop Kullanıcı hesabı adı** : kümeyi komisyonlama sırasında seçilen Kullanıcı adı. (Uzaktan Erişim Kullanıcı adı DEĞIL!)
+5. **Hadoop Kullanıcı hesabı parolası** : kümeyi komisyonlama sırasında seçilen kullanıcı adının parolası. (Uzaktan erişim parolası DEĞIL!)
+6. **Çıkış verilerinin konumu** : "Azure" seçeneğini belirleyin
+7. **Azure depolama hesabı adı** : kümeyle ilişkili depolama hesabı
+8. **Azure depolama hesabı anahtarı** : kümeyle ilişkili depolama hesabının anahtarı.
+9. **Azure kapsayıcı adı** : küme adı "abc" ise, bu, genellikle "abc" olur.
 
 **Içeri aktarma verileri** veri almayı tamamladığında (modülde yeşil onay işareti görürsünüz), bu verileri bir veri kümesi olarak (seçtiğiniz bir adla) kaydedin. Bu şöyle görünür:
 

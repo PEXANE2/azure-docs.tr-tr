@@ -6,12 +6,12 @@ author: mamccrea
 ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: f963f4c3538146b7f9929960092a18294659be5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61d6556467bc6f1494e11ce3a01bf5266b740f3f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045255"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305777"
 ---
 # <a name="azure-stream-analytics-external-error-codes"></a>Azure Stream Analytics dış hata kodları
 
@@ -19,77 +19,77 @@ Azure Stream Analytics işinizin beklenmedik davranışlarından hata ayıklamay
 
 ## <a name="adapterinitializationerror"></a>Adapterınitializationerror
 
-* **Neden**: bağdaştırıcı başlatılırken bir hata oluştu.
+* **Neden** : bağdaştırıcı başlatılırken bir hata oluştu.
 
 ## <a name="adapterfailedtowriteevents"></a>AdapterFailedToWriteEvents
 
-* **Neden**: bir bağdaştırıcıya veri yazılırken bir hata oluştu.
+* **Neden** : bir bağdaştırıcıya veri yazılırken bir hata oluştu.
 
 ## <a name="azurefunctionhttperror"></a>AzureFunctionHttpError
 
-* **Neden**: Azure IŞLEVLERINDEN bir HTTP hatası döndürüldü.
+* **Neden** : Azure IŞLEVLERINDEN bir HTTP hatası döndürüldü.
 
 ## <a name="azurefunctionfailedtosendmessage"></a>AzureFunctionFailedToSendMessage
 
-* **Neden**: Stream Analytics olayları Azure işlevine yazamadı.
+* **Neden** : Stream Analytics olayları Azure işlevine yazamadı.
 
 ## <a name="azurefunctionredirecterror"></a>AzureFunctionRedirectError
 
-* **Neden**: Azure işlevlerine çıktı alırken bir yeniden yönlendirme hatası var.
+* **Neden** : Azure işlevlerine çıktı alırken bir yeniden yönlendirme hatası var.
 
 ## <a name="azurefunctionclienterror"></a>AzureFunctionClientError
 
-* **Neden**: Azure işlevlerine çıktı olarak bir istemci hatası var.
+* **Neden** : Azure işlevlerine çıktı olarak bir istemci hatası var.
 
 ## <a name="azurefunctionservererror"></a>AzureFunctionServerError
 
-* **Neden**: Azure işlevlerine çıktı olarak bir sunucu hatası var.
+* **Neden** : Azure işlevlerine çıktı olarak bir sunucu hatası var.
 
 ## <a name="azurefunctionhttptimeouterror"></a>AzureFunctionHttpTimeOutError
 
-* **Neden**: http isteği zaman aşımını aştığından Azure işlevlerine yazma işlemi başarısız oldu. 
-* **Öneri**: olası gecikmeler Için Azure işlevlerinizin günlüklerine bakın.
+* **Neden** : http isteği zaman aşımını aştığından Azure işlevlerine yazma işlemi başarısız oldu. 
+* **Öneri** : olası gecikmeler Için Azure işlevlerinizin günlüklerine bakın.
 
 ## <a name="eventhubargumenterror"></a>EventHubArgumentError
 
-* **Neden**: giriş uzaklıkları geçersiz. Bunun nedeni yük devretme olabilir.
-* **Öneri**: Stream Analytics işinizi son çıkış zamanından yeniden başlatın.
+* **Neden** : giriş uzaklıkları geçersiz. Bunun nedeni yük devretme olabilir.
+* **Öneri** : Stream Analytics işinizi son çıkış zamanından yeniden başlatın.
 
 ## <a name="eventhubfailedtowriteevents"></a>EventHubFailedToWriteEvents
 
-* **Neden**: Olay Hub 'ına veri gönderilirken bir hata oluştu.
+* **Neden** : Olay Hub 'ına veri gönderilirken bir hata oluştu.
 
 ## <a name="cosmosdbconnectionfailureaftermaxretries"></a>Cosmosdbconnectionfailureaftermaxdenemeler
 
-* **Neden**: Stream Analytics en fazla yeniden deneme sayısından sonra Cosmos DB hesabına bağlanılamadı.
+* **Neden** : Stream Analytics en fazla yeniden deneme sayısından sonra Cosmos DB hesabına bağlanılamadı.
 
 ## <a name="cosmosdbfailureaftermaxretries"></a>Cosmosdbfailureaftermaxdenemeler
 
-* **Neden**: Stream Analytics Cosmos db veritabanını ve koleksiyonu en fazla yeniden deneme sayısından sonra sorguleyemedi.
+* **Neden** : Stream Analytics Cosmos db veritabanını ve koleksiyonu en fazla yeniden deneme sayısından sonra sorguleyemedi.
 
 ## <a name="cosmosdbfailedtocreatestoredprocedure"></a>CosmosDBFailedToCreateStoredProcedure
 
-* **Neden**: cosmosdb birkaç yeniden denemeden sonra saklı yordam oluşturamaz.
+* **Neden** : cosmosdb birkaç yeniden denemeden sonra saklı yordam oluşturamaz.
 
 ## <a name="cosmosdboutputrequesttimeout"></a>Cosmosdi Putrequesttimeout
 
-* **Neden**: upsert saklı yordam bir hata döndürdü. 
+* **Neden** : upsert saklı yordam bir hata döndürdü. 
 
 ## <a name="sqldatabaseoutputinitializationerror"></a>Sqldatabaseoutputınitializationerror
 
-* **Neden**: Stream Analytics SQL veritabanı çıkışını başlatamıyor.
+* **Neden** : Stream Analytics SQL veritabanı çıkışını başlatamıyor.
 
 ## <a name="sqldatabaseoutputwriteerror"></a>SQLDatabaseOutputWriteError
 
-* **Neden**: Stream Analytics SQL veritabanı çıktısına olay yazamaz.
+* **Neden** : Stream Analytics SQL veritabanı çıktısına olay yazamaz.
 
 ## <a name="sqldwoutputinitializationerror"></a>Sqldwoutputınitializationerror
 
-* **Neden**: SYNAPSE SQL havuzu çıkışı başlatılırken bir hata oluştu.
+* **Neden** : ADANMıŞ bir SQL havuzu çıkışı başlatılırken bir hata oluştu.
 
 ## <a name="sqldwoutputwriteerror"></a>SQLDWOutputWriteError
 
-* **Neden**: BIR SYNAPSE SQL havuzuna çıkış yazılırken bir hata oluştu.
+* **Neden** : özel bir SQL havuzuna çıkış yazılırken bir hata oluştu.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

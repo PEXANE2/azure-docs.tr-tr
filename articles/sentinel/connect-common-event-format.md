@@ -1,6 +1,6 @@
 ---
 title: CEF verilerini Azure Sentinel önizlemesine bağlama | Microsoft Docs
-description: Bir Linux makinesini proxy olarak kullanarak Azure Sentinel 'e ortak olay biçimi (CEF) iletileri gönderen bir dış çözümü bağlayın.
+description: Bir Linux makinesini günlük ileticisi olarak kullanarak Azure Sentinel 'e ortak olay biçimi (CEF) iletileri gönderen bir dış çözümü bağlayın.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: dae8ce6cbad1ae08898ae439c1f621bef185b5df
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e09b44504623516d41b6d310a82e78619477367c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747897"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93304991"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Ortak olay biçimini kullanarak dış çözümünüzü bağlama
 
@@ -42,48 +42,57 @@ Alternatif olarak, başka bir bulutta veya şirket içi bir makinede bir VM kull
 
  ![Şirket içi CEF](./media/connect-cef/cef-syslog-onprem.png)
 
-## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
+## <a name="security-considerations"></a>Güvenlik konuları
 
 Makinenin güvenliğini kuruluşunuzun güvenlik ilkesine göre yapılandırdığınızdan emin olun. Örneğin, ağınızı kurumsal ağ güvenlik ilkenize göre olacak şekilde yapılandırabilir ve gereksinimlerinize göre uyum sağlamak için arka plan programındaki bağlantı noktalarını ve protokolleri değiştirmelisiniz. Aşağıdaki yönergeleri kullanarak makinenizin güvenlik yapılandırmasını geliştirebilirsiniz:  [Azure 'Da GÜVENLI VM](../virtual-machines/security-policy.md), [ağ güvenliği için en iyi uygulamalar](../security/fundamentals/network-best-practices.md).
 
 Syslog kaynağı ve Syslog Ileticisi arasındaki TLS iletişimini kullanmak için Syslog Daemon 'u (rsyslog veya Syslog-ng) TLS 'de iletişim kurmak üzere yapılandırmanız gerekir: TLS [-rsyslog Ile Syslog trafiğini şifreleme](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [günlük iletilerini TLS – Syslog-NG ile şifreleme](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
  
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Proxy olarak kullandığınız Linux makinenin aşağıdaki işletim sistemlerinden birini çalıştırdığından emin olun:
+Günlük ileticisi olarak kullandığınız Linux makinenin aşağıdaki işletim sistemlerinden birini çalıştırdığından emin olun:
 
 - 64 bit
-  - CentOS 7 ve alt sürümleri ve üzeri (6 değil)
+  - CentOS 7 ve 8, alt sürümler dahil (6 değil)
   - Amazon Linux 2017,09
   - Oracle Linux 7
-  - Red Hat Enterprise Linux (RHEL) Server 7 ve alt sürümleri ve üzeri (6 değil)
-  - Borçlu GNU/Linux 8 ve 9
+  - Red Hat Enterprise Linux (RHEL) Server 7 ve 8, alt sürümler dahil (6 değil)
+  - Borçlu GNU/Linux 8, 9 ve 10
   - Ubuntu Linux 14,04 LTS, 16,04 LTS ve 18,04 LTS
-  - SUSE Linux Enterprise Server 12
+  - SUSE Linux Enterprise Server 12, 15
+
 - 32 bit
-   - CentOS 7
-   - Oracle Linux 7
-   - Red Hat Enterprise Linux Server 7
-   - Borçlu GNU/Linux 8 ve 9
-   - Ubuntu Linux 14,04 LTS ve 16,04 LTS
+  - CentOS 7 ve 8, alt sürümler dahil (6 değil)
+  - Oracle Linux 7
+  - Red Hat Enterprise Linux (RHEL) Server 7 ve 8, alt sürümler dahil (6 değil)
+  - Borçlu GNU/Linux 8, 9 ve 10
+  - Ubuntu Linux 14,04 LTS ve 16,04 LTS
  
- - Daemon sürümleri
-   - Syslog-NG: 2,1-3.22.1
-   - Rsyslog: V8
+- Daemon sürümleri
+  - Syslog-NG: 2,1-3.22.1
+  - Rsyslog: V8
   
- - Syslog RFC 'Leri destekleniyor
-   - Syslog RFC 3164
-   - Syslog RFC 5424
+- Syslog RFC 'Leri destekleniyor
+  - Syslog RFC 3164
+  - Syslog RFC 5424
  
 Makinenizin aynı zamanda aşağıdaki gereksinimleri karşıladığından emin olun: 
+
 - İzinler
-    - Makinenizde yükseltilmiş izinleriniz (sudo) olmalıdır. 
+  - Makinenizde yükseltilmiş izinleriniz (sudo) olmalıdır. 
+
 - Yazılım gereksinimleri
-    - Makinenizde Python 2,7 ' in çalıştığından emin olun.
+  - Makinenizde Python 2,7 ' in çalıştığından emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu belgede CEF gereçlerini Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+Bu belgede, Azure Sentinel 'in güvenlik çözümleri ve gereçlerden CEF günlüklerini nasıl topladığı hakkında daha fazla öğrendiniz. Çözümünüzü Azure Sentinel 'e bağlamayı öğrenmek için aşağıdaki makalelere bakın:
+
+- 1. Adım: [Syslog/CEF ileticisi dağıtarak CEF 'Yi bağlama](connect-cef-agent.md)
+- 2. Adım: [çözüme özgü adımlar gerçekleştirme](connect-cef-solution-config.md)
+- 3. Adım: [bağlantıyı doğrulama](connect-cef-verify.md)
+
+Azure Sentinel 'de topladığınız verilerle ne yapacaklarınız hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
 - [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
 

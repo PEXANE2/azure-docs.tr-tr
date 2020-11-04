@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a043a1655950f3ed7688e59352f8a912146e12c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed54fda744978ac43bbffc6a70d6b331e85dc5e7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76720461"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305605"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>Team Data Science Işlem yaşam döngüsü
 
@@ -43,12 +43,12 @@ TDSP yaşam döngüsü, tahmine dayalı modeller kullanmak için gereken görevl
 
 Her aşamada aşağıdaki bilgileri sağlıyoruz:
 
-   * **Hedefler**: belirli amaçlar.
-   * **Nasıl yapılır**: belirli görevlerin bir özeti ve bunların nasıl tamamlanacağı hakkında rehberlik.
-   * **Yapıtlar**: teslim edilebilirler ve bunları oluşturmak için destek.
+   * **Hedefler** : belirli amaçlar.
+   * **Nasıl yapılır** : belirli görevlerin bir özeti ve bunların nasıl tamamlanacağı hakkında rehberlik.
+   * **Yapıtlar** : teslim edilebilirler ve bunları oluşturmak için destek.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Belirli senaryolar için işlemdeki tüm adımları gösteren eksiksiz bir uçtan uca izlenecek yol sunuyoruz. [Örnek yönergeler](walkthroughs.md) makalesi, bağlantılar ve küçük resim açıklamaları olan senaryoların bir listesini sağlar. İzlenecek yollar, akıllı bir uygulama oluşturmak için bulut, şirket içi araçların ve hizmetlerin bir iş akışı veya işlem hattına nasıl birleştirileceğini gösterir. 
 
-Azure Machine Learning Studio kullanan TDSPs 'de adımların nasıl yürütüleceği hakkında örnekler için, bkz. [Azure Machine Learning Ile TDSP kullanma](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Azure Machine Learning Studio kullanan TDSPs 'de adımların nasıl yürütüleceği hakkında örnekler için, bkz. [Azure Machine Learning Ile TDSP kullanma](./index.yml).

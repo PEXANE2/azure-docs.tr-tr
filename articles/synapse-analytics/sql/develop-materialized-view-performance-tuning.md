@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 9f786a791fda1f601df2a94d9f38edcbfe9dc401
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d10b7084cfc49d60e9d14c3c857d1ade839398ac
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474776"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305109"
 ---
-# <a name="performance-tuning-with-materialized-views"></a>Gerçekleştirilmiş görünümler ile performans ayarlama
+# <a name="performance-tuning-with-materialized-views-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu kullanarak gerçekleştirilmiş görünümlerle performans ayarlama
 
-SYNAPSE SQL havuzunda gerçekleştirilmiş görünümler, bir sorgu değişikliği yapmadan hızlı performans sağlamak üzere karmaşık analitik sorgular için düşük bakım yöntemi sağlar. Bu makalede gerçekleştirilmiş görünümleri kullanma hakkında genel yönergeler ele alınmaktadır.
+Ayrılmış SQL havuzunda, gerçekleştirilmiş görünümler, bir sorgu değişikliği yapmadan hızlı performans sağlamak üzere karmaşık analitik sorgular için düşük bakım yöntemi sağlar. Bu makalede gerçekleştirilmiş görünümleri kullanma hakkında genel yönergeler ele alınmaktadır.
 
 ## <a name="materialized-views-vs-standard-views"></a>Gerçekleştirilmiş görünümler ve standart görünümler karşılaştırması
 
@@ -27,7 +27,7 @@ SQL havuzu hem standart hem de gerçekleştirilmiş görünümleri destekler.  H
 
 Standart Görünüm, görünümün her seferinde verilerini hesaplar.  Diskte depolanan veri yok. İnsanlar genellikle standart görünümleri, bir veritabanındaki mantıksal nesneleri ve sorguları düzenlemeye yardımcı olan bir araç olarak kullanır.  Standart bir görünüm kullanmak için bir sorgunun kendisine doğrudan başvuru yapması gerekir.
 
-Gerçekleştirilmiş bir görünüm, verileri SQL havuzunda tıpkı bir tablo gibi önceden hesaplar, depolar ve korur.  Gerçekleştirilmiş bir görünümün kullanıldığı her seferinde yeniden hesaplama gerekli değildir.  Gerçekleştirilmiş görünümlerde verilerin tümünü veya bir alt kümesini kullanan sorguların bazıları daha hızlı performans elde edebilir.  Daha da iyisi, sorgular kendisine doğrudan başvuru yapmadan gerçekleştirilmiş bir görünüm kullanabilir, bu nedenle uygulama kodunu değiştirmeniz gerekmez.  
+Gerçekleştirilmiş bir görünüm, verileri tıpkı bir tablo gibi ayrılmış SQL havuzunda önceden hesaplar, depolar ve saklar.  Gerçekleştirilmiş bir görünümün kullanıldığı her seferinde yeniden hesaplama gerekli değildir.  Gerçekleştirilmiş görünümlerde verilerin tümünü veya bir alt kümesini kullanan sorguların bazıları daha hızlı performans elde edebilir.  Daha da iyisi, sorgular kendisine doğrudan başvuru yapmadan gerçekleştirilmiş bir görünüm kullanabilir, bu nedenle uygulama kodunu değiştirmeniz gerekmez.  
 
 Standart Görünüm gereksinimlerinin çoğu, gerçekleştirilmiş bir görünüm için hala geçerlidir. Gerçekleştirilmiş görünüm sözdizimi ve diğer gereksinimlere ilişkin ayrıntılar için bkz. [Select olarak GERÇEKLEŞTIRILMIŞ görünüm oluşturma](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
@@ -37,7 +37,7 @@ Standart Görünüm gereksinimlerinin çoğu, gerçekleştirilmiş bir görünü
 |İçeriği görüntüleme                    | Görünüm her kullanıldığında oluşturulur.   | Görünüm oluşturma sırasında Azure veri ambarı 'nda ön işleme ve depolama. Temel tablolara veri eklendikçe güncelleştirildi.
 |Veri yenileme                    | Her zaman güncelleştiriliyor                               | Her zaman güncelleştiriliyor
 |Karmaşık sorgulardan Görünüm verilerini alma hızı     | Yavaş                                         | Hızlı  
-|Ek depolama                   | Hayır                                           | Yes
+|Ek depolama                   | Hayır                                           | Evet
 |Syntax                          | CREATE VIEW                                  | GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ SEÇ
 
 ## <a name="benefits-of-materialized-views"></a>Gerçekleştirilmiş görünümlerin avantajları
@@ -46,13 +46,13 @@ Düzgün şekilde tasarlanan gerçekleştirilmiş bir görünüm aşağıdaki av
 
 - Birleştirmelere ve toplama işlevlerine sahip karmaşık sorgular için daha az yürütme süresi. Sorgu ne kadar karmaşık olursa, yürütme zamanı kaydetme olasılığı o kadar yüksektir. En avantaja, bir sorgunun hesaplama maliyeti yüksekse ve elde edilen veri kümesi küçük olduğunda kazanılabilir.  
 
-- SQL havuzundaki iyileştirici, sorgu yürütme planlarını geliştirmek için dağıtılan gerçekleştirilmiş görünümleri otomatik olarak kullanabilir.  Bu işlem, daha hızlı sorgu performansı sağlayan kullanıcılar tarafından saydamdır ve gerçekleştirilmiş görünümlere doğrudan başvuru yapmak için sorgular gerektirmez.
+- Adanmış SQL havuzundaki sorgu iyileştiricisi, sorgu yürütme planlarını geliştirmek için dağıtılan gerçekleştirilmiş görünümleri otomatik olarak kullanabilir.  Bu işlem, daha hızlı sorgu performansı sağlayan kullanıcılar tarafından saydamdır ve gerçekleştirilmiş görünümlere doğrudan başvuru yapmak için sorgular gerektirmez.
 
 - Görünümlerde düşük bakım gerektirir.  Gerçekleştirilmiş görünüm, verileri iki yerde depolar, görünüm oluşturma sırasında ilk veriler için kümelenmiş bir columnstore dizini ve artımlı veri değişiklikleri için bir Delta deposu.  Taban tablolardaki tüm veri değişiklikleri, Delta deposuna zaman uyumlu şekilde otomatik olarak eklenir.  Arka plan işlemi (demet taşıyıcısı) düzenli aralıklarla verileri Delta deposundan görünümün columnstore dizinine taşımaktır.  Bu tasarım, gerçekleştirilmiş görünümlerin doğrudan temel tabloları sorgulamak için aynı verileri döndürmesini sağlar.
 - Gerçekleştirilmiş bir görünümdeki veriler, temel tablolardan farklı şekilde dağıtılabilir.  
 - Gerçekleştirilmiş görünümlerde veri, normal tablolardaki verilerle aynı yüksek kullanılabilirlik ve dayanıklılık avantajlarını alır.  
 
-Diğer veri ambarı sağlayıcılarına kıyasla, SQL havuzunda uygulanan gerçekleştirilmiş görünümler de aşağıdaki ek avantajları sağlar:
+Diğer veri ambarı sağlayıcılarına kıyasla, adanmış SQL havuzunda uygulanan gerçekleştirilmiş görünümler de aşağıdaki ek avantajları sağlar:
 
 - Taban tablolardaki veri değişiklikleriyle otomatik ve zaman uyumlu veri yenileme. Kullanıcı eylemi gerekli değildir.
 - Geniş kapsamlı toplama işlevi desteği. Bkz. [Select (Transact-SQL) olarak GERÇEKLEŞTIRILMIŞ görünüm oluşturma](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
@@ -151,7 +151,7 @@ Sorgu performansı düşüşünü önlemek için, görünümün overhead_ratio (
 
 **Gerçekleştirilmiş görünüm ve sonuç kümesi önbelleğe alma**
 
-Bu iki özellik SQL havuzunda sorgu performansı ayarlama için aynı anda tanıtılmıştır. Sonuç kümesi önbelleğe alma, yinelenen sorgulardan statik verilere karşı yüksek eşzamanlılık ve hızlı yanıt süreleri sağlamak için kullanılır.  
+Bu iki özellik, sorgu performansı ayarlama için aynı anda adanmış SQL havuzunda tanıtılmıştır. Sonuç kümesi önbelleğe alma, yinelenen sorgulardan statik verilere karşı yüksek eşzamanlılık ve hızlı yanıt süreleri sağlamak için kullanılır.  
 
 Önbelleğe alınan sonucu kullanmak için, sorgu isteyen önbelleğin formu, önbelleği üreten sorguyla eşleşmelidir.  Ayrıca, önbelleğe alınan sonucun tüm sorguya uygulanması gerekir.  
 

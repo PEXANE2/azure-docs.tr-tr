@@ -8,15 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/02/2020
+ms.date: 11/03/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ed5c554e6307b08c412de16d1bb92b458c5f15f
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+zone_pivot_groups: keyword-quickstart
+ms.openlocfilehash: 2d15da55c0bab42571d2a9660156a780c5d27881
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166463"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305865"
 ---
 # <a name="get-started-with-custom-keyword"></a>Özel Anahtar Sözcük ile çalışmaya başlama
 
@@ -36,9 +37,9 @@ Bu makaledeki adımlarda bir konuşma aboneliği ve konuşma SDK 'Sı gerekir. H
 
 1. [Konuşma Studio](https://aka.ms/sdsdk-speechportal) 'ya gidin ve **oturum açın** veya henüz bir konuşma aboneliğiniz yoksa, [**abonelik oluştur**](https://go.microsoft.com/fwlink/?linkid=2086754)' u seçin.
 
-1. [Özel anahtar sözcük](https://aka.ms/sdsdk-wakewordportal) sayfasında **Yeni bir proje**oluşturun. 
+1. [Özel anahtar sözcük](https://aka.ms/sdsdk-wakewordportal) sayfasında **Yeni bir proje** oluşturun. 
 
-1. Bir **ad**, isteğe bağlı bir **Açıklama**girin ve dili seçin. Dil başına bir proje gerekir ve şu anda dille sınırlı destek vardır `en-US` .
+1. Bir **ad** , isteğe bağlı bir **Açıklama** girin ve dili seçin. Dil başına bir proje gerekir ve şu anda dille sınırlı destek vardır `en-US` .
 
     ![Anahtar sözcük projenizi açıkla](media/custom-keyword/custom-kws-portal-new-project.png)
 
@@ -46,9 +47,9 @@ Bu makaledeki adımlarda bir konuşma aboneliği ve konuşma SDK 'Sı gerekir. H
 
     ![Anahtar sözcük projenizi seçin](media/custom-keyword/custom-kws-portal-project-list.png)
 
-1. Yeni bir anahtar sözcük modeli oluşturmak için **modeli eğitme**' ye tıklayın.
+1. Yeni bir anahtar sözcük modeli oluşturmak için **modeli eğitme** ' ye tıklayın.
 
-1. Model için bir **ad** , isteğe bağlı bir **Açıklama**ve istediğiniz **anahtar sözcüğü** girin ve ardından **İleri**' ye tıklayın. Etkin anahtar sözcük seçme [yönergelerine](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword) bakın.
+1. Model için bir **ad** , isteğe bağlı bir **Açıklama** ve istediğiniz **anahtar sözcüğü** girin ve ardından **İleri** ' ye tıklayın. Etkin anahtar sözcük seçme [yönergelerine](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword) bakın.
 
     ![Anahtar keliinizi girin](media/custom-keyword/custom-kws-portal-new-model.png)
 
@@ -64,25 +65,17 @@ Bu makaledeki adımlarda bir konuşma aboneliği ve konuşma SDK 'Sı gerekir. H
 
 ## <a name="use-a-keyword-model-with-the-sdk"></a>SDK ile anahtar sözcük modeli kullanma
 
-İlk olarak, `FromFile()` bir döndüren statik işlevini kullanarak anahtar sözcük modeli dosyanızı yükleyin `KeywordRecognitionModel` . `.table`Konuşma Studio 'dan indirdiğiniz dosyanın yolunu kullanın. Ayrıca, `AudioConfig` varsayılan mikrofonu kullanarak bir oluşturun ve ardından Ses Yapılandırması ' nı kullanarak yeni bir örneğini oluşturun `KeywordRecognizer` .
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [C# Basics include](includes/how-to/keyword-recognition/keyword-basics-csharp.md)]
+::: zone-end
 
-```csharp
-using Microsoft.CognitiveServices.Speech;
-using Microsoft.CognitiveServices.Speech.Audio;
+::: zone pivot="programming-language-python"
+[!INCLUDE [Python Basics include](includes/how-to/keyword-recognition/keyword-basics-python.md)]
+::: zone-end
 
-var keywordModel = KeywordRecognitionModel.FromFile("your/path/to/Activate_device.table");
-using var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
-using var keywordRecognizer = new KeywordRecognizer(audioConfig);
-```
-
-Ardından, anahtar sözcük tanımayı çalıştırmak, `RecognizeOnceAsync()` model nesneniz geçirerek bir çağrısıyla yapılır. Bu, anahtar sözcük tanınana kadar olan bir anahtar sözcük tanıma oturumu başlatır. Bu nedenle, genellikle bu tasarım modelini çok iş parçacıklı uygulamalarda veya bir uyandırma sözcüğünün süresiz olarak bekleyebilirsiniz kullanım durumlarında kullanırsınız.
-
-```csharp
-KeywordRecognitionResult result = await keywordRecognizer.RecognizeOnceAsync(keywordModel);
-```
-
-> [!NOTE]
-> Burada gösterilen örnek, `SpeechConfig` kimlik doğrulama bağlamı için bir nesne gerektirmediğinden ve arka uca başvurmadığından yerel anahtar sözcük tanımayı kullanır. Ancak, her iki anahtar sözcük tanıma ve doğrulamayı [sürekli bir arka uç bağlantısı](https://docs.microsoft.com/azure/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk#view-the-source-code-that-enables-keyword)kullanarak çalıştırabilirsiniz.
+::: zone pivot="programming-languages-objectivec-swift"
+[!INCLUDE [ObjectiveC/Swift Basics include](includes/how-to/keyword-recognition/keyword-basics-objc.md)]
+::: zone-end
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

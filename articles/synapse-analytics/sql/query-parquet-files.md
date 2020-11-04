@@ -1,6 +1,6 @@
 ---
-title: İsteğe bağlı SQL kullanarak Parquet dosyalarını sorgulama (Önizleme)
-description: Bu makalede, SQL isteğe bağlı (Önizleme) kullanarak Parquet dosyalarını sorgulamayı öğreneceksiniz.
+title: Sunucusuz SQL Havuzu (Önizleme) kullanarak Parquet dosyalarını sorgulama
+description: Bu makalede sunucusuz SQL Havuzu (Önizleme) kullanarak Parquet dosyalarını sorgulamayı öğreneceksiniz.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2e00ecd6048239683951a2d1e60d3bcb0eb5aa68
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 3559b3724d14be6aade07c4884190afce30c0715
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242441"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93306861"
 ---
-# <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kullanarak Parquet dosyalarını sorgulama
+# <a name="query-parquet-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullanarak Parquet dosyalarını sorgulama
 
-Bu makalede, Parquet dosyalarını okuyacak, isteğe bağlı SQL (Önizleme) kullanarak bir sorgu yazmayı öğreneceksiniz.
+Bu makalede, Parquet dosyalarını okuyacak sunucusuz SQL Havuzu (Önizleme) kullanarak bir sorgu yazmayı öğreneceksiniz.
 
 ## <a name="quickstart-example"></a>Hızlı başlangıç örneği
 
@@ -111,7 +111,7 @@ Parquet dosyalarını okurken OPENROWSET WıTH yan tümcesini kullanmanız gerek
 Aşağıdaki örnekte, Parquet dosyaları için otomatik Şema çıkarımı özellikleri gösterilmektedir. Bir şema belirtmeden 2017 Eylül ayının satır sayısını döndürür.
 
 > [!NOTE]
-> Parquet dosyalarını okurken OPENROWSET WıTH yan tümcesinde sütunlar belirtmeniz gerekmez. Bu durumda, SQL isteğe bağlı sorgu hizmeti, Parquet dosyasındaki meta verileri kullanır ve sütunları ada göre bağlar.
+> Parquet dosyalarını okurken OPENROWSET WıTH yan tümcesinde sütunlar belirtmeniz gerekmez. Bu durumda, sunucusuz SQL havuzu sorgu hizmeti, Parquet dosyasındaki meta verileri kullanır ve sütunları ada göre bağlar.
 
 ```sql
 SELECT TOP 10 *
@@ -128,7 +128,7 @@ FROM
 Bu örnekte belirtilen veri kümesi ayrı alt klasörlere bölünür (bölümlenmiş). FilePath işlevini kullanarak belirli bölümleri hedefleyebilirsiniz. Bu örnekte, 2017 ayının ilk üç ayı için yıl, ay ve payment_type göre tarifeli havayolu miktarları gösterilmektedir.
 
 > [!NOTE]
-> İsteğe bağlı SQL sorgusu Hive/Hadoop bölümlendirme şeması ile uyumludur.
+> Sunucusuz SQL havuzu sorgusu Hive/Hadoop bölümlendirme şeması ile uyumludur.
 
 ```sql
 SELECT

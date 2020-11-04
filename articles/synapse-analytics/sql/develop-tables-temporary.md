@@ -10,26 +10,26 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 4559c72481dfa0cefb2ce84cab56a50d0bf182ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd285e8029d8e140380b0f90c60081d0e1f8dd56
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030336"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305039"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>SYNAPSE SQL 'de geçici tablolar
 
 Bu makale, geçici tabloları kullanmaya yönelik temel bir kılavuz içerir ve SYNAPSE SQL içindeki oturum düzeyi geçici tablolarının ilkelerini vurgular. 
 
-Hem SQL havuzu hem de SQL isteğe bağlı (Önizleme) kaynakları geçici tabloları kullanabilir. İsteğe bağlı SQL, bu makalenin sonunda ele alınan sınırlamalara sahiptir. 
+Hem adanmış SQL havuzu hem de sunucusuz SQL Havuzu (Önizleme) kaynakları geçici tabloları kullanabilir. Sunucusuz SQL havuzunda, bu makalenin sonunda ele alınan sınırlamalar vardır. 
 
 ## <a name="temporary-tables"></a>Geçici tablolar
 
 Geçici tablolar, özellikle de ara sonuçların geçici olduğu dönüştürme sırasında verileri işlerken yararlı olur. SYNAPSE SQL ile, geçici tablolar oturum düzeyinde bulunur.  Bunlar yalnızca oluşturuldukları oturum tarafından görülebilir. Bu nedenle, bu oturum kapattığında otomatik olarak bırakılır. 
 
-## <a name="temporary-tables-in-sql-pool"></a>SQL havuzundaki geçici tablolar
+## <a name="temporary-tables-in-dedicated-sql-pool"></a>Adanmış SQL havuzundaki geçici tablolar
 
-SQL havuzu kaynağında, sonuçları uzak depolama yerine yerel olarak yazıldığı için geçici tablolar bir performans avantajı sunar.
+Adanmış SQL havuzu kaynağında, sonuçları uzak depolama yerine yerel olarak yazıldığı için geçici tablolar bir performans avantajı sunar.
 
 ### <a name="create-a-temporary-table"></a>Geçici tablo oluşturma
 
@@ -99,6 +99,7 @@ GROUP BY
 > 
 
 ### <a name="drop-temporary-tables"></a>Geçici tabloları bırak
+
 Yeni bir oturum oluşturulduğunda geçici tabloların olmaması gerekir.  Bununla birlikte, aynı ada sahip bir geçici oluşturan aynı saklı yordamı arıyorsanız, deyimlerinizin başarılı olduğundan emin olmak için, `CREATE TABLE` ile basit bir ön varlık denetimi kullanın  `DROP` : 
 
 ```sql
@@ -117,6 +118,7 @@ DROP TABLE #stats_ddl
 ```
 
 ### <a name="modularize-code"></a>Kodu modüle leştir
+
 Geçici tablolar, kullanıcı oturumunda herhangi bir yerde kullanılabilir. Bu özellik daha sonra uygulama kodunuzu modüler hale getirmenize yardımcı olmak için kullanılabilir.  Göstermek için aşağıdaki saklı yordam DDL 'yi, veritabanındaki tüm istatistikleri istatistik adına göre güncelleştirmek üzere oluşturur:
 
 ```sql
@@ -195,7 +197,7 @@ Bu aşamada, oluşan tek eylem, #stats_ddl geçici tablo üreten bir saklı yord
 
 `DROP TABLE`Saklı yordamın sonunda, saklı yordam tamamlandığında, oluşturulan tablo kalır ve saklı yordamın dışında okunabilir.  
 
-Diğer SQL Server veritabanlarının aksine, SYNAPSE SQL, geçici tabloyu onu oluşturan yordamın dışında kullanmanıza olanak sağlar.  SQL havuzu aracılığıyla oluşturulan geçici tablolar, oturum içinde **herhangi bir yerde** kullanılabilir. Sonuç olarak, aşağıdaki örnekte gösterildiği gibi daha modüler ve yönetilebilir kod elde edersiniz:
+Diğer SQL Server veritabanlarının aksine, SYNAPSE SQL, geçici tabloyu onu oluşturan yordamın dışında kullanmanıza olanak sağlar.  Adanmış SQL havuzu aracılığıyla oluşturulan geçici tablolar, oturum içinde **herhangi bir yerde** kullanılabilir. Sonuç olarak, aşağıdaki örnekte gösterildiği gibi daha modüler ve yönetilebilir kod elde edersiniz:
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -218,15 +220,15 @@ DROP TABLE #stats_ddl;
 
 ### <a name="temporary-table-limitations"></a>Geçici tablo sınırlamaları
 
-SQL havuzu geçici tablolar için birkaç uygulama kısıtlamalarına sahiptir:
+Adanmış SQL havuzu geçici tablolar için birkaç uygulama kısıtlamalarına sahiptir:
 
 - Yalnızca oturum kapsamlı geçici tablolar desteklenir.  Genel geçici tablolar desteklenmez.
 - Görünümler geçici tablolarda oluşturulamaz.
 - Geçici tablolar yalnızca karma veya hepsini bir kez deneme dağıtımı ile oluşturulabilir.  Çoğaltılan geçici tablo dağıtımı desteklenmiyor. 
 
-## <a name="temporary-tables-in-sql-on-demand-preview"></a>İsteğe bağlı SQL 'de geçici tablolar (Önizleme)
+## <a name="temporary-tables-in-serverless-sql-pool-preview"></a>Sunucusuz SQL havuzundaki geçici tablolar (Önizleme)
 
-İsteğe bağlı SQL 'deki geçici tablolar desteklenir, ancak kullanımları sınırlıdır. Dosyaları hedef olan sorgularda kullanılamaz. 
+Sunucusuz SQL havuzundaki geçici tablolar desteklenir, ancak kullanımları sınırlıdır. Dosyaları hedef olan sorgularda kullanılamaz. 
 
 Örneğin, depolama alanındaki dosyalardaki verilerle geçici bir tabloya katılamaz. Geçici tablo sayısı 100 ile sınırlıdır ve toplam boyutu 100 MB ile sınırlıdır.
 

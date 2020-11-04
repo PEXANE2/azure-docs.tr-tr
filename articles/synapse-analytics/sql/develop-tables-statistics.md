@@ -11,30 +11,30 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 368d43283d713b8d4e101c2ee26724242f29756c
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: 6d59d64c861b74610e82b962ddd5db2331d3db64
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148261"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305016"
 ---
 # <a name="statistics-in-synapse-sql"></a>SYNAPSE SQL istatistikleri
 
-Bu makalede sunulan öneriler ve SYNAPSE SQL kaynaklarını kullanarak sorgu iyileştirmesi istatistiklerini oluşturma ve güncelleştirme örnekleri: SQL havuzu ve isteğe bağlı SQL (Önizleme).
+Bu makalede sunulan öneriler ve SYNAPSE SQL kaynakları kullanılarak sorgu iyileştirmesi istatistiklerini oluşturma ve güncelleştirme örnekleri: adanmış SQL havuzu ve sunucusuz SQL Havuzu (Önizleme).
 
-## <a name="statistics-in-sql-pool"></a>SQL havuzundaki istatistikler
+## <a name="statistics-in-dedicated-sql-pool"></a>Adanmış SQL havuzundaki istatistikler
 
 ### <a name="why-use-statistics"></a>İstatistikleri neden kullanılmalıdır?
 
-SQL havuzu kaynağı ne kadar çok olduğunu biliyorsa, sorguları yürütebilir daha hızlı olur. Verileri SQL havuzuna yükledikten sonra verileriniz üzerinde istatistikler toplanması, sorgu iyileştirmesi için yapabileceğiniz en önemli işlemlerden biridir.  
+Daha fazla adanmış SQL havuzu verileriniz hakkında bilgi sahibi olduğunda sorguları yürütebilir daha hızlı olur. Verileri adanmış bir SQL havuzuna yükledikten sonra, verilerinize ilişkin istatistikleri toplamak, sorgu iyileştirmesi için yapabileceğiniz en önemli işlemlerden biridir.  
 
-SQL havuzu sorgu iyileştiricisi, maliyet tabanlı bir iyileştiricudur. Çeşitli sorgu planlarının maliyetini karşılaştırır ve en düşük maliyetli planı seçer. Çoğu durumda, en hızlı yürütecektir planı seçer.
+Adanmış SQL havuzu sorgu iyileştiricisi, maliyet tabanlı bir iyileştiricudur. Çeşitli sorgu planlarının maliyetini karşılaştırır ve en düşük maliyetli planı seçer. Çoğu durumda, en hızlı yürütecektir planı seçer.
 
 Örneğin, iyileştirici sorgunun filtrelemesinin olduğu tarihin bir satır döndürdüğü tahmini bir plan seçer. Seçili tarihin 1.000.000 satır döndüreceğini tahmin eder, farklı bir plan döndürür.
 
 ### <a name="automatic-creation-of-statistics"></a>İstatistiklerin otomatik olarak oluşturulması
 
-Veritabanı AUTO_CREATE_STATISTICS seçeneği olarak ayarlandığında SQL havuzu eksik istatistik için gelen kullanıcı sorgularını analiz eder `ON` .  İstatistikler eksikse, sorgu iyileştiricisi sorgu koşulunda veya JOIN koşulunda tek tek sütunlarda istatistikler oluşturur. 
+Adanmış SQL havuzu altyapısı, veritabanı AUTO_CREATE_STATISTICS seçeneği olarak ayarlandığında eksik istatistik için gelen kullanıcı sorgularını analiz eder `ON` .  İstatistikler eksikse, sorgu iyileştiricisi sorgu koşulunda veya JOIN koşulunda tek tek sütunlarda istatistikler oluşturur. 
 
 Bu işlev, sorgu planına yönelik kardinalite tahminlerini geliştirmek için kullanılır.
 
@@ -166,7 +166,7 @@ Bu örneklerde, istatistik oluşturmak için çeşitli seçeneklerin nasıl kull
 #### <a name="create-single-column-statistics-with-default-options"></a>Varsayılan seçeneklerle tek sütunlu istatistikler oluşturma
 
 Bir sütunda istatistik oluşturmak için, istatistik nesnesi ve sütunun adı için bir ad sağlayın.
-Bu söz dizimi varsayılan seçeneklerin tümünü kullanır. Varsayılan olarak, SQL havuzu istatistik oluşturduğunda tablonun **yüzde 20 ' sini** örnekler.
+Bu söz dizimi varsayılan seçeneklerin tümünü kullanır. Varsayılan olarak, adanmış SQL havuzu, istatistik oluşturduğunda tablonun **yüzde 20 ' sini** örnekler.
 
 ```sql
 CREATE STATISTICS [statistics_name]
@@ -430,7 +430,7 @@ GÜNCELLEŞTIRME ISTATISTIKLERI bildiriminin kullanımı kolaydır. Yalnızca ta
 Performans bir sorun değilse, bu yöntem istatistiklerin güncel olup olmadığını güvence altına almak için en kolay ve en kapsamlı yoldur.
 
 > [!NOTE]
-> Bir tablodaki tüm İstatistikleri güncelleştirirken, SQL havuzu her bir istatistik nesnesi için tabloyu örneklemek üzere bir tarama yapar. Tablo büyükse ve çok sayıda sütun ve birçok istatistik içeriyorsa, her bir istatistiği ihtiyaya göre güncelleştirmek daha verimli olabilir.
+> Bir tablodaki tüm İstatistikleri güncelleştirirken, adanmış SQL havuzu her istatistik nesnesi için tabloyu örneklemek üzere bir tarama yapar. Tablo büyükse ve çok sayıda sütun ve birçok istatistik içeriyorsa, her bir istatistiği ihtiyaya göre güncelleştirmek daha verimli olabilir.
 
 Bir yordamın uygulanması için `UPDATE STATISTICS` bkz. [geçici tablolar](develop-tables-temporary.md). Uygulama yöntemi önceki yordamdan biraz farklıdır `CREATE STATISTICS` , ancak sonuç aynıdır.
 Tam sözdizimi için bkz. [güncelleştirme istatistikleri](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
@@ -512,7 +512,7 @@ DBCC SHOW_STATISTICS (), bir istatistik nesnesi içinde tutulan verileri göster
 
 Üst bilgi, istatistiklerle ilgili meta verilerdir. Histogram, değerlerin dağılımını istatistik nesnesinin ilk anahtar sütununda görüntüler. 
 
-Yoğunluk vektörü, çapraz sütun bağıntısını ölçer. SQL havuzu, istatistik nesnesindeki verilerle kardinalite tahminleri hesaplar.
+Yoğunluk vektörü, çapraz sütun bağıntısını ölçer. Adanmış SQL havuzu, istatistik nesnesindeki verilerle kardinalite tahminleri hesaplar.
 
 #### <a name="show-header-density-and-histogram"></a>Üstbilgiyi, yoğunluğu ve histogramı göster
 
@@ -546,7 +546,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 
 ### <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS () farkları
 
-`DBCC SHOW_STATISTICS()` SQL Server karşılaştırıldığında SQL havuzunda daha net bir şekilde uygulanmıştır:
+`DBCC SHOW_STATISTICS()` , SQL Server karşılaştırıldığında adanmış SQL havuzunda daha net bir şekilde uygulanmıştır:
 
 - Belgelenmemiş özellikler desteklenmez.
 - Stats_stream kullanılamıyor.
@@ -556,25 +556,22 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 - İstatistik nesnelerini tanımlamak için sütun adları kullanılamaz.
 - Özel hata 2767 desteklenmiyor.
 
-### <a name="next-steps"></a>Sonraki adımlar
 
-Sorgu performansını artırmak için bkz. [iş yükünüzü izleme](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-
-## <a name="statistics-in-sql-on-demand-preview"></a>İsteğe bağlı SQL istatistikleri (Önizleme)
+## <a name="statistics-in-serverless-sql-pool-preview"></a>Sunucusuz SQL havuzundaki istatistikler (Önizleme)
 
 İstatistikler, belirli bir veri kümesi (depolama yolu) için belirli bir sütun başına oluşturulur.
 
 ### <a name="why-use-statistics"></a>İstatistikleri neden kullanılmalıdır?
 
-Daha fazla SQL isteğe bağlı (Önizleme) verileriniz hakkında daha hızlı bir şekilde sorgu yürütebiliyor. Verilerinize ilişkin istatistikleri toplamak, sorgularınızı iyileştirmek için yapabileceğiniz en önemli işlemlerden biridir. 
+Daha az sunucusuz SQL Havuzu (Önizleme) verileriniz hakkında bilgi sahibi olur. Bu, daha hızlı sorgu yürütebilir. Verilerinize ilişkin istatistikleri toplamak, sorgularınızı iyileştirmek için yapabileceğiniz en önemli işlemlerden biridir. 
 
-SQL isteğe bağlı sorgu iyileştiricisi, maliyet tabanlı bir iyileştiricsahiptir. Çeşitli sorgu planlarının maliyetini karşılaştırır ve en düşük maliyetli planı seçer. Çoğu durumda, en hızlı yürütecektir planı seçer. 
+Sunucusuz SQL havuzu sorgu iyileştiricisi, maliyet tabanlı bir iyileştiricudur. Çeşitli sorgu planlarının maliyetini karşılaştırır ve en düşük maliyetli planı seçer. Çoğu durumda, en hızlı yürütecektir planı seçer. 
 
 Örneğin, iyileştirici sorgunun filtrelemesinin olduğu tarihin bir satır döndürür bir plan seçer. Seçili tarihin 1.000.000 satır döndüreceğini tahmin eder, farklı bir plan döndürür.
 
 ### <a name="automatic-creation-of-statistics"></a>İstatistiklerin otomatik olarak oluşturulması
 
-SQL isteğe bağlı, eksik istatistikler için gelen kullanıcı sorgularını analiz eder. İstatistikler eksikse, sorgu iyileştiricisi sorgu koşulunda tek tek sütunlarda istatistikler oluşturur ve sorgu planının kardinalitesini tahmin etmek için JOIN koşulundaki
+Sunucusuz SQL havuzu, eksik istatistik için gelen kullanıcı sorgularını analiz eder. İstatistikler eksikse, sorgu iyileştiricisi sorgu koşulunda tek tek sütunlarda istatistikler oluşturur ve sorgu planının kardinalitesini tahmin etmek için JOIN koşulundaki
 
 SELECT deyimleri otomatik olarak istatistik oluşturmayı tetikler.
 
@@ -585,7 +582,7 @@ SELECT deyimleri otomatik olarak istatistik oluşturmayı tetikler.
 
 ### <a name="manual-creation-of-statistics"></a>İstatistiklerin el ile oluşturulması
 
-SQL isteğe bağlı, istatistik el ile oluşturmanızı sağlar. CSV dosyaları için otomatik istatistik oluşturma özelliği açık olmadığından, CSV dosyaları için istatistikleri el ile oluşturmanız gerekir. 
+Sunucusuz SQL havuzu, istatistikleri el ile oluşturmanızı sağlar. CSV dosyaları için otomatik istatistik oluşturma özelliği açık olmadığından, CSV dosyaları için istatistikleri el ile oluşturmanız gerekir. 
 
 İstatistiklerin el ile nasıl oluşturulacağı hakkında yönergeler için aşağıdaki örneklere bakın.
 
@@ -593,7 +590,7 @@ SQL isteğe bağlı, istatistik el ile oluşturmanızı sağlar. CSV dosyaları 
 
 Dosyalardaki verilerde yapılan değişiklikler, silme ve dosya ekleme, veri dağıtım değişikliklerine neden olur ve istatistik güncel değildir. Bu durumda, istatistiklerin güncelleştirilmesi gerekir.
 
-Veriler önemli ölçüde değiştirilirse SQL isteğe bağlı, istatistikleri otomatik olarak yeniden oluşturur. İstatistikler otomatik olarak oluşturulduğunda, veri kümesinin geçerli durumu da kaydedilir: dosya yolları, Boyutlar, son değiştirilme tarihleri.
+Veriler önemli ölçüde değiştirilmişse sunucusuz SQL havuzu otomatik olarak istatistikleri yeniden oluşturur. İstatistikler otomatik olarak oluşturulduğunda, veri kümesinin geçerli durumu da kaydedilir: dosya yolları, Boyutlar, son değiştirilme tarihleri.
 
 İstatistikler eskidiğinde, yenilerini oluşturulur. Algoritma verilerin içinden geçer ve veri kümesinin geçerli durumuyla karşılaştırılır. Değişikliklerin boyutu belirli eşikten büyükse, eski istatistikler silinir ve yeni veri kümesi üzerinden yeniden oluşturulur.
 
@@ -650,7 +647,7 @@ Bağımsız değişkenler: [ @stmt =] N ' statement_text '-istatistikler için k
 
 Bir sütunda istatistik oluşturmak için, istatistikleri gereken sütunu döndüren bir sorgu sağlayın.
 
-Varsayılan olarak, aksi takdirde, SQL isteğe bağlı SQL, istatistik oluşturduğunda veri kümesinde belirtilen verilerin %100 ' u kullanır.
+Varsayılan olarak, aksi takdirde, sunucusuz SQL havuzu, istatistik oluşturduğunda veri kümesinde belirtilen verilerin %100 'ini kullanır.
 
 Örneğin, population.csv dosyasına göre veri kümesinin yıl sütunu için varsayılan seçeneklerle (FULLSCAN) istatistik oluşturmak için:
 
@@ -816,4 +813,6 @@ CREATE STATISTICS sState
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla sorgu performans geliştirmesi için bkz. [SQL havuzu Için en iyi uygulamalar](best-practices-sql-pool.md#maintain-statistics).
+Adanmış SQL havuzunun sorgu performansını daha da geliştirmek için bkz. [Özel SQL havuzu için](best-practices-sql-pool.md#maintain-statistics) [iş yükünüzü](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ve en iyi uygulamalarınızı izleme.
+
+Sunucusuz SQL havuzunun sorgu performansını daha da geliştirmek için bkz. [sunucusuz SQL havuzu Için en iyi yöntemler](best-practices-sql-on-demand.md)

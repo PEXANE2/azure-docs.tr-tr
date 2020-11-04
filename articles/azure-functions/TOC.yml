@@ -270,7 +270,7 @@
         - name: Bağlantıları yönetme
           href: manage-connections.md
           displayName: best practice
-        - name: Hata işleme
+        - name: Hata işleme ve yeniden deneme
           href: functions-bindings-error-pages.md
         - name: HTTP ile tetiklenmeyen bir işlevi el ile çalıştırma
           href: functions-manually-run-non-http.md

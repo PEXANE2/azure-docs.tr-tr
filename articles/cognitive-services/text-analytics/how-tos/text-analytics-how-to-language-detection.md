@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: 7214915e28158fe5dbb7b350e175b068afed1244
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 5fa895964c30021452b8ce7b070a8b127d65e972
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166208"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305960"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Örnek: Metin Analizi Dili algıla
 
@@ -78,7 +78,7 @@ Belge boyutunun belge başına 5.120 karakter altında olması gerekir. Koleksiy
 + İstek gövdesinde, bu analiz için hazırladığınız JSON belgeleri koleksiyonunu sağlayın.
 
 > [!Tip]
-> İsteği yapılandırmak ve hizmete GÖNDERMEK için [Postman](text-analytics-how-to-call-api.md) kullanın veya [belgelerdeki](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)**API testi konsolu**’nu açın.
+> İsteği yapılandırmak ve hizmete GÖNDERMEK için [Postman](text-analytics-how-to-call-api.md) kullanın veya [belgelerdeki](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)**API testi konsolu** ’nu açın.
 
 ## <a name="step-2-post-the-request"></a>2. Adım: isteği GÖNDERIN
 
@@ -184,7 +184,7 @@ Hizmetin artık daha iyi bir değerlendirme yapmak için ek bağlamı vardır:
         "documents": [
             {
                 "id": "1",
-                "detectedLanguages": [
+                "detectedLanguage": [
                     {
                         "name": "English",
                         "iso6391Name": "en",
@@ -194,7 +194,7 @@ Hizmetin artık daha iyi bir değerlendirme yapmak için ek bağlamı vardır:
             },
             {
                 "id": "2",
-                "detectedLanguages": [
+                "detectedLanguage": [
                     {
                         "name": "French",
                         "iso6391Name": "fr",
@@ -212,7 +212,7 @@ Hizmetin artık daha iyi bir değerlendirme yapmak için ek bağlamı vardır:
 ```json
     {
         "id": "5",
-        "detectedLanguages": [
+        "detectedLanguage": [
             {
                 "name": "(Unknown)",
                 "iso6391Name": "(Unknown)",
@@ -248,7 +248,7 @@ Elde edilen çıktı, daha zayıf bir güvenilirlik düzeyini belirten 1,0 ' den
       "documents": [
         {
           "id": "1",
-          "detectedLanguages": [
+          "detectedLanguage": [
             {
               "name": "Spanish",
               "iso6391Name": "es",

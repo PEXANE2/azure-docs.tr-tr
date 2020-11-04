@@ -8,17 +8,17 @@ ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: tables
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e643a7ce5ccf4aa5107df1e505d90a0767517350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a7502d48095fe18b983c1971d5145f51e766c95
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89070420"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93306900"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Azure PowerShell ile Azure Tablo depolama işlemlerini gerçekleştirme 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
-Azure Tablo depolama, yapılandırılmış ve ilişkisel olmayan verilerin büyük kümelerini depolamak ve sorgulamak için kullanabileceğiniz bir NoSQL veri deposudur. Hizmetin ana bileşenleri tablolar, varlıklar ve özelliklerdir. Bir tablo, varlıkların koleksiyonudur. Bir varlık bir özellikler kümesidir. Her varlık, tüm ad-değer çiftleri olan en fazla 252 özelliğe sahip olabilir. Bu makalede, Azure Tablo depolama hizmeti kavramlarını zaten bildiğiniz varsayılmaktadır. Ayrıntılı bilgi için bkz. [Tablo hizmeti veri modelini anlama](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) ve [.NET kullanarak Azure Tablo depolama ile çalışmaya başlama](../../cosmos-db/table-storage-how-to-use-dotnet.md).
+Azure Tablo depolama, yapılandırılmış ve ilişkisel olmayan verilerin büyük kümelerini depolamak ve sorgulamak için kullanabileceğiniz bir NoSQL veri deposudur. Hizmetin ana bileşenleri tablolar, varlıklar ve özelliklerdir. Bir tablo, varlıkların koleksiyonudur. Bir varlık bir özellikler kümesidir. Her varlık, tüm ad-değer çiftleri olan en fazla 252 özelliğe sahip olabilir. Bu makalede, Azure Tablo depolama hizmeti kavramlarını zaten bildiğiniz varsayılmaktadır. Ayrıntılı bilgi için bkz. [Tablo hizmeti veri modelini anlama](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) ve [.NET kullanarak Azure Tablo depolama ile çalışmaya başlama](../../cosmos-db/tutorial-develop-table-dotnet.md).
 
 Bu nasıl yapılır makalesi, genel Azure Tablo depolama işlemlerini içerir. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz: 
 
@@ -38,7 +38,7 @@ Bu nasıl yapılır makalesi, işiniz bittiğinde kolayca kaldırabilmeniz için
 > Bu Azure özelliği PowerShell 'den kullanıldığında `Az` modülün yüklü olması gerekir. Geçerli sürümü, `AzTable` eski Azurerd modülüyle uyumlu değil.
 > Gerekirse [az Module 'ü yüklemeye yönelik en son yükleme yönergelerini](/powershell/azure/install-az-ps) izleyin.
 
-Azure PowerShell yüklendikten veya güncelleştirildikten sonra, varlıkları yönetmeye yönelik komutlara sahip olan, **Aztable**modülünü yüklemelisiniz. Bu modülü yüklemek için PowerShell 'i yönetici olarak çalıştırın ve **install-Module** komutunu kullanın.
+Azure PowerShell yüklendikten veya güncelleştirildikten sonra, varlıkları yönetmeye yönelik komutlara sahip olan, **Aztable** modülünü yüklemelisiniz. Bu modülü yüklemek için PowerShell 'i yönetici olarak çalıştırın ve **install-Module** komutunu kullanın.
 
 > [!IMPORTANT]
 > Modül adı uyumluluk nedenleriyle, bu modülü hala PowerShell Galerisi eski adı altında yayımlıyoruz `AzureRmStorageTables` . Bu belge yalnızca yeni ada başvuru oluşturacak.
@@ -57,7 +57,7 @@ Add-AzAccount
 
 ## <a name="retrieve-list-of-locations"></a>Konumların listesini al
 
-Kullanmak istediğiniz konumdan emin değilseniz, kullanılabilir konumları listeleyebilirsiniz. Liste görüntülendikten sonra, kullanmak istediğiniz öğeyi bulun. Bu örnekler **eastus**kullanır. Bu değeri gelecekteki kullanım için değişken **konumunda** depolayın.
+Kullanmak istediğiniz konumdan emin değilseniz, kullanılabilir konumları listeleyebilirsiniz. Liste görüntülendikten sonra, kullanmak istediğiniz öğeyi bulun. Bu örnekler **eastus** kullanır. Bu değeri gelecekteki kullanım için değişken **konumunda** depolayın.
 
 ```powershell
 Get-AzLocation | select Location
@@ -90,7 +90,7 @@ $storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup `
 $ctx = $storageAccount.Context
 ```
 
-## <a name="create-a-new-table"></a>Yeni tablo oluştur
+## <a name="create-a-new-table"></a>Yeni tablo oluşturma
 
 Tablo oluşturmak için [New-AzStorageTable](/powershell/module/az.storage/New-AzStorageTable) cmdlet 'ini kullanın. Bu örnekte, tablo çağırılır `pshtesttable` .
 
@@ -120,7 +120,7 @@ $storageTable = Get-AzStorageTable –Name $tableName –Context $ctx
 > [!IMPORTANT]
 > **Aztable** PowerShell modülüyle çalışırken cloudtable kullanımı zorunludur. Bu nesnenin başvurusunu almak için **Get-AzStorageTable** komutunu çağırın. Bu komut, zaten mevcut değilse tabloyu da oluşturur.
 
-**Aztable**kullanarak bir tablo üzerinde işlem gerçekleştirmek için belirli bir tablonun cloudtable özelliğine başvurunuz olması gerekir.
+**Aztable** kullanarak bir tablo üzerinde işlem gerçekleştirmek için belirli bir tablonun cloudtable özelliğine başvurunuz olması gerekir.
 
 ```powershell
 $cloudTable = (Get-AzStorageTable –Name $tableName –Context $ctx).CloudTable
