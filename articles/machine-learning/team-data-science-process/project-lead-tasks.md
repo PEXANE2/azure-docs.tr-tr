@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4a4d3a1480a852218e698862a509c4af45e49eb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d9b2546553e03d1555cf4c587d699d9a4ea7e51
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76714422"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321934"
 ---
 # <a name="project-lead-tasks-in-the-team-data-science-process"></a>Team Data Science Işlemindeki proje sağlama görevleri
 
@@ -49,21 +49,21 @@ Depoları kopyalamak ve yerel makinenizde veya Veri Bilimi Sanal Makinesi (DSVM)
 
 - Azure aboneliği.
 - Git makinenizde yüklü. DSVM kullanıyorsanız git önceden yüklüdür. Aksi takdirde, [platformlar ve araçlar ek](platforms-and-tools.md#appendix)bölümüne bakın.
-- DSVM 'yi, Azure 'da oluşturulan ve yapılandırılan Windows veya Linux DSVM 'yi kullanmak istiyorsanız. Daha fazla bilgi ve yönergeler için [veri bilimi sanal makinesi belgelerine](/azure/machine-learning/data-science-virtual-machine/)bakın.
-- Bir Windows DSVM için, makinenizde yüklü [Git kimlik bilgileri Yöneticisi (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . *README.MD* dosyasında, **indir ve yükle** bölümüne gidin ve **en son yükleyiciyi**seçin. Yükleyici sayfasından *. exe* yükleyicisini indirin ve çalıştırın. 
+- DSVM 'yi, Azure 'da oluşturulan ve yapılandırılan Windows veya Linux DSVM 'yi kullanmak istiyorsanız. Daha fazla bilgi ve yönergeler için [veri bilimi sanal makinesi belgelerine](../data-science-virtual-machine/index.yml)bakın.
+- Bir Windows DSVM için, makinenizde yüklü [Git kimlik bilgileri Yöneticisi (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . *README.MD* dosyasında, **indir ve yükle** bölümüne gidin ve **en son yükleyiciyi** seçin. Yükleyici sayfasından *. exe* yükleyicisini indirin ve çalıştırın. 
 - Bir Linux DSVM için, DSVM 'niz üzerinde ayarlanan ve Azure DevOps 'a eklenen bir SSH ortak anahtarı. Daha fazla bilgi ve yönergeler için [platformlar ve araçlar EKINDE](platforms-and-tools.md#appendix) **SSH ortak anahtarı oluşturma** bölümüne bakın. 
 
 ## <a name="create-a-project-repository-in-your-team-project"></a>Takım projenizde bir proje deposu oluşturma
 
 Takımınızın **myTeam** projesinde bir proje deposu oluşturmak için:
 
-1. Https 'de takımınızın proje **Özeti** sayfasına gidin *: \/ / \<server name> / \<organization name> / \<team name> *Örneğin, **https: \/ /dev.Azure.com/DataScienceUnit/myTeam**ve sol gezinmede bulunan **Depo** ' ı seçin. 
+1. Https 'de takımınızın proje **Özeti** sayfasına gidin *: \/ / \<server name> / \<organization name> / \<team name>* Örneğin, **https: \/ /dev.Azure.com/DataScienceUnit/myTeam** ve sol gezinmede bulunan **Depo** ' ı seçin. 
    
 1. Sayfanın üst kısmındaki depo adını seçin ve ardından açılan menüden **yeni depo** ' ı seçin.
    
    ![Yeni depo Seç](./media/project-lead-tasks/project-leads-9-select-repos.png)
    
-1. **Yeni depo oluştur** Iletişim kutusunda **tür**altında **Git** ' in seçildiğinden emin olun. **Depo adı**bölümüne *DSProject1* girin ve ardından **Oluştur**' u seçin.
+1. **Yeni depo oluştur** Iletişim kutusunda **tür** altında **Git** ' in seçildiğinden emin olun. **Depo adı** bölümüne *DSProject1* girin ve ardından **Oluştur** ' u seçin.
    
    ![Depo oluştur](./media/project-lead-tasks/project-leads-3-create-project-repo-2.png)
    
@@ -79,13 +79,13 @@ Proje deponuzu takım şablonu deponuzun içeriğiyle doldurmak için:
    
 1. Sayfanın üst kısmındaki depo adını seçin ve açılan listeden **DSProject1** öğesini seçin.
    
-1. **DSProject1 boş** sayfasında **içeri aktar**' ı seçin. 
+1. **DSProject1 boş** sayfasında **içeri aktar** ' ı seçin. 
    
    ![Içeri aktar 'ı seçin](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
    
-1. **Git deposunu Içeri aktar** iletişim kutusunda, **kaynak türü**olarak **Git** ' i seçin ve **kopya URL**'si altında **teamtemplate** deponuzun URL 'sini girin. URL *: https: \/ / \<server name> / \<organization name> / \<team name> /_Git/ \<team template repository name> *. Örneğin: **https: \/ /dev.Azure.com/DataScienceUnit/myTeam/_Git/TeamTemplate**. 
+1. **Git deposunu Içeri aktar** iletişim kutusunda, **kaynak türü** olarak **Git** ' i seçin ve **kopya URL** 'si altında **teamtemplate** deponuzun URL 'sini girin. URL *: https: \/ / \<server name> / \<organization name> / \<team name> /_Git/ \<team template repository name>*. Örneğin: **https: \/ /dev.Azure.com/DataScienceUnit/myTeam/_Git/TeamTemplate**. 
    
-1. **İçeri aktar**'ı seçin. Ekip şablonu deponuzun içeriği proje deponuza aktarılır. 
+1. **İçeri aktar** 'ı seçin. Ekip şablonu deponuzun içeriği proje deponuza aktarılır. 
    
    ![Takım şablonu deposunu içeri aktar](./media/project-lead-tasks/project-leads-6-create-project-repo-5.png)
 

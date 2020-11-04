@@ -10,18 +10,18 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d9942c31b63de77196b8b51b88376cb8ef74b990
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ecb5fef9c9b14bde72de29a45e29d7e16131bd1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76721260"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321915"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Ekip veri bilimi Işleminde bireysel katkıda bulunan görevler
 
 Bu konu, bir *bireyin* [ekip veri bilimi işleminde](overview.md) (TDSP) bir proje ayarlamak için tamamladığı görevleri özetler. Amaç, TDSP üzerinde standartlayan bir ortak ekip ortamında çalışır. TDSP, işbirliğinin ve Team Learning 'in artırılmasına yardımcı olmak için tasarlanmıştır. Personel rollerinin ve TDSP üzerinde standartlaştırarak bir veri bilimi ekibi tarafından işlenen ilişkili görevlerinin bir özeti için bkz. [Team Data Science işlem rolleri ve görevleri](roles-tasks.md).
 
-Aşağıdaki diyagramda, takım ortamlarını ayarlamak için projenin bireysel katkı sağlayanlar (veri bilimcileri) tamamlanmış görevler gösterilmektedir. TDSP altında bir veri bilimi projesi yürütmeye ilişkin yönergeler için bkz. [veri bilimi projelerini yürütme](project-execution.md). 
+Aşağıdaki diyagramda, takım ortamlarını ayarlamak için projenin bireysel katkı sağlayanlar (veri bilimcileri) tamamlanmış görevler gösterilmektedir. TDSP altında bir veri bilimi projesi yürütmeye ilişkin yönergeler için bkz. [veri bilimi projelerini yürütme](./agile-development.md). 
 
 ![Bireysel katkıda bulunan görevleri](./media/project-ic-tasks/project-ic-1-tdsp-data-scientist.png)
 
@@ -46,8 +46,8 @@ Depoları kopyalamak ve yerel makinenizde veya DSVM 'nizin içeriğini değişti
 
 - Azure aboneliği.
 - Git makinenizde yüklü. DSVM kullanıyorsanız git önceden yüklüdür. Aksi takdirde, [platformlar ve araçlar ek](platforms-and-tools.md#appendix)bölümüne bakın.
-- DSVM 'yi, Azure 'da oluşturulan ve yapılandırılan Windows veya Linux DSVM 'yi kullanmak istiyorsanız. Daha fazla bilgi ve yönergeler için [veri bilimi sanal makinesi belgelerine](/azure/machine-learning/data-science-virtual-machine/)bakın.
-- Bir Windows DSVM için, makinenizde yüklü [Git kimlik bilgileri Yöneticisi (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . *README.MD* dosyasında, **indir ve yükle** bölümüne gidin ve **en son yükleyiciyi**seçin. Yükleyici sayfasından *. exe* yükleyicisini indirin ve çalıştırın. 
+- DSVM 'yi, Azure 'da oluşturulan ve yapılandırılan Windows veya Linux DSVM 'yi kullanmak istiyorsanız. Daha fazla bilgi ve yönergeler için [veri bilimi sanal makinesi belgelerine](../data-science-virtual-machine/index.yml)bakın.
+- Bir Windows DSVM için, makinenizde yüklü [Git kimlik bilgileri Yöneticisi (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . *README.MD* dosyasında, **indir ve yükle** bölümüne gidin ve **en son yükleyiciyi** seçin. Yükleyici sayfasından *. exe* yükleyicisini indirin ve çalıştırın. 
 - Bir Linux DSVM için, DSVM 'niz üzerinde ayarlanan ve Azure DevOps 'a eklenen bir SSH ortak anahtarı. Daha fazla bilgi ve yönergeler için [platformlar ve araçlar EKINDE](platforms-and-tools.md#appendix) **SSH ortak anahtarı oluşturma** bölümüne bakın. 
 - Azure dosya depolama için Azure dosya depolama bilgileri, DSVM 'nize bağlamanız gerekir. 
 
@@ -55,7 +55,7 @@ Depoları kopyalamak ve yerel makinenizde veya DSVM 'nizin içeriğini değişti
 
 Depolarla yerel olarak çalışmak ve değişikliklerinizi paylaşılan ekibe ve proje depolarına iletmek *için, önce* depoları yerel makinenize kopyalamanız veya kopyalamanız gerekir. 
 
-1. Azure DevOps 'da, * \/ / \<server name> / \<organization name> / https \<team name> *:, örneğin, **https: \/ /dev.Azure.com/DataScienceUnit/myTeam**için takımınızın Proje Özeti sayfasına gidin.
+1. Azure DevOps 'da, *\/ / \<server name> / \<organization name> / https \<team name>* :, örneğin, **https: \/ /dev.Azure.com/DataScienceUnit/myTeam** için takımınızın Proje Özeti sayfasına gidin.
    
 1. Sol **Gezinti bölmesinde depo** ' ı seçin ve sayfanın üst kısmında, kopyalamak istediğiniz depoyu seçin.
    
@@ -103,4 +103,3 @@ Team Data Science Işlemi tarafından tanımlanan diğer roller ve görevler hak
 - [Veri bilimi ekibi için Grup Yöneticisi görevleri](group-manager-tasks.md)
 - [Bir veri bilimi ekibi için ekip sağlama görevleri](team-lead-tasks.md)
 - [Veri bilimi ekibi için proje lideri görevleri](project-lead-tasks.md)
-

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 742dc4b613c180550a4b3ec02827061acbf0bf78
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 3edeee8f41c806c90f32208c0c4f174c76ba38d0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93122954"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321995"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>Aerospace 'de tahmine dayalı bakım için çözüm şablonuna yönelik teknik kılavuz
 
@@ -58,7 +58,7 @@ Olay oluşturma uygulaması, Azure Olay Hub 'ını yalnızca bilgisayarınızda 
 [Azure Olay Hub](#azure-event-hub) 'ı hizmetinden gelen giriş akışında neredeyse gerçek zamanlı analiz sağlamak için [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) kullanın. Daha sonra, [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) hizmeti tarafından işlenmek üzere tüm ham gelen olayları [Azure depolama](https://azure.microsoft.com/services/storage/) hizmeti 'ne arşivleyerek [Power BI](https://powerbi.microsoft.com) panosu üzerinde yayımlayın.
 
 ### <a name="hdinsight-custom-aggregation"></a>HDInsight özel toplama
-Azure Stream Analytics kaynağı kullanılarak arşivlenen ham olaylara toplamalar sağlamak için HDInsight kullanarak [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) betikleri (Azure Data Factory tarafından düzenlenmiş) çalıştırın.
+Azure Stream Analytics kaynağı kullanılarak arşivlenen ham olaylara toplamalar sağlamak için HDInsight kullanarak [Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) betikleri (Azure Data Factory tarafından düzenlenmiş) çalıştırın.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 [Azure Machine Learning hizmeti](https://azure.microsoft.com/services/machine-learning/) ile alınan girişleri kullanarak belirli bir uçak altyapısının kalan kullanım ömrü (rul) için tahminleri yapın (Azure Data Factory tarafından düzenlenmiş). 
@@ -96,7 +96,7 @@ Azure Stream Analytics sorgu şu şekilde bulunabilir:
   
   * ***_ *****Query** _ sorgu girişi, farklı çıkışları görüntülemek için _ * **çıktılar** _ sorgusunu görüntülemek için
 
-Azure Stream Analytics sorgu oluşturma hakkındaki bilgiler, MSDN 'deki [Stream Analytics sorgu başvurusunda](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) bulunabilir.
+Azure Stream Analytics sorgu oluşturma hakkındaki bilgiler, MSDN 'deki [Stream Analytics sorgu başvurusunda](/stream-analytics-query/stream-analytics-query-language-reference) bulunabilir.
 
 Bu çözümde sorgular, bu çözüm şablonunun bir parçası olarak sunulan bir Power BI panosuna gelen veri akışı hakkında neredeyse gerçek zamanlı analiz bilgilerini içeren üç veri kümesini çıktı. Gelen veri biçimi hakkında örtülü bilgi olduğundan, bu sorgular veri biçiminizdeki şekilde değiştirilmeli.
 
@@ -111,27 +111,27 @@ Bu bölümde [Azure Data Factory](https://azure.microsoft.com/documentation/serv
 
 ![Azure Data Factory](./media/predictive-maintenance-technical-guide/azure-data-factory.png)
 
-Bu fabrikaya ait işlem hatlarından ikisi, verileri bölümlemek ve toplamak için kullanılan [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) betikleri içerir. Not edildiğinde, betikler kurulum sırasında oluşturulan [Azure Storage](https://azure.microsoft.com/services/storage/) hesabında bulunur. Bu konum şunlardır: maintenancesascript \\ \\ Script \\ \\ Hive \\ \\ (veya https://[çözümünüz adınız]. blob. Core. Windows. net/maintenancesascript).
+Bu fabrikaya ait işlem hatlarından ikisi, verileri bölümlemek ve toplamak için kullanılan [Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) betikleri içerir. Not edildiğinde, betikler kurulum sırasında oluşturulan [Azure Storage](https://azure.microsoft.com/services/storage/) hesabında bulunur. Bu konum şunlardır: maintenancesascript \\ \\ Script \\ \\ Hive \\ \\ (veya https://[çözümünüz adınız]. blob. Core. Windows. net/maintenancesascript).
 
-[Azure Stream Analytics](#azure-stream-analytics-1) sorgulara benzer şekilde, [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) betiklerinin gelen veri biçimi hakkında örtülü bilgileri vardır ve veri biçiminizdeki olarak değiştirilmesi gerekir.
+[Azure Stream Analytics](#azure-stream-analytics-1) sorgulara benzer şekilde, [Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) betiklerinin gelen veri biçimi hakkında örtülü bilgileri vardır ve veri biçiminizdeki olarak değiştirilmesi gerekir.
 
 #### <a name="aggregateflightinfopipeline"></a>*Aggregateflightınfopipeline*
-Bu [işlem hattı](../../data-factory/concepts-pipelines-activities.md) , [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) işi sırasında [Azure depolama](https://azure.microsoft.com/services/storage/) 'ya yerleştirilen verileri bölümlemek için [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) betiği çalıştıran bir [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) kullanan tek bir Activity- [hdınsighthive](../../data-factory/transform-data-using-hadoop-hive.md) etkinliği içerir.
+Bu [işlem hattı](../../data-factory/concepts-pipelines-activities.md) , [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) işi sırasında [Azure depolama](https://azure.microsoft.com/services/storage/) 'ya yerleştirilen verileri bölümlemek için [Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) betiği çalıştıran bir [HDInsightLinkedService](/previous-versions/azure/dn893526(v=azure.100)) kullanan tek bir Activity- [hdınsighthive](../../data-factory/transform-data-using-hadoop-hive.md) etkinliği içerir.
 
-Bu bölümlendirme görevinin [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) betiği * **Aggregateflightınfo. HQL** _
+Bu bölümlendirme görevinin [Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) betiği * **Aggregateflightınfo. HQL** _
 
 #### <a name="_mlscoringpipeline"></a>_MLScoringPipeline *
 Bu işlem [hattı](../../data-factory/concepts-pipelines-activities.md) , son sonucu bu çözüm şablonuyla ilişkili [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) denemenizin puanlanması olan çeşitli etkinlikleri içerir.
 
 Dahil edilen etkinlikler şunlardır:
 
-* [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) denemesi için gereken toplamaları ve özellik mühendisliğini gerçekleştirmek üzere [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) betiği çalıştıran bir [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) kullanarak etkinlik [hdınsighthive](../../data-factory/transform-data-using-hadoop-hive.md) .
-  Bu bölümlendirme görevinin [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) betiği * **hazırlık emlinput. HQL** _ ' dir.
-  _ [Copy](https://msdn.microsoft.com/library/azure/dn835035.aspx) [Hdınsighthive](../../data-factory/transform-data-using-hadoop-hive.md) etkinliğinin sonuçları [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) etkinliğinin eriştiği tek bir [Azure Storage](https://azure.microsoft.com/services/storage/) blobuna taşınıyor.
-* [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) etkinliği, sonuçları tek bir [Azure Storage](https://azure.microsoft.com/services/storage/) blobuna yerleştirerek [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) denemeyi çağırır.
+* [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) denemesi için gereken toplamaları ve özellik mühendisliğini gerçekleştirmek üzere [Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) betiği çalıştıran bir [HDInsightLinkedService](/previous-versions/azure/dn893526(v=azure.100)) kullanarak etkinlik [hdınsighthive](../../data-factory/transform-data-using-hadoop-hive.md) .
+  Bu bölümlendirme görevinin [Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) betiği * **hazırlık emlinput. HQL** _ ' dir.
+  _ [Copy](/previous-versions/azure/dn835035(v=azure.100)) [Hdınsighthive](../../data-factory/transform-data-using-hadoop-hive.md) etkinliğinin sonuçları [AzureMLBatchScoring](/previous-versions/azure/dn894009(v=azure.100)) etkinliğinin eriştiği tek bir [Azure Storage](https://azure.microsoft.com/services/storage/) blobuna taşınıyor.
+* [AzureMLBatchScoring](/previous-versions/azure/dn894009(v=azure.100)) etkinliği, sonuçları tek bir [Azure Storage](https://azure.microsoft.com/services/storage/) blobuna yerleştirerek [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) denemeyi çağırır.
 
 #### <a name="copyscoredresultpipeline"></a>*CopyScoredResultPipeline*
-Bu [işlem hattı](../../data-factory/concepts-pipelines-activities.md) tek bir etkinlik içerir. [Azure Machine Learning](#azure-machine-learning) denemesinin sonuçlarını, çözüm şablonu yüklemesinin bir PARÇASı olarak sağlanan **MLScoringPipeline** [Azure SQL veritabanına](https://azure.microsoft.com/services/sql-database/) taşınan bir [kopyalama](https://msdn.microsoft.com/library/azure/dn835035.aspx) etkinliği.
+Bu [işlem hattı](../../data-factory/concepts-pipelines-activities.md) tek bir etkinlik içerir. [Azure Machine Learning](#azure-machine-learning) denemesinin sonuçlarını, çözüm şablonu yüklemesinin bir PARÇASı olarak sağlanan **MLScoringPipeline** [Azure SQL veritabanına](https://azure.microsoft.com/services/sql-database/) taşınan bir [kopyalama](/previous-versions/azure/dn835035(v=azure.100)) etkinliği.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 Bu çözüm şablonu için kullanılan [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) deneme, uçak altyapısının kalan yararlı ömrünü (rul) sağlar. Deneme, tüketilen veri kümesine özeldir ve üzerinde getirilen verilere özgü değişiklik veya değişiklik yapılmasını gerektirir.
@@ -157,7 +157,7 @@ Power BI, tahmin sonuçlarının depolandığı, veri kaynağı olarak bir Azure
 
 Not: 
 1.    Çözümünüzü dağıtmaya yönelik olarak, veritabanında 3 saat içinde bir tahmin görüntülenecektir. Oluşturucu indirimiyle birlikte gelen pbix dosyası, Power BI panosunu hemen oluşturabilmeniz için bazı çekirdek verileri içerir. 
-2.    Bu adımda önkoşul, ücretsiz yazılım [Power BI Desktop](https://docs.microsoft.com/power-bi/fundamentals/desktop-get-the-desktop)'ı indirip yüklemektir.
+2.    Bu adımda önkoşul, ücretsiz yazılım [Power BI Desktop](/power-bi/fundamentals/desktop-get-the-desktop)'ı indirip yüklemektir.
 
 Aşağıdaki adımlarda, dosya, görselleştirme için verileri (örneğin, tahmin sonuçları) içeren çözüm dağıtımı sırasında en sonunda bulunan SQL veritabanı 'na nasıl bağlayaöğreneceksiniz.
 
@@ -177,7 +177,7 @@ Aşağıdaki adımlarda, dosya, görselleştirme için verileri (örneğin, tahm
      ![Sorguları Düzenle](./media/predictive-maintenance-technical-guide/edit-queries.png)
    * **RemainingUsefulLife** ve **pmresult** olmak üzere iki tablo görürsünüz. İlk tabloyu seçin ve ![ ](./media/predictive-maintenance-technical-guide/icon-query-settings.png) sağ **' sorgu ayarları '** panelinde **' uygulanan adımlar '** altında bulunan **' kaynak '** ' ın yanındaki sorgu ayarları simgesine tıklayın. Görüntülenen tüm uyarı iletilerini yoksayın.
    * Açılan pencerede, **' sunucu '** ve **' veritabanı '** ' nı kendi sunucu ve veritabanı adlarınızla değiştirin ve ardından **' Tamam 'a** tıklayın. Sunucu adı için 1433 numaralı bağlantı noktasını ( **YourSolutionName.Database.Windows.net, 1433** ) belirttiğinizden emin olun. Veritabanı alanını **pmaintenancedb** olarak bırakın. Ekranda görünen uyarı iletilerini yoksayın.
-   * Sonraki açılan pencerede, sol bölmede ( **Windows** ve **veritabanı** ) iki seçenek görürsünüz. ' **Veritabanı '** seçeneğine tıklayın, **' Kullanıcı adı '** ve **' parola '** (çözümü ilk dağıtırken girdiğiniz Kullanıcı adı ve parola) ile bir Azure SQL veritabanı oluşturduğunuzda girin. **_Bu ayarların _ öğesine hangi düzeyin uygulanacağını seçin_ bölümünde *veritabanı düzeyi seçeneğini işaretleyin. Sonra _* ' Bağlan ' öğesine tıklayın** .
+   * Sonraki açılan pencerede, sol bölmede ( **Windows** ve **veritabanı** ) iki seçenek görürsünüz. ' **Veritabanı '** seçeneğine tıklayın, **' Kullanıcı adı '** ve **' parola '** (çözümü ilk dağıtırken girdiğiniz Kullanıcı adı ve parola) ile bir Azure SQL veritabanı oluşturduğunuzda girin. **_Bu ayarların _ öğesine hangi düzeyin uygulanacağını seçin_ bölümünde *veritabanı düzeyi seçeneğini işaretleyin. Sonra _* ' Bağlan ' öğesine tıklayın**.
    * İkinci tablo **Pmresult** ' a tıklayın, ardından ![ ](./media/predictive-maintenance-technical-guide/icon-navigation.png) sağ **' sorgu ayarları '** panelinde **' uygulanan adımlar '** altında bulunan **' kaynak '** ' ın yanındaki Gezinti simgesi ' ne tıklayın ve sunucu ve veritabanı adlarını yukarıdaki adımlarda olduğu gibi güncelleştirin ve Tamam ' a tıklayın.
    * Önceki sayfaya geri döndüğünüzde pencereyi kapatın. Bir ileti görüntülenir ve **Uygula** ' ya tıklayın. Son olarak, değişiklikleri kaydetmek için **Kaydet** düğmesine tıklayın. Power BI dosyanız artık sunucuyla bağlantı kurdu. Görselleştirmeleriniz boşsa, göstergelerin sağ üst köşesindeki silgi simgesine tıklayarak tüm verileri görselleştirmek için görselleştirmelerin seçimlerini temizlediğinizden emin olun. Görselleştirmelerde yeni verileri yansıtmak için Yenile düğmesini kullanın. Başlangıçta, Veri Fabrikası her 3 saatte bir yenilenmek üzere zamanlandığında yalnızca görselleştirmelerinizde çekirdek verileri görürsünüz. 3 saat sonra, verileri yenilediğinizde görselleştirmelerinizde yansıtılan yeni tahminleri görürsünüz.
 3. Seçim [Power BI çevrimiçi](https://www.powerbi.com/)olarak soğuk yol panosunu yayımlayın. Bu adımın Power BI bir hesabı (veya bir iş veya okul hesabı) olması gerekir.
@@ -233,4 +233,3 @@ Aşağıdaki iki araç, aboneliğinizdeki bir Aerospace çözüm şablonu için 
 
 * [Microsoft Azure Cost Estimator Aracı (çevrimiçi)](https://azure.microsoft.com/pricing/calculator/)
 * [Microsoft Azure Cost Estimator Aracı (Masaüstü)](https://www.microsoft.com/download/details.aspx?id=43376)
-

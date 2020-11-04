@@ -11,31 +11,31 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
 ms.custom: how-to, contperfq1, devx-track-python
-ms.openlocfilehash: e118c22829bc55e8baafb87db20817ab043ef4df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db641eee13350f5a774e4ffd138e38c474af4981
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540787"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320864"
 ---
 # <a name="connect-to-azure-storage-services"></a>Azure depolama hizmetlerine bağlanma
 
-Bu makalede, **Azure Machine Learning veri depoları aracılığıyla Azure Storage Services 'a nasıl bağlanacağınızı**öğrenin. Veri depoları, kimlik doğrulama kimlik bilgilerinizi ve risk altındaki özgün veri kaynağınızın bütünlüğünü yapmadan Azure Storage hizmetinize güvenli bir şekilde bağlanır. Bu kişiler, çalışma alanıyla ilişkili [Key Vault](https://azure.microsoft.com/services/key-vault/) abonelik kimliğiniz ve belirteç yetkilendirmesi gibi bağlantı bilgilerini depolar, böylece depolama alanınıza güvenli bir şekilde kod yazmanız gerekmeden depolamaya güvenle erişebilirsiniz. Veri depoları oluşturmak ve kaydettirmek için [Azure Machine Learning Python SDK 'sını](#python) veya [Azure Machine Learning Studio 'yu](how-to-connect-data-ui.md) kullanabilirsiniz.
+Bu makalede, **Azure Machine Learning veri depoları aracılığıyla Azure Storage Services 'a nasıl bağlanacağınızı** öğrenin. Veri depoları, kimlik doğrulama kimlik bilgilerinizi ve risk altındaki özgün veri kaynağınızın bütünlüğünü yapmadan Azure Storage hizmetinize güvenli bir şekilde bağlanır. Bu kişiler, çalışma alanıyla ilişkili [Key Vault](https://azure.microsoft.com/services/key-vault/) abonelik kimliğiniz ve belirteç yetkilendirmesi gibi bağlantı bilgilerini depolar, böylece depolama alanınıza güvenli bir şekilde kod yazmanız gerekmeden depolamaya güvenle erişebilirsiniz. Veri depoları oluşturmak ve kaydettirmek için [Azure Machine Learning Python SDK 'sını](#python) veya [Azure Machine Learning Studio 'yu](how-to-connect-data-ui.md) kullanabilirsiniz.
 
 Azure Machine Learning VS Code uzantısını kullanarak veri depoları oluşturup yönetmeyi tercih ediyorsanız daha fazla bilgi edinmek için [vs Code kaynak yönetimi nasıl yapılır kılavuzunu](how-to-manage-resources-vscode.md#datastores) ziyaret edin.
 
-[Bu Azure depolama çözümlerinden](#matrix)veri depoları oluşturabilirsiniz. **Desteklenmeyen depolama çözümleri için**ve ml denemeleri sırasında veri çıkış maliyetini kaydetmek için, verilerinizi desteklenen bir Azure depolama çözümüne [taşıyın](#move) .  
+[Bu Azure depolama çözümlerinden](#matrix)veri depoları oluşturabilirsiniz. **Desteklenmeyen depolama çözümleri için** ve ml denemeleri sırasında veri çıkış maliyetini kaydetmek için, verilerinizi desteklenen bir Azure depolama çözümüne [taşıyın](#move) .  
 
 Datamağazaların Azure Machine Learning genel veri erişimi iş akışına uygun olduğunu anlamak için, [güvenli erişim verileri](concept-data.md#data-workflow) makalesine bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Şunlara ihtiyacınız var:
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
 - [Desteklenen depolama türü](#matrix)olan bir Azure depolama hesabı.
 
-- [Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)veya [Azure Machine Learning Studio](https://ml.azure.com/)'ya erişim.
+- [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)veya [Azure Machine Learning Studio](https://ml.azure.com/)'ya erişim.
 
 - Azure Machine Learning çalışma alanı.
   
@@ -50,7 +50,7 @@ Datamağazaların Azure Machine Learning genel veri erişimi iş akışına uygu
    ws = Workspace.from_config()
    ```
 
-    Bir çalışma alanı oluşturduğunuzda, bir Azure Blob kapsayıcısı ve bir Azure dosya paylaşımının otomatik olarak çalışma alanına veri depoları olarak kaydedilir. Bunlar `workspaceblobstore` `workspacefilestore` sırasıyla ve olarak adlandırılır. , `workspaceblobstore` Çalışma alanı yapıtlarını ve makine öğrenimi deneme günlüklerinizi depolamak için kullanılır. Aynı zamanda **varsayılan veri deposu** olarak ayarlanır ve çalışma alanından silinemez. , `workspacefilestore` [İşlem örneği](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files)aracılığıyla yetkilendirilmiş not defterlerini ve R betiklerini depolamak için kullanılır.
+    Bir çalışma alanı oluşturduğunuzda, bir Azure Blob kapsayıcısı ve bir Azure dosya paylaşımının otomatik olarak çalışma alanına veri depoları olarak kaydedilir. Bunlar `workspaceblobstore` `workspacefilestore` sırasıyla ve olarak adlandırılır. , `workspaceblobstore` Çalışma alanı yapıtlarını ve makine öğrenimi deneme günlüklerinizi depolamak için kullanılır. Aynı zamanda **varsayılan veri deposu** olarak ayarlanır ve çalışma alanından silinemez. , `workspacefilestore` [İşlem örneği](./concept-compute-instance.md#accessing-files)aracılığıyla yetkilendirilmiş not defterlerini ve R betiklerini depolamak için kullanılır.
     
     > [!NOTE]
     > Azure Machine Learning tasarımcı, tasarımcı giriş sayfasında bir örnek açtığınızda otomatik olarak **azureml_globaldatasets** adlı bir veri deposu oluşturacaktır. Bu veri deposu yalnızca örnek veri kümelerini içerir. Gizli veri erişimi **için lütfen bu veri deposunu kullanmayın.**
@@ -61,26 +61,26 @@ Datamağazaların Azure Machine Learning genel veri erişimi iş akışına uygu
 
 Datamağazaların Şu anda aşağıdaki matriste listelenen depolama hizmetlerine bağlantı bilgilerini depolamayı desteklemektedir.
 
-| Depolama &nbsp; türü | Kimlik doğrulama &nbsp; türü | [Azure &nbsp; Machine &nbsp; Learning Studio](https://ml.azure.com/) | [Azure &nbsp; Machine &nbsp; Learning &nbsp; Python SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) |  [Azure &nbsp; Machine &nbsp; Learning CLI](reference-azure-machine-learning-cli.md) | [Azure &nbsp; Machine &nbsp; Learning &nbsp; REST API 'si](https://docs.microsoft.com/rest/api/azureml/) | VS Code
+| Depolama &nbsp; türü | Kimlik doğrulama &nbsp; türü | [Azure &nbsp; Machine &nbsp; Learning Studio](https://ml.azure.com/) | [Azure &nbsp; Machine &nbsp; Learning &nbsp; Python SDK 'sı](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) |  [Azure &nbsp; Machine &nbsp; Learning CLI](reference-azure-machine-learning-cli.md) | [Azure &nbsp; Machine &nbsp; Learning &nbsp; REST API 'si](/rest/api/azureml/) | VS Code
 ---|---|---|---|---|---|---
-[Azure &nbsp; BLOB &nbsp; depolama](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)| Hesap anahtarı <br> SAS belirteci | ✓ | ✓ | ✓ |✓ |✓
-[Azure &nbsp; Dosya &nbsp; paylaşma](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)| Hesap anahtarı <br> SAS belirteci | ✓ | ✓ | ✓ |✓|✓
-[Azure &nbsp; Data Lake &nbsp; depolama gen &nbsp; 1](https://docs.microsoft.com/azure/data-lake-store/)| Hizmet sorumlusu| ✓ | ✓ | ✓ |✓|
-[Azure &nbsp; Data Lake &nbsp; depolama gen &nbsp; 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| Hizmet sorumlusu| ✓ | ✓ | ✓ |✓|
-[Azure &nbsp; SQL &nbsp; veritabanı](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)| SQL kimlik doğrulaması <br>Hizmet sorumlusu| ✓ | ✓ | ✓ |✓|
-[Azure &nbsp; PostgreSQL](https://docs.microsoft.com/azure/postgresql/overview) | SQL kimlik doğrulaması| ✓ | ✓ | ✓ |✓|
-[&nbsp; &nbsp; MySQL için Azure &nbsp; veritabanı](https://docs.microsoft.com/azure/mysql/overview) | SQL kimlik doğrulaması|  | ✓* | ✓* |✓*|
-[Databricks &nbsp; Dosya &nbsp; sistemi](https://docs.microsoft.com/azure/databricks/data/databricks-file-system)| Kimlik doğrulaması yok | | ✓** | ✓ ** |✓** |
+[Azure &nbsp; BLOB &nbsp; depolama](../storage/blobs/storage-blobs-overview.md)| Hesap anahtarı <br> SAS belirteci | ✓ | ✓ | ✓ |✓ |✓
+[Azure &nbsp; Dosya &nbsp; paylaşma](../storage/files/storage-files-introduction.md)| Hesap anahtarı <br> SAS belirteci | ✓ | ✓ | ✓ |✓|✓
+[Azure &nbsp; Data Lake &nbsp; depolama gen &nbsp; 1](../data-lake-store/index.yml)| Hizmet sorumlusu| ✓ | ✓ | ✓ |✓|
+[Azure &nbsp; Data Lake &nbsp; depolama gen &nbsp; 2](../storage/blobs/data-lake-storage-introduction.md)| Hizmet sorumlusu| ✓ | ✓ | ✓ |✓|
+[Azure &nbsp; SQL &nbsp; veritabanı](../azure-sql/database/sql-database-paas-overview.md)| SQL kimlik doğrulaması <br>Hizmet sorumlusu| ✓ | ✓ | ✓ |✓|
+[Azure &nbsp; PostgreSQL](../postgresql/overview.md) | SQL kimlik doğrulaması| ✓ | ✓ | ✓ |✓|
+[&nbsp; &nbsp; MySQL için Azure &nbsp; veritabanı](../mysql/overview.md) | SQL kimlik doğrulaması|  | ✓* | ✓* |✓*|
+[Databricks &nbsp; Dosya &nbsp; sistemi](/azure/databricks/data/databricks-file-system)| Kimlik doğrulaması yok | | ✓** | ✓ ** |✓** |
 
-\*MySQL yalnızca işlem hattı [Datatransferstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py&preserve-view=true) için destekleniyor<br />
-\*\*Databricks yalnızca işlem hattı [Databricksstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py&preserve-view=true) için destekleniyor
+\*MySQL yalnızca işlem hattı [Datatransferstep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?preserve-view=true&view=azure-ml-py) için destekleniyor<br />
+\*\*Databricks yalnızca işlem hattı [Databricksstep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?preserve-view=true&view=azure-ml-py) için destekleniyor
 
 
 ### <a name="storage-guidance"></a>Depolama yönergeleri
 
-[Azure Blob kapsayıcısı](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)için bir veri deposu oluşturmanızı öneririz. Blob 'lar için hem standart hem de Premium depolama alanı kullanılabilir. Premium Depolama daha pahalı olsa da, daha hızlı üretilen iş hızları, özellikle büyük bir veri kümesiyle eğeceğiniz durumlarda eğitim çalışmalarınızın hızını iyileştirebilir. Depolama hesaplarının maliyeti hakkında daha fazla bilgi için bkz. [Azure Fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service).
+[Azure Blob kapsayıcısı](../storage/blobs/storage-blobs-introduction.md)için bir veri deposu oluşturmanızı öneririz. Blob 'lar için hem standart hem de Premium depolama alanı kullanılabilir. Premium Depolama daha pahalı olsa da, daha hızlı üretilen iş hızları, özellikle büyük bir veri kümesiyle eğeceğiniz durumlarda eğitim çalışmalarınızın hızını iyileştirebilir. Depolama hesaplarının maliyeti hakkında daha fazla bilgi için bkz. [Azure Fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service).
 
-[Azure Data Lake Storage 2.](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction?toc=/azure/storage/blobs/toc.json) , Azure Blob depolama alanının üzerine kurulmuştur ve kurumsal büyük veri analizi için tasarlanmıştır. Data Lake Storage 2. temel bir parçası, blob depolamaya [hiyerarşik bir ad alanının](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) eklenmesinin bir parçasıdır. Hiyerarşik ad alanı, etkili veri erişimi için nesneleri/dosyaları bir dizin hiyerarşisi halinde düzenler.
+[Azure Data Lake Storage 2.](../storage/blobs/data-lake-storage-introduction.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) , Azure Blob depolama alanının üzerine kurulmuştur ve kurumsal büyük veri analizi için tasarlanmıştır. Data Lake Storage 2. temel bir parçası, blob depolamaya [hiyerarşik bir ad alanının](../storage/blobs/data-lake-storage-namespace.md) eklenmesinin bir parçasıdır. Hiyerarşik ad alanı, etkili veri erişimi için nesneleri/dosyaları bir dizin hiyerarşisi halinde düzenler.
 
 ## <a name="storage-access-and-permissions"></a>Depolama erişimi ve izinleri
 
@@ -88,13 +88,13 @@ Azure depolama hizmetinize güvenli bir şekilde bağlanabildiğinizden emin olm
 
 ### <a name="virtual-network"></a>Sanal ağ 
 
-Veri depolama hesabınız bir **Sanal ağda**ise Azure Machine Learning verilerinize erişiminin olduğundan emin olmak için ek yapılandırma adımları gerekir. Veri deposundan kayıt oluşturup kaydettiğinizde uygun yapılandırma adımlarının uygulandığından emin olmak için bkz. [Azure sanal ağında Azure Machine Learning Studio 'Yu kullanma](how-to-enable-studio-virtual-network.md) .  
+Veri depolama hesabınız bir **Sanal ağda** ise Azure Machine Learning verilerinize erişiminin olduğundan emin olmak için ek yapılandırma adımları gerekir. Veri deposundan kayıt oluşturup kaydettiğinizde uygun yapılandırma adımlarının uygulandığından emin olmak için bkz. [Azure sanal ağında Azure Machine Learning Studio 'Yu kullanma](how-to-enable-studio-virtual-network.md) .  
 
 ### <a name="access-validation"></a>Erişim doğrulaması
 
-**İlk veri deposu oluşturma ve kayıt sürecinin bir parçası olarak**, Azure Machine Learning otomatik olarak temel alınan depolama hizmetinin olduğunu ve belirtilen kullanıcının (Kullanıcı adı, hizmet sorumlusu veya SAS belirteci) belirtilen depolama alanına erişimi olduğunu doğrular.
+**İlk veri deposu oluşturma ve kayıt sürecinin bir parçası olarak** , Azure Machine Learning otomatik olarak temel alınan depolama hizmetinin olduğunu ve belirtilen kullanıcının (Kullanıcı adı, hizmet sorumlusu veya SAS belirteci) belirtilen depolama alanına erişimi olduğunu doğrular.
 
-**Veri deposu oluşturulduktan sonra**, bu doğrulama yalnızca, veri deposu nesneleri her alınışında **değil** , temeldeki depolama kapsayıcısına erişim gerektiren yöntemler için gerçekleştirilir. Örneğin, veri deposundan dosyaları indirmek isterseniz doğrulama gerçekleşir; ancak yalnızca varsayılan veri deposundan değişiklik yapmak istiyorsanız doğrulama gerçekleşmez.
+**Veri deposu oluşturulduktan sonra** , bu doğrulama yalnızca, veri deposu nesneleri her alınışında **değil** , temeldeki depolama kapsayıcısına erişim gerektiren yöntemler için gerçekleştirilir. Örneğin, veri deposundan dosyaları indirmek isterseniz doğrulama gerçekleşir; ancak yalnızca varsayılan veri deposundan değişiklik yapmak istiyorsanız doğrulama gerçekleşmez.
 
 Temel depolama hizmetine erişiminizin kimlik doğrulamasını yapmak için, `register_azure_*()` oluşturmak istediğiniz veri deposu türünün karşılık gelen yönteminde hesap anahtarınızı, paylaşılan erişim imzaları (SAS) belirteçlerini veya hizmet sorumlusunu sağlayabilirsiniz. [Depolama türü matrisi](#matrix) , her veri deposu türüne karşılık gelen desteklenen kimlik doğrulama türlerini listeler.
 
@@ -113,7 +113,7 @@ Hesap anahtarını, SAS belirtecini ve hizmet sorumlusu bilgilerini [Azure Porta
 
 ### <a name="permissions"></a>İzinler
 
-Azure Blob kapsayıcısı ve Azure Data Lake Gen 2 depolaması için, kimlik doğrulama kimlik bilgilerinizin **Depolama Blobu veri okuyucusu** erişimi olduğundan emin olun. [Depolama Blobu veri okuyucu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)hakkında daha fazla bilgi edinin. Hesap SAS belirteci varsayılan olarak izin vermez. Veri okuma erişimi için kimlik doğrulama kimlik bilgileriniz, kapsayıcılar ve nesneler için en az liste ve okuma izinlerine sahip olmalıdır. Veri yazma erişimi için, yazma ve ekleme izinleri de gereklidir.
+Azure Blob kapsayıcısı ve Azure Data Lake Gen 2 depolaması için, kimlik doğrulama kimlik bilgilerinizin **Depolama Blobu veri okuyucusu** erişimi olduğundan emin olun. [Depolama Blobu veri okuyucu](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)hakkında daha fazla bilgi edinin. Hesap SAS belirteci varsayılan olarak izin vermez. Veri okuma erişimi için kimlik doğrulama kimlik bilgileriniz, kapsayıcılar ve nesneler için en az liste ve okuma izinlerine sahip olmalıdır. Veri yazma erişimi için, yazma ve ekleme izinleri de gereklidir.
 
 <a name="python"></a>
 
@@ -127,7 +127,7 @@ Bu bölüm içinde, aşağıdaki depolama türleri için Python SDK 'Sı aracıl
 * [Azure dosya paylaşma](#azure-file-share)
 * [Azure Data Lake Storage 2. nesil](#azure-data-lake-storage-generation-2)
 
- Desteklenen diğer depolama hizmetleri için veri depoları oluşturmak için, [ilgili `register_azure_*` Yöntemler için başvuru belgelerine](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py&preserve-view=true#&preserve-view=truemethods)bakın.
+ Desteklenen diğer depolama hizmetleri için veri depoları oluşturmak için, [ilgili `register_azure_*` Yöntemler için başvuru belgelerine](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=truemethods)bakın.
 
 Düşük kod deneyimini tercih ediyorsanız bkz. [Azure Machine Learning Studio ile verilere bağlanma](how-to-connect-data-ui.md).
 
@@ -136,7 +136,7 @@ Düşük kod deneyimini tercih ediyorsanız bkz. [Azure Machine Learning Studio 
 
 ### <a name="azure-blob-container"></a>Azure Blob kapsayıcısı
 
-Bir Azure Blob kapsayıcısını bir veri deposu olarak kaydetmek için kullanın [`register_azure_blob_container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=trueregister-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) .
+Bir Azure Blob kapsayıcısını bir veri deposu olarak kaydetmek için kullanın [`register_azure_blob_container()`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) .
 
 Aşağıdaki kod, veri deposunu oluşturur ve `blob_datastore_name` `ws` çalışma alanına kaydeder. Bu veri deposu, `my-container-name` `my-account-name` belirtilen hesap erişim anahtarını kullanarak depolama hesabındaki blob kapsayıcısına erişir. Sanal ağ senaryolarında yönergeler ve gerekli kimlik doğrulama kimlik bilgilerinin nerede bulunacağı hakkında bilgi edinmek için [depolama erişimi & izinleri](#storage-access-and-permissions) bölümünü gözden geçirin. 
 
@@ -155,7 +155,7 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
 
 ### <a name="azure-file-share"></a>Azure dosya paylaşımı
 
-Bir Azure dosya paylaşımının kaydını bir veri deposu olarak kaydetmek için kullanın [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=trueregister-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-) . 
+Bir Azure dosya paylaşımının kaydını bir veri deposu olarak kaydetmek için kullanın [`register_azure_file_share()`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-) . 
 
 Aşağıdaki kod, veri deposunu oluşturur ve `file_datastore_name` `ws` çalışma alanına kaydeder. Bu veri deposu `my-fileshare-name` `my-account-name` , belirtilen hesap erişim anahtarını kullanarak depolama hesabındaki dosya paylaşımına erişir. Sanal ağ senaryolarında yönergeler ve gerekli kimlik doğrulama kimlik bilgilerinin nerede bulunacağı hakkında bilgi edinmek için [depolama erişimi & izinleri](#storage-access-and-permissions) bölümünü gözden geçirin. 
 
@@ -174,9 +174,9 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 ### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake Storage 2. nesil
 
-Bir Azure Data Lake Storage 2. nesil (ADLS Gen 2) veri deposu için, [hizmet sorumlusu izinleriyle](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)bir Azure Data Lake Gen 2 depolamasına bağlı bir kimlik bilgisi veri deposunu kaydetmek için [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py&preserve-view=true#&preserve-view=trueregister-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) kullanın.  
+Bir Azure Data Lake Storage 2. nesil (ADLS Gen 2) veri deposu için, [hizmet sorumlusu izinleriyle](../active-directory/develop/howto-create-service-principal-portal.md)bir Azure Data Lake Gen 2 depolamasına bağlı bir kimlik bilgisi veri deposunu kaydetmek için [register_azure_data_lake_gen2 ()](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) kullanın.  
 
-Hizmet sorumlunuzu kullanabilmeniz için, [uygulamanızı kaydetmeniz](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) ve **Depolama Blobu veri okuyucusu** erişimi ile hizmet sorumlusu 'na vermeniz gerekir. [ADLS Gen 2 için erişim denetimi ayarlama](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)hakkında daha fazla bilgi edinin. 
+Hizmet sorumlunuzu kullanabilmeniz için, [uygulamanızı kaydetmeniz](../active-directory/develop/app-objects-and-service-principals.md) ve **Depolama Blobu veri okuyucusu** erişimi ile hizmet sorumlusu 'na vermeniz gerekir. [ADLS Gen 2 için erişim denetimi ayarlama](../storage/blobs/data-lake-storage-access-control.md)hakkında daha fazla bilgi edinin. 
 
 Aşağıdaki kod, veri deposunu oluşturur ve `adlsgen2_datastore_name` `ws` çalışma alanına kaydeder. Bu veri deposu `test` `account_name` , belirtilen hizmet sorumlusu kimlik bilgilerini kullanarak depolama hesabındaki dosya sistemine erişir. Sanal ağ senaryolarında yönergeler ve gerekli kimlik doğrulama kimlik bilgilerinin nerede bulunacağı hakkında bilgi edinmek için [depolama erişimi & izinleri](#storage-access-and-permissions) bölümünü gözden geçirin. 
 
@@ -217,13 +217,13 @@ Bir veri deposu oluşturduktan sonra verilerinizle etkileşimde bulunmak için [
 
 ## <a name="get-datastores-from-your-workspace"></a>Çalışma alanınızdan veri depoları alın
 
-Geçerli çalışma alanında kayıtlı belirli bir veri deposunu almak için, [`get()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-workspace--datastore-name-) sınıfında statik yöntemi kullanın `Datastore` :
+Geçerli çalışma alanında kayıtlı belirli bir veri deposunu almak için, [`get()`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-workspace--datastore-name-) sınıfında statik yöntemi kullanın `Datastore` :
 
 ```Python
 # Get a named datastore from the current workspace
 datastore = Datastore.get(ws, datastore_name='your datastore name')
 ```
-Belirli bir çalışma alanıyla kaydedilen veri depolarının listesini almak için, [`datastores`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedatastores) özelliği bir çalışma alanı nesnesi üzerinde kullanabilirsiniz:
+Belirli bir çalışma alanıyla kaydedilen veri depolarının listesini almak için, [`datastores`](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedatastores) özelliği bir çalışma alanı nesnesi üzerinde kullanabilirsiniz:
 
 ```Python
 # List all datastores registered in the current workspace
@@ -249,7 +249,7 @@ Azure Machine Learning, modellerinizi Puanlama için kullanmanın birkaç yolunu
 
 | Yöntem | Veri deposu erişimi | Açıklama |
 | ----- | :-----: | ----- |
-| [Toplu tahmin](how-to-use-parallel-run-step.md) | ✔ | Büyük miktarlarda verileri zaman uyumsuz olarak tahmin edin. |
+| [Toplu tahmin](./tutorial-pipeline-batch-scoring-classification.md) | ✔ | Büyük miktarlarda verileri zaman uyumsuz olarak tahmin edin. |
 | [Web hizmeti](how-to-deploy-and-where.md) | &nbsp; | Modelleri bir Web hizmeti olarak dağıtın. |
 | [Azure IoT Edge modülü](how-to-deploy-and-where.md) | &nbsp; | Modelleri IoT Edge cihazlara dağıtın. |
 
@@ -259,7 +259,7 @@ SDK 'nın veri depolarına erişim sağlamadığı durumlarda, verilere erişmek
 
 ## <a name="move-data-to-supported-azure-storage-solutions"></a>Verileri desteklenen Azure depolama çözümlerine taşıma
 
-Azure Machine Learning, Azure Blob depolama, Azure dosyaları, Azure Data Lake Storage 1., Azure Data Lake Storage 2., Azure SQL veritabanı ve PostgreSQL için Azure veritabanı 'ndan veri erişimini destekler. Desteklenmeyen depolama kullanıyorsanız, [Azure Data Factory ve bu adımları](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-copy-data-tool)kullanarak verilerinizi desteklenen Azure depolama çözümlerine taşımanızı öneririz. Verileri desteklenen depolamaya taşımak, Machine Learning denemeleri sırasında veri çıkış maliyetlerini kaydetmenize yardımcı olabilir. 
+Azure Machine Learning, Azure Blob depolama, Azure dosyaları, Azure Data Lake Storage 1., Azure Data Lake Storage 2., Azure SQL veritabanı ve PostgreSQL için Azure veritabanı 'ndan veri erişimini destekler. Desteklenmeyen depolama kullanıyorsanız, [Azure Data Factory ve bu adımları](../data-factory/quickstart-create-data-factory-copy-data-tool.md)kullanarak verilerinizi desteklenen Azure depolama çözümlerine taşımanızı öneririz. Verileri desteklenen depolamaya taşımak, Machine Learning denemeleri sırasında veri çıkış maliyetlerini kaydetmenize yardımcı olabilir. 
 
 Azure Data Factory, ek ücret ödemeden 80 taneden fazla yerleşik bağlayıcı ile verimli ve dayanıklı veri aktarımı sağlar. Bu bağlayıcılar Azure veri Hizmetleri, şirket içi veri kaynakları, Amazon S3 ve Redshift ve Google BigQuery içerir.
 

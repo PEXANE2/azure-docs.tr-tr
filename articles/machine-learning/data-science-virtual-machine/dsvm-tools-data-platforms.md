@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 83c0fd796b7527c6f5e396a813def984b88ee9ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f432b417140440584bf4dfd01ed45814a746953
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440363"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320913"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Veri Bilimi Sanal Makinesi desteklenen veri platformları
 
@@ -103,5 +103,4 @@ Microsoft MMLSpark Machine-Learning kitaplıklarını kullanarak Azure Blob depo
 
 DSVM 'deki Spark örneğinin blob depolamada veya Azure Data Lake Storage depolanan verilere erişmesi için, `core-site.xml` $SPARK _HOME/conf/core-site.xml. Template ' de bulunan şablona göre dosyayı oluşturmanız ve yapılandırmanız gerekir. Ayrıca blob depolamaya ve Azure Data Lake Storage erişmek için uygun kimlik bilgilerine sahip olmanız gerekir. (Şablon dosyalarının BLOB depolama ve Azure Data Lake Storage yapılandırmalarına yönelik yer tutucuları kullandığına unutmayın.)
 
-Azure Data Lake Storage hizmeti kimlik bilgileri oluşturma hakkında daha ayrıntılı bilgi için bkz. [Azure Data Lake Storage 1. Ile kimlik doğrulama](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory). BLOB depolama veya Azure Data Lake Storage kimlik bilgileri core-site.xml dosyasına girildikten sonra, bu kaynaklarda depolanan verilere wasb://veya adl://URI ön eki aracılığıyla başvurabilirsiniz.
-
+Azure Data Lake Storage hizmeti kimlik bilgileri oluşturma hakkında daha ayrıntılı bilgi için bkz. [Azure Data Lake Storage 1. Ile kimlik doğrulama](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md). BLOB depolama veya Azure Data Lake Storage kimlik bilgileri core-site.xml dosyasına girildikten sonra, bu kaynaklarda depolanan verilere wasb://veya adl://URI ön eki aracılığıyla başvurabilirsiniz.

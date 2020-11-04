@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 22e91d50227fcb44c7b90478d76379c14161ae05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 878a2a47dfaddf1d3399a1dbd98865332838e148
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76718612"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321752"
 ---
 # <a name="sample-data-in-azure-blob-containers-sql-server-and-hive-tables"></a><a name="heading"></a>Azure blob kapsayıcıları, SQL Server ve Hive tablolarındaki örnek veriler
 
@@ -26,9 +26,8 @@ Aşağıdaki makalelerde, üç farklı Azure konumundan birinde depolanan verile
 * [**SQL Server veriler**](sample-data-sql-server.md) hem SQL hem de Python programlama dili kullanılarak örneklenir. 
 * Hive [**Tablo verileri**](sample-data-hive.md) , Hive sorguları kullanılarak örneklenir.
 
-Bu örnekleme görevi, [ekip veri bilimi işlemindeki (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)bir adımdır.
+Bu örnekleme görevi, [ekip veri bilimi işlemindeki (TDSP)](./index.yml)bir adımdır.
 
 **Örnek veriler neden**
 
 Çözümlemeyi planladığınız veri kümesi büyükse, daha küçük ancak temsili ve daha yönetilebilir bir boyutla azaltmak için verileri düşürmek genellikle iyi bir fikirdir. Yeniden boyutlandırma, veri anlama, araştırma ve özellik mühendisliğini kolaylaştırabilir. Cortana Analytics Işlemindeki bu örnekleme rolü, veri işleme işlevlerinin ve makine öğrenimi modellerinin hızlı prototipini etkinleştirmektir.
-

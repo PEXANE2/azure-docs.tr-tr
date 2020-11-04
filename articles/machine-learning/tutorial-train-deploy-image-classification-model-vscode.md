@@ -10,12 +10,12 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 07/09/2020
 ms.custom: contperfq4
-ms.openlocfilehash: a13bec5fa557bed1b9ce84836588e6a3e501ddf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98ca0f1e82b81c8aad53938a5475f1ece68c0e33
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906696"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321555"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>Azure Machine Learning Visual Studio Code uzantısı (Önizleme) kullanarak görüntü sınıflandırması TensorFlow modelini eğitme ve dağıtma
 
@@ -52,16 +52,16 @@ Bu öğreticinin, bilgisayarınızda herhangi bir yerde bulunan [AI deposunun vs
 Azure Machine Learning bir uygulama oluşturmak için yapmanız gereken ilk şey, bir çalışma alanı oluşturmaktır. Çalışma alanı modelleri ve eğitilen modellerin kendilerini eğiten kaynakları içerir. Daha fazla bilgi için bkz. [çalışma alanı nedir](./concept-workspace.md). 
 
 1. Visual Studio Code etkinlik çubuğunda **Azure** simgesini seçerek Azure Machine Learning görünümünü açın.
-1. Azure aboneliğinize sağ tıklayın ve **çalışma alanı oluştur**' u seçin. 
+1. Azure aboneliğinize sağ tıklayın ve **çalışma alanı oluştur** ' u seçin. 
     
     > [!div class="mx-imgBorder"]
     > ![Çalışma Alanı oluşturma](./media/tutorial-train-deploy-image-classification-model-vscode/create-workspace.png)
 
-1. Varsayılan olarak, oluşturma tarihi ve saati içeren bir ad oluşturulur. Metin girişi kutusunda adı "TeamWorkspace" olarak değiştirin ve **ENTER**tuşuna basın.
-1. **Yeni kaynak grubu oluştur**' u seçin. 
-1. Kaynak grubunuzu "TeamWorkspace-RG" olarak adlandırın ve **ENTER**'a basın. 
+1. Varsayılan olarak, oluşturma tarihi ve saati içeren bir ad oluşturulur. Metin girişi kutusunda adı "TeamWorkspace" olarak değiştirin ve **ENTER** tuşuna basın.
+1. **Yeni kaynak grubu oluştur** ' u seçin. 
+1. Kaynak grubunuzu "TeamWorkspace-RG" olarak adlandırın ve **ENTER** 'a basın. 
 1. Çalışma alanınız için bir konum seçin. Modelinizi dağıtmayı planladığınız konuma en yakın konumu seçmeniz önerilir. Örneğin, "Batı ABD 2".
-1. Çalışma alanı türünü seçmeniz istendiğinde **temel**' yı seçin.
+1. Çalışma alanı türünü seçmeniz istendiğinde **temel** ' yı seçin.
 
 Bu noktada, hesabınızda yeni bir çalışma alanı oluşturmak için Azure isteği yapılır. Birkaç dakika sonra, abonelik düğümünde yeni çalışma alanı görüntülenir. 
 
@@ -91,13 +91,13 @@ Tek tek model eğitimi çalıştırmalarını izlemek ve analiz etmek için, ça
 1. Visual Studio Code etkinlik çubuğunda **Azure** simgesini seçin. Azure Machine Learning görünümü görüntülenir. 
 1. Abonelik düğümünü genişletin. 
 1. **Teamworkspace** düğümünü genişletin. 
-1. Çalışma alanı düğümü altında, **işlem kümeleri** düğümüne sağ tıklayıp **işlem oluştur**' u seçin. 
+1. Çalışma alanı düğümü altında, **işlem kümeleri** düğümüne sağ tıklayıp **işlem oluştur** ' u seçin. 
 
     > [!div class="mx-imgBorder"]
     > ![İşlem hedefi oluştur](./media/tutorial-train-deploy-image-classification-model-vscode/create-compute.png)
 
 1. **Azure Machine Learning işlem (AmlCompute)** öğesini seçin. Azure Machine Learning Işlem, kullanıcının çalışma alanınızdaki diğer kullanıcılarla birlikte kullanılabilecek tek veya çok düğümlü bir işlem oluşturmasını sağlayan bir yönetilen işlem altyapısıdır.
-1. Bir VM boyutu seçin. Seçenekler listesinden **Standard_F2s_v2** ' yi seçin. SANAL makinenizin boyutu, modellerinizi eğitmek için gereken süre miktarını etkiler. VM boyutları hakkında daha fazla bilgi için bkz. [Azure 'Da Linux sanal makineleri için Boyutlar](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+1. Bir VM boyutu seçin. Seçenekler listesinden **Standard_F2s_v2** ' yi seçin. SANAL makinenizin boyutu, modellerinizi eğitmek için gereken süre miktarını etkiler. VM boyutları hakkında daha fazla bilgi için bkz. [Azure 'Da Linux sanal makineleri için Boyutlar](../virtual-machines/sizes.md).
 1. İşlem bilgilerinizi oluşturmak için "TeamWkspc-com" **yazın ve ENTER** tuşuna basın.
 
     VS Code bir dosya aşağıdakine benzer içerikle birlikte görünür:
@@ -122,7 +122,7 @@ Tek tek model eğitimi çalıştırmalarını izlemek ve analiz etmek için, ça
     }
     ```
 
-1. Yapılandırma tatmin edildiğinde, komut paletini **görüntüle > komut paleti**' ni seçerek açın.
+1. Yapılandırma tatmin edildiğinde, komut paletini **görüntüle > komut paleti** ' ni seçerek açın.
 1. Çalıştırma yapılandırma dosyanızı kaydetmek için komut paletinde aşağıdaki komutu girin.
 
     ```text
@@ -140,14 +140,14 @@ Bir çalıştırma yapılandırması oluşturmak için:
 1. Visual Studio Code etkinlik çubuğunda **Azure** simgesini seçin. Azure Machine Learning görünümü görüntülenir. 
 1. Abonelik düğümünü genişletin. 
 1. **Ekip çalışma alanı > işlem kümeleri** düğümünü genişletin. 
-1. İşlem düğümü altında **Teamwkspc-com** işlem düğümüne sağ tıklayın ve **çalıştırma yapılandırması oluştur**' u seçin.
+1. İşlem düğümü altında **Teamwkspc-com** işlem düğümüne sağ tıklayın ve **çalıştırma yapılandırması oluştur** ' u seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Çalıştırma yapılandırması oluşturma](./media/tutorial-train-deploy-image-classification-model-vscode/create-run-configuration.png)
 
 1. Çalışma yapılandırmanızı oluşturmak için "MNIST-RC" adlı çalışma yapılandırmanızı adlandırın ve **ENTER** tuşuna basın.
-1. Ardından **yeni Azure ML ortamı oluştur**' u seçin. Ortamlar, betikleri çalıştırmak için gereken bağımlılıkları tanımlar.
-1. Ortamınızı "MNIST-env" olarak adlandırın ve **ENTER**tuşuna basın.
+1. Ardından **yeni Azure ML ortamı oluştur** ' u seçin. Ortamlar, betikleri çalıştırmak için gereken bağımlılıkları tanımlar.
+1. Ortamınızı "MNIST-env" olarak adlandırın ve **ENTER** tuşuna basın.
 1. Listeden **Conda Dependencies dosyasını** seçin.
 1. Conda Dependencies dosyasına gitmek için **ENTER** tuşuna basın. Bu durumda, bağımlılıklar dosyası `env.yml` dizinin içindeki dosyadır `vscode-tools-for-ai/mnist-vscode-docs-sample` .
 
@@ -205,7 +205,7 @@ Bir çalıştırma yapılandırması oluşturmak için:
     Azure ML: Save and Continue
     ```
 
-1. Bu örnek, Azure Machine Learning kayıtlı bir veri kümesini kullanmaz. Bunun yerine, *train.py* çalıştırıldığında yüklenir. Eğitim çalıştıralım için bir veri başvurusu oluşturmanız istendiğinde, istemine "n" yazın ve **ENTER**tuşuna basın.
+1. Bu örnek, Azure Machine Learning kayıtlı bir veri kümesini kullanmaz. Bunun yerine, *train.py* çalıştırıldığında yüklenir. Eğitim çalıştıralım için bir veri başvurusu oluşturmanız istendiğinde, istemine "n" yazın ve **ENTER** tuşuna basın.
 1. İşlem üzerinde çalıştırılacak betik dosyasına gitmek için **ENTER** tuşuna basın. Bu durumda, modeli eğitme betiği `train.py` Dizin içindeki dosyadır `vscode-tools-for-ai/mnist-vscode-docs-sample` .
 
     VS Code adlı bir dosya `MNIST-rc.runconfig` , aşağıdakine benzer içerikle birlikte görüntülenir:
@@ -288,15 +288,15 @@ Azure Machine Learning deneme çalıştırmak için:
 1. Abonelik düğümünü genişletin. 
 1. **Teamworkspace > denemeleri** düğümünü genişletin. 
 1. **Mnist** denemenize sağ tıklayın.
-1. **Deneme Çalıştır**' ı seçin.
+1. **Deneme Çalıştır** ' ı seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Deneme çalıştırma](./media/tutorial-train-deploy-image-classification-model-vscode/run-experiment.png)
 
 1. İşlem hedefi seçenekleri listesinden **Teamwkspc-com** işlem hedefini seçin.
 1. Ardından, **Mnist-RC** Run Configuration ' ı seçin.
-1. Bu noktada, çalışma alanınızdaki seçili işlem hedefi üzerinde denemenizi çalıştırmak için Azure 'a bir istek gönderilir. Bu işlem birkaç dakika sürer. Eğitim işini çalıştırmak için gereken süre, işlem türü ve eğitim verileri boyutu gibi çeşitli faktörlerden etkilenir. Denemenizin ilerlemesini izlemek için, geçerli çalıştırma düğümüne sağ tıklayıp **Azure Portal Çalıştır**' ı seçin.
-1. Bir dış Web sitesi açmak isteyen iletişim kutusu göründüğünde **Aç**' ı seçin.
+1. Bu noktada, çalışma alanınızdaki seçili işlem hedefi üzerinde denemenizi çalıştırmak için Azure 'a bir istek gönderilir. Bu işlem birkaç dakika sürer. Eğitim işini çalıştırmak için gereken süre, işlem türü ve eğitim verileri boyutu gibi çeşitli faktörlerden etkilenir. Denemenizin ilerlemesini izlemek için, geçerli çalıştırma düğümüne sağ tıklayıp **Azure Portal Çalıştır** ' ı seçin.
+1. Bir dış Web sitesi açmak isteyen iletişim kutusu göründüğünde **Aç** ' ı seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Deneme ilerlemesini izleme](./media/tutorial-train-deploy-image-classification-model-vscode/track-experiment-progress.png)
@@ -312,18 +312,18 @@ Modelinizi kaydetmek için:
 1. Visual Studio Code etkinlik çubuğunda **Azure** simgesini seçin. Azure Machine Learning görünümü görüntülenir.
 1. Abonelik düğümünü genişletin. 
 1. **Teamworkspace > denemeleri > MNIST** düğümünü genişletin.
-1. Model eğitimi 'nden oluşturulan model çıkışlarını alın. **Çalıştır 1** çalıştırma düğümüne sağ tıklayın ve **çıkışları indir**' i seçin. 
+1. Model eğitimi 'nden oluşturulan model çıkışlarını alın. **Çalıştır 1** çalıştırma düğümüne sağ tıklayın ve **çıkışları indir** ' i seçin. 
 
     > [!div class="mx-imgBorder"]
     > ![Model çıkışlarını indir](./media/tutorial-train-deploy-image-classification-model-vscode/download-outputs.png)
 
 1. İndirilen çıktıların kaydedileceği dizini seçin. Varsayılan olarak, çıktılar Visual Studio Code Şu anda açılmış dizine yerleştirilir.
-1. **Modeller** düğümüne sağ tıklayın ve **modeli Kaydet**' i seçin.
+1. **Modeller** düğümüne sağ tıklayın ve **modeli Kaydet** ' i seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Bir modeli kaydetme](./media/tutorial-train-deploy-image-classification-model-vscode/register-model.png)
 
-1. Modelinize "MNIST-TensorFlow-model" adını girin ve **ENTER**tuşuna basın.
+1. Modelinize "MNIST-TensorFlow-model" adını girin ve **ENTER** tuşuna basın.
 1. Bir TensorFlow modeli birçok dosyadan oluşur. Seçenekler listesinden model yolu biçimi olarak **model klasörü** ' nü seçin. 
 1. Dizini seçin `azureml_outputs/Run_1/outputs/outputs/model` .
 
@@ -362,13 +362,13 @@ Bir Web hizmetini bir ACI olarak dağıtmak için:
 1. Visual Studio Code etkinlik çubuğunda **Azure** simgesini seçin. Azure Machine Learning görünümü görüntülenir.
 1. Abonelik düğümünü genişletin. 
 1. **Teamworkspace > modeller** düğümünü genişletin. 
-1. **Mnist-TensorFlow-model** ' e sağ tıklayın ve **kayıtlı modelden Hizmeti Dağıt**' ı seçin.
+1. **Mnist-TensorFlow-model** ' e sağ tıklayın ve **kayıtlı modelden Hizmeti Dağıt** ' ı seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Modeli dağıtma](./media/tutorial-train-deploy-image-classification-model-vscode/deploy-model.png)
 
-1. **Azure Container Instances**seçin.
-1. Hizmetinizi "mnist-TensorFlow-svc" olarak adlandırın ve **ENTER**tuşuna basın.
+1. **Azure Container Instances** seçin.
+1. Hizmetinizi "mnist-TensorFlow-svc" olarak adlandırın ve **ENTER** tuşuna basın.
 1. Giriş kutusuna **ENTER** tuşuna basarak ve dizindeki dosyaya göz atarak kapsayıcıda çalıştırılacak betiği seçin `score.py` `mnist-vscode-docs-sample` .
 1. Giriş kutusuna **ENTER** tuşuna basarak ve dizindeki dosyaya göz atarak betiği çalıştırmak için gereken bağımlılıkları sağlayın `env.yml` `mnist-vscode-docs-sample` .
 
@@ -414,4 +414,3 @@ Bu noktada, Web hizmetinizi dağıtmak üzere Azure 'a bir istek gönderilir. Bu
 
 * Visual Studio Code dışında Azure Machine Learning eğitme hakkında yönergeler için bkz. [öğretici: modelleri Azure Machine Learning Ile eğitme](tutorial-train-models-with-aml.md).
 * Kodu yerel olarak düzenleme, çalıştırma ve hata ayıklama hakkında yönergeler için bkz. [Python Hello-World öğreticisi](https://code.visualstudio.com/docs/Python/Python-tutorial).
-

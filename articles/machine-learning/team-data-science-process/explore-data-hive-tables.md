@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c0dfa06e2ece2ba4631c0d5681b066ab0134daba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7234a8c45c20c64dddb43a52a099aa92f2d297d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085676"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321114"
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>Hive sorguları ile Hive tablosundaki verileri keşfedin
 
@@ -28,9 +28,9 @@ Bu görev, [ekip veri bilimi işlemindeki](overview.md)bir adımdır.
 Bu makalede sahip olduğunuz varsayılır:
 
 * Bir Azure depolama hesabı oluşturuldu. Yönergelere ihtiyacınız varsa bkz. [Azure depolama hesabı oluşturma](../../storage/common/storage-account-create.md)
-* HDInsight hizmeti ile özelleştirilmiş bir Hadoop kümesi sağlandı. Yönergelere ihtiyacınız varsa bkz. [Gelişmiş analiz için Azure HDInsight Hadoop kümelerini özelleştirme](customize-hadoop-cluster.md).
+* HDInsight hizmeti ile özelleştirilmiş bir Hadoop kümesi sağlandı. Yönergelere ihtiyacınız varsa bkz. [Gelişmiş analiz için Azure HDInsight Hadoop kümelerini özelleştirme](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md).
 * Veriler Azure HDInsight Hadoop kümelerinde Hive tablolarına yüklendi. Bu yoksa, önce verileri Hive tablolarına yüklemek üzere [Hive tablolarına veri oluşturma ve yükleme](move-hive-tables.md) konusundaki yönergeleri izleyin.
-* Kümeye uzaktan erişim etkinleştirildi. Yönergelere ihtiyacınız varsa bkz. [Hadoop kümesinin baş düğümüne erişme](customize-hadoop-cluster.md).
+* Kümeye uzaktan erişim etkinleştirildi. Yönergelere ihtiyacınız varsa bkz. [Hadoop kümesinin baş düğümüne erişme](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md).
 * Hive sorgularının nasıl gönderileceği hakkında yönergeler gerekiyorsa bkz. [Hive sorguları gönderme](move-hive-tables.md#submit)
 
 ## <a name="example-hive-query-scripts-for-data-exploration"></a>Veri araştırması için örnek Hive sorgu betikleri
@@ -72,4 +72,3 @@ Bu makalede sahip olduğunuz varsayılır:
 
 ## <a name="additional-query-scripts-for-taxi-trip-data-scenarios"></a>Taxı seyahat verileri senaryoları için ek sorgu betikleri
 [NYC TAXI seyahat veri](https://chriswhong.com/open-data/foil_nyc_taxi/) senaryolarına özgü sorgu örnekleri de [GitHub deposunda](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)sunulmaktadır. Bu sorguların veri şeması zaten belirtilmiş ve çalıştırılmaya gönderilmeye hazırlanıyor.
-

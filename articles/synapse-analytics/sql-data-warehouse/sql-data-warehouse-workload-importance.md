@@ -1,6 +1,6 @@
 ---
 title: İş yükü önem düzeyi
-description: Azure SYNAPSE Analytics 'te SYNAPSE SQL havuzu sorguları için önem ayarlamayla ilgili kılavuz.
+description: Azure SYNAPSE Analytics 'te adanmış SQL havuzu sorgularının önemini ayarlamaya yönelik kılavuz.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 1b2c71d7bf9e796af77e9a2a4a3a31152f2ca884
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07c781672874bff306c9d25a464ec66414ebc9f1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85212352"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322128"
 ---
 # <a name="azure-synapse-analytics-workload-importance"></a>Azure SYNAPSE Analytics iş yükü önemi
 
-Bu makalede, iş yükü önemlerinin Azure SYNAPSE 'de SYNAPSE SQL havuzu istekleri için yürütme sırasını nasıl etkileyebileceğini açıklamaktadır.
+Bu makalede, iş yükü önemlerinin Azure SYNAPSE 'de adanmış SQL havuzu istekleri için yürütme sırasını nasıl etkileyebileceğini açıklamaktadır.
 
 ## <a name="importance"></a>Önem
 
@@ -38,7 +38,7 @@ Yukarıda açıklanan temel önemli senaryonun ötesinde Sales ve hava durumu ve
 
 ### <a name="locking"></a>Kilitleme
 
-Okuma ve yazma etkinliği için kilitlerin erişimi, doğal çekişmenin bir alanıdır. [Bölüm değiştirme](sql-data-warehouse-tables-partition.md) veya [nesne yeniden adlandırma](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gibi etkinlikler yükseltilmiş kilitler gerektirir.  İş yükü önemi olmadan, Azure SYNAPSE 'de SYNAPSE SQL havuzu, üretilen iş için optimize eder. Üretilen iş için iyileştirmek, çalışırken ve sıraya alınan isteklerin aynı kilitleme ihtiyaçlarına ve kaynakların kullanılabilir olduğu durumlarda, sıraya alınan isteklerin istek kuyruğuna daha önce ulaşan istekleri atlayabilir. Daha yüksek kilitleme ihtiyaçlarına sahip isteklere iş yükü önemi uygulandıktan sonra. Daha yüksek öneme sahip istek, daha düşük öneme sahip istekten önce çalıştırılır.
+Okuma ve yazma etkinliği için kilitlerin erişimi, doğal çekişmenin bir alanıdır. [Bölüm değiştirme](sql-data-warehouse-tables-partition.md) veya [nesne yeniden adlandırma](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gibi etkinlikler yükseltilmiş kilitler gerektirir.  İş yükü önemi olmadan, Azure 'da adanmış SQL havuzu üretilen iş için optimize SYNAPSE. Üretilen iş için iyileştirmek, çalışırken ve sıraya alınan isteklerin aynı kilitleme ihtiyaçlarına ve kaynakların kullanılabilir olduğu durumlarda, sıraya alınan isteklerin istek kuyruğuna daha önce ulaşan istekleri atlayabilir. Daha yüksek kilitleme ihtiyaçlarına sahip isteklere iş yükü önemi uygulandıktan sonra. Daha yüksek öneme sahip istek, daha düşük öneme sahip istekten önce çalıştırılır.
 
 Aşağıdaki örneği inceleyin:
 
@@ -50,7 +50,7 @@ S2 ve Q3 aynı önem derecesine sahip ve Q1 hala yürütülerek S3 yürütülmey
 
 ### <a name="non-uniform-requests"></a>Tekdüzen olmayan istekler
 
-Farklı kaynak sınıflarına sahip isteklerin gönderilmesi durumunda önem derecesine yardımcı olabilecek önemli bir senaryo.  Daha önce belirtildiği gibi, Azure SYNAPSE 'de SYNAPSE SQL havuzu, daha önce belirtildiği gibi, verimlilik için en iyi duruma getirir. Karma boyut istekleri (smallrc veya Orta RC gibi) sıraya alınmışsa, SYNAPSE SQL havuzu kullanılabilir kaynaklara uygun en eski gelen isteği seçer. İş yükü önemi uygulanmışsa, en yüksek önemli istek daha sonra zamanlanır.
+Farklı kaynak sınıflarına sahip isteklerin gönderilmesi durumunda önem derecesine yardımcı olabilecek önemli bir senaryo.  Daha önce belirtildiği gibi, Azure 'daki adanmış SQL havuzu, daha önce belirtildiği gibi, üretilen iş için optimize SYNAPSE. Karma boyut istekleri (smallrc veya Orta RC gibi) sıraya alınmışsa, adanmış SQL havuzu kullanılabilir kaynaklara uyan en eski gelen isteği seçer. İş yükü önemi uygulanmışsa, en yüksek önemli istek daha sonra zamanlanır.
   
 DW500c üzerinde aşağıdaki örneği göz önünde bulundurun:
 

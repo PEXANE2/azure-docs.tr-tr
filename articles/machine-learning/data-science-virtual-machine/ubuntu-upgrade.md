@@ -10,18 +10,18 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: d57de4d52ccf3a029a8dd1350635fb65dd3ac829
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b98384d4d735f4c124c6af40d6edbff896900ce
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828682"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320981"
 ---
 # <a name="upgrade-your-data-science-virtual-machine-to-ubuntu-1804"></a>Veri Bilimi Sanal Makinenizi Ubuntu 18.04’e yükseltme
 
 Ubuntu 16,04 veya CentOS gibi eski bir sürümü çalıştıran bir Veri Bilimi Sanal Makinesi varsa DSVM 'nizi Ubuntu 18,04 ' ye geçirmeniz gerekir. Geçiş, en son işletim sistemi düzeltme eklerini, sürücüleri, önceden yüklenmiş yazılımları ve kitaplık sürümlerini almanızı sağlayacaktır. Bu belgede, Ubuntu veya CentOS 'ın eski sürümlerinden nasıl geçiş yapılacağı açıklanır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - SSH ve Linux komut satırıyla benzerlik
 
@@ -38,9 +38,9 @@ Azure portal, **anlık görüntüler** işlevini bulmak için arama çubuğunu k
 
 :::image type="content" source="media/ubuntu_upgrade/azure-portal-search-bar.png" alt-text="Azure portal ve arama çubuğunun gösterildiği, * * anlık görüntülerle * * vurgulanmış ekran görüntüsü":::
 
-1. **Ekle**' yi seçerek **anlık görüntü oluşturma** sayfasına götürür. Sanal makinenizin aboneliğini ve kaynak grubunu seçin. **Bölge**için, hedef depolamanın bulunduğu bölgeyi seçin. DSVM depolama diskini ve ek yedekleme seçeneklerini belirleyin. **Standart HDD** , bu yedekleme senaryosu için uygun bir depolama türüdür.
+1. **Ekle** ' yi seçerek **anlık görüntü oluşturma** sayfasına götürür. Sanal makinenizin aboneliğini ve kaynak grubunu seçin. **Bölge** için, hedef depolamanın bulunduğu bölgeyi seçin. DSVM depolama diskini ve ek yedekleme seçeneklerini belirleyin. **Standart HDD** , bu yedekleme senaryosu için uygun bir depolama türüdür.
 
-:::image type="content" source="media/ubuntu_upgrade/create-snapshot-options.png" alt-text="Azure portal ve arama çubuğunun gösterildiği, * * anlık görüntülerle * * vurgulanmış ekran görüntüsü":::
+:::image type="content" source="media/ubuntu_upgrade/create-snapshot-options.png" alt-text="' Anlık görüntü oluşturma ' seçeneklerini gösteren ekran görüntüsü":::
 
 2. Tüm ayrıntılar doldurulduktan ve doğrulama başarılı olduktan sonra, anlık görüntüyü doğrulamak ve oluşturmak için **gözden geçir + oluştur** ' u seçin. Anlık görüntü başarıyla tamamlandığında, dağıtımın tamamlandığını bildiren bir ileti görürsünüz.
 
@@ -56,7 +56,7 @@ Eski bir Ubuntu sürümünü geçiriyorsanız yerinde geçiş yapmak isteyebilir
     sudo do-release-upgrade
     ```
 
-Yükseltme işleminin tamamlanması biraz zaman alır. Bu, üzerine geldiğinde, program sanal makineyi yeniden başlatmak için izin ister. **Evet**yanıtını verin. Sistem yeniden başlatıldıktan sonra SSH oturumuyla bağlantınız kesilecek.
+Yükseltme işleminin tamamlanması biraz zaman alır. Bu, üzerine geldiğinde, program sanal makineyi yeniden başlatmak için izin ister. **Evet** yanıtını verin. Sistem yeniden başlatıldıktan sonra SSH oturumuyla bağlantınız kesilecek.
 
 ### <a name="if-necessary-regenerate-ssh-keys"></a>Gerekirse, SSH anahtarlarını yeniden oluşturun
 
@@ -65,12 +65,17 @@ Yükseltme işleminin tamamlanması biraz zaman alır. Bu, üzerine geldiğinde,
 
 VM 'niz yükseltildikten ve yeniden başlatıldıktan sonra, SSH aracılığıyla yeniden erişmeyi deneyin. Yeniden başlatma sırasında IP adresi değişmiş olabilir, bu nedenle bağlanmayı denemeden önce onaylayın.
 
-**Uzak ana BILGISAYAR KIMLIĞININ değiştiği**bir hata alırsanız, SSH kimlik bilgilerinizi yeniden oluşturmanız gerekir.
+**Uzak ana BILGISAYAR KIMLIĞININ değiştiği** bir hata alırsanız, SSH kimlik bilgilerinizi yeniden oluşturmanız gerekir.
 
-:::image type="content" source="media/ubuntu_upgrade/remote-host-warning.png" alt-text="Azure portal ve arama çubuğunun gösterildiği, * * anlık görüntülerle * * vurgulanmış ekran görüntüsü"
+:::image type="content" source="media/ubuntu_upgrade/remote-host-warning.png" alt-text="Uzak ana bilgisayar kimliği değişti uyarısını gösteren PowerShell ekran görüntüsü":::
+
+Bunu yapmak için, yerel makinenizde komutunu çalıştırın:
+
+```bash
+ssh-keygen -R "your server hostname or ip"
 ```
 
-Artık SSH ile bağlantı kurabiliyor olmalısınız. Hala sorun yaşıyorsanız, **Bağlan** SAYFASıNDA, **SSH bağlantı sorunlarını gidermek**için bağlantıyı izleyin.
+Artık SSH ile bağlantı kurabiliyor olmalısınız. Hala sorun yaşıyorsanız, **Bağlan** SAYFASıNDA, **SSH bağlantı sorunlarını gidermek** için bağlantıyı izleyin.
 
 ## <a name="side-by-side-migration"></a>Yan yana geçiş
 
@@ -98,19 +103,19 @@ FileSystem 'ın işletim sistemi parçalarını yükseltmeyi ve yerinde olduğu 
 
 Daha önce açıklandığı gibi zaten bir VM anlık görüntüsü oluşturmadıysanız, bunu yapın. 
 
-1. Azure portal **disk** sayfasını açmak için **diskler** ' i arayın ve **Ekle**' yi seçin.
+1. Azure portal **disk** sayfasını açmak için **diskler** ' i arayın ve **Ekle** ' yi seçin.
 
-:::image type="content" source="media/ubuntu_upgrade/portal-disks-search.png" alt-text="Azure portal ve arama çubuğunun gösterildiği, * * anlık görüntülerle * * vurgulanmış ekran görüntüsü":::
+:::image type="content" source="media/ubuntu_upgrade/portal-disks-search.png" alt-text="Diskleri ara sayfasını ve Ekle düğmesini gösteren Azure portal ekran görüntüsü":::
 
-2. **Abonelik**, **kaynak grubu**ve **bölgeyi** VM anlık görüntüsünün değerlerine ayarlayın. Oluşturulacak disk için bir **ad** seçin.
+2. **Abonelik** , **kaynak grubu** ve **bölgeyi** VM anlık görüntüsünün değerlerine ayarlayın. Oluşturulacak disk için bir **ad** seçin.
 
-3. **Kaynak türünü** **anlık görüntü** olarak seçin ve **kaynak anlık**görüntüsü olarak VM anlık görüntüsünü seçin. Diski gözden geçirin ve oluşturun. 
+3. **Kaynak türünü** **anlık görüntü** olarak seçin ve **kaynak anlık** görüntüsü olarak VM anlık görüntüsünü seçin. Diski gözden geçirin ve oluşturun. 
 
-:::image type="content" source="media/ubuntu_upgrade/disk-create-options.png" alt-text="Azure portal ve arama çubuğunun gösterildiği, * * anlık görüntülerle * * vurgulanmış ekran görüntüsü":::
+:::image type="content" source="media/ubuntu_upgrade/disk-create-options.png" alt-text="Seçenekleri gösteren disk oluşturma iletişim kutusunun ekran görüntüsü":::
 
 ### <a name="create-a-new-ubuntu-data-science-virtual-machine"></a>Yeni bir Ubuntu Veri Bilimi Sanal Makinesi oluşturma
 
-[Azure Portal](https://portal.azure.com) veya [ARM şablonunu](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager)kullanarak yeni bir Ubuntu veri bilimi sanal makinesi oluşturun. 
+[Azure Portal](https://portal.azure.com) veya [ARM şablonunu](./dsvm-tutorial-resource-manager.md)kullanarak yeni bir Ubuntu veri bilimi sanal makinesi oluşturun. 
 
 ### <a name="recreate-user-accounts-on-your-new-data-science-virtual-machine"></a>Yeni Veri Bilimi Sanal Makinesi Kullanıcı hesaplarını yeniden oluşturun
 
@@ -118,17 +123,17 @@ Yalnızca eski bilgisayarınızdan verileri kopyalayacaksınız, yeni makinede k
 
 Linux, eski makinenizi izlemek üzere yeni yüklemenizde dizin ve yolları özelleştirmenize olanak tanımak için yeterince esnektir. Genel olarak, modern Ubuntu 'nun tercih edilen düzeninin kullanılması ve Kullanıcı ortamınızı ve betiklerinizi uyarlamak için değiştirmek daha kolaydır.
 
-Daha fazla bilgi için bkz. [hızlı başlangıç: Linux için veri bilimi sanal makinesi ayarlama (Ubuntu)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro).
+Daha fazla bilgi için bkz. [hızlı başlangıç: Linux için veri bilimi sanal makinesi ayarlama (Ubuntu)](./dsvm-ubuntu-intro.md).
 
 ### <a name="mount-the-disk-of-the-snapshotted-vm-as-a-data-disk-on-your-new-data-science-virtual-machine"></a>Anlık görüntüyle ilgili VM 'nin diskini yeni Veri Bilimi Sanal Makinesi bir veri diski olarak bağlayın
 
 1. Azure portal, Veri Bilimi Sanal Makinesi çalıştığından emin olun.
 
-2. Azure portal, Veri Bilimi Sanal Makinesi sayfasına gidin. Sol Köl üzerindeki **diskler** dikey penceresini seçin. **Mevcut diskleri Ekle**öğesini seçin.
+2. Azure portal, Veri Bilimi Sanal Makinesi sayfasına gidin. Sol Köl üzerindeki **diskler** dikey penceresini seçin. **Mevcut diskleri Ekle** öğesini seçin.
 
 3. **Disk adı** açılır listesinde, eski sanal makinenizin anlık görüntüsünden oluşturduğunuz diski seçin.
 
-:::image type="content" source="media/ubuntu_upgrade/attach-data-disk.png" alt-text="Azure portal ve arama çubuğunun gösterildiği, * * anlık görüntülerle * * vurgulanmış ekran görüntüsü":::
+:::image type="content" source="media/ubuntu_upgrade/attach-data-disk.png" alt-text="Disk ek seçeneklerini gösteren DSVM seçenekleri sayfasının ekran görüntüsü":::
 
 4. Sanal makinenizi güncelleştirmek için **Kaydet** ' i seçin.
 
@@ -147,7 +152,7 @@ Daha fazla bilgi için bkz. [hızlı başlangıç: Linux için veri bilimi sanal
     
     Sonuçlar aşağıdaki görüntüye benzer bir şekilde görünmelidir. Görüntüde disk, `sda1` köke bağlanır ve `sdb2` `/mnt` karalama disktir. Eski sanal makinenizin anlık görüntüsünden oluşturulan veri diski `sdc1` , bir bağlama konumunun olmaması halinde belirlenir, ancak henüz kullanılabilir değildir. Sonuçlarınız farklı tanımlayıcılara sahip olabilir, ancak benzer bir model görmeniz gerekir.
     
-    :::image type="content" source="media/ubuntu_upgrade/lsblk-results.png" alt-text="Azure portal ve arama çubuğunun gösterildiği, * * anlık görüntülerle * * vurgulanmış ekran görüntüsü":::
+    :::image type="content" source="media/ubuntu_upgrade/lsblk-results.png" alt-text="Çıkarılmış veri sürücüsünü gösteren lsblk çıktısının ekran görüntüsü":::
     
 3. Veri sürücüsüne erişmek için bir konum oluşturun ve bağlayın. `/dev/sdc1`Tarafından döndürülen uygun değerle değiştirin `lsblk` :
 
@@ -157,7 +162,7 @@ Daha fazla bilgi için bkz. [hızlı başlangıç: Linux için veri bilimi sanal
     
 4. Şimdi, `/datadrive` eski veri bilimi sanal makinesi dizinlerini ve dosyalarını içerir. Veri sürücüsünden istediğiniz dizinleri veya dosyaları istediğiniz şekilde yeni VM 'ye taşıyın veya kopyalayın.
 
-Daha fazla bilgi için bkz. [bir LINUX sanal makinesine veri diski eklemek için portalını kullanma](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#connect-to-the-linux-vm-to-mount-the-new-disk).
+Daha fazla bilgi için bkz. [bir LINUX sanal makinesine veri diski eklemek için portalını kullanma](../../virtual-machines/linux/attach-disk-portal.md#connect-to-the-linux-vm-to-mount-the-new-disk).
 
 ## <a name="connect-and-confirm-version-upgrade"></a>Sürüm yükseltmesini bağlama ve onaylama
 
@@ -169,13 +174,13 @@ cat /etc/os-release
 
 Ubuntu 18,04 kullandığınızı görmeniz gerekir.
 
-:::image type="content" source="media/ubuntu_upgrade/ssh-os-release.png" alt-text="Azure portal ve arama çubuğunun gösterildiği, * * anlık görüntülerle * * vurgulanmış ekran görüntüsü":::
+:::image type="content" source="media/ubuntu_upgrade/ssh-os-release.png" alt-text="İşletim sistemi sürüm verilerini gösteren Ubuntu terminalinin ekran görüntüsü":::
 
 Sürüm değişikliği de Azure portal gösterilmiştir.
 
-:::image type="content" source="media/ubuntu_upgrade/portal-showing-os-version.png" alt-text="Azure portal ve arama çubuğunun gösterildiği, * * anlık görüntülerle * * vurgulanmış ekran görüntüsü":::
+:::image type="content" source="media/ubuntu_upgrade/portal-showing-os-version.png" alt-text="İşletim sistemi sürümü dahil DSVM özelliklerini gösteren portalın ekran görüntüsü":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure 'da Ubuntu veri bilimi makinesiyle veri bilimi](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/linux-dsvm-walkthrough)
-- [Azure Veri Bilimi Sanal Makinesi'ne dahil olan araçlar hangileridir?](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/tools-included)
+- [Azure 'da Ubuntu veri bilimi makinesiyle veri bilimi](./linux-dsvm-walkthrough.md)
+- [Azure Veri Bilimi Sanal Makinesi'ne dahil olan araçlar hangileridir?](./tools-included.md)

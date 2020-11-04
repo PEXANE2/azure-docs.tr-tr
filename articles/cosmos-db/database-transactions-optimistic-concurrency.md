@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: c1ecd3a3d29d6876a59a2fa039802966f348a09d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9209b33f23b7f6c836dedb6227d052610a21d9d2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93089840"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319492"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>İşlemler ve iyimser eşzamanlılık denetimi
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -65,4 +65,5 @@ Aşağıdaki makalelerde veritabanı işlemleri ve iyimser eşzamanlılık denet
 - [Azure Cosmos veritabanları, kapsayıcılar ve öğeleriyle çalışma](account-databases-containers-items.md)
 - [Tutarlılık düzeyleri](consistency-levels.md)
 - [Çakışma türleri ve çözme ilkeleri](conflict-resolution-policies.md)
+- [TransactionalBatch kullanma](transactional-batch.md)
 - [Saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevler](stored-procedures-triggers-udfs.md)

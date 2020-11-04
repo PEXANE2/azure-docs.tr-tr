@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a81e60e3bb7a1b0f34a29ccd9cebf3d82279027e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: cf0817ad1e9fae901bfe2b4a174d95a4f673e4c0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676653"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319006"
 ---
 # <a name="track-experiment-runs-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>Deneme çalışmalarını izleyin ve ML modellerini MLflow ve Azure Machine Learning (Önizleme) ile dağıtın
 
@@ -24,9 +24,9 @@ Bu makalede, mlflow [izleme](https://mlflow.org/docs/latest/quickstart.html#usin
 
 Desteklenen yetenekler şunlardır: 
 
-+ [Azure Machine Learning çalışma](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workspaces)alanınızdaki deneme ölçümlerini ve yapıtları izleyin ve günlüğe kaydedin. Denemeleri için MLflow Izlemeyi zaten kullanıyorsanız, çalışma alanı eğitim ölçümlerini ve modellerini depolamak için merkezi, güvenli ve ölçeklenebilir bir konum sağlar.
++ [Azure Machine Learning çalışma](./concept-azure-machine-learning-architecture.md#workspace)alanınızdaki deneme ölçümlerini ve yapıtları izleyin ve günlüğe kaydedin. Denemeleri için MLflow Izlemeyi zaten kullanıyorsanız, çalışma alanı eğitim ölçümlerini ve modellerini depolamak için merkezi, güvenli ve ölçeklenebilir bir konum sağlar.
 
-+ Azure Machine Learning arka uç desteğiyle (Önizleme) MLflow projeleriyle eğitim işleri gönderebilirsiniz. İşleri Azure Machine Learning izlemeye yerel olarak gönderebilir veya yürütmeleri [Azure Machine Learning bir işlem](https://docs.microsoft.com/azure/machine-learning/how-to-create-attach-compute-sdk#amlcompute)aracılığıyla buluta geçirebilirsiniz.
++ Azure Machine Learning arka uç desteğiyle (Önizleme) MLflow projeleriyle eğitim işleri gönderebilirsiniz. İşleri Azure Machine Learning izlemeye yerel olarak gönderebilir veya yürütmeleri [Azure Machine Learning bir işlem](./how-to-create-attach-compute-cluster.md)aracılığıyla buluta geçirebilirsiniz.
 
 + MLflow ve Azure Machine Learning modeli kayıt defterindeki modelleri izleyin ve yönetin.
 
@@ -48,9 +48,9 @@ Aşağıdaki diyagramda, MLflow Izlemenin yanı sıra, Azure Machine Learning ç
 
  Aşağıdaki tabloda Azure Machine Learning kullanılabilecek farklı istemciler ve ilgili işlev özellikleri özetlenmektedir.
 
- MLflow Izleme yalnızca [Azure Machine Learning Python SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)aracılığıyla kullanılabilen ölçüm günlüğü ve yapıt depolama işlevleri sunar.
+ MLflow Izleme yalnızca [Azure Machine Learning Python SDK 'sı](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)aracılığıyla kullanılabilen ölçüm günlüğü ve yapıt depolama işlevleri sunar.
 
-| Yetenek | MLflow Izleme & dağıtımı | Python SDK Azure Machine Learning |  Azure Machine Learning CLI | Azure Machine Learning Studio|
+| Özellik | MLflow Izleme & dağıtımı | Python SDK Azure Machine Learning |  Azure Machine Learning CLI | Azure Machine Learning Studio|
 |---|---|---|---|---|
 | Çalışma alanını yönet |   | ✓ | ✓ | ✓ |
 | Veri depolarını kullanma  |   | ✓ | ✓ | |
@@ -62,17 +62,17 @@ Aşağıdaki diyagramda, MLflow Izlemenin yanı sıra, Azure Machine Learning ç
 |Model performansını izleme||✓|  |   |
 | Veri değişikliklerini algılama |   | ✓ |   | ✓ |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * `azureml-mlflow` paketini yükleyin. 
-    * Bu paket `azureml-core` , çalışma alanınıza erişmek Için MLflow bağlantısını sağlayan [Azure Machine Learning Python SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)otomatik olarak getirir.
+    * Bu paket `azureml-core` , çalışma alanınıza erişmek Için MLflow bağlantısını sağlayan [Azure Machine Learning Python SDK 'sını](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)otomatik olarak getirir.
 * [Azure Machine Learning çalışma alanı oluşturun](how-to-manage-workspace.md).
 
 ## <a name="track-local-runs"></a>Yerel çalıştırmaları izle
 
 Azure Machine Learning ile MLflow Izleme, yerel çalıştırmanıza ait günlüğe kaydedilen ölçümleri ve yapıtları Azure Machine Learning çalışma alanınıza depolamanıza olanak sağlar.
 
-`mlflow` [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true) Mlflow 'un izleme URI 'sine erişmek ve çalışma alanınızı yapılandırmak için ve sınıflarını içeri aktarın.
+`mlflow` [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py) Mlflow 'un izleme URI 'sine erişmek ve çalışma alanınızı yapılandırmak için ve sınıflarını içeri aktarın.
 
 Aşağıdaki kodda `get_mlflow_tracking_uri()` yöntemi, çalışma alanına benzersiz bir Izleme URI adresi atar `ws` ve `set_tracking_uri()` MLFLOW izleme URI 'sini bu adrese yönlendirir.
 
@@ -119,7 +119,7 @@ dependencies:
     - numpy
 ```
 
-Betiğinizdeki işlem ve eğitim çalıştırma ortamınızı [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) sınıfıyla yapılandırın. Sonra,  [`ScriptRunConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py&preserve-view=true) işlem hedefi olarak uzak işlem ile oluşturun.
+Betiğinizdeki işlem ve eğitim çalıştırma ortamınızı [`Environment`](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) sınıfıyla yapılandırın. Sonra,  [`ScriptRunConfig`](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?preserve-view=true&view=azure-ml-py) işlem hedefi olarak uzak işlem ile oluşturun.
 
 ```Python
 import mlflow
@@ -146,7 +146,7 @@ Bu örnek, Azure Machine Learning izleme ile MLflow projelerinin yerel olarak na
 pip install azureml-mlflow
 ```
 
-`mlflow` [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true) Mlflow 'un izleme URI 'sine erişmek ve çalışma alanınızı yapılandırmak için ve sınıflarını içeri aktarın.
+`mlflow` [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py) Mlflow 'un izleme URI 'sine erişmek ve çalışma alanınızı yapılandırmak için ve sınıflarını içeri aktarın.
 
 ```Python
 import mlflow
@@ -259,7 +259,7 @@ Aşağıdaki diyagramda, MLflow dağıtım API 'SI ile, var olan MLflow modeller
 
 ### <a name="deploy-to-aci"></a>ACI'ye dağıtma
 
-[Deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) yöntemiyle dağıtım yapılandırmanızı ayarlayın. Web hizmetinizi izlemeye yardımcı olmak için Etiketler ve açıklamalar da ekleyebilirsiniz.
+[Deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) yöntemiyle dağıtım yapılandırmanızı ayarlayın. Web hizmetinizi izlemeye yardımcı olmak için Etiketler ve açıklamalar da ekleyebilirsiniz.
 
 ```python
 from azureml.core.webservice import AciWebservice, Webservice
@@ -290,7 +290,7 @@ webservice.wait_for_deployment(show_output=True)
 
 ### <a name="deploy-to-aks"></a>AKS’ye dağıtma
 
-AKS 'e dağıtmak için önce bir AKS kümesi oluşturun. [ComputeTarget. Create ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-workspace--name--provisioning-configuration-) yöntemini kullanarak bir aks kümesi oluşturun. Yeni bir küme oluşturmak 20-25 dakika sürebilir.
+AKS 'e dağıtmak için önce bir AKS kümesi oluşturun. [ComputeTarget. Create ()](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-workspace--name--provisioning-configuration-) yöntemini kullanarak bir aks kümesi oluşturun. Yeni bir küme oluşturmak 20-25 dakika sürebilir.
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -310,7 +310,7 @@ aks_target.wait_for_completion(show_output = True)
 print(aks_target.provisioning_state)
 print(aks_target.provisioning_errors)
 ```
-[Deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) yöntemiyle dağıtım yapılandırmanızı ayarlayın. Web hizmetinizi izlemeye yardımcı olmak için Etiketler ve açıklamalar da ekleyebilirsiniz.
+[Deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) yöntemiyle dağıtım yapılandırmanızı ayarlayın. Web hizmetinizi izlemeye yardımcı olmak için Etiketler ve açıklamalar da ekleyebilirsiniz.
 
 ```python
 from azureml.core.webservice import Webservice, AksWebservice
@@ -367,5 +367,5 @@ Hizmet dağıtımı birkaç dakika sürebilir.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Modellerinizi yönetin](concept-model-management-and-deployment.md).
-* [Veri kayması](how-to-monitor-data-drift.md)için üretim modellerinizi izleyin.
-* [MLflow ile Azure Databricks çalıştırmalarını izleyin](how-to-use-mlflow-azure-databricks.md). 
+* [Veri kayması](./how-to-enable-data-collection.md)için üretim modellerinizi izleyin.
+* [MLflow ile Azure Databricks çalıştırmalarını izleyin](how-to-use-mlflow-azure-databricks.md).

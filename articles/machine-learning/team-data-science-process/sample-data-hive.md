@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 339273c091a1bcfc4f2de66ef2f79ea8cebbc49b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a015da77cb7c0ba54be1dd5e729a9ee8a848c9d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86026058"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321893"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Azure HDInsight Hive tablolarındaki örnek veriler
 Bu makalede, Azure HDInsight Hive tablolarında depolanan verileri analiz için daha yönetilebilir bir boyuta düşürmek üzere Hive sorguları kullanılarak nasıl azaltalacağı açıklanır. Üç adet popuya kullanılan örnekleme yöntemini içerir:
@@ -28,7 +28,7 @@ Bu makalede, Azure HDInsight Hive tablolarında depolanan verileri analiz için 
 **Verileriniz neden örnekleyebilirsiniz?**
 Çözümlemeyi planladığınız veri kümesi büyükse, daha küçük ancak temsili ve daha yönetilebilir bir boyutla azaltmak için verileri düşürmek genellikle iyi bir fikirdir. Aşağı örnekleme, veri anlama, araştırma ve özellik mühendisliğini kolaylaştırır. Ekip veri bilimi Işlemindeki rolü, veri işleme işlevlerinin ve makine öğrenimi modellerinin hızlı prototipini etkinleştirmektir.
 
-Bu örnekleme görevi, [ekip veri bilimi işlemindeki (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)bir adımdır.
+Bu örnekleme görevi, [ekip veri bilimi işlemindeki (TDSP)](./index.yml)bir adımdır.
 
 ## <a name="how-to-submit-hive-queries"></a>Hive sorguları gönderme
 Hive sorguları Hadoop kümesinin baş düğümündeki Hadoop Command-Line konsolundan gönderilebilir.  Hadoop kümesinin baş düğümünde oturum açın, Hadoop Command-Line konsolunu açın ve Hive sorgularını buradan gönderebilirsiniz. Hadoop Command-Line konsolunda Hive sorguları gönderme yönergeleri için bkz. [Hive sorguları gönderme](move-hive-tables.md#submit).
@@ -54,7 +54,7 @@ where samplekey<='${hiveconf:sampleRate}'
 Burada, `<sample rate, 0-1>` kullanıcıların örneklemek istediği kayıt oranını belirtir.
 
 ## <a name="random-sampling-by-groups"></a><a name="group"></a> Gruplara göre rastgele örnekleme
-Kategorik verileri örnekleme sırasında, kategorik değişkenin bir değeri için tüm örnekleri dahil etmek veya hariç tutmak isteyebilirsiniz. Bu örnekleme sıralaması "gruba göre örnekleme" olarak adlandırılır. Örneğin, NY, MA, CA, NJ ve PA gibi değerler içeren kategorik bir değişkeniniz "*durum*" ise, örneklenip örneklenmeseler her bir durum için kayıtların birlikte olmasını istersiniz.
+Kategorik verileri örnekleme sırasında, kategorik değişkenin bir değeri için tüm örnekleri dahil etmek veya hariç tutmak isteyebilirsiniz. Bu örnekleme sıralaması "gruba göre örnekleme" olarak adlandırılır. Örneğin, NY, MA, CA, NJ ve PA gibi değerler içeren kategorik bir değişkeniniz " *durum* " ise, örneklenip örneklenmeseler her bir durum için kayıtların birlikte olmasını istersiniz.
 
 Gruba göre örnekleyerek örnek bir sorgu aşağıda verilmiştir:
 
@@ -105,4 +105,3 @@ where state_rank <= state_cnt*'${hiveconf:sampleRate}'
 ```
 
 Hive 'de kullanılabilen daha gelişmiş örnekleme yöntemleri hakkında daha fazla bilgi için bkz. [Languagemanual örnekleme](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling).
-

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 294a3dc9525ba0a0c533d68027b148ad402cd7ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f69b62f39b7e62eea26cc4d8511505056c6821bf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268851"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321274"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Öğretici: CLı 'dan model eğitme ve dağıtma
 
@@ -39,7 +39,7 @@ Aşağıdaki eylemleri nasıl gerçekleştireceğinizi öğrenin:
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-* **Yerel ortamınızdan**bu belgedeki CLI komutlarını kullanmak IÇIN [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)gerekir.
+* **Yerel ortamınızdan** bu belgedeki CLI komutlarını kullanmak IÇIN [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)gerekir.
 
     [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/)KULLANıYORSANıZ, CLI tarayıcı aracılığıyla erişilir ve bulutta bulunur.
 
@@ -103,7 +103,7 @@ az extension update -n azure-cli-ml
 
 Kaynak grubu, Azure platformunda bir kaynak kapsayıcısıdır. Azure Machine Learning ile çalışırken, kaynak grubu Azure Machine Learning çalışma alanınızı içerecektir. Ayrıca, çalışma alanı tarafından kullanılan diğer Azure hizmetlerini de içerecektir. Örneğin, modelinize bulut tabanlı bir işlem kaynağı kullanarak eğitebilirsiniz, kaynak grubunda bu kaynak oluşturulur.
 
-__Yeni bir kaynak grubu oluşturmak__için aşağıdaki komutu kullanın. `<resource-group-name>`Bu kaynak grubu için kullanılacak adla değiştirin. `<location>`Bu kaynak grubu için kullanılacak Azure bölgesiyle değiştirin:
+__Yeni bir kaynak grubu oluşturmak__ için aşağıdaki komutu kullanın. `<resource-group-name>`Bu kaynak grubu için kullanılacak adla değiştirin. `<location>`Bu kaynak grubu için kullanılacak Azure bölgesiyle değiştirin:
 
 > [!TIP]
 > Azure Machine Learning kullanılabilir olan bir bölge seçmelisiniz. Bilgi için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
@@ -128,7 +128,7 @@ Bu komuttan gelen yanıt aşağıdaki JSON ile benzerdir:
 }
 ```
 
-Kaynak gruplarıyla çalışma hakkında daha fazla bilgi için bkz. [az Group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest&preserve-view=true).
+Kaynak gruplarıyla çalışma hakkında daha fazla bilgi için bkz. [az Group](//cli/azure/group?preserve-view=true&view=azure-cli-latest).
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 

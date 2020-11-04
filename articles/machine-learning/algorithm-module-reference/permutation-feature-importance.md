@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/24/2020
-ms.openlocfilehash: ecf739ea838ad3742612eab7a1b42ac8c8ac455a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bddd9a6825899f646a86ae274c539b54156667c5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905277"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319402"
 ---
 # <a name="permutation-feature-importance"></a>Permütasyon Özelliği Önem Derecesi
 
@@ -24,7 +24,7 @@ Bu modülde, özellik değerleri tek seferde bir sütun olacak şekilde rastgele
 
 Modülün döndürdüğü puanlar, permütasyon sonrasında eğitilen bir modelin performansındaki *değişikliği* temsil eder. Önemli özellikler genellikle karışık süreç için daha duyarlıdır ve bu nedenle daha yüksek önem derecesine neden olur. 
 
-Bu makalede, makine öğrenimi: [permütasyon özelliğinin önem derecesine](https://blogs.technet.com/b/machinelearning/archive/2015/04/14/permutation-feature-importance.aspx)sahip olan permütasyon özelliği, teorik özelliği ve uygulamaları hakkında genel bir bakış sunulmaktadır.  
+Bu makalede, makine öğrenimi: [permütasyon özelliğinin önem derecesine](/archive/blogs/machinelearning/permutation-feature-importance)sahip olan permütasyon özelliği, teorik özelliği ve uygulamaları hakkında genel bir bakış sunulmaktadır.  
 
 ## <a name="how-to-use-permutation-feature-importance"></a>Permütasyon özelliği önem derecesi kullanma
 
@@ -36,11 +36,11 @@ Bir özellik puanları kümesi oluşturmak, zaten eğitilen bir modelin yanı s�
 
 3.  Doğru girişte bir veri kümesini bağlayın. Tercihen, modeli eğitmek için kullandığınız veri kümesinden farklı bir tane seçin. Bu veri kümesi, eğitilen modeli temel alan Puanlama için kullanılır. Ayrıca, özellik değerleri değiştirildikten sonra modeli değerlendirmek için de kullanılır.  
 
-4.  **Rastgele çekirdek**için, rasgeleleştirme için çekirdek olarak kullanılacak bir değer girin. 0 (varsayılan) belirtirseniz, sistem saatine göre bir sayı oluşturulur.
+4.  **Rastgele çekirdek** için, rasgeleleştirme için çekirdek olarak kullanılacak bir değer girin. 0 (varsayılan) belirtirseniz, sistem saatine göre bir sayı oluşturulur.
 
      Çekirdek değer isteğe bağlıdır, ancak aynı işlem hattının reproducibility üzerinde çalışmasını istiyorsanız bir değer sağlamalısınız.  
 
-5.  **Performansı ölçmeye yönelik ölçüm**için, permütasyon sonrasında model kalitesi hesaplanırken kullanılacak tek bir ölçüm seçin.  
+5.  **Performansı ölçmeye yönelik ölçüm** için, permütasyon sonrasında model kalitesi hesaplanırken kullanılacak tek bir ölçüm seçin.  
 
      Azure Machine Learning tasarımcı, bir sınıflandırma veya regresyon modeli değerlendiriyor olmanıza bağlı olarak aşağıdaki ölçümleri destekler:  
 
@@ -69,4 +69,4 @@ Farkın nedeni, permütasyon özelliğinin önem derecesi bir özellik ile hedef
   
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın.

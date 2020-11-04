@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6c8e6fee2b9f01b8d7ab48990760aa4c4d6e11b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 497b8f5598cf7aa7720f47863d465f5e29789b07
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361509"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321953"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Azure Machine Learning Python istemci kitaplığını kullanarak Python ile veri kümelerine erişim
 Microsoft Azure Machine Learning Python istemci kitaplığının önizlemesi, yerel bir Python ortamından Azure Machine Learning veri kümelerine güvenli erişim sağlayabilir ve bir çalışma alanında veri kümelerinin oluşturulmasını ve yönetilmesini sağlar.
@@ -28,7 +28,7 @@ Bu konuda aşağıdakiler hakkında yönergeler sağlanmaktadır:
 * denemeleri 'deki ara veri kümelerine erişme
 * veri kümelerini numaralandırmak, meta verilere erişmek, bir veri kümesinin içeriğini okumak, yeni veri kümeleri oluşturmak ve mevcut veri kümelerini güncelleştirmek için Python istemci kitaplığını kullanın
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a><a name="prerequisites"></a>Önkoşullar
 Python istemci kitaplığı, aşağıdaki ortamlar altında test edilmiştir:
 
 * Windows, Mac ve Linux
@@ -69,11 +69,11 @@ Azure Machine Learning Studio (klasik) web arabiriminden, yerel makinenizde Pand
 ### <a name="security-for-data-access"></a><a name="security"></a>Veri erişimi için güvenlik
 Azure Machine Learning Studio (klasik) tarafından Python istemci kitaplığı ile kullanılmak üzere sunulan kod parçacıkları, çalışma alanı KIMLIĞINIZI ve yetkilendirme belirtecini içerir. Bunlar, çalışma alanınıza tam erişim sağlar ve parola gibi korunması gerekir.
 
-Güvenlik nedenleriyle, kod parçacığı işlevselliği yalnızca rolü çalışma alanı için **sahip** olarak ayarlanmış kullanıcılar tarafından kullanılabilir. Rolünüzde, **Ayarlar**altındaki **Kullanıcılar** sayfasında Azure Machine Learning Studio (klasik) görüntülenir.
+Güvenlik nedenleriyle, kod parçacığı işlevselliği yalnızca rolü çalışma alanı için **sahip** olarak ayarlanmış kullanıcılar tarafından kullanılabilir. Rolünüzde, **Ayarlar** altındaki **Kullanıcılar** sayfasında Azure Machine Learning Studio (klasik) görüntülenir.
 
 ![Ekran görüntüsü Azure Machine Learning Studio KULLANıCıLARı sayfasındaki ayarları gösterir.][security]
 
-Rolünüz **sahip**olarak ayarlanmamışsa, bir sahip olarak yeniden davet edebilir veya çalışma alanının sahibinden kod parçacığını size vermesini isteyebilirsiniz.
+Rolünüz **sahip** olarak ayarlanmamışsa, bir sahip olarak yeniden davet edebilir veya çalışma alanının sahibinden kod parçacığını size vermesini isteyebilirsiniz.
 
 Yetkilendirme belirtecini almak için şu seçeneklerden birini seçebilirsiniz:
 
@@ -85,12 +85,12 @@ Yetkilendirme belirtecini almak için şu seçeneklerden birini seçebilirsiniz:
 
 Geliştiriciler çalışma alanı KIMLIĞINI ve yetkilendirme belirtecini aldıktan sonra, rolünden bağımsız olarak kod parçacığını kullanarak çalışma alanına erişebilirler.
 
-Yetkilendirme belirteçleri, **Ayarlar**altındakı **Yetkilendirme belirteçleri** sayfasında yönetilir. Bunları yeniden oluşturabilirsiniz, ancak bu yordam önceki belirtece erişimi iptal eder.
+Yetkilendirme belirteçleri, **Ayarlar** altındakı **Yetkilendirme belirteçleri** sayfasında yönetilir. Bunları yeniden oluşturabilirsiniz, ancak bu yordam önceki belirtece erişimi iptal eder.
 
 ### <a name="access-datasets-from-a-local-python-application"></a><a name="accessingDatasets"></a>Yerel Python uygulamasından veri kümelerine erişme
 1. Machine Learning Studio (klasik) içinde, sol taraftaki Gezinti çubuğunda **veri kümeleri** ' ne tıklayın.
 2. Erişmek istediğiniz veri kümesini seçin. **Veri kümeleri listesinden veya** **örnekler** listesinden herhangi bir veri kümesinden birini seçebilirsiniz.
-3. Alt araç çubuğundan **veri erişim kodu oluştur**' a tıklayın. Veriler Python istemci kitaplığıyla uyumsuz bir biçimde ise, bu düğme devre dışı bırakılır.
+3. Alt araç çubuğundan **veri erişim kodu oluştur** ' a tıklayın. Veriler Python istemci kitaplığıyla uyumsuz bir biçimde ise, bu düğme devre dışı bırakılır.
    
     ![Ekran görüntüsünde VERI kümesi oluşturma kodu olan VERI kümeleri gösterilmektedir.][datasets]
 4. Görüntülenen pencereden kod parçacığını seçin ve panonuza kopyalayın.
@@ -131,7 +131,7 @@ Aşağıdaki adımlarda bir deneme oluşturan, çalıştıran ve ara veri kümes
 4. CSV modülüne bir [dönüştürme][convert-to-csv] ekleyin ve girişini [bölünmüş][split] modül çıktılarından birine bağlayın.
 5. Denemeyi kaydedin, çalıştırın ve işin bitmesini bekleyin.
 6. [CSV 'ye Dönüştür][convert-to-csv] modülüne çıkış düğümüne tıklayın.
-7. Bağlam menüsü göründüğünde, **veri erişim kodu oluştur**' u seçin.
+7. Bağlam menüsü göründüğünde, **veri erişim kodu oluştur** ' u seçin.
    
     ![Bağlam Menüsü][experiment]
 8. Kod parçacığını seçin ve görüntülenen pencereden panonuza kopyalayın.
@@ -187,7 +187,7 @@ Ya da dizine göre erişebilirsiniz:
 ds = ws.datasets[0]
 ```
 
-### <a name="metadata"></a>Meta veri
+### <a name="metadata"></a>Meta Veriler
 Veri kümelerinde içeriğe ek olarak meta veriler vardır. (Ara veri kümeleri, bu kural için bir özel durumdur ve hiç meta veri içermez.)
 
 Bazı meta veri değerleri Kullanıcı tarafından oluşturma sırasında atanır:
@@ -364,6 +364,5 @@ Verileriniz zaten serileştirilmiş ise yerine kullanın `update_from_raw_data` 
 
 
 <!-- Module References -->
-[convert-to-csv]: https://msdn.microsoft.com/library/azure/faa6ba63-383c-4086-ba58-7abf26b85814/
-[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
-
+[convert-to-csv]: /azure/machine-learning/studio-module-reference/convert-to-csv
+[split]: /azure/machine-learning/studio-module-reference/split-data

@@ -11,14 +11,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 0138715e4c9df8ae05c9a3eade64d539eb7cdeda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 229bcbb8c8c429b7fe4e5878b0e57e74dd828b72
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91756560"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320667"
 ---
-# <a name="featurization-in-automated-machine-learning"></a>Otomatik makine öğreniminde korleştirme
+# <a name="featurization-in-automated-machine-learning"></a>Otomatik makine öğrenmesinde özellik geliştirme
 
 
 
@@ -27,9 +27,9 @@ Bu kılavuzda şunları öğrenirsiniz:
 - Ne kadar uygun ayar Azure Machine Learning sunar.
 - [Otomatik makine öğrenimi denemeleri](concept-automated-ml.md)için bu özellikleri özelleştirme.
 
-*Özellik Mühendisliği* , makine öğrenimi (ml) algoritmalarının daha iyi öğrenilmesine yardımcı olan özellikler oluşturmak için verilerin etki alanı bilgisini kullanma işlemidir. Azure Machine Learning, özellik Mühendisliği kolaylaştırmak için veri ölçekleme ve normalleştirme teknikleri uygulanır. Toplu olarak, bu teknikler ve bu özellik Mühendisliği otomatik makine öğrenimi veya *Otomatik ml*, denemeleri içinde *korleştirme* olarak adlandırılır.
+*Özellik Mühendisliği* , makine öğrenimi (ml) algoritmalarının daha iyi öğrenilmesine yardımcı olan özellikler oluşturmak için verilerin etki alanı bilgisini kullanma işlemidir. Azure Machine Learning, özellik Mühendisliği kolaylaştırmak için veri ölçekleme ve normalleştirme teknikleri uygulanır. Toplu olarak, bu teknikler ve bu özellik Mühendisliği otomatik makine öğrenimi veya *Otomatik ml* , denemeleri içinde *korleştirme* olarak adlandırılır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, bir oto ml denemesinin nasıl yapılandırılacağı zaten bildiğiniz varsayılmaktadır. Yapılandırma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
@@ -38,7 +38,7 @@ Bu makalede, bir oto ml denemesinin nasıl yapılandırılacağı zaten bildiği
 
 ## <a name="configure-featurization"></a>Korleştirme yapılandırma
 
-Her otomatik makine öğrenimi denemesinde, [Otomatik ölçeklendirme ve normalleştirme teknikleri](#featurization) verilerinize varsayılan olarak uygulanır. Bu teknikler, farklı ölçeklerde özelliklerle hassas olan *belirli* algoritmalara yardımcı olan, uygun olmayan türlerdir. Ancak, *eksik değerler imputation*, *kodlama*ve *dönüşümler*gibi ek özellikler de etkinleştirebilirsiniz.
+Her otomatik makine öğrenimi denemesinde, [Otomatik ölçeklendirme ve normalleştirme teknikleri](#featurization) verilerinize varsayılan olarak uygulanır. Bu teknikler, farklı ölçeklerde özelliklerle hassas olan *belirli* algoritmalara yardımcı olan, uygun olmayan türlerdir. Ancak, *eksik değerler imputation* , *kodlama* ve *dönüşümler* gibi ek özellikler de etkinleştirebilirsiniz.
 
 > [!NOTE]
 > Otomatik makine öğrenimi için adımlar (özellik normalleştirme, eksik verileri işleme veya metni sayısal olarak dönüştürme gibi), temel alınan modelin bir parçası haline gelir. Tahmin için model kullandığınızda, eğitim sırasında uygulanan aynı özellik adımları, giriş verilerinize otomatik olarak uygulanır.
@@ -64,11 +64,11 @@ Aşağıdaki tabloda verilerinize otomatik olarak uygulanan teknikler özetlenme
 
 |Korturlama &nbsp; adımları| Açıklama |
 | ------------- | ------------- |
-|**Yüksek önem düzeyi bırakma veya fark özelliği yok*** |Bu özellikleri eğitim ve doğrulama kümelerinden bırakın. Tüm satırlarda veya yüksek kardinalite (örneğin, karmaları, kimlikler veya GUID 'Ler) ile aynı değere sahip tüm değerleri eksik olan özellikler için geçerlidir.|
-|**Impute eksik değerler*** |Sayısal özellikler için, sütundaki değerlerin ortalaması ile ımpute.<br/><br/>Kategorik özellikler için en sık kullanılan değer ile ımpute.|
-|**Ek özellikler oluştur*** |Tarih saat özellikleri için: yıl, ay, gün, haftanın günü, yılın günü, üç aylık dönem, yılın haftası, saat, dakika, saniye.<br><br> *Tahmin görevleri için,* bu ek tarih saat özellikleri oluşturulur: ISO yılı, yarı yarı yıl, takvim ayı, dize, hafta günü, haftanın günü, ay günü, yıl günü, yıl/saat (0 ' dan önce ise, 1), saat, günün saati (12 saat)<br/><br/>Metin özellikleri için: tek tek gram, bigram ve trigram temelinde Dönem sıklığı. [BERT ile bunun nasıl yapılacağı](#bert-integration) hakkında daha fazla bilgi edinin.|
-|**Dönüştür ve kodla***|Çok sayıda benzersiz değere sahip sayısal özellikleri kategorik Özellikler halinde dönüştürün.<br/><br/>Tek yönlü kodlama, düşük önemlilik kategorik özellikleri için kullanılır. Yüksek kardinalite kategorik özellikler için tek bir Hot-Hash kodlaması kullanılır.|
-|**Sözcük katıştırlamaları**|Bir metin kullanımı, metin belirteçlerinin vektörlerini, önceden eğitilen bir model kullanarak tümce vektörlerine dönüştürür. Belgedeki her bir sözcüğün katıştırma vektörü, bir belge özelliği vektörü oluşturmak için geri kalan ile toplanır.|
+|**Yüksek kardinalite bırakma veya varyans özellikleri yok** _ |Bu özellikleri eğitim ve doğrulama kümelerinden bırakın. Tüm satırlarda veya yüksek kardinalite (örneğin, karmaları, kimlikler veya GUID 'Ler) ile aynı değere sahip tüm değerleri eksik olan özellikler için geçerlidir.|
+|_*Impute eksik değerler**_ |Sayısal özellikler için, sütundaki değerlerin ortalaması ile ımpute.<br/><br/>Kategorik özellikler için en sık kullanılan değer ile ımpute.|
+|_*Ek özellikler oluştur**_ |Tarih saat özellikleri için: yıl, ay, gün, haftanın günü, yılın günü, üç aylık dönem, yılın haftası, saat, dakika, saniye.<br><br> Görevleri tahmin _For, * bu ek tarih saat özellikleri oluşturulur: ISO yılı, yarı yarı yıl, gün olarak Takvim, hafta, hafta günü, haftanın günü, haftanın günü, yıl günü, yıl/saat (0), saat, günün saati (12 saatlik)<br/><br/>Metin özellikleri için: tek tek gram, bigram ve trigram temelinde Dönem sıklığı. [BERT ile bunun nasıl yapılacağı](#bert-integration) hakkında daha fazla bilgi edinin.|
+|**Dönüştür ve kodla** _|Çok sayıda benzersiz değere sahip sayısal özellikleri kategorik Özellikler halinde dönüştürün.<br/><br/>Tek yönlü kodlama, düşük önemlilik kategorik özellikleri için kullanılır. Yüksek kardinalite kategorik özellikler için tek bir Hot-Hash kodlaması kullanılır.|
+|_ *Sözcük katıştırlamaları**|Bir metin kullanımı, metin belirteçlerinin vektörlerini, önceden eğitilen bir model kullanarak tümce vektörlerine dönüştürür. Belgedeki her bir sözcüğün katıştırma vektörü, bir belge özelliği vektörü oluşturmak için geri kalan ile toplanır.|
 |**Hedef kodlamalar**|Kategorik özellikler için, bu adım her bir kategoriyi gerileme sorunları için Ortalama bir hedef değerle ve sınıflandırma sorunları için her sınıf için sınıf olasılığa eşler. Sıklık tabanlı ağırlığa ve k katlamalı çapraz doğrulama, seyrek veri kategorilerinin neden olduğu eşlemenin ve gürültü üzerine fazla sığdırmayı azaltmak için uygulanır.|
 |**Metin hedefi kodlaması**|Metin girişi için, her bir sınıfın olasılığını oluşturmak için kelimeleri olan bir yığılmış Doğrusal model kullanılır.|
 |**Kanıt ağırlığı (WoE)**|, Kategorik sütunların bağıntısı olarak hedef sütuna bir ölçü olarak, WoE hesaplar. WoE, sınıf içi ve sınıf dışı olasılıkların oranının günlüğü olarak hesaplanır. Bu adım, her sınıf için bir sayısal özellik sütunu üretir ve eksik değerler ve aykırı değer işleme gereksinimini ortadan kaldırır.|
@@ -80,8 +80,8 @@ Aşağıdaki tabloda verilerinize otomatik olarak uygulanan teknikler özetlenme
 
 Data guardrayları uygulandı:
 
-- **SDK denemeleri için**: parametreler `"featurization": 'auto'` veya `validation=auto` `AutoMLConfig` nesneniz belirtildiğinde.
-- **Studio denemeleri için**: otomatik hale getirme etkinleştirildiğinde.
+- **SDK denemeleri için** : parametreler `"featurization": 'auto'` veya `validation=auto` `AutoMLConfig` nesneniz belirtildiğinde.
+- **Studio denemeleri için** : otomatik hale getirme etkinleştirildiğinde.
 
 Denemeniz için veri guardları 'nı gözden geçirebilirsiniz:
 
@@ -105,25 +105,25 @@ Aşağıdaki tabloda, şu anda desteklenen veri guardları ve deneme hesabınız
 
 Guarddemiryolu|Durum|&nbsp;Tetikleyici için &nbsp; koşul
 ---|---|---
-**Eksik özellik değerleri imputation** |Geçiril <br><br><br> Bitti| Eğitim verilerinizde eksik özellik değeri algılanmadı. [Eksik değerli imputation](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) hakkında daha fazla bilgi edinin. <br><br> Eğitim verilerinizde eksik özellik değerleri algılandı ve bu şekilde karşılaşıldı.
+**Eksik özellik değerleri imputation** |Geçiril <br><br><br> Bitti| Eğitim verilerinizde eksik özellik değeri algılanmadı. [Eksik değerli imputation](./how-to-use-automated-ml-for-ml-models.md#customize-featurization) hakkında daha fazla bilgi edinin. <br><br> Eğitim verilerinizde eksik özellik değerleri algılandı ve bu şekilde karşılaşıldı.
 **Yüksek kardinalite özelliği işleme** |Geçiril <br><br><br> Bitti| Girişlerinizin çözümlenmesi ve yüksek kardinalite özelliklerinin algılanması. <br><br> Girdilerde yüksek kardinalite özellikleri algılandı ve işlendi.
-**Doğrulama bölünmüş işleme** |Bitti| Doğrulama yapılandırması olarak ayarlandı `'auto'` ve eğitim verileri *20.000 satırdan daha az satır*içeriyordu. <br> Eğitilen modelin her yinelemesi, çapraz doğrulama kullanılarak doğrulanmıştı. [Doğrulama verileri](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data)hakkında daha fazla bilgi edinin. <br><br> Doğrulama yapılandırması olarak ayarlandı `'auto'` ve eğitim verileri *20.000 'den fazla satır*içeriyordu. <br> Giriş verileri, modelin doğrulanması için bir eğitim veri kümesine ve bir doğrulama veri kümesine bölündü.
-**Sınıf Dengeleme algılaması** |Geçiril <br><br><br><br>Uyarı <br><br><br>Bitti | Girişlerinizin çözümlenmesi ve tüm sınıfların eğitim verilerinizde dengelenmesi. Her sınıfın veri kümesinde iyi bir temsili varsa, örneklerin sayısı ve oranı ile ölçüldüğü bir veri kümesi dengeli olarak değerlendirilir. <br><br> Girdilerde imdengelenmiş sınıflar algılandı. Model sapmalarının giderilmesi için, Dengeleme sorununu düzeltir. [İmdengelenmiş veriler](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)hakkında daha fazla bilgi edinin.<br><br> Girdilerde imledengelenmiş sınıflar algılandı ve bu mantık, dengelemenin uygulanmasını belirledi.
-**Bellek sorunları algılama** |Geçiril <br><br><br><br> Bitti |<br> Seçilen değerler (ufuk, öteleme, sıralı pencere) çözümlendi ve olası bellek dışı sorunlar algılandı. Zaman serisi [tahmin yapılandırması](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment)hakkında daha fazla bilgi edinin. <br><br><br>Seçilen değerler (ufuk, öteleme, sıralı pencere) çözümlendi ve bu, denemenizin belleği tükenmesine neden olacak. Gecikme veya sıralı pencere yapılandırması kapatılmış.
-**Sıklık algılama** |Geçiril <br><br><br><br> Bitti |<br> Zaman serisi çözümlenmekte ve tüm veri noktaları algılanan sıklığa göre hizalanır. <br> <br> Zaman serisi çözümlendi ve algılanan sıklığa göre hizalanamayan veri noktaları algılandı. Bu veri noktaları, veri kümesinden kaldırılmıştır. [Zaman serisi tahminiyle ilgili veri hazırlığı](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)hakkında daha fazla bilgi edinin.
+**Doğrulama bölünmüş işleme** |Bitti| Doğrulama yapılandırması olarak ayarlandı `'auto'` ve eğitim verileri *20.000 satırdan daha az satır* içeriyordu. <br> Eğitilen modelin her yinelemesi, çapraz doğrulama kullanılarak doğrulanmıştı. [Doğrulama verileri](./how-to-configure-auto-train.md#training-validation-and-test-data)hakkında daha fazla bilgi edinin. <br><br> Doğrulama yapılandırması olarak ayarlandı `'auto'` ve eğitim verileri *20.000 'den fazla satır* içeriyordu. <br> Giriş verileri, modelin doğrulanması için bir eğitim veri kümesine ve bir doğrulama veri kümesine bölündü.
+**Sınıf Dengeleme algılaması** |Geçiril <br><br><br><br>Uyarı <br><br><br>Bitti | Girişlerinizin çözümlenmesi ve tüm sınıfların eğitim verilerinizde dengelenmesi. Her sınıfın veri kümesinde iyi bir temsili varsa, örneklerin sayısı ve oranı ile ölçüldüğü bir veri kümesi dengeli olarak değerlendirilir. <br><br> Girdilerde imdengelenmiş sınıflar algılandı. Model sapmalarının giderilmesi için, Dengeleme sorununu düzeltir. [İmdengelenmiş veriler](./concept-manage-ml-pitfalls.md#identify-models-with-imbalanced-data)hakkında daha fazla bilgi edinin.<br><br> Girdilerde imledengelenmiş sınıflar algılandı ve bu mantık, dengelemenin uygulanmasını belirledi.
+**Bellek sorunları algılama** |Geçiril <br><br><br><br> Bitti |<br> Seçilen değerler (ufuk, öteleme, sıralı pencere) çözümlendi ve olası bellek dışı sorunlar algılandı. Zaman serisi [tahmin yapılandırması](./how-to-auto-train-forecast.md#configuration-settings)hakkında daha fazla bilgi edinin. <br><br><br>Seçilen değerler (ufuk, öteleme, sıralı pencere) çözümlendi ve bu, denemenizin belleği tükenmesine neden olacak. Gecikme veya sıralı pencere yapılandırması kapatılmış.
+**Sıklık algılama** |Geçiril <br><br><br><br> Bitti |<br> Zaman serisi çözümlenmekte ve tüm veri noktaları algılanan sıklığa göre hizalanır. <br> <br> Zaman serisi çözümlendi ve algılanan sıklığa göre hizalanamayan veri noktaları algılandı. Bu veri noktaları, veri kümesinden kaldırılmıştır. [Zaman serisi tahminiyle ilgili veri hazırlığı](./how-to-auto-train-forecast.md#preparing-data)hakkında daha fazla bilgi edinin.
 
 ## <a name="customize-featurization"></a>Özelleştirmeleri özelleştirme
 
 Uygun tahminlerde ML modelinizi eğitmek için kullanılan veri ve özelliklerin bir sonucu elde etmek için, korleştirme ayarlarınızı özelleştirebilirsiniz.
 
-Korturleri özelleştirmek için,  `"featurization": FeaturizationConfig` nesnenizin içinde öğesini belirtin `AutoMLConfig` . Denemeniz için Azure Machine Learning Studio kullanıyorsanız [nasıl yapılır makalesine](how-to-use-automated-ml-for-ml-models.md#customize-featurization)bakın. Öngörülebilir görev türleri için korleştirme özelleştirmek üzere, [tahmini nasıl yapılır?](how-to-auto-train-forecast.md#customize-featurization)bölümüne bakın.
+Korturleri özelleştirmek için, `"featurization": FeaturizationConfig` nesnenizin içinde öğesini belirtin `AutoMLConfig` . Denemeniz için Azure Machine Learning Studio kullanıyorsanız [nasıl yapılır makalesine](how-to-use-automated-ml-for-ml-models.md#customize-featurization)bakın. Öngörülebilir görev türleri için korleştirme özelleştirmek üzere, [tahmini nasıl yapılır?](how-to-auto-train-forecast.md#customize-featurization)bölümüne bakın.
 
 Desteklenen özelleştirmeler şunlardır:
 
 |Özelleştirme|Tanım|
 |--|--|
 |**Sütun amacı güncelleştirmesi**|Belirtilen sütun için, oto algılanan Özellik türünü geçersiz kılın.|
-|**Transformatör parametresi güncelleştirmesi** |Belirtilen transformatör için parametreleri güncelleştirin. Şu anda *ımputer* (ortalama, en sık ve ortanca) ve *Hashonehotencoder*'ı desteklemektedir.|
+|**Transformatör parametresi güncelleştirmesi** |Belirtilen transformatör için parametreleri güncelleştirin. Şu anda *ımputer* (ortalama, en sık ve ortanca) ve *Hashonehotencoder* 'ı desteklemektedir.|
 |**Bırakma sütunları** |Bir şekilde bırakılacak sütunları belirler.|
 |**Blok dönüştürücüler**| Korleştirme işleminde kullanılacak blok dönüştürücüler belirtir.|
 
@@ -182,7 +182,7 @@ Bu liste, uygulanan tüm özellik adlarını içerir.
   fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
   ```
 
-Çıktı
+Çıkış
 
   ```
   [{'RawFeatureName': 'A',
@@ -207,7 +207,7 @@ Bu liste, uygulanan tüm özellik adlarını içerir.
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
 
-   |Çıktı|Tanım|
+   |Çıkış|Tanım|
    |----|--------|
    |RawFeatureName|Girilen veri kümesindeki giriş özelliği/sütun adı.|
    |Typedetesiyonu|Giriş özelliğinin veri türü algılandı.|

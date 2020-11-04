@@ -10,22 +10,22 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: f4c61b43855e4a845956a937d9d9cfe738d6f47a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a24a61e26bdfaba0619e3965e95b1828380a1c8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90032954"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322112"
 ---
 # <a name="design-decisions-and-coding-techniques-for-synapse-sql-features-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE SQL özellikleri için tasarım kararları ve kodlama teknikleri
-Bu makalede, SQL havuzu için kaynakların bir listesini ve SYNAPSE SQL 'nin isteğe bağlı SQL (Önizleme) işlevlerini bulabilirsiniz. Önerilen makaleler iki bölüme ayrılır: temel tasarım kararları ve geliştirme ve kodlama teknikleri.
+Bu makalede, SYNAPSE SQL 'nin adanmış SQL havuzu ve sunucusuz SQL Havuzu (Önizleme) işlevlerine yönelik kaynakların bir listesini bulacaksınız. Önerilen makaleler iki bölüme ayrılır: temel tasarım kararları ve geliştirme ve kodlama teknikleri.
 
 Bu makalelerin amacı, SYNAPSE Analytics 'te SYNAPSE SQL bileşenleri için en iyi teknik yaklaşımı geliştirmenize yardımcı olmaktır.
 
 ## <a name="key-design-decisions"></a>Anahtar tasarım kararları
 Aşağıdaki makalelerde SYNAPSE SQL geliştirme için kavramlar ve tasarım kararları vurgulanacak:
 
-| Makale | SQL havuzu | İsteğe bağlı SQL |
+| Makale | adanmış SQL havuzu | Sunucusuz SQL havuzu |
 | ------- | -------- | ------------- |
 | [Bağlantılar](connect-overview.md)                    | Evet | Evet |
 | [Kaynak sınıfları ve eşzamanlılık](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Evet    | Hayır |
@@ -44,7 +44,7 @@ Aşağıdaki makalelerde SYNAPSE SQL geliştirme için kavramlar ve tasarım kar
 
 Aşağıda, geliştirmeye yönelik belirli kodlama tekniklerini, ipuçlarını ve önerilerini vurgulayacak önemli makaleler bulacaksınız:
 
-| Makale | SQL havuzu | İsteğe bağlı SQL |
+| Makale | adanmış SQL havuzu | Sunucusuz SQL havuzu |
 | ------- | -------- | ------------- |
 | [Saklı yordamlar](develop-stored-procedures.md)  | Evet                | Hayır                      |
 | [Etiketler](develop-label.md)                           | Evet                | Hayır                      |

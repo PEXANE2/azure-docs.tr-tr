@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: c24c82e6e013734798b75d7c2cfa5ca126e32bc4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 37931aee24e2dbcab03bca400d58f236601c87e5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788613"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321424"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector"></a>Saydam Veri Şifrelemesi (TDE) koruyucusunu döndürme
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -28,12 +28,12 @@ Bu makalede, Azure Key Vault 'den bir TDE koruyucusu kullanan bir [sunucu](logic
 Bu kılavuzda, sunucuda TDE koruyucusunu döndürmek için iki seçenek ele alınmaktadır.
 
 > [!NOTE]
-> Duraklatılmış bir Azure SYNAPSE Analytics SQL havuzu, anahtar döndürmelerinde devam etmelidir.
+> Azure SYNAPSE Analytics 'te duraklatılan adanmış bir SQL havuzu, anahtar döndürmelerinde devam etmelidir.
 
 > [!IMPORTANT]
 > Bir geçişten sonra anahtarın önceki sürümlerini silmeyin. Anahtarlar devralındığında, bazı veriler, daha eski veritabanı yedeklemeleri gibi önceki anahtarlarla de şifrelenir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bu nasıl yapılır kılavuzunda, Azure SQL veritabanı veya Azure SYNAPSE Analytics için TDE koruyucusu olarak Azure Key Vault bir anahtar kullandığınızı varsaymış olursunuz. Bkz. [BYOK desteği ile saydam veri şifrelemesi](transparent-data-encryption-byok-overview.md).
 - Azure PowerShell yüklü ve çalışıyor olmanız gerekir.

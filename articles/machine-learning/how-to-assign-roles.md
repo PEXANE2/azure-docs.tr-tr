@@ -11,16 +11,16 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18, devx-track-azurecli
-ms.openlocfilehash: cba01684457c8b3a7f6c8c51c7d202bf8963658e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: aa84d7cce09b370ab35ef67029f4dbe2ca29cabb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736615"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320840"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanına erişimi yönetme
 
-Bu makalede, Azure Machine Learning çalışma alanına erişimi yönetmeyi öğreneceksiniz. Azure [rol tabanlı erişim denetimi (Azure RBAC)](/azure/role-based-access-control/overview) , Azure kaynaklarına erişimi yönetmek için kullanılır. Azure Active Directory kullanıcılara, kaynaklara erişim izni veren belirli roller atanır. Azure, yerleşik roller ve özel roller oluşturma yeteneği sağlar.
+Bu makalede, Azure Machine Learning çalışma alanına erişimi yönetmeyi öğreneceksiniz. Azure [rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md) , Azure kaynaklarına erişimi yönetmek için kullanılır. Azure Active Directory kullanıcılara, kaynaklara erişim izni veren belirli roller atanır. Azure, yerleşik roller ve özel roller oluşturma yeteneği sağlar.
 
 ## <a name="default-roles"></a>Varsayılan roller
 
@@ -34,18 +34,18 @@ Azure Machine Learning çalışma alanı bir Azure kaynağıdır. Diğer Azure k
 | **Özel rol** | Çalışma alanındaki belirli denetim veya veri düzlemi işlemlerine erişimi özelleştirmenizi sağlar. Örneğin, bir çalıştırma gönderme, işlem oluşturma, model dağıtma veya bir veri kümesini kaydetme. |
 
 > [!IMPORTANT]
-> Rol erişimi, Azure 'da birden çok düzey kapsamına eklenebilir. Örneğin, bir çalışma alanına sahip olan birisi, çalışma alanını içeren kaynak grubuna sahip erişimine sahip olmayabilir. Daha fazla bilgi için bkz. [Azure RBAC nasıl çalışmaktadır](/azure/role-based-access-control/overview#how-azure-rbac-works).
+> Rol erişimi, Azure 'da birden çok düzey kapsamına eklenebilir. Örneğin, bir çalışma alanına sahip olan birisi, çalışma alanını içeren kaynak grubuna sahip erişimine sahip olmayabilir. Daha fazla bilgi için bkz. [Azure RBAC nasıl çalışmaktadır](../role-based-access-control/overview.md#how-azure-rbac-works).
 
-Belirli yerleşik roller hakkında daha fazla bilgi için bkz. [Azure yerleşik rolleri](/azure/role-based-access-control/built-in-roles).
+Belirli yerleşik roller hakkında daha fazla bilgi için bkz. [Azure yerleşik rolleri](../role-based-access-control/built-in-roles.md).
 
 ## <a name="manage-workspace-access"></a>Çalışma alanı erişimini yönetme
 
 Bir çalışma alanının sahibiyseniz, çalışma alanı için roller ekleyebilir ve kaldırabilirsiniz. Ayrıca, kullanıcılara roller atayabilirsiniz. Erişimin nasıl yönetileceğini saptamak için aşağıdaki bağlantıları kullanın:
-- [Azure portal Kullanıcı arabirimi](/azure/role-based-access-control/role-assignments-portal)
-- [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
-- [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
-- [REST API](/azure/role-based-access-control/role-assignments-rest)
-- [Azure Resource Manager şablonları](/azure/role-based-access-control/role-assignments-template)
+- [Azure portal Kullanıcı arabirimi](../role-based-access-control/role-assignments-portal.md)
+- [PowerShell](../role-based-access-control/role-assignments-powershell.md)
+- [Azure CLI](../role-based-access-control/role-assignments-cli.md)
+- [REST API](../role-based-access-control/role-assignments-rest.md)
+- [Azure Resource Manager şablonları](../role-based-access-control/role-assignments-template.md)
 
 [Azure MACHINE LEARNING CLI](reference-azure-machine-learning-cli.md)'yı yüklediyseniz, kullanıcılara roller atamak için CLI komutlarını kullanabilirsiniz:
 
@@ -65,7 +65,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 
 ## <a name="azure-machine-learning-operations"></a>Azure Machine Learning işlemler
 
-Birçok işlem ve görev için yerleşik Eylemler Azure Machine Learning. Tüm liste için bkz. [Azure Kaynak sağlayıcısı işlemleri](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
+Birçok işlem ve görev için yerleşik Eylemler Azure Machine Learning. Tüm liste için bkz. [Azure Kaynak sağlayıcısı işlemleri](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices).
 
 ## <a name="mlflow-operations-in-azure-machine-learning"></a>Azure Machine Learning 'de MLflow işlemleri
 
@@ -135,7 +135,7 @@ Dağıtımdan sonra, bu rol belirtilen çalışma alanında kullanılabilir hale
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
 ```
 
-Özel roller hakkında daha fazla bilgi için bkz. [Azure özel rolleri](/azure/role-based-access-control/custom-roles). Özel rollerle kullanılabilen işlemler (Eylemler ve eylemler) hakkında daha fazla bilgi için bkz. [kaynak sağlayıcısı işlemleri](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
+Özel roller hakkında daha fazla bilgi için bkz. [Azure özel rolleri](../role-based-access-control/custom-roles.md). Özel rollerle kullanılabilen işlemler (Eylemler ve eylemler) hakkında daha fazla bilgi için bkz. [kaynak sağlayıcısı işlemleri](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices).
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
@@ -165,7 +165,7 @@ Aşağıdaki tabloda Azure Machine Learning etkinliklerin Özeti ve bunları en 
 
 ### <a name="q-are-we-publishing-azure-built-in-roles-for-the-machine-learning-service"></a>S. Machine Learning hizmeti için Azure yerleşik rollerini yayımlıyoruz mı?
 
-Şu anda Machine Learning hizmeti için [Azure yerleşik rollerini](/azure/role-based-access-control/built-in-roles) yayımlıyoruz. Yayımlandıktan sonra yerleşik bir rol güncelleştirilemez ve müşteri senaryolarına ve geri bildirimlerine göre rol tanımlarını kesinleştiriyoruz. 
+Şu anda Machine Learning hizmeti için [Azure yerleşik rollerini](../role-based-access-control/built-in-roles.md) yayımlıyoruz. Yayımlandıktan sonra yerleşik bir rol güncelleştirilemez ve müşteri senaryolarına ve geri bildirimlerine göre rol tanımlarını kesinleştiriyoruz. 
 
 <a id="customroles"></a>
 
@@ -419,7 +419,7 @@ Azure CLı 'de aşağıdaki komutu çalıştırın.
 az provider operation show –n Microsoft.MachineLearningServices
 ```
 
-Bunlar ayrıca, [kaynak sağlayıcısı işlemleri](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)listesinde bulunabilir.
+Bunlar ayrıca, [kaynak sağlayıcısı işlemleri](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices)listesinde bulunabilir.
 
 
 ### <a name="q-what-are-some-common-gotchas-when-using-azure-rbac"></a>S. Azure RBAC kullanırken bazı yaygın tuzakları nedir?
@@ -427,18 +427,18 @@ Bunlar ayrıca, [kaynak sağlayıcısı işlemleri](/azure/role-based-access-con
 Azure rol tabanlı erişim denetimi (Azure RBAC) kullanırken dikkat etmeniz gereken birkaç nokta aşağıda verilmiştir:
 
 - Azure 'da bir kaynak oluşturduğunuzda bir çalışma alanı söylediğinizde, doğrudan çalışma alanının sahibi değilsiniz. Rolünüz, bu abonelikte yetkilendirdiğiniz en yüksek kapsam rolünden devralınır. Örnek olarak, bir ağ yöneticisiyseniz ve bir Machine Learning çalışma alanı oluşturma izinlerine sahipseniz, bu çalışma alanına karşı ağ yöneticisi rolüne sahip olursunuz ve sahip rolü yoktur.
-- Aynı Azure Active Directory kullanıcıya eylem/NotActions bölümleri ile aynı olan iki rol ataması olduğunda, bir rolden NotActions bölümünde listelenen işlemler, başka bir roldeki eylemler olarak da listelendiklerinde etkili olmayabilir. Azure 'un rol atamalarını nasıl ayrıştırdığı hakkında daha fazla bilgi edinmek için, [kullanıcının bir kaynağa erişip erişemeyeceğini Azure RBAC 'Nin nasıl belirlediğini](/azure/role-based-access-control/overview#how-azure-rbac-determines-if-a-user-has-access-to-a-resource) okuyun
+- Aynı Azure Active Directory kullanıcıya eylem/NotActions bölümleri ile aynı olan iki rol ataması olduğunda, bir rolden NotActions bölümünde listelenen işlemler, başka bir roldeki eylemler olarak da listelendiklerinde etkili olmayabilir. Azure 'un rol atamalarını nasıl ayrıştırdığı hakkında daha fazla bilgi edinmek için, [kullanıcının bir kaynağa erişip erişemeyeceğini Azure RBAC 'Nin nasıl belirlediğini](../role-based-access-control/overview.md#how-azure-rbac-determines-if-a-user-has-access-to-a-resource) okuyun
 - İşlem kaynaklarınızı bir sanal ağ içinde dağıtmak için aşağıdaki eylemler için açıkça izinlerinizin olması gerekir:
     - VNet kaynağında "Microsoft. Network/virtualNetworks/JOIN/Action".
     - Alt ağ kaynağında "Microsoft. Network/virtualNetworks/subnet/JOIN/Action".
     
-    Ağ ile Azure RBAC hakkında daha fazla bilgi için bkz. [ağ yerleşik rolleri](/azure/role-based-access-control/built-in-roles#networking).
+    Ağ ile Azure RBAC hakkında daha fazla bilgi için bkz. [ağ yerleşik rolleri](../role-based-access-control/built-in-roles.md#networking).
 
 - Yeni rol atamalarınızın yığın genelindeki önbellekteki izinlerle etkili olması için bazen 1 saate kadar zaman alabilir.
 
 ### <a name="q-what-permissions-do-i-need-to-use-a-user-assigned-managed-identity-with-my-amlcompute-clusters"></a>S. Amlcompute kümelerimde Kullanıcı tarafından atanan yönetilen kimlik kullanmak için hangi izinlere ihtiyacım var?
 
-Amlcompute kümelerinde Kullanıcı tarafından atanan bir kimlik atamak için, birinin işlem oluşturmak için yazma izinlerine sahip olması ve [yönetilen kimlik operatörü rolü](/azure/role-based-access-control/built-in-roles#managed-identity-operator)olması gerekir. Yönetilen kimliklerle Azure RBAC hakkında daha fazla bilgi için, [Kullanıcı tarafından atanan kimliği yönetme](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) konusunu okuyun
+Amlcompute kümelerinde Kullanıcı tarafından atanan bir kimlik atamak için, birinin işlem oluşturmak için yazma izinlerine sahip olması ve [yönetilen kimlik operatörü rolü](../role-based-access-control/built-in-roles.md#managed-identity-operator)olması gerekir. Yönetilen kimliklerle Azure RBAC hakkında daha fazla bilgi için, [Kullanıcı tarafından atanan kimliği yönetme](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) konusunu okuyun
 
 
 ### <a name="q-do-we-support-role-based-access-control-on-the-studio-portal"></a>S. Studio portalında rol tabanlı erişim denetimini destekliyoruz mi?
@@ -480,4 +480,4 @@ Yeni rol tanımınızın tüm kapsamındaki izinlere sahip olmanız gerekir. Ör
 - [Kurumsal güvenliğe genel bakış](concept-enterprise-security.md)
 - [Sanal ağ yalıtımı ve gizliliği genel bakış](how-to-network-security-overview.md)
 - [Öğretici: modelleri eğitme](tutorial-train-models-with-aml.md)
-- [Kaynak sağlayıcısı işlemleri](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)
+- [Kaynak sağlayıcısı işlemleri](../role-based-access-control/resource-provider-operations.md#microsoftmachinelearningservices)

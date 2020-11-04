@@ -1,7 +1,7 @@
 ---
 title: Güvenlik duvarı kullanma
 titleSuffix: Azure Machine Learning
-description: Azure Güvenlik duvarları ile Azure Machine Learning çalışma alanlarına erişimi denetleyin. Azure Machine Learning düzgün çalışması için güvenlik duvarı üzerinden izin vermeniz gereken konaklar hakkında bilgi edinin.
+description: Azure Güvenlik duvarları ile Azure Machine Learning çalışma alanlarına erişimi denetleyin. Güvenlik Duvarı üzerinden izin vermeniz gereken konaklar hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: d0f30edeb24f3c4abed6f144f3fb7f755cc08a72
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 5ba1804630649044d29dd2919ef8375265a69a08
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629468"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320875"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Azure Machine Learning için bir güvenlik duvarının arkasındaki çalışma alanını kullan
 
@@ -43,7 +43,7 @@ Doğru yapılandırılmamışsa, güvenlik duvarı çalışma alanınızı kulla
 
 Bu bölümdeki konaklar Microsoft 'a aittir ve çalışma alanınızın düzgün çalışması için gerekli hizmetleri sağlar.
 
-| **Ana bilgisayar adı** | **Amaç** |
+| **Konak adı** | **Amaç** |
 | ---- | ---- |
 | **login.microsoftonline.com** | Kimlik Doğrulaması |
 | **management.azure.com** | Çalışma alanı bilgilerini almak için kullanılır |
@@ -74,7 +74,7 @@ Bu bölümdeki konaklar Microsoft 'a aittir ve çalışma alanınızın düzgün
 
 Bu bölümdeki konaklar, Python paketlerini yüklemek için kullanılır. Geliştirme, eğitim ve dağıtım sırasında gereklidir. 
 
-| **Ana bilgisayar adı** | **Amaç** |
+| **Konak adı** | **Amaç** |
 | ---- | ---- |
 | **anaconda.com**</br>**\*. anaconda.com** | Varsayılan paketleri yüklemek için kullanılır. |
 | **\*. anaconda.org** | Depo verilerini almak için kullanılır. |
@@ -87,7 +87,7 @@ Bu bölümdeki konaklar R paketleri yüklemek için kullanılır. Geliştirme, e
 > [!IMPORTANT]
 > Dahili olarak, Azure Machine Learning için R SDK, Python paketlerini kullanır. Bu nedenle, güvenlik duvarı üzerinden Python konaklarına da izin vermelisiniz.
 
-| **Ana bilgisayar adı** | **Amaç** |
+| **Konak adı** | **Amaç** |
 | ---- | ---- |
 | **cloud.r-project.org** | CRAN paketleri yüklenirken kullanılır. |
 
@@ -95,7 +95,7 @@ Bu bölümdeki konaklar R paketleri yüklemek için kullanılır. Geliştirme, e
 
 Azure Kamu bölgeleri için gerekli URL 'Ler.
 
-| **Ana bilgisayar adı** | **Amaç** |
+| **Konak adı** | **Amaç** |
 | ---- | ---- |
 | **usgovarizona.api.ml.azure.us** | US-Arizona bölgesi |
 | **usgovvirginia.api.ml.azure.us** | US-Virginia bölgesi |

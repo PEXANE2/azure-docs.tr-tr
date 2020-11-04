@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 10/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2da8bd0b36b553a4b5f85b6f79987ab1a7b8d5a7
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 82dd2f16fa43b52ba4c6dfacd26da5da622523b2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286559"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321707"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Sürüm notları-Azure Arc etkin veri Hizmetleri (Önizleme)
 
@@ -28,7 +28,7 @@ Azure Data CLı ( `azdata` ) sürüm numarası: 20.2.3. Adresinden indirin [http
 
 Bu sürümde aşağıdaki son değişiklikler tanıtılmaktadır: 
 
-* PostgreSQL özel kaynak tanımı (CRD) dosyaları, terimin yerini alır `shards` `workers` . Bu terim ( `workers` ) komut satırı parametre adıyla eşleşir.
+* PostgreSQL özel kaynak tanımında (CRD), terim `shards` olarak yeniden adlandırılır `workers` . Bu terim ( `workers` ) komut satırı parametre adıyla eşleşir.
 
 * `azdata arc postgres server delete` bir Postgres örneğini silmeden önce onay ister.  `--force`İstemi atlamak için kullanın.
 
@@ -50,15 +50,15 @@ Bu sürümde aşağıdaki son değişiklikler tanıtılmaktadır:
 
    * Azure 'a hiçbir veri yüklenmediyse, yeniden denemek için bir istem yazın.
 
-* `azdata arc dc debug copy-logs` Şimdi de klasörden okur `/var/opt/controller/log` ve Postgres günlüklerini toplar.
+* `azdata arc dc debug copy-logs` Şimdi de klasörden okur `/var/opt/controller/log` ve Linux üzerinde PostgreSQL altyapı günlüklerini toplar.
 
-*   Yedekleme oluşturma ve geri yükleme sırasında çalışma göstergesi görüntüle.
+*   PostgreSQL hiper Ölçeklendirmesiyle yedek oluşturma ve geri yükleme sırasında çalışma göstergesi görüntüleyin.
 
 * `azdata arc postrgres backup list` Şimdi yedek boyut bilgilerini içerir.
 
 * SQL yönetilen örnek yönetici adı özelliği, Azure portal genel bakış dikey penceresinin sağ sütununa eklendi.
 
-* Azure Data Studio, bir sunucu grubu için çalışan düğüm sayısı, sanal çekirdek ve bellek ayarlarının yapılandırılmasını destekler. 
+* Azure Data Studio, PostgreSQL hiper ölçek için çalışan düğüm sayısı, sanal çekirdek ve bellek ayarlarının yapılandırılmasını destekler. 
 
 * Önizleme, Postgres sürüm 11 ve 12 için yedekleme/geri yüklemeyi destekler.
 
@@ -80,9 +80,7 @@ Yönergeler için bkz. [Azure Arc etkin veri Hizmetleri nedir?](overview.md)
 - Şimdilik, NFS kullanıyorsanız, `allowRunAsRoot` `true` Azure Arc veri denetleyicisini oluşturmadan önce dağıtım profili dosyanızda öğesini olarak ayarlamanız gerekir.
 - Yalnızca SQL ve PostgreSQL oturum açma kimlik doğrulaması.  Azure Active Directory veya Active Directory desteği yok.
 - Openshıft üzerinde bir veri denetleyicisi oluşturmak için gevşek güvenlik kısıtlamaları gerekir.  Ayrıntılar için belgelere bakın.
-- PostgresSQL hiper ölçek _çalışan düğümlerinin sayısını küçültme desteklenmiyor._
 - Azure Arc veri denetleyicisi ve veritabanı örnekleri ile Azure Stack hub 'ında Azure Kubernetes hizmet altyapısı 'nı (AKS motoru) kullanıyorsanız, daha yeni bir Kubernetes sürümüne yükseltme desteklenmez. Kubernetes kümesini yükseltmeden önce Azure Arc veri denetleyicisi 'ni ve tüm veritabanı örneklerini kaldırın.
-- Önizleme, Postgres sürüm 11 altyapısı için yedekleme/geri yükleme özelliğini desteklemez. (Ekim, 2020 ' de çözümlendi) Yalnızca Postgres sürüm 12 için yedekleme/geri yüklemeyi destekler.
 - Azure Kubernetes hizmeti (AKS), [birden çok kullanılabilirlik bölgesini](../../aks/availability-zones.md) kapsayan kümeler Şu anda Azure Arc etkin veri Hizmetleri için desteklenmiyor. Bu sorundan kaçınmak için, Azure portal ' de AKS kümesi oluşturduğunuzda, bölgelerin kullanılabildiği bir bölgeyi seçerseniz seçim denetiminden tüm bölgeleri temizleyin. Aşağıdaki resme bakın:
 
    :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="Hiçbirini belirtmek için her bir bölgenin onay kutularını temizleyin.":::
@@ -90,10 +88,11 @@ Yönergeler için bkz. [Azure Arc etkin veri Hizmetleri nedir?](overview.md)
 
 ### <a name="known-issues-for-azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc etkin PostgreSQL hiper ölçek için bilinen sorunlar   
 
+- Önizleme, PostgreSQL için yedekleme/geri yükleme sürümü 11 altyapısını desteklemez. Yalnızca PostgreSQL için yedekleme/geri yükleme sürüm 12 ' i destekler.
+- `azdata arc dc debug copy-logs` nWindows üzerinde PostgreSQL altyapısı günlükleri toplanmaz.
 - Yeni silinen bir sunucu grubunun adı ile bir sunucu grubu yeniden oluşturmak başarısız olabilir veya askıda kalabilir. 
    - **Geçici çözüm** Bir sunucu grubunu yeniden oluşturduğunuzda veya daha önce silinen sunucu grubunun yük dengeleyiciyi/dış hizmetini beklerken aynı adı yeniden kullanmayın. Sildiğiniz sunucu grubunun adının olduğunu `postgres01` ve bir ad alanında barındırıldığını varsayarsak, `arc` aynı ada sahip bir sunucu grubunu yeniden oluşturmadan önce, `postgres01-external-svc` kubectl komutunun çıkışında bu işlemi gösterene kadar bekleyin `kubectl get svc -n arc` .
- 
-- Azure Data Studio genel bakış sayfası ve Işlem + depolama yapılandırması sayfasını yüklemek yavaş. 
+ - Azure Data Studio genel bakış sayfası ve Işlem + depolama yapılandırması sayfasını yüklemek yavaş. 
 
 
 

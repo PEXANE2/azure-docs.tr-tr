@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 56f266eaba76bb990a4d2bc3d902f4c5911d9c47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ae4549fe343422bbf60275a97768ca407f2dc7c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86026194"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321381"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Azure üzerinde Scala ve Spark kullanan Veri Bilimi
-Bu makalede, bir Azure HDInsight Spark kümesinde Spark ölçeklenebilir MLlib ve Spark ML paketleri ile denetimli makine öğrenimi görevleri için Scala 'nın nasıl kullanılacağı gösterilmektedir. [Veri bilimi işlemini](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)ve araştırma, görselleştirme, özellik Mühendisliği, modelleme ve model tüketimini oluşturan görevlerde size kılavuzluk eder. Makaledeki modeller, lojistik ve doğrusal regresyon, rastgele ormanlar ve gradyan-artırılmış ağaçlar (GBTs), yaygın olarak denetlenen, denetlenen makine öğrenimi görevlerinin yanı sıra şunları içerir:
+Bu makalede, bir Azure HDInsight Spark kümesinde Spark ölçeklenebilir MLlib ve Spark ML paketleri ile denetimli makine öğrenimi görevleri için Scala 'nın nasıl kullanılacağı gösterilmektedir. [Veri bilimi işlemini](./index.yml)ve araştırma, görselleştirme, özellik Mühendisliği, modelleme ve model tüketimini oluşturan görevlerde size kılavuzluk eder. Makaledeki modeller, lojistik ve doğrusal regresyon, rastgele ormanlar ve gradyan-artırılmış ağaçlar (GBTs), yaygın olarak denetlenen, denetlenen makine öğrenimi görevlerinin yanı sıra şunları içerir:
 
 * Regresyon sorunu: bir TAXI yolculuğu için tip tutarının ($) tahmini
 * İkili sınıflandırma: bir TAXI yolculuğu için ipucu veya ipucu (1/0) tahmin
@@ -52,7 +52,7 @@ Bu makaledeki kurulum adımları ve kodu, Azure HDInsight 3,4 Spark 1,6 içindir
 NYC TAXI seyahat verilerinin açıklaması ve Spark kümesindeki bir Jupyter Not defterinden kod yürütme yönergeleri için bkz. [Azure HDInsight 'Ta Spark kullanarak veri bilimine genel bakış](spark-overview.md)konusundaki ilgili bölümler.  
 
 ## <a name="execute-scala-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Spark kümesindeki bir Jupyter Not defterinden Scala kodu yürütün
-Azure portal bir Jupyter Not defteri başlatabilirsiniz. Panonuzda Spark kümesini bulun ve ardından kümenize ait yönetim sayfasını girmek için tıklayın. Ardından, **küme panoları**' na tıklayın ve ardından **Jupyter Notebook** ' a tıklayarak Spark kümesiyle ilişkili Not defterini açın.
+Azure portal bir Jupyter Not defteri başlatabilirsiniz. Panonuzda Spark kümesini bulun ve ardından kümenize ait yönetim sayfasını girmek için tıklayın. Ardından, **küme panoları** ' na tıklayın ve ardından **Jupyter Notebook** ' a tıklayarak Spark kümesiyle ilişkili Not defterini açın.
 
 ![Küme panosu ve Jupyıter Not defterleri](./media/scala-walkthrough/spark-jupyter-on-portal.png)
 
@@ -62,7 +62,7 @@ Ayrıca, https:// &lt; clustername. azurehdinsight.net/Jupyter adresinden jupi n
 
 PySpark API kullanan önceden paketlenmiş not defterlerine örnek bir dizin görmek için **Scala** ' yı seçin. Bu Spark konuları paketine yönelik kod örneklerini içeren Scala. ipynb Not defterini kullanan keşif modelleme ve Puanlama, [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Scala)' da kullanılabilir.
 
-Not defterini doğrudan GitHub 'dan Spark kümenizdeki Jupyter Notebook sunucusuna yükleyebilirsiniz. Jupyıter giriş sayfanızda **karşıya yükle** düğmesine tıklayın. Dosya Gezgini 'nde, Scala Not defterinin GitHub (ham içerik) URL 'sini yapıştırın ve **Aç**' a tıklayın. Scala Not defteri Şu URL 'de kullanılabilir:
+Not defterini doğrudan GitHub 'dan Spark kümenizdeki Jupyter Notebook sunucusuna yükleyebilirsiniz. Jupyıter giriş sayfanızda **karşıya yükle** düğmesine tıklayın. Dosya Gezgini 'nde, Scala Not defterinin GitHub (ham içerik) URL 'sini yapıştırın ve **Aç** ' a tıklayın. Scala Not defteri Şu URL 'de kullanılabilir:
 
 [Araştırma-modelleme ve Puanlama-kullanma-Scala. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
 
@@ -257,9 +257,9 @@ sqlResultsDF.show(3)
 
 | fare_amount | passenger_count | tip_amount | eğik |
 | --- | --- | --- | --- |
-|        13,5 |1.0 |2.9 |1.0 |
-|        16,0 |2.0 |3.4 |1.0 |
-|        10,5 |2.0 |1.0 |1.0 |
+|        13,5 |1,0 |2.9 |1,0 |
+|        16,0 |2,0 |3.4 |1,0 |
+|        10,5 |2,0 |1,0 |1,0 |
 
 ## <a name="data-exploration-and-visualization"></a>Veri araştırması ve görselleştirme
 Verileri Spark 'a geçirdikten sonra, veri bilimi sürecinin bir sonraki adımı, keşif ve görselleştirme aracılığıyla verilerin daha derin bir şekilde anlaşılmasıdır. Bu bölümde, SQL sorgularını kullanarak TAXI verilerini inceleyeceksiniz. Ardından, otomatik görselleştirme jupi özelliğini kullanarak hedef değişkenleri ve görsel inceleme için olası özellikleri çizmek üzere sonuçları bir veri çerçevesine aktarın.
@@ -353,7 +353,7 @@ Spark ML ve MLlib 'den ağaç tabanlı modelleme işlevleri için, çözümleme,
 1. Saat demetlerini, trafik zaman demetlerine **ekleyerek yeni** bir özellik oluşturun.
 2. Kategorik özelliklerine **Dizin oluşturma ve tek yönlü kodlama** uygulayın.
 3. Veri kümesini eğitim ve test kesirleri olarak **örnekle ve böler** .
-4. **Eğitim değişkeni ve özelliklerini belirtin**, ardından dizinlenmiş veya tek yönlü kodlanmış eğitim ve işaret eden dayanıklı Dağıtılmış veri kümeleri (rdds) veya veri çerçeveleri etiketli test girişi oluşturun.
+4. **Eğitim değişkeni ve özelliklerini belirtin** , ardından dizinlenmiş veya tek yönlü kodlanmış eğitim ve işaret eden dayanıklı Dağıtılmış veri kümeleri (rdds) veya veri çerçeveleri etiketli test girişi oluşturun.
 5. Makine öğrenimi modelleriyle ilgili giriş olarak kullanılacak **özellikleri ve hedefleri otomatik olarak kategorilere ayırın ve vektörleştirme** .
 
 ### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>Saatleri trafik zaman demetlerine ekleyerek yeni bir özellik oluşturun
@@ -922,11 +922,11 @@ Bu bölümde, geliştiricilerin model iyileştirmesi için sık kullanılan maki
 * Spark ML 'nin CrossValidator işlevini (ikili sınıflandırma) kullanarak çapraz doğrulama ve hiper parametre kullanımı kullanarak modeli iyileştirin
 * Herhangi bir makine öğrenimi işlevini ve parametre kümesini (doğrusal regresyon) kullanmak için özel çapraz doğrulama ve parametre katlama kodu kullanarak modeli iyileştirin
 
-**Çapraz doğrulama** , bilinen bir veri kümesi üzerinde eğitilen bir modelin, eğitilen veri kümelerinin özelliklerini tahmin etmek için genelleştirdiğini değerlendirir bir tekniktir. Bu tekniğin arkasındaki genel fikir, bir modelin bilinen verilerin veri kümesi üzerinde eğitilmesinin ve tahmin edilebillerinin doğruluğu bağımsız bir veri kümesine karşı test edilmektir. Yaygın bir uygulama, bir veri kümesini *k*katlara bölmek ve sonra da katların biri olan her türlü bir yandan modeli hepsini bir kez deneme halinde eğmektir.
+**Çapraz doğrulama** , bilinen bir veri kümesi üzerinde eğitilen bir modelin, eğitilen veri kümelerinin özelliklerini tahmin etmek için genelleştirdiğini değerlendirir bir tekniktir. Bu tekniğin arkasındaki genel fikir, bir modelin bilinen verilerin veri kümesi üzerinde eğitilmesinin ve tahmin edilebillerinin doğruluğu bağımsız bir veri kümesine karşı test edilmektir. Yaygın bir uygulama, bir veri kümesini *k* katlara bölmek ve sonra da katların biri olan her türlü bir yandan modeli hepsini bir kez deneme halinde eğmektir.
 
 **Hyper-parametre iyileştirmesi** , genellikle bir öğrenme algoritması için bir dizi Hyper-parametresi seçerken, bir bağımsız veri kümesindeki algoritmanın performansının bir ölçüsünü en iyi duruma getirme amacını içeren bir sorundur. Hyper-parametresi, model eğitimi yordamının dışında belirtmeniz gereken bir değerdir. Hyper-parametre değerleri hakkındaki varsayımlar, modelin esnekliğini ve doğruluğunu etkileyebilir. Karar ağaçlarında, örneğin, ağaçta istenen derinlik ve sayıda yaprakları gibi Hyper-parametreleri vardır. Bir destek vektör makinesi (SVM) için bir yanlış sınıflandırma ceza terimi ayarlamanız gerekir.
 
-Hyper-parametre iyileştirmesinin gerçekleştirilemesinin yaygın bir yolu da, **parametre tarama**adı verilen bir kılavuz araması kullanmaktır. Bir kılavuz aramasında, bir öğrenme algoritması için belirtilen Hyper-parametre alanının bir alt kümesinin değerleriyle kapsamlı bir arama yapılır. Çapraz doğrulama, kılavuz arama algoritması tarafından üretilen en iyi sonuçları sıralamak için bir performans ölçümü sağlayabilir. Çapraz doğrulama hiper parametre kullanımını kullanıyorsanız, bir modeli eğitim verilerine fazla ekleme gibi sorunları sınırlamaya yardımcı olabilirsiniz. Bu şekilde model, eğitim verilerinin ayıklandığı genel veri kümesine uygulanacak kapasiteyi korur.
+Hyper-parametre iyileştirmesinin gerçekleştirilemesinin yaygın bir yolu da, **parametre tarama** adı verilen bir kılavuz araması kullanmaktır. Bir kılavuz aramasında, bir öğrenme algoritması için belirtilen Hyper-parametre alanının bir alt kümesinin değerleriyle kapsamlı bir arama yapılır. Çapraz doğrulama, kılavuz arama algoritması tarafından üretilen en iyi sonuçları sıralamak için bir performans ölçümü sağlayabilir. Çapraz doğrulama hiper parametre kullanımını kullanıyorsanız, bir modeli eğitim verilerine fazla ekleme gibi sorunları sınırlamaya yardımcı olabilirsiniz. Bu şekilde model, eğitim verilerinin ayıklandığı genel veri kümesine uygulanacak kapasiteyi korur.
 
 ### <a name="optimize-a-linear-regression-model-with-hyper-parameter-sweeping"></a>Bir doğrusal regresyon modelini hiper parametre ile iyileştirme
 Ardından, verileri eğitme ve doğrulama kümelerine ayırın, modeli iyileştirmek için bir eğitim kümesindeki hiper parametre kullanımını kullanın ve bir doğrulama kümesi üzerinde (doğrusal regresyon) değerlendirin.
@@ -1135,9 +1135,8 @@ val test_rsqr = new RegressionMetrics(labelAndPreds).r2
 Hücrenin çalıştırılacağı süre: 61 saniye.
 
 ## <a name="consume-spark-built-machine-learning-models-automatically-with-scala"></a>Spark ile oluşturulmuş makine öğrenimi modellerini Scala ile otomatik olarak kullanma
-Azure 'daki veri bilimi sürecini oluşturan görevlerde size kılavuzluk eden konulara genel bakış için bkz. [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Azure 'daki veri bilimi sürecini oluşturan görevlerde size kılavuzluk eden konulara genel bakış için bkz. [Team Data Science Process](./index.yml).
 
 [Ekip veri bilimi işlem talimatları](walkthroughs.md) , belirli senaryolar Için ekip veri bilimi işlemindeki adımları gösteren diğer uçtan uca izlenecek yolları açıklar. İzlenecek yollar Ayrıca akıllı bir uygulama oluşturmak için bulut ve şirket içi araçların ve hizmetlerin bir iş akışında veya işlem hattına nasıl birleştirileceğini gösterir.
 
 [Spark tarafından oluşturulan makine öğrenimi modelleri](spark-model-consumption.md) , Spark ve Azure Blob depolama alanına kaydedilmiş makine öğrenimi modelleriyle yeni veri kümelerini otomatik olarak yüklemek ve Puanlama yapmak Için Scala kodunu nasıl kullanacağınızı gösterir. Burada belirtilen yönergeleri izleyebilir ve otomatik tüketim için Python kodunu bu makaledeki Scala kodu ile değiştirmeniz yeterlidir.
-

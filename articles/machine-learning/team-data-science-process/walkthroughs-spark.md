@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 91aac279a264d64ace5988d147c4caf8c52e9656
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1662af6cd3499fdf851d4e1bd8a0db48da7635b4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75864154"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320133"
 ---
 # <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>Azure 'da PySpark ve Scala kullanarak HDInsight Spark veri bilimi talimatları
 
@@ -40,12 +40,11 @@ Modellerin çapraz doğrulama ve hiper parametre tatkileri kullanılarak eğitil
 
 ## <a name="predict-taxi-tips-using-scala-on-azure-spark"></a>Azure Spark 'ta Scala 'yı kullanarak TAXI ipuçlarını tahmin etme
 
-[Azure 'Da Spark Ile Scala 'Yı kullanma](scala-walkthrough.md) Kılavuzu, bir ipucunun ödenip ödenmediğini tahmin eder ve ücretlendirildiği tutarların aralığını tahmin eder. Bir Azure HDInsight Spark kümesinde Spark Machine Learning kitaplığı (MLlib) ve mini ml paketleri ile denetimli makine öğrenimi görevleri için Scala 'ın nasıl kullanılacağını gösterir. [Veri bilimi işlemini](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)ve araştırma, görselleştirme, özellik Mühendisliği, modelleme ve model tüketimini oluşturan görevlerde size kılavuzluk eder. Oluşturulan modeller lojistik ve doğrusal regresyon, rastgele ormanlar ve gradyan artırılmış ağaçlar içerir.
+[Azure 'Da Spark Ile Scala 'Yı kullanma](scala-walkthrough.md) Kılavuzu, bir ipucunun ödenip ödenmediğini tahmin eder ve ücretlendirildiği tutarların aralığını tahmin eder. Bir Azure HDInsight Spark kümesinde Spark Machine Learning kitaplığı (MLlib) ve mini ml paketleri ile denetimli makine öğrenimi görevleri için Scala 'ın nasıl kullanılacağını gösterir. [Veri bilimi işlemini](./index.yml)ve araştırma, görselleştirme, özellik Mühendisliği, modelleme ve model tüketimini oluşturan görevlerde size kılavuzluk eder. Oluşturulan modeller lojistik ve doğrusal regresyon, rastgele ormanlar ve gradyan artırılmış ağaçlar içerir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Ekip veri bilimi Işlemine genel bakış için bkz. [Team Data Science işlemine genel bakış](overview.md).
 
-Team Data Science Işlem yaşam döngüsü hakkında bir tartışma için bkz. [Team Data Science işlem yaşam döngüsü](lifecycle.md). Bu yaşam döngüsü, başlangıçtan sonuna kadar olan adımları özetler ve bu da projeler genellikle yürütüldüğünde izler. 
-
+Team Data Science Işlem yaşam döngüsü hakkında bir tartışma için bkz. [Team Data Science işlem yaşam döngüsü](lifecycle.md). Bu yaşam döngüsü, başlangıçtan sonuna kadar olan adımları özetler ve bu da projeler genellikle yürütüldüğünde izler.

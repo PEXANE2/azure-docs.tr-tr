@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0be75b3b0a7b9b5aaec0da1d9f41f67a7108e77a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c20bf1c5856276c4c7ee0e37ed4ef2120d1d93d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085319"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322038"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>SQL ve Python kullanarak SQL Server’daki verilerin özelliklerini oluşturma
 Bu belgede, algoritmalardan daha verimli bir şekilde bilgi edinmenize yardımcı olan Azure 'da SQL Server VM depolanan veriler için nasıl özellik oluşturulacağı gösterilmektedir. Bu görevi gerçekleştirmek için SQL veya Python gibi bir programlama dilini kullanabilirsiniz. Burada her iki yaklaşım da gösterilmiştir.
 
-Bu görev, [ekip veri bilimi işlemindeki (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)bir adımdır.
+Bu görev, [ekip veri bilimi işlemindeki (TDSP)](./index.yml)bir adımdır.
 
 > [!NOTE]
 > Pratik bir örnek için, [NYC TAXI veri kümesine](https://www.andresmh.com/nyctaxitrips/) başvurabilirsiniz ve [IPython Not defteri 'ni kullanarak ıpnb başlıklı NYC Data denetimi](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) öğesine başvurabilirsiniz ve uçtan uca bir izlenecek yol SQL Server.
@@ -99,12 +99,12 @@ Bu konum tabanlı özellikler, daha önce açıklandığı gibi ek sayı özelli
 
 > [!TIP]
 > Seçtiğiniz dili kullanarak kayıtları program aracılığıyla ekleyebilirsiniz. Yazma verimliliğini artırmak için verileri parçalara eklemeniz gerekebilir. [Bu, pyodbc kullanarak bunun nasıl yapılacağını gösteren bir örnektir](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python).
-> [Bcp yardımcı programını](https://msdn.microsoft.com/library/ms162802.aspx) kullanarak veritabanına veri eklemek diğer bir alternatiftir
+> [Bcp yardımcı programını](/sql/tools/bcp-utility) kullanarak veritabanına veri eklemek diğer bir alternatiftir
 > 
 > 
 
 ### <a name="connecting-to-azure-machine-learning"></a><a name="sql-aml"></a>Azure Machine Learning bağlanılıyor
-Yeni oluşturulan özellik var olan bir tabloya bir sütun olarak eklenebilir veya yeni bir tabloda depolanır ve Machine Learning için özgün tabloyla birleştirilmiş olur. Aşağıda gösterildiği gibi, Azure ML 'de [veri Içeri aktarma](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) modülü kullanılarak önceden oluşturulmuş özellikler oluşturulabilir veya erişilebilir:
+Yeni oluşturulan özellik var olan bir tabloya bir sütun olarak eklenebilir veya yeni bir tabloda depolanır ve Machine Learning için özgün tabloyla birleştirilmiş olur. Aşağıda gösterildiği gibi, Azure ML 'de [veri Içeri aktarma](/azure/machine-learning/studio-module-reference/import-data) modülü kullanılarak önceden oluşturulmuş özellikler oluşturulabilir veya erişilebilir:
 
 ![Azure ML okuyucuları](./media/sql-server-virtual-machine/reader_db_featurizedinput.png)
 
@@ -126,5 +126,4 @@ Python 'daki [Pandas kitaplığı](https://pandas.pydata.org/) , Python programl
 data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
 ```
 
-Artık, [Panda kullanarak Azure Blob depolama verilerine yönelik özellikler oluşturma](create-features-blob.md)konu başlığı altında, Pandas veri çerçevesiyle birlikte çalışabilirsiniz.
-
+Artık, [Panda kullanarak Azure Blob depolama verilerine yönelik özellikler oluşturma](./explore-data-blob.md)konu başlığı altında, Pandas veri çerçevesiyle birlikte çalışabilirsiniz.

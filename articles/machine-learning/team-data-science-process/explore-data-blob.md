@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5a0804ae5ee2dbffaa57fc967fda29701562ab44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ee92a9eaf9316cbd453ea1ec4def58bb543a5a6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085710"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321128"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Pandas ile Azure Blob depolamada verileri araştırma
 
@@ -28,7 +28,7 @@ Bu görev, [ekip veri bilimi işlemindeki](overview.md)bir adımdır.
 Bu makalede sahip olduğunuz varsayılır:
 
 * Bir Azure depolama hesabı oluşturuldu. Yönergelere ihtiyacınız varsa bkz. [Azure depolama hesabı oluşturma](../../storage/common/storage-account-create.md)
-* Verileriniz bir Azure Blob depolama hesabında depolanıyor. Yönergelere ihtiyacınız varsa bkz. [Azure depolama 'ya ve Azure Storage 'a veri taşıma](../../storage/common/storage-moving-data.md)
+* Verileriniz bir Azure Blob depolama hesabında depolanıyor. Yönergelere ihtiyacınız varsa bkz. [Azure depolama 'ya ve Azure Storage 'a veri taşıma](../../storage/common/storage-choose-data-transfer-solution.md)
 
 ## <a name="load-the-data-into-a-pandas-dataframe"></a>Verileri bir Pandas DataFrame 'e yükleme
 Bir veri kümesini araştırmak ve işlemek için, önce blob kaynağından bir yerel dosyaya indirilmeli ve bu da bir Pandas DataFrame 'e yüklenebilirler. Bu yordamda izlenecek adımlar aşağıda verilmiştir:

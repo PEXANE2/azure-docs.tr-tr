@@ -11,18 +11,18 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: c6bcf6f228049c4f5c4d1cd0d22cb69fb9677c1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e72784dbdcf08d672a8498609ca3a5bbd11e632d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91347038"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319020"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>MLflow ve Azure Machine Learning ile Azure Databricks ML denemeleri izleme (Önizleme)
 
 Bu makalede, Azure Databricks (ADB) denemeleri, MLflow ve Azure Machine Learning bağlantı kurmak için mlflow [izlemesi](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api)olarak bilinen MLFLOW izleme URI 'sini ve günlük API 'yi nasıl etkinleştireceğinizi öğrenin.
 
-[Mlflow](https://www.mlflow.org) , Machine Learning denemeleri 'in yaşam döngüsünü yönetmeye yönelik açık kaynaklı bir kitaplıktır. MLFlow Izlemesi, öğreticinizi günlüğe kaydeden ve izleyen bir MLflow bileşenidir. [Azure Databricks ve MLflow](https://docs.microsoft.com/azure/databricks/applications/mlflow/)hakkında daha fazla bilgi edinin. 
+[Mlflow](https://www.mlflow.org) , Machine Learning denemeleri 'in yaşam döngüsünü yönetmeye yönelik açık kaynaklı bir kitaplıktır. MLFlow Izlemesi, öğreticinizi günlüğe kaydeden ve izleyen bir MLflow bileşenidir. [Azure Databricks ve MLflow](/azure/databricks/applications/mlflow/)hakkında daha fazla bilgi edinin. 
 
 Daha fazla MLflow ve Azure Machine Learning işlevselliği tümleştirmeleri için bkz. [deneme çalıştırmalarını izleyin ve MLflow ile Azure Machine Learning uç noktalar oluşturun](how-to-use-mlflow.md) .
 
@@ -32,11 +32,11 @@ Daha fazla MLflow ve Azure Machine Learning işlevselliği tümleştirmeleri iç
 > [!TIP]
 > Bu belgedeki bilgiler öncelikli olarak, model eğitimi sürecini izlemek isteyen veri bilimcileri ve geliştiricileri içindir. Kotalar, tamamlanan eğitim çalıştırmaları veya tamamlanmış model dağıtımları gibi Azure Machine Learning kaynak kullanımını ve olayları izlemek isteyen bir yöneticiyseniz, bkz. [izleme Azure Machine Learning](monitor-azure-machine-learning.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * `azureml-mlflow` paketini yükleyin. 
-    * Bu paket `azureml-core` , çalışma alanınıza erişmek Için MLflow bağlantısını sağlayan [Azure Machine Learning Python SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)otomatik olarak getirir.
-* Bir [Azure Databricks çalışma alanı ve kümesi](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal).
+    * Bu paket `azureml-core` , çalışma alanınıza erişmek Için MLflow bağlantısını sağlayan [Azure Machine Learning Python SDK 'sını](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)otomatik olarak getirir.
+* Bir [Azure Databricks çalışma alanı ve kümesi](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal).
 * [Azure Machine Learning çalışma alanı oluşturun](how-to-manage-workspace.md).
 
 ## <a name="track-azure-databricks-runs"></a>Azure Databricks çalıştırmalarını izleyin
@@ -72,7 +72,7 @@ ADB kümeniz kurulduktan sonra,
 1. Sol gezinti bölmesindeki **çalışma alanları** ' nı seçin. 
 1. Çalışma alanları açılan menüsünü genişletin ve **Içeri aktar** ' ı seçin.
 1. ADB çalışma alanınızı içeri aktarmak için, deneme Not defterinize sürükleyip bırakın veya bulun.
-1. **İçeri aktar**'ı seçin. Deneme Not defteriniz otomatik olarak açılır.
+1. **İçeri aktar** 'ı seçin. Deneme Not defteriniz otomatik olarak açılır.
 1. Sol üstteki Not defteri başlığı altında, deneme Not defterinize eklemek istediğiniz kümeyi seçin. 
 
 ## <a name="connect-your-azure-databricks-and-azure-machine-learning-workspaces"></a>Azure Databricks ve Azure Machine Learning çalışma alanlarınızı bağlama
@@ -156,9 +156,9 @@ Modeliniz eğitilirken, modellerinizi günlüğe kaydedebilir ve yöntemi ile ar
 
 Arka uç izleme sunucusu, varsayılan olarak Azure Databricks çalışma alanıdır; [MLflow izlemesini yalnızca Azure Machine Learning çalışma alanınızda izlemek üzere ayarlamayı](#set-mlflow-tracking-to-only-track-in-your-azure-machine-learning-workspace)seçmediğiniz takdirde, arka uç izleme sunucusu Azure Machine Learning çalışma alanıdır.   
 
-* **Ada sahip kayıtlı bir model yoksa**, yöntemi yeni bir model kaydeder, sürüm 1 oluşturur ve bir Modelversion mlflow nesnesi döndürüyor. 
+* **Ada sahip kayıtlı bir model yoksa** , yöntemi yeni bir model kaydeder, sürüm 1 oluşturur ve bir Modelversion mlflow nesnesi döndürüyor. 
 
-* **Ada sahip kayıtlı bir model zaten varsa**, yöntemi yeni bir model sürümü oluşturur ve sürüm nesnesini döndürür. 
+* **Ada sahip kayıtlı bir model zaten varsa** , yöntemi yeni bir model sürümü oluşturur ve sürüm nesnesini döndürür. 
 
 ```python
 mlflow.spark.log_model(model, artifact_path = "model", 
@@ -222,9 +222,9 @@ display(preds)
 
 1. Listeden oluşturduğunuz kaynak grubunu seçin.
 
-1. **Kaynak grubunu sil**'i seçin.
+1. **Kaynak grubunu sil** 'i seçin.
 
-1. Kaynak grubu adını girin. Ardından **Sil**’i seçin.
+1. Kaynak grubu adını girin. Ardından **Sil** ’i seçin.
 
 ## <a name="example-notebooks"></a>Örnek not defterleri
 
@@ -234,4 +234,4 @@ display(preds)
 
 * [Modellerinizi yönetin](concept-model-management-and-deployment.md).
 * [Deneme çalıştırmalarını izleyin ve MLflow ve Azure Machine Learning uç noktaları oluşturun](how-to-use-mlflow.md). 
-* [Azure Databricks ve MLflow](https://docs.microsoft.com/azure/databricks/applications/mlflow/)hakkında daha fazla bilgi edinin.
+* [Azure Databricks ve MLflow](/azure/databricks/applications/mlflow/)hakkında daha fazla bilgi edinin.

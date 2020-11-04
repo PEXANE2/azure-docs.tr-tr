@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 04528d28e9f54710cd0a63372e32b099c2e07fb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b190bf0c474640c07d84971069072d3af2faa66d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86026177"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321897"
 ---
 # <a name="sample-data-in-azure-blob-storage"></a><a name="heading"></a>Azure blob depolamadaki verileri örneklendirme
 
@@ -25,7 +25,7 @@ Bu makalede, Azure Blob depolamada depolanan örnekleme verileri, programlı bir
 **Verileriniz neden örnekleyebilirsiniz?**
 Çözümlemeyi planladığınız veri kümesi büyükse, daha küçük ancak temsili ve daha yönetilebilir bir boyutla azaltmak için verileri düşürmek genellikle iyi bir fikirdir. Örnekleme, veri anlama, araştırma ve özellik mühendisliğini kolaylaştırır. Cortana Analytics Işlemindeki rolü, veri işleme işlevlerinin ve makine öğrenimi modellerinin hızlı prototipini etkinleştirmektir.
 
-Bu örnekleme görevi, [ekip veri bilimi işlemindeki (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)bir adımdır.
+Bu örnekleme görevi, [ekip veri bilimi işlemindeki (TDSP)](./index.yml)bir adımdır.
 
 ## <a name="download-and-down-sample-data"></a>Örnek verileri indirme ve azaltma
 1. Aşağıdaki örnek Python kodundan blob hizmetini kullanarak Azure Blob depolama 'dan verileri indirin: 
@@ -102,7 +102,6 @@ Aşağıdaki örnek kodu kullanarak verileri aşağı örnekleyebilirsiniz ve do
         print ("Something went wrong with uploading to the blob:"+ BLOBNAME)
     ```
 
-3. Aşağıdaki görüntüde gösterildiği gibi [verileri içeri](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) Azure Machine Learning kullanarak Azure Blob 'dan verileri okuyun:
+3. Aşağıdaki görüntüde gösterildiği gibi [verileri içeri](/azure/machine-learning/studio-module-reference/import-data) Azure Machine Learning kullanarak Azure Blob 'dan verileri okuyun:
 
 ![okuyucu blobu](./media/sample-data-blob/reader_blob.png)
-

@@ -1,6 +1,6 @@
 ---
 title: Veri yükleme en iyi yöntemleri
-description: SYNAPSE SQL 'e veri yüklemeye yönelik öneriler ve performans iyileştirmeleri
+description: Adanmış bir SQL havuzu Azure SYNAPSE Analytics 'e veri yüklemeye yönelik öneriler ve performans iyileştirmeleri.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,20 +11,20 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4c07ad2aaf6c682dc370e3223dba1f199242ca2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e706f12a251cd38c3525a48553743606ed199b6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289240"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321509"
 ---
-# <a name="best-practices-for-loading-data-for-data-warehousing"></a>Veri ambarına veri yüklemeye yönelik en iyi uygulamalar
+# <a name="best-practices-for-loading-data-into-a-dedicated-sql-pool-azure-synapse-analytics"></a>Adanmış bir SQL havuzuna veri yüklemeye yönelik en iyi uygulamalar Azure SYNAPSE Analytics
 
 Bu makalede, verileri yüklemeye yönelik öneriler ve performans iyileştirmeleri bulacaksınız.
 
 ## <a name="prepare-data-in-azure-storage"></a>Azure Storage 'da verileri hazırlama
 
-Gecikme süresini en aza indirmek için depolama katmanınızı ve veri Ambarınızı birlikte bulundurma.
+Gecikme süresini en aza indirmek için depolama katmanınızı ve adanmış SQL havuzunuzu birlikte bulundurma.
 
 Verileri ORC Dosya Biçimi’ne aktarırken, verilerde büyük metin sütunları varsa Java belleği yetersiz hatası gibi hatalar alabilirsiniz. Bu sınırlama için bir geçici çözüm olarak, sütunların yalnızca bir alt kümesini dışarı aktarın.
 
@@ -36,7 +36,7 @@ Büyük sıkıştırılmış dosyaları daha küçük sıkıştırılmış dosya
 
 ## <a name="run-loads-with-enough-compute"></a>Yüklemeleri yeterli işlem ile Çalıştır
 
-En yüksek yükleme hızı için aynı anda yalnızca bir yük işi çalıştırın. Bunu yapmak uygun değilse, en az sayıda yükü eşzamanlı olarak çalıştırın. Büyük bir yükleme işi bekleliyorsanız, yüklemeden önce SQL havuzunuzu ölçeklendirmeniz gerekir.
+En yüksek yükleme hızı için aynı anda yalnızca bir yük işi çalıştırın. Bunu yapmak uygun değilse, en az sayıda yükü eşzamanlı olarak çalıştırın. Büyük bir yükleme işi bekleliyorsanız, yüklemeden önce adanmış SQL havuzunuzu ölçeklendirmeniz gerekir.
 
 Yükleri uygun işlem kaynaklarıyla çalıştırmak için, yükleri çalıştırmaya ayrılmış yükleme kullanıcıları oluşturun. Her yükleme kullanıcısını belirli bir kaynak sınıfına veya iş yükü grubuna atayın. Yük çalıştırmak için, yükleme kullanıcılarından biri olarak oturum açın ve sonra yükü çalıştırın. Yük, kullanıcının kaynak sınıfıyla çalıştırılır.  Bu yöntem bir kullanıcının kaynak sınıfını geçerli kaynak sınıfının ihtiyacına uygun olarak değiştirmeye çalışmaktan daha basittir.
 

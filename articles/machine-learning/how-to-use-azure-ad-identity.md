@@ -11,22 +11,22 @@ ms.subservice: core
 ms.date: 02/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ac7420e47077e4e2b5bcfce0f33766554cd5c76d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1789f83f048a2ab0fb75aa33635e58b0850b865b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89647331"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319137"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Azure Kubernetes Service'de makine öğrenmesi web hizmetinizle Azure AD kimliğini kullanma
 
-Bu nasıl yapılır, Azure Kubernetes hizmetindeki dağıtılmış makine öğrenimi modelinize bir Azure Active Directory (AAD) kimliği atamayı öğrenirsiniz. [AAD Pod Identity](https://github.com/Azure/aad-pod-identity) projesi, [yönetilen bir kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) ve Kubernetes temel ÖĞELERINI kullanarak, uygulamaların AAD ile güvenli bir şekilde bulut kaynaklarına erişmesini sağlar. Bu, Web hizmetinizin kimlik bilgilerini eklemek veya belirteçleri doğrudan komut dosyanızın içinde yönetmek zorunda kalmadan Azure kaynaklarınıza güvenli bir şekilde erişmesini sağlar `score.py` . Bu makalede, Azure Kubernetes hizmet kümenizde bir Azure kimliği oluşturma ve kurma adımları açıklanmakta ve bu kimlik dağıtılan Web hizmetinize atanır.
+Bu nasıl yapılır, Azure Kubernetes hizmetindeki dağıtılmış makine öğrenimi modelinize bir Azure Active Directory (AAD) kimliği atamayı öğrenirsiniz. [AAD Pod Identity](https://github.com/Azure/aad-pod-identity) projesi, [yönetilen bir kimlik](../active-directory/managed-identities-azure-resources/overview.md) ve Kubernetes temel ÖĞELERINI kullanarak, uygulamaların AAD ile güvenli bir şekilde bulut kaynaklarına erişmesini sağlar. Bu, Web hizmetinizin kimlik bilgilerini eklemek veya belirteçleri doğrudan komut dosyanızın içinde yönetmek zorunda kalmadan Azure kaynaklarınıza güvenli bir şekilde erişmesini sağlar `score.py` . Bu makalede, Azure Kubernetes hizmet kümenizde bir Azure kimliği oluşturma ve kurma adımları açıklanmakta ve bu kimlik dağıtılan Web hizmetinize atanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- [Machine Learning hizmeti Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md), [Python için Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)veya [Azure Machine Learning Visual Studio Code uzantısı](tutorial-setup-vscode-extension.md).
+- [Machine Learning hizmeti Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md), [Python için Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)veya [Azure Machine Learning Visual Studio Code uzantısı](tutorial-setup-vscode-extension.md).
 
-- Komutunu kullanarak AKS kümenize erişin `kubectl` . Daha fazla bilgi için bkz [. kümeye bağlanma](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster)
+- Komutunu kullanarak AKS kümenize erişin `kubectl` . Daha fazla bilgi için bkz [. kümeye bağlanma](../aks/kubernetes-walkthrough.md#connect-to-the-cluster)
 
 - AKS kümenize dağıtılan bir Azure Machine Learning Web hizmeti.
 
@@ -48,7 +48,7 @@ Bu nasıl yapılır, Azure Kubernetes hizmetindeki dağıtılmış makine öğre
         kubectl apply -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
         ```
     
-    * AKS kümenizde **RBAC etkin değilse**, aşağıdaki komutu kullanın:
+    * AKS kümenizde **RBAC etkin değilse** , aşağıdaki komutu kullanın:
     
         ```azurecli-interactive
         kubectl apply -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
@@ -75,7 +75,7 @@ Bu nasıl yapılır, Azure Kubernetes hizmetindeki dağıtılmış makine öğre
 
 ## <a name="assign-azure-identity-to-machine-learning-web-service"></a>Machine Learning Web hizmetine Azure kimliği atama
 
-Aşağıdaki adımlarda, önceki bölümde oluşturulan Azure kimliği kullanılır ve bir **seçici etiketi**aracılığıyla aks Web hizmetinize atanır.
+Aşağıdaki adımlarda, önceki bölümde oluşturulan Azure kimliği kullanılır ve bir **seçici etiketi** aracılığıyla aks Web hizmetinize atanır.
 
 İlk olarak, Azure kimliğini atamak istediğiniz AKS kümenizdeki dağıtımınızın adını ve ad alanını tanımlama. Aşağıdaki komutu çalıştırarak bu bilgileri alabilirsiniz. Ad alanları Azure Machine Learning çalışma alanı adınızın olması ve dağıtım adınızın, portalda gösterilen uç nokta adı olması gerekir.
 
@@ -126,7 +126,7 @@ Pod 'ler çalışır duruma getirildikten sonra, bu dağıtımın Web Hizmetleri
 
 ## <a name="assign-the-appropriate-roles-to-your-azure-identity"></a>Azure kimliğinize uygun rolleri atayın
 
-Diğer Azure kaynaklarına erişmek için [Azure yönetilen kimliğinizi uygun rollerle atayın](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) . Atadığınız rollerin doğru **veri eylemlerine**sahip olduğundan emin olun. Örneğin, genel [okuyucu rolü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) , [Depolama Blobu veri okuyucusu rolünün](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) Depolama Blobu için okuma izinlerine sahip olur.
+Diğer Azure kaynaklarına erişmek için [Azure yönetilen kimliğinizi uygun rollerle atayın](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) . Atadığınız rollerin doğru **veri eylemlerine** sahip olduğundan emin olun. Örneğin, genel [okuyucu rolü](../role-based-access-control/built-in-roles.md#reader) , [Depolama Blobu veri okuyucusu rolünün](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) Depolama Blobu için okuma izinlerine sahip olur.
 
 ## <a name="use-azure-identity-with-your-machine-learning-web-service"></a>Machine Learning Web hizmeti ile Azure kimliğini kullanma
 
@@ -134,7 +134,7 @@ AKS kümenize bir model dağıtın. `score.py`Betik, Azure kimliğinizin erişeb
 
 ### <a name="access-key-vault-from-your-web-service"></a>Web hizmetinizden erişim Key Vault
 
-**Key Vault**içinde bir gizli dizi Için Azure kimlik okuma erişimi verildiyse, `score.py` aşağıdaki kodu kullanarak buna erişebilirsiniz.
+**Key Vault** içinde bir gizli dizi Için Azure kimlik okuma erişimi verildiyse, `score.py` aşağıdaki kodu kullanarak buna erişebilirsiniz.
 
 ```python
 from azure.identity import DefaultAzureCredential
@@ -153,11 +153,11 @@ secret = secret_client.get_secret(my_secret_name)
 ```
 
 > [!IMPORTANT]
-> Bu örnek, DefaultAzureCredential kullanır. Belirli bir erişim ilkesi kullanarak kimlik erişimi vermek için bkz. [Azure CLI kullanarak Key Vault erişim Ilkesi atama](/azure/key-vault/general/assign-access-policy-cli).
+> Bu örnek, DefaultAzureCredential kullanır. Belirli bir erişim ilkesi kullanarak kimlik erişimi vermek için bkz. [Azure CLI kullanarak Key Vault erişim Ilkesi atama](../key-vault/general/assign-access-policy-cli.md).
 
 ### <a name="access-blob-from-your-web-service"></a>Web hizmetinizden blob 'a erişin
 
-Azure kimlik 'e bir **Depolama Blobu**içindeki verilere yönelik okuma erişimi verildiyse, `score.py` aşağıdaki kodu kullanarak buna erişebilirsiniz.
+Azure kimlik 'e bir **Depolama Blobu** içindeki verilere yönelik okuma erişimi verildiyse, `score.py` aşağıdaki kodu kullanarak buna erişebilirsiniz.
 
 ```python
 from azure.identity import DefaultAzureCredential

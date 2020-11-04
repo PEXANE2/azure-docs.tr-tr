@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 3b5783476e0d4a96561e11158cd2b0f6421cfbf6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 648f06ef1af5d6dce9fa3583c6358d3bd173f209
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88136108"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319670"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Azure SYNAPSE Analytics için bir sayfa sayfası (eski adıyla SQL DW)
 
@@ -37,13 +37,13 @@ Veri ambarınızda çalıştırılacak birincil işlemleri ve sorguları öncede
 
 ## <a name="data-migration"></a>Veri geçişi
 
-İlk olarak, verilerinizi [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) veya Azure Blob depolama alanına yükleyin. Sonra, verilerinizi hazırlama tablolarına yüklemek için [kopyalama ifadesini](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (Önizleme) kullanın. Aşağıdaki yapılandırmayı kullanın:
+İlk olarak, verilerinizi [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) veya Azure Blob depolama alanına yükleyin. Sonra, verilerinizi hazırlama tablolarına yüklemek için [kopyalama ifadesini](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (Önizleme) kullanın. Aşağıdaki yapılandırmayı kullanın:
 
 | Tasarım | Öneri |
 |:--- |:--- |
 | Dağıtım | Hepsini Bir Kez Deneme |
 | Dizinleme | Yığın |
-| Bölümleme | Hiçbiri |
+| Bölümleme | Yok |
 | Kaynak Sınıfı | largerc veya xlargerc |
 
 [Veri geçişi](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/), [veri yükleme](design-elt-data-loading.md) ve [Ayıklama, Yükleme ve Dönüştürme (ELT) işlemi](design-elt-data-loading.md) hakkında daha fazla bilgi edinin.
@@ -58,14 +58,14 @@ Tablo özelliklerini bağlı olarak aşağıdaki stratejileri kullanın:
 | Hepsini Bir Kez Deneme (varsayılan) | * Geçici/hazırlama tablosu<br></br> * Belirgin katılım anahtarı veya iyi aday sütun yok |* Veri taşıma nedeniyle performans yavaş |
 | Karma | * Olgu tabloları<br></br>* Büyük boyut tabloları |* Dağıtım anahtarı güncelleştirilemiyor |
 
-**İpuçları:**
+**Uçları**
 
 * Hepsini Bir Kez Deneme ile başlayın, ancak yüksek düzeyde paralel bir mimariden yararlanmak için karma dağıtım stratejisini amaçlayın.
 * Genel karma anahtarların aynı veri biçimine sahip olduğundan emin olun.
 * Varchar biçiminde dağıtmayın.
 * Sık birleştirme işlemleri ile bir olgu tablosuna yönelik genel karma anahtar içeren boyut tabloları karma dağıtılmış olabilir.
-* Verilerdeki eğrilikleri analiz etmek için *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* komutunu kullanın.
-* Sorguların arkasındaki veri taşımalarını çözümlemek, zaman yayınını izlemek ve karıştırma işlemleri yapmak için *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* kullanın. Bu, dağıtım stratejinizi gözden geçirmek için faydalıdır.
+* Verilerdeki eğrilikleri analiz etmek için *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)* komutunu kullanın.
+* Sorguların arkasındaki veri taşımalarını çözümlemek, zaman yayınını izlemek ve karıştırma işlemleri yapmak için *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)* kullanın. Bu, dağıtım stratejinizi gözden geçirmek için faydalıdır.
 
 [Çoğaltılmış tablolar](design-guidance-for-replicated-tables.md) ve [dağıtılmış tablolar](sql-data-warehouse-tables-distribute.md) hakkında daha fazla bilgi edinin.
 
@@ -79,7 +79,7 @@ Dizinleme, tabloların hızlı şekilde okunması için faydalıdır. Gereksinim
 | Kümelenmiş dizin | * En fazla 100.000.000 satır içeren tablolar<br></br>* Büyük tablolar (100.000.000 satırdan fazla) yalnızca 1-2 sütunlu yoğun olarak kullanılır |* Çoğaltılan bir tabloda kullanılır<br></br>* İşleme göre birden çok JOIN ve Group içeren karmaşık sorgulara sahipsiniz<br></br>* Dizinli sütunlarda güncelleştirmeler yaparsınız: bellek alıyor |
 | Kümelenmiş columnstore dizini (CCI) (varsayılan) | * Büyük tablolar (100.000.000 satırdan fazla) | * Çoğaltılan bir tabloda kullanılır<br></br>* Tablonuzda büyük ölçüde güncelleştirme işlemleri yaparsınız<br></br>* Tablonuzu fazla bölümleyebilirsiniz: satır grupları farklı dağıtım düğümleri ve bölümleri arasında yayılmaz |
 
-**İpuçları:**
+**Uçları**
 
 * Kümelenmiş bir dizin üzerinde, filtreleme için yoğun şekilde kullanılan bir sütuna kümelenmemiş bir dizin eklemek isteyebilirsiniz.
 * CCI ile bir tablodaki belleği nasıl yöneteceğiniz konusunda dikkatli olun. Veri yüklediğinizde, kullanıcının (veya sorgunun) büyük bir kaynak sınıfından avantaj elde etmesini istersiniz. Kırpmadan ve çok sayıda küçük sıkıştırılmış satır grupları oluşturmaktan kaçınmaya dikkat edin.
@@ -121,7 +121,7 @@ Kaynak grupları, sorgulara bellek ayırmak için bir yol olarak kullanılır. S
 
 Sorguların çok uzun sürdüğünü fark ederseniz, kullanıcılarınızın büyük kaynak sınıflarında çalışmadığından emin olun. Büyük kaynak sınıfları birçok eşzamanlı yuva kullanır. Bunlar diğer sorguların kuyruğa alınmasına neden olabilir.
 
-Son olarak, [SQL havuzu](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse)Gen2 kullanarak her kaynak sınıfı, Gen1 'den daha fazla bellek 2,5 alır.
+Son olarak, [SQL havuzu](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse)Gen2 kullanarak her kaynak sınıfı, Gen1 'den daha fazla bellek 2,5 alır.
 
 [Kaynak sınıfları ve eşzamanlılık](resource-classes-for-workload-management.md) ile çalışma hakkında daha fazla bilgi edinin.
 

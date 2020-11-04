@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 5eb392fdfc1ffdb6d7cfee64734cca32c9abcd33
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 0e94288b49cd57b59c126c95ca507477f1c56946
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913288"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321531"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Öğretici: bir Machine Learning modeli oluşturmak için R kullanma (Önizleme)
 
@@ -74,13 +74,13 @@ https://github.com/Azure/azureml-sdk-for-rBu öğreticide çalıştıracağını
 
 1. `git clone https://github.com/Azure/azureml-sdk-for-r`Depoyu kopyalamak için terminalde çalıştırın.
 
-1. RStudio 'da, kopyalanmış *azureml-SDK-for-r* klasörünün *Vignettes* klasörüne gidin.  *Vignettes* altında, *eğitme ve dağıtım-ilk modeli ' ni seçin.* Bu öğreticide kullanılan Vignette 'yi bulmak için rmd dosyası. Vignette için kullanılan ek dosyalar, *eğitme ve-dağıt-ilk model* alt klasöründe bulunur. Vignette 'yı açtıktan sonra, çalışma dizinini **oturum >, çalışma dizini > olarak kaynak dosya konumu olarak ayarlayın** . 
+1. RStudio 'da, kopyalanmış *azureml-SDK-for-r* klasörünün *Vignettes* klasörüne gidin.  *Vignettes* altında, *eğitme ve dağıtım-ilk modeli ' ni seçin.* Bu öğreticide kullanılan Vignette 'yi bulmak için rmd dosyası. Vignette için kullanılan ek dosyalar, *eğitme ve-dağıt-ilk model* alt klasöründe bulunur. Vignette 'yı açtıktan sonra, çalışma dizinini **oturum >, çalışma dizini > olarak kaynak dosya konumu olarak ayarlayın**. 
 
 > [!Important]
 > Bu makalenin geri kalanında,  *eğitme ve dağıtma-ilk modelinde gördüğünüz içerikle aynı içerik bulunur. RMD* dosyası. Rmarkkiyle karşılaşırsanız, bu dosyadaki kodu kullanmayı ücretsiz olarak kullanabilirsiniz.  Ya da kod parçacıklarını buradan veya bu makaleden bir R betiğine veya komut satırına kopyalayabilir/yapıştırabilirsiniz. 
 
 
-## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı kurma
+## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı ayarlama
 Bu öğreticide geliştirme çalışmalarınız için kurulum aşağıdaki eylemleri içerir:
 
 * Gerekli paketleri yükleme
@@ -289,7 +289,7 @@ as.numeric(predict(accident_model,newdata, type="response")*100)
 
 ## <a name="deploy-as-a-web-service"></a>Web hizmeti olarak dağıtma
 
-Modelinize göre, çakışmadan ölüm tehlikini tahmin edebilirsiniz. Azure ML 'yi kullanarak modelinizi bir tahmin hizmeti olarak dağıtın. Bu öğreticide, Web hizmetini [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (aci) ' de dağıtacaksınız.
+Modelinize göre, çakışmadan ölüm tehlikini tahmin edebilirsiniz. Azure ML 'yi kullanarak modelinizi bir tahmin hizmeti olarak dağıtın. Bu öğreticide, Web hizmetini [Azure Container Instances](../container-instances/index.yml) (aci) ' de dağıtacaksınız.
 
 ### <a name="register-the-model"></a>Modeli Kaydet
 
@@ -329,7 +329,7 @@ Bu öğreticide, hizmetinizi ACI 'ye dağıtacaksınız. Bu kod, test ve hafif y
 aci_config <- aci_webservice_deployment_config(cpu_cores = 1, memory_gb = 0.5)
 ```
 
-Şimdi modelinizi bir Web hizmeti olarak dağıtırsınız. Dağıtım **birkaç dakika sürebilir** . 
+Şimdi modelinizi bir Web hizmeti olarak dağıtırsınız. Dağıtım **birkaç dakika sürebilir**. 
 
 ```R
 aci_service <- deploy_model(ws, 

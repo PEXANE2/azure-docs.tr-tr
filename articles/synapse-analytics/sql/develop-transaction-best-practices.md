@@ -1,6 +1,6 @@
 ---
-title: SQL havuzu için işlemleri iyileştirme
-description: SQL havuzunda işlem kodunuzun performansını en uygun hale getirmeyi öğrenin.
+title: Adanmış SQL havuzu için işlemleri iyileştirme
+description: Adanmış SQL havuzundaki işlem kodunuzun performansını en uygun hale getirmeyi öğrenin.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,22 +10,22 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 174ae84e66f10db4ad24ed561b228f0031492d97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a17e3c80f15bb1e4c5aacba4dc974e363eca285e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288656"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319867"
 ---
-# <a name="optimize-transactions-in-sql-pool"></a>SQL havuzundaki işlemleri iyileştirme
+# <a name="optimize-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu ile işlemleri iyileştirme 
 
-Uzun geri göndermeler riskini en aza indirerek SQL havuzundaki işlem kodunuzun performansını nasıl iyileştireceğinizi öğrenin.
+Uzun geri göndermeler riskini en aza indirerek, Özel SQL havuzundaki işlem kodunuzun performansını iyileştirmeden nasıl iyileştireceğinizi öğrenin.
 
 ## <a name="transactions-and-logging"></a>İşlemler ve günlüğe kaydetme
 
-İşlemler, ilişkisel bir veritabanı altyapısının önemli bir bileşenidir. SQL havuzu veri değişikliği sırasında işlemleri kullanır. Bu işlemler açık veya kapalı olabilir. Tek INSERT, UPDATE ve DELETE deyimleri örtülü işlemlere örnektir. Açık işlemler, BEGIN TRAN, COMMıT TRAN veya ROLLBACK TRAN kullanır. Açık işlemler genellikle birden çok değişiklik deyimlerinin tek bir atomik birimde birbirine bağlanması gerektiğinde kullanılır.
+İşlemler, ilişkisel bir veritabanı altyapısının önemli bir bileşenidir. Adanmış SQL havuzu veri değişikliği sırasında işlemleri kullanır. Bu işlemler açık veya kapalı olabilir. Tek INSERT, UPDATE ve DELETE deyimleri örtülü işlemlere örnektir. Açık işlemler, BEGIN TRAN, COMMıT TRAN veya ROLLBACK TRAN kullanır. Açık işlemler genellikle birden çok değişiklik deyimlerinin tek bir atomik birimde birbirine bağlanması gerektiğinde kullanılır.
 
-SQL havuzu, işlem günlüklerini kullanarak veritabanına değişiklikleri kaydeder. Her dağıtımın kendi işlem günlüğü vardır. İşlem günlüğü yazmaları otomatik. Yapılandırma gerekli değildir. Ancak, bu işlem yazma işlemini garanti ederken sistemde bir ek yük getirir. İşlemsel olarak verimli kod yazarak bu etkiyi en aza indirgeyin. İşlem açısından verimli kod, genel olarak iki kategoriye girer.
+Adanmış SQL havuzu, işlem günlüklerini kullanarak veritabanına değişiklikleri kaydeder. Her dağıtımın kendi işlem günlüğü vardır. İşlem günlüğü yazmaları otomatik. Yapılandırma gerekli değildir. Ancak, bu işlem yazma işlemini garanti ederken sistemde bir ek yük getirir. İşlemsel olarak verimli kod yazarak bu etkiyi en aza indirgeyin. İşlem açısından verimli kod, genel olarak iki kategoriye girer.
 
 * Mümkün olduğunda en az sayıda günlük oluşturma kullanın
 * Çok uzun süre çalışan işlemleri önlemek için kapsamlı toplu işleri kullanarak verileri işleyin
@@ -50,7 +50,7 @@ Aşağıdaki işlemler en düşük düzeyde günlüğe kaydedilebilir:
 * ALTER ıNDEX REBUıLD
 * DROP INDEX
 * TRUNCATE TABLE
-* TABLOYU BıRAK
+* DROP TABLE
 * ALTER TABLE SWıTCH PARTITION
 
 <!--
@@ -78,7 +78,7 @@ CTAS ve INSERT... Her iki toplu yükleme işlemi de SEÇIN. Ancak, her ikisi de 
 İkincil veya kümelenmemiş dizinleri güncelleştirmek için herhangi bir yazma işlemi her zaman tam olarak günlüğe kaydedilmiş işlemler olacağını belirtmekte bir değer.
 
 > [!IMPORTANT]
-> SQL havuzunda 60 dağıtımları vardır. Bu nedenle, tüm satırların eşit olarak dağıtıldığı ve tek bir bölüme giriş olduğu varsayıldığında, bir kümelenmiş columnstore dizinine yazarken en az 6.144.000 satır veya daha büyük bir işlem olması gerekir. Tablo bölümlenmiş ise ve eklenen satırlar bölüm sınırlarına yayıldıysanız, veri dağıtımını bile varsayarak bölüm sınırı başına 6.144.000 satıra ihtiyacınız olacaktır. Her bir dağıtım içindeki her bölüm, dağıtıma en az düzeyde günlüğe kaydedilecek ekleme için 102.400 satır eşiğini bağımsız olarak aşmalıdır.
+> Adanmış SQL havuzunda 60 dağıtımları vardır. Bu nedenle, tüm satırların eşit olarak dağıtıldığı ve tek bir bölüme giriş olduğu varsayıldığında, bir kümelenmiş columnstore dizinine yazarken en az 6.144.000 satır veya daha büyük bir işlem olması gerekir. Tablo bölümlenmiş ise ve eklenen satırlar bölüm sınırlarına yayıldıysanız, veri dağıtımını bile varsayarak bölüm sınırı başına 6.144.000 satıra ihtiyacınız olacaktır. Her bir dağıtım içindeki her bölüm, dağıtıma en az düzeyde günlüğe kaydedilecek ekleme için 102.400 satır eşiğini bağımsız olarak aşmalıdır.
 
 Verilerin kümelenmiş bir dizine sahip boş olmayan bir tabloya yüklenmesi genellikle tam olarak günlüğe kaydedilen ve en düşük düzeyde günlüğe kaydedilen satırlardan oluşan bir karışımı içerebilir. Kümelenmiş dizin, sayfaların dengeli bir ağacıdır (b-Tree). Yazılan sayfa zaten başka bir işlemden satırlar içeriyorsa, bu yazma işlemleri tam olarak günlüğe kaydedilir. Ancak, sayfa boşsa, bu sayfaya yazma işlemi en düşük düzeyde günlüğe kaydedilir.
 
@@ -177,7 +177,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> Büyük tabloları yeniden oluşturmak, SQL havuzu iş yükü yönetimi özelliklerini kullanmanın avantajlarından yararlanabilir. Daha fazla bilgi için bkz. [iş yükü yönetimi Için kaynak sınıfları](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+> Büyük tabloları yeniden oluşturmak, adanmış SQL havuzu iş yükü yönetimi özelliklerini kullanmanın avantajlarından yararlanabilir. Daha fazla bilgi için bkz. [iş yükü yönetimi Için kaynak sınıfları](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 ## <a name="optimize-with-partition-switching"></a>Bölüm değiştirme ile iyileştirme
 
@@ -406,20 +406,20 @@ END
 
 ## <a name="pause-and-scaling-guidance"></a>Kılavuzu duraklatma ve ölçeklendirme
 
-Azure SYNAPSE Analytics, SQL havuzdan istek üzerine [duraklatıp, sürdürmenize ve ölçeklemenize](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) olanak tanır. 
+Azure SYNAPSE Analytics, adanmış SQL havuzunu isteğe bağlı olarak [duraklatmanıza, sürdürmenize ve ölçeklendirmenize](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) olanak tanır. 
 
-SQL havuzunuzu duraklattığınızda veya ölçeklendirirseniz, tüm uçuş işlemleri hemen sonlandırıldığını anlamak önemlidir; açık işlemlerin geri alınmasına neden olur. 
+Adanmış SQL havuzunuzu duraklattığınızda veya ölçeklendirirseniz, tüm uçuş işlemleri hemen sonlandırıldığını anlamak önemlidir; açık işlemlerin geri alınmasına neden olur. 
 
-İş yükünüz, duraklatma veya ölçeklendirme işleminden önce uzun süre çalışan ve tamamlanmamış veri değişikliği yaptıysanız, bu işin geri yüklenmesi gerekir. Bu geri alma, SQL havuzunuzu duraklatmak veya ölçeklendirmek için gereken süreyi etkileyebilir. 
+İş yükünüz, duraklatma veya ölçeklendirme işleminden önce uzun süre çalışan ve tamamlanmamış veri değişikliği yaptıysanız, bu işin geri yüklenmesi gerekir. Bu geri alma, adanmış SQL havuzunuzu duraklatmak veya ölçeklendirmek için gereken süreyi etkileyebilir. 
 
 > [!IMPORTANT]
 > Her ikisi `UPDATE` ve `DELETE` tamamen günlüğe kaydedilir ve bu geri alma/yineleme işlemleri, eşdeğer en düşük düzeyde günlüğe kaydedilmiş işlemden çok daha uzun sürebilir.
 
-En iyi senaryo, SQL havuzunu duraklatmadan veya ölçeklendirmeden önce uçuş verileri değiştirme işlemlerinin tamamlanmasını sağlar. Ancak, bu senaryo her zaman pratik olmayabilir. Uzun geri alma riskini azaltmak için aşağıdaki seçeneklerden birini göz önünde bulundurun:
+En iyi senaryo, Özel SQL havuzunuzu duraklatmadan veya ölçeklendirmeden önce uçuş verileri değiştirme işlemlerinin tamamlanmasını sağlar. Ancak, bu senaryo her zaman pratik olmayabilir. Uzun geri alma riskini azaltmak için aşağıdaki seçeneklerden birini göz önünde bulundurun:
 
 * [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) kullanarak uzun çalışan işlemleri yeniden yazma
 * İşlemi parçalara bölün; satırların bir alt kümesi üzerinde çalışma
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yalıtım düzeyleri ve işlem sınırları hakkında daha fazla bilgi edinmek için bkz. [SQL havuzundaki işlemler](develop-transactions.md) .  Diğer En Iyi yöntemlere genel bakış için bkz. [SQL havuzu en iyi uygulamaları](best-practices-sql-pool.md).
+Yalıtım düzeyleri ve işlem sınırları hakkında daha fazla bilgi edinmek için [ADANMıŞ SQL havuzundaki işlemlere](develop-transactions.md) bakın.  Diğer En Iyi yöntemlere genel bakış için bkz. [SQL havuzu en iyi uygulamaları](best-practices-sql-pool.md).

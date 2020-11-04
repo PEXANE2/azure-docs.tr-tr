@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b45cc87c525ab66a3807f71901728e60d086ea74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6eb0be4d9946907dc5bb2f22b27530a27a37aec
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440414"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321255"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake ile ölçeklenebilir veri bilimi: uçtan uca bir anlatım
-Bu izlenecek yol, bir ipucunun bir tarifeli havayolu tarafından ödenip ödenmediğini tahmin etmek üzere NYC TAXI seyahat ve tarifeli havayolu veri kümesinin bir örneği üzerinde veri keşif ve ikili sınıflandırma görevlerini yapmak için Azure Data Lake nasıl kullanacağınızı gösterir. [Ekip veri bilimi sürecinin](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), uçtan uca, veri alımı ile model eğitimi arasında ve ardından modeli yayımlayan bir Web hizmetinin dağıtımına ilişkin adımlarda size yol gösterir.
+Bu izlenecek yol, bir ipucunun bir tarifeli havayolu tarafından ödenip ödenmediğini tahmin etmek üzere NYC TAXI seyahat ve tarifeli havayolu veri kümesinin bir örneği üzerinde veri keşif ve ikili sınıflandırma görevlerini yapmak için Azure Data Lake nasıl kullanacağınızı gösterir. [Ekip veri bilimi sürecinin](./index.yml), uçtan uca, veri alımı ile model eğitimi arasında ve ardından modeli yayımlayan bir Web hizmetinin dağıtımına ilişkin adımlarda size yol gösterir.
 
 ## <a name="technologies"></a>Teknolojiler
 
@@ -50,14 +50,14 @@ Azure Machine Learning Studio (klasik), tahmine dayalı modelleri derlemek ve da
 ### <a name="scripts"></a>Betikler
 Bu kılavuzda yalnızca asıl adımlar özetlenmiştir. Tam **U-SQL betiğini** ve **Jupyter Notebook** [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough)' dan indirebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu konulara başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 * Azure aboneliği. Henüz bir tane yoksa, bkz. [Azure Ücretsiz deneme sürümü](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Önerilen Visual Studio 2013 veya üzeri. Bu sürümlerden biri zaten yüklü değilse, [Visual Studio Community](https://www.visualstudio.com/vs/community/)'den ücretsiz bir topluluk sürümü indirebilirsiniz.
 
 > [!NOTE]
-> Visual Studio yerine, Azure Data Lake sorguları göndermek için Azure portal de kullanabilirsiniz. Yönergeler, hem Visual Studio hem de Portal üzerinde **U-SQL Ile işlem verileri**başlıklı bölümde verilmiştir.
+> Visual Studio yerine, Azure Data Lake sorguları göndermek için Azure portal de kullanabilirsiniz. Yönergeler, hem Visual Studio hem de Portal üzerinde **U-SQL Ile işlem verileri** başlıklı bölümde verilmiştir.
 >
 >
 
@@ -92,7 +92,7 @@ Bu bölüm, bu kaynakların her birini oluşturma hakkında yönergeler sağlar.
  ![4](./media/data-lake-walkthrough/4-create-ADLA-new.PNG)
 
 ### <a name="create-an-azure-blob-storage-account"></a>Azure Blob depolama hesabı oluşturma
-[Azure Portal](https://portal.azure.com)bir Azure Blob depolama hesabı oluşturun. Ayrıntılar için [Azure depolama hesapları hakkında](../../storage/common/storage-create-storage-account.md)bölümündeki depolama hesabı oluşturma bölümüne bakın.
+[Azure Portal](https://portal.azure.com)bir Azure Blob depolama hesabı oluşturun. Ayrıntılar için [Azure depolama hesapları hakkında](../../storage/common/storage-account-create.md)bölümündeki depolama hesabı oluşturma bölümüne bakın.
 
  ![5](./media/data-lake-walkthrough/5-Create-Azure-Blob.PNG)
 
@@ -143,7 +143,7 @@ Bu bölümde gösterilen veri işleme görevleri, verileri kullanıma almak, kal
 
 U-SQL betikleri burada açıklanmış ve ayrı bir dosyada sunulmaktadır. Tam **U-SQL betiklerini** [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough)'dan indirebilirsiniz.
 
-U-SQL ' i çalıştırmak için, Visual Studio 'yu açın, **Dosya--> New--> projesi**' ne tıklayın, **U-SQL projesi**' ni seçin ve bir klasöre kaydedin.
+U-SQL ' i çalıştırmak için, Visual Studio 'yu açın, **Dosya--> New--> projesi** ' ne tıklayın, **U-SQL projesi** ' ni seçin ve bir klasöre kaydedin.
 
 ![8](./media/data-lake-walkthrough/8-create-USQL-project.PNG)
 
@@ -181,7 +181,7 @@ FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyct
 USING Extractors.Csv();
 ```
 
-İlk satırda üstbilgiler olduğundan, üstbilgileri kaldırmanız ve sütun türlerini uygun olanlarla değiştirmeniz gerekir. İşlenen verileri, **swebler://data_lake_storage_name. azuredatalakestorage. net/folder_name/file_name**_ kullanarak Azure Data Lake Storage veya Azure Blob depolama hesabı ile,  ** \@ container_name. blob. Core. windows. net/blob_storage_account_name**kullanarak kaydedebilirsiniz.
+İlk satırda üstbilgiler olduğundan, üstbilgileri kaldırmanız ve sütun türlerini uygun olanlarla değiştirmeniz gerekir. İşlenen verileri, **swebler://data_lake_storage_name. azuredatalakestorage. net/folder_name/file_name** _ kullanarak Azure Data Lake Storage veya Azure Blob depolama hesabı ile,  **\@ container_name. blob. Core. windows. net/blob_storage_account_name** kullanarak kaydedebilirsiniz.
 
 ```sql
 // change data types
@@ -461,7 +461,7 @@ USING Outputters.Csv();
 ```
 
 ### <a name="run-u-sql-jobs"></a><a name="run"></a>U-SQL işlerini Çalıştır
-U-SQL betiklerini düzenledikten sonra, Azure Data Lake Analytics hesabınızı kullanarak bunları sunucuya gönderebilirsiniz. **Data Lake**, **işi gönder**' e tıklayın, **analiz hesabınızı**seçin, **paralellik**' i seçin ve **Gönder** düğmesine tıklayın.
+U-SQL betiklerini düzenledikten sonra, Azure Data Lake Analytics hesabınızı kullanarak bunları sunucuya gönderebilirsiniz. **Data Lake** , **işi gönder** ' e tıklayın, **analiz hesabınızı** seçin, **paralellik** ' i seçin ve **Gönder** düğmesine tıklayın.
 
  ![12](./media/data-lake-walkthrough/12-submit-USQL.PNG)
 
@@ -618,7 +618,7 @@ Burada, bir seyahati eğimli olup olmadığını tahmin etmek için bir ikili s�
 ### <a name="build-web-service-api-and-consume-it-in-python"></a>Web hizmeti API 'SI oluşturun ve Python 'da kullanın
 Derlendikten sonra makine öğrenimi modelini kullanıma almak istiyorsunuz. İkili lojistik modeli örnek olarak burada kullanılır. Yerel makinenizde scikit-öğren sürümünün 0.15.1 olduğundan emin olun (Azure Machine Learning Studio zaten en azından bu sürümde).
 
-* Azure Machine Learning Studio (klasik) ayarlarından çalışma alanı kimlik bilgilerinizi bulun. Azure Machine Learning Studio, **Ayarlar**  -->  **ad**  -->  **Yetkilendirme belirteçleri**' ne tıklayın.
+* Azure Machine Learning Studio (klasik) ayarlarından çalışma alanı kimlik bilgilerinizi bulun. Azure Machine Learning Studio, **Ayarlar**  -->  **ad**  -->  **Yetkilendirme belirteçleri** ' ne tıklayın.
 
     ![c3](./media/data-lake-walkthrough/c3-workspace-id.PNG)
 
@@ -671,11 +671,11 @@ Azure Machine Learning Studio (klasik), doğrudan Azure Data Lake Storage verile
  ![18](./media/data-lake-walkthrough/18-create_HDI_cluster.PNG)
 
 ### <a name="create-hive-table-in-hdinsight"></a>HDInsight 'ta Hive tablosu oluşturma
-Şimdi, önceki adımda Azure Data Lake Storage depolanan verileri kullanarak HDInsight kümesinde Azure Machine Learning Studio (klasik) olarak kullanılacak Hive tabloları oluşturursunuz. Oluşturulan HDInsight kümesine gidin. **Ayarlar**  -->  **Özellikler**  -->  **kümesi AAD Identity**  -->  **ADLS Access**' e tıklayın, Azure Data Lake Storage hesabınızın, okuma, yazma ve yürütme haklarıyla birlikte listesine eklendiğinden emin olun.
+Şimdi, önceki adımda Azure Data Lake Storage depolanan verileri kullanarak HDInsight kümesinde Azure Machine Learning Studio (klasik) olarak kullanılacak Hive tabloları oluşturursunuz. Oluşturulan HDInsight kümesine gidin. **Ayarlar**  -->  **Özellikler**  -->  **kümesi AAD Identity**  -->  **ADLS Access** ' e tıklayın, Azure Data Lake Storage hesabınızın, okuma, yazma ve yürütme haklarıyla birlikte listesine eklendiğinden emin olun.
 
  ![19](./media/data-lake-walkthrough/19-HDI-cluster-add-ADLS.PNG)
 
-Ardından **Ayarlar** düğmesinin yanındaki **Pano** ' ya ve bir pencere açılır. Sayfanın sağ üst köşesindeki **Hive görünümü** ' ne tıklayın ve **sorgu düzenleyicisini**görmeniz gerekir.
+Ardından **Ayarlar** düğmesinin yanındaki **Pano** ' ya ve bir pencere açılır. Sayfanın sağ üst köşesindeki **Hive görünümü** ' ne tıklayın ve **sorgu düzenleyicisini** görmeniz gerekir.
 
  ![20](./media/data-lake-walkthrough/20-HDI-dashboard.PNG)
 
@@ -722,7 +722,7 @@ Sorgu tamamlandığında şöyle bir sonuç görmeniz gerekir:
 ### <a name="build-and-deploy-models-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio modelleri derleme ve dağıtma
 Artık Azure Machine Learning bir tıp ödenip ödenmediğini tahmin eden bir model oluşturmaya ve dağıtmaya hazırsınız. Bu ikili sınıflandırma (tıp veya Not) sorununa yönelik örnek veriler kullanılmak üzere kullanılabilir. Birden çok Lass sınıflandırması (tip_class) ve gerileme (tip_amount) kullanan tahmine dayalı modeller ayrıca Azure Machine Learning Studio birlikte oluşturulup dağıtılabilir, ancak burada yalnızca ikili sınıflandırma modeli kullanılarak büyük/küçük harf işleme gösterilmiştir.
 
-1. Veri **giriş ve çıkış** bölümünde bulunan **veri içeri aktarma** modülünü kullanarak verileri Azure Machine Learning Studio (klasik) olarak alın. Daha fazla bilgi için bkz. [veri modülü başvurusunu Içeri aktarma](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) sayfası.
+1. Veri **giriş ve çıkış** bölümünde bulunan **veri içeri aktarma** modülünü kullanarak verileri Azure Machine Learning Studio (klasik) olarak alın. Daha fazla bilgi için bkz. [veri modülü başvurusunu Içeri aktarma](/azure/machine-learning/studio-module-reference/import-data) sayfası.
 2. **Özellikler** panelinde **veri kaynağı** olarak **Hive sorgusu** ' nu seçin.
 3. Aşağıdaki Hive betiğini **Hive veritabanı sorgu** düzenleyicisine yapıştırın
 
@@ -738,7 +738,7 @@ Aşağıdaki şekilde, Hive tablosundan verileri okurken ikili sınıflandırma 
 
  ![24](./media/data-lake-walkthrough/24-AML-exp.PNG)
 
-Deneme oluşturulduktan sonra **Web hizmeti**tahmine  -->  **dayalı Web hizmeti** ayarla ' ya tıklayın.
+Deneme oluşturulduktan sonra **Web hizmeti** tahmine  -->  **dayalı Web hizmeti** ayarla ' ya tıklayın.
 
  ![25](./media/data-lake-walkthrough/25-AML-exp-deploy.PNG)
 
@@ -754,7 +754,7 @@ Web hizmeti panosu kısa süre içinde görüntülenir:
 Bu yönergeyi tamamlayarak, Azure Data Lake ' de ölçeklenebilir uçtan uca çözümler oluşturmak için bir veri bilimi ortamı oluşturdunuz. Bu ortam, veri bilimi sürecinin kurallı adımlarında, model eğitimi aracılığıyla veri edinmesinin ve daha sonra modelin bir Web hizmeti olarak dağıtımına kadar büyük bir genel veri kümesini çözümlemek için kullanıldı. U-SQL, verileri işlemek, araştırmak ve örneklemek için kullanıldı. Python ve Hive, tahmine dayalı modeller derlemek ve dağıtmak için Azure Machine Learning Studio (klasik) ile kullanılır.
 
 ## <a name="whats-next"></a>Sırada ne var?
-[Ekip veri bilimi işlemi (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) için öğrenme yolu, gelişmiş analiz işlemindeki her adımı açıklayan konuların bağlantılarını sağlar. [Team Data Science işlem izlenecek yolları](walkthroughs.md) sayfasında, çeşitli tahmine dayalı analiz senaryolarında kaynakların ve hizmetlerin nasıl kullanılacağını gösteren bir dizi izlenecek yol vardır:
+[Ekip veri bilimi işlemi (TDSP)](./index.yml) için öğrenme yolu, gelişmiş analiz işlemindeki her adımı açıklayan konuların bağlantılarını sağlar. [Team Data Science işlem izlenecek yolları](walkthroughs.md) sayfasında, çeşitli tahmine dayalı analiz senaryolarında kaynakların ve hizmetlerin nasıl kullanılacağını gösteren bir dizi izlenecek yol vardır:
 
 * [Team Data Science süreci: Azure SYNAPSE Analytics 'i kullanma](sqldw-walkthrough.md)
 * [Team Data Science süreci: HDInsight Hadoop kümelerini kullanma](hive-walkthrough.md)

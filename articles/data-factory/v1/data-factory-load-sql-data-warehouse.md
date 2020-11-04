@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cb0138603cad52c40b3471c60104f091367e88e9
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 4e6b0afab5c86131575d0e3d12b9984a8463f5a3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636910"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321095"
 ---
 # <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>Data Factory ile 15 dakika altında Azure SYNAPSE Analytics 'e 1 TB yükleyin
 > [!NOTE]
@@ -44,7 +44,7 @@ Bu makalede kopyalama Sihirbazı kullanılarak Azure SYNAPSE Analytics 'e veri t
 >
 >
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Azure Blob depolama: Bu deneme TPC-H test veri kümesini depolamak için Azure Blob depolama (GRS) kullanır.  Azure depolama hesabınız yoksa [depolama hesabı oluşturma hakkında](../../storage/common/storage-account-create.md)bilgi edinin.
 * [TPC-h](http://www.tpc.org/tpch/) verileri: test veri kümesi olarak TPC-h kullanacağız.  Bunu yapmak için, `dbgen` veri kümesini oluşturmanıza yardımcı olan TPC-H Toolkit ' i kullanmanız gerekir.  `dbgen` [TPC araçlarından](http://www.tpc.org/tpc_documents_current_versions/current_specifications5.asp) kaynak kodu indirebilir ve kendiniz derleyebilir ya da derlenmiş ikiliyi [GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TPCHTools)'dan indirebilirsiniz.  10 dosya genelinde tablo yayma için 1 TB düz dosya oluşturmak üzere aşağıdaki komutlarla dbgen.exe çalıştırın `lineitem` :
 
@@ -65,7 +65,7 @@ Bu makalede kopyalama Sihirbazı kullanılarak Azure SYNAPSE Analytics 'e veri t
   >
   >
 
-    6.000 DWUs ile bir Synapse SQL havuzu oluşturmak için, performans kaydırıcısını sağa doğru bir şekilde taşıyın:
+    6.000 DWUs ile ayrılmış bir SQL havuzu oluşturmak için performans kaydırıcısını hemen sağa taşıyın:
 
     ![Performans kaydırıcı](media/data-factory-load-sql-data-warehouse/performance-slider.png)
 

@@ -11,13 +11,13 @@ ms.topic: how-to
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
-ms.date: 04/23/2020
-ms.openlocfilehash: 27daa160cc784665a487a0988429e3783257962e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/02/2020
+ms.openlocfilehash: 45aca00adab8ef5b33a376af34642261c5e73255
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678141"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321622"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Azure Key Vault kullanarak Always Encrypted yapılandırma 
 
@@ -37,7 +37,7 @@ Bu makaledeki adımları izleyin ve Azure SQL veritabanı veya SQL yönetilen ö
 - Veritabanı tablosu oluşturun ve sütunları şifreleyin.
 - Şifrelenmiş sütunlardan veri ekleyen, seçen ve görüntüleyen bir uygulama oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 
 - Bir Azure hesabı ve aboneliği Bir hesabınız yoksa, [ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/)için kaydolun.
@@ -100,8 +100,8 @@ az group create --location $location --name $resourceGroupName
 
 az keyvault create --name $vaultName --resource-group $resourceGroupName --location $location
 
-az keyvault set-policy --name $vaultName --key-permissions create, get, list, sign, unwrapKey, verify, wrapKey --resource-group $resourceGroupName --upn $userPrincipalName
-az keyvault set-policy --name $vaultName --key-permissions get, list, sign, unwrapKey, verify, wrapKey --resource-group $resourceGroupName --spn $applicationId
+az keyvault set-policy --name $vaultName --key-permissions create get list sign unwrapKey verify wrapKey --resource-group $resourceGroupName --upn $userPrincipalName
+az keyvault set-policy --name $vaultName --key-permissions get list sign unwrapKey verify wrapKey --resource-group $resourceGroupName --spn $applicationId
 ```
 
 ---
@@ -151,7 +151,7 @@ SSMS, sütun ana anahtarı, sütun şifreleme anahtarı ve şifreli sütunları 
 
     ![Şifrelenmiş sütunları vurgulayan ekran görüntüsü... menü seçeneği.](./media/always-encrypted-azure-key-vault-configure/encrypt-columns.png)
 
-Always Encrypted Sihirbazı aşağıdaki bölümleri içerir: **sütun seçimi** , **ana anahtar yapılandırması** , **doğrulama** ve **Özet** .
+Always Encrypted Sihirbazı aşağıdaki bölümleri içerir: **sütun seçimi** , **ana anahtar yapılandırması** , **doğrulama** ve **Özet**.
 
 ### <a name="column-selection"></a>Sütun seçimi
 
@@ -576,7 +576,7 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 
    ![Şifrelenmiş sütunların herhangi bir düz metin verisi içermediğini gösteren ekran görüntüsü.](./media/always-encrypted-azure-key-vault-configure/ssms-encrypted.png)
 
-SSMS 'yi düz metin verilerine erişmek üzere kullanmak için, önce kullanıcının Azure Key Vault uygun izinlere sahip olduğundan emin olmanız gerekir: *Get* , *unwrapKey* ve *Verify* . Ayrıntılı bilgi için bkz. [sütun ana anahtarları oluşturma ve depolama (Always Encrypted)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted).
+SSMS 'yi düz metin verilerine erişmek üzere kullanmak için, önce kullanıcının Azure Key Vault uygun izinlere sahip olduğundan emin olmanız gerekir: *Get* , *unwrapKey* ve *Verify*. Ayrıntılı bilgi için bkz. [sütun ana anahtarları oluşturma ve depolama (Always Encrypted)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted).
 
 Ardından, bağlantınız sırasında *şifreleme ayarı = etkin* parametresini ekleyin.
 

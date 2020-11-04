@@ -10,17 +10,17 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
-ms.openlocfilehash: ce8ff8bedc6f6e4f99a940bbdb26bd3fafc930d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b708d85e94782ea264432ae3780b2b1f0d240396
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296782"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320812"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Zaman serisi tahmin modelini otomatik eğitme
 
 
-Bu makalede, [Azure Machine Learning Python SDK 'sında](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true)otomatik makine öğrenimi, otomatik ml kullanarak zaman serisi tahmin regresyon modelini yapılandırmayı ve eğitecağınızı öğreneceksiniz. 
+Bu makalede, [Azure Machine Learning Python SDK 'sında](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)otomatik makine öğrenimi, otomatik ml kullanarak zaman serisi tahmin regresyon modelini yapılandırmayı ve eğitecağınızı öğreneceksiniz. 
 
 Bunun için şunları yapın: 
 
@@ -33,7 +33,7 @@ Düşük bir kod deneyimi için bkz. öğreticide, [Azure Machine Learning Studi
 
 Klasik zaman serisi yöntemlerinin aksine, otomatik ML 'de, geçmiş zaman serisi değerleri, gerileme için diğer tahminlerle birlikte ek boyutlar haline gelir. Bu yaklaşım, eğitim sırasında birden çok bağlamsal değişkeni ve bunlarla ilişkilerini bir araya ekler. Birden çok etken bir tahmini etkileyebileceğinden, bu yöntem kendisini gerçek dünya tahmin senaryolarıyla iyi bir şekilde hizalar. Örneğin, satış tahmini yaparken, geçmiş eğilimleri etkileşimlerinin yanı sıra Döviz Kuru ve fiyat, satış sonucunu güvenle bir şekilde ister. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İhtiyacınız olan bu makalede, 
 
@@ -120,7 +120,7 @@ Oto [içi modelleri engellemek](concept-manage-ml-pitfalls.md#prevent-over-fitti
 
 ## <a name="configure-experiment"></a>Deneme yapılandırma
 
-[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true)Nesnesi, otomatik makine öğrenimi görevi için gereken ayarları ve verileri tanımlar. Tahmin modelinin yapılandırması, standart regresyon modelinin kurulumuna benzerdir, ancak belirli modeller, yapılandırma seçenekleri ve yükseltme adımları özellikle zaman serisi verileri için mevcuttur. 
+[`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py)Nesnesi, otomatik makine öğrenimi görevi için gereken ayarları ve verileri tanımlar. Tahmin modelinin yapılandırması, standart regresyon modelinin kurulumuna benzerdir, ancak belirli modeller, yapılandırma seçenekleri ve yükseltme adımları özellikle zaman serisi verileri için mevcuttur. 
 
 ### <a name="supported-models"></a>Desteklenen modeller
 Otomatik makine öğrenimi, model oluşturma ve ayarlama sürecinin bir parçası olarak farklı modeller ve algoritmalar otomatik olarak dener. Bir kullanıcı olarak, algoritmayı belirtmeniz gerekmez. Tahmin denemeleri için hem yerel zaman serisi hem de derin öğrenme modelleri öneri sisteminin bir parçasıdır. Aşağıdaki tabloda modellerin Bu alt kümesi özetlenmektedir. 
@@ -138,7 +138,7 @@ Forekaletcn (Önizleme)| Forekaletcn, en zorlu tahmin görevlerinin üstesinden 
 
 Regresyon sorununa benzer şekilde, görev türü, yineleme sayısı, eğitim verileri ve çapraz doğrulamaları sayısı gibi standart eğitim parametrelerini tanımlarsınız. Tahmin görevleri için, denemeyi etkileyen ayarlanması gereken ek parametreler vardır. 
 
-Aşağıdaki tabloda bu ek parametreler özetlenmektedir. Sözdizimi tasarım desenleri için [başvuru belgelerine](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) bakın.
+Aşağıdaki tabloda bu ek parametreler özetlenmektedir. Sözdizimi tasarım desenleri için [başvuru belgelerine](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) bakın.
 
 | Parametre &nbsp; adı | Açıklama | Gerekli |
 |-------|-------|-------|
@@ -149,10 +149,11 @@ Aşağıdaki tabloda bu ek parametreler özetlenmektedir. Sözdizimi tasarım de
 |`target_lags`|Hedef değerleri, verilerin sıklığından sonra gecikme olacak satır sayısı. Gecikme bir liste veya tek tamsayı olarak temsil edilir. Bağımsız değişkenler ve bağımlı değişken arasındaki ilişki, varsayılan olarak birbiriyle eşleşmediği veya ilişkilendirilemiyor durumunda gecikme kullanılmalıdır. ||
 |`feature_lags`| Belirlenen özellikler, ayarlandığında otomatik ML tarafından otomatik olarak kararilir `target_lags` ve olarak `feature_lags` ayarlanır `auto` . Özellik lags özelliğinin etkinleştirilmesi doğruluğu artırmaya yardımcı olabilir. Özellik lags varsayılan olarak devre dışıdır. ||
 |`target_rolling_window_size`|tahmin edilen değerler oluşturmak için *kullanılacak geçmiş dönem* <= eğitim kümesi boyutu. Atlanırsa, *n* tam eğitim kümesi boyutudur. Modele eğitim yaparken yalnızca belirli bir geçmişi düşünmek istediğinizde bu parametreyi belirtin. [Hedef sıralı pencere toplama](#target-rolling-window-aggregation)hakkında daha fazla bilgi edinin.||
+|`short_series_handling`| Yetersiz veri nedeniyle eğitim sırasında hata oluşmasını önlemek için kısa süre serisi işlemeyi sağlar. Kısa seri işleme varsayılan olarak true olarak ayarlanır.|
 
 
 Aşağıdaki kod, 
-* `time-series settings`Sözlük nesnesi olarak oluşturur. 
+* `ForecastingParameters`Deneme eğitimine yönelik tahmin parametrelerini tanımlamak için sınıfından yararlanır
 * `time_column_name` `day_datetime` Veri kümesindeki alanını ayarlar. 
 * `time_series_id_column_names`Parametresini öğesine tanımlar `"store"` . Bu, veriler için **iki ayrı zaman serisi grubu** oluşturulmasını sağlar; bir mağaza A ve B.
 * `forecast_horizon`Tüm test kümesini tahmin etmek için 50 olarak ayarlar. 
@@ -161,16 +162,18 @@ Aşağıdaki kod,
 * `target_lags`Önerilen "otomatik" ayarına ayarlanır, bu değer sizin için otomatik olarak algılanır.
 
 ```python
-time_series_settings = {
-    "time_column_name": "day_datetime",
-    "time_series_id_column_names": ["store"],
-    "forecast_horizon": 50,
-    "target_lags": "auto",
-    "target_rolling_window_size": 10,
-}
+from azureml.automl.core.forecasting_parameters import ForecastingParameters
+
+forecasting_parameters = ForecastingParameters(
+    time_column_name='day_datetime', 
+    forecast_horizon=50,
+    time_series_id_column_names=["store"],
+    target_lags='auto',
+    target_rolling_window_size=10
+)
 ```
 
-Bunlar `time_series_settings` daha sonra `AutoMLConfig` `forecasting` görev türü, birincil ölçüm, çıkış kriterleri ve eğitim verileriyle birlikte standart nesneniz içine geçirilir. 
+Bunlar `forecasting_parameters` daha sonra `AutoMLConfig` `forecasting` görev türü, birincil ölçüm, çıkış kriterleri ve eğitim verileriyle birlikte standart nesneniz içine geçirilir. 
 
 ```python
 from azureml.core.workspace import Workspace
@@ -346,4 +349,3 @@ Aşağıdakiler dahil olmak üzere gelişmiş tahmin yapılandırmasına yöneli
 * [Yorumlenebilirlik: otomatik makine öğrenimi (Önizleme) içindeki model açıklamaları](how-to-machine-learning-interpretability-automl.md)hakkında bilgi edinin. 
 * [Birçok model çözümü hızlandırıcısında](https://aka.ms/many-models), oto ml ile birden çok modeli eğitme hakkında bilgi edinin.
 * Otomatik makine öğrenimi ile denemeleri oluşturmaya yönelik uçtan uca bir örnek için [öğreticiyi](tutorial-auto-train-models.md) izleyin.
-

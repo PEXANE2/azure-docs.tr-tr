@@ -11,17 +11,17 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: fc5b958813ea1107d98525b6dfc1b0b56c9c5400
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 09fe93d4e3ba50ced6c8f07d6fe25ace2376c388
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091211"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320526"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 
 
-Bu kılavuzda, [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)ile otomatik makine öğrenimi denemeleri 'in çeşitli yapılandırma ayarlarını nasıl tanımlayacağınızı öğrenin. Otomatik makine öğrenimi, sizin için bir algoritma ve hiper parametreler seçer ve dağıtım için hazırlanın bir model oluşturur. Otomatik makine öğrenimi denemeleri yapılandırmak için kullanabileceğiniz çeşitli seçenekler vardır.
+Bu kılavuzda, [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)ile otomatik makine öğrenimi denemeleri 'in çeşitli yapılandırma ayarlarını nasıl tanımlayacağınızı öğrenin. Otomatik makine öğrenimi, sizin için bir algoritma ve hiper parametreler seçer ve dağıtım için hazırlanın bir model oluşturur. Otomatik makine öğrenimi denemeleri yapılandırmak için kullanabileceğiniz çeşitli seçenekler vardır.
 
 Otomatik makine öğrenimi denemeleri örneklerini görüntülemek için bkz. [öğretici: bir sınıflandırma modelini otomatik makine öğrenimi Ile eğitme](tutorial-auto-train-models.md) veya [bulutta otomatik makine öğrenimi Ile modeller eğitme](how-to-auto-train-remote.md).
 
@@ -46,7 +46,7 @@ Kod deneyimini tercih ediyorsanız, [Azure Machine Learning Studio 'da otomatik 
     SDK 'yı yüklemek için şunlardan birini yapabilirsiniz 
     * SDK 'Yı otomatik olarak yüklediği ve ML iş akışları için önceden yapılandırılmış bir işlem örneği oluşturun. Daha fazla bilgi için bkz. [Azure Machine Learning işlem örneği oluşturma ve yönetme](how-to-create-manage-compute-instance.md) . 
 
-    * [SDK 'yı kendiniz yüklemelisiniz](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true). Yalnızca ekstra ' i eklediğinizden emin olun `automl` . 
+    * [SDK 'yı kendiniz yüklemelisiniz](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py). Yalnızca ekstra ' i eklediğinizden emin olun `automl` . 
 
 ## <a name="select-your-experiment-type"></a>Deneme türünüzü seçme
 
@@ -63,18 +63,18 @@ automl_config = AutoMLConfig(task = "classification")
 
 ## <a name="data-source-and-format"></a>Veri kaynağı ve biçimi
 
-Otomatik makine öğrenimi, yerel masaüstünüzde veya Azure Blob depolama gibi bulutta bulunan verileri destekler. Veriler bir **Pandas DataFrame** veya **Azure Machine Learning TabularDataset**içinde okunabilir. [Veri kümeleri hakkında daha fazla bilgi edinin](how-to-create-register-datasets.md).
+Otomatik makine öğrenmesi yerel masaüstünüzde veya Azure Blob Depolama gibi bulutta duran verilerinizi destekler. Veriler bir **Pandas DataFrame** veya **Azure Machine Learning TabularDataset** içinde okunabilir. [Veri kümeleri hakkında daha fazla bilgi edinin](how-to-create-register-datasets.md).
 
-Eğitim verileri için gereksinimler:
+Eğitim verileriyle ilgili gereksinimler:
 - Verilerin tablolu biçimde olması gerekir.
 - Tahmin edilecek değer, hedef sütun, verilerde olmalıdır.
 
-**Uzak denemeleri için**eğitim verilerine uzaktan işlem üzerinden erişilebilir olması gerekir. Oto & lt ml, uzak bir işlem üzerinde çalışırken yalnızca [Azure Machine Learning Tabulardataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) kabul eder. 
+**Uzak denemeleri için** eğitim verilerine uzaktan işlem üzerinden erişilebilir olması gerekir. AutoML uzak işlem üzerinde çalışırken yalnızca [Azure Machine Learning TabularDatasets](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) kabul eder. 
 
-Azure Machine Learning veri kümeleri işlevleri şu şekilde sunar:
+Azure Machine Learning veri kümeleri şu işlevleri kullanıma sunar:
 
 * Statik dosyalardan veya URL kaynaklarından verileri çalışma alanınıza kolayca aktarın.
-* Bulut bilgi işlem kaynaklarında çalışırken verilerinizi eğitim betiklerine kullanılabilir hale getirin. Verileri uzaktan işlem hedeflerinize bağlamak için sınıfını kullanma örneği için bkz. veri [kümeleriyle eğitme](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) `Dataset` .
+* Verilerinizin bulut bilişim kaynaklarında çalıştırılan eğitim betikleri tarafından kullanılabilmesini sağlama. Verileri uzaktan işlem hedeflerinize bağlamak için sınıfını kullanma örneği için bkz. veri [kümeleriyle eğitme](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) `Dataset` .
 
 Aşağıdaki kod, bir Web URL 'sinden TabularDataset oluşturur. Bkz. yerel dosyalar ve veri depoları gibi diğer kaynaklardan veri kümeleri oluşturma hakkında kod örnekleri için [Tabulardataset oluşturma](how-to-create-register-datasets.md#create-a-tabulardataset) .
 
@@ -83,7 +83,7 @@ from azureml.core.dataset import Dataset
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
 dataset = Dataset.Tabular.from_delimited_files(data)
   ```
-**Yerel işlem denemeleri için**, daha hızlı işleme süreleri için Pandas dataframes önerilir.
+**Yerel işlem denemeleri için** , daha hızlı işleme süreleri için Pandas dataframes önerilir.
 
   ```python
   import pandas as pd
@@ -103,21 +103,21 @@ Açıkça bir `validation_data` veya `n_cross_validation` parametresi belirtmezs
 |Eğitim &nbsp; veri &nbsp; boyutu| Doğrulama tekniği |
 |---|-----|
 |**&nbsp; &nbsp; 20.000 &nbsp; satırdan büyük**| Eğitme/doğrulama verileri bölünmesi uygulandı. Varsayılan değer, doğrulama kümesi olarak ilk eğitim verileri kümesinin %10 ' un sürme sayısıdır. Buna karşılık, bu doğrulama kümesi ölçüm hesaplamaları için kullanılır.
-|**&nbsp; &nbsp; 20.000 &nbsp; satırdan küçük**| Çapraz doğrulama yaklaşımı uygulanır. Varsayılan katların sayısı satır sayısına bağlıdır. <br> **Veri kümesi 1.000 satırdan azsa**, 10 katlar kullanılır. <br> **Satırlar 1.000 ve 20.000 arasındaysa**, üç katlar kullanılır.
+|**&nbsp; &nbsp; 20.000 &nbsp; satırdan küçük**| Çapraz doğrulama yaklaşımı uygulanır. Varsayılan katların sayısı satır sayısına bağlıdır. <br> **Veri kümesi 1.000 satırdan azsa** , 10 katlar kullanılır. <br> **Satırlar 1.000 ve 20.000 arasındaysa** , üç katlar kullanılır.
 
 Şu anda, model değerlendirmesi için kendi **Test verilerinizi** sağlamanız gerekir. Model değerlendirmesi için kendi test verilerinizi getirme kodu örneği için, [Bu Jupyter Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)'nin **Test** bölümüne bakın.
 
 ## <a name="compute-to-run-experiment"></a>Deneme çalıştırmak için işlem
 
-Ardından, modelin eğitilme yeri belirlenir. Otomatik makine öğrenimi eğitim denemesi aşağıdaki işlem seçeneklerinde çalıştırılabilir. [Yerel ve uzak işlem seçeneklerinin avantajlarını ve dezavantajlarını](concept-automated-ml.md#local-remote) öğrenin. 
+Ardından, modelin eğitilme yeri belirlenir. Otomatik makine öğrenmesi eğitim denemesi aşağıdaki işlem seçenekleriyle çalıştırılabilir. [Yerel ve uzak işlem seçeneklerinin avantajlarını ve dezavantajlarını](concept-automated-ml.md#local-remote) öğrenin. 
 
-* Yerel Masaüstü veya dizüstü bilgisayar gibi **Yerel** makineniz, genellikle küçük bir veri kümeniz olduğunda ve araştırma aşamasında olmaya devam ediyorsa. Yerel bir işlem örneği için [Bu not defterine](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/local-run-classification-credit-card-fraud/auto-ml-classification-credit-card-fraud-local.ipynb) bakın. 
+* Yerel Masaüstü veya dizüstü bilgisayar gibi **Yerel** makineniz, genellikle küçük bir veri kümeniz olduğunda ve araştırma aşamasında olmaya devam ediyorsa. Yerel işlem örneği için [bu not defterine](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/local-run-classification-credit-card-fraud/auto-ml-classification-credit-card-fraud-local.ipynb) bakın. 
  
 * Bulutta bulunan bir **uzak** makine – [Azure Machine Learning yönetilen işlem](concept-compute-target.md#amlcompute) , Azure sanal makinelerinin kümelerinde makine öğrenimi modellerini eğitme olanağı sağlayan bir yönetilen hizmettir. 
 
-    Azure Machine Learning yönetilen Işlem kullanarak uzak bir örnek için [Bu not defterine](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) bakın. 
+    Uzaktan Azure Machine Learning Yönetilen İşlem hizmetini kullanma örneği için [bu not defterine](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) bakın. 
 
-* Azure aboneliğinizdeki bir **Azure Databricks kümesi** . Burada daha fazla ayrıntı bulabilirsiniz- [OTOMATIK ml için Azure Databricks kümesi ayarlayın](how-to-configure-environment.md#aml-databricks). Azure Databricks bulunan not defteri örnekleri için bu [GitHub sitesine](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl) bakın.
+* Azure aboneliğinizdeki bir **Azure Databricks kümesi** . Burada daha fazla ayrıntı bulabilirsiniz - [Otomatik ML için Azure Databricks kümesini kurma](how-to-configure-environment.md#aml-databricks). Azure Databricks bulunan not defteri örnekleri için bu [GitHub sitesine](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl) bakın.
 
 <a name='configure-experiment'></a>
 
@@ -198,10 +198,10 @@ Sınıflandırma | Regresyon | Zaman Serileri Tahmini
 [Rastgele orman](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Rastgele orman](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Rastgele Orman](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
 [Son derece rastgele ağaçlar](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Son derece rastgele ağaçlar](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Son derece rastgele ağaçlar](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
 [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[Ortalama Perceptron sınıflandırıcı](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest&preserve-view=true)|[Çevrimiçi gradyan açıklama gerileme](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest&preserve-view=true) |[Otomatik ARıMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
-[Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[Hızlı doğrusal gerileme sor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest&preserve-view=true)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
+[Ortalama Perceptron sınıflandırıcı](/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?preserve-view=true&view=nimbusml-py-latest)|[Çevrimiçi gradyan açıklama gerileme](/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?preserve-view=true&view=nimbusml-py-latest) |[Otomatik ARıMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[Hızlı doğrusal gerileme sor](/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?preserve-view=true&view=nimbusml-py-latest)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
 [Stochastic gradyan (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* ||Forekaletcn
-|[Doğrusal SVM Sınıflandırıcısı](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest&preserve-view=true)*||
+|[Doğrusal SVM Sınıflandırıcısı](/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?preserve-view=true&view=nimbusml-py-latest)*||
 
 ### <a name="primary-metric"></a>Birincil ölçüm
 `primary metric`Parametresi, iyileştirme için model eğitimi sırasında kullanılacak ölçümü belirler. Seçebileceğiniz kullanılabilir ölçümler, seçtiğiniz görev türüne göre belirlenir ve aşağıdaki tabloda her bir görev türü için geçerli birincil ölçümler gösterilmektedir.
@@ -222,7 +222,7 @@ Her otomatik makine öğrenimi denemesinde, verileriniz, farklı ölçeklerde bu
 
 Denemeleri 'nizi yapılandırırken `AutoMLConfig` , ayarı etkinleştirebilir/devre dışı bırakabilirsiniz `featurization` . Aşağıdaki tabloda, [oto Mlconfig nesnesinde](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)fealeştirme için kabul edilen ayarlar gösterilmektedir. 
 
-|Korleştirme yapılandırması | Description |
+|Korleştirme yapılandırması | Açıklama |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Ön işleme 'nin bir parçası olarak, [veri guardı ve korleştirme adımlarının](how-to-configure-auto-features.md#featurization) otomatik olarak gerçekleştirileceğini belirtir. **Varsayılan ayar**.|
 |`"featurization": 'off'`| Korleştirme adımının otomatik olarak yapılmaması gerektiğini gösterir.|

@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: 657e3967d9e34147364114cec4d946e900f60032
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a879ac81859c855bb7b7bc2eddb1e3c9b62adb34
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791384"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321399"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>PowerShell kullanarak Saydam Veri Şifrelemesi (TDE) koruyucusunu kaldırma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -37,7 +37,7 @@ Bu nasıl yapılır Kılavuzu, güvenliği aşılmış bir olay yanıtından son
 - Azure SQL veritabanı/Azure SYNAPSE Analytics 'teki veritabanlarını **erişilemez** hale getirmek için.
 - Azure SQL veritabanı/Azure Azure SYNAPSE Analytics 'te (eski adıyla SQL veri ambarı) veritabanlarını **erişilmez** hale getirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bu abonelikte bir Azure aboneliğinizin olması ve bir yönetici olmanız gerekir
 - Azure PowerShell yüklü ve çalışıyor olmanız gerekir.

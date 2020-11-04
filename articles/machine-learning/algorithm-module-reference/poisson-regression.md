@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: a1a09357c7f80d4af0198a33a2e0007782ef232f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91d6d15fc8855b49bece3a7ed903074e716b7ac4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905247"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319422"
 ---
 # <a name="poisson-regression"></a>Poisson Regresyonu
 
@@ -29,7 +29,7 @@ Bir işlem hattında Poisson regresyon modeli oluşturmak için bu modülü kull
 - POISSON dağılımı ayrı bir dağıtımdır; Bu nedenle, bu yöntemin tam sayı olmadan kullanılması anlamlı değildir.
 
 > [!TIP]
-> Hedef bir sayı değilse, Poisson gerileme büyük olasılıkla uygun bir yöntem değildir. [Tasarımcıda diğer regresyon modüllerini](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/module-reference#machine-learning-algorithms)deneyin. 
+> Hedef bir sayı değilse, Poisson gerileme büyük olasılıkla uygun bir yöntem değildir. [Tasarımcıda diğer regresyon modüllerini](./module-reference.md#machine-learning-algorithms)deneyin. 
 
 Regresyon yöntemini ayarladıktan sonra, tahmin etmek istediğiniz değerin örneklerini içeren bir veri kümesini kullanarak modeli eğmeniz gerekir. Daha sonra eğitilen model, tahminleri yapmak için kullanılabilir.
 
@@ -49,7 +49,7 @@ Yanıt değişkeninin bir Poisson dağılımı olduğundan, model, en az kareler
 
 ## <a name="how-to-configure-poisson-regression"></a>Poisson gerilemesini yapılandırma
 
-1. İşlem hattınızı tasarımcı 'da **Poisson regresyon** modülünü ekleyin. Bu modülü, **regresyon** kategorisinde **Machine Learning algoritmalarda**bulabilirsiniz.
+1. İşlem hattınızı tasarımcı 'da **Poisson regresyon** modülünü ekleyin. Bu modülü, **regresyon** kategorisinde **Machine Learning algoritmalarda** bulabilirsiniz.
 
 2. Doğru türdeki eğitim verilerini içeren bir veri kümesi ekleyin. 
 
@@ -57,13 +57,13 @@ Yanıt değişkeninin bir Poisson dağılımı olduğundan, model, en az kareler
 
 3. **Poıslik regresyon** modülünün sağ bölmesinde, model **oluşturma modu** seçeneğini ayarlayarak modelin nasıl eğitilmesini istediğinizi belirtin.  
   
-    - **Tek parametre**: modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayın.
+    - **Tek parametre** : modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayın.
   
-    - **Parametre aralığı**: en iyi parametrelerden emin değilseniz, [model hiper parametreleri ayarla](tune-model-hyperparameters.md) modülünü kullanarak bir parametre tarama işlemi yapın. En iyi yapılandırmayı bulmak için, eğitmen, belirttiğiniz birden çok değer üzerinde yinelenir.
+    - **Parametre aralığı** : en iyi parametrelerden emin değilseniz, [model hiper parametreleri ayarla](tune-model-hyperparameters.md) modülünü kullanarak bir parametre tarama işlemi yapın. En iyi yapılandırmayı bulmak için, eğitmen, belirttiğiniz birden çok değer üzerinde yinelenir.
   
-4. **İyileştirme toleransı**: iyileştirme sırasında tolerans aralığını tanımlayan bir değer yazın. Değer ne kadar düşükse, sığdırma daha yavaş ve daha doğru olur.
+4. **İyileştirme toleransı** : iyileştirme sırasında tolerans aralığını tanımlayan bir değer yazın. Değer ne kadar düşükse, sığdırma daha yavaş ve daha doğru olur.
 
-5. **L1 düzenleme Weight** ve **L2 düzenleme Weight**: L1 ve L2 düzenleme için kullanılacak değerleri yazın. *Düzenleme* , eğitim verilerinden bağımsız olan modelin yönlerine yönelik kısıtlamalar ekler. Düzenleme, çok fazla yer olmaması için yaygın olarak kullanılır. 
+5. **L1 düzenleme Weight** ve **L2 düzenleme Weight** : L1 ve L2 düzenleme için kullanılacak değerleri yazın. *Düzenleme* , eğitim verilerinden bağımsız olan modelin yönlerine yönelik kısıtlamalar ekler. Düzenleme, çok fazla yer olmaması için yaygın olarak kullanılır. 
 
     - Hedef, mümkün olduğunca seyrek bir model olması halinde L1 düzenleme yararlıdır.
 
@@ -73,9 +73,9 @@ Yanıt değişkeninin bir Poisson dağılımı olduğundan, model, en az kareler
 
     Bu modülde, L1 ve L2 regularizations birleşimini uygulayabilirsiniz. L1 ve L2 düzenleme birleştiren parametre değerlerinin büyüklüğü hakkında bir ceza değeri getirebilirsiniz. Learner, kaybı en aza indirmek için zorunluluğunu getirir içinde ceza puanı en aza indirmeye çalışır.
 
-    L1 ve L2 düzenleme hakkında iyi bir tartışma için bkz. [L1 ve L2 düzenleme for Machine Learning](https://msdn.microsoft.com/magazine/dn904675.aspx).
+    L1 ve L2 düzenleme hakkında iyi bir tartışma için bkz. [L1 ve L2 düzenleme for Machine Learning](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning).
 
-6. **L-BFGS Için bellek boyutu**: model sığdırma ve iyileştirme için ayrılacak bellek miktarını belirtin.
+6. **L-BFGS Için bellek boyutu** : model sığdırma ve iyileştirme için ayrılacak bellek miktarını belirtin.
 
      L-BFGS, en iyi duruma getirme için özel bir yöntemdir: Brohden – FLET, – Goldfarb – shanno (BFGS) algoritmasını temel alır. Yöntemi, sonraki adım yönünü hesaplamak için sınırlı miktarda bellek (L) kullanır.
 
@@ -83,7 +83,7 @@ Yanıt değişkeninin bir Poisson dağılımı olduğundan, model, en az kareler
 
 7. Eğitim veri kümesini ve eğitilen modeli eğitim modülleriyle birine bağlayın: 
 
-    - **Tek parametreye**oluşturma ve ayarlama **modunu** ayarlarsanız, [model eğitme](train-model.md) modülünü kullanın.
+    - **Tek parametreye** oluşturma ve ayarlama **modunu** ayarlarsanız, [model eğitme](train-model.md) modülünü kullanın.
 
     - **Parametre aralığına** **oluşturma** sağlayan bir mod ayarlarsanız, [model hiper parametrelerini ayarla](tune-model-hyperparameters.md) modülünü kullanın.
 
@@ -101,8 +101,8 @@ Yanıt değişkeninin bir Poisson dağılımı olduğundan, model, en az kareler
 
 Eğitim tamamlandıktan sonra:
 
-+ Eğitilen modelin anlık görüntüsünü kaydetmek için eğitim modülünü seçin ve sağ paneldeki **çıktılar + Günlükler** sekmesine geçin. Simge **yazmaç veri kümesine**tıklayın.  Kaydedilmiş modeli modül ağacında bir modül olarak bulabilirsiniz. 
++ Eğitilen modelin anlık görüntüsünü kaydetmek için eğitim modülünü seçin ve sağ paneldeki **çıktılar + Günlükler** sekmesine geçin. Simge **yazmaç veri kümesine** tıklayın.  Kaydedilmiş modeli modül ağacında bir modül olarak bulabilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın.

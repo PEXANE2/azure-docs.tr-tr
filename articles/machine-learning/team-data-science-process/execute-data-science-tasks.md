@@ -10,20 +10,20 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5fe11b20ff8e96bc4b0d997c49201aafdd2e2cac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbe822b75368a1ab72bcd7f73419770b291d2508
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320532"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321151"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Veri bilimi görevlerini yürütme: araştırma, modelleme ve dağıtım
 
 Veri araştırması, modelleme ve dağıtım tipik bir veri bilimi görevi içerir. Bu makalede etkileşimli veri araştırma, **analiz ve raporlama (ıDEAR)** ve **Otomatik modelleme ve raporlama (Amar)** yardımcı programlarının nasıl kullanılacağı, etkileşimli veri araştırması, veri analizi, raporlama ve model oluşturma gibi çeşitli yaygın veri bilimi görevlerinin nasıl tamamlanacağı gösterilmektedir. Bir üretim ortamına model dağıtmaya yönelik seçenekler şunlar olabilir:
 
 - [Azure Machine Learning](../index.yml)
-- [ML Hizmetleri ile SQL-Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
-- [Microsoft Machine Learning Sunucusu](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
+- [ML Hizmetleri ile SQL-Server](/sql/advanced-analytics/r/r-services)
+- [Microsoft Machine Learning Server](/machine-learning-server/what-is-machine-learning-server)
 
 
 ## <a name="1--exploration"></a>1. <a name='DataQualityReportUtility-1'></a> araştırma 
@@ -76,7 +76,7 @@ Birden çok Model derlendikten sonra, modelleri kaydetmek ve yönetmek için gen
 1. [Azure Machine Learning-model yönetimi hizmeti](../index.yml)
 2. [MıT 'ten ModelDB](http://modeldb.csail.mit.edu:3000/projects) 
 3. [Model yönetimi sistemi olarak SQL-Server](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
-4. [Microsoft Machine Learning Sunucusu](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+4. [Microsoft Machine Learning Server](/sql/advanced-analytics/r/r-server-standalone)
 
 ## <a name="3--deployment"></a>3. <a name='Deployment-3'></a> dağıtım
 
@@ -87,15 +87,15 @@ Modelleri üretime koymak için çeşitli yaklaşımlar ve platformlar vardır. 
 
 
 - [Azure Machine Learning 'de model dağıtımı](../how-to-deploy-and-where.md)
-- [SQL Server 'da bir modelin dağıtılması](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
-- [Microsoft Machine Learning Sunucusu](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+- [SQL Server 'da bir modelin dağıtılması](/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
+- [Microsoft Machine Learning Server](/sql/advanced-analytics/r/r-server-standalone)
 
 > [!NOTE]
 > Dağıtımdan önce, model Puanlama gecikmesinin süresinin üretilmesi, üretimde kullanılmak üzere yeterince düşüktür.
 >
 >
 
-**Belirli senaryolar**için işlemdeki tüm adımları gösteren izlenecek yollarda daha fazla örnek mevcuttur. Bunlar, [örnek yönergeler](walkthroughs.md) makalesinde listelenmiş ve küçük resim açıklamalarıyla bağlantılandırılır. Bulut, şirket içi araçları ve hizmetleri akıllı bir uygulama oluşturmak için bir iş akışı veya işlem hattı halinde nasıl birleştirebileceğinizi gösterir.
+**Belirli senaryolar** için işlemdeki tüm adımları gösteren izlenecek yollarda daha fazla örnek mevcuttur. Bunlar, [örnek yönergeler](walkthroughs.md) makalesinde listelenmiş ve küçük resim açıklamalarıyla bağlantılandırılır. Bulut, şirket içi araçları ve hizmetleri akıllı bir uygulama oluşturmak için bir iş akışı veya işlem hattı halinde nasıl birleştirebileceğinizi gösterir.
 
 > [!NOTE]
 > Azure Machine Learning Studio kullanarak dağıtım için bkz. [Azure Machine Learning Web hizmeti dağıtma](../classic/deploy-a-machine-learning-web-service.md).

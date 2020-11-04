@@ -1,6 +1,6 @@
 ---
-title: İsteğe bağlı SQL kullanarak CSV dosyalarını sorgulama (Önizleme)
-description: Bu makalede, SQL isteğe bağlı (Önizleme) kullanarak farklı dosya biçimlerine sahip tek CSV dosyalarını sorgulamayı öğreneceksiniz.
+title: Sunucusuz SQL Havuzu (Önizleme) kullanarak CSV dosyalarını sorgulama
+description: Bu makalede, sunucusuz SQL Havuzu (Önizleme) kullanarak farklı dosya biçimlerine sahip tek CSV dosyalarını sorgulamayı öğreneceksiniz.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: d2f8a30503e14e647cbc9151ebcea7efa000ca07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e5a64a75ca6cde4172e49eb77dde42a44c06d5e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288299"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321452"
 ---
 # <a name="query-csv-files"></a>CSV dosyalarını sorgulama
 
-Bu makalede, Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kullanarak tek bir CSV dosyasını sorgulamayı öğreneceksiniz. CSV dosyaları farklı biçimlere sahip olabilir: 
+Bu makalede, Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullanarak tek bir CSV dosyasını sorgulamayı öğreneceksiniz. CSV dosyaları farklı biçimlere sahip olabilir: 
 
 - Üst bilgi satırı ile ve olmadan
 - Virgül ve sekmeyle ayrılmış değerler
@@ -93,7 +93,7 @@ Tümce içindeki bir veri türünden sonraki sayılar `WITH` CSV dosyasındaki s
 
 Aşağıdaki bölümlerde, çeşitli CSV dosyası türlerini sorgulama hakkında bilgi alabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İlk adımınız tabloların oluşturulacağı **bir veritabanı oluşturmaktır** . Sonra bu veritabanında [kurulum betiğini](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) yürüterek nesneleri başlatın. Bu kurulum betiği, veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve bu örneklerde kullanılan harici dosya biçimlerini oluşturacaktır.
 

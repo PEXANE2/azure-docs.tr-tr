@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 40ee7ad74d1a1daaf6df5e76b5e51db52feea304
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 003056ae9d3f236d37ddc10764812c15a3c6c695
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535078"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321286"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Öğretici: veri ve scikit ile görüntü sınıflandırma modellerini eğitme-öğrenme 
 
@@ -37,7 +37,7 @@ Bir modelin nasıl seçeceğinizi ve [Bu öğreticinin ikinci bölümünde](tuto
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 >[!NOTE]
-> Bu makaledeki kod, [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) sürümü 1.13.0 ile test edilmiştir.
+> Bu makaledeki kod, [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) sürümü 1.13.0 ile test edilmiştir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -55,9 +55,9 @@ Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azu
 > Bu makalenin geri kalanında not defterinde gördüğünüz içerikle aynı içerik yer almaktadır.  
 >
 > Kodu çalıştırırken okumak istiyorsanız, Jupyter not defterine şimdi geçin. 
-> Bir not defterinde tek bir kod hücresini çalıştırmak için, kod hücresine tıklayın ve **SHIFT + enter**tuşuna basın. Ya da tüm not defteri ' ni üstteki araç çubuğundan **Çalıştır** ' ı seçerek çalıştırın.
+> Bir not defterinde tek bir kod hücresini çalıştırmak için, kod hücresine tıklayın ve **SHIFT + enter** tuşuna basın. Ya da tüm not defteri ' ni üstteki araç çubuğundan **Çalıştır** ' ı seçerek çalıştırın.
 
-## <a name="set-up-your-development-environment"></a><a name="start"></a>Geliştirme ortamınızı kurma
+## <a name="set-up-your-development-environment"></a><a name="start"></a>Geliştirme ortamınızı ayarlama
 
 Geliştirme çalışmanızdaki tüm kurulum bir Python not defterinde gerçekleştirilebilir. Kurulum aşağıdaki eylemleri içerir:
 
@@ -159,7 +159,7 @@ Bir modeli eğitmadan önce, bunu eğitebilmek için kullandığınız verileri 
 
 ### <a name="download-the-mnist-dataset"></a>MNIST veri kümesini indirme
 
-Ham veri dosyalarını almak için Azure açık veri kümelerini kullanın. [Azure açık veri](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) kümeleri, daha doğru modeller için makine öğrenimi çözümlerine senaryoya özgü özellikler eklemek için kullanabileceğiniz, seçkin ortak veri kümeleridir. Her veri kümesi, `MNIST` Bu durumda, verileri farklı yollarla almak için karşılık gelen bir sınıfa sahiptir.
+Ham veri dosyalarını almak için Azure açık veri kümelerini kullanın. [Azure açık veri](../open-datasets/overview-what-are-open-datasets.md) kümeleri, daha doğru modeller için makine öğrenimi çözümlerine senaryoya özgü özellikler eklemek için kullanabileceğiniz, seçkin ortak veri kümeleridir. Her veri kümesi, `MNIST` Bu durumda, verileri farklı yollarla almak için karşılık gelen bir sınıfa sahiptir.
 
 Bu kod, bir alt sınıfı olan bir nesne olarak verileri alır `FileDataset` `Dataset` . `FileDataset`Veri mağazalarınızın veya genel URL 'lerinde herhangi bir biçimin tek veya birden çok dosyasına başvurur. Sınıfı, veri kaynağı konumuna yönelik bir başvuru oluşturarak dosyaları işlem dosyalarınıza indirme veya bağlama olanağı sağlar. Ayrıca, eğitim sırasında kolay bir şekilde almak için veri kümesini çalışma alanınıza kaydedersiniz.
 
@@ -298,7 +298,7 @@ Betiğin verileri nasıl aldığına ve modelleri nasıl kaydettiğine dikkat ed
 
 + Eğitim betiği, verileri içeren dizini bulmak için bir bağımsız değişken okur. Daha sonra işi gönderdiğinizde, bu bağımsız değişken için veri deposuna işaret edersiniz: ```parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')```
 
-+ Eğitim betiği, modelinizi **çıktılar**adlı bir dizine kaydeder. Bu dizine yazılan her şey otomatik olarak çalışma alanınıza yüklenir. Modelinize bu dizinden daha sonra öğreticide erişirsiniz. `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
++ Eğitim betiği, modelinizi **çıktılar** adlı bir dizine kaydeder. Bu dizine yazılan her şey otomatik olarak çalışma alanınıza yüklenir. Modelinize bu dizinden daha sonra öğreticide erişirsiniz. `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
 
 + Eğitim betiği, dosyanın `utils.py` veri kümesini doğru şekilde yüklemesini gerektirir. Aşağıdaki kod, `utils.py` `script_folder` uzak kaynaktaki eğitim betiğiyle birlikte dosyaya erişilebilmesi için ' a kopyalar.
 
@@ -309,7 +309,7 @@ Betiğin verileri nasıl aldığına ve modelleri nasıl kaydettiğine dikkat ed
 
 ### <a name="configure-the-training-job"></a>Eğitim işini yapılandırma
 
-Eğitim betiğinizi, kullanılacak ortamı ve üzerinde çalıştırılacak işlem hedefini de içeren eğitim işinizin yapılandırma ayrıntılarını belirtmek için bir [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) nesnesi oluşturun. Şunu belirterek ScriptRunConfig yapılandırın:
+Eğitim betiğinizi, kullanılacak ortamı ve üzerinde çalıştırılacak işlem hedefini de içeren eğitim işinizin yapılandırma ayrıntılarını belirtmek için bir [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) nesnesi oluşturun. Şunu belirterek ScriptRunConfig yapılandırın:
 
 * Betiklerinizi içeren dizin. Bu dizindeki dosyaların tümü yürütülmek üzere küme düğümlerine yüklenir.
 * Bilgi işlem hedefi. Bu örnekte oluşturduğunuz Azure Machine Learning işlem kümesini kullanacaksınız.
@@ -364,25 +364,25 @@ run
 
 ## <a name="monitor-a-remote-run"></a>Uzaktan çalıştırmayı izleme
 
-Toplam olarak, ilk çalıştırma **yaklaşık 10 dakika**sürer. Ancak, komut dosyası bağımlılıkları değişmedikçe, sonraki çalıştırmalar için aynı görüntü yeniden kullanılır. Bu nedenle kapsayıcı başlatma zamanı çok daha hızlıdır.
+Toplam olarak, ilk çalıştırma **yaklaşık 10 dakika** sürer. Ancak, komut dosyası bağımlılıkları değişmedikçe, sonraki çalıştırmalar için aynı görüntü yeniden kullanılır. Bu nedenle kapsayıcı başlatma zamanı çok daha hızlıdır.
 
 Beklerken ne olur:
 
-- **Görüntü oluşturma**: Azure ML ortamı tarafından belirtilen Python ortamıyla eşleşen bir Docker görüntüsü oluşturulur. Görüntü, çalışma alanına yüklenir. Resim oluşturma ve karşıya yükleme **yaklaşık beş dakika**sürer.
+- **Görüntü oluşturma** : Azure ML ortamı tarafından belirtilen Python ortamıyla eşleşen bir Docker görüntüsü oluşturulur. Görüntü, çalışma alanına yüklenir. Resim oluşturma ve karşıya yükleme **yaklaşık beş dakika** sürer.
 
   Kapsayıcı sonraki çalıştırmalar için önbelleğe alındığından, bu aşama her Python ortamı için bir kez gerçekleşir. Görüntü oluşturma sırasında, günlükler çalıştırma geçmişine aktarılır. Bu günlükleri kullanarak görüntü oluşturma ilerlemesini izleyebilirsiniz.
 
-- **Ölçeklendirme**: uzak küme, çalışmayı Şu anda kullanılabilir olandan daha fazla düğüm gerektiriyorsa, ek düğümler otomatik olarak eklenir. Ölçeklendirme genellikle **yaklaşık beş dakika sürer.**
+- **Ölçeklendirme** : uzak küme, çalışmayı Şu anda kullanılabilir olandan daha fazla düğüm gerektiriyorsa, ek düğümler otomatik olarak eklenir. Ölçeklendirme genellikle **yaklaşık beş dakika sürer.**
 
-- **Çalışıyor**: Bu aşamada, gerekli betikler ve dosyalar işlem hedefine gönderilir. Ardından veri depoları bağlanır veya kopyalanır. Sonra **entry_script** çalıştırılır. İş çalışırken **stdout** ve **./logs** dizini çalıştırma geçmişine akışla kaydedilir. Bu günlükleri kullanarak çalıştırmanın ilerlemesini izleyebilirsiniz.
+- **Çalışıyor** : Bu aşamada, gerekli betikler ve dosyalar işlem hedefine gönderilir. Ardından veri depoları bağlanır veya kopyalanır. Sonra **entry_script** çalıştırılır. İş çalışırken **stdout** ve **./logs** dizini çalıştırma geçmişine akışla kaydedilir. Bu günlükleri kullanarak çalıştırmanın ilerlemesini izleyebilirsiniz.
 
-- **Işlem sonrası**: Bu sonuçlara erişebilmek için çalıştırmanın **./çıktılar** dizini çalışma alanınızdaki çalışma geçmişine kopyalanır.
+- **Işlem sonrası** : Bu sonuçlara erişebilmek için çalıştırmanın **./çıktılar** dizini çalışma alanınızdaki çalışma geçmişine kopyalanır.
 
 Çalışan bir işin ilerlemesini birkaç şekilde denetleyebilirsiniz. Bu öğreticide bir jupi pencere öğesi ve bir `wait_for_completion` yöntemi kullanılmaktadır.
 
 ### <a name="jupyter-widget"></a>Jupyter pencere öğesi
 
-Bir [Jupyıter pencere öğesi](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)ile çalıştırmanın ilerlemesini izleyin. Çalıştırma gönderimi gibi pencere öğesi zaman uyumsuzdur ve iş bitene kadar her 10 ila 15 saniye canlı güncelleştirmeler sağlar:
+Bir [Jupyıter pencere öğesi](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)ile çalıştırmanın ilerlemesini izleyin. Çalıştırma gönderimi gibi pencere öğesi zaman uyumsuzdur ve iş bitene kadar her 10 ila 15 saniye canlı güncelleştirmeler sağlar:
 
 ```python
 from azureml.widgets import RunDetails
@@ -393,7 +393,7 @@ Pencere öğesi eğitimin sonunda aşağıdaki gibi görünür:
 
 ![Not defteri pencere öğesi](./media/tutorial-train-models-with-aml/widget.png)
 
-Bir çalıştırmayı iptal etmeniz gerekirse, [Bu yönergeleri](https://aka.ms/aml-docs-cancel-run)izleyebilirsiniz.
+Bir çalıştırmayı iptal etmeniz gerekirse, [Bu yönergeleri](./how-to-manage-runs.md)izleyebilirsiniz.
 
 ### <a name="get-log-results-upon-completion"></a>Tamamlandıktan sonra günlük sonuçlarını alma
 

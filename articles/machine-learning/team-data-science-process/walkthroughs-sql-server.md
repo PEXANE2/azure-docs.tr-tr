@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 880ee0a4a1eb396312ea9692b7586d724d6fd410
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8789050257b8bc67649233760baefe7e2ee9adf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75864103"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320149"
 ---
 # <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>R, Python ve T-SQL kullanarak veri bilimi talimatları SQL Server
 
@@ -32,21 +32,21 @@ Ekip veri bilimi sürecini yürütecek olan ek veri bilimi talimatları, kulland
 
 ## <a name="predict-taxi-tips-using-microsoft-r-with-sql-server"></a>SQL Server ile Microsoft R kullanarak TAXI ipuçlarını tahmin edin 
 
-[Kullanım SQL Server R Services](https://msdn.microsoft.com/library/mt612857.aspx) izlenecek yol, bir R modelinin SQL Server için nasıl oluşturulacağını ve dağıtılacağını gösterir. İzlenecek yol, r geliştiricilerinin R Services 'a (veritabanında) tanıtılmak için tasarlanmıştır.
+[Kullanım SQL Server R Services](/sql/machine-learning/tutorials/walkthrough-data-science-end-to-end-walkthrough) izlenecek yol, bir R modelinin SQL Server için nasıl oluşturulacağını ve dağıtılacağını gösterir. İzlenecek yol, r geliştiricilerinin R Services 'a (veritabanında) tanıtılmak için tasarlanmıştır.
 
 
 ## <a name="predict-taxi-tips-using-r-from-t-sql-or-stored-procedures-with-sql-server"></a>T-SQL veya saklı yordamlar SQL Server ile R kullanarak TAXI ipuçlarını tahmin edin
 
-[R ve SQL Server Için veri bilimi](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough) Kılavuzu, bir r çözümünü kullanıma sunmak için SQL Server R Services kullanarak Transact-SQL ile gelişmiş analiz çözümü oluşturma DENEYIMI sunan SQL programcıları sunmaktadır. 
+[R ve SQL Server Için veri bilimi](/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough) Kılavuzu, bir r çözümünü kullanıma sunmak için SQL Server R Services kullanarak Transact-SQL ile gelişmiş analiz çözümü oluşturma DENEYIMI sunan SQL programcıları sunmaktadır. 
 
 
 ## <a name="predict-taxi-tips-using-python-in-sql-server-stored-procedures"></a>SQL Server saklı yordamlarda Python kullanarak TAXI ipuçlarını tahmin edin
 
-[SQL Server Python Hizmetleri Ile T-SQL kullanma](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-python-for-sql-developers) kılavuzu, SQL Server içinde makine öğrenimi çözümü oluşturma DENEYIMI sunan SQL programcıları sağlar. Saklı yordamlara Python kodu ekleyerek Python 'un bir uygulamaya nasıl ekleneceğini gösterir.
+[SQL Server Python Hizmetleri Ile T-SQL kullanma](/sql/advanced-analytics/tutorials/sqldev-in-database-python-for-sql-developers) kılavuzu, SQL Server içinde makine öğrenimi çözümü oluşturma DENEYIMI sunan SQL programcıları sağlar. Saklı yordamlara Python kodu ekleyerek Python 'un bir uygulamaya nasıl ekleneceğini gösterir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Ekip veri bilimi sürecini oluşturan anahtar bileşenleriyle ilgili bir tartışma için bkz. [Team Data Science işlemine genel bakış](overview.md).
 
-Veri bilimi projelerinizi yapılandırmak için kullanabileceğiniz Team Data Science Işlem yaşam döngüsünün bir tartışması için bkz. [Team Data Science işlem yaşam döngüsü](lifecycle.md). Yaşam döngüsü, başlangıçtan sonuna kadar olan adımları özetler, bu da projeler genellikle yürütüldüğünde izler. 
+Veri bilimi projelerinizi yapılandırmak için kullanabileceğiniz Team Data Science Işlem yaşam döngüsünün bir tartışması için bkz. [Team Data Science işlem yaşam döngüsü](lifecycle.md). Yaşam döngüsü, başlangıçtan sonuna kadar olan adımları özetler, bu da projeler genellikle yürütüldüğünde izler.

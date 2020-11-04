@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
 ms.date: 10/16/2020
-ms.openlocfilehash: 3b8bf89bc43781fdf6c1a640992f15e21691cd63
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 51fd8b8427dd8214e22fa59e50b26bb9db237946
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676419"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322054"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Azure Logic Apps (Önizleme) uzantısıyla Visual Studio Code'da durum bilgisi olan veya olmayan iş akışları oluşturma
 
@@ -106,13 +106,13 @@ Bu genel önizleme için, bu yetenekler kullanılamaz veya desteklenmez:
 
 * İş akışınızı başlatmak için, Logic Apps çalışma zamanına göre yerel olarak çalışan [yerleşik istek, http, Event Hubs veya Service Bus tetikleyicisini](../connectors/apis-list.md)kullanın. Şu anda, [Kurumsal bağlayıcılar](../connectors/apis-list.md#enterprise-connectors), Şirket [içi veri ağ geçidi Tetikleyicileri](../connectors/apis-list.md#on-premises-connectors), Web kancası tabanlı tetikleyiciler, kayan pencere tetikleyicisi, [özel bağlayıcılar](../connectors/apis-list.md#custom-apis-and-connectors), tümleştirme hesapları, yapıtları ve [bağlayıcıları](../connectors/apis-list.md#integration-account-connectors) Bu önizlemede desteklenmez. "Azure işlevi çağrısı" özelliği kullanılamıyor, bu nedenle şimdilik Azure işlevi için istek URL 'sini çağırmak üzere HTTP *eylemini* kullanın.
 
-  Daha önce belirtilen Tetikleyiciler hariç, *durum bilgisi olan* Iş akışları Azure 'da dağıtılan [yönetilen bağlayıcılar](../connectors/apis-list.md#managed-api-connectors)için hem Tetikleyicileri hem de eylemleri kullanabilir. Ancak *durum bilgisiz* iş akışları Şu anda yalnızca yönetilen bağlayıcılar için eylemleri destekler, *tetiklerdir* . Azure 'da bağlayıcıları durum bilgisiz iş akışınız için etkinleştirme seçeneğine sahip olsanız da tasarımcı, seçtiğiniz herhangi bir yönetilen bağlayıcı tetikleyicisi göstermez.
+  Daha önce belirtilen Tetikleyiciler hariç, *durum bilgisi olan* Iş akışları Azure 'da dağıtılan ve Logic Apps çalışma zamanına göre yerel olarak çalışan yerleşik Tetikleyiciler ve eylemler ile birlikte [yönetilen bağlayıcılar](../connectors/apis-list.md#managed-api-connectors)için hem Tetikleyicileri hem de eylemleri kullanabilir. Ancak *durum bilgisiz* iş akışları Şu anda yalnızca yönetilen bağlayıcılar için eylemleri destekler, *tetiklerdir* . Azure 'da bağlayıcıları durum bilgisiz iş akışınız için etkinleştirebilseniz de tasarımcı, seçtiğiniz herhangi bir yönetilen bağlayıcı tetikleyicisi göstermez.
 
 * Yeni **mantıksal uygulama (Önizleme)** kaynak türünü yalnızca [Azure 'daki bir Premium veya App Service barındırma planına](#publish-azure) veya [tümleştirme hizmeti ortamları (sesleri)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)değil bir [Docker kapsayıcısına](#deploy-docker)dağıtabilirsiniz. **Tüketim** barındırma planları bu kaynak türünü dağıtmak için desteklenmez ve kullanılabilir değildir.
 
 * Azure portal yeni **mantıksal uygulama (Önizleme)** kaynak türü ile yeni mantıksal uygulamalar oluşturamazsınız. Bu mantıksal uygulamaları yalnızca Visual Studio Code için oluşturabilirsiniz. Ancak, Visual Studio Code Azure 'a bu kaynak türüyle Logic Apps dağıttıktan sonra, [Bu mantıksal uygulamalara yeni iş akışları ekleyebilirsiniz](#add-workflows).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="access-and-connectivity"></a>Erişim ve bağlantı
 
@@ -371,7 +371,7 @@ Bu örnekteki Logic App iş akışı bu tetikleyiciyi ve bu eylemleri kullanır:
 
 * Gelen çağrıları veya istekleri alan ve diğer hizmetlerin veya mantıksal uygulamaların çağırabileceği bir uç nokta oluşturan **BIR http isteği alındığında** yerleşik [istek tetikleyicisi](../connectors/connectors-native-reqres.md).
 
-* [Office 365 Outlook eylemi](../connectors/connectors-create-api-office365-outlook.md), **bir e-posta gönderin** .
+* [Office 365 Outlook eylemi](../connectors/connectors-create-api-office365-outlook.md), **bir e-posta gönderin**.
 
 * Bir yanıt göndermek ve verileri çağırana geri döndürmek için kullandığınız yerleşik [yanıt eylemi](../connectors/connectors-native-reqres.md).
 
@@ -408,7 +408,7 @@ Bu örnekteki Logic App iş akışı bu tetikleyiciyi ve bu eylemleri kullanır:
 
 1. **Eylem Ekle** bölmesinde, **bir işlem seçin** arama kutusunun **altında Azure ' u seçerek Azure** 'da dağıtılan bir yönetilen bağlayıcı için bir eylem bulabilir ve seçebilmeniz gerekir.
 
-   Bu örnek, Office 365 Outlook eylemini seçer ve kullanır, **e-posta gönder (v2)** .
+   Bu örnek, Office 365 Outlook eylemini seçer ve kullanır, **e-posta gönder (v2)**.
 
    ![Logic App Designer 'ı ve * * Office 365 Outlook "e-posta gönder" eylemini içeren bir eylem Ekle * * bölmesi gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/add-send-email-action.png)
 

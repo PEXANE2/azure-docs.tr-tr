@@ -1,7 +1,7 @@
 ---
 title: Profil modeli belleği ve CPU kullanımı
 titleSuffix: Azure Machine Learning
-description: Model belleğinizin ve CPU kullanımının profilini oluşturmayı öğrenin
+description: Dağıtımdan önce modelinizin profilini oluşturmayı öğrenin. Profil oluşturma, modelinizin bellek ve CPU kullanımını belirler.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,18 +12,18 @@ ms.topic: conceptual
 zone_pivot_groups: aml-control-methods
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 95f35c2734e0a8dbc39d409847976b8b31716f81
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: b9ae40b3d2673961f9b84ed702f18b25b79b6d0c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998775"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320396"
 ---
 # <a name="profile-your-model-to-determine-resource-utilization"></a>Kaynak kullanımını öğrenmek için modelinizin profilini yapın
 
 Bu makalede, bir Web hizmeti olarak dağıtıldığında model için ne kadar CPU ve bellek ayrılacağını öğrenmek üzere bir makine öğrenimi modelinin profilini oluşturmayı gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, Azure Machine Learning bir modeli eğitidiğinizi ve kaydettiniz. Eğitim örneği için [buradaki örnek öğreticiye](how-to-train-scikit-learn.md) bakın ve Azure Machine Learning bir scikit-öğrenme modelini kaydetme.
 
@@ -133,7 +133,7 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Başarısız bir dağıtımda sorun giderme](how-to-troubleshoot-deployment.md)
+* [Başarısız bir dağıtımın sorunlarını giderme](how-to-troubleshoot-deployment.md)
 * [Azure Kubernetes Service’e dağıtma](how-to-deploy-azure-kubernetes-service.md)
 * [Web hizmetlerini kullanmak için istemci uygulamaları oluşturma](how-to-consume-web-service.md)
 * [Web hizmetini güncelleştirme](how-to-deploy-update-web-service.md)

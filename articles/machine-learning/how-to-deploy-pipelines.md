@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: ae20b339ae3eec694140621b14db26606c9d5ab3
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: dea38705dbb6c2b7abd8a9786ef9adb66ad56ad7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145574"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320435"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Makine öğrenimi işlem hatlarını yayımlama ve izleme
 
@@ -38,7 +38,7 @@ Machine Learning işlem hatları, Machine Learning görevleri için yeniden kull
 
 İşlem hattınızı çalışır durumda yaptıktan sonra, farklı girişlerle çalışacak şekilde bir işlem hattı yayımlayabilirsiniz. Önceden yayımlanmış bir işlem hattının REST uç noktası parametreleri kabul etmek için, işlem hattınızı, `PipelineParameter` değişen bağımsız değişkenler için nesneleri kullanacak şekilde yapılandırmanız gerekir.
 
-1. Bir işlem hattı parametresi oluşturmak için bir [pipelineparameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py&preserve-view=true) nesnesini varsayılan bir değerle kullanın.
+1. Bir işlem hattı parametresi oluşturmak için bir [pipelineparameter](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?preserve-view=true&view=azure-ml-py) nesnesini varsayılan bir değerle kullanın.
 
    ```python
    from azureml.pipeline.core.graph import PipelineParameter
@@ -76,7 +76,7 @@ Yayımlanan tüm işlem hatları bir REST uç noktasına sahiptir. Ardışık d�
 > [!IMPORTANT]
 > İşlem hattınızı erişimi yönetmek için rol tabanlı erişim denetimi (RBAC) kullanıyorsanız, işlem [hattı senaryonuz (eğitim veya Puanlama) için izinleri ayarlayın](how-to-assign-roles.md#q-what-are-the-permissions-needed-to-perform-some-common-scenarios-in-the-azure-machine-learning-service).
 
-Önceki işlem hattının çalıştırılmasını çağırmak için bir Azure Active Directory kimlik doğrulaması üst bilgisi belirtecine ihtiyacınız vardır. Bu tür bir belirteci almak, [Azurecliauthentication sınıf](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py&preserve-view=true) başvurusunda ve Azure Machine Learning not defterindeki [kimlik doğrulamasında](https://aka.ms/pl-restep-auth) açıklanmıştır.
+Önceki işlem hattının çalıştırılmasını çağırmak için bir Azure Active Directory kimlik doğrulaması üst bilgisi belirtecine ihtiyacınız vardır. Bu tür bir belirteci almak, [Azurecliauthentication sınıf](/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?preserve-view=true&view=azure-ml-py) başvurusunda ve Azure Machine Learning not defterindeki [kimlik doğrulamasında](https://aka.ms/pl-restep-auth) açıklanmıştır.
 
 ```python
 from azureml.pipeline.core import PublishedPipeline
@@ -360,10 +360,10 @@ p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
 
-İle yeniden etkinleştirebilirsiniz `p.enable()` . Daha fazla bilgi için bkz. [Publishedpipeline sınıf](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py&preserve-view=true) başvurusu.
+İle yeniden etkinleştirebilirsiniz `p.enable()` . Daha fazla bilgi için bkz. [Publishedpipeline sınıf](/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?preserve-view=true&view=azure-ml-py) başvurusu.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Makine öğrenimi işlem hatlarını daha fazla incelemek için [GitHub 'da bu jupi not defterlerini](https://aka.ms/aml-pipeline-readme) kullanın.
-- [Azureml işlem hatları-Core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py&preserve-view=true) paketi ve [azureml-işlem hatları-adımlar](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py&preserve-view=true) paketi için SDK başvuru yardımına bakın.
+- [Azureml işlem hatları-Core](/python/api/azureml-pipeline-core/?preserve-view=true&view=azure-ml-py) paketi ve [azureml-işlem hatları-adımlar](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py) paketi için SDK başvuru yardımına bakın.
 - Hata ayıklama ve işlem hatlarında sorun [giderme hakkında ipuçları için bkz](how-to-debug-pipelines.md) ..

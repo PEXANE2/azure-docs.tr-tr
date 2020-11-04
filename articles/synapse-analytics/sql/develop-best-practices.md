@@ -10,17 +10,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: fe00d7f107911e2245041419c20f86e2e32a0480
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5e514602668c96d63562e45fb114cf9770a54a9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289268"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321492"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>SYNAPSE SQL için geliştirme en iyi yöntemleri
+
 Bu makalede, veri ambarı Çözümünüzü geliştirirken rehberlik ve en iyi uygulamalar açıklanmaktadır. 
 
-## <a name="sql-pool-development-best-practices"></a>SQL havuzu geliştirme en iyi uygulamaları
+## <a name="dedicated-sql-pool-development-best-practices"></a>Adanmış SQL havuzu geliştirme en iyi uygulamaları
 
 ### <a name="reduce-cost-with-pause-and-scale"></a>Duraklatma ve ölçeklendirme ile maliyetleri azaltın
 
@@ -55,12 +56,12 @@ Dağıtım sütununun nasıl seçileceği hakkında daha fazla bilgi için aşa�
 Ayrıca bkz. [tabloya genel bakış](develop-tables-overview.md), [tablo dağıtımı](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [tablo dağıtımı](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)ve [Create Table](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)seçme.
 
 ### <a name="do-not-over-partition"></a>Aşırı bölümleme yapmayın
-Verilerin bölümlenmesi, bölüm değiştirme veya taramayı en iyi duruma getirme ile, bölüm ile verileri korumak için etkili olsa da, çok fazla bölüm olması sorgularınızı yavaşlatabilir.  Genellikle SQL Server en iyi şekilde çalışan yüksek düzeyde parçalı bölümleme stratejisi, SQL havuzunda iyi çalışmayabilir.  
+Verilerin bölümlenmesi, bölüm değiştirme veya taramayı en iyi duruma getirme ile, bölüm ile verileri korumak için etkili olsa da, çok fazla bölüm olması sorgularınızı yavaşlatabilir.  Genellikle SQL Server en iyi şekilde çalışan yüksek düzeyde parçalı bölümleme stratejisi, adanmış SQL havuzunda iyi çalışmayabilir.  
 
 > [!NOTE]
-> Genellikle SQL Server en iyi şekilde çalışan yüksek düzeyde parçalı bölümleme stratejisi, SQL havuzunda iyi çalışmayabilir.  
+> Genellikle SQL Server en iyi şekilde çalışan yüksek düzeyde parçalı bölümleme stratejisi, adanmış SQL havuzunda iyi çalışmayabilir.  
 
-Bölüm sayısının çok fazla olması, her bir bölümdeki satır sayısının 1 milyondan az olması halinde kümelenmiş columnstore dizinlerinin verimini de düşürebilir. SQL havuzu verilerinizi sizin için 60 veritabanlarına göre bölümlendirir. 
+Bölüm sayısının çok fazla olması, her bir bölümdeki satır sayısının 1 milyondan az olması halinde kümelenmiş columnstore dizinlerinin verimini de düşürebilir. Adanmış SQL havuzu verilerinizi sizin için 60 veritabanlarına göre bölümlendirir. 
 
 Bu nedenle, 100 bölümlü bir tablo oluşturursanız sonuç 6000 bölüm olacaktır.  Her iş yükü farklı olduğundan, en iyi yöntem deneme yanılma ile iş yükünüze en uygun bölümleme şeklini belirlemektir.  
 
@@ -95,7 +96,7 @@ Ayrıca bkz. [tabloya genel bakış](develop-tables-overview.md), [tablo veri t�
 
 ### <a name="optimize-clustered-columnstore-tables"></a>Kümelenmiş columnstore tablolarını iyileştirin
 
-Kümelenmiş columnstore dizinleri, verilerinizi SQL havuzunda depolayabilmeniz için en etkili yöntemlerle biridir.  Varsayılan olarak, SQL havuzundaki tablolar kümelenmiş ColumnStore olarak oluşturulur.  
+Kümelenmiş columnstore dizinleri, verilerinizi adanmış SQL havuzunda depolayabilmeniz için en etkili yöntemlerle biridir.  Varsayılan olarak, adanmış SQL havuzundaki tablolar kümelenmiş ColumnStore olarak oluşturulur.  
 
 Columnstore tablolarında yapılan sorgularda en iyi performansı elde etmek için segment kalitesinin yüksek olması önemlidir.  Satırlar columnstore tablolarına bellek baskısı altında yazıldığında, segment kalitesi düşebilir.  
 
@@ -103,7 +104,7 @@ Segment kalitesi, sıkıştırılmış Satır Grubu içindeki satır sayısıyla
 
 Yüksek kaliteli columnstore kesimleri önemli olduğundan, verileri yüklemek için orta veya büyük kaynak sınıfında bulunan Kullanıcı kimliklerini kullanmak iyi bir fikirdir. Daha düşük [veri ambarı birimlerinin](resource-consumption-models.md) kullanılması, yükleme kullanıcıya daha büyük bir kaynak sınıfı atamak istediğiniz anlamına gelir.
 
-Columnstore tabloları genellikle tablo başına 1.000.000 ' den fazla satır olana kadar sıkıştırılmış bir columnstore segmentine veri gönderemeyeceği ve her bir SQL havuzu tablosu 60 tablo olarak bölümlendiğinden, tablo 60.000.000 ' den fazla satır içermiyorsa, columnstore tabloları bir sorgu avantajına sahip olmaz.  
+Columnstore tabloları genellikle tablo başına 1.000.000 ' den fazla satır olana kadar sıkıştırılmış bir columnstore segmentine veri gönderemeyeceği ve ayrılmış her SQL havuzu tablosu 60 tablo olarak bölümlendiğinden, tablo 60.000.000 ' den fazla satır içermiyorsa, columnstore tabloları bir sorgu avantajına sahip olmaz.  
 
 > [!TIP]
 > 60.000.000 ' den az satır içeren tablolar için bir columnstore dizinine sahip olmak en iyi çözüm olmayabilir.  
@@ -116,23 +117,23 @@ Columnstore tablosunda çalıştırılan sorgular yalnızca ihtiyacınız olan s
 
 Ayrıca bkz. [tablo dizinleri](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [columnstore dizinleri Kılavuzu](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), [columnstore dizinlerini yeniden oluşturma](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#rebuilding-indexes-to-improve-segment-quality).
 
-## <a name="sql-on-demand-development-best-practices"></a>İsteğe bağlı SQL geliştirme en iyi uygulamaları
+## <a name="serverless-sql-pool-development-best-practices"></a>Sunucusuz SQL havuzu geliştirme en iyi uygulamaları
 
 ### <a name="general-considerations"></a>Dikkat edilmesi gereken temel noktalar
 
-İsteğe bağlı SQL, Azure depolama hesaplarınızdaki dosyaları sorgulamanızı sağlar. Yerel depolama veya alma özelliklerine sahip değildir, yani sorgu hedeflerinin tüm dosyalar isteğe bağlı SQL 'e harici olur. Bu nedenle, depolama alanından dosya okuma ile ilgili her şey sorgu performansının üzerinde bir etkiye sahip olabilir.
+Sunucusuz SQL havuzu, Azure depolama hesaplarınızdaki dosyaları sorgulamanızı sağlar. Yerel depolama veya alma özelliklerine sahip değildir, yani sorgunun hedeflediği tüm dosyalar sunucusuz SQL havuzunda harici olur. Bu nedenle, depolama alanından dosya okuma ile ilgili her şey sorgu performansının üzerinde bir etkiye sahip olabilir.
 
-### <a name="colocate-azure-storage-account-and-sql-on-demand"></a>Azure Storage hesabını ve isteğe bağlı SQL 'i birlikte bulundurma
+### <a name="colocate-azure-storage-account-and-serverless-sql-pool"></a>Azure depolama hesabı ve sunucusuz SQL havuzunu birlikte bulundurma
 
-Gecikme süresini en aza indirmek için, Azure depolama hesabınızı ve SQL isteğe bağlı uç noktanızı birlikte bulundurma. Çalışma alanı oluşturma sırasında sağlanan depolama hesapları ve uç noktaları aynı bölgede bulunur.
+Gecikme süresini en aza indirmek için, Azure depolama hesabınızı ve sunucusuz SQL havuzu uç noktanızı birlikte bulundurma. Çalışma alanı oluşturma sırasında sağlanan depolama hesapları ve uç noktaları aynı bölgede bulunur.
 
-En iyi performans için, isteğe bağlı SQL ile diğer depolama hesaplarına eriştiğinizde aynı bölgede olduklarından emin olun. Aksi takdirde, verilerin uzak bölgeden uç noktanın bölgesine ağ aktarımı için gecikme süresi artacaktır.
+En iyi performans için, sunucusuz SQL havuzu ile diğer depolama hesaplarına eriştiğinizde aynı bölgede olduklarından emin olun. Aksi takdirde, verilerin uzak bölgeden uç noktanın bölgesine ağ aktarımı için gecikme süresi artacaktır.
 
 ### <a name="azure-storage-throttling"></a>Azure depolama alanı azaltma
 
-Birden çok uygulama ve hizmet, depolama hesabınıza erişebilir. Uygulamalar, hizmetler ve SQL istek üzerine SQL iş yükü tarafından oluşturulan Birleşik ıOPS veya üretilen iş yükü depolama hesabının sınırlarını aşarsa, depolama alanı azaltma oluşur. Depolama alanı azaltma gerçekleştiğinde, sorgu performansı üzerinde önemli ölçüde olumsuz bir etkiye sahip olur.
+Birden çok uygulama ve hizmet, depolama hesabınıza erişebilir. Uygulamalar, hizmetler ve sunucusuz SQL havuzu iş yükü tarafından oluşturulan Birleşik ıOPS veya üretilen iş, depolama hesabının sınırlarını aşarsa, depolama alanı azaltma oluşur. Depolama alanı azaltma gerçekleştiğinde, sorgu performansı üzerinde önemli ölçüde olumsuz bir etkiye sahip olur.
 
-Daraltma algılandıktan sonra, SQL isteğe bağlı, bu senaryonun yerleşik olarak işlenmesini içerir. İsteğe bağlı SQL, azaltma çözümlenene kadar daha yavaş bir hızda depolama istekleri yapar. 
+Daraltma algılandıktan sonra sunucusuz SQL havuzu bu senaryonun yerleşik olarak işlenmesini içerir. Sunucusuz SQL havuzu, azaltma çözümlenene kadar daha yavaş bir hızda depolama istekleri yapar. 
 
 Ancak, en iyi sorgu yürütmesi için, sorgu yürütme sırasında diğer iş yükleriyle depolama hesabını vurgulamanızı öneririz.
 
@@ -140,7 +141,7 @@ Ancak, en iyi sorgu yürütmesi için, sorgu yürütme sırasında diğer iş y�
 
 Mümkünse, daha iyi performans için dosyaları hazırlayacaksınız:
 
-- CSV 'yi Parquet – Parquet, sütunlu biçim olarak dönüştürür. Sıkıştırılmış olduğundan, aynı verilere sahip CSV dosyalarından daha küçük dosya boyutlarına sahiptir ve isteğe bağlı SQL 'i okumak için daha az zaman ve depolama istekleri gerekecektir.
+- CSV 'yi Parquet – Parquet, sütunlu biçim olarak dönüştürür. Sıkıştırılmış olduğundan, aynı verilere sahip CSV dosyalarından daha küçük dosya boyutlarına sahiptir ve sunucusuz SQL havuzunun onu okumak için daha az zaman ve depolama istekleri olması gerekir.
 - Bir sorgu tek bir büyük dosyayı hedefliyorsa, onu birden çok daha küçük dosyaya bölebilmeniz yararlı olacaktır.
 - CSV dosyanızın boyutunu 10 GB 'tan daha düşük tutmaya çalışın.
 - Tek bir OPENROWSET yolu veya dış tablo konumu için eşit boyutlu dosyalar olması tercih edilir.
@@ -148,17 +149,17 @@ Mümkünse, daha iyi performans için dosyaları hazırlayacaksınız:
 
 ### <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>Belirli bölümleri hedeflemek için FileInfo ve FilePath işlevlerini kullanın
 
-Veriler genellikle bölümler halinde düzenlenir. Belirli klasörleri ve dosyaları sorgulamak için isteğe bağlı SQL 'e bildirebilirsiniz. Bunun yapılması sorgunun okuması ve işlemesi gereken dosya sayısını ve veri miktarını azaltır. 
+Veriler genellikle bölümler halinde düzenlenir. Belirli klasörleri ve dosyaları sorgulamak için sunucusuz SQL havuzu söyleyebilirsiniz. Bunun yapılması sorgunun okuması ve işlemesi gereken dosya sayısını ve veri miktarını azaltır. 
 
 Sonuç olarak, daha iyi performans elde edersiniz. Daha fazla bilgi için [dosya adı](query-data-storage.md#filename-function) ve [FilePath](query-data-storage.md#filepath-function) işlevlerini ve [belirli dosyaları sorgulama](query-specific-files.md)ile ilgili örnekleri denetleyin.
 
 Depolamadaki verileriniz bölümlendirilmemişse, bu dosyaları hedefleyen sorguları iyileştirmek için bu işlevleri kullanabilmeniz için Bölümlendirmeyi düşünün.
 
-[Azure SYNAPSE dış tabloları için bölümlenmiş Apache Spark](develop-storage-files-spark-tables.md) , Isteğe bağlı SQL 'de sorgulanırken sorgu otomatik olarak yalnızca gerekli dosyaları hedefleyecek.
+Sunucusuz SQL havuzundan [Azure SYNAPSE dış tabloları için bölümlenmiş Apache Spark sorgulanırken](develop-storage-files-spark-tables.md) , sorgu yalnızca gerekli dosyaları hedefleyecek.
 
 ### <a name="use-cetas-to-enhance-query-performance-and-joins"></a>Sorgu performansını ve birleştirmeleri geliştirmek için CETAS kullanın
 
-[Cetas](develop-tables-cetas.md) , SQL isteğe bağlı olarak sunulan en önemli özelliklerden biridir. CETAS, dış tablo meta verileri oluşturan ve SELECT sorgusunun sonucunu Depolama hesabınızdaki bir dosya kümesine dışarı aktaran paralel bir işlemdir.
+[Cetas](develop-tables-cetas.md) , SUNUCUSUZ SQL havuzunda bulunan en önemli özelliklerden biridir. CETAS, dış tablo meta verileri oluşturan ve SELECT sorgusunun sonucunu Depolama hesabınızdaki bir dosya kümesine dışarı aktaran paralel bir işlemdir.
 
 Birleştirilmiş başvuru tabloları gibi sorguların sık kullanılan parçalarını yeni bir dosya kümesine depolamak için CETAS kullanabilirsiniz. Daha sonra, birden çok sorgu içinde ortak birleştirmeleri yinelemek yerine bu tek dış tabloya katabilirsiniz. 
 
@@ -166,7 +167,7 @@ CETAS, Parquet dosyalarını oluşturduğunda, ilk sorgu bu dış tabloyu hedefl
 
 ### <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede sağlanmayan bilgilere ihtiyacınız varsa, tüm SQL havuzu belgelerini aramak için bu sayfanın sol tarafındaki **Belge ara** işlevini kullanın.  [SQL havuzu Için Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) , diğer KULLANıCıLARA ve SQL havuzu ürün grubuna yönelik sorular oluşturabilmeniz için bir yerdir.  
+Bu makalede sağlanmayan bilgilere ihtiyacınız varsa, tüm SQL havuzu belgelerini aramak için bu sayfanın sol tarafındaki **Belge ara** işlevini kullanın.  [Azure SYNAPSE Analytics Için Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) , diğer kullanıcılara ve Azure SYNAPSE Analytics ürün grubuna yönelik sorular oluşturabilmeniz için bir yerdir. Sorularınızın diğer kullanıcılar veya ekibimiz tarafından yanıtlandığından emin olmak için bu forumu sürekli takip ediyoruz.  
 
-Sorularınızın diğer kullanıcılar veya ekibimiz tarafından yanıtlandığından emin olmak için bu forumu sürekli takip ediyoruz.  Stack Overflow sorularınızı sormayı tercih ediyorsanız [Azure SQL havuzu Stack Overflow forumumuz](https://stackoverflow.com/questions/tagged/azure-sqldw)de vardır.
+Stack Overflow sorularınızı sormak isterseniz, [Azure SYNAPSE Analytics Stack Overflow Forumumuzu](https://stackoverflow.com/questions/tagged/azure-sqldw)da sunuyoruz.
  

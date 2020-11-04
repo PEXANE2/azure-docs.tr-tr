@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: 5e84a3930d350ec45cef7119342e3e4d2d5daaee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44b5baa074b62a072873d8097de184a2813b54ec
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250666"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322022"
 ---
 # <a name="feature-engineering-in-data-science"></a>Veri bilimi 'nde Özellik Mühendisliği
 
 Bu makalede, Machine Learning 'de verileri geliştirmeyle ilgili özellik Mühendisliği ve rolü hakkında bilgi edineceksiniz. [Azure Machine Learning Studio (klasik)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) denemeleri 'den çizilen tanım örneklerden öğrenin. 
 
-* **Özellik Mühendisliği**: öğrenme algoritmasının tahmine dayalı gücünü artırmak için ham verilerden yeni özellikler oluşturma işlemi. Uygulanan özellikler, özgün özellik kümesinde kolayca açık olmayan ek bilgileri yakalemelidir.
-* **Özellik seçimi**: eğitim sorununun boyutlılık düzeyini azaltmak için özelliklerin anahtar alt kümesini seçme işlemi.
+* **Özellik Mühendisliği** : öğrenme algoritmasının tahmine dayalı gücünü artırmak için ham verilerden yeni özellikler oluşturma işlemi. Uygulanan özellikler, özgün özellik kümesinde kolayca açık olmayan ek bilgileri yakalemelidir.
+* **Özellik seçimi** : eğitim sorununun boyutlılık düzeyini azaltmak için özelliklerin anahtar alt kümesini seçme işlemi.
 
 Normalde **özellik Mühendisliği** , ek özellikler oluşturmak için önce uygulanır ve ardından **Özellik seçimi** , ilgisiz, yedekli veya çok bağıntılı özellikleri ortadan kaldıracak şekilde yapılır.
 
@@ -60,7 +60,7 @@ Eğitim verilerinde etkili özellikler oluşturma amacını taşıyan dört regr
 
 ### <a name="feature-engineering-using-studio-classic"></a>Studio kullanarak özellik Mühendisliği (klasik)
 
-Studio (klasik) denemesinde bu dört eğitim veri kümesi, önceden işlenmiş giriş veri kümesinden dört dal aracılığıyla oluşturulur. En soldaki dal haricinde, bu dalların her biri, türetilmiş özelliklerin (özellik kümesi B, C ve D) oluşturulduğu ve içeri aktarılan veri kümesine eklendiği bir [yürütme R betiği](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/) modülü içerir.
+Studio (klasik) denemesinde bu dört eğitim veri kümesi, önceden işlenmiş giriş veri kümesinden dört dal aracılığıyla oluşturulur. En soldaki dal haricinde, bu dalların her biri, türetilmiş özelliklerin (özellik kümesi B, C ve D) oluşturulduğu ve içeri aktarılan veri kümesine eklendiği bir [yürütme R betiği](/azure/machine-learning/studio-module-reference/execute-r-script) modülü içerir.
 
 Aşağıdaki şekilde, ikinci sol dalda B özellik kümesi oluşturmak için kullanılan R betiği gösterilmektedir.
 
@@ -80,9 +80,9 @@ En iyi sonuçlar + B + C özelliklerine göre gösterilir. Eğitim verilerine ek
 
 ### <a name="feature-hashing"></a>Özellik karma
 
-Bu görevi gerçekleştirmek için, [özellik](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/feature-hashing) karması adlı bir teknik, rastgele metin özelliklerini etkin bir şekilde dizinler halinde dönüştürmek üzere uygulanır. Her metin özelliğini (sözcük/tümcecik) belirli bir dizinle ilişkilendirmek yerine, bu yöntem özelliklere bir karma işlevi uygular ve karma değerlerini doğrudan dizinler olarak kullanarak kullanın.
+Bu görevi gerçekleştirmek için, [özellik](/azure/machine-learning/studio-module-reference/feature-hashing) karması adlı bir teknik, rastgele metin özelliklerini etkin bir şekilde dizinler halinde dönüştürmek üzere uygulanır. Her metin özelliğini (sözcük/tümcecik) belirli bir dizinle ilişkilendirmek yerine, bu yöntem özelliklere bir karma işlevi uygular ve karma değerlerini doğrudan dizinler olarak kullanarak kullanın.
 
-Studio 'da (klasik), kolayca Word/tümcecik özellikleri oluşturan bir [özellik karma](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/feature-hashing) modülü vardır. Aşağıdaki şekilde, Bu modülün kullanımıyla bir örnek gösterilmektedir. Giriş veri kümesi iki sütun içerir: 1 ile 5 arasında olan kitap derecelendirmesi ve gerçek gözden geçirme içeriği. Bu modülün amacı, belirli bir kitap incelemesinin içindeki karşılık gelen sözcük (ler) in oluşma sıklığını gösteren bir dizi yeni özelliği almak için kullanılır. Bu modülü kullanmak için aşağıdaki adımları izleyin:
+Studio 'da (klasik), kolayca Word/tümcecik özellikleri oluşturan bir [özellik karma](/azure/machine-learning/studio-module-reference/feature-hashing) modülü vardır. Aşağıdaki şekilde, Bu modülün kullanımıyla bir örnek gösterilmektedir. Giriş veri kümesi iki sütun içerir: 1 ile 5 arasında olan kitap derecelendirmesi ve gerçek gözden geçirme içeriği. Bu modülün amacı, belirli bir kitap incelemesinin içindeki karşılık gelen sözcük (ler) in oluşma sıklığını gösteren bir dizi yeni özelliği almak için kullanılır. Bu modülü kullanmak için aşağıdaki adımları izleyin:
 
 * İlk olarak, giriş metnini içeren sütunu seçin (Bu örnekte "Col2").
 * İkinci olarak, "bit boyutunu karma" olarak ayarlayın, bu da 2 ^ 8 = 256 özelliğin oluşturulacağı anlamına gelir. Tüm metindeki sözcük/aşama 256 dizin için karma oluşturacak. "Karma bit boyutu" parametresi 1 ile 31 arasındadır. Küçük tümcecikler, daha büyük bir sayı olarak ayarlanarak aynı dizinde karma hale getirilir.

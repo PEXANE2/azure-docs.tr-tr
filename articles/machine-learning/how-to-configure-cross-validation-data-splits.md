@@ -11,27 +11,27 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: 3e2711243d7c093d3ab8aa5f0e7ebac0a5ec95f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed11a1b772acb31268f3d0a61fba10301ad62e18
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886203"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320476"
 ---
-# <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Otomatik makine öğreniminde veri bölmelerini ve çapraz doğrulamayı yapılandırma
+# <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Otomatik makine öğrenmesinde veri bölmelerini ve çapraz doğrulamayı yapılandırma
 
 Bu makalede, otomatik makine öğrenimi, otomatik ml, denemeleri için eğitim/doğrulama veri bölmelerini ve çapraz doğrulamayı yapılandırmaya yönelik farklı seçenekler öğreneceksiniz.
 
 Azure Machine Learning ' de, birden çok ML modeli oluşturmak için, oto ml 'yi kullandığınızda, bu modelin doğruluk veya AUC ağırlıklı gibi kalite ölçümlerini hesaplayarak her bir alt çalıştırmanın ilgili modeli doğrulaması gerekir. Bu ölçümler, her bir modelle yapılan tahminlerin, doğrulama verilerinde geçmiş gözlemlerden gerçek etiketlerle karşılaştırılmasıyla hesaplanır. 
 
-Otomatik ml denemeleri model doğrulamasını otomatik olarak gerçekleştirir. Aşağıdaki bölümlerde, [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true)ile doğrulama ayarlarını nasıl daha da özelleştireceğiniz açıklanır. 
+Otomatik ml denemeleri model doğrulamasını otomatik olarak gerçekleştirir. Aşağıdaki bölümlerde, [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)ile doğrulama ayarlarını nasıl daha da özelleştireceğiniz açıklanır. 
 
 Düşük kod veya kod içermeyen bir deneyim için [Azure Machine Learning Studio 'da otomatik makine öğrenimi denemeleri oluşturma](how-to-use-automated-ml-for-ml-models.md)makalesine bakın. 
 
 > [!NOTE]
 > Studio şu anda eğitim/doğrulama veri bölmelerini ve çapraz doğrulama seçeneklerini desteklemektedir, ancak doğrulama kümesi için bireysel veri dosyalarının belirtilmesini desteklemez. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İhtiyacınız olan bu makalede,
 
@@ -47,7 +47,7 @@ Düşük kod veya kod içermeyen bir deneyim için [Azure Machine Learning Studi
 
 ## <a name="default--data-splits-and-cross-validation"></a>Varsayılan veri ayırır ve çapraz doğrulama
 
-Deneme ve eğitim ayarlarınızı tanımlamak için, [oto Mlconfig](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) nesnesini kullanın. Aşağıdaki kod parçacığında, veya için parametreler olan `n_cross_validation` veya `validation_ data` dahil **olmayan** yalnızca gerekli parametrelerin tanımlandığından emin olun.
+Deneme ve eğitim ayarlarınızı tanımlamak için, [oto Mlconfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) nesnesini kullanın. Aşağıdaki kod parçacığında, veya için parametreler olan `n_cross_validation` veya `validation_ data` dahil **olmayan** yalnızca gerekli parametrelerin tanımlandığından emin olun.
 
 ```python
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
@@ -67,7 +67,7 @@ Açıkça bir `validation_data` veya `n_cross_validation` parametresi belirtmezs
 |Eğitim &nbsp; veri &nbsp; boyutu| Doğrulama tekniği |
 |---|-----|
 |**&nbsp; &nbsp; 20.000 &nbsp; satırdan büyük**| Eğitme/doğrulama verileri bölünmesi uygulandı. Varsayılan değer, doğrulama kümesi olarak ilk eğitim verileri kümesinin %10 ' un sürme sayısıdır. Buna karşılık, bu doğrulama kümesi ölçüm hesaplamaları için kullanılır.
-|**&nbsp; &nbsp; 20.000 &nbsp; satırdan küçük**| Çapraz doğrulama yaklaşımı uygulanır. Varsayılan katların sayısı satır sayısına bağlıdır. <br> **Veri kümesi 1.000 satırdan azsa**, 10 katlar kullanılır. <br> **Satırlar 1.000 ve 20.000 arasındaysa**, üç katlar kullanılır.
+|**&nbsp; &nbsp; 20.000 &nbsp; satırdan küçük**| Çapraz doğrulama yaklaşımı uygulanır. Varsayılan katların sayısı satır sayısına bağlıdır. <br> **Veri kümesi 1.000 satırdan azsa** , 10 katlar kullanılır. <br> **Satırlar 1.000 ve 20.000 arasındaysa** , üç katlar kullanılır.
 
 ## <a name="provide-validation-data"></a>Doğrulama verisi sağlama
 

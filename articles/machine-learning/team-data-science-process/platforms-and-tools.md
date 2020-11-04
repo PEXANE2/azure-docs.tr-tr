@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 37faf5d8e6292844245f475d9fcf0f832a0cca10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3f6a48815519499ddc39dcc12cafe0fe95e70e0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440006"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320241"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Veri bilimi projeleri için platformlar ve araçlar
 
@@ -60,7 +60,7 @@ Apache Spark, Büyük veri analizi uygulamalarının performansını artırmak �
 
 HDInsight’ta Spark kümesi oluşturduğunuzda, Spark yüklenmiş ve yapılandırılmış olarak Azure işlem kaynakları oluşturursunuz. HDInsight 'ta Spark kümesi oluşturmak yaklaşık 10 dakika sürer. İşlenecek verileri Azure Blob depolama alanında depolayın. Azure Blob depolamayı bir kümeyle kullanma hakkında daha fazla bilgi için bkz. [HDInsight 'Ta Hadoop ile uyumlu Azure Blob depolamayı kullanma](../../hdinsight/hdinsight-hadoop-use-blob-storage.md).
 
-Microsoft tarafından yapılan TDSP ekibi, tek bir Python ve diğer Scala kullanarak veri bilimi çözümleri oluşturmak için Azure HDInsight Spark kümelerinin nasıl kullanılacağına ilişkin iki uçtan uca izlenecek yol yayımladı. Azure HDInsight **Spark kümeleri**hakkında daha fazla bilgi için bkz. [genel bakış: hdınsight Linux üzerinde Apache Spark](../../hdinsight/spark/apache-spark-overview.md). Azure HDInsight Spark kümesinde **Python** kullanarak veri bilimi çözümü oluşturmayı öğrenmek için bkz. [Azure HDInsight 'Ta Spark kullanarak veri bilimine genel bakış](spark-overview.md). Azure HDInsight Spark kümesinde **Scala** kullanarak bir veri bilimi çözümü oluşturmayı öğrenmek için bkz. [Azure 'da Scala ve Spark kullanan veri bilimi](scala-walkthrough.md). 
+Microsoft tarafından yapılan TDSP ekibi, tek bir Python ve diğer Scala kullanarak veri bilimi çözümleri oluşturmak için Azure HDInsight Spark kümelerinin nasıl kullanılacağına ilişkin iki uçtan uca izlenecek yol yayımladı. Azure HDInsight **Spark kümeleri** hakkında daha fazla bilgi için bkz. [genel bakış: hdınsight Linux üzerinde Apache Spark](../../hdinsight/spark/apache-spark-overview.md). Azure HDInsight Spark kümesinde **Python** kullanarak veri bilimi çözümü oluşturmayı öğrenmek için bkz. [Azure HDInsight 'Ta Spark kullanarak veri bilimine genel bakış](spark-overview.md). Azure HDInsight Spark kümesinde **Scala** kullanarak bir veri bilimi çözümü oluşturmayı öğrenmek için bkz. [Azure 'da Scala ve Spark kullanan veri bilimi](scala-walkthrough.md). 
 
 
 ##  <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
@@ -92,23 +92,23 @@ Azure HDInsight Hive kümeleri hakkında daha fazla bilgi için bkz. [HDInsight 
 
 Azure dosya depolama, standart sunucu Ileti bloğu (SMB) protokolünü kullanarak bulutta dosya paylaşımları sunan bir hizmettir. SMB 2.1 ve SMB 3.0 desteklenir. Azure File Storage, Azure’a dosya paylaşımı kullanan eski uygulamaları maliyetli yeniden yazdırmaya ihtiyaç duymadan ve hızla taşıyabilmenizi sağlar. Azure Virtual Machines’de, Cloud Services’da veya şirket içi istemcilerde çalışan uygulamalar, bir masaüstü uygulamanın tipik SMB paylaşımı bağladığı gibi buluta bir dosya paylaşımı bağlayabilir. Ardından herhangi sayıda uygulama bileşeni eş zamanlı olarak File Storage paylaşımını bağlayıp buna erişim sağlayabilir.
 
-Özellikle veri bilimi projeleri için yararlı olan proje ekip üyelerinizle proje verilerini paylaşmak için bir Azure dosya deposu oluşturma olanağıdır. Bunların her biri, Azure dosya depolama alanındaki verilerin aynı kopyasına erişebilir. Ayrıca, projenin yürütülmesi sırasında oluşturulan özellik kümelerini paylaşmak için bu dosya depolama alanını kullanabilir. Proje bir istemci katılımı ise, istemcileriniz proje verilerini ve özelliklerini sizinle paylaşmak için kendi Azure abonelikleri altında bir Azure dosya depolama alanı oluşturabilir. Bu şekilde, istemci proje veri varlıkları üzerinde tam denetime sahiptir. Azure dosya depolama hakkında daha fazla bilgi için bkz. [Windows 'Ta Azure dosya depolama ile çalışmaya başlama](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files) ve [Linux Ile Azure dosya depolamayı kullanma](../../storage/files/storage-how-to-use-files-linux.md).
+Özellikle veri bilimi projeleri için yararlı olan proje ekip üyelerinizle proje verilerini paylaşmak için bir Azure dosya deposu oluşturma olanağıdır. Bunların her biri, Azure dosya depolama alanındaki verilerin aynı kopyasına erişebilir. Ayrıca, projenin yürütülmesi sırasında oluşturulan özellik kümelerini paylaşmak için bu dosya depolama alanını kullanabilir. Proje bir istemci katılımı ise, istemcileriniz proje verilerini ve özelliklerini sizinle paylaşmak için kendi Azure abonelikleri altında bir Azure dosya depolama alanı oluşturabilir. Bu şekilde, istemci proje veri varlıkları üzerinde tam denetime sahiptir. Azure dosya depolama hakkında daha fazla bilgi için bkz. [Windows 'Ta Azure dosya depolama ile çalışmaya başlama](../../storage/files/storage-dotnet-how-to-use-files.md) ve [Linux Ile Azure dosya depolamayı kullanma](../../storage/files/storage-how-to-use-files-linux.md).
 
 
 ## <a name="sql-server-2019-r-and-python-services"></a>SQL Server 2019 R ve Python Hizmetleri
 
 R Services (veritabanı Içi), yeni Öngörüler açığa çıkarmak için akıllı uygulamalar geliştirmeye ve dağıtmaya yönelik bir platform sağlar. R topluluğu tarafından sunulan birçok paket de dahil olmak üzere zengin ve güçlü R dilini kullanarak modeller oluşturabilir ve SQL Server verilerinize tahmin oluşturabilirsiniz. R Services (veritabanı Içi) R dilini SQL Server ile tümleştirdiğinden, analiz verileri yakın tutulur; bu da verileri taşıma ile ilişkili maliyetleri ve güvenlik risklerini ortadan kaldırır.
 
-R Services (veritabanı Içi), kapsamlı bir SQL Server araçları ve teknolojileri kümesiyle açık kaynak R dilini destekler. Üstün performans, güvenlik, güvenilirlik ve yönetilebilirlik sunar. Kullanışlı ve tanıdık araçları kullanarak R çözümlerini dağıtabilirsiniz. Üretim uygulamalarınız R çalışma zamanını çağırabilir ve Transact-SQL ' y i kullanarak tahminleri ve görselleri alabilir. Ayrıca, R çözümlerinizin ölçeğini ve performansını geliştirmek için ScaleR kitaplıklarını da kullanabilirsiniz. Daha fazla bilgi için bkz. [SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services).
+R Services (veritabanı Içi), kapsamlı bir SQL Server araçları ve teknolojileri kümesiyle açık kaynak R dilini destekler. Üstün performans, güvenlik, güvenilirlik ve yönetilebilirlik sunar. Kullanışlı ve tanıdık araçları kullanarak R çözümlerini dağıtabilirsiniz. Üretim uygulamalarınız R çalışma zamanını çağırabilir ve Transact-SQL ' y i kullanarak tahminleri ve görselleri alabilir. Ayrıca, R çözümlerinizin ölçeğini ve performansını geliştirmek için ScaleR kitaplıklarını da kullanabilirsiniz. Daha fazla bilgi için bkz. [SQL Server R Services](/sql/advanced-analytics/r/sql-server-r-services).
 
-Microsoft 'un TDSP ekibi, SQL Server 2016 R hizmetlerinde veri bilimi çözümlerinin nasıl oluşturulduğunu gösteren iki uçtan uca izlenecek yol yayımladı: bir R programcıları ve bir SQL geliştiricileri için. **R programcıları**için bkz. [veri bilimi uçtan uca izlenecek yol](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough). **SQL geliştiricileri**için bkz. [SQL geliştiricileri Için veritabanı içi gelişmiş analiz (öğretici)](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers).
+Microsoft 'un TDSP ekibi, SQL Server 2016 R hizmetlerinde veri bilimi çözümlerinin nasıl oluşturulduğunu gösteren iki uçtan uca izlenecek yol yayımladı: bir R programcıları ve bir SQL geliştiricileri için. **R programcıları** için bkz. [veri bilimi uçtan uca izlenecek yol](/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough). **SQL geliştiricileri** için bkz. [SQL geliştiricileri Için veritabanı içi gelişmiş analiz (öğretici)](/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers).
 
 
 ## <a name="appendix-tools-to-set-up-data-science-projects"></a><a name="appendix"></a>Ek: veri bilimi projelerini ayarlamaya yönelik araçlar
 
 ### <a name="install-git-credential-manager-on-windows"></a>Windows 'a git kimlik bilgileri Yöneticisi 'Ni yükler
 
-**Windows**üzerinde TDSP 'yi takip ediyorsanız, git depoları ile iletişim kurmak Için **Git kimlik bilgileri YÖNETICISI 'ni (GCM)** yüklemeniz gerekir. GCM 'yi yüklemek için önce **chocolaty**yüklemeniz gerekir. Chocolaty ve GCM 'yi yüklemek için Windows PowerShell 'de **yönetici**olarak aşağıdaki komutları çalıştırın:  
+**Windows** üzerinde TDSP 'yi takip ediyorsanız, git depoları ile iletişim kurmak Için **Git kimlik bilgileri YÖNETICISI 'ni (GCM)** yüklemeniz gerekir. GCM 'yi yüklemek için önce **chocolaty** yüklemeniz gerekir. Chocolaty ve GCM 'yi yüklemek için Windows PowerShell 'de **yönetici** olarak aşağıdaki komutları çalıştırın:  
 
 ```powershell
 iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
@@ -136,13 +136,13 @@ Git komutlarını çalıştırmak için Linux (CentOS) makineleri kullanıyorsan
    
    ![SSH anahtarı oluşturma komutları](./media/platforms-and-tools/resources-1-generate_ssh.png)
 
-1. SSH *-RSA*dahil tüm SSH anahtarını kopyalayın. 
+1. SSH *-RSA* dahil tüm SSH anahtarını kopyalayın. 
 1. Azure DevOps Services oturum açın. 
-1. Sayfanın sağ üst köşesindeki ** \> adınızı<** tıklayın ve **güvenlik**' e tıklayın. 
+1. Sayfanın sağ üst köşesindeki **\> adınızı<** tıklayın ve **güvenlik** ' e tıklayın. 
     
    ![Adınızın ardından Güvenlik ' e tıklayın.](./media/platforms-and-tools/resources-2-user-setting.png)
 
-1. **SSH ortak anahtarlar**' a tıklayın ve **+ Ekle**' ye tıklayın. 
+1. **SSH ortak anahtarlar** ' a tıklayın ve **+ Ekle** ' ye tıklayın. 
 
    ![SSH ortak anahtarlar ' a ve ardından + Ekle ' ye tıklayın.](./media/platforms-and-tools/resources-3-add-ssh.png)
 
@@ -153,4 +153,4 @@ Git komutlarını çalıştırmak için Linux (CentOS) makineleri kullanıyorsan
 
 **Belirli senaryolar** için işlemdeki adımların tümünü gösteren tam uçtan uca izlenecek yollar da sağlanmaktadır. Bunlar listelenmiş ve [örnek izlenecek yollar](walkthroughs.md) konusunun küçük resim açıklamalarıyla bağlantılandırılır. Bulut, şirket içi araçları ve hizmetleri akıllı bir uygulama oluşturmak için bir iş akışı veya işlem hattı halinde nasıl birleştirebileceğinizi gösterir. 
 
-Azure Machine Learning Studio (klasik) kullanarak takım veri bilimi Işleminde adımların nasıl yürütüleceğini gösteren örnekler için, bkz. [Azure ML](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) öğrenme yolu.
+Azure Machine Learning Studio (klasik) kullanarak takım veri bilimi Işleminde adımların nasıl yürütüleceğini gösteren örnekler için, bkz. [Azure ML](./index.yml) öğrenme yolu.

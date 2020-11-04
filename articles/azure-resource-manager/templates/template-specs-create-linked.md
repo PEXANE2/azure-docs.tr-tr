@@ -2,19 +2,19 @@
 title: Bağlantılı şablonlarla şablon belirtimi oluşturma
 description: Bağlantılı şablonlar içeren bir şablon spec oluşturmayı öğrenin.
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: adcce8194f380b90eb9a29f4da25763e112b9f12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/03/2020
+ms.openlocfilehash: b1862789ede4a9d2ab8c57bdb913c449a560dc58
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728548"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321602"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Öğretici: bağlı şablonlar ile şablon belirtimi oluşturma (Önizleme)
 
-[Bağlantılı şablonla](linked-templates.md#linked-template) [şablon spec](template-specs.md) oluşturmayı öğrenin. ARM şablonlarını kuruluşunuzdaki diğer kullanıcılarla paylaşmak için şablon özelliklerini kullanırsınız. Bu makalede, `relativePath` [dağıtım kaynağının](/azure/templates/microsoft.resources/deployments)özelliğini kullanarak ana şablonu ve bağlı şablonlarını paketlemek için bir şablon belirtiminin nasıl oluşturulacağı gösterilmektedir.
+Ana şablon ve [bağlantılı şablon](linked-templates.md#linked-template)ile [şablon spec](template-specs.md) oluşturmayı öğrenin. ARM şablonlarını kuruluşunuzdaki diğer kullanıcılarla paylaşmak için şablon özelliklerini kullanırsınız. Bu makalede, `relativePath` [dağıtım kaynağının](/azure/templates/microsoft.resources/deployments)özelliğini kullanarak ana şablonu ve bağlı şablonlarını paketlemek için bir şablon belirtiminin nasıl oluşturulacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -27,7 +27,7 @@ Ana şablonu ve bağlantılı şablonu oluşturun.
 
 Bir şablonu bağlamak için ana şablonunuza bir [dağıtımlar kaynağı](/azure/templates/microsoft.resources/deployments) ekleyin. `templateLink`Özelliğinde, ana şablonun yoluna uygun olarak bağlı şablonun göreli yolunu belirtin.
 
-Bağlantılı şablon ** üzerindelinkedTemplate.js**çağrılır ve ana şablonun depolandığı yolda **yapıtlar** adlı bir alt klasörde depolanır.  RelativePath için aşağıdaki değerlerden birini kullanabilirsiniz:
+Bağlantılı şablon **üzerindelinkedTemplate.js** çağrılır ve ana şablonun depolandığı yolda **yapıtlar** adlı bir alt klasörde depolanır.  RelativePath için aşağıdaki değerlerden birini kullanabilirsiniz:
 
 - `./artifacts/linkedTemplate.json`
 - `/artifacts/linkedTemplate.json`
@@ -162,7 +162,7 @@ Bağlantılı şablon ** üzerindelinkedTemplate.js**çağrılır ve ana şablon
 
 ## <a name="create-template-spec"></a>Şablon belirtimi oluşturma
 
-Şablon Özellikleri, kaynak gruplarında depolanır.  Bir kaynak grubu oluşturun ve ardından aşağıdaki betiği kullanarak bir şablon belirtimi oluşturun. Şablon belirtiminin adı **Webspec**' dir.
+Şablon Özellikleri, kaynak gruplarında depolanır.  Bir kaynak grubu oluşturun ve ardından aşağıdaki betiği kullanarak bir şablon belirtimi oluşturun. Şablon belirtiminin adı **Webspec** ' dir.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

@@ -3,12 +3,12 @@ title: Azure VMware çözümünde dağıtım ufku
 description: Azure VMware çözümünde VMware ufuk dağıtımı hakkında bilgi edinin.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 6a466aea5cbdf4452a2c46b455932042d920c3b9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: babce512b896009c08165d2e3d9aec7c33724bf4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369021"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321363"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Azure VMware çözümünde dağıtım ufku 
 
@@ -86,7 +86,7 @@ Azure özel bulutu ve SDDC Max sınırı verildiğinde, ufuk bağlantı sunucula
 
 Azure sanal ağından Azure özel bulutlara/SDDC 'lere bağlantı, ExpressRoute FastPath ile yapılandırılmalıdır. Aşağıdaki diyagramda temel bir ufuk Pod dağıtımı gösterilmektedir.
 
-:::image type="content" source="media/horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="Azure 'da Azure VMware çözümü ve ufku bulutu" border="false":::
+:::image type="content" source="media/horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="ExpressPath hızlı yolunu kullanan tipik ufuk Pod dağıtımı" border="false":::
 
 ## <a name="network-connectivity-to-scale-horizon-on-azure-vmware-solution"></a>Azure VMware çözümünde ölçeği ölçeklendirmek için ağ bağlantısı
 
@@ -94,7 +94,7 @@ Bu bölüm, Azure VMware çözümünde ölçeğini ölçeklendirmenize yardımc�
 
 ### <a name="single-horizon-pod-on-azure-vmware-solution"></a>Azure VMware çözümünde tek ufku Pod
 
-:::image type="content" source="media/horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="Azure 'da Azure VMware çözümü ve ufku bulutu" border="false":::
+:::image type="content" source="media/horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="Azure VMware çözümünde tek ufku Pod" border="false":::
 
 Tek bir ufku Pod, ABD Doğu bölgesinde yalnızca bir ufuk Pod 'i dağıttığınız için en basit ileri dağıtım senaryosudur.  Her özel bulut ve SDDC 4.000 masaüstü oturumlarını işleyecek şekilde tahmin edildiğinden, maksimum ufuk Pod boyutunu dağıtırsınız.  En fazla üç özel bulut/SDDC dağıtımını planlayabilirsiniz.
 
@@ -112,7 +112,7 @@ Temel örnekteki bir çeşitleme, şirket içi kaynakların bağlantısını des
 
 Diyagramda, şirket içi kaynaklar için bağlantının nasıl destekleyeceği gösterilmektedir. Şirket ağınıza Azure sanal ağına bağlanmak için bir ExpressRoute devresine ihtiyacınız vardır.  Ayrıca, ExpressRoute Global Reach kullanan özel bulut ve SDDC 'Ler ile kurumsal ağınızı bağlamanız gerekir.  SDDC 'den ExpressRoute devresine ve şirket içi kaynaklara bağlantı sağlar. 
 
-:::image type="content" source="media/horizon/connect-corporate-network-azure-virtual-network.png" alt-text="Azure 'da Azure VMware çözümü ve ufku bulutu" border="false":::
+:::image type="content" source="media/horizon/connect-corporate-network-azure-virtual-network.png" alt-text="Şirket ağınızı bir Azure sanal ağına bağlama" border="false":::
 
 ### <a name="multiple-horizon-pods-on-azure-vmware-solution-across-multiple-regions"></a>Birden çok bölgede Azure VMware çözümünde birden çok ufuk
 
@@ -120,9 +120,9 @@ Başka bir senaryo, birden çok sayıda ölçeğe göre ölçeklendirme yapar.  
 
 Her bölge için Azure Sanal Ağa gelen diğer bölgedeki özel bulutlar/SDDC 'lere bağlanırsınız. CPA Federasyonu 'nin bir parçası olan ufuk bağlantı sunucularının yönetim altındaki tüm masaüstlerine bağlanmasına izin verir. Bu yapılandırmaya ek özel bulutlar/SDDC 'Ler eklemek, genel olarak 24.000 oturuma ölçeklenmenize olanak tanır. 
 
-Aynı bölgede iki ufku dağıtırsanız aynı ilkeler geçerlidir.  İkinci ufuk Pod öğesini *ayrı bir Azure sanal ağında*dağıttığınızdan emin olun. Tek Pod örneğinde olduğu gibi, ExpressRoute ve Global Reach kullanarak kurumsal ağınızı ve şirket içi Pod 'nizi bu çok Pod/bölge örneğine bağlayabilirsiniz. 
+Aynı bölgede iki ufku dağıtırsanız aynı ilkeler geçerlidir.  İkinci ufuk Pod öğesini *ayrı bir Azure sanal ağında* dağıttığınızdan emin olun. Tek Pod örneğinde olduğu gibi, ExpressRoute ve Global Reach kullanarak kurumsal ağınızı ve şirket içi Pod 'nizi bu çok Pod/bölge örneğine bağlayabilirsiniz. 
 
-:::image type="content" source="media/horizon/multiple-horizon-pod-azure-vmware-solution.png" alt-text="Azure 'da Azure VMware çözümü ve ufku bulutu" border="false":::
+:::image type="content" source="media/horizon/multiple-horizon-pod-azure-vmware-solution.png" alt-text=" Birden çok bölgede Azure VMware çözümünde birden çok ufuk" border="false":::
 
 ## <a name="size-azure-vmware-solution-hosts-for-horizon-deployments"></a>Azure VMware Çözüm ana bilgisayarlarını ufku dağıtımları için Boyutlandır 
 
@@ -211,3 +211,6 @@ Standart dağıtım mimarisine bağlı olarak, ufuk altyapısı VM 'Leri bağlan
 | Windows dosya paylaşma               | D4sv3          |         | *İsteğe bağlı*                               |
 
 Altyapı VM maliyeti, \$ Yukarıdaki örnekteki 2.000-Desktop dağıtımı için ayda Kullanıcı başına 0,36 olarak ücretlendirilir. Bu örnekte ABD Doğu Azure örneği Haziran 2020 fiyatlandırması kullanılmaktadır. Fiyatlandırma, bölgeye, seçili seçeneklere ve zamanlamaya göre farklılık gösterebilir.
+
+## <a name="next-steps"></a>Sonraki adımlar
+Azure VMware çözümünde VMware ufku hakkında daha fazla bilgi edinmek için, [VMWare ufku SSS](https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/products/horizon/vmw-horizon-on-microsoft-azure-vmware-solution-faq.pdf)makalesini okuyun.

@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: dbc00d37b912ce7efb250aade0ea6790a1a227eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1da7149a41ec8dd08e307394cba3e7feabec42a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296765"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320712"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Depolama hesabı erişim anahtarlarını yeniden oluştur
 
@@ -26,13 +26,13 @@ Azure Machine Learning tarafından kullanılan Azure depolama hesapları için e
 Güvenlik nedeniyle, bir Azure depolama hesabının erişim anahtarlarını değiştirmeniz gerekebilir. Erişim anahtarını yeniden oluşturduğunuzda Azure Machine Learning yeni anahtarı kullanmak için güncelleştirilmeleri gerekir. Azure Machine Learning, hem model depolama hem de bir veri deposu olarak depolama hesabı kullanıyor olabilir.
 
 > [!IMPORTANT]
-> Datamağazalarla birlikte kayıt defteri kaydı, çalışma alanıyla ilişkili Azure Key Vault kaydedilir. Key Vault için [geçici silme](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview) etkinse, kimlik bilgilerini güncelleştirmek için bu makaleyi izlediğinizden emin olun. Veri deposunun kaydını silme ve aynı ada göre yeniden kaydetme başarısız olur.
+> Datamağazalarla birlikte kayıt defteri kaydı, çalışma alanıyla ilişkili Azure Key Vault kaydedilir. Key Vault için [geçici silme](../key-vault/general/soft-delete-overview.md) etkinse, kimlik bilgilerini güncelleştirmek için bu makaleyi izlediğinizden emin olun. Veri deposunun kaydını silme ve aynı ada göre yeniden kaydetme başarısız olur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için [çalışma alanı oluşturma](how-to-manage-workspace.md) makalesine bakın.
 
-* [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
+* [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
 
 * [Azure MACHINE LEARNING CLI uzantısı](reference-azure-machine-learning-cli.md).
 
@@ -110,7 +110,7 @@ Yeni anahtarı kullanmak üzere Azure Machine Learning güncelleştirmek için a
         Bu komut, çalışma alanı tarafından kullanılan Azure depolama hesabı için yeni anahtarları otomatik olarak eşitler.
 
 1. Depolama hesabını kullanan veri depolarımı SDK veya [Azure Machine Learning Studio](https://ml.azure.com)aracılığıyla yeniden kaydedebilirsiniz.
-    1. **Veri depolarını Python SDK aracılığıyla yeniden kaydetmek için**, [güncelleştirilmesi gereken](#whattoupdate) Özellikler bölümünde bulunan değerleri ve adım 1 ' deki anahtarı aşağıdaki kodla kullanın. 
+    1. **Veri depolarını Python SDK aracılığıyla yeniden kaydetmek için** , [güncelleştirilmesi gereken](#whattoupdate) Özellikler bölümünde bulunan değerleri ve adım 1 ' deki anahtarı aşağıdaki kodla kullanın. 
     
         `overwrite=True`Belirtildiği için, bu kod var olan kaydın üzerine yazar ve yeni anahtarı kullanacak şekilde günceller.
     
@@ -132,13 +132,13 @@ Yeni anahtarı kullanmak üzere Azure Machine Learning güncelleştirmek için a
         
         ```
     
-    1. **Veri depolarını Studio aracılığıyla yeniden kaydetmek için**, Studio 'nun sol bölmesindeki **veri depoları** ' nı seçin. 
+    1. **Veri depolarını Studio aracılığıyla yeniden kaydetmek için** , Studio 'nun sol bölmesindeki **veri depoları** ' nı seçin. 
         1. Güncelleştirmek istediğiniz veri deposunu seçin.
         1. Sol üstteki **kimlik bilgilerini güncelleştir** düğmesini seçin. 
-        1. Formu doldurmak için adım 1 ' deki yeni erişim anahtarınızı kullanın ve **Kaydet**' e tıklayın.
+        1. Formu doldurmak için adım 1 ' deki yeni erişim anahtarınızı kullanın ve **Kaydet** ' e tıklayın.
         
-            **Varsayılan veri deposu**için kimlik bilgilerini güncelleştiriyorsanız, bu adımı tamamlayarak yeni anahtarınızı çalışma alanının varsayılan veri deposu ile yeniden eşitleyin. 
+            **Varsayılan veri deposu** için kimlik bilgilerini güncelleştiriyorsanız, bu adımı tamamlayarak yeni anahtarınızı çalışma alanının varsayılan veri deposu ile yeniden eşitleyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Veri depolarını kaydetme hakkında daha fazla bilgi için bkz [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py&preserve-view=true) . sınıf başvurusu.
+Veri depolarını kaydetme hakkında daha fazla bilgi için bkz [`Datastore`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py) . sınıf başvurusu.

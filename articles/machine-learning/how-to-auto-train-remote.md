@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: 57108bed97b59513309213d55a0654f4405d509c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da1f73e3d31e162801e540e4d4ed5881041c4178
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90893318"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320782"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Otomatik makine öğrenmesi ile modelleri bulutta eğitin
 
@@ -43,9 +43,9 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>Kaynak oluşturma
 
-[`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py&preserve-view=true)Hedefi zaten yoksa çalışma alanınızda ( `ws` ) oluşturun.
+[`AmlCompute`](/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?preserve-view=true&view=azure-ml-py)Hedefi zaten yoksa çalışma alanınızda ( `ws` ) oluşturun.
 
-**Tahmin süresi**: AmlCompute hedefinin oluşturulması yaklaşık 5 dakika sürer.
+**Tahmin süresi** : AmlCompute hedefinin oluşturulması yaklaşık 5 dakika sürer.
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -90,7 +90,7 @@ Küme adı kısıtlamaları şunları içerir:
 
 ## <a name="access-data-using-tabulardataset-function"></a>TabularDataset işlevini kullanarak verilere erişme
 
-[`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true)Ve Içinde OTOMATIK ml 'ye geçirilen etiketi olarak tanımlanmış training_data [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) . Yöntemi, varsayılan olarak, `TabularDataset` `from_delimited_files` `infer_column_types` sütun türünü otomatik olarak çıkardığı true olarak ayarlar. 
+[`TabularDataset`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py)Ve Içinde OTOMATIK ml 'ye geçirilen etiketi olarak tanımlanmış training_data [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) . Yöntemi, varsayılan olarak, `TabularDataset` `from_delimited_files` `infer_column_types` sütun türünü otomatik olarak çıkardığı true olarak ayarlar. 
 
 Sütun türlerini el ile ayarlamak isterseniz, `set_column_types` her sütunun türünü el ile ayarlamak için bağımsız değişkenini ayarlayabilirsiniz. Aşağıdaki kod örneğinde, veriler sköğren paketinden gelir.
 
@@ -200,7 +200,7 @@ BEST: The best observed score thus far.
 
 ## <a name="explore-results"></a>Sonuçları keşfet
 
-Bir grafik ve sonuç tablosu görmek için [eğitim öğreticisinde](tutorial-auto-train-models.md#explore-the-results) gösterildiği gibi aynı [jupi pencere öğesini](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true) kullanabilirsiniz.
+Bir grafik ve sonuç tablosu görmek için [eğitim öğreticisinde](tutorial-auto-train-models.md#explore-the-results) gösterildiği gibi aynı [jupi pencere öğesini](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py) kullanabilirsiniz.
 
 ```python
 from azureml.widgets import RunDetails

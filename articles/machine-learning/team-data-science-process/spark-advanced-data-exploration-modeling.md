@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c024b12210d408fe2a9987cba56a08e4b660ae1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f4a8fb82a42c5121105ddf7bb9d3d886b531350
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86027554"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321345"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Spark ile gelişmiş veri keşfi ve modelleme
 
-Bu izlenecek yol, NYC TAXI seyahat ve tarifeli havayolu 2013 veri kümesinin bir örneği üzerinde çapraz doğrulama ve hiper parametre iyileştirmesi kullanarak, veri araştırması yapmak ve ikili sınıflandırma ve regresyon modellerini eğitmek için HDInsight Spark kullanır. Veri [bilimi işlemi](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), Işleme ve Azure Blob 'ları için verileri ve modelleri depolamak üzere bir HDInsight Spark kümesi kullanarak uçtan uca adım adım yol gösterir. İşlem, bir Azure Depolama Blobu getirilen verileri araştırır ve görselleştirir ve sonra tahmine dayalı modeller oluşturmak için verileri hazırlar. Python, çözümü kodlayın ve ilgili çizimleri göstermek için kullanılır. Bu modeller, ikili sınıflandırma ve regresyon modelleme görevleri yapmak için Spark MLlib araç seti kullanılarak oluşturulur. 
+Bu izlenecek yol, NYC TAXI seyahat ve tarifeli havayolu 2013 veri kümesinin bir örneği üzerinde çapraz doğrulama ve hiper parametre iyileştirmesi kullanarak, veri araştırması yapmak ve ikili sınıflandırma ve regresyon modellerini eğitmek için HDInsight Spark kullanır. Veri [bilimi işlemi](./index.yml), Işleme ve Azure Blob 'ları için verileri ve modelleri depolamak üzere bir HDInsight Spark kümesi kullanarak uçtan uca adım adım yol gösterir. İşlem, bir Azure Depolama Blobu getirilen verileri araştırır ve görselleştirir ve sonra tahmine dayalı modeller oluşturmak için verileri hazırlar. Python, çözümü kodlayın ve ilgili çizimleri göstermek için kullanılır. Bu modeller, ikili sınıflandırma ve regresyon modelleme görevleri yapmak için Spark MLlib araç seti kullanılarak oluşturulur. 
 
 * **İkili sınıflandırma** görevi, seyahat için bir tıp ödenip ödenmediğini tahmin etmeye yöneliktir. 
 * **Gerileme** görevi, diğer ipucu özelliklerine göre ipucu miktarını tahmin etmek için kullanılır. 
@@ -31,7 +31,7 @@ Modelleme adımları Ayrıca her bir model türünün nasıl eğileceğini, değ
 
 **Hiper parametre iyileştirmesi** , genellikle bir öğrenme algoritması için hiper parametre kümesi seçme sorununa, genellikle bir bağımsız veri kümesindeki algoritmanın performansının bir ölçüsünü en iyi duruma getirme amacını içeren bir sorundur. **Hiper parametreler** , model eğitimi yordamının dışında belirtilmesi gereken değerlerdir. Bu değerler hakkındaki varsayımlar, modellerin esnekliğini ve doğruluğunu etkileyebilir. Karar ağaçları, örneğin, ağaçta istenen derinlik ve sayıda yaprakları gibi hiper parametrelere sahiptir. Destek vektör makineleri (SVMs), yanlış sınıflandırma ceza dönemi ayarlamayı gerektirir. 
 
-Burada kullanılan hiper parametre iyileştirmesini gerçekleştirmenin yaygın bir yolu, bir ızgara araması veya bir **parametre tarama**yöntemidir. Bu arama, bir öğrenme algoritması için hiper parametre alanının bir alt kümesinden geçer. Çapraz doğrulama, kılavuz arama algoritması tarafından üretilen en iyi sonuçları sıralamak için bir performans ölçümü sağlayabilir. Hiperparametre sweile kullanılan CV, modelin eğitim verilerinin ayıklandığı genel veri kümesine uygulanmasını sağlamak için bir modelin verileri eğitimine kadar olan sorunları sınırlamaya yardımcı olur.
+Burada kullanılan hiper parametre iyileştirmesini gerçekleştirmenin yaygın bir yolu, bir ızgara araması veya bir **parametre tarama** yöntemidir. Bu arama, bir öğrenme algoritması için hiper parametre alanının bir alt kümesinden geçer. Çapraz doğrulama, kılavuz arama algoritması tarafından üretilen en iyi sonuçları sıralamak için bir performans ölçümü sağlayabilir. Hiperparametre sweile kullanılan CV, modelin eğitim verilerinin ayıklandığı genel veri kümesine uygulanmasını sağlamak için bir modelin verileri eğitimine kadar olan sorunları sınırlamaya yardımcı olur.
 
 Kullandığımız modeller şunlardır: lojistik ve doğrusal regresyon, rastgele ormanlar ve gradyan tarafından artırılmış ağaçlar:
 
@@ -119,7 +119,7 @@ Jupyter Not defterleri ile birlikte sunulan pyspark çekirdekler 'in önceden ay
 PySpark çekirdeği,%% ile çağırabilmeniz için özel komutlar olan önceden tanımlanmış bazı "mıknatıcs" sağlar. Bu kod örneklerinde kullanılan iki komut vardır.
 
 * **%% Yerel** Sonraki satırlardaki kodun yerel olarak yürütüleceğini belirtir. Kod geçerli bir Python kodu olmalıdır.
-* **%% SQL-o \<variable name> ** SqlContext 'e karşı bir Hive sorgusu yürütür. -O parametresi geçirilirse, sorgunun sonucu%% yerel Python bağlamında Pandas DataFrame olarak kalıcı hale getirilir.
+* **%% SQL-o \<variable name>** SqlContext 'e karşı bir Hive sorgusu yürütür. -O parametresi geçirilirse, sorgunun sonucu%% yerel Python bağlamında Pandas DataFrame olarak kalıcı hale getirilir.
 
 Jupyter Not defterleri ve sağladıkları önceden tanımlanmış "mıknatık" hakkında daha fazla bilgi için bkz. [HDInsight 'ta HDInsight Spark Linux kümeleri içeren Jupyter Not defterleri için sunulan çekirdekler](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
@@ -202,7 +202,7 @@ Veriler Spark 'a alındıktan sonra, veri bilimi sürecinin bir sonraki adımı,
 Bu kod ve sonraki parçacıklar, verileri çizmek için örneği ve yerel Magic 'i sorgulamak için SQL Magic kullanır.
 
 * **SQL Magic ( `%%sql` )** HDInsight Pyspark çekirdeği, SqlContext 'e karşı kolay satır Içi hiveql sorgularını destekler. (-O VARIABLE_NAME) bağımsız değişkeni, SQL sorgusunun çıkışını jupi sunucusunda bir Pandas DataFrame olarak devam ettirir. Bu, yerel modda kullanılabildiği anlamına gelir.
-* ** `%%local` MAGIC** , HDInsight kümesinin baş düğümüne olan jupyıter sunucusunda yerel olarak kod çalıştırmak için kullanılır. Genellikle, `%%local` `%%sql -o` bir sorgu çalıştırmak için Magic kullanıldıktan sonra sihirli ' i kullanırsınız. -O parametresi, SQL sorgusunun çıkışını yerel olarak kalıcı hale getirebilecek. Sonra `%%local` Magic, yerel olarak kalıcı olan SQL sorgularının çıktısına karşı yerel olarak çalıştırılacak bir sonraki kod parçacığı kümesini tetikler. Kodu çalıştırdıktan sonra çıkış otomatik olarak görselleştirilebilir.
+* **`%%local` MAGIC** , HDInsight kümesinin baş düğümüne olan jupyıter sunucusunda yerel olarak kod çalıştırmak için kullanılır. Genellikle, `%%local` `%%sql -o` bir sorgu çalıştırmak için Magic kullanıldıktan sonra sihirli ' i kullanırsınız. -O parametresi, SQL sorgusunun çıkışını yerel olarak kalıcı hale getirebilecek. Sonra `%%local` Magic, yerel olarak kalıcı olan SQL sorgularının çıktısına karşı yerel olarak çalıştırılacak bir sonraki kod parçacığı kümesini tetikler. Kodu çalıştırdıktan sonra çıkış otomatik olarak görselleştirilebilir.
 
 Bu sorgu, döngüleri pasur sayısına göre alır. 
 
@@ -594,7 +594,7 @@ Her model derleme kodu bölümü, adımlara ayrılır:
 İki şekilde parametre sweile çapraz doğrulamanın (CV) nasıl yapılacağını göstereceğiz:
 
 1. MLlib 'teki herhangi bir algoritmaya ve bir algoritmadaki herhangi bir parametre kümesine uygulanabilen **genel** özel kod kullanma. 
-2. **Pyspark CrossValidator işlem hattı işlevini**kullanma. Çapraz Doğrulayıcı Spark 1.5.0 için bazı sınırlamalara sahiptir: 
+2. **Pyspark CrossValidator işlem hattı işlevini** kullanma. Çapraz Doğrulayıcı Spark 1.5.0 için bazı sınırlamalara sahiptir: 
    
    * Ardışık düzen modelleri gelecekteki tüketim için kaydedilemez veya kalıcı hale getirilir.
    * Bir modeldeki her parametre için kullanılamaz.
@@ -764,7 +764,7 @@ Hücrenin yürütülmesi için geçen süre: 2,67 saniye
 
 **ROC eğrisini çiz.**
 
-*PredictionAndLabelsDF* , önceki hücrede *tmp_results*tablo olarak kaydedilir. *tmp_results* , çizim Için SQLResults veri çerçevesinde sorgu ve çıkış sonuçları yapmak için kullanılabilir. Kod şöyledir.
+*PredictionAndLabelsDF* , önceki hücrede *tmp_results* tablo olarak kaydedilir. *tmp_results* , çizim Için SQLResults veri çerçevesinde sorgu ve çıkış sonuçları yapmak için kullanılabilir. Kod şöyledir.
 
 ```python
 # QUERY RESULTS                              
@@ -895,7 +895,7 @@ Hücrenin yürütülmesi için geçen süre: 107,98 saniye
 
 **ROC eğrisini çiz.**
 
-*PredictionAndLabelsDF* , önceki hücrede *tmp_results*tablo olarak kaydedilir. *tmp_results* , çizim Için SQLResults veri çerçevesinde sorgu ve çıkış sonuçları yapmak için kullanılabilir. Kod şöyledir.
+*PredictionAndLabelsDF* , önceki hücrede *tmp_results* tablo olarak kaydedilir. *tmp_results* , çizim Için SQLResults veri çerçevesinde sorgu ve çıkış sonuçları yapmak için kullanılabilir. Kod şöyledir.
 
 ```python
 # QUERY RESULTS
@@ -1508,4 +1508,3 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 Spark MlLib ile gerileme ve sınıflandırma modelleri oluşturduğunuza göre, bu modellerin nasıl puan alabileceğinizi ve değerlendirileceğini öğrenmek için hazırsınız demektir.
 
 **Model tüketimi:** Bu konuda oluşturulan sınıflandırma ve regresyon modellerini Puanlama ve değerlendirme hakkında bilgi edinmek için bkz. [Spark tarafından oluşturulan Machine Learning modellerini Puanlama ve değerlendirme](spark-model-consumption.md).
-

@@ -12,12 +12,12 @@ ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 04/28/2020
 tag: azure-synpase
-ms.openlocfilehash: 2ba0c53b9d0b9791364f532d999d86c74fa21177
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: eae7d0a34d6bd76dae5998f05f9d64e0d40f7d9b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678063"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321607"
 ---
 # <a name="conditional-access-with-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics ile koşullu erişim
 
@@ -27,9 +27,9 @@ Azure [SQL veritabanı](sql-database-paas-overview.md), [Azure SQL yönetilen ö
 
 Aşağıdaki adımlarda, koşullu erişim (CA) ilkesini zorlamak için Azure SQL veritabanı, SQL yönetilen örneği veya Azure SYNAPSE 'in nasıl yapılandırılacağı gösterilmektedir.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- Azure SQL veritabanı, Azure SQL yönetilen örneği veya Azure SQL havuzunu Azure Active Directory (Azure AD) kimlik doğrulamasını destekleyecek şekilde yapılandırmanız gerekir. Belirli adımlar için bkz. [SQL veritabanı veya Azure SYNAPSE ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme](authentication-aad-configure.md).  
+- Azure Active Directory (Azure AD) kimlik doğrulamasını desteklemek için Azure SQL veritabanı, Azure SQL yönetilen örneği veya adanmış SQL havuzunu Azure SYNAPSE ' de yapılandırmanız gerekir. Belirli adımlar için bkz. [SQL veritabanı veya Azure SYNAPSE ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme](authentication-aad-configure.md).  
 - Multi-Factor Authentication etkinleştirildiğinde, en son SQL Server Management Studio (SSMS) gibi desteklenen bir araçla bağlanmanız gerekir. Daha fazla bilgi için bkz. [SQL Server Management Studio Için Azure SQL veritabanı Multi-Factor Authentication 'ı yapılandırma](authentication-mfa-ssms-configure.md).  
 
 ## <a name="configure-conditional-access"></a>Koşullu erişim yapılandırma

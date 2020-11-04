@@ -8,28 +8,28 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 33022d005deca5d1350278218fb6f1fca1a35ca1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fe31f83ccc0dcbd2d61a7c70d40a64da08d13a1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287756"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321031"
 ---
 # <a name="azure-synapse-studio-preview-troubleshooting"></a>Azure SYNAPSE Studio (Önizleme) sorunlarını giderme
 
 Bu sorun giderme kılavuzu, ağ bağlantısı sorunları üzerinde bir destek bileti açılırken hangi bilgilerin sağlanmasında yönergeler sağlar. Uygun bilgilerle sorunu daha çabuk çözebiliriz.
 
-## <a name="sql-on-demand-preview-service-connectivity-issue"></a>SQL isteğe bağlı (Önizleme) hizmeti bağlantı sorunu
+## <a name="serverless-sql-pool-preview-service-connectivity-issue"></a>Sunucusuz SQL Havuzu (Önizleme) hizmeti bağlantı sorunu
 
 ### <a name="symptom-1"></a>Belirti 1
 
-"Bağlan" açılan listesinde "SQL isteğe bağlı" seçeneği gri renkte.
+"Connect to" açılan menüsünde "sunucusuz SQL havuzu" seçeneği gri renkte.
 
 ![symptom1](media/troubleshooting-synapse-studio/symptom1v2.png)
 
 ### <a name="symptom-2"></a>Belirti 2
 
-Sorguyu "SQL isteğe bağlı" ile çalıştırmak "sunucu bağlantısı kurulamadı" hata iletisini verir.
+Sorguyu "sunucusuz SQL havuzu" ile çalıştırmak, "sunucu bağlantısı kurulamadı" hata iletisini verir.
 
 ![Belirti 2](media/troubleshooting-synapse-studio/symptom2.png)
  
@@ -45,7 +45,7 @@ Sorguyu "SQL isteğe bağlı" ile çalıştırmak "sunucu bağlantısı kurulama
 
 Sorun gidermeye başlamak için, Azure SYNAPSE Studio 'da gerçekleştirdiğiniz işlemi yeniden deneyin.
 
-- Belirti 1 için, "SQL komut dosyası" sekmesinde "veritabanı kullan" açılan menüsünün sağ tarafındaki "Yenile" düğmesini seçin ve "SQL isteğe bağlı" seçeneğini görüp görmeyeceğinizi denetleyin.
+- Belirti 1 için "SQL komut dosyası" sekmesinde "veritabanı kullan" açılan menüsünün sağ tarafındaki "Yenile" düğmesini seçin ve "sunucusuz SQL havuzu" nı görüp görmeyeceğinizi denetleyin.
 - Belirti 2 ' de, başarıyla yürütülüp yürütülmediğini görmek için sorguyu yeniden çalıştırmayı deneyin.
 
 Sorun devam ederse, "Geliştirici Araçları" (DevTools) öğesini açmak için tarayıcınızda F12 tuşuna basın.
@@ -61,7 +61,7 @@ URL sütunu aşağıdaki Düzenle eşleşen öğeyi bul:
 
 `https://[*A*]-ondemand.database.windows.net:1443/databases/[*B*]/query?api-version=2018-08-01-preview&application=ArcadiaSqlOnDemandExplorer`
 
-Burada [*A*] çalışma alanınızın adıdır ve "-OnDemand" "-sqlod" olabilir ve burada [*B*], "ana" gibi bir veritabanı adı olmalıdır. Aynı URL değerine ancak farklı yöntem değerlerine sahip en fazla iki öğe olmalıdır; Seçenekler ve GÖNDERI. Bu iki öğenin durum sütunu altında "200" veya "20X" olup olmadığını kontrol edin; burada "x" herhangi bir tek basamak olabilir.
+Burada [ *A* ] çalışma alanınızın adıdır ve "-OnDemand" "-sqlod" olabilir ve burada [ *B* ], "ana" gibi bir veritabanı adı olmalıdır. Aynı URL değerine ancak farklı yöntem değerlerine sahip en fazla iki öğe olmalıdır; Seçenekler ve GÖNDERI. Bu iki öğenin durum sütunu altında "200" veya "20X" olup olmadığını kontrol edin; burada "x" herhangi bir tek basamak olabilir.
 
 Bunlardan birinin "20X" ve dışında bir şey varsa:
 
@@ -71,7 +71,7 @@ Bunlardan birinin "20X" ve dışında bir şey varsa:
 
     - ERR_NAME_NOT_RESOLVED görürseniz ve çalışma alanınızı 10 dakika içinde oluşturduysanız, 10 dakika bekleyin ve sorunun hala mevcut olup olmadığını görmek için yeniden deneyin.
     - ERR_INTERNET_DISCONNECTED veya ERR_NETWORK_CHANGED görürseniz, bılgısayar ağ bağlantınızın sorun olduğunu belirtebilir. Ağ bağlantınızı denetleyip işlemi yeniden deneyin.
-    - "SSL" içeren ERR_CONNECTION_RESET, ERR_SSL_PROTOCOL_ERROR veya diğer hata kodları görürseniz, bu, yerel SSL yapılandırmanızın sorun olduğunu veya ağ yöneticinizin isteğe bağlı SQL Server 'a erişimi engellediği anlamına gelebilir. Bir destek bileti açın ve hata kodunu açıklamaya ekleyin.
+    - "SSL" içeren ERR_CONNECTION_RESET, ERR_SSL_PROTOCOL_ERROR veya diğer hata kodları görürseniz, bu, yerel SSL yapılandırmanızın sorun olduğunu veya ağ yöneticinizin sunucusuz SQL havuzu sunucusuna erişimi engellediği anlamına gelebilir. Bir destek bileti açın ve hata kodunu açıklamaya ekleyin.
     - ERR_NETWORK_ACCESS_DENIED görürseniz, yerel güvenlik duvarı ilkenizin *. database.windows.net etki alanına veya 1443 uzak bağlantı noktasına erişiminin engellenip engellenmediğini yönetici ile denetlemeniz gerekebilir.
     - İsteğe bağlı olarak, bilgisayarınızda bir ağ yapılandırması sorununu denemek için aynı işlemi, farklı bir makine ve/veya ağ ortamında hemen deneyin.
 

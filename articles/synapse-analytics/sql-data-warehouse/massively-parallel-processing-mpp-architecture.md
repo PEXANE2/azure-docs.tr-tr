@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1cb49fc33567b13065351a28a557232212c6adc4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1d32aa011e9e816f97b050d43f9558af0cf82e90
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479349"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319661"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) mimarisi
 
@@ -25,8 +25,8 @@ Azure Synapse kurumsal veri ambarı özellikleriyle Büyük Veri analizini bir a
 
 - SYNAPSE SQL: tam T-SQL tabanlı analiz
 
-  - SQL Havuzu (sağlanan DWU başına ödeme) – genel olarak kullanılabilir
-  - İstek üzerine SQL (işlenen TB başına ödeme) – (Önizleme)
+  - Adanmış SQL Havuzu (sağlanan DWU başına ödeme) – genel olarak kullanılabilir
+  - Sunucusuz SQL Havuzu (işlenen TB başına ödeme) – (Önizleme)
 - Spark: derin tümleşik Apache Spark (Önizleme)
 - Veri tümleştirme: karma veri tümleştirmesi (Önizleme)
 - Studio: birleştirilmiş kullanıcı deneyimi.  (Önizleme)
@@ -35,7 +35,7 @@ Azure Synapse kurumsal veri ambarı özellikleriyle Büyük Veri analizini bir a
 
 ## <a name="synapse-sql-architecture-components"></a>SYNAPSE SQL mimarisi bileşenleri
 
-[SYNAPSE SQL](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) , verilerin birden çok düğüm arasında işlem işlemesini dağıtmak için bir genişleme mimarisinden yararlanır. Ölçek birimi, [veri ambarı birimi](what-is-a-data-warehouse-unit-dwu-cdwu.md)olarak bilinen bir işlem gücü soyutlamasıdır. İşlem depolama alanından ayrıdır ve bu işlem, sisteminizi sisteminizdeki verilerden bağımsız olarak ölçeklendirmenizi sağlar.
+[SYNAPSE SQL](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse) , verilerin birden çok düğüm arasında işlem işlemesini dağıtmak için bir genişleme mimarisinden yararlanır. Ölçek birimi, [veri ambarı birimi](what-is-a-data-warehouse-unit-dwu-cdwu.md)olarak bilinen bir işlem gücü soyutlamasıdır. İşlem depolama alanından ayrıdır ve bu işlem, sisteminizi sisteminizdeki verilerden bağımsız olarak ölçeklendirmenizi sağlar.
 
 ![Synapse SQL mimarisi](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
@@ -50,7 +50,7 @@ Ayrılmış depolama ve işlem ile, SYNAPSE SQL havuzu bir arada kullanıldığ�
 - Verileri olduğu gibi bırakıp işlem kapasitesini duraklatır, böylece yalnızca depolama için ödeme yaparsınız.
 - Çalışma saatleri içinde işlem kapasitesini sürdürme.
 
-### <a name="azure-storage"></a>Azure Depolama
+### <a name="azure-storage"></a>Azure Storage
 
 SYNAPSE SQL, kullanıcı verilerinizi güvende tutmak için Azure Storage 'ı kullanır.  Verileriniz Azure depolama tarafından depolandığından ve yönetildiğinden, depolama tüketiminize yönelik ayrı bir ücret alınır. Veriler, sistem performansını iyileştirmek için **dağıtımlarla** birleştirilir. Tabloyu tanımlarken verileri dağıtmak için kullanılacak parçalama düzeninin arasından seçim yapabilirsiniz. Bu parçalı desenler desteklenir:
 

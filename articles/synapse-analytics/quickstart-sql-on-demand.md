@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: isteğe bağlı SQL kullanma'
-description: Bu hızlı başlangıçta, SQL isteğe bağlı (Önizleme) kullanarak çeşitli dosya türlerini sorgulamak için ne kadar kolay olduğunu göreceksiniz.
+title: 'Hızlı başlangıç: sunucusuz SQL havuzu kullanma'
+description: Bu hızlı başlangıçta, sunucusuz SQL Havuzu (Önizleme) kullanarak çeşitli dosya türlerini nasıl sorgulayabileceğinizi göreceksiniz.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: fe07192b0077518cdd73092f53342c298034cfa8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b2e502a984e71a06eb57b345371d70d659c6a031
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86274178"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321677"
 ---
-# <a name="quickstart-use-sql-on-demand"></a>Hızlı başlangıç: isteğe bağlı SQL kullanma
+# <a name="quickstart-use-serverless-sql-pool"></a>Hızlı başlangıç: sunucusuz SQL havuzu kullanma
 
-SYNAPSE SQL isteğe bağlı (Önizleme), Azure depolama 'ya yerleştirilmiş dosyalarda SQL sorguları çalıştırmanızı sağlayan sunucusuz bir sorgu hizmetidir. Bu hızlı başlangıçta, isteğe bağlı SQL kullanarak çeşitli dosya türlerini sorgulamayı öğreneceksiniz. Desteklenen biçimler [OPENROWSET](sql/develop-openrowset.md)'de listelenmiştir.
+SYNAPSE sunucusuz SQL Havuzu (Önizleme), Azure depolama 'ya yerleştirilmiş dosyalarda SQL sorguları çalıştırmanızı sağlayan sunucusuz bir sorgu hizmetidir. Bu hızlı başlangıçta, sunucusuz SQL havuzu kullanarak çeşitli dosya türlerini sorgulamayı öğreneceksiniz. Desteklenen biçimler [OPENROWSET](sql/develop-openrowset.md)'de listelenmiştir.
 
 Bu hızlı başlangıçta sorgulama: CSV, Apache Parquet ve JSON dosyaları gösterilmektedir.
 
@@ -34,8 +34,8 @@ Bu hızlı başlangıç için Parametreler:
 
 | Parametre                                 | Açıklama                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| SQL isteğe bağlı hizmet uç noktası adresi    | Sunucu adı olarak kullanılır                                   |
-| SQL isteğe bağlı hizmet uç noktası bölgesi     | Örneklerde hangi depolamanın kullanılacağını belirlemek için kullanılır |
+| Sunucusuz SQL havuzu hizmeti uç noktası adresi    | Sunucu adı olarak kullanılır                                   |
+| Sunucusuz SQL havuzu hizmet uç noktası bölgesi     | Örneklerde hangi depolamanın kullanılacağını belirlemek için kullanılır |
 | Uç nokta erişimi için Kullanıcı adı ve parola | Uç noktaya erişmek için kullanılır                               |
 | Görünümler oluşturmak için kullanılan veritabanı         | Örneklerde başlangıç noktası olarak kullanılan veritabanı       |
 
@@ -44,7 +44,7 @@ Bu hızlı başlangıç için Parametreler:
 Örnekleri kullanmadan önce:
 
 - Görünümleriniz için veritabanı oluşturma (görünümleri kullanmak istediğiniz durumlarda)
-- Depolamadaki dosyalara erişmek için SQL isteğe bağlı olarak kullanılacak kimlik bilgilerini oluşturun
+- Depolama alanındaki dosyalara erişmek için sunucusuz SQL havuzu tarafından kullanılacak kimlik bilgilerini oluşturma
 
 ### <a name="create-database"></a>Veritabanı oluşturma
 
@@ -62,7 +62,7 @@ CREATE DATABASE mydbname
 
 ### <a name="create-data-source"></a>Veri kaynağı oluştur
 
-Sorguları SQL ile isteğe bağlı olarak çalıştırmak için, SQL isteğe bağlı SQL 'in depolama alanındaki dosyalara erişmek için kullanabileceği veri kaynağı oluşturun.
+Sunucusuz SQL havuzu kullanarak sorguları çalıştırmak için, sunucusuz SQL havuzunun depolama alanındaki dosyalara erişmek için kullanabileceği veri kaynağı oluşturun.
 Bu bölümdeki örneklerde kullanılan veri kaynağını oluşturmak için aşağıdaki kod parçacığını yürütün:
 
 ```sql
@@ -115,7 +115,7 @@ Daha fazla örnek için bkz. [CSV dosyasını sorgulama](sql/query-single-csv-fi
 Aşağıdaki örnek, Parquet dosyalarını sorgulamak için otomatik Şema çıkarımı özelliklerini gösterir. Şemayı belirtmeden, Eylül 2017 ' deki satır sayısını döndürür.
 
 > [!NOTE]
-> `OPENROWSET WITH`Parquet dosyalarını okurken yan tümce içinde sütunlar belirtmeniz gerekmez. Bu durumda, SQL isteğe bağlı, verileri Parquet dosyasında kullanır ve sütunları ada göre bağlar.
+> `OPENROWSET WITH`Parquet dosyalarını okurken yan tümce içinde sütunlar belirtmeniz gerekmez. Bu durumda, sunucusuz SQL havuzu, verileri Parquet dosyasında kullanır ve sütunları ada göre bağlar.
 
 ```sql
 SELECT COUNT_BIG(*)
@@ -133,7 +133,7 @@ FROM OPENROWSET
 
 ### <a name="json-sample-file"></a>JSON örnek dosyası
 
-Dosyalar *JSON* kapsayıcısına, klasör *kitaplarına*depolanır ve aşağıdaki yapıyla tek defter girişi içerir:
+Dosyalar *JSON* kapsayıcısına, klasör *kitaplarına* depolanır ve aşağıdaki yapıyla tek defter girişi içerir:
 
 ```json
 {  
@@ -153,7 +153,7 @@ Dosyalar *JSON* kapsayıcısına, klasör *kitaplarına*depolanır ve aşağıda
 
 ### <a name="query-json-files"></a>JSON dosyalarını sorgulama
 
-Aşağıdaki sorgu, *Cryptology 'de dayalı ve Istatistiksel Yöntemler*başlığına sahip bir kitapta skalar değerler (başlık, yayımcı) almak için [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kullanmayı gösterir, seçilen makalelere giriş:
+Aşağıdaki sorgu, *Cryptology 'de dayalı ve Istatistiksel Yöntemler* başlığına sahip bir kitapta skalar değerler (başlık, yayımcı) almak için [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) kullanmayı gösterir, seçilen makalelere giriş:
 
 ```sql
 SELECT

@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: 462cf6cf850885b31588123bac46ff99bf319ee8
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: c17eeda91af46c4159f7c4b1747416298f24c703
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93243148"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319645"
 ---
 # <a name="regional-code-names-and-endpoints"></a>Bölgesel kod adları ve uç noktaları
 
@@ -63,6 +63,9 @@ Aşağıdaki uç noktalar, farklı ulusal Azure bulutlarından Media Services he
 [!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
 
 ### <a name="azure-germany"></a>Azure Almanya
+
+> [!NOTE]
+> Azure Almanya uç noktaları yalnızca Almanya 'daki Sogeign bulutları için geçerlidir.
 
 | Hizmet | Uç Nokta |
 | ------- | -------- |

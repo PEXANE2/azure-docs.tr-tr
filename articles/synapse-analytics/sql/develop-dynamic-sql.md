@@ -11,14 +11,15 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 4a4ce92278d5f6704fec4a5b9d30b44ddf89b0ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad7e98fcd544a538d45485cfb79acb3e7a6c843f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033447"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321477"
 ---
 # <a name="dynamic-sql-in-synapse-sql"></a>SYNAPSE SQL 'de dinamik SQL
+
 Bu makalede, dinamik SQL kullanma ve SYNAPSE SQL kullanarak çözüm geliştirme hakkında ipuçları bulacaksınız.
 
 ## <a name="dynamic-sql-example"></a>Dinamik SQL örneği
@@ -26,7 +27,7 @@ Bu makalede, dinamik SQL kullanma ve SYNAPSE SQL kullanarak çözüm geliştirme
 Uygulama kodu geliştirirken esnek, genel ve modüler çözümler sunmaya yardımcı olması için dinamik SQL kullanmanız gerekebilir.
 
 > [!NOTE]
-> SQL havuzu şu anda blob veri türlerini desteklemiyor. Blob veri türleri hem varchar (max) hem de nvarchar (max) türlerini içerdiğinden, blob veri türlerini desteklememe, dizelerin boyutunu sınırlayabilir. Büyük dizeler oluşturmak için uygulama kodunuzda bu türleri kullandıysanız, kodu parçalara ayırmak ve bunun yerine EXEC ifadesini kullanmanız gerekir.
+> Adanmış SQL havuzu şu anda blob veri türlerini desteklemiyor. Blob veri türleri hem varchar (max) hem de nvarchar (max) türlerini içerdiğinden, blob veri türlerini desteklememe, dizelerin boyutunu sınırlayabilir. Büyük dizeler oluşturmak için uygulama kodunuzda bu türleri kullandıysanız, kodu parçalara ayırmak ve bunun yerine EXEC ifadesini kullanmanız gerekir.
 
 Basit bir örnek:
 
@@ -38,7 +39,7 @@ DECLARE @sql_fragment1 VARCHAR(8000)=' SELECT name '
 EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 ```
 
-Dize kısaysa, [sp_executesql](/sql/relational-databases/system-stored-procedures/sp-executesql-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) normal olarak kullanabilirsiniz.
+Dize kısaysa, [sp_executesql](/sql/relational-databases/system-stored-procedures/sp-executesql-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) normal olarak kullanabilirsiniz.
 
 > [!NOTE]
 > Dinamik SQL olarak yürütülen deyimler, tüm T-SQL doğrulama kurallarına tabi olmaya devam edecektir.

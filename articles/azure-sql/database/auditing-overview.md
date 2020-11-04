@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 5c87344c4cd179beae6502901a23b2dace6591a7
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 8fd794822e9e4fe282d6ef8a8ccf1eb908c03560
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677223"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321655"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için denetim
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -44,8 +44,8 @@ SQL veritabanı denetimini kullanarak şunları yapabilirsiniz:
 
 ### <a name="auditing-limitations"></a>Denetim sınırlamaları
 
-- **Premium Depolama** Şu anda **desteklenmiyor** .
-- **Azure Data Lake Storage 2. depolama hesabı** için **hiyerarşik ad alanı** Şu anda **desteklenmiyor** .
+- **Premium Depolama** Şu anda **desteklenmiyor**.
+- **Azure Data Lake Storage 2. depolama hesabı** için **hiyerarşik ad alanı** Şu anda **desteklenmiyor**.
 - Duraklatılmış bir **Azure SYNAPSE** üzerinde denetim etkinleştirilmesi desteklenmez. Denetimi etkinleştirmek için Azure SYNAPSE ' ı yeniden edin.
 
 #### <a name="define-server-level-vs-database-level-auditing-policy"></a><a id="server-vs-database-level"></a>Sunucu düzeyinde ve veritabanı düzeyinde denetim ilkesini tanımlayın
@@ -54,7 +54,7 @@ Bir denetim ilkesi, belirli bir veritabanı için veya Azure 'da varsayılan [su
 
 - Sunucu ilkesi, sunucuda var olan ve yeni oluşturulan tüm veritabanları için geçerlidir.
 
-- *Sunucu denetimi etkinse* , *her zaman veritabanına uygulanır* . Veritabanı denetim ayarlarından bağımsız olarak veritabanını denetlenecektir.
+- *Sunucu denetimi etkinse* , *her zaman veritabanına uygulanır*. Veritabanı denetim ayarlarından bağımsız olarak veritabanını denetlenecektir.
 
 - Veritabanında etkinleştirmenin yanı sıra sunucu üzerinde denetimi etkinleştirmek, sunucu denetiminin ayarlarından *hiçbirini geçersiz kılmaz veya değiştirmez.* Her iki denetim de yan yana bulunur. Diğer bir deyişle, veritabanı paralel olarak iki kez denetlenir; sunucu ilkesi tarafından bir kez ve veritabanı ilkesi tarafından bir kez.
 
@@ -76,11 +76,11 @@ Varsayılan denetim ilkesi, tüm eylemleri ve aşağıdaki eylem grubu kümesini
   
 [Azure PowerShell kullanarak SQL veritabanı denetimini yönetme](#manage-auditing) bölümünde açıklandığı gibi, PowerShell kullanarak farklı türlerde eylemler ve eylem grupları için denetimi yapılandırabilirsiniz.
 
-Azure SQL veritabanı ve Azure SYNAPSE Audit, bir denetim kaydındaki karakter alanları için 4000 karakter veri depolar. Denetlenebilir bir eylemden döndürülen **ifade** veya **data_sensitivity_information** değerleri 4000 'den fazla karakter içeriyorsa, ilk 4000 karakterden sonraki tüm veriler **kesilir ve denetlenmeyecektir** .
+Azure SQL veritabanı ve Azure SYNAPSE Audit, bir denetim kaydındaki karakter alanları için 4000 karakter veri depolar. Denetlenebilir bir eylemden döndürülen **ifade** veya **data_sensitivity_information** değerleri 4000 'den fazla karakter içeriyorsa, ilk 4000 karakterden sonraki tüm veriler **kesilir ve denetlenmeyecektir**.
 Aşağıdaki bölümde Azure portal kullanılarak denetim yapılandırması açıklanmaktadır.
 
   > [!NOTE]
-  > Duraklatılmış bir Synapse SQL havuzunda denetim etkinleştirilmesi mümkün değildir. Denetimi etkinleştirmek için SYNAPSE SQL havuzunun duraklamasını kaldırın. [SYNAPSE SQL havuzu](../../synapse-analytics/sql/best-practices-sql-pool.md)hakkında daha fazla bilgi edinin.
+  > Duraklatılmış bir adanmış SQL havuzunda denetim etkinleştirilmesi mümkün değildir. Denetimi etkinleştirmek için adanmış SQL havuzunun duraklamasını kaldırın. [ADANMıŞ SQL havuzu](../..//synapse-analytics/sql/best-practices-sql-pool.md)hakkında daha fazla bilgi edinin.
 
 1. [Azure portalına](https://portal.azure.com) gidin.
 2. **SQL veritabanınızda** veya **SQL Server** bölmesindeki güvenlik başlığı altında bulunan **denetime** gidin.

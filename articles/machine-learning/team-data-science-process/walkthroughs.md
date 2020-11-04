@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 76027275d6f0b838ed6fbb7275086f190701d286
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a1af48d89fbf5d303c2a6b8ef85ca3117debd5a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439836"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320074"
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>Ekip veri bilimi Işlemini yürüten izlenecek yollar
 
-Bu **kapsamlı izlenecek yollar** , belirli senaryolar Için ekip veri bilimi işlemindeki adımları gösterir. Bulut, şirket içi araçları ve Hizmetleri **akıllı bir uygulama**için bir iş akışında nasıl birleştirebileceğinizi gösterir. İzlenecek yollar, kullandıkları **platforma** göre gruplandırılır.
+Bu **kapsamlı izlenecek yollar** , belirli senaryolar Için ekip veri bilimi işlemindeki adımları gösterir. Bulut, şirket içi araçları ve Hizmetleri **akıllı bir uygulama** için bir iş akışında nasıl birleştirebileceğinizi gösterir. İzlenecek yollar, kullandıkları **platforma** göre gruplandırılır.
 
 
 ## <a name="walkthrough-descriptions"></a>İzlenecek yol açıklamaları
@@ -42,5 +42,4 @@ Ekip veri bilimi sürecini oluşturan anahtar bileşenleriyle ilgili bir tartı�
 
 Team Data Science Işlem yaşam döngüsü hakkında bir tartışma için bkz. [Team Data Science işlem yaşam döngüsü](lifecycle.md). Bu yaşam döngüsü, başlangıçtan sonuna kadar olan adımları özetler ve bu da projeler genellikle yürütüldüğünde izler. 
 
-Genel bakış için bkz. [veri bilimi işlemi](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/). 
-
+Genel bakış için bkz. [veri bilimi işlemi](./index.yml).

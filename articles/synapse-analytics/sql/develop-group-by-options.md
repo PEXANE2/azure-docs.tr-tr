@@ -11,25 +11,26 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 0d9d28bacac02326ee781ca56309b7a72e921960
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d160040620fcaa60a8adc955efcc54ac3ca2609e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289178"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321446"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>SYNAPSE SQL 'de gruplandırma ölçütü seçenekleri
+
 SYNAPSE SQL, farklı gruplandırma seçenekleri uygulayarak çözüm geliştirmeye olanak sağlar. 
 
-## <a name="what-does-group-by-do"></a>Gruplandırma ölçütü ne yapar
+## <a name="what-group-by-does"></a>Gruplandırma ölçütü
 
 [Group By](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL yan tümcesi, verileri bir Özet satır kümesine toplar.
 
-İsteğe bağlı SQL, gruplama ölçütü seçeneklerinin tamamını destekler. SQL havuzu sınırlı sayıda GROUP BY seçeneğini destekler.
+Sunucusuz SQL havuzu tüm gruplandırma ölçütü seçeneklerini destekler. Adanmış SQL havuzu sınırlı sayıda GROUP BY seçeneğini destekler.
 
-## <a name="group-by-options-supported-in-sql-pool"></a>SQL havuzunda desteklenen Grup seçenekleri
+## <a name="group-by-options-supported-in-dedicated-sql-pool"></a>Adanmış SQL havuzunda desteklenen gruplandırma seçenekleri
 
-GROUP BY, SQL havuzunun desteklemediği bazı seçeneklere sahiptir. Bu seçeneklerde aşağıdaki gibi geçici çözümler bulunur:
+GROUP BY, adanmış SQL havuzunun desteklemediği bazı seçeneklere sahiptir. Bu seçeneklerde aşağıdaki gibi geçici çözümler bulunur:
 
 * TOPLAMASıYLA gruplandırma ölçütü
 * GRUPLANDıRMA KÜMELERI
