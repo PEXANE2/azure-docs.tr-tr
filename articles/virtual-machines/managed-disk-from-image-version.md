@@ -6,27 +6,24 @@ ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 10/06/2020
+ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
-ms.openlocfilehash: 35edcfb4bdb0715245f4a3190fb22638b1162429
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5873f28fed492f9ef906a9d7c1364d8ae07033a7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370993"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336070"
 ---
 # <a name="create-a-managed-disk-from-an-image-version"></a>Görüntü sürümünden yönetilen disk oluşturma
 
-Gerekirse, paylaşılan görüntü galerisinde depolanan bir görüntü sürümünden yönetilen bir disk yapabilirsiniz.
+Gerekirse, bir görüntü sürümünden işletim sistemini veya tek bir veri diskini paylaşılan görüntü galerisinde depolanan bir görüntü sürümünden yönetilen disk olarak dışarı aktarabilirsiniz.
 
 
 ## <a name="cli"></a>CLI
 
-`source`Değişkeni görüntü sürümünün kimliği olarak ayarlayın, ardından, yönetilen diski oluşturmak için [az disk Create](/cli/azure/disk#az_disk_create) kullanın. 
-
-
-[Az Sig Image-Version List](/cli/azure/sig/image-version#az_sig_image_version_list)kullanarak bir liste görüntüsü sürümlerini görebilirsiniz. Bu örnekte, *MyImage* görüntü galerisinde *myımagedefinition* görüntü tanımının bir parçası olan tüm görüntü sürümlerini arıyoruz.
+Görüntü sürümlerini [az Sig Image-Version List](/cli/azure/sig/image-version.md#az_sig_image_version_list)kullanarak bir galeride listeleyin. Bu örnekte, *MyImage* görüntü galerisinde *myımagedefinition* görüntü tanımının bir parçası olan tüm görüntü sürümlerini arıyoruz.
 
 ```azurecli-interactive
 az sig image-version list \
@@ -36,28 +33,37 @@ az sig image-version list \
    -o table
 ```
 
+`source`Değişkeni görüntü sürümünün kimliği olarak ayarlayın, ardından, yönetilen diski oluşturmak için [az disk Create](/cli/azure/disk.md#az_disk_create) kullanın. 
 
-Bu örnekte, *Myresourcegroup*adlı bir kaynak grubundaki *EastUS* bölgesinde *mymanageddisk*adlı bir yönetilen disk oluşturacağız. 
+Bu örnekte, *EastUS* bölgesinde *myresourcegroup* adlı bir kaynak grubunda yer alan *mymanagedosdisk* adlı bir yönetilen disk oluşturmak için görüntü sürümünün işletim sistemi diskini dışarı aktardık. 
 
 ```azurecli-interactive
 source="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<galleryName>/images/<galleryImageDefinition>/versions/<imageVersion>"
 
-az disk create --resource-group myResourceGroup --location EastUS --name myManagedDisk --gallery-image-reference $source 
+az disk create --resource-group myResourceGroup --location EastUS --name myManagedOSDisk --gallery-image-reference $source 
 ```
 
-Disk bir veri diskise, `--gallery-image-reference-lun` LUN 'yi belirtmek için ekleyin.
+
+
+Görüntü sürümünden bir veri diski dışarı aktarmak istiyorsanız, `--gallery-image-reference-lun` dışarı aktarılacak veri DISKININ LUN konumunu belirtmek için öğesini ekleyin. 
+
+Bu örnekte, *EastUS* bölgesinde *myresourcegroup* adlı bir kaynak grubunda yer alan *mymanageddatadisk* adlı bir YÖNETILEN disk oluşturmak için görüntü sürümünün LUN 0 ' daki veri diski dışarı aktardık. 
+
+```azurecli-interactive
+source="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<galleryName>/images/<galleryImageDefinition>/versions/<imageVersion>"
+
+az disk create --resource-group myResourceGroup --location EastUS --name myManagedDataDisk --gallery-image-reference $source --gallery-image-reference-lun 0
+``` 
 
 ## <a name="powershell"></a>PowerShell
 
-[Get-AzResource](/powershell/module/az.resources/get-azresource)komutunu kullanarak tüm görüntü sürümlerini listeleyebilirsiniz. 
+[Get-AzResource](/powershell/module/az.resources/get-azresource)kullanarak bir galerideki görüntü sürümlerini listeleyin. 
 
 ```azurepowershell-interactive
 Get-AzResource `
    -ResourceType Microsoft.Compute/galleries/images/versions | `
    Format-Table -Property Name,ResourceId,ResourceGroupName
 ```
-
-
 
 İhtiyacınız olan tüm bilgilere sahip olduktan sonra, kullanmak istediğiniz kaynak görüntü sürümünü almak ve bir değişkene atamak için [Get-Azgallerımageversion](/powershell/module/az.compute/get-azgalleryimageversion) kullanabilirsiniz. Bu örnekte, kaynak `1.0.0` `myImageDefinition` galerisindeki tanımın görüntü sürümünü `myGallery` `myResourceGroup` kaynak grubunda alıyoruz.
 
@@ -69,29 +75,44 @@ $sourceImgVer = Get-AzGalleryImageVersion `
    -Name 1.0.0
 ```
 
-Disk bilgileri için bazı değişkenler ayarlayın.
+`source`Değişkeni görüntü sürümünün kimliğine ayarladıktan sonra, diski oluşturmak üzere bir disk yapılandırması ve [Yeni-azdisk](/powershell/module/az.compute/new-azdisk) oluşturmak Için [New-azdiskconfig](/powershell/module/az.compute/new-azdiskconfig) komutunu kullanın. 
 
-```azurepowershell-interactive
-$location = "East US"
-$resourceGroup = "myResourceGroup"
-$diskName = "myDisk"
-```
+Bu örnekte, *EastUS* bölgesinde *myresourcegroup* adlı bir kaynak grubunda yer alan *mymanagedosdisk* adlı bir yönetilen disk oluşturmak için görüntü sürümünün işletim sistemi diskini dışarı aktardık. 
 
-Kaynak görüntü sürümü KIMLIĞINI kullanarak bir disk yapılandırması ve ardından disk oluşturun. İçin `-GalleryImageReference` , LUN yalnızca kaynak bir veri diski ise gereklidir.
-
+Disk yapılandırması oluşturun.
 ```azurepowershell-interactive
 $diskConfig = New-AzDiskConfig `
-   -Location $location `
+   -Location EastUS `
    -CreateOption FromImage `
-   -GalleryImageReference @{Id = $sourceImgVer.Id; Lun=1}
+   -GalleryImageReference @{Id = $sourceImgVer.Id}
 ```
 
 Diski oluşturun.
 
 ```azurepowershell-interactive
 New-AzDisk -Disk $diskConfig `
-   -ResourceGroupName $resourceGroup `
-   -DiskName $diskName
+   -ResourceGroupName myResourceGroup `
+   -DiskName myManagedOSDisk
+```
+
+Görüntü sürümünde bir veri diski dışarı aktarmak istiyorsanız, dışarı aktarılacak veri diskinin LUN konumunu belirtmek için disk yapılandırmasına bir LUN KIMLIĞI ekleyin. 
+
+Bu örnekte, *EastUS* bölgesinde *myresourcegroup* adlı bir kaynak grubunda yer alan *mymanageddatadisk* adlı bir YÖNETILEN disk oluşturmak için görüntü sürümünün LUN 0 ' daki veri diski dışarı aktardık. 
+
+Disk yapılandırması oluşturun.
+```azurepowershell-interactive
+$diskConfig = New-AzDiskConfig `
+   -Location EastUS `
+   -CreateOption FromImage `
+   -GalleryImageReference @{Id = $sourceImgVer.Id; Lun=0}
+```
+
+Diski oluşturun.
+
+```azurepowershell-interactive
+New-AzDisk -Disk $diskConfig `
+   -ResourceGroupName myResourceGroup `
+   -DiskName myManagedDataDisk
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

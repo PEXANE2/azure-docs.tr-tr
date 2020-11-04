@@ -3,16 +3,17 @@ title: Azure Cosmos DB çakışma çözümü türleri ve çözüm ilkeleri
 description: Bu makalede, Azure Cosmos DB çakışma kategorileri ve çakışma çözümleme ilkeleri açıklanmaktadır.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: bfe4bd8483485ffc3b09e77e7683d2d0ec38ba75
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ba55d88de3a5a4087db30613b22a7d2441de9be1
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090197"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334387"
 ---
 # <a name="conflict-types-and-resolution-policies-when-using-multiple-write-regions"></a>Birden çok yazma bölgesi kullanılırken çakışma türleri ve çözümleme ilkeleri
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

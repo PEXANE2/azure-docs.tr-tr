@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 11/03/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fe864212eaccb67335586ef8b25049529ab36b81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e4e5f4c1a50c814174dbbd5d419fe24b2e9f88e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360761"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336689"
 ---
 # <a name="how-to-use-batch-transcription"></a>Toplu iş dökümünü kullanma
 
@@ -36,8 +36,6 @@ Aşağıdaki yöntemleri çağırmak için Batch transcripts REST API 'Lerini ku
 
 [Swagger belgesi](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)olarak KULLANıLABILEN ayrıntılı API 'yi gözden geçirebilir ve test edebilirsiniz.
 
-Bu API özel uç noktalar gerektirmez ve hiçbir eşzamanlılık gereksinimi yoktur.
-
 Toplu iş dökümü işleri en iyi çaba temelinde zamanlanır.
 Bir işin çalışma durumuna ne zaman değişene, ancak normal sistem yükü altında dakikalar içinde gerçekleşmesi gerekir. Çalışma durumunda, döküm, ses çalışma zamanı kayıttan yürütme hızından daha hızlı gerçekleşir.
 
@@ -46,9 +44,12 @@ Bir işin çalışma durumuna ne zaman değişene, ancak normal sistem yükü al
 Konuşma hizmetinin tüm özelliklerinde olduğu gibi, [kullanmaya başlama kılavuzumuzu](overview.md#try-the-speech-service-for-free)izleyerek [Azure Portal](https://portal.azure.com) bir abonelik anahtarı oluşturursunuz.
 
 >[!NOTE]
-> Toplu iş dökümünü kullanmak için, konuşma hizmeti için standart bir abonelik (S0) gereklidir. Ücretsiz abonelik anahtarları (F0) çalışmıyor. Daha fazla bilgi için bkz. [fiyatlandırma ve sınırlar](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+> Toplu iş dökümünü kullanmak için, konuşma hizmeti için standart bir abonelik (S0) gereklidir. Ücretsiz abonelik anahtarları (F0) çalışmaz. Daha fazla bilgi için bkz. [fiyatlandırma ve sınırlar](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 Modelleri özelleştirmeyi planlıyorsanız, [akustik özelleştirme](how-to-customize-acoustic-models.md) ve [dil özelleştirme](how-to-customize-language-model.md)bölümündeki adımları izleyin. Toplu iş dökümlerinde oluşturulan modelleri kullanmak için model konumuyla ihtiyacınız vardır. Modelin ayrıntılarını inceleyebileceğiniz zaman model konumunu alabilirsiniz ( `self` özellik). Toplu iş dökümü hizmeti için dağıtılan özel bir uç nokta *gerekli değildir* .
+
+>[!NOTE]
+> REST API bir parçası olarak toplu Iş dökümü, gözden geçirmeyi teşvik ettiğimiz bir [Kotalar ve sınırlar](speech-services-quotas-and-limits.md#speech-to-text-quotas-and-limits-per-speech-resource)kümesine sahiptir. Toplu geçiş yeteneğinin çok sayıda ses dosyası olmasını verimli bir şekilde sağlamak için, istek başına birden çok dosya göndermeyi veya bir BLOB depolama kapsayıcısını, bu dosyanın dökümünü alacak şekilde bir BLOB depolama kapsayıcısına işaret etmenizi öneririz. Hizmet, dosyaları aynı anda azaltma süresini azaltır. Tek bir istekte birden çok dosya kullanılması çok basittir ve kolay bir şekilde [yapılandırma](#configuration) bölümüne bakın. 
 
 ## <a name="batch-transcription-api"></a>Toplu iş dökümü API 'SI
 
@@ -65,12 +66,16 @@ Sıralı bir son döküm oluşturmak için, utterance başına oluşturulan zama
 
 ### <a name="configuration"></a>Yapılandırma
 
-Yapılandırma parametreleri JSON (bir veya daha fazla tek dosya) olarak sağlanır:
+Yapılandırma parametreleri JSON olarak sağlanır.
+
+**Tek bir veya daha fazla dosyayı bir veya daha fazla dosyaya dönüştürme.** Daha fazla bilgi almak için birden fazla dosyanız varsa, tek bir istekte birden çok dosya gönderilmesini öneririz. Aşağıdaki örnekte üç dosya kullanılıyor:
 
 ```json
 {
   "contentUrls": [
-    "<URL to an audio file to transcribe>",
+    "<URL to an audio file 1 to transcribe>",
+    "<URL to an audio file 2 to transcribe>",
+    "<URL to an audio file 3 to transcribe>"
   ],
   "properties": {
     "wordLevelTimestampsEnabled": true
@@ -80,7 +85,7 @@ Yapılandırma parametreleri JSON (bir veya daha fazla tek dosya) olarak sağlan
 }
 ```
 
-Yapılandırma parametreleri JSON (bir depolama kapsayıcısının tamamına göre işlenir) olarak sağlanır:
+**Tüm depolama kapsayıcısını işleme:**
 
 ```json
 {
@@ -93,12 +98,14 @@ Yapılandırma parametreleri JSON (bir depolama kapsayıcısının tamamına gö
 }
 ```
 
-Aşağıdaki JSON bir toplu iş dökümde kullanmak üzere özel bir eğitilen model belirtiyor:
+**Toplu iş dökümde özel eğitilen bir model kullanın.** Örnek üç dosya kullanmaktır:
 
 ```json
 {
   "contentUrls": [
-    "<URL to an audio file to transcribe>",
+    "<URL to an audio file 1 to transcribe>",
+    "<URL to an audio file 2 to transcribe>",
+    "<URL to an audio file 3 to transcribe>"
   ],
   "properties": {
     "wordLevelTimestampsEnabled": true
@@ -163,7 +170,7 @@ Dökümü yapılandırmak için bu isteğe bağlı özellikleri kullanın:
       `timeToLive`
    :::column-end:::
    :::column span="2":::
-      İsteğe bağlı, varsayılan olarak silme yok. Dökümü tamamladıktan sonra otomatik olarak döküm silme süresi. , `timeToLive` Sonunda silindiklerinden emin olmak için toplu işleme (örn. `PT12H` 12 saat) yararlı olur.
+      İsteğe bağlı, varsayılan olarak silme yok. Dökümü tamamladıktan sonra otomatik olarak döküm silme süresi. , `timeToLive` Sonunda silindiklerinden emin olmak için toplu işleme (örneğin, `PT12H` 12 saat) yararlı olur.
 :::row-end:::
 :::row:::
    :::column span="1":::
@@ -308,7 +315,7 @@ Daha fazla seçim yapmak için `diarizationEnabled` özelliği, `true` http iste
 
 Yukarıdaki istekteki parametreler gösterildiği için sözcük düzeyi zaman damgalarının etkinleştirilmesi gerekir.
 
-## <a name="best-practices"></a>Önerilen uygulamalar
+## <a name="best-practices"></a>En iyi uygulamalar
 
 Toplu iş dökümü hizmeti, çok sayıda gönderilen dökümü işleyebilir. Onayları [Al](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions)ile birlikte, döküm durumlarını sorgulayabilirsiniz.
 Sonuçları aldıktan sonra hizmetten düzenli olarak [silme](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) çağrısını çağırın. Bunun yerine `timeToLive` , sonuçların son silinmesini sağlamak için özelliği de ayarlayın.
@@ -323,7 +330,80 @@ Tüm örnekler, alt dizinin içindeki [GitHub örnek deposunda](https://aka.ms/c
 
 Örnek kod, istemciyi ayarlar ve döküm isteğini gönderir. Ardından durum bilgilerini yoklar ve döküm ilerleme durumuyla ilgili ayrıntıları yazdırır.
 
-[!code-csharp[Code to check batch transcription status](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#transcriptionstatus)]
+```csharp
+// get the status of our transcriptions periodically and log results
+int completed = 0, running = 0, notStarted = 0;
+while (completed < 1)
+{
+    completed = 0; running = 0; notStarted = 0;
+
+    // get all transcriptions for the user
+    paginatedTranscriptions = null;
+    do
+    {
+        // <transcriptionstatus>
+        if (paginatedTranscriptions == null)
+        {
+            paginatedTranscriptions = await client.GetTranscriptionsAsync().ConfigureAwait(false);
+        }
+        else
+        {
+            paginatedTranscriptions = await client.GetTranscriptionsAsync(paginatedTranscriptions.NextLink).ConfigureAwait(false);
+        }
+
+        // delete all pre-existing completed transcriptions. If transcriptions are still running or not started, they will not be deleted
+        foreach (var transcription in paginatedTranscriptions.Values)
+        {
+            switch (transcription.Status)
+            {
+                case "Failed":
+                case "Succeeded":
+                    // we check to see if it was one of the transcriptions we created from this client.
+                    if (!createdTranscriptions.Contains(transcription.Self))
+                    {
+                        // not created form here, continue
+                        continue;
+                    }
+
+                    completed++;
+
+                    // if the transcription was successful, check the results
+                    if (transcription.Status == "Succeeded")
+                    {
+                        var paginatedfiles = await client.GetTranscriptionFilesAsync(transcription.Links.Files).ConfigureAwait(false);
+
+                        var resultFile = paginatedfiles.Values.FirstOrDefault(f => f.Kind == ArtifactKind.Transcription);
+                        var result = await client.GetTranscriptionResultAsync(new Uri(resultFile.Links.ContentUrl)).ConfigureAwait(false);
+                        Console.WriteLine("Transcription succeeded. Results: ");
+                        Console.WriteLine(JsonConvert.SerializeObject(result, SpeechJsonContractResolver.WriterSettings));
+                    }
+                    else
+                    {
+                        Console.WriteLine("Transcription failed. Status: {0}", transcription.Properties.Error.Message);
+                    }
+
+                    break;
+
+                case "Running":
+                    running++;
+                    break;
+
+                case "NotStarted":
+                    notStarted++;
+                    break;
+            }
+        }
+
+        // for each transcription in the list we check the status
+        Console.WriteLine(string.Format("Transcriptions status: {0} completed, {1} running, {2} not started yet", completed, running, notStarted));
+    }
+    while (paginatedTranscriptions.NextLink != null);
+
+    // </transcriptionstatus>
+    // check again after 1 minute
+    await Task.Delay(TimeSpan.FromMinutes(1)).ConfigureAwait(false);
+}
+```
 
 Önceki çağrılar hakkında tam Ayrıntılar için [Swagger belgemizi](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)inceleyin. Burada gösterilen tam örnek için alt dizinde [GitHub](https://aka.ms/csspeech/samples) ' a gidin `samples/batch` .
 

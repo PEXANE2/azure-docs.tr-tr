@@ -2,18 +2,19 @@
 title: Azure Cosmos DB için Gelişmiş tehdit koruması
 description: Azure Cosmos DB, bekleyen verilerin şifrelenmesi ve nasıl uygulandığı hakkında bilgi edinin.
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: d8398dbded8753bac193f973026fb63d5f1fc6b3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ea7524b32b7637aa7c36308f8b869aa5207c08a2
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097728"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334421"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB için Gelişmiş tehdit koruması (Önizleme)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -82,16 +83,16 @@ Cosmos DB için Gelişmiş tehdit koruması 'nı etkinleştirmek üzere bir Azur
 
 1. Azure **Ilke tanımları** sayfasını başlatın ve **Cosmos DB Ilkesi Için Gelişmiş tehdit koruması dağıt** ' ı arayın.
 
-    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db.png" alt-text="ATP ayarla"::: 
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db.png" alt-text="Ilke ara"::: 
 
 1. **CosmosDB Için Gelişmiş tehdit koruması dağıtma** İlkesi ' ne tıklayın ve ardından **ata** ' ya tıklayın.
 
-    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png" alt-text="ATP ayarla":::
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png" alt-text="Abonelik veya grup seçin":::
 
 
 1. **Kapsam** alanından üç noktaya tıklayın, bir Azure aboneliği veya kaynak grubu seçin ve ardından **Seç** ' e tıklayın.
 
-    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png" alt-text="ATP ayarla":::
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png" alt-text="İlke tanımları sayfası":::
 
 
 1. Diğer parametreleri girip **ata** ' ya tıklayın.
@@ -105,11 +106,11 @@ Azure Cosmos DB etkinlik bozuklukları gerçekleştiğinde, şüpheli güvenlik 
 
  Azure Güvenlik Merkezi 'nde geçerli [güvenlik uyarılarınızı](../security-center/security-center-alerts-overview.md)gözden geçirebilir ve yönetebilirsiniz.  Olası nedenleri ve olası tehdidi araştırmak ve azaltmak için önerilen eylemleri görüntülemek için [Güvenlik Merkezi](https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade/0) 'nde belirli bir uyarıya tıklayın. Aşağıdaki görüntüde, güvenlik merkezi 'nde sunulan bir uyarı ayrıntıları örneği gösterilmektedir.
 
- :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png" alt-text="ATP ayarla":::
+ :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png" alt-text="Tehdit ayrıntıları":::
 
 Uyarı ayrıntıları ve önerilen eylemlerle birlikte bir e-posta bildirimi de gönderilir. Aşağıdaki görüntüde bir uyarı e-postası örneği gösterilmektedir.
 
- :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png" alt-text="ATP ayarla":::
+ :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png" alt-text="Uyarı ayrıntıları":::
 
 ## <a name="cosmos-db-atp-alerts"></a>ATP uyarılarını Cosmos DB
 

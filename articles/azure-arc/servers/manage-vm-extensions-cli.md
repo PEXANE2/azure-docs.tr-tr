@@ -3,32 +3,19 @@ title: Azure CLı kullanarak VM uzantısını etkinleştirme
 description: Bu makalede, Azure CLı kullanarak hibrit bulut ortamlarında çalışan Azure Arc etkin sunucularına sanal makine uzantılarının nasıl dağıtılacağı açıklanır.
 ms.date: 10/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8f09914f246635f07b3c51c682bd67591c706732
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 99504c86046c1ef34eeab500a703b9a028cb46fb
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92463004"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336742"
 ---
 # <a name="enable-azure-vm-extensions-using-the-azure-cli"></a>Azure CLı kullanarak Azure VM uzantılarını etkinleştirme
 
 Bu makalede, Azure Arc etkin sunucuları tarafından desteklenen Azure VM uzantıları 'nı Azure CLı kullanan bir Linux veya Windows karma makinesine dağıtma ve kaldırma işlemi gösterilmektedir.
 
 [!INCLUDE [Azure CLI Prepare your environment](../../../includes/azure-cli-prepare-your-environment.md)]
-
-## <a name="prerequisites"></a>Ön koşullar
-
-[Azure CLI 'Yı yükler](/cli/azure/install-azure-cli).
-
-Yay etkin sunucularla yönetilen karma sunucunuzda VM uzantılarını yönetmek için Azure CLı 'yı kullanmadan önce, `ConnectedMachine` CLI uzantısını yüklemeniz gerekir. Şu komutu yay etkin sunucunuzda çalıştırın:
-
-```azurecli
-az extension add connectedmachine
-```
-
-Yükleme tamamlandığında, aşağıdaki ileti döndürülür:
-
-`The installed extension `connectedmachine` is experimental and not covered by customer support. Please use with discretion.`
 
 ## <a name="enable-extension"></a>Uzantıyı etkinleştir
 

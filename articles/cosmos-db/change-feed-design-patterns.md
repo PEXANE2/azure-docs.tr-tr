@@ -4,14 +4,15 @@ description: Ortak değişiklik akışı tasarım desenlerine genel bakış
 author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 0c890d50bbfe498f9d90698394b2cc2d373c0d8b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 443d00e61e593daacca04a4451b90bb78cc7d854
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073003"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334621"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>Azure Cosmos DB akış tasarımı desenlerini değiştirme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -39,7 +40,7 @@ Ayrıca, isteğe bağlı olarak bir bildirim tetikleyip belirli ölçütlere gö
 Azure Cosmos DB değişiklik akışı, işlem verilerinde IoT veya gerçek zamanlı analiz işleme için gerçek zamanlı akış işleme için kullanılabilir.
 Örneğin, cihazlardan, sensörlerden, altyapıdan ve uygulamalardan olay verileri alıp saklayabilir ve [Spark](../hdinsight/spark/apache-spark-overview.md)kullanarak bu olayları gerçek zamanlı olarak işleyebilirsiniz. Aşağıdaki görüntüde, değişiklik akışı aracılığıyla Azure Cosmos DB kullanarak bir lambda mimarisini nasıl uygulayabileceğinizi gösterilmektedir:
 
-:::image type="content" source="./media/change-feed/lambda.png" alt-text="Gerçek zamanlı analiz ve olay odaklı bilgi işlem senaryolarına Azure Cosmos DB değişiklik akışını kullanma" border="false":::
+:::image type="content" source="./media/change-feed/lambda.png" alt-text="Alma ve sorgu için Azure Cosmos DB tabanlı lambda işlem hattı" border="false":::
 
 Çoğu durumda, akış işleme uygulamaları ilk olarak Azure Event hub veya Apache Kafka gibi geçici bir ileti kuyruğuna yüksek miktarda gelen verileri alır. Değişiklik akışı, Azure Cosmos DB aşırı düşük okuma ve yazma gecikme süresiyle sürekli yüksek oranda veri alımı destekleyebilme nedeniyle harika bir alternatiftir. Azure Cosmos DB değişiklik akışı bir ileti kuyruğu üzerinden avantajları şunları içerir:
 

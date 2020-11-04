@@ -8,31 +8,23 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: d2ea7233ee923881ee430aba8d8c23a37c29da7c
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 70441c3a1953fa1b6ebd69ef9cdb324d6cc04a5b
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027729"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336472"
 ---
-# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Azure NetApp Files ayarlama ve bir NFS birimi oluşturma
+# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Hızlı başlangıç: Azure NetApp Files ayarlama ve NFS birimi oluşturma
 
-Bu makalede, bir Azure Resource Manager şablonu (ARM şablonu) kullanarak Azure NetApp Files hızlı bir şekilde ayarlama ve birim oluşturma işlemlerinin nasıl yapılacağı gösterilir.
-
-[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+Bu makalede, Azure NetApp Files hızlı bir şekilde ayarlama ve birim oluşturma işlemlerinin nasıl yapılacağı gösterilir.
 
 Bu hızlı başlangıçta, aşağıdaki öğeleri ayarlayacaksınız:
 
-- Azure NetApp Files ve NetApp kaynak sağlayıcısı için kayıt.
-- Bir NetApp hesabı.
-- Bir kapasite Havuzu.
-- Azure NetApp Files için bir NFS birimi.
-
-Ortamınız önkoşulları karşılıyorsa, [başlamadan önce](#before-you-begin) bölümünü TAMAMLADıNıZ ve ARM şablonlarını kullanmaya Alışdıysanız, **Azure 'a dağıt** düğmesini seçin. Şablon Azure portalda açılır.
-
-[![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-anf-nfs-volume%2Fazuredeploy.json)
-
-## <a name="prerequisites"></a>Ön koşullar
+- Azure NetApp Files ve NetApp kaynak sağlayıcısı için kayıt
+- NetApp hesabı
+- Kapasite havuzu
+- Azure NetApp Files için NFS birimi
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -43,24 +35,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="review-the-template"></a>Şablonu gözden geçirme
-
-Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-anf-nfs-volume) alınmıştır.
-
- Şablonu görüntülemek için bkz. [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-anf-nfs-volume/azuredeploy.json).
-
-Şablonda birkaç kaynak tanımlanmıştır:
-
-- [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-- [Microsoft. NetApp/netAppAccounts](/azure/templates/microsoft.netapp/netappaccounts)
-- [Microsoft. NetApp/netAppAccounts/Capacityhavuzları](/azure/templates/microsoft.netapp/netappaccounts/capacitypools)
-- [Microsoft. NetApp/netAppAccounts/Capacityhavuzları/birimleri](/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes)
-
-## <a name="deploy-the-template"></a>Şablonu dağıtma
-
 ---
 
-### <a name="register-for-azure-netapp-files-and-netapp-resource-provider"></a>Azure NetApp Files ve NetApp kaynak sağlayıcısına kaydolun
+## <a name="register-for-azure-netapp-files-and-netapp-resource-provider"></a>Azure NetApp Files ve NetApp kaynak sağlayıcısına kaydolun
 
 > [!NOTE]
 > Kayıt işleminin tamamlanması biraz zaman alabilir.
@@ -100,7 +77,7 @@ Daha fazla bilgi için bkz. [Azure NetApp Files Için kaydolun](azure-netapp-fil
 
 ---
 
-### <a name="create-a-netapp-account"></a>NetApp hesabı oluşturma
+## <a name="create-a-netapp-account"></a>NetApp hesabı oluşturma
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -185,9 +162,9 @@ Daha fazla bilgi için bkz. [Azure NetApp Files Için kaydolun](azure-netapp-fil
 
 # <a name="template"></a>[Şablon](#tab/template)
 
-<!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] -->
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts](/azure/templates/microsoft.netapp/netappaccounts) kaynağını kullanarak bir ARM şablonunda NetApp hesabı oluşturmayı gösterir. Kodu çalıştırmak için GitHub deponuzdan [tam ARM şablonunu](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-anf-nfs-volume/azuredeploy.json) indirin.
+Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts](/azure/templates/microsoft.netapp/netappaccounts) kaynağını kullanarak bir Azure Resource Manager ŞABLONUNDA (ARM şablonu) bir NetApp hesabı oluşturmayı gösterir. Kodu çalıştırmak için GitHub deponuzdan [tam ARM şablonunu](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) indirin.
 
 :::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="177-183":::
 
@@ -195,7 +172,7 @@ Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts](/azure/templa
 
 ---
 
-### <a name="set-up-a-capacity-pool"></a>Kapasite havuzunu ayarlama
+## <a name="set-up-a-capacity-pool"></a>Kapasite havuzunu ayarlama
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -261,7 +238,7 @@ Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts](/azure/templa
 
 <!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] -->
 
-Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts/capacityPools](/azure/templates/microsoft.netapp/netappaccounts/capacitypools) kaynağını kullanarak bir ARM şablonunda bir kapasite havuzunun nasıl oluşturulacağını göstermektedir. Kodu çalıştırmak için GitHub deponuzdan [tam ARM şablonunu](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-anf-nfs-volume/azuredeploy.json) indirin.
+Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts/Capacityhavuzlar](/azure/templates/microsoft.netapp/netappaccounts/capacitypools) kaynağını kullanarak bir Azure Resource Manager ŞABLONUNDA (ARM şablonu) bir kapasite havuzu oluşturmayı gösterir. Kodu çalıştırmak için GitHub deponuzdan [tam ARM şablonunu](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) indirin.
 
 :::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="184-196":::
 
@@ -269,7 +246,7 @@ Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts/capacityPools]
 
 ---
 
-### <a name="create-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files için NFS birimi oluşturma
+## <a name="create-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files için NFS birimi oluşturma
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -410,7 +387,7 @@ Aşağıdaki kod parçacığı, [Microsoft. NetApp/netAppAccounts/capacityPools]
 
 <!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] -->
 
-Aşağıdaki kod parçacıkları bir sanal ağı ayarlamayı ve ARM şablonunda bir Azure NetApp Files birimi oluşturmayı gösterir. VNet kurulumu, [Microsoft. Network/virtualNetworks](/azure/templates/Microsoft.Network/virtualNetworks) kaynağını kullanır. Birim oluşturma, [Microsoft. NetApp/netAppAccounts/Capacityhavuzlar/Volumes](/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes) kaynağını kullanır. Kodu çalıştırmak için GitHub deponuzdan [tam ARM şablonunu](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-anf-nfs-volume/azuredeploy.json) indirin.
+Aşağıdaki kod parçacıkları, bir sanal ağı ayarlamayı ve bir Azure Resource Manager şablonunda (ARM şablonunda) Azure NetApp Files birim oluşturmayı gösterir. VNet kurulumu, [Microsoft. Network/virtualNetworks](/azure/templates/Microsoft.Network/virtualNetworks) kaynağını kullanır. Birim oluşturma, [Microsoft. NetApp/netAppAccounts/Capacityhavuzlar/Volumes](/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes) kaynağını kullanır. Kodu çalıştırmak için GitHub deponuzdan [tam ARM şablonunu](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) indirin.
 
 :::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="148-176":::
 
