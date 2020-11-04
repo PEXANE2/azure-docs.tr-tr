@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 700cc461563f145f58e02f7ed9a09b2899a4eb5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fc7fd1f3f7615c0622b684e3da4020c7da601f5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91345830"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322878"
 ---
 # <a name="create-and-share-an-machine-learning-studio-classic-workspace"></a>Machine Learning Studio (klasik) çalışma alanı oluşturma ve paylaşma
 
-**Uygulama hedefi:** ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md) yok  
+**Uygulama hedefi:** ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) yok  
 
 Azure Machine Learning Studio (klasik) kullanmak için bir Machine Learning Studio (klasik) çalışma alanınız olması gerekir. Bu çalışma alanı, denemeleri oluşturmak, yönetmek ve yayımlamak için ihtiyacınız olan araçları içerir.
 
@@ -44,7 +44,7 @@ Machine Learning Studio (klasik) ' de bir çalışma alanı açmak için, çalı
 
      ![Yeni bir Studio (klasik) çalışma alanı oluştur](./media/create-workspace/create-new-workspace.png)
 
-5. **Oluştur**’a tıklayın.
+5. **Oluştur** 'a tıklayın.
 
    Machine Learning, şu anda sınırlı sayıda bölgede kullanılabilir. Aboneliğiniz bu bölgelerden birini içermiyorsa, "izin verilen bölgelerde aboneliğiniz yok" hata iletisini görebilirsiniz.  Aboneliğinize bir bölgenin eklenmesini istemek için, Azure portal yeni bir Microsoft destek isteği oluşturun, sorun türü olarak **faturalandırma** ' i seçin ve isteğinizi göndermek için istemleri izleyin.
 
@@ -61,7 +61,7 @@ Depolama hesabını yanlışlıkla silerseniz, silinen depolama hesabıyla aynı
 
     ![Çalışma alanını seçme](./media/create-workspace/open-workspace.png)
 
-3. **Denemeleri**tıklayın.
+3. **Denemeleri** tıklayın.
 
     ![Açık denemeleri](./media/create-workspace/my-experiments.png)
 
@@ -114,7 +114,7 @@ Yeni Machine Learning Studio (klasik) çalışma alanı oluşturulduktan sonra, 
 
 **Tarayıcı tanımlama bilgilerini silmek için**
 
-1. Internet Explorer kullanıyorsanız, sağ üst köşedeki **Araçlar** düğmesine tıklayın ve **Internet seçenekleri**' ni seçin.  
+1. Internet Explorer kullanıyorsanız, sağ üst köşedeki **Araçlar** düğmesine tıklayın ve **Internet seçenekleri** ' ni seçin.  
 
    ![İnternet seçenekleri](media/troubleshooting-creating-ml-workspace/screen4.png)
 
@@ -122,7 +122,7 @@ Yeni Machine Learning Studio (klasik) çalışma alanı oluşturulduktan sonra, 
 
    ![Genel sekmesi](media/troubleshooting-creating-ml-workspace/screen5.png)
 
-3. **Gözatma Geçmişini Sil** iletişim kutusunda, **tanımlama bilgileri ve Web sitesi verilerinin** seçili olduğundan emin olun ve **Sil**' e tıklayın.
+3. **Gözatma Geçmişini Sil** iletişim kutusunda, **tanımlama bilgileri ve Web sitesi verilerinin** seçili olduğundan emin olun ve **Sil** ' e tıklayın.
 
    ![Tanımlama bilgilerini silme](media/troubleshooting-creating-ml-workspace/screen6.png)
 

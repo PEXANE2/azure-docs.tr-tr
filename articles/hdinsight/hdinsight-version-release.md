@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 37f0a8d1f70fa96db505973d097febabe99ab7a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2716f037de533e14ae8e57706134c8a2b135b440
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88749166"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322378"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4,0 genel bakış
 
@@ -102,5 +102,9 @@ HDInsight 'ın önceki sürümlerinden HDInsight 4,0 sürümüne desteklenen bir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* [HBase geçiş kılavuzu](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-migrate-new-version)
+* [Hive geçiş kılavuzu](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-migrate-workloads)
+* [Kafka geçiş kılavuzu](https://docs.microsoft.com/azure/hdinsight/kafka/migrate-versions)
+* [Spark geçiş kılavuzu](https://docs.microsoft.com/azure/hdinsight/spark/migrate-versions)
 * [Azure HDInsight belgeleri](index.yml)
 * [Sürüm Notları](hdinsight-release-notes.md)

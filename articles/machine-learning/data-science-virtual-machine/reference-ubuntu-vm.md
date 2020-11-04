@@ -9,12 +9,12 @@ ms.custom: devx-track-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: d356bd43e5e09dfce96a801732e79d2efe8c08bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9da757e47308fe0fe1a96958e464b440d99f0984
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440346"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324739"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Başvuru: Ubuntu (Linux) Veri Bilimi Sanal Makinesi
 
@@ -67,7 +67,7 @@ MXNet, verimlilik ve esneklik için tasarlanan derin bir öğrenme çerçevesidi
 
 RAKAM olarak bilinen NVıDıA derin öğrenme GPU eğitim sistemi, yaygın derin öğrenme görevlerini basitleştirecek bir sistemdir. Bu görevler, verileri yönetmeyi, GPU sistemlerinde sinir ağlarını tasarlamayı ve eğitimini ve gelişmiş görselleştirmede performansı gerçek zamanlı olarak izlemeyi içerir.
 
-Basamaklar, *basamaklar*adlı bir hizmet olarak kullanılabilir. Hizmeti başlatın ve başlamak için öğesine gidin `http://localhost:5000` .
+Basamaklar, *basamaklar* adlı bir hizmet olarak kullanılabilir. Hizmeti başlatın ve başlamak için öğesine gidin `http://localhost:5000` .
 
 Ayrıca, Conda kök ortamında bir Python modülü olarak rakamlar yüklenir.
 
@@ -97,7 +97,7 @@ Ayrıca, isterseniz [en iyi 20 r paketlerini](https://www.kdnuggets.com/2015/06/
 
 ## <a name="python"></a>Python
 
-Anaconda Python, Python 2,7 ve 3,5 ortamları ile birlikte yüklenir. 2,7 ortamına _kök_adı verilir ve 3,5 ortamı _py35_olarak adlandırılır. Bu dağıtım, en popüler matematik, mühendislik ve veri analizi paketlerinin 300 hakkında temel Python 'u içerir.
+Anaconda Python, Python 2,7 ve 3,5 ortamları ile birlikte yüklenir. 2,7 ortamına _kök_ adı verilir ve 3,5 ortamı _py35_ olarak adlandırılır. Bu dağıtım, en popüler matematik, mühendislik ve veri analizi paketlerinin 300 hakkında temel Python 'u içerir.
 
 Py35 ortamı varsayılandır. Kök (2,7) ortamını etkinleştirmek için şu komutu kullanın:
 
@@ -148,7 +148,7 @@ Jupyter Not defteri sunucusuna herhangi bir konaktan erişebilirsiniz. **Https:/
 > [!NOTE]
 > 8000 numaralı bağlantı noktası, VM sağlandığında varsayılan olarak güvenlik duvarında açılır. 
 
-Örnek Not defterlerimizi (Python 'da, diğeri R 'de) paketliyoruz. Yerel Linux Kullanıcı adınızı ve parolanızı kullanarak Jupyter not defterine kimlik doğrulaması yaptıktan sonra Not defteri giriş sayfasındaki örneklerin bağlantısını görebilirsiniz. **Yeni ' yi**seçerek ve ardından uygun dil çekirdeğini seçerek yeni bir not defteri oluşturabilirsiniz. **Yeni** düğmesini görmüyorsanız, sol üstteki **Jupyter** simgesini seçerek not defteri sunucusunun ana sayfasına gidin.
+Örnek Not defterlerimizi (Python 'da, diğeri R 'de) paketliyoruz. Yerel Linux Kullanıcı adınızı ve parolanızı kullanarak Jupyter not defterine kimlik doğrulaması yaptıktan sonra Not defteri giriş sayfasındaki örneklerin bağlantısını görebilirsiniz. **Yeni ' yi** seçerek ve ardından uygun dil çekirdeğini seçerek yeni bir not defteri oluşturabilirsiniz. **Yeni** düğmesini görmüyorsanız, sol üstteki **Jupyter** simgesini seçerek not defteri sunucusunun ana sayfasına gidin.
 
 ## <a name="apache-spark-standalone"></a>Tek başına Apache Spark
 
@@ -206,13 +206,13 @@ Daha fazla bilgi için bkz. [SQUIRREL SQL](http://squirrel-sql.sourceforge.net/i
 
 SQL Server ODBC sürücü paketi ayrıca iki komut satırı aracı ile birlikte gelir:
 
-- **bcp**: bcp Aracı, verileri bir Microsoft SQL Server örneği arasında ve Kullanıcı tarafından belirtilen biçimdeki bir veri dosyası arasında toplu olarak kopyalar. BCP aracını kullanarak çok sayıda yeni satırı SQL Server tablolarına içeri aktarabilir veya tablolardaki verileri veri dosyalarına aktarabilirsiniz. Verileri bir tabloya aktarmak için, bu tablo için oluşturulmuş bir biçim dosyası kullanmanız gerekir. Ya da tablonun yapısını ve sütunlarının geçerli olan veri türlerini anlamanız gerekir.
+- **bcp** : bcp Aracı, verileri bir Microsoft SQL Server örneği arasında ve Kullanıcı tarafından belirtilen biçimdeki bir veri dosyası arasında toplu olarak kopyalar. BCP aracını kullanarak çok sayıda yeni satırı SQL Server tablolarına içeri aktarabilir veya tablolardaki verileri veri dosyalarına aktarabilirsiniz. Verileri bir tabloya aktarmak için, bu tablo için oluşturulmuş bir biçim dosyası kullanmanız gerekir. Ya da tablonun yapısını ve sütunlarının geçerli olan veri türlerini anlamanız gerekir.
 
-  Daha fazla bilgi için bkz. [bcp Ile bağlanma](https://msdn.microsoft.com/library/hh568446.aspx).
+  Daha fazla bilgi için bkz. [bcp Ile bağlanma](/sql/connect/odbc/linux-mac/connecting-with-bcp).
 
-- **sqlcmd**: sqlcmd aracını kullanarak Transact-SQL deyimlerini girebilirsiniz. Ayrıca, komut istemine sistem yordamları ve betik dosyaları da girebilirsiniz. Bu araç Transact-SQL toplu işlerini çalıştırmak için ODBC kullanır.
+- **sqlcmd** : sqlcmd aracını kullanarak Transact-SQL deyimlerini girebilirsiniz. Ayrıca, komut istemine sistem yordamları ve betik dosyaları da girebilirsiniz. Bu araç Transact-SQL toplu işlerini çalıştırmak için ODBC kullanır.
 
-  Daha fazla bilgi için bkz. [sqlcmd Ile bağlanma](https://msdn.microsoft.com/library/hh568447.aspx).
+  Daha fazla bilgi için bkz. [sqlcmd Ile bağlanma](/sql/connect/odbc/linux-mac/connecting-with-sqlcmd).
 
   > [!NOTE]
   > Bu araçta Linux ve Windows platformları arasında bazı farklılıklar vardır. Ayrıntılar için belgelere bakın.
@@ -228,13 +228,13 @@ Kitaplıklar, veritabanı erişimi için R ve Python 'da kullanılabilir:
 
 Aşağıdaki Azure Araçları sanal makineye yüklendi:
 
-* **Azure CLI**: Azure 'da kabuk komutları aracılığıyla Azure kaynakları oluşturmak ve yönetmek için komut satırı arabirimini kullanabilirsiniz. Azure araçlarını açmak için **Azure yardımı**'nı girin. Daha fazla bilgi için bkz. [Azure CLI belgeleri sayfası](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
-* **Azure Depolama Gezgini**: Azure Depolama Gezgini, Azure depolama hesabınızda depoladığınız nesneler üzerinde gezinmek ve Azure bloblarına ve veri yüklemek için kullanabileceğiniz bir grafik aracıdır. Masaüstü kısayol simgesinden Depolama Gezgini erişebilirsiniz. Ayrıca, bunu bir kabuk isteminden **Storageexplorer**girerek açabilirsiniz. Bir X2Go istemcisinden oturum açmanız veya X11 iletme ayarlamış olmanız gerekir.
-* **Azure kitaplıkları**: önceden yüklenmiş kitaplıkların bazıları aşağıda verilmiştir.
+* **Azure CLI** : Azure 'da kabuk komutları aracılığıyla Azure kaynakları oluşturmak ve yönetmek için komut satırı arabirimini kullanabilirsiniz. Azure araçlarını açmak için **Azure yardımı** 'nı girin. Daha fazla bilgi için bkz. [Azure CLI belgeleri sayfası](/cli/azure/get-started-with-az-cli2).
+* **Azure Depolama Gezgini** : Azure Depolama Gezgini, Azure depolama hesabınızda depoladığınız nesneler üzerinde gezinmek ve Azure bloblarına ve veri yüklemek için kullanabileceğiniz bir grafik aracıdır. Masaüstü kısayol simgesinden Depolama Gezgini erişebilirsiniz. Ayrıca, bunu bir kabuk isteminden **Storageexplorer** girerek açabilirsiniz. Bir X2Go istemcisinden oturum açmanız veya X11 iletme ayarlamış olmanız gerekir.
+* **Azure kitaplıkları** : önceden yüklenmiş kitaplıkların bazıları aşağıda verilmiştir.
   
-  * **Python**: Python 'daki Azure ile ilgili kitaplıklar *Azure*, *azureml*, *pydocumentdb*ve *pyodbc*. İlk üç kütüphaneden Azure depolama hizmetlerine, Azure Machine Learning ve Azure Cosmos DB (Azure 'da bir NoSQL veritabanı) erişebilirsiniz. Dördüncü kitaplık olan pyodbc (SQL Server için Microsoft ODBC sürücüsü ile birlikte), bir ODBC arabirimi kullanarak Python 'dan SQL Server, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'e erişim sağlar. Listelenen tüm kitaplıkları görmek için **PIP listesini** girin. Bu komutu hem Python 2,7 hem de 3,5 ortamlarında çalıştırmayı unutmayın.
-  * **R**: r 'deki Azure ile Ilgili kitaplıklar AZUREML ve rodbc.
-  * **Java**: Azure Java KITAPLıKLARıNıN listesi VM 'de/dsvm/sdk/AzureSDKJava dizininde bulunabilir. Anahtar kitaplıkları, SQL Server için Azure depolama ve yönetim API 'Leri, Azure Cosmos DB ve JDBC sürücülerdir.  
+  * **Python** : Python 'daki Azure ile ilgili kitaplıklar *Azure* , *azureml* , *pydocumentdb* ve *pyodbc*. İlk üç kütüphaneden Azure depolama hizmetlerine, Azure Machine Learning ve Azure Cosmos DB (Azure 'da bir NoSQL veritabanı) erişebilirsiniz. Dördüncü kitaplık olan pyodbc (SQL Server için Microsoft ODBC sürücüsü ile birlikte), bir ODBC arabirimi kullanarak Python 'dan SQL Server, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'e erişim sağlar. Listelenen tüm kitaplıkları görmek için **PIP listesini** girin. Bu komutu hem Python 2,7 hem de 3,5 ortamlarında çalıştırmayı unutmayın.
+  * **R** : r 'deki Azure ile Ilgili kitaplıklar AZUREML ve rodbc.
+  * **Java** : Azure Java KITAPLıKLARıNıN listesi VM 'de/dsvm/sdk/AzureSDKJava dizininde bulunabilir. Anahtar kitaplıkları, SQL Server için Azure depolama ve yönetim API 'Leri, Azure Cosmos DB ve JDBC sürücülerdir.  
 
 [Azure Portal](https://portal.azure.com) önceden yüklenmiş Firefox tarayıcısından erişebilirsiniz. Azure portal Azure kaynaklarını oluşturabilir, yönetebilir ve izleyebilirsiniz.
 
@@ -246,21 +246,21 @@ Azure Machine Learning Studio 'da oturum açtıktan sonra, makine öğrenimi alg
 
 Oluşturulan makine öğrenimi modellerini bir Web hizmeti arabirimine sarmalayarak oluşturma. Makine öğrenimi modelleri, herhangi bir dilde yazılmış istemcilerin bu modellerdeki tahminleri çağırmasına olanak sağlar. Daha fazla bilgi için [Machine Learning belgelerine](https://azure.microsoft.com/documentation/services/machine-learning/)bakın.
 
-Ayrıca, modellerinizi VM 'de R veya Python 'da oluşturabilir ve ardından bunları Azure Machine Learning üretim ortamında dağıtabilirsiniz. Bu işlevselliği etkinleştirmek için R (**azureml**) ve Python (**azureml**) kitaplıklarını yükledik.
+Ayrıca, modellerinizi VM 'de R veya Python 'da oluşturabilir ve ardından bunları Azure Machine Learning üretim ortamında dağıtabilirsiniz. Bu işlevselliği etkinleştirmek için R ( **azureml** ) ve Python ( **azureml** ) kitaplıklarını yükledik.
 
 > [!NOTE]
 > Bu yönergeler Veri Bilimi Sanal Makinesi Windows sürümü için yazılmıştır. Ancak, modelleri Azure Machine Learning için dağıtma hakkında bilgi sağlayan bilgiler Linux VM için geçerlidir.
 
 ## <a name="machine-learning-tools"></a>Machine Learning araçları
 
-VM, önceden derlenmiş ve yerel olarak önceden yüklenmiş makine öğrenimi araçları ve algoritmalarıyla birlikte gelir. Bu modüller şunlardır:
+VM, önceden derlenmiş ve yerel olarak önceden yüklenmiş makine öğrenimi araçları ve algoritmalarıyla birlikte gelir. Bunlar:
 
-* **Vowpal Wabbit**: hızlı bir çevrimiçi öğrenme algoritması.
-* **xgboost**: iyileştirilmiş, artırılmış ağaç algoritmaları sağlayan bir araç.
-* **Rattle**: kolay veri araştırması ve modelleme için R tabanlı bir grafik aracıdır.
-* **Python**: Anaconda Python, Scikit-öğren gibi kitaplıklar ile makine öğrenimi algoritmalarıyla birlikte sunulur. Komutunu kullanarak diğer kitaplıkları yükleyebilirsiniz `pip install` .
-* **Lightgbm**: karar ağacı algoritmalarını temel alan hızlı, dağıtılmış ve yüksek performanslı bir gradyan arttırma çerçevesi.
-* **R**: r. önceden yüklenmiş kitaplıklar için, LM, GLM, rasgeleforest ve rpart için zengin bir makine öğrenme işlevleri kitaplığı mevcuttur. Şu komutu çalıştırarak diğer kitaplıkları yükleyebilirsiniz:
+* **Vowpal Wabbit** : hızlı bir çevrimiçi öğrenme algoritması.
+* **xgboost** : iyileştirilmiş, artırılmış ağaç algoritmaları sağlayan bir araç.
+* **Rattle** : kolay veri araştırması ve modelleme için R tabanlı bir grafik aracıdır.
+* **Python** : Anaconda Python, Scikit-öğren gibi kitaplıklar ile makine öğrenimi algoritmalarıyla birlikte sunulur. Komutunu kullanarak diğer kitaplıkları yükleyebilirsiniz `pip install` .
+* **Lightgbm** : karar ağacı algoritmalarını temel alan hızlı, dağıtılmış ve yüksek performanslı bir gradyan arttırma çerçevesi.
+* **R** : r. önceden yüklenmiş kitaplıklar için, LM, GLM, rasgeleforest ve rpart için zengin bir makine öğrenme işlevleri kitaplığı mevcuttur. Şu komutu çalıştırarak diğer kitaplıkları yükleyebilirsiniz:
 
     ```r
     install.packages(<lib name>)
@@ -316,7 +316,7 @@ Xgboost hakkında daha fazla bilgi için, bkz. [xgboost belgeleri sayfası](http
 
 ### <a name="rattle"></a>Rattle
 
-Rattle ( **R** **A**Nalitik **T**OOL **T**o **L**), **E**GUI tabanlı veri araştırması ve modelleme kullanır. Verilerin istatistiksel ve görsel özetlerini sunar, kolayca modellenebilir verileri dönüştürür, verilerden denetlenen ve denetimli modelleri oluşturur, modellerin performansını grafiksel olarak sunar ve yeni veri kümelerine puan koyar. Ayrıca, doğrudan R 'de çalıştırılabilen veya daha fazla analiz için bir başlangıç noktası olarak kullanılan Kullanıcı arabirimindeki işlemleri çoğaltan R kodu oluşturur.
+Rattle ( **R** **A** Nalitik **T** OOL **T** o **L** ), **E** GUI tabanlı veri araştırması ve modelleme kullanır. Verilerin istatistiksel ve görsel özetlerini sunar, kolayca modellenebilir verileri dönüştürür, verilerden denetlenen ve denetimli modelleri oluşturur, modellerin performansını grafiksel olarak sunar ve yeni veri kümelerine puan koyar. Ayrıca, doğrudan R 'de çalıştırılabilen veya daha fazla analiz için bir başlangıç noktası olarak kullanılan Kullanıcı arabirimindeki işlemleri çoğaltan R kodu oluşturur.
 
 Rattle çalıştırmak için bir grafik masaüstü oturum açma oturumunda olmanız gerekir. Terminal **üzerinde r ' yi girerek r** ortamını açın. R isteminde aşağıdaki komutları girin:
 
@@ -330,7 +330,7 @@ Artık bir sekme kümesiyle birlikte bir grafik arabirimi açılır. Örnek bir 
 > [!NOTE]
 > Paketi sistem dizinine (varsayılan) yüklemek için erişiminiz yoksa, kişisel kitaplığınıza paket yüklemek için R konsol pencerenizde bir istem görürsünüz. Bu istemler görürseniz, **y** cevabı yapın.
 
-1. **Yürüt**’ü seçin.
+1. **Yürüt** ’ü seçin.
 1. Örnek Hava durumu veri kümesini kullanmak isteyip istemediğinizi soran bir iletişim kutusu görüntülenir. Örneği yüklemek için **Evet** ' i seçin.
 1. **Model** sekmesini seçin.
 1. Bir karar ağacı oluşturmak için **Yürüt** ' ü seçin.
@@ -340,7 +340,7 @@ Artık bir sekme kümesiyle birlikte bir grafik arabirimi açılır. Örnek bir 
 1. **Risk** seçeneğini belirleyin ve iki **risk (birikmeli)** performans grafiğini göstermek için **Yürüt** ' ü seçin.
 1. Önceki işlemler için oluşturulan R kodunu göstermek üzere **günlük** sekmesini seçin.
    (Rattle 'in geçerli sürümündeki bir hata nedeniyle **#** Bu günlüğü, günlüğün metninde **dışarı aktar** önüne bir karakter eklemeniz gerekir.)
-1. Weather_script adlı R betiği dosyasını kaydetmek için **dışarı aktar** düğmesini seçin *. * Ana klasöre R.
+1. Weather_script adlı R betiği dosyasını kaydetmek için **dışarı aktar** düğmesini seçin *.* Ana klasöre R.
 
 Rattle ve R 'den çıkabilirsiniz. Artık oluşturulan R betiğini değiştirebilirsiniz. Ya da, komut dosyasını olduğu gibi kullanın ve Rattle Kullanıcı arabiriminde yapılan her şeyi yinelemek için dilediğiniz zaman çalıştırın. Özellikle R 'deki yeni başlayanlar için bu, bir basit grafik arabiriminde analiz ve makine öğrenimini hızlı bir şekilde yapmanın bir yoludur. böylece, değiştirmek veya öğrenmek için R 'de otomatik olarak kod oluşturma.
 

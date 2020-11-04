@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 10/30/2020
 ms.author: normesta
-ms.openlocfilehash: dc0b620629b5dce651e02e5fe95b0619c1d42a78
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: be440407fb6f4d9715ba80c584af023a5f662394
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131165"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324224"
 ---
 # <a name="premium-tier-for-azure-data-lake-storage"></a>Azure Data Lake Storage için Premium katman
 
@@ -75,7 +75,7 @@ Aşağıdaki görüntüde, bu ayar **depolama hesabı oluştur** sayfasında gö
 
 Azure Data Lake Storage için Premium katman aşağıdaki bölgelerde kullanılabilir.
 
-|Bölge|Yedeklilik|
+|Region|Yedeklilik|
 |--|--|
 |Doğu ABD|LRS, ZRS|
 |Doğu ABD 2|LRS, ZRS|
@@ -103,3 +103,12 @@ Azure Data Lake Storage için Premium katman aşağıdaki bölgelerde kullanıla
 |Doğu Avustralya|LRS, ZRS|
 |Avustralya Güneydoğu|LRS|
 |Brezilya Güney|LRS|
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Azure Databricks, Azure HDInsight ve Azure SYNAPSE Analytics gibi en sevdiğiniz analiz hizmetiyle Azure Data Lake Storage için Premium katmanını kullanın. 
+
+- [Öğretici: Azure Data Lake Storage 2., Azure Databricks & Spark](data-lake-storage-use-databricks-spark.md) 
+- [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) HDInsight Şu anda Premium performans katmanını kullanan bir hesabı, hızlandırılmış yazma özelliği etkinleştirilmiş bir HBase kümesiyle destekler.
+- [Hızlı başlangıç: SYNAPSE çalışma alanı oluşturma](../../synapse-analytics/quickstart-create-workspace.md)
+

@@ -11,16 +11,16 @@ author: jpe316
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2, devx-track-python, deploy
-ms.openlocfilehash: 18b1c155c0bb85e346ec28d5c145e6578ca3ec48
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 6ac28e430681f35d9935cf0f484529074403bf54
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999072"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324977"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>Azure Machine Learning ile ML modellerini alan programlanabilir kapı dizileri (FPGAs) ile dağıtma 
 
-Bu makalede, FPGAs hakkında bilgi edinirsiniz ve [Azure Machine Learning](overview-what-is-azure-ml.md)' den [donanım hızlandırmalı modeller Python paketini](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py&preserve-view=true) kullanarak ml MODELLERINIZI bir Azure FPGA 'ye nasıl dağıtırsınız.
+Bu makalede, FPGAs hakkında bilgi edinirsiniz ve [Azure Machine Learning](overview-what-is-azure-ml.md)' den [donanım hızlandırmalı modeller Python paketini](/python/api/azureml-accel-models/azureml.accel?preserve-view=true&view=azure-ml-py) kullanarak ml MODELLERINIZI bir Azure FPGA 'ye nasıl dağıtırsınız.
 
 ## <a name="what-are-fpgas"></a>FPGAs nedir?
 FPGA’lar programlanabilen bir mantık blokları dizisi ve yeniden yapılandırılabilen bir bağlantı hiyerarşisi içerir. Birbirine bağlı, bu blokların üretim sonrasında çeşitli şekillerde yapılandırılmasına izin verir. Diğer yongalarla karşılaştırıldığında, FPGAs, bir programlama programlamasına ve performansına ilişkin bir bileşim sunar. 
@@ -56,7 +56,7 @@ Gecikme ve aktarım hızını iyileştirmek için, FPGA modeline veri gönderen 
 
 ## <a name="deploy-models-on-fpgas"></a>FPGAs 'de modeller dağıtma
 
-[Azure Machine Learning hızlandırılmış donanım modelleri](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py&preserve-view=true)Ile fpgas üzerinde bir modeli Web hizmeti olarak dağıtabilirsiniz. FPGAs kullanımı, tek bir toplu iş boyutuyla bile Ultra düşük gecikme çıkarımı sağlar. 
+[Azure Machine Learning hızlandırılmış donanım modelleri](/python/api/azureml-accel-models/azureml.accel?preserve-view=true&view=azure-ml-py)Ile fpgas üzerinde bir modeli Web hizmeti olarak dağıtabilirsiniz. FPGAs kullanımı, tek bir toplu iş boyutuyla bile Ultra düşük gecikme çıkarımı sağlar. 
 
 Bu örnekte, giriş görüntüsünü önceden işlemek için bir TensorFlow grafiği oluşturun, bir FPGA üzerinde ResNet 50 kullanarak çalışır hale getirin ve ardından, ImageNet veri kümesi üzerinde eğitilen bir sınıflandırıcı aracılığıyla özellikleri çalıştırın. Ardından, model bir AKS kümesine dağıtılır.
 
@@ -68,7 +68,7 @@ Bu örnekte, giriş görüntüsünü önceden işlemek için bir TensorFlow graf
  
 - Donanım hızlandırmalı modeller paketi:  `pip install --upgrade azureml-accel-models[cpu]`    
     
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
+- [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
 
 - FPGA kotası. Kota [isteği](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2nac9-PZhBDnNSV2ITz0LNUN0U5S0hXRkNITk85QURTWk9ZUUFUWkkyTC4u)gönder veya kotayı denetlemek IÇIN bu CLI komutunu çalıştırın: 
 
@@ -80,7 +80,7 @@ Bu örnekte, giriş görüntüsünü önceden işlemek için bir TensorFlow graf
 
 ### <a name="define-the-tensorflow-model"></a>TensorFlow modelini tanımlama
 
-Bir hizmet tanımı oluşturmak için [Python için Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) kullanarak başlayın. Hizmet tanımı, TensorFlow 'a göre grafiklerin bir işlem hattını (giriş, korturun ve sınıflandırıcı) açıklayan bir dosyadır. Dağıtım komutu, tanım ve grafikleri bir ZIP dosyası olarak sıkıştırır ve ZIP 'yi Azure Blob depolama alanına yükler. DNN, FPGA üzerinde çalışmak üzere zaten dağıtıldı.
+Bir hizmet tanımı oluşturmak için [Python için Azure Machine Learning SDK 'sını](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) kullanarak başlayın. Hizmet tanımı, TensorFlow 'a göre grafiklerin bir işlem hattını (giriş, korturun ve sınıflandırıcı) açıklayan bir dosyadır. Dağıtım komutu, tanım ve grafikleri bir ZIP dosyası olarak sıkıştırır ve ZIP 'yi Azure Blob depolama alanına yükler. DNN, FPGA üzerinde çalışmak üzere zaten dağıtıldı.
 
 1. Azure Machine Learning çalışma alanını yükle
 
@@ -223,7 +223,7 @@ FPGAs 'e dağıtabilmeniz için önce modeli [Onnx](https://onnx.ai/) biçimine 
 
 ### <a name="containerize-and-deploy-the-model"></a>Modeli kapsayıcı ve dağıtma
 
-Sonra, dönüştürülen modelden ve tüm bağımlılıklardan bir Docker görüntüsü oluşturun.  Bu Docker görüntüsü daha sonra dağıtılabilir ve örneklenebilir.  Desteklenen dağıtım hedefleri, Bulutta Azure Kubernetes hizmeti (AKS) veya [Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview)gibi bir uç cihaz içerir.  Ayrıca, kayıtlı Docker görüntünüz için Etiketler ve açıklamalar ekleyebilirsiniz.
+Sonra, dönüştürülen modelden ve tüm bağımlılıklardan bir Docker görüntüsü oluşturun.  Bu Docker görüntüsü daha sonra dağıtılabilir ve örneklenebilir.  Desteklenen dağıtım hedefleri, Bulutta Azure Kubernetes hizmeti (AKS) veya [Azure Data Box Edge](../databox-online/azure-stack-edge-overview.md)gibi bir uç cihaz içerir.  Ayrıca, kayıtlı Docker görüntünüz için Etiketler ve açıklamalar ekleyebilirsiniz.
 
    ```python
    from azureml.core.image import Image
@@ -297,7 +297,7 @@ Sonra, dönüştürülen modelden ve tüm bağımlılıklardan bir Docker görü
 
 #### <a name="deploy-to-a-local-edge-server"></a>Yerel bir uç sunucusuna dağıtma
 
-Tüm [Azure Data Box Edge cihazlar](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview
+Tüm [Azure Data Box Edge cihazlar](../databox-online/azure-stack-edge-overview.md
 ) , modeli çalıştırmak IÇIN BIR FPGA içerir.  Yalnızca bir model FPGA üzerinde tek seferde çalıştırılabilir.  Farklı bir model çalıştırmak için yeni bir kapsayıcı dağıtmanız yeterlidir. Yönergeler ve örnek kod, [Bu Azure örneğinde](https://github.com/Azure-Samples/aml-hardware-accelerated-models)bulunabilir.
 
 ### <a name="consume-the-deployed-model"></a>Dağıtılan modeli tüketme
@@ -349,7 +349,7 @@ for top in sorted_results[:5]:
 
 ### <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Gereksiz maliyetlerin önüne geçmek için kaynaklarınızı **Şu sırayla**temizleyin: Web hizmeti, görüntü ve sonra model.
+Gereksiz maliyetlerin önüne geçmek için kaynaklarınızı **Şu sırayla** temizleyin: Web hizmeti, görüntü ve sonra model.
 
 ```python
 aks_service.delete()

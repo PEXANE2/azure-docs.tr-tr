@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: fc9da659e7e55e8b15071f957d6a51e3b4673244
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 37f10cc8eb3d606d99eb5b3f821a486e9e4ea2fe
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427558"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322352"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Azure Machine Learning Studio (klasik) Web Hizmetleri portalını kullanarak bir Web hizmetini yönetme
 
-**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Machine Learning yeni ve klasik Web hizmetlerinizi Microsoft Azure Machine Learning Web Hizmetleri portalını kullanarak yönetebilirsiniz. Klasik Web Hizmetleri ve yeni Web Hizmetleri, farklı temel teknolojileri temel alarak, bunların her biri için biraz farklı yönetim yeteneğiniz vardır.
@@ -51,7 +51,7 @@ Erişim izinlerini ayarlama hakkında daha fazla bilgi için bkz. [Azure Portal 
 Yeni Web hizmetlerinizi yönetmek için:
 
 1. Microsoft Azure hesabınızı kullanarak [Microsoft Azure Machine Learning Web Hizmetleri](https://services.azureml.net/quickstart) portalında oturum açın-Azure aboneliğiyle ilişkili hesabı kullanın.
-2. Menüsünde, **Web Hizmetleri**' ne tıklayın.
+2. Menüsünde, **Web Hizmetleri** ' ne tıklayın.
 
 Bu, aboneliğiniz için dağıtılan Web hizmetlerinin bir listesini görüntüler. 
 
@@ -118,9 +118,9 @@ Plan Panosu aşağıdaki bilgileri sağlar:
 Klasik Web hizmetlerinizi yönetmek için:
 
 1. Microsoft Azure hesabınızı kullanarak [Microsoft Azure Machine Learning Web Hizmetleri](https://services.azureml.net/quickstart) portalında oturum açın-Azure aboneliğiyle ilişkili hesabı kullanın.
-2. Menüde **Klasik Web Hizmetleri**' ne tıklayın.
+2. Menüde **Klasik Web Hizmetleri** ' ne tıklayın.
 
-Klasik bir Web hizmetini yönetmek için **Klasik Web Hizmetleri**' ne tıklayın. Klasik Web Hizmetleri sayfasından şunları yapabilirsiniz:
+Klasik bir Web hizmetini yönetmek için **Klasik Web Hizmetleri** ' ne tıklayın. Klasik Web Hizmetleri sayfasından şunları yapabilirsiniz:
 
 * İlişkili uç noktaları görüntülemek için Web hizmetine tıklayın.
 * Bir Web hizmetini silin.
@@ -155,5 +155,3 @@ Aşağıdaki özellikleri güncelleştirebilirsiniz:
 * **Açıklama** , Web hizmeti için bir açıklama girmenize olanak sağlar. Açıklama gerekli bir alandır.
 * **Günlüğe kaydetme** , uç noktada hata günlüğü etkinleştirmenizi veya devre dışı bırakmanızı sağlar. Günlüğe kaydetme hakkında daha fazla bilgi için bkz. [Machine Learning Web Hizmetleri için günlüğü](web-services-logging.md)etkinleştirme.
 * **Örnek verileri etkinleştirme** , Request-Response hizmetini test etmek için kullanabileceğiniz örnek veriler sağlamanıza olanak tanır. Web hizmetini Machine Learning Studio (klasik) ' de oluşturduysanız, örnek veriler modelinize eğitebilmeniz için kullandığınız verilerden alınır. Hizmeti programlı olarak oluşturduysanız, veriler JSON paketinin bir parçası olarak verdiğiniz örnek verilerden alınır.
-
-

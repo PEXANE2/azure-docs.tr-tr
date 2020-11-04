@@ -12,6 +12,12 @@
       href: cloud-services-dotnet-get-started.md
     - name: Visual Studio için Python Örnek Bulut Hizmeti
       href: cloud-services-python-ptvs.md
+- name: Kavramlar
+  items:
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
 - name: Nasıl yapılır
   items:
     - name: Planlama

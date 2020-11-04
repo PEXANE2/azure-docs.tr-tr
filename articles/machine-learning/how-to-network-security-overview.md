@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: 7ec62e4a6a864ca37011014341a2d059615873d5
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: fdfaef554e4e641656abd3fd2b4a5d3bbc519ccd
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131947"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325428"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Sanal ağ yalıtımı ve gizliliği genel bakış
 
@@ -31,10 +31,10 @@ Bu serideki diğer makaleler şunlardır:
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, aşağıdaki konularda bilginiz olduğunu varsaymaktadır:
-+ [Azure sanal ağları](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
-+ [IP ağı](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)
++ [Azure sanal ağları](../virtual-network/virtual-networks-overview.md)
++ [IP ağı](../virtual-network/public-ip-addresses.md)
 + [Azure Özel Bağlantı](how-to-configure-private-link.md)
-+ [Ağ Güvenlik Grupları (NSG)](../virtual-network/security-overview.md)
++ [Ağ Güvenlik Grupları (NSG)](../virtual-network/network-security-groups-overview.md)
 + [Ağ güvenlik duvarları](../firewall/overview.md)
 
 ## <a name="example-scenario"></a>Örnek senaryo

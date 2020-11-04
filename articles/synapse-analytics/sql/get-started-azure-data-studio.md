@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: c3c1b61cb4f799b79ca00fc92ffadc2374a61c03
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: fb4c7f8ba49cf701ef13cb57ab2b323a94c928cc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132474"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323834"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Azure Data Studio ile SYNAPSE SQL 'e bağlanma (Önizleme)
 
@@ -30,11 +30,11 @@ Azure SYNAPSE Analytics 'te SYNAPSE SQL 'e bağlanmak ve sorgu eklemek için [Az
 
 ## <a name="connect"></a>Bağlan
 
-SYNAPSE SQL 'e bağlanmak için Azure Data Studio açın ve **Yeni bağlantı**' yı seçin.
+SYNAPSE SQL 'e bağlanmak için Azure Data Studio açın ve **Yeni bağlantı** ' yı seçin.
 
 ![Azure Data Studio açın](./media/get-started-azure-data-studio/1-start.png)
 
-**Bağlantı türü**olarak **Microsoft SQL Server** seçin.
+**Bağlantı türü** olarak **Microsoft SQL Server** seçin.
 
 Bağlantı aşağıdaki parametreleri gerektirir:
 
@@ -42,15 +42,15 @@ Bağlantı aşağıdaki parametreleri gerektirir:
 * **Veritabanı:** Veritabanı adı
 
 > [!NOTE]
-> **İstek üzerine SQL (Önizleme)** kullanmak istiyorsanız URL şöyle görünmelidir:
+> **Sunucusuz SQL Havuzu (Önizleme)** kullanmak istiyorsanız URL şöyle görünmelidir:
 >
 > - `<Azure Synapse workspace name>`-ondemand.sql.azuresynapse.net.
 >
-> **SQL havuzu** kullanmak istiyorsanız URL şöyle görünmelidir:
+> **ADANMıŞ SQL havuzu** kullanmak istiyorsanız URL şöyle görünmelidir:
 >
 > - `<Azure Synapse workspace name>`. sql.azuresynapse.net
 
-**Kimlik doğrulama türü**olarak **Windows kimlik doğrulaması**, **Azure Active Directory**veya **SQL oturum açma** seçeneklerini belirleyin.
+**Kimlik doğrulama türü** olarak **Windows kimlik doğrulaması** , **Azure Active Directory** veya **SQL oturum açma** seçeneklerini belirleyin.
 
 Kimlik doğrulama türü olarak **SQL oturum açma** 'yı kullanmak için, Kullanıcı adı/parola parametrelerini ekleyin:
 
@@ -61,11 +61,11 @@ Azure Active Directory kullanmak için, gerekli kimlik doğrulama türünü seç
 
 ![AAD Kimlik Doğrulaması](./media/get-started-azure-data-studio/3-aad-auth.png)
 
-Aşağıdaki ekran görüntüsünde, **Windows kimlik doğrulaması**Için **Bağlantı ayrıntıları** gösterilmektedir:
+Aşağıdaki ekran görüntüsünde, **Windows kimlik doğrulaması** Için **Bağlantı ayrıntıları** gösterilmektedir:
 
 ![Windows Kimlik Doğrulaması](./media/get-started-azure-data-studio/3-windows-auth.png)
 
-Aşağıdaki ekran görüntüsünde **SQL oturum açma**kullanılarak **Bağlantı ayrıntıları** gösterilmektedir:
+Aşağıdaki ekran görüntüsünde **SQL oturum açma** kullanılarak **Bağlantı ayrıntıları** gösterilmektedir:
 
 ![SQL Oturum Açma](./media/get-started-azure-data-studio/2-database-details.png)
 
@@ -77,7 +77,7 @@ Bağlandıktan sonra, örnek olarak desteklenen [Transact-SQL (T-SQL)](/sql/t-sq
 
 ![Yeni Sorgu](./media/get-started-azure-data-studio/5-new-query.png)
 
-Örneğin, isteğe bağlı SQL kullanarak [Parquet dosyalarını sorgulamak](query-parquet-files.md) Için aşağıdaki Transact-SQL ifadesini kullanabilirsiniz:
+Örneğin, sunucusuz SQL havuzu kullanarak [Parquet dosyalarını sorgulamak](query-parquet-files.md) Için aşağıdaki Transact-SQL ifadesini kullanabilirsiniz:
 
 ```sql
 SELECT COUNT(*)

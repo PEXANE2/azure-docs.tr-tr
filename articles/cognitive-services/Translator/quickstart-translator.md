@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Çevirmen, çevirmen hizmeti, çevirme metni, alfabedeki metin, dil algılama
-ms.openlocfilehash: 874b3379208f7f716dc421f9825ef6b4d823ff14
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 8250141c2baa92478c5929a300ec7b17b8ed7131
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287082"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322508"
 ---
 # <a name="quickstart-get-started-with-translator"></a>Hızlı başlangıç: çevirmenle çalışmaya başlama
 
@@ -105,7 +105,7 @@ Translator hizmetini REST aracılığıyla çağırırken, her istek için aşa�
   <th>Açıklama</th>
   <tr>
     <td>Kimlik doğrulama üst bilgisi</td>
-    <td><em>Gerekli istek üst bilgisi</em>.<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın.</td>
+    <td><em>Gerekli istek üst bilgisi</em>.<br/><code>Ocp-Apim-Subscription-Key</code><br/><br/>Bilişsel <em>Hizmetler kaynağı kullanılıyorsa gerekli istek üst bilgisi. Çevirmen kaynağı kullanılıyorsa isteğe bağlıdır.</em>..<br/><code>Ocp-Apim-Subscription-Region</code><br/><br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın.</td>
   </tr>
   <tr>
     <td>İçerik Türü</td>

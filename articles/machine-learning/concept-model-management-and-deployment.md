@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6f03a1e44fdb62570b693753f5e01c7ab0f53e78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64784d747e9f33961c2f5d2df95e0d5a83e01548
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302426"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324839"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model yönetimi, dağıtım ve Azure Machine Learning ile izleme
 
@@ -46,7 +46,7 @@ Model eğitim sürecinizdeki tüm adımları birlikte birleştirmek için Azure 
 
 Bir ML işlem hattı, veri hazırlığından, model değerlendirmesi için hiper parametre ayarlamayı ayıklama adımları içerebilir. Daha fazla bilgi için bkz. [ml işlem hatları](concept-ml-pipelines.md).
 
-ML işlem hatlarınızı oluşturmak için [tasarımcıyı](concept-designer.md) kullanırsanız, tasarımcı sayfasının sağ üst köşesindeki **"..."** düğmesine tıklayın ve ardından **Kopyala**' yı seçin. İşlem hattınızı kopyalamak, eski sürümlerinizi kaybetmeden işlem hattı tasarımınızı yinelemenize olanak tanır.  
+ML işlem hatlarınızı oluşturmak için [tasarımcıyı](concept-designer.md) kullanırsanız, tasarımcı sayfasının sağ üst köşesindeki **"..."** düğmesine tıklayın ve ardından **Kopyala** ' yı seçin. İşlem hattınızı kopyalamak, eski sürümlerinizi kaybetmeden işlem hattı tasarımınızı yinelemenize olanak tanır.  
 
 ## <a name="create-reusable-software-environments"></a>Yeniden kullanılabilir yazılım ortamları oluşturma
 
@@ -70,6 +70,9 @@ Kayıtlı modeller ad ve sürümle tanımlanır. Modeli var olan bir adla her ka
 
 Etkin bir dağıtımda kullanılmakta olan kayıtlı bir modeli silemezsiniz.
 Daha fazla bilgi için, [modelleri dağıtma](how-to-deploy-and-where.md#registermodel)' nın model kaydetme bölümüne bakın.
+
+> [!IMPORTANT]
+> `Tags`Azure Machine Learning Studio modeller sayfasında, `TagName : TagValue` müşteriler kullanmak yerine `TagName=TagValue` (boşluk olmadan) filtre ölçütü seçeneği kullanılırken
 
 ### <a name="profile-models"></a>Profil modelleri
 
@@ -106,7 +109,7 @@ Ayrıca hedef dağıtım platformunun yapılandırmasını da sağlarsınız. Ö
 Görüntü oluşturulduğunda Azure Machine Learning’e gereken bileşenler de eklenir. Örneğin, web hizmetinin çalıştırılması ve IoT Edge ile etkileşim kurması için gereken varlıklar.
 
 #### <a name="batch-scoring"></a>Batch puanlama
-Batch Puanlama, ML işlem hatları aracılığıyla desteklenir. Daha fazla bilgi için bkz. [büyük veriler üzerinde Batch tahminleri](how-to-use-parallel-run-step.md).
+Batch Puanlama, ML işlem hatları aracılığıyla desteklenir. Daha fazla bilgi için bkz. [büyük veriler üzerinde Batch tahminleri](./tutorial-pipeline-batch-scoring-classification.md).
 
 #### <a name="real-time-web-services"></a>Gerçek zamanlı Web Hizmetleri
 
@@ -136,13 +139,13 @@ Daha fazla bilgi için bkz. [ml modellerinin denetimli dağıtımı](how-to-depl
 
 #### <a name="iot-edge-devices"></a>IoT Edge cihazlar
 
-IoT cihazlarıyla modelleri **Azure IoT Edge modüller**aracılığıyla kullanabilirsiniz. IoT Edge modüller, cihazda çıkarım veya model Puanlama sağlayan bir donanım cihazına dağıtılır.
+IoT cihazlarıyla modelleri **Azure IoT Edge modüller** aracılığıyla kullanabilirsiniz. IoT Edge modüller, cihazda çıkarım veya model Puanlama sağlayan bir donanım cihazına dağıtılır.
 
 Daha fazla bilgi için bkz. [modelleri dağıtma](how-to-deploy-and-where.md).
 
 ### <a name="analytics"></a>Analiz
 
-Microsoft Power BI, veri analizi için makine öğrenimi modellerinin kullanılmasını destekler. Daha fazla bilgi için bkz. [Power BI Azure Machine Learning Tümleştirme (Önizleme)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
+Microsoft Power BI, veri analizi için makine öğrenimi modellerinin kullanılmasını destekler. Daha fazla bilgi için bkz. [Power BI Azure Machine Learning Tümleştirme (Önizleme)](/power-bi/service-machine-learning-integration).
 
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Uçtan uca ML yaşam döngüsünü yakalamak için gereken idare verilerini yakalayın
 
@@ -156,9 +159,9 @@ Azure ML, meta verileri kullanarak tüm ML varlıklarınızın uçtan uca deneti
 - [Azure Ile tümleştirme](how-to-use-event-grid.md)  , ml yaşam döngüsünün olayları üzerinde işlem yapmanıza olanak sağlar. Örneğin, model kaydı, dağıtım, veri kayması ve eğitim (çalıştırma) olayları.
 
 > [!TIP]
-> Modeller ve veri kümeleri hakkında bazı bilgiler otomatik olarak yakalanırken, __etiketleri__kullanarak ek bilgi ekleyebilirsiniz. Çalışma alanınızda kayıtlı modelleri ve veri kümelerini ararken Etiketleri filtre olarak kullanabilirsiniz.
+> Modeller ve veri kümeleri hakkında bazı bilgiler otomatik olarak yakalanırken, __etiketleri__ kullanarak ek bilgi ekleyebilirsiniz. Çalışma alanınızda kayıtlı modelleri ve veri kümelerini ararken Etiketleri filtre olarak kullanabilirsiniz.
 >
-> Bir veri kümesini kayıtlı bir modelle ilişkilendirme isteğe bağlı bir adımdır. Bir modeli kaydederken bir veri kümesine başvurma hakkında bilgi için bkz. [model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true) sınıfı başvurusu.
+> Bir veri kümesini kayıtlı bir modelle ilişkilendirme isteğe bağlı bir adımdır. Bir modeli kaydederken bir veri kümesine başvurma hakkında bilgi için bkz. [model](/python/api/azureml-core/azureml.core.model%28class%29?preserve-view=true&view=azure-ml-py) sınıfı başvurusu.
 
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>ML yaşam döngüsünde olayları bildirme, otomatikleştirme ve uyarma

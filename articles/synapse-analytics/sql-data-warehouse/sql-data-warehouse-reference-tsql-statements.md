@@ -1,6 +1,6 @@
 ---
-title: T-SQL bildirimleri
-description: SYNAPSE SQL havuzunda desteklenen T-SQL deyimlerine yönelik belgelerin bağlantıları.
+title: SQL havuzu ile uyumlu T-SQL deyimleri
+description: Azure SYNAPSE Analytics 'te adanmış SQL havuzu için desteklenen T-SQL deyimlerine yönelik belgelerin bağlantıları.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 05/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7a52049dc08b0a8170acc4d15860db69aea44a2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 390907eaf529df3f9adfd481e96ff166be543d01
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86276456"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324631"
 ---
-# <a name="t-sql-statements-supported-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda desteklenen T-SQL deyimleri
+# <a name="t-sql-statements-supported-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu için desteklenen T-SQL deyimleri 
 
-SYNAPSE SQL havuzunda desteklenen T-SQL deyimlerine yönelik belgelerin bağlantıları.
+Adanmış SQL havuzunda desteklenen T-SQL deyimlerinin belgelerinin bağlantıları.
 
 ## <a name="data-definition-language-ddl-statements"></a>Veri tanımlama dili (DDL) deyimleri
 
@@ -131,4 +131,4 @@ SYNAPSE SQL havuzunda desteklenen T-SQL deyimlerine yönelik belgelerin bağlant
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için bkz. [SYNAPSE SQL havuzundaki T-SQL dil öğeleri](sql-data-warehouse-reference-tsql-language-elements.md)ve [SYNAPSE SQL havuzundaki sistem görünümleri](../sql/reference-tsql-system-views.md).
+Daha fazla başvuru bilgisi için bkz. [Özel SQL havuzundaki T-SQL dil öğeleri](sql-data-warehouse-reference-tsql-language-elements.md)ve [adanmış SQL havuzundaki sistem görünümleri](../sql/reference-tsql-system-views.md).

@@ -10,12 +10,12 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 10/21/2020
-ms.openlocfilehash: e07e12e82d96b591db324673f4c24b9074128065
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e6a7eabec76cf27044b5d0e13acfc2431cb19b77
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93093002"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323756"
 ---
 # <a name="execute-python-script-module"></a>Python betik modülünü Yürüt
 
@@ -61,7 +61,7 @@ if spec is None:
 > Excute Python betik modülü, Java, PyODBC ve vb. gibi "apt-get" gibi komutla ek yerel kitaplıklara bağlı paketlerin yüklenmesini desteklemez. Bunun nedeni, Bu modülün Python ile önceden yüklenmiş ve yönetici olmayan izinlerle basit bir ortamda yürütüldüğünden oluşur.  
 
 ## <a name="upload-files"></a>Dosyaları karşıya yükleme
-Execute Python betik modülü, [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#upload-file-name--path-or-stream-)kullanarak dosyaları karşıya yüklemeyi destekler.
+Execute Python betik modülü, [Azure Machine Learning Python SDK](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#upload-file-name--path-or-stream-)kullanarak dosyaları karşıya yüklemeyi destekler.
 
 Aşağıdaki örnek, Python betik modülündeki bir görüntü dosyasının nasıl karşıya yükleneceğini göstermektedir:
 
@@ -197,7 +197,7 @@ Katıştırılmış Python kodu tarafından yapılan hesaplamaların sonuçları
 
 Modül iki veri kümesi döndürür:  
   
-+ Bir Python betiğinde ilk döndürülen Pandas veri çerçevesi tarafından tanımlanan **sonuçlar veri kümesi 1** .
++ Bir Python betiğinde ilk döndürülen Pandas veri çerçevesi tarafından tanımlanan **sonuçlar veri kümesi 1**.
 
 + **Sonuç veri kümesi 2** , bir Python betiğinin ikinci döndürülen Pandas veri çerçevesi tarafından tanımlanır.
 
@@ -315,4 +315,4 @@ Modül iki veri kümesi döndürür:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın.

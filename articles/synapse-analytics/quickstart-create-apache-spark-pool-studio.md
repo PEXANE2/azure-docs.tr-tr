@@ -1,6 +1,6 @@
 ---
-title: "Hızlı başlangıç: SYNAPSE Studio 'Yu kullanarak Apache Spark Havuzu (Önizleme) oluşturma"
-description: Bu kılavuzdaki adımları izleyerek SYNAPSE Studio kullanarak yeni bir Apache Spark havuzu oluşturun.
+title: 'Hızlı başlangıç: SYNAPSE Studio kullanarak sunucusuz Apache Spark Havuzu (Önizleme) oluşturma'
+description: Bu kılavuzdaki adımları izleyerek SYNAPSE Studio kullanarak bir sunucusuz Apache Spark havuzu oluşturun.
 services: synapse-analytics
 author: saveenr
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: spark
 ms.date: 10/16/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: c497b9974ad2d6fdd9482ae673de5807669d8ff5
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 313ad0c620fe06158e96c208ae265702134b58d1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748262"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324164"
 ---
-# <a name="quickstart-create-an-apache-spark-pool-preview-using-synapse-studio"></a>Hızlı başlangıç: SYNAPSE Studio 'Yu kullanarak Apache Spark Havuzu (Önizleme) oluşturma
+# <a name="quickstart-create-a-serverless-apache-spark-pool-preview-using-synapse-studio"></a>Hızlı başlangıç: SYNAPSE Studio kullanarak sunucusuz Apache Spark Havuzu (Önizleme) oluşturma
 
 Azure SYNAPSE Analytics, verilerinizi almanıza, dönüştürmenizi, modellemenizi, çözümlemenize ve sungetirmenize yardımcı olmak için çeşitli analiz motorları sunmaktadır. Apache Spark havuz, açık kaynak büyük veri işlem yetenekleri sunar. SYNAPSE çalışma alanınızda bir Apache Spark havuzu oluşturduktan sonra, veriler yüklenebilir, modellenebilir, işlenebilir ve öngörüleri elde etmek için sunulabilir.  
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıçta SYNAPSE Studio kullanarak bir Synapse çalışma alan�
 
 Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [SYNAPSE çalışma alanı](./quickstart-create-workspace.md)
@@ -47,7 +47,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
 ## <a name="launch-synapse-studio"></a>Synapse Studio'yu başlatma 
 
-Çalışma alanına genel bakış ' da, Apache Spark havuzunun oluşturulacağı konumu açmak için **SYNAPSE Studio 'Yu Başlat** ' ı seçin. Hizmet adını veya kaynak adını doğrudan arama çubuğuna yazın.
+Çalışma alanına genel bakış ' da, SYNAPSE Studio 'Yu açmak için **çalışma alanı Web URL** 'sini seçin.
 
 ![Azure portal SYNAPSE çalışma alanına genel bakış ve Launch SYNAPSE Studio vurgulanmış.](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-20.png)
 

@@ -1,6 +1,6 @@
 ---
-title: SQL isteğe bağlı olarak OPENROWSET kullanma (Önizleme)
-description: Bu makalede, SQL isteğe bağlı (Önizleme) için OPENROWSET sözdizimi açıklanmakta ve bağımsız değişkenlerin nasıl kullanılacağı açıklanmaktadır.
+title: Sunucusuz SQL havuzunda OPENROWSET kullanma (Önizleme)
+description: Bu makalede sunucusuz SQL havuzundaki (Önizleme) OPENROWSET sözdizimi açıklanmakta ve bağımsız değişkenlerin nasıl kullanılacağı açıklanmaktadır.
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2ef09fd81aaeca92e87be2a0fddbc9be16ebac1d
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 5059b051b16107ac7508e509d319159651de11e3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242050"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324408"
 ---
-# <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>OPENROWSET 'yi isteğe bağlı SQL ile kullanma (Önizleme)
+# <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullanarak OPENROWSET kullanma
 
-`OPENROWSET(BULK...)`İşlevi, Azure Storage 'daki dosyalara erişmenizi sağlar. `OPENROWSET` işlev, uzak bir veri kaynağının (örneğin dosya) içeriğini okur ve içeriği bir dizi satır olarak döndürür. SQL isteğe bağlı (Önizleme) kaynağı içinde, OPENROWSET işlevi çağırarak ve toplu seçeneği belirtilerek OPENROWSET toplu satır kümesi sağlayıcısına erişilir.  
+`OPENROWSET(BULK...)`İşlevi, Azure Storage 'daki dosyalara erişmenizi sağlar. `OPENROWSET` işlev, uzak bir veri kaynağının (örneğin dosya) içeriğini okur ve içeriği bir dizi satır olarak döndürür. Sunucusuz SQL Havuzu (Önizleme) kaynağında, OPENROWSET işlevi çağırarak ve toplu seçenek belirtilerek OPENROWSET toplu satır kümesi sağlayıcısına erişilir.  
 
 İşlevine, bir `OPENROWSET` `FROM` tablo adı gibi bir sorgunun yan tümcesinde başvurulabilir `OPENROWSET` . Bir dosyadaki verilerin bir satır kümesi olarak okunmasını ve döndürülmesini sağlayan yerleşik bir toplu sağlayıcı aracılığıyla toplu işlemleri destekler.
 
@@ -131,12 +131,12 @@ Verilerin yolunu oluşturan unstructured_data_path mutlak veya göreli bir yol o
 Aşağıda, */CSV/popülasyonu* ile başlayan tüm klasörlerden *popülasyon* ile başlayan tüm *CSV* dosyalarını okuyan bir örnek verilmiştir:  
 `https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
-Bir klasör olarak unstructured_data_path belirtirseniz, bir SQL isteğe bağlı sorgusu bu klasörden dosyaları alır. 
+Unstructured_data_path bir klasör olacak şekilde belirtirseniz, sunucusuz bir SQL havuzu sorgusu bu klasörden dosyaları alacaktır. 
 
 > [!NOTE]
-> Hadoop ve PolyBase 'in aksine, SQL isteğe bağlı alt klasörler döndürmez. Ayrıca, Hadoop ve PolyBase 'den farklı olarak, SQL isteğe bağlı, dosya adının altı çizili (_) veya nokta (.) ile başladığı dosyaları döndürür.
+> Hadoop ve PolyBase 'den farklı olarak sunucusuz SQL havuzu alt klasörler döndürmez. Ayrıca, Hadoop ve PolyBase 'den farklı olarak sunucusuz SQL havuzu, dosya adının altı çizili (_) veya nokta (.) ile başladığı dosyaları döndürür.
 
-Aşağıdaki örnekte, unstructured_data_path = ise `https://mystorageaccount.dfs.core.windows.net/webdata/` , BIR SQL isteğe bağlı sorgusu, mydata.txt ve _hidden.txt satırları döndürür. Bir alt klasörde bulunduğundan mydata2.txt ve mydata3.txt döndürmez.
+Aşağıdaki örnekte, unstructured_data_path = ise `https://mystorageaccount.dfs.core.windows.net/webdata/` , sunucusuz BIR SQL havuzu sorgusu mydata.txt ve _hidden.txt satırları döndürür. Bir alt klasörde bulunduğundan mydata2.txt ve mydata3.txt döndürmez.
 
 ![Dış tablolar için özyinelemeli veriler](./media/develop-openrowset/folder-traversal.png)
 

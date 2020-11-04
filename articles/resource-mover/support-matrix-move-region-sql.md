@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 09/07/2020
 ms.author: raynew
-ms.openlocfilehash: 4925f6ffd2383c21f8ff9b0e3196d44fc15bb657
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fda41a22c9bd9c66dd691b283ece10ac044db3ed
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89653001"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324581"
 ---
 # <a name="support-for-moving-azure-sql-resources-between-azure-regions"></a>Azure bölgeleri arasında Azure SQL kaynaklarını taşıma desteği
 
@@ -38,7 +38,7 @@ Gereksinimler aşağıdaki tabloda özetlenmiştir.
 **Otomatik ayarlama** | Desteklenmez. | Geçici çözüm: taşıdıktan sonra otomatik ayarlama ayarlarını ayarlayın. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/sql-database/sql-database-automatic-tuning-enable).
 **Veritabanı uyarıları** | Desteklenmez. | Geçici çözüm: taşıdıktan sonra uyarıları ayarlayın. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/sql-database/sql-database-insights-alerts-portal).
 **Azure SQL Server Esnetme Veritabanı** | Desteklenmiyor | SQL Server Esnetme veritabanlarını kaynak taşıyıcısı ile taşıyamıyor.
-**Azure Synapse Analytics** | Desteklenmiyor | SYNAPSE Analytics (eski adıyla Azure SQL veri ambarı) kaynak taşıyıcısı ile taşınamaz.
+**Azure Synapse Analytics** | Desteklenmiyor | SYNAPSE Analytics (eski adıyla SQL veri ambarı) kaynak taşıyıcısı ile taşınamaz.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Azure SQL kaynaklarını](tutorial-move-region-sql.md) kaynak taşıyıcısı ile başka bir bölgeye deneyin.

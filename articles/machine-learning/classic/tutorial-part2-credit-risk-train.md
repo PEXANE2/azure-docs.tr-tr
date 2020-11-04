@@ -9,16 +9,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: c2782d15d8be82d07f14f7ada5732b1dbef699c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59567cf2dc03952a78852f3288e78ba06aa769ee
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91348802"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325686"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>Öğretici 2: Kredi risk modellerini eğitme-Azure Machine Learning Studio (klasik)
 
-**Uygulama hedefi:** ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md) yok  
+**Uygulama hedefi:** ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) yok  
 
 
 Bu öğreticide, tahmine dayalı bir analiz çözümü geliştirme sürecinde genişletilmiş bir görünüm elde edersiniz. Machine Learning Studio (klasik) içinde basit bir model geliştirirsiniz.  Daha sonra modeli bir Azure Machine Learning Web hizmeti olarak dağıtabilirsiniz.  Bu dağıtılan model yeni verileri kullanarak tahminleri yapabilir. Bu öğretici, **üç bölümden oluşan bir öğretici serisinin ikinci bölümüdür**.
@@ -82,9 +82,9 @@ Denemenin bu bölümü artık şuna benzer:
 
 Şimdi, modelin kredi riski değerini tahmin etmek istediğiniz modeli [eğitme][train-model] modülüne bildirmeniz gerekir.
 
-1. [Model eğitme][train-model] modülünü seçin. **Özellikler** bölmesinde, **sütun seçiciyi Başlat**' ı tıklatın.
+1. [Model eğitme][train-model] modülünü seçin. **Özellikler** bölmesinde, **sütun seçiciyi Başlat** ' ı tıklatın.
 
-1. **Tek bir sütun seçin** iletişim kutusunda, **kullanılabilir sütunlar**altındaki ara alanına "kredi riski" yazın, aşağıdaki "kredi riski" ni seçin ve sağ ok düğmesine ( **>** ) tıklayarak "kredi riski" nu **Seçili sütunlara**taşıyın. 
+1. **Tek bir sütun seçin** iletişim kutusunda, **kullanılabilir sütunlar** altındaki ara alanına "kredi riski" yazın, aşağıdaki "kredi riski" ni seçin ve sağ ok düğmesine ( **>** ) tıklayarak "kredi riski" nu **Seçili sütunlara** taşıyın. 
 
     ![Model eğitme modülü için kredi risk sütununu seçin](./media/tutorial-part2-credit-risk-train/train-model-select-column.png)
 
@@ -100,7 +100,7 @@ SVM modelini ayarlamak için şunları yapın:
 
 1. Modül paletinde [Iki sınıf destek vektör makinesi][two-class-support-vector-machine] modülünü bulun ve tuvale sürükleyin.
 
-1. [Modeli eğitme][train-model] modülüne sağ tıklayın, **Kopyala**' yı seçin ve ardından tuvale sağ tıklayıp **Yapıştır**' ı seçin. [Tren modeli][train-model] modülünün kopyası, orijinalle aynı sütun seçimine sahiptir.
+1. [Modeli eğitme][train-model] modülüne sağ tıklayın, **Kopyala** ' yı seçin ve ardından tuvale sağ tıklayıp **Yapıştır** ' ı seçin. [Tren modeli][train-model] modülünün kopyası, orijinalle aynı sütun seçimine sahiptir.
 
 1. [Iki sınıf destek vektör makinesi][two-class-support-vector-machine] modülünün çıkışını Ikinci [eğitim modeli][train-model] modülünün sol giriş bağlantı noktasına bağlayın.
 
@@ -118,7 +118,7 @@ Denemenizin bu bölümü şu şekilde görünmelidir:
 
 1. [Verileri Normalleştir][normalize-data] modülünü seçmek için tıklayın. **Özellikler** bölmesinde, **dönüşüm yöntemi** parametresi için **tanh** ' yi seçin.
 
-1. **Sütun seçiciyi Başlat**' a tıklayın, **Başlangıç**için "sütun yok" u seçin, ilk açılan menüde **Ekle** ' yi seçin, ikinci açılan menüde **sütun türü** ' nü seçin ve üçüncü açılan menüde **sayısal** ' i seçin. Bu, tüm sayısal sütunların (ve yalnızca sayısal) dönüştürüldüğünü belirtir.
+1. **Sütun seçiciyi Başlat** ' a tıklayın, **Başlangıç** için "sütun yok" u seçin, ilk açılan menüde **Ekle** ' yi seçin, ikinci açılan menüde **sütun türü** ' nü seçin ve üçüncü açılan menüde **sayısal** ' i seçin. Bu, tüm sayısal sütunların (ve yalnızca sayısal) dönüştürüldüğünü belirtir.
 
 1. Bu satırın sağ tarafındaki artı işaretine (+) tıklayın. Bu, açılan bir satır oluşturur. İlk açılan menüde **hariç tut** ' u seçin, ikinci açılan menüde **sütun adları** ' nı seçin ve metin alanına "kredi riski" yazın. Bu, kredi riski sütununun yoksayılıp sayılmayacağını belirtir (Bu sütun sayısal olduğu için bunu yapmanız gerekir, aksi takdirde onu dışmadıysanız dönüştürüleirdi).
 
@@ -179,7 +179,7 @@ Deneme şimdi şuna benzer görünmelidir:
 ![Her iki modeli değerlendirme](./media/tutorial-part2-credit-risk-train/final-experiment.png)
 
 
-Sonuçları denetlemek için [modeli değerlendir][evaluate-model] modülünün çıkış bağlantı noktasına tıklayın ve **Görselleştir**' i seçin.  
+Sonuçları denetlemek için [modeli değerlendir][evaluate-model] modülünün çıkış bağlantı noktasına tıklayın ve **Görselleştir** ' i seçin.  
 
 [Modeli değerlendir][evaluate-model] modülü, iki puanlanmış modelin sonuçlarını karşılaştırmanıza imkan tanıyan bir çift eğri ve ölçüm oluşturur. Sonuçları alıcı Işleci özelliği (ROC) eğrileri, duyarlık/geri çağırma eğrileri veya eğrileri Yükselt olarak görüntüleyebilirsiniz. Görünen ek veriler, bir karışıklık matrisi, eğri (AUC) ve diğer ölçümler altında bulunan alanın birikmeli değerlerini içerir. Kaydırıcıyı sola veya sağa taşıyarak eşik değerini değiştirebilir ve ölçüm kümesini nasıl etkileyeceğini görebilirsiniz.  
 
@@ -224,14 +224,14 @@ Artık bu veriler için modeller dağıtmaya hazırsınız demektir.
 
 
 <!-- Module References -->
-[execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-[edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
-[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
-[evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/
-[execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-[normalize-data]: https://msdn.microsoft.com/library/azure/986df333-6748-4b85-923d-871df70d6aaf/
-[score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
-[train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
-[two-class-boosted-decision-tree]: https://msdn.microsoft.com/library/azure/e3c522f8-53d9-4829-8ea4-5c6a6b75330c/
-[two-class-support-vector-machine]: https://msdn.microsoft.com/library/azure/12d8479b-74b4-4e67-b8de-d32867380e20/
+[execute-r-script]: /azure/machine-learning/studio-module-reference/execute-r-script
+[edit-metadata]: /azure/machine-learning/studio-module-reference/edit-metadata
+[split]: /azure/machine-learning/studio-module-reference/split-data
+[evaluate-model]: /azure/machine-learning/studio-module-reference/evaluate-model
+[execute-r-script]: /azure/machine-learning/studio-module-reference/execute-r-script
+[normalize-data]: /azure/machine-learning/studio-module-reference/normalize-data
+[score-model]: /azure/machine-learning/studio-module-reference/score-model
+[train-model]: /azure/machine-learning/studio-module-reference/train-model
+[two-class-boosted-decision-tree]: /azure/machine-learning/studio-module-reference/two-class-boosted-decision-tree
+[two-class-support-vector-machine]: /azure/machine-learning/studio-module-reference/two-class-support-vector-machine
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/

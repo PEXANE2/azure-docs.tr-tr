@@ -11,18 +11,18 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 03/05/2020
-ms.openlocfilehash: 62351f341d03873afc59ff7748fa03da0a202d35
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 2a9111e40b207cadd27365cb4f1c199931c40638
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495579"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323969"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench’te neler oldu?
 
 Azure Machine Learning Workbench uygulaması ve diğer bazı erken Özellikler kullanım dışı bırakılmıştır ve geliştirilmiş bir [mimarinin](concept-azure-machine-learning-architecture.md)yolu olması için **Eylül 2018** sürümünde değiştirilmiştir.
 
-Deneyim, deneyiminizi geliştirmek için müşteri geri bildirimi tarafından istenen birçok önemli güncelleştirme içerir. Deneme çalıştırmalarının temel işlevleri model dağıtımına göre değişmemiştir. Ancak şimdi, Machine Learning görevlerinizi ve işlem hatlarınızı gerçekleştirmek için sağlam <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK 'sı</a>, R SDK ve [Azure CLI](reference-azure-machine-learning-cli.md) kullanabilirsiniz.
+Deneyim, deneyiminizi geliştirmek için müşteri geri bildirimi tarafından istenen birçok önemli güncelleştirme içerir. Deneme çalıştırmalarının temel işlevleri model dağıtımına göre değişmemiştir. Ancak şimdi, Machine Learning görevlerinizi ve işlem hatlarınızı gerçekleştirmek için sağlam <a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK 'sı</a>, R SDK ve [Azure CLI](reference-azure-machine-learning-cli.md) kullanabilirsiniz.
 
 Önceki Azure Machine Learning sürümünde oluşturulan yapıtların çoğu kendi yerel veya bulut depolama ortamınızda saklanır. Bu yapıtlar hiçbir zaman kaybolmayacaktır.
 
@@ -37,7 +37,7 @@ Bu makalede, nelerin değiştiğini ve Azure Machine Learning Workbench ve API '
 Azure Machine Learning en son sürümü aşağıdaki özellikleri içerir:
 + [Basitleştirilmiş bir Azure kaynakları modeli](concept-azure-machine-learning-architecture.md).
 + Denemeleri ve işlem hedeflerinizi yönetmek için [Yeni bir Portal Kullanıcı arabirimi](how-to-track-experiments.md) .
-+ Yeni, daha kapsamlı bir Python <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>.
++ Yeni, daha kapsamlı bir Python <a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>.
 + Machine Learning için yeni genişletilmiş [Azure CLI uzantısı](reference-azure-machine-learning-cli.md) .
 
 [Mimari](concept-azure-machine-learning-architecture.md) kullanım kolaylığı için yeniden tasarlanmıştır. Birden çok Azure kaynağı ve hesabı yerine, size gereken yalnızca bir [Azure Machine Learning Çalışma Alanı](concept-workspace.md)'dır. [Azure portalda](how-to-manage-workspace.md) hemen çalışma alanları oluşturabilirsiniz. Bir çalışma alanı kullanarak, birden çok Kullanıcı eğitim ve dağıtım işlem hedeflerini, model denemeleri, Docker görüntülerini, dağıtılan modelleri ve benzerlerini depolayabilirler.
@@ -50,13 +50,13 @@ Geçerli sürümde geliştirilmiş yeni CLı ve SDK istemcileri olsa da masaüst
 
 9 Ocak 'ta, Machine Learning çalışma zamanı, Azure Machine Learning Denemesi ve Model Yönetimi hesapları için 2019 desteği ve bunlarla ilişkili SDK ve CLı bitti.
 
-En son tüm yetenekler, bu <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>, [CLI](reference-azure-machine-learning-cli.md)ve [Portal](how-to-manage-workspace.md)kullanılarak kullanılabilir.
+En son tüm yetenekler, bu <a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>, [CLI](reference-azure-machine-learning-cli.md)ve [Portal](how-to-manage-workspace.md)kullanılarak kullanılabilir.
 
 ## <a name="what-about-run-histories"></a>Çalıştırma geçmişleri ne olacak?
 
 Daha eski çalışma geçmişlerini artık erişilebilir değildir ve en son sürümde çalıştırmalarını nasıl görebilirsiniz.
 
-Çalışma geçmişi artık **denemeleri**olarak adlandırılır. Modelinizin denemeleri toplayıp SDK, CLı veya Azure Machine Learning Studio 'yu kullanarak bunları keşfedebilirsiniz.
+Çalışma geçmişi artık **denemeleri** olarak adlandırılır. Modelinizin denemeleri toplayıp SDK, CLı veya Azure Machine Learning Studio 'yu kullanarak bunları keşfedebilirsiniz.
 
 Portalın çalışma alanı panosu yalnızca Microsoft Edge, Chrome ve Firefox tarayıcılarında desteklenir:
 
@@ -68,7 +68,7 @@ Modellerinizi eğitmek ve yeni CLı ve SDK kullanarak çalıştırma geçmişler
 
 Hiçbir kodu veya çalışmayı kaybetmeyeceksiniz. Eski sürümde projeler yerel dizini olan bulut varlıklarıydı. En son sürümde, yerel bir yapılandırma dosyası kullanarak Azure Machine Learning çalışma alanına yerel dizinler iliştirerek. [En son mimarinin diyagramını](concept-azure-machine-learning-architecture.md)görüntüleyin.
 
-Proje içeriğinin büyük bölümü zaten yerel makinenizde. Bu nedenle, çalışma alanınıza bağlanmak için bu dizinde bir yapılandırma dosyası oluşturmanız ve kodunuzda buna başvurmanız yeterlidir. Dosyalarınızı ve betikleri içeren yerel dizini kullanmaya devam etmek için, [' denemeler. Gönder '](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true) Python komutunda veya CLI komutunu kullanarak dizinin adını belirtin `az ml project attach` .  Örneğin:
+Proje içeriğinin büyük bölümü zaten yerel makinenizde. Bu nedenle, çalışma alanınıza bağlanmak için bu dizinde bir yapılandırma dosyası oluşturmanız ve kodunuzda buna başvurmanız yeterlidir. Dosyalarınızı ve betikleri içeren yerel dizini kullanmaya devam etmek için, [' denemeler. Gönder '](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py) Python komutunda veya CLI komutunu kullanarak dizinin adını belirtin `az ml project attach` .  Örneğin:
 ```python
 run = exp.submit(source_directory=script_folder,
                  script='train.py', run_config=run_config_system_managed)

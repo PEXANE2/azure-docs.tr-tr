@@ -1,7 +1,7 @@
 ---
 title: Mevcut modelleri kullanma ve dağıtma
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning ile yerel olarak eğitilen ML modellerinizi Azure bulutuna nasıl getirebileceğinizi öğrenin.  Azure Machine Learning dışında oluşturulan modelleri kaydedebilir ve sonra bunları bir Web hizmeti veya Azure IoT Edge modülü olarak dağıtabilirsiniz.
+description: Azure 'un dışında eğitilen ML modellerini Azure Machine Learning ile Azure bulutuna getirme hakkında bilgi edinin. Ardından modeli bir Web hizmeti veya IoT modülü olarak dağıtın.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: e8f789819c762702061465e01cf1e64b349c3344
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 6721357464c2a49331d9c02982841d36aa207cc6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735541"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324989"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>Mevcut modelinize Azure Machine Learning dağıtın
 
@@ -25,16 +25,16 @@ Bu makalede, Azure Machine Learning dışında eğitilen bir makine öğrenimi m
 
 Bu makaledeki kavramlar ve terimler hakkında daha fazla bilgi için bkz. [Machine Learning modellerini yönetme, dağıtma ve izleme](concept-model-management-and-deployment.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)
-  + Python örnekleri, `ws` değişkenin Azure Machine Learning çalışma alanınıza ayarlandığını varsayar. Çalışma alanına bağlanma hakkında daha fazla bilgi için lütfen [Python için Azure MACHINE LEARNING SDK belgelerine](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true#&preserve-view=trueworkspace)başvurun.
+  + Python örnekleri, `ws` değişkenin Azure Machine Learning çalışma alanınıza ayarlandığını varsayar. Çalışma alanına bağlanma hakkında daha fazla bilgi için lütfen [Python için Azure MACHINE LEARNING SDK belgelerine](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=trueworkspace)başvurun.
   
   + CLı örnekleri `myworkspace` , ve ' nin `myresourcegroup` , çalışma alanınızın adı ve onu içeren kaynak grubu ile değiştirmeniz gereken yer tutucuları kullanır.
 
-* [Python SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).  
+* [Python SDK Azure Machine Learning](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).  
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) ve [Machine Learning CLI uzantısı](reference-azure-machine-learning-cli.md).
+* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) ve [Machine Learning CLI uzantısı](reference-azure-machine-learning-cli.md).
 
 * Eğitilen bir model. Model, geliştirme ortamınızda bir veya daha fazla dosyada kalıcı olmalıdır. <br><br>Eğitilen bir modelin kaydedilmesini göstermek için bu makaledeki örnek kod, [Paolo Ripamonti 'ın Twitter yaklaşım Analizi projesinden](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis)modelleri kullanır.
 
@@ -52,7 +52,7 @@ model = Model.register(model_path = "./models",
                        workspace = ws)
 ```
 
-Daha fazla bilgi için bkz. [model. Register ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=trueregister-workspace--model-path--model-name--tags-none--properties-none--description-none--datasets-none--model-framework-none--model-framework-version-none--child-paths-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none-) başvurusu.
+Daha fazla bilgi için bkz. [model. Register ()](/python/api/azureml-core/azureml.core.model%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-workspace--model-path--model-name--tags-none--properties-none--description-none--datasets-none--model-framework-none--model-framework-version-none--child-paths-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none-) başvurusu.
 
 ```azurecli
 az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
@@ -61,7 +61,7 @@ az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 > [!TIP]
 > Ayrıca, `tags` kayıtlı modele ekleme ve `properties` sözlük nesneleri de ayarlayabilirsiniz. Bu değerler, daha sonra belirli bir modeli belirlemesine yardımcı olmak için kullanılabilir. Örneğin, kullanılan çerçeve, eğitim parametreleri vb.
 
-Daha fazla bilgi için, [az ml model kayıt](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-model-register) başvurusuna bakın.
+Daha fazla bilgi için, [az ml model kayıt](/cli/azure/ext/azure-cli-ml/ml/model?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-register) başvurusuna bakın.
 
 
 Model kaydı hakkında genel bilgi için bkz. [Machine Learning modellerini yönetme, dağıtma ve izleme](concept-model-management-and-deployment.md).
@@ -103,7 +103,7 @@ inference_config = InferenceConfig(entry_script="score.py",
 Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 + [Ortamları kullanma](how-to-use-environments.md).
-+ [Inenceconfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true) başvurusu.
++ [Inenceconfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py) başvurusu.
 
 
 CLı, bir YAML dosyasından çıkarım yapılandırmasını yükler:
@@ -220,7 +220,7 @@ Giriş betikleri hakkında daha fazla bilgi için bkz. [Azure Machine Learning m
 
 ## <a name="define-deployment"></a>Dağıtımı tanımla
 
-[WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice?view=azure-ml-py&preserve-view=true) paketi, dağıtım için kullanılan sınıfları içerir. Kullandığınız sınıf, modelin dağıtıldığı yeri belirler. Örneğin, Azure Kubernetes hizmetinde bir Web hizmeti olarak dağıtmak için, dağıtım yapılandırmasını oluşturmak üzere [AksWebService.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) kullanın.
+[WebService](/python/api/azureml-core/azureml.core.webservice?preserve-view=true&view=azure-ml-py) paketi, dağıtım için kullanılan sınıfları içerir. Kullandığınız sınıf, modelin dağıtıldığı yeri belirler. Örneğin, Azure Kubernetes hizmetinde bir Web hizmeti olarak dağıtmak için, dağıtım yapılandırmasını oluşturmak üzere [AksWebService.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) kullanın.
 
 Aşağıdaki Python kodu bir yerel dağıtım için dağıtım yapılandırmasını tanımlar. Bu yapılandırma, modeli yerel bilgisayarınıza bir Web hizmeti olarak dağıtır.
 
@@ -233,7 +233,7 @@ from azureml.core.webservice import LocalWebservice
 deployment_config = LocalWebservice.deploy_configuration()
 ```
 
-Daha fazla bilgi için [LocalWebservice.deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.localwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-port-none-) başvurusuna bakın.
+Daha fazla bilgi için [LocalWebservice.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.localwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-port-none-) başvurusuna bakın.
 
 CLı, dağıtım yapılandırmasını bir YAML dosyasından yükler:
 
@@ -260,7 +260,7 @@ print(service.state)
 print("scoring URI: " + service.scoring_uri)
 ```
 
-Daha fazla bilgi için bkz. [model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) başvurusu.
+Daha fazla bilgi için bkz. [model. deploy ()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) başvurusu.
 
 Modeli CLı 'dan dağıtmak için aşağıdaki komutu kullanın. Bu komut `sentiment:1` , ve dosyalarında depolanan çıkarım ve dağıtım yapılandırmasını kullanarak kayıtlı modelin () sürüm 1 ' i `inferenceConfig.json` dağıtır `deploymentConfig.json` :
 
@@ -268,7 +268,7 @@ Modeli CLı 'dan dağıtmak için aşağıdaki komutu kullanın. Bu komut `senti
 az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc deploymentConfig.json
 ```
 
-Daha fazla bilgi için, [az ml model dağıtım](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-model-deploy) başvurusuna bakın.
+Daha fazla bilgi için, [az ml model dağıtım](/cli/azure/ext/azure-cli-ml/ml/model?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) başvurusuna bakın.
 
 Dağıtım hakkında daha fazla bilgi için bkz. [modellerin nasıl ve ne şekilde dağıtılacağı](how-to-deploy-and-where.md).
 

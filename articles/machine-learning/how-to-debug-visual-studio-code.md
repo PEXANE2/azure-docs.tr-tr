@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: 374cc79b42d2dcaed0312c0ec205073906ce1fc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e042fd62d99c9fdf88a144c93739bf1f3f08a78c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530684"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325576"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Visual Studio Code ile etkileşimli hata ayıklama
 
@@ -26,7 +26,7 @@ Visual Studio Code (VS Code) ve [depugpy](https://github.com/microsoft/debugpy/)
 
 Machine Learning denemeleri 'i buluta göndermeden önce doğrulamak, çalıştırmak ve hatalarını ayıklamak için Azure Machine Learning uzantısını kullanın.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 * Azure Machine Learning VS Code uzantısı (Önizleme). Daha fazla bilgi için bkz. [set up Azure Machine Learning vs Code uzantısı](tutorial-setup-vscode-extension.md).
 * [Docker](https://www.docker.com/get-started)
@@ -38,7 +38,7 @@ Machine Learning denemeleri 'i buluta göndermeden önce doğrulamak, çalışt�
 > Windows 'da [Docker 'ı Linux kapsayıcıları kullanacak şekilde yapılandırmayı](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)unutmayın.
 
 > [!TIP]
-> Windows için gerekli olmasa da, [Linux Için Windows alt sistemi (WSL) 2 Ile Docker kullanılması](https://docs.microsoft.com/windows/wsl/tutorials/wsl-containers#install-docker-desktop)önemle önerilir.
+> Windows için gerekli olmasa da, [Linux Için Windows alt sistemi (WSL) 2 Ile Docker kullanılması](/windows/wsl/tutorials/wsl-containers#install-docker-desktop)önemle önerilir.
 
 > [!IMPORTANT]
 > Denemenizi yerel olarak çalıştırmadan önce Docker 'ın çalıştığından emin olun.
@@ -48,17 +48,17 @@ Machine Learning denemeleri 'i buluta göndermeden önce doğrulamak, çalışt�
 1. VS Code, Azure Machine Learning uzantısı görünümünü açın.
 1. Çalışma alanınızı içeren abonelik düğümünü genişletin. Henüz bir tane yoksa, uzantıyı kullanarak [bir Azure Machine Learning çalışma alanı oluşturabilirsiniz](how-to-manage-resources-vscode.md#create-a-workspace) .
 1. Çalışma alanı düğümünü genişletin.
-1. **Denemeleri** düğümüne sağ tıklayın ve **deneme oluştur**' u seçin. İstem belirdiğinde, denemeniz için bir ad girin.
-1. **Denemeleri** düğümünü genişletin, çalıştırmak istediğiniz denemeyi sağ tıklatın ve **deneme Çalıştır**' ı seçin.
-1. Denemenizin çalıştırılacağı seçenekler listesinden **Yerel**' i seçin.
-1. **Yalnızca Windows 'Da ilk kez kullanılır**. Dosya paylaşımının izin versorulduğunda **Evet**' i seçin. Dosya paylaşımından izin uyguladığınızda, Docker 'ın komut dosyanızı kapsayıcı dizinine takmasına olanak tanır. Ayrıca, Docker 'ın, çalıştırınızdan günlükleri ve çıkışları sisteminizdeki geçici bir dizinde depolamasına de olanak tanır.
-1. Denemenizin hatalarını ayıklamak için **Evet** ' i seçin. Gerekmiyorsa **Hayır**'ı seçin. Hayır seçeneğinin belirlenmesi, denemenizin hata ayıklayıcıya eklemeden yerel olarak çalıştırılmasını sağlar.
+1. **Denemeleri** düğümüne sağ tıklayın ve **deneme oluştur** ' u seçin. İstem belirdiğinde, denemeniz için bir ad girin.
+1. **Denemeleri** düğümünü genişletin, çalıştırmak istediğiniz denemeyi sağ tıklatın ve **deneme Çalıştır** ' ı seçin.
+1. Denemenizin çalıştırılacağı seçenekler listesinden **Yerel** ' i seçin.
+1. **Yalnızca Windows 'Da ilk kez kullanılır**. Dosya paylaşımının izin versorulduğunda **Evet** ' i seçin. Dosya paylaşımından izin uyguladığınızda, Docker 'ın komut dosyanızı kapsayıcı dizinine takmasına olanak tanır. Ayrıca, Docker 'ın, çalıştırınızdan günlükleri ve çıkışları sisteminizdeki geçici bir dizinde depolamasına de olanak tanır.
+1. Denemenizin hatalarını ayıklamak için **Evet** ' i seçin. Gerekmiyorsa **Hayır** 'ı seçin. Hayır seçeneğinin belirlenmesi, denemenizin hata ayıklayıcıya eklemeden yerel olarak çalıştırılmasını sağlar.
 1. Çalıştırma yapılandırmanızı oluşturmak için **Yeni çalıştırma yapılandırması oluştur** ' u seçin. Çalıştırma yapılandırması, çalıştırmak istediğiniz betiği, bağımlılıkları ve veri kümelerini tanımlar. Alternatif olarak, zaten bir tane varsa, açılan listeden seçin.
     1. Ortamınızı seçin. [Azure Machine Learning](resource-curated-environments.md) birini seçerek veya kendinizinkini oluşturabilirsiniz.
     1. Çalıştırmak istediğiniz betiğin adını belirtin. Yol, VS Code açılan dizine göredir.
     1. Azure Machine Learning veri kümesi kullanmak isteyip istemediğinizi seçin. Uzantıyı kullanarak [Azure Machine Learning veri kümeleri](how-to-manage-resources-vscode.md#create-dataset) oluşturabilirsiniz.
-    1. Hata ayıklayıcıyı denemenizin çalıştığı kapsayıcıya iliştirmek için hata ayıklayıcı GPY gereklidir. Hata ayıklama GPY 'yi bağımlılık olarak eklemek için, hata ayıklama **GPY Ekle**' yi seçin. Aksi takdirde **Atla**' yı seçin. Bir bağımlılık olarak hata ayıklayıcının GPY eklenmesi, denemenizin hata ayıklayıcıya iliştirilmesi gerekmeden çalışmasını sağlar.
-    1. Çalışma yapılandırma ayarlarınızı içeren bir yapılandırma dosyası düzenleyicide açılır. Ayarları karşılıyoruz, **deneme gönder**' i seçin. Alternatif olarak, menü çubuğundan komut paletini (**görüntüleyin > komut paleti**) açın ve `Azure ML: Submit experiment` metin kutusuna komutu girin.
+    1. Hata ayıklayıcıyı denemenizin çalıştığı kapsayıcıya iliştirmek için hata ayıklayıcı GPY gereklidir. Hata ayıklama GPY 'yi bağımlılık olarak eklemek için, hata ayıklama **GPY Ekle** ' yi seçin. Aksi takdirde **Atla** ' yı seçin. Bir bağımlılık olarak hata ayıklayıcının GPY eklenmesi, denemenizin hata ayıklayıcıya iliştirilmesi gerekmeden çalışmasını sağlar.
+    1. Çalışma yapılandırma ayarlarınızı içeren bir yapılandırma dosyası düzenleyicide açılır. Ayarları karşılıyoruz, **deneme gönder** ' i seçin. Alternatif olarak, menü çubuğundan komut paletini ( **görüntüleyin > komut paleti** ) açın ve `Azure ML: Submit experiment` metin kutusuna komutu girin.
 1. Denemeler gönderildikten sonra, komut dosyanızı ve çalıştırma yapılandırmanızda belirtilen yapılandırmaları içeren bir Docker görüntüsü oluşturulur.
 
     Docker görüntü oluşturma işlemi başladığında, `60_control_log.txt` dosya akışının içerikleri vs Code çıktı konsoluna.
@@ -73,7 +73,7 @@ Machine Learning denemeleri 'i buluta göndermeden önce doğrulamak, çalışt�
 
 Bu noktada, VS Code kullanarak kodunuzun hatalarını ayıklamanıza ve Hata ayıklayabilmeniz gerekir.
 
-Çalıştırmayı iptal etmek istediğiniz herhangi bir noktada çalışma düğümünüz öğesine sağ tıklayın ve **çalıştırmayı Iptal et**' i seçin.
+Çalıştırmayı iptal etmek istediğiniz herhangi bir noktada çalışma düğümünüz öğesine sağ tıklayın ve **çalıştırmayı Iptal et** ' i seçin.
 
 Uzaktan denemenin çalışmasına benzer şekilde, günlükleri ve çıkışları denetlemek için çalıştırma düğümünüz genişletebilirsiniz.
 
@@ -84,12 +84,12 @@ Uzaktan denemenin çalışmasına benzer şekilde, günlükleri ve çıkışlar�
 
 Bazı durumlarda, ML ardışık düzeninde kullanılan Python kodunda etkileşimli olarak hata ayıklaması yapmanız gerekebilir. VS Code ve hata ayıklama GPY kullanarak, eğitim ortamında çalışırken koda ekleyebilirsiniz.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
-* __Azure sanal ağını__kullanmak üzere yapılandırılmış bir __Azure Machine Learning çalışma alanı__ .
+* __Azure sanal ağını__ kullanmak üzere yapılandırılmış bir __Azure Machine Learning çalışma alanı__ .
 * İşlem hattı adımlarının bir parçası olarak Python betikleri kullanan bir __Azure Machine Learning işlem hattı__ . Örneğin, bir PythonScriptStep.
 * __Sanal ağdaki__ bir Azure Machine Learning işlem kümesi ve __eğitim için işlem hattı tarafından kullanılır__.
-* __Sanal ağdaki__bir __geliştirme ortamı__ . Geliştirme ortamı aşağıdakilerden biri olabilir:
+* __Sanal ağdaki__ bir __geliştirme ortamı__ . Geliştirme ortamı aşağıdakilerden biri olabilir:
 
   * Sanal ağdaki bir Azure sanal makinesi
   * Sanal ağdaki bir not defteri VM 'sinin Işlem örneği
@@ -292,7 +292,7 @@ Değeri kaydedin `ip_address` . Sonraki bölümde kullanılır.
 
 1. Hata ayıklayıcıyı çalıştıran Azure Machine Learning işlem ile iletişim kurmak üzere VS Code yapılandırmak için yeni bir hata ayıklama yapılandırması oluşturun:
 
-    1. VS Code, __Hata Ayıkla__ menüsünü ve ardından __yapılandırma aç__' ı seçin. __launch.js__ adlı bir dosya açılır.
+    1. VS Code, __Hata Ayıkla__ menüsünü ve ardından __yapılandırma aç__ ' ı seçin. __launch.js__ adlı bir dosya açılır.
 
     1. Dosyadaki __launch.js__ , içeren satırı bulun `"configurations": [` ve sonra aşağıdaki metni ekleyin. Girişi, `"host": "<IP-ADDRESS>"` önceki bölümden günlüklerinizin DÖNDÜRDÜĞÜ IP adresiyle değiştirin. Girişi, `"localRoot": "${workspaceFolder}/code/step"` hata ayıklanan betiğin bir kopyasını içeren bir yerel dizin olarak değiştirin:
 
@@ -327,7 +327,7 @@ Değeri kaydedin `ip_address` . Sonraki bölümde kullanılır.
 
 1. VS Code açın ve betiğin yerel bir kopyasını açın.
 2. Komut dosyasının iliştirdikten sonra durdurulmasını istediğiniz kesme noktalarını ayarlayın.
-3. Alt işlem betiği çalıştırırken ve `Timeout for debug connection` günlüklerde görüntülenirken, F5 tuşunu veya __Hata Ayıkla__' yı seçin. İstendiğinde, __Azure Machine Learning işlem: uzaktan hata ayıklama__ yapılandırması ' nı seçin. Ayrıca, yan çubukta hata ayıklama simgesini, Azure Machine Learning: uzaktan hata ayıklama açılan menüsünden __Uzaktan hata ayıklama__ girişini seçebilir ve ardından hata ayıklayıcıyı eklemek için yeşil oku kullanabilirsiniz.
+3. Alt işlem betiği çalıştırırken ve `Timeout for debug connection` günlüklerde görüntülenirken, F5 tuşunu veya __Hata Ayıkla__ ' yı seçin. İstendiğinde, __Azure Machine Learning işlem: uzaktan hata ayıklama__ yapılandırması ' nı seçin. Ayrıca, yan çubukta hata ayıklama simgesini, Azure Machine Learning: uzaktan hata ayıklama açılan menüsünden __Uzaktan hata ayıklama__ girişini seçebilir ve ardından hata ayıklayıcıyı eklemek için yeşil oku kullanabilirsiniz.
 
     Bu noktada, VS Code işlem düğümündeki hata ayıklama GPY 'ye bağlanır ve daha önce ayarladığınız kesme noktasında durmaktadır. Artık kodu çalışırken, değişkenleri görüntülerken vb. adımları izleyebilirsiniz.
 
@@ -339,7 +339,7 @@ Değeri kaydedin `ip_address` . Sonraki bölümde kullanılır.
 Bazı durumlarda, model dağıtımınızda bulunan Python kodunda etkileşimli olarak hata ayıklaması yapmanız gerekebilir. Örneğin, giriş betiği başarısız olursa ve neden ek günlüğe kaydetme ile saptanamaz. VS Code ve hata ayıklama GPY kullanarak, Docker kapsayıcısının içinde çalışan koda iliştirebilirsiniz.
 
 > [!IMPORTANT]
-> Bu hata ayıklama yöntemi, `Model.deploy()` `LocalWebservice.deploy_configuration` bir modeli yerel olarak dağıtırken ve kullanılırken çalışmaz. Bunun yerine, [model. Package ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-) yöntemini kullanarak bir görüntü oluşturmanız gerekir.
+> Bu hata ayıklama yöntemi, `Model.deploy()` `LocalWebservice.deploy_configuration` bir modeli yerel olarak dağıtırken ve kullanılırken çalışmaz. Bunun yerine, [model. Package ()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-) yöntemini kullanarak bir görüntü oluşturmanız gerekir.
 
 Yerel Web hizmeti dağıtımları, yerel sisteminizde çalışan bir Docker yüklemesi gerektirir. Docker kullanma hakkında daha fazla bilgi için [Docker belgelerine](https://docs.docker.com/)bakın. İşlem örnekleriyle çalışırken Docker 'ın zaten yüklü olduğunu unutmayın.
 
@@ -355,7 +355,7 @@ Yerel Web hizmeti dağıtımları, yerel sisteminizde çalışan bir Docker yük
 
 1. Docker görüntüsüyle iletişim kurmak üzere VS Code yapılandırmak için yeni bir hata ayıklama yapılandırması oluşturun:
 
-    1. VS Code, __Hata Ayıkla__ menüsünü ve ardından __yapılandırma aç__' ı seçin. __launch.js__ adlı bir dosya açılır.
+    1. VS Code, __Hata Ayıkla__ menüsünü ve ardından __yapılandırma aç__ ' ı seçin. __launch.js__ adlı bir dosya açılır.
 
     1. Dosyadaki __launch.js__ , içeren satırı bulun `"configurations": [` ve sonra aşağıdaki metni ekleyin:
 
@@ -468,7 +468,7 @@ Yerel Web hizmeti dağıtımları, yerel sisteminizde çalışan bir Docker yük
     runsvdir /var/runit
     ```
 
-1. Kapsayıcı içinde hata ayıklayıcı GPY 'ye VS Code iliştirmek için, VS Code açın ve F5 tuşunu kullanın veya __Hata Ayıkla__' yı seçin. İstendiğinde, __Azure Machine Learning dağıtım: Docker hata ayıklama__ yapılandırması ' nı seçin. Ayrıca, hata ayıklama açılan menüsünden __Azure Machine Learning Deployment: Docker hata ayıklama__ girişi olan yan çubukta hata ayıklama simgesini seçebilir ve ardından hata ayıklayıcıyı eklemek için yeşil oku kullanabilirsiniz.
+1. Kapsayıcı içinde hata ayıklayıcı GPY 'ye VS Code iliştirmek için, VS Code açın ve F5 tuşunu kullanın veya __Hata Ayıkla__ ' yı seçin. İstendiğinde, __Azure Machine Learning dağıtım: Docker hata ayıklama__ yapılandırması ' nı seçin. Ayrıca, hata ayıklama açılan menüsünden __Azure Machine Learning Deployment: Docker hata ayıklama__ girişi olan yan çubukta hata ayıklama simgesini seçebilir ve ardından hata ayıklayıcıyı eklemek için yeşil oku kullanabilirsiniz.
 
     ![Hata ayıklama simgesi, hata ayıklamayı Başlat düğmesi ve yapılandırma Seçicisi](./media/how-to-troubleshoot-deployment/start-debugging.png)
 

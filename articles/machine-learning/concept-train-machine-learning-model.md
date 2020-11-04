@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: d34748a2b9f46bde187b4f003e210ffdaecd93e2
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 8888393cdbc738525b89ace1cf6f5864b7aa3b6e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675677"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324814"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modelleri Azure Machine Learning ile eğitme
 
@@ -27,7 +27,7 @@ Azure Machine Learning, SDK 'yı kullanarak otomatik makine öğrenimi ve görse
     | ----- | ----- |
     | [Yapılandırmayı Çalıştır](#run-configuration) | **Modelleri eğitmek için tipik bir yol** , bir eğitim betiği kullanmaktır ve yapılandırma çalıştırmalıdır. Çalıştırma yapılandırması, modelinizi eğitemak için kullanılan eğitim ortamını yapılandırmak için gereken bilgileri sağlar. Çalışma yapılandırmanızda eğitim betiğinizi, işlem hedefini ve Azure ML ortamınızı belirtebilir ve bir eğitim işi çalıştırabilirsiniz. |
     | [Otomatik makine öğrenimi](#automated-machine-learning) | Otomatikleştirilmiş makine **öğrenimi, kapsamlı veri bilimi veya programlama bilgisi olmadan modelleri eğmenize** olanak tanır. Veri bilimi ve programlama arka planına sahip kişiler için, algoritma seçimini ve hiper parametre ayarlamayı otomatikleştirerek zaman ve kaynak tasarrufu yapmak için bir yol sağlar. Otomatik makine öğrenimi kullanırken çalıştırma yapılandırması tanımlama konusunda endişelenmeniz gerekmez. |
-    | [Machine Learning işlem hattı](#machine-learning-pipeline) | İşlem hatları, farklı bir eğitim yöntemi değildir, ancak iş akışının bir parçası olarak eğitim içerebilen **modüler, yeniden kullanılabilir adımları kullanarak bir iş akışı tanımlamanın bir yoludur** . Makine öğrenimi ardışık düzenleri, otomatik makine öğrenimini kullanmayı destekler ve modelleri eğitmek için yapılandırmayı çalıştırır. İşlem hatları eğitimlere özel olarak odaklanmadığından, işlem hattı kullanmanın nedenleri diğer eğitim yöntemlerinden daha farklılaştırılmıştır. Genellikle, şu durumlarda bir işlem hattı kullanabilirsiniz:<br>* Uzun süre çalışan eğitim işleri veya veri hazırlama gibi **Katılımsız işlemleri zamanlamak** istiyorsunuz.<br>* Heterojen işlem kaynakları ve depolama konumları genelinde koordine edilen **birden çok adım** kullanın.<br>* Yeniden eğitim veya toplu Puanlama gibi belirli senaryolar için işlem hattını yeniden **kullanılabilir bir şablon** olarak kullanın.<br>* İş akışınız için **veri kaynaklarını, girişleri ve çıkışları** izleyin.<br>* İş akışınız, **belirli adımlarda bağımsız olarak çalışan farklı takımlar tarafından uygulanır** . Adımlar daha sonra iş akışını uygulamak için bir ardışık düzende birleştirilebilir. |
+    | [Machine Learning işlem hattı](#machine-learning-pipeline) | İşlem hatları, farklı bir eğitim yöntemi değildir, ancak iş akışının bir parçası olarak eğitim içerebilen **modüler, yeniden kullanılabilir adımları kullanarak bir iş akışı tanımlamanın bir yoludur**. Makine öğrenimi ardışık düzenleri, otomatik makine öğrenimini kullanmayı destekler ve modelleri eğitmek için yapılandırmayı çalıştırır. İşlem hatları eğitimlere özel olarak odaklanmadığından, işlem hattı kullanmanın nedenleri diğer eğitim yöntemlerinden daha farklılaştırılmıştır. Genellikle, şu durumlarda bir işlem hattı kullanabilirsiniz:<br>* Uzun süre çalışan eğitim işleri veya veri hazırlama gibi **Katılımsız işlemleri zamanlamak** istiyorsunuz.<br>* Heterojen işlem kaynakları ve depolama konumları genelinde koordine edilen **birden çok adım** kullanın.<br>* Yeniden eğitim veya toplu Puanlama gibi belirli senaryolar için işlem hattını yeniden **kullanılabilir bir şablon** olarak kullanın.<br>* İş akışınız için **veri kaynaklarını, girişleri ve çıkışları** izleyin.<br>* İş akışınız, **belirli adımlarda bağımsız olarak çalışan farklı takımlar tarafından uygulanır**. Adımlar daha sonra iş akışını uygulamak için bir ardışık düzende birleştirilebilir. |
 
 + [R için Azure MACHINE LEARNING SDK (Önizleme)](#r-sdk-preview): r için sdk, Azure Machine Learning Python SDK 'sına bağlamak için reticute paketini kullanır. Bu, herhangi bir R ortamından Python SDK 'sında uygulanan temel nesnelere ve yöntemlere erişmenizi sağlar.
 
@@ -41,13 +41,13 @@ Bu eğitim yöntemlerinin her biri, eğitim için farklı türlerde işlem kayna
 
 Python için Azure Machine Learning SDK, Azure Machine Learning ile makine öğrenimi iş akışları oluşturmanıza ve çalıştırmanıza olanak tanır. Etkileşimli bir Python oturumundan, Jupyıter not defterlerinden, Visual Studio Code veya başka bir IDE 'den hizmetle etkileşime geçebilirsiniz.
 
-* [Python için Azure Machine Learning SDK nedir?](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)
-* [SDK’yı yükleme/güncelleştirme](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
+* [Python için Azure Machine Learning SDK nedir?](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)
+* [SDK’yı yükleme/güncelleştirme](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)
 * [Azure Machine Learning için bir geliştirme ortamı yapılandırma](how-to-configure-environment.md)
 
 ### <a name="run-configuration"></a>Yapılandırmayı Çalıştır
 
-Azure Machine Learning ile genel bir eğitim işi [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)kullanılarak tanımlanabilir. Komut dosyası çalıştırma yapılandırması daha sonra, bir işlem hedefinde bir modeli eğitmek için eğitim betikleriyle birlikte kullanılır.
+Azure Machine Learning ile genel bir eğitim işi [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)kullanılarak tanımlanabilir. Komut dosyası çalıştırma yapılandırması daha sonra, bir işlem hedefinde bir modeli eğitmek için eğitim betikleriyle birlikte kullanılır.
 
 Yerel bilgisayarınız için bir çalıştırma yapılandırması ile başlayabilir ve ardından gerektiğinde bulut tabanlı bir işlem hedefi için birine geçiş yapabilirsiniz. İşlem hedefini değiştirirken yalnızca kullandığınız çalıştırma yapılandırmasını değiştirirsiniz. Bir çalıştırma Ayrıca, eğitim işiyle ilgili olarak girişler, çıktılar ve Günlükler gibi bilgileri de günlüğe kaydeder.
 
@@ -90,8 +90,8 @@ Azure eğitim yaşam döngüsü aşağıdakilerden oluşur:
 1. Dockerfile 'ı işlem düğümüne derleme veya indirme 
     1. Sistem bir karma değerini hesaplar: 
         - Temel görüntü 
-        - Özel Docker adımları (bkz. [özel bir Docker temel görüntüsü kullanarak model dağıtma](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image))
-        - Conda tanımı YAML (bkz. [oluşturma & yazılım ortamlarını Azure Machine Learning kullanma](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments))
+        - Özel Docker adımları (bkz. [özel bir Docker temel görüntüsü kullanarak model dağıtma](./how-to-deploy-custom-docker-image.md))
+        - Conda tanımı YAML (bkz. [oluşturma & yazılım ortamlarını Azure Machine Learning kullanma](./how-to-use-environments.md))
     1. Sistem bu karmayı, çalışma alanının aramasında anahtar olarak kullanır Azure Container Registry (ACR)
     1. Bulunmazsa, genel ACR 'de bir eşleşme arar
     1. Bulunamadıysanız, sistem yeni bir görüntü oluşturur (önbelleğe alınır ve çalışma alanı ACR 'ye kaydedilir)
@@ -101,7 +101,7 @@ Azure eğitim yaşam döngüsü aşağıdakilerden oluşur:
 1. Günlükler, model dosyaları ve `./outputs` çalışma alanıyla ilişkili depolama hesabına yazılan diğer dosyalar kaydediliyor
 1. Geçici depolamayı kaldırma dahil olmak üzere ölçeği azaltma 
 
-Yerel makinenizde ("Yerel çalıştırma olarak yapılandırma") eğitme seçeneğini belirlerseniz Docker kullanmanız gerekmez. İsterseniz Docker 'ı yerel olarak kullanabilirsiniz (bir örnek için ML işlem hattını [yapılandırma](https://docs.microsoft.com/azure/machine-learning/how-to-debug-pipelines#configure-ml-pipeline ) bölümüne bakın).
+Yerel makinenizde ("Yerel çalıştırma olarak yapılandırma") eğitme seçeneğini belirlerseniz Docker kullanmanız gerekmez. İsterseniz Docker 'ı yerel olarak kullanabilirsiniz (bir örnek için ML işlem hattını [yapılandırma](./how-to-debug-pipelines.md) bölümüne bakın).
 
 ## <a name="r-sdk-preview"></a>R SDK (Önizleme)
 

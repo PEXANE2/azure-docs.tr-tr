@@ -1,6 +1,6 @@
 ---
 title: İşlemleri kullanma
-description: Çözümleri geliştirmek için SQL havuzunda (veri ambarı) işlem uygulama ipuçları.
+description: Çözümleri geliştirmek için Azure SYNAPSE Analytics 'te adanmış SQL havuzu ile işlem uygulama ipuçları.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,20 +10,20 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: de36d1eda21903480eee986df72c5274e1aa6dff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2597a4bc6c5ed44f0e0050be3f69d7e840665e5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288622"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323843"
 ---
-# <a name="use-transactions-in-sql-pool"></a>SQL havuzunda işlemleri kullanma
+# <a name="use-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu ile işlemleri kullanma
 
-Çözümleri geliştirmek için SQL havuzunda (veri ambarı) işlem uygulama ipuçları.
+Çözümleri geliştirmek için Azure SYNAPSE Analytics 'te adanmış SQL havuzu ile işlem uygulama ipuçları.
 
 ## <a name="what-to-expect"></a>Beklentiler
 
-Bekleneceğiniz gibi, SQL havuzu veri ambarı iş yükünün parçası olarak işlemleri destekler. Ancak, SQL havuzunun performansının ölçekte korunduğundan emin olmak için bazı özellikler SQL Server karşılaştırıldığında sınırlı olur. Bu makalede farklılıklar vurgulanmıştır ve diğerleri listelenmiştir.
+Tahmin ettiğiniz gibi, adanmış SQL havuzu veri ambarı iş yükünün parçası olarak işlemleri destekler. Ancak, adanmış SQL havuzunun performansının büyük ölçekli olarak korunduğundan emin olmak için bazı özellikler SQL Server ile karşılaştırıldığında sınırlı olur. Bu makalede farklılıklar vurgulanmıştır ve diğerleri listelenmiştir.
 
 ## <a name="transaction-isolation-levels"></a>İşlem yalıtım düzeyleri
 
@@ -92,7 +92,7 @@ Günlüğe yazılan veri miktarını iyileştirmek ve en aza indirmek için [iş
 SQL havuzu,-2 değerini kullanarak başarısız bir işlemi raporlamak için XACT_STATE () işlevini kullanır. Bu değer, işlemin başarısız olduğu ve yalnızca geri alma için işaretlenen anlamına gelir.
 
 > [!NOTE]
-> Başarısız bir işlemi göstermek için XACT_STATE işlevi tarafından-2 kullanılması SQL Server farklı davranışları temsil eder. SQL Server, bir uncommittable işlemini göstermek için-1 değerini kullanır. SQL Server, bir işlem içindeki bazı hatalara, uncommittable olarak işaretlenmesi gerekmeden tolerans sağlayabilir. Örneğin, bir `SELECT 1/0` hataya neden olur, ancak bir işlemi committable durumuna zorlamaz. SQL Server ayrıca, komuntable işleminde okuma izni verir. Ancak, SQL havuzu bunu yapmanızı sağlar. Bir SQL havuzu işleminin içinde bir hata oluşursa, otomatik olarak-2 durumunu girer ve deyim geri alınana kadar başka bir SELECT deyimi de yapamazsınız. Bu nedenle, kod değişiklikleri yapmanız gerekebilmeniz için uygulama kodunuzun XACT_STATE () kullanıp kullanmadığını denetlemek önemlidir.
+> Başarısız bir işlemi göstermek için XACT_STATE işlevi tarafından-2 kullanılması SQL Server farklı davranışları temsil eder. SQL Server, bir uncommittable işlemini göstermek için-1 değerini kullanır. SQL Server, bir işlem içindeki bazı hatalara, uncommittable olarak işaretlenmesi gerekmeden tolerans sağlayabilir. Örneğin, bir `SELECT 1/0` hataya neden olur, ancak bir işlemi committable durumuna zorlamaz. SQL Server ayrıca, komuntable işleminde okuma izni verir. Ancak adanmış SQL havuzu bunu yapmanızı sağlar. Adanmış bir SQL havuzu işleminde hata oluşursa, otomatik olarak-2 durumunu girer ve deyim geri alınana kadar başka bir SELECT deyimi de yapamazsınız. Bu nedenle, kod değişiklikleri yapmanız gerekebilmeniz için uygulama kodunuzun XACT_STATE () kullanıp kullanmadığını denetlemek önemlidir.
 
 Örneğin SQL Server, aşağıdaki gibi görünen bir işlem görebilirsiniz:
 
@@ -138,7 +138,7 @@ Msg 111233, düzey 16, durum 1, satır 1 111233; Geçerli işlem iptal edildi ve
 
 ERROR_ * işlevlerinin çıktısını almazsınız.
 
-SQL havuzunda kodun biraz değiştirilmesi gerekir:
+Adanmış SQL havuzunda kodun biraz değiştirilmesi gerekir:
 
 ```sql
 SET NOCOUNT ON;
@@ -181,11 +181,11 @@ Tüm değiştirilen işlem GERI ALMANıN, CATCH bloğundaki hata bilgilerinin ok
 
 ## <a name="error_line-function"></a>Error_Line () işlevi
 
-Ayrıca, SQL havuzunun ERROR_LINE () işlevini uygulamamayı veya desteklemediğini de unutmayın. Kodunuzda bu işleve sahipseniz, SQL havuzuyla uyumlu olması için onu kaldırmanız gerekir. Eşdeğer işlevselliği uygulamak için kodunuzda sorgu etiketleri kullanın. Daha fazla bilgi için bkz. [etiket](develop-label.md) makalesi.
+Ayrıca, adanmış SQL havuzunun ERROR_LINE () işlevini uygulamadığından veya desteklemediği bir değer de vardır. Kodunuzda bu işleve sahipseniz, adanmış SQL havuzuyla uyumlu olacak şekilde kaldırmanız gerekir. Eşdeğer işlevselliği uygulamak için kodunuzda sorgu etiketleri kullanın. Daha fazla bilgi için bkz. [etiket](develop-label.md) makalesi.
 
 ## <a name="use-of-throw-and-raiserror"></a>THROW ve RAERROR kullanımı
 
-THROW, SQL havuzunda özel durumları oluşturmak için daha modern bir uygulama, ancak RAERROR da desteklenir. Bununla ilgili dikkat edilmesi gereken birkaç fark vardır.
+THROW, adanmış SQL havuzunda özel durumları oluşturmak için daha modern bir uygulama, ancak RAERROR da desteklenir. Bununla ilgili dikkat edilmesi gereken birkaç fark vardır.
 
 * Kullanıcı tanımlı hata iletileri numaraları, THROW için 100.000-150.000 aralığında olamaz
 * RAERROR hata iletileri 50.000 ' de düzeltildi
@@ -204,4 +204,4 @@ SQL havuzu, işlemlerle ilgili birkaç farklı kısıtlama sağlar. Bunlar şu �
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İşlemleri iyileştirme hakkında daha fazla bilgi edinmek için bkz. [işlem en iyi uygulamaları](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). [SQL havuzu](best-practices-sql-pool.md) ve [isteğe bağlı SQL (Önizleme)](best-practices-sql-on-demand.md)için ek en iyi yöntemler kılavuzlarından de yer verilmiştir.
+İşlemleri iyileştirme hakkında daha fazla bilgi edinmek için bkz. [işlem en iyi uygulamaları](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). [SQL havuzu](best-practices-sql-pool.md) ve [sunucusuz SQL Havuzu (Önizleme)](best-practices-sql-on-demand.md)için ek en iyi yöntemler kılavuzlarından de yer verilmiştir.

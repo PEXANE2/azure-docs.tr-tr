@@ -1,6 +1,6 @@
 ---
 title: Azure SYNAPSE Analytics (eski adıyla SQL DW) sık sorulan sorular
-description: Bu makalede, müşteriler ve geliştiricilerden Azure SYNAPSE Analytics (eski adıyla SQL DW) hakkında sık sorulan sorular listelenmektedir
+description: Bu makalede, müşteriler ve geliştiricilerden Azure SYNAPSE Analytics (eski adıyla SQL DW) hakkında sık sorulan sorular listelenmektedir.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 228fa18fef0f681437fd2c0c87e3114d14977a49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1e2f82ecd80579d19f3a8793db64f6b8a17a440
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462658"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323597"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) sık sorulan sorular
 
@@ -29,9 +29,9 @@ S. Azure SQL veri ambarı 'na ne oldu?
 
 A. Azure SYNAPSE, Azure SQL veri ambarı 'nın gelişmiştir. Sektörde önde gelen veri ambarını, yeni bir performans ve özellik düzeyiyle gerçekleştirdik. Mevcut veri ambarı iş yüklerinizi Azure SYNAPSE ile üretimde çalıştırmaya devam edebilirsiniz. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics nedir?](sql-data-warehouse-overview-what-is.md).
 
-S. SYNAPSE SQL havuzu nedir?
+S. Adanmış bir SQL havuzu nedir?
 
-A. SYNAPSE SQL havuzu, Azure SYNAPSE ile genel kullanıma sunulan kurumsal veri ambarı özelliklerini ifade eder. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics nedir](sql-data-warehouse-overview-what-is.md).
+A. Adanmış SQL havuzu, Azure SYNAPSE ile genel kullanıma sunulan kurumsal veri ambarı özelliklerini ifade eder. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics nedir](sql-data-warehouse-overview-what-is.md).
 
 S. Azure SYNAPSE kullanmaya başlama Nasıl yaparım??
 
@@ -49,7 +49,7 @@ S. Power BI bağlanabilir miyim?
 
 A. Evet! Power BI Azure SYNAPSE ile doğrudan sorguyu desteklediğinden, bu, çok sayıda kullanıcı veya gerçek zamanlı veriler için tasarlanmamıştır. Power BI performansını daha iyi hale getirebilmenizi sağlamak için, Azure Analysis Services veya Analysis Service IaaS üzerinde Power BI kullanmayı göz önünde bulundurun.
 
-S. SYNAPSE SQL havuz kapasitesi sınırları nelerdir?
+S. Adanmış SQL havuzları kapasite sınırları nelerdir?
 
 A. Geçerli [Kapasite limitleri](sql-data-warehouse-service-capacity-limits.md) sayfamıza bakın.
 
@@ -83,15 +83,15 @@ A. Birçok özellik desteklenir. Desteklenmeyen özellikler, [Desteklenmeyen tab
 
 ## <a name="tooling-and-administration"></a>Araç ve yönetim
 
-S. SYNAPSE SQL havuzu REST API 'Leri destekliyor mu?
+S. Adanmış SQL havuzu REST API 'Leri destekliyor mu?
 
-A. Evet. SQL veritabanı ile kullanılabilen çoğu REST işlevi, SYNAPSE SQL Pool ile de kullanılabilir. API bilgilerini, REST belge sayfaları veya [veritabanları](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)içinde bulabilirsiniz.
+A. Evet. SQL veritabanı ile kullanılabilen çoğu REST işlevi, adanmış SQL havuzu ile de kullanılabilir. API bilgilerini, REST belge sayfaları veya [veritabanları](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)içinde bulabilirsiniz.
 
 ## <a name="loading"></a>Yükleniyor
 
 S. Hangi istemci sürücülerini destekliyoruz?
 
-A. SYNAPSE SQL havuzu için sürücü desteği [bağlantı dizeleri](../sql/connection-strings.md) sayfasında bulunabilir
+A. Adanmış SQL havuzu için sürücü desteği [bağlantı dizeleri](../sql/connection-strings.md) sayfasında bulunabilir
 
 S: PolyBase tarafından hangi dosya biçimleri destekleniyor?
 
@@ -107,7 +107,7 @@ Y: Hayır, PolyBase yalnızca depolama bileşenleriyle etkileşime girer.
 
 S: HDI 'ye bağlanabilir miyim?
 
-Y: HDI,,, bir ya da. Bu durumda, bu verileri bir Synapse SQL havuzuna yükleyebilirsiniz. Ancak, HDI örneğine aşağı itme hesaplaması oluşturamazsınız.
+Y: HDI,,, bir ya da. Bu durumda, bu verileri özel bir SQL havuzuna yükleyebilirsiniz. Ancak, HDI örneğine aşağı itme hesaplaması oluşturamazsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

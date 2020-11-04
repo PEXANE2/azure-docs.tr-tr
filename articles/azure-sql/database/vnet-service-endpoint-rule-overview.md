@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: efea5d6548814dc0f165bab9281e5234f3eae925
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4539709dbac992979af6a56e3dae81725a35739d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791333"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325002"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Azure SQL veritabanı 'ndaki sunucular için sanal ağ hizmet uç noktalarını ve kurallarını kullanma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -83,7 +83,7 @@ Azure SQL veritabanı için sanal ağ kuralları özelliği aşağıdaki sınır
 
 - Güvenlik duvarında, IP adresi aralıkları aşağıdaki ağ öğelerine uygulanır, ancak sanal ağ kuralları şunları içermez:
   - [Siteden siteye (S2S) sanal özel ağ (VPN)][vpn-gateway-indexmd-608y]
-  - [ExpressRoute][expressroute-indexmd-744v] aracılığıyla şirket içi
+  - [ExpressRoute](../../expressroute/index.yml) aracılığıyla şirket içi
 
 ### <a name="considerations-when-using-service-endpoints"></a>Hizmet uç noktalarını kullanırken dikkat edilecek noktalar
 
@@ -110,7 +110,7 @@ Azure Depolama da, Azure Depolama hesabınızın bağlantılarını sınırland�
 
 PolyBase ve COPY deyimleri, yüksek aktarım hızı verileri alımı için Azure depolama hesaplarından verileri Azure SYNAPSE Analytics 'e yüklemek için yaygın olarak kullanılır. Verileri yüklediğiniz Azure depolama hesabı, erişimi yalnızca bir VNet-alt ağ kümesine sınırlar, PolyBase kullanılırken bağlantı ve depolama hesabına kopyalama ekstresi kesilir. VNet ile güvenli hale getirilmiş Azure depolama 'ya bağlanan Azure SYNAPSE Analytics ile kopyalama ve PolyBase kullanarak içeri ve dışarı aktarma senaryolarını etkinleştirmek için aşağıda belirtilen adımları izleyin:
 
-#### <a name="prerequisites"></a>Ön koşullar
+#### <a name="prerequisites"></a>Önkoşullar
 
 - Bu [kılavuzu](/powershell/azure/install-az-ps) kullanarak Azure PowerShell'i yükleyin.
 - Genel amaçlı v1 veya blob depolama hesabınız varsa öncelikle bu [kılavuzda](../../storage/common/storage-account-upgrade.md) yer alan adımları izleyerek genel amaçlı v2 sürümüne yükseltmeniz gerekir.
@@ -227,7 +227,7 @@ Dahili olarak, SQL VNet eylemleri için PowerShell cmdlet 'leri REST API 'Leri �
 
 - [Sanal ağ kuralları: Işlemler][rest-api-virtual-network-rules-operations-862r]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure SQL veritabanı ile ilgili belirli bir sanal ağ hizmet uç noktası *türü adıyla* etiketlenmiş bir alt ağa sahip olmanız gerekir.
 
@@ -238,7 +238,7 @@ Azure SQL veritabanı ile ilgili belirli bir sanal ağ hizmet uç noktası *tür
 
 ## <a name="azure-portal-steps"></a>Azure portal adımları
 
-1. [Azure Portal][http-azure-portal-link-ref-477t]’ında oturum açın.
+1. [Azure Portal][http-azure-portal-link-ref-477t] oturum açın.
 
 2. **SQL Server 'lar** için arama yapın ve ardından sunucunuzu seçin. **Güvenlik altında güvenlik** **duvarları ve sanal ağlar** ' ı seçin.
 
@@ -255,7 +255,7 @@ Azure SQL veritabanı ile ilgili belirli bir sanal ağ hizmet uç noktası *tür
 
     > [!TIP]
     > Alt ağınız için doğru **Adres önekini** dahil etmeniz gerekir. Değeri portalda bulabilirsiniz.
-    > Tüm **kaynaklara** git &gt; **Tüm** &gt; **sanal ağlar** . Filtre, sanal ağlarınızı görüntüler. Sanal ağınıza ve ardından **alt ağlar** ' a tıklayın. **Adres aralığı** sütunu, Ihtiyacınız olan adres ön ekine sahiptir.
+    > Tüm **kaynaklara** git &gt; **Tüm** &gt; **sanal ağlar**. Filtre, sanal ağlarınızı görüntüler. Sanal ağınıza ve ardından **alt ağlar** ' a tıklayın. **Adres aralığı** sütunu, Ihtiyacınız olan adres ön ekine sahiptir.
 
     ![Yeni kural için alanları doldur.][image-portal-firewall-create-update-vnet-rule-20-png]
 

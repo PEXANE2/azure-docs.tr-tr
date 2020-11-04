@@ -10,18 +10,18 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 09/22/2020
 ms.custom: contperfq1
-ms.openlocfilehash: d462ed4627254275703d88cadbaf5d55a106da55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a6708214eadb2f5d0d66d72f5db5cb4a195d206
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330137"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324876"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Derin öğrenme ile Machine Learning Azure Machine Learning
 
 Bu makalede, derin öğrenme ve makine öğrenimi ve yapay zeka 'nın daha geniş kategorisine nasıl uyduğunu açıklanmaktadır. Sahtekarlık algılama, ses ve yüz tanıma, yaklaşım Analizi ve zaman serisi tahmin gibi Azure Machine Learning oluşturabileceğiniz derin öğrenme çözümleri hakkında bilgi edinin.
 
-Çözümleriniz için algoritmalar seçme konusunda rehberlik için, [Machine Learning algoritması](algorithm-cheat-sheet.md)bir başvuru sayfasına bakın.
+Çözümleriniz için algoritmalar seçme konusunda rehberlik için, [Machine Learning algoritması](https://docs.microsoft.com/azure/machine-learning/algorithm-cheat-sheet?WT.mc_id=docs-article-lazzeri)bir başvuru sayfasına bakın.
 
 ## <a name="deep-learning-machine-learning-and-ai"></a>Derin öğrenme, makine öğrenimi ve AI
 
@@ -73,7 +73,7 @@ Derin öğrenme birçok nesne algılama kullanım durumunda uygulandı. Nesne al
 
 Nesne algılama, oyun, perakende, tourma ve kendi kendine çalışan otomobiller gibi sektörlerde zaten kullanılıyor.
 
-Azure Machine Learning ' de bir açık kaynaklı çerçevede görüntü sınıflandırma modeli kullanmayı öğrenin: [bir Pytorch modeli kullanarak görüntüleri sınıflandırın](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
+Azure Machine Learning ' de bir açık kaynaklı çerçevede görüntü sınıflandırma modeli kullanmayı öğrenin: [bir Pytorch modeli kullanarak görüntüleri sınıflandırın](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri)
 
 ### <a name="image-caption-generation"></a>Resim yazısı oluşturma
 
@@ -93,7 +93,7 @@ Derin öğrenme yöntemlerine dayalı metin analizi, büyük miktarlarda metin v
 
 Şirketler, kamu yönetmelikleriyle Insider ticareti ve uyumluluğu algılamak üzere metin analizi gerçekleştirmek için derin öğrenme kullanır. Daha yaygın bir örnek sigorta dolandırıcılığı örneğidir: metin analizi, genellikle bir sigorta talebinin sahtekarlık olasılığını tanımak üzere büyük miktarda belgeyi çözümlemek için kullanılır. 
 
-Azure Machine Learning ' de bir TensorFlow modelinin nasıl kullanılacağını öğrenin: [bir TensorFlow modeli kullanarak el ile yazılmış rakamları sınıflandırın](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
+Azure Machine Learning ' de bir TensorFlow modelinin nasıl kullanılacağını öğrenin: [bir TensorFlow modeli kullanarak el ile yazılmış rakamları sınıflandırın](./how-to-train-tensorflow.md?WT.mc_id=docs-article-lazzeri)
 
 ## <a name="artificial-neural-networks"></a>Yapay sinir ağları
 
@@ -117,8 +117,8 @@ Video tanıma, görüntü tanıma ve öneren sistemleri gibi alanlarda, evsel si
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki makalelerde [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=docs-article-lazzeri)içindeki açık kaynaklı derin öğrenme modellerini kullanmaya yönelik daha fazla seçenek gösterilmektedir:
+Aşağıdaki makalelerde [Azure Machine Learning](./index.yml?WT.mc_id=docs-article-lazzeri)içindeki açık kaynaklı derin öğrenme modellerini kullanmaya yönelik daha fazla seçenek gösterilmektedir:
 
-- [Bir TensorFlow tahmin aracı ve keras kullanarak el ile yazılmış rakamları sınıflandır](https://docs.microsoft.com/azure/machine-learning/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
+- [Bir TensorFlow tahmin aracı ve keras kullanarak el ile yazılmış rakamları sınıflandır](./how-to-train-keras.md?WT.mc_id=docs-article-lazzeri)
 
-- [Bir Chainer modeli kullanarak el ile yazılmış rakamları sınıflandır](https://docs.microsoft.com/azure/machine-learning/how-to-train-ml-models)
+- [Bir Chainer modeli kullanarak el ile yazılmış rakamları sınıflandır](./how-to-set-up-training-targets.md)

@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 04/02/2020
-ms.openlocfilehash: 2bfcdfcb01e7908c199054e793d82cdfa1b726c7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7bcee0f571fe42e4c00499f188e35d0e0ff2ebe7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88816346"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322499"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Linux ve Windows için Azure Veri Bilimi Sanal Makinesi nedir?
 
@@ -28,7 +28,7 @@ DSVM şu şirket üzerinde kullanılabilir:
 
 ## <a name="comparison-with-azure-machine-learning"></a>Azure Machine Learning ile karşılaştırma
 
-DSVM, veri bilimi için özelleştirilmiş bir VM görüntüsüdür ancak [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml) (AzureML) şunları kapsayan uçtan uca bir platformdur:
+DSVM, veri bilimi için özelleştirilmiş bir VM görüntüsüdür ancak [Azure Machine Learning](../overview-what-is-azure-ml.md) (AzureML) şunları kapsayan uçtan uca bir platformdur:
 
 + Tam olarak yönetilen Işlem
   + İşlem Örnekleri
@@ -44,23 +44,23 @@ DSVM, veri bilimi için özelleştirilmiş bir VM görüntüsüdür ancak [Azure
 
 ### <a name="comparison-with-azureml-compute-instances"></a>AzureML Işlem örnekleriyle karşılaştırma
 
-[Azure Machine Learning Işlem örnekleri](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance) , dsvm __yönetilmeyen__ bir VM olduğunda, tam olarak yapılandırılmış ve __yönetilen__ bir VM görüntüsüdür.
+[Azure Machine Learning Işlem örnekleri](../concept-compute-instance.md) , dsvm __yönetilmeyen__ bir VM olduğunda, tam olarak yapılandırılmış ve __yönetilen__ bir VM görüntüsüdür.
 
 Bu iki ürün teklifi arasındaki temel farklılıklar aşağıda ayrıntılı olarak verilmiştir:
 
 
 |Özellik |Veri Bilimi<br>VM |AzureML<br>İşlem Örneği  | 
 |---------|---------|---------|
-| Tam olarak yönetilen | Hayır        | Yes        |
+| Tam olarak yönetilen | Hayır        | Evet        |
 |Dil Desteği     |  Python, R, Julia, SQL, C#,<br> Java, Node.js, F #       | Python ve R        |
 |İşletim Sistemi     | Ubuntu<br>Windows         |    Ubuntu     |
-|Önceden yapılandırılmış GPU seçeneği     |  Yes       |    Yes     |
-|Ölçeği artırma seçeneği | Yes | Yes |
-|SSH erişimi    | Yes        |    Yes     |
-|RDP erişimi    | Yes        |     Hayır    |
-|Yerleşik<br>Barındırılan Not defterleri     |   Hayır<br>(ek yapılandırma gerektirir)      |      Yes   |
-|Yerleşik SSO     | Hayır <br>(ek yapılandırma gerektirir)         |    Yes     |
-|Yerleşik Işbirliği     | Hayır         | Yes        |
+|Önceden yapılandırılmış GPU seçeneği     |  Evet       |    Evet     |
+|Ölçeği artırma seçeneği | Evet | Evet |
+|SSH erişimi    | Evet        |    Evet     |
+|RDP erişimi    | Evet        |     Hayır    |
+|Yerleşik<br>Barındırılan Not defterleri     |   No<br>(ek yapılandırma gerektirir)      |      Evet   |
+|Yerleşik SSO     | No <br>(ek yapılandırma gerektirir)         |    Evet     |
+|Yerleşik Işbirliği     | Hayır         | Evet        |
 |Önceden yüklenmiş Araçlar     |  Jupiter (Lab), RStudio Server, VSCode,<br> Visual Studio, Pylt, Juno,<br>Power BI Desktop, SSMS, <br>Microsoft Office 365, Apache detaya gitme       |     Jupyıter (Lab)<br> RStudio Server   |
 
 ## <a name="sample-use-cases"></a>Kullanım örnekleri

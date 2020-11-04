@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: SYNAPSE Studio kullanarak SYNAPSE SQL havuzu oluşturma'
-description: Bu kılavuzdaki adımları izleyerek SYNAPSE Studio kullanarak yeni bir Synapse SQL havuzu oluşturun.
+title: 'Hızlı başlangıç: SYNAPSE Studio kullanarak adanmış bir adanmış SQL havuzu oluşturma'
+description: Bu kılavuzdaki adımları izleyerek, SYNAPSE Studio kullanarak adanmış bir SQL havuzu oluşturun.
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
@@ -9,23 +9,23 @@ ms.subservice: sql
 ms.date: 10/16/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 806831ac5e965afcd076066f4baa498297a43a3e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 6ffa7bb07ddb42946acdcef6ee3b7f2aa804f774
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740536"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324322"
 ---
-# <a name="quickstart-create-a-synapse-sql-pool-using-synapse-studio"></a>Hızlı başlangıç: SYNAPSE Studio kullanarak SYNAPSE SQL havuzu oluşturma
+# <a name="quickstart-create-a-dedicated-sql-pool-using-synapse-studio"></a>Hızlı başlangıç: SYNAPSE Studio kullanarak adanmış bir SQL havuzu oluşturma
 
-Azure SYNAPSE Analytics, verilerinizi almak, dönüştürmek, modellemek ve analiz etmenize yardımcı olmak için çeşitli analiz motorları sunmaktadır. SQL havuzu, T-SQL tabanlı işlem ve depolama olanakları sunar. SYNAPSE çalışma alanınızda bir SQL havuzu oluşturduktan sonra, veriler yüklenebilir, modellenebilir, işlenebilir ve daha hızlı analitik Öngörüler için teslim edilebilir.
+Azure SYNAPSE Analytics, verilerinizi almak, dönüştürmek, modellemek ve analiz etmenize yardımcı olmak için çeşitli analiz motorları sunmaktadır. Adanmış bir SQL havuzu, T-SQL tabanlı işlem ve depolama olanakları sunar. SYNAPSE çalışma alanınızda adanmış bir SQL havuzu oluşturduktan sonra, veriler yüklenebilir, modellenebilir, işlenebilir ve daha hızlı analitik Öngörüler için teslim edilebilir.
 
-Bu hızlı başlangıçta SYNAPSE Studio kullanarak bir Synapse çalışma alanında SQL havuzu oluşturma adımları açıklanmaktadır.
+Bu hızlı başlangıçta, SYNAPSE Studio kullanarak bir Synapse çalışma alanında adanmış bir SQL havuzu oluşturma adımları açıklanmaktadır.
 
 Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [SYNAPSE çalışma alanı](quickstart-create-workspace.md)
@@ -36,7 +36,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
 ## <a name="navigate-to-the-synapse-workspace"></a>SYNAPSE çalışma alanına gidin
 
-1. Arama çubuğuna hizmet adı (veya doğrudan kaynak adı) yazarak SQL havuzunun oluşturulacağı SYNAPSE çalışma alanına gidin.
+1. Arama çubuğuna hizmet adı (veya doğrudan kaynak adı) yazarak adanmış SQL havuzunun oluşturulacağı SYNAPSE çalışma alanına gidin.
 
     ![İçinde SYNAPSE çalışma alanlarıyla yazılan arama çubuğu Azure portal.](media/quickstart-create-sql-pool/create-sql-pool-00a.png)
 1. Çalışma alanları listesinden, açmak için çalışma alanının adını (veya adının bir bölümünü) yazın. Bu örnekte, **contosoanalytics** adlı bir çalışma alanı kullanacağız.
@@ -45,11 +45,11 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
 ## <a name="launch-synapse-studio"></a>Synapse Studio'yu başlatma
 
-1. Çalışma alanına genel bakış ' da, SQL havuzunun oluşturulacağı konumu açmak için **SYNAPSE Studio 'Yu Başlat** ' ı seçin. Hizmet adını veya kaynak adını doğrudan arama çubuğuna yazın.
+1. Çalışma alanına genel bakış ' da, SYNAPSE Studio 'Yu başlatmak için **çalışma alanı Web URL** 'sini seçin.
 
-    ![Azure portal SYNAPSE çalışma alanına genel bakış ve Launch SYNAPSE Studio vurgulanmış.](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-20.png)
+    ![Çalışma alanı Web URL 'SI vurgulanmış şekilde Azure portal SYNAPSE çalışma alanına genel bakış.](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-20.png)
 
-## <a name="create-a-sql-pool-in-synapse-studio"></a>SYNAPSE Studio 'da bir SQL havuzu oluşturma
+## <a name="create-a-dedicated-sql-pool-in-synapse-studio"></a>SYNAPSE Studio 'da adanmış bir SQL havuzu oluşturma
 
 1. SYNAPSE Studio giriş sayfasında, **Yönet** simgesini seçerek sol gezinti bölmesinde **yönetim merkezine** gidin.
 
@@ -67,12 +67,12 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
     | Ayar | Önerilen değer | Açıklama |
     | :------ | :-------------- | :---------- |
-    | **SQL havuzu adı** | contosoedw | Bu, SQL havuzunun sahip olacağı addır. |
+    | **SQL havuzu adı** | contosoedw | Bu, adanmış SQL havuzunun sahip olacağı addır. |
     | **Performans düzeyi** | DW100c | Bu hızlı başlangıç için maliyetleri azaltmak üzere en küçük boyuta ayarlayın |
 
     ![SQL havuzları akış oluşturma-temel bileşenler sekmesi.](media/quickstart-create-sql-pool/create-sql-pool-studio-24.png)
     > [!IMPORTANT]
-    > SQL havuzlarının kullanabileceği adlarla ilgili belirli sınırlamalar olduğunu unutmayın. Adlar özel karakterler içeremez, 15 veya daha az karakter olmalı, ayrılmış sözcükler içermemelidir ve çalışma alanında benzersiz olmalıdır.
+    > Adanmış SQL havuzlarının kullanabileceği adlarla ilgili belirli sınırlamalar olduğunu unutmayın. Adlar özel karakterler içeremez, 15 veya daha az karakter olmalı, ayrılmış sözcükler içermemelidir ve çalışma alanında benzersiz olmalıdır.
 
 4. Bir sonraki sekmede, **ek ayarlar** ' da, VERI olmadan SQL havuzunu sağlamak için **hiçbiri** ' ni seçin. Varsayılan harmanlamayı seçili olarak bırakın.
 
@@ -90,24 +90,24 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
     ![SQL havuzu akış oluşturma-kaynak sağlama.](media/quickstart-create-sql-pool/create-sql-pool-studio-27.png)
 
-1. SQL havuzu oluşturulduktan sonra, veri yükleme, akışları işleme, Gölü okuma vb. için çalışma alanında kullanılabilir olur.
+1. Adanmış SQL havuzu oluşturulduktan sonra, veri yükleme, akışları işleme, Gölü okuma vb. için çalışma alanında kullanılabilir olur.
 
-## <a name="clean-up-sql-pools-using-synapse-studio"></a>SYNAPSE Studio 'Yu kullanarak SQL havuzlarını Temizleme    
+## <a name="clean-up-dedicated-sql-pool-using-synapse-studio"></a>SYNAPSE Studio kullanarak adanmış SQL havuzunu Temizleme    
 
-SYNAPSE Studio 'Yu kullanarak çalışma alanından SQL havuzunu silmek için aşağıdaki adımları izleyin.
+SYNAPSE Studio kullanarak çalışma alanından adanmış SQL havuzunu silmek için aşağıdaki adımları izleyin.
 > [!WARNING]
-> Bir SQL havuzunu sildiğinizde, analiz altyapısı çalışma alanından kaldırılır. Havuza bağlanmayacak ve tüm sorgular, işlem hatları ve bu SQL havuzunu kullanan betikler artık çalışmayacak.
+> Adanmış bir SQL havuzunun silinmesi, analiz altyapısını çalışma alanından kaldırır. Havuza bağlanmayacak ve tüm sorgular, işlem hatları, bu adanmış SQL havuzunu kullanan betikler artık çalışmayacak.
 
-SQL havuzunu silmek istiyorsanız aşağıdakileri yapın:
+Adanmış SQL havuzunu silmek istiyorsanız aşağıdakileri yapın:
 
 1. SYNAPSE Studio 'daki yönetim hub 'ındaki SQL havuzlarına gidin.
-1. Silinecek SQL havuzunda (Bu örnekte, **contosoedw** ) SQL havuzunun komutlarını göstermek için üç nokta simgesini seçin:
+1. Özel SQL havuzu için komutları göstermek üzere, silinecek adanmış SQL havuzunda (Bu durumda **contosoedw** ) üç nokta simgesini seçin:
 
     ![Son oluşturulan havuz seçiliyken SQL havuzlarının listelenmesi.](media/quickstart-create-sql-pool/create-sql-pool-studio-28.png)
 1. **Sil** 'e basın.
 1. Silmeyi onaylayın ve **Sil** düğmesine basın.
-1. İşlem başarıyla tamamlandığında, SQL havuzu artık çalışma alanı kaynaklarında listelenmeyecektir.
+1. İşlem başarıyla tamamlandığında, adanmış SQL havuzu artık çalışma alanı kaynaklarında listelenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 - Bkz. [hızlı başlangıç: Apache Spark Not defteri oluşturma](quickstart-apache-spark-notebook.md).
-- Bkz. [hızlı başlangıç: Azure Portal kullanarak SYNAPSE SQL havuzu oluşturma](quickstart-create-sql-pool-portal.md).
+- Bkz. [hızlı başlangıç: Azure Portal kullanarak adanmış BIR SQL havuzu oluşturma](quickstart-create-sql-pool-portal.md).

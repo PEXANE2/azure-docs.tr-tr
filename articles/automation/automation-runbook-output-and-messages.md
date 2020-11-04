@@ -1,37 +1,37 @@
 ---
-title: Azure Otomasyonu 'nda runbook çıkışını izleme
-description: Bu makalede, runbook çıkışının ve iletilerinin nasıl izleneceği açıklanır.
+title: Runbook çıkışı ve ileti akışlarını yapılandırma
+description: Bu makalede, Azure Automation runbook 'larda hata işleme mantığının nasıl uygulanacağı ve çıkış ve ileti akışları açıklanmaktadır.
 services: automation
 ms.subservice: process-automation
-ms.date: 12/04/2018
+ms.date: 11/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: e4be7934002730253b77b1c129165ad9f19f23b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: beed3ec50d0c7990168ee75976c732796cdbe246
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185985"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324431"
 ---
-# <a name="monitor-runbook-output"></a>Runbook çıkışını izleme
+# <a name="configure-runbook-output-and-message-streams"></a>Runbook çıkışı ve ileti akışlarını yapılandırma
 
 Çoğu Azure Otomasyonu runbook 'un bir çıktı biçimi vardır. Bu çıktı kullanıcıya veya başka bir runbook ile kullanılması amaçlanan karmaşık bir nesneye yönelik bir hata iletisi olabilir. Windows PowerShell, bir betikten veya iş akışından çıkış göndermek için [birden çok akış](/powershell/module/microsoft.powershell.core/about/about_redirection) sağlar. Azure Otomasyonu, bu akışların her biriyle farklı şekilde çalışır. Runbook oluştururken akışları kullanmak için en iyi uygulamaları izlemeniz gerekir.
 
-Aşağıdaki tabloda, yayımlanan runbook 'lar için Azure portal ve [bir runbook 'u test etme](./manage-runbooks.md)sırasında davranışını içeren her bir akış kısaca açıklanmaktadır. Çıkış akışı, runbook 'lar arasındaki iletişim için kullanılan ana akışdır. Diğer akışlar, bilgileri kullanıcıya iletmek amaçlanan ileti akışları olarak sınıflandırılır. 
+Aşağıdaki tabloda, yayımlanan runbook 'lar için Azure portal ve [bir runbook 'u test etme](./manage-runbooks.md)sırasında davranışını içeren her bir akış kısaca açıklanmaktadır. Çıkış akışı, runbook 'lar arasındaki iletişim için kullanılan ana akışdır. Diğer akışlar, bilgileri kullanıcıya iletmek amaçlanan ileti akışları olarak sınıflandırılır.
 
-| Akış | Açıklama | Yayımlanmış | Test |
+| Akış | Açıklama | Yayımlanmış | Test etme |
 |:--- |:--- |:--- |:--- |
 | Hata |Kullanıcıya yönelik hata iletisi. Bir özel durumla farklı olarak, runbook varsayılan olarak bir hata iletisinden sonra devam eder. |İş geçmişine yazıldı |Test çıkış bölmesinde gösterilir |
 | Hata ayıklama |Etkileşimli bir kullanıcıya yönelik iletiler. Runbook 'larda kullanılmamalıdır. |İş geçmişine yazılmadı |Test çıkış bölmesinde görüntülenmiyor |
-| Çıktı |Diğer runbook'lar tarafından kullanılması amaçlanan nesneler. |İş geçmişine yazıldı |Test çıkış bölmesinde gösterilir |
+| Çıkış |Diğer runbook'lar tarafından kullanılması amaçlanan nesneler. |İş geçmişine yazıldı |Test çıkış bölmesinde gösterilir |
 | İlerleme Durumu |Runbook'taki her etkinlikten önce ve sonra otomatik oluşturulan kayıtlar. Runbook, etkileşimli bir kullanıcı için tasarlandıklarından kendi ilerleme kayıtlarını oluşturmayı denememelidir. |Yalnızca runbook için ilerleme günlüğü açık olduğunda iş geçmişine yazılır |Test çıkış bölmesinde görüntülenmiyor |
 | Ayrıntılı |Genel veya hata ayıklama bilgileri veren mesajlar. |Yalnızca runbook için ayrıntılı günlük kaydı açıksa iş geçmişine yazılır |Yalnızca `VerbosePreference` değişken runbook 'Ta devam olarak ayarlandıysa test çıkış bölmesi 'nde görüntülenir |
 | Uyarı |Kullanıcıya yönelik uyarı iletisi. |İş geçmişine yazıldı |Test çıkış bölmesinde gösterilir |
 
 ## <a name="use-the-output-stream"></a>Çıkış akışını kullanma
 
-Çıkış akışı, doğru çalıştığı zaman bir betik veya iş akışı tarafından oluşturulan nesnelerin çıkışı için kullanılır. Azure Otomasyonu öncelikle bu akışı, [Geçerli runbook 'u](automation-child-runbooks.md)çağıran üst runbook 'lar tarafından tüketilen nesneler için kullanır. Bir üst öğe [bir runbook 'u satır içi olarak çağırdığında](automation-child-runbooks.md#invoke-a-child-runbook-using-inline-execution), alt öğe çıkış akışından üst öğeye veri döndürür. 
+Çıkış akışı, doğru çalıştığı zaman bir betik veya iş akışı tarafından oluşturulan nesnelerin çıkışı için kullanılır. Azure Otomasyonu öncelikle bu akışı, [Geçerli runbook 'u](automation-child-runbooks.md)çağıran üst runbook 'lar tarafından tüketilen nesneler için kullanır. Bir üst öğe [bir runbook 'u satır içi olarak çağırdığında](automation-child-runbooks.md#invoke-a-child-runbook-using-inline-execution), alt öğe çıkış akışından üst öğeye veri döndürür.
 
-Runbook 'larınız, genel bilgileri yalnızca başka bir runbook tarafından çağrılmadıysa istemciyle iletişim kurmak için çıktı akışını kullanır. Ancak, en iyi uygulama olarak, runbook 'larınız genellikle genel bilgileri kullanıcıyla iletişim kurmak için [ayrıntılı akışı](#monitor-verbose-stream) kullanmalıdır.
+Runbook 'larınız, genel bilgileri yalnızca başka bir runbook tarafından çağrılmadıysa istemciyle iletişim kurmak için çıktı akışını kullanır. Ancak, en iyi uygulama olarak, runbook 'larınız genellikle genel bilgileri kullanıcıyla iletişim kurmak için [ayrıntılı akışı](#write-output-to-verbose-stream) kullanmalıdır.
 
 Runbook 'larınızın [yazma çıkışı](/powershell/module/microsoft.powershell.utility/write-output)kullanarak çıkış akışına veri yazmasını sağlayabilirsiniz. Alternatif olarak, nesneyi betiğe kendi satırına koyabilirsiniz.
 
@@ -117,19 +117,19 @@ Runbook, `Microsoft.Azure.Commands.Profile.Models.PSAzureContext` kimlik doğrul
 
 Bu runbook basit olsa da, buradan çağırmak için bir yapılandırma öğesi vardır. Son etkinlik, `Write-Output` parametre için bir PowerShell ifadesi kullanarak bir değişkene profil verileri yazmak için cmdlet 'ini yürütür `Inputobject` . İçin bu parametre gereklidir `Write-Output` .
 
-Bu örnekteki **Test-ChildOutputType**adlı ikinci runbook, yalnızca iki etkinliği tanımlar.<br> ![Örnek alt çıkış türü runbook 'U](media/automation-runbook-output-and-messages/runbook-display-authentication-results-example.png)
+Bu örnekteki **Test-ChildOutputType** adlı ikinci runbook, yalnızca iki etkinliği tanımlar.<br> ![Örnek alt çıkış türü runbook 'U](media/automation-runbook-output-and-messages/runbook-display-authentication-results-example.png)
 
-İlk etkinlik, **Authenticateto-Azure** runbook 'u çağırır. İkinci etkinlik, `Write-Verbose` cmdlet 'Ini **etkinlik çıktısı**olarak ayarlanan **veri kaynağı** ile çalıştırır. Ayrıca, **alan yolu** **Context. Subscription. subscriptionName**, **authenticateto-Azure** runbook 'daki bağlam çıktısı olarak ayarlanır.<br> ![Write-Verbose cmdlet parametresi veri kaynağı](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)
+İlk etkinlik, **Authenticateto-Azure** runbook 'u çağırır. İkinci etkinlik, `Write-Verbose` cmdlet 'Ini **etkinlik çıktısı** olarak ayarlanan **veri kaynağı** ile çalıştırır. Ayrıca, **alan yolu** **Context. Subscription. subscriptionName** , **authenticateto-Azure** runbook 'daki bağlam çıktısı olarak ayarlanır.<br> ![Write-Verbose cmdlet parametresi veri kaynağı](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)
 
 Elde edilen çıktı, aboneliğin adıdır.<br> ![Test-ChildOutputType runbook sonuçları](media/automation-runbook-output-and-messages/runbook-test-childoutputtype-results.png)
 
-## <a name="monitor-message-streams"></a>İleti akışlarını izleme
+## <a name="working-with-message-streams"></a>İleti akışlarıyla çalışma
 
 Çıkış akışının aksine ileti akışları kullanıcıya bilgi iletidir. Farklı bilgi türleri için birden çok ileti akışı vardır ve Azure Otomasyonu her bir akışı farklı şekilde işler.
 
-### <a name="monitor-warning-and-error-streams"></a>İzleme uyarısı ve hata akışları
+### <a name="write-output-to-warning-and-error-streams"></a>Uyarı ve hata akışlarına çıktıyı yaz
 
-Uyarı ve hata akışı, bir runbook 'ta oluşan günlük sorunlarını günlüğe kaydeder. Azure Otomasyonu, runbook yürütürken bu akışları iş geçmişine yazar. Otomasyon, bir runbook test edildiğinde Azure portal test çıkış bölmesindeki akışları içerir. 
+Uyarı ve hata akışı, bir runbook 'ta oluşan günlük sorunlarını günlüğe kaydeder. Azure Otomasyonu, runbook yürütürken bu akışları iş geçmişine yazar. Otomasyon, bir runbook test edildiğinde Azure portal test çıkış bölmesindeki akışları içerir.
 
 Varsayılan olarak, bir runbook bir uyarı veya hatadan sonra yürütülmeye devam eder. Runbook 'un iletiyi oluşturmadan önce bir [tercih değişkeni](#work-with-preference-variables) ayarlayarak runbook 'un bir uyarı veya hata üzerinde askıya alınması gerektiğini belirtebilirsiniz. Örneğin, bir özel durum üzerinde olduğu gibi runbook 'un hata üzerinde askıda kalmasına neden olmak için, `ErrorActionPreference` değişkenini durdur olarak ayarlayın.
 
@@ -143,13 +143,51 @@ Write-Warning –Message "This is a warning message."
 Write-Error –Message "This is an error message that will stop the runbook because of the preference variable."
 ```
 
-### <a name="monitor-debug-stream"></a>Hata ayıklama akışını izle
+### <a name="write-output-to-debug-stream"></a>Hata ayıklama akışına çıkış yaz
 
-Azure Otomasyonu etkileşimli kullanıcılar için hata ayıklama iletisi akışını kullanır. Runbook 'larda kullanılmamalıdır.
+Azure Otomasyonu etkileşimli kullanıcılar için hata ayıklama iletisi akışını kullanır. Varsayılan olarak, Azure Otomasyonu herhangi bir hata ayıklama akış verisini yakalamaz, runbook dosyayı yakalamak üzere yapılandırılmışsa yalnızca çıkış, hata ve uyarı verilerinin yanı sıra ayrıntılı veriler yakalanır.
 
-### <a name="monitor-verbose-stream"></a>Ayrıntılı akışı izle
+Hata ayıklama akışı verilerini yakalamak için, runbook 'larınızda iki eylem gerçekleştirmeniz gerekir:
 
-Ayrıntılı ileti akışı, runbook işlemi hakkında genel bilgileri destekler. Hata ayıklama akışı bir runbook için kullanılamadığından, runbook 'un hata ayıklama bilgileri için ayrıntılı iletileri kullanması gerekir. 
+1. `$GLOBAL:DebugPreference="Continue"`Bir hata ayıklama iletisiyle karşılaşıldığında PowerShell 'e devam etmesini bildiren değişkeni ayarlayın.  **$Global:** bölüm, PowerShell 'in bunu genel kapsamda kullanmasını söyler. Bu, komut dosyasının, deyimin yürütüldüğü sırada bulunduğu her türlü yerel kapsama değil.
+
+1. Yakalamadığımız hata ayıklama akışını *çıktı* gibi yakalama yaptığımız bir akışa yeniden yönlendirin. Bu işlem, PowerShell yeniden yönlendirmesi yürütülecek ifadeye göre ayarlanarak yapılır. PowerShell yeniden yönlendirmesi hakkında daha fazla bilgi için bkz. [yeniden yönlendirme hakkında](/powershell/module/microsoft.powershell.core/about/about_redirection).
+
+#### <a name="examples"></a>Örnekler
+
+Bu örnekte, runbook, `Write-Output` ve `Write-Debug` cmdlet 'leri kullanılarak iki farklı akışı almak amacıyla yapılandırılır.
+
+```powershell
+Write-Output "This is an output message." 
+Write-Debug "This is a debug message."
+```
+
+Bu runbook olduğu gibi yürütülürse, runbook işi için çıkış bölmesi aşağıdaki çıktıyı akışla sağlar:
+
+```output
+This is an output message.
+```
+
+Bu örnekte, runbook önceki örneğe benzer şekilde yapılandırılmıştır, ancak deyimin `$GLOBAL:DebugPreference="Continue"` sonuna eklenmesi dahil değildir `5>&1` `Write-Debug` .
+
+```powershell
+Write-Output "This is an output message." 
+$GLOBAL:DebugPreference="Continue" 
+Write-Debug "This is a debug message." 5>&1
+```
+
+Bu runbook yürütülürse, runbook işi için çıkış bölmesi şu çıktıyı akışa oluşturacak:
+
+```output
+This is an output message.
+This is a debug message.
+```
+
+Bu durum, `$GLOBAL:DebugPreference="Continue"` bildirimde PowerShell 'in hata ayıklama iletilerini görüntülemesini söylemesinin yanı sıra `5>&1` deyimin sonuna eklenmesi, PowerShell 'in `Write-Debug` akış 5 ' i (hata ayıklama) Stream 1 ' e (çıktı) yönlendirmesini söyler.
+
+### <a name="write-output-to-verbose-stream"></a>Ayrıntılı akışa çıkış yaz
+
+Ayrıntılı ileti akışı, runbook işlemi hakkında genel bilgileri destekler. Hata ayıklama akışı bir runbook için kullanılamadığından, runbook 'un hata ayıklama bilgileri için ayrıntılı iletileri kullanması gerekir.
 
 Varsayılan olarak, iş geçmişi, performans nedenleriyle, yayımlanan runbook 'lardan ayrıntılı iletileri depolamaz. Ayrıntılı iletileri depolamak için, yayımlanan runbook 'larınızı ayrıntılı iletileri günlüğe kaydetmek üzere yapılandırmak için **ayrıntılı kayıtları günlüğe kaydet** ayarıyla Azure Portal **Yapılandır** sekmesini kullanın. Bu seçeneği yalnızca sorun gidermek veya bir runbook'ta hata ayıklamak için açın. Çoğu durumda, ayrıntılı kayıtları günlüğe kaydetme varsayılan ayarını tutmanız gerekir.
 
@@ -165,7 +203,7 @@ Write-Verbose –Message "This is a verbose message."
 
 ## <a name="handle-progress-records"></a>İlerleme kayıtlarını işle
 
-İlerleme kayıtlarını günlüğe kaydetmek üzere bir runbook 'u yapılandırmak için Azure portal **Yapılandır** sekmesini kullanabilirsiniz. Varsayılan ayar, performansı en üst düzeye çıkarmak için kayıtları günlüğe içermemelidir. Çoğu durumda, varsayılan ayarı tutmanız gerekir. Bu seçeneği yalnızca sorun gidermek veya bir runbook'ta hata ayıklamak için açın. 
+İlerleme kayıtlarını günlüğe kaydetmek üzere bir runbook 'u yapılandırmak için Azure portal **Yapılandır** sekmesini kullanabilirsiniz. Varsayılan ayar, performansı en üst düzeye çıkarmak için kayıtları günlüğe içermemelidir. Çoğu durumda, varsayılan ayarı tutmanız gerekir. Bu seçeneği yalnızca sorun gidermek veya bir runbook'ta hata ayıklamak için açın.
 
 İlerleme kaydı kaydını etkinleştirirseniz, runbook uygulamanız her etkinlik çalıştırılmadan önce ve sonra iş geçmişine bir kayıt yazar. Runbook 'u test etmek, runbook ilerleme kaydı kayıtlarını günlüğe kaydetmek üzere yapılandırılmış olsa bile ilerleme iletilerini görüntülemez.
 
@@ -194,11 +232,11 @@ Sonraki tabloda, runbook 'larda geçerli olan tercih değişkeni değerlerinin d
 
 ### <a name="retrieve-runbook-output-and-messages-in-azure-portal"></a>Azure portal runbook çıkışını ve iletilerini alma
 
-Runbook için **işler** sekmesini kullanarak Azure Portal runbook işinin ayrıntılarını görüntüleyebilirsiniz. İş Özeti, giriş parametrelerini ve [Çıkış akışını](#use-the-output-stream), işle ilgili genel bilgilerin yanı sıra gerçekleşen tüm özel durumları görüntüler. İş geçmişi, çıkış akışından ve [uyarı ve hata akışlarından](#monitor-warning-and-error-streams)iletiler içerir. Ayrıca, runbook ayrıntılı ve ilerleme kayıtlarını günlüğe kaydetmek üzere yapılandırıldıysa, [ayrıntılı akış](#monitor-verbose-stream) ve [ilerleme kaydından](#handle-progress-records) iletiler de dahildir.
+Runbook için **işler** sekmesini kullanarak Azure Portal runbook işinin ayrıntılarını görüntüleyebilirsiniz. İş Özeti, giriş parametrelerini ve [Çıkış akışını](#use-the-output-stream), işle ilgili genel bilgilerin yanı sıra gerçekleşen tüm özel durumları görüntüler. İş geçmişi, çıkış akışından ve [uyarı ve hata akışlarından](#write-output-to-warning-and-error-streams)iletiler içerir. Ayrıca, runbook ayrıntılı ve ilerleme kayıtlarını günlüğe kaydetmek üzere yapılandırıldıysa, [ayrıntılı akış](#write-output-to-verbose-stream) ve [ilerleme kaydından](#handle-progress-records) iletiler de dahildir.
 
 ### <a name="retrieve-runbook-output-and-messages-in-windows-powershell"></a>Windows PowerShell 'de Runbook çıkışı ve iletileri alma
 
-Windows PowerShell 'de [Get-Azautomationjoi put](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) cmdlet 'ini kullanarak bir runbook 'tan çıkışı ve iletileri alabilirsiniz. Bu cmdlet iş KIMLIĞINI gerektirir ve alınacak akışın alınacağı bir parametreye sahip olur `Stream` . İş için tüm akışları almak üzere bu parametre için herhangi bir değer belirtebilirsiniz.
+Windows PowerShell 'de [Get-Azautomationjoi put](/powershell/module/Az.Automation/Get-AzAutomationJobOutput) cmdlet 'ini kullanarak bir runbook 'tan çıkışı ve iletileri alabilirsiniz. Bu cmdlet iş KIMLIĞINI gerektirir ve alınacak akışın alınacağı bir parametreye sahip olur `Stream` . İş için tüm akışları almak üzere bu parametre için herhangi bir değer belirtebilirsiniz.
 
 Aşağıdaki örnek, örnek bir runbook başlatır ve tamamlanmasını bekler. Runbook yürütmeyi tamamladıktan sonra, betik runbook çıkış akışını işten toplar.
 
@@ -239,9 +277,9 @@ Ancak, sorun giderme için bir runbook 'un ilerlemesini izlemek üzere bu bilgil
 1. Azure portalında, Otomasyon hesabınızı açın.
 2. Runbook 'ların listesini açmak için **Işlem Otomasyonu** altında **runbook 'lar** ' ı seçin.
 3. Runbook 'Lar sayfasında, runbook listenizden bir grafik runbook seçin.
-4. **Ayarlar**altında **günlüğe kaydetme ve izleme**' ye tıklayın.
-5. Günlüğe kaydetme ve Izleme sayfasında, ayrıntılı günlük kaydını etkinleştirmek için, **ayrıntılı kayıtları günlüğe kaydet**altında **Açık** ' a tıklayın.
-6. **Etkinlik düzeyi izleme**altında, ihtiyacınız olan izleme düzeyine bağlı olarak Izleme düzeyini **temel** veya **ayrıntılı**olarak değiştirin.<br>
+4. **Ayarlar** altında **günlüğe kaydetme ve izleme** ' ye tıklayın.
+5. Günlüğe kaydetme ve Izleme sayfasında, ayrıntılı günlük kaydını etkinleştirmek için, **ayrıntılı kayıtları günlüğe kaydet** altında **Açık** ' a tıklayın.
+6. **Etkinlik düzeyi izleme** altında, ihtiyacınız olan izleme düzeyine bağlı olarak Izleme düzeyini **temel** veya **ayrıntılı** olarak değiştirin.<br>
 
    ![Grafik yazma günlüğe kaydetme ve Izleme sayfası](media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)
 
@@ -255,10 +293,10 @@ Azure Otomasyonu, Log Analytics çalışma alanınıza runbook iş durumu ve iş
 * Otomasyon hesaplarında işlerin ilişkilendirilmesi.
 * İş geçmişini görselleştirin.
 
-İş verilerini toplamak, ilişkilendirmek ve üzerinde işlem yapmak için Azure Izleyici günlükleriyle tümleştirmeyi yapılandırma hakkında daha fazla bilgi için bkz. [Otomasyon 'Dan Azure izleyici günlüklerine iş durumu ve iş akışları iletme](automation-manage-send-joblogs-log-analytics.md).
+İş verilerini toplamak, ilişkilendirmek ve üzerinde işlem yapmak üzere Azure Izleyici günlükleriyle tümleştirmeyi yapılandırma hakkında daha fazla bilgi için bkz. [Otomasyon 'Dan Azure Izleyici günlüklerine iş durumu ve iş akışları iletme](automation-manage-send-joblogs-log-analytics.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Runbook 'larla çalışmak için bkz. [Azure Otomasyonu 'nda runbook 'Ları yönetme](manage-runbooks.md).
-* PowerShell ayrıntıları için bkz. [PowerShell belgeleri](/powershell/scripting/overview).
-* * PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* PowerShell betiği hakkında bilginiz yoksa bkz. [PowerShell](/powershell/scripting/overview) belgeleri.
+* Azure Otomasyonu PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation).

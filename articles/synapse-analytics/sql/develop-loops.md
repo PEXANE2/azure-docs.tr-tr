@@ -1,6 +1,6 @@
 ---
 title: T-SQL döngüleri kullanma
-description: T-SQL döngülerini kullanma, imleçleri değiştirme ve SYNAPSE SQL 'deki SQL havuzuyla ilgili çözümleri geliştirmeyle ilgili ipuçları.
+description: T-SQL döngülerini kullanma, imleçleri değiştirme ve Azure SYNAPSE Analytics 'te SYNAPSE SQL ile ilgili çözümleri geliştirmeyle ilgili ipuçları.
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -10,23 +10,24 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 33e1ebc2269ef1db6bb0646f845b09be1a01c724
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99ee41de7ffd66191ff712a5ffbda65f3233196f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289064"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324439"
 ---
-# <a name="use-t-sql-loops-in-synapse-sql"></a>SYNAPSE SQL 'de T-SQL döngüleri kullanma
-Bu makalede T-SQL döngülerini kullanma, imleçler değiştirme ve SYNAPSE SQL 'de SQL havuzuyla ilgili çözümleri geliştirme konusunda temel ipuçları sunulmaktadır.
+# <a name="use-t-sql-loops-with-synapse-sql-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE SQL ile T-SQL döngüleri kullanma
+
+Bu makalede T-SQL döngülerini kullanma, imleçler değiştirme ve SYNAPSE SQL ile ilgili çözümleri geliştirme konusunda temel ipuçları sunulmaktadır.
 
 ## <a name="purpose-of-while-loops"></a>WHILE döngülerinin amacı
 
 SYNAPSE SQL, sürekli olarak ekstre blokları yürütmeye yönelik [while](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15&preserve-view=true) döngüsünü destekler. Bu WHILE döngüsü, belirtilen koşullar doğru olduğu sürece veya kod BREAK anahtar sözcüğünü kullanarak döngüyü özel olarak sonlandırana kadar devam eder. 
 
-SQL havuzundaki döngüler, SQL kodunda tanımlanan imleçleri değiştirmek için kullanışlıdır. Neyse ki SQL Code 'da yazılan neredeyse tüm imleçler hızlı ileri, salt okunurdur. Bu nedenle, döngüler değiştirmek için harika bir alternatiftir.
+SYNAPSE SQL içindeki döngüler, SQL kodunda tanımlanan imleçleri değiştirmek için kullanışlıdır. Neyse ki SQL Code 'da yazılan neredeyse tüm imleçler hızlı ileri, salt okunurdur. Bu nedenle, döngüler değiştirmek için harika bir alternatiftir.
 
-## <a name="replace-cursors-in-sql-pool"></a>SQL havuzundaki imleçleri değiştirme
+## <a name="replace-cursors-in-synapse-sql"></a>SYNAPSE SQL 'de imleçleri değiştirme
 
 ' De kullanılmadan önce, aşağıdaki soru göz önünde bulundurulmalıdır: "Bu imleç, küme tabanlı işlemleri kullanmak için yeniden yazılabilir mi?" Çoğu durumda, yanıt Evet 'tir ve sıklıkla en iyi yaklaşım olur. Küme temelli bir işlem, genellikle yinelemeli, satır satır yaklaşımına göre daha hızlı yürütülür.
 

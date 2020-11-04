@@ -10,12 +10,12 @@ author: likebupt
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 21dad66670da7a538039ae795d6be87cc4dbce96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f070cfc1fd9b4326c5a80ce31f6263aadbe8e8bc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883088"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325445"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısını kullanarak toplu tahminleri Çalıştır
 
@@ -29,9 +29,9 @@ Bu nasıl yapılır, aşağıdaki görevleri yapmayı öğrenirsiniz:
 > * Ardışık düzen uç noktası kullanma
 > * Uç nokta sürümlerini yönetme
 
-SDK 'yı kullanarak Batch Puanlama hizmetlerini ayarlamayı öğrenmek için bkz. [ile ilgili nasıl yapılır](how-to-run-batch-predictions.md).
+SDK 'yı kullanarak Batch Puanlama hizmetlerini ayarlamayı öğrenmek için bkz. [ile ilgili nasıl yapılır](./tutorial-pipeline-batch-scoring-classification.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır, zaten bir eğitim ardışık düzenine sahip olduğunuzu varsayar. Tasarımcıya yönelik Kılavuzlu giriş için [Tasarımcı öğreticisinin birinci kısmını](tutorial-designer-automobile-price-train-score.md)doldurun. 
 
@@ -51,9 +51,9 @@ Bir ınsele sınırlama işlem hattı oluşturabilmek için eğitim işlem hatt�
 
 Artık eğitim işlem hattı çalıştırıldığına göre, bir toplu çıkarım ardışık düzeni oluşturabilirsiniz.
 
-1. **Gönder**' in yanındaki yeni açılan menü **oluşturma çıkarım**işlem hattını seçin.
+1. **Gönder** ' in yanındaki yeni açılan menü **oluşturma çıkarım** işlem hattını seçin.
 
-1. **Toplu çıkarım ardışık düzeni**' ni seçin.
+1. **Toplu çıkarım ardışık düzeni** ' ni seçin.
 
     ![Toplu çıkarım ardışık düzeni oluşturma](./media/how-to-run-batch-predictions-designer/create-batch-inference.png)
     
@@ -67,7 +67,7 @@ Bu bölümde, tahminleri yapmak için farklı bir veri kümesi belirtmek üzere 
 
 1. Veri kümesi modülünü seçin.
 
-1. Tuvalin sağında bir bölme belirir. Bölmenin en altında, **ardışık düzen parametresi olarak ayarla**' yı seçin.
+1. Tuvalin sağında bir bölme belirir. Bölmenin en altında, **ardışık düzen parametresi olarak ayarla** ' yı seçin.
    
     Parametre için bir ad girin veya varsayılan değeri kabul edin.
 
@@ -80,13 +80,13 @@ Artık, çıkarım işlem hattını dağıtmaya hazırsınız demektir. Bu işle
 
 1. **Yayımla** düğmesini seçin.
 
-1. Görüntülenen iletişim kutusunda, **pipelineendpoint**için açılan liste ' yi genişletin ve **Yeni bir pipelineendpoint**' i seçin.
+1. Görüntülenen iletişim kutusunda, **pipelineendpoint** için açılan liste ' yi genişletin ve **Yeni bir pipelineendpoint** ' i seçin.
 
 1. Bir uç nokta adı ve isteğe bağlı bir açıklama sağlayın.
 
     İletişim kutusunun alt kısmında, eğitim sırasında kullanılan veri kümesi KIMLIĞI için varsayılan bir değerle yapılandırdığınız parametreyi görebilirsiniz.
 
-1. **Yayımla**’yı seçin.
+1. **Yayımla** ’yı seçin.
 
 ![İşlem hattı yayımlama](./media/how-to-run-batch-predictions-designer/publish-inference-pipeline.png)
 
@@ -101,13 +101,13 @@ Bu bölümde, bir el ile işlem hattı çalıştırması ayarlayacaksınız ve y
 
 1. Dağıtım tamamlandıktan sonra **uç noktalar** bölümüne gidin.
 
-1. **Ardışık düzen uç noktalarını**seçin.
+1. **Ardışık düzen uç noktalarını** seçin.
 
 1. Oluşturduğunuz uç noktanın adını seçin.
 
 ![Uç nokta bağlantısı](./media/how-to-run-batch-predictions-designer/manage-endpoints.png)
 
-1. **Yayınlanan işlem hatlarını**seçin.
+1. **Yayınlanan işlem hatlarını** seçin.
 
     Bu ekran, bu uç nokta altında Yayınlanan Tüm yayınlanan işlem hatlarını gösterir.
 

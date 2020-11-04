@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 9b2d003ef4938681229317b625aae4526787ac15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c014f14149b903713ae2f03b98956cd4ecaf8a1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898699"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323062"
 ---
 # <a name="convert-to-dataset"></a>Veri kümesine dönüştürme
 
@@ -25,7 +25,7 @@ Bu makalede, bir işlem hattının herhangi bir verisini tasarımcı iç biçimi
 Bir veri kümesinde bir dizi normalleştirme veya temizleme işlemi gerçekleştirdiyseniz ve değişikliklerin başka işlem hatlarında kullanılmasını sağlamak istiyorsanız veri kümesi biçimine veri kaydetmenizi öneririz.  
   
 > [!NOTE]
-> Veri kümesine dönüştürme yalnızca verilerin biçimini değiştirir. Çalışma alanındaki verilerin yeni bir kopyasını kaydetmez. Veri kümesini kaydetmek için, çıkış bağlantı noktasına çift tıklayın, **veri kümesi olarak kaydet**' i seçin ve yeni bir ad girin.  
+> Veri kümesine dönüştürme yalnızca verilerin biçimini değiştirir. Çalışma alanındaki verilerin yeni bir kopyasını kaydetmez. Veri kümesini kaydetmek için, çıkış bağlantı noktasına çift tıklayın, **veri kümesi olarak kaydet** ' i seçin ve yeni bir ad girin.  
   
 ## <a name="how-to-use-convert-to-dataset"></a>Veri kümesine dönüştürme kullanma  
 
@@ -35,18 +35,18 @@ Veri kümesine Dönüştür kullanmadan önce veri kümesini hazırlamak için [
 
 2. Veri kümesini çıkaran herhangi bir modüle bağlayın.   
 
-    Veriler [tablosal](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true)olduğu sürece, veri kümesine dönüştürebilirsiniz. Bu, verileri [Içeri aktarma](import-data.md)yoluyla yüklenen verileri, [verileri el ile girerek](enter-data-manually.md)oluşturulan verileri veya [Dönüşüm uygulama](apply-transformation.md)aracılığıyla dönüştürülmüş veri kümelerini içerir.
+    Veriler [tablosal](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py)olduğu sürece, veri kümesine dönüştürebilirsiniz. Bu, verileri [Içeri aktarma](import-data.md)yoluyla yüklenen verileri, [verileri el ile girerek](enter-data-manually.md)oluşturulan verileri veya [Dönüşüm uygulama](apply-transformation.md)aracılığıyla dönüştürülmüş veri kümelerini içerir.
 
 3.  **Eylem** açılan listesinde, veri kümesini kaydetmeden önce verilerde temizlik yapmak istediğinizi belirtin:  
   
-    - **Hiçbiri**: verileri olduğu gibi kullanın.  
+    - **Hiçbiri** : verileri olduğu gibi kullanın.  
   
-    - **Setmissingvalue**: veri kümesindeki eksik bir değere belirli bir değer ayarlayın. Varsayılan yer tutucu, soru işareti karakteridir (?), ancak farklı bir değer girmek için  **özel eksik değer** seçeneğini kullanabilirsiniz. Örneğin, **özel eksik değer**Için **TAXI** girerseniz, veri kümesindeki tüm **TAXI** örnekleri eksik değere değiştirilir.
+    - **Setmissingvalue** : veri kümesindeki eksik bir değere belirli bir değer ayarlayın. Varsayılan yer tutucu, soru işareti karakteridir (?), ancak farklı bir değer girmek için  **özel eksik değer** seçeneğini kullanabilirsiniz. Örneğin, **özel eksik değer** Için **TAXI** girerseniz, veri kümesindeki tüm **TAXI** örnekleri eksik değere değiştirilir.
   
-    - **Replacevalues**: başka bir tam değer ile değiştirilmeleri için tek bir tam değer belirtmek için bu seçeneği kullanın. Eksik değerleri veya özel değerleri **değiştirme** yöntemini ayarlayarak değiştirebilirsiniz:
+    - **Replacevalues** : başka bir tam değer ile değiştirilmeleri için tek bir tam değer belirtmek için bu seçeneği kullanın. Eksik değerleri veya özel değerleri **değiştirme** yöntemini ayarlayarak değiştirebilirsiniz:
 
-      - **Eksik**: giriş veri kümesindeki eksik değerleri değiştirmek için bu seçeneği belirleyin. **Yeni değer**için eksik değerleri ile değiştirecek değeri girin.
-      - **Özel**: giriş veri kümesindeki özel değerleri değiştirmek için bu seçeneği belirleyin. **Özel değer**için bulmak istediğiniz değeri girin. Örneğin, verileriniz `obs` eksik değerler için yer tutucu olarak kullanılan dizeyi içeriyorsa, girersiniz `obs` . **Yeni değer**için, özgün dizeyi ile değiştirilecek yeni değeri girin.
+      - **Eksik** : giriş veri kümesindeki eksik değerleri değiştirmek için bu seçeneği belirleyin. **Yeni değer** için eksik değerleri ile değiştirecek değeri girin.
+      - **Özel** : giriş veri kümesindeki özel değerleri değiştirmek için bu seçeneği belirleyin. **Özel değer** için bulmak istediğiniz değeri girin. Örneğin, verileriniz `obs` eksik değerler için yer tutucu olarak kullanılan dizeyi içeriyorsa, girersiniz `obs` . **Yeni değer** için, özgün dizeyi ile değiştirilecek yeni değeri girin.
   
     **Replacevalues** işleminin yalnızca tam eşleşmeler için geçerli olduğunu unutmayın. Örneğin, bu dizeler etkilenmemelidir: `obs.` , `obsolete` .  
  
@@ -70,4 +70,4 @@ Veri kümesine Dönüştür kullanmadan önce veri kümesini hazırlamak için [
   
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın.

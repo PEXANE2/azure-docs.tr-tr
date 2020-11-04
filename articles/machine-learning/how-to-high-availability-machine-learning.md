@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 09/16/2020
-ms.openlocfilehash: 64665c0b1e32970f29233f5abdd6b2d2d020a6b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a1a63893e6e2988fc5f21e84f21c74315d856b4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897516"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325488"
 ---
 # <a name="increase-azure-machine-learning-resiliency"></a>Azure Machine Learning dayanıklılığı artırın
 
@@ -32,19 +32,19 @@ Azure Machine Learning birden çok Azure hizmetine bağlıdır ve birkaç katman
 
 Azure Hizmetleri şunları içerir:
 
-* **Azure Machine Learning altyapısı**: Azure Machine Learning çalışma alanı için Microsoft tarafından yönetilen bir ortam.
+* **Azure Machine Learning altyapısı** : Azure Machine Learning çalışma alanı için Microsoft tarafından yönetilen bir ortam.
 
-* **İlişkili kaynaklar**: Azure Machine Learning çalışma alanı oluşturma sırasında aboneliğinizde sağlanan kaynaklar. Bu kaynaklara Azure depolama, Azure Key Vault, Azure Container Registry ve Application Insights dahildir. Bu kaynaklar için yüksek kullanılabilirlik ayarlarını yapılandırmadan sorumlu olursunuz.
+* **İlişkili kaynaklar** : Azure Machine Learning çalışma alanı oluşturma sırasında aboneliğinizde sağlanan kaynaklar. Bu kaynaklara Azure depolama, Azure Key Vault, Azure Container Registry ve Application Insights dahildir. Bu kaynaklar için yüksek kullanılabilirlik ayarlarını yapılandırmadan sorumlu olursunuz.
   * Varsayılan depolamada model, eğitim günlüğü verileri ve veri kümesi gibi veriler bulunur.
   * Key Vault Azure depolama, Container Registry ve veri depoları için kimlik bilgileri bulunur.
   * Container Registry eğitim ve ınırel bir ortamlar için Docker görüntüsüne sahiptir.
   * Application Insights izleme Azure Machine Learning içindir.
 
-* **İşlem kaynakları**: çalışma alanı dağıtımından sonra oluşturduğunuz kaynaklar. Örneğin, bir Machine Learning modeli eğitmek için bir işlem örneği veya işlem kümesi oluşturabilirsiniz.
+* **İşlem kaynakları** : çalışma alanı dağıtımından sonra oluşturduğunuz kaynaklar. Örneğin, bir Machine Learning modeli eğitmek için bir işlem örneği veya işlem kümesi oluşturabilirsiniz.
   * İşlem örneği ve işlem kümesi: Microsoft tarafından yönetilen model geliştirme ortamları.
   * Diğer kaynaklar: Azure Kubernetes Service (AKS), Azure Databricks, Azure Container Instances ve Azure HDInsight gibi Azure Machine Learning ekleyebileceğiniz Microsoft Bilgi işlem kaynakları. Bu kaynaklar için yüksek kullanılabilirlik ayarlarını yapılandırmadan sorumlu olursunuz.
 
-* **Ek veri depoları**: Azure Machine Learning Azure depolama, Azure Data Lake Storage ve eğitim verileri IÇIN Azure SQL veritabanı gibi ek veri depoları bağlayabilir.  Bu veri depoları aboneliğiniz dahilinde sağlanır. Yüksek kullanılabilirlik ayarlarını yapılandırmadan sorumlu olursunuz.
+* **Ek veri depoları** : Azure Machine Learning Azure depolama, Azure Data Lake Storage ve eğitim verileri IÇIN Azure SQL veritabanı gibi ek veri depoları bağlayabilir.  Bu veri depoları aboneliğiniz dahilinde sağlanır. Yüksek kullanılabilirlik ayarlarını yapılandırmadan sorumlu olursunuz.
 
 Aşağıdaki tabloda, Microsoft tarafından yönetilen ve varsayılan olarak yüksek oranda kullanılabilir olan Azure hizmetleri gösterilmektedir.
 
@@ -54,7 +54,7 @@ Aşağıdaki tabloda, Microsoft tarafından yönetilen ve varsayılan olarak yü
 | **İlişkili kaynaklar** |
 | Azure Storage | Siz | |
 | Key Vault | Siz | ✓ |
-| Container Kayıt Defteri | Siz | |
+| Container Registry | Siz | |
 | Application Insights | Siz | NA |
 | **İşlem kaynakları** |
 | İşlem örneği | Microsoft |  |
@@ -71,34 +71,34 @@ Bu makalenin geri kalanında, bu hizmetlerin her birini yüksek oranda kullanıl
 
 Aşağıdaki belgelere başvurarak her bir kaynağın yüksek kullanılabilirlik ayarlarını yapılandırmayı unutmayın:
 
-* **Azure depolama**: yüksek kullanılabilirliğe sahip ayarları yapılandırmak için bkz. [Azure depolama artıklığı](https://docs.microsoft.com/azure/storage/common/storage-redundancy).
-* **Key Vault**: Key Vault, varsayılan olarak yüksek kullanılabilirlik sağlar ve Kullanıcı eylemi gerektirmez.  Bkz. [Azure Key Vault kullanılabilirliği ve artıklığı](https://docs.microsoft.com/azure/key-vault/general/disaster-recovery-guidance).
-* **Container Registry**: coğrafi çoğaltma için Premium kayıt defteri seçeneğini belirleyin. Bkz. [Azure Container Registry coğrafi çoğaltma](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication).
-* **Application Insights**: Application Insights yüksek kullanılabilirlik ayarları sağlamıyor. Veri saklama süresini ve ayrıntılarını ayarlamak için, bkz. [Application Insights veri toplama, bekletme ve depolama](https://docs.microsoft.com/azure/azure-monitor/app/data-retention-privacy#how-long-is-the-data-kept).
+* **Azure depolama** : yüksek kullanılabilirliğe sahip ayarları yapılandırmak için bkz. [Azure depolama artıklığı](../storage/common/storage-redundancy.md).
+* **Key Vault** : Key Vault, varsayılan olarak yüksek kullanılabilirlik sağlar ve Kullanıcı eylemi gerektirmez.  Bkz. [Azure Key Vault kullanılabilirliği ve artıklığı](../key-vault/general/disaster-recovery-guidance.md).
+* **Container Registry** : coğrafi çoğaltma için Premium kayıt defteri seçeneğini belirleyin. Bkz. [Azure Container Registry coğrafi çoğaltma](../container-registry/container-registry-geo-replication.md).
+* **Application Insights** : Application Insights yüksek kullanılabilirlik ayarları sağlamıyor. Veri saklama süresini ve ayrıntılarını ayarlamak için, bkz. [Application Insights veri toplama, bekletme ve depolama](../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept).
 
 ## <a name="compute-resources"></a>İşlem kaynakları
 
 Aşağıdaki belgelere başvurarak her bir kaynağın yüksek kullanılabilirlik ayarlarını yapılandırmayı unutmayın:
 
-* **Azure Kubernetes hizmeti**: [Azure Kubernetes Service (aks) ' de iş sürekliliği ve olağanüstü durum kurtarma için en iyi yöntemlere](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region) bakın ve [kullanılabilirlik alanlarını kullanan bir Azure Kubernetes hizmeti (aks) kümesi oluşturun](https://docs.microsoft.com/azure/aks/availability-zones). AKS kümesi Azure Machine Learning Studio, SDK veya CLı kullanılarak oluşturulduysa, bölgeler arası yüksek kullanılabilirlik desteklenmez.
-* **Azure Databricks**: [Azure Databricks kümeler Için bkz. bölgesel olağanüstü durum kurtarma](https://docs.microsoft.com/azure/azure-databricks/howto-regional-disaster-recovery).
-* **Container Instances**: bir Orchestrator yük devretmenin sorumluluğundadır. [Azure Container Instances ve kapsayıcı düzenleyicilerine](https://docs.microsoft.com/azure/container-instances/container-instances-orchestrator-relationship)bakın.
-* **HDInsight**: [Azure HDInsight tarafından desteklenen yüksek kullanılabilirlik hizmetlerine](https://docs.microsoft.com/azure/hdinsight/hdinsight-high-availability-components)bakın.
+* **Azure Kubernetes hizmeti** : [Azure Kubernetes Service (aks) ' de iş sürekliliği ve olağanüstü durum kurtarma için en iyi yöntemlere](../aks/operator-best-practices-multi-region.md) bakın ve [kullanılabilirlik alanlarını kullanan bir Azure Kubernetes hizmeti (aks) kümesi oluşturun](../aks/availability-zones.md). AKS kümesi Azure Machine Learning Studio, SDK veya CLı kullanılarak oluşturulduysa, bölgeler arası yüksek kullanılabilirlik desteklenmez.
+* **Azure Databricks** : [Azure Databricks kümeler Için bkz. bölgesel olağanüstü durum kurtarma](/azure/databricks/scenarios/howto-regional-disaster-recovery).
+* **Container Instances** : bir Orchestrator yük devretmenin sorumluluğundadır. [Azure Container Instances ve kapsayıcı düzenleyicilerine](../container-instances/container-instances-orchestrator-relationship.md)bakın.
+* **HDInsight** : [Azure HDInsight tarafından desteklenen yüksek kullanılabilirlik hizmetlerine](../hdinsight/hdinsight-high-availability-components.md)bakın.
 
 ## <a name="additional-data-stores"></a>Ek veri depoları
 
 Aşağıdaki belgelere başvurarak her bir kaynağın yüksek kullanılabilirlik ayarlarını yapılandırmayı unutmayın:
 
-* **Azure Blob kapsayıcı/Azure dosyaları/Data Lake Storage 2.**: varsayılan depolama ile aynı.
-* **Data Lake Storage 1.**: [Data Lake Storage 1. için yüksek kullanılabilirlik ve olağanüstü durum kurtarma Kılavuzu '](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-disaster-recovery-guidance)na bakın.
-* **SQL veritabanı**: bkz. [Azure SQL veritabanı ve SQL yönetilen örneği için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/sql-database/sql-database-high-availability).
-* **PostgreSQL Için Azure veritabanı**: bkz. [PostgreSQL için Azure veritabanı 'nda yüksek kullanılabilirlik kavramları-tek sunucu](https://docs.microsoft.com/azure/postgresql/concepts-high-availability).
-* **MySQL Için Azure veritabanı**: [MySQL için Azure veritabanı 'Nda iş sürekliliği anlama](https://docs.microsoft.com/azure/mysql/concepts-business-continuity)bölümüne bakın.
-* **Azure Databricks dosya sistemi**: [Azure Databricks kümeler Için bkz. bölgesel olağanüstü durum kurtarma](https://docs.microsoft.com/azure/azure-databricks/howto-regional-disaster-recovery).
+* **Azure Blob kapsayıcı/Azure dosyaları/Data Lake Storage 2.** : varsayılan depolama ile aynı.
+* **Data Lake Storage 1.** : [Data Lake Storage 1. için yüksek kullanılabilirlik ve olağanüstü durum kurtarma Kılavuzu '](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)na bakın.
+* **SQL veritabanı** : bkz. [Azure SQL veritabanı ve SQL yönetilen örneği için yüksek kullanılabilirlik](../azure-sql/database/high-availability-sla.md).
+* **PostgreSQL Için Azure veritabanı** : bkz. [PostgreSQL için Azure veritabanı 'nda yüksek kullanılabilirlik kavramları-tek sunucu](../postgresql/concepts-high-availability.md).
+* **MySQL Için Azure veritabanı** : [MySQL için Azure veritabanı 'Nda iş sürekliliği anlama](../mysql/concepts-business-continuity.md)bölümüne bakın.
+* **Azure Databricks dosya sistemi** : [Azure Databricks kümeler Için bkz. bölgesel olağanüstü durum kurtarma](/azure/databricks/scenarios/howto-regional-disaster-recovery).
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Bir Azure Machine Learning çalışma alanı dağıtmak için müşteri tarafından yönetilen bir anahtarınız sağlarsanız, aboneliğiniz içinde de sağlanmış Azure Cosmos DB. Bu durumda, yüksek kullanılabilirlik ayarlarını yapılandırmadan sorumlu olursunuz. [Azure Cosmos DB Ile yüksek kullanılabilirliğe](https://docs.microsoft.com/azure/cosmos-db/high-availability)bakın.
+Bir Azure Machine Learning çalışma alanı dağıtmak için müşteri tarafından yönetilen bir anahtarınız sağlarsanız, aboneliğiniz içinde de sağlanmış Azure Cosmos DB. Bu durumda, yüksek kullanılabilirlik ayarlarını yapılandırmadan sorumlu olursunuz. [Azure Cosmos DB Ile yüksek kullanılabilirliğe](../cosmos-db/high-availability.md)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

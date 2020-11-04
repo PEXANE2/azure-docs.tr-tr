@@ -8,12 +8,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
-ms.openlocfilehash: a14f7ac212d9957e5258f75a386b8730ad5de700
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: 631717252abe956357cf8b588fa653890037bbc9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233855"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322173"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Hızlı başlangıç: Linux için Veri Bilimi Sanal Makinesi ayarlama (Ubuntu)
 
@@ -46,7 +46,7 @@ Aşağıda Ubuntu 18,04 Veri Bilimi Sanal Makinesi örneğini oluşturma adımla
        * **Sanal makine adı** : sanal makinenin adını girin. Bu ad Azure portal kullanılacaktır.
        * **Bölge** : en uygun veri merkezini seçin. En hızlı ağ erişimi için bu, verilerinizin çoğunu veya fiziksel konumunuza en yakın olan veri merkezdir. [Azure bölgeleri](https://azure.microsoft.com/global-infrastructure/regions/)hakkında daha fazla bilgi edinin.
        * **Görüntü** : varsayılan değeri bırakın.
-       * **Boyut** : Bu seçenek, genel iş yükleri için uygun bir boyutla, oto olarak doldurulur. [Azure 'Da LINUX VM boyutları](../../virtual-machines/linux/sizes.md)hakkında daha fazla bilgi edinin.
+       * **Boyut** : Bu seçenek, genel iş yükleri için uygun bir boyutla, oto olarak doldurulur. [Azure 'Da LINUX VM boyutları](../../virtual-machines/sizes.md)hakkında daha fazla bilgi edinin.
        * **Kimlik doğrulama türü** : daha hızlı kurulum Için "parola" yı seçin. 
          
          > [!NOTE]
@@ -144,6 +144,6 @@ c.Spawner.default_url = '/lab'
 
 * [Linux için veri bilimi sanal makinesi veri bilimi](linux-dsvm-walkthrough.md) izlenecek yol, burada sağlanan Linux dsvm ile birkaç ortak veri bilimi görevinin nasıl yapılacağını gösterir. 
 * Bu makalede açıklanan araçları deneyerek DSVM 'deki çeşitli veri bilimi araçlarını inceleyin. Ayrıca, `dsvm-more-info` VM 'de yüklü araçlar hakkında daha fazla bilgi için temel bir giriş ve işaretçiler için sanal makine içindeki kabukta de çalıştırabilirsiniz.  
-* [Team Data Science sürecini](https://aka.ms/tdsp)kullanarak analitik çözümleri sistematik olarak derlemeyi öğrenin.
+* [Team Data Science sürecini](../team-data-science-process/index.yml)kullanarak analitik çözümleri sistematik olarak derlemeyi öğrenin.
 * Machine Learning ve Azure AI Hizmetleri 'ni kullanan veri analizi örnekleri için [Azure yapay zeka Galerisi](https://gallery.azure.ai/) ziyaret edin.
 * Bu sanal makine için uygun [başvuru belgelerine](./reference-ubuntu-vm.md) bakın.

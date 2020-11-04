@@ -11,19 +11,19 @@ ms.date: 07/21/2020
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: ef56274e0bda3f1a9d494852520a77ecdfc25799
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8caf6cd5072b4c098adff57194784491c92bb0a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89048015"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325371"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>TAHMIN eden makine öğrenimi modellerini puan edin
 
 SYNAPSE SQL, tanıdık T-SQL dilini kullanarak makine öğrenimi modellerini skor yeteneği sağlar. T-SQL ' i [tahmin](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)etmek için, mevcut makine öğrenimi modellerinizi geçmiş verilerle eğitimli hale getirebilir ve veri ambarınızın güvenli sınırları dahilinde puan verebilirsiniz. TAHMIN işlevi bir [Onnx (Open sinir Network Exchange)](https://onnx.ai/) modeli ve verileri giriş olarak alır. Bu özellik, değerli verileri Puanlama için veri ambarının dışına taşıma adımını ortadan kaldırır. Veri uzmanlarının, kendi görevleri için doğru çatı ile çalışan veri bilimcilerine sorunsuz işbirliği yapmasına olanak tanıyan T-SQL arabirimiyle makine öğrenimi modellerini kolay bir şekilde dağıtmak için amaçlar.
 
 > [!NOTE]
-> Bu işlevsellik şu anda isteğe bağlı SQL 'de desteklenmiyor.
+> Bu işlevsellik şu anda sunucusuz SQL havuzunda desteklenmez.
 
 İşlevsellik, modelin SYNAPSE SQL dışında eğitilliğini gerektirir. Modeli oluşturduktan sonra, verileri veri ambarına yükleyin ve verilerden Öngörüler elde etmek için T-SQL tahmin sözdizimiyle puan edin.
 

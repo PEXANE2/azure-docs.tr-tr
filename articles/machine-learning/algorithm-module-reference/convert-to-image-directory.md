@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/09/2020
-ms.openlocfilehash: 2e597299c9b157d79a5317c97550fc30820636d6
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 8abcbc74506599e7896ad6d41b9444e946172283
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940385"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324905"
 ---
 # <a name="convert-to-image-directory"></a>Görüntü Dizinine Dönüştürme
 
@@ -49,7 +49,7 @@ Bu makalede, görüntü veri kümesini, Azure Machine Learning tasarımcısında
 
     Puanlama için, görüntü veri kümesi klasörünün yalnızca sınıflandırılmayan görüntüleri içermesi gerekir.
 
-1. Görüntü dizini modülüne dönüştürme girişi bir **dosya veri kümesi**olması gerektiğinden, görüntü veri kümesini çalışma alanınıza [bir dosya veri kümesi olarak kaydedin](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) .
+1. Görüntü dizini modülüne dönüştürme girişi bir **dosya veri kümesi** olması gerektiğinden, görüntü veri kümesini çalışma alanınıza [bir dosya veri kümesi olarak kaydedin](../how-to-create-register-datasets.md) .
 
 1. Kayıtlı görüntü veri kümesini tuvale ekleyin. Kayıtlı veri kümenizi, tuvalin solundaki modül listesindeki **veri kümeleri** kategorisinde bulabilirsiniz. Şu anda tasarımcı Image veri kümesini görselleştirmeyi desteklemiyor.
 
@@ -74,7 +74,7 @@ Bu makalede, görüntü veri kümesini, Azure Machine Learning tasarımcısında
 | ------------- | --------------------- | ------------- |
 | Giriş veri kümesi | AnyDirectory, ZipFile | Giriş veri kümesi |
 
-###  <a name="output"></a>Çıktı  
+###  <a name="output"></a>Çıkış  
 
 | Ad                   | Tür           | Açıklama            |
 | ---------------------- | -------------- | ---------------------- |
@@ -82,4 +82,4 @@ Bu makalede, görüntü veri kümesini, Azure Machine Learning tasarımcısında
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın.

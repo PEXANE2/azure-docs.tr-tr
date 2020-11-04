@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: 5f06374e67d1aad689662c77084fa593bb09c8ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1032a90a35e60643e2ce937ed457a1fe3493d4d7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362478"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322882"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>Dağıtılan Azure Machine Learning Studio (klasik) Web Hizmetleri için uç noktalar oluşturma
 
-**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 > [!NOTE]
@@ -35,8 +35,8 @@ Web hizmetine Azure Machine Learning Web Hizmetleri portalını kullanarak bir u
 > Web hizmetine ek uç noktalar eklediyseniz, varsayılan uç noktayı silemezsiniz.
 
 1. Machine Learning Studio (klasik) ' de, sol gezinti sütununda Web Hizmetleri ' ne tıklayın.
-2. Web hizmeti panosunun alt kısmındaki **uç noktaları Yönet**' e tıklayın. Web Hizmetleri portalı Azure Machine Learning Web hizmeti için uç noktalar sayfasına açılır.
-3. **Yeni**' ye tıklayın.
+2. Web hizmeti panosunun alt kısmındaki **uç noktaları Yönet** ' e tıklayın. Web Hizmetleri portalı Azure Machine Learning Web hizmeti için uç noktalar sayfasına açılır.
+3. **Yeni** ' ye tıklayın.
 4. Yeni uç nokta için bir ad ve açıklama yazın. Uç nokta adları 24 karakter uzunluğunda veya daha az olmalıdır ve küçük harfli harfler veya rakamlardan oluşur. Günlüğe kaydetme düzeyini ve örnek verilerin etkinleştirilip etkinleştirilmeyeceğini seçin. Günlüğe kaydetme hakkında daha fazla bilgi için bkz. [Machine Learning Web Hizmetleri için günlüğü etkinleştirme](web-services-logging.md).
 
 ## <a name="scale-a-web-service-by-adding-additional-endpoints"></a><a id="scaling"></a> Ek uç noktalar ekleyerek bir Web hizmetini ölçeklendirin

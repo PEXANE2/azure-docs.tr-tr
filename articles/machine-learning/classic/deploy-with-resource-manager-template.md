@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-azurepowershell
 ms.date: 02/05/2018
-ms.openlocfilehash: f5e999e50818ab6374ce09dd6920cb5dc3dabc82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f860a52691d4d7fe72cbd7c8989277b224214064
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362444"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322770"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>Azure Resource Manager kullanarak Azure Machine Learning Studio (klasik) çalışma alanını dağıtma
 
-**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 Bir Azure Resource Manager dağıtım şablonu kullanmak, bir doğrulama ve yeniden deneme mekanizmasıyla bağlantılı bileşenleri dağıtmak için ölçeklenebilir bir yol sunarak size zaman kazandırır. Örneğin Azure Machine Learning Studio (klasik) çalışma alanlarını ayarlamak için önce bir Azure depolama hesabı yapılandırmanız ve ardından çalışma alanınızı dağıtmanız gerekir. Yüzlerce çalışma alanı için el ile bunu düşünün. Daha kolay bir alternatif, bir Studio (klasik) çalışma alanını ve tüm bağımlılıklarını dağıtmak için Azure Resource Manager şablonu kullanmaktır. Bu makale, bu işlem adım adım boyunca size kılavuzluk eden bir işlemdir. Azure Resource Manager harika bir genel bakış için bkz. [Azure Resource Manager genel bakış](../../azure-resource-manager/management/overview.md).
 
@@ -145,6 +145,6 @@ Get-AzResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |ForEa
 * [Azure Resource Manager şablonları yazma](../../azure-resource-manager/templates/template-syntax.md)hakkında daha fazla bilgi edinin.
 * [Azure hızlı başlangıç şablonları deposuna](https://github.com/Azure/azure-quickstart-templates)göz atın.
 * [Azure Resource Manager](https://channel9.msdn.com/Events/Ignite/2015/C9-39)hakkındaki bu videoyu izleyin.
-* [Kaynak Yöneticisi şablonu başvurusu yardımına](https://docs.microsoft.com/azure/templates/microsoft.machinelearning/allversions) bakın
+* [Kaynak Yöneticisi şablonu başvurusu yardımına](/azure/templates/microsoft.machinelearning/allversions) bakın
 
 <!--Link references-->

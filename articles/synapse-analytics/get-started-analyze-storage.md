@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: c4c7b8da659fa7fe8879ae92c4947b7f0867274c
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 2a22174fb23a4f0f7bebd58e276a6778e986ce9e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173491"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322930"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>Depolama hesabındaki verileri analiz etme
 
@@ -42,11 +42,11 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
 
 ### <a name="analyze-data-in-a-storage-account"></a>Depolama hesabındaki verileri analiz etme
 
-1. SYNAPSE Studio 'da **veri** merkezine gidin ve **bağlı**' yı seçin.
+1. SYNAPSE Studio 'da **veri** merkezine gidin ve **bağlı** ' yı seçin.
 1. **Depolama hesapları**  >  **MyWorkspace (birincil-contosolake)** sayfasına gidin.
-1. **Kullanıcıları (birincil)** seçin. **NYCTaxi** klasörünü görmeniz gerekir. İçinde **PassengerCountStats.csv** ve **Passengercountstats. Parquet**adlı iki klasör görmeniz gerekir.
+1. **Kullanıcıları (birincil)** seçin. **NYCTaxi** klasörünü görmeniz gerekir. İçinde **PassengerCountStats.csv** ve **Passengercountstats. Parquet** adlı iki klasör görmeniz gerekir.
 1. **Passengercountstats. Parquet** klasörünü açın. İçinde, benzer bir adı olan bir Parquet dosyası görürsünüz `part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` .
-1. **. Parquet**öğesine sağ tıklayın ve ardından **Yeni Not defteri**' ni seçin. Şöyle bir hücre içeren bir not defteri oluşturur:
+1. **. Parquet** öğesine sağ tıklayın ve ardından **Yeni Not defteri** ' ni seçin. Şöyle bir hücre içeren bir not defteri oluşturur:
 
     ```py
     %%pyspark
@@ -55,7 +55,7 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
     ```
 
 1. Hücreyi çalıştırın.
-1. İçindeki Parquet dosyasına sağ tıklayın ve ardından **Yeni SQL betiği**  >  **en üstteki 100 satırları**Seç ' i seçin. Şöyle bir SQL betiği oluşturur:
+1. İçindeki Parquet dosyasına sağ tıklayın ve ardından **Yeni SQL betiği**  >  **en üstteki 100 satırları** Seç ' i seçin. Şöyle bir SQL betiği oluşturur:
 
     ```sql
     SELECT TOP 100 *
@@ -65,7 +65,7 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
     ) AS [r];
     ```
 
-    Betik penceresinde, **Bağlan** alanı **Isteğe bağlı olarak SQL**olarak ayarlanır.
+    Betik penceresinde **Bağlan** alanı **sunucusuz SQL havuzu** olarak ayarlanır.
 
 1. Betiği çalıştırın.
 

@@ -2,16 +2,16 @@
 title: Azure Otomasyonu runbook sorunlarını giderme
 description: Bu makalede, Azure Otomasyonu runbook 'larında sorunları gidermeye ve gidermeye nasıl çözüm yapılacağı açıklanır.
 services: automation
-ms.date: 07/28/2020
+ms.date: 11/03/2020
 ms.topic: conceptual
 ms.service: automation
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1cbb5be8c1a4045b218c0e6bf5ac7ed0b901aa80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e173e76b80717d6685e9a6b383ee98eddf910f5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87904811"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323486"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbook sorunlarını giderme
 
@@ -42,7 +42,7 @@ Azure Otomasyonu 'nda runbook yürütmesi sırasında hata aldığınızda, soru
     * Farklı çalıştır hesabının süresi dolmuşsa [sertifikayı yenileyin](../manage-runas-account.md#cert-renewal) .
     * Runbook 'u başlatmak için zaman aşımına uğradı bir Web kancasını kullanmaya çalışıyorsanız [Web kancasını yenileyin](../automation-webhooks.md#renew-a-webhook) .
     * Geçerli runbook durumlarını ve sorunun olası nedenlerini öğrenmek için [iş durumlarını denetleyin](../automation-runbook-execution.md#job-statuses) .
-    * Runbook 'un askıya alınmadan önce ne olacağını belirlemek için Runbook 'a [ek çıkış ekleyin](../automation-runbook-output-and-messages.md#monitor-message-streams) .
+    * Runbook 'un askıya alınmadan önce ne olacağını belirlemek için Runbook 'a [ek çıkış ekleyin](../automation-runbook-output-and-messages.md#working-with-message-streams) .
     * İşiniz tarafından oluşturulan [tüm özel durumları işleyin](../automation-runbook-execution.md#exceptions) .
 
 1. Bu adımı, runbook işi veya karma Runbook Worker ortamı yanıt vermezse yapın.
@@ -147,7 +147,7 @@ Bir Azurere veya az modülünü güncelleştirdikten sonra bu hatayı alırsanı
 
 Başka bir abonelikteki kaynaklara erişmeye çalışıyorsanız, izinleri yapılandırmak için aşağıdaki adımları izleyin:
 
-1. Otomasyon Farklı Çalıştır hesabına gidin ve **uygulama kimliğini** ve **parmak izini**kopyalayın.
+1. Otomasyon Farklı Çalıştır hesabına gidin ve **uygulama kimliğini** ve **parmak izini** kopyalayın.
 
     ![Uygulama KIMLIĞINI ve parmak Izini Kopyala](../media/troubleshoot-runbooks/collect-app-id.png)
 
@@ -201,7 +201,7 @@ Bu hata şu durumlarda oluşabilir:
 Azure 'da kimlik doğrulaması yapılıp kalmadığını ve seçmek istediğiniz aboneliğe erişimi olup olmadığınızı belirlemek için aşağıdaki adımları izleyin:
 
 1. Betiğinizin tek başına çalıştığından emin olmak için, Azure Otomasyonu dışında test edin.
-1. Cmdlet 'ini çalıştırmadan önce betiğin [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) cmdlet 'ini çalıştırdığından emin olun `Select-*` .
+1. Cmdlet 'ini çalıştırmadan önce betiğin [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) cmdlet 'ini çalıştırdığından emin olun `Select-*` .
 1. `Disable-AzContextAutosave –Scope Process`Runbook 'un başlangıcına ekleyin. Bu cmdlet, tüm kimlik bilgilerinin yalnızca geçerli runbook 'un yürütülmesine uygulanmasını sağlar.
 1. Hala hata iletisini görüyorsanız, için parametresini ekleyerek kodunuzu değiştirin `AzContext` `Connect-AzAccount` ve ardından kodu yürütün.
 
@@ -291,7 +291,7 @@ Bu hata, eski Azure modülleri kullanılarak kaynaklanıyor olabilir.
 
 Azure modüllerinizi en son sürüme güncelleştirerek bu hatayı çözebilirsiniz:
 
-1. Otomasyon hesabınızda **modüller**' i seçin ve ardından **Azure modüllerini Güncelleştir**' i seçin.
+1. Otomasyon hesabınızda **modüller** ' i seçin ve ardından **Azure modüllerini Güncelleştir** ' i seçin.
 1. Güncelleştirme yaklaşık 15 dakika sürer. Tamamlandıktan sonra, başarısız olan runbook 'u yeniden çalıştırın.
 
 Modüllerinizi güncelleştirme hakkında daha fazla bilgi için bkz. Azure [Otomasyonu 'Nda Azure modüllerini güncelleştirme](../automation-update-azure-modules.md).
@@ -398,7 +398,7 @@ Akış nesneler içeriyorsa, `Start-AzAutomationRunbook` Çıkış akışını d
 
 ### <a name="resolution"></a>Çözüm
 
-Bir yoklama mantığı uygulayın ve çıktıyı almak için [Get-Azautomationjoi put](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) cmdlet 'ini kullanın. Bu mantığın bir örneği burada tanımlanmıştır:
+Bir yoklama mantığı uygulayın ve çıktıyı almak için [Get-Azautomationjoi put](/powershell/module/Az.Automation/Get-AzAutomationJobOutput) cmdlet 'ini kullanın. Bu mantığın bir örneği burada tanımlanmıştır:
 
 ```powershell
 $automationAccountName = "ContosoAutomationAccount"
@@ -476,14 +476,14 @@ Cmdlet 'ini çalıştırırken aşağıdaki hata iletisini alırsınız `Get-AzA
 
 ### <a name="cause"></a>Nedeni
 
-Bu hata, çok sayıda [ayrıntılı akışı](../automation-runbook-output-and-messages.md#monitor-verbose-stream)olan bir runbook 'tan iş çıktısı alınırken oluşabilir.
+Bu hata, çok sayıda [ayrıntılı akışı](../automation-runbook-output-and-messages.md#write-output-to-verbose-stream)olan bir runbook 'tan iş çıktısı alınırken oluşabilir.
 
 ### <a name="resolution"></a>Çözüm
 
 Bu hatayı çözmek için aşağıdakilerden birini yapın:
 
 * Runbook 'u düzenleyin ve yaydığı iş akışlarının sayısını azaltın.
-* Cmdlet 'i çalıştırırken alınacak akış sayısını azaltın. Bunu yapmak için `Stream` [Get-Azautomationjoi put](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) cmdlet 'inin parametresinin değerini yalnızca çıkış akışlarını almak üzere ayarlayabilirsiniz. 
+* Cmdlet 'i çalıştırırken alınacak akış sayısını azaltın. Bunu yapmak için `Stream` [Get-Azautomationjoi put](/powershell/module/Az.Automation/Get-AzAutomationJobOutput) cmdlet 'inin parametresinin değerini yalnızca çıkış akışlarını almak üzere ayarlayabilirsiniz. 
 
 ## <a name="scenario-runbook-job-fails-because-allocated-quota-was-exceeded"></a><a name="quota-exceeded"></a>Senaryo: ayrılan kota aşıldığı için Runbook işi başarısız oldu
 
@@ -505,7 +505,7 @@ Ayda 500 dakikadan fazla işlem kullanmak istiyorsanız aboneliğinizi ücretsiz
 
 1. Azure aboneliğinizde oturum açın.
 1. Yükseltilecek Otomasyon hesabını seçin.
-1. **Ayarlar**' ı seçin ve **fiyatlandırma**' yı seçin.
+1. **Ayarlar** ' ı seçin ve **fiyatlandırma** ' yı seçin.
 1. Hesabınızı temel katmana yükseltmek için en alttaki sayfada **Etkinleştir** ' i seçin.
 
 ## <a name="scenario-runbook-output-stream-greater-than-1-mb"></a><a name="output-stream-greater-1mb"></a>Senaryo: runbook çıkış akışı 1 MB 'den büyük
@@ -576,7 +576,7 @@ Bu hata, bir Azure korumalı alanında çalışan runbook 'ların [tam dil modun
 
 Bu hatayı çözmek için iki yol vardır:
 
-* [Başlangıç-iş](/powershell/module/microsoft.powershell.core/start-job?view=powershell-7)kullanmak yerine, runbook 'u başlatmak için [Start-azautomationrunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) kullanın.
+* [Başlangıç-iş](/powershell/module/microsoft.powershell.core/start-job)kullanmak yerine, runbook 'u başlatmak için [Start-azautomationrunbook](/powershell/module/az.automation/start-azautomationrunbook) kullanın.
 * Bir karma runbook çalışanında runbook 'u çalıştırmayı deneyin.
 
 Bu davranış ve Azure Otomasyonu runbook 'larının diğer davranışları hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu 'Nda runbook yürütme](../automation-runbook-execution.md).
@@ -605,8 +605,8 @@ Diğer bir çözüm, runbook 'u [alt runbook 'lar](../automation-child-runbooks.
 
 Alt runbook senaryosunu etkinleştiren PowerShell cmdlet 'leri şunlardır:
 
-* [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0). Bu cmdlet bir runbook başlatmanızı ve bu runbook'a parametre iletmenizi sağlar.
-* [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0). Alt runbook tamamlandıktan sonra gerçekleştirilmesi gereken işlemler varsa, bu cmdlet her çocuk için iş durumunu denetlemenizi sağlar.
+* [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook). Bu cmdlet bir runbook başlatmanızı ve bu runbook'a parametre iletmenizi sağlar.
+* [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob). Alt runbook tamamlandıktan sonra gerçekleştirilmesi gereken işlemler varsa, bu cmdlet her çocuk için iş durumunu denetlemenizi sağlar.
 
 ## <a name="scenario-error-in-job-streams-about-the-get_serializationsettings-method"></a><a name="get-serializationsettings"></a>Senaryo: get_SerializationSettings yöntemi hakkında iş akışlarında hata
 
@@ -642,7 +642,7 @@ Runbook veya uygulamanız bir Azure korumalı alanında çalışmayı denediğin
 
 ### <a name="cause"></a>Nedeni
 
-Bu sorun, Azure korumalı alanlar tüm işlem dışı COM sunucularına erişimi engellediği için ortaya çıkabilir. Örneğin, korumalı bir uygulama veya Runbook Windows Yönetim Araçları (WMI) veya Windows Installer hizmetine (msiserver.exe) çağıramaz. 
+Bu sorun, Azure korumalı alanlar tüm işlem dışı COM sunucularına erişimi engellediği için ortaya çıkabilir. Örneğin, korumalı bir uygulama veya Runbook Windows Yönetim Araçları (WMI) veya Windows Installer hizmetine (msiserver.exe) çağıramaz.
 
 ### <a name="resolution"></a>Çözüm
 
@@ -686,4 +686,4 @@ Sorununuzu burada görmüyorsanız veya sorununuzu çözemezseniz daha fazla des
 
 * Azure [forumları](https://azure.microsoft.com/support/forums/)aracılığıyla Azure uzmanlarından yanıtlar alın.
 * [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabıyla bağlanın. Azure desteği, yanıtlar, destek ve uzmanlar için sizi Azure Community 'ye bağlar.
-* Daha fazla yardıma ihtiyacınız varsa, bir Azure destek olayı dosyası gönderebilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/)gidin ve **Destek Al**' ı seçin.
+* Daha fazla yardıma ihtiyacınız varsa, bir Azure destek olayı dosyası gönderebilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/)gidin ve **Destek Al** ' ı seçin.

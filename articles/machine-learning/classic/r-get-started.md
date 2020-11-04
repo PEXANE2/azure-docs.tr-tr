@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 133c7e95e620bfea51d1d6c9f6fd1d2946eeca33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7c442aaf6484e8e47bd6d00c91023fba43af75d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91347266"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325023"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>R 'de Azure Machine Learning Studio (klasik) kullanmaya başlama
 
-**Uygulama hedefi:** ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md) yok  
+**Uygulama hedefi:** ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) yok  
 
 
 <!-- Stephen F Elston, Ph.D. -->
@@ -143,8 +143,8 @@ Bu bölümün tam kodu, [Machinelearningsamples-Notebook/Studio-Samples](https:/
 **csdairydata.csv** dosyasını Machine Learning Studio (klasik) içine yükleyerek başlayacağız.
 
 1. Machine Learning Studio (klasik) ortamınızı başlatın.
-1. Ekranın sol alt kısmındaki **+ Yeni** ' yi seçin ve **veri kümesi**' ni seçin.
-1. **Yerel dosya ' dan**seçim yapın ve ardından dosyayı seçmek için **Araştır** ' ı seçin.
+1. Ekranın sol alt kısmındaki **+ Yeni** ' yi seçin ve **veri kümesi** ' ni seçin.
+1. **Yerel dosya ' dan** seçim yapın ve ardından dosyayı seçmek için **Araştır** ' ı seçin.
 1. Veri kümesinin türü olarak **üst bilgi (. csv) Ile genel CSV dosyasını** seçtiğinizden emin olun.
 1. Onay işaretini seçin.
 1. Veri kümesi karşıya yüklendikten sonra, veri **kümeleri** sekmesini seçtiğinizde yeni veri kümesini görmeniz gerekir.
@@ -153,14 +153,14 @@ Bu bölümün tam kodu, [Machinelearningsamples-Notebook/Studio-Samples](https:/
 
 Artık Machine Learning Studio (klasik) ' de bazı verileriniz olduğuna göre, analiz yapmak için bir deneme oluşturuyoruz.  
 
-1. Ekranın sol alt kısmındaki **+ Yeni** ' **yi seçin ve**  >  **boş deneme**' yı seçin.
-1. Sayfanın üst kısmındaki başlıkta **oluşturulan** denemeyi seçerek ve değiştirerek denemenizi adlandırın. Örneğin, bunu **CA süt analiziyle**değiştirin.
-1. Deneme sayfasının sol tarafında, **kaydedilmiş veri kümeleri**  >  **veri kümelerim**' i seçin. Daha önce karşıya yüklediğiniz **cadairydata.csv** dosyasını görmeniz gerekir.
+1. Ekranın sol alt kısmındaki **+ Yeni** ' **yi seçin ve**  >  **boş deneme** ' yı seçin.
+1. Sayfanın üst kısmındaki başlıkta **oluşturulan** denemeyi seçerek ve değiştirerek denemenizi adlandırın. Örneğin, bunu **CA süt analiziyle** değiştirin.
+1. Deneme sayfasının sol tarafında, **kaydedilmiş veri kümeleri**  >  **veri kümelerim** ' i seçin. Daha önce karşıya yüklediğiniz **cadairydata.csv** dosyasını görmeniz gerekir.
 1. **csdairydata.csv veri kümesini** deneme üzerine sürükleyin.
 1. Sol bölmenin üst kısmındaki **deneme öğelerini ara** kutusuna [Yürüt R betiği][execute-r-script]girin. Modül arama listesinde görünür.
 1. [Yürüt R betiği][execute-r-script] modülünü paletle sürükleyin.
-1. **csdairydata.csv veri kümesinin** çıkışını, [Execute R betiğinin][execute-r-script]en soldaki giriş (**dataSet1**) öğesine bağlayın.
-1. **Kaydet**’i seçin.
+1. **csdairydata.csv veri kümesinin** çıkışını, [Execute R betiğinin][execute-r-script]en soldaki giriş ( **dataSet1** ) öğesine bağlayın.
+1. **Kaydet** ’i seçin.
 
 Bu noktada, denemeniz bu örneğe benzer bir şekilde görünmelidir.
 
@@ -169,7 +169,7 @@ Bu noktada, denemeniz bu örneğe benzer bir şekilde görünmelidir.
 
 #### <a name="check-on-the-data"></a>Verileri denetleyin
 
-Deneyimize yüklediğimiz verilere göz atalım. Deneyde **cadairydata.csv veri kümesinin**çıkışını seçin ve **Görselleştir**' i seçin. Bu özete benzer bir şey görmeniz gerekir.
+Deneyimize yüklediğimiz verilere göz atalım. Deneyde **cadairydata.csv veri kümesinin** çıkışını seçin ve **Görselleştir** ' i seçin. Bu özete benzer bir şey görmeniz gerekir.
 
 ![cadairydata.csv veri kümesinin özetini gösteren ekran görüntüsü.](./media/r-quickstart/fig4.png)
 
@@ -231,17 +231,17 @@ load("src/yourData.rdata") # Reads a zipped R data file
    maml.mapOutputPort('cadairydata')
    ```
 
-1. Bir ZIP dosyası oluşturun ve komut dosyanızı bu zip dosyasına kopyalayın. Windows 'da dosyaya sağ tıklayıp **Send to**  >  **sıkıştırılmış klasöre**Gönder ' i seçebilirsiniz. Bu eylem, simpleçizimi içeren yeni bir ZIP dosyası oluşturur **. R** dosyası.
+1. Bir ZIP dosyası oluşturun ve komut dosyanızı bu zip dosyasına kopyalayın. Windows 'da dosyaya sağ tıklayıp **Send to**  >  **sıkıştırılmış klasöre** Gönder ' i seçebilirsiniz. Bu eylem, simpleçizimi içeren yeni bir ZIP dosyası oluşturur **. R** dosyası.
 
-1. Dosyanızı Machine Learning Studio (klasik) **veri kümelerine** ekleyin ve türü **zip**olarak belirtin. Artık veri kümelerinizde ZIP dosyasını görmeniz gerekir.
+1. Dosyanızı Machine Learning Studio (klasik) **veri kümelerine** ekleyin ve türü **zip** olarak belirtin. Artık veri kümelerinizde ZIP dosyasını görmeniz gerekir.
 
-1. ZIP dosyasını **veri** kümelerinden **ml Studio (klasik) tuvaline**sürükleyin.
+1. ZIP dosyasını **veri** kümelerinden **ml Studio (klasik) tuvaline** sürükleyin.
 
 1. **ZIP verileri** simgesinin çıkışını, [R betiği Yürüt][execute-r-script] modülünün **betik paketi** girişine bağlayın.
 
 1. `source()` [R betik modülünün yürütülmesi][execute-r-script] için kod penceresine ZIP dosya adınızı içeren işlevi girin. Bu durumda, girdik `source("src/simpleplot.R")` .
 
-1. **Kaydet**’i seçin.
+1. **Kaydet** ’i seçin.
 
 Bu adımlar tamamlandıktan sonra, deneme çalıştırıldığında r betiği [Yürüt][execute-r-script] dosyası ZIP dosyasında yürütülür. Bu noktada, denemeniz bu örneğe benzer bir şekilde görünmelidir.
 
@@ -313,7 +313,7 @@ DataSet2 girişinin davranışı DataSet1 ile aynıdır. Bu girişi kullanarak, 
 maml.mapOutputPort('cadairydata')
 ```
 
-Denemeyi çalıştırdıktan sonra, result DataSet1 çıkış bağlantı noktasını seçin ve ardından **Görselleştir**' i seçin. Bu örneğe benzer bir şey görmeniz gerekir.
+Denemeyi çalıştırdıktan sonra, result DataSet1 çıkış bağlantı noktasını seçin ve ardından **Görselleştir** ' i seçin. Bu örneğe benzer bir şey görmeniz gerekir.
 
 ![California süt verilerinin çıktısının görselleştirmesini gösteren ekran görüntüsü.](./media/r-quickstart/fig7.png)
 
@@ -323,7 +323,7 @@ Bu çıktı, tam olarak beklendiğimiz gibi girişle aynı şekilde görünür.
 
 [Yürütme R betiği][execute-r-script] modülünün cihaz çıktısı iletileri ve grafik çıktısını içerir. R 'deki standart çıkış ve standart hata iletileri R cihaz çıkış bağlantı noktasına gönderilir.
 
-R cihaz çıkışını görüntülemek için, bağlantı noktasını seçin ve ardından **Görselleştir**' i seçin. Burada R betiğindeki standart çıkış ve standart hata görüyoruz.
+R cihaz çıkışını görüntülemek için, bağlantı noktasını seçin ve ardından **Görselleştir** ' i seçin. Burada R betiğindeki standart çıkış ve standart hata görüyoruz.
 
 ![R cihaz bağlantı noktasındaki Standart çıktıyı ve standart hatayı gösteren ekran görüntüsü.](./media/r-quickstart/fig8.png)
 
@@ -404,7 +404,7 @@ Bu kodu yürütüm ve R betiği için çıkış günlüğüne bakalım. Günlük
 [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 ```
 
-Aya ait tür artık **faktör w/14 düzeylerine**sahip olmalıdır. Yılda yalnızca 12 ay olduğu için bu tür bir sorundur. Ayrıca, sonuç veri kümesi bağlantı noktasının **görselleştirilecek** türün **kategorik**olup olmadığını kontrol edebilirsiniz.
+Aya ait tür artık **faktör w/14 düzeylerine** sahip olmalıdır. Yılda yalnızca 12 ay olduğu için bu tür bir sorundur. Ayrıca, sonuç veri kümesi bağlantı noktasının **görselleştirilecek** türün **kategorik** olup olmadığını kontrol edebilirsiniz.
 
 Bu sorun, ay sütununun sistematik olarak kodlanmamış olması olabilir. Bazı durumlarda, bir aya Nisan adı verilir ve diğer bir deyişle, bir ay olarak kısaltılabilir. Dizeyi üç karaktere kırparak bu sorunu çözebiliriz. Kod satırı artık aşağıdaki örneğe benzer şekilde görünür.
 
@@ -1029,10 +1029,10 @@ Bu işlev aşağıdaki çıktıyı üretir.
 ##
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(>|t|)
-## (Intercept)       6.33e+00   1.45e-01   43.60   <2e-16 ***
-## Time              1.63e-09   1.72e-10    9.47   <2e-16 ***
+## (Intercept)       6.33e+00   1.45e-01   43.60   <2e-16 **_
+## Time              1.63e-09   1.72e-10    9.47   <2e-16 _*_
 ## I(Month.Count^2) -1.71e-06   4.89e-06   -0.35    0.726
-## I(Month.Count^3) -3.24e-08   1.49e-08   -2.17    0.031 *  
+## I(Month.Count^3) -3.24e-08   1.49e-08   -2.17    0.031 _  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##
@@ -1062,10 +1062,10 @@ Bu işlev aşağıdaki çıktıyı üretir.
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(>|t|)
 ## (Intercept)       6.38e+00   4.07e-02   156.6   <2e-16 ***
-## Time              1.57e-09   4.32e-11    36.3   <2e-16 ***
-## I(Month.Count^3) -3.76e-08   2.50e-09   -15.1   <2e-16 ***
+## Time              1.57e-09   4.32e-11    36.3   <2e-16 **_
+## I(Month.Count^3) -3.76e-08   2.50e-09   -15.1   <2e-16 _*_
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '_*_' 0.001 '_*' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##
 ## Residual standard error: 0.0417 on 213 degrees of freedom
 ## Multiple R-squared:  0.941,  Adjusted R-squared:  0.94
@@ -1113,21 +1113,21 @@ Bu işlev aşağıdaki çıktıyı üretir.
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(>|t|)
 ## Time              1.57e-09   2.72e-11    57.7   <2e-16 ***
-## I(Month.Count^3) -3.74e-08   1.57e-09   -23.8   <2e-16 ***
-## MonthApr          6.40e+00   2.63e-02   243.3   <2e-16 ***
-## MonthAug          6.38e+00   2.63e-02   242.2   <2e-16 ***
-## MonthDec          6.38e+00   2.64e-02   241.9   <2e-16 ***
-## MonthFeb          6.31e+00   2.63e-02   240.1   <2e-16 ***
-## MonthJan          6.39e+00   2.63e-02   243.1   <2e-16 ***
-## MonthJul          6.39e+00   2.63e-02   242.6   <2e-16 ***
-## MonthJun          6.38e+00   2.63e-02   242.4   <2e-16 ***
-## MonthMar          6.42e+00   2.63e-02   244.2   <2e-16 ***
-## MonthMay          6.43e+00   2.63e-02   244.3   <2e-16 ***
-## MonthNov          6.34e+00   2.63e-02   240.6   <2e-16 ***
-## MonthOct          6.37e+00   2.63e-02   241.8   <2e-16 ***
-## MonthSep          6.34e+00   2.63e-02   240.6   <2e-16 ***
+## I(Month.Count^3) -3.74e-08   1.57e-09   -23.8   <2e-16 **_
+## MonthApr          6.40e+00   2.63e-02   243.3   <2e-16 _*_
+## MonthAug          6.38e+00   2.63e-02   242.2   <2e-16 _*_
+## MonthDec          6.38e+00   2.64e-02   241.9   <2e-16 _*_
+## MonthFeb          6.31e+00   2.63e-02   240.1   <2e-16 _*_
+## MonthJan          6.39e+00   2.63e-02   243.1   <2e-16 _*_
+## MonthJul          6.39e+00   2.63e-02   242.6   <2e-16 _*_
+## MonthJun          6.38e+00   2.63e-02   242.4   <2e-16 _*_
+## MonthMar          6.42e+00   2.63e-02   244.2   <2e-16 _*_
+## MonthMay          6.43e+00   2.63e-02   244.3   <2e-16 _*_
+## MonthNov          6.34e+00   2.63e-02   240.6   <2e-16 _*_
+## MonthOct          6.37e+00   2.63e-02   241.8   <2e-16 _*_
+## MonthSep          6.34e+00   2.63e-02   240.6   <2e-16 _*_
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '_*_' 0.001 '_*' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##
 ## Residual standard error: 0.0263 on 202 degrees of freedom
 ## Multiple R-squared:     1,    Adjusted R-squared:     1
@@ -1276,11 +1276,11 @@ Bu sonuçlardan, modele mevsimsel faktörleri eklemenin, RMS hatasını önemli 
 
 RStudio iyi şekilde belgelenmiştir. İşte, başlamanızı sağlamak için RStudio belgelerinin önemli bölümlerine bazı bağlantılar verilmiştir.
 
-* **Proje oluşturma**: R kodunuzu, rstudio 'yu kullanarak projeler halinde düzenleyebilir ve yönetebilirsiniz. Daha fazla bilgi için bkz. [projeleri kullanma](https://support.rstudio.com/hc/articles/200526207-Using-Projects). Bu yönergeleri izleyin ve R kodu örnekleri için bu makaledeki bir proje oluşturun.
-* **R kodunu düzenleyin ve yürütün**: rstudio, r kodunu düzenlemek ve çalıştırmak için tümleşik bir ortam sağlar. Daha fazla bilgi için bkz. [kodu düzenlemede ve yürütülüyor](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code).
-* **Hata ayıklama**: rstudio güçlü hata ayıklama özellikleri içerir. Bu özellikler hakkında daha fazla bilgi için bkz. [RStudio Ile hata ayıklama](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio). Kesme noktası sorun giderme özellikleri hakkında bilgi için bkz. [kesme noktası sorun giderme](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting).
+* **Proje oluşturma** : R kodunuzu, rstudio 'yu kullanarak projeler halinde düzenleyebilir ve yönetebilirsiniz. Daha fazla bilgi için bkz. [projeleri kullanma](https://support.rstudio.com/hc/articles/200526207-Using-Projects). Bu yönergeleri izleyin ve R kodu örnekleri için bu makaledeki bir proje oluşturun.
+* **R kodunu düzenleyin ve yürütün** : rstudio, r kodunu düzenlemek ve çalıştırmak için tümleşik bir ortam sağlar. Daha fazla bilgi için bkz. [kodu düzenlemede ve yürütülüyor](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code).
+* **Hata ayıklama** : rstudio güçlü hata ayıklama özellikleri içerir. Bu özellikler hakkında daha fazla bilgi için bkz. [RStudio Ile hata ayıklama](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio). Kesme noktası sorun giderme özellikleri hakkında bilgi için bkz. [kesme noktası sorun giderme](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting).
 
-## <a name="further-reading"></a><a id="appendixb"></a>Daha fazla bilgi
+## <a name="further-reading"></a><a id="appendixb"></a>Daha fazla okuma
 
 Bu R programlama öğreticisi, Machine Learning Studio (klasik) ile R dilini kullanmak için ihtiyaç duyduğunuz temel bilgileri içerir. R hakkında bilginiz yoksa, CRAN üzerinde iki giriş vardır:
 

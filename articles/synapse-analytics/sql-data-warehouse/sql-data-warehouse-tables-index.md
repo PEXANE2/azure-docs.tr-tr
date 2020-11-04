@@ -1,6 +1,6 @@
 ---
 title: Tabloları dizinleme
-description: SYNAPSE SQL havuzundaki tabloları dizine alma önerileri ve örnekleri.
+description: Adanmış SQL havuzundaki tabloları dizine alma önerileri ve örnekleri.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 605c3320b0fcc7ac9663acc1578740e2cb3f3174
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05551f39203f2c070dd2ede0740135d6963aedcf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797607"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323579"
 ---
-# <a name="indexing-tables-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda tabloları dizin oluşturma
+# <a name="indexing-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu kullanarak tabloları dizinleme
 
-SYNAPSE SQL havuzundaki tabloları dizine alma önerileri ve örnekleri.
+Adanmış SQL havuzundaki tabloları dizine alma önerileri ve örnekleri.
 
 ## <a name="index-types"></a>Dizin türleri
 
-SYNAPSE SQL havuzu [kümelenmiş columnstore dizinleri](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [kümelenmiş dizinler ve kümelenmemiş dizinler](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)gibi çeşitli dizin oluşturma seçenekleri ve [yığın](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)olarak da bilinen Dizin olmayan bir seçenek sunar.  
+Adanmış SQL havuzu [kümelenmiş columnstore dizinleri](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [kümelenmiş dizinler ve kümelenmemiş dizinler](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)gibi çeşitli dizin oluşturma seçenekleri ve [yığın](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)olarak da bilinen Dizin olmayan bir seçenek sunar.  
 
-Dizin içeren bir tablo oluşturmak için [Create Table (SYNAPSE SQL havuzu)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) belgelerine bakın.
+Dizin içeren bir tablo oluşturmak için [Create Table (ADANMıŞ SQL havuzu)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) belgelerine bakın.
 
 ## <a name="clustered-columnstore-indexes"></a>Kümelenmiş columnstore dizinleri
 
-Varsayılan olarak, SYNAPSE SQL havuzu tablo üzerinde hiçbir dizin seçeneği belirtilmediğinde kümelenmiş bir columnstore dizini oluşturur. Kümelenmiş columnstore tabloları, hem en yüksek düzeyde veri sıkıştırması hem de en iyi genel sorgu performansını sunar.  Kümelenmiş columnstore tabloları, genellikle kümelenmiş dizin veya yığın tablolarını gerçekleştirecek ve genellikle büyük tablolar için en iyi seçenektir.  Bu nedenlerden dolayı, tablonuzun dizin oluşturma konusunda emin olduğunuzda, kümelenmiş columnstore en iyi başlangıç yerdir.  
+Varsayılan olarak, adanmış SQL havuzu tablo üzerinde hiçbir dizin seçeneği belirtilmediğinde kümelenmiş bir columnstore dizini oluşturur. Kümelenmiş columnstore tabloları, hem en yüksek düzeyde veri sıkıştırması hem de en iyi genel sorgu performansını sunar.  Kümelenmiş columnstore tabloları, genellikle kümelenmiş dizin veya yığın tablolarını gerçekleştirecek ve genellikle büyük tablolar için en iyi seçenektir.  Bu nedenlerden dolayı, tablonuzun dizin oluşturma konusunda emin olduğunuzda, kümelenmiş columnstore en iyi başlangıç yerdir.  
 
 Kümelenmiş bir columnstore tablosu oluşturmak için WıTH yan tümcesinde KÜMELENMIŞ COLUMNSTORE DIZININI belirtmeniz veya WıTH yan tümcesini devre dışı bırakmanız yeterlidir:
 
@@ -52,7 +52,7 @@ Kümelenmiş columnstore 'nın iyi bir seçenek olabileceği birkaç senaryo var
 
 ## <a name="heap-tables"></a>Yığın tabloları
 
-SYNAPSE SQL havuzunda geçici olarak veri giriş yaptığınızda, yığın tablosu kullanmanın genel işlemi daha hızlı hale getiriyor olduğunu fark edebilirsiniz. Bunun nedeni, Heap yükleri Dizin tablolarından daha hızlıdır ve bazı durumlarda sonraki okuma önbellekten yapılabilir.  Verileri yalnızca daha fazla dönüşüm çalıştırmadan önce hazırlamak için yüklüyorsanız, tabloyu yığın tablosuna yüklemek verileri kümelenmiş bir columnstore tablosuna yüklemeden çok daha hızlıdır. Ayrıca, verileri [geçici bir tabloya](sql-data-warehouse-tables-temporary.md) yüklemek, bir tabloyu kalıcı depolamaya yüklemeden daha hızlı yüklenir.  Veriler yüklendikten sonra daha hızlı sorgu performansı için tabloda dizinler oluşturabilirsiniz.  
+Adanmış SQL havuzunda geçici olarak veri giriş yaptığınızda, yığın tablosu kullanmanın genel işlemi daha hızlı hale getiriyor olduğunu fark edebilirsiniz. Bunun nedeni, Heap yükleri Dizin tablolarından daha hızlıdır ve bazı durumlarda sonraki okuma önbellekten yapılabilir.  Verileri yalnızca daha fazla dönüşüm çalıştırmadan önce hazırlamak için yüklüyorsanız, tabloyu yığın tablosuna yüklemek verileri kümelenmiş bir columnstore tablosuna yüklemeden çok daha hızlıdır. Ayrıca, verileri [geçici bir tabloya](sql-data-warehouse-tables-temporary.md) yüklemek, bir tabloyu kalıcı depolamaya yüklemeden daha hızlı yüklenir.  Veriler yüklendikten sonra daha hızlı sorgu performansı için tabloda dizinler oluşturabilirsiniz.  
 
 Küme columnstore tabloları, 60.000.000 ' den fazla satır olduğunda en iyi sıkıştırmayı elde etmek için başlar.  60.000.000 satırdan az olan küçük arama tablolarında, daha hızlı sorgu performansı için yığın veya kümelenmiş dizin kullanmayı düşünün. 
 
@@ -204,13 +204,13 @@ Bölüm hizalı dağıtım başına 102.400 satırlık toplu eşiği aşan toplu
 
 ### <a name="small-or-trickle-load-operations"></a>Küçük veya Trickle yükleme işlemleri
 
-SYNAPSE SQL Pool 'a akan küçük yükler bazen de Trickle yükleri olarak bilinir. Genellikle sistem tarafından alınan verilerin neredeyse sabit akışını temsil eder. Ancak, bu akış sürekli yakında olduğu için satır hacmi özellikle büyük değildir. Veriler genellikle columnstore biçimine doğrudan yük için gereken eşiğin altında önemli ölçüde düşüktür.
+Adanmış SQL havuzuna akan küçük yükler bazen de Trickle yükleri olarak bilinir. Genellikle sistem tarafından alınan verilerin neredeyse sabit akışını temsil eder. Ancak, bu akış sürekli yakında olduğu için satır hacmi özellikle büyük değildir. Veriler genellikle columnstore biçimine doğrudan yük için gereken eşiğin altında önemli ölçüde düşüktür.
 
-Bu durumlarda, verileri Azure Blob Storage 'da ilk kez almak ve yüklemeden önce birikmesini sağlamak daha iyi bir seçenektir. Bu teknik genellikle *mikro işleme*olarak bilinir.
+Bu durumlarda, verileri Azure Blob Storage 'da ilk kez almak ve yüklemeden önce birikmesini sağlamak daha iyi bir seçenektir. Bu teknik genellikle *mikro işleme* olarak bilinir.
 
 ### <a name="too-many-partitions"></a>Çok fazla bölüm
 
-Göz önünde bulundurulması gereken bir şey, kümelenmiş columnstore Tablolarınızda bölümlemenin etkisinin olmasıdır.  Bölümlemeden önce, SYNAPSE SQL havuzu verilerinizi zaten 60 veritabanlarına böler.  Bölümleme, verilerinizi daha fazla böler.  Verilerinizi bölümleyip, **her** bölümün bir kümelenmiş columnstore dizininden faydalanmak için en az 1.000.000 satıra ihtiyacı olduğunu düşünün.  Tablonuzu 100 bölüm olarak bölümleyebilirsiniz, kümelenmiş bir columnstore dizininden (60 dağıtımları *100 bölüm* 1.000.000 satırları) faydalanmak için tablonuzun en az 6.000.000.000 satıra ihtiyacı vardır. 100 bölümlü tablonuzda 6.000.000.000 satır yoksa, bölüm sayısını azaltın veya bunun yerine bir yığın tablosu kullanmayı deneyin.
+Göz önünde bulundurulması gereken bir şey, kümelenmiş columnstore Tablolarınızda bölümlemenin etkisinin olmasıdır.  Bölümlendirmadan önce, adanmış SQL havuzu verilerinizi zaten 60 veritabanlarına böler.  Bölümleme, verilerinizi daha fazla böler.  Verilerinizi bölümleyip, **her** bölümün bir kümelenmiş columnstore dizininden faydalanmak için en az 1.000.000 satıra ihtiyacı olduğunu düşünün.  Tablonuzu 100 bölüm olarak bölümleyebilirsiniz, kümelenmiş bir columnstore dizininden (60 dağıtımları *100 bölüm* 1.000.000 satırları) faydalanmak için tablonuzun en az 6.000.000.000 satıra ihtiyacı vardır. 100 bölümlü tablonuzda 6.000.000.000 satır yoksa, bölüm sayısını azaltın veya bunun yerine bir yığın tablosu kullanmayı deneyin.
 
 Tablolarınız bazı verilerle yüklendikten sonra, alt optimum kümelenmiş columnstore dizinleri ile tabloları tanımlamak ve yeniden oluşturmak için aşağıdaki adımları izleyin.
 
@@ -252,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-SYNAPSE SQL havuzundaki bir dizinin yeniden oluşturulması, çevrimdışı bir işlemdir.  Dizinleri yeniden oluşturma hakkında daha fazla bilgi için, [columnstore dizinleri birleştirme](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)ve [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)'teki alter INDEX REBUILD bölümüne bakın.
+Adanmış SQL havuzundaki bir dizinin yeniden oluşturulması, çevrimdışı bir işlemdir.  Dizinleri yeniden oluşturma hakkında daha fazla bilgi için, [columnstore dizinleri birleştirme](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)ve [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)'teki alter INDEX REBUILD bölümüne bakın.
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>3. Adım: kümelenmiş columnstore segmentinin kalitesinin iyileştirdiğini doğrulama
 
@@ -283,7 +283,7 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
-CTAS kullanarak bölümleri yeniden oluşturma hakkında daha fazla bilgi için bkz. [SYNAPSE SQL Pool 'da bölümleri kullanma](sql-data-warehouse-tables-partition.md).
+CTAS kullanarak bölümleri yeniden oluşturma hakkında daha fazla ayrıntı için bkz. [ADANMıŞ SQL havuzundaki bölümleri kullanma](sql-data-warehouse-tables-partition.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

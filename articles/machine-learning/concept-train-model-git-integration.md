@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: 71ac7793fe5226215c5d4eab98f84dba356b114c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f13773a8e3e78451dfb587e55c40a20d1b4b385c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275974"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324765"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning için git tümleştirmesi
 
@@ -39,7 +39,7 @@ Kopyalama hakkında daha fazla bilgi için bkz. [GIT CLI kullanma](https://guide
 
 ## <a name="authenticate-your-git-account-with-ssh"></a>SSH ile git hesabınızın kimliğini doğrulama
 ### <a name="generate-a-new-ssh-key"></a>Yeni bir SSH anahtarı oluştur
-1) Azure Machine Learning Not Defteri sekmesinde [Terminal penceresini açın](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal) .
+1) Azure Machine Learning Not Defteri sekmesinde [Terminal penceresini açın](./how-to-run-jupyter-notebooks.md#terminal) .
 
 2) Aşağıdaki metni e-posta adresinizdeki yerine yapıştırın.
 
@@ -89,9 +89,9 @@ cat ~/.ssh/id_rsa.pub
 
 + [GitLab](https://docs.gitlab.com/ee/ssh/#adding-an-ssh-key-to-your-gitlab-account)
 
-+ [Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs)  2. **adımda**başlayın.
++ [Azure DevOps](/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs)  2. **adımda** başlayın.
 
-+ [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2). **Adım 4**' te başlayın.
++ [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2). **Adım 4** ' te başlayın.
 
 ### <a name="clone-the-git-repository-with-ssh"></a>Git deposunu SSH ile kopyalama
 
@@ -115,7 +115,7 @@ Warning: Permanently added 'github.com,192.30.255.112' (RSA) to the list of know
 
 SSH, sunucunun SSH parmak izini görüntüleyebilir ve doğrulamanızı ister. Görüntülenen parmak izinin, SSH ortak anahtarları sayfasındaki parmak izlerinden biriyle eşleştiğini doğrulamanız gerekir.
 
-SSH, bu parmak izini, bilinmeyen bir konağa bağlanırken [ortadaki adam saldırılarına](https://technet.microsoft.com/library/cc959354.aspx)karşı korumak için görüntüler. Konağın parmak izini kabul ettikten sonra, parmak izi değişmediği takdirde SSH sizi yeniden istemez.
+SSH, bu parmak izini, bilinmeyen bir konağa bağlanırken [ortadaki adam saldırılarına](/previous-versions/windows/it-pro/windows-2000-server/cc959354(v=technet.10))karşı korumak için görüntüler. Konağın parmak izini kabul ettikten sonra, parmak izi değişmediği takdirde SSH sizi yeniden istemez.
 
 3) Bağlanmaya devam etmek isteyip istemediğiniz sorulduğunda, yazın `yes` . Git, depoyu kopyalar ve sonraki git komutları için SSH ile bağlantı kurmak üzere uzak kaynağı ayarlar.
 
@@ -153,9 +153,9 @@ Git bilgileri bir eğitim çalışmasının özelliklerinde depolanır. Azure po
 ### <a name="azure-portal"></a>Azure portal
 
 1. [Studio portalından](https://ml.azure.com), çalışma alanınızı seçin.
-1. __Denemeleri__öğesini seçin ve denemeleri birini seçin.
+1. __Denemeleri__ öğesini seçin ve denemeleri birini seçin.
 1. __Çalıştırma numarası__ sütunundan çalıştırmaların birini seçin.
-1. __Çıktılar + Günlükler__' i seçin ve ardından __Günlükler__ ve __azureml__ girdilerini genişletin. __ ### \_ Azure__ile başlayan bağlantıyı seçin.
+1. __Çıktılar + Günlükler__ ' i seçin ve ardından __Günlükler__ ve __azureml__ girdilerini genişletin. __### \_ Azure__ ile başlayan bağlantıyı seçin.
 
 Günlüğe kaydedilen bilgiler aşağıdaki JSON 'a benzer bir metin içerir:
 
@@ -178,7 +178,7 @@ Günlüğe kaydedilen bilgiler aşağıdaki JSON 'a benzer bir metin içerir:
 
 ### <a name="python-sdk"></a>Python SDK'sı
 
-Bir eğitim çalıştırması gönderdikten sonra bir [çalıştırma](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) nesnesi döndürülür. `properties`Bu nesnenin özniteliği, günlüğe kaydedilen git bilgilerini içerir. Örneğin, aşağıdaki kod, COMMIT karmasını alır:
+Bir eğitim çalıştırması gönderdikten sonra bir [çalıştırma](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) nesnesi döndürülür. `properties`Bu nesnenin özniteliği, günlüğe kaydedilen git bilgilerini içerir. Örneğin, aşağıdaki kod, COMMIT karmasını alır:
 
 ```python
 run.properties['azureml.git.commit']
@@ -192,7 +192,7 @@ run.properties['azureml.git.commit']
 az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup --query '[].properties'
 ```
 
-Daha fazla bilgi için, [az ml Run](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest&preserve-view=true) Reference belgelerine bakın.
+Daha fazla bilgi için, [az ml Run](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest) Reference belgelerine bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

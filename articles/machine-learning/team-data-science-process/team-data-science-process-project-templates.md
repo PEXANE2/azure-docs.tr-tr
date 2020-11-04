@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c003145acd423fd96dd0ac6c054884024c2ce4a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac6055029b8fc7bbba11a8e3b789df3b6b1622e2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75864239"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322750"
 ---
 # <a name="team-data-science-process-project-planning"></a>Ekip veri bilimi Işlem projesi planlama
 
@@ -30,7 +30,7 @@ Yaşam döngüsü, projelerin tipik olarak yürütülen ana aşamaları özetler
 - Dağıtım
 - Müşteri kabulü
 
-Bu aşamaların her birinin açıklamaları için bkz. [Team Data Science işlem yaşam döngüsü](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle).
+Bu aşamaların her birinin açıklamaları için bkz. [Team Data Science işlem yaşam döngüsü](./lifecycle.md).
 
  
 ## <a name="microsoft-project-template"></a>Microsoft proje şablonu
@@ -60,5 +60,4 @@ Verimli proje yürütme ve işbirliğini desteklemek için bu [proje şablonu de
 
 [Veri bilimi projelerinin çevik geliştirmesi](agile-development.md) Bu belgede bir veri bilimi projesi, ekip veri bilimi Işlemini kullanarak sistematik, sürüm denetimli ve işbirliğine dayalı bir şekilde açıklanmıştır.
 
-**Belirli senaryolar** için işlemdeki adımların tümünü gösteren yönergeler de sağlanır. Bunlar, [örnek yönergeler](walkthroughs.md) makalesinde listelenmiş ve küçük resim açıklamalarıyla bağlantılandırılır. Bulut, şirket içi araçları ve hizmetleri akıllı bir uygulama oluşturmak için bir iş akışı veya işlem hattı halinde nasıl birleştirebileceğinizi gösterir. 
-
+**Belirli senaryolar** için işlemdeki adımların tümünü gösteren yönergeler de sağlanır. Bunlar, [örnek yönergeler](walkthroughs.md) makalesinde listelenmiş ve küçük resim açıklamalarıyla bağlantılandırılır. Bulut, şirket içi araçları ve hizmetleri akıllı bir uygulama oluşturmak için bir iş akışı veya işlem hattı halinde nasıl birleştirebileceğinizi gösterir.

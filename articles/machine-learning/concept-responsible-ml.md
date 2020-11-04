@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 08/05/2020
-ms.openlocfilehash: 689b90fc1f45faad72640f47e5eebe936d2dc8b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2ece76ef3594cadfa1fcda89259ee18eb1f9084
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87829399"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324857"
 ---
 # <a name="what-is-responsible-machine-learning-preview"></a>Machine Learning sorumlu nedir? (önizleme)
 
@@ -73,7 +73,7 @@ Geleneksel bulut depolama ve hesaplama çözümlerinde, bulutun üzerinde işlem
 
 Homomorphic şifrelemesi, bir gizli dizi (şifre çözme) anahtarına erişmek gerekmeden, şifrelenmiş verilerde hesaplamalar yapılmasına izin verir. Hesaplamaların sonuçları şifrelenir ve yalnızca gizli anahtar sahibi tarafından açığa çıkarlenebilir. Homomorphic şifrelemesi kullanarak, bulut işleçleri depolarken ve bilgi işlem yaptıkları verilere şifrelenmemiş olarak erişemez. Hesaplamalar doğrudan şifrelenmiş verilerde gerçekleştirilir. Veri gizliliği, son derece şifreleme durumuna dayanır ve veri sahibi tüm bilgi sürümlerini denetler. Microsoft 'ta homomorphic şifreleme hakkında daha fazla bilgi için bkz. [Microsoft Research](https://www.microsoft.com/research/project/homomorphic-encryption/).
 
-Azure Machine Learning 'de homomorphic şifrelemeyi kullanmaya başlamak için, [Microsoft mühürlemek](https://github.com/microsoft/SEAL)üzere [şifrelenmiş çıkarım](https://pypi.org/project/encrypted-inference/) Python bağlamalarını kullanın. Microsoft mühürleme, şifreli tamsayılar veya gerçek sayılar üzerinde eklemeler ve çoğullar gerçekleştirilmesini sağlayan açık kaynaklı bir homomorphic şifreleme kitaplığıdır. Microsoft MÜHÜRLEMEK hakkında daha fazla bilgi için [Azure mimari merkezi](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/homomorphic-encryption-seal) veya [Microsoft Research projesi sayfasına](https://www.microsoft.com/research/project/microsoft-seal/)bakın.
+Azure Machine Learning 'de homomorphic şifrelemeyi kullanmaya başlamak için, [Microsoft mühürlemek](https://github.com/microsoft/SEAL)üzere [şifrelenmiş çıkarım](https://pypi.org/project/encrypted-inference/) Python bağlamalarını kullanın. Microsoft mühürleme, şifreli tamsayılar veya gerçek sayılar üzerinde eklemeler ve çoğullar gerçekleştirilmesini sağlayan açık kaynaklı bir homomorphic şifreleme kitaplığıdır. Microsoft MÜHÜRLEMEK hakkında daha fazla bilgi için [Azure mimari merkezi](/azure/architecture/solution-ideas/articles/homomorphic-encryption-seal) veya [Microsoft Research projesi sayfasına](https://www.microsoft.com/research/project/microsoft-seal/)bakın.
 
 [Azure Machine Learning ' de şifrelenmiş bir ınırm Web hizmeti dağıtmayı](how-to-homomorphic-encryption-seal.md)öğrenmek için aşağıdaki örneğe bakın.
 
@@ -96,5 +96,5 @@ Bir veri sayfasının parçası olarak belgelemek isteyebileceğiniz bazı model
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- Daha fazla bilgi için, en iyi yöntemler hakkında bilgi edinmek için [sorumlu yenilik araç seti](https://docs.microsoft.com/azure/architecture/guide/responsible-innovation/) bölümüne bakın.
+- Daha fazla bilgi için, en iyi yöntemler hakkında bilgi edinmek için [sorumlu yenilik araç seti](/azure/architecture/guide/responsible-innovation/) bölümüne bakın.
 - Machine Learning sistem belgeleri [hakkında](https://www.partnershiponai.org/about-ml/) daha fazla bilgi için bkz..

@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8f2e41779e72d565e24b67fd8b18afd87a112e62
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e029de19e6bdb635dfc4797367de29dfb87e32ce
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542113"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325401"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Azure SYNAPSE Analytics veri yönetimi iş ortakları
 
@@ -27,7 +27,7 @@ Bu makalede, Microsoft iş ortağı şirketleri, veri yönetimi araçları ve Az
 | ------- | ----------- | -------------------- |
 | ![AGID](./media/sql-data-warehouse-partner-data-management/aginity-logo.png) |**AGID**<br>Agof, Microsoft 'un SYNAPSE platformunun tüm gücünü analistlerin ve mühendislerin ellerine yerleştiren bir analiz geliştirme aracıdır. Zengin ve sezgisel SQL geliştirme ortamı, takım üyelerinin bir düzine sektör önde gelen analiz platformları üzerinden bağlanmasına, çeşitli biçimlerde veri almasına ve sonuçları Iş zekası ve Machine Learning kullanım durumlarında sunmaya yönelik karmaşık iş hesaplamaları oluşturmasına olanak tanır. Uygulamanın tamamı, analiz takımı genelinde işbirliği yapan ve gelişmiş yönetim özellikleri ve ayrıntılı güvenlik, idare bir Breeze hale getiren merkezi bir katalog etrafında oluşturulmuştur. |[Ürün sayfası](https://www.aginity.com/databases/microsoft/)<br> |
 | ![Alation](./media/sql-data-warehouse-partner-data-management/alation-logo.png) |**Alation**<br>Alation 'ın Veri Kataloğu, verimliliği önemli ölçüde artırır, doğruluğu artırır ve Analist için veri odaklı kararı karşılayarak sürücülere yöneliktir. Alation 'ın Veri Kataloğu, kuruluşunuzdaki herkesi verileri bulmak, anlamak ve yönetmek için güçler. |[Ürün sayfası](https://www.alation.com/product/data-catalog/)<br> |
-| ![Coffing veri depolama](./media/sql-data-warehouse-partner-data-management/coffing-data-warehousing-logo.png) |**Coffing veri depolama**<br>Coffing veri ambarı, sistemleri sorgulamak için adanmış 10 yıllık tasarıma sahip bir araç olan Nexus Chameleon sağlar. Nexus, Azure SYNAPSE SQL havuzu için bir sorgu aracı olarak kullanılabilir. Şirket içi ve bulut bilgisayarları sorgulamak ve verileri farklı platformlarda birleştirmek için Nexus 'ı kullanın. Nokta tıklama-rapor! |[Ürün sayfası](https://www.coffingdw.com/software/nexus/)<br> |
+| ![Coffing veri depolama](./media/sql-data-warehouse-partner-data-management/coffing-data-warehousing-logo.png) |**Coffing veri depolama**<br>Coffing veri ambarı, sistemleri sorgulamak için adanmış 10 yıllık tasarıma sahip bir araç olan Nexus Chameleon sağlar. Nexus, Azure SYNAPSE Analytics 'te adanmış SQL havuzu için bir sorgu aracı olarak kullanılabilir. Şirket içi ve bulut bilgisayarları sorgulamak ve verileri farklı platformlarda birleştirmek için Nexus 'ı kullanın. Nokta tıklama-rapor! |[Ürün sayfası](https://www.coffingdw.com/software/nexus/)<br> |
 | ![Inbrein](./media/sql-data-warehouse-partner-data-management/inbrein-logo.png) |**Inbrein mikro erd**<br>Inbrein mikro erd, kesin bir veri modeli oluşturmak, veri yedekliliği azaltmak, üretkenliği artırmak ve standartları gözlemlemek için ihtiyacınız olan araçları sağlar. Kapsamlı kullanıcı deneyimleri temelinde geliştirilen kullanıcı arabirimini kullanarak, bir Modelleyicisi DB modelleriyle kolayca ve rahat bir şekilde çalışabilir. İşlev geliştirmelerini ve güncelleştirmelerini sor aracılığıyla, mikro erd 'nin yeni ve geliştirilmiş işlevlerinin sürekli olarak keyfini çıkarabilirsiniz. |[Ürün sayfası](http://microerd.com/)<br> |
 | ![Infokütüphanarian](./media/sql-data-warehouse-partner-data-management/infolibrarian-logo.png) |**Infokütüphanarian (meta veri yönetim sunucusu)**<br>Infokütüphaneian Katalog, veri yönetimi önemli sorunlarındaki sorunları çözmenize yardımcı olacak meta verileri depolar, depolar ve yönetir. Infokütüphanarian, farklı bir araç ve teknoloji kümesinden meta verileri yönetmek ve yayınlamak için meta veri yönetimi, veri yönetimi ve varlık yönetimi çözümleri sağlar. |[Ürün sayfası](http://www.infolibcorp.com/metadata-management/software-tools)<br> [Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/infolibrarian.infolibrarian-metadata-management-server)<br> |
 | ![Kyligence](./media/sql-data-warehouse-partner-data-management/kyligence-logo.png) |**Kyligence**<br>Apache Kylin oluşturucuları tarafından oluşturulmuş, Kırgızca, veri yönetimi, bulma, etkileşim ve Öngörüler oluşturmayı otomatikleştirerek, kendi müşterilerinin üretkenliğini hızlandırmakta bir görev üzerine kurulmuştur. Kylıgösterimi bulutu, küme dağıtımını, veri erişimini geliştirir ve veri analizini önemli ölçüde hızlandırır. Kırgızca 'ın AI ile genişletilmiş büyük veri analizi yönetim platformu, kurumsal ölçekte veri oluşturma hızını hızlı ve kolay bir şekilde oluşturmanızı sağlar.|[Ürün sayfası](https://kyligence.io/)<br> [Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/kyligence.kyligence)<br> |

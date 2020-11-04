@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: c0a55780687b4c03d6809d1d740bf0b0afcd63fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05926f7ce25714fb76415802876db0640eb30aae
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908085"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323781"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>Tasarımcı için özel durumlar ve hata kodları
 
@@ -187,9 +187,9 @@ Ayrıca hesabın, kapsayıcının veya Blobun silinip silinmediğini denetleyin.
 
 Bazı yeni hesap türleri Azure Machine Learning tarafından desteklenmez. Örneğin, yeni "sık erişimli" veya "soğuk" Depolama türleri makine öğrenimi için kullanılamaz. Klasik depolama hesapları ve "genel amaçlı" olarak oluşturulan depolama hesapları iyi çalışır.
 
-Bir Blobun yolun tamamı belirtilmişse, yolun **kapsayıcı/blobname**olarak belirtildiğinden ve hem kapsayıcının hem de Blobun hesapta bulunduğundan emin olun.  
+Bir Blobun yolun tamamı belirtilmişse, yolun **kapsayıcı/blobname** olarak belirtildiğinden ve hem kapsayıcının hem de Blobun hesapta bulunduğundan emin olun.  
 
- Yol önünde eğik çizgi içermemelidir. Örneğin **/Container/blob** yanlış ve **kapsayıcı/blob**olarak girilmelidir.  
+ Yol önünde eğik çizgi içermemelidir. Örneğin **/Container/blob** yanlış ve **kapsayıcı/blob** olarak girilmelidir.  
 
 
 |Özel durum Iletileri|
@@ -491,7 +491,7 @@ Ayrıca, bir etiket sütununun veri kümesinde mevcut olması, ancak Azure Machi
 
 **Çözünürlüğüne**
 
-+ Hatayı oluşturan modülü açın ve bir etiket sütununun mevcut olup olmadığını saptayın. Sütunun adı veya veri türü, tahmin etmeye çalıştığınız tek bir sonuç (veya bağımlı değişken) içerdiği sürece önemi yoktur. Hangi sütunun etikete sahip olduğundan emin değilseniz,  *Class* veya *target*gibi genel bir adı arayın. 
++ Hatayı oluşturan modülü açın ve bir etiket sütununun mevcut olup olmadığını saptayın. Sütunun adı veya veri türü, tahmin etmeye çalıştığınız tek bir sonuç (veya bağımlı değişken) içerdiği sürece önemi yoktur. Hangi sütunun etikete sahip olduğundan emin değilseniz,  *Class* veya *target* gibi genel bir adı arayın. 
 +  Veri kümesi bir etiket sütunu içermiyorsa, etiket sütununun açık olarak veya yanlışlıkla yukarı akış kaldırılmış olması mümkündür. Ayrıca, veri kümesi bir yukarı akış Puanlama modülünün çıkışı değildir.
 + Sütunu etiket sütunu olarak açıkça işaretlemek için, [meta veri düzenleme](edit-metadata.md) modülünü ekleyin ve veri kümesini bağlayın. Yalnızca etiket sütununu seçin ve **alanlar** açılan listesinden **etiket** ' i seçin. 
 + Etiket olarak yanlış sütun seçilirse, sütundaki meta verileri düzeltebilmeniz için alanlardan **etiketi temizle** ' yi **Fields** seçebilirsiniz. 
@@ -540,7 +540,7 @@ Ayrıca, bir etiket sütununun veri kümesinde mevcut olması, ancak Azure Machi
   
 -   İki veri kümesini birleştiriyorsanız veya birleştirirken aynı şemaya sahip olduklarından emin olun.  
   
--   Birden çok sütunu olan iki veri kümesini birleştiriyorsanız, anahtar sütunlarının aynı veri türüne sahip olduğundan emin olun ve **seçimdeki yinelenen öğelere Izin ver ve sütun sırasını koru**seçeneğini belirleyin.  
+-   Birden çok sütunu olan iki veri kümesini birleştiriyorsanız, anahtar sütunlarının aynı veri türüne sahip olduğundan emin olun ve **seçimdeki yinelenen öğelere Izin ver ve sütun sırasını koru** seçeneğini belirleyin.  
 
 |Özel durum Iletileri|
 |------------------------|
@@ -604,7 +604,7 @@ Ayrıca, bir etiket sütununun veri kümesinde mevcut olması, ancak Azure Machi
 
  Azure Machine Learning içindeki bu hata, seçilen sütun sayısı gerekenden küçükse oluşur.  Gerekli en az sayıda sütun seçilmezse bu hatayı alırsınız.  
 
-**Çözüm:** Sütun **seçiciyi**kullanarak sütun seçimine ek sütunlar ekleyin.  
+**Çözüm:** Sütun **seçiciyi** kullanarak sütun seçimine ek sütunlar ekleyin.  
 
 |Özel durum Iletileri|
 |------------------------|
@@ -713,7 +713,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 **Çözüm:** Bu hata birçok koşuldan kaynaklanır ve belirli bir çözüm yoktur.  
  Aşağıdaki tabloda bu hatayla ilgili genel iletiler yer almaktadır ve bu durum, koşulun belirli bir açıklamasıyla izlenir. 
 
- Ayrıntı yoksa, [Microsoft Q geri bildirim göndermek Için bir soru sayfası&](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html) ve hatayı ve ilgili koşulları oluşturan modüller hakkında bilgi sağlar.
+ Ayrıntı yoksa, [Microsoft Q geri bildirim göndermek Için bir soru sayfası&](/answers/topics/azure-machine-learning-studio-classic.html) ve hatayı ve ilgili koşulları oluşturan modüller hakkında bilgi sağlar.
 
 |Özel durum Iletileri|
 |------------------------|
@@ -862,7 +862,7 @@ Diğer bir nedenden dolayı, kayan noktalı sayılar veya çok sayıda benzersiz
 
  Azure depolama hesabına erişmek için kullanılan anahtar yanlış ise Azure Machine Learning bu hata oluşur. Örneğin, Azure depolama anahtarı kopyalanırken ve yapıştırıldığında kesilmişse veya yanlış anahtar kullanılmışsa bu hatayı görebilirsiniz.  
 
- Bir Azure depolama hesabı için anahtar alma hakkında daha fazla bilgi için bkz. [depolama erişim anahtarlarını görüntüleme, kopyalama ve yeniden](https://azure.microsoft.com/documentation/articles/storage-create-storage-account-classic-portal/)oluşturma.  
+ Bir Azure depolama hesabı için anahtar alma hakkında daha fazla bilgi için bkz. [depolama erişim anahtarlarını görüntüleme, kopyalama ve yeniden](../../storage/common/storage-account-create.md)oluşturma.  
 
 **Çözüm:** Modülü yeniden ziyaret edin ve Azure depolama anahtarının hesap için doğru olduğunu doğrulayın; gerekirse, anahtarı yeniden klasik Azure portalından kopyalayın.  
 
@@ -915,9 +915,9 @@ Diğer bir nedenden dolayı, kayan noktalı sayılar veya çok sayıda benzersiz
 
 **Çözünürlüğüne**
 
- Bu hatayı yalnızca, daha önce **Azure Blob depolama yazma modu** özelliğini **hata**olarak ayarlarsanız alırsınız. Tasarıma göre, zaten var olan bir bloba veri kümesi yazmayı denerseniz, bu modül bir hata oluşturur.
+ Bu hatayı yalnızca, daha önce **Azure Blob depolama yazma modu** özelliğini **hata** olarak ayarlarsanız alırsınız. Tasarıma göre, zaten var olan bir bloba veri kümesi yazmayı denerseniz, bu modül bir hata oluşturur.
 
- - Modül özelliklerini açın ve **Azure Blob depolama yazma modu** özelliğini **üzerine yazacak**şekilde değiştirin.
+ - Modül özelliklerini açın ve **Azure Blob depolama yazma modu** özelliğini **üzerine yazacak** şekilde değiştirin.
  - Alternatif olarak, farklı bir hedef Blobun veya dosyanın adını yazabilir ve mevcut olmayan bir blob belirtdiğinizden emin olabilirsiniz.  
 
 |Özel durum Iletileri|
@@ -1083,9 +1083,9 @@ Hive 'den alınan hata iletisi normalde hata günlüğünde geri bildirilir, bö
 
 Makine öğrenimi için Hive sorgularıyla ilgili yardım için aşağıdaki makalelere bakın:
 
-+ [Azure Blob depolamadan Hive tabloları oluşturma ve veri yükleme](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-move-hive-tables)
-+ [Hive sorgularıyla tablolardaki verileri araştırma](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-explore-data-hive-tables)
-+ [Hive sorgularını kullanarak bir Hadoop kümesindeki verilerin özelliklerini oluşturma](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-create-features-hive)
++ [Azure Blob depolamadan Hive tabloları oluşturma ve veri yükleme](../team-data-science-process/move-hive-tables.md)
++ [Hive sorgularıyla tablolardaki verileri araştırma](../team-data-science-process/explore-data-hive-tables.md)
++ [Hive sorgularını kullanarak bir Hadoop kümesindeki verilerin özelliklerini oluşturma](../team-data-science-process/create-features-hive.md)
 + [SQL kullanıcıları için Hive sayfası (PDF)](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf)
 
   
@@ -1106,8 +1106,8 @@ Makine öğrenimi için Hive sorgularıyla ilgili yardım için aşağıdaki mak
  Sorgunun, doğrudan veritabanı sunucusunda oturum açarak ve sorguyu çalıştırarak Azure ML dışında düzgün çalıştığını doğrulayın.  
 
  Modül özel durumu tarafından bildirilen bir SQL tarafından oluşturulan ileti varsa, bildirilen hataya göre işlem yapın. Örneğin, hata iletileri bazen olası hataya özgü yönergeler içerir:
-+ *Böyle bir sütun veya eksik veritabanı değil*, bir sütun adı yanlış yazmış olabileceğiniz. Sütun adının doğru olduğundan eminseniz, sütun tanımlayıcısını kapsamak için köşeli ayraç veya tırnak işaretleri kullanmayı deneyin.
-+ *Yakınında \<SQL keyword\> SQL Logic Error *, belirtilen anahtar sözcükten önce bir sözdizimi hatası olabileceğini belirtir
++ *Böyle bir sütun veya eksik veritabanı değil* , bir sütun adı yanlış yazmış olabileceğiniz. Sütun adının doğru olduğundan eminseniz, sütun tanımlayıcısını kapsamak için köşeli ayraç veya tırnak işaretleri kullanmayı deneyin.
++ *Yakınında \<SQL keyword\> SQL Logic Error* , belirtilen anahtar sözcükten önce bir sözdizimi hatası olabileceğini belirtir
 
   
 |Özel durum Iletileri|
@@ -1164,7 +1164,7 @@ Azure Machine Learning içinde bu hata, desteklenmeyen bir yöntemi kullanarak v
 
 Bu olay için hata işleme, daha fazla sayıda daha fazla özelleştirme yönteminin özelleştirilmesine izin veren Azure Machine Learning önceki bir sürümünde kullanıma sunulmuştur. Şu anda tüm binme yöntemleri, bir açılan listeden seçim üzerine dayalıdır, bu nedenle Teknik olarak bu hatayı almak için artık mümkün olmayacaktır.
 
- <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Microsoft Q&A question page for Azure Machine Learning](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html), providing the data types, parameter settings, and the exact error message.  -->
+ <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Microsoft Q&A question page for Azure Machine Learning](/answers/topics/azure-machine-learning-studio-classic.html), providing the data types, parameter settings, and the exact error message.  -->
 
 |Özel durum Iletileri|
 |------------------------|
@@ -1201,7 +1201,7 @@ Bu olay için hata işleme, daha fazla sayıda daha fazla özelleştirme yöntem
 
  Azure depolama kapsayıcısı adı yanlış belirtilmişse Azure Machine Learning bu hata oluşur. Bu hatayı, Azure Blob depolama alanına yazarken **kapsayıcı ile başlayan blob 'un yolunu** kullanarak hem kapsayıcıyı hem de blob (dosya) adını belirttebilmeniz durumunda alırsınız.  
 
-**Çözüm:** [Verileri dışarı aktar](export-data.md) modülünü yeniden ziyaret edin ve belirtilen blob yolunun hem kapsayıcıyı hem de dosya adını kapsayıcı **/filename**biçiminde içerdiğini doğrulayın.  
+**Çözüm:** [Verileri dışarı aktar](export-data.md) modülünü yeniden ziyaret edin ve belirtilen blob yolunun hem kapsayıcıyı hem de dosya adını kapsayıcı **/filename** biçiminde içerdiğini doğrulayın.  
 
 |Özel durum Iletileri|
 |------------------------|
@@ -1516,11 +1516,10 @@ Bu hata, önceki bir işlem, bir aşağı akış işleminde yeterli sayıda sat�
 
 Bu hata, işlenmemiş iç altyapı hatalarını yakalamak için sağlanır. Bu nedenle, hatayı oluşturan modüle bağlı olarak bu hatanın nedeni farklı olabilir.  
 
-Daha fazla yardım almak için, hataya eşlik eden ayrıntılı iletiyi, giriş olarak kullanılan veriler de dahil olmak üzere senaryonun açıklamasıyla birlikte [Azure Machine Learning forumuna](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)nakletmeniz önerilir. Bu geri bildirim, hataları önceliklendirmemize ve daha fazla iş için en önemli sorunları belirlemenize yardımcı olur.  
+Daha fazla yardım almak için, hataya eşlik eden ayrıntılı iletiyi, giriş olarak kullanılan veriler de dahil olmak üzere senaryonun açıklamasıyla birlikte [Azure Machine Learning forumuna](/answers/topics/azure-machine-learning.html)nakletmeniz önerilir. Bu geri bildirim, hataları önceliklendirmemize ve daha fazla iş için en önemli sorunları belirlemenize yardımcı olur.  
 
 |Özel durum Iletileri|
 |------------------------|
 |Kitaplık özel durumu.|
 |Kitaplık özel durumu: {Exception}.|
 |Bilinmeyen kitaplık özel durumu: {Exception}. {customer_support_guidance}.|
-

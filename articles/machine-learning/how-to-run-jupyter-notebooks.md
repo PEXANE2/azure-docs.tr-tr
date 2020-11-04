@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 654c1beb0f8f544219ed802cab92f06055d70960
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: d253699199617489947dd95a44d9bcd1eff17334
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628686"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325415"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Çalışma alanınızda Jupyter Notebooks’u çalıştırma
 
@@ -80,11 +80,11 @@ Terminale erişmek için:
 1. Bir **işlem** hedefi seçin veya yeni bir tane oluşturun ve çalışır hale gelene kadar bekleyin.
 1. **Açık Terminal** simgesini seçin.
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Yeni dosya oluştur":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Açık Terminal":::
 
 1. Simgeyi görmüyorsanız, işlem hedefinin sağındaki **...** ' ı seçin ve ardından **Açık Terminal** ' yı seçin.
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Yeni dosya oluştur":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Terminalden aç...":::
 
 
 [Git depoları çalışma alanı dosya sisteminize kopyalama](concept-train-model-git-integration.md#clone-git-repositories-into-your-workspace-file-system)hakkında daha fazla bilgi edinin.
@@ -116,7 +116,7 @@ Etkin sekmelerinize odaklanabilmeniz için, geçerli görünümünüzü genişle
 1. Odak modunu açmak için Terminal penceresi araç çubuğunda **odak modu** ' nu seçin. Pencere genişenize bağlı olarak, bu, araç çubuğunuza **...** menü öğesinin altında bulunabilir.
 1. Odak modundayken **Standart Görünüm '** ü seçerek standart görünüme geri dönün.
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="Yeni dosya oluştur":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="Odak modunu/standart görünümü değiştirme":::
 
 
 ### <a name="use-intellisense"></a>IntelliSense kullanma
@@ -136,7 +136,8 @@ Bir not defteri oluşturma sırasında, genellikle veri araştırma veya hata ay
 1. Tüm Not defteri hücrelerinizi çalıştırın.
 1. Yeni Not defterinin çalıştırmasını istediğiniz kodu içeren hücreyi seçin. Örneğin, bir deneme gönderen kod veya belki de bir modeli kaydeden kod.
 1. Hücre araç çubuğunda görüntülenen **topla** simgesini seçin.
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="Yeni dosya oluştur" Not defteriniz için ad girin.  
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="Ekran görüntüsü: toplama simgesini seçin":::
+1. Yeni "toplanan" Not defteriniz için ad girin.  
 
 Yeni Not defteri, toplama için seçtiğiniz hücreyle aynı sonuçları üretmek için gereken tüm hücrelere sahip yalnızca kod hücrelerini içerir.
 
@@ -146,7 +147,7 @@ Azure Machine Learning, bir *ıpynb* dosyası oluşturduğunuzda bir denetim nok
 
 Not defteri araç çubuğunda, menüyü seçin ve ardından not defterini el ile kaydetmek için **&gt; Kaydet ve kontrol noktası dosya** ve not defteriyle ilişkili bir kontrol noktası dosyası eklenir.
 
-:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Yeni dosya oluştur":::
+:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Not defteri araç çubuğunda kaydetme aracının ekran görüntüsü":::
 
 Her bir not defteri, her 30 saniyede bir otomatik kaydedilir. Otomatik kaydetme, denetim noktası dosyasını değil yalnızca ilk *ipynb* dosyasını güncelleştirir.
  
@@ -187,7 +188,7 @@ Yalnızca sizin oluşturduğunuz işlem örneklerini görebilir ve kullanabilirs
 
 ### <a name="view-logs-and-output"></a>Günlükleri ve çıktıyı görüntüleme
 
-Çalışma ve günlüklerin ilerlemesini görüntülemek için [Not defteri pencere](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true) öğelerini kullanın. Pencere öğesi zaman uyumsuzdur ve eğitim bitene kadar güncelleştirmeler sağlar. Azure Machine Learning pencere öğeleri Jupyıter ve JupterLab içinde de desteklenir.
+Çalışma ve günlüklerin ilerlemesini görüntülemek için [Not defteri pencere](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py) öğelerini kullanın. Pencere öğesi zaman uyumsuzdur ve eğitim bitene kadar güncelleştirmeler sağlar. Azure Machine Learning pencere öğeleri Jupyıter ve JupterLab içinde de desteklenir.
 
 ## <a name="change-the-notebook-environment"></a>Not defteri ortamını değiştirme
 

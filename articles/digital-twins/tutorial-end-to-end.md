@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 66216cc21101f133281f9adbda96d395661dcbfe
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: d5467537e105225541ffc501d345fd2fa57e0803
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280489"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324560"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Öğretici: uçtan uca bir çözüm oluşturma
 
@@ -329,7 +329,7 @@ Bunu yapmak için, bağlı *termostat* ikizi güncelleştirildiği zaman bir *Od
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-c.png" alt-text="Tam bina senaryosu grafik vurgulama ok C, Azure dijital TWINS 'den sonraki öğeler: Event Grid ve ikinci Azure işlevi":::
 
 Bu veri akışını ayarlamak için tamamlayacaksınız eylemler şunlardır:
-1. Örneği Event Grid bağlayan bir Azure dijital TWINS uç noktası oluşturun
+1. Azure dijital TWINS 'te örneği Event Grid 'ye bağlayan Event Grid uç noktası oluşturma
 2. Azure dijital TWINS içinde, ikizi özellik değişikliği olaylarını uç noktaya göndermek için bir yol ayarlayın
 3. Uç noktada dinleme yapan ( [Event Grid](../event-grid/overview.md)) bir Azure işlevleri uygulaması dağıtın ve diğer TWINS 'i buna uygun olarak güncelleştirir
 4. Sanal cihazı çalıştırın ve canlı sonuçları görmek için Azure dijital TWINS 'i sorgulayın
@@ -354,7 +354,7 @@ az eventgrid topic create -g <your-resource-group> --name <name-for-your-event-g
 
 Bu komutun çıktısı, oluşturduğunuz olay Kılavuzu konusu hakkında bilgi içermektedir.
 
-Daha sonra, olay kılavuzunuza işaret eden bir Azure dijital TWINS uç noktası oluşturun. Aşağıdaki komutu kullanarak yer tutucu alanlarını gerektiği şekilde doldurun:
+Daha sonra, Azure dijital TWINS 'de bir Event Grid uç noktası oluşturun ve bu, örneğinizi olay Kılavuzu konu başlığına bağlayacaktır. Aşağıdaki komutu kullanarak yer tutucu alanlarını gerektiği şekilde doldurun:
 
 ```azurecli-interactive
 az dt endpoint create eventgrid --dt-name <your-Azure-Digital-Twins-instance> --eventgrid-resource-group <your-resource-group> --eventgrid-topic <your-event-grid-topic> --endpoint-name <name-for-your-Azure-Digital-Twins-endpoint>
@@ -372,11 +372,11 @@ az dt endpoint show --dt-name <your-Azure-Digital-Twins-instance> --endpoint-nam
 
 :::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="Uç nokta sorgusunun sonucu, bir provisioningState 'in başarılı olduğunu gösteriyor":::
 
-Olay Kılavuzu konuya ve Azure dijital TWINS uç noktanıza verdiğiniz adları kaydedin. Bunları daha sonra kullanacaksınız.
+Olay kılavuzunuza verdiğiniz adları ve Azure dijital TWINS 'teki Event Grid uç noktanızı kaydedin. Bunları daha sonra kullanacaksınız.
 
 ### <a name="set-up-route"></a>Rotayı ayarlama
 
-Ardından, az önce oluşturduğunuz Azure Digital TWINS uç noktasına olayları gönderen bir Azure dijital TWINS yolu oluşturun.
+Ardından, az önce oluşturduğunuz Event Grid uç noktasına olayları gönderen bir Azure dijital TWINS yolu oluşturun.
 
 ```azurecli-interactive
 az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> --route-name <name-for-your-Azure-Digital-Twins-route>

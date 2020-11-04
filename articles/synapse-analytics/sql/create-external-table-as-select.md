@@ -1,6 +1,6 @@
 ---
-title: Sorgu sonuçlarını depolama alanında saklama
-description: Bu makalede, sorgu sonuçlarının SQL isteğe bağlı (Önizleme) kullanarak depolamaya nasıl depolanacağını öğreneceksiniz.
+title: Sunucusuz SQL havuzundan sorgu sonuçlarını depola
+description: Bu makalede, sorgu sonuçlarının sunucusuz SQL Havuzu (Önizleme) kullanarak depolamaya nasıl depolanacağını öğreneceksiniz.
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e5fda5e7a5caf72df3d4c80e37a684232ca5541
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 50897d81ed5ef2fc33e458bd46d9229f6184fea8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91289370"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322621"
 ---
-# <a name="store-query-results-to-storage-using-sql-on-demand-preview-using-azure-synapse-analytics"></a>Azure SYNAPSE Analytics kullanarak SQL isteğe bağlı (Önizleme) kullanarak sorgu sonuçlarını depolamaya depolayın
+# <a name="store-query-results-to-storage-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullanarak depolamaya sorgu sonuçları depolama
 
-Bu makalede, sorgu sonuçlarının SQL isteğe bağlı (Önizleme) kullanarak depolamaya nasıl depolanacağını öğreneceksiniz.
+Bu makalede, sorgu sonuçlarının sunucusuz SQL Havuzu (Önizleme) kullanarak depolamaya nasıl depolanacağını öğreneceksiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

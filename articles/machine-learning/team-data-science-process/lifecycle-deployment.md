@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fe5eba72b507ebea6bc1012c567de70bc3deb5ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3bf8e5f81ae7bf35ff34039fa1e81c9fd4a406b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261354"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324545"
 ---
 # <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Işlem yaşam döngüsünün dağıtım aşaması
 
@@ -39,7 +39,7 @@ Son Kullanıcı kabulü için bir üretime veya üretime benzer bir ortama bir v
 ## <a name="how-to-do-it"></a>Nasıl yapılır?
 Bu aşamada belirtilen ana görev:
 
-**Modeli**çalıştırın: model ve işlem hattını, uygulama tüketimi için bir üretime veya üretime benzer bir ortama dağıtın.
+**Modeli** çalıştırın: model ve işlem hattını, uygulama tüketimi için bir üretime veya üretime benzer bir ortama dağıtın.
 
 ### <a name="operationalize-a-model"></a>Bir modeli kullanıma hazır hale getirme
 İyi hale getirilen bir modeller kümesi olduktan sonra, bunları kullanmak için diğer uygulamalar için çalıştırabilirsiniz. İş gereksinimlerine bağlı olarak, tahminler gerçek zamanlı olarak veya bir toplu iş temelinde yapılır. Modelleri dağıtmak için, bunları açık bir API arabirimiyle kullanıma sunun. Arabirim, modelin çeşitli uygulamalardan kolayca tüketilmesine olanak sağlar; örneğin:
@@ -71,4 +71,4 @@ TDSP yaşam döngüsüyle her adımın bağlantıları aşağıda verilmiştir:
 
 Belirli senaryolar için işlemdeki tüm adımları gösteren tam izlenecek yollar sunuyoruz. [Örnek yönergeler](walkthroughs.md) makalesi, bağlantılar ve küçük resim açıklamaları olan senaryoların bir listesini sağlar. İzlenecek yollar, akıllı bir uygulama oluşturmak için bulut, şirket içi araçların ve hizmetlerin bir iş akışı veya işlem hattına nasıl birleştirileceğini gösterir. 
 
-Azure Machine Learning Studio kullanan TDSPs 'de adımların nasıl yürütüleceği hakkında örnekler için, bkz. [Azure Machine Learning Ile TDSP kullanma](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Azure Machine Learning Studio kullanan TDSPs 'de adımların nasıl yürütüleceği hakkında örnekler için, bkz. [Azure Machine Learning Ile TDSP kullanma](./index.yml).

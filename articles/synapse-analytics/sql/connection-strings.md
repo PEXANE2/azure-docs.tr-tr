@@ -10,18 +10,18 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: aa940b00e9c23ab08244ea55c0cd22a8d5f1897f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a90b63f39a4c1cff53686e7ea67c3481f1274f85
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91289387"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322627"
 ---
 # <a name="connection-strings-for-synapse-sql-preview"></a>SYNAPSE SQL için bağlantı dizeleri (Önizleme)
 
 SYNAPSE SQL 'e (Önizleme), [ADO.net](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [php](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)ve [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)gibi birçok farklı uygulama protokolleriyle bağlanabilirsiniz. Her protokol için bazı bağlantı dizesi örnekleri aşağıda verilmiştir. 
 
-Bağlantı dizenizi oluşturmak için Azure portal de kullanabilirsiniz.  Bağlantı dizenizi Azure portal kullanarak derlemek için, veritabanı dikey penceresine gidin, *temel parçalar* altında *veritabanı bağlantı dizelerini göster*' i seçin.
+Bağlantı dizenizi oluşturmak için Azure portal de kullanabilirsiniz.  Bağlantı dizenizi Azure portal kullanarak derlemek için, veritabanı dikey penceresine gidin, *temel parçalar* altında *veritabanı bağlantı dizelerini göster* ' i seçin.
 
 ## <a name="sample-adonet-connection-string"></a>Örnek ADO.NET bağlantı dizesi
 
@@ -52,7 +52,7 @@ jdbc:sqlserver://yourserver.sql.azuresynapse.net:1433;database=yourdatabase;user
 
 ## <a name="recommendations"></a>Öneriler
 
-**SQL isteğe** bağlı sorguları yürütmek için önerilen Araçlar [Azure Data Studio](get-started-azure-data-studio.md) ve Azure SYNAPSE Studio.
+**Sunucusuz SQL havuzu** sorgularını yürütmek için önerilen Araçlar [Azure Data Studio](get-started-azure-data-studio.md) ve Azure SYNAPSE Studio.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

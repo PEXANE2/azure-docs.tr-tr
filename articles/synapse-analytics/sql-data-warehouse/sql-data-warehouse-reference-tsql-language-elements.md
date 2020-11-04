@@ -1,6 +1,6 @@
 ---
-title: T-SQL dil öğeleri
-description: SYNAPSE SQL havuzunda desteklenen T-SQL dili öğelerinin belgelerine bağlantılar.
+title: Özel SQL havuzu için T-SQL dil öğeleri
+description: Azure SYNAPSE Analytics 'te adanmış SQL havuzu için desteklenen T-SQL dili öğelerinin belgelerinin bağlantıları.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: bccbe67c1ea4b93a7a1938fbab6b6f3d06cb5da3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 966df3be13eda4450608d42890fcfe2240ac61a9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289506"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324648"
 ---
-# <a name="t-sql-language-elements-supported-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda desteklenen T-SQL dil öğeleri
+# <a name="t-sql-language-elements-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu için T-SQL dil öğeleri 
 
-SYNAPSE SQL havuzunda desteklenen T-SQL dili öğelerinin belgelerine bağlantılar.
+Adanmış SQL havuzunda desteklenen T-SQL dili öğelerinin belgelerine bağlantılar.
 
 ## <a name="core-elements"></a>Çekirdek öğeler
 
@@ -203,7 +203,7 @@ SYNAPSE SQL havuzunda desteklenen T-SQL dili öğelerinin belgelerine bağlantı
 * [BOŞLU](/sql/t-sql/functions/space-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [SQL_VARIANT_PROPERTY](/sql/t-sql/functions/sql-variant-property-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [SQRT](/sql/t-sql/functions/sqrt-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-* [SQUARE](/sql/t-sql/functions/square-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+* [KARE](/sql/t-sql/functions/square-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [STDSAPMA](/sql/t-sql/functions/stdev-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [IŞLEVINI](/sql/t-sql/functions/stdevp-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -290,4 +290,4 @@ SYNAPSE SQL havuzunda desteklenen T-SQL dili öğelerinin belgelerine bağlantı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için bkz. [SYNAPSE SQL havuzundaki T-SQL deyimleri](sql-data-warehouse-reference-tsql-statements.md)ve [SYNAPSE SQL havuzundaki sistem görünümleri](../sql/reference-tsql-system-views.md).
+Daha fazla başvuru bilgisi için bkz. [Özel SQL havuzundaki T-SQL deyimleri](sql-data-warehouse-reference-tsql-statements.md)ve [adanmış SQL havuzundaki sistem görünümleri](../sql/reference-tsql-system-views.md).

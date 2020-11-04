@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 08/04/2020
-ms.openlocfilehash: 97cadfb8f5004cfd2701335172d4416c64f05259
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e0b61c1ca6ae30044e4c9d4705bdce01eac1942
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907869"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323690"
 ---
 # <a name="module-k-means-clustering"></a>Modül: K-kümeleme anlamına gelir
 
@@ -22,7 +22,7 @@ Bu makalede, eğitilen bir kümeleme modeli oluşturmak için Azure Machine Lear
  
 K-anlamı en basit ve en *iyi bilinen öğrenme* algoritmalarından biridir. Algoritmayı çeşitli makine öğrenimi görevleri için kullanabilirsiniz, örneğin: 
 
-* [Olağan dışı veriler algılanıyor](https://msdn.microsoft.com/magazine/jj891054.aspx).
+* [Olağan dışı veriler algılanıyor](/archive/msdn-magazine/2013/february/data-clustering-detecting-abnormal-data-using-k-means-clustering).
 * Kümeleme metin belgeleri.
 * Diğer sınıflandırma veya regresyon yöntemlerini kullanmadan önce veri kümelerini çözümleme. 
 
@@ -58,46 +58,46 @@ Eğitim verilerini işlediğinde, K-Ortalamalar algoritması rastgele seçilmiş
   
 2.  Modelin nasıl eğitilme etmek istediğinizi belirtmek için, **eğitmen modunu oluştur** seçeneğini belirleyin.  
   
-    -   **Tek parametre**: kümeleme modelinde kullanmak istediğiniz tam parametreleri biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.  
+    -   **Tek parametre** : kümeleme modelinde kullanmak istediğiniz tam parametreleri biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.  
   
-3.  **Centroıds sayısı**için, algoritmanın başlamasını istediğiniz küme sayısını yazın.  
+3.  **Centroıds sayısı** için, algoritmanın başlamasını istediğiniz küme sayısını yazın.  
   
      Modelin tam olarak bu sayıda küme üretmesi garanti edilmez. Algoritma, bu sayıda veri noktasıyla başlar ve en iyi yapılandırmayı bulmak için yinelenir. [Sköğren kaynak koduna](https://github.com/scikit-learn/scikit-learn/blob/fd237278e/sklearn/cluster/_kmeans.py#L1069)başvurabilirsiniz.
   
 4.  Özellikler **başlatma** , ilk küme yapılandırmasını tanımlamak için kullanılan algoritmayı belirtmek için kullanılır.  
   
-    -   **Ilk N**: veri noktalarının bazı ilk sayısı, veri kümesinden seçilir ve ilk anlamı olarak kullanılır. 
+    -   **Ilk N** : veri noktalarının bazı ilk sayısı, veri kümesinden seçilir ve ilk anlamı olarak kullanılır. 
     
-         Bu yöntem, *Forgy yöntemi*olarak da adlandırılır.  
+         Bu yöntem, *Forgy yöntemi* olarak da adlandırılır.  
   
-    -   **Rastgele**: algoritma bir kümeye rastgele bir veri noktası koyar ve sonra kümenin Rastgele atanan noktalarının centroıd değeri olacak şekilde ilk ortalaması hesaplar. 
+    -   **Rastgele** : algoritma bir kümeye rastgele bir veri noktası koyar ve sonra kümenin Rastgele atanan noktalarının centroıd değeri olacak şekilde ilk ortalaması hesaplar. 
 
          Bu yöntem, *rastgele bölüm* yöntemi olarak da adlandırılır.  
   
-    -   **K-Ortalamalar + +**: Bu, kümeleri başlatmak için varsayılan yöntemdir.  
+    -   **K-Ortalamalar + +** : Bu, kümeleri başlatmak için varsayılan yöntemdir.  
   
          **K-ortalamalar + +** algoritması, standart K-Ortalamalar algoritması tarafından zayıf kümelemeyi önlemek Için David Arthur ve Sergei Vassilvıtskii tarafından 2007 ' de önerdi. **K-** ilk küme merkezlerini seçmek için farklı bir yöntem kullanarak standart K-Ortalamalar üzerinde + + artar.  
   
     
-5.  **Rastgele sayı çekirdek**için, isteğe bağlı olarak, küme başlatma için çekirdek olarak kullanılacak bir değer yazın. Bu değer, küme seçiminde önemli bir etkiye sahip olabilir.  
+5.  **Rastgele sayı çekirdek** için, isteğe bağlı olarak, küme başlatma için çekirdek olarak kullanılacak bir değer yazın. Bu değer, küme seçiminde önemli bir etkiye sahip olabilir.  
   
-6.  **Ölçüm**için, küme vektörlerine veya yeni veri noktalarıyla rastgele seçilmiş centroıd arasındaki mesafeyi ölçmek için kullanılacak işlevi seçin. Azure Machine Learning aşağıdaki küme uzaklık ölçümlerini destekler:  
+6.  **Ölçüm** için, küme vektörlerine veya yeni veri noktalarıyla rastgele seçilmiş centroıd arasındaki mesafeyi ölçmek için kullanılacak işlevi seçin. Azure Machine Learning aşağıdaki küme uzaklık ölçümlerini destekler:  
   
-    -   **Euclidean**: Euclidean, genellikle K-anlamı Kümelemesi için küme dağılım ölçüsü olarak kullanılır. Bu ölçüm, noktaları ve centroıd 'ler arasındaki ortalama mesafeyi en aza indirecek için tercih edilir.
+    -   **Euclidean** : Euclidean, genellikle K-anlamı Kümelemesi için küme dağılım ölçüsü olarak kullanılır. Bu ölçüm, noktaları ve centroıd 'ler arasındaki ortalama mesafeyi en aza indirecek için tercih edilir.
   
-7.  **Yinelemeler**için, algoritmanın, centroıd 'leri seçimini sonlandırmadan önce eğitim verilerini kaç kez yinelemelidir? yazın.  
+7.  **Yinelemeler** için, algoritmanın, centroıd 'leri seçimini sonlandırmadan önce eğitim verilerini kaç kez yinelemelidir? yazın.  
   
      Bu parametreyi, eğitim süresine göre doğruluğu dengelemek için ayarlayabilirsiniz.  
   
-8.  **Etiket Atama modu**için, veri kümesinde varsa, bir etiket sütununun nasıl işleneceğini belirten bir seçenek belirleyin.  
+8.  **Etiket Atama modu** için, veri kümesinde varsa, bir etiket sütununun nasıl işleneceğini belirten bir seçenek belirleyin.  
   
      K-kümeleme, denetimli bir makine öğrenimi yöntemi olduğu için Etiketler isteğe bağlıdır. Ancak, veri kümeniz zaten bir etiket sütunu içeriyorsa, kümelerin seçimine yol göstermek için bu değerleri kullanabilir veya değerlerin yok sayılmasını belirtebilirsiniz.  
   
-    -   **Etiket sütununu yoksay**: etiket sütunundaki değerler yok sayılır ve model oluşturulurken kullanılmaz.
+    -   **Etiket sütununu yoksay** : etiket sütunundaki değerler yok sayılır ve model oluşturulurken kullanılmaz.
   
-    -   **Eksik değerleri doldur**: Etiket sütun değerleri, kümeleri oluşturmaya yardımcı olacak özellikler olarak kullanılır. Herhangi bir satırda etiket eksikse, bu değer diğer özellikler kullanılarak belirlenir.  
+    -   **Eksik değerleri doldur** : Etiket sütun değerleri, kümeleri oluşturmaya yardımcı olacak özellikler olarak kullanılır. Herhangi bir satırda etiket eksikse, bu değer diğer özellikler kullanılarak belirlenir.  
   
-    -   **En yakın üzerine yaz**: Etiket sütun değerleri, geçerli centroıd 'ye en yakın noktanın etiketi kullanılarak tahmin edilen etiket değerleriyle değiştirilmiştir.  
+    -   **En yakın üzerine yaz** : Etiket sütun değerleri, geçerli centroıd 'ye en yakın noktanın etiketi kullanılarak tahmin edilen etiket değerleriyle değiştirilmiştir.  
 
 8.  Eğitim öncesi özellikleri normalleştirmek istiyorsanız **özellikleri Normalleştir** seçeneğini belirleyin.
   
@@ -127,7 +127,7 @@ Kaydedilen model, modeli kaydettiğiniz sırada eğitim verilerini temsil eder. 
 
 1. **Tren kümeleme modeli** modülüne sağ tıklayın.
 
-2. **Görselleştir**' i seçin.
+2. **Görselleştir** ' i seçin.
 
 ### <a name="tips-for-generating-the-best-clustering-model"></a>En iyi kümeleme modelini oluşturmaya yönelik ipuçları  
 
@@ -145,4 +145,4 @@ Genellikle, kümeleme modelleriyle, belirli bir yapılandırmanın yerel olarak 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın.

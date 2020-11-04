@@ -8,16 +8,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: e34fa4af08be898785acbc6f00aa735c1412ec47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff8ade938433e09c6b9ff9deffe64d8294d96b8c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897567"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325549"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Etiketleme projesindeki resimleri etiketleme 
 
-Proje yöneticiniz Azure Machine Learning [bir etiketleme projesi](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) oluşturduktan sonra etiketleme aracını (Genel Önizleme) kullanarak bir Machine Learning projesi için hızlı bir şekilde veri hazırlayabilir. Bu makalede şunları açıklanmaktadır:
+Proje yöneticiniz Azure Machine Learning [bir etiketleme projesi](./how-to-create-labeling-projects.md#create-a-labeling-project) oluşturduktan sonra etiketleme aracını (Genel Önizleme) kullanarak bir Machine Learning projesi için hızlı bir şekilde veri hazırlayabilir. Bu makalede şunları açıklanmaktadır:
 
 > [!div class="checklist"]
 > * Etiketleme projelerinize erişme
@@ -41,7 +41,7 @@ Proje yöneticiniz Azure Machine Learning [bir etiketleme projesi](https://docs.
 
 Veri etiketleme projeleri tablosunda, projeniz için **etiket bağlantısı** ' nı seçin.
 
-Projenize özel yönergeler görürsünüz. Bunlar, söz konusu verilerin türünü, kararlarınızı nasıl yapmanız gerektiğini ve diğer ilgili bilgileri açıklar. Bu bilgileri okuduktan sonra, sayfanın üst kısmında **Görevler**' i seçin.  Ya da sayfanın en altında **etiketlemeyi Başlat**' ı seçin.
+Projenize özel yönergeler görürsünüz. Bunlar, söz konusu verilerin türünü, kararlarınızı nasıl yapmanız gerektiğini ve diğer ilgili bilgileri açıklar. Bu bilgileri okuduktan sonra, sayfanın üst kısmında **Görevler** ' i seçin.  Ya da sayfanın en altında **etiketlemeyi Başlat** ' ı seçin.
 
 ## <a name="common-features-of-the-labeling-task"></a>Etiketleme görevinin ortak özellikleri
 
@@ -49,7 +49,7 @@ Tüm görüntü etiketleme görevlerinde, proje yöneticisi tarafından belirtil
 
 Görüntü sınıflandırma görevlerinde birden çok görüntüyü aynı anda görüntülemeyi seçebilirsiniz. Düzeni seçmek için görüntü alanının üzerindeki simgeleri kullanın. 
 
-Görüntülenecek tüm görüntüleri eşzamanlı olarak seçmek için **Tümünü Seç**' i kullanın. Tek tek görüntüleri seçmek için görüntünün sağ üst köşesindeki dairesel seçim düğmesini kullanın. Etiket uygulamak için en az bir görüntü seçmelisiniz. Birden çok görüntü seçerseniz, seçtiğiniz herhangi bir etiket seçili tüm görüntülere uygulanır.
+Görüntülenecek tüm görüntüleri eşzamanlı olarak seçmek için **Tümünü Seç** ' i kullanın. Tek tek görüntüleri seçmek için görüntünün sağ üst köşesindeki dairesel seçim düğmesini kullanın. Etiket uygulamak için en az bir görüntü seçmelisiniz. Birden çok görüntü seçerseniz, seçtiğiniz herhangi bir etiket seçili tüm görüntülere uygulanır.
 
 Burada iki-by iki düzen seçtik ve "Mammal" etiketini, ve Orca 'nın görüntülerine uygulamak üzeresiniz. Parça görüntüsü zaten "Cartilaginou balığı" olarak etiketlendi ve Iguana henüz etiketlendi.
 
@@ -66,7 +66,7 @@ Bir yandan veriler için Etiketler gönderdikten sonra, Azure sayfayı iş kuyru
 
 > [!IMPORTANT]
 > Yardımlı makine öğrenimi Şu anda genel önizlemededir.
-> Önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Makine öğrenimi algoritmaları tetiklenebilir. Bu algoritmalar projenizde etkinleştirilirse, aşağıdakileri görebilirsiniz:
 
@@ -80,9 +80,9 @@ Makine öğrenimi algoritmaları tetiklenebilir. Bu algoritmalar projenizde etki
 
 ## <a name="tag-images-for-multi-class-classification"></a>Çok sınıflı sınıflandırma için resimleri etiketleme
 
-Projeniz "Image Classification Multi-Class" türünde ise, tüm görüntüye tek bir etiket atarsınız. Yönergeleri istediğiniz zaman gözden geçirmek için, **yönergeler** sayfasına gidin ve **ayrıntılı yönergeleri görüntüle**' yi seçin.
+Projeniz "Image Classification Multi-Class" türünde ise, tüm görüntüye tek bir etiket atarsınız. Yönergeleri istediğiniz zaman gözden geçirmek için, **yönergeler** sayfasına gidin ve **ayrıntılı yönergeleri görüntüle** ' yi seçin.
 
-Bir resme etiket atadıktan sonra bir hata yaptık, bu hatayı çözebilirsiniz. Etiketi temizlemek için görüntünün altında görüntülenen etikette "**X**" işaretini seçin. Veya resmi seçip başka bir sınıf seçin. Yeni seçilen değer, daha önce uygulanan etiketin yerine geçecek.
+Bir resme etiket atadıktan sonra bir hata yaptık, bu hatayı çözebilirsiniz. Etiketi temizlemek için görüntünün altında görüntülenen etikette " **X** " işaretini seçin. Veya resmi seçip başka bir sınıf seçin. Yeni seçilen değer, daha önce uygulanan etiketin yerine geçecek.
 
 ## <a name="tag-images-for-multi-label-classification"></a>Çok etiketli sınıflandırma için resimleri etiketleme
 
@@ -96,7 +96,7 @@ Etiketlemek istediğiniz görüntüyü seçin ve ardından etiketi seçin. Etike
 
 ![Animasyon MultiLabel akışını gösterir](./media/how-to-label-images/multilabel.gif)
 
-Bir hata düzeltmek için "**X**" düğmesine tıklayarak tek bir etiketi temizleyin veya görüntüleri seçin ve ardından etiketi seçerek seçili tüm görüntülerden etiketi temizler. Bu senaryo burada gösterilmiştir. "Land" tıklanması, seçili iki görüntüden bu etiketi temizler.
+Bir hata düzeltmek için " **X** " düğmesine tıklayarak tek bir etiketi temizleyin veya görüntüleri seçin ve ardından etiketi seçerek seçili tüm görüntülerden etiketi temizler. Bu senaryo burada gösterilmiştir. "Land" tıklanması, seçili iki görüntüden bu etiketi temizler.
 
 ![Bir ekran görüntüsü birden çok seçimi gösterir](./media/how-to-label-images/multiple-deselection.png)
 
@@ -131,9 +131,8 @@ Bir görüntü için sınırlayıcı kutuları oluşturduktan sonra, çalışman
 
 Etiketli verilerin bir sayfasını gönderdiğinizde Azure, bir iş kuyruğundan sizin için etiketlendirilmiş yeni veri atar. Etiketli daha fazla veri yoksa, bunu portal giriş sayfasının bağlantısı ile birlikte gösteren bir ileti alırsınız.
 
-Etiketleme tamamlandığında, etiketleme portalının sağ üst köşesindeki adınızı seçin ve ardından **Oturumu Kapat**' ı seçin. Oturumu kapatma, sonunda Azure "sizin zaman aşımına uğrar" ve verilerinizi başka bir etiketleyici 'ye atacaktır.
+Etiketleme tamamlandığında, etiketleme portalının sağ üst köşesindeki adınızı seçin ve ardından **Oturumu Kapat** ' ı seçin. Oturumu kapatma, sonunda Azure "sizin zaman aşımına uğrar" ve verilerinizi başka bir etiketleyici 'ye atacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure 'da görüntü sınıflandırma modellerini eğitme](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml) hakkında bilgi edinin
-
+* [Azure 'da görüntü sınıflandırma modellerini eğitme](./tutorial-train-models-with-aml.md) hakkında bilgi edinin

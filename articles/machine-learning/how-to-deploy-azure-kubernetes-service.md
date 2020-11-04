@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: 50f8768aec12b8bda8d9d489462a8f61e8d83c18
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: b98d3ea69286fe7c23b6c2978b71699ba7eb0e00
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999182"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325199"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesine model dağıtma
 
@@ -31,20 +31,20 @@ Azure Kubernetes Service (AKS) üzerinde bir modeli Web hizmeti olarak dağıtma
 - __TLS sonlandırma__
 - GPU ve alan-programlanabilir kapı dizileri (FPGA) gibi __donanım hızlandırma__ seçenekleri
 
-Azure Kubernetes hizmetine dağıtırken, __çalışma alanınıza bağlı__bir aks kümesine dağıtırsınız. Bir AKS kümesini çalışma alanınıza bağlama hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmet kümesi oluşturma ve iliştirme](how-to-create-attach-kubernetes.md).
+Azure Kubernetes hizmetine dağıtırken, __çalışma alanınıza bağlı__ bir aks kümesine dağıtırsınız. Bir AKS kümesini çalışma alanınıza bağlama hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmet kümesi oluşturma ve iliştirme](how-to-create-attach-kubernetes.md).
 
 > [!IMPORTANT]
-> Web hizmetine dağıtım yapmadan önce yerel olarak hata ayıklamanızı öneririz. Daha fazla bilgi için bkz. [yerel olarak hata ayıklama](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)
+> Web hizmetine dağıtım yapmadan önce yerel olarak hata ayıklamanızı öneririz. Daha fazla bilgi için bkz. [yerel olarak hata ayıklama](./how-to-troubleshoot-deployment.md#debug-locally)
 >
 > Azure Machine Learning - [Yerel Not Defterine Dağıtma](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local) konusuna da bakabilirsiniz
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
 - Bir Machine Learning modeli, çalışma alanınıza kaydedildi. Kayıtlı bir modeliniz yoksa, bkz. [modellerin nasıl ve nereye dağıtılacağı](how-to-deploy-and-where.md).
 
-- [Machine Learning hizmeti Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)veya [Azure Machine Learning Visual Studio Code uzantısı](tutorial-setup-vscode-extension.md).
+- [Machine Learning hizmeti Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)veya [Azure Machine Learning Visual Studio Code uzantısı](tutorial-setup-vscode-extension.md).
 
 - Bu makaledeki __Python__ kod parçacıkları aşağıdaki değişkenlerin ayarlandığı varsayılır:
 
@@ -71,8 +71,8 @@ Azure Machine Learning, "dağıtım" kullanılabilir hale getirme ve proje kayna
 1. Dockerfile 'ı işlem düğümüne derleme veya indirme (Kubernetes ile Ilgilidir)
     1. Sistem bir karma değerini hesaplar: 
         - Temel görüntü 
-        - Özel Docker adımları (bkz. [özel bir Docker temel görüntüsü kullanarak model dağıtma](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image))
-        - Conda tanımı YAML (bkz. [oluşturma & yazılım ortamlarını Azure Machine Learning kullanma](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments))
+        - Özel Docker adımları (bkz. [özel bir Docker temel görüntüsü kullanarak model dağıtma](./how-to-deploy-custom-docker-image.md))
+        - Conda tanımı YAML (bkz. [oluşturma & yazılım ortamlarını Azure Machine Learning kullanma](./how-to-use-environments.md))
     1. Sistem bu karmayı, çalışma alanının aramasında anahtar olarak kullanır Azure Container Registry (ACR)
     1. Bulunmazsa, genel ACR 'de bir eşleşme arar
     1. Bulunamadıysanız, sistem yeni bir görüntü oluşturur (önbelleğe alınır ve çalışma alanına gönderilir ACR)
@@ -87,7 +87,7 @@ Azure Machine Learning, "dağıtım" kullanılabilir hale getirme ve proje kayna
 Gelen çıkarım isteklerini dağıtılan hizmetlere yönlendiren ön uç bileşeni (azureml-Fe) gerektiği şekilde otomatik olarak ölçeklendirilir. Azureml-Fe ölçeklendirme, AKS kümesi amacını ve boyutunu (düğüm sayısı) temel alır. Küme amacı ve düğümleri [BIR AKS kümesi oluşturduğunuzda veya](how-to-create-attach-kubernetes.md)eklediğinizde yapılandırılır. Her küme için birden çok sayıda pods üzerinde çalışan bir azureml-FE hizmeti vardır.
 
 > [!IMPORTANT]
-> __Geliştirme-test__olarak yapılandırılmış bir küme kullanılırken, kendi kendine **devre dışı bırakılır**.
+> __Geliştirme-test__ olarak yapılandırılmış bir küme kullanılırken, kendi kendine **devre dışı bırakılır**.
 
 Azureml-Fe, daha fazla çekirdekler kullanmak için hem yukarı (dikey) hem de (yatay olarak) daha fazla yer kullanır. Ölçeği artırma kararı verirken, gelen çıkarım isteklerini yönlendirmek için gereken süre kullanılır. Bu süre eşiği aşarsa, bir ölçek oluşur. Gelen istekleri yönlendirme süresi eşiği aşmaya devam ederse, bir genişleme meydana gelir.
 
@@ -95,7 +95,7 @@ Azureml-Fe, daha fazla çekirdekler kullanmak için hem yukarı (dikey) hem de (
 
 ## <a name="deploy-to-aks"></a>AKS’ye dağıtma
 
-Azure Kubernetes hizmetine bir model dağıtmak için, gereken işlem kaynaklarını açıklayan bir __dağıtım yapılandırması__ oluşturun. Örneğin, çekirdek ve bellek sayısı. Ayrıca, modeli ve Web hizmetini barındırmak için gereken ortamı açıklayan bir __çıkarım yapılandırmasına__ihtiyacınız vardır. Çıkarım yapılandırmasını oluşturma hakkında daha fazla bilgi için bkz. [modellerin nasıl ve ne şekilde dağıtılacağı](how-to-deploy-and-where.md).
+Azure Kubernetes hizmetine bir model dağıtmak için, gereken işlem kaynaklarını açıklayan bir __dağıtım yapılandırması__ oluşturun. Örneğin, çekirdek ve bellek sayısı. Ayrıca, modeli ve Web hizmetini barındırmak için gereken ortamı açıklayan bir __çıkarım yapılandırmasına__ ihtiyacınız vardır. Çıkarım yapılandırmasını oluşturma hakkında daha fazla bilgi için bkz. [modellerin nasıl ve ne şekilde dağıtılacağı](how-to-deploy-and-where.md).
 
 > [!NOTE]
 > Dağıtılacak model sayısı, dağıtım başına 1.000 modellerle sınırlıdır (kapsayıcı başına).
@@ -121,10 +121,10 @@ print(service.get_logs())
 
 Bu örnekte kullanılan sınıflar, Yöntemler ve parametreler hakkında daha fazla bilgi için, aşağıdaki başvuru belgelerine bakın:
 
-* [AksCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute?view=azure-ml-py&preserve-view=true)
-* [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py&preserve-view=true)
-* [Model. deploy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
-* [Webservice.wait_for_deployment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truewait-for-deployment-show-output-false-)
+* [AksCompute](/python/api/azureml-core/azureml.core.compute.aks.akscompute?preserve-view=true&view=azure-ml-py)
+* [AksWebservice.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?preserve-view=true&view=azure-ml-py)
+* [Model. deploy](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
+* [Webservice.wait_for_deployment](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truewait-for-deployment-show-output-false-)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -136,7 +136,7 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aks-deploy-config.md)]
 
-Daha fazla bilgi için, [az ml model dağıtım](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-model-deploy) başvurusuna bakın.
+Daha fazla bilgi için, [az ml model dağıtım](/cli/azure/ext/azure-cli-ml/ml/model?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) başvurusuna bakın.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -152,9 +152,9 @@ VS Code kullanımı hakkında bilgi için bkz. [vs Code uzantısı aracılığı
 Azure ML model dağıtımları için otomatik ölçeklendirmeyi işleyen bileşen, bir akıllı istek yönlendiricisi olan azureml-Fe ' dir. Tüm çıkarım istekleri üzerinden gezindiğinden, dağıtılan modelleri otomatik olarak ölçeklendirmek için gerekli veriler vardır.
 
 > [!IMPORTANT]
-> * **Model dağıtımları Için Kubernetes yatay Pod otomatik Scaler (HPA)**' i etkinleştirmeyin. Bunun yapılması, iki otomatik ölçeklendirme bileşeninin birbirleriyle yarışmasına neden olur. Azureml-Fe, Azure ML tarafından dağıtılan modelleri otomatik ölçeklendirmek üzere tasarlanmıştır. burada HPA, CPU kullanımı veya özel ölçüm yapılandırması gibi genel bir ölçüden model kullanımını tahmin etmek veya yaklaşık olarak tahmin etmek zorunda olacaktır.
+> * **Model dağıtımları Için Kubernetes yatay Pod otomatik Scaler (HPA)** ' i etkinleştirmeyin. Bunun yapılması, iki otomatik ölçeklendirme bileşeninin birbirleriyle yarışmasına neden olur. Azureml-Fe, Azure ML tarafından dağıtılan modelleri otomatik ölçeklendirmek üzere tasarlanmıştır. burada HPA, CPU kullanımı veya özel ölçüm yapılandırması gibi genel bir ölçüden model kullanımını tahmin etmek veya yaklaşık olarak tahmin etmek zorunda olacaktır.
 > 
-> * **Azureml-Fe, BIR AKS kümesindeki düğümlerin sayısını ölçeklendirmez**çünkü bu, beklenmeyen maliyet artışına yol açabilir. Bunun yerine, fiziksel küme sınırları içindeki **modelin çoğaltma sayısını ölçeklendirir** . Küme içindeki düğüm sayısını ölçeklendirmeniz gerekiyorsa, kümeyi el ile ölçeklendirebilir veya [aks kümesi otomatik Scaler 'ı yapılandırabilirsiniz](/azure/aks/cluster-autoscaler).
+> * **Azureml-Fe, BIR AKS kümesindeki düğümlerin sayısını ölçeklendirmez** çünkü bu, beklenmeyen maliyet artışına yol açabilir. Bunun yerine, fiziksel küme sınırları içindeki **modelin çoğaltma sayısını ölçeklendirir** . Küme içindeki düğüm sayısını ölçeklendirmeniz gerekiyorsa, kümeyi el ile ölçeklendirebilir veya [aks kümesi otomatik Scaler 'ı yapılandırabilirsiniz](../aks/cluster-autoscaler.md).
 
 Otomatik ölçeklendirme `autoscale_target_utilization` ,, `autoscale_min_replicas` ve `autoscale_max_replicas` aks Web hizmeti için ayarlanarak denetlenebilir. Aşağıdaki örnek, otomatik ölçeklendirmeyi nasıl etkinleştireceğinizi göstermektedir:
 
@@ -188,20 +188,20 @@ concurrentRequests = targetRps * reqTime / targetUtilization
 replicas = ceil(concurrentRequests / maxReqPerContainer)
 ```
 
-, Ve ayarı hakkında daha fazla bilgi için, `autoscale_target_utilization` `autoscale_max_replicas` `autoscale_min_replicas` bkz. [akswebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py&preserve-view=true) modül başvurusu.
+, Ve ayarı hakkında daha fazla bilgi için, `autoscale_target_utilization` `autoscale_max_replicas` `autoscale_min_replicas` bkz. [akswebservice](/python/api/azureml-core/azureml.core.webservice.akswebservice?preserve-view=true&view=azure-ml-py) modül başvurusu.
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Denetimli dağıtımı kullanarak AKS 'e model dağıtma (Önizleme)
 
 Uç noktaları kullanarak, denetimli bir biçimde model sürümlerini çözümleyin ve yükseltin. Tek bir uç noktanın arkasında altı adede kadar sürüm dağıtabilirsiniz. Uç noktalar aşağıdaki özellikleri sağlar:
 
-* Her bir __uç noktaya gönderilen Puanlama trafiği yüzdesini__yapılandırın. Örneğin, trafiğin %20 ' sini ' test ' ve %80 ' i ' üretim ' noktasına yönlendirin.
+* Her bir __uç noktaya gönderilen Puanlama trafiği yüzdesini__ yapılandırın. Örneğin, trafiğin %20 ' sini ' test ' ve %80 ' i ' üretim ' noktasına yönlendirin.
 
     > [!NOTE]
     > Trafiğin %100 ' i için hesap yapmazsanız, kalan tüm yüzde __varsayılan__ uç nokta sürümüne yönlendirilir. Örneğin, ' test ' uç nokta sürümünü trafiğin %10 ' u ve %30 ' u için ' üretim ' olarak yapılandırırsanız, kalan %60, varsayılan uç nokta sürümüne gönderilir.
     >
     > Oluşturulan ilk uç nokta sürümü otomatik olarak varsayılan olarak yapılandırılır. Bu ayarı, `is_default=True` bir uç nokta sürümü oluştururken veya güncelleştirirken değiştirebilirsiniz.
      
-* Bir uç nokta sürümünü __Denetim__ veya __işleme__olarak etiketleyin. Örneğin, geçerli üretim uç noktası sürümü denetim olabilir, ancak olası yeni modeller bir işleme sürümü olarak dağıtılır. İşlem sürümlerinin performansını değerlendirdikten sonra, bir çıktı geçerli denetimi gerçekleştirdiğinde, yeni üretime/denetime yükseltilebilir.
+* Bir uç nokta sürümünü __Denetim__ veya __işleme__ olarak etiketleyin. Örneğin, geçerli üretim uç noktası sürümü denetim olabilir, ancak olası yeni modeller bir işleme sürümü olarak dağıtılır. İşlem sürümlerinin performansını değerlendirdikten sonra, bir çıktı geçerli denetimi gerçekleştirdiğinde, yeni üretime/denetime yükseltilebilir.
 
     > [!NOTE]
     > Yalnızca __bir__ denetiminiz olabilir. Birden çok anlaşma olabilir.
@@ -302,7 +302,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Bir anahtarı yeniden oluşturmanız gerekiyorsa, şunu kullanın [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true)
+> Bir anahtarı yeniden oluşturmanız gerekiyorsa, şunu kullanın [`service.regen_key`](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py)
 
 ### <a name="authentication-with-tokens"></a>Belirteçlerle kimlik doğrulama
 
@@ -324,12 +324,12 @@ print(token)
 >
 > Microsoft, Azure Machine Learning çalışma alanınızı Azure Kubernetes hizmet kümeniz ile aynı bölgede oluşturmanızı kesinlikle önerir. Bir belirteçle kimlik doğrulaması yapmak için Web hizmeti, Azure Machine Learning çalışma alanınızın oluşturulduğu bölgeye bir çağrı yapar. Çalışma alanınızın bölgesi kullanılamıyorsa, kümeniz çalışma alanınızdan farklı bir bölgedeyse, Web hizmetiniz için de bir belirteç getirimeyeceksiniz. Bu, çalışma alanınızın bölgesi yeniden kullanılabilir olana kadar belirteç tabanlı kimlik doğrulamanın kullanılamamasına neden olur. Ayrıca, kümenizin bölgesi ve çalışma alanınızın bölgesi arasındaki mesafe ne kadar fazlaysa bir belirteci getirmek için bu daha uzun sürer.
 >
-> Bir belirteci almak için Azure Machine Learning SDK veya [az ml Service Get-Access-Token](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-service-get-access-token) komutunu kullanmanız gerekir.
+> Bir belirteci almak için Azure Machine Learning SDK veya [az ml Service Get-Access-Token](/cli/azure/ext/azure-cli-ml/ml/service?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-get-access-token) komutunu kullanmanız gerekir.
 
 
 ### <a name="vulnerability-scanning"></a>Güvenlik açığı taraması
 
-Azure Güvenlik Merkezi, hibrit bulut iş yükleri arasında birleşik güvenlik yönetimi ve gelişmiş tehdit koruması sağlar. Azure Güvenlik Merkezi 'nin kaynaklarınızı tarayabilmesi ve önerilerini izlemesi gerekir. Daha fazla bilgi için bkz. [Güvenlik Merkezi Ile Azure Kubernetes Hizmetleri Tümleştirmesi](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration).
+Azure Güvenlik Merkezi, hibrit bulut iş yükleri arasında birleşik güvenlik yönetimi ve gelişmiş tehdit koruması sağlar. Azure Güvenlik Merkezi 'nin kaynaklarınızı tarayabilmesi ve önerilerini izlemesi gerekir. Daha fazla bilgi için bkz. [Güvenlik Merkezi Ile Azure Kubernetes Hizmetleri Tümleştirmesi](../security-center/defender-for-kubernetes-introduction.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

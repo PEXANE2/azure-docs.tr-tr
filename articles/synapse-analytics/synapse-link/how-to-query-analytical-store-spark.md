@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 07342cb31f1c44273f98a97b018620538f86c17f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2e06f0918ce23beded7475f644e7cc6019facacc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91287738"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322586"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link-preview"></a>Azure SYNAPSE link 'te Apache Spark kullanarak Azure Cosmos DB ile etkileşim kurma (Önizleme)
 
@@ -209,7 +209,7 @@ Bu örnekte, Synpade Apache Spark çalışma alanlarında Spark Not defterleri k
     ]
 }
 ```
-Uzaktan Spark iş tanımlarını bir Synapse Spark havuzuna göndermek istiyorsanız, bu [öğreticiyi](../spark/apache-spark-job-definitions.md)izleyerek dış kitaplıklara nasıl başvurulacağını öğrenebilirsiniz.
+Uzak Spark iş tanımlarını sunucusuz bir Apache Spark havuzuna göndermek istiyorsanız, bu [öğreticiyi](../spark/apache-spark-job-definitions.md)izleyerek dış kitaplıklara nasıl başvurulacağını öğrenebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

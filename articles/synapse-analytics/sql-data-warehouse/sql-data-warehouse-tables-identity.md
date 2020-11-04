@@ -1,6 +1,6 @@
 ---
 title: Vekil anahtarlar oluşturmak için KIMLIK kullanma
-description: SYNAPSE SQL havuzundaki tablolarda vekil anahtarlar oluşturmak için KIMLIK özelliğini kullanma önerileri ve örnekleri.
+description: Adanmış SQL havuzundaki tablolarda yedek anahtarlar oluşturmak için KIMLIK özelliğinin kullanılmasına yönelik öneriler ve örnekler.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8b4e9aa73a959bcaac18df38f975331ecbf6b034
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 96e81b3d7781f1c6f7bf5743a083e9640dd6c831
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876014"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323595"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda vekil anahtarlar oluşturmak için KIMLIK kullanma
+# <a name="using-identity-to-create-surrogate-keys-using-dedicated-sql-pool-in-azuresynapse-analytics"></a>AzureSynapse Analytics 'te adanmış SQL havuzu kullanarak yedek anahtarlar oluşturmak için KIMLIK kullanma
 
-Bu makalede, SYNAPSE SQL havuzundaki tablolarda vekil anahtarlar oluşturmak için KIMLIK özelliğini kullanmaya yönelik öneriler ve örnekler bulacaksınız.
+Bu makalede, adanmış SQL havuzundaki tablolarda vekil anahtarlar oluşturmak için KIMLIK özelliğini kullanmaya yönelik öneriler ve örnekler bulacaksınız.
 
 ## <a name="what-is-a-surrogate-key"></a>Vekil anahtar nedir?
 
@@ -31,7 +31,7 @@ Tablodaki bir vekil anahtar, her satır için benzersiz bir tanımlayıcıya sah
 
 ## <a name="creating-a-table-with-an-identity-column"></a>KIMLIK sütunuyla tablo oluşturma
 
-IDENTITY özelliği, yük performansını etkilemeden SYNAPSE SQL havuzundaki tüm dağıtımların ölçeğini genişletmek için tasarlanmıştır. Bu nedenle, KIMLIK uygulanması, bu hedeflere ulaşılmaya yönelik olarak tasarlanmıştır.
+IDENTITY özelliği, yük performansını etkilemeden adanmış SQL havuzundaki tüm dağıtımların ölçeğini genişletmek için tasarlanmıştır. Bu nedenle, KIMLIK uygulanması, bu hedeflere ulaşılmaya yönelik olarak tasarlanmıştır.
 
 Aşağıdaki ifadeye benzer bir sözdizimi kullanarak tabloyu ilk oluşturduğunuzda, KIMLIK özelliğine sahip olarak bir tablo tanımlayabilirsiniz:
 
@@ -53,7 +53,7 @@ Bu bölümün geri kalanında, bunları daha fazla anlamanıza yardımcı olmak 
 
 ### <a name="allocation-of-values"></a>Değerlerin ayrılması
 
-IDENTITY özelliği, veri ambarının dağıtılmış mimarisi nedeniyle vekil değerlerinin ayrıldığı sırayı garanti etmez. IDENTITY özelliği, yük performansını etkilemeden SYNAPSE SQL havuzundaki tüm dağıtımların ölçeğini genişletmek için tasarlanmıştır. 
+IDENTITY özelliği, veri ambarının dağıtılmış mimarisi nedeniyle vekil değerlerinin ayrıldığı sırayı garanti etmez. IDENTITY özelliği, yük performansını etkilemeden adanmış SQL havuzundaki tüm dağıtımların ölçeğini genişletmek için tasarlanmıştır. 
 
 Aşağıdaki örnek bir çizimde verilmiştir:
 
@@ -103,7 +103,7 @@ SELECT (CTAS) olarak CREATE TABLE, SELECT için belgelenen aynı SQL Server davr
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Bir KIMLIK sütununa açıkça değer ekleme
 
-SYNAPSE SQL havuzu `SET IDENTITY_INSERT <your table> ON|OFF` sözdizimini destekler. KIMLIK sütununa açıkça değer eklemek için bu sözdizimini kullanabilirsiniz.
+Adanmış SQL havuzu `SET IDENTITY_INSERT <your table> ON|OFF` sözdizimini destekler. KIMLIK sütununa açıkça değer eklemek için bu sözdizimini kullanabilirsiniz.
 
 Birçok veri modu, boyutları içindeki belirli satırlar için önceden tanımlanmış negatif değerler kullanmak gibidir. Örnek,-1 veya "bilinmeyen üye" satırıdır.
 
@@ -164,7 +164,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > `CREATE TABLE AS SELECT`Kimlik sütunu olan bir tabloya veri yüklerken şu anda kullanılamaz.
 >
 
-Verileri yükleme hakkında daha fazla bilgi için bkz. [SYNAPSE SQL havuzu Için ayıklama, yükleme ve dönüştürme (ELT) tasarlama](design-elt-data-loading.md) ve  [en iyi uygulamalar yükleme](guidance-for-loading-data.md).
+Verileri yükleme hakkında daha fazla bilgi için bkz. [Özel SQL havuzu Için ayıklama, yükleme ve dönüştürme (ELT) tasarlama](design-elt-data-loading.md) ve  [en iyi uygulamalar yükleme](guidance-for-loading-data.md).
 
 ## <a name="system-views"></a>Sistem görünümleri
 
@@ -198,7 +198,7 @@ IDENTITY özelliği kullanılamaz:
 - Sütun aynı zamanda dağıtım anahtarı olduğunda
 - Tablo bir dış tablo olduğunda
 
-Aşağıdaki ilgili işlevler SYNAPSE SQL havuzunda desteklenmez:
+Aşağıdaki ilgili işlevler adanmış SQL havuzunda desteklenmez:
 
 - [IDENTITY ()](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

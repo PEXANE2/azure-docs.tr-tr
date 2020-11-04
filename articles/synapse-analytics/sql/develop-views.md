@@ -1,6 +1,6 @@
 ---
-title: SYNAPSE SQL kullanarak T-SQL görünümleri
-description: T-SQL görünümlerini kullanma ve SYNAPSE SQL ile çözüm geliştirme ipuçları.
+title: SQL havuzlarını kullanan T-SQL görünümleri
+description: T-SQL görünümlerini kullanma ve Azure SYNAPSE Analytics 'te özel SQL havuzu ve sunucusuz SQL Havuzu (Önizleme) ile çözümler geliştirme ipuçları.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,15 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: fafa0c2e1b02cc49bfb852ed7770b0927b0e9334
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e416974d1326415e9a459e39d7bdea8e3fd8a84c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90032733"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323806"
 ---
-# <a name="t-sql-views-using-synapse-sql"></a>SYNAPSE SQL kullanarak T-SQL görünümleri
-Bu makalede T-SQL görünümlerini kullanma ve SYNAPSE SQL ile çözüm geliştirme hakkında ipuçları bulacaksınız. 
+# <a name="t-sql-views-with-dedicated-sql-pool-and-serverless-sql-pool-preview--in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu ve sunucusuz SQL Havuzu (Önizleme) içeren T-SQL görünümleri
+
+Bu makalede, T-SQL görünümlerini kullanma ve Azure SYNAPSE Analytics 'te adanmış SQL havuzu ve sunucusuz SQL Havuzu (Önizleme) ile çözümler geliştirme hakkında ipuçları bulacaksınız.
 
 ## <a name="why-use-views"></a>Görünümleri neden kullanılmalıdır?
 
@@ -26,12 +27,7 @@ Görünümler, çözümünüzün kalitesini artırmak için çeşitli şekillerd
 ### <a name="sql-pool---create-view"></a>SQL havuzu-görünüm oluştur
 
 > [!NOTE]
-> **SQL havuzu**: oluşturma görünümü sözdizimi Bu makalede ele alınmıyor. Daha fazla bilgi için bkz. [create VIEW](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) documentation.
-
-### <a name="sql-on-demand-preview---create-view"></a>İsteğe bağlı SQL (Önizleme)-görünüm oluştur
-
-> [!NOTE]
-> **İsteğe bağlı SQL**: oluşturma görünümü sözdizimi Bu makalede ele alınmıyor. Daha fazla bilgi için bkz. [create VIEW](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) documentation.
+> OLUŞTURMA görünümü sözdizimi Bu makalede ele alınmıyor. Daha fazla bilgi için bkz. [create VIEW](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) documentation.
 
 ## <a name="architectural-abstraction"></a>Mimari soyutlama
 
@@ -54,7 +50,6 @@ FROM   dbo.DimDate_stg AS stg
 
 RENAME OBJECT DimDate TO DimDate_Old;
 RENAME OBJECT DimDate_New TO DimDate;
-
 ```
 
 Bu yaklaşımda, tabloların bir kullanıcının görünümünden görüntülenen ve görünmeyen tabloların oluşmasına neden olabileceğini ve "tablo yok" hata iletileri istemlerini aklınızda bulundurun. Görünümler, temel alınan nesneler yeniden adlandırıldığında kullanıcılara tutarlı bir sunum katmanı sağlamak için kullanılabilir.

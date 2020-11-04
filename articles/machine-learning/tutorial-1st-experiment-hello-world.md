@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: afc851be08e6708efc0138dc45931cda147c67c1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 7bee7bede0219f41d9d5e56214a6dc1b94977cb5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895894"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322742"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Öğretici: "Hello World!" Çalıştır Python betiği (Bölüm 2/4)
 
@@ -99,7 +99,7 @@ Denetim betiğinin nasıl çalıştığına ilişkin bir açıklama aşağıda v
       `ws = Workspace.from_config()`
    :::column-end:::
    :::column span="2":::
-      [Çalışma alanı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) Azure Machine Learning çalışma alanınıza bağlanarak Azure Machine Learning kaynaklarınızla iletişim kurabilirsiniz.
+      [Çalışma alanı](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) Azure Machine Learning çalışma alanınıza bağlanarak Azure Machine Learning kaynaklarınızla iletişim kurabilirsiniz.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -107,7 +107,7 @@ Denetim betiğinin nasıl çalıştığına ilişkin bir açıklama aşağıda v
       `experiment =  Experiment( ... )`
    :::column-end:::
    :::column span="2":::
-      [Deneme](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true) , tek bir ad altında birden çok çalıştırma düzenlemek için basit bir yol sağlar. Daha sonra, denemeleri 'ın onlarca çalışma arasında ölçümleri karşılaştırmayı nasıl kolaylaştıradiğini görebilirsiniz.
+      [Deneme](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py) , tek bir ad altında birden çok çalıştırma düzenlemek için basit bir yol sağlar. Daha sonra, denemeleri 'ın onlarca çalışma arasında ölçümleri karşılaştırmayı nasıl kolaylaştıradiğini görebilirsiniz.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -115,7 +115,7 @@ Denetim betiğinin nasıl çalıştığına ilişkin bir açıklama aşağıda v
       `config = ScriptRunConfig( ... )` 
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) kodunuzu sarmalar `hello.py` ve çalışma alanınıza geçirir. Adından da anlaşılacağı gibi, bu sınıfı kullanarak _betiğinizi_ Azure Machine Learning ' de nasıl _çalıştırmak_ istediğinizi _yapılandırabilirsiniz_ . Ayrıca, betiğin çalışacağı işlem hedefini de belirtir. Bu kodda, hedef, [Kurulum öğreticisinde](tutorial-1st-experiment-sdk-setup-local.md)oluşturduğunuz işlem kümesidir.
+      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) kodunuzu sarmalar `hello.py` ve çalışma alanınıza geçirir. Adından da anlaşılacağı gibi, bu sınıfı kullanarak _betiğinizi_ Azure Machine Learning ' de nasıl _çalıştırmak_ istediğinizi _yapılandırabilirsiniz_ . Ayrıca, betiğin çalışacağı işlem hedefini de belirtir. Bu kodda, hedef, [Kurulum öğreticisinde](tutorial-1st-experiment-sdk-setup-local.md)oluşturduğunuz işlem kümesidir.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -123,7 +123,7 @@ Denetim betiğinin nasıl çalıştığına ilişkin bir açıklama aşağıda v
       `run = experiment.submit(config)`
    :::column-end:::
    :::column span="2":::
-       Betiğinizi gönderir. Bu gönderim bir [çalıştırma](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true)olarak adlandırılır. Bir çalıştırma, kodunuzun tek bir yürütmesini kapsüller. Betik ilerlemesini izlemek için bir çalıştırma kullanın, çıktıyı yakalayın, sonuçları çözümleyin, ölçümleri görselleştirin ve daha fazlasını yapın.
+       Betiğinizi gönderir. Bu gönderim bir [çalıştırma](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)olarak adlandırılır. Bir çalıştırma, kodunuzun tek bir yürütmesini kapsüller. Betik ilerlemesini izlemek için bir çalıştırma kullanın, çıktıyı yakalayın, sonuçları çözümleyin, ölçümleri görselleştirin ve daha fazlasını yapın.
    :::column-end:::
 :::row-end:::
 :::row:::

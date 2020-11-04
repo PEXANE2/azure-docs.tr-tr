@@ -1,6 +1,6 @@
 ---
 title: Dağıtılmış tablolar Tasarım Kılavuzu
-description: SYNAPSE SQL havuzunda karma olarak dağıtılan ve hepsini bir kez deneme dağıtılmış tablolar tasarlamaya yönelik öneriler.
+description: Azure SYNAPSE Analytics 'te adanmış SQL havuzu kullanarak karma dağıtılan ve hepsini bir kez deneme için dağıtılan tabloları tasarlamaya yönelik öneriler.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 10d37dd5fd9703246913959b9eeec3e1fbc2e913
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a3715abdebce319979d867d12764a22b4ed16c35
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487016"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323617"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>Synapse SQL havuzunda dağıtılmış tablo tasarlama yardımı
+# <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu kullanarak dağıtılmış tablo tasarlama Kılavuzu
 
-SYNAPSE SQL havuzlarında karma olarak dağıtılan ve hepsini bir kez deneme dağıtılmış tablolar tasarlamaya yönelik öneriler.
+Adanmış SQL havuzlarında karma olarak dağıtılan ve hepsini bir kez deneme dağıtılmış tablolar tasarlamaya yönelik öneriler.
 
-Bu makalede, SYNAPSE SQL 'deki veri dağıtımı ve veri taşıma kavramlarıyla ilgili bilgi sahibi olduğunuz varsayılır.  Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics mimarisi](massively-parallel-processing-mpp-architecture.md).
+Bu makalede adanmış SQL havuzundaki veri dağıtımı ve veri taşıma kavramlarıyla ilgili bilgi sahibi olduğunuz varsayılır.  Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics mimarisi](massively-parallel-processing-mpp-architecture.md).
 
 ## <a name="what-is-a-distributed-table"></a>Dağıtılmış tablo nedir?
 
@@ -36,7 +36,7 @@ Tablo tasarımının bir parçası olarak, verileriniz ve verilerin nasıl sorgu
 
 - Tablo ne kadar büyük?
 - Tablo ne sıklıkta yenilenir?
-- SYNAPSE SQL havuzunda olgu ve boyut tabloları var mı?
+- Özel bir SQL havuzunda olgu ve boyut tabloları var mı?
 
 ### <a name="hash-distributed"></a>Karma dağıtıldı
 
@@ -44,7 +44,7 @@ Karma olarak dağıtılan bir tablo, her bir satırı bir [dağıtıma](massivel
 
 ![Dağıtılmış tablo](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "Dağıtılmış tablo")  
 
-Özdeş değerler her zaman aynı dağıtıma karma olduğundan, veri ambarı satır konumlarına yönelik yerleşik bilgiye sahiptir. SYNAPSE SQL havuzunda bu bilgi, sorgu performansını artıran sorgular sırasında veri hareketini en aza indirmek için kullanılır.
+Özdeş değerler her zaman aynı dağıtıma karma olduğundan, veri ambarı satır konumlarına yönelik yerleşik bilgiye sahiptir. Adanmış SQL havuzunda bu bilgi, sorgu performansını artıran sorgular sırasında veri hareketini en aza indirmek için kullanılır.
 
 Karma Dağıtılmış tablolar, bir yıldız şemasında büyük olgu tabloları için iyi çalışır. Bunlar çok fazla sayıda satıra sahip olabilir ve yine de yüksek performans elde edebilir. Kuşkusuz, dağıtılmış sistemin sağlamak üzere tasarlandığı performansı almanıza yardımcı olacak bazı tasarım konuları vardır. İyi bir dağıtım sütunu seçmek, bu makalede açıklanan bir noktadır.
 
@@ -113,7 +113,7 @@ Paralel işlemeyi dengelemek için şu şekilde bir dağıtım sütunu seçin:
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>Veri hareketini en aza indiren bir dağıtım sütunu seçin
 
-Doğru sorgu sonucu sorgularının elde etmek için verileri bir Işlem düğümünden diğerine taşıyabilirler. Veri taşıma genellikle sorguları dağıtılmış tablolar üzerinde birleştirmeler ve toplamalar olduğunda oluşur. Veri hareketini en aza indirmeye yardımcı olacak bir dağıtım sütunu seçmek, SYNAPSE SQL havuzunuzun performansını iyileştirmeye yönelik en önemli stratejilerden biridir.
+Doğru sorgu sonucu sorgularının elde etmek için verileri bir Işlem düğümünden diğerine taşıyabilirler. Veri taşıma genellikle sorguları dağıtılmış tablolar üzerinde birleştirmeler ve toplamalar olduğunda oluşur. Veri hareketini en aza indirmeye yardımcı olacak bir dağıtım sütunu seçmek, adanmış SQL havuzunuzun performansını iyileştirmeye yönelik en önemli stratejilerden biridir.
 
 Veri hareketini en aza indirmek için şu şekilde bir dağıtım sütunu seçin:
 
@@ -225,5 +225,5 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 Dağıtılmış bir tablo oluşturmak için aşağıdaki deyimlerden birini kullanın:
 
-- [CREATE TABLE (SYNAPSE SQL havuzu)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [SELECT (SYNAPSE SQL Pool) olarak CREATE TABLE](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE (adanmış SQL havuzu)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [SELECT (adanmış SQL havuzu) olarak CREATE TABLE](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

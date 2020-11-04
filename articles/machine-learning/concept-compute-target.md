@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 18f9af0198c7a89b607630c686fbf8dafdd01a50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72cdfe2ebe79abb9649ac497a6ecddda8918b951
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841976"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322296"
 ---
-# <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning işlem hedefleri nelerdir?
+# <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning'deki işlem hedefleri nelerdir?
 
 *İşlem hedefi* , eğitim betiğinizi çalıştırdığınız veya hizmet dağıtımınızı barındırabileceğiniz, belirlenen bir işlem kaynağıdır veya ortamıdır. Bu konum, yerel makineniz veya bulut tabanlı bir işlem kaynağı olabilir. İşlem hedeflerini kullanmak, kodunuzu değiştirmek zorunda kalmadan daha sonra işlem ortamınızı değiştirmenizi kolaylaştırır.
 
@@ -54,7 +54,7 @@ Aşağıdaki işlem kaynakları, model dağıtımınızı barındırmak için ku
 
 * Düzenli aralıklarla veri toplu işlemleri işlemek için kullanılan bir _Batch çıkarım_ uç noktası olarak. Batch ınlade [Azure Machine Learning işlem kümelerini](how-to-create-attach-compute-cluster.md)kullanır.
 
-* Bir _IoT cihazına_ (Önizleme). IoT cihazına dağıtım, Docker kapsayıcısını oluşturmak için yalnızca Azure Machine Learning bağımlıdır. Buradan, Azure IoT Edge kullanılarak dağıtılır. Daha fazla bilgi için bkz. [IoT Edge modülü olarak dağıtma (Önizleme)](/azure/iot-edge/tutorial-deploy-machine-learning).
+* Bir _IoT cihazına_ (Önizleme). IoT cihazına dağıtım, Docker kapsayıcısını oluşturmak için yalnızca Azure Machine Learning bağımlıdır. Buradan, Azure IoT Edge kullanılarak dağıtılır. Daha fazla bilgi için bkz. [IoT Edge modülü olarak dağıtma (Önizleme)](../iot-edge/tutorial-deploy-machine-learning.md).
 
 [Modelinizin bir işlem hedefine dağıtımını nerede ve nasıl dağıtacağınızı](how-to-deploy-and-where.md)öğrenin.
 
@@ -89,7 +89,7 @@ Oluşturulduğunda, bu işlem kaynakları diğer tür bilgi işlem hedeflerinin 
 
 ### <a name="supported-vm-series-and-sizes"></a>Desteklenen VM Serisi ve boyutları
 
-Azure Machine Learning yönetilen bir işlem kaynağı için bir düğüm boyutu seçtiğinizde, Azure 'da kullanılabilir olan VM boyutları arasından seçim yapabilirsiniz. Azure, farklı iş yükleri için Linux ve Windows için bir dizi boyut sunar. Daha fazla bilgi için bkz. [VM türleri ve boyutları](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+Azure Machine Learning yönetilen bir işlem kaynağı için bir düğüm boyutu seçtiğinizde, Azure 'da kullanılabilir olan VM boyutları arasından seçim yapabilirsiniz. Azure, farklı iş yükleri için Linux ve Windows için bir dizi boyut sunar. Daha fazla bilgi için bkz. [VM türleri ve boyutları](../virtual-machines/sizes.md).
 
 VM boyutu seçmenin bazı özel durumları ve sınırlamaları vardır:
 
@@ -133,7 +133,7 @@ Geçerli yalıtılmış VM teklifleri şunları içerir:
 
 *RDMA özellikli
 
-Yalıtım hakkında daha fazla bilgi edinmek için bkz. [Azure genel bulutundaki yalıtım](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices).
+Yalıtım hakkında daha fazla bilgi edinmek için bkz. [Azure genel bulutundaki yalıtım](../security/fundamentals/isolation-choices.md).
 
 ## <a name="unmanaged-compute"></a>Yönetilmeyen işlem
 

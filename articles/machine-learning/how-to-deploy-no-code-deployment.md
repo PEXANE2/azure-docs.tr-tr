@@ -1,7 +1,7 @@
 ---
 title: Kod dağıtımı yok (Önizleme)
 titleSuffix: Azure Machine Learning
-description: Giriş betiği olmadan bir model dağıtmayı öğrenin.
+description: Kod dağıtımı, el ile bir giriş betiği oluşturmak zorunda kalmadan bir modeli Web hizmeti olarak dağıtmanızı sağlar.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: deploy
 ms.reviewer: larryfr
-ms.openlocfilehash: 32b2afe036b443846199b5e9d74e690859fb581d
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: a17126695aa5138d1df7fd17cfaa2f5f75ad1004
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998860"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324913"
 ---
 # <a name="preview-no-code-model-deployment"></a>Önizle Kod olmayan model dağıtımı
 
@@ -63,7 +63,7 @@ service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
-Bir modeli öğrenmek için bkz. [Web hizmeti olarak dağıtılan Azure Machine Learning modelini](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service)kullanma. Birçok ONNX projesi, hizmet tarafından beklenen veri biçiminin daha kolay olduğunu anlamak için, sıkı mağaza eğitimi ve doğrulama verilerine sahip prototip dosyalarını kullanır. Bir model geliştiricisi olarak, geliştiricileriniz için belgeleyebilirsiniz:
+Bir modeli öğrenmek için bkz. [Web hizmeti olarak dağıtılan Azure Machine Learning modelini](./how-to-consume-web-service.md)kullanma. Birçok ONNX projesi, hizmet tarafından beklenen veri biçiminin daha kolay olduğunu anlamak için, sıkı mağaza eğitimi ve doğrulama verilerine sahip prototip dosyalarını kullanır. Bir model geliştiricisi olarak, geliştiricileriniz için belgeleyebilirsiniz:
 
 * Giriş biçimi (JSON veya ikili)
 * Giriş veri şekli ve türü (örneğin, [100100, 3] şeklinin bir dizisi)
@@ -130,7 +130,7 @@ print(output)
 ```
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Başarısız bir dağıtımda sorun giderme](how-to-troubleshoot-deployment.md)
+* [Başarısız bir dağıtımın sorunlarını giderme](how-to-troubleshoot-deployment.md)
 * [Azure Kubernetes Service’e dağıtma](how-to-deploy-azure-kubernetes-service.md)
 * [Web hizmetlerini kullanmak için istemci uygulamaları oluşturma](how-to-consume-web-service.md)
 * [Web hizmetini güncelleştirme](how-to-deploy-update-web-service.md)

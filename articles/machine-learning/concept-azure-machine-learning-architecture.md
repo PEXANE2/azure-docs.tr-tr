@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 71032c49ac5164f13189baf64668f8998fdc186a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c96263b5d40d4f6a4904a6da3d40ad98ac81f030
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91276093"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322309"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning nasıl kullanılır: mimari ve kavramlar
 
@@ -33,10 +33,10 @@ ms.locfileid: "91276093"
 * Azure Machine Learning kullandığınızda oluşturduğunuz varlıkları depolama, aşağıdakiler dahil:
   * [Ortamlar](#environments)
   * [Denemeler](#experiments)
-  * [İşlem hatları](#ml-pipelines)
+  * [Pipelines](#ml-pipelines)
   * [Veri kümeleri](#datasets-and-datastores)
   * [Modeller](#models)
-  * [Uç Noktalar](#endpoints)
+  * [Noktalarının](#endpoints)
 
 Çalışma alanı, çalışma alanı tarafından kullanılan diğer Azure kaynaklarını içerir:
 
@@ -53,9 +53,9 @@ ms.locfileid: "91276093"
 
 Azure Machine Learning, makine öğrenimi görevleri için yapılandırılmış iki tam olarak yönetilen bulut tabanlı sanal makine (VM) sunar:
 
-* <a name="compute-instance"></a>**İşlem örneği**: işlem örneği makine öğrenimi için yüklenen birden çok araç ve ortamı IÇEREN bir sanal makinedir. Bir işlem örneğinin birincil kullanımı geliştirme iş istasyonunuz içindir.  Örnek not defterlerini, kurulum gerekmeden çalıştırmaya başlayabilirsiniz. Bir işlem örneği, eğitim ve ınişsiz işler için işlem hedefi olarak da kullanılabilir.
+* <a name="compute-instance"></a>**İşlem örneği** : işlem örneği makine öğrenimi için yüklenen birden çok araç ve ortamı IÇEREN bir sanal makinedir. Bir işlem örneğinin birincil kullanımı geliştirme iş istasyonunuz içindir.  Örnek not defterlerini, kurulum gerekmeden çalıştırmaya başlayabilirsiniz. Bir işlem örneği, eğitim ve ınişsiz işler için işlem hedefi olarak da kullanılabilir.
 
-* **İşlem kümeleri**: işlem kümeleri, çok düğümlü ölçeklendirme özelliklerine sahip VM 'lerin bir kümesidir. Bilgi işlem kümeleri, büyük işler ve üretim için işlem hedefleri için daha uygundur.  Bir iş gönderildiğinde küme otomatik olarak ölçeklendirilir.  Eğitim işlem hedefi olarak veya geliştirme/test dağıtımı için kullanın.
+* **İşlem kümeleri** : işlem kümeleri, çok düğümlü ölçeklendirme özelliklerine sahip VM 'lerin bir kümesidir. Bilgi işlem kümeleri, büyük işler ve üretim için işlem hedefleri için daha uygundur.  Bir iş gönderildiğinde küme otomatik olarak ölçeklendirilir.  Eğitim işlem hedefi olarak veya geliştirme/test dağıtımı için kullanın.
 
 Eğitim işlem hedefleri hakkında daha fazla bilgi için bkz. [eğitim işlem hedefleri](concept-compute-target.md#train).  Dağıtım işlem hedefleri hakkında daha fazla bilgi için bkz. [dağıtım hedefleri](concept-compute-target.md#deploy).
 
@@ -102,7 +102,7 @@ Bir modeli eğitme için bir komut dosyası gönderdiğinizde bir çalıştırma
 
 [Çalışma alanı](#workspace)  >  [Denemeleri](#experiments)  >  [Çalıştır](#runs)  >  **Yapılandırmayı Çalıştır**
 
-Çalıştırma yapılandırması, bir betiğin belirtilen işlem hedefinde nasıl çalıştırılacağını tanımlar. Betiği, üzerinde çalıştırılacak işlem hedefini ve Azure ML ortamını, dağıtılmış işe özgü yapılandırmaları ve bazı ek özellikleri belirtmek için yapılandırmayı kullanabilirsiniz. Çalışma için yapılandırılabilir seçeneklerin tam kümesi hakkında daha fazla bilgi için bkz. [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true).
+Çalıştırma yapılandırması, bir betiğin belirtilen işlem hedefinde nasıl çalıştırılacağını tanımlar. Betiği, üzerinde çalıştırılacak işlem hedefini ve Azure ML ortamını, dağıtılmış işe özgü yapılandırmaları ve bazı ek özellikleri belirtmek için yapılandırmayı kullanabilirsiniz. Çalışma için yapılandırılabilir seçeneklerin tam kümesi hakkında daha fazla bilgi için bkz. [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py).
 
 Çalışma yapılandırması, eğitim betiğinizi içeren dizin içindeki bir dosyaya kalıcı yapılabilir.   Ya da bellek içi bir nesne olarak oluşturulabilir ve bir çalıştırma göndermek için kullanılabilir.
 
@@ -204,7 +204,7 @@ Dağıtılan bir IoT modülü uç noktası, modelinizi ve ilişkili betiği ya d
 Azure IoT Edge modülünüzün çalıştığından emin olur ve bunu barındıran cihazı izler. 
 ## <a name="automation"></a>Otomasyon
 
-### <a name="azure-machine-learning-cli"></a>Azure Machine Learning CLı 
+### <a name="azure-machine-learning-cli"></a>Azure Machine Learning CLI 
 
 [Azure MACHINE LEARNING CLI](reference-azure-machine-learning-cli.md) , Azure platformu için platformlar arası komut satırı arabirimi olan Azure CLI 'nin bir uzantısıdır. Bu uzantı, makine öğrenimi etkinliklerinizi otomatikleştirmek için komutlar sağlar.
 
@@ -231,12 +231,12 @@ Ayrıca, Azure Machine Learning parçası olan etkileşimli araçlara de erişeb
 
 > [!IMPORTANT]
 > Aşağıda işaretlenmiş araçlar (Önizleme) Şu anda genel önizlemede.
-> Önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-+  [Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)ile herhangi bir Python ortamında hizmetle etkileşime geçin.
++  [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)ile herhangi bir Python ortamında hizmetle etkileşime geçin.
 + [R için Azure MACHINE LEARNING SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html) (Önizleme) ile herhangi bir r ortamındaki hizmetle etkileşime geçin.
 + Kod yazmadan iş akışı adımlarını gerçekleştirmek için [Azure Machine Learning tasarımcısını](concept-designer.md) kullanın. 
-+ Otomasyon için [Azure MACHINE LEARNING CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) kullanın.
++ Otomasyon için [Azure MACHINE LEARNING CLI](./reference-azure-machine-learning-cli.md) kullanın.
 + [Birçok model Çözüm Hızlandırıcısı](https://aka.ms/many-models) (önizleme) Azure Machine Learning oluşturur ve yüzlerce veya hatta binlerce makine öğrenimi modelini eğitmenize, çalıştırmanıza ve yönetmenize olanak sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar

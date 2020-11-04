@@ -8,16 +8,16 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 11/29/2017
-ms.openlocfilehash: e422c1a7b333254ed49b53bcdf2d10e65f2846e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cfdeaee863c8e11a76ac5842ae6c35d370e2ae2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91345321"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322555"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio model sonuçlarını yorumlama (klasik)
 
-**Uygulama hedefi:** ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md) yok  
+**Uygulama hedefi:** ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) yok  
 
 
 Bu konuda, tahmin sonuçlarının Azure Machine Learning Studio (klasik) görselleştirilmesi ve yorumlanması açıklanmaktadır. Bir modeli eğitdikten ve bunun üzerine ("model puanlanır") ilişkin tahminleri tamamladıktan sonra, tahmin sonucunu anlamanız ve yorumlamanıza gerek duyarsınız.
@@ -58,7 +58,7 @@ Azure Machine Learning Studio (klasik), bu sınıflandırma türlerinin her biri
 
 Şekil 1. Iris iki sınıflı sınıflandırma sorunu denemesi
 
-Şekil 1 ' de gösterildiği gibi, bu sorunu çözmek için bir deneme gerçekleştirildi. İki sınıf bir artırılmış karar ağacı modeli eğitildi ve puanlanmış. Artık, [puan][score-model] modeli modülünün çıkış bağlantı noktasına tıklayıp **Görselleştir**' e tıklayarak [puan modeli][score-model] modülünün tahmin sonuçlarını görselleştirebilirsiniz.
+Şekil 1 ' de gösterildiği gibi, bu sorunu çözmek için bir deneme gerçekleştirildi. İki sınıf bir artırılmış karar ağacı modeli eğitildi ve puanlanmış. Artık, [puan][score-model] modeli modülünün çıkış bağlantı noktasına tıklayıp **Görselleştir** ' e tıklayarak [puan modeli][score-model] modülünün tahmin sonuçlarını görselleştirebilirsiniz.
 
 ![Puan modeli modülü](./media/interpret-model-results/1_1.png)
 
@@ -80,7 +80,7 @@ Tahmin sonuçları anlaşıldıktan ve sesi karardığında, deneme bir Web hizm
 
 Şekil 3. Iris iki sınıflı sınıflandırma sorunu denemesini Puanlama
 
-Şimdi Web hizmeti için giriş ve çıkış ayarlamanız gerekir. Giriş, Iris çiçek özellikleri girişi olan [puan modelinin][score-model]doğru giriş bağlantı noktasıdır. Çıktı seçimi, tahmin edilen Sınıf (puanlanmış etiket), puanlanmış olasılık veya her ikisi ile ilgileniyor olmanıza bağlıdır. Bu örnekte, her ikisiyle de ilgilendiğiniz varsayılır. İstenen çıkış sütunlarını seçmek için [veri kümesi modülündeki sütunları seç][select-columns] ' i kullanın. [Veri kümesinde sütunları seç][select-columns]' e tıklayın, **sütun seçiciyi Başlat**' a tıklayın ve **puanlanmış Etiketler** ve **puanlanmış olasılıklara**seçin. [Veri kümesinde sütun Seç][select-columns] ' in çıkış bağlantı noktasını ayarladıktan ve yeniden çalıştırdıktan sonra, **Web hizmetini Yayımla**' ya tıklayarak Puanlama denemesini bir Web hizmeti olarak yayımlamaya hazırlanmalısınız. Son deneme Şekil 4 gibi görünür.
+Şimdi Web hizmeti için giriş ve çıkış ayarlamanız gerekir. Giriş, Iris çiçek özellikleri girişi olan [puan modelinin][score-model]doğru giriş bağlantı noktasıdır. Çıktı seçimi, tahmin edilen Sınıf (puanlanmış etiket), puanlanmış olasılık veya her ikisi ile ilgileniyor olmanıza bağlıdır. Bu örnekte, her ikisiyle de ilgilendiğiniz varsayılır. İstenen çıkış sütunlarını seçmek için [veri kümesi modülündeki sütunları seç][select-columns] ' i kullanın. [Veri kümesinde sütunları seç][select-columns]' e tıklayın, **sütun seçiciyi Başlat** ' a tıklayın ve **puanlanmış Etiketler** ve **puanlanmış olasılıklara** seçin. [Veri kümesinde sütun Seç][select-columns] ' in çıkış bağlantı noktasını ayarladıktan ve yeniden çalıştırdıktan sonra, **Web hizmetini Yayımla** ' ya tıklayarak Puanlama denemesini bir Web hizmeti olarak yayımlamaya hazırlanmalısınız. Son deneme Şekil 4 gibi görünür.
 
 ![Iris iki sınıf sınıflandırma denemesi](./media/interpret-model-results/4.png)
 
@@ -107,7 +107,7 @@ Eğitim verilerinde, el ile yazılmış mektup görüntülerinden ayıklanan 16 
 
 Şekil 6. Mektup tanıma birden çok sınıf sınıflandırması sorunu deneme
 
-Puanlama [modeli modülünün][score-model] çıkış bağlantı noktasına tıklayın ve ardından **Görselleştir**' e tıklayarak, [Score Model][score-model] Şekil 7 ' de gösterildiği gibi içeriği görmeniz gerekir.
+Puanlama [modeli modülünün][score-model] çıkış bağlantı noktasına tıklayın ve ardından **Görselleştir** ' e tıklayarak, [Score Model][score-model] Şekil 7 ' de gösterildiği gibi içeriği görmeniz gerekir.
 
 ![Model sonuçlarını Puanlama](./media/interpret-model-results/7.png)
 
@@ -185,7 +185,7 @@ Bir kümeleme denemesi oluşturmak için Iris veri kümesini yeniden kullanalım
 
 Kümeleme, eğitim veri kümesinin kendine ait taban-Ilk etiketlerini içermediğinden sınıflandırmadan farklıdır. Kümeleme grupları eğitim verileri, örnekleri ayrı kümeler halinde ayarlar. Eğitim süreci sırasında model, özellikleri arasındaki farkları öğrenerek girişleri Etiketler. Bundan sonra, eğitilen model gelecekteki girişleri daha fazla sınıflandırmak için kullanılabilir. Sonucun bir kümeleme sorunu içinde ilgilendiğimiz iki bölümü vardır. İlk bölümde eğitim veri kümesinin etiketlenmesi ve ikincisi, eğitilen modelle yeni bir veri kümesini sınıflandırırken.
 
-Sonucun ilk bölümü, [kümeleme modeli eğitimi][train-clustering-model] ' nin sol çıkış bağlantı noktasına tıklanarak ve ardından **Görselleştir**' i tıklatarak görselleştirilir. Görselleştirme Şekil 16 ' da gösterilmiştir.
+Sonucun ilk bölümü, [kümeleme modeli eğitimi][train-clustering-model] ' nin sol çıkış bağlantı noktasına tıklanarak ve ardından **Görselleştir** ' i tıklatarak görselleştirilir. Görselleştirme Şekil 16 ' da gösterilmiştir.
 
 ![Kümeleme sonucu](./media/interpret-model-results/16.png)
 
@@ -247,7 +247,7 @@ Bir öneren sistemi için tipik bir Azure Machine Learning Studio (klasik) denem
 
 **Belirli bir Kullanıcı ve öğe için derecelendirmeleri tahmin etme**
 
-**Öneren tahmin türü**altında **Derecelendirme tahmini** ' ni seçerek, öneren sistemine belirli bir Kullanıcı ve öğe için derecelendirmeyi tahmin etmek isteyip istemediğinizi sorar. [Score Matchbox öneren][score-matchbox-recommender] çıkışının görselleştirmesi şekil 21 gibi görünür.
+**Öneren tahmin türü** altında **Derecelendirme tahmini** ' ni seçerek, öneren sistemine belirli bir Kullanıcı ve öğe için derecelendirmeyi tahmin etmek isteyip istemediğinizi sorar. [Score Matchbox öneren][score-matchbox-recommender] çıkışının görselleştirmesi şekil 21 gibi görünür.
 
 ![Öneren sisteminin sonucunu Puanlama--derecelendirme tahmini](./media/interpret-model-results/21.png)
 
@@ -257,7 +257,7 @@ Bir öneren sistemi için tipik bir Azure Machine Learning Studio (klasik) denem
 
 **Belirli bir kullanıcıya öğe önerme**
 
-**Öneren tahmin türü**' nün altında **öğe önerisi** ' ni seçerek, öneren sistemine belirli bir kullanıcıya öğe önermesinin soruluyor demektir. Bu senaryoda seçeceğiniz son parametre *Önerilen öğe seçiminden*. **Derecelendirilen öğelerin seçeneği (model değerlendirmesi için)** öncelikle eğitim süreci sırasında model değerlendirmesi içindir. Bu tahmin aşaması için **tüm öğeler**arasından seçim yaptık. [Score Matchbox öneren][score-matchbox-recommender] çıkışının görselleştirmesi şekil 22 gibi görünür.
+**Öneren tahmin türü** ' nün altında **öğe önerisi** ' ni seçerek, öneren sistemine belirli bir kullanıcıya öğe önermesinin soruluyor demektir. Bu senaryoda seçeceğiniz son parametre *Önerilen öğe seçiminden*. **Derecelendirilen öğelerin seçeneği (model değerlendirmesi için)** öncelikle eğitim süreci sırasında model değerlendirmesi içindir. Bu tahmin aşaması için **tüm öğeler** arasından seçim yaptık. [Score Matchbox öneren][score-matchbox-recommender] çıkışının görselleştirmesi şekil 22 gibi görünür.
 
 ![Öneren sisteminin sonucunu Puanlama--öğe önerisi](./media/interpret-model-results/22.png)
 
@@ -267,7 +267,7 @@ Altı sütunun ilki, giriş verileri tarafından sağlandığı gibi öğelerini
 
 **Belirli bir kullanıcı ile ilgili kullanıcıları bulma**
 
-**Öneren tahmin türü**altında **ilgili kullanıcılar** ' ı seçerek, öneren sistemine belirli bir kullanıcı için ilgili kullanıcıları bulmasını soruyoruz. İlgili kullanıcılar, benzer tercihleri olan kullanıcılardır. Bu senaryoda seçeceğiniz son parametre *ilgili Kullanıcı seçiminden*. **Öğeleri derecelendirmeden kullananlar (model değerlendirmesi için)** öncelikle eğitim süreci sırasında model değerlendirmesi içindir. Bu tahmin aşaması için **tüm kullanıcılar** arasından seçim yapın. [Score Matchbox öneren][score-matchbox-recommender] çıkışının görselleştirmesi Şekil 23 gibi görünür.
+**Öneren tahmin türü** altında **ilgili kullanıcılar** ' ı seçerek, öneren sistemine belirli bir kullanıcı için ilgili kullanıcıları bulmasını soruyoruz. İlgili kullanıcılar, benzer tercihleri olan kullanıcılardır. Bu senaryoda seçeceğiniz son parametre *ilgili Kullanıcı seçiminden*. **Öğeleri derecelendirmeden kullananlar (model değerlendirmesi için)** öncelikle eğitim süreci sırasında model değerlendirmesi içindir. Bu tahmin aşaması için **tüm kullanıcılar** arasından seçim yapın. [Score Matchbox öneren][score-matchbox-recommender] çıkışının görselleştirmesi Şekil 23 gibi görünür.
 
 ![Öneren sistemiyle ilgili kullanıcıların sonucunu Puanlama](./media/interpret-model-results/23.png)
 
@@ -277,7 +277,7 @@ Altı sütunun ilki, giriş verileri tarafından sağlanan ilgili kullanıcılar
 
 **Belirli bir öğeyle ilgili öğeleri bul**
 
-**Öneren tahmin türü**altında **ilgili öğeleri** seçerek, öneren sistemine belirli bir öğe için ilgili öğeleri bulmasını sormanız gerekir. İlgili öğeler, aynı kullanıcı tarafından beğenilen en büyük öğelerdir. Bu senaryoda seçeceğiniz son parametre *ilgili öğe seçiminden*. **Derecelendirilen öğelerin seçeneği (model değerlendirmesi için)** öncelikle eğitim süreci sırasında model değerlendirmesi içindir. Bu tahmin aşaması için **tüm öğeler** arasından seçim yaptık. [Score Matchbox öneren][score-matchbox-recommender] çıkışının görselleştirmesi Şekil 24 gibi görünür.
+**Öneren tahmin türü** altında **ilgili öğeleri** seçerek, öneren sistemine belirli bir öğe için ilgili öğeleri bulmasını sormanız gerekir. İlgili öğeler, aynı kullanıcı tarafından beğenilen en büyük öğelerdir. Bu senaryoda seçeceğiniz son parametre *ilgili öğe seçiminden*. **Derecelendirilen öğelerin seçeneği (model değerlendirmesi için)** öncelikle eğitim süreci sırasında model değerlendirmesi içindir. Bu tahmin aşaması için **tüm öğeler** arasından seçim yaptık. [Score Matchbox öneren][score-matchbox-recommender] çıkışının görselleştirmesi Şekil 24 gibi görünür.
 
 ![Öneren sistemiyle ilgili öğelerin sonucunu Puanlama](./media/interpret-model-results/24.png)
 
@@ -304,10 +304,10 @@ Web hizmeti çalıştırıldığında döndürülen sonuç Şekil 26 ' ya benzer
 Şekil 26. Restoran önerisi sorununun Web hizmeti sonucu
 
 <!-- Module References -->
-[assign-to-clusters]: https://msdn.microsoft.com/library/azure/eed3ee76-e8aa-46e6-907c-9ca767f5c114/
-[execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[score-matchbox-recommender]: https://msdn.microsoft.com/library/azure/55544522-9a10-44bd-884f-9a91a9cec2cd/
-[score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
-[train-clustering-model]: https://msdn.microsoft.com/library/azure/bb43c744-f7fa-41d0-ae67-74ae75da3ffd/
-[train-matchbox-recommender]: https://msdn.microsoft.com/library/azure/fa4aa69d-2f1c-4ba4-ad5f-90ea3a515b4c/
+[assign-to-clusters]: /azure/machine-learning/studio-module-reference/assign-data-to-clusters
+[execute-r-script]: /azure/machine-learning/studio-module-reference/execute-r-script
+[select-columns]: /azure/machine-learning/studio-module-reference/select-columns-in-dataset
+[score-matchbox-recommender]: /azure/machine-learning/studio-module-reference/score-matchbox-recommender
+[score-model]: /azure/machine-learning/studio-module-reference/score-model
+[train-clustering-model]: /azure/machine-learning/studio-module-reference/train-clustering-model
+[train-matchbox-recommender]: /azure/machine-learning/studio-module-reference/train-matchbox-recommender

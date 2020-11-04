@@ -8,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: e807cde2d99cf23d459b395444d642e46ada32ab
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3b5f96e60e088f94561bf3398469ec913a71bba6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93071462"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322453"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Hızlı başlangıç: Windows için Veri Bilimi Sanal Makinesi ayarlama
 
@@ -41,10 +41,10 @@ DSVM örneği oluşturmak için:
       * **Sanal makine adı** : sanal makinenin adını girin. Azure portal bu şekilde görünür.
       * **Konum** : en uygun veri merkezini seçin. En hızlı ağ erişimi için bu, verilerinizin çoğunu veya fiziksel konumunuza en yakın olan veri merkezdir. [Azure bölgeleri](https://azure.microsoft.com/global-infrastructure/regions/)hakkında daha fazla bilgi edinin.
       * **Görüntü** : varsayılan değeri bırakın.
-      * **Boyut** : Bu, genel iş yükleri için uygun bir boyutla otomatik olarak doldurulur. [Azure 'Da WINDOWS VM boyutları](../../virtual-machines/windows/sizes.md)hakkında daha fazla bilgi edinin.
+      * **Boyut** : Bu, genel iş yükleri için uygun bir boyutla otomatik olarak doldurulur. [Azure 'Da WINDOWS VM boyutları](../../virtual-machines/sizes.md)hakkında daha fazla bilgi edinin.
       * **Kullanıcı adı** : yönetici kullanıcı adını girin. Bu, sanal makinenizde oturum açmak için kullanacağınız Kullanıcı adı ve Azure Kullanıcı adınızla aynı olmaması gerekir.
       * **Parola** : sanal makinenizde oturum açmak için kullanacağınız parolayı girin.    
-1. **Gözden geçir ve oluştur** ’u seçin.
+1. **Gözden geçir + oluştur** ’u seçin.
 1. **Gözden geçir + oluştur**
    * Girdiğiniz tüm bilgilerin doğru olduğundan emin olun. 
    * **Oluştur** ’u seçin.
@@ -56,7 +56,7 @@ DSVM örneği oluşturmak için:
 
 ## <a name="access-the-dsvm"></a>DSVM 'ye erişme
 
-VM oluşturulup sağlandıktan sonra, [Azure tabanlı sanal makinenize bağlanmak](https://docs.microsoft.com/azure/marketplace/azure-vm-create-using-approved-base)için listelenen adımları izleyin. Bir sanal makine oluşturmanın **temelleri** adımında yapılandırdığınız Yönetici hesabı kimlik bilgilerini kullanın. 
+VM oluşturulup sağlandıktan sonra, [Azure tabanlı sanal makinenize bağlanmak](../../marketplace/azure-vm-create-using-approved-base.md)için listelenen adımları izleyin. Bir sanal makine oluşturmanın **temelleri** adımında yapılandırdığınız Yönetici hesabı kimlik bilgilerini kullanın. 
 
 VM 'de yüklü ve yapılandırılmış araçları kullanmaya başlamaya hazırsınız. Araçların çoğuna **Başlangıç** menüsü kutucukları ve Masaüstü simgeleri aracılığıyla erişilebilir.
 
@@ -70,4 +70,3 @@ Ayrıca, sanal makine üzerinde jupi not defterlerini çalıştırmak ve ücrets
 * **Başlat** menüsünü açarak dsvm 'deki araçları araştırın.
 * [Azure Machine Learning ne olduğunu](../overview-what-is-azure-ml.md) okuyarak Azure Machine Learning hakkında bilgi edinin ve [öğreticiler](../index.yml)deneyin.
 * [Azure 'da bir Windows veri bilimi sanal makinesi veri bilimi](./vm-do-ten-things.md) makalesini okuyun
-

@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: d7f1f1f004fb8c9c4d67f409072ce061c6047569
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: fa05f8a8b05a0acddae906a93c90c42424466969
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127020"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322601"
 ---
 # <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>Desteklenen Azure Cosmos DB özellikler için Azure SYNAPSE link (Önizleme)
 
@@ -40,7 +40,7 @@ SYNAPSE bağlantısını etkinleştirmeden bir Azure Cosmos DB kapsayıcısına 
 | **Yazarken**   | Azure Cosmos DB kapsayıcısına veri yazmak için Azure SYNAPSE çalışma zamanı kullanılabilir | Evet | Hayır |
 
 * Spark 'tan bir Azure Cosmos DB kapsayıcısına veri yazarsanız, bu işlem Azure Cosmos DB işlem deposu üzerinden gerçekleşir. Istek birimlerini tüketerek Azure Cosmos DB işlem performansını etkiler.
-* Dış tablolar aracılığıyla SQL havuzu tümleştirmesi Şu anda desteklenmiyor.
+* Dış tablolar aracılığıyla adanmış SQL havuzu tümleştirmesi Şu anda desteklenmiyor.
  
 ## <a name="supported-code-generated-actions-for-spark"></a>Spark için desteklenen kod tarafından oluşturulan eylemler
 
@@ -64,4 +64,4 @@ SYNAPSE bağlantısını etkinleştirmeden bir Azure Cosmos DB kapsayıcısına 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Cosmos DB için bkz. SYNAPSE bağlantısına bağlanma](../quickstart-connect-synapse-link-cosmos-db.md)
-* [Spark ile analitik depoyu sorgulama hakkında bilgi edinin](how-to-query-analytical-store-spark.md)
+* [Spark ile Cosmos DB analitik depoyu sorgulama hakkında bilgi edinin](how-to-query-analytical-store-spark.md)

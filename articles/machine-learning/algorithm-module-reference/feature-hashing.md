@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 444cb6a7819fa72f5987a21807fc707e0ba8b396
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9ef6ff81a2c9f3697f7c3ccf1cd8e91ad2fb683
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907929"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323732"
 ---
 # <a name="feature-hashing-module-reference"></a>Özellik karma modülü başvurusu
 
@@ -22,7 +22,7 @@ Bu makalede Azure Machine Learning tasarımcısında bulunan bir modül açıkla
 
 Ingilizce metin akışını bir tamsayı özellikleri kümesine dönüştürmek için özellik karma modülünü kullanın. Daha sonra bu karma özellik kümesini bir makine öğrenimi algoritmasına geçirebilirsiniz ve bir metin analizi modelini eğitebilirsiniz.
 
-Bu modülde sunulan özellik karma işlevselliği nimbusml çerçevesini temel alır. Daha fazla bilgi için bkz. [Ngramhash sınıfı](https://docs.microsoft.com/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest).
+Bu modülde sunulan özellik karma işlevselliği nimbusml çerçevesini temel alır. Daha fazla bilgi için bkz. [Ngramhash sınıfı](/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest).
 
 ## <a name="what-is-feature-hashing"></a>Özellik karma nedir?
 
@@ -39,7 +39,7 @@ Bu modülde sunulan özellik karma işlevselliği nimbusml çerçevesini temel a
 
 Dahili olarak, özellik karma modülü n-gram sözlüğü oluşturur. Örneğin, bu veri kümesi için bigram listesi şuna benzer olacaktır:
 
-|Terim (bigram)|Frequency|
+|Terim (bigram)|Sıklık|
 |------------|---------------|
 |Bu kitap|3|
 |Sevdim|1|
@@ -48,7 +48,7 @@ Dahili olarak, özellik karma modülü n-gram sözlüğü oluşturur. Örneğin,
 
 N **-gram özelliğini kullanarak** n-gram boyutunu kontrol edebilirsiniz. Bigram seçerseniz, tek tek gram da hesaplanır. Sözlük aşağıdaki gibi tek terimleri de içerir:
 
-|Terim (tek gram)|Frequency|
+|Terim (tek gram)|Sıklık|
 |------------|---------------|
 |Kitap|3|
 |I|3|
@@ -90,7 +90,7 @@ Sayısal çıktılar Ayrıca sınıflandırma, kümeleme ve bilgi alma dahil olm
     
     Varsayılan bit boyutu 10 ' dur. Birçok sorun için bu değer yeterlidir. Eğitim metnindeki n gram sözlüğü boyutuna bağlı olarak çarpışmalardan kaçınmak için daha fazla alana ihtiyacınız bulunabilir.
     
-1. **N-gram**için, eğitim sözlüğüne eklemek üzere en fazla n gram uzunluğunu tanımlayan bir sayı girin. N-gram, benzersiz birim olarak kabul edilen *n* sözcükten oluşan bir dizidir.
+1. **N-gram** için, eğitim sözlüğüne eklemek üzere en fazla n gram uzunluğunu tanımlayan bir sayı girin. N-gram, benzersiz birim olarak kabul edilen *n* sözcükten oluşan bir dizidir.
 
     Örneğin, 3, unigram, bigram ve trigram girerseniz.
 
@@ -111,7 +111,7 @@ Sayısal çıktılar Ayrıca sınıflandırma, kümeleme ve bilgi alma dahil olm
 
 Dönüştürülmüş veri kümesini oluşturduktan sonra, bunu eğitme modeli modülüne giriş olarak kullanabilirsiniz.
  
-## <a name="best-practices"></a>Önerilen uygulamalar
+## <a name="best-practices"></a>En iyi uygulamalar
 
 Aşağıdaki en iyi yöntemler, özellik karma modülünden en iyi şekilde yararlanmanıza yardımcı olabilir:
 
@@ -131,4 +131,4 @@ Herhangi bir çözümde uygulanacak en uygun ön işleme yöntemi kümesi, etki 
 
 ## <a name="next-steps"></a>Sonraki adımlar
             
-Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın

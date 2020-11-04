@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 4aec299e15964d45ad949034ba02729ff43934de
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 128e4d0a421fc9ad4251f24f2cb37a217eeb1e31
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043133"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322207"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 ve 8600 Azure Dosya Eşitleme 'e geçiş
 
@@ -76,7 +76,7 @@ Kayıtlarınızda anahtarları bulamıyorsanız, Gereç içinden anahtarı alabi
 >
 > * HTTPS oturumu üzerinden bağlanmak en güvenli ve önerilen seçenektir.
 > * Doğrudan cihaz seri konsoluna bağlanmak güvenlidir, ancak ağ anahtarları üzerinden seri konsoluna bağlanmak değildir.
-> * HTTP oturum bağlantıları bir seçenektir, ancak *şifrelenmez* . Kapalı, güvenilir bir ağda kullanılmadıkları takdirde bu önerilmez.
+> * HTTP oturum bağlantıları bir seçenektir, ancak *şifrelenmez*. Kapalı, güvenilir bir ağda kullanılmadıkları takdirde bu önerilmez.
 
 ### <a name="storsimple-volume-backups"></a>StorSimple birim yedeklemeleri
 
@@ -119,7 +119,7 @@ Paylaşımlarınızın bir listesini yaptıysanız, her bir paylaşımı bulunac
 * Hangi birimlerin geçirilmesi gerektiğini ve ayrıca birimlerinizi uygun sayıda Azure dosya paylaşımı ve depolama hesabı ile nasıl eşleneceğini gösteren bir planınız vardır.
 
 > [!CAUTION]
-> , StorSimple birimlerinden yedeklemeleri geçirmeniz gerekiyorsa, **burada durun** .
+> , StorSimple birimlerinden yedeklemeleri geçirmeniz gerekiyorsa, **burada durun**.
 >
 > Bu geçiş yaklaşımı, şu anda yedeklemeleri geçiremeyen yeni veri dönüştürme hizmeti özelliklerine bağımlıdır. Yedekleme geçişine yönelik destek, 2020 sonuna ulaştığında gönderilir. Şu anda yalnızca canlı verilerinizi geçirebilirsiniz. Şimdi başlatırsanız, yedeklemelerinizi daha sonra "başlatamazsınız". Yedeklemeler arasında Azure dosya paylaşımı anlık görüntüleri ile, Azure dosya paylaşımlarının en eskiden en yeniye ve canlı verilere "oynanabilir" olması gerekir.
 
@@ -174,13 +174,13 @@ Kullanılabilir birkaç çoğaltma ayarı vardır. Farklı çoğaltma türleri h
 
 Yalnızca aşağıdaki iki seçenekten birini seçin:
 
-* *Yerel olarak yedekli depolama (LRS)* .
+* *Yerel olarak yedekli depolama (LRS)*.
 * Bölgesel olarak *yedekli depolama (ZRS)* , tüm Azure bölgelerinde kullanılamaz.
 
 > [!NOTE]
 > Yalnızca LRS ve ZRS artıklık türleri, büyük 100-TiB kapasiteli Azure dosya paylaşımları ile uyumludur.
 
-Tüm çeşitlemelerdeki Global olarak yedekli depolama (GRS) Şu anda desteklenmiyor. Yedeklilik türünü daha sonra değiştirebilir ve Azure 'a yönelik destek geldiğinde GRS 'ye geçebilirsiniz.
+Tüm çeşitlemelerdeki coğrafi olarak yedekli depolama (GRS) Şu anda desteklenmiyor. Yedeklilik türünü daha sonra değiştirebilir ve Azure 'a yönelik destek geldiğinde GRS 'ye geçebilirsiniz.
 
 #### <a name="enable-100-tib-capacity-file-shares"></a>100-TiB-kapasite dosya paylaşımlarını etkinleştir
 
@@ -206,10 +206,10 @@ Depolama hesaplarınız oluşturulduktan sonra depolama hesabının **dosya payl
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-share.png" alt-text="Bir depolama hesabı oluşturmak için Azure portal Gelişmiş sekmesini gösteren bir görüntü.":::
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-share.png" alt-text="Yeni dosya paylaşma Kullanıcı arabirimini gösteren Azure portal ekran görüntüsü.":::
     :::column-end:::
     :::column:::
-        </br>**Ad**</br>Küçük harfler, rakamlar ve tireler desteklenir.</br></br>**Kota**</br>Buradaki kota, bir Windows Server örneğindeki SMB sabit kotasına benzer. En iyi yöntem, kotaya ulaşıldığında geçiş ve diğer hizmetleriniz başarısız olacağı için burada bir kota ayarlanmamalıdır.</br></br>**Katmanlar**</br>Yeni dosya paylaşımınız için **Iyileştirilmiş işlem** seçin. Geçiş sırasında birçok işlem gerçekleşmeyecektir. Daha sonra, katmanınızı daha sonra iş yükünüze en uygun katmana değiştirmek daha ekonomik bir yöntemdir.
+        </br>**Ad**</br>Küçük harfler, rakamlar ve tireler desteklenir.</br></br>**Kota**</br>Buradaki kota, bir Windows Server örneğindeki SMB sabit kotasına benzer. En iyi yöntem, kotaya ulaşıldığında geçiş ve diğer hizmetleriniz başarısız olacağı için burada bir kota ayarlanmamalıdır.</br></br>**Katmanlar**</br>Yeni dosya paylaşımınız için **Iyileştirilmiş işlem** seçin. Geçiş sırasında birçok işlem gerçekleşmeyecektir. Daha sonra, katmanınızı daha sonra iş yükünüze en uygun katmana değiştirme maliyeti daha verimli.
     :::column-end:::
 :::row-end:::
 
@@ -232,7 +232,7 @@ Azure Dosya Eşitleme ile, en sık erişilen dosyaları şirket içi önbelleğe
 
 ## <a name="phase-3-create-and-run-a-migration-job"></a>3. Aşama: geçiş işi oluşturma ve çalıştırma
 
-Bu bölümde, bir geçiş işinin nasıl ayarlanacağı ve seçtiğiniz hedef Azure dosya paylaşımında kopyalanması gereken bir StorSimple birimindeki dizinlerin dikkatle nasıl eşlenileceği açıklanmaktadır. Başlamak için StorSimple Veri Yöneticisi gidin, menüdeki **iş tanımlarını** bulun ve **+ iş tanımı** ' nı seçin. Hedef depolama türü, varsayılan **Azure dosya paylaşımıdır** .
+Bu bölümde, bir geçiş işinin nasıl ayarlanacağı ve seçtiğiniz hedef Azure dosya paylaşımında kopyalanması gereken bir StorSimple birimindeki dizinlerin dikkatle nasıl eşlenileceği açıklanmaktadır. Başlamak için StorSimple Veri Yöneticisi gidin, menüdeki **iş tanımlarını** bulun ve **+ iş tanımı** ' nı seçin. Hedef depolama türü, varsayılan **Azure dosya paylaşımıdır**.
 
 ![StorSimple 8000 serisi geçiş işi türleri.](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job-type.png "İş tanımlarının bir ekran görüntüsü, iş türünü isteyen yeni bir Iş tanımları iletişim kutusuyla açılır Azure portal: dosya paylaşımında veya blob kapsayıcısına kopyalama.")
 
@@ -270,21 +270,21 @@ Bir eşleme soldan sağa ifade edilir: [\Source Path] \> [\target Path].
 |Anlam karakteri          | Anlamı  |
 |:---------------------------|:---------|
 | **\\**                     | Kök düzeyi göstergesi.       |
-| **\>**                     | [Kaynak] ve [hedef eşleme işleci.     |
+| **\>**                     | [Kaynak] ve [hedef eşleme] işleci.     |
 |**\|** veya RETURN (yeni satır) | İki klasör eşleme yönergelerinin ayırıcısı. </br>Alternatif olarak, bir sonraki eşleme ifadesini kendi satırına almak için bu karakteri atlayabilir ve **ENTER** ' u seçebilirsiniz.        |
 
 ### <a name="examples"></a>Örnekler
 Klasör *Kullanıcı verilerinin* içeriğini hedef dosya paylaşımının köküne taşımalıdır:
 ``` console
-\User data > \\
+\User data > \
 ```
 Tüm birim içeriğini hedef dosya paylaşımında yeni bir yola taşımalıdır:
 ``` console
-\ \> \Apps\HR tracker
+\ > \Apps\HR tracker
 ```
 Kaynak klasör içeriğini hedef dosya paylaşımında yeni bir yola taşımalıdır:
 ``` console
-\HR resumes-Backup \> \Backups\HR\resumes
+\HR resumes-Backup > \Backups\HR\resumes
 ```
 Birden çok kaynak konumu yeni bir dizin yapısına sıralar:
 ``` console
@@ -296,7 +296,7 @@ Birden çok kaynak konumu yeni bir dizin yapısına sıralar:
 ### <a name="semantic-rules"></a>Anlam kuralları
 
 * Her zaman kök düzeyine göre klasör yolları belirtin.
-* Her klasör yolunu bir kök düzeyi göstergesi ile başlatın " \" .
+* Her klasör yolunu bir kök düzeyi göstergesi "" ile başlatın \\ .
 * Sürücü harflerini eklemeyin.
 * Birden çok yol belirtirken, kaynak veya hedef yollar çakışamaz:</br>
    Geçersiz kaynak yolu örtüşme örneği:</br>
@@ -518,7 +518,7 @@ Arka plan
    :::column-end:::
 :::row-end:::
 
-RoboCopy komutunun kaynak ve hedef konumlarını yapılandırırken, bunların eşleştiğinden emin olmak için kaynak ve hedefin yapısını gözden geçirdiğinizden emin olun. Geçiş işinin Dizin eşleme özelliğini kullandıysanız, kök dizin yapınız StorSimple biriminizin yapısıyla farklı olabilir. Bu durumda, her bir alt dizin için bir tane olmak üzere birden çok RoboCopy işine ihtiyaç duyabilirsiniz.
+RoboCopy komutunun kaynak ve hedef konumlarını yapılandırırken, bunların eşleştiğinden emin olmak için kaynak ve hedefin yapısını gözden geçirdiğinizden emin olun. Geçiş işinin Dizin eşleme özelliğini kullandıysanız, kök dizin yapınız StorSimple biriminizin yapısıyla farklı olabilir. Bu durumda, her bir alt dizin için bir tane olmak üzere birden çok RoboCopy işine ihtiyaç duyabilirsiniz. Komutun beklenildiği gibi gerçekleştirip gerçekleştirmediği konusunda emin değilseniz, aslında hiçbir değişiklik yapmadan komutun benzetimini gerçekleştirecek */l* parametresini kullanabilirsiniz.
 
 Bu RoboCopy komutu/MıR kullanır, bu nedenle aynı (katmanlı dosyalar, örneğin) dosyalarını taşımaz. Ancak kaynak ve hedef yolunu yanlış alırsanız,/MıR, Windows Server Örneğiniz veya StorSimple kaynak yolunda bulunmayan Azure dosya paylaşımınızda dizin yapılarını da temizler. Geçiş devam ederken yapılan en son değişikliklerle geçirilen içeriğinizi güncelleştirme amacına ulaşmak için, RoboCopy işi için tam olarak eşleşmesi gerekir.
 
@@ -547,7 +547,7 @@ Bir kaynak sağladığınızda, bu kaynak ve verilerin yapılandırmasına eriş
 Başlamadan önce, üretim sırasında yeni Azure Dosya Eşitleme dağıtımınızı bir süre içinde gözlemlemek en iyi uygulamadır. Bu süre, karşılaşabileceğiniz sorunları gidermeye yönelik fırsat sağlar. Azure Dosya Eşitleme dağıtımınızı en az birkaç güne kadar gözlemledikten sonra kaynakları sağlamayı şu sırada yapmaya başlayabilirsiniz:
 
 1. StorSimple Veri Yöneticisi kaynağınızın Azure portal aracılığıyla sağlamasını kaldırma. Tüm DTS işleriniz onunla birlikte silinecektir. Kopyalama günlüklerini kolayca alamazsınız. Kayıtlarınız için önemliyse, sağlamadan önce bunları alın.
-1. StorSimple fiziksel gereçlerinizin geçirildiğinden emin olun ve ardından bunların kaydını kaldırın. Geçirildiklerinden tamamen emin değilseniz, devam etmeyin. Bu kaynakları hala gerekli olmaya devam ediyorsa, verileri veya yapılandırmalarını kurtarmanız mümkün olmayacaktır.
+1. StorSimple fiziksel gereçlerinizin geçirildiğinden emin olun ve ardından bunların kaydını kaldırın. Geçirildiklerinden tamamen emin değilseniz, devam etmeyin. Bu kaynakları hala gerekli olmaya devam ediyorsa, verileri veya yapılandırmalarını kurtarmanız mümkün olmayacaktır.<br>İsteğe bağlı olarak, ilk olarak StorSimple birim kaynağını temin edebilir ve bu da gereç üzerindeki verileri temizler. Bu işlem birkaç gün sürebilir ve bu işlem, Gereç üzerindeki verileri hiçbir şekilde **içermez** . Bu sizin için önemliyse, disk sıfırlama işlemini kaynak sağlamayı ve ilkelerinize göre ayrı olarak işleyin.
 1. StorSimple Aygıt Yöneticisi daha fazla kayıtlı cihaz yoksa, bu Aygıt Yöneticisi kaynağının kendisini kaldırmaya devam edebilirsiniz.
 1. Azure 'da StorSimple depolama hesabını silmek artık zaman alabilir. Daha sonra, devam etmeden önce geçişinizi durdurup ve hiçbir şey ve hiçbir şeyin bu verilere bağlı olmadığından emin olun.
 1. StorSimple fiziksel gerecini veri merkezinizden çıkarın.

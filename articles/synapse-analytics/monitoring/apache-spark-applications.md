@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 4d6c50436ddf68e2610aeb10ddfaaab0a5d060f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f55d65b215c03769caa7c812dcda138f8e83595
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87387362"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322459"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Apache Spark uygulamalarınızı izlemek için SYNAPSE Studio 'Yu kullanma
 
@@ -35,15 +35,15 @@ Bu öğreticiye başlamadan önce aşağıdaki gereksinimlerin karşılandığı
 
 - Bir Synapse Studio çalışma alanı. Yönergeler için bkz. [SYNAPSE Studio çalışma alanı oluşturma](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace).
 
-- Bir Apache Spark Havuzu.
+- Sunucusuz Apache Spark Havuzu.
 
 ## <a name="monitor-running-apache-spark-application"></a>Apache Spark uygulamasını çalıştıran izleyici
 
-**İzleyiciyi**açın ve **Apache Spark uygulamalar**' ı seçin. Çalıştıran Apache Spark uygulamalarla ilgili ayrıntıları görüntülemek için Apache Spark uygulamayı gönderme ve ayrıntıları görüntüleme seçeneğini belirleyin. Apache Spark uygulama hala çalışıyorsa, ilerlemeyi izleyebilirsiniz.
+**İzleyiciyi** açın ve **Apache Spark uygulamalar** ' ı seçin. Çalıştıran Apache Spark uygulamalarla ilgili ayrıntıları görüntülemek için Apache Spark uygulamayı gönderme ve ayrıntıları görüntüleme seçeneğini belirleyin. Apache Spark uygulama hala çalışıyorsa, ilerlemeyi izleyebilirsiniz.
 
   ![çalışan işi seçin](./media/how-to-monitor-spark-applications/select-running-job.png)
 
-1. **Tamamlanan görevleri**, **durumu**ve **toplam süreyi**denetleyin.
+1. **Tamamlanan görevleri** , **durumu** ve **toplam süreyi** denetleyin.
 
 2. Apache Spark uygulamasını iptal edin.
 
@@ -53,31 +53,31 @@ Bu öğreticiye başlamadan önce aşağıdaki gereksinimlerin karşılandığı
 
 5. **Özet** bilgisini denetleyin.
 
-6. **Günlükleri**denetleyin. Günlük bilgileri çalıştırılırken boş.
+6. **Günlükleri** denetleyin. Günlük bilgileri çalıştırılırken boş.
 
     ![çalışan işi görüntüle](./media/how-to-monitor-spark-applications/view-running-job.png)
 
 ## <a name="view-completed-apache-spark-application"></a>Tamamlanmış Apache Spark uygulamasını görüntüleme
 
-**İzleyiciyi**açın ve **Apache Spark uygulamalar**' ı seçin. Tamamlanmış Apache Spark uygulamalarla ilgili ayrıntıları görüntülemek için Apache Spark uygulamasını seçin ve ayrıntıları görüntüleyin.
+**İzleyiciyi** açın ve **Apache Spark uygulamalar** ' ı seçin. Tamamlanmış Apache Spark uygulamalarla ilgili ayrıntıları görüntülemek için Apache Spark uygulamasını seçin ve ayrıntıları görüntüleyin.
 
   ![tamamlanan işi seçin](./media/how-to-monitor-spark-applications/select-completed-job.png)
 
-1. **Tamamlanan görevleri**, **durumu**ve **toplam süreyi**denetleyin.
+1. **Tamamlanan görevleri** , **durumu** ve **toplam süreyi** denetleyin.
 
 2. Günlük sorgusunu yenileyin.
 
-3. **Spark geçmiş sunucusu**' na tıklayarak Apache Spark geçmiş sunucu bağlantısını açın.
+3. **Spark geçmiş sunucusu** ' na tıklayarak Apache Spark geçmiş sunucu bağlantısını açın.
 
 4. Grafikteki simgeye tıklayarak **Özet** bilgilerini denetleyin.
 
-5. **Günlükleri**denetleyin. Açılan listeden farklı türde Günlükler seçebilirsiniz ve **günlükleri indir**' i tıklatarak günlük bilgilerini indirebilirsiniz.
+5. **Günlükleri** denetleyin. Açılan listeden farklı türde Günlükler seçebilirsiniz ve **günlükleri indir** ' i tıklatarak günlük bilgilerini indirebilirsiniz.
 
-6. Oluşturulan iş grafiğinde işinize bir genel bakış görebilirsiniz. Varsayılan olarak, grafik tüm işleri gösterir. Bu görünümü **Iş kimliğine**göre filtreleyebilirsiniz.
+6. Oluşturulan iş grafiğinde işinize bir genel bakış görebilirsiniz. Varsayılan olarak, grafik tüm işleri gösterir. Bu görünümü **Iş kimliğine** göre filtreleyebilirsiniz.
 
 7. Varsayılan olarak, **Ilerleme durumu** ekranı seçilidir. **Görüntüleme** açılır listesinde **okuma** veya **yazma** seçeneğini belirleyerek veri akışını kontrol edebilirsiniz.
 
-8. İşi kayıttan yürütmek için **kayıttan yürütme**' yi seçin. Durdurmak için dilediğiniz zaman **Durdur** seçeneğini belirleyebilirsiniz.
+8. İşi kayıttan yürütmek için **kayıttan yürütme** ' yi seçin. Durdurmak için dilediğiniz zaman **Durdur** seçeneğini belirleyebilirsiniz.
 
 9. Farenizi kullanarak iş grafiğini yakınlaştırın ve uzaklaştırın veya ekrana sığacak hale getirmek için **yakınlaştırmak Için Yakınlaştır** ' ı seçin.
 
@@ -107,35 +107,35 @@ Bu öğreticiye başlamadan önce aşağıdaki gereksinimlerin karşılandığı
 
 ## <a name="view-canceled-apache-spark-application"></a>İptal edilen Apache Spark uygulamasını görüntüle
 
-**İzleyiciyi**açın ve **Apache Spark uygulamalar**' ı seçin. İptal edilen Apache Spark uygulamalarla ilgili ayrıntıları görüntülemek için Apache Spark uygulamayı seçin ve ayrıntıları görüntüleyin.
+**İzleyiciyi** açın ve **Apache Spark uygulamalar** ' ı seçin. İptal edilen Apache Spark uygulamalarla ilgili ayrıntıları görüntülemek için Apache Spark uygulamayı seçin ve ayrıntıları görüntüleyin.
 
  ![iptal edilen işi seçin](./media/how-to-monitor-spark-applications/select-cancelled-job.png) 
 
-1. **Tamamlanan görevleri**, **durumu**ve **toplam süreyi**denetleyin.
+1. **Tamamlanan görevleri** , **durumu** ve **toplam süreyi** denetleyin.
 
 2. Günlük sorgusunu yenileyin.
 
-3. **Spark geçmiş sunucusu**' na tıklayarak Apache geçmiş sunucusu bağlantısını açın.
+3. **Spark geçmiş sunucusu** ' na tıklayarak Apache geçmiş sunucusu bağlantısını açın.
 
 4. Grafiği görüntüleyin.
 
 5. **Özet** bilgisini denetleyin.
 
-6. **Günlükleri**denetleyin. Açılan listeden farklı türde Günlükler seçebilirsiniz ve **günlükleri indir**' i tıklatarak günlük bilgilerini indirebilirsiniz.
+6. **Günlükleri** denetleyin. Açılan listeden farklı türde Günlükler seçebilirsiniz ve **günlükleri indir** ' i tıklatarak günlük bilgilerini indirebilirsiniz.
 
    ![iptal edilen işi görüntüle](./media/how-to-monitor-spark-applications/view-cancelled-job.png)
 
 ## <a name="debug-failed-apache-spark-application"></a>Apache Spark uygulamada hata ayıklama başarısız oldu
 
-**İzleyiciyi**açın ve **Apache Spark uygulamalar**' ı seçin. Başarısız Apache Spark uygulamalarla ilgili ayrıntıları görüntülemek için Apache Spark uygulamayı seçip ayrıntıları görüntüleyin.
+**İzleyiciyi** açın ve **Apache Spark uygulamalar** ' ı seçin. Başarısız Apache Spark uygulamalarla ilgili ayrıntıları görüntülemek için Apache Spark uygulamayı seçip ayrıntıları görüntüleyin.
 
 ![başarısız iş seçin](./media/how-to-monitor-spark-applications/select-failed-job.png)
 
-1. **Tamamlanan görevleri**, **durumu**ve **toplam süreyi**denetleyin.
+1. **Tamamlanan görevleri** , **durumu** ve **toplam süreyi** denetleyin.
 
 2. Günlük sorgusunu yenileyin.
 
-3. **Spark geçmiş sunucusu**' na tıklayarak Apache Spark geçmiş sunucu bağlantısını açın.
+3. **Spark geçmiş sunucusu** ' na tıklayarak Apache Spark geçmiş sunucu bağlantısını açın.
 
 4. Grafiği görüntüleyin.
 

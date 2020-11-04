@@ -10,17 +10,17 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bbd82f856213bb36e71625eabc8bce9999ccd53f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 532ada430e7ff2ae76eb0cfbc389792bb0d98209
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91289404"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322661"
 ---
 # <a name="connect-to-synapse-sql"></a>SYNAPSE SQL 'e bağlanma
 Azure SYNAPSE Analytics 'te SYNAPSE SQL özelliğine bağlanın.
 
-## <a name="supported-tools-for-sql-on-demand-preview"></a>İsteğe bağlı SQL için desteklenen araçlar (Önizleme)
+## <a name="supported-tools-for-serverless-sql-pool-preview"></a>Sunucusuz SQL havuzu için desteklenen araçlar (Önizleme)
 
 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) , 1.18.0 sürümünden başlayarak tam olarak desteklenmektedir. SSMS, sürüm 18,5 ' den başlayarak kısmen desteklenir, bunu yalnızca bağlanmak ve sorgulamak için kullanabilirsiniz.
 
@@ -31,13 +31,13 @@ Azure SYNAPSE Analytics 'te SYNAPSE SQL özelliğine bağlanın.
 
 ## <a name="find-your-server-name"></a>Sunucu adınızı bulma
 
-Aşağıdaki örnekteki SQL havuzu için sunucu adı: showdemoweu.sql.azuresynapse.net.
-Aşağıdaki örnekteki SQL için isteğe bağlı sunucu adı: showdemoweu-ondemand.sql.azuresynapse.net.
+Aşağıdaki örnekteki adanmış SQL havuzunun sunucu adı: showdemoweu.sql.azuresynapse.net.
+Aşağıdaki örnekteki sunucusuz SQL havuzu için sunucu adı: showdemoweu-ondemand.sql.azuresynapse.net.
 
 Tam sunucu adını bulmak için:
 
 1. [Azure portalına](https://portal.azure.com) gidin.
-2. **SYNAPSE çalışma alanları**' nı seçin.
+2. **SYNAPSE çalışma alanları** ' nı seçin.
 3. Bağlanmak istediğiniz çalışma alanında öğesini seçin.
 4. Genel Bakış ' a gidin.
 5. Tam sunucu adını bulun.
@@ -46,9 +46,9 @@ Tam sunucu adını bulmak için:
 
 ![Tam sunucu adı](./media/connect-overview/server-connect-example.png)
 
-## <a name="sql-on-demand"></a>**İsteğe bağlı SQL**
+## <a name="serverless-sql-pool"></a>**Sunucusuz SQL havuzu**
 
-![Tam sunucu adı isteğe bağlı SQL](./media/connect-overview/server-connect-example-sqlod.png)
+![Tam sunucu adı sunucusuz SQL havuzu](./media/connect-overview/server-connect-example-sqlod.png)
 
 ## <a name="supported-drivers-and-connection-strings"></a>Desteklenen sürücüler ve bağlantı dizeleri
 SYNAPSE SQL [ADO.net](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [php](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)ve [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)destekler. En son sürümü ve belgeleri bulmak için önceki sürücülerden birini seçin. Azure portal, kullanmakta olduğunuz sürücü için bağlantı dizesini otomatik olarak oluşturmak için önceki örnekteki **veritabanı bağlantı dizelerini göster** ' i seçin. Aşağıda ayrıca her sürücü için bir bağlantı dizesinin nasıl göründüğü ile ilgili bazı örnekler verilmiştir.
@@ -92,7 +92,7 @@ SYNAPSE SQL, bağlantı ve nesne oluşturma sırasında bazı ayarları standart
 
 ## <a name="recommendations"></a>Öneriler
 
-**SQL isteğe** bağlı sorguları yürütmek için önerilen Araçlar [Azure Data Studio](get-started-azure-data-studio.md) ve Azure SYNAPSE Studio.
+**Sunucusuz SQL havuzu** sorgularını yürütmek için önerilen Araçlar [Azure Data Studio](get-started-azure-data-studio.md) ve Azure SYNAPSE Studio.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Visual Studio ile bağlantı kurmak ve sorgulamak için bkz. [Visual Studio ile Sorgulama](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Kimlik doğrulama seçenekleri hakkında daha fazla bilgi için bkz. [SYNAPSE SQL kimlik doğrulaması](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).

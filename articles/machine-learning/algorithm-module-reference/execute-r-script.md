@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/21/2020
-ms.openlocfilehash: a86c0b115ef866453e457ad528dd694ed7b49b48
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 0a3dbb42e69978a8a4895f44b57cc3ca5353e799
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330402"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323735"
 ---
 # <a name="execute-r-script-module"></a>R betik modülünü Yürüt
 
@@ -121,7 +121,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ## <a name="access-to-registered-dataset"></a>Kayıtlı veri kümesine erişim
 
-Çalışma alanınızdaki [kayıtlı veri kümelerine erişmek](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets#access-datasets-in-your-script) için aşağıdaki örnek koda başvurabilirsiniz:
+Çalışma alanınızdaki [kayıtlı veri kümelerine erişmek](../how-to-create-register-datasets.md) için aşağıdaki örnek koda başvurabilirsiniz:
 
 ```R
         azureml_main <- function(dataframe1, dataframe2){
@@ -147,11 +147,11 @@ Tasarımcıda depolanan veri kümeleri, bu modülle yüklendiğinde otomatik ola
 
 1. Betikte gereken tüm girdileri bağlayın. Girişler isteğe bağlıdır ve veri ve ek R kodu içerebilir.
 
-    * **DataSet1**: ilk girişe olarak başvuru yapın `dataframe1` . Giriş veri kümesi, CSV, TSV veya ARFF dosyası olarak biçimlendirilmelidir. Ya da bir Azure Machine Learning veri kümesini bağlayabilirsiniz.
+    * **DataSet1** : ilk girişe olarak başvuru yapın `dataframe1` . Giriş veri kümesi, CSV, TSV veya ARFF dosyası olarak biçimlendirilmelidir. Ya da bir Azure Machine Learning veri kümesini bağlayabilirsiniz.
 
-    * **DataSet2**: ikinci girişe olarak başvuru yapın `dataframe2` . Bu veri kümesi aynı zamanda CSV, TSV veya ARFF dosyası ya da bir Azure Machine Learning veri kümesi olarak biçimlendirilmelidir.
+    * **DataSet2** : ikinci girişe olarak başvuru yapın `dataframe2` . Bu veri kümesi aynı zamanda CSV, TSV veya ARFF dosyası ya da bir Azure Machine Learning veri kümesi olarak biçimlendirilmelidir.
 
-    * **Betik paketi**: Üçüncü giriş. zip dosyalarını kabul eder. Daraltılmış bir dosya, birden çok dosya ve birden çok dosya türü içerebilir.
+    * **Betik paketi** : Üçüncü giriş. zip dosyalarını kabul eder. Daraltılmış bir dosya, birden çok dosya ve birden çok dosya türü içerebilir.
 
 1. **R betiği** metin kutusuna geçerli R betiği yazın veya yapıştırın.
 
@@ -194,7 +194,7 @@ Tasarımcıda depolanan veri kümeleri, bu modülle yüklendiğinde otomatik ola
     > [!NOTE]
     > Varolan R kodunun bir tasarımcı işlem hattında çalıştırmak için küçük değişikliklere ihtiyacı vardır. Örneğin, CSV biçiminde sağladığınız giriş verileri, kodunuzda kullanabilmeniz için açıkça bir veri kümesine dönüştürülmelidir. R dilinde kullanılan veri ve sütun türleri, tasarımcıda kullanılan veri ve sütun türlerinden bazı yollarla da farklılık gösterir.
 
-1. Betiğinizin 16 KB 'den büyük olması durumunda, CommandLine gibi hataların *16597 karakter sınırını aşması*Için **betik paketi** bağlantı noktasını kullanın. 
+1. Betiğinizin 16 KB 'den büyük olması durumunda, CommandLine gibi hataların *16597 karakter sınırını aşması* Için **betik paketi** bağlantı noktasını kullanın. 
     
     1. Betiği ve diğer özel kaynakları bir ZIP dosyasına paketleyin.
     1. Zip dosyasını bir **dosya veri kümesi** olarak Studio 'ya yükleyin. 
@@ -216,7 +216,7 @@ Tasarımcıda depolanan veri kümeleri, bu modülle yüklendiğinde otomatik ola
     }
     ```
 
-1.  **Rastgele çekirdek**Için, R ortamının içinde rastgele çekirdek değeri olarak kullanılacak bir değer girin. Bu parametre, `set.seed(value)` R Code 'da çağırma ile eşdeğerdir.  
+1.  **Rastgele çekirdek** Için, R ortamının içinde rastgele çekirdek değeri olarak kullanılacak bir değer girin. Bu parametre, `set.seed(value)` R Code 'da çağırma ile eşdeğerdir.  
 
 1. İşlem hattını gönderme.  
 
@@ -237,7 +237,7 @@ Sonuçları R betiğine yazdırmanız gerekirse, yazdırılan sonuçları modül
 
 Execute R betiği modülü, giriş olarak rastgele R betik dosyalarını destekler. Bunları kullanmak için,. zip dosyasının bir parçası olarak çalışma alanınıza yüklemeniz gerekir.
 
-1. R kodu içeren bir. zip dosyasını çalışma alanınıza yüklemek için **veri kümeleri** varlık sayfasına gidin. **Veri kümesi oluştur**' u seçin ve ardından **yerel dosya** ve **Dosya** veri kümesi türü seçeneğini belirleyin.  
+1. R kodu içeren bir. zip dosyasını çalışma alanınıza yüklemek için **veri kümeleri** varlık sayfasına gidin. **Veri kümesi oluştur** ' u seçin ve ardından **yerel dosya** ve **Dosya** veri kümesi türü seçeneğini belirleyin.  
 
 1. Daraltılmış dosyanın, sol modül ağacındaki **veri kümeleri** kategorisi altındaki **veri kümelerinde** göründüğünü doğrulayın.
 
@@ -289,7 +289,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 Bu örnek, bir. zip dosyasında bir veri kümesinin R betiği Yürüt modülüne giriş olarak nasıl kullanılacağını gösterir.
 
-1. Veri dosyasını CSV biçiminde oluşturun ve **mydatafile.csv**olarak adlandırın.
+1. Veri dosyasını CSV biçiminde oluşturun ve **mydatafile.csv** olarak adlandırın.
 1. Bir. zip dosyası oluşturun ve CSV dosyasını arşive ekleyin.
 1. Daraltılmış dosyayı Azure Machine Learning çalışma alanınıza yükleyin. 
 1. Elde edilen veri kümesini **yürütme R betik** modülünüzün **scriptpaket** girişine bağlayın.
@@ -505,4 +505,4 @@ Aşağıdaki önceden yüklenmiş R paketleri şu anda kullanılabilir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın.

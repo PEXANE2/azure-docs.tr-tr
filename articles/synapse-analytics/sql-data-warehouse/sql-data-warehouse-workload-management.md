@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: e54e0ed1a3292cee400774d02f61514f54370151
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 761976741bf794a21182e8f962b274ae32925060
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85208544"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324480"
 ---
 # <a name="what-is-workload-management"></a>İş yükü yönetimi nedir?
 
@@ -42,7 +42,7 @@ Geçmişte, Azure 'da SYNAPSE SQL SYNAPSE, [kaynak sınıflar](resource-classes-
 
 Örneğin, smallrc 'ye geçici bir kullanıcı rolü üyeliği verilmesi, kullanıcının sistemdeki belleğin %100 ' i kullanmasına izin verilir.  Kaynak sınıflarıyla birlikte, önemli iş yükleri için ayrılan kaynakları ayıracağından ve kaynakların kullanılabilir olduğundan emin olmanın bir yolu yoktur.
 
-Azure SYNAPSE 'de SYNAPSE SQL havuzu iş yükü yönetimi üç üst düzey kavramdan oluşur: [Iş yükü sınıflandırması](sql-data-warehouse-workload-classification.md), [iş yükü önemi](sql-data-warehouse-workload-importance.md)ve [iş yükü yalıtımı](sql-data-warehouse-workload-isolation.md).  Bu yetenekler, iş yükünüzün sistem kaynaklarını kullanma konusunda daha fazla denetim sağlar.
+Azure SYNAPSE 'de adanmış SQL havuzu iş yükü yönetimi üç üst düzey kavramdan oluşur: [Iş yükü sınıflandırması](sql-data-warehouse-workload-classification.md), [iş yükü önemi](sql-data-warehouse-workload-importance.md)ve [iş yükü yalıtımı](sql-data-warehouse-workload-isolation.md).  Bu yetenekler, iş yükünüzün sistem kaynaklarını kullanma konusunda daha fazla denetim sağlar.
 
 İş yükü sınıflandırması, bir iş yükü grubuna istek atama ve önem düzeylerini ayarlama kavramıdır.  Tarihsel olarak, bu atama [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class)kullanarak rol üyeliğiyle yapılır.  Bu eylem artık [Iş yükü oluşturma CLASSIFER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)aracılığıyla yapılabilir.  Sınıflandırma özelliği, isteklerin sınıflandırılacağı etiket, oturum ve zaman gibi daha zengin bir seçenek kümesi sağlar.
 

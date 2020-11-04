@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: a36c7076de0c4db64b67f4eba38de4daf4213bca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f46222740ad668b8bb6ec9eb85e78efb0f673528
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446701"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322250"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning 'da güvenli veri erişimi
 
@@ -29,7 +29,7 @@ Azure Machine Learning buluttaki verilerinize bağlanmanızı kolaylaştırır. 
     
 ## <a name="data-workflow"></a>Veri iş akışı
 
-Bulut tabanlı depolama çözümünüzdeki verileri kullanmaya hazırsanız, aşağıdaki veri teslimi iş akışını öneririz. Bu iş akışı, Azure 'daki bulut tabanlı bir depolama hizmetinde bir [Azure depolama hesabınız](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) ve verileriniz olduğunu varsayar. 
+Bulut tabanlı depolama çözümünüzdeki verileri kullanmaya hazırsanız, aşağıdaki veri teslimi iş akışını öneririz. Bu iş akışı, Azure 'daki bulut tabanlı bir depolama hizmetinde bir [Azure depolama hesabınız](../storage/common/storage-account-create.md?tabs=azure-portal) ve verileriniz olduğunu varsayar. 
 
 1. Azure depolama verilerinize bağlantı bilgilerini depolamak için bir [Azure Machine Learning veri deposu](#datastores) oluşturun.
 
@@ -81,9 +81,9 @@ Veri kümeleri yerel dosyalardan, genel URL 'lerden, [Azure açık veri](https:/
 
 2 tür veri kümesi vardır: 
 
-+ Bir [dosya veri kümesi](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py&preserve-view=true) , veri mağazalarınızın veya genel URL 'nizin tek veya birden çok dosyasına başvurur. Verileriniz zaten Temizleme ve eğitim denemeleri ' de kullanıma hazırsa, dosya veri kümeleri tarafından başvurulan dosyaları işlem Hedefinizle [karşıdan yükleyebilir veya bağlayabilirsiniz](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) .
++ Bir [dosya veri kümesi](/python/api/azureml-core/azureml.data.file_dataset.filedataset?preserve-view=true&view=azure-ml-py) , veri mağazalarınızın veya genel URL 'nizin tek veya birden çok dosyasına başvurur. Verileriniz zaten Temizleme ve eğitim denemeleri ' de kullanıma hazırsa, dosya veri kümeleri tarafından başvurulan dosyaları işlem Hedefinizle [karşıdan yükleyebilir veya bağlayabilirsiniz](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) .
 
-+ [Tabulardataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) , belirtilen dosya veya dosya listesini ayrıştırarak verileri tablolu biçimde temsil eder. Daha fazla düzenleme ve temizleme için TabularDataset ' i Pandas veya Spark veri çerçevesine yükleyebilirsiniz. ' Den Tabulardataset 'ler oluşturabileceğiniz veri biçimlerinin tamamen listesi için, [Tabulardatasetfactory sınıfına](https://aka.ms/tabulardataset-api-reference)bakın.
++ [Tabulardataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) , belirtilen dosya veya dosya listesini ayrıştırarak verileri tablolu biçimde temsil eder. Daha fazla düzenleme ve temizleme için TabularDataset ' i Pandas veya Spark veri çerçevesine yükleyebilirsiniz. ' Den Tabulardataset 'ler oluşturabileceğiniz veri biçimlerinin tamamen listesi için, [Tabulardatasetfactory sınıfına](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory)bakın.
 
 Ek veri kümesi özellikleri aşağıdaki belgelerde bulunabilir:
 
@@ -100,7 +100,7 @@ Veri kümeleri ile Azure Machine Learning özellikleriyle sorunsuz tümleştirme
      + [Tasarımcı](tutorial-designer-automobile-price-train-score.md#import-data)
      + [bilgisayarların](how-to-train-with-datasets.md)
      + [Azure Machine Learning işlem hatları](how-to-create-your-first-pipeline.md)
-+ [Makine öğrenimi ardışık düzenleri](how-to-create-your-first-pipeline.md)'nde [Batch çıkarımı](how-to-use-parallel-run-step.md) ile Puanlama için veri kümelerine erişin.
++ [Makine öğrenimi ardışık düzenleri](how-to-create-your-first-pipeline.md)'nde [Batch çıkarımı](./tutorial-pipeline-batch-scoring-classification.md) ile Puanlama için veri kümelerine erişin.
 + [Veri kayması](#drift) algılaması için bir veri kümesi İzleyicisi ayarlayın.
 
 <a name="label"></a>

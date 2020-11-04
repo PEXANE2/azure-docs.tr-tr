@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: aebe1d995f3cb6da4663876b8d39d36a1a8b16c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a21d2f0debb2ade8e46b0cdb5b3fa5b51f0a180c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030176"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323859"
 ---
 # <a name="user-defined-schemas-within-synapse-sql"></a>SYNAPSE SQL içindeki kullanıcı tanımlı şemalar
 
@@ -27,7 +27,7 @@ Geleneksel analiz mimarisi genellikle iş yüküne, etki alanına veya güvenli�
 Bunun yerine, SYNAPSE SQL tüm analiz iş yükünü tek bir veritabanı içinde çalıştırır. Çapraz veritabanı birleştirmelerine izin verilmez. SYNAPSE SQL, ambarın tarafından kullanılan tüm tabloların tek bir veritabanı içinde depolanmasını bekler.
 
 > [!NOTE]
-> SQL havuzları, herhangi bir türdeki çapraz veritabanı sorgularını desteklemez. Sonuç olarak, bu düzenin faydalarından yararlanan analiz uygulamalarının yeniden gözden geçirilmesi gerekir. İsteğe bağlı SQL (Önizleme), çapraz veritabanı sorgularını destekler.
+> Adanmış SQL havuzları, herhangi bir türdeki çapraz veritabanı sorgularını desteklemez. Sonuç olarak, bu düzenin faydalarından yararlanan analiz uygulamalarının yeniden gözden geçirilmesi gerekir. Sunucusuz SQL Havuzu (Önizleme), çapraz veritabanı sorgularını destekler.
 
 ## <a name="user-defined-schema-recommendations"></a>Kullanıcı tanımlı şema önerileri
 

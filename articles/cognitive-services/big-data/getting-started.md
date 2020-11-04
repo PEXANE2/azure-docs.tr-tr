@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 5256db4547f8c19960a6f470ce3c84b2eef25e24
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 444b76a594e768face892462da12a1cbb35a5106
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776621"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324678"
 ---
 # <a name="getting-started"></a>Başlarken
 
@@ -31,19 +31,19 @@ Büyük veri bilişsel hizmetlerini kullanmak için, ilk olarak iş akışımız
 
 ### <a name="cloud-services"></a>Bulut hizmetleri
 
-Bulut tabanlı bilişsel hizmetler, Azure 'da barındırılan akıllı algoritmalardır. Bu hizmetler eğitim olmadan kullanıma yöneliktir, yalnızca bir internet bağlantısına ihtiyacınız vardır. Azure portal veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows)ile bilişsel [bir hizmet oluşturabilirsiniz](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows) .
+Bulut tabanlı bilişsel hizmetler, Azure 'da barındırılan akıllı algoritmadır. Bu hizmetler eğitim olmadan kullanıma yöneliktir, yalnızca bir internet bağlantısına ihtiyacınız vardır. Azure portal veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows)ile bilişsel [bir hizmet oluşturabilirsiniz](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows) .
 
 ### <a name="containerized-services-optional"></a>Kapsayıcılı hizmetler (isteğe bağlı)
 
-Uygulamanız veya iş yükünüz çok büyük veri kümeleri kullanıyorsa, özel ağ gerektirir veya buluta başvuramıyorum, Cloud Services ile iletişim kurma imkansızçıkabilir. Bu durumda Kapsayıcılı bilişsel hizmetler şu avantajlara sahiptir:
+Uygulamanız veya iş yükünüz büyük veri kümeleri kullanıyorsa, özel ağ gerektirir veya buluta başvuramadığı takdirde, Cloud Services ile iletişim kurma imkansızçıkabilir. Bu durumda Kapsayıcılı bilişsel hizmetler şu avantajlara sahiptir:
 
-* **Düşük bağlantı**: Kapsayıcılı bilişsel Hizmetleri, hem bulutta hem de kapalı bir bilgi işlem ortamında dağıtabilirsiniz. Uygulamanız buluta başvuramıyorum, uygulamanıza Kapsayıcılı bilişsel hizmetler dağıtımı yapmayı göz önünde bulundurun.
+* **Düşük bağlantı** : Kapsayıcılı bilişsel Hizmetleri, hem bulutta hem de kapalı bir bilgi işlem ortamında dağıtabilirsiniz. Uygulamanız buluta başvuramıyorum, uygulamanıza Kapsayıcılı bilişsel hizmetler dağıtımı yapmayı göz önünde bulundurun.
 
-* **Düşük gecikme süresi**: Kapsayıcılı hizmetler buluta/buluttan gidiş dönüş iletişimi gerektirmediğinden, yanıtlar çok daha düşük gecikme süreleriyle döndürülür.
+* **Düşük gecikme süresi** : Kapsayıcılı hizmetler buluta/buluttan gidiş dönüş iletişimi gerektirmediğinden, yanıtlar çok daha düşük gecikme süreleriyle döndürülür.
 
-* **Gizlilik ve veri güvenliği**: Kapsayıcılı Hizmetleri özel ağlara dağıtarak gizli verilerin ağdan ayrılmaması için.
+* **Gizlilik ve veri güvenliği** : Kapsayıcılı Hizmetleri özel ağlara dağıtarak gizli verilerin ağdan ayrılmaması için.
 
-* **Yüksek ölçeklenebilirlik**: Kapsayıcılı hizmetlerin "oran limitleri" yoktur ve Kullanıcı tarafından yönetilen bilgisayarlarda çalışır. Bu nedenle, çok daha büyük iş yüklerini işlemek için bilişsel hizmetleri son olmadan ölçeklendirebilirsiniz.
+* **Yüksek ölçeklenebilirlik** : Kapsayıcılı hizmetlerin "oran limitleri" yoktur ve Kullanıcı tarafından yönetilen bilgisayarlarda çalışır. Bu nedenle, çok daha büyük iş yüklerini işlemek için bilişsel hizmetleri son olmadan ölçeklendirebilirsiniz.
 
 Kapsayıcılı bir bilişsel hizmet oluşturmak için [Bu kılavuzu](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support?tabs=luis) izleyin.
 
@@ -70,7 +70,7 @@ Azure Databricks, tek tıklamayla kurulum, kolaylaştırılmış iş akışları
 İsteğe bağlı olarak, SYNAPSE Analytics 'i kullanarak bir Spark kümesi oluşturabilirsiniz. Azure SYNAPSE Analytics, kurumsal veri depolama ve büyük veri analizlerini birlikte sunar. Bu sayede, daha az sayıda isteğe bağlı veya sağlanan kaynakları kullanarak koşullarınızda verileri sorgulama özgürlüğü elde edersiniz. SYNAPSE Analytics 'i kullanmaya başlamak için şu adımları izleyin:
 
 1. [Bir Synapse çalışma alanı (Önizleme) oluşturun](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace).
-1. [Azure Portal kullanarak yeni bir Apache Spark Havuzu (Önizleme) oluşturun](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool-portal).
+1. [Azure Portal kullanarak yeni bir sunucusuz Apache Spark Havuzu (Önizleme) oluşturun](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool-portal).
 
 SYNAPSE Analytics 'te bilişsel hizmetler için büyük veri varsayılan olarak yüklüdür.
 
@@ -98,7 +98,7 @@ Spark kümenizi ve ortamınızı ayarladıktan sonra kısa bir örnek çalışt�
 
     <img src="media/databricks-notebook-details.jpg" alt="New notebook details" width="50%"/>
 
-    **Oluştur**’u seçin.
+    **Oluştur** ’u seçin.
 
 1. Bu kod parçacığını yeni Not defterinize yapıştırın.
 

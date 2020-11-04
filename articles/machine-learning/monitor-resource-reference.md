@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2020
-ms.openlocfilehash: edd2b3e02c1a768b1f18a62faaf9b59539b92774
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: be8d6ca79a43ddd2bd709390dd476cb9dcfa7b29
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739143"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323948"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Azure Machine Learning veri başvurusunu izleme
 
@@ -22,7 +22,7 @@ Azure Machine Learning çalışma alanınızdan Azure Izleyici tarafından topla
 
 ## <a name="metrics"></a>Ölçümler
 
-Bu bölümde, Azure Machine Learning için toplanan otomatik olarak toplanan tüm platform ölçümleri listelenmektedir. Bu ölçümler için kaynak sağlayıcısı, [Microsoft. MachineLearningServices/Workspaces](/azure/azure-monitor/platform/metrics-supported#microsoftmachinelearningservicesworkspaces).
+Bu bölümde, Azure Machine Learning için toplanan otomatik olarak toplanan tüm platform ölçümleri listelenmektedir. Bu ölçümler için kaynak sağlayıcısı, [Microsoft. MachineLearningServices/Workspaces](../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces).
 
 **Model**
 
@@ -73,7 +73,7 @@ Eğitim çalıştırmaları hakkında bilgiler.
 
 ## <a name="metric-dimensions"></a>Ölçüm boyutları
 
-Ölçüm boyutları hakkında daha fazla bilgi için bkz. [çok boyutlu ölçümler](/azure/azure-monitor/platform/data-platform-metrics#multi-dimensional-metrics).
+Ölçüm boyutları hakkında daha fazla bilgi için bkz. [çok boyutlu ölçümler](../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics).
 
 Azure Machine Learning, ölçümleriyle ilişkili aşağıdaki boyutlara sahiptir.
 
@@ -87,7 +87,7 @@ Azure Machine Learning, ölçümleriyle ilişkili aşağıdaki boyutlara sahipti
 | NodeId | İşin çalıştığı yerde oluşturulan düğümün KIMLIĞI. Yalnızca Cpukullanımı ve Gpukullanımı için kullanılabilir. |
 | RunId | Çalışma/iş KIMLIĞI. Yalnızca Cpukullanımı ve Gpukullanımı için kullanılabilir. |
 | ComputeType | Çalıştırmanın kullandığı işlem türü. Yalnızca tamamlanan çalıştırmalar, başarısız çalıştırmalar ve başlatılan çalıştırmalar için kullanılabilir. |
-| PipelineStepType | Çalıştırmada kullanılan [ardışık düzen Inestep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py&preserve-view=true) türü. Yalnızca tamamlanan çalıştırmalar, başarısız çalıştırmalar ve başlatılan çalıştırmalar için kullanılabilir. |
+| PipelineStepType | Çalıştırmada kullanılan [ardışık düzen Inestep](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?preserve-view=true&view=azure-ml-py) türü. Yalnızca tamamlanan çalıştırmalar, başarısız çalıştırmalar ve başlatılan çalıştırmalar için kullanılabilir. |
 | Publishedpipelineıd | Çalıştırmada kullanılan yayınlanan işlem hattının KIMLIĞI. Yalnızca tamamlanan çalıştırmalar, başarısız çalıştırmalar ve başlatılan çalıştırmalar için kullanılabilir. |
 | RunType | Çalıştırma türü. Yalnızca tamamlanan çalıştırmalar, başarısız çalıştırmalar ve başlatılan çalıştırmalar için kullanılabilir. |
 
@@ -116,7 +116,7 @@ Aşağıdaki tabloda, etkinlik günlüğünde oluşturulabilecek Azure Machine L
 
 Bu bölümde, Azure Machine Learning çalışma alanı için toplayacağınız kaynak günlüklerinin türleri listelenmektedir.
 
-Kaynak sağlayıcısı ve tür: [Microsoft. MachineLearningServices/Workspace](/azure/azure-monitor/platform/resource-logs-categories#microsoftmachinelearningservicesworkspaces).
+Kaynak sağlayıcısı ve tür: [Microsoft. MachineLearningServices/Workspace](../azure-monitor/platform/resource-logs-categories.md#microsoftmachinelearningservicesworkspaces).
 
 | Kategori | Görünen Ad |
 | ----- | ----- |
@@ -231,4 +231,4 @@ Aşağıdaki şemalar Azure Machine Learning tarafından kullanılıyor
 ## <a name="see-also"></a>Ayrıca bkz.
 
 - İzleme Azure Machine Learning açıklaması için bkz. [izleme Azure Machine Learning](monitor-azure-machine-learning.md) .
-- Azure kaynaklarını izleme hakkında ayrıntılı bilgi için bkz. Azure [izleyici ile Azure kaynaklarını izleme](/azure/azure-monitor/insights/monitor-azure-resource) .
+- Azure kaynaklarını izleme hakkında ayrıntılı bilgi için bkz. Azure [izleyici ile Azure kaynaklarını izleme](../azure-monitor/insights/monitor-azure-resource.md) .

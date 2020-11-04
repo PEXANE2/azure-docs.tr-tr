@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: Azure portal kullanarak Apache Spark havuzu oluşturma'
-description: Bu kılavuzdaki adımları izleyerek Azure portal kullanarak yeni bir Apache Spark havuzu oluşturun.
+title: 'Hızlı başlangıç: Azure portal kullanarak sunucusuz Apache Spark havuzu oluşturma'
+description: Bu kılavuzdaki adımları izleyerek Azure portal kullanarak bir sunucusuz Apache Spark havuzu oluşturun.
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7578ca12c46ec6de626eeb1340ce680eda6bbb92
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: e84afc949a84da90a4799d7db3b3e7ad3e0057a3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041300"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323514"
 ---
-# <a name="quickstart-create-a-new-apache-spark-pool-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak yeni bir Apache Spark havuzu oluşturma
+# <a name="quickstart-create-a-new-serverless-apache-spark-pool-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak yeni bir sunucusuz Apache Spark havuzu oluşturma
 
 Azure SYNAPSE Analytics, verilerinizi alma, dönüştürme, modellemeyle, analiz etmenize ve dağıtmanıza yardımcı olmak için çeşitli analiz motorları sunmaktadır. Apache Spark havuzu, açık kaynak büyük veri işlem özellikleri sağlar. SYNAPSE çalışma alanınızda bir Apache Spark havuzu oluşturduktan sonra, veriler yüklenebilir, modellenebilir, işlenebilir ve daha hızlı analitik Öngörüler için dağıtılabilir.
 
@@ -67,7 +67,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 4. **Sonraki: Etiketler** ' i seçin. Etiket eklemeyin.
     ![Apache Spark havuzu akış oluşturma-ek ayarlar sekmesi.](media/quickstart-create-apache-spark-pool/create-spark-pool-03-tags.png)
 
-5. **Gözden geçir ve oluştur** ’u seçin.
+5. **Gözden geçir + oluştur** ’u seçin.
 
 6. Ayrıntıların daha önce girildiği duruma göre doğru göründüğünden emin olun ve **Oluştur** ' u seçin.
     ![Apache Spark havuzu akış oluşturma-ayarları gözden geçirme sekmesi.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-05.png)
@@ -99,4 +99,4 @@ Apache Spark havuzunu silmek istiyorsanız, aşağıdakileri yapın:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Bkz. [hızlı başlangıç: Apache Spark Not defteri oluşturma](quickstart-apache-spark-notebook.md).
-- Bkz. [hızlı başlangıç: Azure Portal kullanarak SYNAPSE SQL havuzu oluşturma](quickstart-create-sql-pool-portal.md).
+- Bkz. [hızlı başlangıç: Azure Portal kullanarak SYNAPSE ADANMıŞ SQL havuzu oluşturma](quickstart-create-sql-pool-portal.md).

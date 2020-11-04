@@ -9,12 +9,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 1cfe617ab424fbb29e2866cd98d4b8c390f306c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c02abf095beefdd131a5835d015175d56a63de47
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91346270"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322822"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>Basit model ile yanıtı tahmin etme
 
@@ -71,7 +71,7 @@ Ardından, fiyatı kaydetmek ve yatay ağırlık eksenine bağlamak için dikey 
 
 ![Ağırlık ve fiyat eksenleri](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/weight-and-price-axes.png)
 
-Bu verileri şimdi ele alacak ve bir *dağılım*çiziminde etkinleştireceğiz. Bu, sayısal veri kümelerini görselleştirmenin harika bir yoludur.
+Bu verileri şimdi ele alacak ve bir *dağılım* çiziminde etkinleştireceğiz. Bu, sayısal veri kümelerini görselleştirmenin harika bir yoludur.
 
 İlk veri noktası için 1,01 karada dikey bir çizgi sunuyoruz. Ardından, $7.366 adresinden yatay bir çizgi duyduk. Nerede karşılıyorsa bir nokta çiztik. Bu, ilk baklava mizi temsil eder.
 
@@ -82,13 +82,13 @@ Bu verileri şimdi ele alacak ve bir *dağılım*çiziminde etkinleştireceğiz.
 ## <a name="draw-the-model-through-the-data-points"></a>Modeli veri noktaları aracılığıyla çizme
 Artık noktalara ve squınt 'e baktığınızda, koleksiyon FAT, benzer bir satır gibi görünür. Markemizi ele geçirebilir ve üzerinden düz bir çizgi çiziyoruz.
 
-Bir çizgi çizerek bir *model*oluşturduk. Bunu gerçek dünya alarak ve uyarlaması bir çizgi üzerine getirerek düşünün. Artık çizgi yanlış; satır tüm veri noktalarına gitmez. Ancak kullanışlı bir basitleştirmesi.
+Bir çizgi çizerek bir *model* oluşturduk. Bunu gerçek dünya alarak ve uyarlaması bir çizgi üzerine getirerek düşünün. Artık çizgi yanlış; satır tüm veri noktalarına gitmez. Ancak kullanışlı bir basitleştirmesi.
 
 ![Doğrusal regresyon çizgisi](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/linear-regression-line.png)
 
 Tüm noktaların tam olarak çizgi üzerinden gitmeyeceği aslında Tamam ' dır. Veri bilimcileri bunu, modelin bu olduğunu, ve ardından her noktanın onunla ilişkili bir *gürültü* veya *varyans* olduğunu söyleyerek anlamıştır. Temel alınan mükemmel ilişki bulunur ve ardından gürültü ve belirsizlik ekleyen griyi, gerçek dünyasın.
 
-Soruyu ne *kadar çok ne kadar* yanıtlamaya çalıştığımız için bu bir *gerileme*adı verilir. Düz bir çizgi kullandığımızda *Doğrusal bir gerileme*.
+Soruyu ne *kadar çok ne kadar* yanıtlamaya çalıştığımız için bu bir *gerileme* adı verilir. Düz bir çizgi kullandığımızda *Doğrusal bir gerileme*.
 
 ## <a name="use-the-model-to-find-the-answer"></a>Yanıtı bulmak için modeli kullanın
 Şimdi bir modelimiz var ve bu soruyu sorduk: 1,35 simgeyi seçtiğinizde baklava maliyeti ne kadar olacaktır?
@@ -98,7 +98,7 @@ Sorularınızı yanıtlamak için, 1,35 Karatları ve dikey bir çizgi çiztik. 
 ![Modeldeki yanıtı bulma](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/find-the-answer.png)
 
 ## <a name="create-a-confidence-interval"></a>Güven aralığı oluşturma
-Bu tahmine ne kadar duyarlı olduğunu merak etmek doğal bir değer. 1,35 simgeyi seçtiğinizde dörtgeni 'nin $10.000 ' e yakın olacağını veya çok daha yüksek veya daha düşük bir değere sahip olup olmadığını bilmemiz yararlı olur. Bu sorunu anlamak için, noktaların çoğunu içeren regresyon çizgisinin etrafında bir zarf çizelim. Bu zarf, *güven sıklığımızda*adı verilir: Bu, geçmişte olduğu gibi fiyatların bu zarfa düştiğinden emin veriyoruz. 1,35 simgeyi seçtiğinizde çizgisinin, bu zarfın üst ve alt kısmının kesiştiği yerin üzerinde iki yatay çizgi çizebiliriz.
+Bu tahmine ne kadar duyarlı olduğunu merak etmek doğal bir değer. 1,35 simgeyi seçtiğinizde dörtgeni 'nin $10.000 ' e yakın olacağını veya çok daha yüksek veya daha düşük bir değere sahip olup olmadığını bilmemiz yararlı olur. Bu sorunu anlamak için, noktaların çoğunu içeren regresyon çizgisinin etrafında bir zarf çizelim. Bu zarf, *güven sıklığımızda* adı verilir: Bu, geçmişte olduğu gibi fiyatların bu zarfa düştiğinden emin veriyoruz. 1,35 simgeyi seçtiğinizde çizgisinin, bu zarfın üst ve alt kısmının kesiştiği yerin üzerinde iki yatay çizgi çizebiliriz.
 
 ![Olasılık aralığı](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/confidence-interval.png)
 
@@ -109,7 +109,7 @@ Veri bilimcilerinin ne yapması gerektiğini aldık ve bunu çizim yaparken yapm
 
 * Verilerle yanıtlayabilmemiz için bir soru sorduk
 * *Doğrusal regresyon* kullanarak bir *model* oluşturduk
-* *Güven aralığı* ile bir *tahmin*yaptık
+* *Güven aralığı* ile bir *tahmin* yaptık
 
 Ve bunu yapmak için matematik veya bilgisayar kullandık.
 
@@ -129,4 +129,4 @@ Bugün, doğrusal regresyon yapma hakkında konuşduk ve verileri kullanarak bir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Machine Learning Studio (klasik) ile ilk veri bilimi denemesini deneyin](create-experiment.md)
-* [Microsoft Azure Machine Learning bir giriş alın](/azure/machine-learning/overview-what-is-azure-ml)
+* [Microsoft Azure Machine Learning bir giriş alın](../overview-what-is-azure-ml.md)

@@ -1,5 +1,5 @@
 ---
-title: Kod, proje ve veritabanı örnekleri Azure Analysis Services | Microsoft Docs
+title: Azure Analysis Services Code, Project ve Database örnekleri
 description: Bu makalede, Azure Analysis Services için kod, proje ve veritabanı örnekleri hakkında bilgi edinmek için kaynaklar açıklanır.
 author: minewiskan
 ms.service: azure-analysis-services
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b63581b5192c93a8377a642c21eacbd291579b22
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 920cc5142d14308fce412ad44543ddc46dc1663e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013687"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324376"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services örnekleri
 
@@ -28,7 +28,7 @@ GitHub üzerinde [Analysis Services Adventure Works](https://github.com/Microsof
 
 ## <a name="sample-database-on-azure"></a>Azure 'da örnek veritabanı
 
-Azure SYNAPSE Analytics (SQL veri ambarı), sağlanan bir kaynağa eklenebilecek bir örnek AdventureWorksDW veritabanı sağlar. Daha fazla bilgi için bkz. [hızlı başlangıç: Azure SYNAPSE ANALYTICS SQL havuzu oluşturma ve sorgulama](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md).
+Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı), sağlanan bir kaynağa eklenebilecek bir örnek AdventureWorksDW veritabanı sağlar. Daha fazla bilgi edinmek için bkz. [hızlı başlangıç: Azure SYNAPSE Analytics 'te adanmış BIR SQL havuzu oluşturma ve sorgulama ](/azure/sql-data-warehouse/create-data-warehouse-portal).
 
 ## <a name="sample-databases-on-github"></a>GitHub 'da örnek veritabanları
 
@@ -40,7 +40,7 @@ GitHub 'daki Bu örnek veritabanları, kendi modellerinizi oluşturmak ve test e
 
 ## <a name="adventure-works-internet-sales-sample-model-in-azure-portal"></a>Adventure Works Internet Sales örnek modeli Azure portal
 
-Azure portal bir Analysis Services sunucunuz varsa, bir örnek modeli hızla ve kolayca oluşturabilirsiniz. Sunucunuzun genel bakış Azure portal sayfasında, **yeni model**' e tıklayın ve ardından **bir veri kaynağı seçin**bölümünde **örnek veriler**' i seçin.
+Azure portal bir Analysis Services sunucunuz varsa, bir örnek modeli hızla ve kolayca oluşturabilirsiniz. Sunucunuzun genel bakış Azure portal sayfasında, **yeni model** ' e tıklayın ve ardından **bir veri kaynağı seçin** bölümünde **örnek veriler** ' i seçin.
 
 
 

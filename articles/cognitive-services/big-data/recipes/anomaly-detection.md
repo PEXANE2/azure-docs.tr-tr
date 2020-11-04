@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
-ms.openlocfilehash: 4f6fa73130e3e78b573a866dbb6524acbc88c50c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa650fe9cb7df64a6a7a948224be225ecfad9057
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88691471"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324620"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>Tarif: büyük veriler için bilişsel hizmetler ile tahmine dayalı bakım
 
-Bu tarif, IoT cihazlarının tahmine dayalı bakımı için Spark üzerinde Azure SYNAPSE Analytics ve bilişsel hizmetler 'i nasıl kullanabileceğinizi gösterir. [Cosmosdb ve SYNAPSE link](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples) örneği ile birlikte takip edeceğiz. Bu tarifi basit tutmak için, CosmosDB ve SYNAPSE bağlantısı aracılığıyla akışı verileri almak yerine bir CSV dosyasından verileri doğrudan okuyacağız. SYNAPSE bağlantı örneğine bakmanızı önemle öneririz.
+Bu tarif, IoT cihazlarının tahmine dayalı bakımı için Apache Spark Azure SYNAPSE Analytics ve bilişsel hizmetler 'i nasıl kullanabileceğinizi gösterir. [Cosmosdb ve SYNAPSE link](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples) örneği ile birlikte takip edeceğiz. Bu tarifi basit tutmak için, CosmosDB ve SYNAPSE bağlantısı aracılığıyla akışı verileri almak yerine bir CSV dosyasından verileri doğrudan okuyacağız. SYNAPSE bağlantı örneğine bakmanızı önemle öneririz.
 
 ## <a name="hypothetical-scenario"></a>Kuramsal senaryo
 
@@ -31,7 +31,7 @@ Veride rastgele bir sıklıkta bir grup olabilir. Bu durumlarda, RPM değerleri 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
-* [Spark havuzuyla](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool) yapılandırılmış [Azure SYNAPSE çalışma alanı](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)
+* [Sunucusuz Apache Spark havuzuyla](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool) yapılandırılmış [Azure SYNAPSE çalışma alanı](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)
 
 ## <a name="setup"></a>Kurulum
 

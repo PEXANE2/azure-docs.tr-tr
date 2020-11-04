@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: 9405eb01dbe2d7ea9d4a9e64bf7dd79ca356e9f5
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 9abf5a17330566aee2414b8499f228d297880cbf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926997"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323790"
 ---
 # <a name="evaluate-model-module"></a>Model modülünü değerlendir
 
@@ -30,7 +30,7 @@ Eğitilen bir modelin doğruluğunu ölçmek için bu modülü kullanın. Bir mo
 
 
 > [!TIP]
-> Model değerlendirmesine yeni çalışıyorsanız, EdX 'in [makine öğrenimi kursu](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) kapsamında Dr. Stephen Elston tarafından video serisini öneririz. 
+> Model değerlendirmesine yeni çalışıyorsanız, EdX 'in [makine öğrenimi kursu](/archive/blogs/machinelearning/new-edx-course-data-science-machine-learning-essentials) kapsamında Dr. Stephen Elston tarafından video serisini öneririz. 
 
 
 ## <a name="how-to-use-evaluate-model"></a>Modeli değerlendir kullanma
@@ -142,4 +142,4 @@ Kümeleme modellerini değerlendirmek için aşağıdaki ölçümler raporlanır
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın.

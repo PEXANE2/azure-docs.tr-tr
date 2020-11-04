@@ -9,12 +9,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: reference
 ms.date: 10/10/2019
-ms.openlocfilehash: b83effa95b17d712d4019f8ab5bf13c4f02a7d2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 864b5e519875029149e93df248aa5953f62ec51e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78206529"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322959"
 ---
 # <a name="known-issues-and-troubleshooting-the-azure-data-science-virtual-machine"></a>Azure Veri Bilimi Sanal Makinesi bilinen sorunlar ve sorun giderme
 
@@ -30,7 +30,7 @@ Bu makale, Azure Veri Bilimi Sanal Makinesi kullanırken karşılaşabileceğini
 
 ### <a name="disk-encryption-fails-on-the-ubuntu-dsvm"></a>Ubuntu DSVM 'de disk şifrelemesi başarısız oluyor
 
-Azure disk şifrelemesi (ADE) Şu anda Ubuntu DSVM üzerinde desteklenmiyor. Geçici bir çözüm olarak, [Azure yönetilen disklerinin sunucu tarafı şifrelemesini](../../virtual-machines/windows/disk-encryption.md)yapılandırmayı göz önünde bulundurun.
+Azure disk şifrelemesi (ADE) Şu anda Ubuntu DSVM üzerinde desteklenmiyor. Geçici bir çözüm olarak, [Azure yönetilen disklerinin sunucu tarafı şifrelemesini](../../virtual-machines/disk-encryption.md)yapılandırmayı göz önünde bulundurun.
 
 ## <a name="tool-appears-disabled"></a>Araç devre dışı görünüyor
 
@@ -46,4 +46,3 @@ Başlangıçta Windows üzerinde çalışan Hyper-V beklenen davranıştır. Ön
 Son ekranınız şuna benzemelidir:
 
    ![Hyper-V'yi etkinleştirme](./media/workaround/hyperv-enable-dsvm.png)
-

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: 5b40ce0951e2d9c8933d4f0ea9d24b1673e254d6
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 1076b49a101d5657397ef12b8fac672d37e477b0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495718"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324798"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanı nedir?
 
@@ -52,9 +52,9 @@ Aşağıdaki yollarla çalışma alanım ile etkileşim kurabilirsiniz:
 + Web 'de:
     + [Azure Machine Learning Studio ](https://ml.azure.com) 
     + [Azure Machine Learning tasarımcısı](concept-designer.md) 
-+ Python [için Azure Machine Learning SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)olan herhangi bir Python ortamında.
++ Python [için Azure Machine Learning SDK 'sı](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)olan herhangi bir Python ortamında.
 + [R (Önizleme) için Azure Machine Learning SDK 'sı](https://azure.github.io/azureml-sdk-for-r/reference/index.html)olan herhangi bir r ortamında.
-+ Azure Machine Learning [CLI uzantısını](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) kullanarak komut satırında
++ Azure Machine Learning [CLI uzantısını](./reference-azure-machine-learning-cli.md) kullanarak komut satırında
 + [Azure Machine Learning VS Code uzantısı](how-to-manage-resources-vscode.md#workspaces)
 
 
@@ -103,7 +103,7 @@ Yeni bir çalışma alanı oluşturduğunuzda, bu, çalışma alanı tarafından
 + [Azure depolama hesabı](https://azure.microsoft.com/services/storage/): çalışma alanı için varsayılan veri deposu olarak kullanılır.  Azure Machine Learning işlem örneklerinizde kullanılan jupi Not defterleri burada da depolanır. 
   
   > [!IMPORTANT]
-  > Varsayılan olarak, depolama hesabı genel amaçlı bir v1 hesabıdır. Çalışma alanı oluşturulduktan sonra [bunu genel amaçlı v2 'ye yükseltebilirsiniz](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) . Genel amaçlı v2 'ye yükselttikten sonra depolama hesabında hiyerarşik ad alanını etkinleştirmeyin.
+  > Varsayılan olarak, depolama hesabı genel amaçlı bir v1 hesabıdır. Çalışma alanı oluşturulduktan sonra [bunu genel amaçlı v2 'ye yükseltebilirsiniz](../storage/common/storage-account-upgrade.md) . Genel amaçlı v2 'ye yükselttikten sonra depolama hesabında hiyerarşik ad alanını etkinleştirmeyin.
 
   Mevcut bir Azure Depolama hesabını kullanmak için bu bir Premium hesap (Premium_LRS ve Premium_GRS) olamaz. Ayrıca hiyerarşik bir ad alanına sahip olamaz (Azure Data Lake Storage 2. ile kullanılır). Çalışma alanının _varsayılan_ depolama hesabıyla Premium Depolama veya hiyerarşik ad alanları desteklenmez. Premium Storage veya sıradüzensel ad alanını _varsayılan olmayan_ depolama hesaplarıyla birlikte kullanabilirsiniz.
   

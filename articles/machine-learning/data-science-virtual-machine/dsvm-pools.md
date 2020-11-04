@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 0745957620aab7ed4d08cb016c706b56e6da1c5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 789c6c36def21bfe1c2acc8797c1847455a5c86c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708977"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324392"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Paylaşılan veri bilimi sanal makineleri havuzu oluşturma
 
@@ -27,7 +27,7 @@ Bir DSVMs havuzu oluşturmak için birçok yöntem ve teknolojiden yararlanabili
 
 Tüm AI/veri bilimi ekibi tarafından paylaşılan etkileşimli VM havuzları, kullanıcıların her bir kullanıcı kümesi için adanmış bir örnek olması yerine DSVM 'nin kullanılabilir bir örneğinde oturum açmasına olanak tanır. Bu kurulum, kaynakların daha iyi kullanılabilirliğini ve daha etkili kullanımını sunar.
 
-Etkileşimli bir VM havuzu oluşturmak için [Azure sanal makine ölçek kümeleri](https://docs.microsoft.com/azure/virtual-machine-scale-sets/) teknolojisini kullanırsınız. Ölçek kümelerini kullanarak özdeş, yük dengeli ve otomatik ölçeklendirme VM 'Leri grubu oluşturabilir ve yönetebilirsiniz.
+Etkileşimli bir VM havuzu oluşturmak için [Azure sanal makine ölçek kümeleri](../../virtual-machine-scale-sets/index.yml) teknolojisini kullanırsınız. Ölçek kümelerini kullanarak özdeş, yük dengeli ve otomatik ölçeklendirme VM 'Leri grubu oluşturabilir ve yönetebilirsiniz.
 
 Kullanıcı ana havuzun IP veya DNS adresinde oturum açar. Ölçek kümesi, oturumu otomatik olarak ölçek kümesindeki kullanılabilir bir DSVM 'ye yönlendirir. Kullanıcılar, oturum açtığı VM 'den bağımsız olarak tutarlı ve tanıdık bir ortam gerektirdiğinden, ölçek kümesindeki sanal makinenin tüm örnekleri, bir Azure dosya paylaşımında veya bir ağ dosya sistemi (NFS) paylaşımında olduğu gibi paylaşılan bir ağ sürücüsü bağlamalarından oluşur. Kullanıcının paylaşılan çalışma alanı, normalde her bir örnek üzerine takılan paylaşılan dosya deposunda tutulur.
 
@@ -53,7 +53,7 @@ Parametre dosyasına komutlarında yerel olarak başvurulur. Ayrıca, parametrel
 
 [Azure dosya paylaşımının yer aldığı betik](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Extensions/General/mountazurefiles.sh) , GitHub 'Daki Azure Databilimencevm deposunda de mevcuttur. Betik, Azure dosyaları paylaşımından parametre dosyasındaki belirtilen bağlama noktasında takar. Komut dosyası, ilk kullanıcının giriş dizinindeki bağlı sürücüye yönelik yazılım bağlantıları da oluşturur. Azure dosya paylaşımındaki kullanıcıya özgü bir not defteri dizini, `$HOME/notebooks/remote` kullanıcıların Jupyter not defterlerini erişebilmeleri, çalıştırmaları ve kaydedebilmeleri için dizine geçici olarak bağlanır. Her kullanıcının jupi çalışma alanını Azure dosya paylaşımıyla göstermek için VM 'de ek kullanıcılar oluştururken aynı kuralı kullanabilirsiniz.
 
-Sanal Makine Ölçek Kümeleri otomatik ölçeklendirmeyi destekler. Ne zaman ek örnekler oluşturulacağı ve örneklerin ne zaman Ölçeklendirilecek hakkında kurallar belirleyebilirsiniz. Örneğin, VM 'Ler hiç kullanılmayan bulut donanım kullanım maliyetlerine kaydedilecek şekilde sıfıra kadar ölçeği azaltabilirsiniz. Sanal makine ölçek kümelerinin belge sayfaları, [Otomatik ölçeklendirme](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview)için ayrıntılı adımlar sağlar.
+Sanal Makine Ölçek Kümeleri otomatik ölçeklendirmeyi destekler. Ne zaman ek örnekler oluşturulacağı ve örneklerin ne zaman Ölçeklendirilecek hakkında kurallar belirleyebilirsiniz. Örneğin, VM 'Ler hiç kullanılmayan bulut donanım kullanım maliyetlerine kaydedilecek şekilde sıfıra kadar ölçeği azaltabilirsiniz. Sanal makine ölçek kümelerinin belge sayfaları, [Otomatik ölçeklendirme](../../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md)için ayrıntılı adımlar sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

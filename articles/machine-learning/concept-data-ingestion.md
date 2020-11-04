@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 18bbecbe811a9f0bc6a56194830c7e92d8770979
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 401398da4d71f32973f720dd0ca5cc9b550892e8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890172"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323034"
 ---
 # <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Azure Machine Learning iş akışları için veri alma seçenekleri
 
@@ -33,7 +33,7 @@ Veri alımı, yapılandırılmamış verilerin bir veya daha fazla kaynaktan ay�
 
 ## <a name="azure-data-factory"></a>Azure Data Factory
 
-[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) veri alma işlem hatları için veri kaynağı izleme ve Tetikleyicileri için yerel destek sunar.  
+[Azure Data Factory](../data-factory/introduction.md) veri alma işlem hatları için veri kaynağı izleme ve Tetikleyicileri için yerel destek sunar.  
 
 Aşağıdaki tabloda, veri alma iş akışlarınız için Azure Data Factory kullanmanın uzmanları ve dezavantajları özetlenmektedir.
 
@@ -41,11 +41,11 @@ Aşağıdaki tabloda, veri alma iş akışlarınız için Azure Data Factory kul
 ---|---
 Verileri ayıklamak, yüklemek ve dönüştürmek için özel olarak oluşturulmuştur.|Şu anda sınırlı sayıda Azure Data Factory işlem hattı görevi sunmaktadır 
 Veri hareketini ve dönüştürmeleri ölçekleyerek düzenlemek için veri odaklı iş akışları oluşturmanıza olanak tanır.|Yapı ve bakım açısından pahalıdır. Daha fazla bilgi için Azure Data Factory [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) bakın.
-[Azure Databricks](https://docs.microsoft.com/azure/data-factory/transform-data-using-databricks-notebook) ve [Azure Işlevleri](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity) gibi çeşitli Azure araçlarıyla tümleşiktir | Betikleri yerel olarak çalıştırmaz, bunun yerine betik çalıştırmaları için ayrı bir işlem kullanır 
+[Azure Databricks](../data-factory/transform-data-using-databricks-notebook.md) ve [Azure Işlevleri](../data-factory/control-flow-azure-function-activity.md) gibi çeşitli Azure araçlarıyla tümleşiktir | Betikleri yerel olarak çalıştırmaz, bunun yerine betik çalıştırmaları için ayrı bir işlem kullanır 
 Veri kaynağı tarafından tetiklenen veri alımını yerel olarak destekler| 
 Veri hazırlama ve model eğitimi işlemi birbirinden farklıdır.|
 Azure Data Factory veri akışları için gömülü Data kökenini özelliği|
-Betik olmayan yaklaşımlar için düşük kod deneyimi [Kullanıcı arabirimi](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal) sağlar |
+Betik olmayan yaklaşımlar için düşük kod deneyimi [Kullanıcı arabirimi](../data-factory/quickstart-create-data-factory-portal.md) sağlar |
 
 Bu adımlar ve aşağıdaki diyagramda Azure Data Factory veri alımı iş akışı gösterilmektedir.
 
@@ -60,7 +60,7 @@ Bu adımlar ve aşağıdaki diyagramda Azure Data Factory veri alımı iş akı�
 
 ## <a name="azure-machine-learning-python-sdk"></a>Python SDK Azure Machine Learning 
 
-[Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml)ile veri alma görevlerini Azure Machine Learning bir işlem [hattı](how-to-create-your-first-pipeline.md) adımına ekleyebilirsiniz.
+[Python SDK](/python/api/overview/azure/ml)ile veri alma görevlerini Azure Machine Learning bir işlem [hattı](how-to-create-your-first-pipeline.md) adımına ekleyebilirsiniz.
 
 Aşağıdaki tabloda, veri alma görevleri için SDK 'Yı ve bir ML işlem hattı adımını kullanmaya yönelik profesyonelleri ve Con özetlenmektedir.
 

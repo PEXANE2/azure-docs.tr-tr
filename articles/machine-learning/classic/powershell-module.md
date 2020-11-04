@@ -8,16 +8,16 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 04/25/2019
-ms.openlocfilehash: 01c0b6610968c8eaa493a63aa9004d8ea4c36ca2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f66363ec8b64dea1a076f81f4fc89bafe5ca4151
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530775"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322320"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio için PowerShell modülleri (klasik)
 
-**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 PowerShell modüllerini kullanarak, çalışma alanları, veri kümeleri ve Web Hizmetleri gibi Studio (klasik) kaynaklarınızı ve varlıklarınızı programlama yoluyla yönetebilirsiniz.
@@ -36,15 +36,15 @@ Her modül tarafından desteklenen kaynakları görmek için aşağıdaki [deste
 
 Az önce Azure ile etkileşim kurmak için tasarlanan PowerShell modülü, Azurerd 'nin önceki tüm işlevlerini içerir. AzureRM hata düzeltmelerini almaya devam eder, ancak yeni cmdlet 'ler veya özellikler almaz.  Az ve Azurerd, **Azure Resource Manager** dağıtım modeli kullanılarak dağıtılan çözümleri yönetir. Bu kaynaklar Studio (klasik) çalışma alanlarını ve Studio (klasik) "yeni" Web hizmetlerini içerir. 
 
-PowerShell klasik, hem "yeni" hem de "klasik" kaynak türlerini kapsamak için az veya Azurerd ile birlikte yüklenebilir. Ancak, az ve Azurerd 'nin aynı anda yüklü olması önerilmez. Az ve Azurerd arasında karar vermek için Microsoft, gelecekteki tüm dağıtımlar için az önerilir.  Az ve Azurerd hakkında daha fazla bilgi edinin ve Azure PowerShell az olan geçiş yolu ' [na gidin](https://docs.microsoft.com/powershell/azure/new-azureps-module-az).
+PowerShell klasik, hem "yeni" hem de "klasik" kaynak türlerini kapsamak için az veya Azurerd ile birlikte yüklenebilir. Ancak, az ve Azurerd 'nin aynı anda yüklü olması önerilmez. Az ve Azurerd arasında karar vermek için Microsoft, gelecekteki tüm dağıtımlar için az önerilir.  Az ve Azurerd hakkında daha fazla bilgi edinin ve Azure PowerShell az olan geçiş yolu ' [na gidin](/powershell/azure/new-azureps-module-az).
 
-Az kullanmaya başlamak için, [Azure için yükleme yönergelerini az](https://docs.microsoft.com/powershell/azure/install-az-ps)izleyin.
+Az kullanmaya başlamak için, [Azure için yükleme yönergelerini az](/powershell/azure/install-az-ps)izleyin.
 
 ## <a name="powershell-classic"></a><a name="classic"></a> PowerShell klasik
 
-Studio (klasik) [PowerShell klasik modülü](https://aka.ms/amlps) , **klasik dağıtım modeli**kullanılarak dağıtılan kaynakları yönetmenizi sağlar. Bu kaynaklar, Studio (klasik) Kullanıcı varlıkları, "klasik" Web Hizmetleri ve "klasik" Web hizmeti uç noktaları içerir.
+Studio (klasik) [PowerShell klasik modülü](https://aka.ms/amlps) , **klasik dağıtım modeli** kullanılarak dağıtılan kaynakları yönetmenizi sağlar. Bu kaynaklar, Studio (klasik) Kullanıcı varlıkları, "klasik" Web Hizmetleri ve "klasik" Web hizmeti uç noktaları içerir.
 
-Ancak Microsoft, kaynakların dağıtımını ve yönetimini basitleştirmek amacıyla gelecekteki tüm kaynaklar için Kaynak Yöneticisi dağıtım modelini kullanmanızı önerir. Dağıtım modelleri hakkında daha fazla bilgi edinmek istiyorsanız, [Azure Resource Manager ile klasik dağıtım](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) makalesine bakın.
+Ancak Microsoft, kaynakların dağıtımını ve yönetimini basitleştirmek amacıyla gelecekteki tüm kaynaklar için Kaynak Yöneticisi dağıtım modelini kullanmanızı önerir. Dağıtım modelleri hakkında daha fazla bilgi edinmek istiyorsanız, [Azure Resource Manager ile klasik dağıtım](../../azure-resource-manager/management/deployment-models.md) makalesine bakın.
 
 PowerShell klasik ile çalışmaya başlamak için, GitHub 'dan [yayın paketini](https://github.com/hning86/azuremlps/releases) indirin ve [yükleme yönergelerini](https://github.com/hning86/azuremlps/blob/master/README.md)izleyin. Yönergeler, indirilen/daraltılmış DLL 'nin engellemesini kaldırma işleminin yanı sıra PowerShell ortamınıza nasıl içeri aktarılacağını açıklar.
 
@@ -55,11 +55,11 @@ PowerShell klasik, hem "yeni" hem de "klasik" kaynak türlerini kapsamak için a
 
 | Görev | **Az** |  **PowerShell klasik** |
 | --- | --- | --- |
-| Çalışma alanları oluşturma/silme | [Resource Manager şablonları](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) |  |
-| Çalışma alanı taahhüt planlarını yönetme | [New-AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | |
+| Çalışma alanları oluşturma/silme | [Resource Manager şablonları](./deploy-with-resource-manager-template.md) |  |
+| Çalışma alanı taahhüt planlarını yönetme | [New-AzMlCommitmentPlan](/powershell/module/az.machinelearning/new-azmlcommitmentplan) | |
 | Çalışma alanı kullanıcılarını yönetme |  | [Add-Amlworkspace kullanıcıları](https://github.com/hning86/azuremlps#add-amlworkspaceusers)|
-| Web hizmetlerini yönetme | [New-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlwebservice) <br>("yeni" Web Hizmetleri)| [New-AmlWebService](https://github.com/hning86/azuremlps#manage-classic-web-service) <br>("klasik" Web Hizmetleri) |
-| Web hizmeti uç noktalarını/anahtarlarını yönetme |  [Get-AzMlWebServiceKey](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservicekey)|  [Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#manage-classic-web-servcie-endpoint)|
+| Web hizmetlerini yönetme | [New-AzMlWebService](/powershell/module/az.machinelearning/new-azmlwebservice) <br>("yeni" Web Hizmetleri)| [New-AmlWebService](https://github.com/hning86/azuremlps#manage-classic-web-service) <br>("klasik" Web Hizmetleri) |
+| Web hizmeti uç noktalarını/anahtarlarını yönetme |  [Get-AzMlWebServiceKey](/powershell/module/az.machinelearning/get-azmlwebservicekey)|  [Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#manage-classic-web-servcie-endpoint)|
 | Kullanıcı veri kümeleri/eğitilen modellerini yönetme| | [Get-AmlDataset](https://github.com/hning86/azuremlps#manage-user-assets-dataset-trained-model-transform) |
 | Kullanıcı denemeleri yönetme |  | [Start-AmlExperiment](https://github.com/hning86/azuremlps#manage-experiment) |
 | Özel modülleri yönetme | | [New-AmlCustomModule](https://github.com/hning86/azuremlps#manage-custom-module) |
@@ -68,4 +68,4 @@ PowerShell klasik, hem "yeni" hem de "klasik" kaynak türlerini kapsamak için a
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu PowerShell modülünün tüm belgelerini inceleyin:
 * [PowerShell klasik](https://aka.ms/amlps)
-* [Azure PowerShell Az](https://docs.microsoft.com/powershell/module/az.machinelearning/#machine_learning)
+* [Azure PowerShell Az](/powershell/module/az.machinelearning/#machine_learning)

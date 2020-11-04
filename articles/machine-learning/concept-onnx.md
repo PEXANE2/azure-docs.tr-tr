@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 06/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: acaab8aaa12a107f4d0f8a8aac0baf7d5ebb8e4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7b818de12a968869d655a80917572ddf5f2c210
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87012767"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323002"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX ve Azure Machine Learning: ML modellerini oluşturma ve hızlandırma
 
@@ -28,10 +28,10 @@ Microsoft ve makine öğrenimi modellerini temsil etmek için açık bir standar
 
 [Onnx çalışma zamanı](https://onnxruntime.ai) , üretim için onnx modellerini dağıtmaya yönelik yüksek performanslı bir çıkarım altyapısıdır. Bulut ve kenar için en iyi duruma getirilmiştir ve Linux, Windows ve Mac üzerinde çalışmaktadır. C++ dilinde yazıldığında, çeşitli ortamlarda kullanım için C, Python, C#, Java ve JavaScript (Node.js) API 'Leri de vardır. ONNX çalışma zamanı hem DNN hem de geleneksel ML modellerini destekler ve NVIDIA GPU 'Lar, Intel işlemcilerde OpenVINO, Windows üzerinde DirectML ve daha fazlası gibi farklı donanımlarda Hızlandırıcılar ile tümleşir. ONNX çalışma zamanını kullanarak, kapsamlı üretim sınıfı iyileştirmeleri, test ve devam eden geliştirmelerden yararlanabilirsiniz.
 
-ONNX çalışma zamanı, Bing, Office ve Azure bilişsel hizmetler gibi yüksek ölçekli Microsoft hizmetlerinde kullanılır. Performans kazançları bir dizi etkene bağlıdır, ancak bu Microsoft Hizmetleri __CPU üzerinde ortalama bir 2x performans kazancı__gördük. Azure Machine Learning hizmetlerine ek olarak ONNX çalışma zamanı, aşağıdakiler de dahil olmak üzere Machine Learning iş yüklerini destekleyen diğer ürünlerde de çalışır:
-+ Windows: çalışma zamanı Windows [Machine Learning](https://docs.microsoft.com/windows/ai/windows-ml/) kapsamında yerleşik olarak bulunur ve yüzlerce milyonlarca cihazda çalışır. 
-+ Azure SQL ürün ailesi: [Azure SQL Edge](https://docs.microsoft.com/azure/azure-sql-edge/onnx-overview) ve [Azure SQL yönetilen örneği](https://docs.microsoft.com/azure/azure-sql/managed-instance/machine-learning-services-overview)'nde veriler üzerinde yerel Puanlama çalıştırın.
-+ ML.NET: [ml.NET içinde ONNX modellerini çalıştırın](https://docs.microsoft.com/dotnet/machine-learning/tutorials/object-detection-onnx).
+ONNX çalışma zamanı, Bing, Office ve Azure bilişsel hizmetler gibi yüksek ölçekli Microsoft hizmetlerinde kullanılır. Performans kazançları bir dizi etkene bağlıdır, ancak bu Microsoft Hizmetleri __CPU üzerinde ortalama bir 2x performans kazancı__ gördük. Azure Machine Learning hizmetlerine ek olarak ONNX çalışma zamanı, aşağıdakiler de dahil olmak üzere Machine Learning iş yüklerini destekleyen diğer ürünlerde de çalışır:
++ Windows: çalışma zamanı Windows [Machine Learning](/windows/ai/windows-ml/) kapsamında yerleşik olarak bulunur ve yüzlerce milyonlarca cihazda çalışır. 
++ Azure SQL ürün ailesi: [Azure SQL Edge](../azure-sql-edge/onnx-overview.md) ve [Azure SQL yönetilen örneği](../azure-sql/managed-instance/machine-learning-services-overview.md)'nde veriler üzerinde yerel Puanlama çalıştırın.
++ ML.NET: [ml.NET içinde ONNX modellerini çalıştırın](/dotnet/machine-learning/tutorials/object-detection-onnx).
 
 
 [![Eğitim, dönüştürücüler ve dağıtımı gösteren ONNX akış diyagramı](./media/concept-onnx/onnx.png)](././media/concept-onnx/onnx.png#lightbox)
@@ -42,7 +42,7 @@ ONNX modellerini çeşitli yollarla edinebilirsiniz:
 + Azure Machine Learning yeni bir ONNX modeli eğitme (Bu makalenin altındaki örneklere bakın) veya [otomatik Machine Learning yeteneklerini](concept-automated-ml.md#automl--onnx) kullanarak
 + Varolan modeli başka bir biçimden ONNX 'e Dönüştür ( [öğreticilere](https://github.com/onnx/tutorials)bakın) 
 + [Onnx model Zoo](https://github.com/onnx/models) 'tan önceden eğitilen BIR onnx modeli alın
-+ [Azure özel görüntü işleme Service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) 'ten özelleştirilmiş bir onnx modeli oluşturma 
++ [Azure özel görüntü işleme Service](../cognitive-services/custom-vision-service/index.yml) 'ten özelleştirilmiş bir onnx modeli oluşturma 
 
 Görüntü sınıflandırması, nesne algılama ve metin işleme gibi birçok model ONNX modelleri olarak temsil edilebilir. Başarıyla dönüştürülemeyen bir modelle ilgili bir sorun yaşıyorsanız, lütfen kullandığınız ilgili dönüştürücünün GitHub 'da bir sorun bildirin. Sorun giderilene kadar mevcut biçim modelinizi kullanmaya devam edebilirsiniz.
 
@@ -98,5 +98,3 @@ Diğer dillerdeki kullanım örnekleri [Onnx çalışma zamanı GitHub](https://
 **Onnx çalışma zamanı** veya projeye katkıda bulunma hakkında daha fazla bilgi edinin:
 + [ONNX çalışma zamanı proje Web sitesi](https://onnxruntime.ai)
 + [ONNX çalışma zamanı GitHub deposu](https://github.com/Microsoft/onnxruntime)
-
-

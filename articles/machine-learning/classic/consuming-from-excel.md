@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: bceaa8fd2f47476d6b6ea6dafb88576c8bcc9712
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ec781a5110dd2e7027ca91fd195bbb796f31020
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91367895"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322905"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>Excel 'den bir Azure Machine Learning Studio (klasik) Web hizmeti kullanma
 
-**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 Azure Machine Learning Studio (klasik), herhangi bir kod yazmaya gerek kalmadan Web hizmetlerini doğrudan Excel 'den çağırmayı kolaylaştırır.
 
@@ -36,11 +36,11 @@ Bir Web hizmetiniz olduktan sonra, Studio 'nun sol tarafındaki **Web Hizmetleri
 1. Web hizmetinin **Pano** sekmesinde, **istek/yanıt** hizmeti için bir satırdır. Bu hizmetin tek bir çıkışı varsa, bu satırda **Excel çalışma kitabı indir** bağlantısını görmeniz gerekir.
 
     ![Studio (klasik) Web hizmeti portalını kullanarak Excel çalışma kitabını indirme](./media/consuming-from-excel/excellink.png)
-2. **Excel çalışma kitabını indir**' e tıklayın.
+2. **Excel çalışma kitabını indir** ' e tıklayın.
 
 **Yeni Web hizmeti**
 
-1. Azure Machine Learning Web hizmeti portalında **tüketme**' yi seçin.
+1. Azure Machine Learning Web hizmeti portalında **tüketme** ' yi seçin.
 2. Kullanım sayfasında, **Web hizmeti tüketim seçenekleri** bölümünde, Excel simgesine tıklayın.
 
 **Çalışma kitabını kullanma**
@@ -52,7 +52,7 @@ Bir Web hizmetiniz olduktan sonra, Studio 'nun sol tarafındaki **Web Hizmetleri
 3. Bir güvenlik uyarısı görüntülenir. Elektronik tablonuzun makrolarını çalıştırmak için **Içeriği etkinleştir** düğmesine tıklayın.
 
     ![Makroları devre dışı bırakma güvenlik uyarısını kapatmak için Içeriği etkinleştirin](./media/consuming-from-excel/enablecontent.png)
-4. Makrolar etkinleştirildikten sonra bir tablo oluşturulur. , RR 'ler Web hizmetine veya **parametrelerine**giriş olarak Blue sütunları gereklidir. RR hizmetinin çıkışını, **tahmin EDILEN değerleri** yeşil olarak dikkate alın. Belirli bir satır için tüm sütunlar dolduğunda, çalışma kitabı Puanlama API 'sini otomatik olarak çağırır ve puanlanmış sonuçları görüntüler.
+4. Makrolar etkinleştirildikten sonra bir tablo oluşturulur. , RR 'ler Web hizmetine veya **parametrelerine** giriş olarak Blue sütunları gereklidir. RR hizmetinin çıkışını, **tahmin EDILEN değerleri** yeşil olarak dikkate alın. Belirli bir satır için tüm sütunlar dolduğunda, çalışma kitabı Puanlama API 'sini otomatik olarak çağırır ve puanlanmış sonuçları görüntüler.
 
     ![Parametre girişleri ve sonuç tahmini değerleri için tablo](./media/consuming-from-excel/sampletable.png)
 5. Birden fazla satıra puan vermek için ikinci satırı verilerle doldurup tahmin edilen değerler üretilir. Aynı anda birden çok satırı yapıştırabilirsiniz.

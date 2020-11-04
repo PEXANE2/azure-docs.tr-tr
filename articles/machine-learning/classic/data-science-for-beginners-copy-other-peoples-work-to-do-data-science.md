@@ -9,19 +9,19 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 59343c500f50430530b24fbfb7d747108377efd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84caf1ea684e46eec00f8479bd0e7c4123e731b1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91345650"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322796"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Veri bilimi için başkalarının çalışmalarını kopyalama
 ## <a name="video-5-data-science-for-beginners-series"></a>Video 5: yeni başlayanlar için veri bilimi serisi
 Veri bilimi 'nin ticari gizli dizileri, sizin için diğer kişileri sizin için sizin için yapabildiğlerdir. Kendi Machine Learning denemeniz için kullanmak üzere Azure Yapay Zeka Galerisi bir kümeleme algoritması örneği bulun.
 
 > [!IMPORTANT]
-> **Cortana Intelligence Gallery** **Azure yapay zeka Galerisi**yeniden adlandırıldı. Sonuç olarak, Bu dökümdeki metin ve görüntüler, eski adı kullanan videodan biraz farklılık gösterir.
+> **Cortana Intelligence Gallery** **Azure yapay zeka Galerisi** yeniden adlandırıldı. Sonuç olarak, Bu dökümdeki metin ve görüntüler, eski adı kullanan videodan biraz farklılık gösterir.
 >
 
 Seriden en iyi şekilde yararlanmak için tümünü izleyin. [Videolar listesine gidin](#other-videos-in-this-series)
@@ -74,7 +74,7 @@ Bu denemeye tıklayın ve bu katkıda bulunan işi açıklayan bir Web sayfası 
 
 ![Studio 'da aç (klasik) düğmesi](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/open-in-studio.png)
 
-Bu, bana tıklayabilir ve **Azure Machine Learning Studio (klasik)**' e doğru bir zaman alır. Denemenin bir kopyasını oluşturur ve kendi çalışma alanım 'a koyar. Bu, katkıda bulunan veri kümesini, yaptıkları tüm işlemleri, kullandıkları algoritmaların tümünü ve sonuçların nasıl kaydedildiğini içerir.
+Bu, bana tıklayabilir ve **Azure Machine Learning Studio (klasik)** ' e doğru bir zaman alır. Denemenin bir kopyasını oluşturur ve kendi çalışma alanım 'a koyar. Bu, katkıda bulunan veri kümesini, yaptıkları tüm işlemleri, kullandıkları algoritmaların tümünü ve sonuçların nasıl kaydedildiğini içerir.
 
 ![Machine Learning Studio (klasik)-kümeleme algoritması örneğinde bir galeri denemesi açın](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/cluster-experiment-open-in-studio.png)
 
@@ -91,4 +91,4 @@ Bu, bana tıklayabilir ve **Azure Machine Learning Studio (klasik)**' e doğru b
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Machine Learning Studio (klasik) ile ilk veri bilimi denemenizi deneyin](create-experiment.md)
-* [Microsoft Azure Machine Learning bir giriş alın](/azure/machine-learning/overview-what-is-azure-ml)
+* [Microsoft Azure Machine Learning bir giriş alın](../overview-what-is-azure-ml.md)

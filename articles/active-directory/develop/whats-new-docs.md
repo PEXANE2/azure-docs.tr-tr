@@ -1,25 +1,50 @@
 ---
 title: Microsoft Identity platform docs 'taki yenilikler
+titleSuffix: Microsoft identity platform
 description: Microsoft Identity platformu için yeni ve güncelleştirilmiş belgeler.
-ms.date: 10/09/2020
+services: active-directory
+author: mmacy
+manager: CelesteDG
+ms.date: 11/03/2020
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-services: active-directory
-author: mmacy
-manager: CelesteDG
-ms.openlocfilehash: e6b1e16666188b21926d7547d80bda87303bc0f1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d5865810dafef9ce2bb525a8f1b6cdbdb1a86566
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979868"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322571"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft Identity platform belgeleri: yenilikler
 
 Microsoft Identity platform belgelerindeki yenilikler ' e hoş geldiniz. Bu makalede, eklenen ve son üç ay içinde önemli güncelleştirmeleri olan yeni belgeler listelenir.
+
+## <a name="october-2020"></a>Ekim 2020
+
+### <a name="new-articles"></a>Yeni makaleler
+
+- [Hızlı başlangıç: kimlik doğrulama kod akışını kullanarak Kullanıcı oturumu açma ve düğüm Web uygulamasında erişim belirteci edinme](quickstart-v2-nodejs-webapp-msal.md)
+- [Nasıl yapılır: MSAL kullanarak Android üzerinde uygulamalar arası SSO etkinleştirme](msal-android-single-sign-on.md)
+- [Geliştirdiğiniz mobil uygulamalarda çoklu oturum açma ve uygulama koruma ilkelerini destekleme](mobile-sso-support-overview.md)
+- Microsoft Identity platform docs: yenilikler (Bu makale)
+- [Öğretici: kullanıcılarda oturum açın ve Blazor WebAssembly uygulamasından korunan API 'yi çağırın](tutorial-blazor-webassembly.md)
+- [Microsoft Identity Web kimlik doğrulaması kitaplığı](microsoft-identity-web.md)
+
+### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
+
+- [Microsoft Identity platformunda yapılandırılabilir belirteç yaşam süreleri (Önizleme)](active-directory-configurable-token-lifetimes.md)
+- [Nasıl yapılır: Çok kiracılı uygulama desenini kullanarak istediğiniz bir Azure Active Directory kullanıcısıyla oturum açma](howto-convert-app-to-be-multi-tenant.md)
+- [Hızlı başlangıç: bir uygulama tarafından desteklenen hesapları değiştirme](quickstart-modify-supported-accounts.md)
+- [Microsoft kimlik platformu videoları](identity-videos.md)
+- [Android için ADAL MSAL geçiş kılavuzu](migrate-android-adal-msal.md)
+- [Hızlı başlangıç: Microsoft Identity platform tarafından korunan bir ASP.NET Web API 'SI çağırma](quickstart-v2-dotnet-native-aspnet.md)
+- [Microsoft Identity Platform uygulaması kimlik doğrulama sertifikası kimlik bilgileri](active-directory-certificate-credentials.md)
+- [Öğretici: Kullanıcı oturum açma ve iOS veya macOS uygulamasından Microsoft Graph çağırma](tutorial-v2-ios.md)
+- [Kullanıcı oturum açma ve JavaScript tek sayfalı uygulamadan (SPA) Microsoft Graph API 'sini çağırma](tutorial-v2-javascript-spa.md)
+- [Öğretici: Android uygulamanızda paylaşılan cihaz modunu kullanma](tutorial-v2-shared-device-mode.md)
 
 ## <a name="september-2020"></a>Eylül 2020
 
@@ -62,27 +87,3 @@ Microsoft Identity platform belgelerindeki yenilikler ' e hoş geldiniz. Bu maka
 - [Hızlı başlangıç: bir uygulamayı bir Web API 'SI göstermek üzere yapılandırma](quickstart-configure-app-expose-web-apis.md)
 - [Microsoft kimlik platformu videoları](identity-videos.md)
 - [Hızlı başlangıç: Microsoft Identity platform tarafından korunan bir ASP.NET Web API 'SI çağırma](quickstart-v2-dotnet-native-aspnet.md)
-
-## <a name="july-2020"></a>Temmuz 2020
-
-### <a name="new-articles"></a>Yeni makaleler
-
-- [Uygulamanızı Azure Active Directory Uygulama Galerisine ekleyin](v2-howto-app-gallery-listing.md)
-- [Azure Active Directory için AppSource sertifikası alın](v2-howto-get-appsource-certified.md)
-
-### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
-
-- [Microsoft Identity platform ve OAuth 2,0-adına akış](v2-oauth2-on-behalf-of-flow.md)
-- [Yeniden yönlendirme URI’si/yanıt URL’si kısıtlamaları ve sınırlamaları](reply-url.md)
-- [Korumalı Web API 'SI: kod yapılandırması](scenario-protected-web-api-app-configuration.md)
-- [Korumalı Web API 'SI: kapsamları ve uygulama rollerini doğrulama](scenario-protected-web-api-verification-scope-app-roles.md)
-- [Web API 'Lerini çağıran bir Web API 'SI: uygulama için belirteç alma](scenario-web-api-call-api-acquire-token.md)
-- [Web API 'Leri çağıran bir Web API 'SI: kod yapılandırması](scenario-web-api-call-api-app-configuration.md)
-- [Web API 'Leri çağıran bir Web uygulaması: uygulama için belirteç alma](scenario-web-app-call-api-acquire-token.md)
-- [Kullanıcılara oturum açan Web uygulaması: kod yapılandırması](scenario-web-app-sign-user-app-configuration.md)
-- [Microsoft Identity platformuna genel bakış](v2-overview.md)
-- [Microsoft kimlik platformu videoları](identity-videos.md)
-- [Hızlı başlangıç: Microsoft 'a Java Web uygulamasına oturum açma ekleme](quickstart-v2-java-webapp.md)
-- [Kimlik doğrulama akışları](msal-authentication-flows.md)
-- [Evrensel Windows Platformu uygulamasından Microsoft Graph API 'sini çağırma (XAML)](tutorial-v2-windows-uwp.md)
-- [MSAL.jskullanarak istemci uygulamalarını başlatma ](msal-js-initializing-client-applications.md)

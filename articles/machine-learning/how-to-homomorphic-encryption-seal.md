@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 21c57257f9ce5a33585f151d38c16736f94a166c
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 3509530994b07a16fb1f2780fffc6fd27cf8aa7c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998697"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325508"
 ---
 # <a name="how-to-deploy-an-encrypted-inferencing-web-service-preview"></a>Şifrelenmiş bir ınlebilme Web hizmeti dağıtma (Önizleme)
 
-Bir görüntü sınıflandırma modelini [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (aci) ' de şifrelenmiş bir Inactive bir Web hizmeti olarak dağıtmayı öğrenin. Web hizmeti, model ve Puanlama mantığını içeren bir Docker kapsayıcı görüntüsüdür.
+Bir görüntü sınıflandırma modelini [Azure Container Instances](../container-instances/index.yml) (aci) ' de şifrelenmiş bir Inactive bir Web hizmeti olarak dağıtmayı öğrenin. Web hizmeti, model ve Puanlama mantığını içeren bir Docker kapsayıcı görüntüsüdür.
 
 Bu kılavuzda Azure Machine Learning hizmetini kullanarak şunları yapabilirsiniz:
 
@@ -30,11 +30,11 @@ Bu kılavuzda Azure Machine Learning hizmetini kullanarak şunları yapabilirsin
 > * Şifrelenmiş tahminler oluşturun
 > * Kaynakları temizleme
 
-ACI, model dağıtımı iş akışını test etmek ve anlamak için harika bir çözümdür. Ölçeklenebilir üretim dağıtımları için Azure Kubernetes Service’i kullanmayı göz önünde bulundurabilirsiniz. Daha fazla bilgi için bkz. [dağıtma ve nerede](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where).
+ACI, model dağıtımı iş akışını test etmek ve anlamak için harika bir çözümdür. Ölçeklenebilir üretim dağıtımları için Azure Kubernetes Service’i kullanmayı göz önünde bulundurabilirsiniz. Daha fazla bilgi için bkz. [dağıtma ve nerede](./how-to-deploy-and-where.md).
 
 Bu örnekte kullanılan şifreleme yöntemi [homomorphic şifredir](https://github.com/Microsoft/SEAL#homomorphic-encryption). Homomorphic şifrelemesi, bir gizli dizi (şifre çözme) anahtarına erişmek gerekmeden, şifrelenmiş verilerde hesaplamalar yapılmasına izin verir. Hesaplamaların sonuçları şifrelenir ve yalnızca gizli anahtar sahibi tarafından açığa çıkarlenebilir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kılavuzda, Azure Machine Learning kayıtlı bir görüntü sınıflandırma modeliniz olduğunu varsaymaktadır. Aksi takdirde, modeli [önceden eğitilen bir model](https://github.com/Azure/MachineLearningNotebooks/raw/master/tutorials/image-classification-mnist-data/sklearn_mnist_model.pkl) kullanarak kaydedin veya [Azure Machine Learning öğreticisi ile görüntü sınıflandırma modeliyle eğitme](tutorial-train-models-with-aml.md)işlemini tamamlayarak kendinizinkini oluşturun.
 
@@ -202,7 +202,7 @@ print(service.scoring_uri)
 
 ## <a name="prepare-test-data"></a>Test verilerini hazırlama
 
-1. Test verilerini indirin. Bu durumda, *veri*adlı bir dizine kaydedilir.
+1. Test verilerini indirin. Bu durumda, *veri* adlı bir dizine kaydedilir.
 
     ```python
     import os
