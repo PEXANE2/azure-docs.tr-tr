@@ -5,12 +5,14 @@
   items:
     - name: Ölçüm Danışmanı nedir?
       href: overview.md
+    - name: Yenilikler
+      href: whats-new.md
 - name: Hızlı Başlangıçlar
   items:
     - name: Web portalını kullanma
       href: quickstarts/web-portal.md
-    - name: REST API kullanma
-      href: quickstarts/rest-api.md
+    - name: REST API’sini veya istemci kitaplığını kullanma
+      href: quickstarts/rest-api-and-client-library.md
 - name: Nasıl yapılır belgeleri
   items:
     - name: Verilerinizi ekleme
