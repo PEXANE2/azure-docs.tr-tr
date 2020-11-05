@@ -127,6 +127,7 @@
           items:
             - name: Ayarlama - Azure portalı
               href: data-box-disk-quickstart-portal.md
+              displayName: 'Azure CLI, az databox job create, create Data Box job'
         - name: Öğreticiler
           items:
             - name: 1 - Sipariş
@@ -177,6 +178,7 @@
           items:
             - name: Ayarlama - Azure portalı
               href: data-box-heavy-quickstart-portal.md
+              displayName: 'Azure CLI, az databox job create, create Data Box job'
         - name: Öğreticiler
           items:
             - name: 1 - Sipariş
@@ -231,7 +233,7 @@
                   href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
     - name: Başvuru
       items:
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: /cli/azure/ext/databox/databox
         - name: Azure PowerShell
           href: /powershell/module/az.databox

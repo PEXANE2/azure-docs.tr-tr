@@ -3,8 +3,10 @@
 - name: Genel Bakış
   href: media-services-overview.md
   items:
-    - name: Senaryolar ve kullanılabilirlik
+    - name: Genel senaryolar
       href: scenarios-and-availability.md
+    - name: Bölgesel kullanılabilirlik
+      href: availability-regions-v-2.md
     - name: Kavramlar
       href: media-services-concepts.md
 - name: başlarken

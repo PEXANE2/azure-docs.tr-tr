@@ -558,7 +558,7 @@
     - name: VM’leri koruma
       items:
         - name: Öneriler
-          href: security-recommendations.md
+          href: ../security-recommendations.md
         - name: Tam zamanında erişim
           href: ../../security-center/security-center-just-in-time.md
         - name: Bastion kullanma
@@ -666,7 +666,7 @@
         - name: Azure VM aracısı
           href: ../extensions/agent-windows.md
         - name: Kurgusal yürütmeyi azaltma
-          href: mitigate-se.md
+          href: ../mitigate-se.md
         - name: Meta verileri izleme
           href: instance-metadata-service.md
         - name: İç içe yerleştirilmiş sanallaştırmayı etkinleştirme
@@ -959,7 +959,7 @@
         - name: Hızlandırılmış ağ kullanma
           href: ../../virtual-network/create-vm-accelerated-networking-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Genel DNS adı atama
-          href: portal-create-fqdn.md
+          href: ../create-fqdn.md
         - name: DNS çözümleme
           href: ../../dns/dns-for-azure-services.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Yönetilen kimlikleri yapılandırma

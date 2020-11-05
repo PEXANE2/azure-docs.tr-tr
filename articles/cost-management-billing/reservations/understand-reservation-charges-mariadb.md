@@ -1,18 +1,18 @@
 ---
 title: Rezervasyon indirimini anlama - MariaDB için Azure Veritabanı
 description: MariaDB için Azure Veritabanınıza rezervasyon indiriminin nasıl uygulanacağını öğrenin
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 0691ec320b62ed212235a63dacedcf3ec38a23ba
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 2197f3ec9907aa9f1afde6272dd2e8a807465476
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151462"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240401"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanına rezervasyon indiriminin uygulanması
 
@@ -20,7 +20,7 @@ Bir MariaDB için Azure Veritabanı ayrılmış kapasitesi satın almanızın ar
 
 ## <a name="how-reservation-discount-is-applied"></a>Rezervasyon indiriminin uygulanması
 
-Rezervasyon indirimi ***kullanılmadığı takdirde hakkı kaybedilen*** bir özelliktir. Bu nedenle, herhangi bir saat için eşleşen kaynaklarınız yoksa, o saate ait rezervasyon miktarını kaybedersiniz. Kullanılmayan ayrılmış saatleri devredemezsiniz.
+Rezervasyon indirimi * **kullanılmadığı takdirde hakkı kaybedilen** * bir özelliktir. Bu nedenle, herhangi bir saat için eşleşen kaynaklarınız yoksa, o saate ait rezervasyon miktarını kaybedersiniz. Kullanılmayan ayrılmış saatleri devredemezsiniz.
 
 Bir kaynağı kapattığınızda rezervasyon indirimi, belirtilen kapsamdaki başka bir eşleşen kaynağa otomatik olarak uygulanır. Belirtilen kapsamda eşleşen kaynak bulunamazsa, ayrılan saatler kaybedilir.
 
@@ -30,15 +30,15 @@ MariaDB için Azure Veritabanı ayrılmış kapasitesi indirimi, çalışan Mari
 
 Aşağıdaki örneklerde, satın aldığınız çekirdek sayısına ve çalıştırılma zamanına bağlı olarak MariaDB için Azure Veritabanı ayrılmış kapasite indiriminin nasıl uygulanacağı gösterilmektedir.
 
-**Örnek 1**: 8 sanal çekirdek için MariaDB için Azure Veritabanı ayrılmış kapasitesi satın alabilirsiniz. Rezervasyonun diğer öznitelikleriyle eşleşen 16 sanal çekirdekli MariaDB için Azure Veritabanı sunucusu çalıştırıyorsanız MariaDB sunucusu işlem kullanımınızın 8 sanal çekirdeği için kullandıkça öde fiyatları üzerinden ücretlendirilirsiniz ve 8 sanal çekirdek MariaDB sunucusu işlem kullanımı için bir saatlik indirimden faydalanırsınız.
+_ **Örnek 1** : 8 sanal çekirdek için MariaDB için Azure Veritabanı ayrılmış kapasitesi satın alabilirsiniz. Rezervasyonun diğer öznitelikleriyle eşleşen 16 sanal çekirdekli MariaDB için Azure Veritabanı sunucusu çalıştırıyorsanız MariaDB sunucusu işlem kullanımınızın 8 sanal çekirdeği için kullandıkça öde fiyatları üzerinden ücretlendirilirsiniz ve 8 sanal çekirdek MariaDB sunucusu işlem kullanımı için bir saatlik indirimden faydalanırsınız.
 
 Bu örneklerin geri kalan kısmında satın aldığınız MariaDB için Azure Veritabanı ayrılmış kapasitesinin 16 sanal çekirdekli MariaDB için Azure Veritabanı için olduğunu ve diğer rezervasyon özniteliklerinin çalışan MariaDB sunucuları ile eşleştiğini kabul edelim.
 
-* **Örnek 2**: Bir saat boyunca her biri 8 sanal çekirdeğe sahip olan iki MariaDB için Azure Veritabanı sunucuları çalıştırıyorsunuz. 8 çekirdekli iki MariaDB için Azure Veritabanı sunucusunun işlem kullanımına 16 sanal çekirdek rezervasyon indirimi uygulanır.
+* **Örnek 2** : Bir saat boyunca her biri 8 sanal çekirdeğe sahip olan iki MariaDB için Azure Veritabanı sunucuları çalıştırıyorsunuz. 8 çekirdekli iki MariaDB için Azure Veritabanı sunucusunun işlem kullanımına 16 sanal çekirdek rezervasyon indirimi uygulanır.
 
-* **Örnek 3**: Saat 13:00 ile 13:30 arasında 16 sanal çekirdekli MariaDB için Azure Veritabanı sunucusu çalıştırıyorsunuz. Saat 13:30 ile 14:00 arasında başka bir 16 sanal çekirdekli MariaDB için Azure Veritabanı sunucusu çalıştırıyorsunuz. Her ikisi de rezervasyon indirimi kapsamındadır.
+* **Örnek 3** : Saat 13:00 ile 13:30 arasında 16 sanal çekirdekli MariaDB için Azure Veritabanı sunucusu çalıştırıyorsunuz. Saat 13:30 ile 14:00 arasında başka bir 16 sanal çekirdekli MariaDB için Azure Veritabanı sunucusu çalıştırıyorsunuz. Her ikisi de rezervasyon indirimi kapsamındadır.
 
-* **Örnek 4**: Saat 13:00 ile 13:45 arasında 16 sanal çekirdekli MariaDB için Azure Veritabanı sunucusu çalıştırıyorsunuz. Saat 13:30 ile 14:00 arasında başka bir 16 sanal çekirdekli MariaDB için Azure Veritabanı sunucusu çalıştırıyorsunuz. 15 dakikalık çakışma için kullandıkça öde fiyatıyla ücretlendirilirsiniz. Rezervasyon indirimi, geri kalan süre boyunca işlem kullanımına uygulanır.
+* **Örnek 4** : Saat 13:00 ile 13:45 arasında 16 sanal çekirdekli MariaDB için Azure Veritabanı sunucusu çalıştırıyorsunuz. Saat 13:30 ile 14:00 arasında başka bir 16 sanal çekirdekli MariaDB için Azure Veritabanı sunucusu çalıştırıyorsunuz. 15 dakikalık çakışma için kullandıkça öde fiyatıyla ücretlendirilirsiniz. Rezervasyon indirimi, geri kalan süre boyunca işlem kullanımına uygulanır.
 
 Faturalama kullanım raporlarında Azure rezervasyonlarınızın uygulamasını anlamak ve görüntülemek için bkz. [Azure rezervasyon kullanımınızı anlama](./understand-reserved-instance-usage-ea.md).
 

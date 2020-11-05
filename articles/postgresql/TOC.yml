@@ -255,6 +255,9 @@
             - name: Azure PowerShell
               href: howto-restore-server-powershell.md
               displayName: 'restore, georestore, geo-restore, outage'
+            - name: Bırakılan sunucuyu geri yükleme
+              href: howto-restore-dropped-server.md
+              displayName: 'restore server,dropped, recover'
         - name: Kimlik doğrulamayı etkinleştir
           items:
             - name: Kullanıcı oluşturma
