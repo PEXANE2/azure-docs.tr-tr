@@ -6,17 +6,20 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: 16f4cfd70cf4dbeaeb1376368787b3fa0e4b9a52
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 434d978f6a228bad9b142738767500d639017032
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994027"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378882"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Azure Application Insights Java SDK ile mikro ölçüm kullanma
 
+> [!IMPORTANT]
+> Java uygulamalarını izlemek için önerilen yaklaşım, kodu değiştirmeden otomatik izleme kullanmaktır. Lütfen [Application Insights Java 3,0 Aracısı](./java-in-process-agent.md)için yönergeleri izleyin.
+
 > [!NOTE]
-> Application Insights Java SDK, Spring Webflox 'i desteklemez. 
+> Application Insights Java SDK 'Sı Spring Webflox 'i desteklemiyor. bunun yerine [Application Insights java 3,0 Aracısı](./java-in-process-agent.md) kullanın. 
 >
 > Hem Webflox hem de mikro ölçüm, hiçbir izleme gerektirmeyen [Application Insights Java 3,0 aracısında](./java-on-premises.md) desteklenir. 
 

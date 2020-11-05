@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: a6d6ca825a556ea3c98fb94d4becbb75b8f2a7d7
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: dd6e760fe8052463491f249b54c3af3d2636d46d
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93294322"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376893"
 ---
 # <a name="tutorial-for-configuring-theaccesshub-admin-tool-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Accesshub yönetici aracını yapılandırma öğreticisi
 
@@ -102,7 +102,7 @@ Dizininize erişmek için Accesshub yönetici aracını yetkilendirmek için aş
 
 5. Komut istemlerini izleyin **ve izin ver ' i seçerek** Accesshub yönetici aracına istenen izinleri verin.
 
-## <a name="configure-a-new-csrhelpdesk-user-using-your-enterprise-identity"></a>Kurumsal kimliğinizi kullanarak yeni bir CSR/yardım masası kullanıcısı yapılandırma
+## <a name="configure-a-new-csr-user-using-your-enterprise-identity"></a>Kurumsal kimliğinizi kullanarak yeni bir CSR kullanıcısı yapılandırma
 
 Mevcut kurumsal Azure Active Directory kimlik bilgilerini kullanarak Accesshub yönetim aracına erişen bir CSR/yardım masası kullanıcısı oluşturun.
 
@@ -126,7 +126,7 @@ CSR/yardım masası kullanıcısını çoklu oturum açma (SSO) ile yapılandır
 
 6. **Gönder** ’i seçin.
 
-## <a name="configure-a-new-csrhelpdesk-user-using-a-new-identity"></a>Yeni bir kimlik kullanarak yeni bir CSR/yardım masası kullanıcısı yapılandırma
+## <a name="configure-a-new-csr-user-using-a-new-identity"></a>Yeni bir kimlik kullanarak yeni bir CSR kullanıcısı yapılandırma
 
 Accesshub yönetim aracına özel yeni bir kimlik bilgileriyle erişen bir CSR/yardım masası kullanıcısı oluşturun. Bu, temel olarak kurumsal için bir Azure AD kullanmayan kuruluşlar tarafından kullanılır.
 
@@ -150,7 +150,7 @@ SSO olmadan [BIR CSR/yardım masası kullanıcısı ayarlamak](https://youtu.be/
 
 7. **Gönder** ' i seçin
 
-## <a name="configure-partitioned-csrhelpdesk-administration"></a>Bölümlenmiş CSR/yardım masası yönetimini yapılandırma
+## <a name="configure-partitioned-csr-administration"></a>Bölümlenmiş CSR yönetimini yapılandırma
 
 Müşteri ve CSR/yardım masası kullanıcılarını, TheAccessHub yönetici aracında yönetme izinleri bir kuruluş hiyerarşisi kullanımıyla yönetilir. Tüm iş arkadaşları ve müşterilerin bulundukları bir ev organizasyonu vardır. Belirli iş arkadaşları veya iş arkadaşları grupları, kuruluşların sahipleri olarak atanabilir.  Kuruluş sahipleri, kuruluşlardaki iş arkadaşlarınızla kullanıcıları veya alt kuruluşları yönetebilir (değişiklik yapabilir). Birden çok iş arkadaşın bir kullanıcı kümesini yönetmesine izin vermek için, bir grup birçok üye ile oluşturulabilir. Grup daha sonra bir kuruluş sahibi olarak atanabilir ve tüm grup üyeleri kuruluştaki iş arkadaşlarınızı ve müşterileri yönetebilir.
 
@@ -324,7 +324,7 @@ Accesshub yönetim aracını kullanarak çeşitli veritabanlarındaki verileri, 
 
 18. **Veri eşitleme** kaydı yük aşamasında %100 olduğunda, yüklemeden kaynaklanan tüm değişiklikler başlatılacaktır. Müşteriler Azure AD B2C ' de görünmeli veya değişiklikleri alacak şekilde başlamalıdır.
 
-## <a name="synchronize-azure-ad-b2c-customer-data-into-theaccesshub-admin-tool"></a>Müşteri verilerini Azure AD B2C ile Accesshub yönetici aracında eşitler
+## <a name="synchronize-azure-ad-b2c-customer-data"></a>Azure AD B2C Müşteri verilerini eşitler 
 
 Tek seferlik veya devam eden bir işlem olarak, The Accesshub admin Aracı, tüm müşteri bilgilerini Azure AD B2C 'den Accesshub yönetim aracına eşitleyebilir. Bu, CSR/yardım masası yöneticilerinin güncel müşteri bilgilerini görmesini sağlar.
 
@@ -356,7 +356,7 @@ Azure AD B2C verileri ' den Accesshub yönetim aracı ile eşzamanlı hale getir
 
 13. **Veri eşitleme** kaydı yük aşamasında %100 olduğunda, yüklemeden kaynaklanan tüm değişiklikler başlatılacaktır.
 
-## <a name="configure-azure-ad-b2c-policies-to-call-theaccesshub-admin-tool"></a>The Accesshub yönetici aracını çağırmak için Azure AD B2C ilkeleri yapılandırma
+## <a name="configure-azure-ad-b2c-policies"></a>Azure AD B2C ilkelerini yapılandırma
 
 Bazen Accesshub yönetim aracının eşitlenmesi, Azure AD B2C ile durumunu güncel tutabilme özelliği ile sınırlıdır. Accesshub yönetim aracının API ve Azure AD B2C ilkelerinden yararlanarak, bu değişiklikleri yaptığı gibi, erişen tarafından yapılan değişiklikleri bilgilendirebiliriz. Bu çözüm, [özel ilkeler Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started#:~:text=%20Get%20started%20with%20custom%20policies%20in%20Azure,Experience%20Framework%20applications.%20Azure%20AD%20B2C...%20More%20)için teknik bilgi gerektirir. Bir sonraki bölümde, yeni hesapların Sign-Up özel ilkeleriniz içindeki Accesshub yönetim aracına bildirimde bulunan bir örnek ilke adımları ve güvenli bir sertifika sunacağız.
 

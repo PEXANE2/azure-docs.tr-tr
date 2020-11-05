@@ -4,14 +4,18 @@ description: Sorun giderme kılavuzu-Application Insights ile canlı Java uygula
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 4b6a7070b6b1b76a3f763105f4dce795f3e5c4be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d11eaa76f2133b9fdc66ba4e6bc91e2cc38c51c
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372527"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379545"
 ---
-# <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Java için Application Insights Sorun Giderme, Soru ve Yanıt
+# <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Java SDK için sorun giderme ve soru-cevap Application Insights
+
+> [!IMPORTANT]
+> Java uygulamalarını izlemek için önerilen yaklaşım, kodu değiştirmeden otomatik izleme kullanmaktır. Lütfen [Application Insights Java 3,0 Aracısı](./java-in-process-agent.md)için yönergeleri izleyin.
+
 [Java 'Da Azure Application Insights][java]sorular veya sorunlar var mı? Aşağıda birkaç ipucu verilmiştir.
 
 ## <a name="build-errors"></a>Derleme hataları
@@ -85,7 +89,7 @@ XML yöntemini kullanarak, değeri değiştirirken uygulamayı yeniden başlatma
 **Projem hangi Azure kaynağını veri gönderdiğini nasıl değiştirebilirim?**
 
 * [Yeni kaynağın izleme anahtarını alır.][java]
-* Azure Toolkit for Eclipse kullanarak projenize Application Insights eklediyseniz, Web projenize sağ tıklayın, **Azure**' ı seçin **Application Insights yapılandırın**ve anahtarı değiştirin.
+* Azure Toolkit for Eclipse kullanarak projenize Application Insights eklediyseniz, Web projenize sağ tıklayın, **Azure** ' ı seçin **Application Insights yapılandırın** ve anahtarı değiştirin.
 * Izleme anahtarını ortam değişkeni olarak yapılandırdıysanız lütfen ortam değişkeninin değerini yeni Ikey ile güncelleştirin.
 * Aksi takdirde, ApplicationInsights.xml içindeki anahtarı projenizdeki Resources klasöründe güncelleştirin.
 

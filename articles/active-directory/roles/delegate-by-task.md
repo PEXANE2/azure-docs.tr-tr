@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: reference
-ms.date: 05/04/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fc33b0bafc0d56ebf1a14769aeaa5a55508fc4a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7e83ff37140369cb073f4bdc2bd24ac08ee9b1ab
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92377765"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379103"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory 'de yönetici görevine göre yönetici rolleri
 
@@ -72,7 +72,7 @@ Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
 Şirket özelliklerini yapılandırma | Genel Yönetici | 
 
-## <a name="connect"></a>Bağlan
+## <a name="connect"></a>Bağlanma
 
 Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
@@ -351,6 +351,7 @@ Kullanıcı asıl adı dışındaki tüm özellikleri Güncelleştir | Kullanıc
 Sınırlı yöneticiler için Kullanıcı asıl adını güncelleştirme (bkz. belgeler) | Kullanıcı yöneticisi | 
 Ayrıcalıklı Yöneticiler üzerinde Kullanıcı asıl adı özelliğini güncelleştir (belgelere bakın) | Genel Yönetici | 
 Kullanıcı ayarlarını Güncelleştir | Genel Yönetici | 
+Kimlik doğrulama yöntemlerini güncelleştirme | Kimlik doğrulama Yöneticisi | Ayrıcalıklı kimlik doğrulama Yöneticisi, genel yönetici
 
 
 ## <a name="support"></a>Destek

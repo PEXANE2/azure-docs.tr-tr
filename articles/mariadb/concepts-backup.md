@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: d452070619a8e6284b976ff202d2a86f1ff9312b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1d95459797a32ab3e026ee1c3a2cf93fe6e95cc4
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480743"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378967"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda yedekleme ve geri yükleme
 
@@ -52,7 +52,7 @@ Yedekleme bekletme süresi, kullanılabilir yedeklemeler temel aldığı için z
 MariaDB için Azure veritabanı, Genel Amaçlı ve bellek için Iyileştirilmiş katmanlardaki yerel olarak yedekli veya coğrafi olarak yedekli yedekleme depolama arasında seçim yapmak için esneklik sağlar. Yedeklemeler coğrafi olarak yedekli yedekleme depolaması 'nda depolandığında, yalnızca sunucunuzun barındırıldığı bölge içinde depolanmaz, ancak aynı zamanda [eşleştirilmiş bir veri merkezine](../best-practices-availability-paired-regions.md)çoğaltılır. Bu, daha iyi koruma ve olağanüstü durum durumunda sunucunuzu farklı bir bölgede geri yükleme yeteneği sağlar. Temel katman yalnızca yerel olarak yedekli yedekleme depolama alanı sunar.
 
 #### <a name="moving-from-locally-redundant-to-geo-redundant-backup-storage"></a>Yerel olarak yedekli iken coğrafi olarak yedekli yedekleme depolamasına taşıma
-Yedekleme için yerel olarak yedekli veya coğrafi olarak yedekli depolamayı yapılandırmaya yalnızca sunucu oluşturma sırasında izin verilir. Sunucu sağlandıktan sonra yedekleme depolama artıklığı seçeneğini değiştiremezsiniz. Yedekleme depolama alanınızı yerel olarak yedekli depolama alanından coğrafi olarak yedekli depolamaya taşımak için yeni bir sunucu oluşturmak ve verileri [döküm ve geri yükleme](howto-migrate-dump-restore.md) kullanarak geçirmek desteklenen tek seçenektir.
+Yerel olarak yedekli veya coğrafi olarak yedekli depolamayı yedekleme amacıyla yapılandırmaya yalnızca sunucu oluşturma sırasında izin verilir. Sunucu sağlandıktan sonra yedekleme alanı yedekliliği seçeneğini değiştiremezsiniz. Yedekleme depolama alanınızı yerel olarak yedekli depolama alanından coğrafi olarak yedekli depolamaya taşımak için yeni bir sunucu oluşturmak ve verileri [döküm ve geri yükleme](howto-migrate-dump-restore.md) kullanarak geçirmek desteklenen tek seçenektir.
 
 ### <a name="backup-storage-cost"></a>Yedekleme depolama maliyeti
 
@@ -90,7 +90,12 @@ Sunucunuzu coğrafi olarak yedekli yedeklemeler için yapılandırdıysanız, hi
 
 Coğrafi geri yükleme, sunucunuzun barındırıldığı bölgedeki bir olay nedeniyle kullanılamadığında varsayılan kurtarma seçeneğidir. Bir bölgedeki büyük ölçekli bir olay veritabanı uygulamanızın kullanılamamasına neden olursa, coğrafi olarak yedekli yedeklerden bir sunucuyu başka bir bölgedeki sunucuya geri yükleyebilirsiniz. Coğrafi geri yükleme, sunucunun en son yedeklemesini kullanır. Bir yedeklemenin alınması ve farklı bölgeye çoğaltılma arasında bir gecikme vardır. Bu gecikme bir saat kadar sürebilir. bu nedenle, bir olağanüstü durum oluşursa bir saatlik veri kaybı olabilir.
 
+> [!IMPORTANT]
+>Yeni oluşturulan bir sunucu için coğrafi geri yükleme gerçekleştirilirse, ilk tam anlık görüntü yedekleme kopyalama süresi çok daha yüksek olduğundan, ilk yedekleme eşitlemesi veri boyutuna bağlı olarak 24 saatten fazla sürebilir. Sonraki anlık görüntü yedeklemeleri artımlı kopyaya sahiptir ve bu nedenle geri yüklemeler, 24 saat sonra sunucu oluşturulduktan sonra daha hızlı gerçekleşir. RTO 'nizi tanımlamak için coğrafi geri yüklemeleri değerlendiriyorsanız, coğrafi geri yüklemeyi, daha iyi tahminler için **yalnızca 24 saat sonra** sunucu oluşturulduktan sonra bekleyip değerlendirmenizi öneririz.
+
 Coğrafi geri yükleme sırasında, değiştirilebilecek sunucu yapılandırması işlem oluşturma, sanal çekirdek, yedekleme saklama süresi ve yedekleme artıklığı seçeneklerini içerir. Coğrafi geri yükleme sırasında fiyatlandırma katmanını (temel, Genel Amaçlı veya bellek için Iyileştirilmiş) veya depolama boyutunu değiştirme desteklenmiyor.
+
+Tahmini kurtarma süresi, veritabanı boyutları, işlem günlüğü boyutu, ağ bant genişliği ve aynı bölgedeki aynı bölgede Kurtarılan toplam veritabanı sayısı gibi çeşitli faktörlere bağlıdır. Kurtarma zamanı genellikle 12 saatten düşüktür.
 
 ### <a name="perform-post-restore-tasks"></a>Geri yükleme sonrası görevleri gerçekleştirme
 

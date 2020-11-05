@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: e3f067647eb7bdb33b06a9ebdefd8fdd0485e4c6
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 0fd2312df31e61ae30f4c3fd04dc0991ac0f4675
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93294294"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376864"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>Strata kullanarak şirket içi uygulamaları korumak için Azure AD B2C genişletme öğreticisi
 
@@ -29,7 +29,7 @@ Maverics Identity Orchestrator, şirket içi uygulamaları korumak için Azure A
 
 - **Kolay yapılandırma** : Azure AD B2C Maverics KIMLIK Orchestrator SAML veya OIDC bağlayıcılarını Azure AD B2C bağlamak için basit bir adım adım kullanıcı arabirimi sağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için şunlar gerekir:
 
@@ -65,13 +65,11 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 | 4. | IDP, kullanıcıdan kimlik bilgileri için zorluk sorunlarını. IDP 'ye bağlı olarak, kullanıcının Multi-Factor Authentication (MFA) yapması gerekebilir.|
 | 5. | IDP, kimlik doğrulama yanıtını Azure AD B2C geri gönderir. İsteğe bağlı olarak, Kullanıcı bu adım sırasında Azure AD B2C dizininde yerel bir hesap oluşturabilir.|
 | 6. | Azure AD B2C, Kullanıcı isteğini Orchestrator uygulamasının Azure AD B2C kiracısındaki kaydı sırasında belirtilen uç noktaya gönderir.|
-| 7. | Orchestrator, erişim ilkelerini değerlendirir ve uygulamaya iletilen HTTP üst bilgilerine dahil edilecek öznitelik değerlerini hesaplar. Bu adım sırasında Orchestrator, üstbilgi değerlerini doğru şekilde ayarlamak için gereken bilgileri almak üzere ek öznitelik sağlayıcılarına çağrı gösterebilir.|
-| 8. | Orchestrator, üst bilgi değerlerini ayarlar ve isteği uygulamaya gönderir.|
-| 9. | Kullanıcının kimliği doğrulanır ve uygulamaya erişimi vardır.|
+| 7. | Orchestrator, erişim ilkelerini değerlendirir ve uygulamaya iletilen HTTP üst bilgilerine dahil edilecek öznitelik değerlerini hesaplar. Bu adım sırasında Orchestrator, üstbilgi değerlerini doğru şekilde ayarlamak için gereken bilgileri almak üzere ek öznitelik sağlayıcılarına çağrı gösterebilir. Orchestrator, üst bilgi değerlerini ayarlar ve isteği uygulamaya gönderir.|
+| 8. | Kullanıcının kimliği doğrulanır ve uygulamaya erişimi vardır.|
 
 ## <a name="get-maverics-identity-orchestrator"></a>Maverics kimlik Orchestrator 'ı al
 
-Eski şirket içi uygulamanızı Azure AD B2C tümleştirmek için kullanacağınız yazılımı almak için, [Strata](https://www.strata.io/contact/)ile iletişim kurun. Yazılımı aldıktan sonra, Orchestrator 'a özgü önkoşulları öğrenmek ve gerekli yükleme ve yapılandırma adımlarını gerçekleştirmek için aşağıdaki adımları izleyin.
 
 ## <a name="configure-your-azure-ad-b2c-tenant"></a>Azure AD B2C kiracınızı yapılandırma
 

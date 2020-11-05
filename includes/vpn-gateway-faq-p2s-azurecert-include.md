@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f322803d3484b4ec2d5449e19d67d75b35d6d92f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ef67580928a45609f50d3fe798eb9d054265c0a
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75752119"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376144"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
@@ -23,7 +23,7 @@ ms.locfileid: "75752119"
 
 Sunucu kimlik doğrulamasını atlama, genel olarak önerilmez, ancak Azure sertifika kimlik doğrulaması ile, VPN Tünel Protokolü (Ikev2/SSTP) ve EAP protokolünde sunucu doğrulaması için aynı sertifika kullanılır. Sunucu sertifikası ve FQDN, VPN tünel oluşturma protokolü tarafından zaten doğrulandığından, EAP 'de yeniden doğrulanması gereksizdir.
 
-![Noktadan siteye](./media/vpn-gateway-faq-p2s-all-include/servercert.png "Sunucu sertifikası")
+![Noktadan siteye kimlik doğrulaması](./media/vpn-gateway-faq-p2s-all-include/servercert.png "Sunucu sertifikası")
 
 ### <a name="can-i-use-my-own-internal-pki-root-ca-to-generate-certificates-for-point-to-site-connectivity"></a>Noktadan siteye bağlantı için sertifika oluşturmak üzere kendi iç PKI kök sertifika yetkilimi kullanabilir miyim?
 

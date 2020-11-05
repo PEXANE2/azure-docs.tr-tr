@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f58aaecaa9f8606399b40fdb1d38a274117ec6a2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bc2c42f407ee31a792a6634a813358d428120b46
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92377639"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378627"
 ---
 # <a name="create-a-role-assignable-group-in-azure-active-directory"></a>Azure Active Directory rol atanabilir Grup oluşturma
 
@@ -27,7 +27,7 @@ Yalnızca ' ıttobletorole ' özelliği true olarak ayarlanmış bir gruba bir r
 ## <a name="using-azure-ad-admin-center"></a>Azure AD Yönetim Merkezi 'ni kullanma
 
 1. Azure AD kuruluşunda ayrıcalıklı rol yöneticisi veya genel yönetici izinleriyle [Azure AD Yönetim merkezinde](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) oturum açın.
-1. **Gruplar**  >  **tüm gruplar**  >  **Yeni Grup**' u seçin.
+1. **Gruplar**  >  **tüm gruplar**  >  **Yeni Grup** ' u seçin.
 
     [![Azure Active Directory açın ve yeni bir grup oluşturun.](./media/groups-create-eligible/new-group.png "Azure Active Directory açın ve yeni bir grup oluşturun.")](./media/groups-create-eligible/new-group.png#<lightbox>)
 
@@ -40,13 +40,13 @@ Yalnızca ' ıttobletorole ' özelliği true olarak ayarlanmış bir gruba bir r
 
     [![Rol atanabilir gruba üye ekleyin ve rolleri atayın.](./media/groups-create-eligible/specify-members.png "Rol atanabilir gruba üye ekleyin ve rolleri atayın.")](./media/groups-create-eligible/specify-members.png#<lightbox>)
 
-1. Üyeler ve sahipler belirtilmişse **Oluştur**' u seçin.
+1. Üyeler ve sahipler belirtilmişse **Oluştur** ' u seçin.
 
     [![Oluştur düğmesi sayfanın en altında bulunur.](./media/groups-create-eligible/create-button.png "Oluştur düğmesi sayfanın en altında bulunur.")](./media/groups-create-eligible/create-button.png#<lightbox>)
 
 Grup, kendisine atamış olabileceğiniz rollerle oluşturulur.
 
-## <a name="using-powershell"></a>PowerShell’i kullanma
+## <a name="using-powershell"></a>PowerShell'i kullanma
 
 ### <a name="install-the-azure-ad-preview-module"></a>Azure AD önizleme modülünü yükler
 

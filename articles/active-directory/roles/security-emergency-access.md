@@ -5,20 +5,20 @@ services: active-directory
 author: markwahl-msft
 manager: daveba
 ms.author: curtand
-ms.date: 11/08/2019
+ms.date: 11/05/2020
 ms.topic: conceptual
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ffcbd77997e230b9b21ed29b47e37236de025f6
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 966d264cc338487dd1a8c04f2efd0825dfccdef0
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92378182"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378763"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Azure AD 'de acil durum erişim hesaplarını yönetme
 
@@ -79,7 +79,7 @@ Kuruluşlar, acil durum hesaplarından oturum açma ve denetim günlüğü etkin
 ### <a name="obtain-object-ids-of-the-break-glass-accounts"></a>Kesme camı hesaplarının nesne kimliklerini alma
 
 1. Kullanıcı Yöneticisi rolüne atanan bir hesapla [Azure Portal](https://portal.azure.com) oturum açın.
-1. **Azure Active Directory**  >  **kullanıcıları**' nı seçin.
+1. **Azure Active Directory**  >  **kullanıcıları** ' nı seçin.
 1. Kesme camı hesabını arayın ve kullanıcının adını seçin.
 1. Daha sonra kullanabilmeniz için nesne KIMLIĞI özniteliğini kopyalayın ve kaydedin.
 1. İkinci kesme camı hesabı için önceki adımları tekrarlayın.
@@ -87,51 +87,51 @@ Kuruluşlar, acil durum hesaplarından oturum açma ve denetim günlüğü etkin
 ### <a name="create-an-alert-rule"></a>Uyarı kuralı oluşturma
 
 1. Azure Izleyici 'de Izleme katılımcısı rolüne atanan bir hesapla [Azure Portal](https://portal.azure.com) oturum açın.
-1. **Tüm hizmetler**' i seçin, ara ' ya "Log Analytics" yazın ve **Log Analytics çalışma alanları**' nı seçin.
+1. **Tüm hizmetler** ' i seçin, ara ' ya "Log Analytics" yazın ve **Log Analytics çalışma alanları** ' nı seçin.
 1. Bir çalışma alanı seçin.
-1. Çalışma alanınızda **Uyarılar**  >  **Yeni uyarı kuralı**' nı seçin.
-    1. **Kaynak**altında, aboneliğin uyarı kuralını ilişkilendirmek istediğiniz bir tane olduğunu doğrulayın.
-    1. **Koşul**altında **Ekle**' yi seçin.
-    1. **Sinyal adı**altında **özel günlük araması** ' nı seçin.
-    1. **Arama sorgusu**altında, iki kesme camı hesabının nesne kimliklerini ekleyerek aşağıdaki sorguyu girin.
+1. Çalışma alanınızda **Uyarılar**  >  **Yeni uyarı kuralı** ' nı seçin.
+    1. **Kaynak** altında, aboneliğin uyarı kuralını ilişkilendirmek istediğiniz bir tane olduğunu doğrulayın.
+    1. **Koşul** altında **Ekle** ' yi seçin.
+    1. **Sinyal adı** altında **özel günlük araması** ' nı seçin.
+    1. **Arama sorgusu** altında, iki kesme camı hesabının nesne kimliklerini ekleyerek aşağıdaki sorguyu girin.
         > [!NOTE]
         > Eklemek istediğiniz her ek kesme camı hesabı için sorguya başka bir "veya UserID = =" Objectguıd "" ekleyin.
 
         ![Kesme camı hesaplarının nesne kimliklerini bir uyarı kuralına ekleyin](./media/security-emergency-access/query-image1.png)
 
-    1. **Uyarı mantığı**altına şunu girin:
+    1. **Uyarı mantığı** altına şunu girin:
 
         - Temel alan: sonuç sayısı
         - İşleç: büyüktür
         - Eşik değeri: 0
 
-    1. **Temelinde değerlendirilen**' ın altında, sorgunun ne kadar süre içinde çalışmasını Istediğinize ilişkin **süreyi (dakika cinsinden)** ve sorgunun ne sıklıkta çalıştırılmasını istediğinizi gösteren **sıklığı (dakika cinsinden** ) seçin. Sıklık, dönemden küçük veya bu değere eşit olmalıdır.
+    1. **Temelinde değerlendirilen** ' ın altında, sorgunun ne kadar süre içinde çalışmasını Istediğinize ilişkin **süreyi (dakika cinsinden)** ve sorgunun ne sıklıkta çalıştırılmasını istediğinizi gösteren **sıklığı (dakika cinsinden** ) seçin. Sıklık, dönemden küçük veya bu değere eşit olmalıdır.
 
         ![Uyarı mantığı](./media/security-emergency-access/alert-image2.png)
 
-    1. **Bitti** seçeneğini belirleyin. Artık bu uyarının tahmini aylık maliyetini görüntüleyebilirsiniz.
+    1. **Bitti** ’yi seçin. Artık bu uyarının tahmini aylık maliyetini görüntüleyebilirsiniz.
 1. Uyarı tarafından bildirilecek Kullanıcı bir eylem grubu seçin. Bir tane oluşturmak isterseniz, bkz. [eylem grubu oluşturma](#create-an-action-group).
-1. Eylem grubunun üyelerine gönderilen e-posta bildirimini özelleştirmek için, **eylemleri Özelleştir**altında Eylemler ' i seçin.
-1. **Uyarı ayrıntıları**' nın altında, uyarı kuralı adını belirtin ve isteğe bağlı bir açıklama ekleyin.
+1. Eylem grubunun üyelerine gönderilen e-posta bildirimini özelleştirmek için, **eylemleri Özelleştir** altında Eylemler ' i seçin.
+1. **Uyarı ayrıntıları** ' nın altında, uyarı kuralı adını belirtin ve isteğe bağlı bir açıklama ekleyin.
 1. Etkinliğin **önem derecesi düzeyini** ayarlayın. Bunu **kritik (sev 0)** olarak ayarlamanızı öneririz.
-1. **Oluşturma sonrasında kuralı etkinleştir**altında, **Evet**olarak ayarlayın.
-1. Uyarıları bir süredir devre dışı bırakmak için **uyarıları bastır** onay kutusunu seçin ve uyarı vermeden önce bekleme süresini girip **Kaydet**' i seçin.
-1. **Uyarı kuralı oluştur**’a tıklayın.
+1. **Oluşturma sonrasında kuralı etkinleştir** altında, **Evet** olarak ayarlayın.
+1. Uyarıları bir süredir devre dışı bırakmak için **uyarıları bastır** onay kutusunu seçin ve uyarı vermeden önce bekleme süresini girip **Kaydet** ' i seçin.
+1. **Uyarı kuralı oluştur** ’a tıklayın.
 
 ### <a name="create-an-action-group"></a>Bir eylem grubu oluşturun
 
-1. **Eylem grubu oluştur**' u seçin.
+1. **Eylem grubu oluştur** ' u seçin.
 
     ![bildirim eylemleri için bir eylem grubu oluşturma](./media/security-emergency-access/action-group-image3.png)
 
 1. Eylem grubu adını ve kısa bir ad girin.
 1. Aboneliği ve kaynak grubunu doğrulayın.
-1. Eylem türü altında **e-posta/SMS/Push/Voice**' ı seçin.
-1. **Genel yönetici bildirimi**gibi bir eylem adı girin.
-1. **Eylem türünü** **e-posta/SMS/Push/Voice**olarak seçin.
+1. Eylem türü altında **e-posta/SMS/Push/Voice** ' ı seçin.
+1. **Genel yönetici bildirimi** gibi bir eylem adı girin.
+1. **Eylem türünü** **e-posta/SMS/Push/Voice** olarak seçin.
 1. Yapılandırmak istediğiniz bildirim yöntemlerini seçmek için **Ayrıntıları Düzenle** ' yi seçin ve gerekli iletişim bilgilerini girin ve ardından **Tamam** ' ı seçerek ayrıntıları kaydedin.
 1. Tetiklemek istediğiniz herhangi bir ek eylem ekleyin.
-1. **Tamam**’ı seçin.
+1. **Tamam** ’ı seçin.
 
 ## <a name="validate-accounts-regularly"></a>Hesapları düzenli olarak doğrula
 

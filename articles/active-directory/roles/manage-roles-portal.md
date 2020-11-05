@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: how-to
-ms.date: 06/15/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85a0618dc5c99b662bbe5520615b5983da5aec91
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 9330c6d34dcf5a799d65ebba176565ff031cb956
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92377527"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376791"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Azure Active Directory'de yönetici rollerini görüntüleme ve atama
 
@@ -26,7 +26,7 @@ Artık Azure Active Directory portalında yönetici rollerinin tüm üyelerini g
 
 ## <a name="view-all-roles"></a>Tüm rolleri görüntüle
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve **Azure Active Directory**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **Azure Active Directory** ' ı seçin.
 
 1. Tüm kullanılabilir rollerin listesini görmek için **Roller ve yöneticiler '** i seçin.
 
@@ -59,13 +59,13 @@ Rolün üyelerini görüntülerken, rol ataması tarafından verilen izinlerin t
 
 ## <a name="download-role-assignments"></a>Rol atamalarını indir
 
-Belirli bir rolün tüm atamalarını indirmek için, **Roller ve yöneticiler** sayfasında bir rol seçin ve ardından **rol atamalarını indir**' i seçin. Bu rolün tüm kapsamlarındaki atamaları listeleyen bir CSV dosyası indirilir.
+Belirli bir rolün tüm atamalarını indirmek için, **Roller ve yöneticiler** sayfasında bir rol seçin ve ardından **rol atamalarını indir** ' i seçin. Bu rolün tüm kapsamlarındaki atamaları listeleyen bir CSV dosyası indirilir.
 
 ![bir rol için tüm atamaları indirin](./media/manage-roles-portal/download-role-assignments.png)
 
 ## <a name="assign-a-role"></a>Rol atama
 
-1. [Azure Portal](https://portal.azure.com) genel yönetici veya ayrıcalıklı rol yöneticisi izinleriyle oturum açın ve **Azure Active Directory**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) genel yönetici veya ayrıcalıklı rol yöneticisi izinleriyle oturum açın ve **Azure Active Directory** ' ı seçin.
 
 1. Tüm kullanılabilir rollerin listesini görmek için **Roller ve yöneticiler '** i seçin.
 

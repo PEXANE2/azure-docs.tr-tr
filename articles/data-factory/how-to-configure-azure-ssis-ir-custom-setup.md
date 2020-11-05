@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 10/13/2020
-ms.openlocfilehash: 021c3705ff96774583438d261f894ff1bc24c21f
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/06/2020
+ms.openlocfilehash: 1885dd76a94a7a4a6b91c67735103350c473ba44
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636332"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378440"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime için kurulumu özelleştirme
 
@@ -135,25 +135,25 @@ Hızlı özel kurulumlarınız için **ortam değişkeni Ekle** türünü seçer
 
 #### <a name="installing-azure-powershell"></a>Azure PowerShell yükleniyor
 
-Hızlı özel kurulumlarınız için **yükleme Azure PowerShell** türünü seçerseniz, Azure-SSIS IR daha az PowerShell modülünü yükleyebilirsiniz. Bunu yapmak için, [desteklenen olanlar listesinden](https://www.powershellgallery.com/stats/packages/Az?groupby=Version)istediğiniz az Module sürüm numarasını (x. y. z) girin. Bu, Azure kaynaklarını (örneğin, [Azure Analysis Services (AAS)](../analysis-services/analysis-services-powershell.md)yönetmek için paketlerinizde Azure PowerShell cmdlet 'leri/betikleri çalıştırmanızı sağlar.
+Hızlı özel kurulumlarınız için **yükleme Azure PowerShell** türünü seçerseniz, Azure-SSIS IR daha az PowerShell modülünü yükleyebilirsiniz. Bunu yapmak için, [desteklenen olanlar listesinden](https://www.powershellgallery.com/packages/az)istediğiniz az Module sürüm numarasını (x. y. z) girin. Bu, Azure kaynaklarını (örneğin, [Azure Analysis Services (AAS)](../analysis-services/analysis-services-powershell.md)yönetmek için paketlerinizde Azure PowerShell cmdlet 'leri/betikleri çalıştırmanızı sağlar.
 
 #### <a name="installing-licensed-components"></a>Lisanslı bileşenleri yükleme
 
 Hızlı özel kurulumlarınız için **lisanslı bileşen türünü yükleme** ' yi seçerseniz, **bileşen adı** açılır listesinde ISV iş ortaklarımızın tümleşik bir bileşenini seçebilirsiniz:
 
-   * **Sentryone 'ın 'ın görev fabrikası** bileşenini seçerseniz, Azure-SSIS IR [görev fabrikası](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) paketini sentryone 'ın adresinden yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **2020.1.3** .
+   * **Sentryone 'ın 'ın görev fabrikası** bileşenini seçerseniz, Azure-SSIS IR [görev fabrikası](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) paketini sentryone 'ın adresinden yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **2020.1.3**.
 
-   * **Oh22's HEDDA ' yi seçerseniz. IO** bileşeni, Hedda 'yi yükleyebilirsiniz [.](https://github.com/oh22is/HEDDA.IO/tree/master/SSIS-IR)Azure-SSIS IR, GÇ veri kalitesi/oh22 'den bileşeni Temizleme. Bunu yapmak için, hizmetini önceden satın almanız gerekir. Geçerli tümleşik sürüm **1.0.14** .
+   * **Oh22's HEDDA ' yi seçerseniz. IO** bileşeni, Hedda 'yi yükleyebilirsiniz [.](https://github.com/oh22is/HEDDA.IO/tree/master/SSIS-IR)Azure-SSIS IR, GÇ veri kalitesi/oh22 'den bileşeni Temizleme. Bunu yapmak için, hizmetini önceden satın almanız gerekir. Geçerli tümleşik sürüm **1.0.14**.
 
-   * **Oh22's SQLPhonetics.net** bileşenini seçerseniz, Azure-SSIS IR [SQLPhonetics.net](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) veri kalitesini/eşleşen bileşenini oh22 adresinden yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **1.0.45** .
+   * **Oh22's SQLPhonetics.net** bileşenini seçerseniz, Azure-SSIS IR [SQLPhonetics.net](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) veri kalitesini/eşleşen bileşenini oh22 adresinden yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **1.0.45**.
 
    * **Kingswaysoft 'un SSIS Tümleştirme Araç Seti** bileşenini seçerseniz, Azure-SSIS IR Microsoft Dynamics/SharePoint/Project Server, Oracle/Salesforce Marketing Cloud gibi CRM/ERP/pazarlama/işbirliği uygulamalarına yönelik [SSIS Tümleştirme Araç Seti](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) bağlayıcılarını yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **2020,1** ' dir.
 
    * **Kingswaysoft 'ıN SSIS üretkenlik paketi** bileşenini seçerseniz, Azure-SSIS IR [ssmsoft 'Tan SSIS üretkenlik paketi](https://www.kingswaysoft.com/products/ssis-productivity-pack) paketini yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **20,1** ' dir.
 
-   * The **Obald yazılımının Xdikkatini** oluştur bileşenini seçerseniz, Azure-SSIS IR The OBALD yazılımından SAP sıstemlerı (ERP, s/4HANA, siyah beyaz) için [xümlik](https://theobald-software.com/en/xtract-is/) bağlayıcı paketini yükleyebilirsiniz. Bunu yapmak için & sürükleyin ve satın aldığınız ürün lisans dosyasını önceden **Lisans dosyası** giriş kutusuna bırakın/karşıya yükleyin. Geçerli tümleşik sürüm **6.1.1.3** .
+   * The **Obald yazılımının Xdikkatini** oluştur bileşenini seçerseniz, Azure-SSIS IR The OBALD yazılımından SAP sıstemlerı (ERP, s/4HANA, siyah beyaz) için [xümlik](https://theobald-software.com/en/xtract-is/) bağlayıcı paketini yükleyebilirsiniz. Bunu yapmak için & sürükleyin ve satın aldığınız ürün lisans dosyasını önceden **Lisans dosyası** giriş kutusuna bırakın/karşıya yükleyin. Geçerli tümleşik sürüm **6.1.1.3**.
 
-   * **Akaydedilmiş geçici tümleştirme hizmeti** bileşenini seçerseniz, Azure-SSIS IR sap ve Salesforce sistemleri Için [tümleştirme hizmeti](https://www.aecorsoft.com/en/products/integrationservice) bağlayıcılarının paketini, akaydedilmiş yazılımdan yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **3.0.00** .
+   * **Akaydedilmiş geçici tümleştirme hizmeti** bileşenini seçerseniz, Azure-SSIS IR sap ve Salesforce sistemleri Için [tümleştirme hizmeti](https://www.aecorsoft.com/en/products/integrationservice) bağlayıcılarının paketini, akaydedilmiş yazılımdan yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **3.0.00**.
 
    * **CDATA 'NıN SSIS standart paket** bileşenini seçerseniz, Microsoft SharePoint bağlayıcıları gibi CDATA 'dan en popüler bileşenlerin [SSIS standart paket](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#standard) paketini Azure-SSIS IR yükleyebilirsiniz. Bunu yapmak için, **Lisans anahtarı** metin kutusundan önceden satın aldığınız ürün lisans anahtarını girin. Geçerli tümleşik sürüm **19,7354** ' dir.
 
@@ -289,7 +289,7 @@ Standart özel kurulumların bazı örneklerini görüntülemek ve yeniden kulla
 
       * Azure-SSIS IR her bir düğümüne temel bir görev yüklemeye yönelik özel bir kurulum içeren *örnek* bir klasör. Görev hiçbir şey yapmaz, ancak birkaç saniye uyku moduna geçmez. Klasör, tüm içeriklerin ( *gacutil.exe* , *gacutil.exe.config* ve *1033\gacutlrc.dll* ), kapsayıcınıza olduğu gibi kopyalanabilmesi için de bir *Gacutil* klasörü içerir.
 
-      * Gerçek Kullanıcı senaryolarından birkaç özel kurulum örneği içeren bir *Usersenaryolar* klasörü.
+      * Gerçek Kullanıcı senaryolarından birkaç özel kurulum örneği içeren bir *Usersenaryolar* klasörü. Azure-SSIS IR birden çok örnek yüklemek istiyorsanız, kendi özel kurulum komut dosyası ( *Main. cmd* ) dosyalarını tek bir tane içinde birleştirebilir ve ilişkili tüm dosyaları kapsayıcınıza yükleyebilirsiniz.
 
         ![Genel Önizleme kapsayıcısının içeriği](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image11.png)
 

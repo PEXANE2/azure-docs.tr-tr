@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 11/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79a5d306643fa9597b30f6941c420c403695c22e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7e1036e63b4fdef241350786fa3a246946a9223c
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424577"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378015"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Azure Active Directory genel bakış için Birleşik güvenlik bilgileri kaydı
 
@@ -58,7 +58,7 @@ Birleşik kayıt aşağıdaki kimlik doğrulama yöntemlerini ve eylemleri deste
 | Donanım belirteci | Hayır | Hayır | Yes |
 | Telefon | Yes | Yes | Yes |
 | Alternatif telefon | Yes | Yes | Yes |
-| Ofis telefonu | Hayır | Hayır | Hayır |
+| Ofis telefonu | Yes | Yes | Yes |
 | E-posta | Yes | Yes | Yes |
 | Güvenlik soruları | Yes | Hayır | Yes |
 | Uygulama parolaları | Yes | Hayır | Yes |

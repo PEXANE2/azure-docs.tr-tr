@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23243de192683a4811eb569b17425701381c4cd1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 74ad503374e0148e9813508b6c7f8b21e2dca7a3
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92377580"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379171"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>Privileged Identity Management kullanarak bir gruba rol atama
 
@@ -31,17 +31,17 @@ Bu makalede, bir Azure Active Directory (Azure AD) rolünü Azure AD Privileged 
 
 1. [Azure AD Privileged Identity Management](https://ms.portal.azure.com/?Microsoft_AAD_IAM_GroupRoles=true&Microsoft_AAD_IAM_userRolesV2=true&Microsoft_AAD_IAM_enablePimIntegration=true#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart) , kuruluşunuzda ayrıcalıklı rol yöneticisi veya genel yönetici olarak oturum açın.
 
-1. **Privileged Identity Management**  >  **Azure AD rolleri**  >  **rollerini**seçin  >  **atama Ekle**
+1. **Privileged Identity Management**  >  **Azure AD rolleri**  >  **rollerini** seçin  >  **atama Ekle**
 
 1. Bir rol seçin ve ardından bir grup seçin. Yalnızca rol ataması (rol atanabilir gruplar) için uygun olan gruplar, tüm gruplar değil görüntülenir.
 
     !["Rol Ekle" sayfasını ve "Select role" ve "Select member (s)" bölümünü gösteren ekran görüntüsü.](./media/groups-pim-eligible/select-member.png)
 
-1. İstenen üyelik ayarını seçin. Etkinleştirme gerektiren roller için **uygun**' ı seçin. Varsayılan olarak, Kullanıcı kalıcı olarak uygun olacaktır, ancak kullanıcının uygunluğu için bir başlangıç ve bitiş saati de ayarlayabilirsiniz. Tamamlandıktan sonra, rol atamasını tamamladıktan sonra Kaydet ve Ekle ' ye basın.
+1. İstenen üyelik ayarını seçin. Etkinleştirme gerektiren roller için **uygun** ' ı seçin. Varsayılan olarak, Kullanıcı kalıcı olarak uygun olacaktır, ancak kullanıcının uygunluğu için bir başlangıç ve bitiş saati de ayarlayabilirsiniz. Tamamlandıktan sonra, rol atamasını tamamladıktan sonra Kaydet ve Ekle ' ye basın.
 
     ![rolü atadığınız kullanıcıyı seçin](./media/groups-pim-eligible/set-assignment-settings.png)
 
-## <a name="using-powershell"></a>PowerShell’i kullanma
+## <a name="using-powershell"></a>PowerShell'i kullanma
 
 ### <a name="download-the-azure-ad-preview-powershell-module"></a>Azure AD önizleme PowerShell modülünü indirin
 

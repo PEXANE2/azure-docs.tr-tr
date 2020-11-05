@@ -6,12 +6,12 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a92382f397eee5e0315dda73d33f968dafa4b496
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: f327749d1bdfb8cf2cba00cf4c5f68b4b2b77999
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041710"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379562"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Öğretici: özel eylemler ve kaynaklarla yönetilen uygulama oluşturma
 
@@ -27,7 +27,7 @@ Bu öğretici aşağıdaki adımları içerir:
 > * Yönetilen uygulamanın bir örneğini dağıtma
 > * Özel eylemler gerçekleştirme ve özel kaynaklar oluşturma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için şunları bilmeniz gerekir:
 
@@ -41,7 +41,7 @@ Bu öğreticiyi tamamlayabilmeniz için şunları bilmeniz gerekir:
 
 Bu öğreticide, yönetilen bir uygulama oluşturursunuz ve yönetilen kaynak grubu özel sağlayıcı örneği, depolama hesabı ve işlev içerecektir. Bu örnekte kullanılan Azure Işlevi, Eylemler ve kaynaklar için özel sağlayıcı işlemlerini işleyen bir API uygular. Azure depolama hesabı, özel sağlayıcı kaynaklarınız için temel depolama alanı olarak kullanılır.
 
-Yönetilen uygulama örneği oluşturmak için Kullanıcı arabirimi tanımı, `funcname` ve `storagename` giriş öğeleri içerir. Depolama hesabı adı ve işlev adı genel olarak benzersiz olmalıdır. Varsayılan olarak, işlev dosyaları [örnek işlev paketinden](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip)dağıtılır, ancak *üzerindecreateUIDefinition.js* bir paket bağlantısı için bir giriş öğesi ekleyerek bunu değiştirebilirsiniz:
+Yönetilen uygulama örneği oluşturmak için Kullanıcı arabirimi tanımı, `funcname` ve `storagename` giriş öğeleri içerir. Depolama hesabı adı ve işlev adı genel olarak benzersiz olmalıdır. Varsayılan olarak, işlev dosyaları [örnek işlev paketinden](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip)dağıtılır, ancak *üzerindecreateUiDefinition.js* bir paket bağlantısı için bir giriş öğesi ekleyerek bunu değiştirebilirsiniz:
 
 ```json
 {
@@ -74,7 +74,7 @@ Yönetilen uygulama örneği oluşturmak için Kullanıcı arabirimi tanımı, `
 }
 ```
 
-ve *üzerindecreateUIDefinition.js* çıkış:
+ve *üzerindecreateUiDefinition.js* çıkış:
 
 ```json
   "funcname": "[steps('applicationSettings').funcname]",
@@ -82,13 +82,13 @@ ve *üzerindecreateUIDefinition.js* çıkış:
   "zipFileBlobUri": "[steps('applicationSettings').zipFileBlobUri]"
 ```
 
-Örnek *üzerindeki tümcreateUIDefinition.js* , [Başvuru: Kullanıcı arabirimi öğeleri yapıtlarına başvurabilir](reference-createuidefinition-artifact.md).
+Örnek *üzerindeki tümcreateUiDefinition.js* , [Başvuru: Kullanıcı arabirimi öğeleri yapıtlarına başvurabilir](reference-createuidefinition-artifact.md).
 
 ## <a name="template-with-custom-provider"></a>Özel sağlayıcı içeren şablon
 
 Özel sağlayıcı ile yönetilen bir uygulama örneği oluşturmak için, **genel** adına sahip özel sağlayıcı kaynağı tanımlamanız ve **üzerindemainTemplate.js** **Microsoft. customproviders/resourceproviders** yazmanız gerekir. Bu kaynakta, hizmetinize yönelik kaynak türlerini ve eylemleri tanımlarsınız. Azure Işlevi dağıtmak için ve Azure depolama hesabı örnekleri, türü kaynakları `Microsoft.Web/sites` ve `Microsoft.Storage/storageAccounts` sırasıyla tanımlar.
 
-Bu öğreticide, `users` özel bir kaynak bağlamında gerçekleştirilecek bir kaynak türü, `ping` özel eylem ve `users/contextAction` özel eylem oluşturacaksınız `users` . Her kaynak türü ve eylemi için, [createUIDefinition.jsüzerinde](#user-interface-definition)belirtilen ada sahip işleve işaret eden bir uç nokta sağlar. Kaynak türleri ve eylemler için **yönlendirme türünü** belirtin `Proxy,Cache` `Proxy` :
+Bu öğreticide, `users` özel bir kaynak bağlamında gerçekleştirilecek bir kaynak türü, `ping` özel eylem ve `users/contextAction` özel eylem oluşturacaksınız `users` . Her kaynak türü ve eylemi için, [createUiDefinition.jsüzerinde](#user-interface-definition)belirtilen ada sahip işleve işaret eden bir uç nokta sağlar. Kaynak türleri ve eylemler için **yönlendirme türünü** belirtin `Proxy,Cache` `Proxy` :
 
 ```json
 {

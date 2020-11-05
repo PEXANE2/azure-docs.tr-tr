@@ -3,12 +3,12 @@ title: Kayıt defterinde oturum açma sorunlarını giderme
 description: Azure Container Registry 'de oturum açarken karşılaşılan sorunların belirtileri, nedenleri ve çözümleri
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: a00db5cc34da6d90210a22005f33b0ad1bf20f1b
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 5499c64bef8ce36a5f622c4d847b417ef49a5a03
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348908"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379511"
 ---
 # <a name="troubleshoot-registry-login"></a>Kayıt defteri oturum açma sorunlarını giderme
 
@@ -98,7 +98,9 @@ Senaryonuz için kullandığınız kimlik bilgilerinin geçerliliğini denetleyi
 
 `AcrPull`Kayıt defterinden görüntüleri çekmek için Azure rolü veya `AcrPush` görüntüleri göndermek için rol gibi kimlik bilgileriyle ilişkili kayıt defteri izinlerini onaylayın. 
 
-Azure CLı kullanarak portal 'daki bir kayıt defterine veya kayıt defteri yönetimine erişim, `Reader` Azure Resource Manager işlemleri gerçekleştirmek için en azından rolü gerektirir.
+Azure CLı kullanarak portaldaki bir kayıt defterine veya kayıt defteri yönetimine erişim, `Reader` Azure Resource Manager işlemleri gerçekleştirmek için en azından rol ya da eşdeğer izinleri gerektirir.
+
+İzinleriniz kısa süre önce portala kayıt defterine erişime izin verecek şekilde değiştirilirse, eski tarayıcı önbelleğinden veya tanımlama bilgilerinden kaçınmak için tarayıcınızda bir ınbilito veya özel oturum denemeniz gerekebilir.
 
 Rol atamaları eklemek veya kaldırmak için, sizin veya bir kayıt defteri sahibinin abonelikte yeterli ayrıcalıklara sahip olması gerekir.
 

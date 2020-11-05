@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: quickstart
-ms.date: 08/07/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, devx-track-azurepowershell
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd764417a4598899bf17dc6a00c633f19d64fa6f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4a78296d3fd040b047c2a6cc3761d429883aa9d1
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379352"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378797"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Hızlı başlangıç: sınırsız uygulama kaydı oluşturmak için izin verme
 
@@ -29,25 +29,25 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 ## <a name="create-a-custom-role-using-the-azure-ad-portal"></a>Azure AD portalını kullanarak özel bir rol oluşturma
 
 1. Azure AD kuruluşunda ayrıcalıklı rol yöneticisi veya genel yönetici izinleriyle [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
-1. **Azure Active Directory**seçin, **Roller ve yöneticiler**' i seçin ve ardından **Yeni özel rol**' i seçin.
+1. **Azure Active Directory** seçin, **Roller ve yöneticiler** ' i seçin ve ardından **Yeni özel rol** ' i seçin.
 
     ![Roller ve yöneticiler sayfasından roller oluşturma veya düzenleme](./media/quickstart-app-registration-limits/new-custom-role.png)
 
-1. **Temel bilgiler** sekmesinde, rolün adı olarak "uygulama kaydı Oluşturucusu" ve rol açıklaması için "sınırsız sayıda uygulama kaydı oluşturabilir" seçeneğini belirtin ve ardından **İleri**' yi seçin.
+1. **Temel bilgiler** sekmesinde, rolün adı olarak "uygulama kaydı Oluşturucusu" ve rol açıklaması için "sınırsız sayıda uygulama kaydı oluşturabilir" seçeneğini belirtin ve ardından **İleri** ' yi seçin.
 
     ![Temel bilgiler sekmesinde özel rol için bir ad ve açıklama girin](./media/quickstart-app-registration-limits/basics-tab.png)
 
-1. **İzinler** sekmesinde, arama kutusuna "Microsoft. Directory/Applications/Create" yazın ve ardından istediğiniz izinlerin yanındaki onay kutularını işaretleyin ve ardından **İleri**' yi seçin.
+1. **İzinler** sekmesinde, arama kutusuna "Microsoft. Directory/Applications/Create" yazın ve ardından istediğiniz izinlerin yanındaki onay kutularını işaretleyin ve ardından **İleri** ' yi seçin.
 
     ![Izinler sekmesinde özel bir rol için izinleri seçin](./media/quickstart-app-registration-limits/permissions-tab.png)
 
-1. **Gözden geçir + oluştur** sekmesinde izinleri gözden geçirin ve **Oluştur**' u seçin.
+1. **Gözden geçir + oluştur** sekmesinde izinleri gözden geçirin ve **Oluştur** ' u seçin.
 
 ### <a name="assign-the-role-in-the-azure-ad-portal"></a>Azure AD portalında rol atama
 
 1. Azure AD kuruluşunuzda ayrıcalıklı rol yöneticisi veya genel yönetici izinleriyle [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
 1. **Azure Active Directory** ' yi seçin ve ardından **Roller ve yöneticiler '** i seçin.
-1. Uygulama kaydı oluşturan rolünü seçin ve **atama Ekle**' yi seçin.
+1. Uygulama kaydı oluşturan rolünü seçin ve **atama Ekle** ' yi seçin.
 1. İstediğiniz kullanıcıyı seçin ve kullanıcıyı role eklemek için **Seç** ' e tıklayın.
 
 Bitti! Bu hızlı başlangıçta, sınırsız sayıda uygulama kaydı oluşturma izni olan özel bir rolü başarıyla oluşturdunuz ve ardından bu rolü bir kullanıcıya atayacaksınız.

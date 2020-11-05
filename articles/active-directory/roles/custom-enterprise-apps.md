@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 11/04/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99d83005599c59f6a4249014139b594764df8acf
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0932e4b6163264b0b514958e1e898b297e249870
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376313"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378559"
 ---
 # <a name="assign-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>Azure Active Directory 'de kurumsal uygulamaları yönetmek için özel roller atama
 
@@ -46,19 +46,19 @@ Güncelleştirme izninin verilmesi iki adımda yapılır:
 > Özel roller, kuruluş genelindeki bir düzeyde oluşturulur ve yönetilir ve yalnızca kuruluşun genel bakış sayfasından kullanılabilir.
 
 1. Kuruluşunuzda ayrıcalıklı rol yöneticisi veya genel yönetici izinleriyle [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
-1. **Azure Active Directory**seçin, **Roller ve yöneticiler**' i seçin ve ardından **Yeni özel rol**' i seçin.
+1. **Azure Active Directory** seçin, **Roller ve yöneticiler** ' i seçin ve ardından **Yeni özel rol** ' i seçin.
 
     ![Azure AD 'de roller listesinden yeni bir özel rol ekleme](./media/custom-enterprise-apps/new-custom-role.png)
 
-1. **Temel bilgiler** sekmesinde, rol adı için "Kullanıcı ve grup atamalarını Yönet" ve rol açıklaması için "Kullanıcı ve grup atamalarını yönetme izinleri verme" seçeneğini belirtin ve ardından **İleri**' yi seçin.
+1. **Temel bilgiler** sekmesinde, rol adı için "Kullanıcı ve grup atamalarını Yönet" ve rol açıklaması için "Kullanıcı ve grup atamalarını yönetme izinleri verme" seçeneğini belirtin ve ardından **İleri** ' yi seçin.
 
     ![Özel rol için bir ad ve açıklama girin](./media/custom-enterprise-apps/role-name-and-description.png)
 
-1. **İzinler** sekmesinde, arama kutusuna "Microsoft. Directory/Servicesorumlularını/appRoleAssignedTo/Update" yazın ve ardından istediğiniz izinlerin yanındaki onay kutularını işaretleyin ve ardından **İleri**' yi seçin.
+1. **İzinler** sekmesinde, arama kutusuna "Microsoft. Directory/Servicesorumlularını/appRoleAssignedTo/Update" yazın ve ardından istediğiniz izinlerin yanındaki onay kutularını işaretleyin ve ardından **İleri** ' yi seçin.
 
     ![Özel role izinleri ekleme](./media/custom-enterprise-apps/role-custom-permissions.png)
 
-1. **Gözden geçir + oluştur** sekmesinde izinleri gözden geçirin ve **Oluştur**' u seçin.
+1. **Gözden geçir + oluştur** sekmesinde izinleri gözden geçirin ve **Oluştur** ' u seçin.
 
     ![Artık özel rolü oluşturabilirsiniz](./media/custom-enterprise-apps/role-custom-create.png)
 
@@ -70,7 +70,7 @@ Güncelleştirme izninin verilmesi iki adımda yapılır:
 
     ![Rolleri ve yöneticileri açın ve özel rolü arayın](./media/custom-enterprise-apps/select-custom-role.png)
 
-1. **Atama Ekle**' yi seçin, istediğiniz kullanıcıyı seçin ve ardından kullanıcıya rol ataması eklemek için **Seç** ' e tıklayın.
+1. **Atama Ekle** ' yi seçin, istediğiniz kullanıcıyı seçin ve ardından kullanıcıya rol ataması eklemek için **Seç** ' e tıklayın.
 
     ![Kullanıcıya özel rol için bir atama ekleyin](./media/custom-enterprise-apps/assign-user-to-role.png)
 

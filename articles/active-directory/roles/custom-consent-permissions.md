@@ -6,18 +6,18 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: overview
-ms.date: 10/06/2020
+ms.date: 11/04/2020
 ms.author: curtand
 ms.reviewer: psignoret
 ms.custom: it-pro
-ms.openlocfilehash: 372ae994c62767032f1bfb069093f66d738c23b3
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 358a458698ec1fd8443e15f71a84e057f33af527
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379344"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376740"
 ---
 # <a name="app-consent-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory özel roller için uygulama izni izinleri
 
@@ -65,7 +65,7 @@ Burada `{id}` , bu iznin kullanılabilir olması için karşılanması gereken k
 
 ## <a name="full-list-of-permissions"></a>İzinlerin tam listesi
 
-İzin | Description
+İzin | Açıklama
 ---------- | -----------
 Microsoft. Directory/Servicesorumlularını/managePermissionGrantsForSelf. numarasını | Uygulama onay ilkesine tabi olmak üzere kendi kendine (Kullanıcı izni) adına uygulamalar için izin verme olanağı verir `{id}` .
 Microsoft. Directory/Servicesorumlularını/managePermissionGrantsForAll. numarasını | Uygulama onay ilkesine bağlı olarak, her biri adına (kiracı genelinde yönetici onayı) uygulamalara izin vermek için izin verir `{id}` .

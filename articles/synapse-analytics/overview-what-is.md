@@ -9,18 +9,18 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 16e13a18f93da9063a7eb08e3a2df27db9e3090f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3043cd5f8cb27197048bd84c7181c2b42c4ad5c9
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321696"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376910"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Azure SYNAPSE Analytics (çalışma alanları önizlemesi) nedir?
 
 [!INCLUDE [preview](includes/note-preview.md)]
 
-Kurumsal analizler, ham, iyileştirilmiş veya yüksek düzeyde bir şekilde, her türlü veri için büyük ölçekte çalışmalıdır. Bu, genellikle kuruluşların büyük veri ve veri ambarı teknolojilerini, ilişkisel depolardaki ve veri klarındaki veriler arasında çalışan karmaşık veri işlem hatlarıyla birlikte bulundurmasına gerek duyar. Bu tür çözümlerin oluşturulması, saklanması ve güvende olması zordur. Insight enteprises ihtiyaklarını sunmaya yönelik karmaşıklık gecikmeleri.
+Kurumsal analizler, ham, iyileştirilmiş veya yüksek düzeyde bir şekilde, her türlü veri için büyük ölçekte çalışmalıdır. Bu, genellikle kuruluşların büyük veri ve veri ambarı teknolojilerini, ilişkisel depolardaki ve veri klarındaki veriler arasında çalışan karmaşık veri işlem hatlarıyla birlikte bulundurmasına gerek duyar. Bu tür çözümlerin oluşturulması, saklanması ve güvende olması zordur. Insight işletmelerin ihtiyacı olan karmaşıklık gecikmeleri.
 
 **Azure SYNAPSE** , veri ambarlarında ve büyük veri sistemlerinde öngörü süresini hızlandıran tümleşik bir analiz hizmetidir. Azure SYNAPSE, kurumsal veri ambarlarında kullanılan **SQL** teknolojilerinin en iyi yanı sıra büyük veriler Için kullanılan **Spark** teknolojilerini ve veri TÜMLEŞTIRME ve etl/ELT için işlem **hatlarını** sunar. **SYNAPSE Studio** , yönetim, izleme, kodlama ve güvenlik için birleştirilmiş bir deneyim sağlar. SYNAPSE, **PowerBI** , **Cosmosdb** ve **AzureML** gibi diğer Azure hizmetleriyle derin tümleştirmeye sahiptir.
 
@@ -79,4 +79,4 @@ Azure SYNAPSE, kuruluşların analiz kaynaklarını yönetmesi, kullanımı ve e
 
 * [Azure SYNAPSE Analytics 'i kullanmaya başlama](get-started.md)
 * [Çalışma alanı oluşturma](quickstart-create-workspace.md)
-* [Sunucusuz SQL havuzu kullan](quickstart-sql-on-demand.md)
+* [Sunucusuz SQL havuzu kullanma](quickstart-sql-on-demand.md)

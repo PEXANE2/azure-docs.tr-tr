@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: article
-ms.date: 08/11/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34c3c20b277a768ba27016f1c76bd782ef05dc36
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d014a901791f16ecdcb9c3d5f0858a8626cc1072
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92377650"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379086"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Azure Active Directory 'de rol atamalarını yönetmek için bulut gruplarını kullanma (Önizleme)
 
@@ -28,7 +28,7 @@ Bu örneği göz önünde bulundurun: contoso, kişilerin Azure AD kuruluşunda 
 
 ## <a name="how-this-feature-works"></a>Bu özelliğin çalışması
 
-' Isastifbletorole ' özelliği ' true ' olarak ayarlanmış yeni bir Microsoft 365 veya güvenlik grubu oluşturun. Ayrıca, bu özelliği, Azure portal bir grup oluştururken, **Azure AD rolleri gruba atanabilmesini**sağlayabilirsiniz. Her iki durumda da, kullanıcılara rolleri atarken aynı şekilde grubu bir veya daha fazla Azure AD rolüne atayabilirsiniz. Tek bir Azure AD kuruluşunda (kiracı), en fazla 200 rol atanabilir grup oluşturulabilir.
+' Isastifbletorole ' özelliği ' true ' olarak ayarlanmış yeni bir Microsoft 365 veya güvenlik grubu oluşturun. Ayrıca, bu özelliği, Azure portal bir grup oluştururken, **Azure AD rolleri gruba atanabilmesini** sağlayabilirsiniz. Her iki durumda da, kullanıcılara rolleri atarken aynı şekilde grubu bir veya daha fazla Azure AD rolüne atayabilirsiniz. Tek bir Azure AD kuruluşunda (kiracı), en fazla 200 rol atanabilir grup oluşturulabilir.
 
 Grubun üyelerinin role erişiminin olmasını istemiyorsanız Azure AD Privileged Identity Management kullanabilirsiniz... Bir Azure AD rolünün uygun bir üyesi olarak bir grup atayın. Grubun her üyesi, grubun atandığı rol için atamasının etkinleştirilmesini sağlar. Daha sonra, kendi rol atamasını sabit bir süre için etkinleştirebilir.
 
@@ -59,7 +59,7 @@ Olası ihlalin oluşmasını engellemek için grupların rollere nasıl atandı�
 ## <a name="known-issues"></a>Bilinen sorunlar
 
 - **Yönetilen Kullanıcı oturum açma özelliği için hazırlanan dağıtımı etkinleştir** ayarı, Grup aracılığıyla atamayı desteklemez.
-- *Yalnızca Azure AD P2 lisanslı müşteriler*: bir gruba hem Azure AD hem de PRIVILEGED IDENTITY Management (PIM) aracılığıyla bir rol için etkin olarak atamayın. Özellikle, oluşturulduktan sonra rol atanabilir bir gruba rol atamayın *ve* PIM 'yi kullanarak gruba bir rol atarsınız. Bu, kullanıcıların, PıM 'de etkin rol atamalarını görmemesi ve bu PıM atamasını kaldıramamasının gerektiği sorunlara yol açacaktır. Uygun atamalar Bu senaryoda etkilenmez. Bu atamayı yapmayı denerseniz, şöyle beklenmeyen davranışlar görebilirsiniz:
+- *Yalnızca Azure AD P2 lisanslı müşteriler* : bir gruba hem Azure AD hem de PRIVILEGED IDENTITY Management (PIM) aracılığıyla bir rol için etkin olarak atamayın. Özellikle, oluşturulduktan sonra rol atanabilir bir gruba rol atamayın *ve* PIM 'yi kullanarak gruba bir rol atarsınız. Bu, kullanıcıların, PıM 'de etkin rol atamalarını görmemesi ve bu PıM atamasını kaldıramamasının gerektiği sorunlara yol açacaktır. Uygun atamalar Bu senaryoda etkilenmez. Bu atamayı yapmayı denerseniz, şöyle beklenmeyen davranışlar görebilirsiniz:
   - Rol atamasının bitiş saati yanlış görüntülenebilir.
   - PıM portalında, (bir veya daha fazla grup ve doğrudan) bir atamaya göre kaç yöntemden bağımsız olarak **rollerim** yalnızca bir rol ataması gösterebilir.
 - *Yalnızca Azure AD P2 lisanslı müşterileri* Grubu sildikten sonra bile, PıM Kullanıcı arabirimindeki rolün uygun bir üyesi gösterilmeye devam eder. İşlevsel bir sorun yoktur; yalnızca Azure portal bir önbellek sorunudur.  

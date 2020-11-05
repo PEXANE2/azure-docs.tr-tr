@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 00cd5a76a52e1b58bc2f01315dd3a1a859074a58
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 283befd08c7802a9df6d2fca78465d50cfb2ba7b
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348466"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376825"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda yedekleme ve geri yükleme
 
@@ -115,7 +115,12 @@ Sunucunuzu coğrafi olarak yedekli yedeklemeler için yapılandırdıysanız, hi
 
 Coğrafi geri yükleme, sunucunuzun barındırıldığı bölgedeki bir olay nedeniyle kullanılamadığında varsayılan kurtarma seçeneğidir. Bir bölgedeki büyük ölçekli bir olay veritabanı uygulamanızın kullanılamamasına neden olursa, coğrafi olarak yedekli yedeklerden bir sunucuyu başka bir bölgedeki sunucuya geri yükleyebilirsiniz. Coğrafi geri yükleme, sunucunun en son yedeklemesini kullanır. Bir yedeklemenin alınması ve farklı bölgeye çoğaltılma arasında bir gecikme vardır. Bu gecikme bir saat kadar sürebilir. bu nedenle, bir olağanüstü durum oluşursa bir saatlik veri kaybı olabilir.
 
+> [!IMPORTANT]
+>Yeni oluşturulan bir sunucu için coğrafi geri yükleme gerçekleştirilirse, ilk tam anlık görüntü yedekleme kopyalama süresi çok daha yüksek olduğundan, ilk yedekleme eşitlemesi veri boyutuna bağlı olarak 24 saatten fazla sürebilir. Sonraki anlık görüntü yedeklemeleri artımlı kopyaya sahiptir ve bu nedenle geri yüklemeler, 24 saat sonra sunucu oluşturulduktan sonra daha hızlı gerçekleşir. RTO 'nizi tanımlamak için coğrafi geri yüklemeleri değerlendiriyorsanız, coğrafi geri yüklemeyi, daha iyi tahminler için **yalnızca 24 saat sonra** sunucu oluşturulduktan sonra bekleyip değerlendirmenizi öneririz.
+
 Coğrafi geri yükleme sırasında, değiştirilebilecek sunucu yapılandırması işlem oluşturma, sanal çekirdek, yedekleme saklama süresi ve yedekleme artıklığı seçeneklerini içerir. Coğrafi geri yükleme sırasında fiyatlandırma katmanını (temel, Genel Amaçlı veya bellek için Iyileştirilmiş) veya depolama boyutunu değiştirme desteklenmiyor.
+
+Tahmini kurtarma süresi, veritabanı boyutları, işlem günlüğü boyutu, ağ bant genişliği ve aynı bölgedeki aynı bölgede Kurtarılan toplam veritabanı sayısı gibi çeşitli faktörlere bağlıdır. Kurtarma zamanı genellikle 12 saatten düşüktür.
 
 ### <a name="perform-post-restore-tasks"></a>Geri yükleme sonrası görevleri gerçekleştirme
 

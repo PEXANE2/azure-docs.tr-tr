@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: cshoe
-ms.openlocfilehash: aaafe6d4080d85822ec5af9639c27fc8c55c2ce6
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: fd784bb184ff9432efc569ac9fd40de93eec0b53
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287232"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379596"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Işlevleri güvenilir olay işleme
 
@@ -50,7 +50,7 @@ Azure Işlevleri aşağıdaki adımlarla geçiş yaparken Olay Hub olaylarını 
 
 Bu davranış birkaç önemli noktayı ortaya çıkarır:
 
-- *İşlenmemiş özel durumlar iletileri kaybetmenize neden olabilir.* Bir özel durumla sonuçlanan yürütmeler, işaretçinin devam etmesine devam edecektir.  [Yeniden deneme ilkesi](./functions-bindings-error-pages.md#retry-policies) ayarlandığında, tüm yeniden deneme ilkesi değerlendirilene kadar işaretçinin ilerlediğini erteler.
+- *İşlenmemiş özel durumlar iletileri kaybetmenize neden olabilir.* Bir özel durumla sonuçlanan yürütmeler, işaretçinin devam etmesine devam edecektir.  [Yeniden deneme ilkesi](./functions-bindings-error-pages.md#retry-policies-preview) ayarlandığında, tüm yeniden deneme ilkesi değerlendirilene kadar işaretçinin ilerlediğini erteler.
 - *İşlevler, en az bir kez teslim garantisi verir.* Kodunuz ve bağımlı sistemleriniz [, aynı iletinin iki kez alınabilmesi için hesaba](./functions-idempotent.md)sahip olabilir.
 
 ## <a name="handling-exceptions"></a>Özel durum işleme
@@ -59,7 +59,7 @@ Genel bir kural olarak, her işlev en yüksek kod düzeyinde bir [try/catch blo�
 
 ### <a name="retry-mechanisms-and-policies"></a>Yeniden deneme mekanizmaları ve ilkeleri
 
-Bazı özel durumlar geçici olarak geçicidir ve bir işlem daha sonra tekrar denendiğinde yeniden görünmez. İlk adımın işlemi her zaman yeniden denemesi budur.  İşlev yürütmesi içinde uygulama [yeniden deneme ilkeleri](./functions-bindings-error-pages.md#retry-policies) veya yazar yeniden deneme mantığı özelliğinden yararlanabilirsiniz.
+Bazı özel durumlar geçici olarak geçicidir ve bir işlem daha sonra tekrar denendiğinde yeniden görünmez. İlk adımın işlemi her zaman yeniden denemesi budur.  İşlev yürütmesi içinde uygulama [yeniden deneme ilkeleri](./functions-bindings-error-pages.md#retry-policies-preview) veya yazar yeniden deneme mantığı özelliğinden yararlanabilirsiniz.
 
 İşlevlerinizi hata işleme davranışlarına giriş, hem temel hem de gelişmiş yeniden deneme ilkelerini tanımlamanızı sağlar. Örneğin, aşağıdaki kurallara göre gösterilen bir iş akışını izleyen bir ilke uygulayabilirsiniz:
 

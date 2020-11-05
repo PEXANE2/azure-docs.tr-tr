@@ -1,28 +1,24 @@
 ---
-title: Azure API Management’ı kullanarak API’nizin sürümlerini yayımlama | Microsoft Docs
-description: API Management’ta API’nizin birden fazla sürümünü yayımlamayı öğrenmek için bu öğreticideki adımları uygulayın.
-services: api-management
-documentationcenter: ''
+title: Öğretici-Azure API Management kullanarak API 'nizin sürümlerini yayımlama
+description: API Management 'de birden çok API sürümünün nasıl yayımlanacağını öğrenmek için Bu öğreticinin adımlarını izleyin.
 author: vladvino
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 10/30/2020
 ms.author: apimpm
-ms.openlocfilehash: b683910180e597cb8cbfa642bb2d9ac3200b42ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6afa26c65f097683a5b471dc34621cca38c01e6
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86255039"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377434"
 ---
-# <a name="publish-multiple-versions-of-your-api"></a>API'nizin birden fazla sürümünü yayımlama 
+# <a name="tutorial-publish-multiple-versions-of-your-api"></a>Öğretici: API 'nizin birden fazla sürümünü yayımlama 
 
-API’nizin tüm çağıranlarının tam olarak aynı sürümü kullanmasını sağlamak bazen kullanışlı olmayabilir. Çağıranlar sonraki bir sürüme yükseltmek istediğinde, bunu anlaşılması kolay bir yaklaşımı kullanarak yapabilmek ister. Bunu Azure API Management’taki **sürümleri** kullanarak gerçekleştirmek mümkündür. Daha fazla bilgi için bkz. [Sürümler ve düzeltmeler](https://azure.microsoft.com/blog/versions-revisions/).
+API 'nize yönelik tüm çağıranların tam olarak aynı sürümü kullanması pratik olduğu durumlar vardır. Çağıranlar sonraki bir sürüme yükseltmek istiyorlarsa, anlaşılması kolay bir yaklaşım ister. Bu öğreticide gösterildiği gibi, Azure API Management 'de birden çok *Sürüm* sağlanması mümkündür. 
+
+Arka plan için bkz. [sürümler & düzeltmeleri](https://azure.microsoft.com/blog/versions-revisions/).
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -32,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Sürümü bir ürüne ekleme
 > * Sürümü görüntülemek için geliştirici portalına göz atma
 
-![Geliştirici portalında gösterilen sürüm](media/api-management-getstarted-publish-versions/azure_portal.PNG)
+:::image type="content" source="media/api-management-getstarted-publish-versions/azure-portal.png" alt-text="Azure portal gösterilen sürüm":::
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -42,66 +38,69 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="add-a-new-version"></a>Yeni bir sürüm ekleme
 
-![API Bağlam menüsü - sürüm ekleme](media/api-management-getstarted-publish-versions/AddVersionMenu.png)
+1. [Azure portal](https://portal.azure.com)API Management örneğinize gidin.
+1. **API’ler** seçeneğini belirleyin.
+1. API listesinden **Tanıtım Konferans API’sini** seçin. 
+1. **Tanıtım Konferansı API 'sinin** yanındaki bağlam menüsünü ( **...** ) seçin.
+1. **Sürüm Ekle** ' yi seçin.
 
-1. API listesinden **Tanıtım Konferans API’sini** seçin.
-2. Bunun yanındaki bağlam menüsünü (**...**) seçin.
-3. **+ Sürüm Ekle** seçeneğini belirleyin.
+:::image type="content" source="media/api-management-getstarted-publish-versions/add-version-menu.png" alt-text="API bağlam menüsü-sürüm Ekle":::
+
 
 > [!TIP]
-> Sürümler yeni bir API’yi ilk kez oluşturduğunuzda da etkinleştirilebilir. Bunun için **API Ekle** ekranında **Bu API’nin sürümü oluşturulsun mu?** seçeneğini belirleyin.
+> Sürümler, yeni bir API oluşturduğunuzda da etkinleştirilebilir. **API Ekle** ekranında, **Bu API 'yi, sürüm?** ' i seçin.
 
 ## <a name="choose-a-versioning-scheme"></a>Sürüm oluşturma düzeni seçme
 
-Azure API Management, çağıranlara istedikleri API sürümünü belirtme olanağını nasıl sunacağınızı seçmenizi sağlar. Kullanılacak API sürümünü bir **sürüm oluşturma düzeni** seçerek belirtirsiniz. Bu düzen **yol, üst bilgi veya sorgu dizesi** olabilir. Aşağıdaki örnekte, sürüm oluşturma düzeni için yol kullanılmaktadır.
+Azure API Management, bir *sürüm oluşturma düzeni* seçerek ÇAĞıRANLARıN API sürümünü nasıl belirtmesini istediğinizi seçersiniz: **yol, üst bilgi** veya **sorgu dizesi**. Aşağıdaki örnekte, *Dizin* oluşturma düzeni olarak kullanılır.
 
-![Sürüm ekle ekranı](media/api-management-getstarted-publish-versions/AddVersion.PNG)
+Aşağıdaki tablodaki değerleri girin. Ardından, sürümünüzü oluşturmak için **Oluştur** ' u seçin.
 
-1. **Sürüm oluşturma düzeniniz** olarak **yol** seçeneğini belirlenmiş halde bırakın.
-2. **Ad** alanına **demo-conference-api-v1** yazın.
+:::image type="content" source="media/api-management-getstarted-publish-versions/add-version.png" alt-text="Sürüm penceresi Ekle":::
 
-    > [!NOTE]
-    > Sürüm aslında API'nin düzeltmesine dayanan yeni bir API'dir. **Ad**, yeni API’nin adıdır ve API Management örneği genelinde benzersiz olmalıdır.
 
-3. **Sürüm tanımlayıcısı** alanına **v1** yazın.
 
-    > [!TIP]
-    > Sürüm oluşturma şeması olarak **üst bilgi** veya **sorgu dizesi** seçeneğini belirlerseniz üst bilgi veya sorgu dizesi parametresinin adı gibi bir ek değer belirtmeniz gerekir.
+|Ayar   |Değer  |Açıklama  |
+|---------|---------|---------|
+|**Ad**     |  *Tanıtım-konferans-API-v1*       |  API Management örneğiniz benzersiz adı.<br/><br/>Bir sürüm aslında bir API 'nin [düzeltmesini](api-management-get-started-revise-api.md)temel alarak yenı bir API 'de olduğundan, bu ayar yeni API 'nin adıdır.   |
+|**Sürüm oluşturma düzeni**     |  **Yol**       |  Arayanlara API sürümünü belirtme şekli.     |
+|**Sürüm tanımlayıcı**     |  *v1*       |  Sürümün şemaya özgü göstergesi. **Yol** IÇIN, API URL yolu için sonek. <br/><br/> **Üst bilgi** veya **sorgu dizesi** seçilirse, ek bir değer girin: üst bilgi veya sorgu dizesi parametresinin adı.<br/><br/> Kullanım örneği görüntülenir.        |
+|**Ürünler**     |  **Sınırsız**       |  İsteğe bağlı olarak, API sürümünün ilişkilendirildiği bir veya daha fazla ürün. API’yi yayımlamak için bir ürünle ilişkilendirmeniz gerekir. Ayrıca sürümü daha sonra [bir ürüne ekleyebilirsiniz](#add-the-version-to-a-product) .      |
 
-4. Yeni sürümünüzü ayarlamak için **Oluştur**’u seçin.
-5. API listesindeki **Demo Konferans API’sinin** altında artık iki ayrı API görürsünüz: **Özgün** ve **v1**.
+Sürüm oluşturulduktan sonra API listesinde **demo Conference API** altında görüntülenir. Şimdi iki API görürsünüz: **özgün** ve **v1**.
 
-    ![Azure portalında bir API altında listelenen sürümler](media/api-management-getstarted-publish-versions/VersionList.PNG)
+![Azure portalında bir API altında listelenen sürümler](media/api-management-getstarted-publish-versions/version-list.png)
 
-    > [!Note]
-    > Sürüm bilgisi olmayan bir API’ye sürüm eklerseniz, varsayılan URL’de yanıt veren bir **Özgün** sürüm otomatik olarak oluşturulur. Bu, mevcut çağıranların sürüm ekleme işleminden olumsuz yönde etkilenmemesini sağlar. Başlangıçta etkinleştirilen sürümlerle yeni bir API oluşturursanız Özgün sürüm oluşturulmaz.
+Şimdi, **v1** 'yi **orijinalden** ayrı bir API olarak düzenleyebilir ve yapılandırabilirsiniz. Bir sürümde yapılan değişiklikler diğer bir sürümü etkilemez.
 
-6. Artık **Özgün** sürümden ayrı bir API olarak **v1** sürümünü düzenleyip yapılandırabilirsiniz. Bir sürümde yapılan değişiklikler diğer bir sürümü etkilemez.
+> [!Note]
+> Sürümü sürümü olmayan bir API 'ye sürüm eklerseniz, bir **özgün** de otomatik olarak oluşturulur. Bu sürüm varsayılan URL 'de yanıt verir. Orijinal sürüm oluşturmak, mevcut çağıranların sürüm ekleme işlemi tarafından kesilmemesini sağlar. Başlangıçta etkinleştirilmiş sürümlerle yeni bir API oluşturursanız, özgün bir oluşturulmaz.
 
 ## <a name="add-the-version-to-a-product"></a>Sürümü bir ürüne ekleme
 
-Çağıranların yeni sürümü görmesi için sürümün **ürüne** eklenmesi gerekir.
+Çağıranların yeni sürümü görmesi için sürümün *ürüne* eklenmesi gerekir. Sürümü henüz bir ürüne eklemediğiniz takdirde, uygulamayı dilediğiniz zaman bir ürüne ekleyebilirsiniz.
 
-![API Management Ürünleri](media/api-management-getstarted-publish-versions/08-AddMultipleVersions-03-AddVersionToProduct.png)
+Örneğin, sürümü **sınırsız** ürüne eklemek için:
+1. Azure portal API Management örneğinize gidin.
+1. **Ürünleri**  >  **sınırsız**  >  **API**  >  **+ Ekle** ' yi seçin.
+1. **Tanıtım Konferansı API 'si** , sürüm **v1** ' yi seçin.
+1. **Seç** ’e tıklayın.
 
-1. Klasik dağıtım modeli sayfasından **Ürünler** seçeneğini belirleyin.
-2. **Sınırsız**’ı seçin.
-3. **API’ler** seçeneğini belirleyin.
-4. **Add (Ekle)** seçeneğini belirleyin.
-5. **Demo Konferans API’si, Sürüm v1** seçeneğini belirleyin.
-6. **Seç**’e tıklayın.
+:::image type="content" source="media/api-management-getstarted-publish-versions/08-add-multiple-versions-03-add-version-product.png" alt-text="Ürüne sürüm Ekle":::
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>Sürümü görüntülemek için geliştirici portalına göz atma
 
-1. Üstteki menüden **Geliştirici Portalı**’nı seçin.
-2. **API 'leri** seçin ve **Tanıtım Konferansı API 'sine**tıklayın.
+[Geliştirici Portalını](api-management-howto-developer-portal-customize.md)DENEDIYSENIZ, API sürümlerini burada görebilirsiniz.
+
+1. Üstteki menüden **Geliştirici Portalı** ’nı seçin.
+2. **API'ler** ve ardından **Tanıtım Konferans API’si** öğesini seçin.
 3. API adının yanında birden fazla sürümü olan bir açılan menü görmeniz gerekir.
-4. **v1**’i seçin.
+4. **v1** ’i seçin.
 5. Listedeki ilk işlemin **İstek URL'sine** dikkat edin. Bu, API URL’si yolunun **v1** içerdiğini gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
 > * Yeni bir sürümü mevcut bir API’ye ekleme

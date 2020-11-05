@@ -13,16 +13,22 @@ ms.workload: infrastructure
 ms.date: 03/30/2020
 ms.author: prtyag
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6d723e95212e457a81eedf7726bf3c5bd2499643
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8f573f5f00d266fe5d27857cc9e244d136f61a5
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84488894"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379273"
 ---
-# <a name="enable-kdump-service"></a>Kdump hizmetini etkinleştir
+# <a name="kdump-for-sap-hana-on-azure-large-instances-hli"></a>Azure üzerinde SAP HANA Büyük Örnekleri için kdump (HLI)
 
-Bu belgede, Azure HANA büyük örneği (**tür ı ve tür II**) üzerinde kdump hizmetini etkinleştirme ayrıntıları açıklanmaktadır
+Kdump 'in yapılandırılması ve etkinleştirilmesi, temiz bir neden olmayan sistem Kilitlenmelerinde sorun gidermek için gereken bir adımdır.
+Sistemin bir donanım veya altyapı sorunu tarafından açıklanamayan beklenmedik bir şekilde kilitlenme zamanı vardır.
+Bu durumlarda, bir işletim sistemi veya uygulama sorunu olabilir ve kdump, SUSE 'in neden bir sistemin kilitlendiğini belirlemesine izin verir.
+
+## <a name="enable-kdump-service"></a>Kdump hizmetini etkinleştir
+
+Bu belgede, Azure HANA büyük örneği ( **tür ı ve tür II** ) üzerinde kdump hizmetini etkinleştirme ayrıntıları açıklanmaktadır
 
 ## <a name="supported-skus"></a>Desteklenen SKU 'Lar
 
@@ -55,13 +61,17 @@ Bu belgede, Azure HANA büyük örneği (**tür ı ve tür II**) üzerinde kdump
 |   Tür II                   |  SuSE        |   SLES 12 SP3         |  S576m      |
 |   Tür II                   |  SuSE        |   SLES 12 SP4         |  S576m      |
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Kdump hizmeti `/var/crash` , dökümleri yazmak için dizini kullanır, bu dizine karşılık gelen bölümün dökümlerini barındırmak için yeterli alana sahip olduğundan emin olun.
 
 ## <a name="setup-details"></a>Kurulum Ayrıntıları
 
 - Kdump etkinleştirme betiği [burada](https://github.com/Azure/sap-hana/blob/master/tools/enable-kdump.sh) bulunabilir
+> [!NOTE]
+> Bu betik, laboratuvar kurulumumuza göre yapılır ve müşterinin daha fazla ayarlama için işletim sistemi satıcısına başvurması beklenmektedir.
+> Yeni ve var olan sunucular için ayrı LUN sağlanacak ve dökümleri ve betiği kaydetmek için, dosya sisteminin LUN dışında yapılandırılması ele alınacaktır.
+> Microsoft, dökümü analiz etmek için sorumlu olmayacaktır. Müşterinin analiz edilmesi için işletim sistemi satıcısı ile bir bilet açması gerekmez.
 
 - Aşağıdaki komutu kullanarak bu betiği HANA büyük örneğinde çalıştırın
 
@@ -72,7 +82,7 @@ Bu belgede, Azure HANA büyük örneği (**tür ı ve tür II**) üzerinde kdump
     sudo bash enable-kdump.sh
     ```
 
-- Komut çıktıları kdump başarıyla etkinse, lütfen değişikliği uygulamak için sistemi yeniden başlatın ve kdump başarıyla etkinleştirilir. Değişiklikleri uygulamak için sistemi yeniden başlatın.
+- Komut çıktıları kdump başarıyla etkinleştirilirse, değişiklikleri başarıyla uygulamak için sistemi yeniden başlattığınızdan emin olun.
 
 - Komut çıktısı belirli bir işlemi yapamadığımızı!!!!, çıkarken kdump hizmeti etkinleştirilmemiştir. Bölüm [destek sorununa](#support-issue)bakın.
 
@@ -104,3 +114,6 @@ Betik hata vererek başarısız olursa veya kdump etkin değilse, aşağıdaki a
 * İşletim sistemi sürümü
 
 * Çekirdek sürümü
+
+## <a name="related-documents"></a>İlgili Belgeler
+- [Kdump yapılandırma](https://www.suse.com/support/kb/doc/?id=3374462) hakkında daha fazla bilgi için

@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 11/04/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d283a5bec804696a1243005a37bf73b087677d09
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d0e2f520f55b9664d2d0b039867ef7670b190fed
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92377818"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377080"
 ---
 # <a name="application-registration-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory özel roller için uygulama kaydı izinleri
 
@@ -28,7 +28,7 @@ Bu makale, Azure Active Directory (Azure AD) içindeki özel rol tanımları iç
 
 Özel rolünüzün izinlerini seçerken, yalnızca tek kiracılı uygulamaları yönetmek için erişim verme seçeneğiniz vardır. tek kiracılı uygulamalar yalnızca uygulamanın kaydedildiği Azure AD kuruluşundaki kullanıcılar tarafından kullanılabilir. tek kiracılı uygulamalar **Desteklenen hesap türleri** "yalnızca bu kuruluş dizininde hesaplar" olarak ayarlanmış şekilde tanımlanır. Graph API, tek kiracılı uygulamalarda Signınaudience özelliği "AzureADMyOrg" olarak ayarlanmıştır.
 
-Yalnızca tek kiracılı uygulamaları yönetmek üzere erişim vermek için, aşağıdaki izinleri **uygulamalar. Myorgantors**alt türü ile kullanın. Örneğin, Microsoft. Directory/Applications. Myorganleştirme/temel/güncelleştirme.
+Yalnızca tek kiracılı uygulamaları yönetmek üzere erişim vermek için, aşağıdaki izinleri **uygulamalar. Myorgantors** alt türü ile kullanın. Örneğin, Microsoft. Directory/Applications. Myorganleştirme/temel/güncelleştirme.
 
 Genel terimler alt türünün, izninin ve özellik kümesinin ne anlama geldiğini öğrenmek için [özel rollere genel bakış ' a](custom-overview.md) bakın. Aşağıdaki bilgiler uygulama kayıtlarına özgüdür.
 

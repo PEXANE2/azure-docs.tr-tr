@@ -6,20 +6,20 @@ keywords: ''
 author: curtand
 manager: daveba
 ms.author: curtand
-ms.date: 04/30/2020
+ms.date: 11/05/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdf41a16975505b76e4b49fdf4e73faeb187ddfe
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 69428898ca123bf5b5fa96cf041818cc15f5ac40
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92378241"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378644"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD'de karma ve bulut dağıtımları için ayrıcalıklı erişim güvenliğini sağlama
 
@@ -78,7 +78,7 @@ Azure AD Privileged Identity Management açtıktan sonra:
 
 2. Privileged Identity Management kullanmak istediğiniz Azure AD organizasyonunu seçmek için, Azure portal sağ üst köşesindeki Kullanıcı adınızı seçin.
 
-3. Azure portal menüsünde **tüm hizmetler** ' i seçin ve **Azure AD Privileged Identity Management**listeyi filtreleyin.
+3. Azure portal menüsünde **tüm hizmetler** ' i seçin ve **Azure AD Privileged Identity Management** listeyi filtreleyin.
 
 4. **Tüm hizmetler** listesinden Privileged Identity Management açın ve panonuza sabitleyin.
 
@@ -359,7 +359,7 @@ Yol haritasının 4. aşaması altı ayda ve daha fazla uygulanmalıdır. Günü
 Ayrıcalıklı erişimin güvenliğini sağlamak, iş varlıklarınız için güvenlik hakkı sağlamak açısından önemlidir. Bununla birlikte, sürekli güvenlik kesintileri sağlayan bir bütün güvenlik programının parçası olmalıdır. Bu program şöyle bir öğe içermelidir:
 
 * İlke
-* Operations
+* İşlemler
 * Bilgi güvenliği
 * Sunucular
 * Uygulamalar

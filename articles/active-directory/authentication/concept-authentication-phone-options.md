@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 11/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25161054a53377b9fbbb12621b95dff9c119fa17
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 45851015dd5a845497fb2d09bf1f9fffb9e35a06
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165527"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377760"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Azure Active Directory-telefon seçeneklerinde kimlik doğrulama yöntemleri
 
@@ -23,7 +23,7 @@ Metin iletisini kullanarak doğrudan kimlik doğrulama için, [SMS tabanlı kiml
 
 Kullanıcılar ayrıca, Azure Multi-Factor Authentication veya self servis parola sıfırlama (SSPR) sırasında kullanılan ikincil kimlik doğrulama biçimi olarak bir cep telefonu veya ofis telefonu kullanarak kendilerini doğrulayabilirler.
 
-Doğru şekilde çalışmak için telefon numaralarının *+ CountryCode PhoneNumber*biçiminde olması gerekir, örneğin *+ 1 4251234567*.
+Doğru şekilde çalışmak için telefon numaralarının *+ CountryCode PhoneNumber* biçiminde olması gerekir, örneğin *+ 1 4251234567*.
 
 > [!NOTE]
 > Ülke/bölge kodu ve telefon numarası arasında bir boşluk olması gerekir.
@@ -49,8 +49,6 @@ SSPR veya Azure Multi-Factor Authentication sırasında kısa mesaj doğrulamayl
 SSPR veya Azure Multi-Factor Authentication sırasında telefon araması doğrulaması ile, Kullanıcı tarafından kaydedilen telefon numarasına otomatik bir sesli çağrı yapılır. Oturum açma işlemini tamamlamaya yönelik olarak, kullanıcıdan PIN numarasını girmesi istenir ve ardından tuş takımında # gelmelidir.
 
 ## <a name="office-phone-verification"></a>Office telefon doğrulaması
-
-Office Phone özniteliği Azure AD yöneticisi tarafından yönetilir ve Kullanıcı tarafından kaydedilemez.
 
 SSPR veya Azure Multi-Factor Authentication sırasında telefon araması doğrulaması ile, Kullanıcı tarafından kaydedilen telefon numarasına otomatik bir sesli çağrı yapılır. Oturum açma işlemini tamamlamaya yönelik olarak, kullanıcıdan PIN numarasını girmesi istenir ve ardından tuş takımında # gelmelidir.
 
@@ -81,7 +79,7 @@ SSPR kavramları hakkında daha fazla bilgi edinmek için bkz. [Azure AD self se
 
 MFA kavramları hakkında daha fazla bilgi edinmek için bkz. [Azure Multi-Factor Authentication nasıl çalıştığı][concept-mfa].
 
-[Microsoft Graph REST API Beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)kullanarak kimlik doğrulama yöntemlerini yapılandırma hakkında daha fazla bilgi edinin.
+[Microsoft Graph REST API Beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta&preserve-view=true)kullanarak kimlik doğrulama yöntemlerini yapılandırma hakkında daha fazla bilgi edinin.
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

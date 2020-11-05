@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: article
-ms.date: 08/13/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 837750d7eeef9bc7a133a54b23a0c52c847364eb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0f80f67ac695c17cc760e0e87fb9b11384fb7585
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92377625"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377743"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>Bulut gruplarına atanan rollerle ilgili sorunları giderme
 
@@ -32,9 +32,9 @@ Y **:** Yalnızca ayrıcalıklı rol yöneticileri veya genel Yöneticiler, rol 
 
 Y **:** Varsayılan olarak, yalnızca ayrıcalıklı rol yöneticisi ve genel yönetici, rol atanabilir bir grubun üyeliğini yönetir, ancak Grup sahipleri ekleyerek rol atanabilir grupların yönetimine temsilci atayabilirsiniz.
 
-**S**: kuruluşumdaki bir yardım masası yöneticim, ancak bir dizin okuyucusu olan kullanıcının parolasını güncelleştiremiyorum. Neden meydana gelir?
+**S** : kuruluşumdaki bir yardım masası yöneticim, ancak bir dizin okuyucusu olan kullanıcının parolasını güncelleştiremiyorum. Neden meydana gelir?
 
-Y **: Kullanıcı**, rol atanabilir bir grup yoluyla Dizin okuyucuyu alabilir. Rol atanabilir grupların tüm üyeleri ve sahipleri korunur. Yalnızca ayrıcalıklı kimlik doğrulama Yöneticisi veya genel yönetici rollerindeki kullanıcılar, korumalı bir kullanıcının kimlik bilgilerini sıfırlayabilir.
+Y **: Kullanıcı** , rol atanabilir bir grup yoluyla Dizin okuyucuyu alabilir. Rol atanabilir grupların tüm üyeleri ve sahipleri korunur. Yalnızca ayrıcalıklı kimlik doğrulama Yöneticisi veya genel yönetici rollerindeki kullanıcılar, korumalı bir kullanıcının kimlik bilgilerini sıfırlayabilir.
 
 **S:** Bir kullanıcının parolasını güncelleştiremiyorum. Bunlara daha fazla ayrıcalıklı rol atanmaz. Neden gerçekleşiyor?
 
@@ -69,27 +69,27 @@ Kullanıcı | Katalog sahibi | Yalnızca Grup sahibi ise | Yalnızca Grup sahibi
 
 Y **:** Bu yanıt yalnızca Azure AD Premium P1 kuruluşlarda geçerlidir.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve **Azure Active Directory**açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **Azure Active Directory** açın.
 1. Kullanıcıları seçin ve bir kullanıcı profili açın.
-1. **Atanan roller**' i seçin.
+1. **Atanan roller** ' i seçin.
 1. Dişli simgesini seçin. Bu bilgileri veren bir bölme açılır. Doğrudan atamalar ' ın yanındaki bir "Kaldır" düğmesi vardır. Dolaylı rol atamasını kaldırmak için, rolü atanmış olan gruptan kullanıcıyı kaldırın.
 
 **S:** Nasıl yaparım? rol atanabilir olan tüm grupları görün mi?
 
 Y **:** Şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve **Azure Active Directory**açın.
-1. **Gruplar**  >  **tüm gruplar**' ı seçin.
-1. **Filtre Ekle**' yi seçin.
-1. **Rol atanabilir**olarak filtreleyin.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **Azure Active Directory** açın.
+1. **Gruplar**  >  **tüm gruplar** ' ı seçin.
+1. **Filtre Ekle** ' yi seçin.
+1. **Rol atanabilir** olarak filtreleyin.
 
 **S:** Nasıl yaparım? hangi rolün bir sorumlu 'e doğrudan ve dolaylı olarak atandığını öğrensin mi?
 
 Y **:** Şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve **Azure Active Directory**açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **Azure Active Directory** açın.
 1. Kullanıcıları seçin ve bir kullanıcı profili açın.
-1. **Atanan roller**' i seçin ve ardından:
+1. **Atanan roller** ' i seçin ve ardından:
 
     - Azure AD Premium P1 lisanslı kuruluşlar: dişli simgesini seçin. Bu bilgileri veren bir bölme açılır.
     - Azure AD Premium P2 lisanslı kuruluşlar: **Üyelik** sütununda doğrudan ve devralınan lisans bilgilerini bulacaksınız.

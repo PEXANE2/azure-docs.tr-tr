@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 2b653a0abbe89686c764a6a0885720cc746975c8
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: da1f7ce1474513fd9de286495f59aca63d8628b6
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314725"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377264"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Aracısız VMware VM geçişinde çoğaltma sorunlarını giderme
 
@@ -29,11 +29,16 @@ Bazen bir VM için çoğaltma döngüleri başarısız olabilir. Bu arızalar, �
 Sanal makineleriniz için çoğaltma durumunu izlemek üzere aşağıdaki adımları kullanın:
 
   1. Azure portal Azure geçişi ' nde sunucular sayfasına gidin.
-  2. Sunucu geçiş kutucuğunda "sunucuları çoğaltma" seçeneğine tıklayarak "makineler çoğaltılıyor" sayfasına gidin.
-  3. Durum, sağlık, son eşitleme saati vb. gibi ek bilgilerle birlikte çoğaltma sunucularının bir listesini görürsünüz. Sistem durumu sütunu, sanal makinenin geçerli çoğaltma durumunu gösterir. Sağlık sütunundaki bir ' Critical ' veya ' Warning ' değeri, genellikle VM için önceki çoğaltma döngüsünün başarısız olduğunu gösterir. Daha fazla ayrıntı edinmek için VM 'ye sağ tıklayın ve "hata ayrıntıları" nı seçin. Hata ayrıntıları sayfası hata hakkındaki bilgileri ve sorun giderme hakkında ek ayrıntıları içerir. Ayrıca, VM için Olaylar sayfasına gitmek üzere kullanılabilecek bir "son olaylar" bağlantısı görürsünüz.
-  4. VM için önceki çoğaltma çevrimi başarısızlıklarını görmek üzere "son olaylar" a tıklayın. Olaylar sayfasında, sanal makine için "çoğaltma çevrimi başarısız oldu" veya "disk için çoğaltma çevrimi başarısız oldu" türündeki en son olayı bulun.
-  5. Hatanın olası nedenlerini ve önerilen düzeltme adımlarını anlamak için olaya tıklayın. Sorunu gidermek için belirtilen bilgileri kullanın ve hatayı düzeltin.
-    
+  ![Görüntü 1](./media/troubleshoot-changed-block-tracking-replication/image0.png)
+  1. Sunucu geçiş kutucuğunda "sunucuları çoğaltma" seçeneğine tıklayarak "makineler çoğaltılıyor" sayfasına gidin.
+  ![Görüntü 2](./media/troubleshoot-changed-block-tracking-replication/image1.png)
+  1. Durum, sağlık, son eşitleme saati vb. gibi ek bilgilerle birlikte çoğaltma sunucularının bir listesini görürsünüz. Sistem durumu sütunu, sanal makinenin geçerli çoğaltma durumunu gösterir. Sağlık sütunundaki bir ' Critical ' veya ' Warning ' değeri, genellikle VM için önceki çoğaltma döngüsünün başarısız olduğunu gösterir. Daha fazla ayrıntı edinmek için VM 'ye sağ tıklayın ve "hata ayrıntıları" nı seçin. Hata ayrıntıları sayfası hata hakkındaki bilgileri ve sorun giderme hakkında ek ayrıntıları içerir. Ayrıca, VM için Olaylar sayfasına gitmek üzere kullanılabilecek bir "son olaylar" bağlantısı görürsünüz.
+  ![Görüntü 3](./media/troubleshoot-changed-block-tracking-replication/image2.png)
+  1. VM için önceki çoğaltma çevrimi başarısızlıklarını görmek üzere "son olaylar" a tıklayın. Olaylar sayfasında, sanal makine için "çoğaltma çevrimi başarısız oldu" veya "disk için çoğaltma çevrimi başarısız oldu" türündeki en son olayı bulun.
+  ![Resim 4](./media/troubleshoot-changed-block-tracking-replication/image3.png)
+  1. Hatanın olası nedenlerini ve önerilen düzeltme adımlarını anlamak için olaya tıklayın. Sorunu gidermek için belirtilen bilgileri kullanın ve hatayı düzeltin.
+ ![Resim 5](./media/troubleshoot-changed-block-tracking-replication/image4.png)
+
 ## <a name="common-replication-errors"></a>Ortak çoğaltma hataları
 
 Bu bölümde, yaygın hatalardan bazıları ve bunların nasıl giderebileceğiniz açıklanır.
@@ -54,7 +59,7 @@ Portal anahtar kasasını oluşturduğunda, depolama hesaplarını Key Vault yö
 
 - Bunun gerçekleşebileceği diğer durumlar, bir Kullanıcı (Kullanıcı1) başlangıçta çoğaltmayı ayarlamaya ve bir hatayla karşılaşmaya çalıştığında, ancak Anahtar Kasası zaten oluşturulmuştur (ve Kullanıcı erişim ilkesi bu kullanıcıya uygun şekilde atanır). Artık sonraki bir noktada, farklı bir Kullanıcı (kullanıcı2) çoğaltma ayarlamaya çalışır, ancak anahtar kasasında kullanıcı2 öğesine karşılık gelen bir Kullanıcı erişim ilkesi olmadığından, yönetilen depolama hesabını yapılandırma veya SAS tanımı oluşturma işlemi başarısız olur.
 
-**Çözüm**: Bu soruna geçici bir çözüm olarak, Anahtar Kasası verme kullanıcı2 için, yönetilen depolama hesabını yapılandırma ve SAS tanımları oluşturma konusunda bir Kullanıcı erişim ilkesi oluşturun. Kullanıcı2 bu Azure PowerShell aşağıdaki cmdlet 'leri kullanarak yapabilir:
+**Çözüm** : Bu soruna geçici bir çözüm olarak, Anahtar Kasası verme kullanıcı2 için, yönetilen depolama hesabını yapılandırma ve SAS tanımları oluşturma konusunda bir Kullanıcı erişim ilkesi oluşturun. Kullanıcı2 bu Azure PowerShell aşağıdaki cmdlet 'leri kullanarak yapabilir:
 
 $userPrincipalId = $ (Get-AzureRmADUser-UserPrincipalName "user2_email_address"). Numarasını
 
@@ -134,7 +139,7 @@ Verileri Azure 'a çoğaltmaya çalışan bileşen çalışmıyor veya yanıt ve
     
     Bu komut, bir TCP bağlantısı dener ve bir çıkış döndürür.
     
-     - Çıktıda "_Tcptestsucceeded_" alanını denetleyin. Değer "_true_" Ise, Azure geçişi gereci ve Azure Key Vault arasında bir bağlantı sorunu yoktur. Değer "false" ise, bir bağlantı sorunu vardır.
+     - Çıktıda " _Tcptestsucceeded_ " alanını denetleyin. Değer " _true_ " Ise, Azure geçişi gereci ve Azure Key Vault arasında bir bağlantı sorunu yoktur. Değer "false" ise, bir bağlantı sorunu vardır.
     
     **Çözüm:** Bu test başarısız olursa, Azure geçişi gereci ve Azure Key Vault arasında bir bağlantı sorunu var. Bağlantı sorunlarını kontrol etmek için yerel ağ ekibinize katılın. Genellikle, hatalara neden olan bazı güvenlik duvarı ayarları olabilir.
     
@@ -220,7 +225,7 @@ Olası nedenler şunlardır:
     
     Bu komut, bir TCP bağlantısı dener ve bir çıkış döndürür.
     
-    1. Çıktıda "_Tcptestsucceeded_" alanını denetleyin. Değer "_true_" Ise, Azure geçişi gereci ve Azure Key Vault arasında bir bağlantı sorunu yoktur. Değer "false" ise, bir bağlantı sorunu vardır.
+    1. Çıktıda " _Tcptestsucceeded_ " alanını denetleyin. Değer " _true_ " Ise, Azure geçişi gereci ve Azure Key Vault arasında bir bağlantı sorunu yoktur. Değer "false" ise, bir bağlantı sorunu vardır.
     
     **Çözüm:** Bu test başarısız olursa, Azure geçişi gereci ve Azure Key Vault arasında bir bağlantı sorunu var. Bağlantı sorunlarını kontrol etmek için yerel ağ ekibinize katılın. Genellikle, hatalara neden olan bazı güvenlik duvarı ayarları olabilir.
     
@@ -271,7 +276,7 @@ Birden çok diske sahip bir sanal makineniz varsa, sanal makineden bir diski kal
 
 Bu sorun, anlık görüntü oluşturma yanıt vermeyi durdurduğunda oluşur. Bu sorun oluştuğunda, %95 veya %99 ' de anlık görüntü oluşturma görevi durduruluyor ' u görebilirsiniz. Bu sorunu aşmak için bu [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138969) 'ye başvurun.
 
-### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>Hata Iletisi: bir iç hata oluştu. [VM 'ler üzerinde diskler birleştirme başarısız oldu _[nedenler]_]
+### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>Hata Iletisi: bir iç hata oluştu. [VM 'ler üzerinde diskler birleştirme başarısız oldu _[nedenler]_ ]
 
 Diskleri çoğaltma döngüsünün sonunda birleştirdiğimiz zaman, işlem başarısız olur. Sorunu çözmek için uygun _nedeni_ seçerek [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138970) ' deki yönergeleri izleyin.
 

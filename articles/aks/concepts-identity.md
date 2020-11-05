@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: edb6a8e04537a74b7ea7d4c9bd9bd27fdc39e402
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5013f8b7dd88340e397fd3d4d4cd93d4b911fbbb
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88007089"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378236"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) için erişim ve kimlik seçenekleri
 
@@ -31,24 +31,24 @@ Bu makalede, AKS 'de izinleri kimlik doğrulamasından ve atamaya yardımcı ola
 
 ## <a name="kubernetes-role-based-access-control-rbac"></a>Kubernetes rol tabanlı erişim denetimi (RBAC)
 
-Kullanıcıların gerçekleştirebileceği eylemlerin ayrıntılı filtrelemesini sağlamak için, Kubernetes rol tabanlı erişim denetimi (RBAC) kullanır. Bu denetim mekanizması, kullanıcıları veya Kullanıcı gruplarını atamanıza izin verir, kaynak oluşturma veya değiştirme gibi işlemleri yapma veya çalışan uygulama iş yüklerinden günlükleri görüntüleme izni verir. Bu izinler tek bir ad alanı kapsamında olabilir veya tüm AKS kümesi genelinde verilebilir. Kubernetes RBAC ile, izinleri tanımlamak için *Roller* oluşturun ve ardından bu rolleri *rol bağlamalarıyla*kullanıcılara atayın.
+Kullanıcıların gerçekleştirebileceği eylemlerin ayrıntılı filtrelemesini sağlamak için, Kubernetes rol tabanlı erişim denetimi (RBAC) kullanır. Bu denetim mekanizması, kullanıcıları veya Kullanıcı gruplarını atamanıza izin verir, kaynak oluşturma veya değiştirme gibi işlemleri yapma veya çalışan uygulama iş yüklerinden günlükleri görüntüleme izni verir. Bu izinler tek bir ad alanı kapsamında olabilir veya tüm AKS kümesi genelinde verilebilir. Kubernetes RBAC ile, izinleri tanımlamak için *Roller* oluşturun ve ardından bu rolleri *rol bağlamalarıyla* kullanıcılara atayın.
 
 Daha fazla bilgi için bkz. [RBAC yetkilendirmesi kullanma][kubernetes-rbac].
 
 
 ### <a name="roles-and-clusterroles"></a>Roller ve Kümerolleri
 
-Kubernetes RBAC ile kullanıcılara izin atamadan önce bu izinleri bir *rol*olarak tanımlarsınız. Kubernetes rolleri izinleri *verir* . *Reddetme* izni kavramı yoktur.
+Kubernetes RBAC ile kullanıcılara izin atamadan önce bu izinleri bir *rol* olarak tanımlarsınız. Kubernetes rolleri izinleri *verir* . *Reddetme* izni kavramı yoktur.
 
-Roller bir ad alanı içinde izinler vermek için kullanılır. Tüm küme genelinde izin vermeniz veya belirli bir ad alanı dışında küme kaynakları sağlamanız gerekiyorsa, bunun yerine *Clusterroles*kullanabilirsiniz.
+Roller bir ad alanı içinde izinler vermek için kullanılır. Tüm küme genelinde izin vermeniz veya belirli bir ad alanı dışında küme kaynakları sağlamanız gerekiyorsa, bunun yerine *Clusterroles* kullanabilirsiniz.
 
 Kümerolü, kaynaklara izin vermek için aynı şekilde çalışarak, ancak belirli bir ad alanı değil tüm kümedeki kaynaklara uygulanabilir.
 
 ### <a name="rolebindings-and-clusterrolebindings"></a>RoleBindings ve ClusterRoleBindings
 
-Roller, kaynaklara izinler vermek üzere tanımlandıktan sonra, bu Kubernetes RBAC izinlerini bir *Rolebinding*ile atarsınız. AKS kümeniz [Azure Active Directory ile tümleşiyorsa](#azure-active-directory-integration)bağlamalar, bu Azure AD kullanıcılarına küme içinde eylem gerçekleştirme izinleri verme iznleridir, bkz. [rol tabanlı erişim denetimi ve Azure Active Directory kimliklerini kullanarak küme kaynaklarına erişimi denetleme](azure-ad-rbac.md).
+Roller, kaynaklara izinler vermek üzere tanımlandıktan sonra, bu Kubernetes RBAC izinlerini bir *Rolebinding* ile atarsınız. AKS kümeniz [Azure Active Directory ile tümleşiyorsa](#azure-active-directory-integration)bağlamalar, bu Azure AD kullanıcılarına küme içinde eylem gerçekleştirme izinleri verme iznleridir, bkz. [rol tabanlı erişim denetimi ve Azure Active Directory kimliklerini kullanarak küme kaynaklarına erişimi denetleme](azure-ad-rbac.md).
 
-Rol bağlamaları, belirli bir ad alanı için roller atamak üzere kullanılır. Bu yaklaşım, tek bir AKS kümesini mantıksal olarak ayırt etmenizi sağlar, böylece kullanıcılar yalnızca atanan ad alanındaki uygulama kaynaklarına erişebilir. Rolleri tüm küme genelinde veya belirli bir ad alanı dışındaki küme kaynaklarına bağlamanız gerekiyorsa, *Clusterrolebindings*kullanabilirsiniz.
+Rol bağlamaları, belirli bir ad alanı için roller atamak üzere kullanılır. Bu yaklaşım, tek bir AKS kümesini mantıksal olarak ayırt etmenizi sağlar, böylece kullanıcılar yalnızca atanan ad alanındaki uygulama kaynaklarına erişebilir. Rolleri tüm küme genelinde veya belirli bir ad alanı dışındaki küme kaynaklarına bağlamanız gerekiyorsa, *Clusterrolebindings* kullanabilirsiniz.
 
 ClusterRoleBinding, rolleri kullanıcılara bağlamanın aynı şekilde çalışacaktır, ancak belirli bir ad alanı değil tüm küme genelinde kaynaklara uygulanabilir. Bu yaklaşım, yöneticilerin veya Destek mühendislerinin AKS kümesindeki tüm kaynaklara erişmesine izin vermenizi sağlar.
 
@@ -101,7 +101,7 @@ Azure RBAC, Azure kaynakları üzerinde ayrıntılı erişim yönetimi sağlayan
 
  Azure RBAC, Kubernetes RBAC, AKS kümenizdeki Kubernetes kaynakları üzerinde çalışmak üzere tasarlanırken Azure aboneliğinizdeki kaynaklar üzerinde çalışmak üzere tasarlanmıştır. 
 
-Azure RBAC ile uygulanacak izinleri özetleyen bir *rol tanımı* oluşturursunuz. Daha sonra bir kullanıcı veya Grup, belirli bir *kapsam*için bir *rol ataması* aracılığıyla bu rol tanımına atanır. Bu, tek bir kaynak, bir kaynak grubu veya abonelik genelinde olabilir.
+Azure RBAC ile uygulanacak izinleri özetleyen bir *rol tanımı* oluşturursunuz. Daha sonra bir kullanıcı veya Grup, belirli bir *kapsam* için bir *rol ataması* aracılığıyla bu rol tanımına atanır. Bu, tek bir kaynak, bir kaynak grubu veya abonelik genelinde olabilir.
 
 Daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?][azure-rbac]
 
@@ -143,7 +143,7 @@ AKS, aşağıdaki dört yerleşik rolü sağlar. Bunlar, [Kubernetes yerleşik r
 | Azure Kubernetes hizmeti RBAC Yöneticisi  | Yönetici erişimine izin verir, bir ad alanı içinde verilmek üzere tasarlanmıştır. Ad alanı içinde roller ve rol bağlamaları oluşturma özelliği de dahil olmak üzere bir ad alanındaki (veya küme kapsamındaki) kaynakların çoğuna okuma/yazma erişimi sağlar. Bu rol, kaynak kotasına veya ad alanının kendine yazma erişimine izin vermez. |
 | Azure Kubernetes hizmeti RBAC kümesi Yöneticisi  | Süper Kullanıcı erişiminin herhangi bir kaynak üzerinde herhangi bir işlem gerçekleştirmesine izin verir. Kümedeki her kaynak ve tüm ad alanlarında tam denetim sağlar. |
 
-**Bkz. Kubernetes yetkilendirmesi için Azure RBAC 'ten yararlanma [here](manage-azure-rbac.md).**
+**Azure RBAC 'i Kubernetes yetkilendirmesi için nasıl etkinleştireceğinizi öğrenmek için [buradan okuyun](manage-azure-rbac.md).**
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

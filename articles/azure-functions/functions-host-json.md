@@ -3,12 +3,12 @@ title: Azure Işlevleri 2. x için başvuru host.js
 description: Azure Işlevleri için başvuru belgeleri v2 çalışma zamanı ile dosyada host.js.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 0b6fbe2553541b6260697584fa7066cdcb1fe122
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: aaea37b100d6fadd271f48490628b38cba6cf822
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93284508"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377131"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure İşlevleri 2.x ve üzeri için host.json başvurusu 
 
@@ -357,7 +357,7 @@ Yapılandırma ayarları, [depolama kuyruğu Tetikleyicileri ve bağlamaları](f
 
 ## <a name="retry"></a>retry
 
-Uygulamadaki tüm yürütmeler için [yeniden deneme ilkesi](./functions-bindings-error-pages.md#retry-policies) seçeneklerini denetler.
+Uygulamadaki tüm yürütmeler için [yeniden deneme ilkesi](./functions-bindings-error-pages.md#retry-policies-preview) seçeneklerini denetler.
 
 ```json
 {
