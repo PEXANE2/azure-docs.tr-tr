@@ -1,18 +1,18 @@
 ---
 title: MongoDB hesabı için Azure Cosmos DB API 'nizin Mongo sürümünü yükseltin
 description: MongoDB için mevcut Azure Cosmos DB API 'SI için MongoDB tel protokolü sürümünü sorunsuz şekilde yükseltme
-author: jasonwhowell
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: guide
 ms.date: 09/22/2020
-ms.author: jasonh
-ms.openlocfilehash: eb12fc909b5165cbc759bbb7c531864cde16bb88
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.author: chrande
+ms.openlocfilehash: 9ce444e41d19ece984071d0f62e705a09d5f23c9
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096317"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356476"
 ---
 # <a name="upgrade-the-mongodb-wire-protocol-version-of-your-azure-cosmos-dbs-api-for-mongodb-account"></a>MongoDB hesabı için Azure Cosmos DB API 'nizin MongoDB kablo protokol sürümünü yükseltin
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -38,7 +38,7 @@ Sürüm 3,6 ' de bulunan yeni özellikler aşağıda verilmiştir:
 
 ### <a name="changes-from-version-32"></a>Sürüm 3,2 ' den değişiklikler
 
-- **RequestRateIsLarge hatalar kaldırılmıştır** . İstemci uygulamasından gelen istekler artık 16500 hata döndürmeyecektir. Bunun yerine istekler, zaman aşımını tamamlayana veya yerine getirene kadar sürdürülecek.
+- **RequestRateIsLarge hatalar kaldırılmıştır**. İstemci uygulamasından gelen istekler artık 16500 hata döndürmeyecektir. Bunun yerine istekler, zaman aşımını tamamlayana veya yerine getirene kadar sürdürülecek.
 - İstek başına zaman aşımı 60 saniyeye ayarlanır.
 - Yeni hat Protokolü sürümünde oluşturulan MongoDB koleksiyonları yalnızca `_id` Varsayılan olarak dizinli özelliğe sahip olur.
 
@@ -50,7 +50,7 @@ Sürüm 3,6 ' e yükseltme için veritabanı hesabı uç noktası son eki şu bi
 <your_database_account_name>.mongo.cosmos.azure.com
 ```
 
-Bu veritabanı hesabıyla bağlanan Uygulamalarınız ve sürücülerinizin mevcut uç noktasını değiştirmeniz gerekir. **MongoDB sürüm 3,6 ' deki özelliklere yalnızca yeni uç noktayı kullanan bağlantılar erişebilir** . Önceki uç nokta sonekine sahip olmalıdır `.documents.azure.com` .
+Bu veritabanı hesabıyla bağlanan Uygulamalarınız ve sürücülerinizin mevcut uç noktasını değiştirmeniz gerekir. **MongoDB sürüm 3,6 ' deki özelliklere yalnızca yeni uç noktayı kullanan bağlantılar erişebilir**. Önceki uç nokta sonekine sahip olmalıdır `.documents.azure.com` .
 
 >[!Note]
 > Hesabınız bir Sogeign, kamu veya sınırlı Azure bulutu 'nda oluşturulduysa, bu uç nokta hafif farklılıklara sahip olabilir.
@@ -63,27 +63,27 @@ Bu veritabanı hesabıyla bağlanan Uygulamalarınız ve sürücülerinizin mevc
 
 2. Soldaki seçeneklerden `Features` Dikey pencereyi seçin. Bu, veritabanı hesabınız için kullanılabilen hesap düzeyi özelliklerini açığa çıkarır.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/2.png" alt-text="MongoDB hesabına genel bakış ile Azure portal" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/2.png" alt-text="Özellikler dikey penceresinde MongoDB hesabına genel bakış ile Azure portal" border="false":::
 
 3. `Upgrade to Mongo server version 3.6`Satıra tıklayın. Bu seçeneği görmüyorsanız, hesabınız bu yükseltme için uygun olmayabilir. Bu durumda, lütfen [bir destek bileti](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) dosyası sağlayın.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/3.png" alt-text="MongoDB hesabına genel bakış ile Azure portal" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/3.png" alt-text="Seçeneklerle Özellikler dikey penceresi." border="false":::
 
 4. Bu belirli yükseltmeyle ilgili olarak görünen bilgileri gözden geçirin. Yükseltmenin, bu bölümde vurgulanan şekilde, yalnızca uygulamalarınız güncelleştirilmiş uç noktası kullanana kadar tamamlanacağını unutmayın. `Enable`İşlemi başlatmak için hazırsanız açık ' a tıklayın.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/4.png" alt-text="MongoDB hesabına genel bakış ile Azure portal" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/4.png" alt-text="Genişletilmiş Yükseltme Kılavuzu." border="false":::
 
 5. İşlem başladıktan sonra, `Features` menü yükseltmenin durumunu gösterir. Durum,,, olarak değişir `Pending` `In Progress` `Upgraded` . Bu işlem, veritabanı hesabının mevcut işlevlerini veya işlemlerini etkilemez.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/5.png" alt-text="MongoDB hesabına genel bakış ile Azure portal" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/5.png" alt-text="Başlatıldıktan sonra yükseltme durumu." border="false":::
 
 6. Yükseltme tamamlandıktan sonra durum olarak gösterilir `Upgraded` . İşlemi tamamlamak için gerçekleştirmeniz gereken sonraki adımlar ve eylemler hakkında daha fazla bilgi edinmek için buraya tıklayın. İsteğiniz işlenirken bir sorun oluşursa lütfen [desteğe başvurun](https://azure.microsoft.com/en-us/support/create-ticket/) .
 
-    :::image type="content" source="./media/mongodb-version-upgrade/6.png" alt-text="MongoDB hesabına genel bakış ile Azure portal" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/6.png" alt-text="Yükseltilen hesap durumu." border="false":::
 
 7. **Veritabanı hesabınızın yükseltilen sürümünü kullanmaya başlamak için** dikey pencereye geri dönün `Overview` ve uygulamanızda kullanmak üzere yeni bağlantı dizesini kopyalayın. Uygulamalar, yeni uç noktaya bağlandıklarında yükseltilen sürümü kullanmaya başlar. Mevcut bağlantılar kesintiye uğramayacak ve bu işlem sizin için uygun şekilde güncelleştirilemeyebilir. Tutarlı bir deneyim sağlamak için tüm uygulamalarınızın yeni uç noktayı kullanması gerekir.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/7.png" alt-text="MongoDB hesabına genel bakış ile Azure portal" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/7.png" alt-text="Yeni genel bakış dikey penceresi." border="false":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

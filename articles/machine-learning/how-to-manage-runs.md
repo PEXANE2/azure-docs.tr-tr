@@ -1,7 +1,7 @@
 ---
 title: Python 'da eğitim çalıştırmalarını başlatın, izleyin ve iptal edin
 titleSuffix: Azure Machine Learning
-description: Nasıl başlayacağınızı, denemeleri durumunu ayarlamayı ve makinenizin öğrendiklerinizi düzenlemenizi öğrenin.
+description: Azure Machine Learning Python SDK ile Machine Learning deneme çalışmalarınızı başlatma, durum ve yönetme hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 01/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 0baee1646d2346a411b3b7bdb8efc90e9aeb7a4a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2f7d102ad6bf2aba2056456acfe6207a0b0643ba
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316884"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357989"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python 'da eğitim çalıştırmalarını başlatın, izleyin ve iptal edin
 

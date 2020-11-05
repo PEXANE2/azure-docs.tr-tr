@@ -5,25 +5,28 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 04/24/2018
+ms.date: 11/03/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76b17391008160cfea9cbf029932d7081466cf3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06a6a42724eb172a77079b94f2cf50afb8e9cdf1
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87910108"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357326"
 ---
 # <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Azure AD B2B işbirliğini kullanarak bulut kaynaklarına yerel olarak yönetilen iş ortağı hesapları erişimi verme
 
 Azure Active Directory (Azure AD) öncesinde, şirket içi kimlik sistemlerine sahip kuruluşların şirket içi dizininde geleneksel olarak yönetilen iş ortağı hesapları vardır. Böyle bir kuruluşta, uygulamaları Azure AD 'ye taşımaya başladığınızda, iş ortaklarınızın ihtiyaç duydukları kaynaklara erişebildiklerinden emin olmak istersiniz. Kaynakların şirket içinde mi yoksa bulutta mı olduğuna bakılmaksızın. Ayrıca, iş ortağı kullanıcılarınızın hem şirket içi hem de Azure AD kaynakları için aynı oturum açma kimlik bilgilerini kullanmasını istiyorsunuz. 
 
-Şirket içi dizininizde dış iş ortaklarınız için hesaplar oluşturursanız (örneğin, partners.contoso.com etki alanında gülşen Moran adında bir dış Kullanıcı için "wmoran" adlı bir oturum açma adı olan bir hesap oluşturursanız, bu hesapları artık buluta eşitleyebilirsiniz. Özellikle, iş ortağı hesaplarını Azure AD B2B kullanıcıları (yani UserType = konuğa sahip kullanıcılar) olarak buluta eşitlemek için Azure AD Connect kullanabilirsiniz. Bu, iş ortağı kullanıcılarınızın, yerel hesaplarıyla aynı kimlik bilgilerini kullanarak bulut kaynaklarına erişmesini sağlar ve bunlara gereksinimlerinden daha fazla erişim izni vermez. 
+Şirket içi dizininizde dış iş ortaklarınız için hesaplar oluşturursanız (örneğin, partners.contoso.com etki alanında gülşen Moran adında bir dış Kullanıcı için "wmoran" adlı bir oturum açma adı olan bir hesap oluşturursanız, bu hesapları artık buluta eşitleyebilirsiniz. Özellikle, iş ortağı hesaplarını buluta eşitlemek için Azure AD Connect kullanabilirsiniz. Bu, UserType = konuğa sahip bir kullanıcı hesabı oluşturur. Bu, iş ortağı kullanıcılarınızın, yerel hesaplarıyla aynı kimlik bilgilerini kullanarak bulut kaynaklarına erişmesini sağlar ve bunlara gereksinimlerinden daha fazla erişim izni vermez.
+
+> [!NOTE]
+> Ayrıca bkz. [dahili KULLANıCıLARı B2B işbirliğine davet](invite-internal-users.md) etme (genel önizleme özelliği). Bu özellikle, şirket içi dizininizdeki hesaplarını buluta eşitlemenizden bağımsız olarak, dahili Konuk kullanıcılarını B2B işbirliğinin kullanımına davet edebilirsiniz. Kullanıcı B2B işbirliği kullanma davetini kabul ettikten sonra, kendilerine erişmesini istediğiniz kaynaklarda oturum açmak için kendi kimliklerini ve kimlik bilgilerini kullanabilir. Parola korumanız veya hesap yaşam döngülerini yönetmeniz gerekmez.
 
 ## <a name="identify-unique-attributes-for-usertype"></a>UserType için benzersiz öznitelikleri tanımla
 
@@ -32,13 +35,13 @@ UserType özniteliğinin eşitlemesini etkinleştirmeden önce, önce şirket i�
 Bunun için iki yaygın yaklaşım şunlardır:
 
 - Kaynak öznitelik olarak kullanmak için kullanılmamış bir şirket içi Active Directory özniteliği (örneğin, extensionAttribute1) belirleyin. 
-- Alternatif olarak, diğer özelliklerden UserType özniteliği için değeri türetebilirsiniz. Örneğin, şirket içi Active Directory UserPrincipalName özniteliği etki alanı * \@ Partners.contoso.com*ile sona erdiğinde tüm kullanıcıları Konuk olarak eşitlemeniz gerekir.
+- Alternatif olarak, diğer özelliklerden UserType özniteliği için değeri türetebilirsiniz. Örneğin, şirket içi Active Directory UserPrincipalName özniteliği etki alanı *\@ Partners.contoso.com* ile sona erdiğinde tüm kullanıcıları Konuk olarak eşitlemeniz gerekir.
  
 Ayrıntılı öznitelik gereksinimleri için bkz. [UserType eşitlemesini etkinleştirme](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype). 
 
 ## <a name="configure-azure-ad-connect-to-sync-users-to-the-cloud"></a>Kullanıcıları buluta eşitlemek için Azure AD Connect yapılandırma
 
-Benzersiz özniteliğini tanımladıktan sonra, bu kullanıcıları Azure AD B2B kullanıcıları (yani UserType = konuğa sahip kullanıcılar) olarak buluta eşitlemek için Azure AD Connect yapılandırabilirsiniz. Bir yetkilendirme noktasından bu kullanıcılar, Azure AD B2B işbirliği daveti aracılığıyla oluşturulan B2B kullanıcılarından ayırt edilemez.
+Benzersiz özniteliği tanımladıktan sonra, bu kullanıcıları buluta eşitlemek üzere Azure AD Connect yapılandırabilirsiniz. Bu, UserType = konuğa sahip bir kullanıcı hesabı oluşturur. Bir yetkilendirme noktasından bu kullanıcılar, Azure AD B2B işbirliği daveti aracılığıyla oluşturulan B2B kullanıcılarından ayırt edilemez.
 
 Uygulama yönergeleri için bkz. [UserType eşitlemesini etkinleştirme](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype).
 

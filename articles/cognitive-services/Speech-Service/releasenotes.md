@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 8faf9c913ea9bab2feaf698efeb6fd5b3ca63179
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 01c9cbe0438ee0efeece4c7e6b17e9607db4c4cc
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289623"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356697"
 ---
 # <a name="speech-service-release-notes"></a>Konuşma hizmeti sürüm notları
 
@@ -34,6 +34,9 @@ https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audioda
 -  **C++/c #/Java/Python/Objective-C/Swift** : `stopSpeakingAsync()` metin okuma senmetini durdurmak için bir yöntem eklendi. Burada başvuru belgelerini [(C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace), burada ( [C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet), burada ( [Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech?view=azure-java-stable), burada ( [Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)ve [burada (hedef-C/Swift)](https://docs.microsoft.com/objectivec/cognitive-services/speech/)okuyun.
 - **C#, C++, Java** : `FromDialogServiceConnector()` `Connection` sınıfına yönelik bağlantı ve bağlantı kesme olaylarını izlemek için kullanılabilecek bir işlev eklendi `DialogServiceConnector` . Başvuru belgelerini [burada (C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet), [burada (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)ve [burada (Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection?view=azure-java-stable)okuyun.
 <!-- - **C++/C#/Java/Python/Objective-C/Swift**: Added support for Pronunciation Assessment, which evaluates speech pronunciation and gives speakers feedback on the accuracy and fluency of spoken audio. Read the documentation [here](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment). -->
+
+**Son değişiklik**
+- **JavaScript** : puldefdiooutputstream. Read (), bir iç taahhüdden yerel bir JavaScript taahhüdüne bir dönüş türü değişikliğine sahiptir.
 
 **Hata düzeltmeleri**
 - **Tümü** : `SetServiceProperty` belirli özel karakterlere sahip olan değerlerin yoksayıldı durumunda 1,13 gerileme düzeltildi.

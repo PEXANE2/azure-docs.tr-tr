@@ -10,12 +10,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: b89112ab2384386d20b62f2510ec576d4a2075f1
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: f37fc8e19025b78475f706ff96c502cc6094d54f
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186765"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358431"
 ---
 # <a name="monitoring-azure-files"></a>Azure dosyalarını izleme
 
@@ -69,7 +69,7 @@ Azure portal, PowerShell, Azure CLı veya bir Azure Resource Manager şablonunu 
 
 Genel rehberlik için bkz. [Azure 'da platform günlüklerini ve ölçümlerini toplamak için tanılama ayarı oluşturma](../../azure-monitor/platform/diagnostic-settings.md).
 
-### <a name="azure-portal"></a>[Azure portalı](#tab/azure-portal)
+### <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. Azure portalında oturum açın.
 
@@ -654,14 +654,14 @@ Aşağıdaki tabloda, izlemek için bazı örnek senaryolar ve uyarı için kull
 
 8. Eşik değeri için **536870912000** bayt girin. 
 9. **Toplama ayrıntı düzeyi** açılan düğmesine tıklayın ve **24 saat** ' i seçin.
-10. **Değerlendirme sıklığını** seçin ve **bitti ' ye tıklayın** .
+10. **Değerlendirme sıklığını** seçin ve **bitti ' ye tıklayın**.
 11. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir **eylem grubu** (e-posta, SMS, vb.) eklemek için **Eylem grubunu Seç** ' e tıklayın.
 12. Uyarı **kuralı adı** , * * açıklama ve **önem derecesi** gibi **uyarı ayrıntılarını** girin.
 13. Uyarı oluşturmak için **Uyarı kuralı oluştur** ' a tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure dosyaları izleme veri başvurusu](storage-files-monitoring.md)
+- [Azure dosyaları izleme veri başvurusu](storage-files-monitoring-reference.md)
 - [Azure Izleyici ile Azure kaynaklarını izleme](../../azure-monitor/insights/monitor-azure-resource.md)
 - [Azure depolama ölçümleri geçişi](../common/storage-metrics-migration.md)
 - [Azure Dosyalar dağıtımını planlama](https://docs.microsoft.com/azure/storage/files/storage-files-planning)

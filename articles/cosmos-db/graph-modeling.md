@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB Gremlin API 'SI için grafik veri modelleme
 description: Azure Cosmos DB Gremlin API kullanarak grafik veritabanını modelleyeceğinizi öğrenin. Bu makalede, bir grafik veritabanının ve varlıkları ve ilişkileri modellemek için en iyi uygulamaların ne zaman kullanılacağı açıklanır.
-author: jasonwhowell
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 12/02/2019
-ms.author: jasonh
-ms.openlocfilehash: 70cbe3a7dae243105a659e1363a44f17f03758e2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.author: chrande
+ms.openlocfilehash: d99e2e2ffd63b050e7373c98084fed3fb14727bf
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129652"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357054"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 'SI için grafik veri modelleme
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -78,7 +78,7 @@ Bir ortak giriş, tek bir varlığın özelliklerini ayrı köşeler olarak eşm
 
 * **Özelliğe gömülü** köşeler: Bu yaklaşım, bir köşe içindeki varlığın tüm özelliklerini göstermek için anahtar-değer çifti listesinden yararlanır. Bu yaklaşım daha basit sorgulara ve daha düşük maliyetli traversals neden olacak şekilde daha az model karmaşıklığı sağlar.
 
-:::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="Özellikler için köşeleri olan varlık modeli." border="false":::
+:::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="Diyagram, bir önceki diyagramdan i d, etiket ve özellikler ile Halsıs izdüşümünü gösterir." border="false":::
 
 > [!NOTE]
 > Yukarıdaki örneklerde, yalnızca varlık özelliklerini bölmek için iki yol arasındaki karşılaştırmayı göstermek üzere basitleştirilmiş bir grafik modeli gösterilmektedir.
@@ -89,7 +89,7 @@ Ancak, bir özelliğe başvuruda bulunan senaryolar avantaj sağlayabilir. Örne
 
 ### <a name="relationship-modeling-with-edge-directions"></a>Kenar yönlerine sahip ilişki modelleme
 
-Köşeler modellendikten sonra aralarındaki ilişkileri göstermek için kenarlar eklenebilir. Değerlendirilmesi gereken ilk boyut **ilişkinin yönüdür** . 
+Köşeler modellendikten sonra aralarındaki ilişkileri göstermek için kenarlar eklenebilir. Değerlendirilmesi gereken ilk boyut **ilişkinin yönüdür**. 
 
 Edge nesnelerinin, veya işlevi kullanılırken bir çapraz geçiş tarafından izlenen varsayılan bir yönü vardır `out()` `outE()` . Tüm köşeler giden kenarlarıyla depolandığından, bu doğal yönün kullanılması verimli bir işlem ile sonuçlanır. 
 
@@ -106,7 +106,7 @@ Açıklayıcı ilişki etiketlerinin kullanılması, sınır çözümleme işlem
 * Bir ilişkiyi etiketlemek için genel olmayan terimleri kullanın.
 * Kaynak köşesinin etiketini, ilişki adı ile hedef köşe etiketi ile ilişkilendirin.
 
-:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="Özellikler için köşeleri olan varlık modeli." border="false":::
+:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="İlişki etiketleme örnekleri." border="false":::
 
 Traverser 'ın kenarları filtrelemesini sağlamak için kullanacağı etiket daha iyidir. Bu karar, sorgu maliyetinde önemli bir etkiye sahip olabilir. Sorgu maliyetini, her zaman [executionProfile adımını kullanarak](graph-execution-profile.md)değerlendirebilirsiniz.
 

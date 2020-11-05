@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/01/2017
+ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4683a77b9467775fbe368e2017416e0fbff9718c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0769366ad56e1b7431dbfa7c95f1256c509d24fa
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266298"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358176"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Erişim belirteci almak için bir Azure VM 'de Azure kaynakları için Yönetilen kimlikler kullanma 
 
@@ -30,7 +30,7 @@ Azure kaynakları için Yönetilen kimlikler, Azure Active Directory ' de otomat
 
 Bu makalede, belirteç alımı için çeşitli kod ve betik örnekleri ve ayrıca belirteç süre sonu ve HTTP hatalarını işleme gibi önemli konularda rehberlik sağlanır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -64,7 +64,7 @@ Bir istemci uygulaması, belirli bir kaynağa erişmek için yalnızca Azure kay
 
 Erişim belirteci almak için temel arabirim, geri kalanı temel alarak, VM üzerinde çalışan ve HTTP REST çağrısı yapan tüm istemci uygulamaları için erişilebilir hale getirir. Bu, istemci sanal makinede bir uç nokta (Azure AD uç noktası) kullandığından Azure AD programlama modeline benzer.
 
-Azure Instance Metadata Service (ıMDS) uç noktasını kullanan örnek istek *(önerilir)*:
+Azure Instance Metadata Service (ıMDS) uç noktasını kullanan örnek istek *(önerilir)* :
 
 ```
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
@@ -81,7 +81,7 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `client_id` | Seçim Belirteci istediğiniz yönetilen kimliğin client_id belirten bir sorgu dizesi parametresi. SANAL makinenizde birden çok kullanıcı tarafından atanan yönetilen kimlik varsa, gereklidir.|
 | `mi_res_id` | Seçim Belirteci istediğiniz yönetilen kimliğin mi_res_id (Azure Kaynak KIMLIĞI) belirten bir sorgu dizesi parametresi. SANAL makinenizde birden çok kullanıcı tarafından atanan yönetilen kimlik varsa, gereklidir. |
 
-Azure kaynakları için yönetilen kimlikleri kullanan örnek istek VM Uzantısı uç noktası *(2019 Ocak 'ta kullanımdan kaldırma için planlanmış)*:
+Azure kaynakları için yönetilen kimlikleri kullanan örnek istek VM Uzantısı uç noktası *(2019 Ocak 'ta kullanımdan kaldırma için planlanmış)* :
 
 ```http
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1

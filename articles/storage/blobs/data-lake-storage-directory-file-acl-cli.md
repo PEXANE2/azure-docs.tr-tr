@@ -10,12 +10,12 @@ ms.date: 05/18/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 22d048b15cc097cd8a24e5ed57bbe4d5a6183e2f
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: ee461193be81297c6577ce4c264cabbf08e72417
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131607"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359451"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure CLı kullanarak Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetme
 
@@ -66,7 +66,7 @@ Bu makalede, hiyerarşik bir ad alanına sahip depolama hesaplarında Dizin, dos
 > [!NOTE]
 > Bu makalede sunulan örnekte Azure Active Directory (AD) yetkilendirmesi gösterilmektedir. Yetkilendirme yöntemleri hakkında daha fazla bilgi edinmek için bkz. [Azure CLI ile blob veya kuyruk verilerine erişim yetkisi verme](../common/authorize-data-operations-cli.md).
 
-## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+## <a name="create-a-container"></a>Kapsayıcı oluşturma
 
 Bir kapsayıcı dosyalarınız için bir dosya sistemi görevi görür. Komutunu kullanarak bir tane oluşturabilirsiniz `az storage fs create` . 
 
@@ -249,7 +249,7 @@ Bu örnekte, sahip olan kullanıcının okuma, yazma ve yürütme izinleri vard�
 
 ### <a name="set-an-acl"></a>ACL ayarla
 
-`az storage fs access set`Bir **dizinin**ACL 'sini ayarlamak için komutunu kullanın. 
+`az storage fs access set`Bir **dizinin** ACL 'sini ayarlamak için komutunu kullanın. 
 
 Bu örnek, ACL 'yi sahip olan Kullanıcı, sahip olan grup veya diğer kullanıcılar için bir dizinde ayarlar ve ardından ACL 'yi konsola yazdırır.
 
@@ -263,7 +263,7 @@ Bu örnek, sahip olan Kullanıcı, sahip olan grup veya diğer kullanıcılar i�
 az storage fs access set --acl "default:user::rw-,group::rw-,other::-wx" -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-`az storage fs access set`Bir **dosyanın**ACL 'sini ayarlamak için komutunu kullanın. 
+`az storage fs access set`Bir **dosyanın** ACL 'sini ayarlamak için komutunu kullanın. 
 
 Bu örnek, sahip olan Kullanıcı, sahip olan grup veya diğer kullanıcılar için bir dosyadaki ACL 'yi ayarlar ve ardından ACL 'yi konsola yazdırır.
 
@@ -283,13 +283,13 @@ Bu izni ayarlamaya yönelik başka bir yol ise komutunu kullanmaktır `az storag
 
 Bir `-permissions` ACL 'nin kısa biçimine parametresini ayarlayarak bir dizin veya DOSYANıN ACL 'sini güncelleştirin.
 
-Bu örnek, bir **DIZININ**ACL 'sini günceller.
+Bu örnek, bir **DIZININ** ACL 'sini günceller.
 
 ```azurecli
 az storage fs access set --permissions rwxrwxrwx -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-Bu örnek, bir **DOSYANıN**ACL 'sini günceller.
+Bu örnek, bir **DOSYANıN** ACL 'sini günceller.
 
 ```azurecli
 az storage fs access set --permissions rwxrwxrwx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
@@ -307,7 +307,12 @@ Bu örnek, bir dosyanın sahibini değiştirir.
 
 ```azurecli
 az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
+
 ```
+
+### <a name="set-an-acl-recursively"></a>ACL 'yi yinelemeli olarak ayarlama
+
+Bu değişiklikleri her bir alt öğe için ayrı ayrı yapmak zorunda kalmadan, bir üst dizinin varolan alt öğelerinde ACL 'Leri yinelemeli olarak ekleyebilir, güncelleştirebilir ve kaldırabilirsiniz. Daha fazla bilgi için bkz. [Azure Data Lake Storage 2. için erişim denetim listelerini (ACL 'ler) yinelemeli olarak ayarlama](recursive-access-control-lists.md).
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

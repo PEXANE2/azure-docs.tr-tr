@@ -9,19 +9,16 @@ ms.date: 11/03/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c0323bed627fd622471724b20677914736c564d3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 38699f94ae446295332deb9529a0da80d6df4301
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319909"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356872"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. için erişim denetim listelerini (ACL 'Ler) yinelemeli olarak ayarlama
 
 ACL devralma, bir üst dizin altında oluşturulan yeni alt öğeler için zaten kullanılabilir. Ayrıca, bu değişiklikleri her bir alt öğe için ayrı ayrı yapmak zorunda kalmadan, bir üst dizinin varolan alt öğeleri için de, ACL 'Leri yinelemeli olarak ekleyebilir, güncelleştirebilir ve kaldırabilirsiniz.
-
-> [!NOTE]
-> Erişim listelerini yinelemeli olarak ayarlama özelliği genel önizlemede yer almaktadır ve tüm bölgelerde kullanılabilir.  
 
 [Kitaplıklar](#libraries)  |  [Örnekler](#code-samples)  |  [En iyi uygulamalar](#best-practice-guidelines)  |  [Geri bildirimde](#provide-feedback) bulunun
 
@@ -847,40 +844,19 @@ def remove_permission_recursively(is_default_scope):
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Bu örnek, ACL 'Leri toplu olarak ayarlar. **Set-AzDataLakeGen2AclRecursive** öğesine yapılan her çağrı, tüm ACL 'ler ayarlanana kadar bir devamlılık belirteci döndürür. Bu örnek `$ContinueOnFailure` `$false` , bir izin hatası durumunda, Işlemin ACL 'leri ayarlamaya devam edemeyeceğini belirtmek için olarak adlı bir değişken ayarlar. Devamlılık belirteci `&token` değişkenine depolanır. Bir hata durumunda, bu belirteç işlemi hata noktasından sürdürecek şekilde kullanılabilir.
+Bu örnek, değişkenine sonuçları döndürür ve sonra, başarısız girdileri biçimli bir tabloya yöneltmekte.
 
 ```powershell
-$ContinueOnFailure = $false
+$result = Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl
+$result
+$result.FailedEntries | ft 
+```
 
-$token = $null
-$TotalDirectoriesSuccess = 0
-$TotalFilesSuccess = 0
-$totalFailure = 0
-$FailedEntries = New-Object System.Collections.Generic.List[System.Object]
-do
-{
-    if ($ContinueOnFailure)
-    {
-        $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl1  -BatchSize 2  -ContinuationToken $token -MaxBatchCount 2 -ContinueOnFailure
-    }
-    else
-    {
-        $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl1  -BatchSize 2  -ContinuationToken $token -MaxBatchCount 2 
-    }
-    echo $result
-    $TotalFilesSuccess += $result.TotalFilesSuccessfulCount
-    $TotalDirectoriesSuccess += $result.TotalDirectoriesSuccessfulCount
-    $totalFailure += $result.TotalFailureCount
-    $FailedEntries += $result.FailedEntries
-    $token = $result.ContinuationToken
-} while (($token -ne $null) -and (($ContinueOnFailure) -or ($result.TotalFailureCount -eq 0)))
-echo ""
-echo "[Result Summary]"
-echo "TotalDirectoriesSuccessfulCount: `t$($TotalDirectoriesSuccess)"
-echo "TotalFilesSuccessfulCount: `t`t`t$($TotalFilesSuccess)"
-echo "TotalFailureCount: `t`t`t`t`t$($totalFailure)"
-echo "FailedEntries:"$($FailedEntries | ft)
+Tablonun çıktısına bağlı olarak, tüm izin hatalarını giderebilir ve sonra devamlılık belirtecini kullanarak yürütmeyi sürdürebilirsiniz.
 
+```powershell
+$result = Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl -ContinuationToken $result.ContinuationToken
+$result
 
 ```
 
@@ -991,41 +967,22 @@ def resume_set_acl_recursive(continuation_token):
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Bu örnek, `$ContinueOnFailure` `$true` bir izin hatası durumunda, Işlemin ACL 'leri ayarlamaya devam etmesi gerektiğini belirtmek için değişkenini olarak ayarlar. 
+Bu örnek, `ContinueOnFailure` işlem bir izin hatasıyla karşılaştığında bile yürütmenin devam etmesi için parametresini kullanır. 
 
 ```powershell
-$ContinueOnFailure = $true
 
-$token = $null
 $TotalDirectoriesSuccess = 0
 $TotalFilesSuccess = 0
 $totalFailure = 0
 $FailedEntries = New-Object System.Collections.Generic.List[System.Object]
-do
-{
-    if ($ContinueOnFailure)
-    {
-        $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl1  -BatchSize 2  -ContinuationToken $token -MaxBatchCount 2 -ContinueOnFailure
-    }
-    else
-    {
-        $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl1  -BatchSize 2  -ContinuationToken $token -MaxBatchCount 2 
-    }
-    echo $result
-    $TotalFilesSuccess += $result.TotalFilesSuccessfulCount
-    $TotalDirectoriesSuccess += $result.TotalDirectoriesSuccessfulCount
-    $totalFailure += $result.TotalFailureCount
-    $FailedEntries += $result.FailedEntries
-    $token = $result.ContinuationToken
-} while (($token -ne $null) -and (($ContinueOnFailure) -or ($result.TotalFailureCount -eq 0)))
-echo ""
+
+$result = Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl -ContinueOnFailure
+
 echo "[Result Summary]"
-echo "TotalDirectoriesSuccessfulCount: `t$($TotalDirectoriesSuccess)"
-echo "TotalFilesSuccessfulCount: `t`t`t$($TotalFilesSuccess)"
-echo "TotalFailureCount: `t`t`t`t`t$($totalFailure)"
-echo "FailedEntries:"$($FailedEntries | ft)
-
-
+echo "TotalDirectoriesSuccessfulCount: `t$($result.TotalFilesSuccessfulCount)"
+echo "TotalFilesSuccessfulCount: `t`t`t$($result.TotalDirectoriesSuccessfulCount)"
+echo "TotalFailureCount: `t`t`t`t`t$($result.TotalFailureCount)"
+echo "FailedEntries:"$($result.FailedEntries | ft) 
 ```
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: d6df94cca46d82c3e066779cd28584c84f12fbce
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 3b9f744e414e83c103f6b9249a0ccf5020588463
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339444"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356357"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Uygulamanızı Azure AD uygulama galerisine yayımlayın
 
@@ -69,7 +69,7 @@ Uygulamanızı Azure AD uygulama galerisinde yayımlama adımları şunlardır:
 - Karşılıklı müşteriler, adım adım bir yapılandırma öğreticisini alır.
 - Etki alanları arası kimlik yönetimi ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) için sistemi kullanan müşteriler aynı uygulama için sağlama kullanabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 En az iki Kullanıcı kayıtlı olarak test için kalıcı bir hesaba ihtiyacınız vardır.
 
@@ -97,6 +97,7 @@ Aşağıdaki tabloda ana standartlar karşılaştırılmaktadır: OpenID Connect
 | Mobil tabanlı çoklu oturum açma| √| √* |
 | Mobil uygulamalar için koşullu erişim ilkeleri| √| X |
 | Mobil uygulamalar için sorunsuz MFA deneyimi| √| X |
+| SCıM sağlama| √| √ |
 | Erişim Microsoft Graph| √| X |
 
 * Olası, ancak Microsoft örnek veya rehberlik sağlamıyor.
@@ -261,7 +262,7 @@ Uygulamanızı parola SSO kullanarak galerideki listeye eklemek istiyorsanız, g
 
 ![Galerideki parola SSO uygulamasını listeleme](./media/howto-app-gallery-listing/passwordsso.png)
 
-Kullanıcı hazırlama için bir SCıM 2,0 uç noktası uygulamadıysanız gösterilen seçeneği belirleyin. 
+Kullanıcı hazırlama için bir [SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) 2,0 uç noktası uygulamadıysanız gösterilen seçeneği belirleyin. 
 
    ![Kullanıcı hazırlama isteği](./media/howto-app-gallery-listing/user-provisioning.png)
 

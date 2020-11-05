@@ -1,7 +1,7 @@
 ---
 title: Otomatikleştirilen ML nedir? AutoML
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning, sizin için otomatik olarak bir algoritma seçebilir ve sizin modelinize yönelik en iyi algoritmayı seçmek için sağladığınız parametreleri ve ölçütleri kullanarak size zaman kazandırmak için bir model oluşturabilirsiniz.
+description: Azure Machine Learning, sağladığınız parametreleri ve ölçütleri kullanarak nasıl otomatik olarak bir model oluşturacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,13 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
-ms.openlocfilehash: 31cb2b2b5411968f1eba71fa9afc7bdc8296407c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: automl
+ms.openlocfilehash: ca0cfd7c38dde5e7307c31989791aa3906b9cbe5
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307400"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357292"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Otomatik makine öğrenimi (Otomatikml) nedir?
 

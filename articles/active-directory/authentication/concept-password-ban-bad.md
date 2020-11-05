@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fd367b337a0f26323411111ea7eb1120bf6d75d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c4da1066166a3384ffb5f0f94599452829faed1b
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965191"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356595"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Parola korumasını Azure Active Directory kullanarak kötü parolaları kaldırın
 
-Birçok güvenlik kılavuzu, aynı parolayı birden fazla yerde kullanmanıza, karmaşık hale getirmek ve *Password123*gibi basit parolalardan kaçınmanızı önerir. Kullanıcılarınıza [parolaların nasıl seçlenebileceğine ilişkin yönergeler](https://www.microsoft.com/research/publication/password-guidance)sağlayabilirsiniz, ancak zayıf veya güvenli olmayan parolalar genellikle hala kullanılır. Azure AD parola koruması, bilinen zayıf parolaları ve bunların türevlerini algılar ve engeller ve ayrıca kuruluşunuza özgü ek zayıf terimleri engelleyebilir.
+Birçok güvenlik kılavuzu, aynı parolayı birden fazla yerde kullanmanıza, karmaşık hale getirmek ve *Password123* gibi basit parolalardan kaçınmanızı önerir. Kullanıcılarınıza [parolaların nasıl seçlenebileceğine ilişkin yönergeler](https://www.microsoft.com/research/publication/password-guidance)sağlayabilirsiniz, ancak zayıf veya güvenli olmayan parolalar genellikle hala kullanılır. Azure AD parola koruması, bilinen zayıf parolaları ve bunların türevlerini algılar ve engeller ve ayrıca kuruluşunuza özgü ek zayıf terimleri engelleyebilir.
 
 Azure AD parola koruması ile, varsayılan genel yasaklanmış parola listeleri bir Azure AD kiracısındaki tüm kullanıcılara otomatik olarak uygulanır. Kendi iş ve güvenlik gereksinimlerinizi desteklemek için girişleri özel yasaklanmış bir parola listesinde tanımlayabilirsiniz. Kullanıcılar parolalarını değiştirdiğinde veya sıfırlarsam, bu yasaklanmış parola listeleri, güçlü parolaların kullanımını zorlamak üzere denetlenir.
 
@@ -33,7 +33,7 @@ Yalnızca Azure AD parola koruması tarafından zorlanan güçlü parolalara gü
 
 ## <a name="global-banned-password-list"></a>Global yasaklanmış parola listesi
 
-Azure AD Kimlik Koruması takım, Azure AD güvenlik telemetri verilerini sürekli olarak çözümleyerek yaygın olarak kullanılan zayıf veya güvenliği aşılmış parolalara bakar. Özellikle, analiz, genellikle zayıf parolaların temeli olarak kullanılan temel koşulları arar. Zayıf koşullar bulunduğunda, bunlar *genel yasaklanmış parola listesine*eklenir. Genel yasaklanmış parola listesinin içeriği, herhangi bir dış veri kaynağını temel almaz, ancak Azure AD güvenlik telemetri ve analizine ait sonuçlar.
+Azure AD Kimlik Koruması takım, Azure AD güvenlik telemetri verilerini sürekli olarak çözümleyerek yaygın olarak kullanılan zayıf veya güvenliği aşılmış parolalara bakar. Özellikle, analiz, genellikle zayıf parolaların temeli olarak kullanılan temel koşulları arar. Zayıf koşullar bulunduğunda, bunlar *genel yasaklanmış parola listesine* eklenir. Genel yasaklanmış parola listesinin içeriği, herhangi bir dış veri kaynağını temel almaz, ancak Azure AD güvenlik telemetri ve analizine ait sonuçlar.
 
 Bir Azure AD kiracısındaki herhangi bir kullanıcı için bir parola değiştirildiğinde veya sıfırlandığında, parolanın gücünü doğrulamak için genel yasaklanmış parola listesinin geçerli sürümü kullanılır. Bu doğrulama denetimi, tüm Azure AD müşterileri için daha güçlü parolalara neden olur.
 
@@ -44,7 +44,7 @@ Genel yasaklanmış parola listesi, bir Azure AD kiracısındaki tüm kullanıc�
 
 ## <a name="custom-banned-password-list"></a>Özel yasaklanmış parola listesi
 
-Bazı kuruluşlar güvenliği artırmak ve genel yasaklanmış parola listesinin üzerine kendi özelleştirmelerini eklemek ister. Kendi girdilerinizi eklemek için, *özel yasaklanmış parola listesini*kullanabilirsiniz. Özel yasaklanmış parola listesine eklenen koşullar, aşağıdaki örnekler gibi kuruluşa özgü terimlere odaklanmalıdır:
+Bazı kuruluşlar güvenliği artırmak ve genel yasaklanmış parola listesinin üzerine kendi özelleştirmelerini eklemek ister. Kendi girdilerinizi eklemek için, *özel yasaklanmış parola listesini* kullanabilirsiniz. Özel yasaklanmış parola listesine eklenen koşullar, aşağıdaki örnekler gibi kuruluşa özgü terimlere odaklanmalıdır:
 
 - Marka adları
 - Ürün adları
@@ -61,7 +61,7 @@ Bazı kuruluşlar güvenliği artırmak ve genel yasaklanmış parola listesinin
 
 ![Kimlik doğrulama yöntemleri altındaki özel yasaklanmış parola listesini değiştirme](./media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords-cropped.png)
 
-*Contoso*adlı bir müşteriyi ele alalım. Şirket Londra ' a dayalıdır ve *pencere öğesi*adında bir ürün oluşturur. Bu örnek müşteri için, aşağıdaki gibi, bu koşulların belirli çeşitlemelerini engellemeyi denemek daha az güvenli ve daha az güvenlidir:
+*Contoso* adlı bir müşteriyi ele alalım. Şirket Londra ' a dayalıdır ve *pencere öğesi* adında bir ürün oluşturur. Bu örnek müşteri için, aşağıdaki gibi, bu koşulların belirli çeşitlemelerini engellemeyi denemek daha az güvenli ve daha az güvenlidir:
 
 - "Contoso! 1"
 - "Contoso@London"
@@ -202,7 +202,7 @@ Bir parolada ek karmaşıklığın kabul edilecek gereken sayıda noktayı göst
 > [!IMPORTANT]
 > Yasaklanmış parola algoritması, genel yasaklanmış parola listesiyle birlikte, sürekli güvenlik Analizi ve araştırmaya dayalı olarak Azure 'da herhangi bir zamanda değiştirilebilir ve değişebilir.
 >
-> Karma senaryolarda şirket içi DC Aracısı hizmeti için, güncelleştirilmiş algoritmalar yalnızca DC Aracısı yazılımı yeniden yüklendikten sonra devreye girer.
+> Karma senaryolarda şirket içi DC Aracısı hizmeti için, güncelleştirilmiş algoritmalar yalnızca DC Aracısı yazılımı yükseltildikten sonra devreye girer.
 
 ## <a name="what-do-users-see"></a>Kullanıcıların ne görecek
 

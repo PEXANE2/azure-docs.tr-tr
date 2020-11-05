@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
-ms.openlocfilehash: 98a1fbf30e7b653598aac6b83c0d8155582e2051
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: ffdf31d375d41d77b8b06112c83c1f3a0e1e15e5
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131488"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358890"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetmek için Python kullanma
 
@@ -94,7 +94,7 @@ def initialize_storage_account_ad(storage_account_name, client_id, client_secret
 > [!NOTE]
 > Daha fazla örnek için bkz. [Python Için Azure kimlik istemci kitaplığı](https://pypi.org/project/azure-identity/) belgeleri.
 
-## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+## <a name="create-a-container"></a>Kapsayıcı oluşturma
 
 Bir kapsayıcı dosyalarınız için bir dosya sistemi görevi görür. **FileSystemDataLakeServiceClient.create_file_system** yöntemini çağırarak bir tane oluşturabilirsiniz.
 
@@ -341,7 +341,7 @@ def manage_file_permissions():
      print(e) 
 ```
 
-### <a name="set-an-acl-recursively-preview"></a>Bir ACL 'yi yinelemeli olarak ayarlama (Önizleme)
+### <a name="set-an-acl-recursively"></a>ACL 'yi yinelemeli olarak ayarlama
 
 Bu değişiklikleri her bir alt öğe için ayrı ayrı yapmak zorunda kalmadan, bir üst dizinin varolan alt öğelerinde ACL 'Leri yinelemeli olarak ekleyebilir, güncelleştirebilir ve kaldırabilirsiniz. Daha fazla bilgi için bkz. [Azure Data Lake Storage 2. için erişim denetim listelerini (ACL 'ler) yinelemeli olarak ayarlama](recursive-access-control-lists.md).
 

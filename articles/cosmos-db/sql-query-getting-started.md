@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/24/2020
+ms.date: 11/04/2020
 ms.author: tisande
-ms.openlocfilehash: 7a4b2a778fc3d520c0ce85bed5bec0b49fc14384
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9176205b93519f0afac0c57f5da8593df6673c0f
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341918"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356629"
 ---
 # <a name="getting-started-with-sql-queries"></a>SQL sorgularını kullanmaya başlama
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -21,26 +21,35 @@ SQL API hesapları Azure Cosmos DB, verileri bulmanın iki yolu vardır:
 
 **Nokta okuma** -tek BIR *öğe kimliğinde* ve bölüm anahtarında anahtar/değer araması yapabilirsiniz. *Öğe kimliği* ve bölüm anahtarı birleşimi anahtardır ve öğenin kendisi değerdir. 1 KB 'lik bir belge için, nokta, genellikle 10 MS 'nin altında bir gecikme süresine sahip maliyet 1 [istek birimini](request-units.md) okur. Nokta okuma tek bir öğe döndürür.
 
-**SQL sorguları** -YAPıLANDıRıLMıŞ sorgu DILI (SQL) kullanan sorguları JSON sorgu dili olarak yazarak verileri sorgulayabilirsiniz. Sorgular her zaman en az 2,3 istek birimi maliyetlidir ve genel olarak nokta okumasından daha yüksek ve daha fazla değişken gecikme süresine sahip olur. Sorgular birçok öğe döndürebilir.
-
-Azure Cosmos DB çoğu okuma ağır iş yükü, her iki nokta okuma ve SQL sorgularının birleşimini kullanır. Yalnızca tek bir öğeyi okumanız gerekiyorsa, nokta okumaları sorgular ve sorgulardan daha hızlıdır. İşaret okumalarının veriye erişmek için sorgu altyapısını kullanması gerekmez ve verileri doğrudan okuyabilirler. Tabii ki, tüm iş yüklerinin işaret okumaları kullanarak verileri özel olarak okuyabilmesi mümkün değildir, bu nedenle SQL 'in bir sorgu dili olarak desteklenmesi ve [şema belirsiz dizin oluşturma](index-overview.md) verilerinize daha esnek bir yol sağlar.
-
-Her SDK ile nasıl yapılır noktası okumalarının bazı örnekleri aşağıda verilmiştir:
+Her SDK ile nasıl yapılır **noktası okumalarının** bazı örnekleri aşağıda verilmiştir:
 
 - [.NET SDK](/dotnet/api/microsoft.azure.cosmos.container.readitemasync?preserve-view=true&view=azure-dotnet)
 - [Java SDK](/java/api/com.azure.cosmos.cosmoscontainer.readitem?preserve-view=true&view=azure-java-stable#com_azure_cosmos_CosmosContainer__T_readItem_java_lang_String_com_azure_cosmos_models_PartitionKey_com_azure_cosmos_models_CosmosItemRequestOptions_java_lang_Class_T__)
 - [Node.js SDK’sı](/javascript/api/@azure/cosmos/item?preserve-view=true&view=azure-node-latest#read-requestoptions-)
 - [Python SDK'sı](/python/api/azure-cosmos/azure.cosmos.containerproxy?preserve-view=true&view=azure-python#read-item-item--partition-key--populate-query-metrics-none--post-trigger-include-none----kwargs-)
 
+**SQL sorguları** -YAPıLANDıRıLMıŞ sorgu DILI (SQL) kullanan sorguları JSON sorgu dili olarak yazarak verileri sorgulayabilirsiniz. Sorgular her zaman en az 2,3 istek birimi maliyetlidir ve genel olarak nokta okumasından daha yüksek ve daha fazla değişken gecikme süresine sahip olur. Sorgular birçok öğe döndürebilir.
+
+Azure Cosmos DB çoğu okuma ağır iş yükü, her iki nokta okuma ve SQL sorgularının birleşimini kullanır. Yalnızca tek bir öğeyi okumanız gerekiyorsa, nokta okumaları sorgular ve sorgulardan daha hızlıdır. İşaret okumalarının veriye erişmek için sorgu altyapısını kullanması gerekmez ve verileri doğrudan okuyabilirler. Tabii ki, tüm iş yüklerinin işaret okumaları kullanarak verileri özel olarak okuyabilmesi mümkün değildir, bu nedenle SQL 'in bir sorgu dili olarak desteklenmesi ve [şema belirsiz dizin oluşturma](index-overview.md) verilerinize daha esnek bir yol sağlar.
+
+Her SDK ile **SQL sorgularının** nasıl yapılacağı hakkında bazı örnekler şunlardır:
+
+- [.NET SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-dotnet-v3sdk-samples#query-examples)
+- [Java SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-java-sdk-samples#query-examples)
+- [Node.js SDK’sı](https://docs.microsoft.com/azure/cosmos-db/sql-api-nodejs-samples#item-examples)
+- [Python SDK'sı](https://docs.microsoft.com/azure/cosmos-db/sql-api-python-samples#item-examples)
+
 Bu belge geri kalanında Azure Cosmos DB SQL sorguları yazmaya nasıl başlacağınız gösterilmektedir. SQL sorguları, SDK veya Azure portal aracılığıyla çalıştırılabilir.
 
 ## <a name="upload-sample-data"></a>Örnek verileri karşıya yükle
 
-SQL API Cosmos DB hesabınızda adlı bir kapsayıcı oluşturun `Families` . Kapsayıcıda iki basit JSON öğesi oluşturun. Bu veri kümesini kullanarak Azure Cosmos DB sorgu belgelerinde örnek sorguların çoğunu çalıştırabilirsiniz.
+SQL API Cosmos DB hesabınızda, adlı bir kapsayıcı oluşturmak için [Veri Gezgini](https://docs.microsoft.com/azure/cosmos-db/data-explorer) açın `Families` . Oluşturulduktan sonra, bulmak ve açmak için veri yapıları tarayıcısını kullanın. `Families`Kapsayıcıda `Items` kapsayıcının adının hemen altında seçeneğini görürsünüz. Bu seçeneği açtığınızda, ' yeni öğe ' oluşturmak için ekranın ortasında menü çubuğunda bir düğme görürsünüz. Bu özelliği, aşağıdaki JSON öğelerini oluşturmak için kullanacaksınız.
 
 ### <a name="create-json-items"></a>JSON öğeleri oluşturma
 
-Aşağıdaki kod, aileler hakkında iki basit JSON öğesi oluşturur. Andersen ve Wakefield ailelerinin basit JSON öğeleri, ebeveynler, alt öğeler, adresler ve kayıt bilgilerini içerir. İlk öğede dizeler, sayılar, Boole değerleri, diziler ve iç içe geçmiş özellikler vardır.
+Aşağıdaki 2 JSON öğeleri, Andersen ve Wakefield aileleriyle ilgili belgelerdir. Bunlar, ebeveynler, alt öğeler, adresler ve kayıt bilgilerini içerir. 
+
+İlk öğede dizeler, sayılar, Boole değerleri, diziler ve iç içe geçmiş özellikler vardır:
 
 ```json
 {
@@ -64,7 +73,7 @@ Aşağıdaki kod, aileler hakkında iki basit JSON öğesi oluşturur. Andersen 
 }
 ```
 
-İkinci öğe `givenName` `familyName` ve yerine ve kullanır `firstName` `lastName` .
+İkinci öğe, ve `givenName` `familyName` yerine kullanır `firstName` `lastName` :
 
 ```json
 {

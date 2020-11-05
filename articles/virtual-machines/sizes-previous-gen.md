@@ -7,13 +7,13 @@ author: mimckitt
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/02/2020
-ms.author: jushiman
-ms.openlocfilehash: 175d572e69dd34a09787f44cf14ae0336c8e95e0
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: mimckitt
+ms.openlocfilehash: 45bcfdb544d3951feb40a821b601ce60ecc0feaf
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975612"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356782"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Önceki nesil sanal makine boyutları
 
@@ -61,13 +61,32 @@ MB/sn = 10^6 bayt/saniye ve GiB = 1024^3 bayt.
 
 <sup>1</sup> bir FS Serisi VM ile olası maksimum disk aktarım hızı (IOPS veya MB/sn), eklenen disklerin sayısı, boyutu ve şeritle sınırlı olabilir.  Ayrıntılar için bkz. [yüksek performans Için tasarım](premium-storage-performance.md).
 
+
+## <a name="nvv2-series"></a>NVv2 serisi
+
+**Daha yeni boyut önerisi** : [NVv3-Series](nvv3-series.md)
+
+NVv2 serisi sanal makineler, [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 'LARı ve NVIDIA GRID Teknolojisi Ile Intel geniş CPU ile desteklenir. Bu sanal makineler, müşterilerin verilerini görselleştirmek, görüntülemek için sonuçların benzetimini yapmak, CAD üzerinde çalışmak veya içerik oluşturmak ve akışa almak istedikleri GPU hızlandırmalı grafik uygulamalarına ve sanal masaüstlerine yöneliktir. Ayrıca, bu sanal makineler kodlama ve işleme gibi tek duyarlıklı iş yüklerini çalıştırabilir. NVv2 sanal makineleri, Premium depolamayı destekler ve öncül NV serisi ile karşılaştırıldığında, sistem belleği (RAM) ile birlikte gelir.  
+
+NVv2 örneklerinde her GPU bir KıLAVUZ lisansıyla gelir. Bu lisans, bir NV örneğini tek bir kullanıcı için sanal iş istasyonu olarak kullanma esnekliği sağlar veya 25 eşzamanlı kullanıcı sanal uygulama senaryosu için VM 'ye bağlanabilir.
+
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | GPU | GPU belleği: GiB | Maksimum veri diskleri | En fazla NIC | Sanal Iş Istasyonları | Sanal Uygulamalar |
+|---|---|---|---|---|---|---|---|---|---|
+| Standard_NV6s_v2  | 6  | 112 | 320  | 1 | 8  | 12 | 4 | 1 | 25  |
+| Standard_NV12s_v2 | 12 | 224 | 640  | 2 | 16 | 24 | 8 | 2 | 50  |
+| Standard_NV24s_v2 | 24 | 448 | 1280 | 4 | 32 | 32 | 8 | 4 | 100 |
+
+## <a name="older-generations-of-virtual-machine-sizes"></a>Daha eski nesil sanal makine boyutları
+
+Bu bölüm, daha eski nesil sanal makine boyutları hakkında bilgi sağlar. Bu boyutlar hala desteklenir, ancak ek kapasite almaz. Genel olarak kullanılabilen daha yeni veya alternatif boyutlar vardır. İhtiyacınız olan VM boyutlarını en iyi şekilde karşılayacak şekilde belirlemek için lütfen [Azure 'daki sanal makineleri Boyutlandır](./sizes.md) bölümüne bakın.  
+
+Linux VM 'yi yeniden boyutlandırma hakkında daha fazla bilgi için bkz. [Linux VM 'Yi yeniden boyutlandırma](linux/change-vm-size.md).  
+
 <br>
-
-
 
 ### <a name="basic-a"></a>Temel A  
 
-**Daha yeni boyut önerisi**: [AV2-Series](av2-series.md)
+**Daha yeni boyut önerisi** : [AV2-Series](av2-series.md)
 
 Premium Depolama: desteklenmiyor
 
@@ -97,7 +116,7 @@ Klasik dağıtım modelinde bazı VM boyutu adları CLI ve PowerShell'dekilerden
 
 ### <a name="a-series"></a>A Serisi  
 
-**Daha yeni boyut önerisi**: [AV2-Series](av2-series.md)
+**Daha yeni boyut önerisi** : [AV2-Series](av2-series.md)
 
 ACU: 50-100
 
@@ -122,7 +141,7 @@ Premium depolama önbelleği: desteklenmiyor
 
 ### <a name="a-series---compute-intensive-instances"></a>A Serisi - Yoğun işlem gücü kullanımlı örnekler  
 
-**Daha yeni boyut önerisi**: [AV2-Series](av2-series.md)
+**Daha yeni boyut önerisi** : [AV2-Series](av2-series.md)
 
 ACU: 225
 
@@ -148,7 +167,7 @@ A8-A11 ve H Serisi boyutlar *yoğun işlem gücü kullanımlı örnekler* olarak
 
 ### <a name="d-series"></a>D Serisi  
 
-**Daha yeni boyut önerisi**: [Dav4-Series](dav4-dasv4-series.md), [dv4-Series](dv4-dsv4-series.md) ve [Ddv4-Series](ddv4-ddsv4-series.md)
+**Daha yeni boyut önerisi** : [Dav4-Series](dav4-dasv4-series.md), [dv4-Series](dv4-dsv4-series.md) ve [Ddv4-Series](ddv4-ddsv4-series.md)
 
 ACU: 160-250 <sup>1</sup>
 
@@ -169,7 +188,7 @@ Premium depolama önbelleği: desteklenmiyor
 
 ### <a name="d-series---memory-optimized"></a>D serisi-bellek için iyileştirilmiş  
 
-**Daha yeni boyut önerisi**: [Dav4-Series](dav4-dasv4-series.md), [dv4-Series](dv4-dsv4-series.md) ve [Ddv4-Series](ddv4-ddsv4-series.md)
+**Daha yeni boyut önerisi** : [Dav4-Series](dav4-dasv4-series.md), [dv4-Series](dv4-dsv4-series.md) ve [Ddv4-Series](ddv4-ddsv4-series.md)
 
 ACU: 160-250 <sup>1</sup>
 
@@ -188,9 +207,9 @@ Premium depolama önbelleği: desteklenmiyor
 
 <br>
 
-## <a name="preview-dc-series"></a>Önizleme: DC Serisi
+### <a name="preview-dc-series"></a>Önizleme: DC Serisi
 
-**Daha yeni boyut önerisi**: [DCsv2-Series](dcv2-series.md)
+**Daha yeni boyut önerisi** : [DCsv2-Series](dcv2-series.md)
 
 Premium Depolama: desteklenir
 
@@ -205,12 +224,12 @@ DC Serisi, en son nesil 3.7 GHz Intel XEON E-2176G Işlemcisini SGX teknolojisin
 
 > [!IMPORTANT]
 >
-> DC Serisi VM 'Ler [2. nesil sanal makineler](./generation-2.md#creating-a-generation-2-vm) ve yalnızca `Gen2` görüntüleri destekler.
+> DC Serisi VM 'Ler [2. nesil sanal makineler](./linux/generation-2.md#creating-a-generation-2-vm) ve yalnızca `Gen2` görüntüleri destekler.
 
 
 ### <a name="ds-series"></a>DS serisi  
 
-**Daha yeni boyut önerisi**: [Dasv4-Series](dav4-dasv4-series.md), [Dsv4-Series](dv4-dsv4-series.md) ve [Ddsv4-Series](ddv4-ddsv4-series.md)
+**Daha yeni boyut önerisi** : [Dasv4-Series](dav4-dasv4-series.md), [Dsv4-Series](dv4-dsv4-series.md) ve [Ddsv4-Series](ddv4-ddsv4-series.md)
 
 ACU: 160-250 <sup>1</sup>
 
@@ -231,7 +250,7 @@ Premium depolama önbelleği: desteklenir
 
 ### <a name="ds-series---memory-optimized"></a>DS serisi bellek için iyileştirilmiş  
 
-**Daha yeni boyut önerisi**: [Dasv4-Series](dav4-dasv4-series.md), [Dsv4-Series](dv4-dsv4-series.md) ve [Ddsv4-Series](ddv4-ddsv4-series.md)
+**Daha yeni boyut önerisi** : [Dasv4-Series](dav4-dasv4-series.md), [Dsv4-Series](dv4-dsv4-series.md) ve [Ddsv4-Series](ddv4-ddsv4-series.md)
 
 ACU: 160-250 <sup>1, 2</sup>
 
@@ -253,7 +272,7 @@ Premium depolama önbelleği: desteklenir
 
 ### <a name="ls-series"></a>Ls serisi
 
-**Daha yeni boyut önerisi**: [Lsv2-Series](lsv2-series.md)
+**Daha yeni boyut önerisi** : [Lsv2-Series](lsv2-series.md)
 
 Ls serisi, [Intel® Xeon İşlemci E5 v3 ailesi](https://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html) ile 32’ye kadar vCPU kullanım olanağı sunar. Ls serisi, G/GS serisi ile aynı CPU performansı sunar ve her vCPU başına 8 GiB bellek içerir.
 
@@ -278,7 +297,7 @@ LS Serisi VM 'lerle mümkün olan en fazla disk aktarım hızı, ekli disklerin 
 
 ### <a name="gs-series"></a>GS serisi
 
-**Daha yeni boyut önerisi**: [Easv4-Series](eav4-easv4-series.md), [Esv4-serisi](ev4-esv4-series.md), [Edsv4-serisi](edv4-edsv4-series.md) ve [d serisi](m-series.md)
+**Daha yeni boyut önerisi** : [Easv4-Series](eav4-easv4-series.md), [Esv4-serisi](ev4-esv4-series.md), [Edsv4-serisi](edv4-edsv4-series.md) ve [d serisi](m-series.md)
 
 ACU: 180-240 <sup>1</sup>
 
@@ -304,7 +323,7 @@ Premium depolama önbelleği: desteklenir
 
 ### <a name="g-series"></a>G Serisi
 
-**Daha yeni boyut önerisi**: [Eav4-Series](eav4-easv4-series.md), [Ev4-serisi](ev4-esv4-series.md) ve [Edv4-](edv4-edsv4-series.md) serisi ve [d serisi](m-series.md)
+**Daha yeni boyut önerisi** : [Eav4-Series](eav4-easv4-series.md), [Ev4-serisi](ev4-esv4-series.md) ve [Edv4-](edv4-edsv4-series.md) serisi ve [d serisi](m-series.md)
 
 ACU: 180 - 240
 
@@ -323,8 +342,8 @@ Premium depolama önbelleği: desteklenmiyor
 <sup>1</sup> örnek, tek bir müşteriye adanmış donanımlar için yalıtılmıştır.
 <br>
 
-## <a name="nv-series"></a>NV serisi
-**Daha yeni boyut önerisi**: [NVv3-Series](nvv3-series.md) ve [NVv4-Series](nvv4-series.md)
+### <a name="nv-series"></a>NV serisi
+**Daha yeni boyut önerisi** : [NVv3-Series](nvv3-series.md) ve [NVv4-Series](nvv4-series.md)
 
 NV serisi sanal makineler, müşterilerin verilerini veya simülasyonlarını görselleştirerek, masaüstü hızlandırılmış uygulamalar ve sanal masaüstleri için [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 'LARı ve NVIDIA GRID Teknolojisi tarafından desteklenir. Kullanıcılar, üstün grafik yeteneği elde etmek ve kodlama ve işleme gibi tek duyarlıklı iş yüklerini çalıştırmak için, NV örneklerinde grafik yoğun iş akışlarını görselleştiriyor. NV serisi VM 'Ler, Intel Xeon E5-2690 v3 (Haswell) CPU 'Ları tarafından da desteklenir.
 
@@ -347,27 +366,8 @@ Güncelleştirmeleri koruyan bellek: desteklenmiyor
 1 GPU = M60 kartın yarısı.
 <br>
 
-
-## <a name="nvv2-series"></a>NVv2 serisi
-
-**Daha yeni boyut önerisi**: [NVv3-Series](nvv3-series.md)
-
-NVv2 serisi sanal makineler, [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 'LARı ve NVIDIA GRID Teknolojisi Ile Intel geniş CPU ile desteklenir. Bu sanal makineler, müşterilerin verilerini görselleştirmek, görüntülemek için sonuçların benzetimini yapmak, CAD üzerinde çalışmak veya içerik oluşturmak ve akışa almak istedikleri GPU hızlandırmalı grafik uygulamalarına ve sanal masaüstlerine yöneliktir. Ayrıca, bu sanal makineler kodlama ve işleme gibi tek duyarlıklı iş yüklerini çalıştırabilir. NVv2 sanal makineleri, Premium depolamayı destekler ve öncül NV serisi ile karşılaştırıldığında, sistem belleği (RAM) ile birlikte gelir.  
-
-NVv2 örneklerinde her GPU bir KıLAVUZ lisansıyla gelir. Bu lisans, bir NV örneğini tek bir kullanıcı için sanal iş istasyonu olarak kullanma esnekliği sağlar veya 25 eşzamanlı kullanıcı sanal uygulama senaryosu için VM 'ye bağlanabilir.
-
-| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | GPU | GPU belleği: GiB | Maksimum veri diskleri | En fazla NIC | Sanal Iş Istasyonları | Sanal Uygulamalar |
-|---|---|---|---|---|---|---|---|---|---|
-| Standard_NV6s_v2  | 6  | 112 | 320  | 1 | 8  | 12 | 4 | 1 | 25  |
-| Standard_NV12s_v2 | 12 | 224 | 640  | 2 | 16 | 24 | 8 | 2 | 50  |
-| Standard_NV24s_v2 | 24 | 448 | 1280 | 4 | 32 | 32 | 8 | 4 | 100 |
-
-[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
-
-<br>
-
-## <a name="nc-series"></a>NC serisi
-**Daha yeni boyut önerisi**: [NC T4 v3-serisi](nct4-v3-series.md)
+### <a name="nc-series"></a>NC serisi
+**Daha yeni boyut önerisi** : [NC T4 v3-serisi](nct4-v3-series.md)
 
 NC serisi VM 'Ler [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) Card ve Intel Xeon E5-2690 v3 (Haswell) işlemcisi tarafından desteklenmektedir. Kullanıcılar, enerji araştırması uygulamaları, kilitlenme benzetimleri, Ray tarafından izlenen işleme, derin öğrenme ve daha fazlası için CUDA 'yı kullanarak verileri daha hızlı bir şekilde kullanabilir. NC24r yapılandırması, sıkı şekilde bağlanmış paralel bilgi işlem iş yükleri için iyileştirilmiş, düşük gecikme süreli ve yüksek performanslı bir ağ arabirimi sağlar.
 
@@ -393,8 +393,8 @@ NC serisi VM 'Ler [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/So
 <br>
 
 
-## <a name="ncv2-series"></a>NCv2 serisi
-**Daha yeni boyut önerisi**: [NC T4 v3-serisi](nct4-v3-series.md) ve [NC V100 v3-serisi](ncv3-series.md)
+### <a name="ncv2-series"></a>NCv2 serisi
+**Daha yeni boyut önerisi** : [NC T4 v3-serisi](nct4-v3-series.md) ve [NC V100 v3-serisi](ncv3-series.md)
 
 NCv2 serisi VM 'Ler NVıDıA Tesla P100 GPU 'ları tarafından desteklenir. Bu GPU 'Lar, NC serisi için 2x miktardan fazla işlem performansı sağlayabilir. Müşteriler rezervoır modelleme, DNA sıralaması, protestolu analiz, Monte Carlo simülasyonları ve diğerleri gibi geleneksel HPC iş yükleri için bu güncelleştirilmiş GPU 'ların avantajlarından yararlanabilir. GPU 'Ların yanı sıra, NCv2 serisi VM 'Ler Intel Xeon E5-2690 v4 (geniş) CPU 'Lar tarafından da desteklenir.
 
@@ -421,8 +421,8 @@ NC24rs v2 yapılandırması, sıkı şekilde bağlanmış paralel bilgi işlem i
 
 <br>
 
-## <a name="nd-series"></a>ND serisi
-**Daha yeni boyut önerisi**: [NDv2-Series](ndv2-series.md) ve [NC V100 v3-Series](ncv3-series.md)
+### <a name="nd-series"></a>ND serisi
+**Daha yeni boyut önerisi** : [NDv2-Series](ndv2-series.md) ve [NC V100 v3-Series](ncv3-series.md)
 
 ND serisi sanal makineler, AI için tasarlanan GPU ailesine ve derin öğrenme iş yüklerine yeni bir ektir. Eğitim ve çıkarım için mükemmel performans sunar. ND örnekleri [NVIDIA Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) GPU 'Lar ve Intel Xeon E5-2690 v4 (çok Iyi) CPU 'lar tarafından desteklenir. Bu örnekler Microsoft Cognitive Toolkit, TensorFlow, Caffe ve diğer çerçeveleri kullanan AI iş yükleri için tek duyarlıklı kayan nokta işlemleri için mükemmel bir performans sağlar. ND serisi aynı zamanda çok daha büyük bir GPU bellek boyutu (24 GB) sunarak çok daha büyük sinir net modellerini mümkün hale getirecek şekilde etkinleştirir. NC serisi gibi, ND serisi, RDMA aracılığıyla ikincil düşük gecikmeli, yüksek performanslı bir ağ ve InfiniBand bağlantısı sunan bir yapılandırma sunarak çok sayıda GPU 'yu kapsayan büyük ölçekli eğitim işleri çalıştırabilirsiniz.
 
@@ -446,15 +446,6 @@ ND serisi sanal makineler, AI için tasarlanan GPU ailesine ve derin öğrenme i
 *RDMA özellikli
 
 <br>
-
-## <a name="other-sizes"></a>Diğer boyutlar
-
-* [Genel amaçlı](sizes-general.md)
-* [İşlem için iyileştirilmiş](sizes-compute.md)
-* [Bellek için iyileştirilmiş](sizes-memory.md)
-* [Depolama için iyileştirilmiş](sizes-storage.md)
-* [GPU](sizes-gpu.md)
-* [Yüksek performanslı işlem](sizes-hpc.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

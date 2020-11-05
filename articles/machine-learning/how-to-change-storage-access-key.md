@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: f1da7149a41ec8dd08e307394cba3e7feabec42a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 02772ff6279ee813b86f92984742ba8301bdf74e
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320712"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357955"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Depolama hesabı erişim anahtarlarını yeniden oluştur
 
@@ -26,7 +26,8 @@ Azure Machine Learning tarafından kullanılan Azure depolama hesapları için e
 Güvenlik nedeniyle, bir Azure depolama hesabının erişim anahtarlarını değiştirmeniz gerekebilir. Erişim anahtarını yeniden oluşturduğunuzda Azure Machine Learning yeni anahtarı kullanmak için güncelleştirilmeleri gerekir. Azure Machine Learning, hem model depolama hem de bir veri deposu olarak depolama hesabı kullanıyor olabilir.
 
 > [!IMPORTANT]
-> Datamağazalarla birlikte kayıt defteri kaydı, çalışma alanıyla ilişkili Azure Key Vault kaydedilir. Key Vault için [geçici silme](../key-vault/general/soft-delete-overview.md) etkinse, kimlik bilgilerini güncelleştirmek için bu makaleyi izlediğinizden emin olun. Veri deposunun kaydını silme ve aynı ada göre yeniden kaydetme başarısız olur.
+
+> Veri depolarıyla kaydedilen kimlik bilgileri, çalışma alanıyla ilişkili Azure Key Vault kaydedilir. Key Vault için [geçici silme](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview) özelliği varsa, bu makalede kimlik bilgilerini güncelleştirmek için yönergeler sağlanmaktadır. Veri deposunun kaydını siler ve aynı adla yeniden kaydetmeyi denerseniz, bu eylem başarısız olur. Bkz. Bu senaryoda geçici silme özelliğini etkinleştirme için [mevcut bir Anahtar Kasası Için geçici silme özelliğini]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault) etkinleştirme.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

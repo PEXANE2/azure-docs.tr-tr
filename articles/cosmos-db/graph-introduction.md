@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB Gremlin API 'sine giriş
 description: Düşük gecikme süresine sahip yoğun grafikleri Apache TinkerPop’un Gremlin grafik sorgu dilini kullanarak depolamak, sorgulamak ve dolaştırmak için Azure Cosmos DB’yi nasıl kullanabileceğinizi öğrenin.
-author: jasonwhowell
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/10/2020
-ms.author: jasonh
-ms.openlocfilehash: 98ad02c134df919c593c87dd96a9a71d73371a1c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.author: chrande
+ms.openlocfilehash: d0bd94037a75db8d69cfd44820a80ae8b403c9ea
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93087426"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357088"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB Gremlin API 'sine giriş
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -107,7 +107,7 @@ Grafik veritabanları genellikle NoSQL veya ilişkisel olmayan veritabanı kateg
 
 Sorguların Gremlin’de nasıl ifade edildiğini anlamak için örnek bir grafik kullanalım. Aşağıdaki şekilde kullanıcılar, ilgi alanları ve cihazlar hakkındaki verileri yöneten bir iş uygulaması grafik biçiminde gösterilir.  
 
-:::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="Azure Cosmos DB grafik mimarisi" border="false"::: 
+:::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="Kişileri, cihazları ve ilgi alanlarını gösteren örnek grafik" border="false"::: 
 
 Bu grafik aşağıdaki *köşe* türlerine sahiptir (bunlar Gremlin içinde "etiket" olarak da adlandırılır):
 
@@ -122,7 +122,7 @@ Aşağıdaki *uç* türleri aracılığıyla bu varlıklar arasındaki ilişkile
 * **Biliyor** : Örneğin, "Thomas biliyor"
 * **İlgileniyor** : grafımızda bulunan kişilerin ilgi alanlarınızı göstermek Için "Ben futbol ile ilgileniyor"
 * **Runsos** : dizüstü bilgisayar Windows işletim sistemini çalıştırır
-* Bir kişinin hangi cihaza kullandığını göstermek için: **kullanır** . Örneğin Robin, seri numarası 77 olan bir Motorola telefon kullanır
+* Bir kişinin hangi cihaza kullandığını göstermek için: **kullanır**. Örneğin Robin, seri numarası 77 olan bir Motorola telefon kullanır
 * **Bulunur** : cihazların eriştiği konumu temsil etmek için
 
 Gremlin konsolu, Apache TinkerPop tarafından sunulan etkileşimli bir terminaldir ve bu Terminal, grafik verileriyle etkileşim kurmak için kullanılır. Daha fazla bilgi edinmek için bkz. [Gremlin konsolunun kullanımı](create-graph-gremlin-console.md)hakkındaki hızlı başlangıç belgesi. Dilerseniz bu işlemleri, tercih ettiğiniz platformdaki (Java, Node.js, Python veya .NET) Gremlin sürücülerini kullanarak da gerçekleştirebilirsiniz. Aşağıdaki örneklerde Gremlin konsolunu kullanarak bu grafik verilerinde nasıl sorgu çalıştırılacağı gösterilmektedir.

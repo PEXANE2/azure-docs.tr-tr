@@ -6,12 +6,13 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: mvc, devcenter, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: f105acaa4e2801ca6dc8c33b404fdb9f9d65adc8
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+adobe-target: true
+ms.openlocfilehash: b42abfda863ed38eb3c29004630f905edef075c4
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633731"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359111"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Azure App Service'te Node.js web uygulaması oluşturma
 
@@ -19,7 +20,7 @@ ms.locfileid: "92633731"
 
 Visual Studio Code kullanarak yerel olarak bir Node.js/Express uygulaması oluşturarak ve sonra uygulamayı buluta dağıtarak Azure App Service kullanmaya başlayın. Ücretsiz bir App Service katmanı kullandığınız için, bu hızlı başlangıcı tamamlamaya yönelik bir ücret ödeirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension).
 - <a href="https://git-scm.com/" target="_blank">Git'i yükleyin</a>
@@ -70,7 +71,7 @@ Bu bölümde, VS Code ve Azure App Service uzantısı aracılığıyla Node.js u
 
 1. VS Code **Azure App SERVICE** Gezgini ' nde, uygulamanızı Azure 'a dağıtmak için mavi yukarı ok simgesini seçin. (' Web uygulamasına **Ctrl** Dağıt ' yazıp **Command Palette** + **Shift** + **Azure App Service: Web uygulamasına dağıt** ) seçeneğini belirleyerek komut paletinden aynı komutu da çağırabilirsiniz (CTRL SHIFT **P** ).
 
-    :::image type="content" source="media/quickstart-nodejs/deploy.png" alt-text="Azure App Service 'in seçili mavi ok simgesini gösteren VS Code ekran görüntüsü.&quot;:::
+    :::image type="content" source="media/quickstart-nodejs/deploy.png" alt-text="Azure App Service 'in seçili mavi ok simgesini gösteren VS Code ekran görüntüsü.":::
         
 1. *NodeJS-docs-Hello-World* klasörünü seçin.
 
@@ -96,9 +97,9 @@ Bu bölümde, VS Code ve Azure App Service uzantısı aracılığıyla Node.js u
 
     ![Hedef Linux sunucusunda yapılandırmayı güncelleştirmek için sor](media/quickstart-nodejs/server-build.png)
 
-1. **Her zaman &quot;NodeJS-docs-Hello-World&quot; çalışma alanını (uygulama adı) &quot;olarak dağıtmak** isteyip Istemediğiniz sorulduğunda **Evet** ' i seçin. **Evet** seçildiğinde, sonraki dağıtımlarla aynı App Service Web uygulamasını otomatik olarak hedeflemek vs Code söyler.
+1. **Her zaman "NodeJS-docs-Hello-World" çalışma alanını (uygulama adı) "olarak dağıtmak** isteyip Istemediğiniz sorulduğunda **Evet** ' i seçin. **Evet** seçildiğinde, sonraki dağıtımlarla aynı App Service Web uygulamasını otomatik olarak hedeflemek vs Code söyler.
 
-1. Linux 'a dağıtıyorsanız, dağıtım tamamlandıktan sonra yeniden dağıtılan Web uygulamanızı görüntülemek için istemde **Web sitesine gözatıp** ' yi seçin. Tarayıcının &quot;Merhaba Dünya!" görüntülemesi gerekir
+1. Linux 'a dağıtıyorsanız, dağıtım tamamlandıktan sonra yeniden dağıtılan Web uygulamanızı görüntülemek için istemde **Web sitesine gözatıp** ' yi seçin. Tarayıcının "Merhaba Dünya!" görüntülemesi gerekir
 
 1. Windows 'a dağıtıyorsanız, önce Web uygulaması için Node.js sürüm numarasını ayarlamanız gerekir:
 
@@ -142,35 +143,7 @@ Günlük çıktısını (çağrıları `console.log` ) uygulamadan doğrudan vs 
 
 1. İstendiğinde, günlüğü etkinleştirmeyi ve uygulamayı yeniden başlatmayı seçin. Uygulama yeniden başlatıldıktan sonra VS Code çıkış penceresi, günlük akışı bağlantısıyla açılır. 
 
-    :::image type="content" source="media/quickstart-nodejs/enable-restart.png" alt-text="Azure App Service 'in seçili mavi ok simgesini gösteren VS Code ekran görüntüsü.&quot;:::
-        
-1. *NodeJS-docs-Hello-World* klasörünü seçin.
-
-1. Dağıtmak istediğiniz işletim sistemini temel alan bir oluşturma seçeneği belirleyin:
-
-    - Linux: **Yeni Web uygulaması oluştur** seçeneğini belirleyin
-    - Windows: **Yeni Web uygulaması oluştur öğesini seçin... Gelişmiş**
-
-1. Web uygulamanız için genel olarak benzersiz bir ad yazın ve **ENTER** tuşuna basın. Ad tüm Azure genelinde benzersiz olmalıdır ve yalnızca alfasayısal karakterler (' A-Z ', ' a-z ' ve ' 0-9 ') ve tireler ('-') kullanılmalıdır.
-
-1. Linux 'u hedefliyorsanız, sorulduğunda Node.js bir sürüm seçin. **LTS** sürümü önerilir.
-
-1. Windows 'u hedefliyorsanız, ek istemleri izleyin:
-    1. **Yeni kaynak grubu oluştur** ' u seçin, ardından kaynak grubu için gibi bir ad girin `AppServiceQS-rg` .
-    1. İşletim sistemi için **Windows** ' u seçin.
-    1. **Yeni App Service planı oluştur** ' u seçin, sonra plan için bir ad girin (gibi `AppServiceQS-plan` ) ve ardından fiyatlandırma katmanı için **F1 ücretsiz** ' i seçin.
-    1. Application Insights sorulduğunda **Şu anda atla** ' yı seçin.
-    1. Size yakın bir bölge veya erişmek istediğiniz kaynakları seçin.
-
-1. Tüm istemlere yanıt verdikten sonra, VS Code bildirim açılan penceresinde uygulamanız için oluşturulmakta olan Azure kaynaklarını gösterir.
-
-    Linux 'a dağıtım yaparken, yapılandırmanızı hedef Linux sunucusunda çalışacak şekilde güncellemek isteyip istemediğiniz sorulduğunda **Evet** ' i seçin `npm install` .
-
-    ![Hedef Linux sunucusunda yapılandırmayı güncelleştirmek için sor](media/quickstart-nodejs/server-build.png)
-
-1. **Her zaman &quot;NodeJS-docs-Hello-World&quot; çalışma alanını (uygulama adı) &quot;olarak dağıtmak** isteyip Istemediğiniz sorulduğunda **Evet** ' i seçin. **Evet** seçildiğinde, sonraki dağıtımlarla aynı App Service Web uygulamasını otomatik olarak hedeflemek vs Code söyler.
-
-1. Linux 'a dağıtıyorsanız, dağıtım tamamlandıktan sonra yeniden dağıtılan Web uygulamanızı görüntülemek için istemde **Web sitesine gözatıp** ' yi seçin. Tarayıcının &quot;Merhaba Dünya!":::
+    :::image type="content" source="media/quickstart-nodejs/enable-restart.png" alt-text="Günlüğe kaydetmeyi etkinleştirmek için Visual Studio Code isteminin ekran görüntüsü ve Evet düğmesi seçili olarak uygulamayı yeniden başlatın.":::
 
 1. Birkaç saniye sonra çıkış penceresinde, günlük akış hizmetine bağlı olduğunuzu belirten bir ileti gösterilir. Tarayıcıdaki sayfayı yenileyerek daha fazla çıkış etkinliği oluşturabilirsiniz.
 
@@ -205,7 +178,7 @@ Ya da Azure Uzantı paketi [Için düğüm paketini](https://marketplace.visuals
 ::: zone-end
 
 ::: zone pivot="platform-linux"  
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure hesabınız yoksa, herhangi bir hizmet birleşimini denemek için bugün Azure kredilerine $200 ile ücretsiz bir hesap için [kaydolun](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension) .
 
@@ -292,35 +265,7 @@ code .
 
 **Azure App SERVICE** Gezgini ' nde, uygulamanızı Azure 'a dağıtmak için mavi yukarı ok simgesini seçin.
 
-:::image type="content" source="./media/quickstart-nodejs/deploy.png" alt-text="Azure App Service 'in seçili mavi ok simgesini gösteren VS Code ekran görüntüsü.&quot;:::
-        
-1. *NodeJS-docs-Hello-World* klasörünü seçin.
-
-1. Dağıtmak istediğiniz işletim sistemini temel alan bir oluşturma seçeneği belirleyin:
-
-    - Linux: **Yeni Web uygulaması oluştur** seçeneğini belirleyin
-    - Windows: **Yeni Web uygulaması oluştur öğesini seçin... Gelişmiş**
-
-1. Web uygulamanız için genel olarak benzersiz bir ad yazın ve **ENTER** tuşuna basın. Ad tüm Azure genelinde benzersiz olmalıdır ve yalnızca alfasayısal karakterler (' A-Z ', ' a-z ' ve ' 0-9 ') ve tireler ('-') kullanılmalıdır.
-
-1. Linux 'u hedefliyorsanız, sorulduğunda Node.js bir sürüm seçin. **LTS** sürümü önerilir.
-
-1. Windows 'u hedefliyorsanız, ek istemleri izleyin:
-    1. **Yeni kaynak grubu oluştur** ' u seçin, ardından kaynak grubu için gibi bir ad girin `AppServiceQS-rg` .
-    1. İşletim sistemi için **Windows** ' u seçin.
-    1. **Yeni App Service planı oluştur** ' u seçin, sonra plan için bir ad girin (gibi `AppServiceQS-plan` ) ve ardından fiyatlandırma katmanı için **F1 ücretsiz** ' i seçin.
-    1. Application Insights sorulduğunda **Şu anda atla** ' yı seçin.
-    1. Size yakın bir bölge veya erişmek istediğiniz kaynakları seçin.
-
-1. Tüm istemlere yanıt verdikten sonra, VS Code bildirim açılan penceresinde uygulamanız için oluşturulmakta olan Azure kaynaklarını gösterir.
-
-    Linux 'a dağıtım yaparken, yapılandırmanızı hedef Linux sunucusunda çalışacak şekilde güncellemek isteyip istemediğiniz sorulduğunda **Evet** ' i seçin `npm install` .
-
-    ![Hedef Linux sunucusunda yapılandırmayı güncelleştirmek için sor](media/quickstart-nodejs/server-build.png)
-
-1. **Her zaman &quot;NodeJS-docs-Hello-World&quot; çalışma alanını (uygulama adı) &quot;olarak dağıtmak** isteyip Istemediğiniz sorulduğunda **Evet** ' i seçin. **Evet** seçildiğinde, sonraki dağıtımlarla aynı App Service Web uygulamasını otomatik olarak hedeflemek vs Code söyler.
-
-1. Linux 'a dağıtıyorsanız, dağıtım tamamlandıktan sonra yeniden dağıtılan Web uygulamanızı görüntülemek için istemde **Web sitesine gözatıp** ' yi seçin. Tarayıcının &quot;Merhaba Dünya!":::
+:::image type="content" source="./media/quickstart-nodejs/deploy.png" alt-text="Mavi dağıtım oku seçiliyken Visual Studio Code Azure App Service menüsünün ekran görüntüsü.":::
 
 > [!TIP]
 > Ayrıca, **komut paletinden** (CTRL + SHIFT + P) ' Web uygulamasına Dağıt ' yazarak ve **Azure App Service: Web uygulamasına dağıt** komutunu çalıştırarak dağıtım yapabilirsiniz.
@@ -337,67 +282,11 @@ code .
 
 1. Yapılandırmanızı hedef sunucuda çalışacak şekilde güncellemek isteyip istemediğiniz sorulduğunda **Evet** ' i seçin `npm install` . Uygulamanız daha sonra dağıtılır.
 
-    :::image type="content" source="./media/quickstart-nodejs/server-build.png" alt-text="Azure App Service 'in seçili mavi ok simgesini gösteren VS Code ekran görüntüsü.&quot;:::
-        
-1. *NodeJS-docs-Hello-World* klasörünü seçin.
-
-1. Dağıtmak istediğiniz işletim sistemini temel alan bir oluşturma seçeneği belirleyin:
-
-    - Linux: **Yeni Web uygulaması oluştur** seçeneğini belirleyin
-    - Windows: **Yeni Web uygulaması oluştur öğesini seçin... Gelişmiş**
-
-1. Web uygulamanız için genel olarak benzersiz bir ad yazın ve **ENTER** tuşuna basın. Ad tüm Azure genelinde benzersiz olmalıdır ve yalnızca alfasayısal karakterler (' A-Z ', ' a-z ' ve ' 0-9 ') ve tireler ('-') kullanılmalıdır.
-
-1. Linux 'u hedefliyorsanız, sorulduğunda Node.js bir sürüm seçin. **LTS** sürümü önerilir.
-
-1. Windows 'u hedefliyorsanız, ek istemleri izleyin:
-    1. **Yeni kaynak grubu oluştur** ' u seçin, ardından kaynak grubu için gibi bir ad girin `AppServiceQS-rg` .
-    1. İşletim sistemi için **Windows** ' u seçin.
-    1. **Yeni App Service planı oluştur** ' u seçin, sonra plan için bir ad girin (gibi `AppServiceQS-plan` ) ve ardından fiyatlandırma katmanı için **F1 ücretsiz** ' i seçin.
-    1. Application Insights sorulduğunda **Şu anda atla** ' yı seçin.
-    1. Size yakın bir bölge veya erişmek istediğiniz kaynakları seçin.
-
-1. Tüm istemlere yanıt verdikten sonra, VS Code bildirim açılan penceresinde uygulamanız için oluşturulmakta olan Azure kaynaklarını gösterir.
-
-    Linux 'a dağıtım yaparken, yapılandırmanızı hedef Linux sunucusunda çalışacak şekilde güncellemek isteyip istemediğiniz sorulduğunda **Evet** ' i seçin `npm install` .
-
-    ![Hedef Linux sunucusunda yapılandırmayı güncelleştirmek için sor](media/quickstart-nodejs/server-build.png)
-
-1. **Her zaman &quot;NodeJS-docs-Hello-World&quot; çalışma alanını (uygulama adı) &quot;olarak dağıtmak** isteyip Istemediğiniz sorulduğunda **Evet** ' i seçin. **Evet** seçildiğinde, sonraki dağıtımlarla aynı App Service Web uygulamasını otomatik olarak hedeflemek vs Code söyler.
-
-1. Linux 'a dağıtıyorsanız, dağıtım tamamlandıktan sonra yeniden dağıtılan Web uygulamanızı görüntülemek için istemde **Web sitesine gözatıp** ' yi seçin. Tarayıcının &quot;Merhaba Dünya!":::
+    :::image type="content" source="./media/quickstart-nodejs/server-build.png" alt-text="Hedef sunucuda yapılandırmanızı güncelleştirmek için Evet düğmesi seçili olan komut isteminin ekran görüntüsü.":::
 
 1. Dağıtım başladığında, daha sonraki dağıtımlar aynı App Service Web uygulamasını otomatik olarak hedefleyecek şekilde çalışma alanınızı güncelleştirmeniz istenir. Değişikliklerinizin doğru uygulamaya dağıtıldığından emin olmak için **Evet** ' i seçin.
 
-    :::image type="content" source="./media/quickstart-nodejs/save-configuration.png" alt-text="Azure App Service 'in seçili mavi ok simgesini gösteren VS Code ekran görüntüsü.&quot;:::
-        
-1. *NodeJS-docs-Hello-World* klasörünü seçin.
-
-1. Dağıtmak istediğiniz işletim sistemini temel alan bir oluşturma seçeneği belirleyin:
-
-    - Linux: **Yeni Web uygulaması oluştur** seçeneğini belirleyin
-    - Windows: **Yeni Web uygulaması oluştur öğesini seçin... Gelişmiş**
-
-1. Web uygulamanız için genel olarak benzersiz bir ad yazın ve **ENTER** tuşuna basın. Ad tüm Azure genelinde benzersiz olmalıdır ve yalnızca alfasayısal karakterler (' A-Z ', ' a-z ' ve ' 0-9 ') ve tireler ('-') kullanılmalıdır.
-
-1. Linux 'u hedefliyorsanız, sorulduğunda Node.js bir sürüm seçin. **LTS** sürümü önerilir.
-
-1. Windows 'u hedefliyorsanız, ek istemleri izleyin:
-    1. **Yeni kaynak grubu oluştur** ' u seçin, ardından kaynak grubu için gibi bir ad girin `AppServiceQS-rg` .
-    1. İşletim sistemi için **Windows** ' u seçin.
-    1. **Yeni App Service planı oluştur** ' u seçin, sonra plan için bir ad girin (gibi `AppServiceQS-plan` ) ve ardından fiyatlandırma katmanı için **F1 ücretsiz** ' i seçin.
-    1. Application Insights sorulduğunda **Şu anda atla** ' yı seçin.
-    1. Size yakın bir bölge veya erişmek istediğiniz kaynakları seçin.
-
-1. Tüm istemlere yanıt verdikten sonra, VS Code bildirim açılan penceresinde uygulamanız için oluşturulmakta olan Azure kaynaklarını gösterir.
-
-    Linux 'a dağıtım yaparken, yapılandırmanızı hedef Linux sunucusunda çalışacak şekilde güncellemek isteyip istemediğiniz sorulduğunda **Evet** ' i seçin `npm install` .
-
-    ![Hedef Linux sunucusunda yapılandırmayı güncelleştirmek için sor](media/quickstart-nodejs/server-build.png)
-
-1. **Her zaman &quot;NodeJS-docs-Hello-World&quot; çalışma alanını (uygulama adı) &quot;olarak dağıtmak** isteyip Istemediğiniz sorulduğunda **Evet** ' i seçin. **Evet** seçildiğinde, sonraki dağıtımlarla aynı App Service Web uygulamasını otomatik olarak hedeflemek vs Code söyler.
-
-1. Linux 'a dağıtıyorsanız, dağıtım tamamlandıktan sonra yeniden dağıtılan Web uygulamanızı görüntülemek için istemde **Web sitesine gözatıp** ' yi seçin. Tarayıcının &quot;Merhaba Dünya!":::
+    :::image type="content" source="./media/quickstart-nodejs/save-configuration.png" alt-text="Çalışma alanınızı Evet düğmesi seçili olarak güncelleştirme isteminin ekran görüntüsü.":::
 
 > [!TIP]
 > Uygulamanızın bağlantı noktası ortam değişkeni tarafından belirtilen bağlantı noktasında dinleme yaptığını doğrulayın: `process.env.PORT` .
@@ -427,35 +316,7 @@ VS Code çıkış penceresi, günlük akışı bağlantısıyla açılır.
 
 ![Akış günlüklerini görüntüle](./media/quickstart-nodejs/view-logs.png)
 
-:::image type="content" source="./media/quickstart-nodejs/enable-restart.png" alt-text="Azure App Service 'in seçili mavi ok simgesini gösteren VS Code ekran görüntüsü.&quot;:::
-        
-1. *NodeJS-docs-Hello-World* klasörünü seçin.
-
-1. Dağıtmak istediğiniz işletim sistemini temel alan bir oluşturma seçeneği belirleyin:
-
-    - Linux: **Yeni Web uygulaması oluştur** seçeneğini belirleyin
-    - Windows: **Yeni Web uygulaması oluştur öğesini seçin... Gelişmiş**
-
-1. Web uygulamanız için genel olarak benzersiz bir ad yazın ve **ENTER** tuşuna basın. Ad tüm Azure genelinde benzersiz olmalıdır ve yalnızca alfasayısal karakterler (' A-Z ', ' a-z ' ve ' 0-9 ') ve tireler ('-') kullanılmalıdır.
-
-1. Linux 'u hedefliyorsanız, sorulduğunda Node.js bir sürüm seçin. **LTS** sürümü önerilir.
-
-1. Windows 'u hedefliyorsanız, ek istemleri izleyin:
-    1. **Yeni kaynak grubu oluştur** ' u seçin, ardından kaynak grubu için gibi bir ad girin `AppServiceQS-rg` .
-    1. İşletim sistemi için **Windows** ' u seçin.
-    1. **Yeni App Service planı oluştur** ' u seçin, sonra plan için bir ad girin (gibi `AppServiceQS-plan` ) ve ardından fiyatlandırma katmanı için **F1 ücretsiz** ' i seçin.
-    1. Application Insights sorulduğunda **Şu anda atla** ' yı seçin.
-    1. Size yakın bir bölge veya erişmek istediğiniz kaynakları seçin.
-
-1. Tüm istemlere yanıt verdikten sonra, VS Code bildirim açılan penceresinde uygulamanız için oluşturulmakta olan Azure kaynaklarını gösterir.
-
-    Linux 'a dağıtım yaparken, yapılandırmanızı hedef Linux sunucusunda çalışacak şekilde güncellemek isteyip istemediğiniz sorulduğunda **Evet** ' i seçin `npm install` .
-
-    ![Hedef Linux sunucusunda yapılandırmayı güncelleştirmek için sor](media/quickstart-nodejs/server-build.png)
-
-1. **Her zaman &quot;NodeJS-docs-Hello-World&quot; çalışma alanını (uygulama adı) &quot;olarak dağıtmak** isteyip Istemediğiniz sorulduğunda **Evet** ' i seçin. **Evet** seçildiğinde, sonraki dağıtımlarla aynı App Service Web uygulamasını otomatik olarak hedeflemek vs Code söyler.
-
-1. Linux 'a dağıtıyorsanız, dağıtım tamamlandıktan sonra yeniden dağıtılan Web uygulamanızı görüntülemek için istemde **Web sitesine gözatıp** ' yi seçin. Tarayıcının &quot;Merhaba Dünya!":::
+:::image type="content" source="./media/quickstart-nodejs/enable-restart.png" alt-text="Dosya günlüğünü etkinleştirmek ve Evet düğmesi seçili olarak Web uygulamasını yeniden başlatmak için VS Code isteminin ekran görüntüsü.":::
 
 Birkaç saniye sonra, günlük akış hizmetine bağlı olduğunuzu belirten bir ileti görürsünüz. Daha fazla etkinlik görmek için sayfayı birkaç kez yenileyin.
 

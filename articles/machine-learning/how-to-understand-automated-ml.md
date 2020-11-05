@@ -10,19 +10,19 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 10/09/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq2
-ms.openlocfilehash: 681e965d5fb64e35374b580cbbb238defd619492
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, contperfq2, automl
+ms.openlocfilehash: fcbe0fc5049f6e892f80f048a885c75420bc636e
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311482"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359094"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Otomatik makine öğrenimi sonuçlarını değerlendir
 
-Bu makalede otomatik makine öğrenimi, otomatik ml, denemeleri sonuçlarını görüntülemeyi ve değerlendirmeyi öğrenin. Bu denemeleri birden çok çalıştırmasından oluşur ve her çalıştırma bir model oluşturur. Her bir modeli değerlendirmenize yardımcı olmak için otomatik ml, deneme türüne özgü performans ölçümlerini ve grafiklerini otomatik olarak oluşturur. 
+Bu makalede otomatik makine öğrenimi, otomatik ML, denemeleri sonuçlarını görüntülemeyi ve değerlendirmeyi öğrenin. Bu denemeleri birden çok çalıştırmasından oluşur ve her çalıştırma bir model oluşturur. Her modeli değerlendirmenize yardımcı olmak için otomatik ML, deneme türüne özgü performans ölçümlerini ve grafiklerini otomatik olarak oluşturur. 
 
-Örneğin, oto, sınıflandırma ve regresyon modelleri için farklı grafikler sağlar. 
+Örneğin, otomatik ML sınıflandırma ve regresyon modelleri için farklı grafikler sağlar. 
 
 |Sınıflandırma|Regresyon
 |---|---|
@@ -61,7 +61,7 @@ Aşağıdaki adımlar ve animasyon, Studio 'da belirli bir modelin çalıştırm
 
 ## <a name="classification-performance-metrics"></a>Sınıflandırma performans ölçümleri
 
-Aşağıdaki tabloda, denemenize yönelik olarak oluşturulan her bir sınıflandırma modeli için, tabun hesapladığı model performans ölçümleri özetlenmektedir. 
+Aşağıdaki tabloda, denemeniz için oluşturulan her sınıflandırma modeli için otomatik ML 'nin hesapladığı model performans ölçümleri özetlenmektedir. 
 
 Ölçüm|Açıklama|Hesaplama|Ek parametreler
 --|--|--|--
@@ -88,7 +88,7 @@ weighted_accuracy|Ağırlıklı doğruluk, her örneğe verilen ağırlığa, bu
 
 ### <a name="binary-vs-multiclass-metrics"></a>İkili ve birden çok Lass ölçümleri
 
-Oto ml, ikili ve çok sınıflı ölçümler arasında ayrım yapmaz. Aynı doğrulama ölçümleri, bir veri kümesinin iki sınıfa veya ikiden fazla sınıfa sahip olup olmadığını rapor edilir. Ancak bazı ölçümler çok sınıflı sınıflandırmaya yöneliktir. Bir ikili veri kümesine uygulandığında, bu ölçümler, bekleolabileceğiniz gibi sınıf olarak hiçbir sınıfı kabul eder `true` . Birden çok sınıf için açıkça amaçlanan ölçümler,, veya ile sonlanmış `micro` `macro` `weighted` . Örnekler,,, `average_precision_score` `f1_score` ve içerir `precision_score` `recall_score` `AUC` .
+Otomatikleştirilmiş ML ikili ve çok sınıflı ölçümler arasında ayrım yapmaz. Aynı doğrulama ölçümleri, bir veri kümesinin iki sınıfa veya ikiden fazla sınıfa sahip olup olmadığını rapor edilir. Ancak bazı ölçümler çok sınıflı sınıflandırmaya yöneliktir. Bir ikili veri kümesine uygulandığında, bu ölçümler, bekleolabileceğiniz gibi sınıf olarak hiçbir sınıfı kabul eder `true` . Birden çok sınıf için açıkça amaçlanan ölçümler,, veya ile sonlanmış `micro` `macro` `weighted` . Örnekler,,, `average_precision_score` `f1_score` ve içerir `precision_score` `recall_score` `AUC` .
 
 Örneğin, geri çekmeyi hesaplamak yerine `tp / (tp + fn)` , `micro` `macro` `weighted` bir ikili sınıflandırma veri kümesinin her iki sınıfının birden çok Lass ortalaması (, veya) ortalamaları. Bu, sınıf için geri çekmenin hesaplanmasının ve `true` `false` sonra ikisinin ortalamasını alan eşdeğerdir.
 
@@ -209,7 +209,7 @@ Tüm sınıflandırma sorunları için, belirli bir tahmine dayalı modelde mikr
 
 ## <a name="regression-performance-metrics"></a>Gerileme performans ölçümleri
 
-Aşağıdaki tabloda, denemenize yönelik olarak oluşturulan her gerileme veya tahmin modeli için, tabun hesapladığı model performans ölçümleri özetlenmektedir. 
+Aşağıdaki tabloda, denemenize yönelik olarak oluşturulan her gerileme veya tahmin modeli için otomatikleştirilmiş ML 'nin hesapladığı model performans ölçümleri özetlenmektedir. 
 
 |Ölçüm|Açıklama|Hesaplama|Ek parametreler
 --|--|--|--|

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: 3ea8e944a004dc89dadc74e4ab2e3e4b295b3a9b
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 6de06e4ab9a302517a09b34de56c1b5535b245a9
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900243"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357819"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -29,6 +29,37 @@ Güvenlik Merkezi 'ne yakında çıkacak *planlı* değişiklikler hakkında bil
 
 > [!TIP]
 > Altı aydan eski olan öğeleri arıyorsanız, [Azure Güvenlik Merkezi 'ndeki yenilikler Için arşivde](release-notes-archive.md)bulabilirsiniz.
+
+
+## <a name="november-2020"></a>2020 Kasım
+
+### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>Azure Güvenlik kıyaslamasının kapsamını artırmak için 29 önizleme önerileri eklenmiştir
+
+Azure Güvenlik kıyaslaması, yaygın uyumluluk çerçevelerine göre güvenlik ve uyum en iyi uygulamaları için Microsoft tarafından yazılan, Azure 'a özgü bir dizi kılavuzlardır. [Azure Güvenlik Karşılaştırması hakkında daha fazla bilgi edinin](../security/benchmarks/introduction.md).
+
+Bu kıyaslama kapsamını artırmak için Güvenlik Merkezi 'ne aşağıdaki 29 önizleme önerileri eklenmiştir.
+
+Önizleme önerileri bir kaynağı sağlıksız bir şekilde işlemez ve güvenli puanınızın hesaplamalarına dahil değildir. Önizleme dönemi sona erdiğinde puanınızın altına katkıda bulunmak için bunları mümkün olduğunda düzeltin. [Azure Güvenlik Merkezi 'ndeki önerileri düzeltin](security-center-remediate-recommendations.md)bölümünde bu önerilere yanıt verme hakkında daha fazla bilgi edinin.
+
+| Güvenlik denetimi                     | Yeni öneriler                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Yoldaki verileri şifreleme              | -PostgreSQL veritabanı sunucuları için SSL bağlantısını zorla etkinleştirilmelidir<br>-MySQL veritabanı sunucuları için SSL bağlantısını zorla etkinleştirilmelidir<br>-TLS API uygulamanız için en son sürüme güncelleştirilmeleri gerekir<br>-TLS, işlev uygulamanız için en son sürüme güncelleştirilmeleri gerekir<br>-TLS, Web uygulamanız için en son sürüme güncelleştirilmeleri gerekir<br>-FTPS API uygulamanızda gerekli olmalıdır<br>-FTPS, işlev uygulamanızda gerekli olmalıdır<br>-FTPS Web uygulamanızda gerekli olmalıdır                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Erişimi ve izinleri yönetme        | -Web uygulamaları tüm gelen istekler için bir SSL sertifikası istemelidir<br>-Yönetilen kimlik API uygulamanızda kullanılmalıdır<br>-Yönetilen kimlik, işlev uygulamanızda kullanılmalıdır<br>-Yönetilen kimliğin Web uygulamanızda kullanılması gerekir                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Yetkisiz ağ erişimini kısıtla | -PostgreSQL sunucuları için özel uç noktanın etkinleştirilmesi gerekir<br>-Özel uç noktanın MariaDB sunucuları için etkinleştirilmesi gerekir<br>-MySQL sunucuları için özel uç noktanın etkinleştirilmesi gerekir                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| Denetim ve günlüğe kaydetmeyi etkinleştirme          | -Uygulama hizmetlerindeki tanılama günlükleri etkinleştirilmelidir                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| En iyi güvenlik uygulamalarını uygulayın    | -Azure Backup sanal makineler için etkinleştirilmelidir<br>-Coğrafi olarak yedekli yedekleme, MariaDB için Azure veritabanı 'nda etkinleştirilmelidir<br>-MySQL için Azure veritabanı için coğrafi olarak yedekli yedeklemenin etkinleştirilmesi gerekir<br>-PostgreSQL için Azure veritabanı için coğrafi olarak yedekli yedeklemenin etkinleştirilmesi gerekir<br>-PHP, API uygulamanız için en son sürüme güncelleştirilmeleri gerekir<br>-PHP, Web uygulamanız için en son sürüme güncelleştirilmeleri gerekir<br>-Java, API uygulamanız için en son sürüme güncelleştirilmeleri gerekir<br>-Java, işlev uygulamanız için en son sürüme güncelleştirilmeleri gerekir<br>-Java, Web uygulamanız için en son sürüme güncelleştirilmeleri gerekir<br>-Python, API uygulamanız için en son sürüme güncelleştirilmeleri gerekir<br>-Python, işlev uygulamanız için en son sürüme güncelleştirilmeleri gerekir<br>-Python, Web uygulamanız için en son sürüme güncelleştirilmeleri gerekir<br>-SQL Server 'lar için denetim bekletme en az 90 gün olarak ayarlanmalıdır |
+|                                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+
+İlgili bağlantılar:
+
+- [Azure Güvenlik kıyaslaması hakkında daha fazla bilgi](../security/benchmarks/introduction.md)
+- [Azure API Apps hakkında daha fazla bilgi](../app-service/app-service-web-tutorial-rest-api.md)
+- [Azure işlev uygulamaları hakkında daha fazla bilgi edinin](../azure-functions/functions-overview.md)
+- [Azure Web Apps hakkında daha fazla bilgi](../app-service/overview.md)
+- [MariaDB için Azure veritabanı hakkında daha fazla bilgi edinin](../mariadb/overview.md)
+- [MySQL için Azure veritabanı hakkında daha fazla bilgi edinin](../mysql/overview.md)
+- [PostgreSQL için Azure veritabanı hakkında daha fazla bilgi edinin](../postgresql/overview.md)
+
 
 
 
@@ -98,7 +129,33 @@ Azure Güvenlik Merkezi için bağımsız değişken ve [kusto sorgu dili (KQL)]
 
 Bağımsız değişken dahilinde sorgularda kullanabileceğiniz veri tabloları vardır.
 
-:::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="Yetkili IP aralıkları hızlı düzelme seçeneği ile Kubernetes Hizmetleri önerisi üzerinde tanımlanmalıdır"
+:::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="Azure Kaynak Grafiği Gezgini ve kullanılabilir tablolar":::
+
+> [!TIP]
+> ARG belgesi, [Azure Kaynak Grafiği tablosu ve kaynak türü başvurusu](../governance/resource-graph/reference/supported-tables-resources.md)'ndaki tüm kullanılabilir tabloları listeler.
+
+Bu güncelleştirmeden, **Microsoft. Security/Securitydurumlarının** tablosu kaldırılmıştır. Securitydurumlarının API 'SI hala kullanılabilir.
+
+Veri değiştirme, Microsoft. Security/değerlendirmeleri tablosu tarafından kullanılabilir.
+
+Microsoft. Security/Securitydurumlardan ve Microsoft. Security/değerlendirmeleri arasındaki önemli fark, ilki değerlendirmelerin toplanmasının, saniyenin her biri için tek bir kayıt tuttuğunda olduğu sürece.
+
+Örneğin, Microsoft. Security/Securitydurumlar, iki Polimanlar dizisiyle bir sonuç döndürür:
+
+```
+{
+id: "/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet",
+name: "mico-rg-vnet",
+type: "Microsoft.Security/securityStatuses",
+properties:  {
+    policyAssessments: [
+        {assessmentKey: "e3deicce-f4dd-3b34-e496-8b5381bazd7e", category: "Networking", policyName: "Azure DDOS Protection Standard should be enabled",...},
+        {assessmentKey: "sefac66a-1ec5-b063-a824-eb28671dc527", category: "Compute", policyName: "",...}
+    ],
+    securitystateByCategory: [{category: "Networking", securityState: "None" }, {category: "Compute",...],
+    name: "GenericResourceHealthProperties",
+    type: "VirtualNetwork",
+    securitystate: "High"
 }
 ```
 Ancak, Microsoft. Security/değerlendirmeleri, bu tür bir ilke değerlendirmesi için aşağıdaki gibi bir kayıt tutacaktır:
@@ -298,7 +355,7 @@ Güvenlik Merkezi 'nin tümleşik güvenlik açığı değerlendirme araçları,
 
 Öneriler ' i seçip **güvenlik bulgularını dahil et** seçeneğini etkinleştirdiğinizde, güvenlik bulguları sürekli dışarı aktarma aracılığıyla dışarı aktarmaya hazırdır.
 
-:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Yetkili IP aralıkları hızlı düzelme seçeneği ile Kubernetes Hizmetleri önerisi üzerinde tanımlanmalıdır" :::
+:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Sürekli dışa aktarma yapılandırmasında güvenlik bulgularını dahil et" :::
 
 İlgili sayfalar:
 
@@ -363,7 +420,7 @@ Ayrıca, **Önizleme** önerileri bir kaynağı "sağlıksız" olarak işlemez.
 
 Önizleme önerisi örneği:
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Yetkili IP aralıkları hızlı düzelme seçeneği ile Kubernetes Hizmetleri önerisi üzerinde tanımlanmalıdır":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Önizleme bayrağıyla ilgili öneri":::
 
 [Güvenli skor hakkında daha fazla bilgi edinin](secure-score-security-controls.md).
 
@@ -372,7 +429,7 @@ Ayrıca, **Önizleme** önerileri bir kaynağı "sağlıksız" olarak işlemez.
 
 Önerilerin ayrıntılar sayfasında artık bir yeniliği aralığı göstergesi (her ne zaman geçerlidir) ve önerinin önem derecesine ilişkin net bir ekran görüntülenir.
 
-:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="Yetkili IP aralıkları hızlı düzelme seçeneği ile Kubernetes Hizmetleri önerisi üzerinde tanımlanmalıdır":::
+:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="Yeniliği ve önem derecesini gösteren öneri sayfası":::
 
 
 
@@ -688,7 +745,7 @@ Otomasyon yapılandırmalarınızı kuruluşunuz genelinde dağıtmak için bu y
 
 - **İnternet 'e yönelik olmayan sanal makineler ağ güvenlik gruplarıyla korunmalıdır**
 
-İnternet 'e yönelik sanal makineler, internet 'e yönelik ve internet 'e yönelik olmayan VM 'Ler arasında ayrım yapmadığından, var olan bir önerinin **ağ güvenlik gruplarıyla korunması gerekir** . Her iki için de bir VM bir ağ güvenlik grubuna atanmamışsa yüksek öneme sahip bir öneri oluşturulmuştur. Bu yeni öneri, internet 'e yönelik olmayan makineleri, yanlış pozitif sonuçları azaltmak ve gereksiz yüksek önem derecesine karşı önlemek için ayırır.
+İnternet 'e yönelik sanal makineler, internet 'e yönelik ve internet 'e yönelik olmayan VM 'Ler arasında ayrım yapmadığından, var olan bir önerinin **ağ güvenlik gruplarıyla korunması gerekir**. Her iki için de bir VM bir ağ güvenlik grubuna atanmamışsa yüksek öneme sahip bir öneri oluşturulmuştur. Bu yeni öneri, internet 'e yönelik olmayan makineleri, yanlış pozitif sonuçları azaltmak ve gereksiz yüksek önem derecesine karşı önlemek için ayırır.
 
 [Ağ önerileri](recommendations-reference.md#recs-network) tablosunda daha fazla bilgi edinin.
 
@@ -715,137 +772,3 @@ Aşağıdaki yeni ilkeler ASC varsayılan girişimine eklenmiştir ve ilgili kay
 |                                                                                                                                                                                                                                                                       |                                      |
 
 [Azure Güvenlik Merkezi 'Nde tehdit koruması](azure-defender.md)hakkında daha fazla bilgi edinin.
-
-
-
-
-
-## <a name="may-2020"></a>Mayıs 2020
-
-İçindeki güncelleştirmeler şunlar olabilir:
-- [Uyarı gizleme kuralları (Önizleme)](#alert-suppression-rules-preview)
-- [Sanal makine güvenlik açığı değerlendirmesi genel kullanıma sunuldu](#virtual-machine-vulnerability-assessment-is-now-generally-available)
-- [Tam zamanında (JıT) sanal makine (VM) erişiminde yapılan değişiklikler](#changes-to-just-in-time-jit-virtual-machine-vm-access)
-- [Özel öneriler ayrı bir güvenlik denetimine taşındı](#custom-recommendations-have-been-moved-to-a-separate-security-control)
-- [Denetimlere veya düz liste olarak önerilere bakmak için eklenen değiştirme](#toggle-added-to-view-recommendations-in-controls-or-as-a-flat-list)
-- [Genişletilmiş Güvenlik denetimi "en iyi güvenlik uygulamalarını uygulayın"](#expanded-security-control-implement-security-best-practices)
-- [Özel meta verileri olan özel ilkeler artık genel kullanıma sunuldu](#custom-policies-with-custom-metadata-are-now-generally-available)
-- [Kilitlenme bilgi döküm çözümleme özellikleri, dosya daha az saldırı algılamasına geçiriliyor](#crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection)
-
-
-### <a name="alert-suppression-rules-preview"></a>Uyarı gizleme kuralları (Önizleme)
-
-Bu yeni Özellik (Şu anda önizlemede), uyarı fatıg azaltmaya yardımcı olur. Zararsız olarak bilinen veya kuruluşunuzdaki normal etkinliklerle ilgili olan uyarıları otomatik olarak gizlemek için kuralları kullanın. Bu, en ilgili tehditlere odaklanmanızı sağlar. 
-
-Etkin gizleme kuralları ile eşleşen uyarılar üretilmeye devam eder, ancak durumları kapatıldı olarak ayarlanır. Durumu Azure portal görebilirsiniz, ancak Güvenlik Merkezi güvenlik uyarılarınıza erişebilirsiniz.
-
-Gizleme kuralları, uyarıların otomatik olarak hangi ölçütlere göre kapatılacağını tanımlar. Genellikle bir gizleme kuralı kullanarak şunları yapabilirsiniz:
-
-- yanlış pozitif sonuçlar olarak belirlediğiniz uyarıları gösterme
-
-- çok sık tetiklenen uyarıları, faydalı olması için gösterme
-
-[Azure Güvenlik Merkezi 'nin tehdit korumasından gelen uyarıları gizleme](alerts-suppression-rules.md)hakkında daha fazla bilgi edinin.
-
-
-### <a name="virtual-machine-vulnerability-assessment-is-now-generally-available"></a>Sanal makine güvenlik açığı değerlendirmesi genel kullanıma sunuldu
-
-Güvenlik Merkezi 'nin standart katmanı artık, ek ücret ödemeden sanal makinelere yönelik tümleşik bir güvenlik açığı değerlendirmesi içerir. Bu uzantı Qualys tarafından desteklenmektedir ancak bulgularını doğrudan güvenlik merkezi 'ne geri bildirir. Bir Qualys lisansına veya hatta bir Qualys hesabına ihtiyacınız yoktur. her şey güvenlik merkezi 'nin içinde sorunsuz bir şekilde işlenir.
-
-Yeni çözüm Güvenlik Merkezi 'nde güvenlik açıklarını bulmak ve bulguları sunmak için sanal makinelerinizi sürekli tarayabilir. 
-
-Çözümü dağıtmak için yeni güvenlik önerisini kullanın:
-
-"Yerleşik güvenlik açığı değerlendirme çözümünü sanal makinelerde etkinleştir (Qualys tarafından desteklenir)"
-
-[Güvenlik Merkezi 'nin sanal makineler için tümleşik güvenlik açığı değerlendirmesi](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)hakkında daha fazla bilgi edinin.
-
-
-
-### <a name="changes-to-just-in-time-jit-virtual-machine-vm-access"></a>Tam zamanında (JıT) sanal makine (VM) erişiminde yapılan değişiklikler
-
-Güvenlik Merkezi, sanal makinelerinizin yönetim bağlantı noktalarını korumak için isteğe bağlı bir özellik içerir. Bu, deneme yanılma saldırılarına karşı en yaygın bir savunma biçimine karşı savunma sağlar.
-
-Bu güncelleştirme, bu özelliğe aşağıdaki değişiklikleri getirir:
-
-- Bir VM üzerinde JıT 'i etkinleştirmenizi öneren öneri yeniden adlandırıldı. Eskiden, "tam zamanında ağ erişim denetimi sanal makinelere uygulanmalıdır": "sanal makinelerin yönetim bağlantı noktaları tam zamanında ağ erişim denetimiyle korunmalıdır".
-
-- Öneri yalnızca açık yönetim bağlantı noktaları varsa tetiklenir.
-
-[JIT erişim özelliği](security-center-just-in-time.md)hakkında daha fazla bilgi edinin.
-
-
-### <a name="custom-recommendations-have-been-moved-to-a-separate-security-control"></a>Özel öneriler ayrı bir güvenlik denetimine taşındı
-
-Gelişmiş güvenli puanla sunulan bir güvenlik denetimi "en iyi güvenlik uygulamalarını uygulama" idi. Abonelikleriniz için oluşturulan tüm özel öneriler otomatik olarak bu denetime yerleştirildi. 
-
-Özel önerilerinizi bulmayı kolaylaştırmak için, bunları "özel öneriler" olarak ayrılmış bir güvenlik denetimine taşıdık. Bu denetim, güvenli puanınızı etkilemez.
-
-[Azure Güvenlik Merkezi 'Nde gelişmiş güvenli skor (Önizleme)](secure-score-security-controls.md)bölümünde güvenlik denetimleri hakkında daha fazla bilgi edinin.
-
-
-### <a name="toggle-added-to-view-recommendations-in-controls-or-as-a-flat-list"></a>Denetimlere veya düz liste olarak önerilere bakmak için eklenen değiştirme
-
-Güvenlik denetimleri, ilgili güvenlik önerilerinin mantıksal gruplarıdır. Bunlar, savunmasız saldırı yüzeylerinizi yansıtır. Denetim, bu önerileri uygulamanıza yardımcı olan yönergelerden oluşan bir güvenlik önerileri kümesidir.
-
-Kuruluşunuzun her bir saldırı yüzeyini ne kadar iyi güvenlik altına almak için her güvenlik denetiminin puanlarını gözden geçirin.
-
-Varsayılan olarak, önerileriniz güvenlik denetimlerinde gösterilmiştir. Bu güncelleştirmeden, bunları bir liste olarak da görüntüleyebilirsiniz. Etkilenen kaynakların sistem durumuna göre sıralanmış basit liste olarak görüntülemek için, yeni ' denetimleri grupla ' seçeneğini kullanın. Geçiş, portaldaki listenin üzerinde bulunur.
-
-Güvenlik denetimleri ve bu geçiş, yeni güvenli puan deneyiminin bir parçasıdır. Portalın içinden görüşlerinizi bize göndermeyi unutmayın.
-
-[Azure Güvenlik Merkezi 'Nde gelişmiş güvenli skor (Önizleme)](secure-score-security-controls.md)bölümünde güvenlik denetimleri hakkında daha fazla bilgi edinin.
-
-:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="Yetkili IP aralıkları hızlı düzelme seçeneği ile Kubernetes Hizmetleri önerisi üzerinde tanımlanmalıdır":::
-
-### <a name="expanded-security-control-implement-security-best-practices"></a>Genişletilmiş Güvenlik denetimi "en iyi güvenlik uygulamalarını uygulayın" 
-
-Gelişmiş güvenli puanla sunulan bir güvenlik denetimi "en iyi güvenlik uygulamalarını uygulama" dır. Bu denetimde bir öneri olduğunda, güvenli puanı etkilemez. 
-
-Bu güncelleştirmeyle, üç öneri özgün olarak yerleştirildiği denetimlerden ve bu en iyi yöntemler denetimine taşınmıştır. Bu üç önerinin riskini başlangıçta düşündükten daha düşük olduğunu belirlediğimiz için bu adımı aldık.
-
-Ayrıca, bu denetime iki yeni öneri eklenmiştir ve eklendi.
-
-Taşınan üç öneri şunlardır:
-
-- **MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir** (BAŞLANGıÇTA "MFA 'yı etkinleştir" denetiminde)
-- **Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir** (başlangıçta "erişim ve izinleri yönetme" denetiminde)
-- **Aboneliğiniz için en fazla 3 sahip** belirtilmelidir (başlangıçta "erişim ve izinleri yönetme" denetiminde)
-
-Denetime eklenen iki yeni öneri şunlardır:
-
-- **Konuk yapılandırma uzantısının Windows sanal makinelerinde (Önizleme) yüklü olması gerekir** . [Azure ilkesi Konuk yapılandırması](../governance/policy/concepts/guest-configuration.md) kullanarak, sanal makinelerin içinde sunucu ve uygulama ayarlarına (yalnızca Windows) yönelik görünürlük sağlar.
-
-- **Makinelerinizde Windows Defender Exploit Guard etkinleştirilmelidir (Önizleme)** -Windows Defender Exploit Guard, Azure Ilke Konuk yapılandırma aracısından yararlanır. Exploit Guard, kuruluşların güvenlik riskini ve üretkenlik gereksinimlerini (yalnızca Windows) dengeleyebilmesini sağlarken, cihazları birçok farklı saldırı vektörü ve çok sayıda kötü amaçlı yazılım saldırılarında yaygın olarak kullanılan blok davranışlarına karşı kilitlemek için tasarlanan dört bileşene sahiptir.
-
-[Exploit Guard Ilkesi oluşturma ve dağıtma](/mem/configmgr/protect/deploy-use/create-deploy-exploit-guard-policy)bölümünde Windows Defender Exploit Guard hakkında daha fazla bilgi edinin.
-
-[Gelişmiş güvenli skor (Önizleme)](secure-score-security-controls.md)bölümünde güvenlik denetimleri hakkında daha fazla bilgi edinin.
-
-
-
-### <a name="custom-policies-with-custom-metadata-are-now-generally-available"></a>Özel meta verileri olan özel ilkeler artık genel kullanıma sunuldu
-
-Özel ilkeler artık Güvenlik Merkezi öneri deneyiminin, güvenli puanın ve mevzuat uyumluluk standartları panosunun bir parçasıdır. Bu özellik genel kullanıma sunulmuştur ve kuruluşunuzun güvenlik değerlendirmesi kapsamını güvenlik merkezi 'nde genişletmenizi sağlar. 
-
-Azure ilkesinde özel bir girişim oluşturun, buna ilke ekleyin ve Azure Güvenlik Merkezi 'ne ekleyin ve öneriler olarak görselleştirin.
-
-Artık özel öneri meta verilerini düzenleme seçeneğini de ekledik. Meta veri seçenekleri önem derecesi, düzeltme adımları, tehdit bilgileri ve daha fazlasını içerir.  
-
-[Ayrıntılı bilgilerle özel önerilerinizi geliştirme](custom-security-policies.md#enhance-your-custom-recommendations-with-detailed-information)hakkında daha fazla bilgi edinin.
-
-
-
-### <a name="crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection"></a>Kilitlenme bilgi döküm çözümleme özellikleri, dosya daha az saldırı algılamasına geçiriliyor 
-
-Windows kilitlenme dökümü Analizi (CDA) algılama yeteneklerini [dosya daha az saldırı algılamasında](defender-for-servers-introduction.md#what-are-the-benefits-of-azure-defender-for-servers)tümleştireceğiz. Dosya daha az saldırı algılama analizi, Windows makineleri için aşağıdaki güvenlik uyarılarının gelişmiş sürümlerini getirir: kod ekleme keşfedilen, kendini gizleyen Windows modülü algılanan, shellcode keşfedilen ve şüpheli kod segmenti tespit etti.
-
-Bu geçişin avantajlarından bazıları:
-
-- **Proaktif ve zamanında kötü amaçlı yazılım algılama** -bir kilitlenme oluşması ve sonra kötü amaçlı yapıtları bulmak için analiz çalıştırma gibi CDA yaklaşım. Dosya kullanmayan saldırı algılama özelliğinin kullanılması, çalışırken bellek içi tehditlere yönelik proaktif kimlik tanımlamayı sağlar. 
-
-- **Zenginleştirilmiş uyarılar** -dosya daha az saldırı algılamasında bulunan güvenlik uyarıları,, etkin ağ bağlantısı bilgileri gıbı, CDA ' den kullanılamayan zenginler içerir. 
-
-- **Uyarı toplama** -CDA, tek çökme dökümü içinde birden çok saldırı deseni algıladığında birden çok güvenlik uyarısı tetikledi. Dosya Less saldırı algılaması, aynı işlemden alınan tüm saldırı düzenlerini tek bir uyarıya birleştirerek birden çok uyarıyı ilişkilendirme gereksinimini ortadan kaldırır.
-
-- **Log Analytics çalışma alanınızda daha az gereksinim** vardır; potansiyel olarak hassas veriler içeren kilitlenme dökümleri artık Log Analytics çalışma alanınıza yüklenmeyecektir.

@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 47cface4efbf38f2cec630745d498db674c936d3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4b3256591c0aa2536fd42bcdbb2ef339fc1d5c48
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791962"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356816"
 ---
 # <a name="how-to-use-azuresearchdocuments-in-a-c-net-application"></a>C# .NET uygulamasında Azure.Search.Documtaları kullanma
 
@@ -60,7 +60,7 @@ Azure.Search.Docmestalar (sürüm 11) [ `2020-06-30` Azure bilişsel arama REST 
 
 ## <a name="example-application"></a>Örnek uygulama
 
-Bu makalede, Azure Bilişsel Arama temel kavramları (özellikle, bir arama dizini oluşturma, yükleme ve sorgulama) göstermek için GitHub 'daki [Dotnethowto](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo/v11) Code örneğine bağlı olarak "örnek olarak öğretilir" makalesi.
+Bu makalede, Azure Bilişsel Arama temel kavramları (özellikle, bir arama dizini oluşturma, yükleme ve sorgulama) göstermek için GitHub 'daki [Dotnethowto](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) Code örneğine bağlı olarak "örnek olarak öğretilir" makalesi.
 
 Bu makalenin geri kalanında, sonuçlarda eşleşen birkaç sorguyla birlikte birkaç belgeyle doldurulmuş "oteller" adlı yeni bir dizin olduğunu varsayalım.
 

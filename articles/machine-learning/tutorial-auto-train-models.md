@@ -1,7 +1,7 @@
 ---
 title: 'Regresyon öğreticisi: otomatik ML'
 titleSuffix: Azure Machine Learning
-description: Bu öğreticide, otomatik makine öğrenimi kullanarak makine öğrenimi modeli oluşturmayı öğreneceksiniz. Azure Machine Learning, veri ön işleme, algoritma seçimi ve hiper parametre seçimini sizin için otomatik bir şekilde gerçekleştirebilir.
+description: Sağladığınız eğitim verilerine ve yapılandırma ayarlarına bağlı olarak sizin için bir regresyon modeli üreten otomatik bir Machine Learning denemesi oluşturun.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: aniththa
 ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
-ms.custom: devx-track-python
-ms.openlocfilehash: 731c6c743b103111a699074e10d8ba43a353d8e6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: devx-track-python, automl
+ms.openlocfilehash: 811f1c27af660d388ecb875741c073591bd25f7f
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317986"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358618"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Öğretici: Taksi ücretlerini tahmin etmek için otomatik makine öğrenmesini kullanma
 

@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 88f1c88e721419bf944207b9c748b9250a25f428
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: aa4be5852b4f8af00346a3ea9a86b13a85f99824
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348075"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358466"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Azure Logic Apps’te iş akışı eylemlerini veya işlem dizilerini tekrarlayacak döngüler oluşturma
 
 Mantıksal uygulamanızdaki bir diziyi işlemek için ["foreach" döngüsü](#foreach-loop)oluşturabilirsiniz. Bu döngü dizideki her öğe için bir veya daha fazla eylemi yineler. Bir "foreach" döngüsünün işleyeme işleminde dizi öğe sayısı sınırı için bkz. [eşzamanlılık, döngü ve toplu işleme sınırları](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
 
-Bir koşul karşılanana veya bir durum değişikliği yapılıncaya kadar eylemleri yinelemek için, ["Until" döngüsünü](#until-loop)oluşturabilirsiniz. Mantıksal uygulamanız öncelikle döngü içindeki tüm eylemleri çalıştırır ve ardından koşulu veya durumu denetler. Koşul karşılanıyorsa, döngü duraklar. Aksi takdirde döngü yinelenir. Mantıksal uygulama çalıştırabileceğine "Until" döngülerinin sayısı sınırı için bkz. [eşzamanlılık, döngü ve toplu işleme sınırları](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
+Bir koşul karşılanana veya bir durum değişikliği yapılıncaya kadar eylemleri yinelemek için, ["Until" döngüsünü](#until-loop)oluşturabilirsiniz. Mantıksal uygulamanız öncelikle döngü içindeki tüm eylemleri çalıştırır ve ardından koşulu veya durumu denetler. Koşul karşılanıyorsa, döngü duraklar. Aksi takdirde döngü yinelenir. Mantıksal uygulama çalıştırabileceğine yönelik "Until" döngülerinin sahip olduğu varsayılan ve en yüksek sınırlar için bkz. [eşzamanlılık, döngü ve toplu işleme sınırları](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
 
 > [!TIP]
 > Bir diziyi alan ve her dizi öğesi için bir iş akışı çalıştırmak istediğiniz bir Tetikleyiciniz varsa, bu diziyi [ **spton** tetikleyici özelliğiyle](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) *toplu* olarak silebilirsiniz.
@@ -152,7 +152,7 @@ Mantıksal uygulamanızın JSON tanımıyla çalışıyorsanız, `Sequential` pa
 
 ## <a name="until-loop"></a>"Until" döngüsü
   
-Bir koşul karşılanıncaya veya bir durum değişene kadar eylemleri çalıştırmak ve yinelemek için, bu eylemleri bir "Until" döngüsüne koyun. Mantıksal uygulamanız ilk olarak döngü içindeki tüm eylemleri çalıştırır ve ardından koşulu veya durumu denetler. Koşul karşılanıyorsa, döngü duraklar. Aksi takdirde döngü yinelenir. Mantıksal uygulama çalıştırabileceğine "Until" döngülerinin sayısı sınırı için bkz. [eşzamanlılık, döngü ve toplu işleme sınırları](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
+Bir koşul karşılanıncaya veya bir durum değişene kadar eylemleri çalıştırmak ve yinelemek için, bu eylemleri bir "Until" döngüsüne koyun. Mantıksal uygulamanız ilk olarak döngü içindeki tüm eylemleri çalıştırır ve ardından koşulu veya durumu denetler. Koşul karşılanıyorsa, döngü duraklar. Aksi takdirde döngü yinelenir. Mantıksal uygulama çalıştırabileceğine yönelik "Until" döngülerinin sahip olduğu varsayılan ve en yüksek sınırlar için bkz. [eşzamanlılık, döngü ve toplu işleme sınırları](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
 
 "Until" döngüsünü kullanabileceğiniz bazı yaygın senaryolar aşağıda verilmiştir:
 
@@ -245,17 +245,19 @@ Her gün 8:00 ' den itibaren bu örnek mantıksal uygulama, değişkenin değeri
 
       ![Alınan e-posta](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
 
+<a name="prevent-endless-loops"></a>
+
 ## <a name="prevent-endless-loops"></a>Sonsuz döngüleri engelle
 
-"Until" döngüsünün, bu koşullardan biri gerçekleşiyorsa yürütmeyi durduran varsayılan limitleri vardır:
+"Until" döngüsü, bu özelliklere göre yürütmeyi durdurduğundan, değerlerini uygun şekilde ayarladığınızdan emin olun:
 
-| Özellik | Varsayılan değer | Açıklama | 
-| -------- | ------------- | ----------- | 
-| **Biriktirme** | 60 | Döngüden önce çalışan en yüksek döngü sayısı. Varsayılan değer 60 döngüdir. | 
-| **Aş** | PT1H | Döngünün çıkış yapmadan önce bir döngü çalıştırmak için en fazla süre. Varsayılan değer bir saattir ve ISO 8601 biçiminde belirtilir. <p>Zaman aşımı değeri her döngü döngüsü için değerlendirilir. Döngüdeki herhangi bir eylem zaman aşımı sınırından daha uzun sürerse, geçerli döngü durdurulmaz. Ancak, bir sonraki döngüde, sınır koşulu karşılanmadığı için başlamaz. | 
-|||| 
+* **Sayı** : Bu değer, döngüden geçmeden önce çalıştırılan en yüksek döngü sayısıdır. Mantıksal uygulama çalıştırabileceğine yönelik "Until" döngülerinin sahip olduğu varsayılan ve en yüksek sınırlar için bkz. [eşzamanlılık, döngü ve toplu işleme sınırları](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
 
-Bu varsayılan sınırları değiştirmek için döngü eylemi şeklinin **Gelişmiş seçeneklerini göster** ' i seçin.
+* **Zaman aşımı** : Bu değer, çıkmadan önce döngünün çalıştığı ve [ISO 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601)belirtilen en büyük süredir. **Zaman aşımı** değeri için varsayılan ve en büyük sınırlar için bkz. [eşzamanlılık, döngü ve toplu işleme sınırları](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
+
+  Zaman aşımı değeri her döngü döngüsü için değerlendirilir. Döngüdeki herhangi bir eylem zaman aşımı sınırından daha uzun sürerse, geçerli döngü durdurulmaz. Ancak, bir sonraki döngüde, sınır koşulu karşılanmadığı için başlamaz.
+
+Bu sınırları değiştirmek için, döngü eyleminde **sınırları Değiştir** ' i seçin.
 
 <a name="until-json"></a>
 

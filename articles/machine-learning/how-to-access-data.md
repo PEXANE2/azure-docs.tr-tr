@@ -1,5 +1,5 @@
 ---
-title: Azure depolama hizmetlerine bağlanma
+title: Azure 'da Storage Services 'a bağlanma
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning ile eğitim sırasında Azure depolama hizmetlerine güvenli bir şekilde bağlanmak için veri depolarını nasıl kullanacağınızı öğrenin
 services: machine-learning
@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
-ms.date: 07/22/2020
-ms.custom: how-to, contperfq1, devx-track-python
-ms.openlocfilehash: db641eee13350f5a774e4ffd138e38c474af4981
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/03/2020
+ms.custom: how-to, contperfq1, devx-track-python, data4ml
+ms.openlocfilehash: f60d864bd367b5f44869abc9ccac4e4cc266075a
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320864"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358108"
 ---
-# <a name="connect-to-azure-storage-services"></a>Azure depolama hizmetlerine bağlanma
+# <a name="connect-to-storage-services-azure"></a>Depolama Hizmetleri Azure 'a bağlanma
 
-Bu makalede, **Azure Machine Learning veri depoları aracılığıyla Azure Storage Services 'a nasıl bağlanacağınızı** öğrenin. Veri depoları, kimlik doğrulama kimlik bilgilerinizi ve risk altındaki özgün veri kaynağınızın bütünlüğünü yapmadan Azure Storage hizmetinize güvenli bir şekilde bağlanır. Bu kişiler, çalışma alanıyla ilişkili [Key Vault](https://azure.microsoft.com/services/key-vault/) abonelik kimliğiniz ve belirteç yetkilendirmesi gibi bağlantı bilgilerini depolar, böylece depolama alanınıza güvenli bir şekilde kod yazmanız gerekmeden depolamaya güvenle erişebilirsiniz. Veri depoları oluşturmak ve kaydettirmek için [Azure Machine Learning Python SDK 'sını](#python) veya [Azure Machine Learning Studio 'yu](how-to-connect-data-ui.md) kullanabilirsiniz.
+Bu makalede, **Azure 'da Azure Machine Learning veri depoları aracılığıyla depolama hizmetlerine nasıl bağlanacağınızı** öğrenin. Veri depoları, kimlik doğrulama kimlik bilgilerinizi ve risk altındaki özgün veri kaynağınızın bütünlüğünü yapmadan Azure Storage hizmetinize güvenli bir şekilde bağlanır. Bu kişiler, çalışma alanıyla ilişkili [Key Vault](https://azure.microsoft.com/services/key-vault/) abonelik kimliğiniz ve belirteç yetkilendirmesi gibi bağlantı bilgilerini depolar, böylece depolama alanınıza güvenli bir şekilde kod yazmanız gerekmeden depolamaya güvenle erişebilirsiniz. Veri depoları oluşturmak ve kaydettirmek için [Azure Machine Learning Python SDK 'sını](#python) veya [Azure Machine Learning Studio 'yu](how-to-connect-data-ui.md) kullanabilirsiniz.
 
 Azure Machine Learning VS Code uzantısını kullanarak veri depoları oluşturup yönetmeyi tercih ediyorsanız daha fazla bilgi edinmek için [vs Code kaynak yönetimi nasıl yapılır kılavuzunu](how-to-manage-resources-vscode.md#datastores) ziyaret edin.
 
@@ -109,11 +109,13 @@ Hesap anahtarını, SAS belirtecini ve hizmet sorumlusu bilgilerini [Azure Porta
     * Kendisine karşılık gelen **genel bakış** sayfası, Kiracı kimliği ve istemci kimliği gibi gerekli bilgileri içerir.
 
 > [!IMPORTANT]
-> Güvenlik nedenleriyle, bir Azure depolama hesabı (hesap anahtarı veya SAS belirteci) için erişim anahtarlarınızı değiştirmeniz gerekebilir. Bunu yaparken, yeni kimlik bilgilerini çalışma alanım ve ona bağlı veri depolarıyla eşitlediğinizden emin olun. [Güncelleştirilmiş kimlik bilgilerinizi eşitlemeyi](how-to-change-storage-access-key.md)öğrenin. 
-
+> * Bir Azure depolama hesabı (hesap anahtarı veya SAS belirteci) için erişim anahtarlarınızı değiştirmeniz gerekiyorsa, yeni kimlik bilgilerini çalışma alanım ve ona bağlı veri depolarıyla eşitlediğinizden emin olun. [Güncelleştirilmiş kimlik bilgilerinizi eşitlemeyi](how-to-change-storage-access-key.md)öğrenin. 
 ### <a name="permissions"></a>İzinler
 
-Azure Blob kapsayıcısı ve Azure Data Lake Gen 2 depolaması için, kimlik doğrulama kimlik bilgilerinizin **Depolama Blobu veri okuyucusu** erişimi olduğundan emin olun. [Depolama Blobu veri okuyucu](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)hakkında daha fazla bilgi edinin. Hesap SAS belirteci varsayılan olarak izin vermez. Veri okuma erişimi için kimlik doğrulama kimlik bilgileriniz, kapsayıcılar ve nesneler için en az liste ve okuma izinlerine sahip olmalıdır. Veri yazma erişimi için, yazma ve ekleme izinleri de gereklidir.
+Azure Blob kapsayıcısı ve Azure Data Lake Gen 2 depolaması için, kimlik doğrulama kimlik bilgilerinizin **Depolama Blobu veri okuyucusu** erişimi olduğundan emin olun. [Depolama Blobu veri okuyucu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)hakkında daha fazla bilgi edinin. Hesap SAS belirteci varsayılan olarak izin vermez. 
+* Veri **okuma erişimi** için kimlik doğrulama kimlik bilgileriniz, kapsayıcılar ve nesneler için en az liste ve okuma izinlerine sahip olmalıdır. 
+
+* Veri **yazma erişimi** için, yazma ve ekleme izinleri de gereklidir.
 
 <a name="python"></a>
 
@@ -130,6 +132,8 @@ Bu bölüm içinde, aşağıdaki depolama türleri için Python SDK 'Sı aracıl
  Desteklenen diğer depolama hizmetleri için veri depoları oluşturmak için, [ilgili `register_azure_*` Yöntemler için başvuru belgelerine](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=truemethods)bakın.
 
 Düşük kod deneyimini tercih ediyorsanız bkz. [Azure Machine Learning Studio ile verilere bağlanma](how-to-connect-data-ui.md).
+>[!IMPORTANT]
+> Aynı ada sahip bir veri deposunu silip yeniden kaydettirir ve başarısız olursa, çalışma alanınızın Azure Key Vault geçici silme etkin olmayabilir. Varsayılan olarak, çalışma alanınız tarafından oluşturulan Anahtar Kasası örneği için geçici silme etkindir, ancak var olan bir Anahtar Kasası kullandıysanız veya 2020 Ekim ' den önce oluşturulmuş bir çalışma alanına sahipseniz bu işlem etkinleştirilmemiş olabilir. Geçici silme özelliğini etkinleştirme hakkında daha fazla bilgi için bkz. [var olan bir Anahtar Kasası Için geçici silme özelliğini etkinleştirme]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault). "
 
 > [!NOTE]
 > Veri deposu adı yalnızca küçük harflerden, rakamlardan ve alt çizgilerden oluşmalıdır. 

@@ -6,18 +6,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
+ms.custom: how-to, devx-track-python, data4ml
 ms.author: iefedore
 author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 8f229c52b62c740c9d955f745a6922e59163b907
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: fe2f35708f6a148f8db9ef6fd0a598e19e746fbd
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348568"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358635"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>Veri alımı işlem hattı için DevOps
 
@@ -211,18 +211,18 @@ JSON dosyasındaki değerler, işlem hattı tanımında yapılandırılmış var
 
 Sürekli teslim süreci yapıtları alır ve ilk hedef ortama dağıtır. Bu, çözümün test çalıştırması yoluyla çalıştığından emin olmanızı sağlar. Başarılı olursa, sonraki ortama devam eder. 
 
-CD Azure işlem hattı, ortamları temsil eden birden çok aşamadan oluşur. Her aşama, aşağıdaki adımları gerçekleştiren [dağıtımlar](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) ve [işler](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops) içerir:
+CD Azure işlem hattı, ortamları temsil eden birden çok aşamadan oluşur. Her aşama, aşağıdaki adımları gerçekleştiren [dağıtımlar](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) ve [işler](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops&preserve-view=true) içerir:
 
 _ Azure Databricks çalışma alanına bir Python Not defteri dağıtma
 * Azure Data Factory işlem hattı dağıtma 
 * İşlem hattını çalıştırma
 * Veri alma sonucunu denetleme
 
-İşlem hattı aşamaları, dağıtım işleminin ortam zinciri aracılığıyla nasıl geliştikçe daha fazla denetim sağlayan [onaylar](/azure/devops/pipelines/process/approvals?tabs=check-pass&view=azure-devops) ve [kapıları](/azure/devops/pipelines/release/approvals/gates?view=azure-devops) ile yapılandırılabilir.
+İşlem hattı aşamaları, dağıtım işleminin ortam zinciri aracılığıyla nasıl geliştikçe daha fazla denetim sağlayan [onaylar](/azure/devops/pipelines/process/approvals?tabs=check-pass&view=azure-devops&preserve-view=true) ve [kapıları](/azure/devops/pipelines/release/approvals/gates?view=azure-devops&preserve-view=true) ile yapılandırılabilir.
 
 ### <a name="deploy-a-python-notebook"></a>Python Not defteri dağıtma
 
-Aşağıdaki kod parçacığı, bir Python Not defterini Databricks kümesine kopyalayan bir Azure işlem hattı [dağıtımını](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) tanımlar:
+Aşağıdaki kod parçacığı, bir Python Not defterini Databricks kümesine kopyalayan bir Azure işlem hattı [dağıtımını](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) tanımlar:
 
 ```yaml
 - stage: 'Deploy_to_QA'
@@ -258,7 +258,7 @@ Aşağıdaki kod parçacığı, bir Python Not defterini Databricks kümesine ko
               displayName: 'Deploy (copy) data processing notebook to the Databricks cluster'       
 ```            
 
-CI tarafından üretilen yapıtlar otomatik olarak dağıtım aracısına kopyalanır ve `$(Pipeline.Workspace)` klasöründe kullanılabilir. Bu durumda, dağıtım görevi `di-notebooks` Python Not defterini içeren yapıtı ifade eder. Bu [dağıtım](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) , Not defteri dosyalarını databricks çalışma alanına kopyalamak Için [Databricks Azure DevOps uzantısını](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks) kullanır.
+CI tarafından üretilen yapıtlar otomatik olarak dağıtım aracısına kopyalanır ve `$(Pipeline.Workspace)` klasöründe kullanılabilir. Bu durumda, dağıtım görevi `di-notebooks` Python Not defterini içeren yapıtı ifade eder. Bu [dağıtım](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) , Not defteri dosyalarını databricks çalışma alanına kopyalamak Için [Databricks Azure DevOps uzantısını](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks) kullanır.
 
 `Deploy_to_QA`Aşama, `devops-ds-qa-vg` Azure DevOps projesinde tanımlanan değişken grubuna yönelik bir başvuru içerir. Bu aşamadaki adımlar, bu değişken grubundaki değişkenlere (örneğin, `$(DATABRICKS_URL)` ve `$(DATABRICKS_TOKEN)` ) başvurur. Fikir bir sonraki aşamanın (örneğin, `Deploy_to_UAT` ) kendı uıın kapsamlı değişken grubunda tanımlanan aynı değişken adlarıyla çalışacağı bir fikirdir.
 
@@ -339,7 +339,7 @@ Tüm CI/CD Azure işlem hattı aşağıdaki aşamaları içerir: _ CI
     * Databricks + ADF 'ye dağıt
     * Tümleştirme testi
 
-Sahip olduğunuz hedef ortam sayısına eşit sayıda * **Deploy** _ aşaması içerir. Her _*_dağıtım_*_ aşaması paralel olarak çalışan iki [dağıtım](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) ve bir ortamda çözümü test etmek için dağıtımlardan sonra çalışan bir [iş](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops) içerir.
+Sahip olduğunuz hedef ortam sayısına eşit sayıda * **Deploy** _ aşaması içerir. Her _*_dağıtım_*_ aşaması paralel olarak çalışan iki [dağıtım](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) ve bir ortamda çözümü test etmek için dağıtımlardan sonra çalışan bir [iş](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops&preserve-view=true) içerir.
 
 İşlem hattının örnek bir uygulama aşağıdaki _*_YAML_*_ kod parçacığında toplanır:
 

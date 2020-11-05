@@ -5,14 +5,14 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
+ms.date: 11/04/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 7b26c88bcbd303f00dc6163dd0323b07cbb83dcf
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3ac90b79053e59047dbe64598688e77b9df059d1
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073834"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358720"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Azure Cosmos DB faturanızı anlama
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -103,11 +103,11 @@ Bir kapsayıcı için sağlanan aktarım hızını veya 9:30:100-K RU/sn ile 200
 
 * 720 saatlik bir ayda saat 300 için sağlanan aktarım hızı 120-K RU/sn ve kalan 420 saat için sağlanan aktarım hızı 155-K RU/sn ise aylık faturanız şu şekilde görünür: 300 x $9.60/saat + 420 x $12.40/saat = $2.880 + $5.208 = $8088/ay. 
 
-:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="Adanmış üretilen iş faturası örneği":::
+:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="Paylaşılan verimlilik faturası örneği":::
 
-## <a name="billing-examples-with-geo-replication-and-multi-region-writes"></a>Coğrafi çoğaltma ve çok bölgeli yazma işlemleri ile faturalandırma örnekleri  
+## <a name="billing-examples-with-geo-replication"></a>Coğrafi çoğaltma ile faturalandırma örnekleri  
 
-Dünyanın her yerindeki Azure bölgelerini Azure Cosmos veritabanı hesabınıza dilediğiniz zaman ekleyebilir/kaldırabilirsiniz. Çeşitli Azure Cosmos veritabanları ve kapsayıcıları için yapılandırdığınız aktarım hızı, Azure Cosmos veritabanı hesabınızla ilişkili Azure bölgelerinin her birine ayrılır. Azure Cosmos veritabanı hesabınızdaki (saat başına sağlanan) tüm veritabanları ve kapsayıcılar üzerinde yapılandırılan üretilen iş hacmi (RU/sn) toplamı T ise ve veritabanı hesabınızla ilişkili Azure bölgelerinin sayısı N ise, daha sonra, tek bir yazma bölgesi ile yapılandırılan Azure Cosmos veritabanı hesabınız (a) için verilen toplam sağlanan aktarım hızı T x N RU/sn 'ye eşittir ve (b) yazmaları işleme yeteneğine sahip tüm bölgeler sırasıyla T x (N + 1) RU/sn 'ye eşittir. Sağlanan aktarım hızı (tek yazma bölgesi) maliyetleri $0.008/saat başına 100 RU/sn ve birden çok yazılabilir bölge (çok bölgeli yazma yapılandırması) 100 maliyetleriyle sağlanan aktarım hızı (bkz. [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/)bakın). Tek bir yazma bölgesinin veya birden fazla yazma bölgesinin Azure Cosmos DB, herhangi bir bölgeden veri okumanızı sağlar.
+Dünyanın her yerindeki Azure bölgelerini Azure Cosmos veritabanı hesabınıza dilediğiniz zaman ekleyebilir/kaldırabilirsiniz. Çeşitli Azure Cosmos veritabanları ve kapsayıcıları için yapılandırdığınız aktarım hızı, Azure Cosmos veritabanı hesabınızla ilişkili Azure bölgelerinin her birine ayrılır. Azure Cosmos veritabanı hesabınızdaki (saat başına sağlanan) tüm veritabanları ve kapsayıcılar üzerinde yapılandırılan üretilen iş hacmi (RU/sn) toplamı T ise ve veritabanı hesabınızla ilişkili Azure bölgelerinin sayısı N ise, Azure Cosmos veritabanı hesabınız için verilen toplam sağlanan aktarım hızı T x N RU/sn 'ye eşittir. Sağlanan aktarım hızı (tek yazma bölgesi) maliyetleri $0.008/saat başına 100 RU/sn ve birden çok yazılabilir bölge (çok bölgeli yazma yapılandırması) 100 maliyetleriyle sağlanan aktarım hızı (bkz. [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/)bakın). Tek bir yazma bölgesinin veya birden fazla yazma bölgesinin Azure Cosmos DB, herhangi bir bölgeden veri okumanızı sağlar.
 
 ### <a name="billing-example-multi-region-azure-cosmos-account-single-region-writes"></a>Faturalandırma örneği: çok bölgeli Azure Cosmos hesabı, tek bölgede yazma işlemleri
 
@@ -193,7 +193,7 @@ Tüm bölgelerin yazılabilir olduğu çok bölgeli bir Azure Cosmos hesabımız
 
 Ayda 720 saat boyunca toplam sağlanan aktarım hızı içindeki değişiklikler aşağıdaki şekilde gösterilmiştir: 
 
-:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="Adanmış üretilen iş faturası örneği":::
+:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="Gerçek yaşam örneği":::
 
 Toplam aylık fatura şöyle olacaktır (bir ayda 30 gün/720 saat varsayılır), aşağıdaki şekilde hesaplanır:
 

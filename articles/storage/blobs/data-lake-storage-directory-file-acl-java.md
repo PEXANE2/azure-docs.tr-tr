@@ -9,12 +9,12 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 94696eacd9a75129f493a97bca201ad5ffb3456c
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 2526f8a79cb9f9bc312c6338e3a005244a4a901c
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131573"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359145"
 ---
 # <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. içinde dizinleri, dosyaları ve ACL 'Leri yönetmek için Java kullanın
 
@@ -106,7 +106,7 @@ static public DataLakeServiceClient GetDataLakeServiceClient
 > Daha fazla örnek için bkz. [Java Için Azure kimlik istemci kitaplığı](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity) belgeleri.
 
 
-## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+## <a name="create-a-container"></a>Kapsayıcı oluşturma
 
 Bir kapsayıcı dosyalarınız için bir dosya sistemi görevi görür. **DataLakeServiceClient. createFileSystem** metodunu çağırarak bir tane oluşturabilirsiniz.
 
@@ -398,6 +398,10 @@ static public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){
 
 }
 ```
+
+### <a name="set-an-acl-recursively"></a>ACL 'yi yinelemeli olarak ayarlama
+
+Bu değişiklikleri her bir alt öğe için ayrı ayrı yapmak zorunda kalmadan, bir üst dizinin varolan alt öğelerinde ACL 'Leri yinelemeli olarak ekleyebilir, güncelleştirebilir ve kaldırabilirsiniz. Daha fazla bilgi için bkz. [Azure Data Lake Storage 2. için erişim denetim listelerini (ACL 'ler) yinelemeli olarak ayarlama](recursive-access-control-lists.md).
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

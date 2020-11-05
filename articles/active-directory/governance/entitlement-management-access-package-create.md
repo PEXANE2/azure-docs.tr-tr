@@ -16,18 +16,18 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c1734af799ee473d6ba75fe2e8ab8429afa51d0
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: f6c30dffbc8f97273ee59ce33ae3fe75ed730763
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318189"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356646"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde yeni bir erişim paketi oluşturma
 
 Erişim paketi, erişim paketinin ömrü boyunca erişimi otomatik olarak yöneten kaynak ve ilkelerin bir kerelik kurulumunu yapmanızı sağlar. Bu makalede, yeni bir erişim paketinin nasıl oluşturulacağı açıklanır.
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
 Tüm erişim paketleri, Katalog adlı bir kapsayıcıya yerleştirilmelidir. Katalog, erişim paketinize ekleyebileceğiniz kaynakları tanımlar. Bir katalog belirtmezseniz, erişim paketiniz genel kataloğa konur. Şu anda, var olan bir erişim paketini farklı bir kataloğa taşıyamazsınız.
 
@@ -59,15 +59,15 @@ Yeni bir erişim paketi oluşturmak için üst düzey adımlar aşağıda verilm
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. **Azure Active Directory** ' a ve ardından **kimlik** Yönetimi ' ne tıklayın.
 
-1. Sol menüde, **erişim paketleri**' ne tıklayın.
+1. Sol menüde, **erişim paketleri** ' ne tıklayın.
 
-1. **Yeni erişim paketi**' ne tıklayın.
+1. **Yeni erişim paketi** ' ne tıklayın.
    
     ![Azure portal Yetkilendirme Yönetimi](./media/entitlement-management-shared/access-packages-list.png)
 
-## <a name="basics"></a>Temel Bilgiler
+## <a name="basics"></a>Temel bilgiler
 
 **Temel bilgiler** sekmesinde, erişim paketine bir ad verirsiniz ve erişim paketinin hangi katalogda oluşturulacağını belirtebilirsiniz.
 
@@ -79,17 +79,17 @@ Yeni bir erişim paketi oluşturmak için üst düzey adımlar aşağıda verilm
 
     ![Erişim paketi-temel bilgiler](./media/entitlement-management-access-package-create/basics.png)
 
-    Bir genel yönetici, bir Kullanıcı Yöneticisi veya katalog Oluşturucu ise ve listelenmeyen yeni bir katalogda erişim paketinizi oluşturmak istiyorsanız **Yeni Katalog oluştur**' a tıklayın. Katalog adı ve açıklamasını girip **Oluştur**' a tıklayın.
+    Bir genel yönetici, bir Kullanıcı Yöneticisi veya katalog Oluşturucu ise ve listelenmeyen yeni bir katalogda erişim paketinizi oluşturmak istiyorsanız **Yeni Katalog oluştur** ' a tıklayın. Katalog adı ve açıklamasını girip **Oluştur** ' a tıklayın.
 
     Oluşturmakta olduğunuz erişim paketi ve kendisine dahil edilen kaynaklar yeni kataloğa eklenecektir. Daha sonra da ek Katalog sahipleri ekleyebilirsiniz.
 
-1. **İleri**’ye tıklayın.
+1. **İleri** ’ye tıklayın.
 
 ## <a name="resource-roles"></a>Kaynak rolleri
 
 **Kaynak rolleri** sekmesinde, erişim paketine dahil edilecek kaynakları seçersiniz. Erişim paketini isteyen ve alan kullanıcılar, erişim paketindeki tüm kaynak rollerini alacaktır.
 
-1. Eklemek istediğiniz kaynak türüne (**gruplar ve takımlar**, **uygulamalar**veya **SharePoint siteleri**) tıklayın.
+1. Eklemek istediğiniz kaynak türüne ( **gruplar ve takımlar** , **uygulamalar** veya **SharePoint siteleri** ) tıklayın.
 
 1. Görüntülenen seçim bölmesinde listeden bir veya daha fazla kaynak seçin.
 
@@ -105,7 +105,7 @@ Yeni bir erişim paketi oluşturmak için üst düzey adımlar aşağıda verilm
 
     ![Paket-kaynak rolü seçimine erişin](./media/entitlement-management-access-package-create/resource-roles-role.png)
 
-1. **İleri**’ye tıklayın.
+1. **İleri** ’ye tıklayın.
 
 ## <a name="requests"></a>İstekler
 
@@ -125,7 +125,7 @@ Bu erişim paketini isteyebilmek istediğinize bağlı olarak, aşağıdaki böl
 
 1. Erişim paketinin ayarlarını gözden geçirin
 
-    ![Erişim paketi-Ilke-ilke ayarını etkinleştir](./media/entitlement-management-access-package-create/review-create.png)
+    ![Erişim paketi-ilke ayarını etkinleştir](./media/entitlement-management-access-package-create/review-create.png)
 
 1. Erişim paketini oluşturmak için **Oluştur** ' a tıklayın.
 

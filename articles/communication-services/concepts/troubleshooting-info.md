@@ -8,16 +8,16 @@ ms.author: manoskow
 ms.date: 10/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 4921078e9e7b5d9de06fbbc9a97dc4a964569e04
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ff3e7fee87661fb89ba930b7368bd54e71ad57bf
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92754756"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357632"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Azure Iletişim hizmetlerinde sorun giderme
 
-Bu belge, Iletişim Hizmetleri çözümünüzün sorunlarını gidermek için gereken bilgileri toplamanıza yardımcı olur.
+Bu belge, Iletişim Hizmetleri çözümünüz dahilinde karşılaşabileceğiniz sorunları gidermenize yardımcı olur. SMS sorunlarını giderirken, SMS teslimi ayrıntılarını yakalamak için [Event Grid ile teslim raporlamayı etkinleştirebilirsiniz](../quickstarts/telephony-sms/handle-sms-events.md) .
 
 ## <a name="getting-help"></a>Yardım alma
 
@@ -33,6 +33,8 @@ Belirli sorun türleriyle ilgili sorunları gidermenize yardımcı olması için
 * **MS-CV kimliği** : Bu kimlik, çağrı ve iletilerle ilgili sorunları gidermek için kullanılır. 
 * **Çağrı kimliği** : Bu kimlik, iletişim hizmetleri çağrılarını belirlemek için kullanılır.
 * **SMS ILETI kimliği** : bu KIMLIK, SMS iletilerini tanımlamak için kullanılır.
+* **Çağrı günlükleri** : Bu Günlükler, çağrı ve ağ sorunlarını gidermek için kullanılabilecek ayrıntılı bilgiler içerir.
+
 
 ## <a name="access-your-ms-cv-id"></a>MS-CV KIMLIĞINIZE erişin
 
@@ -126,6 +128,44 @@ console.log(result); // your message ID will be in the result
 }
 ```
 ---
+
+## <a name="enable-and-access-call-logs"></a>Çağrı günlüklerini etkinleştirme ve erişme
+
+
+
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Aşağıdaki kod, `AzureLogger` JavaScript istemci kitaplığı kullanılarak günlükleri konsola çıkarmak için yapılandırmak üzere kullanılabilir:
+
+```javascript
+import { AzureLogger } from '@azure/logger'; 
+
+AzureLogger.verbose = (...args) => { console.info(...args); } 
+AzureLogger.info = (...args) => { console.info(...args); } 
+AzureLogger.warning = (...args) => { console.info(...args); } 
+AzureLogger.error = (...args) => { console.info(...args); } 
+
+callClient = new CallClient({logger: AzureLogger}); 
+```
+
+# <a name="ios"></a>[iOS](#tab/ios)
+
+İOS için geliştirme yaparken günlüklerinizin dosyalarında saklanması gerekir `.blog` . Şifrelenmiş olduklarından günlükleri doğrudan görüntüleyemediğini unutmayın.
+
+Bunlar, Xcode açılarak erişilebilir. Windows > cihazlarına ve > simülatörleri cihazlarına gidin. Cihazınızı seçin. Yüklü uygulamalar altında uygulamanızı seçin ve "kapsayıcıyı Indir" e tıklayın. 
+
+Bu size bir dosya verecektir `xcappdata` . Bu dosyaya sağ tıklayın ve "paket içeriğini göster" i seçin. Daha sonra `.blog` Azure destek isteğinize iliştirebilmeniz için dosyaları görürsünüz.
+
+# <a name="android"></a>[Android](#tab/android)
+
+Android için geliştirme yaparken günlüklerinizin dosyalarında saklanması gerekir `.blog` . Şifrelenmiş olduklarından günlükleri doğrudan görüntüleyemediğini unutmayın.
+
+Android Studio, hem Benzetici hem de cihazdan cihaz dosya Gezgini > > araç pencerelerini görüntüle ' yi seçerek cihaz dosya Gezgini 'ne gidin. `.blog`Dosya uygulamanızın dizininde bulunur, bu da benzer bir şekilde görünmelidir `/data/data/[app_name_space:com.contoso.com.acsquickstartapp]/files/acs_sdk.blog` . Bu dosyayı destek isteğinize ekleyebilirsiniz. 
+   
+
+---
+
 
 ## <a name="related-information"></a>İlgili bilgiler
 - [Günlükler ve Tanılamalar](logging-and-diagnostics.md)

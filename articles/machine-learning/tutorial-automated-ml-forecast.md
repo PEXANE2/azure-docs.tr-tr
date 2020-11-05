@@ -10,12 +10,13 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 07/10/2020
-ms.openlocfilehash: 6ad3e0f3077e6f65642496d4da097fa713bddd53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: automl
+ms.openlocfilehash: 5577a0d9270f3e4566bf57876b8abc3d1a3ae4be
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979086"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356510"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Öğretici: otomatik makine öğrenimi ile talep tahmini
 
@@ -47,11 +48,11 @@ Bu öğreticide, tüm beceri seviyeleri için veri bilimi senaryoları gerçekle
 
 1. Aboneliğinizi ve oluşturduğunuz çalışma alanını seçin.
 
-1. **Kullanmaya**başlayın ' ı seçin.
+1. **Kullanmaya** başlayın ' ı seçin.
 
 1. Sol bölmede **Yazar** bölümü altında **Otomatik ml** ' yi seçin.
 
-1. **+ Yeni OTOMATIK ml Çalıştır**' ı seçin. 
+1. **+ Yeni OTOMATIK ml Çalıştır** ' ı seçin. 
 
 ## <a name="create-and-load-dataset"></a>Veri kümesi oluşturma ve yükleme
 
@@ -59,21 +60,21 @@ Denemenizi yapılandırmadan önce, veri dosyanızı Azure Machine Learning veri
 
 1. **Veri kümesi Seç** formunda, **+ veri kümesi oluştur** açılır listesinden **yerel dosyalar** ' ı seçin. 
 
-    1. **Temel bilgi** formunda, veri kümenize bir ad verin ve isteğe bağlı bir açıklama sağlayın. Azure Machine Learning Studio 'daki otomatik ML Şu anda yalnızca tablo veri kümelerini desteklediğinden veri kümesi türü varsayılan olarak **tablosal**olmalıdır.
+    1. **Temel bilgi** formunda, veri kümenize bir ad verin ve isteğe bağlı bir açıklama sağlayın. Azure Machine Learning Studio 'daki otomatik ML Şu anda yalnızca tablo veri kümelerini desteklediğinden veri kümesi türü varsayılan olarak **tablosal** olmalıdır.
     
     1. Sol alt kısımdaki **İleri ' yi** seçin
 
     1. **Veri deposu ve dosya seçimi** formunda, çalışma alanı oluşturma, çalışma alanı **BlobStore (Azure Blob depolama)** sırasında otomatik olarak ayarlanan varsayılan veri deposunu seçin. Bu, veri dosyanızı karşıya yükleyeceğiniz depolama konumudur. 
 
-    1. **Gözat**'ı seçin. 
+    1. **Gözat** 'ı seçin. 
     
     1. Yerel bilgisayarınızda **bike-no.csv** dosyasını seçin. Bu, bir [Önkoşul](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv)olarak indirdiğiniz dosyadır.
 
-    1. **İleri**’yi seçin
+    1. **İleri** ’yi seçin
 
        Karşıya yükleme tamamlandığında, ayarlar ve önizleme formu dosya türüne göre önceden doldurulur. 
        
-    1. **Ayarlar ve önizleme** formunun aşağıdaki gibi doldurulduğunu doğrulayın ve **İleri ' yi**seçin.
+    1. **Ayarlar ve önizleme** formunun aşağıdaki gibi doldurulduğunu doğrulayın ve **İleri ' yi** seçin.
         
         Alan|Açıklama| Öğretici için değer
         ---|---|---
@@ -87,9 +88,9 @@ Denemenizi yapılandırmadan önce, veri dosyanızı Azure Machine Learning veri
     
         1. Bu örnekte, **sıradan** ve **kayıtlı** sütunları yok saymayı seçin. Bu sütunlar,  **sayisi** sütununun bir dökümününüdir, bu nedenle bunları dahil ettik.
 
-        1. Ayrıca, bu örnek için, **Özellikler** ve **tür**için varsayılan değerleri bırakın. 
+        1. Ayrıca, bu örnek için, **Özellikler** ve **tür** için varsayılan değerleri bırakın. 
         
-        1. **İleri**’yi seçin.
+        1. **İleri** ’yi seçin.
 
     1. **Ayrıntıları Onayla** formunda, bilgilerin daha önce **temel bilgi** ve **Ayarlar ve önizleme** formlarında doldurulduğu ile eşleştiğini doğrulayın.
 
@@ -97,7 +98,7 @@ Denemenizi yapılandırmadan önce, veri dosyanızı Azure Machine Learning veri
 
     1. Listede göründükten sonra veri kümenizi seçin.
 
-    1. **İleri ' yi**seçin.
+    1. **İleri ' yi** seçin.
 
 ## <a name="configure-experiment-run"></a>Deneme çalıştırmasını Yapılandır
 
@@ -125,7 +126,7 @@ Verilerinizi yükleyip yapılandırdıktan sonra, uzaktan işlem hedefini ayarla
 
         1. Oluşturulduktan sonra, açılan listeden yeni işlem hedefini seçin.
 
-    1. **İleri**’yi seçin.
+    1. **İleri** ’yi seçin.
 
 ## <a name="select-forecast-settings"></a>Tahmin ayarlarını seçin
 
@@ -142,22 +143,22 @@ Machine Learning görev türünü ve yapılandırma ayarlarını belirterek otom
     Ek &nbsp; yapılandırma|Açıklama|&nbsp;Öğretici için &nbsp; değer
     ------|---------|---
     Birincil ölçüm| Makine öğrenimi algoritmasının ölçülecek değerlendirme ölçümü.|Normalleştirilmiş kök ortalama kare hatası
-    En iyi modeli açıkla| Otomatik ML tarafından oluşturulan en iyi modelde explainability 'yi otomatik olarak gösterir.| Etkinleştir
+    En iyi modeli açıkla| Otomatik ML tarafından oluşturulan en iyi modelde explainability 'yi otomatik olarak gösterir.| Etkinleştirme
     Engellenen algoritmalar | Eğitim işinden dışlamak istediğiniz algoritmalar| Aşırı rastgele ağaçlar
-    Ek tahmin ayarları| Bu ayarlar, modelinizin doğruluğunu artırmaya yardımcı olur <br><br> _**Tahmin hedefi lags:**_ hedef değişkenin lags 'ı ne kadar geri oluşturmak istiyorsunuz <br> _**Hedef sıralı pencere**_: *maksimum, en düşük* ve *Toplam*gibi özelliklerin oluşturulacağı pencere sayısını belirtir. | <br><br>Tahmin &nbsp; hedefi &nbsp; lags: None <br> Hedef &nbsp; hareketli &nbsp; pencere &nbsp; boyutu: yok
+    Ek tahmin ayarları| Bu ayarlar, modelinizin doğruluğunu artırmaya yardımcı olur <br><br> _**Tahmin hedefi lags:**_ hedef değişkenin lags 'ı ne kadar geri oluşturmak istiyorsunuz <br> _**Hedef sıralı pencere**_ : *maksimum, en düşük* ve *Toplam* gibi özelliklerin oluşturulacağı pencere sayısını belirtir. | <br><br>Tahmin &nbsp; hedefi &nbsp; lags: None <br> Hedef &nbsp; hareketli &nbsp; pencere &nbsp; boyutu: yok
     Çıkış ölçütü| Bir kriterle karşılanırsa eğitim işi durdurulur. |Eğitim &nbsp; işi &nbsp; süresi (saat): 3 <br> Ölçüm &nbsp; puan &nbsp; eşiği: yok
     Doğrulama | Çapraz doğrulama türü ve test sayısı seçin.|Doğrulama türü:<br>&nbsp;&nbsp;çapraz doğrulamayı yana kesme <br> <br> Doğrulama sayısı: 5
     Eşzamanlılık| Yineleme başına yürütülen en fazla paralel yineleme sayısı| En fazla &nbsp; eşzamanlı &nbsp; yineleme: 6
     
-    **Kaydet**’i seçin.
+    **Kaydet** ’i seçin.
 
 ## <a name="run-experiment"></a>Deneme Çalıştır
 
-Denemenizi çalıştırmak için **son**' u seçin. Çalıştırma **ayrıntıları**  ekranı, çalışma numarasının yanında bulunan **çalıştırma durumuyla** birlikte açılır. Deneme ilerledikçe bu durum güncellenir.
+Denemenizi çalıştırmak için **son** ' u seçin. Çalıştırma **ayrıntıları**  ekranı, çalışma numarasının yanında bulunan **çalıştırma durumuyla** birlikte açılır. Deneme ilerledikçe bu durum güncellenir.
 
 >[!IMPORTANT]
 > Hazırlık, deneme çalıştırmasının hazırlanmasına **10-15 dakika** sürer.
-> Çalışmaya başladıktan sonra, **her yinelemede 2-3 dakika daha**sürer.  <br> <br>
+> Çalışmaya başladıktan sonra, **her yinelemede 2-3 dakika daha** sürer.  <br> <br>
 > Üretimde, bu işlem zaman alacağından biraz daha fazla ilerleyelim. Beklerken, tüm **modeller** sekmesinde, sınanan algoritmaları keşfetmeye başlayacağız. 
 
 ##  <a name="explore-models"></a>Modelleri keşfet
@@ -198,9 +199,9 @@ Bu modeli dağıyoruz ancak yapmanız önerilir, dağıtımın tamamlaması yakl
     
     Bu örnekte, *Gelişmiş* menüsünde belirtilen Varsayılanları kullanırız. 
 
-1. **Dağıt**'ı seçin.  
+1. **Dağıt** 'ı seçin.  
 
-    **Çalıştırma** ekranının üst kısmında, dağıtımın başarıyla başlatıldığını belirten yeşil başarı iletisi görüntülenir. Dağıtımın ilerlemesi, dağıtım **durumu**' nun altındaki **model Özeti** bölmesinde bulunabilir.
+    **Çalıştırma** ekranının üst kısmında, dağıtımın başarıyla başlatıldığını belirten yeşil başarı iletisi görüntülenir. Dağıtımın ilerlemesi, dağıtım **durumu** ' nun altındaki **model Özeti** bölmesinde bulunabilir.
     
 Dağıtım başarılı olduktan sonra, tahminleri oluşturmak için işlemsel bir Web hizmetiniz vardır. 
 
@@ -214,11 +215,11 @@ Dağıtım dosyaları veri ve deneme dosyalarından daha büyüktür, bu nedenle
 
 Diğer öğreticiler ve araştırmayla ilgili kaynak grubunu ve çalışma alanını tutmak istiyorsanız, yalnızca Azure Machine Learning Studio 'dan dağıtım örneğini silin. 
 
-1. [Azure Machine Learning Studio](https://ml.azure.com/)'ya gidin. Çalışma alanınıza gidin ve **varlıklar** bölmesinin sol tarafında **uç noktalar**' ı seçin. 
+1. [Azure Machine Learning Studio](https://ml.azure.com/)'ya gidin. Çalışma alanınıza gidin ve **varlıklar** bölmesinin sol tarafında **uç noktalar** ' ı seçin. 
 
-1. Silmek istediğiniz dağıtımı seçin ve **Sil**' i seçin. 
+1. Silmek istediğiniz dağıtımı seçin ve **Sil** ' i seçin. 
 
-1. **Devam**' ı seçin.
+1. **Devam** ' ı seçin.
 
 ### <a name="delete-the-resource-group"></a>Kaynak grubunu silme
 
