@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 60087dc23b804dac6644dc09cddc031526fb0f8f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 930c1f94446eb145a093bf7a8706485d40eec210
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313772"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379681"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>SYNAPSE yönetilen özel uç noktaları (Önizleme)
 
@@ -45,11 +45,11 @@ Yalnızca onaylanan bir durumdaki yönetilen özel uç nokta, belirli bir özel 
 
 ## <a name="managed-private-endpoints-for-dedicated-sql-pool-and-serverless-sql-pool"></a>Adanmış SQL havuzu ve sunucusuz SQL havuzu için yönetilen özel uç noktalar
 
-adanmış SQL havuzu ve sunucusuz SQL havuzu, Azure SYNAPSE çalışma alanınızdaki analitik yeteneklerdir. Bu yetenekler, [yönetilen çalışma alanı sanal ağına](./synapse-workspace-managed-vnet.md)dağıtılmamış çok kiracılı altyapıyı kullanır.
+Adanmış SQL havuzu ve sunucusuz SQL havuzu, Azure SYNAPSE çalışma alanınızdaki analitik yeteneklerdir. Bu yetenekler, [yönetilen çalışma alanı sanal ağına](./synapse-workspace-managed-vnet.md)dağıtılmamış çok kiracılı altyapıyı kullanır.
 
 Bir çalışma alanı oluşturulduğunda, Azure SYNAPSE çalışma alanında, biri adanmış SQL havuzu ve sunucusuz SQL havuzu için olmak üzere iki yönetilen özel uç nokta oluşturur. 
 
-Bu iki yönetilen özel uç nokta Azure SYNAPSE Studio 'da listelenmiştir. Sol gezinti bölmesinde **Yönet** ' i seçin ve ardından Studio 'da görmek Için **yönetilen sanal ağlar** ' ı seçin.
+Bu iki yönetilen özel uç nokta SYNAPSE Studio 'da listelenmiştir. Sol gezinti bölmesinde **Yönet** ' i seçin ve ardından bu dosyaları Studio 'da görmek için **yönetilen özel uç noktalar** ' ı seçin.
 
 SQL havuzunu hedefleyen yönetilen özel uç nokta *SYNAPSE-WS- \<workspacename\> SQL* olarak adlandırılır ve sunucusuz SQL havuzunu hedefleyen bir tane *SYNAPSE-WS-sqlondemand-- \<workspacename\>* olarak adlandırılır.
 

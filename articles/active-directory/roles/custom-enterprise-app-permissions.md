@@ -6,18 +6,18 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 11/04/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 0b1857583696a2a14d6f5d40174c536cf4772845
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 39d9cf9ed87c8a8f45cb2a6239292562035d31e3
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379343"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379647"
 ---
 # <a name="enterprise-application-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory özel roller için kurumsal uygulama izinleri
 
@@ -119,7 +119,7 @@ Uygulama erişimini sağlama amacıyla yetkilendirmek için temsilci seçme. Ör
 
 ## <a name="full-list-of-permissions"></a>İzinlerin tam listesi
 
-İzin | Description
+İzin | Açıklama
 ---------- | -----------
 Microsoft. Directory/applicationPolicies/allProperties/Read | Uygulama ilkelerindeki tüm özellikleri okuyun.
 Microsoft. Directory/applicationPolicies/allProperties/Update | Uygulama ilkelerindeki tüm özellikleri güncelleştirin.
