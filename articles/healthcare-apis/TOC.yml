@@ -92,7 +92,7 @@
       href: find-identity-object-ids.md
     - name: FHIR® için Azure API üzerinde Tanılama Günlüğüne Kaydetmeyi etkinleştirme
       href: enable-diagnostic-logging.md
-    - name: Tanılama ayarları aracılığıyla FHIR için Azure IoT Bağlayıcısı (önizleme) ölçümlerini dışarı aktarma
+    - name: Tanılama ayarları aracılığıyla FHIR için Azure IoT Bağlayıcısı (önizleme) Ölçümlerini dışarı aktarma
       href: iot-metrics-diagnostics-export.md
     - name: FHIR için Azure IoT Bağlayıcısı (önizleme) Ölçümlerini görüntüleme ve yapılandırma
       href: iot-metrics-display.md

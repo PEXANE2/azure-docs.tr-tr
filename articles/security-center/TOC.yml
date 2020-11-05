@@ -223,7 +223,8 @@
         - name: Azure VM’lerinde SQL için Azure Defender’ı yapılandırma
           href: defender-for-sql-usage.md
           displayName: 'hybrid, arc'
-        - name: Bilgi koruma ilkesini özelleştirme
+        - name: SQL bilgilerinizi koruma ilkesini özelleştirme
+          displayName: 'sql, database, data discovery'
           href: security-center-info-protection-policy.md
     - name: Kapsayıcı kayıt defterleri için Azure Defender’ı kullanma
       items:

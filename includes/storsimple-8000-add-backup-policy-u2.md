@@ -4,18 +4,18 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 02274bacb66a33ef54e07bc8113d7db46d4d5296
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3bff61cfbf89aee3566d677ccf593b102cff36d
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67188561"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376119"
 ---
 #### <a name="to-add-a-storsimple-backup-policy"></a>Bir StorSimple yedekleme ilkesi eklemek için
 
-1. StorSimple cihazınıza gidin ve **Yedekleme ilkesi**’ne tıklayın.
+1. StorSimple cihazınıza gidin ve **Yedekleme ilkesi** ’ne tıklayın.
 
-2. **Yedekleme ilkesi** dikey penceresinde komut çubuğundan **+ İlke ekle**’ye tıklayın.
+2. **Yedekleme ilkesi** dikey penceresinde komut çubuğundan **+ İlke ekle** ’ye tıklayın.
    
     ![Yedekleme ilkesi ekleme](./media/storsimple-8000-add-backup-policy-u2/addbupol1.png)
 
@@ -25,15 +25,15 @@ ms.locfileid: "67188561"
    
    2. 3 ila 150 karakter içeren bir yedekleme **İlke adı** belirtin. İlke oluşturulduktan sonra ilkeyi yeniden adlandıramazsınız.
        
-   3. Bu yedekleme ilkesine birim atamak için **Birim ekle**’yi seçin ve ardından birimlerin tablosal listesinde, bu yedekleme ilkesine bir veya daha fazla birim atamak için onay kutularına tıklayın.
+   3. Bu yedekleme ilkesine birim atamak için **Birim ekle** ’yi seçin ve ardından birimlerin tablosal listesinde, bu yedekleme ilkesine bir veya daha fazla birim atamak için onay kutularına tıklayın.
 
-       ![Yedekleme ilkesi ekleme](./media/storsimple-8000-add-backup-policy-u2/addbupol2.png)
+       ![Yedekleme ilkesi ekleme 2](./media/storsimple-8000-add-backup-policy-u2/addbupol2.png)
 
-   4. Bu yedekleme ilkesi için bir zamanlama tanımlamak için **İlk zamanlama**’ya tıklayın ve aşağıdaki parametreleri değiştirin:
+   4. Bu yedekleme ilkesi için bir zamanlama tanımlamak için **İlk zamanlama** ’ya tıklayın ve aşağıdaki parametreleri değiştirin:
 
-       ![Yedekleme ilkesi ekleme](./media/storsimple-8000-add-backup-policy-u2/addbupol3.png)
+       ![Yedekleme ilkesi ekleme 3](./media/storsimple-8000-add-backup-policy-u2/addbupol3.png)
 
-       1. **Anlık görüntü türü** için **Bulut** veya **Yerel**’i seçin.
+       1. **Anlık görüntü türü** için **Bulut** veya **Yerel** ’i seçin.
 
        2. Yedekleme sıklığını belirtin (bir sayı belirtip açılan listeden **Gün** veya **Hafta** öğesini seçin).
 
@@ -41,13 +41,13 @@ ms.locfileid: "67188561"
 
        4. Yedekleme ilkesinin başlayacağı saat ve tarihi girin.
 
-       5. Zamanlamayı tanımlamak için **Tamam**’a tıklayın.
+       5. Zamanlamayı tanımlamak için **Tamam** ’a tıklayın.
 
-   5. Yedekleme ilkesi oluşturmak için **Oluştur**’a tıklayın.
+   5. Yedekleme ilkesi oluşturmak için **Oluştur** ’a tıklayın.
 
-       ![Yedekleme ilkesi ekleme](./media/storsimple-8000-add-backup-policy-u2/addbupol4.png)
+       ![Yedekleme ilkesi ekleme 4](./media/storsimple-8000-add-backup-policy-u2/addbupol4.png)
    
    6. Yedekleme ilkesi oluşturulduğunda size bildirilir. Yeni eklenen ilke, **Yedekleme İlkeleri** dikey penceresinin tablosal görünümünde gösterilir.
 
-       ![Yedekleme ilkesi ekleme](./media/storsimple-8000-add-backup-policy-u2/addbupol7.png)
+       ![Yedekleme ilkesi ekleme 5](./media/storsimple-8000-add-backup-policy-u2/addbupol7.png)
 

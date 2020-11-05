@@ -68,6 +68,8 @@
   items:
     - name: Microsoft Kötü Amaçlı Yazılımdan Korunma
       href: antimalware.md
+    - name: Microsoft Antimalware kod örnekleri
+      href: antimalware-code-samples.md
     - name: Sanal makine güvenliğine genel bakış
       href: virtual-machines-overview.md
     - name: En iyi uygulamalar - IaaS iş yükleri

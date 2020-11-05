@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: c44effe0bde3c7e880e53706fcb59d91a8605e7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05719d9633429c4b8ee6fee79833f594c94ab23d
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67188422"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375961"
 ---
 #### <a name="to-complete-the-minimum-storsimple-device-setup"></a>En düşük StorSimple cihaz kurulumunu tamamlamak için
 
@@ -30,15 +30,15 @@ ms.locfileid: "67188422"
 
        2. Denetleyici 0 ve Denetleyici 1 için sabit IP adreslerini sağlayın. **Denetleyici sabit IP adreslerinin, cihaz IP adresinin erişebildiği alt ağda boş IP’ler olması gerekir.** DATA 0 arabirimi IPv4 için yapılandırılmışsa sabit IP adreslerinin IPv4 biçiminde verilmesi gerekir. IPv6 yapılandırması için bir önek sağladıysanız bu alanlar otomatik olarak sabit IP adresleriyle doldurulur.
 
-            ![StorSimple en düşük cihaz kurulumu ağ arabirimleri](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig2.png)
+            ![StorSimple en düşük cihaz kurulumu ağ arabirimleri 2](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig2.png)
 
             Denetleyiciye yönelik sabit IP adresleri, cihaza güncelleştirmelerin uygulanması ve çöp toplama için kullanılır. Bu nedenle, sabit IP’lerin yönlendirilebilir ve İnternet’e bağlanabilir olması gerekir. [Test-HcsmConnection][Test] cmdlet'ini kullanarak sabit denetleyici IP'lerinizin yönlendirilebilir olup olmadığını denetleyebilirsiniz. Aşağıdaki örnekte sabit denetleyici IP'lerin İnternet'e yönlendirildiği ve Microsoft Update sunucularına erişebildiği gösterilmektedir.
 
             ![Yönlendirilebilir IP’leri gösteren Test HcsmConnection](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig3.png)
 
-1. **Tamam**'a tıklayın. Cihaz yapılandırması başlar. Cihaz yapılandırması tamamlandığında size bildirilir. **Cihazlar** dikey penceresinde cihazın durumu **Çevrimiçi** olarak değişir.
+1. **Tamam** ’a tıklayın. Cihaz yapılandırması başlar. Cihaz yapılandırması tamamlandığında size bildirilir. **Cihazlar** dikey penceresinde cihazın durumu **Çevrimiçi** olarak değişir.
 
-    ![StorSimple en düşük cihaz kurulumu ağ arabirimleri](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig4.png)
+    ![StorSimple en düşük cihaz kurulumu ağ arabirimleri 3](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig4.png)
 
 <!--Link reference-->
 [Test]: https://technet.microsoft.com/library/dn715782(v=wps.630).aspx

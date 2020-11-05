@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 11/20/2018
 ms.author: alkohli
-ms.openlocfilehash: cbf6d01925e1924bc5f3c7f1e99840d479fef296
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16b69ce5d63723919e74b62e8c62770ed5fbec85
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67189037"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376049"
 ---
 İstemciye bağlanmak için iş ortağı yazılımını yapılandırın. İş ortağı yazılımına bağlanmak için, önceki adımda Yerel Web Kullanıcı arabiriminin **Bağlan ve Kopyala** sayfasından topladığınız aşağıdaki bilgiler (farklılık gösterebilir) gerekir:
 
@@ -21,10 +21,10 @@ Bağlantının başarıyla yapıldığını doğrulamak için, bir dış depolam
 
 Depolama Gezgini ilk kez kullanıyorsanız, aşağıdaki adımları gerçekleştirmeniz gerekir.
 
-1. Üst komut çubuğundan **> hedef Azure Stack Düzenle**' ye gidin.
+1. Üst komut çubuğundan **> hedef Azure Stack Düzenle** ' ye gidin.
 
     ![Data Box panosu](media/data-box-configure-partner-software/data-box-connect-via-rest-6.png)
 
 2. Değişikliklerin etkili olması için Depolama Gezgini yeniden başlatın.
 
-    ![Data Box panosu](media/data-box-configure-partner-software/data-box-connect-via-rest-7.png)
+    ![Data Box panosu 2](media/data-box-configure-partner-software/data-box-connect-via-rest-7.png)

@@ -529,6 +529,8 @@
       items:
         - name: Kopyalama etkinliği kullanarak SQL havuzlarına veri yükleme
           href: quickstart-copy-activity-load-sql-pool.md
+        - name: Eşleme veri akışlarını kullanarak verileri dönüştürme
+          href: quickstart-data-flow.md
     - name: Kavramlar
       items:
         - name: İşlem hattı ve etkinlik

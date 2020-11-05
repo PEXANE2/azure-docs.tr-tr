@@ -154,6 +154,8 @@
           href: cluster-container-registry-integration.md
         - name: Sanal düğümler oluşturma
           items:
+            - name: Sanal düğümleri kullanma
+              href: virtual-nodes.md
             - name: Azure CLI kullanma
               href: virtual-nodes-cli.md
             - name: Azure portalı kullanma

@@ -13,7 +13,7 @@
       href: quickstart-powershell.md
 - name: Öğreticiler
   items:
-    - name: Kanıtlama ilkesini yazma ve imzalama
+    - name: Kanıtlama ilkesini yazma
       href: author-sign-policy.md
     - name: SGX kanıtlama kodu örnekleri
       href: /samples/browse/?expanded=azure&terms=attestation
@@ -47,5 +47,7 @@
       href: 'https://www.nuget.org/packages/Microsoft.Azure.DCAP/'
     - name: Linux için Azure DCAP kitaplığı
       href: 'https://packages.microsoft.com/ubuntu/18.04/prod/pool/main/a/az-dcap-client/'
+    - name: Sorunları giderme
+      href: troubleshoot-guide.md
     - name: VBS kanıtlama protokolü
       href: virtualization-based-security-protocol.md
