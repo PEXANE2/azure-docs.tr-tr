@@ -1,5 +1,5 @@
 ---
-title: Hızlı başlangıç-CentOS 'da
+title: Hızlı Başlangıç - CentOS üzerinde WildFly
 description: CentOS sanal makinesinde Yavaya Java uygulamaları dağıtın
 author: Theresa-Nguyen
 ms.author: bicnguy
@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.assetid: 7aa21ef8-9cfb-43e0-bfda-3f10a2a2f3ef
 ms.date: 10/23/2020
-ms.openlocfilehash: 875d04751475d1d5236e9f15fbca585cdc9b1ab0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 842913b8e9f83ff3b188976da55aef7c909518ca
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897689"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359927"
 ---
 # <a name="quickstart-wildfly-on-centos-8"></a>Hızlı başlangıç: CentOS 8 ' de
 
@@ -49,13 +49,15 @@ Tek başına Yavama sunucunuzu başka bir sağlanmış yapılandırmayla başlat
 
 Örneğin, Jakarta EE platform 8 ' i kümeleme özellikleri ile kullanmak için aşağıdaki komutu kullanın:
 
-`./standalone.sh --server-config=standalone-full-ha.xml`
+```
+./standalone.sh --server-config=standalone-full-ha.xml
+```
 
 Konfigürasyonlar hakkında daha fazla bilgi edinmek için, [Başhızlı başlangıç kılavuzuna](https://docs.wildfly.org/18/Getting_Started_Guide.html#wildfly-10-configurations)göz atın.
 
 ## <a name="licensing-support-and-subscription-notes"></a>Lisanslama, destek ve abonelik notları
 
-Azure CentOS 8 görüntüsü, Kullandıkça Öde (PAYG) sanal makinesi görüntüsüdür ve kullanıcının bir lisans almasını gerektirmez. VM 'nin ilk başlatılışında, sanal makinenin işletim sistemi lisansı otomatik olarak etkinleştirilir ve saatlik bir ücret üzerinden ücretlendirilir. Bu, Microsoft 'un Linux saatlik VM tarifelerinin yanı sıra. Ayrıntılar için [LINUX VM fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#linux) ' na tıklayın. Yavaya indirme ve kullanma ücretsizdir ve Red Hat aboneliği veya lisansı gerekmez.
+Azure CentOS 8 görüntüsü, Kullandıkça Öde (PAYG) sanal makinesi görüntüsüdür ve kullanıcının bir lisans almasını gerektirmez. VM ilk kez başlatıldığında, VM 'nin işletim sistemi lisansı otomatik olarak etkinleştirilir ve saatlik bir ücret üzerinden ücretlendirilir. Bu, Microsoft 'un Linux saatlik VM tarifelerinin yanı sıra. Ayrıntılar için [LINUX VM fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#linux) ' na tıklayın. Yavaya indirme ve kullanma ücretsizdir ve Red Hat aboneliği veya lisansı gerekmez.
 
 ## <a name="how-to-consume"></a>Nasıl tüketiliyor
 
@@ -63,15 +65,23 @@ Azure CentOS 8 görüntüsü, Kullandıkça Öde (PAYG) sanal makinesi görünt�
 
 - Aşağıdaki komutları çalıştırarak PowerShell 'i kullanın-şablonu dağıtın: (Azure PowerShell yükleme ve yapılandırma hakkında bilgi için [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) kullanıma alma).
 
-    `New-AzResourceGroup -Name <resource-group-name> -Location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment`
+    ```
+    New-AzResourceGroup -Name <resource-group-name> -Location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment
+    ```
 
-    `New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json`
+    ```
+    New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json
+    ```
     
 - Azure CLı 'yi kullanma-aşağıdaki komutları çalıştırarak şablonu dağıtın: (Azure platformlar arası Command-Line arabirimini yükleme ve yapılandırma hakkında ayrıntılı bilgi için [Azure platformlar arası komut satırını](https://docs.microsoft.com/cli/azure/install-azure-cli) inceleyin).
 
-    `az group create --name <resource-group-name> --location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment`
+    ```
+    az group create --name <resource-group-name> --location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment
+    ```
 
-    `az group deployment create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json`
+    ```
+    az group deployment create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json
+    ```
 
 - Azure portal kullanın, şablonu <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fwildfly-standalone-centos8%2Fazuredeploy.json" target="_blank">buraya</a> tıklayarak dağıtın ve Azure Portal oturum açın.
 
@@ -81,7 +91,7 @@ Azure CentOS 8 görüntüsü, Kullandıkça Öde (PAYG) sanal makinesi görünt�
 
 ## <a name="resource-links"></a>Kaynak bağlantıları
 
-* Bu konuda daha fazla bilgi edinin [18](https://wildfly.org/18)
+* Bu konuda daha fazla bilgi edinin [18](https://docs.wildfly.org/18/)
 * [Azure 'Da Linux dağıtımları](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) hakkında daha fazla bilgi edinin
 * [Java geliştiricileri için Azure belgeleri](https://github.com/JasonFreeberg/jboss-on-app-service)
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 23e6834f4850cc8f44f563a12f4704fec2e13ef7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bf91a3b7843d3212b62ced5b6a7c6fa54892ec9
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400817"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359757"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps için Bağlayıcılar
 
@@ -81,7 +81,7 @@ Logic Apps, zamanlama tabanlı iş akışları oluşturabilmek, mantıksal uygul
 
 | Ad | Açıklama |
 |------|-------------|
-| [![Yerleşik bağlayıcı ][schedule-icon]<br> **zamanlamasını** zamanla][schedule-doc] | - [ **Yineleme** tetikleyicisiyle][schedule-recurrence-doc]temel ve gelişmiş zamanlamalara değişen bir mantıksal uygulamayı belirtilen bir yinelenme üzerinde çalıştırın. <br>- [ **Kayan pencere** tetikleyicisiyle][schedule-sliding-window-doc]sürekli öbeklerdeki verileri işlemek için gereken bir mantıksal uygulamayı çalıştırın. <br>- [ **Gecikme** eylemini][schedule-delay-doc]kullanarak mantıksal uygulamanızı belirtilen süre için duraklatın. <br>-Mantıksal uygulamanızı, belirtilen tarih ve saate kadar [ **ertele** ][schedule-delay-until-doc]tamamlanana kadar duraklatın. |
+| [![Yerleşik bağlayıcı ][schedule-icon]<br> **zamanlamasını** zamanla][schedule-doc] | - [ **Yineleme** tetikleyicisiyle][schedule-recurrence-doc]temel ve gelişmiş zamanlamalara değişen bir mantıksal uygulamayı belirtilen bir yinelenme üzerinde çalıştırın. <br>- [ **Kayan pencere** tetikleyicisiyle][schedule-sliding-window-doc]sürekli öbeklerdeki verileri işlemek için gereken bir mantıksal uygulamayı çalıştırın. <br>- [ **Gecikme** eylemini][schedule-delay-doc]kullanarak mantıksal uygulamanızı belirtilen süre için duraklatın. <br>-Mantıksal uygulamanızı, belirtilen tarih ve saate kadar [ **ertele**][schedule-delay-until-doc]tamamlanana kadar duraklatın. |
 | [![Batch yerleşik bağlayıcı ][batch-icon]<br> **toplu işi**][batch-doc] | - **Batch iletileri** tetikleyicisiyle toplu olarak ileti işleme. <br>- **Batch 'e Ileti gönder** eylemine sahip mevcut toplu iş tetikleyicilerine sahip Logic Apps 'i çağırın. |
 | [![HTTP yerleşik Bağlayıcısı ][http-icon]<br> **http**][http-doc] | HTTP tetikleyicileri ve eylemleriyle HTTP veya HTTPS uç noktalarını çağırma. Http [+ Swagger yerleşik bağlayıcı][http-swagger-doc] ve [http + Web kancasını][http-webhook-doc]içeren diğer http yerleşik Tetikleyicileri ve eylemleri. |
 | [![Yerleşik bağlayıcı ][http-request-icon]<br> **isteği** iste][http-request-doc] | -Mantıksal uygulamanızı diğer uygulamalardan veya hizmetlerden çağrılabilir, Event Grid Kaynak olaylarında tetikleyin veya **istek** tetikleyicisiyle Azure Güvenlik Merkezi uyarılarına yönelik yanıtlara karşı tetikleyin. <br>- **Yanıt** eylemiyle bir uygulamaya veya hizmete yanıt gönderin. |
@@ -108,8 +108,8 @@ Logic Apps mantıksal uygulamanızın iş akışındaki eylemleri yapılandırma
 |------|-------------|
 | [![Koşul yerleşik eylem ][condition-icon]<br> **koşulu**][condition-doc] | Koşulu değerlendirin ve koşulun doğru veya yanlış olduğunu temel alarak farklı eylemleri çalıştırın. |
 | [![][for-each-icon]<br>**Her biri için** her bir yerleşik eylem için][for-each-doc] | Bir dizideki her öğe için aynı eylemleri gerçekleştirin. |
-| [![Kapsam yerleşik eylem ][scope-icon]<br> **kapsamı**][scope-doc] | Kapsamdaki eylemlerin çalışmasını bitirdikten sonra kendi durumlarını içeren, eylemleri *kapsamlara*gruplandırın. |
-| [![Yerleşik eylem ][switch-icon]<br> **anahtarını** Değiştir][switch-doc] | Eylemleri, varsayılan durum dışında benzersiz değerler atanmış *durumlarına*göre gruplandırın. Yalnızca atanmış değeri bir ifade, nesne veya belirteçten sonuçla eşleşen bu durumu çalıştırın. Hiçbir eşleşme yoksa, varsayılan durumu çalıştırın. |
+| [![Kapsam yerleşik eylem ][scope-icon]<br> **kapsamı**][scope-doc] | Kapsamdaki eylemlerin çalışmasını bitirdikten sonra kendi durumlarını içeren, eylemleri *kapsamlara* gruplandırın. |
+| [![Yerleşik eylem ][switch-icon]<br> **anahtarını** Değiştir][switch-doc] | Eylemleri, varsayılan durum dışında benzersiz değerler atanmış *durumlarına* göre gruplandırın. Yalnızca atanmış değeri bir ifade, nesne veya belirteçten sonuçla eşleşen bu durumu çalıştırın. Hiçbir eşleşme yoksa, varsayılan durumu çalıştırın. |
 | [![Yerleşik eylemi Sonlandır ][terminate-icon]<br> **Sonlandır**][terminate-doc] | Etkin bir şekilde çalışan mantıksal uygulama iş akışını durdurun. |
 | [![Sürece yerleşik eyleme kadar ][until-icon]<br> **Until**][until-doc] | Belirtilen koşul doğru olana veya bir durum değiştirilene kadar eylemleri tekrarlayın. |
 |||
@@ -120,9 +120,9 @@ Logic Apps, veri çıktıları ve biçimleri ile çalışmaya yönelik yerleşik
 
 | Ad | Açıklama |
 |------|-------------|
-| [![Veri Işlemleri yerleşik eylem ][data-operations-icon]<br> **verileri işlemleri**][data-operations-doc] | Verilerle işlemleri gerçekleştirin: <p>- **Oluştur**: çeşitli türlerde birden çok girişe ait tek bir çıktı oluşturun. <br>- **CSV tablosu oluştur**: JSON nesneleriyle bir diziden virgülle ayrılmış değer (CSV) tablosu oluşturun. <br>- **HTML tablosu oluştur**: JSON nesneleriyle BIR diziden HTML tablosu oluşturma. <br>- **Diziyi filtrele**: ölçütlerinizi karşılayan başka bir dizideki öğelerden bir dizi oluşturun. <br>- **Birleştir**: dizideki tüm öğelerden bir dize oluşturun ve bu öğeleri belirtilen sınırlayıcıyla ayırın. <br>- **JSON Ayrıştır**: iş akışınızda bu özellikleri kullanabilmeniz IÇIN, JSON içeriğindeki özelliklerden ve bunların değerlerinden Kullanıcı dostu belirteçler oluşturun. <br>- Şunları **seçin**: öğeleri veya değerleri başka bir dizide dönüştürerek ve bu öğeleri belirtilen ÖZELLIKLERLE eşleyerek JSON nesneleriyle bir dizi oluşturun. |
-| ![Tarih saat yerleşik eylemi][date-time-icon]<br>**Tarih saat** | Zaman damgalarına sahip işlemleri gerçekleştirin: <p>- **Zamana Ekle**: belirtilen birim sayısını bir zaman damgasına ekleyin. <br>- **Saat dilimini Dönüştür**: kaynak saat dilimindeki bir zaman damgasını hedef saat dilimine dönüştürür. <br>- **Geçerli zaman**: geçerli zaman damgasını bir dize olarak döndürür. <br>- **Gelecek zamanı al**: geçerli zaman damgasını ve belirtilen zaman birimlerini döndürün. <br>- **Son saati al**: geçerli zaman damgasını belirtilen zaman birimleriyle döndürün. <br>- Şu **andan itibaren**: zaman damgasından bir dizi zaman birimi çıkar. |
-| [![Değişkenler yerleşik eylem ][variables-icon]<br> **değişkenleri**][variables-doc] | Değişkenlerle işlemleri gerçekleştirin: <p>- **Dizi değişkenine Ekle**: bir değişken tarafından depolanan bir dizideki son öğe olarak bir değer ekleyin. <br>- **Dize değişkenine Ekle**: bir değişken tarafından depolanan bir dizedeki son karakter olarak bir değer ekleyin. <br>- **Değişken azaltma**: bir değişkeni sabit bir değere küçültün. <br>- **Artış değişkeni**: bir değişkeni sabit bir değerle artırın. <br>- **Değişkeni Başlat**: bir değişken oluşturun ve veri türünü ve başlangıç değerini bildirin. <br>- **Set değişkeni**: var olan bir değişkene farklı bir değer atayın. |
+| [![Veri Işlemleri yerleşik eylem ][data-operations-icon]<br> **verileri işlemleri**][data-operations-doc] | Verilerle işlemleri gerçekleştirin: <p>- **Oluştur** : çeşitli türlerde birden çok girişe ait tek bir çıktı oluşturun. <br>- **CSV tablosu oluştur** : JSON nesneleriyle bir diziden virgülle ayrılmış değer (CSV) tablosu oluşturun. <br>- **HTML tablosu oluştur** : JSON nesneleriyle BIR diziden HTML tablosu oluşturma. <br>- **Diziyi filtrele** : ölçütlerinizi karşılayan başka bir dizideki öğelerden bir dizi oluşturun. <br>- **Birleştir** : dizideki tüm öğelerden bir dize oluşturun ve bu öğeleri belirtilen sınırlayıcıyla ayırın. <br>- **JSON Ayrıştır** : iş akışınızda bu özellikleri kullanabilmeniz IÇIN, JSON içeriğindeki özelliklerden ve bunların değerlerinden Kullanıcı dostu belirteçler oluşturun. <br>- Şunları **seçin** : öğeleri veya değerleri başka bir dizide dönüştürerek ve bu öğeleri belirtilen ÖZELLIKLERLE eşleyerek JSON nesneleriyle bir dizi oluşturun. |
+| ![Tarih saat yerleşik eylemi][date-time-icon]<br>**Tarih saat** | Zaman damgalarına sahip işlemleri gerçekleştirin: <p>- **Zamana Ekle** : belirtilen birim sayısını bir zaman damgasına ekleyin. <br>- **Saat dilimini Dönüştür** : kaynak saat dilimindeki bir zaman damgasını hedef saat dilimine dönüştürür. <br>- **Geçerli zaman** : geçerli zaman damgasını bir dize olarak döndürür. <br>- **Gelecek zamanı al** : geçerli zaman damgasını ve belirtilen zaman birimlerini döndürün. <br>- **Son saati al** : geçerli zaman damgasını belirtilen zaman birimleriyle döndürün. <br>- Şu **andan itibaren** : zaman damgasından bir dizi zaman birimi çıkar. |
+| [![Değişkenler yerleşik eylem ][variables-icon]<br> **değişkenleri**][variables-doc] | Değişkenlerle işlemleri gerçekleştirin: <p>- **Dizi değişkenine Ekle** : bir değişken tarafından depolanan bir dizideki son öğe olarak bir değer ekleyin. <br>- **Dize değişkenine Ekle** : bir değişken tarafından depolanan bir dizedeki son karakter olarak bir değer ekleyin. <br>- **Değişken azaltma** : bir değişkeni sabit bir değere küçültün. <br>- **Artış değişkeni** : bir değişkeni sabit bir değerle artırın. <br>- **Değişkeni Başlat** : bir değişken oluşturun ve veri türünü ve başlangıç değerini bildirin. <br>- **Set değişkeni** : var olan bir değişkene farklı bir değer atayın. |
 |||
 
 <a name="managed-api-connectors"></a>
@@ -137,12 +137,12 @@ Logic Apps, bu hizmet veya sistemlerle görevleri, işlemleri ve iş akışları
 | [![SQL Server Managed Connector ][sql-server-icon]<br> **SQL Server**][sql-server-doc] | Kayıtları yönetebilmeniz, saklı yordamları çalıştırabilmeniz veya sorgular gerçekleştirebilmeniz için, şirket içi SQL Server veya buluttaki bir Azure SQL veritabanı 'na bağlanın. |
 | [![Azure Blob depolama yönetilen Bağlayıcısı ][azure-blob-storage-icon]<br> **Azure Blob <br> depolama**][azure-blob-storage-doc] | Blob içeriğini oluşturup yönetebilmeniz için depolama hesabınıza bağlanın. |
 | [![Office 365 Outlook Managed Connector ][office-365-outlook-icon]<br> **Office 365 <br> Outlook**][office-365-outlook-doc] | E-postalar, görevler, takvim olayları ve toplantılar, kişiler, istekler ve daha fazlasını oluşturabilmeniz ve yönetebilmeniz için iş veya okul e-posta hesabınıza bağlanın. |
-| [![SFTP-SSH Managed Connector ][sftp-ssh-icon]<br> **SFTP-SSH**][sftp-ssh-doc] | Dosya ve klasörlerle çalışabilmeniz için SSH kullanarak İnternet 'ten erişebileceğiniz SFTP sunucularına bağlanın. |
-| [![SharePoint Online Managed Connector ][sharepoint-online-icon]<br> **SharePoint <br> Online**][sharepoint-online-doc] | Dosyaları, ekleri, klasörleri ve daha fazlasını yönetebilmeniz için SharePoint Online 'a bağlanın. |
+| [![SFTP-SSH Managed Connector ][sftp-ssh-icon]<br> **SFTP-SSH**][sftp-ssh-doc] | Dosyalarınızla ve klasörlerinizle çalışabilmeniz amacıyla SSH kullanarak İnternet'ten erişim sağlamak için SFTP sunucularına bağlanın. |
+| [![SharePoint Online Managed Connector ][sharepoint-online-icon]<br> **SharePoint <br> Online**][sharepoint-online-doc] | Dosyaları, ekleri, klasörleri ve daha fazlasını yönetmek için SharePoint Online'a bağlanın. |
 | [![Azure kuyrukları yönetilen bağlayıcı ][azure-queues-icon]<br> **Azure <br> kuyrukları**][azure-queues-doc] | Kuyrukları ve iletileri oluşturabilmeniz ve yönetebilmeniz için Azure depolama hesabınıza bağlanın. |
 | [![FTP yönetilen Bağlayıcısı ][ftp-icon]<br> **FTP**][ftp-doc] | Dosya ve klasörlerle çalışabilmeniz için internet 'ten erişebileceğiniz FTP sunucularına bağlanın. |
 | [![Dosya sistemi tarafından yönetilen bağlayıcı ][file-system-icon]<br> **Dosya <br> sistemi**][file-system-doc] | Dosya oluşturup yönetebilmek için şirket içi dosya paylaşımınıza bağlanın. |
-| [![Azure Event Hubs Managed Connector ][azure-event-hubs-icon]<br> **Azure Event Hubs**][azure-event-hubs-doc] | Olayları bir olay hub 'ı aracılığıyla tüketin ve yayımlayın. Örneğin, Event Hubs ile mantıksal uygulamanızdan çıkış alın ve ardından söz konusu çıkışı gerçek zamanlı bir analiz sağlayıcısına gönderin. |
+| [![Azure Event Hubs Managed Connector ][azure-event-hubs-icon]<br> **Azure Event Hubs**][azure-event-hubs-doc] | Olayları bir olay hub'ı aracılığıyla kullanın ve yayımlayın. Örneğin, Event Hubs ile mantıksal uygulamanızdan çıkış alın ve ardından söz konusu çıkışı gerçek zamanlı bir analiz sağlayıcısına gönderin. |
 | [![Azure Event Grid yönetilen bağlayıcı ][azure-event-grid-icon]<br> **Azure olay** <br> **Kılavuzu**][azure-event-grid-doc] | Örneğin, Azure kaynakları veya üçüncü taraf kaynakları değiştiğinde Event Grid tarafından yayımlanan olayları izleyin. |
 | [![Salesforce yönetilen bağlayıcı ][salesforce-icon]<br> **Salesforce**][salesforce-doc] | Kayıtlar, işler, nesneler ve daha fazlası gibi öğeleri oluşturup yönetebilmeniz için Salesforce hesabınıza bağlanın. |
 |||
@@ -151,7 +151,9 @@ Logic Apps, bu hizmet veya sistemlerle görevleri, işlemleri ve iş akışları
 
 ## <a name="on-premises-connectors"></a>Şirket içi bağlayıcılar
 
-Şirket içi sistemlerdeki verilere ve kaynaklara erişmek için Logic Apps sağladığı yaygın olarak kullanılan bazı standart bağlayıcılar aşağıda verilmiştir. Şirket içi bir sisteme bağlantı oluşturabilmeniz için önce şirket [içi veri ağ geçidini indirmeniz, yüklemeniz ve ayarlamanız][gateway-doc]gerekir. Bu ağ geçidi, gerekli ağ altyapısını ayarlamak zorunda kalmadan güvenli bir iletişim kanalı sağlar.
+Şirket içi bir sisteme bağlantı oluşturabilmeniz için önce şirket [içi veri ağ geçidini indirmeniz, yüklemeniz ve ayarlamanız][gateway-doc]gerekir. Bu ağ geçidi, gerekli ağ altyapısını ayarlamak zorunda kalmadan güvenli bir iletişim kanalı sağlar. 
+
+Şirket içi sistemlerdeki verilere ve kaynaklara erişmek için Logic Apps sağladığı yaygın olarak kullanılan *bazı* standart bağlayıcılar aşağıda verilmiştir. Şirket içi bağlayıcılar listesi için bkz. [desteklenen veri kaynakları](../logic-apps/logic-apps-gateway-connection.md#supported-connections).
 
 :::row:::
     :::column:::
@@ -367,17 +369,17 @@ Daha fazla bilgi için şu konulara bakın:
 
 ## <a name="triggers-and-action-types"></a>Tetikleyiciler ve eylem türleri
 
-Bağlayıcılar, *Tetikleyiciler*, *Eylemler*veya her ikisini de sağlayabilir. *Tetikleyici* , genellikle tetikleyiciyi tetikleyen ve mantıksal uygulamanızı çalıştırmaya başladığı olayı belirten herhangi bir mantıksal uygulamadaki ilk adımdır. Örneğin, FTP Bağlayıcısı, "bir dosya eklendiğinde veya değiştirildiğinde" mantıksal uygulamanızı başlatan bir tetikleyicisine sahiptir. Bazı Tetikleyiciler, belirtilen olay veya verileri düzenli olarak denetler ve ardından belirtilen olay veya verileri algılarsa tetiklenir. Diğer Tetikleyiciler bekler, ancak belirli bir olay gerçekleştiğinde veya yeni veri kullanılabilir olduğunda anında harekete geçecektir. Tetikleyiciler ayrıca mantıksal uygulamanıza gerekli verileri de geçirir. Mantıksal uygulamanız bu verileri iş akışı boyunca okuyabilir ve kullanabilir. Örneğin, Office 365 Outlook Bağlayıcısı, "yeni bir e-posta geldiğinde" bir tetikleyicisine sahiptir. Bu, içeriği bu e-postadaki mantıksal uygulamanızın iş akışına geçirebilir.
+Bağlayıcılar, *Tetikleyiciler* , *Eylemler* veya her ikisini de sağlayabilir. *Tetikleyici* , genellikle tetikleyiciyi tetikleyen ve mantıksal uygulamanızı çalıştırmaya başladığı olayı belirten herhangi bir mantıksal uygulamadaki ilk adımdır. Örneğin, FTP Bağlayıcısı, "bir dosya eklendiğinde veya değiştirildiğinde" mantıksal uygulamanızı başlatan bir tetikleyicisine sahiptir. Bazı Tetikleyiciler, belirtilen olay veya verileri düzenli olarak denetler ve ardından belirtilen olay veya verileri algılarsa tetiklenir. Diğer Tetikleyiciler bekler, ancak belirli bir olay gerçekleştiğinde veya yeni veri kullanılabilir olduğunda anında harekete geçecektir. Tetikleyiciler ayrıca mantıksal uygulamanıza gerekli verileri de geçirir. Mantıksal uygulamanız bu verileri iş akışı boyunca okuyabilir ve kullanabilir. Örneğin, Office 365 Outlook Bağlayıcısı, "yeni bir e-posta geldiğinde" bir tetikleyicisine sahiptir. Bu, içeriği bu e-postadaki mantıksal uygulamanızın iş akışına geçirebilir.
 
 Bir tetikleyici etkinleştirildikten sonra, Azure Logic Apps mantıksal uygulamanızın bir örneğini oluşturur ve mantıksal uygulamanızın iş akışındaki *eylemleri* çalıştırmaya başlar. Eylemler, tetikleyiciyi izleyen ve mantıksal uygulamanızın iş akışında görevleri gerçekleştiren adımlardır. Örneğin, bir SQL veritabanından müşteri verilerini alan ve daha sonraki eylemlerdeki verileri işleyen bir mantıksal uygulama oluşturabilirsiniz.
 
 Azure Logic Apps sağladığı genel tetikleyici türleri şunlardır:
 
-* *Yinelenme tetikleyicisi*: Bu tetikleyici belirtilen bir zamanlamaya göre çalışır ve belirli bir hizmet ya da sistemle sıkı bir şekilde ilişkilendirilmez.
+* *Yinelenme tetikleyicisi* : Bu tetikleyici belirtilen bir zamanlamaya göre çalışır ve belirli bir hizmet ya da sistemle sıkı bir şekilde ilişkilendirilmez.
 
-* *Yoklama tetikleyicisi*: Bu tetikleyici belirtilen zamanlamaya göre belirli bir hizmeti veya sistemi düzenli olarak yoklar, yeni verileri denetler veya belirli bir olayın olup olmadığını denetler. Yeni veriler varsa veya belirli bir olay meydana gelirse, tetikleyici mantıksal uygulamanızın yeni bir örneğini oluşturur ve çalıştırır. Bu, artık giriş olarak geçirilen verileri kullanabilir.
+* *Yoklama tetikleyicisi* : Bu tetikleyici belirtilen zamanlamaya göre belirli bir hizmeti veya sistemi düzenli olarak yoklar, yeni verileri denetler veya belirli bir olayın olup olmadığını denetler. Yeni veriler varsa veya belirli bir olay meydana gelirse, tetikleyici mantıksal uygulamanızın yeni bir örneğini oluşturur ve çalıştırır. Bu, artık giriş olarak geçirilen verileri kullanabilir.
 
-* *Gönderim tetikleyicisi*: Bu tetikleyici, yeni verileri bekler ve dinler veya bir olayın gerçekleşmesini ister. Yeni veriler kullanılabilir olduğunda veya olay gerçekleştiğinde, tetikleyici mantıksal uygulamanızın yeni bir örneğini oluşturur ve çalıştırır. Bu, artık giriş olarak geçirilen verileri kullanabilir.
+* *Gönderim tetikleyicisi* : Bu tetikleyici, yeni verileri bekler ve dinler veya bir olayın gerçekleşmesini ister. Yeni veriler kullanılabilir olduğunda veya olay gerçekleştiğinde, tetikleyici mantıksal uygulamanızın yeni bir örneğini oluşturur ve çalıştırır. Bu, artık giriş olarak geçirilen verileri kullanabilir.
 
 <a name="connections"></a>
 

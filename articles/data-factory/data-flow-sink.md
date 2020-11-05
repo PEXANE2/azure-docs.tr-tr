@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/30/2020
-ms.openlocfilehash: 8a9c022400f739276060c3d8a275d06bc5ea8579
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.date: 11/02/2020
+ms.openlocfilehash: 47aada0abe2520ba81689ca8fa17787fde847d83
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147244"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360258"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Eşleme veri akışında havuz dönüştürme
 
@@ -71,9 +71,11 @@ Aşağıdaki videoda, metin ile ayrılmış dosya türleri için birçok farklı
 
 **Tempdb kullan:** Varsayılan olarak Data Factory, verileri yükleme işleminin bir parçası olarak depolamak için genel geçici bir tablo kullanacaktır. Alternatif olarak, "TempDB kullan" seçeneğinin işaretini kaldırın ve bunun yerine, geçici saklama tablosunu bu havuz için kullanılmakta olan veritabanında bulunan bir kullanıcı veritabanında depolamasını Data Factory isteyebilirsiniz.
 
-!['Nin](media/data-flow/tempdb.png "'Nin")
+![Geçici VERITABANıNı kullan](media/data-flow/tempdb.png "Geçici VERITABANıNı kullan")
 
 ## <a name="cache-sink"></a>Önbellek havuzu
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4HKt1]
  
 *Önbellek havuzu* , veri akışı veri deposu yerine Spark önbelleğine yazar. Veri akışlarını eşleme bölümünde, bir *önbellek araması* kullanarak bu veriye birçok kez aynı Flow dahilinde başvuru yapabilirsiniz. Bu, bir ifadenin parçası olarak verilere başvurmak istediğinizde ancak sütunlara açıkça dahil etmek istemediğinizde yararlıdır. Bir önbellek havuzunun, bir veri deposunda en yüksek değer ve bir hata iletisi veritabanına eşleşen hata kodları arayan yaygın örnekleri. 
 
@@ -101,6 +103,11 @@ Automakapatmadan sonra, sabit sütun tabanlı eşlemeler veya kural tabanlı eş
 Varsayılan olarak, veriler belirleyici olmayan bir sırada birden çok havuza yazılır. Yürütme altyapısı, dönüştürme mantığı tamamlanana kadar verileri paralel olarak yazar ve havuz sıralaması her bir çalıştırmaya göre değişiklik gösterebilir. Tam bir havuz sıralaması belirtmek için, veri akışının **genel** sekmesinde **özel havuz sıralamasını** etkinleştirin. Etkinleştirildiğinde, havuzlar artan sırada sırayla yazılır.
 
 ![Özel havuz sıralamasını gösteren ekran görüntüsü.](media/data-flow/custom-sink-ordering.png "Özel havuz sıralamasını gösteren ekran görüntüsü.")
+
+> [!NOTE]
+> [Önbelleğe alınmış aramaları](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-expression-builder#cached-lookup)kullanırken, havuz sıraağınızın önbelleğe alınmış havuzları 0 olarak ayarlanmış olduğundan emin olun.
+
+![Özel havuz sıralaması](media/data-flow/cache-2.png "Özel havuz sıralaması")
 
 ## <a name="data-preview-in-sink"></a>Havuzda veri önizleme
 

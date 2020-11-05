@@ -10,12 +10,13 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 07/10/2020
-ms.openlocfilehash: c3fd4dcfa4c01c39e4e6cab4915de807c3d19ae6
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.custom: automl
+ms.openlocfilehash: 866be6a2449f3b10d200968782b90653e1363906
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913866"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359808"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Öğretici: Azure Machine Learning otomatik ML ile sınıflandırma modeli oluşturma
 
@@ -151,7 +152,7 @@ Verilerinizi yükleyip yapılandırdıktan sonra, denemenizin kurulumunu yapabil
         Ek &nbsp; yapılandırma|Açıklama|&nbsp;Öğretici için &nbsp; değer
         ------|---------|---
         Birincil ölçüm| Makine öğrenimi algoritmasının ölçülecek değerlendirme ölçümü.|AUC_weighted
-        En iyi modeli açıkla| Otomatik ML tarafından oluşturulan en iyi modelde explainability 'yi otomatik olarak gösterir.| Etkinleştir
+        En iyi modeli açıkla| Otomatik ML tarafından oluşturulan en iyi modelde explainability 'yi otomatik olarak gösterir.| Etkinleştirme
         Engellenen algoritmalar | Eğitim işinden dışlamak istediğiniz algoritmalar| Yok
         Çıkış ölçütü| Bir kriterle karşılanırsa eğitim işi durdurulur. |Eğitim &nbsp; işi &nbsp; süresi (saat): 1 <br> Ölçüm &nbsp; puan &nbsp; eşiği: yok
         Doğrulama | Çapraz doğrulama türü ve test sayısı seçin.|Doğrulama türü:<br>&nbsp;&nbsp;çapraz doğrulamayı yana kesme <br> <br> Doğrulama sayısı: 2

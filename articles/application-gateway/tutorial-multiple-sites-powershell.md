@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: dd73dc69fc2d40a0b4c24739dca6ad8174ad1047
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30c5c5be89f8a318de8690430d4d248817961fc2
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595885"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360318"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>Azure PowerShell kullanarak birden çok web sitesi barındıran bir uygulama ağ geçidi oluşturma
 
-Bir [uygulama ağ geçidi](overview.md) oluştururken Azure PowerShell’i [birden çok web sitesi barındırmayı yapılandırmak](multiple-site-overview.md) için kullanabilirsiniz. Bu makalede, sanal makine ölçek kümelerini kullanarak arka uç adres havuzları tanımlarsınız. Ardından sahip olduğunuz dinleyicileri ve kuralları, web trafiğinin havuzlardaki uygun sunuculara ulaşması için yapılandırırsınız. Bu makalede, birden çok etki alanına sahip olduğunuz ve *www.contoso.com* ve *www.fabrikam.com*örneklerini kullanan varsayılmaktadır.
+Bir [uygulama ağ geçidi](overview.md) oluştururken Azure PowerShell’i [birden çok web sitesi barındırmayı yapılandırmak](multiple-site-overview.md) için kullanabilirsiniz. Bu makalede, sanal makine ölçek kümelerini kullanarak arka uç adres havuzları tanımlarsınız. Ardından sahip olduğunuz dinleyicileri ve kuralları, web trafiğinin havuzlardaki uygun sunuculara ulaşması için yapılandırırsınız. Bu makalede, birden çok etki alanına sahip olduğunuz ve *www.contoso.com* ve *www.fabrikam.com* örneklerini kullanan varsayılmaktadır.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -127,7 +127,7 @@ Uygulama ağ geçidinin trafiği arka uç havuzlarına uygun şekilde yönlendir
 
 >[!NOTE]
 > Application Gateway veya WAF v2 SKU 'SU ile dinleyici başına 5 adede kadar ana bilgisayar adı yapılandırabilir ve ana bilgisayar adında joker karakterler kullanabilirsiniz. Daha fazla bilgi için bkz. [dinleyicide joker ana bilgisayar adları](multiple-site-overview.md#wildcard-host-names-in-listener-preview) .
->Azure PowerShell kullanarak bir dinleyicide birden çok konak adı ve joker karakter kullanmak için yerine kullanmanız gerekir `-HostNames` `-HostName` . Ana bilgisayar adları ile, virgülle ayrılmış değerler olarak 5 adede kadar konak adı belirtebilirsiniz. Örneğin, `-HostNames "*.contoso.com,*.fabrikam.com"`
+>Azure PowerShell kullanarak bir dinleyicide birden çok konak adı ve joker karakter kullanmak için yerine kullanmanız gerekir `-HostNames` `-HostName` . Ana bilgisayar adları ile, virgülle ayrılmış değerler olarak 5 adede kadar konak adı belirtebilirsiniz. Örneğin, `-HostNames "*.contoso.com","*.fabrikam.com"`
 
 ```azurepowershell-interactive
 $contosolistener = New-AzApplicationGatewayHttpListener `

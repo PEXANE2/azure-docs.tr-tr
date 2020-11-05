@@ -11,12 +11,12 @@ ms.topic: overview
 ms.service: azure-communication-services
 ms.custom: tracking-python, devx-track-js
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: c70028319fc0ed148fe7d102a925c4a07f2ab0f0
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 52cec861ba81a804081c4b879ab73333a3281e61
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91757188"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360301"
 ---
 # <a name="quickstart-send-an-sms-message"></a>Hızlı başlangıç: SMS iletisi gönder
 
@@ -37,6 +37,10 @@ ms.locfileid: "91757188"
 ::: zone pivot="programming-language-java"
 [!INCLUDE [Send SMS with Java client library](./includes/send-sms-java.md)]
 ::: zone-end
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+SMS tesliminde ilgili sorunları gidermek için, teslim ayrıntılarını yakalamak üzere [Event Grid ile teslim raporlamayı etkinleştirebilirsiniz](./handle-sms-events.md) .
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 646be410cceb214efad19757378c74f086e58578
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8166e2a937b905ae153e6b86cb026ff2be2415a8
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89263081"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360556"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>Resource Manager’a erişmek için Windows VM sistem tarafından atanan yönetilen kimliği kullanma
 
@@ -37,15 +37,16 @@ Bu hızlı başlangıçta, sistem tarafından atanmış yönetilen kimliğin etk
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
 ## <a name="grant-your-vm-access-to-a-resource-group-in-resource-manager"></a>Resource Manager’da kaynak grubuna VM'niz için erişim verme
+
 Azure kaynakları için yönetilen kimlikler kullanıldığında kodunuz Azure AD kimlik doğrulamasını destekleyen kaynaklarda kimlik doğrulaması yapmak için erişim belirteçleri alabilir.  Azure Resource Manager Azure AD kimlik doğrulamasını destekler.  Öncelikle bu VM’in sistem tarafından atanan yönetilen kimliğine Resource Manager’da bulunan bir kaynak için erişim izni vermemiz gerekir; bu durumda bu kaynak VM’nin içinde yer aldığı Kaynak Grubudur.  
 
 1.  **Kaynak Grupları** sekmesine gidin. 
-2.  **Windows VM**’niz için oluşturduğunuz **Kaynak Grubu**’nu seçin. 
+2.  **Windows VM** ’niz için oluşturduğunuz **Kaynak Grubu** ’nu seçin. 
 3.  Sol paneldeki **Erişim denetimi (IAM)** öğesine gidin. 
-4.  Ardından, **rol atamasını** **Windows VM**'niz için yeni bir rol ataması ekleyin.  **Rol** olarak **Okuyucu**'yu seçin. 
+4.  Ardından, **rol atamasını** **Windows VM** 'niz için yeni bir rol ataması ekleyin.  **Rol** olarak **Okuyucu** 'yu seçin. 
 5.  Sonraki açılan kutuda, kaynak **sanal makinesine** **erişim atayın** . 
-6.  Ardından, **Abonelik** açılan listesinde uygun aboneliğin listelendiğinden emin olun. **Kaynak Grubu** için de **Tüm kaynak grupları**'nı seçin. 
-7.  Son olarak **Seç** altındaki açılan listeden Windows VM'nizi seçin ve **Kaydet**’e tıklayın.
+6.  Ardından, **Abonelik** açılan listesinde uygun aboneliğin listelendiğinden emin olun. **Kaynak Grubu** için de **Tüm kaynak grupları** 'nı seçin. 
+7.  Son olarak **Seç** altındaki açılan listeden Windows VM'nizi seçin ve **Kaydet** ’e tıklayın.
 
     ![Alternatif resim metni](media/msi-tutorial-windows-vm-access-arm/msi-windows-permissions.png)
 
@@ -53,10 +54,10 @@ Azure kaynakları için yönetilen kimlikler kullanıldığında kodunuz Azure A
 
 Bu bölümde **PowerShell** kullanmanız gerekecektir.  **PowerShell** yüklü değilse [buradan](/powershell/azure/) indirin. 
 
-1.  Portalda, **Sanal Makineler**'e ve Windows sanal makinenize gidin, ardından **Genel Bakış**'ta **Bağlan**'a tıklayın. 
+1.  Portalda, **Sanal Makineler** 'e ve Windows sanal makinenize gidin, ardından **Genel Bakış** 'ta **Bağlan** 'a tıklayın. 
 2.  Windows VM 'yi oluştururken eklediğiniz **Kullanıcı adınızı** ve **parolanızı** girin. 
 3.  Sanal makineyle bir **Uzak Masaüstü bağlantısı** oluşturduğunuza göre, uzak oturumda **PowerShell** ' i açın. 
-4.  Invoke-WebRequest cmdlet 'ini kullanarak, Azure Resource Manager için bir erişim belirteci almak üzere Azure kaynakları uç noktası için yerel yönetilen kimliğe bir istek oluşturun.
+4.  Invoke-WebRequest cmdlet 'ini kullanarak, Azure Resource Manager için bir erişim belirteci almak üzere Azure kaynakları uç noktası için yerel yönetilen kimliğe bir istek yapın.
 
     ```powershell
        $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' -Method GET -Headers @{Metadata="true"}
@@ -76,7 +77,7 @@ Bu bölümde **PowerShell** kullanmanız gerekecektir.  **PowerShell** yüklü d
     $ArmToken = $content.access_token
     ```
     
-    Son olarak erişim belirteci kullanarak Azure Resource Manager çağrısı yapın. Bu örnekte, Azure Resource Manager çağrısı yapmak için Invoke-WebRequest cmdlet 'ini de kullandık ve erişim belirtecini yetkilendirme üst bilgisine dahil ediyoruz.
+    Son olarak erişim belirteci kullanarak Azure Resource Manager çağrısı yapın. Bu örnekte, Azure Resource Manager çağrısını yapmak için Invoke-WebRequest cmdlet 'ini de kullandık ve erişim belirtecini yetkilendirme üst bilgisine dahil ediyoruz.
     
     ```powershell
     (Invoke-WebRequest -Uri https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>?api-version=2016-06-01 -Method GET -ContentType "application/json" -Headers @{ Authorization ="Bearer $ArmToken"}).content

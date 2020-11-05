@@ -6,14 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 10/30/2020
+ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 0a97286564f7d2c04268034d6f70b1a178cbb5a5
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 3f3196e775ff9e7d8064559069414952f09a3016
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348347"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360233"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Ticari Market iş ortağı ve müşteri kullanımı attributıon
 
@@ -311,10 +311,6 @@ Müşteriler, Azure portal içinde bireysel kaynakların veya müşteri tanıml�
 **Bu metodolojinin dijital Iş ortağı (DPOR) ile aynı mı?**
 
 Dağıtım ve kullanımı bir iş ortağının çözümüne bağlamak için bu yeni yöntem bir iş ortağı çözümünü Azure kullanımına bağlama mekanizması sağlar. DPOR, bir danışmanlık (Sistem Tümleştirici) veya yönetim (yönetilen hizmet sağlayıcısı) ortağını bir müşterinin Azure aboneliğiyle ilişkilendirmek üzere tasarlanmıştır.
-
-**Azure depolama 'nın GUID Oluşturucu formunu kullanmanın avantajı nedir?**
-
-Azure depolama 'nın GUID Oluşturucu formu, gerekli biçimdeki bir GUID oluşturmak için garanti edilir. Ayrıca, Azure Storage 'ın veri düzlemi izleme yöntemlerinden herhangi birini kullanıyorsanız, Market denetim düzlemi izleme için aynı GUID 'den yararlanabilirsiniz. Bu, ayrı GUID 'LERI sürdürmenize gerek kalmadan, Iş ortağı için birleştirilmiş bir Birleşik GUID özelliğinden yararlanmanızı sağlar.
 
 **Azure Marketi 'nde bir çözüm şablonu teklifi için özel, özel bir VHD kullanabilir miyim?**
 

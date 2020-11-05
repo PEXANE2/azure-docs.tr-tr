@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 36540de8924a1433f16f942d9aedc059efae05de
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 09bd82225fb7d8a6eefe84b5a70660e4553a3070
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348687"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360794"
 ---
 # <a name="update-management-overview"></a>Güncelleştirme Yönetimine genel bakış
 
@@ -18,6 +18,9 @@ Azure Otomasyonu 'ndaki Güncelleştirme Yönetimi kullanarak Azure 'daki Window
 
 > [!NOTE]
 > Azure Otomasyonu 'ndan özel betikleri çalıştırmak için Güncelleştirme Yönetimi ile yapılandırılmış bir makine kullanamazsınız. Bu makine, yalnızca Microsoft tarafından imzalanmış güncelleştirme betiğini çalıştırabilir.
+
+> [!NOTE]
+> Şu anda, bir yay etkin sunucusundan Güncelleştirme Yönetimi doğrudan etkinleştirme desteklenmez. Gereksinimleri anlamak ve sunucunuz için nasıl etkinleştireceğinizi anlamak için bkz. [Otomasyon hesabınızdan güncelleştirme yönetimi etkinleştirme](../../automation/update-management/enable-from-automation-account.md) .
 
 Kullanılabilir *kritik* ve *güvenlik* düzeltme eklerini Azure sanal makinenize otomatik olarak Indirip yüklemek için Windows VM 'leri için [Otomatik VM Konuk düzeltme eki uygulamayı](../../virtual-machines/windows/automatic-vm-guest-patching.md) gözden geçirin.
 

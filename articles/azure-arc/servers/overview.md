@@ -4,12 +4,12 @@ description: Azure 'un dışında barındırılan sunucuları Azure kaynağı gi
 keywords: Azure Otomasyonu, DSC, PowerShell, istenen durum yapılandırması, güncelleştirme yönetimi, değişiklik izleme, envanter, runbook 'lar, Python, grafik, karma
 ms.date: 11/04/2020
 ms.topic: overview
-ms.openlocfilehash: 2c92d7c73ab17bd5a7bba980e20baa181899eb4e
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: b9d38b2395d922e3e2a7daec654cd73de7267ee1
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349163"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360590"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Azure Arc özellikli sunucular nedir?
 
@@ -32,7 +32,7 @@ Makinenizi Azure Arc etkin sunucularına bağladığınızda, aşağıdaki yapı
 - Windows ve Linux sunucularınız için işletim sistemi güncelleştirmelerini yönetmek üzere Azure Otomasyonu 'nda [güncelleştirme yönetimi](../../automation/update-management/update-mgmt-overview.md) kullanın
 
     > [!NOTE]
-    > Şu anda, seçilen yay etkin sunucusundan Güncelleştirme Yönetimi etkinleştirilmesi desteklenmez. Gereksinimleri anlamak ve sunucunuz için nasıl etkinleştireceğinizi anlamak için bkz. [Otomasyon hesabınızdan güncelleştirme yönetimi etkinleştirme](../../automation/update-management/enable-from-automation-account.md) .
+    > Şu anda, bir yay etkin sunucusundan Güncelleştirme Yönetimi doğrudan etkinleştirme desteklenmez. Gereksinimleri anlamak ve sunucunuz için nasıl etkinleştireceğinizi anlamak için bkz. [Otomasyon hesabınızdan güncelleştirme yönetimi etkinleştirme](../../automation/update-management/enable-from-automation-account.md) .
 
 - Azure [Güvenlik Merkezi](../../security-center/security-center-introduction.md)'ni kullanarak tehdit algılama için Azure dışı sunucularınızı ve olası güvenlik tehditlerini proaktif bir şekilde izlemeyi dahil edin.
 

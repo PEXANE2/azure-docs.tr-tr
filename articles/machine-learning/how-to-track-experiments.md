@@ -1,7 +1,7 @@
 ---
 title: ML denemelerini ve ölçümlerini günlüğe kaydetme
 titleSuffix: Azure Machine Learning
-description: Model oluşturma sürecini iyileştirmek için Azure ML denemelerinizi ve çalıştırma ölçümlerini izleyin. run.log, Run.start_logging veya ScriptRunConfig ile eğitim betiğinize günlüğe kaydetme özelliği ekleyin.
+description: Gerçek zamanlı çalıştırma ölçümlerini izlemek ve hataların ve uyarıların tanılanmasına yardımcı olmak için ML eğitim çalışmalarında günlüğe kaydetmeyi etkinleştirin.
 services: machine-learning
 author: likebupt
 ms.author: keli19
@@ -11,14 +11,14 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 6680bdc525c6f07b8330277056413f886412551b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: deeee689c27008ab71df0a050be3d7a6b5109307
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318437"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361072"
 ---
-# <a name="enable-logging-in-azure-ml-training-runs"></a>Azure ML eğitim çalıştırmalarında günlüğe kaydetmeyi etkinleştirme
+# <a name="enable-logging-in-ml-training-runs"></a>ML eğitim çalıştırmaları 'nda günlüğü etkinleştir
 
 
 Azure Machine Learning Python SDK'sı hem varsayılan Python günlüğe kaydetme paketini hem de SDK'ya özgü işlevleri kullanarak gerçek zamanlı günlük kaydı yapmanızı sağlar. Günlükleri yerel olarak kaydedebilir ve portaldaki çalışma alanınıza gönderebilirsiniz.

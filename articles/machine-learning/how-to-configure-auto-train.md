@@ -1,7 +1,7 @@
 ---
 title: Otomatik ML denemeleri oluşturma
 titleSuffix: Azure Machine Learning
-description: Otomatik makine öğrenimi sizin için bir algoritma seçer ve dağıtım için hazırlanma bir model oluşturur. Otomatik makine öğrenimi denemeleri yapılandırmak için kullanabileceğiniz seçenekleri öğrenin.
+description: Otomatik makine öğrenimi denemeleri için veri kaynakları, hesaplar ve yapılandırma ayarları tanımlama hakkında bilgi edinin.
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: 09fe93d4e3ba50ced6c8f07d6fe25ace2376c388
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python,contperfq1, automl
+ms.openlocfilehash: 009018335e57943392b83047702f24890bf714d5
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320526"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359621"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 

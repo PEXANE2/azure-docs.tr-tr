@@ -11,12 +11,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Belge işleme
-ms.openlocfilehash: 287315440199c4dc3ded1298532167d37d89a877
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5df8ced885768308369599d94c5734fa0620c507
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976156"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360879"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Örnek etiketleme aracını kullanarak form tanıyıcı modelini etiketlerle eğitme
 
@@ -24,19 +24,27 @@ Bu hızlı başlangıçta, el ile etiketlenmiş verilerle özel bir belge işlem
 
 > [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
-* Azure aboneliğiniz olduktan sonra <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" bir form tanıyıcı kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtarınızı ve uç noktanızı almak için bir form tanıyıcı kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
+* Azure aboneliğiniz olduktan sonra <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" bir form tanıyıcı kaynağı oluşturun "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Azure Portal anahtarınızı ve uç noktanızı almak için bir form tanıyıcı kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
     * Uygulamanızı form tanıyıcı API 'sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
     * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
-* Aynı türde en az altı biçim kümesi. Bu verileri modeli eğitme ve bir formu test etmek için kullanacaksınız. Bu hızlı başlangıç için [örnek veri kümesi](https://go.microsoft.com/fwlink/?linkid=2090451) ( *sample_data.zip*indir ve Ayıkla) kullanabilirsiniz. Eğitim dosyalarını, standart performanslı katmanlı bir Azure depolama hesabındaki bir BLOB depolama kapsayıcısının köküne yükleyin.
+* Aynı türde en az altı biçim kümesi. Bu verileri modeli eğitme ve bir formu test etmek için kullanacaksınız. Bu hızlı başlangıç için [örnek veri kümesi](https://go.microsoft.com/fwlink/?linkid=2090451) ( *sample_data.zip* indir ve Ayıkla) kullanabilirsiniz. Eğitim dosyalarını, standart performanslı katmanlı bir Azure depolama hesabındaki bir BLOB depolama kapsayıcısının köküne yükleyin.
 
 ## <a name="create-a-form-recognizer-resource"></a>Form tanıyıcı kaynağı oluşturma
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
+
+## <a name="try-it-out"></a>Deneyin
+
+Form tanıyıcı örnek etiketleme aracını çevrimiçi olarak denemek için [Fott Web sitesine](https://fott-preview.azurewebsites.net/)gidin.
+
+> [!div class="nextstepaction"]
+> [Form tanıyıcı örnek etiketleme aracı](https://fott-preview.azurewebsites.net/)
+
 
 ## <a name="set-up-the-sample-labeling-tool"></a>Örnek etiketleme aracını ayarlama
 
@@ -122,7 +130,7 @@ Alanları aşağıdaki değerlerle girin:
 
 * **Görünen ad** -bağlantı görünen adı.
 * **Açıklama** -proje tanımlarınız.
-* **SAS URL 'si** -Azure Blob depolama kapsayıcının paylaşılan erişim IMZASı (SAS) URL 'si. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. Sona erme süresini hizmeti kullandıktan sonraki bir zamana ayarlayın. **Okuma**, **yazma**, **silme**ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* **SAS URL 'si** -Azure Blob depolama kapsayıcının paylaşılan erişim IMZASı (SAS) URL 'si. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al** ' ı seçin. Sona erme süresini hizmeti kullandıktan sonraki bir zamana ayarlayın. **Okuma** , **yazma** , **silme** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur** ' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
 :::image type="content" source="../media/label-tool/connections.png" alt-text="Örnek etiketleme aracının bağlantı ayarları.":::
 
@@ -139,7 +147,7 @@ Alanları aşağıdaki değerlerle girin:
 * **API anahtarı** -form tanıyıcı abonelik anahtarınız.
 * **Açıklama** -isteğe bağlı-proje açıklaması
 
-:::image type="content" source="../media/label-tool/new-project.png" alt-text="Örnek etiketleme aracının bağlantı ayarları.":::
+:::image type="content" source="../media/label-tool/new-project.png" alt-text="Örnek etiketleme aracında yeni proje sayfası.":::
 
 ## <a name="label-your-forms"></a>Formlarınızı etiketleme
 
@@ -155,7 +163,7 @@ Her belge için metin düzeni bilgilerini almak için sol bölmedeki **tüm dosy
 
 Ayrıca, hangi tabloların otomatik olarak ayıklandığını gösterir. Ayıklanan tabloyu görmek için belgenin sol tarafındaki tablo/kılavuz simgesine tıklayın. Bu hızlı başlangıçta, tablo içeriği otomatik olarak ayıklandığından tablo içeriğini etiketlendirilecektir, bunun yerine otomatik ayıklamanın olması gerekir.
 
-:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="Örnek etiketleme aracının bağlantı ayarları.":::
+:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="Örnek etiketleme aracında tablo görselleştirme.":::
 
 ### <a name="apply-labels-to-text"></a>Metne Etiketler uygulama
 
@@ -201,7 +209,7 @@ Ardından, Etiketler (Etiketler) oluşturacak ve bunları modelin tanımasını 
 
 ---
 
-:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="Örnek etiketleme aracının bağlantı ayarları.":::
+:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="Örnek etiketleme aracının ana düzenleyici penceresi.":::
 
 
 Formlarınızın en az beş kısmını etiketlemek için yukarıdaki adımları izleyin.
@@ -229,7 +237,7 @@ Aşağıdaki değer türleri ve Çeşitlemeler Şu anda destekleniyor:
 > 
 > `dmy` `mdy` Tarih biçimlendirme çalışması için bir biçim (,,) belirtmeniz gerekir `ymd` .
 >
-> Aşağıdaki karakterler Tarih sınırlayıcıları olarak kullanılabilir: `, - / . \` . Boşluk, sınırlayıcı olarak kullanılamaz. Örnek:
+> Aşağıdaki karakterler Tarih sınırlayıcıları olarak kullanılabilir: `, - / . \` . Boşluk, sınırlayıcı olarak kullanılamaz. Örneğin:
 > * 01, 01, 2020
 > * 01-01-2020
 > * 01/01/2020
@@ -256,7 +264,7 @@ Sağ bölmedeki eğit simgesine tıklayarak Eğitim sayfasını açın. Ardında
 * Etiketlerin listesi ve etiket başına tahmini doğruluk.
 
 
-:::image type="content" source="../media/label-tool/train-screen.png" alt-text="Örnek etiketleme aracının bağlantı ayarları.":::
+:::image type="content" source="../media/label-tool/train-screen.png" alt-text="Eğitim görünümü.":::
 
 Eğitim bittikten sonra, **Ortalama doğruluk** değerini inceleyin. Düşükse, daha fazla giriş belgesi eklemeli ve yukarıdaki adımları tekrarlamalısınız. Daha önce etiketlediğiniz belgeler proje dizininde kalacak.
 
@@ -275,7 +283,7 @@ Model Oluşturma özelliği sayesinde tek bir model kimliği altında 100 adede 
 
 Örnek etiketleme aracında modeller oluşturmak için sol taraftaki model oluşturma (birleştirme oku) simgesine tıklayın. Sol tarafta, birlikte oluşturmak istediğiniz modelleri seçin. Oklar simgesi olan modeller zaten oluşturulmuş modellerdir. "Oluştur" düğmesine tıklayın. Açılan pencerede yeni oluşturulan modelinizi adlandırın ve "Oluştur" a tıklayın. İşlem tamamlandığında, yeni oluşturulan modeliniz listede görünmelidir. 
 
-:::image type="content" source="../media/label-tool/model-compose.png" alt-text="Örnek etiketleme aracının bağlantı ayarları.":::
+:::image type="content" source="../media/label-tool/model-compose.png" alt-text="Model oluşturma UX görünümü.":::
 
 ---
 

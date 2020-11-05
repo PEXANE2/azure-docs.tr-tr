@@ -1,19 +1,19 @@
 ---
 title: Gremlin SDK ile Azure Cosmos DB kaynak belirteçleri kullanma
 description: Kaynak belirteçleri oluşturmayı ve grafik veritabanına erişmek için bunları kullanmayı öğrenin.
-author: jasonwhowell
-ms.author: jasonh
+author: christopheranderson
+ms.author: chrande
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/06/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 74d851a28712beb80bf2a7aa196e471ef4f15074
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 22c048b748806404ccfa580e660552a1744f3781
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085743"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361702"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Gremlin SDK ile Azure Cosmos DB kaynak belirteçleri kullanma
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -101,7 +101,7 @@ Tek bir Gremlin hesabıyla sınırsız sayıda belirteç verebilirsiniz. Ancak, 
 
 ## <a name="permission"></a>İzin
 
-Uygulamaların kaynak belirteçlerini kullanırken karşılaştığı yaygın bir hata, "karşılık gelen istek için yetkilendirme üstbilgisinde izin verilmedi. Lütfen başka bir yetkilendirme üstbilgisiyle yeniden deneyin. " Bu hata, Gremlin geçişi bir kenar veya köşe yazmaya çalıştığında, ancak kaynak belirteci yalnızca *okuma* izinleri verdiğinde döndürülür. Şu adımlardan herhangi birini içerip içermediğini görmek için çapraz geçiş bilgilerinizi inceleyin: *. addv ()* , *. Adde ()* , *. Drop ()* veya *. Property ()* .
+Uygulamaların kaynak belirteçlerini kullanırken karşılaştığı yaygın bir hata, "karşılık gelen istek için yetkilendirme üstbilgisinde izin verilmedi. Lütfen başka bir yetkilendirme üstbilgisiyle yeniden deneyin. " Bu hata, Gremlin geçişi bir kenar veya köşe yazmaya çalıştığında, ancak kaynak belirteci yalnızca *okuma* izinleri verdiğinde döndürülür. Şu adımlardan herhangi birini içerip içermediğini görmek için çapraz geçiş bilgilerinizi inceleyin: *. addv ()* , *. Adde ()* , *. Drop ()* veya *. Property ()*.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Azure Cosmos DB 'de [Azure rol tabanlı erişim denetimi (Azure RBAC)](role-based-access-control.md)

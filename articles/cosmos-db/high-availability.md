@@ -4,15 +4,15 @@ description: Bu makalede, Azure Cosmos DB yüksek kullanılabilirlik sağladığ
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/13/2020
+ms.date: 11/04/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 2fb8b24d5d44ced8f9e363008354acf5bc2fde40
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 58507703ca3440e73dbc41757e0bc70f56e886c3
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93081884"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360165"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB yüksek kullanılabilirlik sağlama
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -100,9 +100,7 @@ Kullanılabilirlik alanı desteğiyle Azure Cosmos DB, çoğaltmaların belirli 
 
 Bölge artıklığı, [çok bölgeli yazma özelliğindeki çoğaltmaya](how-to-multi-master.md) yönelik *ek bir özelliktir* . Bölgesel dayanıklılık elde etmek için tek başına bölge artıklığı güvenlenemez. Örneğin, bölgeler genelinde bölgesel kesintiler veya düşük gecikme erişimi durumunda, bölge yedekliliğe ek olarak birden fazla yazma bölgesi olması önerilir.
 
-Azure Cosmos hesabınız için çok bölgeli yazma yapılandırırken, ek ücret ödemeden bölge yedekliliği seçebilirsiniz. Aksi takdirde, lütfen bölge artıklığı desteğinin fiyatlandırmasıyla ilgili olarak aşağıdaki nota bakın. Bölgeyi kaldırarak ve bölge yedekliği etkinken yeniden ekleyerek, Azure Cosmos hesabınızın mevcut bir bölgesinde bölge yedekliliği etkinleştirebilirsiniz.
-
-Bu özellik: *UK Güney, Güneydoğu Asya, Doğu ABD, Doğu ABD 2, Orta ABD, Batı Avrupa, Batı ABD 2, Japonya Doğu, Kuzey Avrupa* , Fransa orta, Avustralya Doğu, Doğu ABD 2 euap bölgelerinde kullanılabilir.
+Azure Cosmos hesabınız için çok bölgeli yazma yapılandırırken, ek ücret ödemeden bölge yedekliliği seçebilirsiniz. Aksi takdirde, lütfen bölge artıklığı desteğinin fiyatlandırmasıyla ilgili olarak aşağıdaki nota bakın. Bölgeyi kaldırarak ve bölge yedekliği etkinken yeniden ekleyerek, Azure Cosmos hesabınızın mevcut bir bölgesinde bölge yedekliliği etkinleştirebilirsiniz. Kullanılabilirlik bölgelerinin desteklendiği bölgelerin listesi için bkz. [kullanılabilirlik alanları](../availability-zones/az-region.md) belgeleri.
 
 Aşağıdaki tabloda çeşitli hesap yapılandırmalarının yüksek kullanılabilirlik özelliği özetlenmektedir:
 

@@ -1,20 +1,20 @@
 ---
 title: Gremlin API kullanarak çekirdek uygulama Azure Cosmos DB .NET Framework oluşturma
 description: Azure Cosmos DB’ye bağlanmak ve veritabanını sorgulamak için kullanabileceğiniz bir .NET Framework/Core kod örneği sunar
-author: jasonwhowell
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 02/21/2020
-ms.author: jasonh
+ms.author: chrande
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 816a16b34c16b2ccc95cbe57aec482b8d3e13fc6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1953f4a21df6f550320592fbe009834a7b573887
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099783"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360539"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Hızlı başlangıç: Azure Cosmos DB Gremlin API hesabını kullanarak .NET Framework veya çekirdek uygulama oluşturma
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -111,7 +111,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
    **Gremlin Uç Noktası** - Bu değer, Gremlin.Net kitaplığını kullanarak graf hesabına bağlandığınızda kullanılır.
 
-    :::image type="content" source="./media/create-graph-dotnet/endpoint.png" alt-text="Uç noktayı kopyalama&quot;:::
+    :::image type="content" source="./media/create-graph-dotnet/endpoint.png" alt-text="Uç noktayı kopyalama":::
 
    Bu örneği çalıştırmak için, **Gremlin uç noktası** değerini kopyalayın, sonundaki bağlantı noktası numarasını SILIN, URI ise olur `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com` . Uç nokta değeri şöyle görünmelidir `testgraphacct.gremlin.cosmosdb.azure.com`
 
@@ -120,11 +120,11 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 1. Hesabınızın URI 'sini ve BIRINCIL anahtarını kopyaladıktan sonra, uygulamayı çalıştıran yerel makinede yeni bir ortam değişkenine kaydedin. Ortam değişkenini ayarlamak için bir komut istemi penceresi açın ve aşağıdaki komutu çalıştırın. <Your_Azure_Cosmos_account_URI> ve <Your_Azure_Cosmos_account_PRIMARY_KEY> değerlerini değiştirdiğinizden emin olun.
 
    ```console
-   setx Host &quot;<your Azure Cosmos account name>.gremlin.cosmosdb.azure.com&quot;
-   setx PrimaryKey &quot;<Your_Azure_Cosmos_account_PRIMARY_KEY>&quot;
+   setx Host "<your Azure Cosmos account name>.gremlin.cosmosdb.azure.com"
+   setx PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
    ```
 
-1. *Program.cs* dosyasını açın ve yukarıda oluşturulan &quot;veritabanı ve" kapsayıcı "değişkenlerini veritabanı ve kapsayıcı (aynı zamanda grafik adı) ile güncelleştirin.
+1. *Program.cs* dosyasını açın ve yukarıda oluşturulan "veritabanı ve" kapsayıcı "değişkenlerini veritabanı ve kapsayıcı (aynı zamanda grafik adı) ile güncelleştirin.
 
     `private static string database = "your-database-name";` `private static string container = "your-container-or-graph-name";`
 
@@ -148,20 +148,7 @@ Uygulamayı çalıştırmak için CTRL+F5 tuşlarına basın. Uygulama hem Greml
 
     Grafiği yakınlaştırıp uzaklaştırabilir, grafik görüntüleme alanını genişletebilir, başka köşeler ekleyebilir ve görüntüleme alanında köşeleri taşıyabilirsiniz.
 
-    :::image type="content" source="./media/create-graph-dotnet/graph-explorer.png" alt-text="Uç noktayı kopyalama&quot;:::
-
-   Bu örneği çalıştırmak için, **Gremlin uç noktası** değerini kopyalayın, sonundaki bağlantı noktası numarasını SILIN, URI ise olur `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com` . Uç nokta değeri şöyle görünmelidir `testgraphacct.gremlin.cosmosdb.azure.com`
-
-1. Sonra, **anahtarlar** sekmesine gidin ve Azure Portal **birincil anahtar** değerini kopyalayın. 
-
-1. Hesabınızın URI 'sini ve BIRINCIL anahtarını kopyaladıktan sonra, uygulamayı çalıştıran yerel makinede yeni bir ortam değişkenine kaydedin. Ortam değişkenini ayarlamak için bir komut istemi penceresi açın ve aşağıdaki komutu çalıştırın. <Your_Azure_Cosmos_account_URI> ve <Your_Azure_Cosmos_account_PRIMARY_KEY> değerlerini değiştirdiğinizden emin olun.
-
-   ```console
-   setx Host &quot;<your Azure Cosmos account name>.gremlin.cosmosdb.azure.com&quot;
-   setx PrimaryKey &quot;<Your_Azure_Cosmos_account_PRIMARY_KEY>&quot;
-   ```
-
-1. *Program.cs* dosyasını açın ve yukarıda oluşturulan &quot;veritabanı ve":::
+    :::image type="content" source="./media/create-graph-dotnet/graph-explorer.png" alt-text="Azure portalındaki Veri Gezgini'nde grafiği görüntüleme":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure portalında SLA'ları gözden geçirme
 

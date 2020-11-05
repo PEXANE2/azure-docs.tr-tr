@@ -10,13 +10,13 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 06/25/2020
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: 8ee2280aba99606d9e31a0e565a67cd6202df3c2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, data4ml
+ms.openlocfilehash: 04882c71a2d80e01029dd0a8b476f21a658e632b
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317019"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359604"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Veri kümelerinde veri kayması (Önizleme) Algıla
 
@@ -90,7 +90,7 @@ Veri kümesi izleyicileri aşağıdaki Azure hizmetlerine bağımlıdır.
 | *Veri kümesi* | DRIFT, eğitim verilerini almak ve model eğitimi için verileri karşılaştırmak üzere Machine Learning veri kümelerini kullanır.  Minimum, Max, DISTINCT Values, DISTINCT Values Count gibi bildirilen ölçümlerin bazılarını oluşturmak için veri profili oluşturma kullanılır. |
 | *Azureml işlem hattı ve işlem* | DRFT hesaplama işi, azureml işlem hattında barındırılır.  İş, istek üzerine veya DRFT izleyici oluşturma zamanında yapılandırılan bir işlem üzerinde çalışacak şekilde başlatılır.
 | *Application Insights*| DRFT, Machine Learning çalışma alanına ait Application Insights ölçümleri yayar.
-| *Azure blob depolama*| Drift, Azure Blob depolama alanına JSON biçiminde ölçümler yayar.
+| *Azure Blob depolama*| Drift, Azure Blob depolama alanına JSON biçiminde ölçümler yayar.
 
 ## <a name="how-dataset-monitors-data"></a>Veri kümesi verileri nasıl izler
 
@@ -226,7 +226,7 @@ Bir veri kümesi ve veri kayması algılayıcısı ayarlama hakkında tam bir ö
     | Name | Veri kümesi izleyicisinin adı. | | No |
     | Özellikler | Zaman içinde veri kayması için analiz edilecek özelliklerin listesi. | Bir modelin, kavram SLA 'ları ölçmek için çıkış özelliklerine ayarlayın. Zamana göre (ay, yıl, Dizin vb.) bir zaman içinde olan özellikleri içermez. Özellik listesini ayarladıktan sonra, var olan veri kayması izleyicisini geri doldurabilir. | Evet | 
     | İşlem hedefi | Veri kümesi izleyici işlerini çalıştırmak için işlem hedefini Azure Machine Learning. | | Evet | 
-    | Etkinleştir | Veri kümesi izleyici ardışık düzeninde zamanlamayı etkinleştirme veya devre dışı bırakma | Geri doldurma ayarıyla geçmiş verileri çözümleme zamanlamasını devre dışı bırakın. Veri kümesi İzleyicisi oluşturulduktan sonra etkinleştirilebilir. | Evet | 
+    | Etkinleştirme | Veri kümesi izleyici ardışık düzeninde zamanlamayı etkinleştirme veya devre dışı bırakma | Geri doldurma ayarıyla geçmiş verileri çözümleme zamanlamasını devre dışı bırakın. Veri kümesi İzleyicisi oluşturulduktan sonra etkinleştirilebilir. | Evet | 
     | Sıklık | Ardışık düzen işini zamanlamak ve geri doldurma çalıştırıyorsa geçmiş verileri çözümlemek için kullanılacak sıklık. Seçenekler günlük, haftalık veya aylık olarak verilebilir. | Her çalıştırma, hedef veri kümesindeki verileri sıklık sıklığına göre karşılaştırır: <li>Günlük: hedef veri kümesindeki en son tamamlanan günü taban çizgisiyle karşılaştırın <li>Haftalık: hedef veri kümesindeki en son tam haftayı (Pazartesi-Pazar) temel alarak karşılaştırın <li>Aylık: hedef veri kümesindeki en son tamamlanan ayı taban çizgisiyle karşılaştırın | No | 
     | Gecikme süresi | Saat olarak, verilerin veri kümesine gelmesi için zaman alır. Örneğin, verilerin veri kümesi kapsülleyen SQL DB 'ye gelmesi üç gün sürüyorsa, gecikme süresini 72 olarak ayarlayın. | Veri kümesi İzleyicisi oluşturulduktan sonra değiştirilemez | No | 
     | E-posta adresleri | Veri DRIP yüzdesi eşiğini ihlal eden uyarı için e-posta adresleri. | E-postalar Azure Izleyici aracılığıyla gönderilir. | Evet | 

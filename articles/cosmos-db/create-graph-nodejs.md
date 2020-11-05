@@ -1,20 +1,20 @@
 ---
 title: Gremlin API kullanarak Azure Cosmos DB Node.js uygulaması oluşturma
 description: Azure Cosmos DB'ye bağlanmak ve veritabanını sorgulamak için kullanabileceğiniz bir Node.js kod örneği sunar
-author: jasonwhowell
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/05/2019
-ms.author: jasonh
+ms.author: chrande
 ms.custom: devx-track-js
-ms.openlocfilehash: 546187b49e1186d665fe32b3f8d632a0281bffa4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0b88456bd245f79c38d7829dca76de702f768c06
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099683"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360148"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>Hızlı başlangıç: Azure Cosmos DB Gremlin API hesabını kullanarak bir Node.js uygulaması derleme
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -162,7 +162,7 @@ Bu konsol uygulaması açık kaynaklı [Gremlin Node.js](https://www.npmjs.com/p
 
     `config.primaryKey = "PRIMARYKEY";`
 
-   :::image type="content" source="./media/create-graph-nodejs/keys.png" alt-text="Azure portal, Genel Bakış sayfasında erişim anahtarını görüntüleme ve kopyalama":::
+   :::image type="content" source="./media/create-graph-nodejs/keys.png" alt-text="Azure portal tuşları dikey penceresi":::
 
 4. Veritabanı adını ve config.database ve config.collection değerinin grafik (kapsayıcı) adını girin. 
 

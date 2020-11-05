@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9ada1956af2dabdb8e5deff33722af7a8691dd19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b26979f424798bacf6b40d43e5ab603844f595c3
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295473"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360862"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>Güvenlik denetimi v2: günlük kaydı ve tehdit algılama
 
@@ -38,9 +38,9 @@ Ayrıca, ortamınızda belirli ölçütlerle eşleşen tehditleri araya analizi 
 
 - [Azure Sentinel ile Cyber Threat Intelligence](/azure/architecture/example-scenario/data/sentinel-threat-intelligence)
 
-**Sorumluluk**: müşteri
+**Sorumluluk** : müşteri
 
-**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Altyapı ve uç nokta güvenliği](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -75,9 +75,9 @@ Azure Güvenlik Merkezi, çok fazla sayıda başarısız kimlik doğrulama giri�
 
 - [Azure Güvenlik Merkezi’nde tehdit koruması](../../security-center/threat-protection.md)
 
-**Sorumluluk**: müşteri
+**Sorumluluk** : müşteri
 
-**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Altyapı ve uç nokta güvenliği](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -109,9 +109,9 @@ Olay analizlerini, tehdit arayışınızı ve güvenlik uyarısı oluşturmayı 
 
 - [DNS Analizi çözümü ile DNS altyapınız hakkında Öngörüler toplayın](../../azure-monitor/insights/dns-analytics.md)
 
-**Sorumluluk**: müşteri
+**Sorumluluk** : müşteri
 
-**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Altyapı ve uç nokta güvenliği](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -137,11 +137,9 @@ Azure Güvenlik Merkezi 'ni ve Azure Ilkesini, denetim, güvenlik ve kaynak gün
 
 - [Azure Güvenlik Merkezi veri toplamayı anlama](../../security-center/security-center-enable-data-collection.md)
 
-- [Kötü amaçlı yazılımdan koruma izlemeyi etkinleştirme ve yapılandırma](../fundamentals/antimalware.md#enable-and-configure-antimalware-monitoring-using-powershell-cmdlets)
+**Sorumluluk** : paylaşılan
 
-**Sorumluluk**: paylaşılan
-
-**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik işlemleri](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -169,9 +167,9 @@ Birçok kuruluş, daha az sıklıkta kullanılan "soğuk" verileri için sık ku
 
 - [Azure Sentinel 'i ekleme](../../sentinel/quickstart-onboard.md)
 
-**Sorumluluk**: müşteri
+**Sorumluluk** : müşteri
 
-**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -195,9 +193,9 @@ Azure Izleyici 'de, Log Analytics çalışma alanı saklama dönemini kuruluşun
 
 - [Azure Güvenlik Merkezi uyarıları ve önerileri dışarı aktarma](../../security-center/continuous-export.md)
 
-**Sorumluluk**: müşteri
+**Sorumluluk** : müşteri
 
-**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -223,9 +221,9 @@ Azure içindeki kaynaklar tarafından oluşturulan tüm Günlükler varsayılan 
 
 - [Azure hizmetleri için gelen UDP 'yi devre dışı bırakma](https://support.microsoft.com/help/4558520/how-to-disable-inbound-udp-for-azure-services)
 
-**Sorumluluk**: paylaşılan
+**Sorumluluk** : paylaşılan
 
-**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [İlke ve standartlar](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 

@@ -5,14 +5,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 06/05/2020
-author: jasonwhowell
-ms.author: jasonh
-ms.openlocfilehash: c005c4fc15f7c7955a7254f386597eee01800da5
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+author: christopheranderson
+ms.author: chrande
+ms.openlocfilehash: 6c48639279556d495be57a2933f1d7f3c139294a
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126609"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361123"
 ---
 # <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sine bağlanmak için MongoDB pusula kullanma
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -41,17 +41,17 @@ Cosmos DB hesabınızı pusula 'e bağlamak için aşağıdaki adımları izleye
 
 2. Cosmos DB içindeki **birincil/ikincil bağlantı dizeniz** yanında **Panoya Kopyala** yazılı düğmeye tıklayın. Bu düğmeye tıkladığınızda tüm bağlantı dizeniz panonuza kopyalanır.
 
-    :::image type="content" source="./media/mongodb-compass/mongodb-connection-copy.png" alt-text="Bağlantı dizesi dikey penceresinin ekran görüntüsü":::
+    :::image type="content" source="./media/mongodb-compass/mongodb-connection-copy.png" alt-text="Panoya kopyala düğmesinin ekran görüntüsü":::
 
 3. Masaüstünüzde/makinenizde pusula ' i açın ve **Bağlan** ' a ve ardından **Bağlan... öğesine** tıklayın.
 
 4. Pusula, panodaki bir bağlantı dizesini otomatik olarak algılar ve bağlanmak için kullanmak isteyip istemediğinizi sorar. Aşağıdaki ekran görüntüsünde gösterildiği gibi **Evet** ' e tıklayın.
 
-    :::image type="content" source="./media/mongodb-compass/mongodb-compass-detect.png" alt-text="Bağlantı dizesi dikey penceresinin ekran görüntüsü":::
+    :::image type="content" source="./media/mongodb-compass/mongodb-compass-detect.png" alt-text="Ekran görüntüsünde, panonuzda bir bağlantı dizeniz olduğunu açıklayan bir iletişim kutusu gösterilir.":::
 
 5. Yukarıdaki adımda **Evet 'e** tıklandıktan sonra bağlantı dizesindeki ayrıntılarınız otomatik olarak doldurulur. Boş bırakılmış olduğundan emin olmak için **çoğaltma kümesi adı** alanında otomatik olarak doldurulmuş değeri kaldırın.
 
-    :::image type="content" source="./media/mongodb-compass/mongodb-compass-replica.png" alt-text="Bağlantı dizesi dikey penceresinin ekran görüntüsü":::
+    :::image type="content" source="./media/mongodb-compass/mongodb-compass-replica.png" alt-text="Ekran görüntüsü, çoğaltma kümesi adı metin kutusunu gösterir.":::
 
 6. Sayfanın alt kısmındaki **Bağlan** ' a tıklayın. Cosmos DB hesabınız ve veritabanları artık MongoDB pusula içinde görünür olmalıdır.
 

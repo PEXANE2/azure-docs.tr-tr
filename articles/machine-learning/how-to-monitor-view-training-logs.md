@@ -1,7 +1,7 @@
 ---
 title: Ölçüm & ML çalıştırma günlüklerini izleme ve görüntüleme
 titleSuffix: Azure Machine Learning
-description: Azure ML denemeleri izleyin ve model oluşturma işlemini iyileştirmek için çalışma ölçümlerini görüntüleyin. Çalışma durumunu araştırmak ve çalıştırma kayıtlarını görüntülemek için pencere öğelerini ve Studio portalını kullanın.
+description: ML denemeleri izleyin ve Jupiter pencere öğeleri ve Azure Machine Learning Studio ile çalıştırma ölçümlerini görüntüleyin.
 services: machine-learning
 author: likebupt
 ms.author: keli19
@@ -11,16 +11,14 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 7929c80f4f90de82c516b746310b5e58819a16bc
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 845160d92100a27c32f16eddcd1f36e9e8624e80
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316673"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360607"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML çalıştırma günlüklerini ve ölçümlerini izleme ve görüntüleme
-
-
 
 Bu makalede, Azure Machine Learning çalıştırmalarını izlemeyi ve günlüklerini görüntülemeyi öğreneceksiniz. Günlükleri görüntüleyebilmeniz için önce bunları etkinleştirmeniz gerekir. Daha fazla bilgi için bkz. [Azure ML eğitim çalıştırmaları 'nda günlüğü etkinleştirme](how-to-track-experiments.md).
 

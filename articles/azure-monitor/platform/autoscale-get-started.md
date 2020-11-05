@@ -4,12 +4,12 @@ description: Azure 'da kaynak Web uygulamanızı, bulut hizmetinizi, sanal makin
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: e0c9770e2065002a4e2acc1198ed096dc588f8e5
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: d37a33ea575bbb8481d7d50dad8eab0f9ce0899d
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342224"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361211"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 'da otomatik ölçeklendirme ile çalışmaya başlama
 Bu makalede, Microsoft Azure portal kaynağınız için otomatik ölçeklendirme ayarlarınızı nasıl ayarlayabileceğinizi açıklar.
@@ -140,6 +140,20 @@ Bir örnek bir saat için sağlıksız kalırsa, yeni örnekle birlikte değişi
 ### <a name="monitoring"></a>İzleme
 
 Uygulamanızın sistem durumu Denetim yolunu sağladıktan sonra, Azure Izleyici 'yi kullanarak sitenizin sistem durumunu izleyebilirsiniz. Portaldaki **sistem durumu denetimi** dikey penceresinde, üst araç çubuğundan **ölçümler** ' e tıklayın. Bu, sitenin geçmiş sistem durumunu görebileceğiniz ve yeni bir uyarı kuralı oluşturabileceğiniz yeni bir dikey pencere açar. Sitelerinizi izleme hakkında daha fazla bilgi için [bkz. Azure izleyici Kılavuzu](../../app-service/web-sites-monitor.md).
+
+## <a name="moving-autoscale-to-a-different-region"></a>Otomatik ölçeklendirmeyi farklı bir bölgeye taşıma
+Bu bölümde, Azure otomatik ölçeklendirmeyi aynı abonelik ve kaynak grubu altındaki başka bir bölgeye nasıl taşıyacağınız açıklanmaktadır. Otomatik ölçeklendirme ayarlarını taşımak için REST API kullanabilirsiniz.
+### <a name="prerequisite"></a>Önkoşul
+1. Aboneliğin ve kaynak grubunun kullanılabilir olduğundan ve hem kaynak hem de hedef bölgelerin ayrıntılarının aynı olduğundan emin olun.
+1. Azure otomatik ölçeklendirme 'nın, [taşımak Istediğiniz Azure bölgesinde](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all)kullanılabilir olduğundan emin olun.
+
+### <a name="move"></a>Taşı
+Yeni ortamda bir otomatik ölçeklendirme ayarı oluşturmak için [REST API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings/createorupdate) kullanın. Hedef bölgede oluşturulan otomatik ölçeklendirme ayarı, kaynak bölgedeki otomatik ölçeklendirme ayarının bir kopyası olacaktır.
+
+Kaynak bölgedeki otomatik ölçeklendirme ayarıyla ilişkilendirmede oluşturulan [Tanılama ayarları](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) taşınamaz. Tekrar satış ayarları oluşturulduktan sonra, hedef bölgede tanılama ayarlarını yeniden oluşturmanız gerekir. 
+
+### <a name="learn-more-about-moving-resources-across-azure-regions"></a>Azure bölgelerindeki kaynakları taşıma hakkında daha fazla bilgi edinin
+Azure 'da bölgeler ve olağanüstü durum kurtarma arasında kaynakları taşıma hakkında daha fazla bilgi edinmek için bkz. [kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Aboneliğinizdeki tüm otomatik ölçeklendirme motoru işlemlerini izlemek için bir etkinlik günlüğü uyarısı oluşturun](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)

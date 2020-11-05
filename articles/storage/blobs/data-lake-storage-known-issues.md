@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: f995750c1e009febcb9872c230e22921ff9c50c4
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: 87532876551cacbd4da03b95b10c41600989a947
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186595"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359723"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. ile ilgili bilinen sorunlar
 
@@ -62,7 +62,7 @@ Yönetilmeyen VM diskleri hiyerarşik bir ad alanına sahip hesaplarda desteklen
 
 ## <a name="support-for-setting-access-control-lists-acls-recursively"></a>Erişim denetim listelerini (ACL 'Ler) yinelemeli olarak ayarlama desteği
 
-Üst dizinden alt öğelere yinelemeli olarak ACL değişiklikleri uygulama özelliği [genel önizlemeye](recursive-access-control-lists.md)sunuldu. Bu özelliğin geçerli sürümünde PowerShell, .NET SDK ve Python SDK kullanarak ACL değişikliklerini uygulayabilirsiniz. Java SDK, Azure CLı, Azure portal veya Azure Depolama Gezgini için destek henüz kullanılamamaktadır.
+ACL değişikliklerini üst dizinden alt öğelere yinelemeli olarak uygulama özelliği genel kullanıma sunulmuştur. Bu özelliğin geçerli sürümünde PowerShell, Azure CLı ve .NET, Java ve Python SDK kullanarak ACL değişikliklerini uygulayabilirsiniz. Azure portal veya Azure Depolama Gezgini için destek henüz kullanılamamaktadır.
 
 <a id="known-issues-tools"></a>
 

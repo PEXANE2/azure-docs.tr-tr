@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/21/2020
+ms.date: 11/04/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f8959bf84e2b5629e03c2571fa494b96cec4f8e9
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 8ae25c63e9c6e3bf6ad363cde9eb641703562811
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347650"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360029"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Sorgu için otomatik tamamlamayı ve önerilen sonuçları etkinleştirmek üzere bir öneri aracı oluşturun
 
-Azure Bilişsel Arama, "yazarken arama" özelliği, bir [arama dizinine](search-what-is-an-index.md)eklenen bir **öneri aracı** yapısı aracılığıyla etkinleştirilir. Bir öneri aracı iki deneyimi destekler: *otomatik tamamlama* , bir dönem sorgusunun tamamına yönelik kısmi bir girişi tamamlar ve davetlerinin belirli bir eşleştirmeye kadar tıklamasına yönelik *öneriler* sağlar. AutoComplete bir sorgu oluşturur. Öneriler, eşleşen bir belge oluşturur.
+Azure Bilişsel Arama, "yazarken arama" özelliği, bir [arama dizinine](search-what-is-an-index.md)eklenen bir **öneri aracı** yapısı aracılığıyla etkinleştirilir. Bir öneri aracı iki deneyimi destekler: *otomatik tamamlama* , bir dönem sorgusunun tamamına yönelik kısmi bir girişi tamamlar ve davet eden *öneriler* ile belirli bir eşleştirmeye kadar tıklamıştır. AutoComplete bir sorgu oluşturur. Öneriler, eşleşen bir belge oluşturur.
 
 [C# ' de ilk uygulamanızı oluşturma bölümündeki](tutorial-csharp-type-ahead-and-suggestions.md) aşağıdaki ekran görüntüsünde her ikisi de gösterilmektedir. Otomatik tamamlama anticipates olası bir dönem, "tw" ile "ın" ile tamamlanıyor. Otel adı gibi bir alan, dizinden eşleşen bir otel arama belgesini temsil ettiğinde, öneriler mini arama sonuçlardır. Öneriler için, açıklayıcı bilgiler sağlayan herhangi bir alanı yüzeysel yapabilirsiniz.
 
@@ -44,6 +44,8 @@ Bir öneri aracı oluşturmak için bir [dizin şemasına](/rest/api/searchservi
 
 + Alanda varsayılan standart Lucene Analyzer ( `"analyzer": null` ) veya bir [dil Çözümleyicisi](index-add-language-analyzers.md) (örneğin,) kullanın `"analyzer": "en.Microsoft"`
 
+Önceden var olan alanları kullanarak bir öneri aracı oluşturmaya çalışırsanız, API buna izin vermez. Ön ekler, iki veya daha fazla karakter kombinasyondaki kısmi koşullar tüm koşullara göre simgeleştirilir, dizin oluşturma sırasında oluşturulur. Mevcut alanlar zaten simgeleştirilmiş olduğunda, bir öneri aracı eklemek istiyorsanız dizini yeniden oluşturmanız gerekir. Daha fazla bilgi için bkz. [Azure bilişsel arama dizinini yeniden oluşturma](search-howto-reindex.md).
+
 ### <a name="choose-fields"></a>Alanları seçin
 
 Bir öneri aracı birçok özelliğe sahip olsa da, öncelikle bir arama türü deneyiminizin etkinleştirilebileceği dize alanları koleksiyonudur. Her dizin için bir öneri aracı bulunur, bu nedenle öneri aracı listesi hem öneriler hem de otomatik tamamlama için içerik katkıda bulunan tüm alanları içermelidir.
@@ -64,12 +66,6 @@ Bir çözümleyici seçiminiz, alanların nasıl simgeleştirilmiş ve daha sonr
 
 > [!NOTE]
 > Çözümleyici kısıtlamasından çalışmanız gerekiyorsa, örneğin belirli sorgu senaryolarında bir anahtar sözcük veya Ngram Çözümleyicisi gerekiyorsa, aynı içerik için iki ayrı alan kullanmanız gerekir. Bu, diğer alanlardan birinin bir öneri aracı sahip olmasını sağlar, ancak diğeri özel bir çözümleyici yapılandırmasıyla ayarlanacaktır.
-
-### <a name="when-to-create-a-suggester"></a>Ne zaman bir öneri aracı oluşturulur?
-
-Bir öneri aracı oluşturmak için en iyi zaman, alan tanımının kendisini de oluşturmaktır.
-
-Önceden var olan alanları kullanarak bir öneri aracı oluşturmaya çalışırsanız, API buna izin vermez. Ön ekler, iki veya daha fazla karakter kombinasyondaki kısmi koşullar tüm koşullara göre simgeleştirilir, dizin oluşturma sırasında oluşturulur. Mevcut alanlar zaten simgeleştirilmiş olduğunda, bir öneri aracı eklemek istiyorsanız dizini yeniden oluşturmanız gerekir. Daha fazla bilgi için bkz. [Azure bilişsel arama dizinini yeniden oluşturma](search-howto-reindex.md).
 
 ## <a name="create-using-rest"></a>REST kullanarak oluşturma
 

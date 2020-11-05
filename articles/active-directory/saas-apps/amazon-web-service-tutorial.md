@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/03/2020
 ms.author: jeedes
-ms.openlocfilehash: eb784d02ec4c380d72438a1c000290fe3a4eea78
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 764342f237452d9322d44c86ebdb41691b44495d
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307504"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360726"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Öğretici: Amazon Web Services (AWS) ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -27,6 +27,9 @@ Bu öğreticide, Amazon Web Services (AWS) Azure Active Directory (Azure AD) ile
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
+
+> [!Note]
+> Azure AD, AWS SSO 'SU ile çoklu oturum açma tümleştirmesini desteklemez, AWS 'den farklı bir üründür. AWS 'nin [buraya](https://docs.aws.amazon.com/singlesignon/latest/userguide/azure-ad-idp.html)bahsetmesine rağmen, Azure AD, müşterilerin tek tek hesaplarda koşullu erişim ilkelerini kullanarak daha iyi güvenlik denetimleri elde etmenizi ve bu uygulamaları daha iyi idare etmelerini sağlamak için AWS IAM tümleştirmesini kullanmasını önerir.
 
 ![Azure AD ve AWS ilişkisi diyagramı](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
@@ -343,7 +346,7 @@ Bu bölümde, Amazon Web Services (AWS) erişimi vererek Azure çoklu oturum aç
 
     b. **Gizli belirteç** alanına AWS Kullanıcı gizli anahtarını girin.
 
-    c. **Bağlantıyı Sına** ' yı seçin.
+    c. **Bağlantıyı Sına** 'yı seçin.
 
     d. **Kaydet** ' i seçerek ayarı kaydedin.
 

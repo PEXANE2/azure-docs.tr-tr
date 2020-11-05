@@ -10,13 +10,13 @@ ms.author: nibaccam
 author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
-ms.custom: how-to
-ms.openlocfilehash: a8868b930abe28ed205446df0c6c9b0f111213eb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, data4ml
+ms.openlocfilehash: e97546e678b3b7bf7932600ea53d09557493685c
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312782"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359876"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Azure Machine Learning Studio ile verilere bağlanma
 
@@ -50,8 +50,6 @@ Kod ilk deneyimi için, [Azure Machine Learning Python SDK 'sını](/python/api/
 
 [Bu Azure depolama çözümlerinden](how-to-access-data.md#matrix)veri depoları oluşturabilirsiniz. **Desteklenmeyen depolama çözümleri için** ve ml denemeleri sırasında veri çıkış maliyetini kaydetmek için, verilerinizi desteklenen bir Azure depolama çözümüne [taşımanız](how-to-access-data.md#move) gerekir. [Veri depoları hakkında daha fazla bilgi edinin](how-to-access-data.md). 
 
-
-
 Azure Machine Learning Studio ile birkaç adımda yeni bir veri deposu oluşturun.
 
 > [!IMPORTANT]
@@ -60,7 +58,7 @@ Azure Machine Learning Studio ile birkaç adımda yeni bir veri deposu oluşturu
 1. [Azure Machine Learning Studio](https://ml.azure.com/)'da oturum açın.
 1. **Yönet** altında sol bölmedeki **veri depoları** ' nı seçin.
 1. **+ Yeni veri deposu** seçin.
-1. Yeni bir veri deposu için formu doldurun. Form, Azure depolama türü ve kimlik doğrulama türü seçimlerinize göre kendisini akıllıca güncelleştirir. Kimlik doğrulama kimlik bilgilerini nerede bulacağınızı öğrenmek için, bu formu doldurmanız gereken [depolama erişimi ve izinler bölümüne](#access-validation) bakın.
+1. Yeni bir veri deposu oluşturmak ve kaydetmek için formu doldurun. Form, Azure depolama türü ve kimlik doğrulama türü seçimlerinize göre kendisini akıllıca güncelleştirir. Kimlik doğrulama kimlik bilgilerini nerede bulacağınızı öğrenmek için, bu formu doldurmanız gereken [depolama erişimi ve izinler bölümüne](#access-validation) bakın.
 
 Aşağıdaki örnek, bir **Azure blob veri deposu** oluştururken formun nasıl göründüğünü göstermektedir:
 
@@ -157,11 +155,15 @@ Hesap anahtarını, SAS belirtecini ve hizmet sorumlusu bilgilerini [Azure Porta
     * Kendisine karşılık gelen **genel bakış** sayfası, Kiracı kimliği ve istemci kimliği gibi gerekli bilgileri içerir.
 
 > [!IMPORTANT]
-> Güvenlik nedenleriyle, bir Azure depolama hesabı (hesap anahtarı veya SAS belirteci) için erişim anahtarlarınızı değiştirmeniz gerekebilir. Bunu yaparken, yeni kimlik bilgilerini çalışma alanım ve ona bağlı veri depolarıyla eşitlediğinizden emin olun. [Güncelleştirilmiş kimlik bilgilerinizi eşitlemeyi](how-to-change-storage-access-key.md)öğrenin.
+> * Bir Azure depolama hesabı (hesap anahtarı veya SAS belirteci) için erişim anahtarlarınızı değiştirmeniz gerekiyorsa, yeni kimlik bilgilerini çalışma alanım ve ona bağlı veri depolarıyla eşitlediğinizden emin olun. [Güncelleştirilmiş kimlik bilgilerinizi eşitlemeyi](how-to-change-storage-access-key.md)öğrenin. <br> <br>
+> * Aynı ada sahip bir veri deposunu silip yeniden kaydettirir ve başarısız olursa, çalışma alanınızın Azure Key Vault geçici silme etkin olmayabilir. Varsayılan olarak, çalışma alanınız tarafından oluşturulan Anahtar Kasası örneği için geçici silme etkindir, ancak var olan bir Anahtar Kasası kullandıysanız veya 2020 Ekim ' den önce oluşturulmuş bir çalışma alanına sahipseniz bu işlem etkinleştirilmemiş olabilir. Geçici silme özelliğini etkinleştirme hakkında daha fazla bilgi için bkz. [var olan bir Anahtar Kasası Için geçici silme özelliğini etkinleştirme]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault). "
 
 ### <a name="permissions"></a>İzinler
 
-Azure Blob kapsayıcısı ve Azure Data Lake Gen 2 depolaması için, kimlik doğrulama kimlik bilgilerinizin **Depolama Blobu veri okuyucusu** erişimi olduğundan emin olun. [Depolama Blobu veri okuyucu](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)hakkında daha fazla bilgi edinin. 
+Azure Blob kapsayıcısı ve Azure Data Lake Gen 2 depolaması için, kimlik doğrulama kimlik bilgilerinizin **Depolama Blobu veri okuyucusu** erişimi olduğundan emin olun. [Depolama Blobu veri okuyucu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)hakkında daha fazla bilgi edinin. Hesap SAS belirteci varsayılan olarak izin vermez. 
+* Veri **okuma erişimi** için kimlik doğrulama kimlik bilgileriniz, kapsayıcılar ve nesneler için en az liste ve okuma izinlerine sahip olmalıdır. 
+
+* Veri **yazma erişimi** için, yazma ve ekleme izinleri de gereklidir.
 
 ## <a name="train-with-datasets"></a>Veri kümeleriyle eğitme
 

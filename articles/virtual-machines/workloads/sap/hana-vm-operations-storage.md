@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0861d1fd3ab2a378f0b9afc4e8b35b32badfc3db
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 99c94528c13228e07327b529782f211ec92a08ea
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670661"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359859"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure sanal makine depolama alanı yapılandırmaları
 
@@ -46,7 +46,7 @@ Farklı depolama türleri için en düşük SAP HANA sertifikalı koşullar şun
 - En azından **/Hana/log** birimi Için Azure Ultra disk. **/Hana/Data** Volume, Azure yazma Hızlandırıcısı olmayan Premium depolamaya veya daha hızlı yeniden başlatma süreleriyle elde edilebilir.
 - **NFS v 4.1** , **/Hana/log ve/Hana/Data** için Azure NetApp Files en üstünde bulunan birimleri. /Hana/Shared birimi NFS v3 veya NFS v 4.1 protokolünü kullanabilir
 
-Bazı depolama türleri birleştirilebilir. Örneğin, **/Hana/Data** ' ı Premium depolamaya koymak mümkündür ve gereken düşük gecikme süresini elde etmek için **/Hana/log** , Ultra disk depolama alanına yerleştirilebilir. **/Hana/Data** için ANF 'yi temel alan bir birim kullanırsanız, **/Hana/log** birimi de ANF 'nin üzerindeki NFS 'yi temel alır. Birimlerden biri (/Hana/Data gibi) ve Azure Premium depolama ya da diğer birime yönelik Ultra disk ( **/Hana/log** gibi) IÇIN ANF üzerinde NFS kullanılması **desteklenmez** .
+Bazı depolama türleri birleştirilebilir. Örneğin, **/Hana/Data** ' ı Premium depolamaya koymak mümkündür ve gereken düşük gecikme süresini elde etmek için **/Hana/log** , Ultra disk depolama alanına yerleştirilebilir. **/Hana/Data** için ANF 'yi temel alan bir birim kullanırsanız, **/Hana/log** birimi de ANF 'nin üzerindeki NFS 'yi temel alır. Birimlerden biri (/Hana/Data gibi) ve Azure Premium depolama ya da diğer birime yönelik Ultra disk ( **/Hana/log** gibi) IÇIN ANF üzerinde NFS kullanılması **desteklenmez**.
 
 Şirket içi dünyada, genellikle g/ç alt sistemleri ve özellikleri hakkında dikkatli olmanız gerekiyordu. Bunun nedeni, Gereç satıcısının SAP HANA için en düşük depolama gereksinimlerinin karşılandığından emin olması gerekiyordu. Azure altyapısını kendiniz oluştururken, bu SAP tarafından verilen gereksinimlerin bazılarını bilmelisiniz. SAP 'nin öneren düşük aktarım hızı özelliklerinden bazıları şunlardır:
 
@@ -179,8 +179,8 @@ Diğer birimlerde yapılandırma şöyle görünür:
 
 | VM SKU | RAM | En çok, VM G/Ç<br /> Aktarım hızı | /Hana/Shared | /root birimi | /usr/SAP |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
-| M32ts | 192 GiB | 500 MBps | 1 x P20 | 1 x P6 | 1 x P6 |
-| M32ls | 256 GiB | 500 MBps |  1 x P20 | 1 x P6 | 1 x P6 |
+| M32ts | 192 GiB | 500 MBps | 1 x P15 | 1 x P6 | 1 x P6 |
+| M32ls | 256 GiB | 500 MBps |  1 x P15 | 1 x P6 | 1 x P6 |
 | M64ls | 512 GiB | 1000 MBps | 1 x P20 | 1 x P6 | 1 x P6 |
 | M64s | 1.000 GiB | 1.000 MBps | 1 x P30 | 1 x P6 | 1 x P6 |
 | M64ms | 1.750 GiB | 1.000 MBps | 1 x P30 | 1 x P6 | 1 x P6 | 

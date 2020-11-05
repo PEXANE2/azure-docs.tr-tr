@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 10/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 82dd2f16fa43b52ba4c6dfacd26da5da622523b2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 94074c2c5e11187252084832e5a20a197f6723fd
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321707"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359825"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Sürüm notları-Azure Arc etkin veri Hizmetleri (Önizleme)
 
@@ -90,7 +90,7 @@ Yönergeler için bkz. [Azure Arc etkin veri Hizmetleri nedir?](overview.md)
 
 - Önizleme, PostgreSQL için yedekleme/geri yükleme sürümü 11 altyapısını desteklemez. Yalnızca PostgreSQL için yedekleme/geri yükleme sürüm 12 ' i destekler.
 - `azdata arc dc debug copy-logs` nWindows üzerinde PostgreSQL altyapısı günlükleri toplanmaz.
-- Yeni silinen bir sunucu grubunun adı ile bir sunucu grubu yeniden oluşturmak başarısız olabilir veya askıda kalabilir. 
+- Yeni silinen bir sunucu grubunun adı ile bir sunucu grubu yeniden oluşturmak başarısız olabilir veya yanıt vermeyi durdurabilir. 
    - **Geçici çözüm** Bir sunucu grubunu yeniden oluşturduğunuzda veya daha önce silinen sunucu grubunun yük dengeleyiciyi/dış hizmetini beklerken aynı adı yeniden kullanmayın. Sildiğiniz sunucu grubunun adının olduğunu `postgres01` ve bir ad alanında barındırıldığını varsayarsak, `arc` aynı ada sahip bir sunucu grubunu yeniden oluşturmadan önce, `postgres01-external-svc` kubectl komutunun çıkışında bu işlemi gösterene kadar bekleyin `kubectl get svc -n arc` .
  - Azure Data Studio genel bakış sayfası ve Işlem + depolama yapılandırması sayfasını yüklemek yavaş. 
 

@@ -1,20 +1,20 @@
 ---
 title: Azure Cosmos DB Java ile grafik veritabanı oluşturma
 description: Gremlin kullanarak Azure Cosmos DB'ye bağlanmak ve içindeki grafik verilerini sorgulamak için kullanabileceğiniz bir Java kodu örneği sunar.
-author: jasonwhowell
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2019
-ms.author: jasonh
+ms.author: chrande
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 2ae86f918b1ecaf28d5f0118d90ea6c2389674da
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 5a793eb69b344e361679759e46db47c78885831e
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129720"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360981"
 ---
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-gremlin-api"></a>Hızlı başlangıç: Java SDK ve Azure Cosmos DB Gremlin API 'SI ile bir grafik veritabanı oluşturma
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -170,15 +170,15 @@ Bu Java konsol uygulaması, OSS [Apache TinkerPop](https://tinkerpop.apache.org/
 
 1. Azure portal Azure Cosmos DB hesabınızda, **Veri Gezgini** , **örnek grafik** ' i ve **Graf** ' ı seçin ve ardından **Filtre Uygula** ' yı seçin. 
 
-   :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png" alt-text="Azure portalında erişim anahtarı görüntüleme ve kopyalama, Anahtarlar sayfası":::
+   :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png" alt-text="Ekran görüntüsü, filtre uygulama seçeneğiyle bir P I 'den seçilen grafiği gösterir.":::
 
 2. **Sonuç listesinde** , grafiğe yeni kullanıcıların eklendiğini görürsünüz. **Ben** ’i seçin ve kullanıcının robin’e bağlı olduğuna dikkat edin. Köşeleri sürükleyip bırakarak hareket ettirebilir, farenizin tekerleğini kaydırarak öğeleri yakınlaştırabilir ve uzaklaştırabilir, ayrıca çift okla grafiğin boyutunu genişletebilirsiniz. 
 
-   :::image type="content" source="./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png" alt-text="Azure portalında erişim anahtarı görüntüleme ve kopyalama, Anahtarlar sayfası":::
+   :::image type="content" source="./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png" alt-text="Azure portalında Veri Gezgini'ndeki grafikte yeni köşeler":::
 
 3. Şimdi birkaç yeni kullanıcı ekleyelim. Grafiğinize veri eklemek için **Yeni köşe** ' ı seçin.
 
-   :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="Azure portalında erişim anahtarı görüntüleme ve kopyalama, Anahtarlar sayfası":::
+   :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="Ekran görüntüsü, değer girebileceğiniz yeni köşe bölmesini gösterir.":::
 
 4. Etiket kutusuna *kişi* yazın.
 
@@ -213,17 +213,17 @@ Bu Java konsol uygulaması, OSS [Apache TinkerPop](https://tinkerpop.apache.org/
 
     Daha fazla veri ekledikçe sonuçlarınızı sınırlamak için filtreleri kullanabilirsiniz. Veri Gezgini, varsayılan olarak bir grafikteki tüm köşeleri almak için `g.V()` kullanır. JSON biçimindeki bir grafikteki tüm köşelerin sayımını döndürmek için, bu değeri `g.V().count()` gibi farklı bir [grafik sorgusu](tutorial-query-graph.md) olarak değiştirebilirsiniz. Filtreyi değiştirdiyseniz, filtreyi olarak `g.V()` yeniden değiştirin ve tüm sonuçları yeniden göstermek Için **Filtreyi Uygula** ' yı seçin.
 
-12. Artık rakesh ve ashley arasında bağlantı kurabilirsiniz. **Sonuçlar** listesinde **Ashley** ' in seçili olduğundan emin olun, sonra sağ alt köşedeki **hedefler** ' in yanında bulunan bir grafikteki bir köşenin :::image type="content" source="./media/create-graph-java/edit-pencil-button.png" alt-text="Azure portalında erişim anahtarı görüntüleme ve kopyalama, Anahtarlar sayfası"::: ' i seçin. Düğmeyi görmek için pencerenizi genişletmeniz gerekebilir.
+12. Artık rakesh ve ashley arasında bağlantı kurabilirsiniz. **Sonuçlar** listesinde **Ashley** ' in seçili olduğundan emin olun, sonra sağ alt köşedeki **hedefler** ' in yanında bulunan bir grafikteki bir köşenin :::image type="content" source="./media/create-graph-java/edit-pencil-button.png" alt-text="hedefini Değiştir"::: ' i seçin. Düğmeyi görmek için pencerenizi genişletmeniz gerekebilir.
 
-    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png" alt-text="Azure portalında erişim anahtarı görüntüleme ve kopyalama, Anahtarlar sayfası":::
+    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png" alt-text="Grafikteki bir köşenin hedefini değiştirme-Azure CosmosDB":::
 
 13. **Hedef** kutusunda *Rakesh* girin ve **kenar etiketi** kutusuna *bilir* yazın ve onay kutusunu seçin.
 
-    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png" alt-text="Azure portalında erişim anahtarı görüntüleme ve kopyalama, Anahtarlar sayfası":::
+    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png" alt-text="Veri Gezgini bağlantı ekleme-Azure CosmosDB":::
 
 14. Sonuç listesinden **rakesh** ’i seçin, ashley ve rakesh’in bağlantılı olduğunu görürsünüz. 
 
-    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-graph-explorer.png" alt-text="Azure portalında erişim anahtarı görüntüleme ve kopyalama, Anahtarlar sayfası":::
+    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-graph-explorer.png" alt-text="Veri Gezgini bağlı iki köşe-Azure CosmosDB":::
 
 Bu işlemle birlikte, bu öğreticideki kaynak oluşturma bölümünü tamamladınız. Grafiğinize köşe eklemeye, var olan köşeleri veya sorguları değiştirmeye devam edebilirsiniz. Şimdi, Azure Cosmos DB’nin sağladığı ölçümleri gözden geçirip kaynakları temizleyelim. 
 

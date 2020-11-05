@@ -1,20 +1,20 @@
 ---
 title: Azure Cosmos DB Gremlin API ile Graf toplu yürütücü .NET kitaplığını kullanma
 description: Grafik verilerini büyük ölçüde Azure Cosmos DB Gremlin API kapsayıcısına aktarmak için toplu yürütücü kitaplığı 'nı nasıl kullanacağınızı öğrenin.
-author: jasonwhowell
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 05/28/2019
-ms.author: jasonh
+ms.author: chrande
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: eb611c77abe5bf9067bfdbabd1e2c5d2ee90ac23
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b31cb33e09158de5912132d0fb7bd31a62131181
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100499"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360522"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 'de toplu işlemler gerçekleştirmek için Graph toplu yürütücü .NET kitaplığını kullanma
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -140,9 +140,9 @@ Dosya|Açıklama
 
 Ayar|Açıklama
 ---|---
-`EndPointUrl`|Bu, Azure Cosmos DB Gremlin API veritabanı hesabınızın Genel Bakış dikey penceresinde bulunan **.NET SDK uç noktanızdır** . `https://your-graph-database-account.documents.azure.com:443/` biçimine sahiptir
+`EndPointUrl`|Bu, Azure Cosmos DB Gremlin API veritabanı hesabınızın Genel Bakış dikey penceresinde bulunan **.NET SDK uç noktanızdır**. `https://your-graph-database-account.documents.azure.com:443/` biçimine sahiptir
 `AuthorizationKey`|Bu, Azure Cosmos DB hesabınızda listelenen Birincil veya İkincil anahtardır. [Azure Cosmos DB verilerine güvenli erişim sağlama](./secure-access-to-data.md#primary-keys) hakkında daha fazla bilgi edinin
-`DatabaseName`, `CollectionName`|Bunlar **hedef veritabanı ve koleksiyon adlarıdır** . `ShouldCleanupOnStart`, `true` olarak ayarlandığında bu değerler `CollectionThroughput` ile birlikte bunları bırakmaya ek olarak yeni bir veritabanı ve koleksiyon oluşturmak için kullanılır. Benzer şekilde `ShouldCleanupOnFinish`, `true` olarak ayarlandığında alma işlemi sona erdiğinde veritabanını silmek için kullanılır. Hedef koleksiyonun **sınırsız koleksiyon** olması gerektiğini unutmayın.
+`DatabaseName`, `CollectionName`|Bunlar **hedef veritabanı ve koleksiyon adlarıdır**. `ShouldCleanupOnStart`, `true` olarak ayarlandığında bu değerler `CollectionThroughput` ile birlikte bunları bırakmaya ek olarak yeni bir veritabanı ve koleksiyon oluşturmak için kullanılır. Benzer şekilde `ShouldCleanupOnFinish`, `true` olarak ayarlandığında alma işlemi sona erdiğinde veritabanını silmek için kullanılır. Hedef koleksiyonun **sınırsız koleksiyon** olması gerektiğini unutmayın.
 `CollectionThroughput`|Bu, `ShouldCleanupOnStart` seçeneği `true` olarak ayarlandığında yeni koleksiyon oluşturmak için kullanılır.
 `ShouldCleanupOnStart`|Bu işlem program çalıştırılmadan önce veritabanı hesabını ve koleksiyonlarını bırakır ve ardından `DatabaseName`, `CollectionName` ve `CollectionThroughput` değerleriyle yenilerini oluşturur.
 `ShouldCleanupOnFinish`|Bu değer program çalıştırıldıktan sonra belirtilen `DatabaseName` ve `CollectionName` değerleriyle veritabanı hesabını ve koleksiyonlarını bırakır.

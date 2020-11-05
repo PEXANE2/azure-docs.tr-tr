@@ -1,18 +1,18 @@
 ---
 title: MongoDB için Azure Cosmos DB API 'sine veri geçişinin geçiş öncesi adımları
 description: Bu belge, MongoDB 'den Cosmos DB 'e veri geçişinin önkoşulları hakkında genel bakış sağlar.
-author: jasonwhowell
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 09/01/2020
-ms.author: jasonh
-ms.openlocfilehash: 8e3a0ac6996762bc7f4bd1a6d9dde8cfb59db662
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.author: chrande
+ms.openlocfilehash: 8ad164f79f150e0cd6ab4a083f21b22c59f7c729
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096436"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361594"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB 'den Azure Cosmos DB MongoDB için API 'sine veri geçişleri için geçiş öncesi adımlar
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]

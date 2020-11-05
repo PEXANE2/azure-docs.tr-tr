@@ -1,7 +1,7 @@
 ---
 title: Azure Data Factory ile veri alımı
 titleSuffix: Azure Machine Learning
-description: Azure Data Factory bir veri alma işlem hattı oluşturmayı öğrenin.
+description: Azure Data Factory ve her birinin avantajları ile bir veri alma işlem hattı oluşturmaya yönelik kullanılabilir seçenekleri öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,17 +11,17 @@ manager: davete
 ms.reviewer: larryfr
 ms.date: 03/01/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8cf0abdeaf3a7fe71213b6fa4f78f057bf2f92eb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python, data4ml
+ms.openlocfilehash: 73850d8022618dd6544d19564e425288aff09771
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307372"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360641"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>Azure Data Factory ile veri alımı
 
-Bu makalede, Azure Data Factory (ADF) ile veri alma işlem hattı oluşturmayı öğreneceksiniz. Bu işlem hattı, Azure Machine Learning ile kullanım için verileri almak üzere kullanılır. Azure Data Factory, verileri kolayca ayıklamanızı, dönüştürmenizi ve yüklemeyi (ETL) sağlar. Veriler dönüştürüldükten ve depolama alanına yüklendikten sonra, makine öğrenimi modellerinizi eğitebilmeniz için kullanılabilir.
+Bu makalede, Azure Data Factory (ADF) ile veri alma işlem hattı oluşturmaya yönelik kullanılabilir seçenekler hakkında bilgi edineceksiniz. Bu işlem hattı, Azure Machine Learning ile kullanım için verileri almak üzere kullanılır. Azure Data Factory, verileri kolayca ayıklamanızı, dönüştürmenizi ve yüklemeyi (ETL) sağlar. Veriler dönüştürüldükten ve depolama alanına yüklendikten sonra, makine öğrenimi modellerinizi eğitebilmeniz için kullanılabilir.
 
 Basit veri dönüştürme, yerel ADF etkinlikleri ve [veri akışı](../data-factory/control-flow-execute-data-flow-activity.md)gibi gereçlerle işlenebilir. Daha karmaşık senaryolara geldiğinde veriler bazı özel kodla işlenebilir. Örneğin, Python veya R kodu.
 
