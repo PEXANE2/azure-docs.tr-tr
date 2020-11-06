@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/13/2020
+ms.date: 11/06/2020
 ms.author: b-juche
-ms.openlocfilehash: 54e6f4abd5ca6d15a4cc5a7bc9015abb005296a0
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: ff1899fbc89ab4a78bf793a133a7aa9a8f03dd2a
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013653"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337568"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>Kapasite havuzu sorunlarını giderme
 
@@ -38,7 +38,6 @@ Bu makalede, havuz değiştirme işlemi de dahil olmak üzere kapasite havuzlar�
 |-|-|
 | Bir birim için kapasite havuzunun değiştirilmesine izin verilmiyor. | Henüz bu özelliği kullanmak için yetkiniz olmayabilir. <br> Bir birimi başka bir kapasite havuzuna taşıma özelliği şu anda önizleme aşamasındadır. Bu özelliği ilk kez kullanıyorsanız, önce özelliği kaydetmeniz ve ayarlamanız gerekir `-FeatureName ANFTierChange` . [Bir birimin hizmet düzeyini dinamik olarak değiştirme](dynamic-change-volume-service-level.md)içindeki kayıt adımlarına bakın. |
 | Kapasite havuzu boyutu toplam birim boyutu için çok küçük. |  Bu hata, hedef kapasite havuzunun, taşınmakta olan birim için kullanılabilir kapasiteye sahip olmayan bir sonucudur.  <br> Hedef havuzun boyutunu artırın veya daha büyük olan başka bir havuz seçin.  Bkz. [bir kapasite havuzunu veya birimi yeniden boyutlandırma](azure-netapp-files-resize-capacity-pools-or-volumes.md).   |
-| Hedef kapasite havuzunun özgün KAPASİTE havuzundan farklı bir şifreleme türü olduğunda birim taşınamaz.  Örneğin, Çift şifrelemeden tek bir şifrelemeye geçiyorum veya tam tersi de geçerlidir.  | Kaynak kapasitesi havuzuyla aynı şifreleme türüne sahip bir hedef kapasite havuzu seçin.   |
 |  Hedef havuzda zaten adlandırılmış bir birim bulunduğundan havuz değişikliği tamamlanamıyor `'{source pool name}'``'{target pool name}'` | Bu hata, aynı ada sahip bir birim hedef kapasite havuzunda zaten varolduğu için oluşur.  Aynı ada sahip bir birimi olmayan başka bir kapasite havuzu seçin.   | 
 
 ## <a name="next-steps"></a>Sonraki adımlar  

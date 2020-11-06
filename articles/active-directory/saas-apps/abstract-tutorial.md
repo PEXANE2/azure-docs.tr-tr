@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 233af68e4109e53b6bd841f298e9c2728ca5b116
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: baae0f89165e292408150dd419c6de8dc41a320c
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313491"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335567"
 ---
 # <a name="tutorial-integrate-abstract-with-azure-active-directory"></a>Öğretici: Özet Azure Active Directory ile tümleştirin
 
@@ -28,7 +28,7 @@ Bu öğreticide, özetin Azure Active Directory (Azure AD) ile nasıl tümleşti
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -47,15 +47,15 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama** ' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Özet** yazın.
 1. Sonuçlar panelinden **Özet** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu abstract ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında Özet olarak bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu abstract ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında Özet olarak bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Özet ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -70,8 +70,8 @@ Azure AD SSO 'yu Özet ile yapılandırmak ve test etmek için aşağıdaki yap�
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **soyut** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. [Azure Portal](https://portal.azure.com/), **soyut** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma** ' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML** ' yi seçin.
 1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
@@ -103,9 +103,9 @@ Artık, soyut olarak SSO 'yu yapılandırmaya hazırsınız:
 
 1. [Soyut Web uygulamasını](https://app.abstract.com/)açın.
 2. Sol taraftaki çubukta **izinler** sayfasına gidin.
-3. **SSO yapılandırma** bölümünde, **meta veri URL 'SINI** ve **varlık kimliğinizi**girin.
+3. **SSO yapılandırma** bölümünde, **meta veri URL 'SINI** ve **varlık kimliğinizi** girin.
 4. Sahip olabileceğiniz herhangi bir el ile özel durumu girin. El ile özel durumlar bölümünde listelenen e-postalar, SSO 'yu atlar ve e-posta ve parolayla oturum açabiliyor. 
-5. **Değişiklikleri Kaydet**’e tıklayın.
+5. **Değişiklikleri Kaydet** ’e tıklayın.
 
 >[!Note] 
 >El ile özel durumlar listesindeki birincil e-posta adreslerini kullanmanız gerekir. Listenizde bir kullanıcının ikincil e-postası varsa, bu e-posta, SSO etkinleştirmesi başarısız olur. Bu durumda, başarısız olan hesabın birincil e-postasına sahip bir hata iletisi görürsünüz. Kullanıcıyı öğrendiklerinizi doğruladıktan sonra bu birincil e-postayı el ile özel durumlar listesine ekleyin.
@@ -114,25 +114,25 @@ Artık, soyut olarak SSO 'yu yapılandırmaya hazırsınız:
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal sol bölmeden **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur** 'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, abstract 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **soyut**' ı seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portal **Kurumsal uygulamalar** ' ı seçin ve ardından **tüm uygulamalar** ' ı seçin.
+1. Uygulamalar listesinde, **soyut** ' ı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar** ' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle** ' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
@@ -146,7 +146,7 @@ Bu bölümde, abstract 'e erişim vererek Azure çoklu oturum açma özelliğini
 
 1. [Soyut Web uygulamasını](https://app.abstract.com/)açın.
 2. Sol taraftaki çubukta **izinler** sayfasına gidin.
-3. **Hesabım Ile test et**' e tıklayın. Test başarısız olursa, lütfen [destek ekibimize başvurun](https://www.abstract.com/help/contact/).
+3. **Hesabım Ile test et** ' e tıklayın. Test başarısız olursa, lütfen [destek ekibimize başvurun](https://help.abstract.com/hc/).
 
 >[!Note]
 >Soyut olan SSO ayarlarına erişmek için bir kuruluş yöneticisi hesabıyla kimlik doğrulaması yapmanız gerekir.

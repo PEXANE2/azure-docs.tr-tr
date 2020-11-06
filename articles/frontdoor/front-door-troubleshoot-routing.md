@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/30/2020
 ms.author: duau
-ms.openlocfilehash: dbce9019e33c07dd4faa91ffd490eba4d313c675
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e810a31fab4457e47329e37f54b16e6f488c9da
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630619"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337636"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>Yaygın yönlendirme sorunlarını giderme
 
@@ -95,7 +95,7 @@ Bu belirtinin birkaç olası nedeni vardır:
 
     * HTTP ve HTTPS bağlantı noktalarınızı denetleyin. Çoğu durumda, 80 ve 443 (sırasıyla) doğru olur ve hiçbir değişiklik yapmanız gerekmez. Ancak, arka ucunuzun bu şekilde yapılandırılmadığı ve farklı bir bağlantı noktasında dinleme yaptığı bir şansınız vardır.
 
-        * Ön uç konağın yönlendirilmesi gereken _arka uç ana bilgisayar üst bilgisini_ denetleyin. Çoğu durumda bu üst bilgi, *arka uç ana bilgisayar adıyla*aynı olmalıdır. Ancak, arka uç farklı bir şeyi bekliyorsa, yanlış bir değer çeşitli HTTP 4xx durum kodlarına neden olabilir. Arka ucunuzun IP adresini girverirseniz, arka uç *ana bilgisayar üst bilgisini* arka ucun ana bilgisayar adına ayarlamanız gerekebilir.
+        * Ön uç konağın yönlendirilmesi gereken _arka uç ana bilgisayar üst bilgisini_ denetleyin. Çoğu durumda bu üst bilgi, *arka uç ana bilgisayar adıyla* aynı olmalıdır. Ancak, arka uç farklı bir şeyi bekliyorsa, yanlış bir değer çeşitli HTTP 4xx durum kodlarına neden olabilir. Arka ucunuzun IP adresini girverirseniz, arka uç *ana bilgisayar üst bilgisini* arka ucun ana bilgisayar adına ayarlamanız gerekebilir.
 
 3. Yönlendirme kuralı ayarlarını denetleyin:
     * Söz konusu ön uç ana bilgisayar adından bir arka uç havuzuna yönlendirilmesi gereken yönlendirme kuralına gidin. İstek iletilirken kabul edilen protokollerin doğru yapılandırıldığından emin olun. *Kabul edilen protokoller* alanı hangi Isteklerin ön kapısının kabul edeceğini belirler. *İletme Protokolü* , isteği arka uca iletmek için kullanılacak protokol ön kapısının ne olduğunu belirler.
@@ -103,5 +103,26 @@ Bu belirtinin birkaç olası nedeni vardır:
             * *Kabul edilen protokoller* http ve https 'dir. *İletme Protokolü* http 'dir. HTTPS izin verilen bir protokol olduğundan ve bir istek HTTPS olarak verildiyse, ön kapı HTTPS kullanarak iletmeyi dener.
 
             * *Kabul edilen protokoller* http. *İletme Protokolü* , istek ya da http ile eşleşiyor.
-
     - *URL yeniden yazma* varsayılan olarak devre dışıdır. Bu alan, yalnızca kullanılabilir hale getirmek istediğiniz arka uç barındırılan kaynakların kapsamını daraltmak istiyorsanız kullanılır. Devre dışı bırakıldığında, ön kapıda aldığı istek yolunu iletecektir. Bu alanı hatalı yapılandırmak mümkündür. Bu nedenle, ön kapı mevcut olmayan arka uca bir kaynak istiyorsa, bir HTTP 404 durum kodu döndürür.
+
+## <a name="request-to-frontend-host-name-returns-411-status-code"></a>Ön uç konak adı isteği 411 durum kodu döndürüyor
+
+### <a name="symptom"></a>Belirti
+
+Ön kapı oluşturdunuz ve bir ön uç Konağı, içinde en az bir arka uç içeren bir arka uç havuzu ve ön uç konağını arka uç havuzuna bağlayan bir yönlendirme kuralı yapılandırdınız. Bir HTTP 411 durum kodu döndürüldüğünden, içerik yapılandırılmış ön uç konağına bir istek gönderilirken kullanılamıyor gibi görünüyor.
+
+Bu isteklere verilen yanıtlar, açıklayıcı bir ifade içeren yanıt gövdesinde bir HTML hata sayfası da içerebilir. Örnek: `HTTP Error 411. The request must be chunked or have a content length`
+
+### <a name="cause"></a>Nedeni
+
+Bu belirtinin birkaç olası nedeni vardır; Bununla birlikte, HTTP isteğinizin tam olarak RFC uyumlu olmaması da genel nedenidir. 
+
+Uyumsuz olmayan bir örnek, `POST` bir `Content-Length` veya `Transfer-Encoding` üst bilgisi (örneğin, kullanılarak) olmadan gönderilen bir istek olabilir `curl -X POST https://example-front-door.domain.com` . Bu istek, [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.3.2) ' de ayarlanan gereksinimleri karşılamıyor ve bir http 411 yanıtıyla ön kapaağınız tarafından engelleniyor olabilir.
+
+Bu davranış, ön kapıda WAF işlevlerinden ayrıdır. Şu anda bu davranışı devre dışı bırakma yöntemi yoktur. WAF işlevselliği kullanımda olmasa bile tüm HTTP isteklerinin gereksinimleri karşılaması gerekir.
+
+### <a name="troubleshooting-steps"></a>Sorun giderme adımları
+
+- İsteklerinizin, gerekli RFC 'lerde ayarlanan gereksinimlere uyduğundan emin olun.
+
+- İsteğinizin yanıt olarak döndürülen tüm HTML ileti gövdesini, genellikle isteğinizin tam olarak *nasıl* uyumlu olmadığını açıkladıklarından emin olmak.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: 09485d3279e4ca4fff5b6492bab432d8034d7e42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e426962310417fdca56ea2f7d45a6ea820d41981
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449407"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335885"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Bağlayıcısı Management çözümü (kullanım dışı)
 
@@ -42,14 +42,14 @@ Uygulama öngörüleri Bağlayıcısı çözümü, performans sorunlarını tan�
 
 Diğer Log Analytics çözümlerinin aksine, veriler aracıları tarafından Application Insights Bağlayıcısı için toplanmaz. Çözüm tarafından kullanılan tüm veriler doğrudan Azure 'dan gelir.
 
-| Bağlı Kaynak | Desteklenir | Açıklama |
+| Bağlı Kaynak | Desteklenir | Description |
 | --- | --- | --- |
-| [Windows aracıları](./agent-windows.md) | Hayır | Çözüm Windows aracılarından bilgi toplamaz. |
-| [Linux aracıları](../learn/quick-collect-linux-computer.md) | Hayır | Çözüm, Linux aracılarından bilgi toplamaz. |
-| [SCOM yönetim grubu](./om-agents.md) | Hayır | Çözüm, bağlı bir SCOM yönetim grubundaki aracılardan bilgi toplamaz. |
-| [Azure depolama hesabı](./resource-logs.md#send-to-log-analytics-workspace) | Hayır | Çözüm, Azure Storage 'dan bilgi toplamaz. |
+| [Windows aracıları](./agent-windows.md) | No | Çözüm Windows aracılarından bilgi toplamaz. |
+| [Linux aracıları](../learn/quick-collect-linux-computer.md) | No | Çözüm, Linux aracılarından bilgi toplamaz. |
+| [SCOM yönetim grubu](./om-agents.md) | No | Çözüm, bağlı bir SCOM yönetim grubundaki aracılardan bilgi toplamaz. |
+| [Azure depolama hesabı](./resource-logs.md#send-to-log-analytics-workspace) | No | Çözüm, Azure Storage 'dan bilgi toplamaz. |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Application Insights Bağlayıcısı bilgilerine erişmek için bir Azure aboneliğinizin olması gerekir
 - En az bir yapılandırılmış Application Insights kaynağınız olmalıdır.
@@ -57,10 +57,10 @@ Diğer Log Analytics çözümlerinin aksine, veriler aracıları tarafından App
 
 ## <a name="configuration"></a>Yapılandırma
 
-1. Azure Web Apps Analytics çözümünü [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) 'nden veya [Çözüm Galerisi Log Analytics çözümleri ekleme](../insights/solutions.md)bölümünde açıklanan işlemi kullanarak etkinleştirin.
+1. Azure Web Apps Analytics çözümünü [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps) 'nden veya [Çözüm Galerisi Log Analytics çözümleri ekleme](../insights/solutions.md)bölümünde açıklanan işlemi kullanarak etkinleştirin.
 2. [Azure Portal](https://portal.azure.com)gidin. Application Insights açmak için **tüm hizmetler** ' i seçin. Sonra, Application Insights için arama yapın. 
-3. **Abonelikler**' in altında Application Insights kaynaklara sahip bir abonelik seçin ve ardından **ad**' ın altında bir veya daha fazla uygulama seçin.
-4. **Kaydet**’e tıklayın.
+3. **Abonelikler** ' in altında Application Insights kaynaklara sahip bir abonelik seçin ve ardından **ad** ' ın altında bir veya daha fazla uygulama seçin.
+4. **Kaydet** ’e tıklayın.
 
 Yaklaşık 30 dakika içinde, veriler kullanılabilir hale gelir ve Application Insights kutucuğu aşağıdaki görüntüde olduğu gibi verilerle güncelleştirilir:
 
@@ -133,9 +133,9 @@ Perspektif bileşenleri, arama sorgusuna göre güncelleştirilir. Bu, sonuçlar
 
 ### <a name="pivot-to-an-app-in-the-azure-portal"></a>Azure portal bir uygulamaya Özet
 
-Application Insights Bağlayıcısı Blade *, Azure Portal kullandığınızda*seçili Application Insights uygulamasına Özet uygulamanızı sağlamak üzere tasarlanmıştır. Çözümü, bir uygulamanın sorunlarını gidermenize yardımcı olan üst düzey bir izleme platformu olarak kullanabilirsiniz. Bağlı uygulamalarınızdan birinde olası bir sorun gördüğünüzde, Log Analytics arama ' da ayrıntısına gidebilir veya doğrudan Application Insights uygulamasına özetleyebilirsiniz.
+Application Insights Bağlayıcısı Blade *, Azure Portal kullandığınızda* seçili Application Insights uygulamasına Özet uygulamanızı sağlamak üzere tasarlanmıştır. Çözümü, bir uygulamanın sorunlarını gidermenize yardımcı olan üst düzey bir izleme platformu olarak kullanabilirsiniz. Bağlı uygulamalarınızdan birinde olası bir sorun gördüğünüzde, Log Analytics arama ' da ayrıntısına gidebilir veya doğrudan Application Insights uygulamasına özetleyebilirsiniz.
 
-Özet 'e, her satırın sonunda görüntülenen üç noktaya (**...**) tıklayın ve **Application Insights aç**' ı seçin.
+Özet 'e, her satırın sonunda görüntülenen üç noktaya ( **...** ) tıklayın ve **Application Insights aç** ' ı seçin.
 
 >[!NOTE]
 >**Application Insights Içinde aç** Azure portal kullanılamıyor.
@@ -161,7 +161,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 Çözüm, bağlı Application Insights uygulamalarınızdan aşağıdaki telemetri veri türlerini alır:
 
 - Kullanılabilirlik
-- Özel Durumlar
+- Özel durumlar
 - İstekler
 - Sayfa görünümleri: çalışma alanınızın sayfa görünümlerini alması için uygulamalarınızı bu bilgileri toplayacak şekilde yapılandırmanız gerekir. Daha fazla bilgi için bkz. [PageViews](../app/api-custom-events-metrics.md#page-views).
 - Özel olaylar: çalışma alanınızın özel olayları alması için uygulamalarınızı bu bilgileri toplayacak şekilde yapılandırmanız gerekir. Daha fazla bilgi için bkz. [Trackevent](../app/api-custom-events-metrics.md#trackevent).
@@ -252,7 +252,7 @@ Her giriş verisi türü için, *ApplicationInsights* *türünde* bir kayıt olu
 | RequestName | Al/postala + URL tabanı |
 | RequestDuration | İstek süresinin saniye cinsinden süresi |
 | URL | Konağın dahil olmadığı isteğin URL 'SI |
-| Ana bilgisayar | Web sunucusu Konağı |
+| Yönetici | Web sunucusu Konağı |
 | URL tabanı | İsteğin tam URL 'SI |
 | ApplicationProtocol | Uygulama tarafından kullanılan protokol türü |
 | Istek sayısı | 100/(örnekleme hızı). Örneğin, 4 = &gt; %25 |

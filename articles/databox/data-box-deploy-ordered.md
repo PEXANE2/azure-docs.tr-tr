@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 400c5bd4dd31daaf826ed63ada75266d4ab3099c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a73005580c9b7ddeae17e3e0490aa586bd9b0fbb
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313206"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335839"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Öğretici: Azure Data Box sipariş etme
 
@@ -123,7 +123,7 @@ Uzantı başarıyla yüklenirse aşağıdaki çıktıyı görürsünüz:
 
 CLı komutlarını çalıştırmak için tarayıcınız aracılığıyla Azure 'da barındırılan etkileşimli kabuk ortamı [Azure Cloud Shell](https://shell.azure.com/)kullanabilirsiniz. Azure Cloud Shell, Azure hizmetleriyle bash veya Windows PowerShell 'i destekler. Azure CLı, önceden yüklenmiş ve hesabınızla kullanılmak üzere yapılandırılmış. Azure portal sağ üst kısmında bulunan menüdeki Cloud Shell düğmesini seçin:
 
-![Cloud Shell](../storage/common/media/storage-quickstart-create-account/cloud-shell-menu.png)
+![Cloud Shell menü seçimi](../storage/common/media/storage-quickstart-create-account/cloud-shell-menu.png)
 
 Düğme, bu nasıl yapılır makalesinde özetlenen adımları çalıştırmak için kullanabileceğiniz etkileşimli bir kabuk başlatır.
 
@@ -215,11 +215,11 @@ Bir cihazı sıralamak için Azure portal aşağıdaki adımları uygulayın.
 1. Microsoft Azure kimlik bilgilerini kullanarak şu URL’de oturum açın: [https://portal.azure.com](https://portal.azure.com).
 2. **+ Kaynak oluştur** ’u seçin ve *Azure Data Box* araması yapın. **Azure Data Box** ’ı seçin.
 
-   ![Arama alanındaki Azure Data Box yeni bölümün ekran görüntüsü.](media/data-box-deploy-ordered/select-data-box-import-02.png)
+   ![Arama alanında Azure Data Box yeni bölümün ekran görüntüsü](media/data-box-deploy-ordered/select-data-box-import-02.png)
 
 3. **Oluştur** ’u seçin.
 
-   ![Oluşturma seçeneği olarak adlandırılan Azure Data Box bölümünün ekran görüntüsü.](media/data-box-deploy-ordered/select-data-box-import-03.png)
+   ![Oluşturma seçeneği olarak adlandırılan Azure Data Box bölümünün ekran görüntüsü](media/data-box-deploy-ordered/select-data-box-import-03.png)
 
 4. Data Box'ın bölgenizde kullanılabilir olup olmadığını kontrol edin. Aşağıdaki bilgileri girin veya seçin ve sonra **Uygula** 'yı seçin.
 
@@ -231,11 +231,11 @@ Bir cihazı sıralamak için Azure portal aşağıdaki adımları uygulayın.
     |Kaynak ülke/bölge    |    Verilerinizin bulunduğu ülkeyi/bölgeyi seçin.         |
     |Hedef Azure bölgesi     |     Verileri aktarmak istediğiniz Azure bölgesini seçin. <br> Daha fazla bilgi için [bölge kullanılabilirliği](data-box-overview.md#region-availability)’ne gidin.            |
 
-    [![Azure Data Box içeri aktarma sırası](media/data-box-deploy-ordered/select-data-box-import-04b.png)](media/data-box-deploy-ordered/select-data-box-import-04b.png#lightbox)
+    [![Azure Data Box içeri aktarma sırası başlatılıyor](media/data-box-deploy-ordered/select-data-box-import-04b.png)](media/data-box-deploy-ordered/select-data-box-import-04b.png#lightbox)
 
 5. **Data Box** 'ı seçin. Tek bir sipariş için kullanılabilir maksimum kapasite 80 TB 'tır. Daha büyük veri boyutları için birden fazla sipariş oluşturabilirsiniz.
 
-    ![Seçim için kullanılabilen farklı veri boyutlarının ekran görüntüsü: Data Box Disk 40 terabayt, Data Box 100 terabayt, Data Box Heavy, 1000 terabayt ve kendi disklerinizi 1 terabayttan gönderme.](media/data-box-deploy-ordered/select-data-box-import-05.png)
+    ![Kullanılabilir veri boyutları: Data Box Disk, 40 terabayt; Data Box, 100 terabayt; Data Box Heavy, 1000 terabayt; Kendi disklerinizi gönderin, 1 terabaytlık](media/data-box-deploy-ordered/select-data-box-import-05.png)
 
 6. **Sırasıyla** **temel bilgiler** sekmesine gidin. Aşağıdaki bilgileri girin veya seçin ve Ileri ' **yi seçin: veri hedefi>**.
 
@@ -245,7 +245,7 @@ Bir cihazı sıralamak için Azure portal aşağıdaki adımları uygulayın.
     |Kaynak grubu    | Daha önce seçtiğiniz kaynak grubu. |
     |İçeri aktarma sırası adı | Siparişi takip etmek için kullanılacak kolay bir ad girin. <br> Ad harf, rakam ve tirelerden oluşan 3-24 karakter arası uzunlukta olabilir. <br> Ad bir harf veya sayıyla başlamalı ve bitmelidir.    |
 
-    ![Sipariş Sihirbazı 'nın, doğru bilgi doldurulmuş şekilde sihirbazın temel bilgilerini gösteren ekran görüntüsü.](media/data-box-deploy-ordered/select-data-box-import-06.png)
+    ![Data Box içeri aktarma siparişi Sihirbazı, doğru bilgiler doldurulmuş temel bilgiler](media/data-box-deploy-ordered/select-data-box-import-06.png)
 
     Varsayılan olarak, cihaz kilidi açma parolası, Microsoft tarafından yönetilen bir anahtar kullanılarak şifrelenir. Siparişi tamamladıktan sonra, müşteri tarafından yönetilen bir anahtar ekleyebilirsiniz. Müşteri tarafından yönetilen bir anahtar, cihazınızın kilit açma parolasını korumak için bir Azure Anahtar Kasası anahtarından kendi anahtarınızı kullanmanıza olanak sağlar. Daha fazla bilgi için bkz. [Azure Data Box için Azure Key Vault müşteri tarafından yönetilen anahtarları kullanma](data-box-customer-managed-encryption-key-portal.md).
 
@@ -253,7 +253,7 @@ Bir cihazı sıralamak için Azure portal aşağıdaki adımları uygulayın.
 
     Depolama **hesabı (ler)** i depolama hedefi olarak kullanılıyorsa, aşağıdaki ekran görüntüsünü görürsünüz:
 
-    ![Azure Data Box veri hedefi](media/data-box-deploy-ordered/select-data-box-import-07.png)
+    ![Depolama hesapları seçiliyken Data Box içeri aktarma Sihirbazı, veri hedefi ekranı](media/data-box-deploy-ordered/select-data-box-import-07.png)
 
     Belirtilen Azure bölgesine göre filtrelenen listeden var olan bir veya daha fazla depolama hesabı seçin. Data Box en çok 10 depolama hesabına bağlanabilir. Dilerseniz yeni bir **Genel amaçlı v1** , **Genel amaçlı v2** veya **Blob depolama hesabı** da oluşturabilirsiniz.
 
@@ -265,7 +265,7 @@ Bir cihazı sıralamak için Azure portal aşağıdaki adımları uygulayın.
     |---------|---------|
     |Kaynak grupları     | Şirket içi VHD'lerden yönetilen diskler oluşturmayı düşünüyorsanız yeni kaynak grupları oluşturun. Mevcut bir kaynak grubunu yalnızca kaynak grubu, Data Box hizmeti tarafından yönetilen disk için bir Data Box sırası oluşturulurken daha önce oluşturulduysa kullanabilirsiniz. <br> Noktalı virgülle ayrılmış birden çok kaynak grubu belirtin. En fazla 10 kaynak grubu desteklenir.|
 
-    ![Doğru bilgi doldurulmuş şekilde Sihirbazın veri hedefi adımını gösteren sipariş Sihirbazı ekran görüntüsü.](media/data-box-deploy-ordered/select-data-box-import-07b.png)
+    ![Yönetilen diskler seçiliyken içeri aktarma sırası Sihirbazı, veri hedefi ekranı Data Box](media/data-box-deploy-ordered/select-data-box-import-07b.png)
 
     Yönetilen diskler için belirtilen depolama hesabı, hazırlama depolama hesabı olarak kullanılır. Data Box hizmeti, VHD'leri yönetilen disklere dönüştürmeden ve kaynak gruplarına taşımadan önce hazırlama depolama hesabına sayfa blobları olarak yükler. Daha fazla bilgi için bkz. [Azure'a veri yüklemeyi doğrulama](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
    > [!NOTE]
@@ -277,23 +277,23 @@ Bir cihazı sıralamak için Azure portal aşağıdaki adımları uygulayın.
 
     **Güvenlik** ekranındaki tüm ayarlar isteğe bağlıdır. Herhangi bir ayarı değiştirmezseniz varsayılan ayarlar uygulanır.
 
-    ![Data Box içeri aktarma sırası için güvenlik ekranı](media/data-box-deploy-ordered/select-data-box-import-security-01.png)
+    ![Data Box alma sırası sihirbazının güvenlik ekranı](media/data-box-deploy-ordered/select-data-box-import-security-01.png)
 
-1. Azure Data Box varsayılan olarak kullandığı sistem tarafından oluşturulan parolaları kullanmak istemiyorsanız, **kendi parolanızı getir** ' i genişletin.
+8. Azure Data Box varsayılan olarak kullandığı sistem tarafından oluşturulan parolaları kullanmak istemiyorsanız, **kendi parolanızı getir** ' i genişletin.
 
    Sistem tarafından oluşturulan parolalar güvenlidir ve kuruluşunuz aksini gerektirmediği takdirde önerilir.
 
-   ![Genişletilmiş bir Data Box içeri aktarma sırası için kendi parola seçeneklerinizi getirin](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
+   ![Genişletilmiş bir Data Box içeri aktarma sırası için güvenlik ekranında kendi parolanızı getir seçenekleri](media/data-box-deploy-ordered/select-data-box-import-security-02.png)
 
    - Yeni cihazınız için kendi parolanızı kullanmak üzere **cihaz parolası için tercih ayarla** **' yı seçin ve** güvenlik gereksinimlerini karşılayan bir parola yazın.
    
-     ![Data Box içeri aktarma için güvenlik ekranı, kendi cihaz parolanızı kullanma seçenekleri](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
+     ![Data Box içeri aktarma sırası için güvenlik ekranında kendi cihaz parolanızı kullanma seçenekleri](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
 
    - Paylaşımlar için kendi parolalarınızı kullanmak için:
 
      1. **Parola paylaşma için tercih ayarla** ' yı seçerek, **kendi parolalarınızı kullanın** ' ı seçin ve ardından **paylaşımlar için parolalar** ' ı seçin.
      
-        ![Data Box içeri aktarma için güvenlik ekranı, kendi paylaşma parolalarınızı kullanma seçenekleri](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
+        ![Data Box içeri aktarma sırası için güvenlik ekranında kendi paylaşma parolalarınızı kullanma seçenekleri](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
 
      1. Her depolama hesabı için sırasıyla bir parola yazın. Parola, depolama hesabının tüm paylaşımlarında kullanılacaktır.
      
@@ -303,9 +303,9 @@ Bir cihazı sıralamak için Azure portal aşağıdaki adımları uygulayın.
 
        **Güvenlik** ekranında, parolaları değiştirmek Için **Parolaları görüntüleme veya değiştirme** seçeneğini kullanabilirsiniz.
 
-1. **Güvenlik** bölümünde, yazılım tabanlı çift şifrelemeyi etkinleştirmek Istiyorsanız, **çift şifrelemeyi genişletin (yüksek oranda güvenli ortamlar için)** ve **sıra için çift şifrelemeyi etkinleştir** ' i seçin.
+9. **Güvenlik** bölümünde, yazılım tabanlı çift şifrelemeyi etkinleştirmek Istiyorsanız, **çift şifrelemeyi genişletin (yüksek oranda güvenli ortamlar için)** ve **sıra için çift şifrelemeyi etkinleştir** ' i seçin.
 
-   ![Data Box içeri aktarmaya yönelik güvenlik ekranı, bir Data Box sırası için yazılım tabanlı şifrelemeyi etkinleştirme](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
+   ![Data Box içeri aktarma sırası için güvenlik ekranında yazılım tabanlı şifrelemeyi etkinleştirme seçenekleri](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
 
    Yazılım tabanlı şifreleme, Data Box verilerin AES-256 bit şifrelemesine ek olarak gerçekleştirilir.
 
@@ -314,29 +314,29 @@ Bir cihazı sıralamak için Azure portal aşağıdaki adımları uygulayın.
 
    Ileri ' yi seçin: devam etmek için **kişi ayrıntıları** .
 
-8. **Kişi ayrıntıları** ' nda **+ Sevkiyat Adresi Ekle** ' yi seçin.
+10. **Kişi ayrıntıları** ' nda **+ Sevkiyat Adresi Ekle** ' yi seçin.
 
-    ![Sipariş sihirbazının, gönderme adresi ekle seçeneği ile sihirbazın Iletişim ayrıntıları adımını gösteren ekran görüntüsü.](media/data-box-deploy-ordered/select-data-box-import-08a.png)
+    ![Kişi ayrıntıları ekranından, Azure Data Box içeri aktarma siparişiniz için sevkıyat adresleri ekleyin](media/data-box-deploy-ordered/select-data-box-import-08a.png)
 
-9. **Teslimat adresi** ’ne adınızı, soyadınızı, şirket adını, posta adresini ve geçerli bir telefon numarasını girin. **Adresi doğrula** 'yı seçin. Hizmet, teslimat adresinde hizmetin kullanılabilirlik durumunu doğrular. Hizmet belirtilen teslimat adresinde kullanılabilir durumdaysa bu konuda bir bildirim gönderilir.
+11. **Sevkiyat Adresi** ' nde, adınızı ve soyadınızı, şirketin adını ve posta adresini ve geçerli bir telefon numarasını belirtin. Sonra **adresi doğrula** ' yı seçin. Hizmet, adres için hizmet kullanılabilirliğini denetler. Teslim adresi için hizmet varsa, bu etkiye yönelik bir bildirim alırsınız.
 
-   ![Sevkiyat Adresi Ekle iletişim kutusunun gönderme seçenekleriyle birlikte gelen ve teslim adresi ekle seçeneğinin ekran görüntüsü.](media/data-box-deploy-ordered/select-data-box-import-10.png)
+     ![Sevkiyat Adresi Ekle iletişim kutusu, gönderme seçenekleri ve teslim adresi ekle seçeneği ile çağrıldı](media/data-box-deploy-ordered/select-data-box-import-10.png)
 
-   Kendi kendine yönetilen sevkiyat ' ı seçtiyseniz, sipariş başarıyla yerleştirildikten sonra bir e-posta bildirimi alırsınız. Kendi kendine yönetilen kargo hakkında daha fazla bilgi için bkz. [otomatik olarak yönetilen gönderi kullanma](data-box-portal-customer-managed-shipping.md).
+    Kendi kendine yönetilen sevkiyat ' ı seçtiyseniz, sipariş başarıyla yerleştirildikten sonra bir e-posta bildirimi alırsınız. Kendi kendine yönetilen kargo hakkında daha fazla bilgi için bkz. [otomatik olarak yönetilen gönderi kullanma](data-box-portal-customer-managed-shipping.md).
 
-10. Sevkiyat ayrıntıları başarıyla doğrulandıktan sonra **Sevkiyat Adresi Ekle** ' yi seçin. **Kişi ayrıntıları** sekmesine geri dönecaksınız.
+12. Sevkiyat ayrıntıları başarıyla doğrulandıktan sonra **Sevkiyat Adresi Ekle** ' yi seçin. **Kişi ayrıntıları** sekmesine geri dönecaksınız.
 
-11. **İletişim ayrıntılarına** geri döndüğünüzde bir veya daha fazla e-posta adresi ekleyin. Hizmet, belirtilen e-posta adreslerine sipariş durumundaki güncelleştirmelerle ilgili bilgi gönderir.
+13. **İletişim ayrıntılarına** geri döndüğünüzde bir veya daha fazla e-posta adresi ekleyin. Hizmet, belirtilen e-posta adreslerine sipariş durumundaki güncelleştirmelerle ilgili bilgi gönderir.
 
     Grup yöneticisinin ayrılması durumunda da bildirim almaya devam etmek için bir grup e-postası kullanmanız önerilir.
 
-    ![E-posta metin kutusuyla sipariş Sihirbazı 'nın Iletişim ayrıntıları adımının e-posta bölümünün ekran görüntüsü ve sonraki: Inceleme ve sipariş seçeneği çağırılır.](media/data-box-deploy-ordered/select-data-box-import-08c.png)
+    ![Sipariş sihirbazında kişi ayrıntılarının e-posta bölümü](media/data-box-deploy-ordered/select-data-box-import-08c.png)
 
 12. **İnceleme** ve sipariş, iletişim, bildirim ve gizlilik koşulları ile ilgili bilgileri gözden geçirin. Gizlilik koşullarını kabul ettiğinizi belirten kutuyu işaretleyin.
 
 13. **Sipariş** 'i seçin. Siparişin oluşturulması birkaç dakika sürer.
 
-    ![Inceleme ve sipariş adımını ve sıralı seçeneğini gösteren sipariş Sihirbazı ekran görüntüsü.](media/data-box-deploy-ordered/select-data-box-import-11.png)
+    ![Sipariş sihirbazının gözden geçirilmesi ve sırası ekranı](media/data-box-deploy-ordered/select-data-box-import-11.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -344,7 +344,7 @@ Bir cihaz sıralamak için Azure CLı kullanarak aşağıdaki adımları uygulay
 
 1. Data Box siparişiniz için ayarlarınızı yazın. Bu ayarlar kişisel/iş bilgilerinizi, abonelik adınızı, cihaz bilgilerini ve gönderi bilgilerini içerir. Data Box sırasını oluşturmak için CLı komutunu çalıştırırken bu ayarları parametre olarak kullanmanız gerekir. Aşağıdaki tabloda, için kullanılan parametre ayarları gösterilmektedir `az databox job create` :
 
-   | Ayar (parametre) | Açıklama |  Örnek değer |
+   | Ayar (parametre) | Description |  Örnek değer |
    |---|---|---|
    |resource-group| Var olan bir taneyi kullanın veya yenisini oluşturun. Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır. | myresourcegroup|
    |name| Oluşturmakta olduğunuz siparişin adı. | "mydataboxorder"|
@@ -463,7 +463,7 @@ Bir cihazı sıralamak için Azure PowerShell kullanarak aşağıdaki adımları
 
 2. Data Box siparişiniz için ayarlarınızı yazın. Bu ayarlar kişisel/iş bilgilerinizi, abonelik adınızı, cihaz bilgilerini ve gönderi bilgilerini içerir. Data Box sırasını oluşturmak için PowerShell komutunu çalıştırırken bu ayarları parametre olarak kullanmanız gerekir. Aşağıdaki tabloda [New-AzDataBoxJob](/powershell/module/az.databox/New-AzDataBoxJob)için kullanılan parametre ayarları gösterilmektedir.
 
-    | Ayar (parametre) | Açıklama |  Örnek değer |
+    | Ayar (parametre) | Description |  Örnek değer |
     |---|---|---|
     |ResourceGroupName [gerekli]| Mevcut bir kaynak grubunu kullanın. Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır. | myresourcegroup|
     |Ad [gerekli]| Oluşturmakta olduğunuz siparişin adı. | "mydataboxorder"|
@@ -526,11 +526,11 @@ Cihaz yoksa bir bildirim alırsınız. Cihaz varsa, Microsoft gönderilecek ciha
 
 Cihazın hazırlanması tamamlandığında portalda sipariş durumu **İşlendi** olarak değişir.
 
-![Data Box siparişi işlendi](media/data-box-overview/data-box-order-status-processed.png)
+![İşlenen Data Box sırası](media/data-box-overview/data-box-order-status-processed.png)
 
 Microsoft ardından cihazınızı hazırlar ve bölgeye uygun gönderim şirketine teslim eder. Cihaz gönderildikten sonra bir takip numarası iletilir. Portalda sipariş durumu **Yola çıktı** olarak değişir.
 
-![Data Box siparişi yola çıktı](media/data-box-overview/data-box-order-status-dispatched.png)
+![Dağıtılan Data Box sırası](media/data-box-overview/data-box-order-status-dispatched.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

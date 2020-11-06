@@ -3,12 +3,12 @@ title: '& görüntüleri hakkında'
 description: Azure Container kayıt defterleri, depolar ve kapsayıcı görüntülerinin temel kavramlarına giriş.
 ms.topic: article
 ms.date: 06/16/2020
-ms.openlocfilehash: f3a3e2a00b4fb35f9e9dd1415d5c197aef0d39b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd2f93c119817c722401f7290064894f3d39dac9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85390457"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335903"
 ---
 # <a name="about-registries-repositories-and-images"></a>Kayıt defterleri, depolar ve görüntüler hakkında
 
@@ -45,7 +45,7 @@ Bu öğeler hakkındaki ayrıntılar için aşağıdaki bölümlere bakın.
 - *ACR-HelloWorld: v1*
 - *ACR-HelloWorld: v2*
 
-Depo adlarında [ad alanları](container-registry-best-practices.md#repository-namespaces)da bulunabilir. Ad alanları, eğik çizgi ile ayrılmış adları kullanarak kuruluşunuzda ilgili depoları ve yapıt sahipliğini tanımlamanızı sağlar. Ancak kayıt defteri, tüm depoları bağımsız olarak değil, bağımsız olarak yönetir. Örnekler için:
+Depo adlarında [ad alanları](container-registry-best-practices.md#repository-namespaces)da bulunabilir. Ad alanları, eğik çizgi ile ayrılmış adları kullanarak kuruluşunuzda ilgili depoları ve yapıt sahipliğini tanımlamanızı sağlar. Ancak kayıt defteri, tüm depoları bağımsız olarak değil, bağımsız olarak yönetir. Örnek:
 
 - *Pazarlama/campaign10-18/Web: v2*
 - *Pazarlama/campaign10-18/API: v3*
@@ -73,7 +73,7 @@ Etiket adlandırma kuralları için [Docker belgelerine](https://docs.docker.com
 
 ### <a name="layer"></a>Katman
 
-Kapsayıcı görüntüleri, her biri görüntüyü tanımlayan Dockerfile dosyasında bir satıra karşılık gelen bir veya daha fazla *katmandan*oluşur. Kayıt defterindeki görüntüler ortak katmanları paylaşır ve depolama verimliliğini artırır. Örneğin, farklı depolardaki birçok görüntü aynı alp Linux temel katmanını paylaşabilir, ancak bu katmanın yalnızca bir kopyası kayıt defterinde saklanır.
+Kapsayıcı görüntüleri, her biri görüntüyü tanımlayan Dockerfile dosyasında bir satıra karşılık gelen bir veya daha fazla *katmandan* oluşur. Kayıt defterindeki görüntüler ortak katmanları paylaşır ve depolama verimliliğini artırır. Örneğin, farklı depolardaki birçok görüntü aynı alp Linux temel katmanını paylaşabilir, ancak bu katmanın yalnızca bir kopyası kayıt defterinde saklanır.
 
 Katman paylaşımı, katman dağıtımını aynı zamanda ortak katmanları paylaşan birden çok görüntü içeren düğümlere iyileştirir. Örneğin, zaten bir düğümde bulunan bir görüntü temel olarak alp Linux katmanını içeriyorsa, aynı katmana başvuran farklı bir görüntünün sonraki çekme katmanı düğüme aktarılmaz. Bunun yerine, düğüm üzerinde zaten var olan katmana başvurur.
 
@@ -81,7 +81,7 @@ Olası katman işlemesini güvenli yalıtım ve koruma sağlamak için Katmanlar
 
 ### <a name="manifest"></a>Bildirim
 
-Bir kapsayıcı kayıt defterine gönderilen her kapsayıcı görüntüsü veya yapıtı bir *bildirimle*ilişkilendirilir. Görüntü gönderildiğinde kayıt defteri tarafından oluşturulan bildirim, görüntüyü benzersiz bir şekilde tanımlar ve katmanlarını belirtir. Azure CLı komutu ile bir depo için bildirimleri listeleyebilir [az ACR Repository Show-bildirimleri][az-acr-repository-show-manifests]:
+Bir kapsayıcı kayıt defterine gönderilen her kapsayıcı görüntüsü veya yapıtı bir *bildirimle* ilişkilendirilir. Görüntü gönderildiğinde kayıt defteri tarafından oluşturulan bildirim, görüntüyü benzersiz bir şekilde tanımlar ve katmanlarını belirtir. Azure CLı komutu ile bir depo için bildirimleri listeleyebilir [az ACR Repository Show-bildirimleri][az-acr-repository-show-manifests]:
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName>
@@ -122,7 +122,7 @@ az acr repository show-manifests --name myregistry --repository acr-helloworld
 
 ### <a name="manifest-digest"></a>Bildirim Özeti
 
-Bildirimler benzersiz bir SHA-256 karması veya *bildirim Özeti*tarafından tanımlanır. Her resim veya yapıt--etiketlenebilir veya değil, Özeti tarafından tanımlanır. Görüntünün katman verileri başka bir görüntüyle aynı olsa bile Özet değeri benzersizdir. Bu mekanizma, aynı etiketli görüntüleri bir kayıt defterine sürekli olarak göndermenize olanak tanır. Örneğin, `myimage:latest` her görüntü benzersiz Özet tarafından tanımlandığından, hata vermeden Kayıt defterinize sürekli olarak gönderim yapabilirsiniz.
+Bildirimler benzersiz bir SHA-256 karması veya *bildirim Özeti* tarafından tanımlanır. Her resim veya yapıt--etiketlenebilir veya değil, Özeti tarafından tanımlanır. Görüntünün katman verileri başka bir görüntüyle aynı olsa bile Özet değeri benzersizdir. Bu mekanizma, aynı etiketli görüntüleri bir kayıt defterine sürekli olarak göndermenize olanak tanır. Örneğin, `myimage:latest` her görüntü benzersiz Özet tarafından tanımlandığından, hata vermeden Kayıt defterinize sürekli olarak gönderim yapabilirsiniz.
 
 Çekme işleminde özetini belirterek bir kayıt defterinden görüntü çekebilirsiniz. Bazı sistemler, aynı etiketli bir görüntü daha sonra kayıt defterine gönderilse bile, çekilmekte olan görüntü sürümünü garanti ettiğinden Özet tarafından çekilecek şekilde yapılandırılabilir.
 

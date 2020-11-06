@@ -419,8 +419,6 @@
                   href: 'http://aka.ms/speech/va-samples'
                 - name: Ses yardımcıları hakkında SSS
                   href: faq-voice-assistants.md
-                - name: Konuşma SDK'sı
-                  href: speech-sdk.md
                 - name: Bekleyen verinin Özel Komutlarla şifrelenmesi
                   href: custom-commands-encryption-of-data-at-rest.md
         - name: Direct Line Speech

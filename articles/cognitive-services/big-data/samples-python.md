@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: sample
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: caf492c2cd3940fd7f37e2a4462c8376a127f393
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a4fe2492433aa793d1a7e4be41c5f93043848a5
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86189828"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337874"
 ---
 # <a name="python-samples-for-cognitive-services-for-big-data"></a>Büyük veriler için bilişsel hizmetler için Python örnekleri
 
@@ -27,13 +27,13 @@ Bu makaledeki örneklerde bu bilişsel hizmetler kullanılır:
 - Metin tabanlı döküm dosyalarını ayıklamak için konuşmayı metne dönüştürme ses dosyaları.
 - Anomali algılayıcısı-bir zaman serisi verileri içindeki aykırlıkları algılayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. Azure Databricks ve [bilişsel](getting-started.md) hizmetler ortamınızı ayarlamaya Başlarken bölümündeki adımları izleyin. Bu öğreticide, MMLSpark 'ın nasıl yükleneceği ve Databricks 'te Spark kümenizi nasıl oluşturacağınız gösterilmektedir.
 1. Azure Databricks yeni bir not defteri oluşturduktan sonra, aşağıdaki **paylaşılan kodu** kopyalayın ve Not defterinize yeni bir hücreye yapıştırın.
 1. Aşağıda bir hizmet örneği seçin ve kopyalayın ve Not defterinize ikinci bir yeni hücreye yapıştırın.
 1. Hizmet aboneliği anahtar yertutucuları kendi anahtarınızla değiştirin.
-1. Hücrenin sağ üst köşesindeki Çalıştır düğmesini (üçgen simgesi) seçin ve ardından **hücreyi Çalıştır**' ı seçin.
+1. Hücrenin sağ üst köşesindeki Çalıştır düğmesini (üçgen simgesi) seçin ve ardından **hücreyi Çalıştır** ' ı seçin.
 1. Sonuçları hücrenin altındaki bir tabloda görüntüleyin.
 
 ## <a name="shared-code"></a>Paylaşılan kod
@@ -78,16 +78,16 @@ sentiment = (TextSentiment()
     .setLanguageCol("language"))
 
 # Show the results of your text query in a table format
-display(sentiment.transform(df).select("text", col("sentiment")[0].getItem("score").alias("sentiment")))
+display(sentiment.transform(df).select("text", col("sentiment")[0].getItem("sentiment").alias("sentiment")))
 ```
 
 ### <a name="expected-result"></a>Beklenen sonuç
 
 | metin                                      | yaklaşım                                             |
 |:------------------------------------------|:------------------------------------------------------|
-| Bugün bugün kutlu olsun!           | 0.9789592027664185                                    |
-| Bu aceleniz saat trafiği tarafından hayal dışındayım | 0.023795604705810547                                  |
-| Spark aint hatalı üzerinde bilişsel hizmetler  | 0.8888956308364868                                    |
+| Bugün bugün kutlu olsun!           | pozitif                                              |
+| Bu aceleniz saat trafiği tarafından hayal dışındayım | negatif                                              |
+| Spark aint hatalı üzerinde bilişsel hizmetler  | pozitif                                              |
 
 ## <a name="computer-vision-sample"></a>Görüntü İşleme örneği
 
@@ -117,7 +117,7 @@ display(analysis.transform(df).select("image", "analysis_results.description.tag
 
 ### <a name="expected-result"></a>Beklenen sonuç
 
-| image | etiketler |
+| image | tags |
 |:------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------|
 | https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/objects.jpg | [' ' ' kişi ' ' adam ' ' Başak ' ' adlı taraf ' ' adlı taraf ' ', ' ', ' ' havayolu ' '-' ' uçak ' ' Havaalanı ' '-' ' Kara ' '
 | https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/dog.jpg | [' köpek ' ' ' ', ' ', ' ' tezgahtır ' ', ' ' öne çıkış ' ' adlı küçük ' ' kahverengi ' ' bina ' ', ' ' öne ' '                

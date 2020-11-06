@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 132c072ad4cbee5cc3ac49695aa34480dc827400
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00b6fab2aeebeeb0f39e07a0751e02cefd195b28
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565777"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337367"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box güvenliği ve veri koruması
 
@@ -32,11 +32,11 @@ Microsoft Azure Data Box çözümü birbiriyle etkileşimde olan dört ana bile�
 
 Aşağıdaki diyagramda veri akışının Şirket içinden Azure 'a ve verilerin çözüm üzerinden akar gibi çeşitli güvenlik özelliklerinin Azure Data Box çözümü gösterilmektedir. Bu akış Data Box bir içeri aktarma siparişi içindir.
 
-![Data Box içeri aktarma güvenliği](media/data-box-security/data-box-security-2.png)
+![Data Box içeri aktarma güvenliği](media/data-box-security/data-box-security-import.png)
 
 Aşağıdaki diyagramda Data Box dışa aktarma sırası verilmiştir.
 
-![Data Box dışarı aktarma güvenliği](media/data-box-security/data-box-security-3.png)
+![Data Box dışarı aktarma güvenliği](media/data-box-security/data-box-security-export.png)
 
 Veriler bu çözüm üzerinden akar, olaylar günlüğe kaydedilir ve günlükler oluşturulur. Daha fazla bilgi için şuraya gidin:
 
@@ -106,7 +106,7 @@ Daha fazla bilgi için, [Güven Merkezi](https://www.microsoft.com/trustcenter)�
 
 Data Box’da aşağıdaki güvenlik yönergeleri uygulanmıştır: 
 
-|Yönerge   |Açıklama   |
+|Yönerge   |Description   |
 |---------|---------|
 |[IEC 60529 IP52](https://www.iec.ch/)    | Su ve toz koruması için         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | Olumsuz taşıma koşullarına dayanıklılık için          |

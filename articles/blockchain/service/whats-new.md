@@ -4,12 +4,12 @@ description: En son sürüm notları, sürümler, bilinen sorunlar ve yaklaşan 
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
-ms.openlocfilehash: 47e0da5a729519f2af3c5b2a2fd3e0f7485624cf
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 6a3113a2d28e704b188d701da13493ecd8263cab
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948468"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335035"
 ---
 # <a name="whats-new-in-azure-blockchain-service"></a>Azure blok zinciri hizmetindeki yenilikler nelerdir?
 
@@ -27,7 +27,7 @@ Azure blok zinciri hizmeti, iyileştirmeleri sürekli olarak alır. En son geli�
 
 ### <a name="version-upgrades"></a>Sürüm yükseltmeleri
 
-- 2.6.0 sürümüne çekirdek sürümü yükseltmesi. Sürüm 2.6.0 ile imzalı özel işlemler gönderebilirsiniz. Özel işlemler gönderme hakkında daha fazla bilgi için bkz. [çekirdek API 'si belgeleri](https://docs.goquorum.com/en/latest/Getting%20Started/api/).
+- 2.6.0 sürümüne çekirdek sürümü yükseltmesi. Sürüm 2.6.0 ile imzalı özel işlemler gönderebilirsiniz. Özel işlemler gönderme hakkında daha fazla bilgi için bkz. [çekirdek API 'si belgeleri](https://docs.goquorum.consensys.net/en/latest/Reference/APIs/ContractExtensionAPIs/#apis).
 - Tessera sürümü 0.10.5 sürümüne yükseltilir.
 
 ### <a name="contract-size-and-transaction-size-increased-to-128-kb"></a>Sözleşme boyutu ve işlem boyutu 128 KB 'ye yükseldi
@@ -69,7 +69,7 @@ Tür: geliştirme
 Çekirdek v 2.6.0 'de, ek *değer* parametresi sağlanması gerekmeden *ETH. estimategaz* işlevine yapılan çağrılar, bir *Yöntem işleyicisinin çökme* özel durumuna neden olur. Çekirdek ekibine bildirildi ve 2020 Temmuz 'dan sonuna bir onarım beklenmektedir. Bir çözüm kullanılabilir olana kadar aşağıdaki geçici çözümleri kullanabilirsiniz:
 
 - Performansı etkileyebileceğinden, *ETH. Estimategaz* kullanmaktan kaçının. ETH. Estimategaz performans sorunları hakkında daha fazla bilgi için, bkz [.. estimategaz Işlevi çağırma performansı azaltır](#calling-ethestimategas-function-reduces-performance). Her işlem için bir gaz değeri ekleyin. Çoğu kitaplık, çekirdek v 2.6.0 'in kilitlenmesine neden olan bir gaz değeri sağlanmazsa, ETH. Estimategaz çağırır.
-- *ETH. Estimategaz*çağrısı yapmanız gerekiyorsa, çekirdek ekip ek parametre *değerini* geçici bir çözüm olarak *0* olarak iletmeniz önerilir.
+- *ETH. Estimategaz* çağrısı yapmanız gerekiyorsa, çekirdek ekip ek parametre *değerini* geçici bir çözüm olarak *0* olarak iletmeniz önerilir.
 
 ### <a name="mining-stops-if-fewer-than-four-validator-nodes"></a>Dört Doğrulayıcı düğümü daha az olursa araştırma durduruluyor
 
@@ -119,7 +119,7 @@ Yüksek hacimli özel işlemler gönderiyorsanız *Standart* katmanı kullanın.
 
 *ETH. Estimategaz* işlevini birden çok kez çağırmak, saniye başına işlem azaltır. Her işlem gönderimi için *ETH. Estimategaz* işlevini kullanmayın. *ETH. Estimategaz* işlevi bellek açısından yoğun.
 
-Mümkünse, işlem göndermek için bir klasik gaz değeri kullanın ve *ETH. Estimategaz*kullanımını en aza indirin.
+Mümkünse, işlem göndermek için bir klasik gaz değeri kullanın ve *ETH. Estimategaz* kullanımını en aza indirin.
 
 ### <a name="unbounded-loops-in-smart-contracts-reduces-performance"></a>Akıllı sözleşmelerdeki sınırsız döngüler performansı azaltır
 
@@ -127,5 +127,5 @@ Performansı azaltabilmeleri için akıllı sözleşmelerdeki sınırsız döng�
 
 - [Sınırsız döngüden kaçının](https://blog.b9lab.com/getting-loopy-with-solidity-1d51794622ad )
 - [Akıllı sözleşme güvenlik en iyi uygulamaları](https://github.com/ConsenSys/smart-contract-best-practices)
-- [Çekirdek tarafından sunulan akıllı sözleşme yönergeleri](http://docs.goquorum.com/en/latest/Security/Framework/Decentralized%20Application/Smart%20Contracts%20Security/)
+- [Çekirdek tarafından sunulan akıllı sözleşme yönergeleri](https://docs.goquorum.consensys.net/en/stable/Concepts/Security/Framework/DecentralizedApplication/SmartContractsSecurity/)
 - [Solidity tarafından sunulan gaz sınırları ve döngüleriyle ilgili yönergeler](https://solidity.readthedocs.io/en/develop/security-considerations.html#gas-limit-and-loops)

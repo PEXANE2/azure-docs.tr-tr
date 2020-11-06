@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: fecadf3cd6fd0d654315038680b9aa3fa2b71782
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 12eed6aeccffe854810e9c2ddc8a5c4e59b8c312
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913917"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337942"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure dijital TWINS 'de ikizi modellerini anlama
 
@@ -35,7 +35,7 @@ Azure dijital TWINS, **Dtdl _sürüm 2_** kullanır. DTDL 'nin bu sürümü hakk
 
 ## <a name="elements-of-a-model"></a>Bir modelin öğeleri
 
-Bir model tanımı içinde, üst düzey kod öğesi bir **arabirimdir** . Bu, modelin tamamını kapsüller ve modelin geri kalanı arabirim içinde tanımlanır. 
+Bir model tanımı içinde, üst düzey kod öğesi bir **arabirimdir**. Bu, modelin tamamını kapsüller ve modelin geri kalanı arabirim içinde tanımlanır. 
 
 Bir DTDL model arabirimi, aşağıdaki alanlardan her birinin sıfır, bir veya bir çoğunu içerebilir:
 * **Özellik** özellikleri, bir varlığın durumunu temsil eden veri alanlarıdır (birçok nesne odaklı programlama dilinde özellikler gibi). Özellikler depolamayı yedekliyor ve herhangi bir zamanda okunabilir.
@@ -141,7 +141,7 @@ Modelin alanları şunlardır:
 | Alan | Açıklama |
 | --- | --- |
 | `@id` | Model için bir tanımlayıcı. Biçiminde olmalıdır `dtmi:<domain>:<unique model identifier>;<model version number>` . |
-| `@type` | Açıklanmakta olan bilgi türünü tanımlar. Bir arabirim için tür *arabirimdir* . |
+| `@type` | Açıklanmakta olan bilgi türünü tanımlar. Bir arabirim için tür *arabirimdir*. |
 | `@context` | JSON belgesi [bağlamını](https://niem.github.io/json/reference/json-ld/context/) ayarlar. Modeller kullanmalıdır `dtmi:dtdl:context;2` . |
 | `displayName` | seçim İsterseniz modele kolay bir ad vermenizi sağlar. |
 | `contents` | Kalan tüm arabirim verileri, öznitelik tanımlarının bir dizisi olarak buraya yerleştirilir. Her öznitelik `@type` , açıkladığı arabirim bilgilerinin sıralamasını belirlemek için bir ( *özellik* , *telemetri* , *komut* , *ilişki* veya *bileşen* ) ve ardından gerçek özniteliği tanımlayan bir özellikler kümesi (örneğin, `name` ve `schema` bir *özelliği* tanımlamak) sağlamalıdır. |
@@ -228,11 +228,17 @@ Genişletme arabirimi üst arabirimlerin tanımlarından hiçbirini değiştirem
 
 [!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
-## <a name="converting-industry-standard-models"></a>Sektör standardı modelleri dönüştürme
+## <a name="integrating-with-industry-standard-models"></a>Sektör standardı modellerle tümleştirme
 
-RDF veya OWL gibi bir sektör standardını temel alan Azure dijital TWINS 'in dışında mevcut modelleriniz varsa, bunları Azure dijital TWINS ile kullanmak için **DTDL 'ye dönüştürmeniz** gerekir. DTDL sürümü daha sonra Azure Digital TWINS içindeki model için Truth kaynağı olacaktır.
+Endüstri standartlarına dayalı modelleri kullanma veya RDF veya OWL gibi standart ontology temsili kullanma, Azure dijital TWINS modellerinizi tasarlarken zengin bir başlangıç noktası sağlar. Endüstri modellerini kullanmak, standartlaştırma ve bilgi paylaşımıyla de yardımcı olur.
 
-Bu süreç hakkında daha fazla bilgi için bkz. [*nasıl yapılır: sektör standardı modellerini dönüştürme*](how-to-convert-models.md).
+Azure dijital TWINS ile kullanılmak üzere, JSON-LD tabanlı [**dijital TWINS tanım dili (DTDL)**](concepts-models.md)içinde bir model temsil etmelidir. Bu nedenle, bu makalede, Azure Digital TWINS 'in kullanabilmesi için, mevcut sektör kavramlarını dtdl semantiğinin tümleştirilmesine yönelik DTDL 'de sektör standardı modellerinizi nasıl temsil ettiğini açıklanmaktadır. DTDL modeli daha sonra Azure dijital TWINS içindeki modelin gerçeği kaynağı olarak görev yapar.
+
+Koşulunuza bağlı olarak, sektör standardı modellerini DTDL ile tümleştirmenin iki ana yolu vardır:
+* Modellerinizi henüz oluşturmanız gerekiyorsa, bunları sektörünüz için özel dil içeren **mevcut Başlatıcı DTDL ontolozeri** etrafında tasarlayabilirsiniz.
+* Bir sektör standardını temel alan mevcut modelleriniz zaten varsa, bunları Azure dijital TWINS 'e getirmek için **DTDL 'ye dönüştürmeniz** gerekir.
+
+Bu işlemlerden her ikisi hakkında daha fazla bilgi için bkz. [*nasıl yapılır: sektör standardı modellerini tümleştirme*](how-to-integrate-models.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

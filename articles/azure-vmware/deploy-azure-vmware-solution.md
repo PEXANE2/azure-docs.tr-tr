@@ -3,13 +3,13 @@ title: Azure VMware çözümünü dağıtma ve yapılandırma
 description: Azure VMware çözümü özel bulutu 'nı dağıtmak için planlama aşamasında toplanan bilgileri nasıl kullanacağınızı öğrenin.
 ms.topic: tutorial
 ms.author: tredavis
-ms.date: 10/02/2020
-ms.openlocfilehash: 0839048c2d0ad5944566a48f54cca07a4daeb754
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.date: 11/09/2020
+ms.openlocfilehash: 264ad99b21150f391c367eba2da31f0d08f4ab08
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152029"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94336344"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware çözümünü dağıtma ve yapılandırma
 
@@ -59,7 +59,7 @@ Bağlantı kutusu, Azure VMware çözümünün ExpressRoute bağlantı hattı ar
 
 Etkin rotalar listesinde, Azure VMware Çözüm dağıtımının bir parçası olarak oluşturulan ağları görmeniz gerekir. Bu makalenin önceki bölümlerinde, [dağıtım adımı](#deploy-azure-vmware-solution) sırasında [ `/22` tanımladığınız ağdan](production-ready-deployment-steps.md#ip-address-segment) türetilmiş birden çok ağ görürsünüz.
 
-:::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Azure VMware çözümü geçiş kutusunu oluşturma" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Azure VMware çözümünden Azure Virtual Network 'e tanıtılan ağ yollarını doğrulama" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
 
 Bu örnekte, 10.74.72.0/22 ağı dağıtım sırasında giriştir/24 ağı türetir.  Benzer bir durum görürseniz, Azure VMware çözümünde vCenter 'a bağlanabilirsiniz.
 
@@ -67,7 +67,7 @@ Bu örnekte, 10.74.72.0/22 ağı dağıtım sırasında giriştir/24 ağı türe
 
 Önceki adımda oluşturduğunuz sıçrama kutusunda oturum açın. Oturum açtıktan sonra bir Web tarayıcısı açın ve git ve NSX-T Yönetici konsoluna gidin ve oturum açın.  
 
-VCenter ve NSX-T yönetici konsolunun IP adreslerini ve kimlik bilgilerini Azure portal tanımlayabilirsiniz.  Özel bulutunuzu seçip **genel bakış** görünümünde **kimlik > varsayılan**' ı seçin. 
+VCenter ve NSX-T yönetici konsolunun IP adreslerini ve kimlik bilgilerini Azure portal tanımlayabilirsiniz.  Özel bulutunuzu seçip **genel bakış** görünümünde **kimlik > varsayılan** ' ı seçin. 
 
 ## <a name="create-a-network-segment-on-azure-vmware-solution"></a>Azure VMware çözümünde bir ağ kesimi oluşturma
 
@@ -97,10 +97,10 @@ DNS gerekli olduğundan, hangi DNS sunucusunu kullanmak istediğinizi belirlemek
 
 NSX-T segmentlerinizi DHCP kullanmayı planlıyorsanız, bu bölüm ile devam edin. Aksi takdirde, [NSX-T ağ KESIMINE VM ekleme](#add-a-vm-on-the-nsx-t-network-segment) bölümüne atlayın.  
 
-NSX-T ağ segmentinizi oluşturduğunuza göre, aşağıdaki yöntemlerle bırını yapabilirsiniz:
+NSX-T ağ segmentinizi oluşturduğunuza göre, Azure VMware çözümünde DHCP 'yi iki şekilde oluşturabilir ve yönetebilirsiniz:
 
-* Oluşturulan segmentler için DHCP sunucusu olarak NSX-T kullanın. Bu seçenek için [NSX-T ' de BIR DHCP sunucusu oluşturmak](manage-dhcp.md#create-dhcp-server) ve [Bu sunucuya geçiş](manage-dhcp.md#create-dhcp-relay-service)yapmak istersiniz.
-* NSX-T segmentinden, ortamınızdaki başka bir yerde DHCP sunucusuna DHCP isteklerini geçiş. Bu seçenek için [yalnızca geçiş yapılandırmasını yapın](manage-dhcp.md#create-dhcp-relay-service).
+* DHCP sunucunuzu barındırmak için NSX-T kullanıyorsanız, [BIR DHCP sunucusu oluşturmanız](manage-dhcp.md#create-a-dhcp-server) ve [Bu sunucuya geçiş](manage-dhcp.md#create-dhcp-relay-service)yapmanız gerekir. 
+* Ağınızda üçüncü taraf bir dış DHCP sunucusu kullanıyorsanız, [DHCP geçiş hizmeti oluşturmanız](manage-dhcp.md#create-dhcp-relay-service)gerekir.  Bu seçenek için [yalnızca geçiş yapılandırmasını yapın](manage-dhcp.md#create-dhcp-relay-service).
 
 
 ## <a name="add-a-vm-on-the-nsx-t-network-segment"></a>NSX-T ağ kesimine VM ekleme

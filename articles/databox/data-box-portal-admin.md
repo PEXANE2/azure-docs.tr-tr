@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 978d1de158f93b06d08ff93605405573000b6b6e
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 7d2734d386f1e49e2227058b148ee6b591d14a42
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123724"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94336501"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box ve Azure Data Box Heavy yönetmek için Azure portal kullanın
 
@@ -32,13 +32,13 @@ Siparişinizi verdikten sonra çeşitli nedenlerle iptal etmeniz gerekebilir.
 
 Bir siparişi iptal etmek için aşağıdaki adımları gerçekleştirin.
 
-1.  **Genel bakış > İptal**'e gidin.
+1.  **Genel bakış > İptal** 'e gidin.
 
-    ![Siparişi iptal etme 1](media/data-box-portal-admin/cancel-order1.png)
+    ![Bir siparişin Genel Bakış sekmesinde iptal komutu](media/data-box-portal-admin/portal-admin-cancel-command.png)
 
 2.  Sipariş iptal etme nedenini belirtin.  
 
-    ![Siparişi iptal etme 2](media/data-box-portal-admin/cancel-order2.png)
+    ![Siparişi iptal et iletişim kutusu](media/data-box-portal-admin/portal-admin-cancel-order-dbox.png)
 
 3.  Sipariş iptal edildikten sonra portaldaki durumu **İptal edildi** olarak görüntülenir.
 
@@ -51,11 +51,11 @@ Kopyalama belirli durumlarda kullanışlıdır. Örneğin kullanıcı, veri akta
 
 İçeri Aktarma sırasını kopyalamak için aşağıdaki adımları gerçekleştirin.
 
-1.  **Genel bakış > Kopyala**'ya gidin. 
+1.  **Genel bakış > Kopyala** 'ya gidin. 
 
-    ![Siparişi kopyalama 1](media/data-box-portal-admin/clone-order1.png)
+    ![Bir siparişin Genel Bakış sekmesinde kopyalama komutu](media/data-box-portal-admin/portal-admin-clone-command.png)
 
-2.  Siparişin tüm ayrıntıları aynı şekilde korunur. Siparişin adı, özgün siparişin adına *-Kopya* eklenerek oluşturulur. Gizlilik bilgilerini gözden geçirdiğinizi onaylamak için onay kutusunu seçin. **Oluştur**’a tıklayın.
+2.  Siparişin tüm ayrıntıları aynı şekilde korunur. Siparişin adı, özgün siparişin adına *-Kopya* eklenerek oluşturulur. Gizlilik bilgilerini gözden geçirdiğinizi onaylamak için onay kutusunu seçin. **Oluştur** 'a tıklayın.
 
 Kopya sipariş birkaç dakikada oluşturulur ve portal yeni siparişi gösterecek şekilde güncelleştirilir.
 
@@ -66,13 +66,13 @@ Tamamlanan siparişleri silmek isteyebilirsiniz. Siparişte adınız, adresiniz 
 
 Yalnızca tamamlanan veya iptal edilen siparişleri silebilirsiniz. Siparişi silmek için aşağıdaki adımları gerçekleştirin.
 
-1. **Tüm kaynaklar**'a gidin. Siparişinizi arayın.
+1. **Tüm kaynaklar** 'a gidin. Siparişinizi arayın.
 
-2. Silmek istediğiniz siparişe tıklayın ve **Genel bakış**'a gidin. Komut çubuğundan **Sil**'e tıklayın.
+2. Silmek istediğiniz siparişe tıklayın ve **Genel bakış** 'a gidin. Komut çubuğundan **Sil** 'e tıklayın.
 
-    ![Data Box siparişini silme 1](media/data-box-portal-admin/delete-order1.png)
+    ![Bir siparişin Genel Bakış sekmesinde Sil komutu](media/data-box-portal-admin/portal-admin-delete-command.png)
 
-3. Siparişi silme işlemini onaylamanız istendiğinde siparişin adını girin. **Sil**'e tıklayın.
+3. Siparişi silme işlemini onaylamanız istendiğinde siparişin adını girin. **Sil** 'e tıklayın.
 
 ## <a name="download-shipping-label"></a>Sevkiyat etiketini indirme
 
@@ -82,11 +82,11 @@ Sevkiyat etiketini indirmek için aşağıdaki adımları gerçekleştirin.
 
 1.  **Genel bakış > Sevkiyat etiketi indir** bölümüne gidin. Bu seçenek yalnızca cihaz gönderildikten sonra kullanılabilir. 
 
-    ![Sevkiyat etiketini indirme](media/data-box-portal-admin/download-shipping-label.png)
+    ![Sevkiyat etiketini indirme](media/data-box-portal-admin/portal-admin-download-shipping-label.png)
 
 2.  Aşağıda gösterilen iade sevkiyat etiketi indirilir. Etiketi kaydedin ve yazdırın. Etiketi katlamalı ve cihazdaki açık manşon içine ekleyin. Etiketin görünür olduğundan emin olun. Cihazdaki önceki gönderimden kalan tüm çıkartmaları sökün.
 
-    ![Örnek sevkiyat etiketi](media/data-box-portal-admin/example-shipping-label.png)
+    ![Örnek sevkiyat etiketi](media/data-box-portal-admin/portal-admin-example-shipping-label.png)
 
 ## <a name="edit-shipping-address"></a>Teslimat adresini düzenleme
 
@@ -94,13 +94,13 @@ Siparişi verdikten sonra teslimat adresini düzenlemeniz gerekebilir. Bu işlem
 
 Siparişi düzenlemek için aşağıdaki adımları gerçekleştirin.
 
-1. **Sipariş ayrıntıları > Teslimat adresini düzenle**'ye gidin.
+1. **Sipariş ayrıntıları > Teslimat adresini düzenle** 'ye gidin.
 
-    ![Teslimat adresini düzenleme 1](media/data-box-portal-admin/edit-shipping-address1.png)
+    ![Sipariş ayrıntılarında sevkiyat adresini Düzenle komutu](media/data-box-portal-admin/portal-admin-edit-shipping-address-command.png)
 
 2. Gönderim adresini düzenleyin ve doğrulayın ve sonra değişiklikleri kaydedin.
 
-    ![Teslimat adresini düzenleme 2](media/data-box-portal-admin/edit-shipping-address2.png)
+    ![Sevkiyat adresini Düzenle iletişim kutusu](media/data-box-portal-admin/portal-admin-edit-shipping-address-dbox.png)
 
 ## <a name="edit-notification-details"></a>Bildirim ayrıntılarını düzenleme
 
@@ -108,13 +108,13 @@ Sipariş durumu e-postalarının gönderilmesini istediğiniz kullanıcıları d
 
 Bildirim ayrıntılarını düzenlemek için aşağıdaki adımları gerçekleştirin.
 
-1. **Sipariş ayrıntıları > Bildirim ayrıntılarını düzenle**'ye gidin.
+1. **Sipariş ayrıntıları > Bildirim ayrıntılarını düzenle** 'ye gidin.
 
-    ![Bildirim ayrıntılarını düzenleme 1](media/data-box-portal-admin/edit-notification-details1.png)
+    ![Bildirim ayrıntılarını Düzenle komutu sıralı Ayrıntılar](media/data-box-portal-admin/portal-admin-edit-notification-details-command.png)
 
 2. Bu sayfada bildirim ayrıntılarını düzenleyebilir ve yaptığınız değişiklikleri kaydedebilirsiniz.
  
-    ![Bildirim ayrıntılarını düzenleme 2](media/data-box-portal-admin/edit-notification-details2.png)
+    ![Bildirim ayrıntılarını Düzenle iletişim kutusu](media/data-box-portal-admin/portal-admin-edit-notification-details-dbox.png)
 
 
 ## <a name="download-order-history"></a>Sipariş geçmişi indirme
@@ -123,11 +123,11 @@ Data Box siparişiniz tamamlandıktan sonra cihaz disklerindeki veriler silinir.
 
 Sipariş geçmişini indirmek için aşağıdaki adımları uygulayın.
 
-1. Data Box siparişinizde **Genel Bakış**'a gidin. Siparişin tamamlandığından emin olun. Sipariş ve cihaz temizleme tamamlandıysa, **Sipariş ayrıntıları**'na gidin. **Sipariş geçmişi indirme** seçeneği bulunur.
+1. Data Box siparişinizde **Genel Bakış** 'a gidin. Siparişin tamamlandığından emin olun. Sipariş ve cihaz temizleme tamamlandıysa, **Sipariş ayrıntıları** 'na gidin. **Sipariş geçmişi indirme** seçeneği bulunur.
 
-    ![Sipariş geçmişi indirme](media/data-box-portal-admin/download-order-history-1.png)
+    ![Sipariş geçmişi indirme](media/data-box-portal-admin/portal-admin-download-order-history.png)
 
-2. **Sipariş geçmişini indir**'e tıklayın. İndirilen geçmişte kurye takip günlüklerini bir kaydını görürsünüz. Data Box Heavy iki düğüme karşılık gelen iki günlük kümesi olacaktır. Bu günlüğün en altına giderseniz, aşağıdakilere giden bağlantıları görebilirsiniz:
+2. **Sipariş geçmişini indir** 'e tıklayın. İndirilen geçmişte kurye takip günlüklerini bir kaydını görürsünüz. Data Box Heavy iki düğüme karşılık gelen iki günlük kümesi olacaktır. Bu günlüğün en altına giderseniz, aşağıdakilere giden bağlantıları görebilirsiniz:
     
    - **Günlükleri Kopyala** -Data Box veri kopyalama sırasında Azure depolama hesabınıza (içeri aktarma sırası) veya *tam tersi* (dışarı aktarma sırasına) göre hatalı bir dosya listesi alın.
    - **Denetim günlükleri** -Azure veri merkezi 'nin dışında olduğunda Data Box paylaşımlara açma ve paylaşımlara erişme hakkında bilgi içerir.
@@ -198,11 +198,11 @@ Sipariş geçmişini indirmek için aşağıdaki adımları uygulayın.
 
     Daha sonra depolama hesabınıza gidebilir ve kopyalama günlüklerini görüntüleyebilirsiniz.
 
-![Depolama hesaplarındaki günlükler](media/data-box-portal-admin/logs-in-storage-acct-2.png)
+   ![Depolama hesabı için kopyalama günlükleri](media/data-box-portal-admin/portal-admin-storage-account-copy-logs.png)
 
-Ayrıca denetim günlüklerini ve BOM dosyalarını içeren gözetim günlükleri zincirini de görüntüleyebilirsiniz.
+   Ayrıca Denetim günlüklerini ve bom dosyalarını içeren gözetim günlüklerinin zincirini görüntüleyebilirsiniz.
 
-![Depolama hesaplarında Günlükler 2](media/data-box-portal-admin/logs-in-storage-acct-1.png)
+   ![Depolama hesabı için gözetim günlüklerinin Zinciri](media/data-box-portal-admin/portal-admin-storage-account-chain-of-custody-logs.png)
 
 ## <a name="view-order-status"></a>Sipariş durumunu görüntüleme
 
@@ -212,7 +212,7 @@ Cihaz durumu portalda değiştiğinde bu, size e-posta ile bildirilir.
 
 İçeri aktarma siparişi için durumlar aşağıda verilmiştir.
 
-|Sipariş durumu |Açıklama |
+|Sipariş durumu |Description |
 |---------|---------|
 |Sipariş edildi     | Sipariş başarıyla oluşturuldu. <br>Cihaz kullanılabilir durumdaysa Microsoft tarafından gönderilecek cihaz belirlenir ve cihaz hazırlanır. <br> Cihaz o anda mevcut değilse sipariş cihaz mevcut olduğunda işleme alınır. Siparişin işleme alınması birkaç gün ile birkaç ay sürebilir. Sipariş 90 gün içinde gerçekleştirilemiyorsa sipariş iptal edilir ve bu size bildirilir.         |
 |İşlendi     | Siparişin işlenmesi tamamlandı. Siparişiniz uyarınca cihaz gönderilmek üzere veri merkezinde hazırlanır.         |
@@ -231,7 +231,7 @@ Cihaz durumu portalda değiştiğinde bu, size e-posta ile bildirilir.
 
 Dışarı aktarma siparişi için durumlar aşağıda verilmiştir.
 
-|Sipariş durumu |Açıklama |
+|Sipariş durumu |Description |
 |---------|---------|
 |Sipariş edildi     | Dışarı aktarma sırası başarıyla yerleştirildi. <br>Cihaz kullanılabilir durumdaysa Microsoft tarafından gönderilecek cihaz belirlenir ve cihaz hazırlanır. <br> Cihaz o anda mevcut değilse sipariş cihaz mevcut olduğunda işleme alınır. Siparişin işleme alınması birkaç gün ile birkaç ay sürebilir. Sipariş 90 gün içinde gerçekleştirilemiyorsa sipariş iptal edilir ve bu size bildirilir.         |
 |İptal edildi            |Sipariş iptal edildi. <br> Siparişi iptal etmiş olursunuz (yalnızca sipariş işlenmeden önce iptal edebilirsiniz) ya da bir hata ile karşılaşıldıktan sonra hizmet siparişi iptal etmiş olursunuz. Sipariş 90 gün içinde gerçekleştirilemiyorsa sipariş iptal edilir ve bu size bildirilir.     |
@@ -254,7 +254,7 @@ Dışarı aktarma siparişi için durumlar aşağıda verilmiştir.
 
 Kendi kendine yönetilen kargo kullanılıyorsa kopyalama tamamlandıktan sonra ve cihazı almadan önce, aşağıdaki durumları görürsünüz (önceki tabloda bahsedilen durumlar yerine):
 
-|Sipariş durumu |Açıklama |
+|Sipariş durumu |Description |
 |---------|---------|
 |Azure veri merkezinde toplama için hazırlanma      |Cihaz, Azure veri merkezinde hazırlanmaya uygun.        |
 |Teslim alındı    |Cihazı tamamladınız.         |

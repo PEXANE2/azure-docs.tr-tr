@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e7713239391b49663328a7a058f8f6fd5b444335
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b08e834233e1ce12392d940cb0ccc0bef7e96158
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341340"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337755"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullanarak OPENROWSET kullanma
 
@@ -261,12 +261,12 @@ Parquet dosyaları her sütun için tür açıklamalarını içerir. Aşağıdak
 | Ý |UTF8 |varchar \* (UTF8 harmanlama) |
 | Ý |DIZISINDE |varchar \* (UTF8 harmanlama) |
 | Ý |YARDıMıNıN|varchar \* (UTF8 harmanlama) |
-| Ý |EDIN |uniqueidentifier |
+| FIXED_LEN_BYTE_ARRAY |EDIN |uniqueidentifier |
 | Ý |KATEGORI |decimal |
-| Ý |JSON |varchar (max) \* (UTF8 harmanlama) |
-| Ý |BSON |varbinary (max) |
+| Ý |JSON |varchar (8000) \* (UTF8 harmanlama) |
+| Ý |BSON | Desteklenmez |
 | FIXED_LEN_BYTE_ARRAY |KATEGORI |decimal |
-| BYTE_ARRAY |ARALıĞıNDA |, standartlaştırılmış biçimde seri hale getirilmiş varchar (max) |
+| BYTE_ARRAY |ARALıĞıNDA | Desteklenmez |
 | INT32 |TAMSAYı (8, doğru) |smallint |
 | INT32 |INT (16, doğru) |smallint |
 | INT32 |INT (32, doğru) |int |
@@ -279,10 +279,10 @@ Parquet dosyaları her sütun için tür açıklamalarını içerir. Aşağıdak
 | INT64 |INT (64, true) |bigint |
 | INT64 |INT (64, false) |ondalık (20, 0) |
 | INT64 |KATEGORI |decimal |
-| INT64 |SAAT (MIKRO S/NANOS) |time |
-|INT64 |ZAMAN DAMGASı (MILIMETRE/MIKRO S/NANOS) |datetime2 |
-|[Karmaşık tür](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |LISTELE |JSON ile seri hale getirilmiş varchar (max) |
-|[Karmaşık tür](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|HARITA|JSON ile seri hale getirilmiş varchar (max) |
+| INT64 |SAAT (MIKRO SN) |zaman-saat (NANOS) desteklenmiyor |
+|INT64 |ZAMAN DAMGASı (MILIMETRE/MIKRO SN) |datetime2-TIMESTAMP (NANOS) desteklenmiyor |
+|[Karmaşık tür](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |LISTELE |JSON ile seri hale getirilmiş varchar (8000) |
+|[Karmaşık tür](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|HARITA|JSON ile seri hale getirilmiş varchar (8000) |
 
 ## <a name="examples"></a>Örnekler
 

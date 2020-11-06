@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 09/01/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 0332400ce6808e92ba09e3bee3277495f6b6d1a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf819e5cff8c6ef008b0e55e156ba3531936b489
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897479"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337891"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>ML modellerinin eşitliği 'i değerlendirmek için Fairlearn açık kaynak paketiyle birlikte Azure Machine Learning kullanın (Önizleme)
 
@@ -33,7 +33,7 @@ Bu nasıl yapılır kılavuzunda, aşağıdaki görevleri gerçekleştirmek içi
 
 ## <a name="azure-machine-learning-fairness-sdk"></a>Azure Machine Learning eşitliği SDK 
 
-Azure Machine Learning eşitliği SDK, `azureml-contrib-fairness` Azure Machine Learning içindeki açık kaynaklı Python paketini [Fairlearn](http://fairlearn.github.io), tümleştirir. Fairlearn 'in Azure Machine Learning dahilinde tümleştirmesi hakkında daha fazla bilgi edinmek için bu [örnek not defterlerine](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)göz atın. Fairlearn hakkında daha fazla bilgi için bkz. [örnek kılavuz](https://fairlearn.github.io/auto_examples/) ve [örnek Not defterleri](https://github.com/fairlearn/fairlearn/tree/master/notebooks). 
+Azure Machine Learning eşitliği SDK, `azureml-contrib-fairness` Azure Machine Learning içindeki açık kaynaklı Python paketini [Fairlearn](http://fairlearn.github.io), tümleştirir. Fairlearn 'in Azure Machine Learning dahilinde tümleştirmesi hakkında daha fazla bilgi edinmek için bu [örnek not defterlerine](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)göz atın. Fairlearn hakkında daha fazla bilgi için bkz. [örnek kılavuz](https://fairlearn.github.io/master/auto_examples/) ve [örnek Not defterleri](https://github.com/fairlearn/fairlearn/tree/master/notebooks). 
 
 Ve paketlerini yüklemek için aşağıdaki komutları kullanın `azureml-contrib-fairness` `fairlearn` :
 ```bash
@@ -205,7 +205,7 @@ Aşağıdaki örnek, model eşitliği öngörülerini Azure Machine Learning yü
     1. Önceki adımları izleyerek özgün modelinize kaydolduysanız, görüntülemek için sol bölmede **modeller** seçebilirsiniz.
     1. Açıklama görselleştirme panosunu görüntülemek için bir model ve sonra **eşitliği** sekmesini seçin.
 
-    Görselleştirme panosu ve içerdiği özellikler hakkında daha fazla bilgi edinmek için lütfen Fairlearn 'in [Kullanıcı kılavuzuna](https://fairlearn.github.io/user_guide/assessment.html#fairlearn-dashboard)göz atın.
+    Görselleştirme panosu ve içerdiği özellikler hakkında daha fazla bilgi edinmek için lütfen Fairlearn 'in [Kullanıcı kılavuzuna](https://fairlearn.github.io/master/user_guide/assessment.html#fairlearn-dashboard)göz atın.
 
 ## <a name="upload-fairness-insights-for-multiple-models"></a>Birden çok model için eşitliği öngörülerini karşıya yükleyin
 
@@ -306,14 +306,14 @@ Birden çok modeli karşılaştırmakla ilgileniyorsanız ve eşitliği değerle
     ```
 
 
-    Önceki bölüme benzer şekilde, görselleştirme panosuna erişmek ve eşitliği ve performans açısından iki modeli karşılaştırmak için, yukarıda açıklanan yollardan birini ( **denemeleri** veya **modeller**aracılığıyla Azure Machine Learning) takip edebilirsiniz.
+    Önceki bölüme benzer şekilde, görselleştirme panosuna erişmek ve eşitliği ve performans açısından iki modeli karşılaştırmak için, yukarıda açıklanan yollardan birini ( **denemeleri** veya **modeller** aracılığıyla Azure Machine Learning) takip edebilirsiniz.
 
 
 ## <a name="upload-unmitigated-and-mitigated-fairness-insights"></a>Azaltılan ve hafiftılan eşitliği öngörülerini karşıya yükleme
 
-Fairlearn 'in [risk azaltma algoritmalarını](https://fairlearn.github.io/user_guide/mitigation.html)kullanabilir, üretilen hafifletme modellerini orijinal olmayan modele karşılaştırabilir ve karşılaştırılan modeller arasında performans/eşitliği ticaretlerini izleyebilirsiniz.
+Fairlearn 'in [risk azaltma algoritmalarını](https://fairlearn.github.io/master/user_guide/mitigation.html)kullanabilir, üretilen hafifletme modellerini orijinal olmayan modele karşılaştırabilir ve karşılaştırılan modeller arasında performans/eşitliği ticaretlerini izleyebilirsiniz.
 
-[Izgara arama](https://fairlearn.github.io/user_guide/mitigation.html#grid-search) azaltma algoritması kullanımını gösteren bir örnek görmek için (farklı eşitliği ve performans ticaretine sahip azaltılan modellerin bir koleksiyonunu oluşturur) bu [örnek not defterine](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/fairness/fairlearn-azureml-mitigation.ipynb)göz atın. 
+[Izgara arama](https://fairlearn.github.io/master/user_guide/mitigation.html#grid-search) azaltma algoritması kullanımını gösteren bir örnek görmek için (farklı eşitliği ve performans ticaretine sahip azaltılan modellerin bir koleksiyonunu oluşturur) bu [örnek not defterine](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/fairness/fairlearn-azureml-mitigation.ipynb)göz atın. 
 
 Birden çok model ' eşitliği Insights 'ı tek bir çalıştırmada karşıya yüklemek, modellerin eşitliği ve performansına göre karşılaştırmasına izin verir. Belirli bir modelin ayrıntılı eşitliği içgörülerini görmek için model karşılaştırma grafiğinde görüntülenecek modellerin herhangi birine ek olarak tıklayabilirsiniz.
 

@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 1b42e9ea06d13271c277ff254b41f10a1ff07e14
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2e07a54e20e6e60214b2905cf9321120484503eb
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790619"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337653"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL yönetilen örneği arasındaki T-SQL farklılıkları
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -159,6 +159,8 @@ SQL yönetilen örneği dosyalara erişemez, bu nedenle şifreleme sağlayıcıl
     - KULLANıCı OLARAK YÜRÜT
     - OTURUM AÇMA OLARAK YÜRÜT
 
+  - FARKLı ÇALıŞTıR ifadesiyle bir kullanıcının kimliğine bürünmek için kullanıcının doğrudan Azure AD sunucu sorumlusu (oturum açma) ile eşlenmesi gerekir. Azure AD Server sorumlularına eşlenen Azure AD gruplarının üyesi olan kullanıcılar, çağıran, belirtilen kullanıcı adında kimliğe bürünme izinlerine sahip olsa bile, EXECUTE AS ifadesiyle birlikte kullanılamaz.
+
 - Bacpac dosyalarını kullanarak veritabanı dışarı aktarma/içeri aktarma işlemi, SQL yönetilen örneğindeki [SSMS v 18.4 veya üzeri](/sql/ssms/download-sql-server-management-studio-ssms)ya da [SQLPackage.exe](/sql/tools/sqlpackage-download)kullanılarak Azure AD kullanıcıları için desteklenir.
   - Aşağıdaki konfigürasyonlar veritabanı bacpac dosyası kullanılarak desteklenir: 
     - Aynı Azure AD etki alanı içindeki farklı yönetme örnekleri arasında bir veritabanını içeri/dışarı aktarın.
@@ -300,6 +302,7 @@ Daha fazla bilgi için bkz. [alter database](/sql/t-sql/statements/alter-databas
   - Uyarılar henüz desteklenmiyor.
   - Proxy 'ler desteklenmez.
 - EventLog desteklenmiyor.
+- SQL Aracısı işleri oluşturmak, değiştirmek veya yürütmek için kullanıcının doğrudan Azure AD sunucu sorumlusu (oturum açma) ile eşlenmesi gerekir. Doğrudan eşlenmeyen kullanıcılar, örn. SQL Aracısı işleri oluşturma, değiştirme veya yürütme haklarına sahip olan bir Azure AD grubuna ait olan kullanıcılar bu işlemleri etkili bir şekilde gerçekleştiremez. Bunun nedeni yönetilen örnek kimliğe bürünme ve [yürütme olarak yürütme kısıtlamalarıdır](#logins-and-users).
 
 Aşağıdaki SQL Aracısı özellikleri şu anda desteklenmiyor:
 

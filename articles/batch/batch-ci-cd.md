@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: 2ad148579daa30d62da01aded0a01ace56f3dcbc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d758d4613f68450be9c444063d3a6188d1aa689
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760572"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337585"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>HPC çözümleri derlemek ve dağıtmak için Azure Pipelines kullanma
 
@@ -24,7 +24,7 @@ Bu örnekte, bir Azure Batch altyapısını dağıtmak ve bir uygulama paketini 
 
 ![İşlem hatmızda dağıtım akışını gösteren diyagram](media/batch-ci-cd/DeploymentFlow.png)
 
-### <a name="setup"></a>Kurulum
+### <a name="setup"></a>Ayarlama
 
 Bu makaledeki adımları izlemek için bir Azure DevOps organizasyonu ve bir takım projesi gerekir.
 
@@ -43,7 +43,7 @@ Bu örnekte kullanılan CODEBASE yapısı aşağıdakine benzer;
 
 * Bir **ARM-Templates** klasörü, bir dizi Azure Resource Manager şablonu içerir. Şablonlar Bu makalede açıklanmıştır.
 * [FFmpeg örneğiyle Azure Batch .NET dosya işlemenin](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) bir kopyası olan bir **istemci uygulaması** klasörü. Bu makale için bu gerekli değildir.
-* [FFmpeg 4.3.1](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-09-21-full_build.zip)Windows 64 bit sürümü olan **HPC-Application** klasörü.
+* [FFmpeg 4.3.1](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-10-01-essentials_build.7z)Windows 64 bit sürümü olan **HPC-Application** klasörü.
 * İşlem **hatları** klasörü. Bu, yapı sürecimiz için bir YAML dosyası içerir. Bu makalede ele alınmıştır.
 
 Bu bölüm, sürüm denetimi ve Kaynak Yöneticisi şablonlarını tasarlama hakkında bilgi sahibi olduğunuzu varsayar. Bu kavramları bilmiyorsanız, daha fazla bilgi için aşağıdaki sayfalara bakın.
@@ -300,7 +300,7 @@ Bu deponun dört ana bölümü vardır:
 * Altyapımızı kod olarak depolayan **ARM-Templates** klasörü
 * FFmpeg için ikili dosyaları içeren **HPC-Application** klasörü
 * Yapı işlem hatmız için tanımı içeren işlem **hatları** klasörü.
-* **Isteğe bağlı**: .NET uygulaması için kod depolayacak olan **istemci-uygulama** klasörü. Bunu örnekte kullanmayın, ancak kendi projenizde, bir istemci uygulaması aracılığıyla HPC Batch uygulamasının çalıştırmalarını yürütmek isteyebilirsiniz.
+* **Isteğe bağlı** : .NET uygulaması için kod depolayacak olan **istemci-uygulama** klasörü. Bunu örnekte kullanmayın, ancak kendi projenizde, bir istemci uygulaması aracılığıyla HPC Batch uygulamasının çalıştırmalarını yürütmek isteyebilirsiniz.
 
 > [!NOTE]
 > Bu, bir kod temelinin yapısına yalnızca bir örnektir. Bu yaklaşım, uygulamanın, altyapının ve işlem hattı kodunun aynı depoda depolandığını gösteren amaçlar için kullanılır.
@@ -317,7 +317,7 @@ Azure DevOps Services içinde [Azure Pipelines](/azure/devops/pipelines/get-star
 
 Bu örnekte, **HPC-Application** klasörüne odaklanacağız. **HPC-Application** klasörü, Azure Batch hesabının içinden çalıştırılacak FFmpeg yazılımıdır.
 
-1. Azure DevOps kuruluşunuzda Azure Pipelines yapılar bölümüne gidin. Yeni bir işlem **hattı**oluşturun.
+1. Azure DevOps kuruluşunuzda Azure Pipelines yapılar bölümüne gidin. Yeni bir işlem **hattı** oluşturun.
 
     ![Yeni bir derleme işlem hattı oluşturun](media/batch-ci-cd/new-build-pipeline.jpg)
 
@@ -348,7 +348,7 @@ Bu örnekte, **HPC-Application** klasörüne odaklanacağız. **HPC-Application*
         targetPath: '$(Build.ArtifactStagingDirectory)/package'
     ```
 
-1. Yapı gerektiğinde yapılandırıldıktan sonra **& kuyruğu kaydet**' i seçin. Sürekli tümleştirme etkinse ( **Tetikleyiciler** bölümünde), depoya yeni bir kayıt yapıldığında derleme sırasında ayarlanan koşullara uyan yapı otomatik olarak tetiklenir.
+1. Yapı gerektiğinde yapılandırıldıktan sonra **& kuyruğu kaydet** ' i seçin. Sürekli tümleştirme etkinse ( **Tetikleyiciler** bölümünde), depoya yeni bir kayıt yapıldığında derleme sırasında ayarlanan koşullara uyan yapı otomatik olarak tetiklenir.
 
     ![Var olan bir derleme işlem hattı örneği](media/batch-ci-cd/existing-build-pipeline.jpg)
 
@@ -367,35 +367,35 @@ Azure Pipelines Ayrıca uygulamanızı ve temel altyapıyı dağıtmak için de 
 
 Altyapıyı dağıtmaya yönelik birkaç adım vardır. [Bağlantılı şablonlar](../azure-resource-manager/templates/linked-templates.md)kullandığımızda, Bu şablonların ortak bir uç noktadan (http veya https) erişilebilir olması gerekir. Bu bir GitHub veya bir Azure Blob depolama hesabı ya da başka bir depolama konumunda bir depo olabilir. Karşıya yüklenen şablon yapıtları, özel bir modda tutulacağından ve paylaşılan erişim imzası (SAS) belirteci kullanılarak erişilen için güvenli durumda kalabilir. Aşağıdaki örnek, bir Azure Storage blobundan şablonlar içeren bir altyapının nasıl dağıtılacağını göstermektedir.
 
-1. Yeni bir **yayın tanımı**oluşturun ve boş bir tanım seçin. Daha sonra yeni oluşturulan ortamı, işlem hatlarımıza uygun bir şekilde yeniden adlandırmamız gerekir.
+1. Yeni bir **yayın tanımı** oluşturun ve boş bir tanım seçin. Daha sonra yeni oluşturulan ortamı, işlem hatlarımıza uygun bir şekilde yeniden adlandırmamız gerekir.
 
     ![İlk yayın işlem hattı](media/batch-ci-cd/Release-0.jpg)
 
 1. HPC uygulamamız için çıktıyı almak üzere derleme ardışık düzeninde bir bağımlılık oluşturun.
 
     > [!NOTE]
-    > Bir kez daha, yayın tanımının içinde görevler oluşturulduğunda gerekli olacağı için **kaynak diğer adına**göz önünde bulunmanız gerekir.
+    > Bir kez daha, yayın tanımının içinde görevler oluşturulduğunda gerekli olacağı için **kaynak diğer adına** göz önünde bulunmanız gerekir.
 
     ![Uygun derleme ardışık düzeninde HPCApplicationPackage için yapıt bağlantısı oluşturma](media/batch-ci-cd/Release-1.jpg)
 
 1. Başka bir yapıtın, bu kez bir Azure deposunun bağlantısını oluşturun. Bu, deponuzda depolanan Kaynak Yöneticisi şablonlarına erişmek için gereklidir. Kaynak Yöneticisi şablonlar derleme gerektirirken, bunları bir derleme işlem hattı aracılığıyla göndermeniz gerekmez.
 
     > [!NOTE]
-    > Bir kez daha, yayın tanımının içinde görevler oluşturulduğunda gerekli olacağı için **kaynak diğer adına**göz önünde bulunmanız gerekir.
+    > Bir kez daha, yayın tanımının içinde görevler oluşturulduğunda gerekli olacağı için **kaynak diğer adına** göz önünde bulunmanız gerekir.
 
     ![Azure Repos yapıt bağlantısı oluşturma](media/batch-ci-cd/Release-2.jpg)
 
 1. **Değişkenler** bölümüne gidin. İşlem hattınızda bir dizi değişken oluşturmanız önerilir, bu nedenle aynı bilgileri birden çok göreve yerleştirmezsiniz. Bunlar, bu örnekte kullanılan değişkenlerdir ve dağıtımı nasıl etkiler.
 
-    * **Applicationstorageaccountname**: HPC uygulama ikililerini barındıracak depolama hesabının adı
-    * **Batchaccountapplicationname**: Azure Batch hesabındaki uygulamanın adı
-    * **Batchaccountname**: Azure Batch hesabının adı
-    * **Batchaccountpoolname**: Işlemeyi yapan VM havuzunun adı
-    * **Batchapplicationıd**: Azure Batch uygulama IÇIN benzersiz kimlik
-    * **Batchapplicationversion**: Batch uygulamanızın anlamsal sürümü (yani, FFmpeg ikilileri)
-    * **konum**: dağıtılacak Azure kaynakları için konum
-    * **Resourcegroupname**: oluşturulacak kaynak grubunun adı ve kaynaklarınızın dağıtılacağı konum
-    * **storageAccountName**: bağlı kaynak yöneticisi şablonlarını barındıracak depolama hesabının adı
+    * **Applicationstorageaccountname** : HPC uygulama ikililerini barındıracak depolama hesabının adı
+    * **Batchaccountapplicationname** : Azure Batch hesabındaki uygulamanın adı
+    * **Batchaccountname** : Azure Batch hesabının adı
+    * **Batchaccountpoolname** : Işlemeyi yapan VM havuzunun adı
+    * **Batchapplicationıd** : Azure Batch uygulama IÇIN benzersiz kimlik
+    * **Batchapplicationversion** : Batch uygulamanızın anlamsal sürümü (yani, FFmpeg ikilileri)
+    * **konum** : dağıtılacak Azure kaynakları için konum
+    * **Resourcegroupname** : oluşturulacak kaynak grubunun adı ve kaynaklarınızın dağıtılacağı konum
+    * **storageAccountName** : bağlı kaynak yöneticisi şablonlarını barındıracak depolama hesabının adı
 
     ![Azure Pipelines yayını için ayarlanan değişkenler örneği](media/batch-ci-cd/Release-4.jpg)
 
@@ -406,41 +406,41 @@ Altyapıyı dağıtmaya yönelik birkaç adım vardır. [Bağlantılı şablonla
 1. Indirme işlem **hattı yapıtı (Önizleme)** görevini ekleyin ve aşağıdaki özellikleri ayarlayın:
     * **Görünen ad:** ApplicationPackage 'i aracıya indir
     * **İndirilecek yapıt adı:** HPC-Application
-    * **Indirilecek yol**: $ (System. DefaultWorkingDirectory)
+    * **Indirilecek yol** : $ (System. DefaultWorkingDirectory)
 
 1. Yapılarınızı depolamak için bir depolama hesabı oluşturun. Çözümdeki mevcut bir depolama hesabı kullanılabilir, ancak kendi kendine dahil edilen örnek ve yalıtımımız için, yapılarımız için ayrılmış bir depolama hesabı sunuyoruz (özellikle Kaynak Yöneticisi şablonlar).
 
     **Azure Kaynak grubu dağıtım** görevini ekleyin ve aşağıdaki özellikleri ayarlayın:
     * **Görünen ad:** Kaynak Yöneticisi şablonları için depolama hesabı dağıtma
     * **Azure aboneliği:** Uygun Azure aboneliğini seçin
-    * **Eylem**: kaynak grubu oluştur veya güncelleştir
-    * **Kaynak grubu**: $ (resourcegroupname)
-    * **Konum**: $ (konum)
-    * **Şablon**: $ (System. ArtifactsDirectory)/**{Yourazurerepoartifactsourcealias}**/ARM-Templates/storageAccount.json
-    * **Geçersiz kılma şablonu parametreleri**:-AccountName $ (storageAccountName)
+    * **Eylem** : kaynak grubu oluştur veya güncelleştir
+    * **Kaynak grubu** : $ (resourcegroupname)
+    * **Konum** : $ (konum)
+    * **Şablon** : $ (System. ArtifactsDirectory)/ **{Yourazurerepoartifactsourcealias}** /ARM-Templates/storageAccount.json
+    * **Geçersiz kılma şablonu parametreleri** :-AccountName $ (storageAccountName)
 
 1. Kaynak denetiminden yapıtları depolama hesabına yükleyin. Bunu gerçekleştirmek için bir Azure işlem hattı görevi vardır. Bu görevin bir parçası olarak, depolama hesabı kapsayıcısı URL 'SI ve SAS belirteci, Azure Pipelines bir değişkene alınabilir. Bu, bu aracı aşaması boyunca yeniden kullanılabilen anlamına gelir.
 
     **Azure dosya kopyalama** görevini ekleyin ve aşağıdaki özellikleri ayarlayın:
-    * **Kaynak:** $ (System. ArtifactsDirectory)/**{Yourazurerepoartifactsourcealias}**/ARM-Templates/
-    * **Azure bağlantı türü**: Azure Resource Manager
+    * **Kaynak:** $ (System. ArtifactsDirectory)/ **{Yourazurerepoartifactsourcealias}** /ARM-Templates/
+    * **Azure bağlantı türü** : Azure Resource Manager
     * **Azure aboneliği:** Uygun Azure aboneliğini seçin
-    * **Hedef türü**: Azure blobu
-    * **RM depolama hesabı**: $ (storageAccountName)
-    * **Kapsayıcı adı**: Şablonlar
-    * **Depolama kapsayıcısı URI 'si**: templatecontaineruri
-    * **Depolama KAPSAYıCıSı SAS belirteci**: templatecontainersastoken
+    * **Hedef türü** : Azure blobu
+    * **RM depolama hesabı** : $ (storageAccountName)
+    * **Kapsayıcı adı** : Şablonlar
+    * **Depolama kapsayıcısı URI 'si** : templatecontaineruri
+    * **Depolama KAPSAYıCıSı SAS belirteci** : templatecontainersastoken
 
 1. Orchestrator şablonunu dağıtın. Orchestrator şablonunu daha önce geri çek, SAS belirtecine ek olarak depolama hesabı kapsayıcısı URL 'SI için parametre olduğunu fark edeceksiniz. Kaynak Yöneticisi şablonunda gereken değişkenlerin yayın tanımının değişkenler bölümünde tutulduğuna ya da başka bir Azure Pipelines görevinden (örneğin, Azure Blob kopyalama görevinin bir parçası) ayarlandığını fark etmelisiniz.
 
     **Azure Kaynak grubu dağıtım** görevini ekleyin ve aşağıdaki özellikleri ayarlayın:
     * **Görünen ad:** Azure Batch dağıt
     * **Azure aboneliği:** Uygun Azure aboneliğini seçin
-    * **Eylem**: kaynak grubu oluştur veya güncelleştir
-    * **Kaynak grubu**: $ (resourcegroupname)
-    * **Konum**: $ (konum)
-    * **Şablon**: $ (System. ArtifactsDirectory)/**{Yourazurerepoartifactsourcealias}**/ARM-Templates/deployment.json
-    * **Şablon parametrelerini geçersiz kıl**: ```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
+    * **Eylem** : kaynak grubu oluştur veya güncelleştir
+    * **Kaynak grubu** : $ (resourcegroupname)
+    * **Konum** : $ (konum)
+    * **Şablon** : $ (System. ArtifactsDirectory)/ **{Yourazurerepoartifactsourcealias}** /ARM-Templates/deployment.json
+    * **Şablon parametrelerini geçersiz kıl** : ```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
 
 Azure Key Vault görevleri kullanmak yaygın bir uygulamadır. Hizmet sorumlusu (Azure aboneliğinize bağlantı) uygun bir erişim ilkeleri ayarlandıysa, bir Azure Key Vault parolaları indirebilir ve işlem hattınızda değişken olarak kullanılabilir. Gizli anahtar adı, ilişkili değerle ayarlanır. Örneğin, sürüm tanımında sshPassword 'ın gizli anahtarı $ (sshPassword) ile birlikte başvurulmalıdır.
 
@@ -449,21 +449,21 @@ Azure Key Vault görevleri kullanmak yaygın bir uygulamadır. Hizmet sorumlusu 
     **Azure CLI** görevini ekleyin ve aşağıdaki özellikleri ayarlayın:
     * **Görünen ad:** Azure Batch hesapta uygulama oluştur
     * **Azure aboneliği:** Uygun Azure aboneliğini seçin
-    * **Betik konumu**: satır içi betik
-    * **Satır Içi betik**: ```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
+    * **Betik konumu** : satır içi betik
+    * **Satır Içi betik** : ```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
 
 1. İkinci adım, ilişkili paketleri uygulamaya yüklemek için kullanılır. Bu durumda, FFmpeg dosyaları.
 
     **Azure CLI** görevini ekleyin ve aşağıdaki özellikleri ayarlayın:
     * **Görünen ad:** Paketi Azure Batch hesaba yükle
     * **Azure aboneliği:** Uygun Azure aboneliğini seçin
-    * **Betik konumu**: satır içi betik
-    * **Satır Içi betik**: ```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
+    * **Betik konumu** : satır içi betik
+    * **Satır Içi betik** : ```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
 
     > [!NOTE]
     > Uygulama paketinin sürüm numarası bir değişkene ayarlı. Bu, paketin önceki sürümlerinin üzerine yazılması sizin için işe yarar ve Azure Batch gönderilen paketin sürüm numarasını el ile denetlemek istiyorsanız kullanışlıdır.
 
-1. **Yeni bir yayın oluşturmak > yayın**' i seçerek yeni bir yayın oluşturun. Tetiklendikten sonra, durumu görüntülemek için yeni sürüme yönelik bağlantıyı seçin.
+1. **Yeni bir yayın oluşturmak > yayın** ' i seçerek yeni bir yayın oluşturun. Tetiklendikten sonra, durumu görüntülemek için yeni sürüme yönelik bağlantıyı seçin.
 
 1. Ortamınızın altında **Günlükler** düğmesini seçerek, etkin çıktıyı aracıdan görüntüleyebilirsiniz.
 

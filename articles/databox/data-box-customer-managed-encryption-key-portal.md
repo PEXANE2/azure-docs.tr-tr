@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 31147d534109e0d74d33d102075c69eeb703496e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40b777342c2c565efc5b40d361a259c98eae693c
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91739944"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337725"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>Azure Key Vault Azure Data Box için müşteri tarafından yönetilen anahtarları kullanın
 
@@ -47,52 +47,52 @@ Azure Data Box için müşteri tarafından yönetilen anahtarı yapılandırmak 
 
     ![Data Box Order 'ın genel bakış dikey penceresi](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-1.png)
 
-2. **Ayarlar > şifreleme**' ye gidin. **Şifreleme türü**altında, cihaz kilit açma anahtarınızı nasıl korumak istediğinizi seçebilirsiniz. Varsayılan olarak, cihazın kilit açma parolasının korunması için Microsoft tarafından yönetilen anahtar kullanılır. 
+2. **Ayarlar > şifreleme** ' ye gidin. **Şifreleme türü** altında, cihaz kilit açma anahtarınızı nasıl korumak istediğinizi seçebilirsiniz. Varsayılan olarak, cihazın kilit açma parolasının korunması için Microsoft tarafından yönetilen anahtar kullanılır. 
 
     ![Şifreleme seçeneğini belirleyin](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-2.png)
 
-3. Şifreleme türünü **müşteri tarafından yönetilen anahtar**olarak seçin. Müşteri tarafından yönetilen anahtarı seçtikten sonra **bir anahtar kasası ve anahtar seçin**.
+3. Şifreleme türünü **müşteri tarafından yönetilen anahtar** olarak seçin. Müşteri tarafından yönetilen anahtarı seçtikten sonra **bir anahtar kasası ve anahtar seçin**.
 
     ![Müşteri tarafından yönetilen anahtar seçin](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-3.png)
 
-5. **Azure Key Vault anahtarı seç** dikey penceresinde, abonelik otomatik olarak doldurulur. **Anahtar Kasası**için, açılan listeden var olan bir anahtar kasasını seçebilirsiniz.
+4. **Azure Key Vault anahtarı seç** dikey penceresinde, abonelik otomatik olarak doldurulur. **Anahtar Kasası** için, açılan listeden var olan bir anahtar kasasını seçebilirsiniz.
 
-    ![Yeni Azure Key Vault oluştur](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-31.png)
+    ![Mevcut Azure Key Vault seçin](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-3-a.png)
 
-    Yeni bir Anahtar Kasası oluşturmak için **Yeni oluştur** ' u de seçebilirsiniz. **Anahtar Kasası oluştur dikey**penceresinde, kaynak grubunu ve Anahtar Kasası adını girin. **Geçici silme** ve **Temizleme korumasının** etkinleştirildiğinden emin olun. Diğer tüm varsayılanları kabul edin. **Gözden geçir + oluştur**' u seçin.
+    Yeni bir Anahtar Kasası oluşturmak için **Yeni oluştur** ' u de seçebilirsiniz. **Anahtar Kasası oluştur dikey** penceresinde, kaynak grubunu ve Anahtar Kasası adını girin. **Geçici silme** ve **Temizleme korumasının** etkinleştirildiğinden emin olun. Diğer tüm varsayılanları kabul edin. **Gözden geçir + oluştur** ' u seçin.
 
-    ![Yeni Azure Key Vault oluştur 2](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-4.png)
+    ![Azure Key Vault gözden geçirin ve oluşturun](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-4.png)
 
-7. Anahtar kasanız ile ilişkili bilgileri gözden geçirin ve **Oluştur**' u seçin. Anahtar Kasası oluşturma işleminin tamamlanabilmesi için birkaç dakika bekleyin.
+5. Anahtar kasanız ile ilişkili bilgileri gözden geçirin ve **Oluştur** ' u seçin. Anahtar Kasası oluşturma işleminin tamamlanabilmesi için birkaç dakika bekleyin.
 
-    ![Azure Key Vault oluştur](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-5.png)
+    ![Ayarlarınızla Azure Key Vault oluşturma](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-5.png)
 
-8. **Azure Key Vault anahtarı seç**' de, varolan anahtar kasasında bir anahtar seçebilirsiniz.
+6. **Azure Key Vault anahtarı seç** ' de, varolan anahtar kasasında bir anahtar seçebilirsiniz.
 
-    ![Azure Key Vault 3 ' te yeni anahtar oluştur](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6.png)
+    ![Azure Key Vault anahtardan anahtar seçin](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6.png)
 
-9. Yeni bir anahtar oluşturmak isterseniz, anahtar oluşturmak için **Yeni oluştur** ' u seçin. RSA anahtar boyutu 2048 veya daha büyük olabilir.
+7. Yeni bir anahtar oluşturmak isterseniz, anahtar oluşturmak için **Yeni oluştur** ' u seçin. RSA anahtar boyutu 2048 veya daha büyük olabilir.
 
-    ![Azure Key Vault 4 ' te yeni anahtar oluştur](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-61.png)
+    ![Azure Key Vault yeni anahtar oluştur](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6-a.png)
 
-10. Anahtarınız için ad belirtin, diğer varsayılanları kabul edin ve **Oluştur**' u seçin. 
+8. Anahtarınız için ad belirtin, diğer varsayılanları kabul edin ve **Oluştur** ' u seçin.
 
-    ![Yeni anahtar oluştur](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-7.png)
+    ![Yeni anahtarı Adlandır](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-7.png)
 
 
-11. Anahtar Kasanızda bir anahtarın oluşturulduğunu size bildirirsiniz. **Sürümü** seçin ve ardından **Seç**' i seçin.
+9. Anahtar Kasanızda bir anahtarın oluşturulduğunu size bildirirsiniz. **Sürümü** seçin ve ardından **Seç** ' i seçin.
 
-    ![Anahtar Kasası 'nda yeni anahtar oluşturuldu](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-8.png)
+    ![Yeni anahtar için sürüm seçin](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-8.png)
 
-12. **Şifreleme türü** bölmesinde, anahtar kasasını ve müşterinizin yönettiği anahtar için seçilen anahtarı görebilirsiniz.
+10. **Şifreleme türü** bölmesinde, anahtar kasasını ve müşterinizin yönettiği anahtar için seçilen anahtarı görebilirsiniz.
 
     ![Müşteri tarafından yönetilen anahtar için anahtar ve Anahtar Kasası](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-9.png)
 
-13. Anahtarı kaydedin. 
+11. Anahtarı kaydedin. 
 
     ![Müşteri tarafından yönetilen anahtarı Kaydet](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-10.png)
 
-    Anahtar URL 'SI, **şifreleme türü**altında görüntülenir.
+    Anahtar URL 'SI, **şifreleme türü** altında görüntülenir.
 
     ![Müşteri tarafından yönetilen anahtar URL 'SI](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-11.png)
 

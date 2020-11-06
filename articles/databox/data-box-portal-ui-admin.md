@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: a4ac56a4d588071f599f62e6de94d9ec7367a1ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 538a650c6063422f89c8ed3d1753981a293693b7
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87924762"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94338178"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>Data Box Disk’inizi yönetmek için Azure portalını kullanma
 
@@ -27,17 +27,17 @@ Siparişinizi verdikten sonra çeşitli nedenlerle iptal etmeniz gerekebilir. Si
 
 Bir siparişi iptal etmek için aşağıdaki adımları gerçekleştirin.
 
-1.  **Genel bakış > İptal**'e gidin. 
+1.  **Genel bakış > İptal** 'e gidin. 
 
-    ![Siparişi iptal etme 1](media/data-box-portal-ui-admin/cancel-order1.png)
+    ![Bir siparişin Genel Bakış sekmesinde iptal komutu](media/data-box-portal-ui-admin/portal-ui-admin-cancel-command.png)
 
 2.  Sipariş iptal etme nedenini belirtin.  
 
-    ![Siparişi iptal etme 2](media/data-box-portal-ui-admin/cancel-order2.png)
+    ![Siparişi iptal etme nedeni](media/data-box-portal-ui-admin/portal-ui-admin-cancel-order-reason.png)
 
 3.  Sipariş iptal edildikten sonra portaldaki durumu **İptal edildi** olarak görüntülenir.
 
-    ![Siparişi iptal etme 3](media/data-box-portal-ui-admin/cancel-order3.png)
+    ![İptal edilme sırası](media/data-box-portal-ui-admin/portal-ui-admin-canceled-order.png)
 
 Sipariş iptal edildiğinde e-posta bildirimi gönderilmez.
 
@@ -47,15 +47,15 @@ Kopyalama belirli durumlarda kullanışlıdır. Örneğin kullanıcı, veri akta
 
 Siparişi kopyalamak için aşağıdaki adımları gerçekleştirin.
 
-1.  **Genel bakış > Kopyala**'ya gidin. 
+1.  **Genel bakış > Kopyala** 'ya gidin. 
 
-    ![Siparişi kopyalama 1](media/data-box-portal-ui-admin/clone-order1.png)
+    ![Bir siparişin Genel Bakış sekmesinde kopyalama komutu](media/data-box-portal-ui-admin/portal-ui-admin-clone-command.png)
 
-2.  Siparişin tüm ayrıntıları aynı şekilde korunur. Siparişin adı, özgün siparişin adına *-Kopya* eklenerek oluşturulur. Gizlilik bilgilerini gözden geçirdiğinizi onaylamak için onay kutusunu seçin. **Oluştur**’a tıklayın.    
+2.  Siparişin tüm ayrıntıları aynı şekilde korunur. Siparişin adı, özgün siparişin adına *-Kopya* eklenerek oluşturulur. Gizlilik bilgilerini gözden geçirdiğinizi onaylamak için onay kutusunu seçin. **Oluştur** 'a tıklayın.    
 
 Kopya sipariş birkaç dakikada oluşturulur ve portal yeni siparişi gösterecek şekilde güncelleştirilir.
 
-[![Kopyalama sırası 3](media/data-box-portal-ui-admin/clone-order3.png)](media/data-box-portal-ui-admin/clone-order3.png#lightbox) 
+[![Klonlanan sıra](media/data-box-portal-ui-admin/portal-ui-admin-cloned-order.png)](media/data-box-portal-ui-admin/portal-ui-admin-cloned-order.png#lightbox) 
 
 ## <a name="delete-order"></a>Siparişi silme
 
@@ -63,17 +63,17 @@ Tamamlanan siparişleri silmek isteyebilirsiniz. Siparişte adınız, adresiniz 
 
 Yalnızca tamamlanan veya iptal edilen siparişleri silebilirsiniz. Siparişi silmek için aşağıdaki adımları gerçekleştirin.
 
-1. **Tüm kaynaklar**'a gidin. Siparişinizi arayın.
+1. **Tüm kaynaklar** 'a gidin. Siparişinizi arayın.
 
-    ![Data Box Disk siparişi arama](media/data-box-portal-ui-admin/search-data-box-disk-orders.png)
+    ![Siparişlerde ara](media/data-box-portal-ui-admin/portal-ui-admin-search-data-box-disk-orders.png)
 
-2. Silmek istediğiniz siparişe tıklayın ve **Genel bakış**'a gidin. Komut çubuğundan **Sil**'e tıklayın.
+2. Silmek istediğiniz siparişe tıklayın ve **Genel bakış** 'a gidin. Komut çubuğundan **Sil** 'e tıklayın.
 
-    ![Data Box Disk siparişini silme 1](media/data-box-portal-ui-admin/delete-order1.png)
+    ![Bir siparişi silme](media/data-box-portal-ui-admin/portal-ui-admin-delete-command.png)
 
-3. Siparişi silme işlemini onaylamanız istendiğinde siparişin adını girin. **Sil**'e tıklayın.
+3. Siparişi silme işlemini onaylamanız istendiğinde siparişin adını girin. **Sil** 'e tıklayın.
 
-     ![Data Box Disk siparişini silme 2](media/data-box-portal-ui-admin/delete-order2.png)
+     ![Sipariş Silmeyi Onayla](media/data-box-portal-ui-admin/portal-ui-admin-confirm-deletion.png)
 
 
 ## <a name="download-shipping-label"></a>Sevkiyat etiketini indirme
@@ -83,11 +83,11 @@ Disklerinizle birlikte gönderilen iade sevkiyat etiketi kaybolduysa sevkiyat et
 Sevkiyat etiketini indirmek için aşağıdaki adımları gerçekleştirin.
 1.  **Genel bakış > Sevkiyat etiketi indir** bölümüne gidin. Bu seçenek yalnızca disk gönderildikten sonra kullanılabilir. 
 
-    ![Sevkiyat etiketini indirme](media/data-box-portal-ui-admin/download-shipping-label.png)
+    ![Sevkiyat etiketini indirme](media/data-box-portal-ui-admin/portal-ui-admin-download-shipping-label.png)
 
 2.  Aşağıda gösterilen iade sevkiyat etiketi indirilir. Etiketi kaydedin, yazdırın ve iade edilen pakete yapıştırın.
 
-    ![Örnek sevkiyat etiketi](media/data-box-portal-ui-admin/example-shipping-label.png)
+    ![Örnek sevkiyat etiketi](media/data-box-portal-ui-admin/portal-ui-admin-example-shipping-label.png)
 
 ## <a name="edit-shipping-address"></a>Teslimat adresini düzenleme
 
@@ -95,13 +95,13 @@ Siparişi verdikten sonra teslimat adresini düzenlemeniz gerekebilir. Bu işlem
 
 Siparişi düzenlemek için aşağıdaki adımları gerçekleştirin.
 
-1. **Sipariş ayrıntıları > Teslimat adresini düzenle**'ye gidin.
+1. **Sipariş ayrıntıları > Teslimat adresini düzenle** 'ye gidin.
 
-    ![Teslimat adresini düzenleme 1](media/data-box-portal-ui-admin/edit-shipping-address1.png)
+    ![Sipariş ayrıntılarında sevkiyat adresini Düzenle komutu](media/data-box-portal-ui-admin/portal-ui-admin-edit-shipping-address-command.png)
 
 2. Bu sayfada gönderim adresini düzenleyebilir ve yaptığınız değişiklikleri kaydedebilirsiniz.
 
-    ![Teslimat adresini düzenleme 2](media/data-box-portal-ui-admin/edit-shipping-address2.png)
+    ![Sevkiyat adresini Düzenle iletişim kutusu](media/data-box-portal-ui-admin/portal-ui-admin-edit-shipping-address-dbox.png)
 
 ## <a name="edit-notification-details"></a>Bildirim ayrıntılarını düzenleme
 
@@ -109,17 +109,17 @@ Sipariş durumu e-postalarının gönderilmesini istediğiniz kullanıcıları d
 
 Bildirim ayrıntılarını düzenlemek için aşağıdaki adımları gerçekleştirin.
 
-1. **Sipariş ayrıntıları > Bildirim ayrıntılarını düzenle**'ye gidin.
+1. **Sipariş ayrıntıları > Bildirim ayrıntılarını düzenle** 'ye gidin.
 
-    ![Bildirim ayrıntılarını düzenleme 1](media/data-box-portal-ui-admin/edit-notification-details1.png)
+    ![Bildirim ayrıntılarını Düzenle komutu sıralı Ayrıntılar](media/data-box-portal-ui-admin/portal-ui-admin-edit-notification-details-command.png)
 
 2. Bu sayfada bildirim ayrıntılarını düzenleyebilir ve yaptığınız değişiklikleri kaydedebilirsiniz.
  
-    ![Bildirim ayrıntılarını düzenleme 2](media/data-box-portal-ui-admin/edit-notification-details2.png)
+    ![Bildirim ayrıntılarını Düzenle iletişim kutusu](media/data-box-portal-ui-admin/portal-ui-admin-edit-notification-details-dbox.png)
 
 ## <a name="view-order-status"></a>Sipariş durumunu görüntüleme
 
-|Sipariş durumu |Açıklama |
+|Sipariş durumu |Description |
 |---------|---------|
 |Sipariş edildi     | Sipariş başarıyla oluşturuldu. <br> Diskler kullanılabilir durumda değilse bir bildirim gönderilir. <br>Diskler kullanılabilir durumdaysa Microsoft tarafından gönderilecek disk belirlenir ve disk paketi hazırlanır.        |
 |İşlendi     | Siparişin işlenmesi tamamlandı. <br> Sipariş sırasında aşağıdaki eylemler gerçekleştirilir:<li>Diskler AES-128 BitLocker şifrelemesi kullanılarak şifrelenir. </li> <li>Data Box Disk, yetkisiz erişimi önlemek için kilitlenir.</li><li>Bu işlem sırasında disklerin kilidini açan destek anahtarı oluşturulur.</li>        |
@@ -129,7 +129,7 @@ Bildirim ayrıntılarını düzenlemek için aşağıdaki adımları gerçekleş
 |Alındı     | Diskleriniz Azure veri merkezine alındı. Veri kopyalama işlemi yakında başlayacak.        |
 |Veriler kopyalandı     |Veri kopyalama işlemi devam ediyor.<br> Veri kopyalama işlemi tamamlanana kadar bekleyin.         |
 |Tamamlandı       |Sipariş başarıyla tamamlandı.<br> Şirket içi verilerini sunuculardan silmeden önce verilerinizin Azure’a kopyalandığından emin olun.         |
-|Hatalarla tamamlandı| Veri kopyalama işlemi tamamlandı ancak hatalar var. <br> **Genel bakışta**belirtilen yolu kullanarak karşıya yükleme için hata günlüklerini gözden geçirin. Daha fazla bilgi için karşıya yükleme [hata günlüklerini indirme](data-box-disk-troubleshoot-upload.md#download-logs)sayfasına gidin.   |
+|Hatalarla tamamlandı| Veri kopyalama işlemi tamamlandı ancak hatalar var. <br> **Genel bakışta** belirtilen yolu kullanarak karşıya yükleme için hata günlüklerini gözden geçirin. Daha fazla bilgi için karşıya yükleme [hata günlüklerini indirme](data-box-disk-troubleshoot-upload.md#download-logs)sayfasına gidin.   |
 |İptal edildi            |Sipariş iptal edildi. <br> Siparişi iptal ettiniz veya bir hatayla karşılaşıldı ve sipariş, hizmet tarafından iptal edildi.     |
 
 

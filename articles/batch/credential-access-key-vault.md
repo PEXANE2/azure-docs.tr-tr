@@ -4,12 +4,12 @@ description: Azure Batch kullanarak Key Vault kimlik bilgilerinizin programlama 
 ms.topic: how-to
 ms.date: 10/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 71e647c05a84c70fe61a66458801bf7390dcb653
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 25cb05374fc0667306e2b1004b3cd237413b4409
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913220"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337500"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>Batch ile Key Vault’a güvenli erişim
 
@@ -67,7 +67,7 @@ Yalnızca Key Vault erişim için kullandığımızdan, uygulamanın URL 'Leri �
 
 ## <a name="grant-rights-to-key-vault"></a>Key Vault haklar verme
 
-Önceki adımda oluşturulan hizmet sorumlusunun Key Vault gizli dizileri alma izni vardır. İzin, [Azure Portal](/key-vault/general/assign-access-policy-portal.md) veya aşağıdaki PowerShell komutu ile verilebilir.
+Önceki adımda oluşturulan hizmet sorumlusunun Key Vault gizli dizileri alma izni vardır. İzin, [Azure Portal](/azure/key-vault/general/assign-access-policy-portal) veya aşağıdaki PowerShell komutu ile verilebilir.
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"https://batch.mydomain.com' -PermissionsToSecrets 'Get'

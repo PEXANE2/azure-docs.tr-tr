@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 1e0a11ef72698d749349cce8dd7eff73e5284a86
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b514cce8128dc0b17b5cebf8f2dc42e2c4dd8c8e
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122475"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337135"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Öğretici: Azure Data Box için dışarı aktarma siparişi oluşturma (Önizleme)
 
@@ -56,31 +56,31 @@ Cihaz sipariş etmek için Azure portalında aşağıdaki adımları izleyin.
 
 1. Microsoft Azure kimlik bilgilerini kullanarak şu URL’de oturum açın: [https://portal.azure.com](https://portal.azure.com).
 
-2. **+ Kaynak oluştur**’u seçin ve *Azure Data Box* araması yapın. **Azure Data Box**’ı seçin.
+2. **+ Kaynak oluştur** ’u seçin ve *Azure Data Box* araması yapın. **Azure Data Box** ’ı seçin.
 
-   ![Kaynak oluşturma](media/data-box-deploy-export-ordered/azure-data-box-export-00b.png)
+   ![Kaynak oluşturma](media/data-box-deploy-export-ordered/azure-data-box-export-order-create-resource.png)
 
-3. **Oluştur**’u seçin.
+3. **Oluştur** ’u seçin.
 
-   ![Azure Data Box oluştur](media/data-box-deploy-export-ordered/azure-data-box-export-00c.png)
+   ![Azure Data Box kaynağı oluşturma](media/data-box-deploy-export-ordered/azure-data-box-export-order-create-data-box-resource.png)
 
-4. Azure Data Box hizmetin bölgenizde kullanılabilir olup olmadığını denetleyin. Aşağıdaki bilgileri girin veya seçin ve sonra **Uygula**'yı seçin.
+4. Azure Data Box hizmetin bölgenizde kullanılabilir olup olmadığını denetleyin. Aşağıdaki bilgileri girin veya seçin ve sonra **Uygula** 'yı seçin.
 
     |Ayar  |Değer  |
     |---------|---------|
-    |Aktarım türü     | **Azure 'A aktar**' ı seçin.        |
+    |Aktarım türü     | **Azure 'A aktar** ' ı seçin.        |
     |Abonelik     | Data Box hizmeti için bir EA, CSP veya Azure sponsorluk aboneliği seçin. <br> Abonelik fatura hesabınıza bağlıdır.       |
     |Kaynak grubu     |    Var olan bir kaynak grubunu seçin. <br> Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır.         |
     |Kaynak Azure bölgesi    |    Verilerinizin Şu anda bulunduğu Azure bölgesini seçin.         |
     |Hedef ülke     |     Cihazı teslim etmek istediğiniz ülkeyi seçin.        |
 
-   ![Data Box ayarlarınızı seçin](media/data-box-deploy-export-ordered/azure-data-box-export-01.png)
+   ![Data Box ayarlarınızı seçin](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-box-settings.png)
 
-5. **Data Box**'ı seçin. Tek bir sipariş için kullanılabilir maksimum kapasite 80 TB 'tır. Daha büyük veri boyutları için birden fazla sipariş oluşturabilirsiniz.
+5. **Data Box** 'ı seçin. Tek bir sipariş için kullanılabilir maksimum kapasite 80 TB 'tır. Daha büyük veri boyutları için birden fazla sipariş oluşturabilirsiniz.
 
-   ![Data Box kapasiteyi seçin](media/data-box-deploy-export-ordered/azure-data-box-export-02b.png)
+   ![Data Box kapasiteyi seçin](media/data-box-deploy-export-ordered/azure-data-box-export-order-capacity.png)
 
-6. **Sırasıyla**, **temel** sipariş ayrıntılarını belirtin. Aşağıdaki bilgileri girin veya seçin ve sonra **İleri**'yi seçin.
+6. **Sırasıyla** , **temel** sipariş ayrıntılarını belirtin. Aşağıdaki bilgileri girin veya seçin ve sonra **İleri** 'yi seçin.
 
     |Ayar  |Değer  |
     |---------|---------|
@@ -88,21 +88,21 @@ Cihaz sipariş etmek için Azure portalında aşağıdaki adımları izleyin.
     |Kaynak grubu | Daha önce seçtiğiniz kaynak grubu. |
     |Dışarı aktarma sırası adı     |  Siparişi takip etmek için kullanılacak kolay bir ad girin. <br> Ad harf, rakam ve tirelerden oluşan 3-24 karakter arası uzunlukta olabilir. <br> Ad bir harf veya sayıyla başlamalı ve bitmelidir.      |
 
-    ![Dışarı aktarma siparişi temelleri](media/data-box-deploy-export-ordered/azure-data-box-export-03.png)
+    ![Dışarı aktarma siparişi temelleri](media/data-box-deploy-export-ordered/azure-data-box-export-order-storage-account-export-type.png)
 
     Ileri ' yi seçin: devam etmek için **veri seçimi** .
 
-7. **Veri seçimi**' nde **depolama hesabı ekle ve dışarı aktarma türü**' nü seçin.
+7. **Veri seçimi** ' nde **depolama hesabı ekle ve dışarı aktarma türü** ' nü seçin.
 
-    ![Depolama hesabı ve dışarı aktarma türü Ekle](media/data-box-deploy-export-ordered/azure-data-box-export-03b.png)
+    ![Depolama hesabı ve dışarı aktarma türü Ekle](media/data-box-deploy-export-ordered/azure-data-box-export-order-basics.png)
 
-8. **Dışarı aktarma seçeneğini belirleyin**' de dışarı aktarma seçeneği ayrıntılarını belirtin. Aşağıdaki bilgileri girin veya seçin ve **Ekle**' yi seçin.
+8. **Dışarı aktarma seçeneğini belirleyin** ' de dışarı aktarma seçeneği ayrıntılarını belirtin. Aşağıdaki bilgileri girin veya seçin ve **Ekle** ' yi seçin.
 
     |Ayar  |Değer  |
     |---------|---------|
     |Depolama hesabı     | Verileri dışarı aktarmak istediğiniz Azure depolama hesabı. |
-    |Dışarı aktarma türü     | **Tüm nesnelerden** dışarı aktarılacak verilerin türünü BELIRTIR ve **XML dosyası kullanır**.<ul><li> **Tüm nesneler** -Işin, **aktarım seçenekleri**için seçiminize bağlı olarak tüm verileri dışa aktarıp aktarcağını belirtir.</li><li> **XML dosyası kullan** – depolama hesabından dışarı aktarılacak blob 'lar ve/veya dosyalar için bir dizi yol ve önek IÇEREN bir XML dosyasını belirtir. XML dosyasının seçili depolama hesabının kapsayıcısında olması gerekir ve dosya paylaşımları arasından seçim şu anda desteklenmiyor. Dosyanın boş olmayan bir. xml dosyası olması gerekir.</li></ul>        |
-    |Aktarım seçenekleri     |  **Tümünü Seç**, **Tüm Bloblar**ve **tüm dosyalar**'daki veri aktarımı seçeneklerini belirtir. <ul><li> **Tümünü Seç** -tüm Blobların ve Azure dosyalarının verildiğini belirtir. Yalnızca Blobları (BLOB depolama hesabı) destekleyen bir depolama hesabı kullanıyorsanız, **tüm dosyalar** seçeneği seçilemeyecektir.</li><li> **Tüm Bloblar** -yalnızca blok ve sayfa bloblarının aktarıldığını belirtir.</li><li> **Tüm dosyalar** -tüm dosyaların blob 'lar hariç verildiğini belirtir. Sahip olduğunuz depolama hesabının türü (GPv1 ve GPv2, Premium Storage veya blob Storage), dışarı aktarmak istediğiniz veri türlerini belirler. Daha fazla bilgi için bkz. [dışa aktarma Için desteklenen depolama hesapları](../storage/common/storage-import-export-requirements.md#supported-storage-types).</li></ul>         |
+    |Dışarı aktarma türü     | **Tüm nesnelerden** dışarı aktarılacak verilerin türünü BELIRTIR ve **XML dosyası kullanır**.<ul><li> **Tüm nesneler** -Işin, **aktarım seçenekleri** için seçiminize bağlı olarak tüm verileri dışa aktarıp aktarcağını belirtir.</li><li> **XML dosyası kullan** – depolama hesabından dışarı aktarılacak blob 'lar ve/veya dosyalar için bir dizi yol ve önek IÇEREN bir XML dosyasını belirtir. XML dosyasının seçili depolama hesabının kapsayıcısında olması gerekir ve dosya paylaşımları arasından seçim şu anda desteklenmiyor. Dosyanın boş olmayan bir. xml dosyası olması gerekir.</li></ul>        |
+    |Aktarım seçenekleri     |  **Tümünü Seç** , **Tüm Bloblar** ve **tüm dosyalar** 'daki veri aktarımı seçeneklerini belirtir. <ul><li> **Tümünü Seç** -tüm Blobların ve Azure dosyalarının verildiğini belirtir. Yalnızca Blobları (BLOB depolama hesabı) destekleyen bir depolama hesabı kullanıyorsanız, **tüm dosyalar** seçeneği seçilemeyecektir.</li><li> **Tüm Bloblar** -yalnızca blok ve sayfa bloblarının aktarıldığını belirtir.</li><li> **Tüm dosyalar** -tüm dosyaların blob 'lar hariç verildiğini belirtir. Sahip olduğunuz depolama hesabının türü (GPv1 ve GPv2, Premium Storage veya blob Storage), dışarı aktarmak istediğiniz veri türlerini belirler. Daha fazla bilgi için bkz. [dışa aktarma Için desteklenen depolama hesapları](../storage/common/storage-import-export-requirements.md#supported-storage-types).</li></ul>         |
     |Ayrıntılı günlük Ekle     | Başarıyla aktarılmış tüm dosyaların listesini içeren ayrıntılı bir günlük dosyası isteyip istemediğinizi belirtir.        |
 
     > [!NOTE]
@@ -111,82 +111,85 @@ Cihaz sipariş etmek için Azure portalında aşağıdaki adımları izleyin.
 
     Bir kapsayıcıya XML dosyası ekleme hakkında bilgi için bkz. [XML dosyası kullanarak sırayı dışarı aktarma](data-box-deploy-export-ordered.md#export-order-using-xml-file).
 
-   ![Dışarı aktarma seçeneğini belirleyin](media/data-box-deploy-export-ordered/azure-data-box-export-04b.png)
+   ![Dışarı aktarma seçeneğini belirleyin](media/data-box-deploy-export-ordered/azure-data-box-export-order-export-option.png)
 
    XML girişi örneğini görmek için bkz. [Sample XML Input](data-box-deploy-export-ordered.md#sample-xml-file)
 
-9. **Veri seçimi**' nde ayarlarınızı gözden geçirin ve **İleri ' yi seçin: güvenlik>**.
+9. **Veri seçimi** ' nde ayarlarınızı gözden geçirin ve **İleri ' yi seçin: güvenlik>**.
 
-   ![İletişim Bilgileri](media/data-box-deploy-export-ordered/azure-data-box-export-05.png)
+   ![Dışarı aktarma sırası, veri seçimi](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-selection.png)
 
-1. **Güvenlik**bölümünde, yazılım tabanlı çift şifrelemeyi etkinleştirmek istiyorsanız, **sırasıyla çift şifrelemeyi etkinleştir**' i seçin. 
+10. **Güvenlik** bölümünde, yazılım tabanlı çift şifrelemeyi etkinleştirmek istiyorsanız, **sırasıyla çift şifrelemeyi etkinleştir** ' i seçin. 
 
-   Yazılım tabanlı şifreleme, Data Box verilerin AES-256 bit şifrelemesine ek olarak gerçekleştirilir.
+    Yazılım tabanlı şifreleme, Data Box verilerin AES-256 bit şifrelemesine ek olarak gerçekleştirilir.
 
-   > [!NOTE]
-   > Bu seçeneğin etkinleştirilmesi, sipariş işleme ve veri kopyalamanın daha uzun sürmesiyle yapılır. Siparişinizi oluşturduktan sonra bu seçeneği değiştiremezsiniz.
+   
+    > [!NOTE]
+    > Bu seçeneğin etkinleştirilmesi, sipariş işleme ve veri kopyalamanın daha uzun sürmesiyle yapılır. Siparişinizi oluşturduktan sonra bu seçeneği değiştiremezsiniz.
 
-   ![Veri kutusu içeri aktarma için güvenlik ekranı, Çift şifreleme](media/data-box-deploy-export-ordered/azure-data-box-export-05b.png)
+    ![Veri kutusu içeri aktarma için güvenlik ekranı, Çift şifreleme](media/data-box-deploy-export-ordered/azure-data-box-export-order-security-double-encryption.png)
 
-   Ileri ' yi seçin: devam etmek için **kişi ayrıntıları** .
+    Ileri ' yi seçin: devam etmek için **kişi ayrıntıları** .
 
-10. **İletişim ayrıntılarında**, sevkıyat bilgilerinizi girmek Için **+ Sevkiyat Adresi Ekle** ' yi seçin.
+11. **İletişim ayrıntılarında** , sevkıyat bilgilerinizi girmek Için **+ Sevkiyat Adresi Ekle** ' yi seçin.
 
-    ![Sevkiyat Adresi Ekle](media/data-box-deploy-export-ordered/azure-data-box-export-06.png)
+    ![Sevkiyat Adresi Ekle](media/data-box-deploy-export-ordered/azure-data-box-export-order-add-shipping-address.png)
 
-11. **Sevkiyat Adresi Ekle**' de, şirketinizin adını, adını ve posta adresini ve geçerli bir telefon numarasını belirtin. **Doğrula**'yı seçin. Hizmet, teslimat adresinde hizmetin kullanılabilirlik durumunu doğrular. Hizmet belirtilen teslimat adresinde kullanılabilir durumdaysa bu konuda bir bildirim gönderilir.
+12. **Sevkiyat Adresi Ekle** ' de, şirketinizin adını, adını ve posta adresini ve geçerli bir telefon numarasını belirtin. **Doğrula** 'yı seçin. Hizmet, teslimat adresinde hizmetin kullanılabilirlik durumunu doğrular. Hizmet belirtilen teslimat adresinde kullanılabilir durumdaysa bu konuda bir bildirim gönderilir.
 
-    ![Sevkiyat adresini doğrula](media/data-box-deploy-export-ordered/azure-data-box-export-07.png)
+    ![Sevkiyat adresini doğrula](media/data-box-deploy-export-ordered/azure-data-box-export-order-validate-shipping-address.png)
 
     Kendi kendine yönetilen aktarmanın kullanılabildiği bir bölgede sıralama yapıyorsanız, bu seçeneği belirleyebilirsiniz. Kendi kendine yönetilen kargo hakkında daha fazla bilgi için bkz. [otomatik olarak yönetilen gönderi kullanma](data-box-portal-customer-managed-shipping.md).
 
-12. Sevkiyat ayrıntıları başarıyla doğrulandıktan sonra **Sevkiyat Adresi Ekle** ' yi seçin.
+13. Sevkiyat ayrıntıları başarıyla doğrulandıktan sonra **Sevkiyat Adresi Ekle** ' yi seçin.
 
-13. **Kişi ayrıntıları**' nda, Sevkiyat adresinizi ve e-posta adresinizi gözden geçirin. Hizmet, belirtilen e-posta adreslerine sipariş durumundaki güncelleştirmelerle ilgili bilgi gönderir.
+14. **Kişi ayrıntıları** ' nda, Sevkiyat adresinizi ve e-posta adresinizi gözden geçirin. Hizmet, belirtilen e-posta adreslerine sipariş durumundaki güncelleştirmelerle ilgili bilgi gönderir.
 
     Grup yöneticisinin ayrılması durumunda da bildirim almaya devam etmek için bir grup e-postası kullanmanız önerilir.
 
-    ![Sipariş Ayrıntıları](media/data-box-deploy-export-ordered/azure-data-box-export-09.png)
+    ![Kişi ayrıntıları](media/data-box-deploy-export-ordered/azure-data-box-export-order-contact-details.png)
 
-14. **İleri ' yi seçin: gözden geçir + düzen>**. Sipariş oluşturma işlemine devam etmek için hüküm ve koşulları kabul etmelisiniz.
+15. **İleri ' yi seçin: gözden geçir + düzen>**. Sipariş oluşturma işlemine devam etmek için hüküm ve koşulları kabul etmelisiniz.
 
-15. **Sipariş**'i seçin. Siparişin oluşturulması birkaç dakika sürer.
+16. **Sipariş** 'i seçin. Siparişin oluşturulması birkaç dakika sürer.
 
-    ![Siparişi Kaydet](media/data-box-deploy-export-ordered/azure-data-box-export-10.png)
+    ![Siparişi Kaydet](media/data-box-deploy-export-ordered/azure-data-box-select-export-order-commit-order.png)
 
 ## <a name="export-order-using-xml-file"></a>XML dosyası kullanarak siparişi dışarı aktar
 
-**XML dosyası kullan**' ı seçerseniz, dışarı aktarmak istediğiniz belirli kapsayıcıları ve Blobları (sayfa ve blok) belirtebilirsiniz. XML dosyanızı biçimlendirmek için [örnek XML dosya tablosu](#sample-xml-file) belirtimlerini izlemeniz gerekir. Aşağıdaki adımlarda, verilerinizi dışarı aktarmak için bir XML dosyasının nasıl kullanılacağı gösterilmektedir:
+**XML dosyası kullan** ' ı seçerseniz, dışarı aktarmak istediğiniz belirli kapsayıcıları ve Blobları (sayfa ve blok) belirtebilirsiniz. XML dosyanızı biçimlendirmek için [örnek XML dosya tablosu](#sample-xml-file) belirtimlerini izlemeniz gerekir. Aşağıdaki adımlarda, verilerinizi dışarı aktarmak için bir XML dosyasının nasıl kullanılacağı gösterilmektedir:
 
-1. **Dışarı aktarma türü**için **XML dosyası kullan**' ı seçin. Bu, dışarı aktarmak istediğiniz belirli blob 'ları ve Azure dosyalarını belirten XML dosyasıdır. XML dosyasını eklemek için, **BIR XML dosyası seçmek üzere buraya tıklayın ' ı**seçin.
-     ![Dışarı aktarmayı seç seçeneğinin ekran görüntüsü, bir X M L dosya seçeneği belirlemek için buraya tıklayın.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-01.png)
+1. **Dışarı aktarma türü** için **XML dosyası kullan** ' ı seçin. Bu, dışarı aktarmak istediğiniz belirli blob 'ları ve Azure dosyalarını belirten XML dosyasıdır. XML dosyasını eklemek için, **BIR XML dosyası seçmek üzere buraya tıklayın ' ı** seçin.
+
+     ![Dışarı aktarma seçeneğini belirleyin, XML](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-select-xml-option.png)
 
 2. Kapsayıcı oluşturmak için **+ kapsayıcı** ' yı seçin.
-    ![Kapsayıcılar bölümünün ekran görüntüsü.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
+
+    ![Dışarı aktarma seçeneğini, kapsayıcıları seçin](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-containers-option.png)
 
 3. Azure portal sağ tarafında açılan **yeni kapsayıcı** sekmesinde kapsayıcı için bir ad ekleyin. Ad küçük harf olmalıdır ve sayılar ve tireler '-' içeremez. Ardından aşağı açılan liste kutusundan **ortak erişim düzeyini** seçin. Başkalarının verilerinize erişmesini engellemek için **özel (anonim olmayan erişim)** seçeneğini seçmenizi öneririz. Kapsayıcı erişim düzeyleri hakkında daha fazla bilgi için bkz. [kapsayıcı erişim izinleri](../storage/blobs/anonymous-read-access-configure.md#set-the-public-access-level-for-a-container).
 
-   ![Özel (anonim erişim yok) seçeneğinin seçili olduğunu gösteren yeni kapsayıcı sekmesinin ekran görüntüsü.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
+   ![Dışarı aktarma seçeneğini, yeni kapsayıcı ayarlarını seçin](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-container-settings.png)
 
-4. **Oluştur**’u seçin.
+4. **Oluştur** ’u seçin.
 
-   ![Oluşturma seçeneği olarak adlandırılan yeni kapsayıcı sekmesinin ekran görüntüsü.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-07.png)
+   ![Dışarı aktarma seçeneğini belirleyin, yeni kapsayıcı oluşturun.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-create-container.png)
 
    Kapsayıcınız başarıyla oluşturulursa şu iletiyi alırsınız:
 
-   !["Depolama kapsayıcısı başarıyla oluşturuldu." iletisini bildiren ekran görüntüsü.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-09.png)
+   ![Kapsayıcı başarıyla oluşturuldu](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-container-success.png)
 
 5. Oluşturduğunuz kapsayıcıyı seçin ve üzerine çift tıklayın.
 
-   ![Özel test kapsayıcı kapsayıcımın adı verilen kapsayıcılar bölümünün ekran görüntüsü.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-08.png)
+   ![Kapsayıcı ayrıntılarını görüntüle](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-view-container-details.png)
 
-6. Kapsayıcıya çift tıklamak kapsayıcı özellikleri görünümünü getirir. Artık, dışarı aktarmak istediğiniz Bloblar ve/veya Azure dosyaları listenizi içeren XML dosyanızı eklemek (veya taramak) istiyorsunuz. **Karşıya Yükle**’yi seçin.
+6. Kapsayıcıya çift tıklamak kapsayıcı özellikleri görünümünü getirir. Artık, dışarı aktarmak istediğiniz Bloblar ve/veya Azure dosyaları listenizi içeren XML dosyanızı eklemek (veya taramak) istiyorsunuz. **Karşıya Yükle** ’yi seçin.
 
-   ![Karşıya yükleme seçeneği verilen, blobu karşıya yükle iletişim kutusunun ekran görüntüsü.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-10c.png)
+   ![Blobu kapsayıcıya yükle](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-blob-to-container.png)
 
 7. XML dosyasını kapsayıcıya başarıyla eklediniz. Yalnızca bu XML 'de belirttiğiniz Bloblar ve Azure dosyaları verilecek.
 
-   ![Sonraki: güvenlik seçeneği olarak adlandırılan sipariş Sihirbazı ekran görüntüsü.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-12.png)
+   ![XML dosyası kapsayıcıya eklendi](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-added-to-container.png)
 
 ## <a name="track-the-order"></a>Siparişi izleme
 
@@ -194,25 +197,25 @@ Siparişi verdikten sonra durumunu Azure portalından takip edebilirsiniz. Data 
 
 Cihaz hazırlığı tamamlandığında, veri kopyalama işlemi seçili depolama hesaplarından başlar. Portal, **veri kopyalama sürüyor** durumunda sırayı gösterir.
 
-![İşlenen Data Box dışa aktarma sırası](media/data-box-deploy-export-ordered/azure-data-box-export-15b.png)
+![Dışarı aktarma sırası Data Box, veri kopyalama sürüyor](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-copy-in-progress.png)
 
 Data Box, verileri kaynak depolama hesabından kopyalar. Veri kopyalama işlemi tamamlandıktan sonra, Data Box kilitlenir ve Portal **kopyalama tamamlandı** durumunda sırayı gösterecektir.
 
-![Data Box dışarı aktarma veri kopyalama Tamam](media/data-box-deploy-export-ordered/azure-data-box-export-15c.png)
+![Dışarı aktarma sırası Data Box, veri kopyalama Tamam](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-copy-complete.png)
 
 Cihaz kullanılamıyorsa bir bildirim alırsınız. Cihaz varsa, Microsoft gönderilecek cihazı belirler ve gönderimi hazırlar. Cihaz hazırlığı sırasında aşağıdaki eylemler gerçekleşir:
 
 * Cihazla ilişkili her depolama hesabı için SMB paylaşımları oluşturulur.
 * Her paylaşım için, kullanıcı adı veya parola gibi erişim kimlik bilgileri oluşturulur.
-* Cihaz kilitli ve yalnızca cihaz kilidi açma parolası kullanılarak erişilebilir. Parolayı almak için Azure portal hesabınızda oturum açmanız ve **cihaz ayrıntıları**' nı seçmeniz gerekir.
+* Cihaz kilitli ve yalnızca cihaz kilidi açma parolası kullanılarak erişilebilir. Parolayı almak için Azure portal hesabınızda oturum açmanız ve **cihaz ayrıntıları** ' nı seçmeniz gerekir.
 
 Microsoft daha sonra cihazınızı bir bölgesel taşıyıcı aracılığıyla hazırlar ve dağıtır. Cihaz gönderildikten sonra bir takip numarası iletilir. Portalda sipariş durumu **Yola çıktı** olarak değişir.
 
-![Data Box dışarı aktarma siparişi gönderildi](media/data-box-deploy-export-ordered/azure-data-box-export-16.png)
+![Data Box dışarı aktarma siparişi gönderildi](media/data-box-deploy-export-ordered/azure-data-box-export-order-dispatched.png)
 
 Kendi kendine yönetilen kargo seçilmişse, cihaz veri merkezinden çekilmeye hazırsa sonraki adımlarla bir e-posta bildirimi alırsınız. Kendi kendine yönetilen kargo hakkında daha fazla bilgi için bkz. [kendi kendine yönetilen sevkıyat](data-box-portal-customer-managed-shipping.md).
 
-![Kendi kendine yönetilen sevkıyat çekme için hazırlanıyor](media/data-box-deploy-export-ordered/azure-data-box-export-17.png)
+![Kendi kendine yönetilen sevkıyat çekme için hazırlanıyor](media/data-box-deploy-export-ordered/azure-data-box-export-order-ready-for-pickup.png)
 
 ## <a name="cancel-the-order"></a>Siparişi iptal etme
 
@@ -228,7 +231,7 @@ Aşağıdaki XML, **XML dosyası kullan** seçeneğini belirlediğinizde dışa 
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-   <!-- BlobList/prefix/Container list for Blob storage for export  -->
+   <!-- BlobList/prefix/Container list for Blob storage for export  -->
    <BlobList>
       <BlobPath>/8tbpageblob/8tbpageblob/8tbpageblob</BlobPath>
       <BlobPathPrefix>/blockblob4dot75tbdata/</BlobPathPrefix>
@@ -237,7 +240,7 @@ Aşağıdaki XML, **XML dosyası kullan** seçeneğini belirlediğinizde dışa 
       <BlobPathPrefix>/8mbfiles/</BlobPathPrefix>
       <BlobPathPrefix>/64mbfiles/</BlobPathPrefix>
    </BlobList>
-   <!-- FileList/prefix/Share list for Azure File storage for export  -->
+   <!-- FileList/prefix/Share list for Azure File storage for export  -->
    <AzureFileList>
       <FilePathPrefix>/64mbfiles/</FilePathPrefix>
       <FilePathPrefix>/4mbfiles/prefix2/subprefix</FilePathPrefix>
@@ -256,7 +259,7 @@ XML dosyalarına göre bazı önemli noktaları:
 
 Aşağıdaki tabloda geçerli blob yollarının örnekleri gösterilmektedir:
 
-   | Seçici | Blob yolu | Açıklama |
+   | Seçici | Blob yolu | Description |
    | --- | --- | --- |
    | İle başlar |/ |Depolama hesabındaki tüm Blobları dışa aktarır |
    | İle başlar |/$root/ |Kök kapsayıcıdaki tüm Blobları dışa aktarır |

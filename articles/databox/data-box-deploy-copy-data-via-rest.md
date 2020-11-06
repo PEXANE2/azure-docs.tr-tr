@@ -9,16 +9,16 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 17fa361fa4cef194d910d08d4a0afe075b119109
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb0a90db0595c655191006969071bc5b9cceaa75
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742528"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337602"
 ---
 # <a name="tutorial-use-rest-apis-to-copy-data-to-azure-data-box-blob-storage"></a>Öğretici: Azure Data Box blob depolamaya veri kopyalamak için REST API 'Lerini kullanma  
 
-Bu öğretici, *http* veya *https*üzerinden REST API 'leri aracılığıyla Azure Data Box blob depolamaya bağlanma yordamlarını açıklar. Bağlandıktan sonra, verileri Data Box blob depolamaya kopyalamak ve Data Box hazırlamak için gereken adımlar da açıklanır.
+Bu öğretici, *http* veya *https* üzerinden REST API 'leri aracılığıyla Azure Data Box blob depolamaya bağlanma yordamlarını açıklar. Bağlandıktan sonra, verileri Data Box blob depolamaya kopyalamak ve Data Box hazırlamak için gereken adımlar da açıklanır.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -42,12 +42,12 @@ Başlamadan önce aşağıdakilerden emin olun:
 
 ## <a name="connect-via-http-or-https"></a>Http veya HTTPS aracılığıyla bağlanma
 
-*Http* veya *https*üzerinden Data Box blob depolamaya bağlanabilirsiniz.
+*Http* veya *https* üzerinden Data Box blob depolamaya bağlanabilirsiniz.
 
 * *Https* , Data Box blob depolamaya bağlanmak için güvenli ve önerilen bir yoldur.
 * Güvenilen ağlar üzerinden bağlanılırken *http* kullanılır.
 
-*Http* veya *https*üzerinden Data Box blob depolamaya bağlandığınızda, bağlanma adımları farklıdır.
+*Http* veya *https* üzerinden Data Box blob depolamaya bağlandığınızda, bağlanma adımları farklıdır.
 
 ## <a name="connect-via-http"></a>Http üzerinden Bağlan
 
@@ -84,8 +84,8 @@ Bu adımların her biri aşağıdaki bölümlerde açıklanmıştır.
 Sertifikayı indirmek için Azure portal kullanın.
 
 1. Azure Portal’da oturum açın.
-2. Data Box siparişiniz sayfasına gidin ve **genel > cihaz ayrıntılarına**gidin.
-3. **Cihaz kimlik bilgileri**altında cihaza **API erişimi** ' ne gidin. **İndir**'e tıklayın. Bu eylem bir ** \<your order name> . cer** sertifika dosyasını indirir. Bu dosyayı **kaydedin** . Bu sertifikayı, cihaza bağlanmak için kullanacağınız istemci veya ana bilgisayara yüklersiniz.
+2. Data Box siparişiniz sayfasına gidin ve **genel > cihaz ayrıntılarına** gidin.
+3. **Cihaz kimlik bilgileri** altında cihaza **API erişimi** ' ne gidin. **İndir** 'e tıklayın. Bu eylem bir **\<your order name> . cer** sertifika dosyasını indirir. Bu dosyayı **kaydedin** . Bu sertifikayı, cihaza bağlanmak için kullanacağınız istemci veya ana bilgisayara yüklersiniz.
 
     ![Azure portal sertifikayı indirin](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
 
@@ -108,18 +108,18 @@ Bazı uygulamalar için belirli bilgiler bu bölümde belirtilmiştir. Diğer uy
 
 #### <a name="use-windows-server-ui"></a>Windows Server Kullanıcı arabirimini kullanma
 
-1. Dosyaya sağ tıklayın `.cer` ve **sertifikayı yükler**' i seçin. Bu eylem, sertifika alma Sihirbazı 'nı başlatır.
-2. **Depo konumu**Için **yerel makine**' yi seçin ve ardından **İleri**' ye tıklayın.
+1. Dosyaya sağ tıklayın `.cer` ve **sertifikayı yükler** ' i seçin. Bu eylem, sertifika alma Sihirbazı 'nı başlatır.
+2. **Depo konumu** Için **yerel makine** ' yi seçin ve ardından **İleri** ' ye tıklayın.
 
-    ![PowerShell kullanarak sertifikayı içeri aktarma](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
+    ![Sertifika Içeri aktarma Sihirbazı, Windows Server](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
 
-3. **Tüm sertifikaları aşağıdaki depolama alanına yerleştir**' i seçin ve ardından **görüntüle**' ye tıklayın. Uzak konağın kök deposuna gidin ve ardından **İleri**' ye tıklayın.
+3. **Tüm sertifikaları aşağıdaki depolama alanına yerleştir** ' i seçin ve ardından **görüntüle** ' ye tıklayın. Uzak konağın kök deposuna gidin ve ardından **İleri** ' ye tıklayın.
 
-    ![PowerShell 2 kullanarak sertifikayı içeri aktarma](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
+    ![Sertifika Içeri aktarma Sihirbazı, sertifika deposu](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
 4. **Finish (Son)** düğmesine tıklayın. İçeri aktarmanın başarılı olduğunu belirten bir ileti görüntülenir.
 
-    ![PowerShell 3 kullanarak sertifikayı içeri aktarma](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
+    ![Sertifika Içeri aktarma Sihirbazı, içeri aktarmayı tamamlama](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
 #### <a name="use-a-linux-system"></a>Linux sistemi kullanma
 
@@ -139,11 +139,11 @@ Ayrıntılar için dağıtıma özgü belgelere başvurun.
 
 ### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Cihaz IP adresi ve BLOB hizmeti uç noktası ekle 
 
-[ *Http*ÜZERINDEN bağlanılırken cihaz IP adresi ve BLOB hizmeti uç noktası eklemek](#add-device-ip-address-and-blob-service-endpoint)için aynı adımları izleyin.
+[ *Http* ÜZERINDEN bağlanılırken cihaz IP adresi ve BLOB hizmeti uç noktası eklemek](#add-device-ip-address-and-blob-service-endpoint)için aynı adımları izleyin.
 
 ### <a name="configure-partner-software-and-verify-connection"></a>İş ortağı yazılımını yapılandırma ve bağlantıyı doğrulama
 
-[ *Http*üzerinden bağlanırken kullandığınız Iş ortağı yazılımını yapılandırmak](#verify-connection-and-configure-partner-software)için adımları izleyin. Tek fark, *http kullan seçeneğini* işaretlenmemiş olarak bırakmanız gerektiğidir.
+[ *Http* üzerinden bağlanırken kullandığınız Iş ortağı yazılımını yapılandırmak](#verify-connection-and-configure-partner-software)için adımları izleyin. Tek fark, *http kullan seçeneğini* işaretlenmemiş olarak bırakmanız gerektiğidir.
 
 ## <a name="copy-data-to-data-box"></a>Data Box'a veri kopyalama
 
@@ -159,21 +159,21 @@ Bu öğreticide, AzCopy, verileri Data Box blob depolamaya kopyalamak için kull
 
 Kopyalama yordamı aşağıdaki adımlara sahiptir:
 
-* Bir kapsayıcı oluşturma
+* Kapsayıcı oluşturma
 * Bir klasörün içeriğini Data Box BLOB depolama alanına yükleme
 * Değiştirilen dosyaları Data Box blob depolamaya yükle
 
 Bu adımların her biri, aşağıdaki bölümlerde ayrıntılı olarak açıklanmıştır.
 
-### <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+### <a name="create-a-container"></a>Kapsayıcı oluşturma
 
 İlk adım bir kapsayıcı oluşturmaktır, çünkü Bloblar her zaman bir kapsayıcıya yüklenir. Kapsayıcılar, bilgisayarınızdaki klasörlerde dosyaları düzenlediğiniz gibi BLOB gruplarını düzenler. Blob kapsayıcısı oluşturmak için aşağıdaki adımları izleyin.
 
 1. Depolama Gezgini'ni açın.
 2. Sol bölmede, blob kapsayıcısını oluşturmak istediğiniz depolama hesabını genişletin.
-3. **BLOB kapsayıcıları**' na sağ tıklayın ve bağlam menüsünden **BLOB kapsayıcısı oluştur**' u seçin.
+3. **BLOB kapsayıcıları** ' na sağ tıklayın ve bağlam menüsünden **BLOB kapsayıcısı oluştur** ' u seçin.
 
-   ![Blob kapsayıcıları Oluştur bağlam menüsü](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
+   ![Blob kapsayıcıları bağlam menüsü, blob kapsayıcısı oluştur](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
 
 4. **BLOB kapsayıcıları** klasörünün altında bir metin kutusu görünür. Blob kapsayıcınızın adını girin. Blob kapsayıcıları adlandırma kuralları ve kısıtlamaları hakkında bilgi için [kapsayıcı oluşturma ve izinleri ayarlama](../storage/blobs/storage-quickstart-blobs-dotnet.md) bölümüne bakın.
 5. Blob kapsayıcısını oluşturmak için veya iptal etmek için **ESC** **tuşuna basın** . Blob kapsayıcısı başarıyla oluşturulduktan sonra, seçili depolama hesabı için **BLOB kapsayıcıları** klasörü altında görüntülenir.
@@ -200,7 +200,7 @@ azcopy \
 AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
 ```
 
-`<key>`Hesap anahtarınızla değiştirin. Hesap anahtarınızı almak için Azure portal depolama hesabınıza gidin. **Ayarlar > erişim anahtarlarına**gidin, bir anahtar seçin ve AzCopy komutuna yapıştırın.
+`<key>`Hesap anahtarınızla değiştirin. Hesap anahtarınızı almak için Azure portal depolama hesabınıza gidin. **Ayarlar > erişim anahtarlarına** gidin, bir anahtar seçin ve AzCopy komutuna yapıştırın.
 
 Belirtilen hedef kapsayıcı mevcut değilse, AzCopy bu kapsayıcıyı oluşturur ve dosyayı kapsayıcıya yükler. Kaynak yolunu veri dizininiz için güncelleştirin ve `data-box-storage-account-name` hedef URL 'de, Data Box ilişkili depolama hesabının adıyla değiştirin.
 
@@ -239,7 +239,7 @@ Bu öğreticide aşağıdaki Azure Data Box konularını öğrendiniz:
 
 > [!div class="checklist"]
 >
-> * Ön koşullar
+> * Önkoşullar
 > * *Http* veya *https* aracılığıyla Data Box blob depolamaya bağlanma
 > * Data Box'a veri kopyalama
 

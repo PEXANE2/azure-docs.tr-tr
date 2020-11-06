@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 01eb35a60a6d51b5742d8fedd2ee0631aa86c924
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3a915ac8de83a5e183660ec4a3d05044eafff4a9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147950"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337517"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>Azure Data Box için izleme ve olay günlüğü oluşturma ve Azure Data Box Heavy siparişleri dışarı aktarma
 
@@ -52,9 +52,9 @@ Erişimi bir siparişle kısıtlamak için şunları yapabilirsiniz:
 
 Data Box için bir dışarı aktarma siparişi yerleştirirken, ayrıntılı günlük koleksiyonunu etkinleştirme seçeneğiniz vardır. Ayrıntılı günlüğü etkinleştirebileceğiniz sıra ekranı aşağıda verilmiştir:
 
-![Dışarı aktarma seçeneğini belirleyin](media/data-box-deploy-export-ordered/azure-data-box-export-04b.png)
+![Dışarı aktarma seçeneğini belirleyin](media/data-box-deploy-export-ordered/azure-data-box-export-order-export-option.png)
 
-**Ayrıntılı günlük Ekle** seçeneğini belirlediğinizde, verileri Azure depolama hesabınızdan kopyalarken ayrıntılı bir günlük dosyası oluşturulur. Bu günlük başarıyla aktarılmış tüm dosyaların bir listesini içerir.      
+**Ayrıntılı günlük Ekle** seçeneğini belirlediğinizde, verileri Azure depolama hesabınızdan kopyalarken ayrıntılı bir günlük dosyası oluşturulur. Bu günlük başarıyla aktarılmış tüm dosyaların bir listesini içerir.
 
 Dışarı aktarma sırası hakkında daha fazla bilgi için bkz. [Data Box için dışarı aktarma siparişi oluşturma](data-box-deploy-export-ordered.md)
 
@@ -129,7 +129,7 @@ Bu dosyaları dışarı aktarmak için aşağıdaki seçenekleri kullanabilirsin
 
 ### <a name="verbose-log"></a>Ayrıntılı günlük
 
-*Ayrıntılı günlük*, Azure Depolama hesabından başarıyla dışarı aktarılmış tüm dosyaların bir listesini içerir. Günlük ayrıca dosya boyutu ve sağlama toplamı hesaplamasını da içerir.
+*Ayrıntılı günlük* , Azure Depolama hesabından başarıyla dışarı aktarılmış tüm dosyaların bir listesini içerir. Günlük ayrıca dosya boyutu ve sağlama toplamı hesaplamasını da içerir.
 
 Ayrıntılı günlük bilgileri aşağıdaki biçimde bulunur:
 
@@ -246,13 +246,13 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>Sipariş geçmişi indirme
 
-Sipariş geçmişi Azure portal kullanılabilir. Sıra tamamlanmadıysa ve cihaz temizleme (disklerden veri ernemi) tamamlandıktan sonra, cihaz sıraınızdan gidip **sipariş ayrıntıları**' na gidin. **Sipariş geçmişi indirme** seçeneği bulunur. Daha fazla bilgi için bkz. [yükleme sırası geçmişi](data-box-portal-admin.md#download-order-history).
+Sipariş geçmişi Azure portal kullanılabilir. Sıra tamamlanmadıysa ve cihaz temizleme (disklerden veri ernemi) tamamlandıktan sonra, cihaz sıraınızdan gidip **sipariş ayrıntıları** ' na gidin. **Sipariş geçmişi indirme** seçeneği bulunur. Daha fazla bilgi için bkz. [yükleme sırası geçmişi](data-box-portal-admin.md#download-order-history).
 
 Sipariş geçmişi boyunca kaydırırsanız şunu görürsünüz:
 
 - Cihazınız için taşıyıcı izleme bilgileri.
 - *SecureErase* etkinliğine sahip olaylar. Bu olaylar, diskteki verilerin eriyine karşılık gelir.
-- Günlük bağlantılarını Data Box. *Denetim günlükleri*, *kopyalama günlükleri*ve *bom* dosyaları için yollar gösterilir.
+- Günlük bağlantılarını Data Box. *Denetim günlükleri* , *kopyalama günlükleri* ve *bom* dosyaları için yollar gösterilir.
 
 Azure portal sipariş geçmişi günlüğü örneği aşağıda verilmiştir:
 
