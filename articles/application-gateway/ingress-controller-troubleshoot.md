@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
-ms.openlocfilehash: cbb62509472d6f86ba30e13c95ce2c2bfd343765
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: d6bcb9125cdfc07eb249353cb85b40a22d3e468c
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168197"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397374"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>Giriş denetleyicisindeki yaygın soruların veya sorunların sorunlarını giderme
 
@@ -132,7 +132,7 @@ Application Gateway giriş denetleyicisi (AGIC) Şu Kubernetes kaynaklarını s�
 
 
 AGIC 'in beklenen şekilde çalışması için aşağıdakiler olması gerekir:
-  1. Aks 'lerin bir veya daha fazla sağlıklı **Pod**olması gerekir.
+  1. Aks 'lerin bir veya daha fazla sağlıklı **Pod** olması gerekir.
      [Cloud Shell](https://shell.azure.com/) `kubectl get pods -o wide --show-labels` ' A sahip bir pod 'niz varsa `apsnetapp` , çıktınızdan şöyle görünebildiğini Cloud Shell.
      ```bash
      delyan@Azure:~$ kubectl get pods -o wide --show-labels
@@ -141,7 +141,7 @@ AGIC 'in beklenen şekilde çalışması için aşağıdakiler olması gerekir:
      aspnetapp              1/1     Running   0          17h   10.0.0.6    aks-agentpool-35064155-1   <none>           <none>            app=aspnetapp
      ```
 
-  2. Bir veya daha fazla **hizmet**, eşleşen Etiketler aracılığıyla yukarıdaki Pod 'ye başvuruyor `selector` .
+  2. Bir veya daha fazla **hizmet** , eşleşen Etiketler aracılığıyla yukarıdaki Pod 'ye başvuruyor `selector` .
      Bunu ile [Cloud Shell](https://shell.azure.com/) doğrulama `kubectl get services -o wide`
      ```bash
      delyan@Azure:~$ kubectl get services -o wide --show-labels
@@ -150,7 +150,7 @@ AGIC 'in beklenen şekilde çalışması için aşağıdakiler olması gerekir:
      aspnetapp           ClusterIP   10.2.63.254    <none>        80/TCP    17h   app=aspnetapp   <none>     
      ```
 
-  3. Giriş **, ile**açıklama eklenmiş `kubernetes.io/ingress.class: azure/application-gateway` , yukarıdaki hizmete başvurmak, ile [Cloud Shell](https://shell.azure.com/) doğrulama`kubectl get ingress -o wide --show-labels`
+  3. Giriş **, ile** açıklama eklenmiş `kubernetes.io/ingress.class: azure/application-gateway` , yukarıdaki hizmete başvurmak, ile [Cloud Shell](https://shell.azure.com/) doğrulama`kubectl get ingress -o wide --show-labels`
      ```bash
      delyan@Azure:~$ kubectl get ingress -o wide --show-labels
 
@@ -243,7 +243,7 @@ Kubernetes topluluğu, [kubectl](https://kubernetes.io/docs/reference/kubectl/ch
 |  5        | Sıralanan nesneleri günlüğe kaydeder; ARM 'ye uygulanan ayıklanmış JSON yapılandırmasını gösterir |
 
 
-Ayrıntı düzeyleri `verbosityLevel` [helmconfig. YAML](#sample-helm-config-file) dosyasındaki değişken aracılığıyla ayarlanabilir. `5` [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)'ye gönderilen JSON yapılandırmasını almak için ayrıntı düzeyini artırın:
+Ayrıntı düzeyleri `verbosityLevel` [helmconfig. YAML](#sample-helm-config-file) dosyasındaki değişken aracılığıyla ayarlanabilir. `5` [ARM](../azure-resource-manager/management/overview.md)'ye gönderilen JSON yapılandırmasını almak için ayrıntı düzeyini artırın:
   - `verbosityLevel: 5` [helmconfig. YAML](#sample-helm-config-file) içinde bir satıra göre ekleyin ve yeniden yükler
   - ile günlükleri al `kubectl logs <pod-name>`
 
@@ -300,4 +300,3 @@ rbac:
 aksClusterConfiguration:
     apiServerAddress: <aks-api-server-address>
 ```
-

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: f3a3ba3ee908204668ad9d7201ddfddec0a26f28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 676d7c2ad18327471c6e95f3cef26185fa49b78b
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595953"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396898"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Application Gateway App Service sorunlarını giderme
 
@@ -80,10 +80,10 @@ X-Powered-By: ASP.NET
 
 ## <a name="solution-rewrite-the-location-header"></a>Çözüm: konum başlığını yeniden yazın
 
-Konum üstbilgisindeki ana bilgisayar adını Application Gateway 'in etki alanı adına ayarlayın. Bunu yapmak için, yanıttaki konum üstbilgisinin azurewebsites.net içerdiğini değerlendiren bir koşula sahip bir [yeniden yazma kuralı](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) oluşturun. Ayrıca, uygulama ağ geçidinin ana bilgisayar adına sahip olacak şekilde konum başlığını yeniden yazmak için bir eylem gerçekleştirmelidir. Daha fazla bilgi için bkz. [konum üst bilgisini yeniden yazma](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#modify-a-redirection-url)yönergeleri.
+Konum üstbilgisindeki ana bilgisayar adını Application Gateway 'in etki alanı adına ayarlayın. Bunu yapmak için, yanıttaki konum üstbilgisinin azurewebsites.net içerdiğini değerlendiren bir koşula sahip bir [yeniden yazma kuralı](./rewrite-http-headers.md) oluşturun. Ayrıca, uygulama ağ geçidinin ana bilgisayar adına sahip olacak şekilde konum başlığını yeniden yazmak için bir eylem gerçekleştirmelidir. Daha fazla bilgi için bkz. [konum üst bilgisini yeniden yazma](./rewrite-http-headers.md#modify-a-redirection-url)yönergeleri.
 
 > [!NOTE]
-> HTTP üst bilgisi yeniden yazma desteği yalnızca Application Gateway [Standard_v2 ve WAF_v2 SKU 'su](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) için kullanılabilir. V1 SKU 'SU kullanıyorsanız [v1 'den v2 'ye geçiş](https://docs.microsoft.com/azure/application-gateway/migrate-v1-v2)yapmanızı öneririz. V2 SKU 'SU ile kullanılabilen yeniden yazma ve diğer [Gelişmiş özellikleri](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#feature-comparison-between-v1-sku-and-v2-sku) kullanmak istiyorsunuz.
+> HTTP üst bilgisi yeniden yazma desteği yalnızca Application Gateway [Standard_v2 ve WAF_v2 SKU 'su](./application-gateway-autoscaling-zone-redundant.md) için kullanılabilir. V1 SKU 'SU kullanıyorsanız [v1 'den v2 'ye geçiş](./migrate-v1-v2.md)yapmanızı öneririz. V2 SKU 'SU ile kullanılabilen yeniden yazma ve diğer [Gelişmiş özellikleri](./application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku) kullanmak istiyorsunuz.
 
 ## <a name="alternate-solution-use-a-custom-domain-name"></a>Alternatif çözüm: özel bir etki alanı adı kullanın
 
@@ -93,7 +93,7 @@ App Service artık uygulama ağ geçidine işaret eden aynı orijinal ana bilgis
 
 Özel bir etki alanına sahip olmanız ve bu işlemi izlemeniz gerekir:
 
-- Etki alanını App Service 'in özel etki alanı listesine kaydedin. Özel etki alanında App Service 'in FQDN 'sine işaret eden bir CNAME 'i olması gerekir. Daha fazla bilgi için bkz. [mevcut bir özel DNS adını Azure App Service eşleme](https://docs.microsoft.com//azure/app-service/app-service-web-tutorial-custom-domain).
+- Etki alanını App Service 'in özel etki alanı listesine kaydedin. Özel etki alanında App Service 'in FQDN 'sine işaret eden bir CNAME 'i olması gerekir. Daha fazla bilgi için bkz. [mevcut bir özel DNS adını Azure App Service eşleme](//azure/app-service/app-service-web-tutorial-custom-domain).
 
     ![App Service özel etki alanı listesi](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 
@@ -101,12 +101,12 @@ App Service artık uygulama ağ geçidine işaret eden aynı orijinal ana bilgis
 
 - DNS sorgusu yaptığınızda etki alanının `www.contoso.com` uygulama ağ GEÇIDININ FQDN 'sine çözümlendiğinden emin olun.
 
-- Özel araştırmasını **arka uç http ayarlarından seçim ana bilgisayar adını**devre dışı bırakacak şekilde ayarlayın. Azure portal, araştırma ayarlarındaki onay kutusunun işaretini kaldırın. PowerShell 'de, **set-AzApplicationGatewayProbeConfig** komutunda **-pickhostnamefrombackendhttpsettings** anahtarını kullanmayın. Araştırmanın konak adı alanında App Service 'in FQDN 'SI olan example.azurewebsites.net girin. Application Gateway 'den gönderilen araştırma istekleri bu FQDN 'yi konak üstbilgisine taşır.
+- Özel araştırmasını **arka uç http ayarlarından seçim ana bilgisayar adını** devre dışı bırakacak şekilde ayarlayın. Azure portal, araştırma ayarlarındaki onay kutusunun işaretini kaldırın. PowerShell 'de, **set-AzApplicationGatewayProbeConfig** komutunda **-pickhostnamefrombackendhttpsettings** anahtarını kullanmayın. Araştırmanın konak adı alanında App Service 'in FQDN 'SI olan example.azurewebsites.net girin. Application Gateway 'den gönderilen araştırma istekleri bu FQDN 'yi konak üstbilgisine taşır.
 
   > [!NOTE]
   > Sonraki adımda, özel araştırmanın arka uç HTTP ayarlarınızla ilişkili olmadığından emin olun. HTTP ayarlarınızda, bu noktada **arka uç adres konak adresini seçin** anahtarı etkin kalır.
 
-- Application Gateway 'in HTTP ayarlarını, **arka uç adresinden seçim ana bilgisayar adını**devre dışı bırakmak için ayarlayın. Azure portal onay kutusunu temizleyin. PowerShell 'de, **set-AzApplicationGatewayBackendHttpSettings** komutunda **-pickhostnamefrombackendadddress** anahtarını kullanmayın.
+- Application Gateway 'in HTTP ayarlarını, **arka uç adresinden seçim ana bilgisayar adını** devre dışı bırakmak için ayarlayın. Azure portal onay kutusunu temizleyin. PowerShell 'de, **set-AzApplicationGatewayBackendHttpSettings** komutunda **-pickhostnamefrombackendadddress** anahtarını kullanmayın.
 
 - Özel araştırmayı arka uç HTTP ayarlarına geri ilişkilendirin ve arka ucun sağlıklı olduğunu doğrulayın.
 

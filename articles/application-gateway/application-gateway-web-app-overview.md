@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: 308098bd1ac49510afccf0a7964face726906332
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe6ea6f348d796962141bd39ff858d891a29a2f6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84628684"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397697"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>App Service gibi çok kiracılı arka uçlar için Application Gateway desteği
 
@@ -28,11 +28,11 @@ Application Gateway kullanıcılara, arka ucun ana bilgisayar adına göre istek
 
 ## <a name="override-host-header-in-the-request"></a>İstekteki ana bilgisayar üst bilgisini geçersiz kıl
 
-Bir konak geçersiz kılma belirtme özelliği, [http ayarlarında](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings) tanımlanmıştır ve kural oluşturma sırasında herhangi bir arka uç havuzuna uygulanabilir. Çok kiracılı arka uçlar için konak üstbilgisini ve SNı uzantısını geçersiz kılmanın aşağıdaki iki yolu desteklenir:
+Bir konak geçersiz kılma belirtme özelliği, [http ayarlarında](./configuration-overview.md#http-settings) tanımlanmıştır ve kural oluşturma sırasında herhangi bir arka uç havuzuna uygulanabilir. Çok kiracılı arka uçlar için konak üstbilgisini ve SNı uzantısını geçersiz kılmanın aşağıdaki iki yolu desteklenir:
 
 - Ana bilgisayar adını HTTP ayarlarında açıkça girilen sabit bir değere ayarlama yeteneği. Bu özellik, belirli HTTP ayarlarının uygulandığı arka uç havuzuna giden tüm trafik için ana bilgisayar üstbilgisinin bu değere geçersiz kılınmasını sağlar. Uçtan uca TLS kullanırken, bu geçersiz kılınan konak adı SNı uzantısında kullanılır. Bu özellik, bir arka uç havuzu grubunun gelen müşteri ana bilgisayar başlığından farklı bir ana bilgisayar üst bilgisi beklediği senaryolara olanak tanıyor.
 
-- Ana bilgisayar adını, arka uç havuzu üyelerinin IP veya FQDN 'sinden türetebilme özelliği. HTTP ayarları Ayrıca, tek bir arka uç havuzu üyesinden ana bilgisayar adı türeme seçeneğiyle yapılandırılmışsa, arka uç havuzu üyesinin FQDN 'sinden dinamik olarak ana bilgisayar adını seçme seçeneği sağlar. Uçtan uca TLS kullanırken, bu ana bilgisayar adı FQDN 'den türetilir ve SNı uzantısında kullanılır. Bu özellik, bir arka uç havuzunun Azure Web Apps gibi iki ya da daha fazla kiracı PaaS hizmetine sahip olduğu ve isteğin her üyeye ait ana bilgisayar üst bilgisinin FQDN 'den türetilen ana bilgisayar adını içerdiği senaryolara olanak sağlar. Bu senaryoyu uygulamak için, arka uç havuzunda belirtilen bir konak üstbilgisini, arka uç havuzunda bahsedilen bir ana bilgisayar üst bilgisini dinamik olarak geçersiz kılacak bir oturum ana [bilgisayar adresini seçin](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address) adlı bir anahtar kullanıyoruz.  Örneğin, arka uç havuzu FQDN 'niz "contoso11.azurewebsites.net" ve "contoso22.azurewebsites.net" içeriyorsa, istek uygun arka uç sunucusuna gönderildiğinde, contoso.com olan özgün isteğin ana bilgisayar üst bilgisi contoso11.azurewebsites.net veya contoso22.azurewebsites.net üzerine yazılacak. 
+- Ana bilgisayar adını, arka uç havuzu üyelerinin IP veya FQDN 'sinden türetebilme özelliği. HTTP ayarları Ayrıca, tek bir arka uç havuzu üyesinden ana bilgisayar adı türeme seçeneğiyle yapılandırılmışsa, arka uç havuzu üyesinin FQDN 'sinden dinamik olarak ana bilgisayar adını seçme seçeneği sağlar. Uçtan uca TLS kullanırken, bu ana bilgisayar adı FQDN 'den türetilir ve SNı uzantısında kullanılır. Bu özellik, bir arka uç havuzunun Azure Web Apps gibi iki ya da daha fazla kiracı PaaS hizmetine sahip olduğu ve isteğin her üyeye ait ana bilgisayar üst bilgisinin FQDN 'den türetilen ana bilgisayar adını içerdiği senaryolara olanak sağlar. Bu senaryoyu uygulamak için, arka uç havuzunda belirtilen bir konak üstbilgisini, arka uç havuzunda bahsedilen bir ana bilgisayar üst bilgisini dinamik olarak geçersiz kılacak bir oturum ana [bilgisayar adresini seçin](./configuration-http-settings.md#pick-host-name-from-back-end-address) adlı bir anahtar kullanıyoruz.  Örneğin, arka uç havuzu FQDN 'niz "contoso11.azurewebsites.net" ve "contoso22.azurewebsites.net" içeriyorsa, istek uygun arka uç sunucusuna gönderildiğinde, contoso.com olan özgün isteğin ana bilgisayar üst bilgisi contoso11.azurewebsites.net veya contoso22.azurewebsites.net üzerine yazılacak. 
 
   ![web uygulaması senaryosu](./media/application-gateway-web-app-overview/scenario.png)
 
@@ -59,8 +59,8 @@ App Service 'in yanıtındaki ana bilgisayar adının, Application Gateway iliş
 - App Service yeniden yönlendirme yapılandırdınız. Yeniden yönlendirme, isteğe bir sondaki eğik çizgi eklemek kadar basit olabilir.
 - Yeniden yönlendirmeye neden olan Azure AD kimlik doğrulaması var.
 
-Bu tür durumları çözmek için bkz. [App Service 'ın URL sorunu için yeniden yönlendirme sorunlarını giderme](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url).
+Bu tür durumları çözmek için bkz. [App Service 'ın URL sorunu için yeniden yönlendirme sorunlarını giderme](./troubleshoot-app-service-redirection-app-service-url.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure App Service Web uygulaması gibi çok kiracılı bir uygulamayla, arka uç havuzu üyesi olarak bir uygulama ağ geçidi ayarlamayı öğrenin [Application Gateway ile App Service Web Apps yapılandırma](https://docs.microsoft.com/azure/application-gateway/configure-web-app-portal) ziyaret edin
+Azure App Service Web uygulaması gibi çok kiracılı bir uygulamayla, arka uç havuzu üyesi olarak bir uygulama ağ geçidi ayarlamayı öğrenin [Application Gateway ile App Service Web Apps yapılandırma](./configure-web-app-portal.md) ziyaret edin

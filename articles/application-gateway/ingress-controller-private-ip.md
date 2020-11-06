@@ -7,19 +7,19 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 33b70ba8ab7ffef90c42f53e58a2d27e619862f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8be37ed1da0da4da3db43ef4c1cd01ed962f24ed
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84806792"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397317"
 ---
 # <a name="use-private-ip-for-internal-routing-for-an-ingress-endpoint"></a>Bir giriş uç noktası için iç yönlendirme için özel IP kullan 
 
 Bu özellik `Virtual Network` Özel BIR IP kullanarak giriş uç noktasını kullanıma sunmasına olanak tanır.
 
 ## <a name="pre-requisites"></a>Ön koşullar  
-[Özel BIR IP yapılandırmasıyla](https://docs.microsoft.com/azure/application-gateway/configure-application-gateway-with-private-frontend-ip) Application Gateway
+[Özel BIR IP yapılandırmasıyla](./configure-application-gateway-with-private-frontend-ip.md) Application Gateway
 
 Denetleyiciyi, giriş için özel IP kullanmak üzere yapılandırmanın iki yolu vardır,
 
@@ -66,4 +66,4 @@ Bu, giriş denetleyicisini, Application Gateway ön uç dinleyicilerini yapılan
 AGIC, `usePrivateIP: true` özel IP atanmadığı takdirde, ve çöker.
 
 > [!NOTE]
-> Application Gateway v2 SKU 'SU için genel bir IP gerekir. Application Gateway özel olması gerekir, [`Network Security Group`](https://docs.microsoft.com/azure/virtual-network/security-overview) trafiği kısıtlamak için Application Gateway alt ağına bağlayın.
+> Application Gateway v2 SKU 'SU için genel bir IP gerekir. Application Gateway özel olması gerekir, [`Network Security Group`](../virtual-network/network-security-groups-overview.md) trafiği kısıtlamak için Application Gateway alt ağına bağlayın.

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: de580d8f94292ae65769c696aa232f5b660bf414
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e60aa9f072a447af97aa7cc66534e6e893fdbcf6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84806751"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396949"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Özel kök CA ile otomatik olarak imzalanan bir Azure Application Gateway sertifikası oluşturma
 
@@ -30,7 +30,7 @@ Bu makalede şunları yapmayı öğreneceksiniz:
 - Özel sertifika YETKILINIZ tarafından imzalanan kendinden imzalı bir sertifika oluşturma
 - Arka uç sunucusunun kimliğini doğrulamak için bir Application Gateway otomatik olarak imzalanan kök sertifika yükleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - **Windows veya Linux çalıştıran bir bilgisayarda [OpenSSL](https://www.openssl.org/)** 
 
@@ -133,7 +133,7 @@ Web sunucunuzda fabrikam. CRT ve fabrikam. Key dosyalarını kullanarak TLS 'i y
 
 Sertifikayı içeri aktarma ve IIS 'ye sunucu sertifikası olarak yükleme yönergeleri için bkz. [nasıl yapılır: Windows Server 'Da Içeri aktarılan sertifikaları bir Web sunucusuna yükleme 2003](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server).
 
-TLS bağlama yönergeleri için bkz. [IIS 7 ' de SSL ayarlama](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1).
+TLS bağlama yönergeleri için bkz. [IIS 7 ' de SSL ayarlama](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1).
 
 ### <a name="apache"></a>Apache
 
@@ -179,7 +179,7 @@ openssl s_client -connect localhost:443 -servername www.fabrikam.com -showcerts
 
 Application Gateway sertifikayı karşıya yüklemek için. CRT sertifikasını. cer biçiminde bir temel-64 kodlanmış olarak dışarı aktarmanız gerekir. . CRT zaten Base-64 kodlu biçimde ortak anahtarı içerdiğinden, dosya uzantısını. CRT 'den. cer 'e yeniden adlandırmanız yeterlidir. 
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Portaldan güvenilen kök sertifikayı karşıya yüklemek için **http ayarları** ' nı seçin ve **https** protokolünü seçin.
 
@@ -273,4 +273,3 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Application Gateway 'de SSL\TLS hakkında daha fazla bilgi edinmek için bkz. [Application Gateway Ile TLS sonlandırmasına ve uçtan uca TLS 'ye genel bakış](ssl-overview.md).
-

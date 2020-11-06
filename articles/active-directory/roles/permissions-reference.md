@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d55e7f29c9ecefa7cfcf98ef890d9982b044ef30
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 6dd88f6e8eb2ce95c1aa68c63f3d14a14e079d19
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378831"
+ms.locfileid: "93396524"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'deki yönetici rolü izinleri
 
@@ -90,7 +90,7 @@ Bu role sahip kullanıcılar, bazı kullanıcılar için parola olmayan kimlik b
 
 ### <a name="azure-devops-administrator"></a>[Azure DevOps Yöneticisi](#azure-devops-administrator-permissions)
 
-Bu role sahip olan kullanıcılar, yeni Azure DevOps kuruluş oluşturmayı yapılandırılabilir bir kullanıcı veya grup kümesine kısıtlamak için Azure DevOps ilkesini yönetebilir. Bu roldeki kullanıcılar, bu ilkeyi şirketin Azure AD kuruluşu ile desteklenen herhangi bir Azure DevOps kuruluştan yönetebilir.
+Bu role sahip olan kullanıcılar, yeni Azure DevOps kuruluş oluşturmayı yapılandırılabilir bir kullanıcı veya grup kümesine kısıtlamak için Azure DevOps ilkesini yönetebilir. Bu roldeki kullanıcılar, bu ilkeyi şirketin Azure AD kuruluşu tarafından desteklenen herhangi bir Azure DevOps organizasyonu aracılığıyla yönetebilir. Bu rol, şirketin Azure AD organizasyonu tarafından desteklenen herhangi bir Azure DevOps kuruluşunun içindeki başka bir Azure DevOps 'a özgü izin (örneğin, proje koleksiyonu yöneticileri) vermez.
 
 Tüm kurumsal Azure DevOps ilkeleri, bu roldeki kullanıcılar tarafından yönetilebilir.
 

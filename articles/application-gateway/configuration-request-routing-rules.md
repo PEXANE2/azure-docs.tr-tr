@@ -7,20 +7,20 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: 20a665eefbb73f062f1f036e17b16da891a43eef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 047ce9b33836e2c23a37b1383942323d7c382485
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89653213"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397544"
 ---
 # <a name="application-gateway-request-routing-rules"></a>Application Gateway isteği yönlendirme kuralları
 
-Azure portal kullanarak bir uygulama ağ geçidi oluşturduğunuzda, varsayılan bir kural (*rule1*) oluşturursunuz. Bu kural varsayılan dinleyiciyi (*Appgatewayhttplistener*) varsayılan arka uç Havuzu (*appgatewaybackendpool*) ve varsayılan arka uç http ayarları (*Appgatewaybackendhttpsettings*) ile bağlar. Ağ geçidini oluşturduktan sonra, varsayılan kuralın ayarlarını düzenleyebilir veya yeni kurallar oluşturabilirsiniz.
+Azure portal kullanarak bir uygulama ağ geçidi oluşturduğunuzda, varsayılan bir kural ( *rule1* ) oluşturursunuz. Bu kural varsayılan dinleyiciyi ( *Appgatewayhttplistener* ) varsayılan arka uç Havuzu ( *appgatewaybackendpool* ) ve varsayılan arka uç http ayarları ( *Appgatewaybackendhttpsettings* ) ile bağlar. Ağ geçidini oluşturduktan sonra, varsayılan kuralın ayarlarını düzenleyebilir veya yeni kurallar oluşturabilirsiniz.
 
 ## <a name="rule-type"></a>Kural türü
 
-Bir kural oluşturduğunuzda [ *temel* ve *yol tabanlı*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rules)arasında seçim yapabilirsiniz.
+Bir kural oluşturduğunuzda [ *temel* ve *yol tabanlı*](./application-gateway-components.md#request-routing-rules)arasında seçim yapabilirsiniz.
 
 - İlişkili dinleyicide (örneğin, *Blog <i></i> . contoso.com/ \* )* tüm istekleri tek bir arka uç havuzuna iletmek istiyorsanız temel ' yı seçin.
 - Belirli URL yollarındaki istekleri belirli arka uç havuzlarına yönlendirmek istiyorsanız yol tabanlı ' i seçin. Yol deseninin Sorgu parametrelerine değil yalnızca URL 'nin yoluna uygulanması.
@@ -51,13 +51,13 @@ Yol tabanlı bir kural için, her bir URL yoluna karşılık gelen birden fazla 
 
 ## <a name="redirection-setting"></a>Yeniden yönlendirme ayarı
 
-Bir temel kural için yeniden yönlendirme yapılandırılırsa, ilişkili dinleyicinin tüm istekleri hedefe yeniden yönlendirilir. Bu, *genel* yeniden yönlendirme 'dir. Yol tabanlı bir kural için yeniden yönlendirme yapılandırılırsa, yalnızca belirli bir site alanındaki istekler yeniden yönlendirilir. Örnek, */cart/ \* *tarafından belirtilen bir alışveriş sepeti alanıdır. Bu, *yol tabanlı* yeniden yönlendirme 'dir.
+Bir temel kural için yeniden yönlendirme yapılandırılırsa, ilişkili dinleyicinin tüm istekleri hedefe yeniden yönlendirilir. Bu, *genel* yeniden yönlendirme 'dir. Yol tabanlı bir kural için yeniden yönlendirme yapılandırılırsa, yalnızca belirli bir site alanındaki istekler yeniden yönlendirilir. Örnek, */cart/ \** tarafından belirtilen bir alışveriş sepeti alanıdır. Bu, *yol tabanlı* yeniden yönlendirme 'dir.
 
 Yeniden yönlendirmeler hakkında daha fazla bilgi için bkz. [Application Gateway yönlendirmeye genel bakış](redirect-overview.md).
 
 ### <a name="redirection-type"></a>Yeniden yönlendirme türü
 
-Gereken yeniden yönlendirme türünü seçin: *kalıcı (301)*, *geçici (.)*, *bulunan (302*) veya *diğer (303*).
+Gereken yeniden yönlendirme türünü seçin: *kalıcı (301)* , *geçici (.)* , *bulunan (302* ) veya *diğer (303* ).
 
 ### <a name="redirection-target"></a>Yeniden yönlendirme hedefi
 

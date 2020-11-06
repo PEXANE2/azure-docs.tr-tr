@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 653e432ca445451fc9da7155137052b9916d0d92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3dd46f4033a568a278d7006c0d5aab451496ff47
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311606"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397232"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure Application Gateway ve Web uygulaması güvenlik duvarını v1 'den v2 'ye geçirme
 
@@ -125,7 +125,7 @@ Betiği çalıştırmak için:
       $trustedCert = New-AzApplicationGatewayTrustedRootCertificate -Name "trustedCert1" -CertificateFile $certFilePath
       ```
 
-      PSApplicationGatewayTrustedRootCertificate nesnelerinin bir listesini oluşturmak için, bkz. [New-AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0).
+      PSApplicationGatewayTrustedRootCertificate nesnelerinin bir listesini oluşturmak için, bkz. [New-AzApplicationGatewayTrustedRootCertificate](/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0).
    * **Privateıpaddress: [dize]: Isteğe bağlı**. Yeni v2 ağ geçidiniz ile ilişkilendirmek istediğiniz belirli bir özel IP adresi.  Bu, yeni V2 ağ geçidiniz için ayırdığınız VNet 'ten olmalıdır. Bu belirtilmemişse, betik V2 ağ geçidiniz için özel bir IP adresi ayırır.
    * **Publicıpresourceıd: [dize]: Isteğe bağlı**. Yeni v2 ağ geçidine ayırmak istediğiniz aboneliğinizdeki mevcut genel IP adresi (Standart SKU) kaynağının RESOURCEID değeri. Bu belirtilmemişse, komut dosyası aynı kaynak grubunda yeni bir genel IP ayırır. Ad, V2 ağ geçidinin adı *-IP* olarak eklenir.
    * **Validatemigration: [anahtar]: Isteğe bağlı**. Betiğin V2 ağ geçidi oluşturulduktan ve yapılandırma kopyasından sonra bazı temel yapılandırma karşılaştırma doğrulamaları kullanmasını istiyorsanız bu parametreyi kullanın. Varsayılan olarak, doğrulama yapılmaz.

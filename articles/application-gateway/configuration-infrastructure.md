@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: cd1dc953c35233010250bf7f959c94d1de50fe4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f214b0b0751f44ea1357f569fd814a7621af61ab
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319801"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397629"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>Application Gateway altyapı yapılandırması
 
@@ -55,15 +55,15 @@ Ağ güvenlik grupları (NSG 'ler) Application Gateway desteklenir. Ancak bazı 
 Bu senaryo için Application Gateway alt ağında NSG 'leri kullanın. Aşağıdaki kısıtlamaları alt ağa bu öncelik sırasına göre yerleştirin:
 
 1. Kaynak IP veya IP aralığından gelen trafiğe, gelen erişim bağlantı noktası (örneğin, HTTP erişimi için bağlantı noktası 80) olarak tüm Application Gateway alt ağ adres aralığı ve hedef bağlantı noktası olarak izin verin.
-2. Application Gateway v1 SKU 'SU için 65503-65534 olarak **kaynak ve hedef** bağlantı **noktası olarak kaynak** kaynaklı gelen isteklere ve [arka uç sistem durumu iletişimi](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)için v2 SKU 'su için 65200-65535 bağlantı noktalarına izin verin. Bu bağlantı noktası aralığı, Azure altyapı iletişimi için gereklidir. Bu bağlantı noktaları Azure sertifikaları tarafından korunur (kilitlidir). Uygun sertifikalar yerine, dış varlıklar bu uç noktalar üzerinde değişiklik başlatamaz.
-3. [Ağ güvenlik grubundaki](https://docs.microsoft.com/azure/virtual-network/security-overview)gelen Azure Load Balancer Araştırmaları (*AzureLoadBalancer* Tag) ve gelen sanal ağ trafiğine (*VirtualNetwork* etiketi) izin verin.
+2. Application Gateway v1 SKU 'SU için 65503-65534 olarak **kaynak ve hedef** bağlantı **noktası olarak kaynak** kaynaklı gelen isteklere ve [arka uç sistem durumu iletişimi](./application-gateway-diagnostics.md)için v2 SKU 'su için 65200-65535 bağlantı noktalarına izin verin. Bu bağlantı noktası aralığı, Azure altyapı iletişimi için gereklidir. Bu bağlantı noktaları Azure sertifikaları tarafından korunur (kilitlidir). Uygun sertifikalar yerine, dış varlıklar bu uç noktalar üzerinde değişiklik başlatamaz.
+3. [Ağ güvenlik grubundaki](../virtual-network/network-security-groups-overview.md)gelen Azure Load Balancer Araştırmaları ( *AzureLoadBalancer* Tag) ve gelen sanal ağ trafiğine ( *VirtualNetwork* etiketi) izin verin.
 4. Engelle-All kuralını kullanarak diğer tüm gelen trafiği engelleyin.
 5. Tüm hedefler için Internet 'e giden trafiğe izin verin.
 
 ## <a name="supported-user-defined-routes"></a>Desteklenen Kullanıcı tanımlı yollar 
 
 > [!IMPORTANT]
-> Application Gateway alt ağında UDRs kullanmak, [arka uç sistem durumu görünümündeki](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) sistem durumunun **Bilinmeyen**olarak görünmesine neden olabilir. Ayrıca, Application Gateway günlüklerin ve ölçümlerin oluşturulmasına neden olabilir. Arka uç sistem durumunu, günlükleri ve ölçümleri görüntüleyebilmeniz için Application Gateway alt ağında UDRs 'yi kullanmanızı öneririz.
+> Application Gateway alt ağında UDRs kullanmak, [arka uç sistem durumu görünümündeki](./application-gateway-diagnostics.md#back-end-health) sistem durumunun **Bilinmeyen** olarak görünmesine neden olabilir. Ayrıca, Application Gateway günlüklerin ve ölçümlerin oluşturulmasına neden olabilir. Arka uç sistem durumunu, günlükleri ve ölçümleri görüntüleyebilmeniz için Application Gateway alt ağında UDRs 'yi kullanmanızı öneririz.
 
 - **v1**
 
@@ -78,7 +78,7 @@ Bu senaryo için Application Gateway alt ağında NSG 'leri kullanın. Aşağıd
    > Yol tablosunun yanlış yapılandırması, Application Gateway v2 'de simetrik yönlendirmeye neden olabilir. Tüm yönetim/denetim düzlemi trafiğinin bir Sanal Gereç üzerinden değil, doğrudan Internet 'e gönderildiğinden emin olun. Günlüğe kaydetme ve ölçümler de etkilenebilir.
 
 
-  **Senaryo 1**: sınır ağ GEÇIDI Protokolü (BGP) yol yaymayı Application Gateway alt ağa devre dışı bırakmak için UDR
+  **Senaryo 1** : sınır ağ GEÇIDI Protokolü (BGP) yol yaymayı Application Gateway alt ağa devre dışı bırakmak için UDR
 
    Bazen varsayılan ağ geçidi yolu (0.0.0.0/0) Application Gateway sanal ağla ilişkili ExpressRoute veya VPN Gateway 'ler aracılığıyla tanıtılabilir. Bu, Internet 'e doğrudan yol gerektiren yönetim düzlemi trafiğini keser. Bu tür senaryolarda, BGP yol yaymayı devre dışı bırakmak için bir UDR kullanılabilir. 
 
@@ -90,11 +90,11 @@ Bu senaryo için Application Gateway alt ağında NSG 'leri kullanın. Aşağıd
 
    Bu senaryo için UDR 'nin etkinleştirilmesi, mevcut tüm kurulumları bozmamalıdır.
 
-  **2. senaryo**: Internet 'e 0.0.0.0/0 öğesini yönlendirmek için UDR
+  **2. senaryo** : Internet 'e 0.0.0.0/0 öğesini yönlendirmek için UDR
 
    0.0.0.0/0 trafiğini doğrudan Internet 'e göndermek için bir UDR oluşturabilirsiniz. 
 
-  **Senaryo 3**: Kubernetes kullanan ile Azure Kubernetes hizmeti için UDR
+  **Senaryo 3** : Kubernetes kullanan ile Azure Kubernetes hizmeti için UDR
 
   Azure Kubernetes hizmeti (AKS) ve Application Gateway giriş denetleyicisi (AGIC) ile Kubernetes kullanan kullanıyorsanız, Application Gateway olan ve alt öğe için gönderilen trafiğin doğru düğüme yönlendirilmesini sağlamak için bir yol tablosu gerekir. Azure CNı kullanıyorsanız bu gerekli değildir. 
 
@@ -109,7 +109,7 @@ Bu senaryo için Application Gateway alt ağında NSG 'leri kullanın. Aşağıd
     
   **v2 desteklenmeyen senaryolar**
 
-  **Senaryo 1**: sanal gereçler için UDR
+  **Senaryo 1** : sanal gereçler için UDR
 
   0.0.0.0/0 ' ın herhangi bir Sanal Gereç aracılığıyla yeniden yönlendirilmesi gereken herhangi bir senaryo, bir hub/bağlı sanal ağ veya şirket içi (Zorlamalı tünel) v2 için desteklenmez.
 

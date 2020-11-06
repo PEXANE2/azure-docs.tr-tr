@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 492041e39cf3e7be256bc783afc82fc756e17bf4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8df24b44d648343c46532eed443717f444bd0058
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791554"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397799"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -29,7 +29,7 @@ Azure Application Gateway, bir hizmet olarak uygulama teslim denetleyicisi (ADC)
 
 ### <a name="what-features-does-application-gateway-support"></a>Application Gateway hangi özellikleri destekler?
 
-Application Gateway otomatik ölçeklendirmeyi, TLS yük boşaltma ve uçtan uca TLS, bir Web uygulaması güvenlik duvarı (WAF), tanımlama bilgisi tabanlı oturum benzeşimi, URL yolu tabanlı yönlendirme, çoklu site barındırma ve diğer özellikleri destekler. Desteklenen özelliklerin tam listesi için bkz. [tanıtım Application Gateway](application-gateway-introduction.md).
+Application Gateway otomatik ölçeklendirmeyi, TLS yük boşaltma ve uçtan uca TLS, bir Web uygulaması güvenlik duvarı (WAF), tanımlama bilgisi tabanlı oturum benzeşimi, URL yolu tabanlı yönlendirme, çoklu site barındırma ve diğer özellikleri destekler. Desteklenen özelliklerin tam listesi için bkz. [tanıtım Application Gateway](./overview.md).
 
 ### <a name="how-do-application-gateway-and-azure-load-balancer-differ"></a>Application Gateway ve Azure Load Balancer nasıl farklıdır?
 
@@ -41,17 +41,17 @@ Application Gateway HTTP, HTTPS, HTTP/2 ve WebSocket 'i destekler.
 
 ### <a name="how-does-application-gateway-support-http2"></a>Application Gateway HTTP/2 ' ye nasıl destekler?
 
-Bkz. [http/2 desteği](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support).
+Bkz. [http/2 desteği](./configuration-listeners.md#http2-support).
 
 ### <a name="what-resources-are-supported-as-part-of-a-backend-pool"></a>Arka uç havuzunun bir parçası olarak hangi kaynaklar desteklenir?
 
-[Desteklenen arka uç kaynaklarına](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#backend-pools)bakın.
+[Desteklenen arka uç kaynaklarına](./application-gateway-components.md#backend-pools)bakın.
 
 ### <a name="in-what-regions-is-application-gateway-available"></a>Application Gateway hangi bölgelerde kullanılabilir?
 
 Application Gateway v1 (Standart ve WAF), tüm genel Azure bölgelerinde kullanılabilir. [Azure Çin 21Vianet](https://www.azure.cn/) ve [Azure Kamu](https://azure.microsoft.com/overview/clouds/government/)'da da kullanılabilir.
 
-Application Gateway v2 (Standard_v2 ve WAF_v2) kullanılabilirliği için bkz. [Application Gateway v2 için desteklenen bölgeler](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#supported-regions)
+Application Gateway v2 (Standard_v2 ve WAF_v2) kullanılabilirliği için bkz. [Application Gateway v2 için desteklenen bölgeler](./application-gateway-autoscaling-zone-redundant.md#supported-regions)
 
 ### <a name="is-this-deployment-dedicated-for-my-subscription-or-is-it-shared-across-customers"></a>Bu dağıtım Aboneliğim için ayrılmıştır veya müşteriler arasında paylaşılıyor mu?
 
@@ -59,11 +59,11 @@ Application Gateway, sanal ağınızdaki adanmış bir dağıtımdır.
 
 ### <a name="does-application-gateway-support-http-to-https-redirection"></a>Application Gateway HTTP-HTTPS yeniden yönlendirmeyi destekliyor mu?
 
-Yeniden yönlendirme destekleniyor. Bkz. [Application Gateway yeniden yönlendirmeye genel bakış](application-gateway-redirect-overview.md).
+Yeniden yönlendirme destekleniyor. Bkz. [Application Gateway yeniden yönlendirmeye genel bakış](./redirect-overview.md).
 
 ### <a name="in-what-order-are-listeners-processed"></a>Dinleyicilerinin hangi sırada işlendiği?
 
-[Dinleyici işleme sırasına](https://docs.microsoft.com/azure/application-gateway/configuration-overview#order-of-processing-listeners)bakın.
+[Dinleyici işleme sırasına](./configuration-listeners.md#order-of-processing-listeners)bakın.
 
 ### <a name="where-do-i-find-the-application-gateway-ip-and-dns"></a>IP ve DNS Application Gateway nerede bulabilirim?
 
@@ -97,7 +97,7 @@ Uygulama ağ geçidi yalnızca bir genel IP adresini destekler.
 
 ### <a name="how-large-should-i-make-my-subnet-for-application-gateway"></a>Alt ağumu Application Gateway için ne kadar büyük hale yapmam gerekir?
 
-Bkz. [Application Gateway alt ağ boyutu konuları](https://docs.microsoft.com/azure/application-gateway/configuration-overview#size-of-the-subnet).
+Bkz. [Application Gateway alt ağ boyutu konuları](./configuration-infrastructure.md#size-of-the-subnet).
 
 ### <a name="can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>Tek bir alt ağa birden fazla Application Gateway kaynağı dağıtabilir miyim?
 
@@ -111,7 +111,7 @@ Evet, ancak yalnızca belirli senaryolar. Daha fazla bilgi için bkz. [Applicati
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Üst bilgiler için x-iletilmiş Application Gateway destekler mi?
 
-Evet. [Bir Istekteki değişikliklere](https://docs.microsoft.com/azure/application-gateway/how-application-gateway-works#modifications-to-the-request)bakın.
+Evet. [Bir Istekteki değişikliklere](./how-application-gateway-works.md#modifications-to-the-request)bakın.
 
 ### <a name="how-long-does-it-take-to-deploy-an-application-gateway-will-my-application-gateway-work-while-its-being-updated"></a>Uygulama ağ geçidini dağıtmak ne kadar sürer? Uygulama ağ geçim güncelleştirilirken çalışacak mı?
 
@@ -138,7 +138,7 @@ Hayır. Application Gateway v2, kimlik doğrulama isteklerini henüz NTLM kimlik
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Application Gateway benzeşim tanımlama bilgisi SameSite özniteliğini destekliyor mu?
 Evet, [Kmıum Browser](https://www.chromium.org/Home) [V80 Update](https://chromiumdash.appspot.com/schedule) , SameSite = LAX olarak değerlendirilmeyeceği bir SAMESITE özniteliği olmadan http tanımlama bilgilerinde bir mantarih getirdi. Bu, Application Gateway benzeşim tanımlama bilgisinin tarayıcı tarafından üçüncü taraf bir bağlamda gönderilemeyeceği anlamına gelir. 
 
-Bu senaryoyu desteklemek için, mevcut *Applicationgatewaybenzeşim* tanımlama bilgisine ek olarak *Applicationgatewayaffinitycors* adlı başka bir tanımlama bilgisini Application Gateway çıkartır.  Bu tanımlama bilgileri benzerdir, ancak *Applicationgatewayaffinitycors* tanımlama bilgisinin kendisine eklenmiş iki özniteliği vardır: *SameSite = None; Güvenli* . Bu öznitelikler, çapraz kaynak istekleri için bile yapışkan oturumları korur. Daha fazla bilgi için [tanımlama bilgisi tabanlı benzeşim bölümüne](configuration-http-settings.md#cookie-based-affinity) bakın.
+Bu senaryoyu desteklemek için, mevcut *Applicationgatewaybenzeşim* tanımlama bilgisine ek olarak *Applicationgatewayaffinitycors* adlı başka bir tanımlama bilgisini Application Gateway çıkartır.  Bu tanımlama bilgileri benzerdir, ancak *Applicationgatewayaffinitycors* tanımlama bilgisinin kendisine eklenmiş iki özniteliği vardır: *SameSite = None; Güvenli*. Bu öznitelikler, çapraz kaynak istekleri için bile yapışkan oturumları korur. Daha fazla bilgi için [tanımlama bilgisi tabanlı benzeşim bölümüne](configuration-http-settings.md#cookie-based-affinity) bakın.
 
 ## <a name="performance"></a>Performans
 
@@ -172,7 +172,7 @@ Evet.
 
 ### <a name="is-application-gateway-always-deployed-in-a-virtual-network"></a>Application Gateway her zaman bir sanal ağda dağıtılır mı?
 
-Evet. Application Gateway her zaman bir sanal ağ alt ağında dağıtılır. Bu alt ağ, yalnızca uygulama ağ geçitleri içerebilir. Daha fazla bilgi için bkz. [sanal ağ ve alt ağ gereksinimleri](https://docs.microsoft.com/azure/application-gateway/configuration-overview#azure-virtual-network-and-dedicated-subnet).
+Evet. Application Gateway her zaman bir sanal ağ alt ağında dağıtılır. Bu alt ağ, yalnızca uygulama ağ geçitleri içerebilir. Daha fazla bilgi için bkz. [sanal ağ ve alt ağ gereksinimleri](./configuration-infrastructure.md#virtual-network-and-dedicated-subnet).
 
 ### <a name="can-application-gateway-communicate-with-instances-outside-of-its-virtual-network-or-outside-of-its-subscription"></a>Application Gateway sanal ağının dışındaki veya aboneliğin dışında örneklerle iletişim kurabilir mi?
 
@@ -184,15 +184,15 @@ Hayır. Ancak diğer uygulama ağ geçitlerini alt ağda dağıtabilirsiniz.
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>Ağ güvenlik grupları, uygulama ağ geçidi alt ağında destekleniyor mu?
 
-[Application Gateway alt ağındaki ağ güvenlik grupları '](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#network-security-groups)na bakın.
+[Application Gateway alt ağındaki ağ güvenlik grupları '](./configuration-infrastructure.md#network-security-groups)na bakın.
 
 ### <a name="does-the-application-gateway-subnet-support-user-defined-routes"></a>Application Gateway alt ağı Kullanıcı tanımlı yolları destekliyor mu?
 
-[Application Gateway alt ağında desteklenen Kullanıcı tanımlı yollara](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#supported-user-defined-routes)bakın.
+[Application Gateway alt ağında desteklenen Kullanıcı tanımlı yollara](./configuration-infrastructure.md#supported-user-defined-routes)bakın.
 
 ### <a name="are-service-endpoint-policies-supported-in-the-application-gateway-subnet"></a>Hizmet uç noktası ilkeleri Application Gateway alt ağında destekleniyor mu?
 
-Hayır. Depolama hesapları için [hizmet uç noktası ilkeleri](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview) Application Gateway alt ağda desteklenmez ve yapılandırma, Azure altyapı trafiğini engeller.
+Hayır. Depolama hesapları için [hizmet uç noktası ilkeleri](../virtual-network/virtual-network-service-endpoint-policies-overview.md) Application Gateway alt ağda desteklenmez ve yapılandırma, Azure altyapı trafiğini engeller.
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Application Gateway sınırları nelerdir? Bu limitleri artırabilir miyim?
 
@@ -220,7 +220,7 @@ Hayır.
 
 ### <a name="how-are-routing-rules-processed-in-application-gateway"></a>Yönlendirme kuralları Application Gateway içinde nasıl işlenir?
 
-Bkz. [işleme kuralları sırası](https://docs.microsoft.com/azure/application-gateway/configuration-overview#order-of-processing-rules).
+Bkz. [işleme kuralları sırası](./configuration-request-routing-rules.md#order-of-processing-rules).
 
 ### <a name="for-custom-probes-what-does-the-host-field-signify"></a>Özel yoklamalar için, ana bilgisayar alanı ne işaret eder?
 
@@ -228,7 +228,7 @@ Konak alanı, Application Gateway üzerinde çok siteli yapılandırdığınız 
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Yalnızca birkaç kaynak IP adresine Application Gateway erişimine izin verebilir miyim?
 
-Evet. Bkz. [belirli kaynak IP 'lerine erişimi kısıtlama](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#allow-access-to-a-few-source-ips).
+Evet. Bkz. [belirli kaynak IP 'lerine erişimi kısıtlama](./configuration-infrastructure.md#allow-access-to-a-few-source-ips).
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>Hem genel hem de özel kullanıma yönelik dinleyiciler için aynı bağlantı noktasını kullanabilir miyim?
 
@@ -247,7 +247,7 @@ Application Gateway v2 Şu anda yalnızca özel IP modunu desteklemiyor. Aşağ�
 Ancak Application Gateway v2 'yi yalnızca özel IP ile kullanmak istiyorsanız, aşağıdaki işlemi izleyebilirsiniz:
 1. Hem genel hem de özel ön uç IP adresiyle Application Gateway oluşturun
 2. Genel ön uç IP adresi için herhangi bir dinleyici oluşturmayın. Application Gateway, kendisi için bir dinleyici oluşturulmadıysa genel IP adresindeki herhangi bir trafiği dinlemez.
-3. Öncelik sırasına göre aşağıdaki yapılandırmaya sahip Application Gateway alt ağı için bir [ağ güvenlik grubu](https://docs.microsoft.com/azure/virtual-network/security-overview) oluşturun ve ekleyin:
+3. Öncelik sırasına göre aşağıdaki yapılandırmaya sahip Application Gateway alt ağı için bir [ağ güvenlik grubu](../virtual-network/network-security-groups-overview.md) oluşturun ve ekleyin:
     
     a. Kaynak olarak **Gatewaymanager** hizmet etiketi ve hedef bağlantı **noktası olarak** **65200-65535** olarak gelen trafiğe izin verin. Bu bağlantı noktası aralığı, Azure altyapı iletişimi için gereklidir. Bu bağlantı noktaları sertifika kimlik doğrulaması tarafından korunur (kilitlidir). Ağ Geçidi Kullanıcı yöneticileri de dahil olmak üzere dış varlıklar, uygun sertifikalara sahip olmayan bu uç noktalar üzerinde değişiklik başlatamaz
     
@@ -337,7 +337,7 @@ Evet, Application Gateway v2 SKU 'SU Key Vault destekler. Daha fazla bilgi için
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>. Com ve .net siteleri için HTTPS dinleyicileri yapılandırmak Nasıl yaparım?? 
 
-Birden çok etki alanı tabanlı (ana bilgisayar tabanlı) yönlendirme için çoklu site dinleyicileri oluşturabilir, protokol olarak HTTPS kullanan dinleyicileri ayarlayabilir ve dinleyicileri yönlendirme kurallarıyla ilişkilendirebilirsiniz. Daha fazla bilgi için bkz. [Application Gateway kullanarak birden çok site barındırma](https://docs.microsoft.com/azure/application-gateway/multiple-site-overview).
+Birden çok etki alanı tabanlı (ana bilgisayar tabanlı) yönlendirme için çoklu site dinleyicileri oluşturabilir, protokol olarak HTTPS kullanan dinleyicileri ayarlayabilir ve dinleyicileri yönlendirme kurallarıyla ilişkilendirebilirsiniz. Daha fazla bilgi için bkz. [Application Gateway kullanarak birden çok site barındırma](./multiple-site-overview.md).
 
 ### <a name="can-i-use-special-characters-in-my-pfx-file-password"></a>. Pfx dosya parolamda özel karakterler kullanabilir miyim?
 
@@ -365,7 +365,7 @@ Application Gateway belirli bilgiler için aşağıya bakın-
 Bu sorun nedeniyle uygulamanızın kesintiye uğramasını önlemek veya iptal edilen bir CA 'yı yeniden vermek için aşağıdaki eylemleri gerçekleştirmeniz gerekir: 
 
 1.  Sertifikalarınızı yeniden verme hakkında sertifika sağlayıcınıza başvurun
-2.  Yeniden verildikten sonra Azure Application Gateway/WAF 'deki sertifikalarınızı, tüm [güven zinciriyle](https://docs.microsoft.com/windows/win32/seccrypto/certificate-chains) (yaprak, ara, kök sertifika) güncelleştirin. Sertifikanıza veya Application Gateway HTTP ayarlarına göre sertifikanızı nerede kullandığınızı temel alarak, sertifikaları güncelleştirmek ve daha fazla bilgi için bahsedilen belge bağlantılarını denetlemek için aşağıdaki adımları izleyin.
+2.  Yeniden verildikten sonra Azure Application Gateway/WAF 'deki sertifikalarınızı, tüm [güven zinciriyle](/windows/win32/seccrypto/certificate-chains) (yaprak, ara, kök sertifika) güncelleştirin. Sertifikanıza veya Application Gateway HTTP ayarlarına göre sertifikanızı nerede kullandığınızı temel alarak, sertifikaları güncelleştirmek ve daha fazla bilgi için bahsedilen belge bağlantılarını denetlemek için aşağıdaki adımları izleyin.
 3.  Yeniden verilen sertifikayı kullanmak için arka uç uygulama sunucularınızı güncelleştirin. Kullandığınız arka uç sunucusuna bağlı olarak, sertifika güncelleştirme adımlarınız farklılık gösterebilir. Lütfen satıcınızdan belgeleri denetleyin.
 
 Dinleyicinizdeki sertifikayı güncelleştirmek için:
@@ -374,14 +374,14 @@ Dinleyicinizdeki sertifikayı güncelleştirmek için:
 2.  Sertifikanıza ilişkin dinleyici ayarlarını açın
 3.  "Seçili Sertifikayı Yenile veya Düzenle" seçeneğine tıklayın
 4.  Yeni PFX sertifikanızı parolayla karşıya yükleyin ve Kaydet ' e tıklayın.
-5.  Web sitesine erişin ve sitenin beklendiği gibi çalışıp çalışmadığını doğrulayın daha fazla bilgi [için belgeleri inceleyin](https://docs.microsoft.com/azure/application-gateway/renew-certificates).
+5.  Web sitesine erişin ve sitenin beklendiği gibi çalışıp çalışmadığını doğrulayın daha fazla bilgi [için belgeleri inceleyin](./renew-certificates.md).
 
 Application Gateway dinleyicinizdeki Azure Keykasasındaki sertifikalara başvuruyorsanız, hızlı bir değişiklik için aşağıdaki adımları öneririz:
 
 1.  [Azure Portal](https://portal.azure.com/), Application Gateway Ilişkili Azure keykasası ayarlarınıza gidin
-2.  Deponuzda yeniden yayımlanan sertifikayı ekleyin/içeri aktarın. Nasıl yapılır hakkında daha fazla [bilgi için belgelere bakın.](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal)
+2.  Deponuzda yeniden yayımlanan sertifikayı ekleyin/içeri aktarın. Nasıl yapılır hakkında daha fazla [bilgi için belgelere bakın.](../key-vault/certificates/quick-create-portal.md)
 3.  Sertifika içeri aktarıldıktan sonra, Application Gateway dinleyici ayarlarınıza gidin ve "Key Vault sertifika seçin" altında "sertifika" açılan düğmesine tıklayın ve son eklenen sertifikayı seçin
-4.  Application Gateway Key Vault sertifikalarla TLS sonlandırma hakkında daha fazla bilgi Için Kaydet ' e tıklayın, [burada](https://docs.microsoft.com/azure/application-gateway/key-vault-certs)belgeleri kontrol edin.
+4.  Application Gateway Key Vault sertifikalarla TLS sonlandırma hakkında daha fazla bilgi Için Kaydet ' e tıklayın, [burada](./key-vault-certs.md)belgeleri kontrol edin.
 
 
 HTTP ayarlarınızda sertifikayı güncelleştirmek için:
@@ -391,7 +391,7 @@ Application Gateway/WAF hizmetinin v1 SKU 'sunu kullanıyorsanız, yeni sertifik
 2.  Sertifikanıza ilişkin HTTP ayarlarını açın
 3.  "Sertifika ekle" seçeneğine tıklayın ve yeniden yayımlanan sertifikayı karşıya yükleyin ve Kaydet ' e tıklayın.
 4.  Eski sertifikayı daha sonra "..." öğesine tıklayarak kaldırabilirsiniz. Eski sertifikanın yanındaki Seçenekler düğmesi ve Sil ' i seçin ve Kaydet ' e tıklayın.
-Daha fazla bilgi [için belgelere bakın](https://docs.microsoft.com/azure/application-gateway/end-to-end-ssl-portal#add-authenticationtrusted-root-certificates-of-back-end-servers).
+Daha fazla bilgi [için belgelere bakın](./end-to-end-ssl-portal.md#add-authenticationtrusted-root-certificates-of-back-end-servers).
 
 Application Gateway/WAF hizmetinin v2 SKU 'sunu kullanıyorsanız, v2 SKU 'SU "güvenilen kök sertifikalar" kullandığından ve burada herhangi bir işlem yapılması gerekmiyorsa, yeni sertifikayı HTTP ayarlarında karşıya yüklemeniz gerekmez.
 
@@ -454,7 +454,7 @@ Portalda, bir uygulama ağ geçidinin menü dikey penceresinde, denetim günlü�
 
 ### <a name="can-i-set-alerts-with-application-gateway"></a>Uyarıları Application Gateway ayarlayabilir miyim?
 
-Evet. Application Gateway, ölçümler üzerinde uyarılar yapılandırılır. Daha fazla bilgi için bkz. [Application Gateway ölçümleri](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics) ve [uyarı bildirimleri alma](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+Evet. Application Gateway, ölçümler üzerinde uyarılar yapılandırılır. Daha fazla bilgi için bkz. [Application Gateway ölçümleri](./application-gateway-metrics.md) ve [uyarı bildirimleri alma](../azure-monitor/platform/alerts-overview.md).
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>Application Gateway için trafik istatistiklerini analiz Nasıl yaparım??
 

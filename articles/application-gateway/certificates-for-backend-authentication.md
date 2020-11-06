@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: absha
-ms.openlocfilehash: 69d388b12e564b307cd117c3a86ae960dabaa937
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 874e554063f64ddefce99a223678d64b2e0774c3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362721"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397731"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Azure Application Gateway arka uca izin vermek için sertifikalar oluşturma
 
@@ -35,27 +35,27 @@ Application Gateway v1 SKU 'sunda arka uç örneklerine izin vermek için bir ki
 
 TLS/SSL sertifikaınızdan ortak anahtar. cer dosyasını (özel anahtarı değil) dışarı aktarın. Aşağıdaki adımlar Base-64 ile kodlanmış X. 509.440 (. cer) dosyasına dışarı aktarma yapmanıza yardımcı olur. CER) sertifikanızın biçimi:
 
-1. Sertifikadan bir .cer dosyası almak için **Kullanıcı sertifikalarını yönet** menüsünü açın. Sertifikayı, genellikle ' sertifikalar-geçerli kullanıcı \ kişisel \ Sertifikalar ' içinde bulun ve sağ tıklayın. **Tüm Görevler**’e tıklayın ve ardından **Dışarı Aktar**’a tıklayın. **Sertifika Dışarı Aktarma Sihirbazı** açılır. Geçerli Kullanıcı \ kişisel \ sertifikalar altındaki sertifikayı bulamazsanız, yanlışlıkla "Sertifikalar-Geçerli Kullanıcı" yerine "Sertifikalar-Yerel bilgisayar" seçeneğini açmış olabilirsiniz. PowerShell kullanarak geçerli kullanıcı kapsamında sertifika yöneticisi 'ni açmak istiyorsanız konsol penceresine *certmgr* yazın.
+1. Sertifikadan bir .cer dosyası almak için **Kullanıcı sertifikalarını yönet** menüsünü açın. Sertifikayı, genellikle ' sertifikalar-geçerli kullanıcı \ kişisel \ Sertifikalar ' içinde bulun ve sağ tıklayın. **Tüm Görevler** ’e tıklayın ve ardından **Dışarı Aktar** ’a tıklayın. **Sertifika Dışarı Aktarma Sihirbazı** açılır. Geçerli Kullanıcı \ kişisel \ sertifikalar altındaki sertifikayı bulamazsanız, yanlışlıkla "Sertifikalar-Geçerli Kullanıcı" yerine "Sertifikalar-Yerel bilgisayar" seçeneğini açmış olabilirsiniz. PowerShell kullanarak geçerli kullanıcı kapsamında sertifika yöneticisi 'ni açmak istiyorsanız konsol penceresine *certmgr* yazın.
 
    ![Ekran görüntüsü, seçili sertifikaların bulunduğu sertifika yöneticisini ve tüm görevleri içeren bir bağlamsal menüyü gösterir ve ardından seçili olarak dışa aktarın.](./media/certificates-for-backend-authentication/export.png)
 
-2. Sihirbazda, **İleri**' ye tıklayın.
+2. Sihirbazda, **İleri** ' ye tıklayın.
 
    ![Sertifikayı dışarı aktarma](./media/certificates-for-backend-authentication/exportwizard.png)
 
-3. **Hayır, özel anahtarı dışarı aktarma**’yı seçin ve **İleri**’ye tıklayın.
+3. **Hayır, özel anahtarı dışarı aktarma** ’yı seçin ve **İleri** ’ye tıklayın.
 
    ![Özel anahtarı dışarı aktarma](./media/certificates-for-backend-authentication/notprivatekey.png)
 
-4. **Dışarı Aktarma Dosyası Biçimi** sayfasında **Base-64 ile kodlanmış X.509 (.CER)** seçeneğini belirleyin ve **İleri**’ye tıklayın.
+4. **Dışarı Aktarma Dosyası Biçimi** sayfasında **Base-64 ile kodlanmış X.509 (.CER)** seçeneğini belirleyin ve **İleri** ’ye tıklayın.
 
    ![Base-64 kodlu](./media/certificates-for-backend-authentication/base64.png)
 
-5. **Dışarı aktarılacak dosya**için, sertifikayı dışarı aktarmak istediğiniz konuma **gidin** . **Dosya adı** alanına, sertifika dosyası için bir ad girin. Ardından **İleri**' ye tıklayın.
+5. **Dışarı aktarılacak dosya** için, sertifikayı dışarı aktarmak istediğiniz konuma **gidin** . **Dosya adı** alanına, sertifika dosyası için bir ad girin. Ardından **İleri** ' ye tıklayın.
 
    ![Ekran görüntüsü, dışarı aktarılacak bir dosyayı belirttiğiniz sertifika dışarı aktarma Sihirbazı ' nı gösterir.](./media/certificates-for-backend-authentication/browse.png)
 
-6. Sertifikayı dışarı aktarmak için **Son**'a tıklayın.
+6. Sertifikayı dışarı aktarmak için **Son** 'a tıklayın.
 
    ![Dosya dışarı aktarmayı tamamladıktan sonra, ekran görüntüsü sertifika dışarı aktarma Sihirbazı ' nı gösterir.](./media/certificates-for-backend-authentication/finish.png)
 
@@ -89,7 +89,7 @@ Aşağıdaki adımlar, sertifikanız için. cer dosyasını dışarı aktarmaya 
 
    ![sertifika ayrıntıları](./media/certificates-for-backend-authentication/certdetails.png)
 
-4. Kök sertifikayı seçin ve **sertifikayı görüntüle**' ye tıklayın.
+4. Kök sertifikayı seçin ve **sertifikayı görüntüle** ' ye tıklayın.
 
    ![Sertifika yolu](./media/certificates-for-backend-authentication/rootcert.png)
 
@@ -101,9 +101,8 @@ Aşağıdaki adımlar, sertifikanız için. cer dosyasını dışarı aktarmaya 
 
    ![kök sertifikayı Kopyala](./media/certificates-for-backend-authentication/rootcertcopytofile.png)
 
-6. Bu noktada, kök sertifikanın ayrıntılarını arka uç sertifikasından ayıkladık. **Sertifika dışarı aktarma Sihirbazı**'nı görürsünüz. Bundan sonra, temel-64 kodlamalı X. 509.440 () içindeki güvenilen kök sertifikayı dışarı aktarmak için yukarıdaki **bir arka uç sertifikasından (v1 SKU 'su için) kimlik doğrulama sertifikasını dışarı aktarma** bölümünde bahsedilen 2-9 adımları kullanın. CER) biçiminde.
+6. Bu noktada, kök sertifikanın ayrıntılarını arka uç sertifikasından ayıkladık. **Sertifika dışarı aktarma Sihirbazı** 'nı görürsünüz. Bundan sonra, temel-64 kodlamalı X. 509.440 () içindeki güvenilen kök sertifikayı dışarı aktarmak için yukarıdaki **bir arka uç sertifikasından (v1 SKU 'su için) kimlik doğrulama sertifikasını dışarı aktarma** bölümünde bahsedilen 2-9 adımları kullanın. CER) biçiminde.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık Base-64 ile kodlanmış X. 509.440 () kimlik doğrulama sertifikasına/güvenilen kök sertifikaya sahipsiniz. CER) biçiminde. Arka uç sunucularınızın uçtan uca TLS şifrelemesini sağlamak için bunu Application Gateway 'e ekleyebilirsiniz. Bkz. [PowerShell ile Application Gateway kullanarak uçtan uca TLS Yapılandırma](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
-
+Artık Base-64 ile kodlanmış X. 509.440 () kimlik doğrulama sertifikasına/güvenilen kök sertifikaya sahipsiniz. CER) biçiminde. Arka uç sunucularınızın uçtan uca TLS şifrelemesini sağlamak için bunu Application Gateway 'e ekleyebilirsiniz. Bkz. [PowerShell ile Application Gateway kullanarak uçtan uca TLS Yapılandırma](./application-gateway-end-to-end-ssl-powershell.md).

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: victorh
-ms.openlocfilehash: 3d714b579bebb096745a47410da3f8f458e27161
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c39401289ffc6f27c292168adaa15c5163a3967b
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723308"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396932"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Application Gateway ile TLS sonlandırmasına ve uçtan uca TLS 'ye Genel Bakış
 
@@ -51,10 +51,10 @@ Application Gateway aşağıdaki sertifika türlerini destekler:
 - Joker karakter sertifikası: Bu sertifika, alt etki alanınızın * yerini alacak *. site.com bağlı olarak herhangi bir sayıda alt etki alanını destekler. Ancak, site.com desteği yoktur, bu nedenle kullanıcıların Web sitenize önde gelen "www" yazısı olmadan erişmesi durumunda joker karakter sertifikası bunu kapsamaz.
 - Self-Signed sertifikaları: Istemci tarayıcıları bu sertifikalara güvenmez ve kullanıcıyı sanal hizmetin sertifikasının bir güven zincirinin parçası olmadığı konusunda uyarır. Otomatik olarak imzalanan sertifikalar, yöneticilerin istemcileri denetladığı ve tarayıcının güvenlik uyarılarını güvenle atlayabileceği test veya ortamlar için uygundur. Üretim iş yükleri hiçbir şekilde otomatik olarak imzalanan sertifikalar kullanmamalıdır.
 
-Daha fazla bilgi için bkz. [Application Gateway Ile TLS sonlandırmayı yapılandırma](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
+Daha fazla bilgi için bkz. [Application Gateway Ile TLS sonlandırmayı yapılandırma](./create-ssl-portal.md).
 
 ### <a name="size-of-the-certificate"></a>Sertifikanın boyutu
-Desteklenen en yüksek TLS/SSL sertifika boyutunu bildirmek için [Application Gateway sınırları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#application-gateway-limits) bölümünü denetleyin.
+Desteklenen en yüksek TLS/SSL sertifika boyutunu bildirmek için [Application Gateway sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits) bölümünü denetleyin.
 
 ## <a name="end-to-end-tls-encryption"></a>Uçtan uca TLS şifrelemesi
 
@@ -62,7 +62,7 @@ Arka uç sunucuları için şifrelenmemiş iletişim istemiyor olabilirsiniz. G�
 
 Uçtan uca TLS, Application Gateway katman 7 Yük Dengeleme özelliklerini kullanırken hassas verileri, arka uca şifrelemeyi ve güvenli bir şekilde aktarmanıza olanak tanır. Bu özellikler, tanımlama bilgisi tabanlı oturum benzeşimi, URL tabanlı yönlendirme, sitelere göre yönlendirme desteği, X-Iletilen-* üst bilgilerini yeniden yazma veya ekleme olanağı içerir.
 
-Uçtan uca TLS iletişim modu ile yapılandırıldığında, Application Gateway ağ geçidinde TLS oturumlarını sonlandırır ve kullanıcı trafiğinin şifresini çözer. Ardından trafiğin yönlendirileceği uygun arka uç havuzunu seçmek için yapılandırılan kuralları uygular. Application Gateway, arka uç sunucusuna yeni bir TLS bağlantısı başlatır ve isteği arka uca iletmeden önce arka uç sunucusunun ortak anahtar sertifikasını kullanarak verileri yeniden şifreler. Web sunucusundan alınan herhangi bir yanıt, son kullanıcıya dönerken aynı süreci izler. Uçtan uca TLS, [arka uç http ayarında](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings) protokol ayarı https olarak ayarlanarak etkinleştirilir ve bu daha sonra arka uç havuzuna uygulanır.
+Uçtan uca TLS iletişim modu ile yapılandırıldığında, Application Gateway ağ geçidinde TLS oturumlarını sonlandırır ve kullanıcı trafiğinin şifresini çözer. Ardından trafiğin yönlendirileceği uygun arka uç havuzunu seçmek için yapılandırılan kuralları uygular. Application Gateway, arka uç sunucusuna yeni bir TLS bağlantısı başlatır ve isteği arka uca iletmeden önce arka uç sunucusunun ortak anahtar sertifikasını kullanarak verileri yeniden şifreler. Web sunucusundan alınan herhangi bir yanıt, son kullanıcıya dönerken aynı süreci izler. Uçtan uca TLS, [arka uç http ayarında](./configuration-overview.md#http-settings) protokol ayarı https olarak ayarlanarak etkinleştirilir ve bu daha sonra arka uç havuzuna uygulanır.
 
 Application Gateway ve WAF v1 SKU 'SU için TLS ilkesi hem ön uç hem de arka uç trafiği için geçerlidir. Ön uçta, Application Gateway sunucu olarak davranır ve ilkeyi uygular. Arka uçta Application Gateway istemci olarak davranır ve TLS el sıkışması sırasında iletişim kuralı/şifreleme bilgilerini tercih olarak gönderir.
 

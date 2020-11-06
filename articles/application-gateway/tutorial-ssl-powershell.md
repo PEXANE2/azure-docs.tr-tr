@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 67d22535f44d4d1b39b6c305fa0670d2d08be0c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bd57344f0bd7f3b97c523f9378a5820c1a90a84
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595810"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396575"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-azure-powershell"></a>Azure PowerShell kullanarak TLS sonlandırmasına sahip bir uygulama ağ geçidi oluşturma
 
-Arka uç sunucuları için bir [sanal makine ölçek kümesi](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) kullanan [TLS/SSL sonlandırma](ssl-overview.md) sertifikasıyla bir [uygulama ağ geçidi](overview.md) oluşturmak için Azure PowerShell kullanabilirsiniz. Bu örnekte örnek kümesi, uygulama ağ geçidinin varsayılan arka uç havuzuna eklenen iki sanal makine örneğini içerir. 
+Arka uç sunucuları için bir [sanal makine ölçek kümesi](../virtual-machine-scale-sets/overview.md) kullanan [TLS/SSL sonlandırma](ssl-overview.md) sertifikasıyla bir [uygulama ağ geçidi](overview.md) oluşturmak için Azure PowerShell kullanabilirsiniz. Bu örnekte örnek kümesi, uygulama ağ geçidinin varsayılan arka uç havuzuna eklenen iki sanal makine örneğini içerir. 
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -35,7 +35,7 @@ Bu makale Azure PowerShell Module sürümü 1.0.0 veya üstünü gerektirir. Sü
 
 ## <a name="create-a-self-signed-certificate"></a>Otomatik olarak imzalanan sertifika oluşturma
 
-Üretim sırasında kullanım için, güvenilen bir sağlayıcı tarafından imzalanan geçerli bir sertifikayı içeri aktarmalısınız. Bu makale için, [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate)kullanarak kendinden imzalı bir sertifika oluşturacaksınız. Sertifikadan pfx dosyası dışarı aktarmak için döndürülen Parmak izi ile [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) komutunu kullanabilirsiniz.
+Üretim sırasında kullanım için, güvenilen bir sağlayıcı tarafından imzalanan geçerli bir sertifikayı içeri aktarmalısınız. Bu makale için, [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate)kullanarak kendinden imzalı bir sertifika oluşturacaksınız. Sertifikadan pfx dosyası dışarı aktarmak için döndürülen Parmak izi ile [Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate) komutunu kullanabilirsiniz.
 
 ```powershell
 New-SelfSignedCertificate `

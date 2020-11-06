@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: a93ef47d4a7ecc136f66cf54a08f7ed23bec2cc0
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 18c8aa0ff05dababc5a79c5c05b43ce9ebcbf9b4
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427966"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397105"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>Öğretici: yeni bir Application Gateway örneğiyle yeni bir AKS kümesi için giriş denetleyicisi eklentisini (Önizleme) etkinleştirme
 
@@ -39,17 +39,17 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici, Azure CLı sürüm 2.0.4 veya üstünü çalıştırmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
-Aşağıdaki örnekte gösterildiği gibi [az Feature Register](https://docs.microsoft.com/cli/azure/feature#az-feature-register) komutunu kullanarak *aks-IngressApplicationGatewayAddon* Feature bayrağını kaydedin. Eklenti hala önizleme aşamasında olduğunda bu işlemi abonelik başına yalnızca bir kez yapmanız gerekir.
+Aşağıdaki örnekte gösterildiği gibi [az Feature Register](/cli/azure/feature#az-feature-register) komutunu kullanarak *aks-IngressApplicationGatewayAddon* Feature bayrağını kaydedin. Eklenti hala önizleme aşamasında olduğunda bu işlemi abonelik başına yalnızca bir kez yapmanız gerekir.
 ```azurecli-interactive
 az feature register --name AKS-IngressApplicationGatewayAddon --namespace Microsoft.ContainerService
 ```
 
-Durumun gösterilmesi birkaç dakika sürebilir `Registered` . [Az Feature List](https://docs.microsoft.com/cli/azure/feature#az-feature-register) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
+Durumun gösterilmesi birkaç dakika sürebilir `Registered` . [Az Feature List](/cli/azure/feature#az-feature-register) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
 ```
 
-Hazırsanız, [az Provider Register](https://docs.microsoft.com/cli/azure/provider#az-provider-register) komutunu kullanarak Microsoft. Containerservice kaynak sağlayıcısı kaydını yenileyin:
+Hazırsanız, [az Provider Register](/cli/azure/provider#az-provider-register) komutunu kullanarak Microsoft. Containerservice kaynak sağlayıcısı kaydını yenileyin:
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
@@ -82,18 +82,18 @@ Artık AGIC eklentisi etkinken yeni bir AKS kümesi dağıtacaksınız. Bu işle
 > - Portal üzerinden Application Gateway WAF 'yi etkinleştirin. 
 > - Önce WAF_v2 Application Gateway örneğini oluşturun ve ardından [mevcut BIR AKS kümesi ve mevcut Application Gateway örneğiyle AGIC eklentisinin nasıl etkinleştirileceği](tutorial-ingress-controller-add-on-existing.md)hakkındaki yönergeleri izleyin. 
 
-Aşağıdaki örnekte, [Azure CNI](https://docs.microsoft.com/azure/aks/concepts-network#azure-cni-advanced-networking) ve [yönetilen kimlikleri](https://docs.microsoft.com/azure/aks/use-managed-identity)kullanarak *MYCLUSTER* adlı yeni bir aks kümesi dağıtırsınız. AGIC eklentisi, oluşturduğunuz kaynak grubunda, *Myresourcegroup*' de etkinleştirilir. 
+Aşağıdaki örnekte, [Azure CNI](../aks/concepts-network.md#azure-cni-advanced-networking) ve [yönetilen kimlikleri](../aks/use-managed-identity.md)kullanarak *MYCLUSTER* adlı yeni bir aks kümesi dağıtırsınız. AGIC eklentisi, oluşturduğunuz kaynak grubunda, *Myresourcegroup* ' de etkinleştirilir. 
 
-Yeni bir AKS kümesini, mevcut bir Application Gateway örneği belirtilmeden etkin bir şekilde dağıtmak, Standard_v2 SKU Application Gateway örneğinin otomatik olarak oluşturulmasını ifade eder. Bu nedenle, Application Gateway örneğinin adını ve alt ağ adres alanını da belirtirsiniz. Application Gateway örneğinin adı *myApplicationGateway*olur ve kullandığımız alt ağ adres alanı 10.2.0.0/16 ' dır. Bu öğreticinin başlangıcında aks-Preview uzantısını eklediğinizden veya güncelleştirdiğinizden emin olun. 
+Yeni bir AKS kümesini, mevcut bir Application Gateway örneği belirtilmeden etkin bir şekilde dağıtmak, Standard_v2 SKU Application Gateway örneğinin otomatik olarak oluşturulmasını ifade eder. Bu nedenle, Application Gateway örneğinin adını ve alt ağ adres alanını da belirtirsiniz. Application Gateway örneğinin adı *myApplicationGateway* olur ve kullandığımız alt ağ adres alanı 10.2.0.0/16 ' dır. Bu öğreticinin başlangıcında aks-Preview uzantısını eklediğinizden veya güncelleştirdiğinizden emin olun. 
 
 ```azurecli-interactive
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity -a ingress-appgw --appgw-name myApplicationGateway --appgw-subnet-prefix "10.2.0.0/16" --generate-ssh-keys
 ```
 
-Komuta ek parametreler yapılandırmak için `az aks create` , [Bu başvurulara](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create)bakın. 
+Komuta ek parametreler yapılandırmak için `az aks create` , [Bu başvurulara](/cli/azure/aks?view=azure-cli-latest#az-aks-create)bakın. 
 
 > [!NOTE]
-> Oluşturduğunuz AKS kümesi, *Myresourcegroup adlı*kaynak grubunda görüntülenir. Ancak, otomatik olarak oluşturulan Application Gateway örneği, aracı havuzlarının olduğu düğüm kaynak grubunda olur. Tarafından düğüm kaynak grubu, varsayılan olarak *MC_resource-Group-name_cluster-name_location* olarak adlandırılır, ancak değiştirilebilir. 
+> Oluşturduğunuz AKS kümesi, *Myresourcegroup adlı* kaynak grubunda görüntülenir. Ancak, otomatik olarak oluşturulan Application Gateway örneği, aracı havuzlarının olduğu düğüm kaynak grubunda olur. Tarafından düğüm kaynak grubu, varsayılan olarak *MC_resource-Group-name_cluster-name_location* olarak adlandırılır, ancak değiştirilebilir. 
 
 ## <a name="deploy-a-sample-application-by-using-agic"></a>AGIC kullanarak örnek uygulama dağıtma
 
@@ -138,4 +138,3 @@ az group delete --name myResourceGroup
 
 > [!div class="nextstepaction"]
 > [AGIC eklentisini devre dışı bırakma hakkında bilgi edinin](./ingress-controller-disable-addon.md)
-

@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: absha
-ms.openlocfilehash: e18288dbc2a09c7e9dd5b0c0e96dfd04ec192596
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a1a122eb7b5b0abcc47cd321c74267a1a4aecda
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595912"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396864"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Uygulama ağ geçidi oluşturma ve HTTP üstbilgilerini yeniden yazma
 
-Yeni [Otomatik ölçeklendirme ve bölgesel olarak yedekli uygulama ağ geçidi SKU 'su](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) oluştururken [http istek ve yanıt üst bilgilerini yeniden yazma kurallarını](rewrite-http-headers.md) yapılandırmak için Azure PowerShell kullanabilirsiniz.
+Yeni [Otomatik ölçeklendirme ve bölgesel olarak yedekli uygulama ağ geçidi SKU 'su](./application-gateway-autoscaling-zone-redundant.md) oluştururken [http istek ve yanıt üst bilgilerini yeniden yazma kurallarını](rewrite-http-headers.md) yapılandırmak için Azure PowerShell kullanabilirsiniz.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -30,9 +30,9 @@ Bu makalede şunları öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu makale, Azure PowerShell yerel olarak çalıştırmanızı gerektirir. Az Module Version 1.0.0 veya daha yeni bir sürümün yüklü olması gerekir. `Import-Module Az`Sürümünü çalıştırın ve ardından `Get-Module Az` sürümü bulun. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps). PowerShell sürümünü doğruladıktan sonra, Azure ile bağlantı oluşturmak için `Login-AzAccount` komutunu çalıştırın.
+Bu makale, Azure PowerShell yerel olarak çalıştırmanızı gerektirir. Az Module Version 1.0.0 veya daha yeni bir sürümün yüklü olması gerekir. `Import-Module Az`Sürümünü çalıştırın ve ardından `Get-Module Az` sürümü bulun. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell sürümünü doğruladıktan sonra, Azure ile bağlantı oluşturmak için `Login-AzAccount` komutunu çalıştırın.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -66,7 +66,7 @@ $vnet = New-AzvirtualNetwork -Name "AutoscaleVNet" -ResourceGroupName $rg `
 
 ## <a name="create-a-reserved-public-ip"></a>Ayrılmış genel IP adresi oluşturma
 
-Publicıpaddress 'in ayırma yöntemini **static**olarak belirtin. Otomatik ölçeklendirme yapan uygulama ağ geçidi VIP’si yalnızca statik olabilir. Dinamik IP’ler desteklenmez. Yalnızca standart PublicIpAddress SKU’su desteklenir.
+Publicıpaddress 'in ayırma yöntemini **static** olarak belirtin. Otomatik ölçeklendirme yapan uygulama ağ geçidi VIP’si yalnızca statik olabilir. Dinamik IP’ler desteklenmez. Yalnızca standart PublicIpAddress SKU’su desteklenir.
 
 ```azurepowershell
 #Create static public IP
@@ -107,11 +107,11 @@ $setting = New-AzApplicationGatewayBackendHttpSettings -Name "BackendHttpSetting
 
 HTTP üstbilgilerini yeniden yazmak için gereken yeni nesneleri yapılandırın:
 
-- **Requestheaderconfiguration**: Bu nesne, yeniden yazmayı düşündüğünüz istek üst bilgisi alanlarını ve özgün üstbilgilerin yeniden yazılması gereken yeni değeri belirtmek için kullanılır.
-- **Responseheaderconfiguration**: Bu nesne, yeniden yazmayı düşündüğünüz yanıt üst bilgisi alanlarını ve özgün üstbilgilerin yeniden yazılması gereken yeni değeri belirtmek için kullanılır.
-- **Actionset**: Bu nesne, yukarıda belirtilen istek ve yanıt üst bilgilerinin yapılandırmasını içerir. 
-- **Yeniden Writerule**: Bu nesne yukarıda belirtilen tüm *actionsets gruplarını* içerir. 
-- **Rewriterutaset**-bu nesne tüm *yeniden writerules* 'leri içerir ve bir istek yönlendirme kuralına (temel veya yol tabanlı) eklenmelidir.
+- **Requestheaderconfiguration** : Bu nesne, yeniden yazmayı düşündüğünüz istek üst bilgisi alanlarını ve özgün üstbilgilerin yeniden yazılması gereken yeni değeri belirtmek için kullanılır.
+- **Responseheaderconfiguration** : Bu nesne, yeniden yazmayı düşündüğünüz yanıt üst bilgisi alanlarını ve özgün üstbilgilerin yeniden yazılması gereken yeni değeri belirtmek için kullanılır.
+- **Actionset** : Bu nesne, yukarıda belirtilen istek ve yanıt üst bilgilerinin yapılandırmasını içerir. 
+- **Yeniden Writerule** : Bu nesne yukarıda belirtilen tüm *actionsets gruplarını* içerir. 
+- **Rewriterutaset** -bu nesne tüm *yeniden writerules* 'leri içerir ve bir istek yönlendirme kuralına (temel veya yol tabanlı) eklenmelidir.
 
    ```azurepowershell
    $requestHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-isThroughProxy" -HeaderValue "True"

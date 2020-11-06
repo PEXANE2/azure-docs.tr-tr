@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 8/15/2018
 ms.author: victorh
-ms.openlocfilehash: de57a58f7c891009d2e0cc43b351c2cad42a2766
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 413ae2ee19f0b8e427de9167b52971e413cdf573
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84807883"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397238"
 ---
 # <a name="renew-application-gateway-certificates"></a>Application Gateway sertifikalarını Yenile
 
@@ -20,13 +20,13 @@ Bir noktada, TLS/SSL şifrelemesi için uygulama ağ geçidinizi yapılandırdı
 
 Azure portal, Azure PowerShell ya da Azure CLı kullanarak bir dinleyiciyle ilişkili bir sertifikayı yenileyebilirsiniz:
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 
-Portaldan bir dinleyici sertifikasını yenilemek için uygulama ağ geçidi dinleyicilerine gidin. Yenilenmesi gereken sertifikaya sahip olan dinleyiciye tıklayın ve ardından **Yenile veya seçili sertifikayı Düzenle**' ye tıklayın.
+Portaldan bir dinleyici sertifikasını yenilemek için uygulama ağ geçidi dinleyicilerine gidin. Yenilenmesi gereken sertifikaya sahip olan dinleyiciye tıklayın ve ardından **Yenile veya seçili sertifikayı Düzenle** ' ye tıklayın.
 
 ![Sertifikayı Yenile](media/renew-certificate/ssl-cert.png)
 
-Yeni PFX sertifikanızı karşıya yükleyin, bir ad verin, parolayı yazın ve ardından **Kaydet**' e tıklayın.
+Yeni PFX sertifikanızı karşıya yükleyin, bir ad verin, parolayı yazın ve ardından **Kaydet** ' e tıklayın.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -62,4 +62,4 @@ az network application-gateway ssl-cert update \
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Application Gateway ile TLS yük boşaltma yapılandırma hakkında bilgi edinmek için bkz. [TLS yük boşaltma yapılandırma](application-gateway-ssl-portal.md)
+Azure Application Gateway ile TLS yük boşaltma yapılandırma hakkında bilgi edinmek için bkz. [TLS yük boşaltma yapılandırma](./create-ssl-portal.md)

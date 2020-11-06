@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 953430421bd30aaa1df352451b549994aeaa1a70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cffc15974bf5a016a4584f5c5f3dcc8a185c9824
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85556161"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397340"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Application Gateway Ingress denetleyicisi ile bir AKS kümesinde birden çok ad alanı desteğini etkinleştirme
 
@@ -35,7 +35,7 @@ Birden çok ad alanını gözlemleyebilme özelliği ile dağıtıldıktan sonra
   - tüm erişilebilir ad alanlarından giriş kaynaklarını listeleyin
   - giriş kaynakları için açıklama eklenmiş olarak filtrele `kubernetes.io/ingress.class: azure/application-gateway`
   - Birleşik [Application Gateway yapılandırması](https://github.com/Azure/azure-sdk-for-go/blob/37f3f4162dfce955ef5225ead57216cf8c1b2c70/services/network/mgmt/2016-06-01/network/models.go#L1710-L1744) oluştur
-  - yapılandırmayı [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) aracılığıyla ilişkili Application Gateway uygulama
+  - yapılandırmayı [ARM](../azure-resource-manager/management/overview.md) aracılığıyla ilişkili Application Gateway uygulama
 
 ## <a name="conflicting-configurations"></a>Çakışan yapılandırma
 Birden çok gösterilemez [ınress kaynağı](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource) , tek bir Application Gateway için çakışan yapılandırmaların oluşturulmasını sağlayabilir. (Örnek için aynı etki alanını talep eden iki giriş.)
@@ -90,7 +90,7 @@ spec:
   - HTTP ayarları: `bp-production-contoso-web-service-80-80-websocket-ingress`
   - Durum araştırması: `pb-production-contoso-web-service-80-websocket-ingress`
 
-*Dinleyici* ve *yönlendirme kuralı*haricinde oluşturulan Application Gateway kaynakları, oluşturuldukları ad alanının () adını içerir `production` .
+*Dinleyici* ve *yönlendirme kuralı* haricinde oluşturulan Application Gateway kaynakları, oluşturuldukları ad alanının () adını içerir `production` .
 
 İki giriş kaynağı, zaman içinde farklı noktalarda AKS kümesine tanıtılıyorsa, AGC 'nin Application Gateway yeniden yapılandırdığı ve trafiği ' den ' a yeniden yönlendirdiği bir senaryoya kadar sona erdirmek olasıdır `namespace-B` `namespace-A` .
 
@@ -99,7 +99,7 @@ spec:
 ## <a name="restrict-access-to-namespaces"></a>Ad alanlarına erişimi kısıtlama
 Varsayılan olarak AGIC, Application Gateway herhangi bir ad alanı içinde açıklamalı giriş temelli olarak yapılandırır. Bu davranışı sınırlandırmak istiyorsanız aşağıdaki seçeneklere sahip olursunuz:
   - ad alanlarını sınırsız olarak tanımlayarak ad alanlarını sınırlayın, `watchNamespace` [helk-config. YAML](#sample-helm-config-file) içindeki YAML anahtarı aracılığıyla gözlemelidir
-  - AGIC 'i belirli ad alanlarıyla sınırlamak için [rol/RoleBinding](https://docs.microsoft.com/azure/aks/azure-ad-rbac) kullanın
+  - AGIC 'i belirli ad alanlarıyla sınırlamak için [rol/RoleBinding](../aks/azure-ad-rbac.md) kullanın
 
 ## <a name="sample-helm-config-file"></a>Örnek HELI yapılandırma dosyası
 
@@ -155,4 +155,3 @@ Varsayılan olarak AGIC, Application Gateway herhangi bir ad alanı içinde aç�
     aksClusterConfiguration:
         apiServerAddress: <aks-api-server-address>
 ```
-

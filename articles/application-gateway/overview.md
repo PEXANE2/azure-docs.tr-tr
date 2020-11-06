@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 08/26/2020
 ms.author: victorh
-ms.openlocfilehash: 7ccc83a61ac4ffe6e1bb6767a9c611bd3fcc0edf
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 52bc2a20be0d7113583b7f23cc569dbb9503d364
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88892788"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397255"
 ---
 # <a name="what-is-azure-application-gateway"></a>Azure Application Gateway nedir?
 
@@ -28,7 +28,7 @@ Bu yönlendirme türü, uygulama katmanı (OSI katman 7) yük dengelemesi olarak
 >[!NOTE]
 > Azure, senaryolarınız için tam olarak yönetilen yük dengeleme çözümleri sunar. Yüksek performanslı, düşük gecikmeli, katman 4 yük dengelemeye ihtiyacınız varsa bkz. [Azure Load Balancer nedir?](../load-balancer/load-balancer-overview.md) Küresel DNS yük dengeleyiciyi arıyorsanız bkz. [ne Traffic Manager?](../traffic-manager/traffic-manager-overview.md) Uçtan uca senaryolarınız, bu çözümleri birleştirmenin avantajlarından yararlanabilir.
 >
-> Azure yük dengeleme seçenekleri karşılaştırması için bkz. [Azure 'da Yük Dengeleme seçeneklerine genel bakış](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
+> Azure yük dengeleme seçenekleri karşılaştırması için bkz. [Azure 'da Yük Dengeleme seçeneklerine genel bakış](/azure/architecture/guide/technology-choices/load-balancing-overview).
 
 ## <a name="features"></a>Özellikler
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: ef2ff8924cd8a92c5d2d2e5dd9da6bb74fad1a14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15f68e8cbca65e7b970944f7ca5ef1952140cc6b
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89653227"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397652"
 ---
 # <a name="application-gateway-listener-configuration"></a>Application Gateway dinleyicisi yapılandırması
 
@@ -20,13 +20,13 @@ ms.locfileid: "89653227"
 
 Dinleyici, bağlantı noktası, protokol, konak ve IP adresini kullanarak gelen bağlantı isteklerini denetleyen mantıksal bir varlıktır. Dinleyiciyi yapılandırdığınızda, bunlar için ağ geçidinde gelen istekteki karşılık gelen değerlerle eşleşen değerler girmeniz gerekir.
 
-Azure portal kullanarak bir uygulama ağ geçidi oluşturduğunuzda, dinleyici için protokolü ve bağlantı noktasını seçerek de varsayılan bir dinleyici oluşturursunuz. HTTP2 desteğinin dinleyicide etkinleştirilip etkinleştirilmeyeceğini seçebilirsiniz. Uygulama ağ geçidini oluşturduktan sonra, bu varsayılan dinleyicinin (*Appgatewayhttplistener*) ayarlarını düzenleyebilir veya yeni dinleyiciler oluşturabilirsiniz.
+Azure portal kullanarak bir uygulama ağ geçidi oluşturduğunuzda, dinleyici için protokolü ve bağlantı noktasını seçerek de varsayılan bir dinleyici oluşturursunuz. HTTP2 desteğinin dinleyicide etkinleştirilip etkinleştirilmeyeceğini seçebilirsiniz. Uygulama ağ geçidini oluşturduktan sonra, bu varsayılan dinleyicinin ( *Appgatewayhttplistener* ) ayarlarını düzenleyebilir veya yeni dinleyiciler oluşturabilirsiniz.
 
 ## <a name="listener-type"></a>Dinleyici türü
 
-Yeni bir dinleyici oluşturduğunuzda [ *temel* ve *Çoklu site*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#types-of-listeners)arasında seçim yapabilirsiniz.
+Yeni bir dinleyici oluşturduğunuzda [ *temel* ve *Çoklu site*](./application-gateway-components.md#types-of-listeners)arasında seçim yapabilirsiniz.
 
-- Tüm isteklerinizin (herhangi bir etki alanı için) kabul edilmesini ve arka uç havuzlara iletilmesini istiyorsanız temel ' yı seçin. [Temel dinleyiciyle bir uygulama ağ geçidi oluşturmayı](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)öğrenin.
+- Tüm isteklerinizin (herhangi bir etki alanı için) kabul edilmesini ve arka uç havuzlara iletilmesini istiyorsanız temel ' yı seçin. [Temel dinleyiciyle bir uygulama ağ geçidi oluşturmayı](./quick-create-portal.md)öğrenin.
 
 - İstekleri *konak* üstbilgisine veya ana bilgisayar adlarına göre farklı arka uç havuzlarıyla iletmek istiyorsanız, Ayrıca, gelen istekle eşleşen bir ana bilgisayar adı belirtmeniz gereken çok siteli dinleyici ' i seçin. Bunun nedeni, Application Gateway aynı genel IP adresi ve bağlantı noktasında birden fazla Web sitesini barındırmak için HTTP 1,1 ana bilgisayar üst bilgilerini temel alır. Daha fazla bilgi için bkz. [Application Gateway kullanarak birden çok site barındırma](multiple-site-overview.md).
 
@@ -42,7 +42,7 @@ Bu dinleyiciyle ilişkilendirmeyi planladığınız ön uç IP adresini seçin. 
 
 ## <a name="front-end-port"></a>Ön uç bağlantı noktası
 
-Ön uç bağlantı noktasını seçin. Mevcut bir bağlantı noktasını seçin veya yeni bir bağlantı noktası oluşturun. [İzin verilen bağlantı noktası aralığından](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports)herhangi bir değer seçin. 80 ve 443 gibi yalnızca iyi bilinen bağlantı noktalarını, ancak uygun olan tüm özel bağlantı noktalarını kullanabilirsiniz. Bir bağlantı noktası, genel kullanıma yönelik dinleyiciler veya özel kullanıma yönelik dinleyiciler için kullanılabilir.
+Ön uç bağlantı noktasını seçin. Mevcut bir bağlantı noktasını seçin veya yeni bir bağlantı noktası oluşturun. [İzin verilen bağlantı noktası aralığından](./application-gateway-components.md#ports)herhangi bir değer seçin. 80 ve 443 gibi yalnızca iyi bilinen bağlantı noktalarını, ancak uygun olan tüm özel bağlantı noktalarını kullanabilirsiniz. Bir bağlantı noktası, genel kullanıma yönelik dinleyiciler veya özel kullanıma yönelik dinleyiciler için kullanılabilir.
 
 ## <a name="protocol"></a>Protokol
 
@@ -50,7 +50,7 @@ HTTP veya HTTPS seçin:
 
 - HTTP ' yi seçerseniz, istemci ve uygulama ağ geçidi arasındaki trafik şifrelenmemiş olur.
 
-- [TLS sonlandırmasını](features.md#secure-sockets-layer-ssltls-termination) veya [uçtan uca TLS şifrelemesini](https://docs.microsoft.com/azure/application-gateway/ssl-overview)istiyorsanız https 'yi seçin. İstemci ile uygulama ağ geçidi arasındaki trafik şifrelenir. Ve TLS bağlantısı uygulama ağ geçidinde sonlanır. Uçtan uca TLS şifrelemeyi istiyorsanız, HTTPS 'yi seçmeniz ve **arka uç http** ayarını yapılandırmanız gerekir. Bu, uygulama ağ geçidinden arka uca seyahat edildiğinde trafiğin yeniden şifrelenmesini sağlar.
+- [TLS sonlandırmasını](features.md#secure-sockets-layer-ssltls-termination) veya [uçtan uca TLS şifrelemesini](./ssl-overview.md)istiyorsanız https 'yi seçin. İstemci ile uygulama ağ geçidi arasındaki trafik şifrelenir. Ve TLS bağlantısı uygulama ağ geçidinde sonlanır. Uçtan uca TLS şifrelemeyi istiyorsanız, HTTPS 'yi seçmeniz ve **arka uç http** ayarını yapılandırmanız gerekir. Bu, uygulama ağ geçidinden arka uca seyahat edildiğinde trafiğin yeniden şifrelenmesini sağlar.
 
 
 TLS sonlandırmasını ve uçtan uca TLS şifrelemesini yapılandırmak için, uygulama ağ geçidinin bir simetrik anahtar türetmesini sağlamak üzere dinleyiciye bir sertifika eklemeniz gerekir. Bu, TLS protokol belirtimi tarafından belirlenir. Simetrik anahtar, ağ geçidine gönderilen trafiği şifrelemek ve şifresini çözmek için kullanılır. Ağ Geçidi sertifikası kişisel bilgi değişimi (PFX) biçiminde olmalıdır. Bu biçim, ağ geçidinin trafiği şifrelemek ve şifresini çözmek için kullandığı özel anahtarı dışa aktarmanıza olanak tanır.
@@ -79,17 +79,17 @@ WebSocket desteği varsayılan olarak etkindir. Etkinleştirmek veya devre dış
 
 ## <a name="custom-error-pages"></a>Özel hata sayfaları
 
-Genel düzeyde veya dinleyici düzeyinde özel hata tanımlayabilirsiniz. Ancak Azure portal genel düzey özel hata sayfaları oluşturma şu anda desteklenmiyor. Dinleyici düzeyinde 403 Web uygulaması güvenlik duvarı hatası veya 502 bakım sayfası için özel hata sayfası yapılandırabilirsiniz. Ayrıca, belirtilen hata durum kodu için genel olarak erişilebilir bir blob URL 'SI belirtmeniz gerekir. Daha fazla bilgi için bkz. [Application Gateway özel hata sayfası oluşturma](https://docs.microsoft.com/azure/application-gateway/custom-error).
+Genel düzeyde veya dinleyici düzeyinde özel hata tanımlayabilirsiniz. Ancak Azure portal genel düzey özel hata sayfaları oluşturma şu anda desteklenmiyor. Dinleyici düzeyinde 403 Web uygulaması güvenlik duvarı hatası veya 502 bakım sayfası için özel hata sayfası yapılandırabilirsiniz. Ayrıca, belirtilen hata durum kodu için genel olarak erişilebilir bir blob URL 'SI belirtmeniz gerekir. Daha fazla bilgi için bkz. [Application Gateway özel hata sayfası oluşturma](./custom-error.md).
 
-![Application Gateway hata kodları](https://docs.microsoft.com/azure/application-gateway/media/custom-error/ag-error-codes.png)
+![Application Gateway hata kodları](/azure/application-gateway/media/custom-error/ag-error-codes.png)
 
-Genel özel hata sayfasını yapılandırmak için, bkz. [Azure PowerShell Configuration](https://docs.microsoft.com/azure/application-gateway/custom-error#azure-powershell-configuration).
+Genel özel hata sayfasını yapılandırmak için, bkz. [Azure PowerShell Configuration](./custom-error.md#azure-powershell-configuration).
 
 ## <a name="tls-policy"></a>TLS ilkesi
 
-Bir arka uç sunucu grubu için TLS/SSL sertifika yönetimini merkezileştirmek ve şifreleme şifre çözme ek yükünü azaltabilirsiniz. Merkezi TLS işleme, güvenlik gereksinimlerinize uygun bir merkezi TLS ilkesi belirtmenize de olanak tanır. *Varsayılan*, *önceden tanımlanmış*veya *özel* TLS ilkesi seçebilirsiniz.
+Bir arka uç sunucu grubu için TLS/SSL sertifika yönetimini merkezileştirmek ve şifreleme şifre çözme ek yükünü azaltabilirsiniz. Merkezi TLS işleme, güvenlik gereksinimlerinize uygun bir merkezi TLS ilkesi belirtmenize de olanak tanır. *Varsayılan* , *önceden tanımlanmış* veya *özel* TLS ilkesi seçebilirsiniz.
 
-TLS protokolü sürümlerini denetlemek için TLS ilkesi yapılandırırsınız. Bir uygulama ağ geçidini TLS 1.0, TLS 1.1 ve TLS 1.2 ile TLS el sıkışmaları için en düşük protokol sürümünü kullanacak şekilde yapılandırabilirsiniz. Varsayılan olarak, SSL 2,0 ve 3,0 devre dışıdır ve yapılandırılamaz. Daha fazla bilgi için bkz. [APPLICATION Gateway TLS ilkesine genel bakış](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview).
+TLS protokolü sürümlerini denetlemek için TLS ilkesi yapılandırırsınız. Bir uygulama ağ geçidini TLS 1.0, TLS 1.1 ve TLS 1.2 ile TLS el sıkışmaları için en düşük protokol sürümünü kullanacak şekilde yapılandırabilirsiniz. Varsayılan olarak, SSL 2,0 ve 3,0 devre dışıdır ve yapılandırılamaz. Daha fazla bilgi için bkz. [APPLICATION Gateway TLS ilkesine genel bakış](./application-gateway-ssl-policy-overview.md).
 
 Bir dinleyici oluşturduktan sonra, bunu bir istek yönlendirme kuralıyla ilişkilendirirsiniz. Bu kural, dinleyicide alınan isteklerin arka uca nasıl yönlendirildiğini belirler.
 

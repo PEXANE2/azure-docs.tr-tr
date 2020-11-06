@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: e35569a1dc5ce7c1cb2889ac3e2ca8f60f8ccd42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47891dfa7fc0c9b30ccdbf2ed7710125eb36e4a3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84808204"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397816"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>PowerShell ile Application Gateway kullanarak uçtan uca TLS Yapılandırma
 
@@ -20,7 +20,7 @@ ms.locfileid: "84808204"
 
 Azure Application Gateway trafiğin uçtan uca şifrelenmesini destekler. Application Gateway, uygulama ağ geçidinde TLS/SSL bağlantısını sonlandırır. Ağ Geçidi daha sonra trafiğe yönlendirme kuralları uygular, paketi yeniden şifreler ve tanımlanan yönlendirme kurallarına göre paketi uygun arka uç sunucusuna iletir. Web sunucusundan alınan herhangi bir yanıt, son kullanıcıya dönerken aynı süreci izler.
 
-Application Gateway özel TLS seçeneklerini tanımlamayı destekler. Ayrıca, şu protokol sürümlerinin devre dışı bırakılmasını destekler: **tlsv 1.0**, **Tlsv 1.1**ve **tlsv 1.2**, hangi şifre paketlerinin kullanılacağını ve tercih sırasını tanımlar. Yapılandırılabilir TLS seçenekleri hakkında daha fazla bilgi edinmek için bkz. [TLS ilkesine genel bakış](application-gateway-SSL-policy-overview.md).
+Application Gateway özel TLS seçeneklerini tanımlamayı destekler. Ayrıca, şu protokol sürümlerinin devre dışı bırakılmasını destekler: **tlsv 1.0** , **Tlsv 1.1** ve **tlsv 1.2** , hangi şifre paketlerinin kullanılacağını ve tercih sırasını tanımlar. Yapılandırılabilir TLS seçenekleri hakkında daha fazla bilgi edinmek için bkz. [TLS ilkesine genel bakış](application-gateway-SSL-policy-overview.md).
 
 > [!NOTE]
 > SSL 2,0 ve SSL 3,0 varsayılan olarak devre dışıdır ve etkinleştirilemez. Bunlar güvenli değil olarak kabul edilir ve Application Gateway kullanılamaz.
@@ -33,9 +33,9 @@ Bu senaryoda, PowerShell ile uçtan uca TLS kullanarak uygulama ağ geçidi olu�
 
 Bu senaryo şunları olacaktır:
 
-* **Appgw-RG**adlı bir kaynak grubu oluşturun.
-* **10.0.0.0/16**adres alanı ile **appgwvnet** adlı bir sanal ağ oluşturun.
-* **Appgwsubnet** ve **appsubnet**adlı iki alt ağ oluşturun.
+* **Appgw-RG** adlı bir kaynak grubu oluşturun.
+* **10.0.0.0/16** adres alanı ile **appgwvnet** adlı bir sanal ağ oluşturun.
+* **Appgwsubnet** ve **appsubnet** adlı iki alt ağ oluşturun.
 * TLS protokol sürümlerini ve şifre paketlerini sınırlayan uçtan uca TLS şifrelemesini destekleyen küçük bir uygulama ağ geçidi oluşturun.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
@@ -202,7 +202,7 @@ Tüm yapılandırma öğeleri, uygulama ağ geçidi oluşturulmadan önce ayarla
    $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-10. Uygulama ağ geçidinin örnek boyutunu yapılandırın. Kullanılabilen boyutlar **Standart \_ küçük**, **Standart \_ Orta**ve **Standart \_ boyutlardır**.  Kapasite için, kullanılabilir değerler **1** ile **10**arası değerlerdir.
+10. Uygulama ağ geçidinin örnek boyutunu yapılandırın. Kullanılabilen boyutlar **Standart \_ küçük** , **Standart \_ Orta** ve **Standart \_ boyutlardır**.  Kapasite için, kullanılabilir değerler **1** ile **10** arası değerlerdir.
 
     ```powershell
     $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
@@ -219,7 +219,7 @@ Tüm yapılandırma öğeleri, uygulama ağ geçidi oluşturulmadan önce ayarla
     - **TLSV1_1**
     - **TLSV1_2**
     
-    Aşağıdaki örnek, en düşük protokol sürümünü **TLSv1_2** olarak ayarlar ve **TLS \_ ECDHE \_ ECDSA 'yı \_ \_ AES \_ 128 \_ GCM \_ SHA256**, **TLS \_ ECDHE \_ ECDSA ile AES \_ \_ \_ 256 \_ GCM \_ SHA384**ve TLS RSA ile yalnızca ** \_ \_ \_ AES \_ 128 \_ GCM \_ SHA256** ile etkinleştirilir.
+    Aşağıdaki örnek, en düşük protokol sürümünü **TLSv1_2** olarak ayarlar ve **TLS \_ ECDHE \_ ECDSA 'yı \_ \_ AES \_ 128 \_ GCM \_ SHA256** , **TLS \_ ECDHE \_ ECDSA ile AES \_ \_ \_ 256 \_ GCM \_ SHA384** ve TLS RSA ile yalnızca **\_ \_ \_ AES \_ 128 \_ GCM \_ SHA256** ile etkinleştirilir.
 
     ```powershell
     $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
@@ -312,7 +312,7 @@ Yukarıdaki adımlar, uçtan uca TLS ile bir uygulama oluşturma ve belirli TLS 
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. Bir TLS ilkesi tanımlayın. Aşağıdaki örnekte, **tlsv 1.0** ve **tlsv 1.1** devre dışıdır ve şifre paketleri ile **TLS \_ ecdhe \_ ECDSA, AES \_ \_ \_ 128 \_ gcm \_ SHA256**, **TLS \_ ECDHE \_ ECDSA ile AES \_ \_ \_ 256 \_ GCM \_ SHA384**ve ** \_ \_ \_ AES \_ 128 \_ GCM \_ SHA256** olan TLS RSA, izin verilen tek alanlardır.
+2. Bir TLS ilkesi tanımlayın. Aşağıdaki örnekte, **tlsv 1.0** ve **tlsv 1.1** devre dışıdır ve şifre paketleri ile **TLS \_ ecdhe \_ ECDSA, AES \_ \_ \_ 128 \_ gcm \_ SHA256** , **TLS \_ ECDHE \_ ECDSA ile AES \_ \_ \_ 256 \_ GCM \_ SHA384** ve **\_ \_ \_ AES \_ 128 \_ GCM \_ SHA256** olan TLS RSA, izin verilen tek alanlardır.
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
@@ -359,6 +359,6 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Web uygulaması güvenlik duvarı ile Web uygulamalarınızın güvenliğini Application Gateway aracılığıyla sağlamlaştırma hakkında daha fazla bilgi için bkz. [Web uygulaması güvenlik duvarı 'na genel bakış](application-gateway-webapplicationfirewall-overview.md).
+Web uygulaması güvenlik duvarı ile Web uygulamalarınızın güvenliğini Application Gateway aracılığıyla sağlamlaştırma hakkında daha fazla bilgi için bkz. [Web uygulaması güvenlik duvarı 'na genel bakış](../web-application-firewall/ag/ag-overview.md).
 
 [scenario]: ./media/application-gateway-end-to-end-SSL-powershell/scenario.png

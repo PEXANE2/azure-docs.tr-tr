@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 07/31/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 37e76f54b9c4fe38c891f7cee7bc443d1b0b20f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a73208ef7014c1f21c78485fc613a26ce3bfc76
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89596082"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397187"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-azure-powershell"></a>Azure PowerShell kullanarak URL'ye göre web trafiğini yönlendirme
 
-Uygulamanıza erişmek için kullanılan URL’ye bağlı olarak belirli ölçeklenebilir sunucu havuzlarına yönlendirilecek web trafiğini yapılandırmak için Azure PowerShell’i kullanabilirsiniz. Bu makalede, [sanal makine ölçek kümelerini](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)kullanarak üç arka uç havuzu Ile bir [Azure Application Gateway](application-gateway-introduction.md) oluşturacaksınız. Arka uç havuzlarının her biri ortak veriler, görüntüler ve video gibi belirli bir amaca hizmet eder.  Trafiği farklı havuzlara ayırmak, müşterilerinizin ihtiyaç duydukları bilgileri ihtiyaç duydukları zaman edinmesini sağlar.
+Uygulamanıza erişmek için kullanılan URL’ye bağlı olarak belirli ölçeklenebilir sunucu havuzlarına yönlendirilecek web trafiğini yapılandırmak için Azure PowerShell’i kullanabilirsiniz. Bu makalede, [sanal makine ölçek kümelerini](../virtual-machine-scale-sets/overview.md)kullanarak üç arka uç havuzu Ile bir [Azure Application Gateway](./overview.md) oluşturacaksınız. Arka uç havuzlarının her biri ortak veriler, görüntüler ve video gibi belirli bir amaca hizmet eder.  Trafiği farklı havuzlara ayırmak, müşterilerinizin ihtiyaç duydukları bilgileri ihtiyaç duydukları zaman edinmesini sağlar.
 
-Trafik yönlendirmeyi etkinleştirmek için web trafiğinin havuzlardaki uygun sunuculara ulaşmasını sağlayacak belirli bağlantı noktalarını dinleyen dinleyicilere atanmış [yönlendirme kuralları](application-gateway-url-route-overview.md) oluşturursunuz.
+Trafik yönlendirmeyi etkinleştirmek için web trafiğinin havuzlardaki uygun sunuculara ulaşmasını sağlayacak belirli bağlantı noktalarını dinleyen dinleyicilere atanmış [yönlendirme kuralları](./url-route-overview.md) oluşturursunuz.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -185,7 +185,7 @@ Bu noktada, bağlantı noktası 80 üzerindeki trafiği dinleyen ve bu trafiği 
 
 ### <a name="add-image-and-video-backend-pools-and-port"></a>Görüntü ve video arka uç havuzlarını ve bağlantı noktasını ekleme
 
-Application Gateway[Add-Azapplicationgatewaybackendadhavuzunuzu](/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool)kullanarak *ımaizbackendpool* ve *videobackendpool* adlı arka uç havuzlarını ekleyin. [Add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport)kullanarak havuzların ön uç bağlantı noktasını ekleyin. [Set-AzApplicationGateway](/powershell/module/az.network/set-azapplicationgateway)kullanarak değişiklikleri uygulama ağ geçidine gönderebilirsiniz.
+Application Gateway [Add-Azapplicationgatewaybackendadhavuzunuzu](/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool)kullanarak *ımaizbackendpool* ve *videobackendpool* adlı arka uç havuzlarını ekleyin. [Add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport)kullanarak havuzların ön uç bağlantı noktasını ekleyin. [Set-AzApplicationGateway](/powershell/module/az.network/set-azapplicationgateway)kullanarak değişiklikleri uygulama ağ geçidine gönderebilirsiniz.
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -312,7 +312,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="create-virtual-machine-scale-sets"></a>Sanal makine ölçek kümesi oluşturma
 
-Bu örnekte, oluşturduğunuz üç arka uç havuzunu destekleyen üç sanal makine ölçek kümesi oluşturacaksınız. Oluşturduğunuz ölçek kümeleri *myvmss1*, *myvmss2* ve *myvmss3* olarak adlandırılır. IP ayarlarını yapılandırırken ölçek kümesini arka uç havuzuna atayın.
+Bu örnekte, oluşturduğunuz üç arka uç havuzunu destekleyen üç sanal makine ölçek kümesi oluşturacaksınız. Oluşturduğunuz ölçek kümeleri *myvmss1* , *myvmss2* ve *myvmss3* olarak adlandırılır. IP ayarlarını yapılandırırken ölçek kümesini arka uç havuzuna atayın.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `

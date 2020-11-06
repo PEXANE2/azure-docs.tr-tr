@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ed4bc60fbffbfbc553d41d7f7d44709551b620dc
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: a09563e787573f3cb3dd510229822a0b0fbcb6c9
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280337"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395895"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins API’lerini ve SDK’larını kullanma
 
@@ -31,11 +31,11 @@ En güncel Denetim düzlemi API sürümü _**2020-10-31**_ ' dir.
 Denetim düzlemi API 'Lerini kullanmak için:
 * [Denetim düzlemi Swagger klasöründeki](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)en son Swagger 'A başvurarak API 'leri doğrudan çağırabilirsiniz. Bu depo ayrıca kullanımı gösteren örneklerin bir klasörünü de içerir.
 * Şu anda, içindeki denetim API 'Leri için SDK 'Lara erişebilirsiniz...
-  - [.Net (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([başvuru [otomatik olarak oluşturulan]](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true)) ([kaynak](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
-  - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([başvuru [otomatik olarak oluşturulan]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview)) ([kaynak](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31))
-  - [JavaScript](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([kaynak](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
-  - [Python](https://pypi.org/project/azure-mgmt-digitaltwins/) ([kaynak](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins))
-  - [Git](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins) ([kaynak](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins))
+  - [**.Net (C#)**](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ( [başvuru [otomatik olarak oluşturulan]](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true)) ( [kaynak](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
+  - [**Java**](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ( [başvuru [otomatik olarak oluşturulan]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview)) ( [kaynak](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31))
+  - [**JavaScript**](https://www.npmjs.com/package/@azure/arm-digitaltwins) ( [kaynak](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
+  - [**Python**](https://pypi.org/project/azure-mgmt-digitaltwins/) ( [kaynak](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins))
+  - [**Git**](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins) ( [kaynak](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins))
 
 Ayrıca, [Azure Portal](https://portal.azure.com) ve [CLI](how-to-use-cli.md)aracılığıyla Azure dijital TWINS ile etkileşime girerek denetim düzlemi API 'leri uygulayabilirsiniz.
 
@@ -53,21 +53,22 @@ Veri düzlemi API 'Lerini kullanmak için:
 * API 'Leri doğrudan çağırabilirsiniz...
    - [veri düzlemi Swagger klasöründe](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)en son Swagger 'ye başvuruluyor. Bu depo ayrıca kullanımı gösteren örneklerin bir klasörünü de içerir. 
    - [API başvuru belgelerini](/rest/api/azure-digitaltwins/)görüntüleme.
-* **.Net (C#)** SDK 'sını kullanabilirsiniz. .NET SDK 'Yı kullanmak için...
+* **.Net (C#) SDK 'sını** kullanabilirsiniz. .NET SDK 'Yı kullanmak için...
    - paketi NuGet: [Azure. DigitalTwins. Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core)' dan görüntüleyebilir ve ekleyebilirsiniz. 
    - [SDK başvuru belgelerini](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)görüntüleyebilirsiniz.
    - örnek bir klasör içeren SDK kaynağını GitHub 'da bulabilirsiniz: [.net Için Azure IoT dijital TWINS istemci kitaplığı](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
-   - Bu makalenin [.net (C#) SDK (veri düzlemi)](#net-c-sdk-data-plane) bölümüne devam ederek ayrıntılı bilgi ve kullanım örnekleri görebilirsiniz.
-* **Java** SDK 'sını kullanabilirsiniz. Java SDK 'sını kullanmak için...
+   - Bu makalenin [*.net (C#) SDK (veri düzlemi)*](#net-c-sdk-data-plane) bölümüne devam ederek ayrıntılı bilgi ve kullanım örnekleri görebilirsiniz.
+* **Java SDK 'sını** kullanabilirsiniz. Java SDK 'sını kullanmak için...
    - paketi Maven 'ten görüntüleyebilir ve yükleyebilirsiniz: [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0/jar)
-   - [SDK başvuru belgelerini](/java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-preview) görüntüleyebilirsiniz
+   - [SDK başvuru belgelerini](/java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-stable) görüntüleyebilirsiniz
    - SDK kaynağını GitHub 'da bulabilirsiniz: [Java Için Azure IoT dijital TWINS istemci kitaplığı](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
-* **JavaScript** SDK 'sını kullanabilirsiniz. JavaScript SDK 'sını kullanmak için...
-   - paketi NPM 'den görüntüleyebilir ve yükleyebilirsiniz: [JavaScript Için Azure Azure Digital TWINS istemci kitaplığı](https://www.npmjs.com/package/@azure/digital-twins-core).
-   - [SDK başvuru belgelerini](/javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest)görüntüleyebilirsiniz.
+* **JavaScript SDK 'sını** kullanabilirsiniz. JavaScript SDK 'sını kullanmak için...
+   - paketi NPM 'den görüntüleyebilir ve yükleyebilirsiniz: [JavaScript Için Azure Azure Digital TWINS çekirdek istemci kitaplığı](https://www.npmjs.com/package/@azure/digital-twins-core).
+   - [SDK başvuru belgelerini](/javascript/api/@azure/digital-twins-core/?branch=master&view=azure-node-latest&preserve-view=true)görüntüleyebilirsiniz.
    - SDK kaynağını GitHub 'da bulabilirsiniz: [JavaScript Için Azure Azure dijital TWINS çekirdek istemci kitaplığı](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core)
-* **Python** SDK 'sını kullanabilirsiniz. Python SDK 'Yı kullanmak için...
-   - paketi görüntüleyebilir ve yükleyebilirsiniz: [Python Için Azure Azure Digital TWINS çekirdek istemci kitaplığı](https://pypi.org/project/azure-digitaltwins-core/1.0.0b1/).
+* **Python SDK 'sını** kullanabilirsiniz. Python SDK 'Yı kullanmak için...
+   - paketi PyPi 'dan görüntüleyebilir ve yükleyebilirsiniz: [Python Için Azure Azure Digital TWINS çekirdek istemci kitaplığı](https://pypi.org/project/azure-digitaltwins-core/).
+   - [SDK başvuru belgelerini](/python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python&preserve-view=true)görüntüleyebilirsiniz.
    - SDK kaynağını GitHub 'da bulabilirsiniz: [Python Için Azure Azure dijital TWINS çekirdek istemci kitaplığı](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
 * Diğer bir dil için, oto Rest kullanarak bir SDK oluşturabilirsiniz. [*Nasıl yapılır: Azure dijital TWINS için özel SDK 'Lar oluşturma*](how-to-create-custom-sdks.md)bölümündeki yönergeleri Izleyerek oto Rest kullanın.
 

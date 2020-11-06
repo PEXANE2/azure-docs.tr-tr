@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: ff8ade938433e09c6b9ff9deffe64d8294d96b8c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 0d0f344e60edfc83c8ac4f79ad18520307b790e3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325549"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396650"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Etiketleme projesindeki resimleri etiketleme 
 
@@ -24,7 +24,7 @@ Proje yöneticiniz Azure Machine Learning [bir etiketleme projesi](./how-to-crea
 > * Etiketleme Araçları
 > * Belirli etiketleme görevleri için araçları kullanma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Kuruluş ve proje için bir [Microsoft hesabı](https://account.microsoft.com/account) veya Azure Active Directory hesabı
 * Etiketleme projesini içeren çalışma alanına katkıda bulunan düzeyi erişimi.
@@ -126,6 +126,28 @@ Varsayılan olarak, varolan sınırlayıcı kutuları düzenleyebilirsiniz. **Ki
 Geçerli görüntüdeki *Tüm* sınırlayıcı kutuları silmek için **tüm bölgeleri Sil** araç ![ bölgelerini Sil aracını seçin ](./media/how-to-label-images/delete-regions-tool.png) .
 
 Bir görüntü için sınırlayıcı kutuları oluşturduktan sonra, çalışmanızı kaydetmek için **Gönder** ' i seçin veya sürmekte olan çalışmanız kaydedilmez.
+
+## <a name="tag-images-and-specify-polygons-for-image-segmentation"></a>Resimleri etiketleme ve görüntü kesimlemesi için çokgenler belirtme 
+
+Projeniz "örnek kesimleme (çokgen)" türündedir, görüntüde bir veya daha fazla poligonu belirtip her bir çokgen için bir etiket uygularsınız. Görüntülerde, her biri tek etiketli birden çok sınırlayıcı Çokgen olabilir. Projenizde birden çok sınırlayıcı poligonun kullanıldığını anlamak için **ayrıntılı yönergeleri görüntüle** ' i kullanın.
+
+1. Oluşturmayı planladığınız Çokgen için bir etiket seçin.
+1. Çokgen bölgesi **Draw polygon region** aracı çiz araç alanı ![ Çokgen ](./media/how-to-label-images/polygon-tool.png) veya "P" seçeneğini belirleyin.
+3. Poligon her bir nokta için tıklayın.  Şekli tamamladıktan sonra, son ' a çift tıklayın.
+
+    :::image type="content" source="media/how-to-label-images/polygon.gif" alt-text="Kedi ve köpek için çokgenler oluşturun":::
+
+Bir çokgeni silmek için, oluşturulduktan sonra çokgenin yanında görünen X şeklindeki hedefe tıklayın.
+
+Bir çokgenin etiketini değiştirmek istiyorsanız, **bölgeyi taşı** aracını seçin, Çokgen ' e tıklayın ve doğru etiketi seçin.
+
+Mevcut poligonları düzenleyebilirsiniz. **Kilitleme/kilit açma bölgesi** aracı ![ kilitleme/kilit açma bölgesi aracı ](./media/how-to-label-images/lock-bounding-boxes-tool.png) veya "L" Bu davranışa geçiş yapar. Bölgeler kilitliyse, yalnızca yeni bir çokgenin şeklini veya konumunu değiştirebilirsiniz.
+
+Varolan çokgeni ayarlamak için **Çokgen noktaları Ekle veya Kaldır** araç ![ bölgesi düzenleme aracını ](./media/how-to-label-images/add-remove-points-tool.png) veya "U" kullanın. Bir nokta eklemek veya kaldırmak için Çokgen ' e tıklayın. Bir bölgeyi düzenleyemezsiniz, büyük olasılıkla bir bölgeyi **Kilitle/kilidini aç** aracını atlayabilirsiniz.
+
+Geçerli görüntüdeki *Tüm* poligonları silmek için **tüm bölgeleri Sil** araç bölgelerini Sil aracını seçin ![ ](./media/how-to-label-images/delete-regions-tool.png) .
+
+Bir görüntü için çokgenler oluşturduktan sonra, çalışmanızı kaydetmek için **Gönder** ' i seçin veya sürmekte olan çalışmanız kaydedilmez.
 
 ## <a name="finish-up"></a>Bitirme
 

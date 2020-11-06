@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: a80e0f1b62257fdbce6598c9cc4088701cc2ae9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13a05089ae6365bb5d279105f8c010278bd0adb8
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983616"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396014"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Örneklerle Data Factory fiyatlandırmasını anlama
 
@@ -48,7 +48,7 @@ Senaryoyu başarmak için aşağıdaki öğelerle bir işlem hattı oluşturman�
 | İşlem hattı al | 1 okuma/yazma varlığı |
 | İşlem hattını Çalıştır | 2 etkinlik çalıştırmaları (tetikleyici çalışması için 1, etkinlik çalıştırmaları için 1) |
 | Veri Kopyalama varsayım: yürütme süresi = 10 dk | 10 \* 4 Azure Integration Runtime (varsayılan DIU ayarı = 4) veri tümleştirme birimleri ve kopyalama performansını iyileştirme hakkında daha fazla bilgi için [Bu makaleye](copy-activity-performance.md) bakın |
-| İzleme işlem hattı varsayımı: yalnızca 1 çalıştırma gerçekleşti | 2 izleme çalıştırması kayıtları yeniden denendi (işlem hattı çalıştırması için 1, etkinlik çalıştırması için 1) |
+| İzleme işlem hattı varsayımı: yalnızca 1 çalıştırma gerçekleşti | 2 izleme çalıştırması kayıtları alındı (işlem hattı çalıştırması için 1, etkinlik çalıştırması için 1) |
 
 **Toplam senaryo fiyatlandırması: $0,16811**
 
@@ -79,7 +79,7 @@ Senaryoyu başarmak için aşağıdaki öğelerle bir işlem hattı oluşturman�
 | İşlem hattı al | 1 okuma/yazma varlığı |
 | İşlem hattını Çalıştır | 3 etkinlik çalıştırmaları (tetikleyici çalışması için 1, etkinlik çalıştırmaları için 2) |
 | Veri Kopyalama varsayım: yürütme süresi = 10 dk | 10 \* 4 Azure Integration Runtime (varsayılan DIU ayarı = 4) veri tümleştirme birimleri ve kopyalama performansını iyileştirme hakkında daha fazla bilgi için [Bu makaleye](copy-activity-performance.md) bakın |
-| İzleme işlem hattı varsayımı: yalnızca 1 çalıştırma gerçekleşti | 3 izleme çalıştırması kayıtları yeniden denendi (işlem hattı çalıştırması için 1, etkinlik çalıştırması için 2) |
+| İzleme işlem hattı varsayımı: yalnızca 1 çalıştırma gerçekleşti | 3 izleme çalıştırması kayıtları alındı (işlem hattı çalıştırması için 1, etkinlik çalıştırması için 2) |
 | Databricks etkinlik varsayımını Yürüt: yürütme süresi = 10 dk | 10 dakikalık dış işlem hattı etkinliği yürütme |
 
 **Toplam senaryo fiyatlandırması: $0,16916**
@@ -113,7 +113,7 @@ Senaryoyu başarmak için aşağıdaki öğelerle bir işlem hattı oluşturman�
 | İşlem hattı al | 1 okuma/yazma varlığı |
 | İşlem hattını Çalıştır | 4 etkinlik çalıştırmaları (tetikleyici çalışması için 1, etkinlik çalıştırmaları için 3) |
 | Veri Kopyalama varsayım: yürütme süresi = 10 dk | 10 \* 4 Azure Integration Runtime (varsayılan DIU ayarı = 4) veri tümleştirme birimleri ve kopyalama performansını iyileştirme hakkında daha fazla bilgi için [Bu makaleye](copy-activity-performance.md) bakın |
-| İzleme işlem hattı varsayımı: yalnızca 1 çalıştırma gerçekleşti | 4 izleme çalıştırması kayıtları yeniden denendi (işlem hattı çalıştırması için 1, etkinlik çalıştırması için 3) |
+| İzleme işlem hattı varsayımı: yalnızca 1 çalıştırma gerçekleşti | 4 izleme çalıştırması kayıtları alındı (işlem hattı çalıştırması için 1, etkinlik çalıştırması için 3) |
 | Arama etkinlik varsayımını Yürüt: yürütme süresi = 1 dk | 1 dakikalık işlem hattı etkinliği yürütme |
 | Databricks etkinlik varsayımını Yürüt: yürütme süresi = 10 dk | 10 dakikalık dış işlem hattı etkinliği yürütme |
 
@@ -160,7 +160,7 @@ Senaryoyu başarmak için aşağıdaki öğelerle bir işlem hattı oluşturman�
 | İşlem hattı al | 1 okuma/yazma varlığı |
 | İşlem hattını Çalıştır | 2 etkinlik çalıştırmaları (tetikleyici çalışması için 1, etkinlik çalıştırmaları için 1) |
 | Veri akışı varsayımları: yürütme süresi = 10 dk + 10 dakikalık TTL | 10 \* TTL ile 10 16 genel işlem |
-| İzleme işlem hattı varsayımı: yalnızca 1 çalıştırma gerçekleşti | 2 izleme çalıştırması kayıtları yeniden denendi (işlem hattı çalıştırması için 1, etkinlik çalıştırması için 1) |
+| İzleme işlem hattı varsayımı: yalnızca 1 çalıştırma gerçekleşti | 2 izleme çalıştırması kayıtları alındı (işlem hattı çalıştırması için 1, etkinlik çalıştırması için 1) |
 
 **Toplam senaryo fiyatlandırması: $1,4631**
 
@@ -189,7 +189,7 @@ Bu senaryoda, Azure Blob depolamada orijinal dosyaları silmek ve Azure SQL veri
 | İşlem hattını Çalıştır | 6 etkinlik çalıştırmaları (tetikleyici çalışması için 2, etkinlik çalıştırmaları için 4) |
 | Silme etkinliğini Yürüt: her yürütme süresi = 5 dk. İlk işlem hattındaki Etkinlik yürütme yürütmesi 10:00, UTC 'den 10:05. UTC 'ye kadar olur. İkinci işlem hattında etkinlik yürütmeyi silme, 10:02 saat UTC 'den 10:07 ' e kadar UTC 'ye kadar olur.|Yönetilen VNET 'te toplam 7 dakikalık işlem hattı etkinliği yürütme. İşlem hattı etkinliği yönetilen VNET 'te en fazla 50 eşzamanlılık destekler. |
 | Veri Kopyalama varsayım: her yürütme süresi = 10 dk. İlk işlem hattındaki kopya yürütme 10:06 ' dan UTC 'den 10:15 ' ye kadar UTC 'ye kadar olur. İkinci işlem hattında etkinlik yürütmeyi silme, 10:08 saat UTC 'den 10:17 ' e kadar UTC 'ye kadar olur. | 10 * 4 Azure Integration Runtime (varsayılan DIU ayarı = 4) veri tümleştirme birimleri ve kopyalama performansını iyileştirme hakkında daha fazla bilgi Için [Bu makaleye](copy-activity-performance.md) bakın |
-| İzleme işlem hattı varsayımı: yalnızca 2 çalıştırma gerçekleşti | 6 izleme çalıştırması kayıtları yeniden denendi (işlem hattı çalıştırması için 2, etkinlik çalıştırması için 4) |
+| İzleme işlem hattı varsayımı: yalnızca 2 çalıştırma gerçekleşti | 6 izleme çalıştırma kaydı alındı (işlem hattı çalıştırması için 2, etkinlik çalıştırması için 4) |
 
 
 **Toplam senaryo fiyatlandırması: $0,45523**

@@ -8,17 +8,17 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: victorh
-ms.openlocfilehash: 2a269137508feb8a2d2cc0710986e1b74b91c0ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63f4b28915a932398e5417f8ea9be3fe4d68e705
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186750"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397850"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Azure Resource Manager için PowerShell 'i kullanarak Azure Application Gateway için özel bir araştırma oluşturma
 
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](application-gateway-create-probe-portal.md)
+> * [Azure Portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Klasik PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -58,7 +58,7 @@ Bu makalede, var olan bir Application Gateway 'e PowerShell ile özel bir araşt
 
 Azure Resource Manager, tüm kaynak gruplarının bir konum belirtmesini gerektirir. Bu konum, kaynak grubundaki kaynaklar için varsayılan konum olarak kullanılır. Uygulama ağ geçidi oluşturmak için tüm komutların aynı kaynak grubunu kullanmasını sağlayın.
 
-Yukarıdaki örnekte, **Batı ABD**konumunda **APPGW-RG** adlı bir kaynak grubu oluşturduk.
+Yukarıdaki örnekte, **Batı ABD** konumunda **APPGW-RG** adlı bir kaynak grubu oluşturduk.
 
 ### <a name="create-a-virtual-network-and-a-subnet"></a>Sanal ağ ve alt ağ oluşturma
 
@@ -197,5 +197,4 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Şu ziyaret ederek TLS yük boşaltma 'yı yapılandırmayı öğrenin: [TLS boşaltması yapılandırma](application-gateway-ssl-arm.md)
-
+Şu ziyaret ederek TLS yük boşaltma 'yı yapılandırmayı öğrenin: [TLS boşaltması yapılandırma](./tutorial-ssl-powershell.md)

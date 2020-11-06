@@ -7,23 +7,23 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 04/12/2019
 ms.author: absha
-ms.openlocfilehash: f205b3a604aa38854969f6f62cbce44f46fa7d25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6938ad55915286af397fee6d72a333e3bb39a1e6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84808248"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397925"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>HTTP isteği ve yanıt üst bilgilerini Azure Application Gateway yeniden yazma-Azure PowerShell
 
-Bu makalede, istek ve yanıtlara HTTP üstbilgilerini yeniden yazmak için [Application Gateway v2 SKU](<https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant>) örneğini yapılandırmak üzere Azure PowerShell nasıl kullanılacağı açıklanır.
+Bu makalede, istek ve yanıtlara HTTP üstbilgilerini yeniden yazmak için [Application Gateway v2 SKU](./application-gateway-autoscaling-zone-redundant.md) örneğini yapılandırmak üzere Azure PowerShell nasıl kullanılacağı açıklanır.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-- Bu makaledeki adımları tamamlayabilmeniz için Azure PowerShell yerel olarak çalıştırmanız gerekir. Ayrıca, az Module Version 1.0.0 veya daha yeni bir sürümün yüklü olması gerekir. `Import-Module Az`' İ çalıştırın ve ardından `Get-Module Az` yüklediğiniz sürümü tespit edin. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps). PowerShell sürümünü doğruladıktan sonra, Azure ile bağlantı oluşturmak için `Login-AzAccount` komutunu çalıştırın.
-- Application Gateway v2 SKU örneğiniz olması gerekir. V1 SKU 'sunda üstbilgileri yeniden yazma desteklenmiyor. V2 SKU 'SU yoksa, başlamadan önce bir [Application Gateway v2 SKU](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps) örneği oluşturun.
+- Bu makaledeki adımları tamamlayabilmeniz için Azure PowerShell yerel olarak çalıştırmanız gerekir. Ayrıca, az Module Version 1.0.0 veya daha yeni bir sürümün yüklü olması gerekir. `Import-Module Az`' İ çalıştırın ve ardından `Get-Module Az` yüklediğiniz sürümü tespit edin. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell sürümünü doğruladıktan sonra, Azure ile bağlantı oluşturmak için `Login-AzAccount` komutunu çalıştırın.
+- Application Gateway v2 SKU örneğiniz olması gerekir. V1 SKU 'sunda üstbilgileri yeniden yazma desteklenmiyor. V2 SKU 'SU yoksa, başlamadan önce bir [Application Gateway v2 SKU](./tutorial-autoscale-ps.md) örneği oluşturun.
 
 ## <a name="create-required-objects"></a>Gerekli nesneleri oluştur
 
@@ -31,23 +31,23 @@ HTTP üstbilgisini yeniden yazmayı yapılandırmak için, bu adımları gerçek
 
 1. HTTP üstbilgisi yeniden yazma için gereken nesneleri oluşturun:
 
-   - **Requestheaderconfiguration**: yeniden yazmayı düşündüğünüz istek üst bilgisi alanlarını ve üst bilgilerin yeni değerini belirtmek için kullanılır.
+   - **Requestheaderconfiguration** : yeniden yazmayı düşündüğünüz istek üst bilgisi alanlarını ve üst bilgilerin yeni değerini belirtmek için kullanılır.
 
-   - **Responseheaderconfiguration**: yeniden yazmayı düşündüğünüz yanıt üst bilgisi alanlarını ve üst bilgilerin yeni değerini belirtmek için kullanılır.
+   - **Responseheaderconfiguration** : yeniden yazmayı düşündüğünüz yanıt üst bilgisi alanlarını ve üst bilgilerin yeni değerini belirtmek için kullanılır.
 
-   - **Actionset**: daha önce belirtilen istek ve yanıt üst bilgilerinin yapılandırmasını içerir.
+   - **Actionset** : daha önce belirtilen istek ve yanıt üst bilgilerinin yapılandırmasını içerir.
 
-   - **Koşul**: isteğe bağlı bir yapılandırma. Yeniden yazma koşulları, HTTP (S) isteklerinin ve yanıtlarının içeriğini değerlendirir. HTTP (S) isteği veya yanıtı yeniden yazma koşuluyla eşleşiyorsa, yeniden yazma eylemi gerçekleşir.
+   - **Koşul** : isteğe bağlı bir yapılandırma. Yeniden yazma koşulları, HTTP (S) isteklerinin ve yanıtlarının içeriğini değerlendirir. HTTP (S) isteği veya yanıtı yeniden yazma koşuluyla eşleşiyorsa, yeniden yazma eylemi gerçekleşir.
 
      Birden fazla koşulu bir eylemle ilişkilendirirseniz, eylem yalnızca tüm koşullar karşılandığında oluşur. Diğer bir deyişle, işlem mantıksal ve işlemdir.
 
-   - **RewriteRule**: birden çok yeniden yazma eylemi/yeniden yazma koşulu kombinasyonu içeriyor.
+   - **RewriteRule** : birden çok yeniden yazma eylemi/yeniden yazma koşulu kombinasyonu içeriyor.
 
-   - **Rulesequence**: yeniden yazma kurallarının yürütülme sırasını belirlemesine yardımcı olan isteğe bağlı bir yapılandırma. Bu yapılandırma, bir yeniden yazma kümesinde birden fazla yeniden yazma kuralına sahip olduğunuzda yararlıdır. Daha düşük bir kural sırası değeri olan bir yeniden yazma kuralı önce çalışır. Aynı kural sırası değerini iki yeniden yazma kuralına atarsanız, yürütme sırası belirleyici değildir.
+   - **Rulesequence** : yeniden yazma kurallarının yürütülme sırasını belirlemesine yardımcı olan isteğe bağlı bir yapılandırma. Bu yapılandırma, bir yeniden yazma kümesinde birden fazla yeniden yazma kuralına sahip olduğunuzda yararlıdır. Daha düşük bir kural sırası değeri olan bir yeniden yazma kuralı önce çalışır. Aynı kural sırası değerini iki yeniden yazma kuralına atarsanız, yürütme sırası belirleyici değildir.
 
      RuleSequence öğesini açıkça belirtmezseniz, varsayılan 100 değeri ayarlanır.
 
-   - **Rewriterutaset**: istek yönlendirme kuralıyla ilişkilendirilecek çoklu yeniden yazma kuralları içerir.
+   - **Rewriterutaset** : istek yönlendirme kuralıyla ilişkilendirilecek çoklu yeniden yazma kuralları içerir.
 
 2. Rewriterulet kümesini bir yönlendirme kuralına ekleyin. Yeniden yazma yapılandırması, kaynak dinleyicisine yönlendirme kuralı aracılığıyla eklenir. Temel bir yönlendirme kuralı kullandığınızda, üst bilgi yeniden yazma yapılandırması bir kaynak dinleyicisi ile ilişkilendirilir ve genel üst bilgi yeniden yazma işlemi olur. Yol tabanlı bir yönlendirme kuralı kullandığınızda, üst bilgi yeniden yazma yapılandırması URL yol eşlemesinde tanımlanmıştır. Bu durumda, yalnızca bir sitenin belirli yol alanı için geçerlidir.
 
@@ -104,4 +104,4 @@ set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bazı yaygın kullanım örneklerini ayarlama hakkında daha fazla bilgi edinmek için bkz. [ortak üst bilgi yeniden yazma senaryoları](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers).
+Bazı yaygın kullanım örneklerini ayarlama hakkında daha fazla bilgi edinmek için bkz. [ortak üst bilgi yeniden yazma senaryoları](./rewrite-http-headers.md).

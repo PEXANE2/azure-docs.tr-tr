@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 10/13/2019
-ms.openlocfilehash: 22f31cf3911b5ea24e8798fb226e389071fadd0b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aa95dc5cc052fbff6c553de50f4f52dc5df850a5
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87848987"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398122"
 ---
 # <a name="register-the-azure-active-directory-apps-for-azure-api-for-fhir"></a>FHıR için Azure API Azure Active Directory uygulamalarını kaydetme
 
@@ -31,9 +31,9 @@ Uygulamanın Azure AD ile etkileşime geçmesini sağlamak için, kayıtlı olma
 
 *İstemci uygulamaları* , belirteç istemek için istemcilerin kayıtlarıdır. Genellikle OAuth 2,0 ' de, en az üç farklı uygulama türünü ayırt ediyoruz:
 
-1. Azure AD 'de Web Apps olarak da bilinen **gizli istemciler**. Gizli istemciler, oturum açmış kullanıcının adına geçerli kimlik bilgileri sunan bir belirteç almak için [yetkilendirme kodu akışını](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code) kullanan uygulamalardır. Gizli istemciler olarak adlandırılırlar, çünkü bir gizli dizi tutabilir ve bir belirteç için kimlik doğrulama kodunu değiş tokuşu yaparken bu gizli anahtarı Azure AD 'ye sunacaktır. Gizli istemciler, istemci gizli anahtarını kullanarak kendileri kimlik doğrulayabileceğinden, ortak istemcilerden daha fazla güvenilir ve daha uzun süreli belirteçlere sahip olabilir ve yenileme belirteci verilebilir. [Gizli bir istemciyi kaydetme](register-confidential-azure-ad-client-app.md)hakkındaki ayrıntıları okuyun. İstemcinin yetkilendirme kodunu alacak yanıt URL 'sini kaydetmek için önemli olduğunu unutmayın.
+1. Azure AD 'de Web Apps olarak da bilinen **gizli istemciler**. Gizli istemciler, oturum açmış kullanıcının adına geçerli kimlik bilgileri sunan bir belirteç almak için [yetkilendirme kodu akışını](../active-directory/azuread-dev/v1-protocols-oauth-code.md) kullanan uygulamalardır. Gizli istemciler olarak adlandırılırlar, çünkü bir gizli dizi tutabilir ve bir belirteç için kimlik doğrulama kodunu değiş tokuşu yaparken bu gizli anahtarı Azure AD 'ye sunacaktır. Gizli istemciler, istemci gizli anahtarını kullanarak kendileri kimlik doğrulayabileceğinden, ortak istemcilerden daha fazla güvenilir ve daha uzun süreli belirteçlere sahip olabilir ve yenileme belirteci verilebilir. [Gizli bir istemciyi kaydetme](register-confidential-azure-ad-client-app.md)hakkındaki ayrıntıları okuyun. İstemcinin yetkilendirme kodunu alacak yanıt URL 'sini kaydetmek için önemli olduğunu unutmayın.
 1. **Ortak istemciler**. Bunlar, gizli tutan istemcilerdir. Genellikle bu bir mobil cihaz uygulaması veya istemcideki bir parolanın bir kullanıcı tarafından keşfedildiği tek sayfalı bir JavaScript uygulamasıdır. Ortak istemciler ayrıca yetkilendirme kodu akışını kullanır, ancak belirteç alırken gizli dizi belirteçlerine sahip olabilecek ve yenileme belirteci olmayan bir gizli dizi bulunmasına izin verilmez. [Ortak istemciyi kaydetme](register-public-azure-ad-client-app.md)hakkındaki ayrıntıları okuyun.
-1. Hizmet istemcileri. Bu istemciler, [istemci kimlik bilgileri akışını](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)kullanarak kendileri adına belirteçleri (bir kullanıcı adına değil) alır. Genellikle, FHıR sunucusuna etkileşimli olmayan bir şekilde erişen uygulamaları temsil eder. Örnek, bir alma işlemi olacaktır. Bir hizmet istemcisi kullanırken, uç noktaya çağrısıyla belirteç alma işlemini başlatmak gerekli değildir `/authorize` . Bir hizmet istemcisi, `/token` bir belirteci almak için doğrudan uç noktaya gidebilir ve ISTEMCI kimliği ve istemci gizli anahtarı sunabilir. [Hizmet istemcisini kaydetme](register-service-azure-ad-client-app.md) hakkındaki ayrıntıları okuyun
+1. Hizmet istemcileri. Bu istemciler, [istemci kimlik bilgileri akışını](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)kullanarak kendileri adına belirteçleri (bir kullanıcı adına değil) alır. Genellikle, FHıR sunucusuna etkileşimli olmayan bir şekilde erişen uygulamaları temsil eder. Örnek, bir alma işlemi olacaktır. Bir hizmet istemcisi kullanırken, uç noktaya çağrısıyla belirteç alma işlemini başlatmak gerekli değildir `/authorize` . Bir hizmet istemcisi, `/token` bir belirteci almak için doğrudan uç noktaya gidebilir ve ISTEMCI kimliği ve istemci gizli anahtarı sunabilir. [Hizmet istemcisini kaydetme](register-service-azure-ad-client-app.md) hakkındaki ayrıntıları okuyun
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

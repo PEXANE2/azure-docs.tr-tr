@@ -9,16 +9,16 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: cavoeg
-ms.openlocfilehash: cdb73670996341e9219230bb277e087009266f32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b362a81fc9b533fe00987a74d7e25dbba61a2589
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87846029"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398258"
 ---
 # <a name="azure-active-directory-identity-configuration-for-azure-api-for-fhir"></a>FHıR için Azure API Azure Active Directory kimlik yapılandırması
 
-Sağlık verileriyle çalışırken önemli bir parça, verilerin güvende olduğundan ve yetkisiz kullanıcılar veya uygulamalar tarafından erişilememesini sağlamaktır. FHıR sunucuları bu veri güvenliğini sağlamak için [OAuth 2,0](https://oauth.net/2/) kullanır. [FHıR Için Azure API](https://azure.microsoft.com/services/azure-api-for-fhir/) , OAuth 2,0 kimlik sağlayıcısına bir örnek olan [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)kullanılarak güvenli hale getirilir. Bu makalede, FHıR sunucu yetkilendirmesi için bir genel bakış ve bir FHıR sunucusuna erişmek için bir belirteç almak için gereken adımlar sağlanmaktadır. Bu adımlar herhangi bir FHıR sunucusuna ve herhangi bir kimlik sağlayıcısına uygulanacaktır, ancak bu makalede, kimlik sağlayıcımız olarak fhır sunucusu ve Azure AD olarak Azure API 'SI aracılığıyla bu makaleye yol göstereceğiz.
+Sağlık verileriyle çalışırken önemli bir parça, verilerin güvende olduğundan ve yetkisiz kullanıcılar veya uygulamalar tarafından erişilememesini sağlamaktır. FHıR sunucuları bu veri güvenliğini sağlamak için [OAuth 2,0](https://oauth.net/2/) kullanır. [FHıR Için Azure API](https://azure.microsoft.com/services/azure-api-for-fhir/) , OAuth 2,0 kimlik sağlayıcısına bir örnek olan [Azure Active Directory](../active-directory/index.yml)kullanılarak güvenli hale getirilir. Bu makalede, FHıR sunucu yetkilendirmesi için bir genel bakış ve bir FHıR sunucusuna erişmek için bir belirteç almak için gereken adımlar sağlanmaktadır. Bu adımlar herhangi bir FHıR sunucusuna ve herhangi bir kimlik sağlayıcısına uygulanacaktır, ancak bu makalede, kimlik sağlayıcımız olarak fhır sunucusu ve Azure AD olarak Azure API 'SI aracılığıyla bu makaleye yol göstereceğiz.
 
 ## <a name="access-control-overview"></a>Erişim denetimine genel bakış
 
@@ -26,12 +26,12 @@ Bir istemci uygulamasının FHIR için Azure API 'sine erişebilmesi için bir e
 
 Bir belirteç almanın çeşitli yolları vardır ancak FHıR için Azure API, doğru talepler ile uygun şekilde imzalanmış bir belirteç olduğu sürece belirtecin nasıl elde edilmediğini dikkate almaz. 
 
-[Yetkilendirme kodu akışını](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code) örnek olarak kullanma bir fhır sunucusuna erişmek aşağıdaki dört adımdan geçer:
+[Yetkilendirme kodu akışını](../active-directory/azuread-dev/v1-protocols-oauth-code.md) örnek olarak kullanma bir fhır sunucusuna erişmek aşağıdaki dört adımdan geçer:
 
 ![FHıR yetkilendirmesi](media/azure-ad-hcapi/fhir-authorization.png)
 
-1. İstemci, `/authorize` Azure AD uç noktasına bir istek gönderir. Azure AD, kullanıcının uygun kimlik bilgilerini (örneğin, Kullanıcı adı ve parola veya iki öğeli kimlik doğrulama) kullanarak kimlik doğrulayacağı bir oturum açma sayfasına yönlendirecektir. [Yetkilendirme kodu alma](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code#request-an-authorization-code)hakkındaki ayrıntılara bakın. Kimlik doğrulaması başarılı olduğunda istemciye bir *yetkilendirme kodu* döndürülür. Azure AD, bu yetkilendirme kodunun yalnızca istemci uygulama kaydında yapılandırılmış kayıtlı bir yanıt URL 'sine döndürülmesine izin verir (aşağıya bakın).
-1. İstemci uygulaması, Azure AD 'nin uç noktasındaki bir *erişim belirteci* için yetkilendirme kodunu değiş tokuş eder `/token` . Bir belirteç istenirken, istemci uygulamanın bir istemci parolası (uygulamalar parolası) sağlaması gerekebilir. [Erişim belirteci alma](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code#use-the-authorization-code-to-request-an-access-token)hakkında ayrıntılara bakın.
+1. İstemci, `/authorize` Azure AD uç noktasına bir istek gönderir. Azure AD, kullanıcının uygun kimlik bilgilerini (örneğin, Kullanıcı adı ve parola veya iki öğeli kimlik doğrulama) kullanarak kimlik doğrulayacağı bir oturum açma sayfasına yönlendirecektir. [Yetkilendirme kodu alma](../active-directory/azuread-dev/v1-protocols-oauth-code.md#request-an-authorization-code)hakkındaki ayrıntılara bakın. Kimlik doğrulaması başarılı olduğunda istemciye bir *yetkilendirme kodu* döndürülür. Azure AD, bu yetkilendirme kodunun yalnızca istemci uygulama kaydında yapılandırılmış kayıtlı bir yanıt URL 'sine döndürülmesine izin verir (aşağıya bakın).
+1. İstemci uygulaması, Azure AD 'nin uç noktasındaki bir *erişim belirteci* için yetkilendirme kodunu değiş tokuş eder `/token` . Bir belirteç istenirken, istemci uygulamanın bir istemci parolası (uygulamalar parolası) sağlaması gerekebilir. [Erişim belirteci alma](../active-directory/azuread-dev/v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token)hakkında ayrıntılara bakın.
 1. İstemci FHIR için Azure API 'sine bir istek yapar, örneğin, `GET /Patient` tüm hastaları aramak için. İstek yapıldığında, erişim belirteci bir HTTP istek üst bilgisinde (örneğin `Authorization: Bearer eyJ0e...` , `eyJ0e...` Base64 olarak kodlanmış erişim belirtecini temsil eder) dahil olur.
 1. FHıR için Azure API, belirtecin uygun talepleri (belirteçte Özellikler) içerdiğini doğrular. Her şey iade ederseniz, isteği tamamlar ve istemciye sonuçları olan bir FHıR paketi döndürür.
 
@@ -89,7 +89,7 @@ Belirtecin kodu çözülebilir ve gibi araçlarla incelenebilir [https://jwt.ms]
 
 ## <a name="obtaining-an-access-token"></a>Erişim belirteci alma
 
-Yukarıda belirtildiği gibi, Azure AD 'den bir belirteç almanın birkaç yolu vardır. [Azure AD geliştirici belgelerinde](https://docs.microsoft.com/azure/active-directory/develop/)ayrıntılı olarak açıklanmıştır.
+Yukarıda belirtildiği gibi, Azure AD 'den bir belirteç almanın birkaç yolu vardır. [Azure AD geliştirici belgelerinde](../active-directory/develop/index.yml)ayrıntılı olarak açıklanmıştır.
 
 Azure AD 'nin, ve olarak adlandırılan iki farklı OAuth 2,0 uç noktası sürümü vardır `v1.0` `v2.0` . Bu sürümlerin her ikisi de OAuth 2,0 uç noktalardır `v1.0` ve `v2.0` göstergeler, Azure AD 'nin bu standardı nasıl uyguladığı farklara başvurur. 
 
@@ -98,11 +98,11 @@ Bir FHıR sunucusu kullanırken, `v1.0` ya da `v2.0` uç noktalarını kullanabi
 Azure AD belgelerinin ilgili bölümleri şunlardır:
 
 * `v1.0` bkz
-    * [Yetkilendirme kodu akışı](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code).
-    * [İstemci kimlik bilgileri akışı](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow).
+    * [Yetkilendirme kodu akışı](../active-directory/azuread-dev/v1-protocols-oauth-code.md).
+    * [İstemci kimlik bilgileri akışı](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md).
 * `v2.0` bkz
-    * [Yetkilendirme kodu akışı](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow).
-    * [İstemci kimlik bilgileri akışı](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow).
+    * [Yetkilendirme kodu akışı](../active-directory/develop/v2-oauth2-auth-code-flow.md).
+    * [İstemci kimlik bilgileri akışı](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md).
 
 Belirteç almak için başka Çeşitlemeler (örneğin, akış adına) vardır. Ayrıntılar için Azure AD belgelerine bakın. FHıR için Azure API 'yi kullanırken, [Azure CLI kullanarak](get-healthcare-apis-access-token-cli.md)bir erişim belirteci (hata ayıklama amacıyla) almak için bazı kısayollar da vardır.
 

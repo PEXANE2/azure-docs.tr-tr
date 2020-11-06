@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 20bf72c55a5b6d76a3b214f0a679e28da81e41e2
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 66ea8692fd3d93b8de9740e145404a8db50ebfdf
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558576"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398105"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>FHıR için Azure API 'SI hakkında sık sorulan sorular
 
@@ -52,7 +52,7 @@ FHıR için Azure API 'sine nelerin [yayınlanabileceği](https://github.com/mic
 
 ### <a name="in-which-regions-is-azure-api-for-fhir-available"></a>FHıR için Azure API hangi bölgelerde kullanılabilir?
 
-Şu anda [birden fazla coğrafi bölgede](https://azure.microsoft.com/global-infrastructure/services/?products=azure-api-for-fhir&regions=non-regional,us-east,us-east-2,us-central,us-north-central,us-south-central,us-west-central,us-west,us-west-2,canada-east,canada-central,usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia)hem genel hem de kamu için genel kullanıma sunulduk. Microsoft 'ta kamu bulut hizmetleri hakkında daha fazla bilgi için, [Fedrampa Ile Azure hizmetleri](https://docs.microsoft.com/azure/azure-government/compliance/azure-services-in-fedramp-auditscope)'ne göz atın.
+Şu anda [birden fazla coğrafi bölgede](https://azure.microsoft.com/global-infrastructure/services/?products=azure-api-for-fhir&regions=non-regional,us-east,us-east-2,us-central,us-north-central,us-south-central,us-west-central,us-west,us-west-2,canada-east,canada-central,usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia)hem genel hem de kamu için genel kullanıma sunulduk. Microsoft 'ta kamu bulut hizmetleri hakkında daha fazla bilgi için, [Fedrampa Ile Azure hizmetleri](../azure-government/compliance/azure-services-in-fedramp-auditscope.md)'ne göz atın.
 
 ### <a name="where-can-i-see-what-is-releasing-into-the-azure-api-for-fhir"></a>FHIR için Azure API 'ye ne kadar serbest bırakıldıklarınızı nereden görebilirim?
 
@@ -97,17 +97,17 @@ Bunun bazı örnekleri aşağıda verilmiştir:
 
 ### <a name="what-is-the-default-sort-when-searching-for-resources-in-azure-api-for-fhir"></a>FHıR için Azure API 'sindeki kaynakları ararken varsayılan sıralama nedir?
 
-Son güncelleştirilme tarihine göre sıralamayı destekliyoruz: _sort = _lastUpdated. Desteklenen diğer arama parametreleri hakkında daha fazla bilgi için, [desteklenen özellikler sayfamıza](https://docs.microsoft.com/azure/healthcare-apis/fhir-features-supported#search)göz atın.
+Son güncelleştirilme tarihine göre sıralamayı destekliyoruz: _sort = _lastUpdated. Desteklenen diğer arama parametreleri hakkında daha fazla bilgi için, [desteklenen özellikler sayfamıza](./fhir-features-supported.md#search)göz atın.
 
 ### <a name="how-does-export-work"></a>$Export nasıl çalışır?
 
-$export FHıR belirtiminin bir parçasıdır: https://hl7.org/fhir/uv/bulkdata/export/index.html . FHıR hizmeti yönetilen bir kimlikle ve bir depolama hesabıyla yapılandırıldıysa ve yönetilen kimliğin bu depolama hesabına erişimi varsa, FHıR API 'sindeki $export çağırabilirsiniz ve tüm FHıR kaynakları depolama hesabına aktarılabilir. Daha fazla bilgi için [$Export makalemize](https://docs.microsoft.com/azure/healthcare-apis/export-data)göz atın.
+$export FHıR belirtiminin bir parçasıdır: https://hl7.org/fhir/uv/bulkdata/export/index.html . FHıR hizmeti yönetilen bir kimlikle ve bir depolama hesabıyla yapılandırıldıysa ve yönetilen kimliğin bu depolama hesabına erişimi varsa, FHıR API 'sindeki $export çağırabilirsiniz ve tüm FHıR kaynakları depolama hesabına aktarılabilir. Daha fazla bilgi için [$Export makalemize](./export-data.md)göz atın.
 
 ## <a name="using-azure-api-for-fhir"></a>FHıR için Azure API 'YI kullanma
 
 ### <a name="how-do-i-enable-log-analytics-for-azure-api-for-fhir"></a>FHıR için Azure API Log Analytics 'i etkinleştirmek Nasıl yaparım? mı?
 
-Tanılama günlük kaydını etkinleştirir ve bu günlüklere yönelik örnek sorguların gözden geçirilmesini sağlar. Denetim günlüklerini ve örnek sorguları etkinleştirme hakkında daha fazla bilgi için [Bu bölüme](https://docs.microsoft.com/azure/healthcare-apis/enable-diagnostic-logging)göz atın. Günlüklere ek bilgi eklemek istiyorsanız, [özel http üst bilgilerini kullanarak](https://docs.microsoft.com/azure/healthcare-apis/use-custom-headers)göz atın.
+Tanılama günlük kaydını etkinleştirir ve bu günlüklere yönelik örnek sorguların gözden geçirilmesini sağlar. Denetim günlüklerini ve örnek sorguları etkinleştirme hakkında daha fazla bilgi için [Bu bölüme](./enable-diagnostic-logging.md)göz atın. Günlüklere ek bilgi eklemek istiyorsanız, [özel http üst bilgilerini kullanarak](./use-custom-headers.md)göz atın.
 
 ### <a name="where-can-i-see-some-examples-of-using-the-azure-api-for-fhir-within-a-workflow"></a>Bir iş akışı içinde FHıR için Azure API 'SI kullanmayla ilgili bazı örnekleri nereden görebilirim?
 
@@ -121,7 +121,7 @@ Tanılama günlük kaydını etkinleştirir ve bu günlüklere yönelik örnek s
 
 ### <a name="is-there-a-way-to-encrypt-my-data-using-my-personal-key-not-a-default-key"></a>Kişisel anahtarımı varsayılan anahtar değil kullanarak şifrelemem için bir yol var mı?
 
-Evet, FHıR için Azure API, Cosmos DB destek aracılığıyla müşteri tarafından yönetilen anahtarların yapılandırılmasını sağlar. Kişisel anahtarla verilerinizi şifreleme hakkında daha fazla bilgi için [Bu bölüme](https://docs.microsoft.com/azure/healthcare-apis/customer-managed-key)göz atın.
+Evet, FHıR için Azure API, Cosmos DB destek aracılığıyla müşteri tarafından yönetilen anahtarların yapılandırılmasını sağlar. Kişisel anahtarla verilerinizi şifreleme hakkında daha fazla bilgi için [Bu bölüme](./customer-managed-key.md)göz atın.
 
 ## <a name="azure-api-for-fhir-preview-features"></a>FHıR için Azure API: Önizleme özellikleri
 

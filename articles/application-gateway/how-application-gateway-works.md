@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: absha
-ms.openlocfilehash: d33ec829e490ae45d38d33f5784126a71ae2d0aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9166125fac28f43a93cbee2875b91bee986b1400
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86506562"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397476"
 ---
 # <a name="how-an-application-gateway-works"></a>Uygulama ağ geçidi nasıl kullanılır?
 
@@ -32,7 +32,7 @@ Bu makalede, bir uygulama ağ geçidinin gelen istekleri nasıl kabul ettiğini 
 
 Azure Application Gateway, iç uygulama yük dengeleyici olarak veya internet 'e yönelik bir uygulama yük dengeleyici olarak kullanılabilir. İnternet 'e yönelik bir uygulama ağ geçidi, genel IP adreslerini kullanır. İnternet 'e yönelik bir uygulama ağ geçidinin DNS adı genel IP adresi ile genel olarak çözülebilir. Sonuç olarak, internet 'e yönelik uygulama ağ geçitleri istemci isteklerini internet 'e yönlendirebilir.
 
-İç uygulama ağ geçitleri yalnızca özel IP adreslerini kullanır. Özel veya [özel DNS bir bölge](https://docs.microsoft.com/azure/dns/private-dns-overview)kullanıyorsanız, etki alanı adının APPLICATION Gateway özel IP adresi ile dahili olarak çözümlenebilmelidir. Bu nedenle, iç yük dengeleyiciler yalnızca uygulama ağ geçidi için bir sanal ağa erişimi olan istemcilerden gelen istekleri yönlendirebilir.
+İç uygulama ağ geçitleri yalnızca özel IP adreslerini kullanır. Özel veya [özel DNS bir bölge](../dns/private-dns-overview.md)kullanıyorsanız, etki alanı adının APPLICATION Gateway özel IP adresi ile dahili olarak çözümlenebilmelidir. Bu nedenle, iç yük dengeleyiciler yalnızca uygulama ağ geçidi için bir sanal ağa erişimi olan istemcilerden gelen istekleri yönlendirebilir.
 
 ## <a name="how-an-application-gateway-routes-a-request"></a>Uygulama ağ geçidi bir isteği nasıl yönlendirir
 
@@ -52,9 +52,9 @@ Bir Application Gateway, arka uç sunucusuna özgün isteği gönderdiğinde, an
 
  >[!NOTE]
 >Arka uç havuzu:
-> - , **Genel bir uç nokta olan**uygulama ağ geçidi, sunucuya ulaşmak için ön uç genel IP 'sini kullanır. Ön uç genel IP adresi yoksa, giden dış bağlantı için bir tane atanır.
-> - **Dahili olarak çözümlenebilen BIR FQDN veya özel bır IP adresi içerdiğinde**, Application Gateway, isteğin örnek özel IP adreslerini kullanarak isteği arka uç sunucusuna yönlendirir.
-> - **Bir dış uç nokta veya harici çözümlenebilen BIR FQDN içerir**, Application Gateway, ön uç genel IP adresini kullanarak isteği arka uç sunucusuna yönlendirir. DNS çözümlemesi, yapılandırıldıysa özel bir DNS bölgesine veya özel DNS sunucusuna dayalıdır veya varsayılan olarak Azure tarafından sağlanmış DNS 'i kullanır. Ön uç genel IP adresi yoksa, giden dış bağlantı için bir tane atanır.
+> - , **Genel bir uç nokta olan** uygulama ağ geçidi, sunucuya ulaşmak için ön uç genel IP 'sini kullanır. Ön uç genel IP adresi yoksa, giden dış bağlantı için bir tane atanır.
+> - **Dahili olarak çözümlenebilen BIR FQDN veya özel bır IP adresi içerdiğinde** , Application Gateway, isteğin örnek özel IP adreslerini kullanarak isteği arka uç sunucusuna yönlendirir.
+> - **Bir dış uç nokta veya harici çözümlenebilen BIR FQDN içerir** , Application Gateway, ön uç genel IP adresini kullanarak isteği arka uç sunucusuna yönlendirir. DNS çözümlemesi, yapılandırıldıysa özel bir DNS bölgesine veya özel DNS sunucusuna dayalıdır veya varsayılan olarak Azure tarafından sağlanmış DNS 'i kullanır. Ön uç genel IP adresi yoksa, giden dış bağlantı için bir tane atanır.
 
 ### <a name="modifications-to-the-request"></a>İstekte yapılan değişiklikler
 

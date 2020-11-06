@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: absha
-ms.openlocfilehash: fb5196f9612cb4ce1f0a49be8b5a76f6703fdab6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e8eb79d519e2f7bfbf006b852f0c5294976b727
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85248692"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397160"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>HTTP üstbilgilerini Application Gateway yeniden yazın
 
@@ -22,7 +22,7 @@ HTTP üstbilgileri, bir istemci ve sunucunun bir istek veya Yanıt ile ek bilgi 
 
 Application Gateway, istek ve yanıt paketleri istemci ile arka uç havuzları arasında gidip gelirken HTTP istek ve yanıt üst bilgileri eklemenize ya da mevcut bilgileri kaldırmanıza veya güncelleştirmenize olanak tanır. Ayrıca, ancak bazı koşulların yerine getirilmesi durumunda belirtilen üst bilgilerin yeniden yazılmasını sağlamak için koşullar eklemenize de olanak tanır.
 
-Application Gateway Ayrıca istekler ve yanıtlar hakkında ek bilgi depolamanıza yardımcı olan çeşitli [sunucu değişkenlerini](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#server-variables) destekler. Bu, güçlü yeniden yazma kuralları oluşturmanızı kolaylaştırır.
+Application Gateway Ayrıca istekler ve yanıtlar hakkında ek bilgi depolamanıza yardımcı olan çeşitli [sunucu değişkenlerini](#server-variables) destekler. Bu, güçlü yeniden yazma kuralları oluşturmanızı kolaylaştırır.
 
 > [!NOTE]
 >
@@ -49,14 +49,14 @@ Belirtilen değişkenin mevcut olup olmadığını, belirtilen değişkenin beli
 Yeniden yazmak istediğiniz istek ve yanıt üst bilgilerini ve üst bilgilerin yeni değerini belirtmek için yeniden yazma eylemleri kullanın. Yeni bir üst bilgi oluşturabilir, var olan bir üst bilginin değerini değiştirebilir veya var olan bir üst bilgiyi silebilirsiniz. Yeni bir üst bilgi veya var olan bir üst bilgi, bu değer türlerine ayarlanabilir:
 
 - Metin.
-- İstek üst bilgisi. Bir istek üst bilgisi belirtmek için {http_req_*HeaderName*} sözdizimini kullanmanız gerekir.
-- Yanıt üst bilgisi. Yanıt üst bilgisi belirtmek için {http_resp_*HeaderName*} sözdizimini kullanmanız gerekir.
-- Sunucu değişkeni. Sunucu değişkeni belirtmek için {var_*Servervariable*} sözdizimini kullanmanız gerekir.
+- İstek üst bilgisi. Bir istek üst bilgisi belirtmek için {http_req_ *HeaderName* } sözdizimini kullanmanız gerekir.
+- Yanıt üst bilgisi. Yanıt üst bilgisi belirtmek için {http_resp_ *HeaderName* } sözdizimini kullanmanız gerekir.
+- Sunucu değişkeni. Sunucu değişkeni belirtmek için {var_ *Servervariable* } sözdizimini kullanmanız gerekir.
 - Metin, istek üst bilgisi, yanıt üst bilgisi ve sunucu değişkeni birleşimi.
 
 ## <a name="server-variables"></a>Sunucu değişkenleri
 
-Application Gateway sunucu, istemciyle bağlantı ve bağlantıdaki geçerli istek hakkındaki yararlı bilgileri depolamak için sunucu değişkenlerini kullanır. Depolanan bilgilere örnek olarak istemcinin IP adresi ve Web tarayıcı türü dahildir. Sunucu değişkenleri dinamik olarak değişir; Örneğin, yeni bir sayfa yüklendiğinde veya bir form gönderildiğinde. Yeniden yazma koşullarını değerlendirmek ve üstbilgileri yeniden yazmak için bu değişkenleri kullanabilirsiniz. Üst bilgileri yeniden yazmak için sunucu değişkenlerinin değerini kullanmak için, {var_*Servervariable*} sözdiziminde bu değişkenleri belirtmeniz gerekir.
+Application Gateway sunucu, istemciyle bağlantı ve bağlantıdaki geçerli istek hakkındaki yararlı bilgileri depolamak için sunucu değişkenlerini kullanır. Depolanan bilgilere örnek olarak istemcinin IP adresi ve Web tarayıcı türü dahildir. Sunucu değişkenleri dinamik olarak değişir; Örneğin, yeni bir sayfa yüklendiğinde veya bir form gönderildiğinde. Yeniden yazma koşullarını değerlendirmek ve üstbilgileri yeniden yazmak için bu değişkenleri kullanabilirsiniz. Üst bilgileri yeniden yazmak için sunucu değişkenlerinin değerini kullanmak için, {var_ *Servervariable* } sözdiziminde bu değişkenleri belirtmeniz gerekir.
 
 Application Gateway bu sunucu değişkenlerini destekler:
 
@@ -70,7 +70,7 @@ Application Gateway bu sunucu değişkenlerini destekler:
 | client_tcp_rtt             | İstemci TCP bağlantısıyla ilgili bilgiler. TCP_INFO yuva seçeneğini destekleyen sistemlerde kullanılabilir. |
 | client_user                | HTTP kimlik doğrulaması kullanıldığında, kimlik doğrulaması için sağlanan Kullanıcı adı. |
 | konak                       | Öncelik sırasına göre: istek satırından ana bilgisayar adı, konak istek üst bilgisi alanından ana bilgisayar adı veya bir istekle eşleşen sunucu adı. Örnek: istekte *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* ana bilgisayar değeri *contoso.com* olacaktır |
-| cookie_*adı*              | *Ad* tanımlama bilgisi.                                            |
+| cookie_ *adı*              | *Ad* tanımlama bilgisi.                                            |
 | http_method                | URL isteğini yapmak için kullanılan yöntem. Örneğin, GET veya POST. |
 | http_status                | Oturum durumu. Örneğin, 200, 400 veya 403.                       |
 | http_version               | İstek Protokolü. Genellikle HTTP/1.0, HTTP/1.1 veya HTTP/2.0. |
@@ -91,19 +91,19 @@ HTTP üstbilgisini yeniden yazmayı yapılandırmak için, bu adımları gerçek
 
 1. HTTP üstbilgisi yeniden yazma için gereken nesneleri oluşturun:
 
-   - **Yeniden yazma eylemi**: yeniden yazmak istediğiniz istek ve istek üst bilgisi alanlarını ve üst bilgilerin yeni değerini belirtmek için kullanılır. Yeniden yazma eylemiyle bir veya daha fazla yeniden yazma koşulu ilişkilendirebilirsiniz.
+   - **Yeniden yazma eylemi** : yeniden yazmak istediğiniz istek ve istek üst bilgisi alanlarını ve üst bilgilerin yeni değerini belirtmek için kullanılır. Yeniden yazma eylemiyle bir veya daha fazla yeniden yazma koşulu ilişkilendirebilirsiniz.
 
-   - **Yeniden yazma koşulu**: isteğe bağlı bir yapılandırma. Yeniden yazma koşulları, HTTP (S) isteklerinin ve yanıtlarının içeriğini değerlendirir. HTTP (S) isteği veya yanıtı yeniden yazma koşuluyla eşleşiyorsa, yeniden yazma eylemi gerçekleşir.
+   - **Yeniden yazma koşulu** : isteğe bağlı bir yapılandırma. Yeniden yazma koşulları, HTTP (S) isteklerinin ve yanıtlarının içeriğini değerlendirir. HTTP (S) isteği veya yanıtı yeniden yazma koşuluyla eşleşiyorsa, yeniden yazma eylemi gerçekleşir.
 
      Birden fazla koşulu bir eylemle ilişkilendirirseniz, eylem yalnızca tüm koşullar karşılandığında oluşur. Diğer bir deyişle, işlem mantıksal ve işlemdir.
 
-   - **Yeniden yazma kuralı**: birden çok yeniden yazma eylemi/yeniden yazma koşulu kombinasyonu içeriyor.
+   - **Yeniden yazma kuralı** : birden çok yeniden yazma eylemi/yeniden yazma koşulu kombinasyonu içeriyor.
 
-   - **Kural sırası**: yeniden yazma kurallarının yürütülme sırasını belirlemesine yardımcı olur. Bu yapılandırma, bir yeniden yazma kümesinde birden fazla yeniden yazma kuralına sahip olduğunuzda yararlıdır. Daha düşük bir kural sırası değeri olan bir yeniden yazma kuralı önce çalışır. Aynı kural sırasını iki yeniden yazma kuralına atarsanız, yürütme sırası belirleyici değildir.
+   - **Kural sırası** : yeniden yazma kurallarının yürütülme sırasını belirlemesine yardımcı olur. Bu yapılandırma, bir yeniden yazma kümesinde birden fazla yeniden yazma kuralına sahip olduğunuzda yararlıdır. Daha düşük bir kural sırası değeri olan bir yeniden yazma kuralı önce çalışır. Aynı kural sırasını iki yeniden yazma kuralına atarsanız, yürütme sırası belirleyici değildir.
 
-   - **Yeniden yazma kümesi**: bir istek yönlendirme kuralıyla ilişkilendirilecek çoklu yeniden yazma kuralları içerir.
+   - **Yeniden yazma kümesi** : bir istek yönlendirme kuralıyla ilişkilendirilecek çoklu yeniden yazma kuralları içerir.
 
-2. Yeniden yazma kümesini (*Rewriterutaset*) bir yönlendirme kuralına ekleyin. Yeniden yazma yapılandırması, kaynak dinleyicisine yönlendirme kuralı aracılığıyla eklenir. Temel bir yönlendirme kuralı kullandığınızda, üst bilgi yeniden yazma yapılandırması bir kaynak dinleyicisi ile ilişkilendirilir ve genel üst bilgi yeniden yazma işlemi olur. Yol tabanlı bir yönlendirme kuralı kullandığınızda, üst bilgi yeniden yazma yapılandırması URL yol eşlemesinde tanımlanmıştır. Bu durumda, yalnızca bir sitenin belirli yol alanı için geçerlidir.
+2. Yeniden yazma kümesini ( *Rewriterutaset* ) bir yönlendirme kuralına ekleyin. Yeniden yazma yapılandırması, kaynak dinleyicisine yönlendirme kuralı aracılığıyla eklenir. Temel bir yönlendirme kuralı kullandığınızda, üst bilgi yeniden yazma yapılandırması bir kaynak dinleyicisi ile ilişkilendirilir ve genel üst bilgi yeniden yazma işlemi olur. Yol tabanlı bir yönlendirme kuralı kullandığınızda, üst bilgi yeniden yazma yapılandırması URL yol eşlemesinde tanımlanmıştır. Bu durumda, yalnızca bir sitenin belirli yol alanı için geçerlidir.
    > [!NOTE]
    > URL yeniden yazma, üstbilgileri Değiştir; yolun URL 'sini değiştirmez.
 
@@ -168,5 +168,5 @@ Bir üst bilgi veya sunucu değişkeni varlığı için bir HTTP isteği veya ya
 
 HTTP üstbilgilerini yeniden yazmayı öğrenmek için bkz.:
 
-- [Azure portalını kullanarak HTTP üst bilgilerini yeniden yazma](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
+- [Azure portalını kullanarak HTTP üst bilgilerini yeniden yazma](./rewrite-http-headers-portal.md)
 - [Azure PowerShell kullanarak HTTP üstbilgilerini yeniden yazma](add-http-header-rewrite-rule-powershell.md)

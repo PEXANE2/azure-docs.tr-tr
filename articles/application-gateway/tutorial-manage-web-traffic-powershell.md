@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 07/19/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: f29b31b09c2532c336ef2a2d574fab5e000b3e4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e410218117aa0d21167b6d615a3835aeec470e7
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595895"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397119"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-azure-powershell"></a>Azure PowerShell kullanarak bir uygulama ağ geçidi ile web trafiğini yönetme
 
-Uygulama ağ geçidi, sahip olduğunuz sunucular için web trafiğini yönetmek ve web trafiğinin güvenliğini sağlamak için kullanılır. Azure PowerShell’i arka uç sunucuların web trafiğini yönetmesi için bir [sanal makine ölçek kümesi](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) kullanan bir [uygulama ağ geçidi](overview.md) oluştururken kullanabilirsiniz. Bu örnekte örnek kümesi, uygulama ağ geçidinin varsayılan arka uç havuzuna eklenen iki sanal makine örneğini içerir.
+Uygulama ağ geçidi, sahip olduğunuz sunucular için web trafiğini yönetmek ve web trafiğinin güvenliğini sağlamak için kullanılır. Azure PowerShell’i arka uç sunucuların web trafiğini yönetmesi için bir [sanal makine ölçek kümesi](../virtual-machine-scale-sets/overview.md) kullanan bir [uygulama ağ geçidi](overview.md) oluştururken kullanabilirsiniz. Bu örnekte örnek kümesi, uygulama ağ geçidinin varsayılan arka uç havuzuna eklenen iki sanal makine örneğini içerir.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -257,4 +257,4 @@ Remove-AzResourceGroup -Name myResourceGroupAG
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Web uygulaması güvenlik duvarı ile web trafiğini kısıtlama](./tutorial-restrict-web-traffic-powershell.md)
+[Web uygulaması güvenlik duvarı ile web trafiğini kısıtlama](../web-application-firewall/ag/tutorial-restrict-web-traffic-powershell.md)

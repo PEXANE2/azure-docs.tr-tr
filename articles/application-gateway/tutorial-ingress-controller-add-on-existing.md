@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: d0ce58c5bb6de4712117959f10b48ae3449f0b97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10f78167b9c3f557fa16061cfac8aad080519415
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285681"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397136"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>Öğretici: mevcut bir AKS kümesi için Application Gateway giriş denetleyicisi eklentisini Azure CLı aracılığıyla mevcut bir Application Gateway ile etkinleştirme (Önizleme)
 
@@ -37,17 +37,17 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.4 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
-Aşağıdaki örnekte gösterildiği gibi [az Feature Register](https://docs.microsoft.com/cli/azure/feature#az-feature-register) komutunu kullanarak *aks-IngressApplicationGatewayAddon* Özellik bayrağını kaydedin; Bu işlemi abonelik başına yalnızca bir kez yapmanız gerekir, eklenti hala önizlemededir:
+Aşağıdaki örnekte gösterildiği gibi [az Feature Register](/cli/azure/feature#az-feature-register) komutunu kullanarak *aks-IngressApplicationGatewayAddon* Özellik bayrağını kaydedin; Bu işlemi abonelik başına yalnızca bir kez yapmanız gerekir, eklenti hala önizlemededir:
 ```azurecli-interactive
 az feature register --name AKS-IngressApplicationGatewayAddon --namespace microsoft.containerservice
 ```
 
-Durumun kaydı gösterilmesi birkaç dakika sürebilir. [Az Feature List](https://docs.microsoft.com/cli/azure/feature#az-feature-register) komutunu kullanarak kayıt durumunu denetleyebilirsiniz:
+Durumun kaydı gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature#az-feature-register) komutunu kullanarak kayıt durumunu denetleyebilirsiniz:
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'microsoft.containerservice/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
 ```
 
-Hazırlandığınızda, [az Provider Register](https://docs.microsoft.com/cli/azure/provider#az-provider-register) komutunu kullanarak Microsoft. Containerservice kaynak sağlayıcısı kaydını yenileyin:
+Hazırlandığınızda, [az Provider Register](/cli/azure/provider#az-provider-register) komutunu kullanarak Microsoft. Containerservice kaynak sağlayıcısı kaydını yenileyin:
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
@@ -74,17 +74,17 @@ az group create --name myResourceGroup --location canadacentral
 
 Şimdi yeni bir AKS kümesi dağıtarak, için AGIC eklentisini etkinleştirmek istediğiniz mevcut bir AKS kümesine sahip olma benzetimi yapabilirsiniz.  
 
-Aşağıdaki örnekte, *Myresourcegroup*adlı kaynak grubundaki [Azure CNI](https://docs.microsoft.com/azure/aks/concepts-network#azure-cni-advanced-networking) ve [yönetilen kimlikleri](https://docs.microsoft.com/azure/aks/use-managed-identity) kullanarak *MyCluster* adlı yeni bir aks kümesi dağıtacaksınız.    
+Aşağıdaki örnekte, *Myresourcegroup* adlı kaynak grubundaki [Azure CNI](../aks/concepts-network.md#azure-cni-advanced-networking) ve [yönetilen kimlikleri](../aks/use-managed-identity.md) kullanarak *MyCluster* adlı yeni bir aks kümesi dağıtacaksınız.    
 
 ```azurecli-interactive
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity 
 ```
 
-Komuta ek parametreler yapılandırmak için `az aks create` başvuruları [buraya](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create)ziyaret edin. 
+Komuta ek parametreler yapılandırmak için `az aks create` başvuruları [buraya](/cli/azure/aks?view=azure-cli-latest#az-aks-create)ziyaret edin. 
 
 ## <a name="deploy-a-new-application-gateway"></a>Yeni bir Application Gateway dağıtma 
 
-Artık, AKS kümenize, *MyCluster*içindeki trafiğin yükünü dengelemek için kullanmak istediğiniz mevcut bir Application Gateway sahip olmak için yeni bir Application Gateway dağıtırsınız. Application Gateway adı *myApplicationGateway*olacaktır, ancak önce *Mypublicıp*adlı bir genel IP kaynağı ve *myvnet* adres alanı 11.0.0.0/8 ve adres alanı 11.1.0.0/16 ile *Mysubnet*adlı bir alt ağ ve *mypublicıp*kullanarak *mysubnet* öğesine Application Gateway dağıtmanız gerekir. 
+Artık, AKS kümenize, *MyCluster* içindeki trafiğin yükünü dengelemek için kullanmak istediğiniz mevcut bir Application Gateway sahip olmak için yeni bir Application Gateway dağıtırsınız. Application Gateway adı *myApplicationGateway* olacaktır, ancak önce *Mypublicıp* adlı bir genel IP kaynağı ve *myvnet* adres alanı 11.0.0.0/8 ve adres alanı 11.1.0.0/16 ile *Mysubnet* adlı bir alt ağ ve *mypublicıp* kullanarak *mysubnet* öğesine Application Gateway dağıtmanız gerekir. 
 
 Bir AKS kümesi ve ayrı sanal ağlarda Application Gateway kullanırken, iki sanal ağın adres alanları çakışmamalıdır. AKS kümesinin dağıttığı varsayılan adres alanı 10.0.0.0/8 olduğundan Application Gateway sanal ağ adresi ön ekini 11.0.0.0/8 olarak ayarlayacağız. 
 
@@ -99,7 +99,7 @@ az network application-gateway create -n myApplicationGateway -l canadacentral -
 
 ## <a name="enable-the-agic-add-on-in-existing-aks-cluster-with-existing-application-gateway"></a>Mevcut AKS kümesindeki AGIC eklentisini mevcut Application Gateway etkinleştirme 
 
-Şimdi oluşturduğunuz AKS kümesindeki AGIC eklentisini, *MyCluster*' ı etkinleştirip, *myApplicationGateway*oluşturduğunuz mevcut Application Gateway kullanmak için agic eklentisini belirtmeniz gerekir. Bu öğreticinin başlangıcında aks-Preview uzantısını eklediğinizden/güncelleştirdiğinizden emin olun. 
+Şimdi oluşturduğunuz AKS kümesindeki AGIC eklentisini, *MyCluster* ' ı etkinleştirip, *myApplicationGateway* oluşturduğunuz mevcut Application Gateway kullanmak için agic eklentisini belirtmeniz gerekir. Bu öğreticinin başlangıcında aks-Preview uzantısını eklediğinizden/güncelleştirdiğinizden emin olun. 
 
 ```azurecli-interactive
 appgwId=$(az network application-gateway show -n myApplicationGateway -g myResourceGroup -o tsv --query "id") 

@@ -1,14 +1,14 @@
 ---
 title: Karma makineleri Azure portal Azure 'a bağlama
 description: Bu makalede, Azure portal Azure Arc etkin sunucularını kullanarak aracıyı yüklemeyi ve makineleri Azure 'a bağlamayı öğreneceksiniz.
-ms.date: 10/21/2020
+ms.date: 11/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8769a3b76172bc6508b7c52eda359695c01eaa4b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ca3c08acdef1b2a1f7c3774f5755967d472c93ed
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370160"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398037"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Karma makineleri Azure portal Azure 'a bağlama
 
@@ -28,11 +28,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. **Sunucular-Azure yay** sayfasında sol üst köşedeki **Ekle** ' yi seçin.
 
-1. **Bir yöntem seçin** sayfasında, **etkileşimli betiği kullanarak sunucu Ekle** ' yi seçin ve ardından **betik oluştur**' u seçin.
+1. **Bir yöntem seçin** sayfasında, **etkileşimli betiği kullanarak sunucu Ekle** ' yi seçin ve ardından **betik oluştur** ' u seçin.
 
 1. **Betik oluştur** sayfasında, makinenin Azure 'da yönetilmesini istediğiniz aboneliği ve kaynak grubunu seçin. Makine meta verilerinin depolanacağı Azure konumunu seçin. Bu konum, kaynak grubunun konumuyla aynı veya farklı olabilir.
 
-1. **Önkoşullar** sayfasında, bilgileri gözden geçirin ve ardından **İleri: kaynak ayrıntıları**' nı seçin.
+1. **Önkoşullar** sayfasında, bilgileri gözden geçirin ve ardından **İleri: kaynak ayrıntıları** ' nı seçin.
 
 1. **Kaynak ayrıntıları** sayfasında, aşağıdakileri sağlayın:
 
@@ -40,19 +40,19 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     1. **Bölge** açılan listesinde, sunucu meta verilerini depolamak için Azure bölgesini seçin.
     1. **İşletim sistemi** açılan listesinde, betiğin üzerinde çalışmak üzere yapılandırıldığı işletim sistemini seçin.
     1. Makine Internet 'e bağlanmak için bir proxy sunucusu üzerinden iletişim kurduklarında, proxy sunucusu IP adresini veya makinenin proxy sunucusuyla iletişim kurmak için kullanacağı adı ve bağlantı noktası numarasını belirtin. Değeri biçiminde girin `http://<proxyURL>:<proxyport>` .
-    1. **Sonraki: Etiketler**' i seçin.
+    1. **Sonraki: Etiketler** ' i seçin.
 
 1. **Etiketler** sayfasında, önerilen varsayılan **fiziksel konum etiketlerini** gözden geçirin ve bir değer girin veya standartlarınızı desteklemek için bir veya daha fazla **özel etiket** belirtin.
 
 1. **İleri ' yi seçin: betiği indir ve Çalıştır**.
 
-1. **Betiği indir ve Çalıştır** sayfasında, Özet bilgilerini gözden geçirin ve ardından **İndir**' i seçin. Hala değişiklik yapmanız gerekiyorsa, **önceki**' yi seçin.
+1. **Betiği indir ve Çalıştır** sayfasında, Özet bilgilerini gözden geçirin ve ardından **İndir** ' i seçin. Hala değişiklik yapmanız gerekiyorsa, **önceki** ' yi seçin.
 
 ## <a name="install-and-validate-the-agent-on-windows"></a>Windows 'da aracıyı yükleyip doğrulama
 
 ### <a name="install-manually"></a>El ile yükleme
 
-Bağlı makine aracısını *AzureConnectedMachineAgent.msi*Windows Installer paketini çalıştırarak el ile yükleyebilirsiniz. [Windows agent Windows Installer paketinin](https://aka.ms/AzureConnectedMachineAgent) en son sürümünü Microsoft İndirme Merkezi ' nden indirebilirsiniz.
+Bağlı makine aracısını *AzureConnectedMachineAgent.msi* Windows Installer paketini çalıştırarak el ile yükleyebilirsiniz. [Windows agent Windows Installer paketinin](https://aka.ms/AzureConnectedMachineAgent) en son sürümünü Microsoft İndirme Merkezi ' nden indirebilirsiniz.
 
 >[!NOTE]
 >* Aracıyı yüklemek veya kaldırmak için *yönetici* izinlerinizin olması gerekir.
@@ -74,7 +74,7 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /?
     msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
     ```
 
-    Kurulum tamamlandıktan sonra aracı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. Günlük dizini *%ProgramData%\AzureConnectedMachineAgent\log*' dir.
+    Kurulum tamamlandıktan sonra aracı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. Günlük dizini *%ProgramData%\AzureConnectedMachineAgent\log* ' dir.
 
 2. Makinenin bir ara sunucu üzerinden iletişim kurması gerekiyorsa, proxy sunucusu ortam değişkenini ayarlamak için aşağıdaki komutu çalıştırın:
 
@@ -107,15 +107,15 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /?
 
 1. Betiği kopyaladığınız klasöre veya paylaşıma değiştirin ve betiği çalıştırarak sunucuda yürütün `./OnboardingScript.ps1` .
 
-Kurulum tamamlandıktan sonra aracı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. Günlük dizini *%ProgramData%\AzureConnectedMachineAgent\log*' dir.
+Kurulum tamamlandıktan sonra aracı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. Günlük dizini *%ProgramData%\AzureConnectedMachineAgent\log* ' dir.
 
 ## <a name="install-and-validate-the-agent-on-linux"></a>Linux 'ta aracıyı yükleyip doğrulama
 
 Linux için bağlı makine Aracısı, dağıtım için tercih edilen paket biçiminde sağlanır (. RPM veya. DEB) Microsoft [paket deposunda](https://packages.microsoft.com/)barındırılır. [Kabuk betik paketi `Install_linux_azcmagent.sh` ](https://aka.ms/azcmagent) aşağıdaki eylemleri gerçekleştirir:
 
-- Packages.microsoft.com adresinden Aracı paketini indirmek için konak makineyi yapılandırır.
-- Karma kaynak sağlayıcısı paketini kurar.
-- Makineyi Azure Arc 'a kaydeder
+* Packages.microsoft.com adresinden Aracı paketini indirmek için konak makineyi yapılandırır.
+
+* Karma kaynak sağlayıcısı paketini kurar.
 
 İsteğe bağlı olarak, parametresini dahil ederek aracıyı proxy bilgileriniz ile yapılandırabilirsiniz `--proxy "{proxy-url}:{proxy-port}"` .
 
@@ -131,15 +131,30 @@ wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 bash ~/Install_linux_azcmagent.sh
 ```
 
-Aracıyı, `--proxy` proxy sunucunuz üzerinden iletişim kurmak üzere yapılandırma parametresi dahil olmak üzere indirmek ve yüklemek için aşağıdaki komutları çalıştırın:
+1. Aracıyı, `--proxy` proxy sunucunuz üzerinden iletişim kurmak üzere yapılandırma parametresi dahil olmak üzere indirmek ve yüklemek için aşağıdaki komutları çalıştırın:
 
-```bash
-# Download the installation package.
-wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
+    ```bash
+    # Download the installation package.
+    wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 
-# Install the connected machine agent. 
-bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
-```
+    # Install the connected machine agent.
+    bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
+    ```
+
+2. Aracıyı yükledikten sonra, aşağıdaki komutu çalıştırarak Azure Arc hizmetiyle iletişim kurmasını sağlayacak şekilde yapılandırmanız gerekir:
+
+    ```bash
+    azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID" --cloud "cloudName"
+    if [ $? = 0 ]; then echo "\033[33mTo view your onboarded server(s), navigate to https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.HybridCompute%2Fmachines\033[m"; fi
+    ```
+
+### <a name="install-with-the-scripted-method"></a>Komut dosyalı yöntemle Install
+
+1. Kök erişimi olan bir hesapla sunucuda oturum açın.
+
+1. Betiği kopyaladığınız klasöre veya paylaşıma değiştirin ve betiği çalıştırarak sunucuda yürütün `./OnboardingScript.sh` .
+
+Kurulum tamamlandıktan sonra aracı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. Günlük dizini *var/opt/azcmagent/log*.
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Azure Arc ile bağlantıyı doğrulama
 

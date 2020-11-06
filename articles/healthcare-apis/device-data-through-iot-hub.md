@@ -8,22 +8,22 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: 3b2e4a1ae5ff43283893b286dafb38491a1181b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee286540d4fd740c5e7c1f8bd693fddd625eeae2
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308234"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398156"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Öğretici: Azure IoT Hub aracılığıyla cihaz verileri alma
 
 FHIR için Azure IoT Bağlayıcısı *, tıbbi nesnelerin Interneti (IoMT) cihazları için Azure API 'ye veri alma olanağı sağlar. Azure portal hızlı başlangıçta Azure [IoT bağlayıcısını dağıtma (Önizleme)](iot-fhir-portal-quickstart.md) , IoT Central Azure tarafından yönetilen bir cihaz örneği olduğunu ve fhır Için Azure IoT Bağlayıcısı 'na [telemetri göndermeyi](iot-fhir-portal-quickstart.md#connect-your-devices-to-iot) gösterdi. FHıR için Azure IoT Bağlayıcısı, Azure IoT Hub aracılığıyla sağlanan ve yönetilen cihazlarla da çalışabilir. Bu öğreticide, Azure IoT Hub cihaz verilerini, FHıR için Azure IoT bağlayıcısına bağlama ve yönlendirme yordamı sağlanmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - Fhır için en az bir Azure IoT Bağlayıcısı içeren FHıR kaynağı için Azure API- [Azure Portal kullanarak fhir Için Azure IoT bağlayıcısını dağıtma (Önizleme)](iot-fhir-portal-quickstart.md)
-- Azure IoT Hub kaynak gerçek veya sanal cihazla bağlandı- [Azure Portal kullanarak IoT Hub 'ı oluşturma](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet)
+- Azure IoT Hub kaynak gerçek veya sanal cihazla bağlandı- [Azure Portal kullanarak IoT Hub 'ı oluşturma](../iot-hub/quickstart-send-telemetry-dotnet.md)
 
 > [!TIP]
 > Azure IoT Hub sanal cihaz uygulaması kullanıyorsanız, tercih ettiğiniz uygulamayı farklı desteklenen diller ve sistemler arasında seçebilirsiniz.
@@ -36,22 +36,22 @@ FHıR için Azure IoT Bağlayıcısı, cihaz iletilerini almak için kullanılan
 
 ## <a name="connect-azure-iot-hub-with-the-azure-iot-connector-for-fhir-preview"></a>FHıR için Azure IoT Bağlayıcısı (Önizleme) ile Azure IoT Hub bağlama
 
-Azure IoT Hub, cihaz verilerini Olay Hub 'ı, depolama hesabı ve Service Bus gibi çeşitli Azure hizmetlerine gönderme yeteneği sağlayan [ileti yönlendirme](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) adlı bir özelliği destekler. FHıR için Azure IoT Bağlayıcısı bu özellikten yararlanarak Azure IoT Hub 'tan Olay Hub 'ı uç noktasına bağlanıp cihaz verileri gönderebilir.
+Azure IoT Hub, cihaz verilerini Olay Hub 'ı, depolama hesabı ve Service Bus gibi çeşitli Azure hizmetlerine gönderme yeteneği sağlayan [ileti yönlendirme](../iot-hub/iot-hub-devguide-messages-d2c.md) adlı bir özelliği destekler. FHıR için Azure IoT Bağlayıcısı bu özellikten yararlanarak Azure IoT Hub 'tan Olay Hub 'ı uç noktasına bağlanıp cihaz verileri gönderebilir.
 
 > [!NOTE] 
-> Şu anda, FHıR 'nin Olay Hub 'ı için Azure IoT Bağlayıcısı 'nın müşteri aboneliğinde barındırılmadığı için, PowerShell veya CLı komutunu yalnızca [ileti yönlendirme oluşturmak](https://docs.microsoft.com/azure/iot-hub/tutorial-routing) için kullanabilirsiniz. bu nedenle, Azure Portal aracılığıyla görülemez. Ancak, ileti yönlendirme nesneleri PowerShell veya CLı kullanılarak eklendikten sonra, Azure portal görünür ve buradan yönetilebilir.
+> Şu anda, FHıR 'nin Olay Hub 'ı için Azure IoT Bağlayıcısı 'nın müşteri aboneliğinde barındırılmadığı için, PowerShell veya CLı komutunu yalnızca [ileti yönlendirme oluşturmak](../iot-hub/tutorial-routing.md) için kullanabilirsiniz. bu nedenle, Azure Portal aracılığıyla görülemez. Ancak, ileti yönlendirme nesneleri PowerShell veya CLı kullanılarak eklendikten sonra, Azure portal görünür ve buradan yönetilebilir.
 
 İleti yönlendirmeyi ayarlama iki adımdan oluşur.
 
 ### <a name="add-an-endpoint"></a>Bir uç nokta ekleme
-Bu adım IoT Hub verileri yönlendiren bir uç nokta tanımlar. Bu uç noktayı, tercihlerinize göre [Add-AzIotHubRoutingEndpoint](https://docs.microsoft.com/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint) PowerShell komutunu ya da [az IoT Hub Routing-ENDPOINT Create](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?#az-iot-hub-routing-endpoint-create) CLI komutunu kullanarak oluşturun.
+Bu adım IoT Hub verileri yönlendiren bir uç nokta tanımlar. Bu uç noktayı, tercihlerinize göre [Add-AzIotHubRoutingEndpoint](/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint) PowerShell komutunu ya da [az IoT Hub Routing-ENDPOINT Create](/cli/azure/iot/hub/routing-endpoint#az-iot-hub-routing-endpoint-create) CLI komutunu kullanarak oluşturun.
 
 Aşağıda, bir uç nokta oluşturmak için komutuyla birlikte kullanılacak parametrelerin listesi verilmiştir:
 
 |PowerShell parametresi|CLı parametresi|Açıklama|
 |---|---|---|
 |ResourceGroupName|resource-group|IoT Hub kaynağınızın kaynak grubu adı.|
-|Name|Hub-adı|IoT Hub kaynağınızın adı.|
+|Ad|Hub-adı|IoT Hub kaynağınızın adı.|
 |Uçnoktaadı|uç nokta adı|Oluşturulan uç noktaya atamak istediğiniz bir ad kullanın.|
 |EndpointType|uç nokta türü|IoT Hub bağlantı kurmak için gereken uç nokta türü. PowerShell için "EventHub" ve CLı için "eventhub" değerlerini kullanın.|
 |EndpointResourceGroup|uç nokta-kaynak grubu|FHıR 'nin FHıR kaynağı için Azure API 'SI için Azure IoT bağlayıcınızın kaynak grubu adı. Bu değeri, FHıR için Azure API 'nin Genel Bakış sayfasından edinebilirsiniz.|
@@ -59,14 +59,14 @@ Aşağıda, bir uç nokta oluşturmak için komutuyla birlikte kullanılacak par
 |Dizisi|bağlantı dizesi|FHıR için Azure IoT bağlayıcınıza bağlantı dizesi. Önceki adımda edindiğiniz değeri kullanın.|
 
 ### <a name="add-a-message-route"></a>İleti yolu ekleme
-Bu adım, yukarıda oluşturulan uç noktayı kullanarak bir ileti yolunu tanımlar. Tercihinize göre [Add-AzIotHubRoute](https://docs.microsoft.com/powershell/module/az.iothub/Add-AzIoTHubRoute) PowerShell komutunu veya [az IoT Hub Route Create](https://docs.microsoft.com/cli/azure/iot/hub/route#az-iot-hub-route-create) CLI komutunu kullanarak bir yol oluşturun.
+Bu adım, yukarıda oluşturulan uç noktayı kullanarak bir ileti yolunu tanımlar. Tercihinize göre [Add-AzIotHubRoute](/powershell/module/az.iothub/Add-AzIoTHubRoute) PowerShell komutunu veya [az IoT Hub Route Create](/cli/azure/iot/hub/route#az-iot-hub-route-create) CLI komutunu kullanarak bir yol oluşturun.
 
 İleti yolu eklemek için komutuyla birlikte kullanılacak parametrelerin listesi aşağıdadır:
 
 |PowerShell parametresi|CLı parametresi|Açıklama|
 |---|---|---|
 |ResourceGroupName|g|IoT Hub kaynağınızın kaynak grubu adı.|
-|Name|Hub-adı|IoT Hub kaynağınızın adı.|
+|Ad|Hub-adı|IoT Hub kaynağınızın adı.|
 |Uçnoktaadı|uç nokta adı|Yukarıda oluşturduğunuz bitiş noktasının adı.|
 |Routetablename|yol adı|Oluşturulan ileti yoluna atamak istediğiniz ad.|
 |Kaynak|Kaynak türü|Uç noktaya gönderilen veri türü. PowerShell için "DeviceMessages" değeri ve CLı için "devicemessages" değerlerini kullanın.|

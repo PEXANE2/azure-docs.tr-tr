@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 5e0533a44db269229b2f26fa8d2f2b4f84f4d0b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8f015085baa8fffa6f208e9d8dd749e397c76c3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85125472"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397442"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>Application Gateway ölçümlerini kullanarak AKS yığınlarınızı otomatik ölçeklendirme (Beta)
 
@@ -23,7 +23,7 @@ Aşağıdaki öğreticide, uygulamanızı ölçeklendirmek için Application Gat
 Aşağıdaki iki bileşeni kullanacağız:
 
 * [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) -Ölçüm sunucusu üzerinden Application Gateway ölçümleri göstermek için ölçüm bağdaştırıcısını kullanacağız. Azure Kubernetes ölçüm bağdaştırıcısı, Application Gateway giriş denetleyicisine benzer şekilde Azure 'daki açık kaynaklı bir projem. 
-* [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) -Application Gateway ölçümleri kullanmak ve ölçekleme için bir dağıtımı hedeflemek üzere HPA kullanacağız.
+* [`Horizontal Pod Autoscaler`](../aks/concepts-scale.md#horizontal-pod-autoscaler) -Application Gateway ölçümleri kullanmak ve ölçekleme için bir dağıtımı hedeflemek üzere HPA kullanacağız.
 
 ## <a name="setting-up-azure-kubernetes-metric-adapter"></a>Azure Kubernetes ölçüm bağdaştırıcısını ayarlama
 
@@ -92,7 +92,7 @@ kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appg
 
 ## <a name="using-the-new-metric-to-scale-up-the-deployment"></a>Dağıtımı ölçeklendirmek için yeni ölçümü kullanma
 
-Ölçüm sunucusu üzerinden kullanıma sunabilebilmemiz için `appgw-request-count-metric` , [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) hedef dağıtımımızın ölçeğini ölçeklendirmek üzere kullanıma hazırız.
+Ölçüm sunucusu üzerinden kullanıma sunabilebilmemiz için `appgw-request-count-metric` , [`Horizontal Pod Autoscaler`](../aks/concepts-scale.md#horizontal-pod-autoscaler) hedef dağıtımımızın ölçeğini ölçeklendirmek üzere kullanıma hazırız.
 
 Aşağıdaki örnekte, örnek bir dağıtım hedefliyoruz `aspnet` . `appgw-request-count-metric`En fazla sayıda Pod 'a kadar > 200 ' ü yukarı kadar ölçeklendireceğiz `10` .
 

@@ -7,17 +7,17 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 1445d1418bde6d5d15e365c59ceb56e7661faccb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13441899eeb5ca2b7c60977ab2858fe40a398d1a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87088079"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397867"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>PowerShell kullanarak Azure Application Gateway (klasik) için özel bir araştırma oluşturma
 
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](application-gateway-create-probe-portal.md)
+> * [Azure Portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Klasik PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -147,7 +147,7 @@ Yapılandırma parametreleri şunlardır:
 | **Ana bilgisayar** ve **yol** | Örnek sistem durumunu öğrenmek için uygulama ağ geçidi tarafından çağrılan URL yolunu doldurun. Örneğin, http:/contoso.com/Web siteniz varsa \/ , \/ araştırma denetimlerinin başarılı bir HTTP yanıtına sahip olması için "http:/contoso.com/path/custompath.htm" için özel araştırma yapılandırılabilir.|
 | **Aralık** | Yoklama aralığı denetimlerini saniye cinsinden yapılandırır.|
 | **Aş** | Bir HTTP yanıt denetimi için araştırma zaman aşımını tanımlar.|
-| **Unhealthyıthreshold** | Arka uç örneğini *sağlıksız*olarak işaretlemek için gereken başarısız http yanıtlarının sayısı.|
+| **Unhealthyıthreshold** | Arka uç örneğini *sağlıksız* olarak işaretlemek için gereken başarısız http yanıtlarının sayısı.|
 
 Yoklama adına, \<BackendHttpSettings\> hangi arka uç havuzunun özel araştırma ayarlarını kullanacağını atamak için yapılandırmada başvurulur.
 
@@ -200,7 +200,6 @@ Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha önce Güvenli Yuva Katmanı (SSL) yük boşaltma olarak bilinen Aktarım Katmanı Güvenliği 'ni (TLS) yapılandırmak istiyorsanız bkz. [TLS boşaltması için uygulama ağ geçidi yapılandırma](application-gateway-ssl.md).
+Daha önce Güvenli Yuva Katmanı (SSL) yük boşaltma olarak bilinen Aktarım Katmanı Güvenliği 'ni (TLS) yapılandırmak istiyorsanız bkz. [TLS boşaltması için uygulama ağ geçidi yapılandırma](./tutorial-ssl-powershell.md).
 
-İç yük dengeleyiciyle kullanacağınız uygulama ağ geçidi yapılandırmak istiyorsanız, bkz. [İç yük dengeleyici (ILB) ile uygulama ağ geçidi oluşturma](application-gateway-ilb.md).
-
+İç yük dengeleyiciyle kullanacağınız uygulama ağ geçidi yapılandırmak istiyorsanız, bkz. [İç yük dengeleyici (ILB) ile uygulama ağ geçidi oluşturma](./application-gateway-ilb-arm.md).

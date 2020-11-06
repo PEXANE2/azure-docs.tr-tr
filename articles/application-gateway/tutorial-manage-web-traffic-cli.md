@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 07/20/2019
 ms.author: victorh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6bc5761f4e629a90dacf06cd7503ca86a5448fe4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d0a130830c8b03fd1f47086b9a997f6fc3df9a4
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595887"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396966"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>Azure CLI kullanarak bir uygulama ağ geçidi ile web trafiğini yönetme
 
-Uygulama ağ geçidi, sahip olduğunuz sunucular için web trafiğini yönetmek ve web trafiğinin güvenliğini sağlamak için kullanılır. Arka uç sunucuları için bir [sanal makine ölçek kümesi](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) kullanan bir [uygulama ağ geçidi](overview.md) oluşturmak için Azure CLI 'yı kullanabilirsiniz. Bu örnekte, ölçek kümesi iki sanal makine örneği içerir. Ölçek kümesi, uygulama ağ geçidinin varsayılan arka uç havuzuna eklenir.
+Uygulama ağ geçidi, sahip olduğunuz sunucular için web trafiğini yönetmek ve web trafiğinin güvenliğini sağlamak için kullanılır. Arka uç sunucuları için bir [sanal makine ölçek kümesi](../virtual-machine-scale-sets/overview.md) kullanan bir [uygulama ağ geçidi](overview.md) oluşturmak için Azure CLI 'yı kullanabilirsiniz. Bu örnekte, ölçek kümesi iki sanal makine örneği içerir. Ölçek kümesi, uygulama ağ geçidinin varsayılan arka uç havuzuna eklenir.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -91,11 +91,11 @@ az network application-gateway create \
 
  Uygulama ağ geçidinin oluşturulması birkaç dakika sürebilir. Uygulama ağ geçidi oluşturulduktan sonra şu yeni özellikleri görürsünüz:
 
-- *appGatewayBackendPool*: Bir uygulama ağ geçidi en az bir arka uç adres havuzuna sahip olmalıdır.
-- *appGatewayBackendHttpSettings*: İletişim için 80 numaralı bağlantı noktasının ve HTTP protokolünün kullanıldığını belirtir.
-- *appGatewayHttpListener*: *appGatewayBackendPool* ile ilişkili varsayılan dinleyicidir.
-- *appGatewayFrontendIP*: *appGatewayHttpListener*’a *myAGPublicIPAddress*’i atar.
-- *kural 1*: *appGatewayHttpListener* ile ilişkili varsayılan yönlendirme kuralıdır.
+- *appGatewayBackendPool* : Bir uygulama ağ geçidi en az bir arka uç adres havuzuna sahip olmalıdır.
+- *appGatewayBackendHttpSettings* : İletişim için 80 numaralı bağlantı noktasının ve HTTP protokolünün kullanıldığını belirtir.
+- *appGatewayHttpListener* : *appGatewayBackendPool* ile ilişkili varsayılan dinleyicidir.
+- *appGatewayFrontendIP* : *appGatewayHttpListener* ’a *myAGPublicIPAddress* ’i atar.
+- *kural 1* : *appGatewayHttpListener* ile ilişkili varsayılan yönlendirme kuralıdır.
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Sanal Makine Ölçek Kümesi Oluşturma
 
@@ -155,4 +155,4 @@ az group delete --name myResourceGroupAG --location eastus
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Web uygulaması güvenlik duvarı ile web trafiğini kısıtlama](./tutorial-restrict-web-traffic-cli.md)
+[Web uygulaması güvenlik duvarı ile web trafiğini kısıtlama](../web-application-firewall/ag/tutorial-restrict-web-traffic-cli.md)

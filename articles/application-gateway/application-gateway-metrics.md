@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 06/06/2020
 ms.author: absha
-ms.openlocfilehash: ce349a0539986d88f689c53fc2099877df8030bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c072e7c1339a2217a3c167be3237029bd71429c2
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87424401"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397748"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway ölçümleri
 
-Application Gateway, Application Gateway ve arka uç örneklerinizin performansı için ölçümler olarak adlandırılan veri noktalarını [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview) 'ye yayımlar. Bu ölçümler, belirli bir zamanda uygulama ağ geçidinizin bazı yönlerini tanımlayan sıralı bir zaman serisi verileri kümesindeki sayısal değerlerdir. Application Gateway üzerinden akan istekler varsa, ölçümlerini ölçer ve 60 saniyelik aralıklarla gönderir. Application Gateway veya bir ölçüm için veri akışı olmayan bir istek yoksa, ölçüm raporlanmaz. Daha fazla bilgi için bkz. [Azure izleyici ölçümleri](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics).
+Application Gateway, Application Gateway ve arka uç örneklerinizin performansı için ölçümler olarak adlandırılan veri noktalarını [Azure izleyici](../azure-monitor/overview.md) 'ye yayımlar. Bu ölçümler, belirli bir zamanda uygulama ağ geçidinizin bazı yönlerini tanımlayan sıralı bir zaman serisi verileri kümesindeki sayısal değerlerdir. Application Gateway üzerinden akan istekler varsa, ölçümlerini ölçer ve 60 saniyelik aralıklarla gönderir. Application Gateway veya bir ölçüm için veri akışı olmayan bir istek yoksa, ölçüm raporlanmaz. Daha fazla bilgi için bkz. [Azure izleyici ölçümleri](../azure-monitor/platform/data-platform-metrics.md).
 
 ## <a name="metrics-supported-by-application-gateway-v2-sku"></a>Application Gateway v2 SKU 'SU tarafından desteklenen ölçümler
 
@@ -40,7 +40,7 @@ Application Gateway, istek ve Yanıtla ilgili, hepsi milisaniye cinsinden ölç�
 
   Arka uç sunucusuna bağlantı kurma ve Yanıt üstbilgisinin ilk baytını alma arasındaki zaman aralığı. 
 
-  Bu, arka uca *bağlantı süresinin*toplamı, Application Gateway ' den arka uca ulaşmak için geçen süre (sunucunun içerik oluşturmak için geçen süre, büyük olasılıkla veritabanı sorguları) ve arka uçta Application Gateway ulaşmak için yanıtın ilk baytından geçen süre kadar yaklaşık bir süredir.
+  Bu, arka uca *bağlantı süresinin* toplamı, Application Gateway ' den arka uca ulaşmak için geçen süre (sunucunun içerik oluşturmak için geçen süre, büyük olasılıkla veritabanı sorguları) ve arka uçta Application Gateway ulaşmak için yanıtın ilk baytından geçen süre kadar yaklaşık bir süredir.
 
 - **Arka uç son bayt yanıt süresi**
 
@@ -52,7 +52,7 @@ Application Gateway, istek ve Yanıtla ilgili, hepsi milisaniye cinsinden ölç�
 
   İstek alma, işleme ve gönderme yanıtı için geçen ortalama süre. 
 
-  Bu, Application Gateway HTTP isteğinin ilk baytını istemciye Son Yanıt baytı gönderilirken geçen zaman olan aralıktır. Bu, Application Gateway tarafından alınan işlem süresini, *arka uç son bayt yanıt süresini*, tüm yanıtı ve *istemci RTT*'yi göndermek için Application Gateway tarafından alınan süreyi içerir.
+  Bu, Application Gateway HTTP isteğinin ilk baytını istemciye Son Yanıt baytı gönderilirken geçen zaman olan aralıktır. Bu, Application Gateway tarafından alınan işlem süresini, *arka uç son bayt yanıt süresini* , tüm yanıtı ve *istemci RTT* 'yi göndermek için Application Gateway tarafından alınan süreyi içerir.
 
 - **İstemci RTT**
 
@@ -62,7 +62,7 @@ Application Gateway, istek ve Yanıtla ilgili, hepsi milisaniye cinsinden ölç�
 
 Bu ölçümler, gözlemlenen yavaşlamanın istemci ağı, Application Gateway performans, arka uç ağı ve arka uç sunucusu TCP yığını doygunluğu, arka uç uygulama performansı veya büyük dosya boyutu nedeniyle olup olmadığını belirlemede kullanılabilir.
 
-Örneğin, *arka uç ilk bayt yanıt süresi* eğilimi, ancak *arka uç bağlantı zamanı* eğilimi kararlı ise, uygulama ağ geçidinin arka uç gecikmesi ve bağlantı kurma süresi kararlı olduğunu ve ani bir şekilde arka uç uygulamasının yanıt süresi boyunca bir artış meydana geldiğini çıkarmış olabilir. Öte yandan, arka uç *ilk bayt yanıt süresi* içindeki ani artış, *arka uç bağlantı zamanında*karşılık gelen bir ani ilişkili ise, Application Gateway ile arka uç sunucusu veya arka uç sunucusu TCP yığını arasındaki ağın doymuş olduğu anlaşılamıyor. 
+Örneğin, *arka uç ilk bayt yanıt süresi* eğilimi, ancak *arka uç bağlantı zamanı* eğilimi kararlı ise, uygulama ağ geçidinin arka uç gecikmesi ve bağlantı kurma süresi kararlı olduğunu ve ani bir şekilde arka uç uygulamasının yanıt süresi boyunca bir artış meydana geldiğini çıkarmış olabilir. Öte yandan, arka uç *ilk bayt yanıt süresi* içindeki ani artış, *arka uç bağlantı zamanında* karşılık gelen bir ani ilişkili ise, Application Gateway ile arka uç sunucusu veya arka uç sunucusu TCP yığını arasındaki ağın doymuş olduğu anlaşılamıyor. 
 
 *Arka uç son bayt yanıt* süresi içinde bir ani artış fark ederseniz, ancak *arka uç ilk bayt yanıt süresi* kararlı olduğunda, bu durumda ani bir dosya istenmekte olduğundan emin olabilir.
 
@@ -194,7 +194,7 @@ Application Gateway için aşağıdaki ölçümler kullanılabilir:
 
 ## <a name="metrics-visualization"></a>Ölçüm görselleştirme
 
-Uygulama ağ geçidine gidin, **izleme** ' nin altında **ölçümleri**seçin. Kullanılabilir değerleri görüntülemek için **ÖLÇÜM** açılan listesini seçin.
+Uygulama ağ geçidine gidin, **izleme** ' nin altında **ölçümleri** seçin. Kullanılabilir değerleri görüntülemek için **ÖLÇÜM** açılan listesini seçin.
 
 Aşağıdaki görüntüde, son 30 dakika boyunca üç ölçüm görüntülenirken bir örnek görürsünüz:
 
@@ -212,13 +212,13 @@ Aşağıdaki örnek, aktarım hızı bir eşiğe ulaştığında bir yöneticiye
 
    !["Ölçüm uyarısı Ekle" düğmesi][6]
 
-2. **Kural Ekle** sayfasında, ad, koşul ve bildirim bölümlerini doldurun ve **Tamam**' ı seçin.
+2. **Kural Ekle** sayfasında, ad, koşul ve bildirim bölümlerini doldurun ve **Tamam** ' ı seçin.
 
-   * **Koşul** seçicide dört değerden birini seçin: **büyüktür**, **büyüktür veya eşittir**, **küçüktür**veya **küçüktür veya eşittir**.
+   * **Koşul** seçicide dört değerden birini seçin: **büyüktür** , **büyüktür veya eşittir** , **küçüktür** veya **küçüktür veya eşittir**.
 
    * **Süre** seçicide beş dakikadan altı saat arasında bir dönem seçin.
 
-   * **E-posta sahipleri, katkıda bulunanlar ve okuyucular**' ı seçerseniz, e-posta söz konusu kaynağa erişimi olan kullanıcılara göre dinamik olabilir. Aksi takdirde, **ek yönetici e-postaları** kutusunda kullanıcıların virgülle ayrılmış bir listesini sağlayabilirsiniz.
+   * **E-posta sahipleri, katkıda bulunanlar ve okuyucular** ' ı seçerseniz, e-posta söz konusu kaynağa erişimi olan kullanıcılara göre dinamik olabilir. Aksi takdirde, **ek yönetici e-postaları** kutusunda kullanıcıların virgülle ayrılmış bir listesini sağlayabilirsiniz.
 
    ![Kural sayfası ekle][7]
 
@@ -230,7 +230,7 @@ Bir ölçüm uyarısı oluşturduktan sonra uyarıların bir listesi görüntül
 
 ![Uyarıların ve kuralların listesi][9]
 
-Uyarı bildirimleri hakkında daha fazla bilgi edinmek için bkz. [uyarı bildirimleri alma](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+Uyarı bildirimleri hakkında daha fazla bilgi edinmek için bkz. [uyarı bildirimleri alma](../azure-monitor/platform/alerts-overview.md).
 
 Web kancaları ve bunları uyarılarla nasıl kullanabileceğiniz hakkında daha fazla bilgi edinmek için [Azure ölçüm uyarısında Web kancası yapılandırma](../azure-monitor/platform/alerts-webhooks.md)makalesini ziyaret edin.
 

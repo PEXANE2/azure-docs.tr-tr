@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 10/12/2020
 ms.author: matjazl
-ms.openlocfilehash: 121ddcc013fbeef29c6d22cfbd273cfd3b8d3d98
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: bfbdb98e691312db5665261743f8ce698541d4cc
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92559006"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398224"
 ---
 # <a name="configure-private-link"></a>Özel bağlantıyı Yapılandır
 
@@ -30,7 +30,7 @@ ms.locfileid: "92559006"
 - FHıR için Azure API 'SI: özel bir uç noktanın arkasına koymak istediğiniz FHıR kaynağı.
 - Sanal ağ: istemci hizmetlerinizin ve özel uç noktanızın bağlanacağı VNet.
 
-Daha fazla bilgi için [özel bağlantı belgelerine](https://docs.microsoft.com/azure/private-link/)göz atın.
+Daha fazla bilgi için [özel bağlantı belgelerine](../private-link/index.yml)göz atın.
 
 ## <a name="disable-public-network-access"></a>Ortak ağ erişimini devre dışı bırak
 
@@ -40,7 +40,7 @@ FHıR kaynağınız için özel bir uç nokta oluşturulması, genel trafiği ot
 
 ## <a name="create-private-endpoint"></a>Özel uç nokta oluştur
 
-Özel bir uç nokta oluşturmak için, FHıR kaynağında RBAC izinlerine sahip bir geliştirici Azure portal, [Azure PowerShell](https://docs.microsoft.com/azure/private-link/create-private-endpoint-powershell)veya [Azure CLI](https://docs.microsoft.com/azure/private-link/create-private-endpoint-cli)kullanabilir. Bu makale, Azure portal kullanma adımlarında size yol gösterir. Özel DNS bölgesinin oluşturulmasını ve yapılandırılmasını otomatik hale getiren Azure portal kullanmak önerilir. Daha fazla ayrıntı için [özel bağlantı hızlı başlangıç kılavuzlarıyla](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal) başvurabilirsiniz.
+Özel bir uç nokta oluşturmak için, FHıR kaynağında RBAC izinlerine sahip bir geliştirici Azure portal, [Azure PowerShell](../private-link/create-private-endpoint-powershell.md)veya [Azure CLI](../private-link/create-private-endpoint-cli.md)kullanabilir. Bu makale, Azure portal kullanma adımlarında size yol gösterir. Özel DNS bölgesinin oluşturulmasını ve yapılandırılmasını otomatik hale getiren Azure portal kullanmak önerilir. Daha fazla ayrıntı için [özel bağlantı hızlı başlangıç kılavuzlarıyla](../private-link/create-private-endpoint-portal.md) başvurabilirsiniz.
 
 Özel uç nokta oluşturmanın iki yolu vardır. Otomatik onay akışı, FHıR kaynağında RBAC izinlerine sahip olan bir kullanıcının onaya gerek duymadan özel bir uç nokta oluşturmasına izin verir. El ile onay akışı, FHıR kaynağında izinleri olmayan bir kullanıcının FHıR kaynağının sahipleri tarafından onaylanabilmesi için özel bir uç nokta istemesine izin verir.
 

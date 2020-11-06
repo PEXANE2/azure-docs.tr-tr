@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: d55f52b5e99a7a617e2bec8bea4d6e6ef687730a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 898b0d00fcad99a1059e01ad54ce13d192f1227f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336539"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398020"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Bölgeler arası yük dengeleyici (Önizleme)
 
@@ -36,7 +36,7 @@ Azure Standart Load Balancer, coğrafi olarak yedekli HA senaryolarına olanak s
 
 > [!IMPORTANT]
 > Bölgeler arası yük dengeleyici Şu anda önizleme aşamasındadır ve genel kullanıma sunulmamaktadır.  Çapraz bölge yük dengeleyici önizlemesine erişmek için, bkz: [crossregionlb@microsoft.com](mailto:crossregionlb@microsoft.com) . </br> </br>
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bölgeler arası yük dengeleme, bölgesel standart yük dengeleyici olarak yüksek performanslı ve düşük gecikme süreleriyle aynı avantajları sunar. 
 
@@ -45,7 +45,7 @@ Bölgeler arası yük dengeleyicinizin ön uç IP yapılandırması statiktir ve
 :::image type="content" source="./media/cross-region-overview/cross-region-load-balancer.png" alt-text="Bölgeler arası yük dengeleyici diyagramı." border="true":::
 
 > [!NOTE]
-> Çapraz bölge yük dengeleyicisine Dengeleme kuralınızı yükleme arka uç bağlantı noktası, bölgesel standart yük dengeleyicideki Yük Dengeleme kuralı/gelen NAT kuralının ön uç bağlantı noktasıyla eşleşmelidir. 
+> Çapraz bölge yük dengeleyicideki Yük Dengeleme kuralınızın arka uç bağlantı noktası, bölgesel standart yük dengeleyicideki Yük Dengeleme kuralı/gelen NAT kuralının ön uç bağlantı noktasıyla eşleşmelidir. 
 
 ### <a name="regional-redundancy"></a>Bölgesel artıklık
 
@@ -55,7 +55,7 @@ Bir bölge başarısız olursa, trafik sonraki en iyi sağlıklı bölgesel yük
 
 Çapraz bölge yük dengeleyicinin sistem durumu araştırması, her 20 saniyede bir kullanılabilirlik hakkında bilgi toplar. Bir bölgesel yük dengeleyici, kullanılabilirliğini 0 olarak bırakmazsa, çapraz bölge yük dengeleyici hatayı algılar. Bölgesel yük dengeleyici daha sonra dönüşten sonra alınır. 
 
-:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="Bölgeler arası yük dengeleyici diyagramı." border="true":::
+:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="Genel bölge trafiği görünümü diyagramı." border="true":::
 
 ### <a name="ultra-low-latency"></a>Ultra düşük gecikme süresi
 
@@ -66,7 +66,7 @@ Bir istemciden başlatılan trafik, en yakın bölge dağıtımına ulaşmak iç
 Örneğin, Azure bölgelerindeki standart yük dengeleyiciler içeren bir çapraz bölge yük dengeleyiciye sahipsiniz:
 
 * Batı ABD
-* Kuzey Avrupa
+* North Europe
 
 Bir akış Seattle 'dan başlatılırsa trafik Batı ABD girer. Bu bölge Seattle 'dan en yakın katılımcı bölgesidir. Trafik, Batı ABD olan en yakın bölge yük dengeleyicisine yönlendirilir.
 
@@ -102,7 +102,7 @@ Yüksek oranda kullanılabilir ve çapraz bölge dağıtımı için mevcut yük 
 * West Europe
 * Güneydoğu Asya
 * Central US
-* Kuzey Avrupa
+* North Europe
 * Doğu Asya
 
 > [!NOTE]
@@ -120,7 +120,7 @@ Bölgeler arası yük dengeleyici, trafiği uygun bölgesel yük dengeleyiciye y
 * Orta ABD 
 * Doğu ABD 2 
 * Batı ABD 
-* Kuzey Avrupa 
+* North Europe 
 * Orta Güney ABD 
 * Batı ABD 2 
 * Güney Birleşik Krallık 

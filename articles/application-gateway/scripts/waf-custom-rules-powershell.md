@@ -7,18 +7,18 @@ ms.topic: sample
 ms.date: 6/7/2019
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8bf19052c11301412a299c31a2cd73ed2f9ffc7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 312f052671036d8153dd19fcf4e559e825fd8464
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079906"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397000"
 ---
 # <a name="create-web-application-firewall-waf-custom-rules-with-azure-powershell"></a>Azure PowerShell Web uygulaması güvenlik duvarı (WAF) özel kuralları oluşturma
 
-Bu betik, özel kurallar kullanan bir Application Gateway Web uygulaması güvenlik duvarı oluşturur. İstek üst bilgisi User-Agent *evbot*içeriyorsa, özel kural trafiği engeller.
+Bu betik, özel kurallar kullanan bir Application Gateway Web uygulaması güvenlik duvarı oluşturur. İstek üst bilgisi User-Agent *evbot* içeriyorsa, özel kural trafiği engeller.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="azure-powershell-module"></a>Azure PowerShell modülü
 
@@ -70,6 +70,6 @@ Bu betik, dağıtımı oluşturmak için aşağıdaki komutları kullanır. Tabl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- WAF özel kuralları hakkında daha fazla bilgi için bkz. [Web uygulaması güvenlik duvarı Için özel kurallar](../custom-waf-rules-overview.md)
+- WAF özel kuralları hakkında daha fazla bilgi için bkz. [Web uygulaması güvenlik duvarı Için özel kurallar](../../web-application-firewall/ag/custom-waf-rules-overview.md)
 - Azure PowerShell modülü hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/).
 - Ek uygulama ağ geçidi PowerShell betiği örnekleri, [Azure Application Gateway belgeleri](../powershell-samples.md) içinde bulunabilir.

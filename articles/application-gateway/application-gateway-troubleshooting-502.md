@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 1b0abe998540c4fcc0a9b83f6d1175e18a560871
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd1ca218d9c079e26f8424a36b90b9b657690b41
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84808148"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397714"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Application Gateway’deki hatalı ağ geçidi hataları ile ilgili sorunları giderme
 
@@ -95,8 +95,8 @@ Aşağıdaki tabloda, varsayılan sistem durumu araştırmasıyla ilişkili değ
 * BackendHttpSetting, 80 dışında bir bağlantı noktası belirtiyorsa, varsayılan site bu bağlantı noktasını dinlemek üzere yapılandırılmalıdır.
 * Çağrısı, `http://127.0.0.1:port` 200 http sonuç kodunu döndürmelidir. Bu, 30 saniyelik zaman aşımı süresi içinde döndürülmelidir.
 * Yapılandırılmış bağlantı noktasının açık olduğundan ve yapılandırılmış bağlantı noktasındaki gelen veya giden trafiği engelleyen güvenlik duvarı kuralları veya Azure ağ güvenlik grupları olmadığından emin olun.
-* Azure klasik VM 'Ler veya bulut hizmeti bir FQDN veya genel IP ile kullanılıyorsa, karşılık gelen [bitiş noktasının](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) açık olduğundan emin olun.
-* VM, Azure Resource Manager aracılığıyla yapılandırıldıysa ve uygulama ağ geçidinin dağıtıldığı VNet dışındaysa, istenen bağlantı noktasında erişime izin verecek şekilde bir [ağ güvenlik grubu](../virtual-network/security-overview.md) yapılandırılmalıdır.
+* Azure klasik VM 'Ler veya bulut hizmeti bir FQDN veya genel IP ile kullanılıyorsa, karşılık gelen [bitiş noktasının](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints?toc=%252fazure%252fapplication-gateway%252ftoc.json) açık olduğundan emin olun.
+* VM, Azure Resource Manager aracılığıyla yapılandırıldıysa ve uygulama ağ geçidinin dağıtıldığı VNet dışındaysa, istenen bağlantı noktasında erişime izin verecek şekilde bir [ağ güvenlik grubu](../virtual-network/network-security-groups-overview.md) yapılandırılmalıdır.
 
 ## <a name="problems-with-custom-health-probe"></a>Özel durum araştırmasıyla ilgili sorunlar
 
@@ -110,7 +110,7 @@ Aşağıdaki ek özellikler eklenmiştir:
 | --- | --- |
 | Ad |Araştırmanın adı. Bu ad, arka uç HTTP ayarlarındaki araştırmayı ifade etmek için kullanılır. |
 | Protokol |Araştırmayı göndermek için kullanılan protokol. Araştırma, arka uç HTTP ayarlarında tanımlanan protokolü kullanır |
-| Ana bilgisayar |Araştırmanın gönderileceği ana bilgisayar adı. Yalnızca uygulama ağ geçidinde birden çok site yapılandırıldığında geçerlidir. Bu, VM ana bilgisayar adından farklıdır. |
+| Yönetici |Araştırmanın gönderileceği ana bilgisayar adı. Yalnızca uygulama ağ geçidinde birden çok site yapılandırıldığında geçerlidir. Bu, VM ana bilgisayar adından farklıdır. |
 | Yol |Araştırmanın göreli yolu. Geçerli yol '/' öğesinden başlar. Araştırma \<protocol\> ://: öğesine gönderiliyor \<host\>\<port\>\<path\> |
 | Aralık |Saniye cinsinden yoklama aralığı. Bu iki ardışık yoklama arasındaki zaman aralığıdır. |
 | Zaman aşımı |Saniye cinsinden araştırma zaman aşımı. Bu zaman aşımı süresi içinde geçerli bir yanıt alınmadıysa, araştırma başarısız olarak işaretlenir. |
@@ -195,4 +195,3 @@ Backendadddresspool 'ın tüm örnekleri uygun değilse, uygulama ağ geçidi, K
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Yukarıdaki adımlar sorunu çözmezse, bir [destek bileti](https://azure.microsoft.com/support/options/)açın.
-
