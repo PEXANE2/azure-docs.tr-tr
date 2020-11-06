@@ -1,19 +1,19 @@
 ---
-title: IoT Tak ve Kullan örnek Node.js Cihaz kodunu Azure IoT Hub bağlayın | Microsoft Docs
-description: IoT Hub 'ına bağlanan IoT Tak ve Kullan örnek cihaz kodu derlemek ve çalıştırmak için Node.js kullanın. Cihaz tarafından hub 'a gönderilen bilgileri görüntülemek için Azure IoT gezgin aracını kullanın.
+title: Hızlı başlangıç-IoT Tak ve Kullan örnek Node.js Cihaz kodunu Azure IoT Hub bağlayın | Microsoft Docs
+description: Hızlı başlangıç-IoT Hub 'ına bağlanan IoT Tak ve Kullan örnek cihaz kodu derlemek ve çalıştırmak için Node.js kullanın. Cihaz tarafından hub 'a gönderilen bilgileri görüntülemek için Azure IoT gezgin aracını kullanın.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/10/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 2342577fdd7e42f4b21d1f47348c39e3ed4a46e3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 24f6cc1e9656957d6894ecb6b7c3e0476b233cf6
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747232"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421592"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-to-iot-hub-nodejs"></a>Hızlı başlangıç: bir örnek IoT Tak ve Kullan cihaz uygulamasını IoT Hub 'ye bağlama (Node.js)
 

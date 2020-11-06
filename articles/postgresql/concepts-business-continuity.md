@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: 5fb82c6098352076307f71eee022074a247e3cd9
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: cf3c07f32f15ff176974219bd8143a1ea315c945
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629349"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93423054"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı ile iş sürekliliği 'ne genel bakış-tek sunucu
 
@@ -21,9 +21,14 @@ Bu genel bakışta, PostgreSQL için Azure veritabanı 'nın iş sürekliliği v
 
 İş sürekliliği planınızı geliştirdikçe, kurtarma süresi hedefiniz (RTO) bu şekilde kesintiye uğradıktan sonra uygulama tamamen kurtarmadan önce kabul edilebilir maksimum süreyi anlamanız gerekir. Ayrıca, kurtarma noktası hedefiniz (RPO) olduğundan, uygulamanın, kesintiye uğratan sonra kurtarma sırasında kaybedilmesi için en yüksek veri güncelleştirme miktarını (zaman aralığı) anlamanız gerekir.
 
-PostgreSQL için Azure veritabanı, coğrafi geri yükleme başlatabilir ve okuma çoğaltmalarını farklı bir bölgede dağıtmaya yönelik coğrafi olarak yedekli yedeklemeler içeren iş sürekliliği özellikleri sunar. Her birinin, kurtarma zamanı ve olası veri kaybı için farklı özellikleri vardır. [Coğrafi geri yükleme](concepts-backup.md) özelliği ile, başka bir bölgeden çoğaltılan yedekleme verileri kullanılarak yeni bir sunucu oluşturulur. Geri yükleme ve kurtarma için gereken toplam süre, veritabanının boyutuna ve kurtarılacak günlüklerin miktarına bağlıdır. Sunucu oluşturmak için genel süre, birkaç dakikadan birkaç saate kadar farklılık gösterir. [Okuma çoğaltmalarıyla](concepts-read-replicas.md), birincil işlemden alınan işlem günlükleri zaman uyumsuz olarak çoğaltmaya akışla kaydedilir. Birincil ve çoğaltma arasındaki gecikme, siteler arasındaki gecikmeye ve ayrıca aktarılacak veri miktarına bağlıdır. Kullanılabilirlik bölgesi hatası gibi bir birincil site arızası durumunda çoğaltmayı yükseltmek, daha kısa bir RTO ve azaltılmış veri kaybı sağlar. 
+PostgreSQL için Azure veritabanı, coğrafi geri yükleme başlatabilir ve okuma çoğaltmalarını farklı bir bölgede dağıtmaya yönelik coğrafi olarak yedekli yedeklemeler içeren iş sürekliliği özellikleri sunar. Her birinin, kurtarma zamanı ve olası veri kaybı için farklı özellikleri vardır. [Coğrafi geri yükleme](concepts-backup.md) özelliği ile, başka bir bölgeden çoğaltılan yedekleme verileri kullanılarak yeni bir sunucu oluşturulur. Geri yükleme ve kurtarma için gereken toplam süre, veritabanının boyutuna ve kurtarılacak günlüklerin miktarına bağlıdır. Sunucu oluşturmak için genel süre, birkaç dakikadan birkaç saate kadar farklılık gösterir. [Okuma çoğaltmalarıyla](concepts-read-replicas.md), birincil işlemden alınan işlem günlükleri zaman uyumsuz olarak çoğaltmaya akışla kaydedilir. Bölge düzeyi veya bölge düzeyinde bir hata nedeniyle birincil veritabanı kesintisi durumunda çoğaltmaya yük devretmek, daha kısa bir RTO ve azaltılmış veri kaybı sağlar.
 
-Aşağıdaki tabloda tipik bir senaryoda RTO ve RPO karşılaştırılır:
+> [!NOTE]
+> Birincil ve çoğaltma arasındaki gecikme, siteler arasındaki gecikmeye, aktarılan veri miktarına ve birincil sunucunun yazma iş yükünde en önemlisi ne kadar önemli olduğuna bağlıdır. Ağır yazma iş yükleri önemli bir gecikme oluşturabilir. 
+>
+> Okuma çoğaltmaları için kullanılan zaman uyumsuz bir çoğaltma doğası nedeniyle, yüksek bir kullanılabilirlik (HA) çözümü olarak **değerlendirilmemelidir,** çünkü daha yüksek olan bir daha yüksek RTO ve RPO anlamına gelebilir. Yalnızca gecikmeleri iş yükünün yoğun ve yoğun olmayan süreleriyle daha küçük kaldığı iş yükleri için okuma çoğaltmaları bir HA alternatifi görevi görebilir. Aksi takdirde, okuma çoğaltmaları, kullanıma yönelik ağır iş yükleri ve (olağanüstü durum kurtarma) DR senaryolarında doğru okuma ölçeği için tasarlanmıştır.
+
+Aşağıdaki tabloda **tipik bir iş yükü** senaryosunda RTO ve RPO karşılaştırılır:
 
 | **Özellik** | **Temel** | **Genel Amaçlı** | **Bellek için iyileştirilmiş** |
 | :------------: | :-------: | :-----------------: | :------------------: |
@@ -31,7 +36,7 @@ Aşağıdaki tabloda tipik bir senaryoda RTO ve RPO karşılaştırılır:
 | Coğrafi olarak çoğaltılan yedeklerden coğrafi geri yükleme | Desteklenmez | RTO-değişecek <br/>RPO < 1 h | RTO-değişecek <br/>RPO < 1 h |
 | Okuma amaçlı çoğaltmalar | RTO-dakika * <br/>RPO < 5 dk * | RTO-dakika * <br/>RPO < 5 dk *| RTO-dakika * <br/>RPO < 5 dk *|
 
-\* RTO ve RPO, birincil veritabanı iş yükü ve bölgeler arasındaki gecikme süresi dahil çeşitli faktörlere bağlı olarak bazı durumlarda çok daha yüksek olabilir. 
+ \* RTO ve RPO, siteler arasında gecikme, aktarılacak veri miktarı ve önemli birincil veritabanı yazma iş yükü gibi çeşitli faktörlere bağlı olarak bazı durumlarda **çok daha yüksek** olabilir. 
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>Bir kullanıcı veya uygulama hatasından sonra bir sunucuyu kurtarma
 
@@ -56,7 +61,7 @@ Coğrafi geri yükleme özelliği, coğrafi olarak yedekli yedeklemeleri kullana
 > Coğrafi geri yükleme yalnızca, sunucuyu coğrafi olarak yedekli yedekleme depolama alanı ile sağladıysanız mümkündür. Var olan bir sunucu için yerel olarak yedekli yedekten coğrafi olarak yedekli yedeklemelere geçiş yapmak istiyorsanız, var olan sunucunuzun pg_dump kullanarak bir döküm almanız ve coğrafi olarak yedekli yedeklemelerle yapılandırılmış yeni oluşturulan bir sunucuya geri yüklemeniz gerekir.
 
 ## <a name="cross-region-read-replicas"></a>Bölgeler arası okuma çoğaltmaları
-İş sürekliliği ve olağanüstü durum kurtarma planlamasını iyileştirmek için bölgeler arası okuma çoğaltmalarını kullanabilirsiniz. Okuma çoğaltmaları PostgreSQL 'in fiziksel çoğaltma teknolojisi kullanılarak zaman uyumsuz olarak güncelleştirilir. Okuma çoğaltmaları, kullanılabilir bölgeler ve [okuma çoğaltmaları kavramları makalesindeki](concepts-read-replicas.md)yük devretme hakkında daha fazla bilgi edinin. 
+İş sürekliliği ve olağanüstü durum kurtarma planlamasını iyileştirmek için bölgeler arası okuma çoğaltmalarını kullanabilirsiniz. Okuma çoğaltmaları PostgreSQL 'in fiziksel çoğaltma teknolojisi kullanılarak zaman uyumsuz olarak güncelleştirilir ve birincil görevi erteleyebilirsiniz. Okuma çoğaltmaları, kullanılabilir bölgeler ve [okuma çoğaltmaları kavramları makalesindeki](concepts-read-replicas.md)yük devretme hakkında daha fazla bilgi edinin. 
 
 ## <a name="faq"></a>SSS
 ### <a name="where-does-azure-database-for-postgresql-store-customer-data"></a>PostgreSQL için Azure veritabanı müşteri verilerini nerede depolar?

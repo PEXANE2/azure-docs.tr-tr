@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 17daef18d87c4b5c906694ab1394694b32b6b130
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 78c6e4dffb35980b73fbc09bdc07d55215e659ae
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164881"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422595"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools ile çalışma
 
@@ -35,11 +35,11 @@ Azure Functions Core Tools üç sürümü vardır. Kullandığınız sürüm yer
 
 + [**Sürüm 3. x/2. x**](#v2): [Azure işlevleri çalışma zamanının sürüm 3. x veya 2. x](functions-versions.md)'i destekler. Bu sürümler [Windows](?tabs=windows#v2), [MacOS](?tabs=macos#v2)ve [Linux](?tabs=linux#v2) 'u destekler ve yükleme için platforma özgü paket yöneticilerini veya NPM 'yi kullanır.
 
-+ **Sürüm 1. x**: Azure işlevleri çalışma zamanının sürüm 1. x ' i destekler. Araçların bu sürümü yalnızca Windows bilgisayarlarda desteklenir ve bir [NPM paketinden](https://www.npmjs.com/package/azure-functions-core-tools)yüklenir.
++ **Sürüm 1. x** : Azure işlevleri çalışma zamanının sürüm 1. x ' i destekler. Araçların bu sürümü yalnızca Windows bilgisayarlarda desteklenir ve bir [NPM paketinden](https://www.npmjs.com/package/azure-functions-core-tools)yüklenir.
 
 Belirli bir bilgisayara yalnızca bir temel araçlar sürümü yükleyebilirsiniz. Aksi belirtilmedikçe, bu makaledeki örnekler sürüm 3. x içindir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Functions Core Tools Şu anda Azure hesabınızda kimlik doğrulaması için Azure CLı 'ye bağımlıdır. Bu, Azure CLı 'yı Azure Functions Core Tools 'ten [Azure 'a yayımlayabilmek](#publish) için [yerel olarak kurmanız](/cli/azure/install-azure-cli) gerektiği anlamına gelir. 
 
@@ -166,7 +166,7 @@ func init MyFunctionProj
 ```
 
 >[!IMPORTANT]
-> Java, ilk HTTP tetiklemeli işlevinizle birlikte yerel Işlevler projesini oluşturmak için bir Maven ıbetype kullanır. Java projenizi oluşturmak için şu komutu kullanın: `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` . Maven arşiv EType kullanan bir örnek için bkz. [komut satırı hızlı başlangıç](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java).  
+> Java, ilk HTTP tetiklemeli işlevinizle birlikte yerel Işlevler projesini oluşturmak için bir Maven ıbetype kullanır. Java projenizi oluşturmak için şu komutu kullanın: `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` . Maven arşiv EType kullanan bir örnek için bkz. [komut satırı hızlı başlangıç](./create-first-function-cli-java.md).  
 
 Bir proje adı sağladığınızda, bu ada sahip yeni bir klasör oluşturulur ve başlatılır. Aksi takdirde, geçerli klasör başlatılır.  
 Sürüm 3. x/2. x ' te, komutunu çalıştırdığınızda projeniz için bir çalışma zamanı seçmeniz gerekir. 
@@ -179,7 +179,7 @@ python
 powershell
 </pre>
 
-Yukarı/aşağı ok tuşlarını kullanarak bir dil seçin ve ENTER tuşuna basın. JavaScript veya TypeScript işlevleri geliştirmeyi planlıyorsanız **düğüm**' yi seçin ve ardından dili seçin. TypeScript [bazı ek gereksinimlere](functions-reference-node.md#typescript)sahiptir. 
+Yukarı/aşağı ok tuşlarını kullanarak bir dil seçin ve ENTER tuşuna basın. JavaScript veya TypeScript işlevleri geliştirmeyi planlıyorsanız **düğüm** ' yi seçin ve ardından dili seçin. TypeScript [bazı ek gereksinimlere](functions-reference-node.md#typescript)sahiptir. 
 
 Çıktı bir JavaScript projesi için aşağıdaki örneğe benzer şekilde görünür:
 
@@ -247,13 +247,13 @@ Varsayılan olarak, bu ayarlar proje Azure 'da yayımlandığında otomatik olar
 
 Geliştirme için Microsoft Azure Depolama Öykünücüsü kullanılırken bile gerçek bir depolama bağlantısıyla test etmek isteyebilirsiniz. Zaten [bir depolama hesabı oluşturmuş](../storage/common/storage-account-create.md)olduğunuz varsayılarak, aşağıdaki yollarla geçerli bir depolama bağlantı dizesi alabilirsiniz:
 
-- [Azure Portal], **depolama hesaplarını**arayıp seçin. 
+- [Azure Portal], **depolama hesaplarını** arayıp seçin. 
   ![Azure portal depolama hesaplarını seçin](./media/functions-run-local/select-storage-accounts.png)
   
-  Depolama hesabınızı seçin, **Ayarlar**' da **erişim tuşları** ' nı seçin, sonra **bağlantı dizesi** değerlerinden birini kopyalayın.
+  Depolama hesabınızı seçin, **Ayarlar** ' da **erişim tuşları** ' nı seçin, sonra **bağlantı dizesi** değerlerinden birini kopyalayın.
   ![Bağlantı dizesini Azure portal Kopyala](./media/functions-run-local/copy-storage-connection-portal.png)
 
-- Azure hesabınıza bağlanmak için [Azure Depolama Gezgini](https://storageexplorer.com/) kullanın. **Gezgin**'de aboneliğinizi genişletin, **depolama hesapları**' nı genişletin, depolama hesabınızı seçin ve birincil veya ikincil bağlantı dizesini kopyalayın.
+- Azure hesabınıza bağlanmak için [Azure Depolama Gezgini](https://storageexplorer.com/) kullanın. **Gezgin** 'de aboneliğinizi genişletin, **depolama hesapları** ' nı genişletin, depolama hesabınızı seçin ve birincil veya ikincil bağlantı dizesini kopyalayın.
 
   ![Bağlantı dizesini Depolama Gezgini Kopyala](./media/functions-run-local/storage-explorer.png)
 
@@ -309,12 +309,12 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 Ayrıca, aşağıdaki bağımsız değişkenleri kullanarak komutta bu seçenekleri belirtebilirsiniz:
 
-| Bağımsız Değişken     | Description                            |
+| Bağımsız Değişken     | Açıklama                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (Sürüm 2. x ve sonraki sürümler.) 1. x sürümünde ve portalda kullanılan C# betiği (. CSX) şablonlarını üretir. |
-| **`--language`**, **`-l`**| C#, F # veya JavaScript gibi şablon programlama dili. Bu seçenek, 1. x sürümünde gereklidir. Sürüm 2. x ve sonraki sürümlerde, bu seçeneği kullanmayın veya çalışan çalışma zamanıyla eşleşen bir dil seçin. |
-| **`--name`**, **`-n`** | İşlev adı. |
-| **`--template`**, **`-t`** | `func templates list`Desteklenen her dil için kullanılabilir şablonların tüm listesini görmek için komutunu kullanın.   |
+| **`--language`** , **`-l`**| C#, F # veya JavaScript gibi şablon programlama dili. Bu seçenek, 1. x sürümünde gereklidir. Sürüm 2. x ve sonraki sürümlerde, bu seçeneği kullanmayın veya çalışan çalışma zamanıyla eşleşen bir dil seçin. |
+| **`--name`** , **`-n`** | İşlev adı. |
+| **`--template`** , **`-t`** | `func templates list`Desteklenen her dil için kullanılabilir şablonların tüm listesini görmek için komutunu kullanın.   |
 
 
 Örneğin, tek bir komutta bir JavaScript HTTP tetikleyicisi oluşturmak için şunu çalıştırın:
@@ -357,7 +357,7 @@ func start
 ```
 func start
 ```
-Bu komutun [sanal bir ortamda çalıştırılması](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#create-venv)gerekir.
+Bu komutun [sanal bir ortamda çalıştırılması](./create-first-function-cli-python.md)gerekir.
 
 # <a name="typescript"></a>[TypeScript](#tab/ts)
 
@@ -385,10 +385,10 @@ npm start
 | **`--language-worker`** | Dil çalışanını yapılandırmak için bağımsız değişkenler. Örneğin, [hata ayıklama bağlantı noktası ve diğer gerekli bağımsız değişkenleri](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)sağlayarak dil çalışanı için hata ayıklamayı etkinleştirebilirsiniz. 1. x sürümü için desteklenmez. |
 | **`--cert`** | Özel anahtar içeren bir. pfx dosyasının yolu. Yalnızca ile kullanılır `--useHttps` . 1. x sürümü için desteklenmez. |
 | **`--password`** | Bir. pfx dosyasının parolasını içeren parola veya dosya. Yalnızca ile kullanılır `--cert` . 1. x sürümü için desteklenmez. |
-| **`--port`**, **`-p`** | Dinlenecek yerel bağlantı noktası. Varsayılan değer: 7071. |
+| **`--port`** , **`-p`** | Dinlenecek yerel bağlantı noktası. Varsayılan değer: 7071. |
 | **`--pause-on-error`** | İşlemden çıkmadan önce ek giriş için duraklatın. Yalnızca tümleşik geliştirme ortamından (IDE) temel araçlar başlatılırken kullanılır.|
-| **`--script-root`**, **`--prefix`** | Çalıştırılacak veya dağıtılacak işlev uygulamasının köküne ait yolu belirtmek için kullanılır. Bu, bir alt klasöre proje dosyaları üreten derlenmiş projeler için kullanılır. Örneğin, bir C# sınıf kitaplığı projesi oluşturduğunuzda, dosyalar üzerinde host.js, local.settings.jsve function.js, gibi bir yol içeren bir *kök* alt klasörde oluşturulur `MyProject/bin/Debug/netstandard2.0` . Bu durumda, önekini olarak ayarlayın `--script-root MyProject/bin/Debug/netstandard2.0` . Bu, Azure 'da çalışırken işlev uygulamasının köküdür. |
-| **`--timeout`**, **`-t`** | Işlevlerin başlaması için gereken zaman aşımı (saniye cinsinden). Varsayılan: 20 saniye.|
+| **`--script-root`** , **`--prefix`** | Çalıştırılacak veya dağıtılacak işlev uygulamasının köküne ait yolu belirtmek için kullanılır. Bu, bir alt klasöre proje dosyaları üreten derlenmiş projeler için kullanılır. Örneğin, bir C# sınıf kitaplığı projesi oluşturduğunuzda, dosyalar üzerinde host.js, local.settings.jsve function.js, gibi bir yol içeren bir *kök* alt klasörde oluşturulur `MyProject/bin/Debug/netstandard2.0` . Bu durumda, önekini olarak ayarlayın `--script-root MyProject/bin/Debug/netstandard2.0` . Bu, Azure 'da çalışırken işlev uygulamasının köküdür. |
+| **`--timeout`** , **`-t`** | Işlevlerin başlaması için gereken zaman aşımı (saniye cinsinden). Varsayılan: 20 saniye.|
 | **`--useHttps`** | Yerine öğesine bağlayın `https://localhost:{port}` `http://localhost:{port}` . Varsayılan olarak, bu seçenek bilgisayarınızda güvenilir bir sertifika oluşturur.|
 
 Işlevler ana bilgisayarı başlatıldığında, HTTP ile tetiklenen işlevlerin URL 'sini verir:
@@ -488,10 +488,10 @@ Sürüm 1. x ' de, kullanarak bir işlevi doğrudan çağırabilirsiniz `func ru
 
 | Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
-| **`--content`**, **`-c`** | Satır içi içerik. |
-| **`--debug`**, **`-d`** | İşlevi çalıştırmadan önce konak işlemine bir hata ayıklayıcı ekleyin.|
-| **`--timeout`**, **`-t`** | Yerel Işlevlerin barındırmaya hazırlanana kadar beklenecek süre (saniye cinsinden).|
-| **`--file`**, **`-f`** | İçerik olarak kullanılacak dosya adı.|
+| **`--content`** , **`-c`** | Satır içi içerik. |
+| **`--debug`** , **`-d`** | İşlevi çalıştırmadan önce konak işlemine bir hata ayıklayıcı ekleyin.|
+| **`--timeout`** , **`-t`** | Yerel Işlevlerin barındırmaya hazırlanana kadar beklenecek süre (saniye cinsinden).|
+| **`--file`** , **`-f`** | İçerik olarak kullanılacak dosya adı.|
 | **`--no-interactive`** | Girişi istemez. Otomasyon senaryoları için faydalıdır.|
 
 Örneğin, HTTP ile tetiklenen bir işlev çağırmak ve içerik gövdesini geçirmek için aşağıdaki komutu çalıştırın:
@@ -500,7 +500,7 @@ Sürüm 1. x ' de, kullanarak bir işlevi doğrudan çağırabilirsiniz `func ru
 func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ```
 
-## <a name="publish-to-azure"></a><a name="publish"></a>Azure’da Yayımlama
+## <a name="publish-to-azure"></a><a name="publish"></a>Azure 'da yayımlama
 
 Azure Functions Core Tools iki tür dağıtımı destekler: işlev projesi dosyalarını [ZIP dağıtımı](functions-deployment-technologies.md#zip-deploy) ve [dağıtım](functions-deployment-technologies.md#docker-container)aracılığıyla doğrudan işlev uygulamanıza dağıtma. Kodunuzu dağıtacağınız [Azure aboneliğinizde zaten bir işlev uygulaması oluşturmuş](functions-cli-samples.md#create)olmanız gerekir. İkililerin dağıtılması için derleme gerektiren projeler oluşturulmalıdır.
 
@@ -537,12 +537,12 @@ Aşağıdaki yayımlama seçenekleri yalnızca sürüm 2. x ve sonraki sürümle
 
 | Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
-| **`--publish-settings-only`**, **`-o`** |  Yalnızca ayarları yayımlayın ve içeriği atlayın. Varsayılan istem. |
+| **`--publish-settings-only`** , **`-o`** |  Yalnızca ayarları yayımlayın ve içeriği atlayın. Varsayılan istem. |
 |**`--list-ignored-files`** | Yayımlama sırasında yoksayılan,. funcignore dosyasını temel alan dosyaların listesini görüntüler. |
 | **`--list-included-files`** | Yayımlanan dosyaların bir listesini görüntüler, bu,. funcignore dosyasını temel alır. |
 | **`--nozip`** | Varsayılan modu kapatır `Run-From-Package` . |
 | **`--build-native-deps`** | Python işlev uygulamaları yayımlanırken. tekerlek klasörü oluşturmayı atlar. |
-| **`--build`**, **`-b`** | Bir Linux işlev uygulamasına dağıtım yaparken derleme eylemi gerçekleştirir. Kabul eder: `remote` ve `local` . |
+| **`--build`** , **`-b`** | Bir Linux işlev uygulamasına dağıtım yaparken derleme eylemi gerçekleştirir. Kabul eder: `remote` ve `local` . |
 | **`--additional-packages`** | Yerel bağımlılıklar oluşturulurken yüklenecek paketlerin listesi. Örneğin: `python3-dev libevent-dev`. |
 | **`--force`** | Belirli senaryolarda yayımlama öncesi doğrulamayı yoksayın. |
 | **`--csx`** | Bir C# betiği (. CSX) projesi yayımlayın. |
@@ -593,7 +593,7 @@ Bir hata veya özellik isteğini dosyabir [GitHub sorunu açın](https://github.
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure portalı]: https://portal.azure.com 
+[Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 [AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage

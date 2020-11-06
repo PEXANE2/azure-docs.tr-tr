@@ -1,18 +1,18 @@
 ---
-title: IoT Tak ve Kullan örnek C Cihaz kodunu IoT Hub bağlayın | Microsoft Docs
-description: Birden çok bileşen kullanan ve IoT Hub 'ına bağlanan IoT Tak ve Kullan örnek C cihaz kodu oluşturun ve çalıştırın. Cihaz tarafından hub 'a gönderilen bilgileri görüntülemek için Azure IoT gezgin aracını kullanın.
+title: Öğretici-IoT Tak ve Kullan örnek C Cihaz kodunu Azure IoT Hub bağlama | Microsoft Docs
+description: Öğretici-birden çok bileşen kullanan ve IoT Hub 'ına bağlanan IoT Tak ve Kullan örnek C cihaz kodu oluşturun ve çalıştırın. Cihaz tarafından hub 'a gönderilen bilgileri görüntülemek için Azure IoT gezgin aracını kullanın.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: e1a2a45d0f5743874ce0c0b20190d7d396094e43
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 0bf0e45f6e9b088567dd48d3eb12ae979ba679e4
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046392"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421490"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-applications-running-on-linux-or-windows-to-iot-hub-c"></a>Öğretici: Linux veya Windows üzerinde çalışan bir IoT Tak ve Kullan birden çok bileşen cihaz uygulamasını IoT Hub 'ye bağlama (C)
 
@@ -20,7 +20,7 @@ ms.locfileid: "92046392"
 
 Bu öğreticide, bileşenleriyle bir örnek IoT Tak ve Kullan cihaz uygulaması oluşturma, bunları IoT Hub 'ınıza bağlama ve Azure IoT Gezgini aracını kullanarak hub 'a gönderdiği bilgileri görüntüleme hakkında bilgi verilmektedir. Örnek uygulama C dilinde yazılır ve C için Azure IoT cihaz SDK 'sına dahildir. Bir çözüm Oluşturucusu, herhangi bir cihaz kodunu görüntülemeye gerek olmadan IoT Tak ve Kullan cihazının yeteneklerini anlamak için Azure IoT gezgin aracını kullanabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -34,14 +34,14 @@ Bu öğretici Ubuntu Linux kullandığınızı varsayar. Bu öğreticideki adım
 
 Linux 'ta bu öğreticiyi tamamlayabilmeniz için, yerel Linux ortamınıza aşağıdaki yazılımı yüklersiniz:
 
-Komutunu kullanarak **GCC**, **Git**, **CMake**ve tüm gerekli bağımlılıkları yükler `apt-get` :
+Komutunu kullanarak **GCC** , **Git** , **CMake** ve tüm gerekli bağımlılıkları yükler `apt-get` :
 
 ```sh
 sudo apt-get update
 sudo apt-get install -y git cmake build-essential curl libcurl4-openssl-dev libssl-dev uuid-dev
 ```
 
-Öğesinin sürümünün `cmake` **2.8.12** üzerinde olduğunu ve **GCC** 'nin sürümünün **4.4.7**'in üzerinde olduğunu doğrulayın.
+Öğesinin sürümünün `cmake` **2.8.12** üzerinde olduğunu ve **GCC** 'nin sürümünün **4.4.7** 'in üzerinde olduğunu doğrulayın.
 
 ```sh
 cmake --version
@@ -80,7 +80,7 @@ Visual Studio 'Yu kullanarak veya komut satırında kodu oluşturabilir ve çal�
 
 1. Kopyalanmış deponun kök klasörünü açın. Birkaç saniye sonra, Visual Studio 'da **CMake** desteği, projeyi çalıştırmak ve hatalarını ayıklamak için ihtiyacınız olan tümünü oluşturur.
 1. Visual Studio hazırlanıyor, **Çözüm Gezgini** *iothub_client/Samples/PNP/pnp_temperature_controller/* örneğine gidin.
-1. *Pnp_temperature_controller. c* dosyasına sağ tıklayın ve **hata ayıklama yapılandırması Ekle**' yi seçin. **Varsayılan**' ı seçin.
+1. *Pnp_temperature_controller. c* dosyasına sağ tıklayın ve **hata ayıklama yapılandırması Ekle** ' yi seçin. **Varsayılan** ' ı seçin.
 1. Visual Studio dosyada *launch.vs.js* açar. Gerekli ortam değişkenlerini ayarlamak için bu dosyayı aşağıdaki kod parçacığında gösterildiği gibi düzenleyin. [Iot Tak ve kullan hızlı başlangıç ve öğreticiler için ortamınızı ayarlamayı](set-up-environment.md)tamamladıktan sonra kapsam kimliği ve kayıt birincil anahtarını bir yere görürsünüz:
 
     ```json
@@ -104,7 +104,7 @@ Visual Studio 'Yu kullanarak veya komut satırında kodu oluşturabilir ve çal�
     }
     ```
 
-1. *Pnp_temperature_controller. c* dosyasına sağ tıklayın ve **Başlangıç öğesi olarak ayarla**' yı seçin.
+1. *Pnp_temperature_controller. c* dosyasına sağ tıklayın ve **Başlangıç öğesi olarak ayarla** ' yı seçin.
 1. Visual Studio 'da kod yürütmeyi izlemek için, `main` *pnp_temperature_controller. c* dosyasındaki işleve bir kesme noktası ekleyin.
 1. Artık **hata ayıklama** menüsünden örneği çalıştırabilir ve hata ayıklaması yapabilirsiniz.
 
@@ -167,7 +167,7 @@ Bu örnek için, kod *sık karşılaşılan* klasöründen bazı yardımcı işl
 
 *pnp_device_client_ll* , IoT Tak ve Kullan için `model-id` bir parametre olarak içerilen Connect metodunu içerir: `PnP_CreateDeviceClientLLHandle` .
 
-*pnp_protocol*: IoT Tak ve kullan yardımcı işlevlerini içerir:
+*pnp_protocol* : IoT Tak ve kullan yardımcı işlevlerini içerir:
 
 * `PnP_CreateReportedProperty`
 * `PnP_CreateReportedPropertyWithStatus`

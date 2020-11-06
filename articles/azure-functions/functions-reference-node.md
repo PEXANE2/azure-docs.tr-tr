@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 758e11a9c043fbd1238d1e3533a2d83804ec0b73
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 5b9ffdec83fb613b7df0b5a3227ca66c55e54fe9
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043107"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422561"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Işlevleri JavaScript Geliştirici Kılavuzu
 
@@ -20,7 +20,7 @@ Express.js, Node.js veya JavaScript geliştiricisi olarak Azure Işlevleri 'ne y
 
 | Başlarken | Kavramlar| Kılavuzlu öğrenme |
 | -- | -- | -- | 
-| <ul><li>[ Visual Studio Code kullanarakNode.js işlevi](./functions-create-first-function-vs-code.md?pivots=programming-language-javascript)</li><li>[ Terminal/komut istemiyleNode.js işlevi](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-javascript)</li></ul> | <ul><li>[Geliştirici kılavuzu](functions-reference.md)</li><li>[Barındırma seçenekleri](functions-scale.md)</li><li>[TypeScript işlevleri](#typescript)</li><li>[Performans &nbsp; konuları](functions-best-practices.md)</li></ul> | <ul><li>[Sunucusuz uygulamalar oluşturma](/learn/paths/create-serverless-applications/)</li><li>[Node.js ve hızlı API 'Leri sunucusuz API 'lere yeniden düzenleme](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
+| <ul><li>[ Visual Studio Code kullanarakNode.js işlevi](./create-first-function-vs-code-node.md)</li><li>[ Terminal/komut istemiyleNode.js işlevi](./create-first-function-cli-java.md)</li></ul> | <ul><li>[Geliştirici kılavuzu](functions-reference.md)</li><li>[Barındırma seçenekleri](functions-scale.md)</li><li>[TypeScript işlevleri](#typescript)</li><li>[Performans &nbsp; konuları](functions-best-practices.md)</li></ul> | <ul><li>[Sunucusuz uygulamalar oluşturma](/learn/paths/create-serverless-applications/)</li><li>[Node.js ve hızlı API 'Leri sunucusuz API 'lere yeniden düzenleme](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
 ## <a name="javascript-function-basics"></a>JavaScript işlevi temelleri
 
@@ -201,7 +201,7 @@ module.exports = (context) => {
 
 İşlevinize geçirilen bağlam, `executionContext` aşağıdaki özelliklere sahip bir nesne olan bir özelliği gösterir:
 
-| Özellik adı  | Tür  | Description |
+| Özellik adı  | Tür  | Açıklama |
 |---------|---------|---------|
 | `invocationId` | Dize | Belirli işlev çağrısı için benzersiz bir tanımlayıcı sağlar. |
 | `functionName` | Dize | Çalışan işlevin adını sağlar |
@@ -651,7 +651,7 @@ Sürüm 1. x içinde, ayar `languageWorkers:node:arguments` çalışmayacak. Hat
 
 ## <a name="typescript"></a>TypeScript
 
-Işlevler çalışma zamanının 2. x sürümünü hedeflediğinizde, hem Visual Studio Code hem de [Azure Functions Core Tools](functions-run-local.md) [için Azure işlevleri](functions-create-first-function-vs-code.md) , TypeScript işlev uygulaması projelerini destekleyen bir şablon kullanarak işlev uygulamaları oluşturmanıza olanak tanır. Şablon, `package.json` `tsconfig.json` Bu araçlarla derleyin, çalıştırmak ve TypeScript kodundan JavaScript işlevlerini yayımlamayı kolaylaştıran proje dosyaları oluşturur.
+Işlevler çalışma zamanının 2. x sürümünü hedeflediğinizde, hem Visual Studio Code hem de [Azure Functions Core Tools](functions-run-local.md) [için Azure işlevleri](./create-first-function-cli-typescript.md) , TypeScript işlev uygulaması projelerini destekleyen bir şablon kullanarak işlev uygulamaları oluşturmanıza olanak tanır. Şablon, `package.json` `tsconfig.json` Bu araçlarla derleyin, çalıştırmak ve TypeScript kodundan JavaScript işlevlerini yayımlamayı kolaylaştıran proje dosyaları oluşturur.
 
 Oluşturulan bir `.funcignore` Dosya, bir proje Azure 'da yayımlandığında hangi dosyaların dışlandığını göstermek için kullanılır.  
 

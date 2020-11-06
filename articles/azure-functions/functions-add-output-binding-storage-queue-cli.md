@@ -5,20 +5,39 @@ ms.date: 02/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 3e84db3aa13ae77f931a46683f0c5e4572f6ce44
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c7d41d889692856a9818aacd265e67b0c2d3d1ad
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87852642"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422884"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>Komut satırı araçlarını kullanarak Azure Işlevlerini Azure depolama 'ya bağlama
 
-Bu makalede, bir Azure depolama kuyruğunu [önceki hızlı](functions-create-first-azure-function-azure-cli.md)başlangıçta oluşturduğunuz işlev ve depolama hesabıyla tümleştirmeniz gerekir. Bu tümleştirmeyi, HTTP isteğinden kuyruktaki bir iletiye veri yazan bir *Çıkış bağlaması* kullanarak elde edersiniz. Bu makalenin tamamlanması, önceki hızlı başlangıç için birkaç USD 'nin ötesinde ek maliyet yoktur. Bağlamalar hakkında daha fazla bilgi edinmek için bkz. [Azure işlevleri Tetikleyicileri ve bağlamaları kavramları](functions-triggers-bindings.md).
+Bu makalede, bir Azure depolama kuyruğunu önceki hızlı başlangıç makalesinde oluşturduğunuz işlev ve depolama hesabıyla tümleştirmeniz gerekir. Bu tümleştirmeyi, HTTP isteğinden kuyruktaki bir iletiye veri yazan bir *Çıkış bağlaması* kullanarak elde edersiniz. Bu makalenin tamamlanması, önceki hızlı başlangıç için birkaç USD 'nin ötesinde ek maliyet yoktur. Bağlamalar hakkında daha fazla bilgi edinmek için bkz. [Azure işlevleri Tetikleyicileri ve bağlamaları kavramları](functions-triggers-bindings.md).
 
 ## <a name="configure-your-local-environment"></a>Yerel ortamınızı yapılandırma
 
-Başlamadan önce, [komut satırından hızlı başlangıç: Azure işlevleri projesi oluşturma](functions-create-first-azure-function-azure-cli.md)makalesini doldurmanız gerekir. Bu makalenin sonunda kaynakları zaten temizlediğinizde, işlev uygulamasını ve ilgili kaynakları Azure 'da yeniden oluşturmak için adımlara tekrar gidin.
+Başlamadan önce, [komut satırından hızlı başlangıç: Azure işlevleri projesi oluşturma][previous-quickstart]makalesini doldurmanız gerekir. Bu makalenin sonunda kaynakları zaten temizlediğinizde, işlev uygulamasını ve ilgili kaynakları Azure 'da yeniden oluşturmak için adımlara tekrar gidin.
+
+::: zone pivot="programming-language-csharp"  
+Başlamadan önce, [komut satırından hızlı başlangıç: Azure işlevleri projesi oluşturma](create-first-function-cli-csharp.md)makalesini doldurmanız gerekir. Bu makalenin sonunda kaynakları zaten temizlediğinizde, işlev uygulamasını ve ilgili kaynakları Azure 'da yeniden oluşturmak için adımlara tekrar gidin.  
+::: zone-end  
+::: zone pivot="programming-language-javascript"  
+Başlamadan önce, [komut satırından hızlı başlangıç: Azure işlevleri projesi oluşturma](create-first-function-cli-node.md)makalesini doldurmanız gerekir. Bu makalenin sonunda kaynakları zaten temizlediğinizde, işlev uygulamasını ve ilgili kaynakları Azure 'da yeniden oluşturmak için adımlara tekrar gidin.  
+::: zone-end   
+::: zone pivot="programming-language-java"  
+Başlamadan önce, [komut satırından hızlı başlangıç: Azure işlevleri projesi oluşturma](create-first-function-cli-java.md)makalesini doldurmanız gerekir. Bu makalenin sonunda kaynakları zaten temizlediğinizde, işlev uygulamasını ve ilgili kaynakları Azure 'da yeniden oluşturmak için adımlara tekrar gidin.  
+::: zone-end   
+::: zone pivot="programming-language-typescript"  
+Başlamadan önce, [komut satırından hızlı başlangıç: Azure işlevleri projesi oluşturma](create-first-function-cli-typescript.md)makalesini doldurmanız gerekir. Bu makalenin sonunda kaynakları zaten temizlediğinizde, işlev uygulamasını ve ilgili kaynakları Azure 'da yeniden oluşturmak için adımlara tekrar gidin.  
+::: zone-end   
+::: zone pivot="programming-language-python"  
+Başlamadan önce, [komut satırından hızlı başlangıç: Azure işlevleri projesi oluşturma](create-first-function-cli-python.md)makalesini doldurmanız gerekir. Bu makalenin sonunda kaynakları zaten temizlediğinizde, işlev uygulamasını ve ilgili kaynakları Azure 'da yeniden oluşturmak için adımlara tekrar gidin.  
+::: zone-end   
+::: zone pivot="programming-language-powershell"  
+Başlamadan önce, [komut satırından hızlı başlangıç: Azure işlevleri projesi oluşturma](create-first-function-cli-powershell.md)makalesini doldurmanız gerekir. Bu makalenin sonunda kaynakları zaten temizlediğinizde, işlev uygulamasını ve ilgili kaynakları Azure 'da yeniden oluşturmak için adımlara tekrar gidin.  
+::: zone-end   
 
 [!INCLUDE [functions-cli-get-storage-connection](../../includes/functions-cli-get-storage-connection.md)]
 
@@ -107,7 +126,7 @@ mvn azure-functions:deploy
 
     # <a name="curl"></a>[kıvr](#tab/curl)
     
-    [`curl`](https://curl.haxx.se/)Parametresini ekleyerek **Invoke URL 'si**ile çalıştırın `&name=Functions` . Komutun çıktısı, "Hello Functions" metni olmalıdır.
+    [`curl`](https://curl.haxx.se/)Parametresini ekleyerek **Invoke URL 'si** ile çalıştırın `&name=Functions` . Komutun çıktısı, "Hello Functions" metni olmalıdır.
     
     ![İşlevin çıktısı, Azure 'da KıVRıMLı kullanılarak çalışır](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-curl.png)
 
@@ -129,33 +148,41 @@ HTTP ile tetiklenen işlevinizi bir depolama kuyruğuna veri yazmak için günce
 
 + [Azure Functions Core Tools ile çalışma](functions-run-local.md)  
 
++ [Azure Işlevleri Tetikleyicileri ve bağlamaları](functions-triggers-bindings.md)
+
 ::: zone pivot="programming-language-csharp"  
 + [C# ' de tamamen işlev projelerinin örnekleri](/samples/browse/?products=azure-functions&languages=csharp).
 
 + [Azure Işlevleri C# Geliştirici Başvurusu](functions-dotnet-class-library.md)  
+
+[previous-quickstart]: create-first-function-cli-csharp.md
+
 ::: zone-end 
 ::: zone pivot="programming-language-javascript"  
 + [JavaScript 'teki bütün işlev projelerinin örnekleri](/samples/browse/?products=azure-functions&languages=javascript).
 
 + [Azure Işlevleri JavaScript Geliştirici Kılavuzu](functions-reference-node.md)  
+
+[previous-quickstart]: create-first-function-cli-javascript.md
 ::: zone-end  
 ::: zone pivot="programming-language-typescript"  
 + [TypeScript 'teki bütün işlev projelerinin örnekleri](/samples/browse/?products=azure-functions&languages=typescript).
 
 + [Azure Işlevleri TypeScript Geliştirici Kılavuzu](functions-reference-node.md#typescript)  
+
+[previous-quickstart]: create-first-function-cli-typescript.md
 ::: zone-end  
 ::: zone pivot="programming-language-python"  
 + [Python 'da tüm işlev projelerinin örnekleri](/samples/browse/?products=azure-functions&languages=python).
 
 + [Azure Işlevleri Python Geliştirici Kılavuzu](functions-reference-python.md)  
+
+[previous-quickstart]: create-first-function-cli-python.md
 ::: zone-end  
 ::: zone pivot="programming-language-powershell"  
 + [PowerShell 'de tüm işlev projelerinin örnekleri](/samples/browse/?products=azure-functions&languages=azurepowershell).
 
 + [Azure Işlevleri PowerShell Geliştirici Kılavuzu](functions-reference-powershell.md) 
+
+[previous-quickstart]: create-first-function-cli-powershell.md
 ::: zone-end
-+ [Azure Işlevleri Tetikleyicileri ve bağlamaları](functions-triggers-bindings.md)
-
-+ [İşlevler fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/functions/)
-
-+ [Tüketim planı maliyetlerini tahmin etme](functions-consumption-costs.md) 

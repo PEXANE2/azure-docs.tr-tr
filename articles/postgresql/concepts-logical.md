@@ -5,24 +5,27 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/22/2020
-ms.openlocfilehash: 4ab4a64fa395c105ced8e47cdcec019373f7f835
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/05/2020
+ms.openlocfilehash: 0e9773e5c08f9d07f76a70bc4f899acf5004d3c2
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708620"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421818"
 ---
 # <a name="logical-decoding"></a>Mantıksal kod çözme
  
+> [!NOTE]
+> Mantıksal kod çözme, PostgreSQL için Azure veritabanı-tek sunucu genel önizlemede.
+
 [PostgreSQL Içindeki mantıksal kod çözme](https://www.postgresql.org/docs/current/logicaldecoding.html) , dış tüketicilerle veri değişiklikleri akışına olanak sağlar. Mantıksal kod çözme, olay akışı ve değişiklik verilerini yakalama senaryoları için popudöngüsel olarak kullanılır.
 
-Mantıksal kod çözme, Postgres 'nin yazma sonrası günlüğünü (WAL) okunabilir bir biçime dönüştürmek için bir çıktı eklentisi kullanır. PostgreSQL için Azure veritabanı [wal2json](https://github.com/eulerto/wal2json), [test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) ve pgoutput çıkış eklentilerini sağlar. pgoutput, Postgres sürüm 10 ve üzerinde Postgres tarafından kullanılabilir hale getirilir.
+Mantıksal kod çözme, Postgres 'nin yazma sonrası günlüğünü (WAL) okunabilir bir biçime dönüştürmek için bir çıktı eklentisi kullanır. PostgreSQL için Azure veritabanı [wal2json](https://github.com/eulerto/wal2json), [test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) ve pgoutput çıkış eklentilerini sağlar. pgoutput, PostgreSQL sürüm 10 ve üzerinde PostgreSQL tarafından kullanılabilir hale getirilir.
 
 Postgres mantıksal kod çözmenin nasıl çalıştığına genel bakış için [blogumuzu ziyaret edin](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/change-data-capture-in-postgres-how-to-use-logical-decoding-and/ba-p/1396421). 
 
 > [!NOTE]
-> Mantıksal kod çözme, PostgreSQL için Azure veritabanı-tek sunucu genel önizlemede.
+> PostgreSQL yayını/aboneliğini kullanan mantıksal çoğaltma, PostgreSQL için Azure veritabanı-tek sunucu ile desteklenmez.
 
 
 ## <a name="set-up-your-server"></a>Sunucunuzu ayarlama 
@@ -32,32 +35,36 @@ Doğru günlük kaydını yapılandırmak için Azure çoğaltma desteği parame
 
 * **Kapalı** -en az bilgiyi Wal 'e yerleştirir. Bu ayar, çoğu PostgreSQL için Azure veritabanı sunucuları üzerinde kullanılamaz.  
 * **Çoğaltma** -daha ayrıntılı bir **şekilde.** Bu, [okuma çoğaltmalarının](concepts-read-replicas.md) çalışması için gereken en düşük günlüğe kaydetme düzeyidir. Bu ayar, çoğu sunucuda varsayılandır.
-* **Çoğaltmadan**daha ayrıntılı **mantıksal** . Bu, mantıksal kod çözmenin çalışması için en düşük günlük kayıt düzeyidir. Okuma çoğaltmaları bu ayarda de çalışır.
+* **Çoğaltmadan** daha ayrıntılı **mantıksal** . Bu, mantıksal kod çözmenin çalışması için en düşük günlük kayıt düzeyidir. Okuma çoğaltmaları bu ayarda de çalışır.
 
 Bu parametrenin bir değişikliğinden sonra sunucunun yeniden başlatılması gerekiyor. Dahili olarak, bu parametre Postgres parametrelerini, `wal_level` `max_replication_slots` ve ' ı ayarlar `max_wal_senders` .
 
 ### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
 
 1. Azure.replication_support olarak ayarlayın `logical` .
-   ```
+   ```azurecli-interactive
    az postgres server configuration set --resource-group mygroup --server-name myserver --name azure.replication_support --value logical
    ``` 
 
 2. Değişikliği uygulamak için sunucuyu yeniden başlatın.
-   ```
+   ```azurecli-interactive
    az postgres server restart --resource-group mygroup --name myserver
    ```
+3. Postgres 9,5 veya 9,6 çalıştırıyorsanız ve ortak ağ erişimi kullanıyorsanız, mantıksal çoğaltmayı çalıştıracağınız istemcinin genel IP adresini dahil etmek için güvenlik duvarı kuralını ekleyin. Güvenlik duvarı kuralı adı **_replrule** içermelidir. Örneğin, *test_replrule*. Sunucuda yeni bir güvenlik duvarı kuralı oluşturmak için [az Postgres Server Firewall-Rule Create](/cli/azure/postgres/server/firewall-rule) komutunu çalıştırın. 
 
 ### <a name="using-azure-portal"></a>Azure portalını kullanma
 
-1. Azure çoğaltma desteğini **mantıksal**olarak ayarlayın. **Kaydet**’i seçin.
+1. Azure çoğaltma desteğini **mantıksal** olarak ayarlayın. **Kaydet** ’i seçin.
 
    :::image type="content" source="./media/concepts-logical/replication-support.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-Azure çoğaltma desteği":::
 
-2. **Evet**' i seçerek değişikliği uygulamak için sunucuyu yeniden başlatın.
+2. **Evet** ' i seçerek değişikliği uygulamak için sunucuyu yeniden başlatın.
 
-   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-Azure çoğaltma desteği":::
+   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-yeniden başlatmayı Onayla":::
 
+3. Postgres 9,5 veya 9,6 çalıştırıyorsanız ve ortak ağ erişimi kullanıyorsanız, mantıksal çoğaltmayı çalıştıracağınız istemcinin genel IP adresini dahil etmek için güvenlik duvarı kuralını ekleyin. Güvenlik duvarı kuralı adı **_replrule** içermelidir. Örneğin, *test_replrule*. Daha sonra **Kaydet** 'e tıklayın.
+
+   :::image type="content" source="./media/concepts-logical/client-replrule-firewall.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-güvenlik duvarı kuralı ekle":::
 
 ## <a name="start-logical-decoding"></a>Mantıksal kod çözmeyi Başlat
 
@@ -79,7 +86,7 @@ Aşağıdaki örnekte, SQL arabirimini wal2json eklentisi ile kullanıyoruz.
    SELECT * FROM pg_create_logical_replication_slot('test_slot', 'wal2json');
    ```
  
-2. SQL komutları verin. Örneğin:
+2. SQL komutları verin. Örnek:
    ```SQL
    CREATE TABLE a_table (
       id varchar(40) NOT NULL,

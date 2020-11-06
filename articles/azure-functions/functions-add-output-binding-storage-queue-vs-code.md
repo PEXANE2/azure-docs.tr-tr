@@ -5,18 +5,18 @@ ms.date: 02/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-js
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 4f4733a52d1d58cbec4413140a613a93c8074188
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b709981e199d63c32426381ba48665402de820ce
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91323439"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422714"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Azure Işlevlerini Visual Studio Code kullanarak Azure depolama 'ya bağlama
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-Bu makalede, [önceki hızlı başlangıç makalesinde](functions-create-first-function-vs-code.md) oluşturduğunuz Işlevi Azure Storage 'a bağlamak için Visual Studio Code nasıl kullanılacağı gösterilmektedir. Bu işleve eklediğiniz çıkış bağlaması, HTTP isteğinden verileri bir Azure kuyruk depolama kuyruğundaki bir iletiye yazar. 
+Bu makalede, Azure Storage 'ı önceki hızlı başlangıç makalesinde oluşturduğunuz işleve bağlamak için Visual Studio Code nasıl kullanılacağı gösterilmektedir. Bu işleve eklediğiniz çıkış bağlaması, HTTP isteğinden verileri bir Azure kuyruk depolama kuyruğundaki bir iletiye yazar. 
 
 Çoğu bağlamanın, bağlı hizmete erişmek için kullandığı depolanan bir bağlantı dizesi gerekir. Daha kolay hale getirmek için, işlev uygulamanız ile oluşturduğunuz depolama hesabını kullanırsınız. Bu hesap bağlantısı zaten adlı bir uygulama ayarında depolanıyor `AzureWebJobsStorage` .  
 
@@ -32,7 +32,24 @@ Bu makaleye başlamadan önce, aşağıdaki gereksinimleri karşılamanız gerek
 * [.NET Core CLI araçları](/dotnet/core/tools/?tabs=netcore2x)'nı yükler.
 ::: zone-end
 
-* [Visual Studio Code hızlı başlangıcı ' nın 1. bölümündeki](functions-create-first-function-vs-code.md)adımları uygulayın. 
+::: zone pivot="programming-language-csharp"  
+* [Visual Studio Code hızlı başlangıcı ' nın 1. bölümündeki](create-first-function-vs-code-csharp.md)adımları uygulayın. 
+::: zone-end  
+::: zone pivot="programming-language-javascript"  
+* [Visual Studio Code hızlı başlangıcı ' nın 1. bölümündeki](create-first-function-vs-code-node.md)adımları uygulayın. 
+::: zone-end   
+::: zone pivot="programming-language-java"  
+* [Visual Studio Code hızlı başlangıcı ' nın 1. bölümündeki](create-first-function-vs-code-java.md)adımları uygulayın. 
+::: zone-end   
+::: zone pivot="programming-language-typescript"  
+* [Visual Studio Code hızlı başlangıcı ' nın 1. bölümündeki](create-first-function-vs-code-typescript.md)adımları uygulayın. 
+::: zone-end   
+::: zone pivot="programming-language-python"  
+* [Visual Studio Code hızlı başlangıcı ' nın 1. bölümündeki](create-first-function-vs-code-python.md)adımları uygulayın. 
+::: zone-end   
+::: zone pivot="programming-language-powershell"  
+* [Visual Studio Code hızlı başlangıcı ' nın 1. bölümündeki](create-first-function-vs-code-powershell.md)adımları uygulayın. 
+::: zone-end   
 
 Bu makalede, Visual Studio Code Azure aboneliğinizde zaten oturum açmış olduğunuz varsayılmaktadır. Komut paletinden komutunu çalıştırarak oturum açabilirsiniz `Azure: Sign In` . 
 
@@ -161,11 +178,11 @@ Bağlama tanımlandıktan sonra, `name` işlev imzasında bir öznitelik olarak 
 
 Azure Depolama Gezgini zaten yüklediyseniz ve Azure hesabınıza bağladıysanız bu bölümü atlayın.
 
-1. [Azure Depolama Gezgini] aracını çalıştırın, sol taraftaki Bağlan simgesini seçin ve **Hesap Ekle**' yi seçin.
+1. [Azure Depolama Gezgini] aracını çalıştırın, sol taraftaki Bağlan simgesini seçin ve **Hesap Ekle** ' yi seçin.
 
     ![Microsoft Azure Depolama Gezgini bir Azure hesabı ekleyin](./media/functions-add-output-binding-storage-queue-vs-code/storage-explorer-add-account.png)
 
-1. **Bağlan** iletişim kutusunda, **Azure hesabı ekle**' yi seçin, **Azure ortamınızı**seçin ve oturum aç ' ı seçin. **..** 
+1. **Bağlan** iletişim kutusunda, **Azure hesabı ekle** ' yi seçin, **Azure ortamınızı** seçin ve oturum aç ' ı seçin. **..** 
 
     ![Azure hesabınızda oturum açma](./media/functions-add-output-binding-storage-queue-vs-code/storage-explorer-connect-azure-account.png)
 
@@ -201,37 +218,46 @@ Hesabınızda başarıyla oturum açtıktan sonra hesabınızla ilişkili tüm A
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Azure 'da, *kaynaklar* işlev uygulamalarına, işlevlere, depolama hesaplarına ve benzeri bir kaynağa başvurur. Bunlar *kaynak grupları*halinde gruplandırılır ve grubu silerek bir gruptaki her şeyi silebilirsiniz.
+Azure 'da, *kaynaklar* işlev uygulamalarına, işlevlere, depolama hesaplarına ve benzeri bir kaynağa başvurur. Bunlar *kaynak grupları* halinde gruplandırılır ve grubu silerek bir gruptaki her şeyi silebilirsiniz.
 
 Bu hızlı başlangıçları tamamlamak için kaynaklar oluşturdunuz. [Hesap durumunuza](https://azure.microsoft.com/account/) ve [hizmet fiyatlandırmanıza](https://azure.microsoft.com/pricing/) bağlı olarak size bu kaynakların ücretleri yansıtılabilir. Kaynaklara artık ihtiyacınız yoksa, şunları yaparak silebilirsiniz:
 
-[!INCLUDE [functions-cleanup-resources-vs-code.md](../../includes/functions-cleanup-resources-vs-code.md)]
+[!INCLUDE [functions-cleanup-resources-vs-code-inner.md](../../includes/functions-cleanup-resources-vs-code-inner.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 HTTP ile tetiklenen işlevinizi bir depolama kuyruğuna veri yazmak için güncelleştirdiniz. Artık Visual Studio Code kullanarak Işlevleri geliştirme hakkında daha fazla bilgi edinebilirsiniz:
 
 + [Visual Studio Code kullanarak Azure Işlevleri geliştirme](functions-develop-vs-code.md)
+
++ [Azure işlevleri Tetikleyicileri ve bağlamaları](functions-triggers-bindings.md).
 ::: zone pivot="programming-language-csharp"  
 + [C# ' de tamamen işlev projelerinin örnekleri](/samples/browse/?products=azure-functions&languages=csharp).
+
 + [Azure Işlevleri C# Geliştirici Başvurusu](functions-dotnet-class-library.md)  
 ::: zone-end 
 ::: zone pivot="programming-language-javascript"  
 + [JavaScript 'teki bütün işlev projelerinin örnekleri](/samples/browse/?products=azure-functions&languages=javascript).
+
 + [Azure Işlevleri JavaScript Geliştirici Kılavuzu](functions-reference-node.md)  
+::: zone-end  
+::: zone pivot="programming-language-java"  
++ [Java 'daki bütün işlev projelerinin örnekleri](/samples/browse/?products=azure-functions&languages=java).
+
++ [Azure Işlevleri Java geliştirici kılavuzu](functions-reference-java.md)  
 ::: zone-end  
 ::: zone pivot="programming-language-typescript"  
 + [TypeScript 'teki bütün işlev projelerinin örnekleri](/samples/browse/?products=azure-functions&languages=typescript).
+
 + [Azure Işlevleri TypeScript Geliştirici Kılavuzu](functions-reference-node.md#typescript)  
 ::: zone-end  
 ::: zone pivot="programming-language-python"  
 + [Python 'da tüm işlev projelerinin örnekleri](/samples/browse/?products=azure-functions&languages=python).
+
 + [Azure Işlevleri Python Geliştirici Kılavuzu](functions-reference-python.md)  
 ::: zone-end  
 ::: zone pivot="programming-language-powershell"  
 + [PowerShell 'de tüm işlev projelerinin örnekleri](/samples/browse/?products=azure-functions&languages=azurepowershell).
+
 + [Azure Işlevleri PowerShell Geliştirici Kılavuzu](functions-reference-powershell.md) 
 ::: zone-end
-+ [Azure işlevleri Tetikleyicileri ve bağlamaları](functions-triggers-bindings.md).
-+ [İşlevler fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/functions/)
-+ [Tüketim planı maliyetlerini tahmin](functions-consumption-costs.md) etme makalesi.

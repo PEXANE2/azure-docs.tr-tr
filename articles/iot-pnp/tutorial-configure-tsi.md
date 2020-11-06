@@ -1,5 +1,5 @@
 ---
-title: IoT Tak ve Kullan cihaz telemetrinizi depolamak ve analiz etmek için Time Series Insights kullanma | Microsoft Docs
+title: Azure IoT Tak ve Kullan cihaz telemetrinizi depolamak ve analiz etmek için Time Series Insights kullanma | Microsoft Docs
 description: IoT Tak ve Kullan cihazlarınızdan Telemetriyi görüntülemek ve analiz etmek için bir Time Series Insights ortamı ayarlayın ve IoT Hub bağlayın.
 author: lyrana
 ms.author: lyhughes
@@ -7,12 +7,12 @@ ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 0d4c24ed771b4d112a448ceec0e9fc2f9e8ac359
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: aa99b9059fe8e3cd5b0dfe6f7e62bd02012fd144
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146436"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422272"
 ---
 # <a name="tutorial-create-and-connect-to-time-series-insights-gen2-to-store-visualize-and-analyze-iot-plug-and-play-device-telemetry"></a>Öğretici: IoT Tak ve Kullan cihaz telemetrisini depolamak, görselleştirmek ve çözümlemek için Time Series Insights Gen2 oluşturma ve bağlanma
 
@@ -20,7 +20,7 @@ Bu öğreticide, IoT Tak ve Kullan çözümünüz ile tümleştirme için bir [A
 
 İlk olarak, bir TSI ortamı sağlayacak ve IoT Hub bir akış olay kaynağı olarak bağlayacaksınız. Daha sonra, sıcaklık denetleyicisi ve termostat cihazları için kullandığınız [dijital TWINS tanım dili (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) örnek model dosyalarını temel alarak, TSI ortamınızın zaman serisi modelini kullanarak bir model eşitleme üzerinden çalışacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -182,7 +182,7 @@ Bir hiyerarşi oluşturduysanız, *örnek alanlar* ' ı seçin ve kutuyu işaret
 
 Grafik bölmesine geri gidin ve cihaz Fleve TemperatureController ' ı genişletin. Thermostat1 ' a tıklayın, `Temperature` değişkeni seçin ve ardından değeri grafiğe *eklemek için Ekle* ' ye tıklayın. Thermostat2 için aynısını yapın.
 
-![Örnek türünü değiştir](./media/tutorial-configure-tsi/charting-values.png)
+![Thermostat2 için örnek türünü değiştir](./media/tutorial-configure-tsi/charting-values.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

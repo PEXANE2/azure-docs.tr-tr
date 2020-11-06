@@ -9,28 +9,30 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 76c45e586ea7101015cb878d198cab73ed32498e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d83745db6c720a2fdc2260a07a4e3e66b1a0771d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018255"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422221"
 ---
 # <a name="install-software-and-set-up-resources-for-the-tutorial"></a>Yazılım yükleyip öğreticiye yönelik kaynakları ayarlayın
 
 Bu üç bölümden oluşan öğreticide, silika 'nın yüzdesi olarak Iron ve daha sonra modeli Azure SQL Edge 'de dağıttığınız bir makine öğrenimi modeli oluşturacaksınız. Birinci bölümde, gerekli yazılımı yükleyecek ve Azure kaynaklarını dağıtacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 1. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-2. [Python 3.6.8](https://www.python.org/downloads/release/python-368/)'i yükler.
-      * Windows x86-x64 yürütülebilir yükleyicisini kullanma
-      * `python.exe`Yol ortam değişkeni İndirmeleri/) öğesine ekleyin. İndirmeyi "Visual Studio 2019 Için Araçlar" bölümünde bulabilirsiniz.
-3. [SQL Server Için MICROSOFT ODBC sürücüsü 17](https://www.microsoft.com/download/details.aspx?id=56567)' ü yükler.
-4. [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio/) yüklensin
-5. Azure Data Studio açın ve Not defterleri için Python 'ı yapılandırın.Ayrıntılar için bkz. [Not defterleri Için Python yapılandırma](/sql/azure-data-studio/sql-notebooks#configure-python-for-notebooks). Bu adım birkaç dakika sürebilir.
-6. [Azure CLI](https://github.com/Azure/azure-powershell/releases/tag/v3.5.0-February2020)'nın en son sürümünü yükler. Aşağıdaki betikler, AZ PowerShell 'in en son sürümü (3.5.0, Şubat 2020) olmasını gerektirir.
-7. Öğreticide kullanılacak [dacpac](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/DACPAC) ve [AMD/ARM Docker görüntü dosyalarını](https://www.docker.com/blog/multi-arch-images/) indirin.
+2. Visual Studio 2019 'yi ile 
+      * Azure IoT Edge araçları
+      * .NET Core platformlar arası geliştirme
+      * Kapsayıcı geliştirme araçları
+3. [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio/) yüklensin
+4. Azure Data Studio açın ve Not defterleri için Python 'ı yapılandırın. Ayrıntılar için bkz. [Not defterleri Için Python yapılandırma](/sql/azure-data-studio/sql-notebooks#configure-python-for-notebooks). Bu adım birkaç dakika sürebilir.
+5. [Azure CLI](https://github.com/Azure/azure-powershell/releases/tag/v3.5.0-February2020)'nın en son sürümünü yükler. Aşağıdaki betikler, AZ PowerShell 'in en son sürümü (3.5.0, Şubat 2020) olmasını gerektirir.
+6. [Azure IoT EdgeHub geliştirme aracı 'nı](https://pypi.org/project/iotedgehubdev/)yükleyerek hata ayıklama, çalıştırma ve test IoT Edge çözümü için ortamı ayarlayın.
+7. Docker 'ı yükler.
+8. Öğreticide kullanılacak [dacpac](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/DACPAC) dosyasını indirin. 
 
 ## <a name="deploy-azure-resources-using-powershell-script"></a>PowerShell betiği kullanarak Azure kaynaklarını dağıtma
 
@@ -154,26 +156,7 @@ Bu Azure SQL Edge öğreticisi için gereken Azure kaynaklarını dağıtın. Bu
    }
    ```
 
-10. ARM/AMD Docker görüntülerini kapsayıcı kayıt defterine gönderin.
-
-    ```powershell
-    $containerRegistryCredentials = Get-AzContainerRegistryCredential -ResourceGroupName $ResourceGroup -Name $containerRegistryName
-    
-    $amddockerimageFile = Read-Host "Please Enter the location to the amd docker tar file:"
-    $armdockerimageFile = Read-Host "Please Enter the location to the arm docker tar file:"
-    $amddockertag = $containerRegistry.LoginServer + "/silicaprediction" + ":amd64"
-    $armdockertag = $containerRegistry.LoginServer + "/silicaprediction" + ":arm64"
-    
-    docker login $containerRegistry.LoginServer --username $containerRegistryCredentials.Username --password $containerRegistryCredentials.Password
-    
-    docker import $amddockerimageFile $amddockertag
-    docker push $amddockertag
-    
-    docker import $armdockerimageFile $armdockertag
-    docker push $armdockertag
-    ```
-
-11. Kaynak grubu içinde ağ güvenlik grubu oluşturun.
+10. Kaynak grubu içinde ağ güvenlik grubu oluşturun.
 
     ```powershell
     $nsg = Get-AzNetworkSecurityGroup -ResourceGroupName $ResourceGroup -Name $NetworkSecGroup 
@@ -193,7 +176,7 @@ Bu Azure SQL Edge öğreticisi için gereken Azure kaynaklarını dağıtın. Bu
     }
     ```
 
-12. SQL Edge ile etkin bir Azure sanal makinesi oluşturun. Bu VM, bir sınır aygıtı görevi görecek.
+11. SQL Edge ile etkin bir Azure sanal makinesi oluşturun. Bu VM, bir sınır aygıtı görevi görecek.
 
     ```powershell
     $AzVM = Get-AzVM -ResourceGroupName $ResourceGroup -Name $EdgeDeviceId
@@ -226,7 +209,7 @@ Bu Azure SQL Edge öğreticisi için gereken Azure kaynaklarını dağıtın. Bu
     }
     ```
 
-13. Kaynak grubu içinde bir IoT Hub 'ı oluşturun.
+12. Kaynak grubu içinde bir IoT Hub 'ı oluşturun.
 
     ```powershell
     $iotHub = Get-AzIotHub -ResourceGroupName $ResourceGroup -Name $IoTHubName
@@ -241,7 +224,7 @@ Bu Azure SQL Edge öğreticisi için gereken Azure kaynaklarını dağıtın. Bu
     }
     ```
 
-14. IoT Hub 'ına bir Edge cihazı ekleyin. Bu adım yalnızca cihazın dijital kimliğini oluşturur.
+13. IoT Hub 'ına bir Edge cihazı ekleyin. Bu adım yalnızca cihazın dijital kimliğini oluşturur.
 
     ```powershell
     $deviceIdentity = Get-AzIotHubDevice -ResourceGroupName $ResourceGroup -IotHubName $IoTHubName -DeviceId $EdgeDeviceId
@@ -257,7 +240,7 @@ Bu Azure SQL Edge öğreticisi için gereken Azure kaynaklarını dağıtın. Bu
     $deviceIdentity = Get-AzIotHubDevice -ResourceGroupName $ResourceGroup -IotHubName $IoTHubName -DeviceId $EdgeDeviceId
     ```
 
-15. Cihazın birincil bağlantı dizesini alın. Bu, daha sonra VM için gerekli olacaktır. Aşağıdaki komut dağıtımlar için Azure CLı kullanır.
+14. Cihazın birincil bağlantı dizesini alın. Bu, daha sonra VM için gerekli olacaktır. Aşağıdaki komut dağıtımlar için Azure CLı kullanır.
 
     ```powershell
     $deviceConnectionString = az iot hub device-identity show-connection-string --device-id $EdgeDeviceId --hub-name $IoTHubName --resource-group $ResourceGroup --subscription $SubscriptionName
@@ -265,18 +248,19 @@ Bu Azure SQL Edge öğreticisi için gereken Azure kaynaklarını dağıtın. Bu
     $connString
     ```
 
-16. Uç cihazdaki IoT Edge yapılandırma dosyasında bağlantı dizesini güncelleştirin. Aşağıdaki komutlar dağıtımlar için Azure CLı kullanır.
+15. Uç cihazdaki IoT Edge yapılandırma dosyasında bağlantı dizesini güncelleştirin. Aşağıdaki komutlar dağıtımlar için Azure CLı kullanır.
 
     ```powershell
     $script = "/etc/iotedge/configedge.sh '" + $connString + "'"
     az vm run-command invoke -g $ResourceGroup -n $EdgeDeviceId  --command-id RunShellScript --script $script
     ```
 
-17. Kaynak grubu içinde bir Azure Machine Learning çalışma alanı oluşturun.
+16. Kaynak grubu içinde bir Azure Machine Learning çalışma alanı oluşturun.
 
     ```powershell
     az ml workspace create -w $MyWorkSpace -g $ResourceGroup
     ```
+
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

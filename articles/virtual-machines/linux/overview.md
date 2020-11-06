@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b205665a0e5fc06fdc784efa91036f26da5d3cde
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 71de48c8ac0f74ed4afbe0fafcdbfdf3f34d6654
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88654353"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422425"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Azure’da Linux sanal makineleri
 
@@ -30,7 +30,7 @@ Azure sanal makineleri farklı amaçlarla kullanılabilir. Bazı örnekler şunl
 Uygulamanız tarafından kullanılan VM sayısı, ihtiyaçlarınıza göre ölçeklendirilebilir.
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>VM oluşturmadan önce dikkat etmem gereken noktalar nelerdir?
-Azure’da uygulama altyapısı oluştururken [dikkate almanız gereken tasarım ölçütleri](/azure/architecture/reference-architectures/n-tier/windows-vm) vardır. Başlamadan önce dikkat etmeniz gereken VM özellikleri şunlardır:
+Azure’da uygulama altyapısı oluştururken [dikkate almanız gereken tasarım ölçütleri](/azure/architecture/reference-architectures/n-tier/linux-vm) vardır. Başlamadan önce dikkat etmeniz gereken VM özellikleri şunlardır:
 
 * Uygulama kaynaklarınızın adları
 * Kaynakların depolanacağı konum
@@ -47,7 +47,7 @@ Bu tabloda, kullanılabilen konumların listesini edinme yöntemlerinden bazıla
 
 | Yöntem | Açıklama |
 | --- | --- |
-| Azure portal |VM oluştururken listeden konum seçin. |
+| Azure portalı |VM oluştururken listeden konum seçin. |
 | Azure PowerShell |[Get-AzLocation](/powershell/module/az.resources/get-azlocation) komutunu kullanın. |
 | REST API |[List locations](/rest/api/resources/subscriptions) işlemini kullanın. |
 | Azure CLI |[az account list-locations](/cli/azure/account?view=azure-cli-latest) işlemini kullanın. |
@@ -74,24 +74,24 @@ Yönetilen Diskler, Azure Depolama hesabı oluşturma ve yönetme işlemini arka
 Ayrıca, her Azure bölgesinde bir depolama hesabındaki özel görüntülerinizi yönetebilir ve aynı abonelikte yüzlerce VM oluşturmak için kullanabilirsiniz. Yönetilen Diskler hakkında daha fazla bilgi için bkz. [Yönetilen Disklere Genel Bakış](../managed-disks-overview.md).
 
 ## <a name="distributions"></a>Dağıtımları 
-Microsoft Azure, çeşitli iş ortakları tarafından sağlanan ve bakımı yapılan bir dizi popüler Linux dağıtımının çalıştırılmasını destekler.  Azure Market'te Red Hat Enterprise, CentOS, SUSE Linux Enterprise, Debian, Ubuntu, CoreOS, RancherOS, FreeBSD gibi daha birçok dağıtım bulabilirsiniz. Microsoft, [Azure destekli Linux Dağıtımları](endorsed-distros.md) listesine daha da fazla çeşitleme katmak için çeşitli Linux topluluklarıyla etkin bir çalışma sürdürüyor.
+Microsoft Azure, çeşitli iş ortakları tarafından sağlanan ve bakımı yapılan bir dizi popüler Linux dağıtımının çalıştırılmasını destekler.  Azure Marketi 'nde kullanılabilir dağıtımları bulabilirsiniz. Microsoft, [Azure destekli Linux Dağıtımları](endorsed-distros.md) listesine daha da fazla çeşitleme katmak için çeşitli Linux topluluklarıyla etkin bir çalışma sürdürüyor.
 
 Tercih ettiğiniz Linux dağıtımı şu anda galeride yoksa, [Azure'da Linux VHD'si oluşturma ve karşıya yükleme](create-upload-generic.md) yoluyla "Kendi Linux VM'inizi getirebilirsiniz".
 
-Microsoft, sağlanan görüntülerin güncelleştirilmiş ve Azure çalışma zamanı için iyileştirilmiş olduğundan emin olmak için iş ortaklarıyla yakın bir çalışma sürdürür.  Azure iş ortakları hakkında daha fazla bilgi için şu bağlantılara göz atın:
+Microsoft, sağlanan görüntülerin güncelleştirilmiş ve Azure çalışma zamanı için iyileştirilmiş olduğundan emin olmak için iş ortaklarıyla yakın bir çalışma sürdürür.  Azure iş ortağı teklifleri hakkında daha fazla bilgi için aşağıdaki bağlantılara bakın:
 
 * Azure[ Destekli Dağıtımlarda](endorsed-distros.md) Linux
-* SUSE - [Azure Market - SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/marketplace/apps?search=suse%20sles&page=1)
-* Red hat- [Azure Marketi-Red Hat Enterprise Linux 8,1](https://azuremarketplace.microsoft.com/marketplace/apps/RedHat.RedHatEnterpriseLinux81-ARM)
+* SUSE - [Azure Market - SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=suse)
+* Red hat- [Azure Marketi-Red Hat Enterprise Linux](https://azuremarketplace.microsoft.com/marketplace/apps?search=Red%20Hat%20Enterprise%20Linux)
 * Kurallı- [Azure Marketi-Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer)
-* Debian - [Azure Market - Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.debian)
-* FreeBSD- [Azure Marketi-freebsd 10,4](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
-* CoreOS- [Azure Marketi-CoreOS tarafından kapsayıcı Linux](https://azuremarketplace.microsoft.com/marketplace/apps/CoreOS.CoreOS)
+* Detem- [Azure Marketi-detem](https://azuremarketplace.microsoft.com/marketplace/apps?search=Debian&page=1)
+* FreeBSD- [Azure Marketi-FreeBSD](https://azuremarketplace.microsoft.com/marketplace/apps?search=freebsd&page=1)
+* Düz otomobil- [Azure Marketi-Yataylı kapsayıcı Linux](https://azuremarketplace.microsoft.com/marketplace/apps?search=Flatcar&page=1)
 * RancherOS - [Azure Market - RancherOS](https://azuremarketplace.microsoft.com/marketplace/apps/rancher.rancheros)
 * Bitnami - [Azure için Bitnami Kitaplığı](https://azure.bitnami.com/)
 * Mesosphere - [Azure Market - Azure'da Mesosphere DC/OS](https://azure.microsoft.com/services/kubernetes-service/mesosphere/)
 * Docker- [Azure Marketi-Docker görüntüleri](https://azuremarketplace.microsoft.com/marketplace/apps?search=docker&page=1&filters=virtual-machine-images)
-* Jenkins - [Azure Market - CloudBees Jenkins Platform](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudbees.cloudbees-core-contact)
+* Jenkins - [Azure Market - CloudBees Jenkins Platform](https://azuremarketplace.microsoft.com/marketplace/apps/cloudbees.cloudbees-core-contact)
 
 
 ## <a name="cloud-init"></a>Cloud-init 
@@ -99,7 +99,7 @@ Microsoft, sağlanan görüntülerin güncelleştirilmiş ve Azure çalışma za
 Düzgün bir DevOps kültürünü başarmak için tüm altyapı kod olmalıdır.  Tüm altyapı kodda bulunduğunda kolayca yeniden oluşturulabilir.  Azure tüm önemli otomasyon araçlarıyla, örneğin Ansible, Chef, SaltStack ve Puppet ile çalışır.  Azure'un ayrıca kendi otomasyon aracı da vardır:
 
 * [Azure şablonları](create-ssh-secured-vm-from-template.md)
-* [Azure VMAccess](../extensions/vmaccess.md)
+* [Mavisi `VMaccess`](../extensions/vmaccess.md)
 
 Azure, en çok Linux destekleri tarafından desteklenen [bulutta init](https://cloud-init.io/) 'yi destekler.  Azure Marketi 'nde Cloud-init özellikli görüntülerin kullanılabilmesini sağlamak için, onaylanan Linux olmayan iş ortaklarıyla etkin bir şekilde çalışıyoruz. Bu görüntüler, Cloud-init dağıtımlarınızın ve yapılandırmalarının VM 'Ler ve sanal makine ölçek kümeleri ile sorunsuz bir şekilde çalışmasını sağlayacak.
 

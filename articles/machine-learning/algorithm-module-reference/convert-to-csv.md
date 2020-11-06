@@ -1,7 +1,7 @@
 ---
 title: "CSV 'ye Dönüştür: modül başvurusu"
 titleSuffix: Azure Machine Learning
-description: Bir veri kümesini, R veya Python betik modülleriyle yüklenebilen, verilelebilecek veya paylaşılabilen CSV biçimine dönüştürmek için Azure Machine Learning CSV 'ye dönüştürme modülünü nasıl kullanacağınızı öğrenin.
+description: Bir veri kümesini daha sonra yeniden kullanılabilecek bir CSV dosyasına dönüştürmek için Azure Machine Learning tasarımcısında CSV 'ye dönüştürme modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 3b7c781717952765941acd4ea4aa47593d4b8a0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc58689e30e9b03e490c0871f3decd50372371fa
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898789"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421932"
 ---
 # <a name="convert-to-csv-module"></a>CSV modülüne Dönüştür
 
@@ -26,7 +26,7 @@ Bir veri kümesini, R veya Python betik modülleriyle yüklenebilen, verilelebil
 
 "Virgülle ayrılmış değerler" için temsil eden CSV biçimi, birçok harici makine öğrenimi aracı tarafından kullanılan bir dosya biçimidir. CSV, R veya Python gibi açık kaynak dillerle çalışırken ortak bir değişim biçimidir.
 
-Azure Machine Learning ' de çalışmalarınızın çoğunu olsanız bile, veri kümenizi dış araçlar 'da kullanmak üzere CSV 'ye dönüştürmeyi yararlı bulabileceğiniz zamanlar olabilir. Örneğin:
+Azure Machine Learning ' de çalışmalarınızın çoğunu olsanız bile, veri kümenizi dış araçlar 'da kullanmak üzere CSV 'ye dönüştürmeyi yararlı bulabileceğiniz zamanlar olabilir. Örnek:
 
 + Excel ile açmak veya ilişkisel bir veritabanına içeri aktarmak için CSV dosyasını indirin.  
 + CSV dosyasını bulut depolama alanına kaydedin ve görselleştirmeler oluşturmak için Power BI adresinden bağlanın.  
@@ -46,11 +46,11 @@ Bir veri kümesini CSV 'ye dönüştürdüğünüzde, CSV Azure ML çalışma al
 ### <a name="results"></a>Sonuçlar
   
 
-**CSV 'ye Dönüştür**' in sağ panelindeki **çıktılar** sekmesini seçin ve **bağlantı noktası çıkışları**altında Bu simgelerden birini seçin.  
+**CSV 'ye Dönüştür** ' in sağ panelindeki **çıktılar** sekmesini seçin ve **bağlantı noktası çıkışları** altında Bu simgelerden birini seçin.  
 
-+ **Veri kümesini kaydet**: simgeyi SEÇIN ve CSV dosyasını ayrı bir veri kümesi olarak YENIDEN Azure ML çalışma alanına kaydedin. Veri kümesi, modül ağacında bir modül olarak veri **kümeleri** bölümünün altında bulunabilir.
++ **Veri kümesini kaydet** : simgeyi SEÇIN ve CSV dosyasını ayrı bir veri kümesi olarak YENIDEN Azure ML çalışma alanına kaydedin. Veri kümesi, modül ağacında bir modül olarak veri **kümeleri** bölümünün altında bulunabilir.
 
- + **Çıktıyı görüntüle**: göz simgesini seçin ve **Results_dataset** klasöre göz atarak data.csv dosyasını indirmek için yönergeleri izleyin.
+ + **Çıktıyı görüntüle** : göz simgesini seçin ve **Results_dataset** klasöre göz atarak data.csv dosyasını indirmek için yönergeleri izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

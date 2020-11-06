@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 4948d23af98e267e72e6f0e0efcc1a4037173576
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3c6bee570312009af5fbdf42a018ad2b387662d9
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547427"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422306"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Azure HDInsight kümelerini özel bağlantıyla güvenli hale getirme ve yalıtma (Önizleme)
 
@@ -29,9 +29,9 @@ Varsayılan olarak, HDInsight RP genel IP 'Leri kullanarak kümeye *gelen* bir b
 
 Varsayılan sanal ağ mimarisinde kullanılan temel yük dengeleyiciler, HDInsight RP gibi gerekli giden bağımlılıklara erişmek için otomatik olarak ortak NAT (ağ adresi çevirisi) sağlar. Genel internet 'e giden bağlantıyı kısıtlamak istiyorsanız [bir güvenlik duvarı yapılandırabilirsiniz](./hdinsight-restrict-outbound-traffic.md), ancak bu bir gereksinim değildir.
 
-Ayrıca, giden olarak yapılandırmak, `resourceProviderConnection` Özel uç noktalar kullanarak Azure Data Lake Storage 2. veya dış meta veri gibi kümeye özgü kaynaklara erişmenize olanak tanır. HDInsight kümesini oluşturmadan önce özel uç noktaları ve DNS girdilerini yapılandırmanız gerekir. Küme oluşturma sırasında Apache Ranger, ambarı, Oozie ve Hive metastores gibi tüm dış SQL veritabanlarını oluşturmanızı ve sağlamanızı öneririz.
+Ayrıca, giden olarak yapılandırmak, `resourceProviderConnection` Özel uç noktalar kullanarak Azure Data Lake Storage 2. veya dış meta veri gibi kümeye özgü kaynaklara erişmenize olanak tanır. Bu kaynaklar için özel uç noktaların kullanılması, bir şekilde değildir, ancak bu kaynaklar için özel uç noktalarınız varsa, HDInsight kümesini oluşturduğunuz özel uç noktaları ve DNS girdilerini yapılandırmanız gerekir `before` . Küme oluşturma sırasında Apache Ranger, ambarı, Oozie ve Hive metastores gibi tüm dış SQL veritabanlarını oluşturmanızı ve sağlamanızı öneririz. Gereksinim, bu kaynakların tümünün kendi özel uç noktaları aracılığıyla veya başka bir şekilde küme alt ağının içinden erişilebilir olması gerekir.
 
-Azure Key Vault için özel uç noktalar desteklenmez. Rest 'de CMK şifrelemesi için Azure Key Vault kullanıyorsanız, Azure Key Vault uç noktası, HDInsight alt ağının içinden özel uç nokta olmadan erişilebilir olmalıdır.
+Azure Key Vault için özel uç noktalar kullanılması desteklenmez. Rest 'de CMK şifrelemesi için Azure Key Vault kullanıyorsanız, Azure Key Vault uç noktası, HDInsight alt ağının içinden özel uç nokta olmadan erişilebilir olmalıdır.
 
 Aşağıdaki diyagramda, olası bir HDInsight sanal ağ mimarisinin `resourceProviderConnection` , giden olarak ayarlandığı zaman nasıl görünebileceği gösterilmektedir:
 
@@ -52,7 +52,7 @@ Küme FQDN 'lerini kullanarak kümeye erişmek için doğrudan iç yük dengeley
 
 ## <a name="enable-private-link"></a>Özel bağlantıyı etkinleştir
 
-Varsayılan olarak devre dışı bırakılan özel bağlantı, bir kümeyi oluşturmadan önce Kullanıcı tanımlı yollar (UDR) ve güvenlik duvarı kurallarını düzgün bir şekilde ayarlamak için kapsamlı ağ bilgisi gerektirir. Kümeye özel bağlantı erişimi yalnızca, `resourceProviderConnection` önceki bölümde açıklandığı gibi ağ özelliği *giden* olarak ayarlandığında kullanılabilir.
+Varsayılan olarak devre dışı bırakılan özel bağlantı, bir kümeyi oluşturmadan önce Kullanıcı tanımlı yollar (UDR) ve güvenlik duvarı kurallarını düzgün bir şekilde ayarlamak için kapsamlı ağ bilgisi gerektirir. Bu ayarın kullanılması isteğe bağlıdır, ancak yalnızca `resourceProviderConnection` önceki bölümde açıklandığı gibi ağ özelliği *giden* olarak ayarlandığında kullanılabilir.
 
 `privateLink` *Etkin* olarak ayarlandığında, iç [Standart yük dengeleyiciler](../load-balancer/load-balancer-overview.md) (SLB) oluşturulur ve her SLB Için bir Azure özel bağlantı hizmeti sağlanır. Özel bağlantı hizmeti, HDInsight kümesine özel uç noktalardan erişmenizi sağlar.
 
@@ -64,11 +64,11 @@ Standart yük dengeleyiciler, temel yük dengeleyiciler gibi [genel gıden NAT](
 
 Aşağıdaki diyagramda bir küme oluşturmadan önce gereken ağ yapılandırması örneği gösterilmektedir. Bu örnekte, tüm giden trafik UDR kullanılarak Azure Güvenlik Duvarı 'na [zorlanır](../firewall/forced-tunneling.md) ve bir küme oluşturmadan önce güvenlik duvarında gerekli giden bağımlılıkların "izin verildi" olması gerekir. Kurumsal Güvenlik Paketi kümeler için, Azure Active Directory Domain Services ağ bağlantısı VNet eşlemesi tarafından sağlanarak yapılabilir.
 
-:::image type="content" source="media/hdinsight-private-link/before-cluster-creation.png" alt-text="Giden kaynak sağlayıcısı bağlantısı kullanan HDInsight mimarisi diyagramı":::
+:::image type="content" source="media/hdinsight-private-link/before-cluster-creation.png" alt-text="Küme oluşturmadan önce özel bağlantı ortamının diyagramı":::
 
 Ağı ayarladıktan sonra, aşağıdaki şekilde gösterildiği gibi giden kaynak sağlayıcısı bağlantısı ve özel bağlantı etkin bir küme oluşturabilirsiniz. Bu yapılandırmada, her standart yük dengeleyici için genel IP 'Ler ve özel bağlantı hizmeti sağlanmamıştır.
 
-:::image type="content" source="media/hdinsight-private-link/after-cluster-creation.png" alt-text="Giden kaynak sağlayıcısı bağlantısı kullanan HDInsight mimarisi diyagramı":::
+:::image type="content" source="media/hdinsight-private-link/after-cluster-creation.png" alt-text="Küme oluşturulduktan sonra özel bağlantı ortamının diyagramı":::
 
 ### <a name="access-a-private-cluster"></a>Özel bir kümeye erişme
 
@@ -84,7 +84,7 @@ Azure tarafından yönetilen genel DNS bölgesinde oluşturulan özel bağlantı
 
 Aşağıdaki görüntüde, küme yük dengeleyicilerine doğrudan bir bakış hattı olmayan veya bir sanal ağdan kümeye erişmek için gereken özel DNS girişlerinin bir örneği gösterilmektedir. FQDN 'leri geçersiz kılmak `*.privatelink.azurehdinsight.net` ve kendi özel uç noktalarınız IP adreslerinizi çözümlemek Için Azure özel bölgesini kullanabilirsiniz.
 
-:::image type="content" source="media/hdinsight-private-link/access-private-clusters.png" alt-text="Giden kaynak sağlayıcısı bağlantısı kullanan HDInsight mimarisi diyagramı":::
+:::image type="content" source="media/hdinsight-private-link/access-private-clusters.png" alt-text="Özel bağlantı mimarisi diyagramı":::
 
 ## <a name="arm-template-properties"></a>ARM şablon özellikleri
 

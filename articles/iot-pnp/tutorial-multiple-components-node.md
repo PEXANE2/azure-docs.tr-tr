@@ -1,19 +1,19 @@
 ---
-title: IoT Tak ve Kullan örnek Node.js bileşen cihazı kodunu IoT Hub bağlayın | Microsoft Docs
-description: Birden çok bileşen kullanan ve bir IoT Hub 'ına bağlanan IoT Tak ve Kullan örnek Node.js cihaz kodu oluşturun ve çalıştırın. Cihaz tarafından hub 'a gönderilen bilgileri görüntülemek için Azure IoT gezgin aracını kullanın.
+title: Öğretici-IoT Tak ve Kullan örnek Node.js bileşen cihazı kodunu Azure 'a bağlama IoT Hub | Microsoft Docs
+description: Öğretici-birden çok bileşen kullanan ve IoT Hub 'ına bağlanan IoT Tak ve Kullan örnek Node.js cihaz kodu oluşturun ve çalıştırın. Cihaz tarafından hub 'a gönderilen bilgileri görüntülemek için Azure IoT gezgin aracını kullanın.
 author: olivakar
 ms.author: olkar
 ms.date: 07/10/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 2f0bf3b4b6e7091222b98e1743f0fb4f431fdd12
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: devx-track-js
+ms.openlocfilehash: 70fa10f5319de072ee8ea7dad4e73c58d4bdeede
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736044"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421439"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-nodejs"></a>Öğretici: bir örnek IoT Tak ve Kullan birden çok bileşen cihaz uygulamasını IoT Hub 'ye bağlama (Node.js)
 

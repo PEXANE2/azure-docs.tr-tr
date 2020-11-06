@@ -1,18 +1,18 @@
 ---
-title: Genel IoT Tak ve Kullan modülünü bağlama | Microsoft Docs
-description: Örnek C# IoT Tak ve Kullan Cihaz kodunu genel bir modülde kullanın.
+title: Öğretici-genel bir Azure IoT Tak ve Kullan modülünü bağlama | Microsoft Docs
+description: Öğretici-genel modüldeki örnek C# IoT Tak ve Kullan cihaz kodu kullanın.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: d425152f83821e1d157065370bd02e2d990ec876
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: dc86340026ec7b85afc9e5208ea8ef8c32d8bac6
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426934"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421473"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>Öğretici: IoT Tak ve Kullan modülünü bağlama (C#)
 
@@ -37,11 +37,11 @@ My **-module-Module adlı bir** modül ekleyin **:**
 
 1. Azure IoT Gezgini aracında, **My-Module-Device** cihazına gidin.
 
-1. **Modül kimliği**' ni seçin ve **+ Ekle**' yi seçin.
+1. **Modül kimliği** ' ni seçin ve **+ Ekle** ' yi seçin.
 
-1. Modül kimlik adı olarak **My-Module** ' i girin ve **Kaydet**' i seçin.
+1. Modül kimlik adı olarak **My-Module** ' i girin ve **Kaydet** ' i seçin.
 
-1. Modül kimlikleri listesinde **My-Module**' i seçin. Ardından birincil bağlantı dizesini kopyalayın. Bu modülün Bu bağlantı dizesini daha sonra bu öğreticide kullanacaksınız.
+1. Modül kimlikleri listesinde **My-Module** ' i seçin. Ardından birincil bağlantı dizesini kopyalayın. Bu modülün Bu bağlantı dizesini daha sonra bu öğreticide kullanacaksınız.
 
 1. **Module ikizi** sekmesini seçin ve istenen veya bildirilen özelliklerden olmadığına dikkat edin:
 
@@ -96,9 +96,9 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 
 1. *Azure-iot-SDK-csharp\iot-hub\Samples\device\PnpDeviceSamples\Thermostat\Thermostat.csproj* proje dosyasını Visual Studio 2019 ' de açın.
 
-1. Visual Studio 'da, **hata ayıklama > Project > termostat özellikleri**' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
+1. Visual Studio 'da, **hata ayıklama > Project > termostat özellikleri** ' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
 
-    | Name | Değer |
+    | Ad | Değer |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | Dizisi |
     | IOTHUB_MODULE_CONNECTION_STRING | Daha önce bir nota yaptığınız modül bağlantı dizesi |
@@ -171,9 +171,9 @@ Hizmet SDK 'Ları, bağlı IoT Tak ve Kullan cihazların ve modüllerinin model 
 
 1. Visual Studio 'nun başka bir örneğinde, *Azure-iot-SDK-csharp\iot-hub\Samples\service\PnpServiceSamples\Thermostat\Thermostat.csproj* projesini açın.
 
-1. Visual Studio 'da, **hata ayıklama > Project > termostat özellikleri**' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
+1. Visual Studio 'da, **hata ayıklama > Project > termostat özellikleri** ' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
 
-    | Name | Değer |
+    | Ad | Değer |
     | ---- | ----- |
     | IOTHUB_DEVICE_ID | My-Module-cihazım |
     | IOTHUB_CONNECTION_STRING | [Ortamınızı ayarlamayı](set-up-environment.md) tamamladıktan sonra bir değişiklik yapmış olduğunuz değer |

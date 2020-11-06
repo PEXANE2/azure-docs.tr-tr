@@ -2,25 +2,21 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 09/28/2020
+ms.date: 10/20/2020
 ms.author: glenga
-ms.openlocfilehash: 0d83f3a92efe7bddcefdeebb5b6d580caf749206
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: af009a3f04f17d9d7e518d2dd02343a8ed54e342
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91408589"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93425129"
 ---
-1. Visual Studio Code ' de, <kbd>F1</kbd> tuşuna basarak komut paletini açın. Komut paletinde, araması yapın ve seçin `Azure Functions: Open in portal` .
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-1. İşlev uygulamanızı seçin ve <kbd>ENTER</kbd>tuşuna basın. İşlev uygulaması sayfası Azure portal açılır.
+Bir [sonraki adıma](#next-steps) devam edip işlevlerinize bir Azure depolama kuyruğu bağlama eklediğinizde, zaten yapmış olduğunuz şeyi oluşturmak için tüm kaynaklarınızı saklamanız gerekir.
 
-1. **Genel bakış** sekmesinde **kaynak grubu**' nun yanındaki adlandırılmış bağlantıyı seçin.
+Aksi takdirde, daha fazla maliyet ödemeden kaçınmak için işlev uygulamasını ve ilgili kaynaklarını silmek için aşağıdaki adımları kullanabilirsiniz.
 
-   :::image type="content" source="./media/functions-cleanup-resources-vs-code/functions-app-delete-resource-group.png" alt-text="İşlev uygulaması sayfasından silinecek kaynak grubunu seçin.":::
+[!INCLUDE [functions-cleanup-resources-vs-code-inner.md](functions-cleanup-resources-vs-code-inner.md)]
 
-1. **Kaynak grubu** sayfasında, dahil edilen kaynakların listesini gözden geçirin ve silmek istediğiniz kaynakların bunlar olduğunu doğrulayın.
- 
-1. **Kaynak grubunu sil**’i seçin ve yönergeleri izleyin.
-
-   Silme işlemi birkaç dakika sürebilir. İşlem tamamlandığında, birkaç saniye boyunca bir bildirim görüntülenir. Bildirimi görüntülemek için sayfanın üst kısmındaki zil simgesini de seçebilirsiniz.
+Işlev maliyetleri hakkında daha fazla bilgi edinmek için bkz. [Tüketim planı maliyetlerini tahmin](../articles/azure-functions/functions-consumption-costs.md)etme.

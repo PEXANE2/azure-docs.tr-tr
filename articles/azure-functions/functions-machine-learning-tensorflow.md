@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: antchu
 ms.custom: mvc, devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: e9bbfd311d6a05d0dd328a63c7d11e14ab0d7e4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca9ce27583168dfee1a597fce559afad38a3a8c7
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89069621"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422935"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Öğretici: Python ve TensorFlow ile Azure Işlevleri 'nde makine öğrenimi modellerini uygulama
 
@@ -23,7 +23,7 @@ Bu makalede, bir görüntüyü içeriğine göre sınıflandırmak için Python,
 > * Bir köpek veya kedi içeren bir görüntüyü sınıflandırmak için sunucusuz bir HTTP API 'SI oluşturun.
 > * API 'YI bir Web uygulamasından tüketme.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Python 3.7.4](https://www.python.org/downloads/release/python-374/). (Python 3.7.4 ve Python 3.6. x, Azure Işlevleri ile doğrulanır; Python 3,8 ve sonraki sürümler henüz desteklenmiyor.)
@@ -127,13 +127,13 @@ Azure Işlevlerinde bir işlev projesi, her birinin belirli bir tetikleyiciye ya
     > [!TIP]
     > Bir işlev projesi belirli bir çalışma zamanına bağlı olduğundan, projedeki tüm işlevlerin aynı dille yazılması gerekir.
 
-1. Aşağıdaki komutu kullanarak projenize bir işlev ekleyin; burada `--name` bağımsız değişken işlevinizin benzersiz adıdır ve `--template` bağımsız değişken işlevin tetikleyicisini belirtir. `func new` Projenin seçtiği dile uygun bir kod dosyası ve * üzerindefunction.js*adlı bir yapılandırma dosyası içeren işlev adıyla eşleşen bir alt klasör oluşturun.
+1. Aşağıdaki komutu kullanarak projenize bir işlev ekleyin; burada `--name` bağımsız değişken işlevinizin benzersiz adıdır ve `--template` bağımsız değişken işlevin tetikleyicisini belirtir. `func new` Projenin seçtiği dile uygun bir kod dosyası ve *üzerindefunction.js* adlı bir yapılandırma dosyası içeren işlev adıyla eşleşen bir alt klasör oluşturun.
 
     ```
     func new --name classify --template "HTTP trigger"
     ```
 
-    Bu komut, işlevin adıyla eşleşen bir klasör oluşturur, *sınıflandır*. Bu klasörde iki dosya vardır: işlev kodunu içeren * \_ \_ init \_ \_ .* ger ve işlevin tetikleyicisini ve giriş ve çıkış bağlamalarını açıklayan *function.js*. Bu dosyaların içeriğiyle ilgili ayrıntılar için bkz. Python hızlı başlangıçta [Dosya Içeriğini İnceleme](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#optional-examine-the-file-contents) .
+    Bu komut, işlevin adıyla eşleşen bir klasör oluşturur, *sınıflandır*. Bu klasörde iki dosya vardır: işlev kodunu içeren *\_ \_ init \_ \_ .* ger ve işlevin tetikleyicisini ve giriş ve çıkış bağlamalarını açıklayan *function.js*. Bu dosyaların içeriğiyle ilgili ayrıntılar için bkz. Python hızlı başlangıçta [Dosya Içeriğini İnceleme](./create-first-function-cli-python.md#optional-examine-the-file-contents) .
 
 
 ## <a name="run-the-function-locally"></a>İşlevi yerel olarak çalıştırma
@@ -146,7 +146,7 @@ Azure Işlevlerinde bir işlev projesi, her birinin belirli bir tetikleyiciye ya
     
 1. `classify`Uç noktanın çıktıda göründüğünü gördüğünüzde URL 'ye gidin ```http://localhost:7071/api/classify?name=Azure``` . "Merhaba Azure!" iletisi çıktıda görünmelidir.
 
-1. **Ctrl** - Konağı durdurmak için CTRL**C** 'yi kullanın.
+1. **Ctrl** - Konağı durdurmak için CTRL **C** 'yi kullanın.
 
 
 ## <a name="import-the-tensorflow-model-and-add-helper-code"></a>TensorFlow modelini içeri aktarma ve yardımcı kodu ekleme
@@ -180,7 +180,7 @@ Azure Işlevlerinde bir işlev projesi, her birinin belirli bir tetikleyiciye ya
     
     ---
     
-1. *Sınıflandır* klasörünün *model. PB* ve *labels.txt*adlı dosyaları içerdiğini doğrulayın. Aksi takdirde, komutu *Başlangıç* klasöründe çalıştırmanızdan emin olun.
+1. *Sınıflandır* klasörünün *model. PB* ve *labels.txt* adlı dosyaları içerdiğini doğrulayın. Aksi takdirde, komutu *Başlangıç* klasöründe çalıştırmanızdan emin olun.
 
 1. *Başlangıç* klasöründe, yardımcı kod içeren bir dosyayı *sınıflandır* klasörüne kopyalamak için aşağıdaki komutu çalıştırın:
 
@@ -204,7 +204,7 @@ Azure Işlevlerinde bir işlev projesi, her birinin belirli bir tetikleyiciye ya
     
     ---
 
-1. *Sınıflandır* klasörünün artık *Predict.py*adlı bir dosya içerdiğini doğrulayın.
+1. *Sınıflandır* klasörünün artık *Predict.py* adlı bir dosya içerdiğini doğrulayın.
 
 1. Bir metin düzenleyicisinde *Başlat/requirements.txt* açın ve yardımcı kodu için gereken aşağıdaki bağımlılıkları ekleyin:
 
@@ -214,7 +214,7 @@ Azure Işlevlerinde bir işlev projesi, her birinin belirli bir tetikleyiciye ya
     requests
     ```
     
-1. *requirements.txt*kaydedin.
+1. *requirements.txt* kaydedin.
 
 1. *Başlangıç* klasöründe aşağıdaki komutu çalıştırarak bağımlılıkları yükler. Yükleme işlemi birkaç dakika sürebilir. bu sırada, sonraki bölümde işlevini değiştirmeye devam edebilirsiniz.
 
@@ -222,7 +222,7 @@ Azure Işlevlerinde bir işlev projesi, her birinin belirli bir tetikleyiciye ya
     pip install --no-cache-dir -r requirements.txt
     ```
     
-    Windows 'da, "bir EnvironmentError nedeniyle paketler yüklenemedi: [errno 2] böyle bir dosya veya dizin yok:" arkasından *sharded_mutable_dense_hashtable. CPython-37. PYC*gibi bir dosyaya uzun bir yol adı gelmelidir. Genellikle, bu hata, klasör yolunun derinliği çok uzun hale geldiği için oluşur. Bu durumda, `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem@LongPathsEnabled` `1` uzun yolları etkinleştirmek için kayıt defteri anahtarını olarak ayarlayın. Alternatif olarak, Python yorumlayıcının nereye yüklendiğini kontrol edin. Bu konumda uzun bir yol varsa, daha kısa bir yola sahip bir klasöre yeniden yüklemeyi deneyin.
+    Windows 'da, "bir EnvironmentError nedeniyle paketler yüklenemedi: [errno 2] böyle bir dosya veya dizin yok:" arkasından *sharded_mutable_dense_hashtable. CPython-37. PYC* gibi bir dosyaya uzun bir yol adı gelmelidir. Genellikle, bu hata, klasör yolunun derinliği çok uzun hale geldiği için oluşur. Bu durumda, `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem@LongPathsEnabled` `1` uzun yolları etkinleştirmek için kayıt defteri anahtarını olarak ayarlayın. Alternatif olarak, Python yorumlayıcının nereye yüklendiğini kontrol edin. Bu konumda uzun bir yol varsa, daha kısa bir yola sahip bir klasöre yeniden yüklemeyi deneyin.
 
 > [!TIP]
 > İlk tahminini yapmak için *Predict.py* üzerine çağrılırken, adlı bir işlev, bir Işlev `_initialize` olan TensorFlow modelini diskten yükler ve genel değişkenlerde önbelleğe alır. Bu önbelleğe alma, sonraki tahminleri hızlandırır. Genel değişkenleri kullanma hakkında daha fazla bilgi için, [Azure Işlevleri Python Geliştirici Kılavuzu](functions-reference-python.md#global-variables)' na bakın.

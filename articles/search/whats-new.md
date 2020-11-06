@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: ddf418c90857b5bb7eca97eb2c6943cc93fce9ab
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7f71cacee86edd5b3f054f0996893c2148c626eb
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518934"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422680"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
@@ -42,7 +42,7 @@ Azure Active Directory ' de bir arama hizmeti için kimlik oluşturun, ardından
 
 |Özellik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategori | Açıklama | Kullanılabilirlik  |
 |---------|------------------|-------------|---------------|
-| [Azure.Search.Documstalar istemci kitaplığı](/dotnet/api/overview/azure/search.documents-readme) | .NET için Azure SDK | Azure SDK ekibi tarafından yayınlanan ve diğer .NET istemci kitaplıkları ile tutarlılık için tasarlanan .NET istemci kitaplığı. <br/><br/>Sürüm 11, arama REST API-Version = 2020-06-30 ' ı hedefler, ancak henüz bilgi deposu, Jeo-uzamsal türler veya [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder)'ı desteklemez. <br/><br/>Daha fazla bilgi için bkz.  [hızlı başlangıç: Dizin oluşturma](search-get-started-dotnet.md) ve [Azure.Search.Documtları yükseltme (v11)](search-dotnet-sdk-migration-version-11.md). | Genel olarak kullanılabilir. </br> [Azure.Search.Documstaları paketini](https://www.nuget.org/packages/Azure.Search.Documents/) NuGet 'ten yüklersiniz. |
+| [Azure.Search.Documstalar istemci kitaplığı](/dotnet/api/overview/azure/search.documents-readme) | .NET için Azure SDK | Azure SDK ekibi tarafından yayınlanan ve diğer .NET istemci kitaplıkları ile tutarlılık için tasarlanan .NET istemci kitaplığı. <br/><br/>Sürüm 11, arama REST API-Version = 2020-06-30 ' ı hedefler, ancak henüz bilgi deposu veya jeo uzamsal türlerini desteklemez. <br/><br/>Daha fazla bilgi için bkz.  [hızlı başlangıç: Dizin oluşturma](search-get-started-dotnet.md) ve [Azure.Search.Documtları yükseltme (v11)](search-dotnet-sdk-migration-version-11.md). | Genel olarak kullanılabilir. </br> [Azure.Search.Documstaları paketini](https://www.nuget.org/packages/Azure.Search.Documents/) NuGet 'ten yüklersiniz. |
 | [azure.search.documstalar istemci kitaplığı](/python/api/overview/azure/search-documents-readme)  | Python için Azure SDK| Azure SDK ekibi tarafından yayınlanan Python istemci kitaplığı, diğer Python istemci kitaplıkları ile tutarlılık için tasarlanmıştır. <br/><br/>Sürüm 11 ' de arama REST API 'si-sürüm = 2020-06-30 hedefdedir. | Genel olarak kullanılabilir. </br> Pypı 'den [Azure-Search-Documents paketini](https://pypi.org/project/azure-search-documents/) yükler. |
 | [@azure/search-documents istemci kitaplığı](/javascript/api/overview/azure/search-documents-readme)  | JavaScript için Azure SDK | Azure SDK ekibi tarafından yayınlanan JavaScript istemci kitaplığı, diğer JavaScript istemci kitaplıkları ile tutarlılık için tasarlanmıştır. <br/><br/>Sürüm 11 ' de arama REST API 'si-sürüm = 2020-06-30 hedefdedir. | Genel olarak kullanılabilir. </br> [ @azure/search-documents Paketi](https://www.npmjs.com/package/@azure/search-documents) NPM 'den yükleyeceksiniz. |
 

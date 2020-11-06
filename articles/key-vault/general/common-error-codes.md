@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 09/29/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 25c79229a09db912903fba825f0d48f571880745
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: a36e15a56a5a4c8a637120ca730ae1da764d376d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91877126"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422912"
 ---
 # <a name="common-error-codes-for-azure-key-vault"></a>Azure Key Vault için ortak hata kodları
 
@@ -22,7 +22,7 @@ Aşağıdaki tabloda listelenen hata kodları, Azure Anahtar Kasası 'ndaki bir 
 
 | Hata kodu | Kullanıcı iletisi |
 |--|--|
-| VaultAlreadyExists |  Belirtilen anahtar kasası zaten var (geçici olarak silinmiş durumda veya başka bir abonelikte). |
+| VaultAlreadyExists |  Ad zaten kullanımda olduğundan, belirtilen ada sahip yeni bir Anahtar Kasası oluşturma denemeniz başarısız oldu. Kısa bir süre önce bu adla bir Anahtar Kasası sildiyseniz, hala geçici olarak silinmiş durumda olabilir. [Burada](https://docs.microsoft.com/azure/key-vault/general/key-vault-recovery?tabs=azure-portal#list-recover-or-purge-a-soft-deleted-key-vault) geçici olarak silinmiş durumda olup olmadığını doğrulayabilirsiniz |
 | Vaultsüs Otgeçerli |  Kasa adı 24 karakter, alfasayısal olmalı ve bir alfabede başlamalıdır |
 | Accessreddedildi |  Bu işlemi yapmak için erişim ilkesinde izinleriniz eksik olabilir. |
 | ForbiddenByFirewall |  İstemci adresi yetkilendirilmemiş ve arayan güvenilen bir hizmet değil. |

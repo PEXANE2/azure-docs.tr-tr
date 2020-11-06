@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2020
 ms.author: rkarlin
-ms.openlocfilehash: e90bdcfe22828d85ebeeb74314617fc6eac81385
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 28d64f5d9d845c2a14f0277799213501e1d68010
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094877"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421773"
 ---
 # <a name="quickstart-deploy-and-onboard-a-sensor"></a>Hızlı başlangıç: bir algılayıcı dağıtın ve ekleyin
 
@@ -39,7 +39,7 @@ Ekleme sensörleri şunları yapmanızı sağlar:
 |------ | ----------- |
 | **Bir algılayıcı adı tanımlayın** | Ekleme yaptığınız sensöri adlandırın ve bir IoT Hub veya abonelikle ilişkilendirin.<br /><br />Daha fazla bilgi için bkz. **sensörlerden katılın** .|
 |**Abonelik ve yürütülen cihaz sayısını seçin**|Abonelik kapsamındaki cihaz sayısını ve aboneliği seçin. Sayıyı 1000 artışlarla girin.|
-| **Bir algılayıcı yönetim modu tanımlama** | Bir algılayıcı tarafından algılanan varlık, uyarı ve diğer bilgilerin nerede görüntülendiğini tanımlayın. Bu, tanımladığınız **algılayıcı yönetim moduna** göre belirlenir.<br /><br />**Yerel olarak yönetilen mod**: algılayıcı tarafından algılanan bilgiler algılayıcı konsolunda görüntülenir. Algılayıcı kendisine bağlıysa, algılama bilgileri de şirket içi yönetim konsoluyla paylaşılır.<br /><br />**Bulut yönetilen modu**: algılayıcı tarafından algılanan bilgiler algılayıcı konsolunda görüntülenir. Ayrıca, uyarı bilgileri bir IoT Hub aracılığıyla dağıtılır ve Azure Sentinel gibi diğer Azure hizmetleriyle de paylaşılabilir.<br />Daha fazla bilgi için bkz. **algılayıcısı** ekleme. |
+| **Bir algılayıcı yönetim modu tanımlama** | Bir algılayıcı tarafından algılanan varlık, uyarı ve diğer bilgilerin nerede görüntülendiğini tanımlayın. Bu, tanımladığınız **algılayıcı yönetim moduna** göre belirlenir.<br /><br />**Yerel olarak yönetilen mod** : algılayıcı tarafından algılanan bilgiler algılayıcı konsolunda görüntülenir. Algılayıcı kendisine bağlıysa, algılama bilgileri de şirket içi yönetim konsoluyla paylaşılır.<br /><br />**Bulut yönetilen modu** : algılayıcı tarafından algılanan bilgiler algılayıcı konsolunda görüntülenir. Ayrıca, uyarı bilgileri bir IoT Hub aracılığıyla dağıtılır ve Azure Sentinel gibi diğer Azure hizmetleriyle de paylaşılabilir.<br />Daha fazla bilgi için bkz. **algılayıcısı** ekleme. |
 | **Algılayıcı etkinleştirme dosyası alma** | **Yerel olarak yönetilen** sensörler için, yetkili algılayıcı etkinleştirme sürelerini yönetmek üzere bir etkinleştirme dosyası kullanılır.<br /><br />**Bulut yönetilen** algılayıcılar için, algılayıcı ve bir IoT Hub arasında bağlantı olarak bir etkinleştirme dosyası kullanılır. Daha fazla bilgi için bkz. **sensörlerden katılın**. |
 | **Bir etkinleştirme dosyasını sensöre yükleme** | Etkinleştirme dosyaları kurumsal Sensörlerinizi karşıya yüklememelidir. Etkinleştirme dosyası karşıya yüklenene kadar ağ izleme ve algılayıcı konsol özelliklerine erişim kullanılamayacak. Daha fazla bilgi için bkz. **algılayıcı etkinleştirme dosyalarını karşıya yükleme**. |
 | **Etkinleştirmeden önce algılayıcı ağ parametrelerini Güncelleştir** | Algılayıcı yüklemesi sırasında tanımlanan parametreleri güncelleştirin. Daha fazla bilgi için bkz. **hata! Başvuru kaynağı bulunamadı**.|
@@ -51,17 +51,17 @@ Ekleme sensörleri şunları yapmanızı sağlar:
 
 2. Kullanmaya başlayın ' ı seçin **.**
 
-3. **Ağınızı bulma** bölümünde **Ayarla**' yı seçin.
+3. **Ağınızı bulma** bölümünde **Ayarla** ' yı seçin.
 
    ![IoT için Azure Defender ağ görünümünüzü bulma](media/updates/image5.png)
 
 4. Algılayıcı almak için bir seçenek belirleyin.
 
-   ![IoT Ağ sektör görünümü için Azure Defender](media/updates/image6.png)
+   ![IoT ağ algılayıcısı görünümü için Azure Defender](media/updates/image6.png)
 
-  - **Önceden yapılandırılmış bir algılayıcı satın alın**: Microsoft ve ok, önceden yapılandırılmış algılayıcılar sağlamak için partnerin. Önceden yapılandırılmış bir algılayıcı satın almak için, şu adreste iletişim oku: <hardware.sales@arrow.com> . Algılayıcı, özelliğinize teslim edilecek. En güncel sürüm yüklendi.
+  - **Önceden yapılandırılmış bir algılayıcı satın alın** : Microsoft ve ok, önceden yapılandırılmış algılayıcılar sağlamak için partnerin. Önceden yapılandırılmış bir algılayıcı satın almak için, şu adreste iletişim oku: <hardware.sales@arrow.com> . Algılayıcı, özelliğinize teslim edilecek. En güncel sürüm yüklendi.
 
-  - **Kendi gerecinizi getir (ISO yüklemesi)**: çözüm sertifikalı gereçler üzerinde çalışır. Sertifikalı gerecinizi satın alırken [IoT Için Azure Defender 'ı donanım belirtimleri kılavuzunu](https://aka.ms/AzureDefenderforIoTBareMetalAppliance) kullanın.
+  - **Kendi gerecinizi getir (ISO yüklemesi)** : çözüm sertifikalı gereçler üzerinde çalışır. Sertifikalı gerecinizi satın alırken [IoT Için Azure Defender 'ı donanım belirtimleri kılavuzunu](https://aka.ms/AzureDefenderforIoTBareMetalAppliance) kullanın.
 
     - **Sürüm Seç** menüsünden bir sürüm seçin.
 
@@ -98,12 +98,12 @@ Algılayıcılar 'ın IoT portalı için Azure Defender eklendi olması gerekir.
 4. **Bulut bağlantısı** geçişi kullanarak bir algılayıcı yönetimi modu seçin. Geçiş açık ise, algılayıcı **bulutta yönetilir**. Geçiş kapalıysa, algılayıcı **yerel olarak yönetilir**.
 
 
-| Algılayıcı yönetim modu | Description                                                |
+| Algılayıcı yönetim modu | Açıklama                                                |
 | ---------------------- | ---------------------------------------------------------  |
 | **Bulut yönetiliyor**          | Algılayıcı tarafından algılanan bilgiler algılayıcı konsolunda görüntülenir. Ayrıca, uyarı bilgileri bir IoT Hub aracılığıyla dağıtılır ve Azure Sentinel gibi diğer Azure hizmetleriyle de paylaşılabilir.<br /><br />Bu sensör ile ilişkilendirilecek IoT Hub seçin.<br /><br />Bulut tarafından yönetilen sensörlerle bulut tarafından yönetilen bir etkinleştirme dosyası yüklemeniz gerekir.<br /><br />Ayrıntılar için bkz. **algılayıcı etkinleştirme dosyalarını karşıya yükleme** . |
 | **Yerel olarak yönetilen**        | Yerel olarak yönetilen sensörlerle algılanan bilgiler algılayıcı konsolunda görüntülenir. Bir AIR-gapped ağında çalışıyorsanız ve birden çok yerel olarak yönetilen algılayıcı tarafından algılanan tüm bilgilerin birleştirilmiş bir görünümünü istiyorsanız, şirket içi yönetim konsoluyla çalışın.<br /><br />*Yerel olarak yönetilen* sensörler bir Azure aboneliğiyle ilişkilendirilir ve etkinleştirme süre sonu döneminin algılayıcısı hakkında yönergeler içerir.<br /><br />Bu sensörle ilişkilendirilecek bir abonelik seçin.<br /><br />Her sensöre yerel olarak yönetilen bir etkinleştirme dosyası yüklemeniz gerekir. Ayrıntılar için bkz. **algılayıcı etkinleştirme dosyalarını karşıya yükleme** . |
 
-5. **Kaydet**’i seçin.
+5. **Kaydet** ’i seçin.
 
 6. Etkinleştirme dosyasını Indir sayfasında etkinleştirme dosyasını **İndir** ' i seçin.
 
@@ -111,7 +111,7 @@ Algılayıcılar 'ın IoT portalı için Azure Defender eklendi olması gerekir.
 
 7. Dosyayı kaydedin. Dosya adı şu biçimdedir: `<hub_name>_<sensor_name>` . Algılayıcı adı, yukarıda tanımladığınız adı ifade eder.
 
-8. **Son**’u seçin.
+8. **Son** ’u seçin.
 
 9. Algılayıcı ekleme işlemini gerçekleştirmek için, IoT için Azure Defender konsolundan dosyayı sensöre yükleyin.
  
@@ -151,8 +151,8 @@ IoT Hub 'Ları hakkında daha fazla bilgi için bkz. [IoT Hub](../iot-hub/about-
 
 5. Hüküm ve koşulları onaylayın.
 
-6. **Etkinleştir**' i seçin. Algılayıcı ağı yapılandırma parametreleri, yazılım yüklemesi sırasında veya önceden yapılandırılmış bir algılayıcı satın alındığında tanımlanmıştır. Aşağıdaki parametreler tanımlandı:
-   - IP adresi
+6. **Etkinleştir** ' i seçin. Algılayıcı ağı yapılandırma parametreleri, yazılım yüklemesi sırasında veya önceden yapılandırılmış bir algılayıcı satın alındığında tanımlanmıştır. Aşağıdaki parametreler tanımlandı:
+   - IP Adresi
    - DNS  
    - Varsayılan ağ geçidi
    - Alt ağ maskesi
@@ -166,7 +166,7 @@ IoT Hub 'Ları hakkında daha fazla bilgi için bkz. [IoT Hub](../iot-hub/about-
 
    ![Ağ yapılandırması düzenleme görünümünün ekran görüntüsü](media/updates/image13.png)
 
-8. Yükleme sırasında tanımlanan parametreler görüntülenir. Ayrıca bir seçenek proxy 'yi tanımlar. Gerekirse güncelleştirin ve **Kaydet**' i seçin.
+8. Yükleme sırasında tanımlanan parametreler görüntülenir. Ayrıca bir seçenek proxy 'yi tanımlar. Gerekirse güncelleştirin ve **Kaydet** ' i seçin.
  
  
 ## <a name="next-steps"></a>Sonraki adımlar

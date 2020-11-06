@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 796aca02e6f70da8f5b94f6bbdbd2fd1d535bd77
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: af9490433c344c712da55e9b29bf9df364380736
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108482"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422544"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Işlevleri PowerShell Geliştirici Kılavuzu
 
@@ -20,7 +20,7 @@ Bir PowerShell Azure işlevi (işlev), tetiklendiğinde yürütülen bir PowerSh
 
 Diğer işlev türleri gibi, PowerShell betik işlevleri de dosyada tanımlanan tüm giriş bağlamalarının adlarıyla eşleşen parametreleri alır `function.json` . `TriggerMetadata`İşlevi Başlatan tetikleyicide ek bilgiler içeren bir parametre de geçirilir.
 
-Bu makalede, [Azure işlevleri geliştirici başvurusunu](functions-reference.md)zaten okuduğunuzu varsaymış olursunuz. İlk PowerShell işlevinizi oluşturmak için [PowerShell için hızlı başlangıç işlevleri](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell) de tamamlanmış olmalıdır.
+Bu makalede, [Azure işlevleri geliştirici başvurusunu](functions-reference.md)zaten okuduğunuzu varsaymış olursunuz. İlk PowerShell işlevinizi oluşturmak için [PowerShell için hızlı başlangıç işlevleri](./create-first-function-vs-code-powershell.md) de tamamlanmış olmalıdır.
 
 ## <a name="folder-structure"></a>Klasör yapısı
 
@@ -77,8 +77,8 @@ $TriggerMetadata.sys
 | Özellik   | Açıklama                                     | Tür     |
 |------------|-------------------------------------------------|----------|
 | UtcNow     | UTC olarak işlev tetiklendiğinde        | DateTime |
-| MethodName | Tetiklenen Işlevin adı     | dize   |
-| RandGuid   | işlevin bu yürütmeye yönelik benzersiz bir GUID | dize   |
+| MethodName | Tetiklenen Işlevin adı     | string   |
+| RandGuid   | işlevin bu yürütmeye yönelik benzersiz bir GUID | string   |
 
 Her tetikleyici türünün farklı bir meta veri kümesi vardır. Örneğin, için, `$TriggerMetadata` `QueueTrigger` `InsertionTime` `Id` `DequeueCount` diğer şeyleri kapsayan,,,. Sıra tetikleyicisinin meta verileri hakkında daha fazla bilgi için, [sıra tetikleyicilerinin resmi belgelerine](functions-bindings-storage-queue-trigger.md#message-metadata)gidin. Tetikleyici meta verilerinin içinde neler olduğunu görmek için, üzerinde çalıştığınız [tetikleyicilerle](functions-triggers-bindings.md) ilgili belgelere bakın.
 
@@ -126,7 +126,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 Çağırmak için geçerli parametreler aşağıda verilmiştir `Push-OutputBinding` :
 
-| Ad | Tür | Konum | Description |
+| Ad | Tür | Konum | Açıklama |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | Dize | 1 | Ayarlamak istediğiniz çıkış bağlamasının adı. |
 | **`-Value`** | Nesne | 2 | Ayarlamak istediğiniz çıkış bağlamasının değeri, işlem hattı ByValue 'dan kabul edilir. |
@@ -276,7 +276,7 @@ Geliştirme için İşlev Uygulaması yerel olarak çalıştırıyorsanız, vars
 Tüm tetikleyiciler ve bağlamalar kodda birkaç gerçek veri türü olarak temsil edilir:
 
 * Hashtable
-* dize
+* string
 * Byte []
 * int
 * double
@@ -299,10 +299,10 @@ Betiğe geçirilen istek nesnesi, `HttpRequestContext` aşağıdaki özelliklere
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | İsteğin gövdesini içeren bir nesne. `Body` , verileri temel alan en iyi türe serileştirilir. Örneğin, veriler JSON ise, bir Hashtable olarak geçirilir. Veriler bir dizeyse, bir dize olarak geçirilir. | object |
 | **`Headers`** | İstek üst bilgilerini içeren bir sözlük.                | Sözlük<dize, dize><sup>*</sup> |
-| **`Method`** | İsteğin HTTP yöntemi.                                | dize                    |
+| **`Method`** | İsteğin HTTP yöntemi.                                | string                    |
 | **`Params`**  | İsteğin yönlendirme parametrelerini içeren nesne. | Sözlük<dize, dize><sup>*</sup> |
 | **`Query`** | Sorgu parametrelerini içeren bir nesne.                  | Sözlük<dize, dize><sup>*</sup> |
-| **`Url`** | İsteğin URL 'SI.                                        | dize                    |
+| **`Url`** | İsteğin URL 'SI.                                        | string                    |
 
 <sup>*</sup> Tüm `Dictionary<string,string>` anahtarlar büyük/küçük harfe duyarlıdır.
 
@@ -313,7 +313,7 @@ Geri göndermeniz gereken yanıt nesnesi, `HttpResponseContext` aşağıdaki öz
 | Özellik      | Açıklama                                                 | Tür                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | Yanıtın gövdesini içeren bir nesne.           | object                    |
-| **`ContentType`** | Yanıt için içerik türünü ayarlamanın kısa bir tarafı. | dize                    |
+| **`ContentType`** | Yanıt için içerik türünü ayarlamanın kısa bir tarafı. | string                    |
 | **`Headers`** | Yanıt üst bilgilerini içeren bir nesne.               | Sözlük veya Hashtable   |
 | **`StatusCode`**  | Yanıtın HTTP durum kodu.                       | dize veya tamsayı             |
 
@@ -418,11 +418,11 @@ Yerel olarak çalıştırılırken Azure Işlevleri çalışma zamanı varsayıl
 
 1. [Azure Portal](https://portal.azure.com), işlev uygulamanıza gidin.
 
-1. **Ayarlar**altında **yapılandırma**' yı seçin. **Genel ayarlar** sekmesinde **PowerShell sürümünü**bulun. 
+1. **Ayarlar** altında **yapılandırma** ' yı seçin. **Genel ayarlar** sekmesinde **PowerShell sürümünü** bulun. 
 
     :::image type="content" source="media/functions-reference-powershell/change-powershell-version-portal.png" alt-text="İşlev uygulaması tarafından kullanılan PowerShell sürümünü seçin"::: 
 
-1. İstediğiniz **PowerShell Çekirdek sürümünüzü** seçin ve **Kaydet**' i seçin. Bekleyen yeniden başlatma hakkında uyarı olduğunda **devam**' ı seçin. İşlev uygulaması, seçilen PowerShell sürümünde yeniden başlatılır. 
+1. İstediğiniz **PowerShell Çekirdek sürümünüzü** seçin ve **Kaydet** ' i seçin. Bekleyen yeniden başlatma hakkında uyarı olduğunda **devam** ' ı seçin. İşlev uygulaması, seçilen PowerShell sürümünde yeniden başlatılır. 
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -470,7 +470,7 @@ requirements.psd1 dosyasını güncelleştirdiğinizde, bir yeniden başlatmanı
 
 Aşağıdaki uygulama ayarları, yönetilen bağımlılıkların nasıl indirileceğini ve yükleneceğini değiştirmek için kullanılabilir. Uygulama yükseltmeniz içinde başlar `MDMaxBackgroundUpgradePeriod` ve yükseltme işlemi yaklaşık olarak içinde tamamlanır `MDNewSnapshotCheckPeriod` .
 
-| İşlev Uygulaması ayarı              | Varsayılan değer             | Description                                         |
+| İşlev Uygulaması ayarı              | Varsayılan değer             | Açıklama                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
 | **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` (7 gün)     | Her PowerShell çalışan işlemi, işlem başlatma ve sonrasında PowerShell Galerisi modül yükseltmelerini denetlemeyi başlatır `MDMaxBackgroundUpgradePeriod` . PowerShell Galerisi yeni bir modül sürümü kullanılabilir olduğunda, dosya sistemine yüklenir ve PowerShell çalışanları için kullanılabilir hale getirilir. Bu değeri azaltmak, işlev uygulamanızın daha önce daha yeni modül sürümlerini almasını sağlar, ancak aynı zamanda uygulama kaynak kullanımını (ağ g/ç, CPU, depolama) de artırır. Bu değerin artırılması uygulamanın kaynak kullanımını düşürür, ancak uygulamanıza yeni modül sürümlerinin teslim edilmesini de erteleyebilir. | 
 | **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 saat)       | Yeni modül sürümleri dosya sistemine yüklendikten sonra, her PowerShell çalışan işleminin yeniden başlatılması gerekir. PowerShell çalışanlarını yeniden başlatmak, geçerli işlev yürütmesini kesintiye uğratmak için uygulamanızın kullanılabilirliğini etkiler. Tüm PowerShell çalışan süreçler yeniden başlatılana kadar, işlev etkinleştirmeleri eski veya yeni modül sürümlerini kullanabilir. Tüm PowerShell çalışanlarının yeniden başlatılması içinde tamamlanır `MDNewSnapshotCheckPeriod` . Bu değerin artırılması kesintiler sıklığını düşürür, ancak işlev etkinleştirmeleri eski veya yeni modül sürümlerini belirleyici olmayan şekilde kullandığınızda zaman dilimini de artırabilir. |
@@ -525,7 +525,7 @@ Birçok modül genellikle PowerShell dil çalışanı tarafından kullanılır. 
 Geçerli modüller listesi aşağıdaki gibidir:
 
 * [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive):, ve gibi Arşivlerle çalışmak için kullanılan `.zip` modül `.nupkg` .
-* **Threadjob**: PowerShell iş API 'lerinin iş parçacığı tabanlı bir uygulamasıdır.
+* **Threadjob** : PowerShell iş API 'lerinin iş parçacığı tabanlı bir uygulamasıdır.
 
 Varsayılan olarak, Işlevler bu modüllerin en son sürümünü kullanır. Belirli bir modül sürümünü kullanmak için, söz konusu sürümü `Modules` işlev uygulamanızın klasörüne yerleştirin.
 

@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 08641814e2a4fdf6f174f94b1e38e4124cf531d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e583cedc04113615c50cc9906cbd11a99ff48683
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934931"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421728"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Bilişsel Arama arama sonuçlarıyla çalışma
 
 Bu makalede, toplam eşleşen belge sayısı, sayfalandırılmış sonuçlar, sıralanmış sonuçlar ve isabet vurgulu terimler ile geri gelen bir sorgu yanıtının nasıl alınacağı açıklanmaktadır.
 
-Bir yanıtın yapısı, sorgudaki parametrelere göre belirlenir: REST API veya .NET SDK 'da [Documentsearchresult sınıfında](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) [Arama belgesi](/rest/api/searchservice/Search-Documents) .
+Bir yanıtın yapısı sorgudaki parametrelere göre belirlenir: REST API veya .NET SDK 'sında [SearchResults sınıfında](/dotnet/api/azure.search.documents.models.searchresults-1) [Ara](/rest/api/searchservice/Search-Documents) .
 
 ## <a name="result-composition"></a>Sonuç oluşturma
 
@@ -52,7 +52,7 @@ Farklı sayıda eşleşen belge döndürmek için `$top` `$skip` sorgu isteğine
 + İkinci kümeyi döndürün, sonraki 15 ' i almak için ilk 15 ' i atlayarak: `$top=15&$skip=15` . Üçüncü 15 kümesi için aynısını yapın: `$top=15&$skip=30`
 
 Temel alınan dizin değiştirilirken sayfalandırılmış sorguların sonuçlarının kararlı olmaması garanti edilmez. Sayfalama `$skip` , her bir sayfa için değerini değiştirir, ancak her sorgu bağımsızdır ve sorgu zamanında dizinde olduğu gibi verilerin geçerli görünümü üzerinde çalışır (başka bir deyişle, bir genel amaçlı veritabanında bulunanlar gibi, sonuçların önbelleğe alınması veya anlık görüntüsü yoktur).
- 
+ 
 Yinelemeleri nasıl alabileceğiniz hakkında bir örnek aşağıda verilmiştir. Dört belge içeren bir dizin varsayın:
 
 ```text
@@ -61,21 +61,21 @@ Yinelemeleri nasıl alabileceğiniz hakkında bir örnek aşağıda verilmiştir
 { "id": "3", "rating": 2 }
 { "id": "4", "rating": 1 }
 ```
- 
+ 
 Şimdi sonuçların, derecelendirmeye göre sıralanmış olarak her seferinde bir kez döndürülmesini istediğinizi varsayın. Sonuçların ilk sayfasını almak için bu sorguyu yürütülecektir: `$top=2&$skip=0&$orderby=rating desc` , aşağıdaki sonuçları üretir:
 
 ```text
 { "id": "1", "rating": 5 }
 { "id": "2", "rating": 3 }
 ```
- 
+ 
 Hizmette, sorgu çağrıları arasındaki dizine beşinci bir belge eklendiğini varsayalım: `{ "id": "5", "rating": 4 }` .  Kısa süre sonra, ikinci sayfayı getirmek için bir sorgu yürütüyoruz `$top=2&$skip=2&$orderby=rating desc` ve şu sonuçları elde edersiniz:
 
 ```text
 { "id": "2", "rating": 3 }
 { "id": "3", "rating": 2 }
 ```
- 
+ 
 Belge 2 ' nin iki kez getirildiğine dikkat edin. Bunun nedeni, yeni belge 5 ' in derecelendirme için daha büyük olması, bu yüzden belge 2 ' den önce ve ilk sayfada yer bırakmadan önce sıralanır. Bu davranış beklenmeyen bir durum olsa da, bir arama altyapısının nasıl davrandığı normaldir.
 
 ## <a name="ordering-results"></a>Sonuçları sıralama
@@ -92,7 +92,7 @@ Arama puanları, aynı sonuç kümesindeki diğer belgelerle karşılaştırıld
 
 ### <a name="consistent-ordering"></a>Tutarlı sıralama
 
-Sonuç sıralamasına göre esneklik verildiğinde, tutarlılık bir uygulama gereksinimidir, diğer seçenekleri incelemek isteyebilirsiniz. En kolay yaklaşım, derecelendirme veya tarih gibi bir alan değerine göre sıralıyor. Derecelendirme veya tarih gibi belirli bir alana göre sıralamak istediğiniz senaryolar için, **sıralanabilir**olarak dizini oluşturulmuş herhangi bir alana uygulanabilen bir [ `$orderby` ifadeyi](query-odata-filter-orderby-syntax.md)açıkça tanımlayabilirsiniz.
+Sonuç sıralamasına göre esneklik verildiğinde, tutarlılık bir uygulama gereksinimidir, diğer seçenekleri incelemek isteyebilirsiniz. En kolay yaklaşım, derecelendirme veya tarih gibi bir alan değerine göre sıralıyor. Derecelendirme veya tarih gibi belirli bir alana göre sıralamak istediğiniz senaryolar için, **sıralanabilir** olarak dizini oluşturulmuş herhangi bir alana uygulanabilen bir [ `$orderby` ifadeyi](query-odata-filter-orderby-syntax.md)açıkça tanımlayabilirsiniz.
 
 Başka bir seçenek de [özel bir Puanlama profili](index-add-scoring-profiles.md)kullanıyor. Puanlama profilleri, belirli alanlarda bulunan eşleşmeleri artırma özelliği sayesinde, arama sonuçlarında öğelerin derecelendirmesi üzerinde daha fazla denetim sağlar. Ek Puanlama mantığı, her belge için arama puanları birbirinden farklı olduğundan çoğaltmalar arasındaki küçük farklılıkları geçersiz kılmaya yardımcı olabilir. Bu yaklaşım için [Derecelendirme algoritmasını](index-ranking-similarity.md) öneririz.
 

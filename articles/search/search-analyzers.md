@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 01b57526b15a806271d58b250f06a4372fe56b72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 544509a8c90c9273b748591509b1fa86510d71c3
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532270"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421745"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Azure Bilişsel Arama metin işleme için çözümleyiciler
 
@@ -48,10 +48,10 @@ Aşağıdaki listede Azure Bilişsel Arama 'de hangi çözümleyiciler kullanıl
 | Kategori | Açıklama |
 |----------|-------------|
 | [Standart Lucene Çözümleyicisi](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Varsayılan. Belirtim veya yapılandırma gerekli değildir. Bu genel amaçlı çözümleyici birçok dil ve senaryo için iyi bir performans uygular.|
-| Önceden tanımlanmış çözümleyiciler | Olduğu gibi kullanılması amaçlanan, tamamlanmış bir ürün olarak sunulur. <br/>İki tür vardır: özelleştirilmiş ve dil. Bunları "önceden tanımlanmış" olarak belirlemek, yapılandırma veya özelleştirme olmadan bunlara ada göre başvurmanıza neden olur. <br/><br/>[Özelleştirilmiş (dilden bağımsız) çözümleyiciler](index-add-custom-analyzers.md#AnalyzerTable) , metin girdileri özel işlem veya minimum işleme gerektirdiğinde kullanılır. Dili olmayan önceden tanımlı çözümleyiciler, **Asciifolding**, **anahtar sözcük**, **model**, **Simple**, **stop**, **Whitespace**içerir.<br/><br/>[Dil Çözümleyicileri](index-add-language-analyzers.md) , tek tek diller için zengin dil desteği gerektiğinde kullanılır. Azure Bilişsel Arama, 35 Lucene dil Çözümleyicileri ve 50 Microsoft doğal dil işleme Çözümleyicileri destekler. |
+| Önceden tanımlanmış çözümleyiciler | Olduğu gibi kullanılması amaçlanan, tamamlanmış bir ürün olarak sunulur. <br/>İki tür vardır: özelleştirilmiş ve dil. Bunları "önceden tanımlanmış" olarak belirlemek, yapılandırma veya özelleştirme olmadan bunlara ada göre başvurmanıza neden olur. <br/><br/>[Özelleştirilmiş (dilden bağımsız) çözümleyiciler](index-add-custom-analyzers.md#AnalyzerTable) , metin girdileri özel işlem veya minimum işleme gerektirdiğinde kullanılır. Dili olmayan önceden tanımlı çözümleyiciler, **Asciifolding** , **anahtar sözcük** , **model** , **Simple** , **stop** , **Whitespace** içerir.<br/><br/>[Dil Çözümleyicileri](index-add-language-analyzers.md) , tek tek diller için zengin dil desteği gerektiğinde kullanılır. Azure Bilişsel Arama, 35 Lucene dil Çözümleyicileri ve 50 Microsoft doğal dil işleme Çözümleyicileri destekler. |
 |[Özel çözümleyiciler](/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | , Bir Simgeleştirici (zorunlu) ve isteğe bağlı filtrelerden (char veya token) oluşan, mevcut öğelerin bir birleşiminin Kullanıcı tanımlı yapılandırmasını ifade eder.|
 
-**Model** veya **durdurma**gibi önceden tanımlanmış birkaç çözümleyici, sınırlı bir yapılandırma seçenekleri kümesini destekler. Bu seçenekleri ayarlamak için, önceden tanımlanmış çözümleyicisinden ve [önceden tanımlanmış çözümleyici başvurusunda](index-add-custom-analyzers.md#AnalyzerTable)belgelenen alternatif seçeneklerden birine sahip olan özel bir çözümleyici 'yi verimli bir şekilde oluşturursunuz. Tüm özel yapılandırmada olduğu gibi, yeni yapılandırmanızı Lucene model çözümleyicisinden ayırt etmek için *Mypatternanalyzer* gibi bir adla birlikte belirtin.
+**Model** veya **durdurma** gibi önceden tanımlanmış birkaç çözümleyici, sınırlı bir yapılandırma seçenekleri kümesini destekler. Bu seçenekleri ayarlamak için, önceden tanımlanmış çözümleyicisinden ve [önceden tanımlanmış çözümleyici başvurusunda](index-add-custom-analyzers.md#AnalyzerTable)belgelenen alternatif seçeneklerden birine sahip olan özel bir çözümleyici 'yi verimli bir şekilde oluşturursunuz. Tüm özel yapılandırmada olduğu gibi, yeni yapılandırmanızı Lucene model çözümleyicisinden ayırt etmek için *Mypatternanalyzer* gibi bir adla birlikte belirtin.
 
 ## <a name="how-to-specify-analyzers"></a>Çözümleyiciler belirtme
 
@@ -317,7 +317,7 @@ Olduğu gibi kullanılan ve yapılandırma olmadan kullanılan çözümleyici, b
 
 Bu örnek, Açıklama alanlarına Microsoft Ingilizce ve Fransızca Çözümleyicileri atar. Bu bir kod parçacığı, otel dizininin daha büyük bir tanımından alınmış ve [Dotnethowto](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) örneğinin Hotels.cs dosyasındaki otel sınıfını kullanarak oluşturuluyor.
 
-Azure Bilişsel Arama 'de desteklenen bir metin Çözümleyicisi sağlayan [analiz Zeradı](/dotnet/api/microsoft.azure.search.models.analyzername) türünü belirterek [çözümleyici](/dotnet/api/microsoft.azure.search.models.analyzer)'yi çağırın.
+Azure Bilişsel Arama 'de desteklenen bir metin Çözümleyicisi sağlayan [LexicalAnalyzerName](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) türünü belirterek [LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer)çağırın.
 
 ```csharp
     public partial class Hotel
@@ -343,7 +343,7 @@ Azure Bilişsel Arama 'de desteklenen bir metin Çözümleyicisi sağlayan [anal
 
 Özelleştirme veya yapılandırma gerektiğinde, bir dizine çözümleyici yapısı eklemeniz gerekir. Bunu tanımladıktan sonra, bir önceki örnekte gösterildiği gibi alan tanımını ekleyebilirsiniz.
 
-Bir [CustomAnalyzer](/dotnet/api/microsoft.azure.search.models.customanalyzer) nesnesi oluşturun. Daha fazla örnek için bkz. [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs).
+Bir [CustomAnalyzer](/dotnet/api/azure.search.documents.indexes.models.customanalyzer) nesnesi oluşturun. Daha fazla örnek için bkz. [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs).
 
 ```csharp
 {

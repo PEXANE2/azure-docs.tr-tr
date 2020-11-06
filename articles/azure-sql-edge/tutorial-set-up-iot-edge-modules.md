@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sourabha, sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: a8c5b20f833ab09463e1ae8b5bd3825c7c23f85e
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 75e6ebaea4c5ba883820d2309212b35fed128142
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394943"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422136"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>IoT Edge modülleri ve bağlantıları ayarlama
 
@@ -49,27 +49,30 @@ Modül görüntülerinin barındırıldığı kapsayıcı kayıt defterlerinin k
    User Name|Kullanıcı adı
    Parola|Parola
   
-## <a name="deploy-the-data-generator-module"></a>Veri Oluşturucu modülünü dağıtma
+## <a name="build-push-and-deploy-the-data-generator-module"></a>Veri Oluşturucu modülünü oluşturun, gönderin ve dağıtın
 
-1. **Otomatik cihaz yönetimi** altındaki **IoT Edge** bölümünde **cihaz kimliği** ' ne tıklayın. Bu öğreticide, KIMLIK `IronOrePredictionDevice` ve ardından **modülleri ayarla** ' ya tıklayın.
-
-2.  **Cihazdaki modülleri ayarla:** sayfasındaki **IoT Edge modüller** bölümünde **+ ekle** ' ye tıklayın ve **IoT Edge modülü** ' nü seçin.
-
-3. IoT Edge modülü için geçerli bir ad ve görüntü URI 'SI sağlayın.
-   Görüntü URI 'SI, Bu öğreticinin birinci kısmında oluşturulan kaynak grubundaki kapsayıcı kayıt defterinde bulunabilir. **Hizmetler** altında **depolar** bölümünü seçin. Bu öğretici için adlı depoyu seçin `silicaprediction` . Uygun etiketi seçin. Görüntü URI 'SI şu biçimde olacaktır:
-
-   containerregistry 'nin oturum *açma sunucusu* / *Depo adı* : *etiket adı*
-
-   Örnek:
-
+1. [Proje dosyalarını](https://github.com/microsoft/sqlsourabh/tree/main/SQLEdgeSamples/IoTEdgeSamples/IronOreSilica) makinenize kopyalayın.
+2. Visual Studio 2019 kullanarak **IronOre_Silica_Predict. sln** dosyasını açın
+3. **deployment.template.jsüzerindeki** kapsayıcı kayıt defteri ayrıntılarını güncelleştirin 
+   ```json
+   "registryCredentials":{
+        "RegistryName":{
+            "username":"",
+            "password":""
+            "address":""
+        }
+    }
    ```
-   ASEdemocontregistry.azurecr.io/silicaprediction:amd64
+4. Hedef kapsayıcı kayıt defterini (veya modül için depoyu) belirtmek için dosyadaki **modules.js** güncelleştirin
+   ```json
+   "image":{
+        "repository":"samplerepo.azurecr.io/ironoresilicapercent",
+        "tag":
+    }
    ```
-
-4. *Yeniden başlatma ilkesini* ve *istenen durum* alanlarını olduğu gibi bırakın.
-
-5. **Ekle** 'ye tıklayın.
-
+5. Projenin herhangi bir sorun olmadan çalıştığından emin olmak için projeyi hata ayıklamada veya yayın modunda yürütün 
+6. Proje adına sağ tıklayıp **IoT Edge modülleri oluştur ve Gönder '** i seçerek projeyi kapsayıcı Kayıt defterinize gönderin.
+7. Veri Oluşturucu modülünü, Edge cihazınıza bir IoT Edge modülü olarak dağıtın. 
 
 ## <a name="deploy-the-azure-sql-edge-module"></a>Azure SQL Edge modülünü dağıtma
 

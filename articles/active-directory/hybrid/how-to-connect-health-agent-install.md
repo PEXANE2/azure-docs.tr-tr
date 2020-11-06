@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 78871441fe7f9b0f6d02cdf6f05b97933abfca54
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 975933a97b089cb208ecd7ff4461a893364262ff
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275633"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422374"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health Aracısı Yüklemesi
 
@@ -59,7 +59,7 @@ Aşağıdaki tabloda Azure AD Connect Health kullanımına ilişkin gereksinimle
 
 | Etki Alanı Ortamı | Gerekli Azure hizmet uç noktaları |
 | --- | --- |
-| Genel Kullanıma Açık | <li>&#42;.blob.core.windows.net </li><li>&#42;.aadconnecthealth.azure.com </li><li>&#42;.servicebus.windows.net - Bağlantı Noktası: 5671 </li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *bu uç nokta yalnızca kayıt sırasında keşif amacıyla kullanılır.</li> |
+| Genel Kullanıma Açık | <li>&#42;.blob.core.windows.net </li><li>&#42;.aadconnecthealth.azure.com </li><li>&#42;. servicebus.windows.net-Port: 5671 (aracının en son sürümünde gerekli değildir)</li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *bu uç nokta yalnızca kayıt sırasında keşif amacıyla kullanılır.</li> |
 | Azure Almanya | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https:\//www.office.de *bu uç nokta yalnızca kayıt sırasında keşif amacıyla kullanılır.</li> |
 | Azure Kamu | <li>&#42;.blob.core.usgovcloudapi.net </li> <li>&#42;.servicebus.usgovcloudapi.net </li> <li>&#42;.aadconnecthealth.microsoftazure.us </li> <li>https:\//management.usgovcloudapi.net </li><li>https:\//policykeyservice.aadcdi.azure.us </li><li>https:\//login.microsoftonline.us </li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *bu uç nokta yalnızca kayıt sırasında keşif amacıyla kullanılır.</li> |
 
@@ -122,28 +122,28 @@ Kullanım Analizi özelliğinin verileri toplaması ve analiz edebilmesi için, 
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>Windows Server 2012 R2'de AD FS için denetimi etkinleştirme
 
-1. Başlat ekranından **Sunucu Yöneticisi**'ni açarak **Yerel Güvenlik İlkesi**'ni veya masaüstünde bulunan görev çubuğundan Sunucu Yöneticisi'ni açıp **Araçlar/Yerel Güvenlik İlkesi**'ne tıklayın.
-2. **Güvenlik Ayarları\Yerel İlkeler\Kullanıcı Hakları Ataması** klasörüne gidin ve **Güvenlik denetimleri oluştur**'a çift tıklayın.
-3. **Yerel Güvenlik Ayarları** sekmesinde AD FS hizmet hesabının listelenmiş olduğunu doğrulayın. Listelenmediyse **Kullanıcı veya Grup Ekle**'ye tıklayın, hizmet hesabını listeye ekleyin ve ardından **Tamam**'a tıklayın.
+1. Başlat ekranından **Sunucu Yöneticisi** 'ni açarak **Yerel Güvenlik İlkesi** 'ni veya masaüstünde bulunan görev çubuğundan Sunucu Yöneticisi'ni açıp **Araçlar/Yerel Güvenlik İlkesi** 'ne tıklayın.
+2. **Güvenlik Ayarları\Yerel İlkeler\Kullanıcı Hakları Ataması** klasörüne gidin ve **Güvenlik denetimleri oluştur** 'a çift tıklayın.
+3. **Yerel Güvenlik Ayarları** sekmesinde AD FS hizmet hesabının listelenmiş olduğunu doğrulayın. Listelenmediyse **Kullanıcı veya Grup Ekle** 'ye tıklayın, hizmet hesabını listeye ekleyin ve ardından **Tamam** 'a tıklayın.
 4. Denetimi etkinleştirmek için yükseltilmiş ayrıcalıklara sahip bir komut istemi açın ve şu komutu çalıştırın: ```auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable```
-5. **Yerel Güvenlik İlkesi**’ni kapatın.
+5. **Yerel Güvenlik İlkesi** ’ni kapatın.
 <br />   -- **Aşağıdaki adımlar, yalnızca birincil AD FS sunucuları için gereklidir.** -- <br />
 6. **AD FS Yönetimi** ek bileşenini açın. (Sunucu Yöneticisi'nde Araçlar'a tıklayın ve AD FS Yönetimi'ni seçin).
-7. **Eylemler** bölmesinde **Federasyon Hizmeti Özellikleri Düzenle**' ye tıklayın.
+7. **Eylemler** bölmesinde **Federasyon Hizmeti Özellikleri Düzenle** ' ye tıklayın.
 8. **Federasyon Hizmeti özellikleri** Iletişim kutusunda **Olaylar** sekmesine tıklayın.
 9. **(Success audits and Failure audits) Başarı denetimleri ve Hata denetimleri** onay kutularını seçin ve **OK (Tamam)** düğmesine tıklayın.
 10. Ayrıntılı günlük kaydı şu komutu kullanarak PowerShell aracılığıyla etkinleştirilebilir: ```Set-AdfsProperties -LOGLevel Verbose``` .
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2016"></a>Windows Server 2016'da AD FS için denetimi etkinleştirme
 
-1. Başlat ekranından **Sunucu Yöneticisi**'ni açarak **Yerel Güvenlik İlkesi**'ni veya masaüstünde bulunan görev çubuğundan Sunucu Yöneticisi'ni açıp **Araçlar/Yerel Güvenlik İlkesi**'ne tıklayın.
-2. **Güvenlik Ayarları\Yerel İlkeler\Kullanıcı Hakları Ataması** klasörüne gidin ve **Güvenlik denetimleri oluştur**'a çift tıklayın.
-3. **Yerel Güvenlik Ayarları** sekmesinde AD FS hizmet hesabının listelenmiş olduğunu doğrulayın. Mevcut değilse, **Kullanıcı veya Grup Ekle**'ye tıklayın, AD FS hizmet hesabını listeye ekleyin ve ardından **Tamam**'a tıklayın.
+1. Başlat ekranından **Sunucu Yöneticisi** 'ni açarak **Yerel Güvenlik İlkesi** 'ni veya masaüstünde bulunan görev çubuğundan Sunucu Yöneticisi'ni açıp **Araçlar/Yerel Güvenlik İlkesi** 'ne tıklayın.
+2. **Güvenlik Ayarları\Yerel İlkeler\Kullanıcı Hakları Ataması** klasörüne gidin ve **Güvenlik denetimleri oluştur** 'a çift tıklayın.
+3. **Yerel Güvenlik Ayarları** sekmesinde AD FS hizmet hesabının listelenmiş olduğunu doğrulayın. Mevcut değilse, **Kullanıcı veya Grup Ekle** 'ye tıklayın, AD FS hizmet hesabını listeye ekleyin ve ardından **Tamam** 'a tıklayın.
 4. Denetimi etkinleştirmek için yükseltilmiş ayrıcalıklara sahip bir komut istemi açın ve şu komutu çalıştırın: <code>auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable</code>
-5. **Yerel Güvenlik İlkesi**’ni kapatın.
+5. **Yerel Güvenlik İlkesi** ’ni kapatın.
 <br />   -- **Aşağıdaki adımlar, yalnızca birincil AD FS sunucuları için gereklidir.** -- <br />
 6. **AD FS Yönetimi** ek bileşenini açın. (Sunucu Yöneticisi'nde Araçlar'a tıklayın ve AD FS Yönetimi'ni seçin).
-7. **Eylemler** bölmesinde **Federasyon Hizmeti Özellikleri Düzenle**' ye tıklayın.
+7. **Eylemler** bölmesinde **Federasyon Hizmeti Özellikleri Düzenle** ' ye tıklayın.
 8. **Federasyon Hizmeti özellikleri** Iletişim kutusunda **Olaylar** sekmesine tıklayın.
 9. **(Success audits and Failure audits) Başarı denetimleri ve Hata denetimleri** onay kutularını seçin ve **OK (Tamam)** düğmesine tıklayın. Bu seçenek varsayılan olarak etkindir.
 10. Bir PowerShell penceresi açın ve şu komutu çalıştırın: ```Set-AdfsProperties -AuditLevel Verbose```.
@@ -153,7 +153,7 @@ Kullanım Analizi özelliğinin verileri toplaması ve analiz edebilmesi için, 
 
 #### <a name="to-locate-the-ad-fs-audit-logs"></a>AD FS denetim günlüklerini bulma
 
-1. **Olay Görüntüleyicisi**'ni açın.
+1. **Olay Görüntüleyicisi** 'ni açın.
 2. Windows Günlüklerine gidin ve **Security (Güvenlik)** seçeneğini belirleyin.
 3. Sağ tarafta bulunan **Filter Current Logs (Geçerli Günlükleri Filtrele)** seçeneğine tıklayın.
 4. Event Source (Olay Kaynağı) altındaki **AD FS Auditing (AD FS Denetimi)** seçeneğini belirleyin.

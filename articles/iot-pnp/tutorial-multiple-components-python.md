@@ -1,18 +1,18 @@
 ---
-title: IoT Tak ve Kullan örnek Python bileşeni Cihaz kodunu IoT Hub 'a bağlama | Microsoft Docs
-description: Birden çok bileşen kullanan ve bir IoT Hub 'ına bağlanan IoT Tak ve Kullan örnek Python cihaz kodu oluşturun ve çalıştırın. Cihaz tarafından hub 'a gönderilen bilgileri görüntülemek için Azure IoT gezgin aracını kullanın.
+title: Öğretici-IoT Tak ve Kullan örnek Python bileşeni Cihaz kodunu Azure IoT Hub bağlama | Microsoft Docs
+description: Öğretici-birden çok bileşen kullanan ve IoT Hub 'ına bağlanan IoT Tak ve Kullan örnek Python cihaz kodu oluşturun ve çalıştırın. Cihaz tarafından hub 'a gönderilen bilgileri görüntülemek için Azure IoT gezgin aracını kullanın.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 7/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 1b329206dcc41d8f7fcb3874da037f5b57142722
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a4130688d479902f7836ae09c4006bb36fc16d2
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613671"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421405"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-python"></a>Öğretici: bir örnek IoT Tak ve Kullan birden çok bileşen cihaz uygulaması IoT Hub (Python) bağlama
 
@@ -20,7 +20,7 @@ ms.locfileid: "91613671"
 
 Bu öğreticide, bileşenleriyle bir örnek IoT Tak ve Kullan cihaz uygulaması oluşturma, bunları IoT Hub 'ınıza bağlama ve Azure IoT Gezgini aracını kullanarak hub 'a gönderdiği bilgileri görüntüleme hakkında bilgi verilmektedir. Örnek uygulama Python 'da yazılmıştır ve Python için Azure IoT cihaz SDK 'sına dahildir. Bir çözüm Oluşturucusu, herhangi bir cihaz kodunu görüntülemeye gerek olmadan IoT Tak ve Kullan cihazının yeteneklerini anlamak için Azure IoT gezgin aracını kullanabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -93,7 +93,7 @@ Sıcaklık denetleyicisi, sıcaklık denetleyicisi DTDL modeline göre birden ç
     - Çağırarak bileşenlerinin okunabilir özelliklerini güncelleştirir `patch_twin_reported_properties` .
 
     - İşlevini kullanarak komut isteklerini dinlemeye başlar `execute_command_listener` . İşlevi, hizmetten gelen komut istekleri için bir dinleyici ayarlar. Dinleyiciyi ayarlarken `method_name` , `user_command_handler` ve isteğe bağlı `create_user_response_handler` olarak parametre olarak belirtin.
-        - `method_name`Komut isteğini tanımlar. Bu örnekte model, **yeniden başlatma**komutları ve **Getmaxminreport**' ı tanımlar.
+        - `method_name`Komut isteğini tanımlar. Bu örnekte model, **yeniden başlatma** komutları ve **Getmaxminreport** ' ı tanımlar.
         - `user_command_handler`İşlevi, bir komut aldığında cihazın ne yapması gerektiğini tanımlar.
         - `create_user_response_handler`İşlevi, bir komut başarıyla yürütüldüğünde IoT Hub 'ınıza gönderilecek bir yanıt oluşturur. Bu yanıtı portalda görüntüleyebilirsiniz. Bu işlev sağlanmazsa, hizmete genel bir yanıt gönderilir.
 
@@ -101,7 +101,7 @@ Sıcaklık denetleyicisi, sıcaklık denetleyicisi DTDL modeline göre birden ç
 
     - Kullanarak telemetri göndermeye başlar `send_telemetry` . Örnek kod, üç telemetri gönderme işlevini çağırmak için bir döngü kullanır. Her biri sekiz saniyede bir çağrılır
 
-    - Tüm dinleyicileri ve görevleri devre dışı bırakır ve **q** veya **q**tuşlarına bastığınızda döngüden çıkar.
+    - Tüm dinleyicileri ve görevleri devre dışı bırakır ve **q** veya **q** tuşlarına bastığınızda döngüden çıkar.
 
 [!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
 

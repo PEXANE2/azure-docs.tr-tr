@@ -1,6 +1,6 @@
 ---
-title: Azure IoT çözümünüze bağlı bir IoT Tak ve Kullan cihazından etkileşim kurma (C#) | Microsoft Docs
-description: C# kullanarak Azure IoT çözümünüze bağlı bir IoT Tak ve Kullan cihazına bağlanın ve bunlarla etkileşime geçin.
+title: Hızlı başlangıç-Azure IoT çözümünüze bağlı bir IoT Tak ve Kullan cihazından etkileşim kurma (C#) | Microsoft Docs
+description: Hızlı başlangıç-Azure IoT çözümünüze bağlı bir IoT Tak ve Kullan cihazına bağlanmak ve bunlarla etkileşim kurmak Için C# kullanın.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 09/21/2020
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: ec38e0849b7f4c1a0ca98d75d4c6c82908c1e16e
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 018edea9a013df55b32ee22020be7226eab27319
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945385"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421558"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-c"></a>Hızlı başlangıç: çözümünüze bağlı olan IoT Tak ve Kullan cihazla etkileşim kurma (C#)
 
@@ -21,7 +21,7 @@ ms.locfileid: "91945385"
 
 IoT Tak ve Kullan, arka plandaki cihaz uygulamasıyla ilgili bilgi sahibi olmadan bir cihazın özellikleri ile etkileşim kurmanızı sağlayarak IoT 'yi basitleştirir. Bu hızlı başlangıçta, çözümünüze bağlı bir IoT Tak ve Kullan cihazına bağlanmak ve bunları denetlemek Için C# ' nin nasıl kullanılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -46,9 +46,9 @@ Bu hızlı başlangıçta, IoT Tak ve Kullan cihazı olarak C# dilinde yazılmı
 
 1. *Azure-iot-Samples-csharp\iot-hub\Samples\device\PnpDeviceSamples\Thermostat\Thermostat.csproj* proje dosyasını Visual Studio 2019 ' de açın.
 
-1. Visual Studio 'da, **hata ayıklama > Project > termostat özellikleri**' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
+1. Visual Studio 'da, **hata ayıklama > Project > termostat özellikleri** ' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
 
-    | Name | Değer |
+    | Ad | Değer |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
     | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |
@@ -64,16 +64,16 @@ Bu hızlı başlangıçta, IoT Tak ve Kullan cihazı olarak C# dilinde yazılmı
 
 Ortamınızı IoT Hub 'ınıza ve cihazınıza bağlanacak şekilde yapılandırmak için, [ıot Tak ve kullan hızlı başlangıçlarını ve öğreticilerini ayarlama](set-up-environment.md) bölümünde iki ortam değişkeni oluşturdunuz:
 
-* **IOTHUB_CONNECTION_STRING**: IoT Hub bağlantı dizesi daha önce bir nota yaptınız.
-* **IOTHUB_DEVICE_ID**: `"my-pnp-device"` .
+* **IOTHUB_CONNECTION_STRING** : IoT Hub bağlantı dizesi daha önce bir nota yaptınız.
+* **IOTHUB_DEVICE_ID** : `"my-pnp-device"` .
 
 Bu hızlı başlangıçta, yeni ayarladığınız örnek cihazla etkileşim kurmak Için C# ' de örnek bir IoT çözümü kullanırsınız.
 
 1. Visual Studio 'nun başka bir örneğinde, *Azure-iot-Samples-csharp\iot-hub\Samples\service\PnpServiceSamples\Thermostat\Thermostat.csproj* projesini açın.
 
-1. Visual Studio 'da, **hata ayıklama > Project > termostat özellikleri**' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
+1. Visual Studio 'da, **hata ayıklama > Project > termostat özellikleri** ' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
 
-    | Name | Değer |
+    | Ad | Değer |
     | ---- | ----- |
     | IOTHUB_DEVICE_ID | My-PNP-cihazım |
     | IOTHUB_CONNECTION_STRING | [Ortamınızı ayarlamayı](set-up-environment.md) tamamladıktan sonra bir değişiklik yapmış olduğunuz değer |

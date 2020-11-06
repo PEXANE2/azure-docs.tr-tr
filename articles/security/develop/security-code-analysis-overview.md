@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: af4797d7d7d7cb866674747ea8871bebb059207d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fd8fb2e40fa44c5aec3f14bfd586187c952df0d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90031254"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422442"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Microsoft Güvenlik kodu analizi hakkında
 
@@ -39,7 +39,7 @@ Microsoft Güvenlik kodu çözümleme araçları 'nı Azure DevOps işlem hattı
 
 ### <a name="clean-builds"></a>Derlemeleri temizle
 
-Araçların bildirdiği ilk sorunları çözdükten sonra, uzantıyı yeni sorunlarda derlemeleri bölmek için yapılandırabilirsiniz.Her çekme isteğinde sürekli tümleştirme yapıları ayarlamak kolaydır.
+Araçların bildirdiği ilk sorunları çözdükten sonra, uzantıyı yeni sorunlarda derlemeleri bölmek için yapılandırabilirsiniz. Her çekme isteğinde sürekli tümleştirme yapıları ayarlamak kolaydır.
 
 ### <a name="set-it-and-forget-it"></a>Ayarlayın ve unutmayın
 
@@ -73,7 +73,7 @@ Kaynak kodda depolanan parolalar ve diğer gizli dizileri önemli bir sorundur. 
 
 ### <a name="roslyn-analyzers"></a>Roslyn Çözümleyicileri
 
-Roslyn Çözümleyicileri, Microsoft 'un yönetilen C# ve Visual Basic kodu statik olarak analiz etmek için derleyici ile tümleşik bir araçtır. Daha fazla bilgi için bkz. [Roslyn tabanlı çözümleyiciler](https://docs.microsoft.com/dotnet/standard/analyzers/api-analyzer).
+Roslyn Çözümleyicileri, Microsoft 'un yönetilen C# ve Visual Basic kodu statik olarak analiz etmek için derleyici ile tümleşik bir araçtır. Daha fazla bilgi için bkz. [Roslyn tabanlı çözümleyiciler](https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/security-warnings).
 
 ### <a name="tslint"></a>TSLint
 

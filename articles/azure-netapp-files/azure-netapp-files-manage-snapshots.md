@@ -1,6 +1,6 @@
 ---
 title: Azure NetApp Files kullanarak anlık görüntüleri yönetme | Microsoft Docs
-description: Azure NetApp Files kullanarak anlık görüntülerin nasıl oluşturulacağını ve yönetileceğini açıklar.
+description: Azure NetApp Files kullanarak anlık görüntüleri oluşturmayı, yönetmeyi ve kullanmayı açıklar.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,24 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/04/2020
+ms.date: 11/05/2020
 ms.author: b-juche
-ms.openlocfilehash: e9f2a1f9125d25caa9506e954cab3b94dfcb5c24
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 0d7839b11e48e3e260f4d6b1323d1831e28222de
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932286"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421888"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp Files kullanarak anlık görüntüleri yönetme
 
-Azure NetApp Files, otomatik anlık görüntü oluşturmayı zamanlamak için isteğe bağlı anlık görüntüler oluşturmayı ve anlık görüntü ilkelerini kullanmayı destekler.  Ayrıca, bir anlık görüntüyü yeni bir birime geri yükleyebilir veya bir istemciyi kullanarak tek bir dosyayı geri yükleyebilirsiniz.  
+Azure NetApp Files, otomatik anlık görüntü oluşturmayı zamanlamak için isteğe bağlı anlık görüntüler oluşturmayı ve anlık görüntü ilkelerini kullanmayı destekler. Ayrıca, bir anlık görüntüyü yeni bir birime geri yükleyebilir, istemci kullanarak tek bir dosyayı geri yükleyebilir veya bir anlık görüntü kullanarak var olan bir birimi geri alabilirsiniz.
 
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>Bir birim için isteğe bağlı anlık görüntü oluşturma
 
 İsteğe bağlı birim anlık görüntüleri oluşturabilirsiniz. 
 
-1.  Anlık görüntüsü oluşturmak istediğiniz birime gidin. **Anlık görüntüler**' e tıklayın.
+1.  Anlık görüntüsü oluşturmak istediğiniz birime gidin. **Anlık görüntüler** ' e tıklayın.
 
     ![Anlık görüntülere git](../media/azure-netapp-files/azure-netapp-files-navigate-to-snapshots.png)
 
@@ -41,7 +41,7 @@ Azure NetApp Files, otomatik anlık görüntü oluşturmayı zamanlamak için is
 
     ![Yeni anlık görüntü](../media/azure-netapp-files/azure-netapp-files-new-snapshot.png)
 
-4. **Tamam**'a tıklayın. 
+4. **Tamam** ’a tıklayın. 
 
 ## <a name="manage-snapshot-policies"></a>Anlık görüntü ilkelerini yönetme
 
@@ -49,7 +49,7 @@ Anlık görüntü ilkeleri kullanarak, birim anlık görüntülerinin otomatik o
 
 ### <a name="register-the-feature"></a>Özelliği kaydetme
 
-**Anlık görüntü ilkesi** özelliği şu anda önizlemededir. Bu özelliği ilk kez kullanıyorsanız, önce özelliği kaydetmeniz gerekir. 
+**Anlık görüntü ilkesi** özelliği şu anda önizlemededir. Bu özelliği ilk kez kullanıyorsanız önce özelliği kaydetmeniz gerekir. 
 
 1. Özelliği kaydedin: 
 
@@ -71,13 +71,13 @@ Ayrıca, [Azure CLI komutlarını](/cli/azure/feature?preserve-view=true&view=az
 
 Anlık görüntü ilkesi, anlık görüntü oluşturma sıklığını saatlik, günlük, haftalık veya aylık Döngülerde belirtmenizi sağlar. Birim için tutulacak en fazla anlık görüntü sayısını da belirtmeniz gerekir.  
 
-1.  NetApp hesabı görünümünde, **anlık görüntü ilkesi**' ne tıklayın.
+1.  NetApp hesabı görünümünde, **anlık görüntü ilkesi** ' ne tıklayın.
 
     ![Anlık görüntü ilkesi gezintisi](../media/azure-netapp-files/snapshot-policy-navigation.png)
 
-2.  Anlık görüntü Ilkesi penceresinde, Ilke durumunu **etkin**olarak ayarlayın. 
+2.  Anlık görüntü Ilkesi penceresinde, Ilke durumunu **etkin** olarak ayarlayın. 
 
-3.  Saatlik, günlük, haftalık veya aylık anlık görüntü ilkeleri oluşturmak için **saatlik**, **günlük**, **haftalık**veya **aylık** sekmesine tıklayın. **Saklanacak anlık görüntü sayısını**belirtin.  
+3.  Saatlik, günlük, haftalık veya aylık anlık görüntü ilkeleri oluşturmak için **saatlik** , **günlük** , **haftalık** veya **aylık** sekmesine tıklayın. **Saklanacak anlık görüntü sayısını** belirtin.  
 
     Bir birim için izin verilen en fazla anlık görüntü sayısı hakkında [Azure NetApp Files Için kaynak sınırlarına](azure-netapp-files-resource-limits.md) bakın. 
 
@@ -97,7 +97,7 @@ Anlık görüntü ilkesi, anlık görüntü oluşturma sıklığını saatlik, g
 
     ![Anlık görüntü ilkesi aylık](../media/azure-netapp-files/snapshot-policy-monthly.png) 
 
-4.  **Kaydet**’e tıklayın.  
+4.  **Kaydet** ’e tıklayın.  
 
 Ek anlık görüntü ilkeleri oluşturmanız gerekiyorsa 3. adımı yineleyin.
 Oluşturduğunuz ilkeler anlık görüntü ilkesi sayfasında görünür.
@@ -108,11 +108,11 @@ Bir birimin anlık görüntü ilkesini kullanmasını istiyorsanız [ilkeyi biri
 
 Bir birimin oluşturduğunuz bir anlık görüntü ilkesini kullanmasını istiyorsanız ilkeyi birime uygulamanız gerekir. 
 
-1.  **Birimler** sayfasına gidin, anlık görüntü ilkesi uygulamak istediğiniz birime sağ tıklayın ve **Düzenle**' yi seçin.
+1.  **Birimler** sayfasına gidin, anlık görüntü ilkesi uygulamak istediğiniz birime sağ tıklayın ve **Düzenle** ' yi seçin.
 
     ![Birimler sağ tıklama menüsü](../media/azure-netapp-files/volume-right-cick-menu.png) 
 
-2.  Düzenle penceresinde, **anlık görüntü ilkesi**altında, birim için kullanılacak bir ilke seçin.  İlkeyi uygulamak için **Tamam** ' ı tıklatın.  
+2.  Düzenle penceresinde, **anlık görüntü ilkesi** altında, birim için kullanılacak bir ilke seçin.  İlkeyi uygulamak için **Tamam** ' ı tıklatın.  
 
     ![Anlık görüntü ilkesi düzenleme](../media/azure-netapp-files/snapshot-policy-edit.png) 
 
@@ -120,21 +120,21 @@ Bir birimin oluşturduğunuz bir anlık görüntü ilkesini kullanmasını istiy
 
 Mevcut bir anlık görüntü ilkesini, ilke durumunu, anlık görüntü sıklığını (saatlik, günlük, haftalık veya aylık) veya saklanacak anlık görüntü sayısını değiştirmek üzere değiştirebilirsiniz.  
  
-1.  NetApp hesabı görünümünde, **anlık görüntü ilkesi**' ne tıklayın.
+1.  NetApp hesabı görünümünde, **anlık görüntü ilkesi** ' ne tıklayın.
 
-2.  Değiştirmek istediğiniz anlık görüntü ilkesine sağ tıkladıktan sonra **Düzenle**' yi seçin.
+2.  Değiştirmek istediğiniz anlık görüntü ilkesine sağ tıkladıktan sonra **Düzenle** ' yi seçin.
 
     ![Anlık görüntü ilkesi sağ tıklama menüsü](../media/azure-netapp-files/snapshot-policy-right-click-menu.png) 
 
-3.  Görüntülenen anlık görüntü Ilkesi penceresinde değişiklikleri yapın ve ardından **Kaydet**' e tıklayın. 
+3.  Görüntülenen anlık görüntü Ilkesi penceresinde değişiklikleri yapın ve ardından **Kaydet** ' e tıklayın. 
 
 ### <a name="delete-a-snapshot-policy"></a>Anlık görüntü ilkesini silme 
 
 Artık saklamak istemediğiniz bir anlık görüntü ilkesini silebilirsiniz.   
 
-1.  NetApp hesabı görünümünde, **anlık görüntü ilkesi**' ne tıklayın.
+1.  NetApp hesabı görünümünde, **anlık görüntü ilkesi** ' ne tıklayın.
 
-2.  Değiştirmek istediğiniz anlık görüntü ilkesine sağ tıklayıp **Sil**' i seçin.
+2.  Değiştirmek istediğiniz anlık görüntü ilkesine sağ tıklayıp **Sil** ' i seçin.
 
     ![Anlık görüntü ilkesi sağ tıklama menüsü](../media/azure-netapp-files/snapshot-policy-right-click-menu.png) 
 
@@ -161,7 +161,7 @@ Artık saklamak istemediğiniz bir anlık görüntü ilkesini silebilirsiniz.
 
     ![Yeni birime geri yükle](../media/azure-netapp-files/snapshot-restore-new-volume.png) 
 
-4. **Gözden geçir + oluştur**' a tıklayın.  **Oluştur**’a tıklayın.   
+4. **Gözden geçir + oluştur** ' a tıklayın.  **Oluştur** 'a tıklayın.   
     Yeni birim, anlık görüntünün kullandığı protokolü kullanır.   
     Anlık görüntünün geri yüklendiği yeni birim birimler dikey penceresinde görünür.
 
@@ -179,7 +179,7 @@ Birimi oluştururken anlık görüntü yolunu gizle onay kutusunu seçtiyseniz, 
 
 1. `ls`Dizinden geri yüklemek istediğiniz dosyayı listelemek için Linux komutunu kullanın `.snapshot` . 
 
-    Örneğin:
+    Örnek:
 
     `$ ls my.txt`   
     `ls: my.txt: No such file or directory`   
@@ -194,7 +194,7 @@ Birimi oluştururken anlık görüntü yolunu gizle onay kutusunu seçtiyseniz, 
 
 2. `cp`Dosyayı üst dizine kopyalamak için komutunu kullanın.  
 
-    Örneğin: 
+    Örnek: 
 
     `$ cp .snapshot/hourly.2020-05-15_1306/my.txt .`   
 
@@ -207,7 +207,7 @@ Birimi oluştururken anlık görüntü yolunu gizle onay kutusunu seçtiyseniz, 
 
     ![Gizli öğeleri gösterme](../media/azure-netapp-files/snapshot-show-hidden.png) 
 
-2. `~snapshot`Geri yüklemek istediğiniz dosyayı bulmak için içindeki alt dizine gidin.  Dosyaya sağ tıklayın. **Kopyala**’yı seçin.  
+2. `~snapshot`Geri yüklemek istediğiniz dosyayı bulmak için içindeki alt dizine gidin.  Dosyaya sağ tıklayın. **Kopyala** ’yı seçin.  
 
     ![Dosyayı geri yüklenecek şekilde Kopyala](../media/azure-netapp-files/snapshot-copy-file-restore.png) 
 
@@ -215,9 +215,40 @@ Birimi oluştururken anlık görüntü yolunu gizle onay kutusunu seçtiyseniz, 
 
     ![Geri yüklenecek dosyayı Yapıştır](../media/azure-netapp-files/snapshot-paste-file-restore.png) 
 
-4. Ayrıca, üst dizine sağ tıklayıp **Özellikler**' i seçip, **önceki sürümler** sekmesine tıklayarak anlık görüntü listesini görebilir ve bir dosyayı geri yüklemek için **geri yükle** ' yi seçebilirsiniz.  
+4. Ayrıca, üst dizine sağ tıklayıp **Özellikler** ' i seçip, **önceki sürümler** sekmesine tıklayarak anlık görüntü listesini görebilir ve bir dosyayı geri yüklemek için **geri yükle** ' yi seçebilirsiniz.  
 
     ![Önceki sürümlere özellikler](../media/azure-netapp-files/snapshot-properties-previous-version.png) 
+
+## <a name="revert-a-volume-using-snapshot-revert"></a>Anlık görüntü döndürmeyi kullanarak bir birimi döndürür
+
+Anlık görüntü alma işlevselliği, bir birimi belirli bir anlık görüntü çekilirken bulunduğu duruma hızlıca döndürmenizi sağlar. Çoğu durumda, bir birimin geri döndürülmesi, tek tek dosyaları bir anlık görüntüden etkin dosya sistemine geri yüklemeden çok daha hızlıdır. Ayrıca, bir anlık görüntünün yeni bir birime geri yüklenmesi ile karşılaştırıldığında daha fazla alan da daha etkilidir. 
+
+Birimin anlık görüntüler menüsünde birimi çevir seçeneğini bulabilirsiniz. Yeniden sürüm için bir anlık görüntü seçtikten sonra, Azure NetApp Files, birimi seçilen anlık görüntü alındığı sırada içerdiği verilere ve zaman damgalarına geri döndürür. 
+
+> [!IMPORTANT]
+> Seçili anlık görüntü alındıktan sonra gerçekleştirilen etkin dosya sistemi verileri ve anlık görüntüler kaybedilir. Anlık görüntü değiştirme işlemi, Hedeflenen birimdeki *Tüm* verilerin seçilen anlık görüntüdeki verilerle değiştirilir. Bir anlık görüntü seçtiğinizde anlık görüntü içeriği ve oluşturma tarihi ile ilgilenmelisiniz. Anlık görüntü geri alma işlemini geri alamazsınız.
+
+1. Bir birimin **anlık görüntüler** menüsüne gidin.  Alma işlemi için kullanmak istediğiniz anlık görüntüye sağ tıklayın. **Birimi tekrar çevir** ' i seçin. 
+
+    ![Bir anlık görüntünün sağ tıklama menüsünü açıklayan ekran görüntüsü](../media/azure-netapp-files/snapshot-right-click-menu.png) 
+
+2. Sesi anlık görüntüye çevir penceresinde birimin adını yazın ve **çevir** ' e tıklayın.   
+
+    Birim artık seçili anlık görüntünün zaman noktasına geri yüklendi.
+
+    ![Birimin anlık görüntüye döndürüleceği pencere görüntüsü](../media/azure-netapp-files/snapshot-revert-volume.png) 
+
+## <a name="delete-snapshots"></a>Anlık görüntüleri Sil  
+
+Artık saklamak zorunda kalmayacak anlık görüntüleri silebilirsiniz. 
+
+1. Bir birimin **anlık görüntüler** menüsüne gidin. Silmek istediğiniz anlık görüntüye sağ tıklayın. **Sil** ’i seçin.
+
+    ![Bir anlık görüntünün sağ tıklama menüsünü açıklayan ekran görüntüsü](../media/azure-netapp-files/snapshot-right-click-menu.png) 
+
+2. Anlık görüntüyü Sil penceresinde **Evet** ' e tıklayarak anlık görüntüyü silmek istediğinizi onaylayın. 
+
+    ![Anlık görüntü silmeyi doğrulayan ekran görüntüsü](../media/azure-netapp-files/snapshot-confirm-delete.png)  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

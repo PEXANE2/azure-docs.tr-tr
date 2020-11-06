@@ -1,18 +1,18 @@
 ---
-title: IoT Tak ve Kullan örnek C# Bileşen cihazı kodunu IoT Hub bağlama | Microsoft Docs
-description: Birden çok bileşen kullanan ve IoT Hub 'ına bağlanan IoT Tak ve Kullan örnek C# cihaz kodu oluşturun ve çalıştırın. Cihaz tarafından hub 'a gönderilen bilgileri görüntülemek için Azure IoT gezgin aracını kullanın.
+title: Öğretici-IoT Tak ve Kullan örnek C# Bileşen cihaz kodunu Azure IoT Hub bağlama | Microsoft Docs
+description: Öğretici-birden çok bileşen kullanan ve IoT Hub 'ına bağlanan IoT Tak ve Kullan örnek C# cihaz kodu oluşturun ve çalıştırın. Cihaz tarafından hub 'a gönderilen bilgileri görüntülemek için Azure IoT gezgin aracını kullanın.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 72b85388bf80a6ed2b9617b606940c243c5711f1
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: f7a1aa85c4456bdcf7ed50e42382fc440618ec7d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945541"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421456"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-application-running-on-windows-to-iot-hub-c"></a>Öğretici: Windows üzerinde çalışan bir IoT Tak ve Kullan birden çok bileşen cihaz uygulamasını IoT Hub 'ye bağlama (C#)
 
@@ -20,7 +20,7 @@ ms.locfileid: "91945541"
 
 Bu öğreticide, bileşenleriyle bir örnek IoT Tak ve Kullan cihaz uygulaması oluşturma, bunları IoT Hub 'ınıza bağlama ve Azure IoT Gezgini aracını kullanarak hub 'a gönderdiği bilgileri görüntüleme hakkında bilgi verilmektedir. Örnek uygulama C# dilinde yazılır ve c# için Azure IoT cihaz SDK 'sına dahildir. Bir çözüm Oluşturucusu, herhangi bir cihaz kodunu görüntülemeye gerek olmadan IoT Tak ve Kullan cihazının yeteneklerini anlamak için Azure IoT gezgin aracını kullanabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -45,9 +45,9 @@ Bu hızlı başlangıçta, IoT Tak ve Kullan cihazı olarak C# dilinde yazılmı
 
 1. *Azure-iot-Samples-csharp\iot-hub\Samples\device\PnpDeviceSamples\TemperatureController\TemperatureController.csproj* proje dosyasını Visual Studio 2019 ' de açın.
 
-1. Visual Studio 'da, **hata ayıklama > Project > TemperatureController özellikleri**' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
+1. Visual Studio 'da, **hata ayıklama > Project > TemperatureController özellikleri** ' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
 
-    | Name | Değer |
+    | Ad | Değer |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
     | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |

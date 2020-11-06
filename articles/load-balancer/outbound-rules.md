@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 51810876e3636b7023ce9c9318a071636bb00c4c
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 947ecaa2efbfb013f1f3e8203d1c4296b9ca329f
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92002655"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422170"
 ---
 # <a name="outbound-rules-azure-load-balancer"></a><a name="outboundrules"></a>Giden kuralları Azure Load Balancer
 
-Giden kuralları genel standart yük dengeleyici giden SNAT 'yi (kaynak ağ adresi çevirisi) yapılandırmanıza olanak tanır. Bu yapılandırma, yük dengeleyicinizin genel IP 'leri bir ara sunucu olarak kullanmanıza olanak tanır.
+Giden kuralları, genel bir standart yük dengeleyici için SNAT 'yi (kaynak ağ adresi çevirisi) açıkça tanımlamanızı sağlar. Bu yapılandırma, arka uç örnekleri için giden internet bağlantısı sağlamak üzere yük dengeleyicinizin genel IP 'leri kullanmanıza olanak sağlar.
 
 Bu yapılandırma şunları sunar:
 
@@ -37,20 +37,20 @@ Giden kuralları denetlemenize izin verir:
 
 * **Hangi sanal makinelerin hangi ortak IP adreslerine çevrildiği.**
      * İki kural, A ve B IP adresini kullanan arka uç havuzudur, B arka uç havuzu C ve D IP adresini kullanır.
-* **Giden SNAT bağlantı noktaları nasıl verilir.**
+* **Giden SNAT bağlantı noktaları nasıl ayrılır.**
      * Arka uç havuzu B giden bağlantılar yapan tek havuzdır, tüm SNAT bağlantı noktalarına B arka uç havuzuna izin verin ve bir arka uç havuzu A 'yı yok edin.
 * **İçin giden çeviri sağlayacak olan protokoller.**
      * Arka uç havuzu B giden için UDP bağlantı noktalarına ihtiyaç duyuyor. Arka uç havuzunda TCP gerekir. B 'ye TCP bağlantı noktalarına ve UDP bağlantı noktalarına izin verin.
 * **Giden bağlantı boşta kalma zaman aşımı (4-120 dakika) için kullanılacak süre.**
      * Keepsıt ile uzun süre çalışan bağlantılar varsa, uzun süre çalışan bağlantılar için boşta kalma bağlantı noktalarını 120 dakikaya kadar ayırın. Yeni bağlantılar için eski bağlantıların terk olduğunu ve sürüm bağlantı noktalarını 4 dakika içinde kabul edin 
 * **Boşta kalma zaman aşımı durumunda TCP sıfırlaması gönderileceğini belirtir.**
-     * boşta bağlantıları zaman aşımına uğradıklarında, akışın terk olduğunu bilmesi için istemciye ve sunucuya bir TCP RST gönderiyoruz.
+     * Boşta bağlantıları zaman aşımına uğradıklarında, akışın terk olduğunu bilmesi için istemciye ve sunucuya bir TCP RST gönderiyoruz.
 
 ## <a name="outbound-rule-definition"></a>Giden kuralı tanımı
 
 Giden kuralları yük dengeleme ve gelen NAT kuralları ile aynı tanıdık sözdizimini izler: **ön uç**  +  **parametreleri**  +  **arka uç havuzu**. 
 
-Giden bir kural _, arka uç havuzu tarafından belirtilen tüm sanal makineler_ IÇIN giden NAT 'yi _ön_uca çevrilecek şekilde yapılandırır.  
+Giden bir kural _, arka uç havuzu tarafından belirtilen tüm sanal makineler_ IÇIN giden NAT 'yi _ön_ uca çevrilecek şekilde yapılandırır.  
 
 _Parametreler_ , giden NAT algoritması üzerinde ek ayrıntılı denetim sağlar.
 
@@ -98,6 +98,147 @@ Yük dengeli bir VM 'ye NSG uyguladığınızda, [hizmet etiketlerine](../virtua
 VM 'nin Azure Load Balancer durum araştırma isteklerini almasına emin olun.
 
 Bir NSG AZURE_LOADBALANCER varsayılan etiketten durum araştırma isteklerini engelliyorsa, sanal makine sistem durumu araştırmanız başarısız olur ve VM kullanılamaz olarak işaretlenir. Yük dengeleyici bu VM 'ye yeni akış göndermeyi durduruyor.
+
+## <a name="scenarios-with-outbound-rules"></a>Giden kuralları olan senaryolar
+        
+
+### <a name="outbound-rules-scenarios"></a>Giden kuralları senaryoları
+
+
+* Belirli bir genel IP veya ön ek kümesine giden bağlantılar yapılandırın.
+* [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) bağlantı noktası ayırmasını değiştirin.
+* Yalnızca gideni etkinleştirin.
+* Yalnızca VM 'Ler için giden NAT (gelen yok).
+* İç standart yük dengeleyici için giden NAT.
+* Genel bir standart yük dengeleyici ile giden NAT için TCP & UDP protokollerini etkinleştirin.
+
+
+### <a name="scenario-1-configure-outbound-connections-to-a-specific-set-of-public-ips-or-prefix"></a><a name="scenario1out"></a>Senaryo 1: belirli bir genel IP veya ön ek kümesine giden bağlantıları yapılandırma
+
+
+#### <a name="details"></a>Ayrıntılar
+
+
+Giden bağlantıların bir genel IP adresi kümesinden kaynaklanacak şekilde uyarlamak için bu senaryoyu kullanın. Genel IP 'Leri veya önekleri, alma temelli bir izin verme veya reddetme listesine ekleyin.
+
+
+Bu genel IP veya ön ek, bir yük dengeleme kuralı tarafından kullanılan ile aynı olabilir. 
+
+
+Yük Dengeleme kuralı tarafından kullanılan farklı bir genel IP veya ön ek kullanmak için: 
+
+
+1. Genel IP öneki veya genel IP adresi oluşturun.
+2. Ortak standart yük dengeleyici oluşturma 
+3. Kullanmak istediğiniz genel IP ön ekine veya genel IP adresine başvuran bir ön uç oluşturun. 
+4. Arka uç havuzunu yeniden kullanma veya arka uç havuzu oluşturma ve VM 'Leri ortak yük dengeleyicinin arka uç havuzuna yerleştirme
+5. Ön uç kullanan VM 'Ler için giden NAT 'yi etkinleştirmek üzere ortak yük dengeleyicide giden bir kural yapılandırın. Giden için bir yük dengeleme kuralı kullanılması önerilmez, Yük Dengeleme kuralında giden SNAT 'yi devre dışı bırakın.
+
+
+### <a name="scenario-2-modify-snat-port-allocation"></a><a name="scenario2out"></a>Senaryo 2: [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) bağlantı noktası ayırmayı değiştirme
+
+
+#### <a name="details"></a>Ayrıntılar
+
+
+[Arka uç havuzu boyutuna göre OTOMATIK SNAT bağlantı noktası ayırmayı](load-balancer-outbound-connections.md#preallocatedports)ayarlamak için giden kurallarını kullanabilirsiniz. 
+
+
+SNAT tükenmesi yaşarsanız, varsayılan 1024 olan [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) bağlantı noktalarının sayısını artırın. 
+
+
+Her genel IP adresi 64.000 kısa ömürlü bağlantı noktasına katkıda bulunur. Arka uç havuzundaki sanal makinelerin sayısı, her sanal makineye dağıtılan bağlantı noktası sayısını belirler. Arka uç havuzundaki bir sanal makinenin en fazla 64.000 bağlantı noktasına erişimi vardır. İki VM için, bir giden kuralla en fazla 32.000 [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) bağlantı noktasına (2x 32.000 = 64.000) verilebilir. 
+
+
+Varsayılan olarak verilen SNAT bağlantı noktalarını ayarlamak için giden kurallarını kullanabilirsiniz. Varsayılan [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) bağlantı noktası ayırmasının sağladığı daha fazlasını veya daha fazlasını verirsiniz. Giden kuralının ön noktasındaki her genel IP adresi, [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) bağlantı noktaları olarak kullanılmak üzere 64.000 kısa ömürlü bağlantı noktasına kadar katkıda bulunur. 
+
+
+Yük dengeleyici, [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) bağlantı noktalarını 8 ' in katları halinde verir. 8 ' den bölünemez bir değer sağlarsanız, yapılandırma işlemi reddedilir. Her yük dengeleme kuralı ve gelen NAT kuralı, 8 bağlantı noktası aralığını kullanır. Bir yük dengeleme veya gelen NAT kuralı aynı 8 aralığını başka bir şekilde paylaşıyorsa, ek bağlantı noktası tüketilmeyecektir.
+
+
+Genel IP adresi sayısına göre kullanılabilir olandan daha fazla [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) bağlantı noktası vermenizi denerseniz, yapılandırma işlemi reddedilir. Örneğin, VM başına 10.000 bağlantı noktası verirseniz ve arka uç havuzundaki yedi VM tek bir genel IP paylaşıyorsa, yapılandırma reddedilir. 10.000 ile çarpılan yedi, 64.000 bağlantı noktası sınırını aşıyor. Senaryoyu etkinleştirmek için giden kuralının ön ucunda daha fazla genel IP adresi ekleyin. 
+
+
+Bağlantı noktası sayısı için 0 belirterek [varsayılan bağlantı noktası ayırmaya](load-balancer-outbound-connections.md#preallocatedports) dönün. İlk 50 VM örnekleri 1024 bağlantı noktalarını alacak, 51-100 sanal makine örnekleri en fazla örneğe kadar 512. Varsayılan SNAT bağlantı noktası ayırma hakkında daha fazla bilgi için bkz. [SNAT bağlantı noktaları ayırma tablosu](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports).
+
+
+### <a name="scenario-3-enable-outbound-only"></a><a name="scenario3out"></a>Senaryo 3: yalnızca giden trafiği etkinleştir
+
+
+#### <a name="details"></a>Ayrıntılar
+
+
+Bir VM grubu için giden NAT sağlamak üzere genel bir standart yük dengeleyici kullanın. Bu senaryoda, herhangi bir ek kural yapılandırılmadığı bir giden kuralı kendisi kullanın.
+
+
+> [!NOTE]
+> **Azure sanal ağ NAT** , yük dengeleyiciye gerek duymadan sanal makineler için giden bağlantı sağlayabilir. Daha fazla bilgi için bkz. [Azure sanal ağ NAT nedir?](../virtual-network/nat-overview.md) .
+
+### <a name="scenario-4-outbound-nat-for-vms-only-no-inbound"></a><a name="scenario4out"></a>Senaryo 4: yalnızca VM 'Ler için giden NAT (gelen)
+
+
+> [!NOTE]
+> **Azure sanal ağ NAT** , yük dengeleyiciye gerek duymadan sanal makineler için giden bağlantı sağlayabilir. Daha fazla bilgi için bkz. [Azure sanal ağ NAT nedir?](../virtual-network/nat-overview.md) .
+
+#### <a name="details"></a>Ayrıntılar
+
+
+Bu senaryo için: Azure Load Balancer giden kuralları ve sanal ağ NAT, bir sanal ağdan çıkış için kullanılabilir seçeneklerdir.
+
+
+1. Genel IP veya ön ek oluşturun.
+2. Genel bir standart yük dengeleyici oluşturun. 
+3. Giden için ayrılmış genel IP veya ön ek ile ilişkili bir ön uç oluşturun.
+4. VM 'Ler için bir arka uç havuzu oluşturun.
+5. VM 'Leri arka uç havuzuna yerleştirin.
+6. Giden NAT 'yi etkinleştirmek için bir giden kuralı yapılandırın.
+
+
+
+[SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) bağlantı noktalarını ölçeklendirmek için bir ön ek veya genel IP kullanın. Giden bağlantıların kaynağını bir izin verme veya reddetme listesine ekleyin.
+
+
+
+### <a name="scenario-5-outbound-nat-for-internal-standard-load-balancer"></a><a name="scenario5out"></a>Senaryo 5: iç standart yük dengeleyici için giden NAT
+
+
+> [!NOTE]
+> **Azure sanal ağ NAT** , iç standart yük dengeleyiciyi kullanan sanal makineler için giden bağlantı sağlayabilir. Daha fazla bilgi için bkz. [Azure sanal ağ NAT nedir?](../virtual-network/nat-overview.md) .
+
+#### <a name="details"></a>Ayrıntılar
+
+
+İç standart yük dengeleyici, örnek düzeyi genel IP 'Ler veya sanal ağ NAT aracılığıyla açıkça bildirildiği veya arka uç havuz üyelerini yalnızca giden bir yük dengeleyici yapılandırmasıyla ilişkilendirerek, giden bağlantı kullanılamıyor. 
+
+
+Daha fazla bilgi için bkz. [yalnızca giden yük dengeleyici yapılandırması](https://docs.microsoft.com/azure/load-balancer/egress-only).
+
+
+
+
+### <a name="scenario-6-enable-both-tcp--udp-protocols-for-outbound-nat-with-a-public-standard-load-balancer"></a><a name="scenario6out"></a>Senaryo 6: genel bir standart yük dengeleyici ile giden NAT için hem TCP & UDP protokollerini etkinleştirin
+
+
+#### <a name="details"></a>Ayrıntılar
+
+
+Ortak standart yük dengeleyici kullanıldığında, belirtilen otomatik giden NAT, Yük Dengeleme kuralının Aktarım Protokolü ile eşleşir. 
+
+
+1. Yük Dengeleme kuralında giden [SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#-sharing-ports-across-resources) 'yi devre dışı bırakın. 
+2. Aynı yük dengeleyicide giden bir kural yapılandırın.
+3. VM 'niz tarafından zaten kullanılan arka uç havuzunu yeniden kullanın. 
+4. Giden kuralının bir parçası olarak "protokol": "tümü" ni belirtin. 
+
+
+Yalnızca gelen NAT kuralları kullanıldığında, giden NAT sağlanmaz. 
+
+
+1. VM 'Leri bir arka uç havuzuna yerleştirin.
+2. Genel IP adresleri veya genel IP önekiyle bir veya daha fazla ön uç IP yapılandırması tanımlayın 
+3. Aynı yük dengeleyicide giden bir kural yapılandırın. 
+4. Giden kuralının bir parçası olarak "Protocol": "All" belirtin
+
 
 ## <a name="limitations"></a>Sınırlamalar
 

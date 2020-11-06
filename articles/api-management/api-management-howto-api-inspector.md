@@ -1,76 +1,86 @@
 ---
-title: Azure API Yönetimi’nde istek izlemeyi kullanarak API’lerinizdeki hataları ayıklama | Microsoft Docs
-description: Azure API Yönetimi’nde istek işleme adımlarını inceleme hakkında bilgi edinmek için bu öğreticinin adımlarını izleyin.
+title: Öğretici-istek izlemeyi kullanarak Azure API Management 'da API 'Leri hata ayıklama
+description: Azure API Management 'de istek işleme adımlarını izlemeyi ve incelemeyi etkinleştirmek için Bu öğreticinin adımlarını izleyin.
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: cfowler
 editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
-ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 10/30/2020
 ms.author: apimpm
-ms.openlocfilehash: fc5e8c7a7aa0d4693d96c3405ec0e180a6d13f8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9a101de408b506fb5375b5f16c1deff4f67532d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75768545"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422053"
 ---
-# <a name="debug-your-apis-using-request-tracing"></a>İstek izleme özelliğini kullanarak API’lerinizdeki hataları ayıklama
+# <a name="tutorial-debug-your-apis-using-request-tracing"></a>Öğretici: istek izlemeyi kullanarak API 'lerinizin hatalarını ayıklama
 
-Bu öğreticide, API’nizdeki hataları ayıklamanıza ve sorunları gidermenize yardımcı olması için istek işlemenin nasıl inceleneceği açıklanmaktadır. 
+Bu öğreticide, API 'nize hata ayıklamanıza ve sorun gidermenize yardımcı olmak üzere Azure API Management istek işlemenin nasıl denetleneceği açıklanır. 
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Çağrı izleme
+> * Örnek bir çağrı izleyin
+> * İstek işleme adımlarını gözden geçirin
 
-![API denetçisi](media/api-management-howto-api-inspector/api-inspector001.PNG)
+:::image type="content" source="media/api-management-howto-api-inspector/api-inspector-001.png" alt-text="API denetçisi":::
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 + [Azure API Management terminolojisini](api-management-terminology.md) öğrenin.
 + Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
-+ Ayrıca, şu öğreticiyi tamamlayın: [İlk API'nizi içeri aktarma ve yayımlama](import-and-publish.md).
++ Aşağıdaki öğreticiyi doldurun: [Ilk API 'Nizi Içeri aktarma ve yayımlama](import-and-publish.md).
+
+## <a name="verify-allow-tracing-setting"></a>İzleme ayarına izin ver ayarını doğrula 
+
+API 'niz için kullanılan aboneliğin **Izlemeye Izin ver** ayarı etkinleştirilmelidir. Yerleşik tüm erişim aboneliğini kullanıyorsanız, varsayılan olarak etkindir. Portalda doğrulamak için API Management örneğinize gidin ve **abonelikler** ' i seçin.
+
+   :::image type="content" source="media/api-management-howto-api-inspector/allow-tracing.png" alt-text="Abonelik için izlemeye izin ver":::
 
 ## <a name="trace-a-call"></a>Çağrı izleme
 
-![API izleme](media/api-management-howto-api-inspector/06-DebugYourAPIs-01-TraceCall.png)
-
+1. [Azure Portal](https://portal.azure.com)oturum açın ve API Management örneğinize gidin.
 1. **API’ler** seçeneğini belirleyin.
-2. API listenizden **Tanıtım Konferansı API’sine** tıklayın.
-3. **Test** sekmesine geçin.
-4. **GetSpeakers** işlemini seçin.
-5. Değer **true** olarak ayarlanmış şekilde, **Ocp-Apim-Trace** adlı bir HTTP üst bilgisini eklediğinizden emin olun.
+1. API listenizden  **Tanıtım Konferansı API 'si** ' ni seçin.
+1. **Test** sekmesini seçin.
+1. **GetSpeakers** işlemini seçin.
+1. HTTP istek üst bilgisinin **OCP-admin-Trace: true** ve **OCP-admin-Subscription-Key** için geçerli bir değer içerdiğini doğrulayın. Değilse, üstbilgiyi eklemek için **+ üst bilgi Ekle** ' yi seçin.
+1. API çağrısı yapmak için **Gönder** ' i seçin.
 
-   > [!NOTE]
-   > * Ocp-Apim-Subscription-Key otomatik olarak doldurulmazsa, Geliştirici Portalına gidip profil sayfasında anahtarları görüntüleyerek bu değeri alabilirsiniz.
-   > * OCP-apim-Trace HTTP üst bilgisi kullanıldığında bir izleme almak için, abonelik anahtarı için **Izlemeye Izin ver** ayarının etkinleştirilmesi gerekir. **Izlemeye Izin ver** ayarını yapılandırmak için, sol menüdeki **API Management** ' ın altında, **abonelikler**' i seçin.
-   >   ![API Management abonelikler bölmesinde izlemeye izin ver](media/api-management-howto-api-inspector/allowtracing.png)
+  :::image type="content" source="media/api-management-howto-api-inspector/06-debug-your-apis-01-trace-call.png" alt-text="API izlemeyi yapılandırma":::
 
-6. API çağrısı yapmak için **Gönder** ' e tıklayın. 
-7. Çağrının tamamlanmasını bekleyin. 
-8. **API konsolu**’nda **İzleme** sekmesine gidin. Ayrıntılı izleme bilgilerine atlamak için aşağıdaki bağlantılardan herhangi birine tıklayın: **gelen**, **arka uç**, **giden**.
+> [!TIP]
+> **OCP-apim-Subscription-Key** http isteğinde otomatik olarak doldurulmazsa, bunu portalda alabilirsiniz. **Abonelikler** ' i seçin ve sürdürücriklama için bağlam menüsünü ( **...** ) açın. **Anahtarları göster/gizle** ' yi seçin. Gerekirse anahtarları da yeniden oluşturabilirsiniz. Ardından, üstbilgiye bir anahtar ekleyin.
 
-    **Gelen** bölümünde, çağırandan alınan özgün istek API Yönetimini ve 2. adımda eklediğimiz hız sınırı ve üst bilgi ayarlama ilkeleri de dahil isteğe uygulanan tüm ilkeleri görürsünüz.
+## <a name="review-trace-information"></a>İzleme bilgilerini gözden geçirme
 
-    **Arka uç** bölümünde, API arka ucuna gönderilen isteklerin API Yönetimini ve aldığı yanıtı görürsünüz.
+1. Çağrı tamamlandıktan sonra, **http yanıtında** **izleme** sekmesine gidin.
+1. Ayrıntılı izleme bilgilerine geçmek için aşağıdaki bağlantılardan birini seçin: **gelen** , **arka uç** , **giden**.
 
-    **Giden** bölümünde, çağırana geri gönderilmeden önce yanıta uygulanan tüm ilkeleri görürsünüz.
+     :::image type="content" source="media/api-management-howto-api-inspector/response-trace.png" alt-text="Gözden geçirme yanıtı izleme":::
+
+    * **Gelen** -çağırandan alınan API Management özgün isteği ve isteğe uygulanan ilkeleri gösterir. Örneğin, Öğreticiye bir ilke eklediyseniz, [API 'Nizi dönüştürün ve koruyun](transform-api.md), burada görünür.
+
+    * **Arka uç** -API arka ucuna gönderilen istekleri ve aldığı yanıtı gösterir API Management.
+
+    * **Giden** -çağırana geri göndermeden önce yanıta uygulanan ilkeleri gösterir.
 
     > [!TIP]
     > Her bir adım, isteğin API Yönetimi tarafından alınmasından bu yana geçen süreyi de gösterir.
 
+1. **İleti** sekmesinde, **OCP-apim-Trace-location** üst bilgisi, Azure Blob depolama alanında depolanan izleme verilerinin konumunu gösterir. Gerekirse, izlemeyi almak için bu konuma gidin.
+
+     :::image type="content" source="media/api-management-howto-api-inspector/response-message.png" alt-text="Azure Storage 'da izleme konumu":::
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
-> * Çağrı izleme
+> * Örnek bir çağrı izleyin
+> * İstek işleme adımlarını gözden geçirin
 
 Sonraki öğreticiye ilerleyin:
 

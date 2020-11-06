@@ -3,12 +3,12 @@ title: Azure VMware çözümünde dağıtım ufku
 description: Azure VMware çözümünde VMware ufuk dağıtımı hakkında bilgi edinin.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: babce512b896009c08165d2e3d9aec7c33724bf4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: fb5e5b4c5f5da4c140f8d3575b963545f3a57db8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321363"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93423127"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Azure VMware çözümünde dağıtım ufku 
 
@@ -127,6 +127,18 @@ Aynı bölgede iki ufku dağıtırsanız aynı ilkeler geçerlidir.  İkinci ufu
 ## <a name="size-azure-vmware-solution-hosts-for-horizon-deployments"></a>Azure VMware Çözüm ana bilgisayarlarını ufku dağıtımları için Boyutlandır 
 
 Ufkın Azure VMware çözümünde çalışan bir konakta boyutlandırma yöntemi, şirket içi günden daha basittir.  Bunun nedeni, Azure VMware Çözüm ana bilgisayarının standartlaştırılmış olması.  Tam konak boyutlandırma, VDı gereksinimlerinizi desteklemek için gereken ana bilgisayar sayısını belirlemesine yardımcı olur.  Bu, masaüstü başına maliyet belirleme merkezidir.
+
+### <a name="sizing-tables"></a>Tabloları boyutlandırma
+
+Tablolar, oturum açma VSI bilgi çalışanı iş yükleri ve güç çalışanı iş yükleri için ortak iş yüklerini gösterir.
+
+#### <a name="knowledge-worker-workloads"></a>Bilgi çalışanı iş yükleri
+
+:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" alt-text="VMware ufku için oturum açma VSI bilgi çalışanı iş yükleri için ortak VDı profilleri tablosu" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" border="false":::
+
+#### <a name="power-worker-workloads"></a>Güç çalışanı iş yükleri
+
+:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-power.png" alt-text="VMware ufku için oturum açma VSI Power Worker iş yükleri için ortak VDı profillerinin tablosu" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-power.png" border="false":::
 
 ### <a name="azure-vmware-solution-host-instance"></a>Azure VMware Çözüm ana bilgisayar örneği
 

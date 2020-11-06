@@ -1,18 +1,18 @@
 ---
-title: IoT Tak ve Kullan örnek C# Cihaz kodunu IoT Hub bağlama | Microsoft Docs
-description: IoT Hub 'ına bağlanan Windows üzerinde IoT Tak ve Kullan örnek cihaz kodu oluşturun ve çalıştırın. Cihaz tarafından hub 'a gönderilen bilgileri görüntülemek için Azure IoT gezgin aracını kullanın.
+title: Hızlı başlangıç-IoT Tak ve Kullan örnek C# Cihaz kodunu Azure IoT Hub bağlama | Microsoft Docs
+description: Hızlı başlangıç-IoT Hub 'ına bağlanan Windows 'da IoT Tak ve Kullan örnek cihaz kodu derleyin ve çalıştırın. Cihaz tarafından hub 'a gönderilen bilgileri görüntülemek için Azure IoT gezgin aracını kullanın.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: da1ac77ad2716abf964c835634d049895fe88654
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 01e87b08f8d0abcf3659e0d7bfe081fd3516ff08
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044556"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421626"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-running-on-windows-to-iot-hub-c"></a>Hızlı başlangıç: Windows 'ta IoT Hub için çalışan bir örnek IoT Tak ve Kullan cihaz uygulaması bağlama (C#)
 
@@ -20,7 +20,7 @@ ms.locfileid: "92044556"
 
 Bu hızlı başlangıçta örnek bir IoT Tak ve Kullan cihaz uygulaması oluşturma, IoT Hub 'ınıza bağlama ve Azure IoT Explorer aracını kullanarak gönderdiği Telemetriyi görüntüleme gösterilmektedir. Örnek uygulama C# dilinde yazılır ve c# için Azure IoT örneklerine dahildir. Bir çözüm Oluşturucusu, herhangi bir cihaz kodunu görüntülemeye gerek olmadan IoT Tak ve Kullan cihazının yeteneklerini anlamak için Azure IoT gezgin aracını kullanabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -45,7 +45,7 @@ Artık Visual Studio 'da örneği oluşturabilir ve hata ayıklama modunda çal�
 
 1. *Azure-iot-Samples-csharp\iot-hub\Samples\device\PnpDeviceSamples\Thermostat\Thermostat.csproj* proje dosyasını Visual Studio 2019 ' de açın.
 
-1. Visual Studio 'da, **hata ayıklama > Project > termostat özellikleri**' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
+1. Visual Studio 'da, **hata ayıklama > Project > termostat özellikleri** ' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
 
     | Ad | Değer |
     | ---- | ----- |

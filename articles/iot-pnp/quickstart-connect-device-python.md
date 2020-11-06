@@ -1,6 +1,6 @@
 ---
-title: IoT Tak ve Kullan örnek Python Cihaz kodunu Azure IoT Hub bağlayın | Microsoft Docs
-description: IoT Hub 'ına bağlanan IoT Tak ve Kullan örnek cihaz kodu derlemek ve çalıştırmak için Python 'u kullanın. Cihaz tarafından hub 'a gönderilen bilgileri görüntülemek için Azure IoT gezgin aracını kullanın.
+title: Hızlı başlangıç-IoT Tak ve Kullan örnek Python Cihaz kodunu Azure IoT Hub bağlama | Microsoft Docs
+description: Hızlı başlangıç-IoT Hub 'ına bağlanan IoT Tak ve Kullan örnek cihaz kodu derlemek ve çalıştırmak için Python kullanın. Cihaz tarafından hub 'a gönderilen bilgileri görüntülemek için Azure IoT gezgin aracını kullanın.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 7/14/2020
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 065e65c0c8ccf61dd67da19fd5a94d4506db73ff
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 38c6b835f0a3ddaaf4c049ca6ea3aeb484ad3280
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737308"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421575"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-to-iot-hub-python"></a>Hızlı başlangıç: örnek bir IoT Tak ve Kullan cihaz uygulamasını IoT Hub 'ye bağlama (Python)
 

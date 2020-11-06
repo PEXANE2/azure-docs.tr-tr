@@ -12,18 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/30/2020
+ms.date: 11/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 56ae3ac1331ed054a1fb808ae06e990b67c06bae
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 3f13d997f73e9737b8770eec7e0742d50bf1abb8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932422"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421711"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files yenilikleri
 
 Azure NetApp Files düzenli olarak güncelleştirilir. Bu makale, en son yeni özellikler ve geliştirmeler hakkında bir Özet sağlar. 
+
+## <a name="november-2020"></a>Kasım 2020
+
+* [Anlık görüntü al](azure-netapp-files-manage-snapshots.md#revert-a-volume-using-snapshot-revert)
+
+    Anlık görüntü alma işlevselliği, bir birimi belirli bir anlık görüntü çekilirken bulunduğu duruma hızlıca döndürmenizi sağlar. Çoğu durumda, bir birimin geri döndürülmesi, tek tek dosyaları bir anlık görüntüden etkin dosya sistemine geri yüklemeden çok daha hızlıdır. Ayrıca, bir anlık görüntünün yeni bir birime geri yüklenmesi ile karşılaştırıldığında daha fazla alan da daha etkilidir.
 
 ## <a name="september-2020"></a>Eylül 2020
 
@@ -46,10 +52,10 @@ Azure NetApp Files düzenli olarak güncelleştirilir. Bu makale, en son yeni ö
 * Yeni [ölçümler](azure-netapp-files-metrics.md):   
 
     * Yeni birim ölçümleri: 
-        * *Ayrılan birim boyutu*: birimin sağlanan boyutu
+        * *Ayrılan birim boyutu* : birimin sağlanan boyutu
     * Yeni havuz ölçümleri: 
-        * *Havuza ayrılan boyut*: havuzun sağlanan boyutu 
-        * *Havuz Için toplam anlık görüntü boyutu*: havuzdaki tüm birimlerden anlık görüntü boyutu toplamı
+        * *Havuza ayrılan boyut* : havuzun sağlanan boyutu 
+        * *Havuz Için toplam anlık görüntü boyutu* : havuzdaki tüm birimlerden anlık görüntü boyutu toplamı
 
 ## <a name="july-2020"></a>Temmuz 2020
 

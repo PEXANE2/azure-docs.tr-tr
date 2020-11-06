@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: 948e4f74763efd641bc0f089c679cdaf7c2f784e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c87fcf4f56b7092436fa16658a72ead24d9fec2
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530077"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93423037"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Öğretici: Azure Işlevleri özel site erişimi oluşturma
 
@@ -39,13 +39,13 @@ Aşağıdaki diyagramda oluşturulacak çözümün mimarisi gösterilmektedir:
 
 ![Özel site erişim çözümü için üst düzey mimari diyagramı](./media/functions-create-private-site-access/topology.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide IP adresleme ve alt ağ oluşturma hakkında bilgi almanız önemlidir. [Bu makaleyle, adresleme ve alt ağ oluşturma temellerini kapsayan bir](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics)başlangıç yapabilirsiniz. Daha birçok makale ve video çevrimiçi olarak kullanılabilir.
 
 ## <a name="sign-in-to-azure-portal"></a>Azure portalda oturum açın
 
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
@@ -53,7 +53,7 @@ Bu öğreticideki ilk adım, sanal ağ içinde yeni bir sanal makine oluşturmak
 
 1. **Kaynak oluştur** düğmesini seçin.
 
-1. Arama alanına **Windows Server**yazın ve arama sonuçlarında **Windows Server** ' ı seçin.
+1. Arama alanına **Windows Server** yazın ve arama sonuçlarında **Windows Server** ' ı seçin.
 
 1. Windows Server seçenekleri listesinden **Windows server 2019 Datacenter** ' ı seçin ve **Oluştur** düğmesine basın.
 
@@ -67,7 +67,7 @@ Bu öğreticideki ilk adım, sanal ağ içinde yeni bir sanal makine oluşturmak
     | _Abonelik_ | Aboneliğiniz | Kaynaklarınızın oluşturulduğu abonelik. |
     | [_Kaynak grubu_](../azure-resource-manager/management/overview.md) | myResourceGroup | Bu öğreticinin tüm kaynaklarını içerecek kaynak grubunu seçin.  Aynı kaynak grubunu kullanmak, bu öğreticiyi tamamladığınızda kaynakları temizlemeyi kolaylaştırır. |
     | _Sanal makine adı_ | myVM | VM adının kaynak grubunda benzersiz olması gerekir |
-    | [_Bölge_](https://azure.microsoft.com/regions/) | ABD Orta Kuzey ABD | Size yakın veya erişilecek işlevlere yakın bir bölge seçin. |
+    | [_Region_](https://azure.microsoft.com/regions/) | ABD Orta Kuzey ABD | Size yakın veya erişilecek işlevlere yakın bir bölge seçin. |
     | _Genel gelen bağlantı noktaları_ | Hiçbiri | İnternet 'ten sanal makineye gelen bağlantı olmadığından emin olmak için **hiçbiri** ' ni seçin. SANAL makineye uzaktan erişim, Azure savunma hizmeti aracılığıyla yapılandırılır. |
 
 1. Yeni bir sanal ağ yapılandırmak için _ağ_ sekmesini seçin ve **Yeni oluştur** ' u seçin.
@@ -75,7 +75,7 @@ Bu öğreticideki ilk adım, sanal ağ içinde yeni bir sanal makine oluşturmak
     >[!div class="mx-imgBorder"]
     >!["Sanal ağ" bölümünde vurgulanan "Yeni oluştur" eylemi ile "ağ" sekmesini gösteren ekran görüntüsü.](./media/functions-create-private-site-access/create-vm-networking.png)
 
-1. _Sanal ağ oluştur_' da, görüntünün altındaki tabloda bulunan ayarları kullanın:
+1. _Sanal ağ oluştur_ ' da, görüntünün altındaki tabloda bulunan ayarları kullanın:
 
     >[!div class="mx-imgBorder"]
     >![Yeni VM için yeni bir sanal ağ oluşturun](./media/functions-create-private-site-access/create-vm-vnet-1.png)
@@ -88,17 +88,17 @@ Bu öğreticideki ilk adım, sanal ağ içinde yeni bir sanal makine oluşturmak
     | _Adres aralığı_ (alt ağ) | 10.10.1.0/24 | Alt ağ boyutu, alt ağa kaç arabirim eklenebileceğini tanımlar. Bu alt ağ, VM tarafından kullanılır. A/24 alt ağı 254 ana bilgisayar adresi sağlar. |
 
 1. Sanal ağı oluşturmak için **Tamam ' ı** seçin.
-1. _Ağ_ sekmesine geri döndüğünüzde, _genel IP_için **hiçbirinin** seçili olmadığından emin olun.
-1. _Yönetim_ sekmesini seçin ve ardından _Tanılama depolama hesabı_' nda yeni **Oluştur** ' u seçerek yeni bir depolama hesabı oluşturun.
-1. _Kimlik_, _otomatik olarak kapatmalar_ve _yedekleme_ bölümleri için varsayılan değerleri bırakın.
-1. _Gözden geçir ve oluştur_’u seçin. Doğrulama tamamlandıktan sonra **Oluştur**' u seçin. VM oluşturma işlemi birkaç dakika sürer.
+1. _Ağ_ sekmesine geri döndüğünüzde, _genel IP_ için **hiçbirinin** seçili olmadığından emin olun.
+1. _Yönetim_ sekmesini seçin ve ardından _Tanılama depolama hesabı_ ' nda yeni **Oluştur** ' u seçerek yeni bir depolama hesabı oluşturun.
+1. _Kimlik_ , _otomatik olarak kapatmalar_ ve _yedekleme_ bölümleri için varsayılan değerleri bırakın.
+1. _Gözden geçir + oluştur_ ’u seçin. Doğrulama tamamlandıktan sonra **Oluştur** ' u seçin. VM oluşturma işlemi birkaç dakika sürer.
 
 ## <a name="configure-azure-bastion"></a>Azure savunma 'yi yapılandırma
 
 [Azure](https://azure.microsoft.com/services/azure-bastion/) savunma, doğrudan Azure Portal sanal MAKINELERE güvenli RDP ve SSH erişimi sağlayan, tam olarak yönetilen bir Azure hizmetidir. Azure savunma hizmeti 'nin kullanılması, RDP erişimiyle ilgili ağ ayarlarını yapılandırma gereksinimini ortadan kaldırır.
 
 1. Portalda, kaynak grubu görünümünün üst kısmında **Ekle** ' yi seçin.
-1. Arama alanına, **tekne**yazın.
+1. Arama alanına, **tekne** yazın.
 1. Arama sonuçlarında **savunma ' yi** seçin.
 1. Yeni bir Azure savunma kaynağı oluşturma işlemini başlatmak için **Oluştur** ' u seçin. Henüz bir AzureBastionSubnet alt ağı olmadığı için _sanal ağ_ bölümünde bir hata iletisi görürsünüz. Alt ağ aşağıdaki adımlarda oluşturulur. Görüntünün altındaki tabloda bulunan ayarları kullanın:
 
@@ -110,13 +110,13 @@ Bu öğreticideki ilk adım, sanal ağ içinde yeni bir sanal makine oluşturmak
     | _Ad_ | tasyon | Yeni savunma kaynağının adı |
     | _Bölge_ | Orta Kuzey ABD | Size yakın bir bölge seçin ve işlevlerinizin erişebileceği diğer hizmetlere yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. |
     | _Sanal ağ_ | myResourceGroup-VNET | Savunma kaynağının oluşturulacağı sanal ağ |
-    | _Alt ağ_ | AzureBastionSubnet | Sanal ağınızdaki, yeni savunma ana bilgisayar kaynağının dağıtılacağı alt ağ. **AzureBastionSubnet**ad değerini kullanarak bir alt ağ oluşturmanız gerekir. Bu değer, Azure 'un savunma kaynaklarını hangi alt ağa dağıtacağınızı bilmesini sağlar. En az **/27** veya daha büyük (/27,/26, vb.) bir alt ağ kullanmanız gerekir. |
+    | _Alt ağ_ | AzureBastionSubnet | Sanal ağınızdaki, yeni savunma ana bilgisayar kaynağının dağıtılacağı alt ağ. **AzureBastionSubnet** ad değerini kullanarak bir alt ağ oluşturmanız gerekir. Bu değer, Azure 'un savunma kaynaklarını hangi alt ağa dağıtacağınızı bilmesini sağlar. En az **/27** veya daha büyük (/27,/26, vb.) bir alt ağ kullanmanız gerekir. |
 
     > [!NOTE]
     > Azure savunma kaynağı oluşturmaya yönelik ayrıntılı bir adım adım kılavuz için, [Azure savunma ana bilgisayarı oluşturma](../bastion/bastion-create-host-portal.md) öğreticisine bakın.
 
 1. Azure 'un Azure savunma konağını sağlayabildiği bir alt ağ oluşturun. **Alt ağ yapılandırmasını Yönet** ' i seçmek yeni bir alt ağ tanımlayabileceğiniz yeni bir pencere açar.  Yeni bir alt ağ oluşturmak için **+ alt ağ** ' ı seçin.
-1. Alt ağ **AzureBastionSubnet** adında olmalıdır ve alt ağ ön eki en az **/27**olmalıdır.  Alt ağı oluşturmak için **Tamam ' ı** seçin.
+1. Alt ağ **AzureBastionSubnet** adında olmalıdır ve alt ağ ön eki en az **/27** olmalıdır.  Alt ağı oluşturmak için **Tamam ' ı** seçin.
 
     >[!div class="mx-imgBorder"]
     >![Azure savunma ana bilgisayarı için alt ağ oluşturma](./media/functions-create-private-site-access/create-bastion-subnet-2.png)
@@ -126,7 +126,7 @@ Bu öğreticideki ilk adım, sanal ağ içinde yeni bir sanal makine oluşturmak
     >[!div class="mx-imgBorder"]
     >![Belirli bir alt ağa sahip bir Azure savunma ana bilgisayarı oluşturma](./media/functions-create-private-site-access/create-bastion-basics-2.png)
 
-1. **& oluştur**' u seçin. Doğrulama tamamlandıktan sonra **Oluştur**' u seçin. Azure savunma kaynağının oluşturulması birkaç dakika sürer.
+1. **& oluştur** ' u seçin. Doğrulama tamamlandıktan sonra **Oluştur** ' u seçin. Azure savunma kaynağının oluşturulması birkaç dakika sürer.
 
 ## <a name="create-an-azure-functions-app"></a>Azure İşlevleri uygulaması oluşturma
 
@@ -145,7 +145,7 @@ Sonraki adım, [Tüketim planını](functions-scale.md#consumption-plan)kullanar
     | _Bölge_ | Orta Kuzey ABD | Size yakın bir bölge seçin ve işlevlerinizin erişebileceği diğer hizmetlere yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. |
 
     **Sonraki: barındırma >** düğmesini seçin.
-1. _Barındırma_ bölümü için, aşağıdaki tabloda açıklandığı gibi uygun _depolama hesabı_, _işletim sistemi_ve _planı_ seçin.
+1. _Barındırma_ bölümü için, aşağıdaki tabloda açıklandığı gibi uygun _depolama hesabı_ , _işletim sistemi_ ve _planı_ seçin.
 
     | Ayar      | Önerilen değer  | Açıklama      |
     | ------------ | ---------------- | ---------------- |
@@ -153,7 +153,7 @@ Sonraki adım, [Tüketim planını](functions-scale.md#consumption-plan)kullanar
     | _İşletim sistemi_ | Tercih edilen işletim sistemi | Çalışma zamanı yığını seçiminize göre sizin için bir işletim sistemi önceden seçilmiştir, ancak gerekirse ayarı değiştirebilirsiniz. |
     | _Plan_ | Tüketim | [Barındırma planı](./functions-scale.md) , işlev uygulamasının nasıl ölçeklendirileceğini ve her örnek için kullanılabilir kaynakları belirler. |
 1. Uygulama yapılandırma seçimlerini gözden geçirmek için **gözden geçir + oluştur** ' u seçin.
-1. İşlev uygulamasını sağlamak ve dağıtmak için **Oluştur**'u seçin.
+1. İşlev uygulamasını sağlamak ve dağıtmak için **Oluştur** 'u seçin.
 
 ## <a name="configure-access-restrictions"></a>Erişim kısıtlamalarını yapılandırma
 
@@ -165,7 +165,7 @@ Bir sonraki adım, yalnızca sanal ağ üzerindeki kaynakların işlevi çağır
 1. _Ağ_ sayfası, Azure ön kapısını, Azure CDN ve ayrıca erişim kısıtlamalarını yapılandırmak için başlangıç noktasıdır.
 1. Özel site erişimini yapılandırmak için **erişim kısıtlamalarını Yapılandır** ' ı seçin.
 1. _Erişim kısıtlamaları_ sayfasında, yalnızca varsayılan kısıtlamayı görürsünüz. Varsayılan değer, işlev uygulamasına erişim için herhangi bir kısıtlama yerleştirmez.  Özel bir site erişim kısıtlama yapılandırması oluşturmak için **Kural Ekle** ' yi seçin.
-1. _Erişim kısıtlaması Ekle_ bölmesinde, yeni kural Için bir _ad_, _Öncelik_ve _Açıklama_ belirtin.
+1. _Erişim kısıtlaması Ekle_ bölmesinde, yeni kural Için bir _ad_ , _Öncelik_ ve _Açıklama_ belirtin.
 1. _Tür_ açılır kutusundan **sanal ağ** ' ı seçin, ardından önceden oluşturulmuş sanal ağı seçin ve ardından **öğretici** alt ağını seçin. 
     > [!NOTE]
     > Hizmet uç noktasının etkinleştirilmesi birkaç dakika sürebilir.
@@ -183,9 +183,9 @@ Bir sonraki adım, yalnızca sanal ağ üzerindeki kaynakların işlevi çağır
 
     Artık işlev uygulamasına sanal ağınızın dışındaki bilgisayarınızdan erişmeye çalışırsanız, erişimin yasaklanmış olduğunu belirten bir HTTP 403 sayfası alacaksınız.
 1. Kaynak grubuna dönün ve önceden oluşturulmuş sanal makineyi seçin. Siteye sanal makineye erişmek için Azure savunma hizmeti aracılığıyla VM 'ye bağlanmanız gerekir.
-1. **Bağlan** ' **ı seçin ve**ardından savunma ' yı seçin.
+1. **Bağlan** ' **ı seçin ve** ardından savunma ' yı seçin.
 1. Sanal makinede oturum açmak için gereken kullanıcı adını ve parolayı belirtin.
-1. **Bağlan**'ı seçin. Sanal makineyle etkileşime geçmesini sağlamak için yeni bir tarayıcı penceresi açılır.
+1. **Bağlan** ’ı seçin. Sanal makineyle etkileşime geçmesini sağlamak için yeni bir tarayıcı penceresi açılır.
 VM, siteye sanal ağ üzerinden eriştiğinden, VM 'deki Web tarayıcısından siteye erişmek mümkündür.  Site yalnızca belirtilen sanal ağ içinden erişilemese de, ortak bir DNS girişi kalır.
 
 ## <a name="create-a-function"></a>İşlev oluşturma
@@ -197,7 +197,7 @@ Bu öğreticideki bir sonraki adım, HTTP ile tetiklenen bir Azure Işlevi oluş
     * [Visual Studio Code](./functions-create-first-function-vs-code.md)
     * [Visual Studio](./functions-create-your-first-function-visual-studio.md)
     * [Komut satırı](./functions-create-first-azure-function-azure-cli.md)
-    * [Maven (Java)](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser)
+    * [Maven (Java)](./create-first-function-cli-java.md?tabs=bash,browser)
 
 1. Azure Işlevleri projenizi yayımlarken, bu öğreticide daha önce oluşturduğunuz işlev uygulaması kaynağını seçin.
 1. İşlevin dağıtıldığını doğrulayın.
@@ -207,7 +207,7 @@ Bu öğreticideki bir sonraki adım, HTTP ile tetiklenen bir Azure Işlevi oluş
 
 ## <a name="invoke-the-function-directly"></a>İşlevi doğrudan çağır
 
-1. İşleve erişimi test etmek için, işlev URL 'sini kopyalamanız gerekir. Dağıtılan işlevi seçin ve ardından **Işlev URL 'Sini al**' ı seçin. Ardından, URL 'YI panonuza kopyalamak için **Kopyala** düğmesine tıklayın.
+1. İşleve erişimi test etmek için, işlev URL 'sini kopyalamanız gerekir. Dağıtılan işlevi seçin ve ardından **Işlev URL 'Sini al** ' ı seçin. Ardından, URL 'YI panonuza kopyalamak için **Kopyala** düğmesine tıklayın.
 
     >[!div class="mx-imgBorder"]
     >![İşlev URL 'sini kopyalayın](./media/functions-create-private-site-access/get-function-url.png)

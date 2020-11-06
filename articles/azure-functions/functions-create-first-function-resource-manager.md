@@ -5,12 +5,12 @@ ms.date: 3/5/2020
 ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: subject-armqs
-ms.openlocfilehash: 362ff5cd59982c1d848ed59af8381090344f5c5e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1e623405faa89ff41eccdaa57578bc8ac94cd78c
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88642274"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422833"
 ---
 # <a name="quickstart-create-and-deploy-azure-functions-resources-from-an-arm-template"></a>Hızlı başlangıç: ARM şablonundan Azure Işlevleri kaynaklarını oluşturma ve dağıtma
 
@@ -38,7 +38,14 @@ Aşağıdaki sekmelerden birini seçin, bağlantıyı izleyin ve tercih ettiğin
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-[Visual Studio Code 'de yerel işlevler projenizi oluşturun](functions-create-first-function-vs-code.md#create-an-azure-functions-project)
+Visual Studio Code ' de seçtiğiniz dilde yerel işlevler projenizi oluşturun:  
+
++ [C#](create-first-function-vs-code-csharp.md)
++ [Java](create-first-function-vs-code-java.md)
++ [JavaScript](create-first-function-vs-code-node.md)
++ [PowerShell](create-first-function-vs-code-powershell.md)
++ [Python](create-first-function-vs-code-python.md)
++ [TypeScript](create-first-function-vs-code-typescript.md)
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -46,7 +53,14 @@ Aşağıdaki sekmelerden birini seçin, bağlantıyı izleyin ve tercih ettiğin
 
 # <a name="command-line"></a>[Komut satırı](#tab/command-line)
 
-[Komut satırından yerel işlevler projenizi oluşturma](functions-create-first-azure-function-azure-cli.md#create-a-local-function-project)
+Komut satırından seçtiğiniz dilde yerel işlevler projenizi oluşturun:
+
++ [C#](create-first-function-cli-csharp.md)
++ [Java](create-first-function-cli-java.md)
++ [JavaScript](create-first-function-cli-node.md)
++ [PowerShell](create-first-function-cli-powershell.md)
++ [Python](create-first-function-cli-python.md)
++ [TypeScript](create-first-function-cli-typescript.md)
 
 ---
 
@@ -107,17 +121,17 @@ Projenizi yeni Azure kaynaklarında yayımlamak için aşağıdaki adımları ku
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. **Çözüm Gezgini**'nde projeye sağ tıklayın ve **Yayımla**'yı seçin.
+1. **Çözüm Gezgini** 'nde projeye sağ tıklayın ve **Yayımla** 'yı seçin.
 
-1. **Bir yayımlama hedefi**seçin bölümünde, **mevcut Seç** ' ın bulunduğu **Azure işlevleri tüketim planı** ' nı seçin ve **Profil oluştur**' u
+1. **Bir yayımlama hedefi** seçin bölümünde, **mevcut Seç** ' ın bulunduğu **Azure işlevleri tüketim planı** ' nı seçin ve **Profil oluştur** ' u
 
     :::image type="content" source="media/functions-create-first-function-arm/choose-publish-target-visual-studio.png" alt-text="Mevcut bir yayımlama hedefi seçin":::
 
-1. **Aboneliğinizi**seçin, kaynak grubunu genişletin, işlev uygulamanızı seçin ve **Tamam**' ı seçin.
+1. **Aboneliğinizi** seçin, kaynak grubunu genişletin, işlev uygulamanızı seçin ve **Tamam** ' ı seçin.
 
-1. Yayımlama işlemi tamamlandıktan sonra, **site URL 'sini**kopyalayın.
+1. Yayımlama işlemi tamamlandıktan sonra, **site URL 'sini** kopyalayın.
 
-    :::image type="content" source="media/functions-create-first-function-arm/publish-summary-site-url.png" alt-text="Mevcut bir yayımlama hedefi seçin":::
+    :::image type="content" source="media/functions-create-first-function-arm/publish-summary-site-url.png" alt-text="Yayımlama özetinden site URL 'sini kopyalayın":::
 
 1. Yolu ekleyin `/api/<FUNCTION_NAME>?name=Functions` , burada `<FUNCTION_NAME>` işlevinizin adıdır. HTTP tetikleyici işlevinizi çağıran URL aşağıdaki biçimdedir:
 

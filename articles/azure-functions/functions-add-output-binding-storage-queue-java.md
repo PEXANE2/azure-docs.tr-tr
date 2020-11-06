@@ -7,24 +7,24 @@ ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
 zone_pivot_groups: java-build-tools-set
-ms.openlocfilehash: faa4df8633c34b23703a3fe9fa405bad959ec894
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: b4381c4acbea8a3b7d86d9c32aaf9cea24cf15fa
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167211"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422663"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Java işlevinizi Azure depolama 'ya bağlama
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-Bu makalede, [önceki hızlı başlangıç makalesinde](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser) oluşturduğunuz Işlevi bir Azure depolama kuyruğu ile tümleştirme işlemi gösterilmektedir. Bu işleve eklediğiniz çıkış bağlaması, verileri bir HTTP isteğinden kuyruktaki bir iletiye yazar.
+Bu makalede, [önceki hızlı başlangıç makalesinde](./create-first-function-cli-java.md?tabs=bash,browser) oluşturduğunuz Işlevi bir Azure depolama kuyruğu ile tümleştirme işlemi gösterilmektedir. Bu işleve eklediğiniz çıkış bağlaması, verileri bir HTTP isteğinden kuyruktaki bir iletiye yazar.
 
 Çoğu bağlamanın, bağlı hizmete erişmek için kullandığı depolanan bir bağlantı dizesi gerekir. Bu bağlantıyı daha kolay hale getirmek için, işlev uygulamanızla oluşturduğunuz depolama hesabını kullanırsınız. Bu hesap bağlantısı zaten adlı bir uygulama ayarında depolanıyor `AzureWebJobsStorage` .  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu makaleye başlamadan önce, [Java hızlı](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser)başlangıcının 1. bölümündeki adımları uygulayın.
+Bu makaleye başlamadan önce, [Java hızlı](./create-first-function-cli-java.md?tabs=bash,browser)başlangıcının 1. bölümündeki adımları uygulayın.
 
 ## <a name="download-the-function-app-settings"></a>İşlev uygulaması ayarlarını indirin
 

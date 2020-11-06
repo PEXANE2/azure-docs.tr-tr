@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory uygulama yönetiminde yenilikler
 description: Azure Active Directory Uygulama yönetimi için yeni ve güncelleştirilmiş belgeler.
-ms.date: 10/21/2020
+ms.date: 11/05/2020
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -10,16 +10,34 @@ ms.author: kenwith
 author: kenwith
 manager: CelesteDG
 services: active-directory
-ms.openlocfilehash: 569c111c392e6bbaf9a54d17dc6e88bc8d851dc6
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 257057c4688fcf75651df4250c601eb1f1a2e8a3
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428030"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422612"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Uygulama yönetimi Azure Active Directory: yenilikler
 
 Azure Active Directory Uygulama yönetimi belgelerindeki yenilikler ' e hoş geldiniz. Bu makalede, eklenen ve son üç ay içinde önemli güncelleştirmeleri olan yeni belgeler listelenir. Uygulama yönetimi hizmeti yenilikleri hakkında bilgi edinmek için bkz. [Azure Active Directory](../fundamentals/whats-new.md)yenilikleri.
+
+## <a name="october-2020"></a>Ekim 2020
+
+### <a name="new-articles"></a>Yeni makaleler
+
+- [Uygulama yönetimi Azure Active Directory: yenilikler](whats-new-docs.md)
+- [OıDC tabanlı çoklu oturum açmayı anlama](configure-oidc-single-sign-on.md)
+- [İzin sınıflandırmalarını yapılandırma](configure-permission-classifications.md)
+- [Grup verilerine erişen uygulamalar için Grup sahibi onayını yapılandırma](configure-user-consent-groups.md)
+- [Uygulama onayı ilkelerini yönetme](manage-app-consent-policies.md)
+
+### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
+
+- [SAML tabanlı çoklu oturum açma yapılandırılmış uygulamalarda oturum açma sorunları](application-sign-in-problem-federated-sso-gallery.md)
+- [Uygulama Ara Sunucusu Aracı Bağlayıcısı’nı yüklerken sorun oluşuyor](application-proxy-connector-installation-problem.md)
+- [Active Directory Federasyon Hizmetleri (AD FS) uygulama kimlik doğrulamasını Azure Active Directory olarak taşıma](migrate-adfs-apps-to-azure.md)
+- [Son kullanıcıların uygulamalara onay verme şeklini yapılandırma](configure-user-consent.md)
+
 
 ## <a name="september-2020"></a>Eylül 2020
 

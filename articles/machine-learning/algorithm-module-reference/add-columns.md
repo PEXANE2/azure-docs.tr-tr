@@ -1,7 +1,7 @@
 ---
 title: 'Sütun ekleme: modül başvurusu'
 titleSuffix: Azure Machine Learning
-description: İki veri kümesini birleştirmek için Azure Machine Learning sütun Ekle modülünü nasıl kullanacağınızı öğrenin.
+description: İki veri kümesini birleştirmek için sürükle ve bırak Azure Machine Learning Tasarımcısında sütun Ekle modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,29 +9,29 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 17882581c4548996c9a8b2a8670b5f720e64da1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36de827dff239dbeebc66e330a76b7a65fefb909
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898995"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421966"
 ---
 # <a name="add-columns-module"></a>Sütun ekleme modülü
 
 Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktadır.
 
-İki veri kümesini birleştirmek için bu modülü kullanın. Tek bir veri kümesi oluşturmak için giriş olarak belirttiğiniz iki veri kümesindeki tüm sütunları birleştirebilirsiniz. İkiden fazla veri kümesini birleştirmeniz gerekiyorsa, **sütun Ekle**' nin birkaç örneğini kullanın.
+İki veri kümesini birleştirmek için bu modülü kullanın. Tek bir veri kümesi oluşturmak için giriş olarak belirttiğiniz iki veri kümesindeki tüm sütunları birleştirebilirsiniz. İkiden fazla veri kümesini birleştirmeniz gerekiyorsa, **sütun Ekle** ' nin birkaç örneğini kullanın.
 
 
 
 ## <a name="how-to-configure-add-columns"></a>Sütun Ekle yapılandırma
 1. İşlem hattınızla **sütun ekleme** modülünü ekleyin.
 
-2. Birleştirmek istediğiniz iki veri kümesini bağlayın. İkiden fazla veri kümesini birleştirmek istiyorsanız, **sütun Ekle**' nin birkaç birleşimini birlikte zincirleyebilirsiniz.
+2. Birleştirmek istediğiniz iki veri kümesini bağlayın. İkiden fazla veri kümesini birleştirmek istiyorsanız, **sütun Ekle** ' nin birkaç birleşimini birlikte zincirleyebilirsiniz.
 
     - Farklı sayıda satıra sahip iki sütunu birleştirmek mümkündür. Çıktı veri kümesi, daha küçük kaynak sütunundaki her bir satır için eksik değerlerle doldurulur.
 
-    - Eklenecek sütunları tek tek seçemezsiniz. **Sütun Ekle**kullandığınızda her bir veri kümesindeki tüm sütunlar birleştirilir. Bu nedenle, sütunların yalnızca bir alt kümesini eklemek istiyorsanız, istediğiniz sütunları içeren bir veri kümesi oluşturmak için veri kümesinde sütunları seç ' i kullanın.
+    - Eklenecek sütunları tek tek seçemezsiniz. **Sütun Ekle** kullandığınızda her bir veri kümesindeki tüm sütunlar birleştirilir. Bu nedenle, sütunların yalnızca bir alt kümesini eklemek istiyorsanız, istediğiniz sütunları içeren bir veri kümesi oluşturmak için veri kümesinde sütunları seç ' i kullanın.
 
 3. İşlem hattını gönderme.
 

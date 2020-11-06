@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 0c37c8f108e9bcbb827c05242d8863994dfc64cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a668024db126c82f96756555aba513b77f7d7366
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89177100"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422969"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>PowerShell Azure Işlevlerini yerel olarak hata ayıklama
 
@@ -38,7 +38,7 @@ PSFunctionApp
  | - profile.ps1
 ```
 
-Bu işlev uygulaması, [PowerShell hızlı](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)başlangıcını tamamladığınızda aldığınız birine benzer.
+Bu işlev uygulaması, [PowerShell hızlı](./create-first-function-vs-code-powershell.md)başlangıcını tamamladığınızda aldığınız birine benzer.
 
 İçindeki işlev kodu `run.ps1` aşağıdaki komut dosyası gibi görünür:
 
@@ -95,10 +95,10 @@ Hata ayıklama `if` deyimden başlar.
 Visual Studio Code PowerShell işlevlerinizi hata ayıklaması yapmak için aşağıdakilerin yüklü olması gerekir:
 
 * [Visual Studio Code için PowerShell uzantısı](/powershell/scripting/components/vscode/using-vscode)
-* [Visual Studio Code için Azure İşlevleri uzantısı](functions-create-first-function-vs-code.md)
+* [Visual Studio Code için Azure İşlevleri uzantısı](./create-first-function-cli-powershell.md)
 * [PowerShell Core 6,2 veya üzeri](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-Bu bağımlılıkları yükledikten sonra var olan bir PowerShell Işlevleri projesini yükleyin veya [Ilk PowerShell işlevleri projenizi oluşturun](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell).
+Bu bağımlılıkları yükledikten sonra var olan bir PowerShell Işlevleri projesini yükleyin veya [Ilk PowerShell işlevleri projenizi oluşturun](./create-first-function-vs-code-powershell.md).
 
 >[!NOTE]
 > Projenizde gerekli yapılandırma dosyaları yoksa, bunları eklemeniz istenir.
@@ -109,9 +109,9 @@ PowerShell Core, Windows PowerShell ile yan yana yüklenir. PowerShell uzantıs�
 
 1. Komut paleti ' ni göstermek için F1 tuşuna basın ve arama yapın `Session` .
 
-1. **PowerShell: oturum menüsünü göster**' i seçin.
+1. **PowerShell: oturum menüsünü göster** ' i seçin.
 
-1. **Geçerli oturumunuz** **PowerShell Core 6**değilse, **geçiş yap: PowerShell Core 6**' ı seçin.
+1. **Geçerli oturumunuz** **PowerShell Core 6** değilse, **geçiş yap: PowerShell Core 6** ' ı seçin.
 
 Açık bir PowerShell dosyanız olduğunda, pencerenin sağ alt tarafında yeşil renkte görüntülendiğini görürsünüz. Bu metnin seçilmesi oturum menüsünü de görüntüler. Daha fazla bilgi edinmek için, [Uzantısı ile kullanılacak PowerShell 'in bir sürümünü seçme](/powershell/scripting/components/vscode/using-vscode#choosing-a-version-of-powershell-to-use-with-the-extension)bölümüne bakın.
 

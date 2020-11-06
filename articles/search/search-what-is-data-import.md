@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 148310419ad4f760219003514dbc078b7c675be6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/05/2020
+ms.openlocfilehash: b57d55e91918ba612ad42acd5e6059ae0dbd0090
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538796"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422459"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Veri içeri genel bakış-Azure Bilişsel Arama
 
@@ -35,7 +35,7 @@ Belgeleri tek tek veya toplu işlemle karşıya yükleyebileceğinizden (toplu i
 Dizin bir tek veya birden çok belge yüklemek için şu API'leri kullanabilirsiniz:
 
 + [Belge Ekleme, Güncelleştirme veya Silme (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [indexAction sınıfı](/dotnet/api/microsoft.azure.search.models.indexaction) veya [indexBatch sınıfı](/dotnet/api/microsoft.azure.search.models.indexbatch) 
++ [Indexdocumentsaction sınıfı](/dotnet/api/azure.search.documents.models.indexdocumentsaction) veya [ındexdocumentsbatch sınıfı](/dotnet/api/azure.search.documents.models.indexdocumentsbatch) 
 
 Şu an portal aracılığıyla veri gönderme için hiçbir araç desteği yoktur.
 
@@ -63,7 +63,7 @@ REST API Azure Bilişsel Arama dizininizin Endpoint URL 'nize JSON istek gövdel
 
 [REST API kullanarak dizininizi aramanın](/rest/api/searchservice/Search-Documents) iki yolu bulunur. Bu yollardan biri, sorgu parametrelerinizin istek gövdesindeki bir JSON nesnesinde tanımlanacağı bir HTTP POST isteği göndermektir. Diğer yol ise sorgu parametrelerinizin istek URL'si içinde tanımlanacağı bir HTTP GET isteği göndermektir. POST, sorgu parametrelerinin boyutu açısından GET'ten daha [esnek sınırlara](/rest/api/searchservice/Search-Documents) sahiptir. Bu nedenle, GET'i kullanmanın daha kullanışlı olduğu özel durumlar olmadığı sürece POST kullanmanızı öneririz.
 
-Hem GÖNDERI hem de GET için, istek URL 'sinde *hizmet adınızı*, *Dizin adınızı*ve bir *API sürümünü* sağlamanız gerekir. 
+Hem GÖNDERI hem de GET için, istek URL 'sinde *hizmet adınızı* , *Dizin adınızı* ve bir *API sürümünü* sağlamanız gerekir. 
 
 GET için sorgu parametrelerini URL'nin sonundaki *sorgu dizesine* sağlarsınız. URL biçimi için aşağıya bakın:
 
@@ -75,19 +75,18 @@ POST biçimi aynı ancak `api-version` sorgu dizesi parametrelerinde ile aynıd�
 
 ## <a name="pulling-data-into-an-index"></a>Verileri dizine çekme
 
-Çekme modeli, desteklenen veri kaynağında gezinir ve dizininize verileri otomatik olarak yükler. Azure Bilişsel Arama, bu özellik şu anda bu platformlar için kullanılabilen *Dizin oluşturucular*aracılığıyla uygulanır:
+Çekme modeli, desteklenen veri kaynağında gezinir ve dizininize verileri otomatik olarak yükler. Azure Bilişsel Arama, bu özellik şu anda bu platformlar için kullanılabilen *Dizin oluşturucular* aracılığıyla uygulanır:
 
 + [Blob depolama](search-howto-indexing-azure-blob-storage.md)
 + [Tablo depolama](search-howto-indexing-azure-tables.md)
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 + [Azure SQL veritabanı, SQL yönetilen örneği ve Azure VM 'lerinde SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
-Dizin oluşturucular bir dizini bir veri kaynağına (genelde tablo, görünüm veya eşdeğer bir yapı) bağlar ve kaynak alanları dizindeki eşdeğer alanlara eşler. Yürütme sırasında satır kümesi otomatik olarak JSON'a dönüştürülür ve belirtilen dizine yüklenir. Tüm dizin oluşturucular zamanlamayı destekler ve bu sayede verilerin yenilenme sıklığını belirleyebilirsiniz. Çoğu dizin oluşturucular veri kaynağının desteklemesi durumunda değişiklik izleme özelliği sunar. Dizin oluşturucular, var olan belgelerdeki değişiklikleri ve silmeleri takip etmenin yanı sıra yeni belgeleri tanıyarak, dizininizdeki verileri aktif şekilde yönetme ihtiyacını ortadan kaldırır. 
-
+Dizin oluşturucular bir dizini bir veri kaynağına (genelde tablo, görünüm veya eşdeğer bir yapı) bağlar ve kaynak alanları dizindeki eşdeğer alanlara eşler. Yürütme sırasında satır kümesi otomatik olarak JSON'a dönüştürülür ve belirtilen dizine yüklenir. Tüm dizin oluşturucular zamanlamayı destekler ve bu sayede verilerin yenilenme sıklığını belirleyebilirsiniz. Çoğu dizin oluşturucular veri kaynağının desteklemesi durumunda değişiklik izleme özelliği sunar. Dizin oluşturucular, var olan belgelerdeki değişiklikleri ve silmeleri takip etmenin yanı sıra yeni belgeleri tanıyarak, dizininizdeki verileri aktif şekilde yönetme ihtiyacını ortadan kaldırır.
 
 ### <a name="how-to-pull-data-into-an-azure-cognitive-search-index"></a>Azure Bilişsel Arama dizinine veri çekme
 
-Dizin oluşturucu işlevleri [Azure portalı](search-import-data-portal.md), [REST API'sı](/rest/api/searchservice/Indexer-operations) ve [.NET SDK'sında](/dotnet/api/microsoft.azure.search.indexersoperationsextensions) belirtilmiştir. 
+Dizin oluşturucu işlevleri [Azure portalı](search-import-data-portal.md), [REST API'sı](/rest/api/searchservice/Indexer-operations) ve [.NET SDK'sında](/dotnet/api/azure.search.documents.indexes.searchindexerclient) belirtilmiştir.
 
 Portalı kullanmanın bir avantajı, Azure Bilişsel Arama kaynak veri kümesinin meta verilerini okuyarak genellikle sizin için varsayılan bir dizin şeması oluşturabilir. Oluşturulan dizini işlenene kadar değiştirebilirsiniz ancak işlendikten sonra yalnızca dizinin yeniden oluşturulmasını gerektirmeyen şema düzenlemelerine izin verilir. Yapmak istediğiniz değişikliklerin şemayı doğrudan etkilemesi halinde dizini yeniden oluşturmanız gerekir. 
 
