@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: a04088fc1074949a1228794c22c1fa65a0b736a7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5685a2553b95308a1c18c3e490737338f609b594
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370077"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330946"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Ses Içeriği oluşturma aracı ile sensıs 'yi geliştirme
 
@@ -48,8 +48,8 @@ Yeni konuşma kaynağınızın dağıtılması birkaç dakika sürer. Dağıtım
  
 ### <a name="step-3---log-into-the-audio-content-creation-with-your-azure-account-and-speech-resource"></a>3. adım-Azure hesabınızla ve konuşma kaynağınız ile ses Içeriği oluşturma 'da oturum açın
 
-1. Azure hesabı ve konuşma kaynağını aldıktan sonra, **kullanmaya**başlayın ' a tıklayarak [ses içeriği oluşturma](https://aka.ms/audiocontentcreation) ' da oturum açabilirsiniz.
-2. **Konuşma kaynağı** sayfası size görüntülenecektir. Üzerinde çalışmak istediğiniz konuşma kaynağını seçin. Ses oluşturmaya başlamak için **Studio 'Ya git** ' e tıklayın. Ayrıca, **Yeni oluştur**' a tıklayarak yeni bir konuşma kaynağı da oluşturabilirsiniz. Ses Içeriği oluşturma aracında bir sonraki sefer oturum açtığınızda, sizi doğrudan geçerli konuşma kaynağı altındaki ses çalışma dosyalarına bağlayacağız. 
+1. Azure hesabı ve konuşma kaynağını aldıktan sonra, **kullanmaya** başlayın ' a tıklayarak [ses içeriği oluşturma](https://aka.ms/audiocontentcreation) ' da oturum açabilirsiniz.
+2. **Konuşma kaynağı** sayfası size görüntülenecektir. Üzerinde çalışmak istediğiniz konuşma kaynağını seçin. Ses oluşturmaya başlamak için **Studio 'Ya git** ' e tıklayın. Ayrıca, **Yeni oluştur** ' a tıklayarak yeni bir konuşma kaynağı da oluşturabilirsiniz. Ses Içeriği oluşturma aracında bir sonraki sefer oturum açtığınızda, sizi doğrudan geçerli konuşma kaynağı altındaki ses çalışma dosyalarına bağlayacağız. 
 3. Konuşma kaynağınızı, üst gezinti bölmesinde bulunan **Ayarlar** seçeneğiyle istediğiniz zaman değiştirebilirsiniz.
 
 ## <a name="how-to-use-the-tool"></a>Aracı nasıl kullanılır?
@@ -114,7 +114,7 @@ Ses çıktlarınızı inceledikten ve ayarlama ve ayarlamasıyla memnun olduktan
 2. Ayarlanmış sesinizi için çıkış biçimini seçin. Desteklenen biçimlerin ve örnek hızların listesi aşağıda verilmiştir.
 3. Görevi **dışarı aktar** sekmesinde görevin durumunu görüntüleyebilirsiniz. Görev başarısız olursa, tam bir rapor için ayrıntılı bilgi sayfasına bakın.
 4. Görev tamamlandığında ses **kitaplığı** sekmesinde Sesinizdeki indirilebilir.
-5. **İndir**'e tıklayın. Artık uygulama veya ürünleriniz için özel olarak ayarlanmış sesinizi kullanmaya hazırsınız.
+5. **İndir** 'e tıklayın. Artık uygulama veya ürünleriniz için özel olarak ayarlanmış sesinizi kullanmaya hazırsınız.
 
 **Desteklenen ses biçimleri**
 
@@ -131,32 +131,32 @@ Birden fazla Kullanıcı ses Içeriği oluşturmayı kullanmak isterse, Azure he
 
 Ses Içeriği oluşturmayı kullanabilmesi için bir konuşma kaynağına Kullanıcı eklemek için bu adımları izleyin.
 
-1. Bilişsel **Hizmetler** için arama Azure Portal, Kullanıcı eklemek istediğiniz konuşma kaynağını seçin.
+1. Bilişsel **Hizmetler** için arama [Azure Portal](https://portal.azure.com/), Kullanıcı eklemek istediğiniz konuşma kaynağını seçin.
 2. **Erişim denetimi (IAM)** öğesine tıklayın. Bu aboneliğin tüm rol atamalarını görüntülemek için **Rol atamaları** sekmesine tıklayın.
-    :::image source="media/audio-content-creation/access-control-roles.png" alt-text="Metin okuma çıktıları için ince ayar yapmak için gereken adımların diyagramı":::
+    :::image source="media/audio-content-creation/access-control-roles.png" alt-text="Rol atama sekmesi":::
 1. **Ekle** > **Rol ataması ekle** seçeneğine tıklayarak Rol ataması ekle bölmesini açın. Rol açılan listesinde bilişsel **hizmet Kullanıcı** rolünü seçin. Bu konuşma kaynağının Kullanıcı sahipliğini vermek istiyorsanız, **sahip** rolünü seçebilirsiniz.
 1. Listeden bir kullanıcı seçin. Kullanıcıyı listede görmüyorsanız, görünen ad ve e-posta adresleri için dizini aramak üzere seç kutusunu yazabilirsiniz. Kullanıcı bu dizinde değilse, kullanıcının [Microsoft hesabı](https://account.microsoft.com/account) (Azure Active Directory tarafından güvenilen) girişi yapabilirsiniz.
-1. Rolü atamak için **Kaydet**’e tıklayın. Birkaç dakika sonra, Kullanıcı, konuşma kaynağı kapsamında bilişsel hizmet kullanıcı rolüne atanır.
+1. Rolü atamak için **Kaydet** ’e tıklayın. Birkaç dakika sonra, Kullanıcı, konuşma kaynağı kapsamında bilişsel hizmet kullanıcı rolüne atanır.
 
-    :::image source="media/audio-content-creation/add-role-first.png" alt-text="Metin okuma çıktıları için ince ayar yapmak için gereken adımların diyagramı":::
+    :::image source="media/audio-content-creation/add-role-first.png" alt-text="Rol Ekle iletişim kutusu":::
 
-1. Eklediğiniz kullanıcılara bir davet e-postası gönderilir. Azure 'a **Accept invitation**  >  **katılması için davet kabulü**kabul et 'e tıkladıktan sonra, [ses içeriği oluşturma](https://aka.ms/audiocontentcreation)'yı kullanabilirler.
+1. Eklediğiniz kullanıcılara bir davet e-postası gönderilir. Azure 'a **Accept invitation**  >  **katılması için davet kabulü** kabul et 'e tıkladıktan sonra, [ses içeriği oluşturma](https://aka.ms/audiocontentcreation)'yı kullanabilirler.
 
 Aynı konuşma kaynağına sahip kullanıcılar, her birinin ses Içeriği oluşturma Studio 'da çalışmasını görür. Her bir kullanıcının ses Içeriği oluşturmada benzersiz ve özel çalışma alanına sahip olmasını istiyorsanız, lütfen her bir kullanıcı için [Yeni bir konuşma kaynağı oluşturun](#step-2---create-a-speech-resource) ve her kullanıcıya konuşma kaynağına benzersiz erişim verin. 
 
 ### <a name="remove-users-from-a-speech-resource"></a>Bir konuşma kaynağından kullanıcıları kaldırma
 1. Bilişsel **Hizmetler** için arama Azure Portal, kullanıcıları kaldırmak istediğiniz konuşma kaynağını seçin.
 2. **Erişim denetimi (IAM)** öğesine tıklayın. Bu konuşma kaynağına yönelik tüm rol atamalarını görüntülemek için **rol atamaları** sekmesine tıklayın.
-3. Kaldırmak istediğiniz kullanıcıları seçin, **Kaldır**  >  **Tamam**' a tıklayın.
-    :::image source="media/audio-content-creation/remove-user.png" alt-text="Metin okuma çıktıları için ince ayar yapmak için gereken adımların diyagramı":::
+3. Kaldırmak istediğiniz kullanıcıları seçin, **Kaldır**  >  **Tamam** ' a tıklayın.
+    :::image source="media/audio-content-creation/remove-user.png" alt-text="Kaldır düğmesi":::
 
 ### <a name="enable-users-to-grant-access"></a>Kullanıcıların erişim vermesini sağlama
 Kullanıcılardan birinin diğer kullanıcılara erişim izni vermesini istiyorsanız, kullanıcıya konuşma kaynağı için sahip rolünü vermeniz ve kullanıcıyı Azure Dizin okuyucusu olarak ayarlamanız gerekir. 
 1. Kullanıcıyı konuşma kaynağının sahibi olarak ekleyin. Bkz. [bir konuşma kaynağına Kullanıcı ekleme](#add-users-to-a-speech-resource).
-    :::image source="media/audio-content-creation/add-role.png" alt-text="Metin okuma çıktıları için ince ayar yapmak için gereken adımların diyagramı":::
-1. Sol üstteki daraltılmış menüyü seçin. **Azure Active Directory**' a ve ardından **Kullanıcılar**' a tıklayın.
-1. Kullanıcının Microsoft hesabı arayın ve kullanıcının ayrıntılar sayfasına gidin. **Atanan roller**' e tıklayın.
-1. **Atama**  ->  **Dizin okuyucuları**Ekle ' ye tıklayın.
+    :::image source="media/audio-content-creation/add-role.png" alt-text="Rol sahibi alanı":::
+1. Sol üstteki daraltılmış menüyü seçin. **Azure Active Directory** ' a ve ardından **Kullanıcılar** ' a tıklayın.
+1. Kullanıcının Microsoft hesabı arayın ve kullanıcının ayrıntılar sayfasına gidin. **Atanan roller** ' e tıklayın.
+1. **Atama**  ->  **Dizin okuyucuları** Ekle ' ye tıklayın.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

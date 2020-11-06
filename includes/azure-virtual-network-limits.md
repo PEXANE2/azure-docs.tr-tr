@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: networking
 author: anavinahar
 ms.service: networking
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: baf3d02e1c0ecf51ddea043ee560d5054f09d057
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 0d5c9c4a0191c6d5effd8f6067cb6602ed239125
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91936251"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94329537"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Ağ sınırları-Azure Resource Manager
 Aşağıdaki sınırlar yalnızca, her abonelik için bölge başına **Azure Resource Manager** ile yönetilen ağ kaynakları için geçerlidir. [Geçerli kaynak kullanımınızı abonelik sınırlarınıza göre görüntülemeyi](../articles/networking/check-usage-against-limits.md)öğrenin.
@@ -55,6 +55,7 @@ Aşağıdaki sınırlar yalnızca, her abonelik için bölge başına **Azure Re
 | Genel IP adresleri<sup>1</sup> | Temel için 10. | Desteğe başvurun. |
 | Statik genel IP adresleri<sup>1</sup> | Temel için 10. | Desteğe başvurun. |
 | Standart genel IP adresleri<sup>1</sup> | 10 | Desteğe başvurun. |
+| [Kaynak grubu başına genel IP adresleri](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md#microsoftnetwork) | 800 | Desteğe başvurun. | 
 | Genel IP Ön Ekleri | bir abonelikte standart genel IP sayısıyla sınırlı | Desteğe başvurun. |
 | Genel IP öneki uzunluğu | /28 | Desteğe başvurun. |
 
@@ -106,6 +107,6 @@ Aşağıdaki sınırlar yalnızca abonelik başına bölgeye göre Azure Resourc
 | Yol tablosu başına Kullanıcı tanımlı yollar |400 |400 |
 | Genel IP adresleri (dinamik) |500 |500 |
 | Ayrılmış genel IP adresleri |500 |500 |
-| Dağıtım başına genel VIP |5 |Desteğe başvurun |
-| Dağıtım başına özel VIP (İç Yük Dengeleme) |1 |1 |
+| Dağıtım başına genel IP |5 |Desteğe başvurun |
+| Dağıtım başına özel IP (İç Yük Dengeleme) |1 |1 |
 | Uç nokta erişim denetim listeleri (ACL 'Ler) |50 |50 |

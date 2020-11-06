@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 75e24f9437257769a3d9bfd69980a9b8606d0563
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 0670107d84374589aa60cc18f184b9b3d3facce1
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424370"
+ms.locfileid: "94331813"
 ---
 # <a name="azure-database-for-mysql-versioning-policy"></a>MySQL için Azure veritabanı sürüm oluşturma ilkesi
 
@@ -48,12 +48,13 @@ Aşağıdaki tabloda MySQL ana sürümleri için kullanımdan kaldırma ayrınt�
 ## <a name="retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql"></a>Kullanımdan kaldırılan MySQL altyapısı sürümleri MySQL için Azure veritabanı 'nda desteklenmiyor
 
 Her MySQL veritabanı sürümü için kullanımdan kaldırma tarihinden sonra, kullanımdan kaldırılan sürümü çalıştırmaya devam ederseniz aşağıdaki kısıtlamalara göz önünde bulabilirsiniz:
-- Topluluk daha fazla hata düzeltmesi veya güvenlik düzeltmelerini serbest bırakmadığından, MySQL için Azure, tüm hatalar veya güvenlik sorunları için kullanımdan kaldırılan veritabanı altyapısına düzeltme eki uygulanmaz veya kullanımdan kaldırılan veritabanı altyapısı ile ilgili güvenlik önlemleri almaz. Ancak Azure, ana bilgisayar, işletim sistemi, kapsayıcılar ve hizmetle ilgili diğer tüm bileşenler için düzenli bakım ve düzeltme eki gerçekleştirmeye devam edecektir.
+- Topluluk başka hata düzeltmeleri veya güvenlik düzeltmelerinin serbest bırakılmayacak, MySQL için Azure veritabanı, herhangi bir hata veya güvenlik sorunu için kullanımdan kaldırılan veritabanı altyapısına düzeltme eki uygulanmaz veya kullanımdan kaldırılan veritabanı altyapısından kaynaklanan güvenlik önlemleri almaz. Ancak Azure, ana bilgisayar, işletim sistemi, kapsayıcılar ve hizmetle ilgili diğer tüm bileşenler için düzenli bakım ve düzeltme eki gerçekleştirmeye devam edecektir.
 - Karşılaşabileceğiniz herhangi bir destek sorunu MySQL veritabanıyla ilgili olarak size destek sunamayacak olabilir. Bu gibi durumlarda, size herhangi bir destek sağlayabilmesi için veritabanınızı yükseltmeniz gerekir.
 - Kullanımdan kaldırılan sürüm için yeni veritabanı sunucuları oluşturabileceksiniz. Bununla birlikte, mevcut sunucularınız için zaman içinde kurtarmalar gerçekleştirebilir ve okuma çoğaltmaları oluşturabilirsiniz.
 - MySQL için Azure veritabanı tarafından geliştirilen yeni hizmet özellikleri yalnızca desteklenen veritabanı sunucusu sürümleri için kullanılabilir olabilir.
 - Çalışma süresi SLA 'Ları yalnızca MySQL hizmeti ile ilgili sorunlar için Azure veritabanı 'na, veritabanı altyapısından kaynaklanan hataların neden olması için geçerlidir.  
-- Kullanımdan kaldırılmış olan veritabanı sürümünde tanımlanan MySQL veritabanı altyapısı güvenlik açığından kaynaklanan, hizmet için ciddi bir tehdit olması durumunda Azure, önce hizmeti güvenli hale getirmek için veritabanı sunucunuzun işlem düğümünü durdurmayı tercih edebilir. Sunucuyu çevrimiçi duruma getirmeden önce sunucuyu yükseltmeniz istenir. Yükseltme işlemi sırasında, verileriniz her zaman, istenirse eski sürüme geri yüklemek için kullanılabilecek otomatik yedeklemeler kullanılarak korunur.
+- Kullanımdan kaldırılmış olan veritabanı sürümünde tanımlanan MySQL veritabanı altyapısı güvenlik açığından kaynaklanan, hizmette ciddi bir tehdit olması durumunda Azure, önce hizmeti güvenli hale getirmek için veritabanı sunucunuzun işlem düğümünü durdurmayı tercih edebilir. Sunucuyu çevrimiçi duruma getirmeden önce sunucuyu yükseltmeniz istenir. Yükseltme işlemi sırasında, verileriniz her zaman, istenirse eski sürüme geri yüklemek için kullanılabilecek otomatik yedeklemeler kullanılarak korunur. 
+
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

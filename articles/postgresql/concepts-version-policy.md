@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f92864cea4332157b0bf8b171a9d88b34f79a5ac
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: f325a43895e1e9d73b11c06662851d7654d31ddb
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422119"
+ms.locfileid: "94331830"
 ---
 # <a name="azure-database-for-postgresql-versioning-policy"></a>PostgreSQL için Azure veritabanı sürüm oluşturma ilkesi
 
@@ -50,12 +50,12 @@ Aşağıdaki tabloda PostgreSQL ana sürümleri için kullanımdan kaldırma ayr
 ## <a name="retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı 'nda, kullanımdan kaldırılan PostgreSQL altyapısı sürümleri desteklenmiyor
 
 Her bir PostgreSQL veritabanı sürümünün kullanımdan kaldırılması tarihinden sonra, kullanımdan kaldırılan sürümü çalıştırmaya devam ederseniz aşağıdaki kısıtlamalara göz önünde bulabilirsiniz:
-- Topluluk daha fazla hata düzeltmesi veya güvenlik düzeltmelerini serbest bırakmadığından, PostgreSQL için Azure, tüm hatalar veya güvenlik sorunları için kullanımdan kaldırılan veritabanı motoruna düzeltme eki uygulanmaz veya kullanımdan kaldırılan veritabanı altyapısı ile ilgili güvenlik önlemleri almaz. Sonuç olarak güvenlik açıklarına veya diğer sorunlarla karşılaşabilirsiniz. Ancak Azure, ana bilgisayar, işletim sistemi, kapsayıcılar ve hizmetle ilgili diğer tüm bileşenler için düzenli bakım ve düzeltme eki gerçekleştirmeye devam edecektir.
+- Topluluk başka hata düzeltmeleri veya güvenlik düzeltmelerinin serbest bırakılmamasına neden olarak, PostgreSQL için Azure veritabanı, herhangi bir hata veya güvenlik sorunu için kullanımdan kaldırılan veritabanı altyapısına düzeltme eki uygulanmaz veya kullanımdan kaldırılan veritabanı altyapısı ile ilgili güvenlik önlemleri almaz. Sonuç olarak güvenlik açıklarına veya diğer sorunlarla karşılaşabilirsiniz. Ancak Azure, ana bilgisayar, işletim sistemi, kapsayıcılar ve hizmetle ilgili diğer tüm bileşenler için düzenli bakım ve düzeltme eki gerçekleştirmeye devam edecektir.
 - Karşılaşabileceğiniz herhangi bir destek sorunu PostgreSQL veritabanıyla ilişkili olursa size destek sunamayacak olabilir. Bu gibi durumlarda, size herhangi bir destek sağlayabilmesi için veritabanınızı yükseltmeniz gerekir.
 - Kullanımdan kaldırılan sürüm için yeni veritabanı sunucuları oluşturabileceksiniz. Bununla birlikte, mevcut sunucularınız için zaman içinde kurtarmalar gerçekleştirebilir ve okuma çoğaltmaları oluşturabilirsiniz.
 - PostgreSQL için Azure veritabanı tarafından geliştirilen yeni hizmet özellikleri yalnızca desteklenen veritabanı sunucusu sürümleri için kullanılabilir olabilir.
 - Çalışma süresi SLA 'Ları yalnızca PostgreSQL için Azure veritabanı ile ilgili sorunlar için geçerlidir ve veritabanı altyapısından kaynaklanan hatalara neden olur.  
-- Devre dışı bırakılmış veritabanı sürümünde tanımlanan PostgreSQL veritabanı altyapısı güvenlik açığının neden olduğu hizmette ciddi bir tehdit nedeniyle, Azure hizmeti güvenli hale getirmek için veritabanı sunucunuzun işlem düğümünü durdurmayı tercih edebilir. Böyle bir durumda, sunucuyu çevrimiçi duruma getirmeden önce sunucuyu yükseltmeniz istenebilir.
+- Devre dışı bırakılmış veritabanı sürümünde tanımlanan PostgreSQL veritabanı altyapısı güvenlik açığından kaynaklanan, hizmette ciddi bir tehdit olması durumunda, Azure hizmeti güvenli hale getirmek için veritabanı sunucunuzu durdurmayı tercih edebilir. Böyle bir durumda, sunucuyu çevrimiçi duruma getirmeden önce sunucuyu yükseltmeniz istenir.
 
 ## <a name="postgresql-version-syntax"></a>PostgreSQL sürümü sözdizimi
 PostgreSQL sürüm 10 ' dan önce, [PostgreSQL sürüm oluşturma ilkesi](https://www.postgresql.org/support/versioning/) , _ana sürüm_ yükseltmesini birinci _veya_ ikinci sayıda artış olacak şekilde kabul ediyor. Örneğin, 9,5 9,6, _ana_ sürüm yükseltmesi olarak kabul edildi. Sürüm 10 itibariyle, yalnızca ilk sayıdaki değişiklik ana sürüm yükseltmesi olarak kabul edilir. Örneğin, 10,0 ile 10,1 arasında _küçük_ bir yayın yükseltmesi vardır. Sürüm 10 ' dan 11 ' e _büyük_ bir sürüm yükseltirsiniz.

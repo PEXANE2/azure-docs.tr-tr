@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 09/01/2020
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 3a195f9dd74353734ff65f0d5f210d861fa29a26
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6f16e4b1f9728ae8d9cb36ab442603083e83eb92
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632592"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331388"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Azure Data Factory sorunlarını giderme
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -522,79 +522,30 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
  
 ## <a name="hdinsight"></a>HDInsight
 
-### <a name="error-code-200"></a>Hata kodu: 200
-
-- **İleti** : `Unexpected error happened: '%error;'.`
-
-- **Neden** : bir iç hizmet sorunu var.
-
-- **Öneri** : daha fazla yardım için ADF desteğine başvurun.
-
-### <a name="error-code-201"></a>Hata kodu: 201
-
-- **İleti** : `JobType %jobType; is not found.`
-
-- **Neden** : ADF tarafından desteklenmeyen yeni bir iş türü var.
-
-- **Öneri** : daha fazla yardım için ADF destek ekibine başvurun.
-
-### <a name="error-code-202"></a>Hata kodu: 202
-
-- **İleti** : `Failed to create on demand HDI cluster. Cluster name or linked service name: '%clusterName;', error: '%message;'`
-
-- **Neden** : hata iletisi neyin yanlış olduğuna ilişkin ayrıntıları içerir.
-
-- **Öneri** : hata iletisinin ayrıntıları sorunu gidermenize yardımcı olmalıdır. Yeterli bilgi yoksa, daha fazla yardım için ADF desteği ile iletişime geçin.
-
-### <a name="error-code-203"></a>Hata kodu: 203
-
-- **İleti** : `Failed to delete on demand HDI cluster. Cluster name or linked service name: '%clusterName;', error: '%message;'`
-
-- **Neden** : hata iletisi neyin yanlış olduğuna ilişkin ayrıntıları içerir.
-
-- **Öneri** : hata iletisinin ayrıntıları sorunu gidermenize yardımcı olmalıdır. Yeterli bilgi yoksa, daha fazla yardım için ADF desteği ile iletişime geçin.
-
-### <a name="error-code-204"></a>Hata kodu: 204
-
-- **İleti** : `The resumption token is missing for runId '%runId;'.`
-
-- **Neden** : bir iç hizmet sorunu var.
-
-- **Öneri** : daha fazla yardım için ADF desteğine başvurun.
-
-### <a name="error-code-205"></a>Hata kodu: 205
-
-- **İleti** : `Failed to prepare cluster for LinkedService '%linkedServiceName;', the current resource status is '%status;'.`
-
-- **Neden** : HDI isteğe bağlı kümesi oluşturulurken bir hata oluştu.
-
-- **Öneri** : daha fazla yardım için ADF desteğine başvurun.
-
 ### <a name="error-code-206"></a>Hata kodu: 206
 
-- **İleti** : `The batch ID for Spark job is invalid. Please retry your job, and if the problem persists, contact the ADF support for further assistance.`
+- **İleti** : `The batch ID for Spark job is invalid. Please retry your job.`
 
 - **Neden** : Bu hataya neden olan hizmette bir iç sorun oluştu.
 
-- **Öneri** : Bu sorun geçici olabilir. İşinizi yeniden deneyin ve sorun devam ederse, daha fazla yardım için ADF desteğiyle görüşün.
+- **Öneri** : Bu sorun geçici olabilir. İşinizi bir süre sonra yeniden deneyin.
 
 ### <a name="error-code-207"></a>Hata kodu: 207
 
-- **İleti** : `Could not determine the region from the provided storage account. Please try using another primary storage account for the on demand HDI or contact ADF support team and provide the activity run ID.`
+- **İleti** : `Could not determine the region from the provided storage account. Please try using another primary storage account for the on demand HDI.`
 
 - **Neden** : birincil depolama hesabından bölge belirlemeye çalışırken bir iç hata oluştu.
 
-- **Öneri** : başka bir depolama alanı deneyin. Bu seçenek kabul edilebilir bir çözüm değilse, daha fazla yardım için ADF destek ekibine başvurun.
+- **Öneri** : başka bir depolama alanı deneyin. 
 
 ### <a name="error-code-208"></a>Hata kodu: 208
 
-- **İleti** : `Service Principal or the MSI authenticator are not instantiated. Please consider providing a Service Principal in the HDI on demand linked service which has permissions to create an HDInsight cluster in the provided subscription and try again. In case if this is not an acceptable solution, contact ADF support team for further assistance.`
+- **İleti** : `Service Principal or the MSI authenticator are not instantiated. Please consider providing a Service Principal in the HDI on demand linked service which has permissions to create an HDInsight cluster in the provided subscription and try again.`
 
 - **Neden** : hizmet sorumlusu okunmaya ÇALıŞıLıRKEN veya MSI kimlik doğrulamasının örneği oluşturulurken bir iç hata oluştu.
 
 - **Öneri** : sağlanan abonelikte HDInsight kümesi oluşturma ve yeniden deneme izinlerine sahip bir hizmet sorumlusu sağlamayı düşünün. [Manage kimliklerinin doğru şekilde ayarlandığını](../hdinsight/hdinsight-managed-identities.md)doğrulayın.
 
-   Bu seçenek kabul edilebilir bir çözüm değilse, daha fazla yardım için ADF destek ekibine başvurun.
 
 ### <a name="error-code-2300"></a>Hata kodu: 2300
 
@@ -612,7 +563,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
 - **Öneri** : sorun genel HDInsight bağlantısı ya da ağ bağlantısı olabilir. Önce HDInsight ambarı Kullanıcı arabiriminin herhangi bir tarayıcıdan kullanılabilir olduğunu doğrulayın. Ardından, kimlik bilgilerinizin hala geçerli olduğundan emin olun.
    
-   Şirket içinde barındırılan tümleşik çalışma zamanı (IR) kullanıyorsanız, bu adımı şirket içinde barındırılan IR 'nin yüklü olduğu VM veya makineden gerçekleştirin. Sonra Data Factory işi yeniden göndermeyi deneyin. Hala başarısız olduysa, destek için Data Factory ekibine başvurun.
+   Şirket içinde barındırılan tümleşik çalışma zamanı (IR) kullanıyorsanız, bu adımı şirket içinde barındırılan IR 'nin yüklü olduğu VM veya makineden gerçekleştirin. Sonra Data Factory işi yeniden göndermeyi deneyin.
 
    Daha fazla bilgi için, [ambarı Web Kullanıcı arabirimini](../hdinsight/hdinsight-hadoop-manage-ambari.md#ambari-web-ui)okuyun.
 
@@ -635,7 +586,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
     1. Active baş düğümünüz için, SSH kullanarak etkin baş düğümde bulunan bir ambarı sunucusu olarak bağlanın. 
     1. Etkin baş düğümü yeniden başlatın.
 
-       Daha fazla bilgi için Azure HDInsight sorun giderme belgelerine bakın. Örneğin:
+       Daha fazla bilgi için Azure HDInsight sorun giderme belgelerine bakın. Örnek:
 
        * [Ambari kullanıcı arabirimi 502 hatası](https://hdinsight.github.io/ambari/ambari-ui-502-error.html)
        * [Apache Spark Thrift Server için RpcTimeoutException](../hdinsight/spark/apache-spark-troubleshoot-rpctimeoutexception.md)
@@ -1032,7 +983,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
 1. Uygulamanız TLS/SSL sertifikaları kullanıyorsa, Fiddler sertifikasını cihazınıza ekleyin.
 
-   Git: **Araçlar**  >  **Fiddler seçenekler**  >  **https**  >  **eylemleri**  >  **kök sertifikayı masaüstüne dışarı aktarma** .
+   Git: **Araçlar**  >  **Fiddler seçenekler**  >  **https**  >  **eylemleri**  >  **kök sertifikayı masaüstüne dışarı aktarma**.
 
 1. **Dosya**  >  **yakalama trafiğine** giderek yakalamayı kapatın. Ya da **F12** tuşuna basın.
 

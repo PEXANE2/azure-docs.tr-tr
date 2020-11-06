@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: 2857989fb09555ecd808bfdba95bcf58e4444594
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 461fabd0dd9948e8967ac61919f77e3e23a981b9
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93304900"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331966"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>SYNAPSE bilgi merkezini araştırma
 
@@ -39,7 +39,7 @@ Herhangi bir yöntemi seçin ve **bilgi merkezini** açın.
 
 ## <a name="exploring-blob-storage-with-serverless-sql-pool"></a>Sunucusuz SQL havuzuyla blob depolamayı keşfetme
 
-1. **Bilgi Bankası merkezi** , **örnekleri hemen kullan** ' a tıklayın.
+1. **Bilgi merkezine** gidin, **örnekleri hemen kullan** ' a tıklayın.
 1. **SQL Ile Sorgu verisi** seçme 
 1. **Örnekleri hemen kullan** ' a tıklayın
 1. Yeni bir SQL betiği oluşturacak.
@@ -47,7 +47,7 @@ Herhangi bir yöntemi seçin ve **bilgi merkezini** açın.
 1. Çalıştır'a tıklayın. Seçtiğiniz metni çalıştıracaktır.
 
 ## <a name="loading-more-nyc-taxi-data"></a>Daha fazla NYC TAXI verisi yükleniyor
-1. **Bilgi Bankası merkezi** , **kullanılabilir örneklere gözatıp** ' ye tıklayın 
+1. **Bilgi merkezine** gidin, **kullanılabilir örneklere git 'e** tıklayın 
 1. Üstteki **SQL betikleri** sekmesini seçin
 1. **New York Taxicab veri kümesini yükle** ' yi seçin
 1. **Girişler** altında, **var olan bir havuzu seçin** öğesini seçin ve **SQLDB1** seçin
@@ -60,4 +60,4 @@ Herhangi bir yöntemi seçin ve **bilgi merkezini** açın.
 
 * [Azure SYNAPSE Analytics 'i kullanmaya başlama](get-started.md)
 * [Çalışma alanı oluşturma](quickstart-create-workspace.md)
-* [Sunucusuz SQL havuzu kullan](quickstart-sql-on-demand.md)
+* [Sunucusuz SQL havuzu kullanma](quickstart-sql-on-demand.md)

@@ -1,6 +1,6 @@
 ---
-title: Giden proxy Azure Load Balancer
-description: Azure Load Balancer giden internet bağlantısı için proxy olarak nasıl kullanılacağını açıklar
+title: Giden bağlantılar için SNAT
+description: Giden internet bağlantısı için SNAT gerçekleştirmek üzere Azure Load Balancer nasıl kullanıldığını açıklar
 services: load-balancer
 author: asudbring
 ms.service: load-balancer
@@ -8,28 +8,31 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 185bb47677e978a3098f39024995da6399f90658
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: b3924a563d8266cfa38f24106dbb84102031a182
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241778"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331881"
 ---
-# <a name="outbound-proxy-azure-load-balancer"></a>Giden proxy Azure Load Balancer
+# <a name="using-snat-for-outbound-connections"></a>Giden bağlantılar için SNAT kullanma
 
-Azure yük dengeleyici, giden internet bağlantısı için bir proxy olarak kullanılabilir. Yük dengeleyici, arka uç örnekleri için giden bağlantıyı sağlar. 
+Azure genel yük dengeleyicisinin ön uç IP 'Leri, arka uç örnekleri için internet 'e giden bağlantı sağlamak üzere kullanılabilir. Bu yapılandırma, **kaynak ağ adresi çevirisi 'ni (SNAT)** kullanır. SNAT, arka ucun IP adresini yük dengeleyicinizin genel IP adresine yeniden yazar. 
 
-Bu yapılandırma, **kaynak ağ adresi çevirisi 'ni (SNAT)** kullanır. SNAT, arka ucun IP adresini yük dengeleyicinizin genel IP adresine yeniden yazar. 
+SNAT, arka uç örneğinin **IP** 'yi aşağı olarak etkinleştirmesine izin vermez. Bu aşağı doğru, dış kaynakların arka uç örneklerine doğrudan bir adres olmasını önler. Arka uç örnekleri arasında bir IP adresi paylaşımı, statik genel IP 'lerin maliyetini azaltır ve IP 'nin bilinen genel IP 'lerden gelen trafiğe izin verme gibi senaryoları destekler. 
 
-SNAT, arka uç örneğinin **IP** 'yi aşağı olarak etkinleştirmesine izin vermez. Bu aşağı doğru, dış kaynakların arka uç örneklerine doğrudan bir adres olmasını önler. 
+>[!Note]
+> Belirli bir sanal ağdan kullanılacak tek bir IP kümesi gerektiren çok sayıda giden bağlantı veya kurumsal müşteri gerektiren uygulamalar için, [sanal ağ NAT](https://docs.microsoft.com/azure/virtual-network/nat-overview) önerilen çözümdür. Dinamik ayırma, basit yapılandırma sağlar ve her IP adresinden SNAT bağlantı noktalarının en verimli şekilde kullanılmasını >. Ayrıca, sanal ağdaki tüm kaynakların bir yük dengeleyiciye > paylaşılması gerekmeden bir IP adresleri kümesini paylaşmasına izin verir.
 
-Arka uç örnekleri arasında bir IP adresi paylaşımı, statik genel IP 'lerin maliyetini azaltır ve IP 'nin bilinen genel IP 'lerden gelen trafiğe izin verme gibi senaryoları destekler. 
+>[!Important]
+> Giden SNAT yapılandırılmamışsa bile, aynı bölgedeki Azure depolama hesapları da erişilebilir olmaya devam eder ve arka uç kaynakları hala Windows güncelleştirmeleri gibi Microsoft hizmetlerine erişime sahip olur.
 
-## <a name="sharing-ports-across-resources"></a><a name ="snat"></a> Kaynaklar arasında bağlantı noktalarını paylaşma
+>[!NOTE] 
+>Bu makalede yalnızca Azure Resource Manager dağıtımları ele alınmaktadır. Azure 'daki tüm klasik dağıtım senaryoları için [giden bağlantıları (klasik)](load-balancer-outbound-connections-classic.md) gözden geçirin.
 
-Bir yük dengeleyicinin arka uç kaynakları, örnek düzeyi genel IP (ıLPıP) adreslerine sahip değilse, genel yük dengeleyicinin ön uç IP 'si aracılığıyla giden bağlantı kurar.
+## <a name="sharing-frontend-ip-address-across-backend-resources"></a><a name ="snat"></a> Ön uç IP adresini arka uç kaynakları genelinde paylaşma
 
-Bağlantı noktaları, ayrı akışları korumak için kullanılan benzersiz tanımlayıcılar oluşturmak için kullanılır. Internet, bu ayrımı sağlamak için beş tanımlama grubu kullanır.
+Bir yük dengeleyicinin arka uç kaynakları, örnek düzeyi genel IP (ıLPıP) adreslerine sahip değilse, genel yük dengeleyicinin ön uç IP 'si aracılığıyla giden bağlantı kurar. Bağlantı noktaları, ayrı akışları korumak için kullanılan benzersiz tanımlayıcılar oluşturmak için kullanılır. Internet, bu ayrımı sağlamak için beş tanımlama grubu kullanır.
 
 Beş demet aşağıdakilerden oluşur:
 
@@ -38,17 +41,92 @@ Beş demet aşağıdakilerden oluşur:
 * Kaynak IP
 * Bu ayrımı sağlamak için kaynak bağlantı noktası ve protokol.
 
-Gelen bağlantılar için bir bağlantı noktası kullanılıyorsa, bu bağlantı noktasındaki gelen bağlantı istekleri için bir **dinleyici** olur ve giden bağlantılar için kullanılamaz. 
+Gelen bağlantılar için bir bağlantı noktası kullanılıyorsa, bu bağlantı noktasındaki gelen bağlantı istekleri için bir **dinleyici** olur ve giden bağlantılar için kullanılamaz. Giden bir bağlantı kurmak için, hedefe iletişim kurmak ve ayrı bir trafik akışının bakımını yapmak üzere bir bağlantı noktası sağlamak üzere **geçici bir bağlantı noktası** kullanılması gerekir. Bu kısa ömürlü bağlantı noktaları, SNAT 'yi gerçekleştirmek için kullanıldığında, **SNAT bağlantı noktaları** olarak adlandırılır 
 
-Giden bir bağlantı kurmak için, hedefe iletişim kurmak ve ayrı bir trafik akışının bakımını yapmak üzere bir bağlantı noktası sağlamak üzere **geçici bir bağlantı noktası** kullanılması gerekir. 
+Tanım olarak, her IP adresinde 65.535 bağlantı noktası bulunur. Her bağlantı noktası, TCP (Iletim Denetimi Protokolü) ve UDP (Kullanıcı Datagram Protokolü) için gelen veya giden bağlantılar için kullanılabilir. Bir yük dengeleyicisine ön uç IP olarak genel bir IP adresi eklendiğinde, Azure, SNAT bağlantı noktası olarak kullanılmak üzere 64.000 sağlar. 
 
-Her IP adresi 65.535 bağlantı noktasına sahiptir. İlk 1024 bağlantı noktaları, **sistem bağlantı noktaları** olarak ayrılmıştır. Her bağlantı noktası, TCP ve UDP için gelen veya giden bağlantılar için kullanılabilir. 
+>[!NOTE]
+> Yük Dengeleme veya gelen NAT kuralı için kullanılan her bağlantı noktası, bu 64.000 bağlantı noktalarından sekiz bağlantı noktası aralığı tüketir ve bu, SNAT için uygun bağlantı noktası sayısını azaltır. Bir Load-> Dengeleme veya NAT kuralı, diğer bir deyişle başka bir bağlantı noktası tüketir. 
 
-Azure, kalan bağlantı noktalarında, **kısa ömürlü bağlantı noktaları** olarak kullanılmak üzere 64.000 sağlar. Bir IP adresi, ön uç IP yapılandırması olarak eklendiğinde, bu kısa ömürlü bağlantı noktaları SNAT için kullanılabilir.
+[Giden kuralları](https://docs.microsoft.com/azure/load-balancer/outbound-rules) ve yük dengeleme kuralları aracılığıyla, bu SNAT bağlantı noktaları, giden bağlantılar için yük dengeleyicinin genel IP 'lerini paylaşmasını sağlamak üzere arka uç örneklerine dağıtılabilir.
 
-Giden kuralları aracılığıyla, bu SNAT bağlantı noktaları, giden bağlantılar için yük dengeleyicinin genel IP 'leri paylaşmasını sağlamak üzere arka uç örneklerine dağıtılabilir.
+Aşağıdaki [Senaryo 2](#scenario2) yapılandırıldığında, her arka uç örneği için ana bilgisayar, bir giden bağlantının parçası olan paketlerde SNAT gerçekleştirir. Bir arka uç örneğinden giden bir bağlantıda SNAT gerçekleştirirken, ana bilgisayar kaynak IP 'yi ön uç IP 'lerinden birine yeniden yazar. Benzersiz akışları korumak için, ana bilgisayar her bir giden paketin kaynak bağlantı noktasını arka uç örneği için ayrılan SNAT bağlantı noktalarından birine yeniden yazar.
 
-Her arka uç örneği için konaktaki ağ, bir giden bağlantının parçası olan paketlere SNAT 'yi kullanacaktır. Ana bilgisayar kaynak IP 'yi genel IP 'lerden birine yeniden yazar. Ana bilgisayar her giden paketin kaynak bağlantı noktasını SNAT bağlantı noktalarından birine yeniden yazar.
+## <a name="outbound-connection-behavior-for-different-scenarios"></a>Farklı senaryolar için giden bağlantı davranışı
+  * Ortak IP 'si olan sanal makine.
+  * Ortak IP olmadan sanal makine.
+  * Ortak IP olmadan ve standart yük dengeleyici olmadan sanal makine.
+        
+
+ ### <a name="scenario-1-virtual-machine-with-public-ip"></a><a name="scenario1"></a> Senaryo 1: ortak IP 'si olan sanal makine
+
+
+ | İçermektedir | Yöntem | IP protokolleri |
+ | ---------- | ------ | ------------ |
+ | Ortak yük dengeleyici veya tek başına | [SNAT (kaynak ağ adresi çevirisi)](#snat) </br> kullanılmıyor. | TCP (Iletim Denetim Protokolü) </br> UDP (Kullanıcı Datagram Protokolü) </br> ICMP (Internet Denetim Iletisi Protokolü) </br> ESP (Kapsüllenen Güvenlik Yükü) |
+
+
+ #### <a name="description"></a>Description
+
+
+ Azure, tüm giden akışlar için örneğin NIC 'in IP yapılandırmasına atanan genel IP 'yi kullanır. Örnekte, tüm kısa ömürlü bağlantı noktaları kullanılabilir. VM 'nin yük dengeli olup olmadığı önemi yoktur. Bu senaryo diğerlerine göre önceliklidir. 
+
+
+ Bir VM 'ye atanan genel IP, 1:1 ilişkidir (1: çok) ve durum bilgisiz 1:1 NAT olarak uygulanır.
+
+
+ ### <a name="scenario-2-virtual-machine-without-public-ip-and-behind-standard-public-load-balancer"></a><a name="scenario2"></a>Senaryo 2: ortak IP olmadan ve standart ortak Load Balancer arkasında sanal makine
+
+
+ | İçermektedir | Yöntem | IP protokolleri |
+ | ------------ | ------ | ------------ |
+ | Genel yük dengeleyici | [SNAT](#snat)için yük dengeleyici ön uç IP 'leri kullanımı.| TCP </br> UDP |
+
+
+ #### <a name="description"></a>Description
+
+
+ Yük dengeleyici kaynağı bir giden kuralla veya varsayılan SNAT 'yi sağlayan bir yük dengeleme kuralıyla yapılandırılır. Bu kural, arka uç havuzuyla genel IP ön ucu arasında bağlantı oluşturmak için kullanılır. 
+
+
+ Bu kural yapılandırmasını tamamlamazsanız, Senaryo 3 ' te açıklanmaktadır. 
+
+
+ Sistem durumu araştırmasının başarılı olması için dinleyici içeren bir kural gerekli değildir.
+
+
+ Bir VM bir giden akış oluşturduğunda, Azure Kaynak IP adresini ortak yük dengeleyici ön ucu genel IP adresine çevirir. Bu çeviri, [SNAT](#snat)aracılığıyla yapılır. 
+
+
+ Yük dengeleyici ön uç genel IP adresinin kısa ömürlü bağlantı noktaları, VM 'ler tarafından kaynaklı bireysel akışları ayırt etmek için kullanılır. SNAT, giden akışlar oluşturulduğunda, [önceden ayrılmış kısa ömürlü bağlantı noktalarını](#preallocatedports) dinamik olarak kullanır. 
+
+
+ Bu bağlamda, SNAT için kullanılan kısa ömürlü bağlantı noktaları SNAT bağlantı noktaları olarak adlandırılır. [Giden bir kuralın](https://docs.microsoft.com/azure/load-balancer/outbound-rules) açıkça yapılandırılması kesinlikle önerilir. Varsayılan SNAT 'yi bir yük dengeleme kuralı aracılığıyla kullanıyorsanız, SNAT bağlantı noktaları [varsayılan SNAT bağlantı noktaları ayırma tablosunda](#snatporttable)açıklandığı şekilde önceden ayrılır.
+
+
+ ### <a name="scenario-3-virtual-machine-without-public-ip-and-behind-basic-load-balancer"></a><a name="scenario3"></a>Senaryo 3: genel IP ve temel Load Balancer arka plan olmadan sanal makine
+
+
+ | İçermektedir | Yöntem | IP protokolleri |
+ | ------------ | ------ | ------------ |
+ |Yok </br> Temel yük dengeleyici | Örnek düzeyinde dinamik IP adresi ile [SNAT](#snat)| TCP </br> UDP | 
+
+ #### <a name="description"></a>Description
+
+
+ VM bir giden akış oluşturduğunda, Azure Kaynak IP adresini dinamik olarak ayrılmış bir ortak kaynak IP adresine dönüştürür. Bu genel IP adresi **yapılandırılamaz** ve ayrılamaz. Bu adres, aboneliğin genel IP kaynak sınırına göre sayılmaz. 
+
+
+ Genel IP adresi serbest bırakılır ve yeniden dağıtıyorsanız yeni bir genel IP istenir: 
+
+
+ * Sanal Makine
+ * Kullanılabilirlik kümesi
+ * Sanal makine ölçek kümesi 
+
+
+ Bir izin verilenler listesine IP eklemek için bu senaryoyu kullanmayın. Açık olarak giden davranışı bildirdiğiniz Senaryo 1 veya 2 ' i kullanın. [SNAT](#snat) bağlantı noktaları [varsayılan SNAT bağlantı noktaları ayırma tablosunda](#snatporttable)açıklandığı şekilde önceden ayrılır.
+
 
 ## <a name="exhausting-ports"></a><a name="scenarios"></a> Bağlantı noktaları tüketilme
 
@@ -72,7 +150,7 @@ UDP bağlantılarında, yük dengeleyici hedef bağlantı noktasına her ne kada
 
 Bağlantı noktası sınırsız sayıda bağlantı için yeniden kullanılır. Bağlantı noktası yalnızca hedef IP veya bağlantı noktası farklı olduğunda yeniden kullanılır.
 
-## <a name="port-allocation"></a><a name="preallocatedports"></a> Bağlantı noktası ayırma
+## <a name="default-port-allocation"></a><a name="preallocatedports"></a> Varsayılan bağlantı noktası ayırma
 
 Yük dengeleyicinizin ön uç IP 'si olarak atanan her genel IP 'nin, arka uç havuzu üyeleri için 64.000 SNAT bağlantı noktası verilir. Bağlantı noktaları, arka uç havuzu üyeleriyle paylaşılamaz. Bir adet SNAT bağlantı noktası aralığı, dönüş paketlerinin doğru şekilde yönlendirildiğinden emin olmak için yalnızca tek bir arka uç örneği tarafından kullanılabilir. 
 

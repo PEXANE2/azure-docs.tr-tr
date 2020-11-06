@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
-ms.openlocfilehash: e7635aad85352887646a1319b4d0bfbf64924bf9
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: a2838e40844b83d1e90789439ce286f2738e22c4
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042913"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331864"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Yeniden yönlendirme URI 'SI (yanıt URL 'SI) kısıtlamaları ve sınırlamaları
 
@@ -62,7 +62,9 @@ Her [RFC 8252 bölümü 8,3](https://tools.ietf.org/html/rfc8252#section-8.3) ve
 
 Geliştirme açısından, bu birkaç şey anlamına gelir:
 
-* Yalnızca bağlantı noktasının farklı olduğu birden çok yeniden yönlendirme URI 'sini kaydetme. Oturum açma sunucusu bir rastgele seçer ve bu yeniden yönlendirme URI 'siyle ilişkili davranışı kullanır (örneğin,-, `web` `native` -veya `spa` -Type yeniden yönlendirmesi).
+* Yalnızca bağlantı noktasının farklı olduğu birden çok yeniden yönlendirme URI 'sini kaydetme. Oturum açma sunucusu bir rastgele seçer ve bu yeniden yönlendirme URI 'siyle ilişkili davranışı kullanır (örneğin, a `web` -, `native` -veya `spa` -Type yeniden yönlendirmesi).
+
+    Aynı uygulama kaydında farklı kimlik doğrulama akışları kullanmak istediğinizde özellikle önemlidir, örneğin hem yetkilendirme kodu verme hem de dolaylı akış. Her yeniden yönlendirme URI 'siyle doğru yanıt davranışını ilişkilendirmek için, oturum açma sunucusu yeniden yönlendirme URI 'Leri arasında ayrım yapabilmelidir ve yalnızca bağlantı noktası farklı olduğunda bunu yapamaz.
 * Geliştirme sırasında farklı akışları test etmek için localhost 'a birden çok yeniden yönlendirme URI 'SI kaydetmeniz gerekiyorsa, bunları URI 'nin *yol* bileşenini kullanarak birbirinden ayırın. Örneğin, `http://127.0.0.1/MyWebApp` eşleşmez `http://127.0.0.1/MyNativeApp` .
 * IPv6 geri döngü adresi ( `[::1]` ) Şu anda desteklenmiyor.
 * Uygulamanızın, yanlış yapılandırılmış güvenlik duvarları veya yeniden adlandırılmış ağ arabirimleri tarafından kırılmasını engellemek için, `127.0.0.1` yeniden yönlendirme URI 'SINDEKI IP sabit geri döngü adresini yerine kullanın `localhost` .

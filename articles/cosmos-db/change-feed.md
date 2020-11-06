@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 6d0ae81177ca8488c410e40ca56642199694c08c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8c9007cf14b485c37b94e9f475e2ce890ea0ea2b
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93072654"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330810"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Azure Cosmos DB'deki değişiklik akışı
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB’de değişiklik akışı desteği, Azure Cosmos kapsayıcısında yapılan değişiklikleri dinleyerek çalışır. Ardından çıkış olarak, değiştirilen belgelerin değiştirilme zamanına göre sıralandığı bir belge listesi oluşturur. Değişiklikler kalıcı hale getirilir, zaman uyumsuz ve artırımlı olarak işlenebilir ve çıkış, paralel işleme için bir veya daha fazla tüketiciye dağıtılabilir.
+Azure Cosmos DB akış değişikliği, bir kapsayıcıdaki değişikliklerin meydana gelen kalıcı bir kaydıdır. Azure Cosmos DB’de değişiklik akışı desteği, Azure Cosmos kapsayıcısında yapılan değişiklikleri dinleyerek çalışır. Ardından çıkış olarak, değiştirilen belgelerin değiştirilme zamanına göre sıralandığı bir belge listesi oluşturur. Kalıcı değişiklikler zaman uyumsuz ve artımlı olarak işlenebilir ve çıkış paralel işleme için bir veya daha fazla tüketiciye dağıtılabilir.
 
 [Değişiklik akışı tasarım desenleri](change-feed-design-patterns.md)hakkında daha fazla bilgi edinin.
 
@@ -26,7 +26,7 @@ Azure Cosmos DB’de değişiklik akışı desteği, Azure Cosmos kapsayıcısı
 
 Bu özellik şu anda aşağıdaki Azure Cosmos DB API 'Leri ve istemci SDK 'Ları tarafından desteklenmektedir.
 
-| **İstemci sürücüleri** | **SQL APı 'SI** | **Cassandra için Azure Cosmos DB API 'SI** | **MongoDB için Azure Cosmos DB API’si** | **Gremlin API 'SI**|**Tablo API’si** |
+| **İstemci sürücüleri** | **SQL APı 'SI** | **Cassandra için Azure Cosmos DB API 'SI** | **MongoDB için Azure Cosmos DB API’si** | **Gremlin API**|**Tablo API’si** |
 | --- | --- | --- | --- | --- | --- | --- |
 | .NET | Yes | Yes | Yes | Yes | Hayır |
 |Java|Yes|Yes|Yes|Yes|Hayır|

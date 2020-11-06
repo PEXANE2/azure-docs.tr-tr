@@ -7,12 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 08/27/2020
 tags: connectors
-ms.openlocfilehash: 05ce944d195cf43f860fc2b39975a736a4454c05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0e8743d78c8eeafb5bdeb6ade783d5e75991f91
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226523"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330997"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Azure Logic Apps gelen HTTPS isteklerini alın ve bunlara yanıt verin
 
@@ -28,9 +28,9 @@ ms.locfileid: "89226523"
 
 Bu makalede, mantıksal uygulamanızın gelen çağrıları alabilmesi ve yanıtlayabilmesi için Istek tetikleyicisi ve yanıt eyleminin nasıl kullanılacağı gösterilmektedir.
 
-Mantıksal uygulamanıza yönelik olarak, [Aktarım Katmanı Güvenliği (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), daha önce GÜVENLI yuva KATMANı (SSL) veya [Azure Active Directory açık kimlik doğrulaması (Azure AD OAuth)](../active-directory/develop/index.yml)gibi bilinen bir gelen çağrılar için şifreleme, güvenlik ve yetkilendirme hakkında bilgi için bkz. [İstek tabanlı tetikleyicilere gelen çağrılar Için güvenli erişim ve veri erişimi](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
+Mantıksal uygulamanıza yönelik güvenlik, yetkilendirme ve şifreleme hakkında daha fazla bilgi için, [Aktarım Katmanı Güvenliği (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), daha önce GÜVENLI yuva KATMANı (SSL), [Azure Active Directory açma kimlik doğrulaması (Azure AD OAuth)](../active-directory/develop/index.yml), mantıksal uygulamanızı Azure API Management ile gösterme veya gelen çağrıları yapan IP adreslerini kısıtlama gibi) hakkında daha fazla bilgi için bkz. [İstek tabanlı tetikleyicilere gelen çağrılar Için güvenli erişim ve veri erişimi](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure hesabı ve aboneliği Aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolabilirsiniz](https://azure.microsoft.com/free/).
 
@@ -42,8 +42,7 @@ Mantıksal uygulamanıza yönelik olarak, [Aktarım Katmanı Güvenliği (TLS)](
 
 Bu yerleşik tetikleyici, HTTPS üzerinden *yalnızca* gelen istekleri işleyebilen el ile çağrılabilir bir uç nokta oluşturur. Bir çağıran bu uç noktaya bir istek gönderdiğinde, [istek tetikleyicisi](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) ateşlenir ve mantıksal uygulamayı çalıştırır. Bu tetikleyiciyi çağırma hakkında daha fazla bilgi için, bkz. [Azure Logic Apps ' de HTTPS uç noktalarına çağrı, tetikleyici veya iç içe geçme iş akışları](../logic-apps/logic-apps-http-endpoint.md).
 
-Mantıksal uygulamanız bir gelen isteği yalnızca [sınırlı bir süre](../logic-apps/logic-apps-limits-and-config.md#request-limits)için açık tutar. Mantıksal uygulamanız bir [yanıt eylemi](#add-response)içerdiğinde, mantıksal uygulamanız bu süre geçtikten sonra arayana geri yanıt göndermezse, mantıksal uygulamanız `504 GATEWAY TIMEOUT` çağırana bir durum döndürür. Mantıksal uygulamanız bir yanıt eylemi içermiyorsa, 
-> mantıksal uygulamanız `202 ACCEPTED` , çağrıyı yapana hemen bir durum döndürür.
+Mantıksal uygulamanız bir gelen isteği yalnızca [sınırlı bir süre](../logic-apps/logic-apps-limits-and-config.md#request-limits)için açık tutar. Mantıksal uygulamanız bir [yanıt eylemi](#add-response)içerdiğinde, mantıksal uygulamanız bu süre geçtikten sonra arayana geri yanıt göndermezse, mantıksal uygulamanız `504 GATEWAY TIMEOUT` çağırana bir durum döndürür. Mantıksal uygulamanız bir yanıt eylemi içermiyorsa, mantıksal uygulamanız hemen `202 ACCEPTED` çağırana bir durum döndürür.
 
 1. [Azure portalında](https://portal.azure.com) oturum açın. Boş bir mantıksal uygulama oluşturma.
 
@@ -57,8 +56,8 @@ Mantıksal uygulamanız bir gelen isteği yalnızca [sınırlı bir süre](../lo
 
    | Özellik adı | JSON Özellik adı | Gerekli | Açıklama |
    |---------------|--------------------|----------|-------------|
-   | **HTTP POST URL 'SI** | seçim | Evet | Mantıksal uygulamayı kaydettikten sonra oluşturulan ve mantıksal uygulamanızı çağırmak için kullanılan uç nokta URL 'SI |
-   | **İstek gövdesi JSON şeması** | `schema` | Hayır | Gelen istek gövdesindeki özellikleri ve değerleri açıklayan JSON şeması |
+   | **HTTP POST URL 'SI** | seçim | Yes | Mantıksal uygulamayı kaydettikten sonra oluşturulan ve mantıksal uygulamanızı çağırmak için kullanılan uç nokta URL 'SI |
+   | **İstek gövdesi JSON şeması** | `schema` | No | Gelen istek gövdesindeki özellikleri ve değerleri açıklayan JSON şeması |
    |||||
 
 1. **Istek GÖVDESI JSON şeması** kutusunda, isteğe bağlı olarak, gelen istekteki gövdeyi açıklayan bir JSON şeması girin, örneğin:
@@ -125,11 +124,11 @@ Mantıksal uygulamanız bir gelen isteği yalnızca [sınırlı bir süre](../lo
 
    Beklenen yük (veri) temelinde bir JSON şeması oluşturmak için, [JSONSchema.net](https://jsonschema.net)gibi bir araç kullanabilir veya aşağıdaki adımları izleyebilirsiniz:
 
-   1. Istek tetikleyicisinde, **şema oluşturmak için örnek yük kullan**' ı seçin.
+   1. Istek tetikleyicisinde, **şema oluşturmak için örnek yük kullan** ' ı seçin.
 
       !["Şema oluşturmak için örnek yük kullan" seçiliyken ekran görüntüsü](./media/connectors-native-reqres/generate-from-sample-payload.png)
 
-   1. Örnek yükü girin ve **bitti**' yi seçin.
+   1. Örnek yükü girin ve **bitti** ' yi seçin.
 
       ![Şema oluşturmak için örnek yük girin](./media/connectors-native-reqres/enter-payload.png)
 
@@ -154,9 +153,9 @@ Mantıksal uygulamanız bir gelen isteği yalnızca [sınırlı bir süre](../lo
 
 1. Gelen çağrının, belirtilen şemadan eşleşen bir istek gövdesine sahip olup olmadığını denetlemek için şu adımları izleyin:
 
-   1. Istek tetikleyicisinin başlık çubuğunda üç nokta düğmesini (**...**) seçin.
+   1. Istek tetikleyicisinin başlık çubuğunda üç nokta düğmesini ( **...** ) seçin.
 
-   1. Tetikleyicinin ayarlarında, **şema doğrulamasını**açın ve **bitti**' yi seçin.
+   1. Tetikleyicinin ayarlarında, **şema doğrulamasını** açın ve **bitti** ' yi seçin.
 
       Gelen çağrının istek gövdesi şemanıza eşleşmezse, tetikleyici bir `HTTP 400 Bad Request` hata döndürür.
 
@@ -164,8 +163,8 @@ Mantıksal uygulamanız bir gelen isteği yalnızca [sınırlı bir süre](../lo
 
    | Özellik adı | JSON Özellik adı | Gerekli | Açıklama |
    |---------------|--------------------|----------|-------------|
-   | **Yöntem** | `method` | Hayır | Gelen isteğin mantıksal uygulamayı çağırmak için kullanması gereken Yöntem |
-   | **Göreli yol** | `relativePath` | Hayır | Mantıksal uygulamanın uç nokta URL 'sinin kabul edebileceği parametrenin göreli yolu |
+   | **Yöntem** | `method` | No | Gelen isteğin mantıksal uygulamayı çağırmak için kullanması gereken Yöntem |
+   | **Göreli yol** | `relativePath` | No | Mantıksal uygulamanın uç nokta URL 'sinin kabul edebileceği parametrenin göreli yolu |
    |||||
 
    Bu örnek, **Yöntem** özelliğini ekler:
@@ -182,7 +181,7 @@ Mantıksal uygulamanız bir gelen isteği yalnızca [sınırlı bir süre](../lo
 
    Mantıksal uygulamanız gelen isteği yalnızca [sınırlı bir süre](../logic-apps/logic-apps-limits-and-config.md#request-limits)için açık tutar. Mantıksal uygulama iş akışınızın bir yanıt eylemi içerdiğini varsayarsak, mantıksal uygulama bu süre geçtikten sonra bir yanıt döndürmezse, mantıksal uygulamanız bir `504 GATEWAY TIMEOUT` arayana döndürür. Aksi takdirde, mantıksal uygulamanız bir yanıt eylemi içermiyorsa, mantıksal uygulamanız hemen `202 ACCEPTED` çağırana bir yanıt döndürür.
 
-1. İşiniz bittiğinde mantıksal uygulamanızı kaydedin. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
+1. İşiniz bittiğinde mantıksal uygulamanızı kaydedin. Tasarımcı araç çubuğunda **Kaydet** ' i seçin.
 
    Bu adım, mantıksal uygulamayı tetikleyen isteği göndermek için kullanılacak URL 'YI oluşturur. Bu URL 'yi kopyalamak için URL 'nin yanındaki Kopyala simgesini seçin.
 
@@ -194,6 +193,8 @@ Mantıksal uygulamanız bir gelen isteği yalnızca [sınırlı bir süre](../lo
 1. Mantıksal uygulamanızı tetiklemek için, oluşturulan URL 'ye bir HTTP GÖNDERISI gönderin.
 
    Örneğin, HTTP GÖNDERISINI göndermek için [Postman](https://www.getpostman.com/) gibi bir araç kullanabilirsiniz. Tetikleyicinin temel alınan JSON tanımı ve bu tetikleyiciyi çağırma hakkında daha fazla bilgi için, bu konulara bakın, [tetikleyici türü isteyin](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) ve [Azure Logic Apps içindeki HTTP uç noktalarına çağrı, tetikleyici veya iç Içe iş akışları çağırın](../logic-apps/logic-apps-http-endpoint.md).
+
+Mantıksal uygulamanıza yönelik güvenlik, yetkilendirme ve şifreleme hakkında daha fazla bilgi için, [Aktarım Katmanı Güvenliği (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), daha önce GÜVENLI yuva KATMANı (SSL), [Azure Active Directory açma kimlik doğrulaması (Azure AD OAuth)](../active-directory/develop/index.yml), mantıksal uygulamanızı Azure API Management ile gösterme veya gelen çağrıları yapan IP adreslerini kısıtlama gibi) hakkında daha fazla bilgi için bkz. [İstek tabanlı tetikleyicilere gelen çağrılar Için güvenli erişim ve veri erişimi](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
 ## <a name="trigger-outputs"></a>Tetikleme çıkışları
 
@@ -224,15 +225,15 @@ Gelen istekleri işlemek için Istek tetikleyicisi kullandığınızda, yanıtı
 >
 > Logic Apps, bu üst bilgilerle bir yanıt eylemi olan mantıksal uygulamaları kaydetmenizi durdurmasa da, Logic Apps bu üst bilgileri yoksayar.
 
-1. Mantıksal uygulama Tasarımcısı ' nda, yanıt eklemek istediğiniz adım altında **yeni adım**' ı seçin.
+1. Mantıksal uygulama Tasarımcısı ' nda, yanıt eklemek istediğiniz adım altında **yeni adım** ' ı seçin.
 
    Örneğin, daha önce Istek tetikleyicisi kullanımı:
 
    ![Yeni adım Ekle](./media/connectors-native-reqres/add-response.png)
 
-   Adımlar arasında bir eylem eklemek için, işaretçinizi Bu adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
+   Adımlar arasında bir eylem eklemek için, işaretçinizi Bu adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle** ' yi seçin.
 
-1. **Eylem seçin**altında, arama kutusuna `response` filtreniz olarak girin ve **Yanıt** eylemini seçin.
+1. **Eylem seçin** altında, arama kutusuna `response` filtreniz olarak girin ve **Yanıt** eylemini seçin.
 
    ![Yanıt eylemini seçin](./media/connectors-native-reqres/select-response-action.png)
 
@@ -246,7 +247,7 @@ Gelen istekleri işlemek için Istek tetikleyicisi kullandığınızda, yanıtı
 
    ![Yanıt eylemi ayrıntıları](./media/connectors-native-reqres/response-details.png)
 
-   Üst bilgileri JSON biçiminde görüntülemek için **metin görünümüne geç**' i seçin.
+   Üst bilgileri JSON biçiminde görüntülemek için **metin görünümüne geç** ' i seçin.
 
    ![Üstbilgiler-metin görünümüne geç](./media/connectors-native-reqres/switch-to-text-view.png)
 
@@ -254,14 +255,14 @@ Gelen istekleri işlemek için Istek tetikleyicisi kullandığınızda, yanıtı
 
    | Özellik adı | JSON Özellik adı | Gerekli | Açıklama |
    |---------------|--------------------|----------|-------------|
-   | **Durum kodu** | `statusCode` | Evet | Yanıtta döndürülecek durum kodu |
-   | **Üst bilgiler** | `headers` | Hayır | Yanıta eklenecek bir veya daha fazla üstbilgiyi açıklayan bir JSON nesnesi |
-   | **Gövde** | `body` | Hayır | Yanıt gövdesi |
+   | **Durum kodu** | `statusCode` | Yes | Yanıtta döndürülecek durum kodu |
+   | **Üst Bilgiler** | `headers` | No | Yanıta eklenecek bir veya daha fazla üstbilgiyi açıklayan bir JSON nesnesi |
+   | **Gövde** | `body` | No | Yanıt gövdesi |
    |||||
 
 1. Yanıt gövdesi için JSON şeması gibi ek özellikler belirtmek için **yeni parametre Ekle** listesini açın ve eklemek istediğiniz parametreleri seçin.
 
-1. İşiniz bittiğinde mantıksal uygulamanızı kaydedin. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
+1. İşiniz bittiğinde mantıksal uygulamanızı kaydedin. Tasarımcı araç çubuğunda **Kaydet** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

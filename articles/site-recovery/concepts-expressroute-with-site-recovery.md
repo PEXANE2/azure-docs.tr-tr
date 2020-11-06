@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: 12bec5af95e7da595d5af09fe9020992b1cf839d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 99fa8d4cf8f48d0fe72da36baef20c83add438c0
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368001"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330266"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure Site Recovery ile Azure ExpressRoute
 
@@ -31,7 +31,7 @@ ExpressRoute bağlantı hattının ilişkili birden çok yönlendirme etki alan�
 
 Azure Site Recovery, şirket içi [Hyper-V sanal makineleri](hyper-v-azure-architecture.md), [VMware sanal makineleri](vmware-azure-architecture.md)ve [fiziksel sunucular](physical-azure-architecture.md)için olağanüstü durum kurtarma ve Azure 'a geçiş sağlar. Tüm şirket içi Azure senaryolarında çoğaltma verileri bir Azure depolama hesabına gönderilir ve depolanır. Çoğaltma sırasında, herhangi bir sanal makine ücreti ödemezsiniz. Azure 'a yük devretme işlemi çalıştırdığınızda, Site Recovery otomatik olarak Azure IaaS sanal makineleri oluşturur.
 
-Site Recovery, verileri bir Azure depolama hesabına veya hedef Azure bölgesindeki çoğaltma yönetilen diskine ortak bir uç nokta üzerinden çoğaltır. Site Recovery çoğaltma trafiği için ExpressRoute 'u kullanmak üzere [Microsoft eşlemesini](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) veya var olan bir [genel eşlemeyi](../expressroute/about-public-peering.md) (yeni oluşturma işlemleri için kullanım dışı) kullanabilirsiniz. Microsoft eşleme, çoğaltma için önerilen yönlendirme etki alanıdır. Çoğaltmanın özel eşleme üzerinden desteklenmediğini unutmayın.
+Site Recovery, verileri bir Azure depolama hesabına veya hedef Azure bölgesindeki çoğaltma yönetilen diskine ortak bir uç nokta üzerinden çoğaltır. Site Recovery çoğaltma trafiği için ExpressRoute 'u kullanmak üzere [Microsoft eşlemesini](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) veya var olan bir [genel eşlemeyi](../expressroute/about-public-peering.md) (yeni oluşturma işlemleri için kullanım dışı) kullanabilirsiniz. Microsoft eşleme, çoğaltma için önerilen yönlendirme etki alanıdır. Çoğaltmanın yalnızca [kasa için özel bitiş noktaları etkinleştirildiğinde](hybrid-how-to-enable-replication-private-endpoints.md)özel eşleme üzerinden desteklendiğini unutmayın.
 
 Yapılandırma sunucusu için [ağ gereksinimlerinin](vmware-azure-configuration-server-requirements.md#network-requirements) de karşılandığından emin olun. Site Recovery çoğaltmanın düzenlenmesi için yapılandırma sunucusu için belirli URL 'lere bağlantı gerekir. ExpressRoute Bu bağlantı için kullanılamaz. 
 

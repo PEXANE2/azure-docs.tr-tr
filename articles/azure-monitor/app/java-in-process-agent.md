@@ -3,12 +3,12 @@ title: Azure Izleyici Application Insights Java
 description: Kod değişikliğine gerek duymadan herhangi bir ortamda çalışan Java uygulamaları için uygulama performansı izleme. Dağıtılmış izleme ve uygulama eşlemesi.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 07be6a4ff08700ee9407fbf39946b7c24abbc01a
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 31ee3c4a2dbf6f6832c0228e70aa079b5f028bc4
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377046"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331932"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java kodsuz kullanacaksınız uygulama izleme Azure izleyici Application Insights
 
@@ -48,7 +48,7 @@ Zaten bir Application Insights kaynağınız yoksa, [kaynak oluşturma kılavuzu
 Bir ortam değişkenini ayarlayarak aracıyı Application Insights kaynağına getirin:
 
 ```
-APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
+APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 ```
 
 Ya da adlı bir yapılandırma dosyası oluşturup, ile `applicationinsights.json` aynı dizine yerleştirilerek `applicationinsights-agent-3.0.0.jar` aşağıdaki içerikle birlikte:
@@ -56,7 +56,7 @@ Ya da adlı bir yapılandırma dosyası oluşturup, ile `applicationinsights.jso
 ```json
 {
   "instrumentationSettings": {
-    "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000"
+    "connectionString": "InstrumentationKey=..."
   }
 }
 ```
@@ -144,7 +144,7 @@ Aşağıdaki tablo, Java 3,0 Aracısı 'nı tamamlamak için etkinleştirebilece
 | **Özel olaylar**   |            |                     |  Yes    |
 | **Özel ölçümler**  |  Yes       |                     |  Yes    |
 | **Bağımlılıklar**    |            |                     |  Yes    |
-| **Özel Durumlar**      |            |  Yes                |  Yes    |
+| **Özel durumlar**      |            |  Yes                |  Yes    |
 | **Sayfa Görüntülemeleri**      |            |                     |  Yes    |
 | **İstekler**        |            |                     |  Yes    |
 | **İzlemeler**          |            |  Yes                |  Yes    |
@@ -173,7 +173,7 @@ private static final TelemetryClient telemetryClient = new TelemetryClient();
 
 ve bunu özel telemetri göndermek için kullanın.
 
-### <a name="events"></a>Olaylar
+### <a name="events"></a>Ekinlikler
 
   ```java
 telemetryClient.trackEvent("WinGame");
@@ -218,7 +218,7 @@ Ya da Java SDK 'Sı 2. x Application Insights de kullanabilirsiniz:
   telemetryClient.trackTrace(message, SeverityLevel.Warning, properties);
 ```
 
-### <a name="exceptions"></a>Özel Durumlar
+### <a name="exceptions"></a>Özel durumlar
 En sevdiğiniz günlük çatısı aracılığıyla özel özel durum telemetrisi gönderebilirsiniz.
 
 Ya da Java SDK 'Sı 2. x Application Insights de kullanabilirsiniz:

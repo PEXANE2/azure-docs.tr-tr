@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: a3899d9fbf04f9629885ec38f6b0b2bde728561b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 09fc29b54951d2f33acc725c734e01e3d3364ff0
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740157"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331615"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Geliştirdiğiniz mobil uygulamalarda çoklu oturum açma ve uygulama koruma ilkelerini destekleme
 
@@ -30,7 +30,7 @@ Bu makalede, SSO ve UYGULAMANıN neden önemli olduğunu ve bu özellikleri dest
 
 Ayrıca, uygulamanızda çoklu oturum açmayı etkinleştirmek, modern kimlik doğrulama ile gelen ve [parolasız oturum açma](../authentication/concept-authentication-passwordless.md)işlemleri gibi yeni kimlik doğrulama mekanizmalarının kilidini açar. Kullanıcı adları ve parolalar uygulamalara karşı en popüler saldırı vektörlerinden biridir ve SSO 'yu etkinleştirmek, koşullu erişimi veya ek güvenlik ekleyen veya daha güvenli kimlik doğrulama mekanizmalarına güvenen, daha az sayıda oturum açma izni vererek bu riski azaltmanıza olanak tanır. Son olarak, çoklu oturum açmayı etkinleştirmek [Çoklu oturum açma](v2-protocols-oidc.md#single-sign-out)olanağı da sunar. Bu, Paylaşılan cihazlarda kullanılacak iş uygulamaları gibi durumlarda faydalıdır.
 
-[Uygulama koruma ilkeleri (uygulama)](/mem/intune/apps/app-protection-policy) bir kuruluşun verilerinin güvende ve dahil olduğundan emin olun. Şirketler, şirketlerin bir uygulamadaki verilerini yönetmesine ve korumasına olanak tanır ve uygulamaya ve verilerine kimlerin erişebilecekleri denetime izin verir. Uygulama koruma ilkelerini uygulamak, uygulamanızın koşullu erişim ilkeleri tarafından korunan kaynaklara bağlanmasını ve diğer korumalı uygulamalardan ve bu uygulamalardan güvenli bir şekilde veri aktarmasını sağlar. Uygulama koruma ilkeleri tarafından kilitlenmemiş senaryolar, bir uygulamayı açmak, uygulamalar arasında veri paylaşımını denetlemek ve şirket uygulama verilerinin cihazdaki kişisel bir depolama konumuna kaydedilmesini önlemek için bir PIN gerektirir.
+[Uygulama koruma ilkeleri (uygulama)](/mem/intune/apps/app-protection-policy) bir kuruluşun verilerinin güvende ve dahil olduğundan emin olun. Şirketler, şirketlerin bir uygulamadaki verilerini yönetmesine ve korumasına olanak tanır ve uygulamaya ve verilerine kimlerin erişebilecekleri denetime izin verir. Uygulama koruma ilkelerini uygulamak, uygulamanızın koşullu erişim ilkeleri tarafından korunan kaynaklara bağlanmasını ve diğer korumalı uygulamalardan ve bu uygulamalardan güvenli bir şekilde veri aktarmasını sağlar. Uygulama koruma ilkeleri tarafından kilitlenmemiş senaryolar, bir uygulamayı açmak, uygulamalar arasında veri paylaşımını denetlemek ve şirket uygulama verilerinin kişisel depolama konumlarına kaydedilmesini önlemek için bir PIN gerektirir.
 
 ## <a name="implementing-single-sign-on"></a>Çoklu oturum açma uygulama
 

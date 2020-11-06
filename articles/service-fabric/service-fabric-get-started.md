@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: sfrev, devx-track-azurepowershell
-ms.openlocfilehash: f32bc444ba753f48955de4a4c16bde8dfb7a05fc
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 8593858580da1358dc84d9c25420fe2a95680251
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316642"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330232"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows üzerinde geliştirme ortamınızı hazırlama
 
@@ -23,7 +23,7 @@ ms.locfileid: "92316642"
 
 Windows geliştirme makinenizde [Azure Service Fabric uygulamaları][1] derlemek ve çalıştırmak için Service Fabric çalışma zamanını, SDK'yı ve araçları yükleyin. Ayrıca, SDK 'da bulunan [Windows PowerShell betiklerinin yürütülmesini de etkinleştirmeniz](#enable-powershell-script-execution) gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="supported-operating-system-versions"></a>Desteklenen işletim sistemi sürümleri
 
@@ -53,12 +53,6 @@ Service Fabric Araçları, Visual Studio 2017 ve 2019 ' deki Azure geliştirme i
 Ayrıca Web Platformu Yükleyicisini kullanarak Microsoft Azure Service Fabric SDK'sını da yüklemeniz gerekir.
 
 * [Microsoft Azure Service Fabric SDK'sını yükleyin][core-sdk]
-
-### <a name="to-use-visual-studio-2015-requires-visual-studio-2015-update-2-or-later"></a>Visual Studio 2015'i kullanmak için (Visual Studio 2015 Güncelleştirme 2 veya üzeri gerekir)
-
-Visual Studio 2015 için Service Fabric araçları Web Platformu Yükleyicisi kullanılarak SDK ile birlikte yüklenir:
-
-* [Microsoft Azure Service Fabric SDK ve araçlarını yükler][full-bundle-vs2015]
 
 ### <a name="sdk-installation-only"></a>Yalnızca SDK'yı yükleme
 

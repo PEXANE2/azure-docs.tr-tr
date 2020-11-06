@@ -6,19 +6,19 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2020
-ms.openlocfilehash: 52d7bc9ed4068d6a2e697cece7ca6cd0b12876c3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ddbfb08370b73ef8fa023816a7362f671b33d3a0
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085454"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331014"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB'de İstek birimleri
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB SQL, MongoDB, Cassandra, Gremlin ve Table gibi birçok API 'yi destekler. Her API 'nin kendi veritabanı işlemleri kümesi vardır. Bu işlemler, karmaşık sorgulardan okuma ve yazma işlemleri için basit noktadan aralığıdır. Her veritabanı işlemi, işlemin karmaşıklığına göre sistem kaynaklarını tüketir.
 
-Tüm veritabanı işlemlerinin maliyeti Azure Cosmos DB normalleştirilerek, *Istek birimleri* (veya ru) tarafından ifade edilir. , Azure Cosmos DB tarafından desteklenen veritabanı işlemlerini gerçekleştirmek için gereken CPU, ıOPS ve bellek gibi sistem kaynaklarını soyutlayan bir performans para birimi olarak RUs 'yi düşünebilirsiniz.
+Tüm veritabanı işlemlerinin maliyeti Azure Cosmos DB tarafından normalleştirilir ve İstek Birimi (veya kısa RU) ile ifade edilir. İstek birimi, Azure Cosmos DB tarafından desteklenen veritabanı işlemlerini gerçekleştirmek için gereken CPU, ıOPS ve bellek gibi sistem kaynaklarının soyut bir performans para birimidir.
 
 Bir nokta alma maliyeti (yani, KIMLIK ve bölüm anahtarı değeri ile tek bir öğe getirme) 1 KB 'lik öğe için 1 Istek birimi (veya 1 RU) olur. Diğer tüm veritabanı işlemlerine RU'lar kullanılarak benzer şekilde maliyet atanır. Azure Cosmos kapsayıcınızla etkileşim kurmak için hangi API'yi kullanırsanız kullanın maliyetler her zaman RU cinsinden ölçülür. Veritabanı işleminin bir yazma, işaret okuma veya sorgu olup olmadığı, maliyetler her zaman RUs cinsinden ölçülür.
 
@@ -75,7 +75,7 @@ Kullanmakta olduğunuz Azure Cosmos hesabının türü, kullanılan RUs 'in ücr
 
 Cosmos kapsayıcısı (veya veritabanı) üzerinde *' r '* ru 'yi sağlarsanız, Cosmos DB Cosmos hesabınızla ilişkili *her* bölgede *' r '* ru 'nin kullanılabilir olmasını sağlar. Belirli bir bölgeye seçmeli olarak RUs atayamazsınız. Cosmos kapsayıcısı (veya veritabanı) üzerinde sağlanan RUs, Cosmos hesabınızla ilişkili tüm bölgelerde sağlanır.
 
-Bir Cosmos kapsayıcısının *' R '* ru ile yapılandırıldığını ve Cosmos hesabıyla Ilişkilendirilmiş *' N '* bölgesi olduğunu varsayarsak, kapsayıcıda Global olarak bulunan toplam ru = *R* x *N* .
+Bir Cosmos kapsayıcısının *' R '* ru ile yapılandırıldığını ve Cosmos hesabıyla Ilişkilendirilmiş *' N '* bölgesi olduğunu varsayarsak, kapsayıcıda Global olarak bulunan toplam ru = *R* x *N*.
 
 [Tutarlılık modeli](consistency-levels.md) seçiminiz, aktarım hızını da etkiler. Daha gevşek tutarlılık düzeyi (örn., *oturum* , *tutarlı ön ek* ve *nihai* tutarlılık) için, daha esnek tutarlılık düzeylerine kıyasla (örn., *sınırlı stalet* veya *güçlü* tutarlılık) yaklaşık 2x okuma aktarım hızı edinebilirsiniz.
 

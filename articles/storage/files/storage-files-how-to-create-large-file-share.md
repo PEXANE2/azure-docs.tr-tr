@@ -8,16 +8,16 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 190aaae81d51434b57b5aaa6817a443dc541d26e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c611d65c30cceba5fd6ff409ef71b906cd8674c
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89069145"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330317"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Büyük dosya paylaşımlarını etkinleştirme ve oluşturma
 
-Depolama hesabınızda büyük dosya paylaşımlarını etkinleştirdiğinizde, dosya paylaşımlarınız 100 TiB 'ye kadar ölçeklenebilir. Mevcut dosya paylaşımlarınız için bu ölçeklendirmeyi mevcut depolama hesaplarınızda etkinleştirebilirsiniz.
+Depolama hesabınızda büyük dosya paylaşımlarını etkinleştirdiğinizde, dosya paylaşımlarınız 100 TiB 'ye kadar ölçeklenebilir ve ayrıca standart paylaşımlar için ıOPS ve aktarım hızı sınırlarını de artırır. Bu ölçeklendirmeyi, mevcut dosya paylaşımlarınız için mevcut depolama hesaplarınızda da etkinleştirebilirsiniz. Ayrıntılar için bkz. [dosya paylaşma ve dosya ölçeği hedefleri](storage-files-scale-targets.md#azure-files-scale-targets) . 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -36,17 +36,17 @@ Hesapta büyük dosya paylaşımlarının etkinleştirilmesi geri alınamaz bir 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Azure portal, **tüm hizmetler**' i seçin. 
-1. Kaynak listesinde **depolama hesapları**' nı girin. Siz yazarken, liste, girişinizi temel alarak filtreler. **Depolama hesapları**' nı seçin.
-1. Görüntülenen **depolama hesapları** penceresinde **Ekle**' yi seçin.
+1. Azure portal, **tüm hizmetler** ' i seçin. 
+1. Kaynak listesinde **depolama hesapları** ' nı girin. Siz yazarken, liste, girişinizi temel alarak filtreler. **Depolama hesapları** ' nı seçin.
+1. Görüntülenen **depolama hesapları** penceresinde **Ekle** ' yi seçin.
 1. Depolama hesabını oluşturmak için kullanacağınız aboneliği seçin.
-1. **Kaynak grubu** alanı altında **Yeni oluştur**’u seçin. Yeni kaynak grubunuz için bir ad girin.
+1. **Kaynak grubu** alanı altında **Yeni oluştur** ’u seçin. Yeni kaynak grubunuz için bir ad girin.
 
     ![Portalda kaynak grubu oluşturmayı gösteren ekran görüntüsü](media/storage-files-how-to-create-large-file-share/create-large-file-share.png)
 
 1. Ardından, depolama hesabınız için bir ad girin. AD Azure genelinde benzersiz olmalıdır. Ad ayrıca 3 ile 24 karakter uzunluğunda olmalı ve yalnızca rakamlardan ve küçük harflerden oluşabilir.
 1. Depolama hesabınız için bir konum seçin.
-1. Çoğaltmayı **yerel olarak yedekli depolama** ya da bölgesel olarak **yedekli depolama**olarak ayarlayın.
+1. Çoğaltmayı **yerel olarak yedekli depolama** ya da bölgesel olarak **yedekli depolama** olarak ayarlayın.
 1. Bu alanları varsayılan değerlerinde bırakın:
 
    |Alan  |Değer  |
@@ -56,12 +56,12 @@ Hesapta büyük dosya paylaşımlarının etkinleştirilmesi geri alınamaz bir 
    |Hesap türü     |StorageV2 (genel amaçlı v2)         |
    |Erişim katmanı     |Sık Erişimli         |
 
-1. **Gelişmiş**' i seçin ve ardından **büyük dosya paylaşımlarının**sağ tarafındaki **etkin** seçenek düğmesini seçin.
-1. Depolama hesabı ayarlarınızı gözden geçirmek ve hesabı oluşturmak için **Gözden Geçir + Oluştur**’u seçin.
+1. **Gelişmiş** ' i seçin ve ardından **büyük dosya paylaşımlarının** sağ tarafındaki **etkin** seçenek düğmesini seçin.
+1. Depolama hesabı ayarlarınızı gözden geçirmek ve hesabı oluşturmak için **Gözden Geçir + Oluştur** ’u seçin.
 
     ![Azure portal yeni bir depolama hesabında "etkin" seçenek düğmesi ile ekran görüntüsü](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
 
-1. **Oluştur**’u seçin.
+1. **Oluştur** ’u seçin.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -93,9 +93,9 @@ Ayrıca, mevcut hesaplarınızda büyük dosya paylaşımlarını etkinleştireb
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. [Azure Portal](https://portal.azure.com)açın ve büyük dosya paylaşımlarını etkinleştirmek istediğiniz depolama hesabına gidin.
-1. Depolama hesabını açın ve **yapılandırma**' yı seçin.
-1. **Büyük dosya paylaşımlarında** **etkin** ' i seçin ve ardından **Kaydet**' i seçin.
-1. **Genel bakış** ' ı ve **Yenile**' yi seçin.
+1. Depolama hesabını açın ve **yapılandırma** ' yı seçin.
+1. **Büyük dosya paylaşımlarında** **etkin** ' i seçin ve ardından **Kaydet** ' i seçin.
+1. **Genel bakış** ' ı ve **Yenile** ' yi seçin.
 
 ![Azure portal var olan bir depolama hesabında etkin seçenek düğmesini seçme](media/storage-files-how-to-create-large-file-share/enable-large-file-shares-on-existing.png)
 
@@ -131,9 +131,9 @@ Depolama hesabınızda büyük dosya paylaşımlarını etkinleştirdikten sonra
 
 Büyük bir dosya paylaşımının oluşturulması, standart bir dosya paylaşımının oluşturulmasıyla neredeyse aynıdır. Temel fark, 100 TiB 'ye kadar bir kota ayarlayabilmeniz gerektiğidir.
 
-1. Depolama hesabınızdan **dosya paylaşımları**' nı seçin.
-1. **+ Dosya paylaşımı**'nı seçin.
-1. Dosya paylaşımınız için bir ad girin. İstediğiniz kota boyutunu 100 TiB 'ye kadar de ayarlayabilirsiniz. Ardından **Oluştur**’u seçin. 
+1. Depolama hesabınızdan **dosya paylaşımları** ' nı seçin.
+1. **+ Dosya paylaşımı** 'nı seçin.
+1. Dosya paylaşımınız için bir ad girin. İstediğiniz kota boyutunu 100 TiB 'ye kadar de ayarlayabilirsiniz. Ardından **Oluştur** ’u seçin. 
 
 ![Ad ve kota kutularını gösteren Azure portal Kullanıcı arabirimi](media/storage-files-how-to-create-large-file-share/large-file-shares-create-share.png)
 
@@ -165,9 +165,9 @@ Depolama hesabınızda büyük dosya paylaşımlarını etkinleştirdikten sonra
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Depolama hesabınızdan **dosya paylaşımları**' nı seçin.
-1. Dosya paylaşımınıza sağ tıklayıp **Kota**' i seçin.
-1. İstediğiniz yeni boyutu girip **Tamam**' ı seçin.
+1. Depolama hesabınızdan **dosya paylaşımları** ' nı seçin.
+1. Dosya paylaşımınıza sağ tıklayıp **Kota** ' i seçin.
+1. İstediğiniz yeni boyutu girip **Tamam** ' ı seçin.
 
 ![Mevcut dosya paylaşımlarının kotasına sahip Azure portal Kullanıcı arabirimi](media/storage-files-how-to-create-large-file-share/update-large-file-share-quota.png)
 

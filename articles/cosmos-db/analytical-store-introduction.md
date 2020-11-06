@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: d0727f512ab24342b493ba2563262a9253d95d8c
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 60326b0ba06e1642e2831814dd931c69f6a04f3b
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339985"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330912"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Azure Cosmos DB analitik depo (Önizleme) nedir?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -19,7 +19,7 @@ ms.locfileid: "93339985"
 > [!IMPORTANT]
 > Analitik depolama Azure Cosmos DB Şu anda önizleme aşamasındadır. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Analitik depo Azure Cosmos DB, işlemsel iş yüklerinize herhangi bir etkisi olmadan, Azure Cosmos DB işletimsel verilere karşı büyük ölçekli analizler sağlamak için tam olarak yalıtılmış bir sütun deposudur.  
+Analitik depo Azure Cosmos DB, işlemsel iş yüklerinize herhangi bir etkisi olmadan, Azure Cosmos DB işletimsel verilere karşı büyük ölçekli analizler sağlamak için tam olarak yalıtılmış bir sütun deposudur. Azure Cosmos DB işlemsel depolama şeması belirsiz ve şema veya dizin yönetimiyle uğraşmak zorunda kalmadan işlem uygulamalarınızda yineleme yapmanızı sağlar. Bunun aksine, analitik depolamanın, analitik sorgu performansını iyileştirmek için şema Azure Cosmos DB. Bu makalede analitik depolama hakkında ayrıntılı bilgi açıklanmaktadır.
 
 ## <a name="challenges-with-large-scale-analytics-on-operational-data"></a>İşletimsel verilerde büyük ölçekli analiz sorunları
 

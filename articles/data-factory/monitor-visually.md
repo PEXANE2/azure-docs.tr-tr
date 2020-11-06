@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 48373c9ffc9146b6e62b62fb7d7fe10d571ce27f
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: ecb066c7269217af3f8cc84e0f59ab29b4b39a9e
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638117"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331621"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Azure Data Factory’yi görsel olarak izleme
 
@@ -23,17 +23,21 @@ ms.locfileid: "92638117"
 
 Azure Data Factory bir işlem hattı oluşturup yayımladıktan sonra, bir tetikleyici ile ilişkilendirebilir veya bir geçici çalıştırmayı el ile başlatabilirsiniz. Azure Data Factory kullanıcı deneyiminde tüm işlem hattı çalıştırmalarının yerel olarak izlenmesini sağlayabilirsiniz. İzleme deneyimini açmak için [Azure Portal](https://portal.azure.com/)Veri Fabrikası dikey penceresinde **izleyici & Yönet** kutucuğunu seçin. Zaten ADF UX kullanıyorsanız sol kenar çubuğundaki **izleyici** simgesine tıklayın.
 
-Tüm Data Factory çalıştırmaları tarayıcının yerel saat diliminde görüntülenir. Saat dilimini değiştirirseniz, tüm tarih/saat alanları seçtiğiniz bir öğesine yastur.
+Varsayılan olarak, tüm Data Factory çalıştırmaları tarayıcının yerel saat diliminde görüntülenir. Saat dilimini değiştirirseniz, tüm tarih/saat alanları seçtiğiniz bir öğesine yastur.
 
 ## <a name="monitor-pipeline-runs"></a>İşlem hattı çalıştırmalarını izleme
 
-Varsayılan izleme görünümü, seçilen dönemdeki işlem hattı çalıştırmaları listesidir. Aşağıdaki sütunlar görüntülenir:
+Varsayılan izleme görünümü, seçilen dönemde tetiklenen işlem hattı çalıştırmaları listesidir. Zaman aralığını değiştirebilir ve durum, işlem hattı adı veya ek açıklamasına göre filtreleyebilirsiniz. Yeniden çalıştırma ve tüketim raporu gibi çalıştırmaya özgü eylemleri almak için belirli işlem hattı çalıştırmasının üzerine gelin.
+
+![İzleme işlem hattı çalıştırmaları için liste görünümü](media/monitor-visually/pipeline-runs.png)
+
+İşlem hattı Çalıştırma Kılavuzu şu sütunları içerir:
 
 | **Sütun adı** | **Açıklama** |
 | --- | --- |
 | İşlem hattı adı | İşlem hattının adı |
-| Eylemler | Etkinlik ayrıntılarını görüntülemenizi, iptal etmenizi veya işlem hattını yeniden çalıştırmayı sağlayan simgeler |
 | Çalıştırma başlangıç | İşlem hattı çalışmasının başlangıç tarihi ve saati (AA/GG/YYYY, ss: DD: SS) |
+| Çalıştırma bitişi | İşlem hattı çalışmasının bitiş tarihi ve saati (AA/GG/YYYY, ss: DD: SS) |
 | Süre | Çalıştırma süresi (SS: DD: SS) |
 | Tetikleyen | İşlem hattını Başlatan tetikleyicinin adı |
 | Durum | **Başarısız** , **başarılı** , **devam ediyor** , **iptal edildi** veya **sıraya alındı** |
@@ -42,15 +46,23 @@ Varsayılan izleme görünümü, seçilen dönemdeki işlem hattı çalıştırm
 | Hata | İşlem hattı başarısız olursa, çalıştırma hatası |
 | Çalıştırma kimliği | İşlem hattı çalıştırmasının KIMLIĞI |
 
-![İzleme işlem hattı çalıştırmaları için liste görünümü](media/monitor-visually/pipeline-runs.png)
-
 İşlem hattı ve etkinlik çalıştırmaları listesini yenilemek için **Yenile** düğmesini el ile seçmeniz gerekir. Oto yenileme şu anda desteklenmiyor.
 
 ![Yenile düğmesi](media/monitor-visually/refresh.png)
 
+Hata ayıklama çalıştırmasının sonuçlarını görüntülemek için **Hata Ayıkla** sekmesini seçin.
+
+![Etkin hata ayıklama çalıştırmalarını görüntüle simgesini seçin](media/iterative-development-debugging/view-debug-runs.png)
+
 ## <a name="monitor-activity-runs"></a>Etkinlik çalıştırmalarını izleme
 
-Her Işlem hattı çalıştırması için etkinlik çalıştırmalarını görüntülemek için **Eylemler** sütununun altındaki **etkinlik çalıştırmalarını görüntüle** simgesini seçin. Liste görünümü her bir işlem hattı çalıştırmasına karşılık gelen etkinlik çalıştırmalarını gösterir.
+Belirli bir işlem hattı çalıştırmasının ayrı etkinlik çalıştırmalarının ayrıntılı bir görünümünü almak için işlem hattı adına tıklayın.
+
+![Etkinlik çalıştırmalarını görüntüleme](media/monitor-visually/view-activity-runs.png)
+
+Liste görünümü her bir işlem hattı çalıştırmasına karşılık gelen etkinlik çalıştırmalarını gösterir. JSON girişi, JSON çıktısı ve ayrıntılı etkinliğe özgü izleme deneyimleri gibi çalıştırmaya özgü bilgileri almak için belirli etkinlik çalıştırmasının üzerine gelin.
+
+![İzleme etkinliği çalıştırmaları için liste görünümü](media/monitor-visually/activity-runs.png)
 
 | **Sütun adı** | **Açıklama** |
 | --- | --- |
@@ -65,56 +77,36 @@ Her Işlem hattı çalıştırması için etkinlik çalıştırmalarını görü
 | Hata | Etkinlik başarısız olursa, çalıştırma hatası |
 | Çalıştırma kimliği | Etkinlik çalıştırmasının KIMLIĞI |
 
-![İzleme etkinliği çalıştırmaları için liste görünümü](media/monitor-visually/activity-runs.png)
+Etkinlik başarısız olursa, hata sütunundaki simgesine tıklayarak ayrıntılı hata iletisini görebilirsiniz. 
+
+![İzleme etkinliği çalıştırmaları için liste görünümü](media/monitor-visually/activity-run-error.png)
 
 ### <a name="promote-user-properties-to-monitor"></a>Kullanıcı özelliklerini izlemeye yükselt
 
-Herhangi bir işlem hattı etkinlik özelliğini Kullanıcı özelliği olarak yükselterek izlediğiniz bir varlık haline gelir. Örneğin, işlem hattınızdaki kopyalama etkinliğinin **kaynak** ve **hedef** özelliklerini Kullanıcı özellikleri olarak yükseltebilirsiniz. Bir kopyalama etkinliğinin **kaynak** ve **hedef** Kullanıcı özelliklerini oluşturmak için **Otomatik oluştur** ' u seçin.
-
-![Kullanıcı Özellikleri oluştur](media/monitor-visually/monitor-user-properties-image1.png)
+Herhangi bir işlem hattı etkinlik özelliğini Kullanıcı özelliği olarak yükselterek izlediğiniz bir varlık haline gelir. Örneğin, işlem hattınızdaki kopyalama etkinliğinin **kaynak** ve **hedef** özelliklerini Kullanıcı özellikleri olarak yükseltebilirsiniz.
 
 > [!NOTE]
 > Yalnızca Kullanıcı özellikleri olarak en fazla beş ardışık düzen etkinliği özelliği yükseltebilirsiniz.
 
-Kullanıcı özelliklerini oluşturduktan sonra bunları izleme listesi görünümlerinde izleyebilirsiniz. Kopyalama etkinliğinin kaynağı bir tablo adı ise, kaynak tablo adını etkinlik çalıştırmaları için liste görünümünde bir sütun olarak izleyebilirsiniz.
+![Kullanıcı Özellikleri oluştur](media/monitor-visually/promote-user-properties.png)
 
-![Kullanıcı özellikleri olmadan etkinlik çalıştırmaları listesi](media/monitor-visually/monitor-user-properties-image2.png)
+Kullanıcı özelliklerini oluşturduktan sonra bunları izleme listesi görünümlerinde izleyebilirsiniz.
 
-![Etkinlik çalıştırmaları listesine kullanıcı özellikleri için sütun ekleme](media/monitor-visually/monitor-user-properties-image3.png)
+![Etkinlik çalıştırmaları listesine kullanıcı özellikleri için sütun ekleme](media/monitor-visually/choose-user-properties.png)
 
-![Kullanıcı özellikleri için sütunları olan etkinlik çalıştırmaları listesi](media/monitor-visually/monitor-user-properties-image4.png)
+ Kopyalama etkinliğinin kaynağı bir tablo adı ise, kaynak tablo adını etkinlik çalıştırmaları için liste görünümünde bir sütun olarak izleyebilirsiniz.
 
-## <a name="configure-the-list-view"></a>Liste görünümünü yapılandırma
+![Kullanıcı özellikleri için sütunları olan etkinlik çalıştırmaları listesi](media/monitor-visually/view-user-properties.png)
 
-### <a name="order-and-filter"></a>Sırala ve filtrele
+## <a name="rerun-pipelines-and-activities"></a>İşlem hatlarını ve etkinlikleri yeniden çalıştır
 
-İşlem hattının çalışmasının, çalışma başlangıç zamanına göre azalan veya artan şekilde olacağını değiştirin. Aşağıdaki sütunları kullanarak filtre işlem hattı çalıştırmaları:
+Daha önce başlangıçtan çalıştırılan bir işlem hattını yeniden çalıştırmak için, belirli işlem hattı çalıştırmasının üzerine gelin ve **yeniden çalıştır** ' ı seçin. Birden çok işlem hattı seçerseniz, tümünü çalıştırmak için **yeniden** Çalıştır düğmesini kullanabilirsiniz.
 
-| **Sütun adı** | **Açıklama** |
-| --- | --- |
-| İşlem hattı adı | İşlem hattının adına göre filtreleyin. |
-| Çalıştırma başlangıç |  Gösterilecek işlem hattı çalıştırmalarının zaman aralığını belirleme. Seçenekler, **son 24 saat** , **son hafta** ve **son 30 gün** için hızlı filtreler içerir veya özel bir tarih ve saat seçer. |
-| Çalışma durumu | **Şu** durum ile filtre çalıştırmaları: **başarılı** , başarısız, **sıraya alınmış** , **iptal edildi** veya **devam ediyor** . |
-| Ek Açıklamalar | Her bir ardışık düzene uygulanan etiketlere göre filtrele |
-| Çalıştırmalar | İşlem hatlarını yeniden yönlendirme görmek isteyip istemediğinizi filtreleyin |
+![İşlem hattını yeniden çalıştırma](media/monitor-visually/rerun-pipeline.png)
 
-![Filtreleme seçenekleri](media/monitor-visually/filter.png)
+Belirli bir noktadan başlayarak yeniden çalıştırmak istiyorsanız, bunu etkinlik çalıştırmaları görünümünden yapabilirsiniz. Başlamak istediğiniz etkinliği seçin ve **etkinlikten yeniden çalıştır** ' ı seçin. 
 
-### <a name="add-or-remove-columns"></a>Sütun ekleme veya kaldırma
-Liste görünümü başlığına sağ tıklayın ve liste görünümünde görünmesini istediğiniz sütunları seçin.
-
-![Sütun seçenekleri](media/monitor-visually/columns.png)
-
-### <a name="adjust-column-widths"></a>Sütun genişliklerini ayarla
-Sütun üst bilgisinin üzerine gelerek liste görünümündeki sütun genişliklerini artırın ve azaltın.
-
-## <a name="rerun-activities-inside-a-pipeline"></a>Etkinlikleri bir işlem hattı içinde yeniden çalıştırma
-
-Etkinlikleri bir işlem hattı içinde yeniden çalıştırabilirsiniz. **Etkinlik çalıştırmalarını görüntüle** ' yi seçin ve ardından işlem hattınızda etkinlik hattınızı yeniden çalıştırmak istediğiniz noktayı seçin.
-
-![Etkinlik çalıştırmalarını görüntüleme](media/monitor-visually/rerun-activities-image1.png)
-
-![Etkinlik çalıştırması seçin](media/monitor-visually/rerun-activities-image2.png)
+![Etkinlik çalıştırmasını yeniden çalıştırma](media/monitor-visually/rerun-activity.png)
 
 ### <a name="rerun-from-failed-activity"></a>Başarısız etkinlikten yeniden çalıştır
 
@@ -126,11 +118,11 @@ Bir etkinlik başarısız olursa, zaman aşımına uğrar veya iptal edilirse, *
 
 Liste görünümündeki tüm işlem hattı çalıştırmaları için yeniden çalıştırma geçmişini görüntüleyebilirsiniz.
 
-![Geçmişi görüntüleme](media/monitor-visually/rerun-history-image1.png)
+![Geçmişi görüntüleme](media/monitor-visually/rerun-history-1.png)
 
 Ayrıca, belirli bir işlem hattı çalıştırması için yeniden çalıştırma geçmişini görüntüleyebilirsiniz.
 
-![İşlem hattı çalıştırmasının geçmişini görüntüleme](media/monitor-visually/rerun-history-image2.png)
+![İşlem hattı çalıştırmasının geçmişini görüntüleme](media/monitor-visually/view-rerun-history.png)
 
 ## <a name="monitor-consumption"></a>Tüketimi izleme
 
@@ -149,22 +141,13 @@ Simgeye tıkladığınızda, bu işlem hattı çalıştırması tarafından kull
 
 ## <a name="gantt-views"></a>Gantt görünümleri
 
-Ardışık düzenleri ve etkinlik çalıştırmalarını hızlıca görselleştirmek için Gantt görünümlerini kullanın.
+Bir Gantt grafiği, çalışma geçmişini bir zaman aralığı üzerinde görmenizi sağlayan bir görünümdedir. Bir Gantt görünümüne geçiş yaparak, tüm işlem hattı çalıştırmalarını, çalıştırmanın ne kadar süreyle gerçekleşdüğüne bağlı olarak görünen ada göre gruplanmış olarak görürsünüz. Ayrıca, işlem hattınızda oluşturduğunuz ek açıklamaların/etiketlerin yanı sıra gruplandırabilirsiniz. Gantt görünümü etkinlik çalıştırma düzeyinde de kullanılabilir.
 
-![Gantt grafiğinin örneği](media/monitor-visually/gantt1.png)
-
-İşlem hatlarında oluşturduğunuz ek açıklamaların/etiketlerin başına, ardışık düzen veya grup için Gantt görünümüne bakabilirsiniz.
-
-![Gantt grafiği ek açıklamaları](media/monitor-visually/gantt2.png)
+![Gantt grafiğinin örneği](media/monitor-visually/select-gantt.png)
 
 Çubuğun uzunluğu, işlem hattının süresini bilgilendirir. Daha fazla ayrıntı görmek için çubuğu da seçebilirsiniz.
 
-![Gantt grafiği süresi](media/monitor-visually/gantt3.png)
-
-## <a name="guided-tours"></a>Kılavuzlu Turlar
-Sol alt köşedeki **bilgi** simgesini seçin. Ardından, işlem hattınızı ve etkinlik çalıştırmalarını nasıl izleyecağınız hakkında adım adım yönergeleri almak için **Kılavuzlu Turları** seçin.
-
-![Kılavuzlu Turlar](media/monitor-visually/guided-tours.png)
+![Gantt grafiği süresi](media/monitor-visually/view-gantt-run.png)
 
 ## <a name="alerts"></a>Uyarılar
 

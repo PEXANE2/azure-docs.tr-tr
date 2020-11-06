@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d0805aaf694f1569e613ab74135c95e454adbdc0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: df0198ba77e1661bb18aa72285e100ca070966a8
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315070"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331745"
 ---
 # <a name="cetas-with-synapse-sql"></a>SYNAPSE SQL ile CETAS
 
@@ -68,7 +68,7 @@ Dış verilerin depolanacağı konumu içeren dış veri kaynağı nesnesinin ad
 
 FILE_FORMAT = *external_file_format_name*
 
-Dış veri dosyası biçimini içeren harici dosya biçim nesnesinin adını belirtir. Dış dosya biçimi oluşturmak için [dış dosya biçimi oluşturma (Transact-SQL)](develop-tables-external-tables.md#create-external-file-format)kullanın. Yalnızca FORMAT_TYPE = PARQUET ve FORMAT_TYPE = DELIMITEDTEXT içeren harici dosya biçimleri desteklenir.
+Dış veri dosyası biçimini içeren harici dosya biçim nesnesinin adını belirtir. Dış dosya biçimi oluşturmak için [dış dosya biçimi oluşturma (Transact-SQL)](develop-tables-external-tables.md#create-external-file-format)kullanın. Yalnızca FORMAT_TYPE = PARQUET ve FORMAT_TYPE = DELIMITEDTEXT içeren harici dosya biçimleri desteklenir. DELIMITEDTEXT biçimi için GZip sıkıştırması desteklenmiyor.
 
 *<common_table_expression>*
 
@@ -144,32 +144,30 @@ CETAS, sonuç kümelerini aşağıdaki SQL veri türleriyle depolamak için kull
 - ikili
 - char
 - varchar
+- nchar
+- nvarchar
+- smalldate
 - date
-- time
+- datetime
 - datetime2
+- türünde
+- time
 - decimal
 - sayısal
 - float
 - real
 - bigint
-- int
-- smallint
 - tinyint
+- smallint
+- int
+- bigint
 - bit
-
-> [!NOTE]
-> LOB 'Lar CETAS ile kullanılamaz.
-
-Aşağıdaki veri türleri, CETAS 'ın SEÇIM bölümünde kullanılamaz:
-
-- nchar
-- nvarchar
-- datetime
-- girişin
-- türünde
 - etmenize
 - küçük para
 - uniqueidentifier
+
+> [!NOTE]
+> 1 GB 'tan büyük Lobler CETAS ile kullanılamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

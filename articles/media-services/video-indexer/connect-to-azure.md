@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: 8cd5969e4362b1581a7b9aebf39f8c6871839918
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: a101afb2089e4ab1fa32bd0668c60b477039b566
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558779"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330589"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure 'a bağlı bir Video Indexer hesabı oluşturun
 
@@ -184,6 +184,15 @@ Aşağıdaki Azure Media Services ilgili konular geçerlidir:
 * Otomatik olarak bağlanıyorsanız Video Indexer medya **ayrılmış birimlerini** 10 S3 birimine ayarlar:
 
     ![Ayrılmış birimler Media Services](./media/create-account/ams-reserved-units.png)
+    
+## <a name="automate-creation-of-the-video-indexer-account"></a>Video Indexer hesabı oluşturmayı otomatikleştirin
+
+Hesap oluşturma işleminin otomatik hale getirmek için iki adımdan oluşan bir işlemdir:
+ 
+1. Bir Azure Media Services hesabı ve Azure AD uygulaması oluşturmak için Azure Resource Manager kullanın.
+
+    [Media Services hesap oluşturma şablonuna](https://github.com/Azure-Samples/media-services-v3-arm-templates)bir örnek bakın.
+1. [Media Services ve Azure AD uygulamasıyla oluşturma-hesabını](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Paid-Account)çağırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 0fd2312df31e61ae30f4c3fd04dc0991ac0f4675
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 6276bd0db9bfb93897f7350b87d208ac2951c859
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376864"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330334"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>Strata kullanarak şirket içi uygulamaları korumak için Azure AD B2C genişletme öğreticisi
 
@@ -29,7 +29,7 @@ Maverics Identity Orchestrator, şirket içi uygulamaları korumak için Azure A
 
 - **Kolay yapılandırma** : Azure AD B2C Maverics KIMLIK Orchestrator SAML veya OIDC bağlayıcılarını Azure AD B2C bağlamak için basit bir adım adım kullanıcı arabirimi sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için şunlar gerekir:
 
@@ -57,7 +57,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ![Görüntü, karma uygulamalara erişimi etkinleştirmek için Strata Maverics ile Azure AD B2C tümleştirme mimarisini gösterir](./media/partner-strata/strata-architecture-diagram.png)
 
-| Adımlar | Açıklama |
+| Adımlar | Description |
 |:-------|:---------------|
 | 1. | Kullanıcı, şirket içi barındırılan uygulamaya erişmek için bir istek yapar. Maverics kimlik Orchestrator, Kullanıcı tarafından uygulamaya yapılan isteği bir proxy 'ye sağlar.|
 | 2. | Orchestrator kullanıcının kimlik doğrulama durumunu denetler. Oturum belirteci almazsa veya sağlanan oturum belirteci geçersizse, kimlik doğrulaması için kullanıcıyı Azure AD B2C gönderir.|
@@ -69,7 +69,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 | 8. | Kullanıcının kimliği doğrulanır ve uygulamaya erişimi vardır.|
 
 ## <a name="get-maverics-identity-orchestrator"></a>Maverics kimlik Orchestrator 'ı al
-
+Eski şirket içi uygulamanızı Azure AD B2C tümleştirmek için kullanacağınız yazılımı almak için, [Strata](https://www.strata.io/contact/)ile iletişim kurun. Yazılımı aldıktan sonra, Orchestrator 'a özgü önkoşulları öğrenmek ve gerekli yükleme ve yapılandırma adımlarını gerçekleştirmek için aşağıdaki adımları izleyin.
 
 ## <a name="configure-your-azure-ad-b2c-tenant"></a>Azure AD B2C kiracınızı yapılandırma
 

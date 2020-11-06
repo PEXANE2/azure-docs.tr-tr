@@ -12,18 +12,22 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 11/05/2020
 ms.author: b-juche
-ms.openlocfilehash: edb084a3539f4ab25f328d4cc59ee4ef3279bf07
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: f4b485e79bfa89fe293c99fc4e84fc8c0729396a
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217057"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331898"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Azure NetApp Files için NFSv 4.1 Kerberos şifrelemesini yapılandırma
 
 Azure NetApp Files, Kerberos modlarında (krb5, krb5i ve krb5p), AES-256 şifrelemesi ile NFS istemci şifrelemesini destekler. Bu makalede, bir NFSv 4.1 birimini Kerberos şifrelemesi ile kullanmak için gereken yapılandırma açıklanmaktadır.
+
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
+
+* NFSv 4.1 Kerberos şifreleme birimleri Şu anda Azure Active Directory Domain Services desteklemiyor (AEKLEMELERI). 
 
 ## <a name="requirements"></a>Gereksinimler
 
@@ -40,7 +44,7 @@ Aşağıdaki gereksinimler NFSv 4.1 istemci şifrelemesi için geçerlidir:
 
 1.  NFSv 4.1 birimini oluşturmak için [Azure NetApp Files IÇIN NFS birimi oluşturma](azure-netapp-files-create-volumes.md) bölümündeki adımları izleyin.   
 
-    Birim Oluştur sayfasında, NFS sürümünü **Nfsv 4.1**olarak ayarlayın ve Kerberos ' u **etkin**olarak ayarlayın.
+    Birim Oluştur sayfasında, NFS sürümünü **Nfsv 4.1** olarak ayarlayın ve Kerberos ' u **etkin** olarak ayarlayın.
 
     > [!IMPORTANT] 
     > Birim oluşturulduktan sonra Kerberos etkinleştirme seçimini değiştiremezsiniz.
@@ -61,7 +65,7 @@ Aşağıdaki gereksinimler NFSv 4.1 istemci şifrelemesi için geçerlidir:
 
     Kerberos, Active Directory ' de en az bir makine hesabı oluşturmanızı gerektirir. Sağladığınız hesap bilgileri hem SMB *hem* de nfsv 4.1 Kerberos birimlerine yönelik hesaplar oluşturmak için kullanılır. Bu makine hesap, birim oluşturma sırasında otomatik olarak oluşturulur.
 
-2.  **Kerberos bölgesi**altında **ad sunucusu adını** ve **KDC IP** adresini girin.
+2.  **Kerberos bölgesi** altında **ad sunucusu adını** ve **KDC IP** adresini girin.
 
     AD sunucusu ve KDC IP aynı sunucu olabilir. Bu bilgiler, Azure NetApp Files tarafından kullanılan SPN makinesi hesabını oluşturmak için kullanılır. Makine hesabı oluşturulduktan sonra, Azure NetApp Files gerektiğinde ek KDC sunucularının yerini bulmak için DNS sunucusu kayıtlarını kullanacaktır. 
 
