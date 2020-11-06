@@ -39,8 +39,6 @@
           href: how-to-automatic-language-detection.md
         - name: Toplu transkripsiyon API’sini kullanma
           href: batch-transcription.md
-        - name: Söylenişi değerlendirme
-          href: how-to-pronunciation-assessment.md
     - name: Öğreticiler
       items:
         - name: Blob depolama alanında depolanan konuşmayı tanıma
@@ -530,6 +528,8 @@
           href: deploy-speech-on-container-instances.md
         - name: Kapsayıcılar hakkında SSS
           href: speech-container-faq.md
+        - name: Bilişsel Hizmetler kapsayıcıları belgeleri
+          href: ../containers/index.yml
 - name: Cihazlar
   items:
     - name: Konuşma cihazları belgeleri

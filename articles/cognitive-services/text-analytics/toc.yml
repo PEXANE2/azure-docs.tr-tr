@@ -80,6 +80,8 @@
           href: how-tos/text-analytics-how-to-use-container-instances.md
         - name: Kubernetes hizmetini kullanma (AKS)
           href: how-tos/text-analytics-how-to-use-kubernetes-service.md
+        - name: Bilişsel Hizmetler kapsayıcıları belgeleri
+          href: ../containers/index.yml
     - name: API’nin 3. sürümüne geçirme
       href: migration-guide.md
 - name: Başvuru

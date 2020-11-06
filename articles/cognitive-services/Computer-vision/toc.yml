@@ -161,6 +161,8 @@
           href: spatial-analysis-zone-line-placement.md
         - name: Kamera yerleşimi
           href: spatial-analysis-camera-placement.md
+    - name: Bilişsel Hizmetler kapsayıcıları belgeleri
+      href: ../containers/index.yml
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Görüntü İşleme API’sini çağırma

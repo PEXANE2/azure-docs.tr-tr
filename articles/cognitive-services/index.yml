@@ -12,12 +12,12 @@ metadata:
   manager: nitinme
   ms.custom: custom-portals-hub
   ms.date: 08/28/2020
-  ms.openlocfilehash: ca210f144d56aa56ddbcb959e0240bd4816dc3af
-  ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+  ms.openlocfilehash: b1aa2c098ead7086e670a92ce0657aa5a20a2b61
+  ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 10/26/2020
-  ms.locfileid: "92547121"
+  ms.lasthandoff: 11/04/2020
+  ms.locfileid: "93323109"
 highlightedContent:
   items:
   - title: Bilişsel Hizmetler nedir?
@@ -118,9 +118,12 @@ conceptualContent:
   - title: Bilişsel Hizmet Kapsayıcıları
     summary: Azure Bilişsel Hizmetler'de kapsayıcı desteği geliştiricilerin Azure'da kullanılabilen zengin API'lerin aynılarını kullanmalarına olanak tanır ve Docker kapsayıcılarıyla gelen hizmetlerin nerede dağıtılacağı ve barındırılacağı konusunda esneklik sağlar.
     links:
+    - url: ./containers/index.yml
+      itemType: overview
+      text: Bilişsel Hizmetler kapsayıcıları belgeleri
     - url: ./cognitive-services-container-support.md
       itemType: overview
-      text: Bilişsel Hizmet Kapsayıcıları
+      text: Bilişsel Hizmetler kapsayıcıları nedir?
     - url: ./containers/container-reuse-recipe.md
       itemType: learn
       text: Yeniden kullanım için kapsayıcı oluşturma

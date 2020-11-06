@@ -1,0 +1,90 @@
+### YamlMime:Landing
+title: Azure Bilişsel Hizmetler kapsayıcıları
+summary: Azure Bilişsel Hizmetler, şirket içinde yapay zeka kullanmak için çeşitli kapsayıcılar sunar. Kapsayıcılar sayesinde uyumluluğu veya güvenliği sağlamak amacıyla veya diğer operasyonel nedenler doğrultusunda Bilişsel Hizmetler’i verilerinize yaklaştırma esnekliği elde edersiniz.
+metadata:
+  title: Azure Bilişsel Hizmetler kapsayıcıları
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: aahill
+  manager: nitinme
+  ms.service: cognitive-services
+  ms.topic: landing-page
+  ms.date: 10/27/2020
+  ms.author: aahi
+  ms.openlocfilehash: 28eb8450201280e58e24dd5ad9b8826165b614c3
+  ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 11/04/2020
+  ms.locfileid: "93328093"
+landingContent:
+- title: Bilişsel Hizmetler kapsayıcıları hakkında
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Bilişsel Hizmetler kapsayıcıları nedir?
+      url: ../cognitive-services-container-support.md
+    - text: Sık Sorulan Sorular
+      url: container-faq.md
+    - text: Kapsayıcı görüntüsü etiketleri
+      url: container-image-tags.md
+- title: Kapsayıcı tarifleri
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Kapsayıcıları yeniden kullanma tarifi
+      url: container-reuse-recipe.md
+    - text: Azure Container Instances’ta dağıtma
+      url: azure-container-instance-recipe.md
+    - text: Kubernetes’te dağıtma
+      url: azure-kubernetes-recipe.md
+    - text: Docker Compose ile dağıtma
+      url: azure-kubernetes-recipe.md
+- title: Görüntü kapsayıcıları
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - url: ../computer-vision/computer-vision-how-to-install-containers.md
+      text: OCR okuma
+    - url: ../computer-vision/spatial-analysis-container.md
+      text: Uzamsal analiz
+    - url: ../face/face-how-to-install-containers.md
+      text: Yüz
+    - url: ../form-recognizer/form-recognizer-container-howto.md
+      text: Form Tanıma
+- title: Dil kapsayıcıları
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - url: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment
+      text: Yaklaşım Analizi
+    - url: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=keyphrase
+      text: Anahtar ifade ayıklama
+    - url: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=language
+      text: Metin dili algılama
+    - url: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=healthcare
+      text: Sistem durumu için Metin Analizi
+    - url: ../luis/luis-container-howto.md
+      text: LUIS kapsayıcısı
+- title: Konuşma kapsayıcıları
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - url: ../speech-service/speech-container-howto.md?tabs=stt
+      text: Konuşmayı metne dönüştürme
+    - url: ../speech-service/speech-container-howto.md?tabs=cstt
+      text: Özel Konuşmayı metne dönüştürme
+    - url: ../speech-service/speech-container-howto.md?tabs=tts
+      text: Metin okuma
+    - url: ../speech-service/speech-container-howto.md?tabs=ctts
+      text: Özel metin okuma
+    - url: ../speech-service/speech-container-howto.md?tabs=ntts
+      text: Nöral metin okuma
+    - url: ../speech-service/speech-container-howto.md?tabs=lid
+      text: Konuşma dili algılama
+- title: Karar kapsayıcısı
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - url: ../anomaly-detector/anomaly-detector-container-howto.md
+      text: Anomali Algılayıcısı

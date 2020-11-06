@@ -241,6 +241,8 @@
         - name: Kapsayıcı sınırlamaları
           href: luis-container-limitations.md
           displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+        - name: Bilişsel Hizmetler kapsayıcıları belgeleri
+          href: ../containers/index.yml
     - name: DevOps kullanma
       href: luis-how-to-devops-with-github.md
     - name: İlgili hizmetler

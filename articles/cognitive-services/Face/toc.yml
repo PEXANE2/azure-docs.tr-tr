@@ -69,6 +69,8 @@
           href: face-resource-container-config.md
         - name: Kapsayıcı örnekleri kullanma
           href: Face-API-How-to-Topics/deploy-face-container-on-container-instances.md
+        - name: Bilişsel Hizmetler kapsayıcıları belgeleri
+          href: ../containers/index.yml
 - name: Başvuru
   items:
     - name: Yüz Tanıma API'si
