@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/01/2020
 ms.author: glenga
-ms.openlocfilehash: 285c3bf37e9d6de042cb028745fc8b094d34c3a1
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 39c0556350482e171234a3ff9dce0c16ed88d110
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93284392"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93406643"
 ---
 Bir Azure Işlevlerinde oluşan hatalar aşağıdaki kaynaklardan herhangi birinden gelebilir:
 
@@ -23,15 +23,15 @@ Aşağıdaki iyi hata işleme uygulamaları, veri kaybını veya eksik iletileri
 - [Application Insights’ı Etkinleştir](../articles/azure-functions/functions-monitoring.md)
 - [Yapılandırılmış hata işlemeyi kullan](#use-structured-error-handling)
 - [Idempotlik tasarımı](../articles/azure-functions/functions-idempotent.md)
-- [Yeniden deneme Ilkelerini Uygula](#retry-policies) (uygun olduğunda)
+- [Yeniden deneme Ilkelerini Uygula](#retry-policies-preview) (uygun olduğunda)
 
 ### <a name="use-structured-error-handling"></a>Yapılandırılmış hata işlemeyi kullan
 
 Yakalama ve günlüğe kaydetme hataları uygulamanızın durumunu izlemek için kritik öneme sahiptir. Herhangi bir işlev kodunun en üst düzeyinde bir try/catch bloğu bulunmalıdır. Catch bloğunda, hataları yakalayabilir ve günlüğe kaydedebilirsiniz.
 
-## <a name="retry-policies"></a>Yeniden deneme ilkeleri
+## <a name="retry-policies-preview"></a>Yeniden deneme ilkeleri (Önizleme)
 
-Bir yeniden deneme ilkesi, işlev uygulamanızdaki herhangi bir tetikleyici türü için herhangi bir işlevde tanımlanabilir.  Yeniden deneme ilkesi, başarılı bir yürütme ya da en fazla yeniden deneme sayısı gerçekleşene kadar bir işlevi yeniden yürütür.  Yeniden deneme ilkeleri, bir uygulamadaki tüm işlevler için veya tek tek işlevlerde tanımlanabilir.  Varsayılan olarak, bir işlev uygulaması iletileri yeniden denemez ( [tetikleyici kaynağında yeniden deneme ilkesine sahip olan belirli tetikleyicilerden](#trigger-specific-retry-support)).  Bir yürütme yakalanamayan özel durum ile sonuçlanamadığında yeniden deneme ilkesi değerlendirilir.  En iyi uygulama olarak, kodunuzda tüm özel durumları yakalamalı ve yeniden denemeye neden olacak hataları yeniden oluşturmalısınız.  Event Hubs ve Azure Cosmos DB kontrol noktaları, yürütme için yeniden deneme ilkesi tamamlanana kadar yazılmaz, bu bölümde ilerleyerek geçerli toplu işlem tamamlanana kadar duraklatılır.
+Bir yeniden deneme ilkesi, işlev uygulamanızdaki herhangi bir tetikleyici türü için herhangi bir işlevde tanımlanabilir.  Yeniden deneme ilkesi, başarılı bir yürütme ya da en fazla yeniden deneme sayısı gerçekleşene kadar bir işlevi yeniden yürütür.  Yeniden deneme ilkeleri, bir uygulamadaki tüm işlevler için veya tek tek işlevlerde tanımlanabilir.  Varsayılan olarak, bir işlev uygulaması iletileri yeniden denemez ( [tetikleyici kaynağında yeniden deneme ilkesine sahip olan belirli tetikleyicilerden](#using-retry-support-on-top-of-trigger-resilience)).  Bir yürütme yakalanamayan özel durum ile sonuçlanamadığında yeniden deneme ilkesi değerlendirilir.  En iyi uygulama olarak, kodunuzda tüm özel durumları yakalamalı ve yeniden denemeye neden olacak hataları yeniden oluşturmanız gerekir.  Event Hubs ve Azure Cosmos DB kontrol noktaları, yürütme için yeniden deneme ilkesi tamamlanana kadar yazılmaz, bu bölümde ilerleyerek geçerli toplu işlem tamamlanana kadar duraklatılır.
 
 ### <a name="retry-policy-options"></a>Yeniden deneme ilkesi seçenekleri
 
@@ -57,6 +57,8 @@ Bir yeniden deneme ilkesi, belirli bir işlev için tanımlanabilir.  İşleve �
 #### <a name="fixed-delay-retry"></a>Sabit gecikme yeniden denemesi
 
 # <a name="c"></a>[C#](#tab/csharp)
+
+Yeniden denemeler için NuGet paketi gerekiyor [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) >= 3.0.23
 
 ```csharp
 [FunctionName("EventHubTrigger")]
@@ -152,6 +154,8 @@ public static async Task Run([EventHubTrigger("myHub", Connection = "EventHubCon
 #### <a name="exponential-backoff-retry"></a>Üstel geri alma yeniden deneme
 
 # <a name="c"></a>[C#](#tab/csharp)
+
+Yeniden denemeler için NuGet paketi gerekiyor [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) >= 3.0.23
 
 ```csharp
 [FunctionName("EventHubTrigger")]
@@ -255,12 +259,27 @@ public static async Task Run([EventHubTrigger("myHub", Connection = "EventHubCon
 |MinimumInterval|yok|Strateji kullanılırken en düşük yeniden deneme gecikmesi `exponentialBackoff` .|
 |Maximumınterval|yok|Strateji kullanılırken en fazla yeniden deneme gecikmesi `exponentialBackoff` .| 
 
-## <a name="trigger-specific-retry-support"></a>Tetikleyiciye özgü yeniden deneme desteği
+### <a name="retry-limitations-during-preview"></a>Önizleme sırasında yeniden deneme sınırlamaları
 
-Bazı Tetikleyiciler tetikleyici kaynağında yeniden denemeler sağlar.  Bu tetikleyici yeniden denemeleri, App Host yeniden deneme ilkesi işlevi için bir değiştirme veya buna ek olarak kullanılabilir.  Sabit yeniden deneme sayısı istenirse, genel ana bilgisayar yeniden deneme ilkesi üzerinde tetikleyicisine özgü yeniden deneme ilkesini kullanmanız gerekir.  Aşağıdaki Tetikleyiciler tetikleyici kaynağında yeniden denemeleri destekler:
+- .NET projeleri için [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) >= 3.0.23 bir sürümünü el ile çekmeniz gerekebilir.
+- Tüketim planında, bir kuyruktaki son iletiler yeniden denenirken uygulama sıfıra ölçeklenebiliyor olabilir.
+- Tüketim planında, uygulama yeniden denemeler gerçekleştirilirken ölçeği azaltılabilir.  En iyi sonuçlar için <= 00:01:00 ve <= 5 yeniden deneme aralığı seçin.
+
+## <a name="using-retry-support-on-top-of-trigger-resilience"></a>Tetikleyici esnekliği üzerinde yeniden deneme desteğini kullanma
+
+İşlev uygulaması yeniden deneme ilkesi, tetikleyicinin sağladığı herhangi bir yeniden denemeden veya dayanıklılığı birbirinden bağımsızdır.  İşlev yeniden deneme ilkesi yalnızca bir tetikleyicinin dayanıklı yeniden denenme üzerinde katman olacak.  Örneğin, Azure Service Bus kullanılıyorsa varsayılan kuyruklarda ileti teslim sayısı 10 ' dur.  Varsayılan teslim sayısı, bir kuyruk iletisi 10 ' un denendiğinde Service Bus, iletinin atılacak ileti sayısını gösterir.  Service Bus tetikleyicisi olan bir işlev için yeniden deneme ilkesi tanımlayabilirsiniz, ancak yeniden denemeler Service Bus teslim denemelerinin üzerine katman kullanacaktır.  
+
+Örneğin, varsayılan Service Bus teslim sayısını 10 kullandıysanız ve 5. bir işlev yeniden deneme ilkesi tanımlıysa.  İleti önce sıradan çıkar, Service Bus teslim hesabını 1 ' e artırdı.  Her yürütme başarısız olursa, beş aynı iletiyi tetikleme denemesinden sonra bu ileti terk edildi olarak işaretlenir.  İletiyi hemen yeniden kuyruğa alma Service Bus, işlevi tetikler ve teslim sayısını 2 olarak artırır.  Son olarak, 50 nihai girişimden sonra (10 hizmet veri yolu teslimi * teslim başına beş işlev yeniden denemesi), ileti bırakıldı ve Service Bus 'da atılacak bir harf tetiklenebilir.
+
+> [!WARNING]
+> Service Bus kuyrukları gibi bir tetikleyicinin teslimat sayısının 1 olarak ayarlanması önerilmez, yani ileti tek bir işlev yeniden deneme döngüsünden hemen sonra atılacak.  Bunun nedeni, tetikleyicilerin yeniden denemeler ile dayanıklılık sağladığından, işlev yeniden deneme ilkesi en iyi çabadır ve istenen toplam yeniden deneme sayısından daha az sonuç verebilir.
+
+### <a name="triggers-with-additional-resiliency-or-retries"></a>Ek dayanıklılık veya yeniden denemeler ile Tetikleyiciler
+
+Aşağıdaki Tetikleyiciler tetikleyici kaynağında yeniden denemeleri destekler:
 
 * [Azure Blob Depolama](../articles/azure-functions/functions-bindings-storage-blob.md)
 * [Azure kuyruk depolama](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure Service Bus (kuyruk/konu)](../articles/azure-functions/functions-bindings-service-bus.md)
 
-Bu, varsayılan olarak, istekleri beş kata kadar yeniden dener. Beşinci yeniden denemeden sonra hem Azure kuyruk depolaması hem de Azure Service Bus tetikleyicisi bir [zarar kuyruğuna](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#poison-messages)ileti yazar.
+Varsayılan olarak, çoğu zaman istekleri en fazla beş kez yeniden dener. Beşinci yeniden denemeden sonra, her iki Azure kuyruk depolaması da bir [Poison kuyruğuna](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#poison-messages)ileti yazar.  Varsayılan Service Bus kuyruğu ve konu ilkesi, 10 denemeden sonra [atılacak ileti kuyruğuna](../articles/service-bus-messaging/service-bus-dead-letter-queues.md) bir ileti yazar.
