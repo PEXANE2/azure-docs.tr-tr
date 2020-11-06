@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: 240b96a47c84ec3b15a356edc35549a4a197b219
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2dbc75ac4f143089db778b260bb2c4bee5b49f6a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967976"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393175"
 ---
-# <a name="password-and-account-lockout-policies-on-active-directory-domain-services-managed-domains"></a>Active Directory Domain Services yönetilen etki alanlarında parola ve hesap kilitleme ilkeleri
+# <a name="password-and-account-lockout-policies-on-azure-active-directory-domain-services-managed-domains"></a>Azure Active Directory Domain Services yönetilen etki alanlarında parola ve hesap kilitleme ilkeleri
 
 Azure Active Directory Domain Services (Azure AD DS) ' de Kullanıcı güvenliğini yönetmek için hesap kilitleme ayarlarını veya en düşük parola uzunluğunu ve karmaşıklığı denetleyen hassas parola ilkeleri tanımlayabilirsiniz. Azure AD DS yönetilen bir etki alanındaki tüm kullanıcılara varsayılan bir hassas parola ilkesi oluşturulur ve uygulanır. Ayrıntılı denetim sağlamak ve belirli iş veya uyumluluk ihtiyaçlarını karşılamak için, ek ilkeler oluşturulup belirli kullanıcı gruplarına uygulanabilir.
 
@@ -90,20 +90,20 @@ Azure 'da uygulama oluşturup çalıştırdığınızda, özel bir parola ilkesi
 > [!NOTE]
 > Yönetilen bir etki alanında özel bir parola ilkesi oluşturmak için, *AAD DC Administrators* grubunun üyesi olan bir kullanıcı hesabında oturum açmış olmanız gerekir.
 
-1. Başlangıç ekranından **Yönetim Araçları**' nı seçin. [Yönetim sanal makinesi oluşturmak][tutorial-create-management-vm]için öğreticide yüklü olan kullanılabilir yönetim araçlarının bir listesi gösterilir.
+1. Başlangıç ekranından **Yönetim Araçları** ' nı seçin. [Yönetim sanal makinesi oluşturmak][tutorial-create-management-vm]için öğreticide yüklü olan kullanılabilir yönetim araçlarının bir listesi gösterilir.
 1. OU 'Ları oluşturup yönetmek için, yönetim araçları listesinden **Active Directory Yönetim Merkezi** ' yi seçin.
-1. Sol bölmede, *aaddscontoso.com*gibi yönetilen etki alanınızı seçin.
-1. **Sistem** kapsayıcısını ve sonra **parola ayarları kapsayıcısı**açın.
+1. Sol bölmede, *aaddscontoso.com* gibi yönetilen etki alanınızı seçin.
+1. **Sistem** kapsayıcısını ve sonra **parola ayarları kapsayıcısı** açın.
 
     Yönetilen etki alanı için yerleşik bir parola ilkesi gösterilir. Bu yerleşik ilkeyi değiştiremezsiniz. Bunun yerine, varsayılan ilkeyi geçersiz kılmak için özel bir parola ilkesi oluşturun.
 
     ![Active Directory Yönetim Merkezi parola ilkesi oluşturma](./media/password-policy/create-password-policy-adac.png)
 
-1. Sağdaki **Görevler** panelinde **Yeni > parola ayarları**' nı seçin.
-1. **Parola ayarlarını oluştur** iletişim kutusunda, Ilke Için *Mycustomfgpp*gibi bir ad girin.
-1. Birden çok parola ilkesi varsa, en yüksek önceliğe veya önceliğe sahip ilke bir kullanıcıya uygulanır. Sayı ne kadar düşükse öncelik o kadar yüksektir. Varsayılan parola ilkesinin önceliği *200*' dir.
+1. Sağdaki **Görevler** panelinde **Yeni > parola ayarları** ' nı seçin.
+1. **Parola ayarlarını oluştur** iletişim kutusunda, Ilke Için *Mycustomfgpp* gibi bir ad girin.
+1. Birden çok parola ilkesi varsa, en yüksek önceliğe veya önceliğe sahip ilke bir kullanıcıya uygulanır. Sayı ne kadar düşükse öncelik o kadar yüksektir. Varsayılan parola ilkesinin önceliği *200* ' dir.
 
-    Varsayılan değer olan *1*' i geçersiz kılmak için özel parola ilkenizin önceliğini ayarlayın.
+    Varsayılan değer olan *1* ' i geçersiz kılmak için özel parola ilkenizin önceliğini ayarlayın.
 
 1. Diğer parola ilkesi ayarlarını istediğiniz gibi düzenleyin. Aşağıdaki anahtar noktalarını unutmayın:
 
@@ -112,12 +112,12 @@ Azure 'da uygulama oluşturup çalıştırdığınızda, özel bir parola ilkesi
 
     ![Özel bir hassas parola ilkesi oluşturma](./media/password-policy/custom-fgpp.png)
 
-1. **Yanlışlıkla silinmeye karşı koru**seçeneğinin işaretini kaldırın. Bu seçenek işaretliyse, FGPP 'yi kaydedemezsiniz.
+1. **Yanlışlıkla silinmeye karşı koru** seçeneğinin işaretini kaldırın. Bu seçenek işaretliyse, FGPP 'yi kaydedemezsiniz.
 1. **Doğrudan Için geçerli** bölümünde, **Ekle** düğmesini seçin. **Kullanıcıları veya grupları seç** Iletişim kutusunda **konumlar** düğmesini seçin.
 
     ![Parola ilkesinin uygulanacağı kullanıcıları ve grupları seçin](./media/password-policy/fgpp-applies-to.png)
 
-1. Parola ilkeleri yalnızca gruplara uygulanabilir. **Konumlar** iletişim kutusunda, *aaddscontoso.com*gibi etki alanı adını genişletin ve ardından **aaddc kullanıcıları**gibi bir OU seçin. Uygulamak istediğiniz kullanıcı grubunu içeren özel bir OU varsa, bu OU 'yu seçin.
+1. Parola ilkeleri yalnızca gruplara uygulanabilir. **Konumlar** iletişim kutusunda, *aaddscontoso.com* gibi etki alanı adını genişletin ve ardından **aaddc kullanıcıları** gibi bir OU seçin. Uygulamak istediğiniz kullanıcı grubunu içeren özel bir OU varsa, bu OU 'yu seçin.
 
     ![Grubun ait olduğu OU 'yu seçin](./media/password-policy/fgpp-container.png)
 

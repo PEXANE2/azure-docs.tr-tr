@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: hirsin
-ms.reviewer: hirsin
+ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: ee8ea874ba8133216bf5a28587f841d3b7cfa2ed
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b60be1b3d30ab462f89dd4d72ab67d43393740b8
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740161"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393379"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform erişim belirteçleri
 
@@ -33,7 +33,7 @@ Bir kaynağın bir erişim belirtecinin içindeki talepleri nasıl doğrulayaca�
 > [!IMPORTANT]
 > Erişim belirteçleri, belirtecin *kitlelerine* göre oluşturulur ve bu, belirteçteki kapsamların sahibi olan uygulama anlamına gelir.  Bu, `accessTokenAcceptedVersion` [uygulama bildiriminde](reference-app-manifest.md#manifest-reference) bir kaynak ayarının, `2` v 1.0 uç noktasını çağıran bir istemcinin v 2.0 erişim belirteci almasına izin verir.  Benzer şekilde, bu, istemciniz için [isteğe bağlı](active-directory-optional-claims.md) erişim belirtecini değiştirmenin, kaynağına ait olan için bir belirteç istendiğinde alınan erişim belirtecini değiştirmemesinin nedeni budur `user.read` .
 >
-> Aynı nedenden dolayı, istemci uygulamanızı kişisel hesabı (hotmail.com veya outlook.com gibi) destekleyen bir Microsoft API 'siyle sınarken, istemciniz tarafından alınan erişim belirtecinin donuk bir dize olduğunu fark edersiniz. Bunun nedeni, erişildiği kaynağın şifreli belirteçler kullandığından ve istemci tarafından anlaşılamadığından.  Bu beklenmektedir ve uygulamanız için bir sorun olmaması gerekir-istemci uygulamalarınız, erişim belirtecinin biçimine hiçbir şekilde bağımlılık içermemelidir. 
+> Aynı nedenden dolayı, istemci uygulamanızı kişisel hesabı (hotmail.com veya outlook.com gibi) destekleyen bir Microsoft API 'siyle sınarken, istemciniz tarafından alınan erişim belirtecinin donuk bir dize olduğunu fark edersiniz. Bunun nedeni, erişildiği kaynağın şifreli belirteçler kullandığından ve istemci tarafından anlaşılamadığından.  Bu beklenmektedir ve uygulamanız için bir sorun olmaması gerekir-istemci uygulamalarınız, erişim belirtecinin biçimine hiçbir şekilde bağımlılık içermemelidir.
 
 ## <a name="sample-tokens"></a>Örnek belirteçler
 
@@ -245,7 +245,7 @@ Farklı nedenlerle yenileme belirteçleri herhangi bir zamanda geçersiz kılın
 
 ### <a name="token-timeouts"></a>Belirteç zaman aşımları
 
-[Belirteç ömrü yapılandırması](active-directory-configurable-token-lifetimes.md)kullanıldığında, yenileme belirteçlerinin ömrü değiştirilebilir.  Bu normaldir ve bazı belirteçlerin kullanılmadan gitmesi beklenir (ör. Kullanıcı uygulamayı 3 ay boyunca açmaz) ve bu nedenle sona erer.  Uygulamalar, oturum açma sunucusunun yaşı nedeniyle yenileme belirtecini reddettiği senaryolarla karşılaşacaktır. 
+[Belirteç ömrü yapılandırması](active-directory-configurable-token-lifetimes.md)kullanıldığında, yenileme belirteçlerinin ömrü değiştirilebilir.  Bu normaldir ve bazı belirteçlerin kullanılmadan gitmesi beklenir (ör. Kullanıcı uygulamayı 3 ay boyunca açmaz) ve bu nedenle sona erer.  Uygulamalar, oturum açma sunucusunun yaşı nedeniyle yenileme belirtecini reddettiği senaryolarla karşılaşacaktır.
 
 * Maxınactivetime: yenileme belirteci, Maxınactivetime tarafından dikte edilen süre içinde kullanılmıyorsa, yenileme belirteci artık geçerli olmayacaktır.
 * MaxSessionAge: MaxAgeSessionMultiFactor veya Maxagesessionsingsolaktör, varsayılanlarını (iptal edilene kadar) farklı bir değere ayarlandıysa, MaxAgeSession * geçtiğinde ayarlanan süre sonunda yeniden kimlik doğrulaması gerekecektir.
@@ -255,7 +255,7 @@ Farklı nedenlerle yenileme belirteçleri herhangi bir zamanda geçersiz kılın
 
 ### <a name="revocation"></a>Sayılabilir
 
-Yenileme belirteçleri, kimlik bilgilerinde bir değişiklik veya kullanım ya da yönetici eylemi nedeniyle sunucu tarafından iptal edilebilir.  Yenileme belirteçleri, gizli istemcilere (en sağdaki sütun) ve ortak istemcilere verilen (diğer tüm sütunlar) verilen iki sınıfa ayrılır.   
+Yenileme belirteçleri, kimlik bilgilerinde bir değişiklik veya kullanım ya da yönetici eylemi nedeniyle sunucu tarafından iptal edilebilir.  Yenileme belirteçleri, gizli istemcilere (en sağdaki sütun) ve ortak istemcilere verilen (diğer tüm sütunlar) verilen iki sınıfa ayrılır.
 
 | Değiştir | Parola tabanlı tanımlama bilgisi | Parola tabanlı belirteç | Parola tabanlı olmayan tanımlama bilgisi | Parola tabanlı olmayan belirteç | Gizli istemci belirteci |
 |---|-----------------------|----------------------|---------------------------|--------------------------|---------------------------|
@@ -275,12 +275,12 @@ Yenileme belirteçleri, kimlik bilgilerinde bir değişiklik veya kullanım ya d
 - FIDO2 anahtarı
 - SMS
 - Ses
-- PIN 
+- PIN
 
 > [!NOTE]
 > Windows 10 ' da birincil yenileme belirteçleri (PRT), kimlik bilgilerine göre ayrılmış olarak dağıtılır. Örneğin, Windows Hello ve Password kendilerine ait olan Prkalar varsa, bunlardan yalıtılmıştır. Bir Kullanıcı bir Hello kimlik bilgileri (PIN veya biyometri) ile oturum açtığında ve parolayı değiştirdiğinde, daha önce edinilen parola tabanlı PRT iptal edilir. Parola ile yeniden oturum açmak eski PRT 'yi geçersiz kılar ve yeni bir tane ister.
 >
-> Yeni bir erişim belirteci getirmek ve belirteci yenilemek için kullanıldığında, yenileme belirteçleri geçersiz kılınmaz veya iptal edilmez.  Bununla birlikte, uygulamanız, kullanıldığı anda eskisini atmalıdır ve yeni belirtecin yeni bir sona erme saati olduğu için yenisiyle değiştirin. 
+> Yeni bir erişim belirteci getirmek ve belirteci yenilemek için kullanıldığında, yenileme belirteçleri geçersiz kılınmaz veya iptal edilmez.  Bununla birlikte, uygulamanız, kullanıldığı anda eskisini atmalıdır ve yeni belirtecin yeni bir sona erme saati olduğu için yenisiyle değiştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

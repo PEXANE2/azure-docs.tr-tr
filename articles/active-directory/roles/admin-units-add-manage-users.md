@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.workload: identity
-ms.date: 09/22/2020
+ms.date: 11/04/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c877878fe25d4c6c8904840c3c3350fbe2acf7b5
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: b490e03ea7ac0a3bc780fa731629217126b6828a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026675"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395538"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Azure Active Directory bir yönetim biriminde Kullanıcı ekleme ve yönetme
 
@@ -29,7 +29,7 @@ Yönetim birimi yönetimi için PowerShell ve Microsoft Graph kullanmaya hazırl
 
 ## <a name="add-users-to-an-administrative-unit"></a>Yönetici birimine Kullanıcı ekleme
 
-### <a name="use-the-azure-portal"></a>Azure portalını kullanma
+### <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
 Kullanıcıları, yönetim birimlerine ayrı ayrı veya toplu bir işlem olarak atayabilirsiniz.
 
@@ -99,7 +99,7 @@ Request body
 
 ## <a name="view-a-list-of-administrative-units-for-a-user"></a>Bir kullanıcı için yönetim birimlerinin bir listesini görüntüleme
 
-### <a name="use-the-azure-portal"></a>Azure portalını kullanma
+### <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
 Azure portal, aşağıdakileri yaparak bir kullanıcının profilini açabilirsiniz:
 
@@ -131,7 +131,7 @@ https://graph.microsoft.com/v1.0/users/{id}/memberOf/$/Microsoft.Graph.Administr
 
 ## <a name="remove-a-single-user-from-an-administrative-unit"></a>Yönetim biriminden tek bir kullanıcıyı kaldırma
 
-### <a name="use-the-azure-portal"></a>Azure portalını kullanma
+### <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
 Bir kullanıcıyı, yönetim biriminden iki şekilde kaldırabilirsiniz: 
 

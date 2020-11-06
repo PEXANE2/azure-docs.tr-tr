@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7651f84e14d6ea7dcb4e12d57e2bf494d5aeff1e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d12679e64d690614aaf788837a02af007448f83d
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083193"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393685"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Nasıl yapılır: Azure AD 'de eski cihazları yönetme
 
@@ -59,7 +59,7 @@ Etkinlik zaman damgasının değerini almak için iki seçeneğiniz vardır:
 
 - [Get-AzureADDevice](/powershell/module/azuread/Get-AzureADDevice) cmdlet 'i
 
-    :::image type="content" source="./media/manage-stale-devices/02.png" alt-text="Ad, sahip ve cihazlarda diğer bilgileri listelemek Azure portal sayfanın ekran görüntüsü. Bir sütunda etkinlik zaman damgası listelenir." border="false":::
+    :::image type="content" source="./media/manage-stale-devices/02.png" alt-text="Komut satırı çıkışını gösteren ekran görüntüsü. Bir satır vurgulanır ve yaklaşık Telastlogontimestamp değeri için bir zaman damgası listelenir." border="false":::
 
 ## <a name="plan-the-cleanup-of-your-stale-devices"></a>Eski cihazların temizliğini planlama
 
@@ -147,7 +147,7 @@ Dizininizde çok sayıda cihaz varsa, döndürülen cihaz sayısını daraltmak 
 
 ```PowerShell
 $dt = [datetime]’2017/01/01’
-Get-AzureADDevice | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
+Get-AzureADDevice -All:$true | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
 ```
 
 ## <a name="what-you-should-know"></a>Bilmeniz gerekenler

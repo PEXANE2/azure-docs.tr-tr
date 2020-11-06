@@ -10,12 +10,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: afd78acadf133a9f128eec402eba9d0eed51b8e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 543a71bc2a77f0a31f8ddaa0de13135b93db48ec
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91284491"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395045"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge sürüm notları 
 
@@ -37,9 +37,9 @@ Bu makalede, yenilikler ve her yeni Azure SQL Edge derlemesi ile nelerin değiş
    - Paralel yürütme senaryolarını etkinleştir
 6. Düşük güç modu için güç tasarrufu iyileştirmeleri
 7. Akış yeni özellik desteği 
-   - [Snapshot Windows](https://docs.microsoft.com/stream-analytics-query/snapshot-window-azure-stream-analytics) : yeni pencere türü, tam olarak aynı anda ulaşan olaylara göre gruplandırmanızı sağlar. 
-   - [TopOne](https://docs.microsoft.com/stream-analytics-query/topone-azure-stream-analytics) ve [collecttop](https://docs.microsoft.com/stream-analytics-query/collecttop-azure-stream-analytics) ' ı analitik Işlevi olarak etkinleştirin; bu, bir pencerenin parçası olmadan tercih ettiğiniz sütun tarafından sıralanan kayıtları döndürmeye izin verecektir. 
-   - [MATCH_RECOGNIZE](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics)geliştirmeleri. 
+   - [Snapshot Windows](/stream-analytics-query/snapshot-window-azure-stream-analytics) : yeni pencere türü, tam olarak aynı anda ulaşan olaylara göre gruplandırmanızı sağlar. 
+   - [TopOne](/stream-analytics-query/topone-azure-stream-analytics) ve [collecttop](/stream-analytics-query/collecttop-azure-stream-analytics) ' ı analitik Işlevi olarak etkinleştirin; bu, bir pencerenin parçası olmadan tercih ettiğiniz sütun tarafından sıralanan kayıtları döndürmeye izin verecektir. 
+   - [MATCH_RECOGNIZE](/stream-analytics-query/match-recognize-stream-analytics)geliştirmeleri. 
 
 ### <a name="fixes"></a>Düzeltmeler
 1. TSQL akış işlemlerinde sorun gidermeye yönelik ek hata iletileri ve ayrıntılar. 

@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 781b37405bebc5ddc3d33cbbc089049b0c0f8ca4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: aca7b7e8590c9c8eb3db987c5d1527d9f135bf3f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325531"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393005"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure sanal ağında Azure Machine Learning Studio 'yu kullanma
 
@@ -39,7 +39,7 @@ Bu serideki diğer makalelere göz atın:
 > Çalışma alanınız, Azure Kamu veya Azure Çin 21Vianet gibi bir bağımsız __bulutta__ ise, tümleşik Not defterleri sanal bir ağdaki depolamanın _kullanımını desteklemez._ Bunun yerine işlem örneğinde Jupyter Notebook'larını kullanabilirsiniz. Daha fazla bilgi için, [Işlem örneği Not Defteri Içindeki erişim verileri](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) bölümüne bakın.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 + Genel sanal ağ senaryolarını ve genel sanal ağ mimarisini anlamak için [ağ güvenliğine genel bakış](how-to-network-security-overview.md) makalesini okuyun.
 
@@ -97,7 +97,10 @@ Bu adımlar, Azure Kaynak tabanlı erişim denetimi (Azure RBAC) kullanarak, ça
 
 ## <a name="technical-notes-for-managed-identity"></a>Yönetilen kimlik için teknik notlar
 
-Depolama hizmetlerine erişmek için yönetilen kimlik kullanılması bazı güvenlik konularını etkiler. Bu konular, eriştiğiniz depolama hesabı türüne özeldir. Bu bölümde, her depolama hesabı türü için değişiklikler açıklanmaktadır.
+Depolama hizmetlerine erişmek için yönetilen kimlik kullanılması bazı güvenlik konularını etkiler. Bu bölümde, her depolama hesabı türü için değişiklikler açıklanmaktadır.
+
+> [!IMPORTANT]
+> Bu konular, eriştiğiniz __depolama hesabı türüne__ özeldir.
 
 ### <a name="azure-blob-storage"></a>Azure Blob depolama
 

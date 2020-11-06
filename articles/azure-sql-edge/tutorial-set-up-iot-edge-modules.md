@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sourabha, sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 7b2432fda70e8f9a5fa8bc64ede846d977672e9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8c5b20f833ab09463e1ae8b5bd3825c7c23f85e
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886482"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394943"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>IoT Edge modülleri ve bağlantıları ayarlama
 
@@ -36,31 +36,31 @@ Modül görüntülerinin barındırıldığı kapsayıcı kayıt defterlerinin k
 
 1. Kaynak grubunuzda oluşturulan IoT Hub 'ına gidin.
 
-2. **Otomatik cihaz yönetimi**altındaki **IoT Edge** bölümünde **cihaz kimliği**' ne tıklayın. Bu öğretici için KIMLIK `IronOrePredictionDevice` .
+2. **Otomatik cihaz yönetimi** altındaki **IoT Edge** bölümünde **cihaz kimliği** ' ne tıklayın. Bu öğretici için KIMLIK `IronOrePredictionDevice` .
 
 3. **Modülleri ayarla** bölümünü seçin.
 
-4. **Container Registry kimlik bilgileri**altında, aşağıdaki değerleri girin:
+4. **Container Registry kimlik bilgileri** altında, aşağıdaki değerleri girin:
 
    _Alan_|_Değer_
    -------|-------
-   Name|Kayıt defteri adı
+   Ad|Kayıt defteri adı
    Adres|Oturum açma sunucusu
    User Name|Kullanıcı adı
    Parola|Parola
   
 ## <a name="deploy-the-data-generator-module"></a>Veri Oluşturucu modülünü dağıtma
 
-1. **Otomatik cihaz yönetimi**altındaki **IoT Edge** bölümünde **cihaz kimliği**' ne tıklayın. Bu öğreticide, KIMLIK `IronOrePredictionDevice` ve ardından **modülleri ayarla**' ya tıklayın.
+1. **Otomatik cihaz yönetimi** altındaki **IoT Edge** bölümünde **cihaz kimliği** ' ne tıklayın. Bu öğreticide, KIMLIK `IronOrePredictionDevice` ve ardından **modülleri ayarla** ' ya tıklayın.
 
-2.  **Cihazdaki modülleri ayarla:** sayfasındaki **IoT Edge modüller** bölümünde **+ ekle** ' ye tıklayın ve **IoT Edge modülü**' nü seçin.
+2.  **Cihazdaki modülleri ayarla:** sayfasındaki **IoT Edge modüller** bölümünde **+ ekle** ' ye tıklayın ve **IoT Edge modülü** ' nü seçin.
 
 3. IoT Edge modülü için geçerli bir ad ve görüntü URI 'SI sağlayın.
-   Görüntü URI 'SI, Bu öğreticinin birinci kısmında oluşturulan kaynak grubundaki kapsayıcı kayıt defterinde bulunabilir. **Hizmetler**altında **depolar** bölümünü seçin. Bu öğretici için adlı depoyu seçin `silicaprediction` . Uygun etiketi seçin. Görüntü URI 'SI şu biçimde olacaktır:
+   Görüntü URI 'SI, Bu öğreticinin birinci kısmında oluşturulan kaynak grubundaki kapsayıcı kayıt defterinde bulunabilir. **Hizmetler** altında **depolar** bölümünü seçin. Bu öğretici için adlı depoyu seçin `silicaprediction` . Uygun etiketi seçin. Görüntü URI 'SI şu biçimde olacaktır:
 
-   containerregistry 'nin oturum *açma sunucusu* / *Depo adı*:*etiket adı*
+   containerregistry 'nin oturum *açma sunucusu* / *Depo adı* : *etiket adı*
 
-   Örneğin:
+   Örnek:
 
    ```
    ASEdemocontregistry.azurecr.io/silicaprediction:amd64
@@ -68,16 +68,16 @@ Modül görüntülerinin barındırıldığı kapsayıcı kayıt defterlerinin k
 
 4. *Yeniden başlatma ilkesini* ve *istenen durum* alanlarını olduğu gibi bırakın.
 
-5. **Ekle**'ye tıklayın.
+5. **Ekle** 'ye tıklayın.
 
 
 ## <a name="deploy-the-azure-sql-edge-module"></a>Azure SQL Edge modülünü dağıtma
 
-1. Azure SQL Edge modülünü **+ Ekle** ' ye ve ardından **Market modülü**' ne tıklayarak dağıtın. 
+1. Azure SQL Edge modülünü **+ Ekle** ' ye ve ardından **Market modülü** ' ne tıklayarak dağıtın. 
 
-2. **IoT Edge modülü marketi** dikey PENCERESINDE *Azure SQL Edge* ' i arayın ve *Azure SQL Edge geliştiricisi*' ni seçin. 
+2. **IoT Edge modülü marketi** dikey PENCERESINDE *Azure SQL Edge* ' i arayın ve *Azure SQL Edge geliştiricisi* ' ni seçin. 
 
-3. Azure SQL Edge modülünü yapılandırmak için **IoT Edge modüller** altında yeni eklenen *Azure SQL Edge* modülüne tıklayın. Yapılandırma seçenekleri hakkında daha fazla bilgi için bkz. [Azure SQL Edge 'ı dağıtma](https://docs.microsoft.com/azure/azure-sql-edge/deploy-portal).
+3. Azure SQL Edge modülünü yapılandırmak için **IoT Edge modüller** altında yeni eklenen *Azure SQL Edge* modülüne tıklayın. Yapılandırma seçenekleri hakkında daha fazla bilgi için bkz. [Azure SQL Edge 'ı dağıtma](./deploy-portal.md).
 
 4. `MSSQL_PACKAGE`Ortam değişkenini *Azure SQL Edge* modülü dağıtımına ekleyin ve bu öğreticiden [birinin](tutorial-deploy-azure-resources.md) 8. adımında oluşturulan VERITABANı dacpac dosyasının SAS URL 'sini belirtin.
 
@@ -92,7 +92,7 @@ Modül görüntülerinin barındırıldığı kapsayıcı kayıt defterlerinin k
    BrokeredEndpoint("/modules/<your_azure_sql_edge_module>/inputs/IronOreMeasures")
    ```
 
-   Örneğin:
+   Örnek:
 
    ```
    FROM /messages/modules/ASEDataGenerator/outputs/IronOreMeasures INTO BrokeredEndpoint("/modules/AzureSQLEdge/inputs/IronOreMeasures")

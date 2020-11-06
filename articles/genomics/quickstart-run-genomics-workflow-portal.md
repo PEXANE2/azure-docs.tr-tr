@@ -9,18 +9,18 @@ ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 7720238bb7e2ff133935b9af545628f744d828d1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4beb1c31f34ec4e8d26228cfe4f30f5109a1b60c
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88642325"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394552"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Hızlı Başlangıç: Microsoft Genomiks hizmeti üzerinden iş akışı çalıştırma
 
 Bu hızlı başlangıçta, giriş verilerini bir Azure Blob depolama hesabına yükler ve Python Genomiks istemcisini kullanarak Microsoft Genomiks hizmeti aracılığıyla bir iş akışı çalıştırırsınız. Microsoft Genomiks, ham okumalardan başlayarak hizalanmış okumalar ve varyant ilanları üreten, bir genomu hızlı bir şekilde işleyebilen ikincil analize yönelik ölçeklenebilir ve güvenli bir hizmettir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - [Python 2.7.12 +](https://www.python.org/downloads/release/python-2714/), `pip` yüklü ve `python` sistem yolunuzda. Microsoft Genomiks istemcisi Python 3 ile uyumlu değildir. 
@@ -36,7 +36,7 @@ Genomiks hesabınızı bir önceki resimde gösterildiği gibi aşağıdaki bilg
  |**Ayar**          |  **Önerilen değer**  | **Alan açıklaması** |
  |:-------------       |:-------------         |:----------            |
  |Abonelik         | Aboneliğinizin adı|Bu, Azure hizmetleriniz için faturalandırma birimidir. Aboneliğiniz hakkında ayrıntılı bilgi için bkz. [Abonelikler](https://account.azure.com/Subscriptions) |      
- |Kaynak grubu       | MyResourceGroup       |  Kaynak grupları kolay yönetim için birden fazla Azure kaynağını (depolama hesabı, genomiks hesabı vs.) tek bir grupta toplamanızı sağlar. Daha fazla bilgi için bkz. [Kaynak Grupları](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups). Geçerli kaynak grubu adları için bkz. [Adlandırma Kuralları](/azure/architecture/best-practices/resource-naming) |
+ |Kaynak grubu       | MyResourceGroup       |  Kaynak grupları kolay yönetim için birden fazla Azure kaynağını (depolama hesabı, genomiks hesabı vs.) tek bir grupta toplamanızı sağlar. Daha fazla bilgi için bkz. [Kaynak Grupları](../azure-resource-manager/management/overview.md#resource-groups). Geçerli kaynak grubu adları için bkz. [Adlandırma Kuralları](/azure/architecture/best-practices/resource-naming) |
  |Hesap adı         | MyGenomicsAccount     |Benzersiz bir hesap tanımlayıcı seçin. Geçerli adlar için bkz. [Adlandırma Kuralları](/azure/architecture/best-practices/resource-naming) |
  |Konum                   | Batı ABD 2                    |    Bu hizmet Batı ABD 2, Batı Avrupa ve Güneydoğu Asya konumlarında kullanılabilir |
 
@@ -74,7 +74,7 @@ Microsoft Genomiks istemcisini test etmek için, Genomiks hesabınızdan yapıla
 
 ![Azure portal Microsoft Genomiks bulun](./media/quickstart-run-genomics-workflow-portal/genomics-filter-box.png "Azure portal Microsoft Genomiks bulun")
 
-Az önce oluşturduğunuz Genomiks hesabını seçin, **erişim anahtarlarına**gidin ve yapılandırma dosyasını indirin.
+Az önce oluşturduğunuz Genomiks hesabını seçin, **erişim anahtarlarına** gidin ve yapılandırma dosyasını indirin.
 
 ![Microsoft Genomiks 'den yapılandırma dosyasını indirin](./media/quickstart-run-genomics-workflow-portal/genomics-mygenomicsaccount-box.png "Microsoft Genomiks 'den yapılandırma dosyasını indirin")
 
@@ -86,7 +86,7 @@ msgen list -f "<full path where you saved the config file>"
 
 ## <a name="create-a-microsoft-azure-storage-account"></a>Microsoft Azure Depolama hesabı oluşturma 
 Microsoft Genomiks hizmeti girişlerinin Azure depolama hesabında blok blobları olarak depolanmasını bekler. Ayrıca çıkış dosyalarını Azure depolama hesabında kullanıcı tarafından belirtilen bir kapsayıcıya blok blobları olarak yazar. Girişler ve çıkışlar farklı depolama hesaplarında tutulabilir.
-Azure depolama hesabınızda veri varsa Genomiks hesabınızla aynı konumda olduğundan emin olmanız gerekir. Aksi takdirde, Microsoft Genomiks hizmeti çalıştırılırken çıkış ücretleri tahakkuk edilir. Henüz bir Azure depolama hesabınız yoksa, bir tane oluşturmanız ve verilerinizi yüklemeniz gerekir. Depolama hesabının ne olduğu ve hangi hizmetleri sağladığını de kapsayan Azure [depolama hesapları hakkında](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)daha fazla bilgi edinebilirsiniz. Bir Azure depolama hesabı oluşturmak için Azure portal [depolama hesabı oluştur](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM) ' a gidin.  
+Azure depolama hesabınızda veri varsa Genomiks hesabınızla aynı konumda olduğundan emin olmanız gerekir. Aksi takdirde, Microsoft Genomiks hizmeti çalıştırılırken çıkış ücretleri tahakkuk edilir. Henüz bir Azure depolama hesabınız yoksa, bir tane oluşturmanız ve verilerinizi yüklemeniz gerekir. Depolama hesabının ne olduğu ve hangi hizmetleri sağladığını de kapsayan Azure [depolama hesapları hakkında](../storage/common/storage-account-create.md)daha fazla bilgi edinebilirsiniz. Bir Azure depolama hesabı oluşturmak için Azure portal [depolama hesabı oluştur](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM) ' a gidin.  
 
 ![Depolama hesabı oluşturma sayfası](./media/quickstart-run-genomics-workflow-portal/genomics-storage-create-blade1.png "Depolama hesabı oluşturma sayfası")
 
@@ -98,9 +98,9 @@ Depolama hesabınızı önceki görüntüde gösterildiği gibi aşağıdaki bil
  |Kaynak grubu       | MyResourceGroup       |  Genomiks hesabınızla aynı kaynak grubunu seçebilirsiniz. Geçerli kaynak grubu adları için bkz. [adlandırma kuralları](/azure/architecture/best-practices/resource-naming) |
  |Depolama hesabı adı         | MyStorageAccount     |Benzersiz bir hesap tanımlayıcı seçin. Geçerli adlar için bkz. [adlandırma kuralları](/azure/architecture/best-practices/resource-naming) |
  |Konum                  | Batı ABD 2                  | Çıkış ücretlerini azaltmak ve gecikmeyi azaltmak için Genomiks hesabınızın konumuyla aynı konumu kullanın.  | 
- |Performans                  | Standart                   | Varsayılan olarak standart seçeneği kullanılır. Standart ve Premium Depolama hesapları hakkında daha fazla bilgi için bkz. [Microsoft Azure depolama 'Ya giriş](https://docs.microsoft.com/azure/storage/common/storage-introduction)    |
+ |Performans                  | Standart                   | Varsayılan olarak standart seçeneği kullanılır. Standart ve Premium Depolama hesapları hakkında daha fazla bilgi için bkz. [Microsoft Azure depolama 'Ya giriş](../storage/common/storage-introduction.md)    |
  |Hesap türü       | BlobStorage       |  Blob depolama indirme ve yükleme işlemlerinde genel amaçlı depolama alanından 2-5 kat daha yüksek hız sunabilir. |
- |Çoğaltma                  | Yerel olarak yedekli depolama                  | Yerel olarak yedekli depolama, verilerinizi depolama hesabınızı oluşturduğunuz bölgedeki veri merkezi içinde çoğaltır. Daha fazla bilgi için bkz. [Azure Storage çoğaltma](https://docs.microsoft.com/azure/storage/common/storage-redundancy)    |
+ |Çoğaltma                  | Yerel olarak yedekli depolama                  | Yerel olarak yedekli depolama, verilerinizi depolama hesabınızı oluşturduğunuz bölgedeki veri merkezi içinde çoğaltır. Daha fazla bilgi için bkz. [Azure Storage çoğaltma](../storage/common/storage-redundancy.md)    |
  |Erişim katmanı                  | Sık Erişimli                   | Sık erişimli seçeneği, depolama hesabındaki nesnelere erişimin daha sık olduğunu belirtir.    |
 
 Ardından depolama hesabınızı oluşturmak için **gözden geçir + oluştur** ' u seçin. Genomiks hesabınızı oluştururken yaptığınız gibi, dağıtım işlemini izlemek için üstteki menü çubuğunda **Bildirimler** ' i seçebilirsiniz. 
@@ -112,7 +112,7 @@ Microsoft Genomiks hizmeti, giriş dosyaları olarak eşleştirilmiş uç okuma 
 [https://msgensampledata.blob.core.windows.net/small/chr21_1.fq.gz](https://msgensampledata.blob.core.windows.net/small/chr21_1.fq.gz)
 [https://msgensampledata.blob.core.windows.net/small/chr21_2.fq.gz](https://msgensampledata.blob.core.windows.net/small/chr21_2.fq.gz)
 
-Depolama hesabınızda biri giriş verileriniz, biri de çıkış verileriniz için olmak üzere iki blob kapsayıcısı oluşturmanız gerekir.  Giriş verilerini giriş blob kapsayıcısına yükleyin. [Microsoft Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/), [blobporter](https://github.com/Azure/blobporter)veya [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)dahil olmak üzere çeşitli araçlar kullanılabilir. 
+Depolama hesabınızda biri giriş verileriniz, biri de çıkış verileriniz için olmak üzere iki blob kapsayıcısı oluşturmanız gerekir.  Giriş verilerini giriş blob kapsayıcısına yükleyin. [Microsoft Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/), [blobporter](https://github.com/Azure/blobporter)veya [AzCopy](../storage/common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)dahil olmak üzere çeşitli araçlar kullanılabilir. 
 
 ## <a name="run-a-workflow-through-the-microsoft-genomics-service-using-the-msgen-python-client"></a>Python istemcisini kullanarak Microsoft Genomiks hizmeti üzerinden iş akışı çalıştırma `msgen`
 
@@ -144,4 +144,4 @@ msgen list -f c:\temp\config.txt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure depolama 'ya örnek giriş verileri yüklediniz ve Python istemcisi üzerinden Microsoft Genomiks hizmetine bir iş akışı gönderdiniz `msgen` . Microsoft Genomiks hizmeti ile kullanılabilecek diğer giriş dosya türleri hakkında daha fazla bilgi edinmek için şu sayfalara bakın: [eşleştirilmiş fastq](quickstart-input-pair-FASTQ.md)  |  [BAE](quickstart-input-BAM.md)  |  [birden çok fastq veya BAE](quickstart-input-multiple.md). Bu öğreticiyi, "Genomikler öğreticisi. ipynb" dosyasını indirerek ve [Jupyter](https://docs.microsoft.com/azure/notebooks/tutorial-create-run-jupyter-notebook) gibi bir not defteri okuyucusunu kullanarak dosyayı açıp çalıştırmak için [Azure Notebooks örneğimizi](https://aka.ms/genomicsnotebook) kullanarak da inceleyebilirsiniz.
+Bu makalede, Azure depolama 'ya örnek giriş verileri yüklediniz ve Python istemcisi üzerinden Microsoft Genomiks hizmetine bir iş akışı gönderdiniz `msgen` . Microsoft Genomiks hizmeti ile kullanılabilecek diğer giriş dosya türleri hakkında daha fazla bilgi edinmek için şu sayfalara bakın: [eşleştirilmiş fastq](quickstart-input-pair-FASTQ.md)  |  [BAE](quickstart-input-BAM.md)  |  [birden çok fastq veya BAE](quickstart-input-multiple.md). Bu öğreticiyi, "Genomikler öğreticisi. ipynb" dosyasını indirerek ve [Jupyter](../notebooks/tutorial-create-run-jupyter-notebook.md) gibi bir not defteri okuyucusunu kullanarak dosyayı açıp çalıştırmak için [Azure Notebooks örneğimizi](https://aka.ms/genomicsnotebook) kullanarak da inceleyebilirsiniz.

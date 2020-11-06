@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5d28b8f2ff3045c9fdf5e8a866419a22bfbc6504
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f2d8953ccae1057d7a7aa2d786fb7b641b3f6284
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321822"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392534"
 ---
 # <a name="connect-to-synapse-studio-workspace-resources-from-a-restricted-network"></a>Kısıtlanmış bir ağdan SYNAPSE Studio çalışma alanı kaynaklarına bağlanma
 
@@ -21,12 +21,11 @@ Bu makalenin hedef okuyucu, şirketin kısıtlı ağını yöneten şirket BT y�
 
 Bu makalede, kısıtlı bir ağ ortamından Azure SYNAPSE çalışma alanınıza nasıl bağlanacağınızı öğreneceksiniz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **Azure aboneliği** : Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * **Azure SYNAPSE çalışma alanı** : bir Synapse Studio yoksa, Azure SYNAPSE Analytics 'Ten bir Synapse çalışma alanı oluşturun. Çalışma alanı adı aşağıdaki 4. adımda gerekecektir.
 * **Kısıtlı ağ** : kısıtlı ağ, şirket BT Yöneticisi tarafından korunur. BT Yöneticisi, ağ ilkesini yapılandırma iznine sahiptir. Sanal ağ adı ve alt ağı aşağıdaki adım 3 ' te gerekli olacaktır.
-
 
 
 ## <a name="step-1-add-network-outbound-security-rules-to-the-restricted-network"></a>1. Adım: kısıtlanmış ağa ağ giden güvenlik kuralları ekleme
@@ -51,9 +50,9 @@ Azure portal 'ten bir Azure SYNAPSE Analytics (özel bağlantı hub 'ları) olu�
 
 ![SYNAPSE Analytics özel bağlantı hub 'ları oluşturma](./media/how-to-connect-to-workspace-from-restricted-network/private-links.png)
 
-## <a name="step-3-create-private-link-endpoint-for-synapse-studio-gateway"></a>3. Adım: SYNAPSE Studio Gateway için özel bağlantı uç noktası oluşturma
+## <a name="step-3-create-private-endpoint-for-synapse-studio-gateway"></a>3. Adım: SYNAPSE Studio Gateway için özel uç nokta oluşturma
 
-SYNAPSE Studio Gateway 'e erişmek için Azure portal adresinden özel bağlantı uç noktası oluşturmanız gerekir. Azure portal aracılığıyla " **özel bağlantı** " araması yapın. " **Özel bağlantı merkezi** " içinde " **Özel uç nokta oluştur** " u seçin ve ardından gerekli alanı doldurup oluşturun. 
+SYNAPSE Studio Gateway 'e erişmek için Azure portal adresinden özel uç nokta oluşturmanız gerekir. Azure portal aracılığıyla " **özel bağlantı** " araması yapın. " **Özel bağlantı merkezi** " içinde " **Özel uç nokta oluştur** " u seçin ve ardından gerekli alanı doldurup oluşturun. 
 
 > [!Note]
 > Bölge, SYNAPSE çalışma alanınızın bulunduğu bir ile aynı olmalıdır.
@@ -73,7 +72,7 @@ SYNAPSE Studio Gateway 'e erişmek için Azure portal adresinden özel bağlant�
 
 Özel bağlantı uç noktası oluşturulduktan sonra, SYNAPSE Studio Web aracının oturum açma sayfasına erişebilirsiniz. Ancak, bir sonraki adımı tamamlamadan, SYNAPSE çalışma alanınızın içindeki kaynaklara henüz erişemeyeceksiniz.
 
-## <a name="step-4-create-private-link-endpoints-for-synapse-studio-workspace-resource"></a>4. Adım: SYNAPSE Studio çalışma alanı kaynağı için özel bağlantı uç noktaları oluşturma
+## <a name="step-4-create-private-endpoints-for-synapse-studio-workspace-resource"></a>4. Adım: SYNAPSE Studio çalışma alanı kaynağı için özel uç noktalar oluşturma
 
 SYNAPSE Studio çalışma alanı kaynağınızın içindeki kaynaklara erişmek için, " **geliştirme** " türü " **hedef alt-kaynak** " olan en az bir özel bağlantı uç noktası oluşturmanız ve " **SQL** " veya " **sqlondemand** " türlerine sahip olan iki diğer Isteğe bağlı özel bağlantı uç noktası oluşturmanız gereken SYNAPSE Studio çalışma alanındaki kaynaklara bağlıdır. SYNAPSE Studio çalışma alanı için bu özel bağlantı noktası oluşturma, uç nokta oluşturma ile benzerdir.  
 
@@ -86,6 +85,30 @@ SYNAPSE Studio çalışma alanı kaynağınızın içindeki kaynaklara erişmek 
   * **Geliştirme** : SYNAPSE Studio çalışma alanları içindeki diğer her şeye erişmek içindir. Bu tür ile en az özel bağlantı uç noktası oluşturmanız gerekir.
 
 ![SYNAPSE Studio çalışma alanı için özel uç nokta oluşturuluyor](./media/how-to-connect-to-workspace-from-restricted-network/plinks-endpoint-ws-1.png)
+
+
+## <a name="step-5-create-private-endpoints-for-synapse-studio-workspace-linked-storage"></a>5. Adım: SYNAPSE Studio Workspace bağlantılı depolama için özel uç noktalar oluşturma
+
+SYNAPSE Studio çalışma alanındaki Depolama Gezgini ile bağlantılı depolamaya erişmek için, yukarıdaki adım 3 ' te benzer adımlarla bir özel uç nokta oluşturmanız gerekir. 
+
+" **Kaynak** " sekmesinin altındaki alanlara dikkat edin:
+* " **Kaynak türü** " Için " **Microsoft. SYNAPSE/storageaccounts** " öğesini seçin.
+* Daha önce oluşturduğunuz " **kaynak** " Için " **yourçalışmaalanıadı** " seçeneğini belirleyin.
+* " **Hedef alt-kaynak** " bölümünde uç nokta türünü seçin:
+  * **BLOB** : Azure Blob depolaması içindir.
+  * **DFS** : Azure Data Lake Storage 2. içindir.
+
+![SYNAPSE Studio Workspace bağlantılı depolama için özel uç nokta oluşturuluyor](./media/how-to-connect-to-workspace-from-restricted-network/plink-endpoint-storage.png)
+
+Artık, bağlı depolama kaynağına vNet içindeki SYNAPSE Studio çalışma alanınızdaki Depolama Gezgini 'nden erişebilirsiniz.
+
+Çalışma alanınızda, çalışma alanınızın oluşturulması sırasında " **yönetilen sanal ağı etkinleştir** " ayarı varsa,
+
+![SYNAPSE Studio Workspace bağlantılı depolama için özel uç nokta oluşturuluyor 1](./media/how-to-connect-to-workspace-from-restricted-network/ws-network-config.png)
+
+Not defterinizin belirli depolama hesabı altındaki bağlı depolama kaynaklarına erişmesini istediğiniz gibi, SYNAPSE Studio 'Nun altına bir " **yönetilen özel uç noktalar** " eklemeniz gerekir. " **Depolama hesabı adı** ", not defterinizin erişmesi gereken bir ad olmalıdır. [Veri kaynağınıza yönetilen özel uç nokta oluşturma](./how-to-create-managed-private-endpoints.md)adımlarından ayrıntılı adımlar hakkında bilgi edinin.
+
+Bu uç nokta oluşturulduktan sonra, " **onay durumu** " " **bekliyor** " olacaktır, bu depolama hesabının sahibini Azure Portal bu depolama hesabının " **Özel uç nokta bağlantıları** " sekmesinde onaylamak üzere istemeniz gerekir. Onaylandıktan sonra, Not defteriniz bu depolama hesabı altındaki bağlantılı depolama kaynaklarına erişebilir.
 
 Şimdi, All kümesi. SYNAPSE Studio çalışma alanı kaynağınızın erişimine erişebilirsiniz.
 

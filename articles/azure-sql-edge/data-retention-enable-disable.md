@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: ee2d65d66caef5cd9405d6e3d0e094de2e30ae87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9408aaa8fd5b677f012392ef4bd51c8826650eee
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90902492"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395164"
 ---
 # <a name="enable-and-disable-data-retention-policies"></a>Veri saklama ilkelerini etkinleştirme ve devre dışı bırakma
 
@@ -22,7 +22,7 @@ Bu konu, bir veritabanı ve tablo için veri saklama ilkelerinin nasıl etkinle�
 
 ## <a name="enable-data-retention-for-a-database"></a>Veritabanı için veri bekletmesini etkinleştirme
 
-Aşağıdaki örnekte, [alter database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options)kullanılarak veri bekletmenin nasıl etkinleştirileceği gösterilmektedir.
+Aşağıdaki örnekte, [alter database](/sql/t-sql/statements/alter-database-transact-sql-set-options)kullanılarak veri bekletmenin nasıl etkinleştirileceği gösterilmektedir.
 
 ```sql
 ALTER DATABASE [<DatabaseName>] SET DATA_RETENTION  ON;
@@ -38,9 +38,9 @@ FROM sys.databases;
 
 ## <a name="enable-data-retention-for-a-table"></a>Tablo için veri bekletmesini etkinleştirme
 
-Verilerin otomatik olarak Temizlenebileceği her tablo için veri saklama özelliğinin etkinleştirilmesi gerekir. Veritabanında ve tabloda veri saklama etkinleştirildiğinde, bir arka plan sistem görevi, artık kullanılmayan (eski) satırları tanımlamak ve silmek için tabloyu düzenli olarak tarar. Veri saklama, [tablo oluşturma kullanılarak](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) tablo oluşturma sırasında veya [alter table](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql)kullanılarak etkinleştirilebilir.
+Verilerin otomatik olarak Temizlenebileceği her tablo için veri saklama özelliğinin etkinleştirilmesi gerekir. Veritabanında ve tabloda veri saklama etkinleştirildiğinde, bir arka plan sistem görevi, artık kullanılmayan (eski) satırları tanımlamak ve silmek için tabloyu düzenli olarak tarar. Veri saklama, [tablo oluşturma kullanılarak](/sql/t-sql/statements/create-table-transact-sql) tablo oluşturma sırasında veya [alter table](/sql/t-sql/statements/alter-table-transact-sql)kullanılarak etkinleştirilebilir.
 
-Aşağıdaki örnek, tablo [Oluştur](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql)kullanılarak tablo için veri bekletmenin nasıl etkinleştirileceğini gösterir. 
+Aşağıdaki örnek, tablo [Oluştur](/sql/t-sql/statements/create-table-transact-sql)kullanılarak tablo için veri bekletmenin nasıl etkinleştirileceğini gösterir. 
 
 ```sql
 CREATE TABLE [dbo].[data_retention_table] 
@@ -63,7 +63,7 @@ CONSTRAINT [pk_current_data_retention_table] PRIMARY KEY CLUSTERED ([product_cod
     - DateTimeOffset
 - RETENTION_PERIOD-bir tamsayı değer ve ardından bir birim tanımlayıcısı. İzin verilen birimler gün, gün, hafta, hafta, ay, ay, yıl ve yıl.
 
-Aşağıdaki örnekte, [alter table](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql)kullanılarak tablo için veri bekletmenin nasıl etkinleştirileceği gösterilmektedir.  
+Aşağıdaki örnekte, [alter table](/sql/t-sql/statements/alter-table-transact-sql)kullanılarak tablo için veri bekletmenin nasıl etkinleştirileceği gösterilmektedir.  
 
 ```sql
 Alter Table [dbo].[data_retention_table]
@@ -101,7 +101,7 @@ Veritabanındaki ve tablodaki veri saklama ayarı, eski satırlar için oto temi
 
 ## <a name="disable-data-retention-on-a-table"></a>Tabloda veri bekletmeyi devre dışı bırakma 
 
-Veri saklama bir tabloda [alter table](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql)kullanılarak devre dışı bırakılabilir. Aşağıdaki komut, bir tabloda veri bekletmesini devre dışı bırakmak için kullanılabilir.
+Veri saklama bir tabloda [alter table](/sql/t-sql/statements/alter-table-transact-sql)kullanılarak devre dışı bırakılabilir. Aşağıdaki komut, bir tabloda veri bekletmesini devre dışı bırakmak için kullanılabilir.
 
 ```sql
 Alter Table [dbo].[data_retention_table]
@@ -110,7 +110,7 @@ Set (DATA_DELETION = OFF)
 
 ## <a name="disable-data-retention-on-a-database"></a>Veritabanında veri bekletmesini devre dışı bırakma
 
-Veri saklama bir tabloda [alter database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options)kullanılarak devre dışı bırakılabilir. Aşağıdaki komut bir veritabanında veri bekletmesini devre dışı bırakmak için kullanılabilir.
+Veri saklama bir tabloda [alter database](/sql/t-sql/statements/alter-database-transact-sql-set-options)kullanılarak devre dışı bırakılabilir. Aşağıdaki komut bir veritabanında veri bekletmesini devre dışı bırakmak için kullanılabilir.
 
 ```sql
 ALTER DATABASE <DatabaseName> SET DATA_RETENTION  OFF;

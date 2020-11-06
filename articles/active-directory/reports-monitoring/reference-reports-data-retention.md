@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/24/2020
+ms.date: 11/05/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5deb84cdc2dee61474c9f2bd1f93311d89f8918
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 98b9a2da11ad32e35704a49cfcf1788f95276dda
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308875"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393464"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Azure AD deposu verileri ne kadar süreyle bildiriyor?
 
@@ -51,15 +51,9 @@ Bu makalede, Azure Active Directory farklı etkinlik raporları için veri bekle
 
 ---
 
-### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>Bir Azure AD Premium lisansı aldıktan sonra geçen aya ait verileri görebilir miyim?
-
-Yakın zamanda bir premium sürüme (deneme sürümü dahil) geçiş yaptıysanız, başlangıçta verileri en fazla 7 güne kadar görebilirsiniz. Veriler birikme sırasında son 30 güne ait verileri görebilirsiniz.
-
----
-
 ### <a name="when-does-azure-ad-start-collecting-security-signal-data"></a>Azure AD, güvenlik sinyali verilerini toplamaya ne zaman başlar?  
 
-Güvenlik sinyalleri için, **kimlik koruma merkezini**kullanmayı tercih ettiğinizde koleksiyon işlemi başlar. 
+Güvenlik sinyalleri için, **kimlik koruma merkezini** kullanmayı tercih ettiğinizde koleksiyon işlemi başlar. 
 
 ---
 
@@ -81,5 +75,11 @@ Azure Izleyici 'yi kullanarak bir Azure depolama hesabına yönlendirerek, yukar
 | :--            | :--           | :--                 | :--                 |
 | Risk altındaki kullanıcılar  | 7 gün        | 30 gün             | 90 gün             |
 | Riskli oturum açma işlemleri | 7 gün        | 30 gün             | 90 gün             |
+
+---
+
+### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>Bir Azure AD Premium lisansı aldıktan sonra geçen aya ait verileri görebilir miyim?
+
+**Hayır** , bunu yapamazsınız. Azure, ücretsiz sürüm için yedi güne kadar etkinlik verisi depolar. Bu, ücretsiz ' dan bir Premium sürümüne geçiş yaptığınızda en fazla 7 günlük veriyi görebileceğiniz anlamına gelir.
 
 ---

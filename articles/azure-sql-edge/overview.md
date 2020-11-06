@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: e34cd0907320f96f2846c1f424e678555381cccc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a74e12a5e9bdd2dfdbc6ac07b66798e517f6f426
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907121"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395079"
 ---
 # <a name="what-is-azure-sql-edge"></a>Azure SQL Edge nedir?
 
 Azure SQL Edge, IoT ve IoT Edge dağıtımları için iyileştirilmiş bir ilişkisel veritabanı altyapısıdır. IoT uygulamaları ve çözümleri için yüksek performanslı veri depolama ve işleme katmanı oluşturma olanakları sağlar. Azure SQL Edge, çeşitli modern IoT uygulamaları için doğru seçim yapan, ilişkisel ve JSON, grafik ve zaman serisi verileri gibi ilişkisel olmayan verileri akışa almak, işlemek ve analiz etmek için yetenekler sağlar.
 
-Azure SQL Edge, sektör lideri performans, güvenlik ve sorgu işleme olanakları sağlayan [SQL Server veritabanı altyapısının](/sql/sql-server/sql-server-technical-documentation)en son sürümlerinde oluşturulmuştur. Azure SQL Edge, [SQL Server](/sql/sql-server/sql-server-technical-documentation) ve [Azure SQL](https://docs.microsoft.com/azure/azure-sql/)ile aynı altyapıda oluşturulduğundan, uygulama ve çözümlerin geliştirilmesini daha kolay ve hızlı hale getiren Transact-SQL (T-SQL) programlama yüzeyi alanını sağlar ve IoT Edge cihazları, veri merkezleri ve bulut arasındaki uygulamaları doğrudan ileri sarma olarak oluşturur.
+Azure SQL Edge, sektör lideri performans, güvenlik ve sorgu işleme olanakları sağlayan [SQL Server veritabanı altyapısının](/sql/sql-server/sql-server-technical-documentation)en son sürümlerinde oluşturulmuştur. Azure SQL Edge, [SQL Server](/sql/sql-server/sql-server-technical-documentation) ve [Azure SQL](../azure-sql/index.yml)ile aynı altyapıda oluşturulduğundan, uygulama ve çözümlerin geliştirilmesini daha kolay ve hızlı hale getiren Transact-SQL (T-SQL) programlama yüzeyi alanını sağlar ve IoT Edge cihazları, veri merkezleri ve bulut arasındaki uygulamaları doğrudan ileri sarma olarak oluşturur.
 
 Channel 9 ' da Azure SQL Edge videosu nedir:
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/What-is-Azure-SQL-Edge/player]

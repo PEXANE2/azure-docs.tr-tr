@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 16ad757fc00439bb390a7e0dea902901c468dd1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31a454c93ad5192f387306a8ec557c4e4d3ae991
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90946740"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395300"
 ---
 # <a name="deploy-an-azure-sql-edge-container-in-kubernetes"></a>Kubernetes 'te Azure SQL Edge kapsayıcısı dağıtma
 
@@ -43,12 +43,12 @@ Aşağıdaki diyagramda, kapsayıcıyı barındıran düğüm `azure-sql-edge` b
 
 ![Düğüm başarısız olduktan sonra bir Kubernetes kümesinde Azure SQL Edge](media/deploy-kubernetes/kubernetes-sql-edge-after-node-fail.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **Kubernetes kümesi**
    - Öğretici bir Kubernetes kümesi gerektirir. Bu adımlar, kümeyi yönetmek için [kubectl](https://kubernetes.io/docs/user-guide/kubectl/) kullanır. 
 
-   - Bu öğreticinin amacı doğrultusunda Azure Kubernetes hizmetini kullanarak Azure SQL Edge 'i dağıtacağız. İle AKS 'de tek düğümlü bir Kubernetes kümesi oluşturup bağlamak için bkz. [Azure Kubernetes Service (AKS) kümesi dağıtma](https://docs.microsoft.com/azure/aks/tutorial-kubernetes-deploy-cluster) `kubectl` . 
+   - Bu öğreticinin amacı doğrultusunda Azure Kubernetes hizmetini kullanarak Azure SQL Edge 'i dağıtacağız. İle AKS 'de tek düğümlü bir Kubernetes kümesi oluşturup bağlamak için bkz. [Azure Kubernetes Service (AKS) kümesi dağıtma](../aks/tutorial-kubernetes-deploy-cluster.md) `kubectl` . 
 
    >[!NOTE]
    >Düğüm hatasına karşı korunmak için, bir Kubernetes kümesi birden fazla düğüm gerektirir.
@@ -108,7 +108,7 @@ Kubernetes kümesinde [kalıcı bir birim](https://kubernetes.io/docs/concepts/s
          storage: 8Gi
    ```
 
-   Dosyayı kaydedin (örneğin, **PVC. YAML**).
+   Dosyayı kaydedin (örneğin, **PVC. YAML** ).
 
 2. Kubernetes 'te kalıcı birim talebi oluşturun.
 
@@ -241,7 +241,7 @@ spec:
    >[!NOTE]
    >`LoadBalancer`Hizmet türünü kullanarak, 1433 numaralı bağlantı noktasında Azure SQL Edge örneğine uzaktan erişilebilir (Internet üzerinden).
 
-   Dosyayı kaydedin (örneğin, **sqledgedeploy. YAML**).
+   Dosyayı kaydedin (örneğin, **sqledgedeploy. YAML** ).
 
 2. Dağıtımı oluşturun.
 
@@ -318,8 +318,7 @@ Bu öğreticide, yüksek kullanılabilirlik için Azure SQL Edge kapsayıcılar�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Kubernetes’e giriş](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+- [Kubernetes’e giriş](../aks/intro-kubernetes.md)
 - [SQL Edge 'de ONNX ile Machine Learning ve yapay zeka](onnx-overview.md).
 - [IoT Edge kullanarak SQL Edge ile uçtan uca IoT çözümü oluşturma](tutorial-deploy-azure-resources.md).
 - [Azure SQL Edge 'de veri akışı](stream-data.md)
-

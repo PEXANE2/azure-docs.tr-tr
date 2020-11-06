@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: ff14f8a9f236701889aea95911f2a1e381eabf83
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fce098767fffd36376399bbd9396699e3d9fbfd3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947887"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392087"
 ---
 # <a name="deploy-azure-sql-edge-with-docker"></a>Docker ile Azure SQL Edge dağıtma
 
@@ -22,13 +22,13 @@ Bu hızlı başlangıçta, Azure SQL Edge kapsayıcı görüntüsünü çekmek v
 
 Bu görüntü, Ubuntu 18,04 tabanlı Azure SQL Edge 'ten oluşur. Linux üzerinde veya Mac/Windows için Docker ile Docker motoru 1.8 + ile kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Docker Engine 1.8 + desteklenen Linux dağıtımında veya Mac/Windows için Docker. Daha fazla bilgi için bkz. [Docker 'ı Install](https://docs.docker.com/engine/installation/). Azure SQL Edge görüntüleri Ubuntu 18,04 tabanlı olduğundan, Ubuntu 18,04 Docker konağını kullanmanız önerilir.
 - Docker **overlay2** depolama sürücüsü. Bu, çoğu kullanıcı için varsayılandır. Bu depolama sağlayıcısını kullanmadığınız ve değiştirmeniz gerektiğini fark ederseniz lütfen [overlay2 'yi yapılandırmak için Docker belgelerindeki](https://docs.docker.com/storage/storagedriver/overlayfs-driver/#configure-docker-with-the-overlay-or-overlay2-storage-driver)yönergeler ve Uyarılar bölümüne bakın.
 - En az 10 GB disk alanı.
 - En az 1 GB RAM.
-- [Azure SQL Edge Için donanım gereksinimleri](https://docs.microsoft.com/azure/azure-sql-edge/features#hardware-support).
+- [Azure SQL Edge Için donanım gereksinimleri](./features.md#hardware-support).
 
 
 ## <a name="pull-and-run-the-container-image"></a>Kapsayıcı görüntüsünü çekme ve çalıştırma
@@ -70,7 +70,7 @@ Aşağıdaki adımları başlatmadan önce, bu makalenin üst kısmında tercih 
     | Parametre | Açıklama |
     |-----|-----|
     | **-e "ACCEPT_EULA = Y"** |  [Son Kullanıcı lisanslama sözleşmesinin](https://go.microsoft.com/fwlink/?linkid=2139274)kabul edildiğini onaylamak için **ACCEPT_EULA** değişkenini herhangi bir değere ayarlayın. Azure SQL Edge görüntüsü için gerekli ayar. |
-    | **-e "MSSQL_SA_PASSWORD = sizin güçlü (!) Parolayı** | En az 8 karakter olan ve [Azure SQL Edge parola gereksinimlerini](https://docs.microsoft.com/sql/relational-databases/security/password-policy)karşılayan kendi güçlü parolanızı belirtin. Azure SQL Edge görüntüsü için gerekli ayar. |
+    | **-e "MSSQL_SA_PASSWORD = sizin güçlü (!) Parolayı** | En az 8 karakter olan ve [Azure SQL Edge parola gereksinimlerini](/sql/relational-databases/security/password-policy)karşılayan kendi güçlü parolanızı belirtin. Azure SQL Edge görüntüsü için gerekli ayar. |
     | **-p 1433:1433** | Konak ortamında (ilk değer) bir TCP bağlantı noktasını kapsayıcıda bir TCP bağlantı noktasıyla (ikinci değer) eşleyin. Bu örnekte, Azure SQL Edge, kapsayıcıda TCP 1433 ' i dinliyor ve bu bağlantı noktası, ana bilgisayarda 1433 ' de kullanıma sunuldu. |
     | **--adı azuresqledge** | Rastgele oluşturulmuş bir tane yerine kapsayıcı için özel bir ad belirtin. Birden fazla kapsayıcı çalıştırırsanız, bu adı yeniden kullanamazsınız. |
     | **-d** | Kapsayıcıyı arka planda çalıştırma (daemon) |
@@ -83,7 +83,7 @@ Aşağıdaki adımları başlatmadan önce, bu makalenin üst kısmında tercih 
     sudo docker ps -a
    ```
 
-4. **Durum** sütununda bir durum **varsa, Azure**SQL Edge kapsayıcıda çalışır ve **bağlantı noktaları** sütununda belirtilen bağlantı noktasını dinler. Azure SQL Edge Kapsayıcınızın **durum** sütununda **çıkıldı**görünüyorsa, Azure SQL Edge belgelerinin sorun giderme bölümüne bakın.
+4. **Durum** sütununda bir durum **varsa, Azure** SQL Edge kapsayıcıda çalışır ve **bağlantı noktaları** sütununda belirtilen bağlantı noktasını dinler. Azure SQL Edge Kapsayıcınızın **durum** sütununda **çıkıldı** görünüyorsa, Azure SQL Edge belgelerinin sorun giderme bölümüne bakın.
 
     `-h`(Ana bilgisayar adı) parametresi de kullanışlıdır, ancak kolaylık olması için bu öğreticide kullanılmaz. Bu, kapsayıcının iç adını özel bir değer olarak değiştirir. Bu, aşağıdaki Transact-SQL sorgusunda döndürülen addır:
 
@@ -114,7 +114,7 @@ Aşağıdaki adımları başlatmadan önce, bu makalenin üst kısmında tercih 
 
 ## <a name="connect-to-azure-sql-edge"></a>Azure SQL Edge 'e bağlanma
 
-Aşağıdaki adımlar, Azure SQL Edge 'e bağlanmak için kapsayıcının içindeki **sqlcmd**Azure SQL Edge komut satırı aracını kullanır.
+Aşağıdaki adımlar, Azure SQL Edge 'e bağlanmak için kapsayıcının içindeki **sqlcmd** Azure SQL Edge komut satırı aracını kullanır.
 
 > [!NOTE]
 > sqlcmd Aracı, SQL Edge kapsayıcıları 'nın ARM64 sürümünde kullanılamaz.

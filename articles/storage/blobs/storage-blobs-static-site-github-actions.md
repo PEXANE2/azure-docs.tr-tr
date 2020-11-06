@@ -9,28 +9,31 @@ ms.reviewer: dineshm
 ms.date: 09/11/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure
-ms.openlocfilehash: 919fa0d7b6dff0361e4439b442bcfe9648ed8677
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7213cea0796197e230cc5914f7cebfac7c69ae49
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776400"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395742"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>Azure Storage 'da statik Web sitenizi dağıtmak için bir GitHub eylemleri iş akışı ayarlama
 
-Bir Azure depolama blobuna statik bir site dağıtmak için bir iş akışı kullanarak [GitHub eylemleri](https://docs.github.com/en/actions) ile çalışmaya başlayın. GitHub eylemleri iş akışını ayarladıktan sonra, sitenizin kodunda değişiklik yaptığınızda sitenizi GitHub 'dan otomatik olarak Azure 'a dağıtabilirsiniz. 
+Bir Azure depolama hesabına statik bir site dağıtmak için bir iş akışı kullanarak [GitHub eylemleri](https://docs.github.com/en/actions) ile çalışmaya başlayın. GitHub eylemleri iş akışını ayarladıktan sonra, sitenizin kodunda değişiklik yaptığınızda sitenizi GitHub 'dan otomatik olarak Azure 'a dağıtabilirsiniz.
 
 > [!NOTE]
 > [Azure statik Web Apps](https://docs.microsoft.com/azure/static-web-apps/)kullanıyorsanız, El Ile GitHub eylemleri iş akışını ayarlamanıza gerek yoktur.
-> Azure statik Web Apps, sizin için otomatik olarak bir GitHub iş akışı oluşturur. 
+> Azure statik Web Apps, sizin için otomatik olarak bir GitHub eylemleri iş akışı oluşturur. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bir Azure aboneliği ve GitHub hesabı. 
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Statik Web sitesi kodunuzla bir GitHub hesabı. GitHub hesabınız yoksa [ücretsiz kaydolun](https://github.com/join).  
-- Azure depolamada barındırılan, çalışan bir statik Web sitesi. [Azure depolama 'da statik bir Web sitesini nasıl barındıracağınızı](storage-blob-static-website-how-to.md)öğrenin. Statik Web siteniz bir [Azure CDN](static-website-content-delivery-network.md)içermelidir.
+- Statik Web sitesi kodunuzla bir GitHub deposu. GitHub hesabınız yoksa [ücretsiz kaydolun](https://github.com/join).  
+- Azure depolamada barındırılan, çalışan bir statik Web sitesi. [Azure depolama 'da statik bir Web sitesini nasıl barındıracağınızı](storage-blob-static-website-how-to.md)öğrenin. Bu örneği izlemek için, [Azure CDN](static-website-content-delivery-network.md)de dağıtmanız gerekir.
+
+> [!NOTE]
+> Dünyanın dört bir yanındaki kullanıcılarınıza gecikme süresini azaltmak ve depolama hesabınıza işlem sayısını azaltmak için bir Content Delivery Network (CDN) kullanılması yaygındır. Bulut tabanlı bir depolama hizmetine statik içerik dağıtmak, pahalı bir işlem örneği gereksinimini azaltabilir. Daha fazla bilgi için bkz. [statik Içerik barındırma stili](/azure/architecture/patterns/static-content-hosting).
 
 ## <a name="generate-deployment-credentials"></a>Dağıtım kimlik bilgileri oluştur
 
@@ -42,7 +45,7 @@ Yer tutucusunu `myStaticSite` Azure Storage 'da barındırılan sitenizin adıyl
    az ad sp create-for-rbac --name {myStaticSite} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group} --sdk-auth
 ```
 
-Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ ve kaynak grubu adıyla değiştirin. Çıktı, aşağıda gösterilene benzer App Service uygulamanıza erişim sağlayan rol atama kimlik bilgileri içeren bir JSON nesnesidir. Bu JSON nesnesini daha sonra kopyalayın.
+Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ ve kaynak grubu adıyla değiştirin. Çıktı, aşağıda gösterilene benzer depolama hesabınıza erişim sağlayan rol atama kimlik bilgileri içeren bir JSON nesnesidir. Bu JSON nesnesini daha sonra kopyalayın.
 
 ```output 
   {
@@ -61,11 +64,11 @@ Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ ve kaynak grubu adıyl
 
 1. [GitHub](https://github.com/)'da deponuza gözatamazsınız.
 
-1. **Yeni gizli > > ayarlar**' ı seçin.
+1. **Yeni gizli > > ayarlar** ' ı seçin.
 
-1. Azure CLı komutundan tüm JSON çıkışını gizli dizi değeri alanına yapıştırın. Gizli dizi adını gibi verin `AZURE_CREDENTIALS` .
+1. Azure CLı komutundan tüm JSON çıkışını gizli dizi değeri alanına yapıştırın. Gizli dizi gibi bir ad verin `AZURE_CREDENTIALS` .
 
-    Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örneğin:
+    Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örnek:
 
     ```yaml
     - uses: azure/login@v1
@@ -77,9 +80,9 @@ Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ ve kaynak grubu adıyl
 
 1. GitHub deponuz için **eylemlere** gidin. 
 
-    :::image type="content" source="media/storage-blob-static-website/storage-blob-github-actions-header.png" alt-text="GitHub eylemleri menü öğesi&quot;:::
+    :::image type="content" source="media/storage-blob-static-website/storage-blob-github-actions-header.png" alt-text="GitHub eylemleri menü öğesi":::
 
-1. **İş akışınızı kendiniz ayarlama**seçeneğini belirleyin. 
+1. **İş akışınızı kendiniz ayarlama** seçeneğini belirleyin. 
 
 1. `on:`İş akışı dosyanızın bölümünden sonraki her şeyi silin. Örneğin, kalan iş akışınız şöyle görünebilir. 
 
@@ -128,7 +131,7 @@ Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ ve kaynak grubu adıyl
         with:
             azcliversion: 2.0.72
             inlineScript: |
-            az cdn endpoint purge --content-paths  &quot;/*&quot; --profile-name &quot;CDN_PROFILE_NAME&quot; --name &quot;CDN_ENDPOINT&quot; --resource-group &quot;RESOURCE_GROUP&quot;
+            az cdn endpoint purge --content-paths  "/*" --profile-name "CDN_PROFILE_NAME" --name "CDN_ENDPOINT" --resource-group "RESOURCE_GROUP"
     ``` 
 
 1. Azure oturumunu kapatmak için bir eylem ekleyerek iş akışınızı doldurun. Tamamlanan iş akışı aşağıda verilmiştir. Dosya, `.github/workflows` deponuzdaki klasörde görüntülenir.
@@ -162,7 +165,7 @@ Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ ve kaynak grubu adıyl
         with:
             azcliversion: 2.0.72
             inlineScript: |
-            az cdn endpoint purge --content-paths  &quot;/*&quot; --profile-name &quot;CDN_PROFILE_NAME&quot; --name &quot;CDN_ENDPOINT&quot; --resource-group &quot;RESOURCE_GROUP"
+            az cdn endpoint purge --content-paths  "/*" --profile-name "CDN_PROFILE_NAME" --name "CDN_ENDPOINT" --resource-group "RESOURCE_GROUP"
             # Azure logout 
         - name: logout
           run: |
@@ -175,96 +178,11 @@ Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ ve kaynak grubu adıyl
 
 1. İş akışınızın çalışmasının ayrıntılı günlüklerini görmek için ilk sonucu açın. 
  
-    :::image type="content" source="../media/index/github-actions-run.png" alt-text="GitHub eylemleri menü öğesi&quot;:::
-
-1. **İş akışınızı kendiniz ayarlama**seçeneğini belirleyin. 
-
-1. `on:`İş akışı dosyanızın bölümünden sonraki her şeyi silin. Örneğin, kalan iş akışınız şöyle görünebilir. 
-
-    ```yaml
-    name: CI
-
-    on:
-    push:
-        branches: [ master ]
-    pull_request:
-        branches: [ master ]
-    ```
-
-1. İş akışınızı yeniden adlandırın `Blob storage website CI` ve kullanıma alma ve oturum açma eylemlerini ekleyin. Bu eylemler, site kodunuzu kullanıma alacak ve `AZURE_CREDENTIALS` daha önce oluşturduğunuz GitHub gizliliğini kullanarak Azure ile kimlik doğrulamasından acaktır. 
-
-    ```yaml
-    name: Blob storage website CI
-
-    on:
-    push:
-        branches: [ master ]
-    pull_request:
-        branches: [ master ]
-
-    jobs:
-      build:
-        runs-on: ubuntu-latest
-        steps:            
-        - uses: actions/checkout@v2
-        - uses: azure/login@v1
-          with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-    ```
-
-1. Kodunuzu blob depolamaya yüklemek ve CDN uç noktanızı temizlemek için Azure CLı eylemini kullanın. İçin `az storage blob upload-batch` , yer tutucusunu depolama hesabınızın adıyla değiştirin. Betik `$web` kapsayıcıya yükleyecek. İçin `az cdn endpoint purge` , yer TUTUCULARı CDN profil adınız, CDN uç noktası adı ve kaynak grubuyla değiştirin.
-
-    ```yaml
-        - name: Upload to blob storage
-        uses: azure/CLI@v1
-        with:
-            azcliversion: 2.0.72
-            inlineScript: |
-                az storage blob upload-batch --account-name <STORAGE_ACCOUNT_NAME> -d '$web' -s .
-        - name: Purge CDN endpoint
-        uses: azure/CLI@v1
-        with:
-            azcliversion: 2.0.72
-            inlineScript: |
-            az cdn endpoint purge --content-paths  &quot;/*&quot; --profile-name &quot;CDN_PROFILE_NAME&quot; --name &quot;CDN_ENDPOINT&quot; --resource-group &quot;RESOURCE_GROUP&quot;
-    ``` 
-
-1. Azure oturumunu kapatmak için bir eylem ekleyerek iş akışınızı doldurun. Tamamlanan iş akışı aşağıda verilmiştir. Dosya, `.github/workflows` deponuzdaki klasörde görüntülenir.
-
-    ```yaml
-   name: Blob storage website CI
-
-    on:
-    push:
-        branches: [ master ]
-    pull_request:
-        branches: [ master ]
-
-    jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v2
-        - name: Azure Login
-        uses: azure/login@v1
-        with:
-            creds: ${{ secrets.AZURE_CREDENTIALS }}    
-        - name: Azure CLI script
-        uses: azure/CLI@v1
-        with:
-            azcliversion: 2.0.72
-            inlineScript: |
-                az storage blob upload-batch --account-name <STORAGE_ACCOUNT_NAME> -d '$web' -s .
-        - name: Azure CLI script
-        uses: azure/CLI@v1
-        with:
-            azcliversion: 2.0.72
-            inlineScript: |
-            az cdn endpoint purge --content-paths  &quot;/*&quot; --profile-name &quot;CDN_PROFILE_NAME&quot; --name &quot;CDN_ENDPOINT&quot; --resource-group &quot;RESOURCE_GROUP":::
+    :::image type="content" source="../media/index/github-actions-run.png" alt-text="GitHub eylemlerinin çalışması günlüğü":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Azure statik sitenize ve deponuza artık gerek duyulmadığında, kaynak grubunu ve GitHub deponuzu silerek dağıttığınız kaynakları temizleyin. 
+Statik Web siteniz ve GitHub deponuz artık gerekmiyorsa, kaynak grubunu ve GitHub deponuzu silerek dağıttığınız kaynakları temizleyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

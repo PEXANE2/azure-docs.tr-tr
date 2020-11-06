@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 7bee7bede0219f41d9d5e56214a6dc1b94977cb5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 20173c4ba02f53a526167a5a8e22bd0cedc85594
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322742"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393227"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Öğretici: "Hello World!" Çalıştır Python betiği (Bölüm 2/4)
 
@@ -33,7 +33,7 @@ Bu öğreticide şunları yapacaksınız:
 > * "Hello World!" öğesini gönder ve Çalıştır SCRIPT.
 > * Kod çıktılarınızı bulutta görüntüleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Zaten bir Azure Machine Learning çalışma alanınız yoksa [Bölüm 1](tutorial-1st-experiment-sdk-setup-local.md) ' in tamamlanması.
 - Python dili ve makine öğrenimi iş akışlarının giriş bilgisi.
@@ -138,6 +138,14 @@ Denetim betiğinin nasıl çalıştığına ilişkin bir açıklama aşağıda v
 ## <a name="submit-and-run-your-code-in-the-cloud"></a>Kodunuzu buluta gönderme ve çalıştırma
 
 Denetim betiğinizi çalıştırın, bu, `hello.py` [Kurulum öğreticisinde](tutorial-1st-experiment-sdk-setup-local.md)oluşturduğunuz işlem kümesinde sırayla çalışır.
+
+İlk çalıştırmanın tamamlanması 5-10 dakika sürer. Bunun nedeni aşağıdakiler olur:
+
+* Bir Docker görüntüsü bulutta yerleşiktir
+* İşlem kümesi 0 ' dan 1 düğümden yeniden boyutlandırılır
+* Docker görüntüsü, işlem için indirilir. 
+
+Sonraki çalıştırmalar, Docker görüntüsü işlem üzerinde önbelleğe alındığı için çok daha hızlıdır (~ 15 saniye), ilk çalıştırma tamamlandıktan sonra kodu aşağıdaki kodu yeniden göndererek test edebilirsiniz.
 
 ```bash
 python 03-run-hello.py

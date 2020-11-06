@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: 45ce874ffb626f63b2239c66afdefd091114cbd2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f547f0b3219889b54364c4805c2dd5b183a9861a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888135"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392376"
 ---
 # <a name="manage-historical-data-with-retention-policy"></a>Geçmiş verilerini bekletme ilkesiyle yönetme
 
@@ -66,7 +66,7 @@ Mükemmel veri sıkıştırma ve verimli bekletme Temizleme, iş yükünüz hız
 
 ## <a name="monitoring-data-retention-cleanup"></a>Veri bekletme temizleme işlemini izleme
 
-Veri bekletme ilkesi temizleme işlemleri, Azure SQL Edge 'de genişletilmiş olaylar (XEvents) kullanılarak izlenebilir. Genişletilmiş olaylar hakkında daha fazla bilgi için bkz. [XEvents genel bakış](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events). 
+Veri bekletme ilkesi temizleme işlemleri, Azure SQL Edge 'de genişletilmiş olaylar (XEvents) kullanılarak izlenebilir. Genişletilmiş olaylar hakkında daha fazla bilgi için bkz. [XEvents genel bakış](/sql/relational-databases/extended-events/extended-events). 
 
 Aşağıdaki altı genişletilmiş olay Temizleme işlemlerinin durumunu izlemeye yardımcı olur. 
 

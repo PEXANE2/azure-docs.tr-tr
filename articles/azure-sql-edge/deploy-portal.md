@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: f90d84b5897175dbda0a24591893c4e41a06822a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5d7d232ada814d5d3c30e7b012c6289f847d641f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973589"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395097"
 ---
 # <a name="deploy-azure-sql-edge"></a>Azure SQL Edge 'i dağıtma 
 
@@ -38,7 +38,7 @@ Azure Marketi, [IoT Edge modüller](https://azuremarketplace.microsoft.com/marke
 
    ![Market 'te SQL Edge](media/deploy-portal/find-offer-marketplace.png)
 
-2. Gereksinimlerinize en iyi eşleşen yazılım planını seçin ve **Oluştur**' a tıklayın. <br><br>
+2. Gereksinimlerinize en iyi eşleşen yazılım planını seçin ve **Oluştur** ' a tıklayın. <br><br>
 
    ![Doğru yazılım planını seçin](media/deploy-portal/pick-correct-plan.png)
 
@@ -50,9 +50,9 @@ Azure Marketi, [IoT Edge modüller](https://azuremarketplace.microsoft.com/marke
    |IoT Hub   |  IoT Edge cihazının kaydedildiği IoT Hub adı ve sonra "bir cihaza dağıt" seçeneğini belirleyin|
    |IoT Edge cihaz adı  |  SQL Edge 'in dağıtılacağı IoT Edge cihazının adı |
 
-4. **Cihazdaki modülleri ayarla:** sayfasında, **IoT Edge modüller**altında Azure SQL Edge modülüne tıklayın. Varsayılan modül adı *Azuresqledge*olarak ayarlanır. 
+4. **Cihazdaki modülleri ayarla:** sayfasında, **IoT Edge modüller** altında Azure SQL Edge modülüne tıklayın. Varsayılan modül adı *Azuresqledge* olarak ayarlanır. 
 
-5. **Güncelleştirme IoT Edge modülü** dikey penceresinin *modül ayarları* bölümünde *IoT Edge modül adı*için Istenen değerleri belirtin, ilke ve *istenen durum*' u *yeniden başlatın* . 
+5. **Güncelleştirme IoT Edge modülü** dikey penceresinin *modül ayarları* bölümünde *IoT Edge modül adı* için Istenen değerleri belirtin, ilke ve *istenen durum* ' u *yeniden başlatın* . 
 
    > [!IMPORTANT]    
    > Modülün **görüntü URI** ayarlarını değiştirmeyin veya güncelleştirmeyin.
@@ -106,13 +106,13 @@ Azure Marketi, [IoT Edge modüller](https://azuremarketplace.microsoft.com/marke
    > [!IMPORTANT]    
    > `PlanId`Oluşturma yapılandırması ayarında tanımlanan çalıştırılmaları değişkenini değiştirmeyin. Bu değer değiştirilirse Azure SQL Edge kapsayıcısı başlayamaz. 
    
-8. **Güncelleştirme IoT Edge modülü** bölmesinde **Güncelleştir**' e tıklayın.
-9. **Cihazdaki modülleri ayarla** sayfasında ileri ' ye tıklayın. dağıtımınız için rotalar tanımlamanız gerekiyorsa **yollar >** . Aksi takdirde, **gözden geçir + oluştur**seçeneğine tıklayın. Yolları yapılandırma hakkında daha fazla bilgi için bkz. [IoT Edge modülleri dağıtma ve yolları oluşturma](../iot-edge/module-composition.md).
-11. **Cihazdaki modülleri ayarla** sayfasında **Oluştur**' a tıklayın.
+8. **Güncelleştirme IoT Edge modülü** bölmesinde **Güncelleştir** ' e tıklayın.
+9. **Cihazdaki modülleri ayarla** sayfasında ileri ' ye tıklayın. dağıtımınız için rotalar tanımlamanız gerekiyorsa **yollar >** . Aksi takdirde, **gözden geçir + oluştur** seçeneğine tıklayın. Yolları yapılandırma hakkında daha fazla bilgi için bkz. [IoT Edge modülleri dağıtma ve yolları oluşturma](../iot-edge/module-composition.md).
+11. **Cihazdaki modülleri ayarla** sayfasında **Oluştur** ' a tıklayın.
 
 ## <a name="connect-to-azure-sql-edge"></a>Azure SQL Edge 'e bağlanma
 
-Aşağıdaki adımlar, Azure SQL Edge 'e bağlanmak için kapsayıcının içindeki **sqlcmd**Azure SQL Edge komut satırı aracını kullanır.
+Aşağıdaki adımlar, Azure SQL Edge 'e bağlanmak için kapsayıcının içindeki **sqlcmd** Azure SQL Edge komut satırı aracını kullanır.
 
 > [!NOTE]      
 > SQL komut satırı araçları (sqlcmd), Azure SQL Edge kapsayıcıları 'nın ARM64 sürümünde kullanılamaz.
@@ -212,7 +212,7 @@ Sonra yeni bir tablo oluşturun `Inventory` ve iki yeni satır ekleyin.
 
 ## <a name="connect-from-outside-the-container"></a>Kapsayıcının dışından Bağlan
 
-SQL bağlantılarını destekleyen herhangi bir harici Linux, Windows veya macOS aracından Azure SQL Edge Örneğinizde SQL sorgularını bağlanabilir ve çalıştırabilirsiniz. Dışından bir SQL Edge kapsayıcısına bağlanma hakkında daha fazla bilgi için bkz. [Azure SQL Edge 'e bağlanma ve sorgulama](https://docs.microsoft.com/azure/azure-sql-edge/connect).
+SQL bağlantılarını destekleyen herhangi bir harici Linux, Windows veya macOS aracından Azure SQL Edge Örneğinizde SQL sorgularını bağlanabilir ve çalıştırabilirsiniz. Dışından bir SQL Edge kapsayıcısına bağlanma hakkında daha fazla bilgi için bkz. [Azure SQL Edge 'e bağlanma ve sorgulama](./connect.md).
 
 Bu hızlı başlangıçta, bir IoT Edge cihazında SQL Edge modülü dağıttınız. 
 

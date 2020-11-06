@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/20/2020
+ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: c9d8bf42d8856ffcf7bb0247172f6c0fd49600e0
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 31c9dcaf6c6f26d28d70e3d1664665c2dbc37ce6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424657"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393090"
 ---
 # <a name="how-provisioning-works"></a>Sağlama nasıl çalışır?
 
@@ -43,9 +43,7 @@ Azure AD sağlama hizmeti otomatik sağlama için [SCIM 2,0 protokolünü](https
 
 ## <a name="authorization"></a>Yetkilendirme
 
-Azure AD 'nin uygulamanın kullanıcı yönetim API 'sine bağlanması için kimlik bilgileri gereklidir. Bir uygulama için otomatik Kullanıcı sağlamayı yapılandırırken, geçerli kimlik bilgilerini girmeniz gerekir. Uygulama öğreticisine başvurarak uygulamanın kimlik bilgisi türlerini ve gereksinimlerini bulabilirsiniz. Azure portal, Azure AD 'nin sağlanan kimlik bilgilerini kullanarak uygulamanın sağlama uygulamasına bağlanmasını sağlayarak kimlik bilgilerini sınayabileceksiniz.
-
-SAML tabanlı çoklu oturum açma, uygulama için de yapılandırılmışsa Azure AD 'nin iç, uygulama başına depolama sınırı 1024 bayttır. Bu sınır, bir uygulamanın tek bir örneğiyle ilişkili tüm sertifikaları, gizli belirteçleri, kimlik bilgilerini ve ilgili yapılandırma verilerini (Azure AD 'de hizmet sorumlusu kaydı olarak da bilinir) içerir. SAML tabanlı çoklu oturum açma yapılandırıldığında, SAML belirteçlerini imzalamak için kullanılan sertifika, genellikle alanın yüzde 50 ' ünü kullanır. Kullanıcı hazırlama kurulumu sırasında girdiğiniz ek öğeler (gizli belirteçler, URI 'Ler, bildirim e-posta adresleri, Kullanıcı adları ve parolalar) depolama sınırını aşabilir. Daha fazla bilgi için, bkz. [Kullanıcı sağlama yapılandırılırken yönetici kimlik bilgilerini kaydetme sorunu](./application-provisioning-config-problem-storage-limit.md).
+Azure AD 'nin uygulamanın kullanıcı yönetim API 'sine bağlanması için kimlik bilgileri gereklidir. Bir uygulama için otomatik Kullanıcı sağlamayı yapılandırırken, geçerli kimlik bilgilerini girmeniz gerekir. Galeri uygulamaları için uygulama öğreticisine başvurarak uygulamanın kimlik bilgisi türlerini ve gereksinimlerini bulabilirsiniz. Galeri olmayan uygulamalar için, kimlik bilgisi türlerini ve gereksinimlerini anlamak üzere [SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#authorization-for-provisioning-connectors-in-the-application-gallery) belgelerine başvurabilirsiniz. Azure portal, Azure AD 'nin sağlanan kimlik bilgilerini kullanarak uygulamanın sağlama uygulamasına bağlanmasını sağlayarak kimlik bilgilerini sınayabileceksiniz.
 
 ## <a name="mapping-attributes"></a>Öznitelikleri eşleme
 
@@ -53,7 +51,7 @@ Bir üçüncü taraf SaaS uygulaması için Kullanıcı sağlamayı etkinleştir
 
 Azure AD Kullanıcı nesneleri ve her bir SaaS uygulamasının Kullanıcı nesneleri arasında önceden yapılandırılmış bir öznitelikler ve öznitelik eşlemeleri kümesi vardır. Bazı uygulamalar, gruplar gibi kullanıcılarla birlikte diğer nesne türlerini de yönetir.
 
-Sağlamayı ayarlarken, hangi kullanıcı (veya grup) özelliklerinin Azure AD 'den uygulamaya akmasını tanımlayan öznitelik eşlemelerini ve iş akışlarını gözden geçirmeniz ve yapılandırmanız önemlidir. İki sistem arasındaki kullanıcıları/grupları benzersiz şekilde tanımlamak ve eşleştirmek için kullanılan eşleşen özelliği (**Bu özniteliği kullanarak nesneleri Eşleştir**) gözden geçirin ve yapılandırın.
+Sağlamayı ayarlarken, hangi kullanıcı (veya grup) özelliklerinin Azure AD 'den uygulamaya akmasını tanımlayan öznitelik eşlemelerini ve iş akışlarını gözden geçirmeniz ve yapılandırmanız önemlidir. İki sistem arasındaki kullanıcıları/grupları benzersiz şekilde tanımlamak ve eşleştirmek için kullanılan eşleşen özelliği ( **Bu özniteliği kullanarak nesneleri Eşleştir** ) gözden geçirin ve yapılandırın.
 
 Varsayılan öznitelik eşlemelerini iş gereksinimlerinize göre özelleştirebilirsiniz. Bu nedenle, var olan öznitelik eşlemelerini değiştirebilir veya silebilir veya yeni öznitelik eşlemeleri oluşturabilirsiniz. Ayrıntılar için bkz. [SaaS uygulamaları için Kullanıcı hazırlama özniteliğini özelleştirme-eşlemeler](./customize-application-attributes.md).
 
@@ -64,7 +62,7 @@ Sağlamayı bir SaaS uygulamasına yapılandırdığınızda, belirtebileceğini
 
 Azure AD 'den bir SaaS uygulamasına giden sağlama için, [Kullanıcı veya grup atamalarına](../manage-apps/assign-user-or-group-access-portal.md) güvenmek, hangi kullanıcıların sağlama kapsamında olduğunu belirlemenin en yaygın yoludur. Kullanıcı atamaları çoklu oturum açmayı etkinleştirmek için de kullanıldığından, aynı yöntem hem erişim hem de sağlamayı yönetmek için kullanılabilir. Atama tabanlı kapsam, Workday ve başarılı etmenler gibi gelen sağlama senaryolarına uygulanmaz.
 
-* **Gruplandıran.** Bir Azure AD Premium lisans planıyla, bir SaaS uygulamasına erişim atamak için grupları kullanabilirsiniz. Ardından, sağlama kapsamı **yalnızca atanmış kullanıcıları ve grupları Eşitle**olarak AYARLANDıĞıNDA Azure AD sağlama hizmeti, uygulamaya atanan bir grubun üyesi olup olmadıkları temel alınarak kullanıcıları sağlar veya serbest bırakılır. Uygulama, Grup nesnelerini desteklemediği takdirde grup nesnesinin kendisi tarafından sağlanmamıştır. Uygulamanıza atanan grupların "SecurityEnabled" özelliği "true" olarak ayarlanmış olduğundan emin olun.
+* **Gruplandıran.** Bir Azure AD Premium lisans planıyla, bir SaaS uygulamasına erişim atamak için grupları kullanabilirsiniz. Ardından, sağlama kapsamı **yalnızca atanmış kullanıcıları ve grupları Eşitle** olarak AYARLANDıĞıNDA Azure AD sağlama hizmeti, uygulamaya atanan bir grubun üyesi olup olmadıkları temel alınarak kullanıcıları sağlar veya serbest bırakılır. Uygulama, Grup nesnelerini desteklemediği takdirde grup nesnesinin kendisi tarafından sağlanmamıştır. Uygulamanıza atanan grupların "SecurityEnabled" özelliği "true" olarak ayarlanmış olduğundan emin olun.
 
 * **Dinamik Gruplar.** Azure AD Kullanıcı sağlama hizmeti, [dinamik gruplardaki](../enterprise-users/groups-create-rule.md)kullanıcıları okuyabilir ve sağlayabilir. Bu uyarıları ve önerileri göz önünde bulundurun:
 
@@ -135,7 +133,7 @@ ServiceNow, G Suite ve Box gibi bazı uygulamalar yalnızca kullanıcıları sa�
 10. Daha sonraki artımlı döngüler için başlangıç noktasını sağlayan artımlı döngüsünün sonunda yeni bir filigranı kalıcı hale getirin.
 
 > [!NOTE]
-> İsteğe bağlı olarak, [eşlemeler](customize-application-attributes.md) bölümündeki **hedef nesne eylemleri** onay kutularını kullanarak **oluşturma**, **güncelleştirme**veya **silme** işlemlerini devre dışı bırakabilirsiniz. Bir güncelleştirme sırasında kullanıcıyı devre dışı bırakma mantığı, "accountEnabled" gibi bir alandan bir öznitelik eşlemesi aracılığıyla da denetlenir.
+> İsteğe bağlı olarak, [eşlemeler](customize-application-attributes.md) bölümündeki **hedef nesne eylemleri** onay kutularını kullanarak **oluşturma** , **güncelleştirme** veya **silme** işlemlerini devre dışı bırakabilirsiniz. Bir güncelleştirme sırasında kullanıcıyı devre dışı bırakma mantığı, "accountEnabled" gibi bir alandan bir öznitelik eşlemesi aracılığıyla da denetlenir.
 
 Sağlama Hizmeti, [her uygulamaya özgü öğreticide](../saas-apps/tutorial-list.md)tanımlanan aralıklarda sonsuza kadar sürekli artımlı Döngülerde çalışmaya devam eder. Artımlı döngüler aşağıdaki olaylardan biri gerçekleşene kadar devam eder:
 
@@ -192,7 +190,7 @@ Aşağıdaki senaryolar bir devre dışı bırakma veya silme tetikleyecektir:
 * Bir Kullanıcı bir uygulamadan atanmaz.
 * Kullanıcı kapsamdan kapsam dışına gider (artık kapsam filtresini geçirmez).
 
-:::image type="content" source="./media/how-provisioning-works/delete-user.png" alt-text="Kullanıcıyı devre dışı bırakma" lightbox="./media/how-provisioning-works/delete-user.png":::
+:::image type="content" source="./media/how-provisioning-works/delete-user.png" alt-text="Kullanıcı silme" lightbox="./media/how-provisioning-works/delete-user.png":::
 
 Varsayılan olarak, Azure AD sağlama hizmeti, kapsam dışına çıkan kullanıcıları geçici olarak siler veya devre dışı bırakır. Bu varsayılan davranışı geçersiz kılmak istiyorsanız, [kapsam dışı silme işlemlerini atlamak](skip-out-of-scope-deletions.md) için bir bayrak ayarlayabilirsiniz.
 

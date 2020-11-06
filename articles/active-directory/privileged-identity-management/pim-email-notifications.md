@@ -16,12 +16,12 @@ ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02fbfc83c16cb13376cce820f19b247a7cd7db59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe57a44a5a6fa9a631604d92419fd8f5ebcce50a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82232317"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394739"
 ---
 # <a name="email-notifications-in-pim"></a>PıM 'de e-posta bildirimleri
 
@@ -34,7 +34,7 @@ Hem Azure AD hem de Azure Kaynak rolleri için Privileged Identity Management g�
 - E-posta adresi:  **Azure-noreply \@ Microsoft.com**
 - Görünen ad: Microsoft Azure
 
-Bu e-postalar konu satırında bir **PIM** öneki içerir. Aşağıda bir örnek verilmiştir:
+Bu e-postalar konu satırında bir **PIM** öneki içerir. İşte bir örnek:
 
 - PıM: Alain Charon, yedekleme okuyucusu rolüne kalıcı olarak atandı
 
@@ -50,11 +50,11 @@ Bu e-postaları Azure AD rolleri için alan rolünüz, olayınıza ve bildirimle
 
 | Kullanıcı | Rol etkinleştirme onay bekliyor | Rol etkinleştirme isteği tamamlandı | PıM etkin |
 | --- | --- | --- | --- |
-| Ayrıcalıklı rol yöneticisi</br>(Etkin/uygun) | Evet</br>(yalnızca açık onaylayanlar belirtilmemişse) | Evet* | Evet |
-| Güvenlik Yöneticisi</br>(Etkin/uygun) | Hayır | Evet* | Evet |
-| Genel Yönetici</br>(Etkin/uygun) | Hayır | Evet* | Evet |
+| Ayrıcalıklı rol yöneticisi</br>(Etkin/uygun) | Yes</br>(yalnızca açık onaylayanlar belirtilmemişse) | Evet* | Yes |
+| Güvenlik Yöneticisi</br>(Etkin/uygun) | No | Evet* | Yes |
+| Genel Yönetici</br>(Etkin/uygun) | No | Evet* | Yes |
 
-\*[ **Bildirimler** ayarı](pim-how-to-change-default-settings.md#notifications) **Etkinleştir**olarak ayarlandıysa.
+\*[ **Bildirimler** ayarı](pim-how-to-change-default-settings.md#notifications) **Etkinleştir** olarak ayarlandıysa.
 
 Aşağıda, bir Kullanıcı kurgusal contoso organizasyonu için bir Azure AD rolünü etkinleştirdiğinde gönderilen örnek bir e-posta gösterilmektedir.
 
@@ -79,10 +79,13 @@ E-postada dört kutucuk bulunur:
 
 ## <a name="email-timing-for-activation-approvals"></a>Etkinleştirme onayları için e-posta zamanlaması
 
-Kullanıcılar rolünü etkinleştirdiğinde ve rol ayarı onay gerektiriyorsa, onaylayanlar her onay için üç e-posta alır:
+Kullanıcılar rollerini etkinleştirdiğinde ve rol ayarı onay gerektirdiğinde, onaylayanlar her onay için iki e-posta alır:
 
 - Kullanıcının etkinleştirme isteğini onaylama veya reddetme isteği (istek onay altyapısı tarafından gönderilir)
 - Kullanıcının isteği onaylandı (istek onay altyapısı tarafından gönderilir)
+
+Ayrıca, genel Yöneticiler ve ayrıcalıklı rol yöneticileri her onay için bir e-posta alır:
+
 - Kullanıcının rolü etkinleştirilir (Privileged Identity Management tarafından gönderilir)
 
 İstek onay altyapısı tarafından gönderilen ilk iki e-posta gecikiyor olabilir. Şu anda, e-postaların %90 ' üne üç ila on dakika kaldı, ancak %1 müşteri için en fazla on beş dakikaya kadar çok daha uzun sürebilir.

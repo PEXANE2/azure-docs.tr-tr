@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: e9c8c58c6be8d2c2a85e56690903e6b54f0e4a0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40bd0eda16f9f96dd356eef900369ab25854e9f9
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293909"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392257"
 ---
 # <a name="sql-database-dacpac-and-bacpac-packages-in-sql-edge"></a>SQL Edge 'de SQL veritabanı DACPAC ve BACPAC paketleri
 
 Uç Cihazlar için Azure SQL, IoT ve uç dağıtımları için ayarlanan, iyileştirilmiş bir ilişkisel veritabanı altyapısıdır. Bu, Microsoft SQL veritabanı altyapısının, sektör lideri performans, güvenlik ve sorgu işleme özellikleri sağlayan en son sürümlerine kurulmuştur. Azure SQL Edge, SQL Server sektör lideri ilişkisel veritabanı yönetim özelliklerinin yanı sıra gerçek zamanlı analiz ve karmaşık olay işleme için yerleşik akış özelliği sağlar.
 
-Azure SQL Edge, bir [SQL veritabanı DACPAC ve bacpac](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) paketini SQL Edge 'i dağıttıktan sonra dağıtmanıza imkan tanıyan yerel bir mekanizma sağlar.
+Azure SQL Edge, bir [SQL veritabanı DACPAC ve bacpac](/sql/relational-databases/data-tier-applications/data-tier-applications) paketini SQL Edge 'i dağıttıktan sonra dağıtmanıza imkan tanıyan yerel bir mekanizma sağlar.
 
 SQL veritabanı dacpac ve bacpac paketleri, ortam değişkeni kullanılarak SQL Edge 'e dağıtılabilir `MSSQL_PACKAGE` . Ortam değişkeni aşağıdakilerden biriyle yapılandırılabilir.  
 - Dacpac ve bacpac dosyalarını içeren SQL kapsayıcısı içindeki yerel bir klasör konumu. Bu klasör, bağlama noktaları veya veri birimi kapsayıcıları kullanılarak bir konak hacimleriyle eşleştirilebilir. 
@@ -35,7 +35,7 @@ SQL veritabanı dacpac ve bacpac paketleri, ortam değişkeni kullanılarak SQL 
 
 1. Bir DAC paketi oluşturun/ayıklayın veya aşağıda bahsedilen mekanizmayı kullanarak bacpac dosyasını dışarı aktarın. 
     - Bir SQL veritabanı DAC paketi oluşturun veya ayıklayın. Mevcut bir SQL Server veritabanı için DAC paketi oluşturma hakkında bilgi için bkz. [bir VERITABANıNDAN dac ayıklama](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/) .
-    - Dağıtılan bir DAC paketini veya veritabanını dışarı aktarma. Mevcut bir SQL Server veritabanı için bacpac dosyası oluşturma hakkında bilgi için bkz. [veri katmanı uygulamasını dışarı aktarma](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application/) .
+    - Dağıtılan bir DAC paketini veya veritabanını dışarı aktarma. Mevcut bir SQL Server veritabanı için bacpac dosyası oluşturma hakkında bilgi için bkz. [veri katmanı uygulamasını dışarı aktarma](/sql/relational-databases/data-tier-applications/export-a-data-tier-application/) .
 
 2. `*.dacpac`Veya `*.bacpac` dosyasını zip olarak bir Azure Blob depolama hesabına yükleyin. Azure Blob depolamaya dosya yükleme hakkında daha fazla bilgi için bkz. [Azure Portal blob 'Ları yükleme, indirme ve listeleme](../storage/blobs/storage-quickstart-blobs-portal.md).
 
@@ -45,21 +45,21 @@ SQL veritabanı dacpac ve bacpac paketleri, ortam değişkeni kullanılarak SQL 
 
     1. Azure portal IoT Hub dağıtımınıza gidin.
 
-    2. Sol bölmede **IoT Edge**' yi seçin.
+    2. Sol bölmede **IoT Edge** ' yi seçin.
 
     3. **IoT Edge** SAYFASıNDA, SQL Edge modülünün dağıtıldığı IoT Edge bulun ve seçin.
 
-    4. Cihaz cihazı **IoT Edge** sayfasında, **modülü ayarla**' yı seçin.
+    4. Cihaz cihazı **IoT Edge** sayfasında, **modülü ayarla** ' yı seçin.
 
     5. **Modülleri ayarla** sayfasında, Azure SQL Edge modülüne tıklayın.
 
-    6. **IoT Edge modülü Güncelleştir** bölmesinde **ortam değişkenleri**' ni seçin. Ortam değişkenini ekleyin `MSSQL_PACKAGE` ve yukarıdaki 3. adımda oluşturulan SAS URL 'sini ortam değişkeninin değeri olarak belirtin. 
+    6. **IoT Edge modülü Güncelleştir** bölmesinde **ortam değişkenleri** ' ni seçin. Ortam değişkenini ekleyin `MSSQL_PACKAGE` ve yukarıdaki 3. adımda oluşturulan SAS URL 'sini ortam değişkeninin değeri olarak belirtin. 
 
-    7. **Güncelleştir**’i seçin.
+    7. **Güncelleştir** ’i seçin.
 
-    8. **Modülleri ayarla** sayfasında, **gözden geçir + oluştur**' u seçin.
+    8. **Modülleri ayarla** sayfasında, **gözden geçir + oluştur** ' u seçin.
 
-    9. **Modülleri ayarla** sayfasında **Oluştur**' u seçin.
+    9. **Modülleri ayarla** sayfasında **Oluştur** ' u seçin.
 
 5. Modül güncelleştirildikten sonra, paket dosyaları indirilir, sıkıştırıldı ve SQL Edge örneğine göre dağıtılır.
 

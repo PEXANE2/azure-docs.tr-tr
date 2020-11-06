@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: 9e75edad9f2e473d27d81c73fc784c568c4e404c
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 4d420bf45cd705f518df0d52929a331d23537184
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896149"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395181"
 ---
 # <a name="create-a-data-streaming-job-in-azure-sql-edge"></a>Azure SQL Edge 'de veri akışı işi oluşturma 
 
@@ -24,13 +24,13 @@ Bu makalede, Azure SQL Edge 'de bir T-SQL akış işi oluşturma işlemi açıkl
 
 T-SQL akışı, akış işinin dış akış girişleri ve çıkışları ile ilişkili veri kaynaklarını tanımlamak için SQL Server dış veri kaynağı işlevselliğini kullanır. Dış akış girişi veya çıkış nesnesi oluşturmak için aşağıdaki T-SQL komutlarını kullanın:
 
-- [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql)
+- [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](/sql/t-sql/statements/create-external-file-format-transact-sql)
 
-- [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql)
+- [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](/sql/t-sql/statements/create-external-data-source-transact-sql)
 
 - [Dış AKıŞ oluşturma (Transact-SQL)](#example-create-an-external-stream-object-to-azure-sql-database)
 
-Ayrıca, Azure SQL Edge, SQL Server veya Azure SQL veritabanı bir çıkış akışı olarak kullanılıyorsa, [VERITABANı KAPSAMLı KIMLIK bilgileri (Transact-SQL) oluşturmanız](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql)gerekir. Bu T-SQL komutu, veritabanına erişmek için kimlik bilgilerini tanımlar.
+Ayrıca, Azure SQL Edge, SQL Server veya Azure SQL veritabanı bir çıkış akışı olarak kullanılıyorsa, [VERITABANı KAPSAMLı KIMLIK bilgileri (Transact-SQL) oluşturmanız](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)gerekir. Bu T-SQL komutu, veritabanına erişmek için kimlik bilgilerini tanımlar.
 
 ### <a name="supported-input-and-output-stream-data-sources"></a>Desteklenen giriş ve çıkış akışı veri kaynakları
 
@@ -38,7 +38,7 @@ Azure SQL Edge Şu anda yalnızca akış girişleri ve çıkışları olarak aş
 
 | Veri kaynağı türü | Girdi | Çıktı | Açıklama |
 |------------------|-------|--------|------------------|
-| Azure IoT Edge hub 'ı | E | E | Bir Azure IoT Edge hub 'ına akış verilerini okumak ve yazmak için veri kaynağı. Daha fazla bilgi için bkz. [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
+| Azure IoT Edge hub 'ı | E | E | Bir Azure IoT Edge hub 'ına akış verilerini okumak ve yazmak için veri kaynağı. Daha fazla bilgi için bkz. [IoT Edge hub](../iot-edge/iot-edge-runtime.md#iot-edge-hub).|
 | SQL Veritabanı | N | E | SQL veritabanına akış verileri yazmak için veri kaynağı bağlantısı. Veritabanı, Azure SQL Edge 'deki bir yerel veritabanı veya SQL Server ya da Azure SQL veritabanı 'ndaki uzak bir veritabanı olabilir.|
 | Kafka | E | N | Bir Kafka konusunun akış verilerini okumak için veri kaynağı. Bu bağdaştırıcı Şu anda yalnızca Azure SQL Edge 'in Intel veya AMD sürümlerinde kullanılabilir. Azure SQL Edge 'in ARM64 sürümünde kullanılamaz.|
 
@@ -173,7 +173,7 @@ Aşağıdaki örnek, Azure SQL Edge 'de yerel veritabanında bir dış akış ne
 `sys.sp_create_streaming_job`Akış sorgularını tanımlamak ve akış işini oluşturmak için sistem saklı yordamını kullanın. `sp_create_streaming_job`Saklı yordam aşağıdaki parametreleri alır:
 
 - `job_name`: Akış işinin adı. Akış işi adları, örnek genelinde benzersizdir.
-- `statement`: [Stream Analytics sorgu Dil](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?)tabanlı akış sorgu deyimleri.
+- `statement`: [Stream Analytics sorgu Dil](/stream-analytics-query/stream-analytics-query-language-reference)tabanlı akış sorgu deyimleri.
 
 Aşağıdaki örnek, bir akış sorgusuyla basit bir akış işi oluşturur. Bu sorgu IoT Edge hub 'ından girdileri okur ve `dbo.TemperatureMeasurements` veritabanına yazar.
 

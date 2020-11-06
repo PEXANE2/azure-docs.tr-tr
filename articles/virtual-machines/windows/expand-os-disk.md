@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 3908e5f4b7b246fe1c74e5ac4d20053242ece9f6
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: df27d7b25010fa68fc86ffe093318b2b0b7f4e96
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927694"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393838"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Bir sanal makinenin işletim sistemi sürücüsünü genişletme
 
@@ -46,11 +46,11 @@ ms.locfileid: "92927694"
  
 3. **Disk adı** bölümünde, yeniden boyutlandırmak istediğiniz diski seçin.
 
-    :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="Menünün ayarlar bölümünde seçilen diskler seçeneğini gösteren ekran görüntüsü.":::
+    :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="Bir disk adı seçili olan diskler bölmesini gösteren ekran görüntüsü.":::
 
 4. **Ayarlar** altındaki sol menüde **yapılandırma** ' yı seçin.
 
-    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="Menünün ayarlar bölümünde seçilen diskler seçeneğini gösteren ekran görüntüsü.":::
+    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="Menünün ayarlar bölümünde seçilen yapılandırma seçeneğini gösteren ekran görüntüsü.":::
 
 5. **Boyut (GiB)** ' de istediğiniz disk boyutunu seçin.
    
@@ -58,11 +58,11 @@ ms.locfileid: "92927694"
    > Yeni boyut mevcut disk boyutundan büyük olmalıdır. İşletim sistemi diskleri için izin verilen en yüksek 2.048 GB 'dir. (VHD blobunun boyutunu bu boyuttan büyük bir şekilde genişletmek mümkündür, ancak işletim sistemi yalnızca ilk 2.048 GB alan ile çalışabilir.)
    > 
 
-    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Menünün ayarlar bölümünde seçilen diskler seçeneğini gösteren ekran görüntüsü.":::
+    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Yapılandırma bölmesini seçilen disk boyutuyla gösteren ekran görüntüsü.":::
 
 6. **Kaydet** ’i seçin.
 
-    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Menünün ayarlar bölümünde seçilen diskler seçeneğini gösteren ekran görüntüsü.":::
+    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Kaydet düğmesinin seçili olduğu yapılandırma bölmesini gösteren ekran görüntüsü.":::
 
 
 ## <a name="resize-a-managed-disk-by-using-powershell"></a>PowerShell kullanarak yönetilen bir diski yeniden boyutlandırma
@@ -226,7 +226,7 @@ Benzer şekilde, yukarıda gösterildiği gibi bir dizin kullanarak VM 'ye bağl
 **Yönetilmeyen disk**
 
 ```powershell
-($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'}).DiskSizeGB = 1023
+($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'})).DiskSizeGB = 1023
 ```
 
 ## <a name="expand-the-volume-within-the-os"></a>İşletim sistemi içindeki birimi genişletme

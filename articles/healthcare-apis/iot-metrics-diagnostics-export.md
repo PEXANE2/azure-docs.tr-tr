@@ -1,5 +1,5 @@
 ---
-title: Tanılama ayarları aracılığıyla FHIR (Önizleme) ölçümleri için Azure IoT bağlayıcısını dışarı aktarma
+title: Tanılama ayarları aracılığıyla FHIR için Azure IoT Bağlayıcısı (önizleme) Ölçümlerini dışarı aktarma
 description: Bu makalede, Tanılama ayarları aracılığıyla FHıR (Önizleme) ölçümleri için Azure IoT Bağlayıcısı 'nın nasıl dışarı aktarılacağı açıklanmaktadır
 services: healthcare-apis
 author: msjasteppe
@@ -8,16 +8,16 @@ ms.subservice: iomt
 ms.topic: how-to
 ms.date: 10/30/2020
 ms.author: jasteppe
-ms.openlocfilehash: 2c10dc05775739a55267dd3766e533b73e12b3a1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5a57b13cdb8c7c1144815543e03b970de32b4369
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322369"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394263"
 ---
-# <a name="export-azure-iot-connector-for-fhir-preview-metrics-through-diagnostic-settings"></a>Tanılama ayarları aracılığıyla FHIR (Önizleme) ölçümleri için Azure IoT bağlayıcısını dışarı aktarma
+# <a name="export-azure-iot-connector-for-fhir-preview-metrics-through-diagnostic-settings"></a>Tanılama ayarları aracılığıyla FHIR için Azure IoT Bağlayıcısı (önizleme) Ölçümlerini dışarı aktarma
 
-Bu makalede, FHıR * ölçüm günlükleri için Azure IoT bağlayıcısını nasıl dışarı aktaracağınızı öğreneceksiniz. Ölçüm günlüğünü etkinleştirme özelliği, Azure portal [**Tanılama ayarlarınızdaki**](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) bir özelliktir. 
+Bu makalede, FHıR * ölçüm günlükleri için Azure IoT bağlayıcısını nasıl dışarı aktaracağınızı öğreneceksiniz. Ölçüm günlüğünü etkinleştirme özelliği, Azure portal [**Tanılama ayarlarınızdaki**](../azure-monitor/platform/diagnostic-settings.md) bir özelliktir. 
 
 > [!TIP]
 > Denetim günlüğünü ayarlamak için [fhır Için Azure API ve FHıR Için Azure IoT Bağlayıcısı ' nda tanılama günlüğünü etkinleştirme](enable-diagnostic-logging.md#enable-diagnostic-logging-in-azure-api-for-fhir) ' deki yönergeleri izleyin.
@@ -48,7 +48,7 @@ Bu makalede, FHıR * ölçüm günlükleri için Azure IoT bağlayıcısını na
 > [!Note] 
 > İlk ölçüm günlüklerinin tercih ettiğiniz depoda görüntülenmesi 15 dakika kadar sürebilir.  
  
-Tanılama günlükleri ile çalışma hakkında daha fazla bilgi için bkz. [Azure kaynak günlüğü belgeleri](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview)
+Tanılama günlükleri ile çalışma hakkında daha fazla bilgi için bkz. [Azure kaynak günlüğü belgeleri](../azure-monitor/platform/platform-logs-overview.md)
 
 ## <a name="conclusion"></a>Sonuç 
 Ölçüm günlüklerine erişim sağlamak, izleme ve sorun giderme için gereklidir.  FHıR için Azure IoT Bağlayıcısı, bu eylemleri ölçüm günlükleri aracılığıyla yapmanıza olanak sağlar. 

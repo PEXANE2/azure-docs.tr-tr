@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 35985404d5ac97940c324c3ad7f7d46c959b4902
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02f22883a0989714d8b74f778cacf1ba2c65d0b4
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90942106"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392020"
 ---
 # <a name="performance-best-practices-and-configuration-guidelines"></a>En iyi performans uygulamaları ve yapılandırma yönergeleri
 
 Azure SQL Edge, SQL Edge dağıtımınızın performansını geliştirmek için kullanılabilecek çeşitli özellikler ve yetenekler sunmaktadır. Bu makalede performansı en üst düzeye çıkarmak için bazı en iyi yöntemler ve öneriler sunulmaktadır. 
 
-## <a name="best-practices"></a>Önerilen uygulamalar 
+## <a name="best-practices"></a>En iyi uygulamalar 
 
 ### <a name="configure-multiple-tempdb-data-files"></a>Birden çok tempdb veri dosyası yapılandırma
 
@@ -28,13 +28,13 @@ Azure SQL Edge varsayılan olarak kapsayıcı başlatma kapsamında yalnızca bi
 
 ### <a name="use-clustered-columnstore-indexes-where-possible"></a>Mümkün olduğunda kümelenmiş columnstore dizinlerini kullanın
 
-IoT ve Edge cihazları, genellikle analiz için bazı zaman penceresinde toplanmış olan yüksek hacimli verileri oluşturma eğilimindedir. Tek tek veri satırları, tüm analizler için nadiren kullanılır. Columnstore dizinleri, bu tür büyük veri kümelerini depolamak ve sorgulamak için idealdir. Bu dizin, sütun tabanlı veri depolama ve sorgu işleme kullanarak geleneksel satır odaklı depolama üzerinden sorgu performansının 10 katına varan bir kazanç elde etmenizi sağlar. Ayrıca, sıkıştırılmamış veri boyutu üzerinde veri sıkıştırmasının 10 kata kadar kazanç elde edebilirsiniz. Daha fazla bilgi için bkz. [columnstore dizinleri](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)
+IoT ve Edge cihazları, genellikle analiz için bazı zaman penceresinde toplanmış olan yüksek hacimli verileri oluşturma eğilimindedir. Tek tek veri satırları, tüm analizler için nadiren kullanılır. Columnstore dizinleri, bu tür büyük veri kümelerini depolamak ve sorgulamak için idealdir. Bu dizin, sütun tabanlı veri depolama ve sorgu işleme kullanarak geleneksel satır odaklı depolama üzerinden sorgu performansının 10 katına varan bir kazanç elde etmenizi sağlar. Ayrıca, sıkıştırılmamış veri boyutu üzerinde veri sıkıştırmasının 10 kata kadar kazanç elde edebilirsiniz. Daha fazla bilgi için bkz. [columnstore dizinleri](/sql/relational-databases/indexes/columnstore-indexes-overview)
 
 Ayrıca, veri akışı ve veri saklama gibi diğer Azure SQL Edge özellikleri, veri ekleme ve veri kaldırma işlemlerinin bir yanındaki columnstore iyileştirmelerinden faydalanır. 
 
 ### <a name="simple-recovery-model"></a>Basit kurtarma modeli
 
-Depolama alanı, uç cihazlarda kısıtlandığından, Azure SQL Edge 'deki tüm kullanıcı veritabanları varsayılan olarak basit kurtarma modelini kullanır. Basit kurtarma modeli, alan gereksinimlerinin küçük tutulması için günlük alanını otomatik olarak geri kazanır, aslında işlem günlüğü alanını yönetme ihtiyacını ortadan kaldırır. Sınırlı depolama alanı bulunan uç cihazlarda bu faydalı olabilir. Basit kurtarma modeli ve kullanılabilir diğer kurtarma modelleri hakkında daha fazla bilgi için bkz. [kurtarma modelleri](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server)
+Depolama alanı, uç cihazlarda kısıtlandığından, Azure SQL Edge 'deki tüm kullanıcı veritabanları varsayılan olarak basit kurtarma modelini kullanır. Basit kurtarma modeli, alan gereksinimlerinin küçük tutulması için günlük alanını otomatik olarak geri kazanır, aslında işlem günlüğü alanını yönetme ihtiyacını ortadan kaldırır. Sınırlı depolama alanı bulunan uç cihazlarda bu faydalı olabilir. Basit kurtarma modeli ve kullanılabilir diğer kurtarma modelleri hakkında daha fazla bilgi için bkz. [kurtarma modelleri](/sql/relational-databases/backup-restore/recovery-models-sql-server)
 
 Günlük gönderme ve zaman Içinde geri yükleme gibi işlemler, işlem günlüğü yedeklemeleri gerektiren basit kurtarma modeli tarafından desteklenmez.  
 
@@ -56,16 +56,9 @@ Azure SQL Edge 'deki işlemler tamamen dayanıklı, SQL Server varsayılan veya 
 
 Tamamen dayanıklı işlem yürütmeleri zaman uyumludur ve işleme başarılı olarak rapor verir ve yalnızca işlemin günlük kayıtları diske yazıldıktan sonra denetimi istemciye döndürür. Gecikmeli dayanıklı işlem yürütmeleri zaman uyumsuzdur ve işlemin günlük kayıtları diske yazılmadan önce başarılı olarak işleme rapor edilir. İşlemin sürekli olması için işlem günlüğü girdilerinin diske yazılması gerekir. İşlem günlüğü girdileri diske boşaltıldığınızda gecikmeli dayanıklı işlemler dayanıklı hale gelir. 
 
-**Bazı veri kayıplarının** toleranslı veya yavaş depolama ile uç cihazlarda toleranslı olduğu dağıtımlarda, veri alımı ve veri bekletme tabanlı temizleme işlemini iyileştirmek için Gecikmeli dayanıklılık kullanılabilir. Daha fazla bilgi için bkz. [Denetim Işlemi dayanıklılığı](https://docs.microsoft.com/sql/relational-databases/logs/control-transaction-durability).
+**Bazı veri kayıplarının** toleranslı veya yavaş depolama ile uç cihazlarda toleranslı olduğu dağıtımlarda, veri alımı ve veri bekletme tabanlı temizleme işlemini iyileştirmek için Gecikmeli dayanıklılık kullanılabilir. Daha fazla bilgi için bkz. [Denetim Işlemi dayanıklılığı](/sql/relational-databases/logs/control-transaction-durability).
 
 
 ### <a name="linux-os-configurations"></a>Linux işletim sistemi yapılandırması 
 
-Bir SQL yüklemesinde en iyi performansı yaşamak için aşağıdaki [Linux Işletim sistemi yapılandırma](https://docs.microsoft.com/sql/linux/sql-server-linux-performance-best-practices#linux-os-configuration) ayarlarını kullanmayı göz önünde bulundurun.
-
-
-
-
-
-
-
+Bir SQL yüklemesinde en iyi performansı yaşamak için aşağıdaki [Linux Işletim sistemi yapılandırma](/sql/linux/sql-server-linux-performance-best-practices#linux-os-configuration) ayarlarını kullanmayı göz önünde bulundurun.

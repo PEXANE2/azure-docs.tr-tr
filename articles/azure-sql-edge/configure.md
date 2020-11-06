@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 6284e85d8c4e9ad9f9896081f04c6b7669b8e1c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c49f5ab9f10456c32f7f8516cba0e851fa80e74
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446949"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392342"
 ---
 # <a name="configure-azure-sql-edge"></a>Azure SQL Edge 'i yapılandırma
 
@@ -51,13 +51,13 @@ Aşağıdaki yeni ortam değişkenleri Azure SQL Edge 'e eklenmiştir.
 
 ### <a name="specify-the-environment-variables"></a>Ortam değişkenlerini belirtin
 
-Hizmeti [Azure Portal](deploy-portal.md)aracılığıyla dağıtırken SQL Edge için ortam değişkenlerini belirtin. Bunları modül dağıtımının **ortam değişkenleri** bölümünde veya **kapsayıcı oluşturma seçeneklerinin**bir parçası olarak ekleyebilirsiniz.
+Hizmeti [Azure Portal](deploy-portal.md)aracılığıyla dağıtırken SQL Edge için ortam değişkenlerini belirtin. Bunları modül dağıtımının **ortam değişkenleri** bölümünde veya **kapsayıcı oluşturma seçeneklerinin** bir parçası olarak ekleyebilirsiniz.
 
-**Ortam değişkenlerine**değer ekleyin.
+**Ortam değişkenlerine** değer ekleyin.
 
 ![Ortam değişkenleri listesini kullanarak ayarla](media/configure/set-environment-variables.png)
 
-**Kapsayıcı oluşturma seçeneklerinde**değer ekleyin.
+**Kapsayıcı oluşturma seçeneklerinde** değer ekleyin.
 
 ![Kapsayıcı oluşturma seçeneklerini kullanarak ayarlama](media/configure/set-environment-variables-using-create-options.png)
 
@@ -95,11 +95,11 @@ Aşağıdaki MSSQL. conf seçenekleri SQL Edge için geçerli değildir:
 |**Müşteri geri bildirimi** | SQL Server Microsoft 'a geri bildirim gönderip göndermediğini seçin. |
 |**Veritabanı posta profili** | Linux üzerinde SQL Server için varsayılan veritabanı posta profilini ayarlayın. |
 |**Yüksek kullanılabilirlik** | Kullanılabilirlik gruplarını etkinleştirin. |
-|**Microsoft Dağıtılmış İşlem Düzenleyicisi** | Linux üzerinde MSDTC 'yi yapılandırma ve sorunlarını giderme. SQL Edge için ek dağıtılmış işlem ile ilgili yapılandırma seçenekleri desteklenmez. Bu ek yapılandırma seçenekleri hakkında daha fazla bilgi için bkz. [MSDTC 'Yi yapılandırma](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#msdtc). |
+|**Microsoft Dağıtılmış İşlem Düzenleyicisi** | Linux üzerinde MSDTC 'yi yapılandırma ve sorunlarını giderme. SQL Edge için ek dağıtılmış işlem ile ilgili yapılandırma seçenekleri desteklenmez. Bu ek yapılandırma seçenekleri hakkında daha fazla bilgi için bkz. [MSDTC 'Yi yapılandırma](/sql/linux/sql-server-linux-configure-mssql-conf#msdtc). |
 |**ML Hizmetleri EULA 'Ları** | Azure Machine Learning paketleri için R ve Python EULA 'Ları kabul edin. Yalnızca SQL Server 2019 için geçerlidir.|
 |**outboundnetworkaccess** |[Machine Learning Services](/sql/linux/sql-server-linux-setup-machine-learning/) R, Python ve Java uzantıları için giden ağ erişimini etkinleştirin.|
 
-Aşağıdaki örnek MSSQL. conf dosyası SQL Edge için geçerlidir. MSSQL. conf dosyasının biçimi hakkında daha fazla bilgi için bkz. [MSSQL. conf biçimi](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format).
+Aşağıdaki örnek MSSQL. conf dosyası SQL Edge için geçerlidir. MSSQL. conf dosyasının biçimi hakkında daha fazla bilgi için bkz. [MSSQL. conf biçimi](/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format).
 
 ```ini
 [EULA]
@@ -203,7 +203,7 @@ Bu teknik Ayrıca, ana bilgisayardaki dosyaları Docker dışında paylaşmanız
 
 ### <a name="use-data-volume-containers"></a>Veri birimi kapsayıcıları kullanma
 
-İkinci seçenek, bir veri birimi kapsayıcısı kullanmaktır. Parametresi ile bir konak dizini yerine bir birim adı belirterek bir veri birimi kapsayıcısı oluşturabilirsiniz `-v` . Aşağıdaki örnek, **sqlvolume**adlı bir paylaşılan veri birimi oluşturur.
+İkinci seçenek, bir veri birimi kapsayıcısı kullanmaktır. Parametresi ile bir konak dizini yerine bir birim adı belirterek bir veri birimi kapsayıcısı oluşturabilirsiniz `-v` . Aşağıdaki örnek, **sqlvolume** adlı bir paylaşılan veri birimi oluşturur.
 
 ```bash
 docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge

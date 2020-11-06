@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.assetid: 8a4df7bf-be49-4198-800e-db381cda98f5
 ms.date: 10/30/2020
-ms.openlocfilehash: d97148393d3158e38f9740d4a8f8e17dd04326d5
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: cfd465476aa8963de6093bccd5d4821ea2b29338
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135455"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395827"
 ---
 # <a name="deploy-enterprise-java-applications-to-azure-with-jboss-eap-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 'de Jpatron EAP ile Kurumsal Java uygulamalarını Azure 'a dağıtma
 
@@ -23,13 +23,13 @@ Bu hızlı başlangıç şablonları, Azure sanal makineleri (VM) ve sanal makin
 
 * Etkin aboneliği olan bir Azure hesabı. Bir Azure aboneliği almak için, [Visual Studio aboneleri Için Azure kredilerinizi](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) etkinleştirin veya [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/pricing/free-trial).
 
-* Jpatron EAP yüklemesi-Jpatron EAP için Red Hat abonelik yönetimi (RHSM) yetkilendirimiyle Red Hat hesabına sahip olmanız gerekir. Bu yetkilendirme, Red Hat sınanmış ve sertifikalı Jpatron EAP sürümünü indirmenizi sağlayacak.  EAP yetkilendirmeleri yoksa, başlamadan önce bir [Jpatron EAP değerlendirme aboneliği](https://access.redhat.com/products/red-hat-jboss-enterprise-application-platform/evaluation) alın. Yeni bir Red Hat aboneliği oluşturmak için [Red Hat müşteri portalı](https://access.redhat.com/) ' na gidin ve bir hesap ayarlayın.
-F
+* Jpatron EAP yüklemesi-Jpatron EAP için Red Hat abonelik yönetimi (RHSM) yetkilendirimiyle Red Hat hesabına sahip olmanız gerekir. Bu yetkilendirme, Red Hat test ve sertifikalı Jpatron EAP sürümünü indirmenizi sağlayacak.  EAP yetkilendirmeleri yoksa, başlamadan önce bir [Jpatron EAP değerlendirme aboneliği](https://access.redhat.com/products/red-hat-jboss-enterprise-application-platform/evaluation) alın. Yeni bir Red Hat aboneliği oluşturmak için [Red Hat müşteri portalı](https://access.redhat.com/) ' na gidin ve bir hesap ayarlayın.
+
 * [Azure Command-Line arabirimi](https://docs.microsoft.com/cli/azure/overview).
 
 * RHEL seçenekleri-Kullandıkça Öde (PAYG) veya kendi aboneliğinizi getir (KCG) arasında seçim yapın. KCG sayesinde, hızlı başlangıç şablonunu dağıtılmadan önce [Red Hat bulut erişimi](https://access.redhat.com/) RHEL Gold görüntünüzü etkinleştirmeniz gerekir.
 
-## <a name="java-ee--jakarata-ee-application-migration"></a>Java EE/Jakarata EE uygulama geçişi
+## <a name="java-ee--jakarta-ee-application-migration"></a>Java EE/Jakarta EE uygulama geçişi
 
 ### <a name="migrate-to-jboss-eap"></a>Jpatron EAP 'ye geçiş
 Jpatron EAP 7,2 ve 7,3, Java Enterprise Edition (Java EE) 8 ve Jakarta EE 8 belirtimlerinin sertifikalı uygulamalarıdır. Jpatron EAP, yüksek kullanılabilirliğe sahip (HA) kümeleme, mesajlaşma ve dağıtılmış önbelleğe alma gibi özellikler için önceden yapılandırılmış seçenekler sağlar. Ayrıca, kullanıcıların Jpatron EAP 'nin sağladığı çeşitli API 'Leri ve Hizmetleri kullanarak uygulama yazmasına, dağıtmasına ve çalıştırmasına olanak tanır.  Jpatron EAP hakkında daha fazla bilgi için, [JPATRON eap 7,2 'ye giriş](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.2/html-single/introduction_to_jboss_eap/index) veya [jpatron EAP 7,3](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.3/html/introduction_to_jboss_eap/index)' e giriş sayfasını ziyaret edin.
@@ -77,7 +77,7 @@ Bu şablonlar için çözüm mimarisi şunları içerir:
 * Azure sanal makine ölçek kümesini kullanan Jpatron EAP kümelenmiş
 
 #### <a name="linux-workload-migration-for-jboss-eap"></a>Jpatron EAP için Linux Iş yükü geçişi
-Azure Iş yükü Oluşturucu, şirket içi Java uygulamalarına yönelik kavram kanıtı (POC), değerlendirme ve geçiş sürecini Azure 'a basitleştirir. Iş yükü Oluşturucu, Jpatron EAP sunucularını belirlemek için Azure geçişi bulma aracı ile tümleşir. Daha sonra, Jpatron EAP sunucusu dağıtımı için dinamik olarak erişilebilir bir PlayBook oluşturur. Diğer uygulama sunucularından Jpatron EAP 'ye sunucu geçirmek için Red Hat MTA aracından yararlanır. Geçişi basitleştirecek adımlar şunlardır:
+Azure Iş yükü Oluşturucu, şirket içi Java uygulamalarına yönelik kavram kanıtı (POC), değerlendirme ve geçiş sürecini Azure 'a basitleştirir. Iş yükü Oluşturucu, Jpatron EAP sunucularını belirlemek için Azure geçişi bulma aracı ile tümleşir. Daha sonra, Jpatron EAP sunucusu dağıtımı için dinamik olarak erişilebilir bir PlayBook oluşturur. Diğer uygulama sunucularından Jpatron EAP 'ye sunucu geçirmek için Red Hat MTA aracı 'nı kullanır. Geçişi basitleştirecek adımlar şunlardır:
 * Değerlendirme-Azure VM veya sanal makine ölçek kümesi kullanan Jpatron EAP kümeleri
 * Değerlendirme-uygulamaları ve altyapıyı tarar
 * Altyapı yapılandırması-iş yükü profili oluşturur
@@ -86,7 +86,7 @@ Azure Iş yükü Oluşturucu, şirket içi Java uygulamalarına yönelik kavram 
 
 ## <a name="server-configuration-choice"></a>Sunucu yapılandırma seçimi
 
-RHEL VM dağıtımı için, PAYG ya da KCG arasında seçim yapabilirsiniz. [Azure Marketi](https://azuremarketplace.microsoft.com) 'ndeki görüntülerin varsayılan değeri PAYG olur. Kendi RHEL işletim sistemi görüntünüz varsa, bir KCG türü RHEL VM dağıtın. VM 'Leri veya sanal makine ölçek kümesini dağıtmadan önce RHSM hesabınızın F bulut erişimi aracılığıyla KCG yetkilendirmelerine sahip olduğundan emin olun.
+RHEL VM dağıtımı için, PAYG ya da KCG arasında seçim yapabilirsiniz. [Azure Marketi](https://azuremarketplace.microsoft.com) 'ndeki görüntülerin varsayılan değeri PAYG olur. Kendi RHEL işletim sistemi görüntünüz varsa, bir KCG türü RHEL VM dağıtın. VM 'Leri veya sanal makine ölçek kümesini dağıtmadan önce RHSM hesabınızın bulut erişimi aracılığıyla KCG yetkilendirmelerine sahip olduğundan emin olun.
 
 Jpatron EAP güçlü yönetim özelliklerine sahiptir ve uygulamalarına işlevsellik ve API 'Ler sağlar. Bu yönetim özellikleri, Jpatron EAP 'yi başlatmak için kullanılan işletim moduna göre farklılık gösterir. RHEL ve Windows Server 'da desteklenir. Jpatron EAP, ayrık örnekleri yönetmek için tek başına sunucu işletim modu sunar. Ayrıca, tek bir denetim noktasından örnek gruplarını yönetmek için yönetilen bir etki alanı işletim modu sağlar. Note: yüksek kullanılabilirlik (HA) özelliği Azure altyapı hizmetleri tarafından yönetildiğinden bu yana, Jpatron EAP tarafından yönetilen etki alanları Microsoft Azure desteklenmez. *EAP_HOME* adlı ortam değişkeni, JPATRON EAP yüklemesinin yolunu belirtmek için kullanılır.
 
@@ -96,7 +96,7 @@ Jpatron EAP güçlü yönetim özelliklerine sahiptir ve uygulamalarına işlevs
 $EAP_HOME/bin/standalone.sh
 ```
     
-Bu başlangıç betiği, JVM seçenekleri gibi bazı varsayılan tercihleri ayarlamak için EAP_HOME/bin/standalone.conf dosyasını kullanır. Ayarlar bu dosyada özelleştirilebilir. Jpatron EAP, tek başına modu varsayılan olarak başlatmak için standalone.xml yapılandırma dosyasını kullanır, ancak farklı bir mod kullanılarak başlatılabilir. Kullanılabilir tek başına yapılandırma dosyaları ve bunların nasıl kullanılacağı hakkında ayrıntılar için, EAP [7,2 Için tek başına sunucu yapılandırma dosyalarına](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.2/html/configuration_guide/jboss_eap_management#standalone_server_configuration_files) veya [EAP 7,3 Için tek başına sunucu yapılandırma dosyalarına](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.3/html/configuration_guide/jboss_eap_management#standalone_server_configuration_files) bakın. Jpatron EAP 'yi farklı bir yapılandırmayla başlatmak için--Server-config bağımsız değişkenini kullanın. Örneğin:
+Bu başlangıç betiği, JVM seçenekleri gibi bazı varsayılan tercihleri ayarlamak için EAP_HOME/bin/standalone.conf dosyasını kullanır. Ayarlar bu dosyada özelleştirilebilir. Jpatron EAP, tek başına modu varsayılan olarak başlatmak için standalone.xml yapılandırma dosyasını kullanır, ancak farklı bir mod kullanılarak başlatılabilir. Kullanılabilir tek başına yapılandırma dosyaları ve bunların nasıl kullanılacağı hakkında ayrıntılar için, EAP [7,2 Için tek başına sunucu yapılandırma dosyalarına](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.2/html/configuration_guide/jboss_eap_management#standalone_server_configuration_files) veya [EAP 7,3 Için tek başına sunucu yapılandırma dosyalarına](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.3/html/configuration_guide/jboss_eap_management#standalone_server_configuration_files) bakın. Jpatron EAP 'yi farklı bir yapılandırmayla başlatmak için--Server-config bağımsız değişkenini kullanın. Örnek:
     
  ```
  $EAP_HOME/bin/standalone.sh --server-config=standalone-full.xml
@@ -120,7 +120,7 @@ PAYG VM fiyatlandırmasıyla ilgili ayrıntılar için [Red Hat Enterprise Linux
 
 #### <a name="using-rhel-os-with-byos-model"></a>Kyos modeliyle RHEL OS kullanma
 
-RHEL işletim sistemi için KCG 'yi kullanmak için Azure 'da RHEL OS kullanma yetkilendirmelerine sahip geçerli bir Red Hat aboneliğine sahip olmanız gerekir. Bu hızlı başlangıç şablonunu dağıtmadan önce aşağıdaki önkoşulları doldurun:
+RHEL işletim sistemi için KCG 'yi kullanmak için Azure 'da RHEL OS kullanma yetkilendirmelerine sahip geçerli bir Red Hat aboneliğine sahip olmanız gerekir. KCG modeliyle RHEL işletim sistemini dağıtmadan önce aşağıdaki önkoşulları doldurun:
 
 1. Red Hat aboneliğinize bağlı RHEL OS ve Jpatron EAP yetkilendirmelerine sahip olduğunuzdan emin olun.
 2. RHEL BYOS görüntülerini kullanmak için Azure abonelik KIMLIĞINIZI yetkilendirin. Aşağıdaki adımları içeren işlemi gerçekleştirmek için [Red Hat abonelik yönetimi (RHSM) belgelerini](https://access.redhat.com/documentation/en/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs) izleyin:

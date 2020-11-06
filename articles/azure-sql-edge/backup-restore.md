@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: f2cc8901ee3952f7d258d768e175412254ec5d1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 114be810ea50f984c3211291691b4c4dd45ac2c7
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905952"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395249"
 ---
 # <a name="back-up-and-restore-databases-in-azure-sql-edge"></a>Azure SQL Edge 'de veritabanlarını yedekleme ve geri yükleme 
 
@@ -75,9 +75,9 @@ Aşağıdaki örnekte, `BACKUP DATABASE` kapsayıcıda bir veritabanı yedekleme
 
 ### <a name="back-up-to-url"></a>URL 'ye yedekleme
 
-Azure SQL Edge, sayfa Blobları ve blok bloblarına yönelik yedeklemeleri destekler. Daha fazla bilgi için bkz. [Blok Blobu vs Sayfa Blobu 'Na yedekleme](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url#blockbloborpageblob). Aşağıdaki örnekte veritabanı *IronOreSilicaPrediction* bir blok blobuna yedeklenir. 
+Azure SQL Edge, sayfa Blobları ve blok bloblarına yönelik yedeklemeleri destekler. Daha fazla bilgi için bkz. [Blok Blobu vs Sayfa Blobu 'Na yedekleme](/sql/relational-databases/backup-restore/sql-server-backup-to-url#blockbloborpageblob). Aşağıdaki örnekte veritabanı *IronOreSilicaPrediction* bir blok blobuna yedeklenir. 
 
-1. Yedeklemeleri bloblara engelleyecek şekilde yapılandırmak için, önce Azure SQL Edge 'de SQL Server kimlik bilgileri oluşturmak üzere kullanabileceğiniz bir paylaşılan erişim imzası (SAS) oluşturun. Betik, depolanan bir erişim ilkesiyle ilişkili bir SAS oluşturur. Daha fazla bilgi için bkz. [paylaşılan erişim imzaları, 1. Bölüm: SAS modelini anlama](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/). Betik Ayrıca SQL Server kimlik bilgisini oluşturmak için gereken T-SQL komutunu da yazar. Aşağıdaki betik, bir depolama hesabı olan bir Azure aboneliğiniz olduğunu ve yedeklemeler için bir depolama kapsayıcısı olduğunu varsayar.
+1. Yedeklemeleri bloblara engelleyecek şekilde yapılandırmak için, önce Azure SQL Edge 'de SQL Server kimlik bilgileri oluşturmak üzere kullanabileceğiniz bir paylaşılan erişim imzası (SAS) oluşturun. Betik, depolanan bir erişim ilkesiyle ilişkili bir SAS oluşturur. Daha fazla bilgi için bkz. [paylaşılan erişim imzaları, 1. Bölüm: SAS modelini anlama](../storage/common/storage-sas-overview.md). Betik Ayrıca SQL Server kimlik bilgisini oluşturmak için gereken T-SQL komutunu da yazar. Aşağıdaki betik, bir depolama hesabı olan bir Azure aboneliğiniz olduğunu ve yedeklemeler için bir depolama kapsayıcısı olduğunu varsayar.
 
     ```PowerShell
     # Define global variables for the script  
@@ -133,7 +133,7 @@ Azure SQL Edge, sayfa Blobları ve blok bloblarına yönelik yedeklemeleri deste
 
 ## <a name="restore-a-database-in-azure-sql-edge"></a>Azure SQL Edge 'de bir veritabanını geri yükleme
 
-Azure SQL Edge 'de yerel bir diskten, ağ konumundan veya Azure Blob Storage hesabından geri yükleme yapabilirsiniz. SQL Server ' de geri yükleme ve kurtarma hakkında daha fazla bilgi için bkz. [geri yükleme ve kurtarmaya genel bakış](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server). SQL Server basit kurtarma modeline genel bir bakış için bkz. [veritabanını geri yükleme (basit kurtarma modeli)](https://docs.microsoft.com/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model).
+Azure SQL Edge 'de yerel bir diskten, ağ konumundan veya Azure Blob Storage hesabından geri yükleme yapabilirsiniz. SQL Server ' de geri yükleme ve kurtarma hakkında daha fazla bilgi için bkz. [geri yükleme ve kurtarmaya genel bakış](/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server). SQL Server basit kurtarma modeline genel bir bakış için bkz. [veritabanını geri yükleme (basit kurtarma modeli)](/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model).
 
 > [!IMPORTANT] 
 > Azure SQL Edge 'de oluşturulan veritabanları Microsoft SQL Server veya Azure SQL örneğine geri yüklenemez. Ayrıca, Microsoft SQL Server veya Azure SQL üzerinde oluşturulan bir veritabanı Azure SQL Edge üzerinde geri yüklenebilir, çünkü veritabanı Azure SQL Edge tarafından desteklenmeyen özelliklerden hiçbirini içermez. 
@@ -142,13 +142,13 @@ Azure SQL Edge 'de yerel bir diskten, ağ konumundan veya Azure Blob Storage hes
 
 Bu örnek, önceki örnekte yaptığınız *IronOreSilicaPrediction* yedeklemesini kullanır. Şimdi, bu dosyayı farklı bir adla yeni bir veritabanı olarak geri yükleyeceksiniz.
 
-1. Veritabanı yedekleme dosyası kapsayıcıda zaten yoksa, dosyayı kapsayıcıya kopyalamak için aşağıdaki komutu kullanabilirsiniz. Aşağıdaki örnek, yedekleme dosyasının yerel konakta bulunduğunu ve/var/seçenek/MSSQL/Backup klasörüne *SQL1*adlı BIR Azure SQL Edge kapsayıcısına kopyalandığını varsayar.
+1. Veritabanı yedekleme dosyası kapsayıcıda zaten yoksa, dosyayı kapsayıcıya kopyalamak için aşağıdaki komutu kullanabilirsiniz. Aşağıdaki örnek, yedekleme dosyasının yerel konakta bulunduğunu ve/var/seçenek/MSSQL/Backup klasörüne *SQL1* adlı BIR Azure SQL Edge kapsayıcısına kopyalandığını varsayar.
 
     ```bash
     sudo docker cp IronOrePredictDB.bak sql1:/var/opt/mssql/backup
     ```
 
-2. Restore komutunu çalıştırmak için SSMS veya Azure Data Studio kullanarak Azure SQL Edge örneğine bağlanın. Aşağıdaki örnekte, **IronOreSilicaPrediction_2**yeni bir veritabanı oluşturmak Için **ıronorepredictdb. bak** geri yüklendi.
+2. Restore komutunu çalıştırmak için SSMS veya Azure Data Studio kullanarak Azure SQL Edge örneğine bağlanın. Aşağıdaki örnekte, **IronOreSilicaPrediction_2** yeni bir veritabanı oluşturmak Için **ıronorepredictdb. bak** geri yüklendi.
 
     ```sql
     Restore FilelistOnly from disk = N'/var/opt/mssql/backup/IronOrePredictDB.bak'
@@ -180,5 +180,3 @@ WITH MOVE 'IronOreSilicaPrediction' TO '/var/opt/mssql/data/IronOreSilicaPredict
 MOVE 'IronOreSilicaPrediction_log' TO '/var/opt/mssql/data/IronOreSilicaPrediction_Primary_3.ldf',
 STATS = 10;
 ```
-
-

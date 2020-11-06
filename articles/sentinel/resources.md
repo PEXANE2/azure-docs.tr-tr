@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2019
 ms.author: yelevin
-ms.openlocfilehash: 54c10d7941e053bec928f8f43310218d89124f9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50b88b4af6ea8479097b88b51fe7acfbea355ab8
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461740"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392325"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Azure Sentinel ile çalışmaya yönelik faydalı kaynaklar
 
@@ -62,7 +62,17 @@ Aşağıdaki desteklenen işlemler denetlenebilir.
 Azure etkinlik günlüğünden bu verileri, daha sonra araştırma ve analiz gerçekleştirebileceğiniz bir Azure Sentinel 'e aktararak görüntüleyebilirsiniz.
 
 1. [Azure etkinlik](connect-azure-activity.md) veri kaynağını bağlayın. Bunu yaptıktan sonra, denetim olayları AzureActivity adlı **Günlükler** ekranında yeni bir tabloya akışla kaydedilir.
-2. Ardından, diğer tüm tablolar gibi KQL kullanarak verileri sorgulayın.
+
+1. Ardından, diğer tüm tablolar gibi KQL kullanarak verileri sorgulayın.
+
+    Örneğin, belirli bir analiz kuralını kimin düzenleyen Son Kullanıcı olduğunu öğrenmek için aşağıdaki sorguyu kullanın ( `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` denetlemek istediğiniz kuralın kural kimliğiyle değiştirin):
+
+    ```kusto
+    AzureActivity
+    | where OperationNameValue startswith "MICROSOFT.SECURITYINSIGHTS/ALERTRULES/WRITE"
+    | where Properties contains "alertRules/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    | project Caller , TimeGenerated , Properties
+    ```
 
 
 

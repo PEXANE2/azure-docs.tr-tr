@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery ile Azure VMware Çözüm VM olağanüstü durum kurtarma için hazırlanma
+title: Azure Site Recovery için Azure VMware çözümünü olağanüstü durum kurtarma için hazırlama
 description: Azure VMware Çözüm sunucularını Azure Site Recovery hizmetini kullanarak Azure 'a olağanüstü durum kurtarma için nasıl hazırlayacağınızı öğrenin.
 author: Harsha-CS
 manager: rochakm
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: harshacs
 ms.custom: MVC
-ms.openlocfilehash: 9b04faf6797d04404dc0c5d617af2fd62a68c49a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e77ede7b04c95bfd6b6b8f660c8d811e7434c0f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91814631"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395453"
 ---
-# <a name="prepare-azure-vmware-solution-servers-for-disaster-recovery-to-azure"></a>Azure VMware Çözüm sunucularını Azure 'a olağanüstü durum kurtarma için hazırlama
+# <a name="prepare-azure-vmware-solution-for-disaster-recovery-to-azure-site-recovery"></a>Azure Site Recovery için Azure VMware çözümünü olağanüstü durum kurtarma için hazırlama
 
 Bu makalede, Azure VMware Çözüm sunucularının [Azure Site Recovery](site-recovery-overview.md) Hizmetleri kullanılarak Azure 'a olağanüstü durum kurtarma için nasıl hazırlanacağı açıklanmaktadır. 
 
@@ -68,8 +68,8 @@ Hesabı aşağıdaki gibi hazırlayın:
 
 VM üzerinde yükleme izinleri ile bir etki alanı veya yerel hesap hazırlayın.
 
-- **Windows VM'leri**: Windows VM'lerine yüklemek için, bir etki alanı hesabı kullanmıyorsanız yerel makinede Uzak Kullanıcı Erişim denetimini devre dışı bırakın. Bunu yapmak için kayıt defterinde > **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** altında **LocalAccountTokenFilterPolicy** adlı DWORD girişini 1 değeriyle ekleyin.
-- **Linux VM'leri**: Linux VM'lerine yüklemek için, kaynak Linux sunucusunda bir kök hesabı hazırlayın.
+- **Windows VM'leri** : Windows VM'lerine yüklemek için, bir etki alanı hesabı kullanmıyorsanız yerel makinede Uzak Kullanıcı Erişim denetimini devre dışı bırakın. Bunu yapmak için kayıt defterinde > **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** altında **LocalAccountTokenFilterPolicy** adlı DWORD girişini 1 değeriyle ekleyin.
+- **Linux VM'leri** : Linux VM'lerine yüklemek için, kaynak Linux sunucusunda bir kök hesabı hazırlayın.
 
 
 ## <a name="check-vmware-requirements"></a>VMware gereksinimlerini denetleme
@@ -92,12 +92,12 @@ Yük devretmeden sonra Azure VMware Çözüm ağından Azure VM 'lerine bağlanm
 Yük devretmeden sonra RDP kullanarak Windows VM’lerine bağlanmak için aşağıdakileri yapın:
 
 - **Internet erişimi**. Yük devretmeden önce, yük devretmeden önce Azure VMware Çözüm VM 'sinde RDP 'yi etkinleştirin. TCP ve UDP kurallarının **Ortak** profil için eklendiğinden ve tüm profillerde **Windows Güvenlik Duvarı** > **İzin Verilen Uygulamalar** içinde RDP’ye izin verildiğinden emin olun.
-- **Konumdan konuma VPN erişimi**:
+- **Konumdan konuma VPN erişimi** :
     - Yük devretmeden önce Azure VMware Çözüm VM 'sinde RDP 'yi etkinleştirin.
-    - **Windows Firewall**  ->  **Etki alanı ve özel** ağlar için Windows Güvenlik Duvarı**izin verilen uygulamalar ve özelliklerde** RDP 'ye izin verilmelidir.
+    - **Windows Firewall**  ->  **Etki alanı ve özel** ağlar için Windows Güvenlik Duvarı **izin verilen uygulamalar ve özelliklerde** RDP 'ye izin verilmelidir.
     - İşletim sisteminin SAN ilkesinin **OnlineAll** olarak ayarlandığından emin olun. [Daha fazla bilgi edinin](https://support.microsoft.com/kb/3031135).
 - Bir yük devretme tetiklediğinizde VM’de bekleyen Windows güncelleştirmelerinin olmaması gerekir. Varsa, güncelleştirme tamamlanana kadar sanal makinede oturum açamazsınız.
-- Yük devretmeden sonra Windows Azure VM’sinde, VM’nin bir ekran görüntüsünü görmek için **Önyükleme tanılaması**’nı kontrol edin. Bağlanamıyorsanız, VM’nin çalıştığından emin olun ve şu [sorun giderme ipuçlarını](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx) gözden geçirin.
+- Yük devretmeden sonra Windows Azure VM’sinde, VM’nin bir ekran görüntüsünü görmek için **Önyükleme tanılaması** ’nı kontrol edin. Bağlanamıyorsanız, VM’nin çalıştığından emin olun ve şu [sorun giderme ipuçlarını](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx) gözden geçirin.
 
 Yük devretmeden sonra SSH kullanarak Linux VM’lerine bağlanmak için aşağıdakileri yapın:
 
@@ -105,7 +105,7 @@ Yük devretmeden sonra SSH kullanarak Linux VM’lerine bağlanmak için aşağ�
 - Güvenlik duvarı kurallarının SSH bağlantısına izin verdiğinden emin olun.
 - Yük devretmeden sonra Azure VM’sinde, yük devredilen VM üzrindeki ağ güvenlik grubu kuralları ve VM’nin bağlı olduğu Azure alt ağı için SSH bağlantı noktasına gelen bağlantılara izin verin.
 - VM için bir [ortak IP adresi ekleyin](./site-recovery-monitor-and-troubleshoot.md).
-- VM’nin bir ekran görüntüsünü görmek için **Önyükleme tanılaması**’nı kontrol edebilirsiniz.
+- VM’nin bir ekran görüntüsünü görmek için **Önyükleme tanılaması** ’nı kontrol edebilirsiniz.
 
 
 ## <a name="failback-requirements"></a>Yeniden çalışma gereksinimleri

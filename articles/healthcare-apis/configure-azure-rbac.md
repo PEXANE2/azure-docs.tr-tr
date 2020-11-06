@@ -8,16 +8,16 @@ ms.topic: reference
 ms.date: 03/15/2020
 ms.author: matjazl
 ms.reviewer: dseven
-ms.openlocfilehash: 1df2d112814c93261c364883f4b834e0bdb657bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cadfad445c76726b1b825b131de4016a57979fa
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839920"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93391849"
 ---
 # <a name="configure-azure-rbac-for-fhir"></a>FHıR için Azure RBAC 'yi yapılandırma 
 
-Bu makalede, FHıR veri düzlemi için Azure API 'sine erişim atamak üzere [Azure rol tabanlı erişim denetimi 'nin (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/) nasıl kullanılacağını öğreneceksiniz. Azure RBAC, veri düzlemi kullanıcıları Azure aboneliğinizle ilişkili Azure Active Directory kiracısında yönetildiğinde veri düzlemi erişimi atamaya yönelik tercih edilen yöntemlerdir. Dış Azure Active Directory kiracı kullanıyorsanız, [Yerel RBAC atama başvurusuna](configure-local-rbac.md)bakın.
+Bu makalede, FHıR veri düzlemi için Azure API 'sine erişim atamak üzere [Azure rol tabanlı erişim denetimi 'nin (Azure RBAC)](../role-based-access-control/index.yml) nasıl kullanılacağını öğreneceksiniz. Azure RBAC, veri düzlemi kullanıcıları Azure aboneliğinizle ilişkili Azure Active Directory kiracısında yönetildiğinde veri düzlemi erişimi atamaya yönelik tercih edilen yöntemlerdir. Dış Azure Active Directory kiracı kullanıyorsanız, [Yerel RBAC atama başvurusuna](configure-local-rbac.md)bakın.
 
 ## <a name="confirm-azure-rbac-mode"></a>Azure RBAC modunu onaylama
 
@@ -25,17 +25,17 @@ Azure RBAC 'yi kullanmak için, FHıR için Azure API 'nizin, veri düzlemi içi
 
 :::image type="content" source="media/rbac/confirm-azure-rbac-mode.png" alt-text="Azure RBAC modunu onaylama":::
 
-**Yetkili** , aboneliğinizle Ilişkili Azure Active Directory kiracısına ayarlanmalıdır ve **Izin verilen nesne kimlikleri**etiketli kutuda GUID olmamalıdır. Ayrıca, kutunun devre dışı olduğunu ve bir etiketin veri düzlemi rollerini atamak için Azure RBAC 'nin kullanılması gerektiğini belirten bir etiket olduğunu fark edeceksiniz.
+**Yetkili** , aboneliğinizle Ilişkili Azure Active Directory kiracısına ayarlanmalıdır ve **Izin verilen nesne kimlikleri** etiketli kutuda GUID olmamalıdır. Ayrıca, kutunun devre dışı olduğunu ve bir etiketin veri düzlemi rollerini atamak için Azure RBAC 'nin kullanılması gerektiğini belirten bir etiket olduğunu fark edeceksiniz.
 
 ## <a name="assign-roles"></a>Rol atama
 
-Kullanıcıları, hizmet sorumlularını veya grupları FHıR veri düzlemine erişim izni vermek için **erişim denetimi (IAM)** öğesine tıklayın, ardından **rol atamaları** ' na tıklayın ve **+ Ekle**' ye tıklayın:
+Kullanıcıları, hizmet sorumlularını veya grupları FHıR veri düzlemine erişim izni vermek için **erişim denetimi (IAM)** öğesine tıklayın, ardından **rol atamaları** ' na tıklayın ve **+ Ekle** ' ye tıklayın:
 
-:::image type="content" source="media/rbac/add-azure-rbac-role-assignment.png" alt-text="Azure RBAC modunu onaylama":::
+:::image type="content" source="media/rbac/add-azure-rbac-role-assignment.png" alt-text="Azure rol ataması Ekle":::
 
 **Rol** seçiminde, fhır veri düzlemi için yerleşik rollerden birini arayın:
 
-:::image type="content" source="media/rbac/built-in-fhir-data-roles.png" alt-text="Azure RBAC modunu onaylama":::
+:::image type="content" source="media/rbac/built-in-fhir-data-roles.png" alt-text="Yerleşik FHıR veri rolleri":::
 
 Arasından seçim yapabilirsiniz:
 
@@ -44,7 +44,7 @@ Arasından seçim yapabilirsiniz:
 * FHıR veri verme programı: verileri okuyabilir ve dışarı aktarabilir ( `$export` işleç).
 * FHıR verileri katılımcısı: tüm veri düzlemi işlemlerini gerçekleştirebilir.
 
-Bu roller ihtiyacınız olması için yeterli değilse [özel roller de oluşturabilirsiniz](https://docs.microsoft.com/azure/role-based-access-control/tutorial-custom-role-powershell).
+Bu roller ihtiyacınız olması için yeterli değilse [özel roller de oluşturabilirsiniz](../role-based-access-control/tutorial-custom-role-powershell.md).
 
 **Seç** kutusunda, rolü atamak istediğiniz kullanıcı, hizmet sorumlusu veya grup için arama yapın.
 

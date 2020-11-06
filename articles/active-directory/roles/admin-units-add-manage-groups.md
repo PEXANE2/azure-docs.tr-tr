@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.workload: identity
-ms.date: 10/07/2020
+ms.date: 11/04/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eee8ae8eeebfff61dd90aedc35a3dc04a88d6758
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 092604429cf5a527d7ee62b412e879ad9991eace
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026743"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394756"
 ---
 # <a name="add-and-manage-groups-in-an-administrative-unit-in-azure-active-directory"></a>Azure Active Directory bir yönetim biriminde gruplar ekleme ve yönetme
 
@@ -31,7 +31,7 @@ Yönetim birimi yönetimi için PowerShell ve Microsoft Graph kullanmaya hazırl
 
 Azure portal, PowerShell veya Microsoft Graph kullanarak bir yönetim birimine gruplar ekleyebilirsiniz.
 
-### <a name="use-the-azure-portal"></a>Azure portalını kullanma
+### <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
 Bir yönetim birimine yalnızca ayrı gruplar atayabilirsiniz. Grupları toplu işlem olarak atama seçeneği yoktur. Azure portal, yönetim birimine iki şekilde bir grup atayabilirsiniz:
 
@@ -95,7 +95,7 @@ Request body
 
 ## <a name="view-a-list-of-groups-in-an-administrative-unit"></a>Yönetim birimindeki grupların listesini görüntüleme
 
-### <a name="use-the-azure-portal"></a>Azure portalını kullanma
+### <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
 1. Azure portal **Azure AD** 'ye gidin.
 
@@ -139,7 +139,7 @@ Request body
 
 ## <a name="view-a-list-of-administrative-units-for-a-group"></a>Bir grup için yönetim birimlerinin bir listesini görüntüleme
 
-### <a name="use-the-azure-portal"></a>Azure portalını kullanma
+### <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
 1. Azure portal **Azure AD** 'ye gidin.
 
@@ -169,7 +169,7 @@ https://graph.microsoft.com/v1.0/groups/<group-id>/memberOf/$/Microsoft.Graph.Ad
 
 ## <a name="remove-a-group-from-an-administrative-unit"></a>Yönetim biriminden bir grubu kaldırma
 
-### <a name="use-the-azure-portal"></a>Azure portalını kullanma
+### <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
 Bir grubu Azure portal bir yönetim biriminden iki şekilde kaldırabilirsiniz:
 

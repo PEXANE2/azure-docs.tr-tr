@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: e92fab392dc73d8de0b7b2547e38b3f345562930
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e22eaacd73bb15ddf43f416831ff5ff42923b6e0
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975867"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393396"
 ---
 # <a name="register-a-resource-application-in-azure-active-directory"></a>Azure Active Directory bir kaynak uygulaması kaydetme
 
@@ -41,13 +41,13 @@ Azure için açık kaynaklı FHıR sunucusunu kullanıyorsanız, kaynak uygulama
 
 ### <a name="app-registrations-in-azure-portal"></a>Azure portal Uygulama kayıtları
 
-1. [Azure portalda](https://portal.azure.com) sol taraftaki gezinti panelinden **Azure Active Directory**’ye tıklayın.
+1. [Azure portalda](https://portal.azure.com) sol taraftaki gezinti panelinden **Azure Active Directory** ’ye tıklayın.
 
-2. **Azure Active Directory** dikey penceresinde **uygulama kayıtları**' e tıklayın:
+2. **Azure Active Directory** dikey penceresinde **uygulama kayıtları** ' e tıklayın:
 
     ![Azure portal. Yeni uygulama kaydı.](media/how-to-aad/portal-aad-new-app-registration.png)
 
-3. **Yeni kayda**tıklayın.
+3. **Yeni kayda** tıklayın.
 
 ### <a name="add-a-new-application-registration"></a>Yeni bir uygulama kaydı ekleyin
 
@@ -61,9 +61,9 @@ Kaynak uygulamanın, kaynağa erişim isteğinde bulunan istemcilerin kullanabil
 
 1. **API 'Yi kullanıma** sunma
 
-2. *Uygulama kimliği URI 'sinin*yanındaki **Ayarla** ' ya tıklayın.
+2. *Uygulama kimliği URI 'sinin* yanındaki **Ayarla** ' ya tıklayın.
 
-3. Tanımlayıcı URI 'sini girin ve **Kaydet**' e tıklayın. İyi bir tanımlayıcı URI 'SI, FHıR sunucunuzun URI 'SI olmalıdır.
+3. Tanımlayıcı URI 'sini girin ve **Kaydet** ' e tıklayın. İyi bir tanımlayıcı URI 'SI, FHıR sunucunuzun URI 'SI olmalıdır.
 
 4. **Kapsam Ekle** ' ye tıklayın ve API 'niz için tanımlamak istediğiniz kapsamları ekleyin. Gelecekte kaynak uygulamanıza izin vermek için en az bir kapsam eklemeniz gerekir. Eklemek istediğiniz belirli kapsamınız yoksa, user_impersonation kapsam olarak ekleyebilirsiniz.
 
@@ -71,9 +71,9 @@ Kaynak uygulamanın, kaynağa erişim isteğinde bulunan istemcilerin kullanabil
 
 ### <a name="define-application-roles"></a>Uygulama rollerini tanımlama
 
-FHIR için Azure API ve Azure için OSS FHıR sunucusu, rol tabanlı erişim denetimi için [Azure Active Directory Uygulama rollerini](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles) kullanır. FHıR sunucu API 'niz için hangi rollerin kullanılabilir olduğunu tanımlamak için, kaynak uygulamanın [bildirimini](https://docs.microsoft.com/azure/active-directory/active-directory-application-manifest/)açın:
+FHIR için Azure API ve Azure için OSS FHıR sunucusu, rol tabanlı erişim denetimi için [Azure Active Directory Uygulama rollerini](/azure/architecture/multitenant-identity/app-roles) kullanır. FHıR sunucu API 'niz için hangi rollerin kullanılabilir olduğunu tanımlamak için, kaynak uygulamanın [bildirimini](/azure/active-directory/active-directory-application-manifest/)açın:
 
-1. **Bildirim**' e tıklayın:
+1. **Bildirim** ' e tıklayın:
 
     ![Uygulama rolleri](media/how-to-aad/portal-aad-register-new-app-registration-APP-ROLES.png)
 

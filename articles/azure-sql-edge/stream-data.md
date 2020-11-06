@@ -9,16 +9,16 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: ca22b3d2c00bfef128455df4ad6b9bb6411f8a13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f63ab040e750c0c642c9656a5482529b926e9295
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90900552"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392121"
 ---
 # <a name="data-streaming-in-azure-sql-edge"></a>Azure SQL Edge 'de veri akışı
 
-Azure SQL Edge, T-SQL streaming adlı veri akışı yeteneklerinin yerel bir uygulamasını sağlar. Aynı anda birden çok kaynaktan alınan yüksek hacimli verileri çözümlemek ve işlemek için gerçek zamanlı veri akışı, analiz ve olay işleme sağlar. T-SQL akışı, Microsoft Azure [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-introduction) güçlendirir ve aynı yüksek performanslı akış motoru kullanılarak oluşturulmuştur. Özelliği, Edge üzerinde çalışan Azure Stream Analytics tarafından sunulan benzer bir özellik kümesini destekler.
+Azure SQL Edge, T-SQL streaming adlı veri akışı yeteneklerinin yerel bir uygulamasını sağlar. Aynı anda birden çok kaynaktan alınan yüksek hacimli verileri çözümlemek ve işlemek için gerçek zamanlı veri akışı, analiz ve olay işleme sağlar. T-SQL akışı, Microsoft Azure [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) güçlendirir ve aynı yüksek performanslı akış motoru kullanılarak oluşturulmuştur. Özelliği, Edge üzerinde çalışan Azure Stream Analytics tarafından sunulan benzer bir özellik kümesini destekler.
 
 Stream Analytics olduğu gibi, T-SQL akışı, cihazlar, algılayıcılar ve uygulamalar dahil olmak üzere çeşitli IoT giriş kaynaklarından ayıklanan, desenlerdeki desenleri ve ilişkileri tanır. Bu desenleri, eylemleri tetiklemek ve iş akışlarını başlatmak için kullanabilirsiniz. Örneğin, uyarılar oluşturabilir, bir raporlama veya görselleştirme çözümüne bilgi verebilir veya daha sonra kullanmak üzere verileri saklayabilirsiniz. 
 
@@ -31,25 +31,25 @@ T-SQL akışı şunları yapmanıza yardımcı olabilir:
 
 ## <a name="how-does-t-sql-streaming-work"></a>T-SQL akışı nasıl çalışır?
 
-T-SQL akışı, [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-introduction#how-does-stream-analytics-work)ile tam olarak aynı şekilde çalışmaktadır. Örneğin, gerçek zamanlı veri akışını işlemek için akış *işi* kavramını kullanır. 
+T-SQL akışı, [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md#how-does-stream-analytics-work)ile tam olarak aynı şekilde çalışmaktadır. Örneğin, gerçek zamanlı veri akışını işlemek için akış *işi* kavramını kullanır. 
 
 Stream Analytics işi aşağıdakilerden oluşur:
 
-- **Akış girişi**: Bu, veri akışını okumak için bir veri kaynağına bağlantıları tanımlar. Azure SQL Edge Şu anda aşağıdaki akış giriş türlerini desteklemektedir:
+- **Akış girişi** : Bu, veri akışını okumak için bir veri kaynağına bağlantıları tanımlar. Azure SQL Edge Şu anda aşağıdaki akış giriş türlerini desteklemektedir:
     - Edge hub 'ı
     - Kafka (Kafka girdileri desteği şu anda yalnızca Azure SQL Edge 'in Intel/AMD64 sürümlerinde kullanılabilir.)
 
-- **Akış çıkışı**: Bu, veri akışını yazmak için bir veri kaynağına bağlantıları tanımlar. Azure SQL Edge Şu anda aşağıdaki akış çıkış türlerini desteklemektedir
+- **Akış çıkışı** : Bu, veri akışını yazmak için bir veri kaynağına bağlantıları tanımlar. Azure SQL Edge Şu anda aşağıdaki akış çıkış türlerini desteklemektedir
     - Edge hub 'ı
     - SQL (SQL çıktısı, Azure SQL Edge veya uzak SQL Server ya da Azure SQL veritabanı örneği içinde yerel bir veritabanı olabilir.) 
 
-- **Akış sorgusu**: Bu, akış çıktısına yazılmadan önce, giriş akışına uygulanacak dönüştürme, toplamalar, filtre, sıralama ve birleştirmeleri tanımlar. Akış sorgusu, Stream Analytics tarafından kullanılan sorgu dilini temel alır. Daha fazla bilgi için bkz. [Stream Analytics sorgu dili](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?).
+- **Akış sorgusu** : Bu, akış çıktısına yazılmadan önce, giriş akışına uygulanacak dönüştürme, toplamalar, filtre, sıralama ve birleştirmeleri tanımlar. Akış sorgusu, Stream Analytics tarafından kullanılan sorgu dilini temel alır. Daha fazla bilgi için bkz. [Stream Analytics sorgu dili](/stream-analytics-query/stream-analytics-query-language-reference).
 
 > [!IMPORTANT]
-> T-SQL akışı, Stream Analytics aksine, şu anda [aramalar için başvuru verilerini kullanmayı](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-use-reference-data) veya [BIR akış IŞINDE UDF ve uda 'yı kullanmayı](https://docs.microsoft.com/azure/stream-analytics/streaming-technologies#you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c)desteklememektedir.
+> T-SQL akışı, Stream Analytics aksine, şu anda [aramalar için başvuru verilerini kullanmayı](../stream-analytics/stream-analytics-use-reference-data.md) veya [BIR akış IŞINDE UDF ve uda 'yı kullanmayı](../stream-analytics/streaming-technologies.md#you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c)desteklememektedir.
 
 > [!NOTE]
-> T-SQL akışı yalnızca Stream Analytics tarafından desteklenen dil yüzeyi alanının bir alt kümesini destekler. Daha fazla bilgi için bkz. [Stream Analytics sorgu dili](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?).
+> T-SQL akışı yalnızca Stream Analytics tarafından desteklenen dil yüzeyi alanının bir alt kümesini destekler. Daha fazla bilgi için bkz. [Stream Analytics sorgu dili](/stream-analytics-query/stream-analytics-query-language-reference).
 
 ## <a name="limitations-and-restrictions"></a>Sınırlamalar ve kısıtlamalar
 

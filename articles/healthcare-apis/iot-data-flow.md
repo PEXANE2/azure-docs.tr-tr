@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: punagpal
-ms.openlocfilehash: 43b7bcba97617d6931fd5c191e62e833a25bf89d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cae648e3c2bddbafec555621d97575a007cfeb4
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87513391"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394875"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-data-flow"></a>FHIR için Azure IoT Bağlayıcısı’nın (önizleme) veri akışı
 
@@ -26,7 +26,7 @@ Yukarıdaki diyagramda, FHAR için Azure IoT bağlayıcısını kullanan ortak v
 Aşağıda, verilerin FHıR için Azure IoT Bağlayıcısı tarafından alındıktan sonra geçen farklı aşamalar verilmiştir.
 
 ## <a name="ingest"></a>Alma
-Inest, cihaz verilerinin FHıR için Azure IoT Bağlayıcısı 'na alındığı ilk aşamadır. Cihaz verileri için alma uç noktası bir [Azure Olay Hub 'ında](https://docs.microsoft.com/azure/event-hubs/)barındırılır. Azure Olay Hub 'ı platformu, saniyede milyonlarca iletiyi alıp işleyebilme olanağı sunan yüksek ölçekli ve üretilen işi destekler. Ayrıca, FHıR için Azure IoT bağlayıcısının iletileri zaman uyumsuz olarak kullanmasını sağlar ve cihaz verilerinin işlenmesi sırasında cihazların beklemesi gereksinimini ortadan kaldırır.
+Inest, cihaz verilerinin FHıR için Azure IoT Bağlayıcısı 'na alındığı ilk aşamadır. Cihaz verileri için alma uç noktası bir [Azure Olay Hub 'ında](../event-hubs/index.yml)barındırılır. Azure Olay Hub 'ı platformu, saniyede milyonlarca iletiyi alıp işleyebilme olanağı sunan yüksek ölçekli ve üretilen işi destekler. Ayrıca, FHıR için Azure IoT bağlayıcısının iletileri zaman uyumsuz olarak kullanmasını sağlar ve cihaz verilerinin işlenmesi sırasında cihazların beklemesi gereksinimini ortadan kaldırır.
 
 > [!NOTE]
 > JSON, cihaz verileri için şu anda desteklenen tek biçimdir.

@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 646ce94587a9aa1bb8fd20a28b84658994b25cf1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19dcbbf102a1d8d21f1b14780ea33816a1677c55
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886540"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392036"
 ---
 # <a name="supported-features-of-azure-sql-edge"></a>Azure SQL Edge 'in desteklenen özellikleri 
 
 Azure SQL Edge, SQL veritabanı altyapısının en son sürümü üzerine kurulmuştur. Linux üzerinde SQL Server 2019 ' de desteklenen özelliklerin bir alt kümesini destekler. Bu özellik, Linux üzerinde SQL Server 2019 ' de (veya Windows üzerinde SQL Server) desteklenmeyen veya mevcut bazı özelliklere ek olarak.
 
-Linux üzerinde SQL Server desteklenen özelliklerin kapsamlı bir listesi için bkz. [Linux üzerinde SQL Server 2019 'Nin sürümleri ve desteklenen özellikleri](https://docs.microsoft.com/sql/linux/sql-server-linux-editions-and-components-2019). Windows üzerinde SQL Server sürümleri ve desteklenen özellikleri için, bkz. [sürümler ve desteklenen özellikler SQL Server 2019 (15. x)](https://docs.microsoft.com/sql/sql-server/editions-and-components-of-sql-server-version-15).
+Linux üzerinde SQL Server desteklenen özelliklerin kapsamlı bir listesi için bkz. [Linux üzerinde SQL Server 2019 'Nin sürümleri ve desteklenen özellikleri](/sql/linux/sql-server-linux-editions-and-components-2019). Windows üzerinde SQL Server sürümleri ve desteklenen özellikleri için, bkz. [sürümler ve desteklenen özellikler SQL Server 2019 (15. x)](/sql/sql-server/editions-and-components-of-sql-server-version-15).
 
 ## <a name="azure-sql-edge-editions"></a>Azure SQL Edge sürümleri
 
@@ -92,7 +92,7 @@ Aşağıdaki listede, Azure SQL Edge 'de Şu anda desteklenmeyen Linux özellikl
 | **SQL Server Agent** |  Alt sistemler: CmdExec, PowerShell, Queue Reader, SSIS, SSAS ve SSRS. |
 | &nbsp; | Larınız. |
 | &nbsp; | Yönetilen yedekleme. |
-| **Yüksek Kullanılabilirlik** | Always on kullanılabilirlik grupları.  |
+| **Yüksek kullanılabilirlik** | Always on kullanılabilirlik grupları.  |
 | &nbsp; | Temel kullanılabilirlik grupları. |
 | &nbsp; | Her zaman yük devretme kümesi örneği. |
 | &nbsp; | Veritabanı yansıtma. |

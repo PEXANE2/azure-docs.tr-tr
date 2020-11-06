@@ -1,78 +1,116 @@
 ---
-title: Azure Site Recovery hizmeti ile olağanüstü durum kurtarma için ikincil bir Azure bölgesine çoğaltılan Azure VM 'lerinin yükünü devretmek ve yeniden koruyun.
-description: Azure Site Recovery hizmeti ile olağanüstü durum kurtarma için ikincil bir Azure bölgesine çoğaltılan Azure VM 'lerinin yükünü devretme ve yeniden koruma hakkında bilgi edinin.
-services: site-recovery
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
+title: Azure Site Recovery ile olağanüstü durum kurtarma için Azure VM 'lerinin yükünü ikincil bir bölgeye devretmek için öğretici.
+description: Azure Site Recovery hizmeti ile olağanüstü durum kurtarma için ikincil bir Azure bölgesine çoğaltılan Azure VM 'lerinden yük devretme ve yeniden koruma hakkında bilgi edinmek için öğretici.
 ms.topic: tutorial
-ms.date: 08/05/2019
-ms.author: raynew
+ms.date: 11/05/2020
 ms.custom: mvc
-ms.openlocfilehash: 8d38aa513b0829c2626fcd4a92c40faabff1f83e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99263c83d25542073d63c1cba394a147bd5b2170
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87502401"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392869"
 ---
-# <a name="fail-over-and-reprotect-azure-vms-between-regions"></a>Bölgeler arasında Azure sanal makinelerinde yük devretme ve yeniden koruma
+# <a name="tutorial-fail-over-azure-vms-to-a-secondary-region"></a>Öğretici: Azure VM 'lerinden bir ikincil bölgeye yük devretme
 
-Bu öğreticide, Azure sanal makinesi 'nin (VM) [Azure Site Recovery](site-recovery-overview.md) hizmeti ile Ikincil bir Azure bölgesine yük devretme işlemi açıklanmaktadır. Yük devretdikten sonra, sanal makineyi yeniden koruyabilirsiniz. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+[Azure Site Recovery](site-recovery-overview.md)ile olağanüstü durum kurtarma Için etkinleştirilen Azure VM 'lerinin Ikincil bir Azure bölgesine nasıl yük devredebileceğinizi öğrenin. Yük devretmeden sonra, hedef bölgedeki VM 'Leri birincil bölgeye tekrar çoğaltılacak şekilde yeniden korumalısınız. Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Azure VM’ye yük devretme
-> * İkincil Azure VM 'sini birincil bölgeye çoğaltan şekilde yeniden koruyun.
+> * Önkoşulları denetleme
+> * VM ayarlarını doğrulama
+> * İkincil bölgeye yük devretme çalıştırma
+> * VM 'yi birincil bölgeye yeniden çoğaltmaya başlayın.
+
 
 > [!NOTE]
-> Bu öğretici, varsayılan ayarlara ve en düşük özelleştirmeye sahip en basit yolu içerir. Daha karmaşık senaryolar için, Azure VM 'Leri için ' nasıl yapılır ' altındaki makaleleri kullanın.
+> Bu öğreticide, en az adımla VM 'Lerin yük devretme işlemi gösterilmektedir. Tam ayarlarla yük devretme çalıştırmak istiyorsanız, Azure VM [ağı](azure-to-azure-about-networking.md), [Otomasyonu](azure-to-azure-powershell.md)ve [sorun giderme](azure-to-azure-troubleshoot-errors.md)hakkında bilgi edinin.
+
 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Başlamadan önce, yük devretme hakkında [sık sorulan soruları](site-recovery-faq.md#failover) gözden geçirin.
-- Her şeyin beklenildiği gibi çalışıp çalışmadığını denetlemek için bir [olağanüstü durum kurtarma tatbikatını](azure-to-azure-tutorial-dr-drill.md) tamamladığınızdan emin olun.
-- Yük devretme testini çalıştırmadan önce VM özelliklerini doğrulayın. VM, [Azure gereksinimlerine](azure-to-azure-support-matrix.md#replicated-machine-operating-systems) uymalıdır.
+Bu öğreticiye başlamadan önce şunları yapmalısınız:
 
-## <a name="run-a-failover-to-the-secondary-region"></a>İkincil bölgeye yük devretme çalıştırma
+1. Bir veya daha fazla Azure sanal makinesi için çoğaltmayı ayarlayın. Yapmadıysanız, bunu yapmak için bu serideki [ilk öğreticiyi doldurun](azure-to-azure-tutorial-enable-replication.md) .
+2. Çoğaltılan VM 'Ler için [bir olağanüstü durum kurtarma ayrıntısı çalıştırmanızı](azure-to-azure-tutorial-dr-drill.md) öneririz. Tam yük devretme çalıştırmadan önce detaya gitme çalıştırmak, üretim ortamınızı etkilemeden her şeyin beklendiği gibi çalıştığından emin olmanıza yardımcı olur. 
 
-1. **Çoğaltılmış öğeler** bölümünde, yük devretmek istediğiniz VM’yi seçin > **Yük devretme**
 
-   ![Bir VM için yük devretme seçeneklerini gösteren ekran görüntüsü.](./media/azure-to-azure-tutorial-failover-failback/failover.png)
+## <a name="verify-the-vm-settings"></a>VM ayarlarını doğrulama
 
-2. **Yük devretme** kısmında, yük devredeceğiniz bir **Kurtarma Noktası** seçin. Aşağıdaki seçeneklerden birini kullanabilirsiniz:
+1. Kasada **çoğaltılan öğeleri** > VM 'yi seçin.
 
-   * **En son** (varsayılan): Site Recovery hizmetindeki tüm verileri işler ve en düşük kurtarma noktası HEDEFINI (RPO) sağlar.
-   * **En son işlenen**: sanal makineyi Site Recovery hizmeti tarafından işlenen en son kurtarma noktasına geri döndürür.
-   * **Özel**: belirli bir kurtarma noktasına yük devreder. Bu seçenek, bir yük devretme testi gerçekleştirmek için faydalıdır.
+    ![Genel Bakış sayfasında VM özelliklerini açma seçeneği](./media/azure-to-azure-tutorial-failover-failback/vm-settings.png)
 
-3. Yük devretmeyi tetiklemeden önce Site Recovery kaynak VM 'Leri kapatmayı denemek istiyorsanız, **yük devretmeye başlamadan önce makineyi Kapat ' ı** seçin. Kapalı, veri kaybı olmamasını sağlamaya yardımcı olur. Kapatma işlemi başarısız olsa bile yük devretme devam eder. Site Recovery yük devretmeden sonra kaynağı temizlemez.
+2. VM **'ye genel bakış** sayfasında, yük devretme ÇALıŞTıRMADAN önce VM 'nin korumalı ve sağlıklı olduğunu denetleyin.
+    ![VM özelliklerini ve durumunu doğrulama sayfası](./media/azure-to-azure-tutorial-failover-failback/vm-state.png)
 
-4. Yük devretme ilerleme durumunu **İşler** sayfasından takip edin.
+3. Yük devretme yapmadan önce şunları denetleyin:
+    - VM, desteklenen bir [Windows](azure-to-azure-support-matrix.md#windows) veya [Linux](azure-to-azure-support-matrix.md#replicated-machines---linux-file-systemguest-storage) işletim sistemi çalıştırıyor.
+    - VM [işlem](azure-to-azure-support-matrix.md#replicated-machines---compute-settings), [depolama](azure-to-azure-support-matrix.md#replicated-machines---storage)ve [ağ](azure-to-azure-support-matrix.md#replicated-machines---networking) gereksinimleriyle uyumludur.
 
-5. Yük devretmeden sonra, sanal makineyi doğrulamak için makinede oturum açın. Sanal makine için başka bir kurtarma noktasına gitmek istiyorsanız, **Kurtarma noktasını değiştir** seçeneğini kullanabilirsiniz.
+## <a name="run-a-failover"></a>Yük devretme çalıştırma
 
-6. Yük devredilmiş sanal makineden memnun kaldığınızda, yük devretmeyi **Yürütebilirsiniz**.
-   Yürütme işlemi, hizmette kullanılabilir olan tüm kurtarma noktalarını siler. Artık kurtarma noktasını değiştiremeyeceksiniz.
 
-> [!NOTE]
-> VM için çoğaltmayı etkinleştirdikten sonra disk ekleyeceğiniz bir VM 'nin yükünü devretmek, çoğaltma noktaları, kurtarma için kullanılabilen diskleri gösterir. Örneğin, bir VM 'nin tek bir diski varsa ve yeni bir tane eklerseniz, diski eklemeden önce oluşturulan çoğaltma noktaları, çoğaltma noktasının "1/2 diskten" oluştuğunu gösterir.
+1. VM **'ye genel bakış** sayfasında, **Yük devretme** ' yı seçin.
 
-![Eklenen bir disk ile yük devretmeyi gösteren ekran görüntüsü.](./media/azure-to-azure-tutorial-failover-failback/failover-added.png)
+    ![Çoğaltılan öğe için yük devretme düğmesi](./media/azure-to-azure-tutorial-failover-failback/failover-button.png)
 
-## <a name="reprotect-the-secondary-vm"></a>İkincil VM’yi yeniden koruma
+3. **Yük devretme** bölümünde bir kurtarma noktası seçin. Hedef bölgedeki Azure VM, bu kurtarma noktasındaki veriler kullanılarak oluşturulur.
+  
+   - **En son işlenen** : Site Recovery tarafından işlenen en son kurtarma noktasını kullanır. Zaman damgası gösterilir. Verileri işlemek için zaman harcanmadan, düşük bir kurtarma süresi hedefi (RTO) sağlar.
+   -  **En son** : Site Recovery gönderilen tüm verileri, yük devretmadan önce her VM için bir kurtarma noktası oluşturmak üzere işler. , Yük devretme tetiklendiğinde tüm veriler Site Recovery çoğaltıldığından, en düşük kurtarma noktası hedefini (RPO) sağlar.
+   - **En son uygulamayla tutarlı** : Bu seçenek VM 'lerin üzerinde en son uygulamayla tutarlı kurtarma noktasına devredildi. Zaman damgası gösterilir.
+   - **Özel** : yük devretme, belirli bir kurtarma noktasına devredildi. Özel yalnızca tek bir VM 'nin yükünü devretmek ve kurtarma planı kullanmıyorsanız kullanılabilir.
 
-VM’nin yük devretmesinden sonra, birincil bölgeye geri çoğaltması için VM’yi yeniden korumalısınız.
+    > [!NOTE]
+    > Çoğaltmayı etkinleştirdikten sonra VM 'ye bir disk eklediyseniz çoğaltma noktaları, kurtarma için kullanılabilir diskleri gösterir. Örneğin, ikinci bir disk eklenmeden önce oluşturulan bir çoğaltma noktası, "1/2 disk" olarak görünür.
 
-1. VM’nin **Yük devretme yürütüldü** durumunda olduğundan emin olun ve birincil bölgenin kullanılabilir olduğunu ve içinde yeni kaynaklar oluşturup bunlara erişebildiğinizi denetleyin.
-2. **Kasa**  >  **çoğaltılan öğeler**' de, yük devredilen VM 'ye sağ tıklayın ve ardından **yeniden koru**' yı seçin.
+4. Yük devretmeye başlamadan önce Site Recovery kaynak VM 'Leri kapatmayı denemek istiyorsanız, **yük devretmeye başlamadan önce makineyi Kapat ' ı** seçin. Kapalı, veri kaybı olmamasını sağlamaya yardımcı olur. Kapatma işlemi başarısız olsa bile yük devretme devam eder. 
 
-   ![Bir VM için yeniden koruma seçeneğinin ekran görüntüsü.](./media/azure-to-azure-tutorial-failover-failback/reprotect.png)
+    ![Yük devretme ayarları sayfası](./media/azure-to-azure-tutorial-failover-failback/failover-settings.png)    
 
-2. Birincil bölgeye kadar olan koruma yönünün zaten seçili olduğunu doğrulayın.
-3. **Kaynak grubu, Ağ, Depolama ve Kullanılabilirlik kümeleri** bilgilerini gözden geçirin. Yeni olarak işaretlenen tüm kaynaklar yeniden koruma işleminin bir parçası olarak oluşturulur.
-4. Yeniden koruma işini tetiklemek için **Tamam**’a tıklayın. Bu iş, hedef siteye en son verileri sağlar. Ardından, deltaları birincil bölgeye çoğaltır. VM artık korunan bir durumdadır.
+3. Yük devretmeyi başlatmak için **Tamam** ' ı seçin.
+4. Bildirimlerde yük devretmeyi izleyin.
+
+    ![İlerleme durumu bildirimi ](./media/azure-to-azure-tutorial-failover-failback/notification-failover-start.png) ![ başarı bildirimi](./media/azure-to-azure-tutorial-failover-failback/notification-failover-finish.png)     
+
+5. Yük devretmeden sonra, hedef bölgede oluşturulan Azure VM **sanal makinelerde** görünür. VM 'nin çalıştığından ve uygun şekilde boyutlandırıldığından emin olun. VM için farklı bir kurtarma noktası kullanmak istiyorsanız, **Essentials** sayfasında **kurtarma noktasını Değiştir** ' i seçin.
+6. Yükü devredilen VM 'nin memnun olduğunuzda, yük devretmeyi tamamlamak için genel bakış sayfasında **Yürüt** ' ü seçin.
+
+    ![Kaydet düğmesi](./media/azure-to-azure-tutorial-failover-failback/commit-button.png) 
+
+7. **Kaydet** bölümünde onaylamak için **Tamam** ' ı seçin. Yürüt, Site Recovery sanal makinenin kullanılabilir tüm kurtarma noktalarını siler ve kurtarma noktasını değiştiremezsiniz.
+
+8. Bildirimlerin ilerleme ilerlemesini izleyin.
+
+    ![İlerleme durumu bildirimi ](./media/azure-to-azure-tutorial-failover-failback/notification-commit-start.png) ![ kayıt başarı bildirimi](./media/azure-to-azure-tutorial-failover-failback/notification-commit-finish.png)    
+
+9. Site Recovery yük devretmeden sonra kaynak VM 'yi temizleyemiyor. Bunu el ile yapmanız gerekir.
+
+
+## <a name="reprotect-the-vm"></a>VM 'yi yeniden koruma
+
+Yük devretmeden sonra, birincil bölgeye geri çoğaltılacağını sağlamak için VM 'yi ikincil bölgede yeniden korumalısınız. 
+
+1. Başlamadan önce VM **durumunun** *Yük devretme taahhütine* sahip olduğundan emin olun.
+2. Birincil bölgeye erişebildiğinden ve içinde VM oluşturma izniniz olduğundan emin olun.
+3. VM **genel bakış** sayfasında **yeniden koru** ' yı seçin.
+
+   ![Bir VM için VM için yeniden korumayı etkinleştirme düğmesi.](./media/azure-to-azure-tutorial-failover-failback/reprotect-button.png)
+
+4. **Yeniden koruma** bölümünde, çoğaltma yönünü (ikincil birincil bölgeye) doğrulayın ve birincil bölgenin hedef ayarlarını gözden geçirin. Yeni olarak işaretlenen kaynaklar, yeniden koruma işleminin bir parçası olarak Site Recovery tarafından oluşturulur.
+
+     ![Yeniden koruma ayarları sayfası](./media/azure-to-azure-tutorial-failover-failback/reprotect.png)
+
+6. Yeniden koru işlemini başlatmak için **Tamam ' ı** seçin. İşlem, ilk verileri hedef konuma gönderir ve ardından sanal makinelerin Delta bilgilerini hedefe çoğaltır.
+7. Bildirimlerin ilerleme durumunu izleyin. 
+
+    ![İlerleme bildirimini yeniden koruma ](./media/azure-to-azure-tutorial-failover-failback/notification-reprotect-start.png) ![ başarı bildirimi](./media/azure-to-azure-tutorial-failover-failback/notification-reprotect-finish.png)
+    
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Yeniden koruma altına aldıktan sonra, kullanılabilir olduğunda birincil bölgeye nasıl yeniden yük [devredebileceğinizi öğrenin](azure-to-azure-tutorial-failback.md) .
-- Yeniden koruma akışı hakkında [daha fazla bilgi edinin](azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection) .
+
+Bu öğreticide, birincil bölgeden ikinciye yük devretti ve VM 'Leri birincil bölgeye yeniden çoğaltmaya başladıysanız. Artık ikincil bölgeden birincil bölgeye yeniden yük devreolursunuz.
+
+> [!div class="nextstepaction"]
+> [Birincil bölgeye geri dönme](azure-to-azure-tutorial-failback.md)

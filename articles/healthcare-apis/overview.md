@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 78dec9180da2a78903ae5d5e87bca515b212f167
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 12635979d90dcc4be5b45bf7d64ceb602119faf7
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87843445"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394773"
 ---
 # <a name="what-is-azure-api-for-fhirreg"></a>FHıR için Azure API nedir &reg; ?
 
@@ -24,7 +24,7 @@ FHıR için Azure API, bulutta bir yönetilen hizmet olarak platform (PaaS) ile 
 - Yüksek performans, düşük gecikme süresi
 - Uyumlu bir bulut ortamında korunan durum verilerinin (FI) güvenli yönetimi
 - Mobil ve Web uygulamaları için FHıR 'de akıllı
-- Rol tabanlı Access Control (RBAC) ile kendi verilerinizi ölçeklendirerek denetleyin
+- Role-Based Access Control (RBAC) ile kendi verilerinizi ölçeklendirerek denetleme
 - Her veri deposu içinde erişim, oluşturma, değiştirme ve okuma için günlük izlemeyi denetleme
 
 FHıR için Azure API 'SI, bulutun esnek ölçeğinden yararlanmak üzere bir FHıR hizmetini yalnızca dakikalar içinde oluşturup dağıtmanıza olanak tanır.  Yalnızca ihtiyacınız olan aktarım hızı ve depolama alanı için ödeme yaparsınız. FHıR için Azure API 'YI destekleyen Azure Hizmetleri, yönettiğiniz veri kümelerinin ne olduğuna bakılmaksızın hızlı performans için tasarlanmıştır.
@@ -53,7 +53,7 @@ FHıR için Azure API 'yi kullanmak, okuma, yazma, arama ve diğer işlevler iç
 
 ### <a name="control-data-access-at-scale"></a>Ölçekte veri erişimini denetleme
 
-Verilerinizi kontrol edersiniz. Rol tabanlı Access Control (RBAC), verilerinizin nasıl depolandığını ve erişildiğini yönetmenizi sağlar.  Artırılmış güvenlik sağlar ve yönetim iş yükünü azaltarak, ortamınız için oluşturduğunuz rol tanımlarına göre oluşturduğunuz veri kümelerine kimlerin erişebileceğini belirlersiniz.  
+Verilerinizi kontrol edersiniz. Role-Based Access Control (RBAC), verilerinizin nasıl depolandığını ve erişildiğini yönetmenizi sağlar.  Artırılmış güvenlik sağlar ve yönetim iş yükünü azaltarak, ortamınız için oluşturduğunuz rol tanımlarına göre oluşturduğunuz veri kümelerine kimlerin erişebileceğini belirlersiniz.  
 
 ### <a name="audit-logs-and-tracking"></a>Denetim günlükleri ve izleme 
 
@@ -86,7 +86,7 @@ FHıR sunucusunu genişletmeyi veya özelleştirmeyi gerektiren veya veritabanı
 
 FHIR için Azure IoT Bağlayıcısı *, Azure API 'nin, tıp 'ler (IoMT) cihazlarından veri alma özelliğini sağlayan, isteğe bağlı bir Azure API özelliğidir. Tıp interneti, ağ üzerinden BT sistemleri ile veri & elde eden verileri yakalayan ve değiş tokuş eden bir IoT cihazları kategorisidir. Bazı ıomt cihazlarına örnek olarak, uygunluk ve klinik wearables, izleme algılayıcıları, etkinlik izleyicileri, bakım noktaları ve hatta akıllı bir Pill sayılabilir. FHıR için Azure IoT Bağlayıcısı özelliği, Azure API 'ye, ölçeklenebilir, güvenli ve uyumlu bir şekilde Azure API 'sine veri almak üzere bir hizmeti hızla ayarlamanıza olanak sağlar.
 
-FHıR için Azure IoT Bağlayıcısı, bir ıomt cihazı tarafından gönderilen JSON tabanlı iletileri kabul edebilir. Bu veriler ilk olarak uygun FHıR tabanlı [izleme kaynaklarına dönüştürülür](https://www.hl7.org/fhir/observation.html) ve ardından fhır için Azure API 'si ile kalıcı hale getirilir. Veri dönüştürme mantığı, ileti şemanıza ve FHıR gereksinimlerinize göre yapılandırdığınız bir eşleme şablonları çifti aracılığıyla tanımlanır. Cihaz verileri, FHıR için doğrudan Azure IoT Bağlayıcısı 'na veya diğer Azure IoT çözümleriyle ([azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) ve [Azure IoT Central](https://docs.microsoft.com/azure/iot-central/)) sorunsuz bir şekilde kullanılabilir. FHıR için Azure IoT Bağlayıcısı, Azure IoT çözümlerinin fiziksel cihazların sağlamasını ve bakımını yönetmesine izin verirken güvenli bir veri işlem hattı sağlar.
+FHıR için Azure IoT Bağlayıcısı, bir ıomt cihazı tarafından gönderilen JSON tabanlı iletileri kabul edebilir. Bu veriler ilk olarak uygun FHıR tabanlı [izleme kaynaklarına dönüştürülür](https://www.hl7.org/fhir/observation.html) ve ardından fhır için Azure API 'si ile kalıcı hale getirilir. Veri dönüştürme mantığı, ileti şemanıza ve FHıR gereksinimlerinize göre yapılandırdığınız bir eşleme şablonları çifti aracılığıyla tanımlanır. Cihaz verileri, FHıR için doğrudan Azure IoT Bağlayıcısı 'na veya diğer Azure IoT çözümleriyle ([azure IoT Hub](../iot-hub/index.yml) ve [Azure IoT Central](../iot-central/index.yml)) sorunsuz bir şekilde kullanılabilir. FHıR için Azure IoT Bağlayıcısı, Azure IoT çözümlerinin fiziksel cihazların sağlamasını ve bakımını yönetmesine izin verirken güvenli bir veri işlem hattı sağlar.
 
 ### <a name="applications-of-azure-iot-connector-for-fhir-preview"></a>FHıR için Azure IoT bağlayıcısının uygulamaları (Önizleme)
 

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 14e0b86f11c3eabf93e7d4f0ebf563e59c0c21e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee1561e85e769bf8a82ce96d5ce010eece92a0fa
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081874"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392625"
 ---
 # <a name="orchestrator-function-code-constraints"></a>Orchestrator işlev kodu kısıtlamaları
 
@@ -18,7 +18,7 @@ Dayanıklı İşlevler, [Azure işlevlerinin](../functions-overview.md) bir uzan
 
 ## <a name="orchestrator-code-constraints"></a>Düzenleyici kodu kısıtlamaları
 
-Orchestrator işlevleri, güvenilir bir yürütme sağlamak ve yerel değişken durumunu korumak için [olay](/azure/architecture/patterns/event-sourcing) kaynağını kullanır. Orchestrator kodunun yeniden [yürütme davranışı](durable-functions-orchestrations.md#reliability) , bir Orchestrator işlevinde yazabileceğiniz kod türü üzerinde kısıtlamalar oluşturur. Örneğin, Orchestrator işlevleri *belirleyici*olmalıdır: bir Orchestrator işlevi birden çok kez yeniden yürütülür ve her seferinde aynı sonucu üretmelidir.
+Orchestrator işlevleri, güvenilir bir yürütme sağlamak ve yerel değişken durumunu korumak için [olay](/azure/architecture/patterns/event-sourcing) kaynağını kullanır. Orchestrator kodunun yeniden [yürütme davranışı](durable-functions-orchestrations.md#reliability) , bir Orchestrator işlevinde yazabileceğiniz kod türü üzerinde kısıtlamalar oluşturur. Örneğin, Orchestrator işlevleri *belirleyici* olmalıdır: bir Orchestrator işlevi birden çok kez yeniden yürütülür ve her seferinde aynı sonucu üretmelidir.
 
 ### <a name="using-deterministic-apis"></a>Belirleyici API 'Leri kullanma
 
@@ -28,20 +28,21 @@ Orchestrator işlevleri, hedef dillerinde API 'leri çağırabilir. Ancak, Orche
 
 Aşağıdaki tabloda, oluşmaması gereken API 'Ler örnekleri gösterilmektedir çünkü belirleyici *değildir* . Bu kısıtlamalar yalnızca Orchestrator işlevleri için geçerlidir. Diğer işlev türlerinde bu tür kısıtlamalar yoktur.
 
-| API kategorisi | Neden | Geçici çözüm |
+| API kategorisi | Nedeni | Geçici çözüm |
 | ------------ | ------ | ---------- |
-| Tarihler ve saatler  | Döndürülen değer her yeniden yürütme için farklı olduğundan geçerli tarih veya saati döndüren API 'Ler belirleyici değildir. | .NET veya API içindeki API 'yi `CurrentUtcDateTime` `currentUtcDateTime` , yeniden yürütme için güvenli olan JavaScript 'te kullanın. |
+| Tarihler ve saatler  | Döndürülen değer her yeniden yürütme için farklı olduğundan geçerli tarih veya saati döndüren API 'Ler belirleyici değildir. | .NET ' te API 'yi `CurrentUtcDateTime` , JavaScript 'teki API 'yi veya Python 'da API 'yi kullanarak yeniden `currentUtcDateTime` `current_utc_datetime` oynatma için güvenli bir şekilde kullanın. |
 | GUID 'Ler ve UUID 'ler  | Oluşturulan değer her yeniden yürütme için farklı olduğundan rastgele bir GUID veya UUID döndüren API 'Ler belirleyici değildir. | `NewGuid` `newGuid` Rastgele GUID 'leri güvenle oluşturmak için .NET veya JavaScript içinde kullanın. |
 | Rastgele sayılar | Oluşturulan değer her yeniden yürütme için farklı olduğundan rastgele sayılar döndüren API 'Ler belirleyici değildir. | Bir düzenleme için rastgele sayılar döndürmek üzere bir etkinlik işlevi kullanın. Etkinlik işlevlerinin dönüş değerleri her zaman yeniden yürütme için güvenlidir. |
 | Bağlamalar | Giriş ve çıkış bağlamaları genellikle g/ç ve belirleyici olmayan bir şekilde yapılır. Orchestrator işlevinin [düzenleme istemcisi](durable-functions-bindings.md#orchestration-client) ve [varlık istemci](durable-functions-bindings.md#entity-client) bağlamaları bile doğrudan kullanılması gerekir. | İstemci veya etkinlik işlevleri içindeki giriş ve çıkış bağlamalarını kullanın. |
 | Ağ | Ağ çağrıları dış sistemler içerir ve belirleyici değildir. | Ağ çağrıları yapmak için etkinlik işlevlerini kullanın. Orchestrator işlevinizden bir HTTP çağrısı yapmanız gerekiyorsa, [DAYANıKLı HTTP API 'lerini](durable-functions-http-features.md#consuming-http-apis)de kullanabilirsiniz. |
 | API 'Leri engelleme | .NET ve benzer API 'lerde olduğu gibi API 'Leri engellemek, `Thread.Sleep` Orchestrator işlevleri için performans ve ölçeklendirme sorunlarına neden olabilir ve kaçınılmalıdır. Azure Işlevleri tüketim planında, bu, hatta gereksiz çalışma zamanı ücretlerine neden olabilir. | Kullanılabilir olduklarında API 'Leri engellemek için alternatifleri kullanın. Örneğin,  `CreateTimer` düzenleme yürütmesindeki gecikmeleri tanıtmak için kullanın. [Sürekli süreölçer](durable-functions-timers.md) gecikmeleri, bir Orchestrator işlevinin yürütme zamanına doğru sayılmaz. |
-| Zaman uyumsuz API 'Ler | Orchestrator kodu, `IDurableOrchestrationContext` API veya NESNENIN API 'si dışında herhangi bir zaman uyumsuz işlem başlatmalıdır `context.df` . Örneğin,, `Task.Run` , ve ' ı `Task.Delay` `HttpClient.SendAsync` .NET veya `setTimeout` `setInterval` JavaScript 'te kullanamazsınız. Dayanıklı görev çerçevesi, tek bir iş parçacığında Orchestrator kodunu çalıştırır. Diğer zaman uyumsuz API 'Ler tarafından çağrılabilen diğer iş parçacıklarıyla etkileşime giremeyebilir. | Orchestrator işlevi yalnızca dayanıklı zaman uyumsuz çağrılar sağlamalıdır. Etkinlik işlevleri, başka bir zaman uyumsuz API çağrısı yapmalıdır. |
-| Zaman uyumsuz JavaScript işlevleri | `async`node.js çalışma zamanı zaman uyumsuz işlevlerin belirleyici olduğunu garanti edemediğinden, JavaScript Orchestrator işlevlerini bildiremezsiniz. | JavaScript Orchestrator işlevlerini zaman uyumlu Oluşturucu işlevleri olarak bildirin. |
+| Zaman uyumsuz API 'Ler | Orchestrator kodu, `IDurableOrchestrationContext` API, `context.df` JavaScript 'teki API veya `context` Python 'daki API 'yi kullanarak herhangi bir zaman uyumsuz işlemi hiçbir zaman başlatmalıdır. Örneğin,, `Task.Run` , ve ' ı `Task.Delay` `HttpClient.SendAsync` .NET veya `setTimeout` `setInterval` JavaScript 'te kullanamazsınız. Dayanıklı görev çerçevesi, tek bir iş parçacığında Orchestrator kodunu çalıştırır. Diğer zaman uyumsuz API 'Ler tarafından çağrılabilen diğer iş parçacıklarıyla etkileşime giremeyebilir. | Orchestrator işlevi yalnızca dayanıklı zaman uyumsuz çağrılar sağlamalıdır. Etkinlik işlevleri, başka bir zaman uyumsuz API çağrısı yapmalıdır. |
+| Zaman uyumsuz JavaScript işlevleri | `async`node.js çalışma zamanı zaman uyumsuz işlevlerin belirleyici olduğunu garanti edemediğinden, JavaScript Orchestrator işlevlerini bildiremezsiniz. | JavaScript Orchestrator işlevlerini zaman uyumlu Oluşturucu işlevleri olarak bildirme |
+| Python eş yordamları | Python Orchestrator işlevlerini eş yordam olarak bildiremezsiniz, yani `async`eş yordam olamaz semantiği dayanıklı işlevler Replay modeliyle hizalanmadığından, bunları anahtar sözcüğüyle bildirin. | Python Orchestrator işlevlerini oluşturucular olarak bildirin, yani `context` API 'nin yerine kullanılmasını beklemeniz gerekir `yield` `await` .   |
 | İş parçacığı API 'Leri | Dayanıklı görev çerçevesi, Orchestrator kodunu tek bir iş parçacığında çalıştırır ve diğer iş parçacıklarıyla etkileşime giremeyen bir işlem olamaz. Orchestration yürütmesinin yeni iş parçacıklarını tanıtma, belirleyici olmayan yürütme veya kilitlenmeyle sonuçlanabilir. | Orchestrator işlevleri, iş parçacığı API 'Lerini neredeyse asla kullanmaz. Örneğin, .NET 'te kullanmaktan kaçının `ConfigureAwait(continueOnCapturedContext: false)` ; Bu, görev devamlılıklarının Orchestrator işlevinin orijinalde çalıştırılmasını sağlar `SynchronizationContext` . Bu tür API 'Ler gerekliyse, kullanımlarını yalnızca etkinlik işlevlerine sınırlayın. |
 | Statik değişkenler | Orchestrator işlevlerinde sabit olmayan statik değişkenler kullanmaktan kaçının çünkü değerleri zaman içinde değişebilir, bu durum belirleyici olmayan çalışma zamanı davranışına neden olur. | Sabitleri kullanın veya statik değişkenlerin kullanımını etkinlik işlevleriyle sınırlandırın. |
 | Ortam değişkenleri | Orchestrator işlevlerinde ortam değişkenlerini kullanmayın. Değerleri zaman içinde değişebilir ve belirleyici olmayan çalışma zamanı davranışına neden olabilir. | Ortam değişkenlerine yalnızca istemci işlevleri veya etkinlik işlevleri içinden başvurulmalıdır. |
-| Sonsuz döngüler | Orchestrator işlevlerinde sonsuz döngüleri önleyin. Sürekli görev çerçevesi Orchestration işlevi ilerledikçe yürütme geçmişini kaydettiğinden, sonsuz bir döngü bir Orchestrator örneğinin bellek tükenmesine neden olabilir. | Sonsuz döngü senaryolarında, `ContinueAsNew` `continueAsNew` işlev yürütmeyi yeniden başlatmak ve önceki yürütme geçmişini atmak için .NET veya JavaScript 'Te gibi API 'leri kullanın. |
+| Sonsuz döngüler | Orchestrator işlevlerinde sonsuz döngüleri önleyin. Sürekli görev çerçevesi Orchestration işlevi ilerledikçe yürütme geçmişini kaydettiğinden, sonsuz bir döngü bir Orchestrator örneğinin bellek tükenmesine neden olabilir. | Sonsuz döngü senaryolarında, `ContinueAsNew` `continueAsNew` `continue_as_new` işlev yürütmeyi yeniden başlatmak ve önceki yürütme geçmişini atmak Için .NET veya JavaScript 'Te gibi API 'leri kullanın. |
 
 Bu kısıtlamaları uygulamak ilk olarak zor görünebilir, ancak uygulamada izlenmesi kolay bir işlemdir.
 
@@ -56,7 +57,7 @@ Sürekli bir düzenleme, günler, aylar, yıllar [veya hatta önemli](durable-fu
 > [!NOTE]
 > Bu bölümde, dayanıklı görev çerçevesinin iç uygulama ayrıntıları açıklanmaktadır. Bu bilgileri bilmeden dayanıklı işlevleri kullanabilirsiniz. Yalnızca yeniden yürütme davranışını anlamanıza yardımcı olmak için tasarlanmıştır.
 
-Orchestrator işlevlerinde güvenle beklemeleri gereken görevler bazen *dayanıklı görevler*olarak adlandırılır. Dayanıklı görev çerçevesi bu görevleri oluşturur ve yönetir. .NET Orchestrator işlevlerinde **CallActivityAsync**, **WaitForExternalEvent**ve **CreateTimer** tarafından döndürülen görevler örnektir.
+Orchestrator işlevlerinde güvenle beklemeleri gereken görevler bazen *dayanıklı görevler* olarak adlandırılır. Dayanıklı görev çerçevesi bu görevleri oluşturur ve yönetir. .NET Orchestrator işlevlerinde **CallActivityAsync** , **WaitForExternalEvent** ve **CreateTimer** tarafından döndürülen görevler örnektir.
 
 Bu dayanıklı görevler, .NET 'teki bir nesne listesi tarafından dahili olarak yönetilir `TaskCompletionSource` . Yeniden yürütme sırasında, bu görevler Orchestrator Code Execution 'ın bir parçası olarak oluşturulur. Dağıtıcı karşılık gelen geçmiş olaylarını numaralandırdığından tamamlanırlar.
 
