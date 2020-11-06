@@ -1,7 +1,7 @@
 ---
 title: Özellik karma modülü başvurusu
 titleSuffix: Azure Machine Learning
-description: Metin verilerini korlaleştirmek için Azure Machine Learning Özellik karma modülünü kullanmayı öğrenin.
+description: Metin verilerini korleştirmek için Azure Machine Learning tasarımcısında Özellik karma modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: a9ef6ff81a2c9f3697f7c3ccf1cd8e91ad2fb683
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: cd48b32afee320aa3d252540d566317c374c73a8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323732"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420793"
 ---
 # <a name="feature-hashing-module-reference"></a>Özellik karma modülü başvurusu
 
@@ -22,7 +22,7 @@ Bu makalede Azure Machine Learning tasarımcısında bulunan bir modül açıkla
 
 Ingilizce metin akışını bir tamsayı özellikleri kümesine dönüştürmek için özellik karma modülünü kullanın. Daha sonra bu karma özellik kümesini bir makine öğrenimi algoritmasına geçirebilirsiniz ve bir metin analizi modelini eğitebilirsiniz.
 
-Bu modülde sunulan özellik karma işlevselliği nimbusml çerçevesini temel alır. Daha fazla bilgi için bkz. [Ngramhash sınıfı](/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest).
+Bu modülde sunulan özellik karma işlevselliği nimbusml çerçevesini temel alır. Daha fazla bilgi için bkz. [Ngramhash sınıfı](/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest&preserve-view=true).
 
 ## <a name="what-is-feature-hashing"></a>Özellik karma nedir?
 

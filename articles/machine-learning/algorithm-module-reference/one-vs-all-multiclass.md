@@ -1,7 +1,7 @@
 ---
 title: Bire Karşı Hepsi Çoklu Sınıf
 titleSuffix: Azure Machine Learning
-description: İkili sınıflandırma modellerinin bir enseshonu kullanarak birden çok Lass sınıflandırma modeli oluşturmak için Azure Machine Learning Bire Karşı Hepsi Çoklu Sınıf modülünü nasıl kullanacağınızı öğrenin.
+description: İkili sınıflandırma modellerinin bir örneğini oluşturmak için Azure Machine Learning tasarımcısında Bire Karşı Hepsi Çoklu Sınıf modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: dfe01e16b55325db03e4150a33ae5c4aa5822ae2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f09a77043a552d8d7f09c2a6abcb78f89cbf8ee2
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898511"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420691"
 ---
 # <a name="one-vs-all-multiclass"></a>Bire Karşı Hepsi Çoklu Sınıf
 
@@ -40,7 +40,7 @@ Bu modül, birden çok sınıfı çözümlemek için ikili sınıflandırma mode
 
 Modelleri birleştirdiğinizde, Bire Karşı Hepsi Çoklu Sınıf birden çok ikili sınıflandırma modeli oluşturur, her sınıf için algoritmayı iyileştirir ve sonra modelleri birleştirir. Eğitim veri kümesi birden çok sınıf değerine sahip olsa da, modül bu görevleri yapar.
 
-1. Bire Karşı Hepsi Çoklu Sınıf modülünü tasarımcıdaki işlem hattınızı ekleyin. Bu modülü, **Sınıflandırma** kategorisinde **Machine Learning-Initialize**altında bulabilirsiniz.
+1. Bire Karşı Hepsi Çoklu Sınıf modülünü tasarımcıdaki işlem hattınızı ekleyin. Bu modülü, **Sınıflandırma** kategorisinde **Machine Learning-Initialize** altında bulabilirsiniz.
 
    Bire Karşı Hepsi Çoklu Sınıf sınıflandırıcıda kendisine ait yapılandırılabilir parametre yok. Tüm özelleştirmeler, giriş olarak sunulan ikili sınıflandırma modelinde yapılmalıdır.
 

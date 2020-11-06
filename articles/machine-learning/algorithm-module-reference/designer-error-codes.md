@@ -1,7 +1,7 @@
 ---
 title: Tasarımcı modülü hatalarında sorun giderme
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning tasarımcısında modül hata kodları sorunlarını giderme
+description: Azure Machine Learning tasarımcısında otomatikleştirilmiş modül hata kodlarını nasıl okuyabileceğinizi ve giderebileceğinizi öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 05926f7ce25714fb76415802876db0640eb30aae
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 569cf130b464d97e0ac10904ffd86365b57610a5
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323781"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420844"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>Tasarımcı için özel durumlar ve hata kodları
 
@@ -357,7 +357,7 @@ Gruplandırma veya kategorilere ayırma için kullanmayı düşündüğünüz s�
 ## <a name="error-0018"></a>Hata 0018  
  Giriş veri kümesi geçerli değilse özel durum oluşur.  
 
-**Çözüm:** Azure Machine Learning bu hata birçok bağlamda görünebilir, bu nedenle tek bir çözüm yoktur. Genellikle hata, bir modüle giriş olarak girilen verilerin yanlış sayıda sütuna sahip olduğunu veya veri türünün modül gereksinimleriyle eşleşmediğinden emin olduğunu gösterir. Örneğin:  
+**Çözüm:** Azure Machine Learning bu hata birçok bağlamda görünebilir, bu nedenle tek bir çözüm yoktur. Genellikle hata, bir modüle giriş olarak girilen verilerin yanlış sayıda sütuna sahip olduğunu veya veri türünün modül gereksinimleriyle eşleşmediğinden emin olduğunu gösterir. Örnek:  
 
 -   Modül bir etiket sütunu gerektiriyor, ancak hiçbir sütun etiket olarak işaretlenmemiş veya henüz bir etiket sütunu seçmediniz.  
   
@@ -439,7 +439,7 @@ Gruplandırma veya kategorilere ayırma için kullanmayı düşündüğünüz s�
 ## <a name="error-0022"></a>Hata 0022  
  Giriş veri kümesindeki Seçili sütunların sayısı beklenen sayıya eşit değilse özel durum oluşur.  
 
- Azure Machine Learning içinde bu hata, aşağı akış modülü veya işlemi belirli sayıda sütun veya giriş gerektirdiğinde ve çok az veya çok fazla sayıda sütun veya giriş sağladıysanız oluşabilir. Örneğin:  
+ Azure Machine Learning içinde bu hata, aşağı akış modülü veya işlemi belirli sayıda sütun veya giriş gerektirdiğinde ve çok az veya çok fazla sayıda sütun veya giriş sağladıysanız oluşabilir. Örnek:  
 
 -   Tek etiketli bir sütun veya anahtar sütunu ve yanlışlıkla birden çok sütun seçtiniz.  
   

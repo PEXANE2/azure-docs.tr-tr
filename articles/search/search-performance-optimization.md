@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 5fd949466978714fe1dc0c4ccc67a3cb8f993314
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 362d5f2046ff4e9ba52dd2e73433cc39e80f7a50
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934965"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420606"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Azure Bilişsel Arama performans için ölçeklendirin
 
@@ -30,7 +30,7 @@ Daha büyük bir dağıtım çabadan önce, tipik bir sorgu yükünün nasıl g�
 
 1. Saniye başına az sayıda sorgu (QPS) ile başlayın ve ardından sorgu gecikmesi önceden tanımlanmış hedefin altına düşene kadar testte yürütülen sayıyı kademeli olarak artırın. Bu, uygulamanızın kullanımda büyüdüğü sürece ölçek planlaması yapmanıza yardımcı olan önemli bir kıyaslamaya yöneliktir.
 
-1. Mümkün olan yerlerde HTTP bağlantılarını yeniden kullanın. Azure Bilişsel Arama .NET SDK kullanıyorsanız bu, bir örneği veya [Searchındexclient](/dotnet/api/microsoft.azure.search.searchindexclient) örneğini yeniden kullanmanız gerektiği anlamına gelir ve REST API kullanıyorsanız, tek bir HttpClient kullanmanız gerekir.
+1. Mümkün olan yerlerde HTTP bağlantılarını yeniden kullanın. Azure Bilişsel Arama .NET SDK kullanıyorsanız bu, bir örneği veya [Searchclient](/dotnet/api/azure.search.documents.searchclient) örneğini yeniden kullanmanız gerektiği anlamına gelir ve REST API kullanıyorsanız, tek bir HttpClient kullanmanız gerekir.
 
 1. Sorgunun farklı bölümlerinin üzerinde gerçekleşmesini sağlamak için sorgu isteklerinin bu şekilde çeşitini farklılık gösterir. Aynı arama isteklerini sürekli olarak yürütüyorsa, değişim önemlidir çünkü sürekli olarak aynı arama isteklerini yürütüyorsa, verilerin önbelleğe alınması, daha farklı bir sorgu kümesiyle olabileceği gibi performansı daha iyi hale getirmek için başlar.
 
@@ -43,7 +43,7 @@ Bu test iş yüklerini oluştururken aklınızda bulundurmanız gereken bazı Az
 + Azure Bilişsel Arama, dizin oluşturma görevlerini arka planda çalıştırmaz. Hizmetiniz sorgu ve dizin oluşturma iş yüklerini eşzamanlı olarak işlerinizde, sorgu testleriniz için dizin oluşturma işleri sunarak ya da yoğun saatlerde dizin oluşturma işlerini çalıştırmaya yönelik seçenekleri inceleyerek bunu hesaba sunun.
 
 > [!Tip]
-> Yük testi araçlarını kullanarak gerçekçi bir sorgu yükünün benzetimini yapabilirsiniz. [Azure DevOps ile yük testi](/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops) yapmayı deneyin veya bu [alternatifden](/azure/devops/test/load-test/overview?view=azure-devops#alternatives)birini kullanın.
+> Yük testi araçlarını kullanarak gerçekçi bir sorgu yükünün benzetimini yapabilirsiniz. [Azure DevOps ile yük testi](/azure/devops/test/load-test/get-started-simple-cloud-load-test) yapmayı deneyin veya bu [alternatifden](/azure/devops/test/load-test/overview#alternatives)birini kullanın.
 
 ## <a name="scale-for-high-query-volume"></a>Yüksek sorgu hacmi için ölçeklendirin
 

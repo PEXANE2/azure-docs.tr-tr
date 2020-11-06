@@ -1,7 +1,7 @@
 ---
 title: ResNet
 titleSuffix: Azure Machine Learning
-description: ResNet algoritmasını kullanarak bir görüntü sınıflandırma modeli oluşturmayı öğrenin.
+description: ResNet algoritmasını kullanarak Azure Machine Learning tasarımcısında görüntü sınıflandırma modeli oluşturmayı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
-ms.openlocfilehash: bd0431a8e503605c6137d948cf207c1bd2fa45b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88a820d0f1fa9515b4f2992a8305a2d1065e0987
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442036"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421218"
 ---
 # <a name="resnet"></a>ResNet
 
@@ -34,9 +34,9 @@ ResNet hakkında daha fazla bilgi için [Bu incelemeye](https://pytorch.org/docs
 
 1.  Tasarımcı 'daki işlem hattınızı **ResNet** modülünü ekleyin.  
 
-2.  **Model adı**için, belirli bir ResNet yapısının adını belirtin ve desteklenen ResNet: ' resnet18 ', ' resnet34 ', ' resnet50 ', ' resnet101 ', ' resnet152 ', ' resnet152 ', ' resnext50 32x4d ', ' resnext101 \_ \_ 32x8d ', ' wide_resnet50 \_ 2 ', ' wide_resnet101 \_ 2 ' arasından seçim yapabilirsiniz.
+2.  **Model adı** için, belirli bir ResNet yapısının adını belirtin ve desteklenen ResNet: ' resnet18 ', ' resnet34 ', ' resnet50 ', ' resnet101 ', ' resnet152 ', ' resnet152 ', ' resnext50 32x4d ', ' resnext101 \_ \_ 32x8d ', ' wide_resnet50 \_ 2 ', ' wide_resnet101 \_ 2 ' arasından seçim yapabilirsiniz.
 
-3.  **Önceden eğitilen**Için, ImageNet üzerinde önceden eğitilen bir model kullanıp kullanmayacağınızı belirtin. Seçilirse, model seçilen önceden eğitilen modele göre ince ayar yapabilirsiniz; seçimi kaldırılırsa, sıfırdan eğitebilirsiniz.
+3.  **Önceden eğitilen** Için, ImageNet üzerinde önceden eğitilen bir model kullanıp kullanmayacağınızı belirtin. Seçilirse, model seçilen önceden eğitilen modele göre ince ayar yapabilirsiniz; seçimi kaldırılırsa, sıfırdan eğitebilirsiniz.
 
 4.  **Densenet** modülü, eğitim ve doğrulama görüntüsü veri kümesi modülünün çıkışını [Pytorch modeline](train-pytorch-model.md)bağlayın. 
 
@@ -50,13 +50,13 @@ ResNet hakkında daha fazla bilgi için [Bu incelemeye](https://pytorch.org/docs
 
 ###  <a name="module-parameters"></a>Modül parametreleri  
 
-| Adı       | Aralık | Tür    | Varsayılan           | Açıklama                              |
+| Ad       | Aralık | Tür    | Varsayılan           | Açıklama                              |
 | ---------- | ----- | ------- | ----------------- | ---------------------------------------- |
-| Model adı | Herhangi biri   | Mod    | resnext101 \_ 32x8d | Belirli bir ResNet yapısının adı       |
-| Önceden eğitilen | Herhangi biri   | Boole | Doğru              | Imagenet üzerinde önceden eğitilen bir modelin kullanılıp kullanılmayacağını belirtir |
+| Model adı | Herhangi bir   | Mod    | resnext101 \_ 32x8d | Belirli bir ResNet yapısının adı       |
+| Önceden eğitilen | Herhangi bir   | Boole | Doğru              | Imagenet üzerinde önceden eğitilen bir modelin kullanılıp kullanılmayacağını belirtir |
 |            |       |         |                   |                                          |
 
-###  <a name="output"></a>Çıktı  
+###  <a name="output"></a>Çıkış  
 
 | Ad            | Tür                    | Açıklama                              |
 | --------------- | ----------------------- | ---------------------------------------- |

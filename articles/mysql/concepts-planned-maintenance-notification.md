@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 754d693294235ff34c68f828235cca5bb2389a2b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c85624d9eced3130a1c7b99943095688beee62bd
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544843"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93417597"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mysql---single-server"></a>MySQL için Azure veritabanı 'nda planlı bakım bildirimi-tek sunucu
 
@@ -48,7 +48,7 @@ Azure portal planlı bakım bildirimini denetleyebilir ya da uyarıları bildiri
 
 1. [Azure Portal](https://portal.azure.com) **hizmet durumu** ' nu seçin.
 2. **Planlı bakım** sekmesini seçin
-3. Planlı bakım bildirimini denetlemek istediğiniz **aboneliği** , * * bölgeyi ve **hizmeti** seçin. 
+3. Planlı bakım bildirimini denetlemek istediğiniz **abonelik** , **bölge** ve **hizmeti** seçin. 
    
 ### <a name="to-receive-planned-maintenance-notification"></a>Planlı bakım bildirimi almak için
 

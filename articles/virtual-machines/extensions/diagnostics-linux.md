@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 1faf4455a983e87ce4c702c09f8bf2d9fbe70047
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0ae6366acf270d762b1c15563bfec1b2eb2a1b8d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893412"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421082"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Ölçümleri ve günlükleri izlemek için Linux Tanılama Uzantısı’nı kullanma
 
@@ -68,12 +68,35 @@ Desteklenen dağıtımlar ve sürümler:
 - 9, 8, 7
 - RHEL 7, 6.7 +
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
-* **Azure Linux Aracısı sürüm 2.2.0 veya üzeri** . Azure VM Linux Galeri görüntülerinin çoğu, sürüm 2.2.7 veya üstünü içerir. `/usr/sbin/waagent -version`VM 'de yüklü sürümü onaylamak için ' i çalıştırın. VM, Konuk aracısının eski bir sürümünü çalıştırıyorsa, güncelleştirmek için [Bu yönergeleri](./update-linux-agent.md) izleyin.
-* **Azure CLI** . Makinenizde [Azure CLI ortamını ayarlayın](/cli/azure/install-azure-cli) .
+* **Azure Linux Aracısı sürüm 2.2.0 veya üzeri**. Azure VM Linux Galeri görüntülerinin çoğu, sürüm 2.2.7 veya üstünü içerir. `/usr/sbin/waagent -version`VM 'de yüklü sürümü onaylamak için ' i çalıştırın. VM, Konuk aracısının eski bir sürümünü çalıştırıyorsa, güncelleştirmek için [Bu yönergeleri](./update-linux-agent.md) izleyin.
+* **Azure CLI**. Makinenizde [Azure CLI ortamını ayarlayın](/cli/azure/install-azure-cli) .
 * Henüz yoksa wget komutu: komutunu çalıştırın `sudo apt-get install wget` .
 * Mevcut bir Azure aboneliği ve verilerin depolanması için mevcut bir genel amaçlı depolama hesabı.  Genel amaçlı depolama hesapları, gereken tablo depolamayı destekler.  BLOB depolama hesabı çalışmayacak.
+* Python 2
+
+### <a name="python-requirement"></a>Python gereksinimi
+
+Linux Tanılama uzantısı Python 2 gerektirir. Sanal makineniz, varsayılan olarak Python 2 ' yi içermeyen bir demi kullanıyorsa, bunu kurmanız gerekir. Aşağıdaki örnek komutlar farklı distros üzerinde Python 2 ' ye yüklenir.    
+
+ - Red hat, CentOS, Oracle: `yum install -y python2`
+ - Ubuntu, debir: `apt-get install -y python2`
+ - SUSE `zypper install -y python2`
+
+Python2 yürütülebilir dosyası *Python* 'un diğer adı olmalıdır. Aşağıda, bu diğer adı ayarlamak için kullanabileceğiniz bir yöntem verilmiştir:
+
+1. Mevcut diğer adları kaldırmak için aşağıdaki komutu çalıştırın.
+ 
+    ```
+    sudo update-alternatives --remove-all python
+    ```
+
+2. Diğer adı oluşturmak için aşağıdaki komutu çalıştırın.
+
+    ```
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
+    ```
 
 ### <a name="sample-installation"></a>Örnek yükleme
 
@@ -175,7 +198,7 @@ Korumalı veya ortak ayarlarınızı değiştirdikten sonra aynı komutu çalı�
 
 ### <a name="migration-from-previous-versions-of-the-extension"></a>Uzantının önceki sürümlerinden geçiş
 
-Uzantının en son sürümü **3,0** ' dir. **Tüm eski sürümler (2. x) kullanım dışıdır ve 31 temmuz 2018 tarihinde veya sonrasında yayımdan kaldırılmış olabilir** .
+Uzantının en son sürümü **3,0** ' dir. **Tüm eski sürümler (2. x) kullanım dışıdır ve 31 temmuz 2018 tarihinde veya sonrasında yayımdan kaldırılmış olabilir**.
 
 > [!IMPORTANT]
 > Bu uzantı, uzantının yapılandırmasındaki son değişiklikleri tanıtır. Uzantının güvenliğini artırmak için bu tür bir değişiklik yapılmıştır; Sonuç olarak, 2. x ile geriye dönük uyumluluk korunamadı. Ayrıca, bu uzantının uzantı yayımcısı 2. x sürümleri için yayımcıdan farklıdır.

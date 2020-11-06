@@ -1,7 +1,7 @@
 ---
 title: 'Python betiğini Yürüt: modül başvurusu'
 titleSuffix: Azure Machine Learning
-description: Python kodunu çalıştırmak için Azure Machine Learning Python betiğini yürütme modülünü nasıl kullanacağınızı öğrenin.
+description: Python kodunu çalıştırmak için Azure Machine Learning tasarımcısında Python betiği yürütme modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 10/21/2020
-ms.openlocfilehash: e6a7eabec76cf27044b5d0e13acfc2431cb19b77
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e0da478e221fe392135362cd74cbdd8baca101ef
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323756"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421371"
 ---
 # <a name="execute-python-script-module"></a>Python betik modülünü Yürüt
 

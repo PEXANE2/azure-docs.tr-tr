@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 10/15/2020
+ms.date: 11/05/2020
 ms.author: mbullwin
-ms.openlocfilehash: da4dc3579630d641fcbc1d4321b56de0cc09d555
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0c4c296cb1454ed89eef102732533589b1c8ca0d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893586"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420968"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Ölçüm Danışmanı sık sorulan sorular
 
@@ -88,7 +88,7 @@ Zaman seriniz için doğru ayrıntı düzeyini kullandığınızdan emin olun. S
 
 Bu sorguların yalnızca tek bir zaman damgasında veri döndürdüğüne ve ölçüm Danışmanı tarafından alınacak tüm boyut birleşimlerini içerdiğini unutmayın. 
 
-:::image type="content" source="media/query-result.png" alt-text="Bir F0 kaynağı zaten varsa ileti" lightbox="media/query-result.png":::
+:::image type="content" source="media/query-result.png" alt-text="Bir zaman damgasına sahip sorgu sonucu" lightbox="media/query-result.png":::
 
 
 ### <a name="how-do-i-detect-spikes--dips-as-anomalies"></a>Nasıl yaparım?, anormal bir şekilde & ileri 'leri algılar mi?
@@ -104,6 +104,19 @@ Hiçbir eşik yoksa AI tarafından desteklenen "akıllı algılama" kullanabilir
 
 Verileriniz normalde çok kararsız ve büyük bir ölçüde dalgalandığı ve çok kararlı ve hatta düz bir çizgi haline geldiğinde uyarılmak istiyorsanız, değişiklik çok küçük olduğunda bu tür veri noktalarını algılamak için "değişiklik eşiği" yapılandırılabilir.
 Ayrıntılar için lütfen [anomali algılama yapılandırmalarına](how-tos/configure-metrics.md#anomaly-detection-methods) bakın.
+
+### <a name="how-to-set-up-email-settings-and-enable-alerting-by-email"></a>E-posta ayarlarını nasıl ayarlayabilirim ve uyarı e-posta ile nasıl etkinleştirilir?
+
+1.  Abonelik Yöneticisi veya kaynak grubu yönetici ayrıcalıklarına sahip bir kullanıcının, Azure portal oluşturulan ölçüm Danışmanı kaynağına gitilmesi ve **erişim denetimi (IAM)** sekmesini seçmeniz gerekir. 
+2.  **Rol atamaları Ekle** ' yi seçin
+3.  Bilişsel **Hizmetler ölçüm Danışmanı yöneticisinin** bir rolünü seçin, aşağıdaki görüntüde olduğu gibi hesabınızı seçin.
+4.  **Kaydet** düğmesine tıklayın, ardından ölçüm Danışmanı kaynağı Yöneticisi olarak başarıyla eklendiniz. Yukarıdaki tüm eylemlerin abonelik Yöneticisi veya kaynak grubu yöneticisi tarafından gerçekleştirilmesi gerektiğini unutmayın. 
+
+:::image type="content" source="media/access-control.png" alt-text="Rol ataması ekle seçili olan erişim denetimi (ıAM) menü sayfası ve ardından bilişsel hizmetler ölçüm Danışmanı yöneticisinin erişim rolüyle birlikte Seçili kullanıcıya erişim ata ' yı ve ardından Kullanıcı arama ve belirli bir erişim izinleri düzeyi ekleme adımlarını göstermek için seçilen kullanıcı ARABIRIMININ Kaydet düğmesi." lightbox="media/access-control.png":::
+
+
+5.  Bu işlem, yayma izinlerinin bir dakika kadar sürebilir. Ardından, ölçüm Danışmanı çalışma alanınızı seçin ve sol gezinti panelinde **e-posta ayarı** seçeneğini belirleyin. Gerekli öğeleri, özellikle SMTP ile ilgili bilgileri olarak girin. 
+6.  **Kaydet** ' i seçin, ardından e-posta yapılandırması ile birlikte hazırsınız demektir. Yeni kancalar oluşturabilir ve neredeyse gerçek zamanlı uyarılar için ölçüm bozuklularına abone olabilirsiniz. 
 
 ## <a name="advanced-concepts"></a>Gelişmiş kavramlar
 
@@ -127,7 +140,7 @@ Toplamın üzerinden başlayarak `Response latency` , ve ölçüsünün ayrınt�
 
 Ölçüm Danışmanı 'nda, kullanıcılar hiyerarşik topolojinin bir düğümünden detaya geçmek veya bu düğümleri toplu yapmak istedikleri yolu belirtebilir. Daha kesin olarak, hiyerarşik topoloji ağaç yapısı yerine yönlendirilmiş bir Çevrimsiz grafiktir. Aşağıdaki gibi tüm olası boyut birleşimlerinin bulunduğu tam bir hiyerarşik topoloji vardır: 
 
-:::image type="content" source="media/dimension-combinations-view.png" alt-text="Bir F0 kaynağı zaten varsa ileti" lightbox="media/dimension-combinations-view.png":::
+:::image type="content" source="media/dimension-combinations-view.png" alt-text="1 ile 6 arasında değişen karşılık gelen sayılarla S, DC ve d etiketli birden çok boyutlu köşelerden ve kenarlarından oluşan hiyerarşik topoloji diyagramı" lightbox="media/dimension-combinations-view.png":::
 
 Teorik olarak, boyutun `Service` `Ls` farklı değerleri varsa, boyutun farklı değerleri `Data center` vardır `Ldc` ve boyutun `Machine` ayrı değerleri vardır ve `Lm` `(Ls + 1) * (Ldc + 1) * (Lm + 1)` hiyerarşik topolojide boyut birleşimleri olabilir. 
 

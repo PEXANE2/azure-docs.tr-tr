@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4446e5b8abf9ac308a5eb32cadf31eddfcb9d9a1
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 507ef55a6fa3976475dbf08f88ee36cd1977464d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379256"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421031"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Azure Active Directory özel rol oluşturma ve atama
 
@@ -183,4 +183,4 @@ Yerleşik roller gibi, kuruluşunuzdaki tüm uygulama kayıtları üzerinde eri�
 
 - [Azure AD Yönetim rolleri forumundan](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)bizimle paylaşabilirsiniz.
 - Roller ve yönetici rolü atama hakkında daha fazla bilgi için bkz. [yönetici rolleri atama](permissions-reference.md).
-- Varsayılan Kullanıcı izinleri için bkz. [varsayılan Konuk ve üye Kullanıcı izinlerinin karşılaştırması](/azure/active-directory/fundamentals/users-default-permissions).
+- Varsayılan Kullanıcı izinleri için bkz. [varsayılan Konuk ve üye Kullanıcı izinlerinin karşılaştırması](/azure/active-directory/fundamentals/users-default-permissions?context=azure%2factive-directory%2froles%2fcontext%2fugr-context).

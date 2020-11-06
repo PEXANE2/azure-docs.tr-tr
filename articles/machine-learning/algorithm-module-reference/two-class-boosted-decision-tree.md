@@ -1,7 +1,7 @@
 ---
 title: 'Two-Class artırılmış karar ağacı: modül başvurusu'
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning ' de, artırılmış karar ağacı algoritmasını temel alan bir makine öğrenimi modeli oluşturmak için Two-Class artırılmış karar ağacı modülünü nasıl kullanacağınızı öğrenin.
+description: İkili bir sınıflandırıcı oluşturmak için tasarımcıda Two-Class artırılmış karar ağacı modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 08/24/2020
-ms.openlocfilehash: 833caa0cf264fb49d8b32255f429132cd888c6c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 568cd7b280b8fb65b5f75588a2832631361938dd
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907730"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420623"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>Two-Class artırılmış karar ağacı modülü
 
@@ -38,34 +38,34 @@ Bu tür modeli [eğitme modeli](././train-model.md)kullanarak eğitebilirsiniz.
   
 2.  Model **oluşturma modunu** ayarlayarak modelin eğitilme şeklini belirleyin.
   
-    + **Tek parametre**: modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.
+    + **Tek parametre** : modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.
   
-    + **Parametre aralığı**: en iyi parametrelerden emin değilseniz, [model hiper parametrelerini ayarla](tune-model-hyperparameters.md) modülünü kullanarak en iyi parametreleri bulabilirsiniz. Birkaç değer aralığı sağlarsınız ve en iyi sonucu üreten değerlerin birleşimini öğrenmek için eğitmen ayarların birden fazla birleşimine yinelenir.
+    + **Parametre aralığı** : en iyi parametrelerden emin değilseniz, [model hiper parametrelerini ayarla](tune-model-hyperparameters.md) modülünü kullanarak en iyi parametreleri bulabilirsiniz. Birkaç değer aralığı sağlarsınız ve en iyi sonucu üreten değerlerin birleşimini öğrenmek için eğitmen ayarların birden fazla birleşimine yinelenir.
   
-3.  **Ağaç başına en fazla yaprakları**için, herhangi bir ağaçta oluşturulabilecek maksimum Terminal düğümü sayısını (yaprakları) belirtin.
+3.  **Ağaç başına en fazla yaprakları** için, herhangi bir ağaçta oluşturulabilecek maksimum Terminal düğümü sayısını (yaprakları) belirtin.
   
      Bu değeri artırarak ağacın boyutunu artırabilir ve daha fazla anlayışın ve daha uzun eğitim süresi riskinden daha iyi bir duyarlık elde edersiniz.
   
-4.  **Yaprak düğüm başına minimum örnek sayısı**için, bir ağaçta herhangi bir Terminal düğümü (yaprak) oluşturmak için gereken durum sayısını belirtin.  
+4.  **Yaprak düğüm başına minimum örnek sayısı** için, bir ağaçta herhangi bir Terminal düğümü (yaprak) oluşturmak için gereken durum sayısını belirtin.  
   
      Bu değeri artırarak, yeni kurallar oluşturma eşiğini artırırsınız. Örneğin, varsayılan 1 değeri ile tek bir durum bile yeni bir kuralın oluşturulmasına neden olabilir. Değeri 5 ' e artırırsanız eğitim verilerinin aynı koşulları karşılayan en az beş durum içermesi gerekir.
   
-5.  **Öğrenme oranı**için, öğrenirken adım boyutunu tanımlayan 0 ile 1 arasında bir sayı yazın.  
+5.  **Öğrenme oranı** için, öğrenirken adım boyutunu tanımlayan 0 ile 1 arasında bir sayı yazın.  
   
      Öğrenme oranı, öğrenimi en iyi çözüm üzerinde ne kadar hızlı veya yavaş söylebileceğinizi belirler. Adım boyutu çok büyükse en iyi çözümü fazla gerçekleştirebilirsiniz. Adım boyutu çok küçükse, eğitimin en iyi çözüm üzerinde yakınsama işlemi daha uzun sürer.
   
-6.  **Oluşturulan ağaç sayısı**için, ensede birleştirmek üzere oluşturulacak karar ağacının toplam sayısını belirtin. Daha fazla karar ağacı oluşturarak daha iyi tedarik sağlayabilirsiniz, ancak eğitim süresi artar.
+6.  **Oluşturulan ağaç sayısı** için, ensede birleştirmek üzere oluşturulacak karar ağacının toplam sayısını belirtin. Daha fazla karar ağacı oluşturarak daha iyi tedarik sağlayabilirsiniz, ancak eğitim süresi artar.
   
      Bu değer aynı zamanda eğitilen modeli görselleştirirken gösterilecek ağaç sayısını da denetler. tek bir ağacı görmek veya yazdırmak istiyorsanız, değeri 1 olarak ayarlayın. Ancak bunu yaptığınızda, yalnızca bir ağaç oluşturulur (ilk parametre kümesini içeren ağaç) ve başka yineleme gerçekleştirilmez.
   
-7.  **Rastgele sayı çekirdek**için isteğe bağlı olarak rastgele çekirdek değeri olarak kullanılacak negatif olmayan bir tamsayı yazın. Bir çekirdek belirtmek, aynı verilere ve parametrelere sahip olan çalışmalarda reproducibility sağlar.  
+7.  **Rastgele sayı çekirdek** için isteğe bağlı olarak rastgele çekirdek değeri olarak kullanılacak negatif olmayan bir tamsayı yazın. Bir çekirdek belirtmek, aynı verilere ve parametrelere sahip olan çalışmalarda reproducibility sağlar.  
   
      Rastgele çekirdek varsayılan olarak 0 olarak ayarlanır; Bu, başlangıçtaki çekirdek değerinin sistem saatinden elde ettiği anlamına gelir.  Rastgele bir çekirdek kullanan art arda çalıştırılan çalıştırmalar farklı sonuçlara sahip olabilir.
   
 
 9. Modeli eğitme:
 
-    + **Tek parametre**için bir görüntü **oluşturma modu** ayarlarsanız, etiketli bir veri kümesini ve [model eğitimi](train-model.md) modülünü bağlayın.  
+    + **Tek parametre** için bir görüntü **oluşturma modu** ayarlarsanız, etiketli bir veri kümesini ve [model eğitimi](train-model.md) modülünü bağlayın.  
   
     + **Parametre aralığına** **oluşturma** , bir etiketli veri kümesini bağlama ve modeli [Ayarla hiper parametrelerini](tune-model-hyperparameters.md)kullanarak modeli eğitme.  
   

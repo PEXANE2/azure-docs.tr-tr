@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: mbullwin
-ms.openlocfilehash: ab1c07bd7814afb054bb20b77bbc84c1ee9df017
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 30d8fdf99da7a4854db0985bed6256ecd6f7a366
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046800"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420929"
 ---
 # <a name="how-to-configure-alerts-and-get-notifications-using-a-hook"></a>Nasıl yapılır: bir kanca kullanarak uyarıları yapılandırma ve bildirim alma
 
@@ -28,7 +28,7 @@ ms.locfileid: "92046800"
 ### <a name="email-hook"></a>E-posta kancası
 
 > [!Note]
-> Ölçüm Danışmanı kaynak yöneticileri, e-posta ayarlarını yapılandırmak ve anomali uyarıların gönderilebilmesi için, SMTP ile ilgili bilgileri ölçüm Danışmanı 'nda girmeleri gerekir. Kaynak grubu yöneticisinin veya abonelik yöneticisinin, ölçüm Danışmanı kaynağının erişim denetimi sekmesinde en az bir bilişsel *Hizmetler ölçüm Danışmanı yönetici* rolü ataması gerekir. 
+> Ölçüm Danışmanı kaynak yöneticileri, e-posta ayarlarını yapılandırmak ve anomali uyarıların gönderilebilmesi için, SMTP ile ilgili bilgileri ölçüm Danışmanı 'nda girmeleri gerekir. Kaynak grubu yöneticisinin veya abonelik yöneticisinin, ölçüm Danışmanı kaynağının erişim denetimi sekmesinde en az bir bilişsel *Hizmetler ölçüm Danışmanı yönetici* rolü ataması gerekir. [E-posta ayarları yapılandırması hakkında daha fazla bilgi edinin](../faq.md#how-to-set-up-email-settings-and-enable-alerting-by-email).
 
 E-posta kancası oluşturmak için aşağıdaki parametreler kullanılabilir: 
 
@@ -41,7 +41,7 @@ E-posta kancası, anomali uyarıların **e-posta** adresi bölümünde belirtile
 | Dış bağlantı | Sorun giderme notları gibi özelleştirilmiş bir yeniden yönlendirmeyi sağlayan isteğe bağlı alan. |
 | Özelleştirilmiş anomali uyarı başlığı | Başlık şablonu,,,,,,,, `${severity}` `${alertSettingName}` `${datafeedName}` `${metricName}` `${detectConfigName}` `${timestamp}` `${topDimension}` `${incidentCount}``${anomalyCount}`
 
-**Tamam**' a tıkladıktan sonra bir e-posta kancası oluşturulur. Bunu, anomali uyarılar almak için herhangi bir uyarı ayarlarında kullanabilirsiniz. 
+**Tamam** ' a tıkladıktan sonra bir e-posta kancası oluşturulur. Bunu, anomali uyarılar almak için herhangi bir uyarı ayarlarında kullanabilirsiniz. 
 
 ### <a name="web-hook"></a>Web kancası
 
@@ -57,7 +57,7 @@ Bir Web kancası oluşturmak için aşağıdaki bilgileri eklemeniz gerekir:
 
 |Parametre |Açıklama  |
 |---------|---------|
-|Uç Noktası     | Bir uyarı tetiklendiğinde çağrılacak API adresi.        |
+|Uç Nokta     | Bir uyarı tetiklendiğinde çağrılacak API adresi.        |
 |Kullanıcı adı/parola | API adresinde kimlik doğrulaması için. Kimlik doğrulaması gerekmiyorsa bu siyahı bırakın.         |
 |Üst bilgi     | API çağrısındaki özel üstbilgiler.        |
 
@@ -86,17 +86,17 @@ Bir Azure DevOps kancası oluşturmak için aşağıdaki bilgileri eklemeniz ger
 ## <a name="add-or-edit-alert-settings"></a>Uyarı ayarlarını Ekle veya Düzenle
 
 Ölçüm Ayrıntıları sayfasının sol alt köşesindeki **Uyarı ayarları** bölümünü bulmak için ölçüm ayrıntısı sayfasına gidin. Seçili algılama yapılandırması için uygulanan tüm uyarı ayarlarını listeler. Yeni bir algılama yapılandırması oluşturulduğunda, hiçbir uyarı ayarı yoktur ve hiçbir uyarı gönderilmez.  
-Uyarı ayarlarını değiştirmek için **Ekle**, **Düzenle** ve **Sil** simgelerini kullanabilirsiniz.
+Uyarı ayarlarını değiştirmek için **Ekle** , **Düzenle** ve **Sil** simgelerini kullanabilirsiniz.
 
-:::image type="content" source="../media/alerts/alert-setting.png" alt-text="Web kancası oluşturma penceresi.":::
+:::image type="content" source="../media/alerts/alert-setting.png" alt-text="Uyarı ayarları menü öğesi.":::
 
 Uyarı ayarlarınızı eklemek veya düzenlemek üzere bir pencere almak için **Ekle** veya **Düzenle** düğmelerine tıklayın.
 
-:::image type="content" source="../media/alerts/edit-alert.png" alt-text="Web kancası oluşturma penceresi.":::
+:::image type="content" source="../media/alerts/edit-alert.png" alt-text="Uyarı ayarlarını Ekle veya Düzenle":::
 
-**Uyarı ayarı adı**: Bu uyarı ayarının adı. Uyarı e-postası başlığında görüntülenecektir.
+**Uyarı ayarı adı** : Bu uyarı ayarının adı. Uyarı e-postası başlığında görüntülenecektir.
 
-**Kancalar**: uyarıların gönderileceği kancalar listesi.
+**Kancalar** : uyarıların gönderileceği kancalar listesi.
 
 Yukarıdaki ekran görüntüsünde işaretlenen bölüm, bir algılama yapılandırmasının ayarlarından biridir. Farklı algılama yapılandırmalarının farklı uyarı ayarlarını yapabilirsiniz. Bu penceredeki üçüncü açılan listeyi kullanarak hedef yapılandırmayı seçin. 
 
@@ -106,16 +106,16 @@ Bir algılama yapılandırması için filtre ayarları aşağıda verilmiştir.
 
 **Için uyarı** , anormallikleri filtrelemek için 4 seçeneğe sahiptir:
 
-* **Tüm serilerde bulunan bozukluklar**: uyarıya tüm bozukluklar dahil edilecek.         
-* **Seri grubundaki bozukluklar**: diziyi boyut değerlerine göre filtreleyin. Bazı boyutlarda belirli değerleri ayarlayın. Bozukluklar yalnızca seri belirtilen değerle eşleştiğinde uyarıya dahil edilir.       
-* **Sık kullanılan serideki bozukluklar**: uyarıya yalnızca sık kullanılan olarak işaretlenen seriler dahil edilir.        |
-* **Tüm serilerin en üstte bulunan bozukluklar**: Bu filtre, yalnızca değeri en üstteki n olan seriler hakkında dikkat etmeniz durumunda olur. Bazı zaman damgalarını geri bakacağız ve bu zaman damgasında serinin değerinin ilk N olup olmadığını kontrol edeceğiz. "İlk n" sayısı belirtilen sayıdan daha büyükse, anomali bir uyarıya dahil edilir.        |
+* **Tüm serilerde bulunan bozukluklar** : uyarıya tüm bozukluklar dahil edilecek.         
+* **Seri grubundaki bozukluklar** : diziyi boyut değerlerine göre filtreleyin. Bazı boyutlarda belirli değerleri ayarlayın. Bozukluklar yalnızca seri belirtilen değerle eşleştiğinde uyarıya dahil edilir.       
+* **Sık kullanılan serideki bozukluklar** : uyarıya yalnızca sık kullanılan olarak işaretlenen seriler dahil edilir.        |
+* **Tüm serilerin en üstte bulunan bozukluklar** : Bu filtre, yalnızca değeri en üstteki n olan seriler hakkında dikkat etmeniz durumunda olur. Bazı zaman damgalarını geri bakacağız ve bu zaman damgasında serinin değerinin ilk N olup olmadığını kontrol edeceğiz. "İlk n" sayısı belirtilen sayıdan daha büyükse, anomali bir uyarıya dahil edilir.        |
 
 **Filtre anomali seçenekleri** aşağıdaki seçeneklere sahip ek bir filtredir:
 
 - **önem derecesi** : anomali, yalnızca anomali önem derecesi belirtilen aralık dahilinde olduğunda dahil edilir.
 - **Erteleme** : bir uyarı içinde tetiklendiğinde sonraki N noktasında (Period) bozukluklar için uyarıları geçici olarak durdurun.
-    - **erteleme türü** : **seri**olarak ayarlandığında, tetiklenen bir anomali yalnızca serisini ertelecektir. **Ölçüm**için, tetiklenen bir anomali, bu ölçümdeki tüm serileri ertelenecek.
+    - **erteleme türü** : **seri** olarak ayarlandığında, tetiklenen bir anomali yalnızca serisini ertelecektir. **Ölçüm** için, tetiklenen bir anomali, bu ölçümdeki tüm serileri ertelenecek.
     - **erteleme numarası** : erteleme noktası sayısı (nokta).
     - **ardışık olmayan için Sıfırla** : seçildiğinde, tetiklenen bir anomali yalnızca sonraki n birbirini izleyen anormalileri bekler. Aşağıdaki veri noktalarından biri bir anomali değilse, erteleme o noktadan sıfırlanır; Seçilmediğinde, izleyen veri noktaları anormal olmasa bile, tetiklenen tek bir anomali sonraki n noktayı (nokta) erteler.
 - **değer** (isteğe bağlı): değere göre filtreleyin. Yalnızca koşulu karşılayan nokta değerleri, anomali dahil edilir. Kendisine karşılık gelen bir başka ölçüm değeri kullanırsanız, iki ölçüm boyut adları tutarlı olmalıdır.
@@ -134,7 +134,7 @@ Başka bir bölüm eklemek için uyarı ayarları sayfasında **+ çapraz ölç�
 |AND     | Yalnızca bir dizi her uyarı bölümüyle eşleşiyorsa bir uyarı gönder ve tüm veri noktaları bozukluklar. Ölçümler farklı boyut adlarına sahip ise, bir uyarı tetiklenmez.         |
 |VEYA     | En az bir bölüm bozukluklar içeriyorsa uyarıyı gönderin.         |
 
-:::image type="content" source="../media/alerts/alert-setting-operator.png" alt-text="Web kancası oluşturma penceresi.":::
+:::image type="content" source="../media/alerts/alert-setting-operator.png" alt-text="Birden çok uyarı ayarı için işleç bölümü":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

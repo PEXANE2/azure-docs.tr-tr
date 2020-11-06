@@ -1,7 +1,7 @@
 ---
 title: 'Veri birleştirin: modül başvurusu'
 titleSuffix: Azure Machine Learning
-description: Veri kümelerini birleştirmek için Azure Machine Learning ' de birleştirme verilerini birleştirme modülünün nasıl kullanılacağını öğrenin.
+description: İki veri kümesini birlikte birleştirmek için Azure Machine Learning tasarımcısında veri birleştirme modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 0cde479e50c67006a9ef1668ba68b211c3a9af93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c23dca40d50c5837bd9ff45bc3c3d7fb2581685b
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907905"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420759"
 ---
 # <a name="join-data"></a>Verileri birleştirme
 
@@ -26,7 +26,7 @@ Bu makalede, bir veritabanı stili birleştirme işlemi kullanarak iki veri küm
 
 1. Birleştirmek istediğiniz veri kümelerini ekleyin ve sonra **birleştirme verileri** modülünü işlem hattınızla sürükleyin. 
 
-    Modülü, **veri dönüştürme** kategorisinde, **düzenleme**altında bulabilirsiniz.
+    Modülü, **veri dönüştürme** kategorisinde, **düzenleme** altında bulabilirsiniz.
 
 1. **Veri kümelerini veri JOIN** modülüne bağlayın. 
  
@@ -47,24 +47,24 @@ Bu makalede, bir veritabanı stili birleştirme işlemi kullanarak iki veri küm
    
 1. Veri kümelerinin nasıl birleştirildiğini belirtmek için **JOIN türü** açılan listesini kullanın.  
   
-    * **Iç birleşim**: bir *iç birleşim* en yaygın birleşim işlemidir. Yalnızca anahtar sütunlarının değerleri eşleşiyorsa Birleşik satırları döndürür.  
+    * **Iç birleşim** : bir *iç birleşim* en yaygın birleşim işlemidir. Yalnızca anahtar sütunlarının değerleri eşleşiyorsa Birleşik satırları döndürür.  
   
-    * **Sol dış birleşim**: sol *dış birleşim* , sol tablodaki tüm satırlar için birleştirilmiş satırları döndürür. Sol tablodaki bir satır sağ tabloda eşleşen satır içermiyorsa, döndürülen satırda doğru tablodan gelen tüm sütunlar için eksik değerler bulunur. Eksik değerler için de bir değiştirme değeri belirtebilirsiniz.  
+    * **Sol dış birleşim** : sol *dış birleşim* , sol tablodaki tüm satırlar için birleştirilmiş satırları döndürür. Sol tablodaki bir satır sağ tabloda eşleşen satır içermiyorsa, döndürülen satırda doğru tablodan gelen tüm sütunlar için eksik değerler bulunur. Eksik değerler için de bir değiştirme değeri belirtebilirsiniz.  
   
-    * **Tam dış birleşim**: *tam dış birleşim* , sol tablodaki (**Table1**) ve sağ tablodaki (**Table2**) tüm satırları döndürür.  
+    * **Tam dış birleşim** : *tam dış birleşim* , sol tablodaki ( **Table1** ) ve sağ tablodaki ( **Table2** ) tüm satırları döndürür.  
   
          Herhangi bir tabloda, birbirleriyle eşleşen satırları olmayan her bir satır için, sonuç eksik değerler içeren bir satır içerir.  
   
-    * **Sol yarı ekleme**: *sol yarı JOIN* yalnızca, anahtar sütunlarının değerleri eşleşiyorsa sol tablodaki değerleri döndürür.  
+    * **Sol yarı ekleme** : *sol yarı JOIN* yalnızca, anahtar sütunlarının değerleri eşleşiyorsa sol tablodaki değerleri döndürür.  
 
-1. **Birleşik tablodaki doğru anahtar sütunları tut**seçeneği için:
+1. **Birleşik tablodaki doğru anahtar sütunları tut** seçeneği için:
 
     * Her iki giriş tablolarından anahtarları görüntülemek için bu seçeneği belirleyin.
     * Yalnızca sol girdiden anahtar sütunları döndürmek için seçimi kaldırın.
 
 1. İşlem hattını gönderme.
 
-1. Sonuçları görüntülemek için, **verileri Birleştir** ' e sağ tıklayın ve **Görselleştir**' i seçin.
+1. Sonuçları görüntülemek için, **verileri Birleştir** ' e sağ tıklayın ve **Görselleştir** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

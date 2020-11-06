@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/25/2020
+ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca2190079cb97e37318bd1c6a32dfb2b9b309a8d
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f337a66f50338692508ab2e5b4b7d489c735aa20
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276956"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420504"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect Önkoşulları
 Bu makalede Azure Active Directory (Azure AD) Connect için Önkoşullar ve donanım gereksinimleri açıklanmaktadır.
@@ -42,8 +42,8 @@ Azure AD Connect yüklemeden önce, ihtiyacınız olan birkaç şey vardır.
 
 ### <a name="on-premises-active-directory"></a>Şirket içi Active Directory
 * Active Directory şeması sürümü ve orman işlev düzeyi Windows Server 2003 veya sonraki bir sürümü olmalıdır. Şema sürümü ve Orman düzeyi gereksinimleri karşılandığı sürece etki alanı denetleyicileri herhangi bir sürümü çalıştırabilir.
-* Özellik *parola geri yazma*özelliğini kullanmayı planlıyorsanız, etki alanı denetleyicilerinin Windows Server 2008 R2 veya sonraki bir sürümde olması gerekir.
-* Azure AD tarafından kullanılan etki alanı denetleyicisi yazılabilir olmalıdır. Salt bir okuma etki alanı denetleyicisi (RODC) kullanılması *desteklenmez*ve Azure AD Connect herhangi bir yazma yeniden yönlendirmeyi izlemiyor.
+* Özellik *parola geri yazma* özelliğini kullanmayı planlıyorsanız, etki alanı denetleyicilerinin Windows Server 2012 veya sonraki bir sürümde olması gerekir.
+* Azure AD tarafından kullanılan etki alanı denetleyicisi yazılabilir olmalıdır. Salt bir okuma etki alanı denetleyicisi (RODC) kullanılması *desteklenmez* ve Azure AD Connect herhangi bir yazma yeniden yönlendirmeyi izlemiyor.
 * "Noktalı" kullanarak şirket içi ormanları veya etki alanlarını kullanma (ad bir nokta içerir ".") NetBIOS adları *desteklenmez*.
 * [Active Directory geri dönüşüm kutusu 'nu etkinleştirmenizi](how-to-connect-sync-recycle-bin.md)öneririz.
 
@@ -95,7 +95,7 @@ BT ortamınızın bu kritik bileşeninin güvenlik saldırısı yüzeyini azaltm
   * SQL örneği başına yalnızca bir eşitleme motoruna sahip olabilirsiniz. Bir SQL örneğinin FIM/MıM Sync, DirSync veya Azure AD Eşitleme ile paylaşılması *desteklenmez*.
 
 ### <a name="accounts"></a>Hesaplar
-* Tümleştirmek istediğiniz Azure AD kiracısı için bir Azure AD Genel Yönetici hesabınızın olması gerekir. Bu hesabın bir *okul veya kuruluş hesabı* olması ve bir *Microsoft hesabı*olamaz.
+* Tümleştirmek istediğiniz Azure AD kiracısı için bir Azure AD Genel Yönetici hesabınızın olması gerekir. Bu hesabın bir *okul veya kuruluş hesabı* olması ve bir *Microsoft hesabı* olamaz.
 * [Hızlı ayarları](reference-connect-accounts-permissions.md#express-settings-installation) kullanıyorsanız veya DirSync 'ten yükseltme yaparsanız, şirket içi Active Directory Için bir Kurumsal Yönetici hesabınızın olması gerekir.
 * Özel ayarlar yükleme yolunu kullanırsanız, daha fazla seçeneğiniz vardır. Daha fazla bilgi için bkz. [özel yükleme ayarları](reference-connect-accounts-permissions.md#custom-installation-settings).
 
@@ -106,7 +106,7 @@ BT ortamınızın bu kritik bileşeninin güvenlik saldırısı yüzeyini azaltm
   * Almanya veya Microsoft Azure Kamu Bulutu 'nda Microsoft bulutu kullanıyorsanız, URL 'Ler için [Azure AD Connect eşitleme hizmeti örneklerine göz](reference-connect-instances.md) atın.
 * Azure AD Connect (sürüm 1.1.614.0 ve sonrası), eşitleme altyapısı ile Azure AD arasındaki iletişimi şifrelemek için varsayılan olarak TLS 1,2 kullanır. TLS 1,2, temel işletim sisteminde kullanılabilir değilse, Azure AD Connect daha eski protokollere (TLS 1,1 ve TLS 1,0) artımlı olarak geri döner.
 * Sürüm 1.1.614.0 ' den önce, eşitleme altyapısı ve Azure AD arasındaki iletişimi şifrelemek için varsayılan olarak Azure AD Connect TLS 1,0 kullanır. TLS 1,2 ' ye geçmek için [Azure AD Connect IÇIN tls 1,2](#enable-tls-12-for-azure-ad-connect)' yi etkinleştirme ' deki adımları izleyin.
-* İnternet 'e bağlanmak için bir giden Proxy kullanıyorsanız, Yükleme Sihirbazı için **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** dosyasında aşağıdaki ayar eklenmelidir ve Internet ve Azure AD 'ye bağlanabilmeleri için eşitlemenin Azure AD Connect gerekir. Bu metin, dosyanın alt kısmına girilmelidir. Bu kodda, * &lt; PROXYADDRESS &gt; * gerçek Proxy IP adresini veya ana bilgisayar adını temsil eder.
+* İnternet 'e bağlanmak için bir giden Proxy kullanıyorsanız, Yükleme Sihirbazı için **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** dosyasında aşağıdaki ayar eklenmelidir ve Internet ve Azure AD 'ye bağlanabilmeleri için eşitlemenin Azure AD Connect gerekir. Bu metin, dosyanın alt kısmına girilmelidir. Bu kodda, *&lt; PROXYADDRESS &gt;* gerçek Proxy IP adresini veya ana bilgisayar adını temsil eder.
 
     ```
         <system.net>
@@ -180,9 +180,9 @@ AD FS veya Web uygulaması ara sunucusu (WAP) dağıtmak için Azure AD Connect 
   * Sihirbazın çalıştığı makinede (hedef makine etki alanına katılmamış veya güvenilmeyen bir etki alanı ise):
     * Yükseltilmiş bir PowerShell komut penceresinde komutunu kullanın `Set-Item.WSMan:\localhost\Client\TrustedHosts –Value <DMZServerFQDN> -Force –Concatenate` .
     * Sunucu Yöneticisi 'nde:
-      * Makine havuzuna bir DMZ WAP Konağı ekleyin. Sunucu Yöneticisi 'nde **Yönet**  >  **Sunucu Ekle**' yi seçin ve sonra **DNS** sekmesini kullanın.
-      * **Tüm sunucuları Sunucu Yöneticisi** SEKMESINDE, WAP sunucusuna sağ tıklayın ve **Farklı Yönet**' i seçin. WAP makinesi için yerel (etki alanı değil) kimlik bilgilerini girin.
-      * Uzak PowerShell bağlantısını doğrulamak için, **tüm sunucular sunucu yöneticisi** SEKMESINDE, WAP sunucusuna sağ tıklayıp **Windows PowerShell**' i seçin. Uzak PowerShell oturumlarının kurulabilmek için uzak bir PowerShell oturumunun açılması gerekir.
+      * Makine havuzuna bir DMZ WAP Konağı ekleyin. Sunucu Yöneticisi 'nde **Yönet**  >  **Sunucu Ekle** ' yi seçin ve sonra **DNS** sekmesini kullanın.
+      * **Tüm sunucuları Sunucu Yöneticisi** SEKMESINDE, WAP sunucusuna sağ tıklayın ve **Farklı Yönet** ' i seçin. WAP makinesi için yerel (etki alanı değil) kimlik bilgilerini girin.
+      * Uzak PowerShell bağlantısını doğrulamak için, **tüm sunucular sunucu yöneticisi** SEKMESINDE, WAP sunucusuna sağ tıklayıp **Windows PowerShell** ' i seçin. Uzak PowerShell oturumlarının kurulabilmek için uzak bir PowerShell oturumunun açılması gerekir.
 
 ### <a name="tlsssl-certificate-requirements"></a>TLS/SSL sertifikası gereksinimleri
 * AD FS grubunuzun ve tüm Web uygulaması ara sunucularının tüm düğümlerinde aynı TLS/SSL sertifikasını kullanmanızı öneririz.

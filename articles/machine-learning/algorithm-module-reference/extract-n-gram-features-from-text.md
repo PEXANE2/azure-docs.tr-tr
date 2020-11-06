@@ -1,7 +1,7 @@
 ---
 title: Metin modül başvurusundan N-gram özelliklerini Ayıkla
 titleSuffix: Azure Machine Learning
-description: Metin verilerini kullanmak için Azure Machine Learning Ayıkla N-gram modülünü nasıl kullanacağınızı öğrenin.
+description: Metin verilerini korleştirmek için Azure Machine Learning tasarımcısında Extract N-gram modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: c21c63bdb64f7c15c049bfe4039ef47cea689922
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4d9c7c2cb7a0a86824a373f1b64044b6dcd6c20
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907965"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420810"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>Metin modül başvurusundan N-gram özelliklerini Ayıkla
 
@@ -44,15 +44,15 @@ Modül, n-gram sözlüğünü kullanmak için aşağıdaki senaryoları destekle
 
 1. **Ağırlık işlevi** , belge özelliği vektörünün nasıl oluşturulacağını ve belgelerden nasıl sözlük ayıklanacağını belirtir.
 
-    * **Ikili ağırlık**: ayıklanan n-gram 'a bir ikili bir varlık değeri atar. Her n-gram değeri, belgede mevcutsa 1, aksi durumda 0 ' dır.
+    * **Ikili ağırlık** : ayıklanan n-gram 'a bir ikili bir varlık değeri atar. Her n-gram değeri, belgede mevcutsa 1, aksi durumda 0 ' dır.
 
-    * **Tf Weight**: ayıklanan n-gram için bir dönem SıKLıĞı (TF) puanı atar. Her n-gram değeri, belgedeki oluşma sıklıktır.
+    * **Tf Weight** : ayıklanan n-gram için bir dönem SıKLıĞı (TF) puanı atar. Her n-gram değeri, belgedeki oluşma sıklıktır.
 
-    * **IDF ağırlığı**: ayıklanan n-gram 'a bir ters belge sıklığı (IDF) puanı atar. Her n-gram değeri, yapı boyutunun, tüm yapı içindeki oluşma sıklığıyla ayrılmış olan günlük değeridir.
+    * **IDF ağırlığı** : ayıklanan n-gram 'a bir ters belge sıklığı (IDF) puanı atar. Her n-gram değeri, yapı boyutunun, tüm yapı içindeki oluşma sıklığıyla ayrılmış olan günlük değeridir.
     
       `IDF = log of corpus_size / document_frequency`
  
-    *  **Tf-IDF Weight**: ayıklanan n-gram için bir dönem sıklığı/ters belge SıKLıĞı (TF/IDF) puanı atar. Her n-gram değeri, kendi ıDF puanı ile çarpılarak TF Score.
+    *  **Tf-IDF Weight** : ayıklanan n-gram için bir dönem sıklığı/ters belge SıKLıĞı (TF/IDF) puanı atar. Her n-gram değeri, kendi ıDF puanı ile çarpılarak TF Score.
 
 1. **En küçük sözcük uzunluğu** ' nu n-gram içindeki herhangi bir *sözcüğe* kullanılabilecek minimum harf sayısına ayarlayın.
 
@@ -79,11 +79,11 @@ Modül, n-gram sözlüğünü kullanmak için aşağıdaki senaryoları destekle
 
 1.  Metin modülünden N-gram özelliklerini ayıklama işlem hattınızı ekleyin ve işlemek istediğiniz metin olan veri kümesini **veri kümesi** bağlantı noktasına bağlayın.
 
-1.  Metin **sütununu** kullanarak, istediğiniz metni içeren metin sütununu seçin. Varsayılan olarak, modül **dize**türünde tüm sütunları seçer. En iyi sonuçlar için, tek seferde tek bir sütun işleyin.
+1.  Metin **sütununu** kullanarak, istediğiniz metni içeren metin sütununu seçin. Varsayılan olarak, modül **dize** türünde tüm sütunları seçer. En iyi sonuçlar için, tek seferde tek bir sütun işleyin.
 
 1. Daha önce oluşturulmuş bir n-gram sözlüğü içeren kaydedilmiş veri kümesini ekleyin ve **giriş sözlüğü** bağlantı noktasına bağlayın. Ayrıca, metin modülünden ayıklama N-gram özelliklerinin bir yukarı akış örneğinin **sonuç sözlük** çıkışını bağlayabilirsiniz.
 
-1. **Sözlük modu**için, açılan listeden **ReadOnly** güncelleştirme seçeneğini belirleyin.
+1. **Sözlük modu** için, açılan listeden **ReadOnly** güncelleştirme seçeneğini belirleyin.
 
    **ReadOnly** seçeneği giriş sözlüğü için yapı girişini temsil eder. Yeni metin veri kümesinden (sol girişte) terim sıklıklarını hesaplama yerine, giriş sözlüğsdakiler n-gram ağırlıkları olduğu gibi uygulanır.
 
@@ -100,7 +100,7 @@ Modül, n-gram sözlüğünü kullanmak için aşağıdaki senaryoları destekle
 
 1.  Eğitim veri akışındaki **sonuç sözlük** çıkışını, Puanlama veri akışındaki **giriş** sözlüğüne bağlayın.
 
-1.  Puanlama iş akışında, N-gram özelliklerini metin modülünden ayıklayın ve **Sözlük modu** parametresini **ReadOnly**olarak ayarlayın. Diğer tümünü aynı bırakın.
+1.  Puanlama iş akışında, N-gram özelliklerini metin modülünden ayıklayın ve **Sözlük modu** parametresini **ReadOnly** olarak ayarlayın. Diğer tümünü aynı bırakın.
 
 1.  İşlem hattını yayımlamak için **sonuç sözlüğünü** bir veri kümesi olarak kaydedin.
 
@@ -110,22 +110,22 @@ Modül, n-gram sözlüğünü kullanmak için aşağıdaki senaryoları destekle
 
 Metin modülündeki N-gram özelliklerini Ayıkla iki tür çıktı oluşturur: 
 
-* **Sonuç veri kümesi**: Bu çıktı, ayıklanan n-gram ile birleştirilmiş çözümlenen metnin bir özetidir. **Metin sütunu** seçeneğinde seçmediğiniz sütunlar çıkışa geçirilir. Analiz ettiğiniz her metin sütunu için modül şu sütunları oluşturur:
+* **Sonuç veri kümesi** : Bu çıktı, ayıklanan n-gram ile birleştirilmiş çözümlenen metnin bir özetidir. **Metin sütunu** seçeneğinde seçmediğiniz sütunlar çıkışa geçirilir. Analiz ettiğiniz her metin sütunu için modül şu sütunları oluşturur:
 
-  * **N-gram oluşma matrisi**: modül, Toplam yapı içinde bulunan her n-gram için bir sütun oluşturur ve bu satır için n-gram kalınlığını göstermek için her sütuna bir puan ekler. 
+  * **N-gram oluşma matrisi** : modül, Toplam yapı içinde bulunan her n-gram için bir sütun oluşturur ve bu satır için n-gram kalınlığını göstermek için her sütuna bir puan ekler. 
 
-* **Sonuç sözlüğü**: Sözlük, çözümlemenin bir parçası olarak oluşturulan terim sıklığı puanlarının yanı sıra gerçek n-gram sözlüğünü içerir. Veri kümesini, farklı bir giriş kümesiyle veya daha sonraki bir güncelleştirme için yeniden kullanım için kaydedebilirsiniz. Ayrıca, modelleme ve Puanlama için sözlüğü de kullanabilirsiniz.
+* **Sonuç sözlüğü** : Sözlük, çözümlemenin bir parçası olarak oluşturulan terim sıklığı puanlarının yanı sıra gerçek n-gram sözlüğünü içerir. Veri kümesini, farklı bir giriş kümesiyle veya daha sonraki bir güncelleştirme için yeniden kullanım için kaydedebilirsiniz. Ayrıca, modelleme ve Puanlama için sözlüğü de kullanabilirsiniz.
 
 ### <a name="result-vocabulary"></a>Sonuç sözlüğü
 
 Sözlük, çözümlemenin bir parçası olarak oluşturulan terim sıklığı puanlarını içeren n-gram sözlüğünü içerir. DF ve ıDF puanları, diğer seçeneklere bakılmaksızın oluşturulur.
 
-+ **ID**: her benzersiz n-gram için oluşturulan bir tanımlayıcı.
-+ **Ngram**: n-gram. Boşluk veya diğer sözcük ayırıcıları alt çizgi karakteriyle değiştirilmiştir.
-+ **Df**: özgün Corpus içindeki n-gram için sıklık puanı skoru.
-+ **IDF**: özgün Corpus içindeki n-gram için ters belge sıklığı puanı.
++ **ID** : her benzersiz n-gram için oluşturulan bir tanımlayıcı.
++ **Ngram** : n-gram. Boşluk veya diğer sözcük ayırıcıları alt çizgi karakteriyle değiştirilmiştir.
++ **Df** : özgün Corpus içindeki n-gram için sıklık puanı skoru.
++ **IDF** : özgün Corpus içindeki n-gram için ters belge sıklığı puanı.
 
-Bu veri kümesini el ile güncelleştirebilirsiniz, ancak hatalar ortaya çıkabilir. Örneğin:
+Bu veri kümesini el ile güncelleştirebilirsiniz, ancak hatalar ortaya çıkabilir. Örnek:
 
 * Modül, giriş sözlüğü 'nde aynı anahtarla yinelenen satırlar bulursa bir hata oluşur. Sözlük içindeki iki satırın aynı sözcüğe sahip olmadığından emin olun.
 * Sözlük veri kümelerinin giriş şemasının, sütun adları ve sütun türleri dahil olmak üzere tam olarak eşleşmesi gerekir. 

@@ -1,7 +1,7 @@
 ---
 title: DenseNet
 titleSuffix: Azure Machine Learning
-description: DenseNet algoritmasını kullanarak bir görüntü sınıflandırma modeli oluşturmayı öğrenin.
+description: DenseNet algoritmasını kullanarak bir görüntü sınıflandırma modeli oluşturmak için Azure Machine Learning tasarımcısında DenseNet modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
-ms.openlocfilehash: 2351012738f4cf5697fb29891c9459e4cc86cd3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d21c7443f6b30d0b7d6e8295c0c9b060a80d9a62
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536639"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421337"
 ---
 # <a name="densenet"></a>DenseNet
 
@@ -35,11 +35,11 @@ DenseNet hakkında daha fazla bilgi için bkz. Araştırma sayfası, daha [seyre
 
 1.  Tasarımcı 'daki işlem hattınızı **Densenet** modülünü ekleyin.  
 
-2.  **Model adı**için, belirli bir densenet yapısının adını belirtin ve desteklenen densenet: ' densenet121 ', ' densenet161 ', ' densenet169 ', ' densenet201 ' arasından seçim yapabilirsiniz.
+2.  **Model adı** için, belirli bir densenet yapısının adını belirtin ve desteklenen densenet: ' densenet121 ', ' densenet161 ', ' densenet169 ', ' densenet201 ' arasından seçim yapabilirsiniz.
 
-3.  **Önceden eğitilen**Için, ImageNet üzerinde önceden eğitilen bir model kullanıp kullanmayacağınızı belirtin. Seçilirse, model seçilen önceden eğitilen modele göre ince ayar yapabilirsiniz; seçimi kaldırılırsa, sıfırdan eğitebilirsiniz.
+3.  **Önceden eğitilen** Için, ImageNet üzerinde önceden eğitilen bir model kullanıp kullanmayacağınızı belirtin. Seçilirse, model seçilen önceden eğitilen modele göre ince ayar yapabilirsiniz; seçimi kaldırılırsa, sıfırdan eğitebilirsiniz.
 
-4.  **Bellek açısından verimli**, çok daha fazla bellek ve daha yavaş olan checkişaret kullanıp kullanmayacağınızı belirtin. Daha fazla bilgi için bkz. Araştırma sayfası, [yoğun bellek](https://arxiv.org/pdf/1707.06990.pdf)kullanımı.
+4.  **Bellek açısından verimli** , çok daha fazla bellek ve daha yavaş olan checkişaret kullanıp kullanmayacağınızı belirtin. Daha fazla bilgi için bkz. Araştırma sayfası, [yoğun bellek](https://arxiv.org/pdf/1707.06990.pdf)kullanımı.
 
 5.  **Densenet** modülü, eğitim ve doğrulama görüntüsü veri kümesi modülünün çıkışını [Pytorch modeline](train-pytorch-model.md)bağlayın. 
 
@@ -54,13 +54,13 @@ DenseNet hakkında daha fazla bilgi için bkz. Araştırma sayfası, daha [seyre
 
 ###  <a name="module-parameters"></a>Modül parametreleri  
 
-| Adı             | Aralık | Tür    | Varsayılan     | Açıklama                              |
+| Ad             | Aralık | Tür    | Varsayılan     | Açıklama                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
-| Model adı       | Herhangi biri   | Mod    | densenet201 | Belirli bir DenseNet yapısının adı     |
-| Önceden eğitilen       | Herhangi biri   | Boole | Doğru        | Imagenet üzerinde önceden eğitilen bir modelin kullanılıp kullanılmayacağını belirtir |
-| Bellek etkin | Herhangi biri   | Boole | Yanlış       | Çok daha fazla bellek ve daha yavaş olan checkişaret kullanılıp kullanılmayacağını belirtir |
+| Model adı       | Herhangi bir   | Mod    | densenet201 | Belirli bir DenseNet yapısının adı     |
+| Önceden eğitilen       | Herhangi bir   | Boole | Doğru        | Imagenet üzerinde önceden eğitilen bir modelin kullanılıp kullanılmayacağını belirtir |
+| Bellek etkin | Herhangi bir   | Boole | Yanlış       | Çok daha fazla bellek ve daha yavaş olan checkişaret kullanılıp kullanılmayacağını belirtir |
 
-###  <a name="output"></a>Çıktı  
+###  <a name="output"></a>Çıkış  
 
 | Ad            | Tür                    | Açıklama                              |
 | --------------- | ----------------------- | ---------------------------------------- |

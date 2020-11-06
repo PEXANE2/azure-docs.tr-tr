@@ -16,12 +16,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9398fc9ee61bed41cd1e8c227fc4b4068e4b3e69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68251270b6273f5a07391138e5c7210f1c46ba5a
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89662244"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420538"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existing-tenant"></a>Azure AD Connect: mevcut bir kiracınız olduğunda
 Azure AD Connect kullanımı ile ilgili konuların çoğu yeni bir Azure AD kiracısıyla başladığınız ve orada hiç Kullanıcı veya başka nesne olmadığı varsayılır. Ancak, bir Azure AD kiracısı ile başladıysanız, bunu kullanıcılar ve diğer nesnelerle doldurduktan sonra da Bağlan ' ı kullanmak istiyorsanız, bu konu sizin için önemlidir.
@@ -34,11 +34,11 @@ Azure AD 'deki bir nesne, bulutta (Azure AD) veya şirket içinde ana kopyalı o
 Azure AD 'de bulunan ve şirket içi AD 'de bulunan kullanıcıları yönetmeye başladıysanız ve daha sonra Connect kullanmak istiyorsanız, dikkate almanız gereken bazı ek sorunlar vardır.
 
 ## <a name="sync-with-existing-users-in-azure-ad"></a>Azure AD 'de mevcut kullanıcılarla eşitleme
-Azure AD Connect yüklediğinizde ve eşitlemeye başladığınızda, Azure AD eşitleme hizmeti (Azure AD 'de) her yeni nesne üzerinde bir denetim yapar ve eşleştirilecek varolan bir nesneyi bulmaya çalışır. Bu işlem için kullanılan üç öznitelik vardır: **userPrincipalName**, **proxyAddresses**ve **sourcetutturucu** / **ImmutableID**. **UserPrincipalName** ve **proxyAddresses** ile bir eşleşme, **yumuşak eşleşme**olarak bilinir. **Sourcetutturucu** üzerinde bir eşleşme, **sabit eşleşme**olarak bilinir. **ProxyAddresses** özniteliği Için yalnızca **SMTP:**, birincil e-posta adresi olan değer değerlendirme için kullanılır.
+Azure AD Connect yüklediğinizde ve eşitlemeye başladığınızda, Azure AD eşitleme hizmeti (Azure AD 'de) her yeni nesne üzerinde bir denetim yapar ve eşleştirilecek varolan bir nesneyi bulmaya çalışır. Bu işlem için kullanılan üç öznitelik vardır: **userPrincipalName** , **proxyAddresses** ve **sourcetutturucu** / **ImmutableID**. **UserPrincipalName** ve **proxyAddresses** ile bir eşleşme, **yumuşak eşleşme** olarak bilinir. **Sourcetutturucu** üzerinde bir eşleşme, **sabit eşleşme** olarak bilinir. **ProxyAddresses** özniteliği Için yalnızca **SMTP:** , birincil e-posta adresi olan değer değerlendirme için kullanılır.
 
 Eşleşme yalnızca, Connect 'ten gelen yeni nesneler için değerlendirilir. Varolan bir nesneyi bu özniteliklerin herhangi biriyle eşleşmesine olanak verecek şekilde değiştirirseniz, bunun yerine bir hata görürsünüz.
 
-Azure AD, bağlanmasından gelen bir nesne için öznitelik değerlerinin aynı olduğu ve Azure AD 'de zaten bulunduğu bir nesne bulursa, Azure AD 'deki nesne, Connect tarafından üzerinden alınır. Daha önce bulut tarafından yönetilen nesne, şirket içi yönetilen olarak işaretlenir. Şirket içi AD 'deki bir değere sahip Azure AD 'deki tüm özniteliklerin şirket içi değer ile üzerine yazılır. Özel durum, bir özniteliğin şirket içinde **null** değere sahip olduğu durumdur. Bu durumda, Azure AD 'deki değer kalır, ancak yine de şirket içinde yalnızca başka bir şeye değiştirebilirsiniz.
+Azure AD, bağlanmasından gelen bir nesne için öznitelik değerlerinin aynı olduğu ve Azure AD 'de zaten bulunduğu bir nesne bulursa, Azure AD 'deki nesne, Connect tarafından üzerinden alınır. Daha önce bulut tarafından yönetilen nesne, şirket içi yönetilen olarak işaretlenir. Şirket içi AD 'deki bir değere sahip Azure AD 'deki tüm özniteliklerin şirket içi değer ile üzerine yazılır.
 
 > [!WARNING]
 > Azure AD 'deki tüm özniteliklerin şirket içi değer tarafından üzerine yazılacağı için şirket içinde iyi veri bulunduğundan emin olun. Örneğin, Microsoft 365 içinde yalnızca yönetilen e-posta adresiniz varsa ve şirket içi AD DS güncel tutulmazsa, Azure AD/Microsoft 365 ' de AD DS ' de bulunmayan tüm değerleri kaybedersiniz.

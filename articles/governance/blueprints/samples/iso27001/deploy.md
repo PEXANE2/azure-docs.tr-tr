@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 şema örneğini dağıtma
 description: Şema yapıt parametresi ayrıntıları dahil tek başına ISO 27001 şema örneği için adımları dağıtın.
-ms.date: 07/13/2020
+ms.date: 11/02/2020
 ms.topic: sample
-ms.openlocfilehash: 6580c4f8bc66238ad45fe3d969caa7a4b3b4ce82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75403710ecbfb0cc7046804b45c2da042531e98b
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87006815"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420311"
 ---
 # <a name="deploy-the-iso-27001-blueprint-sample"></a>ISO 27001 şema örneğini dağıtma
 
@@ -25,50 +25,50 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 İlk olarak, başlangıç noktası olarak örneği kullanarak ortamınızda yeni bir şema oluşturup şema örneğini uygulayın.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
+1. Sol bölmede **Tüm hizmetler** 'i seçin. **Şemalar** ’ı arayıp seçin.
 
 1. Soldaki **Başlangıç** sayfasında, _Şema oluştur_ bölümündeki **Oluştur** düğmesini seçin.
 
-1. _Diğer örnekler_ altında **ISO 27001** şema örneğini bulun ve **Bu örneği kullan**' ı seçin.
+1. _Diğer örnekler_ altında **ISO 27001** şema örneğini bulun ve **Bu örneği kullan** ' ı seçin.
 
 1. Şema örneğinin _Temel bilgiler_ bölümüne girin:
 
-   - **Şema adı**: ISO 27001 şema örneğinin kopyasına bir ad verin.
-   - **Tanım konumu**: üç noktayı kullanın ve örneğin kopyasını kaydetmek için yönetim grubunu seçin.
+   - **Şema adı** : ISO 27001 şema örneğinin kopyasına bir ad verin.
+   - **Tanım konumu** : üç noktayı kullanın ve örneğin kopyasını kaydetmek için yönetim grubunu seçin.
 
 1. Sayfanın üst kısmındaki _Yapıtlar_ sekmesini seçin veya sayfanın en altındaki **Sonraki: Yapıtlar** seçeneğini belirleyin.
 
-1. Şema örneğini oluşturan yapıtların listesini gözden geçirin. Yapıtların çoğu parametreler içerir; bu parametreleri daha sonra tanımlayacağız. Şema örneğini gözden geçirmeyi tamamladığınızda **Taslağı Kaydet**’i seçin.
+1. Şema örneğini oluşturan yapıtların listesini gözden geçirin. Yapıtların çoğu parametreler içerir; bu parametreleri daha sonra tanımlayacağız. Şema örneğini gözden geçirmeyi tamamladığınızda **Taslağı Kaydet** ’i seçin.
 
 ## <a name="publish-the-sample-copy"></a>Örnek kopyayı yayımlama
 
 Şimdi şema örneği kopyanız, ortamınızda oluşturulmuştur. Bu, **Taslak** modunda oluşturulur ve atanabilmesi ve dağıtılabilmesi için önce **Yayımlandı** durumunda olmalıdır. Şema örneğinin kopyası ortamınıza ve gereksinimlerinize göre özelleştirilebilir, ancak bu değişiklik bu değişikliği ISO 27001 standbundan uzağa taşıyabilir.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
+1. Sol bölmede **Tüm hizmetler** 'i seçin. **Şemalar** ’ı arayıp seçin.
 
 1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Filtreleri kullanarak şema örneği kopyanızı bulup seçin.
 
-1. Sayfanın üst kısmında **Şemayı yayımla**’yı seçin. Sağdaki yeni sayfada, şema örneği kopyanız için bir **Sürüm** sağlayın. Bu özellik daha sonra bir değişiklik yaptığınızda faydalı olacaktır. "ISO 27001 şema örneğinden yayımlanan ilk sürüm" gibi **değişiklik notları** sağlayın. Sayfanın alt kısmında **Yayımla** düğmesini seçin.
+1. Sayfanın üst kısmında **Şemayı yayımla** ’yı seçin. Sağdaki yeni sayfada, şema örneği kopyanız için bir **Sürüm** sağlayın. Bu özellik daha sonra bir değişiklik yaptığınızda faydalı olacaktır. "ISO 27001 şema örneğinden yayımlanan ilk sürüm" gibi **değişiklik notları** sağlayın. Sayfanın alt kısmında **Yayımla** düğmesini seçin.
 
 ## <a name="assign-the-sample-copy"></a>Örnek kopyayı atama
 
-Şema örneğinin kopyası başarıyla **yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adımda, şema örneği kopyasının her bir dağıtımını benzersiz hale getirmek için parametreler sağlanır.
+Şema örneğinin kopyası başarıyla **yayımlandıktan** sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adımda, şema örneği kopyasının her bir dağıtımını benzersiz hale getirmek için parametreler sağlanır.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
+1. Sol bölmede **Tüm hizmetler** 'i seçin. **Şemalar** ’ı arayıp seçin.
 
 1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Filtreleri kullanarak şema örneği kopyanızı bulup seçin.
 
-1. Şema tanımı sayfasının en üstünde **Şema ata**’yı seçin.
+1. Şema tanımı sayfasının en üstünde **Şema ata** ’yı seçin.
 
 1. Şema ataması için parametre değerlerini sağlayın:
 
    - Temel Bilgiler
 
-     - **Abonelikler**: şema örneğinin kopyasını kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreler kullanılarak her biri için bir atama oluşturulur.
-     - **Atama adı**: ad, BLUEPRINT adına göre önceden doldurulur.
+     - **Abonelikler** : şema örneğinin kopyasını kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreler kullanılarak her biri için bir atama oluşturulur.
+     - **Atama adı** : ad, BLUEPRINT adına göre önceden doldurulur.
        Gerektiğinde değiştirin veya olduğu gibi bırakın.
-     - **Konum**: yönetilen kimliğin oluşturulacağı bölgeyi seçin. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - Şema **tanımı sürümü**: şema örneğinin kopyasının **yayınlanmış** bir sürümünü seçin.
+     - **Konum** : yönetilen kimliğin oluşturulacağı bölgeyi seçin. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - Şema **tanımı sürümü** : şema örneğinin kopyasının **yayınlanmış** bir sürümünü seçin.
 
    - Kilit ataması
 
@@ -82,7 +82,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
      Bu bölümde tanımlanan parametreler, tutarlılık sağlamak için şemadaki yapıtların birçoğu tarafından kullanılır.
 
-     - **Kaynaklar ve kaynak grupları Için Izin verilen konum**: kaynak grupları ve kaynakları için izin verilen konumları gösteren değer.
+     - **Kaynaklar ve kaynak grupları Için Izin verilen konum** : kaynak grupları ve kaynakları için izin verilen konumları gösteren değer.
 
    - Yapıt parametreleri
 
@@ -108,7 +108,7 @@ Aşağıdaki tabloda, şema yapıtı parametrelerinin bir listesi verilmiştir:
 |\[Önizleme \] : Windows VM 'leri için Log Analytics aracısı dağıtma|İlke ataması|Windows VM 'Leri için Log Analytics çalışma alanı|Bu çalışma alanı atama kapsamının dışındaysa, ilke atamasının asıl KIMLIĞINE ' Log Analytics katkıda bulunan ' izinleri (veya benzeri) el ile vermeniz gerekir.|
 |\[Önizleme \] : Windows VM 'leri için Log Analytics aracısı dağıtma|İlke ataması|İsteğe bağlı: kapsama eklemek için desteklenen Windows işletim sistemini destekleyen VM görüntülerinin listesi|Boş bir dizi, isteğe bağlı parametre olmadığını göstermek için kullanılabilir: \[\]|
 |İzin verilen depolama hesabı SKU'ları|İlke ataması|İzin verilen depolama SKU 'Larının listesi|Depolama hesapları için belirtilebilecek SKU 'ların listesi.|
-|İzin verilen sanal makine SKU 'Ları|İlke ataması|İzin verilen sanal makine SKU 'Larının listesi|Sanal makineler için belirtilebilecek SKU 'ların listesi.|
+|İzin verilen sanal makine SKU'ları|İlke ataması|İzin verilen sanal makine SKU 'Larının listesi|Sanal makineler için belirtilebilecek SKU 'ların listesi.|
 |ISO 27001 için Blueprint girişimi|İlke ataması|Tanılama günlükleri etkinleştirilmiş olması gereken kaynak türlerinin listesi|Tanılama günlüğü ayarı etkinleştirilmemişse denetlenecek kaynak türleri listesi. Kabul edilebilir değerler, [Azure izleyici tanılama günlükleri şemalarında](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)bulunabilir.|
 
 ## <a name="next-steps"></a>Sonraki adımlar

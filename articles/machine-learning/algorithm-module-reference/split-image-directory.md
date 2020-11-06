@@ -1,7 +1,7 @@
 ---
 title: Görüntü Dizinini Bölme
 titleSuffix: Azure Machine Learning
-description: Bir görüntü dizininin görüntülerini iki ayrı küme içine bölmek için Azure Machine Learning tasarımcısında bölünmüş görüntü dizini modülünü nasıl kullanacağınızı öğrenin (Önizleme).
+description: Bir görüntü dizininin görüntülerini iki ayrı küme içine bölmek için tasarımcıda bölünmüş görüntü dizini modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
-ms.openlocfilehash: fe5ba25904298fe1a394a4b01d6bdacc72d599c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ee4dd9b2e344ecb3e1a6424ce7310270e7cd076
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448682"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421201"
 ---
 # <a name="split-image-directory"></a>Görüntü Dizinini Bölme
 
@@ -43,7 +43,7 @@ Bu modül, görüntü verilerini eğitim ve test kümelerine ayırmanız gerekti
 
 | Ad                                   | Tür  | Aralık | İsteğe Bağlı | Açıklama                            | Varsayılan |
 | -------------------------------------- | ----- | ----- | -------- | -------------------------------------- | ------- |
-| İlk çıktıda görüntülerin kesri | Kayan | 0-1   | Gerekli | İlk çıktıda görüntülerin kesri | 0,9     |
+| İlk çıktıda görüntülerin kesri | Float | 0-1   | Gerekli | İlk çıktıda görüntülerin kesri | 0,9     |
 
 ### <a name="outputs"></a>Çıkışlar
 

@@ -1,7 +1,7 @@
 ---
 title: 'Two-Class ortalama Perceptron: modül başvurusu'
 titleSuffix: Azure Machine Learning
-description: Ortalama Perceptron algoritmasını temel alan bir makine öğrenimi modeli oluşturmak için Azure Machine Learning Two-Class ortalama Perceptron modülünü nasıl kullanacağınızı öğrenin.
+description: İkili bir sınıflandırıcı oluşturmak için tasarımcıda Two-Class ortalama Perceptron modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 3e5351ed2d400e0b1a10a913bb62391851030053
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1161dc99b84026bcc830c08b63b95d0bf3b0994
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907744"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421150"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>Two-Class ortalama Perceptron modülü
 
@@ -22,7 +22,7 @@ Bu makalede Azure Machine Learning tasarımcısında bir modül açıklanmaktad�
 
 Ortalama Perceptron algoritmasını temel alan bir makine öğrenimi modeli oluşturmak için bu modülü kullanın.  
   
-Bu sınıflandırma algoritması denetimli bir öğrenme yöntemidir ve etiket sütunu içeren etiketli bir *veri kümesi*gerektirir. Modeli [eğitmek](./train-model.md)için bir girdi olarak modeli ve etiketli veri kümesini sağlayarak modeli eğitebilirsiniz. Eğitilen model daha sonra yeni giriş örneklerinin değerlerini tahmin etmek için kullanılabilir.  
+Bu sınıflandırma algoritması denetimli bir öğrenme yöntemidir ve etiket sütunu içeren etiketli bir *veri kümesi* gerektirir. Modeli [eğitmek](./train-model.md)için bir girdi olarak modeli ve etiketli veri kümesini sağlayarak modeli eğitebilirsiniz. Eğitilen model daha sonra yeni giriş örneklerinin değerlerini tahmin etmek için kullanılabilir.  
 
 ### <a name="about-averaged-perceptron-models"></a>Ortalama Perceptron modelleri hakkında
 
@@ -36,23 +36,23 @@ Daha basit Perceptron modelleri öğrenerek doğrusal desenleri öğrenirken, si
 
 2.  Model **oluşturma modunu** ayarlayarak modelin eğitilme şeklini belirleyin.  
   
-    -   **Tek parametre**: modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayın.
+    -   **Tek parametre** : modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayın.
 
-    -   **Parametre aralığı**: en iyi parametrelerden emin değilseniz ve bir parametre süpürme çalıştırmak istiyorsanız bu seçeneği belirleyin. Yinelemek için bir değer aralığı seçin ve [ayarlama modeli hiper parametreleri](tune-model-hyperparameters.md) , en iyi sonuçları üreten hiper parametreleri belirlemek için, belirttiğiniz ayarların tüm olası birleşimlerinin üzerinde yinelenir.  
+    -   **Parametre aralığı** : en iyi parametrelerden emin değilseniz ve bir parametre süpürme çalıştırmak istiyorsanız bu seçeneği belirleyin. Yinelemek için bir değer aralığı seçin ve [ayarlama modeli hiper parametreleri](tune-model-hyperparameters.md) , en iyi sonuçları üreten hiper parametreleri belirlemek için, belirttiğiniz ayarların tüm olası birleşimlerinin üzerinde yinelenir.  
   
-3.  **Öğrenme oranı**için *öğrenme oranı*için bir değer belirtin. Öğrenme oranı değerleri, her model test edildiğinde ve düzeltildiğinde, stochastik degradede kullanılan adımın boyutunu denetler.
+3.  **Öğrenme oranı** için *öğrenme oranı* için bir değer belirtin. Öğrenme oranı değerleri, her model test edildiğinde ve düzeltildiğinde, stochastik degradede kullanılan adımın boyutunu denetler.
   
      Hızı daha az yaparak, yerel bir Play 'de kalmış olabileceğiniz riskle modeli daha sık test edersiniz. Adımı daha büyük yaparak, doğru Minima 'yı aşırı atma riskine göre daha hızlı bir şekilde yakınsama yapabilirsiniz.
   
-4.  **En fazla yineleme sayısı**için, algoritmanın eğitim verilerini incelemesi için kaç kez istediğinizi yazın.  
+4.  **En fazla yineleme sayısı** için, algoritmanın eğitim verilerini incelemesi için kaç kez istediğinizi yazın.  
   
      Erken durdurma daha iyi Genelleştirme sağlar. Yineleme sayısının artırılması, fazla sığdırma riski altında sığdırmayı geliştirir.
   
-5.  **Rastgele sayı çekirdek**için, isteğe bağlı olarak, çekirdek olarak kullanılacak bir tamsayı değeri yazın. İşlem hattının reproducibility arasında olmasını sağlamak istiyorsanız çekirdek kullanılması önerilir.  
+5.  **Rastgele sayı çekirdek** için, isteğe bağlı olarak, çekirdek olarak kullanılacak bir tamsayı değeri yazın. İşlem hattının reproducibility arasında olmasını sağlamak istiyorsanız çekirdek kullanılması önerilir.  
   
 1.  Eğitim veri kümesini bağlayın ve modeli eğitme:
 
-    + **Tek parametre**için bir görüntü **oluşturma modu** ayarlarsanız, etiketli bir veri kümesini ve [model eğitimi](train-model.md) modülünü bağlayın.  
+    + **Tek parametre** için bir görüntü **oluşturma modu** ayarlarsanız, etiketli bir veri kümesini ve [model eğitimi](train-model.md) modülünü bağlayın.  
   
     + **Parametre aralığına** **oluşturma** , bir etiketli veri kümesini bağlama ve modeli [Ayarla hiper parametrelerini](tune-model-hyperparameters.md)kullanarak modeli eğitme.  
   

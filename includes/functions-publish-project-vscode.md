@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/28/2020
 ms.author: glenga
-ms.openlocfilehash: f4e58f4f510450db13ae13d3beecba4d55e766bf
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a525d1e14e642a64235c263ba29bf7a181bf9e30
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91408600"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420997"
 ---
 ## <a name="publish-the-project-to-azure"></a>Projeyi Azure'da yayımlama
 
@@ -25,23 +25,15 @@ Bu bölümde, Azure aboneliğinizde bir işlev uygulaması ve ilgili kaynaklar o
 
 1. İstemlere aşağıdaki bilgileri sağlayın:
 
-    - **Klasör seçin**: çalışma alanınızdan bir klasör seçin veya işlev uygulamanızı içeren bir klasöre gidin. Zaten açılmış geçerli bir işlev uygulamanız varsa bunu göremezsiniz.
+    - **Klasör seçin** : çalışma alanınızdan bir klasör seçin veya işlev uygulamanızı içeren bir klasöre gidin. Zaten açılmış geçerli bir işlev uygulamanız varsa bunu göremezsiniz.
 
-    - **Abonelik seçin**: kullanılacak aboneliği seçin. Yalnızca bir aboneliğiniz varsa bunu göremezsiniz.
+    - **Abonelik seçin** : kullanılacak aboneliği seçin. Yalnızca bir aboneliğiniz varsa bunu göremezsiniz.
 
-    - **Azure 'da işlev uygulaması seçin**: Seç `- Create new Function App` . ( `Advanced` Bu makalede kapsanmayan seçeneğini seçmeyin.)
+    - **Azure 'da işlev uygulaması seçin** : Seç `- Create new Function App` . ( `Advanced` Bu makalede kapsanmayan seçeneğini seçmeyin.)
       
-    - **İşlev uygulaması için genel olarak benzersiz bir ad girin**: URL yolunda geçerli olan bir ad yazın. Yazdığınız ad, Azure Işlevlerinde benzersiz olduğundan emin olmak için onaylanır.
+    - **İşlev uygulaması için genel olarak benzersiz bir ad girin** : URL yolunda geçerli olan bir ad yazın. Yazdığınız ad, Azure Işlevlerinde benzersiz olduğundan emin olmak için onaylanır.
     
-    ::: zone pivot="programming-language-python"
-    - **Çalışma zamanı seçin**: yerel olarak çalıştırdığınız Python sürümünü seçin. `python --version`Sürümünüzü denetlemek için komutunu kullanabilirsiniz.
-    ::: zone-end
-
-    ::: zone pivot="programming-language-javascript,programming-language-typescript"
-    - **Çalışma zamanı seçin**: yerel olarak çalıştırdığınız Node.js sürümünü seçin. `node --version`Sürümünüzü denetlemek için komutunu kullanabilirsiniz.
-    ::: zone-end
-
-    - **Yeni kaynaklar için bir konum seçin**: daha iyi performans için, size yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. 
+    - **Yeni kaynaklar için bir konum seçin** : daha iyi performans için, size yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. 
     
 1.  Tamamlandığında, aşağıdaki Azure kaynakları, işlev uygulamanızın adına göre adlar kullanılarak aboneliğinizde oluşturulur:
     

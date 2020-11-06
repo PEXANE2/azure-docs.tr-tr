@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 6f3482bdc608d97e4adba5f99393e74f2e6c7cde
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9d683f96f31d3b34ac311251f45456551148ca26
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795352"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420895"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>MySQL için Azure veritabanı 'nda çoğaltmaları okuma-esnek sunucu
 
@@ -117,6 +117,7 @@ Uygulamanız okuma ve yazma işlemlerini başarıyla tamamladıktan sonra, yük 
 | Senaryo | Sınırlama/değerlendirme |
 |:-|:-|
 | Bölgesel olarak yedekli HA etkin sunucu üzerinde çoğaltma | Desteklenmez |
+| Çapraz bölge okuma çoğaltması | Desteklenmez |
 | Fiyatlandırma | Çoğaltma sunucusunu çalıştırmanın maliyeti, çoğaltma sunucusunun çalıştığı bölgeyi temel alır |
 | Kaynak sunucu yeniden başlatması | Mevcut çoğaltmaları olmayan bir kaynak için çoğaltma oluşturduğunuzda, kaynak ilk olarak çoğaltma için hazırlamak üzere yeniden başlatılır. Bunu göz önünde bulundurun ve yoğun olmayan bir dönemde bu işlemleri gerçekleştirin |
 | Yeni çoğaltmalar | Bir okuma çoğaltması, MySQL için yeni bir Azure veritabanı esnek sunucu olarak oluşturulur. Var olan bir sunucu bir çoğaltmaya yapılamaz. Başka bir okuma çoğaltmasının çoğaltmasını oluşturamazsınız |

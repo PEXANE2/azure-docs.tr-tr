@@ -1,6 +1,6 @@
 ---
 title: Algoritma ve modül başvurusu
-description: Azure Machine Learning tasarımcısında kullanılabilen modüller hakkında bilgi edinin
+description: Kendi makine öğrenimi projelerinizi oluşturmak için kullanabileceğiniz Azure Machine Learning tasarımcı modülleri hakkında bilgi edinin.
 titleSuffix: Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: 9a2e21696409c320b89d1fed54fefad953b955e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 998f9ef7bddfd988dc0af8183fb9c000bf8c79e7
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886398"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421303"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Azure Machine Learning Tasarımcısı için algoritma & modül başvurusu
 
@@ -35,7 +35,7 @@ Algoritma seçme konusunda yardım için bkz.
 | İşlev | Açıklama | Modül |
 | --- |--- | --- |
 | Veri girişi ve çıkışı | Verileri bulut kaynaklarından ardışık düzene taşıyın. Sonuçları veya ara verilerinizi Azure Storage, SQL Database veya Hive 'e yazın, işlem hattı çalıştırırken veya işlem hatları arasında veri alışverişi yapmak için bulut depolama kullanın.  | [Verileri El ile Girme](enter-data-manually.md) <br/> [Verileri dışarı aktar](export-data.md) <br/> [Verileri içeri aktar](import-data.md) |
-| Veri dönüştürme | Makine öğrenimi için benzersiz olan, verileri normalleştirime veya binme, Boyut azaltma ve çeşitli dosya biçimleri arasında veri dönüştürme gibi işlemler.| [Sütun Ekleme](add-columns.md) <br/> [Satır Ekleme](add-rows.md) <br/> [Matematik İşlemi Uygulama](apply-math-operation.md) <br/> [SQL Dönüşümü Uygulama](apply-sql-transformation.md) <br/> [Eksik Verileri Temizleme](clean-missing-data.md) <br/> [Değerleri Kırpma](clip-values.md) <br/> [CSV’ye dönüştürme](convert-to-csv.md) <br/> [Veri kümesine dönüştürme](convert-to-dataset.md) <br/> [Gösterge Değerlerine dönüştürme](convert-to-indicator-values.md) <br/> [Meta Verileri Düzenleme](edit-metadata.md) <br/> [Verileri Kutulara Gruplama](group-data-into-bins.md) <br/> [Verileri birleştirme](join-data.md) <br/> [Verileri Normalleştirme](normalize-data.md) <br/> [Bölüm ve Örnek](partition-and-sample.md)  <br/> [Yinelenen Satırları Kaldırma](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Sütun Dönüştürmeyi Seçme](select-columns-transform.md) <br/> [Veri kümesindeki Sütunları seçme](select-columns-in-dataset.md) <br/> [Verileri Bölme](split-data.md) |
+| Veri Dönüştürme | Makine öğrenimi için benzersiz olan, verileri normalleştirime veya binme, Boyut azaltma ve çeşitli dosya biçimleri arasında veri dönüştürme gibi işlemler.| [Sütun Ekle](add-columns.md) <br/> [Satır Ekleme](add-rows.md) <br/> [Matematik İşlemi Uygulama](apply-math-operation.md) <br/> [SQL Dönüşümü Uygulama](apply-sql-transformation.md) <br/> [Eksik Verileri Temizleme](clean-missing-data.md) <br/> [Değerleri Kırpma](clip-values.md) <br/> [CSV’ye dönüştürme](convert-to-csv.md) <br/> [Veri kümesine dönüştürme](convert-to-dataset.md) <br/> [Gösterge Değerlerine dönüştürme](convert-to-indicator-values.md) <br/> [Meta Verileri Düzenleme](edit-metadata.md) <br/> [Verileri Kutulara Gruplama](group-data-into-bins.md) <br/> [Verileri birleştirme](join-data.md) <br/> [Verileri Normalleştirme](normalize-data.md) <br/> [Bölüm ve Örnek](partition-and-sample.md)  <br/> [Yinelenen Satırları Kaldırma](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Sütun Dönüştürmeyi Seçme](select-columns-transform.md) <br/> [Veri kümesindeki Sütunları seçme](select-columns-in-dataset.md) <br/> [Verileri Bölme](split-data.md) |
 | Özellik seçimi | Analitik model oluştururken kullanılacak ilgili, yararlı özelliklerin bir alt kümesini seçin. | [Filtre Tabanlı Özellik Seçimi](filter-based-feature-selection.md) <br/> [Permütasyon Özelliği Önem Derecesi](permutation-feature-importance.md) |
 | İstatistiksel İşlevler | Veri bilimi ile ilgili çok çeşitli istatistiksel yöntemler sağlar. | [Verileri Özetleme](summarize-data.md)|
 

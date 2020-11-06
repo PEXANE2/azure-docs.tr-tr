@@ -1,7 +1,7 @@
 ---
 title: 'POISSON regresyon: modül başvurusu'
 titleSuffix: Azure Machine Learning
-description: Poposıya regresyon modeli oluşturmak için Poisson regresyon modülünü nasıl kullanacağınızı öğrenin.
+description: Azure Machine Learning tasarımcısında Poisson regresyon modülünü kullanarak Poisson regresyon modeli oluşturma hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: 91d6d15fc8855b49bece3a7ed903074e716b7ac4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2dfd8b3d919f9eeb3e183135ef543f417c878977
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319422"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420708"
 ---
 # <a name="poisson-regression"></a>Poisson Regresyonu
 

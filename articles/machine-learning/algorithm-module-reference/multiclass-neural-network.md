@@ -1,7 +1,7 @@
 ---
 title: 'Birden çok Lass sinir ağı: modül başvurusu'
 titleSuffix: Azure Machine Learning
-description: Birden fazla değere sahip bir hedefi tahmin etmek için kullanılabilecek bir sinir ağ modeli oluşturmak için Azure Machine Learning ' de çok Lass sinir ağ modülünü nasıl kullanacağınızı öğrenin.
+description: Çok sınıflı değerler içeren bir hedefi tahmin etmek için Azure Machine Learning tasarımcısında birden çok Lass sinir ağ modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 1b5ccc9deb3c11d847cd194992d7972f82a5c160
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a4f7f8a7793f31ffbf2099cbfb314fc5097319f5
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905288"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421269"
 ---
 # <a name="multiclass-neural-network-module"></a>Birden çok Lass sinir ağ modülü
 
@@ -40,17 +40,17 @@ Belirli bir girdi için ağın çıkışını hesaplamak üzere, Gizli katmanlar
 
 ## <a name="configure-multiclass-neural-network"></a>Birden çok Lass sinir ağını yapılandırma
 
-1. Tasarımcı 'daki işlem hattınızı çoklu **Lass sinir ağ** modülünü ekleyin. Bu modülü, **Sınıflandırma** kategorisinde **Machine Learning**, **Initialize**altında bulabilirsiniz.
+1. Tasarımcı 'daki işlem hattınızı çoklu **Lass sinir ağ** modülünü ekleyin. Bu modülü, **Sınıflandırma** kategorisinde **Machine Learning** , **Initialize** altında bulabilirsiniz.
 
-2. **Eğitmen modu oluşturma**: modelin nasıl eğitilme etmek istediğinizi belirtmek için bu seçeneği kullanın:
+2. **Eğitmen modu oluşturma** : modelin nasıl eğitilme etmek istediğinizi belirtmek için bu seçeneği kullanın:
 
-    - **Tek parametre**: modeli nasıl yapılandırmak istediğinizi zaten biliyorsanız bu seçeneği belirleyin.
+    - **Tek parametre** : modeli nasıl yapılandırmak istediğinizi zaten biliyorsanız bu seçeneği belirleyin.
 
-    - **Parametre aralığı**: en iyi parametrelerden emin değilseniz ve bir parametre süpürme çalıştırmak istiyorsanız bu seçeneği belirleyin. Yinelemek için bir değer aralığı seçin ve [ayarlama modeli hiper parametreleri](tune-model-hyperparameters.md) , en iyi sonuçları üreten hiper parametreleri belirlemek için, belirttiğiniz ayarların tüm olası birleşimlerinin üzerinde yinelenir.  
+    - **Parametre aralığı** : en iyi parametrelerden emin değilseniz ve bir parametre süpürme çalıştırmak istiyorsanız bu seçeneği belirleyin. Yinelemek için bir değer aralığı seçin ve [ayarlama modeli hiper parametreleri](tune-model-hyperparameters.md) , en iyi sonuçları üreten hiper parametreleri belirlemek için, belirttiğiniz ayarların tüm olası birleşimlerinin üzerinde yinelenir.  
 
-3. **Gizli katman belirtimi**: oluşturulacak ağ mimarisi türünü seçin.
+3. **Gizli katman belirtimi** : oluşturulacak ağ mimarisi türünü seçin.
 
-    - **Tam bağlı durum**: varsayılan sinir ağ mimarisini kullanarak bir model oluşturmak için bu seçeneği belirleyin. Birden çok Lass sinir ağ modelleri için varsayılanlar aşağıdaki gibidir:
+    - **Tam bağlı durum** : varsayılan sinir ağ mimarisini kullanarak bir model oluşturmak için bu seçeneği belirleyin. Birden çok Lass sinir ağ modelleri için varsayılanlar aşağıdaki gibidir:
 
         - Bir gizli katman
         - Çıktı Katmanı gizli katmana tam olarak bağlanır.
@@ -61,25 +61,25 @@ Belirli bir girdi için ağın çıkışını hesaplamak üzere, Gizli katmanlar
   
    
 
-5. **Gizli düğümlerin sayısı**: Bu seçenek, varsayılan mimarideki gizli düğüm sayısını özelleştirmenizi sağlar. Gizli düğümlerin sayısını yazın. Varsayılan değer, 100 düğümü olan bir gizli katmandır.
+5. **Gizli düğümlerin sayısı** : Bu seçenek, varsayılan mimarideki gizli düğüm sayısını özelleştirmenizi sağlar. Gizli düğümlerin sayısını yazın. Varsayılan değer, 100 düğümü olan bir gizli katmandır.
 
-6. **Öğrenme oranı**: düzeltmeden önce her yinelemede gerçekleştirilen adımın boyutunu tanımlayın. Öğrenme oranı için daha büyük bir değer modelin daha hızlı yakınsama olmasına neden olabilir, ancak yerel Mini ma 'yı aşırı gerçekleştirebilir.
+6. **Öğrenme oranı** : düzeltmeden önce her yinelemede gerçekleştirilen adımın boyutunu tanımlayın. Öğrenme oranı için daha büyük bir değer modelin daha hızlı yakınsama olmasına neden olabilir, ancak yerel Mini ma 'yı aşırı gerçekleştirebilir.
 
-7. **Öğrenme yinelemesi sayısı**: algoritmanın eğitim çalışmalarını kaç kez işlemesi gerektiğini belirtin.
+7. **Öğrenme yinelemesi sayısı** : algoritmanın eğitim çalışmalarını kaç kez işlemesi gerektiğini belirtin.
 
-8. **İlk öğrenme ağırlıkları çapı**: öğrenme sürecinin başlangıcında düğüm ağırlıklarını belirtin.
+8. **İlk öğrenme ağırlıkları çapı** : öğrenme sürecinin başlangıcında düğüm ağırlıklarını belirtin.
 
-9. **İtici güç**: önceki yinelemelerdeki düğümlere öğrenme sırasında uygulanacak ağırlığı belirtin.
+9. **İtici güç** : önceki yinelemelerdeki düğümlere öğrenme sırasında uygulanacak ağırlığı belirtin.
   
-11. **Örnekleri karıştır**: yinelemeler arasındaki örnekleri karıştırmak için bu seçeneği belirleyin.
+11. **Örnekleri karıştır** : yinelemeler arasındaki örnekleri karıştırmak için bu seçeneği belirleyin.
 
     Bu seçeneğin işaretini kaldırırsanız, işlem hattını her çalıştırdığınızda her zaman tam olarak aynı sırada işlenir.
 
-12. **Rastgele sayı çekirdek**: aynı işlem hattının çalıştırmaları arasında yinelenebilirlik sağlamak istiyorsanız, çekirdek olarak kullanılacak bir değer yazın.
+12. **Rastgele sayı çekirdek** : aynı işlem hattının çalıştırmaları arasında yinelenebilirlik sağlamak istiyorsanız, çekirdek olarak kullanılacak bir değer yazın.
 
 14. Modeli eğitme:
 
-    + **Tek parametre**için bir görüntü **oluşturma modu** ayarlarsanız, etiketli bir veri kümesini ve [model eğitimi](train-model.md) modülünü bağlayın.  
+    + **Tek parametre** için bir görüntü **oluşturma modu** ayarlarsanız, etiketli bir veri kümesini ve [model eğitimi](train-model.md) modülünü bağlayın.  
   
     + **Parametre aralığına** **oluşturma** , bir etiketli veri kümesini bağlama ve modeli [Ayarla hiper parametrelerini](tune-model-hyperparameters.md)kullanarak modeli eğitme.  
   

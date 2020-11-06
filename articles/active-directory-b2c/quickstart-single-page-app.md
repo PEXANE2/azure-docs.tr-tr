@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: tek sayfalı uygulama (SPA) için oturum açma ayarlama'
+title: 'Hızlı başlangıç: tek sayfalı uygulama (SPA) için oturum açmayı ayarlama'
 titleSuffix: Azure AD B2C
 description: Bu hızlı başlangıçta, hesap oturum açma sağlamak için Azure Active Directory B2C kullanan örnek bir tek sayfalı uygulama çalıştırın.
 services: active-directory-b2c
@@ -11,30 +11,30 @@ ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: db18c71b09cd9beb58799ad4fbcbc944061153fb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6471d1b5a5ad2b8ba34080ae1220872fa0e2e232
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87921768"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421065"
 ---
-# <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Hızlı başlangıç: Azure Active Directory B2C'yi kullanarak tek sayfalı bir uygulama için oturum açma bilgilerini ayarlama
+# <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Hızlı başlangıç: Azure Active Directory B2C kullanarak tek sayfalı bir uygulama için oturum açmayı ayarlama
 
 Azure Active Directory B2C (Azure AD B2C) uygulamanızın, işinizin ve müşterilerinin korunmasını sağlamak için bulut kimlik yönetimi sağlar. Azure AD B2C; uygulamalarınızın, açık standart protokolleri kullanarak sosyal hesaplarda ve kurumsal hesaplarda kimlik doğrulaması gerçekleştirmesine olanak tanır. Bu hızlı başlangıçta, sosyal kimlik sağlayıcısı kullanıp Azure AD B2C korumalı web API’si çağırarak oturum açmak için bir tek sayfalı uygulama kullanırsınız.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Node.js](https://nodejs.org/en/download/)
 - Facebook, Google veya Microsoft 'tan sosyal hesap
-- GitHub 'dan kod örneği: [Active-Directory-B2C-JavaScript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
+- GitHub 'dan kod örneği: [MS-Identity-B2C-JavaScript-Spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa)
 
-    [ZIP arşivini indirebilir](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip) veya depoyu klonlayabilirsiniz:
+    [ZIP arşivini indirebilir](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/archive/main.zip) veya depoyu klonlayabilirsiniz:
 
     ```console
-    git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
+    git clone https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa.git
     ```
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
@@ -42,7 +42,6 @@ Azure Active Directory B2C (Azure AD B2C) uygulamanızın, işinizin ve müşter
 1. Node.js komut isteminde şu komutları çalıştırarak sunucuyu başlatın:
 
     ```console
-    cd active-directory-b2c-javascript-msal-singlepageapp
     npm install && npm update
     npm start
     ```
@@ -60,7 +59,7 @@ Azure Active Directory B2C (Azure AD B2C) uygulamanızın, işinizin ve müşter
 ## <a name="sign-in-using-your-account"></a>Hesabınızı kullanarak oturum açın
 
 1. Kullanıcı yolculuğu ' nı başlatmak için **oturum aç '** ı seçin.
-1. Azure AD B2C, örnek Web uygulaması için fabrikam adlı kurgusal bir şirket için oturum açma sayfası sunar. Sosyal kimlik sağlayıcısı kullanarak kaydolmak için, kullanmak istediğiniz kimlik sağlayıcısının düğmesini seçin.
+1. Azure AD B2C, örnek Web uygulaması için "Fabrikam" adlı kurgusal bir şirket için oturum açma sayfası sunar. Sosyal kimlik sağlayıcısı kullanarak kaydolmak için, kullanmak istediğiniz kimlik sağlayıcısının düğmesini seçin.
 
     ![Kimlik sağlayıcı düğmelerini gösteren oturum açma veya kaydolma sayfası](./media/quickstart-single-page-app/sign-in-or-sign-up-spa.png)
 

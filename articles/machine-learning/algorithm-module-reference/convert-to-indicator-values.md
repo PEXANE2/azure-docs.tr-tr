@@ -1,7 +1,7 @@
 ---
 title: Gösterge Değerlerine dönüştürme
 titleSuffix: Azure Machine Learning
-description: Kategorik değerlerini içeren sütunları bir dizi ikili gösterge sütununa dönüştürmek için Azure Machine Learning gösterge değerlerini Dönüştür modülünün nasıl kullanılacağını öğrenin.
+description: Kategorik sütunları bir dizi ikili gösterge sütununa dönüştürmek için Azure Machine Learning tasarımcısında gösterge değerlerini Dönüştür modülünü kullanın.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: f1b194f2c65f95ad4daff0353d05ca589db9ce51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81b3c113f46428327842c1555fdd1934e9ae8762
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79477672"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420861"
 ---
 # <a name="convert-to-indicator-values"></a>Gösterge Değerlerine dönüştürme
 Bu makalede bir Azure Machine Learning Designer modülü açıklanmaktadır.
@@ -51,7 +51,7 @@ Bir sunucunun yüksek, orta veya düşük bir hata olup olmadığını belirten 
 | 10302     | Orta        |
 | 10303     | Yüksek          |
 
-**Gösterge değerlerine Dönüştür**uyguladığınızda, tasarımcı tek bir etiket sütununu, Boolean değerler içeren birden çok sütuna dönüştürür:  
+**Gösterge değerlerine Dönüştür** uyguladığınızda, tasarımcı tek bir etiket sütununu, Boolean değerler içeren birden çok sütuna dönüştürür:  
 
 | Sunucu KIMLIĞI | Başarısızlık puanı-düşük | Başarısızlık puanı-orta | Başarısızlık puanı-yüksek |
 | --------- | ------------------- | ---------------------- | -------------------- |
@@ -71,8 +71,8 @@ Artık üç gösterge sütununu bir makine öğrenimi modelinde özellikler olar
 
 Modül iki çıkış döndürüyor:
 
-- **Sonuç veri kümesi**: dönüştürülmüş gösterge değerleri sütunları olan bir veri kümesi. Temizleme için seçilmemiş sütunlar da "geçirilir".
-- **Gösterge değerleri dönüştürmesi**: çalışma alanınıza kaydedilebilecek ve yeni verilere daha sonra uygulanabilen gösterge değerlerine dönüştürmek için kullanılan bir veri dönüştürmesi.
+- **Sonuç veri kümesi** : dönüştürülmüş gösterge değerleri sütunları olan bir veri kümesi. Temizleme için seçilmemiş sütunlar da "geçirilir".
+- **Gösterge değerleri dönüştürmesi** : çalışma alanınıza kaydedilebilecek ve yeni verilere daha sonra uygulanabilen gösterge değerlerine dönüştürmek için kullanılan bir veri dönüştürmesi.
 
 ## <a name="apply-a-saved-indicator-values-operation-to-new-data"></a>Yeni verilere kaydedilmiş bir gösterge değerleri işlemi uygulama
 
@@ -104,7 +104,7 @@ Bu bölümde, sık sorulan soruların uygulama ayrıntıları, ipuçları ve yan
 
 -   Gösterge sütunlarına dönüştürebileceğiniz sütun sayısı için bir sınır yoktur. Ancak, her bir değer sütunu birden çok gösterge sütunu sağlayabildiğinden, tek seferde yalnızca birkaç sütunu dönüştürüp gözden geçirmek isteyebilirsiniz.  
 
--   Sütun eksik değerler içeriyorsa, eksik kategori için bu adla ayrı bir gösterge sütunu oluşturulur: * \<source column> -eksik*  
+-   Sütun eksik değerler içeriyorsa, eksik kategori için bu adla ayrı bir gösterge sütunu oluşturulur: *\<source column> -eksik*  
 
 -   Gösterge değerlerine dönüştürdüğünüz sütun sayı içeriyorsa, bunların diğer özellik sütunları gibi kategorik olarak işaretlenmesi gerekir. Bunu yaptıktan sonra, sayılar ayrık değerler olarak değerlendirilir. Örneğin, yaklaşık olarak 25 ile 30 arasında değişen bir sayısal sütununuz varsa, her ayrık değer için yeni bir gösterge sütunu oluşturulur:  
 

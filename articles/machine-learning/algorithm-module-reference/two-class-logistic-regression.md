@@ -1,7 +1,7 @@
 ---
 title: 'Two-Class Lojistik gerileme: modül başvurusu'
 titleSuffix: Azure Machine Learning
-description: İki (ve yalnızca iki) sonucu tahmin etmek için kullanılabilecek bir lojistik regresyon modeli oluşturmak için Azure Machine Learning Two-Class lojistik regresyon modülünü nasıl kullanacağınızı öğrenin.
+description: İkili bir sınıflandırıcı oluşturmak için Azure Machine Learning Two-Class lojistik regresyon modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 68bd42b6e9f1498db294b57d0ea1ffdac5245be8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2e29a666f4d478e11986f834cff94d9743223f22
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309985"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420589"
 ---
 # <a name="two-class-logistic-regression-module"></a>Two-Class lojistik regresyon modülü
 

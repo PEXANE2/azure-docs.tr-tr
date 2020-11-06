@@ -1,14 +1,14 @@
 ---
 title: UK resmi & UK NHS şema örnekleri dağıt
 description: Şema yapıt parametresi ayrıntıları dahil olmak üzere Birleşik Krallık resmi ve UK NHS şeması örnekleri için adımları dağıtın.
-ms.date: 07/13/2020
+ms.date: 11/02/2020
 ms.topic: sample
-ms.openlocfilehash: a4512eb982943664afc8217c5332e5e3b6e62fc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14e832397c21f183c94720bc71f06530d9caaf14
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86521454"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420334"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK resmi ve UK NHS şema örneklerini dağıtın
 
@@ -25,50 +25,50 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 İlk olarak, başlangıç noktası olarak örneği kullanarak ortamınızda yeni bir şema oluşturup şema örneğini uygulayın.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
+1. Sol bölmede **Tüm hizmetler** 'i seçin. **Şemalar** ’ı arayıp seçin.
 
 1. Soldaki **Başlangıç** sayfasında, _Şema oluştur_ bölümündeki **Oluştur** düğmesini seçin.
 
-1. _Diğer örnekler_ altında **UK resmi** veya **UK NHS** şema örneğini bulun ve **Bu örneği kullan**' ı seçin.
+1. _Diğer örnekler_ altında **UK resmi** veya **UK NHS** şema örneğini bulun ve **Bu örneği kullan** ' ı seçin.
 
 1. Şema örneğinin _Temel bilgiler_ bölümüne girin:
 
-   - **Şema adı**: şema örneğinin kopyasına bir ad verin.
-   - **Tanım konumu**: üç noktayı kullanın ve örneğin kopyasını kaydetmek için yönetim grubunu seçin.
+   - **Şema adı** : şema örneğinin kopyasına bir ad verin.
+   - **Tanım konumu** : üç noktayı kullanın ve örneğin kopyasını kaydetmek için yönetim grubunu seçin.
 
 1. Sayfanın üst kısmındaki _Yapıtlar_ sekmesini seçin veya sayfanın en altındaki **Sonraki: Yapıtlar** seçeneğini belirleyin.
 
-1. Şema örneğini oluşturan yapıtların listesini gözden geçirin. Yapıtların çoğu parametreler içerir; bu parametreleri daha sonra tanımlayacağız. Şema örneğini gözden geçirmeyi tamamladığınızda **Taslağı Kaydet**’i seçin.
+1. Şema örneğini oluşturan yapıtların listesini gözden geçirin. Yapıtların çoğu parametreler içerir; bu parametreleri daha sonra tanımlayacağız. Şema örneğini gözden geçirmeyi tamamladığınızda **Taslağı Kaydet** ’i seçin.
 
 ## <a name="publish-the-sample-copy"></a>Örnek kopyayı yayımlama
 
 Şimdi şema örneği kopyanız, ortamınızda oluşturulmuştur. Bu, **Taslak** modunda oluşturulur ve atanabilmesi ve dağıtılabilmesi için önce **Yayımlandı** durumunda olmalıdır. Şema örneğinin kopyası ortamınıza ve gereksinimlerinize göre özelleştirilebilir, ancak bu değişiklik bu değişikliği standart dışında taşıyabilir.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
+1. Sol bölmede **Tüm hizmetler** 'i seçin. **Şemalar** ’ı arayıp seçin.
 
 1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Filtreleri kullanarak şema örneği kopyanızı bulup seçin.
 
-1. Sayfanın üst kısmında **Şemayı yayımla**’yı seçin. Sağdaki yeni sayfada, şema örneği kopyanız için bir **Sürüm** sağlayın. Bu özellik daha sonra bir değişiklik yaptığınızda faydalı olacaktır. "UK resmi veya UK NHS şema örneğinden yayınlanan ilk sürüm" gibi **değişiklik notları** sağlayın. Sayfanın alt kısmında **Yayımla** düğmesini seçin.
+1. Sayfanın üst kısmında **Şemayı yayımla** ’yı seçin. Sağdaki yeni sayfada, şema örneği kopyanız için bir **Sürüm** sağlayın. Bu özellik daha sonra bir değişiklik yaptığınızda faydalı olacaktır. "UK resmi veya UK NHS şema örneğinden yayınlanan ilk sürüm" gibi **değişiklik notları** sağlayın. Sayfanın alt kısmında **Yayımla** düğmesini seçin.
 
 ## <a name="assign-the-sample-copy"></a>Örnek kopyayı atama
 
-Şema örneğinin kopyası başarıyla **yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adımda, şema örneği kopyasının her bir dağıtımını benzersiz hale getirmek için parametreler sağlanır.
+Şema örneğinin kopyası başarıyla **yayımlandıktan** sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adımda, şema örneği kopyasının her bir dağıtımını benzersiz hale getirmek için parametreler sağlanır.
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
+1. Sol bölmede **Tüm hizmetler** 'i seçin. **Şemalar** ’ı arayıp seçin.
 
 1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Filtreleri kullanarak şema örneği kopyanızı bulup seçin.
 
-1. Şema tanımı sayfasının en üstünde **Şema ata**’yı seçin.
+1. Şema tanımı sayfasının en üstünde **Şema ata** ’yı seçin.
 
 1. Şema ataması için parametre değerlerini sağlayın:
 
    - Temel Bilgiler
 
-     - **Abonelikler**: şema örneğinin kopyasını kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreler kullanılarak her biri için bir atama oluşturulur.
-     - **Atama adı**: ad, BLUEPRINT adına göre önceden doldurulur.
+     - **Abonelikler** : şema örneğinin kopyasını kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreler kullanılarak her biri için bir atama oluşturulur.
+     - **Atama adı** : ad, BLUEPRINT adına göre önceden doldurulur.
        Gerektiğinde değiştirin veya olduğu gibi bırakın.
-     - **Konum**: yönetilen kimliğin oluşturulacağı bölgeyi seçin. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - Şema **tanımı sürümü**: şema örneğinin kopyasının **yayınlanmış** bir sürümünü seçin.
+     - **Konum** : yönetilen kimliğin oluşturulacağı bölgeyi seçin. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - Şema **tanımı sürümü** : şema örneğinin kopyasının **yayınlanmış** bir sürümünü seçin.
 
    - Kilit ataması
 
@@ -94,8 +94,8 @@ Aşağıdaki tabloda, şema yapıtı parametrelerinin bir listesi verilmiştir:
 Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
 |UK RESMI veya UK NHS için Blueprint girişimi|İlke ataması |Tanılama günlüklerini denetlemeye yönelik kaynak türleri (Ilke: Birleşik Krallık RESMI veya UK NHS için Blueprint girişimi) |Tanılama günlük ayarı 'nın etkin olup olmadığını denetlemek için kaynak türlerinin listesi.  Kabul edilebilir değerler için bkz. [Azure tanılama günlükleri Için desteklenen hizmetler, şemalar ve Kategoriler](../../../../azure-monitor/platform/resource-logs-schema.md). |
-|\[Önizleme \] : Linux VM 'ler için Log Analytics aracısı dağıtma |İlke ataması |İsteğe bağlı: kapsama eklemek için desteklenen Linux işletim sistemini destekleyen VM görüntülerinin listesi (Ilke: \[ Önizleme \] : Linux sanal makineleri Için Log Analytics aracısı dağıtma) |Seçim Varsayılan değer _none_' dır. Daha fazla bilgi için [Azure portal Log Analytics çalışma alanı oluşturma](../../../../azure-monitor/learn/quick-create-workspace.md)bölümüne bakın. |
-|\[Önizleme \] : Windows VM 'leri için Log Analytics aracısı dağıtma |İlke ataması |İsteğe bağlı: kapsama eklemek için desteklenen Windows işletim sistemini destekleyen VM görüntülerinin listesi (Ilke: \[ Önizleme \] : Windows VM 'leri Için Log Analytics aracısı dağıtma) |Seçim Varsayılan değer _none_' dır. Daha fazla bilgi için [Azure portal Log Analytics çalışma alanı oluşturma](../../../../azure-monitor/learn/quick-create-workspace.md)bölümüne bakın. |
+|\[Önizleme \] : Linux VM 'ler için Log Analytics aracısı dağıtma |İlke ataması |İsteğe bağlı: kapsama eklemek için desteklenen Linux işletim sistemini destekleyen VM görüntülerinin listesi (Ilke: \[ Önizleme \] : Linux sanal makineleri Için Log Analytics aracısı dağıtma) |Seçim Varsayılan değer _none_ ' dır. Daha fazla bilgi için [Azure portal Log Analytics çalışma alanı oluşturma](../../../../azure-monitor/learn/quick-create-workspace.md)bölümüne bakın. |
+|\[Önizleme \] : Windows VM 'leri için Log Analytics aracısı dağıtma |İlke ataması |İsteğe bağlı: kapsama eklemek için desteklenen Windows işletim sistemini destekleyen VM görüntülerinin listesi (Ilke: \[ Önizleme \] : Windows VM 'leri Için Log Analytics aracısı dağıtma) |Seçim Varsayılan değer _none_ ' dır. Daha fazla bilgi için [Azure portal Log Analytics çalışma alanı oluşturma](../../../../azure-monitor/learn/quick-create-workspace.md)bölümüne bakın. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

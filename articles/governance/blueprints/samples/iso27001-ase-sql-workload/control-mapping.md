@@ -1,20 +1,20 @@
 ---
 title: ISO 27001 Ao/SQL iş yükü şeması örnek denetimleri
 description: ISO 27001 App Service Ortamı/SQL veritabanı iş yükü şeması örneği Azure Ilkesi ve Azure RBAC için denetim eşlemesi.
-ms.date: 07/13/2020
+ms.date: 11/05/2020
 ms.topic: sample
-ms.openlocfilehash: 662e5dce9c58cec3be36c3e492d7231ed0e83939
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 438f2af05e0c499e9f002b501b97e291705cee9a
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91929328"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420419"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>ISO 27001 AKEN/SQL iş yükü şeması örneğinin denetim eşlemesi
 
 Aşağıdaki makalede, Azure şemaları ISO 27001 Ao/SQL Iş yükü şeması 'nın ISO 27001 denetimlerine nasıl eşlendiği açıklanır. Denetimler hakkında daha fazla bilgi için bkz. [ıso 27001](https://www.iso.org/isoiec-27001-information-security.html).
 
-Aşağıdaki eşlemeler **ıso 27001:2013** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından, ** \[ ÖNIZLEME denetimi ISO 27001:2013 denetimlerini bulun ve seçin ve denetim gereksinimleri yerleşik ilke girişimi ' ni \] desteklemek Için belirli VM uzantılarını dağıtın** .
+Aşağıdaki eşlemeler **ıso 27001:2013** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından, **\[ ÖNIZLEME denetimi ISO 27001:2013 denetimlerini bulun ve seçin ve denetim gereksinimleri yerleşik ilke girişimi ' ni \] desteklemek Için belirli VM uzantılarını dağıtın** .
 
 > [!IMPORTANT]
 > Aşağıdaki her denetim bir veya daha fazla [Azure ilke](../../../policy/overview.md) tanımı ile ilişkilidir. Bu ilkeler, denetimiyle [uyumluluğu değerlendirmenize](../../../policy/how-to/get-compliance-data.md) yardımcı olabilir; Ancak, bir denetim ile bir veya daha fazla ilke arasında genellikle bire bir veya tam eşleşme yoktur. Bu nedenle, Azure Ilkesi ile **uyumlu** , yalnızca ilkelerin kendilerine başvurur; Bu, bir denetimin tüm gereksinimleriyle tamamen uyumlu olduğunuzdan emin değildir. Buna ek olarak, uyumluluk standardı şu anda herhangi bir Azure Ilke tanımı tarafından açıklanmayan denetimler içerir. Bu nedenle, Azure Ilkesinde uyumluluk, genel uyumluluk durumunuzu yalnızca kısmi görünümüdür. Bu uyumluluk şeması örneği için denetimler ve Azure Ilke tanımları arasındaki ilişkilendirmeler zaman içinde değişebilir. Değişiklik geçmişini görüntülemek için [GitHub kayıt geçmişine](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/iso27001-ase-sql-workload/control-mapping.md)bakın.
@@ -37,8 +37,6 @@ Azure 'un [SQL güvenlik açığı değerlendirme hizmeti](../../../../azure-sql
 Azure, Azure kaynaklarına kimlerin erişebileceğini yönetmek için [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../../../role-based-access-control/overview.md) uygular. Bu şema yedi [Azure ilke](../../../policy/overview.md) tanımı atayarak Azure kaynaklarına erişimi denetlemenize yardımcı olur. Bu ilkeler, kaynaklara daha fazla izin vermeyi sağlayan kaynak türlerinin ve yapılandırmaların kullanımını denetler.
 Bu ilkeleri ihlal eden kaynakları anlamak, Azure kaynaklarının yetkili kullanıcılarla sınırlı olduğundan emin olmak için düzeltici eylemler almanıza yardımcı olabilir.
 
-- Parolası olmayan hesaplara sahip Linux sanal makinelerini denetlemek için önkoşulları dağıtın
-- Parola olmadan hesaplardan uzak bağlantılara izin veren Linux VM 'lerini denetlemek için önkoşulları dağıtın
 - Parolası olmayan hesaplara sahip Linux VM 'lerinden denetim sonuçlarını göster
 - Parolasız uzak bağlantılara izin veren Linux VM 'lerinden denetim sonuçlarını göster
 - Depolama hesaplarının yeni Azure Resource Manager kaynaklarına geçirilmesi gerekir
@@ -65,7 +63,6 @@ Bu şema, Multi-Factor Authentication etkinleştirilmemiş hesapları denetlemek
 - MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir
 - Aboneliğinizde yazma izinleri olan hesaplarda MFA etkinleştirilmelidir
 - Passwd dosyası izinleri 0644 olarak ayarlanan Linux VM 'lerinden denetim sonuçlarını göster
-- Passwd dosyası izinleri 0644 olarak ayarlanan Linux sanal makinelerini denetlemek için önkoşulları dağıtın
 
 ## <a name="a925-review-of-user-access-rights"></a>A. 9.2.5 Kullanıcı erişimi haklarının Incelemesi
 
@@ -100,11 +97,6 @@ Bu şema, en düşük güç ve diğer parola gereksinimlerini zorlayamama Window
 - En az 1 günlük parola yaşı olmayan Windows VM 'lerinden denetim sonuçlarını göster
 - Minimum parola uzunluğunu 14 karakter olarak kısıtlayan Windows VM 'lerinden denetim sonuçlarını göster
 - Önceki 24 parolanın yeniden kullanılmasına izin veren Windows VM 'lerinden denetim sonuçlarını göster
-- Parola karmaşıklığı ayarı etkin olmayan Windows VM 'Leri denetlemek için önkoşulları dağıtın
-- Maksimum parola yaşı 70 gün olmayan Windows VM 'Leri denetlemek için önkoşulları dağıtın
-- En az 1 günlük parola yaşı olmayan Windows VM 'Leri denetlemek için önkoşulları dağıtın
-- En az parola uzunluğu 14 karakter olan Windows sanal makinelerini denetlemek için önkoşulları dağıtın
-- Önceki 24 parolanın yeniden kullanılmasına izin veren Windows sanal makinelerini denetlemek için önkoşulları dağıtın
 
 ## <a name="a1011-policy-on-the-use-of-cryptographic-controls"></a>Şifreleme denetimlerinin kullanımıyla ilgili bir. 10.1.1 Ilkesi
 
@@ -114,7 +106,6 @@ Azure kaynaklarınızın en iyi durumda olmayan şifreleme yapılandırmaların�
 - İşlev Uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - Web uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - API uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
-- Ters çevrilebilir şifreleme kullanarak parolaları depolamamayan Windows sanal makinelerini denetlemek için önkoşulları dağıtın
 - Ters çevrilebilir şifreleme kullanarak parolaları depomayan Windows VM 'lerinden denetim sonuçlarını göster
 - Disk şifrelemesi sanal makinelere uygulanmalıdır
 - Otomasyon hesabı değişkenleri şifrelenmelidir

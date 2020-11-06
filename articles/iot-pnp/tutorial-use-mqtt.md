@@ -1,26 +1,26 @@
 ---
-title: IoT Tak ve Kullan cihaz istemcisi oluşturmak için MQTT kullanma | Microsoft Docs
-description: Azure IoT cihaz SDK 'larını kullanmadan IoT Tak ve Kullan cihaz istemcisi oluşturmak için doğrudan MQTT protokolünü kullanın
+title: Öğretici-MQTT kullanarak bir Azure IoT Tak ve Kullan cihaz istemcisi oluşturun | Microsoft Docs
+description: Öğretici-Azure IoT cihaz SDK 'larını kullanmadan IoT Tak ve Kullan cihaz istemcisi oluşturmak için doğrudan MQTT protokolünü kullanın
 author: ericmitt
 ms.author: ericmitt
 ms.date: 05/13/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: d0ac0f000b6a096ae3de1f4f00a17b64f1948c1e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6852b0532b23e46c7b986926b21cd0b7e9f9736d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046290"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421388"
 ---
-# <a name="use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>IoT Tak ve Kullan cihaz istemcisi geliştirmek için MQTT kullanın
+# <a name="tutorial---use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>Öğretici-MQTT kullanarak IoT Tak ve Kullan cihaz istemcisi geliştirme
 
 Her olabiliyorsa IoT Tak ve Kullan cihaz istemcilerinizi oluşturmak için Azure IoT cihaz SDK 'Lardan birini kullanmanız gerekir. Ancak, bellek kısıtlanmış bir cihaz kullanma gibi senaryolarda IoT Hub 'ınız ile iletişim kurmak için bir MQTT kitaplığı kullanmanız gerekebilir.
 
 Bu öğreticideki örnek, [ıssquıto](http://mosquitto.org/) MQTT kitaplığı ve Visual Studio 'Da Çakışan Küreler kullanır. Bu öğreticideki adımlarda geliştirme makinenizde Windows kullandığınızı varsayalım.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -33,12 +33,12 @@ Bu öğreticiyi Windows üzerinde gerçekleştirmek için, yerel Windows ortamı
 IoT Hub yeni bir cihaz eklemek için *Azure IoT gezgin* aracını kullanın. IoT Hub 'ınızı, Azure IoT Gezgini aracını, [ıot Tak ve kullan hızlı başlangıç ve öğreticiler için ortamınızı ayarlamayı](set-up-environment.md)tamamladıktan sonra yapılandırdınız:
 
 1. **Azure IoT gezgin** aracını başlatın.
-1. **IoT Hub 'ları** sayfasında **Bu hub 'da cihazları görüntüle**' yi seçin.
-1. **Cihazlar** sayfasında **+ Yeni**' yi seçin.
+1. **IoT Hub 'ları** sayfasında **Bu hub 'da cihazları görüntüle** ' yi seçin.
+1. **Cihazlar** sayfasında **+ Yeni** ' yi seçin.
 1. Otomatik olarak oluşturulmuş bir simetrik anahtar kullanan *My-MQTT-Device* adlı bir cihaz oluşturun.
-1. **Cihaz kimliği** SAYFASıNDA, **SAS belirtecine sahip bağlantı dizesi**' ni genişletin.
-1. **Simetrik anahtar**olarak kullanılacak **birincil anahtarı** seçin, sona erme süresini 60 dakika olarak ayarlayın ve **Oluştur**' u seçin.
-1. Oluşturulan **SAS belirteci bağlantı dizesini**kopyalayın, bu değeri öğreticide daha sonra kullanırsınız.
+1. **Cihaz kimliği** SAYFASıNDA, **SAS belirtecine sahip bağlantı dizesi** ' ni genişletin.
+1. **Simetrik anahtar** olarak kullanılacak **birincil anahtarı** seçin, sona erme süresini 60 dakika olarak ayarlayın ve **Oluştur** ' u seçin.
+1. Oluşturulan **SAS belirteci bağlantı dizesini** kopyalayın, bu değeri öğreticide daha sonra kullanırsınız.
 
 ## <a name="clone-sample-repo"></a>Örnek depoyu Kopyala
 
@@ -80,7 +80,7 @@ Kodu oluşturup çalıştırmadan önce IoT Hub 'ınızın ve cihazınızın ayr
 
 Örnek kodu Visual Studio 'da görüntülemek için, *ıotmqttsample\src\windows* klasöründeki *MQTTWin32. sln* çözüm dosyasını açın.
 
-**Çözüm Gezgini**' de, **TelemetryMQTTWin32** projesine sağ tıklayın ve **Başlangıç projesi olarak ayarla**' yı seçin.
+**Çözüm Gezgini** ' de, **TelemetryMQTTWin32** projesine sağ tıklayın ve **Başlangıç projesi olarak ayarla** ' yı seçin.
 
 **TelemetryMQTTWin32** projesinde **MQTT_Mosquitto. cpp** kaynak dosyasını açın. Bağlantı bilgileri tanımlarını cihaz ayrıntılarıyla güncelleştirin daha önce bir değişiklik yaptınız. Belirteç dizesi yer tutucularını şu şekilde değiştirin:
 
@@ -96,7 +96,7 @@ Uygulamayı çalıştırın (CTRL + F5), birkaç saniye sonra aşağıdaki gibi 
 
 Azure IoT Explorer 'da, cihazın IoT Tak ve Kullan cihazı olmadığını görebilirsiniz:
 
-:::image type="content" source="media/tutorial-use-mqtt/non-pnp-iot-explorer.png" alt-text="MQTT örnek uygulamasından çıkış":::
+:::image type="content" source="media/tutorial-use-mqtt/non-pnp-iot-explorer.png" alt-text="Azure IoT Explorer 'da IoT olmayan Tak ve Kullan cihaz":::
 
 ### <a name="make-the-device-an-iot-plug-and-play-device"></a>Cihazı IoT Tak ve Kullan cihazı yapın
 
@@ -117,11 +117,11 @@ Bu örnekte, MQTT bağlantı paketine bir model KIMLIĞI eklersiniz. Model KIMLI
 
 Cihaz ikizi Şu anda model KIMLIĞINI içermektedir:
 
-:::image type="content" source="media/tutorial-use-mqtt/model-id-iot-explorer.png" alt-text="MQTT örnek uygulamasından çıkış":::
+:::image type="content" source="media/tutorial-use-mqtt/model-id-iot-explorer.png" alt-text="Azure IoT Explorer 'da model KIMLIĞINI görüntüleme":::
 
 Artık IoT Tak ve Kullan bileşenine gidebilirsiniz:
 
-:::image type="content" source="media/tutorial-use-mqtt/components-iot-explorer.png" alt-text="MQTT örnek uygulamasından çıkış":::
+:::image type="content" source="media/tutorial-use-mqtt/components-iot-explorer.png" alt-text="Azure IoT Explorer 'da bileşenleri görüntüleme":::
 
 Artık, modelinizde tanımlanan telemetri, özellik ve komutları uygulamak için cihaz kodunuzu değiştirebilirsiniz. Mosquıto kitaplığını kullanarak termostat cihazının örnek bir uygulamasını görmek için bkz. GitHub 'da [Windows üzerinde ıOT SDK olmadan Azure ıothub Ile MQTT PNP kullanma](https://github.com/Azure-Samples/IoTMQTTSample/tree/master/src/Windows/PnPMQTTWin32) .
 

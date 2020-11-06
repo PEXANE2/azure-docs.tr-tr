@@ -11,12 +11,12 @@ ms.custom: mvc, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 9fe1363ffc714754c1de333a77d36595ce4223e6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 737810a7d07d0d97b2e42acffa17fdd32986c48b
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442346"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421099"
 ---
 # <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>Öğretici: Azure AD B2C ile tek sayfalı bir uygulamadan Node.js Web API 'sine koruma ve erişim izni verme
 
@@ -56,11 +56,11 @@ Kapsamlar korumalı kaynaklara erişimi yönetmenin bir yolunu sunar. Kapsamlar 
 
 Başka bir uygulamadan korumalı bir Web API 'SI çağırmak için, bu uygulama izinlerini Web API 'sine vermeniz gerekir.
 
-Önkoşul öğreticisinde, *WebApp1*adlı bir Web uygulaması oluşturdunuz. Bu öğreticide, *webapi1*önceki bir bölümünde oluşturduğunuz Web API 'sini çağırmak için bu uygulamayı yapılandırırsınız.
+Önkoşul öğreticisinde, *spaapp1* adlı tek sayfalı bir uygulama oluşturdunuz. Bu öğreticide, *spaapp1* önceki bir bölümünde oluşturduğunuz Web API 'sini çağırmak için bu uygulamayı yapılandırırsınız.
 
 [!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
-Tek sayfalı web uygulamanıza, belirtilen kapsamlar için korunan Web API 'sine izin verildi. Bir kullanıcı tek sayfalı uygulamayı kullanmak üzere Azure AD B2C kimliğini doğrular. Tek sayfalı uygulama, Azure AD B2C tarafından döndürülen bir erişim belirteciyle korunan Web API 'sine erişmek için yetkilendirme verme akışını kullanır.
+Tek sayfalı web uygulamanıza, belirtilen kapsamlar için korunan Web API 'sine izin verildi. Bir kullanıcı tek sayfalı uygulamayı kullanmak üzere Azure AD B2C kimliğini doğrular. Tek sayfalı uygulama, korumalı Web API 'sine erişmek için Azure AD B2C bir erişim belirteci alır.
 
 ## <a name="configure-the-sample"></a>Örneği yapılandırma
 
@@ -137,7 +137,7 @@ Bu öğreticiyi izlediğinizde her iki uygulama da yerel olarak çalışıyor ol
 
 ### <a name="run-the-nodejs-web-api"></a>Node.js Web API 'sini çalıştırma
 
-1. Bir konsol penceresi açın ve Node.js Web API örneğini içeren dizine geçin. Örneğin:
+1. Bir konsol penceresi açın ve Node.js Web API örneğini içeren dizine geçin. Örnek:
 
     ```console
     cd active-directory-b2c-javascript-nodejs-webapi
@@ -158,10 +158,10 @@ Bu öğreticiyi izlediğinizde her iki uygulama da yerel olarak çalışıyor ol
 
 ### <a name="run-the-single-page-app"></a>Tek sayfalı uygulamayı çalıştırma
 
-1. Başka bir konsol penceresi açın ve JavaScript SPA örneğini içeren dizine geçin. Örneğin:
+1. Başka bir konsol penceresi açın ve JavaScript SPA örneğini içeren dizine geçin. Örnek:
 
     ```console
-    cd active-directory-b2c-javascript-msal-singlepageapp
+    cd ms-identity-b2c-javascript-spa
     ```
 
 1. Aşağıdaki komutları çalıştırın:

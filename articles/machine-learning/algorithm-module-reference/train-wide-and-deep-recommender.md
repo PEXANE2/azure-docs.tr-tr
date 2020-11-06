@@ -1,7 +1,7 @@
 ---
 title: Eğitme geniş & derin öneren modülünü kullanın
 titleSuffix: Azure Machine Learning
-description: Bir öneri modelini eğmek için tren genelinde & derin öneren modülünü kullanmayı öğrenin.
+description: Öneri modelini eğmek için Azure Machine Learning tasarımcısında eğitme geniş & derin öneren modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: a548a1aa6b7c6382d00e218f1b61347002df2b38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce713167272c9e97754fdf6f6d065519aaea3d15
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907778"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421184"
 ---
 # <a name="train-wide--deep-recommender"></a>Geniş kapsamlı & öneren eğitimi
 Bu makalede, bir öneri modelini eğmek için Azure Machine Learning tasarımcısında **eğitme geniş & derin öneren** modülünün nasıl kullanılacağı açıklanır. Bu modül, Google tarafından önerilen geniş & derinlemesine öğrenmeyi temel alır.
@@ -30,7 +30,7 @@ Bu makalede, bir öneri modelini eğmek için Azure Machine Learning tasarımcı
 + İlki, her iki Kullanıcı ve öğe için özellikleri kullanan **içerik tabanlı** yaklaşımdır. Kullanıcılar Age ve cinsiyet gibi özelliklerle açıklanabilir ve öğeler yazar ve üretici gibi özelliklerle açıklanabilir. İçerik tabanlı öneri sistemlerinin tipik örnekleri, sosyal eşleştirme sitelerinde bulunabilir. 
 + İkinci yaklaşım, yalnızca kullanıcıların ve öğelerin tanımlayıcılarını kullanan ve bu varlıklar hakkındaki örtük bilgileri, kullanıcılar tarafından verilen derecelendirmelerin (seyrek) matrisinden elde eden **ortak filtrelemedir**. Derecelendirdikleri öğelerden ve aynı öğeleri derecelendirdiğiniz diğer kullanıcılardan bir kullanıcı hakkında bilgi edinebilirsiniz.  
 
-Geniş & derin öneren, bu yaklaşımları, içerik tabanlı bir yaklaşım ile işbirliğine dayalı filtreleme kullanarak birleştirir. Bu nedenle **karma öneren**olarak değerlendirilir. 
+Geniş & derin öneren, bu yaklaşımları, içerik tabanlı bir yaklaşım ile işbirliğine dayalı filtreleme kullanarak birleştirir. Bu nedenle **karma öneren** olarak değerlendirilir. 
 
 Bu nasıl çalışır: bir kullanıcının sisteme görece yeni olduğu durumlarda, kullanıcı hakkındaki Özellik bilgileri kullanılarak tahminler geliştirilmiştir ve bu sayede iyi bilinen "soğuk-başlatma" sorununu ele alınır. Bununla birlikte, belirli bir kullanıcıdan yeterli sayıda derecelendirme topladıktan sonra, kendi özellikleri yerine kendilerine özgü derecelendirmelere göre tamamen kişiselleştirilmiş tahminler yapmak mümkündür. Bu nedenle, içerik tabanlı önerilerden, işbirliğine dayalı filtreleme temelinde önerilere yönelik kesintisiz bir geçiş vardır. Kullanıcı veya öğe özellikleri kullanılabilir olmasa bile, geniş & derin öneren işbirliği filtreleme modunda çalışmaya devam edecektir.  
 
@@ -88,50 +88,50 @@ Bir örnek için, öğe özelliklerinin tipik bir kümesi şöyle görünebilir:
   
 2. Kullanıcı özellikleri ve/veya öğe özelliklerinin ayrı bir veri kümeniz varsa, bunları **eğime ve derin öneren** modülüne bağlayın.  
   
-    - **Kullanıcı özellikleri veri kümesi**: kullanıcıları açıklayan veri kümesini ikinci girişe bağlama.
-    - **Öğe özellikleri veri kümesi**: öğeleri açıklayan veri kümesini üçüncü girişe bağlama.  
+    - **Kullanıcı özellikleri veri kümesi** : kullanıcıları açıklayan veri kümesini ikinci girişe bağlama.
+    - **Öğe özellikleri veri kümesi** : öğeleri açıklayan veri kümesini üçüncü girişe bağlama.  
     
-3.  **Dönemler**: algoritmanın tüm eğitim verilerini kaç kez işlemesi gerektiğini belirtin. 
+3.  **Dönemler** : algoritmanın tüm eğitim verilerini kaç kez işlemesi gerektiğini belirtin. 
 
     Bu sayı arttıkça eğitim daha uygun olur; Bununla birlikte, eğitim maliyetleri daha uzun sürebilir ve çok fazla yol açabilir.
 
-4. **Toplu iş boyutu**: bir eğitim adımında kullanılan eğitim örneklerinin sayısını yazın. 
+4. **Toplu iş boyutu** : bir eğitim adımında kullanılan eğitim örneklerinin sayısını yazın. 
 
      Bu hiper parametre eğitim hızını etkileyebilir. Daha yüksek bir toplu iş boyutu, daha az bir süre maliyet dönemi doğurur, ancak Yakınsama süresini artırabilir. Toplu iş GPU/CPU 'ya sığmayacak kadar büyük ise, bir bellek hatası ortaya çıkabilir.
 
-5.  **Geniş bölüm iyileştirici**: degradeleri modelin geniş bir bölümüne uygulamak için bir iyileştirici seçin.
+5.  **Geniş bölüm iyileştirici** : degradeleri modelin geniş bir bölümüne uygulamak için bir iyileştirici seçin.
 
-6.  **Geniş iyileştirici öğrenme oranı**: geniş kapsamlı bölüm iyileştiricinin öğrenme oranını tanımlayan 0,0 ile 2,0 arasında bir sayı girin.
+6.  **Geniş iyileştirici öğrenme oranı** : geniş kapsamlı bölüm iyileştiricinin öğrenme oranını tanımlayan 0,0 ile 2,0 arasında bir sayı girin.
 
     Bu hyperparameter, en az bir kayıp işlevine hareket ederken her eğitim adımındaki adım boyutunu belirler. Çok büyük bir öğrenme hızı, çok küçük bir öğrenme oranının yakınsama sorununa neden olabileceğinden, Mini olarak öğrenmenin hızlı bir şekilde öğrenmesine neden olabilir.
 
-7.  **Çapraz özellik boyutu**: istenen kullanıcı kimliklerini ve öğe kimliği özelliklerini girerek boyutu yazın. 
+7.  **Çapraz özellik boyutu** : istenen kullanıcı kimliklerini ve öğe kimliği özelliklerini girerek boyutu yazın. 
 
     Geniş & derin öneren, Kullanıcı kimliği ve öğe kimliği özellikleri üzerinden varsayılan olarak ürün içi dönüştürme gerçekleştirir. Çapraz sonuç, boyutun sağlamak için bu sayıya göre karma hale getirilir.
 
-8.  **Derin bölüm iyileştirici**: degradeleri modelin derin bölümüne uygulamak için bir iyileştirici seçin.
+8.  **Derin bölüm iyileştirici** : degradeleri modelin derin bölümüne uygulamak için bir iyileştirici seçin.
 
-9.  **Derin iyileştirici öğrenme oranı**: derin parçalı iyileştiricinin öğrenme oranını tanımlayan 0,0 ile 2,0 arasında bir sayı girin.
+9.  **Derin iyileştirici öğrenme oranı** : derin parçalı iyileştiricinin öğrenme oranını tanımlayan 0,0 ile 2,0 arasında bir sayı girin.
 
-10.  **Kullanıcı ekleme boyutu**: Kullanıcı kimliği ekleme boyutunu belirtmek için bir tamsayı yazın.
+10.  **Kullanıcı ekleme boyutu** : Kullanıcı kimliği ekleme boyutunu belirtmek için bir tamsayı yazın.
 
      Geniş & derin öneren, hem geniş hem de ayrıntılı bölüm için paylaşılan kullanıcı kimliği ve öğe kimliği katıştırıcıyı oluşturur.
 
-11.  **Öğe katıştırma boyutu**: öğe kimliği katıştırma boyutunu belirtmek için bir tamsayı yazın.
+11.  **Öğe katıştırma boyutu** : öğe kimliği katıştırma boyutunu belirtmek için bir tamsayı yazın.
 
-12.  **Kategorik özellikler ekleme boyutu**: kategorik Özellik katlamaları boyutunu belirtmek için bir tamsayı girin.
+12.  **Kategorik özellikler ekleme boyutu** : kategorik Özellik katlamaları boyutunu belirtmek için bir tamsayı girin.
 
      Geniş kapsamlı & derin öneren, her kategorik özellik için bir katıştırma vektörü öğrendi. Ve bu ekleme vektörleri aynı boyutu paylaşır.
 
-13.  **Gizli birimler**: derin bileşenin gizli düğümlerinin sayısını yazın. Her katmandaki düğüm sayısı virgülle ayrılır. Örneğin, "1.000.500.100" türüne göre derin bileşenin üç katman olduğunu belirtirsiniz ve en son katmanın ilk katmanında 1000 düğüm, 500 düğümleri ve 100 düğümleri bulunur.
+13.  **Gizli birimler** : derin bileşenin gizli düğümlerinin sayısını yazın. Her katmandaki düğüm sayısı virgülle ayrılır. Örneğin, "1.000.500.100" türüne göre derin bileşenin üç katman olduğunu belirtirsiniz ve en son katmanın ilk katmanında 1000 düğüm, 500 düğümleri ve 100 düğümleri bulunur.
 
-14.  **Etkinleştirme işlevi**: her katmana uygulanan bir etkinleştirme işlevi seçin, varsayılan değer Relu olur.
+14.  **Etkinleştirme işlevi** : her katmana uygulanan bir etkinleştirme işlevi seçin, varsayılan değer Relu olur.
 
-15.  **Dropout**: eğitim sırasında her bir katmanda çıkışların hangi olasılığa bırakılacağını öğrenmek için 0,0 ile 1,0 arasında bir sayı girin.
+15.  **Dropout** : eğitim sırasında her bir katmanda çıkışların hangi olasılığa bırakılacağını öğrenmek için 0,0 ile 1,0 arasında bir sayı girin.
 
      Dropout, sinir ağlarının fazla yer almasını önleyen bir düzenleme yöntemidir. Bu değer için yaygın olarak kullanılan bir karar, çok sayıda ağ ve görev için en iyi şekilde yakın olan 0,5 ile başlamadır.
 
-16.  **Toplu normalleştirme**: derin bileşendeki her gizli katmandan sonra toplu normalleştirmeyi kullanmak için bu seçeneği belirleyin.
+16.  **Toplu normalleştirme** : derin bileşendeki her gizli katmandan sonra toplu normalleştirmeyi kullanmak için bu seçeneği belirleyin.
 
      Toplu normalleştirme, ağ eğitimi sırasında iç birlikte bulunan kaydırma sorununu ortadan kaldırmaya yönelik bir tekniktir. Genel olarak, ağların hızını, performansını ve kararlılığını artırmaya yardımcı olabilir. 
 
