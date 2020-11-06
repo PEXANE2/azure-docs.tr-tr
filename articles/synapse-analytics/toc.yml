@@ -14,8 +14,9 @@
     - name: Sürüm notları
       href: release-notes.md
 - name: Hızlı Başlangıçlar
+  expanded: true
   items:
-    - name: Giriş
+    - name: Kullanmaya başlayın
       href: get-started.md
       displayName: 'get, started, quickstart'
     - name: 1 Synapse çalışma alanı oluşturma
@@ -170,7 +171,9 @@
           href: sql/overview-features.md
         - name: Kaynak tüketimi modelleri
           href: sql/resource-consumption-models.md
-        - name: Sunucusuz SQL havuzu için en iyi yöntemler
+        - name: İşlenen veriler
+          href: sql/data-processed.md
+        - name: İsteğe bağlı SQL en iyi yöntemleri
           href: sql/best-practices-sql-on-demand.md
         - name: Ayrılmış SQL havuzu için en iyi yöntemler
           href: sql/best-practices-sql-pool.md

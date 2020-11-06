@@ -11,14 +11,14 @@
 - name: Öğreticiler
   items:
     - name: Dinamik grup oluşturma
-      href: /azure/active-directory/enterprise-users/users-revoke-access
+      href: ../enterprise-users/users-revoke-access.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
 - name: Kavramlar
   expanded: true
   items:
     - name: Azure AD yönetici rollerini devretme
       href: concept-delegation.md
     - name: Varsayılan kullanıcı izinlerini karşılaştırma
-      href: /azure/active-directory/fundamentals/users-default-permissions
+      href: ../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
     - name: Azure ile Azure AD rollerini karşılaştırma
       href: ../../role-based-access-control/rbac-and-directory-admin-roles.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
     - name: Azure AD’deki yönetim birimlerini anlama
@@ -29,15 +29,15 @@
     - name: Kullanıcılar ve roller
       items:
         - name: Kullanıcıları yönetici rollerine atama
-          href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal
+          href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
         - name: Kullanıcının erişimini iptal etme
-          href: /azure/active-directory/enterprise-users/users-revoke-access
+          href: ../enterprise-users/users-revoke-access.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
         - name: Konuk kullanıcıya rol atama
-          href: /azure/active-directory/b2b/add-guest-to-role?context=azure/active-directory/roles/context/ugr-context
+          href: ../b2b/add-guest-to-role.md?context=azure/active-directory/roles/context/ugr-context
         - name: Konuk kullanıcının erişimini kısıtlama
-          href: /azure/active-directory/enterprise-users/users-restrict-guest-permissions?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+          href: ../enterprise-users/users-restrict-guest-permissions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
         - name: Dinamik gruplar ve konuklar
-          href: /azure/active-directory/b2b/use-dynamic-groups?context=azure/active-directory/roles/context/ugr-context
+          href: ../b2b/use-dynamic-groups.md?context=azure/active-directory/roles/context/ugr-context
     - name: Roller ve izinler
       expanded: true
       items:
@@ -57,7 +57,7 @@
         - name: Özel rol atamalarını görüntüleme
           href: custom-view-assignments.md
         - name: Azure portalda özel roller atama
-          href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal
+          href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
         - name: PowerShell'de özel roller atama
           href: custom-assign-powershell.md
         - name: Kurumsal uygulamalar için özel roller atama
@@ -111,7 +111,7 @@
     - name: Sorun giderme
       items:
         - name: Azure AD için destek alma
-          href: /azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto
+          href: ../fundamentals/active-directory-troubleshooting-support-howto.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
 - name: Başvuru
   items:
     - name: Göreve göre en az ayrıcalıklı roller
@@ -125,4 +125,4 @@
     - name: Graph için Azure AD PowerShell
       href: /powershell/azure/active-directory/install-adv2?view=azureadps-2.0
     - name: Azure AD hizmet sınırlamaları
-      href: /azure/active-directory/enterprise-users/directory-service-limits-restrictions
+      href: ../enterprise-users/directory-service-limits-restrictions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context

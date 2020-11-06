@@ -662,6 +662,8 @@
               href: how-to-time-to-live.md
             - name: Benzersiz anahtarlar tanımlama
               href: how-to-define-unique-keys.md
+            - name: İşlemsel toplu işlemler gerçekleştirme
+              href: transactional-batch.md
         - name: Performans
           items:
             - name: Sorgu
@@ -753,8 +755,6 @@
               href: create-sql-api-java-changefeed.md
         - name: Sunucu tarafı programlama
           items:
-            - name: İşlemsel toplu işlemler gerçekleştirme
-              href: transactional-batch.md
             - name: 'Saklı yordamları, tetikleyicileri ve UDF''leri yazma'
               href: how-to-write-stored-procedures-triggers-udfs.md
             - name: JavaScript sorgu API’si ile saklı yordamlar ve tetikleyiciler yazma

@@ -4,6 +4,10 @@
   items:
     - name: Lab Services Hakkında
       href: lab-services-overview.md
+- name: Hızlı Başlangıçlar
+  items:
+    - name: Kullanmaya başlayın
+      href: get-started-manage-labs.md
 - name: Öğreticiler
   items:
     - name: Bir laboratuvar hesabı ayarlama

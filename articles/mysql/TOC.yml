@@ -29,6 +29,9 @@
     - name: Veritabanı bozulmasını azaltma
       href: how-to-fix-corrupt-database.md
       displayName: corrupt data
+    - name: Sürüm ilkesi
+      href: concepts-version-policy.md
+      displayName: version policy
 - name: Tek sunucu
   expanded: true
   items:
