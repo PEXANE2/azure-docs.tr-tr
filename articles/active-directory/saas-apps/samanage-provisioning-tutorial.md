@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 2f694c5a089245a29aaf0e493542fc7f4fce46f7
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 5cdc36c20cbba148bb68bda700f5fdccbc593caf
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675440"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353008"
 ---
 # <a name="tutorial-configure-solarwinds-service-desk-previously-samanage-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için SolarWinds Service Desk (daha önce Samanage) yapılandırma
 
@@ -33,7 +33,7 @@ SolarWinds Service Desk ile mevcut bir tümleştirmeye sahipseniz, yaklaşan de�
 
 #### <a name="what-do-i-need-to-do-to-migrate-my-existing-custom-integration-to-the-new-application"></a>Mevcut özel tümleştirmem yeni uygulamaya geçirmek için ne yapmam gerekir?
 
-Geçerli yönetici kimlik bilgileriyle mevcut bir SolarWinds Service Desk tümleştirmesi varsa, herhangi bir **eylem gerekmez** . Müşterileri otomatik olarak yeni uygulamaya geçiririz. Bu işlem arka planda tamamen yapılır. Mevcut kimlik bilgilerinin süreleri dolarsa veya uygulamaya yeniden erişim yetkisi vermeniz gerekiyorsa, uzun süreli bir gizli belirteç oluşturmanız gerekir. Yeni bir belirteç oluşturmak için bu makalenin 2. adımına bakın.
+Geçerli yönetici kimlik bilgileriyle mevcut bir SolarWinds Service Desk tümleştirmesi varsa, herhangi bir **eylem gerekmez**. Müşterileri otomatik olarak yeni uygulamaya geçiririz. Bu işlem arka planda tamamen yapılır. Mevcut kimlik bilgilerinin süreleri dolarsa veya uygulamaya yeniden erişim yetkisi vermeniz gerekiyorsa, uzun süreli bir gizli belirteç oluşturmanız gerekir. Yeni bir belirteç oluşturmak için bu makalenin 2. adımına bakın.
 
 
 #### <a name="how-can-i-tell-if-my-application-has-been-migrated"></a>Uygulamamın geçirilip geçirilmeyeceğini nasıl anlayabilirim? 
@@ -49,7 +49,7 @@ Uygulamanız geçirildiğinde, yönetici **kimlik bilgileri** bölümünde **Yö
 > * SolarWinds Service Desk 'te grupları ve grup üyeliklerini sağlama
 > * SolarWinds Service Desk ['Te çoklu oturum açma](./samanage-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 

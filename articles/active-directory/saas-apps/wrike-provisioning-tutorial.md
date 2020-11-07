@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: 76b5f279294dda0d2b1c01bf8cdd803390b04cec
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 53b1db1a8c4da59055c0af5f448fa0c8a6933daf
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520039"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354315"
 ---
 # <a name="tutorial-configure-wrike-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Wrike yapılandırma
 
@@ -52,7 +52,7 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 Azure AD ile otomatik Kullanıcı sağlaması için Wrike 'yi yapılandırmadan önce, Wrike üzerinde etki alanları arası kimlik yönetimi (SCıM) sağlama sistemini etkinleştirmeniz gerekir.
 
-1. [Wrike Yönetici konsolunuza](https://www.Wrike.com/login/)oturum açın. Kiracı KIMLIĞINIZE gidin. **Tümleştirmeler & uygulamalar**' ı seçin.
+1. [Wrike Yönetici konsolunuza](https://www.Wrike.com/login/)oturum açın. Kiracı KIMLIĞINIZE gidin. **Tümleştirmeler & uygulamalar** ' ı seçin.
 
     ![Tümleştirme & uygulamalar](media/Wrike-provisioning-tutorial/admin.png)
 
@@ -60,11 +60,11 @@ Azure AD ile otomatik Kullanıcı sağlaması için Wrike 'yi yapılandırmadan 
 
     ![Azure AD](media/Wrike-provisioning-tutorial/Capture01.png)
 
-3.  SCıM öğesini seçin. **Temel URL 'yi**kopyalayın.
+3.  SCıM öğesini seçin. **Temel URL 'yi** kopyalayın.
 
     ![Temel URL](media/Wrike-provisioning-tutorial/Wrike-tenanturl.png)
 
-4. **API**  >  **Azure SCIM öğesini**seçin.
+4. **API**  >  **Azure SCIM öğesini** seçin.
 
     ![Azure SCıM](media/Wrike-provisioning-tutorial/Wrike-add-scim.png)
 
@@ -72,7 +72,7 @@ Azure AD ile otomatik Kullanıcı sağlaması için Wrike 'yi yapılandırmadan 
 
     ![Wrike oluşturma belirteci](media/Wrike-provisioning-tutorial/password.png)
 
-6.  Gizli dizi **belirtecini**kopyalayın ve Azure AD 'ye yapıştırın. Yazma kurulumunu sona **kazanmak Için kaydet** ' i seçin.
+6.  Gizli dizi **belirtecini** kopyalayın ve Azure AD 'ye yapıştırın. Yazma kurulumunu sona **kazanmak Için kaydet** ' i seçin.
 
     ![Kalıcı erişim belirteci](media/Wrike-provisioning-tutorial/Wrike-create-token.png)
 
@@ -83,11 +83,11 @@ Azure AD ile otomatik Kullanıcı sağlaması için Wrike yapılandırmadan önc
 
 Azure AD Uygulama Galerisi 'nden Wrike eklemek için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com), sol gezinti bölmesinde **Azure Active Directory**' ı seçin.
+1. [Azure Portal](https://portal.azure.com), sol gezinti bölmesinde **Azure Active Directory** ' ı seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -95,7 +95,7 @@ Azure AD Uygulama Galerisi 'nden Wrike eklemek için aşağıdaki adımları izl
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Wrike**yazın, sonuçlar panelinde **Wrike** ' ı seçin ve ardından uygulamayı eklemek için **Ekle** ' yi seçin.
+4. Arama kutusuna **Wrike** yazın, sonuçlar panelinde **Wrike** ' ı seçin ve ardından uygulamayı eklemek için **Ekle** ' yi seçin.
 
     ![Sonuçlar listesinde Wrike](common/search-new-app.png)
 
@@ -109,11 +109,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni Azure AD 'de Kullanıcı veya grup a
 
 ### <a name="configure-automatic-user-provisioning-for-wrike-in-azure-ad"></a>Azure AD 'de Wrike için otomatik Kullanıcı sağlamayı yapılandırma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Kurumsal uygulamalar**  >  **tüm uygulamalar** ' ı seçin.
 
     ![Tüm uygulamalar](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Wrike**öğesini seçin.
+2. Uygulamalar listesinde **Wrike** öğesini seçin.
 
     ![Uygulamalar listesindeki Wrike bağlantısı](common/all-applications.png)
 
@@ -121,11 +121,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni Azure AD 'de Kullanıcı veya grup a
 
     ![Hazırlama sekmesi](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Sağlama modu otomatik olarak ayarlandı](common/provisioning-automatic.png)
 
-5. Yönetici kimlik bilgileri bölümünde, sırasıyla **kiracı URL 'si** ve **gizli belirteç**içinde alınan **temel URL** 'yi ve **kalıcı erişim belirteci** değerlerini girin. Azure AD 'nin Wrike 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' yı seçin. Bağlantı başarısız olursa, Wrike hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. Yönetici kimlik bilgileri bölümünde, sırasıyla **kiracı URL 'si** ve **gizli belirteç** içinde alınan **temel URL** 'yi ve **kalıcı erişim belirteci** değerlerini girin. Azure AD 'nin Wrike 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' yı seçin. Bağlantı başarısız olursa, Wrike hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -133,9 +133,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni Azure AD 'de Kullanıcı veya grup a
 
     ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-8. **Kaydet**’i seçin.
+8. **Kaydet** ’i seçin.
 
-9. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Wrike olarak eşitler**' ı seçin.
+9. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Wrike olarak eşitler** ' ı seçin.
 
     ![Wrike Kullanıcı eşlemeleri](media/Wrike-provisioning-tutorial/Wrike-user-mappings.png)
 
@@ -153,7 +153,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni Azure AD 'de Kullanıcı veya grup a
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-14. Sağlamaya hazırsanız **Kaydet**' i seçin.
+14. Sağlamaya hazırsanız **Kaydet** ' i seçin.
 
     ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 

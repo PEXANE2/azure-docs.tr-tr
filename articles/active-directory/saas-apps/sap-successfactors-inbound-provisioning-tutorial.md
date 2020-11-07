@@ -6,16 +6,16 @@ author: cmmdesai
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: d57afbe2ebdde7755eec659f56e402315a60ec7d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 53707261070e8efbd014614ee700df63a0925ef8
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676612"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94352736"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>Öğretici: Kullanıcı sağlamasını Active Directory için SAP başarılı faktörleri yapılandırma 
 Bu öğreticinin amacı, kullanıcıları başarıyla Active Directory (AD) ve Azure AD 'ye, isteğe bağlı e-posta adresi olarak başarılı bir şekilde geri yazma işlemi ile Azure AD 'ye sağlamak için gerçekleştirmeniz gereken adımları gösteriyoruz. 
@@ -247,7 +247,7 @@ Bu adımda, başarılı faktörlerle bağlantı kurmaya ve Azure portal Active D
 
    * **Yönetici parolası –** Başarılı etken API 'SI Kullanıcı hesabının parolasını girin. 
 
-   * **Kiracı URL 'si –** Başarılı olan OData API hizmetleri uç noktasının adını girin. Yalnızca http veya https olmayan sunucunun ana bilgisayar adını girin. Bu değer şöyle görünmelidir: **<api-Server-name>. SuccessFactors.com** .
+   * **Kiracı URL 'si –** Başarılı olan OData API hizmetleri uç noktasının adını girin. Yalnızca http veya https olmayan sunucunun ana bilgisayar adını girin. Bu değer şöyle görünmelidir: **<api-Server-name>. SuccessFactors.com**.
 
    * **Active Directory orman-** Active Directory etki alanının "adı", aracıyla birlikte kaydedilir. Sağlama için hedef etki alanını seçmek üzere açılan menüyü kullanın. Bu değer genellikle şöyle bir dizedir: *contoso.com*
 

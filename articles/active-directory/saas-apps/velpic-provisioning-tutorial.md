@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: zhchia
-ms.openlocfilehash: fbed4b888c48a518d9f10a91ff0494aa7bdc1843
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdd4fb96a42d154ccd8b508950283978ddf58ef4
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88532373"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354912"
 ---
 # <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Velpıc yapılandırma
 
@@ -62,11 +62,11 @@ Bu bölümde, Azure AD 'nizi Velpıc 'nin Kullanıcı hesabı sağlama API 'sine
 
 3. Velpic örneğinizi seçin, sonra **sağlama** sekmesini seçin.
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Velpıc sağlama](./media/velpic-provisioning-tutorial/Velpic1.png)
 
-5. **Yönetici kimlik bilgileri** bölümünün altında, bir Velpıc 'Nin **gizli belirteç&kiracı URL 'sini** girin. (Bu değerleri, Velpıc hesabınız altında bulabilirsiniz: **Yönet**  >  **Tümleştirme**  >  **Eklenti**  >  **SCIM**)
+5. **Yönetici kimlik bilgileri** bölümünün altında, bir Velpıc 'Nin **gizli belirteç&kiracı URL 'sini** girin. (Bu değerleri, Velpıc hesabınız altında bulabilirsiniz: **Yönet**  >  **Tümleştirme**  >  **Eklenti**  >  **SCIM** )
 
     ![Yetkilendirme değerleri](./media/velpic-provisioning-tutorial/Velpic2.png)
 
@@ -74,15 +74,15 @@ Bu bölümde, Azure AD 'nizi Velpıc 'nin Kullanıcı hesabı sağlama API 'sine
 
 7. **Bildirim e-postası** alanında sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve aşağıdaki onay kutusunu işaretleyin.
 
-8. **Kaydet**’e tıklayın.
+8. **Kaydet** ’e tıklayın.
 
-9. Eşlemeler bölümünde **Azure Active Directory Kullanıcıları Velpıc olarak eşitler**' ı seçin.
+9. Eşlemeler bölümünde **Azure Active Directory Kullanıcıları Velpıc olarak eşitler** ' ı seçin.
 
 10. **Öznitelik eşlemeleri** bölümünde, Azure AD 'Den velpıc 'e eşitlenecek Kullanıcı özniteliklerini gözden geçirin. Güncelleştirme işlemleri için, **eşleşen** özellikler olarak seçilen özniteliklerin, velpıc içindeki kullanıcı hesaplarıyla eşleştirmek için kullanılacağını unutmayın. Değişiklikleri uygulamak için Kaydet düğmesini seçin.
 
 11. Velpıc için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin
 
-12. **Kaydet**’e tıklayın.
+12. **Kaydet** ’e tıklayın.
 
 Bu, kullanıcılar ve Gruplar bölümünde Velpıc 'e atanan tüm Kullanıcı ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, hizmetin çalıştığı sürece yaklaşık 40 dakikada bir gerçekleşen sonraki eşitlemeler yerine daha uzun süreceğini unutmayın. İlerleme durumunu izlemek ve sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan etkinlik raporlarını sağlamak için bağlantıları izlemek üzere **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
 

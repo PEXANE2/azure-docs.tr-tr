@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: e5b008dd3d3a9d2422cca1fe00329543ed6d362f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 1b603dc4c31cb608a0840da78a2e987b3edd3c1e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517157"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353617"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için MediusFlow yapılandırma
 
@@ -76,35 +76,35 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
 4. Yapılandırmayı kaydedin.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/4-save-config.png" alt-text="MediusFlow yönetim konsolunun ekran görüntüsü. MediusFlow kiracı adı kutusu ve kimlik doğrula düğmesi ilk tümleştirme adımında vurgulanır." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/4-save-config.png" alt-text="Üçüncü tümleştirme adımını gösteren MediusFlow yönetim konsolunun ekran görüntüsü. Yapılandırma Kaydet düğmesi vurgulanır." border="false":::
 
-5. Kullanıcı hazırlama ' yı seçin ve **Tamam**' ı tıklatın.
+5. Kullanıcı hazırlama ' yı seçin ve **Tamam** ' ı tıklatın.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png" alt-text="MediusFlow yönetim konsolunun ekran görüntüsü. MediusFlow kiracı adı kutusu ve kimlik doğrula düğmesi ilk tümleştirme adımında vurgulanır." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png" alt-text="Bir beşinci tümleştirme adımını gösteren MediusFlow yönetim konsolunun ekran görüntüsü. Kullanıcı sağlamasını kullan ve Tamam düğmeleri vurgulanır." border="false":::
 
-6. **Gizli anahtar oluştur**' a tıklayın. Bu değeri kopyalayın ve kaydedin. Bu değer, Azure portal MediusFLow uygulamanızın **sağlama** sekmesindeki **gizli belirteç** alanına girilir.
+6. **Gizli anahtar oluştur** ' a tıklayın. Bu değeri kopyalayın ve kaydedin. Bu değer, Azure portal MediusFLow uygulamanızın **sağlama** sekmesindeki **gizli belirteç** alanına girilir.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/6-create-secret-1.png" alt-text="MediusFlow yönetim konsolunun ekran görüntüsü. MediusFlow kiracı adı kutusu ve kimlik doğrula düğmesi ilk tümleştirme adımında vurgulanır." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/6-create-secret-1.png" alt-text="MediusFlow yönetim konsolundaki Kullanıcı sağlama yapılandırması sekmesinin ekran görüntüsü. Gizli anahtar oluştur ve Kopyala düğmeleri vurgulanır." border="false":::
 
-7. **Tamam**' a tıklayın.
+7. **Tamam** ' a tıklayın.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/7-confirm-secret.png" alt-text="MediusFlow yönetim konsolunun ekran görüntüsü. MediusFlow kiracı adı kutusu ve kimlik doğrula düğmesi ilk tümleştirme adımında vurgulanır." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/7-confirm-secret.png" alt-text="MediusFlow yönetim konsolunun, kullanıcılara yeni bir gizli anahtar oluşturmak için Tamam ' a tıklamasını söyleyen bir bildirim ile ekran görüntüsü. Tamam düğmesi vurgulanır." border="false":::
 
-8. Daha önceden tanımlanmış roller, şirketler ve diğer genel yapılandırmalarla içeri aktarılan kullanıcıları MediusFlow 'da almak için, önce bunu yapılandırmanız gerekecektir. **Yeni yapılandırma Ekle ' ye**tıklayarak yapılandırmayı ekleyerek başlayın.
+8. Daha önceden tanımlanmış roller, şirketler ve diğer genel yapılandırmalarla içeri aktarılan kullanıcıları MediusFlow 'da almak için, önce bunu yapılandırmanız gerekecektir. **Yeni yapılandırma Ekle ' ye** tıklayarak yapılandırmayı ekleyerek başlayın.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png" alt-text="MediusFlow yönetim konsolunun ekran görüntüsü. MediusFlow kiracı adı kutusu ve kimlik doğrula düğmesi ilk tümleştirme adımında vurgulanır." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png" alt-text="MediusFlow yönetim konsolundaki Kullanıcı sağlama yapılandırması sekmesinin ekran görüntüsü. Yeni yapılandırma Ekle düğmesi vurgulanır." border="false":::
 
 9. Kullanıcılar için varsayılan ayarları sağlayın. Bu görünümde, varsayılan özniteliği ayarlamak mümkündür. Standart ayarlar tamam ise, yalnızca geçerli bir şirket adı sağlamak yeterlidir. Bu yapılandırma ayarları Mediusflow 'dan getirildiğinden, önce yapılandırılması gerekir. Daha fazla bilgi için bu makalenin **Önkoşullar** bölümüne bakın.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png" alt-text="MediusFlow yönetim konsolunun ekran görüntüsü. MediusFlow kiracı adı kutusu ve kimlik doğrula düğmesi ilk tümleştirme adımında vurgulanır." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png" alt-text="MediusFlow yeni yapılandırma Ekle penceresinin ekran görüntüsü. Yerel ayarlar, bir filtre ve Kullanıcı rolleri dahil olmak üzere birçok ayar görülebilir." border="false":::
 
 10. Kullanıcı yapılandırmasını kaydetmek için **Kaydet** ' e tıklayın.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/10-done-1.png" alt-text="MediusFlow yönetim konsolunun ekran görüntüsü. MediusFlow kiracı adı kutusu ve kimlik doğrula düğmesi ilk tümleştirme adımında vurgulanır." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/10-done-1.png" alt-text="MediusFlow yönetim konsolundaki Kullanıcı sağlama yapılandırması sekmesinin ekran görüntüsü. Kaydet düğmesi vurgulanır." border="false":::
 
-11. Kullanıcı sağlama bağlantısına ulaşmak için, **SCIM bağlantısını Kopyala bağlantısına**tıklayın. Bu değeri kopyalayın ve kaydedin. Bu değer, Azure portal MediusFLow uygulamanızın **sağlama** sekmesinde **kiracı URL 'si** alanına girilir.
+11. Kullanıcı sağlama bağlantısına ulaşmak için, **SCIM bağlantısını Kopyala bağlantısına** tıklayın. Bu değeri kopyalayın ve kaydedin. Bu değer, Azure portal MediusFLow uygulamanızın **sağlama** sekmesinde **kiracı URL 'si** alanına girilir.
  
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/11-get-scim-link.png" alt-text="MediusFlow yönetim konsolunun ekran görüntüsü. MediusFlow kiracı adı kutusu ve kimlik doğrula düğmesi ilk tümleştirme adımında vurgulanır." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/11-get-scim-link.png" alt-text="MediusFlow yönetim konsolundaki Kullanıcı sağlama yapılandırması sekmesinin ekran görüntüsü. Copy S C I M link düğmesi vurgulanır." border="false":::
 
 ## <a name="step-3-add-mediusflow-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden MediusFlow ekleme
 
@@ -114,7 +114,7 @@ Azure AD uygulama galerisinden MediusFlow ekleyerek MediusFlow 'a sağlamayı y�
 
 Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun özniteliklerine göre hazırlanacak kişilerin kapsamını belirlemenizi sağlar. Uygulamanız için hazırlanacak kişilerin kapsamını atamaya göre belirlemeyi seçerseniz kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Hazırlanacak kişilerin kapsamını yalnızca kullanıcı veya grup özniteliklerine göre belirlemeyi seçerseniz [burada](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) anlatılan kapsam belirleme filtresini kullanabilirsiniz. 
 
-* MediusFlow 'a Kullanıcı ve grup atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
+* MediusFlow 'a Kullanıcı ve grup atarken **varsayılan erişim** dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
 
 * Başlangıçta kapsamı sınırlı tutun. Herkesi hazırlamadan önce birkaç kullanıcı ve grupla test yapın. Sağlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında, uygulamaya bir veya iki kullanıcı veya grup atayarak bunu denetleyebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında [öznitelik tabanlı kapsam filtresi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) belirtebilirsiniz. 
 
@@ -125,11 +125,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-mediusflow-in-azure-ad"></a>Azure AD 'de MediusFlow için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Mediusflow**' u seçin.
+2. Uygulamalar listesinde **Mediusflow** ' u seçin.
 
     ![Uygulamalar listesindeki MediusFlow bağlantısı](common/all-applications.png)
 
@@ -137,11 +137,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünde **, kiracı URL 'si içinde daha**önce alınan kiracı URL 'si değerini girin. Gizli belirteç değerini **gizli belirteçte**daha önce alındı olarak girin. Azure AD 'nin MediusFlow 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, MediusFlow hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünde **, kiracı URL 'si içinde daha** önce alınan kiracı URL 'si değerini girin. Gizli belirteç değerini **gizli belirteçte** daha önce alındı olarak girin. Azure AD 'nin MediusFlow 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, MediusFlow hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
       ![Ekran görüntüsü, kiracı U R L ve gizli belirteç girebileceğiniz yönetici kimlik bilgileri iletişim kutusunu gösterir.](./media/mediusflow-provisioning-tutorial/provisioning.png)
 
@@ -149,9 +149,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’i seçin.
+7. **Kaydet** ’i seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları mediusflow ile eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları mediusflow ile eşitler** ' ı seçin.
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'Den MediusFlow 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için MediusFlow 'daki Kullanıcı hesaplarıyla eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](../app-provisioning/customize-application-attributes.md)değiştirmeyi seçerseniz, MediusFlow API 'sinin, bu özniteliğe göre kullanıcıların filtrelenmesini desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -168,7 +168,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
    |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Manager|Başvuru|
 
 
-10. **Eşlemeler** bölümünde, **Azure Active Directory grupları Mediusflow olarak eşitler**' ı seçin.
+10. **Eşlemeler** bölümünde, **Azure Active Directory grupları Mediusflow olarak eşitler** ' ı seçin.
 
 11. **Öznitelik eşleme** bölümünde Azure AD 'Den MediusFlow 'a eşitlenen grup özniteliklerini inceleyin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için MediusFlow grupları ile eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -188,7 +188,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

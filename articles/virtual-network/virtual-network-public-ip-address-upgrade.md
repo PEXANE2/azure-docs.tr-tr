@@ -1,5 +1,5 @@
 ---
-title: Ortak IP adreslerini yükselt
+title: Genel IP adreslerini yükseltme
 titleSuffix: Azure Virtual Network
 description: Genel IP adreslerini temel sunucudan standart sürümüne yükseltin.
 services: virtual-network
@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 10/07/2020
 ms.author: blehr
 ms.custom: references_regions
-ms.openlocfilehash: 791c9e8ea8f7c8ffbf9268af2b3a93f592a77f9e
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: a1bd303390626eaea71e588e325fedbd2d8fa4b9
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629760"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353365"
 ---
-# <a name="upgrade-public-ip-addresses"></a>Ortak IP adreslerini yükselt
+# <a name="upgrade-public-ip-addresses"></a>Genel IP adreslerini yükseltme
 
 Azure genel IP adresleri, işlevlerinin yönlerini (ayırma yöntemi, kullanılabilirlik alanları genelinde kullanım ve bunlarla ilişkilendirilebilen kaynakları dahil) belirleyen bir SKU 'SU (temel veya standart) ile oluşturulur. 
 
@@ -154,11 +154,18 @@ Orta Kuzey ABD<br>
 Batı ABD<br>
 Batı ABD 2<br>
 Norveç Doğu<br>
+Güney Afrika - Kuzey<br>
 Doğu ABD<br>
+North Europe<br>
+Güney Kore - Orta<br>
+Hindistan Orta<br>
 Doğu ABD 2<br>
 İsviçre Kuzey<br>
 Hindistan Batı<br>
-Almanya Kuzey
+Almanya Kuzey<br>
+Orta Kanada<br>
+Güney Fransa<br>
+Hindistan Batı
 
 * Temel bir genel IP 'yi yükseltmek için, herhangi bir Azure kaynağıyla ilişkilendirilemez.  Genel IP 'Lerin ilişkisini kaldırma hakkında daha fazla bilgi için lütfen [Bu sayfayı](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) gözden geçirin.  Benzer şekilde, bir Ayrılmış IP geçirmek için herhangi bir bulut hizmeti ile ilişkilendirilemez.  Ayrılmış IP 'Lerin ilişkisini kaldırma hakkında daha fazla bilgi için lütfen [Bu sayfayı](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm) gözden geçirin.  
 * Temel ve standart SKU 'ya yükseltilen genel IP 'Ler, hiçbir [kullanılabilirlik](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) alanına sahip olmaya devam eder ve bu nedenle bölge yedekli veya zonal olan bir Azure kaynağıyla ilişkilendirilemez.  Bu, yalnızca kullanılabilirlik alanları sunan bölgeler için geçerlidir.

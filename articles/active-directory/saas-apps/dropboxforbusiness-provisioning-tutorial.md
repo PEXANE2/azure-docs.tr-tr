@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: f1ad698ccacc2fee94c797a20a43744d4cafba76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7bbf9b199b15815127f0ecb26ae027ef7bfa52d2
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91305690"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94355473"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Iş Dropbox 'ı yapılandırma
 
@@ -28,7 +28,7 @@ Bu öğreticinin amacı, Kullanıcı ve/veya grupları otomatik olarak sağlamak
 > [!NOTE]
 > Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../app-provisioning/user-provisioning.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -42,11 +42,11 @@ Azure AD ile otomatik Kullanıcı sağlaması için Iş için Dropbox 'u Iş iç
 
 **Azure AD uygulama galerisinden Iş için Dropbox eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -54,7 +54,7 @@ Azure AD ile otomatik Kullanıcı sağlaması için Iş için Dropbox 'u Iş iç
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Ara kutusuna **iş Için Dropbox**' u girin, sonuçlar panelinde **iş için Dropbox** ' u seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Ara kutusuna **iş Için Dropbox** ' u girin, sonuçlar panelinde **iş için Dropbox** ' u seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
     ![Sonuç listesinde Iş için Dropbox](common/search-new-app.png)
 
@@ -81,11 +81,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
 ### <a name="to-configure-automatic-user-provisioning-for-dropbox-for-business-in-azure-ad"></a>Azure AD 'de Iş için Dropbox otomatik Kullanıcı sağlamasını yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **iş Için Dropbox**' u seçin.
+2. Uygulamalar listesinde, **iş Için Dropbox** ' u seçin.
 
     ![Uygulamalar listesinde Iş için Dropbox bağlantısı](common/all-applications.png)
 
@@ -93,11 +93,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
-5. **Yönetici Kimlik Bilgileri** bölümünde **Yetki Ver**'e tıklayın. Yeni bir tarayıcı penceresinde Iş oturum açma iletişim kutusu açılır.
+5. **Yönetici Kimlik Bilgileri** bölümünde **Yetki Ver** 'e tıklayın. Yeni bir tarayıcı penceresinde Iş oturum açma iletişim kutusu açılır.
 
     ![Sağlama ](common/provisioning-oauth.png)
 
@@ -109,13 +109,13 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Belirteç](common/provisioning-testconnection-oauth.png)
 
-8. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+8. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-9. **Kaydet**’e tıklayın.
+9. **Kaydet** ’e tıklayın.
 
-10. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Dropbox**' a eşitler ' ı seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Dropbox** ' a eşitler ' ı seçin.
 
     ![Dropbox Kullanıcı eşlemeleri](media/dropboxforbusiness-provisioning-tutorial/dropbox-user-mapping.png)
 
@@ -123,7 +123,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Dropbox Kullanıcı öznitelikleri](media/dropboxforbusiness-provisioning-tutorial/dropbox-user-attributes.png)
 
-12. **Eşlemeler** bölümünde **Azure Active Directory gruplarını Dropbox 'a eşitler**' ı seçin.
+12. **Eşlemeler** bölümünde **Azure Active Directory gruplarını Dropbox 'a eşitler** ' ı seçin.
 
     ![Dropbox grubu eşlemeleri](media/dropboxforbusiness-provisioning-tutorial/dropbox-group-mapping.png)
 
@@ -141,7 +141,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-17. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+17. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

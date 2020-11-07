@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1, automl
-ms.openlocfilehash: 825413421bc9025c2912bb790a3166c6e3d34a0f
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 435476bee4839d083e3fe6cb0aa635d5ca67c4c0
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421847"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94352583"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 
@@ -37,7 +37,7 @@ Otomatik makine öğreniminde kullanılabilen yapılandırma seçenekleri:
 
 Kod deneyimini tercih ediyorsanız, [Azure Machine Learning Studio 'da otomatik makine öğrenimi denemeleri de oluşturabilirsiniz](how-to-use-automated-ml-for-ml-models.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İhtiyacınız olan bu makalede, 
 * Azure Machine Learning çalışma alanı. Çalışma alanını oluşturmak için, bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
@@ -46,7 +46,7 @@ Kod deneyimini tercih ediyorsanız, [Azure Machine Learning Studio 'da otomatik 
     SDK 'yı yüklemek için şunlardan birini yapabilirsiniz 
     * SDK 'Yı otomatik olarak yüklediği ve ML iş akışları için önceden yapılandırılmış bir işlem örneği oluşturun. Daha fazla bilgi için bkz. [Azure Machine Learning işlem örneği oluşturma ve yönetme](how-to-create-manage-compute-instance.md) . 
 
-    * [SDK 'yı kendiniz yüklemelisiniz](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py). Yalnızca ekstra ' i eklediğinizden emin olun `automl` . 
+    * SDK 'nın [varsayılan yüklemesini](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py#default-install&preserve-view=true) içeren [ `automl` paketi kendiniz yüklemeniz](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)gerekir.
 
 ## <a name="select-your-experiment-type"></a>Deneme türünüzü seçme
 
@@ -222,7 +222,7 @@ Her otomatik makine öğrenimi denemesinde, verileriniz, farklı ölçeklerde bu
 
 Denemeleri 'nizi yapılandırırken `AutoMLConfig` , ayarı etkinleştirebilir/devre dışı bırakabilirsiniz `featurization` . Aşağıdaki tabloda, [oto Mlconfig nesnesinde](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)fealeştirme için kabul edilen ayarlar gösterilmektedir. 
 
-|Korleştirme yapılandırması | Açıklama |
+|Korleştirme yapılandırması | Description |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Ön işleme 'nin bir parçası olarak, [veri guardı ve korleştirme adımlarının](how-to-configure-auto-features.md#featurization) otomatik olarak gerçekleştirileceğini belirtir. **Varsayılan ayar**.|
 |`"featurization": 'off'`| Korleştirme adımının otomatik olarak yapılmaması gerektiğini gösterir.|

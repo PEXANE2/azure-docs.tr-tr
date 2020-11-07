@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 881b1df00f8a962087f1e57b7141ac50f5cfa18b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: fcbfd3eb805e046647a2c28cef8c378b44026bd0
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514835"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94355453"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için kar ke 'yi yapılandırma
 
@@ -52,7 +52,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 Azure AD ile otomatik Kullanıcı sağlaması için kar \ ' ı yapılandırmadan önce, kar için SCıM sağlamasını etkinleştirmeniz gerekecektir.
 
-1. Kar Yönetici Konsolu 'nda oturum açın. Aşağıda gösterilen çalışma sayfasında gösterilen sorguyu girin ve **Çalıştır**' a tıklayın.
+1. Kar Yönetici Konsolu 'nda oturum açın. Aşağıda gösterilen çalışma sayfasında gösterilen sorguyu girin ve **Çalıştır** ' a tıklayın.
 
     ![Kar tanesi Yönetici Konsolu](media/Snowflake-provisioning-tutorial/image00.png)
 
@@ -60,7 +60,7 @@ Azure AD ile otomatik Kullanıcı sağlaması için kar \ ' ı yapılandırmadan
 
     ![S C I M erişim belirtecine sahip olan kar özellikli çalışma sayfasının ekran görüntüsü.](media/Snowflake-provisioning-tutorial/image01.png)
 
-3. Oluşturulan belirteç değerini kopyalayın ve **bitti**' ye tıklayın. Bu değer, Azure portal kar uygulama uygulamanızın sağlama sekmesindeki **gizli belirteç** alanına girilir.
+3. Oluşturulan belirteç değerini kopyalayın ve **bitti** ' ye tıklayın. Bu değer, Azure portal kar uygulama uygulamanızın sağlama sekmesindeki **gizli belirteç** alanına girilir.
 
     ![Metin alanına kopyalanmış belirtecin gösterildiği ve bitti seçeneğinin gösterildiği Ayrıntılar bölümünün ekran görüntüsü.](media/Snowflake-provisioning-tutorial/image02.png)
 
@@ -72,7 +72,7 @@ Azure AD uygulama galerisindeki kar. Daha önce SSO için kar ayarla ayarı yapt
 
 Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun özniteliklerine göre hazırlanacak kişilerin kapsamını belirlemenizi sağlar. Uygulamanız için hazırlanacak kişilerin kapsamını atamaya göre belirlemeyi seçerseniz kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Hazırlanacak kişilerin kapsamını yalnızca kullanıcı veya grup özniteliklerine göre belirlemeyi seçerseniz [burada](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) anlatılan kapsam belirleme filtresini kullanabilirsiniz. 
 
-* Kullanıcı ve grupları kar alanına atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
+* Kullanıcı ve grupları kar alanına atarken **varsayılan erişim** dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
 
 * Başlangıçta kapsamı sınırlı tutun. Herkesi hazırlamadan önce birkaç kullanıcı ve grupla test yapın. Hazırlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında uygulamaya bir veya iki kullanıcı ya da grup atayarak bu adımı kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında [öznitelik tabanlı kapsam filtresi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) belirtebilirsiniz. 
 
@@ -83,11 +83,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
 ### <a name="to-configure-automatic-user-provisioning-for-snowflake-in-azure-ad"></a>Azure AD 'de kar için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **kar tanesi**' ni seçin.
+2. Uygulamalar listesinde, **kar tanesi** ' ni seçin.
 
     ![Uygulamalar listesinde kar tanesi bağlantısı](common/all-applications.png)
 
@@ -95,7 +95,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -103,13 +103,13 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-7. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+7. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-8. **Kaydet**’e tıklayın.
+8. **Kaydet** ’e tıklayın.
 
-9. **Eşlemeler** bölümü altında, **kullanıcıları kar alarak Azure Active Directory eşitler**' ı seçin.
+9. **Eşlemeler** bölümü altında, **kullanıcıları kar alarak Azure Active Directory eşitler** ' ı seçin.
 
 10. **Öznitelik eşleme** bölümünde, Azure AD 'den kar tanesi ile eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için kar tanesi içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -124,7 +124,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
    |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: defaultRole|Dize|
    |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: Kullanıcı: defaultWarehouse|Dize|
 
-11. **Eşlemeler** bölümünde, **Azure Active Directory gruplarını kar/zaman olarak eşitler**' ı seçin.
+11. **Eşlemeler** bölümünde, **Azure Active Directory gruplarını kar/zaman olarak eşitler** ' ı seçin.
 
 12. **Öznitelik eşleme** bölümünde Azure AD 'den kar tanesi ile eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için kar tanesi içindeki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -143,7 +143,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-16. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+16. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

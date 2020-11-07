@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: a6f5526b01588649d1e094036241d616a8392949
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f95d7ae38ece2a2ad939d2b3c829aed2c676d0f7
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996479"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354011"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Linux VM'leri için Azure Disk Şifrelemesi 
 
@@ -47,6 +47,8 @@ Linux sanal makinelerde işletim sistemi disk şifreleme işlemi tamamlandıktan
 Azure disk şifrelemesi, Premium depolama özellikli VM 'Ler için de kullanılabilir.
 
 Azure disk şifrelemesi [2. nesil VM](../generation-2.md#generation-1-vs-generation-2-capabilities) 'Lerde ve [Lsv2 serisi sanal](../lsv2-series.md)makinelerde kullanılamaz. Daha fazla özel durum için bkz. [Azure disk şifrelemesi: desteklenmeyen senaryolar](disk-encryption-linux.md#unsupported-scenarios).
+
+Azure disk şifrelemesi, geçici diskler olmadan VM görüntülerinde kullanılamaz (dv4, Dsv4, Ev4 ve Esv4).  Bkz. [Yerel geçici disk olmadan Azure VM boyutları](../azure-vms-no-temp-disk.md).
 
 ### <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 

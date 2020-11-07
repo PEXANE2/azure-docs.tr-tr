@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 56aad5ce9045ca205221ba0c56d1ea75f8f3610a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55f7b64c9ade91bb2923161d60568e3ea14ee034
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850516"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353528"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için myPolicies yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Kullanıcı ve/veya grupları myPolicies 'e otomatik ol
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -52,7 +52,7 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 Azure AD ile otomatik Kullanıcı hazırlama için Ilkelerinizi yapılandırmadan önce myPolicies üzerinde SCıM sağlamasını etkinleştirmeniz gerekir.
 
-1. **support@mypolicies.com**SCIM sağlamasını yapılandırmak için gereken gizli belirteci almak için, myPolicies temsilcinize ulaşın.
+1. **support@mypolicies.com** SCIM sağlamasını yapılandırmak için gereken gizli belirteci almak için, myPolicies temsilcinize ulaşın.
 
 2.  MyPolicies temsilcisi tarafından sunulan belirteç değerini kaydedin. Bu değer, Azure portal myPolicies uygulamanızın sağlama sekmesindeki **gizli belirteç** alanına girilir.
 
@@ -62,11 +62,11 @@ Azure AD ile otomatik Kullanıcı sağlaması için myPolicies yapılandırmak �
 
 **Azure AD Uygulama Galerisi ' nden myPolicies eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -74,7 +74,7 @@ Azure AD ile otomatik Kullanıcı sağlaması için myPolicies yapılandırmak �
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **mypolicies**yazın, sonuçlar panelinde **mypolicies** ' i seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **mypolicies** yazın, sonuçlar panelinde **mypolicies** ' i seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
     ![Sonuçlar listesindeki myPolicies](common/search-new-app.png)
 
@@ -87,11 +87,11 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre myPolicie
 
 ### <a name="to-configure-automatic-user-provisioning-for-mypolicies-in-azure-ad"></a>Azure AD 'de myPolicies için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Mypolicies**' ı seçin.
+2. Uygulamalar listesinde, **Mypolicies** ' ı seçin.
 
     ![Uygulamalar listesindeki myPolicies bağlantısı](common/all-applications.png)
 
@@ -99,24 +99,24 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre myPolicie
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
 5. **Yönetici kimlik bilgileri** bölümünde, `https://<myPoliciesCustomDomain>.mypolicies.com/scim` mypolicies özel etki alanınız olan **kiracı URL 'sine** giriş yapın `<myPoliciesCustomDomain>` . MyPolicies müşteri etki alanınızı URL 'nizden elde edebilirsiniz.
 Örnek: `<demo0-qa>` . mypolicies.com.
 
-6. **Gizli belirteç**' de, daha önce alınan belirteç değerini girin. Azure AD 'nin Ilkelerinize bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, myPolicies hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+6. **Gizli belirteç** ' de, daha önce alınan belirteç değerini girin. Azure AD 'nin Ilkelerinize bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, myPolicies hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-7. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+7. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-8. **Kaydet**’e tıklayın.
+8. **Kaydet** ’e tıklayın.
 
-9. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Mypolicies**' a eşitler ' ı seçin.
+9. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Mypolicies** ' a eşitler ' ı seçin.
 
     :::image type="content" source="media/mypolicies-provisioning-tutorial/usermapping.png" alt-text="Eşlemeler bölümünün ekran görüntüsü. Ad ' ın altında, Azure Active Directory Kullanıcıları customappsso ile eşitler görünür." border="false":::
 
@@ -145,7 +145,7 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre myPolicie
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-14. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+14. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 
@@ -155,7 +155,7 @@ Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi i�
 
 ## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
 
-* myPolicies her zaman **Kullanıcı adı**, **e-posta** ve **externalId**gerektirir.
+* myPolicies her zaman **Kullanıcı adı** , **e-posta** ve **externalId** gerektirir.
 * myPolicies, Kullanıcı öznitelikleri için sabit silmeleri desteklemez.
 
 ## <a name="change-log"></a>Değişiklik günlüğü

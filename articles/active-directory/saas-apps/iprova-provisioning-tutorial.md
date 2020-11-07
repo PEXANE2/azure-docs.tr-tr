@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 1163f4b0992afe03f5bbdc38cad4e3cbca060dd2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3fe13d2fad2382e0e9fa8b93b79c5f27695ad898
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459788"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94355201"
 ---
 # <a name="tutorial-configure-iprova-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için iProva yapılandırma
 
@@ -34,7 +34,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları [iProv
 > * İProva 'de grupları ve grup üyeliklerini sağlama
 > * İProva ['de çoklu oturum açma](./iprova-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -50,15 +50,15 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 ## <a name="step-2-configure-iprova-to-support-provisioning-with-azure-ad"></a>Adım 2. İProva 'i Azure AD ile sağlamayı destekleyecek şekilde yapılandırma
 
-1. [IProva Yönetici konsolunuza](https://www.iProva.com/)oturum açın. **> uygulama yönetimine**gidin.
+1. [IProva Yönetici konsolunuza](https://www.iProva.com/)oturum açın. **> uygulama yönetimine** gidin.
 
     ![iProva Yönetici Konsolu](media/iprova-provisioning-tutorial/admin.png)
 
-2.  **Dış Kullanıcı yönetimi**' ne tıklayın.
+2.  **Dış Kullanıcı yönetimi** ' ne tıklayın.
 
     ![iProva SCIM Ekle](media/iprova-provisioning-tutorial/external.png)
 
-3. Yeni bir sağlayıcı eklemek için **artı** simgesine tıklayın. Yeni **Sağlayıcı Ekle** iletişim kutusunda bir **başlık**girin. **IP tabanlı erişim kısıtlaması**eklemeyi seçebilirsiniz. **Tamam** düğmesine tıklayın.
+3. Yeni bir sağlayıcı eklemek için **artı** simgesine tıklayın. Yeni **Sağlayıcı Ekle** iletişim kutusunda bir **başlık** girin. **IP tabanlı erişim kısıtlaması** eklemeyi seçebilirsiniz. **Tamam** düğmesine tıklayın.
 
     ![iProva yeni Ekle](media/iprova-provisioning-tutorial/add.png)
 
@@ -76,7 +76,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun özniteliklerine göre hazırlanacak kişilerin kapsamını belirlemenizi sağlar. Uygulamanız için hazırlanacak kişilerin kapsamını atamaya göre belirlemeyi seçerseniz kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Hazırlanacak kişilerin kapsamını yalnızca kullanıcı veya grup özniteliklerine göre belirlemeyi seçerseniz [burada](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) anlatılan kapsam belirleme filtresini kullanabilirsiniz. 
 
-* Kullanıcıları ve grupları iProva 'e atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
+* Kullanıcıları ve grupları iProva 'e atarken **varsayılan erişim** dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
 
 * Başlangıçta kapsamı sınırlı tutun. Herkesi hazırlamadan önce birkaç kullanıcı ve grupla test yapın. Hazırlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında uygulamaya bir veya iki kullanıcı ya da grup atayarak bu adımı kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında [öznitelik tabanlı kapsam filtresi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) belirtebilirsiniz. 
 
@@ -86,11 +86,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak iProva içindeki kullanı
 
 ### <a name="to-configure-automatic-user-provisioning-for-iprova-in-azure-ad"></a>Azure AD 'de iProva için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **iProva**' yi seçin.
+2. Uygulamalar listesinde **iProva** ' yi seçin.
 
     ![Uygulamalar listesindeki iProva bağlantısı](common/all-applications.png)
 
@@ -98,7 +98,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak iProva içindeki kullanı
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -106,13 +106,13 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak iProva içindeki kullanı
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’e tıklayın.
+7. **Kaydet** ’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları iProva olarak eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları iProva olarak eşitler** ' ı seçin.
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'den iProva 'e eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için iProva içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -148,7 +148,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak iProva içindeki kullanı
    |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: employeeNumber|Dize|
 
 
-10. **Eşlemeler** bölümünde **Azure Active Directory grupları iProva olarak eşitler**' ı seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory grupları iProva olarak eşitler** ' ı seçin.
 
 11. **Öznitelik eşleme** bölümünde Azure AD 'den iProva 'e eşitlenen grup özniteliklerini gözden geçirin. **Eşlenen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için iProva içindeki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -167,7 +167,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak iProva içindeki kullanı
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

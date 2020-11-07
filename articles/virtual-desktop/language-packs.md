@@ -3,15 +3,15 @@ title: Windows sanal masaüstü-Azure 'da Windows 10 VM 'lerine dil paketleri y�
 description: Windows sanal masaüstü 'nde Windows 10 çoklu oturum VM 'Leri için dil paketleri nasıl yüklenir.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/21/2020
+ms.date: 11/06/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fbc2aba21212a83bd73d5664f4fe288017954c0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10d79d08e3f6ed422f0354074ebc6e0acc125553
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90084218"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354045"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Windows 10 çoklu oturum görüntüsüne dil paketleri ekleme
 
@@ -24,7 +24,7 @@ Kullanıcılarınızın dil ihtiyaçlarını karşılamak için kullanabileceği
 
 İkinci yöntem daha verimli ve ekonomik maliyetli bir yoldur. Ancak, hangi yöntemin gereksinimlerinize en uygun olduğuna karar vermek sizin için önemlidir. Bu makalede, görüntüleriniz için dillerin nasıl özelleştirileceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Birden çok dil eklemek için Windows 10 Kurumsal Çoklu oturum görüntülerini özelleştirmek üzere aşağıdaki şeylere ihtiyacınız vardır:
 
@@ -43,6 +43,11 @@ Birden çok dil eklemek için Windows 10 Kurumsal Çoklu oturum görüntülerini
      - Gelen kutusu uygulamaları ISO:
         - [Windows 10, sürüm 1903 veya 1909 gelen kutusu uygulamaları ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_InboxApps.iso)
         - [Windows 10, sürüm 2004 gelen kutusu uygulamaları ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_InboxApps.iso)
+        - [Windows 10, sürüm 20H2 gelen kutusu uygulamaları ISO](https://software-download.microsoft.com/download/pr/19041.508.200905-1327.vb_release_svc_prod1_amd64fre_InboxApps.iso)
+     
+     - Windows 10, sürüm 2004 veya 20H2 kullanıyorsanız, yeni dilleri indirmek için yerel deneyim paketi (LXP) IOS ' i kullanabilirsiniz. [Windows 10 ' da dil ekleme](/windows-hardware/manufacture/desktop/language-packs-known-issue) içindeki bilgileri kullanın: 9B veya 9C sürümünü indirmeniz gerekip gerekmediğini anlamak için bilinen sorunlar:
+        - [Windows 10, sürüm 2004 veya 20H2 **9B** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_64_ARM64_MultiLang_LangPckAll_LIP_LXP_ONLY)
+        - [Windows 10, sürüm 2004 veya 20H2 **9C** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_32_64_ARM64_MultiLng_LngPkAll_LIP_9C_LXP_ONLY) 
 
 - Windows dosya sunucusu sanal makinesindeki bir Azure dosya paylaşma veya dosya paylaşma
 
@@ -59,7 +64,7 @@ Dil paketleri için içerik deposunu ve gelen kutusu uygulama paketleri için bi
 
 3. Dil paketi ISO dosyasına gidin ve içeriği **Localexperiencepacks** ve **x64 \\ Langpacks** klasörlerinden kopyalayıp dosya paylaşımının içeriğini yapıştırın.
 
-4. **FOD ISO dosyasına**gidin, tüm içeriğini kopyalayın ve dosya paylaşımında yapıştırın.
+4. **FOD ISO dosyasına** gidin, tüm içeriğini kopyalayın ve dosya paylaşımında yapıştırın.
 5. Gelen kutusu uygulamaları ISO 'daki **amd64fre** klasörüne gidin ve hazırladığınız gelen kutusu uygulamaları için depodaki içeriği kopyalayın.
 
      >[!NOTE]
@@ -164,7 +169,7 @@ Set-WinUserLanguageList $LanguageList -force
 
 Betik, yüklemeniz gereken dillerin sayısına bağlı olarak biraz zaman alabilir.
 
-Betiğin çalışması tamamlandıktan sonra, **Başlangıç**  >  **ayarları**  >  **zaman & dil**  >  **dili**' ne giderek dil paketlerinin doğru şekilde yüklendiğinden emin olun. Dil dosyaları varsa, her şey ayarlanır.
+Betiğin çalışması tamamlandıktan sonra, **Başlangıç**  >  **ayarları**  >  **zaman & dil**  >  **dili** ' ne giderek dil paketlerinin doğru şekilde yüklendiğinden emin olun. Dil dosyaları varsa, her şey ayarlanır.
 
 Windows görüntüsüne ek diller ekledikten sonra, eklenen dilleri desteklemek için gelen kutusu uygulamalarının de güncelleştirilmeleri gerekir. Bu, önceden yüklenmiş uygulamaların gelen kutusu Apps ISO 'daki içerikle yenilenerek yapılabilir. Bu yenilemeyi, bağlantısı kesilen bir ortamda gerçekleştirmek için (sanal makineden Internet erişimi olmadan), işlemi otomatikleştirmek için aşağıdaki PowerShell betiği örneğini kullanabilirsiniz.
 
