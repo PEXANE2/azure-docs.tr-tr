@@ -13,12 +13,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 1d1db69215294ac4aa4849bbaa1a886a91f0ba7e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cececc8ba297057a372766381de0fd2c145815f2
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89439172"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358890"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Hızlı Başlangıç: REST API kullanarak Azure veri fabrikası ve işlem hattı oluşturma
 
@@ -41,12 +41,12 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 * **Azure aboneliği**. Bir aboneliğiniz yoksa, bir [ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/) hesabı oluşturabilirsiniz.
 * **Azure depolama hesabı**. Blob depolama alanını **kaynak** ve **havuz** veri deposu olarak kullanabilirsiniz. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) makalesine bakın.
 * Blob Depolama içinde bir **blob kapsayıcısı** oluşturun, kapsayıcıda bir giriş **klasörü** oluşturun ve bazı dosyaları klasöre yükleyin. Azure Blob depolamaya bağlanmak, blob kapsayıcısı oluşturmak, giriş dosyasını karşıya yüklemek ve çıkış dosyasını doğrulamak için [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) gibi araçları kullanabilirsiniz.
-* **Azure PowerShell**'i yükler. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/install-Az-ps) bölümündeki yönergeleri izleyin. Bu hızlı başlangıçta RES API çağrılarını çağırmak için PowerShell kullanılır.
-* **Azure Active Directory’de**[bu yönergeyi](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) izleyerek bir uygulama oluşturun. Sonraki adımlarda kullandığınız aşağıdaki değerleri unutmayın: **uygulama kimliği**, **clientgizlilikler**ve **Kiracı kimliği**. Uygulamayı "**Katkıda Bulunan**" rolüne atayın.
+* **Azure PowerShell** 'i yükler. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/install-Az-ps) bölümündeki yönergeleri izleyin. Bu hızlı başlangıçta RES API çağrılarını çağırmak için PowerShell kullanılır.
+* **Azure Active Directory’de**[bu yönergeyi](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) izleyerek bir uygulama oluşturun. Sonraki adımlarda kullandığınız aşağıdaki değerleri unutmayın: **uygulama kimliği** , **clientgizlilikler** ve **Kiracı kimliği**. Uygulamayı " **Katkıda Bulunan** " rolüne atayın.
 
 ## <a name="set-global-variables"></a>Genel değişkenleri ayarlama
 
-1. **PowerShell**’i başlatın. Bu hızlı başlangıcın sonuna kadar Azure PowerShell’i açık tutun. Kapatıp yeniden açarsanız komutları yeniden çalıştırmanız gerekir.
+1. **PowerShell** ’i başlatın. Bu hızlı başlangıcın sonuna kadar Azure PowerShell’i açık tutun. Kapatıp yeniden açarsanız komutları yeniden çalıştırmanız gerekir.
 
     Aşağıdaki komutu çalıştırın ve Azure portalda oturum açmak için kullandığınız kullanıcı adı ve parolayı girin:
 
@@ -58,7 +58,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
     ```powershell
     Get-AzSubscription
     ```
-    Çalışmak isteğiniz aboneliği seçmek için aşağıdaki komutu çalıştırın. **SubscriptionId**’yi Azure aboneliğinizin kimliği ile değiştirin:
+    Çalışmak isteğiniz aboneliği seçmek için aşağıdaki komutu çalıştırın. **SubscriptionId** ’yi Azure aboneliğinizin kimliği ile değiştirin:
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"
@@ -83,7 +83,7 @@ Azure Active Directory (AAD) ile kimlik doğrulaması yapmak için aşağıdaki 
 $AuthContext = [Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext]"https://login.microsoftonline.com/${tenantId}"
 $cred = New-Object -TypeName Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential -ArgumentList ($appId, $clientSecrets)
 $result = $AuthContext.AcquireTokenAsync("https://management.core.windows.net/", $cred).GetAwaiter().GetResult()
-$authHeader = @{
+$authHeader = @{
 'Content-Type'='application/json'
 'Accept'='application/json'
 'Authorization'=$result.CreateAuthorizationHeader()
@@ -98,7 +98,7 @@ Veri fabrikası oluşturmak için aşağıdaki komutları çalıştırın:
 $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}?api-version=${apiVersion}"
 $body = @"
 {
-    "name": "$dataFactoryName",
+    "name": "$factoryName",
     "location": "East US",
     "properties": {},
     "identity": {
@@ -117,7 +117,7 @@ Aşağıdaki noktalara dikkat edin:
     ```
     Data factory name "ADFv2QuickStartDataFactory" is not available.
     ```
-* Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics**'i genişleterek **Data Factory**: [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
+* Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics** 'i genişleterek **Data Factory** : [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
 
 Örnek yanıt aşağıdaki gibidir:
 

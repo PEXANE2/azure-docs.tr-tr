@@ -6,16 +6,16 @@ author: cmmdesai
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: 52c71e06b33ef29c2ef0628d651c7f72e41b87ff
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: d39e00a80ab167936a749c73867b4343e6ed9d76
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671893"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358822"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Öğretici: Azure AD 'den SAP 'ye geri yazma özelliği yapılandırma başarılı
 Bu öğreticinin amacı, Azure AD 'den SAP 'nin başarıyla, çalışan Merkezi ' ne kadar geri yazma adımlarını gösterir. 

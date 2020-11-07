@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 98cca99ab0e088bbae047fa64ec52429e531dfed
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 086f79239fd4f6b01f4b76d1385598bac52bb471
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096096"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358982"
 ---
 # <a name="tutorial-configure-alertmedia-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için AlertMedia yapılandırma
 
@@ -95,9 +95,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
     ![Sekme otomatik sağlama](common/provisioning-automatic.png)
 
 5. **Yönetici kimlik bilgileri** bölümünde, AlertMedia **kiracı URL** 'nizi aşağıdakilerden biri olarak girin.
-      * (özel etki alanı yok) https://docs.gitlab.com/ee/api/scim.html
+      * (özel etki alanı yok) https://dashboard.alertmedia.com/api/scim/v3
 
-      * (özel etki alanı) https://developer.github.com/v3/scim/
+      * (özel etki alanı) https://subdomain.alertmedia.com/api/scim/v3
 
       **Gizli anahtarı** adım 2 ' de daha önce alındı olarak girin. Azure AD 'nin AlertMedia 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, AlertMedia hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 

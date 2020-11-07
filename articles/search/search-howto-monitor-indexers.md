@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 06a31e61583ac28218b34195dd6e5b7f92776dce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b10cf314bc9394f3297839d45d3497f9f5d3b0e0
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541246"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358839"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Azure Bilişsel Arama Dizin Oluşturucu durumunu ve sonuçlarını izleme
 
@@ -51,11 +51,11 @@ Tüm Dizin oluşturucularınızın geçerli durumunu, arama hizmeti genel bakı�
 
    ![Dizin oluşturucular listesi](media/search-monitor-indexers/indexers-list.png "Dizin oluşturucular listesi")
 
-Bir Dizin Oluşturucu yürütüldüğü zaman, listedeki durum **devam ediyor**' i gösterir ve **docs başarılı** değeri, şimdiye kadar işlenen belgelerin sayısını gösterir. Portalın Dizin Oluşturucu durum değerlerini ve belge sayılarını güncelleştirmesi birkaç dakika sürebilir.
+Bir Dizin Oluşturucu yürütüldüğü zaman, listedeki durum **devam ediyor** ' i gösterir ve **docs başarılı** değeri, şimdiye kadar işlenen belgelerin sayısını gösterir. Portalın Dizin Oluşturucu durum değerlerini ve belge sayılarını güncelleştirmesi birkaç dakika sürebilir.
 
-En son çalıştırma başarılı olan bir Dizin Oluşturucu **başarılı**gösterir. Hata sayısı, dizin oluşturucunun **en fazla başarısız öğe** ayarından daha küçükse, tek tek belgelerde hata olsa bile Dizin Oluşturucu çalıştırması başarılı olabilir.
+En son çalıştırma başarılı olan bir Dizin Oluşturucu **başarılı** gösterir. Hata sayısı, dizin oluşturucunun **en fazla başarısız öğe** ayarından daha küçükse, tek tek belgelerde hata olsa bile Dizin Oluşturucu çalıştırması başarılı olabilir.
 
-En son çalıştırma bir hatayla bitdiyse, durum **başarısız**' ı gösterir. **Reset** durumu, dizin oluşturucunun değişiklik izleme durumunun sıfırlandığı anlamına gelir.
+En son çalıştırma bir hatayla bitdiyse, durum **başarısız** ' ı gösterir. **Reset** durumu, dizin oluşturucunun değişiklik izleme durumunun sıfırlandığı anlamına gelir.
 
 Dizin oluşturucunun geçerli ve son çalıştırmaları hakkında daha fazla ayrıntı görmek için listedeki bir dizin oluşturucuya tıklayın.
 
@@ -122,7 +122,7 @@ Yürütme geçmişi, geriye doğru kronolojik sıraya (en son ilk) göre sırala
 
 İki farklı durum değeri olduğunu aklınızda edin. En üst düzey durum, dizin oluşturucunun kendisi içindir. Öğesinin Dizin Oluşturucu durumu, dizin oluşturucunun doğru şekilde ayarlandığı ve çalıştırılabileceği, ancak şu anda çalıştığı **anlamına gelir.**
 
-Dizin oluşturucunun her çalışmasının Ayrıca, belirli yürütmenin devam eden (**çalışıyor**) veya **başarılı**, **geçişli bir hata**veya **kalıcı bir hata** durumuyla tamamlanmış olup olmadığını belirten kendi durumu vardır. 
+Dizin oluşturucunun her çalışmasının Ayrıca, belirli yürütmenin devam eden ( **çalışıyor** ) veya **başarılı** , **geçişli bir hata** veya **kalıcı bir hata** durumuyla tamamlanmış olup olmadığını belirten kendi durumu vardır. 
 
 Bir Dizin Oluşturucu değişiklik izleme durumunu yenilemek üzere sıfırlandığında, **sıfırlama** durumuyla ayrı bir yürütme geçmişi girişi eklenir.
 
@@ -181,7 +181,7 @@ Latest run
 
 İki farklı durum değeri olduğunu aklınızda edin. Üst düzey durum, dizin oluşturucunun durumunun kendisidir. Öğesinin Dizin Oluşturucu durumu, dizin oluşturucunun doğru şekilde ayarlandığı ve yürütme için kullanılabilir olduğu, ancak şu anda yürütülmekte olduğu **anlamına gelir.**
 
-Dizin oluşturucunun her çalışmasının Ayrıca, belirli yürütmenin devam eden (**çalışıyor**) veya **başarılı** veya **geçişli** bir durum ile zaten tamamlanmış olup olmadığı için kendi durumu vardır. 
+Dizin oluşturucunun her çalışmasının Ayrıca, belirli yürütmenin devam eden ( **çalışıyor** ) veya **başarılı** veya **geçişli** bir durum ile zaten tamamlanmış olup olmadığı için kendi durumu vardır. 
 
 Bir Dizin Oluşturucu değişiklik izleme durumunu yenilemek üzere sıfırlandığında, **sıfırlama** durumuyla ayrı bir geçmiş girişi eklenir.
 

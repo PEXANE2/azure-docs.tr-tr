@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 26f12b18e2199fb45e6eb94f2a136d2af2b1576c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2670dc0cb56805a2afa966bee1d2aa52b6c8e46a
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317608"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358992"
 ---
 # <a name="tutorial-configure-keeper-password-manager--digital-vault-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için bir dijital kasa & Man parola yöneticisini yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları bir Ma
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -41,11 +41,11 @@ Azure AD ile otomatik Kullanıcı sağlama için, Man Password Manager & dijital
 
 **Azure AD Uygulama Galerisi 'nden bir Man parola Yöneticisi & dijital kasasını eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -53,7 +53,7 @@ Azure AD ile otomatik Kullanıcı sağlama için, Man Password Manager & dijital
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Man Password manager & dijital kasa**girin, sonuçlar panelinde bir **man parola Yöneticisi & dijital kasa** ' yı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **Man Password manager & dijital kasa** girin, sonuçlar panelinde bir **man parola Yöneticisi & dijital kasa** ' yı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
     ![Man parola Yöneticisi, sonuçlar listesinde dijital kasa &](common/search-new-app.png)
 
@@ -80,11 +80,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı
 
 ### <a name="to-configure-automatic-user-provisioning-for-keeper-password-manager--digital-vault-in-azure-ad"></a>Azure AD 'de, Man Password Manager & dijital kasasında otomatik Kullanıcı sağlamasını yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Man Password Manager & dijital kasa**' yı seçin.
+2. Uygulamalar listesinde, **Man Password Manager & dijital kasa** ' yı seçin.
 
     ![Uygulamalar listesinde Man parola Yöneticisi & dijital kasa bağlantısı](common/all-applications.png)
 
@@ -92,21 +92,21 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
 5. **Yönetici kimlik bilgileri** bölümünde, 5. adımda açıklandığı gibi, dijital kasaınızın hesabı &, **kiracı URL 'sini** ve **gizli** anahtarını girin.
 
-6. [Man Yönetici konsolunuza](https://keepersecurity.com/console/#login)oturum açın. **Yönetici** ' ye tıklayın ve var olan bir düğümü seçin ya da yeni bir tane oluşturun. **Sağlama** sekmesine gidin ve **Yöntem Ekle**' yi seçin.
+6. [Man Yönetici konsolunuza](https://keepersecurity.com/console/#login)oturum açın. **Yönetici** ' ye tıklayın ve var olan bir düğümü seçin ya da yeni bir tane oluşturun. **Sağlama** sekmesine gidin ve **Yöntem Ekle** ' yi seçin.
 
     ![Man Yönetici Konsolu](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-admin-console.png)
 
-    **SCIM (etki alanları arası kimlik yönetimi Için sistem**) seçeneğini belirleyin.
+    **SCIM (etki alanları arası kimlik yönetimi Için sistem** ) seçeneğini belirleyin.
 
     ![Man, SCıM Ekle](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-add-scim.png)
 
-    **Sağlama belirteci oluştur**' a tıklayın.
+    **Sağlama belirteci oluştur** ' a tıklayın.
 
     ![Man uç noktası oluştur](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-endpoint.png)
 
@@ -118,11 +118,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-8. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+8. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-9. **Kaydet**’e tıklayın.
+9. **Kaydet** ’e tıklayın.
 
 10. **Eşlemeler** bölümünde, **Kullanıcı Azure Active Directory Kullanıcıları, dijital kasa olarak &**
 
@@ -132,7 +132,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı
 
     ![Man Kullanıcı öznitelikleri](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-attributes.png)
 
-12. **Eşlemeler** bölümünde, **Azure Active Directory gruplarını, anahtar parola Yöneticisi & dijital kasa olarak eşitler**' ı seçin.
+12. **Eşlemeler** bölümünde, **Azure Active Directory gruplarını, anahtar parola Yöneticisi & dijital kasa olarak eşitler** ' ı seçin.
 
     ![Man grubu eşlemeleri](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-mappings.png)
 
@@ -150,7 +150,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-17. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+17. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 9163c64370e0718d6b9acf37bb7a9fc28c936948
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5579a9d96828caa1453547e7c2e11b8f0d717d2a
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851195"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359315"
 ---
 # <a name="tutorial-configure-druva-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Druva yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Druva 
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -52,21 +52,21 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 Druva 'i Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmadan önce, Druva üzerinde SCıM sağlamasını etkinleştirmeniz gerekir.
 
-1. [Druva Yönetici konsolunuza](https://console.druva.com)oturum açın. **Druva > InSync**adresine gidin.
+1. [Druva Yönetici konsolunuza](https://console.druva.com)oturum açın. **Druva > InSync** adresine gidin.
 
     ![Druva Yönetici Konsolu](media/druva-provisioning-tutorial/menubar.png)
 
-2. Dağıtımları **Yönet**  >  **Deployments**  >  **kullanıcılarını**gezin.
+2. Dağıtımları **Yönet**  >  **Deployments**  >  **kullanıcılarını** gezin.
 
     :::image type="content" source="media/druva-provisioning-tutorial/manage.png" alt-text="Druva yönetici konsolunun ekran görüntüsü. Yönet vurgulanır ve Yönet menüsü görünür olur. Bu menüde, dağıtımlar altında, kullanıcılar vurgulanır." border="false":::
 
-3.  **Ayarlar**' a gidin. **Belirteç oluştur**' a tıklayın.
+3.  **Ayarlar** ' a gidin. **Belirteç oluştur** ' a tıklayın.
 
-    :::image type="content" source="media/druva-provisioning-tutorial/settings.png" alt-text="Druva yönetici konsolunun ekran görüntüsü. Yönet vurgulanır ve Yönet menüsü görünür olur. Bu menüde, dağıtımlar altında, kullanıcılar vurgulanır." border="false":::
+    :::image type="content" source="media/druva-provisioning-tutorial/settings.png" alt-text="Druva yönetim konsolundaki bir sayfanın ekran görüntüsü. Ayarlar vurgulanır ve ayarlar sekmesi açıktır. Belirteç oluştur düğmesi vurgulanır." border="false":::
 
 4.  **Kimlik doğrulama belirteci** değerini kopyalayın. Bu değer, Azure portal Druva uygulamanızın sağlama sekmesindeki **gizli belirteç** alanına girilir.
     
-    :::image type="content" source="media/druva-provisioning-tutorial/auth.png" alt-text="Druva yönetici konsolunun ekran görüntüsü. Yönet vurgulanır ve Yönet menüsü görünür olur. Bu menüde, dağıtımlar altında, kullanıcılar vurgulanır." border="false":::
+    :::image type="content" source="media/druva-provisioning-tutorial/auth.png" alt-text="Druva yönetim konsolundaki belirteç Oluştur sayfasının ekran görüntüsü. Kimlik doğrulama belirteci değerini kopyalamak için, kopya belirteci etiketli bir bağlantı mevcuttur." border="false":::
 
 ## <a name="add-druva-from-the-gallery"></a>Galeriden Druva ekleme
 
@@ -74,11 +74,11 @@ Druva 'i Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmak üz
 
 **Azure AD Uygulama Galerisi 'nden Druva eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -86,7 +86,7 @@ Druva 'i Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmak üz
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Druva**yazın, sonuçlar panelinde **Druva** ' yi seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **Druva** yazın, sonuçlar panelinde **Druva** ' yi seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
     ![Sonuç listesinde Druva](common/search-new-app.png)
 
@@ -99,11 +99,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Druva içindeki kullanıc
 
 ### <a name="to-configure-automatic-user-provisioning-for-druva-in-azure-ad"></a>Azure AD 'de Druva için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Druva**' yi seçin.
+2. Uygulamalar listesinde **Druva** ' yi seçin.
 
     ![Uygulamalar listesindeki Druva bağlantısı](common/all-applications.png)
 
@@ -111,21 +111,21 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Druva içindeki kullanıc
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
-5.  Yönetici kimlik bilgileri bölümünün altında, `https://apis.druva.com/insync/scim` **kiracı URL 'sini**girin. **Kimlik doğrulama belirteci** değerini **gizli belirteç**olarak girin. Azure AD 'nin Druva 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Druva hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5.  Yönetici kimlik bilgileri bölümünün altında, `https://apis.druva.com/insync/scim` **kiracı URL 'sini** girin. **Kimlik doğrulama belirteci** değerini **gizli belirteç** olarak girin. Azure AD 'nin Druva 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Druva hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken kişinin veya grubun e-posta adresini girin ve **bir hata oluştuğunda e-posta bildirimi gönder**' i seçin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken kişinin veya grubun e-posta adresini girin ve **bir hata oluştuğunda e-posta bildirimi gönder** ' i seçin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’e tıklayın.
+7. **Kaydet** ’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Druva olarak eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Druva olarak eşitler** ' ı seçin.
 
     ![Druva Kullanıcı eşlemeleri](media/druva-provisioning-tutorial/usermapping.png)
 
@@ -144,7 +144,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Druva içindeki kullanıc
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+13. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

@@ -203,6 +203,8 @@
       href: concepts-roles-permissions.md
     - name: Adlandırma kuralları
       href: naming-rules.md
+    - name: Veri yedekliği
+      href: concepts-data-redundancy.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Yazma

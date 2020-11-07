@@ -31,14 +31,10 @@
       href: spring-cloud-tutorial-setup-autoscale.md
     - name: Uyarılar ve eylem grupları
       href: spring-cloud-tutorial-alerts-action-groups.md
-    - name: IntelliJ kullanarak uygulamaları dağıtma
-      href: spring-cloud-tutorial-intellij-deploy-apps.md
     - name: Devre Kesici Panosu
       href: spring-cloud-tutorial-circuit-breaker.md
     - name: Özel DNS adı
       href: spring-cloud-tutorial-custom-domain.md
-    - name: Terrayform ile Azure Spring Cloud örneğini sağlama
-      href: spring-cloud-tutorial-provision-azure-spring-cloud-instance-terraform.md
     - name: Yönetilen kimlik kullanarak Key Vault'u Azure Spring Cloud uygulamasına bağlama
       href: spring-cloud-tutorial-managed-identities-key-vault.md
     - name: Sanal ağda Azure Spring Cloud dağıtma
@@ -77,6 +73,8 @@
           href: spring-cloud-howto-staging-environment.md
         - name: Kaynak kodundan Java uygulaması başlatma
           href: spring-cloud-howto-launch-from-source.md
+        - name: IntelliJ kullanarak uygulamaları dağıtma
+          href: spring-cloud-tutorial-intellij-deploy-apps.md
     - name: Yapılandırma
       items:
         - name: 'Uygulamayı başlatma, durdurma ve silme'
@@ -115,6 +113,8 @@
           href: spring-cloud-howto-github-actions.md
         - name: GitHub Actions'da Key Vault ile Kimlik Doğrulaması
           href: spring-cloud-github-actions-key-vault.md
+        - name: Terrayform ile Azure Spring Cloud örneğini sağlama
+          href: spring-cloud-tutorial-provision-azure-spring-cloud-instance-terraform.md
     - name: Sorun giderme
       items:
         - name: Sorunları kendi kendine tanılama ve çözme

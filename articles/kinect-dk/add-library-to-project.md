@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, algılayıcı, SDK, Visual Studio 2017, Visual Studio 2019, NuGet
-ms.openlocfilehash: b0395118481cbaecd5ad0b6a3a6b3e89cc29dfaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd71f0d327b8c828cc9ddac5810757cccdffbcea
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85277676"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359621"
 ---
 # <a name="add-azure-kinect-library-to-your-visual-studio-project"></a>Visual Studio projenize Azure Kinect kitaplığı ekleme
 
@@ -22,7 +22,7 @@ Bu makalede, Visual Studio projenize Azure Kinect NuGet paketi ekleme işleminde
 
 Azure Kinect NuGet paketini yüklemek için:
 
-1. Visual Studio 'da bir NuGet paketini yüklemeye yönelik ayrıntılı yönergeleri hızlı başlangıçta bulabilirsiniz [: Visual Studio 'da bir paket yükleme ve kullanma](https://docs.microsoft.com/nuget/quickstart/install-and-use-a-package-in-visual-studio).
+1. Visual Studio 'da bir NuGet paketini yüklemeye yönelik ayrıntılı yönergeleri hızlı başlangıçta bulabilirsiniz [: Visual Studio 'da bir paket yükleme ve kullanma](/nuget/quickstart/install-and-use-a-package-in-visual-studio).
 2. Paketi eklemek için, başvurular ' a sağ tıklayıp, Çözüm Gezgini NuGet Paketlerini Yönet ' i seçerek Paket Yöneticisi Kullanıcı arabirimini kullanabilirsiniz.
 3. Paket kaynağı olarak [NuGet.org](https://www.nuget.org) öğesini seçin, gözatıp sekmesini seçin ve arama yapın `Microsoft.Azure.Kinect.Sensor` .
 4. Listeden bu paketi seçin ve yüklemeyi yapın.

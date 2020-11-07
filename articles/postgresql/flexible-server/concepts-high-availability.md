@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 7db9ac0eb624c2732295639d65e0311fcf459f71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b23c95ef0005c8246feb8dc32e4a07a0ae19b72f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941026"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359553"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı 'nda yüksek kullanılabilirlik kavramları-esnek sunucu
 
@@ -43,7 +43,7 @@ Yüksek kullanılabilirlik yapılandırmasının sistem durumu, portalda sürekl
 
 PostgreSQL istemci uygulamaları, VERITABANı sunucu adı kullanılarak birincil sunucuya bağlanır. Uygulama okumaları doğrudan birincil sunucudan sunulur, ancak işlemeler ve yazma işlemleri yalnızca birincil sunucuda ve bekleme çoğaltmasındaki veriler kalıcı olduktan sonra uygulamaya onaylanır. Bu ek gidiş dönüş gereksiniminden dolayı, uygulamalar yazma ve işlemeler için yükseltilmiş gecikme süresi bekleyebilir. Portalda yüksek kullanılabilirlik durumunu izleyebilirsiniz.
 
-:::image type="content" source="./media/business-continuity/concepts-high-availability-steady-state.png" alt-text="bölge yedekli yüksek kullanılabilirlik"::: 
+:::image type="content" source="./media/business-continuity/concepts-high-availability-steady-state.png" alt-text="bölge yedekli yüksek kullanılabilirlik-sabit durum"::: 
 
 1. İstemciler esnek sunucuya bağlanır ve yazma işlemleri gerçekleştirir.
 2. Değişiklikler, bekleme sitesine çoğaltılır.
@@ -64,7 +64,7 @@ Planlanmış kapalı kalma süresi olayları, Azure zamanlanmış düzenli yazı
 
 Planlanmamış kesintiler, yazılım hatalarını veya altyapı bileşeni başarısızlıklarını, veritabanının kullanılabilirliğini etkiler. Sunucu kullanılamamız, izleme sistemi tarafından algılanırsa, bekleme çoğaltmasındaki çoğaltma devre dışı olur ve bekleme çoğaltması birincil veritabanı sunucusu olarak etkinleştirilir. İstemciler aynı bağlantı dizesini kullanarak veritabanı sunucusuna yeniden bağlanabilir ve işlemlerini sürdürür. Genel yük devretme süresinin 60-120s olması beklenir. Ancak, yük devretme sırasında büyük işlemler ve kurtarma süresi gibi birincil veritabanı sunucusundaki etkinliğe bağlı olarak, yük devretme daha uzun sürebilir.
 
-:::image type="content" source="./media/business-continuity/concepts-high-availability-failover-state.png" alt-text="bölge yedekli yüksek kullanılabilirlik"::: 
+:::image type="content" source="./media/business-continuity/concepts-high-availability-failover-state.png" alt-text="bölge yedekli yüksek kullanılabilirlik-yük devretme"::: 
 
 1. Birincil veritabanı sunucusu çalışmıyor ve istemciler veritabanı bağlantısını kaybeder. 
 2. Bekleme sunucusu, yeni birincil sunucu olmak üzere etkinleştirilir. İstemci, aynı bağlantı dizesini kullanarak yeni birincil sunucuya bağlanır. İstemci uygulamasının birincil veritabanı sunucusuyla aynı bölgede olması gecikmeyi azaltır ve performansı geliştirir.
@@ -112,6 +112,8 @@ Yüksek kullanılabilirlik ile yapılandırılan esnek sunucular, güncel tutmak
 -   Yönetilen bakım penceresi sırasında müşterinin başlattığı yönetim görevlerinin yapılandırılması zamanlanamaz.
 
 -   İşlemi ölçeklendirme ve depolamayı ölçeklendirme gibi planlı olaylar önce bekleyen çoğaltmada ve ardından da birincil sunucuda gerçekleşir. Hizmet yük devretmez. 
+
+-  Mantıksal kod çözme veya mantıksal çoğaltma, bir HA yapılandırılmış esnek sunucu ile yapılandırıldıysa, bekleme sunucusuna yük devretme durumunda mantıksal çoğaltma yuvaları, bekleme sunucusuna kopyalanmaz.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

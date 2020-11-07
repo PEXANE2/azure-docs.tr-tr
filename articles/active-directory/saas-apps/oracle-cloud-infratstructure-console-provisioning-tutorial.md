@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 7f34eca7ce92a2f465cc34bdde48ada15b21860d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 92aeedd25a4a60b49de54aaaa90ee4a31490c444
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515704"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359842"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Oracle bulut altyapı konsolunu yapılandırma
 
@@ -47,7 +47,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 ## <a name="step-2-configure-oracle-cloud-infrastructure-console-to-support-provisioning-with-azure-ad"></a>Adım 2. Oracle bulut altyapı konsolunu Azure AD ile sağlamayı destekleyecek şekilde yapılandırma
 
-1. Oracle bulut altyapısı konsolunun yönetici portalında oturum açın. Ekranın sol üst köşesinde **kimlik > Federasyonu**' ne gidin.
+1. Oracle bulut altyapısı konsolunun yönetici portalında oturum açın. Ekranın sol üst köşesinde **kimlik > Federasyonu** ' ne gidin.
 
     ![Oracle Yöneticisi](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/identity.png)
 
@@ -59,7 +59,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
     ![Oracle bulut simgesi](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/add.png)
 
-4. Uygulamanızı yapılandırmak için aşağıdaki ekran görüntülerini izleyin. Yapılandırma tamamlandıktan sonra **Kaydet**' e tıklayın.
+4. Uygulamanızı yapılandırmak için aşağıdaki ekran görüntülerini izleyin. Yapılandırma tamamlandıktan sonra **Kaydet** ' e tıklayın.
 
     ![Oracle yapılandırması](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/configuration.png)
 
@@ -69,7 +69,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
     ![Oracle belirteci oluşturma](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/general-information.png)
 
-6. Gizli bir belirteç oluşturmak için istemci KIMLIĞINI ve istemci gizli anahtarını istemci **kimliği: Istemci parolası**biçiminde kodlayın. Gizli dizi belirtecini kaydedin. Bu değer, Azure portal Oracle bulut altyapısı konsol uygulamanızın sağlama sekmesinde bulunan **gizli dizi belirteci** alanına girilecektir.
+6. Gizli bir belirteç oluşturmak için istemci KIMLIĞINI ve istemci gizli anahtarını istemci **kimliği: Istemci parolası** biçiminde kodlayın. Gizli dizi belirtecini kaydedin. Bu değer, Azure portal Oracle bulut altyapısı konsol uygulamanızın sağlama sekmesinde bulunan **gizli dizi belirteci** alanına girilecektir.
 
 ## <a name="step-3-add-oracle-cloud-infrastructure-console-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD Uygulama Galerisi 'nden Oracle bulut altyapısı konsolunu ekleme
 
@@ -79,7 +79,7 @@ Oracle bulut altyapısı konsoluna sağlamayı yönetmeye başlamak için Azure 
 
 Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun özniteliklerine göre hazırlanacak kişilerin kapsamını belirlemenizi sağlar. Uygulamanız için hazırlanacak kişilerin kapsamını atamaya göre belirlemeyi seçerseniz kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Hazırlanacak kişilerin kapsamını yalnızca kullanıcı veya grup özniteliklerine göre belirlemeyi seçerseniz [burada](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) anlatılan kapsam belirleme filtresini kullanabilirsiniz. 
 
-* Oracle bulut altyapısı konsoluna Kullanıcı ve grup atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
+* Oracle bulut altyapısı konsoluna Kullanıcı ve grup atarken **varsayılan erişim** dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
 
 * Başlangıçta kapsamı sınırlı tutun. Herkesi hazırlamadan önce birkaç kullanıcı ve grupla test yapın. Hazırlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında uygulamaya bir veya iki kullanıcı ya da grup atayarak bu adımı kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında [öznitelik tabanlı kapsam filtresi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) belirtebilirsiniz. 
 
@@ -90,11 +90,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-oracle-cloud-infrastructure-console-in-azure-ad"></a>Azure AD 'de Oracle bulut altyapısı konsoluna yönelik otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Oracle Cloud Infrastructure konsolu**' nu seçin.
+2. Uygulamalar listesinde **Oracle Cloud Infrastructure konsolu** ' nu seçin.
 
     ![Uygulamalar listesinde Oracle Cloud Infrastructure konsol bağlantısı](common/all-applications.png)
 
@@ -102,11 +102,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünde **kiracı URL** 'sini biçimde girin `https://<IdP ID>.identity.oraclecloud.com/admin/v1` . Örneğin, `https://idcs-0bfd023ff2xx4a98a760fa2c31k92b1d.identity.oraclecloud.com/admin/v1`. Gizli belirteç değerini **gizli belirteçte**daha önce alındı olarak girin. Azure AD 'nin Oracle bulut altyapısı konsoluna bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Oracle Cloud Infrastructure konsolu hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünde **kiracı URL** 'sini biçimde girin `https://<IdP ID>.identity.oraclecloud.com/admin/v1` . Örneğin, `https://idcs-0bfd023ff2xx4a98a760fa2c31k92b1d.identity.oraclecloud.com/admin/v1`. Gizli belirteç değerini **gizli belirteçte** daha önce alındı olarak girin. Azure AD 'nin Oracle bulut altyapısı konsoluna bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Oracle Cloud Infrastructure konsolu hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Ekran görüntüsü, kiracı U R L ve gizli belirteç girebileceğiniz yönetici kimlik bilgileri iletişim kutusunu gösterir.](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/provisioning.png)
 
@@ -114,9 +114,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’i seçin.
+7. **Kaydet** ’i seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Oracle bulut altyapısı konsolu ile eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Oracle bulut altyapısı konsolu ile eşitler** ' ı seçin.
 
 9. **Öznitelik eşleme** bölümünde, Azure AD 'Den Oracle bulut altyapısı konsoluna eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Oracle bulut altyapısı konsolundaki Kullanıcı hesaplarıyla eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](../app-provisioning/customize-application-attributes.md)değiştirmeyi seçerseniz, Oracle bulut altyapısı konsolu API 'sinin, bu özniteliğe göre kullanıcıların filtrelemesini desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -145,7 +145,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
       |urn: IETF: params: Scim: schemas: Oracle: IDCs: Extension: User: User: bypassNotification|Boole|
       |urn: IETF: params: Scim: schemas: Oracle: IDCs: Extension: User: User: ısfederateduser|Boole|
 
-10. **Eşlemeler** bölümünde, **Azure Active Directory grupları Oracle bulut altyapısı konsolu olarak eşitler**' ı seçin.
+10. **Eşlemeler** bölümünde, **Azure Active Directory grupları Oracle bulut altyapısı konsolu olarak eşitler** ' ı seçin.
 
 11. **Öznitelik eşleme** bölümünde, Azure AD 'Den Oracle bulut altyapısı konsoluna eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Oracle bulut altyapısı konsolundaki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -165,7 +165,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

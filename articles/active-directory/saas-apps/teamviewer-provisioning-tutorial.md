@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: a2113130cdfb41152b03e87606b757a3fa61793f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 5f26746cbe88a01503c1d6c481a9a938a660c05a
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521127"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359332"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için TeamViewer 'ı yapılandırma
 
@@ -46,11 +46,11 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 ## <a name="step-2-configure-teamviewer-to-support-provisioning-with-azure-ad"></a>Adım 2. Azure AD ile sağlamayı desteklemek için TeamViewer 'ı yapılandırma
 
-1. [TeamViewer Yönetim konsolunda](https://login.teamviewer.com)oturum açın. **Profili Düzenle**' ye gidin.
+1. [TeamViewer Yönetim konsolunda](https://login.teamviewer.com)oturum açın. **Profili Düzenle** ' ye gidin.
 
     ![TeamViewer Yönetici Konsolu](./media/teamviewer-provisioning-tutorial/admin.png)
 
-2.  **Uygulamalar**' a gidin. **Betik belirteci oluştur**' a tıklayın.
+2.  **Uygulamalar** ' a gidin. **Betik belirteci oluştur** ' a tıklayın.
 
     ![TeamViewer oluşturma belirteci](./media/teamviewer-provisioning-tutorial/createtoken.png)
 
@@ -58,7 +58,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
     ![TeamViewer belirteç adı](./media/teamviewer-provisioning-tutorial/tokenname.png)
 
-4. **Belirteci** kopyalayın ve **Tamam**' a tıklayın. Bu değer, Azure portal TeamViewer uygulamanızın **gizli belirteç** alanına girilecektir.
+4. **Belirteci** kopyalayın ve **Tamam** ' a tıklayın. Bu değer, Azure portal TeamViewer uygulamanızın **gizli belirteç** alanına girilecektir.
 
     ![TeamViewer belirteci](./media/teamviewer-provisioning-tutorial/token.png)
 
@@ -70,7 +70,7 @@ Azure AD uygulama galerisinden TeamViewer ekleyerek TeamViewer 'a sağlamayı y�
 
 Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun özniteliklerine göre hazırlanacak kişilerin kapsamını belirlemenizi sağlar. Uygulamanız için hazırlanacak kişilerin kapsamını atamaya göre belirlemeyi seçerseniz kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Hazırlanacak kişilerin kapsamını yalnızca kullanıcı veya grup özniteliklerine göre belirlemeyi seçerseniz [burada](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) anlatılan kapsam belirleme filtresini kullanabilirsiniz. 
 
-* TeamViewer 'a Kullanıcı ve grup atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
+* TeamViewer 'a Kullanıcı ve grup atarken **varsayılan erişim** dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
 
 * Başlangıçta kapsamı sınırlı tutun. Herkesi hazırlamadan önce birkaç kullanıcı ve grupla test yapın. Hazırlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında uygulamaya bir veya iki kullanıcı ya da grup atayarak bu adımı kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında [öznitelik tabanlı kapsam filtresi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) belirtebilirsiniz. 
 
@@ -81,11 +81,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-teamviewer-in-azure-ad"></a>Azure AD 'de TeamViewer için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **TeamViewer**' ı seçin.
+2. Uygulamalar listesinde **TeamViewer** ' ı seçin.
 
     ![Uygulamalar listesindeki TeamViewer bağlantısı](common/all-applications.png)
 
@@ -93,11 +93,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** Bölümü ' nün altında, `ttps://webapi.teamviewer.com/scim/v2` eski **URL** alanına girip, daha önce **gizli bir belirteçte**oluşturulan betik belirtecini girin. Azure AD 'nin TeamViewer 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, TeamViewer hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** Bölümü ' nün altında, `ttps://webapi.teamviewer.com/scim/v2` eski **URL** alanına girip, daha önce **gizli bir belirteçte** oluşturulan betik belirtecini girin. Azure AD 'nin TeamViewer 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, TeamViewer hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Ekran görüntüsü, kiracı U R L ve gizli belirteç girebileceğiniz yönetici kimlik bilgileri iletişim kutusunu gösterir.](./media/teamViewer-provisioning-tutorial/provisioning.png)
 
@@ -105,9 +105,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’i seçin.
+7. **Kaydet** ’i seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory kullanıcıları TeamViewer**' ya eşitler ' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory kullanıcıları TeamViewer** ' ya eşitler ' ı seçin.
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'den TeamViewer 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için TeamViewer 'daki Kullanıcı hesaplarını eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](../app-provisioning/customize-application-attributes.md)değiştirmeyi seçerseniz, TeamViewer API 'sinin bu özniteliğe göre kullanıcıların filtrelenmesini desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -127,7 +127,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+13. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

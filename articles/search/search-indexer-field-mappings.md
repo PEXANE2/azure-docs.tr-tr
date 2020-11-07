@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a20b6509973c7dc7e54d2e4f702175ad61e88da8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 579d0e334b4e60815b3a5efc877833ab75a3375d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532509"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358941"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Azure Bilişsel Arama Dizinleyicileri kullanarak alan eşlemeleri ve dönüştürmeler
 
@@ -28,7 +28,7 @@ Alan eşlemelerinin yararlı olduğu bazı durumlar:
 * Veri kaynağınız adlı bir alana sahip `_id` , ancak Azure bilişsel arama alt çizgiyle başlayan alan adlarına izin vermiyor. Alan eşleme, bir alanı etkili bir şekilde yeniden adlandırmanızı sağlar.
 * Aynı veri kaynağı verilerinden dizindeki çeşitli alanları doldurmak istiyorsunuz. Örneğin, bu alanlara farklı çözümleyiciler uygulamak isteyebilirsiniz.
 * Bir dizin alanını birden fazla veri kaynağından alınan verilerle doldurmak istiyorsunuz ve veri kaynakları her biri farklı alan adları kullanır.
-* Verilerinizi Base64 olarak kodlamanız veya kodu çözmelisiniz. Alan eşlemeleri, Base64 kodlaması ve kod çözme işlevleri dahil olmak üzere çeşitli **eşleme işlevlerini**destekler.
+* Verilerinizi Base64 olarak kodlamanız veya kodu çözmelisiniz. Alan eşlemeleri, Base64 kodlaması ve kod çözme işlevleri dahil olmak üzere çeşitli **eşleme işlevlerini** destekler.
 
 > [!NOTE]
 > Dizin oluşturucularda alan eşlemeleri, veri alanlarını dizin alanlarıyla eşlemenin basit bir yoludur. bu sayede, hafif veri dönüştürme özelliği de vardır. Daha karmaşık veriler, dizini oluşturmak için kullanılan bir biçime yeniden şekillendirmek üzere ön işleme gerektirebilir. Göz önünde bulundurmanız gerekebilecek bir seçenek [Azure Data Factory](../data-factory/index.yml).
@@ -81,7 +81,7 @@ Kaynak alana, birden çok alan eşlemesinde başvurulabilir. Aşağıdaki örnek
 
 ## <a name="map-fields-using-the-net-sdk"></a>.NET SDK kullanarak alanları eşleme
 
-.NET SDK 'da, özelliklere [FieldMapping](/dotnet/api/microsoft.azure.search.models.fieldmapping) `SourceFieldName` ve `TargetFieldName` isteğe bağlı bir başvuruya sahip FieldMapping sınıfını kullanarak alan eşlemelerini tanımlarsınız `MappingFunction` .
+.NET SDK 'da, özelliklere [FieldMapping](/dotnet/api/azure.search.documents.indexes.models.fieldmapping) `SourceFieldName` ve `TargetFieldName` isteğe bağlı bir başvuruya sahip FieldMapping sınıfını kullanarak alan eşlemelerini tanımlarsınız `MappingFunction` .
 
 Özelliği doğrudan ayarlayarak Dizin Oluşturucuyu veya daha yenisini oluştururken alan eşlemelerini belirtebilirsiniz `Indexer.FieldMappings` .
 
@@ -215,7 +215,7 @@ Aşağıdaki tabloda, dizenin farklı Base64 kodlamaları karşılaştırılmakt
 | Doldurma ile Base64 | `MDA+MDA/MDA=` | URL-güvenli karakterler kullanın ve doldurmayı kaldırın | Standart Base64 karakterlerini kullanın ve doldurma ekleyin |
 | Doldurma olmadan Base64 | `MDA+MDA/MDA` | URL kullanımı güvenli karakterler | Standart Base64 karakterlerini kullan |
 | URL-doldurma ile güvenli Base64 | `MDA-MDA_MDA=` | Doldurmayı kaldır | Doldurma Ekle |
-| URL-doldurma olmadan güvenli Base64 | `MDA-MDA_MDA` | Hiçbiri | Hiçbiri |
+| URL-doldurma olmadan güvenli Base64 | `MDA-MDA_MDA` | Yok | Yok |
 
 <a name="extractTokenAtPositionFunction"></a>
 

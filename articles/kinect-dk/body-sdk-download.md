@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, Kinect, SDK, indirme güncelleştirme, en son, kullanılabilir, yükleme, gövde, izleme
-ms.openlocfilehash: e3f8233d208e2a45c1af9a52a76b6064b15bfe4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ac0598d893617f341b9e1fd4d45c0c3e3f3c619
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85277728"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359604"
 ---
 # <a name="download-azure-kinect-body-tracking-sdk"></a>Azure Kinect gövde Izleme SDK 'sını indirin
 
@@ -41,7 +41,7 @@ Sürüm       | İndir
 
 Şu anda desteklenen tek dağıtım Ubuntu 18,04 ' dir. Diğer dağıtımlar için destek istemek için [Bu sayfaya](https://aka.ms/azurekinectfeedback)bakın.
 
-İlk olarak, [buradaki](https://docs.microsoft.com/windows-server/administration/linux-package-repository-for-microsoft-software)yönergeleri izleyerek [Microsoft 'un paket deposunu](https://packages.microsoft.com/)yapılandırmanız gerekecektir.
+İlk olarak, [buradaki](/windows-server/administration/linux-package-repository-for-microsoft-software)yönergeleri izleyerek [Microsoft 'un paket deposunu](https://packages.microsoft.com/)yapılandırmanız gerekecektir.
 
 `libk4abt<major>.<minor>-dev`Paket, oluşturulacak üst bilgileri ve CMake dosyalarını içerir `libk4abt` .
 `libk4abt<major>.<minor>`Paket, `libk4abt` örnek görüntüleyiciye ve ayrıca bağlı olan yürütülebilir dosyaları çalıştırmak için gereken paylaşılan nesneleri içerir.

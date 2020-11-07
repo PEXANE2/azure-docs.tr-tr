@@ -6,16 +6,16 @@ author: cmmdesai
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: a1428a92857f48920c86ed7a3f0719fa42b38b24
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c65fddcc90b25f70759fb038a72dad0facfa99a9
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072042"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359740"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>Öğretici: Azure AD 'den Workday 'ye öznitelik geri yazmayı yapılandırma
 Bu öğreticinin amacı, Azure AD 'deki öznitelikleri Workday 'e geri yazma için gerçekleştirmeniz gereken adımları gösteriyoruz. Workday geri yazma sağlama uygulaması, aşağıdaki Workday özniteliklerine değer atanmasını destekler:
@@ -54,17 +54,17 @@ Kullanıcı e-posta adreslerinin ve Kullanıcı adının Azure Active Directory 
 
 1. <https://portal.azure.com> öğesine gidin.
 
-2. Azure portal, araması yapın ve **Azure Active Directory**seçin.
+2. Azure portal, araması yapın ve **Azure Active Directory** seçin.
 
-3. **Kuruluş uygulamaları**' nı ve ardından **tüm uygulamalar**' ı seçin.
+3. **Kuruluş uygulamaları** ' nı ve ardından **tüm uygulamalar** ' ı seçin.
 
-4. **Uygulama Ekle**' yi seçin, ardından **Tüm** kategorisini seçin.
+4. **Uygulama Ekle** ' yi seçin, ardından **Tüm** kategorisini seçin.
 
-5. **Workday geri yazma**araması yapın ve bu uygulamayı Galeriden ekleyin.
+5. **Workday geri yazma** araması yapın ve bu uygulamayı Galeriden ekleyin.
 
-6. Uygulama eklendikten ve Uygulama Ayrıntıları Ekranı gösterildikten sonra **sağlama**' yı seçin.
+6. Uygulama eklendikten ve Uygulama Ayrıntıları Ekranı gösterildikten sonra **sağlama** ' yı seçin.
 
-7. **Sağlama** **modunu** **Otomatik**olarak değiştirin.
+7. **Sağlama** **modunu** **Otomatik** olarak değiştirin.
 
 8. **Yönetici kimlik bilgileri** bölümünü aşağıdaki şekilde doldurun:
 
@@ -82,7 +82,7 @@ Kullanıcı e-posta adreslerinin ve Kullanıcı adının Azure Active Directory 
 
 Bu bölümde, geri yazma özniteliklerinin Azure AD 'den Workday 'e nasıl akabildiğini yapılandıracaksınız. 
 
-1. **Eşlemeler**altındaki sağlama sekmesinde, eşleme adına tıklayın.
+1. **Eşlemeler** altındaki sağlama sekmesinde, eşleme adına tıklayın.
 
 2. **Kaynak nesne kapsamı** alanında, Azure Active Directory ' deki Kullanıcı kümelerinin geri yazmanın parçası olması gerekir. Varsayılan kapsam, "Azure AD 'deki tüm kullanıcılar" dır.
 
@@ -142,18 +142,18 @@ Workday sağlama uygulama yapılandırması tamamlandıktan sonra, Azure portal 
 > [!TIP]
 > Varsayılan olarak, sağlama hizmetini açtığınızda kapsamdaki tüm kullanıcılar için sağlama işlemleri başlatılır. Eşleme veya Workday veri sorunlarında hatalar varsa, sağlama işi başarısız olabilir ve karantina durumuna geçebilir. Bunu önlemek için, en iyi uygulama olarak, tüm kullanıcılar için tam eşitlemeyi başlatmadan önce, **kaynak nesne kapsamı** filtresini ve öznitelik eşlemelerinizi test eden birkaç test kullanıcıyla test etmenizi öneririz. Eşlemelerin çalıştığını ve size istenen sonuçları vermiş olduktan sonra, filtreyi kaldırabilir ya da daha fazla kullanıcı eklemek için onu kademeli olarak genişletebilirsiniz.
 
-1. **Sağlama** sekmesinde, **sağlama durumunu** **Açık**olarak ayarlayın.
+1. **Sağlama** sekmesinde, **sağlama durumunu** **Açık** olarak ayarlayın.
 
-1. **Kapsam** açılan menüsünde **tüm kullanıcıları ve grupları Eşitle**' yi seçin. Bu seçenekle, geri yazma uygulaması tüm kullanıcıların eşlenen özniteliklerini Azure AD 'den Workday 'e yazacak ve **eşleme**  ->  **kaynak nesne kapsamı**altında tanımlanan kapsam kurallarına tabidir. 
+1. **Kapsam** açılan menüsünde **tüm kullanıcıları ve grupları Eşitle** ' yi seçin. Bu seçenekle, geri yazma uygulaması tüm kullanıcıların eşlenen özniteliklerini Azure AD 'den Workday 'e yazacak ve **eşleme**  ->  **kaynak nesne kapsamı** altında tanımlanan kapsam kurallarına tabidir. 
 
    > [!div class="mx-imgBorder"]
    > ![Geri yazma kapsamını Seç](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)
 
    > [!NOTE]
-   > Workday geri yazma sağlama uygulaması **yalnızca atanan kullanıcı ve grupları Eşitle**seçeneğini desteklemez.
+   > Workday geri yazma sağlama uygulaması **yalnızca atanan kullanıcı ve grupları Eşitle** seçeneğini desteklemez.
  
 
-2. **Kaydet**’e tıklayın.
+2. **Kaydet** ’e tıklayın.
 
 3. Bu işlem, kaynak dizinde kaç Kullanıcı olduğuna bağlı olarak değişken sayıda saat sürebilen ilk eşitlemeyi başlatacak. İlerleme çubuğunu, eşitleme döngüsünün ilerlemesini izlemek için kontrol edebilirsiniz. 
 
@@ -166,7 +166,7 @@ Workday sağlama uygulama yapılandırması tamamlandıktan sonra, Azure portal 
 
 ## <a name="known-issues-and-limitations"></a>Bilinen sorunlar ve sınırlamalar
 
-* Geri yazma uygulaması, **Communication_Usage_Type_ID** ve **Phone_Device_Type_ID**parametreleri için önceden tanımlanmış bir değer kullanır. Workday kiracınız Bu öznitelikler için farklı bir değer kullanıyorsa geri yazma işlemi başarısız olur. Önerilen bir geçici çözüm, Workday 'deki Type_IDs güncelleştirbir çözümdür. 
+* Geri yazma uygulaması, **Communication_Usage_Type_ID** ve **Phone_Device_Type_ID** parametreleri için önceden tanımlanmış bir değer kullanır. Workday kiracınız Bu öznitelikler için farklı bir değer kullanıyorsa geri yazma işlemi başarısız olur. Önerilen bir geçici çözüm, Workday 'deki Type_IDs güncelleştirbir çözümdür. 
 * Geri yazma uygulaması, ikincil telefon numaralarını güncelleştirecek şekilde yapılandırıldığında, Workday 'deki mevcut ikincil telefon numarasının yerini almaz. Çalışan kaydına bir tane daha ikincil telefon numarası ekler. Bu davranışa geçici bir çözüm yoktur. 
 
 

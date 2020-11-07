@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: ebbcb8dd8c895c61858952fbd4498bd57e06d36b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 6643ec72ec5126866b0ad6e924a92f02170bd278
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92448682"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359672"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için G Suite 'i yapılandırma
 
@@ -40,7 +40,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem G Suit
 > * G Suite 'te grupları ve grup üyeliklerini sağlama
 > * G Suite ['Te çoklu oturum açma](./google-apps-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -58,15 +58,15 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 Azure AD ile otomatik Kullanıcı sağlama için G Suite 'i yapılandırmadan önce, G Suite üzerinde SCıM sağlamasını etkinleştirmeniz gerekir.
 
-1. [G Suite yönetici konsolunda](https://admin.google.com/) Yönetici hesabınızla oturum açın ve ardından **güvenlik**' i seçin. Bağlantıyı görmüyorsanız, ekranın alt kısmındaki **daha fazla denetim** menüsünde gizli olabilir.
+1. [G Suite yönetici konsolunda](https://admin.google.com/) Yönetici hesabınızla oturum açın ve ardından **güvenlik** ' i seçin. Bağlantıyı görmüyorsanız, ekranın alt kısmındaki **daha fazla denetim** menüsünde gizli olabilir.
 
     ![G Suite güvenliği](./media/google-apps-provisioning-tutorial/gapps-security.png)
 
-2. **Güvenlik** sayfasında **API başvurusu**' nu seçin.
+2. **Güvenlik** sayfasında **API başvurusu** ' nu seçin.
 
     ![G Suite API 'SI](./media/google-apps-provisioning-tutorial/gapps-api.png)
 
-3. **API erişimini etkinleştir**' i seçin.
+3. **API erişimini etkinleştir** ' i seçin.
 
     ![G Suite API 'SI etkin](./media/google-apps-provisioning-tutorial/gapps-api-enabled.png)
 
@@ -75,15 +75,15 @@ Azure AD ile otomatik Kullanıcı sağlama için G Suite 'i yapılandırmadan ö
 
 4. İstediğiniz özel etki alanlarınızı Azure AD ile ekledikten ve doğruladıktan sonra, bunları G Suite ile yeniden doğrulamanız gerekir. G Suite 'teki etki alanlarını doğrulamak için aşağıdaki adımlara bakın:
 
-    a. [G Suite yönetici konsolunda](https://admin.google.com/) **etki alanları**' nı seçin.
+    a. [G Suite yönetici konsolunda](https://admin.google.com/) **etki alanları** ' nı seçin.
 
     ![G Suite etki alanları](./media/google-apps-provisioning-tutorial/gapps-domains.png)
 
-    b. **Etki alanı veya etki alanı diğer adı Ekle**' yi seçin.
+    b. **Etki alanı veya etki alanı diğer adı Ekle** ' yi seçin.
 
     ![G Suite etki alanı Ekle](./media/google-apps-provisioning-tutorial/gapps-add-domain.png)
 
-    c. **Başka bir etki alanı Ekle**' yi seçin ve sonra eklemek istediğiniz etki alanının adını yazın.
+    c. **Başka bir etki alanı Ekle** ' yi seçin ve sonra eklemek istediğiniz etki alanının adını yazın.
 
     ![G Suite başka bir Ekle](./media/google-apps-provisioning-tutorial/gapps-add-another.png)
 
@@ -91,7 +91,7 @@ Azure AD ile otomatik Kullanıcı sağlama için G Suite 'i yapılandırmadan ö
 
     e. G Suite 'e eklemek istediğiniz diğer etki alanları için önceki adımları tekrarlayın.
 
-5. Sonra, G Suite 'de Kullanıcı sağlamayı yönetmek için kullanmak istediğiniz yönetici hesabı ' nı saptayın. **Yönetici rolleri**' ne gidin.
+5. Sonra, G Suite 'de Kullanıcı sağlamayı yönetmek için kullanmak istediğiniz yönetici hesabı ' nı saptayın. **Yönetici rolleri** ' ne gidin.
 
     ![G Suite Yöneticisi](./media/google-apps-provisioning-tutorial/gapps-admin.png)
 
@@ -107,7 +107,7 @@ Azure AD uygulama galerisinden g Suite 'i, G Suite 'e sağlamayı yönetmeye ba�
 
 Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun özniteliklerine göre hazırlanacak kişilerin kapsamını belirlemenizi sağlar. Uygulamanız için hazırlanacak kişilerin kapsamını atamaya göre belirlemeyi seçerseniz kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Hazırlanacak kişilerin kapsamını yalnızca kullanıcı veya grup özniteliklerine göre belirlemeyi seçerseniz [burada](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) anlatılan kapsam belirleme filtresini kullanabilirsiniz. 
 
-* G Suite 'e Kullanıcı ve grup atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
+* G Suite 'e Kullanıcı ve grup atarken **varsayılan erişim** dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
 
 * Başlangıçta kapsamı sınırlı tutun. Herkesi hazırlamadan önce birkaç kullanıcı ve grupla test yapın. Hazırlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında uygulamaya bir veya iki kullanıcı ya da grup atayarak bu adımı kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında [öznitelik tabanlı kapsam filtresi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) belirtebilirsiniz. 
 
@@ -121,31 +121,31 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>Azure AD 'de G Suite için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin. Kullanıcıların portal.azure.com 'de oturum açması ve aad.portal.azure.com kullanamayacak şekilde,
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin. Kullanıcıların portal.azure.com 'de oturum açması ve aad.portal.azure.com kullanamayacak şekilde,
 
     ![Kurumsal uygulamalar dikey penceresi](./media/google-apps-provisioning-tutorial/enterprise-applications.png)
 
     ![Tüm uygulamalar dikey penceresi](./media/google-apps-provisioning-tutorial/all-applications.png)
 
-2. Uygulamalar listesinde, **G Suite**' i seçin.
+2. Uygulamalar listesinde, **G Suite** ' i seçin.
 
     ![Uygulamalar listesindeki G Suite bağlantısı](common/all-applications.png)
 
-3. **Sağlama** sekmesini seçin. **Başlarken**' e tıklayın.
+3. **Sağlama** sekmesini seçin. **Başlarken** ' e tıklayın.
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
       ![Kullanmaya başlama dikey penceresi](./media/google-apps-provisioning-tutorial/get-started.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünde **Yetkilendir**' e tıklayın. Yeni bir tarayıcı penceresinde bir Google yetkilendirmesi iletişim kutusuna yönlendirilirsiniz.
+5. **Yönetici kimlik bilgileri** bölümünde **Yetkilendir** ' e tıklayın. Yeni bir tarayıcı penceresinde bir Google yetkilendirmesi iletişim kutusuna yönlendirilirsiniz.
 
       ![G Suite yetkilendirme](./media/google-apps-provisioning-tutorial/authorize-1.png)
 
-6. G Suite kiracınızda değişiklik yapmak için Azure AD izinleri vermek istediğinizi onaylayın. **Kabul Et**’i seçin.
+6. G Suite kiracınızda değişiklik yapmak için Azure AD izinleri vermek istediğinizi onaylayın. **Kabul Et** ’i seçin.
 
      ![G Suite Kiracı kimlik doğrulaması](./media/google-apps-provisioning-tutorial/gapps-auth.png)
 
@@ -155,9 +155,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’i seçin.
+7. **Kaydet** ’i seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları sağla**' yı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları sağla** ' yı seçin.
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'Den G Suite 'e eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için G Suite içindeki kullanıcı hesaplarıyla eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](../app-provisioning/customize-application-attributes.md)değiştirmeyi seçerseniz, G SUITE API 'sinin kullanıcıları bu özniteliğe göre filtrelemeyi desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -238,7 +238,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
    |siteleriniz. [tür EQ "iş"]. değer|Dize|
    
 
-10. **Eşlemeler** bölümünde **Azure Active Directory grupları sağla**' yı seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory grupları sağla** ' yı seçin.
 
 11. **Öznitelik eşleme** bölümünde Azure AD 'Den G Suite 'e eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için G Suite grupları ile eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -259,7 +259,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

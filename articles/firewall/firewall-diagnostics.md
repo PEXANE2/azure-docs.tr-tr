@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 11/04/2020
 ms.author: victorh
-ms.openlocfilehash: 2899121db4b6a3f202be4860e2e4f43027cdef7c
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 2dd1b51c6bcdbc531661d9ecf45d3d0282eb5b45
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348778"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358856"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Azure Güvenlik Duvarı günlüklerini ve ölçümlerini izleme
 
@@ -50,74 +50,55 @@ Tanılama günlüğüne kaydetme işlemi etkinleştirildikten sonra verilerin g�
 8. Aboneliğinizi seçin.
 9. **Kaydet** ’i seçin.
 
-## <a name="enable-logging-with-powershell"></a>PowerShell ile günlüğe kaydetmeyi etkinleştirme
+## <a name="enable-diagnostic-logging-by-using-powershell"></a>PowerShell kullanarak tanılama günlüğünü etkinleştirme
 
 Etkinlik günlüğü tüm Kaynak Yöneticisi kaynakları için otomatik olarak etkinleştirilir. Bu günlükler aracılığıyla sunulan verileri toplamaya başlamak için tanılama günlüğüne kaydetme işlevinin etkinleştirilmesi gerekir.
 
-Tanılama günlüğüne kaydetmeyi etkinleştirmek için aşağıdaki adımları izleyin:
+Tanılama günlük kaydını PowerShell ile etkinleştirmek için aşağıdaki adımları kullanın:
 
-1. Günlük verilerinin depolandığı depolama hesabınızın kaynak kimliğini not edin. Bu değer şu biçimdedir: */Subscriptions/ \<subscriptionId\> /ResourceGroups/ \<resource group name\> /providers/Microsoft.Storage/storageAccounts/ \<storage account name\>*.
+1. Log Analytics çalışma alanı kaynak KIMLIĞINIZI, burada günlük verilerinin depolandığını aklınızda yapın. Bu değer şu biçimdedir: `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>` .
 
-   Aboneliğinizdeki herhangi bir depolama hesabını kullanabilirsiniz. Bu bilgileri Azure portalda bulabilirsiniz. Bu bilgiler kaynağın **Özellik** sayfasında yer alır.
+   Aboneliğinizdeki herhangi bir çalışma alanını kullanabilirsiniz. Bu bilgileri Azure portalda bulabilirsiniz. Bilgiler, kaynak **özellikleri** sayfasında bulunur.
 
-2. Günlüğe kaydetmenin etkinleştirildiği güvenlik duvarının kaynak kimliğini not edin. Bu değer şu biçimdedir: */Subscriptions/ \<subscriptionId\> /ResourceGroups/ \<resource group name\> /providers/Microsoft.Network/azureFirewalls/ \<Firewall name\>*.
+2. Günlüğe kaydetmenin etkinleştirildiği güvenlik duvarının kaynak kimliğini not edin. Bu değer şu biçimdedir: `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>` .
 
    Bu bilgileri portalda bulabilirsiniz.
 
-3. Tanılama günlüğüne kaydetmeyi etkinleştirmek için aşağıdaki PowerShell cmdlet'ini kullanın:
+3. Aşağıdaki PowerShell cmdlet 'ini kullanarak tüm Günlükler ve ölçümler için tanılama günlüğünü etkinleştirin:
 
-    ```powershell
-    Set-AzDiagnosticSetting  -ResourceId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name> `
-   -StorageAccountId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name> `
-   -Enabled $true     
-    ```
+   ```powershell
+   $diagSettings = @{
+      Name = 'toLogAnalytics'
+      ResourceId = '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>'
+      WorkspaceId = '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>'
+      Enabled = $true
+   }
+   Set-AzDiagnosticSetting  @diagSettings 
+   ```
 
-> [!TIP]
->Tanılama günlükleri için ayrı bir depolama hesabına gerek yoktur. Depolama alanının erişim ve performans günlüğü kaydı için kullanılması durumunda hizmet ücreti tahsil edilir.
-
-## <a name="enable-diagnostic-logging-by-using-azure-cli"></a>Azure CLı kullanarak tanılama günlüğünü etkinleştirme
+## <a name="enable-diagnostic-logging-by-using-the-azure-cli"></a>Azure CLı kullanarak tanılama günlüğünü etkinleştirme
 
 Etkinlik günlüğü tüm Kaynak Yöneticisi kaynakları için otomatik olarak etkinleştirilir. Bu günlükler aracılığıyla sunulan verileri toplamaya başlamak için tanılama günlüğüne kaydetme işlevinin etkinleştirilmesi gerekir.
 
-[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
+Azure CLı ile tanılama günlüğünü etkinleştirmek için aşağıdaki adımları kullanın:
 
-### <a name="enable-diagnostic-logging"></a>Tanılama günlüğünü etkinleştirme
+1. Log Analytics çalışma alanı kaynak KIMLIĞINIZI, burada günlük verilerinin depolandığını aklınızda yapın. Bu değer şu biçimdedir: `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>` .
 
-Tanılama günlük kaydını etkinleştirmek için aşağıdaki komutları kullanın.
+   Aboneliğinizdeki herhangi bir çalışma alanını kullanabilirsiniz. Bu bilgileri Azure portalda bulabilirsiniz. Bilgiler, kaynak **özellikleri** sayfasında bulunur.
 
-1. Tanılama günlüğünü etkinleştirmek için [az Monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) komutunu çalıştırın:
+2. Günlüğe kaydetmenin etkinleştirildiği güvenlik duvarının kaynak kimliğini not edin. Bu değer şu biçimdedir: `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>` .
 
-   ```azurecli
-   az monitor diagnostic-settings create –name AzureFirewallApplicationRule \
-     --resource Firewall07 --storage-account MyStorageAccount
+   Bu bilgileri portalda bulabilirsiniz.
+
+3. Aşağıdaki Azure CLı komutunu kullanarak tüm Günlükler ve ölçümler için tanılama günlüğünü etkinleştirin:
+
+   ```azurecli-interactive
+   az monitor diagnostic-settings create -n 'toLogAnalytics'
+      --resource '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>'
+      --workspace '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>'
+      --logs '[{\"category\":\"AzureFirewallApplicationRule\",\"Enabled\":true}, {\"category\":\"AzureFirewallNetworkRule\",\"Enabled\":true}, {\"category\":\"AzureFirewallDnsProxy\",\"Enabled\":true}]' 
+      --metrics '[{\"category\": \"AllMetrics\",\"enabled\": true}]'
    ```
-
-   Bir kaynağın tanılama ayarlarını görmek için [az Monitor Diagnostic-Settings List](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_list) komutunu çalıştırın:
-
-   ```azurecli
-   az monitor diagnostic-settings list --resource Firewall07
-   ```
-
-   Bir kaynağın etkin tanılama ayarlarını görmek için [az Monitor Diagnostic-Settings Show göster](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_show) ' i kullanın:
-
-   ```azurecli
-   az monitor diagnostic-settings show --name AzureFirewallApplicationRule --resource Firewall07
-   ```
-
-1. Ayarları güncelleştirmek için [az Monitor Diagnostic-Settings Update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) komutunu çalıştırın.
-
-   ```azurecli
-   az monitor diagnostic-settings update --name AzureFirewallApplicationRule --resource Firewall07 --set retentionPolicy.days=365
-   ```
-
-   Bir tanılama ayarını silmek için [az Monitor Diagnostic-Settings Delete](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_delete) komutunu kullanın.
-
-   ```azurecli
-   az monitor diagnostic-settings delete --name AzureFirewallApplicationRule --resource Firewall07
-   ```
-
-> [!TIP]
->Tanılama günlükleri için ayrı bir depolama hesabına gerek yoktur. Depolama alanının erişim ve performans günlüğü kaydı için kullanılması durumunda hizmet ücreti tahsil edilir.
 
 ## <a name="view-and-analyze-the-activity-log"></a>Etkinlik günlüğünü görüntüleme ve analiz etme
 
@@ -133,6 +114,8 @@ Aşağıdaki yöntemlerden birini kullanarak etkinlik günlüğü verilerini gö
 
 Azure Güvenlik Duvarı günlük Analizi örnek sorguları için bkz. [Azure Güvenlik Duvarı günlük Analizi örnekleri](log-analytics-samples.md).
 
+[Azure Güvenlik Duvarı çalışma kitabı](firewall-workbook.md) , Azure Güvenlik Duvarı veri analizi için esnek bir tuval sağlar. Azure portal içinde zengin görsel raporlar oluşturmak için kullanabilirsiniz. Azure üzerinde dağıtılan birden çok Güvenlik duvarınıza dokunabilir ve bunları Birleşik etkileşimli deneyimler halinde birleştirebilirsiniz.
+
 Dilerseniz depolama hesabınıza bağlanabilir ve JSON erişim günlüklerini ve performans günlüklerini alabilirsiniz. İndirdiğiniz JSON dosyalarını CSV biçimine dönüştürebilir ve Excel, Power BI veya diğer veri görselleştirme araçlarında görüntüleyebilirsiniz.
 
 > [!TIP]
@@ -144,5 +127,7 @@ Azure Güvenlik Duvarı ' na giderek **Izleme** **ölçüm** ' i seçin. Kullan�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Güvenlik duvarınızı günlükleri toplayacak şekilde yapılandırdığınıza göre, verilerinizi görüntülemek için Azure Izleyici günlüklerini keşfedebilirsiniz.
+
+[Azure Güvenlik Duvarı çalışma kitabını kullanarak günlükleri izleme](firewall-workbook.md)
 
 [Azure Izleyici günlüklerinde ağ izleme çözümleri](../azure-monitor/insights/azure-networking-analytics.md)

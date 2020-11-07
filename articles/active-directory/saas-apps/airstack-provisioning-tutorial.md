@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/18/2019
 ms.author: Zhchia
-ms.openlocfilehash: fcb971cd0bd0addd3190e2a3a5f9c6740494b7fd
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 3bfcd652572b989e98bf4c7cb717cb314dfbaaeb
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318957"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359893"
 ---
 # <a name="tutorial-configure-airstack-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Airstack 'i yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi kullanıcıları ve/veya grupları Airstac
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -50,7 +50,7 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 ## <a name="setup-airstack-for-provisioning"></a>Sağlama için Airstack kurulumu
 
-1. [Airstack Yönetici konsolunuza](https://airstack-qa.lenovosoftware.com/)oturum açın. **Ayarlar**' a gidin.
+1. [Airstack Yönetici konsolunuza](https://airstack-qa.lenovosoftware.com/)oturum açın. **Ayarlar** ' a gidin.
 
     ![Airstack Yönetici Konsolu](media/airstack-provisioning-tutorial/airstackadminmenu.png)
 
@@ -58,7 +58,7 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
     ![Airstack SCıM Ekle](media/airstack-provisioning-tutorial/azureconfig.png)
 
-3.  **Oluştur** düğmesine tıklayın. **Azure Için gizli dizi belirtecini**kopyalayın. Bu değer, Azure portal Airstack uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
+3.  **Oluştur** düğmesine tıklayın. **Azure Için gizli dizi belirtecini** kopyalayın. Bu değer, Azure portal Airstack uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
 
     ![Airstack oluşturma belirteci](media/airstack-provisioning-tutorial/generatetoken.png)
 
@@ -68,11 +68,11 @@ Azure AD ile otomatik Kullanıcı sağlama için Airstack 'i yapılandırmadan �
 
 **Azure AD Uygulama Galerisi 'nden Airstack eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -80,7 +80,7 @@ Azure AD ile otomatik Kullanıcı sağlama için Airstack 'i yapılandırmadan �
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **airstack**girin, sonuçlar panelinde **airstack** ' i seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **airstack** girin, sonuçlar panelinde **airstack** ' i seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
     ![Sonuçlar listesinde airstack](common/search-new-app.png)
 
@@ -93,11 +93,11 @@ Bu bölümde Azure AD sağlama hizmetini kullanarak Airstack 'te kullanıcılar�
 
 ### <a name="to-configure-automatic-user-provisioning-for-airstack-in-azure-ad"></a>Azure AD 'de Airstack için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Airstack**' i seçin.
+2. Uygulamalar listesinde **Airstack** ' i seçin.
 
     ![Uygulamalar listesindeki Airstack bağlantısı](common/all-applications.png)
 
@@ -105,21 +105,21 @@ Bu bölümde Azure AD sağlama hizmetini kullanarak Airstack 'te kullanıcılar�
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünün altında, `https://api-as.lenovosoftware.com/0/as/common/scim` **kiracı URL 'sini**girin. **Gizli belirteçte**daha önce alınan **SCIM kimlik doğrulama belirteci** değerini girin. Azure AD 'nin Airstack 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Airstack hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünün altında, `https://api-as.lenovosoftware.com/0/as/common/scim` **kiracı URL 'sini** girin. **Gizli belirteçte** daha önce alınan **SCIM kimlik doğrulama belirteci** değerini girin. Azure AD 'nin Airstack 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Airstack hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’e tıklayın.
+7. **Kaydet** ’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Airstack ile eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Airstack ile eşitler** ' ı seçin.
 
     ![Airstack Kullanıcı eşlemeleri](media/airstack-provisioning-tutorial/mappings.png)
 
@@ -137,7 +137,7 @@ Bu bölümde Azure AD sağlama hizmetini kullanarak Airstack 'te kullanıcılar�
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+13. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

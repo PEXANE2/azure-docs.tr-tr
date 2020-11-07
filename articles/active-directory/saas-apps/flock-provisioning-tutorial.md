@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 636bb4c3340f13046706bf887119108b86b6a660
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01c3f6429d2a5c8443ac128d763033dc8c53cbc7
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850918"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359417"
 ---
 # <a name="tutorial-configure-flock-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Flock yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Flock 
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -52,17 +52,17 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 Azure AD ile otomatik Kullanıcı hazırlama için Flock 'ı yapılandırmadan önce, Flock üzerinde SCıM sağlamasını etkinleştirmeniz gerekir.
 
-1. [Flock](https://web.flock.com/?)'ta oturum açın. **Ayarlar simgesi**  >  **takımınızı yönetme**' ye tıklayın.
+1. [Flock](https://web.flock.com/?)'ta oturum açın. **Ayarlar simgesi**  >  **takımınızı yönetme** ' ye tıklayın.
 
     :::image type="content" source="media/flock-provisioning-tutorial/icon.png" alt-text="Flock Web sitesinin ekran görüntüsü. Ayarlar simgesi vurgulanır ve kısayol menüsü görünür olur. Bu menüde, takımınızı yönetin vurgulanacaktır." border="false":::
 
 2. **Kimlik doğrulama ve sağlama '** yı seçin.
 
-    :::image type="content" source="media/Flock-provisioning-tutorial/auth.png" alt-text="Flock Web sitesinin ekran görüntüsü. Ayarlar simgesi vurgulanır ve kısayol menüsü görünür olur. Bu menüde, takımınızı yönetin vurgulanacaktır." border="false":::
+    :::image type="content" source="media/Flock-provisioning-tutorial/auth.png" alt-text="Flock Web sitesindeki bir menünün ekran görüntüsü. Kimlik doğrulama ve sağlama öğesi vurgulanır." border="false":::
 
-3. **API belirtecini**kopyalayın. Bu değerler, Azure portal Flock uygulamanızın sağlama sekmesinde bulunan **gizli dizi belirteci** alanına girilecektir.
+3. **API belirtecini** kopyalayın. Bu değerler, Azure portal Flock uygulamanızın sağlama sekmesinde bulunan **gizli dizi belirteci** alanına girilecektir.
 
-    :::image type="content" source="media/Flock-provisioning-tutorial/provisioning.png" alt-text="Flock Web sitesinin ekran görüntüsü. Ayarlar simgesi vurgulanır ve kısayol menüsü görünür olur. Bu menüde, takımınızı yönetin vurgulanacaktır." border="false":::
+    :::image type="content" source="media/Flock-provisioning-tutorial/provisioning.png" alt-text="Flock Web sitesindeki sağlama sekmesinin ekran görüntüsü. Bir P I belirteci altında, bir değer vurgulanır. Belirtecin yanında bir kopya belirteci düğmesi bulunur." border="false":::
 
 
 ## <a name="add-flock--from-the-gallery"></a>Galeriden Flock ekleyin
@@ -71,11 +71,11 @@ Azure AD ile otomatik Kullanıcı sağlama için Flock 'u yapılandırmak üzere
 
 **Azure AD Uygulama Galerisi 'nden Flock eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -83,7 +83,7 @@ Azure AD ile otomatik Kullanıcı sağlama için Flock 'u yapılandırmak üzere
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Flock**girin, sonuçlar panelinde **Flock** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **Flock** girin, sonuçlar panelinde **Flock** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
     ![Sonuçlar listesinde Flock](common/search-new-app.png)
 
@@ -96,11 +96,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grup a
 
 ### <a name="to-configure-automatic-user-provisioning-for-flock--in-azure-ad"></a>Azure AD 'de Flock için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Flock**' u seçin.
+2. Uygulamalar listesinde **Flock** ' u seçin.
 
     ![Uygulamalar listesindeki Flock bağlantısı](common/all-applications.png)
 
@@ -108,7 +108,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grup a
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -116,13 +116,13 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grup a
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’e tıklayın.
+7. **Kaydet** ’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Flock olarak eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Flock olarak eşitler** ' ı seçin.
 
     ![Kullanıcı eşlemelerini Flock](media/flock-provisioning-tutorial/usermapping.png)
 
@@ -140,7 +140,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grup a
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-14. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+14. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

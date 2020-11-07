@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 98eae8b63b9eaaa8cff800bade091f4b5d36d005
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 754e23a7d3f4bdf27f273927a5bc3b3658940d90
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91255722"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359279"
 ---
 # <a name="tutorial-configure-templafy-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Templamy 'ı yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, Kullanıcı ve/veya grupları Templamy 'a
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -52,11 +52,11 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 Azure AD ile otomatik Kullanıcı sağlaması için Templamy 'ı yapılandırmadan önce, Templamy üzerinde SCıM sağlamasını etkinleştirmeniz gerekir.
 
-1. Templamy yönetici konsolunda oturum açın. **Yönetim**' e tıklayın.
+1. Templamy yönetici konsolunda oturum açın. **Yönetim** ' e tıklayın.
 
     ![Templamy Yönetici Konsolu](media/templafy-provisioning-tutorial/image00.png)
 
-2. **Kimlik doğrulama yöntemi**' ne tıklayın.
+2. **Kimlik doğrulama yöntemi** ' ne tıklayın.
 
     ![Kimlik doğrulama yöntemi seçeneği olarak adlandırılan Templamy yönetim bölümünün ekran görüntüsü.](media/templafy-provisioning-tutorial/image01.png)
 
@@ -70,11 +70,11 @@ Azure AD ile otomatik Kullanıcı sağlaması için Templamy 'ı yapılandırmak
 
 **Azure AD Uygulama Galerisi 'nden Templamy eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -82,7 +82,7 @@ Azure AD ile otomatik Kullanıcı sağlaması için Templamy 'ı yapılandırmak
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **templamy**yazın, sonuçlar panelinde **templamy** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **templamy** yazın, sonuçlar panelinde **templamy** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
     ![Sonuçlar listesinde templamy](common/search-new-app.png)
 
@@ -95,11 +95,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gr
 
 ### <a name="to-configure-automatic-user-provisioning-for-templafy-in-azure-ad"></a>Azure AD 'de Templamy otomatik Kullanıcı sağlamasını yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Templamy**' ı seçin.
+2. Uygulamalar listesinde **Templamy** ' ı seçin.
 
     ![Uygulamalar listesindeki Templamy bağlantısı](common/all-applications.png)
 
@@ -107,21 +107,21 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gr
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünün altında, `https://scim.templafy.com/scim` **kiracı URL 'sini**girin. **Gizli belirteçte**daha önce alınan **SCIM API anahtarı** değerini girin. Azure AD 'nin Templamy 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Templamy hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünün altında, `https://scim.templafy.com/scim` **kiracı URL 'sini** girin. **Gizli belirteçte** daha önce alınan **SCIM API anahtarı** değerini girin. Azure AD 'nin Templamy 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Templamy hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’e tıklayın.
+7. **Kaydet** ’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Şablonlarım**' a eşitler ' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Şablonlarım** ' a eşitler ' ı seçin.
 
     ![Templamy Kullanıcı eşlemeleri](media/templafy-provisioning-tutorial/usermapping.png)
 
@@ -129,7 +129,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gr
 
     ![Templamy Kullanıcı öznitelikleri](media/templafy-provisioning-tutorial/userattribute.png)
 
-10. **Eşlemeler** bölümünde, **Azure Active Directory grupları Şablonlarım**' a eşitler ' ı seçin.
+10. **Eşlemeler** bölümünde, **Azure Active Directory grupları Şablonlarım** ' a eşitler ' ı seçin.
 
     ![Templamy grup eşlemeleri](media/templafy-provisioning-tutorial/groupmapping.png)
 
@@ -147,7 +147,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gr
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

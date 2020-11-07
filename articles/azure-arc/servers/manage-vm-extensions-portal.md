@@ -1,18 +1,21 @@
 ---
 title: Azure portal 'ten VM uzantısını etkinleştir
 description: Bu makalede, karma bulut ortamlarında çalışan Azure Arc etkin sunucularına sanal makine uzantılarının Azure portal nasıl dağıtılacağı açıklanır.
-ms.date: 10/19/2020
+ms.date: 11/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: dcab7cb441c329a60b2c6fa3256aeedb2bb5b33d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 48d7d4085dce893d94436fe0c6be32cfeea9cda3
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92462992"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359094"
 ---
 # <a name="enable-azure-vm-extensions-from-the-azure-portal"></a>Azure portal Azure VM uzantılarını etkinleştirin
 
 Bu makalede, Azure Arc etkin sunucuları tarafından desteklenen Azure VM uzantılarını Azure portal aracılığıyla bir Linux veya Windows hibrit makinesine dağıtma ve kaldırma işlemi gösterilmektedir.
+
+> [!NOTE]
+> Key Vault VM Uzantısı (Önizleme), Azure portal dağıtımını desteklemez, yalnızca Azure CLı, Azure PowerShell veya Azure Resource Manager şablonu kullanılarak desteklenmez.
 
 ## <a name="enable-extensions-from-the-portal"></a>Portaldan uzantıları etkinleştirme
 
@@ -22,7 +25,7 @@ VM uzantıları, Azure portal aracılığıyla sunucu tarafından yönetilen mak
 
 2. Portalda, **sunucular-Azure Arc** ' a gidin ve listeden karma makinenizi seçin.
 
-3. **Uzantılar**' ı seçin ve **Ekle**' yi seçin. Kullanılabilir uzantılar listesinden istediğiniz uzantıyı seçin ve sihirbazdaki yönergeleri izleyin. Bu örnekte, Log Analytics VM uzantısını dağıtacağız.
+3. **Uzantılar** ' ı seçin ve **Ekle** ' yi seçin. Kullanılabilir uzantılar listesinden istediğiniz uzantıyı seçin ve sihirbazdaki yönergeleri izleyin. Bu örnekte, Log Analytics VM uzantısını dağıtacağız.
 
     ![Seçilen makine için VM Uzantısı Seç](./media/manage-vm-extensions/add-vm-extensions.png)
 
@@ -32,7 +35,7 @@ VM uzantıları, Azure portal aracılığıyla sunucu tarafından yönetilen mak
 
     Yüklemeyi gerçekleştirmek için çalışma alanı KIMLIĞI ve birincil anahtarı sağlamanız gerekir. Bu bilgilerin nasıl bulunacağını bilmiyorsanız bkz. [çalışma alanı kimliğini ve anahtarını alma](../../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key).
 
-4. Belirtilen gerekli bilgileri onayladıktan sonra **Oluştur**' u seçin. Dağıtımın bir özeti görüntülenir ve dağıtımın durumunu gözden geçirebilirsiniz.
+4. Belirtilen gerekli bilgileri onayladıktan sonra **Oluştur** ' u seçin. Dağıtımın bir özeti görüntülenir ve dağıtımın durumunu gözden geçirebilirsiniz.
 
 >[!NOTE]
 >Birden çok uzantı birlikte toplanmış ve işlenebilir olsa da, bunlar hizmet temelli olarak yüklenir. İlk uzantı yüklemesi tamamlandıktan sonra, sonraki uzantının yüklenmesi denenir.
@@ -45,7 +48,7 @@ Azure portal bir yay etkin sunucusundan bir veya daha fazla uzantıyı kaldırab
 
 2. Portalda, **sunucular-Azure Arc** ' a gidin ve listeden karma makinenizi seçin.
 
-3. **Uzantılar**' ı seçin ve ardından yüklü uzantılar listesinden bir uzantı seçin.
+3. **Uzantılar** ' ı seçin ve ardından yüklü uzantılar listesinden bir uzantı seçin.
 
 4. **Kaldır** ' ı seçin ve doğrulamanız istendiğinde, devam etmek için **Evet** ' i seçin.
 

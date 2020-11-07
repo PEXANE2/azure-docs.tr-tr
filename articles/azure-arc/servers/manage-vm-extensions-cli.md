@@ -1,15 +1,15 @@
 ---
 title: Azure CLı kullanarak VM uzantısını etkinleştirme
 description: Bu makalede, Azure CLı kullanarak hibrit bulut ortamlarında çalışan Azure Arc etkin sunucularına sanal makine uzantılarının nasıl dağıtılacağı açıklanır.
-ms.date: 10/19/2020
+ms.date: 11/06/2020
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 99504c86046c1ef34eeab500a703b9a028cb46fb
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 59c984f4adaec2261d1b08748aa5a91c8246418d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336742"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359124"
 ---
 # <a name="enable-azure-vm-extensions-using-the-azure-cli"></a>Azure CLı kullanarak Azure VM uzantılarını etkinleştirme
 
@@ -31,6 +31,12 @@ Aşağıdaki örnek, bir yay etkin sunucusunda özel betik uzantısının etkinl
 
 ```azurecli
 az connectedmachine machine-extension create --machine-name "myMachineName" --name "CustomScriptExtension" --location "eastus" --type "CustomScriptExtension" --publisher "Microsoft.Compute" --settings "{\"commandToExecute\":\"powershell.exe -c \\\"Get-Process | Where-Object { $_.CPU -gt 10000 }\\\"\"}" --type-handler-version "1.10" --resource-group "myResourceGroup"
+```
+
+Aşağıdaki örnek, bir yay etkin sunucusunda Key Vault VM uzantısını (Önizleme) sunar:
+
+```azurecli
+az connectedmachine machine-extension create --resource-group "resourceGroupName" --machine-name "myMachineName" --location "regionName" --publisher "Microsoft.Azure.KeyVault" --type "KeyVaultForLinux or KeyVaultForWindows" --name "KeyVaultForLinux or KeyVaultForWindows" --settings '{"secretsManagementSettings": { "pollingIntervalInS": "60", "observedCertificates": ["observedCert1"] }, "authenticationSettings": { "msiEndpoint": "http://localhost:40342/metadata/identity" }}'
 ```
 
 ## <a name="list-extensions-installed"></a>Yüklü liste uzantıları
@@ -70,6 +76,6 @@ az connectedmachine machine-extension delete --machine-name "myMachineName" --na
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [PowerShell](manage-vm-extensions-powershell.md)kullanarak VM uzantılarını dağıtabilir, yönetebilir ve kaldırabilirsiniz, [Azure Portal](manage-vm-extensions-portal.md)veya [Azure Resource Manager şablonları](manage-vm-extensions-template.md).
+- [Azure Portal](manage-vm-extensions-portal.md)veya [Azure Resource Manager ŞABLONLARıNDAN](manage-vm-extensions-template.md) [Azure PowerShell](manage-vm-extensions-powershell.md)kullanarak VM uzantılarını dağıtabilir, yönetebilir ve kaldırabilirsiniz.
 
 - Sorun giderme bilgileri, [VM genişletmeleri sorunlarını gider kılavuzunda](troubleshoot-vm-extensions.md)bulunabilir.

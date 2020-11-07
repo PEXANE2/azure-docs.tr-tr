@@ -1,16 +1,16 @@
 ---
-title: Azure Ilkesini kod iş akışları olarak tasarlama
+title: Kod olarak Azure İlkesi iş akışları tasarlama
 description: Azure Ilke tanımlarınızı kod olarak dağıtmak ve kaynakları otomatik olarak doğrulamak için iş akışları tasarlamayı öğrenin.
 ms.date: 10/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2be6c0770098d50abbb9695e04b3f53c073de9ae
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 74d2097e4db4442e6e65f30541864fb554f7379d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320606"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359689"
 ---
-# <a name="design-azure-policy-as-code-workflows"></a>Azure Ilkesini kod iş akışları olarak tasarlama
+# <a name="design-azure-policy-as-code-workflows"></a>Kod olarak Azure İlkesi iş akışları tasarlama
 
 Bulut yönetimi ile yolculukta ilerleyerek, Azure portal her bir ilke tanımını veya çeşitli SDK 'Ları, kurumsal ölçekte daha yönetilebilir ve yinelenebilir olacak şekilde el ile yönetmeyi tercih edersiniz. Sistemleri bulutta ölçeklendirerek yönetmek için hakim yaklaşımlardan ikisi şunlardır:
 
@@ -38,8 +38,6 @@ Bu dosya biçimlerine örnek olarak [Azure Policy GitHub](https://github.com/Azu
 
 - İlke tanımı: [kaynaklara etiket ekleme](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
 - Girişim tanımı: [faturalandırma etiketleri](https://github.com/Azure/azure-policy/tree/master/samples/PolicyInitiatives/multiple-billing-tags)
-
-Ayrıca, var olan tanımlarınızı ve atamalarınızı kaynak kodu yönetim ortamı [GitHub](https://www.github.com)' da almak Için [Azure Ilke kaynaklarını dışarı aktarmayı](../how-to/export-resources.md) gözden geçirin.
 
 ## <a name="workflow-overview"></a>İş akışına genel bakış
 
@@ -74,6 +72,8 @@ Kod olarak Azure Ilkesinin önerilen genel iş akışı şu diyagram gibi görü
 
 Yeni bir ilke eklendiğinde veya var olan bir ilke güncelleştirilirse, iş akışı Azure 'daki ilke tanımını otomatik olarak güncelleştirmelidir. Yeni veya güncelleştirilmiş ilke tanımının testi sonraki bir adımda gelir.
 
+Ayrıca, var olan tanımlarınızı ve atamalarınızı kaynak kodu yönetim ortamı [GitHub](https://www.github.com)' da almak Için [Azure Ilke kaynaklarını dışarı aktarmayı](../how-to/export-resources.md) gözden geçirin.
+
 ### <a name="create-and-update-initiative-definitions"></a>Girişim tanımları oluşturma ve güncelleştirme
 
 Benzer şekilde, girişimlerin kendi JSON dosyası ve aynı klasörde depolanması gereken ilgili dosyaları vardır. Girişim tanımı, ilke tanımının zaten var olmasını gerektirir, bu nedenle ilke kaynağı kaynak denetiminde güncelleştirilene ve ardından Azure 'da güncelleştirilene kadar oluşturulamaz veya güncellenemiyor. Aşağıdaki yapı, kaynak denetiminde girişim tanımlarınızı tutmanın önerilen bir yoludur:
@@ -102,7 +102,7 @@ Benzer şekilde, girişimlerin kendi JSON dosyası ve aynı klasörde depolanmas
 
 ### <a name="test-and-validate-the-updated-definition"></a>Güncelleştirilmiş tanımı test edin ve doğrulayın
 
-Otomasyon yeni oluşturulmuş veya güncelleştirilmiş ilke ya da girişim tanımlarınızı tamamladıktan sonra Azure 'daki nesne ile ilgili güncelleştirmeyi yaptıktan sonra, yapılan değişiklikleri test etmek zaman alabilir. Uygulamasının parçası olan ilke veya girişim, üretimden en uzak ortamda bulunan kaynaklara atanmalıdır. Bu ortam genellikle _dev_'dir.
+Otomasyon yeni oluşturulmuş veya güncelleştirilmiş ilke ya da girişim tanımlarınızı tamamladıktan sonra Azure 'daki nesne ile ilgili güncelleştirmeyi yaptıktan sonra, yapılan değişiklikleri test etmek zaman alabilir. Uygulamasının parçası olan ilke veya girişim, üretimden en uzak ortamda bulunan kaynaklara atanmalıdır. Bu ortam genellikle _dev_ 'dir.
 
 Atama, kaynak oluşturma ve güncelleştirmelerin engellenmemesi, ancak mevcut kaynakların güncelleştirilmiş ilke tanımıyla uyumluluk için denetlenmeye devam edebilmesi için, _Disabled_ 'ın [Enforcementmode](./assignment-structure.md#enforcement-mode) kullanması gerekir. EnforcementMode da dahil olmak üzere, atama kapsamının bir kaynak grubu ya da özel olarak ilkeleri doğrulamak için bir abonelik olması önerilir.
 
@@ -129,7 +129,7 @@ Hem güncelleştirilmiş ilke değerlendirme sonuçlarının hem de ortamın tes
 
 ### <a name="update-to-enforced-assignments"></a>Zorlanan atamalara güncelleştirme
 
-Tüm doğrulama kapıları tamamlandıktan sonra, _etkin_' ın **Enforcementmode** öğesini kullanmak için atamayı güncelleştirin. Bu değişikliği ilk olarak üretim ortamından aynı ortamda yapmanız önerilir. Bu ortam beklenildiği şekilde doğrulandıktan sonra, bu, ilke üretim kaynaklarına dağıtılana kadar, daha sonra bir sonraki ortamı dahil edilmelidir ve bu şekilde devam eder.
+Tüm doğrulama kapıları tamamlandıktan sonra, _etkin_ ' ın **Enforcementmode** öğesini kullanmak için atamayı güncelleştirin. Bu değişikliği ilk olarak üretim ortamından aynı ortamda yapmanız önerilir. Bu ortam beklenildiği şekilde doğrulandıktan sonra, bu, ilke üretim kaynaklarına dağıtılana kadar, daha sonra bir sonraki ortamı dahil edilmelidir ve bu şekilde devam eder.
 
 ## <a name="process-integrated-evaluations"></a>İşlem tümleşik değerlendirmeleri
 

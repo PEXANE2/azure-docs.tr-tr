@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 8a25ead5983e56f56ba0daea23c2775b3332fb8b
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 7ba0f1b6f37da923e389964b99a02295dc3d6050
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057918"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359536"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Öğretici: Azure Sanal WAN kullanarak siteden siteye bağlantı oluşturma
 
@@ -37,17 +37,11 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 ![Sanal WAN diyagramı](./media/virtual-wan-about/virtualwan.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Yapılandırmanıza başlamadan önce aşağıdaki ölçütleri karşıladığınızı doğrulayın:
 
-* Bağlanmak istediğiniz bir sanal ağınız var. Şirket içi ağlarınızın alt ağlarının hiçbirinin, bağlanmak istediğiniz sanal ağlarla çakışmadığından emin olun. Azure portal bir sanal ağ oluşturmak için [hızlı](../virtual-network/quick-create-portal.md)başlangıca bakın.
-
-* Sanal ağınızda sanal ağ geçidi yok. Sanal ağınızda bir ağ geçidi (VPN veya ExpressRoute) varsa, tüm ağ geçitlerini kaldırmanız gerekir. Bu yapılandırma, sanal ağın bunun yerine sanal WAN hub ağ geçidine bağlanmasını gerektirir.
-
-* Hub bölgenizden bir IP adresi aralığı edinin. Hub, sanal WAN tarafından oluşturulan ve kullanılan bir sanal ağ. Hub için belirttiğiniz adres aralığı, bağlandığınız mevcut sanal ağlarınızla çakışamaz. Ayrıca bağlandığınız şirket içi adres aralıklarıyla da çakışamaz. Şirket içi ağ yapılandırmanızda bulunan IP adresi aralıklarını tanımıyorsanız, sizin için bu ayrıntıları sağlayabilecek biriyle koordine edebilirsiniz.
-
-* Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+[!INCLUDE [Before you begin](../../includes/virtual-wan-before-include.md)]
 
 ## <a name="create-a-virtual-wan"></a><a name="openvwan"></a>Sanal WAN oluşturma
 
@@ -79,8 +73,8 @@ Bu adımda, VPN sitenizi hub 'a bağlayaöğreneceksiniz.
 
 Şirket içi VPN cihazınızı yapılandırmak için VPN cihazı yapılandırmasını kullanın.
 
-1. Sanal WAN'ınızın sayfasında **Genel bakış**'a tıklayın.
-2. **Hub->VPNSite** sayfasının en üstünde **VPN yapılandırması 'nı indir**' e tıklayın. Azure, ' Microsoft-Network-[location] ' kaynak grubunda, konumun WAN konumunun bulunduğu bir depolama hesabı oluşturur. Yapılandırmayı VPN cihazlarınıza uyguladıktan sonra bu depolama hesabını silebilirsiniz.
+1. Sanal WAN'ınızın sayfasında **Genel bakış** 'a tıklayın.
+2. **Hub->VPNSite** sayfasının en üstünde **VPN yapılandırması 'nı indir** ' e tıklayın. Azure, ' Microsoft-Network-[location] ' kaynak grubunda, konumun WAN konumunun bulunduğu bir depolama hesabı oluşturur. Yapılandırmayı VPN cihazlarınıza uyguladıktan sonra bu depolama hesabını silebilirsiniz.
 3. Dosya oluşturulduktan sonra bağlantıya tıklayarak indirebilirsiniz.
 4. Yapılandırmayı şirket içi VPN cihazınıza uygulayın.
 
@@ -229,7 +223,7 @@ Cihazınızı yapılandırma yönergelerine ihtiyaç duyarsanız [VPN cihazı ya
 
 ## <a name="configure-your-vpn-gateway"></a><a name="gateway-config"></a>VPN ağ geçidinizi yapılandırma
 
-VPN Gateway ayarlarınızı **görüntüleme/yapılandırma**' yı seçerek istediğiniz zaman görüntüleyebilir ve yapılandırabilirsiniz.
+VPN Gateway ayarlarınızı **görüntüleme/yapılandırma** ' yı seçerek istediğiniz zaman görüntüleyebilir ve yapılandırabilirsiniz.
 
 :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-1.png" alt-text="' Görünüm/yapılandırma ' eylemine işaret eden bir oka sahip ' VPN (siteden siteye) ' sayfasını gösteren ekran görüntüsü." lightbox="media/virtual-wan-site-to-site-portal/view-configuration-1-expand.png":::
 
@@ -240,7 +234,7 @@ VPN Gateway ayarlarınızı **görüntüleme/yapılandırma**' yı seçerek iste
 * VPN Gateway varsayılan BGP IP adresi (Azure tarafından atanan)
 * Özel BGP IP adresi için yapılandırma seçeneği: Bu alan, APIPA (otomatik özel IP adresleme) için ayrılmıştır. Azure, 169.254.21. * ve 169.254.22. * aralıklarında BGP IP 'sini destekler. Azure, bu aralıklardaki BGP bağlantılarını kabul eder, ancak varsayılan BGP IP 'si ile bağlantıyı çevirebilir.
 
-   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="' Görünüm/yapılandırma ' eylemine işaret eden bir oka sahip ' VPN (siteden siteye) ' sayfasını gösteren ekran görüntüsü." lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
+   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="Yapılandırmayı görüntüle" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>Kaynakları temizleme
 

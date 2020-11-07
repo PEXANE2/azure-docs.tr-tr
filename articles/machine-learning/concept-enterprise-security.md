@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: f9d6f58256ccc21e5121a16a429e0f4c3ff1e485
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 19736a37e0da07237f6b112de7da86efe3d8bfe5
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323089"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359383"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Azure Machine Learning için kurumsal güvenlik ve idare
 
@@ -42,7 +42,7 @@ Daha fazla bilgi için bkz. [Azure Machine Learning kaynakları ve iş akışlar
 
 Azure Machine Learning, Web Hizmetleri için iki kimlik doğrulama biçimini destekler: anahtar ve belirteç. Her Web hizmeti tek seferde yalnızca bir kimlik doğrulama biçimi etkinleştirebilir.
 
-|Kimlik doğrulama yöntemi|Açıklama|Azure Container Instances|AKS|
+|Kimlik doğrulama yöntemi|Description|Azure Container Instances|AKS|
 |---|---|---|---|
 |Anahtar|Anahtarlar statiktir ve yenilenmek zorunda değildir. Anahtarlar el ile yeniden oluşturulabilir.|Varsayılan olarak devre dışı| Varsayılan olarak etkindir|
 |Belirteç|Belirteçlerin süresi belirtilen süre geçtikten sonra ve yenilenmesi gerekiyor.| Kullanılamaz| Varsayılan olarak devre dışı |
@@ -126,6 +126,7 @@ Ayrıca, çalışma alanınız için Azure özel bağlantısını etkinleştireb
 * Çalıştırmalar arasında yerel karalama diskinizi temizler
 * Anahtar kasanızı kullanarak depolama hesabınız, kapsayıcı kayıt defteriniz ve SSH hesabınız için kimlik bilgilerini yürütme katmanından işlem kümelerinize güvenli bir şekilde geçirir
 * Temel alınan toplu iş havuzlarının AzureMachineLearningService dışında herhangi bir dış hizmet tarafından çağrılıp çağrılmaması için IP filtrelemeyi sağlar
+* İşlem örneklerinin HBı çalışma alanında desteklenmediğini lütfen unutmayın
 
 #### <a name="azure-blob-storage"></a>Azure Blob depolama
 

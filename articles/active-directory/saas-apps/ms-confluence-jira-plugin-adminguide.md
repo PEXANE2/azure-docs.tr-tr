@@ -8,15 +8,15 @@ ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 4b0d2c6c3d70e73be25038c763f05ef572b56ebe
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8e73ea3650e631bed277ab95092b714eef7596d4
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515688"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359166"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Azure Active Directory için atlasme Jira ve Confluence Yönetici Kılavuzu
 
@@ -50,7 +50,7 @@ Jira ve Confluence yöneticileri, Azure AD 'yi kullanarak SSO 'yu etkinleştirme
 * Jira veya Confluence, şirket ağı dışında da kullanılabilir.
 * Eklenti yalnızca Jira ve Confluence 'ın şirket içi sürümü ile birlikte çalışarak.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Eklentiyi yüklemeden önce aşağıdaki bilgileri aklınızda edin:
 

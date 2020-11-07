@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/17/2019
 ms.author: Zhchia
-ms.openlocfilehash: f5f7ed8a905aad873ecfc878979ac32af1e21730
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee656f147bd27ff782121f088a239a7337d81075
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91312253"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359774"
 ---
 # <a name="tutorial-configure-workgrid--for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Workgrid yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Workgr
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -52,11 +52,11 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 Azure AD ile otomatik Kullanıcı sağlama için Workgrid 'i yapılandırmadan önce, Workgrid üzerinde SCıM sağlamasını etkinleştirmeniz gerekir.
 
-1. Workgrid 'de oturum açın. **Kullanıcı hazırlama > kullanıcılara**gidin.
+1. Workgrid 'de oturum açın. **Kullanıcı hazırlama > kullanıcılara** gidin.
 
     ![Çalışma kılavuzunun U olarak adlandırılan kullanıcılar ve Kullanıcı sağlama seçenekleriyle ilgili ekran görüntüsü.](media/Workgrid-provisioning-tutorial/user.png)
 
-2. **Hesap yönetimi API 'si**altında **kimlik bilgileri oluştur**' a tıklayın.
+2. **Hesap yönetimi API 'si** altında **kimlik bilgileri oluştur** ' a tıklayın.
 
     ![Kimlik bilgileri oluştur seçeneği verilen hesap yönetimi A P ı bölümünün ekran görüntüsü.](media/Workgrid-provisioning-tutorial/scim.png)
 
@@ -71,11 +71,11 @@ Azure AD ile otomatik Kullanıcı sağlamaya yönelik Workgrid 'i yapılandırma
 
 **Azure AD uygulama galerisinden Iş Kılavuzu eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -83,7 +83,7 @@ Azure AD ile otomatik Kullanıcı sağlamaya yönelik Workgrid 'i yapılandırma
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **workgrid**yazın, sonuçlar panelinde **workgrid** ' i seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **workgrid** yazın, sonuçlar panelinde **workgrid** ' i seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
     ![Sonuçlar listesinde workgrid](common/search-new-app.png)
 
@@ -96,11 +96,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
 ### <a name="to-configure-automatic-user-provisioning-for-workgrid--in-azure-ad"></a>Azure AD 'de Workgrid için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Workgrid**' i seçin.
+2. Uygulamalar listesinde, **Workgrid** ' i seçin.
 
     ![Uygulamalar listesindeki Workgrid bağlantısı](common/all-applications.png)
 
@@ -108,7 +108,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -116,13 +116,13 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’e tıklayın.
+7. **Kaydet** ’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Workgrid olarak eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Workgrid olarak eşitler** ' ı seçin.
 
     ![Eşlemeleri Azure Active Directory Kullanıcıları Workgrid ile eşitlemeyi zamanla seçeneği ile eşlemeler bölümünün ekran görüntüsü.](media/Workgrid-provisioning-tutorial/usermapping.png)
 
@@ -148,7 +148,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-16. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+16. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

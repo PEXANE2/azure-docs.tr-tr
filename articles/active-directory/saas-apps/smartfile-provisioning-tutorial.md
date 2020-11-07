@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 3f480cb0d478ca60555fa15849d5fcbed6cda684
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fca18a58ccb8d4e2f10b5db606ad01a97c2d5bac
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91286134"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359944"
 ---
 # <a name="tutorial-configure-smartfile-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için SmartFile 'ı yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları SmartF
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -52,11 +52,11 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 SmartFile 'ı Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmadan önce, SmartFile üzerinde SCıM sağlamasını etkinleştirmeniz ve gereken ek ayrıntıları toplamanız gerekecektir.
 
-1. SmartFile Yönetici konsolunuzun oturumunu açın. SmartFile yönetici konsolunun sağ üst köşesine gidin. **Ürün anahtarı**seçin.
+1. SmartFile Yönetici konsolunuzun oturumunu açın. SmartFile yönetici konsolunun sağ üst köşesine gidin. **Ürün anahtarı** seçin.
 
     ![SmartFile Yönetici Konsolu](media/smartfile-provisioning-tutorial/login.png)
 
-2. Bir taşıyıcı belirteci oluşturmak için **ürün anahtarını** ve **Ürün parolasını**kopyalayın. Bunları aralarında iki nokta üst üste ekleyerek not defterine yapıştırın.
+2. Bir taşıyıcı belirteci oluşturmak için **ürün anahtarını** ve **Ürün parolasını** kopyalayın. Bunları aralarında iki nokta üst üste ekleyerek not defterine yapıştırın.
     
      ![Ürün anahtarı ve ürün parolası metin kutuları ile adlandırılan ürün anahtarı bölümünün ekran görüntüsü.](media/smartfile-provisioning-tutorial/auth.png)
 
@@ -68,11 +68,11 @@ SmartFile 'ı Azure AD ile otomatik Kullanıcı sağlaması için yapılandırma
 
 **Azure AD uygulama galerisinden SmartFile eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -80,7 +80,7 @@ SmartFile 'ı Azure AD ile otomatik Kullanıcı sağlaması için yapılandırma
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **SmartFile**yazın, sonuçlar panelinde **SmartFile** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **SmartFile** yazın, sonuçlar panelinde **SmartFile** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
     ![Sonuç listesinde SmartFile](common/search-new-app.png)
 
@@ -93,11 +93,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak SmartFile içindeki kullan
 
 ### <a name="to-configure-automatic-user-provisioning-for-smartfile-in-azure-ad"></a>Azure AD 'de SmartFile için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **SmartFile**' ı seçin.
+2. Uygulamalar listesinde **SmartFile** ' ı seçin.
 
     ![Uygulamalar listesindeki SmartFile bağlantısı](common/all-applications.png)
 
@@ -105,21 +105,21 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak SmartFile içindeki kullan
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
-5.  **Yönetici kimlik bilgileri** bölümünün altında, `https://<SmartFile sitename>.smartfile.com/ftp/scim` **kiracı URL 'sini**girin. Bir örnek şöyle görünmelidir `https://demo1test.smartfile.com/ftp/scim` . Daha önce **gizli bir belirteçte**aldığınız **taşıyıcı belirteç** değerini (ProductKey: productpassword) girin. Azure AD 'nin SmartFile 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, SmartFile hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5.  **Yönetici kimlik bilgileri** bölümünün altında, `https://<SmartFile sitename>.smartfile.com/ftp/scim` **kiracı URL 'sini** girin. Bir örnek şöyle görünmelidir `https://demo1test.smartfile.com/ftp/scim` . Daha önce **gizli bir belirteçte** aldığınız **taşıyıcı belirteç** değerini (ProductKey: productpassword) girin. Azure AD 'nin SmartFile 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, SmartFile hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’e tıklayın.
+7. **Kaydet** ’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları SmartFile olarak eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları SmartFile olarak eşitler** ' ı seçin.
 
     ![SmartFile Kullanıcı eşlemeleri](media/smartfile-provisioning-tutorial/usermapping.png)
 
@@ -127,7 +127,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak SmartFile içindeki kullan
 
     ![SmartFile Kullanıcı öznitelikleri](media/smartfile-provisioning-tutorial/userattribute.png)
 
-10. **Eşlemeler** bölümünde **Azure Active Directory grupları SmartFile olarak eşitler**' ı seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory grupları SmartFile olarak eşitler** ' ı seçin.
 
     ![SmartFile grup eşlemeleri](media/smartfile-provisioning-tutorial/groupmapping.png)
 
@@ -145,7 +145,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak SmartFile içindeki kullan
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

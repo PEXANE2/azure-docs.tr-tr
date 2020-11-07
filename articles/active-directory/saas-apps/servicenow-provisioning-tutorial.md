@@ -8,15 +8,15 @@ ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 3b592591f3d2190fdcc9ed7b3b12b2eca20a25a5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1d6213d49c98f5e09f22e7310183315800d0c6f6
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675828"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359791"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için ServiceNow 'ı yapılandırma
 
@@ -31,7 +31,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Servic
 > * ServiceNow 'da grupları ve grup üyeliklerini sağlama
 > * ServiceNow ['Da çoklu oturum açma](servicenow-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -58,8 +58,8 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 3. ServiceNow 'da aşağıdaki ayarların **devre dışı bırakıldığından** emin olmak için denetleyin:
 
-   1. **Sistem güvenliği**  >  **yüksek güvenlik ayarları** ' nı seçin,  >  **gelen şema istekleri için temel kimlik doğrulaması gerektirir** .
-   2. **Sistem özelliklerini** seçin  >  **Web Hizmetleri**  >  **gelen SOAP istekleri için temel yetkilendirme gerektir** .
+   1. **Sistem güvenliği**  >  **yüksek güvenlik ayarları** ' nı seçin,  >  **gelen şema istekleri için temel kimlik doğrulaması gerektirir**.
+   2. **Sistem özelliklerini** seçin  >  **Web Hizmetleri**  >  **gelen SOAP istekleri için temel yetkilendirme gerektir**.
      
    > [!IMPORTANT]
    > Bu ayar *etkinleştirilirse* , sağlama altyapısı ServiceNow ile iletişim kuramayacaktır.
@@ -151,8 +151,8 @@ Hazırlama ayarlarını yapılandırdıktan sonra dağıtımınızı izlemek iç
 
    Bu hata ServiceNow örneğiyle iletişim kuran bir sorunu gösterir. ServiceNow 'da aşağıdaki ayarların *devre dışı bırakıldığından* emin olmak için iki kez kontrol edin:
    
-   1. **Sistem güvenliği**  >  **yüksek güvenlik ayarları** ' nı seçin,  >  **gelen şema istekleri için temel kimlik doğrulaması gerektirir** .
-   2. **Sistem özelliklerini** seçin  >  **Web Hizmetleri**  >  **gelen SOAP istekleri için temel yetkilendirme gerektir** .
+   1. **Sistem güvenliği**  >  **yüksek güvenlik ayarları** ' nı seçin,  >  **gelen şema istekleri için temel kimlik doğrulaması gerektirir**.
+   2. **Sistem özelliklerini** seçin  >  **Web Hizmetleri**  >  **gelen SOAP istekleri için temel yetkilendirme gerektir**.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

@@ -5,29 +5,31 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: f834ba3355d362e59e2e44f37eca0560b9bf4d7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/6/2020
+ms.openlocfilehash: 1e967c77bc41f0f91674fe55bc622adaf5046f6d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81271990"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359009"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı'nda yavaş sorgu günlükleri
 MySQL için Azure veritabanı 'nda, yavaş sorgu günlüğü kullanıcılar tarafından kullanılabilir. İşlem günlüğüne erişim desteklenmez. Yavaş sorgu günlüğü, sorun giderme için performans sorunlarını belirlemek için kullanılabilir.
 
 MySQL yavaş sorgu günlüğü hakkında daha fazla bilgi için MySQL Reference el ile [yavaş sorgu günlüğü bölümüne](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)bakın.
 
+Sunucunuzda [sorgu deposu](concepts-query-store.md) etkinleştirildiğinde "" gibi sorguları, `CALL mysql.az_procedure_collect_wait_stats (900, 30);` yavaş sorgu günlüklerinizi günlüğe kaydedilmiş olarak görebilirsiniz. Sorgu deposu özelliği sorgularınız hakkında istatistikler toplarken bu davranış beklenmektedir. 
+
 ## <a name="configure-slow-query-logging"></a>Yavaş sorgu günlüğünü yapılandırma 
 Varsayılan olarak, yavaş sorgu günlüğü devre dışıdır. Etkinleştirmek için, `slow_query_log` Açık olarak ayarlayın. Bu, Azure portal veya Azure CLı kullanılarak etkinleştirilebilir. 
 
 Ayarlayabileceğiniz diğer parametreler şunlardır:
 
-- **long_query_time**: sorgu günlüğe kaydedilen sorgu long_query_time daha uzun sürer (saniye cinsinden). Varsayılan değer 10 saniyedir.
-- **log_slow_admin_statements**: varsa, slow_query_log YAZıLAN deyimlerde ALTER_TABLE ve ANALYZE_TABLE gibi yönetim deyimlerini içerir.
-- **log_queries_not_using_indexes**: dizinleri kullanmayan sorguların slow_query_log kaydedilip kaydedilmeyeceğini belirler
-- **log_throttle_queries_not_using_indexes**: Bu parametre, yavaş sorgu günlüğüne yazılabilen Dizin dışı sorguların sayısını sınırlar. Bu parametre log_queries_not_using_indexes açık olarak ayarlandığında devreye girer.
-- **log_output**: "dosya" ise, yavaş sorgu günlüğünün hem yerel sunucu depolamasına hem de Azure Izleyici tanılama günlüklerine yazılmasına izin verir. "None" seçilirse, yavaş sorgu günlüğü yalnızca Azure İzleyici Tanılama Günlüklerine yazılır. 
+- **long_query_time** : sorgu günlüğe kaydedilen sorgu long_query_time daha uzun sürer (saniye cinsinden). Varsayılan değer 10 saniyedir.
+- **log_slow_admin_statements** : varsa, slow_query_log YAZıLAN deyimlerde ALTER_TABLE ve ANALYZE_TABLE gibi yönetim deyimlerini içerir.
+- **log_queries_not_using_indexes** : dizinleri kullanmayan sorguların slow_query_log kaydedilip kaydedilmeyeceğini belirler
+- **log_throttle_queries_not_using_indexes** : Bu parametre, yavaş sorgu günlüğüne yazılabilen Dizin dışı sorguların sayısını sınırlar. Bu parametre log_queries_not_using_indexes açık olarak ayarlandığında devreye girer.
+- **log_output** : "dosya" ise, yavaş sorgu günlüğünün hem yerel sunucu depolamasına hem de Azure Izleyici tanılama günlüklerine yazılmasına izin verir. "None" seçilirse, yavaş sorgu günlüğü yalnızca Azure İzleyici Tanılama Günlüklerine yazılır. 
 
 > [!IMPORTANT]
 > Tablolarınızın dizini oluşturulmamış ise, `log_queries_not_using_indexes` `log_throttle_queries_not_using_indexes` Bu dizinlenmemiş tablolarda çalışan tüm sorgular yavaş sorgu günlüğüne yazılacak olduğundan ve parametrelerini açık olarak ayarlamak MySQL performansını etkileyebilir.<br><br>
@@ -143,4 +145,4 @@ Yavaş sorgu günlüklerinizin tanılama günlükleri aracılığıyla Azure Izl
     
 ## <a name="next-steps"></a>Sonraki Adımlar
 - [Azure portal yavaş sorgu günlüklerini yapılandırma](howto-configure-server-logs-in-portal.md)
-- [Azure CLI 'dan yavaş sorgu günlüklerini yapılandırma](howto-configure-server-logs-in-cli.md).
+- [Azure CLı 'dan yavaş sorgu günlüklerini yapılandırma](howto-configure-server-logs-in-cli.md)

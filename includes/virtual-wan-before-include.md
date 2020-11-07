@@ -1,24 +1,24 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 10/06/2020
+ms.date: 11/06/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5a3b9160f1fb28c68bdbaa540c78b2890dbcab82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4940bce453729d13ba76071fa59bcf95c7672a24
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812790"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359512"
 ---
-* Bağlanmak istediğiniz bir sanal ağınız var. Şirket içi ağlarınızın alt ağlarının hiçbirinin, bağlanmak istediğiniz sanal ağlarla çakışmadığından emin olun. Azure portal bir sanal ağ oluşturmak için [hızlı](../articles/virtual-network/quick-create-portal.md)başlangıca bakın.
+* Azure aboneliğiniz var. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-* Sanal ağınızda sanal ağ geçidi yok. Sanal ağınızda bir ağ geçidi (VPN veya ExpressRoute) varsa, tüm ağ geçitlerini kaldırmanız gerekir. Bu yapılandırma, sanal ağın bunun yerine sanal WAN hub ağ geçidine bağlanmasını gerektirir.
+* Bağlanmak istediğiniz bir sanal ağınız var. Şirket içi ağlarınızın alt ağlarının hiçbirinin, bağlanmak istediğiniz sanal ağlarla çakışmadığından emin olun. Azure portal bir sanal ağ oluşturmak için [hızlı başlangıç](../articles/virtual-network/quick-create-portal.md) makalesine bakın.
 
-* Hub bölgenizden bir IP adresi aralığı edinin. Hub, sanal WAN tarafından oluşturulan ve kullanılan bir sanal ağ. Hub için belirttiğiniz adres aralığı, bağlandığınız mevcut sanal ağlarınızla çakışamaz. Ayrıca bağlandığınız şirket içi adres aralıklarıyla da çakışamaz. Şirket içi ağ yapılandırmanızda bulunan IP adresi aralıklarını tanımıyorsanız, sizin için bu ayrıntıları sağlayabilecek biriyle koordine edebilirsiniz.
+* Sanal ağınızda mevcut bir sanal ağ geçidi olmaması gerekir. Sanal ağınızda ağ geçitleri zaten varsa (VPN veya ExpressRoute), devam etmeden önce tüm ağ geçitlerini kaldırmanız gerekir. Bu yapılandırma, sanal ağların yalnızca sanal WAN hub ağ geçidine bağlanmasını gerektirir.
 
-* Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+* Sanal hub, sanal WAN tarafından oluşturulan ve kullanılan sanal bir ağ. Bu, sanal WAN ağınızın bir bölgedeki temel sayısıdır. Sanal hub bölgeniz için bir IP adresi aralığı alın. Hub için belirttiğiniz adres aralığı, bağlandığınız mevcut sanal ağlardan hiçbiriyle çakışamaz. Ayrıca, bağlandığınız şirket içi adres aralıklarıyla de çakışamaz. Şirket içi ağ yapılandırmanızda bulunan IP adresi aralıklarını tanımıyorsanız, sizin için bu ayrıntıları sağlayabilecek biriyle koordine edebilirsiniz.

@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: Zhchia
-ms.openlocfilehash: b9b7a82d611743f2ba76e20f47670771e2e38904
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f1600dfc5705ca97f16e8966a796b54fc556d216
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92448971"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359271"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için GitHub 'ı yapılandırma
 
@@ -61,31 +61,31 @@ Bu bölümde, Azure AD 'nizi GitHub 'ın Kullanıcı hesabı sağlama API 'sine 
 
 3. GitHub örneğinizi seçin, sonra **sağlama** sekmesini seçin.
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![GitHub sağlama](./media/github-provisioning-tutorial/GitHub1.png)
 
-5. **Yönetici Kimlik Bilgileri** bölümünde **Yetki Ver**'e tıklayın. Bu işlem yeni bir tarayıcı penceresinde bir GitHub yetkilendirme iletişim kutusu açar. Erişim yetkisi verme konusunda onaylantığınızdan emin olmanız gerektiğini unutmayın. [Burada](https://help.github.com/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)açıklanan yönergeleri izleyin.
+5. **Yönetici Kimlik Bilgileri** bölümünde **Yetki Ver** 'e tıklayın. Bu işlem yeni bir tarayıcı penceresinde bir GitHub yetkilendirme iletişim kutusu açar. Erişim yetkisi verme konusunda onaylantığınızdan emin olmanız gerektiğini unutmayın. [Burada](https://help.github.com/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)açıklanan yönergeleri izleyin.
 
-6. Yeni pencerede, yönetici hesabınızı kullanarak GitHub 'da oturum açın. Elde edilen yetkilendirme iletişim kutusunda, sağlamayı etkinleştirmek istediğiniz GitHub ekibini seçin ve sonra **Yetkilendir**' i seçin. İşlem tamamlandıktan sonra hazırlama yapılandırmasını tamamlamak için Azure portalına geri dönün.
+6. Yeni pencerede, yönetici hesabınızı kullanarak GitHub 'da oturum açın. Elde edilen yetkilendirme iletişim kutusunda, sağlamayı etkinleştirmek istediğiniz GitHub ekibini seçin ve sonra **Yetkilendir** ' i seçin. İşlem tamamlandıktan sonra hazırlama yapılandırmasını tamamlamak için Azure portalına geri dönün.
 
     ![Ekran görüntüsü, GitHub için oturum açma sayfasını gösterir.](./media/github-provisioning-tutorial/GitHub2.png)
 
-7. Azure portal, **kiracı URL 'sini** girin ve Azure AD 'nin GitHub uygulamanıza bağlanabildiğinden emin olmak Için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, GitHub hesabınızın yönetici izinlerine sahip olduğundan ve **kiracı URL 'sinin** doğru şekilde yazıldığından emin olun, sonra da "Yetkilendir" adımını tekrar deneyin ( **kiracı URL 'sini** kurala göre oluşturabilirsiniz: `https://api.github.com/scim/v2/organizations/<Organization_name>` , kuruluşlarınızı GitHub hesabınızın altında bulabilirsiniz: **Ayarlar**  >  **kuruluşları**).
+7. Azure portal, **kiracı URL 'sini** girin ve Azure AD 'nin GitHub uygulamanıza bağlanabildiğinden emin olmak Için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, GitHub hesabınızın yönetici izinlerine sahip olduğundan ve **kiracı URL 'sinin** doğru şekilde yazıldığından emin olun, sonra da "Yetkilendir" adımını tekrar deneyin ( **kiracı URL 'sini** kurala göre oluşturabilirsiniz: `https://api.github.com/scim/v2/organizations/<Organization_name>` , kuruluşlarınızı GitHub hesabınızın altında bulabilirsiniz: **Ayarlar**  >  **kuruluşları** ).
 
     ![Ekran görüntüsü, GitHub 'daki kuruluşlar sayfasını gösterir.](./media/github-provisioning-tutorial/GitHub3.png)
 
 8. **Bildirim e-postası** alanında sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve "bir hata oluştuğunda e-posta bildirimi gönder" onay kutusunu işaretleyin.
 
-9. **Kaydet**’e tıklayın.
+9. **Kaydet** ’e tıklayın.
 
-10. Eşlemeler bölümünde **Azure Active Directory Kullanıcıları GitHub**' a eşitler ' ı seçin.
+10. Eşlemeler bölümünde **Azure Active Directory Kullanıcıları GitHub** ' a eşitler ' ı seçin.
 
 11. **Öznitelik eşlemeleri** bölümünde, Azure AD 'den GitHub 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için GitHub 'daki Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için Kaydet düğmesini seçin.
 
 12. GitHub için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin
 
-13. **Kaydet**’e tıklayın.
+13. **Kaydet** ’e tıklayın.
 
 Bu işlem, kullanıcılar ve Gruplar bölümünde GitHub 'a atanan tüm Kullanıcı ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, hizmetin çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerleme durumunu izlemek ve sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan etkinlik günlüklerinin sağlanması için bağlantıları izlemek üzere **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
 
