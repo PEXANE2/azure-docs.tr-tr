@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: baa6e10d33d1c0a1a9c367baa8888fdfb5a47c01
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e0409f289289aaebc760473f1f74130b34fbdd39
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746228"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357734"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM'lerinde Azure Disk Şifrelemesi senaryoları
 
@@ -135,7 +135,7 @@ Aşağıdaki tabloda mevcut veya çalışan VM 'Ler için Kaynak Yöneticisi şa
 | keyVaultName | BitLocker anahtarının yüklenmesi gereken anahtar kasasının adı. Bunu, cmdlet 'ini `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` veya Azure CLI komutunu kullanarak edinebilirsiniz `az keyvault list --resource-group "MyKeyVaultResourceGroup"`|
 | keyVaultResourceGroup | Anahtar kasasını içeren kaynak grubunun adı|
 |  keyEncryptionKeyURL 'Si | Anahtar şifreleme anahtarının https:// &lt; keykasaadı &gt; . Vault.Azure.net/Key/ &lt; anahtar-adı biçimindeki URL 'si &gt; . Bir KEK kullanmak istemiyorsanız, bu alanı boş bırakın. |
-| Birimtürü | Şifreleme işleminin gerçekleştirildiği birimin türü. Geçerli değerler _Işletim sistemi_ , _veri_ ve _hepsi_ . 
+| Birimtürü | Şifreleme işleminin gerçekleştirildiği birimin türü. Geçerli değerler _Işletim sistemi_ , _veri_ ve _hepsi_. 
 | forceUpdateTag | İşlemin zorla çalışması gereken her seferinde GUID gibi benzersiz bir değer geçirin. |
 | resizeOSDisk | Sistem birimini bölmeden önce IŞLETIM sistemi bölümünün tam işletim sistemi VHD 'SI kaplamaya yeniden boyutlandırılması gerekir. |
 | location | Tüm kaynakların konumu. |
@@ -266,6 +266,7 @@ Azure disk şifrelemesi, aşağıdaki senaryolar, Özellikler ve teknolojiler i�
 - Yazma Hızlandırıcısı disklere sahip, d serisi VM 'Ler.
 - Müşteri tarafından yönetilen anahtarlarla (SSE + CMK) [sunucu tarafı şifrelemesiyle](disk-encryption.md) şifrelenmiş diskler IÇEREN bir VM 'ye Ade uygulama. ADE ile şifrelenen bir VM üzerindeki bir veri diskine SSE + CMK uygulamak, desteklenmeyen bir senaryodur.
 - ADE ile şifrelenen veya **herhangi** bır zaman Ade ile ŞIFRELENEN bir VM 'yi, [müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifrelemeye](disk-encryption.md)geçirme.
+- [Yerel geçici disk Içermeyen Azure VM boyutları](../azure-vms-no-temp-disk.md); Özellikle, dv4, Dsv4, Ev4 ve Esv4.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

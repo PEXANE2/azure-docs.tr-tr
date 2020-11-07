@@ -6,16 +6,16 @@ author: cmmdesai
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 317fef0381222cc7bd9f86fce13a809aa3c787ea
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a62943c1a808424ded1a5e46ed115cda332bf7d5
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676592"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358738"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning"></a>Öğretici: Azure AD Kullanıcı sağlaması için SAP başarılı faktörleri yapılandırma
 Bu öğreticinin amacı, başarılı bir şekilde, başarılı bir şekilde e-posta adresi geri yazma işlemi sayesinde, başarılı bir şekilde çalışan verileri Azure Active Directory, çalışan verileri sağlamak için gerçekleştirmeniz gereken adımları gösterir. 
@@ -169,7 +169,7 @@ Bu bölümde, Azure AD 'ye başarılı bir şekilde Kullanıcı hesabı sağlama
 
    * **Yönetici parolası –** Başarılı etken API 'SI Kullanıcı hesabının parolasını girin. 
 
-   * **Kiracı URL 'si –** Başarılı olan OData API hizmetleri uç noktasının adını girin. Yalnızca http veya https olmayan sunucunun ana bilgisayar adını girin. Bu değer şöyle görünmelidir: **api-Server-Name.SuccessFactors.com** .
+   * **Kiracı URL 'si –** Başarılı olan OData API hizmetleri uç noktasının adını girin. Yalnızca http veya https olmayan sunucunun ana bilgisayar adını girin. Bu değer şöyle görünmelidir: **api-Server-Name.SuccessFactors.com**.
 
    * **Bildirim e-postası –** E-posta adresinizi girin ve "hata oluşursa e-posta gönder" onay kutusunu işaretleyin.
     > [!NOTE]

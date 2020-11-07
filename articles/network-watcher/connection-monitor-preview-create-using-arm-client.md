@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: 7d35799cd73ff4d065cb58189f2325dc4dac6840
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a30b5c225bcbcb7ca0febad5ae23bce522d2135
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87567996"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357530"
 ---
 # <a name="create-a-connection-monitor-preview-using-the-armclient"></a>ARMClient kullanarak bağlantı Izleyicisi (Önizleme) oluşturma
 
@@ -60,40 +60,92 @@ properties: {
 
 endpoints: [{
 
-name: 'workspace',
+name: 'endpoint_workspace_machine',
+
+type: 'MMAWorkspaceMachine',
 
 resourceId: '/subscriptions/<subscription id>/resourcegroups/<resource group>/providers/Microsoft.OperationalInsights/workspaces/sampleWorkspace',
 
-filter: {
+//Example 1: Choose a machine
 
- items: [{
-
-type: 'AgentAddress',
-
-address: '<FQDN of your on-premises agent>'
-
-}]
-
+address : '<non-Azure machine FQDN>'
 }
 
-          },
+//Example 2: Select IP from chosen machines
 
- {
+address : '<non-Azure machine FQDN>
 
-name: 'vm1',
+"scope": {
+      "include": [
+            {
+                  "address": "<IP belonging to machine chosen above>"  
+        }
+       ]
+      }
+   }    
+   
+name: 'endpoint_workspace_network',
+
+type: 'MMAWorkspaceNetwork',
+
+resourceId: '/subscriptions/<subscription id>/resourcegroups/<resource group>/providers/Microsoft.OperationalInsights/workspaces/sampleWorkspace',
+
+ coverage level : 'high', //Optional
+ 
+ //Include subnets. You can also exclude IPs from subnet to exclude from monitoring
+ 
+ scope: {
+      "include": [
+            {
+                  "address": "<subnet 1 mask>" // Eg: 10.10.1.0/28
+            },
+            {
+                  "address": "<subnet 2 mask>" 
+            }
+      ],
+      "exclude": [
+            { 
+            "address" : "<ip-from-included-subnets-that-should-be-excluded>"
+        }
+      ]
+     }
+},
+
+//Use a Azure VM as an endpoint
+{
+
+name: 'endpoint_virtualmachine',
 
 resourceId: '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<vm-name>'
 
 },
 
+//Use an Azure VNET or Subnet as an endpoint
+
  {
 
-name: 'vm2',
+name: 'endpoint_vnet_subnet',
 
-resourceId: '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<vm-name>'
+resourceId: '<resource id of VNET or subnet'
+coverage level: 'high' //Optional
 
+//Scope is optional.
+
+  "scope": {
+      "include": [
+            {
+                  "address": "<subnet 1 mask>" // Eg: 10.10.1.0/28 .This subnet should match with any existing subnet in vnet
+            }
+      ],
+    "exclude": [
+            {
+                  "address": "<ip-from-included-subnets-that-should-be-excluded>" // If used with include, IP should be part of the subnet defined above. Without include, this could be any address within vnet range or any specific subnet range as a whole.
+            }
+      ]
+  }
    },
 
+//Endpoint as a URL
 {
 
 name: 'azure portal'
@@ -102,6 +154,7 @@ address: '<URL>'
 
    },
 
+//Endpoint as an IP 
  {
 
     name: 'ip',
@@ -167,9 +220,24 @@ address: '<URL>'
     protocol: 'HTTP',
 
     httpConfiguration: {
-
-     preferHTTPS: true
-
+    
+     port: '<port of choice>'
+  
+    preferHTTPS: true // If port chosen is not 80 or 443
+    
+    method: 'GET', //Choose GET or POST
+    
+    path: '/', //Specify path for request
+         
+    requestHeaders: [
+            {
+              "name": "Content-Type",
+              "value": "appication/json"
+            }
+          ],
+          
+    validStatusCodeRanges: [ "102", "200-202", "3xx" ], //Samples
+          
     },
 
     successThreshold: {
@@ -180,7 +248,8 @@ address: '<URL>'
 
     }
 
-   }, {
+   }, 
+   {
 
     name: 'tcpEnabled',
 
@@ -307,9 +376,15 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
     * ad-test yapılandırmasının adı.
     * testFrequencySec-kaynakların, belirttiğiniz protokol ve bağlantı noktasındaki hedeflere ne sıklıkta ping olarak alınacağını belirtin. 30 saniye, 1 dakika, 5 dakika, 15 dakika veya 30 dakika seçebilirsiniz. Kaynaklar, seçtiğiniz değere göre hedeflere bağlantıyı test edecektir. Örneğin, 30 saniye seçerseniz, kaynaklar en az 30 saniyelik bir dönemde hedefe bağlantıyı kontrol eder.
     * protokol-TCP, ıCMP, HTTP veya HTTPS seçeneklerini belirleyebilirsiniz. Protokolüne bağlı olarak, bazı protokole özgü yapılandırmaları yapabilirsiniz
-        * preferHTTPS-HTTP üzerinden HTTPS kullanıp kullanmayacağınızı belirtin
+    
+        * preferHTTPS-kullanılan bağlantı noktası ne 80 ne de 443 değil, HTTP üzerinden HTTPS kullanılıp kullanılmayacağını belirtin
         * bağlantı noktası-tercih ettiğiniz hedef bağlantı noktasını belirtin.
-        * Disableizleme Oute-bu, protokolü TCP veya ıCMP olan test grupları için geçerlidir. Topoloji ve atlama-atlama RTT bulma kaynaklarını durdurur.
+        * Disableizleme Oute-bu, protokolü TCP veya ıCMP olan test yapılandırmalarına yöneliktir. Topoloji ve atlama-atlama RTT bulma kaynaklarını durdurur.
+        * Yöntem-bu, Protokolü HTTP olan test yapılandırmalarına uygulandı. HTTP istek yöntemini seçin--Al veya postala
+        * yol-URL 'ye eklenecek yol parametrelerini belirtin
+        * validStatusCodes-geçerli durum kodlarını seçin. Yanıt kodu bu listeyle eşleşmiyorsa, bir tanılama iletisi alacaksınız
+        * requestHeaders-hedefe geçirilecek özel istek üst bilgisi dizelerini belirtin
+        
     * Başarılı eşik-aşağıdaki ağ parametrelerinde eşikler ayarlayabilirsiniz:
         * checksFailedPercent-belirttiğiniz ölçütlere göre kaynaklar hedeflere bağlantı denetlediğinde başarısız olan denetim yüzdesini ayarlayın. TCP veya ıCMP protokolü için, başarısız denetimlerin yüzdesi, paket kaybı yüzdesine eşit hale getirilmiş olabilir. HTTP protokolü için, bu alan yanıt olmadan alınan HTTP isteklerinin yüzdesini temsil eder.
         * Roundroundtimems-kaynakların test yapılandırması üzerinden hedefe bağlanması için geçen süreyi milisaniye olarak ayarlayın.

@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c02a2658325fdd88ef1052937edc3b84c4545872
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 78f228a5e188bc930a9e7484f4c982ba746331dd
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91296846"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357785"
 ---
 # <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Azure Key Vault anahtarlar, gizlilikler ve sertifikalara genel bakış
 
@@ -45,10 +46,10 @@ Gizli Diziler|/gizlilikler|Desteklenir|Desteklenmez
 Sertifikalar|/Certificates|Desteklenir|Desteklenmez
 Depolama hesabı anahtarları|/storageaccount|Desteklenir|Desteklenmez
 |||
-- **Şifreleme anahtarları**: birden çok anahtar türünü ve algoritmaları destekler ve yazılım KORUMALı ve HSM korumalı anahtarların kullanımını sunar. Daha fazla bilgi için bkz. [anahtarlar hakkında](../keys/about-keys.md).
-- **Gizlilikler**: parolalar ve veritabanı bağlantı dizeleri gibi güvenli parolaların depolanmasını sağlar. Daha fazla bilgi için bkz. [gizlilikler hakkında](../secrets/about-secrets.md).
-- **Sertifikalar**: anahtarların ve parolaların üzerine inşa edilen sertifikaları destekler ve otomatik yenileme özelliği ekler. Daha fazla bilgi için bkz. [Sertifikalar hakkında](../certificates/about-certificates.md).
-- **Azure depolama hesabı anahtarları**: sizin Için bir Azure depolama hesabı anahtarlarını yönetebilir. Dahili olarak, Key Vault anahtarları Azure Storage hesabıyla listeleyebilir (eşitleyebilir) ve anahtarları düzenli olarak yeniden oluşturabilir (döndürün). Daha fazla bilgi için bkz. [Key Vault depolama hesabı anahtarlarını yönetme](../secrets/overview-storage-keys.md).
+- **Şifreleme anahtarları** : birden çok anahtar türünü ve algoritmaları destekler ve yazılım KORUMALı ve HSM korumalı anahtarların kullanımını sunar. Daha fazla bilgi için bkz. [anahtarlar hakkında](../keys/about-keys.md).
+- **Gizlilikler** : parolalar ve veritabanı bağlantı dizeleri gibi güvenli parolaların depolanmasını sağlar. Daha fazla bilgi için bkz. [gizlilikler hakkında](../secrets/about-secrets.md).
+- **Sertifikalar** : anahtarların ve parolaların üzerine inşa edilen sertifikaları destekler ve otomatik yenileme özelliği ekler. Daha fazla bilgi için bkz. [Sertifikalar hakkında](../certificates/about-certificates.md).
+- **Azure depolama hesabı anahtarları** : sizin Için bir Azure depolama hesabı anahtarlarını yönetebilir. Dahili olarak, Key Vault anahtarları Azure Storage hesabıyla listeleyebilir (eşitleyebilir) ve anahtarları düzenli olarak yeniden oluşturabilir (döndürün). Daha fazla bilgi için bkz. [Key Vault depolama hesabı anahtarlarını yönetme](../secrets/overview-storage-keys.md).
 
 Key Vault hakkında daha fazla genel bilgi için bkz. [Azure Key Vault hakkında](overview.md). Yönetilen HSM havuzları hakkında daha fazla bilgi için bkz. [Azure Key Vault Managed HSM nedir?](../managed-hsm/overview.md)
 
@@ -80,9 +81,9 @@ Daha fazla bilgi için bkz. [kimlik doğrulaması, istekler ve yanıtlar](authen
 
 Bir nesne tanımlayıcısının aşağıdaki genel biçimi vardır (kapsayıcı türüne göre):  
 
-- **Kasa için**: `https://{vault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
+- **Kasa için** : `https://{vault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
 
-- **YÖNETILEN HSM havuzları için**: `https://{hsm-name}.managedhsm.azure.net/{object-type}/{object-name}/{object-version}`  
+- **YÖNETILEN HSM havuzları için** : `https://{hsm-name}.managedhsm.azure.net/{object-type}/{object-name}/{object-version}`  
 
 > [!NOTE]
 > Her kapsayıcı türü tarafından desteklenen nesne türleri için bkz. [nesne türü desteği](#object-types) .

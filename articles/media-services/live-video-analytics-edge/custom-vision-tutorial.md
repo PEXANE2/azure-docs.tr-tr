@@ -3,12 +3,13 @@ title: IoT Edge ve Azure Özel Görüntü İşleme canlı video analiziyle canl�
 description: Azure Özel Görüntü İşleme kullanarak bir oyunsuna algılayan ve canlı video akışından oyungeleks 'leri saptamak için modeli bir kenara dağıtmak üzere Azure IoT Edge Azure Live video Analytics 'in AI genişletilebilirliği özelliğini kullanan kapsayıcılı bir model oluşturma hakkında bilgi edinin.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 52678d66bd4a91c9308a3cc48fbf784e89a5cfe8
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+zone_pivot_groups: ams-lva-edge-programming-languages
+ms.openlocfilehash: 685aab603b2589a97b4c80ef0f8c5860617f1147
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171516"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358324"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Öğretici: IoT Edge ve Azure Özel Görüntü İşleme canlı video analizi ile canlı videoyu çözümleyin
 
@@ -16,7 +17,13 @@ Bu öğreticide, Azure Özel Görüntü İşleme kullanarak bir oyunsuna algıla
 
 Birkaç görüntüyü karşıya yükleyerek ve etiketleyerek bir bilgisayar vizyonu modeli oluşturmak ve eğitme için Özel Görüntü İşleme gücünü nasıl bir araya getirebileceğiniz gösterilmektedir. Veri bilimi, makine öğrenimi veya AI hakkında bilgi sahibi olmanız gerekmez. Ayrıca, canlı video analizlerinin yeteneklerini, özel bir modeli kenarda bir kapsayıcı olarak kolayca dağıtmak ve sanal bir canlı video akışını analiz etmek için de öğreneceksiniz.
 
-Bu öğretici bir Azure sanal makinesini (VM) IoT Edge bir cihaz olarak kullanır ve C# dilinde yazılan örnek kodları temel alır. Bu öğreticideki bilgiler, [hareket ve yayma olaylarını Algıla](detect-motion-emit-events-quickstart.md) hızlı başlangıç bölümünde oluşturulur.
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [header](includes/custom-vision-tutorial/csharp/header.md)]
+::: zone-end
+
+::: zone pivot="programming-language-python"
+[!INCLUDE [header](includes/custom-vision-tutorial/python/header.md)]
+::: zone-end
 
 Öğretici şunların nasıl yapıldığını göstermektedir:
 
@@ -29,7 +36,7 @@ Bu öğretici bir Azure sanal makinesini (VM) IoT Edge bir cihaz olarak kullanı
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="suggested-pre-reading"></a>Önerilen önceden okuma
+## <a name="suggested-pre-reading"></a>Önerilen önceden okuma  
 
 Başlamadan önce aşağıdaki makaleleri okuyun:
 
@@ -42,23 +49,20 @@ Başlamadan önce aşağıdaki makaleleri okuyun:
 * [Öğretici: IoT Edge modülünü geliştirme](../../iot-edge/tutorial-develop-for-linux.md)
 * [Dağıtımı düzenleme. * .template.js](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticinin önkoşulları şunlardır:
 
-* [Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) ve [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) uzantıları ile geliştirme makinenizde [Visual Studio Code](https://code.visualstudio.com/) .
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [prerequisites](includes/custom-vision-tutorial/csharp/prerequisites.md)]
+::: zone-end
 
-    > [!TIP]
-    > Docker 'ı yüklemek isteyip istemediğiniz sorulabilir. Bu istemi yoksayın.
-* Geliştirme makinenizde [.NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/thank-you/sdk-3.1.201-windows-x64-installer) .
-* Sahip olduğunuzdan emin olun:
-    
-    * [Azure kaynakları ayarlama](detect-motion-emit-events-quickstart.md#set-up-azure-resources)
-    * [Geliştirme ortamınızı kurma](detect-motion-emit-events-quickstart.md#set-up-your-development-environment)
-
+::: zone pivot="programming-language-python"
+[!INCLUDE [prerequisites](includes/custom-vision-tutorial/python/prerequisites.md)]
+::: zone-end
 ## <a name="review-the-sample-video"></a>Örnek videoyu gözden geçirin
 
-Bu öğreticide, canlı bir akışın benzetimini yapmak için bir [oyuncar bir video](https://lvamedia.blob.core.windows.net/public/t2.mkv) dosyası kullanılmaktadır. [VLC medya oynatıcı](https://www.videolan.org/vlc/)gibi bir uygulama aracılığıyla videoyu inceleyebilirsiniz. **CTRL + N**' ı seçin ve ardından kayıttan yürütmeyi başlatmak üzere [oyuncar arabasının videosunu](https://lvamedia.blob.core.windows.net/public/t2.mkv) bir bağlantı yapıştırın. Videoyu izlerken videoda bir oyunçın 36 saniyelik işaretçisi ile ilgili olduğunu unutmayın. Özel model bu oyuncak kamyonu algılamak için eğitildi. Bu öğreticide, bu tür oyunları algılamak ve ilişkili çıkarım olaylarını IoT Edge hub 'ına yayımlamak için IoT Edge üzerinde canlı video analizi kullanacaksınız.
+
+Bu öğreticide, canlı bir akışın benzetimini yapmak için bir [oyuncar bir video](https://lvamedia.blob.core.windows.net/public/t2.mkv) dosyası kullanılmaktadır. [VLC medya oynatıcı](https://www.videolan.org/vlc/)gibi bir uygulama aracılığıyla videoyu inceleyebilirsiniz. **CTRL + N** ' ı seçin ve ardından kayıttan yürütmeyi başlatmak üzere [oyuncar arabasının videosunu](https://lvamedia.blob.core.windows.net/public/t2.mkv) bir bağlantı yapıştırın. Videoyu izlerken videoda bir oyunçın 36 saniyelik işaretçisi ile ilgili olduğunu unutmayın. Özel model bu oyuncak kamyonu algılamak için eğitildi. Bu öğreticide, bu tür oyunları algılamak ve ilişkili çıkarım olaylarını IoT Edge hub 'ına yayımlamak için IoT Edge üzerinde canlı video analizi kullanacaksınız.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -69,7 +73,7 @@ Bu diyagramda, sinyallerin Bu öğreticide nasıl akagösterdiği gösterilmekte
 
 HTTP uzantısı düğümü bir ara sunucu rolünü yürütür. Video çerçevelerini belirtilen görüntü türüne dönüştürür. Ardından, görüntüyü REST üzerinden bir HTTP uç noktasının arkasında bulunan bir AI modeli çalıştıran başka bir Edge modülüne geçirir. Bu örnekte, bu Edge modülü Özel Görüntü İşleme kullanılarak oluşturulan oyunker algılayıcı modelidir. HTTP uzantısı işlemci düğümü, algılama sonuçlarını toplar ve olayları [Azure IoT Hub havuzu](media-graph-concept.md#iot-hub-message-sink) düğümüne yayımlar. Düğüm daha sonra bu olayları [IoT Edge hub 'ına](../../iot-edge/iot-edge-glossary.md#iot-edge-hub)gönderir.
 
-## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>Özel Görüntü İşleme oyunsıya algılama modeli oluşturun ve dağıtın
+## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>Özel Görüntü İşleme oyunnı algılama modeli oluşturun ve dağıtın 
 
 Ad Özel Görüntü İşleme önerdiğinde, bulutu kullanarak kendi özel nesne algılayıcısının veya sınıflandırıcınızı oluşturabilirsiniz. Bulutta veya bir kenara kapsayıcılar aracılığıyla dağıtılabilecek Özel Görüntü İşleme modeller oluşturmak için basit, kullanımı kolay ve sezgisel bir arabirim sağlar.
 
@@ -83,7 +87,33 @@ Ek notlar:
 İşiniz bittiğinde, **performans** sekmesindeki **dışarı aktar** düğmesini kullanarak modeli bir Docker kapsayıcısına dışarı aktarabilirsiniz. Kapsayıcı platformu türü olarak Linux ' u seçtiğinizden emin olun. Bu, kapsayıcının çalışacağı platformdur. Kapsayıcıyı yüklediğiniz makine Windows veya Linux olabilir. Aşağıdaki yönergeler, bir Windows makinesine indirilen kapsayıcı dosyasını temel alır.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/docker-file.png" alt-text="Özel Görüntü İşleme genel bakış gösteren diyagram."   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
+> :::image type="content" source="./media/custom-vision-tutorial/docker-file.png" alt-text="Dockerfile seçili olan ekran.":::
+ 
+1. Adlı yerel makinenize indirilen bir zip dosyanız olmalıdır `<projectname>.DockerFile.Linux.zip` . 
+1. Docker 'ın yüklü olup olmadığını denetleyin. Aksi takdirde, Windows Masaüstü için [Docker](https://docs.docker.com/get-docker/) 'ı yüklersiniz.
+1. İndirilen dosyayı seçtiğiniz bir konumda açın. Sıkıştırılmış klasör dizinine gitmek için komut satırını kullanın.
+    
+    Aşağıdaki komutları çalıştırın:
+    
+    1. `docker build -t cvtruck` 
+    
+        Bu komut birçok paketi indirir, Docker görüntüsünü oluşturur ve olarak Etiketler `cvtruck:latest` .
+    
+        > [!NOTE]
+        > Başarılı olursa şu iletileri görmeniz gerekir: `Successfully built <docker image id>` ve `Successfully tagged cvtruck:latest` . Oluşturma komutu başarısız olursa, yeniden deneyin. Bazen bağımlılık paketleri ilk kez indirmez.
+    1. `docker  image ls`
+
+        Bu komut, yeni görüntünün yerel kayıt defterinizde olup olmadığını denetler.
+    1. `docker run -p 127.0.0.1:80:80 -d cvtruck`
+    
+        Bu komut, Docker 'ın sunulan bağlantı noktasını (80) yerel makinenizin bağlantı noktasına (80) yayınlaması gerekir.
+    1. `docker container ls`
+    
+        Bu komut, bağlantı noktası eşlemelerini ve Docker kapsayıcısı makinenizde başarıyla çalışıyorsa denetler. Çıktı şöyle bir şey olmalıdır:
+
+        ```
+        CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                      NAMES
+        8b7505398367        cvtruck             "/bin/sh -c 'python …"   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
         ```
       1. `curl -X POST http://127.0.0.1:80/image -F imageData=@<path to any image file that has the toy delivery truck in it>`
             
@@ -97,20 +127,15 @@ Ek notlar:
 
 ## <a name="examine-the-sample-files"></a>Örnek dosyaları inceleyin
 
-1. Visual Studio Code, src/Edge öğesine gidin. Oluşturduğunuz. env dosyasını, birkaç dağıtım şablonu dosyası ile birlikte görürsünüz.
 
-    Dağıtım şablonu, kenar cihazının bazı yer tutucu değerleriyle birlikte dağıtım bildirimini ifade eder. . Env dosyası bu değişkenlerin değerlerini içerir.
-1. Ardından src/buluttan cihaza-Console-App klasörüne gidin. Burada, oluşturduğunuz dosyada, diğer birkaç dosyayla birlikte appsettings.jsgörürsünüz:
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [examine-sample-files](includes/custom-vision-tutorial/csharp/examine-sample-files.md)]
+::: zone-end
 
-    * C2D-Console-App. csproj: Visual Studio Code için proje dosyasıdır.
-    * operations.js: Bu dosya, programın çalıştırmasını istediğiniz farklı işlemleri listeler.
-    * Program.cs: Bu örnek program kodu:
+::: zone pivot="programming-language-python"
+[!INCLUDE [examine-sample-files](includes/custom-vision-tutorial/python/examine-sample-files.md)]
+::: zone-end
 
-        * Uygulama ayarlarını yükler.
-        * Topoloji oluşturmak, grafiği örneklemek ve grafiği etkinleştirmek için IoT Edge modülünün doğrudan yöntemlerinde canlı video analizlerini çağırır.
-        * , **TERMINAL** penceresinde grafik çıkışını ve **Çıkış** penceresinde IoT Hub 'ına gönderilen olayları incelemenizi sağlar.
-        * Grafik örneğini devre dışı bırakır, grafik örneğini siler ve grafik topolojisini siler.
-        
 ## <a name="generate-and-deploy-the-deployment-manifest"></a>Dağıtım bildirimini oluşturma ve dağıtma
 
 1. Visual Studio Code ' de, src/buluttan cihaza-Console-App/operations.json ' a gidin.
@@ -121,10 +146,10 @@ Ek notlar:
     1. Parametreleri dizisinin en üstüne aşağıdakileri ekleyin: `{"name": "inferencingUrl","value": "http://cv:80/image"},`
     1. `rtspUrl`Parametre değerini olarak değiştirin `"rtsp://rtspsim:554/media/t2.mkv"` .
 1. Altında `GraphTopologyDelete` , emin olun `"name": "InferencingWithHttpExtension"` .
-1. Dosyasında src/Edge/deployment.customvision.template.jsöğesine sağ tıklayın ve **IoT Edge dağıtım bildirimi oluştur**' u seçin.
+1. Dosyasında src/Edge/deployment.customvision.template.jsöğesine sağ tıklayın ve **IoT Edge dağıtım bildirimi oluştur** ' u seçin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/deployment-template-json.png" alt-text="Özel Görüntü İşleme genel bakış gösteren diyagram.":::
+    > :::image type="content" source="./media/custom-vision-tutorial/deployment-template-json.png" alt-text="IoT Edge dağıtım bildirimi oluştur ' u gösteren ekran görüntüsü.":::
   
     Bu eylem, üzerinde deployment.customvision.amd64.jsadlı src/Edge/config klasöründe bir bildirim dosyası oluşturmalı.
 1. Dosyasında src/Edge/deployment.customvision.template.jsaçın ve `registryCredentials` JSON bloğunu bulun. Bu blokta, Azure Container kayıt defterinizin adresini Kullanıcı adı ve parolasıyla birlikte bulacaksınız.
@@ -146,11 +171,11 @@ Ek notlar:
 1. Sol alt köşedeki **Azure ıOT hub** bölmesinin yanındaki **daha fazla eylem** simgesini seçerek IoT Hub bağlantı dizesini ayarlayın. Dizeyi dosyadaki appsettings.jskopyalayabilirsiniz. ( [Select IoT Hub komutu](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub)aracılığıyla Visual Studio Code içinde yapılandırılmış doğru IoT Hub 'ına sahip olduğunuzdan emin olmak için başka bir önerilen yaklaşım aşağıda verilmiştir.)
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/connection-string.png" alt-text="Özel Görüntü İşleme genel bakış gösteren diyagram.":::
-1. Ardından, kaynak/kenar/yapılandırma/deployment.customvision.amd64.jsüzerinde sağ tıklayın ve **tek cihaz Için dağıtım oluştur**' u seçin.
+    > :::image type="content" source="./media/custom-vision-tutorial/connection-string.png" alt-text="IoT Hub bağlantı dizesi kümesini gösteren ekran görüntüsü.":::
+1. Ardından, kaynak/kenar/yapılandırma/deployment.customvision.amd64.jsüzerinde sağ tıklayın ve **tek cihaz Için dağıtım oluştur** ' u seçin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/deployment-amd64-json.png" alt-text="Özel Görüntü İşleme genel bakış gösteren diyagram.":::
+    > :::image type="content" source="./media/custom-vision-tutorial/deployment-amd64-json.png" alt-text="Tek cihaz için dağıtım oluştur ' un gösterildiği ekran görüntüsü.":::
 1. Bundan sonra IoT Hub bir cihaz seçmeniz istenir. Aşağı açılan listeden **LVA-örnek-cihaz** ' ı seçin.
 1. Yaklaşık 30 saniye içinde, sol alt bölümdeki Azure IoT Hub 'ını yenileyin. Aşağıdaki modüllerin dağıtıldığı uç cihazına sahip olmanız gerekir:
 
@@ -160,24 +185,55 @@ Ek notlar:
 
 ## <a name="prepare-for-monitoring-events"></a>İzleme olaylarını hazırlama
 
-Canlı video analizi cihazına sağ tıklayın ve **Izlemeyi Başlat yerleşik olay uç noktası**' nı seçin. Visual Studio Code **Çıkış** penceresinde IoT Hub olaylarını izlemek için bu adıma ihtiyacınız vardır.
+Canlı video analizi cihazına sağ tıklayın ve **Izlemeyi Başlat yerleşik olay uç noktası** ' nı seçin. Visual Studio Code **Çıkış** penceresinde IoT Hub olaylarını izlemek için bu adıma ihtiyacınız vardır.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/start-monitoring.png" alt-text="Özel Görüntü İşleme genel bakış gösteren diyagram.":::
+> :::image type="content" source="./media/custom-vision-tutorial/start-monitoring.png" alt-text="Yerleşik olay uç noktasının başlangıcını Izlemeyi gösteren ekran görüntüsü.":::
 
 ## <a name="run-the-sample-program"></a>Örnek programı çalıştırma
 
 Bu öğreticinin grafik topolojisini bir tarayıcıda açarsanız, değerinin `inferencingUrl` olarak ayarlandığını görürsünüz `http://cv:80/image` . Bu ayar, canlı videoda, varsa, çıkarım sunucusunun, varsa oyunpaketleri algılandıktan sonra sonuçlar döndürmeyeceği anlamına gelir.
 
-1. Visual Studio Code, **Uzantılar** sekmesini açın (veya **CTRL + SHIFT + X**' i seçin) ve Azure IoT Hub aratın.
-1. Sağ tıklayıp **uzantı ayarları**' nı seçin.
+1. Visual Studio Code, **Uzantılar** sekmesini açın (veya **CTRL + SHIFT + X** ' i seçin) ve Azure IoT Hub aratın.
+1. Sağ tıklayıp **uzantı ayarları** ' nı seçin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Özel Görüntü İşleme genel bakış gösteren diyagram.":::
-1. **Ayrıntılı Iletiyi göster**' i arayın ve etkinleştirin.
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Uzantı ayarlarını gösteren ekran görüntüsü.":::
+1. **Ayrıntılı Iletiyi göster** ' i arayın ve etkinleştirin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Özel Görüntü İşleme genel bakış gösteren diyagram."
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Ayrıntılı Iletiyi göster ' i gösteren ekran görüntüsü.":::
+1. Bir hata ayıklama oturumu başlatmak için **F5** tuşunu seçin. **TERMINAL** penceresinde yazdırılan iletileri görürsünüz.
+1. Kod üzerindeki operations.jsdoğrudan yöntemlere ve çağrılarıyla başlatılır `GraphTopologyList` `GraphInstanceList` . Önceki hızlı başlangıç işlemlerini tamamladıktan sonra kaynakları temizledikten sonra bu işlem boş listeler döndürür ve sonra duraklatılır. Devam etmek için **ENTER** tuşunu seçin.
+    
+   **TERMINAL** penceresinde, bir sonraki doğrudan yöntem çağrısı kümesi gösterilir:
+    
+   * Önceki ' ni `GraphTopologySet` kullanan bir çağrısı `topologyUrl` .
+   * Aşağıdaki gövdesini kullanan öğesine yapılan bir çağrı `GraphInstanceSet` :
+        
+   ```
+        {
+          "@apiVersion": "1.0",
+          "name": "Sample-Graph-1",
+          "properties": {
+            "topologyName": "CustomVisionWithHttpExtension",
+            "description": "Sample graph description",
+            "parameters": [
+              { 
+                "name": "inferencingUrl",
+                "value": "http://cv:80/image"
+              },
+              {
+                "name": "rtspUrl",
+                "value": "rtsp://rtspsim:554/media/t2.mkv"
+              },
+              {
+                "name": "rtspUserName",
+                "value": "testuser"
+              },
+              {
+                "name": "rtspPassword",
+                "value": "testpassword"
               }
             ]
           }
@@ -189,7 +245,7 @@ Bu öğreticinin grafik topolojisini bir tarayıcıda açarsanız, değerinin `i
     
 1. **TERMINAL** penceresindeki çıktı, bir **ENTER tuşuna basarak komut istemine devam edebilir** . Henüz **ENTER** ' ı seçmeyin. Doğrudan çağrdığınız yöntemler için JSON yanıtı yüklerini görmek üzere yukarı kaydırın.
 1. Visual Studio Code **Çıkış** penceresine geçin. IoT Edge modülündeki canlı video analizinin IoT Hub 'ına gönderdiğini iletiler görürsünüz. Bu öğreticinin aşağıdaki bölümünde bu iletiler ele alınmaktadır.
-1. Medya grafiği çalışmaya devam eder ve sonuçları yazdırır. RTSP simülatörü kaynak videoyu döngüye sokmaya devam eder. Medya grafiğini durdurmak için, **TERMINAL** penceresine dönün ve **ENTER**' u seçin.
+1. Medya grafiği çalışmaya devam eder ve sonuçları yazdırır. RTSP simülatörü kaynak videoyu döngüye sokmaya devam eder. Medya grafiğini durdurmak için, **TERMINAL** penceresine dönün ve **ENTER** ' u seçin.
 Sonraki çağrı dizisi kaynakları temizler:
     
    * `GraphInstanceDeactivate`Grafik örneğini devre dışı bırakmak için bir çağrı.

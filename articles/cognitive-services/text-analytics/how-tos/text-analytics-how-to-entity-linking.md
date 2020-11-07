@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: 94f863bd4f016ed1117fa236323b43515fd53797
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 0ca0c4eacce88bfb53582f7969ed7acbfd75bb8a
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165620"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358720"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Metin Analizi içinde adlandırılmış varlık tanımayı kullanma
 
@@ -63,14 +63,14 @@ Her belge 5.120 karakterden oluşmalıdır ve koleksiyon başına en fazla 1.000
 Bir POST isteği oluşturun. Hızlı bir şekilde yapılandırmak ve göndermek için aşağıdaki bağlantılardan [Postman](text-analytics-how-to-call-api.md) veya **API test konsolunu** kullanabilirsiniz. 
 
 > [!NOTE]
-> Azure portalında Metin Analizi kaynağınız için anahtarınızı ve uç noktanızı bulabilirsiniz. Kaynak **yönetimi**altında kaynağın **hızlı başlangıç** sayfasında yer alır. 
+> Azure portalında Metin Analizi kaynağınız için anahtarınızı ve uç noktanızı bulabilirsiniz. Kaynak **yönetimi** altında kaynağın **hızlı başlangıç** sayfasında yer alır. 
 
 
 ### <a name="request-endpoints"></a>İstek uç noktaları
 
 #### <a name="version-31-preview2"></a>[Sürüm 3,1-Önizleme. 2](#tab/version-3-preview)
 
-Adlandırılmış varlık tanıma `v3.1-preview.2` , ner ve varlık bağlama istekleri için ayrı uç noktalar kullanır. İsteğinize göre aşağıdan bir URL biçimi kullanın:
+Adlandırılmış varlık tanıma `v3.1-preview.2` , ner, PII ve varlık bağlama istekleri için ayrı uç noktalar kullanır. İsteğinize göre aşağıdan bir URL biçimi kullanın:
 
 Varlık bağlama
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/linking`
@@ -82,6 +82,7 @@ HI
 
 [Adlandırılmış varlık tanıma sürüm 3,1-Önizleme başvurusu `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionGeneral)
 
+Kişisel olarak tanımlanabilen bilgiler (PII)
 * Kişisel ( `PII` ) bilgileri- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/pii`
 
 Ayrıca, `domain=phi` metindeki sağlık () bilgilerini algılamak için isteğe bağlı parametresini de kullanabilirsiniz `PHI` . 

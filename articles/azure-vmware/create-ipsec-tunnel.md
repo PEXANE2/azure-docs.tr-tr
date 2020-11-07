@@ -3,12 +3,12 @@ title: Azure VMware çözümüne bir IPSec tüneli oluşturma
 description: Azure VMware çözümlerinde IPSec tüneli oluşturmak için bir sanal WAN hub 'ı oluşturmayı öğrenin.
 ms.topic: how-to
 ms.date: 10/02/2020
-ms.openlocfilehash: 74cc31abf432954008cbb20bf64825d199732dab
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 63318b9fdd0de5e0ce102fafe332f40f595f38f1
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951137"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357853"
 ---
 # <a name="create-an-ipsec-tunnel-into-azure-vmware-solution"></a>Azure VMware çözümüne bir IPSec tüneli oluşturma
 
@@ -26,9 +26,9 @@ Siteden siteye VPN tüneli oluşturmak için, şirket içi VPN cihazında genel 
 
 ## <a name="create-a-virtual-wan-hub"></a>Sanal WAN hub 'ı oluşturma
 
-1. Azure portal, **sanal WAN 'lar**üzerinde arama yapın. **+Ekle**’yi seçin. WAN Oluştur sayfası açılır.  
+1. Azure portal, **sanal WAN 'lar** üzerinde arama yapın. **+Ekle** ’yi seçin. WAN Oluştur sayfası açılır.  
 
-2. **WAN oluştur** sayfasında gerekli alanları girin ve ardından **gözden geçir + oluştur**' u seçin.
+2. **WAN oluştur** sayfasında gerekli alanları girin ve ardından **gözden geçir + oluştur** ' u seçin.
    
    | Alan | Değer |
    | --- | --- |
@@ -36,12 +36,12 @@ Siteden siteye VPN tüneli oluşturmak için, şirket içi VPN cihazında genel 
    | **Kaynak grubu** | Sanal WAN, genel bir kaynaktır ve belirli bir bölgeye karşı sınırlandırmamıştı.  |
    | **Kaynak grubu konumu** | Sanal WAN hub 'ını oluşturmak için kaynak grubu için bir konum ayarlamanız gerekir.  |
    | **Ad** |   |
-   | **Tür** | Yalnızca VPN Gateway trafiğinin fazlasına izin veren **Standart**' ı seçin.  |
+   | **Tür** | Yalnızca VPN Gateway trafiğinin fazlasına izin veren **Standart** ' ı seçin.  |
 
 
     :::image type="content" source="media/create-ipsec-tunnel/create-wan.png" alt-text="WAN oluştur.":::
 
-3. Azure portal, önceki adımda oluşturduğunuz sanal WAN ' ı seçin, **sanal hub oluştur**' u seçin, gerekli alanları girin ve ardından **İleri: siteden siteye**' yı seçin. 
+3. Azure portal, önceki adımda oluşturduğunuz sanal WAN ' ı seçin, **sanal hub oluştur** ' u seçin, gerekli alanları girin ve ardından **İleri: siteden siteye** ' yı seçin. 
 
    | Alan | Değer |
    | --- | --- |
@@ -49,7 +49,7 @@ Siteden siteye VPN tüneli oluşturmak için, şirket içi VPN cihazında genel 
    | **Ad** |    |
    | **Hub özel adres alanı** | Alt ağı `/24` (minimum) kullanarak girin.  |
 
-    :::image type="content" source="media/create-ipsec-tunnel/create-virtual-hub.png" alt-text="WAN oluştur.":::
+    :::image type="content" source="media/create-ipsec-tunnel/create-virtual-hub.png" alt-text="Sanal hub oluşturun.":::
 
 4. **Siteden siteye** sekmesinde, **ağ geçidi ölçek birimleri** açılır listesinden toplam aktarım hızını ayarlayarak siteden siteye ağ geçidini tanımlayın. 
 
@@ -67,12 +67,12 @@ Siteden siteye VPN tüneli oluşturmak için, şirket içi VPN cihazında genel 
 
 1. Azure portal **son kaynaklarda** , önceki bölümde oluşturduğunuz sanal WAN ' ı seçin.
 
-2. Sanal hub 'a **genel bakış** bölümünde, **bağlantı**  >  **VPN (siteden siteye)** öğesini seçin ve ardından **yeni VPN sitesi oluştur**' u seçin.
+2. Sanal hub 'a **genel bakış** bölümünde, **bağlantı**  >  **VPN (siteden siteye)** öğesini seçin ve ardından **yeni VPN sitesi oluştur** ' u seçin.
 
 
-    :::image type="content" source="media/create-ipsec-tunnel/create-vpn-site-basics.png" alt-text="WAN oluştur.":::  
+    :::image type="content" source="media/create-ipsec-tunnel/create-vpn-site-basics.png" alt-text="VPN sitesi oluşturun.":::  
  
-3. **Temel bilgiler** sekmesinde, gerekli alanları girip **İleri: bağlantılar**' ı seçin. 
+3. **Temel bilgiler** sekmesinde, gerekli alanları girip **İleri: bağlantılar** ' ı seçin. 
 
    | Alan | Değer |
    | --- | --- |
@@ -83,24 +83,24 @@ Siteden siteye VPN tüneli oluşturmak için, şirket içi VPN cihazında genel 
    | **Özel adres alanı**  | Şirket içi CıDR bloğunu girin.  Şirket içindeki tüm trafiği tünelde tünele yönlendirmek için kullanılır.  CıDR bloğu yalnızca BGP 'yi etkinleştirmezseniz gereklidir. |
    | **Bağlan** |   |
 
-4. **Bağlantılar** sekmesinde, gerekli alanları doldurup **gözden geçir + oluştur**' u seçin. Bağlantının ve sağlayıcı adlarının belirtilmesi, hub 'ın bir parçası olarak, sonunda oluşturulabilen ağ geçitleri sayısını ayırt etmenize olanak tanır. BGP ve otonom sistem numarası (ASN), kuruluşunuz içinde benzersiz olmalıdır.
+4. **Bağlantılar** sekmesinde, gerekli alanları doldurup **gözden geçir + oluştur** ' u seçin. Bağlantının ve sağlayıcı adlarının belirtilmesi, hub 'ın bir parçası olarak, sonunda oluşturulabilen ağ geçitleri sayısını ayırt etmenize olanak tanır. BGP ve otonom sistem numarası (ASN), kuruluşunuz içinde benzersiz olmalıdır.
  
 ## <a name="optional-defining-a-vpn-site-for-policy-based-vpn-site-to-site-tunnels"></a>Seçim İlke tabanlı VPN siteden siteye tünellerini için bir VPN sitesi tanımlama
 
 Bu bölüm yalnızca ilke tabanlı VPN 'Ler için geçerlidir. İlke tabanlı (veya statik, rota tabanlı) VPN kurulumları çoğu durumda Şirket içi VPN cihazı özellikleri tarafından dağıtılır. Şirket içi ve Azure VMware Çözüm ağlarının belirtilmesini gerektirir. Azure sanal WAN hub ile Azure VMware çözümü için *hiçbir* ağ seçemezsiniz. Bunun yerine, ilgili tüm şirket içi ve Azure VMware çözümü sanal WAN hub aralıklarını belirtmeniz gerekir. Bu hub aralıkları, ilke tabanlı VPN tüneli şirket içi uç noktasının şifreleme etki alanını belirtmek için kullanılır. Azure VMware Çözüm tarafı yalnızca ilke tabanlı trafik Seçicisi göstergesinin etkinleştirilmesini gerektirir. 
 
-1. Azure portal, sanal WAN hub sitenize gidin; **bağlantı**altında **VPN (siteden siteye)** seçeneğini belirleyin.
+1. Azure portal, sanal WAN hub sitenize gidin; **bağlantı** altında **VPN (siteden siteye)** seçeneğini belirleyin.
 
-2. VPN sitenizin adını ve ardından en sağdaki üç nokta (...) simgesini seçin; ardından **VPN bölümünü bu hub 'a Düzenle**' yi seçin.
+2. VPN sitenizin adını ve ardından en sağdaki üç nokta (...) simgesini seçin; sonra **Bu hub 'A VPN bağlantısını Düzenle** ' yi seçin.
  
-    :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png" alt-text="WAN oluştur." lightbox="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png":::
+    :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png" alt-text="VPN bağlantısını bu hub 'a düzenleyin." lightbox="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png":::
 
-3. VPN sitesi ile hub arasındaki bağlantıyı düzenleyin ve ardından **Kaydet**' i seçin.
-   - Internet Protokolü güvenliği (IPSec), **özel**' i seçin.
+3. VPN sitesi ile hub arasındaki bağlantıyı düzenleyin ve ardından **Kaydet** ' i seçin.
+   - Internet Protokolü güvenliği (IPSec), **özel** ' i seçin.
    - İlke tabanlı trafik seçiciyi kullanın, **Etkinleştir** ' i seçin.
    - **Ike Aşama 1** ve **Ike aşama 2 (IPSec)** ayrıntılarını belirtin. 
  
-    :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-connection.png" alt-text="WAN oluştur."::: 
+    :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-connection.png" alt-text="VPN bağlantısını Düzenle"::: 
  
     İlke tabanlı şifreleme etki alanının parçası olan trafik seçicileri veya alt ağlarınız şunlardır:
     
@@ -110,26 +110,26 @@ Bu bölüm yalnızca ilke tabanlı VPN 'Ler için geçerlidir. İlke tabanlı (v
 
 ## <a name="connect-your-vpn-site-to-the-hub"></a>VPN sitenizi hub 'a bağlama
 
-1. VPN sitesi adınızın yanındaki kutuyu işaretleyin (bkz. Yukarıdaki **VPN sitesinden site** ekran görüntüsü) ve ardından **VPN sitelerini bağla**' yı seçin. **Önceden paylaşılan anahtar** alanına, daha önce şirket içi uç nokta için tanımlanan anahtarı girin. Daha önce tanımlı bir anahtarınız yoksa, bu alanı boş bırakabilirsiniz ve sizin için otomatik olarak bir anahtar oluşturulur. 
+1. VPN sitesi adınızın yanındaki kutuyu işaretleyin (bkz. Yukarıdaki **VPN sitesinden site** ekran görüntüsü) ve ardından **VPN sitelerini bağla** ' yı seçin. **Önceden paylaşılan anahtar** alanına, daha önce şirket içi uç nokta için tanımlanan anahtarı girin. Daha önce tanımlı bir anahtarınız yoksa, bu alanı boş bırakabilirsiniz ve sizin için otomatik olarak bir anahtar oluşturulur. 
  
     Yalnızca hub 'da bir güvenlik duvarı dağıtıyorsanız **Varsayılan rotayı yay** özelliğini etkinleştirin ve bu tünelden gelen bağlantılara yönelik bir sonraki atlama olur.
 
-    **Bağlan**'ı seçin. Bir bağlantı durumu ekranında, tünel oluşturma durumu gösterilir.
+    **Bağlan** ’ı seçin. Bir bağlantı durumu ekranında, tünel oluşturma durumu gösterilir.
 
 2. Sanal WAN 'a genel bakış konusuna gidin. VPN sitesi sayfasını açın ve VPN yapılandırma dosyasını şirket içi uç noktaya uygulamak üzere indirin.  
 
 3. Şimdi Azure VMware çözümü ExpressRoute sanal WAN hub 'ına yacağız. (Bu adım önce özel bulutunuzu oluşturmayı gerektirir.)
 
-    Azure VMware Çözüm özel bulutu 'nın **bağlantı** bölümüne gidin. **ExpressRoute** sekmesinde **+ bir yetkilendirme anahtarı iste**' yi seçin. Adlandırın ve **Oluştur**' u seçin. (Anahtarı oluşturmak yaklaşık 30 saniye sürebilir.) ExpressRoute KIMLIĞI ve yetkilendirme anahtarı ' nı kopyalayın. 
+    Azure VMware Çözüm özel bulutu 'nın **bağlantı** bölümüne gidin. **ExpressRoute** sekmesinde **+ bir yetkilendirme anahtarı iste** ' yi seçin. Adlandırın ve **Oluştur** ' u seçin. (Anahtarı oluşturmak yaklaşık 30 saniye sürebilir.) ExpressRoute KIMLIĞI ve yetkilendirme anahtarı ' nı kopyalayın. 
 
-    :::image type="content" source="media/create-ipsec-tunnel/express-route-connectivity.png" alt-text="WAN oluştur.":::
+    :::image type="content" source="media/create-ipsec-tunnel/express-route-connectivity.png" alt-text="Express rota KIMLIĞINI ve yetkilendirme anahtarını kopyalayın.":::
 
     > [!NOTE]
     > Yetkilendirme anahtarı bir süre sonra kaybolur, bu nedenle göründüğü anda kopyalayın.
 
-4. Daha sonra, Azure VMware çözümünü ve VPN ağ geçidini sanal WAN hub 'ında birbirine bağlayacağız. Azure portal, daha önce oluşturduğunuz sanal WAN 'ı açın. Oluşturulan sanal WAN hub 'ını seçin ve ardından sol bölmedeki **ExpressRoute** ' ı seçin. **+ Kullan yetkilendirme anahtarı**' nı seçin.
+4. Daha sonra, Azure VMware çözümünü ve VPN ağ geçidini sanal WAN hub 'ında birbirine bağlayacağız. Azure portal, daha önce oluşturduğunuz sanal WAN 'ı açın. Oluşturulan sanal WAN hub 'ını seçin ve ardından sol bölmedeki **ExpressRoute** ' ı seçin. **+ Kullan yetkilendirme anahtarı** ' nı seçin.
 
-    :::image type="content" source="media/create-ipsec-tunnel/redeem-authorization-key.png" alt-text="WAN oluştur.":::
+    :::image type="content" source="media/create-ipsec-tunnel/redeem-authorization-key.png" alt-text="Yetkilendirme anahtarını kullanın.":::
 
     Yetkilendirme anahtarını yetkilendirme anahtarı alanına ve ExpressRoute KIMLIĞINE **eş devre URI 'si** alanına yapıştırın. **Bu ExpressRoute devresini otomatik olarak hub ile ilişkilendir** ' i seçtiğinizden emin olun. Bağlantıyı kurmak için **Ekle** ' yi seçin. 
 

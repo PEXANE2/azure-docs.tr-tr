@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 0a72ea413e7298c8e6cb622cb985e6516435b451
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8238b9902aafcabc079c551a0eabc7170042209a
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91255923"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357632"
 ---
 # <a name="tutorial-configure-theorgwiki-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için TheOrgWiki 'yi yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, Kullanıcı ve/veya grupları Orgwiki 'ye
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -53,23 +53,23 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 Orgwiki 'yi Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmadan önce, Orgwiki üzerinde SCıM sağlamasını etkinleştirmeniz gerekir.
 
-1. [Theorgwiki Yönetici konsolunuza](https://www.theorgwiki.com/login/)oturum açın. **Yönetici Konsolu**' na tıklayın.
+1. [Theorgwiki Yönetici konsolunuza](https://www.theorgwiki.com/login/)oturum açın. **Yönetici Konsolu** ' na tıklayın.
 
     ![Kullanıcı avatar ve yönetici konsolu olarak adlandırılan kuruluş wiki 'nin ekran görüntüsü.](media/theorgwiki-provisioning-tutorial/login.png)
 
-2. Yönetici Konsolu 'nda **Ayarlar sekmesine**tıklayın. 
+2. Yönetici Konsolu 'nda **Ayarlar sekmesine** tıklayın. 
 
     ![Ayarlar sekmesi olarak adlandırılan kuruluş wiki yönetici konsolunun ekran görüntüsü.](media/theorgwiki-provisioning-tutorial/settings.png)
     
-3. **Hizmet hesaplarına**gidin.
+3. **Hizmet hesaplarına** gidin.
 
     ![Kuruluş wiki yönetim konsolundaki hizmet hesapları sayfasının ekran görüntüsü.](media/theorgwiki-provisioning-tutorial/serviceaccount.png)
 
-4. **+ Hizmet hesabı**' na tıklayın. **Hizmet hesabı türü**altında **belirteç tabanlı**' i seçin. **Kaydet**’e tıklayın.
+4. **+ Hizmet hesabı** ' na tıklayın. **Hizmet hesabı türü** altında **belirteç tabanlı** ' i seçin. **Kaydet** ’e tıklayın.
 
     ![Hizmet hesabı türü, belirteç tabanlı ve kaydetme seçenekleri ile birlikte yeni hizmet hesabı iletişim kutusunun ekran görüntüsü.](media/theorgwiki-provisioning-tutorial/auth.png)
 
-5.  **Etkin belirteçleri**kopyalayın. Bu değer, Azure portal TheOrgWiki uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
+5.  **Etkin belirteçleri** kopyalayın. Bu değer, Azure portal TheOrgWiki uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
      
     ![S C I M için belirteçleri yönetme sağlama iletişim kutusunun ekran görüntüsü.](media/theorgwiki-provisioning-tutorial/token.png)
 
@@ -77,11 +77,11 @@ Orgwiki 'yi Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmada
 
 Azure AD ile otomatik Kullanıcı sağlamak üzere Orgwiki 'yi yapılandırmak için Azure AD uygulama galerisindeki Orgwiki 'yi yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -89,7 +89,7 @@ Azure AD ile otomatik Kullanıcı sağlamak üzere Orgwiki 'yi yapılandırmak i
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **theorgwiki**yazın, sonuçlar panelinde **theorgwiki** ' yi seçin. 
+4. Arama kutusuna **theorgwiki** yazın, sonuçlar panelinde **theorgwiki** ' yi seçin. 
 
     ![Sonuçlar listesinde TheOrgWiki](common/search-new-app.png)
 
@@ -97,7 +97,7 @@ Azure AD ile otomatik Kullanıcı sağlamak üzere Orgwiki 'yi yapılandırmak i
 
     ![Adlı URL 'YI içeren kuruluş wiki oturum açma sayfasının ekran görüntüsü](media/theorgwiki-provisioning-tutorial/image00.png)
 
-6.  Sağ üst köşede **oturum aç**' ı seçin.
+6.  Sağ üst köşede **oturum aç** ' ı seçin.
 
     ![Oturum aç seçeneğinin çağrılması ile oturum açma sayfasının sağ üst köşesinin ekran görüntüsü.](media/theorgwiki-provisioning-tutorial/image02.png)
 
@@ -116,11 +116,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Azure AD 'de Kullanıcı v
 
 ### <a name="to-configure-automatic-user-provisioning-for-theorgwiki-in-azure-ad"></a>Azure AD 'de TheOrgWiki için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Theorgwiki**' yi seçin.
+2. Uygulamalar listesinde, **Theorgwiki** ' yi seçin.
 
     ![Uygulamalar listesindeki OrgWiki bağlantısı](common/all-applications.png)
 
@@ -128,11 +128,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Azure AD 'de Kullanıcı v
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünün altında, `https://<TheOrgWiki Subdomain        value>.theorgwiki.com/api/v2/scim/v2/` **kiracı URL 'sini**girin. 
+5. **Yönetici kimlik bilgileri** bölümünün altında, `https://<TheOrgWiki Subdomain        value>.theorgwiki.com/api/v2/scim/v2/` **kiracı URL 'sini** girin. 
 
     Örnek: `https://test1.theorgwiki.com/api/v2/scim/v2/`
 
@@ -143,13 +143,13 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Azure AD 'de Kullanıcı v
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-7. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+7. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-8. **Kaydet**’e tıklayın.
+8. **Kaydet** ’e tıklayın.
 
-9. **Eşlemeler** bölümünde **Kullanıcı Azure Active Directory Kullanıcıları Orgwiki olarak eşitler**' ı seçin.
+9. **Eşlemeler** bölümünde **Kullanıcı Azure Active Directory Kullanıcıları Orgwiki olarak eşitler** ' ı seçin.
 
     ![TheOrgWiki Kullanıcı eşlemeleri](media/theorgwiki-provisioning-tutorial/usermapping.png)
 
@@ -167,7 +167,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Azure AD 'de Kullanıcı v
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-14. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+14. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 85f14329359eaf051b992f657ac0e4e634d504cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cb8d578c05166f88ed7e91681dd6b5f15b1e3e5
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020839"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358652"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Azure Bilişsel Arama eşzamanlılık yönetimi
 
-Dizinler ve veri kaynakları gibi Azure Bilişsel Arama kaynaklarını yönetirken kaynakların güvenli bir şekilde güncelleştirilmesi önemlidir. özellikle de, kaynaklar uygulamanızın farklı bileşenleriyle aynı anda erişilir. İki istemci eşzamanlı olarak bir kaynağı her zaman koordine etmeden güncelleştirdiğinde, yarış koşulları mümkündür. Bunu engellemek için Azure Bilişsel Arama, *iyimser eşzamanlılık modeli*sunar. Bir kaynakta kilit yok. Bunun yerine, yanlışlıkla üzerine yazılmalardan kaçınacak istekleri oluşturabilmeniz için kaynak sürümünü tanımlayan her kaynak için bir ETag vardır.
+Dizinler ve veri kaynakları gibi Azure Bilişsel Arama kaynaklarını yönetirken kaynakların güvenli bir şekilde güncelleştirilmesi önemlidir. özellikle de, kaynaklar uygulamanızın farklı bileşenleriyle aynı anda erişilir. İki istemci eşzamanlı olarak bir kaynağı her zaman koordine etmeden güncelleştirdiğinde, yarış koşulları mümkündür. Bunu engellemek için Azure Bilişsel Arama, *iyimser eşzamanlılık modeli* sunar. Bir kaynakta kilit yok. Bunun yerine, yanlışlıkla üzerine yazılmalardan kaçınacak istekleri oluşturabilmeniz için kaynak sürümünü tanımlayan her kaynak için bir ETag vardır.
 
 > [!Tip]
 > [Örnek bir C# çözümünde](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) kavramsal kod, eşzamanlılık denetiminin Azure bilişsel arama 'da nasıl çalıştığını açıklar. Kod, eşzamanlılık denetimini çağıran koşullar oluşturur. [Aşağıdaki kod parçasının](#samplecode) okunması büyük olasılıkla çoğu geliştirici için yeterlidir, ancak çalıştırmak istiyorsanız, hizmet adını ve yönetici API anahtarını eklemek için appsettings.js' yi düzenleyin. Hizmet URL 'SI verildiğinde `http://myservice.search.windows.net` , hizmet adı `myservice` .
@@ -30,7 +30,7 @@ Dizinler ve veri kaynakları gibi Azure Bilişsel Arama kaynaklarını yönetirk
 Tüm kaynakların, nesne sürümü bilgilerini sağlayan bir [*varlık etiketi (ETag)*](https://en.wikipedia.org/wiki/HTTP_ETag) vardır. Önce ETag 'i denetleyerek, kaynağın ETag 'i yerel kopyalarınızla eşleştirerek tipik bir iş akışında (alma, yerel olarak değiştirme, güncelleştirme) eşzamanlı güncelleştirmelerden kaçınabilirsiniz.
 
 + REST API, istek üst bilgisinde [ETag](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) kullanır.
-+ .NET SDK bir accessCondition nesnesi aracılığıyla ETag 'i ayarlıyor, [IF-Match ayarlanıyor | Kaynakta IF-Match-None üst bilgisi](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) . [IResourceWithETag (.NET SDK)](/dotnet/api/microsoft.azure.search.models.iresourcewithetag) öğesinden devralan herhangi bir nesne bir accesscondition nesnesine sahiptir.
++ .NET SDK bir accessCondition nesnesi aracılığıyla ETag 'i ayarlıyor, [IF-Match ayarlanıyor | Kaynakta IF-Match-None üst bilgisi](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) . [Eşanlamlı](/dotnet/api/azure.search.documents.indexes.models.synonymmap.etag) ve [Searchındex. ETag](/dotnet/api/azure.search.documents.indexes.models.searchindex.etag)gibi ETags kullanan nesneler bir accesscondition nesnesine sahiptir.
 
 Bir kaynağı her güncelleştirişinizde ETag, otomatik olarak değişir. Eşzamanlılık yönetimini uyguladığınızda, tek yapmanız gereken, uzak kaynağın istemcide değiştirdiğiniz kaynağın kopyasıyla aynı ETag 'e sahip olmasını gerektiren güncelleştirme isteğine bir ön koşul koyuyor. Eşzamanlı bir işlem uzak kaynağı zaten değiştiriyorsa ETag, önkoşullarla eşleşmez ve istek HTTP 412 ile başarısız olur. .NET SDK kullanıyorsanız, bu bildirimler `CloudException` `IsAccessConditionFailed()` Uzantı yönteminin true döndüğü yerdir.
 

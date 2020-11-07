@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/19/2019
 ms.author: zhchia
-ms.openlocfilehash: bf75c4fe2053483b94c5f645816422909645854a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07c476c0de644ac63c577d466f4691b5cf415334
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91286015"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357951"
 ---
 # <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Staryaprak yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, Kullanıcı ve/veya grupları Staryaprak 
 >
 > Bu bağlayıcı Şu anda önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -50,11 +50,11 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 Azure AD ile otomatik Kullanıcı sağlaması için Staryaprak yapılandırmadan önce, Staryaprak 'da SCıM sağlamasını yapılandırmanız gerekir:
 
-1. [Staryaprak yönetici konsolunda](https://portal.starleaf.com/#page=login)oturum açın. **Tümleştirmelere**gidin  >  **tümleştirme Ekle**.
+1. [Staryaprak yönetici konsolunda](https://portal.starleaf.com/#page=login)oturum açın. **Tümleştirmelere** gidin  >  **tümleştirme Ekle**.
 
     ![Tümleştirmelerle birlikte Staryaprak yönetici konsolunun ekran görüntüsü ve olarak adlandırılan tümleştirme seçenekleri ekleyin.](media/starleaf-provisioning-tutorial/image00.png)
 
-2. Microsoft Azure Active Directory istediğiniz **türü** seçin. **Ada**uygun bir ad girin. **Uygula**’ya tıklayın.
+2. Microsoft Azure Active Directory istediğiniz **türü** seçin. **Ada** uygun bir ad girin. **Uygula** 'ya tıklayın.
 
     ![Tür ve ad metin kutuları olarak adlandırılan tümleştirme Ekle iletişim kutusunun ekran görüntüsü.](media/starleaf-provisioning-tutorial/image01.png)
 
@@ -68,11 +68,11 @@ Staryaprak 'u Azure AD ile otomatik Kullanıcı sağlaması için yapılandırma
 
 **Azure AD Uygulama Galerisi 'nden Staryaprak eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -80,18 +80,18 @@ Staryaprak 'u Azure AD ile otomatik Kullanıcı sağlaması için yapılandırma
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Staryaprak**yazın, sonuçlar panelinde **staryaprak** ' ı seçin.
+4. Arama kutusuna **Staryaprak** yazın, sonuçlar panelinde **staryaprak** ' ı seçin.
     ![Sonuç listesinde Staryaprak](common/search-new-app.png)
 
 ## <a name="configure-automatic-user-provisioning-to-starleaf"></a>Staryaprak için otomatik Kullanıcı sağlamayı yapılandırma
 
 Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre Staryaprak 'da kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD sağlama hizmetini yapılandırma adımlarında size kılavuzluk eder.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Staryaprak**' u seçin.
+2. Uygulamalar listesinde, **Staryaprak** ' u seçin.
 
     ![Uygulamalar listesindeki Staryaprak bağlantısı](common/all-applications.png)
 
@@ -99,7 +99,7 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre Staryapra
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -111,9 +111,9 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre Staryapra
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’e tıklayın.
+7. **Kaydet** ’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Staryaprak olarak eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Staryaprak olarak eşitler** ' ı seçin.
 
     ![Azure Active Directory kullanıcılarını Staryaprak 'a eşitlemeyi gösteren eşlemeler bölümünün ekran görüntüsü.](media/starleaf-provisioning-tutorial/usermapping.png)
 
@@ -133,7 +133,7 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre Staryapra
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+13. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

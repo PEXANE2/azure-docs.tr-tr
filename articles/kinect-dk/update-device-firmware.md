@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, bellenim, güncelleştirme, kurtarma
-ms.openlocfilehash: ecfa4a18592d3bc70e3b7cdd66ff6464a54e560d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71557798a584635356cc47fd7c4a0309df4d018a
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030693"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356235"
 ---
 # <a name="update-azure-kinect-dk-firmware"></a>Azure Kinect DK bellenimini güncelleştirme
 
@@ -27,7 +27,7 @@ Azure Kinect DK, bellenimi otomatik olarak güncelleştirmez. Bellenimi, kullan�
 3. SDK yüklemesi konumunda (SDK yüklemesi konumu) \araçları \ ' de şunu bulmanız gerekir:
 
     - AzureKinectFirmwareTool.exe
-    - Bellenim klasöründe *AzureKinectDK_Fw_1.5.926614. bin*gibi bir bellenim. bin dosyası.
+    - Bellenim klasöründe *AzureKinectDK_Fw_1.5.926614. bin* gibi bir bellenim. bin dosyası.
 
 4. Cihazınızı ana bilgisayara bağlayın ve aynı zamanda güç tasarrufu yapın.
 
@@ -82,7 +82,7 @@ Azure Kinect DK, bellenimi otomatik olarak güncelleştirmez. Bellenimi, kullan�
 
 3. Diğer tümü başarısız olursa, fabrika bellenimine geri dönmek için [Kurtarma](https://support.microsoft.com/help/4494277/reset-azure-kinect-dk) adımlarını izleyin ve yeniden deneyin.
 
-Ek sorunlar için bkz. [Microsoft destek sayfaları](https://aka.ms/kinectsupport)
+Ek sorunlar için bkz. [Microsoft destek sayfaları](./index.yml)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

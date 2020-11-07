@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: b877ff912470cc19082410fddab64c84824eb269
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f26ca04955dfa854a8ee17b7aa255a6ed991b8df
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519563"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358380"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>Yönetilen kimlik kullanarak Azure Depolama hesabına bağlantıyı ayarlama
 
@@ -43,7 +43,7 @@ Sistem tarafından atanan bir yönetilen kimlik etkinleştirildiğinde Azure, ar
 Bu adımda, Azure Bilişsel Arama Service 'e depolama hesabınızdan veri okuma izni vereceksiniz.
 
 1. Azure portal, dizine eklemek istediğiniz verileri içeren depolama hesabına gidin.
-2. **Erişim denetimi (IAM)** seçeneğini belirleyin
+2. **Erişim denetimi (IAM)** öğesini seçin
 3. **Ekle** ' yi seçin ve **rol ataması Ekle**
 
     ![Rol ataması ekle](./media/search-managed-identities/add-role-assignment-storage.png "Rol ataması ekle")
@@ -65,7 +65,7 @@ Bu adımda, Azure Bilişsel Arama Service 'e depolama hesabınızdan veri okuma 
 
 ### <a name="3---create-the-data-source"></a>3-veri kaynağını oluşturma
 
-[REST API](/rest/api/searchservice/create-data-source), Azure Portal ve [.NET SDK](/dotnet/api/microsoft.azure.search.models.datasource) , yönetilen kimlik bağlantı dizesini destekler. Aşağıda, [REST API](/rest/api/searchservice/create-data-source) ve yönetilen kimlik bağlantı dizesi kullanarak bir depolama hesabından veri dizini oluşturmak için bir veri kaynağı oluşturma örneği verilmiştir. Yönetilen kimlik bağlantı dizesi biçimi REST API, .NET SDK ve Azure portal için aynıdır.
+[REST API](/rest/api/searchservice/create-data-source), Azure Portal ve [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) , yönetilen kimlik bağlantı dizesini destekler. Aşağıda, [REST API](/rest/api/searchservice/create-data-source) ve yönetilen kimlik bağlantı dizesi kullanarak bir depolama hesabından veri dizini oluşturmak için bir veri kaynağı oluşturma örneği verilmiştir. Yönetilen kimlik bağlantı dizesi biçimi REST API, .NET SDK ve Azure portal için aynıdır.
 
 Bir depolama hesabından dizin oluştururken, veri kaynağı aşağıdaki gerekli özelliklere sahip olmalıdır:
 
@@ -77,7 +77,7 @@ Bir depolama hesabından dizin oluştururken, veri kaynağı aşağıdaki gerekl
 * **Credentials**
     * Kimlik doğrulaması için yönetilen bir kimlik kullanırken, **kimlik bilgileri** biçimi yönetilen kimlik kullanmaktan farklı. Burada, hesap anahtarı veya parolası olmayan bir RESOURCEID sağlarsınız. RESOURCEID, depolama hesabının abonelik KIMLIĞINI, depolama hesabının kaynak grubunu ve depolama hesabı adını içermelidir.
     * Yönetilen kimlik biçimi: 
-        * *RESOURCEID =/Subscriptions/**ABONELIK kimliği**/ResourceGroups/**kaynak grubu adı**/Providers/Microsoft.Storage/storageAccounts/**depolama hesabınızın adı**/;*
+        * *RESOURCEID =/Subscriptions/ **ABONELIK kimliği** /ResourceGroups/ **kaynak grubu adı** /Providers/Microsoft.Storage/storageAccounts/ **depolama hesabınızın adı** /;*
 * **kapsayıcı** , depolama hesabınızda bir kapsayıcı veya tablo adı belirtir. Varsayılan olarak, kapsayıcıdaki tüm Bloblar alınabilir. Yalnızca belirli bir sanal dizinde Blobları indekslemek istiyorsanız, bu dizini isteğe bağlı **sorgu** parametresini kullanarak belirtebilirsiniz.
 
 [REST API](/rest/api/searchservice/create-data-source)kullanarak blob veri kaynağı nesnesinin nasıl oluşturulacağı hakkında örnek:

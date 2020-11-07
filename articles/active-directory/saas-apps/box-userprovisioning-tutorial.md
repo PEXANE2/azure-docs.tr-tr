@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: jeedes
-ms.openlocfilehash: dde22fe9997e41d6d17fba94e6b9523d82c7b910
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e22738f1fff813e5a928b76f8049e810847fe548
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456832"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358159"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için yapılandırma kutusu
 
@@ -24,7 +24,7 @@ Bu öğreticinin amacı, Box ve Azure AD 'de gerçekleştirmeniz gereken adımla
 > [!NOTE]
 > Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../app-provisioning/user-provisioning.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesi 'ni kutusuyla birlikte yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -91,13 +91,13 @@ Bu bölümün amacı, Box 'ın Active Directory Kullanıcı hesaplarının sağl
 
 3. Box örneğinizi seçin, sonra **sağlama** sekmesini seçin.
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın. 
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın. 
 
     ![Azure portal Box için sağlama sekmesinin ekran görüntüsü. Sağlama modu otomatik olarak ayarlanır ve yetkilendirme yönetici kimlik bilgilerinde vurgulanır.](./media/box-userprovisioning-tutorial/provisioning.png)
 
 5. **Yönetici kimlik bilgileri** bölümünde, yeni bir tarayıcı penceresinde Box oturum açma iletişim kutusunu açmak için **Yetkilendir** ' e tıklayın.
 
-6. **Box 'a erişim izni vermek Için oturum açma** sayfasında, gerekli kimlik bilgilerini sağlayın ve ardından **Yetkilendir**' e tıklayın. 
+6. **Box 'a erişim izni vermek Için oturum açma** sayfasında, gerekli kimlik bilgilerini sağlayın ve ardından **Yetkilendir** ' e tıklayın. 
    
     ![Box Screen 'e erişim izni vermek için oturum açma ekranının ekran görüntüsü, e-posta ve parola girişi ve yetkilendirme düğmesi.](./media/box-userprovisioning-tutorial/IC769546.png "Otomatik Kullanıcı sağlamayı etkinleştir")
 

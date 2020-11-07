@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: 7958ef9195c9dcef65fab70fbf48edf2021ff94b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff55528013ac89be48454c25e1fc86deac2bca6f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91355831"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357241"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için ThousandEyes yapılandırma
 
@@ -61,7 +61,7 @@ Bu bölümde, Azure AD 'nizi ThousandEyes 'in Kullanıcı hesabı sağlama API '
 
 3. ThousandEyes örneğinizi seçin, sonra **sağlama** sekmesini seçin.
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Ekran görüntüsü sağlama modu için otomatik seçiliyken ThousandEyes için sağlama sekmesini gösterir.](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
 
@@ -73,15 +73,15 @@ Bu bölümde, Azure AD 'nizi ThousandEyes 'in Kullanıcı hesabı sağlama API '
 
 7. **Bildirim e-postası** alanında sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve "bir hata oluştuğunda e-posta bildirimi gönder" onay kutusunu işaretleyin.
 
-8. **Kaydet**’e tıklayın.
+8. **Kaydet** ’e tıklayın.
 
-9. Eşlemeler bölümünde **Azure Active Directory Kullanıcıları ThousandEyes olarak eşitler**' ı seçin.
+9. Eşlemeler bölümünde **Azure Active Directory Kullanıcıları ThousandEyes olarak eşitler** ' ı seçin.
 
 10. **Öznitelik eşlemeleri** bölümünde, Azure AD 'den ThousandEyes 'e eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için ThousandEyes içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için Kaydet düğmesini seçin.
 
 11. ThousandEyes için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin
 
-12. **Kaydet**’e tıklayın.
+12. **Kaydet** ’e tıklayın.
 
 Bu işlem, kullanıcılar ve Gruplar bölümünde ThousandEyes 'e atanan tüm Kullanıcı ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, hizmetin çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerleme durumunu izlemek ve sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan etkinlik günlüklerinin sağlanması için bağlantıları izlemek üzere **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
 

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: Zhchia
-ms.openlocfilehash: fa187d9f7ee2b4b91c8559a185f55f0015f0b441
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 69a9b9401f25893ec94b282f52730d92d372268d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455638"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94355711"
 ---
 # <a name="tutorial-configure-cofense-recipient-sync-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Cofense Recipient eşitlemesini yapılandırma
 
@@ -33,7 +33,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Cofens
 > * Artık erişim gerektirmeyen kullanıcıları Cofense alıcı eşitlemesine kaldır
 > * Kullanıcı özniteliklerinin Azure AD ile Cofense alıcı eşitlemesi arasında eşitlenmiş olmasını sağlama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -48,8 +48,8 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 ## <a name="step-2-configure-cofense-recipient-sync-to-support-provisioning-with-azure-ad"></a>Adım 2. Azure AD ile sağlamayı desteklemek için Cofense Recipient eşitlemesini yapılandırma
 
-1. Cofense Phi 'de oturum açın. **Alıcılara > alıcı eşitlemesine**gidin. 
-2. Hüküm ve koşulları kabul edin ve ardından başlayın **' a**tıklayın.
+1. Cofense Phi 'de oturum açın. **Alıcılara > alıcı eşitlemesine** gidin. 
+2. Hüküm ve koşulları kabul edin ve ardından başlayın **' a** tıklayın.
 
     ![Alıcı eşitleme tnc](media/cofense-provisioning-tutorial/recipient-sync-toc.png)
 
@@ -66,7 +66,7 @@ Azure AD uygulama galerisinden Cofense alıcı eşitlemesi ekleyerek Cofense al�
 
 Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun özniteliklerine göre hazırlanacak kişilerin kapsamını belirlemenizi sağlar. Uygulamanız için hazırlanacak kişilerin kapsamını atamaya göre belirlemeyi seçerseniz kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Hazırlanacak kişilerin kapsamını yalnızca kullanıcı veya grup özniteliklerine göre belirlemeyi seçerseniz [burada](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) anlatılan kapsam belirleme filtresini kullanabilirsiniz. 
 
-* Kullanıcıları ve grupları Cofense alıcı eşitlemesine atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
+* Kullanıcıları ve grupları Cofense alıcı eşitlemesine atarken **varsayılan erişim** dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
 
 * Başlangıçta kapsamı sınırlı tutun. Herkesi hazırlamadan önce birkaç kullanıcı ve grupla test yapın. Hazırlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında uygulamaya bir veya iki kullanıcı ya da grup atayarak bu adımı kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında [öznitelik tabanlı kapsam filtresi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) belirtebilirsiniz. 
 
@@ -77,11 +77,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de kullanıcıya göre Cof
 
 ### <a name="to-configure-automatic-user-provisioning-for-cofense-recipient-sync-in-azure-ad"></a>Azure AD 'de Cofense Recipient Sync için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Cofense alıcı eşitleme**' yi seçin.
+2. Uygulamalar listesinde **Cofense alıcı eşitleme** ' yi seçin.
 
     ![Uygulamalar listesindeki Cofense bağlantısı](common/all-applications.png)
 
@@ -89,7 +89,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de kullanıcıya göre Cof
 
     ![Hazırlama sekmesi](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Sekme otomatik sağlama](common/provisioning-automatic.png)
 
@@ -101,9 +101,9 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de kullanıcıya göre Cof
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’i seçin.
+7. **Kaydet** ’i seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Cofense alıcı eşitlemesine Eşitle**' yi seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Cofense alıcı eşitlemesine Eşitle** ' yi seçin.
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'Den Cofense alıcı eşitlemesine eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Cofense Recipient Sync içindeki kullanıcı hesaplarını eşleştirmek için kullanılır.  Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -156,7 +156,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de kullanıcıya göre Cof
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+13. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

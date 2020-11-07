@@ -6,81 +6,93 @@ manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 11/06/2020
 ms.author: jlian
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: b194812ef68820a0c310d0bac3b055360c5b5e4a
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f7073fbf39344fe39e179d55a5a8f395a6ba6240
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538434"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357422"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Azure IoT Hub bağlantısını izleme, tanılama ve sorun giderme
 
-Birçok olası hata noktası olduğundan, IoT cihazlarına yönelik bağlantı sorunlarının giderilmesi zor olabilir. Uygulama mantığı, fiziksel ağlar, protokoller, donanım, IoT Hub ve diğer bulut Hizmetleri, sorun oluşmasına neden olabilir. Bir sorunun kaynağını tespit etme ve oluşturma özelliği kritik öneme sahiptir. Ancak, ölçekteki bir IoT çözümünde binlerce cihaz olabilir, bu nedenle tek tek cihazları el ile denetlemek pratik değildir. Bu sorunları ölçeklendirmek, tanılamak ve sorunlarını gidermenize yardımcı olmak için Azure Izleyici aracılığıyla IoT Hub izleme yeteneklerini kullanın. Bu yetenekler IoT Hub ile sınırlıdır, bu nedenle cihazlarınız ve diğer Azure hizmetleri için en iyi uygulamaları izlemeyi izlemeniz önerilir.
+Birçok olası hata noktası olduğundan, IoT cihazlarına yönelik bağlantı sorunlarının giderilmesi zor olabilir. Uygulama mantığı, fiziksel ağlar, protokoller, donanım, IoT Hub ve diğer bulut Hizmetleri, sorun oluşmasına neden olabilir. Bir sorunun kaynağını tespit etme ve oluşturma özelliği kritik öneme sahiptir. Ancak, ölçekteki bir IoT çözümünde binlerce cihaz olabilir, bu nedenle tek tek cihazları el ile denetlemek pratik değildir. IoT Hub, size yardımcı olmak için iki Azure hizmeti ile tümleşir:
 
-## <a name="get-alerts-and-error-logs"></a>Uyarıları ve hata günlüklerini al
+* **Azure izleyici** Bu sorunları ölçeklendirmek, tanılamak ve sorunlarını gidermenize yardımcı olmak için Azure Izleyici aracılığıyla IoT Hub izleme yeteneklerini kullanın. Bu, kesilen bağlantı kesildiğinde bildirimleri ve eylemleri tetiklemek için uyarıları ayarlamayı ve bağlantı kesilmesinin neden olduğu koşulları saptamak için kullanabileceğiniz günlükleri yapılandırmayı içerir.
 
-Cihazların bağlantısı kesildiğinde uyarıları almak ve günlükleri yazmak için Azure Izleyici 'yi kullanın.
+* **Azure Event Grid** Kritik altyapı ve cihaz başına bağlantı kesildiğinde, cihaz Connect 'e abone olmak ve IoT Hub tarafından yayılan olayların bağlantısını kesmek için Azure Event Grid kullanın.
 
-### <a name="turn-on-logs"></a>Günlükleri aç
+Her iki durumda da, bu özellikler IoT Hub neler gözlemleyebileceği için sınırlı olduğundan, cihazlarınız ve diğer Azure hizmetleri için en iyi uygulamaları izlemeyi izlemeniz önerilir.
 
-Cihaz bağlantısı olaylarını ve hatalarını günlüğe kaydetmek için [IoT Hub bağlantıları kaynak günlükleri](monitor-iot-hub-reference.md#connections)için bir tanılama ayarı oluşturun. Bu ayarların olabildiğince erken oluşturulması önerilir, çünkü bu günlükler varsayılan olarak toplanmaz ve bunlar olmadan cihaz bağlantısı kesildiklerinde sorun gidermeye ilişkin hiçbir bilgiye sahip olmayacaktır.
+## <a name="event-grid-vs-azure-monitor"></a>Event Grid ve Azure Izleyici karşılaştırması
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+Event Grid, kritik cihazlar ve altyapıya yönelik cihaz bağlantılarını izlemek için kullanabileceğiniz düşük gecikmeli, cihaz başına izleme çözümü sağlar. Azure Izleyici, IoT Hub bağlı cihazların sayısını izlemek ve bu sayı statik eşiğin altına düştüğünde bir uyarı tetiklemek için kullanabileceğiniz bir ölçüm, *bağlı cihazlar* sağlar.
 
-1. IoT Hub 'ınıza gidin.
+Belirli bir senaryo için Event Grid veya Azure Izleyici 'yi kullanmaya karar verirken aşağıdakileri göz önünde bulundurun:
 
-1. **Tanılama ayarları** ' nı seçin.
+* Uyarı gecikmesi: IoT Hub bağlantı olayları Event Grid aracılığıyla çok daha hızlı bir şekilde dağıtılır. Bu, hızlı bildirimin tercih edildiği senaryolar için Event Grid daha iyi bir seçenek sunar.
 
-1. **Tanılama ayarı Ekle** ' yi seçin.
+* Cihaz başına bildirimler: Event Grid, tek tek cihazlar için bağlantıları izleme ve bağlantılarının kesilme olanağı sağlar. Bu, kritik cihazların bağlantılarını izlemeniz gereken senaryolar için Event Grid daha iyi bir seçenektir.
 
-1. **Bağlantı** günlüklerini seçin.
+* Hafif Kurulum: Azure Izleyici ölçüm uyarıları, e-posta, SMS, ses ve diğer bildirimlerle bildirim teslim etmek için diğer hizmetlerle tümleştirme gerektirmeyen hafif bir kurulum deneyimi sağlar.  Event Grid ile, bildirim göndermek için diğer Azure hizmetleriyle tümleştirmeniz gerekir. Her iki hizmet de daha karmaşık eylemleri tetiklemek için diğer hizmetlerle tümleştirilebilir.
 
-1. Daha kolay analiz için **Log Analytics gönder** ' i seçin ( [bkz. fiyatlandırma](https://azure.microsoft.com/pricing/details/log-analytics/)). [Bağlantı hatalarını çözme](#resolve-connectivity-errors)bölümündeki örneğe bakın.
+Üretim ortamları için düşük gecikme süreli, cihaz başına yetenekler nedeniyle, bağlantıları izlemek için Event Grid kullanmanızı kesinlikle öneririz. Kuşkusuz, seçim özel değildir ve hem Azure Izleyici ölçüm uyarılarını hem de Event Grid kullanabilirsiniz. İzleme bağlantısı kesilmenizin ne olduğuna bakmaksızın, beklenmedik cihaz bağlantısı kesilmesinin nedenlerini gidermeye yardımcı olması için Azure Izleyici kaynak günlüklerini de kullanacaksınız. Aşağıdaki bölümlerde bu seçeneklerin her biri daha ayrıntılı olarak ele alınmaktadır.
 
-   ![Önerilen ayarlar](./media/iot-hub-troubleshoot-connectivity/diagnostic-settings-recommendation.png)
+## <a name="event-grid-monitor-device-connect-and-disconnect-events"></a>Event Grid: cihaz bağlantısını ve bağlantı kesme olaylarını Izleme
 
-Daha fazla bilgi için bkz. [izleyici IoT Hub](monitor-iot-hub.md).
+Cihazdaki cihaz bağlantısını ve bağlantı kesmeyi izlemek için, uyarıları tetiklemek ve cihaz bağlantı durumunu izlemek üzere Event Grid ' de [ **DeviceConnected** ve **DeviceConnected** olayları](iot-hub-event-grid.md#event-types) abone olmayı öneririz. Event Grid, Azure Izleyici 'den çok daha düşük olay gecikmesi sağlar ve toplam bağlı cihaz sayısı yerine cihaz başına temelinde izleyebilirsiniz. Bu faktörler, kritik cihazları ve altyapıyı izlemek için tercih edilen yöntemi Event Grid yapar.
 
-### <a name="set-up-alerts-for-device-disconnect-at-scale"></a>Ölçekte cihaz bağlantısı kesilmeye yönelik uyarıları ayarlama
+Cihaz bağlantısı kesildiğinde uyarıları izlemek veya tetiklemek için Event Grid kullandığınızda, Azure IoT SDK 'larını kullanan cihazlarda SAS belirteci yenilemesi nedeniyle, düzenli aralıklarla kesilen bağlantıları filtrelediğinizden emin olun. Daha fazla bilgi edinmek için bkz. [Azure IoT SDK 'ları Ile MQTT cihaz bağlantısı kesme davranışı](#mqtt-device-disconnect-behavior-with-azure-iot-sdks).
 
-Cihazların bağlantısı kesildiğinde uyarı almak için, **bağlı cihazlar (Önizleme)** ölçümünde uyarıları yapılandırın.
+Event Grid ile cihaz bağlantısı olaylarını izleme hakkında daha fazla bilgi edinmek için aşağıdaki konuları inceleyin:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+* IoT Hub Event Grid kullanmaya genel bir bakış için bkz. [Event Grid ile IoT Hub olaylara tepki](iot-hub-event-grid.md)verme. [Cihaz bağlantılı ve cihaz bağlantısı kesilen olaylar Için sınırlamalar](iot-hub-event-grid.md#limitations-for-device-connected-and-device-disconnected-events) bölümüne özellikle dikkat edin.
 
-2. IoT Hub 'ınıza gidin.
+* Cihaz bağlantısı olaylarını sipariş etme hakkında bir öğretici için, bkz. [Azure IoT Hub cihaz bağlantısı olaylarını Azure Cosmos DB kullanarak](iot-hub-how-to-order-connection-state-events.md)sıralama.
 
-3. **Uyarıları** seçin.
+* E-posta bildirimleri gönderme hakkında bir öğretici için bkz. Event Grid belgelerindeki [Event Grid ve Logic Apps kullanarak Azure IoT Hub olayları hakkında e-posta bildirimleri gönderme](/azure/event-grid/publish-iot-hub-events-to-logic-apps) .
 
-4. **Yeni uyarı kuralı** 'nı seçin.
+## <a name="azure-monitor-route-connection-events-to-logs"></a>Azure Izleyici: bağlantı olaylarını günlüklere yönlendir
 
-5. **Koşul Ekle** ' yi seçin ve ardından "bağlı cihazlar (Önizleme)" öğesini seçin.
+IoT Hub, birkaç işlem kategorisi için kaynak günlüklerini sürekli olarak yayar. Bu günlük verilerini toplamak için, bir tanılama ayarı oluşturmanız gerekir, ancak bunu analiz edilecek veya arşivlenebilen bir hedefe yönlendirin. Bu tür bir hedef, Azure Izleyici günlüklerinde bir Log Analytics çalışma alanı ([bkz. fiyatlandırma](https://azure.microsoft.com/pricing/details/log-analytics/)) yoluyla, verileri kusto sorguları kullanarak analiz edebilirsiniz.
 
-6. Aşağıdaki istemlere göre eşik ve uyarı ayarlayın.
+IoT Hub [kaynak günlüğü bağlantıları kategorisi](monitor-iot-hub-reference.md#connections) , cihaz bağlantılarıyla ilgili işlemler ve hatalar yayar. Aşağıdaki ekran görüntüsünde, bu günlükleri bir Log Analytics çalışma alanına yönlendiren bir tanılama ayarı gösterilmektedir:
 
-Daha fazla bilgi edinmek için bkz. [Microsoft Azure uyarılar nelerdir?](../azure-monitor/platform/alerts-overview.md).
+:::image type="content" source="media/iot-hub-troubleshoot-connectivity/create-diagnostic-setting.png" alt-text="Log Analytics çalışma alanına bağlantı günlükleri göndermek için önerilen ayar.":::
 
-#### <a name="detecting-individual-device-disconnects"></a>Ayrı ayrı cihaz bağlantısı kesiliyor
+IoT Hub 'ınızı oluşturduktan sonra mümkün olduğunca erken bir tanılama ayarı oluşturmanız önerilir, çünkü IoT Hub her zaman kaynak günlüklerini yayar, ancak bunları bir hedefe yönlendirene kadar Azure Izleyici tarafından toplanmaz.
 
-*Cihaz başına* kesilen bağlantıları algılamak için (örneğin, bir fabrikanın çevrimdışı olduğunu bilmeniz gerektiğinde, [Event Grid ile cihaz bağlantısı kesme olaylarını yapılandırın](iot-hub-event-grid.md).
+Bir hedefe yönlendirme günlükleri hakkında daha fazla bilgi edinmek için bkz. [koleksiyon ve yönlendirme](monitor-iot-hub.md#collection-and-routing). Tanılama ayarı oluşturma hakkında ayrıntılı yönergeler için bkz. [ölçümleri ve günlükleri kullanma öğreticisi](tutorial-use-metrics-and-diags.md).
 
-## <a name="resolve-connectivity-errors"></a>Bağlantı hatalarını çözme
+## <a name="azure-monitor-set-up-metric-alerts-for-device-disconnect-at-scale"></a>Azure Izleyici: ölçekte cihaz bağlantısı kesildiğinde ölçüm uyarıları ayarlama
 
-Bağlı cihazlar için günlükleri ve uyarıları açtığınızda, hata oluştuğunda uyarılar alırsınız. Bu bölümde, bir uyarı aldığınızda yaygın sorunların nasıl aranacağı açıklanmaktadır. Aşağıdaki adımlarda, bir Log Analytics çalışma alanına IoT Hub bağlantı günlükleri göndermek için zaten bir tanılama ayarı oluşturmuş olduğunuz varsayılmaktadır.
+IoT Hub tarafından yayılan platform ölçümleri temelinde uyarılar ayarlayabilirsiniz. Ölçüm uyarıları sayesinde, kişilere bir ilgi koşulunun oluştuğunu ve ayrıca söz konusu koşula otomatik olarak yanıt verebilecek eylemleri tetikleyebildiğini bildirebilirsiniz.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+[*Bağlı cihazlar (Önizleme)*](monitor-iot-hub-reference.md#device-metrics) ölçümü, IoT Hub kaç cihazın bağlı olduğunu size bildirir. Bu ölçüm bir eşik değerinin altına düşerse tetiklenecek uyarılar oluşturabilirsiniz:
 
-1. IoT Hub 'ınıza gidin.
+:::image type="content" source="media/iot-hub-troubleshoot-connectivity/configure-alert-logic.png" alt-text="Bağlı cihazlar ölçümü için uyarı mantığı ayarları.":::
 
-1. **Günlükleri** seçin.
+Ölçüm uyarı kurallarını, cihaz bağlantısını kesme bozuklulıkları için izlemek üzere kullanabilirsiniz. Diğer bir deyişle, önemli sayıda cihazın beklenmedik şekilde bağlantısını keser. Böyle bir oluşum algılandığında, sorunu gidermeye yardımcı olması için günlüklere bakabilirsiniz. Cihaz başına kesilen ve kritik cihazların bağlantısını izlemek için; Ancak, Event Grid kullanmanız gerekir. Event Grid Ayrıca Azure ölçümlerinden daha gerçek zamanlı bir deneyim sağlar.
 
-1. IoT Hub için bağlantı hata günlüklerini yalıtmak için aşağıdaki sorguyu girin ve **Çalıştır** ' ı seçin:
+IoT Hub uyarılarla ilgili daha fazla bilgi için bkz. [izleyici IoT Hub uyarılar](monitor-iot-hub.md#alerts). IoT Hub uyarı oluşturma hakkında daha fazla bilgi için [ölçüm ve günlükleri kullanma öğreticisine](tutorial-use-metrics-and-diags.md)bakın. Uyarılara daha ayrıntılı bir genel bakış için bkz. Azure Izleyici belgelerindeki [Microsoft Azure uyarılara genel bakış](../azure-monitor/platform/alerts-overview.md) .
+
+## <a name="azure-monitor-use-logs-to-resolve-connectivity-errors"></a>Azure Izleyici: bağlantı hatalarını çözümlemek için günlükleri kullanma
+
+Cihazın bağlantısını kestiğinde, Azure Izleyici ölçüm uyarıları veya Event Grid ile birlikte, nedeni gidermeye yardımcı olması için günlükleri kullanabilirsiniz. Bu bölümde, Azure Izleyici günlüklerinde yaygın sorunların nasıl aranacağı açıklanmaktadır. Aşağıdaki adımlarda, bir Log Analytics çalışma alanına IoT Hub bağlantı günlükleri göndermek için zaten bir [Tanılama ayarı](#azure-monitor-route-connection-events-to-logs) oluşturmuş olduğunuz varsayılmaktadır.
+
+IoT Hub kaynak günlüklerini Azure Izleyici günlüklerine yönlendirmek için bir tanılama ayarı oluşturduktan sonra, günlükleri Azure portal görüntülemek için aşağıdaki adımları izleyin.
+
+1. [Azure Portal](https://portal.azure.com)' de IoT Hub 'ınıza gidin.
+
+1. IoT Hub 'ınızın sol bölmesinde **izleme** ' nin altında **Günlükler** ' i seçin.
+
+1. IoT Hub için bağlantı hata günlüklerini yalıtmak için sorgu Düzenleyicisi 'nde aşağıdaki sorguyu girin ve **Çalıştır** ' ı seçin:
 
     ```kusto
     AzureDiagnostics
@@ -91,13 +103,62 @@ Bağlı cihazlar için günlükleri ve uyarıları açtığınızda, hata oluşt
 
    ![Hata günlüğü örneği](./media/iot-hub-troubleshoot-connectivity/diag-logs.png)
 
-1. En yaygın hatalar için sorun çözümleme kılavuzlarını izleyin:
+Hatayı tanımladıktan sonra, en yaygın hatalarda yardım almak için sorun çözümleme kılavuzlarını izleyin:
 
-    - **[404104 DeviceConnectionClosedRemotely](iot-hub-troubleshoot-error-404104-deviceconnectionclosedremotely.md)**
-    - **[401003 IoTHubUnauthorized](iot-hub-troubleshoot-error-401003-iothubunauthorized.md)**
-    - **[409002 LinkCreationConflict](iot-hub-troubleshoot-error-409002-linkcreationconflict.md)**
-    - **[500001 ServerError](iot-hub-troubleshoot-error-500xxx-internal-errors.md)**
-    - **[500008 GenericTimeout](iot-hub-troubleshoot-error-500xxx-internal-errors.md)**
+* [400027 ConnectionForcefullyClosedOnNewConnection](iot-hub-troubleshoot-error-400027-connectionforcefullyclosedonnewconnection.md)
+
+* [404104 DeviceConnectionClosedRemotely](iot-hub-troubleshoot-error-404104-deviceconnectionclosedremotely.md)
+
+* [401003 IoTHubUnauthorized](iot-hub-troubleshoot-error-401003-iothubunauthorized.md)
+
+* [409002 LinkCreationConflict](iot-hub-troubleshoot-error-409002-linkcreationconflict.md)
+
+* [500001 ServerError](iot-hub-troubleshoot-error-500xxx-internal-errors.md)
+
+* [500008 GenericTimeout](iot-hub-troubleshoot-error-500xxx-internal-errors.md)
+
+## <a name="mqtt-device-disconnect-behavior-with-azure-iot-sdks"></a>Azure IoT SDK 'Ları ile MQTT cihaz bağlantısı kesme davranışı
+
+Azure IoT cihaz SDK 'Ları IoT Hub bağlantısını keser ve ardından, SAS belirteçlerini MQTT (ve WebSockets üzerinden MQTT) protokolü üzerinden yenilediklerinde yeniden bağlanır. Günlüklerde bu, bazen hata olaylarıyla birlikte bilgi veren cihaz bağlantısı kesme ve bağlanma olayları olarak gösterilir.
+
+Varsayılan olarak, belirteç ömrü tüm SDK 'lar için 60 dakikadır; Ancak, bazı SDK 'larda geliştiriciler tarafından değiştirilebilir. Aşağıdaki tabloda, SDK 'Lardan her biri için kullanım belirteçleri, belirteç yenileme ve belirteç yenileme davranışı özetlenmektedir:
+
+| SDK | Belirteç kullanım ömrü | Belirteç yenileme | Yenileme davranışı |
+|-----|----------|---------------------|---------|
+| .NET | 60 dakika, yapılandırılabilir | %85 of Lifespan, yapılandırılabilir | SDK, süre sonunda ve 10 dakikalık bir yetkisiz kullanım süresi ile bağlantı kesilir ve bağlantıyı keser. Günlüklerde oluşturulan bilgilendirme olayları ve hataları. |
+| Java | 60 dakika, yapılandırılabilir | %85/ömrü, yapılandırılamaz | SDK, süre sonunda ve 10 dakikalık bir yetkisiz kullanım süresi ile bağlantı kesilir ve bağlantıyı keser. Günlüklerde oluşturulan bilgilendirme olayları ve hataları. |
+| Node.js | 60 dakika, yapılandırılabilir | yapılandırılabilir | SDK, belirteç yenilemesinde bağlanır ve bağlantıyı keser. Günlüklerde yalnızca bilgilendirme olayları oluşturulur. |
+| Python | 60 dakika, yapılandırılamaz | -- | SDK bağlantısı ve bağlantı kesilen belirteç kullanım belirteçleri. |
+
+Aşağıdaki ekran görüntülerinde, farklı SDK 'lar için Azure Izleyici günlüklerinde belirteç yenileme davranışı gösterilmektedir. Belirteç ömrü ve yenileme eşiği varsayılan olarak belirtildiği şekilde değiştirilmiştir.
+
+* 1200 saniye (20 dakikalık) belirteç ömrü ve yenileme kümesi içeren .NET cihaz SDK 'Sı, %90 ' nin% ' de gerçekleşecektir. her 30 dakikada bir bağlantıyı keser:
+
+    :::image type="content" source="media/iot-hub-troubleshoot-connectivity/net-mqtt.png" alt-text=".NET SDK ile Azure Izleyici günlüklerinde MQTT üzerinden belirteç yenilemeye yönelik hata davranışı.":::
+
+* 300 saniye (5 dakikalık) belirteç ömrü ve varsayılan %85 olan Java SDK 'Sı, %0. Bağlantıyı kesilen her 15 dakikada bir gerçekleşir:
+
+    :::image type="content" source="media/iot-hub-troubleshoot-connectivity/java-mqtt.png" alt-text="Java SDK ile Azure Izleyici günlüklerinde MQTT üzerinden belirteç yenilemeye yönelik hata davranışı.":::
+
+* 300 saniye (5 dakikalık) belirteç ömrü ve belirteç yenileme kümesi 3 dakika olarak gerçekleşecek düğüm SDK. Bağlantı kesilen belirteç yenileme durumunda meydana gelir. Ayrıca, hata yok, yalnızca bilgilendirici Connect/Disconnect olayları yayınlanır:
+
+    :::image type="content" source="media/iot-hub-troubleshoot-connectivity/node-mqtt.png" alt-text="Node SDK ile Azure Izleyici günlüklerinde MQTT üzerinden belirteç yenilemeye yönelik hata davranışı.":::
+
+Aşağıdaki sorgu sonuçları toplamak için kullanıldı. Sorgu, özellik çantasından SDK adını ve sürümünü ayıklar; daha fazla bilgi edinmek için [IoT Hub günlüklerinde SDK sürümü](monitor-iot-hub.md#sdk-version-in-iot-hub-logs)' ne bakın.
+
+```kusto
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.DEVICES" and ResourceType == "IOTHUBS"
+| where Category == "Connections"
+| extend parsed_json = parse_json(properties_s)
+| extend SDKVersion = tostring(parsed_json.sdkVersion) , DeviceId = tostring(parsed_json.deviceId) , Protocol =  tostring(parsed_json.protocol)
+| distinct TimeGenerated, OperationName, Level, ResultType, ResultDescription, DeviceId, Protocol, SDKVersion
+
+```
+
+IoT çözümleri geliştirici veya operatörü olarak, Connect/Disconnect olaylarını ve günlüklerdeki ilgili hataları yorumlamak için bu davranışın farkında olmanız gerekir. Cihazların belirteç ömrü veya yenileme davranışını değiştirmek istiyorsanız, cihazın bir cihaz ikizi ayarı mı yoksa bunu mümkün kılan bir cihaz yöntemi mi uyguladığını denetleyin.
+
+Cihaz bağlantılarını Olay Hub 'ı ile izliyorsanız, SAS belirteci yenilemesi nedeniyle düzenli olarak kesilen bağlantıları filtreleyerek derlediğinizden emin olun; Örneğin, bağlantı kesme olayının ardından belirli bir zaman aralığında bir Connect olayı olduğu sürece, bağlantıları kesilen eylemleri tetiklememe.
 
 ## <a name="i-tried-the-steps-but-they-didnt-work"></a>Adımları denedim, ancak bunlar çalışmadı
 

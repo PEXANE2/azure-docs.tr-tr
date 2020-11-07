@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 15031a3e139265410179baa13db9ed3f1b41cf17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff3f3ab65df2d801b7c962de7cce645e9fc00b30
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88531812"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358618"
 ---
 # <a name="tutorial-configure-visitly-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Visitly yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Visitly ve Azure Active Directory (Azure AD) ' de gerç
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -52,7 +52,7 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 Visitly 'yi Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmadan önce, Visitly üzerinde etki alanları arası kimlik yönetimi (SCıM) sağlaması için sistemi etkinleştirmeniz gerekir.
 
-1. [Visitly](https://app.visitly.io/login)'de oturum açın. **Tümleştirmeler**  >  **ana bilgisayar eşitlemesini**seçin.
+1. [Visitly](https://app.visitly.io/login)'de oturum açın. **Tümleştirmeler**  >  **ana bilgisayar eşitlemesini** seçin.
 
     ![Konak eşitleme](media/Visitly-provisioning-tutorial/login.png)
 
@@ -60,7 +60,7 @@ Visitly 'yi Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmada
 
     ![Azure AD bölümü](media/Visitly-provisioning-tutorial/integration.png)
 
-3. **API anahtarını**kopyalayın. Bu değerler, Azure portal Visitly uygulamanızın **sağlama** sekmesindeki **gizli belirteç** kutusuna girilir.
+3. **API anahtarını** kopyalayın. Bu değerler, Azure portal Visitly uygulamanızın **sağlama** sekmesindeki **gizli belirteç** kutusuna girilir.
 
     ![API Anahtarı](media/Visitly-provisioning-tutorial/token.png)
 
@@ -71,11 +71,11 @@ Visitly 'i Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmak �
 
 Azure AD Uygulama Galerisi 'nden Visitly eklemek için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com), sol gezinti bölmesinde **Azure Active Directory**' ı seçin.
+1. [Azure Portal](https://portal.azure.com), sol gezinti bölmesinde **Azure Active Directory** ' ı seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -83,7 +83,7 @@ Azure AD Uygulama Galerisi 'nden Visitly eklemek için aşağıdaki adımları i
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Visitly**yazın, sonuçlar panelinde **Visitly** ' yi seçin ve ardından uygulamayı eklemek için **Ekle** ' yi seçin.
+4. Arama kutusuna **Visitly** yazın, sonuçlar panelinde **Visitly** ' yi seçin ve ardından uygulamayı eklemek için **Ekle** ' yi seçin.
 
     ![Sonuç listesinde Visitly](common/search-new-app.png)
 
@@ -96,11 +96,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı veya grup a
 
 ### <a name="configure-automatic-user-provisioning-for-visitly-in-azure-ad"></a>Azure AD 'de Visitly için otomatik Kullanıcı sağlamayı yapılandırma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Kurumsal uygulamalar**  >  **tüm uygulamalar** ' ı seçin.
 
     ![Tüm uygulamalar](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Visitly**' yi seçin.
+2. Uygulamalar listesinde **Visitly** ' yi seçin.
 
     ![Uygulamalar listesindeki Visitly bağlantısı](common/all-applications.png)
 
@@ -108,11 +108,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı veya grup a
 
     ![Hazırlama sekmesi](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Sağlama modu otomatik olarak ayarlandı](common/provisioning-automatic.png)
 
-5. Yönetici kimlik bilgileri bölümünde, `https://api.visitly.io/v1/usersync/SCIM` sırasıyla **kiracı URL 'Si** ve **gizli belirteç**içinde alınan ve **API anahtar** değerlerini girin. Azure AD 'nin Visitly 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' yı seçin. Bağlantı başarısız olursa, Visitly hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. Yönetici kimlik bilgileri bölümünde, `https://api.visitly.io/v1/usersync/SCIM` sırasıyla **kiracı URL 'Si** ve **gizli belirteç** içinde alınan ve **API anahtar** değerlerini girin. Azure AD 'nin Visitly 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' yı seçin. Bağlantı başarısız olursa, Visitly hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -120,9 +120,9 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı veya grup a
 
     ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’i seçin.
+7. **Kaydet** ’i seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Visitly olarak eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Visitly olarak eşitler** ' ı seçin.
 
     ![Visitly Kullanıcı eşlemeleri](media/visitly-provisioning-tutorial/usermapping.png)
 
@@ -140,7 +140,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı veya grup a
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Sağlamaya hazırsanız **Kaydet**' i seçin.
+13. Sağlamaya hazırsanız **Kaydet** ' i seçin.
 
     ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 

@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: Azure, Kinect, RGB, IR, kayıt, algılayıcı, SDK, erişim, derinlik, video, kamera, İmu, hareket, algılayıcı, ses, mikrofon, Matroska, algılayıcı SDK, indirme, gövde, izleme, destek
-ms.openlocfilehash: 61d29284bc2ed9e574e8a19561f19ad6f4259908
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fbfe9c52a46cbf7058e6d5ca91008f1f289bfd2
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85277748"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357054"
 ---
 # <a name="azure-kinect-support-options-and-resources"></a>Azure Kinect destek seçenekleri ve kaynakları
 
@@ -32,9 +32,9 @@ Azure Kinect için yardımlı bir destek almanın birden çok yolu vardır.
 
 ### <a name="microsoft-qa"></a>Microsoft Soru-Cevap
 
-Microsoft mühendisleri, Azure en değerli uzmanlar (MVP) veya uzman topluluğumuza ait teknik ürün sorularınız hakkında hızlı ve güvenilir yanıtlar için, Azure 'un topluluk desteği için tercih edilen hedefi olan [Microsoft Q&A](https://aka.ms/azureqa)'da bize katılın.
+Microsoft mühendisleri, Azure en değerli uzmanlar (MVP) veya uzman topluluğumuza ait teknik ürün sorularınız hakkında hızlı ve güvenilir yanıtlar için, Azure 'un topluluk desteği için tercih edilen hedefi olan [Microsoft Q&A](/answers/products/azure)'da bize katılın.
 
-- [Microsoft Q&bir Azure Kinect için](https://docs.microsoft.com/answers/topics/azure-kinect-dk.html), soru sorabilir veya mevcut soru kitaplığında arama yapabilirsiniz.
+- [Microsoft Q&bir Azure Kinect için](/answers/topics/azure-kinect-dk.html), soru sorabilir veya mevcut soru kitaplığında arama yapabilirsiniz.
 
 ### <a name="development-azure-kinect-on-azure"></a>Azure 'da geliştirme Azure Kinect
 
@@ -50,7 +50,7 @@ Algılayıcı SDK ve şirket içi gövde Izleme SDK 'sını kullanan teknik dest
 
 ### <a name="azure-kinect-dk-device"></a>Azure Kinect DK cihazı
 
-Donanım desteği 'ne başvurmadan önce, Azure Kinect DK 'yi ayarladığınızdan ve güncelleştirdiğinizden emin olun. Cihazın çalışıp çalışmadığını sınamak için [Azure Kinect görüntüleyicisini](azure-kinect-viewer.md)kullanın. [Azure Kinect dk yardım](https://aka.ms/kinectsupport) sayfamız hakkında daha fazla bilgi edinin.
+Donanım desteği 'ne başvurmadan önce, Azure Kinect DK 'yi ayarladığınızdan ve güncelleştirdiğinizden emin olun. Cihazın çalışıp çalışmadığını sınamak için [Azure Kinect görüntüleyicisini](azure-kinect-viewer.md)kullanın. [Azure Kinect dk yardım](./index.yml) sayfamız hakkında daha fazla bilgi edinin.
 Ayrıca, [bilinen sorunlarımızı ve sorun gidermeyi](troubleshooting.md)de denetlemeniz gerekebilir.
 
 Bir cihaz veya algılayıcı işlevselliği, bellenim güncelleştirmeleri veya satın alma seçenekleriyle ilgili [yardım alın](https://support.microsoft.com/supportforbusiness/productselection?sapId=f77b1b95-721e-43a0-2db8-b01e81a3f813) .

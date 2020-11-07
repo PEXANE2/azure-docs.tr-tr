@@ -4,15 +4,15 @@ description: Azure HPC VM 'lerinde InfiniBand 'i etkinleştirmeyi öğrenin.
 author: vermagit
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 08/01/2020
+ms.date: 11/06/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: b5f4cbd2fc09b2c42c232eafd63edb1217e4dacb
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 264cfd98e69ad7bdd2fb8d5f9f98eb1eb1fd8f6c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996312"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358363"
 ---
 # <a name="enable-infiniband"></a>InfiniBand’i etkinleştirme
 
@@ -60,7 +60,7 @@ Windows için, [Windows sürücüleri Için Mellanox OFED](https://www.mellanox.
 MPı işlerini çalıştırmayı planlıyorsanız, genellikle bir ıpoıb gerekmez. MPı kitaplığı, ıB iletişimi için fiiller arabirimini kullanır (MPı kitaplığı 'nın TCP/IP kanalını açıkça kullanmadığınız durumlar dışında). Ancak, iletişim için TCP/IP kullanan bir uygulamanız varsa ve ıB üzerinden çalıştırmak istiyorsanız, ıB arabirimi üzerinden bir ıpoıb kullanabilirsiniz. InfiniBand üzerinde IP 'yi etkinleştirmek için aşağıdaki komutları kullanın (RHEL/CentOS için).
 
 ```bash
-sudo sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
+sudo sed -i -e 's/# OS.EnableRDMA=n/OS.EnableRDMA=y/g' /etc/waagent.conf
 sudo systemctl restart waagent
 ```
 

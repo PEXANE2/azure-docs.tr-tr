@@ -6,16 +6,16 @@ author: cmmdesai
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 7d47c21da1279271b12933a2e4642abcce622600
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 197b7ff0a6c613a019007ba507d678b619c9afd4
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90015492"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358601"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>Öğretici: Workday 'yi Azure AD Kullanıcı sağlaması için yapılandırma
 Bu öğreticinin amacı, Workday 'den çalışan verileri Azure Active Directory ' ye sağlamak için gerçekleştirmeniz gereken adımları gösteriyoruz. 
@@ -93,17 +93,17 @@ Aşağıdaki bölümlerde, yalnızca bulutta bulunan dağıtımlar için Workday
 
 1. <https://portal.azure.com> öğesine gidin.
 
-2. Azure portal, araması yapın ve **Azure Active Directory**seçin.
+2. Azure portal, araması yapın ve **Azure Active Directory** seçin.
 
-3. **Kuruluş uygulamaları**' nı ve ardından **tüm uygulamalar**' ı seçin.
+3. **Kuruluş uygulamaları** ' nı ve ardından **tüm uygulamalar** ' ı seçin.
 
-4. **Uygulama Ekle**' yi seçin ve ardından **Tüm** kategoriyi seçin.
+4. **Uygulama Ekle** ' yi seçin ve ardından **Tüm** kategoriyi seçin.
 
-5. **Azure AD Kullanıcı sağlaması Için Workday**'i arayın ve bu uygulamayı Galeriden ekleyin.
+5. **Azure AD Kullanıcı sağlaması Için Workday** 'i arayın ve bu uygulamayı Galeriden ekleyin.
 
-6. Uygulama eklendikten ve Uygulama Ayrıntıları Ekranı gösterildikten sonra **sağlama**' yı seçin.
+6. Uygulama eklendikten ve Uygulama Ayrıntıları Ekranı gösterildikten sonra **sağlama** ' yı seçin.
 
-7. **Sağlama** **modunu** **Otomatik**olarak değiştirin.
+7. **Sağlama** **modunu** **Otomatik** olarak değiştirin.
 
 8. **Yönetici kimlik bilgileri** bölümünü aşağıdaki şekilde doldurun:
 
@@ -115,9 +115,9 @@ Aşağıdaki bölümlerde, yalnızca bulutta bulunan dağıtımlar için Workday
    
      | URL biçimi | WWS API sürümü kullanıldı | XPATH değişiklikleri gerekiyor |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Hayır |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Hayır |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Evet |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
 
       > [!NOTE]
      > URL 'de sürüm bilgisi belirtilmemişse, uygulama Workday Web Hizmetleri (WWS) v 21.1 kullanır ve uygulamayla birlikte gelen varsayılan XPATH API ifadelerinde hiçbir değişiklik yapılması gerekmez. Belirli bir WWS API sürümünü kullanmak için, URL 'de sürüm numarasını belirtin <br>
@@ -134,7 +134,7 @@ Aşağıdaki bölümlerde, yalnızca bulutta bulunan dağıtımlar için Workday
 
 Bu bölümde, Kullanıcı verilerinin Workday 'den yalnızca bulutta bulunan kullanıcılar için Azure Active Directory nasıl akacağını yapılandıracaksınız.
 
-1. **Eşlemeler**altındaki sağlama sekmesinde **çalışanları Azure AD ile senkronize**et ' e tıklayın.
+1. **Eşlemeler** altındaki sağlama sekmesinde **çalışanları Azure AD ile senkronize** et ' e tıklayın.
 
 2. **Kaynak nesne kapsamı** alanında, bir öznitelik tabanlı filtre kümesi tanımlayarak Workday 'deki hangi Kullanıcı KÜMELERININ Azure AD 'ye sağlanması için kapsamda olması gerektiğini seçebilirsiniz. Varsayılan kapsam "Workday 'deki tüm kullanıcılar" dır. Örnek filtreler:
 
@@ -193,9 +193,9 @@ Workday sağlama uygulama yapılandırması tamamlandıktan sonra, Azure portal 
 > [!TIP]
 > Varsayılan olarak, sağlama hizmetini açtığınızda kapsamdaki tüm kullanıcılar için sağlama işlemleri başlatılır. Eşleme veya Workday veri sorunlarında hatalar varsa, sağlama işi başarısız olabilir ve karantina durumuna geçebilir. Bunu önlemek için, en iyi uygulama olarak, tüm kullanıcılar için tam eşitlemeyi başlatmadan önce, **kaynak nesne kapsamı** filtresini ve öznitelik eşlemelerinizi test eden birkaç test kullanıcıyla test etmenizi öneririz. Eşlemelerin çalıştığını ve size istenen sonuçları vermiş olduktan sonra, filtreyi kaldırabilir ya da daha fazla kullanıcı eklemek için onu kademeli olarak genişletebilirsiniz.
 
-1. **Sağlama** sekmesinde, **sağlama durumunu** **Açık**olarak ayarlayın.
+1. **Sağlama** sekmesinde, **sağlama durumunu** **Açık** olarak ayarlayın.
 
-2. **Kaydet**’e tıklayın.
+2. **Kaydet** ’e tıklayın.
 
 3. Bu işlem, iş günü kiracısında kaç Kullanıcı olduğuna bağlı olarak değişken sayıda saat sürebilen ilk eşitlemeyi başlatacak. İlerleme çubuğunu, eşitleme döngüsünün ilerlemesini izlemek için kontrol edebilirsiniz. 
 

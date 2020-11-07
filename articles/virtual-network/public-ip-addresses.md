@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: fbd4c4ecfa2be9815e5d301a02460dc28171716a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f2dfb113f4c82dfea422a7c2be1c5fb07ffd60e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329270"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358176"
 ---
 # <a name="public-ip-addresses"></a>Genel IP adresleri
 
@@ -38,6 +38,8 @@ Azure Resource Manager’daki bir [genel IP](virtual-network-public-ip-address.m
 Genel IP adresleri IPv4 veya IPv6 adresiyle oluşturulur. 
 
 ## <a name="sku"></a>SKU
+
+SKU yükseltmesi hakkında bilgi edinmek için [genel IP yükseltmesi](../virtual-network/virtual-network-public-ip-address-upgrade.md)' ne bakın.
 
 Genel IP adresleri aşağıdaki SKU'lardan biriyle oluşturulur:
 
@@ -91,9 +93,9 @@ Genel IP adresi kaynağını bir ile ilişkilendirdiğinizde IP atanır:
 
 Kaynağı durdurduğunuzda (veya sildiğinizde) IP adresi serbest kalır.  
 
-Örneğin, **kaynak a**adlı bir kaynaktan ortak IP kaynağı serbest bırakılır. Genel IP kaynağı yeniden atandığında **kaynak a** , başlangıç sırasında farklı bir IP alır.
+Örneğin, **kaynak a** adlı bir kaynaktan ortak IP kaynağı serbest bırakılır. Genel IP kaynağı yeniden atandığında **kaynak a** , başlangıç sırasında farklı bir IP alır.
 
-Ayırma yöntemi **statik** iken **dinamik**olarak değiştirildiğinde, IP adresi serbest bırakılır. İlişkili kaynağın IP adresinin aynı kalmasını sağlamak için ayırma yöntemini açıkça **statik**olarak ayarlayın. Statik IP adresi anında atanır.
+Ayırma yöntemi **statik** iken **dinamik** olarak değiştirildiğinde, IP adresi serbest bırakılır. İlişkili kaynağın IP adresinin aynı kalmasını sağlamak için ayırma yöntemini açıkça **statik** olarak ayarlayın. Statik IP adresi anında atanır.
 
 > [!NOTE]
 > Ayırma yöntemini **statik** olarak ayarladığınızda bile genel IP adresi kaynağına atanan gerçek IP adresini belirtemezsiniz. Azure IP adresini kaynağın oluşturulduğu Azure konumundaki kullanılabilir IP adreslerinden oluşan bir havuzdan atar.
@@ -114,7 +116,7 @@ Statik genel IP adresleri yaygın olarak aşağıdaki senaryolarda kullanılır:
 
 Genel IP kaynağı için bir DNS etki alanı adı etiketi belirtme seçeneğini belirleyin. 
 
-Bu seçim **etkialanıadetiketi**için bir eşleme oluşturur. Azure tarafından yönetilen DNS 'de **Location**. CLOUDAPP.Azure.com genel IP 'ye. 
+Bu seçim **etkialanıadetiketi** için bir eşleme oluşturur. Azure tarafından yönetilen DNS 'de **Location**. CLOUDAPP.Azure.com genel IP 'ye. 
 
 Örneğin, ile genel IP oluşturma:
 
@@ -160,7 +162,7 @@ Uzak ağla iletişimi etkinleştirmek için VPN Gateway bir genel IP adresi atan
 
 ## <a name="application-gateways"></a>Uygulama ağ geçitleri
 
-Genel bir IP adresini bir Azure **Application Gateway**’in [ön uç](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) yapılandırmasına atayarak ağ geçidiyle ilişkilendirebilirsiniz. 
+Genel bir IP adresini bir Azure **Application Gateway** ’in [ön uç](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) yapılandırmasına atayarak ağ geçidiyle ilişkilendirebilirsiniz. 
 
 * Bir Application Gateway v1 ön uç yapılandırmasına **dinamik** temel genel IP atayın. 
 * Bir v2 ön uç yapılandırmasına **statik** standart SKU adresi atayın.
@@ -178,11 +180,11 @@ Aşağıdaki tabloda, genel bir IP 'nin en üst düzey bir kaynakla ve olası ay
 
 | En üst düzey kaynak | IP Adresi ilişkilendirme | Dinamik | Statik |
 | --- | --- | --- | --- |
-| Sanal makine |Ağ arabirimi |Evet |Evet |
-| İnternet'e yönelik yük dengeleyici |Ön uç yapılandırması |Evet |Evet |
-| VPN ağ geçidi |Ağ geçidi IP yapılandırması |Evet |Hayır |
+| Sanal makine |Ağ arabirimi |Yes |Yes |
+| İnternet'e yönelik yük dengeleyici |Ön uç yapılandırması |Yes |Yes |
+| VPN ağ geçidi |Ağ geçidi IP yapılandırması |Yes |Hayır |
 | Uygulama ağ geçidi |Ön uç yapılandırması |Evet (yalnızca v1) |Evet (yalnızca v2) |
-| Azure Güvenlik Duvarı | Ön uç yapılandırması | Hayır | Evet|
+| Azure Güvenlik Duvarı | Ön uç yapılandırması | Hayır | Yes|
 
 ## <a name="limits"></a>Sınırlar
 

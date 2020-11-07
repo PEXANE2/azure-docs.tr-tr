@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: d92db526e0fa3f3f8898ac2ea264d0b8f37be071
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e0b98f15e03552f27cdd1c9683bdd7e74a1c02df
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458328"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358701"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Lucidchart yapılandırma
 
@@ -31,7 +31,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Lucidc
 > * Lucidchart 'de grupları ve grup üyeliklerini sağlama
 > * Lucidchart ['de çoklu oturum açma](./lucidchart-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -47,15 +47,15 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 ## <a name="step-2-configure-lucidchart-to-support-provisioning-with-azure-ad"></a>Adım 2. Lucidchart 'i Azure AD ile sağlamayı destekleyecek şekilde yapılandırma
 
-1. [Lucidchart Yönetici Konsolu 'nda](https://www.lucidchart.com)oturum açın. **Takım > uygulama tümleştirmesi**' ne gidin.
+1. [Lucidchart Yönetici Konsolu 'nda](https://www.lucidchart.com)oturum açın. **Takım > uygulama tümleştirmesi** ' ne gidin.
 
       :::image type="content" source="./media/lucidchart-provisioning-tutorial/team1.png" alt-text="Lucidchart yönetici konsolunun ekran görüntüsü. Takım menüsü vurgulanır ve açıktır. Yönetici altında uygulama tümleştirmesi vurgulanır." border="false":::
 
-2. **SCIM**sayfasına gidin.
+2. **SCIM** sayfasına gidin.
 
-      :::image type="content" source="./media/lucidchart-provisioning-tutorial/scim.png" alt-text="Lucidchart yönetici konsolunun ekran görüntüsü. Takım menüsü vurgulanır ve açıktır. Yönetici altında uygulama tümleştirmesi vurgulanır." border="false":::
+      :::image type="content" source="./media/lucidchart-provisioning-tutorial/scim.png" alt-text="Lucidchart yönetici konsolunun ekran görüntüsü. Büyük bir S C I düğmesi içinde, metin S C ı ve etkin bir başlık görünür." border="false":::
 
-3. **Taşıyıcı belirtecini** ve **Lucidchart temel URL 'sini**görmek için aşağı kaydırın. **Taşıyıcı belirtecini**kopyalayın ve kaydedin. Bu değer, Azure portal LucidChart uygulamanızın sağlama sekmesinde bulunan **gizli dizi belirteci** * alanına girilecektir. 
+3. **Taşıyıcı belirtecini** ve **Lucidchart temel URL 'sini** görmek için aşağı kaydırın. **Taşıyıcı belirtecini** kopyalayın ve kaydedin. Bu değer, Azure portal LucidChart uygulamanızın sağlama sekmesinde bulunan **gizli dizi belirteci** * alanına girilecektir. 
 
       ![Lucidchart belirteci](./media/lucidchart-provisioning-tutorial/token.png)
 
@@ -67,7 +67,7 @@ Lucidchart ' a sağlamayı yönetmeye başlamak için Azure AD Uygulama Galerisi
 
 Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun özniteliklerine göre hazırlanacak kişilerin kapsamını belirlemenizi sağlar. Uygulamanız için hazırlanacak kişilerin kapsamını atamaya göre belirlemeyi seçerseniz kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Hazırlanacak kişilerin kapsamını yalnızca kullanıcı veya grup özniteliklerine göre belirlemeyi seçerseniz [burada](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) anlatılan kapsam belirleme filtresini kullanabilirsiniz. 
 
-* Kullanıcıları ve grupları Lucidchart 'e atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
+* Kullanıcıları ve grupları Lucidchart 'e atarken **varsayılan erişim** dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
 
 * Başlangıçta kapsamı sınırlı tutun. Herkesi hazırlamadan önce birkaç kullanıcı ve grupla test yapın. Hazırlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında uygulamaya bir veya iki kullanıcı ya da grup atayarak bu adımı kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında [öznitelik tabanlı kapsam filtresi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) belirtebilirsiniz. 
 
@@ -78,11 +78,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-lucidchart-in-azure-ad"></a>Azure AD 'de Lucidchart için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Lucidchart**' yi seçin.
+2. Uygulamalar listesinde **Lucidchart** ' yi seçin.
 
     ![Uygulamalar listesindeki Lucidchart bağlantısı](common/all-applications.png)
 
@@ -90,7 +90,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -102,9 +102,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’i seçin.
+7. **Kaydet** ’i seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Lucidchart olarak eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Lucidchart olarak eşitler** ' ı seçin.
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'den Lucidchart 'e eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için Lucidchart içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](../app-provisioning/customize-application-attributes.md)değiştirmeyi seçerseniz, Lucidchart API 'sinin kullanıcıları bu özniteliğe göre filtrelemeyi desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -123,7 +123,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
    |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Manager|Başvuru|
    |urn: IETF: params: Scim: schemas: Extension: Lucidchart: 1.0: Kullanıcı: canEdit|Boole|
 
-10. **Eşlemeler** bölümünde **Azure Active Directory grupları Lucidchart olarak eşitler**' ı seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory grupları Lucidchart olarak eşitler** ' ı seçin.
 
 11. **Öznitelik eşleme** bölümünde Azure AD 'den Lucidchart 'e eşitlenen grup özniteliklerini gözden geçirin. **Eşlenen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için Lucidchart içindeki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -142,7 +142,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

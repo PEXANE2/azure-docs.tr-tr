@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: Zhchia
-ms.openlocfilehash: f60d73766d2f992faddd7d944436d9179ef18e19
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 43b20f2b286bdadbee33555abc1a19845092c64b
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456148"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357513"
 ---
 # <a name="tutorial-configure-cinode-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Cincode yapılandırma
 
@@ -34,7 +34,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Cincod
 > * Kullanıcı özniteliklerinin Azure AD ile Cinode arasında eşitlenmiş olmasını sağlama
 > * Cincode 'da grupları ve grup üyeliklerini sağlama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -49,19 +49,19 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 ## <a name="step-2-configure-cinode-to-support-provisioning-with-azure-ad"></a>Adım 2. Azure AD ile sağlamayı desteklemek için Cincode yapılandırma
 
-1. Yönetim haklarına sahip bir kullanıcı hesabı ile Cinode 'da oturum açın. **Yönetim**bölümüne gidin.
+1. Yönetim haklarına sahip bir kullanıcı hesabı ile Cinode 'da oturum açın. **Yönetim** bölümüne gidin.
 
-2. **Tümleştirmelere**gidin.
+2. **Tümleştirmelere** gidin.
 
 3. **Belirteçler** ' a gidin ve yeni bir belirteç oluşturun.
 
 4. Benzersiz bir ad girin, hedef kitle olarak **' https://api.cinode.app/scim/v2 '** seçeneğini belirleyin ve bir süre sonu tarihi uygun şekilde ayarlayın.
 
-5. **Belirteç oluştur**' a tıklayın.
+5. **Belirteç oluştur** ' a tıklayın.
 
 ![Belirteç oluştur](media/cinode-provisioning-tutorial/token.png)
 
-6. **Kiracı URL 'sini** ve **belirtecini**kopyalayın. Bu değerler, Azure portal Cincode uygulamanızın sağlama sekmesine girilir.
+6. **Kiracı URL 'sini** ve **belirtecini** kopyalayın. Bu değerler, Azure portal Cincode uygulamanızın sağlama sekmesine girilir.
 
 ## <a name="step-3-add-cinode-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden Cincode ekleme
 
@@ -71,7 +71,7 @@ Azure AD uygulama galerisinden Cincode ' a ekleyerek ıncode ' a sağlamayı yö
 
 Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun özniteliklerine göre hazırlanacak kişilerin kapsamını belirlemenizi sağlar. Uygulamanız için hazırlanacak kişilerin kapsamını atamaya göre belirlemeyi seçerseniz kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Hazırlanacak kişilerin kapsamını yalnızca kullanıcı veya grup özniteliklerine göre belirlemeyi seçerseniz [burada](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) anlatılan kapsam belirleme filtresini kullanabilirsiniz. 
 
-* Kullanıcı ve grupları ıncode 'a atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
+* Kullanıcı ve grupları ıncode 'a atarken **varsayılan erişim** dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
 
 * Başlangıçta kapsamı sınırlı tutun. Herkesi hazırlamadan önce birkaç kullanıcı ve grupla test yapın. Hazırlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında uygulamaya bir veya iki kullanıcı ya da grup atayarak bu adımı kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında [öznitelik tabanlı kapsam filtresi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) belirtebilirsiniz. 
 
@@ -82,11 +82,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-cinode-in-azure-ad"></a>Azure AD 'de ıncode için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Cinode**' ı seçin.
+2. Uygulamalar listesinde, **Cinode** ' ı seçin.
 
     ![Uygulamalar listesindeki Cinode bağlantısı](common/all-applications.png)
 
@@ -94,7 +94,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Hazırlama sekmesi](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Sekme otomatik sağlama](common/provisioning-automatic.png)
 
@@ -106,9 +106,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’i seçin.
+7. **Kaydet** ’i seçin.
 
-8. **Eşlemeler** bölümünde **Kullanıcı Azure Active Directory Kullanıcıları Cinode olarak eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde **Kullanıcı Azure Active Directory Kullanıcıları Cinode olarak eşitler** ' ı seçin.
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'Den cinode 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için cincode 'daki Kullanıcı hesaplarıyla eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](../app-provisioning/customize-application-attributes.md)değiştirmeyi seçerseniz, CINCODE API 'sinin kullanıcıları bu özniteliğe göre filtrelemeyi desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -122,7 +122,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
    |başlık|Dize|
    |adresler [tür EQ "iş"]. konum|Dize|
 
-10. **Eşlemeler** bölümünde **Azure Active Directory gruplarını ıncode olarak eşitler**' ı seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory gruplarını ıncode olarak eşitler** ' ı seçin.
 
 11. **Öznitelik eşleme** bölümünde Azure AD 'Den cinode 'a eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için cinode içindeki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -142,7 +142,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/26/2020
+ms.date: 11/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 99c94528c13228e07327b529782f211ec92a08ea
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: bbaa9d33d3a31b682a66b2a3254fc2265b6f8d7b
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359859"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357086"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure sanal makine depolama alanı yapılandırmaları
 
@@ -37,7 +37,7 @@ Azure, Azure Standard ve Premium depolamada bulunan VHD 'ler için iki dağıtı
 Depolama türlerinin bir listesi ve ıOPS ve depolama aktarım hızı içindeki SLA 'Lar için, [yönetilen diskler Için Azure belgelerini](https://azure.microsoft.com/pricing/details/managed-disks/)gözden geçirin.
 
 > [!IMPORTANT]
-> Seçilen Azure depolama türünden bağımsız olarak, bu depolama üzerinde kullanılan dosya sisteminin, belirli işletim sistemi ve DBMS için SAP tarafından desteklenmesi gerekir. [Sap destek notuna #405827](https://launchpad.support.sap.com/#/notes/405827) , SAP HANA dahil farklı işletim sistemleri ve veritabanları için desteklenen dosya sistemlerini listeler. Bu, tüm birimlerde geçerlidir SAP HANA her türlü görevi okumak ve yazmak için erişim sağlayabilir. Azure 'da SAP HANA için özel olarak NFS 'yi kullanmak, bu makalede daha sonra belirtilen şekilde NFS sürümlerinin ek kısıtlamaları için geçerlidir 
+> Seçilen Azure depolama türünden bağımsız olarak, bu depolama üzerinde kullanılan dosya sisteminin, belirli işletim sistemi ve DBMS için SAP tarafından desteklenmesi gerekir. [Sap destek notuna #2972496](https://launchpad.support.sap.com/#/notes/2972496) , SAP HANA dahil farklı işletim sistemleri ve veritabanları için desteklenen dosya sistemlerini listeler. Bu, tüm birimlerde geçerlidir SAP HANA her türlü görevi okumak ve yazmak için erişim sağlayabilir. Azure 'da SAP HANA için özel olarak NFS 'yi kullanmak, bu makalede daha sonra belirtilen şekilde NFS sürümlerinin ek kısıtlamaları için geçerlidir 
 
 
 Farklı depolama türleri için en düşük SAP HANA sertifikalı koşullar şunlardır: 

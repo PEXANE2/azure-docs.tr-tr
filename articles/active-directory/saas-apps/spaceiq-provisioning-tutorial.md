@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: 135b780f547ddd8e979899898b9971c4dcf89cee
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 4e115de4f86baba9559730d94f45ab7b17cc4379
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514717"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357972"
 ---
 # <a name="tutorial-configure-spaceiq-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için SpaceIQ yapılandırma
 
@@ -54,17 +54,17 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
     ![SpaceIQ Yönetici Konsolu](media/spaceiq-provisioning-tutorial/admin.png)
 
-2.  **Ayarlar** sayfasında **üçüncü taraf tümleştirmeler**' i seçin.
+2.  **Ayarlar** sayfasında **üçüncü taraf tümleştirmeler** ' i seçin.
 
     ![SpaceIQ SCıM Ekle](media/spaceiq-provisioning-tutorial/thirdparty.png)
 
-3.  **Sağlama ve SSO** sekmesine gidin. **Azure** kutucuğunu arayın. **Etkinleştir**' e tıklayın.
+3.  **Sağlama ve SSO** sekmesine gidin. **Azure** kutucuğunu arayın. **Etkinleştir** ' e tıklayın.
 
     ![SpaceIQ sağlama ve SSO](media/spaceiq-provisioning-tutorial/provisioning.png)
 
     ![SpaceIQ Azure 'U etkinleştir ](media/spaceiq-provisioning-tutorial/azure.png)
 
-3.  **SCIM taşıyıcı belirtecini**kopyalayın. Bu değer, Azure portal SpaceIQ uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir. **Etkinleştir** 'e tıklayın
+3.  **SCIM taşıyıcı belirtecini** kopyalayın. Bu değer, Azure portal SpaceIQ uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir. **Etkinleştir** 'e tıklayın
 
     ![SpaceIQ belirteç oluştur](media/spaceiq-provisioning-tutorial/token.png)
 
@@ -74,11 +74,11 @@ Azure AD ile otomatik Kullanıcı sağlama için SpaceIQ 'ı yapılandırmadan �
 
 **Azure AD uygulama galerisinden SpaceIQ eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -86,7 +86,7 @@ Azure AD ile otomatik Kullanıcı sağlama için SpaceIQ 'ı yapılandırmadan �
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **spaceiq**girin, sonuçlar panelinde **spaceiq** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **spaceiq** girin, sonuçlar panelinde **spaceiq** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
     ![Sonuç listesinde SpaceIQ](common/search-new-app.png)
 
@@ -99,11 +99,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Azure AD 'de Kullanıcı v
 
 ### <a name="to-configure-automatic-user-provisioning-for-spaceiq-in-azure-ad"></a>Azure AD 'de SpaceIQ otomatik Kullanıcı sağlamasını yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Spaceiq**' ı seçin.
+2. Uygulamalar listesinde, **Spaceiq** ' ı seçin.
 
     ![Uygulamalar listesindeki SpaceIQ bağlantısı](common/all-applications.png)
 
@@ -111,21 +111,21 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Azure AD 'de Kullanıcı v
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünün altında, `https://api.spaceiq.com/scim` **kiracı URL 'sini**girin. **Gizli belirteçte**daha önce alınan **SCIM kimlik doğrulama belirteci** değerini girin. Azure AD 'nin SpaceIQ 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, SpaceIQ hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünün altında, `https://api.spaceiq.com/scim` **kiracı URL 'sini** girin. **Gizli belirteçte** daha önce alınan **SCIM kimlik doğrulama belirteci** değerini girin. Azure AD 'nin SpaceIQ 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, SpaceIQ hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’e tıklayın.
+7. **Kaydet** ’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları, Spaceiq olarak eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları, Spaceiq olarak eşitler** ' ı seçin.
 
     ![SpaceIQ Kullanıcı eşlemeleri](media/spaceiq-provisioning-tutorial/usermapping.png)
 
@@ -143,7 +143,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Azure AD 'de Kullanıcı v
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-14. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+14. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

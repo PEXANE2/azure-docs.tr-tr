@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6c46dfb3f36c3ef7f67ce2f3b52c2ffe4c805a61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d83e5c39f97db49e2cc9b77cc806cff0a1fa6de
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91534803"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94355993"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Azure Bilişsel Arama filtreler 
 
@@ -98,13 +98,13 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 Aşağıdaki örneklerde, filtre senaryoları için çeşitli kullanım desenleri gösterilmektedir. Daha fazla fikir için bkz. [OData Expression sözdizimi > örnekleri](./search-query-odata-filter.md#examples).
 
-+ Bir sorgu dizesi olmadan tek başına **$Filter**, filtre ifadesi ilgilendiğiniz belgeleri tamamen niteleyebiliyorlarsa yararlı olur. Sorgu dizesi olmadan, sözcük temelli veya dil analizi, Puanlama yok ve derecelendirme yoktur. Arama dizesinin yalnızca bir yıldız işareti olduğunu, yani "tüm belgeleri Eşleştir" anlamına geldiğini unutmayın.
++ Bir sorgu dizesi olmadan tek başına **$Filter** , filtre ifadesi ilgilendiğiniz belgeleri tamamen niteleyebiliyorlarsa yararlı olur. Sorgu dizesi olmadan, sözcük temelli veya dil analizi, Puanlama yok ve derecelendirme yoktur. Arama dizesinin yalnızca bir yıldız işareti olduğunu, yani "tüm belgeleri Eşleştir" anlamına geldiğini unutmayın.
 
    ```
    search=*&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Honolulu'
    ```
 
-+ Filtrenin alt kümesini oluşturduğu sorgu dizesi ve **$Filter**birleşimi ve sorgu dizesi filtrelenmiş alt küme üzerinde tam metin araması için terim girişi sağlar. Koşulların eklenmesi (yürüyen mesafe), sonuçlarda en iyi eşleşen belgelerin daha yüksek bir şekilde derecelendirilir sonuçlarında arama puanları tanıtır. Sorgu dizesiyle bir filtre kullanılması en yaygın kullanım modelidir.
++ Filtrenin alt kümesini oluşturduğu sorgu dizesi ve **$Filter** birleşimi ve sorgu dizesi filtrelenmiş alt küme üzerinde tam metin araması için terim girişi sağlar. Koşulların eklenmesi (yürüyen mesafe), sonuçlarda en iyi eşleşen belgelerin daha yüksek bir şekilde derecelendirilir sonuçlarında arama puanları tanıtır. Sorgu dizesiyle bir filtre kullanılması en yaygın kullanım modelidir.
 
    ```
   search=walking distance theaters&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Seattle'&$count=true
@@ -138,11 +138,11 @@ Belirli kullanım durumlarında kapsamlı yönergeler için bu makalelerle takip
 
 REST API, filtrelenebilir, basit alanlar için varsayılan olarak *Açık* olur. Filtrelenebilir alanlar dizin boyutunu artırır; `"filterable": false` Filtre içinde gerçekten kullanmayı planlamadığınız alanlar için ayarladığınızdan emin olun. Alan tanımlarının ayarları hakkında daha fazla bilgi için bkz. [Dizin oluşturma](/rest/api/searchservice/create-index).
 
-.NET SDK 'sında filtrelenebilir varsayılan olarak *kapalıdır* . İlgili [alan](/dotnet/api/microsoft.azure.search.models.field) nesnesinin [ısfilterable özelliğini](/dotnet/api/microsoft.azure.search.models.field.isfilterable) olarak ayarlayarak bir alanı filtrelenebilir hale getirebilirsiniz `true` . Bunu, [ısfilterable özniteliğini](/dotnet/api/microsoft.azure.search.isfilterableattribute)kullanarak bildirimli olarak da yapabilirsiniz. Aşağıdaki örnekte, özniteliği `BaseRate` Dizin tanımıyla eşleşen bir model sınıfının özelliği üzerinde ayarlanır.
+.NET SDK 'sında filtrelenebilir varsayılan olarak *kapalıdır* . Karşılık gelen [Searchfield](/dotnet/api/azure.search.documents.indexes.models.searchfield) nesnesinin [ısfilterable özelliğini](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable) olarak ayarlayarak bir alanı filtrelenebilir hale getirebilirsiniz `true` . Aşağıdaki örnekte, özniteliği `BaseRate` Dizin tanımıyla eşleşen bir model sınıfının özelliği üzerinde ayarlanır.
 
 ```csharp
-    [IsFilterable, IsSortable, IsFacetable]
-    public double? BaseRate { get; set; }
+[IsFilterable, IsSortable, IsFacetable]
+public double? BaseRate { get; set; }
 ```
 
 ### <a name="making-an-existing-field-filterable"></a>Varolan bir alanı filtrelenebilir hale getirme
@@ -157,10 +157,10 @@ Metin dizeleri büyük/küçük harfe duyarlıdır. Büyük küçük harf olmaya
 
 ### <a name="approaches-for-filtering-on-text"></a>Metinde filtreleme yaklaşımları
 
-| Yaklaşım | Açıklama | Kullanılması gereken durumlar |
+| Yaklaşım | Description | Kullanılması gereken durumlar |
 |----------|-------------|-------------|
 | [`search.in`](search-query-odata-search-in-function.md) | Ayrılmış bir dize listesine karşı bir alanla eşleşen bir işlev. | Birçok ham metin değerinin bir dize alanı ile eşleştirilmesi gereken, [Güvenlik filtreleri](search-security-trimming-for-azure-search.md) ve tüm filtreler için önerilir. **Search.in** işlevi hız için tasarlanmıştır ve ve kullanarak alanı her bir dizeye göre açıkça karşılaştırmadan çok daha hızlıdır `eq` `or` . | 
-| [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Aynı filtre ifadesinde tam metin arama işlemlerini kesin olarak Boolean filtre işlemleriyle karıştırabilmeniz için bir işlev. | Tek bir istekte birden çok arama filtresi kombinasyonu istediğinizde **Search. IsMatch** (veya Puanlama eşdeğerini, **arama. ısmatchpuanlama**) kullanın. Ayrıca, daha büyük bir dizedeki kısmi bir dizeyi filtrelemek için bir *Contains* filtresi için de kullanabilirsiniz. |
+| [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Aynı filtre ifadesinde tam metin arama işlemlerini kesin olarak Boolean filtre işlemleriyle karıştırabilmeniz için bir işlev. | Tek bir istekte birden çok arama filtresi kombinasyonu istediğinizde **Search. IsMatch** (veya Puanlama eşdeğerini, **arama. ısmatchpuanlama** ) kullanın. Ayrıca, daha büyük bir dizedeki kısmi bir dizeyi filtrelemek için bir *Contains* filtresi için de kullanabilirsiniz. |
 | [`$filter=field operator string`](search-query-odata-comparison-operators.md) | Alanlar, işleçler ve değerlerden oluşan Kullanıcı tanımlı bir ifade. | Bir dize alanı ve bir dize değeri arasındaki tam eşleşmeleri bulmak istediğinizde bunu kullanın. |
 
 ## <a name="numeric-filter-fundamentals"></a>Sayısal filtre temelleri

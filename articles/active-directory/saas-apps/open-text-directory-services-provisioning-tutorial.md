@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: Zhchia
-ms.openlocfilehash: c0858c2e5b1ada866d252e45113f0f90b73caaf8
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c023d9b79b81257419814c3087b78f65e1cb6dd5
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428968"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356001"
 ---
 # <a name="tutorial-configure-opentext-directory-services-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için OpenText dizin hizmetlerini yapılandırma
 
@@ -35,7 +35,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem OpenTe
 > * OpenText dizin hizmetlerinde grupları ve grup üyeliklerini sağlama
 > * OpenText dizin hizmetlerinde [Çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/opentext-directory-services-tutorial) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -53,13 +53,13 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 > [!NOTE]
 > Aşağıdaki adımlar bir OpenText Dizin Hizmetleri yüklemesi için geçerlidir. OpenText Corespaylaştırlm veya OpenText OT2 kiracılar için uygulanamazlar.
 
-1. Adanmış bir gizli **OAuth istemcisi**oluşturun.
-2. Uzun bir **erişim belirteci ömrü**ayarlayın.
+1. Adanmış bir gizli **OAuth istemcisi** oluşturun.
+2. Uzun bir **erişim belirteci ömrü** ayarlayın.
 
       ![Erişim belirteci ömrü](media/open-text-directory-services-provisioning-tutorial/token-life.png)
 
 3. Yeniden yönlendirme URL 'Si belirtmeyin. Bunlar gerekli değildir. 
-4. OTDS, **istemci parolasını**oluşturur ve görüntüler. **İstemci kimliğini** ve **gizli anahtarı** güvenli bir konuma kaydedin.
+4. OTDS, **istemci parolasını** oluşturur ve görüntüler. **İstemci kimliğini** ve **gizli anahtarı** güvenli bir konuma kaydedin.
 
       ![İstemci Gizli Anahtarı](media/open-text-directory-services-provisioning-tutorial/client-secret.png)
 
@@ -78,7 +78,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
       ![Yetkilendirme düğmesi](media/open-text-directory-services-provisioning-tutorial/authorization.png)
 
-6. Grant_type için **client_credentials** seçin ve **Yürüt**' e tıklayın.
+6. Grant_type için **client_credentials** seçin ve **Yürüt** ' e tıklayın.
 
       ![Buton yürütme](media/open-text-directory-services-provisioning-tutorial/execute.png)
 
@@ -94,7 +94,7 @@ OpenText dizin hizmetlerine sağlamayı yönetmeye başlamak için Azure AD uygu
 
 Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun özniteliklerine göre hazırlanacak kişilerin kapsamını belirlemenizi sağlar. Uygulamanız için hazırlanacak kişilerin kapsamını atamaya göre belirlemeyi seçerseniz kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Hazırlanacak kişilerin kapsamını yalnızca kullanıcı veya grup özniteliklerine göre belirlemeyi seçerseniz [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) anlatılan kapsam belirleme filtresini kullanabilirsiniz. 
 
-* OpenText dizin hizmetlerine Kullanıcı ve grup atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) daha fazla rol ekleyebilirsiniz. 
+* OpenText dizin hizmetlerine Kullanıcı ve grup atarken **varsayılan erişim** dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) daha fazla rol ekleyebilirsiniz. 
 
 * Başlangıçta kapsamı sınırlı tutun. Herkesi hazırlamadan önce birkaç kullanıcı ve grupla test yapın. Hazırlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında uygulamaya bir veya iki kullanıcı ya da grup atayarak bu adımı kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) belirtebilirsiniz. 
 
@@ -105,11 +105,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-opentext-directory-services-in-azure-ad"></a>Azure AD 'de OpenText Dizin Hizmetleri için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **OpenText Dizin Hizmetleri**' ni seçin.
+2. Uygulamalar listesinde **OpenText Dizin Hizmetleri** ' ni seçin.
 
     ![Uygulamalar listesindeki OpenText Dizin Hizmetleri bağlantısı](common/all-applications.png)
 
@@ -117,7 +117,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Hazırlama sekmesi](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Sekme otomatik sağlama](common/provisioning-automatic.png)
 
@@ -133,9 +133,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’i seçin.
+7. **Kaydet** ’i seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları OpenText Dizin Hizmetleri ile eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları OpenText Dizin Hizmetleri ile eşitler** ' ı seçin.
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'Den OpenText dizin hizmetlerine eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için OpenText Dizin hizmetlerindeki Kullanıcı hesaplarıyla eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)değiştirmeyi seçerseniz, OpenText Dizin Hizmetleri API 'sinin bu özniteliğe göre kullanıcıların filtrelenmesini desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -164,7 +164,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
    |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Department|Dize|
    |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Manager|Başvuru| 
 
-10. **Eşlemeler** bölümünde **Azure Active Directory grupları OpenText Dizin Hizmetleri ile eşitler**' ı seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory grupları OpenText Dizin Hizmetleri ile eşitler** ' ı seçin.
 
 11. **Öznitelik eşleme** bölümünde Azure AD 'Den OpenText dizin hizmetlerine eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, OpenText Dizin hizmetlerindeki güncelleştirme işlemleri için grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -184,7 +184,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

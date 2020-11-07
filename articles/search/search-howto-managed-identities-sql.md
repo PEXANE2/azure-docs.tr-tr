@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 49493f47c7178a15e37a54a70dd066690057caba
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b940da2cf754e7e1cac91df6b517ecebe55e8c40
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519580"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358431"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity"></a>Yönetilen kimlik kullanarak Azure SQL veritabanı 'na bir Dizin Oluşturucu bağlantısı kurma
 
@@ -81,7 +81,7 @@ Veritabanını okumak için arama hizmeti iznini atamak için aşağıdaki adım
 Bu adımda, Azure Bilişsel Arama hizmetine SQL Server verileri okuma izni verirsiniz.
 
 1. Azure portal Azure SQL Server sayfanıza gidin.
-2. **Erişim denetimi (IAM)** seçeneğini belirleyin
+2. **Erişim denetimi (IAM)** öğesini seçin
 3. **Ekle** ' yi seçin ve **rol ataması Ekle**
 
     ![Rol ataması ekle](./media/search-managed-identities/add-role-assignment-sql-server.png "Rol ataması ekle")
@@ -94,7 +94,7 @@ Bu adımda, Azure Bilişsel Arama hizmetine SQL Server verileri okuma izni verir
 
 ### <a name="5---create-the-data-source"></a>5-veri kaynağını oluşturma
 
-[REST API](/rest/api/searchservice/create-data-source), Azure Portal ve [.NET SDK](/dotnet/api/microsoft.azure.search.models.datasource) , yönetilen kimlik bağlantı dizesini destekler. Aşağıda, [REST API](/rest/api/searchservice/create-data-source) ve yönetilen kimlik bağlantı dizesi kullanarak BIR Azure SQL veritabanından veri dizini oluşturmak için bir veri kaynağı oluşturma örneği verilmiştir. Yönetilen kimlik bağlantı dizesi biçimi REST API, .NET SDK ve Azure portal için aynıdır.
+[REST API](/rest/api/searchservice/create-data-source), Azure Portal ve [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) , yönetilen kimlik bağlantı dizesini destekler. Aşağıda, [REST API](/rest/api/searchservice/create-data-source) ve yönetilen kimlik bağlantı dizesi kullanarak BIR Azure SQL veritabanından veri dizini oluşturmak için bir veri kaynağı oluşturma örneği verilmiştir. Yönetilen kimlik bağlantı dizesi biçimi REST API, .NET SDK ve Azure portal için aynıdır.
 
 [REST API](/rest/api/searchservice/create-data-source)kullanarak bir veri kaynağı oluştururken, veri kaynağı aşağıdaki gerekli özelliklere sahip olmalıdır:
 
@@ -103,7 +103,7 @@ Bu adımda, Azure Bilişsel Arama hizmetine SQL Server verileri okuma izni verir
 * **Credentials**
     * Kimlik doğrulaması için yönetilen bir kimlik kullanırken, **kimlik bilgileri** biçimi, bir kimlik bilgisi kullanmaktan farklı. Burada, bir başlangıç kataloğu veya veritabanı adı ve hesap anahtarı ya da parolası olmayan bir RESOURCEID sağlarsınız. RESOURCEID, Azure SQL veritabanının abonelik KIMLIĞINI, SQL veritabanı kaynak grubunu ve SQL veritabanının adını içermelidir. 
     * Yönetilen kimlik bağlantı dizesi biçimi:
-        * *İlk Katalog | Veritabanı =**veritabanı adı**; RESOURCEID =/Subscriptions/**ABONELIK kimliği**/ResourceGroups/**kaynak grubu adı**/Providers/Microsoft.SQL/Servers/**SQL Server adınız**/; Bağlantı zaman aşımı =**bağlantı zaman aşımı uzunluğu**;*
+        * *İlk Katalog | Veritabanı = **veritabanı adı** ; RESOURCEID =/Subscriptions/ **ABONELIK kimliği** /ResourceGroups/ **kaynak grubu adı** /Providers/Microsoft.SQL/Servers/ **SQL Server adınız** /; Bağlantı zaman aşımı = **bağlantı zaman aşımı uzunluğu** ;*
 * **kapsayıcı** , dizin oluşturmak istediğiniz tablonun veya görünümün adını belirtir.
 
 [REST API](/rest/api/searchservice/create-data-source)kullanarak BIR Azure SQL veri kaynağı nesnesinin nasıl oluşturulacağı hakkında örnek:

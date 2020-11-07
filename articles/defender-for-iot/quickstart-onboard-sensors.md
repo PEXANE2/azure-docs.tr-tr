@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2020
 ms.author: rkarlin
-ms.openlocfilehash: 28d64f5d9d845c2a14f0277799213501e1d68010
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: dafa2f231581ee7e7fa7a59a9c9320f6f2a67038
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421773"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357693"
 ---
 # <a name="quickstart-deploy-and-onboard-a-sensor"></a>Hızlı başlangıç: bir algılayıcı dağıtın ve ekleyin
 
@@ -42,7 +42,7 @@ Ekleme sensörleri şunları yapmanızı sağlar:
 | **Bir algılayıcı yönetim modu tanımlama** | Bir algılayıcı tarafından algılanan varlık, uyarı ve diğer bilgilerin nerede görüntülendiğini tanımlayın. Bu, tanımladığınız **algılayıcı yönetim moduna** göre belirlenir.<br /><br />**Yerel olarak yönetilen mod** : algılayıcı tarafından algılanan bilgiler algılayıcı konsolunda görüntülenir. Algılayıcı kendisine bağlıysa, algılama bilgileri de şirket içi yönetim konsoluyla paylaşılır.<br /><br />**Bulut yönetilen modu** : algılayıcı tarafından algılanan bilgiler algılayıcı konsolunda görüntülenir. Ayrıca, uyarı bilgileri bir IoT Hub aracılığıyla dağıtılır ve Azure Sentinel gibi diğer Azure hizmetleriyle de paylaşılabilir.<br />Daha fazla bilgi için bkz. **algılayıcısı** ekleme. |
 | **Algılayıcı etkinleştirme dosyası alma** | **Yerel olarak yönetilen** sensörler için, yetkili algılayıcı etkinleştirme sürelerini yönetmek üzere bir etkinleştirme dosyası kullanılır.<br /><br />**Bulut yönetilen** algılayıcılar için, algılayıcı ve bir IoT Hub arasında bağlantı olarak bir etkinleştirme dosyası kullanılır. Daha fazla bilgi için bkz. **sensörlerden katılın**. |
 | **Bir etkinleştirme dosyasını sensöre yükleme** | Etkinleştirme dosyaları kurumsal Sensörlerinizi karşıya yüklememelidir. Etkinleştirme dosyası karşıya yüklenene kadar ağ izleme ve algılayıcı konsol özelliklerine erişim kullanılamayacak. Daha fazla bilgi için bkz. **algılayıcı etkinleştirme dosyalarını karşıya yükleme**. |
-| **Etkinleştirmeden önce algılayıcı ağ parametrelerini Güncelleştir** | Algılayıcı yüklemesi sırasında tanımlanan parametreleri güncelleştirin. Daha fazla bilgi için bkz. **hata! Başvuru kaynağı bulunamadı**.|
+| **Etkinleştirmeden önce algılayıcı ağ parametrelerini Güncelleştir** | Algılayıcı yüklemesi sırasında tanımlanan parametreleri güncelleştirin. Daha fazla bilgi için bkz. **algılayıcı etkinleştirme dosyalarını karşıya yükleme**.|
 
 
 **Bir algılayıcı dağıtmak için:**
@@ -98,7 +98,7 @@ Algılayıcılar 'ın IoT portalı için Azure Defender eklendi olması gerekir.
 4. **Bulut bağlantısı** geçişi kullanarak bir algılayıcı yönetimi modu seçin. Geçiş açık ise, algılayıcı **bulutta yönetilir**. Geçiş kapalıysa, algılayıcı **yerel olarak yönetilir**.
 
 
-| Algılayıcı yönetim modu | Açıklama                                                |
+| Algılayıcı yönetim modu | Description                                                |
 | ---------------------- | ---------------------------------------------------------  |
 | **Bulut yönetiliyor**          | Algılayıcı tarafından algılanan bilgiler algılayıcı konsolunda görüntülenir. Ayrıca, uyarı bilgileri bir IoT Hub aracılığıyla dağıtılır ve Azure Sentinel gibi diğer Azure hizmetleriyle de paylaşılabilir.<br /><br />Bu sensör ile ilişkilendirilecek IoT Hub seçin.<br /><br />Bulut tarafından yönetilen sensörlerle bulut tarafından yönetilen bir etkinleştirme dosyası yüklemeniz gerekir.<br /><br />Ayrıntılar için bkz. **algılayıcı etkinleştirme dosyalarını karşıya yükleme** . |
 | **Yerel olarak yönetilen**        | Yerel olarak yönetilen sensörlerle algılanan bilgiler algılayıcı konsolunda görüntülenir. Bir AIR-gapped ağında çalışıyorsanız ve birden çok yerel olarak yönetilen algılayıcı tarafından algılanan tüm bilgilerin birleştirilmiş bir görünümünü istiyorsanız, şirket içi yönetim konsoluyla çalışın.<br /><br />*Yerel olarak yönetilen* sensörler bir Azure aboneliğiyle ilişkilendirilir ve etkinleştirme süre sonu döneminin algılayıcısı hakkında yönergeler içerir.<br /><br />Bu sensörle ilişkilendirilecek bir abonelik seçin.<br /><br />Her sensöre yerel olarak yönetilen bir etkinleştirme dosyası yüklemeniz gerekir. Ayrıntılar için bkz. **algılayıcı etkinleştirme dosyalarını karşıya yükleme** . |

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: e229fdd44bb6d634d83ddfaf1173c02b65336537
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: feb661a5f0a22350d9660669c18209e7b1fd878d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519257"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358533"
 ---
 # <a name="tutorial-configure-webroot-security-awareness-training-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Webroot güvenlik tanıma eğitimini yapılandırma
 
@@ -59,13 +59,13 @@ Sitenizi Azure AD 'ye bağlamak için, Webroot yönetim konsolundaki bu site iç
 
     ![Dişli simgesi](./media/webroot-security-awareness-training-provisioning-tutorial/gear-icon.png)
 
-3. **Azure AD tümleştirmesini yapılandırmak**için düğmeye tıklayın.
+3. **Azure AD tümleştirmesini yapılandırmak** için düğmeye tıklayın.
 
     ![Azure AD tümleştirmesini yapılandırma](./media/webroot-security-awareness-training-provisioning-tutorial/configure-azure-ad-integration.png)
 
-4. **Gizli belirteç**kopyalayın ve kaydedin. Bu değer, Azure portal Webroot güvenlik tanıma eğitim uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
+4. **Gizli belirteç** kopyalayın ve kaydedin. Bu değer, Azure portal Webroot güvenlik tanıma eğitim uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
 
-5. **Bitti**’ye tıklayın.
+5. **Bitti** ’ye tıklayın.
 
     ![Gizli dizi belirtecini Kopyala](./media/webroot-security-awareness-training-provisioning-tutorial/copy-secret-token.png)
 
@@ -77,7 +77,7 @@ Azure AD uygulama galerisinden Webroot Security tanıma Eğitimi ekleyerek Webro
 
 Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun özniteliklerine göre hazırlanacak kişilerin kapsamını belirlemenizi sağlar. Uygulamanız için hazırlanacak kişilerin kapsamını atamaya göre belirlemeyi seçerseniz kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Hazırlanacak kişilerin kapsamını yalnızca kullanıcı veya grup özniteliklerine göre belirlemeyi seçerseniz [burada](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) anlatılan kapsam belirleme filtresini kullanabilirsiniz. 
 
-* Webroot güvenlik tanıma eğitimine Kullanıcı ve grup atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
+* Webroot güvenlik tanıma eğitimine Kullanıcı ve grup atarken **varsayılan erişim** dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
 
 * Başlangıçta kapsamı sınırlı tutun. Herkesi hazırlamadan önce birkaç kullanıcı ve grupla test yapın. Hazırlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında uygulamaya bir veya iki kullanıcı ya da grup atayarak bu adımı kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında [öznitelik tabanlı kapsam filtresi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) belirtebilirsiniz. 
 
@@ -88,11 +88,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-webroot-security-awareness-training-in-azure-ad"></a>Azure AD 'de Webroot güvenlik tanıma eğitiminde otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Webroot güvenlik tanıma Eğitimi**' ni seçin.
+2. Uygulamalar listesinde, **Webroot güvenlik tanıma Eğitimi** ' ni seçin.
 
     ![Uygulamalar listesindeki Webroot güvenlik tanıma Eğitimi bağlantısı](common/all-applications.png)
 
@@ -100,11 +100,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünün altında, `https://awarenessapi.webrootanywhere.com/api/v2/scim` **kiracı URL 'sini**girin. Gizli belirteç değerini **gizli belirteçte**daha önce alındı olarak girin. Azure AD 'nin Webroot güvenlik tanıma eğitimine bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Webroot güvenlik tanıma eğitim hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünün altında, `https://awarenessapi.webrootanywhere.com/api/v2/scim` **kiracı URL 'sini** girin. Gizli belirteç değerini **gizli belirteçte** daha önce alındı olarak girin. Azure AD 'nin Webroot güvenlik tanıma eğitimine bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Webroot güvenlik tanıma eğitim hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Ekran görüntüsü, kiracı U R L ve gizli belirteç girebileceğiniz yönetici kimlik bilgileri iletişim kutusunu gösterir.](./media/webroot-security-awareness-training-provisioning-tutorial/provisioning.png)
 
@@ -112,9 +112,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’i seçin.
+7. **Kaydet** ’i seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları sağla**' yı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları sağla** ' yı seçin.
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'Den Webroot güvenlik tanıma eğitimine eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Webroot güvenlik tanıma eğitiminde Kullanıcı hesaplarını eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](../app-provisioning/customize-application-attributes.md)değiştirmeyi seçerseniz, Webroot güvenlik tanıma Eğitimi API 'sinin kullanıcıları bu özniteliğe göre filtrelemeyi desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -125,7 +125,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
    |name.familyName|Dize|
    |emails[type eq "work"].value|Dize|
 
-10. **Eşlemeler** bölümünde **Azure Active Directory grupları sağla**' yı seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory grupları sağla** ' yı seçin.
 
 11. **Öznitelik eşleme** bölümünde Azure AD 'Den Webroot güvenlik tanıma eğitimine eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Webroot güvenlik tanıma eğitiminde grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -145,7 +145,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

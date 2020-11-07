@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: 235572cc4d697e7488765c464b12f9349c1e012b
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f5df8bccc10ca64ee9a04f195299c5228b7274c1
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994169"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356459"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>SAP Solutions sağlayıcıları için Azure izleyici (Önizleme)
 
 ## <a name="overview"></a>Genel Bakış  
 
-SAP Çözümleri için Azure Izleyici bağlamında, *sağlayıcı türü* belirli bir *sağlayıcıyı*ifade eder. Örneğin, SAP yatay içindeki belirli bir bileşen için SAP HANA veritabanı gibi yapılandırılmış *SAP HANA*. Sağlayıcı, ilgili bileşene ait bağlantı bilgilerini içerir ve bu bileşenden telemetri verileri toplamaya yardımcı olur. SAP Çözümleri kaynağı (SAP izleme kaynağı olarak da bilinir) için bir Azure Izleyici, aynı sağlayıcı türünün veya birden çok sağlayıcı türündeki birden çok sağlayıcı ile yapılandırılabilir.
+SAP Çözümleri için Azure Izleyici bağlamında, *sağlayıcı türü* belirli bir *sağlayıcıyı* ifade eder. Örneğin, SAP yatay içindeki belirli bir bileşen için SAP HANA veritabanı gibi yapılandırılmış *SAP HANA*. Sağlayıcı, ilgili bileşene ait bağlantı bilgilerini içerir ve bu bileşenden telemetri verileri toplamaya yardımcı olur. SAP Çözümleri kaynağı (SAP izleme kaynağı olarak da bilinir) için bir Azure Izleyici, aynı sağlayıcı türünün veya birden çok sağlayıcı türündeki birden çok sağlayıcı ile yapılandırılabilir.
    
 Müşteriler, SAP yatay içindeki ilgili bileşenden veri toplamayı etkinleştirmek için farklı sağlayıcı türlerini yapılandırmayı seçebilirler. Örneğin, müşteriler SAP HANA sağlayıcı türü için bir sağlayıcıyı, yüksek kullanılabilirlik kümesi sağlayıcısı türü için başka bir sağlayıcıyı yapılandırabilir ve bu şekilde devam edebilir.  
 
@@ -53,13 +53,24 @@ Genel önizlemede, müşteriler yüksek kullanılabilirlik kümesi sağlayıcıs
 
 ![SAP çözüm sağlayıcıları için Azure Izleyici-yüksek kullanılabilirlik kümesi](./media/azure-monitor-sap/azure-monitor-providers-pacemaker-cluster.png)
 
-Yüksek kullanılabilirlik kümesi sağlayıcısını yapılandırmak için, söz konusu iki temel adım vardır: 
-1. Pacemaker kümesi içindeki *her* bir düğüme [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) yüklemesi 
-    - Müşteriler, yüksek kullanılabilirlik kümesi dağıtmak için Azure Otomasyonu betikleri kullanabilir. Betikler her bir küme düğümüne [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) yükler.  
-    - veya müşteriler el ile yükleme gerçekleştirebilir ve [Bu sayfadaki](https://github.com/ClusterLabs/ha_cluster_exporter) adımları takip edebilir 
-2. Pacemaker kümesi içindeki *her* düğümde yüksek kullanılabilirliğe sahip küme sağlayıcısını yapılandırma  
-  Yüksek kullanılabilirlik kümesi sağlayıcısını yapılandırmak için, Prometheus URL 'SI, küme adı, ana bilgisayar adı ve sistem KIMLIĞI gereklidir.   
-  Müşterilerin her küme düğümü için bir sağlayıcıyı yapılandırması önerilir.   
+Yüksek kullanılabilirlik kümesi sağlayıcısını yapılandırmak için, iki birincil adım vardır:
+
+1. Paceoluşturucu kümesi içindeki *her* bir düğüme [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) yükler.
+
+   Ha_cluster_exporter yüklemek için iki seçeneğiniz vardır:
+   
+   - Yüksek kullanılabilirlik kümesi dağıtmak için Azure Otomasyonu betikleri kullanın. Betikler her bir küme düğümüne [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) yükler.  
+   - [El ile yükleme](https://github.com/ClusterLabs/ha_cluster_exporter#manual-clone--build)yapın. 
+
+2. Paceoluşturucu kümesi içindeki *her* düğüm için yüksek kullanılabilirliğe sahip bir küme sağlayıcısı yapılandırın.
+
+   Yüksek kullanılabilirlik kümesi sağlayıcısını yapılandırmak için aşağıdaki bilgiler gereklidir:
+   
+   - **Ad**. Bu sağlayıcının adı. Bu Azure Monitor for SAP Solutions örneği için benzersiz olmalıdır.
+   - **Prometheus uç noktası**. Genellikle http \: // \<servername or ip address\> : 9664/ölçümler.
+   - **SID**. SAP sistemleri için SAP SID 'sini kullanın. Diğer sistemler (örneğin, NFS kümeleri) için, küme için üç karakterli bir ad kullanın. SID, izlenen diğer kümelerden farklı olmalıdır.   
+   - **Küme adı**. Küme oluşturulurken kullanılan küme adı. Küme adı küme özelliğinde bulunabilir `cluster-name` .
+   - **Ana bilgisayar adı**. VM 'nin Linux ana bilgisayar adı.  
 
 ## <a name="provider-type-microsoft-sql-server"></a>Sağlayıcı türü Microsoft SQL Server
 

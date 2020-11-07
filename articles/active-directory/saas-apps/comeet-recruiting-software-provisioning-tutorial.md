@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 37a446d721b7353c647d7d7e26de79e7038d1a3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 288d1e6cec8ddcf7d4afe5a35f28a022c2a7be10
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91300012"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357088"
 ---
 # <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için birlikte bulunan Işe alma yazılımlarını yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, Kullanıcı ve/veya grupların Işe alma 
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -41,11 +41,11 @@ Azure AD ile otomatik Kullanıcı sağlama için birlikte bulunan Işe alma yaz�
 
 **Azure AD uygulama galerisinden ortak bir Işe alma yazılımı eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -53,7 +53,7 @@ Azure AD ile otomatik Kullanıcı sağlama için birlikte bulunan Işe alma yaz�
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **birlikte bulunan Işe alma yazılımını**girin, sonuçlar panelinde **ortak işe alma yazılımını** seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna, **birlikte bulunan Işe alma yazılımını** girin, sonuçlar panelinde **ortak işe alma yazılımını** seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
     ![Sonuç listesinde işbirliği yazılımlarını birlikte karşılayın](common/search-new-app.png)
 
@@ -80,11 +80,11 @@ Bu bölümde, Azure AD sağlama hizmetini kullanarak Kullanıcı ve/veya grup at
 
 ### <a name="to-configure-automatic-user-provisioning-for-comeet-recruiting-software-in-azure-ad"></a>Azure AD 'de birlikte bulunan Işe alma yazılımının otomatik Kullanıcı sağlamasını yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Işbirliği yazılımlarını birlikte karşılayın**' i seçin.
+2. Uygulamalar listesinde, **Işbirliği yazılımlarını birlikte karşılayın** ' i seçin.
 
     ![Uygulamalar listesindeki ortak Işe alma yazılımı bağlantısı](common/all-applications.png)
 
@@ -92,13 +92,13 @@ Bu bölümde, Azure AD sağlama hizmetini kullanarak Kullanıcı ve/veya grup at
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
 5. **Yönetici kimlik bilgileri** bölümünde, adım 6 ' da açıklandığı şekilde, **kiracı URL 'Sini** ve cokarşılayan Işe alma yazılımınızın hesabının **gizli belirtecini** girin.
 
-6. [Işbirliği yazılım yönetim konsolu 'nu birlikte karşılayın](https://app.comeet.co/) **> ayarları > kimlik doğrulama > Microsoft Azure**ve **Şirket değeri Için gızlı belirteç** ' nı Azure AD 'deki **gizli belirteç** alanına kopyalayın.
+6. [Işbirliği yazılım yönetim konsolu 'nu birlikte karşılayın](https://app.comeet.co/) **> ayarları > kimlik doğrulama > Microsoft Azure** ve **Şirket değeri Için gızlı belirteç** ' nı Azure AD 'deki **gizli belirteç** alanına kopyalayın.
 
     ![Cokarşılar Işe alma yazılımı sağlama](./media/comeet-recruiting-software-provisioning-tutorial/secret-token-1.png)
 
@@ -106,13 +106,13 @@ Bu bölümde, Azure AD sağlama hizmetini kullanarak Kullanıcı ve/veya grup at
 
     ![Belirteç](common/provisioning-testconnection-token.png)
 
-8. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+8. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-9. **Kaydet**’e tıklayın.
+9. **Kaydet** ’e tıklayın.
 
-10. **Eşlemeler** bölümünde, **Kullanıcı Azure Active Directory Kullanıcıları birlikte karşılamaları için Synchronize**' ı seçin.
+10. **Eşlemeler** bölümünde, **Kullanıcı Azure Active Directory Kullanıcıları birlikte karşılamaları için Synchronize** ' ı seçin.
 
     ![Cokarşılar Işe alma yazılımı Kullanıcı eşlemeleri](media/comeet-recruiting-software-provisioning-tutorial/user-mappings.png)
 
@@ -130,7 +130,7 @@ Bu bölümde, Azure AD sağlama hizmetini kullanarak Kullanıcı ve/veya grup at
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

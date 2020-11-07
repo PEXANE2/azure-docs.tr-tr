@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/23/2020
 ms.author: Zhchia
-ms.openlocfilehash: 19e4a6b15f32ea9854801bcf6024577a1697c563
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e7f3817a6db288e93b5e0dc99c7b6c9b7bd2e44b
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455672"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94355779"
 ---
 # <a name="tutorial-configure-code42-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Code42 yapılandırma
 
@@ -35,7 +35,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Code42
 > * Code42 'de grupları ve grup üyeliklerini sağlama
 > * Code42 ['de çoklu oturum açma](./code42-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -55,9 +55,9 @@ Bu bölüm, Code42's konsolunun kimlik yönetimi bölümünde Azure AD 'yi bir s
 
 ### <a name="to-create-a-provisioning-provider-in-code42s-console"></a>Code42's konsolunda bir sağlama sağlayıcısı oluşturmak için:
 
-1. Code42 konsolunda oturum açın. Gezinti menüsünü genişletmek için **Yönetim** ' i seçin. **Ayarlar** ' ı ve **kimlik yönetimi**' ni seçin.
-2. **Sağlama** sekmesini seçin. Ardından **sağlama sağlayıcısı ekle** menüsünü genişletin ve **SCIM sağlayıcısı ekle**' yi seçin.
-3. **Görünen ad** alanında, sağlama sağlayıcısı için benzersiz bir ad girin. **Kimlik doğrulama kimlik bilgisi türünü** **OAuth belirteci**olarak ayarlayın. Kimlik bilgilerini oluşturmak için **İleri ' yi** seçin.
+1. Code42 konsolunda oturum açın. Gezinti menüsünü genişletmek için **Yönetim** ' i seçin. **Ayarlar** ' ı ve **kimlik yönetimi** ' ni seçin.
+2. **Sağlama** sekmesini seçin. Ardından **sağlama sağlayıcısı ekle** menüsünü genişletin ve **SCIM sağlayıcısı ekle** ' yi seçin.
+3. **Görünen ad** alanında, sağlama sağlayıcısı için benzersiz bir ad girin. **Kimlik doğrulama kimlik bilgisi türünü** **OAuth belirteci** olarak ayarlayın. Kimlik bilgilerini oluşturmak için **İleri ' yi** seçin.
 
 > [!NOTE]
 >* Sonraki adımlarda gereken **temel URL** ve **belirteç** istenene kadar bu pencereyi açık tutun.
@@ -71,7 +71,7 @@ Code42 ' a sağlamayı yönetmeye başlamak için Azure AD Uygulama Galerisi 'nd
 
 Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun özniteliklerine göre hazırlanacak kişilerin kapsamını belirlemenizi sağlar. Uygulamanız için hazırlanacak kişilerin kapsamını atamaya göre belirlemeyi seçerseniz kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Hazırlanacak kişilerin kapsamını yalnızca kullanıcı veya grup özniteliklerine göre belirlemeyi seçerseniz [burada](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) anlatılan kapsam belirleme filtresini kullanabilirsiniz.
 
-* Kullanıcıları ve grupları Code42 'e atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz.
+* Kullanıcıları ve grupları Code42 'e atarken **varsayılan erişim** dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz.
 
 * Başlangıçta kapsamı sınırlı tutun. Herkesi hazırlamadan önce birkaç kullanıcı ve grupla test yapın. Hazırlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında uygulamaya bir veya iki kullanıcı ya da grup atayarak bu adımı kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında [öznitelik tabanlı kapsam filtresi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) belirtebilirsiniz.
 
@@ -82,11 +82,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-code42-in-azure-ad"></a>Azure AD 'de Code42 için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Code42**' yi seçin.
+2. Uygulamalar listesinde **Code42** ' yi seçin.
 
     ![Uygulamalar listesindeki Code42 bağlantısı](common/all-applications.png)
 
@@ -94,7 +94,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Hazırlama sekmesi](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Sekme otomatik sağlama](common/provisioning-automatic.png)
 
@@ -106,9 +106,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’i seçin.
+7. **Kaydet** ’i seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Code42 olarak eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Code42 olarak eşitler** ' ı seçin.
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'den Code42 'e eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için Code42 içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](../app-provisioning/customize-application-attributes.md)değiştirmeyi seçerseniz, Code42 API 'sinin kullanıcıları bu özniteliğe göre filtrelemeyi desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -129,7 +129,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
    |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Bölüm|Dize|
    |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Manager|Başvuru|
 
-10. **Eşlemeler** bölümünde **Azure Active Directory grupları Code42 olarak eşitler**' ı seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory grupları Code42 olarak eşitler** ' ı seçin.
 
 11. **Öznitelik eşleme** bölümünde Azure AD 'den Code42 'e eşitlenen grup özniteliklerini gözden geçirin. **Eşlenen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için Code42 içindeki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -149,7 +149,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

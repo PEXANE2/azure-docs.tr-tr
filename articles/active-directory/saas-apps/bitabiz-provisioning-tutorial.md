@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: f87a2347890f8d17e3901c6d8fc168c1d96c7661
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d17d4dd88e29440304989b8c37eaa81125d1812
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849359"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357564"
 ---
 # <a name="tutorial-configure-bitabiz-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Bıtabiz yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları devre 
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -52,15 +52,15 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 Azure AD ile otomatik Kullanıcı sağlama için BitaBIZ 'ı yapılandırmadan önce, Bıtabiz üzerinde SCıM sağlamasını etkinleştirmeniz gerekir.
 
-1. [Bitabiz Yönetici konsolunuza](https://www.bitabiz.com/login?lang=en)oturum açın. **Kurulum Yöneticisi**' ne tıklayın.
+1. [Bitabiz Yönetici konsolunuza](https://www.bitabiz.com/login?lang=en)oturum açın. **Kurulum Yöneticisi** ' ne tıklayın.
 
     :::image type="content" source="media/bitabiz-provisioning-tutorial/setup-admin.png" alt-text="Kurulum Yöneticisi vurgulanmış şekilde, Bıtabiz yönetim konsolunun ekran görüntüsü." border="false":::
 
-2.  **Tümleştirme**' e gidin.
+2.  **Tümleştirme** ' e gidin.
 
-    :::image type="content" source="media/bitabiz-provisioning-tutorial/integration.png" alt-text="Kurulum Yöneticisi vurgulanmış şekilde, Bıtabiz yönetim konsolunun ekran görüntüsü." border="false":::
+    :::image type="content" source="media/bitabiz-provisioning-tutorial/integration.png" alt-text="Tümleştirme vurgulanmış şekilde, Bıtabiz yönetim konsolunun ekran görüntüsü." border="false":::
 
-2.  **Microsoft Azure AD sağlama**bölümüne gidin.  Otomatik Kullanıcı hazırlama ' da **etkin** ' i seçin. **SCIM sağlama uç noktası URL 'si** ve **taşıyıcı belirtecinin**değerlerini kopyalayın. Bu değerler, Azure portal Bıtabiz uygulamanızın sağlama sekmesinde kiracı URL 'SI ve gizli belirteç alanlarına girilir.
+2.  **Microsoft Azure AD sağlama** bölümüne gidin.  Otomatik Kullanıcı hazırlama ' da **etkin** ' i seçin. **SCIM sağlama uç noktası URL 'si** ve **taşıyıcı belirtecinin** değerlerini kopyalayın. Bu değerler, Azure portal Bıtabiz uygulamanızın sağlama sekmesinde kiracı URL 'SI ve gizli belirteç alanlarına girilir.
 
     ![Bıtabiz ekleme SCıM](media/bitabiz-provisioning-tutorial/authentication.png)
 
@@ -71,11 +71,11 @@ Azure AD ile otomatik Kullanıcı sağlama için BitaBIZ 'yi yapılandırmak iç
 
 **Azure AD Uygulama Galerisi 'nden bir Kaynakça eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -83,7 +83,7 @@ Azure AD ile otomatik Kullanıcı sağlama için BitaBIZ 'yi yapılandırmak iç
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **bitabiz**yazın, sonuçlar panelinde **bitabiz** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **bitabiz** yazın, sonuçlar panelinde **bitabiz** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
     ![Sonuçlar listesinde BitaBIZ](common/search-new-app.png)
 
@@ -96,11 +96,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
 ### <a name="to-configure-automatic-user-provisioning-for-bitabiz-in-azure-ad"></a>Azure AD 'de Bıtabiz için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Bitabiz**' ı seçin.
+2. Uygulamalar listesinde, **Bitabiz** ' ı seçin.
 
     ![Uygulamalar listesindeki BitaBIZ bağlantısı](common/all-applications.png)
 
@@ -108,7 +108,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -116,13 +116,13 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’e tıklayın.
+7. **Kaydet** ’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Bitabiz olarak eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Bitabiz olarak eşitler** ' ı seçin.
 
     ![Bıtabiz Kullanıcı eşlemeleri](media/bitabiz-provisioning-tutorial/usermapping.png)
 
@@ -141,7 +141,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+13. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 
@@ -151,7 +151,7 @@ Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi i�
 
 ## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
 
-* Bıtabiz **Kullanıcı adı**, **e-posta**, **ad** ve **Soyadı** ' nı zorunlu öznitelikler olarak gerektirir 
+* Bıtabiz **Kullanıcı adı** , **e-posta** , **ad** ve **Soyadı** ' nı zorunlu öznitelikler olarak gerektirir 
 * Bıtabiz Şu anda sabit silmeleri desteklemez.
 
 ## <a name="additional-resources"></a>Ek kaynaklar

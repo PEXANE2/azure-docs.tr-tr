@@ -4,12 +4,12 @@ description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtla
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: a1ca50e1e1374b5e819c9355be1a48e2b7c3e536
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 9f0eb1ec7c979e6f35c21f49cad9ab9975a221fc
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349095"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357302"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
@@ -74,7 +74,7 @@ Bant genişliği ve gecikme süresi gereksinimleri nedeniyle Hayır.
 Azure 'da, Azure VMware çözümünün Internet 'e sunulmasını engellemek için bağlantı kutusu 'na bağlanmanız önerilir. Azure IaaS nesneleri olmadığından Azure VMware Çözüm VM 'lerine bağlanmak için Azure savunma 'yi kullanamazsınız.
 
 #### <a name="can-azure-load-balancer-internal-be-used-for-azure-vmware-solution-vms"></a>Azure VMware Çözüm VM 'Leri için Azure Load Balancer dahili olarak kullanılabilir mi?
-Hayır. Azure Load Balancer iç yalnızca Azure IaaS VM 'lerini destekler. Azure Load Balancer, IP tabanlı arka uç havuzlarını desteklemez; yalnızca Azure VMware Çözüm VM 'lerinin Azure nesneleri olmayan Azure VM 'Leri veya sanal makine ölçek kümesi (VMSS) nesneleri.
+Hayır. Azure Load Balancer iç yalnızca Azure IaaS VM 'lerini destekler. Azure Load Balancer, IP tabanlı arka uç havuzlarını desteklemez; Azure VMware Çözüm VM 'lerinin Azure nesneleri olmayan yalnızca Azure VM 'Leri veya sanal makine ölçek kümesi nesneleri.
 
 #### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>Azure VMware çözümüne bağlanmak için mevcut bir ExpressRoute ağ geçidi kullanılabilir mi?
 Evet, sanal ağ başına dört ExpressRoute bağlantı hattı sınırını aşmadığı sürece Azure VMware çözümüne bağlanmak için mevcut bir ExpressRoute ağ geçidini kullanabilirsiniz.  Bununla birlikte, ExpressRoute aracılığıyla şirket içi Azure VMware çözümüne erişmek için ExpressRoute Global Reach sahip olmanız gerekir. Bu, ExpressRoute ağ geçidi, bağlı olan devreler arasında geçişli yönlendirme sağlamamalıdır.
@@ -280,6 +280,17 @@ Azure VMware Çözüm kaynağını oluşturmadan önce, düğümlerinizi ayırma
    `"
 
    For additional ways to register the resource provider, see [Azure resource providers and types](../azure-resource-manager/management/resource-providers-and-types.md).
+
+
+## Customer communication
+
+#### How can I receive an alert when Azure sends service health notifications to my Azure subscription?
+
+Service issues, planned maintenance, health advisories, security advisories notifications are published through **Service Health** in the Azure portal.  You can take timely actions when you set up activity log alerts for these notifications. For more information, see [Create service health alerts using the Azure portal](../service-health/alerts-activity-log-service-notifications-portal.md#create-service-health-alert-using-azure-portal).
+
+:::image type="content" source="media/service-health.png" alt-text="Screenshot of Service Health notifications":::
+
+
 
 <!-- LINKS - external -->
 [kb2106952]: https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=21069522

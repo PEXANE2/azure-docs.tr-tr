@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5ea7211ea895c5f6db3e84e382632737468898fb
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 25767a7ddb83acf3ad10698f9f2ff8949a0ad55f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319104"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357207"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için 8x8 yapılandırma
 
@@ -29,7 +29,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem 8x8 Co
 > * Kullanıcı özniteliklerinin Azure AD ve 8x8 arasında eşitlenmiş kalmasını sağlama
 > * 8x8 [' e çoklu oturum açma](./8x8virtualoffice-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -50,7 +50,7 @@ Bu bölüm, Azure AD ile sağlamayı desteklemek için 8x8 ' i yapılandırma ad
 
 ### <a name="to-configure-a-user-provisioning-access-token-in-8x8-configuration-manager"></a>8x8 ' de bir Kullanıcı sağlama erişim belirteci yapılandırmak için Configuration Manager:
 
-1. [Configuration Manager](https://vo-cm.8x8.com)oturum açın. **Kimlik yönetimi**' ni seçin.
+1. [Configuration Manager](https://vo-cm.8x8.com)oturum açın. **Kimlik yönetimi** ' ni seçin.
 
    ![Kimlik Yönetimi](./media/8x8-provisioning-tutorial/8x8-identity-management.png)
 
@@ -72,7 +72,7 @@ Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun öz
 
 Hazırlanacak kişilerin kapsamını yalnızca kullanıcı veya grup özniteliklerine göre belirlemeyi seçerseniz [burada](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) anlatılan kapsam belirleme filtresini kullanabilirsiniz. 
 
-* 8x8 ' e Kullanıcı ve grup atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
+* 8x8 ' e Kullanıcı ve grup atarken **varsayılan erişim** dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
 
 * Başlangıçta kapsamı sınırlı tutun. Herkesi hazırlamadan önce birkaç kullanıcı ve grupla test yapın. Hazırlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında uygulamaya bir veya iki kullanıcı ya da grup atayarak bu adımı kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında [öznitelik tabanlı kapsam filtresi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) belirtebilirsiniz. 
 
@@ -82,27 +82,27 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya Gru
 
 ### <a name="to-configure-automatic-user-provisioning-for-8x8-in-azure-ad"></a>Azure AD 'de 8x8 için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](./media/8x8-provisioning-tutorial/enterprise-applications.png)
 
     ![Tüm uygulamalar dikey penceresi](./media/8x8-provisioning-tutorial/all-applications.png)
 
-2. Uygulamalar listesinde **8x8**' i seçin.
+2. Uygulamalar listesinde **8x8** ' i seçin.
 
     ![Uygulamalar listesindeki 8x8 bağlantısı](common/all-applications.png)
 
-3. **Sağlama** sekmesini seçin. **Başlarken**' e tıklayın.
+3. **Sağlama** sekmesini seçin. **Başlarken** ' e tıklayın.
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
    ![Kullanmaya başlama dikey penceresi](./media/8x8-provisioning-tutorial/get-started.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünde Configuration Manager **8X8 URL** 'sini **kiracı URL**'sine kopyalayın. Configuration Manager olan **8x8 API belirtecini** **gizli belirtece**kopyalayın. Azure AD 'nin 8x8 ' e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, 8x8 hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünde Configuration Manager **8X8 URL** 'sini **kiracı URL** 'sine kopyalayın. Configuration Manager olan **8x8 API belirtecini** **gizli belirtece** kopyalayın. Azure AD 'nin 8x8 ' e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, 8x8 hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Ekran görüntüsü, kiracı U R L ve gizli belirteç girebileceğiniz yönetici kimlik bilgileri iletişim kutusunu gösterir.](./media/8x8-provisioning-tutorial/provisioning.png)
 
@@ -110,9 +110,9 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya Gru
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’i seçin.
+7. **Kaydet** ’i seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları sağla**' yı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları sağla** ' yı seçin.
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'den 8x8 ' e eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri için 8x8 ' deki Kullanıcı hesaplarını eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](../app-provisioning/customize-application-attributes.md)değiştirmeyi seçerseniz, 8X8 API 'sinin kullanıcıları bu özniteliğe göre filtrelemeyi desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -142,7 +142,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya Gru
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+13. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

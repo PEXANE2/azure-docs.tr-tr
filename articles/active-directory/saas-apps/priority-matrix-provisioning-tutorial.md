@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/08/2019
 ms.author: Zhchia
-ms.openlocfilehash: 43f5b96c7029da6b49bc9df40d92fbd250145715
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e79f21300325c6b451dd564bf2c69830f003f55c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326040"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357870"
 ---
 # <a name="tutorial-configure-priority-matrix-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için öncelik matrisini yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları öncel
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -59,7 +59,7 @@ Azure AD ile otomatik Kullanıcı sağlama için öncelik matrisini yapılandır
 
     ![Öncelik matrisi SCıM Ekle](media/priority-matrix-provisioning-tutorial/oauthlogin.png)
 
-4. **Yenı belirteç al** düğmesine tıklayın. **Belirteç dizesini**kopyalayın. Bu değer, Azure portal öncelik matrisi uygulamanızın sağlama sekmesindeki **gizli belirteç** alanına girilir. 
+4. **Yenı belirteç al** düğmesine tıklayın. **Belirteç dizesini** kopyalayın. Bu değer, Azure portal öncelik matrisi uygulamanızın sağlama sekmesindeki **gizli belirteç** alanına girilir. 
 
     ![Öncelik matrisi belirteç oluştur](media/priority-matrix-provisioning-tutorial/token.png)
 
@@ -67,11 +67,11 @@ Azure AD ile otomatik Kullanıcı sağlama için öncelik matrisini yapılandır
 
 Azure AD ile otomatik Kullanıcı sağlamaya yönelik öncelik matrisini yapılandırmak için Azure AD uygulama galerisinden yönetilen SaaS uygulamaları listenize öncelik matrisi eklemeniz gerekir.
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -79,7 +79,7 @@ Azure AD ile otomatik Kullanıcı sağlamaya yönelik öncelik matrisini yapıla
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Öncelik matrisi**girin, sonuçlar panelinde **Öncelik matrisi** ' ni seçin. 
+4. Arama kutusuna **Öncelik matrisi** girin, sonuçlar panelinde **Öncelik matrisi** ' ni seçin. 
 
     ![Sonuçlar listesindeki öncelik matrisi](common/search-new-app.png)
 
@@ -104,11 +104,11 @@ Bu bölüm, Azure AD sağlama hizmetini kullanarak Kullanıcı ve/veya grup atam
 
 ### <a name="to-configure-automatic-user-provisioning-for-priority-matrix-in-azure-ad"></a>Azure AD 'de öncelik matrisi için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Öncelik matrisi**' nı seçin.
+2. Uygulamalar listesinde, **Öncelik matrisi** ' nı seçin.
 
     ![Uygulamalar listesindeki öncelik matrisi bağlantısı](common/all-applications.png)
 
@@ -116,21 +116,21 @@ Bu bölüm, Azure AD sağlama hizmetini kullanarak Kullanıcı ve/veya grup atam
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünün altında, `https://sync.appfluence.com/scim/v2/` **kiracı URL 'sini**girin. Daha önce aldığınız ve daha önce **gizli bir belirteçte**öncelik matrisinden kaydettiğiniz değeri girin. Azure AD 'nin öncelik matrisine bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, öncelik matrisi hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünün altında, `https://sync.appfluence.com/scim/v2/` **kiracı URL 'sini** girin. Daha önce aldığınız ve daha önce **gizli bir belirteçte** öncelik matrisinden kaydettiğiniz değeri girin. Azure AD 'nin öncelik matrisine bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, öncelik matrisi hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’e tıklayın.
+7. **Kaydet** ’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları öncelik matrisine eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları öncelik matrisine eşitler** ' ı seçin.
 
     ![Öncelikli matris Kullanıcı eşlemeleri](media/priority-matrix-provisioning-tutorial/usermappings.png)
 
@@ -148,7 +148,7 @@ Bu bölüm, Azure AD sağlama hizmetini kullanarak Kullanıcı ve/veya grup atam
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+13. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

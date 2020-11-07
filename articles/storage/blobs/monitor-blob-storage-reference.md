@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: b51b219daec01d0bce3bbfb71c29e9374363665d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8caa39bea2d0d835a94bc95a747f1f870bae3b12
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91711668"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357547"
 ---
 # <a name="azure-blob-storage-monitoring-data-reference"></a>Azure Blob depolama izleme verileri başvurusu
 
@@ -26,7 +26,7 @@ Aşağıdaki tablolarda, Azure depolama için toplanan platform ölçümleri lis
 
 ### <a name="capacity-metrics"></a>Kapasite ölçümleri
 
-Kapasite ölçümleri değerleri her saat Azure Izleyici 'ye gönderilir. Değerler günlük olarak yenilenir. Zaman dilimi, ölçüm değerlerinin sunulduğu zaman aralığını tanımlar. Tüm kapasite ölçümleri için desteklenen zaman dilimi bir saattir (PT1H).
+Kapasite ölçümleri değerleri günlük olarak (24 saate kadar) yenilenir. Zaman dilimi, ölçüm değerlerinin sunulduğu zaman aralığını tanımlar. Tüm kapasite ölçümleri için desteklenen zaman dilimi bir saattir (PT1H).
 
 Azure depolama, Azure Izleyici 'de aşağıdaki kapasite ölçümlerini sağlar.
 
@@ -40,8 +40,8 @@ Bu tabloda [BLOB depolama ölçümleri](https://docs.microsoft.com/azure/azure-m
 
 | Ölçüm | Açıklama |
 | ------------------- | ----------------- |
-| BlobCapacity | Depolama hesabında kullanılan BLOB depolama alanı toplamı. <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 <br/> Boyutlar: **Blobtype**ve **blobtier** ([tanım](#metrics-dimensions)) |
-| BlobCount    | Depolama hesabında depolanan BLOB nesnelerinin sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 <br/> Boyutlar: **Blobtype**ve **blobtier** ([tanım](#metrics-dimensions)) |
+| BlobCapacity | Depolama hesabında kullanılan BLOB depolama alanı toplamı. <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 <br/> Boyutlar: **Blobtype** ve **blobtier** ( [tanım](#metrics-dimensions)) |
+| BlobCount    | Depolama hesabında depolanan BLOB nesnelerinin sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 <br/> Boyutlar: **Blobtype** ve **blobtier** ( [tanım](#metrics-dimensions)) |
 | BlobProvisionedSize | Depolama hesabında sağlanan depolama miktarı. Bu ölçüm yalnızca Premium Depolama hesapları için geçerlidir. <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama |
 | ContainerCount    | Depolama hesabındaki kapsayıcıların sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
 | Dizin kapasitesi     | ADLS 2. hiyerarşik dizin tarafından kullanılan depolama miktarı <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
@@ -64,12 +64,12 @@ Azure depolama, Azure Izleyici 'de ölçümler için aşağıdaki boyutları des
 
 ### <a name="dimensions-specific-to-blob-storage"></a>Blob depolamaya özgü Boyutlar
 
-| Boyut adı | Açıklama |
+| Boyut adı | Description |
 | ------------------- | ----------------- |
-| **BlobType** | Yalnızca blob ölçümleri için blob türü. Desteklenen değerler **Blockblob**, **pageblob**ve **Azure Data Lake Storage**. Ekleme Blobları **Blockblob**'a dahildir. |
-| **BlobTier** | Azure depolama, blob nesne verilerini en düşük maliyetli biçimde depolamanıza olanak sağlayan farklı erişim katmanları sunar. Bkz. [Azure Storage blob katmanında](../blobs/storage-blob-storage-tiers.md)daha fazla bilgi. Desteklenen değerler şunlardır: <br/> <li>**Sık**erişimli: etkin katman</li> <li>**Cool**: Cool Tier</li> <li>**Arşiv**: Arşiv katmanı</li> <li>**Premium**: Blok Blobu için Premium katman</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: Premium Sayfa Blobu için katman türleri</li> <li>**Standart**: standart sayfa blobu için katman türü</li> <li>**Katmanlanmadan**: genel amaçlı v1 depolama hesabı için katman türü</li> |
+| **BlobType** | Yalnızca blob ölçümleri için blob türü. Desteklenen değerler **Blockblob** , **pageblob** ve **Azure Data Lake Storage**. Ekleme Blobları **Blockblob** 'a dahildir. |
+| **BlobTier** | Azure depolama, blob nesne verilerini en düşük maliyetli biçimde depolamanıza olanak sağlayan farklı erişim katmanları sunar. Bkz. [Azure Storage blob katmanında](../blobs/storage-blob-storage-tiers.md)daha fazla bilgi. Desteklenen değerler şunlardır: <br/> <li>**Sık** erişimli: etkin katman</li> <li>**Cool** : Cool Tier</li> <li>**Arşiv** : Arşiv katmanı</li> <li>**Premium** : Blok Blobu için Premium katman</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60** : Premium Sayfa Blobu için katman türleri</li> <li>**Standart** : standart sayfa blobu için katman türü</li> <li>**Katmanlanmadan** : genel amaçlı v1 depolama hesabı için katman türü</li> |
 
-Boyutları destekleyen ölçümler için, karşılık gelen ölçüm değerlerini görmek için boyut değerini belirtmeniz gerekir. Örneğin, başarılı yanıtlar için  **işlem** değerine bakarsanız, **responseType** boyutunu **başarılı**olarak filtrelemeniz gerekir. Blok Blobu için **Blobcount** değerine bakarsanız, **Blobtype** boyutunu **blockblob**ile filtrelemeniz gerekir.
+Boyutları destekleyen ölçümler için, karşılık gelen ölçüm değerlerini görmek için boyut değerini belirtmeniz gerekir. Örneğin, başarılı yanıtlar için  **işlem** değerine bakarsanız, **responseType** boyutunu **başarılı** olarak filtrelemeniz gerekir. Blok Blobu için **Blobcount** değerine bakarsanız, **Blobtype** boyutunu **blockblob** ile filtrelemeniz gerekir.
 
 ## <a name="resource-logs-preview"></a>Kaynak günlükleri (Önizleme)
 

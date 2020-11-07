@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: 8350ebc92575911991ca772229912941f2af10e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0c428997cfba8871a29d9bfe0df0a6920a1d22f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851297"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357598"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için 4me yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları 4me 'y
 >
 > Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -41,11 +41,11 @@ Azure AD ile otomatik Kullanıcı sağlaması için 4me 'yi yapılandırmadan ö
 
 **Azure AD Uygulama Galerisi 'nden 4me eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -53,7 +53,7 @@ Azure AD ile otomatik Kullanıcı sağlaması için 4me 'yi yapılandırmadan ö
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **4me**girin, sonuçlar panelinde **4me** ' yi seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **4me** girin, sonuçlar panelinde **4me** ' yi seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
     ![Sonuç listesinde 4me](common/search-new-app.png)
 
@@ -80,11 +80,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grupl
 
 ### <a name="to-configure-automatic-user-provisioning-for-4me-in-azure-ad"></a>Azure AD 'de 4me için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **4me**' yi seçin.
+2. Uygulamalar listesinde **4me** ' yi seçin.
 
     ![Uygulamalar listesindeki 4me bağlantısı](common/all-applications.png)
 
@@ -92,13 +92,13 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grupl
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
 5. 4me hesabınızın **kiracı URL 'sini** ve **gizli belirtecini** almak için adım 6 ' da anlatıldığı şekilde izlenecek yolu izleyin.
 
-6. 4me Yönetici konsolunuza oturum açın. **Ayarlar**' a gidin.
+6. 4me Yönetici konsolunuza oturum açın. **Ayarlar** ' a gidin.
 
     ![4me ayarları](media/4me-provisioning-tutorial/4me01.png)
 
@@ -114,11 +114,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grupl
 
     ![Belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-8. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+8. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-9. **Kaydet**’e tıklayın.
+9. **Kaydet** ’e tıklayın.
 
 10. Eşlemeler bölümünde, **kullanıcıları Azure Active Directory** **eşleme** ' yi seçin.
 
@@ -126,11 +126,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grupl
     
 11. **Öznitelik eşleme** bölümünde Azure AD 'den 4me 'ye eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri için 4me 'deki Kullanıcı hesaplarını eşleştirmek için kullanılır. Lütfen 4me 'nin seçtiğiniz eşleşen öznitelikte [filtrelemeyi desteklediğinden](https://developer.4me.com/v1/scim/users/) emin olun. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-attributes.png" alt-text="Eşlemeler sayfasının ekran görüntüsü. Ad ' ın altında, Azure Active Directory Kullanıcılar ' ı on onme ile eşitler." border="false":::
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-attributes.png" alt-text="Öznitelik eşlemeleri sayfasının ekran görüntüsü. Bir tablo Azure Active Directory öznitelikleri, karşılık gelen on onme özniteliklerini ve eşleşen durumu listeler." border="false":::
     
-12. **Eşlemeler** bölümünde **Azure Active Directory gruplarını 4Me olarak eşitler**' ı seçin.
+12. **Eşlemeler** bölümünde **Azure Active Directory gruplarını 4Me olarak eşitler** ' ı seçin.
 
-    :::image type="content" source="media/4me-provisioning-tutorial/4me-group-mapping.png" alt-text="Eşlemeler sayfasının ekran görüntüsü. Ad ' ın altında, Azure Active Directory Kullanıcılar ' ı on onme ile eşitler." border="false":::
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-group-mapping.png" alt-text="Eşlemeler sayfasının ekran görüntüsü. Ad ' ın altında, Azure Active Directory gruplarını on dört olarak Eşitlerme vurgulanır." border="false":::
     
 13. **Öznitelik eşleme** bölümünde Azure AD 'den 4me 'ye eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri için 4me 'deki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -146,7 +146,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grupl
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-17. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+17. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

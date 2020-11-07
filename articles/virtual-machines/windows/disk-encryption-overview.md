@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: ea82724ec534aa896fa012332c10e28050caf825
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 27d962a2cf1a1c453d942d320d65b3e9b9a4b959
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909395"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357802"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Windows VM 'Leri için Azure disk şifrelemesi 
 
@@ -38,6 +38,8 @@ Windows VM 'Leri [çeşitli boyutlarda](../sizes-general.md)kullanılabilir. Azu
 Azure disk şifrelemesi, Premium depolama özellikli VM 'Ler için de kullanılabilir.
 
 Azure disk şifrelemesi [2. nesil VM](../generation-2.md#generation-1-vs-generation-2-capabilities)'lerde kullanılamaz. Daha fazla özel durum için bkz. [Azure disk şifrelemesi: desteklenmeyen senaryolar](disk-encryption-windows.md#unsupported-scenarios).
+
+Azure disk şifrelemesi, geçici diskler olmadan VM görüntülerinde kullanılamaz (dv4, Dsv4, Ev4 ve Esv4).  Bkz. [Yerel geçici disk olmadan Azure VM boyutları](../azure-vms-no-temp-disk.md).
 
 ### <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 

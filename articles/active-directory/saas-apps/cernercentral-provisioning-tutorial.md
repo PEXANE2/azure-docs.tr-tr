@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: d82aca50ce57a09697d389197bf2b102bb5df457
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 1f82cab1172e7293e2a5910d35280eefb30ed49e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456345"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357462"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Cerner Central 'ı yapılandırma
 
@@ -88,11 +88,11 @@ Cerner merkezine Kullanıcı hesapları sağlamak için, Cerner 'den bir Cerner 
 
 7. Cerner Central örneğinizi seçin, sonra **sağlama** sekmesini seçin.
 
-8. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+8. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
    ![Cerner merkezi sağlama](./media/cernercentral-provisioning-tutorial/Cerner.PNG)
 
-9. **Yönetici kimlik bilgileri**altında aşağıdaki alanları girin:
+9. **Yönetici kimlik bilgileri** altında aşağıdaki alanları girin:
 
    * **Kiracı URL 'si** alanında, aşağıdaki BIÇIMDE bir URL girin ve "User-Roster-Realm-ID" öğesini adım #4 elde ETTIĞINIZ bölge kimliğiyle değiştirin.
 
@@ -100,19 +100,19 @@ Cerner merkezine Kullanıcı hesapları sağlamak için, Cerner 'den bir Cerner 
     > 
     > Üretiminden https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
-   * **Gizli belirteç** alanına, adım #3 ' de oluşturduğunuz OAuth taşıyıcı belirtecini girin ve **Bağlantıyı Sına**' yı tıklatın.
+   * **Gizli belirteç** alanına, adım #3 ' de oluşturduğunuz OAuth taşıyıcı belirtecini girin ve **Bağlantıyı Sına** ' yı tıklatın.
 
    * Portalınızın sağ tarafında bir başarı bildirimi görmeniz gerekir.
 
 1. **Bildirim e-postası** alanında sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve aşağıdaki onay kutusunu işaretleyin.
 
-1. **Kaydet**’e tıklayın.
+1. **Kaydet** ’e tıklayın.
 
 1. **Öznitelik eşlemeleri** bölümünde, Azure AD 'Den Cerner Central 'a eşitlenecek Kullanıcı ve grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Cerner merkezi 'ndeki Kullanıcı hesaplarını ve grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için Kaydet düğmesini seçin.
 
 1. Cerner Central için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin
 
-1. **Kaydet**’e tıklayın.
+1. **Kaydet** ’e tıklayın.
 
 Bu, kullanıcılar ve Gruplar bölümünde Cerner Central 'a atanan tüm Kullanıcı ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerlemeyi izlemek ve sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri Cerner merkezi uygulamanızda açıklayan etkinlik günlüklerini sağlamak için **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
 

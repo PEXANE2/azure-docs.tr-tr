@@ -5,15 +5,15 @@ services: synapse-analytics
 author: djpmsft
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 11/06/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: be098977ba51e529aaecfb5dc3b7a03444f55a7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10f5336dd4c8a02acf623b1b14226ca676006953
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91345170"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357659"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Azure SYNAPSE Analytics 'te veri tümleştirmesi ve Azure Data Factory karşılaştırması
 
@@ -27,27 +27,26 @@ Azure Data Factory bir özelliğin veya makalenin Azure SYNAPSE için geçerli o
 
 Aşağıdaki özellikler Azure Data Factory mevcuttur, ancak Azure SYNAPSE için planlanmazlar.
 
-* SSIS paketlerini kaldırma ve kaydırma özelliği.
-* Kopyalama etkinliği ve eşleme veri akışında havuz olarak parça olarak Sun.
-* Eşleme verileri, Azure tümleştirme çalışma zamanının yaşam süresi ayarını canlı olarak ayarlar.
+* **Yaşam ve KAYDıRMA SSIS paketleri:** Azure Data Factory, SSIS tümleştirme çalışma zamanını kullanarak SSIS paketlerini kaldırma ve kaydırma imkanına sahipsiniz. SSIS tümleştirme çalışma zamanı ve SSIS paketi yürütme etkinliği, SYNAPSE çalışma alanlarında kullanılamaz. 
+* **Yaşam süresi:** Yaşam süresi, bir veri akışı tamamlandıktan sonra bir *süre boyunca veri* akışlarının eşlenmesine Izin veren Azure tümleştirme çalışma zamanındaki bir ayardır. Bu özellik SYNAPSE çalışma alanlarında kullanılamaz.
 
 ## <a name="azure-synapse-features-not-supported-in-azure-data-factory"></a>Azure Data Factory 'de desteklenmeyen Azure SYNAPSE özellikleri
 
 Aşağıdaki özellikler Azure SYNAPSE 'te mevcuttur, ancak Azure Data Factory için planlanmazlar.
 
-* Eşleme veri akışlarının Spark İş izlemesi yalnızca SYNAPSE içinde kullanılabilir. SYNAPSE ' de Spark motoru kullanıcının aboneliğinde bulunur, böylece kullanıcılar ayrıntılı Spark günlüklerini görüntüleyebilir. Azure Data Factory, iş yürütmesi Azure Data Factory yönetilen bir Spark kümesinde gerçekleşir. 
+* **Eşleme veri akışlarının Spark İş izlemesi:** SYNAPSE ' de Spark motoru kullanıcının aboneliğinde bulunur, böylece kullanıcılar ayrıntılı Spark günlüklerini görüntüleyebilir. Azure Data Factory, iş yürütmesi Azure Data Factory tarafından yönetilen bir Spark kümesinde gerçekleşir ve bu bilgiler kullanılamaz. 
 
 ## <a name="azure-data-factory-features-that-behave-differently-in-synapse"></a>SYNAPSE 'de farklı davranan özellikleri Azure Data Factory
 
 Aşağıdaki özellikler farklı şekilde davranır veya Azure SYNAPSE 'de Şu anda mevcut değildir. 
 
-* Wrangling veri akışları
-* Çözüm şablonu Galerisi
-* Git tümleştirmesi ve yerel bir CI/CD çözümü
-* Azure izleyici ile tümleştirme
-* Yayımladıktan sonra kaynakları yeniden adlandırma
-* Bir Synapse çalışma alanı içinde karma tümleştirme çalışma zamanı yapılandırması. Bir kullanıcının hem yönetilen VNet IR hem de bir Azure IR olamaz.
-* SYNAPSE çalışma alanları arasında tümleştirme çalışma zamanı paylaşımı
+* **Wrangling veri akışları:** Denetimi veri akışı etkinliği şu anda yalnızca Azure Data Factory kullanılabilir.
+* **Çözüm şablonu Galerisi:** Azure Data Factory, kullanıcılar, çözüm şablonu galerisinde işlem hattı şablonlarını bulabilir. SYNAPSE çalışma alanlarında, bilgi merkezi, ek veri kümeleri ve SQL betikleriyle birlikte farklı bir şablon kümesi içerir. 
+* **Git tümleştirmesi ve yerel BIR CI/CD çözümü:** Şu anda bir Synapse çalışma alanı bir git deposuna bağlanamaz veya Azure Data Factory aynı sürekli tümleştirme ve teslim sürecini takip etmez.
+* **Azure izleyici Ile tümleştirme:** SYNAPSE çalışma alanları Azure Data Factory olduğu gibi Azure Izleyici ile tümleştirilemez.
+* **Karma tümleştirme çalışma zamanı yapılandırması:** Bir Synapse çalışma alanı içinde, bir kullanıcının hem yönetilen VNet IR hem de bir Azure IR olamaz. Bu özellik Azure Data Factory desteklenir.
+* **Tümleştirme çalışma zamanı paylaşımı:** Şirket içinde barındırılan tümleştirme çalışma zamanları SYNAPSE çalışma alanları arasında paylaştırılamaz. Bu özellik Azure Data Factory desteklenir.
+* **Veri akışları Için çapraz bölge tümleştirme çalışma zamanları:** Veri akışları, SYNAPSE çalışma alanından farklı bölgelerdeki tümleştirme çalışma zamanları üzerinde çalıştırılamaz. Bu özellik Azure Data Factory desteklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

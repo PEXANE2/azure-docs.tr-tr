@@ -5,29 +5,31 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: ffd4ab463080001dbab5b0ed9ece69c4b5f91382
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/6/2020
+ms.openlocfilehash: 2f9c4cc5bac27e4734c9aabe7895002a045d583d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81272092"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357020"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda yavaş sorgu günlükleri
 MariaDB için Azure veritabanı 'nda yavaş sorgu günlüğü kullanıcılar tarafından kullanılabilir. İşlem günlüğüne erişim desteklenmez. Yavaş sorgu günlüğü, sorun giderme için performans sorunlarını belirlemek için kullanılabilir.
 
 Yavaş sorgu günlüğü hakkında daha fazla bilgi için, [yavaş sorgu günlüğü](https://mariadb.com/kb/en/library/slow-query-log-overview/)Için MariaDB belgelerine bakın.
 
+Sunucunuzda [sorgu deposu](concepts-query-store.md) etkinleştirildiğinde "" gibi sorguları, `CALL mysql.az_procedure_collect_wait_stats (900, 30);` yavaş sorgu günlüklerinizi günlüğe kaydedilmiş olarak görebilirsiniz. Sorgu deposu özelliği sorgularınız hakkında istatistikler toplarken bu davranış beklenmektedir. 
+
 ## <a name="configure-slow-query-logging"></a>Yavaş sorgu günlüğünü yapılandırma
 Varsayılan olarak, yavaş sorgu günlüğü devre dışıdır. Etkinleştirmek için, `slow_query_log` Açık olarak ayarlayın. Bu, Azure portal veya Azure CLı kullanılarak etkinleştirilebilir. 
 
 Ayarlayabileceğiniz diğer parametreler şunlardır:
 
-- **long_query_time**: sorgu günlüğe kaydedilen sorgu long_query_time daha uzun sürer (saniye cinsinden). Varsayılan değer 10 saniyedir.
-- **log_slow_admin_statements**: varsa, slow_query_log YAZıLAN deyimlerde ALTER_TABLE ve ANALYZE_TABLE gibi yönetim deyimlerini içerir.
-- **log_queries_not_using_indexes**: dizinleri kullanmayan sorguların slow_query_log kaydedilip kaydedilmeyeceğini belirler
-- **log_throttle_queries_not_using_indexes**: Bu parametre, yavaş sorgu günlüğüne yazılabilen Dizin dışı sorguların sayısını sınırlar. Bu parametre log_queries_not_using_indexes açık olarak ayarlandığında devreye girer.
-- **log_output**: "dosya" ise, yavaş sorgu günlüğünün hem yerel sunucu depolamasına hem de Azure Izleyici tanılama günlüklerine yazılmasına izin verir. "None" seçilirse, yavaş sorgu günlüğü yalnızca Azure İzleyici Tanılama Günlüklerine yazılır. 
+- **long_query_time** : sorgu günlüğe kaydedilen sorgu long_query_time daha uzun sürer (saniye cinsinden). Varsayılan değer 10 saniyedir.
+- **log_slow_admin_statements** : varsa, slow_query_log YAZıLAN deyimlerde ALTER_TABLE ve ANALYZE_TABLE gibi yönetim deyimlerini içerir.
+- **log_queries_not_using_indexes** : dizinleri kullanmayan sorguların slow_query_log kaydedilip kaydedilmeyeceğini belirler
+- **log_throttle_queries_not_using_indexes** : Bu parametre, yavaş sorgu günlüğüne yazılabilen Dizin dışı sorguların sayısını sınırlar. Bu parametre log_queries_not_using_indexes açık olarak ayarlandığında devreye girer.
+- **log_output** : "dosya" ise, yavaş sorgu günlüğünün hem yerel sunucu depolamasına hem de Azure Izleyici tanılama günlüklerine yazılmasına izin verir. "None" seçilirse, yavaş sorgu günlüğü yalnızca Azure İzleyici Tanılama Günlüklerine yazılır. 
 
 > [!IMPORTANT]
 > Tablolarınızın dizini oluşturulmamış ise, `log_queries_not_using_indexes` `log_throttle_queries_not_using_indexes` Bu dizinlenmemiş tablolarda çalışan tüm sorgular yavaş sorgu günlüğüne yazılacak olduğundan ve parametrelerini açık olarak ayarlamak MariaDB performansını etkileyebilir.<br><br>

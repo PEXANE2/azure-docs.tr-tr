@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: 081f073fa4933d67604173d2169a7abdc3ac7c3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4f54aff78526ba52e56ed9f4cf1feddf40fa69b
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403577"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358401"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Azure Bilişsel Arama büyük veri kümelerini dizin oluşturma
 
@@ -27,7 +27,7 @@ Aşağıdaki bölümlerde, hem anında iletme API 'SI hem de Dizin oluşturucula
 
 ## <a name="use-the-push-api"></a>Push API 'sini kullanma
 
-[Belge ekle REST API](/rest/api/searchservice/addupdate-or-delete-documents) veya [Dizin yöntemi](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index)kullanarak bir dizine veri gönderdiğinizde, dizin oluşturma hızını etkileyen çeşitli önemli noktalar vardır. Bu faktörler aşağıdaki bölümde özetlenmiştir ve hizmet kapasitesini kod iyileştirmeleriyle ayarlama arasındadır.
+[Belge ekle REST API](/rest/api/searchservice/addupdate-or-delete-documents) veya [ındexdocuments yöntemi](/dotnet/api/azure.search.documents.searchclient.indexdocuments)kullanılarak bir dizine veri gönderdiğinizde, dizin oluşturma hızını etkileyen çeşitli önemli noktalar vardır. Bu faktörler aşağıdaki bölümde özetlenmiştir ve hizmet kapasitesini kod iyileştirmeleriyle ayarlama arasındadır.
 
 Anında iletme modeli Dizin oluşturmayı gösteren daha fazla bilgi ve kod örnekleri için bkz. [öğretici: Dizin oluşturma hızını iyileştirme](tutorial-optimize-indexing-push-api.md).
 
@@ -45,14 +45,14 @@ Katmanda memnun olduktan sonra bir sonraki adımınız, bölüm sayısını art�
 
 ### <a name="review-index-schema"></a>Dizin şemasını gözden geçirin
 
-Dizininizin şeması, veri dizinleme verilerinde önemli bir rol oynar. Daha fazla alan varsa ve ayarlamış olduğunuz daha fazla Özellik ( *aranabilir*, çok *yönlü tablo*veya *filtrelenebilir*gibi), artan dizin oluşturma süresine katkıda bulunur. Genel olarak, yalnızca bir arama dizininde gerçekten ihtiyacınız olan alanları oluşturmalı ve belirtmeniz gerekir.
+Dizininizin şeması, veri dizinleme verilerinde önemli bir rol oynar. Daha fazla alan varsa ve ayarlamış olduğunuz daha fazla Özellik ( *aranabilir* , çok *yönlü tablo* veya *filtrelenebilir* gibi), artan dizin oluşturma süresine katkıda bulunur. Genel olarak, yalnızca bir arama dizininde gerçekten ihtiyacınız olan alanları oluşturmalı ve belirtmeniz gerekir.
 
 > [!NOTE]
 > Belge boyutunu aşağı tutmak için, sorgulanabilir olmayan verileri bir dizine eklemekten kaçının. Görüntüler ve diğer ikili veriler doğrudan aranabilir değildir ve dizinde depolanmamalıdır. Sorgulanabilir olmayan verileri arama sonuçlarıyla bütünleştirmek için, kaynağa bir URL başvurusu depolayan aranabilir olmayan bir alan tanımlamalısınız.
 
 ### <a name="check-the-batch-size"></a>Toplu iş boyutunu denetle
 
-Daha büyük bir veri kümesini dizinlemeye yönelik en basit mekanizmalardan biri, tek bir istekte birden fazla belge veya kayıt gönderkullanmaktır. Tüm yükün 16 MB altında olduğu sürece, bir istek toplu karşıya yükleme işleminde en fazla 1000 belge işleyebilir. Bu sınırlar, .NET SDK 'da [belge ekle REST API](/rest/api/searchservice/addupdate-or-delete-documents) veya [Dizin yöntemi](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index) kullanıp kullanmayacağınızı uygular. Her iki API için de, her isteğin gövdesinde 1000 belge paketlemeyi yapmanız gerekir.
+Daha büyük bir veri kümesini dizinlemeye yönelik en basit mekanizmalardan biri, tek bir istekte birden fazla belge veya kayıt gönderkullanmaktır. Tüm yükün 16 MB altında olduğu sürece, bir istek toplu karşıya yükleme işleminde en fazla 1000 belge işleyebilir. Bu sınırlar, .NET SDK 'da [belge ekle REST API](/rest/api/searchservice/addupdate-or-delete-documents) veya [ındexdocuments metodunu](/dotnet/api/azure.search.documents.searchclient.indexdocuments) kullanıp kullanmayacağınızı uygular. Her iki API için de, her isteğin gövdesinde 1000 belge paketlemeyi yapmanız gerekir.
 
 Belge dizini oluşturmak için toplu iş kullanımı, dizin oluşturma performansını önemli ölçüde iyileştirir. Verilerinizin en iyi toplu iş boyutunu belirlemek, dizin oluşturma hızlarını iyileştirmek için önemli bir bileşendir. En iyi toplu iş boyutunu etkileyen iki birincil etken şunlardır:
 
@@ -142,7 +142,7 @@ Dizin oluşturucular için, işlem kapasitesi, arama hizmetiniz tarafından kull
 
 1. [Azure Portal](https://portal.azure.com), arama hizmeti panonuz **genel bakış** sayfasında, **fiyatlandırma katmanını** denetleyerek Paralel dizin oluşturma işleminin uyumlu olduğunu doğrulayın. Hem temel hem de Standart katmanlar birden çok çoğaltma sunar.
 
-2. Hizmetinizde arama birimi sayısı olarak paralel olarak çok sayıda Dizin Oluşturucu çalıştırabilirsiniz. **Ayarlar**  >  **ölçeği**' nde, paralel işleme için [çoğaltmaları](search-capacity-planning.md) veya bölümleri artırın: her bir dizin oluşturucu iş yükü için bir ek çoğaltma veya bölüm. Mevcut sorgu birimi için yeterli bir sayı bırakın. Dizin oluşturma için sorgu iş yüklerinin Fede iyi bir zorunluluğunu getirir değildir.
+2. Hizmetinizde arama birimi sayısı olarak paralel olarak çok sayıda Dizin Oluşturucu çalıştırabilirsiniz. **Ayarlar**  >  **ölçeği** ' nde, paralel işleme için [çoğaltmaları](search-capacity-planning.md) veya bölümleri artırın: her bir dizin oluşturucu iş yükü için bir ek çoğaltma veya bölüm. Mevcut sorgu birimi için yeterli bir sayı bırakın. Dizin oluşturma için sorgu iş yüklerinin Fede iyi bir zorunluluğunu getirir değildir.
 
 3. Azure Bilişsel Arama dizin oluşturucularının ulaşabileceği bir düzeyde verileri birden çok kapsayıcıya dağıtın. Bu, Azure SQL veritabanı 'nda birden çok tablo, Azure Blob depolamada birden çok kapsayıcı veya birden çok koleksiyon olabilir. Her tablo veya kapsayıcı için bir veri kaynağı nesnesi tanımlayın.
 

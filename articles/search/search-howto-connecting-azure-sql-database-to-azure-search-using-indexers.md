@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: b1ad4ead83c9e07966f921a5b192f2791838e6ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04e4801c26b0ac8ef91af0b028d9dc2bb9a3cd1c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530570"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358635"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Azure Bilişsel Arama Dizin oluşturucuyu kullanarak Azure SQL içeriğine bağlanma ve dizin oluşturma
 
@@ -39,10 +39,10 @@ Tek bir Dizin Oluşturucu yalnızca bir tablo veya görünüm kullanabilir, anca
 Aşağıdakileri kullanarak bir Azure SQL Indexer ayarlayabilir ve yapılandırabilirsiniz:
 
 * [Azure Portal](https://portal.azure.com) veri alma Sihirbazı
-* Azure Bilişsel Arama [.NET SDK](/dotnet/api/microsoft.azure.search.models.indexer)
+* Azure Bilişsel Arama [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
 * Azure Bilişsel Arama [REST API](/rest/api/searchservice/indexer-operations)
 
-Bu makalede, **Dizin oluşturucular** ve **veri kaynakları**oluşturmak için REST API kullanacağız.
+Bu makalede, **Dizin oluşturucular** ve **veri kaynakları** oluşturmak için REST API kullanacağız.
 
 ## <a name="when-to-use-azure-sql-indexer"></a>Azure SQL Indexer ne zaman kullanılır?
 Verilerinize ilişkin çeşitli faktörlere bağlı olarak, Azure SQL Indexer kullanımı uygun olabilir veya olmayabilir. Verileriniz aşağıdaki gereksinimlere sığıyorsa Azure SQL Indexer 'ı kullanabilirsiniz.
@@ -176,7 +176,7 @@ Dizin Oluşturucu zamanlamalarını tanımlama hakkında daha fazla bilgi için 
 Azure Bilişsel Arama, bir dizin oluşturucunun her çalıştırılışında tüm tabloyu veya görünümü yeniden eklemek zorunda kalmamak için **artımlı dizin oluşturma** kullanır. Azure Bilişsel Arama, artımlı Dizin oluşturmayı desteklemek için iki değişiklik algılama ilkesi sağlar. 
 
 ### <a name="sql-integrated-change-tracking-policy"></a>SQL tümleşik Değişiklik İzleme Ilkesi
-SQL veritabanınız [değişiklik izlemeyi](/sql/relational-databases/track-changes/about-change-tracking-sql-server)destekliyorsa, **SQL tümleşik değişiklik izleme ilkesi**kullanmanızı öneririz. Bu en etkili ilkedir. Ayrıca, tablonuza açık bir "geçici silme" sütunu eklemenize gerek kalmadan, Azure Bilişsel Arama silinen satırları tanımlamasına olanak tanır.
+SQL veritabanınız [değişiklik izlemeyi](/sql/relational-databases/track-changes/about-change-tracking-sql-server)destekliyorsa, **SQL tümleşik değişiklik izleme ilkesi** kullanmanızı öneririz. Bu en etkili ilkedir. Ayrıca, tablonuza açık bir "geçici silme" sütunu eklemenize gerek kalmadan, Azure Bilişsel Arama silinen satırları tanımlamasına olanak tanır.
 
 #### <a name="requirements"></a>Gereksinimler 
 

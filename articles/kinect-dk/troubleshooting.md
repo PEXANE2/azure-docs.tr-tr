@@ -7,16 +7,16 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: sorun giderme, güncelleştirme, hata, Kinect, geri bildirim, kurtarma, günlüğe kaydetme, ipuçları
-ms.openlocfilehash: 2db7b17ffc8b6595107dbc52fae719aa9f2d15db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9711968de061956a945fca183444dd6ebde4ca9c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85277744"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356391"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure Kinect bilinen sorunlar ve sorun giderme
 
-Bu sayfa, Azure Kinect DK ile algılayıcı SDK kullanırken oluşan bilinen sorunlar ve sorun giderme ipuçları içerir. Ayrıca ürün donanımlarına özgü sorunlar için [ürün destek sayfalarına](https://aka.ms/kinectsupport) bakın.
+Bu sayfa, Azure Kinect DK ile algılayıcı SDK kullanırken oluşan bilinen sorunlar ve sorun giderme ipuçları içerir. Ayrıca ürün donanımlarına özgü sorunlar için [ürün destek sayfalarına](./index.yml) bakın.
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
@@ -144,7 +144,7 @@ Daha sonra [Fabrika Sıfırlaması](https://support.microsoft.com/help/4494277/r
 
 Cihaz, Cihaz Yöneticisi altında numaralandırmadıysanız, bunun nedeni desteklenmeyen bir USB3 denetleyicisine takılmış olması olabilir. 
 
-Windows üzerinde Azure Kinect DK, **Intel**, **Texas Instruments (TI)** ve **Renesas** için *desteklenen tek konak denetleyicileridir*. Windows platformlarındaki Azure Kinect SDK 'Sı birleştirilmiş bir kapsayıcı KIMLIĞINI kullanır ve SDK 'nın, fiziksel olarak aynı cihazda bulunan derinlik, renk ve ses cihazlarını bulabilmesi için, USB 2,0 ve 3,0 cihazlarını kapsamalıdır. Linux 'ta, bu platform kapsayıcı KIMLIĞI üzerinde daha az ve cihaz seri numaraları üzerinde daha az kullanıldığı için daha fazla konak denetleyicisi desteklenebilir. 
+Windows üzerinde Azure Kinect DK, **Intel** , **Texas Instruments (TI)** ve **Renesas** için *desteklenen tek konak denetleyicileridir*. Windows platformlarındaki Azure Kinect SDK 'Sı birleştirilmiş bir kapsayıcı KIMLIĞINI kullanır ve SDK 'nın, fiziksel olarak aynı cihazda bulunan derinlik, renk ve ses cihazlarını bulabilmesi için, USB 2,0 ve 3,0 cihazlarını kapsamalıdır. Linux 'ta, bu platform kapsayıcı KIMLIĞI üzerinde daha az ve cihaz seri numaraları üzerinde daha az kullanıldığı için daha fazla konak denetleyicisi desteklenebilir. 
 
 BILGISAYARDA birden çok konak denetleyicisi yüklü olduğunda, USB ana bilgisayar denetleyicilerinin konusu, daha da karmaşıktır. Ana bilgisayar denetleyicileri karma olduğunda, bir Kullanıcı bazı bağlantı noktalarının iyi çalıştığı ve diğer bir yerde çalışmayan sorunlarla karşılaşabilir. Bağlantı noktalarının bu durum için nasıl kablolu olduğuna bağlı olarak, Azure Kinect ile ilgili sorun yaşayan tüm ön bağlantı noktalarını görebilirsiniz
 

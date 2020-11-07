@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 12/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 6d242fa5ac7257908b4f70d97531a9a1c9c88832
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: cee9544dbc2deecafa67d73d3bdea804937c1d7a
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457563"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356323"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Atlasduyma bulutu yapılandırma
 
@@ -31,7 +31,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları [Atlas
 > * Atlasduyi bulutu 'nda grupları ve grup üyeliklerini sağlama
 > * Atlasme bulutu ['Nda çoklu oturum açma](./atlassian-cloud-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -51,7 +51,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
     ![Dizin seçeneği olarak adlandırılan Yönetim sayfasının ekran görüntüsü.](./media/atlassian-cloud-provisioning-tutorial/select-directory.png)
 
-2. **Kullanıcı hazırlama** ' ya tıklayın ve **Dizin Oluştur ' a**tıklayın. Sırasıyla Azure AD portalındaki Atlasme bulut uygulamanızın sağlama sekmesinde bulunan **kiracı URL 'si** ve **gizli belirteç** ALANLARıNA girilecek **Dizin temel URL** 'sini ve **taşıyıcı belirtecini** kopyalayın.
+2. **Kullanıcı hazırlama** ' ya tıklayın ve **Dizin Oluştur ' a** tıklayın. Sırasıyla Azure AD portalındaki Atlasme bulut uygulamanızın sağlama sekmesinde bulunan **kiracı URL 'si** ve **gizli belirteç** ALANLARıNA girilecek **Dizin temel URL** 'sini ve **taşıyıcı belirtecini** kopyalayın.
 
     ![Kullanıcı sağlama seçeneği olarak adlandırılan Yönetim sayfasının ekran görüntüsü. ](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png) ![Belirteç Oluştur sayfasının ekran görüntüsü.](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png)
     ![Tanıtım saati Dizin belirteci sayfasının ekran görüntüsü.](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
@@ -65,7 +65,7 @@ Azure AD Uygulama Galerisi 'nden atlasme bulutu 'nı, Atlasduyma bulutuna sağla
 
 Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun özniteliklerine göre hazırlanacak kişilerin kapsamını belirlemenizi sağlar. Uygulamanız için hazırlanacak kişilerin kapsamını atamaya göre belirlemeyi seçerseniz kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Hazırlanacak kişilerin kapsamını yalnızca kullanıcı veya grup özniteliklerine göre belirlemeyi seçerseniz [burada](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) anlatılan kapsam belirleme filtresini kullanabilirsiniz. 
 
-* Atlasme bulutuna Kullanıcı ve grup atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
+* Atlasme bulutuna Kullanıcı ve grup atarken **varsayılan erişim** dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
 
 * Başlangıçta kapsamı sınırlı tutun. Herkesi hazırlamadan önce birkaç kullanıcı ve grupla test yapın. Hazırlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında uygulamaya bir veya iki kullanıcı ya da grup atayarak bu adımı kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında [öznitelik tabanlı kapsam filtresi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) belirtebilirsiniz. 
 
@@ -76,11 +76,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
 ### <a name="to-configure-automatic-user-provisioning-for-atlassian-cloud-in-azure-ad"></a>Azure AD 'de Atlasduyi bulutu için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **atlasduyi bulutu**' nı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin ve ardından **atlasduyi bulutu** ' nı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Atlasduyi bulutu**' nı seçin.
+2. Uygulamalar listesinde, **Atlasduyi bulutu** ' nı seçin.
 
     ![Uygulamalar listesindeki Atlasduyi bulutu bağlantısı](common/all-applications.png)
 
@@ -88,7 +88,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -96,13 +96,13 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’e tıklayın.
+7. **Kaydet** ’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları atlasi bulutu ' nı ile eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları atlasi bulutu ' nı ile eşitler** ' ı seçin.
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'Den Atlasme bulutuna eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için atlasduyma bulutundaki Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -114,7 +114,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
    |name.givenName|Dize|
    |emails[type eq "work"].value|Dize|   
 
-10. **Eşlemeler** bölümünde, **Atlasme bulutu Için Azure Active Directory gruplarını eşitler**' ı seçin.
+10. **Eşlemeler** bölümünde, **Atlasme bulutu Için Azure Active Directory gruplarını eşitler** ' ı seçin.
 
 11. **Öznitelik eşleme** bölümünde Azure AD 'Den Atlasme bulutuna eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için atlasduyma bulutu 'ndaki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -134,7 +134,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-16. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+16. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

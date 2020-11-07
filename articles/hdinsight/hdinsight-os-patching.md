@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/21/2020
-ms.openlocfilehash: 005bfd4b7e7d062640a79896ccd3d7f76e3d6fb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b789bf01a043b167d6740f09df935d9b683c48f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447195"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357768"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Linux tabanlı HDInsight kümeleri için işletim sistemi düzeltme eki uygulama zamanlamasını yapılandırma
 
@@ -64,7 +64,7 @@ Betik [install-Updates-Schedule-reboots.sh](https://hdiconfigactions.blob.core.w
 
 | Parametre | Kabul edilen değerler | Tanım |
 | --- | --- | --- |
-| Yüklenecek güncelleştirmelerin türü | 0, 1 veya 2 | 0 değeri yalnızca çekirdek güncelleştirmelerini yüklüyor. 1 değeri tüm güncelleştirmeleri yüklüyor ve 2 yalnızca çekirdek + güvenlik güncelleştirmelerini yüklüyor. Hiçbir parametre sağlanmazsa varsayılan değer 0 ' dır. |
+| Yüklenecek güncelleştirmelerin türü | 0, 1 veya 2 | 0 değeri yalnızca çekirdek güncelleştirmelerini yüklüyor. 1 değeri çekirdek + güvenlik güncelleştirmelerini ve 2 tüm güncelleştirmeleri yüklüyor. Hiçbir parametre sağlanmazsa varsayılan değer 0 ' dır. |
 | Gerçekleştirilecek yeniden başlatma türü | 0, 1 veya 2 | 0 değeri yeniden başlatmayı devre dışı bırakır. 1 değeri, zamanlamayı yeniden başlatmaya izin verebilir ve 2 hemen yeniden başlatmaya izin vermez. Hiçbir parametre sağlanmazsa varsayılan değer 0 ' dır. Kullanıcı giriş parametresi 1 ' i giriş parametresi 2 ' ye değiştirmesi gerekir. |
 
 > [!NOTE]

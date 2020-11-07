@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 11/06/2020
 ms.author: aahi
-ms.openlocfilehash: d84867dbe51b9c6689ecdac2bc80585a88da66b4
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 6ebc1831b990b540bcb9a3856c380c28142af536
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496125"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357122"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Uzamsal analiz kapsayıcısını (Önizleme) yükleyip çalıştırın
 
@@ -24,7 +24,7 @@ Uzamsal analiz kapsayıcısı, kişiler, taşınanlar ve fiziksel ortamlardaki n
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
-* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir görüntü işleme kaynağı oluşturun görüntü işleme bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
+* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir görüntü işleme kaynağı oluşturun görüntü işleme bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
     * Uzamsal analiz kapsayıcısını çalıştırmak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra kullanacaksınız.
 
 
@@ -97,21 +97,21 @@ Uzamsal analiz, bir AI çözümünü çalıştırmak için Azure Stack ucunun i�
 * Cihaza erişmek için PowerShell 5,0 veya sonraki bir sürümünü çalıştıran bir Windows istemci sisteminiz vardır.  
 * Bir Kubernetes kümesi dağıtmak için, Azure Stack Edge cihazınızı [Azure Portal](https://portal.azure.com/) **Yerel Kullanıcı arabirimi** aracılığıyla yapılandırmanız gerekir: 
   1. Azure Stack Edge cihazınızda işlem özelliğini etkinleştirin. İşlem özelliğini etkinleştirmek için, cihazınızın web arabirimindeki **işlem** sayfasına gidin. 
-  2. İşlem için etkinleştirmek istediğiniz bir ağ arabirimi seçin ve ardından **Etkinleştir**' e tıklayın. Bu, cihazınızda bu ağ arabiriminde bir sanal anahtar oluşturur.
+  2. İşlem için etkinleştirmek istediğiniz bir ağ arabirimi seçin ve ardından **Etkinleştir** ' e tıklayın. Bu, cihazınızda bu ağ arabiriminde bir sanal anahtar oluşturur.
   3. Kubernetes sınama düğümü IP adreslerini ve Kubernetes dış hizmetler IP adreslerini boş bırakın.
-  4. **Uygula**’ya tıklayın. Bu işlem, iki dakika sürebilir. 
+  4. **Uygula** 'ya tıklayın. Bu işlem, iki dakika sürebilir. 
 
 ![İşlem yapılandırma](media/spatial-analysis/configure-compute.png)
 
 ### <a name="set-up-an-edge-compute-role-and-create-an-iot-hub-resource"></a>Bir uç işlem rolü ayarlama ve bir IoT Hub kaynağı oluşturma
 
-[Azure Portal](https://portal.azure.com/), Azure Stack Edge kaynağına gidin. **Genel bakış** sayfasında veya gezinti listesinde **Edge COMPUTE Başlarken** düğmesine tıklayın.  **Uç Işlem yapılandırma**   kutucuğunda **Yapılandır**' ı tıklatın. 
+[Azure Portal](https://portal.azure.com/), Azure Stack Edge kaynağına gidin. **Genel bakış** sayfasında veya gezinti listesinde **Edge COMPUTE Başlarken** düğmesine tıklayın.  **Uç Işlem yapılandırma**   kutucuğunda **Yapılandır** ' ı tıklatın. 
 
 ![Bağlantı](media/spatial-analysis/configure-edge-compute-tile.png)
 
  **Edge Işlem yapılandırma**   sayfasında, mevcut bir IoT Hub seçin veya yenisini oluşturmayı seçin. Varsayılan olarak, bir IoT Hub kaynağı oluşturmak için standart (S1) Fiyatlandırma Katmanı kullanılır. Boş bir katman IoT Hub kullanmak için, bir tane oluşturun ve ardından seçin. IoT Hub kaynak, Azure Stack Edge kaynağı tarafından kullanılan aynı abonelik ve kaynak grubunu kullanır 
 
-**Oluştur**’a tıklayın. IoT Hub kaynak oluşturma birkaç dakika sürebilir. IoT Hub kaynağı oluşturulduktan sonra, yeni yapılandırmayı göstermek için **Edge işlem bölmesini Yapılandır** ' ı güncellecektir. Edge işlem rolünün yapılandırıldığını doğrulamak için, **Işlem yapılandırma**kutucuğunda yapılandırmayı **görüntüle** ' yi seçin   .
+**Oluştur** 'a tıklayın. IoT Hub kaynak oluşturma birkaç dakika sürebilir. IoT Hub kaynağı oluşturulduktan sonra, yeni yapılandırmayı göstermek için **Edge işlem bölmesini Yapılandır** ' ı güncellecektir. Edge işlem rolünün yapılandırıldığını doğrulamak için, **Işlem yapılandırma** kutucuğunda yapılandırmayı **görüntüle** ' yi seçin   .
 
 Edge cihazında Edge hesaplama rolü ayarlandığında, iki cihaz oluşturur: bir IoT cihazı ve bir IoT Edge cihaz. Her iki cihaz de IoT Hub kaynağında görüntülenebilir. Azure IoT Edge çalışma zamanı IoT Edge cihazda zaten çalışıyor.            
 
@@ -289,7 +289,7 @@ sudo apt-get update
 1.0.9 sürümünü yükler:
 
 ```bash
-sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.8*
+sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
 Sonra, bir [bağlantı dizesi](https://docs.microsoft.com/azure/iot-edge/how-to-register-device#register-in-the-azure-portal)kullanarak ana bilgisayarı IoT Hub örneğiniz IoT Edge bir cihaz olarak kaydedin.
@@ -354,7 +354,7 @@ Bu komut dağıtımı başlatacak. Dağıtım durumunu görmek için Azure porta
 
 ## <a name="validate-that-the-deployment-is-successful"></a>Dağıtımın başarılı olduğunu doğrulama
 
-Kapsayıcının çalıştığını doğrulamak için birkaç yol vardır. Azure portal Azure IoT Hub örneğinizin uzamsal analiz modülünün **IoT Edge modülü ayarları** ' nda *çalışma zamanı durumunu* bulun. *Çalışma zamanı durumu* Için **Istenen değerin** ve **bildirilen değerin** *çalıştığını*doğrulayın.
+Kapsayıcının çalıştığını doğrulamak için birkaç yol vardır. Azure portal Azure IoT Hub örneğinizin uzamsal analiz modülünün **IoT Edge modülü ayarları** ' nda *çalışma zamanı durumunu* bulun. *Çalışma zamanı durumu* Için **Istenen değerin** ve **bildirilen değerin** *çalıştığını* doğrulayın.
 
 ![Örnek dağıtım doğrulaması](./media/spatial-analysis/deployment-verification.png)
 
@@ -381,7 +381,7 @@ Hem kayıtlı hem de canlı video ile uzamsal analizler kullanabilirsiniz. Kayı
     1. **Güvenli aktarımı** **devre dışı** olarak değiştirme
     2. **BLOB genel erişimine Izin ver** özelliğinin **etkin** olarak değiştirilmesi
 
-**Kapsayıcı** bölümüne gidin ve yeni bir kapsayıcı oluşturun ya da var olan bir kapsayıcıyı kullanın. Ardından, video dosyasını kapsayıcıya yükleyin. Karşıya yüklenen dosyanın dosya ayarlarını genişletin ve **SAS oluştur**' u seçin. **Süre sonu tarihini** , test dönemini kapsayacak kadar uzun bir süre ayarladığınızdan emin olun. **Izin verilen protokolleri** *http* olarak ayarlama (*https* desteklenmez).
+**Kapsayıcı** bölümüne gidin ve yeni bir kapsayıcı oluşturun ya da var olan bir kapsayıcıyı kullanın. Ardından, video dosyasını kapsayıcıya yükleyin. Karşıya yüklenen dosyanın dosya ayarlarını genişletin ve **SAS oluştur** ' u seçin. **Süre sonu tarihini** , test dönemini kapsayacak kadar uzun bir süre ayarladığınızdan emin olun. **Izin verilen protokolleri** *http* olarak ayarlama ( *https* desteklenmez).
 
 **SAS belirteci oluştur ve URL** 'yi tıklatın ve BLOB SAS URL 'sini kopyalayın. Başlangıcını `https` `http` ve video oynatmayı destekleyen bir tarayıcıda URL 'yi test etme ve test etme ile değiştirin.
 

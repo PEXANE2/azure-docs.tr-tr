@@ -6,17 +6,17 @@ manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: troubleshooting
-ms.date: 01/30/2020
+ms.date: 11/06/2020
 ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: af057750e81086bf691b87057da97af3de19cd3b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 8fb891d5a47203c9905a7def9d04199d24327f70
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909650"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357258"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
@@ -42,7 +42,7 @@ IoT Hub istekleri aşağıdaki hata iletilerinden biriyle başarısız olur:
 
 ### <a name="cause-1"></a>1\. Neden
 
-MQTT için bazı SDK 'lar, bir kilit süresinin ne zaman yenileneceğini bilmek için SAS belirtecinin süresi dolarsa bağlantıyı kesmek için IoT Hub kullanır. Dolayısıyla: 
+MQTT için bazı SDK 'lar, bir kilit süresinin ne zaman yenileneceğini bilmek için SAS belirtecinin süresi dolarsa bağlantıyı kesmek için IoT Hub kullanır. Dolayısıyla:
 
 1. SAS belirtecinin süresi doluyor
 1. IoT Hub sona erme süresini fark eder ve cihazın bağlantısını **401003 Iothubyetkilendirilmemiş** ile keser
@@ -58,9 +58,11 @@ IoT Hub auth üstbilgisinin, kuralın veya anahtarın kimliğini doğrulayamadı
 
 ### <a name="solution-1"></a>1\. Çözüm
 
-Cihaz bağlantı dizesini kullanarak bağlantı için IoT SDK kullanıyorsanız hiçbir işlem yapmanız gerekmez. IoT SDK, SAS belirteci süre sonuna yeniden bağlanmak için yeni belirteci yeniden oluşturur. 
+Cihaz bağlantı dizesini kullanarak bağlantı için IoT SDK kullanıyorsanız hiçbir işlem yapmanız gerekmez. IoT SDK, SAS belirteci süre sonuna yeniden bağlanmak için yeni belirteci yeniden oluşturur.
 
-Hata hacmi bir sorun oluşturacaksa, SAS belirtecini sona ermeden önce yenilediğinde C SDK 'sına geçin. Ayrıca, AMQP için SAS belirtecinin bağlantısı kesilmeden yenilenebilirler.
+Varsayılan belirteç kullanım ömrü, SDK 'larda 60 dakikadır; Ancak bazı SDK 'lar için, belirtecin ömrü ve belirteç yenileme eşiği yapılandırılabilir. Ayrıca, bir cihazın bağlantısı kesildiğinde ve belirteç yenilemesinde yeniden bağlandığında oluşturulan hatalar her SDK için farklılık gösterir. Daha fazla bilgi edinmek ve cihazınızın günlüklerde hangi SDK 'nın kullandığını belirleme hakkında bilgi için bkz. [Azure IoT SDK 'ları Ile MQTT cihaz bağlantısı kesme davranışı](iot-hub-troubleshoot-connectivity.md#mqtt-device-disconnect-behavior-with-azure-iot-sdks).
+
+Cihaz geliştiricileri için, hata hacmi sorun oluşturacaksa, SAS belirtecini sona ermeden önce yenilediğinde C SDK 'sına geçin. AMQP için SAS belirteci, bağlantısı kesilmeden yenilenebilirler.
 
 ### <a name="solution-2"></a>2\. Çözüm
 

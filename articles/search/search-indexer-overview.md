@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7f6be959bf09cbe20bb37dfa3d17d64467758bd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 305682812896bb74474b5065cfd56a071a73ed15
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397904"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358788"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama'daki Dizin Oluşturucular
 
@@ -32,7 +32,7 @@ Dizin oluşturucuları aşağıdaki yaklaşımlarla oluşturabilir ve yönetebil
 
 * [Portal > verileri Içeri aktarma Sihirbazı](search-import-data-portal.md)
 * [Hizmet REST API'si](/rest/api/searchservice/Indexer-operations)
-* [.NET SDK](/dotnet/api/microsoft.azure.search.iindexersoperations)
+* [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
 
 Başlangıçta, yeni bir dizin oluşturucu bir önizleme özelliği olarak duyurulur. Önizleme özellikleri API'lere (REST ve .NET) eklenir ve ardından genel kullanıma açık hale geldiklerinde portala entegre edilir. Yeni bir dizin oluşturucuyu değerlendiriyorsanız kod yazmayı planlamanız gerekir.
 
@@ -52,7 +52,7 @@ Dizin oluşturucular Azure 'da veri depolarında gezinme.
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure SQL Veritabanı](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [SQL Yönetilen Örnek](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
-* [Azure sanal makineler 'de SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
+* [Azure Sanal Makineler'de SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 
 ## <a name="indexer-stages"></a>Dizin Oluşturucu aşamaları
 
@@ -88,19 +88,19 @@ Tam değerleri kaynaktan hedef alanlarla ilişkilendiren alan eşlemeleri gibi, 
 
 Sonraki görüntüde, Dizin Oluşturucu aşamaları için bir örnek Dizin Oluşturucu [hata ayıklama oturumu](cognitive-search-debug-session.md) temsili gösterilmektedir: belge çözme, alan eşlemeleri, Beceri yürütme ve çıkış alanı eşlemeleri.
 
-:::image type="content" source="media/search-indexer-overview/sample-debug-session.png" alt-text="Dizin Oluşturucu aşamaları" lightbox="media/search-indexer-overview/sample-debug-session.png":::
+:::image type="content" source="media/search-indexer-overview/sample-debug-session.png" alt-text="örnek hata ayıklama oturumu" lightbox="media/search-indexer-overview/sample-debug-session.png":::
 
 ## <a name="basic-configuration-steps"></a>Temel yapılandırma adımları
 
 Dizin oluşturucular veri kaynağına özgü özellikler sunabilir. Bu bakımdan, dizin oluşturucu veya veri kaynağı yapılandırmasının bazı boyutları dizin oluşturucu türüne göre farklılık gösterir. Bununla birlikte, tüm dizin oluşturucuların temel birleşimi ve gereksinimleri aynıdır. Tüm dizin oluşturucularda ortak olan adımlar aşağıda ele alınmıştır.
 
 ### <a name="step-1-create-a-data-source"></a>1. Adım: Veri kaynağı oluşturma
-Bir dizin *Oluşturucu veri kaynağı nesnesinden veri* kaynağı bağlantısı edinir. Veri kaynağı tanımı, bir bağlantı dizesi ve muhtemelen kimlik bilgileri sağlar. Kaynağı oluşturmak için [Create Datasource](/rest/api/searchservice/create-data-source) REST API veya [DataSource sınıfını](/dotnet/api/microsoft.azure.search.models.datasource) çağırın.
+Bir dizin *Oluşturucu veri kaynağı nesnesinden veri* kaynağı bağlantısı edinir. Veri kaynağı tanımı, bir bağlantı dizesi ve muhtemelen kimlik bilgileri sağlar. Kaynağı oluşturmak için [Create Datasource](/rest/api/searchservice/create-data-source) REST API veya [SearchIndexerDataSourceConnection sınıfını](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) çağırın.
 
 Veri kaynakları, bunları kullanan dizin oluşturuculardan bağımsız olarak yapılandırılır ve yönetilir. Bu da bir veri kaynağının, bir seferde birden çok dizin yüklemek amacıyla birden çok dizin oluşturucu tarafından kullanılabileceği anlamına gelir.
 
 ### <a name="step-2-create-an-index"></a>2. Adım: Dizin oluşturma
-Dizin oluşturucu veri alımıyla ilgili bazı görevleri otomatikleştirir, ancak dizin oluşturma genellikle bu görevlerden biri değildir. Bir önkoşul olarak dış veri kaynağınızdaki alanlarla eşleşen alanlara sahip önceden tanımlı bir dizininiz olmalıdır. Alanların ad ve veri türüyle eşleşmesi gerekir. Dizini yapılandırma hakkında daha fazla bilgi için bkz. [Dizin oluşturma (Azure Bilişsel Arama REST API)](/rest/api/searchservice/Create-Index) veya [Dizin sınıfı](/dotnet/api/microsoft.azure.search.models.index). Alan ilişkilendirmelerinde yardım için bkz. [Azure bilişsel arama Dizin oluşturucularda alan eşlemeleri](search-indexer-field-mappings.md).
+Dizin oluşturucu veri alımıyla ilgili bazı görevleri otomatikleştirir, ancak dizin oluşturma genellikle bu görevlerden biri değildir. Bir önkoşul olarak dış veri kaynağınızdaki alanlarla eşleşen alanlara sahip önceden tanımlı bir dizininiz olmalıdır. Alanların ad ve veri türüyle eşleşmesi gerekir. Dizini yapılandırma hakkında daha fazla bilgi için bkz. [Dizin oluşturma (Azure Bilişsel Arama REST API)](/rest/api/searchservice/Create-Index) veya [searchındex sınıfı](/dotnet/api/azure.search.documents.indexes.models.searchindex). Alan ilişkilendirmelerinde yardım için bkz. [Azure bilişsel arama Dizin oluşturucularda alan eşlemeleri](search-indexer-field-mappings.md).
 
 > [!Tip]
 > Dizin oluşturucular sizin için dizin oluşturamasa da, portaldaki **Verileri içeri aktarma** sihirbazı bu işlem için size yardımcı olabilir. Çoğu durumda, sihirbaz, kaynaktaki mevcut meta verilerden dizin şeması çıkarsayarak, sihirbaz etkin olduğunda satır içinde düzenleyebileceğiniz geçici bir dizin şeması sunar. Hizmet için sihirbaz oluşturulduğunda, portalda yapılabilecek ayrıntılı düzenlemeler, genellikle yeni alanlar eklemeyle sınırlıdır. Sihirbaz dizin oluşturmak için uygun olsa da, düzenlemek için uygun değildir. Uygulama yaparak öğrenmek için, [portal kılavuzundaki](search-get-started-portal.md) adımları izleyin.

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 7d3aafe93c92a1c756358dfb60a2ca976036d8b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 204cdc689d5a117df428bb314a81a35081f7b13c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273716"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357666"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için BlueJeans yapılandırma
 
@@ -25,7 +25,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları otomat
 > [!NOTE]
 > Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../app-provisioning/user-provisioning.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, zaten aşağıdakilere sahip olduğunuzu varsayar:
 
@@ -42,11 +42,11 @@ Azure AD ile otomatik Kullanıcı sağlama için şema yapılandırmadan önce A
 
 **Azure AD Uygulama Galerisi 'nden şema eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -54,7 +54,7 @@ Azure AD ile otomatik Kullanıcı sağlama için şema yapılandırmadan önce A
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **şeması**girin, sonuçlar panelinde **BlueJeans** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesini seçin.
+4. Arama kutusuna **şeması** girin, sonuçlar panelinde **BlueJeans** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesini seçin.
 
     ![Sonuçlar listesindeki şema](common/search-new-app.png)
 
@@ -81,11 +81,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
 ### <a name="to-configure-automatic-user-provisioning-for-bluejeans-in-azure-ad"></a>Azure AD 'de BlueJeans için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **BlueJeans**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin ve ardından **BlueJeans** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **BlueJeans**' ı seçin.
+2. Uygulamalar listesinde, **BlueJeans** ' ı seçin.
 
     ![Uygulamalar listesindeki BlueJeans bağlantısı](common/all-applications.png)
 
@@ -93,11 +93,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Sağlama seçeneği vurgulanmış ve çağrılan BlueJeans Enterprise uygulaması kenar çubuğunun ekran görüntüsü.](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningTab.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Sağlama modu ve yönetici kimlik bilgileri bölümleri olarak adlandırılan sağlama sayfasının ekran görüntüsü.](./media/bluejeans-provisioning-tutorial/Bluejeans1.png)
 
-5. **Yönetici kimlik bilgileri** bölümü altında, **Yönetici Kullanıcı adı**' nı ve BlueJeans hesabınızın **yönetici parolasını** girin. Bu değerlere örnek olarak şunlar verilebilir:
+5. **Yönetici kimlik bilgileri** bölümü altında, **Yönetici Kullanıcı adı** ' nı ve BlueJeans hesabınızın **yönetici parolasını** girin. Bu değerlere örnek olarak şunlar verilebilir:
 
    * **Yönetici Kullanıcı adı** alanında yönetici hesabının kullanıcı adını BlueJeans kiracınızda doldurun. Örnek: admin@contoso.com.
 
@@ -107,13 +107,13 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Test bağlantısı seçeneği olarak adlandırılan yönetici kimlik bilgileri bölümünün ekran görüntüsü.](./media/bluejeans-provisioning-tutorial/BluejeansTestConnection.png)
 
-7. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+7. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
 
     ![Bildirim e-postası metin kutusunun ekran görüntüsü.](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
 
-8. **Kaydet**’e tıklayın.
+8. **Kaydet** ’e tıklayın.
 
-9. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Bluelerile eşitler**' ı seçin.
+9. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Bluelerile eşitler** ' ı seçin.
 
     ![Eşlemeleri Azure Active Directory Kullanıcıları BlueJeans seçeneği vurgulanmış şekilde eşlemeler bölümünün ekran görüntüsü.](./media/bluejeans-provisioning-tutorial/BluejeansMapping.png)
 
@@ -131,7 +131,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Kapsam ayarının yalnızca atanmış kullanıcıları ve grupları Eşitle seçeneğinin vurgulandığı ekran görüntüsü.](./media/bluejeans-provisioning-tutorial/UserGroupSelection.png)
 
-14. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+14. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Kayıt seçeneği olarak adlandırılan BlueJeans kurumsal uygulama kenar çubuğunun ekran görüntüsü.](./media/bluejeans-provisioning-tutorial/SaveProvisioning.png)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 87532876551cacbd4da03b95b10c41600989a947
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 909d64d3d32e8b9a314f7afb06b9c0121f624cec
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359723"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358493"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. ile ilgili bilinen sorunlar
 
@@ -54,7 +54,9 @@ Bu blob REST API 'Leri desteklenmez:
 * [Sayfa aralıklarını al](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
 * [Artımlı kopya blobu](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
 * [URL 'den sayfa koy](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
+* [Ekleme bloğu](https://docs.microsoft.com/rest/api/storageservices/append-block)
 * [URL 'den ekleme bloğu](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
+
 
 Yönetilmeyen VM diskleri hiyerarşik bir ad alanına sahip hesaplarda desteklenmez. Bir depolama hesabında hiyerarşik bir ad alanı etkinleştirmek istiyorsanız, yönetilmeyen VM disklerini hiyerarşik ad alanı özelliği etkin olmayan bir depolama hesabına yerleştirin.
 

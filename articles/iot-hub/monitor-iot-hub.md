@@ -5,13 +5,13 @@ author: robinsh
 ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
-ms.date: 10/22/2020
-ms.openlocfilehash: 71a7041ec02da9a85de411f1113814311c21cd4f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 11/06/2020
+ms.openlocfilehash: dc239843c4ed597949b4ba00c44ec84fc70741a8
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128888"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357615"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Azure IoT Hub izleme
 
@@ -65,13 +65,13 @@ Azure portal, IoT Hub 'ınızın sol bölmesindeki **izleme** altında **Tanıla
 
 Aşağıdaki ekran görüntüsünde, kaynak günlüğü türü *bağlantı işlemlerini* ve tüm platform ölçümlerini bir Log Analytics çalışma alanına yönlendirmeye yönelik bir tanılama ayarı gösterilmektedir.
 
-:::image type="content" source="media/monitor-iot-hub/diagnostic-setting-portal.png" alt-text="IoT Hub 'a Genel Bakış sayfasında varsayılan ölçüm grafikleri.":::
+:::image type="content" source="media/monitor-iot-hub/diagnostic-setting-portal.png" alt-text="IoT Hub 'ı için Tanılama ayarları bölmesi.":::
 
 Azure portal, CLı veya PowerShell kullanarak bir tanılama ayarı oluşturmaya yönelik ayrıntılı süreç için [Azure 'da platform günlüklerini ve ölçümlerini toplamak üzere tanılama ayarı oluşturma](/azure/azure-monitor/platform/diagnostic-settings) konusuna bakın. Bir tanılama ayarı oluşturduğunuzda hangi günlük kategorilerinin toplanacağını belirlersiniz. Azure IoT Hub kategorileri [Izleme azure IoT Hub veri başvurusunda kaynak günlükleri](monitor-iot-hub-reference.md#resource-logs)altında listelenmiştir.
 
 IoT Hub platform ölçümlerini diğer konumlara yönlendirçalışırken şunu göz önünde bulundurun:
 
-- Aşağıdaki platform ölçümleri, Tanılama ayarları aracılığıyla dışarı aktarılabilir değildir: *bağlı cihazlar (Önizleme)* ve *Toplam cihaz (Önizleme)* .
+- Aşağıdaki platform ölçümleri, Tanılama ayarları aracılığıyla dışarı aktarılabilir değildir: *bağlı cihazlar (Önizleme)* ve *Toplam cihaz (Önizleme)*.
 
 - Çok boyutlu ölçümler, örneğin bazı [yönlendirme ölçümleri](monitor-iot-hub-reference.md#routing-metrics)Şu anda boyut değerleri arasında toplanan düzleştirilmiş tek boyutlu ölçümler olarak içeri aktarılmaktadır. Daha fazla ayrıntı için bkz. [Platform ölçümlerini diğer konumlara dışarı aktarma](/azure/azure-monitor/platform/metrics-supported#exporting-platform-metrics-to-other-locations).
 
@@ -81,7 +81,7 @@ Azure **izleyici** menüsünden **ölçümler** ' i açarak ölçüm gezgini 'ni
 
 Azure portal, IoT Hub 'ınızın sol bölmesindeki **izleme** altında bulunan **ölçümler** ' i seçerek, varsayılan olarak, IoT Hub 'ınız tarafından yayılan platform ölçümlerine Ölçüm Gezgini kapsamı ' nı açabilirsiniz:
 
-:::image type="content" source="media/monitor-iot-hub/metrics-portal.png" alt-text="IoT Hub 'a Genel Bakış sayfasında varsayılan ölçüm grafikleri.":::
+:::image type="content" source="media/monitor-iot-hub/metrics-portal.png" alt-text="IoT Hub 'ı için ölçüm Gezgini sayfası.":::
 
 Azure IoT Hub için toplanan platform ölçümlerinin bir listesi için bkz. [azure IoT Hub veri başvurusu 'Ndaki ölçümler](monitor-iot-hub-reference.md#metrics). Tüm Azure hizmetleri için toplanan platform ölçümlerinin bir listesi için bkz. [Azure izleyici Ile desteklenen ölçümler](/azure/azure-monitor/platform/metrics-supported).
 
@@ -97,7 +97,7 @@ Verileri Azure Izleyici günlüklerine yönlendirmek için bir Log Analytics ça
 
 Azure portal, IoT Hub 'ınız için Azure Izleyici günlüklerinde toplanan günlüklere ve ölçümlere varsayılan olarak, kapsamdaki Log Analytics sorguları gerçekleştirmek üzere IoT Hub 'ınızın sol bölmesindeki **izleme** altında bulunan **Günlükler** ' i seçebilirsiniz.
 
-:::image type="content" source="media/monitor-iot-hub/logs-portal.png" alt-text="IoT Hub 'a Genel Bakış sayfasında varsayılan ölçüm grafikleri.":::
+:::image type="content" source="media/monitor-iot-hub/logs-portal.png" alt-text="IoT Hub 'ı için Günlükler sayfası.":::
 
 Azure Izleyici günlükleri tarafından kullanılan tablolar ve Log Analytics tarafından sorgulanabilir bir liste için, [Izleme azure IoT Hub veri başvurusunda Azure Izleyici günlükleri tabloları](monitor-iot-hub-reference.md#azure-monitor-logs-tables)bölümüne bakın.
 
@@ -107,7 +107,7 @@ Etkinlik günlüğü, Azure 'da abonelik düzeyindeki olaylara ilişkin Öngör�
 
 IoT Hub platform ölçümlerini Azure Izleyici günlüklerine yönlendirçalışırken şunu göz önünde bulundurun:
 
-- Aşağıdaki platform ölçümleri, Tanılama ayarları aracılığıyla dışarı aktarılabilir değildir: *bağlı cihazlar (Önizleme)* ve *Toplam cihaz (Önizleme)* .
+- Aşağıdaki platform ölçümleri, Tanılama ayarları aracılığıyla dışarı aktarılabilir değildir: *bağlı cihazlar (Önizleme)* ve *Toplam cihaz (Önizleme)*.
 
 - Çok boyutlu ölçümler, örneğin bazı [yönlendirme ölçümleri](monitor-iot-hub-reference.md#routing-metrics)Şu anda boyut değerleri arasında toplanan düzleştirilmiş tek boyutlu ölçümler olarak içeri aktarılmaktadır. Daha fazla ayrıntı için bkz. [Platform ölçümlerini diğer konumlara dışarı aktarma](/azure/azure-monitor/platform/metrics-supported#exporting-platform-metrics-to-other-locations).
 
@@ -291,6 +291,14 @@ class Program
 İzleme verilerinizde önemli koşullar bulunduğunda Azure Izleyici uyarıları size önceden bildirimde bulunur. Bunlar, müşterilerinizin sorunları fark etmeden önce sisteminizdeki sorunları tanımlamanızı ve ele belirlemenizi sağlar. [Ölçümler](/azure/azure-monitor/platform/alerts-metric-overview), [Günlükler](/azure/azure-monitor/platform/alerts-unified-log)ve [etkinlik günlüğü](/azure/azure-monitor/platform/activity-log-alerts)hakkında uyarı ayarlayabilirsiniz. Farklı uyarı türlerinin avantajları ve dezavantajları vardır.
 
 Platform ölçümlerini temel alan bir uyarı kuralı oluştururken, sayı birimlerinde toplanan IoT Hub platform ölçümleri için bazı toplamaların kullanılamayabilir veya kullanılamıyor olabileceğini unutmayın. Daha fazla bilgi edinmek için bkz. [Azure IoT Hub veri başvurusunda desteklenen toplamalar](monitor-iot-hub-reference.md#supported-aggregations).
+
+## <a name="monitor-per-device-disconnects-with-event-grid"></a>Cihaz başına bağlantı kesildiğinde izleme Event Grid
+
+Azure Izleyici, IoT Hub bağlı cihazların sayısını izlemek için kullanabileceğiniz ve bağlı cihazların sayısı bir eşik değerin altına düştüğünde bir uyarı tetikleyebileceğiniz bir ölçüm, *bağlı cihazlar* sağlar. Bu işlem bazı senaryolar için yeterli olabileceğinden, [Azure Event Grid](/azure/event-grid/) kritik cihazlar ve altyapıya yönelik cihaz bağlantılarını izlemek için kullanabileceğiniz düşük gecikmeli, cihaz başına izleme çözümü sağlar.
+
+Event Grid ile, uyarıları tetiklemek ve cihaz bağlantı durumunu izlemek için IoT Hub [ **DeviceConnected** ve **DeviceConnected** olayına](iot-hub-event-grid.md#event-types) abone olabilirsiniz. Event Grid, Azure Izleyici 'den çok daha düşük olay gecikmesi sağlar ve toplam bağlı cihaz sayısı yerine cihaz başına temelinde izleyebilirsiniz. Bu faktörler, kritik cihazlar ve altyapılara yönelik bağlantıları izlemek için tercih edilen yöntemi Event Grid yapar. Üretim ortamlarında cihaz bağlantılarını izlemek için Event Grid kullanmanızı kesinlikle öneririz.
+
+Event Grid ve Azure Izleyici ile cihaz bağlantılarını izleme hakkında daha ayrıntılı bilgi için bkz. [azure IoT Hub ile kesilen izleyici, tanılama ve sorun giderme](iot-hub-troubleshoot-connectivity.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

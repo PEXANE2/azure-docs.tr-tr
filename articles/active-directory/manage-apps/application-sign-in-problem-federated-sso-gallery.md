@@ -12,12 +12,12 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperfq2
-ms.openlocfilehash: ec39a6d106973808e26b7c06dce8b3054af490ff
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 12b11d6283bbed4e43daf52a65c0c259c476e73f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427381"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357921"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>SAML tabanlı çoklu oturum açma yapılandırılmış uygulamalarda oturum açma sorunları
 Aşağıdaki oturum açma sorunlarını gidermek için, çözümü daha iyi tanılayıp otomatik hale getirmek için aşağıdaki işlemleri yapmanızı öneririz:
@@ -28,12 +28,12 @@ Aşağıdaki oturum açma sorunlarını gidermek için, çözümü daha iyi tan�
 Uygulamalarım güvenli tarayıcı uzantısı ile Azure portal [Test deneyimini](../azuread-dev/howto-v1-debug-saml-sso-issues.md) KULLANıYORSANıZ, SAML tabanlı çoklu oturum açma yapılandırması sayfasını açmak için aşağıdaki adımları el ile izlemeniz gerekmez.
 
 SAML tabanlı çoklu oturum açma yapılandırma sayfasını açmak için:
-1.  [**Azure Portal**](https://portal.azure.com/) açın ve **genel yönetici** veya **coadmin**olarak oturum açın.
+1.  [**Azure Portal**](https://portal.azure.com/) açın ve **genel yönetici** veya **coadmin** olarak oturum açın.
 1.  Ana sol taraftaki Gezinti menüsünün en üstündeki **tüm hizmetler** ' i seçerek **Azure Active Directory uzantısını** açın.
 1.  Filtre arama kutusuna **"Azure Active Directory"** yazın ve **Azure Active Directory** öğesini seçin.
 1.  Azure Active Directory sol taraftaki gezinti menüsünden **Kurumsal uygulamalar** ' ı seçin.
 1.  Tüm uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' ı seçin.
-    Burada görünmesini istediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin** en üstündeki **filtre** denetimini kullanın ve **göster** seçeneğini **tüm uygulamalar**olarak ayarlayın.
+    Burada görünmesini istediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin** en üstündeki **filtre** denetimini kullanın ve **göster** seçeneğini **tüm uygulamalar** olarak ayarlayın.
 1.  Çoklu oturum açma için yapılandırmak istediğiniz uygulamayı seçin.
 1. Uygulama yüklendikten sonra, uygulamanın sol taraftaki gezinti menüsünden **Çoklu oturum açma** seçeneğini belirleyin.
 1. SAML tabanlı SSO 'yu seçin.
@@ -119,8 +119,8 @@ Uygulama nesnesi bozuk ve Azure AD uygulama için yapılandırılan sertifikayı
 
 Yeni bir sertifika silmek ve oluşturmak için aşağıdaki adımları izleyin:
 1. SAML tabanlı SSO yapılandırma ekranında, **SAML Imzalama sertifikası** bölümünde **Yeni sertifika oluştur** ' u seçin.
-1. Sona erme tarihi ' ni seçin ve **Kaydet**' e tıklayın.
-1. Etkin sertifikayı geçersiz kılmak için **Yeni sertifika etkin hale getirin** ' i işaretleyin. Ardından bölmenin üstündeki **Kaydet**’e tıklayın ve geçiş sertifikasını etkinleştirmeyi kabul edin.
+1. Sona erme tarihi ' ni seçin ve **Kaydet** ' e tıklayın.
+1. Etkin sertifikayı geçersiz kılmak için **Yeni sertifika etkin hale getirin** ' i işaretleyin. Ardından bölmenin üstündeki **Kaydet** ’e tıklayın ve geçiş sertifikasını etkinleştirmeyi kabul edin.
 1. **Kullanılmayan** sertifikayı kaldırmak Için **SAML imzalama sertifikası** bölümünde **Kaldır** ' ı tıklatın.
 
 ## <a name="saml-request-not-present-in-the-request"></a>İstekte SAML Isteği yok
@@ -146,6 +146,23 @@ Uygulama galeriden olmayan bir uygulama olarak eklendiğinde, Azure Active Direc
 Uygulama için yapılandırılmış kullanılmayan yanıt URL 'Lerini silin.
 
 SAML tabanlı SSO yapılandırma sayfasında, **yanıt URL 'si (onaylama tüketici hizmeti URL 'si)** bölümünde, sistem tarafından oluşturulan kullanılmayan veya varsayılan yanıt URL 'lerini silin. Örneğin, `https://127.0.0.1:444/applications/default.aspx`.
+
+
+## <a name="authentication-method-by-which-the-user-authenticated-with-the-service-doesnt-match-requested-authentication-method"></a>Hizmet ile kimliği doğrulanmış kullanıcı tarafından istenen kimlik doğrulama yöntemiyle eşleşmeyen kimlik doğrulama yöntemi
+`Error: AADSTS75011 Authentication method by which the user authenticated with the service doesn't match requested authentication method 'AuthnContextClassRef'. `
+
+**Olası nedeni**
+
+, `RequestedAuthnContext` SAML isteğinde bulunur. Bu, uygulamanın tarafından belirtilen tarafından beklenmekte olduğu anlamına gelir `AuthnContext` `AuthnContextClassRef` . Ancak, kullanıcının uygulamaya erişim öncesinde kimliği zaten doğrulanır ve `AuthnContext` önceki kimlik doğrulama için kullanılan (kimlik doğrulama yöntemi), istenmeden farklı. Örneğin, bir federasyon kullanıcısına uygps ve WIA erişimi gerçekleşti. `AuthnContextClassRef`Olacaktır `urn:federation:authentication:windows` . AAD, yeni bir kimlik doğrulama isteği gerçekleştirmez, bu, IDP (ADFS veya bu örnekte başka bir Federasyon Hizmeti) tarafından geçilen kimlik doğrulama bağlamını kullanır. Bu nedenle, uygulamanın dışında istekleriniz varsa bir uyumsuzluk olur `urn:federation:authentication:windows` . Çok faktörlü kullanıldığında başka bir senaryo vardır: `'X509, MultiFactor` .
+
+**Çözünürlük**
+
+
+`RequestedAuthnContext` isteğe bağlı bir değerdir. Mümkünse, varsa uygulamadan uygulamaya sorun.
+
+Diğer bir seçenek de bunun kabul edilecek olduğundan emin olmak `RequestedAuthnContext` . Bu, yeni bir kimlik doğrulaması isteyerek yapılır. Bunu yaparak, SAML isteği işlendiğinde, yeni bir kimlik doğrulaması gerçekleştirilir ve bu `AuthnContext` kabul edilir. Yeni bir kimlik doğrulaması istemek için, en çok SAML isteği değeri içerir `forceAuthn="true"` . 
+
+
 
 ## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>Bir uygulamaya gönderilen SAML taleplerini özelleştirirken sorun oluştu
 Uygulamanıza gönderilen SAML öznitelik taleplerini özelleştirmeyi öğrenmek için [Azure Active Directory 'de talep eşlemesi](../develop/active-directory-claims-mapping.md)' ne bakın.

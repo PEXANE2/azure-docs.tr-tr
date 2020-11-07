@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: 7475ebc6dd51bbc1c30ee22623c7cbda1a5237ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b88e618da3f8a23c0517aaeb251e54bf559fc468
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91848985"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358516"
 ---
 # <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için tuş takımını yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı, Azure AD 'yi, Kullanıcı ve/veya grupları Dialpad 'e 
 
 > Bu bağlayıcı Şu anda önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -52,15 +52,15 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 Azure AD ile otomatik Kullanıcı sağlama için tuş takımını yapılandırmadan önce, bazı sağlama bilgilerini Dialpad 'ten almanız gerekir.
 
-1. [Dialpad Yönetici konsolunuza](https://dialpadbeta.com/login) oturum açın ve **yönetici ayarları**' nı seçin. **Şirketimin** açılan listeden seçildiğinden emin olun. **Kimlik doğrulama > API anahtarları**' na gidin.
+1. [Dialpad Yönetici konsolunuza](https://dialpadbeta.com/login) oturum açın ve **yönetici ayarları** ' nı seçin. **Şirketimin** açılan listeden seçildiğinden emin olun. **Kimlik doğrulama > API anahtarları** ' na gidin.
 
     :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad01.png" alt-text="Ayarlar simgesiyle, şirketim, kimlik doğrulamasından ve bir P ı tuşlarından oluşan ve şirketimizin seçiliyken, Dialpad yönetici konsolunun ekran görüntüsü." border="false":::
 
 2. **Anahtar Ekle** ' ye tıklayıp gizli belirtecinizin özelliklerini yapılandırarak yeni bir anahtar oluşturun.
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad02.png" alt-text="Ayarlar simgesiyle, şirketim, kimlik doğrulamasından ve bir P ı tuşlarından oluşan ve şirketimizin seçiliyken, Dialpad yönetici konsolunun ekran görüntüsü." border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad02.png" alt-text="Dialpad yönetim konsolundaki bir P ı anahtarları sayfasının ekran görüntüsü. Anahtar ekleme vurgulanacaktır." border="false":::
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad03.png" alt-text="Ayarlar simgesiyle, şirketim, kimlik doğrulamasından ve bir P ı tuşlarından oluşan ve şirketimizin seçiliyken, Dialpad yönetici konsolunun ekran görüntüsü." border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad03.png" alt-text="Dialpad yönetim konsolundaki P. anahtarı Düzenle sayfasının ekran görüntüsü. Kaydet düğmesi vurgulanır." border="false":::
 
 3. Son oluşturduğunuz API anahtarınız için **değer göster** düğmesine tıklayın ve gösterilen değeri kopyalayın. Bu değer, Azure portal Dialpad uygulamanızın sağlama sekmesindeki **gizli belirteç** alanına girilir. 
 
@@ -72,11 +72,11 @@ Azure AD ile otomatik Kullanıcı sağlamak üzere Dialpad 'i yapılandırmak i�
 
 **Azure AD uygulama galerisinden Dialpad eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -84,24 +84,24 @@ Azure AD ile otomatik Kullanıcı sağlamak üzere Dialpad 'i yapılandırmak i�
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **dialpad**yazın, sonuçlar panelinde **dialpad** ' i seçin.
+4. Arama kutusuna, **dialpad** yazın, sonuçlar panelinde **dialpad** ' i seçin.
     ![Sonuçlar listesinde tuş takımı](common/search-new-app.png)
 
 5. Aşağıda vurgulanan **URL** 'yi ayrı bir tarayıcıda gezin. 
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad05.png" alt-text="Ayarlar simgesiyle, şirketim, kimlik doğrulamasından ve bir P ı tuşlarından oluşan ve şirketimizin seçiliyken, Dialpad yönetici konsolunun ekran görüntüsü." border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad05.png" alt-text="Dialpad uygulaması hakkında bilgi görüntüleyen bir sayfanın ekran görüntüsü. U R L 'nin altında bir adres listelenir ve vurgulanacaktır." border="false":::
 
 6. Sağ üst köşede oturum aç ' ı seçin **> çevrimiçi tuş takımını kullanın**.
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad06.png" alt-text="Ayarlar simgesiyle, şirketim, kimlik doğrulamasından ve bir P ı tuşlarından oluşan ve şirketimizin seçiliyken, Dialpad yönetici konsolunun ekran görüntüsü." border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad06.png" alt-text="Dialpad Web sitesinin ekran görüntüsü. Oturum açma vurgulanır ve oturum aç sekmesi açıktır. Çevrimiçi tuş takımını kullan seçeneği de vurgulanmıştır." border="false":::
 
 7. Dialpad bir Openıdconnect uygulaması olduğundan, Microsoft iş hesabınızı kullanarak giriş paneli 'Nde oturum açmayı seçin.
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/loginpage.png" alt-text="Ayarlar simgesiyle, şirketim, kimlik doğrulamasından ve bir P ı tuşlarından oluşan ve şirketimizin seçiliyken, Dialpad yönetici konsolunun ekran görüntüsü." border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/loginpage.png" alt-text="Dialpad Web sitesinde çağrı yapmayı Başlat sayfasının ekran görüntüsü. Office 365 ile oturum açma düğmesi vurgulanır." border="false":::
 
 8. Başarılı bir kimlik doğrulamasından sonra, onay sayfasının onay isteğini kabul edin. Uygulama daha sonra kiracınıza otomatik olarak eklenir ve bu, Dialpad hesabınıza yönlendirilirsiniz.
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/redirect.png" alt-text="Ayarlar simgesiyle, şirketim, kimlik doğrulamasından ve bir P ı tuşlarından oluşan ve şirketimizin seçiliyken, Dialpad yönetici konsolunun ekran görüntüsü." border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/redirect.png" alt-text="Bir Microsoft kimlik doğrulama sayfasını gösteren ve çevir paneli uygulamasının bazı verilere erişim isteğinde bulunduğunu belirten ekran görüntüsü. Kabul et düğmesi vurgulanır." border="false":::
 
  ## <a name="configure-automatic-user-provisioning-to-dialpad"></a>Otomatik Kullanıcı sağlamasını Dialpad 'e yapılandırma
 
@@ -109,11 +109,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı 
 
 ### <a name="to-configure-automatic-user-provisioning-for-dialpad-in-azure-ad"></a>Azure AD 'de Dialpad için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Dialpad**' i seçin.
+2. Uygulamalar listesinde, **Dialpad** ' i seçin.
 
     ![Uygulamalar listesindeki tuş takımı bağlantısı](common/all-applications.png)
 
@@ -121,21 +121,21 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı 
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünün altında, `https://dialpad.com/scim` **kiracı URL 'sini**girin. Daha önce aldığınız ve **gizli belirteçteki**dialpad 'ten kaydettiğiniz değeri girin. Azure AD 'nin Dialpad 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Dialpad hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünün altında, `https://dialpad.com/scim` **kiracı URL 'sini** girin. Daha önce aldığınız ve **gizli belirteçteki** dialpad 'ten kaydettiğiniz değeri girin. Azure AD 'nin Dialpad 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Dialpad hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**’e tıklayın.
+7. **Kaydet** ’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları çevir paneli**' ni seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları çevir paneli** ' ni seçin.
 
     ![Tuş takımı Kullanıcı eşlemeleri](media/dialpad-provisioning-tutorial/dialpad-user-mappings-new.png)
 
@@ -153,7 +153,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı 
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+13. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

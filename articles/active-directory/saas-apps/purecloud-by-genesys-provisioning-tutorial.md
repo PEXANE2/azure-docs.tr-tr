@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 02/05/2020
 ms.author: Zhchia
-ms.openlocfilehash: 46fe93a6ba823a7932d25dcc3fc8cf64cffb389e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: df1b3f81c1d8f9ead6d5773de6b6d1cd9517235e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516545"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357496"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Genesys tarafından Purecre 'yi yapılandırma
 
@@ -31,7 +31,7 @@ Bu öğreticide, otomatik Kullanıcı sağlamayı yapılandırmak için Genesys 
 > * Genesys tarafından Purecm 'de grupları ve grup üyeliklerini sağlama
 > * Genesys tarafından [Purecg 'de çoklu oturum açma](./purecloud-by-genesys-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 

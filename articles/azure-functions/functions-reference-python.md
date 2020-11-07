@@ -2,14 +2,14 @@
 title: Azure Işlevleri için Python geliştirici başvurusu
 description: Python ile işlev geliştirmeyi anlama
 ms.topic: article
-ms.date: 12/13/2019
+ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3d459f4249c65f2d09f9d8df6e7958adf852a2ea
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: cc99a8c10ecefc063fdb89c61bdaeb0e686b1a82
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346324"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358057"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
@@ -69,72 +69,70 @@ Yöntemlerinizi giriş ve çıkışları bağlamak için [Azure. Functions. *](/
 Python Işlevleri projesi için önerilen klasör yapısı aşağıdaki örneğe benzer şekilde görünür:
 
 ```
- __app__
- | - my_first_function
+ <project_root>/
+ | - .venv/
+ | - .vscode/
+ | - my_first_function/
  | | - __init__.py
  | | - function.json
  | | - example.py
- | - my_second_function
+ | - my_second_function/
  | | - __init__.py
  | | - function.json
- | - shared_code
+ | - shared_code/
+ | | - __init__.py
  | | - my_first_helper_function.py
  | | - my_second_helper_function.py
+ | - tests/
+ | | - test_my_second_function.py
+ | - .funcignore
  | - host.json
+ | - local.settings.json
  | - requirements.txt
  | - Dockerfile
- tests
 ```
-Ana proje klasörü ( \_ \_ uygulama \_ \_ ) aşağıdaki dosyaları içerebilir:
+Ana proje klasörü (<project_root>) aşağıdaki dosyaları içerebilir:
 
 * *local.settings.json* : yerel olarak çalışırken uygulama ayarlarını ve bağlantı dizelerini depolamak için kullanılır. Bu dosya Azure 'da yayınlanmıyor. Daha fazla bilgi için bkz. [Local. Settings. File](functions-run-local.md#local-settings-file).
-* *requirements.txt* : Azure 'a yayımlarken sistemin yüklediği paketlerin listesini içerir.
+* *requirements.txt* : Azure 'a yayımlarken sistem tarafından yüklenen Python paketlerinin listesini içerir.
 * *host.js* :: bir işlev uygulamasındaki tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu dosya Azure 'da yayımlanır. Yerel olarak çalışırken tüm seçenekler desteklenmez. Daha fazla bilgi için bkz. [host.json](functions-host-json.md).
-* *. funcignore* : (isteğe bağlı) Azure 'da yayımlanmaması gereken dosyaları bildirir.
+* *. vscode/* : (isteğe bağlı) mağaza vscode yapılandırmasını içerir. Daha fazla bilgi için bkz. [vscode Setting](https://code.visualstudio.com/docs/getstarted/settings).
+* *. venv/* : (isteğe bağlı) yerel geliştirme tarafından kullanılan bir Python sanal ortamı içerir.
 * *Dockerfile* : (isteğe bağlı) projenizi [özel kapsayıcıda](functions-create-function-linux-custom-image.md)yayımlarken kullanılır.
+* *testler/* : (isteğe bağlı) işlev uygulamanızın test çalışmalarını içerir.
+* *. funcignore* : (isteğe bağlı) Azure 'da yayımlanmaması gereken dosyaları bildirir. Genellikle, bu dosya `.vscode/` Düzenleyici ayarınızı yoksaymak, `.venv/` Yerel Python sanal ortamını yoksaymak, `tests/` test çalışmalarını yoksaymak ve `local.settings.json` yerel uygulama ayarlarının yayımlanmasını engellemek için içerir.
 
 Her işlevin kendi kod dosyası ve bağlama yapılandırma dosyası (function.js) vardır.
 
-Projenizi Azure 'daki bir işlev uygulamasına dağıttığınızda, ana proje ( *\_ \_ uygulama \_ \_* ) klasörünün tüm içeriği pakete dahil edilmelidir, ancak klasörün kendisi değil. Bu örnekte, testlerinizi proje klasöründen ayrı bir klasörde tutmanızı öneririz `tests` . Bu, uygulamanıza test kodu dağıtmanızı önler. Daha fazla bilgi için bkz. [birim testi](#unit-testing).
+Projenizi Azure 'da bir işlev uygulamasına dağıttığınızda, ana proje ( *<project_root>* ) klasörünün tüm içeriğinin, pakete dahil olması gerekir, ancak `host.json` paketin kökünde olması gerekir. Bu örnekte, testlerinizi diğer işlevlerle birlikte bir klasörde tutmanızı öneririz `tests/` . Daha fazla bilgi için bkz. [birim testi](#unit-testing).
 
 ## <a name="import-behavior"></a>İçeri aktarma davranışı
 
-İşlev kodunuzda modülleri, hem açık göreli hem de mutlak başvurular kullanarak içeri aktarabilirsiniz. Yukarıda gösterilen klasör yapısına bağlı olarak, aşağıdaki içeri aktarmalar *\_ \_ App \_ \_ \_ \first \_ Function \\ _ \_ init \_ \_ . Kopyala* işlev dosyası içinden çalışır:
+Mutlak ve göreli başvuruları kullanarak, işlev kodunuzda modüller içeri aktarabilirsiniz. Yukarıda gösterilen klasör yapısına bağlı olarak, aşağıdaki içeri aktarmalar<işlev dosyası içinden çalışır *project_root> \_ Silk \_ Function \\ _ \_ init \_ \_ . Kopyala* :
 
 ```python
-from . import example #(explicit relative)
+from shared_code import my_first_helper_function #(absolute)
 ```
 
 ```python
-from ..shared_code import my_first_helper_function #(explicit relative)
+import shared_code.my_second_helper_function #(absolute)
 ```
 
 ```python
-from __app__ import shared_code #(absolute)
+from . import example #(relative)
+```
+
+> [!NOTE]
+>  *shared_code/* \_ \_ \_ \_ Mutlak içeri aktarma söz dizimi kullanılırken, shared_code/klasörü bir Python paketi olarak işaretlemek için bir init. Kopyala dosyası içermelidir.
+
+Aşağıdaki \_ \_ uygulama \_ \_ içeri aktarma ve üst düzey göreli içe aktarmanın ötesinde, bu, statik tür denetleyicisi tarafından desteklenmediğinden ve Python test çerçeveleri tarafından desteklenmediğinden kullanım dışı bırakılmıştır:
+
+```python
+from __app__.shared_code import my_first_helper_function #(deprecated __app__ import)
 ```
 
 ```python
-import __app__.shared_code #(absolute)
-```
-
-Aşağıdaki içeri aktarmalar aynı dosya içinde *çalışmaz* :
-
-```python
-import example
-```
-
-```python
-from example import some_helper_code
-```
-
-```python
-import shared_code
-```
-
-Paylaşılan kod, *\_ \_ uygulamadaki \_ \_* ayrı bir klasörde tutulmalıdır. *Paylaşılan \_ kod* klasöründeki modüllere başvurmak için aşağıdaki sözdizimini kullanabilirsiniz:
-
-```python
-from __app__.shared_code import my_first_helper_function
+from ..shared_code import my_first_helper_function #(deprecated beyond top-level relative import)
 ```
 
 ## <a name="triggers-and-inputs"></a>Tetikleyiciler ve girişler
@@ -319,7 +317,7 @@ Varsayılan yapılandırma, Azure Işlevleri uygulamalarının çoğu için uygu
 |İşlev uygulaması özellikleri| <ul><li>Uygulamanın birçok eşzamanlı çağırma işlemesi gerekiyor.</li> <li> Uygulama, ağ çağrıları ve disk okuma/yazma gibi çok sayıda g/ç olayını işler.</li> </ul>| <ul><li>Uygulama, görüntü yeniden boyutlandırma gibi uzun süre çalışan hesaplamalar yapar.</li> <li>Uygulama veri dönüşümünü yapar.</li> </ul> |
 |Örnekler| <ul><li>Web API'leri</li><ul> | <ul><li>Veri işleme</li><li> Makine öğrenimi çıkarımı</li><ul>|
 
- 
+
 > [!NOTE]
 >  Gerçek dünya işlevleri iş yükü çoğunlukla g/ç ve CPU sınırının bir karışımından büyük olduğundan, iş yükünün gerçekçi üretim yükleri altında profilini oluşturmanızı öneririz.
 
@@ -387,7 +385,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT, uygulamanızın talebi karşılamak üzere ölç
 
 Yürütme sırasında bir işlevin çağırma bağlamını almak için, [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) bağımsız değişkenini imzasına ekleyin.
 
-Örneğin:
+Örnek:
 
 ```python
 import azure.functions
@@ -539,12 +537,14 @@ func azure functionapp publish <APP_NAME> --no-build
 
 Python 'da yazılan işlevler, standart test çerçeveleri kullanılarak diğer Python kodu gibi test edilebilir. Çoğu bağlamanın, paketten uygun bir sınıfın örneğini oluşturarak bir sahte giriş nesnesi oluşturmak mümkündür `azure.functions` . [`azure.functions`](https://pypi.org/project/azure-functions/)Paket hemen kullanılamadığından, `requirements.txt` Yukarıdaki [Paket Yönetimi](#package-management) bölümünde açıklandığı gibi dosyanızı dosya aracılığıyla yüklediğinizden emin olun.
 
-Örneğin, bir HTTP ile tetiklenen bir işlevin sahte testi aşağıdadır:
+Örnek olarak, bir HTTP tetiklenen işlevinin bir sahte testi olan *my_second_function* alın:
+
+Önce dosya *üzerinde<project_root>/my_second_function/function.js* oluşturmanız ve bu işlevi bir http tetikleyicisi olarak tanımlamanız gerekir.
 
 ```json
 {
   "scriptFile": "__init__.py",
-  "entryPoint": "my_function",
+  "entryPoint": "main",
   "bindings": [
     {
       "authLevel": "function",
@@ -565,106 +565,72 @@ Python 'da yazılan işlevler, standart test çerçeveleri kullanılarak diğer 
 }
 ```
 
+Şimdi, *my_second_function* ve *shared_code. My _second_helper_function* ' ı uygulayabiliriz.
+
 ```python
-# __app__/HttpTrigger/__init__.py
+# <project_root>/my_second_function/__init__.py
 import azure.functions as func
 import logging
 
-def my_function(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info('Python HTTP trigger function processed a request.')
+# Use absolute import to resolve shared_code modules
+from shared_code import my_second_helper_function
 
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
+# Define an http trigger which accepts ?value=<int> query parameter
+# Double the value and return the result in HttpResponse
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('Executing my_second_function.')
 
-    if name:
-        return func.HttpResponse(f"Hello {name}")
-    else:
-        return func.HttpResponse(
-             "Please pass a name on the query string or in the request body",
-             status_code=400
-        )
+    initial_value: int = int(req.params.get('value'))
+    doubled_value: int = my_second_helper_function.double(initial_value)
+
+    return func.HttpResponse(
+      body=f"{initial_value} * 2 = {doubled_value}",
+      status_code=200
+    )
 ```
 
 ```python
-# tests/test_httptrigger.py
+# <project_root>/shared_code/__init__.py
+# Empty __init__.py file marks shared_code folder as a Python package
+```
+
+```python
+# <project_root>/shared_code/my_second_helper_function.py
+
+def double(value: int) -> int:
+  return value * 2
+```
+
+Http tetikleyicimiz için test çalışmaları yazmaya başlayabiliriz.
+
+```python
+# <project_root>/tests/test_my_second_function.py
 import unittest
 
 import azure.functions as func
-from __app__.HttpTrigger import my_function
+from my_second_function import main
 
 class TestFunction(unittest.TestCase):
-    def test_my_function(self):
+    def test_my_second_function(self):
         # Construct a mock HTTP request.
         req = func.HttpRequest(
             method='GET',
             body=None,
-            url='/api/HttpTrigger',
-            params={'name': 'Test'})
+            url='/api/my_second_function',
+            params={'value': '21'})
 
         # Call the function.
-        resp = my_function(req)
+        resp = main(req)
 
         # Check the output.
         self.assertEqual(
             resp.get_body(),
-            b'Hello Test',
+            b'21 * 2 = 42',
         )
 ```
 
-Sıra tarafından tetiklenen bir işlev içeren başka bir örnek aşağıda verilmiştir:
+`.venv`Python sanal ortamınızın içinde, en sevdiğiniz Python test çerçevesini (ör.) yüklersiniz `pip install pytest` . Yalnızca `pytest tests` test sonucunu denetlemek için ' i çalıştırın.
 
-```json
-{
-  "scriptFile": "__init__.py",
-  "entryPoint": "my_function",
-  "bindings": [
-    {
-      "name": "msg",
-      "type": "queueTrigger",
-      "direction": "in",
-      "queueName": "python-queue-items",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-
-```python
-# __app__/QueueTrigger/__init__.py
-import azure.functions as func
-
-def my_function(msg: func.QueueMessage) -> str:
-    return f'msg body: {msg.get_body().decode()}'
-```
-
-```python
-# tests/test_queuetrigger.py
-import unittest
-
-import azure.functions as func
-from __app__.QueueTrigger import my_function
-
-class TestFunction(unittest.TestCase):
-    def test_my_function(self):
-        # Construct a mock Queue message.
-        req = func.QueueMessage(
-            body=b'test')
-
-        # Call the function.
-        resp = my_function(req)
-
-        # Check the output.
-        self.assertEqual(
-            resp,
-            'msg body: test',
-        )
-```
 ## <a name="temporary-files"></a>Geçici dosyalar
 
 `tempfile.gettempdir()`Yöntemi, Linux üzerinde olan geçici bir klasör döndürür `/tmp` . Uygulamanız, yürütme sırasında işlevleriniz tarafından oluşturulan ve kullanılan geçici dosyaları depolamak için bu dizini kullanabilir.
