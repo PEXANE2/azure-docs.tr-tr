@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: kişiselleştirici, Azure kişiselleştirici, makine öğrenimi
-ms.openlocfilehash: ae17b799c2b222525db53d5bb8e0afdbbcf19975
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: f843e7bfa014ad8391e20efff83a3c21a9de11b9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91777250"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363910"
 ---
 # <a name="what-is-personalizer"></a>Kişiselleştirme nedir?
 
@@ -29,14 +29,14 @@ Başlamadan önce [Bu etkileşimli tanıtım Ile kişiselleştirici](https://per
 
 ## <a name="how-does-personalizer-select-the-best-content-item"></a>Kişiselleştirici en iyi içerik öğesini nasıl seçer?
 
-Kişiselleştirici, tüm kullanıcılar arasında toplu davranışa ve yeniden puanları temel alan en iyi öğeyi (_eylem_) seçmek için **pekiştirmeye dayalı Learning** kullanır. Eylemler, haber makaleleri, belirli filmler veya ürünler gibi içerik öğeleridir.
+Kişiselleştirici, tüm kullanıcılar arasında toplu davranışa ve yeniden puanları temel alan en iyi öğeyi ( _eylem_ ) seçmek için **pekiştirmeye dayalı Learning** kullanır. Eylemler, haber makaleleri, belirli filmler veya ürünler gibi içerik öğeleridir.
 
 **Sıralama** çağrısı, eylem öğesini ve eylem özelliklerini ve en üstteki eylem öğesini seçmek için bağlam özelliklerini alır:
 
 * **Özelliklerle Ilgili eylemler** -her bir öğeye özgü özelliklerle içerik öğeleri
 * **Bağlam özellikleri** -uygulamanızın kullanımı sırasında kullanıcılarınızın özellikleri, bağlamları veya ortamları
 
-Sıralama çağrısı, **geri dönüş EYLEMI kimliği** alanında kullanıcıya gösterilecek içerik öğesi, __eylem__kimliğini döndürür.
+Sıralama çağrısı, **geri dönüş EYLEMI kimliği** alanında kullanıcıya gösterilecek içerik öğesi, __eylem__ kimliğini döndürür.
 
 Kullanıcıya gösterilen __eylem__ makine öğrenimi modelleriyle seçilir ve bu, zaman içinde toplam yeniden kullanım miktarını en üst düzeye çıkarmaya çalışır.
 
@@ -50,14 +50,14 @@ Kişiselleştirmenin, bir kullanıcı için işlenecek en iyi içeriği seçmek 
 |Filmler listesi|1. `Star Wars` (1977, [eylem, Adventure, FI], George Lucas)<br>2. `Hoop Dreams` (1994, [belgesel, spor], Steve James<br>3. `Casablanca` (1942, [Romantik, Drama, war], Michael Curtiz)|Cihaz filminin izlenen<br>ekran boyutu<br>Kullanıcı türü<br>|03. `Casablanca`|
 |Ürün listesi|i. `Product A` (3 kg, $ $ $ $, 24 saat içinde teslim et)<br>ii. `Product B` (20 kg, $ $, 2 hafta gümrük ile sevkiyat)<br>iii. `Product C` (3 kg, $ $ $, 48 saat içinde teslim)|Cihaz alışverişi buradan okundu<br>Kullanıcının harcama katmanı<br>Ay veya mevsim|ii. `Product B`|
 
-Kişiselleştirici, _ödül eylem kimliği_olarak bilinen tek bir en iyi eylemi seçmek için pekiştirmeye dayalı öğrenimi kullandı. Machine Learning modeli şunları kullanır: 
+Kişiselleştirici, _ödül eylem kimliği_ olarak bilinen tek bir en iyi eylemi seçmek için pekiştirmeye dayalı öğrenimi kullandı. Machine Learning modeli şunları kullanır: 
 
 * Makine öğrenimi modelini geliştirmek için kullanılan Kişiselleştir hizmetinden daha önce bir eğitilen model-bilgi alındı
 * Özelliklerle ve bağlam özellikleriyle geçerli veriye özgü eylemler
 
 ## <a name="when-to-use-personalizer"></a>Kişiselleştirici ne zaman kullanılır?
 
-Kişiselleştirici 'in **sıralama** [API 'si](https://go.microsoft.com/fwlink/?linkid=2092082) , uygulamanız içeriği her sunışınızda çağrılır. Bu, _olay kimliği_ile belirtilen bir **olay**olarak bilinir.
+Kişiselleştirici 'in **sıralama** [API 'si](https://go.microsoft.com/fwlink/?linkid=2092082) , uygulamanız içeriği her sunışınızda çağrılır. Bu, _olay kimliği_ ile belirtilen bir **olay** olarak bilinir.
 
 Kişiselleştiriciye yönelik **Reward** [API 'si](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) gerçek zamanlı olarak çağrılabilir veya altyapınıza daha iyi uyum sağlamak için gecikebilir. İş gereksinimlerinize göre ödül puanı ' nı belirlersiniz. Ödül puanı 0 ile 1 arasındadır. Bu, iyi için 1 ve hatalı için 0 gibi tek bir değer ya da iş hedeflerinizi ve ölçümünüzü göz önünde bulundurarak oluşturduğunuz bir algoritma tarafından üretilen bir sayı olabilir.
 
@@ -87,7 +87,7 @@ Kişiselleştirici, tek en iyi içerik öğesini döndürmek için neredeyse ger
 
 1. Uygulamanıza, Web sitenize veya sisteminize kişiselleştirici ekleyin:
     1. İçerik kullanıcıya gösterilmeden önce en iyi, tek _içerik_ öğesini belirleyebilmek için, uygulamanızda, Web sitenizde veya sisteminizde kişiselleştiriciye bir **Derecelendirme** çağrısı ekleyin.
-    1. Kullanıcıya döndürülen geri dönüş _EYLEMI kimliği_olan en iyi, tek _içerik_ öğesini görüntüleyin.
+    1. Kullanıcıya döndürülen geri dönüş _EYLEMI kimliği_ olan en iyi, tek _içerik_ öğesini görüntüleyin.
     1. Kullanıcı _mantığını_ , kullanıcının nasıl davrandığını öğrenmek, örneğin: **reward**
 
     |Davranış|Hesaplanan ödül puanı|
@@ -105,7 +105,7 @@ Kişiselleştirici, tek en iyi içerik öğesini döndürmek için neredeyse ger
 
 C#, JavaScript ve Python 'da hızlı başlangıç sunuyoruz. Her hızlı başlangıç size temel tasarım desenleri öğretmek ve kodu 10 dakikadan kısa bir süre içinde çalıştırmak için tasarlanmıştır. 
 
-* [Hızlı başlangıç: kişiselleştirici istemci kitaplığını kullanma](sdk-learning-loop.md)
+* [Hızlı başlangıç: kişiselleştirici istemci kitaplığını kullanma](./quickstart-personalizer-sdk.md)
 
 Kişiselleştirici hizmeti ile çalışmaya başlama şansınız olduktan sonra öğreticilerimizi deneyin ve Web uygulamaları, sohbet botları veya bir Azure Not defteri 'nde Kişiselleştiriciye nasıl kullanacağınızı öğrenin.
 
@@ -115,10 +115,10 @@ Kişiselleştirici hizmeti ile çalışmaya başlama şansınız olduktan sonra 
 
 ## <a name="reference"></a>Başvuru 
 
-* [Kişiselleştirici C#/.NET SDK 'Sı](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet)
+* [Kişiselleştirici C#/.NET SDK 'Sı](/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet)
 * [Kişiselleştirici git SDK 'Sı](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/personalizer/v1.0/personalizer)
-* [Kişiselleştirici JavaScript SDK 'Sı](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)
-* [Kişiselleştirici Python SDK 'Sı](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
+* [Kişiselleştirici JavaScript SDK 'Sı](/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)
+* [Kişiselleştirici Python SDK 'Sı](/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
 * [REST API'leri](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank)
 
 ## <a name="next-steps"></a>Sonraki adımlar

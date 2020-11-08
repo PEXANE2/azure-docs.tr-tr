@@ -8,59 +8,59 @@ ms.service: cognitive-services
 ms.topic: overview
 ms.date: 07/09/2020
 ms.author: marhamil
-ms.openlocfilehash: 030fb4b4e5fa10304167f8d6bc2307c5b93c6d58
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 1b08925db12edffdaf5c85f1fa6f5934a412d81f
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776638"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363315"
 ---
 # <a name="azure-cognitive-services-for-big-data"></a>Büyük veriler için Azure bilişsel hizmetler
 
 ![Büyük veriler için Azure bilişsel hizmetler](media/cognitive-services-big-data-overview.svg)
 
-Büyük veriler için Azure bilişsel hizmetler, kullanıcıların bilişsel hizmetler aracılığıyla [Apache Spark &trade; ](https://docs.microsoft.com/dotnet/spark/what-is-spark)kullanarak veri, terabaytlarca veri kanalı sağlar. Büyük veriler için bilişsel hizmetler sayesinde, herhangi bir veri deposu ile büyük ölçekli akıllı uygulamalar oluşturmak kolaydır.
+Büyük veriler için Azure bilişsel hizmetler, kullanıcıların bilişsel hizmetler aracılığıyla [Apache Spark &trade; ](/dotnet/spark/what-is-spark)kullanarak veri, terabaytlarca veri kanalı sağlar. Büyük veriler için bilişsel hizmetler sayesinde, herhangi bir veri deposu ile büyük ölçekli akıllı uygulamalar oluşturmak kolaydır.
 
 Büyük veriler için bilişsel hizmetler sayesinde, akıllı modellerinizi doğrudan Apache Spark &trade; ve SQL hesaplamaları içine ekleyebilirsiniz. Bu araçlar, geliştiricilerin akıllı ve dağıtılmış uygulamalar oluşturmaya odaklanabilmeleri için düşük düzeyli ağ ayrıntılarından kurtulmasını sağlayabilir.
 
 ## <a name="features-and-benefits"></a>Özellikler ve avantajlar
 
-Büyük veriler için bilişsel hizmetler, dünyanın herhangi bir bölgesindeki Hizmetleri ve [Kapsayıcılı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support)bilişsel hizmetler 'i kullanabilirler. Kapsayıcılar, ultra düşük gecikme süresine sahip düşük veya hiç bağlantı dağıtımını destekler. Kapsayıcılı bilişsel hizmetler yerel olarak, Spark kümenizin çalışan düğümlerinde veya Kubernetes gibi harici bir Orchestrator üzerinde çalıştırılabilir.
+Büyük veriler için bilişsel hizmetler, dünyanın herhangi bir bölgesindeki Hizmetleri ve [Kapsayıcılı](../cognitive-services-container-support.md)bilişsel hizmetler 'i kullanabilirler. Kapsayıcılar, ultra düşük gecikme süresine sahip düşük veya hiç bağlantı dağıtımını destekler. Kapsayıcılı bilişsel hizmetler yerel olarak, Spark kümenizin çalışan düğümlerinde veya Kubernetes gibi harici bir Orchestrator üzerinde çalıştırılabilir.
 
 ## <a name="supported-services"></a>Desteklenen hizmetler
 
-API 'Ler ve SDK 'Lar aracılığıyla erişilen bilişsel [Hizmetler](https://docs.microsoft.com/azure/cognitive-services/), geliştiricilerin AI veya veri bilimi becerileri olmadan akıllı uygulamalar oluşturmasına yardımcı olur. Bilişsel hizmetler sayesinde uygulamalarınızın görmesini, duymasını, konuşmasını, anlamasını ve nedenini görmenizi sağlayabilirsiniz. Bilişsel hizmetler 'i kullanmak için uygulamanızın ağ üzerinden hizmete veri gönderilmesi gerekir. Hizmet alındıktan sonra, dönüş sırasında akıllı bir yanıt gönderir. Büyük veri iş yükleri için aşağıdaki hizmetler mevcuttur:
+API 'Ler ve SDK 'Lar aracılığıyla erişilen bilişsel [Hizmetler](../index.yml), geliştiricilerin AI veya veri bilimi becerileri olmadan akıllı uygulamalar oluşturmasına yardımcı olur. Bilişsel hizmetler sayesinde uygulamalarınızın görmesini, duymasını, konuşmasını, anlamasını ve nedenini görmenizi sağlayabilirsiniz. Bilişsel hizmetler 'i kullanmak için uygulamanızın ağ üzerinden hizmete veri gönderilmesi gerekir. Hizmet alındıktan sonra, dönüş sırasında akıllı bir yanıt gönderir. Büyük veri iş yükleri için aşağıdaki hizmetler mevcuttur:
 
 ### <a name="vision"></a>Görsel
 
 |Hizmet Adı|Hizmet Açıklaması|
 |:-----------|:------------------|
-|[Görüntü İşleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Görüntü İşleme")| Görüntü İşleme Hizmeti, görüntüleri işlemeye ve bilgi döndürmeye yönelik gelişmiş algoritmalara erişmenizi sağlar. |
-|[Yüz Tanıma](https://docs.microsoft.com/azure/cognitive-services/face/ "Yüz Tanıma")| Yüz tanıma hizmeti, yüz öznitelik algılamayı ve tanımayı etkinleştirerek gelişmiş yüz algoritmalarına erişim sağlar. |
+|[Görüntü İşleme](../computer-vision/index.yml "Görüntü İşleme")| Görüntü İşleme Hizmeti, görüntüleri işlemeye ve bilgi döndürmeye yönelik gelişmiş algoritmalara erişmenizi sağlar. |
+|[Yüz Tanıma](../face/index.yml "Yüz")| Yüz tanıma hizmeti, yüz öznitelik algılamayı ve tanımayı etkinleştirerek gelişmiş yüz algoritmalarına erişim sağlar. |
 
 ### <a name="speech"></a>Konuşma
 
 |Hizmet Adı|Hizmet Açıklaması|
 |:-----------|:------------------|
-|[Konuşma hizmeti](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Konuşma hizmeti")|Konuşma hizmeti, konuşma tanıma, konuşma birleştirme, konuşma çevirisi ve konuşmacı doğrulama ve tanımlama gibi özelliklere erişim sağlar.|
+|[Konuşma hizmeti](../speech-service/index.yml "Konuşma hizmeti")|Konuşma hizmeti, konuşma tanıma, konuşma birleştirme, konuşma çevirisi ve konuşmacı doğrulama ve tanımlama gibi özelliklere erişim sağlar.|
 
 ### <a name="decision"></a>Karar
 
 |Hizmet Adı|Hizmet Açıklaması|
 |:-----------|:------------------|
-|[Anomali Algılayıcısı](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "Anomali Algılayıcısı") | Anomali algılayıcısı (Önizleme) hizmeti, zaman serisi verilerinizde normalleştirimler izlemenize ve bunları algılamanıza olanak tanır.|
+|[Anomali Algılayıcısı](../anomaly-detector/index.yml "Anomali Algılayıcısı") | Anomali algılayıcısı (Önizleme) hizmeti, zaman serisi verilerinizde normalleştirimler izlemenize ve bunları algılamanıza olanak tanır.|
 
 ### <a name="language"></a>Dil
 
 |Hizmet Adı|Hizmet Açıklaması|
 |:-----------|:------------------|
-|[Metin Analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Metin Analizi")| Metin Analizi hizmeti, yaklaşım analizi, anahtar ifade ayıklama ve dil algılama için ham metin üzerinde doğal dil işleme sağlar.|
+|[Metin Analizi](../text-analytics/index.yml "Metin Analizi")| Metin Analizi hizmeti, yaklaşım analizi, anahtar ifade ayıklama ve dil algılama için ham metin üzerinde doğal dil işleme sağlar.|
 
 ### <a name="search"></a>Arama
 
 |Hizmet Adı|Hizmet Açıklaması|
 |:-----------|:------------------|
-|[Bing Resim Arama](https://docs.microsoft.com/azure/cognitive-services/bing-image-search "Bing Resim Arama")|Bing Resim Arama hizmeti, kullanıcının sorgusuyla ilgili olduğunu belirlenen görüntülerin bir görüntüsünü döndürür.|
+|[Bing Resim Arama](/azure/cognitive-services/bing-image-search "Bing Resim Arama")|Bing Resim Arama hizmeti, kullanıcının sorgusuyla ilgili olduğunu belirlenen görüntülerin bir görüntüsünü döndürür.|
 
 ## <a name="supported-programming-languages-for-cognitive-services-for-big-data"></a>Büyük veriler için bilişsel hizmetler için desteklenen programlama dilleri
 
@@ -80,19 +80,19 @@ Büyük veriler için bilişsel hizmetler Apache Spark gerektirir. Büyük veril
 
 ### <a name="azure-databricks"></a>Azure Databricks
 
-[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks), Microsoft Azure bulut hizmetleri platformu için iyileştirilen Apache Spark tabanlı bir analiz platformudur. Tek tıklamayla kurulum, kolaylaştırılmış iş akışları ve veri bilimcileri, veri mühendisleri ve iş analistleri arasında işbirliğini destekleyen etkileşimli bir çalışma alanı sağlar.
+[Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks), Microsoft Azure bulut hizmetleri platformu için iyileştirilen Apache Spark tabanlı bir analiz platformudur. Tek tıklamayla kurulum, kolaylaştırılmış iş akışları ve veri bilimcileri, veri mühendisleri ve iş analistleri arasında işbirliğini destekleyen etkileşimli bir çalışma alanı sağlar.
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-[Azure SYNAPSE Analytics](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/synapse-analytics) (eskı adıyla SQL veri ambarı), büyük ölçüde paralel işleme kullanan kurumsal veri ambarı olarak adlandırılmıştır. SYNAPSE Analytics ile, petabaytlarca veri genelinde karmaşık sorguları hızlı bir şekilde çalıştırabilirsiniz. Azure SYNAPSE Analytics, bir sezgisel Jupyter Notebook arabirimiyle Spark Işleri çalıştırmak için yönetilen Spark havuzları sağlar.
+[Azure SYNAPSE Analytics](/azure/databricks/data/data-sources/azure/synapse-analytics) (eskı adıyla SQL veri ambarı), büyük ölçüde paralel işleme kullanan kurumsal veri ambarı olarak adlandırılmıştır. SYNAPSE Analytics ile, petabaytlarca veri genelinde karmaşık sorguları hızlı bir şekilde çalıştırabilirsiniz. Azure SYNAPSE Analytics, bir sezgisel Jupyter Notebook arabirimiyle Spark Işleri çalıştırmak için yönetilen Spark havuzları sağlar.
 
 ### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-[Azure Kubernetes hizmeti (AKS)](https://docs.microsoft.com/azure/aks/) , Docker kapsayıcılarını ve dağıtılmış uygulamaları büyük ölçekli ölçekte düzenler. AKS, Azure 'da Kubernetes kullanımını kolaylaştıran, yönetilen bir Kubernetes sunumudur. Kubernetes bilişsel hizmet ölçeği, gecikme süresi ve ağ üzerinde ayrıntılı denetim sağlayabilir. Ancak, Apache Spark hakkında bilginiz varsa Azure Databricks veya SYNAPSE analizlerini kullanmanızı öneririz.
+[Azure Kubernetes hizmeti (AKS)](../../aks/index.yml) , Docker kapsayıcılarını ve dağıtılmış uygulamaları büyük ölçekli ölçekte düzenler. AKS, Azure 'da Kubernetes kullanımını kolaylaştıran, yönetilen bir Kubernetes sunumudur. Kubernetes bilişsel hizmet ölçeği, gecikme süresi ve ağ üzerinde ayrıntılı denetim sağlayabilir. Ancak, Apache Spark hakkında bilginiz varsa Azure Databricks veya SYNAPSE analizlerini kullanmanızı öneririz.
 
 ### <a name="data-connectors"></a>Veri bağlayıcıları
 
-Spark kümeniz olduktan sonra, bir sonraki adım verilerinize bağlanıyor. Apache Spark, veritabanı bağlayıcılarının geniş bir koleksiyonuna sahiptir. Bu bağlayıcılar, uygulamaların nerede depolandıklarından bağımsız olarak büyük veri kümeleriyle çalışmasına izin verir. Desteklenen veritabanları ve bağlayıcılar hakkında daha fazla bilgi için, [Azure Databricks için desteklenen veri kaynaklarının listesine](https://docs.microsoft.com/azure/databricks/data/data-sources/)bakın.
+Spark kümeniz olduktan sonra, bir sonraki adım verilerinize bağlanıyor. Apache Spark, veritabanı bağlayıcılarının geniş bir koleksiyonuna sahiptir. Bu bağlayıcılar, uygulamaların nerede depolandıklarından bağımsız olarak büyük veri kümeleriyle çalışmasına izin verir. Desteklenen veritabanları ve bağlayıcılar hakkında daha fazla bilgi için, [Azure Databricks için desteklenen veri kaynaklarının listesine](/azure/databricks/data/data-sources/)bakın.
 
 ## <a name="concepts"></a>Kavramlar
 

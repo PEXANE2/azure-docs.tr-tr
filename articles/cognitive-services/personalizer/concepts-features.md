@@ -8,18 +8,18 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 590416f077fc1ff9430e42e27217548476c9032f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edd1549ddabef0ae1ba37150ad75a371ac6e6d85
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132781"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365525"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Özellikler, Eylemler ve bağlamla ilgili bilgiler
 
 Kişiselleştirici hizmeti, uygulamanızın belirli bir bağlamdaki kullanıcılara ne göstermesi gerektiğini öğrenerek işe yarar.
 
-Kişiselleştirici, en iyi **eylemi**seçmek için **geçerli bağlamla** ilgili bilgiler olan **özellikleri**kullanır. Özellikler, daha yüksek ödüller elde etmek için kişiselleştirmenize yardımcı olabilecek tüm bilgileri temsil eder. Özellikler çok genel veya bir öğeye özgü olabilir. 
+Kişiselleştirici, en iyi **eylemi** seçmek için **geçerli bağlamla** ilgili bilgiler olan **özellikleri** kullanır. Özellikler, daha yüksek ödüller elde etmek için kişiselleştirmenize yardımcı olabilecek tüm bilgileri temsil eder. Özellikler çok genel veya bir öğeye özgü olabilir. 
 
 Örneğin, şu **özelliklere** sahip olabilirsiniz:
 
@@ -41,8 +41,8 @@ Kişiselleştirici dize, sayısal ve Boole türlerinin özelliklerini destekler.
 
 ### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>Özellik türü seçimi, kişiselleştirici içinde Machine Learning nasıl etkiler
 
-* **Dizeler**: dize türleri için, her anahtar ve değerin birleşimi, kişiselleştirici makine öğrenimi modelinde yeni ağırlıklar oluşturur. 
-* **Sayısal**: sayı, kişiselleştirme sonucunu orantılı bir şekilde etkiliyorsa sayısal değerleri kullanmanız gerekir. Bu, çok senaryoya bağımlıdır. Basitleştirilmiş bir örnekte, örneğin, bir perakende deneyimini kişiselleştirmek için, 2 veya 3 pelleri olan kişilerin kişiselleştirme sonucunu iki kez etkilemesini veya 1 Evcil hayvan 'yı büyük ölçüde etkilemesini isteyebileceğiniz için sayısal olan bir özellik olabilir. Sayısal birimleri temel alan, ancak anlamı yaş, sıcaklık veya kişi yüksekliği gibi doğrusal olmayan, en iyi dize olarak kodlanan ve özellik kalitesi genellikle aralıklar kullanılarak iyileştirilen özelliklerdir. Örneğin, Yaş "Age" olarak kodlanıp: "0-5", "Age": "6-10", vb.
+* **Dizeler** : dize türleri için, her anahtar ve değerin birleşimi, kişiselleştirici makine öğrenimi modelinde yeni ağırlıklar oluşturur. 
+* **Sayısal** : sayı, kişiselleştirme sonucunu orantılı bir şekilde etkiliyorsa sayısal değerleri kullanmanız gerekir. Bu, çok senaryoya bağımlıdır. Basitleştirilmiş bir örnekte, örneğin, bir perakende deneyimini kişiselleştirmek için, 2 veya 3 pelleri olan kişilerin kişiselleştirme sonucunu iki kez etkilemesini veya 1 Evcil hayvan 'yı büyük ölçüde etkilemesini isteyebileceğiniz için sayısal olan bir özellik olabilir. Sayısal birimleri temel alan, ancak anlamı yaş, sıcaklık veya kişi yüksekliği gibi doğrusal olmayan, en iyi dize olarak kodlanan ve özellik kalitesi genellikle aralıklar kullanılarak iyileştirilen özelliklerdir. Örneğin, Yaş "Age" olarak kodlanıp: "0-5", "Age": "6-10", vb.
 * "False" değeri ile gönderilen **Boole** değerleri, hiç gönderilmemiş gibi davranır.
 
 Mevcut olmayan özellikler istekten atlanmalıdır. Model eğitimi yaparken, bir null değeri olan ve bir "null" değeri ile işlenen özellikler göndermekten kaçının.
@@ -54,7 +54,7 @@ Kişiselleştirici, ad alanları halinde düzenlenmiş özellikleri alır. Uygul
 Uygulamalar tarafından kullanılan özellik ad alanı örnekleri aşağıda verilmiştir:
 
 * User_Profile_from_CRM
-* Süre
+* Zaman
 * Mobile_Device_Info
 * http_user_agent
 * VideoResolution
@@ -115,7 +115,7 @@ Aşağıdaki önerileri takip eden, kişiselleştirici derecelendirme API 'sine 
 
 * Sürücü kişiselleştirmesi için yeterli özellik vardır. İçeriğin daha kesin bir şekilde hedeflenmiş olması gerekir, daha fazla özellik gereklidir.
 
-* Çeşitli *siteler*için yeterli özellikler vardır. Birçok öğe birkaç demette gruplandırılmışsa özellik *yoğun* olur. Örneğin, binlerce video "Long" (5 dakikadan fazla) ve "Short" (5 dakikalık bir süre altında) olarak sınıflandırılabilirler. Bu *çok yoğun* bir özelliktir. Diğer taraftan, aynı değere sahip olan binlerce öğe "title" adlı bir özniteliğe sahip olabilir, bu da neredeyse hiçbir şekilde bir öğeden diğerine benzer. Bu çok yoğun olmayan veya *seyrek* bir özelliktir.  
+* Çeşitli *siteler* için yeterli özellikler vardır. Birçok öğe birkaç demette gruplandırılmışsa özellik *yoğun* olur. Örneğin, binlerce video "Long" (5 dakikadan fazla) ve "Short" (5 dakikalık bir süre altında) olarak sınıflandırılabilirler. Bu *çok yoğun* bir özelliktir. Diğer taraftan, aynı değere sahip olan binlerce öğe "title" adlı bir özniteliğe sahip olabilir, bu da neredeyse hiçbir şekilde bir öğeden diğerine benzer. Bu çok yoğun olmayan veya *seyrek* bir özelliktir.  
 
 Yüksek yoğunluklu özelliklerin olması, kişiselleştirmeye en geç öğrenmeyi bir öğeden diğerine kadar ortadan kaldırmanıza yardımcı olur. Ancak, yalnızca birkaç özellik varsa ve bunlar çok yoğun ise, kişiselleştirici, içeriği yalnızca birkaç demetle tam olarak hedeflemek üzere çalışır.
 
@@ -144,7 +144,7 @@ Yapay zeka ve çalıştırmaya hazırlanma bilişsel hizmetler, Kişiselleştiri
 
 Yapay zeka hizmetlerini kullanarak öğelerinizi ön işlemden yararlanarak, kişiselleştirmeyle ilgili olabilecek olası bilgileri otomatik olarak ayıklayabilirsiniz.
 
-Örneğin:
+Örnek:
 
 * Sahne öğelerini, metni, yaklaşımı ve diğer birçok özniteliği ayıklamak için [video Indexer](https://azure.microsoft.com/services/media-services/video-indexer/) aracılığıyla bir film dosyası çalıştırabilirsiniz. Bu öznitelikler daha sonra, özgün öğe meta verilerinde bulunmayan özellikleri yansıtacak şekilde daha yoğun hale getirilebilir. 
 * Görüntüler, nesne algılama, yaklaşım, yüz ve benzeri işlemler aracılığıyla çalıştırılabilir.
@@ -152,10 +152,10 @@ Yapay zeka hizmetlerini kullanarak öğelerinizi ön işlemden yararlanarak, ki�
 
 Gibi diğer birçok Azure bilişsel [hizmeti](https://www.microsoft.com/cognitive-services)kullanabilirsiniz.
 
-* [Varlık Bağlama](../entitylinking/home.md)
+* [Varlık Bağlama](../text-analytics/index.yml)
 * [Metin Analizi](../text-analytics/overview.md)
-* [Duygu](../emotion/home.md)
-* [Görüntü İşleme](../computer-vision/home.md)
+* [Duygu](../face/overview.md)
+* [Görüntü İşleme](../computer-vision/overview.md)
 
 ## <a name="actions-represent-a-list-of-options"></a>Eylemler bir seçenek listesini temsil eder
 
@@ -205,7 +205,7 @@ Eylemlerden özellikler genellikle içerik yönetim sistemlerinden, katalogları
 
 Bazı durumlarda, kullanıcılara görüntülenmesini istemediğiniz eylemler vardır. Bir eylemin en üst olarak derecelendirmasını önlemenin en iyi yolu, bunu ilk yerde bulunan işlem API 'sine eylem listesine dahil etmez.
 
-Bazı durumlarda, yalnızca bir derecelendirme API çağrısının sonuç _eylemi_ bir kullanıcıya gösteriliyorsa, iş mantığınızdaki daha sonra belirlenebilir. Bu gibi durumlarda, _etkin olmayan olayları_kullanmanız gerekir.
+Bazı durumlarda, yalnızca bir derecelendirme API çağrısının sonuç _eylemi_ bir kullanıcıya gösteriliyorsa, iş mantığınızdaki daha sonra belirlenebilir. Bu gibi durumlarda, _etkin olmayan olayları_ kullanmanız gerekir.
 
 ## <a name="json-format-for-actions"></a>Eylemler için JSON biçimi
 
@@ -322,4 +322,4 @@ JSON nesneleri, iç içe geçmiş JSON nesnelerini ve basit özellik/değerleri 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Pekiştirmeye dayalı öğrenme](concepts-reinforcement-learning.md) 
+[Pekiştirmeye dayalı öğrenme](concepts-reinforcement-learning.md)

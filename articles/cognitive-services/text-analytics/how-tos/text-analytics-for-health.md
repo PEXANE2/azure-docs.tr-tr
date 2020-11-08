@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: d9517eef8976e79db21fbe552861d0d59923e8ba
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: e3e0ae444e2b3b6ac195a83653baf4b71bac6644
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173951"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363876"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Nasıl yapılır: sistem durumu için Metin Analizi kullanma (Önizleme)
 
@@ -32,7 +32,7 @@ Sistem durumu Metin Analizi, Doktor notları, disşarj özetleri, klinik belgele
 
 Sistem durumu kapsayıcısı için Metin Analizi Şu anda adlandırılmış varlık tanıma (NER), ilişki ayıklama, varlık olumsuzlama ve kendi geliştirme ortamınızda, belirli güvenlik ve veri idare gereksinimlerinizi karşılayan Ingilizce metin için varlık bağlama işlemini gerçekleştiriyor.
 
-#### <a name="named-entity-recognition"></a>[Adlandırılmış Varlık Tanıma](#tab/ner)
+#### <a name="named-entity-recognition"></a>[Adlandırılmış varlık tanıma](#tab/ner)
 
 Adlandırılmış varlık tanıma, bir veya daha fazla anlamsal tür ile ilişkilendirilebilen (örn. tanılama, yollara adı, belirti/işaret veya yaş gibi), yapılandırılmamış metinde belirtilen kelimeleri ve tümceleri algılar.
 
@@ -84,7 +84,7 @@ Kapsayıcıya erişim istemek için bilişsel [Hizmetler kapsayıcıları istek 
 Kapsayıcıyı yükleyip çalıştırmak için birden çok yol vardır. 
 
 - Bir Metin Analizi kaynağı oluşturmak için [Azure Portal](text-analytics-how-to-install-containers.md?tabs=healthcare) kullanın ve kapsayıcınızı almak Için Docker 'ı kullanın.
-- Kaynak dağıtımı kapsayıcı yapılandırmasını otomatikleştirmek için aşağıdaki PowerShell ve [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) betikleri kullanın.
+- Kaynak dağıtımı kapsayıcı yapılandırmasını otomatikleştirmek için aşağıdaki PowerShell ve [Azure CLI](/cli/azure/?view=azure-cli-latest) betikleri kullanın.
 
 ### <a name="install-the-container-using-azure-web-app-for-containers"></a>Azure Kapsayıcılar için Web App kullanarak kapsayıcıyı yüklerken
 
@@ -124,7 +124,7 @@ az webapp config appsettings set -g $resource_group_name -n $appservice_name --s
 Ayrıca, dağıtımı kolaylaştırmak için bir Azure Container Instance (acı) kullanabilirsiniz. ACI, yönetilen, sunucusuz bir Azure ortamında Docker kapsayıcılarını isteğe bağlı olarak çalıştırmanıza olanak tanıyan bir kaynaktır. 
 
 Azure portal kullanarak ACI kaynağını dağıtma adımları için bkz. [Azure Container Instances nasıl kullanılır](text-analytics-how-to-use-container-instances.md) . Ayrıca, kapsayıcı görüntüsünü kullanarak aboneliğinizde bir ACI oluşturacak olan Azure CLı kullanarak aşağıdaki PowerShell betiğini de kullanabilirsiniz.  İlk isteği göndermeden önce betiğin (yaklaşık 25-30 dakika) tamamlanmasını bekleyin.  ACI kaynağı başına en fazla CPU sayısı sınırı nedeniyle, her istek için 5 ' ten fazla büyük belge (yaklaşık 5000 karakter) göndermeyi düşünüyorsanız bu seçeneği seçmeyin.
-Kullanılabilirlik bilgileri için [acı bölgesel destek](https://docs.microsoft.com/azure/container-instances/container-instances-region-availability) makalesine bakın. 
+Kullanılabilirlik bilgileri için [acı bölgesel destek](../../../container-instances/container-instances-region-availability.md) makalesine bakın. 
 
 > [!NOTE] 
 > Azure Container Instances Builtin Domains için HTTPS desteği eklemeyin. HTTPS gerekiyorsa, sertifika oluşturma ve bir etki alanını kaydetme dahil olmak üzere el ile yapılandırmanız gerekir. Bunu, aşağıdaki NGıNX ile yapmak için yönergeler bulabilirsiniz.
@@ -399,7 +399,7 @@ Değilleme algılama kullanılırken, bazı durumlarda tek bir olumsuzlama bir k
 
 ### <a name="relation-extraction-output"></a>İlişki ayıklama çıkışı
 
-İlişki ayıklama çıkışı, ilişkinin *kaynağına* ve *hedefine*URI başvuruları içerir. İlişki rolü olan varlıklar `ENTITY` `target` alana atanır. İlişki rolü olan varlıklar `ATTRIBUTE` `source` alana atanır. Kısaltma ilişkileri çift yönlü `source` ve `target` alanları içerir ve `bidirectional` olarak ayarlanır `true` . 
+İlişki ayıklama çıkışı, ilişkinin *kaynağına* ve *hedefine* URI başvuruları içerir. İlişki rolü olan varlıklar `ENTITY` `target` alana atanır. İlişki rolü olan varlıklar `ATTRIBUTE` `source` alana atanır. Kısaltma ilişkileri çift yönlü `source` ve `target` alanları içerir ve `bidirectional` olarak ayarlanır `true` . 
 
 ```json
 "relations": [

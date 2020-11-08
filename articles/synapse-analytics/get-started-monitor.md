@@ -10,16 +10,16 @@ ms.service: synapse-analytics
 ms.subservice: monitoring
 ms.topic: tutorial
 ms.date: 10/15/2020
-ms.openlocfilehash: d497ff1a829902c0623740f01a457e6496db2401
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 924ac3a58a005b84cbf87f833e97862e26a5b8e0
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744962"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363366"
 ---
 # <a name="monitor-your-synapse-workspace"></a>SYNAPSE çalışma alanınızı izleme
 
-Bu öğreticide, SYNAPSE çalışma alanınızdaki etkinlikleri izlemeyi öğreneceksiniz. SQL, Apache Spark için geçerli ve geçmiş etkinliklerini izleyebilirsiniz. ve işlem hatları. 
+Bu öğreticide, SYNAPSE çalışma alanınızdaki etkinlikleri izlemeyi öğreneceksiniz. SQL, Apache Spark ve işlem hatları için geçerli ve geçmiş etkinlikleri izleyebilirsiniz. 
 
 ## <a name="introduction-to-the-monitor-hub"></a>Izleyici hub 'ına giriş
 

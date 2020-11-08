@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: aca3b0bea65923cee1bae25020058666c973922c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ffa70afa0edf29181bc622cbef6ff8716134b1f7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73837131"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364947"
 ---
 # <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>Metin Analizi bilişsel hizmet hakkında sık sorulan sorular (SSS)
 
@@ -29,11 +29,11 @@ Yaklaşım analizinde her zaman bir noktasında kesinlik eksikliği derecesi var
 
 ## <a name="can-i-add-my-own-training-data-or-models"></a>Kendi eğitim verilerimi veya modellerimi ekleyebilir miyim?
 
-Hayır, modeller önceden eğitilir. Karşıya yüklenen verilerde kullanılabilen tek işlemler Puanlama, anahtar ifade ayıklama ve dil algılama ' dır. Özel modeller barındırmıyor. Özel makine öğrenimi modelleri oluşturmak ve barındırmak istiyorsanız, [Microsoft R Server ' de makine öğrenimi özelliklerini](https://docs.microsoft.com/r-server/r/concept-what-is-the-microsoftml-package)göz önünde bulundurun.
+Hayır, modeller önceden eğitilir. Karşıya yüklenen verilerde kullanılabilen tek işlemler Puanlama, anahtar ifade ayıklama ve dil algılama ' dır. Özel modeller barındırmıyor. Özel makine öğrenimi modelleri oluşturmak ve barındırmak istiyorsanız, [Microsoft R Server ' de makine öğrenimi özelliklerini](/r-server/r/concept-what-is-the-microsoftml-package)göz önünde bulundurun.
 
 ## <a name="can-i-request-additional-languages"></a>Ek dil isteyebilirim miyim?
 
-Yaklaşım Analizi ve anahtar tümceciği ayıklama, [belirli sayıda dilde](text-analytics-supported-languages.md)kullanılabilir. Doğal dil işleme karmaşıktır ve yeni işlevlerin yayımlanmadan önce önemli bir test gerektirir. Bu nedenle, hiç birinin çok daha fazla zaman kaplayan işlevlere bağımlılığı kalmayacak şekilde, önceden duyurduğumuz destekten kaçının. 
+Yaklaşım Analizi ve anahtar tümceciği ayıklama, [belirli sayıda dilde](./language-support.md)kullanılabilir. Doğal dil işleme karmaşıktır ve yeni işlevlerin yayımlanmadan önce önemli bir test gerektirir. Bu nedenle, hiç birinin çok daha fazla zaman kaplayan işlevlere bağımlılığı kalmayacak şekilde, önceden duyurduğumuz destekten kaçının. 
 
 Bir sonraki adımda hangi dillerin çalıştığını önceliklendirmemize yardımcı olmak için, [Kullanıcı Sessiyle](https://cognitive.uservoice.com/forums/555922-text-analytics)belirli diller için oy verin. 
 

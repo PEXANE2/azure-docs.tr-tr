@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/14/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 068c2dc698e9f0b6d6f2f6486dff863c1343b178
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 905dde6932afb440c34bcccb563bfda98f23eb7c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88258279"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363842"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Metin Analizi API'si için veri ve hız sınırları
 <a name="data-limits"></a>
@@ -31,7 +31,7 @@ Boyut sınırlarını bulmak için bu makaleyi kullanın ve Metin Analizi API'si
 
 | Sınır | Değer |
 |------------------------|---------------|
-| Tek belge için maksimum boyut | [StringInfo. LengthInTextElements](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements)ile ölçülen 5.120 karakter. Ayrıca sistem durumu kapsayıcısı için Metin Analizi de geçerlidir. |
+| Tek belge için maksimum boyut | [StringInfo. LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements)ile ölçülen 5.120 karakter. Ayrıca sistem durumu kapsayıcısı için Metin Analizi de geçerlidir. |
 | İsteğin tamamının maksimum boyutu | 1 MB. Ayrıca sistem durumu kapsayıcısı için Metin Analizi de geçerlidir. |
 
 Tek bir istekte gönderebilmeniz için en fazla belge sayısı, kullanmakta olduğunuz API sürümüne ve özelliğine bağlı olacaktır.

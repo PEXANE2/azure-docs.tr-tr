@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 564af32b724c8b4883cd27d01813e246e5fa4901
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fe9511df5fb290853dbd6cb8d39fed4e289fca4d
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100210"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366426"
 ---
 # <a name="news-search-api-upgrade-guide"></a>Haber Arama API Yükseltme Kılavuzu
 
@@ -42,7 +42,7 @@ Bu yükseltme Kılavuzu, sürüm 5 ve Bing Haber Arama API'si sürüm 7 arasınd
 
 - V5 hata kodları aşağıdaki olası `code` ve `subCode` değerlerle değiştirilmiştir.
 
-|Kod|Alt|Açıklama
+|Kod|Alt|Description
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Bing, alt kod koşullarından herhangi biri gerçekleştiğinde ServerError döndürür. HTTP durum kodu 500 ise yanıt bu hataları içerir.
 |Invalidrequest|ParameterMissing<br/>Parameterınvalidvalue<br/>HttpNotAllowed<br/>Engellendi|İsteğin herhangi bir bölümü geçerli değilse Bing, ınvalidrequest döndürüyor. Örneğin, gerekli bir parametre eksik veya bir parametre değeri geçerli değil.<br/><br/>Hata ParameterMissing veya Parameterınvalidvalue ise, HTTP durum kodu 400 ' dir.<br/><br/>Hataya HttpNotAllowed varsa, HTTP durum kodu 410 ' dir.
@@ -75,24 +75,24 @@ Engellendi|Invalidrequest. engellendi
 
 ### <a name="object-changes"></a>Nesne değişiklikleri
 
-- Alan, `contractualRules` [newsarticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) nesnesine eklendi. `contractualRules`Alan, izlemeniz gereken kuralların bir listesini içerir (örneğin, makale attributıon). Kullanmak yerine ' de sağlanmış olan attributıon öğesini uygulamanız gerekir `contractualRules` `provider` . Makale `contractualRules` yalnızca [Web araması API](../bing-web-search/search-the-web.md) yanıtı bir haber yanıtı içerdiğinde içerir.
+- Alan, `contractualRules` [newsarticle](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) nesnesine eklendi. `contractualRules`Alan, izlemeniz gereken kuralların bir listesini içerir (örneğin, makale attributıon). Kullanmak yerine ' de sağlanmış olan attributıon öğesini uygulamanız gerekir `contractualRules` `provider` . Makale `contractualRules` yalnızca [Web araması API](../bing-web-search/overview.md) yanıtı bir haber yanıtı içerdiğinde içerir.
 
 ## <a name="non-breaking-changes"></a>Kırılamayan değişiklikler
 
 ### <a name="query-parameters"></a>Sorgu parametreleri
 
-- [Kategori](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) sorgu parametresini ayarlayabileceğiniz olası bir değer olarak ürünler eklendi. [Kategorilere pazarlara göre](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)bakın.
+- [Kategori](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) sorgu parametresini ayarlayabileceğiniz olası bir değer olarak ürünler eklendi. [Kategorilere pazarlara göre](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)bakın.
 
-- En son ilk ile tarihe göre sıralanan popüler konuları döndüren [sortBy](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortby) sorgu parametresi eklendi.
+- En son ilk ile tarihe göre sıralanan popüler konuları döndüren [sortBy](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortby) sorgu parametresi eklendi.
 
-- Belirtilen Unix dönem zaman damgasında veya sonrasında Bing tarafından bulunan popüler konuları döndüren [bu yana](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#since) sorgu parametresi eklendi.
+- Belirtilen Unix dönem zaman damgasında veya sonrasında Bing tarafından bulunan popüler konuları döndüren [bu yana](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#since) sorgu parametresi eklendi.
 
 ### <a name="object-changes"></a>Nesne değişiklikleri
 
-- Alan, `mentions` [newsarticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) nesnesine eklendi. `mentions`Alan, makalesinde bulunan varlıkların (kişiler veya konumlar) bir listesini içerir.
+- Alan, `mentions` [newsarticle](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) nesnesine eklendi. `mentions`Alan, makalesinde bulunan varlıkların (kişiler veya konumlar) bir listesini içerir.
 
-- Alan, `video` [newsarticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) nesnesine eklendi. `video`Alan, haber makalesiyle ilgili bir video içerir. Video, \<iframe\> katıştırabilmeniz ya da bir hareket küçük resmi olur.
+- Alan, `video` [newsarticle](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) nesnesine eklendi. `video`Alan, haber makalesiyle ilgili bir video içerir. Video, \<iframe\> katıştırabilmeniz ya da bir hareket küçük resmi olur.
 
-- `sort`Alan [haber](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) nesnesine eklendi. `sort`Alan, makalelerin sıralama sırasını gösterir. Örneğin, makaleler ilgiye (varsayılan) veya tarihe göre sıralanır.
+- `sort`Alan [haber](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) nesnesine eklendi. `sort`Alan, makalelerin sıralama sırasını gösterir. Örneğin, makaleler ilgiye (varsayılan) veya tarihe göre sıralanır.
 
-- Sıralama düzenini tanımlayan [Sortvalue](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) nesnesi eklendi. `isSelected`Alan, yanıtın sıralama düzenini kullanıp kullanmadığını belirtir. **Doğru** ise, yanıt sıralama düzenini kullandı. `isSelected` **Yanlışsa** , `url` farklı bir sıralama düzeni istemek için alanındaki URL 'yi kullanabilirsiniz.
+- Sıralama düzenini tanımlayan [Sortvalue](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) nesnesi eklendi. `isSelected`Alan, yanıtın sıralama düzenini kullanıp kullanmadığını belirtir. **Doğru** ise, yanıt sıralama düzenini kullandı. `isSelected` **Yanlışsa** , `url` farklı bir sıralama düzeni istemek için alanındaki URL 'yi kullanabilirsiniz.

@@ -5,16 +5,16 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.date: 02/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 58ce4d7593b23807f4b31e3e71cbfdcd873b1fcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3249ba2089c3d9650aa46f665353ad392d0e773
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253505"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365576"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Reward puanları, kişiselleştirmenin başarısını gösterir
 
-Ödül puanı, kişiselleştirme seçiminin, [rewarterctionıd](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/rank/rank#response)'nin Kullanıcı için ne kadar iyi olduğunu gösterir. Ödül puanı değeri, Kullanıcı davranışının gözlemlerini temel alarak iş mantığınızla belirlenir.
+Ödül puanı, kişiselleştirme seçiminin, [rewarterctionıd](/rest/api/cognitiveservices/personalizer/rank/rank#response)'nin Kullanıcı için ne kadar iyi olduğunu gösterir. Ödül puanı değeri, Kullanıcı davranışının gözlemlerini temel alarak iş mantığınızla belirlenir.
 
 Kişiselleştirici, remarları değerlendirerek makine öğrenimi modellerini ister.
 
@@ -22,11 +22,11 @@ Kişiselleştirici kaynağınız için Azure portal varsayılan ödül [Puanın�
 
 ## <a name="use-reward-api-to-send-reward-score-to-personalizer"></a>Kişiselleştiriciye yeniden Puanlama göndermek için ödül API kullanma
 
-Reward, [Reward API](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward)tarafından kişiselleştiriciye gönderilir. Genellikle, bir ödül 0 ile 1 arasında bir sayıdır. -1 değeri ile negatif bir ödül, bazı senaryolarda mümkündür ve yalnızca pekiştirmeye dayalı Learning (RL) ile karşılaşırsanız kullanılmalıdır. Kişiselleştirici, zaman içinde mümkün olan en yüksek miktarda yeniden elde etmek için modeli gözleyin.
+Reward, [Reward API](/rest/api/cognitiveservices/personalizer/events/reward)tarafından kişiselleştiriciye gönderilir. Genellikle, bir ödül 0 ile 1 arasında bir sayıdır. -1 değeri ile negatif bir ödül, bazı senaryolarda mümkündür ve yalnızca pekiştirmeye dayalı Learning (RL) ile karşılaşırsanız kullanılmalıdır. Kişiselleştirici, zaman içinde mümkün olan en yüksek miktarda yeniden elde etmek için modeli gözleyin.
 
 Yeniden ödüller, Kullanıcı davranışı gerçekleştirildikten sonra gönderilir ve bu gün daha sonra günler olabilir. Kişiselleştirilmez bir olay, bir olayın yeniden ele alınmayacak şekilde değerlendirilene veya Azure portal bir varsayılan yeniden [beklenene](#reward-wait-time) kadar bekleneceği maksimum zaman.
 
-Bir olayın ödül puanı, **bekleme süresi**içinde alınmadıysa, **varsayılan ödül** uygulanır. Genellikle, **[varsayılan değer](how-to-settings.md#configure-reward-settings-for-the-feedback-loop-based-on-use-case)** sıfır olacak şekilde yapılandırılır.
+Bir olayın ödül puanı, **bekleme süresi** içinde alınmadıysa, **varsayılan ödül** uygulanır. Genellikle, **[varsayılan değer](how-to-settings.md#configure-reward-settings-for-the-feedback-loop-based-on-use-case)** sıfır olacak şekilde yapılandırılır.
 
 
 ## <a name="behaviors-and-data-to-consider-for-rewards"></a>Ödüller için göz önünde bulundurulması gereken davranışlar ve veriler
@@ -72,24 +72,24 @@ Ayrıca, aynı olay kimliğini kullanarak, farklı rehirlar göndererek, ödül 
 
 Toplama değerleri:
 
-*  **İlk**: olay için ilk geri alma puanı alır ve geri kalanı atar.
-* **Sum**: EventID için toplanan tüm yeniden puanları alır ve bunları bir araya getirir.
+*  **İlk** : olay için ilk geri alma puanı alır ve geri kalanı atar.
+* **Sum** : EventID için toplanan tüm yeniden puanları alır ve bunları bir araya getirir.
 
-**Yeniden bekleme zamanından**sonra alınan bir olayın tüm depoları atılır ve modellerin eğitimini etkilemez.
+**Yeniden bekleme zamanından** sonra alınan bir olayın tüm depoları atılır ve modellerin eğitimini etkilemez.
 
 Toplama skorları ekleyerek, son ödül tahmini beklenen puan aralığının dışında olabilir. Bu, hizmetin başarısız olmasına neden olmaz.
 
 ## <a name="best-practices-for-calculating-reward-score"></a>Ödül Puanını hesaplamak için en iyi uygulamalar
 
-* **Başarılı bir kişiselleştirmenin gerçek göstergelerini göz önünde bulundurun**: tıklama açısından kolayca düşünmek kolaydır, ancak kullanıcılarınızın ne *yapmak*istediğinize ilişkin ne kadar hızlı bir şekilde *elde* etmelerini istediğinizi temel alır.  Örneğin, tıklatmalar üzerinde yeniden çarpıtma, clickbait lekeli içeriğin seçilmesine neden olabilir.
+* **Başarılı bir kişiselleştirmenin gerçek göstergelerini göz önünde bulundurun** : tıklama açısından kolayca düşünmek kolaydır, ancak kullanıcılarınızın ne *yapmak* istediğinize ilişkin ne kadar hızlı bir şekilde *elde* etmelerini istediğinizi temel alır.  Örneğin, tıklatmalar üzerinde yeniden çarpıtma, clickbait lekeli içeriğin seçilmesine neden olabilir.
 
-* **Kişiselleştirmenin ne kadar iyi çalıştığı konusunda bir ödül puanı kullanın**: bir film önerisini kişiselleştirmek, kullanıcının filmi izlemeye ve yüksek bir derecelendirme kullanmasına neden olur. Film derecelendirmesi büyük olasılıkla çok sayıda işleme bağlı olduğundan (hareket kalitesi, kullanıcının ruh derecesi), *kişiselleştirmenin* ne kadar iyi çalıştığı konusunda iyi bir sinyal değildir. Ancak filmin ilk birkaç dakikasını izleyen Kullanıcı, kişiselleştirme verimliliğinden daha iyi bir sinyal alabilir ve 5 dakika sonra 1 ' in bir kez daha iyi bir sinyal olarak gönderilmesini sağlayabilir.
+* **Kişiselleştirmenin ne kadar iyi çalıştığı konusunda bir ödül puanı kullanın** : bir film önerisini kişiselleştirmek, kullanıcının filmi izlemeye ve yüksek bir derecelendirme kullanmasına neden olur. Film derecelendirmesi büyük olasılıkla çok sayıda işleme bağlı olduğundan (hareket kalitesi, kullanıcının ruh derecesi), *kişiselleştirmenin* ne kadar iyi çalıştığı konusunda iyi bir sinyal değildir. Ancak filmin ilk birkaç dakikasını izleyen Kullanıcı, kişiselleştirme verimliliğinden daha iyi bir sinyal alabilir ve 5 dakika sonra 1 ' in bir kez daha iyi bir sinyal olarak gönderilmesini sağlayabilir.
 
-* **Releleler yalnızca rewarterctionıd için geçerlidir**: kişiselleştirici, rewarterctionıd içinde belirtilen eylemin göre etkinliğine anlamak için yeniden ödüller uygular. Diğer eylemleri görüntülemeyi tercih ederseniz ve Kullanıcı bunlara tıkladıysanız, yeniden, sıfır olmalıdır.
+* **Releleler yalnızca rewarterctionıd için geçerlidir** : kişiselleştirici, rewarterctionıd içinde belirtilen eylemin göre etkinliğine anlamak için yeniden ödüller uygular. Diğer eylemleri görüntülemeyi tercih ederseniz ve Kullanıcı bunlara tıkladıysanız, yeniden, sıfır olmalıdır.
 
-* **İstemeden oluşan sonuçları göz önünde bulundurun**: [ahlak ve sorumlu kullanım](ethics-responsible-use.md)ile sorumlu sonuçlara yol açabilecek ödül işlevleri oluşturun.
+* **İstemeden oluşan sonuçları göz önünde bulundurun** : [ahlak ve sorumlu kullanım](ethics-responsible-use.md)ile sorumlu sonuçlara yol açabilecek ödül işlevleri oluşturun.
 
-* **Artımlı yeniden kullanım**: daha küçük kullanıcı davranışları için kısmi reksel ekleme, kişiselleştirmeye daha iyi bir performans sağlamaya yardımcı olur. Bu artımlı yeniden, algoritmanın kullanıcıya son istenen davranışta ilgi çekici olduğunu bilmesini sağlar.
+* **Artımlı yeniden kullanım** : daha küçük kullanıcı davranışları için kısmi reksel ekleme, kişiselleştirmeye daha iyi bir performans sağlamaya yardımcı olur. Bu artımlı yeniden, algoritmanın kullanıcıya son istenen davranışta ilgi çekici olduğunu bilmesini sağlar.
     * Bir film listesi gösteriyorsa, Kullanıcı daha fazla bilgi görüntülemek için ilk bir kez üzerine gelirse, bazı kullanıcı katılımı olduğunu belirleyebilirsiniz. Davranış, 0,1 için bir ödül puanı ile sayabilir.
     * Kullanıcı sayfayı açtı ve sonra çıkmadıysa, ödül puanı 0,2 olabilir.
 

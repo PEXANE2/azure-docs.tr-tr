@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 18b980a868173b1fa721f9fc0986d7e1efb203af
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 89bbb16f96d06d1861dabdf89cf690e69c10735c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348925"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364488"
 ---
 # <a name="troubleshooting-shared-image-galleries-in-azure"></a>Azure 'da paylaşılan görüntü galerileri sorunlarını giderme
 
@@ -153,7 +153,7 @@ Paylaşılan görüntü galerileri, görüntü tanımları ve görüntü sürüm
 
 *' Gallerımageversion. Properties. storageProfile. <DiskImage \> . Source.id ' özelliğinin değiştirilmesine izin verilmiyor.*  
 **Neden** : bir galeri görüntüsü sürümünün kaynak kimliği, oluşturulduktan sonra değiştirilemez.  
-**Geçici çözüm** : kaynak kimliğinin zaten var olan kaynak kimliğiyle aynı olduğundan emin olun veya görüntü sürümünün sürüm numarasını değiştirin.
+**Geçici çözüm** : kaynak kimliğinin zaten var olan kaynak kimliğiyle aynı olduğundan emin olun, görüntü sürümünün sürüm numarasını değiştirin veya geçerli görüntü sürümünü silip yeniden deneyin.
 
 *Giriş veri disklerinde yinelenen LUN numaraları algılandı. LUN numarası her bir veri diski için benzersiz olmalıdır.*  
 **Neden** : bir disk ve/veya disk anlık görüntülerinin listesini kullanarak bir görüntü sürümü oluştururken, iki veya daha fazla disk ya da disk anlık görüntüsü aynı LUN numaralarına sahiptir.  

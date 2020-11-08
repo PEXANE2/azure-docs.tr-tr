@@ -10,23 +10,23 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: d5fbecd9c2fd6e3a9f1be29598bad50da4b77bbb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b63c2e53f34ac86f8ddf5ad300c2465ee2d9f032
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084621"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365644"
 ---
 # <a name="using-ranking-to-display-entity-search-results"></a>Varlık arama sonuçlarını göstermek için derecelendirmeyi kullanma  
 
 > [!WARNING]
-> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](/bing/search-apis/bing-web-search/create-bing-search-service-resource)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
 > Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
-> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
+> Geçiş yönergeleri için bkz. [Bing arama Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
-Her varlık arama yanıtı, Bing Varlık Arama API'si tarafından döndürülen arama sonuçlarının nasıl görüntüleneceğini belirten bir [Rankingresponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse) yanıtı içerir. Derecelendirme yanıtı, ana hat ve kenar çubuğu içeriğine neden olur. Direk sonucu en önemli veya belirgin bir sonuçdır ve öncelikle görüntülenmelidir. Kalan sonuçları geleneksel bir ana çizgi ve kenar çubuğu biçiminde görüntülemedıysanız, ana hat içeriğini kenar çubuğu içeriğinden daha yüksek görünürlük sağlamanız gerekir. 
+Her varlık arama yanıtı, Bing Varlık Arama API'si tarafından döndürülen arama sonuçlarının nasıl görüntüleneceğini belirten bir [Rankingresponse](/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse) yanıtı içerir. Derecelendirme yanıtı, ana hat ve kenar çubuğu içeriğine neden olur. Direk sonucu en önemli veya belirgin bir sonuçdır ve öncelikle görüntülenmelidir. Kalan sonuçları geleneksel bir ana çizgi ve kenar çubuğu biçiminde görüntülemedıysanız, ana hat içeriğini kenar çubuğu içeriğinden daha yüksek görünürlük sağlamanız gerekir. 
   
-Her grup içinde, [öğeler](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankinggroup-items) dizisi içeriğin içinde görünmesi gereken sırayı tanımlar. Her öğe, yanıt içindeki sonucu belirlemek için iki yol sağlar.  
+Her grup içinde, [öğeler](/rest/api/cognitiveservices/bing-web-api-v7-reference#rankinggroup-items) dizisi içeriğin içinde görünmesi gereken sırayı tanımlar. Her öğe, yanıt içindeki sonucu belirlemek için iki yol sağlar.  
  
 
 |Alan | Açıklama  |
@@ -34,13 +34,13 @@ Her grup içinde, [öğeler](https://docs.microsoft.com/rest/api/cognitiveservic
 |`answerType` ve `resultIndex` | `answerType` yanıtı tanımlar (varlık veya yer) ve `resultIndex` Bu yanıt içinde bir sonucu tanımlar (örneğin, bir varlık). Dizin 0 ' da başlar.|
 |`value`    | `value` Yanıt ya da yanıt içindeki bir sonuç KIMLIĞIYLE eşleşen bir KIMLIK içerir. Yanıt ya da sonuçlar KIMLIĞI içeriyor ancak her ikisini de içermemelidir. |
   
-Ve kullanarak `answerType` `resultIndex` iki adımlı bir işlemdir. İlk olarak, `answerType` görüntülenecek sonuçları içeren yanıtı belirlemek için kullanın. Daha sonra `resultIndex` , görüntülenecek sonucu almak için bu yanıtın sonuçlarına dizin eklemek için kullanın. ( `answerType` Değer, [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) nesnesindeki alanın adıdır.) Tüm yanıtın sonuçlarını birlikte görüntülemesi gerekiyorsa, derecelendirme yanıtı öğesi `resultIndex` alanı içermez.
+Ve kullanarak `answerType` `resultIndex` iki adımlı bir işlemdir. İlk olarak, `answerType` görüntülenecek sonuçları içeren yanıtı belirlemek için kullanın. Daha sonra `resultIndex` , görüntülenecek sonucu almak için bu yanıtın sonuçlarına dizin eklemek için kullanın. ( `answerType` Değer, [SearchResponse](/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) nesnesindeki alanın adıdır.) Tüm yanıtın sonuçlarını birlikte görüntülemesi gerekiyorsa, derecelendirme yanıtı öğesi `resultIndex` alanı içermez.
 
 KIMLIĞI kullanmak, derecelendirme KIMLIĞINI bir yanıtın KIMLIĞIYLE veya sonuçlardan biriyle eşleştirmeye gerek duyar. Bir yanıt nesnesi bir alan içeriyorsa `id` , tüm yanıtın sonuçlarını birlikte görüntüleyin. Örneğin, `Entities` nesnesi `id` alanı içeriyorsa, tüm varlıklar makalelerini birlikte görüntüleyin. `Entities`Nesne `id` alanını içermiyorsa, her varlık bir `id` alan içerir ve derecelendirme yanıtı, yerleri sonuçları ile karıştırmaz.  
   
 ## <a name="ranking-response-example"></a>Derecelendirme yanıtı örneği
 
-Aşağıda bir [Rankingresponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse)örneği gösterilmektedir.
+Aşağıda bir [Rankingresponse](/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse)örneği gösterilmektedir.
   
 ```json
 {

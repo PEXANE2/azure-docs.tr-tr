@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: overview
 ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 6b715d4b801159b451957c30ee9ef7b406f3a2f4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ee31eac55298c86a7bdd784ea54c9a0c8caa47a4
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095382"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364624"
 ---
 # <a name="what-is-bing-local-business-search"></a>Bing yerel Iş arama nedir?
 
@@ -35,7 +35,7 @@ Bing yerel Iş Arama API 'SI, uygulamalarınızın arama sorguları temelinde ye
 ## <a name="workflow"></a>İş akışı
 HTTP istekleri yapıp JSON yanıtlarını ayrıştırabilen herhangi bir programlama dilinden Bing yerel Iş Arama API 'sini çağırın. Bu hizmete REST API kullanılarak erişilebilir.
  
-1. Bing Arama API'leri erişimi olan bilişsel [HIZMETLER API hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)  oluşturun. Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturabilirsiniz](https://azure.microsoft.com/free/cognitive-services/).   
+1. Bing Arama API'leri erişimi olan bilişsel [HIZMETLER API hesabı](../cognitive-services-apis-create-account.md)  oluşturun. Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturabilirsiniz](https://azure.microsoft.com/free/cognitive-services/).   
 2. URL, sorgu parametresi için arama terimlerinizi kodlayın `q=""` . Örneğin `q=nearby+restaurant` veya `q=nearby%20restaurant` olabilir. Gerekirse, sayfalandırma da ayarlayın. 
 3. [Bing yerel Iş Arama API 'sine istek](quickstarts/local-quickstart.md) gönderme 
 4. JSON yanıtını Ayrıştır 
@@ -49,4 +49,4 @@ HTTP istekleri yapıp JSON yanıtlarını ayrıştırabilen herhangi bir program
 - [Sorgu ve yanıt](local-search-query-response.md)
 - [Yerel Iş araması hızlı başlangıç](quickstarts/local-quickstart.md)
 - [Yerel İşletme Arama API'si başvurusu](local-search-reference.md)
-- [Kullanım ve görüntüleme gereksinimleri](use-display-requirements.md)
+- [Kullanım ve görüntüleme gereksinimleri](../bing-web-search/use-display-requirements.md)

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
 ms.custom: subject-armqs
-ms.openlocfilehash: d88d613b6edfc6b08d08410cdc7cf481d973512d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9ca92bf81acd72260d89404051f941b317ee3e1d
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91349196"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363400"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak bilişsel hizmetler kaynağı oluşturma
 
@@ -45,7 +45,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 :::code language="json" source="~/quickstart-templates/101-cognitive-services-universalkey/azuredeploy.json":::
 
 Şablonda bir Azure kaynağı tanımlanmıştır:
-* [Microsoft. Biliveservices/accounts](https://docs.microsoft.com/azure/templates/microsoft.cognitiveservices/accounts): bilişsel hizmetler kaynağı oluşturur.
+* [Microsoft. Biliveservices/accounts](/azure/templates/microsoft.cognitiveservices/accounts): bilişsel hizmetler kaynağı oluşturur.
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
@@ -60,7 +60,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
     |Değer  |Açıklama  |
     |---------|---------|
     | **Abonelik** | Bir Azure aboneliği seçin. |
-    | **Kaynak grubu** | **Yeni oluştur**' u seçin, kaynak grubu için benzersiz bir ad girin ve ardından **Tamam**' a tıklayın. |
+    | **Kaynak grubu** | **Yeni oluştur** ' u seçin, kaynak grubu için benzersiz bir ad girin ve ardından **Tamam** ' a tıklayın. |
     | **Bölge** | Bir bölge seçin.  Örneğin, **Doğu ABD** |
     | **Bilişsel hizmet adı** | Kaynağınız için benzersiz bir adla değiştirin. Dağıtımı doğruladığınızda, sonraki bölümde adı kullanmanız gerekir. |
     | **Konum** | Yukarıda kullanılan bölge ile değiştirin. |
@@ -68,14 +68,14 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 
     :::image type="content" source="media/arm-template/universal-key-portal-template.png" alt-text="Kaynak oluşturma ekranı.":::
 
-3. **Gözden Geçir ve Oluştur**’u ve sonra **Oluştur**’u seçin. Kaynak başarıyla dağıtımı tamamladıktan sonra **Kaynağa Git** düğmesi vurgulanacaktır.
+3. **Gözden Geçir ve Oluştur** ’u ve sonra **Oluştur** ’u seçin. Kaynak başarıyla dağıtımı tamamladıktan sonra **Kaynağa Git** düğmesi vurgulanacaktır.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/CLI)
 
 > [!NOTE]
-> `az deployment group` oluşturma için Azure CLı sürüm 2,6 veya üzeri gerekir. Sürüm türünü görüntüleme `az --version` . Daha fazla bilgi için [belgelerine](https://docs.microsoft.com/cli/azure/deployment/group)bakın.
+> `az deployment group` oluşturma için Azure CLı sürüm 2,6 veya üzeri gerekir. Sürüm türünü görüntüleme `az --version` . Daha fazla bilgi için [belgelerine](/cli/azure/deployment/group)bakın.
 
-[Yerel makinenizde](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)Azure komut satırı arabirimi 'NI (CLI) kullanarak veya **deneyin** düğmesine sahip bir tarayıcıda aşağıdaki betiği çalıştırın. Yeni bir kaynak grubu için bir ad ve konum (örneğin `centralus` ) girin ve ARM şablonu bunun içinde bilişsel hizmetler kaynağını dağıtmak için kullanılacaktır. Kullandığınız adı unutmayın. Daha sonra dağıtımı doğrulamak için kullanacaksınız.
+[Yerel makinenizde](/cli/azure/install-azure-cli?view=azure-cli-latest)Azure komut satırı arabirimi 'NI (CLI) kullanarak veya **deneyin** düğmesine sahip bir tarayıcıda aşağıdaki betiği çalıştırın. Yeni bir kaynak grubu için bir ad ve konum (örneğin `centralus` ) girin ve ARM şablonu bunun içinde bilişsel hizmetler kaynağını dağıtmak için kullanılacaktır. Kullandığınız adı unutmayın. Daha sonra dağıtımı doğrulamak için kullanacaksınız.
 
 
 ```azurecli-interactive
@@ -121,9 +121,9 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-1. Azure portalında sol taraftaki menüyü genişleterek hizmet menüsünü açın ve **Kaynak Grupları**'nı seçerek kaynak gruplarınızın listesini görüntüleyin.
+1. Azure portalında sol taraftaki menüyü genişleterek hizmet menüsünü açın ve **Kaynak Grupları** 'nı seçerek kaynak gruplarınızın listesini görüntüleyin.
 2. Silinecek kaynağı içeren kaynak grubunu bulun
-3. Kaynak grubu listesine sağ tıklayın. **Kaynak grubunu sil**'i seçip onaylayın.
+3. Kaynak grubu listesine sağ tıklayın. **Kaynak grubunu sil** 'i seçip onaylayın.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/CLI)
 
@@ -140,6 +140,6 @@ az group delete --name $resourceGroupName
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure bilişsel hizmetler 'e yönelik isteklerin kimliğini doğrulama](authentication.md)
-* [Azure bilişsel hizmetler nedir?](Welcome.md)
+* [Azure bilişsel hizmetler nedir?](./what-are-cognitive-services.md)
 * [Doğal dil desteği](language-support.md)
 * [Docker kapsayıcı desteği](cognitive-services-container-support.md)

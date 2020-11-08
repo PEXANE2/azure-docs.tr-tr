@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 1a9756277faf98939ad609231f46bb2f2c04b8b6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1f207a93af22029e4bfdc20e5f84ed8ef3dee37c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084009"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366970"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Hızlı başlangıç: Bing Yazım Denetimi REST API ve Node.js yazım denetimi yapın
 
@@ -169,4 +169,4 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 > [Tek sayfalı web uygulaması oluşturma](../tutorials/spellcheck.md)
 
 - [Bing Yazım Denetimi API’si nedir?](../overview.md)
-- [Bing Yazım Denetimi API'si v7 başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Bing Yazım Denetimi API'si v7 başvurusu](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

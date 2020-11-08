@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 444b76a594e768face892462da12a1cbb35a5106
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 37239f9c7857a8e72bb293cfa3caeb429962a542
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324678"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363349"
 ---
 # <a name="getting-started"></a>Başlarken
 
@@ -31,7 +31,7 @@ Büyük veri bilişsel hizmetlerini kullanmak için, ilk olarak iş akışımız
 
 ### <a name="cloud-services"></a>Bulut hizmetleri
 
-Bulut tabanlı bilişsel hizmetler, Azure 'da barındırılan akıllı algoritmadır. Bu hizmetler eğitim olmadan kullanıma yöneliktir, yalnızca bir internet bağlantısına ihtiyacınız vardır. Azure portal veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows)ile bilişsel [bir hizmet oluşturabilirsiniz](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows) .
+Bulut tabanlı bilişsel hizmetler, Azure 'da barındırılan akıllı algoritmadır. Bu hizmetler eğitim olmadan kullanıma yöneliktir, yalnızca bir internet bağlantısına ihtiyacınız vardır. Azure portal veya [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows)ile bilişsel [bir hizmet oluşturabilirsiniz](../cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows) .
 
 ### <a name="containerized-services-optional"></a>Kapsayıcılı hizmetler (isteğe bağlı)
 
@@ -45,7 +45,7 @@ Uygulamanız veya iş yükünüz büyük veri kümeleri kullanıyorsa, özel ağ
 
 * **Yüksek ölçeklenebilirlik** : Kapsayıcılı hizmetlerin "oran limitleri" yoktur ve Kullanıcı tarafından yönetilen bilgisayarlarda çalışır. Bu nedenle, çok daha büyük iş yüklerini işlemek için bilişsel hizmetleri son olmadan ölçeklendirebilirsiniz.
 
-Kapsayıcılı bir bilişsel hizmet oluşturmak için [Bu kılavuzu](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support?tabs=luis) izleyin.
+Kapsayıcılı bir bilişsel hizmet oluşturmak için [Bu kılavuzu](../cognitive-services-container-support.md?tabs=luis) izleyin.
 
 ## <a name="create-an-apache-spark-cluster"></a>Apache Spark kümesi oluşturma
 
@@ -55,8 +55,8 @@ Kapsayıcılı bir bilişsel hizmet oluşturmak için [Bu kılavuzu](https://doc
 
 Azure Databricks, tek tıklamayla kurulum, kolaylaştırılmış iş akışları ve etkileşimli bir çalışma alanı olan Apache Spark tabanlı bir analiz platformudur. Genellikle veri bilimcileri, mühendisler ve iş analistleri arasında işbirliği yapmak için kullanılır. Azure Databricks büyük veri bilişsel hizmetlerini kullanmak için şu adımları izleyin:
 
-1. [Azure Databricks çalışma alanı oluşturma](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace)
-1. [Databricks’te Spark kümesi oluşturma](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-a-spark-cluster-in-databricks)
+1. [Azure Databricks çalışma alanı oluşturma](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace)
+1. [Databricks’te Spark kümesi oluşturma](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal#create-a-spark-cluster-in-databricks)
 1. Büyük veri bilişsel hizmetler 'i yükler
     * Databricks çalışma alanınızda yeni bir kitaplık oluşturma  
        <img src="media/create-library.png" alt="Create library" width="50%"/>
@@ -69,8 +69,8 @@ Azure Databricks, tek tıklamayla kurulum, kolaylaştırılmış iş akışları
 
 İsteğe bağlı olarak, SYNAPSE Analytics 'i kullanarak bir Spark kümesi oluşturabilirsiniz. Azure SYNAPSE Analytics, kurumsal veri depolama ve büyük veri analizlerini birlikte sunar. Bu sayede, daha az sayıda isteğe bağlı veya sağlanan kaynakları kullanarak koşullarınızda verileri sorgulama özgürlüğü elde edersiniz. SYNAPSE Analytics 'i kullanmaya başlamak için şu adımları izleyin:
 
-1. [Bir Synapse çalışma alanı (Önizleme) oluşturun](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace).
-1. [Azure Portal kullanarak yeni bir sunucusuz Apache Spark Havuzu (Önizleme) oluşturun](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool-portal).
+1. [Bir Synapse çalışma alanı (Önizleme) oluşturun](../../synapse-analytics/quickstart-create-workspace.md).
+1. [Azure Portal kullanarak yeni bir sunucusuz Apache Spark Havuzu (Önizleme) oluşturun](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md).
 
 SYNAPSE Analytics 'te bilişsel hizmetler için büyük veri varsayılan olarak yüklüdür.
 
@@ -80,9 +80,9 @@ Kapsayıcılı bilişsel hizmetler kullanıyorsanız, kapsayıcılarla birlikte 
 
 Azure Kubernetes hizmetini kullanmaya başlamak için şu adımları izleyin:
 
-1. [Azure portalını kullanarak Azure Kubernetes Service (AKS) kümesi dağıtma](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal)
+1. [Azure portalını kullanarak Azure Kubernetes Service (AKS) kümesi dağıtma](../../aks/kubernetes-walkthrough-portal.md)
 1. [Apache Spark 2.4.0 Held grafiğini yükler](https://hub.helm.sh/charts/microsoft/spark)
-1. [Held kullanarak bilişsel hizmet kapsayıcısı yükler](https://docs.microsoft.com/azure/cognitive-services/computer-vision/deploy-computer-vision-on-premises)
+1. [Held kullanarak bilişsel hizmet kapsayıcısı yükler](../computer-vision/deploy-computer-vision-on-premises.md)
 
 ## <a name="try-a-sample"></a>Örnek deneyin
 

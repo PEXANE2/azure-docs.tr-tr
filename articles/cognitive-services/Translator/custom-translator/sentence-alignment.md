@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 97327517b40e715294393a97e8a26c078173e762
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8a662bf94e958d9e96a454ced9c44058b178a8c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510853"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366851"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Paralel belgelerde tümce eşleştirme ve hizalama
 
@@ -28,7 +28,7 @@ Eğitim sırasında, paralel belgelerde bulunan cümleler eşleştirilmiş veya 
 
 Paralel belgeleriniz olduğunu biliyorsanız, önceden hizalanmış metin dosyaları sağlayarak cümle hizalamasını geçersiz kılabilirsiniz. Her iki belgedeki tüm tümceleri metin dosyasına çıkarabilir, her satır için bir cümleyi organize edebilir ve bir uzantıya sahip yükleyebilirsiniz `.align` . `.align`Uzantı, tümce hizalamasını atlayabilmesi Için özel çeviriciyi işaret eder.
 
-En iyi sonuçlar için, dosyalarınızda her satırda bir cümle olduğuna emin olun.Tümce içinde yeni satır karakterleri eklemeyin ve bu işlem kötü hizalamalara neden olur.
+En iyi sonuçlar için, dosyalarınızda her satırda bir cümle olduğuna emin olun. Tümce içinde yeni satır karakterleri eklemeyin ve bu işlem kötü hizalamalara neden olur.
 
 ## <a name="suggested-minimum-number-of-sentences"></a>Önerilen en az sayıda tümce
 
@@ -38,13 +38,13 @@ Bir eğitimin başarılı olması için, aşağıdaki tabloda her belge türünd
 |------------|--------------------------------------------|--------------------------------|
 | Eğitim   | 10,000                                     | Üst sınır yok                 |
 | Ayarlarını     | 500                                      | 2,500       |
-| Test Etme    | 500                                      | 2,500  |
+| Sınama    | 500                                      | 2,500  |
 | Sözlük | 0                                          | Üst sınır yok                 |
 
 > [!NOTE]
 > - Eğitim başlatılmaz ve eğitim için en az 10.000 cümle sayısı karşılanmazsa başarısız olur. 
 > - Ayarlama ve test isteğe bağlıdır. Bunları sağlamazsanız, sistem, doğrulama ve test için kullanılan eğitimin uygun bir yüzdesini kaldırır. 
-> - Yalnızca Sözlük verilerini kullanarak bir modeli eğitebilirsiniz. Lütfen [sözlüğe](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/what-is-dictionary)bakın.
+> - Yalnızca Sözlük verilerini kullanarak bir modeli eğitebilirsiniz. Lütfen [sözlüğe](./what-is-dictionary.md)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: fb907e0b9c923a77c6956723f6df397fabd84da8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f22213bf192b12e046bab12346e5d5d83fb36b96
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86523987"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364284"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator v2-v3 geçişine
 
@@ -37,7 +37,7 @@ Bu belgenin sonu, daha fazla bilgi edinmek için yararlı bağlantılar içerir.
 * Alfabe içinde, API 'ye bir alfabede bir yöntem eklenmiştir. Bu yöntem, sözcükleri ve tümceleri tek bir betikte dönüştürür (ör. Arapça) başka bir betiğe (ör. Latin).
 * Diller-yeni bir ' Languages ' yöntemi, ' Translate ', ' Dictionary ' ve ' alfabede ' yöntemleriyle kullanılmak üzere dil bilgilerini JSON biçiminde sunar.
 * Çeviri için yeni-' Çevir ' yöntemine yeni özellikler eklenmiştir. v2 API 'sinde ayrı yöntemler olarak bulunan özelliklerden bazıları desteklenir. TranslateArray örneği bir örnektir.
-* Konuş yöntemi-metin okuma işlevselliği artık Microsoft Translator 'da desteklenmemektedir. Metin okuma işlevselliği, [Microsoft konuşma hizmeti](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)'nde bulunabilir.
+* Konuş yöntemi-metin okuma işlevselliği artık Microsoft Translator 'da desteklenmemektedir. Metin okuma işlevselliği, [Microsoft konuşma hizmeti](../speech-service/text-to-speech.md)'nde bulunabilir.
 
 Aşağıdaki v2 ve v3 yöntemleri listesi, v2 ile gelen işlevleri sağlayacak olan v3 yöntemlerini ve API 'Leri tanımlar.
 
@@ -47,8 +47,8 @@ Aşağıdaki v2 ve v3 yöntemleri listesi, v2 ile gelen işlevleri sağlayacak o
 | `TranslateArray`      | [Çevir](reference/v3-0-translate.md)        |
 | `GetLanguageNames`      | [Diller](reference/v3-0-languages.md)         |
 | `GetLanguagesForTranslate`     | [Diller](reference/v3-0-languages.md)       |
-| `GetLanguagesForSpeak`      | [Microsoft konuşma hizmeti](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
-| `Speak`     | [Microsoft konuşma hizmeti](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
+| `GetLanguagesForSpeak`      | [Microsoft konuşma hizmeti](../speech-service/language-support.md#text-to-speech)         |
+| `Speak`     | [Microsoft konuşma hizmeti](../speech-service/text-to-speech.md)          |
 | `Detect`     | [Acağı](reference/v3-0-detect.md)         |
 | `DetectArray`     | [Acağı](reference/v3-0-detect.md)         |
 | `AddTranslation`     | Özellik artık desteklenmiyor       |
@@ -116,10 +116,10 @@ Microsoft Translator v3 varsayılan olarak sinir makine çevirisini kullanır. B
 
 V3 metin API 'SI ile sinir çevirisi, standart kategorilerin (SMT, konuşma, teknik, generalnn) kullanımını desteklemez.
 
-| Sürüm | Uç Noktası | GDPR Işlemci uyumluluğu | Çevirmen hub 'ı kullan | Özel çevirici kullan (Önizleme) |
+| Sürüm | Uç Nokta | GDPR Işlemci uyumluluğu | Çevirmen hub 'ı kullan | Özel çevirici kullan (Önizleme) |
 | :------ | :------- | :------------------------ | :----------------- | :------------------------------ |
-|Translator sürüm 2|    api.microsofttranslator.com|    Hayır    |Evet    |Hayır|
-|Translator sürümü 3|    api.cognitive.microsofttranslator.com|    Evet|    Hayır|    Evet|
+|Translator sürüm 2|    api.microsofttranslator.com|    Hayır    |Yes    |Hayır|
+|Translator sürümü 3|    api.cognitive.microsofttranslator.com|    Yes|    Hayır|    Yes|
 
 **Translator sürümü 3**
 * Genel olarak kullanılabilir ve tamamen desteklenir.

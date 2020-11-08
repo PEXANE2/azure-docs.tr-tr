@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 3d999375d746bb359acdccf9bf48f8b77d509776
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e051a36b3c91fadc0c3b602cb4ba8e3dbcff1294
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91000918"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367140"
 ---
 # <a name="full-backup-and-restore"></a>Tam yedekleme ve geri yükleme
 
@@ -23,7 +23,7 @@ ms.locfileid: "91000918"
 
 Yönetilen HSM, tüm anahtarlar, sürümler, öznitelikler, Etiketler ve rol atamaları dahil olmak üzere HSM 'nin tüm içeriğinin tam yedeklemesini oluşturmayı destekler. Yedekleme, HSM 'nin güvenlik etki alanıyla ilişkili şifreleme anahtarlarıyla şifrelenir.
 
-Yedekleme, bir veri düzlemi işlemidir. Yedekleme işleminin başlatılmasına yönelik çağıran, **Microsoft. Keykasası/managedHsm/Backup/start/Action**veri eylemini gerçekleştirme iznine sahip olmalıdır.
+Yedekleme, bir veri düzlemi işlemidir. Yedekleme işleminin başlatılmasına yönelik çağıran, **Microsoft. Keykasası/managedHsm/Backup/start/Action** veri eylemini gerçekleştirme iznine sahip olmalıdır.
 
 Yalnızca aşağıdaki yerleşik rollerin tam yedekleme gerçekleştirme izni vardır:
 - Yönetilen HSM Yöneticisi
@@ -52,6 +52,10 @@ end=$(date -u -d "30 minutes" '+%Y-%m-%dT%H:%MZ')
 
 skey=$(az storage account keys list --query '[0].value' -o tsv --account-name mhsmdemobackup --subscription a1ba9aaa-b7f6-4a33-b038-6e64553a6c7b)
 
+# Create a container
+
+az storage container create --account-name  mhsmdemobackup --name mhsmdemobackupcontainer  --account-key $skey
+
 # Generate a container sas token
 
 sas=$(az storage container generate-sas -n mhsmdemobackupcontainer --account-name mhsmdemobackup --permissions crdw --expiry $end --account-key $skey -o tsv --subscription a1ba9aaa-b7f6-4a33-b038-6e64553a6c7b)
@@ -68,7 +72,7 @@ Tam geri yükleme, tüm anahtarlar, sürümler, öznitelikler, Etiketler ve rol 
 > [!IMPORTANT]
 > Tam geri yükleme çok zararlı ve kesintiye uğratan bir işlemdir. Bu nedenle, bir işlem gerçekleştirilmeden önce son 30 dakika içinde tam bir yedeklemenin tamamlanması zorunludur `restore` .
 
-Restore bir veri düzlemi işlemidir. Geri yükleme işlemini başlatan çağıranın, **Microsoft. Keykasası/managedHsm/restore/start/Action**veri eylemini gerçekleştirme izni olmalıdır. Yedeklemenin oluşturulduğu kaynak HSM ve geri yüklemenin gerçekleştirileceği hedef HSM 'nin aynı güvenlik etki alanına sahip **olması gerekir** . [YÖNETILEN HSM güvenlik etki alanı hakkında](security-domain.md)daha fazla bilgi.
+Restore bir veri düzlemi işlemidir. Geri yükleme işlemini başlatan çağıranın, **Microsoft. Keykasası/managedHsm/restore/start/Action** veri eylemini gerçekleştirme izni olmalıdır. Yedeklemenin oluşturulduğu kaynak HSM ve geri yüklemenin gerçekleştirileceği hedef HSM 'nin aynı güvenlik etki alanına sahip **olması gerekir** . [YÖNETILEN HSM güvenlik etki alanı hakkında](security-domain.md)daha fazla bilgi.
 
 Tam geri yükleme yürütmek için aşağıdaki bilgileri sağlamanız gerekir:
 - HSM adı veya URL 'SI

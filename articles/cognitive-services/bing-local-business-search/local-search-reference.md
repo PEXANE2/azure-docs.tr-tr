@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: dbd4f32e77dc8d386067987a0ab0436a7875c15e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2a9c6b924f564c96c6018fbc395ad226a383280f
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095399"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364658"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Bing yerel Iş Arama API 'SI v7 başvurusu
 
@@ -34,7 +34,7 @@ Bu bölümde, yanıt nesneleriyle ilgili teknik ayrıntılar ve arama sonuçlar�
   
 Yanıtın içerdiği JSON nesneleri hakkında daha fazla bilgi için bkz. [Response Objects](#response-objects).
 
-İzin verilen kullanım ve sonuçların görüntülenmesi hakkında daha fazla bilgi için bkz. [kullanımı ve görüntüleme gereksinimleri](use-display-requirements.md).
+İzin verilen kullanım ve sonuçların görüntülenmesi hakkında daha fazla bilgi için bkz. [kullanımı ve görüntüleme gereksinimleri](../bing-web-search/use-display-requirements.md).
 
 
   
@@ -55,7 +55,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ## <a name="headers"></a>Üst Bilgiler  
 Bir istek ve yanıtın içerebilme üstbilgileri aşağıda verilmiştir.  
   
-|Üst bilgi|Açıklama|  
+|Üst bilgi|Description|  
 |------------|-----------------|  
 |Kabul Et|İsteğe bağlı istek üst bilgisi.<br /><br /> Varsayılan medya türü uygulama/JSON ' dır. Yanıtın [JSON-ld](https://json-ld.org/)kullanmasını belirtmek için Accept üst bilgisini Application/ld + JSON olarak ayarlayın.|  
 |<a name="acceptlanguage"></a>Accept-Language|İsteğe bağlı istek üst bilgisi.<br /><br /> Kullanıcı arabirimi dizelerinde kullanılacak virgülle sınırlanmış bir dil listesi. Liste, tercih edilme durumuna göre azalan düzende sıralanır. Beklenen biçim de içinde olmak üzere daha fazla bilgi için bkz. [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Bu üst bilgi ve [](#setlang)setLang&mdash; sorgu parametresi karşılıklı olarak birbirini dışlar. İkisini birlikte belirtmeyin.<br /><br /> Bu üst bilgiyi ayarlarsanız, cc sorgu parametresini de belirtmelisiniz. Hangi pazardan sonuç döndürüleceğini belirlemek için, Bing listeden bulduğu ilk desteklenen dili kullanır ve bunu `cc` parametresinin değeriyle birleştirir. Liste desteklenen bir dil içermiyorsa, Bing isteği destekleyen en yakın dili ve pazarı bulur ya da sonuçlar için toplu veya varsayılan bir pazar kullanır. Bing'in kullandığı pazarı saptamak için BingAPIs-Market üst bilgisine bakın.<br /><br /> Ancak birden çok dil belirtirseniz bu üst bilgiyi ve `cc` sorgu parametresini kullanın. Aksi takdirde, [mkt](#mkt) ile [setLang](#setlang) sorgu parametrelerini kullanın.<br /><br /> Kullanıcı arabirimi dizesi, kullanıcı arabiriminde etiket olarak kullanılan dizedir. JSON yanıt nesnelerinde çok az kullanıcı arabirimi dizesi vardır. Yanıt nesnelerinde Bing.com özelliklerine yönelik bağlantılar da belirtilen dildedir.|  
@@ -76,23 +76,23 @@ Bir istek ve yanıtın içerebilme üstbilgileri aşağıda verilmiştir.
 İstek aşağıdaki sorgu parametrelerini içerebilir. Gerekli parametreler için gereken sütuna bakın. Sorgu parametrelerini URL kodlamanız gerekir.  
   
   
-|Ad|Değer|Tür|Gerekli|  
+|Name|Değer|Tür|Gerekli|  
 |----------|-----------|----------|--------------|
-|<a name="count"></a>biriktirme|Parametresi tarafından belirtilen dizinden başlayarak döndürülecek sonuç sayısı `offset` .|Dize|Hayır|   
-|<a name="localCategories"></a>Yerel Kategoriler|İş kategorisine göre arama tanımlayan seçeneklerin listesi.  Bkz. [Yerel Iş kategorileri arama](local-categories.md)|Dize|Hayır|  
+|<a name="count"></a>biriktirme|Parametresi tarafından belirtilen dizinden başlayarak döndürülecek sonuç sayısı `offset` .|Dize|No|   
+|<a name="localCategories"></a>Yerel Kategoriler|İş kategorisine göre arama tanımlayan seçeneklerin listesi.  Bkz. [Yerel Iş kategorileri arama](local-categories.md)|Dize|No|  
 |<a name="mkt"></a>mkt|Sonuçların geldiği pazar. <br /><br />Olası Pazar değerlerinin listesi için bkz. Pazar kodları.<br /><br /> **Note:** Yerel Iş Arama API 'SI Şu anda yalnızca en-ABD pazar ve dilini desteklemektedir.<br /><br />|Dize|Yes|
-|<a name="offset"></a>konumu|Parametre tarafından belirtilen sonuçları başlatacak Dizin `count` .|Tamsayı|Hayır|  
-|<a name="query"></a>ç|Kullanıcının arama terimi.|Dize|Hayır|  
-|<a name="responseformat"></a>responseFormat|Yanıt için kullanılacak medya türü. Aşağıdakiler, büyük/küçük harf duyarsız değerlerdir.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Varsayılan değer JSON ' dır. Yanıtın içerdiği JSON nesneleri hakkında daha fazla bilgi için bkz. [Response Objects](#response-objects).<br /><br />  JsonLd belirtirseniz, yanıt gövdesi, arama sonuçlarını içeren JSON-LD nesnelerini içerir. JSON-LD hakkında daha fazla bilgi için bkz. [JSON-ld](https://json-ld.org/).|Dize|Hayır|  
-|<a name="safesearch"></a>safeSearch|Yetişkinlere yönelik içeriği filtrelemek için kullanılan bir filtre. Aşağıdakiler, büyük/küçük harfe duyarlı olmayan olası filtre değerleridir.<br /><ul><li>&mdash;Yetişkinlere yönelik metin, resim veya video içeren Web sayfalarını geri döndürün.<br /><br/></li><li>Orta &mdash; , yetişkinlere yönelik metinler içeren Web sayfalarını, yetişkinlere yönelik görüntüleri veya videoları geri döndürür.<br /><br/></li><li>Sıkı &mdash; metin, resim veya video içeren Web sayfaları döndürün.</li></ul><br /> Varsayılan ayar Moderate değeridir.<br /><br /> **Note:** İstek, Bing yetişkin ilkesinin katı olarak ayarlanmasını gerektiren bir marketten geliyorsa `safeSearch` , Bing `safeSearch` değeri yoksayar ve katı kullanır.<br/><br/>**NOT:**`site:` sorgu işlecini kullanmanız durumunda, `safeSearch` parametresinin ayarına bakılmaksızın yanıtta yetişkinlere yönelik içerik bulunabilir. `site:` işlecini yalnızca sitenin içeriği hakkında bilgi sahibiyseniz ve senaryonuz, yetişkinlere yönelik içeriğin mevcut olma ihtimalini destekliyorsa kullanın. |Dize|Hayır|  
-|<a name="setlang"></a>setLang|Kullanıcı arabirimi dizelerinde kullanılacak dil. Dili belirtirken ISO 639-1 2 harfi dil kodunu kullanın. Örneğin, Türkçe için dil kodu TR'dir. Varsayılan değer EN (İngilizce) ayarıdır.<br /><br /> İsteğe bağlı olsa da, her zaman dil belirtmelisiniz. Kullanıcı tarafından kullanıcı arabirimi dizelerinin farklı dilde görüntülenmesi istenmediği sürece, normalde `setLang` parametresini `mkt` parametresiyle aynı dile ayarlarsınız.<br /><br /> Bu parametre ve [](#acceptlanguage)Accept-Language&mdash; üst bilgisi karşılıklı olarak birbirini dışlar. İkisini birlikte belirtmeyin.<br /><br /> Kullanıcı arabirimi dizesi, kullanıcı arabiriminde etiket olarak kullanılan dizedir. JSON yanıt nesnelerinde çok az kullanıcı arabirimi dizesi vardır. Ayrıca, yanıt nesnelerinde Bing.com özelliklerine yönelik bağlantılar da belirtilen dildedir.|Dize|Hayır| 
+|<a name="offset"></a>konumu|Parametre tarafından belirtilen sonuçları başlatacak Dizin `count` .|Tamsayı|No|  
+|<a name="query"></a>ç|Kullanıcının arama terimi.|Dize|No|  
+|<a name="responseformat"></a>responseFormat|Yanıt için kullanılacak medya türü. Aşağıdakiler, büyük/küçük harf duyarsız değerlerdir.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Varsayılan değer JSON ' dır. Yanıtın içerdiği JSON nesneleri hakkında daha fazla bilgi için bkz. [Response Objects](#response-objects).<br /><br />  JsonLd belirtirseniz, yanıt gövdesi, arama sonuçlarını içeren JSON-LD nesnelerini içerir. JSON-LD hakkında daha fazla bilgi için bkz. [JSON-ld](https://json-ld.org/).|Dize|No|  
+|<a name="safesearch"></a>safeSearch|Yetişkinlere yönelik içeriği filtrelemek için kullanılan bir filtre. Aşağıdakiler, büyük/küçük harfe duyarlı olmayan olası filtre değerleridir.<br /><ul><li>&mdash;Yetişkinlere yönelik metin, resim veya video içeren Web sayfalarını geri döndürün.<br /><br/></li><li>Orta &mdash; , yetişkinlere yönelik metinler içeren Web sayfalarını, yetişkinlere yönelik görüntüleri veya videoları geri döndürür.<br /><br/></li><li>Sıkı &mdash; metin, resim veya video içeren Web sayfaları döndürün.</li></ul><br /> Varsayılan ayar Moderate değeridir.<br /><br /> **Note:** İstek, Bing yetişkin ilkesinin katı olarak ayarlanmasını gerektiren bir marketten geliyorsa `safeSearch` , Bing `safeSearch` değeri yoksayar ve katı kullanır.<br/><br/>**NOT:**`site:` sorgu işlecini kullanmanız durumunda, `safeSearch` parametresinin ayarına bakılmaksızın yanıtta yetişkinlere yönelik içerik bulunabilir. `site:` işlecini yalnızca sitenin içeriği hakkında bilgi sahibiyseniz ve senaryonuz, yetişkinlere yönelik içeriğin mevcut olma ihtimalini destekliyorsa kullanın. |Dize|No|  
+|<a name="setlang"></a>setLang|Kullanıcı arabirimi dizelerinde kullanılacak dil. Dili belirtirken ISO 639-1 2 harfi dil kodunu kullanın. Örneğin, Türkçe için dil kodu TR'dir. Varsayılan değer EN (İngilizce) ayarıdır.<br /><br /> İsteğe bağlı olsa da, her zaman dil belirtmelisiniz. Kullanıcı tarafından kullanıcı arabirimi dizelerinin farklı dilde görüntülenmesi istenmediği sürece, normalde `setLang` parametresini `mkt` parametresiyle aynı dile ayarlarsınız.<br /><br /> Bu parametre ve [](#acceptlanguage)Accept-Language&mdash; üst bilgisi karşılıklı olarak birbirini dışlar. İkisini birlikte belirtmeyin.<br /><br /> Kullanıcı arabirimi dizesi, kullanıcı arabiriminde etiket olarak kullanılan dizedir. JSON yanıt nesnelerinde çok az kullanıcı arabirimi dizesi vardır. Ayrıca, yanıt nesnelerinde Bing.com özelliklerine yönelik bağlantılar da belirtilen dildedir.|Dize|No| 
 
 
 ## <a name="response-objects"></a>Yanıt nesneleri  
 Aşağıda, yanıtın dahil olabileceği JSON yanıt nesneleri verilmiştir. İstek başarılı olursa, yanıttaki en üst düzey nesne [SearchResponse](#searchresponse) nesnesidir. İstek başarısız olursa, en üst düzey nesne [errorResponse](#errorresponse) nesnesidir.
 
 
-|Nesne|Açıklama|  
+|Nesne|Description|  
 |------------|-----------------|  
 |[Koy](#place)|Restoran veya otel gibi yerel bir işletme hakkındaki bilgileri tanımlar.|  
 
@@ -113,7 +113,7 @@ Oluşan hatayı tanımlar.
 ### <a name="errorresponse"></a>ErrorResponse  
 İstek başarısız olduğunda yanıtın içerdiği en üst düzey nesne.  
   
-|Ad|Değer|Tür|  
+|Name|Değer|Tür|  
 |----------|-----------|----------|  
 |_type|İpucu yazın.|Dize|  
 |<a name="errors"></a>hatası|İsteğin başarısız olma nedenlerini betimleyen hataların listesi.|[Hata](#error)[]|  
@@ -123,7 +123,7 @@ Oluşan hatayı tanımlar.
 ### <a name="license"></a>Lisans  
 Metin veya fotoğrafın kullanılabileceği lisansı tanımlar.  
   
-|Ad|Değer|Tür|  
+|Name|Değer|Tür|  
 |----------|-----------|----------|  
 |name|Lisansın adı.|Dize|  
 |url|Kullanıcının lisans hakkında daha fazla bilgi alabileceğiniz bir Web sitesinin URL 'SI.<br /><br /> Köprü oluşturmak için adı ve URL 'YI kullanın.|Dize|  
@@ -132,7 +132,7 @@ Metin veya fotoğrafın kullanılabileceği lisansı tanımlar.
 ### <a name="link"></a>Bağlantı  
 Bir köprünün bileşenlerini tanımlar.  
   
-|Ad|Değer|Tür|  
+|Name|Değer|Tür|  
 |----------|-----------|----------|  
 |_type|İpucu yazın.|Dize|  
 |metin|Görüntü metni.|Dize|  
@@ -146,7 +146,7 @@ Bir yayımcıyı tanımlar.
   
 Bir yayımcının adlarını veya Web sitelerini veya her ikisini de sağlayabileceğini unutmayın.  
   
-|Ad|Değer|Tür|  
+|Name|Değer|Tür|  
 |----------|-----------|----------|  
 |name|Yayımcının adı.|Dize|  
 |url|Yayımcının Web sitesinin URL 'SI.<br /><br /> Yayımcının bir Web sitesi sağlayamadığını unutmayın.|Dize|  
@@ -156,7 +156,7 @@ Bir yayımcının adlarını veya Web sitelerini veya her ikisini de sağlayabil
 ### <a name="place"></a>Yer  
 Restoran veya otel gibi yerel bir işletme hakkındaki bilgileri tanımlar.  
   
-|Ad|Değer|Tür|  
+|Name|Değer|Tür|  
 |----------|-----------|----------|  
 |_type|Aşağıdakilerden birine ayarlanmış olabilecek tür İpucu:<br /><br /><ul><li>Otel</li><li>Yerel Iş<br /></li><li>Izın</ul><li>|Dize|  
 |adres|Varlığın bulunduğu posta adresi.|PostalAddress|  
@@ -172,7 +172,7 @@ Restoran veya otel gibi yerel bir işletme hakkındaki bilgileri tanımlar.
   
 |Öğe|Açıklama|Tür|  
 |-------------|-----------------|----------|  
-|Adultınkatlanmış|Belirtilen sorgunun yetişkinlere yönelik amaç olup olmadığını gösteren bir Boole değeri. Sorguda yetişkinlere yönelik amaç varsa değer **true** 'dur; Aksi takdirde, **false** .|Boole|  
+|Adultınkatlanmış|Belirtilen sorgunun yetişkinlere yönelik amaç olup olmadığını gösteren bir Boole değeri. Sorguda yetişkinlere yönelik amaç varsa değer **true** 'dur; Aksi takdirde, **false**.|Boole|  
 |alterationOverrideQuery|Bing 'in özgün dizeyi kullanmasına zorlamak için kullanılacak sorgu dizesi. Örneğin, sorgu dizesi *downwind salalıyorsa* , geçersiz kılma sorgu dizesi *+ sallama* olur. *% 2Bsaling + downrüzgar* ile sonuçlanan sorgu dizesini kodlamayı unutmayın.<br /><br /> Bu alan, yalnızca özgün sorgu dizesinde yazım hatası varsa dahil edilir.|Dize|  
 |alteredQuery|Sorguyu gerçekleştirmek için Bing tarafından kullanılan sorgu dizesi. Özgün sorgu dizesinde yazım hataları yer alıyorsa Bing değiştirilen sorgu dizesini kullanır. Örneğin, sorgu dizesi ise, `saling downwind` Değiştirilen sorgu dizesi olacaktır `sailing downwind` .<br /><br /> Bu alan, yalnızca özgün sorgu dizesinde yazım hatası varsa dahil edilir.|Dize|  
 |askUserForLocation|Bing 'in, kullanıcının konumunun doğru sonuçlar sağlamasını gerektirip gerektirmediğini belirten bir Boole değeri. Kullanıcının konumunu [X-MSEdge-ClientIP](#clientip) ve [x-Search-location](#location) üst bilgilerini kullanarak belirttiyseniz, bu alanı yoksayabilirsiniz.<br /><br /> "Bugün hava durumu" veya "Yakınımdaki Restoran" gibi konum duyarlı sorgularda, bu alan doğru sonuçlar sağlamak için kullanıcının konumuna ihtiyacı olan bu alan **true** olarak ayarlanır.<br /><br /> Konumu içeren konum duyarlı sorgular için (örneğin, "Seattle Hava durumu"), bu alan **false** olarak ayarlanır. Bu alan ayrıca "en iyi satıcılar" gibi konum duyarlı olmayan sorgular için **false** olarak ayarlanır.|Boole|  
@@ -180,21 +180,21 @@ Restoran veya otel gibi yerel bir işletme hakkındaki bilgileri tanımlar.
 
 ### <a name="identifiable"></a>Maya
 
-|Ad|Değer|Tür|  
+|Name|Değer|Tür|  
 |-------------|-----------------|----------|
 |kimlik|Kaynak tanımlayıcısı|Dize|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Mainline gibi bir arama sonuçları grubunu tanımlar.
 
-|Ad|Değer|Tür|  
+|Name|Değer|Tür|  
 |-------------|-----------------|----------|
 |öğeler|Grupta görüntülenecek arama sonuçlarının listesi.|Rankingıtem|
 
 ### <a name="rankingitem"></a>Rankingıtem
 Görüntülenecek bir arama sonuç öğesi tanımlar.
 
-|Ad|Değer|Tür|  
+|Name|Değer|Tür|  
 |-------------|-----------------|----------|
 |Resultındex|Görüntülenecek cevap içindeki öğenin sıfır tabanlı dizini. Öğe bu alanı içermiyorsa, yanıtdaki tüm öğeleri görüntüleyin. Örneğin, haber yanıtında tüm haber makalelerini görüntüleyin.|Tamsayı|
 |answerType|Görüntülenecek öğeyi içeren yanıt. Örneğin, Haberler.<br /><br />SearchResponse nesnesinde yanıtı bulmak için türü kullanın. Tür, SearchResponse alanının adıdır.<br /><br /> Ancak, yanıt türünü yalnızca bu nesne değer alanını içeriyorsa kullanın; Aksi takdirde, yoksayabilirsiniz.|Dize|
@@ -204,7 +204,7 @@ Görüntülenecek bir arama sonuç öğesi tanımlar.
 ### <a name="rankingresponse"></a>RankingResponse  
 Arama sonuçları sayfasının içeriğini ve ne sırada yerleştirileceğini tanımlar.  
   
-|Ad|Değer|  
+|Name|Değer|  
 |----------|-----------|  
 |<a name="ranking-mainline"></a>Ana hat|Ana satırda görüntülenecek arama sonuçları.|  
 |<a name="ranking-pole"></a>kutup|En sık görülen işleme (örneğin, ana hat ve kenar çubuğu üzerinde görüntülenir) uygun olması gereken arama sonuçları.|  
@@ -215,7 +215,7 @@ Arama sonuçları sayfasının içeriğini ve ne sırada yerleştirileceğini ta
   
 Hizmet bir hizmet reddi saldırısından şüpheleniyorsa, isteğin başarılı olacağını unutmayın (HTTP durum kodu 200 Tamam); Ancak, yanıt gövdesi boş olur.  
   
-|Ad|Değer|Tür|  
+|Name|Değer|Tür|  
 |----------|-----------|----------|  
 |_type|SearchResponse olarak ayarlanan tip ipucu.|Dize|  
 |verir|Arama sorgusuyla ilgili varlıkların listesi.|JSON nesnesi|  
@@ -226,7 +226,7 @@ Hizmet bir hizmet reddi saldırısından şüpheleniyorsa, isteğin başarılı 
 
 Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir.  
   
-|Durum Kodu|Açıklama|  
+|Durum Kodu|Description|  
 |-----------------|-----------------|  
 |200|Başarılı.|  
 |400|Sorgu parametrelerinden biri eksik veya geçersiz.|  
@@ -266,7 +266,7 @@ Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir.
 
 Olası hata kodu ve alt hata kodu değerleri aşağıda verilmiştir.
 
-|Kod|Alt|Açıklama
+|Kod|Alt|Description
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|HTTP durum kodu 500 ' dir.
 |Invalidrequest|ParameterMissing<br/>Parameterınvalidvalue<br/>HttpNotAllowed<br/>Engellendi|İsteğin herhangi bir bölümü geçerli değilse Bing, ınvalidrequest döndürüyor. Örneğin, gerekli bir parametre eksik veya bir parametre değeri geçerli değil.<br/><br/>Hata ParameterMissing veya Parameterınvalidvalue ise, HTTP durum kodu 400 ' dir.<br/><br/>HTTPS yerine HTTP protokolünü kullanırsanız, Bing HttpNotAllowed öğesini döndürür ve HTTP durum kodu 410 ' dir.

@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: 6bf00d8b5327ddd539190b6e990c7edb35c876f7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b02ccea396fc65f9ecfe1d59e953da7440e87951
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018398"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363659"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Anomali algılayıcı API 'sini kullanmaya yönelik en iyi uygulamalar
 
@@ -52,7 +52,7 @@ Batch anomali algılama kullanılarak aynı veri kümesi aşağıda verilmiştir
 
 ## <a name="data-preparation"></a>Veri hazırlama
 
-Anomali algılayıcı API 'SI, bir JSON istek nesnesi halinde biçimlendirilen zaman serisi verilerini kabul eder. Zaman serisi, zaman içinde sıralı olarak kaydedilmiş herhangi bir sayısal veri olabilir. API 'nin performansını geliştirmek için zaman serisi verilerinizin pencerelerini anomali algılayıcı API uç noktasına gönderebilirsiniz. Gönderebilmeniz gereken en az veri noktası sayısı 12, üst sınır 8640 puntodur. [Ayrıntı düzeyi](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) , verilerinizin örneklendiği hız olarak tanımlanmıştır. 
+Anomali algılayıcı API 'SI, bir JSON istek nesnesi halinde biçimlendirilen zaman serisi verilerini kabul eder. Zaman serisi, zaman içinde sıralı olarak kaydedilmiş herhangi bir sayısal veri olabilir. API 'nin performansını geliştirmek için zaman serisi verilerinizin pencerelerini anomali algılayıcı API uç noktasına gönderebilirsiniz. Gönderebilmeniz gereken en az veri noktası sayısı 12, üst sınır 8640 puntodur. [Ayrıntı düzeyi](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) , verilerinizin örneklendiği hız olarak tanımlanmıştır. 
 
 Anomali algılayıcı API 'sine gönderilen veri noktaları, geçerli bir Eşgüdümlü Evrensel Saat (UTC) Zaman damgasına ve sayısal değere sahip olmalıdır. 
 

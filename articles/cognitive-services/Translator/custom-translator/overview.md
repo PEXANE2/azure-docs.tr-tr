@@ -9,20 +9,20 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: d84a0190e13d7bb7664e8792e0047338fe4bf5e2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 55555d81eb531ae5a4d946fa3f661796b3294897
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85961243"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365508"
 ---
 # <a name="what-is-custom-translator"></a>Özel Çevirmen nedir?
 
 [Özel çevirici](https://portal.customtranslator.azure.ai) , çevirmen kurumların, uygulama geliştiricilerinin ve dil hizmet sağlayıcılarının özelleştirilmiş sinir makine çevirisi (NMT) sistemleri oluşturmalarına olanak sağlayan Microsoft Translator hizmetinin bir özelliğidir. Özelleştirilmiş çeviri sistemleri, mevcut uygulamalar, iş akışları ve Web siteleri ile sorunsuz bir şekilde tümleşir. [Özel çevirmen](https://portal.customtranslator.azure.ai/) , [Microsoft Translator hub 'ının](https://hub.microsofttranslator.com/) ISTATISTIKSEL makine çevirisi (SMT) için yaptığı, ancak özel olarak sinir makine çevirisi (NMT) sistemleri için de benzer özellikler sunar.
 
-[Özel çevirmenle](https://portal.customtranslator.azure.ai) oluşturulan çeviri sistemleri, her gün milyarlarca çeviri sağlayan bulut tabanlı, [güvenli](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), yüksek performanslı ve yüksek düzeyde ÖLÇEKLENEBILIR Microsoft Translator [metin API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)aracılığıyla sunulmaktadır.
+[Özel çevirmenle](https://portal.customtranslator.azure.ai) oluşturulan çeviri sistemleri, her gün milyarlarca çeviri sağlayan bulut tabanlı, [güvenli](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), yüksek performanslı ve yüksek düzeyde ÖLÇEKLENEBILIR Microsoft Translator [metin API v3](../reference/v3-0-translate.md?tabs=curl)aracılığıyla sunulmaktadır.
 
-Özel çevirmen üç düzine dili destekler ve doğrudan NMT için kullanılabilen dillerle eşlenir. Tüm liste için bkz.  [Microsoft Translator dilleri](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
+Özel çevirmen üç düzine dili destekler ve doğrudan NMT için kullanılabilen dillerle eşlenir. Tüm liste için bkz.  [Microsoft Translator dilleri](../language-support.md#customization).
 
 ## <a name="features"></a>Özellikler
 
@@ -34,7 +34,7 @@ ms.locfileid: "85961243"
 |[İş terminolojinizi bilen yapı sistemleri](what-are-parallel-documents.md)     |  Kendi işinizde ve sektöründe kullanılan terimlerin anlayan paralel belgeler kullanarak çeviri sistemlerini özelleştirin ve oluşturun.       |
 |[Modellerinizi derlemek için sözlük kullanma](what-is-dictionary.md)     |   Eğitim verileri ayarlanmamışsa, bir modeli yalnızca sözlük verileriyle eğitebilirsiniz.       |
 |[Diğer kişilerle birlikte çalışma](how-to-manage-settings.md#share-your-workspace)     |   İşinizi farklı kişilerle paylaşarak ekibinizle işbirliği yapın.     |
-|[Özel çeviri modelinize erişin](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)     |  Özel çeviri modelinize, Microsoft Translator Metin Çevirisi API'si v3 aracılığıyla mevcut uygulamalarınızın/programlarınızın her zaman erişilebilir.       |
+|[Özel çeviri modelinize erişin](../reference/v3-0-translate.md?tabs=curl)     |  Özel çeviri modelinize, Microsoft Translator Metin Çevirisi API'si v3 aracılığıyla mevcut uygulamalarınızın/programlarınızın her zaman erişilebilir.       |
 
 ## <a name="get-better-translations"></a>Daha iyi çeviriler alın
 

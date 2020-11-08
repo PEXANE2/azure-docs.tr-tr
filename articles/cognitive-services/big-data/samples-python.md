@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: sample
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 1a4fe2492433aa793d1a7e4be41c5f93043848a5
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 590ddef27315f37719da5b28c68b6c402371e986
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337874"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363264"
 ---
 # <a name="python-samples-for-cognitive-services-for-big-data"></a>Büyük veriler için bilişsel hizmetler için Python örnekleri
 
@@ -56,7 +56,7 @@ assert service_key != "ADD_YOUR_SUBSCRIPION_KEY"
 
 ## <a name="text-analytics-sample"></a>Metin Analizi örneği
 
-[Metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) hizmeti, metinden akıllı öngörüleri ayıklamak için çeşitli algoritmalar sağlar. Örneğin, verilen giriş metninin yaklaşımını bulabiliriz. Hizmet, 0,0 ile 1,0 arasında bir puan döndürür. bu noktada, düşük puanlar negatif yaklaşım ve yüksek puan pozitif yaklaşım olduğunu gösterir.  Bu örnek üç basit cümle kullanır ve her biri için yaklaşımı döndürür.
+[Metin analizi](../text-analytics/index.yml) hizmeti, metinden akıllı öngörüleri ayıklamak için çeşitli algoritmalar sağlar. Örneğin, verilen giriş metninin yaklaşımını bulabiliriz. Hizmet, 0,0 ile 1,0 arasında bir puan döndürür. bu noktada, düşük puanlar negatif yaklaşım ve yüksek puan pozitif yaklaşım olduğunu gösterir.  Bu örnek üç basit cümle kullanır ve her biri için yaklaşımı döndürür.
 
 ```python
 from pyspark.sql.functions import col
@@ -91,7 +91,7 @@ display(sentiment.transform(df).select("text", col("sentiment")[0].getItem("sent
 
 ## <a name="computer-vision-sample"></a>Görüntü İşleme örneği
 
-[Görüntü işleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) , yüzeyleri, nesneleri ve doğal dil açıklamaları gibi yapıyı belirlemek için görüntüleri analiz eder. Bu örnekte, bir resim listesini etiketliyoruz. Etiketler, görüntüde tanınabilir nesneler, kişiler, manzara ve eylemler gibi öğelerin bir sözcüklerdir.
+[Görüntü işleme](../computer-vision/index.yml) , yüzeyleri, nesneleri ve doğal dil açıklamaları gibi yapıyı belirlemek için görüntüleri analiz eder. Bu örnekte, bir resim listesini etiketliyoruz. Etiketler, görüntüde tanınabilir nesneler, kişiler, manzara ve eylemler gibi öğelerin bir sözcüklerdir.
 
 ```python
 
@@ -126,7 +126,7 @@ display(analysis.transform(df).select("image", "analysis_results.description.tag
 
 ## <a name="bing-image-search-sample"></a>Bing Resim Arama örneği
 
-[Bing resim arama](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview) , kullanıcının doğal dil sorgusuyla ilgili görüntüleri almak için Web 'de arama yapar. Bu örnekte, tırnak içine alınmış resimleri gösteren bir metin sorgusu kullanıyoruz. Sorgumuzla ilgili fotoğraflar içeren resim URL 'Lerinin bir listesini döndürür.
+[Bing resim arama](../bing-image-search/overview.md) , kullanıcının doğal dil sorgusuyla ilgili görüntüleri almak için Web 'de arama yapar. Bu örnekte, tırnak içine alınmış resimleri gösteren bir metin sorgusu kullanıyoruz. Sorgumuzla ilgili fotoğraflar içeren resim URL 'Lerinin bir listesini döndürür.
 
 ```python
 from pyspark.ml import PipelineModel
@@ -171,7 +171,7 @@ display(pipeline.transform(bingParameters))
 
 
 ## <a name="speech-to-text-sample"></a>Konuşmadan metne örnek
-[Konuşmadan metne](https://docs.microsoft.com/azure/cognitive-services/speech-service/index-speech-to-text) hizmeti, okunan ses akışlarını veya dosyalarını metne dönüştürür. Bu örnekte, iki ses dosyası ekleyeceğiz. İlk dosyanın anlaşılması kolaydır ve ikincisi daha zorlayıcı bir işlemdir.
+[Konuşmadan metne](../speech-service/index-speech-to-text.yml) hizmeti, okunan ses akışlarını veya dosyalarını metne dönüştürür. Bu örnekte, iki ses dosyası ekleyeceğiz. İlk dosyanın anlaşılması kolaydır ve ikincisi daha zorlayıcı bir işlemdir.
 
 ```python
 
@@ -205,7 +205,7 @@ display(speech_to_text.transform(df).select("url", "text.DisplayText"))
 
 ## <a name="anomaly-detector-sample"></a>Anomali algılayıcı örneği
 
-[Anomali algılayıcısı](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/) , zaman serisi verilerinizde ırdüzenleyeaykırıluluğunu saptamak için idealdir. Bu örnekte, tüm zaman serisinde bozukluklar bulmak için hizmeti kullanırız.
+[Anomali algılayıcısı](../anomaly-detector/index.yml) , zaman serisi verilerinizde ırdüzenleyeaykırıluluğunu saptamak için idealdir. Bu örnekte, tüm zaman serisinde bozukluklar bulmak için hizmeti kullanırız.
 
 ```python
 from pyspark.sql.functions import lit

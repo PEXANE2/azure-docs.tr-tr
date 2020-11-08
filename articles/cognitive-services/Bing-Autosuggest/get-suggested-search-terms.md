@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: d55ff4ed8717a449628e94a940c0896d31818da2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a0187a5d2be6b2f93897fc358e26ad095e5a70f7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101944"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364590"
 ---
 # <a name="what-is-bing-autosuggest"></a>Bing Otomatik Öneri nedir?
 
@@ -36,7 +36,7 @@ Uygulamanız Bing Arama API'leri herhangi birine sorgu gönderiyorsa, kullanıc�
 
 Bing Otomatik Öneri API'si, HTTP istekleri yapan ve JSON 'u ayrıştırabilen herhangi bir programlama dilinden kolayca çağrılacak bir Web hizmetidir.
 
-1. Bing Arama API'lerine erişimi olan bir [Bilişsel Hizmetler API'si hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oluşturun. Azure aboneliğiniz yoksa ücretsiz olarak [hesap oluşturabilirsiniz](https://azure.microsoft.com/free/cognitive-services/).
+1. Bing Arama API'lerine erişimi olan bir [Bilişsel Hizmetler API'si hesabı](../cognitive-services-apis-create-account.md) oluşturun. Azure aboneliğiniz yoksa ücretsiz olarak [hesap oluşturabilirsiniz](https://azure.microsoft.com/free/cognitive-services/).
 2. Her kullanıcı uygulamanızın arama kutusuna yeni bir karakter yazdığında, bu API 'ye bir istek gönderin.
 3. Döndürülen JSON iletisini ayrıştırarak API yanıtını işleyin.
 
@@ -52,11 +52,11 @@ Kullanıcı aşağı açılan listeden bir öneri seçtiğinde, Bing Arama API'l
 
 İlk isteğinizi hızlı bir şekilde başlatmak için bkz. [İlk Sorgunuzu Yapma](quickstarts/csharp.md).
 
-[Bing Otomatik Öneri API’si v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) başvurusunu inceleyin. Başvuruda, önerilen sorgu terimlerini istemek için kullanacağınız uç noktaların, üst bilgilerin ve sorgu parametrelerinin listesinin yanı sıra yanıt nesnelerinin tanımları yer alır.
+[Bing Otomatik Öneri API’si v7](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) başvurusunu inceleyin. Başvuruda, önerilen sorgu terimlerini istemek için kullanacağınız uç noktaların, üst bilgilerin ve sorgu parametrelerinin listesinin yanı sıra yanıt nesnelerinin tanımları yer alır.
 
-Kullanılabilir diğer API 'Leri araştırmak için [BING arama API hub sayfasını](../bing-web-search/search-the-web.md) ziyaret edin.
+Kullanılabilir diğer API 'Leri araştırmak için [BING arama API hub sayfasını](../bing-web-search/overview.md) ziyaret edin.
 
 
-[Bing Web araması API'si](../bing-web-search/search-the-web.md)kullanarak Web 'de arama yapmayı öğrenin ve diğer[Bing Arama API'leri](../bing-web-search/index.yml)keşfedebilirsiniz.
+[Bing Web araması API'si](../bing-web-search/overview.md)kullanarak Web 'de arama yapmayı öğrenin ve diğer[Bing Arama API'leri](../bing-web-search/index.yml)keşfedebilirsiniz.
 
-Arama sonuçlarını kullanma kurallarına uygun hareket ettiğinizden emin olmak için [Bing Kullanım ve Görüntüleme Gereksinimleri](./useanddisplayrequirements.md)'ni okumayı unutmayın.
+Arama sonuçlarını kullanma kurallarına uygun hareket ettiğinizden emin olmak için [Bing Kullanım ve Görüntüleme Gereksinimleri](../bing-web-search/use-display-requirements.md)'ni okumayı unutmayın.

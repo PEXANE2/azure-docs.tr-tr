@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: d1405bce6761b6702146418296cb7b47bb9124ee
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: f270ac736bb5dbc429dc8659cc88e63d0b51a523
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357190"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366647"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı sınırları-esnek sunucu
 
@@ -78,7 +78,7 @@ Bir PostgreSQL bağlantısı bile boşta, yaklaşık 10 MB bellek içerebilir. A
 - Zone-Redundant HA Şu anda Burstable sunucular için desteklenmiyor.
 - Sunucunuz HA bekleme moduna çağrıldığında veritabanı sunucusu IP adresi değişir. Sunucu IP adresi yerine DNS kaydını kullandığınızdan emin olun.
 - Mantıksal çoğaltma, bir HA yapılandırılmış esnek sunucu ile yapılandırıldıysa, bekleme sunucusuna yük devretme durumunda mantıksal çoğaltma yuvaları, bekleme sunucusuna kopyalanmaz. 
-- Ek HA sınırlamaları için lütfen [Concepts-ha belgeleri](concepts-high-availability.md) sayfasına bakın.
+- Sınırlamalar dahil, bölgesel olarak yedekli HA hakkında daha fazla bilgi için lütfen [Concepts-ha belgeleri](concepts-high-availability.md) sayfasına bakın.
 
 ### <a name="availability-zones"></a>Kullanılabilirlik alanları
 

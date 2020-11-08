@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: b23c95ef0005c8246feb8dc32e4a07a0ae19b72f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: c0d9b6042ae695caa73d926653f237b756bf4971
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359553"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366732"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı 'nda yüksek kullanılabilirlik kavramları-esnek sunucu
 
@@ -101,17 +101,17 @@ Yüksek kullanılabilirlik ile yapılandırılan esnek sunucular, güncel tutmak
 -   Yüksek kullanılabilirlik yalnızca birden fazla bölgenin kullanılabildiği bölgelerde desteklenir.
 -   Farklı bir kullanılabilirlik bölgesine zaman uyumlu çoğaltma nedeniyle, uygulamalar yükseltilmiş yazma ve tamamlama gecikmesi ile karşılaşabilir.
 
--   Bekleme çoğaltması salt okuma sorguları için kullanılamaz.
+-   Bekleme çoğaltması, okuma sorguları için kullanılamaz.
 
--   Yük devretme sırasında birincil sunucudaki etkinliğe bağlı olarak, yük devretmenin tamamlanması iki dakika veya daha uzun sürebilir.
+-   Birincil sunucudaki iş yüküne ve etkinliğe bağlı olarak, yük devretme işlemi 120 saniyeden daha uzun sürebilir.
 
--   Statik parametre değişikliklerini seçmek için birincil veritabanı sunucusunu yeniden başlatmak, bekleme çoğaltmasını de yeniden başlatır.
+-   Birincil veritabanı sunucusunu yeniden başlatmak, bekleme çoğaltmasını de yeniden başlatır. 
 
 -   Ek okuma çoğaltmalarının yapılandırılması desteklenmez.
 
 -   Yönetilen bakım penceresi sırasında müşterinin başlattığı yönetim görevlerinin yapılandırılması zamanlanamaz.
 
--   İşlemi ölçeklendirme ve depolamayı ölçeklendirme gibi planlı olaylar önce bekleyen çoğaltmada ve ardından da birincil sunucuda gerçekleşir. Hizmet yük devretmez. 
+-   İşlemi ölçeklendirme ve depolamayı ölçeklendirme gibi planlı olaylar önce bekleyen çoğaltmada ve ardından da birincil sunucuda gerçekleşir. Bu planlı işlemler için sunucu yük devretmiyor. 
 
 -  Mantıksal kod çözme veya mantıksal çoğaltma, bir HA yapılandırılmış esnek sunucu ile yapılandırıldıysa, bekleme sunucusuna yük devretme durumunda mantıksal çoğaltma yuvaları, bekleme sunucusuna kopyalanmaz.  
 

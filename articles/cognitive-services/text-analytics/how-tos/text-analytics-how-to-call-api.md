@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: e17f2015ed4428cfd3c1a6c8a7bc4f92854a6b71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43ee7272066dbd89e7c0053d51ba039b83fb494f
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710609"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363825"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Metin Analizi nasıl çağrılacağını REST API
 
@@ -29,7 +29,7 @@ Yönetilecek veri varlığı olmadığından Metin Analizi durum bilgisiz olduğ
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
@@ -44,8 +44,8 @@ Giriş, ham yapılandırılmamış metinde JSON olmalıdır. XML desteklenmiyor.
 | Öğe | Geçerli değerler | Gerekli mi? | Kullanım |
 |---------|--------------|-----------|-------|
 |`id` |Veri türü dizedir, ancak uygulama belge kimlikleri ' nde tam sayı olarak eğilimlidir. | Gerekli | Sistem çıktıyı yapılandırmak için sağladığınız kimlikleri kullanır. İstekteki her bir KIMLIK için dil kodları, anahtar tümceleri ve yaklaşım puanları oluşturulur.|
-|`text` | Yapılandırılmamış ham metin, en fazla 5.120 karakter. | Gerekli | Dil algılama için metin herhangi bir dilde ifade edilebilir. Yaklaşım analizi, anahtar ifade ayıklama ve varlık tanımlama için, metin [desteklenen bir dilde](../text-analytics-supported-languages.md)olmalıdır. |
-|`language` | 2 karakterlik [ıso 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) [desteklenen bir dil](../text-analytics-supported-languages.md) için kod | Değişir | Yaklaşım analizi, anahtar ifade ayıklama ve varlık bağlama için gereklidir; dil algılama için isteğe bağlı. Bunu dışladığınızda bir hata yoktur, ancak analiz bu olmadan zayıflatılmalıdır. Dil kodu, sağladığınız öğesine karşılık gelmelidir `text` . |
+|`text` | Yapılandırılmamış ham metin, en fazla 5.120 karakter. | Gerekli | Dil algılama için metin herhangi bir dilde ifade edilebilir. Yaklaşım analizi, anahtar ifade ayıklama ve varlık tanımlama için, metin [desteklenen bir dilde](../language-support.md)olmalıdır. |
+|`language` | 2 karakterlik [ıso 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) [desteklenen bir dil](../language-support.md) için kod | Değişir | Yaklaşım analizi, anahtar ifade ayıklama ve varlık bağlama için gereklidir; dil algılama için isteğe bağlı. Bunu dışladığınızda bir hata yoktur, ancak analiz bu olmadan zayıflatılmalıdır. Dil kodu, sağladığınız öğesine karşılık gelmelidir `text` . |
 
 Sınırlamalar hakkında daha fazla bilgi için bkz. [metin analizi genel bakış > veri sınırları](../overview.md#data-limits). 
 
@@ -107,7 +107,7 @@ Hizmet, boyutu 1 MB 'a kadar olan isteği kabul eder. Postman (veya başka bir W
 5. Bazı JSON belgelerini amaçlanan analiz için geçerli bir biçimde yapıştırın. Belirli bir analiz hakkında daha fazla bilgi için aşağıdaki konulara bakın:
 
   + [Dil algılama](text-analytics-how-to-language-detection.md)  
-  + [Anahtar tümceciği ayıklama](text-analytics-how-to-keyword-extraction.md)  
+  + [Anahtar ifade ayıklama](text-analytics-how-to-keyword-extraction.md)  
   + [Yaklaşım analizi](text-analytics-how-to-sentiment-analysis.md)  
   + [Varlık tanıma](text-analytics-how-to-entity-linking.md)  
 
@@ -124,4 +124,4 @@ Hizmet, boyutu 1 MB 'a kadar olan isteği kabul eder. Postman (veya başka bir W
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Dili algılama](text-analytics-how-to-language-detection.md)
+> [Dil algılama](text-analytics-how-to-language-detection.md)

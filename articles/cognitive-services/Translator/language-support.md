@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 426445342263ad10f174ecf7cca926805eb601e6
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: bdd12b5c866ee723547513e35a5adcfabb59dab9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669627"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364434"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Metin ve konuşma çevirisi için dil ve bölge desteği
 
@@ -347,7 +347,7 @@ Aşağıdaki diller, [özel çevirici](https://aka.ms/CustomTranslator)kullanıl
 | Galce | `cy` |
 
 ## <a name="speech-translation"></a>Konuşma Çevirisi
-Konuşma çevirisi, bilişsel hizmetler konuşma hizmeti ile Translator kullanılarak kullanılabilir. Konuşma çevirisi kullanma hakkında daha fazla bilgi edinmek ve [kullanılabilir tüm dil seçeneklerini](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support)görüntülemek Için [konuşma hizmeti belgelerini](https://docs.microsoft.com/azure/cognitive-services/speech-service/) görüntüleyin.
+Konuşma çevirisi, bilişsel hizmetler konuşma hizmeti ile Translator kullanılarak kullanılabilir. Konuşma çevirisi kullanma hakkında daha fazla bilgi edinmek ve [kullanılabilir tüm dil seçeneklerini](../speech-service/language-support.md)görüntülemek Için [konuşma hizmeti belgelerini](../speech-service/index.yml) görüntüleyin.
 
 ### <a name="speech-to-text"></a>Konuşmayı metne dönüştürme
 İstediğiniz metin diline çevirmek için konuşmayı metne dönüştürün. Konuşmayı metne dönüştürme özelliği, konuşma senşiyle birlikte kullanıldığında konuşma için konuşma çevirisi veya konuşma çevirisi için kullanılır.

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: 4fab0be90e6941d1a6b8f137ae574223b0d7a9d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7aeb9e9f4de7b4de62f9b5a8da6d997e32a2399
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86232755"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363332"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Azure bilişsel hizmetler 'e yönelik isteklerin kimliğini doğrulama
 
@@ -34,7 +34,7 @@ Bir istek yapmadan önce, bir Azure hesabı ve bir Azure bilişsel hizmetler abo
 
 Azure bilişsel hizmetler ile kullanılabilen kimlik doğrulama üstbilgilerini hızlıca gözden geçirelim.
 
-| Üst bilgi | Açıklama |
+| Üst bilgi | Description |
 |--------|-------------|
 | Ocp-Apim-Subscription-Key | Bu üstbilgiyi, belirli bir hizmet veya çok servis abonelik anahtarı için bir abonelik anahtarıyla kimlik doğrulaması yapmak için kullanın. |
 | OCP-apim-Subscription-Region | Bu üst bilgi yalnızca, [çevirmen hizmeti](./Translator/reference/v3-0-reference.md)ile birden çok hizmet içeren bir abonelik anahtarı kullanılırken gereklidir. Abonelik bölgesini belirtmek için bu üstbilgiyi kullanın. |
@@ -177,6 +177,6 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Bilişsel Hizmetler nedir?](welcome.md)
+* [Bilişsel Hizmetler nedir?](./what-are-cognitive-services.md)
 * [Bilişsel Hizmetler fiyatlandırması](https://azure.microsoft.com/pricing/details/cognitive-services/)
 * [Özel alt etki alanları](cognitive-services-custom-subdomains.md)

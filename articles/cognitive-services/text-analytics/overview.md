@@ -12,18 +12,18 @@ ms.date: 11/02/2020
 ms.author: aahi
 keywords: metin araştırma, yaklaşım analizi, metin analizi
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: d58c501af3d90fec1eea43d13fa2383c8e847f18
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 6d10161609abda321ed1be9dfda0acabf2030c9e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289686"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365304"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Metin Analizi API'si nedir?
 
 Metin Analizi API'si, metin madenciliği ve metin analizi için doğal dil Işleme (NLP) özellikleri sağlayan bulut tabanlı bir hizmettir: yaklaşım analizi, bakım madenciliği, anahtar tümceciği ayıklama, dil algılama ve adlandırılmış varlık tanıma.
 
-API, geliştirme projeleriniz için bulutta makine öğrenimi ve AI algoritmaları koleksiyonu olan Azure bilişsel [Hizmetler](https://docs.microsoft.com/azure/cognitive-services/)'in bir parçasıdır. Bu özellikleri [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)veya [istemci kitaplığıyla](quickstarts/text-analytics-sdk.md)birlikte kullanabilirsiniz.
+API, geliştirme projeleriniz için bulutta makine öğrenimi ve AI algoritmaları koleksiyonu olan Azure bilişsel [Hizmetler](../index.yml)'in bir parçasıdır. Bu özellikleri [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)veya [istemci kitaplığıyla](quickstarts/text-analytics-sdk.md)birlikte kullanabilirsiniz.
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
@@ -73,18 +73,18 @@ Programlamada çok fazla deneyim olmasa bile, işlemlerinizde Metin Analizi API'
 
 * Gereken minimum programlama:
     * [Metin Analizi ve güç otomatikleştirme kullanarak Excel 'de bilgi Ayıkla](tutorials/extract-excel-information.md)
-    * [Bir Yammer grubundaki yorumların yaklaşımını belirlemek için Metin Analizi API'si ve MS akışını kullanın](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+    * [Bir Yammer grubundaki yorumların yaklaşımını belirlemek için Metin Analizi API'si ve MS akışını kullanın](/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
     * [Müşteri geri bildirimini çözümlemek için Power BI Metin Analizi API'si tümleştirin](tutorials/tutorial-power-bi-key-phrases.md)
 * Programlama deneyimi önerilir:
-    * [Azure Databricks kullanarak akış verileri üzerinde yaklaşım analizi](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
-    * [Metin çevirmek, yaklaşımı çözümlemek ve konuşmayı sentezleştirmek için bir Flask uygulaması oluşturun](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+    * [Azure Databricks kullanarak akış verileri üzerinde yaklaşım analizi](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
+    * [Metin çevirmek, yaklaşımı çözümlemek ve konuşmayı sentezleştirmek için bir Flask uygulaması oluşturun](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
 
 
 <a name="supported-languages"></a>
 
 ## <a name="supported-languages"></a>Desteklenen diller
 
-Bu bölüm, daha kolay bulunmasını sağlama amacıyla başka bir makaleye taşınmıştır. Bu içerik için [Metin Analizi API'si desteklenen diller](text-analytics-supported-languages.md) bölümüne bakın.
+Bu bölüm, daha kolay bulunmasını sağlama amacıyla başka bir makaleye taşınmıştır. Bu içerik için [Metin Analizi API'si desteklenen diller](./language-support.md) bölümüne bakın.
 
 <a name="data-limits"></a>
 
@@ -94,7 +94,7 @@ Tüm Metin Analizi API'si uç noktaları ham metin verisi kabul eder. Daha fazla
 
 ## <a name="unicode-encoding"></a>Unicode kodlama
 
-Metin Analizi API'si, metin gösterimi ve karakter sayısı hesaplamaları için Unicode kodlamasını kullanır. İstekler UTF-8 ve UTF-16 olarak gönderilebilir, karakter sayısında fark olmayacaktır. Karakter uzunluğu için Unicode kod noktaları buluşsal değer olarak kullanılır ve metin analizi veri sınırları için eşdeğer kabul edilir. [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements)Karakter sayısını almak için kullanırsanız, veri boyutunu ölçmek için kullandığımız yöntemi de kullanıyorsunuz.
+Metin Analizi API'si, metin gösterimi ve karakter sayısı hesaplamaları için Unicode kodlamasını kullanır. İstekler UTF-8 ve UTF-16 olarak gönderilebilir, karakter sayısında fark olmayacaktır. Karakter uzunluğu için Unicode kod noktaları buluşsal değer olarak kullanılır ve metin analizi veri sınırları için eşdeğer kabul edilir. [`StringInfo.LengthInTextElements`](/dotnet/api/system.globalization.stringinfo.lengthintextelements)Karakter sayısını almak için kullanırsanız, veri boyutunu ölçmek için kullandığımız yöntemi de kullanıyorsunuz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -104,6 +104,6 @@ Metin Analizi API'si, metin gösterimi ve karakter sayısı hesaplamaları için
 
 + Yeni yayınlar ve özellikler hakkında bilgi edinmek için [Metin Analizi API'si](whats-new.md) yenilikleri inceleyin.
 
-+ Azure Databricks kullanarak bu yaklaşım [Analizi öğreticisini](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services) biraz daha ayrıntılı olarak inceleyin.
++ Azure Databricks kullanarak bu yaklaşım [Analizi öğreticisini](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services) biraz daha ayrıntılı olarak inceleyin.
 
 + [Dış & topluluk içeriği sayfamızda](text-analytics-resource-external-community.md)diğer araç ve teknolojilerle Metin Analizi API'si nasıl kullanılacağına ilişkin blog gönderileri ve daha fazla video listesini inceleyin.

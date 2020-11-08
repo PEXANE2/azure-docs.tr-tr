@@ -11,23 +11,23 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 7fa09ee40ca646be6ee104c7b2d4428c92934337
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f725a4095103a7dcfc3dcdbdcefdc84d16501632
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084638"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366542"
 ---
 # <a name="tutorial-single-page-web-app"></a>Öğretici: Tek sayfalı web uygulaması
 
 > [!WARNING]
-> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](/bing/search-apis/bing-web-search/create-bing-search-service-resource)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
 > Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
-> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
+> Geçiş yönergeleri için bkz. [Bing arama Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Bing Varlık Arama API’si, *varlıklar* ve *yerler* hakkındaki bilgiler için Web araması yapmanızı sağlar. Belirli bir sorguda bir sonuç türünü veya her ikisini de isteyebilirsiniz. Yerlerin ve varlıkların tanımları aşağıda sağlanmıştır.
 
-| Sonuç | Açıklama |
+| Sonuç | Description |
 |-|-|
 |Varlıklar|Ada göre bulduğunuz tanınmış kişiler, yerler ve nesneler|
 |Yerler|Ada *veya* türe (İtalyan restoranları) bulduğunuz restoranlar, oteller ve diğer yerel işletmeler|
@@ -57,7 +57,7 @@ Uygulamamız, kullanıcı tarafından girilen bir konumdan enlem ve boylamı alm
 
 Öğretici sayfası tamamen bağımsızdır; dışarıdan hiçbir kare, stil sayfası veya hatta resim dosyası kullanmaz. Yalnızca yaygın olarak desteklenen JavaScript dilinin özelliklerini kullanır ve tüm önemli Web tarayıcılarının geçerli sürümlerinde çalışır.
 
-Bu öğreticide, kaynak kodun yalnızca seçilen bölümlerini açıklıyoruz. Tam kaynak kodu [ayrı bir sayfada](tutorial-bing-entities-search-single-page-app-source.md) yer almaktadır. Bu kodu bir metin düzenleyicisine yapıştırın ve `bing.html` olarak kaydedin.
+Bu öğreticide, kaynak kodun yalnızca seçilen bölümlerini açıklıyoruz. Tam kaynak kodu [ayrı bir sayfada]() yer almaktadır. Bu kodu bir metin düzenleyicisine yapıştırın ve `bing.html` olarak kaydedin.
 
 > [!NOTE]
 > Bu öğretici, [tek sayfalı Bing Web Araması uygulaması öğreticisine](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md) büyük ölçüde benzer, ancak yalnızca varlık araması sonuçlarını ele alır.
@@ -147,7 +147,7 @@ HTML `<body>` etiketi, sayfanın yüklenmesi tamamlandığında `getSearchSubscr
 
 HTML formu aşağıdaki denetimleri içerir:
 
-| Denetim | Açıklama |
+| Denetim | Description |
 |-|-|
 |`where`|Aramada kullanılan pazarı (konum ve dil) seçmek için açılan menü.|
 |`query`|Arama terimlerinin girildiği metin alanı.|
@@ -391,7 +391,7 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> Başarılı bir HTTP isteği, aramanın kendisinin başarılı olduğu anlamına *gelmeyebilir* . Arama işleminde hata oluşursa, Bing Varlık Arama API'si 200 olmayan bir HTTP durum kodu döndürür ve JSON yanıtına hata bilgilerini ekler. Buna ek olarak, istekte hız sınırlaması varsa API boş yanıt döndürür.
+> Başarılı bir HTTP isteği, aramanın kendisinin başarılı olduğu anlamına *gelmeyebilir*. Arama işleminde hata oluşursa, Bing Varlık Arama API'si 200 olmayan bir HTTP durum kodu döndürür ve JSON yanıtına hata bilgilerini ekler. Buna ek olarak, istekte hız sınırlaması varsa API boş yanıt döndürür.
 
 Önceki işlevlerin ikisinde de kodun büyük bölümü hata işlemeye ayrılmıştır. Şu aşamalarda hata oluşabilir:
 
@@ -405,7 +405,7 @@ Hatalar, hata hakkındaki bilinen tüm ayrıntılarla birlikte `renderErrorMessa
 
 ## <a name="displaying-search-results"></a>Arama sonuçlarını görüntüleme
 
-Bing Varlık Arama API’si, [sonuçları belirli bir sırada görüntülemenizi gerektirir](use-display-requirements.md). API iki farklı türde yanıt döndürebilecek olduğundan, JSON yanıtında en üst düzeyde `Entities` veya `Places` koleksiyonda yinelemek ve bu sonuçları göstermek yeterli değildir. (Yalnızca bir sonuç türü istiyorsanız `responseFilter` sorgu parametresini kullanın.)
+Bing Varlık Arama API’si, [sonuçları belirli bir sırada görüntülemenizi gerektirir](../bing-web-search/use-display-requirements.md). API iki farklı türde yanıt döndürebilecek olduğundan, JSON yanıtında en üst düzeyde `Entities` veya `Places` koleksiyonda yinelemek ve bu sonuçları göstermek yeterli değildir. (Yalnızca bir sonuç türü istiyorsanız `responseFilter` sorgu parametresini kullanın.)
 
 Bunun yerine, görüntülenecek sonuçları sıralamak için arama sonuçlarında `rankingResponse` koleksiyonunu kullanırız. Bu nesne `Entitiess` ve/veya `Places` koleksiyonlarındaki öğeleri ifade eder.
 

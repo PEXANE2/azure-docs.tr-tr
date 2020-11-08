@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: kenwith
-ms.openlocfilehash: cac7b169232bb43ba1b1893b59dac81ce4c39c49
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: 2f21e4f41814b47d8e630df72c255886ac2af53b
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233892"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364301"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kullanıcı hazırlama özniteliğini özelleştirme-Azure Active Directory SaaS uygulamaları için eşlemeler
 
@@ -110,7 +110,7 @@ Ancak, bazı uygulamalar özel öznitelikleri destekler ve Azure AD sağlama hiz
 - Active Directory/Workday için Workday Azure Active Directory
 - Azure Active Directory için Active Directory/başarılı faktörlerin başarılı olması
 - Azure Active Directory ([Azure AD Graph API varsayılan öznitelikleri](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity) ve özel dizin uzantıları desteklenir)
-- [Çekirdek şemasında](https://tools.ietf.org/html/rfc7643) tanımlanan özniteliklerin eklenmesi gereken [SCIM 2,0](https://tools.ietf.org/html/rfc7643)' ı destekleyen uygulamalar
+- [SCIM 2,0](https://tools.ietf.org/html/rfc7643) ' i destekleyen uygulamalar
 - Workday veya başarılı faktörlerdeki Azure Active Directory geri yazma için, desteklenen öznitelikler (XPATH ve JSONPath) için ilgili meta verileri güncelleştirmek desteklenir, ancak varsayılan şemaya dahil olanların ötesinde yeni iş günü veya başarılı etken öznitelikleri eklemek desteklenmez
 
 
@@ -146,7 +146,7 @@ SCıM uygulamaları için, öznitelik adı aşağıdaki örnekte gösterilen mod
 
 Bu yönergeler yalnızca SCıM özellikli uygulamalar için geçerlidir. ServiceNow ve Salesforce gibi uygulamalar, SCıM kullanılarak Azure AD ile tümleştirilebilir ve bu nedenle özel bir öznitelik eklerken bu özel ad alanı gerektirmez.
 
-Özel öznitelikler başvuru öznitelikleri veya çok değerli öznitelikler olamaz. Özel çok değerli uzantı öznitelikleri Şu anda yalnızca galerideki uygulamalar için desteklenmektedir.  
+Özel öznitelikler başvuru öznitelikleri, çok değerli veya karmaşık türü belirlenmiş öznitelikler olamaz. Özel çok değerli ve karmaşık tür uzantısı öznitelikleri Şu anda yalnızca galerideki uygulamalar için desteklenmektedir.  
  
 **Uzantı özniteliğine sahip bir kullanıcının örnek temsili:**
 

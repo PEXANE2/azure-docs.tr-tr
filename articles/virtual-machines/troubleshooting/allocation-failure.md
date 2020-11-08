@@ -10,22 +10,27 @@ tags: top-support-issue,azure-resource-manager,azure-service-management
 ms.assetid: 1ef41144-6dd6-4a56-b180-9d8b3d05eae7
 ms.service: virtual-machines
 ms.topic: troubleshooting
-ms.date: 04/13/2018
+ms.date: 11/06/2020
 ms.author: daberry
-ms.openlocfilehash: 3766c31add02799c62bca7e9063e723e0a5b498e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79bc043a991404a3ee9da954b9639bf1a41f2c51
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509367"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365882"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Azure’da VM’leri oluştururken, yeniden başlatırken ve yeniden boyutlandırırken ortaya çıkan ayırma hatalarında sorun giderme
 
 Bir sanal makine (VM) oluşturduğunuzda, yeniden başlatma (serbest bırakıldı) VM 'Leri yeniden başlatın veya bir VM 'yi yeniden boyutlandırdığınızda Microsoft Azure işlem kaynaklarını aboneliğinize ayırır. Her zaman müşteri talebini desteklemek için kullanılabilir tüm VM türlerini kullandığınızdan emin olmak için ek altyapıya ve özelliklere sürekli yatırım yaptık. Bununla birlikte, belirli bölgelerde Azure hizmetleri için isteğe bağlı olarak daha fazla büyüme nedeniyle kaynak ayırma hatalarıyla karşılaşabilirsiniz. Bu sorun, bir bölgede VM 'Leri oluşturmaya veya başlatmaya çalıştığınızda oluşabilir ve VM 'Ler aşağıdaki hata kodunu ve iletisini görüntüler:
 
-**Hata kodu**: allocationfailed veya ZonalAllocationFailed
+**Hata kodu** : allocationfailed veya ZonalAllocationFailed
 
-**Hata iletisi**: "ayırma başarısız oldu. Bu bölgedeki istenen VM boyutu için yeterli kapasiteye sahip değilsiniz. Https: \/ /aka.MS/Allocation-Guidance ", ayırma başarısını oluşma olasılığını artırma hakkında daha fazla bilgi edinin
+**Hata iletisi** : "ayırma başarısız oldu. Bu bölgedeki istenen VM boyutu için yeterli kapasiteye sahip değilsiniz. Https: \/ /aka.MS/Allocation-Guidance ", ayırma başarısını oluşma olasılığını artırma hakkında daha fazla bilgi edinin
+
+> [!NOTE]
+> Bir sanal makine ölçek kümesi (VMSS) sorunlarını giderirken, işlem standart bir VM ile aynıdır. Sorunu çözmek için bu makaledeki yönergeleri izlemelisiniz.
+> 
+>**Hata iletisi** : "ayırma başarısız oldu. Tek bir yerleştirme grubuyla bir sanal makine ölçek kümesine yeni bir VM eklemeye veya tek bir yerleştirme grubuyla bir sanal makine ölçek kümesinde var olan bir VM 'yi güncelleştirmeye/yeniden boyutlandırmaya çalışıyorsanız, bu tür ayırmanın tek bir küme kapsamında olduğunu ve kümenin kapasitesinin tükendiğini unutmayın. Lütfen http:/aka.ms/allocation-guidance ' de ayırma başarısı olasılığını artırma hakkında daha fazla bilgi edinin \/ .
 
 Bu makalede bazı yaygın ayırma hatalarının nedenleri açıklanmakta ve olası düzeltmeler önerilmektedir.
 

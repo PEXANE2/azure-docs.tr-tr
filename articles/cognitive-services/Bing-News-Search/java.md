@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018, devx-track-java
-ms.openlocfilehash: 4d1e178d5ed8ea00c277a6c15c63746c66a0a298
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 263d3e9020c749dd42981f70ce7787252443853b
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100176"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364505"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Hızlı başlangıç: Java ve Bing Haber Arama REST API kullanarak bir haber araması gerçekleştirme
 
@@ -33,7 +33,7 @@ Bu örneğe ilişkin kaynak kodu [GitHub '](https://github.com/Azure-Samples/cog
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Java Development Kit (JDK) 7 veya 8](https://aka.ms/azure-jdks).
+* [Java Development Kit (JDK) 7 veya 8](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 * [Gson kitaplığı](https://github.com/google/gson).
 
 

@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: aahi
-ms.openlocfilehash: 8665e27b6b7c43bce7d749d9bfe0a2f815a0f46d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ecf3ad43b46d491d5f15270790251a0bc4e882e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051109"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365372"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>Mürekkep Tanıma API’sine mürekkep verisi gönderme 
 
@@ -64,7 +64,7 @@ Mürekkep tanıyıcı API 'SI, mürekkep içeriğinden tanınan nesneler hakkın
 
 ## <a name="shapes-recognized-by-the-ink-recognizer-api"></a>Mürekkep tanıyıcı API 'SI tarafından tanınan şekiller
 
-Mürekkep tanıyıcı API 'SI, notta en yaygın olarak kullanılan şekilleri tanımlayabilir. Aşağıdaki görüntüde bazı temel örnekler gösterilmektedir. API tarafından tanınan şekillerin ve diğer mürekkep içeriğinin tam listesi için [API başvurusu makalesine](https://go.microsoft.com/fwlink/?linkid=2089907)bakın. 
+Mürekkep tanıyıcı API 'SI, notta en yaygın olarak kullanılan şekilleri tanımlayabilir. Aşağıdaki görüntüde bazı temel örnekler gösterilmektedir. API tarafından tanınan şekillerin ve diğer mürekkep içeriğinin tam listesi için [API başvurusu makalesine](/rest/api/cognitiveservices/inkrecognizer/inkrecognizer)bakın. 
 
 ![Mürekkep tanıyıcı API 'SI tarafından tanınan şekillerin listesi](../media/shapes.png)
 
@@ -84,12 +84,12 @@ Tanınma sonuçlarının daha fazla olması, mürekkep vuruşlarının birbirler
 
 ## <a name="integrate-the-ink-recognizer-api-with-windows-ink"></a>Windows Ink ile mürekkep tanıyıcı API 'sini tümleştirme
 
-[Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) , farklı bir cihaz yelpazilerinde dijital mürekkep deneyimlerini etkinleştirmek için araçlar ve teknolojiler sağlar. Dijital mürekkep vuruşlarını görüntüleyen ve yorumlayan uygulamalar oluşturmak için Windows Ink platformunu mürekkep tanıyıcı API 'SI ile birleştirebilirsiniz.
+[Windows Ink](/windows/uwp/design/input/pen-and-stylus-interactions) , farklı bir cihaz yelpazilerinde dijital mürekkep deneyimlerini etkinleştirmek için araçlar ve teknolojiler sağlar. Dijital mürekkep vuruşlarını görüntüleyen ve yorumlayan uygulamalar oluşturmak için Windows Ink platformunu mürekkep tanıyıcı API 'SI ile birleştirebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Mürekkep Tanıma API’si nedir?](../overview.md)
-* [Mürekkep tanıyıcı REST API başvurusu](https://go.microsoft.com/fwlink/?linkid=2089907)
+* [Mürekkep tanıyıcı REST API başvurusu](/rest/api/cognitiveservices/inkrecognizer/inkrecognizer)
 
 * Şunu kullanarak dijital mürekkep konturu verileri göndermeye başla:
     * [C#](../quickstarts/csharp.md)

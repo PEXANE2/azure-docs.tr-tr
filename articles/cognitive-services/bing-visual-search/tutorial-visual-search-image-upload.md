@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: scottwhi
 ms.custom: devx-track-js
-ms.openlocfilehash: 8ecea9dce3509e064d9244a8b725add21747a03e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a0afee57eaaa0708ebde2a2aeaced76f008ebd9f
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102213"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366137"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Öğretici: Bing Görsel Arama API'si görüntüleri yükleme
 
@@ -477,7 +477,7 @@ function addDivContent(div, tag, json) {
 
 ## <a name="display-insights-for-different-actions"></a>Farklı eylemler için öngörüleri görüntüleyin
 
-Aşağıdaki işlevler farklı eylemler için öngörüleri görüntüler. İşlevler, görüntü hakkında daha fazla bilgi içeren bir Web sayfasına gönderen tıklatılabilir bir görüntü veya tıklatılabilir bağlantı sağlar. Bu sayfa, Bing.com veya resmin özgün Web sitesi tarafından barındırılır. Tüm Öngörüler verileri bu uygulamada gösterilmez. Bir öngörü için kullanılabilen tüm alanları görmek için bkz. [Images-görsel arama](https://aka.ms/bingvisualsearchreferencedoc) Reference.
+Aşağıdaki işlevler farklı eylemler için öngörüleri görüntüler. İşlevler, görüntü hakkında daha fazla bilgi içeren bir Web sayfasına gönderen tıklatılabilir bir görüntü veya tıklatılabilir bağlantı sağlar. Bu sayfa, Bing.com veya resmin özgün Web sitesi tarafından barındırılır. Tüm Öngörüler verileri bu uygulamada gösterilmez. Bir öngörü için kullanılabilen tüm alanları görmek için bkz. [Images-görsel arama](/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) Reference.
 
 > [!NOTE]
 > Sayfada görüntülemesi gereken en az miktarda öngörü bilgisi vardır. Daha fazla bilgi için bkz. [BING arama API kullanımı ve görüntüleme gereksinimleri](../bing-web-search/use-display-requirements.md) .

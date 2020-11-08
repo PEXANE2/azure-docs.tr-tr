@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
 ms.date: 07/17/2020
-ms.openlocfilehash: 5e3606ac04d5023e28bc2304aba79a8211c58881
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a62c7dc8238b642aeaa59a7b470266378832e26e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87133087"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363893"
 ---
 # <a name="whats-new-in-personalizer"></a>Kişiselleştirici 'daki yenilikler
 
@@ -31,7 +31,7 @@ Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notlarını, Vide
 
 ### <a name="may-2020---build-conference"></a>Mayıs 2020-/sürümü Konferansı
 
-Aşağıdakiler **genel önizlemede**sunulmaktadır:
+Aşağıdakiler **genel önizlemede** sunulmaktadır:
 
  * Bir öğrenme davranışı olarak [Apprenlet modu](concept-apprentice-mode.md) .
 
@@ -62,5 +62,5 @@ Aşağıdaki Önizleme özellikleri Build 2019 Konferansı 'nda yayımlanmışt�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Hızlı başlangıç: C 'de geri bildirim döngüsü oluşturma #](csharp-quickstart-commandline-feedback-loop.md)
+* [Hızlı başlangıç: C 'de geri bildirim döngüsü oluşturma #](./quickstart-personalizer-sdk.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)
 * [Etkileşimli tanıtımı kullanma](https://personalizationdemo.azurewebsites.net/)

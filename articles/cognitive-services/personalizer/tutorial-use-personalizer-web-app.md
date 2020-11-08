@@ -6,12 +6,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e06d191573219df44631f6ffaee86f895166de57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c004887e3883ae711974b544510dff16a98d4ef9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777267"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363927"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>Öğretici: bir .NET Web uygulamasına kişiselleştirici ekleme
 
@@ -216,7 +216,7 @@ Aşağıdaki yazılımları yükleyin:
 
 * [.Net core 2,1](https://dotnet.microsoft.com/download/dotnet-core/2.1) -örnek arka uç sunucusu .NET Core kullanır
 * [Node.js](https://nodejs.org/) -istemci/ön uç bu uygulamaya bağlıdır
-* [Visual studio 2019](https://visualstudio.microsoft.com/vs/)veya [.NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/) -uygulamayı derlemek ve çalıştırmak için Visual studio 2019 ya da .NET Core CLI geliştirici ortamını kullanın
+* [Visual studio 2019](https://visualstudio.microsoft.com/vs/)veya [.NET Core CLI](/dotnet/core/tools/) -uygulamayı derlemek ve çalıştırmak için Visual studio 2019 ya da .NET Core CLI geliştirici ortamını kullanın
 
 ### <a name="set-up-the-sample"></a>Örneği ayarlama
 1. Azure kişiselleştirici örnek deposu ' nu kopyalayın.
@@ -234,8 +234,8 @@ Aşağıdaki yazılımları yükleyin:
 1. Azure portal [bir kişiselleştirici kaynağı oluşturun](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) .
 
 1. Azure portal, `Endpoint` `Key1` `Key2` **anahtarlar ve uç noktalar** sekmesinde ve ya da (çalışır) öğesini bulun. Bunlar `PersonalizerServiceEndpoint` ve sizin `PersonalizerApiKey` .
-1. `PersonalizerServiceEndpoint` **Üzerindeappsettings.js**' ın üzerine girin.
-1. `PersonalizerApiKey`Aşağıdaki yollarla bir [uygulama gizli](https://docs.microsoft.com/aspnet/core/security/app-secrets) dizileri olarak yapılandırın:
+1. `PersonalizerServiceEndpoint` **Üzerindeappsettings.js** ' ın üzerine girin.
+1. `PersonalizerApiKey`Aşağıdaki yollarla bir [uygulama gizli](/aspnet/core/security/app-secrets) dizileri olarak yapılandırın:
 
     * .NET Core CLI kullanıyorsanız `dotnet user-secrets set "PersonalizerApiKey" "<API Key>"` komutunu kullanabilirsiniz.
     * Visual Studio kullanıyorsanız, projeyi sağ tıklayıp kişiselleştirme anahtarlarını yapılandırmak için **Kullanıcı gizli dizilerini Yönet** menü seçeneğini belirleyebilirsiniz. Bunu yaptığınızda, Visual Studio `secrets.json` anahtarları aşağıdaki gibi ekleyebileceğiniz bir dosya açar:
@@ -283,7 +283,7 @@ Aşağıdaki bölümlerde, bir geliştiricinin kişiselleştirici kullanmak içi
 
 ## <a name="rank-api-client-application-sends-context-to-server"></a>Derecelendirme API 'SI: Istemci uygulaması sunucuya bağlam gönderir
 
-İstemci uygulaması kullanıcının tarayıcı _Kullanıcı aracısını_toplar.
+İstemci uygulaması kullanıcının tarayıcı _Kullanıcı aracısını_ toplar.
 
 > [!div class="mx-imgBorder"]
 > ![Httprequestfeaturesexbol projesini derleyin ve çalıştırın. Tek sayfalı uygulamayı göstermek için bir tarayıcı penceresi açılır.](./media/tutorial-web-app/user-agent.png)
@@ -294,7 +294,7 @@ Bu, bir istemci uygulaması olan tipik bir .NET Web uygulamasıdır ve sizin iç
 
 ### <a name="create-personalizer-client"></a>Kişiselleştirici istemcisi oluştur
 
-Sunucu **Startup.cs**, kişiselleştirme uç noktası ve anahtarı, kişiselleştirici istemcisini oluşturmak için kullanılır. İstemci uygulamasının bu uygulamada, bu SDK çağrısı yapmak için sunucuya güvenmek yerine, bu uygulamadaki Kişiselleştiriciye iletişim kurması gerekmez.
+Sunucu **Startup.cs** , kişiselleştirme uç noktası ve anahtarı, kişiselleştirici istemcisini oluşturmak için kullanılır. İstemci uygulamasının bu uygulamada, bu SDK çağrısı yapmak için sunucuya güvenmek yerine, bu uygulamadaki Kişiselleştiriciye iletişim kurması gerekmez.
 
 Web sunucusunun .NET başlangıç kodu:
 
@@ -340,7 +340,7 @@ namespace HttpRequestFeaturesExample
 
 ### <a name="select-best-action"></a>En iyi eylemi seçin
 
-Sunucunun **PersonalizerController.cs**, **GenerateRank** Server API 'si, derecelendirme API 'sini çağırma hazırlığını özetler
+Sunucunun **PersonalizerController.cs** , **GenerateRank** Server API 'si, derecelendirme API 'sini çağırma hazırlığını özetler
 
 * `eventId`Derecelendirme çağrısı için yeni oluştur
 * Eylemlerin listesini al
@@ -517,7 +517,7 @@ Kişiselleştiriciye gönderilen ve hem eylemleri (özelliklerle birlikte) hem d
 
 Rank API 'SI, seçilen en iyi eylemi **yeniden Warterctionıd** 'yi sunucuya döndürür.
 
-**Rewarterctionıd**içinde döndürülen eylemi görüntüleyin.
+**Rewarterctionıd** içinde döndürülen eylemi görüntüleyin.
 
 ```json
 {

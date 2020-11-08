@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 10/06/2020
-ms.openlocfilehash: 0d22e10a71c3eee2026f55a73074ba02c68c2b78
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: a2b41ac32f8c887d7a8ffd33d51baebaa0e2482e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146186"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366494"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Teklif türüne göre yayımlama kılavuzu
 
@@ -30,9 +30,8 @@ Aşağıdaki tabloda, Iş Ortağı Merkezi 'nde ticari Market teklif türleri g�
 
 | **Teklif türü**    | **Açıklama**  |
 | :------------------- | :-------------------|
-| [Azure uygulaması: **yönetilen uygulama**](marketplace-managed-apps.md) | Aşağıdaki koşullar gerektiğinde Azure uygulaması: yönetilen uygulama teklifi türünü kullanın: <br> <ul> <li>Bir VM veya tüm IaaS tabanlı bir çözümü kullanarak müşteriniz için abonelik tabanlı bir çözüm dağıtırsınız. </li> <li>Siz veya müşteriniz, çözümün bir iş ortağı tarafından yönetilmesini gerektirir. </li> <ul> |
-| [Azure uygulaması: **çözüm şablonu**](marketplace-solution-templates.md) | Çözümünüz tek bir VM 'nin ötesinde ek dağıtım ve yapılandırma Otomasyonu gerektirdiğinde, Azure uygulaması: çözüm şablonu teklif türünü kullanın. Çözüm şablonları, VM 'Ler dahil ancak bunlarla sınırlı olmamak üzere birçok farklı türde Azure kaynağı kullanabilir.  |
-  | [**Azure kapsayıcısı**](marketplace-containers.md) | Çözümünüz, Kubernetes tabanlı bir Azure Container Service olarak sağlanan bir Docker kapsayıcı görüntüsü olduğunda, Azure Container teklif türünü kullanın. |
+| [**Azure Uygulaması**](plan-azure-application-offer.md) | İki tür Azure uygulama planı vardır: _çözüm şablonu_ ve _yönetilen uygulama_. Her iki plan türü, tek bir sanal makinenin (VM) ötesinde bir çözümün dağıtımını ve yapılandırılmasını otomatik hale getirmeye yönelik destek. IaaS çözümleri gibi karmaşık çözümler sağlamak üzere VM 'Ler, ağ oluşturma ve depolama kaynakları dahil olmak üzere birden çok kaynak sağlama sürecini otomatikleştirebiliriz. Her iki plan türü de dahil olmak üzere, VM 'Lerle sınırlı olmamak üzere birçok farklı türde Azure kaynağı kullanabilir.<ul><li>**Çözüm şablonu** planları, ticari Market 'te çözüm yayımlamanın ana yollarından biridir. Çözüm şablonu planları ticari Market 'te transactable değildir, ancak ticari Market aracılığıyla faturalandırılan ücretli VM tekliflerini dağıtmak için kullanılabilirler. Müşteri çözümü yöneteceği ve işlemler başka bir plan üzerinden faturalandırılırken çözüm şablonu plan türünü kullanın.</li><br><li>**Yönetilen uygulama** planları, müşterileriniz için tam olarak yönetilen, anahtar uygulamaları kolayca oluşturup sunmanıza olanak tanır. Çözüm şablonu planlarıyla aynı yeteneklere sahiptir ve bazı önemli farklılıklar vardır:</li><ul><li> Kaynaklar bir kaynak grubuna dağıtılır ve uygulamanın yayımcısı tarafından yönetilir. Kaynak grubu, tüketicinin aboneliğinde mevcuttur ancak yayımcının kiracısındaki bir kimlik, kaynak grubuna erişime sahiptir.</li><li>Yayımcı olarak, çözümün sürekli desteğinin maliyetini belirtirsiniz ve işlemler ticari Market aracılığıyla desteklenir.</li></ul>Siz veya müşteriniz çözümün bir iş ortağı tarafından yönetilmesini gerektirdiğinde veya abonelik tabanlı bir çözüm dağıtacaksanız, yönetilen uygulama planı türünü kullanın.</ul> |
+| [**Azure kapsayıcısı**](marketplace-containers.md) | Çözümünüz, Kubernetes tabanlı bir Azure Container Service olarak sağlanan bir Docker kapsayıcı görüntüsü olduğunda, Azure Container teklif türünü kullanın. |
 | [**Azure sanal makinesi**](marketplace-virtual-machines.md) | Müşterinizin ilişkili aboneliğine bir Sanal Gereç dağıtırken sanal makine teklif türünü kullanın. |
 | [**Danışmanlık hizmeti**](consulting-services.md) | Danışmanlık Hizmetleri, Azure, Dynamics 365 veya Power Suite hizmetlerinin kullanımını desteklemek ve genişletmek için müşterilerin hizmetleriyle bağlantı sağlanmasına yardımcı olur.|
 | [**Dynamics 365**](appsource-offer-publishing-guide.md) | Dynamics 365 Iş Merkezi, Dynamics 365 müşteri katılımı, Power Apps ve finans ve operasyon uygulamaları üzerinde yapı veya genişletme için AppSource tekliflerini yayımlayabilirsiniz.|

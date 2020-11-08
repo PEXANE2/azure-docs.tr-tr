@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 495847d31682aff64fed3c81b1d5d68cf67dfd38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea153b1927a337be29c2eb69e2417cc250abf5e8
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87086450"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366062"
 ---
 # <a name="handle-throttling-problems-429---too-many-requests-errors-in-azure-logic-apps"></a>Azure Logic Apps kısıtlama sorunlarını giderme (429-"çok fazla istek" hata)
 
@@ -22,7 +22,7 @@ ms.locfileid: "87086450"
 Mantıksal uygulamanızın deneyimolabileceği bazı yaygın azaltma türleri şunlardır:
 
 * [Mantıksal uygulama](#logic-app-throttling)
-* [Bağlayıcısı](#connector-throttling)
+* [Bağlayıcı](#connector-throttling)
 * [Hedef hizmet veya sistem](#destination-throttling)
 
 <a name="logic-app-throttling"></a>
@@ -35,23 +35,23 @@ Daraltma olaylarını bu düzeyde bulmak için, Azure portal mantıksal uygulama
 
 1. [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
-1. Mantıksal uygulama menüsünde, **izleme**altında **ölçümler**' i seçin.
+1. Mantıksal uygulama menüsünde, **izleme** altında **ölçümler** ' i seçin.
 
-1. **Grafik başlığı**altında, mevcut bir ölçüm eklemek Için **ölçüm Ekle** ' yi seçin.
+1. **Grafik başlığı** altında, mevcut bir ölçüm eklemek Için **ölçüm Ekle** ' yi seçin.
 
-1. İlk ölçüm çubuğunda, **ölçüm** listesinden, **eylem kısıtlanmış olaylar**' ı seçin. İkinci ölçüm çubuğunda, **ölçüm** listesinden, **Kısıtlanmış Olayları Tetikle**' yi seçin.
+1. İlk ölçüm çubuğunda, **ölçüm** listesinden, **eylem kısıtlanmış olaylar** ' ı seçin. İkinci ölçüm çubuğunda, **ölçüm** listesinden, **Kısıtlanmış Olayları Tetikle** ' yi seçin.
 
 Bu düzeyde azaltmayı işlemek için şu seçeneklere sahipsiniz:
 
 * Aynı anda çalışabilecek mantıksal uygulama örneklerinin sayısını sınırlayın.
 
-  Varsayılan olarak, mantıksal uygulamanızın Tetikleme koşulu aynı anda birden çok kez karşılanırsa, mantıksal uygulamanız için birden çok tetikleyici örneği aynı anda veya *paralel olarak*çalışır. Bu davranış, her tetikleyici örneğinin, önceki iş akışı örneği çalışmayı bitmeden önce tetiklendiği anlamına gelir.
+  Varsayılan olarak, mantıksal uygulamanızın Tetikleme koşulu aynı anda birden çok kez karşılanırsa, mantıksal uygulamanız için birden çok tetikleyici örneği aynı anda veya *paralel olarak* çalışır. Bu davranış, her tetikleyici örneğinin, önceki iş akışı örneği çalışmayı bitmeden önce tetiklendiği anlamına gelir.
 
   Eşzamanlı olarak çalışabilecek tetikleyici örneklerinin varsayılan sayısı [sınırsız](../logic-apps/logic-apps-limits-and-config.md#concurrency-looping-and-debatching-limits)olsa da, bu sayıyı [tetikleyicinin eşzamanlılık ayarını açarak](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)sınırlayabilir ve gerekirse varsayılan değer dışında bir sınır seçin.
 
 * Yüksek verimlilik modunu etkinleştirin.
 
-  Mantıksal uygulama [, 5 dakikalık bir toplama aralığı boyunca çalışabilen eylem sayısı için varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)sahiptir. Bu sınırı en fazla eylem sayısına yükseltmek için mantıksal uygulamanızda [yüksek verimlilik modunu](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode) açın.
+  Mantıksal uygulama [, 5 dakikalık bir toplama aralığı boyunca çalışabilen eylem sayısı için varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)sahiptir. Bu sınırı en fazla eylem sayısına yükseltmek için mantıksal uygulamanızda [yüksek verimlilik modunu](../logic-apps/logic-apps-limits-and-config.md#run-high-throughput-mode) açın.
 
 * Tetiklerde dizi ayırmayı devre dışı bırakma ("bölme açık") davranışı.
 
@@ -59,7 +59,7 @@ Bu düzeyde azaltmayı işlemek için şu seçeneklere sahipsiniz:
 
 * Eylemleri daha küçük mantık uygulamalarına yeniden düzenleyin.
 
-  Daha önce belirtildiği gibi, bir mantıksal uygulama [5 dakikalık bir dönemde çalışabilen varsayılan eylem sayısıyla](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)sınırlıdır. [Yüksek verimlilik modunu](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode)etkinleştirerek bu sınırı artırabilseniz de, her bir mantıksal uygulamada çalışan eylemlerin sayısı sınırın altında kalacak şekilde mantıksal uygulamanızın eylemlerini daha küçük Logic Apps 'e bölmek isteyip istemediğinizi de düşünebilirsiniz. Böylece, tek bir mantıksal uygulama kaynağı üzerindeki yükü azaltır ve yük birden çok Logic Apps üzerinden dağıtılır. Bu çözüm, büyük veri kümelerini işleyen veya çok sayıda eşzamanlı çalışan eylemi, döngü yinelemelerini veya her döngü yinelemesindeki eylemleri eylem yürütme sınırını aşacak şekilde gerçekleştiren eylemler için daha iyi çalışır.
+  Daha önce belirtildiği gibi, bir mantıksal uygulama [5 dakikalık bir dönemde çalışabilen varsayılan eylem sayısıyla](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)sınırlıdır. [Yüksek verimlilik modunu](../logic-apps/logic-apps-limits-and-config.md#run-high-throughput-mode)etkinleştirerek bu sınırı artırabilseniz de, her bir mantıksal uygulamada çalışan eylemlerin sayısı sınırın altında kalacak şekilde mantıksal uygulamanızın eylemlerini daha küçük Logic Apps 'e bölmek isteyip istemediğinizi de düşünebilirsiniz. Böylece, tek bir mantıksal uygulama kaynağı üzerindeki yükü azaltır ve yük birden çok Logic Apps üzerinden dağıtılır. Bu çözüm, büyük veri kümelerini işleyen veya çok sayıda eşzamanlı çalışan eylemi, döngü yinelemelerini veya her döngü yinelemesindeki eylemleri eylem yürütme sınırını aşacak şekilde gerçekleştiren eylemler için daha iyi çalışır.
 
   Örneğin, bu mantıksal uygulama tüm işleri bir SQL Server veritabanından tabloları almak ve her tablodan satırları almak için yapar. Her döngü Için, **satırları al** eyleminin her tablo için satırları döndürmesi **için** her tablo üzerinden eşzamanlı olarak yinelenir. Bu tablolardaki veri miktarına bağlı olarak, bu eylemler eylem yürütmelerinin sınırını aşabilir.
 
@@ -135,7 +135,7 @@ Bu düzeyde azaltmayı işlemek için şu seçeneklere sahipsiniz:
 
 Bağlayıcının kendi azaltma sınırları olsa da, bağlayıcı tarafından çağrılan hedef hizmet veya sistem kısıtlama sınırlarına de sahip olabilir. Örneğin, Microsoft Exchange Server 'daki bazı API 'Ler Office 365 Outlook bağlayıcısından daha sıkı azaltma sınırlarına sahiptir.
 
-Varsayılan olarak, bir mantıksal uygulamanın örnekleri ve bu örneklerin içindeki tüm döngüler veya dallar *paralel olarak*çalışır. Bu davranış, birden çok örneğinin aynı anda aynı uç noktayı çağırabileceği anlamına gelir. Her örnek diğer öğesinin mevcut olup olmadığını bilmez, bu yüzden yeniden denemeye yönelik girişimler, birden çok çağrının aynı anda çalışmaya çalışacağı [yarış koşullarını](https://en.wikipedia.org/wiki/Race_condition) oluşturabilir, ancak başarılı olmak için, azaltma işleminin gerçekleşmesi için bu çağrıların hedef hizmette veya sistemde gelmesi gerekir.
+Varsayılan olarak, bir mantıksal uygulamanın örnekleri ve bu örneklerin içindeki tüm döngüler veya dallar *paralel olarak* çalışır. Bu davranış, birden çok örneğinin aynı anda aynı uç noktayı çağırabileceği anlamına gelir. Her örnek diğer öğesinin mevcut olup olmadığını bilmez, bu yüzden yeniden denemeye yönelik girişimler, birden çok çağrının aynı anda çalışmaya çalışacağı [yarış koşullarını](https://en.wikipedia.org/wiki/Race_condition) oluşturabilir, ancak başarılı olmak için, azaltma işleminin gerçekleşmesi için bu çağrıların hedef hizmette veya sistemde gelmesi gerekir.
 
 Örneğin, 100 öğe içeren bir diziye sahip olduğunuzu varsayalım. Dizi boyunca yinelemek için "for each" döngüsünü kullanırsınız ve paralel yineleme sayısını 20 ' ye veya [geçerli varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#concurrency-looping-and-debatching-limits)sınırlayabilmeniz için döngünün eşzamanlılık denetimini açmanız gerekir. Bu döngünün içinde, bir eylem dizideki bir öğeyi bir SQL Server veritabanına ekler ve bu da saniyede yalnızca 15 çağrıya izin verir. Bu senaryo, yeniden deneme biriktirme listesi oluşturulduğundan ve hiç çalıştırılmadığından dolayı azaltma sorununa neden olur.
 

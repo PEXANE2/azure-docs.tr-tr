@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: sample
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 4546ef03c82f19d188a71a86f6964ca87c0f834e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c47aa803774343b39efeabe3452f1b256cc64c0d
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90524972"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363281"
 ---
 # <a name="quick-examples"></a>Hızlı örnekler
 
@@ -33,7 +33,7 @@ Aşağıdaki kod parçacıkları çalıştırılmaya hazırlanıyor ve Spark üz
 1. Azure Databricks yeni bir not defteri oluşturduktan sonra, aşağıdaki **paylaşılan kodu** kopyalayın ve Not defterinize yeni bir hücreye yapıştırın.
 1. Aşağıda bir hizmet örneği seçin ve kopyalayın ve Not defterinize ikinci bir yeni hücreye yapıştırın.
 1. Hizmet aboneliği anahtar yertutucuları kendi anahtarınızla değiştirin.
-1. Hücrenin sağ üst köşesindeki Çalıştır düğmesini (üçgen simgesi) seçin ve ardından **hücreyi Çalıştır**' ı seçin.
+1. Hücrenin sağ üst köşesindeki Çalıştır düğmesini (üçgen simgesi) seçin ve ardından **hücreyi Çalıştır** ' ı seçin.
 1. Sonuçları hücrenin altındaki bir tabloda görüntüleyin.
 
 ## <a name="shared-code"></a>Paylaşılan kod
@@ -49,7 +49,7 @@ val location = "eastus"
 
 ## <a name="text-analytics"></a>Metin Analizi
 
-[Metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) hizmeti, metinden akıllı öngörüleri ayıklamak için çeşitli algoritmalar sağlar. Örneğin, verilen giriş metninin yaklaşımını bulabiliriz. Hizmet arasında bir puan döndürür `0.0` ve `1.0` düşük puanlar negatif yaklaşım ve yüksek puan pozitif yaklaşımı gösterir.  Aşağıdaki örnek üç basit cümle kullanır ve her biri için yaklaşım Puanını döndürür.
+[Metin analizi](../text-analytics/index.yml) hizmeti, metinden akıllı öngörüleri ayıklamak için çeşitli algoritmalar sağlar. Örneğin, verilen giriş metninin yaklaşımını bulabiliriz. Hizmet arasında bir puan döndürür `0.0` ve `1.0` düşük puanlar negatif yaklaşım ve yüksek puan pozitif yaklaşımı gösterir.  Aşağıdaki örnek üç basit cümle kullanır ve her biri için yaklaşım Puanını döndürür.
 
 ```scala
 import org.apache.spark.sql.functions.col
@@ -81,7 +81,7 @@ display(sentiment.transform(df).select(col("text"), col("sentiment")(0).getItem(
 
 ## <a name="computer-vision"></a>Görüntü İşleme
 
-[Görüntü işleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) , yüzeyleri, nesneleri ve doğal dil açıklamaları gibi yapıyı belirlemek için görüntüleri analiz eder.
+[Görüntü işleme](../computer-vision/index.yml) , yüzeyleri, nesneleri ve doğal dil açıklamaları gibi yapıyı belirlemek için görüntüleri analiz eder.
 Bu örnekte, bir resim listesini etiketliyoruz. Etiketler, görüntüde tanınabilir nesneler, kişiler, manzara ve eylemler gibi öğelerin bir sözcüklerdir.
 
 ```scala
@@ -110,7 +110,7 @@ display(analysis.transform(df).select(col("image"), col("results").getItem("tags
 
 ### <a name="expected-result"></a>Beklenen sonuç
 
-| image | etiketler |
+| image | tags |
 |:------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------|
 | https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/objects.jpg | [' ' ' kişi ' ' adam ' ' Başak ' ' adlı taraf ' ' adlı taraf ' ', ' ', ' ' havayolu ' '-' ' uçak ' ' Havaalanı ' '-' ' Kara ' '
 | https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/dog.jpg | [' köpek ' ' ' ', ' ', ' ' tezgahtır ' ', ' ' öne çıkış ' ' adlı küçük ' ' kahverengi ' ' bina ' ', ' ' öne ' '                
@@ -118,7 +118,7 @@ display(analysis.transform(df).select(col("image"), col("results").getItem("tags
 
 ## <a name="bing-image-search"></a>Bing Resim Arama
 
-[Bing resim arama](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview) , kullanıcının doğal dil sorgusuyla ilgili görüntüleri almak için Web 'de arama yapar. Bu örnekte, tırnak içine alınmış resimleri gösteren bir metin sorgusu kullanıyoruz. Sorgumuzla ilgili fotoğraflar içeren resim URL 'Lerinin bir listesini döndürür.
+[Bing resim arama](../bing-image-search/overview.md) , kullanıcının doğal dil sorgusuyla ilgili görüntüleri almak için Web 'de arama yapar. Bu örnekte, tırnak içine alınmış resimleri gösteren bir metin sorgusu kullanıyoruz. Sorgumuzla ilgili fotoğraflar içeren resim URL 'Lerinin bir listesini döndürür.
 
 
 ```scala
@@ -163,7 +163,7 @@ display(pipeline.fit(df).transform(df))
 
 ## <a name="speech-to-text"></a>Konuşmayı Metne Dönüştürme
 
-[Konuşmadan metne](https://docs.microsoft.com/azure/cognitive-services/speech-service/index-speech-to-text) hizmeti, okunan ses akışlarını veya dosyalarını metne dönüştürür. Bu örnekte, iki ses dosyası ekleyeceğiz. İlk dosyanın anlaşılması kolaydır ve ikincisi daha zorlayıcı bir işlemdir.
+[Konuşmadan metne](../speech-service/index-speech-to-text.yml) hizmeti, okunan ses akışlarını veya dosyalarını metne dönüştürür. Bu örnekte, iki ses dosyası ekleyeceğiz. İlk dosyanın anlaşılması kolaydır ve ikincisi daha zorlayıcı bir işlemdir.
 
 ```scala
 import org.apache.spark.sql.functions.col
@@ -196,7 +196,7 @@ display(speechToText.transform(df).select(col("url"), col("text").getItem("Displ
 
 ## <a name="anomaly-detector"></a>Anomali Algılayıcısı
 
-[Anomali algılayıcısı](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/) , zaman serisi verilerinizde ırdüzenleyeaykırıluluğunu saptamak için idealdir. Bu örnekte, tüm zaman serisinde bozukluklar bulmak için hizmeti kullanırız.
+[Anomali algılayıcısı](../anomaly-detector/index.yml) , zaman serisi verilerinizde ırdüzenleyeaykırıluluğunu saptamak için idealdir. Bu örnekte, tüm zaman serisinde bozukluklar bulmak için hizmeti kullanırız.
 
 ```scala
 import org.apache.spark.sql.functions.{col, lit}

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
-ms.openlocfilehash: aa650fe9cb7df64a6a7a948224be225ecfad9057
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d2995f39bc61ae5bb87abafd674f411271e57ca2
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324620"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366290"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>Tarif: büyük veriler için bilişsel hizmetler ile tahmine dayalı bakım
 
@@ -31,13 +31,13 @@ Veride rastgele bir sıklıkta bir grup olabilir. Bu durumlarda, RPM değerleri 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
-* [Sunucusuz Apache Spark havuzuyla](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool) yapılandırılmış [Azure SYNAPSE çalışma alanı](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)
+* [Sunucusuz Apache Spark havuzuyla](../../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md) yapılandırılmış [Azure SYNAPSE çalışma alanı](../../../synapse-analytics/quickstart-create-workspace.md)
 
-## <a name="setup"></a>Kurulum
+## <a name="setup"></a>Ayarlama
 
 ### <a name="create-an-anomaly-detector-resource"></a>Anomali algılayıcısı kaynağı oluşturma
 
-Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli)kullanarak çevirmen için bir kaynak oluşturun. Aşağıdakileri de yapabilirsiniz:
+Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. [Azure Portal](../../cognitive-services-apis-create-account.md) veya [Azure CLI](../../cognitive-services-apis-create-account-cli.md)kullanarak çevirmen için bir kaynak oluşturun. Aşağıdakileri de yapabilirsiniz:
 
 - [Azure Portal](https://portal.azure.com/)var olan bir kaynağı görüntüleyin.
 

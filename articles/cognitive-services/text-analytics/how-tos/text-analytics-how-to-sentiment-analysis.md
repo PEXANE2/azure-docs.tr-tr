@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: 2b13ac02a8a276b2ef46c8ffd5f13846e394d938
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 3bc2d339ade7dade3cf3be6e63e150c77d3c44b4
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166939"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366766"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Nasıl yapılır: Metin Analizi API'si kullanarak yaklaşımı algılama
 
@@ -23,7 +23,7 @@ Metin Analizi API'si Yaklaşım Analizi özelliği metni değerlendirir ve her t
 
 Bir yaklaşım analiz isteği gönderdikten sonra, API, tümce ve belge düzeyindeki yaklaşım etiketlerini ("negatif", "nötr" ve "pozitif") ve güvenirlik puanlarını döndürür.
 
-Yaklaşım Analizi, önizleme aşamasında çok çeşitli dilleri destekler. Daha fazla bilgi için bkz. [Desteklenen diller](../text-analytics-supported-languages.md).
+Yaklaşım Analizi, önizleme aşamasında çok çeşitli dilleri destekler. Daha fazla bilgi için bkz. [Desteklenen diller](../language-support.md).
 
 ## <a name="sentiment-analysis-versions-and-features"></a>Sürümler ve Özellikler Yaklaşım Analizi
 
@@ -40,7 +40,7 @@ Yaklaşım Analizi, önizleme aşamasında çok çeşitli dilleri destekler. Dah
 
 V3 'teki Yaklaşım Analizi, bir tümce ve belge düzeyinde döndürülen ve her biri için bir güven puanı bulunan yaklaşım etiketlerini metne uygular. 
 
-Etiketler *pozitif*, *negatif*ve *nötr*. Belge düzeyinde, *karışık* yaklaşım etiketi de döndürülebilir. Belgenin yaklaşımı aşağıda belirlenir:
+Etiketler *pozitif* , *negatif* ve *nötr*. Belge düzeyinde, *karışık* yaklaşım etiketi de döndürülebilir. Belgenin yaklaşımı aşağıda belirlenir:
 
 | Tümce yaklaşımı                                                                            | Döndürülen belge etiketi |
 |-----------------------------------------------------------------------------------------------|-------------------------|
@@ -93,7 +93,7 @@ Bir POST isteği oluşturun. Hızlı bir şekilde yapısına ve gönderebilmeniz
 Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak yaklaşım ANALIZI için HTTPS uç noktasını ayarlayın. Kullanmak istediğiniz sürüm için doğru URL 'YI dahil etmeniz gerekir. Örnek:
 
 > [!NOTE]
-> Azure portalında Metin Analizi kaynağınız için anahtarınızı ve uç noktanızı bulabilirsiniz. Kaynak **yönetimi**altında kaynağın **hızlı başlangıç** sayfasında yer alır. 
+> Azure portalında Metin Analizi kaynağınız için anahtarınızı ve uç noktanızı bulabilirsiniz. Kaynak **yönetimi** altında kaynağın **hızlı başlangıç** sayfasında yer alır. 
 
 #### <a name="version-31-preview1"></a>[Sürüm 3,1-Önizleme. 1](#tab/version-3-1)
 
