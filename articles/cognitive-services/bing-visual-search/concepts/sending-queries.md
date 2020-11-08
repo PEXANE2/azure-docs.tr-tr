@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: aahi
-ms.openlocfilehash: 331b2ffde8d034ba94f5b1adcae5efa223f57594
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e8a8b843345d21d38c11789b09003a4b82f768f5
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095127"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369503"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Bing Görsel Arama API'si arama sorguları gönderme
 
@@ -28,7 +28,7 @@ Bu makalede, yanıt nesnesi ve Bing Görsel Arama API'si gönderilen isteklerin 
 
 Bir görüntüyle ilgili öngörüleri üç şekilde edinebilirsiniz:
 
-- [Bing resim arama API'si](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) uç noktalarından birine yapılan önceki bir çağrıdan bir görüntüden aldığınız Öngörüler belirtecini kullanma.
+- [Bing resim arama API'si](/rest/api/cognitiveservices/bing-images-api-v7-reference) uç noktalarından birine yapılan önceki bir çağrıdan bir görüntüden aldığınız Öngörüler belirtecini kullanma.
 - Bir görüntünün URL 'sini gönderme.
 - Görüntü karşıya yükleniyor (ikili biçimde).
 
@@ -78,18 +78,18 @@ Görsel Arama uç noktası şudur: https:\/\/api.cognitive.microsoft.com/bing/v7
 
 Aşağıdakiler, isteğinizde belirtilmesi gereken sorgu parametreleridir. En azından, `mkt` sorgu parametresini eklemeniz gerekir:
 
-| Ad | Değer | Tür | Gerekli |
+| Name | Değer | Tür | Gerekli |
 | --- | --- | --- | --- |
-| <a name="cc"></a>cc  | Sonuçların nereden geldiği temsil eden iki karakterli bir ülke kodu.<br /><br /> Bu parametreyi ayarlarsanız, [Accept-Language](#acceptlanguage) üst bilgisini de belirtmelisiniz. Bing dil listesinde bulduğu ilk desteklenen dili kullanır ve dili sizin belirttiğiniz ülke koduyla birleştirerek sonuçları hangi pazardan döndüreceğini saptar. Dil listesi desteklenen bir dil içermiyorsa, Bing isteği destekleyen en yakın dili ve pazarı bulur. Öte yandan, sonuçlarda belirtilen pazar yerine toplu veya varsayılan bir pazarı da kullanılabilir.<br /><br /> Bu sorgu parametresini ve `Accept-Language` sorgu parametresini ancak birden çok dil belirttiyseniz kullanmalısınız; aksi takdirde `mkt` ve `setLang` sorgu parametrelerini kullanmanız gerekir.<br /><br /> Bu parametre ve [](#mkt)mkt&mdash; sorgu parametresi karşılıklı olarak birbirini dışlar. İkisini birlikte belirtmeyin. | Dize | Hayır       |
+| <a name="cc"></a>cc  | Sonuçların nereden geldiği temsil eden iki karakterli bir ülke kodu.<br /><br /> Bu parametreyi ayarlarsanız, [Accept-Language](#acceptlanguage) üst bilgisini de belirtmelisiniz. Bing dil listesinde bulduğu ilk desteklenen dili kullanır ve dili sizin belirttiğiniz ülke koduyla birleştirerek sonuçları hangi pazardan döndüreceğini saptar. Dil listesi desteklenen bir dil içermiyorsa, Bing isteği destekleyen en yakın dili ve pazarı bulur. Öte yandan, sonuçlarda belirtilen pazar yerine toplu veya varsayılan bir pazarı da kullanılabilir.<br /><br /> Bu sorgu parametresini ve `Accept-Language` sorgu parametresini ancak birden çok dil belirttiyseniz kullanmalısınız; aksi takdirde `mkt` ve `setLang` sorgu parametrelerini kullanmanız gerekir.<br /><br /> Bu parametre ve [](#mkt)mkt&mdash; sorgu parametresi karşılıklı olarak birbirini dışlar. İkisini birlikte belirtmeyin. | Dize | No       |
 | <a name="mkt"></a>mkt   | Sonuçların geldiği pazar. <br /><br /> **Note:** Biliniyorsa, her zaman pazarı belirtmeniz gerekir. Pazarın belirtilmesi Bing’in isteği yönlendirmesine, uygun ve en iyi yanıtı döndürmesine yardımcı olur.<br /><br /> Bu parametre ve [](#cc)cc&mdash; sorgu parametresi karşılıklı olarak birbirini dışlar. İkisini birlikte belirtmeyin. | Dize | Yes      |
-| <a name="safesearch"></a>safeSearch | Yetişkinlere yönelik içerik için bir filtre. Aşağıdakiler, büyük/küçük harfe duyarlı olmayan olası filtre değerleridir.<br /><ul><li>Off&mdash;Yetişkinlere yönelik metin veya resim içeren web sayfalarını döndürür.<br /><br/></li><li>Moderate&mdash;Yetişkinlere yönelik metin içeren web sayfalarını döndürür ama yetişkinlere yönelik resim içerenleri döndürmez.<br /><br/></li><li>Strict&mdash;Yetişkinlere yönelik metin veya resim içeren web sayfalarını döndürmez.</li></ul><br /> Varsayılan ayar Moderate değeridir.<br /><br /> **NOT:** İstek, Bing'in yetişkinlere yönelik içerik ilkesinin `safeSearch` parametresinde Strict ayarlanmasını gerektirdiği bir pazardan geliyorsa, Bing `safeSearch` değerini yoksayar ve Strict değerini kullanır.<br/><br/>**Note:** `site:` Sorgu işlecini kullanırsanız, yanıt, `safeSearch` sorgu parametresinin ne şekilde ayarlandığına bakılmaksızın yetişkinlere yönelik içerik içerebilen bir şansınız olabilir. `site:` işlecini yalnızca sitenin içeriği hakkında bilgi sahibiyseniz ve senaryonuz, yetişkinlere yönelik içeriğin mevcut olma ihtimalini destekliyorsa kullanın.  | Dize | Hayır       |
-| <a name="setlang"></a>setLang  | Kullanıcı arabirimi dizelerinde kullanılacak dil. ISO 639-1 iki harfli dil kodunu kullanarak dili belirtin. Örneğin, Türkçe için dil kodu TR'dir. Varsayılan değer EN (İngilizce) ayarıdır.<br /><br /> İsteğe bağlı olsa da, her zaman dil belirtmelisiniz. Kullanıcı tarafından kullanıcı arabirimi dizelerinin farklı dilde görüntülenmesi istenmediği sürece, normalde `setLang` parametresini `mkt` parametresiyle aynı dile ayarlarsınız.<br /><br /> Bu parametre ve [](#acceptlanguage)Accept-Language&mdash; üst bilgisi karşılıklı olarak birbirini dışlar. İkisini birlikte belirtmeyin.<br /><br /> Kullanıcı arabirimi dizesi, kullanıcı arabiriminde etiket olarak kullanılan dizedir. JSON yanıt nesnelerinde çok az kullanıcı arabirimi dizesi vardır. Ayrıca, yanıt nesnelerinde Bing.com özelliklerine yönelik bağlantılar da belirtilen dildedir. | Dize | Hayır   |
+| <a name="safesearch"></a>safeSearch | Yetişkinlere yönelik içerik için bir filtre. Aşağıdakiler, büyük/küçük harfe duyarlı olmayan olası filtre değerleridir.<br /><ul><li>Off&mdash;Yetişkinlere yönelik metin veya resim içeren web sayfalarını döndürür.<br /><br/></li><li>Moderate&mdash;Yetişkinlere yönelik metin içeren web sayfalarını döndürür ama yetişkinlere yönelik resim içerenleri döndürmez.<br /><br/></li><li>Strict&mdash;Yetişkinlere yönelik metin veya resim içeren web sayfalarını döndürmez.</li></ul><br /> Varsayılan ayar Moderate değeridir.<br /><br /> **NOT:** İstek, Bing'in yetişkinlere yönelik içerik ilkesinin `safeSearch` parametresinde Strict ayarlanmasını gerektirdiği bir pazardan geliyorsa, Bing `safeSearch` değerini yoksayar ve Strict değerini kullanır.<br/><br/>**Note:** `site:` Sorgu işlecini kullanırsanız, yanıt, `safeSearch` sorgu parametresinin ne şekilde ayarlandığına bakılmaksızın yetişkinlere yönelik içerik içerebilen bir şansınız olabilir. `site:` işlecini yalnızca sitenin içeriği hakkında bilgi sahibiyseniz ve senaryonuz, yetişkinlere yönelik içeriğin mevcut olma ihtimalini destekliyorsa kullanın.  | Dize | No       |
+| <a name="setlang"></a>setLang  | Kullanıcı arabirimi dizelerinde kullanılacak dil. ISO 639-1 iki harfli dil kodunu kullanarak dili belirtin. Örneğin, Türkçe için dil kodu TR'dir. Varsayılan değer EN (İngilizce) ayarıdır.<br /><br /> İsteğe bağlı olsa da, her zaman dil belirtmelisiniz. Kullanıcı tarafından kullanıcı arabirimi dizelerinin farklı dilde görüntülenmesi istenmediği sürece, normalde `setLang` parametresini `mkt` parametresiyle aynı dile ayarlarsınız.<br /><br /> Bu parametre ve [](#acceptlanguage)Accept-Language&mdash; üst bilgisi karşılıklı olarak birbirini dışlar. İkisini birlikte belirtmeyin.<br /><br /> Kullanıcı arabirimi dizesi, kullanıcı arabiriminde etiket olarak kullanılan dizedir. JSON yanıt nesnelerinde çok az kullanıcı arabirimi dizesi vardır. Ayrıca, yanıt nesnelerinde Bing.com özelliklerine yönelik bağlantılar da belirtilen dildedir. | Dize | No   |
 
 ## <a name="headers"></a>Üst Bilgiler
 
 Aşağıdakiler, isteğinizde belirtilmesi gereken üst bilgilerdir. `Content-Type`Ve `Ocp-Apim-Subscription-Key` üst bilgileri yalnızca gerekli olan başlıklardır, ancak,, ve de dahil etmelisiniz `User-Agent` `X-MSEdge-ClientID` `X-MSEdge-ClientIP` `X-Search-Location` .
 
-| Üst bilgi | Açıklama |
+| Üst bilgi | Description |
 | --- | --- |
 | <a name="acceptlanguage"></a>Accept-Language  | İsteğe bağlı istek üst bilgisi.<br /><br /> Kullanıcı arabirimi dizelerinde kullanılacak virgülle sınırlanmış bir dil listesi. Liste, tercih edilme durumuna göre azalan düzende sıralanır. Beklenen biçim de içinde olmak üzere daha fazla bilgi için bkz. [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Bu üst bilgi ve [](#setlang)setLang&mdash; sorgu parametresi karşılıklı olarak birbirini dışlar. İkisini birlikte belirtmeyin.<br /><br /> Bu üst bilgiyi ayarlarsanız, [cc](#cc) sorgu parametresini de belirtmelisiniz. Hangi pazardan sonuç döndürüleceğini belirlemek için, Bing listeden bulduğu ilk desteklenen dili kullanır ve bunu `cc` parametresinin değeriyle birleştirir. Liste desteklenen bir dil içermiyorsa, Bing isteği destekleyen en yakın dili ve pazarı bulur ya da sonuçlar için toplu veya varsayılan bir pazar kullanır. Bing tarafından kullanılan pazarı öğrenmek için `BingAPIs-Market` başlığına bakın.<br /><br /> Ancak birden çok dil belirtirseniz bu üst bilgiyi ve `cc` sorgu parametresini kullanın. Aksi takdirde, [mkt](#mkt) ile [setLang](#setlang) sorgu parametrelerini kullanın.<br /><br /> Kullanıcı arabirimi dizesi, kullanıcı arabiriminde etiket olarak kullanılan dizedir. JSON yanıt nesnelerinde çok az kullanıcı arabirimi dizesi vardır. Yanıt nesnelerinde Bing.com özelliklerine yönelik bağlantılar da belirtilen dildedir.  |
 | <a name="contenttype"></a>Content-Type  |     |

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 13e094b0f5d59e070a96ab4b45dcd37315c46c60
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ca1c18fd1ea8507c8b6a58b5f786b9686b1f3a34
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91327383"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369093"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Hızlı başlangıç: mürekkep tanıyıcı REST API ve JavaScript ile dijital mürekkep tanıma
 
@@ -167,7 +167,7 @@ Bu uygulama, Web tarayıcınızda çalıştırılabilir. JSON biçiminde başar�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [REST API başvurusu](https://go.microsoft.com/fwlink/?linkid=2089907)
+> [REST API başvurusu](/rest/api/cognitiveservices/inkrecognizer/inkrecognizer)
 
 Mürekkep tanıma API 'sinin dijital bir mürekkep uygulamasında nasıl çalıştığını görmek için GitHub 'da aşağıdaki örnek uygulamalara göz atın:
 * [C# Evrensel Windows Platformu (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  

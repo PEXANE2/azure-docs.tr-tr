@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 340b0ed02821fb98f271539ac39e0ccad8581082
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27069cf38da2567a3af3ed0fb65baead43665186
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87904012"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369486"
 ---
 # <a name="translator-30-breaksentence"></a>Translator 3,0: Breakcümle
 
@@ -33,7 +33,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
-| Sorgu parametresi | Açıklama |
+| Sorgu parametresi | Description |
 | -------| ----------- |
 | api-sürümü <img width=200/>   | **Gerekli sorgu parametresi**.<br/>İstemci tarafından istenen API 'nin sürümü. Değer olmalıdır `3.0` . |
 | language | **Isteğe bağlı sorgu parametresi**.<br/>Giriş metninin dilini tanımlayan dil etiketi. Bir kod belirtilmemişse, otomatik dil algılama uygulanır. |
@@ -41,9 +41,9 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
 
 İstek üstbilgileri şunları içerir:
 
-| Üst bilgiler | Açıklama |
+| Üst Bilgiler | Description |
 | ------- | ----------- |
-| Kimlik doğrulama üst bilgisi <img width=200/>  | **Gerekli istek üst bilgisi**.<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın. |
+| Kimlik doğrulama üst bilgisi <img width=200/>  | **Gerekli istek üst bilgisi**.<br/><a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın. |
 | İçerik Türü | **Gerekli istek üst bilgisi**.<br/>Yükün içerik türünü belirtir. Olası değerler şunlardır: `application/json` . |
 | İçerik Uzunluğu    | **Gerekli istek üst bilgisi**.<br/>İstek gövdesinin uzunluğu.  | 
 | X-Clienttraceıd   | **Isteğe bağlı**.<br/>İsteği benzersiz şekilde tanımlamak için istemci tarafından oluşturulan bir GUID. Adlı sorgu parametresini kullanarak izleme KIMLIĞINI sorgu dizesine eklerseniz bu üstbilgiyi atlayabilirsiniz `ClientTraceId` .  | 
@@ -96,8 +96,8 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
 ## <a name="response-headers"></a>Yanıt üst bilgileri
 
 <table width="100%">
-  <th width="20%">Üst bilgiler</th>
-  <th>Açıklama</th>
+  <th width="20%">Üst Bilgiler</th>
+  <th>Description</th>
   <tr>
     <td>X-RequestId</td>
     <td>İsteği tanımlamak için hizmet tarafından oluşturulan değer. Sorun giderme amacıyla kullanılır.</td>
@@ -110,7 +110,7 @@ Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir.
 
 <table width="100%">
   <th width="20%">Durum Kodu</th>
-  <th>Açıklama</th>
+  <th>Description</th>
   <tr>
     <td>200</td>
     <td>Başarılı.</td>
@@ -141,7 +141,7 @@ Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir.
   </tr>
 </table> 
 
-Bir hata oluşursa, istek bir JSON hata yanıtı da döndürür. Hata kodu 3 basamaklı HTTP durum kodunu birleştiren 6 basamaklı bir sayıdır ve ardından hatayı daha fazla kategorilere ayırarak 3 basamaklı bir sayıdır. Ortak hata kodları, [v3 Translator başvurusu sayfasında](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)bulunabilir. 
+Bir hata oluşursa, istek bir JSON hata yanıtı da döndürür. Hata kodu 3 basamaklı HTTP durum kodunu birleştiren 6 basamaklı bir sayıdır ve ardından hatayı daha fazla kategorilere ayırarak 3 basamaklı bir sayıdır. Ortak hata kodları, [v3 Translator başvurusu sayfasında](./v3-0-reference.md#errors)bulunabilir. 
 
 ## <a name="examples"></a>Örnekler
 
@@ -150,4 +150,3 @@ Aşağıdaki örnek, tek bir cümle için tümce sınırlarının nasıl alınac
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'How are you? I am fine. What did you do today?'}]"
 ```
-

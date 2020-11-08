@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: d0899132f308c7069395738140b35b138571483d
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 542f62f04adc7d4858e4b4621b0ae85e906434ad
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220865"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369333"
 ---
 # <a name="view-system-test-results"></a>Sistem test sonuçlarını görüntüleme
 
@@ -92,8 +92,8 @@ Dağıtım ayarlarını güncelleştirmek için:
 
     ![Dağıtım ayarlarını güncelleştirmek için Güncelleştir düğmesini vurgulayan ekran görüntüsü.](media/how-to/how-to-update-undeploy-model.png)
 
-3.  **Güncelleştir**’i seçin.
-4.  Modelinizin dağıtılmasını veya dağıtılmasını istediğiniz bölge (ler) i için **dağıtılan** veya **dağıtılan** ' ı seçin ve ardından **Kaydet**' e tıklayın.
+3.  **Güncelleştir** ’i seçin.
+4.  Modelinizin dağıtılmasını veya dağıtılmasını istediğiniz bölge (ler) i için **dağıtılan** veya **dağıtılan** ' ı seçin ve ardından **Kaydet** ' e tıklayın.
 
     ![Modeli dağıt](media/how-to/how-to-undeploy-model.png)
 
@@ -102,6 +102,6 @@ Dağıtım ayarlarını güncelleştirmek için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Dağıtılmış özel çeviri modelinizi [Microsoft Translator metin çevirisi API'si v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)aracılığıyla kullanmaya başlayın.
+- Dağıtılmış özel çeviri modelinizi [Microsoft Translator metin çevirisi API'si v3](../reference/v3-0-translate.md?tabs=curl)aracılığıyla kullanmaya başlayın.
 - Çalışma alanınızı paylaşmak için [ayarları yönetmeyi](how-to-manage-settings.md) öğrenin, abonelik anahtarını yönetin.
 - [Çalışma alanınızı ve projenizi](how-to-migrate.md) [Microsoft Translator hub 'ından](https://hub.microsofttranslator.com) nasıl geçirebileceğinizi öğrenin

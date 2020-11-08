@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 11/04/2020
-ms.openlocfilehash: 7248c82882d32ae0eb225a9ec4c3b48dff3b9fcb
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.date: 11/06/2020
+ms.openlocfilehash: 7532366d533aa957525235511a1f29649d6f8828
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360046"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369229"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -137,13 +137,57 @@ Tek bir mantıksal uygulama tanımının sınırları aşağıda verilmiştir:
 
 | Name | Sınır | Notlar |
 | ---- | ----- | ----- |
-| Eylem: 5 dakika başına yürütme sayısı | 100.000 varsayılan sınırıdır, ancak 300.000 en yüksek limit olur. | Varsayılan sınırı değiştirmek için, bkz. [mantıksal uygulamanızı Önizlemedeki "yüksek aktarım hızı" modunda çalıştırma](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode). Ya da iş yükünü, gereken şekilde birden fazla Logic App üzerinde dağıtabilirsiniz. |
+| Eylem: 5 dakika başına yürütme sayısı | 100.000 varsayılan sınırıdır, ancak 300.000 en yüksek limit olur. | Mantıksal uygulamanız için varsayılan sınırı en üst sınıra yükseltmek için, önizleme aşamasında olan [yüksek aktarım hızı modunda çalıştır](#run-high-throughput-mode)' a bakın. Ya da iş yükünü, gereken şekilde birden [fazla Logic App üzerinde dağıtabilirsiniz](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) . |
 | Eylem: eşzamanlı giden çağrılar | Yaklaşık 2.500 | Eşzamanlı istek sayısını azaltabilir veya süreyi gerektiği gibi azaltabilirsiniz. |
 | Çalışma zamanı uç noktası: eşzamanlı gelen çağrılar | ~ 1.000 | Eşzamanlı istek sayısını azaltabilir veya süreyi gerektiği gibi azaltabilirsiniz. |
 | Çalışma zamanı uç noktası: 5 dakikada okuma çağrısı sayısı  | 60.000 | Bu sınır, mantıksal uygulama çalıştırma geçmişinden gelen ham giriş ve çıkışları alan çağrılar için geçerlidir. İş yükünü, gereken şekilde birden fazla uygulama arasında dağıtabilirsiniz. |
 | Çalışma zamanı uç noktası: 5 dakika başına çağrı çağırma | 45.000 | İş yükünü, gerektiğinde birden fazla uygulama arasında dağıtabilirsiniz. |
 | 5 dakika başına içerik işleme | 600 MB | İş yükünü, gerektiğinde birden fazla uygulama arasında dağıtabilirsiniz. |
 ||||
+
+<a name="run-high-throughput-mode"></a>
+
+#### <a name="run-in-high-throughput-mode"></a>Yüksek aktarım hızı modunda çalıştır
+
+Tek bir mantıksal uygulama tanımı için, 5 dakikada bir yürütülen eylemlerin sayısı [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)sahiptir. Mantıksal uygulamanız için varsayılan sınırı en üst sınıra yükseltmek üzere, önizleme aşamasında olan yüksek verimlilik modunu etkinleştirebilirsiniz. Ya da iş yükünü, gereken şekilde birden [fazla Logic App üzerinde dağıtabilirsiniz](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) .
+
+1. Azure portal, mantıksal uygulama menünüzde **Ayarlar** ' ın altında, **iş akışı ayarları** ' nı seçin.
+
+1. **Çalışma zamanı seçenekleri**  >  **yüksek verimlilik** altında ayarını **Açık** olarak değiştirin.
+
+   !["Iş akışı ayarları" ve "yüksek verimlilik" olarak ayarlanmış Azure portal Logic App menüsünü gösteren ekran görüntüsü "açık" olarak ayarlanır.](./media/logic-apps-limits-and-config/run-high-throughput-mode.png)
+
+Mantıksal uygulamanızı dağıtmaya yönelik bir ARM şablonunda bu ayarı etkinleştirmek için, `properties` mantıksal uygulamanızın kaynak tanımına yönelik nesnede, `runtimeConfiguration` `operationOptions` özelliği olarak ayarlanmış nesnesini ekleyin `OptimizedForHighThroughput` :
+
+```json
+{
+   <template-properties>
+   "resources": [
+      // Start logic app resource definition
+      {
+         "properties": {
+            <logic-app-resource-definition-properties>,
+            <logic-app-workflow-definition>,
+            <more-logic-app-resource-definition-properties>,
+            "runtimeConfiguration": {
+               "operationOptions": "OptimizedForHighThroughput"
+            }
+         },
+         "name": "[parameters('LogicAppName')]",
+         "type": "Microsoft.Logic/workflows",
+         "location": "[parameters('LogicAppLocation')]",
+         "tags": {},
+         "apiVersion": "2016-06-01",
+         "dependsOn": [
+         ]
+      }
+      // End logic app resource definition
+   ],
+   "outputs": {}
+}
+```
+
+Mantıksal uygulama kaynak tanımınız hakkında daha fazla bilgi için bkz. [genel bakış: Azure Resource Manager şablonları kullanarak Azure Logic Apps için dağıtımı otomatikleştirin](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition).
 
 ### <a name="integration-service-environment-ise"></a>Tümleştirme hizmeti ortamı (ıSE)
 

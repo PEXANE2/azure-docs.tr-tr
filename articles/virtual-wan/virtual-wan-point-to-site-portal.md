@@ -5,36 +5,34 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 10/06/2020
+ms.date: 11/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 645d5beb19b738e2269c0ec9e5b84fb140c7deb8
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 0671e41703ecc4b8580c8439eec5bac954b4dbe0
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359513"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368840"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>Öğretici: Azure sanal WAN kullanarak bir kullanıcı VPN bağlantısı oluşturma
 
-Bu öğreticide Sanal WAN kullanarak Azure'daki kaynaklarınıza bir IPsec/IKE (IKEv2) veya OpenVPN VPN bağlantısı üzerinden bağlanmayı öğreneceksiniz. Bu tür bir bağlantı, istemci bilgisayarda bir istemcinin yapılandırılmış olmasını gerektirir. Sanal WAN hakkında daha fazla bilgi için bkz. [sanal WAN genel bakış](virtual-wan-about.md)
+Bu öğreticide Sanal WAN kullanarak Azure'daki kaynaklarınıza bir IPsec/IKE (IKEv2) veya OpenVPN VPN bağlantısı üzerinden bağlanmayı öğreneceksiniz. Bu tür bir bağlantı, istemci bilgisayarda VPN istemcisinin yapılandırılmasını gerektirir. Sanal WAN hakkında daha fazla bilgi için bkz. [Sanal WAN'a Genel Bakış](virtual-wan-about.md).
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * WAN oluşturma
+> * Sanal WAN oluşturma
 > * P2S yapılandırması oluşturma
-> * Hub oluşturma
+> * Sanal hub oluşturma
 > * DNS sunucularını belirtme
-> * VPN istemci profilini indir
+> * VPN istemci profili yapılandırma paketini oluştur ve Kur
 > * Sanal WAN'ınızı görüntüleme
 
 ![Sanal WAN diyagramı](./media/virtual-wan-about/virtualwanp2s.png)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Yapılandırmanıza başlamadan önce aşağıdaki ölçütleri karşıladığınızı doğrulayın:
-
-[!INCLUDE [Before you begin](../../includes/virtual-wan-before-include.md)]
+[!INCLUDE [Before beginning](../../includes/virtual-wan-before-include.md)]
 
 ## <a name="create-a-virtual-wan"></a><a name="wan"></a>Sanal WAN oluşturma
 
@@ -44,27 +42,27 @@ Yapılandırmanıza başlamadan önce aşağıdaki ölçütleri karşıladığı
 
 Noktadan siteye (P2S) yapılandırması, uzak istemcileri bağlamaya yönelik parametreleri tanımlar.
 
-[!INCLUDE [Create client profiles](../../includes/virtual-wan-p2s-configuration-include.md)]
+[!INCLUDE [Create P2S configuration](../../includes/virtual-wan-p2s-configuration-include.md)]
 
-## <a name="create-hub-with-point-to-site-gateway"></a><a name="hub"></a>Noktadan siteye ağ geçidi ile hub oluşturma
+## <a name="create-virtual-hub-and-gateway"></a><a name="hub"></a>Sanal hub ve ağ geçidi oluşturma
 
 [!INCLUDE [Create hub](../../includes/virtual-wan-p2s-hub-include.md)]
 
 ## <a name="specify-dns-server"></a><a name="dns"></a>DNS sunucusunu belirtin
 
-Sanal WAN Kullanıcı VPN ağ geçitleri, en fazla 5 DNS sunucusu belirtmenizi sağlar. Bunu, hub oluşturma işlemi sırasında yapılandırabilir veya daha sonra değiştirebilirsiniz. Bunu yapmak için, sanal hub 'ı bulun. **Kullanıcı VPN (site üzerine gelin)** altında **Yapılandır** ' ı SEÇIN ve DNS sunucusu IP adreslerini **özel DNS sunucuları** metin kutusuna (es) girin.
+Bu ayarı, hub 'ı oluştururken yapılandırabilir veya daha sonra değiştirebilirsiniz. Değiştirmek için sanal hub 'ı bulun. **Kullanıcı VPN (site üzerine gelin)** altında **Yapılandır** ' ı SEÇIN ve DNS sunucusu IP adreslerini **özel DNS sunucuları** metin kutusuna (es) girin. En fazla 5 DNS sunucusu belirtebilirsiniz.
 
    :::image type="content" source="media/virtual-wan-point-to-site-portal/custom-dns.png" alt-text="özel DNS" lightbox="media/virtual-wan-point-to-site-portal/custom-dns-expand.png":::
 
-## <a name="download-vpn-profile"></a><a name="download"></a>VPN profili indirme
+## <a name="generate-and-install-client-profile-package"></a><a name="download"></a>İstemci profili paketini oluştur ve Kur
 
-İstemcilerinizi yapılandırmak için VPN profilini kullanın.
+VPN istemcilerinizi yapılandırmak için VPN istemci profili paketini oluşturun.
 
 [!INCLUDE [Download profile](../../includes/virtual-wan-p2s-download-profile-include.md)]
 
-### <a name="configure-user-vpn-clients"></a>Kullanıcı VPN istemcilerini yapılandırma
+### <a name="configure-vpn-clients"></a>VPN istemcilerini yapılandırma
 
-Uzak erişim istemcilerini yapılandırmak için indirilen profili kullanın. Her işletim sistemi için yordam farklıdır, sisteminize uygulanan yönergeleri izleyin.
+Uzaktan erişim VPN istemcilerini yapılandırmak için indirilen profili kullanın. Her işletim sistemi için yordam farklıdır. Sisteminize uygulanan yönergeleri izleyin.
 
 [!INCLUDE [Configure clients](../../includes/virtual-wan-p2s-configure-clients-include.md)]
 

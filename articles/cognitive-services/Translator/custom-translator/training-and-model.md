@@ -9,17 +9,17 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: swmachan
-ms.openlocfilehash: d8713d20503dc788175a408f5ec652505090396e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1765aaed3c0562da13c539845bfe19f6f85ed4ef
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510836"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369027"
 ---
 # <a name="what-are-trainings-and-models"></a>Esinler ve modeller nelerdir?
 
 Model, belirli bir dil çifti için çeviri sağlayan sistemidir.
-Başarılı bir eğitimin sonucu bir modeldir. Bir modeli eğitmek için, birbirini dışlayan üç belge türü gereklidir: eğitim, ayarlama ve test. Sözlük belge türü de belirtilebilir. Lütfen [tümce hizalamasını](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences)inceleyin.
+Başarılı bir eğitimin sonucu bir modeldir. Bir modeli eğitmek için, birbirini dışlayan üç belge türü gereklidir: eğitim, ayarlama ve test. Sözlük belge türü de belirtilebilir. Lütfen [tümce hizalamasını](./sentence-alignment.md#suggested-minimum-number-of-sentences)inceleyin.
 
 Bir eğitimin sıraya alınması sırasında yalnızca eğitim verileri sağlanmışsa, özel çevirmen ayarlama ve test verilerini otomatik olarak birleştirir. Eğitim belgelerinizdeki Tümcelerin rastgele bir alt kümesini kullanacaktır ve bu cümleleri eğitim verilerinin kendisinden dışlayacak.
 

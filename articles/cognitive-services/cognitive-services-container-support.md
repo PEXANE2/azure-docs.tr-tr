@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 10/22/2020
 ms.author: aahi
 keywords: Şirket içi, Docker, kapsayıcı, Kubernetes
-ms.openlocfilehash: e6a01192068617dcdb52e6160ffcf633d099bdf1
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a59d9fb4fb15b361259a705a024b9bea975e8072
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677458"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368857"
 ---
-# <a name="azure-cognitive-services-containers"></a>Azure bilişsel hizmetler kapsayıcıları
+# <a name="azure-cognitive-services-containers"></a>Azure Bilişsel Hizmetler kapsayıcıları
 
 > [!WARNING]
 > 11 Haziran 2020’de Microsoft, insan haklarına dayalı etkili düzenlemeler yapılmadığı sürece ABD’deki polis departmanlarına yüz tanıma teknolojisi satmayacağını duyurmuştur. Bu nedenle, müşteriler yüz tanıma özelliklerini ya da yüz veya Video Indexer gibi Azure hizmetlerinde yer alan işlevselliği veya bir müşteri varsa ya da için Birleşik Devletler bir polis departmanı olan bu hizmetlerin kullanılmasına izin vermeyi kullanamaz.
@@ -56,7 +56,7 @@ Bilişsel hizmetler kaynakları [Microsoft Azure](https://azure.microsoft.com)ku
 
 Azure bilişsel hizmetler kapsayıcıları, her biri Azure bilişsel hizmetler 'deki hizmetlerden bir işlev alt kümesini içeren aşağıdaki Docker Kapsayıcıları kümesini sağlar:
 
-| Hizmet | Desteklenen Fiyatlandırma Katmanı | Kapsayıcı | Açıklama |
+| Hizmet | Desteklenen Fiyatlandırma Katmanı | Kapsayıcı | Description |
 |--|--|--|--|
 | [Anomali algılayıcısı][ad-containers] | F0, S0 | **Anomali-algılayıcı** ( [görüntü](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | Anomali algılayıcı API 'SI, makine öğrenimi ile zaman serisi verilerinizde bulunan normalleştirikleri izlemenize ve algılamanıza olanak sağlar.<br>[Erişim izni isteme][request-access] |
 | [Görüntü İşleme][cv-containers] | F0, S1 | **Oku** OCR ( [görüntü](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Okuma OCR kapsayıcısı, JPEG, PNG, BMP, PDF ve TIFF dosya biçimleri desteğiyle, görüntülerden ve belgelerden yazdırılmış ve el yazısı metinleri ayıklamanızı sağlar. Daha fazla bilgi için bkz. [okuma API 'si belgeleri](./computer-vision/concept-recognizing-text.md).<br>[Erişim izni isteme][request-access] |
@@ -75,13 +75,13 @@ Azure bilişsel hizmetler kapsayıcıları, her biri Azure bilişsel hizmetler '
 | [Uzamsal Analiz][spa-containers] | S0 | **Uzamsal analiz** | Kişiler, taşınanlar ve fiziksel ortamlardaki nesnelerle etkileşimler arasındaki uzamsal ilişkileri anlamak için gerçek zamanlı akış videosunu analiz eder. |
 
 <!--
-|[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
+|[Personalizer](./personalizer/what-is-personalizer.md) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
 -->
 
 Ayrıca, bazı kapsayıcılar bilişsel Hizmetler [**hepsi bir arada sunum**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) kaynak anahtarları içinde desteklenir. Tek bir bilişsel hizmetler oluşturup bir adet tek kaynak oluşturabilir ve aşağıdaki hizmetler için desteklenen hizmetler genelinde aynı faturalandırma anahtarını kullanabilirsiniz:
 
 * Görüntü İşleme
-* Yüz Tanıma
+* Yüz
 * LUIS
 * Metin Analizi
 
@@ -91,7 +91,7 @@ Azure bilişsel hizmetler kapsayıcıları Azure aboneliğiniz aracılığıyla 
 
 [!INCLUDE [Container repositories and images](containers/includes/cognitive-services-container-images.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure bilişsel hizmetler kapsayıcılarını kullanmadan önce aşağıdaki önkoşulları karşılamanız gerekir:
 
@@ -132,7 +132,7 @@ Azure bilişsel hizmetler 'de kapsayıcılar tarafından sunulan işlevleri yük
 [fr-containers]: form-recognizer/form-recognizer-container-howto.md
 [lu-containers]: luis/luis-container-howto.md
 [sp-containers]: speech-service/speech-container-howto.md
-[spa-containers]: https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-container
+[spa-containers]: ./computer-vision/spatial-analysis-container.md
 [sp-containers-stt]: speech-service/speech-container-howto.md?tabs=stt
 [sp-containers-cstt]: speech-service/speech-container-howto.md?tabs=cstt
 [sp-containers-tts]: speech-service/speech-container-howto.md?tabs=tts

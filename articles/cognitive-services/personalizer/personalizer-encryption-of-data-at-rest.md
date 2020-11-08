@@ -9,12 +9,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: a19f0a204bec1c0a43a84d93c2dc4b70ef6ecbe6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a27199930587c1a096dd99462ebd0c9d65054ee
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89069934"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369367"
 ---
 # <a name="personalizer-service-encryption-of-data-at-rest"></a>Rest 'de verilerin kişiselleştirici hizmeti şifrelemesi
 
@@ -30,4 +30,4 @@ Kişiselleştirici hizmeti, buluta kalıcı hale geldiğinde verilerinizi otomat
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Kişiselleştirici hizmeti Customer-Managed anahtar Isteği formu](https://aka.ms/cogsvc-cmk)
-* [Azure Key Vault hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [Azure Key Vault hakkında daha fazla bilgi edinin](../../key-vault/general/overview.md)

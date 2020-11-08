@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/11/2020
 ms.author: erhopf
-ms.openlocfilehash: d99cfc8b50155eb4cb2aecb3cb770f71b927ce1d
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 01e46ad8d139f2cab2fbb6499dc66c7af5ceb554
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148704"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368772"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Azure bilişsel Hizmetler desteği ve yardım seçenekleri
 
@@ -27,44 +27,44 @@ Azure bilişsel hizmetler 'in işlevlerini keşfetmeye başladınız mı? Belki 
 
 [Azure destek seçeneklerini bulun ve en uygun planı seçin](https://azure.microsoft.com/support/plans) , böylece yalnızca bulut yolculuğuna veya iş açısından kritik ve stratejik uygulamalar dağıtan büyük bir kuruluşa sahip bir geliştirici olursunuz. Azure müşterileri Azure portal destek istekleri oluşturabilir ve yönetebilir.
 
-* [Azure portalı](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Birleşik Devletler kamu Azure portal](https://portal.azure.us)
 
 ## <a name="post-a-question-on-microsoft-qa"></a>Microsoft Q&A 'da soru gönderin
 
-Microsoft mühendisleri, Azure en değerli uzmanlar (MVP) veya uzman topluluğumuza ait teknik ürün sorularınız hakkında hızlı ve güvenilir yanıtlar için, Azure 'un topluluk desteği için tercih edilen hedefi olan [Microsoft Q&A](https://docs.microsoft.com/answers/products/azure?product=all)'da bize katılın.
+Microsoft mühendisleri, Azure en değerli uzmanlar (MVP) veya uzman topluluğumuza ait teknik ürün sorularınız hakkında hızlı ve güvenilir yanıtlar için, Azure 'un topluluk desteği için tercih edilen hedefi olan [Microsoft Q&A](/answers/products/azure?product=all)'da bize katılın.
 
 Arama kullanarak sorununuz için bir yanıt bulamazsanız, Microsoft Q&A 'ya yeni bir soru gönderin. Sorunuzu sorduğunuz zaman aşağıdaki etiketlerden birini kullanın:
 
-* [Bilişsel Hizmetler](https://docs.microsoft.com/answers/topics/azure-cognitive-services.html)
+* [Bilişsel Hizmetler](/answers/topics/azure-cognitive-services.html)
 
 **Görsel**
 
-* [Görüntü İşleme](https://docs.microsoft.com/answers/topics/azure-computer-vision.html)
-* [Özel Görüntü İşleme](https://docs.microsoft.com/answers/topics/azure-custom-vision.html)
-* [Yüz Tanıma](https://docs.microsoft.com/answers/topics/azure-face.html)
-* [Form Tanıma](https://docs.microsoft.com/answers/topics/azure-form-recognizer.html)
-* [Video Indexer](https://docs.microsoft.com/answers/topics/azure-media-services.html)
+* [Görüntü İşleme](/answers/topics/azure-computer-vision.html)
+* [Özel Görüntü İşleme](/answers/topics/azure-custom-vision.html)
+* [Yüz Tanıma](/answers/topics/azure-face.html)
+* [Form Tanıma](/answers/topics/azure-form-recognizer.html)
+* [Video Indexer](/answers/topics/azure-media-services.html)
 
 **Dil**
 
-* [Tam Ekran Okuyucu](https://docs.microsoft.com/answers/topics/azure-immersive-reader.html)
-* [Language Understanding (LUIS)](https://docs.microsoft.com/answers/topics/azure-language-understanding.html)
-* [Soru-Cevap Oluşturma](https://docs.microsoft.com/answers/topics/azure-qna-maker.html)
-* [Metin Analizi](https://docs.microsoft.com/answers/topics/azure-text-analytics.html)
-* [Translator](https://docs.microsoft.com/answers/topics/azure-translator.html)
+* [Tam Ekran Okuyucu](/answers/topics/azure-immersive-reader.html)
+* [Language Understanding (LUIS)](/answers/topics/azure-language-understanding.html)
+* [Soru-Cevap Oluşturma](/answers/topics/azure-qna-maker.html)
+* [Metin Analizi](/answers/topics/azure-text-analytics.html)
+* [Çevirmen](/answers/topics/azure-translator.html)
 
 **Konuşma**
 
-* [Konuşma hizmeti](https://docs.microsoft.com/answers/topics/azure-speech.html)
+* [Konuşma hizmeti](/answers/topics/azure-speech.html)
 
 
 **Karar**
 
-* [Anomali Algılayıcısı](https://docs.microsoft.com/answers/topics/azure-anomaly-detector.html) 
-* [Content Moderator](https://docs.microsoft.com/answers/topics/azure-content-moderator.html)
+* [Anomali Algılayıcısı](/answers/topics/azure-anomaly-detector.html) 
+* [Content Moderator](/answers/topics/azure-content-moderator.html)
 * [Ölçüm Danışmanı (önizleme)]()
-* [Kişiselleştirme](https://docs.microsoft.com/answers/topics/azure-personalizer.html)
+* [Kişiselleştirme](/answers/topics/azure-personalizer.html)
 
 ## <a name="post-a-question-to-stack-overflow"></a>Stack Overflow bir soru gönderin
 
@@ -92,7 +92,7 @@ Stack Overflow için yeni bir soru gönderirseniz, soruyu oluştururken lütfen 
 * [Language Understanding (LUIS)](https://stackoverflow.com/search?q=azure+luis+language+understanding)
 * [Soru-Cevap Oluşturma](https://stackoverflow.com/search?q=azure+qna+maker)
 * [Metin Analizi](https://stackoverflow.com/search?q=azure+text+analytics)
-* [Translator](https://stackoverflow.com/search?q=azure+translator+text)
+* [Çevirmen](https://stackoverflow.com/search?q=azure+translator+text)
 
 **Konuşma**
 
@@ -143,4 +143,4 @@ Yeni bir yayındaki veya Azure blogundan Haberler hakkında bilgi sahibi olmak, 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure bilişsel hizmetler nedir?](welcome.md)
+> [Azure bilişsel hizmetler nedir?](./what-are-cognitive-services.md)

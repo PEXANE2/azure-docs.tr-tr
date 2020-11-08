@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: f6f816f6fb4d422a97c98994996967e71f6a1e07
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 59f2edd30bd47f5da63cbbe79af1142eaf86a747
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084910"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367922"
 ---
 # <a name="what-is-bing-entity-search-api"></a>Bing Varlık Arama API'si nedir?
 
@@ -36,7 +36,7 @@ Bing Varlık Arama API'si, Bing'e bir arama sorgusu gönderip varlıkları ve ye
 
 Bing Varlık Arama API'si, yeniden bir Web hizmetidir ve HTTP istekleri yapıp JSON 'u ayrıştırabilen herhangi bir programlama dilinden çağrı yapmayı kolaylaştırır. Hizmeti REST API veya SDK kullanarak kullanabilirsiniz.
 
-1. Bing Arama API'lerine erişimi olan bir [Bilişsel Hizmetler API'si hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oluşturun. Azure aboneliğiniz yoksa ücretsiz olarak [hesap oluşturabilirsiniz](https://azure.microsoft.com/free/cognitive-services/).
+1. Bing Arama API'lerine erişimi olan bir [Bilişsel Hizmetler API'si hesabı](../cognitive-services-apis-create-account.md) oluşturun. Azure aboneliğiniz yoksa ücretsiz olarak [hesap oluşturabilirsiniz](https://azure.microsoft.com/free/cognitive-services/).
 2. İstekleri geçerli bir arama sorgusu ile API'ye gönderin.
 3. Döndürülen JSON iletisini ayrıştırarak API yanıtını işleyin.
 
@@ -44,6 +44,6 @@ Bing Varlık Arama API'si, yeniden bir Web hizmetidir ve HTTP istekleri yapıp J
 
 * Bing Varlık Arama API'si için [etkileşimli tanıtımı](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) deneyin. 
 * İlk isteğinizi hızlı bir şekilde kullanmaya başlamak için hızlı [Başlangıç](quickstarts/csharp.md)yapmayı deneyin.
-* [Bing varlık arama API'si v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) Reference bölümü.
-* Bing Arama API'leri ile edinilen içeriğin ve bilgilerin kabul edilebilir kullanımları [Bing Kullanımı ve Görüntü Gereksinimleri](./use-display-requirements.md) konusunda belirtilmektedir.
-* Kullanılabilir diğer API 'Leri araştırmak için [BING arama API hub sayfasını](../bing-web-search/search-the-web.md) ziyaret edin.
+* [Bing varlık arama API'si v7](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) Reference bölümü.
+* Bing Arama API'leri ile edinilen içeriğin ve bilgilerin kabul edilebilir kullanımları [Bing Kullanımı ve Görüntü Gereksinimleri](../bing-web-search/use-display-requirements.md) konusunda belirtilmektedir.
+* Kullanılabilir diğer API 'Leri araştırmak için [BING arama API hub sayfasını](../bing-web-search/overview.md) ziyaret edin.

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 9e1b666e8929309778fc7b72e034a425c841fc2f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8d5352a79d2920701c96289f6162c1466f0f9f75
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095926"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367582"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Öğretici: bir Web sayfasında arama önerileri alın
 
@@ -358,4 +358,4 @@ Web sayfasını tarayıcınızda açın. İstendiğinde Bing Otomatik Öneri API
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Kullanım ve görüntüleme gereksinimleri](../UseAndDisplayRequirements.md)
+> [Kullanım ve görüntüleme gereksinimleri](../../bing-web-search/use-display-requirements.md)

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 52efd103bf510e7cca8a1e4a1d682948b498d64c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1b0cac94ac3a0c8dff24cf154e4dd7ab7ddf4dd9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084859"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368432"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Hızlı başlangıç: C kullanarak Bing Varlık Arama REST API arama isteği gönderme #
 
@@ -185,4 +185,4 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 > [Tek sayfalı web uygulaması oluşturma](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Bing Varlık Arama API'si nedir?](../overview.md )
-* [Bing varlık arama API'si Başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).
+* [Bing varlık arama API'si Başvurusu](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

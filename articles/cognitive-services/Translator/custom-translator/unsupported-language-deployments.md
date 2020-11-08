@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/24/2019
 ms.author: swmachan
-ms.openlocfilehash: a5918adfb6724c984f4a59fda802e2f4c5cde7c1
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 7498169c2c61b8337a90fbda082729f200f04635
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221205"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369044"
 ---
 # <a name="unsupported-language-deployments"></a>Desteklenmeyen dil dağıtımları
 
@@ -57,4 +57,4 @@ Standart özel çevirici modellerinden farklı olarak, hub modelleri yalnızca t
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Bir modeli eğitme](how-to-train-model.md).
-- Dağıtılmış özel çeviri modelinizi [Microsoft Translator metin çevirisi API'si v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)aracılığıyla kullanmaya başlayın.
+- Dağıtılmış özel çeviri modelinizi [Microsoft Translator metin çevirisi API'si v3](../reference/v3-0-translate.md?tabs=curl)aracılığıyla kullanmaya başlayın.

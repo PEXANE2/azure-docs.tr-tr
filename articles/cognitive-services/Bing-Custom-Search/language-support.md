@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: aahi
-ms.openlocfilehash: 3519c9d6a62eaff036cf8f7006a0b443383f5131
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2579d24e1a1754e873c6591b6d86ec12dd0dfa60
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090503"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367327"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Bing Özel Arama API'si için dil ve bölge desteği
 
@@ -26,11 +26,11 @@ ms.locfileid: "93090503"
 
 Bing Özel Arama API'si, birden fazla dilden çok sayıda ülkeyi/bölgeyi destekler.
 
-İsteğe bağlı olsa da, isteğin, sonuçların gelmesini istediğiniz pazarı tanımlayan [Mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#mkt) sorgu parametresini belirtmesi gerekir. İsteğe bağlı sorgu parametrelerinin bir listesi için bkz. [sorgu parametreleri](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)
+İsteğe bağlı olsa da, isteğin, sonuçların gelmesini istediğiniz pazarı tanımlayan [Mkt](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#mkt) sorgu parametresini belirtmesi gerekir. İsteğe bağlı sorgu parametrelerinin bir listesi için bkz. [sorgu parametreleri](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)
 
 Sorgu parametresini kullanarak bir ülke/bölge belirtebilirsiniz `cc` . Bir ülke/bölge belirtirseniz, üstbilgiyi kullanarak bir veya daha fazla dil kodu da belirtmeniz gerekir `Accept-Language` . Desteklenen diller ülkeye/bölgeye göre farklılık gösterir. Bunlar, **pazarlar** tablosundaki her bir ülke/bölge için verilir.
 
-`Accept-Language`Üst bilgi ve `setLang` sorgu parametresi birbirini dışlıyor; ikisini de belirtmeyin. Ayrıntılar için bkz. [Accept-Language](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage).
+`Accept-Language`Üst bilgi ve `setLang` sorgu parametresi birbirini dışlıyor; ikisini de belirtmeyin. Ayrıntılar için bkz. [Accept-Language](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage).
 
 ## <a name="countriesregions"></a>Ülkeler/bölgeler
 

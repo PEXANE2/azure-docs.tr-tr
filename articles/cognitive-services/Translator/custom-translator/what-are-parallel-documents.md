@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: ce9f7e922b9a168205ea1d193830dd654691998a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6477432636db9592d9b0d9c1f90f5eee7d6e00db
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510819"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369010"
 ---
 # <a name="what-are-parallel-documents"></a>Paralel belgeler nelerdir?
 
@@ -23,7 +23,7 @@ Hangi dilin "kaynak" olarak işaretlendiğinden ve hangi dilin "hedef" olarak i�
 
 ## <a name="requirements"></a>Gereksinimler
 
-Bir sistemi eğitebilmeniz için en az 10.000 benzersiz hizalanmış paralel cümleye ihtiyacınız olacaktır. Bu sınırlama, paralel Cümlelerinizin bir çeviri modelini başarıyla eğitmek için yeterli benzersiz sözlük içerdiğinden emin olmak için bir güvenlik ağı sağlar. En iyi uygulama olarak, çeviri sisteminizin kalitesini artırmak için sürekli olarak daha paralel içerik ekleyin ve yeniden eğitme yapın. Lütfen [tümce hizalamasını](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment)inceleyin.
+Bir sistemi eğitebilmeniz için en az 10.000 benzersiz hizalanmış paralel cümleye ihtiyacınız olacaktır. Bu sınırlama, paralel Cümlelerinizin bir çeviri modelini başarıyla eğitmek için yeterli benzersiz sözlük içerdiğinden emin olmak için bir güvenlik ağı sağlar. En iyi uygulama olarak, çeviri sisteminizin kalitesini artırmak için sürekli olarak daha paralel içerik ekleyin ve yeniden eğitme yapın. Lütfen [tümce hizalamasını](./sentence-alignment.md)inceleyin.
 
 Microsoft, özel çevirmene yüklenen belgelerin üçüncü tarafın telif hakkı veya fikri mülkiyet özelliklerini ihlal etmesidir. Daha fazla bilgi için lütfen [kullanım koşullarına](https://azure.microsoft.com/support/legal/cognitive-services-terms/)bakın.
 Portalı kullanarak bir belgeyi karşıya yüklemek, belgede fikri mülkiyet özelliğinin sahipliğini değiştirmez.

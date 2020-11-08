@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: c7dd916b27cd8005162c09f7e6a090293e336719
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95f3de0fe26678f6b4bcd97a78c06e92b72a7135
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83590647"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368823"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Bilişsel hizmetler için özel alt etki alanı adları
 
-Azure bilişsel hizmetler, [Azure Portal](https://portal.azure.com), [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)veya [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)aracılığıyla oluşturulan her kaynak için özel alt etki alanı adları kullanır. Belirli bir Azure bölgesindeki tüm müşteriler için ortak olan bölgesel bitiş noktalarından farklı olarak, özel alt etki alanı adları kaynağa özeldir. Kimlik doğrulaması için Azure Active Directory (Azure AD) gibi özellikleri etkinleştirmek için özel alt etki alanı adları gereklidir.
+Azure bilişsel hizmetler, [Azure Portal](https://portal.azure.com), [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)veya [Azure CLI](/cli/azure/install-azure-cli)aracılığıyla oluşturulan her kaynak için özel alt etki alanı adları kullanır. Belirli bir Azure bölgesindeki tüm müşteriler için ortak olan bölgesel bitiş noktalarından farklı olarak, özel alt etki alanı adları kaynağa özeldir. Kimlik doğrulaması için Azure Active Directory (Azure AD) gibi özellikleri etkinleştirmek için özel alt etki alanı adları gereklidir.
 
 ## <a name="how-does-this-impact-existing-resources"></a>Bu, mevcut kaynakları nasıl etkiler?
 
@@ -27,7 +27,7 @@ Azure bilişsel hizmetler, [Azure Portal](https://portal.azure.com), [Azure Clou
 Mevcut bir kaynağı özel alt etki alanı adlarından yararlanmak üzere geçirmek istiyorsanız, Azure AD gibi özellikleri etkinleştirebilmeniz için aşağıdaki yönergeleri izleyin:
 
 1. Azure portal oturum açın ve özel bir alt etki alanı adı eklemek istediğiniz bilişsel hizmetler kaynağını bulun.
-2. **Genel bakış** dikey penceresinde, **özel etki alanı adı oluştur**' u bulun ve seçin.
+2. **Genel bakış** dikey penceresinde, **özel etki alanı adı oluştur** ' u bulun ve seçin.
 3. Bu, kaynağınız için benzersiz bir özel alt etki alanı oluşturmaya yönelik yönergeler içeren bir panel açar.
    > [!WARNING]
    > Özel bir alt etki alanı adı oluşturduktan **sonra bu ad değiştirilemez.**
@@ -68,9 +68,9 @@ Evet. Bu, Azure bilişsel hizmetler kaynaklarıyla kullanabileceğiniz bölgesel
 > [!NOTE]
 > Translator hizmeti ve Bing Arama API'leri genel uç noktaları kullanır.
 
-| Uç nokta türü | Region | Uç Noktası |
+| Uç nokta türü | Region | Uç Nokta |
 |---------------|--------|----------|
-| Ortak | Genel (Translator & Bing) | `https://api.cognitive.microsoft.com` |
+| Genel | Genel (Translator & Bing) | `https://api.cognitive.microsoft.com` |
 | | Doğu Avustralya | `https://australiaeast.api.cognitive.microsoft.com` |
 | | Brezilya Güney | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | Orta Kanada | `https://canadacentral.api.cognitive.microsoft.com` |
@@ -83,8 +83,8 @@ Evet. Bu, Azure bilişsel hizmetler kaynaklarıyla kullanabileceğiniz bölgesel
 | | Doğu Japonya | `https://japaneast.api.cognitive.microsoft.com` |
 | | Güney Kore - Orta | `https://koreacentral.api.cognitive.microsoft.com` |
 | | Orta Kuzey ABD | `https://northcentralus.api.cognitive.microsoft.com` |
-| | Kuzey Avrupa | `https://northeurope.api.cognitive.microsoft.com` |
-| | Güney Afrika Kuzey | `https://southafricanorth.api.cognitive.microsoft.com` |
+| | North Europe | `https://northeurope.api.cognitive.microsoft.com` |
+| | Güney Afrika - Kuzey | `https://southafricanorth.api.cognitive.microsoft.com` |
 | | Orta Güney ABD | `https://southcentralus.api.cognitive.microsoft.com` |
 | | Güneydoğu Asya | `https://southeastasia.api.cognitive.microsoft.com` |
 | | Güney Birleşik Krallık | `https://uksouth.api.cognitive.microsoft.com` |
@@ -98,5 +98,5 @@ Evet. Bu, Azure bilişsel hizmetler kaynaklarıyla kullanabileceğiniz bölgesel
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Bilişsel hizmetler nelerdir?](Welcome.md)
+* [Bilişsel hizmetler nelerdir?](./what-are-cognitive-services.md)
 * [Kimlik Doğrulaması](authentication.md)

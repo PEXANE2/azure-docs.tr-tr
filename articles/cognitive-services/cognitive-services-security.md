@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: ceaa04fdf8776d4fab1db4cfb1b3df4298f28de9
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: f14ac72443dedc8e33e607a82b2145c7ebf95ad2
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152287"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368789"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure bilişsel hizmetler güvenliği
 
@@ -60,7 +60,7 @@ Değer verilen kalıcı ortam değişkeni oluşturun ve atayın.
 setx ENVIRONMENT_VARIABLE_KEY="value"
 ```
 
-**Komut isteminin**yeni bir örneğinde, ortam değişkenini okuyun.
+**Komut isteminin** yeni bir örneğinde, ortam değişkenini okuyun.
 
 ```CMD
 :: Prints the env var value
@@ -76,7 +76,7 @@ Değer verilen kalıcı ortam değişkeni oluşturun ve atayın.
 [System.Environment]::SetEnvironmentVariable('ENVIRONMENT_VARIABLE_KEY', 'value', 'User')
 ```
 
-**Windows PowerShell**'in yeni bir örneğinde, ortam değişkenini okuyun.
+**Windows PowerShell** 'in yeni bir örneğinde, ortam değişkenini okuyun.
 
 ```powershell
 # Prints the env var value
@@ -92,7 +92,7 @@ Değer verilen kalıcı ortam değişkeni oluşturun ve atayın.
 echo export ENVIRONMENT_VARIABLE_KEY="value" >> /etc/environment && source /etc/environment
 ```
 
-**Bash**'in yeni bir örneğinde, ortam değişkenini okuyun.
+**Bash** 'in yeni bir örneğinde, ortam değişkenini okuyun.
 
 ```Bash
 # Prints the env var value
@@ -201,17 +201,17 @@ NSString* value =
 
 Bu bilişsel hizmet için Müşteri Kasası kullanılabilir:
 
-* Translator
+* Çevirmen
 
 Aşağıdaki hizmetler için, Microsoft mühendisleri E0 katmanındaki herhangi bir müşteri verilerine erişmeyecektir: 
 
 * Language Understanding
-* Yüz Tanıma
+* Yüz
 * Content Moderator
 * Kişiselleştirme
 
 > [!IMPORTANT]
-> **Form tanıyıcı**için, Microsoft mühendisleri 10 Temmuz 2020 ' den sonra oluşturulan kaynaklardaki hiçbir müşteri verilerine erişmeyecektir.
+> **Form tanıyıcı** için, Microsoft mühendisleri 10 Temmuz 2020 ' den sonra oluşturulan kaynaklardaki hiçbir müşteri verilerine erişmeyecektir.
 
 E0 SKU 'YU kullanma yeteneği istemek için bu [Istek formunu](https://aka.ms/cogsvc-cmk)doldurun ve bu formu gönderebilirsiniz. İsteğinizin durumunu öğrenmek yaklaşık 3-5 iş günü sürer. Talebe bağlı olarak, bir kuyruğa yerleştirilmiş ve alan kullanılabilir olduğunda onaylanmış olabilir. E0 SKU 'SU LUIN ile kullanılması onaylandıktan sonra, Azure portal yeni bir kaynak oluşturmanız ve fiyatlandırma katmanı olarak E0 ' yi seçmeniz gerekir. Kullanıcılar F0 'den yeni E0 SKU 'suna yükseltemez.
 
@@ -222,5 +222,5 @@ Konuşma hizmeti şu anda Müşteri Kasası desteklememektedir. Ancak, müşteri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Çeşitli bilişsel [Hizmetleri](welcome.md) inceleyin
+* Çeşitli bilişsel [Hizmetleri](./what-are-cognitive-services.md) inceleyin
 * Bilişsel [Hizmetler sanal ağları](cognitive-services-virtual-networks.md) hakkında daha fazla bilgi edinin

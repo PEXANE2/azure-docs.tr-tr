@@ -9,18 +9,18 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: f4c3d23f6abbdc20d210e5ddda6c527d27654bb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14ff76e090e628a880290bb0e9f90026260de0c7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510768"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368993"
 ---
 # <a name="what-is-a-dictionary"></a>Sözlük nedir?
 
 Sözlük, deyimlerin veya Tümcelerin bir listesini ve bunlara karşılık gelen çevirileri belirten, hizalanmış bir belge çiftidir. Microsoft Translator 'ın, sözlükte sağladığınız çeviriyi kullanarak her zaman kaynak tümceciği veya cümle örneklerini çevirmesini istediğinizde, öğreticinizdeki bir sözlüğü kullanın. Sözlüklerde bazen ışlar veya terim tabanı denir. Sözlüğü, listenizin tüm terimleri için "Kopyala ve Değiştir" zorlaması olarak düşünebilirsiniz. Ayrıca, Microsoft özel çevirmen hizmeti, çevirisi kalitesini artırmak için kendi genel amaçlı sözlüklerini oluşturur ve kullanır. Bununla birlikte, bir müşteri tarafından sağlanmış sözlük bu şekilde görünür ve öncelikle kelimeleri veya cümleleri aramak için aranır.
 
-Sözlükler yalnızca kendi arkasındaki tam olarak desteklenen bir Microsoft genel sinir Network modeline sahip olan dil çiftlerindeki projeler için geçerlidir. [Dillerin tüm listesini görüntüleyin](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
+Sözlükler yalnızca kendi arkasındaki tam olarak desteklenen bir Microsoft genel sinir Network modeline sahip olan dil çiftlerindeki projeler için geçerlidir. [Dillerin tüm listesini görüntüleyin](../language-support.md#customization).
 
 ## <a name="phrase-dictionary"></a>Tümcecik sözlüğü
 Tümcecik sözlüğü büyük/küçük harfe duyarlıdır. Tam bul ve değiştir işlemidir. Modelinize eğitim altına bir tümcecik sözlüğü eklediğinizde, listelenen herhangi bir sözcük veya tümcecik, belirttiğiniz şekilde çevrilir. Cümlenin geri kalanı her zamanki gibi çevrilir. Sözlükteki kaynak ve hedef dosyada aynı çevrilmemiş tümceciği sağlayarak çevrilmemesi gereken tümcecikleri belirtmek için bir tümcecik sözlüğü kullanabilirsiniz.

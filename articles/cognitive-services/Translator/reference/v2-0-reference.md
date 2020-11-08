@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: swmachan
-ms.openlocfilehash: 7fa148579e7525933d388b8a93c9a3476f473cb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd0dbe5912b7c4df3c666c648dbf9a92d5398cf1
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83588624"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369520"
 ---
 # <a name="translator-v20"></a>Translator v 2.0
 
@@ -25,7 +25,7 @@ ms.locfileid: "83588624"
 Çeviricisinin 2. sürümü, çok dilli kullanıcı deneyimleri sağlamak için uygulamalarınız, Web siteleriniz, araçlarınızla veya diğer çözümlerle sorunsuzca tümleştirilebilir. Endüstri standartlarına göre, dil çevirisini ve metin okuma ve metin okuma gibi diğer dille ilgili görevleri gerçekleştirmek için herhangi bir donanım platformunda ve herhangi bir işletim sistemiyle kullanabilirsiniz. Daha fazla bilgi için bkz. [Translator](../translator-info-overview.md).
 
 ## <a name="getting-started"></a>Başlarken
-Çevirmene erişmek için [Microsoft Azure kaydolmanız](../translator-text-how-to-signup.md)gerekir.
+Çevirmene erişmek için [Microsoft Azure kaydolmanız](../translator-how-to-signup.md)gerekir.
 
 ## <a name="authentication"></a>Kimlik Doğrulaması 
 Çevirmene yapılan tüm çağrılar, kimlik doğrulaması için bir abonelik anahtarı gerektirir. API üç kimlik doğrulama yöntemini destekler:
@@ -97,7 +97,7 @@ Yanıt içerik türü: Application/XML
 
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu|Neden|
+|HTTP durum kodu|Nedeni|
 |:--|:--|
 |400    |Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin.|
 |401    |Geçersiz kimlik bilgileri.|
@@ -195,7 +195,7 @@ Yanıt içerik türü: Application/XML
 
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu   |Neden|
+|HTTP durum kodu   |Nedeni|
 |:--|:--|
 |400    |Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin. Yaygın hatalar şunlardır: <ul><li>Dizi öğesi boş olamaz.</li><li>Geçersiz kategori.</li><li>Dil, geçersiz.</li><li>Dil geçersiz.</li><li>İstek çok fazla öğe içeriyor.</li><li>Kimden dili desteklenmiyor.</li><li>To dili desteklenmiyor.</li><li>Çeviri Isteğinde çok fazla veri yok.</li><li>HTML doğru biçimde değil.</li><li>Çeviri Isteğine çok fazla sayıda dize geçirildi.</li></ul>|
 |401    |Geçersiz kimlik bilgileri.|
@@ -209,7 +209,7 @@ Geçirilen dile yerelleştirilmiş, parametresi olarak geçirilen dillerin kolay
 
 İstek URI 'SI `https://api.microsofttranslator.com/V2/Http.svc/GetLanguageNames` .
 
-İstek gövdesi, kolay adların alınacağı ISO 639-1 dil kodlarını temsil eden bir dize dizisi içerir. Aşağıda bir örnek verilmiştir:
+İstek gövdesi, kolay adların alınacağı ISO 639-1 dil kodlarını temsil eden bir dize dizisi içerir. İşte bir örnek:
 
 ```
 <ArrayOfstring xmlns:i="https://www.w3.org/2001/XMLSchema-instance"  xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
@@ -238,7 +238,7 @@ Yanıt içerik türü: Application/XML
 
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu|Neden|
+|HTTP durum kodu|Nedeni|
 |:--|:--|
 |400    |Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin.|
 |401    |Geçersiz kimlik bilgileri.|
@@ -271,7 +271,7 @@ Yanıt içerik türü: Application/XML
 
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu|Neden|
+|HTTP durum kodu|Nedeni|
 |:--|:--|
 |400    |Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin.|
 |401    |Geçersiz kimlik bilgileri.|
@@ -304,7 +304,7 @@ Yanıt içerik türü: Application/XML
  
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu|Neden|
+|HTTP durum kodu|Nedeni|
 |:--|:--|
 |400|Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin.|
 |401|Geçersiz kimlik bilgileri.|
@@ -333,14 +333,14 @@ Yanıt içerik türü: Application/XML
 |AppID|olmamalıdır|Gereklidir. `Authorization`Veya `Ocp-Apim-Subscription-Key` üstbilgisi kullanılıyorsa, `appid` alanı boş bırakın. Aksi takdirde, içeren bir dize ekleyin `"Bearer" + " " + "access_token"` .|sorgu|string|
 |metin|olmamalıdır   |Gereklidir. Belirtilen dilde akış için söylenen bir veya daha fazla cümle içeren bir dize. Metnin 2.000 karakteri aşmaması gerekir.|sorgu|string|
 |language|olmamalıdır   |Gereklidir. Metnin konuşmasını istediğiniz dilin desteklenen dil kodunu temsil eden bir dize. Kod, yöntemi tarafından döndürülen kodlardan biri olmalıdır `GetLanguagesForSpeak` .|sorgu|string|
-|biçim|olmamalıdır|İsteğe bağlı. Content-Type KIMLIĞINI belirten bir dize. Şu anda  `audio/wav` ve `audio/mp3` kullanılabilir. Varsayılan değer: `audio/wav`.|sorgu|string|
+|biçim|olmamalıdır|İsteğe bağlı. Content-Type KIMLIĞINI belirten bir dize. Şu anda  `audio/wav` ve `audio/mp3` kullanılabilir. `audio/wav` varsayılan değerdir.|sorgu|string|
 |seçenekler|olmamalıdır    |İsteğe bağlı. Sentezlenmiş konuşmanın özelliklerini belirten bir dize:<ul><li>`MaxQuality` ve `MinSize` ses sinyalinin kalitesini belirtin. `MaxQuality` en yüksek kaliteyi sağlar. `MinSize` en küçük dosya boyutunu sağlar. Varsayılan değer  `MinSize` .</li><li>`female` ve `male` sesin istenen cinsiyetini belirtin. Varsayılan değer: `female`. <code>\|</code>Birden çok seçenek dahil etmek için dikey çubuğu () kullanın. Örneğin, `MaxQuality|Male`.</li></li></ul>  |sorgu|string|
 |Yetkilendirme|olmamalıdır|Hem `appid` alan hem de `Ocp-Apim-Subscription-Key` üst bilgi boş bırakılırsa gereklidir. Yetkilendirme belirteci:  `"Bearer" + " " + "access_token"` .|üst bilgi|string|
 |Ocp-Apim-Subscription-Key|olmamalıdır  |Hem `appid` alan hem de `Authorization` üst bilgi boş bırakılırsa gereklidir.|üst bilgi|string|
 
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu|Neden|
+|HTTP durum kodu|Nedeni|
 |:--|:--|
 |400    |Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin.|
 |401    |Geçersiz kimlik bilgileri.|
@@ -373,7 +373,7 @@ Yanıt içerik türü: Application/XML
 
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu|Neden|
+|HTTP durum kodu|Nedeni|
 |:--|:--|
 |400|Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin.|
 |401    |Geçersiz kimlik bilgileri.|
@@ -428,7 +428,7 @@ Yanıt içerik türü: Application/XML
 
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu|Neden|
+|HTTP durum kodu|Nedeni|
 |:--|:--|
 |400    |Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin.|
 |401    |Geçersiz kimlik bilgileri.|
@@ -471,7 +471,7 @@ Yanıt içerik türü: uygulama: XML
 
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu|Neden|
+|HTTP durum kodu|Nedeni|
 |:--|:--|
 |400    |Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin.|
 |401    |Geçersiz kimlik bilgileri.|
@@ -540,7 +540,7 @@ Yanıt içerik türü: Application/XML
 
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu|Neden|
+|HTTP durum kodu|Nedeni|
 |:--|:--|
 |400    |Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin.|
 |401    |Geçersiz kimlik bilgileri.|
@@ -576,7 +576,7 @@ Yanıt içerik türü: Application/XML
 
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu|Neden|
+|HTTP durum kodu|Nedeni|
 |:--|:--|
 |400|Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin.|
 |401|Geçersiz kimlik bilgileri.|
@@ -607,11 +607,11 @@ Mağazadan ve MT altyapısından belirli bir dil çiftinin çeviri dizisini alı
 
 * `Category`: Çevirinin kategorisini (etki alanı) içeren bir dize. Varsayılan değer: `general`.
 * `ContentType`: Desteklenen tek seçenek ve varsayılan, ' dir `text/plain` .
-* `IncludeMultipleMTAlternatives`: MT altyapısından birden fazla alternatif döndürülüp döndürülmeyeceğini belirten bir Boole bayrağı. Geçerli değerler `true` ve `false` (büyük/küçük harfe duyarlı). Varsayılan olarak, `false` yalnızca bir alternatif döndürür. Bayrağını, birlikte çalışan `true` çeviri çerçevesiyle (CTF) tamamen tümleşik olan yapay alternatifler oluşturmayı sağlar. Özelliği, kod çözücünün *n*en iyi listesinden yapay alternatifler ekleyerek CTF 'de çevirisi olmayan cümleler için alternatifleri döndürmeyi mümkün.
+* `IncludeMultipleMTAlternatives`: MT altyapısından birden fazla alternatif döndürülüp döndürülmeyeceğini belirten bir Boole bayrağı. Geçerli değerler `true` ve `false` (büyük/küçük harfe duyarlı). Varsayılan olarak, `false` yalnızca bir alternatif döndürür. Bayrağını, birlikte çalışan `true` çeviri çerçevesiyle (CTF) tamamen tümleşik olan yapay alternatifler oluşturmayı sağlar. Özelliği, kod çözücünün *n* en iyi listesinden yapay alternatifler ekleyerek CTF 'de çevirisi olmayan cümleler için alternatifleri döndürmeyi mümkün.
     - Lendir. Derecelendirmeler aşağıdaki gibi uygulanır: 
          - En iyi otomatik çeviri, 5 derecesine sahiptir.
        - CTF 'nin alternatifleri gözden geçirenin yetkilisini yansıtır. -10 ile + 10 arasında değişir.
-       - Otomatik olarak oluşturulan (*n*-en iyi) çeviri alternatifleri, 0 derecelendirmesine ve 100 eşleşme derecesine sahiptir.
+       - Otomatik olarak oluşturulan ( *n* -en iyi) çeviri alternatifleri, 0 derecelendirmesine ve 100 eşleşme derecesine sahiptir.
     - Alternatifin sayısı. Döndürülen alternatiflere ilişkin sayı ' de belirtilen değer kadar yüksek olabilir `maxTranslations` , ancak daha az olabilir.
     - Dil çiftleri. Bu işlev, Basitleştirilmiş Çince ve geleneksel Çince arasında her iki yönde de çeviri için kullanılamaz. Microsoft Translator tarafından desteklenen tüm diğer dil çiftleri için kullanılabilir.
 * `State`: İstek ve yanıtı ilişkilendirmenize yardımcı olmak için Kullanıcı durumu. Yanıtta aynı içerik döndürülecek.
@@ -675,7 +675,7 @@ Yanıt içerik türü: Application/XML
 
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu|Neden|
+|HTTP durum kodu|Nedeni|
 |:--|:--|
 |400    |Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin.|
 |401    |Geçersiz kimlik bilgileri.|
@@ -719,11 +719,11 @@ Birden çok kaynak metin için birden çok çeviri adayları alır.
 * `Options`Seçim. `Options`Aşağıdaki değerleri içeren bir nesne. Bunların tümü isteğe bağlıdır ve varsayılan olarak en sık kullanılan ayarlara sahiptir. Belirtilen öğelerin alfabetik sırada listelenmesi gerekir.
     - `Category`: Çevirinin kategorisini (etki alanı) içeren bir dize. Varsayılan değer: `general`.
     - `ContentType`: Desteklenen tek seçenek ve varsayılan, ' dir `text/plain` .
-    - `IncludeMultipleMTAlternatives`: MT altyapısından birden fazla alternatif döndürülüp döndürülmeyeceğini belirten bir Boole bayrağı. Geçerli değerler `true` ve `false` (büyük/küçük harfe duyarlı). Varsayılan olarak, `false` yalnızca bir alternatif döndürür. Bayrağını, `true` , birlikte çalışan çeviri çerçevesiyle (CTF) tam olarak tümleştirilmiş, çeviride yapay alternatifler oluşturmayı sağlar. Özelliği, kod çözücüsünün *n*en iyi listesinden yapay alternatifler ekleyerek CTF 'de alternatif olmayan cümleler için alternatifler döndürmeyi mümkün.
+    - `IncludeMultipleMTAlternatives`: MT altyapısından birden fazla alternatif döndürülüp döndürülmeyeceğini belirten bir Boole bayrağı. Geçerli değerler `true` ve `false` (büyük/küçük harfe duyarlı). Varsayılan olarak, `false` yalnızca bir alternatif döndürür. Bayrağını, `true` , birlikte çalışan çeviri çerçevesiyle (CTF) tam olarak tümleştirilmiş, çeviride yapay alternatifler oluşturmayı sağlar. Özelliği, kod çözücüsünün *n* en iyi listesinden yapay alternatifler ekleyerek CTF 'de alternatif olmayan cümleler için alternatifler döndürmeyi mümkün.
         - Derecelendirmeler aşağıdaki gibi uygulanır:
           - En iyi otomatik çeviri, 5 derecesine sahiptir.
           - CTF 'nin alternatifleri gözden geçirenin yetkilisini yansıtır. -10 ile + 10 arasında değişir.
-          - Otomatik olarak oluşturulan (*n*-en iyi) çeviri alternatifleri, 0 derecelendirmesine ve 100 eşleşme derecesine sahiptir.
+          - Otomatik olarak oluşturulan ( *n* -en iyi) çeviri alternatifleri, 0 derecelendirmesine ve 100 eşleşme derecesine sahiptir.
         - Alternatifin sayısı. Döndürülen alternatiflere ilişkin sayı ' de belirtilen değer kadar yüksek olabilir `maxTranslations` , ancak daha az olabilir.
         - Dil çiftleri. Bu işlev, Basitleştirilmiş Çince ve geleneksel Çince arasında her iki yönde de çeviri için kullanılamaz. Microsoft Translator tarafından desteklenen tüm diğer dil çiftleri için kullanılabilir.
 * `State`: İstek ve yanıtı ilişkilendirmenize yardımcı olmak için Kullanıcı durumu. Yanıtta aynı içerik döndürülecek.
@@ -793,7 +793,7 @@ Yanıt içerik türü: Application/XML
 
 ### <a name="response-messages"></a>Yanıt iletileri
 
-|HTTP durum kodu|Neden|
+|HTTP durum kodu|Nedeni|
 |:--|:--|
 |400    |Hatalı istek. Giriş parametrelerini ve ayrıntılı hata yanıtını denetleyin.|
 |401    |Geçersiz kimlik bilgileri.|
@@ -804,5 +804,3 @@ Yanıt içerik türü: Application/XML
 
 > [!div class="nextstepaction"]
 > [Translator v3 'e geçiş](../migrate-to-v3.md)
-
-

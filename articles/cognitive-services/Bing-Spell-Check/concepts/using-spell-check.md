@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: ece9d191460323a917579c5a32cff429f52139fa
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a02d5217cb051516e11d17730f31869618a2cfb0
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098238"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369401"
 ---
 # <a name="using-the-bing-spell-check-api"></a>Bing Yazım Denetimi API’sini kullanma
 
@@ -49,14 +49,14 @@ API, `Proof` ve `Spell` olmak üzere iki denetleme modunu destekler.  Örnekleri
 
 ## <a name="market-setting"></a>Pazar ayarı
 
-İsteğiniz içinde sorgu parametresiyle bir [Pazar kodu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#market-codes) belirtilmelidir `mkt` . Bu durumda, API, isteğin IP adresine göre varsayılan bir pazar kullanacaktır.
+İsteğiniz içinde sorgu parametresiyle bir [Pazar kodu](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#market-codes) belirtilmelidir `mkt` . Bu durumda, API, isteğin IP adresine göre varsayılan bir pazar kullanacaktır.
 
 
 ## <a name="http-post-and-get-support"></a>HTTP POST ve GET desteği
 
 Hem HTTP POST hem de HTTP GET, API tarafından desteklenir. Bunlardan hangisini kullanacağınız, denetlemeyi planladığınız metnin uzunluğuna göre değişir. Dizelerin tümü 1.500 karakterden kısaysa GET kullanırsınız. Ancak, 10.000 karaktere kadar uzunluktaki dizeleri desteklemek istiyorsanız POST kullanırsınız. Metin dizesi tüm UTF-8 karakterlerini içerebilir.
 
-Sıradaki örnekte, bir metin dizesinin yazımının ve dil bilgisinin denetlenmesine yönelik bir POST isteği gösterilmektedir. [Mode](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#mode) sorgu parametresi bütünlük açısından örneğe dahil edilmiştir. (`mode` varsayılan olarak Denetleme olduğundan, bu parametre dışarıda bırakılabilirdi.) [Text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text) sorgu parametresinde, denetlenecek dize bulunur.
+Sıradaki örnekte, bir metin dizesinin yazımının ve dil bilgisinin denetlenmesine yönelik bir POST isteği gösterilmektedir. [Mode](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#mode) sorgu parametresi bütünlük açısından örneğe dahil edilmiştir. (`mode` varsayılan olarak Denetleme olduğundan, bu parametre dışarıda bırakılabilirdi.) [Text](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text) sorgu parametresinde, denetlenecek dize bulunur.
   
 ```  
 POST https://api.cognitive.microsoft.com/bing/v7.0/spellcheck?mode=proof&mkt=en-us HTTP/1.1  
@@ -73,7 +73,7 @@ text=when+its+your+turn+turn,+john,+come+runing
 
 HTTP GET kullanmanız halinde, URL'nin sorgu dizesine `text` sorgu parametresini dahil etmeniz gerekir
   
-Aşağıda, bir önceki isteğin yanıtı gösterilmektedir. Yanıt, [SpellCheck](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#spellcheck) nesnesi içerir. 
+Aşağıda, bir önceki isteğin yanıtı gösterilmektedir. Yanıt, [SpellCheck](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#spellcheck) nesnesi içerir. 
   
 ```json
 {  
@@ -117,7 +117,7 @@ Aşağıda, bir önceki isteğin yanıtı gösterilmektedir. Yanıt, [SpellCheck
 }  
 ```  
   
-[flaggedTokens](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#flaggedtokens) alanında, API'nin [text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text) dizesinde bulduğu yazım ve dil bilgisi hataları listelenir. `token` alanı, değiştirilecek sözcüğü içerir. `text` dizesindeki belirteci bulmak için `offset` alanında sıfır temelli uzaklığı kullanırsınız. Ardından, söz konusu konumdaki sözcüğü `suggestion` alanındaki sözcükle değiştirirsiniz. 
+[flaggedTokens](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#flaggedtokens) alanında, API'nin [text](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text) dizesinde bulduğu yazım ve dil bilgisi hataları listelenir. `token` alanı, değiştirilecek sözcüğü içerir. `text` dizesindeki belirteci bulmak için `offset` alanında sıfır temelli uzaklığı kullanırsınız. Ardından, söz konusu konumdaki sözcüğü `suggestion` alanındaki sözcükle değiştirirsiniz. 
 
 `type` alanı RepeatedToken olsa da belirteci `suggestion` ile değiştirirsiniz, ancak muhtemelen sondaki boşluğu kaldırmanız gerekir.
 
@@ -128,4 +128,4 @@ Aşağıda, bir önceki isteğin yanıtı gösterilmektedir. Yanıt, [SpellCheck
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Bing Yazım Denetimi API’si nedir?](../overview.md)
-- [Bing Yazım Denetimi API’si v7 Başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Bing Yazım Denetimi API’si v7 Başvurusu](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

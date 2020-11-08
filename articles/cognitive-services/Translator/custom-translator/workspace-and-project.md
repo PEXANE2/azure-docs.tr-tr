@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 41586b2ec96d30fd583cbc9a746493ed9206548b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28bc07cadf9ffea56059755e243cb3e828077588
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510751"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368976"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Özel çevirmen çalışma alanı nedir?
 
@@ -25,7 +25,7 @@ ms.locfileid: "88510751"
 
 ## <a name="what-is-a-custom-translator-project"></a>Özel çevirmen Projesi nedir?
 
-Proje, bir model, belge ve test için bir sarmalayıcıdır. Her proje, doğru dil çiftine sahip olan bu çalışma alanına yüklenen tüm belgeleri otomatik olarak içerir. Örneğin, hem bir Ingilizce-Ispanyolca projesi hem de Ispanyolca ile Ingilizce proje varsa, aynı belgeler her iki projeye de dahil edilir. Her projenin, çevirileri için [v3 API 'si](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) sorgulanırken kullanılan bir KategoriNo vardır. CategoryID, özel çevirmenle oluşturulmuş özelleştirilmiş bir sistemden Çeviriler almak için kullanılır.
+Proje, bir model, belge ve test için bir sarmalayıcıdır. Her proje, doğru dil çiftine sahip olan bu çalışma alanına yüklenen tüm belgeleri otomatik olarak içerir. Örneğin, hem bir Ingilizce-Ispanyolca projesi hem de Ispanyolca ile Ingilizce proje varsa, aynı belgeler her iki projeye de dahil edilir. Her projenin, çevirileri için [v3 API 'si](../reference/v3-0-translate.md?tabs=curl) sorgulanırken kullanılan bir KategoriNo vardır. CategoryID, özel çevirmenle oluşturulmuş özelleştirilmiş bir sistemden Çeviriler almak için kullanılır.
 
 ## <a name="project-categories"></a>Proje kategorileri
 

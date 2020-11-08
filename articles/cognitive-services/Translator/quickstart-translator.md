@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Çevirmen, çevirmen hizmeti, çevirme metni, alfabedeki metin, dil algılama
-ms.openlocfilehash: 8250141c2baa92478c5929a300ec7b17b8ed7131
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 68bbb31ae87ebbb84cda752c2f4a7c1bd1116dda
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322508"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369537"
 ---
 # <a name="quickstart-get-started-with-translator"></a>Hızlı başlangıç: çevirmenle çalışmaya başlama
 
@@ -102,10 +102,10 @@ Translator hizmetini REST aracılığıyla çağırırken, her istek için aşa�
 
 <table width="100%">
   <th width="20%">Üst Bilgiler</th>
-  <th>Açıklama</th>
+  <th>Description</th>
   <tr>
     <td>Kimlik doğrulama üst bilgisi</td>
-    <td><em>Gerekli istek üst bilgisi</em>.<br/><code>Ocp-Apim-Subscription-Key</code><br/><br/>Bilişsel <em>Hizmetler kaynağı kullanılıyorsa gerekli istek üst bilgisi. Çevirmen kaynağı kullanılıyorsa isteğe bağlıdır.</em>..<br/><code>Ocp-Apim-Subscription-Region</code><br/><br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın.</td>
+    <td><em>Gerekli istek üst bilgisi</em>.<br/><code>Ocp-Apim-Subscription-Key</code><br/><br/>Bilişsel <em>Hizmetler kaynağı kullanılıyorsa gerekli istek üst bilgisi. Çevirmen kaynağı kullanılıyorsa isteğe bağlıdır.</em>..<br/><code>Ocp-Apim-Subscription-Region</code><br/><br/><a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın.</td>
   </tr>
   <tr>
     <td>İçerik Türü</td>
@@ -123,7 +123,7 @@ Translator hizmetini REST aracılığıyla çağırırken, her istek için aşa�
 
 ## <a name="keys-and-endpoints"></a>Anahtarlar ve uç noktalar
 
-Bu sayfadaki örnekler basitlik için sabit kodlanmış anahtarlar ve uç noktalar kullanır. **İşiniz bittiğinde kodu koddan kaldırmayı** unutmayın ve **hiçbir zaman herkese açık bir şekilde nakletmeyin**. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Daha fazla bilgi için bilişsel Hizmetler [güvenlik](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) makalesine bakın.
+Bu sayfadaki örnekler basitlik için sabit kodlanmış anahtarlar ve uç noktalar kullanır. **İşiniz bittiğinde kodu koddan kaldırmayı** unutmayın ve **hiçbir zaman herkese açık bir şekilde nakletmeyin**. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Daha fazla bilgi için bilişsel Hizmetler [güvenlik](../cognitive-services-security.md) makalesine bakın.
 
 ## <a name="translate-text"></a>Metin çevirme 
 
@@ -686,7 +686,7 @@ Başarılı bir çağrıdan sonra aşağıdaki yanıtı görmeniz gerekir:
 
 ### <a name="detect-source-language-without-translation"></a>Çeviri olmadan kaynak dilini Algıla
 
-Çeviri yapmadan kaynak metnin dilini algılamak için Translator hizmetini kullanmak mümkündür. Bunu yapmak için [`/detect`](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) uç noktasını kullanacaksınız. 
+Çeviri yapmadan kaynak metnin dilini algılamak için Translator hizmetini kullanmak mümkündür. Bunu yapmak için [`/detect`](./reference/v3-0-detect.md) uç noktasını kullanacaksınız. 
 
 # <a name="c"></a>[C#](#tab/csharp)
 

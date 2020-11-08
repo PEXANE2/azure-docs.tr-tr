@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: 2eab79d79a287bc8a92133c6901c420dfaee2fd5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 50db66d54993a4b5ee8afb4756be6b1f4387a1d0
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93082054"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369350"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Bing Görsel Arama API’si nedir?
 
@@ -35,7 +35,7 @@ Bing Görsel Arama API'si bir görüntü için öngörüleri döndürür. Bir g�
 
 Bing Görsel Arama kullanarak aşağıdaki öngörüleri bulabilirsiniz:
 
-| İçgörü                              | Açıklama |
+| İçgörü                              | Description |
 |--------------------------------------|-------------|
 | Görsel olarak benzer görüntüler              | Giriş resmine görsel olarak benzeyen görüntülerin listesi. |
 | Görsel açıdan benzer ürünler            | Gösterilen ürüne görsel olarak benzeyen ürünler.            |
@@ -53,7 +53,7 @@ Bing Görsel Arama sonuçlar, görüntüde ilgilendiğiniz bölgelere yönelik s
 
 Bing Görsel Arama API'si, yeniden bir Web hizmetidir ve HTTP istekleri yapıp JSON 'u ayrıştırabilen herhangi bir programlama dilinden çağrı yapmayı kolaylaştırır. Hizmet için REST API ya da SDK 'sını kullanabilirsiniz.
 
-1. Bing Arama API'leri erişmek için bilişsel [Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oluşturun. Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturabilirsiniz](https://azure.microsoft.com/free/cognitive-services/).
+1. Bing Arama API'leri erişmek için bilişsel [Hizmetler hesabı](../cognitive-services-apis-create-account.md) oluşturun. Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturabilirsiniz](https://azure.microsoft.com/free/cognitive-services/).
 2. Geçerli bir arama sorgusuyla API 'ye bir istek gönderin.
 3. Döndürülen JSON iletisini ayrıştırarak API yanıtını işleyin.
 
@@ -74,8 +74,8 @@ Demo, bir arama sorgusunu hızlı bir şekilde nasıl özelleştirebileceğinizi
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Görüntüler-görsel arama](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) başvurusu, uç noktalar, istek üstbilgileri, yanıtlar ve görüntü tabanlı arama sonuçları istemek için kullanabileceğiniz sorgu parametreleri hakkında tanımları ve bilgileri açıklar.
+* [Görüntüler-görsel arama](/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) başvurusu, uç noktalar, istek üstbilgileri, yanıtlar ve görüntü tabanlı arama sonuçları istemek için kullanabileceğiniz sorgu parametreleri hakkında tanımları ve bilgileri açıklar.
 
 * [BING arama API kullanımı ve görüntüleme gereksinimleri](../bing-web-search/use-display-requirements.md) , Bing arama API 'leri aracılığıyla elde edilen içerik ve bilgilerin kabul edilebilir kullanımlarını belirtir.
 
-* Kullanılabilir diğer API 'Leri araştırmak için [BING arama API hub sayfasını](../bing-web-search/search-the-web.md) ziyaret edin.
+* Kullanılabilir diğer API 'Leri araştırmak için [BING arama API hub sayfasını](../bing-web-search/overview.md) ziyaret edin.

@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: 06caafe75682a2375a8023787f9905ca1e8117c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f3d8131635fae55fd8dc2fd2649ae5dda1e62ae
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88507238"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368245"
 ---
 # <a name="custom-translator-frequently-asked-questions"></a>Özel Translator hakkında sık sorulan sorular
 
@@ -41,7 +41,7 @@ Dağıtım genellikle bir saatten daha az sürer.
 
 ## <a name="how-do-you-access-a-deployed-system"></a>Dağıtılan bir sisteme nasıl erişirsiniz?
 
-Dağıtılmış sistemlere CategoryID 'yi belirterek Microsoft Translator Metin Çevirisi API'si v3 aracılığıyla erişilebilir. Translator Metin Çevirisi API'si hakkında daha fazla bilgi [API başvuru](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) Web sayfasında bulunabilir.
+Dağıtılmış sistemlere CategoryID 'yi belirterek Microsoft Translator Metin Çevirisi API'si v3 aracılığıyla erişilebilir. Translator Metin Çevirisi API'si hakkında daha fazla bilgi [API başvuru](../reference/v3-0-reference.md) Web sayfasında bulunabilir.
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>Verilerim zaten tümce hizalanmışsa hizalama ve tümce Nasıl yaparım? atlayın mi?
 

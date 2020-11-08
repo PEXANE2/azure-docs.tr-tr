@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/06/2020
 ms.author: b-juche
-ms.openlocfilehash: ff1899fbc89ab4a78bf793a133a7aa9a8f03dd2a
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: c6194469837997108964feda82d406c9108641b9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337568"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369248"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>Kapasite havuzu sorunlarını giderme
 
@@ -34,6 +34,10 @@ Bu makalede, havuz değiştirme işlemi de dahil olmak üzere kapasite havuzlar�
 | Birim oluşturma veya değiştirme hata vererek başarısız oluyor `Requested throughput not available` | Bir birim için kullanılabilir verimlilik, kapasite havuzunun boyutu ve hizmet düzeyi tarafından belirlenir. Yeterli üretilen iş yoksa, havuz boyutunu artırmanız veya var olan birim aktarım hızını ayarlamanız gerekir. | 
 
 ## <a name="issues-moving-a-capacity-pool"></a>Bir kapasite havuzunu taşıma sorunları 
+
+> [!IMPORTANT] 
+> Bir birim genel önizlemesi kaydının [hizmet düzeyini dinamik olarak değiştirme](dynamic-change-volume-service-level.md) , daha fazla bildirimde bulununcaya kadar tutmaktır.
+
 |     Hata koşulu    |     Çözüm    |
 |-|-|
 | Bir birim için kapasite havuzunun değiştirilmesine izin verilmiyor. | Henüz bu özelliği kullanmak için yetkiniz olmayabilir. <br> Bir birimi başka bir kapasite havuzuna taşıma özelliği şu anda önizleme aşamasındadır. Bu özelliği ilk kez kullanıyorsanız, önce özelliği kaydetmeniz ve ayarlamanız gerekir `-FeatureName ANFTierChange` . [Bir birimin hizmet düzeyini dinamik olarak değiştirme](dynamic-change-volume-service-level.md)içindeki kayıt adımlarına bakın. |

@@ -9,24 +9,24 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metang
-ms.openlocfilehash: 73084f5116083b190b6fa31e504ffc5e8f6f39f6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: d8ee6b2344f0c953233195a693e774e410a8a8ea
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636502"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368211"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Öğretici: bir fotoğraftan içerikle modern okuyucu Başlatan bir iOS uygulaması oluşturma (Swift)
 
 [Tam ekran okuyucu](https://www.onenote.com/learningtools) , okuma kavramasını geliştirmek için kendini kanıtlamış teknikler uygulayan, ve dahil tasarlanmış bir araçtır.
 
-Görüntü İşleme bilişsel [Hizmetler okuma API 'si](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) , Microsoft 'un en son tanıma modellerini kullanarak bir görüntüdeki metin içeriğini algılar ve tanımlanan metni makine tarafından okunabilen bir karakter akışına dönüştürür.
+Görüntü İşleme bilişsel [Hizmetler okuma API 'si](../computer-vision/concept-recognizing-text.md) , Microsoft 'un en son tanıma modellerini kullanarak bir görüntüdeki metin içeriğini algılar ve tanımlanan metni makine tarafından okunabilen bir karakter akışına dönüştürür.
 
 Bu öğreticide, sıfırdan bir iOS uygulaması oluşturacaksınız ve okuma API 'SI ile modern okuyucu kullanarak tam ekran okuyucu SDK 'sını tümleştirirsiniz. Bu öğreticinin tam bir çalışma örneğine [buradan](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios)ulaşabilirsiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
 * Azure Active Directory kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](./how-to-create-immersive-reader.md) izleyin. Örnek proje özellikleri yapılandırılırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.

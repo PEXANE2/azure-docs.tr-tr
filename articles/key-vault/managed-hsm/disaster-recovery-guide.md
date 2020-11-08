@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 7dbb7b3fdc15c0a9d502fbe9a0d12d084f9ddf29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08c1b415ac075429a9bc89098233fffb8c25b710
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760402"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369265"
 ---
 # <a name="managed-hsm-disaster-recovery"></a>Yönetilen HSM olağanüstü durum kurtarma
 
@@ -48,7 +48,7 @@ Yönetilen bir HSM kaynağı oluşturmak için aşağıdaki girişleri sağlaman
 - Azure konumu.
 - İlk yöneticilerin listesi.
 
-Aşağıdaki örnekte, **geçerli oturum açmış kullanıcıyla** tek yönetici olarak **Doğu ABD 2** konumunda bulunan **Contosoresourcegroup**kaynak grubunda **contosomhsm**adlı bir HSM oluşturulur.
+Aşağıdaki örnekte, **geçerli oturum açmış kullanıcıyla** tek yönetici olarak **Doğu ABD 2** konumunda bulunan **Contosoresourcegroup** kaynak grubunda **contosomhsm** adlı bir HSM oluşturulur.
 
 ```azurecli-interactive
 oid=$(az ad signed-in-user show --query objectId -o tsv)
@@ -60,8 +60,8 @@ az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGro
 
 Bu komutun çıktısı, oluşturduğunuz yönetilen HSM 'nin özelliklerini gösterir. En önemli iki özellik şunlardır:
 
-* **ad**: örnekte, ad ContosoMHSM ' dir. Bu adı diğer Key Vault komutları için kullanacaksınız.
-* **Hsmuri**: örnekte, URI ' https://contosohsm.managedhsm.azure.net . ' HSM 'nizi REST API aracılığıyla kullanan uygulamalar bu URI 'yi kullanmalıdır.
+* **ad** : örnekte, ad ContosoMHSM ' dir. Bu adı diğer Key Vault komutları için kullanacaksınız.
+* **Hsmuri** : örnekte, URI ' https://contosohsm.managedhsm.azure.net . ' HSM 'nizi REST API aracılığıyla kullanan uygulamalar bu URI 'yi kullanmalıdır.
 
 Azure hesabınız artık bu yönetilen HSM üzerinde herhangi bir işlem gerçekleştirmeye yetkilendirildi. Henüz hiç olmadığı için, başka hiç kimse yetkili değil.
 
@@ -86,7 +86,7 @@ Bu adım için şunlar gerekir:
 - Önceki adımda indirdiğimiz güvenlik etki alanı değişim anahtarıyla şifrelenmiş bir güvenlik etki alanı karşıya yükleme blobu oluşturun ve ardından
 - Güvenlik etki alanı kurtarmayı gerçekleştirmek için güvenlik etki alanı yükleme blobunu HSM 'ye yükleyin
 
-Aşağıdaki örnekte, **Contosomhsm**'Deki güvenlik etki alanını, karşılık gelen özel anahtarların 2 ' yi kullanıyoruz ve bir güvenlik etki alanı almayı bekleyen **ContosoMHSM2**'e yüklersiniz. 
+Aşağıdaki örnekte, **Contosomhsm** 'Deki güvenlik etki alanını, karşılık gelen özel anahtarların 2 ' yi kullanıyoruz ve bir güvenlik etki alanı almayı bekleyen **ContosoMHSM2** 'e yüklersiniz. 
 
 ```azurecli-interactive
 az keyvault security-domain upload --hsm-name ContosoMHSM2 --sd-exchange-key ContosoMHSM-SDE.cer --sd-file ContosoMHSM-SD.json --sd-wrapping-keys cert_0.key cert_1.key
@@ -102,11 +102,12 @@ Bir HSM yedeklemesi oluşturmak için aşağıdakilere ihtiyacınız olacaktır
 - Yedeklemenin depolanacağı depolama hesabı
 - Bu depolama hesabındaki, yedekleme işleminin şifrelenmiş yedeklemeyi depolamak için yeni bir klasör oluşturacağınız bir BLOB depolama kapsayıcısı
 
-`az keyvault backup`Aşağıdaki örnekte yer alan **contosobackup** depolama alanındaki **MHSMBACKUPCONTAINER**depolama kapsayıcısında HSM yedeklemesi için komut kullanıyoruz. 30 dakika içinde süresi dolan bir SAS belirteci oluşturuyoruz ve yedeklemeyi yazmak için bu yönetilen HSM 'ye izin verir.
+`az keyvault backup`Aşağıdaki örnekte yer alan **contosobackup** depolama alanındaki **MHSMBACKUPCONTAINER** depolama kapsayıcısında HSM yedeklemesi için komut kullanıyoruz. 30 dakika içinde süresi dolan bir SAS belirteci oluşturuyoruz ve yedeklemeyi yazmak için bu yönetilen HSM 'ye izin verir.
 
 ```azurecli-interactive
 end=$(date -u -d "30 minutes" '+%Y-%m-%dT%H:%MZ')
 skey=$(az storage account keys list --query '[0].value' -o tsv --account-name ContosoBackup)
+az storage container create --account-name  mhsmdemobackup --name mhsmbackupcontainer  --account-key $skey
 sas=$(az storage container generate-sas -n mhsmbackupcontainer --account-name ContosoBackup --permissions crdw --expiry $end --account-key $skey -o tsv)
 az keyvault backup start --hsm-name ContosoMHSM2 --storage-account-name ContosoBackup --blob-container-name mhsmdemobackupcontainer --storage-container-SAS-token $sas
 

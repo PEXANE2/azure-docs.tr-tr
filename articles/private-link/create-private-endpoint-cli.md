@@ -1,198 +1,283 @@
 ---
 title: Hızlı başlangıç-Azure CLı kullanarak Azure özel uç noktası oluşturma
-description: Bu hızlı başlangıçta Azure özel uç noktası hakkında bilgi edinin
+description: Azure CLı kullanarak özel uç nokta oluşturmayı öğrenmek için bu hızlı başlangıcı kullanın.
 services: private-link
-author: malopMSFT
+author: asudbring
 ms.service: private-link
 ms.topic: quickstart
-ms.date: 09/16/2019
+ms.date: 11/07/2020
 ms.author: allensu
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: e7c098ba06086781306960f76978aac9e4fa06bc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bba912930a9dff0a79e0b0d81025b7524c238db0
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87502673"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368687"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak özel uç nokta oluşturma
 
-Özel uç nokta, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar. Bu hızlı başlangıçta, Azure CLı kullanarak özel bir uç nokta ile SQL veritabanı 'nda bir sanal ağ üzerinde bir VM oluşturmayı öğreneceksiniz. Daha sonra, özel bağlantı kaynağına (Bu örnekteki SQL veritabanı 'nda özel bir sunucu) yönelik olarak sanal makineye erişebilir ve güvenli bir şekilde erişebilirsiniz.
+Azure Web uygulamasına güvenli bir şekilde bağlanmak için özel bir uç nokta kullanarak Azure özel bağlantısı ile çalışmaya başlayın.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Bu hızlı başlangıçta, bir Azure Web uygulaması için özel bir uç nokta oluşturacak ve özel bağlantıyı test etmek için bir sanal makine dağıtacaksınız.  
 
-Bunun yerine Azure CLı 'yı yüklemek ve kullanmak isterseniz, bu hızlı başlangıç, Azure CLı sürüm 2.0.28 veya sonraki bir sürümünü kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için öğesini çalıştırın `az --version` . Bkz. Install veya Upgrade Info for [Azure CLI](/cli/azure/install-azure-cli) .
+Özel uç noktalar Azure SQL ve Azure depolama gibi farklı türlerde Azure hizmetleri için oluşturulabilir.
+
+## <a name="prerequisites"></a>Önkoşullar
+
+* Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Azure aboneliğinizde dağıtılan **PremiumV2 katmanı** veya daha yüksek bir App Service planına sahip bir Azure Web uygulaması.  
+    * Daha fazla bilgi ve bir örnek için bkz. [hızlı başlangıç: Azure 'da ASP.NET Core Web uygulaması oluşturma](../app-service/quickstart-dotnetcore.md). 
+    * Web uygulaması ve uç nokta oluşturma hakkında ayrıntılı bir öğretici için bkz. [öğretici: Azure özel uç nokta kullanarak bir Web uygulamasına bağlanma](tutorial-private-endpoint-webapp-portal.md).
+* Azure portal oturum açın ve ' i çalıştırarak aboneliğinizin etkin olduğunu denetleyin `az login` .
+* Çalıştıran bir Terminal veya komut penceresinde Azure CLı sürümünüzü denetleyin `az --version` . En son sürüm için bkz. [en son sürüm notları](/cli/azure/release-notes-azure-cli?tabs=azure-cli).
+  * En son sürüme sahip değilseniz, [işletim sisteminiz veya platformunuzun yükleme kılavuzunu](/cli/azure/install-azure-cli)izleyerek yüklemenizi güncelleştirin.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Herhangi bir kaynak oluşturabilmeniz için önce sanal ağı barındırmak üzere bir kaynak grubu oluşturmanız gerekir. [az group create](/cli/azure/group) ile bir kaynak grubu oluşturun. Bu örnek *westcentralus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
+Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+
+[Az Group Create](/cli/azure/group#az_group_create)ile bir kaynak grubu oluşturun:
+
+* Adlandırılmış **Createprivateendpointqs-RG**. 
+* **Eastus** konumunda.
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location westcentralus
+az group create \
+    --name CreatePrivateEndpointQS-rg \
+    --location eastus
 ```
 
-## <a name="create-a-virtual-network"></a>Sanal Ağ Oluşturma
+## <a name="create-a-virtual-network-and-bastion-host"></a>Sanal ağ ve savunma Konağı oluşturma
 
-[Az Network VNET Create](/cli/azure/network/vnet)komutuyla bir sanal ağ oluşturun. Bu örnek, *Mysubnet*adlı bir alt ağ ile *myVirtualNetwork* adlı varsayılan bir sanal ağ oluşturur:
+Bu bölümde, bir sanal ağ, alt ağ ve savunma ana bilgisayarı oluşturacaksınız. 
+
+Savunma Konağı, Özel uç noktasını test etmek üzere sanal makineye güvenli bir şekilde bağlanmak için kullanılacaktır.
+
+[Az Network VNET Create](/cli/azure/network/vnet#az_network_vnet_create) ile bir sanal ağ oluşturun
+
+* **Myvnet** adında.
+* **10.0.0.0/16** adres ön eki.
+* **Mybackendsubnet** adlı alt ağ.
+* **10.0.0.0/24** alt ağ öneki.
+* **Createprivateendpointqs-RG** kaynak grubunda.
+* **Eastus** konumu.
 
 ```azurecli-interactive
 az network vnet create \
- --name myVirtualNetwork \
- --resource-group myResourceGroup \
- --subnet-name mySubnet
+    --resource-group CreatePrivateEndpointQS-rg\
+    --location eastus \
+    --name myVNet \
+    --address-prefixes 10.0.0.0/16 \
+    --subnet-name myBackendSubnet \
+    --subnet-prefixes 10.0.0.0/24
 ```
 
-## <a name="disable-subnet-private-endpoint-policies"></a>Alt ağ özel uç nokta ilkelerini devre dışı bırak
-
-Azure, bir sanal ağ içindeki bir alt ağa kaynak dağıtır, bu nedenle özel uç nokta ağ ilkelerini devre dışı bırakmak için alt ağ oluşturmanız veya güncelleştirmeniz gerekir. [Az Network VNET subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update)Ile *mysubnet* adlı bir alt ağ yapılandırmasını güncelleştirin:
+[Az Network VNET subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update)ile özel uç nokta için özel uç nokta ağ ilkelerini devre dışı bırakacak şekilde alt ağı güncelleştirin:
 
 ```azurecli-interactive
 az network vnet subnet update \
- --name mySubnet \
- --resource-group myResourceGroup \
- --vnet-name myVirtualNetwork \
- --disable-private-endpoint-network-policies true
+    --name myBackendSubnet \
+    --resource-group CreatePrivateEndpointQS-rg \
+    --vnet-name myVNet \
+    --disable-private-endpoint-network-policies true
 ```
 
-## <a name="create-the-vm"></a>Sanal makineyi oluşturma
+Savunma konağı için genel bir IP adresi oluşturmak için [az Network public-ip Create](/cli/azure/network/public-ip#az-network-public-ip-create) kullanın:
 
-Az VM Create ile bir VM oluşturun. İstendiğinde, sanal makine için oturum açma kimlik bilgileri olarak kullanılacak bir parola girin. Bu örnek, *myvm*ADLı bir VM oluşturur:
+* **Mybastionıp** adlı standart bölge YEDEKLI genel IP adresi oluşturun.
+* **Createprivateendpointqs-RG** içinde.
+
+```azurecli-interactive
+az network public-ip create \
+    --resource-group CreatePrivateEndpointQS-rg \
+    --name myBastionIP \
+    --sku Standard
+```
+
+Bir savunma alt ağı oluşturmak için [az Network VNET subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) kullanın:
+
+* **AzureBastionSubnet** adlı.
+* **10.0.1.0/24** adres ön eki.
+* Sanal ağ **\** sanal ağı 'nda.
+* **Createprivateendpointqs-RG** kaynak grubunda.
+
+```azurecli-interactive
+az network vnet subnet create \
+    --resource-group CreatePrivateEndpointQS-rg \
+    --name AzureBastionSubnet \
+    --vnet-name myVNet \
+    --address-prefixes 10.0.1.0/24
+```
+
+Bir savunma konağı oluşturmak için [az Network savunma Create](/cli/azure/network/bastion#az-network-bastion-create) kullanın:
+
+* Adlandırılmış **Mybastionhost**.
+* **Createprivateendpointqs-RG** içinde.
+* Genel IP **Mybastionıp** ile ilişkilendirildi.
+* Sanal ağ **Myvnet** ile ilişkilendirildi.
+* **Eastus** konumunda.
+
+```azurecli-interactive
+az network bastion create \
+    --resource-group CreatePrivateEndpointQS-rg \
+    --name myBastionHost \
+    --public-ip-address myBastionIP \
+    --vnet-name myVNet \
+    --location eastus
+```
+
+Azure savunma konağının dağıtılması birkaç dakika sürebilir.
+
+## <a name="create-test-virtual-machine"></a>Test sanal makinesi oluştur
+
+Bu bölümde, Özel uç noktayı test etmek için kullanılacak bir sanal makine oluşturacaksınız.
+
+ [Az VM Create](/cli/azure/vm#az_vm_create)Ile bir VM oluşturun. İstendiğinde, VM için kimlik bilgileri olarak kullanılacak bir parola girin:
+
+* **Myvm** adı.
+* **Createprivateendpointqs-RG** içinde.
+* Ağ **Myvnet** içinde.
+* Alt ağda **Mybackendsubnet**.
+* Sunucu görüntüsü **Win2019Datacenter**.
 
 ```azurecli-interactive
 az vm create \
-  --resource-group myResourceGroup \
-  --name myVm \
-  --image Win2019Datacenter
+    --resource-group CreatePrivateEndpointQS-rg \
+    --name myVM \
+    --image Win2019Datacenter \
+    --public-ip-address "" \
+    --vnet-name myVNet \
+    --subnet myBackendSubnet \
+    --admin-username azureuser
 ```
 
-VM 'nin genel IP adresini bir yere getirin. Sonraki adımda İnternet 'ten VM 'ye bağlanmak için bu adresi kullanacaksınız.
+## <a name="create-private-endpoint"></a>Özel uç nokta oluştur
 
-## <a name="create-a-server-in-sql-database"></a>SQL veritabanında sunucu oluşturma
+Bu bölümde, Özel uç nokta oluşturacaksınız.
 
-Az SQL Server Create komutuyla SQL veritabanı 'nda bir sunucu oluşturun. Sunucunuzun adının Azure genelinde benzersiz olması gerektiğini unutmayın, bu nedenle yer tutucu değerini köşeli ayraç içinde kendi benzersiz değer ile değiştirin:
+Daha önce oluşturduğunuz Web uygulamasının kaynak KIMLIĞINI bir Shell değişkenine yerleştirmek için [az WebApp List](/cli/azure/webapp#az_webapp_list) kullanın.
 
-```azurecli-interactive
-# Create a server in the resource group
-az sql server create \
-    --name "myserver"\
-    --resource-group myResourceGroup \
-    --location WestUS \
-    --admin-user "sqladmin" \
-    --admin-password "CHANGE_PASSWORD_1"
+Uç nokta ve bağlantı oluşturmak için [az Network Private-Endpoint Create](/cli/azure/network/private-endpoint#az_network_private_endpoint_create) kullanın:
 
-# Create a database in the server with zone redundancy as false
-az sql db create \
-    --resource-group myResourceGroup  \
-    --server myserver \
-    --name mySampleDatabase \
-    --sample-name AdventureWorksLT \
-    --edition GeneralPurpose \
-    --family Gen4 \
-    --capacity 1
-```
-
-Sunucu KIMLIĞI, bir  ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/myserver.``` sonraki adımda sunucu kimliğini kullanmanıza benzer.
-
-## <a name="create-the-private-endpoint"></a>Özel uç nokta oluşturma
-
-Sanal ağınızdaki mantıksal SQL Server için özel bir uç nokta oluşturun:
+* Adlandırılmış **Myprivateendpoint**.
+* **Createprivateendpointqs-RG** kaynak grubunda.
+* Sanal ağ **\** sanal ağı 'nda.
+* Alt ağda **Mybackendsubnet**.
+* **MyConnection** adlı bağlantı.
+* WEBAPP **\<webapp-resource-group-name>** .
 
 ```azurecli-interactive
-az network private-endpoint create \  
-    --name myPrivateEndpoint \  
-    --resource-group myResourceGroup \  
-    --vnet-name myVirtualNetwork  \  
-    --subnet mySubnet \  
-    --private-connection-resource-id "<server ID>" \  
-    --group-ids sqlServer \  
+id=$(az webapp list \
+    --resource-group <webapp-resource-group-name> \
+    --query '[].[id]' \
+    --output tsv)
+
+az network private-endpoint create \
+    --name myPrivateEndpoint \
+    --resource-group CreatePrivateEndpointQS-rg \
+    --vnet-name myVNet --subnet myBackendSubnet \
+    --private-connection-resource-id $id \
+    --group-id sites \
     --connection-name myConnection  
- ```
+```
 
 ## <a name="configure-the-private-dns-zone"></a>Özel DNS bölgesini yapılandırma
 
-SQL veritabanı etki alanı için bir Özel DNS bölgesi oluşturun, sanal ağla bir ilişki bağlantısı oluşturun ve özel uç noktasını Özel DNS bölgesi ile ilişkilendirmek için bir DNS bölge grubu oluşturun. 
+Bu bölümde, [az Network Private-DNS Zone Create](/cli/azure/ext/privatedns/network/private-dns/zone#ext_privatedns_az_network_private_dns_zone_create)kullanarak özel DNS bölgesi oluşturacak ve yapılandıracaksınız.  
+
+DNS bölgesine sanal ağ bağlantısı oluşturmak için [az Network Private-DNS link VNET oluştur](/cli/azure/ext/privatedns/network/private-dns/link/vnet#ext_privatedns_az_network_private_dns_link_vnet_create) öğesini kullanacaksınız.
+
+[Az Network Private-Endpoint DNS-Zone-Group Create](/cli/azure/network/private-endpoint/dns-zone-group#az_network_private_endpoint_dns_zone_group_create)komutuyla bir DNS bölgesi grubu oluşturacaksınız.
+
+* **Privatelink.azurewebsites.net** adlı bölge
+* Sanal ağ **\** sanal ağı 'nda.
+* **Createprivateendpointqs-RG** kaynak grubunda.
+* **Mydnslink** adlı DNS bağlantısı.
+* **Myprivateendpoint** ile ilişkili.
+* **Myzonegroup** adlı bölge grubu.
 
 ```azurecli-interactive
-az network private-dns zone create --resource-group myResourceGroup \
-   --name  "privatelink.database.windows.net"
-az network private-dns link vnet create --resource-group myResourceGroup \
-   --zone-name  "privatelink.database.windows.net"\
-   --name MyDNSLink \
-   --virtual-network myVirtualNetwork \
-   --registration-enabled false
+az network private-dns zone create \
+    --resource-group CreatePrivateEndpointQS-rg \
+    --name "privatelink.azurewebsites.net"
+
+az network private-dns link vnet create \
+    --resource-group CreatePrivateEndpointQS-rg \
+    --zone-name "privatelink.azurewebsites.net" \
+    --name MyDNSLink \
+    --virtual-network myVNet \
+    --registration-enabled false
+
 az network private-endpoint dns-zone-group create \
-   --resource-group myResourceGroup \
+   --resource-group CreatePrivateEndpointQS-rg \
    --endpoint-name myPrivateEndpoint \
    --name MyZoneGroup \
-   --private-dns-zone "privatelink.database.windows.net" \
-   --zone-name sql
+   --private-dns-zone "privatelink.azurewebsites.net" \
+   --zone-name webapp
 ```
 
-## <a name="connect-to-a-vm-from-the-internet"></a>İnternet'ten bir sanal makineye bağlanma
+## <a name="test-connectivity-to-private-endpoint"></a>Özel uç nokta ile bağlantıyı sına
 
-Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
+Bu bölümde, önceki adımda oluşturduğunuz sanal makineyi kullanarak özel uç nokta genelinde SQL Server 'a bağlanırsınız.
 
-1. Portalın arama çubuğuna *myVm* değerini girin.
+1. [Azure portalda](https://portal.azure.com) oturum açma 
+ 
+2. Sol taraftaki Gezinti bölmesinde **kaynak grupları** ' nı seçin.
 
-1. **Bağlan** düğmesini seçin. **Bağlan** düğmesini seçtikten sonra **sanal makineye bağlan** açılır.
+3. **Createprivateendpointqs-RG** öğesini seçin.
 
-1. **RDP Dosyasını İndir**’i seçin. Azure bir Uzak Masaüstü Protokolü (*. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
+4. **Myvm** ' yi seçin.
 
-1. İndirilen. rdp * dosyasını açın.
+5. **Myvm** için genel bakış sayfasında **Bağlan** ' ı **seçin.**
 
-    1. İstendiğinde **Bağlan**’ı seçin.
+6. Mavi **kullanımı** savunma düğmesini seçin.
 
-    1. VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
+7. Sanal makine oluşturma sırasında girdiğiniz kullanıcı adını ve parolayı girin.
 
-        > [!NOTE]
-        > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için**farklı bir hesap kullan**' ı seçmeniz gerekebilir.
+8. Bağlandıktan sonra sunucuda Windows PowerShell 'i açın.
 
-1. **Tamam**’ı seçin.
+9. `nslookup <your-webapp-name>.azurewebsites.net` yazın. **\<your-webapp-name>** Önceki adımlarda oluşturduğunuz Web uygulamasının adıyla değiştirin.  Aşağıda görüntülene benzer bir ileti alacaksınız:
 
-1. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bir sertifika uyarısı alırsanız **Evet**’i veya **Devam**’ı seçin.
-
-1. VM masaüstü seçildikten sonra, bunu yerel masaüstünüze geri dönmek için simge durumuna küçültün.  
-
-## <a name="access-sql-database-privately-from-the-vm"></a>SQL veritabanına özel olarak VM 'den erişin
-
-Bu bölümde, Özel uç nokta kullanarak VM 'den SQL veritabanı 'na bağlanırsınız.
-
-1. *Myvm*uzak masaüstünde PowerShell ' i açın.
-2. Nslookup myserver.database.windows.net girin
-
-   Şuna benzer bir ileti alırsınız:
-
-    ```
+    ```powershell
     Server:  UnKnown
     Address:  168.63.129.16
+
     Non-authoritative answer:
-    Name:    myserver.privatelink.database.windows.net
+    Name:    mywebapp8675.privatelink.azurewebsites.net
     Address:  10.0.0.5
-    Aliases:  myserver.database.windows.net
+    Aliases:  mywebapp8675.azurewebsites.net
     ```
 
-3. SQL Server Management Studio yüklensin
-4. Sunucuya Bağlan ' da bu bilgileri girin veya seçin:
+    Web uygulaması adı için **10.0.0.5** özel IP adresi döndürülür.  Bu adres, daha önce oluşturduğunuz sanal ağın alt ağıdır.
 
-   - Sunucu türü: veritabanı altyapısını seçin.
-   - Sunucu adı: myserver.database.windows.net seçin
-   - Kullanıcı adı: oluşturma sırasında sağlanmış bir Kullanıcı adı girin.
-   - Parola: oluşturma sırasında bir parola girin.
-   - Parolayı anımsa: Evet ' i seçin.
+10. **Myvm** 'e yönelik savunma bağlantısı ' nda Internet Explorer 'ı açın.
 
-5. **Bağlan**'ı seçin.
-6. Sol menüden **veritabanlarına** gözatamazsınız.
-7. I *MyDatabase* 'teki bilgileri oluşturma veya sorgulama
-8. *Myvm*ile uzak masaüstü bağlantısını kapatın.
+11. Web uygulamanızın URL 'sini girin, **https:// \<your-webapp-name> . azurewebsites.net**.
 
-## <a name="clean-up-resources"></a>Kaynakları temizleme
+12. Uygulamanız dağıtılmamışsa varsayılan Web uygulaması sayfasını alacaksınız:
 
-Artık gerekli değilse, az Group DELETE ' i kullanarak kaynak grubunu ve içerdiği tüm kaynakları kaldırabilirsiniz:
+    :::image type="content" source="./media/create-private-endpoint-portal/web-app-default-page.png" alt-text="Varsayılan Web uygulaması sayfası." border="true":::
+
+13. **Myvm** bağlantısını kapatın.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme 
+Özel uç nokta ve VM 'yi kullanarak işiniz bittiğinde, kaynak grubunu ve içerdiği tüm kaynakları kaldırmak için [az Group Delete](/cli/azure/group#az_group_delete) kullanın:
 
 ```azurecli-interactive
-az group delete --name myResourceGroup --yes
+az group delete \
+    --name CreatePrivateEndpointQS-rg
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure özel bağlantısı](private-link-overview.md) hakkında daha fazla bilgi edinin
+Bu hızlı başlangıçta şunu oluşturdunuz:
+
+* Sanal ağ ve savunma Konağı.
+* Sanal makine.
+* Bir Azure Web uygulaması için özel uç nokta.
+
+Özel uç nokta genelinde Web uygulamasıyla güvenli bir şekilde bağlantıyı test etmek için sanal makineyi kullandınız.
+
+Özel bir uç noktayı destekleyen hizmetler hakkında daha fazla bilgi için bkz.:
+> [!div class="nextstepaction"]
+> [Özel bağlantı kullanılabilirliği](private-link-overview.md#availability)

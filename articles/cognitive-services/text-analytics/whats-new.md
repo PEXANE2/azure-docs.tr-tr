@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: a85c129dd11e587a0714e92c850315101df103f0
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: f0204f5b923cf3363d85be9642d2866436df155a
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166191"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369469"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Metin Analizi API’sindeki yenilikler
 
@@ -157,13 +157,13 @@ JSON yanıtında aşağıdaki özelliklerin adları, uygun yerlerde değiştiril
 ### <a name="sdk-support-for-text-analytics-api-v3-public-preview"></a>Metin Analizi API'si v3 genel önizleme için SDK desteği
 
 [Birleşik Azure SDK sürümünün](https://techcommunity.microsoft.com/t5/azure-sdk/january-2020-unified-azure-sdk-release/ba-p/1097290)bir parçası olarak, metın ANALIZI API'SI v3 SDK artık aşağıdaki programlama dilleri için genel önizleme olarak sunulmaktadır:
-   * [C#](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-csharp)
-   * [Python](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-python)
-   * [JavaScript (Node.js)](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-javascript)
-   * [Java](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-java)
+   * [C#](./quickstarts/text-analytics-sdk.md?pivots=programming-language-csharp&tabs=version-3)
+   * [Python](./quickstarts/text-analytics-sdk.md?pivots=programming-language-python&tabs=version-3)
+   * [JavaScript (Node.js)](./quickstarts/text-analytics-sdk.md?pivots=programming-language-javascript&tabs=version-3)
+   * [Java](./quickstarts/text-analytics-sdk.md?pivots=programming-language-java&tabs=version-3)
    
    > [!div class="nextstepaction"]
-> [Metin Analizi API'si v3 SDK hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3)
+> [Metin Analizi API'si v3 SDK hakkında daha fazla bilgi edinin](./quickstarts/text-analytics-sdk.md?tabs=version-3)
 
 ### <a name="named-entity-recognition-v3-public-preview"></a>Adlandırılmış varlık tanıma v3 genel önizlemesi
 
@@ -201,7 +201,7 @@ Ek varlık türleri artık, metinde bulunan genel ve kişisel bilgi varlıkları
     * Metinde bulunan varlıkların genişletilmiş algılanması ve kategorilere ayrılması. 
     * Aşağıdaki yeni varlık türlerinin tanınması:
         * Telefon numarası
-        * IP adresi
+        * IP Adresi
 
 Varlık bağlama, Ingilizce ve Ispanyolca 'yi destekler. NER dil desteği varlık türüne göre farklılık gösterir.
 
@@ -226,4 +226,4 @@ Varlık bağlama, Ingilizce ve Ispanyolca 'yi destekler. NER dil desteği varlı
 * [Yaklaşım analizi](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Dil algılama](how-tos/text-analytics-how-to-language-detection.md)
 * [Varlık tanıma](how-tos/text-analytics-how-to-entity-linking.md)
-* [Anahtar tümceciği ayıklama](how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Anahtar ifade ayıklama](how-tos/text-analytics-how-to-keyword-extraction.md)

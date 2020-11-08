@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 449d57579b802191434cda3e63e103e5f3ef4bc5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 64c449bdefe6fb067a7c0e26b155b58b6f00c399
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220882"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368296"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Hub çalışma alanını ve projelerini özel çevirmene geçirme
 
@@ -27,7 +27,7 @@ Bu eylemler geçiş sırasında gerçekleştirilir:
 * Herhangi bir noktada, hub eğitiminden geçirilen BLEU puanı, "MT hub 'ında Bleu puanı" başlığında bulunan modelin Traıningdetails sayfasında bulunabilir.
 
 > [!Note] 
-> Bir eğitimin başarılı olması için, özel çevirmen en az 10.000 benzersiz ayıklanan tümce gerektirir. Özel çevirmen [Önerilen en düşük](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences)boyuttan daha az bir eğitim yapamıyor.
+> Bir eğitimin başarılı olması için, özel çevirmen en az 10.000 benzersiz ayıklanan tümce gerektirir. Özel çevirmen [Önerilen en düşük](./sentence-alignment.md#suggested-minimum-number-of-sentences)boyuttan daha az bir eğitim yapamıyor.
 
 ## <a name="find-custom-translator-workspace-id"></a>Özel çevirmen çalışma alanı KIMLIĞI bul
 
@@ -122,7 +122,7 @@ Projeleriniz, seyahat ve belgeler hakkında daha ayrıntılı geçiş raporu ist
 * Yalnızca özel çevirmende bulunmayan dil çiftlerine sahip sistemler, verilere erişmek veya özel çevirici aracılığıyla dağıtımı geri almak için kullanılabilir. Bu projeler, Projeler sayfasında "kullanılamaz" olarak işaretlenir. Özel çevirmenle yeni dil çiftlerini etkinleştirdiğimiz için, projeler eğecek ve dağıtılacak şekilde etkin hale gelir. 
 * Projeyi hub 'dan özel çevirmene geçirmek, hub 'ınız veya projeleriniz üzerinde herhangi bir etkiye sahip olmayacaktır. Geçiş sırasında proje veya belge hub 'ından silinmez ve modellerin dağıtımı geri alınamadı.
 * Her proje için yalnızca bir kez geçiş yapabilirsiniz. Bir projede geçiş tekrarlamanız gerekiyorsa lütfen bizimle iletişime geçin.
-* Özel çevirici, Ingilizce veya Ingilizce için NMT dil çiftlerini destekler. [Desteklenen dillerin tüm listesini görüntüleyin](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization). Hub temel modeller gerektirmez ve bu nedenle birkaç bin dili destekler. Desteklenmeyen bir dil çiftini geçirebilirsiniz, ancak yalnızca belge ve proje tanımlarının geçişini gerçekleştiririz. Yeni modeli eğitmeyeceksiniz. Ayrıca, bu belgeler ve projeler Şu anda kullanılamayacağını göstermek için etkin değil olarak görüntülenecektir. Bu projeler ve/veya belgeler için destek eklenirse, etkin ve sürdürülebilir hale gelir.
+* Özel çevirici, Ingilizce veya Ingilizce için NMT dil çiftlerini destekler. [Desteklenen dillerin tüm listesini görüntüleyin](../language-support.md#customization). Hub temel modeller gerektirmez ve bu nedenle birkaç bin dili destekler. Desteklenmeyen bir dil çiftini geçirebilirsiniz, ancak yalnızca belge ve proje tanımlarının geçişini gerçekleştiririz. Yeni modeli eğitmeyeceksiniz. Ayrıca, bu belgeler ve projeler Şu anda kullanılamayacağını göstermek için etkin değil olarak görüntülenecektir. Bu projeler ve/veya belgeler için destek eklenirse, etkin ve sürdürülebilir hale gelir.
 * Özel çevirici Şu anda monolingual eğitim verilerini desteklememektedir. Desteklenmeyen dil çiftleri gibi, monolingual belgelerini geçirebilirsiniz, ancak monolingual verileri desteklenene kadar etkin değil olarak gösterilir.
 * Özel çevirmen, eğitebilmek için 10.000 paralel cümleler gerektirir. Microsoft hub, daha küçük bir veri kümesi üzerinde eğitim verebilir. Bu gereksinimi karşılamayan bir eğitim geçirilirse, bu işlem eğitilemez.
 
@@ -134,10 +134,10 @@ Bu tablo, Microsoft Translator hub ve özel çevirmen arasındaki özellikleri k
 | ------- | :-: | :---------------: |
 | Özelleştirme özelliği durumu    | Genel kullanılabilirlik    | Genel kullanılabilirlik |
 | Metin API 'SI sürümü    | V2     | Yüklemesinde  |
-| SMT özelleştirmesi    | Evet    | Hayır |
-| NMT özelleştirmesi    | Hayır    | Evet |
-| Yeni Birleşik konuşma Hizmetleri özelleştirmesi    | Hayır    | Evet |
-| Izleme yok | Evet | Evet |
+| SMT özelleştirmesi    | Yes    | Hayır |
+| NMT özelleştirmesi    | Hayır    | Yes |
+| Yeni Birleşik konuşma Hizmetleri özelleştirmesi    | Hayır    | Yes |
+| Izleme yok | Yes | Yes |
 
 ## <a name="new-languages"></a>Yeni diller
 
@@ -146,4 +146,4 @@ Bu tablo, Microsoft Translator hub ve özel çevirmen arasındaki özellikleri k
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Bir modeli eğitme](how-to-train-model.md).
-- [Translator v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)aracılığıyla dağıtılan özel çeviri modelinizi kullanmaya başlayın.
+- [Translator v3](../reference/v3-0-translate.md?tabs=curl)aracılığıyla dağıtılan özel çeviri modelinizi kullanmaya başlayın.

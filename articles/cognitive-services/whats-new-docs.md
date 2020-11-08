@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 11/03/2020
-ms.openlocfilehash: 715b02eec7b499afdcffa5e1f31d388e8bc930e7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 239a93c58edd1f02e5e34d974fdc864f3e1cf90f
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305239"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369435"
 ---
 # <a name="cognitive-services-whats-new-in-docs-for-october-1-2020---october-31-2020"></a>Bilişsel hizmetler: 1 Ekim 2020-31 Ekim 2020 için docs 'taki yenilikler
 
@@ -34,39 +34,39 @@ ms.locfileid: "93305239"
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Docker Compose kullanarak birden çok kapsayıcı dağıtma](/azure/cognitive-services/containers/docker-compose-recipe.md)
+- [Docker Compose kullanarak birden çok kapsayıcı dağıtma](./containers/docker-compose-recipe.md)
 
 ## <a name="form-recognizer"></a>Form Tanıma
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Form Tanıma'daki yenilikler](/azure/cognitive-services/form-recognizer/whats-new.md)
+- [Form Tanıma'daki yenilikler](./form-recognizer/whats-new.md)
 
 ## <a name="immersive-reader"></a>Tam Ekran Okuyucu
 
 ### <a name="new-articles"></a>Yeni makaleler
 
-- [Modern okuyucu JavaScript SDK sürüm notları](/azure/cognitive-services/immersive-reader/release-notes.md)
+- [Modern okuyucu JavaScript SDK sürüm notları](./immersive-reader/release-notes.md)
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Kullanıcı tercihlerini depolama](/azure/cognitive-services/immersive-reader/how-to-store-user-preferences.md)
-- [Modern okuyucu JavaScript SDK başvurusu (v 1.1)](/azure/cognitive-services/immersive-reader/reference.md)
+- [Kullanıcı tercihlerini depolama](./immersive-reader/how-to-store-user-preferences.md)
+- [Modern okuyucu JavaScript SDK başvurusu (v 1.1)](./immersive-reader/reference.md)
 
 ## <a name="metrics-advisor"></a>Ölçüm Danışmanı
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Farklı veri kaynaklarından ölçüm Danışmanı 'na veri akışları ekleme](/azure/cognitive-services/metrics-advisor/data-feeds-from-different-sources.md)
-- [Ölçüm Danışmanı sık sorulan sorular](/azure/cognitive-services/metrics-advisor/faq.md)
+- [Farklı veri kaynaklarından ölçüm Danışmanı 'na veri akışları ekleme](./metrics-advisor/data-feeds-from-different-sources.md)
+- [Ölçüm Danışmanı sık sorulan sorular](./metrics-advisor/faq.md)
 
 ## <a name="text-analytics"></a>Metin Analizi
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Metin Analizi API'si sürüm 3. x ' e geçirin](/azure/cognitive-services/text-analytics/migration-guide.md)
-- [Metin Analizi içinde adlandırılmış varlık tanımayı kullanma](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
-- [Nasıl yapılır: Metin Analizi API'si kullanarak yaklaşımı algılama](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md)
+- [Metin Analizi API'si sürüm 3. x ' e geçirin](./text-analytics/migration-guide.md)
+- [Metin Analizi içinde adlandırılmış varlık tanımayı kullanma](./text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
+- [Nasıl yapılır: Metin Analizi API'si kullanarak yaklaşımı algılama](./text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md)
 
 ## <a name="community-contributors"></a>Topluluk katkı sağlayanlar
 

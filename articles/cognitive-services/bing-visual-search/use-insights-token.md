@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 6f4068ece2b08937188397317844a126a9699aee
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ed2c8b4b6dae8713d3ce1c6755c559cda9a9dfb8
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102114"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368891"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>Bir görüntü için Öngörüler elde etmek için bir Öngörüler belirteci kullanma
 
@@ -262,7 +262,7 @@ namespace VisualSearchInsightsToken
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir Bing arama kaynağı oluşturun Bing arama bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
-* Bu kodu derlemek ve çalıştırmak için [JDK 7 veya 8](https://aka.ms/azure-jdks) . Sık kullanılana sahipseniz bir Java IDE kullanabilirsiniz, ancak bir metin Düzenleyicisi yeterli olur.
+* Bu kodu derlemek ve çalıştırmak için [JDK 7 veya 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) . Sık kullanılana sahipseniz bir Java IDE kullanabilirsiniz, ancak bir metin Düzenleyicisi yeterli olur.
 
 
 ## <a name="run-the-java-application"></a>Java uygulamasını çalıştırma
@@ -536,4 +536,4 @@ if __name__ == '__main__':
 [Görsel Arama tek sayfalı Web uygulaması oluşturma](tutorial-bing-visual-search-single-page-app.md)  
 [Bing Görsel Arama API’si nedir?](overview.md)  
 [Bilişsel Hizmetler’i deneyin](https://aka.ms/bingvisualsearchtryforfree)  
-[Görüntüler-Görsel Arama](https://aka.ms/bingvisualsearchreferencedoc)
+[Görüntüler-Görsel Arama](/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch)

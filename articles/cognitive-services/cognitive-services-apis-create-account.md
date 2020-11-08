@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: cad20f589bb5a6d3e73481081d9fe532381ab647
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fd1d9e708a5f1a500440f20c2947ddfe4bc7460
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827398"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368925"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bilişsel hizmetler kaynağı oluşturma
 
@@ -26,7 +26,7 @@ Azure bilişsel hizmetler, REST API 'lerle bulut tabanlı hizmetlerdir ve geliş
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Geçerli bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/).
 
@@ -56,7 +56,7 @@ Azure bilişsel hizmetler, REST API 'lerle bulut tabanlı hizmetlerdir ve geliş
 
     Kullanılabilir bilişsel hizmetler için bir kaynak oluşturmak üzere aşağıdaki bağlantıları kullanın:
 
-    | Görsel                      | Konuşma                  | Dil                          | Karar             | Search                 |
+    | Görsel                      | Konuşma                  | Dil                          | Karar             | Arama                 |
     |-----------------------------|-------------------------|-----------------------------------|----------------------|------------------------|
     | [Bilgisayar vizyonu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [Konuşma Hizmetleri](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [Modern okuyucu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [Anomali Algılayıcısı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | [Bing Arama API v7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) |
     | [Özel Vision hizmeti](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [Konuşmacı Tanıma](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [Bing Özel Arama](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
@@ -64,9 +64,9 @@ Azure bilişsel hizmetler, REST API 'lerle bulut tabanlı hizmetlerdir ve geliş
     | [Mürekkep Tanıma](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [Metin Analizi](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [Ölçüm Danışmanı](https://go.microsoft.com/fwlink/?linkid=2142156)                    | [Bing Yazım Denetimi](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)   |
     |           |                         | [Çevirmen](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [Bing Otomatik Öneri](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
 
-    ***
+    **_
 
-3. **Oluştur** sayfasında, aşağıdaki bilgileri sağlayın:
+3. _ *Oluştur* * sayfasında, aşağıdaki bilgileri sağlayın:
 
     #### <a name="multi-service-resource"></a>[Çoklu hizmet kaynağı](#tab/multiservice)
 
@@ -80,7 +80,7 @@ Azure bilişsel hizmetler, REST API 'lerle bulut tabanlı hizmetlerdir ve geliş
 
     ![Çoklu hizmet kaynak kaynağı oluşturma ekranı](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
 
-    **Oluştur**’a tıklayın.
+    **Oluştur** 'a tıklayın.
 
     #### <a name="single-service-resource"></a>[Tek hizmet kaynağı](#tab/singleservice)
 
@@ -94,15 +94,15 @@ Azure bilişsel hizmetler, REST API 'lerle bulut tabanlı hizmetlerdir ve geliş
 
     ![Tek hizmet kaynak oluşturma ekranı](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-    **Oluştur**’a tıklayın.
+    **Oluştur** 'a tıklayın.
 
-    ***
+    **_
 
 [!INCLUDE [Register Azure resource for subscription](./includes/register-resource-subscription.md)]
 
 ## <a name="get-the-keys-for-your-resource"></a>Kaynağınızın anahtarlarını alın
 
-1. Kaynağınız başarıyla dağıtıldıktan sonra, **sonraki adımlar**altında **Kaynağa Git ' e** tıklayın.
+1. Kaynağınız başarıyla dağıtıldıktan sonra, **sonraki adımlar** altında _ *Kaynağa Git * öğesine* tıklayın.
 
     ![Bilişsel hizmetler için arama](media/cognitive-services-apis-create-account/resource-next-steps.png)
 
@@ -116,14 +116,14 @@ Azure bilişsel hizmetler, REST API 'lerle bulut tabanlı hizmetlerdir ve geliş
 
 Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağı veya kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, grupta yer alan diğer tüm kaynakları da siler.
 
-1. Azure portalında sol taraftaki menüyü genişleterek hizmet menüsünü açın ve **Kaynak Grupları**'nı seçerek kaynak gruplarınızın listesini görüntüleyin.
+1. Azure portalında sol taraftaki menüyü genişleterek hizmet menüsünü açın ve **Kaynak Grupları** 'nı seçerek kaynak gruplarınızın listesini görüntüleyin.
 2. Silinecek kaynağı içeren kaynak grubunu bulun
-3. Kaynak grubu listesine sağ tıklayın. **Kaynak grubunu sil**'i seçip onaylayın.
+3. Kaynak grubu listesine sağ tıklayın. **Kaynak grubunu sil** 'i seçip onaylayın.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Azure bilişsel hizmetler 'e yönelik isteklerin kimliğini doğrulama](authentication.md)
-* [Azure bilişsel hizmetler nedir?](Welcome.md)
+* [Azure bilişsel hizmetler nedir?](./what-are-cognitive-services.md)
 * [Azure Yönetim istemci kitaplığını kullanarak yeni kaynak oluşturma](.\cognitive-services-apis-create-account-client-library.md)
 * [Doğal dil desteği](language-support.md)
 * [Docker kapsayıcı desteği](cognitive-services-container-support.md)

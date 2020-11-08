@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 184073ef3ee1b6a67c844754f7da81f88bbbdf62
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e556ca2051fd75eb9bf6411c5479e63554606d48
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757036"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368347"
 ---
 # <a name="how-to-manage-settings"></a>Ayarları yönetme
 
@@ -33,7 +33,7 @@ Modelleri eğitmek veya dağıtmak için çalışma alanınız ile ilişkili bir
 
 Aboneliğiniz yoksa, aşağıdaki adımları izleyin:
 
-1. Bir çevirmen kaynağı oluşturmak için abone olun. Nasıl abone olunacağı ve bir çevirmen anahtarı elde edebilmek için [çevirmene kaydolma](https://docs.microsoft.com/azure/cognitive-services/translator/translator-how-to-signup) konusuna uyun.
+1. Bir çevirmen kaynağı oluşturmak için abone olun. Nasıl abone olunacağı ve bir çevirmen anahtarı elde edebilmek için [çevirmene kaydolma](../translator-how-to-signup.md) konusuna uyun.
 2. Çevirmen aboneliğinizin anahtarını aklınızda edin. KEY1 veya key2 seçeneklerinden biri kabul edilebilir.
 3. Özel çevirmen portalına geri gidin.
 
@@ -52,7 +52,7 @@ Aboneliğiniz yoksa, aşağıdaki adımları izleyin:
     ![Yeni çalışma alanı oluştur iletişim kutusu](media/how-to/create-new-workspace-dialog.png)
 
 >[!Note]
->Özel çevirmen Translator Metin Çevirisi API'si kaynak için çalışma alanı oluşturulmasını desteklemiyor (deyişle Azure abonelik anahtarı) [ETKIN VNET](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)içinde oluşturulmuş.
+>Özel çevirmen Translator Metin Çevirisi API'si kaynak için çalışma alanı oluşturulmasını desteklemiyor (deyişle Azure abonelik anahtarı) [ETKIN VNET](../../../api-management/api-management-using-with-vnet.md)içinde oluşturulmuş.
 
 ### <a name="modify-existing-key"></a>Mevcut anahtarı Değiştir
 

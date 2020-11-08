@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 83a398b114a8bf0ac25d875e037208d775debc4b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4490142a278d5e724fade42e697d8cf2206c0da8
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077349"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367344"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>Bing Özel Arama API'si nedir?
 
@@ -50,16 +50,15 @@ Kullanmaya hızlıca başlamak için bkz. [İlk Bing Özel Arama örneğinizi ol
 
 Arama örneğinizi özelleştirmeyle ilgili ayrıntılar için bkz. [Özel arama örneği tanımlama](define-your-custom-view.md).
 
-Bing kullanımını okuduğunuzdan ve arama sonuçlarının hizmet ve uygulamalarınızda kullanılması için [gereksinimleri görüntülemenin gerekli](./use-and-display-requirements.md) olduğundan emin olun.
+Bing kullanımını okuduğunuzdan ve arama sonuçlarının hizmet ve uygulamalarınızda kullanılması için [gereksinimleri görüntülemenin gerekli](../bing-web-search/use-display-requirements.md) olduğundan emin olun.
 
-Kullanılabilir diğer API 'Leri araştırmak için [BING arama API hub sayfasını](../bing-web-search/search-the-web.md) ziyaret edin.
+Kullanılabilir diğer API 'Leri araştırmak için [BING arama API hub sayfasını](../bing-web-search/overview.md) ziyaret edin.
 
 Özel arama uç noktalarının başvuru bilgilerini incelemeniz önerilir. Başvuruda arama sonuçlarını istemek için kullanabileceğiniz uç noktaları, üst bilgiler ve sorgu parametreleri yer alır. Ayrıca yanıt nesnelerinin tanımları da bulunur.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
-- [Özel Arama API’si](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
-- [Özel Görüntü API'si](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference)
-- [Özel Video API'si](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference)
-- [Özel Otomatik Öneri API'si](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-autosuggest-api-v7-reference)
-
+- [Özel Arama API’si](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
+- [Özel Görüntü API'si](/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference)
+- [Özel Video API'si](/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference)
+- [Özel Otomatik Öneri API'si](/rest/api/cognitiveservices-bingsearch/bing-custom-autosuggest-api-v7-reference)

@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 43086c245f1d16975eae6951b1e8c2cb56fe5241
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ac581b96ba4e29837570ab8c01bf6c927eb34a28
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098340"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367531"
 ---
 # <a name="spell-check-api-upgrade-guide"></a>Yazım Denetimi API'si Yükseltme Kılavuzu
 
@@ -43,7 +43,7 @@ Bu yükseltme Kılavuzu, sürüm 5 ve Bing Yazım Denetimi API'si sürüm 7 aras
 
 - V5 hata kodları aşağıdaki olası `code` ve `subCode` değerlerle değiştirilmiştir.  
   
-|Kod|Alt|Açıklama
+|Kod|Alt|Description
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Alt kod koşullarından herhangi biri gerçekleştiğinde Bing ServerError hatası döndürüyor. HTTP durum kodu 500 ise yanıt bu hataları içerir.
 |Invalidrequest|ParameterMissing<br/>Parameterınvalidvalue<br/>HttpNotAllowed<br/>Engellendi|, İsteğin herhangi bir bölümü geçerli olmadığı zaman Bing, ınvalidrequest döndürür. Örneğin, gerekli bir parametre eksik veya bir parametre değeri geçerli değil.<br/><br/>Hata ParameterMissing veya Parameterınvalidvalue ise, HTTP durum kodu 400 ' dir.<br/><br/>Hataya HttpNotAllowed varsa, HTTP durum kodu 410 ' dir.
@@ -77,4 +77,4 @@ Engellendi|Invalidrequest. engellendi
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Kullanım ve görüntüleme gereksinimleri](./UseAndDisplayRequirements.md)
+> [Kullanım ve görüntüleme gereksinimleri](../bing-web-search/use-display-requirements.md)

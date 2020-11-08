@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: d320fcd0b7f9666da39dd1208efd9cdec04ad6b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f79cfce514b81c5829ee7791c18e24d3bc6563b5
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843150"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369384"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure Bilişsel Hizmetler sanal ağlarını yapılandırma
 
@@ -75,24 +75,24 @@ Bilişsel hizmetler kaynakları, varsayılan olarak herhangi bir ağdaki istemci
 
 Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı aracılığıyla varsayılan ağ erişim kurallarını yönetebilirsiniz.
 
-# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 1. Güvenli hale getirmek istediğiniz bilişsel hizmetler kaynağına gidin.
 
-1. **Sanal ağ**ADLı **kaynak yönetimi** menüsünü seçin.
+1. **Sanal ağ** ADLı **kaynak yönetimi** menüsünü seçin.
 
    ![Sanal ağ seçeneği](media/vnet/virtual-network-blade.png)
 
-1. Erişimi varsayılan olarak reddetmek için, **Seçili ağlardan**erişime izin ver ' i seçin. Yalnızca **Seçili ağlar** ayarıyla, yapılandırılmış **sanal ağlar** veya **adres aralıkları** tarafından açıklanarak, tüm erişim etkin bir şekilde reddedilir. Tüm erişim reddedildiğinde, bilişsel hizmetler kaynağını tüketmeye çalışan isteklere izin verilmez. Azure portal, Azure PowerShell veya Azure CLı bilişsel hizmetler kaynağını yapılandırmak için yine de kullanılabilir.
+1. Erişimi varsayılan olarak reddetmek için, **Seçili ağlardan** erişime izin ver ' i seçin. Yalnızca **Seçili ağlar** ayarıyla, yapılandırılmış **sanal ağlar** veya **adres aralıkları** tarafından açıklanarak, tüm erişim etkin bir şekilde reddedilir. Tüm erişim reddedildiğinde, bilişsel hizmetler kaynağını tüketmeye çalışan isteklere izin verilmez. Azure portal, Azure PowerShell veya Azure CLı bilişsel hizmetler kaynağını yapılandırmak için yine de kullanılabilir.
 1. Tüm ağlardan gelen trafiğe izin vermek için **Tüm ağlardan** erişime izin vermeyi seçin.
 
    ![Sanal ağlar reddetme](media/vnet/virtual-network-deny.png)
 
-1. Değişikliklerinizi uygulamak için **Kaydet**’i seçin.
+1. Değişikliklerinizi uygulamak için **Kaydet** ’i seçin.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. [Azure PowerShell](/powershell/azure/install-az-ps) yükleyip [oturum açın](/powershell/azure/authenticate-azureps)veya **deneyin**' i seçin.
+1. [Azure PowerShell](/powershell/azure/install-az-ps) yükleyip [oturum açın](/powershell/azure/authenticate-azureps)veya **deneyin** ' i seçin.
 
 1. Bilişsel hizmetler kaynağı için varsayılan kuralın durumunu görüntüleyin.
 
@@ -128,7 +128,7 @@ Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı a
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. [Azure CLI](/cli/azure/install-azure-cli) 'yı yükleyip [oturum açın](/cli/azure/authenticate-azure-cli)veya **deneyin**' i seçin.
+1. [Azure CLI](/cli/azure/install-azure-cli) 'yı yükleyip [oturum açın](/cli/azure/authenticate-azure-cli)veya **deneyin** ' i seçin.
 
 1. Bilişsel hizmetler kaynağı için varsayılan kuralın durumunu görüntüleyin.
 
@@ -154,7 +154,7 @@ Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı a
         --default-action Allow
     ```
 
-***
+**_
 
 ## <a name="grant-access-from-a-virtual-network"></a>Bir sanal ağdan erişim izni verme
 
@@ -166,7 +166,7 @@ Her bilişsel hizmetler kaynağı, [IP ağ kuralları](#grant-access-from-an-int
 
 ### <a name="required-permissions"></a>Gerekli izinler
 
-Bilişsel hizmetler kaynağına bir sanal ağ kuralı uygulamak için, kullanıcının eklenmekte olan alt ağlar için uygun izinlere sahip olması gerekir. Gerekli izin varsayılan *katkıda bulunan* rolü veya bilişsel *Hizmetler katılımcısı* rolü. Gerekli izinler, özel rol tanımlarına da eklenebilir.
+Bilişsel hizmetler kaynağına bir sanal ağ kuralı uygulamak için, kullanıcının eklenmekte olan alt ağlar için uygun izinlere sahip olması gerekir. Gerekli izin varsayılan _Contributor * rolüne veya bilişsel *Hizmetler katılımcısı* rolüne sahiptir. Gerekli izinler, özel rol tanımlarına da eklenebilir.
 
 Bilişsel hizmetler kaynağı ve erişim verilen sanal ağlar, farklı bir Azure AD kiracısının parçası olan abonelikler de dahil olmak üzere farklı aboneliklerde olabilir.
 
@@ -177,27 +177,27 @@ Bilişsel hizmetler kaynağı ve erişim verilen sanal ağlar, farklı bir Azure
 
 Bilişsel hizmetler kaynakları için sanal ağ kurallarını Azure portal, PowerShell veya Azure CLı aracılığıyla yönetebilirsiniz.
 
-# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 1. Güvenli hale getirmek istediğiniz bilişsel hizmetler kaynağına gidin.
 
-1. **Sanal ağ**ADLı **kaynak yönetimi** menüsünü seçin.
+1. **Sanal ağ** ADLı **kaynak yönetimi** menüsünü seçin.
 
-1. **Seçili ağlardan**erişime izin vermeyi seçtiğinizden emin olun.
+1. **Seçili ağlardan** erişime izin vermeyi seçtiğinizden emin olun.
 
-1. Var olan bir ağ kuralıyla bir sanal ağa erişim vermek için, **sanal ağlar**altında **var olan sanal ağı ekle**' yi seçin.
+1. Var olan bir ağ kuralıyla bir sanal ağa erişim vermek için, **sanal ağlar** altında **var olan sanal ağı ekle** ' yi seçin.
 
    ![Mevcut vNet 'i Ekle](media/vnet/virtual-network-add-existing.png)
 
-1. **Sanal ağlar** ve **alt ağlar** seçeneklerini belirleyip **Etkinleştir**' i seçin.
+1. **Sanal ağlar** ve **alt ağlar** seçeneklerini belirleyip **Etkinleştir** ' i seçin.
 
    ![Mevcut vNet ayrıntılarını ekle](media/vnet/virtual-network-add-existing-details.png)
 
-1. Yeni bir sanal ağ oluşturmak ve bu ağa erişim vermek için **Yeni sanal ağ ekle**' yi seçin.
+1. Yeni bir sanal ağ oluşturmak ve bu ağa erişim vermek için **Yeni sanal ağ ekle** ' yi seçin.
 
    ![Yeni sanal ağ ekle](media/vnet/virtual-network-add-new.png)
 
-1. Yeni sanal ağı oluşturmak için gereken bilgileri girin ve ardından **Oluştur**' u seçin.
+1. Yeni sanal ağı oluşturmak için gereken bilgileri girin ve ardından **Oluştur** ' u seçin.
 
    ![VNet oluştur](media/vnet/virtual-network-create.png)
 
@@ -206,15 +206,15 @@ Bilişsel hizmetler kaynakları için sanal ağ kurallarını Azure portal, Powe
     >
     > Şu anda, kural oluşturma sırasında seçim için yalnızca aynı Azure Active Directory kiracıya ait olan sanal ağlar gösterilir. Başka bir kiracıya ait bir sanal ağdaki bir alt ağa erişim vermek için lütfen PowerShell, CLı veya REST API 'Leri kullanın.
 
-1. Bir sanal ağ veya alt ağ kuralını kaldırmak için **...** öğesini seçerek sanal ağ veya alt ağ için bağlam menüsünü açın ve **Kaldır**' ı seçin.
+1. Bir sanal ağ veya alt ağ kuralını kaldırmak için **...** öğesini seçerek sanal ağ veya alt ağ için bağlam menüsünü açın ve **Kaldır** ' ı seçin.
 
    ![VNet 'i kaldır](media/vnet/virtual-network-remove.png)
 
-1. Değişikliklerinizi uygulamak için **Kaydet**’i seçin.
+1. Değişikliklerinizi uygulamak için **Kaydet** ’i seçin.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. [Azure PowerShell](/powershell/azure/install-az-ps) yükleyip [oturum açın](/powershell/azure/authenticate-azureps)veya **deneyin**' i seçin.
+1. [Azure PowerShell](/powershell/azure/install-az-ps) yükleyip [oturum açın](/powershell/azure/authenticate-azureps)veya **deneyin** ' i seçin.
 
 1. Sanal ağ kurallarını listeleyin.
 
@@ -274,7 +274,7 @@ Bilişsel hizmetler kaynakları için sanal ağ kurallarını Azure portal, Powe
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. [Azure CLI](/cli/azure/install-azure-cli) 'yı yükleyip [oturum açın](/cli/azure/authenticate-azure-cli)veya **deneyin**' i seçin.
+1. [Azure CLI](/cli/azure/install-azure-cli) 'yı yükleyip [oturum açın](/cli/azure/authenticate-azure-cli)veya **deneyin** ' i seçin.
 
 1. Sanal ağ kurallarını listeleyin.
 
@@ -322,10 +322,10 @@ Bilişsel hizmetler kaynakları için sanal ağ kurallarını Azure portal, Powe
         --subnet $subnetid
     ```
 
-***
+**_
 
 > [!IMPORTANT]
-> [Varsayılan kuralı](#change-the-default-network-access-rule) **Reddet**olarak ayarladığınızdan emin olun veya ağ kurallarının hiçbir etkisi yoktur.
+> [Varsayılan kuralı](#change-the-default-network-access-rule) _ * Reddet * * olarak ayarladığınızdan emin olun veya ağ kurallarının hiçbir etkisi yoktur.
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>İnternet IP aralığından erişim izni verme
 
@@ -353,15 +353,15 @@ IP ağ kurallarına yalnızca **genel İnternet** IP adresleri için izin verili
 
 Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı aracılığıyla IP ağ kurallarını yönetebilirsiniz.
 
-# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 1. Güvenli hale getirmek istediğiniz bilişsel hizmetler kaynağına gidin.
 
-1. **Sanal ağ**ADLı **kaynak yönetimi** menüsünü seçin.
+1. **Sanal ağ** ADLı **kaynak yönetimi** menüsünü seçin.
 
-1. **Seçili ağlardan**erişime izin vermeyi seçtiğinizden emin olun.
+1. **Seçili ağlardan** erişime izin vermeyi seçtiğinizden emin olun.
 
-1. Bir internet IP aralığına erişim vermek için, **güvenlik duvarı**adres aralığı altına IP adresini veya adres aralığını ( [CIDR biçiminde](https://tools.ietf.org/html/rfc4632)) girin  >  **Address Range**. Yalnızca geçerli genel IP (ayrılmamış) adresleri kabul edilir.
+1. Bir internet IP aralığına erişim vermek için, **güvenlik duvarı** adres aralığı altına IP adresini veya adres aralığını ( [CIDR biçiminde](https://tools.ietf.org/html/rfc4632)) girin  >  **Address Range**. Yalnızca geçerli genel IP (ayrılmamış) adresleri kabul edilir.
 
    ![IP aralığı Ekle](media/vnet/virtual-network-add-ip-range.png)
 
@@ -369,11 +369,11 @@ Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı a
 
    ![IP aralığını Sil](media/vnet/virtual-network-delete-ip-range.png)
 
-1. Değişikliklerinizi uygulamak için **Kaydet**’i seçin.
+1. Değişikliklerinizi uygulamak için **Kaydet** ’i seçin.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. [Azure PowerShell](/powershell/azure/install-az-ps) yükleyip [oturum açın](/powershell/azure/authenticate-azureps)veya **deneyin**' i seçin.
+1. [Azure PowerShell](/powershell/azure/install-az-ps) yükleyip [oturum açın](/powershell/azure/authenticate-azureps)veya **deneyin** ' i seçin.
 
 1. IP ağ kurallarını listeleyin.
 
@@ -431,7 +431,7 @@ Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı a
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. [Azure CLI](/cli/azure/install-azure-cli) 'yı yükleyip [oturum açın](/cli/azure/authenticate-azure-cli)veya **deneyin**' i seçin.
+1. [Azure CLI](/cli/azure/install-azure-cli) 'yı yükleyip [oturum açın](/cli/azure/authenticate-azure-cli)veya **deneyin** ' i seçin.
 
 1. IP ağ kurallarını listeleyin.
 
@@ -472,10 +472,10 @@ Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı a
         --ip-address "16.17.18.0/24"
     ```
 
-***
+**_
 
 > [!IMPORTANT]
-> [Varsayılan kuralı](#change-the-default-network-access-rule) **Reddet**olarak ayarladığınızdan emin olun veya ağ kurallarının hiçbir etkisi yoktur.
+> [Varsayılan kuralı](#change-the-default-network-access-rule) _ * Reddet * * olarak ayarladığınızdan emin olun veya ağ kurallarının hiçbir etkisi yoktur.
 
 ## <a name="use-private-endpoints"></a>Özel uç noktaları kullanma
 
@@ -497,7 +497,7 @@ VNet 'teki uygulamalar hizmete özel uç nokta üzerinden sorunsuz bir şekilde 
 
 VNet 'iniz içindeki bilişsel hizmetler kaynağı için özel bir uç nokta oluşturduğunuzda, bilişsel hizmetler kaynak sahibine onay için bir izin isteği gönderilir. Özel uç noktanın oluşturulmasını isteyen kullanıcı aynı zamanda kaynağın sahibiyseniz, bu onay isteği otomatik olarak onaylanır.
 
-Bilişsel hizmetler kaynak sahipleri, [Azure Portal](https://portal.azure.com)bilişsel hizmetler kaynağı Için '*Özel uç noktalar*' sekmesi aracılığıyla izin isteklerini ve özel uç noktaları yönetebilir.
+Bilişsel hizmetler kaynak sahipleri, [Azure Portal](https://portal.azure.com)bilişsel hizmetler kaynağı Için ' *Özel uç noktalar* ' sekmesi aracılığıyla izin isteklerini ve özel uç noktaları yönetebilir.
 
 ### <a name="private-endpoints"></a>Özel uç noktalar
 
@@ -519,7 +519,7 @@ Konuşma hizmeti ile özel uç noktalar kullanırken, konuşma hizmetini çağı
 
 ### <a name="dns-changes-for-private-endpoints"></a>Özel uç noktalar için DNS değişiklikleri
 
-Özel bir uç nokta oluşturduğunuzda, bilişsel hizmetler kaynağı için DNS CNAME kaynak kaydı, '*Privatelink*' önekine sahip bir alt etki alanındaki diğer ada güncelleştirilir. Varsayılan olarak, Özel uç noktalar için DNS A kaynak kayıtları ile '*Privatelink*' alt etki alanına karşılık gelen [özel bir DNS bölgesi](../dns/private-dns-overview.md)de oluşturacağız.
+Özel bir uç nokta oluşturduğunuzda, bilişsel hizmetler kaynağı için DNS CNAME kaynak kaydı, ' *Privatelink* ' önekine sahip bir alt etki alanındaki diğer ada güncelleştirilir. Varsayılan olarak, Özel uç noktalar için DNS A kaynak kayıtları ile ' *Privatelink* ' alt etki alanına karşılık gelen [özel bir DNS bölgesi](../dns/private-dns-overview.md)de oluşturacağız.
 
 Uç nokta URL 'sini özel uç noktayla VNet dışından çözümlediğinizde, bilişsel hizmetler kaynağının genel uç noktasına dönüşür. Özel uç noktasını barındıran VNet 'ten çözümlendiğinde, uç nokta URL 'SI özel uç noktanın IP adresine çözümlenir.
 
@@ -532,8 +532,8 @@ Ağınızda özel bir DNS sunucusu kullanıyorsanız, istemciler bilişsel hizme
 
 Kendi DNS sunucunuzu özel uç noktaları destekleyecek şekilde yapılandırma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-* [Azure sanal ağlarındaki kaynaklar için ad çözümlemesi](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-* [Özel uç noktalar için DNS yapılandırması](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+* [Azure sanal ağlarındaki kaynaklar için ad çözümlemesi](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
+* [Özel uç noktalar için DNS yapılandırması](../private-link/private-endpoint-overview.md#dns-configuration)
 
 ### <a name="pricing"></a>Fiyatlandırma
 
@@ -541,5 +541,5 @@ Fiyatlandırma ayrıntıları için bkz. [Azure özel bağlantı fiyatlandırmas
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Çeşitli Azure bilişsel [Hizmetler](welcome.md) 'i inceleyin
+* Çeşitli Azure bilişsel [Hizmetler](./what-are-cognitive-services.md) 'i inceleyin
 * [Azure sanal ağ hizmet uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md) hakkında daha fazla bilgi edinin

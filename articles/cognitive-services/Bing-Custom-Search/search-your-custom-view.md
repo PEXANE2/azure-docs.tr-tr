@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: aahi
-ms.openlocfilehash: 38191c55afb87151b238069a75a6c86acd8904df
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a27f252f401d0fcf863391a0d45538b01b1141e9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100550"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367293"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Portaldan Bing Özel Arama örneğinizi çağırın
 
@@ -31,7 +31,7 @@ ms.locfileid: "93100550"
 
 Bing Özel Arama [portalında](https://customsearch.ai)oturum açtıktan sonra, arama örneğinizi seçin ve **Üretim** sekmesine tıklayın. **Uç noktalar** altında bir API uç noktası (örneğin, Web API) seçin. Aboneliğiniz hangi uç noktaların gösterileceğini belirler.
 
-Bir arama sorgusu oluşturmak için, uç noktanızın parametre değerlerini girin. Portalda görüntülenen parametrelerin seçtiğiniz uç noktaya göre değişebileceğini unutmayın. Daha fazla bilgi için [özel arama API'si başvurusuna](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) bakın. Arama örneğinizin kullandığı aboneliği değiştirmek için uygun abonelik anahtarını ekleyin ve uygun pazar ve/veya dil parametrelerini güncelleştirin.
+Bir arama sorgusu oluşturmak için, uç noktanızın parametre değerlerini girin. Portalda görüntülenen parametrelerin seçtiğiniz uç noktaya göre değişebileceğini unutmayın. Daha fazla bilgi için [özel arama API'si başvurusuna](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) bakın. Arama örneğinizin kullandığı aboneliği değiştirmek için uygun abonelik anahtarını ekleyin ve uygun pazar ve/veya dil parametrelerini güncelleştirin.
 
 Bazı önemli parametreler aşağıdadır:
 
@@ -65,4 +65,4 @@ Bing Özel Arama örneğiniz ile ilişkili aboneliği yeni bir örnek oluşturma
 - [NodeJs ile özel görünümünüzü çağırma](./call-endpoint-nodejs.md)
 - [Python ile özel görünümünüzü çağırma](./call-endpoint-python.md)
 
-- [C# SDK ile özel görünümünüzü çağırma](./sdk-csharp-quick-start.md)
+- [C# SDK ile özel görünümünüzü çağırma](./quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)

@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 57edc16f4396e0fe71380d4f51fa9e0dcca1ef03
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 52819caeb833eb475c8ea2c476ef5ba27681a50c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090826"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367565"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Bing Özel Arama deneyiminizi yapılandırın
 
@@ -30,7 +30,7 @@ Portal, Web 'in (etki alanları, alt sayfalar ve Web sayfaları), Bing 'in arama
 
 Web 'in dilimlerinizi tanımlarken aşağıdakileri kullanın:
 
-| Dilim adı | Açıklama                                                                                                                                                                                                                                                                                                |
+| Dilim adı | Description                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Etki alanı     | Bir etki alanı dilimi, bir İnternet etki alanı içinde bulunan tüm içeriği içerir. Örneğin, `www.microsoft.com`. Yok `www.` etmek, Bing 'in etki alanının alt etki alanlarını da aramasına neden olur. Örneğin, öğesini belirtirseniz `microsoft.com` , Bing Ayrıca veya içindeki sonuçları da döndürür `support.microsoft.com` `technet.microsoft.com` . |
 | Sayfaya    | Alt sayfa dilimi, alt sayfa ve altındaki yollarda bulunan tüm içeriği içerir. Yolda en fazla iki alt sayfaların sayısını belirtebilirsiniz. Örneğin, `www.microsoft.com/en-us/windows/`                                                                                                                       |
@@ -79,16 +79,16 @@ Bir dosyayı karşıya yüklemek için bir metin dosyası oluşturun ve her sat�
 
 ## <a name="search-for-images-and-videos"></a>Görüntü ve video arayın
 
-[Bing özel resım arama API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) 'Sini veya [BING özel video arama API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference)'sini kullanarak Web içeriğiyle benzer görüntü ve video arayabilirsiniz. Bu sonuçları [barındırılan Kullanıcı arabirimi](hosted-ui.md)veya API 'ler ile görüntüleyebilirsiniz. 
+[Bing özel resım arama API](/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) 'Sini veya [BING özel video arama API](/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference)'sini kullanarak Web içeriğiyle benzer görüntü ve video arayabilirsiniz. Bu sonuçları [barındırılan Kullanıcı arabirimi](hosted-ui.md)veya API 'ler ile görüntüleyebilirsiniz. 
 
-Bu API 'Ler, özel olmayan [Bing resim arama](../Bing-Image-Search/overview.md) ve [Bing video arama](../Bing-Video-Search/search-the-web.md) API 'lerine benzerdir, ancak tüm Web 'de arama yapın ve `customConfig` sorgu parametresi gerektirmez. Görüntüler ve videolar ile çalışma hakkında daha fazla bilgi için bu belge kümelerine bakın. 
+Bu API 'Ler, özel olmayan [Bing resim arama](../Bing-Image-Search/overview.md) ve [Bing video arama](../bing-video-search/overview.md) API 'lerine benzerdir, ancak tüm Web 'de arama yapın ve `customConfig` sorgu parametresi gerektirmez. Görüntüler ve videolar ile çalışma hakkında daha fazla bilgi için bu belge kümelerine bakın. 
 
 ## <a name="test-your-search-instance-with-the-preview-pane"></a>Önizleme bölmesiyle arama örneğinizi test etme
 
 Arama sorguları göndermek ve sonuçları görüntülemek için portalın sağ tarafındaki önizleme bölmesini kullanarak arama örneğinizi test edebilirsiniz. 
 
 1. Arama kutusunun altında **örneğim** ' ı seçin. **Bing** ' i seçerek arama deneyiminizdeki sonuçları Bing ile karşılaştırabilirsiniz. 
-2. Güvenli bir arama filtresi seçin ve hangi pazarın aranmasına (bkz. [Sorgu parametrelerine](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)bakın).
+2. Güvenli bir arama filtresi seçin ve hangi pazarın aranmasına (bkz. [Sorgu parametrelerine](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)bakın).
 3. Geçerli yapılandırmanın sonuçlarını görüntülemek için bir sorgu girin ve ENTER tuşuna basın veya arama simgesine tıklayın. İlgili sonuçları almak için **Web** , **resim** veya **video** ' ya tıklayarak gerçekleştirdiğiniz arama türünü değiştirebilirsiniz. 
 
 <a name="adjustrank"></a>
@@ -97,7 +97,7 @@ Arama sorguları göndermek ve sonuçları görüntülemek için portalın sağ 
 
 Portal, belirli etki alanları, alt sayfalar ve Web sayfalarından içerik arama sıralamasını ayarlamanıza olanak sağlar. Önizleme bölmesinde bir arama sorgusu gönderdikten sonra, her arama sonucu, sizin için yapabileceğiniz ayarlamaların bir listesini içerir:  
 
-| Ayarı | Açıklama |
+| Ayarı | Description |
 |------------|-------------|
 | Blok      | Etki alanı, alt sayfa veya Web sayfasını engellenen listeye gider. Bing, seçili sitenin içeriğini arama sonuçlarında görünecek şekilde dışarıda bırakır.                    |
 | Artırmak      | Etki alanı veya alt sayfa içeriğini arama sonuçlarında daha yüksek olacak şekilde.                                                                                        |
@@ -165,4 +165,4 @@ Birden fazla PIN eşleşme koşulunu karşılamadığı takdirde Bing Özel Aram
 - [Özel arama örneğinizi çağırma](./search-your-custom-view.md)
 - [Barındırılan kullanıcı arabirimi deneyiminizi yapılandırma](./hosted-ui.md)
 - [Metni vurgulamak için süsleme işaretçilerini kullanma](../bing-web-search/hit-highlighting.md)
-- [Sayfa web sayfaları](./page-webpages.md)
+- [Sayfa web sayfaları](../bing-web-search/paging-search-results.md)

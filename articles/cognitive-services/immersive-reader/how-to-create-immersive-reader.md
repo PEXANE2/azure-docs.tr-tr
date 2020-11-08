@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 9dcbfa8234aea2c558df107fc919dc74f7b4f39a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b012da0b2aea4a50002e9adbc0876396ddd4b5e7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324510"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368738"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Bir tam ekran okuyucu kaynağı oluşturma ve Azure Active Directory kimlik doğrulamasını yapılandırma
 
@@ -29,7 +29,7 @@ Komut dosyası esnek olacak şekilde tasarlanmıştır. Bu, öncelikle aboneliğ
 
 ## <a name="set-up-powershell-environment"></a>PowerShell ortamını ayarlama
 
-1. [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)açarak başlayın. Cloud Shell, sol üst taraftaki açılan menüde veya yazarak PowerShell olarak ayarlandığından emin olun `pwsh` .
+1. [Azure Cloud Shell](../../cloud-shell/overview.md)açarak başlayın. Cloud Shell, sol üst taraftaki açılan menüde veya yazarak PowerShell olarak ayarlandığından emin olun `pwsh` .
 
 1. Aşağıdaki kod parçacığını kopyalayıp kabuğa yapıştırın.
 
@@ -196,7 +196,3 @@ Komut dosyası esnek olacak şekilde tasarlanmıştır. Bu, öncelikle aboneliğ
 * İOS için Swift kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi öğrenmek için [iOS öğreticisini](./tutorial-ios.md) görüntüleyin
 * Python kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi öğrenmek için [Python öğreticisini](./tutorial-python.md) görüntüleyin
 * [Modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) ve [tam ekran okuyucu SDK başvurusunu](./reference.md) keşfet
-
-
-
-

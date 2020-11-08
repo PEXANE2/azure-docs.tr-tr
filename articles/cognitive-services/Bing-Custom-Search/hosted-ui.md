@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 0033f4919e4e4e5e56e4057e00c393ae7be1ca44
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d5caa9b4168307bb27022b59415e43b37f30bf67
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090571"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367395"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Barındırılan kullanıcı arabirimi deneyiminizi yapılandırma
 
@@ -54,7 +54,7 @@ Web uygulamalarınız için barındırılan bir kullanıcı arabirimi yapıland�
 
 6. **Ek konfigürasyonlar** ' ın altında, uygulamanız için uygun değerleri sağlayın. Bu ayarlar isteğe bağlıdır. Uygulama veya kaldırma etkisini görmek için sağdaki önizleme bölmesine bakın. Kullanılabilir yapılandırma seçenekleri şunlardır:  
 
-7. Arama aboneliği anahtarını girin veya açılan listeden bir tane seçin. Açılan liste, Azure hesabınızın aboneliklerinizdeki anahtarlarla doldurulur. Bilişsel [HIZMETLER API hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)' na bakın.  
+7. Arama aboneliği anahtarını girin veya açılan listeden bir tane seçin. Açılan liste, Azure hesabınızın aboneliklerinizdeki anahtarlarla doldurulur. Bilişsel [HIZMETLER API hesabı](../cognitive-services-apis-create-account.md)' na bakın.  
 
 8. Otomatik öner 'i etkinleştirdiyseniz, otomatik öneri aboneliği anahtarını girin veya açılan listeden bir tane seçin. Açılan liste, Azure hesabınızın aboneliklerinizdeki anahtarlarla doldurulur. Özel otomatik öneri için belirli bir abonelik katmanı gerekir, bkz. [fiyatlandırma](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/).
 
@@ -82,7 +82,7 @@ Barındırılan Kullanıcı arabirimini kullanmak için şunlardan birini yapın
   `https://ui.customsearch.ai/hosted?customConfig=YOUR-CUSTOM-CONFIG-ID`  
   
   > [!NOTE]
-  > Aşağıdaki sorgu parametrelerini URL 'ye gerektiği şekilde ekleyin. Bu parametreler hakkında daha fazla bilgi için bkz. [özel arama API'si](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) Reference.
+  > Aşağıdaki sorgu parametrelerini URL 'ye gerektiği şekilde ekleyin. Bu parametreler hakkında daha fazla bilgi için bkz. [özel arama API'si](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) Reference.
   >
   > - q
   > - mkt
@@ -153,4 +153,4 @@ Aşağıdaki yapılandırma yalnızca, HTML uç noktası aracılığıyla barın
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Metni vurgulamak için süsleme işaretçilerini kullanma](../bing-web-search/hit-highlighting.md)
-- [Sayfa web sayfaları](./page-webpages.md)
+- [Sayfa web sayfaları](../bing-web-search/paging-search-results.md)

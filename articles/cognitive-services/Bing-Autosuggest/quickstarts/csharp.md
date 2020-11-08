@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9d199a6c0246379100db0d3bb412dcde4d73a17e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c47ef99d5e7e78710f8be4b967e262262f205a39
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101893"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367888"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>Hızlı başlangıç: Bing Otomatik Öneri REST API ve C ile arama sorguları önerin #
 
@@ -46,7 +46,7 @@ Bing Otomatik Öneri API'si çağrı yapmayı ve JSON yanıtını okumayı öğr
     using System.Text;
     ```
 
-2. Yeni bir sınıfta API ana bilgisayar ve yol, [Pazar kodu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)ve kısmi arama sorgusu için değişkenler oluşturun. Aşağıdaki kodda genel uç noktasını kullanın veya kaynağınız için Azure portal görüntülenmiş olan [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanın.
+2. Yeni bir sınıfta API ana bilgisayar ve yol, [Pazar kodu](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)ve kısmi arama sorgusu için değişkenler oluşturun. Aşağıdaki kodda genel uç noktasını kullanın veya kaynağınız için Azure portal görüntülenmiş olan [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanın.
 
     ```csharp
     static string host = "https://api.cognitive.microsoft.com";
@@ -172,4 +172,4 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 ## <a name="see-also"></a>Ayrıca bkz.
 
 - [Bing Otomatik Öneri nedir?](../get-suggested-search-terms.md)
-- [Bing Otomatik Öneri API’si v7 başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
+- [Bing Otomatik Öneri API’si v7 başvurusu](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

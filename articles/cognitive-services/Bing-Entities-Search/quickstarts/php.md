@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 6d994282d2c8d2b97110d57362b95254945daa14
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: eab9492c9d47b87887d486a7c5e7d949ce91fcdf
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084706"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368415"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>Hızlı başlangıç: PHP kullanarak Bing Varlık Arama REST API bir arama isteği gönderme
 
@@ -159,4 +159,4 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 > [Tek sayfalı web uygulaması oluşturma](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Bing Varlık Arama API'si nedir?](../overview.md )
-* [Bing varlık arama API'si Başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).
+* [Bing varlık arama API'si Başvurusu](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

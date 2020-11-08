@@ -7,18 +7,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 0b034d0135c66852b07e0a2ed2fd69e8c3fdc4a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96cca89b1206aaa7890648def694074a18b2aa17
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132849"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368874"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Bilişsel Hizmetler ve makine öğrenmesi
 
 Bilişsel hizmetler, nesnelerin veya yüzlerinin tanınması için metin analizi veya görüntüleri analiz etme gibi genel sorunları çözümlemek için makine öğrenimi özellikleri sağlar. Bu hizmetleri kullanmak için makine öğrenmesi veya veri bilimi alanında bilgi sahibi olmanıza gerek yoktur. 
 
-Bilişsel [Hizmetler](welcome.md) , her biri farklı, genelleştirilmiş tahmin özelliklerini destekleyen bir hizmet grubudur. Hizmetler, doğru hizmeti bulmanıza yardımcı olmak için farklı kategorilere ayrılmıştır. 
+Bilişsel [Hizmetler](./what-are-cognitive-services.md) , her biri farklı, genelleştirilmiş tahmin özelliklerini destekleyen bir hizmet grubudur. Hizmetler, doğru hizmeti bulmanıza yardımcı olmak için farklı kategorilere ayrılmıştır. 
 
 |Hizmet kategorisi|Amaç|
 |--|--|
@@ -44,7 +44,7 @@ Makine öğrenimi, belirli bir ihtiyacı çözümlemek için verileri ve algorit
 
 Machine Learning sistemi oluşturma işlemi, Machine Learning veya veri bilimi hakkında bazı bilgiler gerektirir.
 
-Makine öğrenimi, [Azure Machine Learning (AML) ürünleri ve Hizmetleri](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context)kullanılarak sağlanır.
+Makine öğrenimi, [Azure Machine Learning (AML) ürünleri ve Hizmetleri](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure%252fmachine-learning%252fstudio%252fcontext%252fml-context)kullanılarak sağlanır.
 
 ## <a name="what-is-a-cognitive-service"></a>Bilişsel hizmet nedir?
 
@@ -71,7 +71,7 @@ Bilişsel hizmetler, bir hizmet grubu olarak, eğitilen model için hiçbiri, ba
 
 ### <a name="no-additional-training-data-required"></a>Ek eğitim verileri gerekmez
 
-Tam eğitilen bir model sağlayan hizmetler _donuk bir kutu_olarak kabul edilebilir. Bunların nasıl çalıştığını veya bunları eğitede hangi verilerin kullanıldığını bilmeniz gerekmez. Tahmin almak için verilerinizi tamamen eğitilen bir modele taşıyın. 
+Tam eğitilen bir model sağlayan hizmetler _donuk bir kutu_ olarak kabul edilebilir. Bunların nasıl çalıştığını veya bunları eğitede hangi verilerin kullanıldığını bilmeniz gerekmez. Tahmin almak için verilerinizi tamamen eğitilen bir modele taşıyın. 
 
 ### <a name="some-or-all-training-data-required"></a>Eğitim verilerinin bazıları veya tümü gereklidir
 
@@ -91,9 +91,9 @@ Aşağıdaki veriler her hizmeti, izin verdiği veya gerektirdiği veri türüne
 |--|--|--|--|
 |[Anomali Algılayıcısı](./Anomaly-Detector/overview.md)|x|x|x|
 |Bing Arama |x|||
-|[Görüntü İşleme](./Computer-vision/Home.md)|x|||
+|[Görüntü İşleme](./computer-vision/overview.md)|x|||
 |[Content Moderator](./Content-Moderator/overview.md)|x||x|
-|[Özel Görüntü İşleme](./Custom-Vision-Service/home.md)||x||
+|[Özel Görüntü İşleme](./custom-vision-service/overview.md)||x||
 |[Yüz Tanıma](./Face/Overview.md)|x|x||
 |[Form Tanıma](./form-recognizer/overview.md)||x||
 |[Tam Ekran Okuyucu](./immersive-reader/overview.md)|x|||
@@ -101,7 +101,7 @@ Aşağıdaki veriler her hizmeti, izin verdiği veya gerektirdiği veri türüne
 |[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
 |[Kişiselleştirme](./personalizer/what-is-personalizer.md)|sayı|sayı|x|
 |[Soru-Cevap Oluşturma](./QnAMaker/Overview/overview.md)||x||
-|[Konuşmacı tanıyıcı](./speaker-recognition/home.md)||x||
+|[Konuşmacı tanıyıcı](./speech-service/speaker-recognition-overview.md)||x||
 |[Konuşma metni okuma (TTS)](speech-service/text-to-speech.md)|x|x||
 |[Konuşmayı metne dönüştürme (STT)](speech-service/speech-to-text.md)|x|x||
 |[Konuşma çevirisi](speech-service/speech-translation.md)|x|||
@@ -127,16 +127,16 @@ Diğer makine öğrenimi araçları için aktarılmış modeller sağlayan bili�
 
 |Bilişsel hizmet|Model bilgileri|
 |--|--|
-|[Özel Görüntü İşleme](./custom-vision-service/home.md)|Android için TensorFlow için [dışarı aktarma](./Custom-Vision-Service/export-model-python.md) , IOS11 Için Coreml, Windows ml IÇIN onnx|
+|[Özel Görüntü İşleme](./custom-vision-service/overview.md)|Android için TensorFlow için [dışarı aktarma](./Custom-Vision-Service/export-model-python.md) , IOS11 Için Coreml, Windows ml IÇIN onnx|
 
-## <a name="learn-more"></a>Daha fazlasını öğrenin
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 
-* [Mimari Kılavuzu-Microsoft 'ta makine öğrenimi ürünleri nelerdir?](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
+* [Mimari Kılavuzu-Microsoft 'ta makine öğrenimi ürünleri nelerdir?](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
 * [Machine Learning-derin öğrenme ve makine öğrenimine giriş](../machine-learning/concept-deep-learning-vs-machine-learning.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bilişsel hizmet hesabınızı [Azure Portal](cognitive-services-apis-create-account.md) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli)ile oluşturun.
+* Bilişsel hizmet hesabınızı [Azure Portal](cognitive-services-apis-create-account.md) veya [Azure CLI](./cognitive-services-apis-create-account-cli.md)ile oluşturun.
 * Bilişsel bir hizmette [kimlik doğrulaması](authentication.md) yapmayı öğrenin.
 * Sorun tanımlama ve hata ayıklama için [Tanılama günlüğünü](diagnostic-logging.md) kullanın. 
 * Bir Docker [kapsayıcısında](cognitive-services-container-support.md)bilişsel bir hizmet dağıtın.

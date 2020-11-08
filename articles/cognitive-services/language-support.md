@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: dba43c9e9b214a1ad077a2a15bdf014e057bb04e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cde7e677bd0121954b01cf9bb8defe45111a5b2
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88869890"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369197"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Azure bilişsel hizmetler için doğal dil desteği
 
@@ -33,37 +33,37 @@ Bu bilişsel hizmetler dilden bağımsızdır ve insan diline göre sınırlamal
 * [Görüntü İşleme](./computer-vision/language-support.md)
 * [Form Tanıma (Önizleme)](./form-recognizer/language-support.md)
 * [Mürekkep Tanıma (Önizleme)](./ink-recognizer/language-support.md)
-* [Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/language-identification-model#guidelines-and-limitations)
+* [Video Indexer](../media-services/video-indexer/language-identification-model.md#guidelines-and-limitations)
 
 ## <a name="language"></a>Dil
 
 * [Tam Ekran Okuyucu](./immersive-reader/language-support.md)
-* [Language Understanding (LUIS)](./luis/luis-supported-languages.md)
-* [Soru-Cevap Oluşturma](./qnamaker/overview/languages-supported.md)
-* [Metin Analizi](./text-analytics/text-analytics-supported-languages.md)
-* [Çevirmen](./translator/languages.md)
+* [Language Understanding (LUIS)](./luis/luis-language-support.md)
+* [Soru-Cevap Oluşturma](./qnamaker/overview/language-support.md)
+* [Metin Analizi](./text-analytics/language-support.md)
+* [Çevirmen](./translator/language-support.md)
 
 ## <a name="speech"></a>Konuşma
 
-* [Konuşma hizmeti: konuşmayı metne dönüştürme](./speech-service/supported-languages.md#speech-to-text)
-* [Konuşma hizmeti: metinden konuşmaya](./speech-service/supported-languages.md#text-to-speech)
-* [Konuşma hizmeti: konuşma çevirisi](./speech-service/supported-languages.md#speech-translation)
+* [Konuşma hizmeti: konuşmayı metne dönüştürme](./speech-service/language-support.md#speech-to-text)
+* [Konuşma hizmeti: metinden konuşmaya](./speech-service/language-support.md#text-to-speech)
+* [Konuşma hizmeti: konuşma çevirisi](./speech-service/language-support.md#speech-translation)
 
-## <a name="search"></a>Search
+## <a name="search"></a>Arama
 
-* [Bing Özel Arama](./bing-custom-search/supported-countries-markets.md)
-* [Bing Resim Arama](./bing-image-search/supported-countries-markets.md)
-* [Bing Haber Arama](./bing-news-search/supported-countries-markets.md)
-* [Bing Otomatik Öneri](./Bing-Autosuggest/bing-autosuggest-supported-languages.md)
-* [Bing Yazım Denetimi](./bing-spell-check/bing-spell-check-supported-languages.md)
-* [Bing Görsel Arama](./bing-visual-search/supported-countries-markets.md)
-* [Bing Web Araması](./bing-web-search/supported-countries-markets.md)
+* [Bing Özel Arama](./bing-custom-search/language-support.md)
+* [Bing Resim Arama](./bing-image-search/language-support.md)
+* [Bing Haber Arama](./bing-news-search/language-support.md)
+* [Bing Otomatik Öneri](./bing-autosuggest/language-support.md)
+* [Bing Yazım Denetimi](./bing-spell-check/language-support.md)
+* [Bing Görsel Arama](./bing-visual-search/language-support.md)
+* [Bing Web Araması](./bing-web-search/language-support.md)
 
 ## <a name="decision"></a>Karar
 
-* [Content Moderator](./content-moderator/text-moderation-api-languages.md)
+* [Content Moderator](./content-moderator/language-support.md)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Bilişsel hizmetler nelerdir?](welcome.md)
+* [Bilişsel hizmetler nelerdir?](./what-are-cognitive-services.md)
 * [Hesap oluşturma](cognitive-services-apis-create-account.md)
