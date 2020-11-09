@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: e871edf1f16c1c73a3c3b16649e5aeb622397c8d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d9c5fe2653cff0d83a145964a3ad9eed166d0688
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87375028"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371538"
 ---
 Java için Bing Özel Arama istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Bing Özel Arama API'si, ilgilendiğiniz konular için özel, reklam ücretsiz arama deneyimleri oluşturmanıza olanak sağlar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingCustomSearch) 'da bulunabilir
 
@@ -22,7 +22,7 @@ Java için Bing Özel Arama istemci kitaplığını kullanarak şunları yapın:
 
 * Bing Özel Arama örneğinden Web 'de arama sonuçları bulun.
 
-[Başvuru belgeleri](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch)  |  [Yapıt (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customsearch/)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+[Başvuru belgeleri](/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch)  |  [Yapıt (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customsearch/)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -33,7 +33,7 @@ Java için Bing Özel Arama istemci kitaplığını kullanarak şunları yapın:
 
 [!INCLUDE [cognitive-services-bing-custom-search-prerequisites](~/includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
-Kaynağından bir anahtar aldıktan sonra, adlı anahtar için [bir ortam değişkeni oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) `AZURE_BING_CUSTOM_SEARCH_API_KEY` .
+Kaynağından bir anahtar aldıktan sonra, adlı anahtar için [bir ortam değişkeni oluşturun](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) `AZURE_BING_CUSTOM_SEARCH_API_KEY` .
 
 ### <a name="create-a-new-gradle-project"></a>Yeni bir Gradle projesi oluşturma
 
@@ -52,7 +52,7 @@ mkdir myapp && cd myapp
 gradle init --type basic
 ```
 
-Bir **DSL**seçmeniz Istendiğinde, **Kotlin**' ı seçin.
+Bir **DSL** seçmeniz Istendiğinde, **Kotlin** ' ı seçin.
 
 ## <a name="install-the-client-library"></a>İstemci kitaplığını yükler
 
@@ -81,7 +81,7 @@ dependencies {
 mkdir src/main/java
 ```
 
-Yeni klasöre gidin ve *Bingcustomsearchsample. Java*adlı bir dosya oluşturun. Açın ve aşağıdaki `import` deyimleri ekleyin:
+Yeni klasöre gidin ve *Bingcustomsearchsample. Java* adlı bir dosya oluşturun. Açın ve aşağıdaki `import` deyimleri ekleyin:
 
 
 [!code-java[import statements](~/cognitive-services-java-sdk-samples/Search/BingCustomSearch/src/main/java/BingCustomSearchSample.java?name=imports)]
@@ -99,9 +99,9 @@ Sınıfında, `main` kaynak anahtarınız için bir yöntem ve bir değişken ol
 
 ## <a name="object-model"></a>Nesne modeli
 
-Bing Özel Arama İstemcisi, [Bingcustomsearchmanager](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchmanager?view=azure-java-stable) nesnesinin [Authenticate ()](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchmanager.authenticate) yönteminden oluşturulan bir [bingcustomsearchapı](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchapi?view=azure-java-stable) nesnesidir. İstemcinin [Bingcustomınstances. Search ()](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__) yöntemini kullanarak bir arama isteği gönderebilirsiniz.
+Bing Özel Arama İstemcisi, [Bingcustomsearchmanager](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchmanager?view=azure-java-stable) nesnesinin [Authenticate ()](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchmanager.authenticate) yönteminden oluşturulan bir [bingcustomsearchapı](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchapi?view=azure-java-stable) nesnesidir. İstemcinin [Bingcustomınstances. Search ()](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__) yöntemini kullanarak bir arama isteği gönderebilirsiniz.
 
-API yanıtı, arama sorgusu ve arama sonuçları hakkında bilgi içeren bir [SearchResponse](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.models.searchresponse?view=azure-java-stable) nesnesidir.
+API yanıtı, arama sorgusu ve arama sonuçları hakkında bilgi içeren bir [SearchResponse](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.models.searchresponse?view=azure-java-stable) nesnesidir.
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -112,7 +112,7 @@ Bu kod parçacıkları, Java için Bing Özel Arama istemci kitaplığı ile aş
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-Main yönteminiz, anahtarınızı alan bir [Bingcustomsearchmanager](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchapi?view=azure-java-stable) nesnesi içermelidir ve ' ı çağırır `authenticate()` .
+Main yönteminiz, anahtarınızı alan bir [Bingcustomsearchmanager](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchapi?view=azure-java-stable) nesnesi içermelidir ve ' ı çağırır `authenticate()` .
 
 ```java
 BingCustomSearchAPI client = BingCustomSearchManager.authenticate(subscriptionKey);
@@ -120,7 +120,7 @@ BingCustomSearchAPI client = BingCustomSearchManager.authenticate(subscriptionKe
 
 ## <a name="get-search-results-from-your-custom-search-instance"></a>Özel arama örneğinizin arama sonuçlarını al
 
-Özel örneğinize bir arama sorgusu göndermek için istemcinin [Bingcustomınstances. Search ()](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__) işlevini kullanın. `withCustomConfig`Öğesini özel yapılandırma kimliğinize veya varsayılan olarak olarak ayarlayın `1` . API 'den bir yanıt aldıktan sonra, herhangi bir arama sonucunun bulunup bulunmadığını denetleyin. Bu durumda, yanıtın işlevini çağırarak ilk arama sonucunu alın `webPages().value().get()` ve sonucun adını ve URL 'sini yazdırın.
+Özel örneğinize bir arama sorgusu göndermek için istemcinin [Bingcustomınstances. Search ()](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__) işlevini kullanın. `withCustomConfig`Öğesini özel yapılandırma kimliğinize veya varsayılan olarak olarak ayarlayın `1` . API 'den bir yanıt aldıktan sonra, herhangi bir arama sonucunun bulunup bulunmadığını denetleyin. Bu durumda, yanıtın işlevini çağırarak ilk arama sonucunu alın `webPages().value().get()` ve sonucun adını ve URL 'sini yazdırın.
 
 [!code-java[call the custom search API](~/cognitive-services-java-sdk-samples/Search/BingCustomSearch/src/main/java/BingCustomSearchSample.java?name=runSample)]
 

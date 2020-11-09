@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: 54f80310f274b757d118f34542c1aa2e838ca7b9
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 14b9d9fe0eb9dfe2f25373c2d87d9b4af15dd0d9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92082270"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371876"
 ---
 Bölgesel VNet tümleştirmesini kullanmak, uygulamanızın erişmesini sağlar:
 
@@ -23,18 +23,18 @@ Bölgesel VNet tümleştirmesini kullanmak, uygulamanızın erişmesini sağlar:
 
 VNet ile VNet tümleştirmesini aynı bölgede kullandığınızda, aşağıdaki Azure ağ özelliklerini kullanabilirsiniz:
 
-* **Ağ güvenlik grupları (NSG 'ler)**: Tümleştirme alt ağınıza yerleştirilmiş bir NSG ile giden trafiği engelleyebilirsiniz. Uygulama için gelen erişimi sağlamak üzere VNet tümleştirmesini kullanamadığından gelen kuralları uygulanmaz.
-* **Yol tabloları (UDRs)**: istediğiniz yere giden trafik göndermek için tümleştirme alt ağına bir rota tablosu yerleştirebilirsiniz.
+* **Ağ güvenlik grupları (NSG 'ler)** : Tümleştirme alt ağınıza yerleştirilmiş bir NSG ile giden trafiği engelleyebilirsiniz. Uygulama için gelen erişimi sağlamak üzere VNet tümleştirmesini kullanamadığından gelen kuralları uygulanmaz.
+* **Yol tabloları (UDRs)** : istediğiniz yere giden trafik göndermek için tümleştirme alt ağına bir rota tablosu yerleştirebilirsiniz.
 
 Varsayılan olarak, uygulamanız yalnızca sanal ağınıza RFC1918 trafiği yönlendirir. Tüm giden trafiğinizi sanal ağınıza yönlendirmek istiyorsanız WEBSITE_VNET_ROUTE_ALL uygulama ayarını uygulamanıza uygulayın. Uygulama ayarını yapılandırmak için:
 
-1. Uygulama portalınızdaki **yapılandırma** Kullanıcı arabirimine gidin. **Yeni uygulama ayarı**'nı seçin.
+1. Uygulama portalınızdaki **yapılandırma** Kullanıcı arabirimine gidin. **Yeni uygulama ayarı** 'nı seçin.
 1. **Ad** kutusuna **WEBSITE_VNET_ROUTE_ALL** girin ve **değer** kutusuna **1** yazın.
 
    ![Uygulama ayarı sağla][4]
 
-1. **Tamam**’ı seçin.
-1. **Kaydet**’i seçin.
+1. **Tamam** ’ı seçin.
+1. **Kaydet** ’i seçin.
 
 > [!NOTE]
 > Tüm giden trafiğinizi sanal ağınıza yönlendirdiğinizde, tümleştirme alt ağınıza uygulanan NSG 'ler ve UDRs 'ye tabidir. Tüm giden trafiğinizi sanal ağınıza yönlendirdiğinizde, trafiği başka bir yere göndermek için yollar sağlamazsanız, giden adresleriniz hala uygulama özelliklerinde listelenen giden adreslerdir.
@@ -42,7 +42,7 @@ Varsayılan olarak, uygulamanız yalnızca sanal ağınıza RFC1918 trafiği yö
 Aynı bölgedeki sanal ağlar ile VNet tümleştirmesi kullanımıyla ilgili bazı sınırlamalar vardır:
 
 * Genel eşleme bağlantıları genelindeki kaynaklara ulaşıamazsınız.
-* Özelliği yalnızca PremiumV2 App Service planlarını destekleyen daha yeni Azure App Service ölçek birimlerinden kullanılabilir. Bu, *uygulamanızın bir PremiumV2 fiyatlandırma katmanında çalıştırılması gerektiğini*, yalnızca PremiumV2 seçeneğinin kullanılabildiği bir App Service planında çalışması gerektiğini (Yani bu VNET tümleştirme özelliğinin de kullanılabilir olduğu daha yeni bir ölçek birimi olduğunu gösterir) unutmayın.
+* Özelliği yalnızca PremiumV2 App Service planlarını destekleyen daha yeni Azure App Service ölçek birimlerinden kullanılabilir. Bu, *uygulamanızın bir PremiumV2 fiyatlandırma katmanında çalıştırılması gerektiğini* , yalnızca PremiumV2 seçeneğinin kullanılabildiği bir App Service planında çalışması gerektiğini (Yani bu VNET tümleştirme özelliğinin de kullanılabilir olduğu daha yeni bir ölçek birimi olduğunu gösterir) unutmayın.
 * Tümleştirme alt ağı yalnızca bir App Service planı tarafından kullanılabilir.
 * Özelliği, bir App Service Ortamı olan yalıtılmış plan uygulamaları tarafından kullanılamaz.
 * Bu özellik, bir Azure Resource Manager VNet 'te 32 adresi veya daha büyük bir/27 veya daha büyük olmayan kullanılmayan bir alt ağ gerektirir.
@@ -84,10 +84,15 @@ Sınır Ağ Geçidi Protokolü (BGP) rotaları de uygulama trafiğinizi etkiler.
 
 Uygulamanız VNet 'iniz ile tümleştirdikten sonra, sanal ağınızın yapılandırıldığı aynı DNS sunucusunu kullanır. Varsayılan olarak, uygulamanız Azure DNS Özel Bölgeleri çalışmaz. Azure DNS Özel Bölgeleri çalışmak için aşağıdaki uygulama ayarlarını eklemeniz gerekir:
 
-1. 168.63.129.16 değeri ile WEBSITE_DNS_SERVER 
+1. 168.63.129.16 değeri ile WEBSITE_DNS_SERVER
 1. Değer 1 ile WEBSITE_VNET_ROUTE_ALL
 
-Bu ayarlar, uygulamanızın özel bölgeler Azure DNS kullanmasını olanaklı hale getirecek ek olarak, uygulamanızdaki tüm giden çağrılarınızı sanal ağınıza gönderir.
+Bu ayarlar, uygulamanızdaki tüm giden çağrıları sanal ağınıza gönderir. Ayrıca, Özel DNS bölgesini çalışan düzeyinde sorgulayarak uygulamanın Azure DNS kullanmasına olanak sağlar. Bu işlev, çalışan bir uygulama Özel DNS bir bölgeye erişirken kullanılır.
+
+> [!NOTE]
+>Özel DNS bölgeyi kullanarak Web uygulamasına özel bir etki alanı eklemeye çalışmak, Sanal Ağ Tümleştirmesi için mümkün değildir. Özel etki alanı doğrulama işlemi, DNS kayıtlarının görüntülenmesini önleyen çalışan düzeyinde değil, denetleyici düzeyinde yapılır. Bir Özel DNS bölgesinden özel bir etki alanı kullanmak için, doğrulamanın bir Application Gateway veya ıLB App Service Ortamı kullanılarak atlanmak gerekir.
+
+
 
 ### <a name="private-endpoints"></a>Özel uç noktalar
 

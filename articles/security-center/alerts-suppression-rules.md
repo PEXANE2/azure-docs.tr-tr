@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 50426e0b0920e89cf83dc5a81c515b06c06c09c5
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: b954d6ed29074aa9261611f0d1bb79b5917d03f2
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342102"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372668"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Azure Defender 'dan uyarıları gösterme
 
@@ -23,7 +23,7 @@ Bu sayfada, Azure Defender 'daki hatalı pozitif durumları veya diğer istenmey
 
 |Görünüş|Ayrıntılar|
 |----|:----|
-|Yayın durumu:|Önizleme|
+|Yayın durumu:|Önizleme<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Fiyat|Ücretsiz<br>(Çoğu güvenlik uyarısı yalnızca Azure Defender ile kullanılabilir)|
 |Gerekli roller ve izinler:|**Güvenlik Yöneticisi** ve **sahibi** kuralları oluşturabilir/silebilir.<br>**Güvenlik okuyucu** ve **okuyucu** , kuralları görüntüleyebilir.|
 |Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
@@ -60,11 +60,11 @@ Azure portal doğrudan bir kural oluşturmak için:
 
 1. Güvenlik Merkezi'nin güvenlik uyarıları sayfasından:
 
-    - Artık görmek istemediğiniz belirli uyarıyı bulun ve uyarının üç nokta menüsünden (...) **gizleme kuralı oluştur**' u seçin:
+    - Artık görmek istemediğiniz belirli uyarıyı bulun ve uyarının üç nokta menüsünden (...) **gizleme kuralı oluştur** ' u seçin:
 
         [![* * Gizleme kuralı oluştur * * seçeneği](media/alerts-suppression-rules/auto-dismiss-future-option.png)](media/alerts-suppression-rules/auto-dismiss-future-option.png#lightbox)
 
-    - Ya da sayfanın üst kısmındaki **gizleme kuralları** bağlantısını ve gizleme kuralları sayfasında **Yeni gizleme kuralı oluştur**' u seçin:
+    - Ya da sayfanın üst kısmındaki **gizleme kuralları** bağlantısını ve gizleme kuralları sayfasında **Yeni gizleme kuralı oluştur** ' u seçin:
 
         ![Yeni gizleme kuralı oluştur * * düğmesi](media/alerts-suppression-rules/create-new-suppression-rule.png)
 
@@ -94,8 +94,8 @@ Oluşturduğunuz kuralları düzenlemek için gizleme kuralları sayfasını kul
 
     [![Gizleme kuralları listesi](media/alerts-suppression-rules/suppression-rules-page.png)](media/alerts-suppression-rules/suppression-rules-page.png#lightbox)
 
-1. Tek bir kuralı düzenlemek için, kural için üç nokta menüsünü (...) açın ve **Düzenle**' yi seçin.
-1. Gerekli değişiklikleri yapın ve **Uygula**' yı seçin. 
+1. Tek bir kuralı düzenlemek için, kural için üç nokta menüsünü (...) açın ve **Düzenle** ' yi seçin.
+1. Gerekli değişiklikleri yapın ve **Uygula** ' yı seçin. 
 
 ## <a name="delete-a-suppression-rule"></a>Gizleme kuralını Sil
 
@@ -103,20 +103,20 @@ Oluşturduğunuz bir veya daha fazla kuralı silmek için gizleme kuralları say
 
 1. Güvenlik Merkezi 'nin güvenlik uyarıları sayfasında, sayfanın üst kısmındaki **gizleme kuralları** bağlantısını seçin.
 1. Gizleme kuralları sayfası, seçili abonelikler için tüm kurallarla birlikte açılır.
-1. Tek bir kuralı silmek için, kural için üç nokta menüsünü (...) açın ve **Sil**' i seçin.
-1. Birden çok kuralı silmek için, kuralların silineceği onay kutularını seçin ve **Sil**' i seçin.
+1. Tek bir kuralı silmek için, kural için üç nokta menüsünü (...) açın ve **Sil** ' i seçin.
+1. Birden çok kuralı silmek için, kuralların silineceği onay kutularını seçin ve **Sil** ' i seçin.
     ![Bir veya daha fazla gizleme kuralını silme](media/alerts-suppression-rules/delete-multiple-alerts.png)
 
 ## <a name="view-suppressed-alerts"></a>Gizlenen Uyarıları görüntüle
 
-Etkin gizleme kuralları ile eşleşen uyarılar üretilmeye devam eder, ancak durumları **kapatıldı**olarak ayarlanır. Durumu Azure portal görebilirsiniz, ancak Güvenlik Merkezi güvenlik uyarılarınıza erişebilirsiniz. 
+Etkin gizleme kuralları ile eşleşen uyarılar üretilmeye devam eder, ancak durumları **kapatıldı** olarak ayarlanır. Durumu Azure portal görebilirsiniz, ancak Güvenlik Merkezi güvenlik uyarılarınıza erişebilirsiniz. 
 
 > [!TIP]
 > [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) , gizlenen uyarılar için olaylar oluşturmaz. Diğer Sıems 'ler için, uyarılar ' durumu (' kapatıldı ') kullanarak gizlenen uyarıları filtreleyebilirsiniz.
 
 Kurallarınız tarafından kapatılan uyarıları görüntülemek için Güvenlik Merkezi 'nin filtresini kullanın.
 
-* Güvenlik Merkezi 'nin güvenlik uyarıları sayfasında, filtre seçeneklerini açın ve **kapatıldı**' ı seçin.  
+* Güvenlik Merkezi 'nin güvenlik uyarıları sayfasında, filtre seçeneklerini açın ve **kapatıldı** ' ı seçin.  
 
    [![Kapatılan uyarıları görüntüleme](media/alerts-suppression-rules/view-dismissed-alerts.png)](media/alerts-suppression-rules/view-dismissed-alerts.png#lightbox)
 
@@ -127,9 +127,9 @@ Güvenlik Merkezi 'nin REST API aracılığıyla uyarı gizleme kuralları oluş
 
 REST API kuralları gizleme için ilgili HTTP yöntemleri şunlardır:
 
-- **PUT**: belirtilen abonelikte bir gizleme kuralı oluşturmak veya güncelleştirmek için.
+- **PUT** : belirtilen abonelikte bir gizleme kuralı oluşturmak veya güncelleştirmek için.
 
-- **Al**:
+- **Al** :
 
     - Belirtilen bir abonelik için yapılandırılmış tüm kuralları listelemek için. Bu yöntem, uygulanabilir kuralların dizisini döndürür.
 
@@ -137,7 +137,7 @@ REST API kuralları gizleme için ilgili HTTP yöntemleri şunlardır:
 
     - Gizleme kuralının etkisinin hala tasarım aşamasında benzetimini yapmak. Bu çağrı, kuralın etkin olması durumunda mevcut uyarılarınızın hangisinin kapatılacağını tanımlar.
 
-- **Sil**: varolan bir kuralı siler (ancak tarafından zaten kapatılan uyarıların durumunu değiştirmez).
+- **Sil** : varolan bir kuralı siler (ancak tarafından zaten kapatılan uyarıların durumunu değiştirmez).
 
 Tam ayrıntılar ve kullanım örnekleri için [API belgelerine](/rest/api/securitycenter/)bakın. 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: fa7d252246ed37160ba2a5cfcd90557df1375bc3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 4f83500e539ff5254db290d156dfcf50ea60de14
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461541"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372566"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Makinelerdeki SQL sunucuları için Azure Defender 
 
@@ -30,7 +30,7 @@ Bu Azure Defender planı, veritabanlarına erişmek veya veritabanına yararlanm
 
 |Görünüş|Ayrıntılar|
 |----|:----|
-|Yayın durumu:|Önizleme|
+|Yayın durumu:|Önizleme<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Fiyat|**MAKINELERDEKI SQL Server 'lar Için Azure Defender** , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
 |Korumalı SQL sürümleri:|Azure SQL Server (Microsoft desteği kapsamında tüm sürümler)|
 |Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|
@@ -53,7 +53,7 @@ Bunların her ikisi de aşağıda açıklanmıştır.
 
 - **Şirket içi SQL Server** -SQL Server Azure Arc olmadan şirket Içi bir Windows makinesinde barındırılıyorsa, Azure 'a bağlamak için iki seçeneğiniz vardır:
     
-    - **Azure yayı dağıtma** -herhangi bir Windows makinesini Güvenlik Merkezi 'ne bağlayabilirsiniz. Bununla birlikte, Azure Arc *Tüm* Azure ortamlarınız genelinde daha derin tümleştirme sağlar. Azure yay ayarlarsanız, portalda **SQL Server – Azure yay** sayfasını görürsünüz ve güvenlik uyarılarınız ilgili sayfada özel bir **güvenlik** sekmesinde görüntülenir. Bu nedenle, ilk ve önerilen seçenek, [Azure Arc 'ı konakta ayarlamaya](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows) ve yukarıdaki **azure Arc üzerinde SQL Server**yönergelerini izlemeye yöneliktir.
+    - **Azure yayı dağıtma** -herhangi bir Windows makinesini Güvenlik Merkezi 'ne bağlayabilirsiniz. Bununla birlikte, Azure Arc *Tüm* Azure ortamlarınız genelinde daha derin tümleştirme sağlar. Azure yay ayarlarsanız, portalda **SQL Server – Azure yay** sayfasını görürsünüz ve güvenlik uyarılarınız ilgili sayfada özel bir **güvenlik** sekmesinde görüntülenir. Bu nedenle, ilk ve önerilen seçenek, [Azure Arc 'ı konakta ayarlamaya](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows) ve yukarıdaki **azure Arc üzerinde SQL Server** yönergelerini izlemeye yöneliktir.
         
     - **Windows makinesini Azure Arc olmadan bağlama** -Windows makinesinde çalışan bir SQL Server Azure yay kullanmadan bağlamayı seçerseniz, [Windows makinelerini Azure izleyici 'ye bağlama](../azure-monitor/platform/agent-windows.md)bölümündeki yönergeleri izleyin.
 
@@ -62,13 +62,13 @@ Bunların her ikisi de aşağıda açıklanmıştır.
 
 1. Güvenlik Merkezi 'nin menüsünde, **fiyatlandırma & ayarları** sayfasını açın.
 
-    - **Azure Güvenlik Merkezi 'nin varsayılan çalışma alanını** ("defaultworkspace-[abonelik kimliğiniz]-[Bölge]" olarak adlandırılan) kullanıyorsanız ilgili **aboneliği**seçin.
+    - **Azure Güvenlik Merkezi 'nin varsayılan çalışma alanını** ("defaultworkspace-[abonelik kimliğiniz]-[Bölge]" olarak adlandırılan) kullanıyorsanız ilgili **aboneliği** seçin.
 
-    - **Varsayılan olmayan bir çalışma alanı**kullanıyorsanız ilgili **çalışma alanını** seçin (gerekirse filtreye çalışma alanının adını girin):
+    - **Varsayılan olmayan bir çalışma alanı** kullanıyorsanız ilgili **çalışma alanını** seçin (gerekirse filtreye çalışma alanının adını girin):
 
         ![Varsayılan olmayan çalışma alanınızı başlığa göre bulma](./media/security-center-advanced-iaas-data/pricing-and-settings-workspaces.png)
 
-1. **MAKINELERDEKI SQL Server 'lar (Önizleme) planı Için Azure Defender** seçeneğini **Açık**olarak ayarlayın. 
+1. **MAKINELERDEKI SQL Server 'lar (Önizleme) planı Için Azure Defender** seçeneğini **Açık** olarak ayarlayın. 
 
     ![İsteğe bağlı planlar içeren güvenlik merkezi fiyatlandırma sayfası](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png)
 
@@ -97,7 +97,7 @@ Güvenlik açığı değerlendirme sonuçlarını doğrudan güvenlik merkezi 'n
 
     Bu öneriye ilişkin ayrıntılı görünüm görüntülenir.
 
-    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="Makinelerdeki SQL sunucularınızda bulunan güvenlik açığı değerlendirmesi (Önizleme) düzeltilmelidir.":::
+    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="Öneri için ayrıntılı görünüm":::
 
 1. Daha fazla ayrıntı için ayrıntıya gidin:
 
@@ -105,7 +105,7 @@ Güvenlik açığı değerlendirme sonuçlarını doğrudan güvenlik merkezi 'n
 
     * Belirli bir SQL veritabanı tarafından gruplanmış güvenlik açıklarına genel bir bakış için, ilgilendiğiniz veritabanını seçin.
 
-    Her görünümde güvenlik denetimleri **önem derecesine**göre sıralanır. Bir **Açıklama**içeren ayrıntı bölmesini, bunu nasıl **düzeltebileceğiniz** ve **etki** veya **kıyaslama**gibi diğer ilgili bilgileri görmek için belirli bir güvenlik denetimine tıklayın.
+    Her görünümde güvenlik denetimleri **önem derecesine** göre sıralanır. Bir **Açıklama** içeren ayrıntı bölmesini, bunu nasıl **düzeltebileceğiniz** ve **etki** veya **kıyaslama** gibi diğer ilgili bilgileri görmek için belirli bir güvenlik denetimine tıklayın.
 
 ## <a name="azure-defender-for-sql-alerts"></a>SQL için Azure Defender uyarıları
 Uyarılar, SQL makinelerine erişmek veya bu makinelere yararlanmak için olağandışı ve olası zararlı saldırılara göre oluşturulur. Bu olaylar, uyarı [başvurusu SAYFASıNıN SQL veritabanı ve Azure SYNAPSE Analytics (eski ADıYLA SQL veri ambarı) uyarıları bölümünde](alerts-reference.md#alerts-sql-db-and-warehouse)gösterilen uyarıları tetikleyebilirsiniz.

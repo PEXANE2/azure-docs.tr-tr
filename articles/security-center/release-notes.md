@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: 6de06e4ab9a302517a09b34de56c1b5535b245a9
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 375dff1dacc949dd4373bbf26908feb504750224
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357819"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372360"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -31,7 +31,13 @@ Güvenlik Merkezi 'ne yakında çıkacak *planlı* değişiklikler hakkında bil
 > Altı aydan eski olan öğeleri arıyorsanız, [Azure Güvenlik Merkezi 'ndeki yenilikler Için arşivde](release-notes-archive.md)bulabilirsiniz.
 
 
-## <a name="november-2020"></a>2020 Kasım
+## <a name="november-2020"></a>Kasım 2020
+
+Kasım 'daki güncelleştirmeler şunlardır:
+
+- [Azure Güvenlik kıyaslamasının kapsamını artırmak için 29 önizleme önerileri eklenmiştir](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
+- [NıST SP 800 171 R2, güvenlik merkezi 'nin mevzuat uyumluluk panosuna eklendi](#nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard)
+
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>Azure Güvenlik kıyaslamasının kapsamını artırmak için 29 önizleme önerileri eklenmiştir
 
@@ -61,10 +67,21 @@ Bu kıyaslama kapsamını artırmak için Güvenlik Merkezi 'ne aşağıdaki 29 
 - [PostgreSQL için Azure veritabanı hakkında daha fazla bilgi edinin](../postgresql/overview.md)
 
 
+### <a name="nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard"></a>NıST SP 800 171 R2, güvenlik merkezi 'nin mevzuat uyumluluk panosuna eklendi
+
+NıST SP 800-171 R2 Standard artık, Azure Güvenlik Merkezi 'nin mevzuat uyumluluk panosu ile birlikte kullanılmak üzere yerleşik bir girişim olarak sunulmaktadır. Denetimlerle ilgili eşlemeler, [NıST SP 800-171 R2 mevzuatı uyumluluğu yerleşik girişiminin ayrıntıları](../governance/policy/samples/nist-sp-800-171-r2.md)bölümünde açıklanmaktadır. 
+
+Standart aboneliğinizi aboneliklerinize uygulamak ve uyumluluk durumunuzu sürekli olarak izlemek için, [mevzuat uyumluluk panonuzdaki standartlar kümesini özelleştirme](update-regulatory-compliance-packages.md)bölümündeki yönergeleri kullanın.
+
+:::image type="content" source="media/release-notes/nist-sp-800-171-r2-standard.png" alt-text="Güvenlik Merkezi 'nin mevzuat uyumluluk panosundaki NıST SP 800 171 R2 Standard":::
+
+Bu uyumluluk standardı hakkında daha fazla bilgi için bkz. [NıST SP 800-171 R2](https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final).
+
 
 
 ## <a name="october-2020"></a>Ekim 2020
 
+Ekim 'deki güncelleştirmeler şunlardır:
 - [Şirket içi ve çoklu bulut makinelerinde güvenlik açığı değerlendirmesi (Önizleme)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview)
 - [Azure Güvenlik Duvarı önerisi eklendi (Önizleme)](#azure-firewall-recommendation-added-preview)
 - [Yetkili IP aralıklarının, hızlı düzeltmeyle güncelleştirilmiş Kubernetes Hizmetleri önerisi üzerinde tanımlanması gerekir](#authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix)
@@ -122,7 +139,7 @@ Pano, varsayılan bir mevzuat standartları kümesi içerir. Sağlanan standartl
 
 Azure Kaynak Grafiği, ortamınızı etkili bir şekilde yönetebilmeniz için belirli bir abonelik kümesi genelinde ölçeği sorgulama özelliği ile verimli kaynak araştırması sağlamak üzere tasarlanan Azure hizmetidir. 
 
-Azure Güvenlik Merkezi için bağımsız değişken ve [kusto sorgu dili (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) kullanarak çok çeşitli güvenlik sonrası verileri sorgulayabilirsiniz. Örneğin:
+Azure Güvenlik Merkezi için bağımsız değişken ve [kusto sorgu dili (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) kullanarak çok çeşitli güvenlik sonrası verileri sorgulayabilirsiniz. Örnek:
 
 - Varlık envanteri kullanır (bağımsız değişken)
 - [Multi-Factor Authentication (MFA) etkin olmayan hesapların nasıl tanımlanacağına](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled) yönelik örnek bir bağımsız değişken sorgusu belgeliyoruz

@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bfecebd0e475536ba88022b62c9ae31a31b2ff3c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8c50d13f35f3d4f04cacba736e7e9fd5f3fba6f5
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88934437"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371607"
 ---
 C# istemci kitaplığını kullanarak Bing Görsel Arama hizmetinden görüntü öngörülerini almaya başlamak için bu hızlı başlangıcı kullanın. Bing Görsel Arama, çoğu programlama dili ile uyumlu bir REST API sahip olsa da, istemci kitaplığı, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sağlar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVisualSearch)' da bulunabilir.
 
-[Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-dotnet)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VisualSearch/)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
+[Başvuru belgeleri](/dotnet/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-dotnet)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VisualSearch/)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
 
 ## <a name="prerequisites"></a>Önkoşullar
 

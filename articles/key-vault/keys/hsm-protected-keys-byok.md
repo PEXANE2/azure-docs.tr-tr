@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 1869ec9b617a7451ec42fa9d092ea3bb5834f9e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe7a8a3df535d05c3c834d3e2fbba5f7df5d6fcd
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88585483"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372260"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>HSM korumalı anahtarları Key Vault içeri aktar (BYOK)
 
@@ -63,12 +63,13 @@ Aşağıdaki tabloda Azure Key Vault BYOK kullanımına yönelik önkoşullar li
 |Fortanx|Üreticisini<br/>Hizmet olarak HSM|<ul><li>Self-Defending anahtar yönetim hizmeti (SDKMS)</li><li>Equinix SmartKey</li></ul>|[SDKMS anahtarlarını BYOK için bulut sağlayıcılarına dışarı aktarma-Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
 |Marvell|Üretici|Tüm LiquidSecurity HSM 'leri<ul><li>Bellenim sürümü 2.0.4 veya üzeri</li><li>Bellenim sürüm 3,2 veya daha yenisi</li></ul>|[Marvell BYOK aracı ve belgeleri](https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/exporting-marvell-hsm-keys-to-cloud-azure-key-vault.html)|
 |Cryptomathic|ISV (Kurumsal anahtar yönetim sistemi)|Birden çok HSM markalarını ve modellerini kapsayan<ul><li>nCipher</li><li>Thales</li><li>Utıco</li></ul>[Ayrıntılar için bkz. Cryptomathic sitesi](https://www.cryptomathic.com/azurebyok)|[Cryptomathic BYOK aracı ve belgeleri](https://www.cryptomathic.com/azurebyok)|
-
+|Securosys SA|Üretici, hizmet olarak HSM|Primus HSM ailesi, Securosys bulutları HSM|[Primus BYOK aracı ve belgeleri](https://www.securosys.com/primus-azure-byok)|
+||||
 
 
 ## <a name="supported-key-types"></a>Desteklenen anahtar türleri
 
-|Anahtar adı|Anahtar türü|Anahtar boyutu|Kaynak|Açıklama|
+|Anahtar adı|Anahtar türü|Anahtar boyutu|Kaynak|Description|
 |---|---|---|---|---|
 |Anahtar değişim anahtarı (KEK)|RSA| 2.048 bit<br />3.072 bit<br />4.096 bit|Azure Key Vault HSM|Azure Key Vault içinde oluşturulan HSM ile desteklenen bir RSA anahtar çifti|
 |Hedef anahtar|RSA|2.048 bit<br />3.072 bit<br />4.096 bit|Satıcı HSM|Azure Key Vault HSM 'ye aktarılacak anahtar|
@@ -119,7 +120,7 @@ BYOK dosyasını bağlı bilgisayarınıza aktarın.
 > [!NOTE] 
 > RSA 1.024 bit anahtarlarının içe aktarılması desteklenmez. Şu anda, eliptik eğri (EC) anahtarının içe aktarılması desteklenmez.
 > 
-> **Bilinen sorun**: bir RSA 4k hedef anahtarının yalnızca bir bellenim 7.4.0 veya daha yeni sürümü ile içeri aktarılması desteklenir.
+> **Bilinen sorun** : bir RSA 4k hedef anahtarının yalnızca bir bellenim 7.4.0 veya daha yeni sürümü ile içeri aktarılması desteklenir.
 
 ### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>4. Adım: anahtarınızı Azure Key Vault aktarma
 

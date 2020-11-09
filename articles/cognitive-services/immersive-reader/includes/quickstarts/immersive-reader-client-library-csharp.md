@@ -11,18 +11,18 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 1c7587a4434a84c6934179393baa5ae684f9b1fd
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: cef5aaae58797e38745b3f5164c171581a005562
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92116811"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94372005"
 ---
 [Modern okuyucu](https://www.onenote.com/learningtools) , yeni okuyucular, dil öğrenimi ve öğrenimi gibi öğrenme farklılığı olan kişiler için okuma kavramasını geliştirmek üzere kanıtlanmış teknikler uygulayan, benzer şekilde tasarlanmış bir araçtır. Uygulamalarınızı odaklamak üzere metin yalıtmak, yaygın olarak kullanılan sözcüklerin resimlerini göstermek, konuşma parçalarını vurgulamak, seçili metni sesli okumak, sözcükleri ve tümceleri gerçek zamanlı olarak çevirmek ve daha fazlasını yapmak için uygulamalarınızda modern okuyucu kullanabilirsiniz.
 
 Bu hızlı başlangıçta, sıfırdan bir Web uygulaması oluşturacaksınız ve tam ekran okuyucu istemci kitaplığını kullanarak modern okuyucuyu tümleştirmeniz gerekir. Bu hızlı başlangıçta tam çalışma örneği [GitHub ' da](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp)kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads)
@@ -42,7 +42,7 @@ Visual Studio 'da, yerleşik Model-View-Controller ve ASP.NET Core 2,1 ASP.NET C
 
 ### <a name="configure-authentication-values"></a>Kimlik doğrulama değerlerini yapılandırma
 
-_Çözüm Gezgini_ projeye sağ tıklayın ve **Kullanıcı gizli dizilerini Yönet**' i seçin. Bu, _ üzerindesecrets.js_adlı bir dosya açar. Bu dosya kaynak denetimine iade edilmedi. [Burada](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows&preserve-view=true) daha fazla bilgi edinin. Derinlikli okuyucu kaynağınızı oluştururken verilen değerleri sağlayarak, _ üzerindekisecrets.js_ içeriğini aşağıdaki şekilde değiştirin.
+_Çözüm Gezgini_ projeye sağ tıklayın ve **Kullanıcı gizli dizilerini Yönet** ' i seçin. Bu, _üzerindesecrets.js_ adlı bir dosya açar. Bu dosya kaynak denetimine iade edilmedi. [Burada](/aspnet/core/security/app-secrets?preserve-view=true&tabs=windows&view=aspnetcore-3.1) daha fazla bilgi edinin. Derinlikli okuyucu kaynağınızı oluştururken verilen değerleri sağlayarak, _üzerindekisecrets.js_ içeriğini aşağıdaki şekilde değiştirin.
 
 ```json
 {
@@ -65,13 +65,13 @@ Aşağıdaki kod, **Microsoft. IdentityModel. clients. ActiveDirectory** NuGet p
 
 ### <a name="update-the-controller-to-acquire-the-token"></a>Belirteci almak için denetleyiciyi güncelleştirme 
 
-_Controllers\homecontroller.cs_dosyasını açın ve dosyanın en üstündeki _using_ deyimlerinden sonra aşağıdaki kodu ekleyin.
+_Controllers\homecontroller.cs_ dosyasını açın ve dosyanın en üstündeki _using_ deyimlerinden sonra aşağıdaki kodu ekleyin.
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-Şimdi, denetleyiciyi _ üzerindesecrets.js_Azure AD değerlerini almak için yapılandıracağız. _HomeController_ sınıfının en üstünde, sonra ```public class HomeController : Controller {``` aşağıdaki kodu ekleyin.
+Şimdi, denetleyiciyi _üzerindesecrets.js_ Azure AD değerlerini almak için yapılandıracağız. _HomeController_ sınıfının en üstünde, sonra ```public class HomeController : Controller {``` aşağıdaki kodu ekleyin.
 
 ```csharp
 private readonly string TenantId;     // Azure subscription TenantId
@@ -142,7 +142,7 @@ public async Task<JsonResult> GetTokenAndSubdomain()
 ```
 
 ## <a name="add-sample-content"></a>Örnek içerik Ekle
-İlk olarak, _Views\shared\layout.exe. cshtml_dosyasını açın. Satırdan önce ```</head>``` aşağıdaki kodu ekleyin:
+İlk olarak, _Views\shared\layout.exe. cshtml_ dosyasını açın. Satırdan önce ```</head>``` aşağıdaki kodu ekleyin:
 
 ```html
 @RenderSection("Styles", required: false)
@@ -218,9 +218,9 @@ Metnin tümünde, metnin dillerini açıklayan bir **lang** özniteliği olduğu
 
 ## <a name="add-javascript-to-handle-launching-immersive-reader"></a>Derinlikli okuyucu başlatma tanıtıcısına JavaScript ekleme
 
-Modern okuyucu kitaplığı, derinlikli okuyucu başlatma ve tam ekran okuyucu düğmelerini işleme gibi işlevler sağlar. [Burada](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference) daha fazla bilgi edinin.
+Modern okuyucu kitaplığı, derinlikli okuyucu başlatma ve tam ekran okuyucu düğmelerini işleme gibi işlevler sağlar. [Burada](../../reference.md) daha fazla bilgi edinin.
 
-_Views\home\ındex.cshtml_altında aşağıdaki kodu ekleyin:
+_Views\home\ındex.cshtml_ altında aşağıdaki kodu ekleyin:
 
 ```html
 @section Scripts
@@ -292,7 +292,7 @@ _Views\home\ındex.cshtml_altında aşağıdaki kodu ekleyin:
 
 ## <a name="build-and-run-the-app"></a>Uygulamayı derleyin ve çalıştırın
 
-Menü çubuğundan **hata ayıkla > hata ayıklamayı Başlat**' ı seçin veya **F5** ' e basarak uygulamayı başlatın.
+Menü çubuğundan **hata ayıkla > hata ayıklamayı Başlat** ' ı seçin veya **F5** ' e basarak uygulamayı başlatın.
 
 Tarayıcınızda şunları görmeniz gerekir:
 

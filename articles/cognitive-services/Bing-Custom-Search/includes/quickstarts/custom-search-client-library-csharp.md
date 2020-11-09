@@ -8,19 +8,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: aahi
-ms.openlocfilehash: ba80d1396b30b61bdfe4c121220429f5a7d994b0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4698649eace23e8428dffb9801294beb22ac126a
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "79485990"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371791"
 ---
 C# için Bing Özel Arama istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Bing Özel Arama API'si, ilgilendiğiniz konular için özel, reklam ücretsiz arama deneyimleri oluşturmanıza olanak sağlar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch)' da bulunabilir.
 
 C# için Bing Özel Arama istemci kitaplığını kullanarak şunları yapın:
 * Bing Özel Arama örneğinden Web 'de arama sonuçları bulun.
 
-[Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
+[Başvuru belgeleri](/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
 
 
 ## <a name="prerequisites"></a>Önkoşullar

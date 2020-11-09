@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 7301f6bbb33c3eedff2e8c41edeaacb3df66d4c2
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 220f9fffd6c0f9b959230964a9ec79f4e209bd54
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342034"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372548"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>SQL için Azure Defender 'a giriş
 
@@ -23,7 +23,7 @@ SQL için Azure Defender, Azure Güvenlik Merkezi 'nin [veri güvenlik paketini]
 
 |Görünüş|Ayrıntılar|
 |----|:----|
-|Yayın durumu:|**Azure SQL veritabanı sunucuları Için Azure Defender** -genel kullanıma sunuldu (GA)<br>**MAKINELERDE SQL Server 'lar Için Azure Defender** -Önizleme|
+|Yayın durumu:|**Azure SQL veritabanı sunucuları Için Azure Defender** -genel kullanıma sunuldu (GA)<br>**MAKINELERDE SQL Server 'lar Için Azure Defender** -Önizleme<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Fiyat|**SQL Için Azure Defender 'ı** oluşturan iki plan, [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
 |Korumalı SQL sürümleri:|Azure SQL Veritabanı <br>Azure SQL Yönetilen Örnek<br>Azure Synapse Analytics (eski adı SQL DW)<br>SQL Server (tüm desteklenen sürümler)|
 |Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|

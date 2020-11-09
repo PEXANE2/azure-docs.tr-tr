@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 8896ed3eed291e6ec18c45df60e6079ada769b28
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 3a597b6454b3fb738ca192fa7750ca94fdb873ab
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993336"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372804"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure 'da kendi aboneliğinizi getir Gold görüntülerini Red Hat Enterprise Linux
 
@@ -21,14 +21,14 @@ Red Hat Enterprise Linux (RHEL) görüntüleri, Kullandıkça Öde veya kendi ab
 >[!NOTE]
 > RHEL BYOS Gold görüntüleri Azure genel (ticari) ve Azure Kamu bulutlarında kullanılabilir. Azure Çin veya Azure Kara Orman bulutlarında mevcut değildir.
 
-## <a name="important-points-to-consider"></a>Dikkate alınması gereken önemli nokta
+## <a name="important-points-to-consider"></a>Dikkat edilmesi gereken önemli noktalar
 
 - Bu programda sunulan Red Hat Gold görüntüleri, Azure Marketi 'ndeki RHEL Kullandıkça Öde görüntülerine benzer üretime yönelik RHEL görüntüleridir.
 - Görüntüler, [Azure 'da Red Hat Enterprise Linux görüntülerde](./redhat-images.md)açıklanan geçerli ilkeleri izler.
 - Bu görüntülerden oluşturulan VM 'lere standart destek ilkeleri uygulanır.
 - Red Hat Gold görüntülerinden sağlanan VM 'Ler, RHEL Kullandıkça Öde görüntüleriyle ilişkili RHEL ücretleri taşımaz.
 - Görüntülerin yetkileri yok. Red Hat Subscription-Manager kullanarak doğrudan Red Hat 'ten güncelleştirmeleri almak için bu VM 'Leri kaydedebilir ve abone olabilirsiniz.
-- Linux görüntüleri için KCG ve kullandıkça öde faturalandırma modelleri arasında dinamik olarak geçiş yapmak mümkün değildir. Faturalandırma modelini değiştirmek için, VM 'yi ilgili görüntüden yeniden dağıtmanız gerekir.
+- Kullandıkça Öde görüntülerinin [Azure hibrit avantajı](../../linux/azure-hybrid-benefit-linux.md)kullanarak KCG 'ye geçmesi mümkündür. Ancak, başlangıçta dağıtılan bir KCG 'nin Linux görüntüleri için Kullandıkça Öde faturalandırma modellerine geçiş yapmak mümkün değildir. Faturalandırma modelini KCG 'den Kullandıkça Öde 'ye geçirmek için, sanal makineyi ilgili görüntüden yeniden dağıtmanız gerekir.
 
 >[!NOTE]
 > 2. nesil RHEL BYOS görüntüleri Market teklifiyle Şu anda kullanılamıyor. 2. nesil RHEL BYOS görüntüsüne ihtiyacınız varsa, Red Hat abonelik yönetimi 'nde bulut erişim panosunu ziyaret edin. Daha fazla bilgi için bkz. [Red Hat belgeleri](https://access.redhat.com/articles/4847681).
@@ -45,7 +45,7 @@ Bulut erişimi etkinleştirme adımlarını tamamladıktan sonra Red hat, Red Ha
 
 ## <a name="use-the-red-hat-gold-images-from-the-azure-portal"></a>Azure portal kırmızı hat altın görüntülerini kullanın
 
-1. Azure aboneliğiniz Red Hat altın görüntülerine erişimi aldıktan sonra, bunları [Azure Portal](https://portal.azure.com)bulabilirsiniz. **Kaynak oluştur ' a**gidin,  >  **Tümünü gör**.
+1. Azure aboneliğiniz Red Hat altın görüntülerine erişimi aldıktan sonra, bunları [Azure Portal](https://portal.azure.com)bulabilirsiniz. **Kaynak oluştur ' a** gidin,  >  **Tümünü gör**.
 
 1. Sayfanın üst kısmında özel tekliflerle ilgili olduğunu görürsünüz.
 
@@ -93,7 +93,7 @@ Aşağıdaki yönergeler, Azure CLı kullanarak bir RHEL VM için ilk dağıtım
     ```
 
     >[!NOTE]
-    >Bu koşulların *her bir Azure aboneliği için, görüntü SKU 'su başına bir kez*kabul edilmesi gerekir.
+    >Bu koşulların *her bir Azure aboneliği için, görüntü SKU 'su başına bir kez* kabul edilmesi gerekir.
 
 1. Seçim Aşağıdaki komutla VM dağıtımınızı doğrulayın:
 

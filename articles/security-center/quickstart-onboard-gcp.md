@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 71f1de7b4ff265a5740181a2bb2032f33a83abe3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbaa44fb64becee85b29cd44bee44e593ec55bf6
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448983"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372651"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>GCP hesaplarınızı Azure Güvenlik Merkezi 'ne bağlama
 
@@ -36,10 +36,10 @@ Aşağıdaki ekran görüntüsünde, güvenlik merkezi 'nin genel bakış panosu
 
 |Görünüş|Ayrıntılar|
 |----|:----|
-|Yayın durumu:|Önizleme|
+|Yayın durumu:|Önizleme<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir|
 |Gerekli roller ve izinler:|İlgili Azure aboneliğinde **sahip** veya **katkıda** bulunan|
-|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 ## <a name="connect-your-gcp-account"></a>GCP hesabınıza bağlanma
@@ -59,43 +59,43 @@ Güvenlik sistem durumu analizlerini ilk kez etkinleştirdiğinizde, verilerin k
 
 ### <a name="step-2-enable-gcp-security-command-center-api"></a>Adım 2. GCP güvenlik Komut Merkezi API 'sini etkinleştir
 
-1. Google 'ın **bulut konsolu API kitaplığından**Azure Güvenlik Merkezi 'ne bağlanmak istediğiniz projeyi seçin.
-1. API kitaplığı 'nda **Güvenlik Komut Merkezi API 'sini**bulun ve seçin.
-1. API 'nin sayfasında **Etkinleştir**' i seçin.
+1. Google 'ın **bulut konsolu API kitaplığından** Azure Güvenlik Merkezi 'ne bağlanmak istediğiniz projeyi seçin.
+1. API kitaplığı 'nda **Güvenlik Komut Merkezi API 'sini** bulun ve seçin.
+1. API 'nin sayfasında **Etkinleştir** ' i seçin.
 
 [Güvenlik Komut Merkezi API 'si](https://cloud.google.com/security-command-center/docs/reference/rest/)hakkında daha fazla bilgi edinin.
 
 
 ### <a name="step-3-create-a-dedicated-service-account-for-the-security-configuration-integration"></a>3. Adım Güvenlik Yapılandırması tümleştirmesi için adanmış bir hizmet hesabı oluşturma
 
-1. **GCP konsolunda**, güvenlik merkezi 'ne bağlanmak istediğiniz projeyi seçin.
-1. **Gezinti menüsünde**, **IAM & yönetici** seçenekleri altında **hizmet hesapları**' nı seçin.
-1. **HIZMET hesabı oluştur**' u seçin.
-1. Hesap adı girin ve **Oluştur**' u seçin.
-1. **Rolü** **Güvenlik Merkezi yönetici Görüntüleyicisi**olarak belirtin ve **devam**' ı seçin.
-1. **Kullanıcılara bu hizmet hesabına erişim Izni ver** bölümü isteğe bağlıdır. **Bitti** seçeneğini belirleyin.
+1. **GCP konsolunda** , güvenlik merkezi 'ne bağlanmak istediğiniz projeyi seçin.
+1. **Gezinti menüsünde** , **IAM & yönetici** seçenekleri altında **hizmet hesapları** ' nı seçin.
+1. **HIZMET hesabı oluştur** ' u seçin.
+1. Hesap adı girin ve **Oluştur** ' u seçin.
+1. **Rolü** **Güvenlik Merkezi yönetici Görüntüleyicisi** olarak belirtin ve **devam** ' ı seçin.
+1. **Kullanıcılara bu hizmet hesabına erişim Izni ver** bölümü isteğe bağlıdır. **Bitti** ’yi seçin.
 1. Oluşturulan hizmet hesabının **e-posta değerini** kopyalayın ve daha sonra kullanmak üzere kaydedin.
-1. **Gezinti menüsünde**, **IAM & yönetici** seçenekleri altında **IAM** ' i seçin.
+1. **Gezinti menüsünde** , **IAM & yönetici** seçenekleri altında **IAM** ' i seçin.
     1. Kuruluş düzeyine geçin.
-    1. **Ekle**' yi seçin.
+    1. **Ekle** ' yi seçin.
     1. **Yeni Üyeler** alanında, daha önce kopyaladığınız **e-posta değerini** yapıştırın.
     1. Rolü **Güvenlik Merkezi yönetici Görüntüleyicisi** olarak belirtip Kaydet ' i seçin.
-        :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="Güvenlik Merkezi 'nin genel bakış panosunda listelenen 3 GCP projesi":::
+        :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="İlgili GCP izinlerini ayarlama":::
 
 
 ### <a name="step-4-create-a-private-key-for-the-dedicated-service-account"></a>4. Adım: Adanmış hizmet hesabı için özel anahtar oluşturma
 1. Proje düzeyine geçin.
-1. **Gezinti menüsünde**, **IAM & yönetici** seçenekleri altında **hizmet hesapları**' nı seçin.
+1. **Gezinti menüsünde** , **IAM & yönetici** seçenekleri altında **hizmet hesapları** ' nı seçin.
 1. Adanmış hizmet hesabını açın ve Düzenle ' yi seçin.
-1. **Anahtarlar** bölümünde **anahtar Ekle** ' yi ve ardından **Yeni anahtar oluştur**' u seçin.
-1. Özel anahtar oluştur ekranında **JSON**' ı seçin ve ardından **Oluştur**' u seçin.
+1. **Anahtarlar** bölümünde **anahtar Ekle** ' yi ve ardından **Yeni anahtar oluştur** ' u seçin.
+1. Özel anahtar oluştur ekranında **JSON** ' ı seçin ve ardından **Oluştur** ' u seçin.
 1. Bu JSON dosyasını daha sonra kullanmak üzere kaydedin.
 
 
 ### <a name="step-5-connect-gcp-to-security-center"></a>5. Adım. GCP 'yi Güvenlik Merkezi 'ne bağlama 
-1. Güvenlik Merkezi menüsünden **bulut bağlayıcıları**' nı seçin.
+1. Güvenlik Merkezi menüsünden **bulut bağlayıcıları** ' nı seçin.
 1. GCP hesabı Ekle ' yi seçin.
-1. Ekleme sayfasında, aşağıdakileri yapın ve ardından **İleri**' yi seçin.
+1. Ekleme sayfasında, aşağıdakileri yapın ve ardından **İleri** ' yi seçin.
     1. Seçilen aboneliği doğrulayın.
     1. **Görünen ad** alanına bağlayıcı için bir görünen ad girin.
     1. **Kuruluş kimliği** alanında, kuruluşunuzun kimliğini girin. Bunu bilmiyorsanız bkz. [kuruluş oluşturma ve yönetme](https://cloud.google.com/resource-manager/docs/creating-managing-organization).
@@ -107,7 +107,7 @@ Güvenlik sistem durumu analizlerini ilk kez etkinleştirdiğinizde, verilerin k
 Bağlayıcı başarıyla oluşturulduğunda ve GCP güvenlik Komut Merkezi düzgün şekilde yapılandırıldığında:
 
 - GCP CIS standardı, güvenlik merkezi 'nin mevzuat uyumluluk panosunda gösterilir.
-- GCP kaynaklarınız için güvenlik önerileri, güvenlik merkezi portalında ve düzenleme sonrasında yasal uyumluluk panosu 5-10 dakika sonra görüntülenir:   :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resources-in-recommendations.png" alt-text="Güvenlik Merkezi 'nin genel bakış panosunda listelenen 3 GCP projesi":::
+- GCP kaynaklarınız için güvenlik önerileri, güvenlik merkezi portalında ve düzenleme sonrasında yasal uyumluluk panosu 5-10 dakika sonra görüntülenir:   :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resources-in-recommendations.png" alt-text="Güvenlik Merkezi 'nin öneriler sayfasında GCP kaynakları ve önerileri":::
 
 
 ## <a name="monitoring-your-gcp-resources"></a>GCP kaynaklarınızı izleme
@@ -116,7 +116,7 @@ Yukarıda gösterildiği gibi, Azure Güvenlik Merkezi 'nin güvenlik önerileri
 
 Kaynaklarınızın tüm etkin önerilerini kaynak türüne göre görüntülemek için, güvenlik merkezi 'nin varlık envanteri sayfasını kullanın ve ilgilendiğiniz GCP kaynak türüne filtre uygulayın:
 
-:::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="Güvenlik Merkezi 'nin genel bakış panosunda listelenen 3 GCP projesi"::: 
+:::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="Varlık envanteri sayfasının kaynak türü filtresi, GCP seçeneklerini gösterir"::: 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

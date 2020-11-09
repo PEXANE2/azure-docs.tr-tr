@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 04/28/2020
+ms.date: 11/08/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 9339ac86595a1edbbd996e410d416074680695ed
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 8cf0652148ad54eeacdec874823ea680f39f670c
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340048"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372736"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için denetim
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -40,7 +40,7 @@ SQL veritabanı denetimini kullanarak şunları yapabilirsiniz:
 - Raporları **analiz edin** . Şüpheli olayları, alışılmışın dışındaki etkinlikleri ve eğilimleri bulabilirsiniz.
 
 > [!IMPORTANT]
-> Azure SQL veritabanı denetimi, kullanılabilirlik ve performans için iyileştirilmiştir. Çok yüksek etkinlik Azure SQL veritabanı veya Azure SYNAPSE işlemleri sırasında işlemlerin devam etmesine izin verir ve bazı denetlenen olayları kaydedemeyebilir.
+> Azure SQL veritabanı ve Azure SYNAPSE için denetim, kullanılabilirlik ve performans için iyileştirilmiştir. Çok yüksek etkinlik veya yüksek ağ yükü, Azure SQL veritabanı ve Azure SYNAPSE, işlemlerin devam etmesini sağlar ve bazı denetlenen olayları kaydedemeyebilir.
 
 ### <a name="auditing-limitations"></a>Denetim sınırlamaları
 

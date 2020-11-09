@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: c0129ff25f1df492ab6eba9f49add18d5321a3e8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8c0715b3570bf60205c83390ab93b272e49e8733
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88246556"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371587"
 ---
 Go için Bing Otomatik Öneri istemci kitaplığı ile çalışmaya başlayın. Kitaplığı yüklemek için bu adımları izleyin ve temel görevler için örneklerimizi deneyin.
 
@@ -33,7 +33,7 @@ Azure kaynağı oluşturarak Bing Otomatik Öneri istemci kitaplığını kullan
 ## <a name="create-environment-variables"></a>Ortam değişkenlerini oluşturma
 
 >[!NOTE]
-> 1 Temmuz 2019 ' den sonra oluşturulan kaynaklar için uç noktalar aşağıda gösterilen özel alt etki alanı biçimini kullanır. Daha fazla bilgi ve bölgesel uç noktaların tamamen listesi için bkz. bilişsel [Hizmetler Için özel alt etki alanı adları](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains).
+> 1 Temmuz 2019 ' den sonra oluşturulan kaynaklar için uç noktalar aşağıda gösterilen özel alt etki alanı biçimini kullanır. Daha fazla bilgi ve bölgesel uç noktaların tamamen listesi için bkz. bilişsel [Hizmetler Için özel alt etki alanı adları](../../../cognitive-services-custom-subdomains.md).
 
 Oluşturduğunuz kaynaktan anahtarınızı ve uç noktayı kullanarak, kimlik doğrulama için iki ortam değişkeni oluşturun:
 <!-- replace the below variable names with the names expected in the code sample.-->
@@ -76,9 +76,9 @@ Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pen
 
 Konsol penceresinde (cmd, PowerShell, Terminal, Bash), go projeniz için yeni bir çalışma alanı oluşturun ve bu projeye gidin. Çalışma alanınız üç klasör içerir:
 
-* **src**: Bu dizin, kaynak kodu ve paketleri içerir. Komutuyla yüklenmiş tüm paketler `go get` burada yer alır.
-* **pkg**: Bu dizin, derlenmiş go paketi nesnelerini içerir. Bu dosyaların hepsi bir `.a` uzantısı vardır.
-* **bin**: Bu dizin, çalıştırdığınızda oluşturulan ikili yürütülebilir dosyaları içerir `go install` .
+* **src** : Bu dizin, kaynak kodu ve paketleri içerir. Komutuyla yüklenmiş tüm paketler `go get` burada yer alır.
+* **pkg** : Bu dizin, derlenmiş go paketi nesnelerini içerir. Bu dosyaların hepsi bir `.a` uzantısı vardır.
+* **bin** : Bu dizin, çalıştırdığınızda oluşturulan ikili yürütülebilir dosyaları içerir `go install` .
 
 > [!TIP]
 > [Go çalışma alanının](https://golang.org/doc/code.html#Workspaces)yapısı hakkında daha fazla bilgi edinin. Bu kılavuz, ve ayarları hakkında bilgi içerir `$GOPATH` `$GOROOT` .
@@ -155,7 +155,7 @@ Bu kod örnekleri, Go için Bing Otomatik Öneri istemci kitaplığını kullana
 ### <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
 > [!NOTE]
-> Bu hızlı başlangıçta, adlı [created an environment variable](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) Bing otomatik öneri anahtarınız `BING_AUTOSUGGEST_SUBSCRIPTION_KEY` ve adlı uç nokta için bir ortam değişkeni oluşturdunuz `BING_AUTOSUGGEST_ENDPOINT` .
+> Bu hızlı başlangıçta, adlı [created an environment variable](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) Bing otomatik öneri anahtarınız `BING_AUTOSUGGEST_SUBSCRIPTION_KEY` ve adlı uç nokta için bir ortam değişkeni oluşturdunuz `BING_AUTOSUGGEST_ENDPOINT` .
 
 `main()`İşlevinde, uç nokta ve anahtarınızla bir istemci örneği oluşturun.
 
@@ -171,7 +171,7 @@ client.Endpoint = endpoint
 
 ### <a name="send-an-api-request"></a>API isteği gönder
 
-Aynı yöntemde, Bing 'e bir sorgu göndermek için istemcinin [AutoSuggestMethodAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) yöntemini kullanın. Ardından, [öneriler](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet) yanıtı üzerinde yineleme yapın ve ilk öneriyi yazdırın.
+Aynı yöntemde, Bing 'e bir sorgu göndermek için istemcinin [AutoSuggestMethodAsync](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) yöntemini kullanın. Ardından, [öneriler](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet) yanıtı üzerinde yineleme yapın ve ilk öneriyi yazdırın.
 
 ```Go
 // This should return the query suggestion "xbox."
@@ -220,4 +220,4 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 ## <a name="see-also"></a>Ayrıca bkz.
 
 - [Bing Otomatik Öneri nedir?](../../get-suggested-search-terms.md)
-- [Bing Otomatik Öneri API’si v7 başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
+- [Bing Otomatik Öneri API’si v7 başvurusu](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

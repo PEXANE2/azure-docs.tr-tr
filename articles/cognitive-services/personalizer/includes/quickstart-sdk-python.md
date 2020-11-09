@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
@@ -8,20 +8,20 @@ ms.subservice: personalizer
 ms.topic: include
 ms.custom: cog-serv-seo-aug-2020
 ms.date: 08/25/2020
-ms.openlocfilehash: 18fa74562b50ac832c7512351065bf8fedeba74f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 791e46e73ad7292528f0197f8424d44486ea9795
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89055419"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371742"
 ---
-[Başvuru belgeleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer?view=azure-python)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-personalizer)  |  [Paket (Pypı)](https://pypi.org/project/azure-cognitiveservices-personalizer/)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/Personalizer)
+[Başvuru belgeleri](/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer?view=azure-python)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-personalizer)  |  [Paket (Pypı)](https://pypi.org/project/azure-cognitiveservices-personalizer/)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/Personalizer)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * [Python 3.x](https://www.python.org/)
-* Azure aboneliğiniz olduktan sonra, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir kişiselleştirici kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
+* Azure aboneliğiniz olduktan sonra, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir kişiselleştirici kaynağı oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
     * Uygulamanızı kişiselleştirici API 'sine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
     * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
 
@@ -56,11 +56,11 @@ endpoint = "<paste-your-personalizer-endpoint-here>"
 
 ## <a name="object-model"></a>Nesne modeli
 
-Kişiselleştirici istemci, anahtarınızı içeren Microsoft. Rest. ServiceClientCredentials kullanarak Azure 'da kimlik doğrulaması yapan bir [Personizerclient](https://docs.microsoft.com/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer.personalizer_client.personalizerclient?view=azure-python) nesnesidir.
+Kişiselleştirici istemci, anahtarınızı içeren Microsoft. Rest. ServiceClientCredentials kullanarak Azure 'da kimlik doğrulaması yapan bir [Personizerclient](/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer.personalizer_client.personalizerclient?view=azure-python) nesnesidir.
 
-İçeriğin tek bir en iyi öğesi için sormak üzere bir [Rankrequest](https://docs.microsoft.com/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer.models.rankrequest?view=azure-python)oluşturun ve ardından istemciye geçirin. Rank yöntemi. Rank yöntemi bir RankResponse döndürür.
+İçeriğin tek bir en iyi öğesi için sormak üzere bir [Rankrequest](/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer.models.rankrequest?view=azure-python)oluşturun ve ardından istemciye geçirin. Rank yöntemi. Rank yöntemi bir RankResponse döndürür.
 
-Kişiselleştiriciye bir ödül puanı göndermek için, olay kimliği ve ödül puanı (değer) ' i eventoperations sınıfında [ödül](https://docs.microsoft.com/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer.operations.events_operations.eventsoperations?view=azure-python#reward-event-id--value--custom-headers-none--raw-false----operation-config-) yöntemine gönderecek şekilde ayarlayın.
+Kişiselleştiriciye bir ödül puanı göndermek için, olay kimliği ve ödül puanı (değer) ' i eventoperations sınıfında [ödül](/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer.operations.events_operations.eventsoperations?view=azure-python#reward-event-id--value--custom-headers-none--raw-false----operation-config-) yöntemine gönderecek şekilde ayarlayın.
 
 Bu hızlı başlangıçta önemsiz bir şekilde belirlenir. Bir üretim sisteminde, İleri [puanı](../concept-rewards.md) neyin etkilediğini ve ne kadar karmaşık bir süreç olabileceğini belirleme, zaman içinde değiştirmeye karar verebilirsiniz. Bu, kişiselleştirici mimarinizdeki birincil tasarım kararlarından biri olmalıdır.
 

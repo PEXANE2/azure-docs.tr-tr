@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: ambapat
-ms.openlocfilehash: ce275674704cd7538f25a2d3f31d0e65aecd7925
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39486b076f9284436207f823ea48fddc98bb48a0
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320634"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372855"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>HSM korumalı anahtarları yönetilen HSM 'ye içeri aktar (BYOK)
 
@@ -40,7 +40,7 @@ Daha fazla bilgi edinmek ve yönetilen HSM 'yi kullanmaya başlamanıza yönelik
 * BYOK dosyası yönetilen HSM 'ye yüklendiğinde, yönetilen bir HSM, hedef anahtar malzemelerinin şifresini çözmek ve bir HSM anahtarı olarak içeri aktarmak için KEK özel anahtarını kullanır. Bu işlem tamamen HSM içinde gerçekleşir. Hedef anahtar her zaman HSM koruma sınırında kalır.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki Azure CLı komutlarını kullanmak için aşağıdaki öğelere sahip olmanız gerekir:
 
@@ -67,10 +67,13 @@ CLı aracılığıyla oturum açma seçenekleri hakkında daha fazla bilgi için
 |Fortanx|Üreticisini<br/>Hizmet olarak HSM|<ul><li>Self-Defending anahtar yönetim hizmeti (SDKMS)</li><li>Equinix SmartKey</li></ul>|[SDKMS anahtarlarını BYOK için bulut sağlayıcılarına dışarı aktarma-Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
 |Marvell|Üretici|Tüm LiquidSecurity HSM 'leri<ul><li>Bellenim sürümü 2.0.4 veya üzeri</li><li>Bellenim sürüm 3,2 veya daha yenisi</li></ul>|[Marvell BYOK aracı ve belgeleri](https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/exporting-marvell-hsm-keys-to-cloud-azure-key-vault.html)|
 |Cryptomathic|ISV (Kurumsal anahtar yönetim sistemi)|Birden çok HSM markalarını ve modellerini kapsayan<ul><li>nCipher</li><li>Thales</li><li>Utıco</li></ul>[Ayrıntılar için bkz. Cryptomathic sitesi](https://www.cryptomathic.com/azurebyok)|[Cryptomathic BYOK aracı ve belgeleri](https://www.cryptomathic.com/azurebyok)|
+|Securosys SA|Üretici, hizmet olarak HSM|Primus HSM ailesi, Securosys bulutları HSM|[Primus BYOK aracı ve belgeleri](https://www.securosys.com/primus-azure-byok)|
+||||
+
 
 ## <a name="supported-key-types"></a>Desteklenen anahtar türleri
 
-|Anahtar adı|Anahtar türü|Anahtar boyutu|Kaynak|Açıklama|
+|Anahtar adı|Anahtar türü|Anahtar boyutu|Kaynak|Description|
 |---|---|---|---|---|
 |Anahtar değişim anahtarı (KEK)|RSA| 2.048 bit<br />3.072 bit<br />4.096 bit|Yönetilen HSM|Yönetilen HSM 'de oluşturulan HSM ile desteklenen bir RSA anahtar çifti|
 |Hedef anahtar|RSA|2.048 bit<br />3.072 bit<br />4.096 bit|Satıcı HSM|Yönetilen HSM 'ye aktarılacak anahtar|
@@ -124,7 +127,7 @@ BYOK dosyasını bağlı bilgisayarınıza aktarın.
 > [!NOTE] 
 > RSA 1.024 bit anahtarlarının içe aktarılması desteklenmez. Şu anda, eliptik eğri (EC) anahtarının içe aktarılması desteklenmez.
 >
-> **Bilinen sorun**: bir RSA 4k hedef anahtarının yalnızca bir bellenim 7.4.0 veya daha yeni sürümü ile içeri aktarılması desteklenir.
+> **Bilinen sorun** : bir RSA 4k hedef anahtarının yalnızca bir bellenim 7.4.0 veya daha yeni sürümü ile içeri aktarılması desteklenir.
 
 ### <a name="step-4-transfer-your-key-to-managed-hsm"></a>4. Adım: anahtarınızı yönetilen HSM 'ye aktarma
 

@@ -7,14 +7,14 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 87c16207f312479dcfe083ad9494d75b3538e18c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 347d5ac9de164f2e96340df71fd3b1b908e607c1
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532559"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372753"
 ---
-# <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>Önerilerden ve güvenli puanın kaynağını muaf tutma
+# <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>Kaynağı önerilerden ve güvenlik puanından muaf tutma
 
 Her güvenlik ekibinin temel önceliği, analistlerin kuruluşa bağlı görevlere ve olaylara odaklanabildiğinden emin olmanıza çalışıyor. Güvenlik Merkezi, en çok önceliklendirilmesini ve güvenli puanınızın kuruluşunuzun güvenlik kararlarının geçerli bir yansıması olmasını sağlamak için birçok özelliğe sahiptir. Kaynakları muaf tutmak bu tür bir özelliktir.
 
@@ -30,10 +30,10 @@ Kaynak geçerli değil olarak listelenecektir ve bu nedenle seçtiğiniz gerekç
 
 |Görünüş|Ayrıntılar|
 |----|:----|
-|Yayın durumu:|Önizleme|
+|Yayın durumu:|Önizleme<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Fiyat|Bu, Azure Defender müşterileri için ek ücret ödemeden sunulan bir Premium Azure ilke özelliğidir. Diğer kullanıcılar için ücretler gelecekte uygulanabilir.|
 |Gerekli roller ve izinler:|Muafiyet oluşturmak için **abonelik sahibi** veya **ilke katılımcısı**<br>Bir kural oluşturmak için Azure Ilkesinde ilkeleri düzenleme izinlerinizin olması gerekir.<br>Azure [Ilkesinde Azure RBAC izinleri](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)hakkında daha fazla bilgi edinin.|
-|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
@@ -45,22 +45,22 @@ Kaynak geçerli değil olarak listelenecektir ve bu nedenle seçtiğiniz gerekç
 
     Muafiyet oluştur bölmesi açılır.
 
-    :::image type="content" source="./media/exempt-resource/exemption-rule-options.png" alt-text="Bağlam menüsünden muafiyet seçeneği oluştur":::
+    :::image type="content" source="./media/exempt-resource/exemption-rule-options.png" alt-text="Muafiyet bölmesi oluştur":::
 
 1. Ölçütlerinizi girin ve bu kaynağın neden dışlandığı için bir ölçüt seçin:
     - **Azaltıldığında** , bu sorun, önerilenden farklı bir araç veya işlem tarafından işlendiği için kaynakla ilgili değildir
     - **Feragat aldığınız** -bu kaynak için risk kabul ediliyor
-1. **Kaydet**’i seçin.
+1. **Kaydet** ’i seçin.
 1. Bir süre sonra (24 saate kadar sürebilir):
     - Kaynak, güvenli puanınızı etkilemez.
     - Kaynak, öneri Ayrıntıları sayfasının **geçerli değil** sekmesinde listelenir
     - Öneri Ayrıntıları sayfasının en üstündeki bilgi şeridi, muaf tutulan kaynakların sayısını listeler:
         
-        :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="Bağlam menüsünden muafiyet seçeneği oluştur":::
+        :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="Muaf tutulan kaynak sayısı":::
 
 1. Muaf tutulan kaynaklarınızı gözden geçirmek için, **geçerli değil** sekmesini açın.
 
-    :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="Bağlam menüsünden muafiyet seçeneği oluştur":::
+    :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="Muafiyeti değiştirme":::
 
     Her bir istisna için neden tabloya (1) dahildir.
 
@@ -73,7 +73,7 @@ Kaynak geçerli değil olarak listelenecektir ve bu nedenle seçtiğiniz gerekç
 
 **Muafiyet** sayfasında tüm muafiyetinizi Izlemek Için Azure ilkesi 'ni kullanabilirsiniz:
 
-:::image type="content" source="./media/exempt-resource/policy-page-exemption.png" alt-text="Bağlam menüsünden muafiyet seçeneği oluştur":::
+:::image type="content" source="./media/exempt-resource/policy-page-exemption.png" alt-text="Azure Ilkesinin muafiyet sayfası":::
 
 
 
@@ -81,4 +81,4 @@ Kaynak geçerli değil olarak listelenecektir ve bu nedenle seçtiğiniz gerekç
 
 Bu makalede, güvenli puanınızı etkilememesi için bir kaynağı öneriden muaf tutmak öğrendiniz. Güvenli Puanlama hakkında daha fazla bilgi için bkz.
 
-- [Azure Güvenlik Merkezi 'nde güvenli puan](secure-score-security-controls.md)
+- [Azure Güvenlik Merkezi'nde güvenlik puanı](secure-score-security-controls.md)

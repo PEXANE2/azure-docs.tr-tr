@@ -8,17 +8,17 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 74e5373ebafbd39748f8b002069eaa6d732be069
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5148114da7fcc654b1f0af431440ce74c7bc8d31
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018473"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371959"
 ---
 ### <a name="create-an-environment-variable"></a>Ortam değişkeni oluşturma
 
 >[!NOTE]
-> 1 Temmuz 2019 ' den sonra oluşturulan deneme olmayan kaynaklar için uç noktalar aşağıda gösterilen özel alt etki alanı biçimini kullanır. Daha fazla bilgi ve bölgesel uç noktaların tamamen listesi için bkz. bilişsel [Hizmetler Için özel alt etki alanı adları](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains). 
+> 1 Temmuz 2019 ' den sonra oluşturulan deneme olmayan kaynaklar için uç noktalar aşağıda gösterilen özel alt etki alanı biçimini kullanır. Daha fazla bilgi ve bölgesel uç noktaların tamamen listesi için bkz. bilişsel [Hizmetler Için özel alt etki alanı adları](../../cognitive-services-custom-subdomains.md). 
 
 Oluşturduğunuz kaynaktan anahtarınızı ve uç noktayı kullanarak, kimlik doğrulama için iki ortam değişkeni oluşturun:
 

@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: ba4ef77dee8eb3cad753aca54a77aeedd166f142
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: f75fbdd2d9860598f72014159fa5287360e106c3
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784567"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372821"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>HSM korumalı anahtarları Key Vault’a içeri aktarma
 
@@ -38,7 +38,8 @@ HSM korumalı anahtarların Key Vault aktarmak, kullandığınız HSMs 'ye bağl
 |Fortanx|Üreticisini<br/>Hizmet olarak HSM|<ul><li>Self-Defending anahtar yönetim hizmeti (SDKMS)</li><li>Equinix SmartKey</li></ul>|[Yeni BYOK yöntemi kullan](hsm-protected-keys-byok.md)|
 |Marvell|Üretici|Tüm LiquidSecurity HSM 'leri<ul><li>Bellenim sürümü 2.0.4 veya üzeri</li><li>Bellenim sürüm 3,2 veya daha yenisi</li></ul>|[Yeni BYOK yöntemi kullan](hsm-protected-keys-byok.md)|
 |Cryptomathic|ISV (Kurumsal anahtar yönetim sistemi)|Birden çok HSM markalarını ve modellerini kapsayan<ul><li>nCipher</li><li>Thales</li><li>Utıco</li></ul>[Ayrıntılar için bkz. Cryptomathic sitesi](https://www.cryptomathic.com/azurebyok)|[Yeni BYOK yöntemi kullan](hsm-protected-keys-byok.md)|
-
+|Securosys SA|Üretici, hizmet olarak HSM|Primus HSM ailesi, Securosys bulutları HSM|[Yeni BYOK yöntemi kullan](hsm-protected-keys-byok.md)|
+|||||
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

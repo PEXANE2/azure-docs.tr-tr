@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 97853f0524b794169de3aaaec33cf1b30949d930
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: d62ed31a68d9469a1bd1fc66e479b0f91db2f916
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901557"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372277"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Güvenlik Merkezi nedir?
 
@@ -54,7 +54,7 @@ Ayrıca, Güvenlik Merkezi, Azure dışı sunucuları ve bulutta veya şirket i�
 
 Aracılardan ve Azure 'dan toplanan olaylar, iş yüklerinizin güvende olduğundan ve güvenlik uyarılarında emin olmak için izlemeniz gereken özel öneriler (sağlamlaştırma görevleri) sağlamak için Güvenlik analizi altyapısına bağıntılı. Kötü amaçlı saldırıların iş yüklerinizde gerçekleşmediklerinden emin olmak için bu uyarıları mümkün olan en kısa sürede araştırmanız gerekir.
 
-Güvenlik Merkezi 'ni etkinleştirdiğinizde güvenlik merkezi 'nde yerleşik güvenlik ilkesi, güvenlik merkezi kategorisi altında yerleşik bir girişim olarak Azure Ilkesine yansıtılır. Yerleşik girişim, tüm güvenlik merkezi kayıtlı aboneliklerine (ücretsiz veya standart fiyatlandırma katmanları) otomatik olarak atanır. Yerleşik girişim yalnızca denetim ilkelerini içerir. Azure Ilkesindeki Güvenlik Merkezi ilkeleri hakkında daha fazla bilgi için bkz. [güvenlik Ilkeleriyle çalışma](tutorial-security-policy.md).
+Güvenlik Merkezi 'ni etkinleştirdiğinizde güvenlik merkezi 'nde yerleşik güvenlik ilkesi, güvenlik merkezi kategorisi altında yerleşik bir girişim olarak Azure Ilkesine yansıtılır. Yerleşik girişim, tüm güvenlik merkezi kayıtlı aboneliklerine otomatik olarak atanır (Azure Defender 'ın etkin olup olmamasından bağımsız olarak). Yerleşik girişim yalnızca denetim ilkelerini içerir. Azure Ilkesindeki Güvenlik Merkezi ilkeleri hakkında daha fazla bilgi için bkz. [güvenlik Ilkeleriyle çalışma](tutorial-security-policy.md).
 
 ## <a name="strengthen-security-posture"></a>Güvenlik duruşunu güçlendirme
 
@@ -68,7 +68,7 @@ Bu bir güvenlik temel olanıdır ve iş yüklerinizin güvende olduğundan emin
 
 Güvenlik Merkezi, **Gölge BT aboneliklerini belirlemenize** yardımcı olur. Panonuzda **kapsanmayan** etiketli aboneliklere bakarak, yeni oluşturulan abonelikler olduğunda hemen haberdar edebilir ve ilkeleriniz kapsamında olduklarından ve Azure Güvenlik Merkezi tarafından korunduğunuzdan emin olabilirsiniz.
 
-:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="İlke yönetimi sayfası":::
+:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="Güvenlik Merkezi ilke panosu":::
 
 ### <a name="continuous-assessments"></a>Sürekli değerlendirmeler
 
@@ -76,13 +76,13 @@ Güvenlik Merkezi, iş yükleriniz genelinde dağıtılan yeni kaynakları süre
 
 Güvenlik Merkezi, her bir önerinin genel güvenlik durinize ne kadar önemli olduğunu anlamanıza yardımcı olmak için önerileri güvenlik denetimlerine gruplandırır ve her denetime **güvenli bir puan** değeri ekler. Bu, **güvenlik çalışmalarınızı önceliklendirmenize olanak tanımak** için önemlidir.
 
-:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="İlke yönetimi sayfası":::
+:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="Güvenlik Merkezi güvenli puanı":::
 
 ### <a name="network-map"></a>Ağ eşlemesi
 
-En güçlü araçlardan biri olan Güvenlik Merkezi, ağınızın güvenlik durumunu sürekli olarak izlemek için tarafından sağlanan **ağ haritadır** . Eşleme, iş yüklerinizin topolojisini görmenizi sağlar, böylece her bir düğümün düzgün şekilde yapılandırılıp yapılandırılmadığını görebilirsiniz. Düğümlerinizin nasıl bağlandığını görebilirsiniz. Bu, bir saldırganın ağınızı daha kolay bir şekilde yayılmasını sağlamak için istenmeyen bağlantıları engellemenize yardımcı olur.
+En güçlü araçlardan biri olan Güvenlik Merkezi, ağınızın güvenlik durumunu sürekli olarak izlemek için tarafından sağlanan **ağ haritadır**. Eşleme, iş yüklerinizin topolojisini görmenizi sağlar, böylece her bir düğümün düzgün şekilde yapılandırılıp yapılandırılmadığını görebilirsiniz. Düğümlerinizin nasıl bağlandığını görebilirsiniz. Bu, bir saldırganın ağınızı daha kolay bir şekilde yayılmasını sağlamak için istenmeyen bağlantıları engellemenize yardımcı olur.
 
-:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="İlke yönetimi sayfası":::
+:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="Güvenlik Merkezi ağ haritası":::
 
 
 ### <a name="optimize-and-improve-security-by-configuring-recommended-controls"></a>Önerilen denetimleri yapılandırarak güvenliği iyileştirin ve iyileştirin
@@ -93,7 +93,7 @@ Bu şekilde, güvenlik merkezi yalnızca güvenlik ilkelerini ayarlamanıza, anc
 
 Öneriler, kaynaklarınızın her birinde saldırı yüzeyini azaltmanıza yardımcı olur. Bu, Azure sanal makineleri, Azure olmayan sunucular ve SQL ve depolama hesapları gibi Azure PaaS hizmetlerini ve her kaynak türünün farklı şekilde değerlendirileceğini ve kendi standartlarına sahip olduğunu içerir.
 
-:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="İlke yönetimi sayfası":::
+:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="Güvenlik Merkezi öneri örneği":::
 
 ## <a name="protect-against-threats"></a>Tehditlere karşı koruma sağlama
 
@@ -101,7 +101,7 @@ Güvenlik Merkezi 'nin tehdit koruması, hizmet olarak altyapı (IaaS) katmanı,
 
 Güvenlik Merkezi 'nin tehdit koruması, bir saldırı kampanyasının tam hikayesini, nerede başlatıldığını ve kaynaklarınızda ne tür etkileri olduğunu daha iyi anlamanıza yardımcı olmak amacıyla, ortamınızdaki uyarıları otomatik olarak, siber sonlandırma zinciri analizini temel alan Fusion Kill zinciri analizini içerir.
 
-:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="İlke yönetimi sayfası":::
+:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="Güvenlik uyarıları":::
 
 ### <a name="integration-with-microsoft-defender-for-endpoint"></a>Uç nokta için Microsoft Defender ile tümleştirme
 
@@ -137,6 +137,6 @@ Kapsamlı günlük koleksiyonu-Windows ve Linux 'daki Günlükler, güvenlik Ana
 
 - Güvenlik Merkezi ile çalışmaya başlamak için bir Microsoft Azure aboneliğinizin olması gerekir. Aboneliğiniz yoksa [ücretsiz deneme sürümü](https://azure.microsoft.com/free/) için kaydolabilirsiniz.
 
-- İlk kez Azure portal Azure Güvenlik Merkezi panosunu ziyaret ettiğinizde veya API aracılığıyla programlı olarak etkinleştirilmişse, güvenlik merkezi 'nin ücretsiz fiyatlandırma katmanı tüm mevcut Azure aboneliklerinizde etkindir. Gelişmiş güvenlik yönetimi ve tehdit algılama özellikleri avantajlarından yararlanmak için standart fiyatlandırma katmanına yükseltmeniz gerekir. Standart katman 30 gün boyunca ücretsiz olarak denenolabilir. Daha fazla bilgi için [Güvenlik Merkezi fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/security-center/) bakın.
+- İlk kez Azure portal Azure Güvenlik Merkezi panosunu ziyaret ettiğinizde veya API aracılığıyla programlı olarak etkinleştirilmişse, güvenlik merkezi 'nin ücretsiz fiyatlandırma katmanı tüm mevcut Azure aboneliklerinizde etkindir. Gelişmiş güvenlik yönetimi ve tehdit algılama özellikleri avantajlarından yararlanmak için Azure Defender 'ı etkinleştirmeniz gerekir. Azure Defender, 30 gün boyunca ücretsiz olarak denenmelidir. Daha fazla bilgi için [Güvenlik Merkezi fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/security-center/) bakın.
 
-- Güvenlik Merkezi standardını şimdi etkinleştirmeye hazırsanız [hızlı başlangıç: Azure aboneliğinizi Güvenlik Merkezi standardına](security-center-get-started.md) ekleme, adımlarda size yol gösterir.
+- Azure Defender 'ı şimdi etkinleştirmeye hazırsanız [hızlı başlangıç: Azure Güvenlik Merkezi 'Nin kurulması](security-center-get-started.md) , adımlarda size yol gösterir.

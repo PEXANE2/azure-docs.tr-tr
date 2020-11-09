@@ -10,22 +10,22 @@ ms.date: 10/07/2020
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: 7adfafbb0b0b11057a21dfbbe6dffcf6d2564606
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 66881fc03719e83f5354d19d0fde9eb474c17359
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977842"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371545"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[Sürüm 3,1 Önizleme](#tab/version-3-1)
 
-[Başvuru belgeleri](https://docs.microsoft.com/java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.1.0-beta.1/sdk/textanalytics/azure-ai-textanalytics)  |  [Paket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.1)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.1/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[Başvuru belgeleri](/java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.1.0-beta.1/sdk/textanalytics/azure-ai-textanalytics)  |  [Paket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.1)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.1/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 # <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
 
-[Başvuru belgeleri](https://docs.microsoft.com/java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics)  |  [Paket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[Başvuru belgeleri](/java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics)  |  [Paket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 # <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
 
@@ -33,11 +33,11 @@ Bu makale yalnızca API 'nin 3. x sürümünü açıklar.
 
 ---
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) sürüm 8 veya üzeri
-* Azure aboneliğiniz olduktan sonra, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir metin analizi kaynağı oluşturun metin analizi bir kaynak oluşturun.  Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
+* Azure aboneliğiniz olduktan sonra, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir metin analizi kaynağı oluşturun metin analizi bir kaynak oluşturun.  Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
     * Uygulamanızı Metin Analizi API'si bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
     * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
 
@@ -209,7 +209,7 @@ static void sentimentAnalysisExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Recognized document sentiment: positive, positive score: 1.0, neutral score: 0.0, negative score: 0.0.
@@ -254,7 +254,7 @@ static void sentimentAnalysisWithOpinionMiningExample(TextAnalyticsClient client
 }
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Text = Bad atmosphere. Not close to plenty of restaurants, hotels, and transit! Staff are not friendly and helpful.
@@ -301,7 +301,7 @@ static void sentimentAnalysisExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Recognized document sentiment: positive, positive score: 1.0, neutral score: 0.0, negative score: 0.0.
@@ -336,7 +336,7 @@ static void detectLanguageExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Detected primary language: French, ISO 6391 name: fr, score: 1.00.
@@ -372,7 +372,7 @@ static void recognizeEntitiesExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Recognized entity: trip, entity category: Event, entity sub-category: null, score: 0.61, offset: 8, length: 4.
@@ -414,7 +414,7 @@ static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Linked Entities:
@@ -459,7 +459,7 @@ static void recognizePiiEntitiesExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Redacted Text: My SSN is ***********
@@ -492,7 +492,7 @@ static void recognizeEntitiesExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Recognized entity: trip, entity category: Event, entity sub-category: null, score: 0.61.
@@ -531,7 +531,7 @@ static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Linked Entities:
@@ -580,7 +580,7 @@ static void extractKeyPhrasesExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıktı
+### <a name="output"></a>Çıkış
 
 ```console
 Recognized phrases: 

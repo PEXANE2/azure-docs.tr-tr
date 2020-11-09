@@ -7,12 +7,12 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a1357f263c450605025b6f1e9b7bdea47d0d4f58
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 2471a19cf795d969644cb92e23b7a2926f2ee1a9
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289214"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372617"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Azure Defender 'ı kapsayıcı kayıt defterleri için kullanarak görüntülerinizi güvenlik açıklarına karşı tarayın
 
@@ -113,6 +113,9 @@ Azure Resource Manager tabanlı Azure Container Registry depolanan görüntüler
 
 
 ## <a name="disable-specific-findings-preview"></a>Belirli bulguları devre dışı bırak (Önizleme)
+
+> [!NOTE]
+> [!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]
 
 Bir bulmayı yok saymanız gereken bir kuruluş varsa, bunu düzeltmek yerine isteğe bağlı olarak devre dışı bırakabilirsiniz. Devre dışı bulgular, güvenli puanınızı etkilemez veya istenmeyen gürültü oluşturmaz.
 

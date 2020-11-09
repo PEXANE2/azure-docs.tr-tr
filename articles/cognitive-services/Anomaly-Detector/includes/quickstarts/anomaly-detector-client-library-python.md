@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/22/2020
 ms.author: mbullwin
-ms.openlocfilehash: c0c766753fe7c865fe15af992817379b3a7f6e13
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: c06cb7143756eed3d50fe1d2d03ce7ba8d6d9d4d
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018472"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371784"
 ---
 Python için anomali algılayıcı istemci kitaplığını kullanmaya başlayın. Hizmet tarafından sunulan algoritmaları kullanarak paketi başlatmak için bu adımları izleyin. Anomali algılayıcı hizmeti, sektör, senaryo veya veri hacminin ne olursa olsun, üzerinde en iyi şekilde sığdırma modellerini kullanarak zaman serisi verilerinizde yer alan anormallikleri bulmanıza olanak sağlar.
 
@@ -25,7 +25,7 @@ Python için anomali algılayıcı istemci kitaplığını kullanarak şunları 
 
 [Kitaplık başvuru belgeleri](https://go.microsoft.com/fwlink/?linkid=2090370)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector)  |  [Paket (Pypı)](https://pypi.org/project/azure-ai-anomalydetector/)  |  [GitHub 'da örnek kodu bulma](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/python-sdk-sample.py)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Python 3.x](https://www.python.org/)
 * [Pandas veri analizi kitaplığı](https://pandas.pydata.org/)
@@ -59,11 +59,11 @@ pip install --upgrade azure-ai-anomalydetector
 
 ## <a name="object-model"></a>Nesne modeli
 
-Anomali algılayıcı istemcisi, anahtarınızı kullanarak Azure 'da kimlik doğrulaması yapan bir [Anokidetectorclient](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python) nesnesidir. İstemci, [entire_detect ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-)kullanarak bir veri kümesinin tamamını veya [Last_detect ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-)kullanarak en son veri noktasında anomali algılama yapabilir. [Changepointdetectasync](https://go.microsoft.com/fwlink/?linkid=2090370) işlevi, bir eğilim içindeki değişiklikleri işaretleyen noktaları algılar.
+Anomali algılayıcı istemcisi, anahtarınızı kullanarak Azure 'da kimlik doğrulaması yapan bir [Anokidetectorclient](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python) nesnesidir. İstemci, [entire_detect ()](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-)kullanarak bir veri kümesinin tamamını veya [Last_detect ()](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-)kullanarak en son veri noktasında anomali algılama yapabilir. [Changepointdetectasync](https://go.microsoft.com/fwlink/?linkid=2090370) işlevi, bir eğilim içindeki değişiklikleri işaretleyen noktaları algılar.
 
-Zaman serisi verileri, [istek](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request?view=azure-python) nesnesinde bir dizi [işaret](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point?view=azure-python) olarak gönderilir. `Request`Nesnesi, verileri (örneğin,[ayrıntı düzeyi](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python) ) ve anomali algılama parametrelerini tanımlayacak özellikler içerir.
+Zaman serisi verileri, [istek](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request?view=azure-python) nesnesinde bir dizi [işaret](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point?view=azure-python) olarak gönderilir. `Request`Nesnesi, verileri (örneğin,[ayrıntı düzeyi](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python) ) ve anomali algılama parametrelerini tanımlayacak özellikler içerir.
 
-Anomali algılayıcısı yanıtı, kullanılan yönteme bağlı olarak bir [Lastdetectresponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python), [entiredetectresponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python)veya [changepointdetectresponse](https://go.microsoft.com/fwlink/?linkid=2090370) nesnesidir.
+Anomali algılayıcısı yanıtı, kullanılan yönteme bağlı olarak bir [Lastdetectresponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python), [entiredetectresponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python)veya [changepointdetectresponse](https://go.microsoft.com/fwlink/?linkid=2090370) nesnesidir.
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -84,29 +84,29 @@ Azure location değişkeninizi uç noktaya ekleyin ve anahtarınızla istemcinin
 ## <a name="load-time-series-data-from-a-file"></a>Bir dosyadan zaman serisi verilerini yükle
 
 Bu hızlı başlangıçta [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/example-data/request-data.csv)'dan örnek verileri indirin:
-1. Tarayıcınızda, **RAW**' a sağ tıklayın.
-2. **Bağlantıyı farklı kaydet**' e tıklayın.
+1. Tarayıcınızda, **RAW** ' a sağ tıklayın.
+2. **Bağlantıyı farklı kaydet** ' e tıklayın.
 3. Dosyayı uygulama dizininize bir. csv dosyası olarak kaydedin.
 
 Bu zaman serisi verileri. csv dosyası olarak biçimlendirilir ve anomali algılayıcısı API 'sine gönderilir.
 
-Veri dosyanızı Pandas kitaplığının `read_csv()` yöntemiyle yükleyin ve veri serinizi depolamak için boş bir liste değişkeni oluşturun. Dosya üzerinde yineleme yapın ve verileri bir [nokta](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point?view=azure-python) nesnesi olarak ekleyin. Bu nesne,. csv veri dosyanızdaki satırlardan zaman damgası ve sayısal değer içerir.
+Veri dosyanızı Pandas kitaplığının `read_csv()` yöntemiyle yükleyin ve veri serinizi depolamak için boş bir liste değişkeni oluşturun. Dosya üzerinde yineleme yapın ve verileri bir [nokta](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point?view=azure-python) nesnesi olarak ekleyin. Bu nesne,. csv veri dosyanızdaki satırlardan zaman damgası ve sayısal değer içerir.
 
 [!code-python[Load the data file](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=loadDataFile)]
 
-Zaman seriniz ve veri noktalarının [ayrıntı düzeyi](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python) (veya dönemsellik) Ile bir [istek](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request?view=azure-python) nesnesi oluşturun. Örneğin, `Granularity.daily`.
+Zaman seriniz ve veri noktalarının [ayrıntı düzeyi](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python) (veya dönemsellik) Ile bir [istek](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request?view=azure-python) nesnesi oluşturun. Örneğin, `Granularity.daily`.
 
 [!code-python[Create the request object](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=request)]
 
 ## <a name="detect-anomalies-in-the-entire-data-set"></a>Tüm veri kümesindeki anormallikleri Algıla
 
-İstemcinin [entire_detect ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-) yöntemini kullanarak tüm zaman serisi verilerinin bozuklukilerini algılamak için API 'yi çağırın. Döndürülen [Entiredetectresponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) nesnesini depolayın. Yanıtın `is_anomaly` listesini yineleyin ve herhangi bir değerin dizinini yazdırın `true` . Bu değerler, varsa anormal veri noktalarının dizinine karşılık gelir.
+İstemcinin [entire_detect ()](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-) yöntemini kullanarak tüm zaman serisi verilerinin bozuklukilerini algılamak için API 'yi çağırın. Döndürülen [Entiredetectresponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) nesnesini depolayın. Yanıtın `is_anomaly` listesini yineleyin ve herhangi bir değerin dizinini yazdırın `true` . Bu değerler, varsa anormal veri noktalarının dizinine karşılık gelir.
 
 [!code-python[Batch anomaly detection sample](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=detectAnomaliesBatch)]
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>En son veri noktasının anomali durumunu Algıla
 
-En son veri noktanağınızın, istemcinin [last_detect ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-) yöntemini kullanarak bir anomali olup olmadığını ve döndürülen [lastdetectresponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python) nesnesini depolayıp Depomadığını öğrenmek IÇIN anomali algılayıcısı API 'sini çağırın. Yanıtın değeri, `is_anomaly` Bu noktanın anomali durumunu belirten bir Boole değeridir.  
+En son veri noktanağınızın, istemcinin [last_detect ()](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-) yöntemini kullanarak bir anomali olup olmadığını ve döndürülen [lastdetectresponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python) nesnesini depolayıp Depomadığını öğrenmek IÇIN anomali algılayıcısı API 'sini çağırın. Yanıtın değeri, `is_anomaly` Bu noktanın anomali durumunu belirten bir Boole değeridir.  
 
 [!code-python[Batch anomaly detection sample](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=latestPointDetection)]
 
