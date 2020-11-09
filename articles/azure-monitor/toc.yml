@@ -618,8 +618,6 @@
                 - name: Web uygulamaları
                   displayname: java
                   href: app/java-get-started.md
-                - name: Docker uygulamaları
-                  href: app/docker.md
                 - name: Günlük izlemeleri
                   href: app/java-trace-logs.md
                 - name: UNIX ölçümleri
@@ -692,12 +690,14 @@
               href: app/kubernetes-codeless.md
             - name: Tek başına - Tüm ortamlar
               items:
-                - name: Java (önizleme)
+                - name: Java
                   items:
                     - name: Genel Bakış
                       href: app/java-in-process-agent.md
                     - name: Yapılandırma seçenekleri
                       href: app/java-standalone-config.md
+                    - name: Telemetri işlemcileri
+                      href: app/java-standalone-telemetry-processors.md
                     - name: JVM bağımsız değişkenleri kurulumu
                       href: app/java-standalone-arguments.md
             - name: Şirket içi sunucular
@@ -1344,10 +1344,6 @@
           href: insights/azure-web-apps-analytics.md
         - name: Application Insights Bağlayıcısı
           href: platform/app-insights-connector.md
-        - name: AKS kodsuz için Application Insights
-          href: app/kubernetes.md
-        - name: Docker uygulamalarını izleme
-          href: app/docker.md
         - name: OMS portalının kullanımdan kalkması
           href: platform/oms-portal-transition.md
         - name: Disk ölçümleri kullanımdan kaldırıldı
