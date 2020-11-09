@@ -72,6 +72,8 @@
           href: concepts-api-management.md
         - name: Hub ve bağlı bileşen
           href: concepts-hub-and-spoke.md
+        - name: Azure Güvenlik Merkezi
+          href: azure-security-integration.md
         - name: Azure Backup Sunucusu
           items:
             - name: Backup Sunucusu'nu ayarlama

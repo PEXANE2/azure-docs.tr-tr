@@ -4,16 +4,16 @@
     - name: Video Indexer nedir?
       href: ../../media-services/video-indexer/video-indexer-overview.md
     - name: Kavramlar
-      href: ../../media-services/video-indexer/video-indexer-concepts.md
+      href: ../../media-services/video-indexer/video-indexer-overview.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: başlarken
+    - name: Kullanmaya başlayın
       href: ../../media-services/video-indexer/video-indexer-get-started.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: v1'den v2'ye geçiş
-      href: ../../media-services/video-indexer/migrate-from-v1-to-v2.md
+      href: ../../media-services/video-indexer/video-indexer-overview.md
     - name: Azure'a Bağlanma
       href: ../../media-services/video-indexer/connect-to-azure.md
     - name: Azure’a bağlı hesabı yönetme
@@ -29,7 +29,7 @@
     - name: Video Indexer içgörülerini görüntüleme ve düzenleme
       href: ../../media-services/video-indexer/video-indexer-view-edit.md
     - name: Mevcut videolardan video içgörüleri oluşturma
-      href: ../../media-services/video-indexer/video-indexer-create-new.md
+      href: ../../media-services/video-indexer/use-editor-create-project.md
     - name: Uygulamanıza pencere öğeleri ekleme
       href: ../../media-services/video-indexer/video-indexer-embed-widgets.md
 - name: Başvuru

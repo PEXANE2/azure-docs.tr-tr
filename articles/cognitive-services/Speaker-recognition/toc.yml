@@ -1,9 +1,9 @@
 - name: Konuşmacı Tanıma Belgeleri
-  href: Home.md
+  href: ../speech-service/speaker-recognition-overview.md
 - name: Genel Bakış
   items:
     - name: Konuşmacı Tanıma hakkında bilgi edinin
-      href: Home.md
+      href: ../speech-service/speaker-recognition-overview.md
 - name: Başvuru
   items:
     - name: API Başvurusu
