@@ -4,28 +4,27 @@ description: Kaynakların nasıl ve nerede yapılandırılacağını anlayın.
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
-ms.date: 02/21/2020
-ms.openlocfilehash: 1d54b912d2177a3ccd0cf34d57fc0358af653199
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/9/2020
+ms.openlocfilehash: eac930971cab041fbf398da1ac5f8a055412832d
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776723"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376868"
 ---
 # <a name="service-configuration"></a>Hizmet yapılandırması
 
-Soru-Cevap Oluşturma, Bilişsel Arama, App Service, App Service planı ve Application Insights dahil olmak üzere çeşitli Azure kaynaklarını (Hizmetleri) kullanır.
-
-Soru-Cevap Oluşturma tarafından desteklenen bu ayarlara yapılan tüm özelleştirmeler aşağıda listelenmiştir.
+Soru-Cevap Oluşturma her sürümü farklı bir Azure kaynakları kümesi (Hizmetler) kullanır. Bu makalede, bu hizmetler için desteklenen özelleştirmeler açıklanmaktadır. 
 
 ## <a name="app-service"></a>App Service
 
+# <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
+
 Soru-Cevap Oluşturma, [Generateanswer API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)tarafından kullanılan sorgu çalışma zamanını sağlamak için App Service kullanır.
 
+Bu ayarlar, App Service için Azure portal kullanılabilir. **Ayarlar ' ı** ve ardından **yapılandırma** ' yı seçerek ayarlar kullanılabilir.
 
-Bu ayarlar, App Service için Azure portal kullanılabilir. **Ayarlar ' ı**ve ardından **yapılandırma**' yı seçerek ayarlar kullanılabilir.
-
-Uygulama Ayarları listesinden ayrı bir ayar ayarlayabilir veya **Gelişmiş Düzenle**' yi seçerek çeşitli ayarları değiştirebilirsiniz.
+Uygulama Ayarları listesinden ayrı bir ayar ayarlayabilir veya **Gelişmiş Düzenle** ' yi seçerek çeşitli ayarları değiştirebilirsiniz.
 
 |Kaynak|Ayar|
 |--|--|
@@ -36,9 +35,13 @@ Uygulama Ayarları listesinden ayrı bir ayar ayarlayabilir veya **Gelişmiş D�
 |Userappınsightskey|Sohbet günlüğü ve telemetrisi|
 |Userappınsightsname|Sohbet günlüğü ve telemetrisi|
 
-[Bilişsel arama hizmetinizi hizmetinize nasıl değiştireceğinizi nasıl ekleyeceğinizi](./how-to/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) öğrenin.
-
 Değişiklikleri yapmayı tamamladıktan sonra, Azure portal **genel bakış** sayfasından hizmeti **yeniden başlatmanız** gerekir.
+
+# <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
+
+App Service özelleştirmeler, Soru-Cevap Oluşturma yönetilen (Önizleme) için uygulanmaz.
+
+---
 
 ## <a name="qna-maker-service"></a>Soru-Cevap Oluşturma Hizmeti
 
@@ -46,13 +49,37 @@ Soru-Cevap Oluşturma Hizmeti, aşağıdaki kullanıcıların tek bir Soru-Cevap
 
 Hizmetinizdeki [ortak çalışanları nasıl ekleyeceğinizi](./how-to/collaborate-knowledge-base.md) öğrenin.
 
-## <a name="application-insights"></a>Application Insights
+## <a name="change-azure-cognitive-search"></a>Azure Bilişsel Arama 'yi değiştirme
 
-Application Insights Soru-Cevap Oluşturma özgü yapılandırma ayarlarına sahip değil.
+Soru-Cevap Oluşturma hizmetinize bağlı [bilişsel arama hizmetini nasıl değiştireceğinizi](./how-to/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) öğrenin.
+
+## <a name="change-default-answer"></a>Varsayılan yanıtı değiştirme
+
+[Varsayılan yanıtlarınızın metnini değiştirmeyi](How-To/change-default-answer.md)öğrenin. 
+
+## <a name="telemetry"></a>Telemetri
+
+# <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
+
+Application Insights, Soru-Cevap Oluşturma GA ile Telemetriyi izlemek için kullanılır. Soru-Cevap Oluşturma özgü yapılandırma ayarları yoktur.
+
+# <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
+
+[Soru-cevap oluşturma yönetilen (Önizleme) hizmetinize telemetri eklemeyi](How-To/get-analytics-knowledge-base.md)öğrenin. 
+
+---
 
 ## <a name="app-service-plan"></a>App Service Planı
 
+# <a name="qnamaker-ga-stable-release"></a>[QnAMaker GA (kararlı sürüm)](#tab/v1)
+
 App Service planı Soru-Cevap Oluşturma özgü yapılandırma ayarlarına sahip değil.
+
+# <a name="qnamaker-managed-preview-release"></a>[QnAMaker yönetilen (Önizleme sürümü)](#tab/v2)
+
+App Service planı, Soru-Cevap Oluşturma Managed (Önizleme) ile kullanılmaz.
+
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

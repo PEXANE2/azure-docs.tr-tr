@@ -4,13 +4,13 @@ description: Soru-Cevap Oluşturma Bilgi Bankası ve hizmetinin bölümleri içi
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
-ms.date: 02/14/2020
-ms.openlocfilehash: 773c9caa2fb25b3abe4fb451bc59598c485a6110
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: c61c550e9a09d0f0708e8f1dbc63e76b329a8166
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776264"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375627"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Bilgi tabanı sınırlarını ve sınırlarını Soru-Cevap Oluşturma
 
@@ -51,9 +51,12 @@ Dosya adları aşağıdaki karakterleri içeremez:
 
 Ayıklanabilen en fazla dosya sayısı ve en büyük dosya boyutu, **[soru-cevap oluşturma fiyatlandırma katmanı limitlerinizi](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)** temel alır.
 
+> [!NOTE]
+> Soru-Cevap Oluşturma yönetilen (Önizleme), eklenebilecek kaynak sayısını sınırlayan ücretsiz bir hizmettir. Yönetim API 'Leri ve tahmin API 'Leri için aktarım hızı şu anda saniyede 10 işlem üzerinden yapılır.
+
 ### <a name="maximum-number-of-deep-links-from-url"></a>URL 'den en fazla derin bağlantı sayısı
 
-Bir URL sayfasından QnAs ayıklanmasıyla gezinilebilen en fazla derin bağlantı sayısı **20**' dir.
+Bir URL sayfasından QnAs ayıklanmasıyla gezinilebilen en fazla derin bağlantı sayısı **20** ' dir.
 
 ## <a name="metadata-limits"></a>Meta veri sınırları
 

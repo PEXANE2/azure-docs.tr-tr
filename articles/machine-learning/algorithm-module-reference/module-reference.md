@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/19/2020
-ms.openlocfilehash: 998f9ef7bddfd988dc0af8183fb9c000bf8c79e7
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 11/09/2020
+ms.openlocfilehash: 89ad9aae7c0d01971bbcfc7e392cb9d455ef85cd
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421303"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376851"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Azure Machine Learning Tasarımcısı için algoritma & modül başvurusu
 
@@ -45,7 +45,7 @@ Algoritma seçme konusunda yardım için bkz.
 | --- |--- | --- |
 | Regresyon | Bir değer tahmin edin. | [Artırmalı Karar Ağacı Regresyonu](boosted-decision-tree-regression.md) <br/> [Karar Ormanı Regresyonu](decision-forest-regression.md) <br/> [Hızlı Orman Dağılım Dilimi Regresyonu](fast-forest-quantile-regression.md)  <br/> [Çizgisel Regresyon](linear-regression.md)  <br/> [Sinir Ağı Regresyonu](neural-network-regression.md)  <br/> [Poisson Regresyonu](poisson-regression.md)  <br/>|
 | Kümeleme | Verileri birlikte gruplandırın.| [K Ortalamaları Kümeleme](k-means-clustering.md)
-| Sınıflandırma | Bir sınıfı tahmin edin.  İkili (iki sınıf) veya birden çok sınıf algoritmalarından birini seçin.| [Çok Sınıflı Artırmalı Karar Ağacı](multiclass-boosted-decision-tree.md) <br/> [Çok Sınıflı Karar Ormanı](multiclass-decision-forest.md) <br/> [Çok Sınıflı Lojistik Regresyon](multiclass-logistic-regression.md)  <br/> [Çok Sınıflı Sinir Ağı](multiclass-neural-network.md) <br/> [Bir - Tüm Çok Sınıflılık Karşılaştırması](one-vs-all-multiclass.md) <br/> [İki Sınıflı Ortalaması Alınmış Perceptron](two-class-averaged-perceptron.md) <br/>  [İki Sınıflı Artırmalı Karar Ağacı](two-class-boosted-decision-tree.md)  <br/> [İki Sınıflı Karar Ormanı](two-class-decision-forest.md) <br/>  [Çift Sınıflı Lojistik Regresyon](two-class-logistic-regression.md) <br/> [İki Sınıflı Sinir Ağı](two-class-neural-network.md) <br/> [İki Sınıflı Destek Vektör Makinesi](two-class-support-vector-machine.md) | 
+| Sınıflandırma | Bir sınıfı tahmin edin.  İkili (iki sınıf) veya birden çok sınıf algoritmalarından birini seçin.| [Çok Sınıflı Artırmalı Karar Ağacı](multiclass-boosted-decision-tree.md) <br/> [Çok Sınıflı Karar Ormanı](multiclass-decision-forest.md) <br/> [Çok Sınıflı Lojistik Regresyon](multiclass-logistic-regression.md)  <br/> [Çok Sınıflı Sinir Ağı](multiclass-neural-network.md) <br/> [Bir - Tüm Çok Sınıflılık Karşılaştırması](one-vs-all-multiclass.md) <br/> [Tek bir ve birden çok Lass](one-vs-one-multiclass.md) <br/>[İki Sınıflı Ortalaması Alınmış Perceptron](two-class-averaged-perceptron.md) <br/>  [İki Sınıflı Artırmalı Karar Ağacı](two-class-boosted-decision-tree.md)  <br/> [İki Sınıflı Karar Ormanı](two-class-decision-forest.md) <br/>  [Çift Sınıflı Lojistik Regresyon](two-class-logistic-regression.md) <br/> [İki Sınıflı Sinir Ağı](two-class-neural-network.md) <br/> [İki Sınıflı Destek Vektör Makinesi](two-class-support-vector-machine.md) | 
 
 ## <a name="modules-for-building-and-evaluating-models"></a>Model oluşturma ve değerlendirme için modüller
 

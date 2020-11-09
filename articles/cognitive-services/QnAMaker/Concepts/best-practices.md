@@ -4,13 +4,13 @@ description: Bilgi bankaınızı geliştirmek ve uygulamanıza/sohbet bot 'ın s
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 02/15/2020
-ms.openlocfilehash: 15cb1391cb6482401c2a091a4d5c0e9d819ba52d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 2f87f5c7e43757db476153db93d6ecc5082dde89
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777029"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376766"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Soru-Cevap Oluşturma Bilgi Bankası 'nın en iyi yöntemleri
 
@@ -116,11 +116,17 @@ Varsayılan olarak, Soru-Cevap Oluşturma sorular ve yanıtlar arasında arama y
 [Meta veriler](../How-To/edit-knowledge-base.md) , bir istemci uygulamanın tüm yanıtları getirmemelidir, ancak meta veri etiketlerine göre bir Kullanıcı sorgusunun sonuçlarını daraltmak için bu özelliği ekler. Bilgi Bankası yanıtı, sorgu aynı olsa bile meta veri etiketine göre farklılık gösterebilir. Örneğin, *"nerede park yeri"* , Restoran dalının konumu farklıysa farklı bir yanıta sahip olabilir. Bu, meta veriler *Konum: Seattle* ve *Konum: Redmond*.
 
 ### <a name="use-synonyms"></a>Eş anlamlıları kullan
-Ingilizce dilde eş anlamlı sözcükler için bazı destek olsa da, farklı biçimde olan anahtar sözcüklere eşanlamlı ekler eklemek için [alterler API 'si](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) aracılığıyla büyük/küçük harf duyarsız sözcük değişikliklerini kullanın. Eş anlamlılar Soru-Cevap Oluşturma hizmet düzeyinde eklenir ve hizmetteki tüm bilgi tabanları tarafından paylaşılır.
+# <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
+Ingilizce dilde eş anlamlı sözcükler için bazı destek olsa da, farklı formlar kullanan anahtar sözcüklere eş anlamlılar eklemek için [alterler API 'si](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) aracılığıyla büyük/küçük harf duyarsız sözcük değişikliklerini kullanın. Eş anlamlılar Soru-Cevap Oluşturma hizmet düzeyinde eklenir ve hizmetteki **tüm bilgi tabanları tarafından paylaşılır**.
+
+# <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
+Ingilizce dilde eş anlamlı sözcükler için bazı destek olsa da, farklı formlar kullanan anahtar sözcüklere eş anlamlılar eklemek için [alterler API 'si](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) aracılığıyla büyük/küçük harf duyarsız sözcük değişikliklerini kullanın. Soru-Cevap Oluşturma yönetilen (Önizleme) eş anlamlılar **bilgileri her Bilgi Bankası için eklenmiştir**.
 
 |Özgün sözcük|Eş anlamlılar|
 |--|--|
 |satıcıdan|satın alma<br>net-bankacılık<br>net bankacılık|
+
+---
 
 ### <a name="use-distinct-words-to-differentiate-questions"></a>Soruları ayırt etmek için ayrı sözcükler kullanın
 Bilgi bankasındaki bir soru ile bir kullanıcı sorgusuyla eşleşen derecelendirme algoritması, her bir soru farklı bir gereksinim ele alıyorsa en iyi şekilde geçerlidir. Soru-Cevap Oluşturma Sorular arasındaki aynı sözcük kümesinin yinelemesi, bu sözcüklerin bulunduğu belirli bir Kullanıcı sorgusu için doğru yanıtın seçilme olasılığını azaltır.
@@ -132,7 +138,7 @@ Bilgi bankasındaki bir soru ile bir kullanıcı sorgusuyla eşleşen derecelend
 |Park *konumu* nerede|
 |Burada ATM *konumudur*|
 
-Bu iki QnAs, çok benzer sözcüklerle phrased olduğundan, bu benzerlik,  *"konum olduğu yer `<x>` "* gibi phrased çok sayıda kullanıcı sorgusunun çok benzer puanlarını oluşmasına neden olabilir. Bunun yerine, KB 'unuzda birçok soruda olabilecek "konum" gibi kelimeleri önleyerek "  *Park partisi olan* " ve *"ATM*olduğu" gibi sorguları açıkça ayırt etmeye çalışın.
+Bu iki QnAs, çok benzer sözcüklerle phrased olduğundan, bu benzerlik,  *"konum olduğu yer `<x>` "* gibi phrased çok sayıda kullanıcı sorgusunun çok benzer puanlarını oluşmasına neden olabilir. Bunun yerine, KB 'unuzda birçok soruda olabilecek "konum" gibi kelimeleri önleyerek "  *Park partisi olan* " ve *"ATM* olduğu" gibi sorguları açıkça ayırt etmeye çalışın.
 
 ## <a name="collaborate"></a>İşbirliği yapma
 Soru-Cevap Oluşturma, kullanıcıların Bilgi Bankası 'nda [işbirliği](../How-to/collaborate-knowledge-base.md) yapmasına olanak sağlar. Kullanıcıların bilgi tabanlara erişebilmesi için Azure Soru-Cevap Oluşturma kaynak grubuna erişmesi gerekir. Bazı kuruluşlar Bilgi Bankası düzenlemesini ve bakımını dış olarak almak isteyebilir ve yine de Azure kaynaklarına erişimi koruyabilecek. Bu düzenleyici-onaylayan modeli, farklı aboneliklerde iki özdeş [soru-cevap oluşturma hizmeti](../How-to/set-up-qnamaker-service-azure.md) ayarlanarak ve düzenleme testi döngüsüne yönelik bir seçim yaparak yapılır. Sınama tamamlandıktan sonra Bilgi Bankası içerikleri, son olarak Bilgi Bankası 'nı yayımlayacak ve uç noktayı güncelleştiren, onaylayanın Soru-Cevap Oluşturma hizmetine bir [içeri aktarma](../Tutorials/migrate-knowledge-base.md) işlemi ile aktarılır.

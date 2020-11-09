@@ -4,31 +4,41 @@ description: Söz konusu soruda eşleşme olmadığında varsayılan yanıt dön
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: how-to
-ms.date: 07/13/2020
-ms.openlocfilehash: 14954f89fcdcbbc1ef4b8654582a3274f4bb0923
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: ceff3127eba724ba9aa9bc8f9398d0f27ba687eb
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776825"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376628"
 ---
 # <a name="change-default-answer-for-a-qna-maker-resource"></a>Soru-Cevap Oluşturma kaynağı için varsayılan yanıtı değiştirme
 
-Bir bilgi tabanı için varsayılan yanıt, bir yanıt bulunamadığında döndürülür. [Azure bot hizmeti](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-qna?view=azure-bot-service-4.0&tabs=cs#calling-qna-maker-from-your-bot)gibi bir istemci uygulaması kullanıyorsanız, puan eşiğini karşılayan bir yanıt olmadığını belirten ayrı bir varsayılan yanıta da sahip olabilir.
+Bir bilgi tabanı için varsayılan yanıt, bir yanıt bulunamadığında döndürülür. [Azure bot hizmeti](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-qna)gibi bir istemci uygulaması kullanıyorsanız, puan eşiğini karşılayan bir yanıt olmadığını belirten ayrı bir varsayılan yanıta da sahip olabilir.
 
 ## <a name="types-of-default-answer"></a>Varsayılan yanıt türleri
 
 Bilgi tabanınız için iki tür varsayılan yanıt vardır. Her birinin bir tahmin sorgusundan nasıl ve ne zaman döndürüldüğünü anlamak önemlidir:
 
+# <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
 
-|Soru türü|Yanıtın açıklaması|
+|Varsayılan yanıt türleri|Yanıtın açıklaması|
 |--|--|
 |Yanıt saptanmadığı zaman KB yanıtı|`No good match found in KB.` - [Generateanswer API 'si](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) söz konusu soruya eşleşen bir yanıt bulmazsa, `DefaultAnswer` App Service ayarı döndürülür. Aynı Soru-Cevap Oluşturma kaynaktaki tüm bilgi tabanları aynı varsayılan yanıt metnini paylaşır.<br>Ayarları, App Service aracılığıyla veya ayarı [almak](https://docs.microsoft.com/rest/api/appservice/webapps/listapplicationsettings) ya da [güncelleştirmek](https://docs.microsoft.com/rest/api/appservice/webapps/updateapplicationsettings) için REST API 'lerle birlikte Azure Portal yönetebilirsiniz.|
 |İzleme istemi yönerge metni|Bir konuşma akışında bir izleme istemi kullanırken, kullanıcının izleme istemlerinde seçmesini istediğiniz için QnA çiftiyle bir yanıta gerek duymayabilir. Bu durumda, her bir tahmine yönelik her bir tahmine göre döndürülen varsayılan yanıt metnini ayarlayarak belirli bir metni ayarlayın. Metin, izleme istemleri seçimine ilişkin yönerge metni olarak görüntülenmek üzere tasarlanmıştır. Bu varsayılan yanıt metni için bir örnek vardır `Please select from the following choices` . Bu yapılandırma, bu belgenin sonraki birkaç bölümünde açıklanmaktadır. , REST API kullanarak Bilgi Bankası tanımının bir parçası olarak da `defaultAnswerUsedForExtraction` ayarlanabilir [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create).|
 
+# <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
+
+|Varsayılan yanıt türleri|Yanıtın açıklaması|
+|--|--|
+|Yanıt saptanmadığı zaman KB yanıtı|`No good match found in KB.` - [Generateanswer API 'si](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) söz konusu soruya eşleşen bir yanıt bulmazsa, varsayılan bir metin yanıtı görüntüler. Soru-Cevap Oluşturma yönetilen (Önizleme) bölümünde, bilgi Bankalarınızın **ayarlarında** bu metni ayarlayabilirsiniz. <br><br> ![Soru-Cevap Oluşturma yönetilen (Önizleme) varsayılan yanıtı ayarla](../media/qnamaker-how-change-default-answer/qnamaker-v2-change-default-answer.png)|
+|İzleme istemi yönerge metni|Bir konuşma akışında bir izleme istemi kullanırken, kullanıcının izleme istemlerinde seçmesini istediğiniz için QnA çiftiyle bir yanıta gerek duymayabilir. Bu durumda, her bir tahmine yönelik her bir tahmine göre döndürülen varsayılan yanıt metnini ayarlayarak belirli bir metni ayarlayın. Metin, izleme istemleri seçimine ilişkin yönerge metni olarak görüntülenmek üzere tasarlanmıştır. Bu varsayılan yanıt metni için bir örnek vardır `Please select from the following choices` . Bu yapılandırma, bu belgenin sonraki birkaç bölümünde açıklanmaktadır. Bunu `defaultAnswerUsedForExtraction` , [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)kullanarak Bilgi Bankası tanımının bir parçası olarak da ayarlayabilirsiniz.|
+
+---
+
 ### <a name="client-application-integration"></a>İstemci uygulama tümleştirmesi
 
-**Azure bot hizmeti**olan bir bot gibi bir istemci uygulaması için aşağıdaki senaryolardan birini seçebilirsiniz:
+**Azure bot hizmeti** olan bir bot gibi bir istemci uygulaması için aşağıdaki senaryolardan birini seçebilirsiniz:
 
 * Bilgi Bankası 'nın ayarını kullanın
 * Bir yanıtın ne zaman döndürüleceğini, ancak puan eşiğini karşılamadığında ayırt etmek için istemci uygulamada farklı bir metin kullanın. Bu metin, kodda depolanan statik metin veya istemci uygulamasının ayarlar listesinde depolanabilir.

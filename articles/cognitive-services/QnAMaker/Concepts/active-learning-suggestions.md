@@ -1,16 +1,16 @@
 ---
 title: Etkin öğrenme önerileri-Soru-Cevap Oluşturma
-description: Etkin öğrenme önerileri, sorularınızı ve yanıt çiftiyle Kullanıcı Gönderimleri temelinde alternatif sorular önererek bilgi Bankalarınızın kalitesini artırmanıza olanak tanır.
+description: Etkin öğrenme önerileri, sorularınızı ve yanıt çiftiyle Kullanıcı Gönderimlerini temel alan alternatif sorular önererek bilgi Bankalarınızın kalitesini iyileştirmenize olanak tanır.
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 03/19/2020
-ms.openlocfilehash: e8cdb1d471ceef2aef790c426424b9224faac5ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 707f4c098eacb0b72a7e12ebf79f9389b91095cc
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777046"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376528"
 ---
 # <a name="active-learning-suggestions"></a>Etkin öğrenme önerileri
 
@@ -37,10 +37,18 @@ Soru-Cevap Oluşturma portalında sorular Önerildikten sonra, bu önerileri gö
 
 ## <a name="turn-on-active-learning"></a>Etkin öğrenmeyi açma
 
+# <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
+
 Varsayılan olarak, etkin öğrenme **kapalıdır**.
 Etkin öğrenimi kullanmak için:
 * Soru-Cevap Oluşturma bilgi tabanınız için alternatif sorular toplayacak şekilde, [etkin öğrenmeyi açmanız](../How-To/use-active-learning.md#turn-on-active-learning-for-alternate-questions) gerekir.
 * Önerilen alternatif soruları görmek için düzenleme sayfasında [Görünüm seçeneklerini kullanın](../How-To/improve-knowledge-base.md#view-suggested-questions) .
+
+# <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
+
+Varsayılan olarak, etkin öğrenme Soru-Cevap Oluşturma **yönetilmektedir (** Önizleme). Önerilen alternatif soruları görmek için düzenleme sayfasında [Görünüm seçeneklerini kullanın](../How-To/improve-knowledge-base.md#view-suggested-questions) .
+
+---
 
 ## <a name="how-qna-makers-implicit-feedback-works"></a>Soru-Cevap Oluşturma örtük geri bildirimi nasıl kullanılır?
 

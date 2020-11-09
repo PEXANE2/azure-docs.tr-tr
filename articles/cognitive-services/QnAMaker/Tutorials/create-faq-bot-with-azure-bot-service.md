@@ -5,15 +5,15 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 08/31/2020
-ms.openlocfilehash: ab78ac41be2f900d84e82c21e566f5250b2afd18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa2530f817bf20af40ab2913df9f16e7d1974ef3
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777395"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375477"
 ---
 # <a name="tutorial-create-an-faq-bot-with-azure-bot-service"></a>Öğretici: Azure bot hizmeti ile bir SSS bot oluşturma
-Kod içermeyen Soru-Cevap Oluşturma ve Azure [bot hizmeti](https://azure.microsoft.com/en-us/services/bot-service/) Ile bir SSS bot oluşturun.
+Kod içermeyen Soru-Cevap Oluşturma ve Azure [bot hizmeti](https://azure.microsoft.com/services/bot-service/) Ile bir SSS bot oluşturun.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -28,7 +28,15 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bilgi Bankası oluşturmak için [hızlı](../Quickstarts/create-publish-knowledge-base.md) başlangıcı izleyin. Bilgi Bankası başarıyla yayımlandıktan sonra, aşağıdaki sayfaya ulaşırsanız.
 
+# <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
+
 ![Başarılı yayımlamanın ekran görüntüsü](../media/qnamaker-create-publish-knowledge-base/publish-knowledge-base-to-endpoint.png)
+
+# <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
+
+![Başarılı yayımlama yönetilmesinin ekran görüntüsü](../media/qnamaker-create-publish-knowledge-base/publish-knowledge-base-to-endpoint-managed.png)
+
+---
 
 ## <a name="create-a-bot"></a>Bot oluştur
 
@@ -39,9 +47,18 @@ Yayımladıktan sonra **Yayımla** sayfasından bir bot oluşturabilirsiniz:
 
 Bilgi bankasında değişiklikler yaptığınızda ve yeniden yayımladığınızda, bot ile daha fazla işlem yapmanız gerekmez. Bilgi Bankası ile çalışmak üzere zaten yapılandırılmıştır ve ileride Bilgi Bankası değişiklikleriyle birlikte çalışır. Bilgi Bankası 'nı her yayımladığınızda, kendisine bağlı olan tüm botlar otomatik olarak güncelleştirilir.
 
-1. Soru-Cevap Oluşturma portalında, **Yayımla** sayfasında, **bot oluştur**' u seçin. Bu düğme yalnızca Bilgi Bankası 'nı yayımladıktan sonra görünür.
+1. Soru-Cevap Oluşturma portalında, **Yayımla** sayfasında, **bot oluştur** ' u seçin. Bu düğme yalnızca Bilgi Bankası 'nı yayımladıktan sonra görünür.
+
+     # <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
 
     ![Bot oluşturma ekran görüntüsü](../media/qnamaker-create-publish-knowledge-base/create-bot-from-published-knowledge-base-page.png)
+
+    # <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
+
+    ![Bot yönetilen önizlemesi oluşturma ekran görüntüsü](../media/qnamaker-create-publish-knowledge-base/create-bot-from-published-knowledge-base-page-managed.png)
+
+    ---
+    
 
 1. Azure bot hizmetinin oluşturma sayfası ile Azure portal için yeni bir tarayıcı sekmesi açılır. Azure bot hizmetini yapılandırın. Bot ve Soru-Cevap Oluşturma Web App Service planını paylaşabilir, ancak Web uygulamasını paylaşamaz. Bu, bot 'ın **uygulama adının** soru-cevap oluşturma hizmeti için uygulama adından farklı olması anlamına gelir.
 
@@ -55,8 +72,8 @@ Bilgi bankasında değişiklikler yaptığınızda ve yeniden yayımladığını
 
 
 1. Bot oluşturulduktan sonra, **bot hizmeti** kaynağını açın.
-1. **Bot Management**altında **Web sohbeti ' nda test**' i seçin.
-1. **Iletinizi yazın**sohbet isteminde şunu girin:
+1. **Bot Management** altında **Web sohbeti ' nda test** ' i seçin.
+1. **Iletinizi yazın** sohbet isteminde şunu girin:
 
     `Azure services?`
 

@@ -4,13 +4,13 @@ description: Soru-Cevap Oluşturma, bir Bilgi Bankası 'nda birden çok kişinin
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 10/11/2020
-ms.openlocfilehash: 77290d271709db36f9c62e165b0b4070783b3ec6
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.date: 11/09/2020
+ms.openlocfilehash: 93d9cc871d1cb114f7f08b68eb8ae9d597e228b9
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92128503"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376494"
 ---
 # <a name="manage-qna-maker-app"></a>Soru-Cevap Oluşturma uygulamayı yönetme
 
@@ -43,7 +43,7 @@ Aşağıdaki adımlarda ortak çalışan rolü kullanılır, ancak bu adımlar k
 
     ![Soru-Cevap Oluşturma ıAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.png)
 
-1. **Ekle**’yi seçin.
+1. **Ekle** ’yi seçin.
 
     ![Soru-Cevap Oluşturma ıAM ekleme](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.png)
 
@@ -59,7 +59,7 @@ Aşağıdaki adımlarda ortak çalışan rolü kullanılır, ancak bu adımlar k
 
     :::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-add-role-iam.png" alt-text="Soru-Cevap Oluşturma ıAM rol Ekle.":::
 
-1. Kullanıcının e-posta adresini girin ve **Kaydet**' e basın.
+1. Kullanıcının e-posta adresini girin ve **Kaydet** ' e basın.
 
     ![Soru-Cevap Oluşturma ıAM e-posta Ekle](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.png)
 
@@ -69,30 +69,46 @@ Soru-Cevap Oluşturma hizmetinizi paylaştığınız kişi [soru-cevap oluşturm
 
 Bir Bilgi Bankası seçerken, bu Soru-Cevap Oluşturma kaynaktaki geçerli rolleri Bilgi Bankası adının yanında görünür.
 
-:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="Soru-Cevap Oluşturma ıAM rol Ekle.":::
+:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="Web sayfasının sol üst köşesinde bulunan Bilgi Bankası adı ' nın yanında, parantez içinde rol adı olan düzenleme modunda Bilgi Bankası 'nın ekran görüntüsü.":::
 
 ## <a name="upgrade-runtime-version-to-use-active-learning"></a>Çalışma zamanı sürümünü etkin öğrenimi kullanacak şekilde yükseltme
 
+# <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
+
 Etkin öğrenme, çalışma zamanı sürümü 4.4.0 ve üzeri sürümlerde desteklenir. Bilgi tabanınız daha önceki bir sürümde oluşturulduysa, [çalışma alanınızı](set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) bu özelliği kullanacak şekilde yükseltin.
 
+# <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
+
+Soru-Cevap Oluşturma yönetilen (Önizleme) sürümünde, çalışma zamanı Soru-Cevap Oluşturma hizmetin kendisi tarafından barındırıldığından, çalışma zamanını el ile yükseltmeniz gerekmez.
+
+---
+
 ## <a name="turn-on-active-learning-for-alternate-questions"></a>Diğer sorular için etkin öğrenmeyi açın
+
+# <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
 
 Etkin öğrenme varsayılan olarak kapalıdır. Önerilen soruları görmek için etkinleştirin. Etkin öğrenmeyi etkinleştirdikten sonra, Soru-Cevap Oluşturma için istemci uygulamasından bilgi göndermeniz gerekir. Daha fazla bilgi için bkz. [GenerateAnswer kullanımı Için mimari akış ve bir bot 'Tan API 'Ler eğitme](improve-knowledge-base.md#architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot).
 
 1. Bilgi Bankası 'nı yayımlamak için **Yayımla** ' yı seçin. Etkin öğrenme sorguları yalnızca GenerateAnswer API tahmin uç noktasından toplanır. Soru-Cevap Oluşturma portalındaki test bölmesi sorguları etkin öğrenmeyi etkilemez.
 
-1. Soru-Cevap Oluşturma portalında etkin öğrenimi açmak için sağ üst köşeye gidin, **adınızı**seçin, [**hizmet ayarları**](https://www.qnamaker.ai/UserSettings)' na gidin.
+1. Soru-Cevap Oluşturma portalında etkin öğrenimi açmak için sağ üst köşeye gidin, **adınızı** seçin, [**hizmet ayarları**](https://www.qnamaker.ai/UserSettings)' na gidin.
 
     ![Etkin öğrenimi 'nin önerilen soru alternatiflerini hizmet ayarları sayfasından açın. Sağ üst menüdeki Kullanıcı adınızı seçip hizmet ayarları ' nı seçin.](../media/improve-knowledge-base/Endpoint-Keys.png)
 
 
-1. Soru-Cevap Oluşturma hizmeti bulun ve ardından **etkin öğrenimi**değiştirin.
+1. Soru-Cevap Oluşturma hizmeti bulun ve ardından **etkin öğrenimi** değiştirin.
 
     > [!div class="mx-imgBorder"]
     > [![Hizmet ayarları sayfasında, etkin öğrenme özelliği ' nde geçiş yapın. Özelliği geçiş yapadıysanız hizmetinizi yükseltmeniz gerekebilir.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
     > [!Note]
     > Önceki görüntüde yer alan tam sürüm yalnızca bir örnek olarak gösterilir. Sürümünüz farklı olabilir.
     **Etkin öğrenme** etkinleştirildikten sonra, Bilgi Bankası Kullanıcı tarafından gönderilen sorulara göre düzenli aralıklarla yeni sorular önerir. Ayarı yeniden değiştirerek **etkin öğrenmeyi** devre dışı bırakabilirsiniz.
+
+# <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
+
+Varsayılan olarak, etkin öğrenme Soru-Cevap Oluşturma **yönetilmektedir (** Önizleme). Önerilen alternatif soruları görmek için düzenleme sayfasında [Görünüm seçeneklerini kullanın](../How-To/improve-knowledge-base.md#view-suggested-questions) .
+
+---
 
 ## <a name="review-suggested-alternate-questions"></a>Önerilen alternatif soruları gözden geçirin
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 757575b31bde1a0e25cc3e70aad0cca0fdd45953
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.openlocfilehash: 1c37742b7ed31d8253f7908c3adac35ca0b4d5d8
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170317"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376562"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Hızlı başlangıç: IoT Central uygulamanıza sanal cihaz ekleme
 
@@ -21,14 +21,14 @@ ms.locfileid: "92170317"
 
 Bir cihaz şablonu, IoT Central uygulamanıza bağlanan bir cihazın yeteneklerini tanımlar. Özellikler cihaz gönderme, cihaz özellikleri ve bir cihazın yanıt verdiği komutları içerir. Bir cihaz şablonundan, bir Oluşturucu veya operatör bir uygulamaya hem gerçek hem de sanal cihaz ekleyebilir. Sanal cihazlar, gerçek cihazları bağlanmadan önce IoT Central uygulamanızın davranışını test etmek için kullanışlıdır.
 
-Bu hızlı başlangıçta, bir *Mxyonga IoT devkit* (devkit) panosu için bir cihaz şablonu eklersiniz ve sanal bir cihaz oluşturacaksınız. Bu hızlı başlangıcı tamamlayabilmeniz için gerçek bir cihaza ihtiyacınız yoktur, cihazın simülasyonu ile çalışırsınız. Bir DevKit cihazı:
+Bu hızlı başlangıçta, bir [ *Mxyonga IoT devkit* (devkit)](https://aka.ms/iot-devkit-purchase) panosu için bir cihaz şablonu eklersiniz ve sanal bir cihaz oluşturacaksınız. Bu hızlı başlangıcı tamamlayabilmeniz için gerçek bir cihaza ihtiyacınız yoktur, cihazın simülasyonu ile çalışırsınız. Bir DevKit cihazı:
 
 * Sıcaklık gibi telemetri gönderir.
 * , Parlaklık düzeyi gibi cihaza özgü özellikleri raporlar.
 * Açma ve kapatma gibi komutlara yanıt verir.
 * Bellenim sürümü ve seri numarası gibi genel cihaz özelliklerini raporlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Özel uygulama **> özel uygulama** şablonunu kullanarak bir IoT Central uygulaması oluşturmak için [Azure IoT Central uygulaması oluşturma](./quick-deploy-iot-central.md) hızlı başlangıcı ' nı doldurun.
 
@@ -52,21 +52,21 @@ Aşağıdaki adımlarda, bir **Mxyonga IoT DevKit** cihazı için yetenek modeli
 
 1. **Şablon türü seç** sayfasında, **Mxyongaıot devkit** kutucuğunu bulana kadar aşağı kaydırın.
 
-1. **Mxyongaıot DevKit** kutucuğunu seçin ve ardından **İleri: Özelleştir**' i seçin.
+1. **Mxyongaıot DevKit** kutucuğunu seçin ve ardından **İleri: Özelleştir** ' i seçin.
 
-1. **İnceleme** sayfasında **Oluştur**' u seçin.
+1. **İnceleme** sayfasında **Oluştur** ' u seçin.
 
 1. Birkaç saniye sonra, yeni cihaz şablonunuzu görebilirsiniz:
 
     ![Mxyongaıot DevKit cihaz şablonu](./media/quick-create-simulated-device/devkit-template.png)
 
-    Mxyongaıot DevKit yetenek modeli, **mxchip_sensor**, **Mxchip_settings**ve **cihaz bilgileri**gibi arabirimleri içerir. Arabirimler bir Mxyongaıot DevKit cihazının yeteneklerini tanımlar. Özellikler, bir cihazın gönderdiği Telemetriyi, bir cihaz rapor özelliklerini ve bir cihazın yanıt verdiği komutları içerir.
+    Mxyongaıot DevKit yetenek modeli, **mxchip_sensor** , **Mxchip_settings** ve **cihaz bilgileri** gibi arabirimleri içerir. Arabirimler bir Mxyongaıot DevKit cihazının yeteneklerini tanımlar. Özellikler, bir cihazın gönderdiği Telemetriyi, bir cihaz rapor özelliklerini ve bir cihazın yanıt verdiği komutları içerir.
 
 ### <a name="add-cloud-properties"></a>Bulut özelliklerini ekleme
 
 Bir cihaz şablonu, bulut özellikleri içerebilir. Bulut özellikleri yalnızca IoT Central uygulamasında bulunur ve bir cihaza hiçbir şekilde gönderilmez veya buradan alınmaz. Bir bulut özelliği eklemek için:
 
-1. **Bulut özellikleri** ' ni seçin ve **+ bulut özelliği Ekle**' ye tıklayın. Cihaz şablonunuza iki bulut özelliği eklemek için aşağıdaki tablodaki bilgileri kullanın:
+1. **Bulut özellikleri** ' ni seçin ve **+ bulut özelliği Ekle** ' ye tıklayın. Cihaz şablonunuza iki bulut özelliği eklemek için aşağıdaki tablodaki bilgileri kullanın:
 
     | Görünen Ad      | Anlamsal tür | Şema |
     | ----------------- | ------------- | ------ |
@@ -98,9 +98,9 @@ Bir işlecin cihazı yönetmek için kullanabileceği yeni bir **Cihaz yönet** 
 
 1. **Görünümler** düğümünü seçin ve ardından yeni bir görünüm eklemek için **cihazı ve bulut verilerini Düzenle** kutucuğunu seçin.
 
-1. **Cihazı yönetmek**için form adını değiştirin.
+1. **Cihazı yönetmek** için form adını değiştirin.
 
-1. **Müşteri adı** ve **son hizmet tarihi** bulut özelliklerini ve **fan hızı** özelliğini seçin. Ardından **Bölüm Ekle**' yi seçin:
+1. **Müşteri adı** ve **son hizmet tarihi** bulut özelliklerini ve **fan hızı** özelliğini seçin. Ardından **Bölüm Ekle** ' yi seçin:
 
     ![Yeni form oluştur](media/quick-create-simulated-device/new-form.png)
 
@@ -114,7 +114,7 @@ Bir cihaz şablonunu yayımlamak için:
 
 1. Cihaz **şablonları** sayfasından cihaz şablonunuza gidin.
 
-1. **Yayımla**' yı seçin:
+1. **Yayımla** ' yı seçin:
 
     ![Yayımlanan model](media/quick-create-simulated-device/published-model.png)
 
@@ -126,9 +126,9 @@ Bir cihaz şablonunu yayımladıktan sonra, **cihazlar** sayfasında görünür.
 
 Uygulamanıza sanal bir cihaz eklemek için, oluşturduğunuz **Mxyonga IoT DevKit** cihaz şablonunu kullanın.
 
-1. Yeni bir cihazı operatör olarak eklemek için sol bölmedeki **cihazlar** ' ı seçin. **Cihazlar** sekmesinde **tüm cihazlar** ve **mxyonga IoT devkit** cihaz şablonu gösterilmektedir. **Mxyongaıot DevKit**' i seçin.
+1. Yeni bir cihazı operatör olarak eklemek için sol bölmedeki **cihazlar** ' ı seçin. **Cihazlar** sekmesinde **tüm cihazlar** ve **mxyonga IoT devkit** cihaz şablonu gösterilmektedir. **Mxyongaıot DevKit** ' i seçin.
 
-1. Sanal bir DevKit cihazı eklemek için öğesini seçin **+** . Önerilen **CIHAZ kimliğini** kullanın veya kendi kodunuzu girin. Bir cihaz KIMLIĞI harfler, rakamlar ve `-` karakteri içerebilir. Ayrıca, yeni cihazınız için bir ad girebilirsiniz. **Benzetimli** geçiş 'nin **Açık** olduğundan emin olun ve ardından **Oluştur**' u seçin.
+1. Sanal bir DevKit cihazı eklemek için öğesini seçin **+** . Önerilen **CIHAZ kimliğini** kullanın veya kendi kodunuzu girin. Bir cihaz KIMLIĞI harfler, rakamlar ve `-` karakteri içerebilir. Ayrıca, yeni cihazınız için bir ad girebilirsiniz. **Benzetimli** geçiş 'nin **Açık** olduğundan emin olun ve ardından **Oluştur** ' u seçin.
 
     ![Sanal cihaz](./media/quick-create-simulated-device/simulated-device.png)
 
@@ -154,9 +154,9 @@ Yeni bir sanal cihaz oluşturduktan sonra, Oluşturucu bu cihazı kullanarak cih
 
 1. Sol bölmedeki **cihaz şablonları** ' nı seçin ve **Mxyonga IoT devkit** şablonunu seçin.
 
-1. Düzenlemek istediğiniz görünümlerden birini seçin veya yeni bir görünüm oluşturun. **Önizleme cihazını Yapılandır**' ı seçin ve ardından **çalışan bir cihazdan öğesini seçin**. Burada, bir önizleme cihazı, test için yapılandırılmış gerçek bir cihaz ya da IoT Central eklemiş olduğunuz mevcut bir cihaz yok seçeneklerinden birini belirleyebilirsiniz.
+1. Düzenlemek istediğiniz görünümlerden birini seçin veya yeni bir görünüm oluşturun. **Önizleme cihazını Yapılandır** ' ı seçin ve ardından **çalışan bir cihazdan öğesini seçin**. Burada, bir önizleme cihazı, test için yapılandırılmış gerçek bir cihaz ya da IoT Central eklemiş olduğunuz mevcut bir cihaz yok seçeneklerinden birini belirleyebilirsiniz.
 
-1. Listeden sanal cihazınızı seçin. Sonra **Uygula**'yı seçin. Artık cihaz şablonu görünümlerini oluşturma deneyiminizdeki aynı sanal cihazı görebilirsiniz. Bu görünüm, grafikler ve diğer görselleştirmeler için kullanışlıdır.
+1. Listeden sanal cihazınızı seçin. Sonra **Uygula** 'yı seçin. Artık cihaz şablonu görünümlerini oluşturma deneyiminizdeki aynı sanal cihazı görebilirsiniz. Bu görünüm, grafikler ve diğer görselleştirmeler için kullanışlıdır.
 
     ![Önizleme cihazını Yapılandır](./media/quick-create-simulated-device/configure-preview.png)
 

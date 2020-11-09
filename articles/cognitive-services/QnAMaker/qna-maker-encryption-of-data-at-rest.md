@@ -7,14 +7,14 @@ manager: venkyv
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 11/09/2020
 ms.author: egeaney
-ms.openlocfilehash: e744423e00377ef763824f6e39865e6b3e8ee475
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ee3c3942ee7d01fa174947f5d9c278cddaf0424
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89073548"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376934"
 ---
 # <a name="qna-maker-encryption-of-data-at-rest"></a>Bekleyen verilerin şifrelenmesi Soru-Cevap Oluşturma
 
@@ -24,7 +24,15 @@ Soru-Cevap Oluşturma, bulutta kalıcı olduğunda verilerinizi otomatik olarak 
 
 Aboneliğiniz varsayılan olarak Microsoft tarafından yönetilen şifreleme anahtarlarını kullanır. Aboneliğinizi, müşteri tarafından yönetilen anahtarlar (CMK) adlı kendi anahtarlarınız ile yönetme seçeneği de vardır. CMK, erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme için daha fazla esneklik sunar. Verilerinizi korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz. Aboneliğiniz için CMK yapılandırıldıysa, ikinci bir koruma katmanı sunan ve Azure Key Vault şifreleme anahtarını denetlemenizi sağlayan çift şifreleme sağlanır.
 
-Soru-Cevap Oluşturma Azure Search 'ten CMK desteği kullanır. [Azure Key Vault kullanarak CMK Azure Search](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys)oluşturmanız gerekir. Bu Azure örneği, CMK 'ın etkinleştirilmesini sağlamak için Soru-Cevap Oluşturma Hizmeti ile ilişkilendirilmelidir.
+# <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
+
+Soru-Cevap Oluşturma Azure Search 'ten CMK desteği kullanır. [Azure Search Azure Key Vault kullanarak CMK](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys)'ı yapılandırın. Bu Azure örneği, CMK 'ın etkinleştirilmesini sağlamak için Soru-Cevap Oluşturma Hizmeti ile ilişkilendirilmelidir.
+
+# <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
+
+Soru-Cevap Oluşturma [Azure Search 'Ten CMK desteğini](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys)kullanır ve Azure Search dizininde depolanan verileri şifrelemek için belirtilen CMK 'yi otomatik olarak ilişkilendirir.
+
+---
 
 > [!IMPORTANT]
 > Azure Search hizmeti kaynağınız 2019 Ocak 'tan sonra oluşturulmuş olmalı ve ücretsiz (paylaşılan) katmanda olamaz. Azure portal müşteri tarafından yönetilen anahtarları yapılandırma desteği yoktur.
@@ -33,21 +41,40 @@ Soru-Cevap Oluşturma Azure Search 'ten CMK desteği kullanır. [Azure Key Vault
 
 Soru-Cevap Oluşturma hizmeti Azure Search hizmetinden CMK kullanır. CMKs 'i etkinleştirmek için şu adımları izleyin:
 
+# <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
+
 1. Yeni bir Azure Search örneği oluşturun ve [Azure bilişsel arama için müşteri tarafından yönetilen anahtar önkoşulları](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys#prerequisites)bölümünde bahsedilen önkoşulları etkinleştirin.
 
    ![Şifreleme ayarlarını görüntüleyin 1](../media/cognitive-services-encryption/qna-encryption-1.png)
 
-2. Bir Soru-Cevap Oluşturma kaynağı oluşturduğunuzda, otomatik olarak bir Azure Search örneğiyle ilişkilendirilir. Bu, CMK ile kullanılamaz. CMK 'yi kullanmak için, adım 1 ' de oluşturulan yeni oluşturulan Azure Search örneğini ilişkilendirmeniz gerekir. Özellikle, `AzureSearchAdminKey` soru-cevap oluşturma kaynağınız içinde ve ' ı güncelleştirmeniz gerekir `AzureSearchName` .
+2. Bir Soru-Cevap Oluşturma kaynağı oluşturduğunuzda, otomatik olarak bir Azure Search örneğiyle ilişkilendirilir. Bu örnek CMK ile kullanılamaz. CMK 'yi kullanmak için, adım 1 ' de oluşturulan yeni oluşturulan Azure Search örneğini ilişkilendirmeniz gerekir. Özellikle, `AzureSearchAdminKey` soru-cevap oluşturma kaynağınız içinde ve ' ı güncelleştirmeniz gerekir `AzureSearchName` .
 
    ![Şifreleme ayarlarını görüntüle 2](../media/cognitive-services-encryption/qna-encryption-2.png)
 
 3. Sonra, yeni bir uygulama ayarı oluşturun:
-   * **Ad**: bunu olarak ayarla `CustomerManagedEncryptionKeyUrl`
-   * **Değer**: Azure Search örneğinizi oluştururken 1. adımda aldığınız değerdir.
+   * **Ad** : ayarla `CustomerManagedEncryptionKeyUrl`
+   * **Değer** : Azure Search örneğinizi oluştururken 1. adımda aldığınız değeri kullanın.
 
    ![Şifreleme ayarlarını görüntüleme 3](../media/cognitive-services-encryption/qna-encryption-3.png)
 
 4. İşiniz bittiğinde çalışma zamanını yeniden başlatın. Artık Soru-Cevap Oluşturma hizmetiniz CMK-etkinleştirilmiştir.
+
+# <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
+
+1.  Soru-Cevap Oluşturma yönetilen (Önizleme) hizmetinizin **şifreleme** sekmesine gidin.
+2.  **Müşteri tarafından yönetilen anahtarlar** seçeneğini belirleyin. [Müşteri tarafından yönetilen anahtarlarınızın](https://docs.microsoft.com/azure/storage/common/customer-managed-keys-configure-key-vault?tabs=portal) ayrıntılarını sağlayın ve **Kaydet** ' e tıklayın.
+
+     :::image type="content" source="../media/cognitive-services-encryption/qnamaker-v2-encryption-cmk.png" alt-text="Soru-Cevap Oluşturma yönetilen (Önizleme) CMK ayarı" lightbox="../media/cognitive-services-encryption/qnamaker-v2-encryption-cmk.png":::
+
+3.  Başarılı bir kaydetme işlemi sırasında CMK, Azure Search dizininde depolanan verileri şifrelemek için kullanılacaktır.
+
+> [!IMPORTANT]
+> Herhangi bir bilgi tabanı oluşturulmadan önce CMK 'nizi yeni bir Azure Bilişsel Arama hizmetinde ayarlamanız önerilir. CMK 'yi, mevcut bilgi temellerine sahip bir Soru-Cevap Oluşturma hizmetinde ayarlarsanız, bunlara erişiminizi kaybedebilirsiniz. Azure bilişsel arama 'da [şifrelenmiş içerikle çalışma](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys#work-with-encrypted-content) hakkında daha fazla bilgi edinin.
+
+> [!NOTE]
+> Müşteri tarafından yönetilen anahtarları kullanma olanağı istemek için bilişsel [hizmetler Customer-Managed anahtar Isteği formunu](https://aka.ms/cogsvc-cmk)doldurun ve iletin.
+
+---
 
 ## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 

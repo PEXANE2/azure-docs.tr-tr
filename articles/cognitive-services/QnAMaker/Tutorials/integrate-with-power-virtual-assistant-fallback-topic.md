@@ -4,13 +4,13 @@ description: Bu öğreticide, etkin öğrenme ile bilgi Bankalarınızın kalite
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 06/08/2020
-ms.openlocfilehash: 42b50fcf0df27ddbc3e587a7d8e038e4979935ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 322db4e1535e763f4c3e7c87afaa370471ba0b66
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777415"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376307"
 ---
 # <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>Öğretici: bilgi tabanınızı Power Virtual Agents 'e ekleme
 Bilgi tabanınızdan yanıt sağlamak için bir [Power Virtual Agents](https://powervirtualagents.microsoft.com/) bot oluşturun ve genişletin.
@@ -79,7 +79,7 @@ Power sanal aracılarında bir aracıyı Soru-Cevap Oluşturma bir bilgi tabanı
 
 1. [Power sanal aracılarında oturum açın](https://go.microsoft.com/fwlink/?LinkId=2108000&clcid=0x409). Okul veya iş e-posta hesabınızı kullanın.
 
-1. İlk bot ise, aracının **ana** sayfasında olursunuz. İlk bot sizin değilse, sayfanın sağ üst kısmından bot ' ı seçin ve **+ yeni bot**' ı seçin.
+1. İlk bot ise, aracının **ana** sayfasında olursunuz. İlk bot sizin değilse, sayfanın sağ üst kısmından bot ' ı seçin ve **+ yeni bot** ' ı seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Power Virtual Agents ana sayfasının ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-home.png)
@@ -98,7 +98,7 @@ Bot tarafından sunulan konuları görmek için sol gezinmede bulunan **konular�
 
 Aracı herhangi bir konudan bilgi tabanınızı bağlayabilse de, bu öğretici *sistem geri dönüş* konusunu kullanır. Aracı bir yanıt bulamadığında geri dönüş konusu kullanılır. Aracı kullanıcının metnini Soru-Cevap Oluşturma API 'sine geçirir `GenerateAnswer` , bilgi tabanınızdan yanıtı alır ve kullanıcıya ileti olarak görüntüler.
 
-1. [Power Virtual Agents](https://powerva.microsoft.com/#/) portalında, sağ üst köşedeki **Ayarlar** ' ı (dişli simgesi) seçin. Ardından **sistem geri dönüş**' ı seçin.
+1. [Power Virtual Agents](https://powerva.microsoft.com/#/) portalında, sağ üst köşedeki **Ayarlar** ' ı (dişli simgesi) seçin. Ardından **sistem geri dönüş** ' ı seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Sistem geri dönüşü için Power Virtual Agents menü öğesinin ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-settings-system-fallback.png)
@@ -123,11 +123,11 @@ Bu bölüm, geri dönüş konusu konuşma akışını oluşturur.
 
     :::image type="content" source="../media/how-to-integrate-power-virtual-agent/delete-escalate-action-using-option-menu.png" alt-text="Silme seçeneği vurgulanmış şekilde, konuşma akışının kısmi ekran görüntüsü.":::
 
-1. **+** **İleti** kutusuna bağlayıcı akışını seçin ve ardından **eylem çağır**' ı seçin.
+1. **+** **İleti** kutusuna bağlayıcı akışını seçin ve ardından **eylem çağır** ' ı seçin.
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/create-new-item-call-an-action.png" alt-text="Silme seçeneği vurgulanmış şekilde, konuşma akışının kısmi ekran görüntüsü.":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/create-new-item-call-an-action.png" alt-text="Bir eylemi çağıran kısmi ekran görüntüsü.":::
 
-1. **Akış oluştur**'u seçin. İşlem sizi Power otomatikleştir portalına götürür.
+1. **Akış oluştur** 'u seçin. İşlem sizi Power otomatikleştir portalına götürür.
 
     > [!div class="mx-imgBorder"]
     > ![Akış oluştur ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/create-a-flow.png)
@@ -135,28 +135,31 @@ Bu bölüm, geri dönüş konusu konuşma akışını oluşturur.
 
     Güç otomatikleştirme, yeni bir şablon olarak açılır. Bu yeni şablonu kullanmayacağız.
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-flow-initial-template.png" alt-text="Silme seçeneği vurgulanmış şekilde, konuşma akışının kısmi ekran görüntüsü.":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-flow-initial-template.png" alt-text="Yeni akış şablonuyla Power otomatikleştirmenin kısmi ekran görüntüsü.":::
 
 ## <a name="create-a-power-automate-flow-to-connect-to-your-knowledge-base"></a>Bilgi tabanınızı bağlamak için Power otomatikleştir akışı oluşturma
+
+> [!NOTE]
+> Power otomatikleştir şablonu şu anda Soru-Cevap Oluşturma yönetilen (Önizleme) uç noktalarını desteklemez. Power otomatikleştirmek için Soru-Cevap Oluşturma yönetilen (Önizleme) Bilgi Bankası eklemek için bu adımı atlayın ve uç noktalarını el ile ekleyin. 
 
 Aşağıdaki yordam şu şekilde bir güç otomatikleştirme akışı oluşturur:
 * Gelen Kullanıcı metnini alır ve Soru-Cevap Oluşturma gönderir.
 * En iyi yanıtı aracıya geri döndürür.
 
-1. **Power otomatikleştirmede**sol gezinti bölmesinde **Şablonlar** ' ı seçin. Tarayıcı sayfasından çıkmak isteyip istemediğiniz sorulursa, bırak seçeneğini kabul edin.
+1. **Power otomatikleştirmede** sol gezinti bölmesinde **Şablonlar** ' ı seçin. Tarayıcı sayfasından çıkmak isteyip istemediğiniz sorulursa, bırak seçeneğini kabul edin.
 
 1. Şablonlar sayfasında, şablon **soru-cevap oluşturma kullanarak yanıt oluştur** ' u arayın ve şablonu seçin. Bu şablonda, Bilgi Bankası ayarlarınıza Soru-Cevap Oluşturma çağrısı yapmak ve en iyi yanıtı döndürmek için tüm adımlar bulunur.
 
-1. Soru-Cevap Oluşturma akışının yeni ekranında **devam**' ı seçin.
+1. Soru-Cevap Oluşturma akışının yeni ekranında **devam** ' ı seçin.
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-qna-flow-template-continue.png" alt-text="Silme seçeneği vurgulanmış şekilde, konuşma akışının kısmi ekran görüntüsü.":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-qna-flow-template-continue.png" alt-text="Devam düğmesi vurgulanmış Soru-Cevap Oluşturma şablon akışının kısmi ekran görüntüsü.":::
 
 1. **Yanıt oluştur** eylem kutusunu seçin ve [Bilgi Bankası oluşturma ve yayımlama](#create-and-publish-a-knowledge-base)başlıklı önceki bir bölümden soru-cevap oluşturma ayarlarınızı girin. Aşağıdaki görüntüdeki **hizmet ana** Bilgisayarınız, Bilgi Bankası ana bilgisayar **ana** bilgisayarınız ile ilgilidir ve biçiminde olur `https://YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker` .
 
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fill-in-generate-answer-settings.png" alt-text="Silme seçeneği vurgulanmış şekilde, konuşma akışının kısmi ekran görüntüsü.":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fill-in-generate-answer-settings.png" alt-text="Yanıt oluştur (Önizleme) ile Soru-Cevap Oluşturma şablon akışının kısmi ekran görüntüsü vurgulandı.":::
 
-1. Akışı kaydetmek için **Kaydet**’i seçin.
+1. Akışı kaydetmek için **Kaydet** ’i seçin.
 
 ## <a name="create-a-solution-and-add-the-flow"></a>Bir çözüm oluşturun ve akışı ekleyin
 
@@ -164,7 +167,7 @@ Aracının akışı bulması ve akışa bağlanması için akışın bir güç o
 
 1. Power otomatikleştir portalında hala, sol taraftaki gezinmede **çözümler** ' i seçin.
 
-1. **+ Yeni çözüm**’ü seçin.
+1. **+ Yeni çözüm** ’ü seçin.
 
 1. Görünen ad girin. Çözüm listesi, kuruluşunuzdaki veya okulunuzdaki her çözümü içerir. Yalnızca çözümlerinizi filtrelemenize yardımcı olacak bir adlandırma kuralı seçin. Örneğin, e-postanızı çözümünüz adına önek olarak ekleyebilirsiniz: `jondoe-power-virtual-agent-qnamaker-fallback` .
 
@@ -178,7 +181,7 @@ Aracının akışı bulması ve akışa bağlanması için akışın bir güç o
 
 1. Çözümler listesinde, az önce oluşturduğunuz çözümü seçin. Listenin en üstünde olmalıdır. Aksi takdirde, çözüm adının bir parçası olan e-posta adınızla arama yapın.
 
-1. Çözümde **+ Varolanı Ekle**' yi seçin ve listeden **Flow** ' u seçin.
+1. Çözümde **+ Varolanı Ekle** ' yi seçin ve listeden **Flow** ' u seçin.
 
 1. **Dış çözümler** listesinden akışınızı bulun ve ardından **Ekle** ' yi seçerek işlemi sona erdirin. Çok sayıda akış varsa, en son akışı bulmak için **değiştirilen** sütununa bakın.
 
@@ -186,20 +189,20 @@ Aracının akışı bulması ve akışa bağlanması için akışın bir güç o
 
 1. Güç sanal aracılarında aracınızın bulunduğu tarayıcı sekmesine dönün. Yazma tuvali hala açık olmalıdır.
 
-1. Akışa yeni bir adım eklemek için **ileti** eylemi kutusunun üstünde **+** bağlayıcısını seçin. Sonra **bir eylem çağır**' ı seçin.
+1. Akışa yeni bir adım eklemek için **ileti** eylemi kutusunun üstünde **+** bağlayıcısını seçin. Sonra **bir eylem çağır** ' ı seçin.
 
-1. **Akış** açılır penceresinde, **soru-cevap oluşturma Bilgi Bankası 'Nı kullanarak yanıtları oluştur**adlı yeni akışı seçin... Yeni eylem akışta görüntülenir.
+1. **Akış** açılır penceresinde, **soru-cevap oluşturma Bilgi Bankası 'Nı kullanarak yanıtları oluştur** adlı yeni akışı seçin... Yeni eylem akışta görüntülenir.
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-flow-after-adding-action.png" alt-text="Silme seçeneği vurgulanmış şekilde, konuşma akışının kısmi ekran görüntüsü.":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-flow-after-adding-action.png" alt-text="Soru-Cevap Oluşturma Flow eklendikten sonra Power Virtual Agent konusunun konuşma tuvalinin kısmi ekran görüntüsü.":::
 
-1. Giriş değişkenini Soru-Cevap Oluşturma eyleme doğru şekilde ayarlamak için, **değişken Seç**' i seçin ve ardından bot ' ı seçin **. UnrecognizedTriggerPhrase**.
+1. Giriş değişkenini Soru-Cevap Oluşturma eyleme doğru şekilde ayarlamak için, **değişken Seç** ' i seçin ve ardından bot ' ı seçin **. UnrecognizedTriggerPhrase**.
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-selection-action-input.png" alt-text="Silme seçeneği vurgulanmış şekilde, konuşma akışının kısmi ekran görüntüsü.":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-selection-action-input.png" alt-text="Power Virtual Agent konusunun konuşma tuvali 'nin giriş değişkenini seçen kısmi ekran görüntüsü.":::
 
 
-1. Çıkış değişkenini Soru-Cevap Oluşturma eyleme doğru şekilde ayarlamak için, **ileti** eyleminde, **Unrecognizedtriggertümcecik**' i seçin, sonra bir değişken eklemek için simgeyi seçin ve `{x}` ardından **FinalAnswer**' ı seçin.
+1. Çıkış değişkenini Soru-Cevap Oluşturma eyleme doğru şekilde ayarlamak için, **ileti** eyleminde, **Unrecognizedtriggertümcecik** ' i seçin, sonra bir değişken eklemek için simgeyi seçin ve `{x}` ardından **FinalAnswer** ' ı seçin.
 
-1. Bağlam araç çubuğundan **Kaydet**' i seçerek konunun yazma tuvali ayrıntılarını kaydedin.
+1. Bağlam araç çubuğundan **Kaydet** ' i seçerek konunun yazma tuvali ayrıntılarını kaydedin.
 
 Son aracı tuvali aşağıdaki gibi görünür.
 
@@ -208,7 +211,7 @@ Son aracı tuvali aşağıdaki gibi görünür.
 
 ## <a name="test-the-agent"></a>Aracıyı test etme
 
-1. Test bölmesinde, **konular arasında izleme**' yi değiştirin. Bu, konular arasındaki ilerlemeyi ve tek bir konu dahilinde izlemenize olanak sağlar.
+1. Test bölmesinde, **konular arasında izleme** ' yi değiştirin. Bu, konular arasındaki ilerlemeyi ve tek bir konu dahilinde izlemenize olanak sağlar.
 
 1. Kullanıcı metnini aşağıdaki sırayla girerek aracıyı test edin. Yazma tuvali, başarılı adımları yeşil onay işaretiyle bildirir.
 
@@ -221,15 +224,15 @@ Son aracı tuvali aşağıdaki gibi görünür.
     |5|Evet|Yanıt olarak `Can I help with anything else?`|
     |6|Sorgu tahminleri için üretilen iş performansını nasıl geliştirebilirim?|Bu soru, yanıt vermek için metin bilgi tabanınızı gönderen geri dönüş eylemini tetikler. Ardından Yanıt gösterilir. tek tek eylemler için yeşil onay işaretleri her bir eylem için başarıyı gösterir.|
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png" alt-text="Silme seçeneği vurgulanmış şekilde, konuşma akışının kısmi ekran görüntüsü.":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png" alt-text="Başarılı eylemler için yeşil onay işaretlerini gösteren tuval ile sohbet bot ekran görüntüsü.":::
 
 ## <a name="publish-your-bot"></a>Botunuzu yayımlayın
 
 Aracıyı okulunuzun veya kuruluşunuzun tüm üyeleri için kullanılabilir hale getirmek için, yayımlamanız gerekir.
 
-1. Soldaki gezinmede **Yayımla**' yı seçin. Sonra sayfada **Yayımla** ' yı seçin.
+1. Soldaki gezinmede **Yayımla** ' yı seçin. Sonra sayfada **Yayımla** ' yı seçin.
 
-1. Tanıtım Web sitesinde botunuzu deneyin ( **Yayımla**altındaki bağlantıyı arayın).
+1. Tanıtım Web sitesinde botunuzu deneyin ( **Yayımla** altındaki bağlantıyı arayın).
 
     Bot 'unuzla yeni bir Web sayfası açılır. Bot 'a aynı test sorusunu sorun: `How can I improve the throughput performance for query predictions?`
 
@@ -240,11 +243,11 @@ Aracıyı okulunuzun veya kuruluşunuzun tüm üyeleri için kullanılabilir hal
 
 Tanıtım Web sitesini paylaşmak için kanal olarak yapılandırın.
 
-1. Sol taraftaki gezinmede kanalları **Yönet**' i seçin  >  **Channels**.
+1. Sol taraftaki gezinmede kanalları **Yönet** ' i seçin  >  **Channels**.
 
 1. Kanallar listesinden **demo web sitesi** ' ni seçin.
 
-1. Bağlantıyı kopyalayın ve **Kaydet**' i seçin. Tanıtım Web sitenizin bağlantısını okulunuza veya kuruluş üyelerinize bir e-postaya yapıştırın.
+1. Bağlantıyı kopyalayın ve **Kaydet** ' i seçin. Tanıtım Web sitenizin bağlantısını okulunuza veya kuruluş üyelerinize bir e-postaya yapıştırın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

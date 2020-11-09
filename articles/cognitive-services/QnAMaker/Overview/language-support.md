@@ -7,44 +7,76 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
-ms.date: 09/24/2019
-ms.openlocfilehash: c990b6980dea871679b0b301e293e4fb94748db7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2019
+ms.openlocfilehash: dc910c01c401468a3dae392a6318344bee25efb7
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89650898"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375659"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Soru-Cevap Oluşturma bir kaynak ve bilgi tabanı için dil desteği
+
+Bu makalede, Soru-Cevap Oluşturma kaynakları ve bilgi tabanları için dil desteği seçenekleri açıklanmaktadır. 
+
+# <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
 
 Kaynak için ilk Bilgi Bankası oluşturduğunuzda hizmetin dili seçilir. Kaynaktaki tüm ek bilgi tabanları aynı dilde olmalıdır. 
 
 Dil, Kullanıcı sorgularına yanıt olarak Soru-Cevap Oluşturma sonuçların uygunluğunu belirler. Soru-Cevap Oluşturma kaynağı ve bu kaynaktaki tüm bilgi tabanları, tek bir dili destekler. Tek dil, bir sorgunun en iyi yanıt sonuçlarını sağlamak için gereklidir.
 
+# <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
+
+Yönetilen Soru-Cevap Oluşturma, tek tek Bilgi Bankası düzeyinde dil ayarları yapma seçeneğini görürsünüz. Bu ayar yalnızca hizmetin Bilgi Bankası ile etkinleştirilebilir. Ayar yapıldıktan sonra hizmet için dil ayarları değiştirilemez. 
+
+Bilgi tabanına özel olarak dil ayarları ' nı seçerseniz, hizmetin kendisinde farklı dillerin bilgi tabanları oluşturma izni verilir. 
+
+---
+
 ## <a name="single-language-per-resource"></a>Kaynak başına tek dil
+
+# <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
 
 Aşağıdaki topluluklara bir göz atın:
 
 * Bir Soru-Cevap Oluşturma Hizmeti ve tüm bilgi tabanları, yalnızca bir dili destekler.
+* Dil, hizmetin ilk bilgi tabanı oluşturulduğunda açıkça ayarlanır.
+* Dil, Bilgi Bankası oluşturulduğunda eklenen dosyalardan ve URL 'Lerden belirlenir.
+* Hizmet, hizmetteki diğer bilgi tabanları için değiştirilemez.
+* Dil, bir sorguya en iyi yanıtı oluşturmak için Bilişsel Arama hizmeti (Ranker #1) ve Soru-Cevap Oluşturma Hizmeti (Ranker #2) tarafından kullanılır.
+
+# <a name="qnamaker-managed-preview"></a>[Yönetilen QnAMaker (Önizleme)](#tab/v2)
+![Soru-Cevap Oluşturma yönetilen dil ayarı](../media/language-support/language-setting-managed.png)
+
+**Bilgi Bankası başına dil ayarını etkinleştirmek için onay kutusunu işaretlemezseniz** , aşağıdakileri göz önünde bulundurun: 
+* Bir Soru-Cevap Oluşturma Hizmeti ve tüm bilgi tabanları, yalnızca bir dili destekleyecektir.
 * Hizmetin ilk bilgi tabanı oluşturulduğunda dil açıkça ayarlanır
 * Dil, Bilgi Bankası oluşturulduğunda eklenen dosyalardan ve URL 'lerden belirlenir
 * Hizmet, hizmette diğer bilgi tabanları için değiştirilemez
 * Dil, bir sorguya en iyi yanıtı oluşturmak için Bilişsel Arama hizmeti (Ranker #1) ve Soru-Cevap Oluşturma Hizmeti (Ranker #2) tarafından kullanılır
 
-## <a name="supporting-multiple-languages"></a>Birden çok dili destekleme
+---
+
+## <a name="supporting-multiple-languages-in-one-qna-maker-resource"></a>Tek bir Soru-Cevap Oluşturma kaynakta birden çok dili destekleme
+
+# <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
+Bu işlev, geçerli genel kullanıma açık (GA) kararlı sürümümüzde desteklenmez. Bu işlevi sınamak için Soru-Cevap Oluşturma yönetilmek üzere kullanıma alma. 
+
+# <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
+* Hizmetinize ilk Bilgi Bankası oluştururken, Bilgi Bankası başına dil ayarını etkinleştirme seçeneğiniz vardır. Tek bir hizmette bulunan farklı dillere ait bilgi tabanları oluşturmak için onay kutusunu seçin.
+* Dil ayarı seçeneği, ilk Bilgi Bankası oluşturulduktan sonra hizmet için değiştirilemez.
+* Her bilgi tabanına özgü dil ayarlarını etkinleştirirseniz, hizmet için tek bir test dizinine sahip olmak yerine, her Bilgi Bankası için bir test dizinine sahip olursunuz. 
+
+![Soru-Cevap Oluşturma yönetilen dil ayarı](../media/language-support/language-setting-managed.png)
+
+---
+
+## <a name="supporting-multiple-languages-in-one-knowledge-base"></a>Tek bir bilgi tabanında birden çok dili destekleme
 
 Birkaç dil içeren bir Bilgi Bankası sistemini desteklemeniz gerekiyorsa şunları yapabilirsiniz:
 
 * Soruyu bilgi tabanınızı göndermeden önce bir soruyu tek bir dile çevirmek için [Translator hizmetini](../../translator/translator-info-overview.md) kullanın. Bu, tek bir dilin kalitesine ve diğer soruların ve yanıtların kalitesine odaklanabilmenizi sağlar.
 * Her dil için bu kaynak içindeki bir Soru-Cevap Oluşturma kaynağı ve Bilgi Bankası oluşturun. Bu, ayrı alternatif soruları yönetmenize ve her bir dil için daha fazla nuılmış metin elde etmenizi sağlar. Bu, çok daha fazla esneklik sağlar ancak sorular veya yanıtlar tüm dillerde değiştiğinde çok daha yüksek bir bakım maliyeti gerektirir.
-
-Soru-Cevap Oluşturma için [desteklenen dilleri](../overview/language-support.md) gözden geçirin.
-
-### <a name="support-each-language-with-a-qna-maker-resource"></a>Soru-Cevap Oluşturma kaynağıyla her dili destekleme
-
-* Her dil için bir Soru-Cevap Oluşturma kaynağı oluşturma
-* Yalnızca bu dilin dosyalarını ve URL 'Lerini ekleyin
-* Dili tanımlamak için kaynak için bir adlandırma kuralı kullanın. `qna-maker-fr`Fransızca belgelerin tüm Bilgi Bankası bilgileri için örnek bir örnektir
 
 
 ## <a name="languages-supported"></a>Desteklenen diller

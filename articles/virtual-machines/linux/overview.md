@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 71de48c8ac0f74ed4afbe0fafcdbfdf3f34d6654
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 95e4ac884e0eda3b4f469484226962e3fd2e2eea
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422425"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375389"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Azure’da Linux sanal makineleri
 
@@ -47,7 +47,7 @@ Bu tabloda, kullanılabilen konumların listesini edinme yöntemlerinden bazıla
 
 | Yöntem | Açıklama |
 | --- | --- |
-| Azure portalı |VM oluştururken listeden konum seçin. |
+| Azure portal |VM oluştururken listeden konum seçin. |
 | Azure PowerShell |[Get-AzLocation](/powershell/module/az.resources/get-azlocation) komutunu kullanın. |
 | REST API |[List locations](/rest/api/resources/subscriptions) işlemini kullanın. |
 | Azure CLI |[az account list-locations](/cli/azure/account?view=azure-cli-latest) işlemini kullanın. |
@@ -115,6 +115,11 @@ Azure, en çok Linux destekleri tarafından desteklenen [bulutta init](https://c
 * [Azure'da IP adresleri](../../virtual-network/public-ip-addresses.md)
 * [Azure'da Linux VM'sine bağlantı noktalarını açma](nsg-quickstart.md)
 * [Azure portalda Tam Etki Alanı Adı oluşturma](portal-create-fqdn.md)
+
+
+## <a name="data-residency"></a>Veri yerleşimi
+
+Azure 'da, müşteri verilerinin tek bir bölgede depolanmasını sağlama özelliği şu anda yalnızca Asya Pasifik coğrafi ve Brezilya Güney (Sao Paulo Eyaleti) Brezilya coğrafi bölge bölgesinin Güneydoğu Asya bölgesinde (Singapur) kullanılabilir. Diğer tüm bölgeler için müşteri verileri coğrafi olarak depolanır. Daha fazla bilgi için bkz. [Güven Merkezi](https://azuredatacentermap.azurewebsites.net/).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

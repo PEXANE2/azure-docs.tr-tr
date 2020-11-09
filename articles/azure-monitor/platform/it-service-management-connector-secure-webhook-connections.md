@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 5976b70825ac2854e67ddad968752fc87d9e8cea
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 85ff3bed2a648f852c311fefa8513622c2a48285
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377148"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376545"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Güvenli dışarı aktarma kullanarak Azure 'dan ıTSM araçlarına bağlanma
 
@@ -108,7 +108,7 @@ Yapılandırma 2 adım içerir:
 
 Aşağıdaki bölümlerde, Azure 'da ServiceNow ürününüzü bağlama ve güvenli dışarı aktarma işlemlerinin nasıl yapılacağı hakkında ayrıntılı bilgi sağlanmaktadır.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki önkoşulları karşılatığınızdan emin olun:
 
@@ -117,7 +117,7 @@ Aşağıdaki önkoşulları karşılatığınızdan emin olun:
 
 ### <a name="configure-the-servicenow-connection"></a>ServiceNow bağlantısını yapılandırma
 
-1. <instance name> güvenli dışarı aktarma TANıMıNıN URI 'sini> <https://. Service-Now.com/api/sn_em_connector/em/inbound_event?Source=azuremonitor bağlantısını kullanın.
+1. bağlantı https://(örnek adı). Service-Now. com/API/sn_em_connector/em/inbound_event? Source = azuremonitor, güvenli dışarı aktarma tanımının URI 'sini kullanın.
 
 2. Sürüme göre yönergeleri izleyin:
    * [Paris](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/concept/azure-integration.html)
@@ -127,7 +127,7 @@ Aşağıdaki önkoşulları karşılatığınızdan emin olun:
 
 Aşağıdaki bölümlerde, BMC Helix ürününüzü bağlama ve Azure 'da güvenli dışarı aktarma konularında ayrıntılar sağlanmaktadır.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki önkoşulları karşılatığınızdan emin olun:
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: f09a77043a552d8d7f09c2a6abcb78f89cbf8ee2
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 23077d7d6b476bcca0812dcff8660376568f7dd9
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420691"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376341"
 ---
 # <a name="one-vs-all-multiclass"></a>Bire Karşı Hepsi Çoklu Sınıf
 
@@ -26,7 +26,7 @@ Bu modül, sonucun sürekli veya kategorik tahmin değişkenlerine bağlı olmas
 
 Bazı sınıflandırma algoritmaları, tasarıma göre ikiden fazla sınıfın kullanılmasına izin verir. Diğerleri olası sonuçları iki değerden biriyle kısıtlar (ikili veya iki sınıflı bir model). Ancak çift sayıda ikili sınıflandırma algoritması, çeşitli stratejiler aracılığıyla çok sınıflı Sınıflandırma görevleri için de uyarlanabilir. 
 
-Bu modül, birden fazla çıktı sınıfının her biri için bir ikili modelin oluşturulduğu tek-ve-All yöntemini uygular. Modül, tek tek sınıflar için bu ikili modellerin her birini, bir ikili sınıflandırma sorunuyla aynı olsa da kendi tamamlayıcı (modeldeki tüm diğer sınıflar) için değerlendirir. Modül daha sonra bu ikili sınıflandırıcıları çalıştırarak ve en yüksek güvenilirlik puanına sahip tahmini seçerek tahmin gerçekleştirir.  
+Bu modül, birden fazla çıktı sınıfının her biri için bir ikili modelin oluşturulduğu tek-ve-All yöntemini uygular. Modül, tek tek sınıflar için bu ikili modellerin her birini, bir ikili sınıflandırma sorunuyla aynı olsa da kendi tamamlayıcı (modeldeki tüm diğer sınıflar) için değerlendirir. Hesaplama verimliliğine ek olarak (yalnızca `n_classes` sınıflandırıcılar gereklidir), bu yaklaşımın bir avantajı yorumlanabilir. Her sınıf yalnızca bir ve bir sınıflandırıcı tarafından temsil edildiği için, karşılık gelen sınıflandırıcısını inceleyerek sınıf hakkında bilgi elde etmek mümkündür. Bu, birden çok Lass sınıflandırması için en yaygın kullanılan stratejidir ve bir varsayılan seçenektir. Modül daha sonra bu ikili sınıflandırıcıları çalıştırarak ve en yüksek güvenilirlik puanına sahip tahmini seçerek tahmin gerçekleştirir. 
 
 Temelde, modül tek tek modellerin bir kopyasını oluşturur ve ardından sonuçları birleştirir ve tüm sınıfları tahmin eden tek bir model oluşturur. Herhangi bir ikili sınıflandırıcı, tek başına bir modelin temeli olarak kullanılabilir.  
 

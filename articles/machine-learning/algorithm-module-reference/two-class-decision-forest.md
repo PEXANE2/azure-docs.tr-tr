@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/03/2020
-ms.openlocfilehash: 9870b5366ac629fe1b10cfde15a58b85c7c6fbc3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4c303a7640454ba0cb6622b21fd161354266068
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907717"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375950"
 ---
 # <a name="two-class-decision-forest-module"></a>Two-Class karar ormanı modülü
 
@@ -51,13 +51,13 @@ Daha fazla bilgi için bkz. [karar ormanları](https://go.microsoft.com/fwlink/?
   
 1.  Azure Machine Learning ' de **Iki sınıf karar ormanı** modülünü ardışık düzene ekleyin ve modülün **Özellikler** bölmesini açın. 
 
-    Modül **Machine Learning**altında bulunabilir. **Başlat**' ı ve ardından **Sınıflandırma**' yı genişletin.  
+    Modül **Machine Learning** altında bulunabilir. **Başlat** ' ı ve ardından **Sınıflandırma** ' yı genişletin.  
   
-2.  Yeniden **örnekleme yöntemi**için, bireysel ağaçları oluşturmak için kullanılan yöntemi seçin.  **Bagging** veya **çoğaltma**seçeneklerinden birini belirleyebilirsiniz.  
+2.  Yeniden **örnekleme yöntemi** için, bireysel ağaçları oluşturmak için kullanılan yöntemi seçin.  **Bagging** veya **çoğaltma** seçeneklerinden birini belirleyebilirsiniz.  
   
-    -   **Bagging**: Bagging de *önyükleme toplama*olarak adlandırılır. Bu yöntemde, her ağaç yeni bir örnek üzerinde büyüerek orijinal veri kümesini rastgele örnekleyerek, özgün veri kümesinin orijinal bir veri kümesine sahip olana kadar bir şekilde oluşturulur.  
+    -   **Bagging** : Bagging de *önyükleme toplama* olarak adlandırılır. Bu yöntemde, her ağaç yeni bir örnek üzerinde büyüerek orijinal veri kümesini rastgele örnekleyerek, özgün veri kümesinin orijinal bir veri kümesine sahip olana kadar bir şekilde oluşturulur.  
   
-         Modellerin çıkışları, bir toplama biçimi olan *Oylama*tarafından birleştirilir. Sınıflandırma kararı ormanındaki her ağaç, etiketlerin Normalleştirilmemiş bir sıklık histogramı çıkarır. Toplama işlemi, her etiket için "olasılıklara" almak üzere bu histogramları ve normalleştirerek toplanacak. Bu şekilde, yüksek tahmine sahip olan ağaçlar, en son karar veren kararının daha büyük bir ağırlığına sahip olacaktır.  
+         Modellerin çıkışları, bir toplama biçimi olan *Oylama* tarafından birleştirilir. Sınıflandırma kararı ormanındaki her ağaç, etiketlerin Normalleştirilmemiş bir sıklık histogramı çıkarır. Toplama işlemi, her etiket için "olasılıklara" almak üzere bu histogramları ve normalleştirerek toplanacak. Bu şekilde, yüksek tahmine sahip olan ağaçlar, en son karar veren kararının daha büyük bir ağırlığına sahip olacaktır.  
   
          Daha fazla bilgi için bkz. önyükleme toplama için Vikipedi girişi.  
   
@@ -65,19 +65,19 @@ Daha fazla bilgi için bkz. [karar ormanları](https://go.microsoft.com/fwlink/?
   
 3.  Model **oluşturma modunu** ayarlayarak modelin eğitilme şeklini belirleyin.  
   
-    -   **Tek parametre**: modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.
+    -   **Tek parametre** : modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.
 
-    -   **Parametre aralığı**: en iyi parametrelerden emin değilseniz, [model hiper parametrelerini ayarla](tune-model-hyperparameters.md) modülünü kullanarak en iyi parametreleri bulabilirsiniz. Birkaç değer aralığı sağlarsınız ve en iyi sonucu üreten değerlerin birleşimini öğrenmek için eğitmen ayarların birden fazla birleşimine yinelenir.
+    -   **Parametre aralığı** : en iyi parametrelerden emin değilseniz, [model hiper parametrelerini ayarla](tune-model-hyperparameters.md) modülünü kullanarak en iyi parametreleri bulabilirsiniz. Birkaç değer aralığı sağlarsınız ve en iyi sonucu üreten değerlerin birleşimini öğrenmek için eğitmen ayarların birden fazla birleşimine yinelenir.
   
-4.  **Karar ağaçları sayısı**için, en fazla, en fazla sayıda karar ağacının oluşturulabilecek en fazla sayısını yazın. Daha fazla karar ağacı oluşturarak daha iyi tedarik sağlayabilirsiniz, ancak eğitim süresi artar.  
+4.  **Karar ağaçları sayısı** için, en fazla, en fazla sayıda karar ağacının oluşturulabilecek en fazla sayısını yazın. Daha fazla karar ağacı oluşturarak daha iyi tedarik sağlayabilirsiniz, ancak eğitim süresi artar.  
   
     > [!NOTE]
-    >  Bu değer aynı zamanda eğitilen modeli görselleştirirken gösterilecek ağaç sayısını da denetler. Tek bir ağacı görmek veya yazdırmak istiyorsanız, değeri 1 olarak ayarlayabilirsiniz. Ancak, yalnızca bir ağaç üretilebilir (ilk parametre kümesine sahip ağaç) ve başka yineleme yapılmaz.
+    >  Değerini 1 olarak ayarlarsanız. Ancak, yalnızca bir ağaç üretilebilir (ilk parametre kümesine sahip ağaç) ve başka yineleme yapılmaz.
   
-5.  **Karar ağaçlarının maksimum derinliği**için, herhangi bir karar ağacının maksimum derinliğini sınırlamak üzere bir sayı yazın. Ağacın derinliğini artırmak, bazı fazla sığdırma ve daha fazla eğitim süresi riskinde duyarlık artırabilir.
+5.  **Karar ağaçlarının maksimum derinliği** için, herhangi bir karar ağacının maksimum derinliğini sınırlamak üzere bir sayı yazın. Ağacın derinliğini artırmak, bazı fazla sığdırma ve daha fazla eğitim süresi riskinde duyarlık artırabilir.
   
   
-7.  **Yaprak düğüm başına minimum örnek sayısı**için, bir ağaçta herhangi bir Terminal düğümü (yaprak) oluşturmak için gereken minimum durum sayısını belirtin.
+7.  **Yaprak düğüm başına minimum örnek sayısı** için, bir ağaçta herhangi bir Terminal düğümü (yaprak) oluşturmak için gereken minimum durum sayısını belirtin.
   
      Bu değeri artırarak, yeni kurallar oluşturma eşiğini artırırsınız. Örneğin, varsayılan 1 değeri ile tek bir durum bile yeni bir kuralın oluşturulmasına neden olabilir. Değeri 5 ' e artırırsanız eğitim verilerinin aynı koşulları karşılayan en az beş durum içermesi gerekir.  
   
@@ -87,7 +87,7 @@ Daha fazla bilgi için bkz. [karar ormanları](https://go.microsoft.com/fwlink/?
   
 9. Etiketli bir veri kümesi iliştirin ve modeli eğitme:
 
-    + **Tek parametre**için bir görüntü **oluşturma modu** ayarlarsanız, etiketli bir veri kümesini ve [model eğitimi](train-model.md) modülünü bağlayın.  
+    + **Tek parametre** için bir görüntü **oluşturma modu** ayarlarsanız, etiketli bir veri kümesini ve [model eğitimi](train-model.md) modülünü bağlayın.  
   
     + **Parametre aralığına** **oluşturma** , bir etiketli veri kümesini bağlama ve modeli [Ayarla hiper parametrelerini](tune-model-hyperparameters.md)kullanarak modeli eğitme.  
   

@@ -4,13 +4,13 @@ description: SSS sayfaları veya ürün kılavuzları gibi sahip olduğunuz içe
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 05/26/2020
-ms.openlocfilehash: 1646666244eb2247d6e7127c4d4e8d39cb0af5ff
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.date: 11/09/2020
+ms.openlocfilehash: 68cde1be5f1a1cb0e8757f3143cac9363c6d9ddd
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91777689"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376041"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Hızlı başlangıç: Soru-Cevap Oluşturma bilgi bankasını oluşturma, eğitme ve yayımlama
 
@@ -24,36 +24,75 @@ SSS sayfaları veya ürün kılavuzları gibi sahip olduğunuz içerikleri kulla
 
 ## <a name="create-your-first-qna-maker-knowledge-base"></a>İlk Soru-Cevap Oluşturma bilgi bankasında oluşturma
 
+# <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
+
 1. Azure kimlik bilgilerinizle [QnAMaker.ai](https://QnAMaker.ai) portalında oturum açın.
 
-1. Soru-Cevap Oluşturma portalında **Bilgi Bankası oluştur**' u seçin.
+2. Soru-Cevap Oluşturma portalında **Bilgi Bankası oluştur** ' u seçin.
 
-1. Soru-Cevap Oluşturma kaynağınız zaten varsa **Oluştur** sayfasında **1. adımı** atlayın.
+3. Soru-Cevap Oluşturma kaynağınız zaten varsa **Oluştur** sayfasında **1. adımı** atlayın.
 
-    Kaynağı henüz oluşturmadıysanız **QnA hizmeti oluştur**' u seçin. Aboneliğinizde bir Soru-Cevap Oluşturma hizmeti ayarlamak için [Azure portala](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) yönlendirilirsiniz. Kaynağı oluştururken seçtiğiniz Azure Active Directory KIMLIĞI, aboneliğiniz, QnA kaynak adınızı unutmayın.
+    Kaynağı henüz oluşturmadıysanız **QnA hizmeti oluştur** ' u seçin. Aboneliğinizde bir Soru-Cevap Oluşturma hizmeti ayarlamak için [Azure portala](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) yönlendirilirsiniz. Kaynağı oluştururken seçtiğiniz Azure Active Directory KIMLIĞI, aboneliğiniz, QnA kaynak adınızı unutmayın.
 
-    Azure portal kaynağı oluşturmayı tamamladıktan sonra, Soru-Cevap Oluşturma portalına geri dönün, tarayıcı sayfasını yenileyin ve **2. adıma**geçin.
+    Azure portal kaynağı oluşturmayı tamamladıktan sonra, Soru-Cevap Oluşturma portalına geri dönün, tarayıcı sayfasını yenileyin ve **2. adıma** geçin.
 
-1. **Adım 3**' te, etkin dizin, abonelik, hizmet (kaynak) ve hizmette oluşturulan tüm bilgi tabanlarının dilini seçin.
+4. **2. adımda** , hizmette oluşturulan tüm bilgi tabanlarının Active Directory, abonelik, hizmet (kaynak) ve dilini seçin.
 
     :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/qnaservice-selection.png" alt-text="Soru-Cevap Oluşturma Hizmeti Bilgi Bankası seçme ekran görüntüsü":::
 
-1. **Adım 3**' te bilgi tabanınızı **örnek QNA KB**olarak adlandırın.
+5. **Adım 3** ' te bilgi tabanınızı **örnek QNA KB** olarak adlandırın.
 
-1. **4. adımda**ayarları aşağıdaki tabloyla yapılandırın:
+6. **4. adımda** ayarları aşağıdaki tabloyla yapılandırın:
 
     |Ayar|Değer|
     |--|--|
     |**URL 'Ler,. PDF veya. docx dosyalarından Çoklu açma ayıklamasını etkinleştirin.**|İşaretli|
-    |**Varsayılan yanıt metni**| `Quickstart - default answer not found.`|
+    |**Çoklu açma varsayılan metni**| Seç ve seçeneğini belirleyin|
     |**+ URL Ekle**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
     |**Günlük konuşma**|**Profesyonel** seçin|
 
-1. **5. adımda**, **KB 'nizi oluştur**' u seçin.
+7. **5. adımda** , **KB 'nizi oluştur** ' u seçin.
 
     Ayıklama işlemi birkaç dakika sürer ve belgeyi okuyup soruları ve yanıtları belirler.
 
     Bilgi Bankası Soru-Cevap Oluşturma başarıyla oluşturulduktan sonra **Bilgi Bankası** sayfası açılır. Bilgi Bankası 'nın içeriğini bu sayfada düzenleyebilirsiniz.
+
+# <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
+
+1. Azure kimlik bilgilerinizle [QnAMaker.ai](https://QnAMaker.ai) portalında oturum açın.
+
+2. Soru-Cevap Oluşturma portalında **Bilgi Bankası oluştur** ' u seçin.
+
+3. Soru-Cevap Oluşturma kaynağınız zaten varsa **Oluştur** sayfasında **1. adımı** atlayın.
+
+    Kaynağı henüz oluşturmadıysanız **QnA hizmeti oluştur** ' u seçin. Aboneliğinizde bir Soru-Cevap Oluşturma hizmeti ayarlamak için [Azure portala](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) yönlendirilirsiniz. Kaynağı oluştururken seçtiğiniz Azure Active Directory KIMLIĞI, aboneliğiniz, QnA kaynak adınızı unutmayın.
+
+    Azure portal kaynağı oluşturmayı tamamladıktan sonra, Soru-Cevap Oluşturma portalına geri dönün, tarayıcı sayfasını yenileyin ve **2. adıma** geçin.
+
+4. **2. adımda** , hizmette oluşturulan tüm bilgi tabanlarının Active Directory, abonelik, hizmet (kaynak) ve dilini seçin.
+
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/connect-your-knowledge-base.png" alt-text="Soru-Cevap Oluşturma Service Bilgi Bankası yönetilen önizlemesi seçme ekran görüntüsü":::
+
+5. **2. adımda** , hizmetiniz için ilk Bilgi Bankası oluşturuyorsanız, her bilgi tabanına özgü dil ayarı yapma seçeneğine sahip olursunuz. İlk Bilgi Bankası için dil ayarı tanımlandıktan sonra, hizmetin ayarlarını daha sonra değiştirmenize izin verilmez.
+
+6.  **Adım 3** ' te bilgi tabanınızı **örnek QNA KB** olarak adlandırın. 
+
+7. **4. adımda** ayarları aşağıdaki tabloyla yapılandırın:
+
+    |Ayar|Değer|
+    |--|--|
+    |**URL 'Ler,. PDF veya. docx dosyalarından Çoklu açma ayıklamasını etkinleştirin.**|İşaretli|
+    |**Çoklu açma varsayılan metni**| Seç ve seçeneğini belirleyin|
+    |**+ URL Ekle**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
+    |**Günlük konuşma**|**Profesyonel** seçin|
+
+8. **5. adımda** , **KB 'nizi oluştur** ' u seçin.
+
+    Ayıklama işlemi birkaç dakika sürer ve belgeyi okuyup soruları ve yanıtları belirler.
+
+    Bilgi Bankası Soru-Cevap Oluşturma başarıyla oluşturulduktan sonra **Bilgi Bankası** sayfası açılır. Bilgi Bankası 'nın içeriğini bu sayfada düzenleyebilirsiniz.
+
+---
 
 ## <a name="add-a-new-question-and-answer-set"></a>Yeni soru ve yanıt kümesi ekleme
 
@@ -62,11 +101,11 @@ SSS sayfaları veya ürün kılavuzları gibi sahip olduğunuz içerikleri kulla
 
     `How many Azure services are used by a knowledge base?`
 
-1. _Markaşağı_ile biçimlendirilen yanıtı ekleyin:
+1. _Markaşağı_ ile biçimlendirilen yanıtı ekleyin:
 
     ` * Azure QnA Maker service\n* Azure Cognitive Search\n* Azure web app\n* Azure app plan`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png" alt-text="Soru-Cevap Oluşturma Hizmeti Bilgi Bankası seçme ekran görüntüsü":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png" alt-text="Soruyu metin olarak ve markaşağı ile biçimlendirilen yanıtı ekleyin.":::
 
     Markaşağı simgesi, `*` , madde işareti noktaları için kullanılır. `\n`Yeni bir satır için kullanılır.
 
@@ -78,16 +117,35 @@ Düzenlemelerinizi kaydetmek ve Soru-Cevap Oluşturma eğitmeniz için sağ üst
 
 ## <a name="test-the-knowledge-base"></a>Bilgi Bankası 'nı test etme
 
+# <a name="qnamaker-v1"></a>[QnAMaker v1](#tab/v1)
+
 1. Soru-Cevap Oluşturma portalında, sağ üst köşedeki **Test** ' i seçerek yaptığınız değişikliklerin etkili olduğunu test edin.
-1. Metin kutusuna bir örnek Kullanıcı sorgusu girin.
+2. Metin kutusuna bir örnek Kullanıcı sorgusu girin.
 
     `How many Azure services are used by a knowledge base?`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="Soru-Cevap Oluşturma Hizmeti Bilgi Bankası seçme ekran görüntüsü":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="Metin kutusuna bir örnek Kullanıcı sorgusu girin.":::
 
-1. Yanıtı daha ayrıntılı bir şekilde incelemek için **Inspect** (Denetle) öğesini seçin. Bilgi tabanınızı yayımlamadan önce Bilgi Bankası 'nda yaptığınız değişiklikleri test etmek için test penceresi kullanılır.
+3. Yanıtı daha ayrıntılı bir şekilde incelemek için **Inspect** (Denetle) öğesini seçin. Bilgi tabanınızı yayımlamadan önce Bilgi Bankası 'nda yaptığınız değişiklikleri test etmek için test penceresi kullanılır.
 
-1. **Test panelini kapatmak** Için yeniden **Test** ' i seçin.
+4. **Test panelini kapatmak** Için yeniden **Test** ' i seçin.
+
+# <a name="qnamaker-v2-preview"></a>[QnAMaker v2 (Önizleme)](#tab/v2)
+
+1. Soru-Cevap Oluşturma portalında, sağ üst köşedeki **Test** ' i seçerek yaptığınız değişikliklerin etkili olduğunu test edin.
+2. Metin kutusuna bir örnek Kullanıcı sorgusu girin.
+
+    `How many Azure services are used by a knowledge base?`
+
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/enable-short-answer.png" alt-text="Soruyu gösteren sohbet kullanıcı arabirimi iletişim kutusunun ekran görüntüsü: küçük bir Passport 'un ne kadar sayfa olacağını öğrenmek? Yanıt: yalnızca 36 sayfa Passport kitapçık, minors 'ler için verilir.":::
+
+3. Bilgi tabanınız için MRC özelliğini etkinleştirirseniz, **kısa yanıtı etkinleştir (deneysel)** seçeneğini belirleyerek, varsa test bölmesindeki Yanıt ile birlikte de kesin bir yanıt görürsünüz. 
+
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/enable-short-answer-checked.png" alt-text="Soruyu gösteren sohbet kullanıcı arabirimi iletişim kutusunun ekran görüntüsü: küçük bir Passport 'un ne kadar sayfa olacağını öğrenmek? Yanıt: 36. tek bir satırda, izleyen ikinci satır: yalnızca 36 sayfa Passport kitapçık, minors 'ler için verilir.":::
+
+4. Yanıtı daha ayrıntılı incelemek için ıncele ' yi seçin. Bilgi tabanınızı yayımlamadan önce Bilgi Bankası 'nda yaptığınız değişiklikleri test etmek için test penceresi kullanılır. 
+5. **Test panelini kapatmak** Için yeniden **Test** ' i seçin.
+---
 
 ## <a name="publish-the-knowledge-base"></a>Bilgi bankasını yayımlama
 
@@ -95,7 +153,7 @@ Bir Bilgi Bankası yayımladığınızda, bilgi Bankalarınızın içeriği `tes
 
 ![Bilgi Bankalarınızın içeriğini taşıma ekran görüntüsü](../media/qnamaker-how-to-publish-kb/publish-prod-test.png)
 
-1. Soru-Cevap Oluşturma portalında **Yayımla**' yı seçin. Ardından onaylamak için sayfadaki **Publish** (Yayımla) öğesini seçin.
+1. Soru-Cevap Oluşturma portalında **Yayımla** ' yı seçin. Ardından onaylamak için sayfadaki **Publish** (Yayımla) öğesini seçin.
 
     Soru-Cevap Oluşturma hizmeti başarıyla yayımlandı. Uç noktayı uygulamanızda veya bot kodunuzda kullanabilirsiniz.
 
@@ -110,7 +168,7 @@ Yayımladıktan sonra **Yayımla** sayfasından bir bot oluşturabilirsiniz:
 
 Bilgi bankasında değişiklikler yaptığınızda ve yeniden yayımladığınızda, bot ile daha fazla işlem yapmanız gerekmez. Bilgi Bankası ile çalışmak üzere zaten yapılandırılmıştır ve ileride Bilgi Bankası değişiklikleriyle birlikte çalışır. Bilgi Bankası 'nı her yayımladığınızda, kendisine bağlı olan tüm botlar otomatik olarak güncelleştirilir.
 
-1. Soru-Cevap Oluşturma portalında, **Yayımla** sayfasında, **bot oluştur**' u seçin. Bu düğme yalnızca Bilgi Bankası 'nı yayımladıktan sonra görünür.
+1. Soru-Cevap Oluşturma portalında, **Yayımla** sayfasında, **bot oluştur** ' u seçin. Bu düğme yalnızca Bilgi Bankası 'nı yayımladıktan sonra görünür.
 
     ![Bot oluşturma ekran görüntüsü](../media/qnamaker-create-publish-knowledge-base/create-bot-from-published-knowledge-base-page.png)
 
@@ -126,14 +184,14 @@ Bilgi bankasında değişiklikler yaptığınızda ve yeniden yayımladığını
 
 
 1. Bot oluşturulduktan sonra, **bot hizmeti** kaynağını açın.
-1. **Bot Management**altında **Web sohbeti ' nda test**' i seçin.
-1. **Iletinizi yazın**sohbet isteminde şunu girin:
+1. **Bot Management** altında **Web sohbeti ' nda test** ' i seçin.
+1. **Iletinizi yazın** sohbet isteminde şunu girin:
 
     `Azure services?`
 
     Sohbet bot, bilgi tabanınızdan bir cevap vererek yanıt verir.
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="Soru-Cevap Oluşturma Hizmeti Bilgi Bankası seçme ekran görüntüsü":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="Test Web sohbetine bir Kullanıcı sorgusu girin.":::
 
 ## <a name="what-did-you-accomplish"></a>Ne başardınız?
 
@@ -156,5 +214,4 @@ Daha fazla bilgi için:
 
 * [Yanıt olarak markaşağı biçimi](../reference-markdown-format.md)
 * [Veri kaynaklarını](../concepts/knowledge-base.md)soru-cevap oluşturma.
-
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 08/24/2020
-ms.openlocfilehash: 21cd1491da4374babaff8b5b4b451a3cce874368
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 664943fc5535883b3df77b2795383e5c0586a71c
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898845"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375338"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Artırılmış karar ağacı gerileme modülü
 
@@ -24,7 +24,7 @@ Bu modülü, artırma kullanarak regresyon ağaçlarının bir listesini oluştu
 
 Bu modül tabanlı bir LightGBM algoritması.
   
-Bu regresyon yöntemi denetimli bir öğrenme yöntemidir ve bu nedenle *etiketli bir veri kümesi*gerektirir. Etiket sütunu sayısal değer içermelidir.  
+Bu regresyon yöntemi denetimli bir öğrenme yöntemidir ve bu nedenle *etiketli bir veri kümesi* gerektirir. Etiket sütunu sayısal değer içermelidir.  
 
 > [!NOTE]
 > Bu modülü yalnızca sayısal değişkenleri kullanan veri kümeleriyle kullanın.  
@@ -52,37 +52,37 @@ Gradyan artırma yöntemi, uygun bir kayıp işleviyle regresyon için azaltıla
 
 ## <a name="how-to-configure-boosted-decision-tree-regression"></a>Artırılmış karar ağacı gerilemesini yapılandırma
 
-1.  İşlem hattınızı **artırmalı karar ağacı** modülünü ekleyin. Bu modülü, **regresyon** kategorisinin altında **Machine Learning**, **Initialize**altında bulabilirsiniz. 
+1.  İşlem hattınızı **artırmalı karar ağacı** modülünü ekleyin. Bu modülü, **regresyon** kategorisinin altında **Machine Learning** , **Initialize** altında bulabilirsiniz. 
   
 2.  Model **oluşturma modunu** ayarlayarak modelin eğitilme şeklini belirleyin.  
   
-    -   **Tek parametre**: modeli nasıl yapılandırmak istediğinizi biliyorsanız ve bağımsız değişken olarak belirli bir değer kümesi sağlamak için bu seçeneği belirleyin. 
+    -   **Tek parametre** : modeli nasıl yapılandırmak istediğinizi biliyorsanız ve bağımsız değişken olarak belirli bir değer kümesi sağlamak için bu seçeneği belirleyin. 
      
-    -   **Parametre aralığı**: en iyi parametrelerden emin değilseniz ve bir parametre süpürme çalıştırmak istiyorsanız bu seçeneği belirleyin. Yinelemek için bir değer aralığı seçin ve [ayarlama modeli hiper parametreleri](tune-model-hyperparameters.md) , en iyi sonuçları üreten hiper parametreleri belirlemek için, belirttiğiniz ayarların tüm olası birleşimlerinin üzerinde yinelenir.    
+    -   **Parametre aralığı** : en iyi parametrelerden emin değilseniz ve bir parametre süpürme çalıştırmak istiyorsanız bu seçeneği belirleyin. Yinelemek için bir değer aralığı seçin ve [ayarlama modeli hiper parametreleri](tune-model-hyperparameters.md) , en iyi sonuçları üreten hiper parametreleri belirlemek için, belirttiğiniz ayarların tüm olası birleşimlerinin üzerinde yinelenir.    
    
   
-3. **Ağaç başına en fazla yaprakları**: herhangi bir ağaçta oluşturulabilecek maksimum Terminal düğümü sayısını (yaprakları) belirtin.  
+3. **Ağaç başına en fazla yaprakları** : herhangi bir ağaçta oluşturulabilecek maksimum Terminal düğümü sayısını (yaprakları) belirtin.  
 
     Bu değeri artırarak ağacın boyutunu artırabilir ve daha fazla anlayışın ve daha uzun eğitim süresi riskinden daha iyi bir duyarlık elde edersiniz.  
 
-4. **Yaprak düğüm başına minimum örnek sayısı**: bir ağaçta herhangi bir Terminal düğümü (yaprak) oluşturmak için gereken minimum durum sayısını belirtin.
+4. **Yaprak düğüm başına minimum örnek sayısı** : bir ağaçta herhangi bir Terminal düğümü (yaprak) oluşturmak için gereken minimum durum sayısını belirtin.
 
     Bu değeri artırarak, yeni kurallar oluşturma eşiğini artırırsınız. Örneğin, varsayılan 1 değeri ile tek bir durum bile yeni bir kuralın oluşturulmasına neden olabilir. Değeri 5 ' e artırırsanız eğitim verilerinin aynı koşulları karşılayan en az 5 durum içermesi gerekir.
 
-5. **Öğrenme oranı**: öğrenirken adım boyutunu tanımlayan 0 ile 1 arasında bir sayı yazın. Öğrenme oranı, öğrenimi en iyi çözüm üzerinde ne kadar hızlı veya yavaş söylebileceğinizi belirler. Adım boyutu çok büyükse en iyi çözümü fazla gerçekleştirebilirsiniz. Adım boyutu çok küçükse, eğitimin en iyi çözüm üzerinde yakınsama işlemi daha uzun sürer.
+5. **Öğrenme oranı** : öğrenirken adım boyutunu tanımlayan 0 ile 1 arasında bir sayı yazın. Öğrenme oranı, öğrenimi en iyi çözüm üzerinde ne kadar hızlı veya yavaş söylebileceğinizi belirler. Adım boyutu çok büyükse en iyi çözümü fazla gerçekleştirebilirsiniz. Adım boyutu çok küçükse, eğitimin en iyi çözüm üzerinde yakınsama işlemi daha uzun sürer.
 
-6. **Oluşturulan ağaç sayısı**: ensede oluşturmak için gereken karar ağacının toplam sayısını belirtin. Daha fazla karar ağacı oluşturarak daha iyi tedarik sağlayabilirsiniz, ancak eğitim süresi artar.
+6. **Oluşturulan ağaç sayısı** : ensede oluşturmak için gereken karar ağacının toplam sayısını belirtin. Daha fazla karar ağacı oluşturarak daha iyi tedarik sağlayabilirsiniz, ancak eğitim süresi artar.
 
-    Bu değer aynı zamanda eğitilen modeli görselleştirirken gösterilecek ağaç sayısını da denetler. tek bir ağacı görmek veya yazdırmak isterseniz, değeri 1 olarak ayarlayabilirsiniz. Ancak, yalnızca bir ağaç üretilir (ilk parametre kümesini içeren ağaç) ve başka yineleme yapılmaz.
+    Değerini 1 olarak ayarlarsanız Ancak, yalnızca bir ağaç üretilir (ilk parametre kümesini içeren ağaç) ve başka yineleme yapılmaz.
 
-7. **Rastgele sayı çekirdek**: rastgele çekirdek değeri olarak kullanılacak isteğe bağlı negatif olmayan bir tamsayı yazın. Bir çekirdek belirtmek, aynı verilere ve parametrelere sahip olan çalışmalarda reproducibility sağlar.
+7. **Rastgele sayı çekirdek** : rastgele çekirdek değeri olarak kullanılacak isteğe bağlı negatif olmayan bir tamsayı yazın. Bir çekirdek belirtmek, aynı verilere ve parametrelere sahip olan çalışmalarda reproducibility sağlar.
 
     Varsayılan olarak, rastgele çekirdek 0 olarak ayarlanır; Bu, ilk çekirdek değerin sistem saatinden elde ettiği anlamına gelir.
   
 
 9. Modeli eğitme:
 
-    + **Tek parametre**için bir görüntü **oluşturma modu** ayarlarsanız, etiketli bir veri kümesini ve [model eğitimi](train-model.md) modülünü bağlayın.  
+    + **Tek parametre** için bir görüntü **oluşturma modu** ayarlarsanız, etiketli bir veri kümesini ve [model eğitimi](train-model.md) modülünü bağlayın.  
   
     + **Parametre aralığına** **oluşturma** , bir etiketli veri kümesini bağlama ve modeli [Ayarla hiper parametrelerini](tune-model-hyperparameters.md)kullanarak modeli eğitme.  
   

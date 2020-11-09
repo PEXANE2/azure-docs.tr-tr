@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: b6a914df9ed277625d3706465fe335e128aeced1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b5b171941a3da42d2f5b385303c51285ff793599
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545166"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376783"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda sunucu parametreleri
 
@@ -31,7 +31,7 @@ Yaygın olarak güncellenen çeşitli sunucu parametrelerinin sınırları hakk�
 
 ### <a name="thread-pools"></a>İş parçacığı havuzları
 
-MySQL, her istemci bağlantısı için geleneksel olarak bir iş parçacığı atar. Eşzamanlı kullanıcıların sayısı arttıkça, buna karşılık gelen bir bir bırakma performansı vardır. Birçok etkin iş parçacığı, artan bağlam değiştirme, iş parçacığı çekişmesi ve CPU önbellekleri için bozuk konum nedeniyle performansı önemli ölçüde etkileyebilir.
+MySQL, her istemci bağlantısı için geleneksel olarak bir iş parçacığı atar. Eşzamanlı kullanıcıların sayısı arttıkça, performans içinde karşılık gelen bir bırakma vardır. Birçok etkin iş parçacığı, artan bağlam değiştirme, iş parçacığı çekişmesi ve CPU önbellekleri için bozuk konum nedeniyle performansı önemli ölçüde etkileyebilir.
 
 Sunucu tarafı özelliği olan ve bağlantı havuzundan farklı olan iş parçacığı havuzları, sunucuda çalışan etkin iş parçacıklarının sayısını sınırlandırmak ve iş parçacığı karmaşıklığını en aza indirmek için kullanılabilen bir dizi çalışan iş parçacığının dinamik bir havuzunu sunarak performansı en üst düzeye çıkarır. Bu, bir bağlantı patlaması sunucunun yetersiz bellek hatası ile kaynakların kaynak veya kilitlenme olmasına neden olmamasını sağlamaya yardımcı olur. İş parçacığı havuzları kısa sorgular ve CPU yoğunluklu iş yükleri için en verimli şekilde OLTP iş yükleri gibi etkindir.
 
@@ -57,7 +57,7 @@ Aşağıdaki sunucu parametrelerini ayarlayarak havuzdaki en yüksek ve en düş
 
 ### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
 
-MySQL için Azure veritabanı 'nda, ikili Günlükler her zaman etkindir (yani `log_bin` Açık olarak ayarlanır). Tetikleyicileri kullanmak istiyorsanız, *süper ayrıcalığa sahip değilsiniz ve ikili günlüğe kaydetme özelliğinin etkin olduğu bir hata alırsınız (daha az güvenli bir değişken kullanmak isteyebilirsiniz `log_bin_trust_function_creators` )* . 
+MySQL için Azure veritabanı 'nda, ikili Günlükler her zaman etkindir (yani `log_bin` Açık olarak ayarlanır). Tetikleyicileri kullanmak istiyorsanız, *süper ayrıcalığa sahip değilsiniz ve ikili günlüğe kaydetme özelliğinin etkin olduğu bir hata alırsınız (daha az güvenli bir değişken kullanmak isteyebilirsiniz `log_bin_trust_function_creators` )*. 
 
 İkili günlük biçimi her zaman **satırdır** ve sunucuya yapılan tüm bağlantılar **her zaman** satır tabanlı ikili günlük kullanır. Satır tabanlı ikili günlüğe kaydetme ile güvenlik sorunları yoktur ve ikili günlüğe alma, güvenli şekilde [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) **doğru** olarak ayarlanabilir.
 
@@ -108,7 +108,7 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 
 MySQL, InnoDB tablosunu tablo oluşturma sırasında verdiğiniz yapılandırmaya göre farklı Tablespaces halinde depolar. [Sistem tablo](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html) alanı, InnoDB veri sözlüğü için depolama alanıdır. [Tablo başına dosya tablosu](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html) , tek bir InnoDB tablosunun verilerini ve dizinlerini içerir ve dosya sisteminde kendi veri dosyasında depolanır. Bu davranış, `innodb_file_per_table` sunucu parametresi tarafından denetlenir. `innodb_file_per_table`İçin ayarı `OFF` , InnoDB 'in, sistem tablo tablosu 'nda tablo oluşturmasına neden olur. Aksi halde, InnoDB tablo başına tabloalanları içinde tablo oluşturur.
 
-MySQL için Azure veritabanı, tek bir veri dosyasında en büyük, **1 TB** 'yi destekler. Veritabanınızın boyutu 1 TB 'den büyükse, tabloyu [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) tablo alanında oluşturmanız gerekir. 1 TB 'tan büyük tek bir tablo boyutunuz varsa, bölüm tablosunu kullanmanız gerekir.
+MySQL için Azure veritabanı, tek bir veri dosyasında en büyük, **4 TB** 'yi destekler. Veritabanınızın boyutu 4 TB 'den büyükse, tabloyu [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) tablo alanında oluşturmanız gerekir. 4 TB 'tan büyük tek bir tablo boyutunuz varsa, bölüm tablosunu kullanmanız gerekir.
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 

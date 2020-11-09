@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 7f9677bfd793e7ff21ff2c6c7e6760b630dc074b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76fd09b5e2c2540cbc1608558800e7897a6cf839
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898534"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375372"
 ---
 # <a name="decision-forest-regression-module"></a>Karar ormanı gerileme modülü
 
@@ -42,11 +42,11 @@ Bu algoritmanın ve uygulamasının teorik çerçevesi hakkında daha fazla bilg
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Karar ormanı regresyon modelini yapılandırma
 
-1. **Karar verme ormanı gerileme** modülünü ardışık düzene ekleyin. **Machine Learning**, **modeli Başlat**ve **gerileme**' nın altında, modülü tasarımcıda bulabilirsiniz.
+1. **Karar verme ormanı gerileme** modülünü ardışık düzene ekleyin. **Machine Learning** , **modeli Başlat** ve **gerileme** ' nın altında, modülü tasarımcıda bulabilirsiniz.
 
-2. Modül özelliklerini açın ve yeniden **örnekleme yöntemi**için, bireysel ağaçları oluşturmak için kullanılan yöntemi seçin.  **Bagging** veya **çoğaltma**seçeneklerinden birini belirleyebilirsiniz.
+2. Modül özelliklerini açın ve yeniden **örnekleme yöntemi** için, bireysel ağaçları oluşturmak için kullanılan yöntemi seçin.  **Bagging** veya **çoğaltma** seçeneklerinden birini belirleyebilirsiniz.
 
-    - **Bagging**: Bagging de *önyükleme toplama*olarak adlandırılır. Regresyon kararı ormanındaki her ağaç, tahmin yöntemiyle bir Gauss dağılımı çıkarır. Toplama işlemi, her iki dakika, tek tek ağaçlar tarafından döndürülen tüm dağıtımları birleştirerek verilen Gauss dağıtımlarından oluşan bir süre ile eşleşen bir Gauss bulmadır.
+    - **Bagging** : Bagging de *önyükleme toplama* olarak adlandırılır. Regresyon kararı ormanındaki her ağaç, tahmin yöntemiyle bir Gauss dağılımı çıkarır. Toplama işlemi, her iki dakika, tek tek ağaçlar tarafından döndürülen tüm dağıtımları birleştirerek verilen Gauss dağıtımlarından oluşan bir süre ile eşleşen bir Gauss bulmadır.
 
          Daha fazla bilgi için bkz. [önyükleme toplama](https://wikipedia.org/wiki/Bootstrap_aggregating)Için Vikipedi girişi.
 
@@ -60,27 +60,27 @@ Bu algoritmanın ve uygulamasının teorik çerçevesi hakkında daha fazla bilg
 
       Modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz. Bu değerleri deneme göre öğrenmiş veya bunları kılavuz olarak almış olabilirsiniz.
 
-    - **Parametre aralığı**: en iyi parametrelerden emin değilseniz ve bir parametre süpürme çalıştırmak istiyorsanız bu seçeneği belirleyin. Yinelemek için bir değer aralığı seçin ve [ayarlama modeli hiper parametreleri](tune-model-hyperparameters.md) , en iyi sonuçları üreten hiper parametreleri belirlemek için, belirttiğiniz ayarların tüm olası birleşimlerinin üzerinde yinelenir. 
+    - **Parametre aralığı** : en iyi parametrelerden emin değilseniz ve bir parametre süpürme çalıştırmak istiyorsanız bu seçeneği belirleyin. Yinelemek için bir değer aralığı seçin ve [ayarlama modeli hiper parametreleri](tune-model-hyperparameters.md) , en iyi sonuçları üreten hiper parametreleri belirlemek için, belirttiğiniz ayarların tüm olası birleşimlerinin üzerinde yinelenir. 
 
 
 
-4. **Karar ağaçları sayısı**için, tam olarak birleştirmek üzere oluşturulacak karar ağacının toplam sayısını belirtin. Daha fazla karar ağacı oluşturarak daha iyi tedarik sağlayabilirsiniz, ancak eğitim süresi artar.
+4. **Karar ağaçları sayısı** için, tam olarak birleştirmek üzere oluşturulacak karar ağacının toplam sayısını belirtin. Daha fazla karar ağacı oluşturarak daha iyi tedarik sağlayabilirsiniz, ancak eğitim süresi artar.
 
     > [!TIP]
-    > Bu değer aynı zamanda eğitilen modeli görselleştirirken gösterilecek ağaç sayısını da denetler. tek bir ağacı görmek veya yazdırmak isterseniz, değeri 1 olarak ayarlayabilirsiniz. Bununla birlikte, bu, yalnızca bir ağacın üretileceği (ilk parametre kümesini içeren ağaç) ve başka bir yinelemenin gerçekleştirilmeyeceği anlamına gelir.
+    > Değerini 1 olarak ayarlarsanız Bununla birlikte, bu, yalnızca bir ağacın üretileceği (ilk parametre kümesini içeren ağaç) ve başka bir yinelemenin gerçekleştirilmeyeceği anlamına gelir.
 
-5. **Karar ağaçlarının maksimum derinliği**için, herhangi bir karar ağacının maksimum derinliğini sınırlamak üzere bir sayı yazın. Ağacın derinliğini artırmak, bazı fazla sığdırma ve daha fazla eğitim süresi riskinde duyarlık artırabilir.
+5. **Karar ağaçlarının maksimum derinliği** için, herhangi bir karar ağacının maksimum derinliğini sınırlamak üzere bir sayı yazın. Ağacın derinliğini artırmak, bazı fazla sığdırma ve daha fazla eğitim süresi riskinde duyarlık artırabilir.
 
-6. **Düğüm başına rastgele bölme sayısı**için, ağacın her düğümünü oluştururken kullanılacak bölme sayısını yazın. *Bölünmüş* , ağaç (node) düzeyindeki özelliklerin rastgele bölündüğü anlamına gelir.
+6. **Düğüm başına rastgele bölme sayısı** için, ağacın her düğümünü oluştururken kullanılacak bölme sayısını yazın. *Bölünmüş* , ağaç (node) düzeyindeki özelliklerin rastgele bölündüğü anlamına gelir.
 
-7. **Yaprak düğüm başına minimum örnek sayısı**için, bir ağaçta herhangi bir Terminal düğümü (yaprak) oluşturmak için gereken minimum durum sayısını belirtin.
+7. **Yaprak düğüm başına minimum örnek sayısı** için, bir ağaçta herhangi bir Terminal düğümü (yaprak) oluşturmak için gereken minimum durum sayısını belirtin.
 
      Bu değeri artırarak, yeni kurallar oluşturma eşiğini artırırsınız. Örneğin, varsayılan 1 değeri ile tek bir durum bile yeni bir kuralın oluşturulmasına neden olabilir. Değeri 5 ' e artırırsanız eğitim verilerinin aynı koşulları karşılayan en az beş durum içermesi gerekir.
 
 
 9. Modeli eğitme:
 
-    + **Tek parametre**için bir görüntü **oluşturma modu** ayarlarsanız, etiketli bir veri kümesini ve [model eğitimi](train-model.md) modülünü bağlayın.  
+    + **Tek parametre** için bir görüntü **oluşturma modu** ayarlarsanız, etiketli bir veri kümesini ve [model eğitimi](train-model.md) modülünü bağlayın.  
   
     + **Parametre aralığına** **oluşturma** , bir etiketli veri kümesini bağlama ve modeli [Ayarla hiper parametrelerini](tune-model-hyperparameters.md)kullanarak modeli eğitme.  
   
@@ -100,7 +100,7 @@ Bu algoritmanın ve uygulamasının teorik çerçevesi hakkında daha fazla bilg
 
 Eğitim tamamlandıktan sonra:
 
-+ Eğitilen modelin anlık görüntüsünü kaydetmek için eğitim modülünü seçin ve sağ paneldeki **çıktılar** sekmesine geçin. Simge **kayıt modeline**tıklayın.  Kaydedilmiş modeli modül ağacında bir modül olarak bulabilirsiniz. 
++ Eğitilen modelin anlık görüntüsünü kaydetmek için eğitim modülünü seçin ve sağ paneldeki **çıktılar** sekmesine geçin. Simge **kayıt modeline** tıklayın.  Kaydedilmiş modeli modül ağacında bir modül olarak bulabilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

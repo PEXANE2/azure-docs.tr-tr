@@ -1,16 +1,14 @@
 ---
 title: Bilgi Bankası Soru-Cevap Oluşturma sorgulama-
 description: Bilgi Bankası 'nın yayımlanması gerekir. Bilgi Bankası, yayımlandıktan sonra, generateAnswer API kullanılarak çalışma zamanı tahmin uç noktasında sorgulanır.
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.openlocfilehash: e903714aab35de40c1179045505e1520c65b3ebc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: e8dd056a7b6357b8342d3059e17baa88db92b404
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776927"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376735"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>Bilgi Bankası yanıtlarını yanıtlar için sorgulama
 
@@ -18,9 +16,11 @@ Bilgi Bankası 'nın yayımlanması gerekir. Bilgi Bankası, yayımlandıktan so
 
 ## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>Soru-Cevap Oluşturma en iyi yanıtı seçmek için Kullanıcı sorgusunu nasıl işler?
 
+# <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
+
 Eğitilen ve [yayınlanan](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) soru-cevap oluşturma Bilgi Bankası, bir bot veya başka bir Istemci uygulamasından [generateanswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)'sindeki bir Kullanıcı sorgusu alır. Aşağıdaki diyagramda, Kullanıcı sorgusu alındığında işlem gösterilmektedir.
 
-![Bir Kullanıcı sorgusu için derecelendirme modeli işlemi](../media/qnamaker-concepts-knowledgebase/rank-user-query-first-with-azure-search-then-with-qna-maker.png)
+![Bir Kullanıcı sorgusu için derecelendirme modeli işlemi](../media/qnamaker-concepts-knowledgebase/ranker-v1.png)
 
 ### <a name="ranker-process"></a>Ranker işlemi
 
@@ -38,6 +38,30 @@ Eğitilen ve [yayınlanan](/azure/cognitive-services/qnamaker/quickstarts/create
 |||
 
 Kullanılan özellikler arasında şunlar yer alır, ancak sözcük düzeyi semantikleri, bir Corpus içindeki terim düzeyi önem derecesi ve derin öğrenilen anlam modelleri, iki metin dizesi arasında benzerlik ve ilgi belirleme açısından sınırlı değildir.
+
+# <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
+
+Eğitilen ve [yayınlanan](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) soru-cevap oluşturma Bilgi Bankası, bir bot veya başka bir Istemci uygulamasından [generateanswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)'sindeki bir Kullanıcı sorgusu alır. Aşağıdaki diyagramda, Kullanıcı sorgusu alındığında işlem gösterilmektedir.
+
+![Kullanıcı sorgu önizlemesi için derecelendirme modeli işlemi](../media/qnamaker-concepts-knowledgebase/ranker-v2.png)
+
+### <a name="ranker-process"></a>Ranker işlemi
+
+İşlem aşağıdaki tabloda açıklanmıştır.
+
+|Adım|Amaç|
+|--|--|
+|1|İstemci uygulaması, Kullanıcı sorgusunu [Generateanswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)'sine gönderir.|
+|2|Soru-Cevap Oluşturma dil algılama, yazım ve sözcük ayırıcılarını kullanarak Kullanıcı sorgusunu önceden işler.|
+|3|Bu ön işleme, en iyi arama sonuçları için Kullanıcı sorgusunu değiştirmek üzere alınır.|
+|4|Değiştirilen Bu sorgu, sonuçların sayısını alan bir Azure Bilişsel Arama dizinine gönderilir `top` . Bu sonuçlarda doğru yanıt yoksa, biraz değerini artırın `top` . Genellikle, için 10 değeri `top` sorguların %90 ' de işe yarar.|
+|5|Soru-Cevap Oluşturma, Kullanıcı sorgusu ile Azure Bilişsel Arama getirilen aday QnA sonuçları arasındaki benzerliği tespit etmek için, resim durumu dönüştürücü tabanlı modeli kullanır. Transformatör tabanlı model, tüm dillerin güven puanlarını ve yeni Derecelendirme sırasını belirlemesi için yatay olarak çalışarak, derinlemesine bir öğrenme çok dilli modelidir.|
+|6|Yeni sonuçlar, istemci uygulamasına derecelendirilir sırada döndürülür.|
+|||
+
+Derecelendiricisini, Kullanıcı sorgusunun en iyi eşleşen QNA çiftlerini bulmak için diğer tüm sorular ve yanıtlar üzerinde çalışmaktadır. Kullanıcıların derecelendiricisini 'ı yalnızca derecelendiricisini 'a Yapılandırma esnekliği vardır. 
+
+---
 
 ## <a name="http-request-and-response-with-endpoint"></a>Uç nokta ile HTTP isteği ve yanıtı
 Bilgi bankanızı yayımladığınızda, hizmet, uygulama ile tümleştirilen bir sohbet bot ile tümleştirilebilen REST tabanlı bir HTTP uç noktası oluşturur.

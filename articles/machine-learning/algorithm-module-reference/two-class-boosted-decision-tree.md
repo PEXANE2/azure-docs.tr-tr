@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 08/24/2020
-ms.openlocfilehash: 568cd7b280b8fb65b5f75588a2832631361938dd
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 810878956a89b6e7400be99692cf43925d1cd134
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420623"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375936"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>Two-Class artırılmış karar ağacı modülü
 
@@ -26,7 +26,7 @@ Artırılmış bir karar ağacı, ikinci ağacın ilk ağacın hatalarını düz
   
 Genellikle, düzgün şekilde yapılandırıldığında, çok çeşitli makine öğrenimi görevlerinde en iyi performansa sahip olmanın en kolay yöntemi olan, artırılmış karar ağaçları vardır. Bununla birlikte, bunlar aynı zamanda daha fazla bellek yoğun öğrenipden biridir ve geçerli uygulama bellekte her şeyi barındırır. Bu nedenle, artırılmış bir karar ağacı modeli, bazı doğrusal öğrenipalların işleyebileceği büyük veri kümelerini işleyemeyebilir.
 
-Bu modül tabanlı bir LightGBM algoritması.
+Bu modül, LightGBM algoritmasını temel alır.
 
 ## <a name="how-to-configure"></a>Yapılandırma
 
@@ -56,7 +56,7 @@ Bu tür modeli [eğitme modeli](././train-model.md)kullanarak eğitebilirsiniz.
   
 6.  **Oluşturulan ağaç sayısı** için, ensede birleştirmek üzere oluşturulacak karar ağacının toplam sayısını belirtin. Daha fazla karar ağacı oluşturarak daha iyi tedarik sağlayabilirsiniz, ancak eğitim süresi artar.
   
-     Bu değer aynı zamanda eğitilen modeli görselleştirirken gösterilecek ağaç sayısını da denetler. tek bir ağacı görmek veya yazdırmak istiyorsanız, değeri 1 olarak ayarlayın. Ancak bunu yaptığınızda, yalnızca bir ağaç oluşturulur (ilk parametre kümesini içeren ağaç) ve başka yineleme gerçekleştirilmez.
+     Değeri 1 olarak ayarlarsanız, yalnızca bir ağaç oluşturulur (ilk parametre kümesini içeren ağaç) ve başka yineleme yapılmaz.
   
 7.  **Rastgele sayı çekirdek** için isteğe bağlı olarak rastgele çekirdek değeri olarak kullanılacak negatif olmayan bir tamsayı yazın. Bir çekirdek belirtmek, aynı verilere ve parametrelere sahip olan çalışmalarda reproducibility sağlar.  
   

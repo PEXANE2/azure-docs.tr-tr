@@ -4,13 +4,13 @@ description: Soru-Cevap Oluşturma uygulamanızı nasıl planlayacağınızı ö
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 07/2/2020
-ms.openlocfilehash: 84e4d6907c9036503f43cd607b54577fd3d97444
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 0be2fecfad4d2a2b829266fa1d9574bcc4c50eee
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776944"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376696"
 ---
 # <a name="plan-your-qna-maker-app"></a>Soru-Cevap Oluşturma Uygulamanızı planlayın
 
@@ -20,6 +20,8 @@ Soru-Cevap Oluşturma uygulamanızı planlamak için, Soru-Cevap Oluşturma nas�
 
 Soru-Cevap Oluşturma ile oluşturulan her [Azure kaynağının](azure-resources.md#resource-purposes) belirli bir amacı vardır. Her kaynağın kendi amacı, limitleri ve [fiyatlandırma katmanı](azure-resources.md#pricing-tier-considerations)vardır. Bu bilgileri planlama sürecinizde kullanabilmeniz için bu kaynakların işlevini anlamanız önemlidir.
 
+# <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
+
 | Kaynak | Amaç |
 |--|--|
 | [Soru-cevap oluşturma](azure-resources.md#qna-maker-resource) kaynağı | Yazma ve sorgu tahmini |
@@ -27,6 +29,14 @@ Soru-Cevap Oluşturma ile oluşturulan her [Azure kaynağının](azure-resources
 | [Kaynak ve uygulama planı hizmet kaynağı App Service](azure-resources.md#app-service-and-app-service-plan) | Sorgu tahmin uç noktası |
 | [Application Insights](azure-resources.md#application-insights) kaynağı | Sorgu tahmin telemetrisi |
 
+# <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
+
+| Kaynak | Amaç |
+|--|--|
+| [Soru-cevap oluşturma](azure-resources.md#qna-maker-resource) kaynağı | Yazma, sorgu tahmini uç noktası ve telemetri|
+| [Bilişsel arama](azure-resources.md#cognitive-search-resource) kaynağı | Veri depolama ve arama |
+
+---
 ### <a name="resource-planning"></a>Kaynak planlama
 
 `F0`Her bir kaynağın ücretsiz katmanı işe yarar ve hem yazma hem de sorgu tahmin deneyimini sağlayabilir. Bu katmanı, yazma ve sorgu tahminini öğrenmek için kullanabilirsiniz. Bir üretime veya canlı senaryoya geçtiğinizde, kaynak seçiminizi yeniden değerlendirmeniz gerekir.
@@ -65,9 +75,22 @@ Bilgi Bankası, Soru-Cevap Oluşturma kaynağına doğrudan bağlıdır. Sorgu t
 
 ### <a name="language-considerations"></a>Dil konuları
 
+# <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
+
 Soru-Cevap Oluşturma kaynağınız üzerinde oluşturulan ilk bilgi tabanı, kaynağın dilini ayarlar. Bir Soru-Cevap Oluşturma kaynağı için yalnızca bir dile sahip olabilirsiniz.
 
 Soru-Cevap Oluşturma kaynaklarınızı dile göre oluşturabilir veya sorguyu sorgu tahmin uç noktasına göndermeden önce, başka bir dildeki sorguyu bilgi bankasındaki dile dönüştürmek için [çeviriciyi](../../translator/translator-info-overview.md) kullanabilirsiniz.
+
+# <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
+
+Artık aynı Soru-Cevap Oluşturma kaynağı dahilinde farklı dillerde bilgi esaslarını sağlayabilirsiniz. İlk Bilgi Bankası 'nı oluştururken, kaynak bilgilerini tek bir dilde veya birden çok dilde kullanmak isteyip istemediğinizi seçebilirsiniz.
+
+![Soru-Cevap Oluşturma yönetilen (Önizleme) çok dilli Bilgi Bankası seçimi](../media/concept-plan-your-knowledge-base/qnamaker-v2-select-multilanguage-knowledge-base.png)
+
+> [!NOTE]
+> Her Bilgi Bankası için dil ayarlarını etkinleştirirseniz Soru-Cevap Oluşturma kaynağınız için pek çok bilgi temeli oluşturamazsınız. [Dil ayarları sınırlamaları hakkında daha fazla bilgi](./azure-resources.md)için.
+
+---
 
 ### <a name="ingest-data-sources"></a>Alma veri kaynakları
 
@@ -87,7 +110,7 @@ Bağlı görüntülerin, Soru-Cevap Oluşturma portalının test bölmesinde vey
 
 ### <a name="bot-personality"></a>Bot kişiliği
 
-[Kiıt-chat](../how-to/chit-chat-knowledge-base.md)ile bilgi tabanınız için bir bot kişilik ekleyin. Bu kişilik, *profesyonel* ve *kolay*gibi belirli bir konuşma tonlarında verilen yanıtlarla birlikte gelir. Bu CHIT-chat, ekleme, düzenleme ve kaldırma için toplam denetime sahip olduğunuz bir konuşma kümesi olarak sunulmaktadır.
+[Kiıt-chat](../how-to/chit-chat-knowledge-base.md)ile bilgi tabanınız için bir bot kişilik ekleyin. Bu kişilik, *profesyonel* ve *kolay* gibi belirli bir konuşma tonlarında verilen yanıtlarla birlikte gelir. Bu CHIT-chat, ekleme, düzenleme ve kaldırma için toplam denetime sahip olduğunuz bir konuşma kümesi olarak sunulmaktadır.
 
 Bot 'niz bilgi tabanınızı bağladığında bir bot kişiliği önerilir. Diğer hizmetlere da bağlansanız bile, bilgi tabanınızda CHIT-chat kullanmayı seçebilirsiniz, ancak bu, sizin için doğru mimari tasarımı olup olmadığını öğrenmek için bot hizmetinin nasıl etkileşime gireceğini gözden geçirmeniz gerekir.
 
@@ -129,7 +152,7 @@ Soru-Cevap Oluşturma, yanıt için alternatif sorular önererek bilgi bankasın
 
 ### <a name="providing-a-default-answer"></a>Varsayılan bir yanıt sağlama
 
-Bilgi tabanınız bir yanıt bulamazsa, _varsayılan yanıtı_döndürür. Bu yanıt, Soru-Cevap Oluşturma portalındaki veya [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body)'lerde **Ayarlar** sayfasında yapılandırılabilir.
+Bilgi tabanınız bir yanıt bulamazsa, _varsayılan yanıtı_ döndürür. Bu yanıt, Soru-Cevap Oluşturma portalındaki veya [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body)'lerde **Ayarlar** sayfasında yapılandırılabilir.
 
 Bu varsayılan yanıt, Azure bot varsayılan cevabı 'ndan farklıdır. Azure portal Azure bot için varsayılan yanıtı yapılandırma ayarlarının bir parçası olarak yapılandırırsınız. Puan eşiğine uyulmazsa döndürülür.
 
@@ -152,7 +175,15 @@ Puan, çeşitli faktörlere göre değişebilir:
 
 ### <a name="service-updates"></a>Hizmet güncelleştirmeleri
 
+# <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
+
 Hizmet güncelleştirmelerini otomatik olarak yönetmek için [en son çalışma zamanı güncelleştirmelerini](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) uygulayın.
+
+# <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
+
+Soru-Cevap Oluşturma yönetilen (Önizleme) içinde, çalışma zamanı Soru-Cevap Oluşturma hizmetin kendisi tarafından yönetilir. Bu nedenle, hizmet güncelleştirmeleri geçerli değildir.
+
+---
 
 ### <a name="scaling-throughput-and-resiliency"></a>Ölçeklendirme, verimlilik ve dayanıklılık
 
@@ -160,7 +191,16 @@ Hizmet güncelleştirmelerini otomatik olarak yönetmek için [en son çalışma
 
 ### <a name="analytics-with-application-insights"></a>Application Insights ile analiz
 
+# <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
+
 Bilgi bankalarınıza yönelik tüm sorgular Application Insights depolanır. Ölçümlerinizi anlamak için [en iyi sorguları](../how-to/get-analytics-knowledge-base.md) kullanın.
+
+# <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
+
+Yönetilen dağıtımda, telemetri [Azure İzleyici hizmeti](https://docs.microsoft.com/azure/azure-monitor/)aracılığıyla sunulur. Ölçümlerinizi anlamak için [en iyi sorguları](../how-to/get-analytics-knowledge-base.md) kullanın.
+
+
+---
 
 ## <a name="development-lifecycle"></a>Geliştirme yaşam döngüsü
 
@@ -177,7 +217,7 @@ Her bir çift şunları içerebilir:
 
 ### <a name="devops-development"></a>DevOps geliştirme
 
-DevOps ardışık düzenine eklemek için Bilgi Bankası geliştirme işlemi, bilgi bankasını [toplu test](../quickstarts/batch-testing.md)sırasında yalıtıyor olması gerekir.
+Bir DevOps ardışık düzenine eklemek için Bilgi Bankası geliştirme işlemi, bilgi bankasını [toplu test](../quickstarts/batch-testing.md)sırasında yalıtıyor olması gerekir.
 
 Bilgi Bankası, Bilişsel Arama dizinini Soru-Cevap Oluşturma kaynaktaki diğer tüm bilgi bankalarıyla paylaşır. Bilgi Bankası, Bölüm tarafından yalıtılırken, Dizin paylaşımı, yayımlanan bilgi tabanı ile karşılaştırıldığında puanta farklılık oluşmasına neden olabilir.
 
