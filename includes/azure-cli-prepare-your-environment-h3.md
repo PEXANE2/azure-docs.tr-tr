@@ -8,20 +8,20 @@ ms.technology: azure-cli
 ms.service: azure-cli
 ms.devlang: azurecli
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f354a982cb134bbee032b2ea408bdbe127a5067c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.openlocfilehash: 923eee619fdff7b128d9429f38cf713803cc6a13
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93136126"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347403"
 ---
-### <a name="prepare-your-environment-for-the-azure-cli"></a>Ortamınızı Azure CLı için hazırlama
+### <a name="prepare-your-environment-for-the-azure-cli"></a>Ortamınızı Azure CLI’ye hazırlama
 
-- Bash ortamını kullanarak [Azure Cloud Shell](/azure/cloud-shell/quickstart) kullanın.
+- Bash ortamından yararlanarak [Azure Cloud Shell](/azure/cloud-shell/quickstart)’i kullanın.
 
-   [![Ekleme başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell’i başlatma")](https://shell.azure.com)   
-- Tercih ederseniz, CLı başvuru komutlarını çalıştırmak için Azure CLı 'nin [yerel bir yüklemesini](/cli/azure/install-azure-cli) yapın.
-   - Yerel bir yüklemeyi kullanıyorsanız, [az Login](/cli/azure/reference-index#az-login) komutunu kullanarak Azure CLI ile oturum açın.  Terminalinizde görüntülenen adımları uygulayarak kimlik doğrulama işlemini tamamlayın.  Ek oturum açma seçenekleri için bkz. [Azure CLI Ile oturum açma](/cli/azure/authenticate-azure-cli) .
-  - İstendiğinde, ilk kullanım için Azure CLı uzantıları 'nı yüklemeniz gerekir.  [Azure CLI ile uzantıları kullanma](/cli/azure/azure-cli-extensions-overview)hakkında daha fazla bilgi edinin.
-  - Yüklenen sürümü ve bağımlı kitaplıkları bulmak için [az Version](/cli/azure/reference-index?#az_version) ' i çalıştırın. En son sürüme yükseltmek için [az Upgrade](/cli/azure/reference-index?#az_upgrade)' i çalıştırın.
+   [![Ekli başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell’i başlatma")](https://shell.azure.com)   
+- Dilerseniz CLI başvuru komutlarını çalıştırmak için Azure CLI’yi [yükleyebilirsiniz](/cli/azure/install-azure-cli).
+   - Yerel yükleme kullanıyorsanız [az login](/cli/azure/reference-index#az-login) komutunu kullanarak Azure CLI ile oturum açın.  Kimlik doğrulama işlemini tamamlamak için terminalinizde görüntülenen adımları izleyin.  Ek oturum açma seçenekleri için bkz. [Azure CLI ile oturum açma](/cli/azure/authenticate-azure-cli).
+  - İstendiğinde, ilk kullanımda Azure CLI uzantılarını yükleyin.  Uzantılar hakkında daha fazla bilgi için bkz. [Azure CLI ile uzantıları kullanma](/cli/azure/azure-cli-extensions-overview).
+  - Yüklü sürümü ve bağımlı kitaplıkları bulmak için [az version](/cli/azure/reference-index?#az_version) komutunu çalıştırın. En son sürüme yükseltmek için [az upgrade](/cli/azure/reference-index?#az_upgrade) komutunu çalıştırın.
 

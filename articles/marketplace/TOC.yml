@@ -81,12 +81,36 @@
       href: publisher-guide-by-offer-type.md
     - name: Azure uygulama teklifleri
       items:
-        - name: Çözüm şablonu teklifi planlama
-          href: marketplace-solution-templates.md
-        - name: Yönetilen uygulama teklifi oluşturma
-          href: marketplace-managed-apps.md
+        - name: Azure uygulama tekliflerini planlama
+          items:
+            - name: Azure uygulama teklifi planlama
+              href: plan-azure-application-offer.md
+            - name: Çözüm şablonu planlama
+              href: plan-azure-app-solution-template.md
+            - name: Yönetilen uygulama oluşturma
+              href: plan-azure-app-managed-app.md
         - name: Azure uygulaması teklifi oluşturma ve yayımlama
-          href: partner-center-portal/create-new-azure-apps-offer.md
+          items:
+            - name: Azure uygulama teklifi oluşturma
+              href: create-new-azure-apps-offer.md
+            - name: Azure uygulama teklifi özelliklerini yapılandırma
+              href: create-new-azure-apps-offer-properties.md
+            - name: Azure uygulama teklifi girişini yapılandırma
+              href: create-new-azure-apps-offer-listing.md
+            - name: Önizleme hedef kitlesi ekleme
+              href: create-new-azure-apps-offer-preview.md
+            - name: Teknik ayrıntılar ekleme
+              href: create-new-azure-apps-offer-technical.md
+            - name: Plan oluşturma
+              href: create-new-azure-apps-offer-plans.md
+            - name: Çözüm şablonu planı oluşturma
+              href: create-new-azure-apps-offer-solution.md
+            - name: Yönetilen uygulama planı oluşturma
+              href: create-new-azure-apps-offer-managed.md
+            - name: Azure uygulaması teklifini test etme ve yayımlama
+              href: create-new-azure-apps-offer-test-publish.md
+        - name: Azure uygulama teklifinizi pazarlama
+          href: create-new-azure-apps-offer-marketing.md
         - name: Azure uygulaması ölçülen faturalama
           href: partner-center-portal/azure-app-metered-billing.md
         - name: Gözden geçirme geri bildirimini işleme

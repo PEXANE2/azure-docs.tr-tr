@@ -4,7 +4,7 @@
   items:
     - name: Sanal Makineler hakkında
       href: overview.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   items:
     - name: VM Oluşturma - Azure CLI
       href: quick-create-cli.md
@@ -36,29 +36,31 @@
       href: tutorial-virtual-network.md
     - name: 9 - Sanal makineleri yedekleme
       href: tutorial-backup-vms.md
-    - name: 10 - VM’leri yönetme
+    - name: 10 - Olağanüstü durum kurtarmayı etkinleştirme
+      href: tutorial-disaster-recovery.md
+    - name: 11 - VM’leri yönetme
       href: tutorial-govern-resources.md
-    - name: 11 - VM’leri izleme ve güncelleştirme
+    - name: 12 - VM’leri izleme ve güncelleştirme
       href: tutorial-config-management.md
-    - name: 12 - VM’leri izleme
+    - name: 13 - VM’leri izleme
       href: tutorial-monitor.md
-    - name: 13 - VM güvenliğini yönetme
+    - name: 14 - VM güvenliğini yönetme
       href: tutorial-azure-security.md
-    - name: 14a - Jenkins ile derleme
+    - name: 15a - Jenkins ile derleme
       href: /azure/developer/jenkins/pipeline-with-github-and-docker
-    - name: 14b - Jenkins’i Azure DevOps ile tümleştirme
+    - name: 15b - Jenkins’i Azure DevOps ile tümleştirme
       href: /azure/developer/jenkins/deploy-to-linux-vm-using-azure-devops-services
-    - name: 15a - Sıralı dağıtım stratejisini yapılandırma
+    - name: 16a - Sıralı dağıtım stratejisini yapılandırma
       href: tutorial-devops-azure-pipelines-classic.md
-    - name: 15b - Kanarya dağıtım stratejisini yapılandırma
+    - name: 16b - Kanarya dağıtım stratejisini yapılandırma
       href: tutorial-azure-devops-canary-strategy.md
-    - name: 15c - Mavi-Yeşil dağıtım stratejisini yapılandırma
+    - name: 16c - Mavi-Yeşil dağıtım stratejisini yapılandırma
       href: tutorial-azure-devops-blue-green-strategy.md
-    - name: 15d - Azure Pipelines (YAML) ile CI/CD
+    - name: 16d - Azure Pipelines (YAML) ile CI/CD
       href: tutorial-build-deploy-azure-pipelines.md
-    - name: 16 - LAMP yığını oluşturma
+    - name: 17 - LAMP yığını oluşturma
       href: tutorial-lamp-stack.md
-    - name: 17 - SSL ile web sunucusunun güvenliğini sağlama
+    - name: 18 - SSL ile web sunucusunun güvenliğini sağlama
       href: tutorial-secure-web-server.md
 - name: Örnekler
   items:
@@ -285,7 +287,7 @@
         - name: Ayrılmış örnekler
           items:
             - name: VM'ler için ön ödeme yapma
-              href: prepay-reserved-vm-instances.md
+              href: ../prepay-reserved-vm-instances.md
             - name: Ayrılmış Konaklar için önceden ödeme
               href: ../prepay-dedicated-hosts-reserved-instances.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Azure ayırmaları nedir?

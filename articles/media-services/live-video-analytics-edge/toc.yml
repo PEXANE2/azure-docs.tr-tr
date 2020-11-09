@@ -95,6 +95,8 @@
       href: use-azure-portal-to-invoke-direct-methods.md
     - name: Azure Stack Edge’de dağıtma
       href: deploy-azure-stack-edge-how-to.md
+    - name: Sinyal geçidi yapılandırma
+      href: configure-signal-gate-how-to.md
     - name: Sorun giderme
       href: troubleshoot-how-to.md
 - name: Başvuru

@@ -16,3 +16,5 @@
   href: redhat-rhui.md
 - name: Red Hat Enterprise Linux BYOS Görüntü Teklifi
   href: byos.md
+- name: Red Hat Enterprise Linux Genişletilmiş Yaşam Döngüsü Desteği
+  href: redhat-extended-lifecycle-support.md

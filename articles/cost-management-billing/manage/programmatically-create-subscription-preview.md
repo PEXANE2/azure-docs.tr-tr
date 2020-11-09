@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 10/29/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c63733a66a2bb4e320a24649dfe82eac259e79ae
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 3ffdeb0add8622e1b9f28f9603dc146b78f742cd
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131114"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043290"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-preview-apis"></a>Önizleme API’leriyle program aracılığıyla Azure abonelikleri oluşturma
 
@@ -134,7 +134,7 @@ Azure erişiminiz olan kayıt hesaplarını listeleyerek yanıt verir:
 
 ### <a name="create-subscriptions-under-a-specific-enrollment-account"></a>Belirli bir kayıt hesabı altında abonelik oluşturma
 
-Aşağıdaki örnekte, önceki adımda seçilen kayıt hesabında *Dev Team Subscription* adlı bir abonelik oluşturulur. Abonelik teklifi *MS-AZR-0017P*'dir (normal Microsoft Kurumsal Anlaşması). Ayrıca isteğe bağlı olarak iki kullanıcıyı abonelik için Azure RBAC Sahibi olarak ekler.
+Aşağıdaki örnekte, önceki adımda seçilen kayıt hesabında *Dev Team Subscription* adlı bir abonelik oluşturulur. Abonelik teklifi *MS-AZR-0017P* 'dir (normal Microsoft Kurumsal Anlaşması). Ayrıca isteğe bağlı olarak iki kullanıcıyı abonelik için Azure RBAC Sahibi olarak ekler.
 
 ### <a name="rest"></a>[REST](#tab/rest)
 
@@ -177,7 +177,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 
 | Öğe Adı  | Gerekli | Tür   | Açıklama |
 |---------------|----------|--------|----|
-| `Name` | Hayır      | Dize | Aboneliğin görünen adı. Belirtilmezse, teklifin adına (örneğin *Microsoft Azure Kurumsal*) ayarlanır. |
+| `Name` | Hayır      | Dize | Aboneliğin görünen adı. Belirtilmezse, teklifin adına (örneğin *Microsoft Azure Kurumsal* ) ayarlanır. |
 | `OfferType`   | Evet      | Dize | Abonelik teklifi. EA için iki seçenek [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (üretim kullanımı) ve[MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/)'dir (geliştirme/test, [EA portalı kullanılarak açılmalıdır](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
 | `EnrollmentAccountObjectId`      | Evet       | Dize | Altında aboneliğin oluşturulduğu ve faturalandığı kayıt hesabının Nesne Kimliği. Bu değer, `Get-AzEnrollmentAccount` komutundan aldığınız GUID'dir. |
 | `OwnerObjectId`      | Hayır       | Dize | Abonelik oluşturulurken aboneliğe Azure RBAC Sahibi olarak eklenecek kullanıcının Nesne Kimliği.  |
@@ -198,7 +198,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 
 | Öğe Adı  | Gerekli | Tür   | Açıklama |
 |---------------|----------|--------|------------|
-| `display-name` | Hayır      | Dize | Aboneliğin görünen adı. Belirtilmezse, teklifin adına (örneğin *Microsoft Azure Kurumsal*) ayarlanır.|
+| `display-name` | Hayır      | Dize | Aboneliğin görünen adı. Belirtilmezse, teklifin adına (örneğin *Microsoft Azure Kurumsal* ) ayarlanır.|
 | `offer-type`   | Evet      | Dize | Abonelik teklifi. EA için iki seçenek [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (üretim kullanımı) ve[MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/)'dir (geliştirme/test, [EA portalı kullanılarak açılmalıdır](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
 | `enrollment-account-object-id`      | Evet       | Dize | Altında aboneliğin oluşturulduğu ve faturalandığı kayıt hesabının Nesne Kimliği. Bu değer, `az billing enrollment-account list` komutundan aldığınız GUID'dir. |
 | `owner-object-id`      | Hayır       | Dize | Abonelik oluşturulurken aboneliğe Azure RBAC Sahibi olarak eklenecek kullanıcının Nesne Kimliği.  |
@@ -212,7 +212,7 @@ Tüm parametrelerin listesini görmek için bkz. [az account create](/cli/azure/
 ### <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Azure Kurumsal aboneliği oluşturma API'sinin sınırlamaları
 
 - Bu API kullanılarak yalnızca Azure Kurumsal abonelikleri oluşturulabilir.
-- Kayıt hesabı başına 2000 abonelik sınırı vardır. Hesap için bu sayıyı aşan abonelikler yalnızca Azure portalda oluşturulabilir. API aracılığıyla daha fazla abonelik oluşturmak istiyorsanız başka bir kayıt hesabı oluşturun.
+- Kayıt hesabı başına 2000 abonelik sınırı vardır. Hesap için bu sayıyı aşan abonelikler yalnızca Azure portalda oluşturulabilir. API aracılığıyla daha fazla abonelik oluşturmak istiyorsanız başka bir kayıt hesabı oluşturun. İptal edilen, silinen ve aktarılan aboneliklerin sayısı en fazla 2000 olabilir.
 - Hesap Sahibi olmayan ama Azure RBAC ile kayıt hesabına eklenmiş olan kullanıcılar Azure portalda abonelik oluşturamaz.
 - İçinde aboneliğin oluşturulacağı kiracıyı seçemezsiniz. Abonelik her zaman Hesap Sahibinin giriş kiracısında oluşturulur. Aboneliği farklı bir kiracılığa taşımak için [abonelik kiracısını değiştirme](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md) konusuna bakın.
 

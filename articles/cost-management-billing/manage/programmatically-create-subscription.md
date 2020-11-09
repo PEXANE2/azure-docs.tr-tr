@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 10/29/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 59d3a44b1eff544f7214014f2dd31edc92bfc6bc
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7b44abbbf2e7592205d5d5c291ce99d381a283f7
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748180"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043288"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-the-latest-apis"></a>En son API’lerle program aracılığıyla Azure abonelikleri oluşturma
 
@@ -232,7 +232,7 @@ Komutun yanıtının bir parçası olarak subscriptionId bilgisini alırsınız.
 ### <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Azure Kurumsal aboneliği oluşturma API'sinin sınırlamaları
 
 - Bu API kullanılarak yalnızca Azure Kurumsal abonelikleri oluşturulabilir.
-- Kayıt hesabı başına 2000 abonelik sınırı vardır. Hesap için bu sayıyı aşan abonelikler yalnızca Azure portalda oluşturulabilir. API aracılığıyla daha fazla abonelik oluşturmak için başka bir kayıt hesabı oluşturun.
+- Kayıt hesabı başına 2000 abonelik sınırı vardır. Hesap için bu sayıyı aşan abonelikler yalnızca Azure portalda oluşturulabilir. API aracılığıyla daha fazla abonelik oluşturmak için başka bir kayıt hesabı oluşturun. İptal edilen, silinen ve aktarılan aboneliklerin sayısı en fazla 2000 olabilir.
 - Hesap Sahibi olmayan ama Azure RBAC yoluyla kayıt hesabına eklenmiş olan kullanıcılar Azure portalda abonelik oluşturamaz.
 - İçinde aboneliğin oluşturulacağı kiracıyı seçemezsiniz. Abonelik her zaman Hesap Sahibinin giriş kiracısında oluşturulur. Aboneliği farklı bir kiracılığa taşımak için [abonelik kiracısını değiştirme](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md) konusuna bakın.
 

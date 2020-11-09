@@ -70,6 +70,8 @@
           href: ../fundamentals/active-directory-whatis.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: Etki alanı adlarını yönetme
           href: domains-manage.md
+        - name: Alt etki alanlarını yönetilen olarak doğrulama
+          href: domains-verify-custom-subdomain.md
         - name: Bir dizini silme
           href: directory-delete-howto.md
         - name: Birden fazla dizin

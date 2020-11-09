@@ -50,13 +50,13 @@
   items:
     - name: Hızlı Başlangıçlar
       items:
-        - name: Azure portalı kullanarak Synapse çalışma alanı oluşturma
+        - name: Azure portalı kullanarak çalışma alanı oluşturma
           href: quickstart-create-workspace.md
           displayName: quickstart
-        - name: Azure CLI’yı kullanarak Synapse çalışma alanı oluşturma
+        - name: Azure CLI’yi kullanarak çalışma alanı oluşturma
           href: quickstart-create-workspace-cli.md
           displayName: quickstart
-        - name: Azure PowerShell’i kullanarak Synapse çalışma alanı oluşturma
+        - name: Azure PowerShell’i kullanarak çalışma alanı oluşturma
           href: quickstart-create-workspace-powershell.md
           displayName: quickstart
         - name: Şablonla dağıtma
@@ -338,6 +338,12 @@
               displayname: 'workload, management'
     - name: Nasıl yapılır kılavuzları
       items:
+        - name: Yedekleme ve geri yükleme
+          items:
+            - name: Geri yükleme noktası oluşturma
+              href: ./backuprestore/sqlpool-create-restore-point.md
+            - name: Synapse SQL havuzunu geri yükleme
+              href: ./backuprestore/restore-sql-pool.md
         - name: Yönetme ve izleme
           items:
             - name: Gen2 önbelleğini izleme

@@ -140,8 +140,6 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2103727'
         - name: JavaScript için Azure SDK
           href: 'https://go.microsoft.com/fwlink/?linkid=2103664'
-        - name: REST API
-          href: 'https://go.microsoft.com/fwlink/?linkid=2078296'
     - name: Özellik yönetimi
       items:
         - name: .NET Core kitaplığı
@@ -156,6 +154,52 @@
           href: /powershell/module/az.appconfiguration/
         - name: Terraform
           href: 'https://www.terraform.io/docs/providers/azurerm/r/app_configuration.html'
+    - name: REST API
+      items:
+        - name: Genel Bakış
+          href: rest-api.md
+        - name: Kaynaklar
+          items:
+            - name: Anahtarlar
+              href: ./rest-api-keys.md
+            - name: Anahtar değerler
+              href: ./rest-api-key-value.md
+            - name: Etiketler
+              href: ./rest-api-labels.md
+            - name: Kilitler
+              href: ./rest-api-locks.md
+            - name: Düzeltmeler
+              href: ./rest-api-revisions.md
+        - name: Protokol
+          items:
+            - name: Kimlik Doğrulaması
+              href: ./rest-api-authentication-index.md
+              items:
+                - name: Azure Active Directory kimlik doğrulaması
+                  href: rest-api-authentication-azure-ad.md
+                - name: HMAC Kimlik Doğrulaması
+                  href: rest-api-authentication-hmac.md
+            - name: Yetkilendirme
+              href: ./rest-api-authorization-index.md
+              items:
+                - name: Azure Active Directory yetkilendirmesi
+                  href: rest-api-authorization-azure-ad.md
+                - name: HMAC kimlik doğrulaması
+                  href: rest-api-authorization-hmac.md
+            - name: Tutarlılık modeli
+              href: ./rest-api-consistency.md
+            - name: Yaygın üst bilgiler
+              href: ./rest-api-headers.md
+            - name: Azaltma
+              href: ./rest-api-throttling.md
+            - name: Sürüm Oluşturma
+              href: ./rest-api-versioning.md
+        - name: Geliştirme
+          items:
+            - name: Fiddler
+              href: ./rest-api-fiddler.md
+            - name: Postman
+              href: ./rest-api-postman.md
     - name: Azure İlkesi yerleşik ilkeler
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

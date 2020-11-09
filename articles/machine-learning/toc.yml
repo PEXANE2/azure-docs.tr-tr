@@ -399,6 +399,9 @@
         - name: Uzak işlem hedeflerini kullanma
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
+        - name: Databricks ile otomatik ML kullanma
+          displayName: automl
+          href: how-to-configure-databricks-automl-environment.md
         - name: Tahmin modellerini otomatik olarak eğitme
           displayName: time series
           href: how-to-auto-train-forecast.md

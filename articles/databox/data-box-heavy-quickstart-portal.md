@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 11/04/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 9eda54ad23e06149910fe69ec16588f49829a5a5
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 3a7f9179822720b0e5ffc21bc560b4c6ccad9463
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122832"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347435"
 ---
 ::: zone target = "docs"
 
@@ -60,14 +60,87 @@ Başlamadan önce aşağıdakilerden emin olun:
 
 ## <a name="order"></a>Sipariş verme
 
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
 Bu adım yaklaşık 5 dakika sürer.
 
 1. Azure portalında yeni bir Azure Data Box kaynağı oluşturun.
 2. Bu hizmetin etkinleştirildiği mevcut aboneliği seçin ve aktarım türünü **İçeri aktarma** olarak belirleyin. Verilerin bulunduğu **Kaynak ülkeyi** ve veri aktarımı için **Azure hedef bölgesini** seçin.
-3. **Data Box Heavy**’yi seçin. Maksimum kullanılabilir kapasite 770 TB'tır ve daha büyük veri boyutları için birden çok sipariş oluşturabilirsiniz.
+3. **Data Box Heavy** ’yi seçin. Maksimum kullanılabilir kapasite 770 TB'tır ve daha büyük veri boyutları için birden çok sipariş oluşturabilirsiniz.
 4. Sipariş ayrıntılarını ve sevkiyat bilgilerini girin. Hizmet bölgenizde kullanılabilir durumdaysa bildirim e-posta adreslerini girin, özeti gözden geçirin ve siparişi oluşturun.
 
 Sipariş oluşturulduktan sonra cihaz gönderilmek üzere hazırlanır.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Data Box Heavy işi oluşturmak için bu Azure CLI komutlarını kullanın.
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+1. [az group create](/cli/azure/group#az_group_create) komutunu çalıştırarak bir kaynak grubu oluşturun veya mevcut bir kaynak grubunu kullanın:
+
+   ```azurecli
+   az group create --name databox-rg --location westus 
+   ```
+
+1. [az storage account create](/cli/azure/storage/account#az_storage_account_create) komutunu kullanarak bir depolama hesabı oluşturun veya mevcut bir depolama hesabını kullanın:
+
+   ```azurecli
+   az storage account create --resource-group databox-rg --name databoxtestsa
+   ```
+
+1. `DataBoxHeavy` hizmetine ait **--sku** değeriyle bir Data Box işi oluşturmak için [az databox job create](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_create) komutunu çalıştırın:
+
+   ```azurecli
+   az databox job create --resource-group databox-rg --name databoxheavy-job \
+       --location westus --sku DataBoxHeavy --contact-name "Jim Gan" --phone 4085555555 \
+       --city Sunnyvale --email-list JimGan@contoso.com --street-address1 "1020 Enterprise Way" \
+       --postal-code 94089 --country US --state-or-province CA --storage-account databoxtestsa \
+       --staging-storage-account databoxtestsa --resource-group-for-managed-disk rg-for-md
+   ```
+
+   > [!NOTE]
+   > Aboneliğinizin Data Box Heavy’yi desteklediğinden emin olun.
+
+1. Bu örnekte olduğu gibi, iletişim adını ve e-postasını değiştirebileceğiniz bir işi güncelleştirmek için [az databox job update](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_update) komutunu çalıştırın:
+
+   ```azurecli
+   az databox job update -g databox-rg --name databox-job --contact-name "Robert Anic" --email-list RobertAnic@contoso.com
+   ```
+
+   İş hakkındaki bilgileri almak için [az databox job show](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_show) komutunu çalıştırın:
+
+   ```azurecli
+   az databox job show --resource-group databox-rg --name databox-job
+   ```
+
+   Kaynak grubundaki tüm Data Box işlerini görmek için [az databox job list]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list) komutunu kullanın:
+
+   ```azurecli
+   az databox job list --resource-group databox-rg
+   ```
+
+   İşi iptal etmek için [az databox job cancel](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_cancel) komutunu çalıştırın:
+
+   ```azurecli
+   az databox job cancel –resource-group databox-rg --name databox-job --reason "Cancel job."
+   ```
+
+   İşi silmek için [az databox job delete](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_delete) komutunu çalıştırın:
+
+   ```azurecli
+   az databox job delete –resource-group databox-rg --name databox-job
+   ```
+
+1. Data Box işinin kimlik bilgilerini listelemek için [az databox job list-credentials]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list_credentials) komutunu kullanın:
+
+   ```azurecli
+   az databox job list-credentials --resource-group "databox-rg" --name "databoxdisk-job"
+   ```
+
+Sipariş oluşturulduktan sonra cihaz gönderilmek üzere hazırlanır.
+
+---
 
 ::: zone-end
 
@@ -104,7 +177,7 @@ Bu adımın tamamlanması yaklaşık 10-15 dakika sürer.
 
 Bu adımın tamamlanması yaklaşık 5-7 dakika sürer.
 
-1. Cihaz parolasını almak için [Azure portalında](https://portal.azure.com)**Genel > Cihaz ayrıntıları**'na gidin. Aynı parola, cihazın her iki düğümü için de kullanılır.
+1. Cihaz parolasını almak için [Azure portalında](https://portal.azure.com)**Genel > Cihaz ayrıntıları** 'na gidin. Aynı parola, cihazın her iki düğümü için de kullanılır.
 2. Data Box Heavy'ye bağlanmak için kullandığınız bilgisayardaki Ethernet bağdaştırıcısına 192.168.100.5 statik IP adresini ve 255.255.255.0 alt ağını atayın. Cihazın yerel web kullanıcı arabirimine `https://192.168.100.10` adresinden erişin. Siz cihazı açtıktan sonra bağlantı kurulması 5 dakika kadar sürebilir.
 3. Azure portalından alınan parolayı kullanarak oturum açın. Web sitesinin güvenlik sertifikasında sorun olduğunu belirten bir hata görürsünüz. Web sayfasına ilerlemek için tarayıcıya özel yönergeleri izleyin.
 4. Varsayılan olarak, arabirimlerin (MGMT hariç) ağ ayarları DHCP olarak yapılandırılır. Gerekirse, bu arabirimleri statik olarak yapılandırabilir ve bir IP adresi sağlayabilirsiniz.
@@ -159,9 +232,9 @@ Bu işlemi tamamlamak için gereken süre verilerinizin boyutuna göre değişir
 
 Bu adımın tamamlanması 2-3 dakika sürer.
 
-- Data Box Heavy siparişini işleme alınmadan önce Azure portalından iptal edebilirsiniz. Siparişler işleme alındıktan sonra iptal edilemez. Sipariş, tamamlanma aşamasına gelene kadar ilerler. Siparişi iptal etmek için **Genel bakış**'a gidin ve komut çubuğundan **İptal**'e tıklayın.
+- Data Box Heavy siparişini işleme alınmadan önce Azure portalından iptal edebilirsiniz. Siparişler işleme alındıktan sonra iptal edilemez. Sipariş, tamamlanma aşamasına gelene kadar ilerler. Siparişi iptal etmek için **Genel bakış** 'a gidin ve komut çubuğundan **İptal** 'e tıklayın.
 
-- Siparişin durumu **Tamamlandı** veya **İptal edildi** olduğunda Azure portaldan silebilirsiniz. Siparişi silmek için **Genel bakış**'a gidin ve komut çubuğundan **Sil**'e tıklayın.
+- Siparişin durumu **Tamamlandı** veya **İptal edildi** olduğunda Azure portaldan silebilirsiniz. Siparişi silmek için **Genel bakış** 'a gidin ve komut çubuğundan **Sil** 'e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
