@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9131dbff9b732ecfc7f6edb62b42959abcc17da8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c6b6aea6a3b0856b3db345e20b87d2a12ad055e1
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078688"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380339"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>C 'de konsol uygulama arama istemcisi oluşturma #
 
@@ -64,7 +64,7 @@ Bu öğretici derlemeyi temel alır `System.Web` . Projenize bu derlemeye bir ba
 
 - **Çözüm Gezgini** , **Başvurular** ' a sağ tıklayın ve **Başvuru Ekle...** öğesini seçin.
 - **Derlemeler > Framework** ' ü seçin, ardından aşağı kaydırın ve **System. Web** ' i denetleyin
-- **Tamam 'ı** seçin
+- **Tamam** 'ı seçin
 
 ## <a name="add-some-necessary-using-statements"></a>Bazı gerekli using deyimlerini ekleyin
 
@@ -228,7 +228,7 @@ Sonuçları derecelendirildi sırada görüntülemeyi göstermeden önce, örnek
 }
 ```
 
-`rankingResponse`JSON nesnesi ([Belgeler](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) arama sonuçları için uygun görüntüleme sırasını açıklar. Aşağıdaki, önceliklendirilmiş gruplardan bir veya daha fazlasını içerir:
+`rankingResponse`JSON nesnesi ([Belgeler](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) arama sonuçları için uygun görüntüleme sırasını açıklar. Aşağıdaki, önceliklendirilmiş gruplardan bir veya daha fazlasını içerir:
 
 - `pole`: En sık görünen işlemi almak için arama sonuçları (örneğin, ana hat ve kenar çubuğu üzerinde gösterilir).
 - `mainline`: Ana satırda görüntülenecek arama sonuçları.

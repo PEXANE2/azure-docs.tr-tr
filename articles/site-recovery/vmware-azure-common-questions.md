@@ -3,12 +3,12 @@ title: Azure Site Recovery ile VMware olağanüstü durum kurtarma hakkında sı
 description: Azure Site Recovery kullanarak şirket içi VMware VM 'lerinin olağanüstü durum kurtarma hakkında sık sorulan soruların yanıtlarını alın.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 421a96255e7dbbec723122fb3920dcc27da72670
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8f292e7f624b80e8e13514a714c5759d88fbe57c
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359807"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379999"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware’den Azure’a çoğaltmayla ilgili sık sorulan sorular
 
@@ -106,7 +106,7 @@ Yükleyiciler yapılandırma sunucusundaki%ProgramData%\asr\home\svsystems\push�
 Site Recovery, şirket içi VMware VM 'lerini ve fiziksel sunucuları Azure 'da yönetilen disklere çoğaltır.
 
 - Site Recovery işlem sunucusu, çoğaltma günlüklerini hedef bölgedeki bir önbellek depolama hesabına yazar.
-- Bu Günlükler, Azure tarafından yönetilen ve **asrseeddisk**öneki olan disklerde kurtarma noktaları oluşturmak için kullanılır.
+- Bu Günlükler, Azure tarafından yönetilen ve **asrseeddisk** öneki olan disklerde kurtarma noktaları oluşturmak için kullanılır.
 - Yük devretme gerçekleştiğinde, seçtiğiniz kurtarma noktası yeni bir hedef yönetilen disk oluşturmak için kullanılır. Bu yönetilen disk, Azure 'da sanal makineye eklenir.
 - Daha önce bir depolama hesabına (2019 Mart 'tan önce) çoğaltılan VM 'Ler etkilenmez.
 
@@ -153,7 +153,7 @@ Genişletilmiş veya zincir çoğaltma desteklenmez. Bu özelliği [geri bildiri
 
 ### <a name="what-is-asrseeddisk"></a>Asrseeddisk nedir?
 
-Her kaynak disk için, veriler Azure 'da yönetilen bir diske çoğaltılır. Bu disk, **asrseeddisk**ön ekine sahiptir. Kaynak diskin kopyasını ve tüm kurtarma noktası anlık görüntülerini depolar.
+Her kaynak disk için, veriler Azure 'da yönetilen bir diske çoğaltılır. Bu disk, **asrseeddisk** ön ekine sahiptir. Kaynak diskin kopyasını ve tüm kurtarma noktası anlık görüntülerini depolar.
 
 ### <a name="can-i-exclude-disks-from-replication"></a>Diskleri çoğaltmadan hariç tutabilir miyim?
 
@@ -176,7 +176,7 @@ Azure 'a VMware çoğaltması için kaynak VM 'lerin disk boyutunu değiştirebi
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-server-without-impacting-ongoing-replication"></a>Şirket içi makineleri, devam eden Çoğaltmayı etkilemeden yeni bir vCenter Server geçirebilir miyim?
 
-Hayır. VMware vCenter veya geçişi değişikliği, devam eden çoğaltmayı etkiler. Yeni vCenter Server Site Recovery ayarlayın ve makineler için çoğaltmayı yeniden etkinleştirin.
+Makineleri yeni bir vCenter 'a geçirmek için [kılavuzumuza](vmware-azure-manage-vcenter.md#migrate-all-vms-to-a-new-server) bakın
 
 ### <a name="can-i-replicate-to-a-cache-or-target-storage-account-that-has-a-virtual-network-with-azure-firewalls-configured-on-it"></a>Üzerinde yapılandırılmış bir sanal ağa (Azure Güvenlik duvarları olan) sahip bir önbellek veya hedef depolama hesabına çoğaltma yapabilir miyim?
 
@@ -258,11 +258,11 @@ Yapılandırma sunucusu için düzenli olarak zamanlanmış yedeklemeler yapman�
 
 ### <a name="when-im-setting-up-the-configuration-server-can-i-download-and-install-mysql-manually"></a>Yapılandırma sunucusunu ayarlıyorum, MySQL 'i el ile indirebilir ve yükleyebilir miyim?
 
-Evet. MySQL indirin ve C:\Temp\ASRSetup klasörüne yerleştirin. Ardından, el ile yükleyebilirsiniz. Yapılandırma sunucusu VM 'sini ayarlayıp koşulları kabul ettiğinizde MySQL, **indirme ve yükleme**sırasında **zaten yüklü** olarak listelenecektir.
+Evet. MySQL indirin ve C:\Temp\ASRSetup klasörüne yerleştirin. Ardından, el ile yükleyebilirsiniz. Yapılandırma sunucusu VM 'sini ayarlayıp koşulları kabul ettiğinizde MySQL, **indirme ve yükleme** sırasında **zaten yüklü** olarak listelenecektir.
 
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>MySQL 'in indirimü, ancak Site Recovery yüklemesine izin verebilir miyim?
 
-Evet. MySQL yükleyicisini indirin ve C:\Temp\ASRSetup klasörüne yerleştirin. Yapılandırma sunucusu VM 'sini ayarlarken, koşulları kabul edin ve **indir ve yükle**' yi seçin. Portal, MySQL 'i yüklemek için eklediğiniz yükleyiciyi kullanacaktır.
+Evet. MySQL yükleyicisini indirin ve C:\Temp\ASRSetup klasörüne yerleştirin. Yapılandırma sunucusu VM 'sini ayarlarken, koşulları kabul edin ve **indir ve yükle** ' yi seçin. Portal, MySQL 'i yüklemek için eklediğiniz yükleyiciyi kullanacaktır.
 
 ### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>Yapılandırma sunucusu VM 'sini başka bir şey için kullanabilir miyim?
 
@@ -286,7 +286,7 @@ Parolayı indirmeyi [öğrenin](vmware-azure-manage-configuration-server.md#gene
 
 ### <a name="where-can-i-download-vault-registration-keys"></a>Kasa kayıt anahtarlarını nereden indirebilirim?
 
-Kurtarma Hizmetleri kasasında **Site Recovery altyapı**Yönetimi ' nde **yapılandırma sunucuları** ' nı seçin  >  **Manage**. Ardından, **sunucular**' da, kasa kimlik bilgileri dosyasını indirmek için **kayıt anahtarını indir** ' i seçin.
+Kurtarma Hizmetleri kasasında **Site Recovery altyapı** Yönetimi ' nde **yapılandırma sunucuları** ' nı seçin  >  **Manage**. Ardından, **sunucular** ' da, kasa kimlik bilgileri dosyasını indirmek için **kayıt anahtarını indir** ' i seçin.
 
 ### <a name="can-a-single-configuration-server-be-used-to-protect-multiple-vcenter-instances"></a>Birden çok vCenter örneğini korumak için tek bir yapılandırma sunucusu kullanılabilir mi?
 

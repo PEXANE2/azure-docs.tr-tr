@@ -2,15 +2,15 @@
 title: Otomasyon hesabından Azure Otomasyonu Güncelleştirme Yönetimi etkinleştirme
 description: Bu makalede bir Otomasyon hesabından Güncelleştirme Yönetimi nasıl etkinleştirileceği açıklanır.
 services: automation
-ms.date: 11/04/2020
+ms.date: 11/09/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 6f14516f36975d84256f9bb1bd3b4949dbf80448
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: b97e1e61401697204f79004e4678e6f2286f4a98
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348840"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380547"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Otomasyon hesabından Güncelleştirme Yönetimi’ni etkinleştirme
 
@@ -49,7 +49,7 @@ Bu makalede, [Azure Arc etkin sunucularına](../../azure-arc/servers/overview.md
 
 ## <a name="enable-non-azure-vms"></a>Azure dışı VM 'Leri etkinleştirme
 
-Azure 'da bulunmayan makinelerin el ile eklenmesi gerekir.
+Azure Arc etkin sunucularla kayıtlı olanlar da dahil olmak üzere Azure dışında barındırılan makineler veya sunucular için, Güncelleştirme Yönetimi etkinleştirmek üzere aşağıdaki adımları gerçekleştirin.  
 
 1. Otomasyon **hesabınızdan güncelleştirme yönetimi altında** **güncelleştirme yönetimi** ' ni seçin.
 

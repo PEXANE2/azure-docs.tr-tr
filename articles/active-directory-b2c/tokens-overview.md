@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d7a143f99eca73e0620e24ac5d93141ddb7d99e6
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: a0ad14481673f0061fb0170e60869109c87a6829
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215969"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379795"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C belirteçlere genel bakış
 
@@ -44,13 +44,13 @@ Uygulamanızın Azure AD B2C aldığı güvenlik belirteçleri, `/authorize` vey
 
 ## <a name="claims"></a>Talepler
 
-Azure AD B2C kullandığınızda belirteçlerinizin içeriği üzerinde ayrıntılı denetime sahip olursunuz. [Kullanıcı akışlarını](user-flow-overview.md) ve [özel ilkeleri](custom-policy-overview.md) , uygulamanız için gerekli olan taleplerde belirli kullanıcı verisi kümelerini gönderecek şekilde yapılandırabilirsiniz. Bu talepler, **DisplayName** ve **emapostaadı**gibi standart özellikleri içerebilir. Uygulamalarınız, kullanıcıların ve isteklerin kimliğini güvenli bir şekilde doğrulamak için bu talepleri kullanabilir.
+Azure AD B2C kullandığınızda belirteçlerinizin içeriği üzerinde ayrıntılı denetime sahip olursunuz. [Kullanıcı akışlarını](user-flow-overview.md) ve [özel ilkeleri](custom-policy-overview.md) , uygulamanız için gerekli olan taleplerde belirli kullanıcı verisi kümelerini gönderecek şekilde yapılandırabilirsiniz. Bu talepler, **DisplayName** ve **emapostaadı** gibi standart özellikleri içerebilir. Uygulamalarınız, kullanıcıların ve isteklerin kimliğini güvenli bir şekilde doğrulamak için bu talepleri kullanabilir.
 
 KIMLIK belirteçlerdeki talepler belirli bir sırada döndürülmez. Yeni talepler, KIMLIK belirteçlerinde herhangi bir zamanda tanıtılamaz. Yeni talepler tanıtıldığında uygulamanız kesmemelidir. Taleplerinizi [Özel Kullanıcı özniteliklerini](user-flow-custom-attributes.md) de dahil edebilirsiniz.
 
 Aşağıdaki tabloda, KIMLIK belirteçleri ve Azure AD B2C tarafından verilen erişim belirteçlerinde bekleneceğiniz talepler listelenmektedir.
 
-| Ad | İste | Örnek değer | Açıklama |
+| Name | İste | Örnek değer | Açıklama |
 | ---- | ----- | ------------- | ----------- |
 | Hedef kitle | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Belirtecin amaçlanan alıcısını tanımlar. Azure AD B2C için hedef kitle uygulama KIMLIĞIDIR. Uygulamanız bu değeri doğrulamalıdır ve eşleşmezse belirteci reddeder. Hedef kitle, kaynak ile eşanlamlıdır. |
 | Veren | `iss` |`https://<tenant-name>.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Belirteci oluşturan ve döndüren güvenlik belirteci hizmetini (STS) belirler. Ayrıca, kullanıcının kimliğinin doğrulandığı dizini tanımlar. Uygulamanızın, uygun uç noktadan geldiğinden emin olmak için veren talebini doğrulaması gerekir. |
@@ -76,7 +76,7 @@ Aşağıdaki özellikler Azure AD B2C tarafından yayılan [güvenlik belirteçl
 
 - **Yenileme belirteci yaşam süresi (gün)** -yeni ERIŞIM veya kimlik belirteci almak için yenileme belirtecinin kullanılabileceği en uzun süre. Ayrıca, uygulamanıza kapsam verildiyse, zaman aralığı yeni bir yenileme belirteci almak da içerir `offline_access` . Varsayılan değer 14 gündür. En düşük (kapsamlı) bir gündür. Maksimum (dahil) 90 gündür.
 
-- **Yenileme belirteci kayan pencere ömrü (gün)** -bu süre dolduktan sonra, uygulama tarafından alınan en son yenileme belirtecinin geçerlilik süresi ne olursa olsun Kullanıcı yeniden kimlik doğrulaması zorlanır. Yalnızca, anahtar **sınırlanmış**olarak ayarlandıysa belirtilebilir. **Belirteç ömrü (gün)** değerinden büyük veya bu değere eşit olmalıdır. Anahtar **sınırsız**olarak ayarlandıysa, belirli bir değer belirtemezsiniz. Varsayılan değer 90 gündür. En düşük (kapsamlı) bir gündür. Maksimum (dahil) 365 gündür.
+- **Yenileme belirteci kayan pencere ömrü (gün)** -bu süre dolduktan sonra, uygulama tarafından alınan en son yenileme belirtecinin geçerlilik süresi ne olursa olsun Kullanıcı yeniden kimlik doğrulaması zorlanır. Yalnızca, anahtar **sınırlanmış** olarak ayarlandıysa belirtilebilir. **Belirteç ömrü (gün)** değerinden büyük veya bu değere eşit olmalıdır. Anahtar **sınırsız** olarak ayarlandıysa, belirli bir değer belirtemezsiniz. Varsayılan değer 90 gündür. En düşük (kapsamlı) bir gündür. Maksimum (dahil) 365 gündür.
 
 Aşağıdaki kullanım örnekleri şu özellikler kullanılarak etkinleştirilir:
 
@@ -89,11 +89,11 @@ Bu ayarlar, parola sıfırlama Kullanıcı akışları için kullanılamaz.
 
 Aşağıdaki özellikler, [belirteç uyumluluğunu yönetmek](configure-tokens.md)için kullanılır:
 
-- **Verenin (ISS) talebi** -bu özellik, belirteci veren Azure AD B2C kiracıyı tanımlar. Varsayılan değer: `https://<domain>/{B2C tenant GUID}/v2.0/`. Değeri, `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/` hem Azure AD B2C kiracının hem de belirteç isteğinde kullanılan Kullanıcı akışının kimliklerini içerir. Uygulamanızın veya kitaplığınızın [OpenID Connect Discovery 1,0 belirtiminde](https://openid.net/specs/openid-connect-discovery-1_0.html)uyumlu olması Azure AD B2C gerekiyorsa, bu değeri kullanın.
+- **Verenin (ISS) talebi** -bu özellik, belirteci veren Azure AD B2C kiracıyı tanımlar. `https://<domain>/{B2C tenant GUID}/v2.0/` varsayılan değerdir. Değeri, `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/` hem Azure AD B2C kiracının hem de belirteç isteğinde kullanılan Kullanıcı akışının kimliklerini içerir. Uygulamanızın veya kitaplığınızın [OpenID Connect Discovery 1,0 belirtiminde](https://openid.net/specs/openid-connect-discovery-1_0.html)uyumlu olması Azure AD B2C gerekiyorsa, bu değeri kullanın.
 
-- **Subject (Sub) talebi** -bu özellik, belirtecinin bilgi onaylarsa varlığı tanımlar. Varsayılan değer **ObjectID**'dir ve bu, `sub` belirteçteki TALEBI kullanıcının nesne kimliğiyle doldurur. **Desteklenmeyen** değer yalnızca geriye dönük uyumluluk için sağlanır. Mümkün olan en kısa sürede **ObjectID** 'ye geçmeniz önerilir.
+- **Subject (Sub) talebi** -bu özellik, belirtecinin bilgi onaylarsa varlığı tanımlar. Varsayılan değer **ObjectID** 'dir ve bu, `sub` belirteçteki TALEBI kullanıcının nesne kimliğiyle doldurur. **Desteklenmeyen** değer yalnızca geriye dönük uyumluluk için sağlanır. Mümkün olan en kısa sürede **ObjectID** 'ye geçmeniz önerilir.
 
-- **Ilke kimliğini temsil eden talep** -bu özellik, belirteç isteğinde kullanılan ilke adının doldurulduğu talep türünü tanımlar. Varsayılan değer: `tfp`. Değeri `acr` yalnızca geriye dönük uyumluluk için sağlanır.
+- **Ilke kimliğini temsil eden talep** -bu özellik, belirteç isteğinde kullanılan ilke adının doldurulduğu talep türünü tanımlar. `tfp` varsayılan değerdir. Değeri `acr` yalnızca geriye dönük uyumluluk için sağlanır.
 
 ## <a name="pass-through"></a>Geçiş
 
@@ -107,7 +107,7 @@ Bir belirteci doğrulamak için, uygulamanız hem imzayı hem de belirtecin tale
 
 ### <a name="validate-signature"></a>İmzayı Doğrula
 
-JWT üç bölüt, bir *üst bilgi*, *gövde*ve *imza*içerir. İmza segmenti, uygulamanızın güvenilebilmesi için belirtecin orijinalliğini doğrulamak üzere kullanılabilir. Azure AD B2C belirteçleri, RSA 256 gibi sektör standardı asimetrik şifreleme algoritmaları kullanılarak imzalanır.
+JWT üç bölüt, bir *üst bilgi* , *gövde* ve *imza* içerir. İmza segmenti, uygulamanızın güvenilebilmesi için belirtecin orijinalliğini doğrulamak üzere kullanılabilir. Azure AD B2C belirteçleri, RSA 256 gibi sektör standardı asimetrik şifreleme algoritmaları kullanılarak imzalanır.
 
 Belirtecin üst bilgisi, belirteci imzalamak için kullanılan anahtar ve şifreleme yöntemiyle ilgili bilgiler içerir:
 
@@ -121,7 +121,7 @@ Belirtecin üst bilgisi, belirteci imzalamak için kullanılan anahtar ve şifre
 
 **Algoritma** talebinin değeri, belirteci imzalamak için kullanılan algoritmadır. **Çocuk** talebinin değeri, belirteci imzalamak için kullanılan ortak anahtardır. Belirli bir zamanda Azure AD B2C, bir belirteci bir genel özel anahtar çiftleri kümesinden birini kullanarak imzalayabilirler. Azure AD B2C, olası anahtar kümesini düzenli aralıklarla döndürür. Bu anahtar değişikliklerini otomatik olarak işlemek için uygulamanızın yazılması gerekir. Her 24 saatte bir Azure AD B2C tarafından kullanılan ortak anahtarların güncelleştirmelerini denetlemek için makul bir sıklık. Beklenmeyen anahtar değişikliklerini işlemek için, uygulamanız beklenmeyen bir **KID** değeri alırsa ortak anahtarları yeniden almak üzere yazılmalıdır.
 
-Azure AD B2C bir OpenID Connect meta veri uç noktası vardır. Bu uç noktayı kullanarak, uygulamalar çalışma zamanında Azure AD B2C hakkında bilgi isteyebilir. Bu bilgiler uç noktaları, belirteç içerikleri ve belirteç imzalama anahtarlarını içerir. Azure AD B2C kiracınız her ilke için bir JSON meta veri belgesi içerir. Meta veri belgesi, çeşitli yararlı bilgi parçalarını içeren bir JSON nesnesidir. Meta veriler, belirteçleri imzalamak için kullanılan ortak anahtar kümesinin konumunu veren **jwks_uri**içerir. Bu konum burada sağlanır, ancak meta veri belgesi kullanarak konumu dinamik olarak getirmek ve **jwks_uri**ayrıştırmak en iyisidir:
+Azure AD B2C bir OpenID Connect meta veri uç noktası vardır. Bu uç noktayı kullanarak, uygulamalar çalışma zamanında Azure AD B2C hakkında bilgi isteyebilir. Bu bilgiler uç noktaları, belirteç içerikleri ve belirteç imzalama anahtarlarını içerir. Azure AD B2C kiracınız her ilke için bir JSON meta veri belgesi içerir. Meta veri belgesi, çeşitli yararlı bilgi parçalarını içeren bir JSON nesnesidir. Meta veriler, belirteçleri imzalamak için kullanılan ortak anahtar kümesinin konumunu veren **jwks_uri** içerir. Bu konum burada sağlanır, ancak meta veri belgesi kullanarak konumu dinamik olarak getirmek ve **jwks_uri** ayrıştırmak en iyisidir:
 
 ```
 https://contoso.b2clogin.com/contoso.onmicrosoft.com/b2c_1_signupsignin1/discovery/v2.0/keys
@@ -134,7 +134,7 @@ Kiracıdaki ilke için meta veri belgesi `B2C_1_signupsignin1` `contoso.onmicros
 https://contoso.b2clogin.com/contoso.onmicrosoft.com/b2c_1_signupsignin1/v2.0/.well-known/openid-configuration
 ```
 
-Bir belirteci imzalamak için kullanılan ilkeyi (ve meta verileri istemek için nereye gideceğini) anlamak için iki seçeneğiniz vardır. İlk olarak, ilke adı `acr` belirteçteki talebe dahil edilir. No Base-64, gövdenin gövdesinden dışarı kod çözmede ve sonuç olarak JSON dizesinin serisini kaldırarak bu talepleri ayrıştırdırabilirsiniz. `acr`Talep, belirteci vermek için kullanılan ilkenin adıdır. Diğer seçenek ise, `state` isteği keserken parametre değerindeki ilkeyi kodlamak ve sonra hangi ilkenin kullanıldığını anlamak için onu çözmeye yönelik olur. Her iki yöntem de geçerlidir.
+Bir belirteci imzalamak için kullanılan ilkeyi (ve meta verileri istemek için nereye gideceğini) anlamak için iki seçeneğiniz vardır. İlk olarak, ilke adı `tfp` belirteçte (varsayılan) veya `acr` talebe (yapılandırıldığı gibi) dahil edilir. No Base-64, gövdenin gövdesinden dışarı kod çözmede ve sonuç olarak JSON dizesinin serisini kaldırarak bu talepleri ayrıştırdırabilirsiniz. `tfp`Veya `acr` talebi, belirteci vermek için kullanılan ilkenin adıdır. Diğer seçenek ise, `state` isteği keserken parametre değerindeki ilkeyi kodlamak ve sonra hangi ilkenin kullanıldığını anlamak için onu çözmeye yönelik olur. Her iki yöntem de geçerlidir.
 
 İmza doğrulamanın nasıl gerçekleştirileceği hakkında bir açıklama bu belgenin kapsamı dışındadır. Bir belirteci doğrulamanızı sağlayacak pek çok açık kaynak kitaplığı mevcuttur.
 

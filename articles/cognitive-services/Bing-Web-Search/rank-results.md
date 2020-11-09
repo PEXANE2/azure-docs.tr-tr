@@ -11,23 +11,23 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: 6c328c681874ba171eab1341a16cf059e359feea
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 20501d0993cc4566a79d6e916d801911606bea35
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93076287"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380458"
 ---
 # <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>Bing Web Araması API'si sonuçlarını göstermek için derecelendirme kullanma  
 
 > [!WARNING]
-> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](/bing/search-apis/bing-web-search/create-bing-search-service-resource)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
 > Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
-> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
+> Geçiş yönergeleri için bkz. [Bing arama Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
-Her arama yanıtı, arama sonuçlarının nasıl görüntüleneceğini belirten bir [Rankingresponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) yanıtı içerir. Sıralama yanıtı, geleneksel bir arama sonuçları sayfası için ana hat içeriğine ve kenar çubuğu içeriğine göre sonuçları gruplandırır. Sonuçları geleneksel bir ana çizgi ve kenar çubuğu biçiminde görüntülemedikçe, ana hat içeriğini kenar çubuğu içeriğinden daha yüksek görünürlük sağlamanız gerekir.  
+Her arama yanıtı, arama sonuçlarının nasıl görüntüleneceğini belirten bir [Rankingresponse](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) yanıtı içerir. Sıralama yanıtı, geleneksel bir arama sonuçları sayfası için ana hat içeriğine ve kenar çubuğu içeriğine göre sonuçları gruplandırır. Sonuçları geleneksel bir ana çizgi ve kenar çubuğu biçiminde görüntülemedikçe, ana hat içeriğini kenar çubuğu içeriğinden daha yüksek görünürlük sağlamanız gerekir.  
 
-Her grup içinde (ana hat veya kenar çubuğu), [öğeler](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) dizisi içeriğin gösterilmesi gereken sırayı tanımlar. Her öğe, yanıt içindeki sonucu belirlemek için aşağıdaki iki yöntemi sağlar.  
+Her grup içinde (ana hat veya kenar çubuğu), [öğeler](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) dizisi içeriğin gösterilmesi gereken sırayı tanımlar. Her öğe, yanıt içindeki sonucu belirlemek için aşağıdaki iki yöntemi sağlar.  
 
 -   `answerType` ve `resultIndex` — `answerType` alan, yanıtı (örneğin, Web sayfası veya haberleri) tanımlar ve `resultIndex` Yanıt içinde bir sonuç tanımlar (örneğin, bir haber makalesi). Dizin sıfır tabanlıdır.  
 
@@ -35,11 +35,11 @@ Her grup içinde (ana hat veya kenar çubuğu), [öğeler](https://docs.microsof
 
 Yalnızca bir yanıtın KIMLIĞI veya sonuçlarından biri ile derecelendirme KIMLIĞINI eşleştirmek gerektiğinden, KIMLIĞI kullanmak daha basittir. Bir yanıt nesnesi bir alan içeriyorsa `id` , tüm yanıtın sonuçlarını birlikte görüntüleyin. Örneğin, `News` nesnesi `id` alanı içeriyorsa, tüm haber makalelerini birlikte görüntüleyin. `News`Nesne `id` alanını içermiyorsa, her haber makalesi bir `id` alan içerir ve derecelendirme yanıtı, haber makalelerini diğer yanıtların sonuçlarıyla karıştırır.  
 
-Ve kullanımı `answerType` `resultIndex` biraz daha karmaşıktır. `answerType`Görüntülenecek sonuçları içeren yanıtı tanımlamak için kullanırsınız. Bundan sonra, `resultIndex` görüntülenecek sonucu elde etmek için yanıtın sonuçlarını kullanarak dizin oluşturabilirsiniz. ( `answerType` Değer, [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) nesnesindeki alanın adıdır.) Tüm yanıtın sonuçlarını birlikte görüntülemesi gerekiyorsa, derecelendirme yanıtı öğesi `resultIndex` alanı içermez.  
+Ve kullanımı `answerType` `resultIndex` biraz daha karmaşıktır. `answerType`Görüntülenecek sonuçları içeren yanıtı tanımlamak için kullanırsınız. Bundan sonra, `resultIndex` görüntülenecek sonucu elde etmek için yanıtın sonuçlarını kullanarak dizin oluşturabilirsiniz. ( `answerType` Değer, [SearchResponse](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) nesnesindeki alanın adıdır.) Tüm yanıtın sonuçlarını birlikte görüntülemesi gerekiyorsa, derecelendirme yanıtı öğesi `resultIndex` alanı içermez.  
 
 ## <a name="ranking-response-example"></a>Derecelendirme yanıtı örneği
 
-Aşağıda bir [Rankingresponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)örneği gösterilmektedir. Web yanıtı bir `id` alan içermediğinden, tüm Web sayfalarını derecelendirmeden (her Web sayfasında bir alan içerir) ayrı ayrı görüntülerdiniz `id` . Ve görüntüler, videolar ve ilgili arama cevapları alanı içereceğinden `id` , Bu yanıtların her birinin sonucunu derecelendirmeden başlayarak birlikte görüntüleyebilirsiniz.
+Aşağıda bir [Rankingresponse](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)örneği gösterilmektedir. Web yanıtı bir `id` alan içermediğinden, tüm Web sayfalarını derecelendirmeden (her Web sayfasında bir alan içerir) ayrı ayrı görüntülerdiniz `id` . Ve görüntüler, videolar ve ilgili arama cevapları alanı içereceğinden `id` , Bu yanıtların her birinin sonucunu derecelendirmeden başlayarak birlikte görüntüleyebilirsiniz.
 
 ```json
 {  

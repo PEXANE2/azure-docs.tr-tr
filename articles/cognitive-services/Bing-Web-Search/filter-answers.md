@@ -11,12 +11,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
-ms.openlocfilehash: ad021b4d219353a6037988c164bb34cac6761682
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f4f001cdeb37ff760a01ac48d7efb41c0437fe5f
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078637"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380260"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>Arama yanıtının içerdiği yanıtları filtreleme  
 
@@ -56,7 +56,7 @@ Bing tarafından döndürülen yanıtları filtrelemek için API 'yi çağırır
 
 ### <a name="responsefilter"></a>ResponseFilter
 
-Bir yanıtın virgülle ayrılmış listesi olan [Responsefilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) sorgu parametresini kullanarak, Bing 'in yanıt (örneğin, görüntüler, videolar ve Haberler) içerdiği yanıt türlerini filtreleyebilirsiniz. Bir yanıt, Bing buna ait ilgili içeriği bulursa yanıta dahil edilir. 
+Bir yanıtın virgülle ayrılmış listesi olan [Responsefilter](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) sorgu parametresini kullanarak, Bing 'in yanıt (örneğin, görüntüler, videolar ve Haberler) içerdiği yanıt türlerini filtreleyebilirsiniz. Bir yanıt, Bing buna ait ilgili içeriği bulursa yanıta dahil edilir. 
 
 Görüntüler gibi yanıtlardan belirli yanıtları dışlamak için, `-` Yanıt türüne bir karakter ekleyin. Örneğin:
 
@@ -101,9 +101,9 @@ Aşağıda, bir önceki sorgunun yanıtı gösterilmektedir. Bing ilgili video v
 }
 ```
 
-Bing, önceki yanıtta video ve haber sonuçları döndürmese de, video ve haber içeriği yok demektir. Yalnızca sayfanın bu sayfada yer almamasıdır. Bununla birlikte, daha fazla sonuç [elde ederseniz,](./paging-webpages.md) sonraki sayfalar büyük olasılıkla bunları içerebilir. Ayrıca, [VIDEO arama API](../bing-video-search/search-the-web.md) ve [Haber Arama API](../bing-news-search/search-the-web.md) uç noktalarını doğrudan çağırırsanız, yanıt muhtemelen sonuçlar içerebilir.
+Bing, önceki yanıtta video ve haber sonuçları döndürmese de, video ve haber içeriği yok demektir. Yalnızca sayfanın bu sayfada yer almamasıdır. Bununla birlikte, daha fazla sonuç [elde ederseniz,](./paging-search-results.md) sonraki sayfalar büyük olasılıkla bunları içerebilir. Ayrıca, [VIDEO arama API](../bing-video-search/overview.md) ve [Haber Arama API](../bing-news-search/search-the-web.md) uç noktalarını doğrudan çağırırsanız, yanıt muhtemelen sonuçlar içerebilir.
 
-`responseFilter`Tek BIR API 'den sonuçları almak için kullanmanız önerilmez. Tek bir Bing API 'den içerik istiyorsanız, bu API 'YI doğrudan çağırın. Örneğin, yalnızca görüntüleri almak için Resim Arama API uç noktasına `https://api.cognitive.microsoft.com/bing/v7.0/images/search` veya diğer [görüntü](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#endpoints) uç noktalarından birine bir istek gönderin. Tek bir API 'nin çağrılması yalnızca performans nedenleriyle değil önemlidir, ancak içeriğe özgü API 'Ler daha zengin sonuçlar sunar. Örneğin, sonuçları filtrelemek için Web Araması API 'SI tarafından kullanılamayan filtreler kullanabilirsiniz.  
+`responseFilter`Tek BIR API 'den sonuçları almak için kullanmanız önerilmez. Tek bir Bing API 'den içerik istiyorsanız, bu API 'YI doğrudan çağırın. Örneğin, yalnızca görüntüleri almak için Resim Arama API uç noktasına `https://api.cognitive.microsoft.com/bing/v7.0/images/search` veya diğer [görüntü](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#endpoints) uç noktalarından birine bir istek gönderin. Tek bir API 'nin çağrılması yalnızca performans nedenleriyle değil önemlidir, ancak içeriğe özgü API 'Ler daha zengin sonuçlar sunar. Örneğin, sonuçları filtrelemek için Web Araması API 'SI tarafından kullanılamayan filtreler kullanabilirsiniz.  
 
 ### <a name="site"></a>Site
 
@@ -114,11 +114,11 @@ https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:con
 ```
 
 > [!NOTE]
-> Sorguya bağlı olarak, `site:` sorgu işlecini kullanırsanız, [Güvenli Arama](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#safesearch) ayarından bağımsız olarak, yanıtın yetişkinlere yönelik içerik içerebileceği ihtimaline sahip olabilirsiniz. `site:` işlecini yalnızca sitenin içeriği hakkında bilgi sahibiyseniz ve senaryonuz, yetişkinlere yönelik içeriğin mevcut olma ihtimalini destekliyorsa kullanın.
+> Sorguya bağlı olarak, `site:` sorgu işlecini kullanırsanız, [Güvenli Arama](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#safesearch) ayarından bağımsız olarak, yanıtın yetişkinlere yönelik içerik içerebileceği ihtimaline sahip olabilirsiniz. `site:` işlecini yalnızca sitenin içeriği hakkında bilgi sahibiyseniz ve senaryonuz, yetişkinlere yönelik içeriğin mevcut olma ihtimalini destekliyorsa kullanın.
 
 ### <a name="freshness"></a>Güncellik
 
-Web yanıt sonuçlarını, Bing 'in belirli bir dönemde bulduğu web sayfalarıyla sınırlamak için, [yenilik](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#freshness) sorgu parametresini şu büyük/küçük harf duyarsız değerlerden birine ayarlayın:
+Web yanıt sonuçlarını, Bing 'in belirli bir dönemde bulduğu web sayfalarıyla sınırlamak için, [yenilik](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#freshness) sorgu parametresini şu büyük/küçük harf duyarsız değerlerden birine ayarlayın:
 
 * `Day` — Son 24 saat içinde Bing tarafından bulunan Web sayfalarını döndürün
 * `Week` — Son 7 gün içinde Bing tarafından bulunan Web sayfalarını döndürün
@@ -152,7 +152,7 @@ Bing, JSON yanıtında birden çok yanıt türü döndürebilir. Örneğin, *yel
 }
 ```
 
-Bing 'in döndürdüğü yanıt sayısını en yüksek iki yanıt (Web sayfası ve resim) ile sınırlamak için [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) sorgu parametresini 2 olarak ayarlayın.
+Bing 'in döndürdüğü yanıt sayısını en yüksek iki yanıt (Web sayfası ve resim) ile sınırlamak için [answerCount](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) sorgu parametresini 2 olarak ayarlayın.
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&answerCount=2&mkt=en-us HTTP/1.1  
@@ -193,7 +193,7 @@ Yanıt yalnızca ve içerir `webPages` `images` .
 
 ## <a name="promoting-answers-that-are-not-ranked"></a>Derecelendirildi yanıtları yükseltme
 
-Bing 'in bir sorgu için döndürdüğü en üst dereceli yanıtlar, Web sayfaları, görüntüler, videolar ve Relatedaramalarıdır. bu yanıtlar, yanıt bu yanıtları içerir. [AnswerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) öğesini iki (2) olarak ayarlarsanız Bing, en üst iki dereceli yanıtı döndürür: Web sayfaları ve görüntüler. Bing 'in yanıta görüntü ve video içermesini istiyorsanız, [Yükselt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) sorgu parametresini belirtin ve bunları görüntüler ve videolar olarak ayarlayın.
+Bing 'in bir sorgu için döndürdüğü en üst dereceli yanıtlar, Web sayfaları, görüntüler, videolar ve Relatedaramalarıdır. bu yanıtlar, yanıt bu yanıtları içerir. [AnswerCount](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) öğesini iki (2) olarak ayarlarsanız Bing, en üst iki dereceli yanıtı döndürür: Web sayfaları ve görüntüler. Bing 'in yanıta görüntü ve video içermesini istiyorsanız, [Yükselt](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) sorgu parametresini belirtin ve bunları görüntüler ve videolar olarak ayarlayın.
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&answerCount=2&promote=images%2Cvideos&mkt=en-us HTTP/1.1  

@@ -1,6 +1,6 @@
 ---
-title: FHIR için Azure IoT Bağlayıcısı (önizleme) Ölçümlerini görüntüleme ve yapılandırma
-description: Bu makalede, FHıR (Önizleme) ölçümleri için Azure IoT bağlayıcısını görüntüleme ve yapılandırma açıklanmaktadır
+title: FHıR (Önizleme) ölçümleri için Azure IoT bağlayıcısını görüntüleme ve yapılandırma
+description: Bu makalede, FHıR (Önizleme) ölçümleri için Azure IoT bağlayıcısını görüntüleme ve yapılandırma açıklanmaktadır.
 services: healthcare-apis
 author: msjasteppe
 ms.service: healthcare-apis
@@ -8,73 +8,71 @@ ms.subservice: iomt
 ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: jasteppe
-ms.openlocfilehash: 1cdae789b8286be408735fff92e2de46e28ce514
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 9a4e2c4dfe8a9de28688afe0dd036cecb7ce2b39
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394297"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381227"
 ---
-# <a name="view-and-configure-azure-iot-connector-for-fhir-preview-metrics"></a>FHIR için Azure IoT Bağlayıcısı (önizleme) Ölçümlerini görüntüleme ve yapılandırma 
+# <a name="display-and-configure-azure-iot-connector-for-fhir-preview-metrics"></a>FHıR (Önizleme) ölçümleri için Azure IoT bağlayıcısını görüntüleme ve yapılandırma 
 
-Bu makalede, FHıR * ölçümleri için Azure IoT bağlayıcısını görüntüleme ve yapılandırma hakkında bilgi edineceksiniz. 
+Bu makalede, hızlı sağlık birlikte çalışabilirlik kaynakları (FHıR&#174;) * ölçümleri için Azure IoT bağlayıcısını görüntülemeyi ve yapılandırmayı öğreneceksiniz.
 
 > [!TIP]
-> Ölçüm verilerinin dışarı aktarılmasını ayarlamayı öğrenmek için [Tanılama ayarları aracılığıyla Azure IoT bağlayıcısını dışarı aktarma (Önizleme) ölçümlerinde](./iot-metrics-diagnostics-export.md) bulunan yönergeleri izleyin.
+> Ölçüm verilerinin dışarı aktarılmasını nasıl ayarlayacağınızı öğrenmek için [Tanılama ayarları aracılığıyla FHIR (Önizleme) Için Azure IoT bağlayıcısını dışarı aktarma](./iot-metrics-diagnostics-export.md)bölümündeki yönergeleri izleyin.
 
-## <a name="view-metrics-for-azure-iot-connector-for-fhir-preview"></a>FHıR için Azure IoT Bağlayıcısı ölçümlerini görüntüleme (Önizleme)
-1. IoT bağlayıcılarının ölçümlerini görüntülemek için Azure portal Azure API 'nizi seçin. 
+## <a name="display-metrics-for-azure-iot-connector-for-fhir-preview"></a>FHıR için Azure IoT Bağlayıcısı için ölçümleri görüntüleme (Önizleme)
 
-2. **Ölçümlere** git 
+1. Azure portal oturum açın ve ardından FHıR hizmeti için Azure API 'nizi seçin. 
+
+2. Sol bölmede **ölçümler** ' i seçin. 
 
 3. **IoT Bağlayıcısı** sekmesini seçin.
 
-   :::image type="content" source="media/iot-metrics-display/iot-metrics-main.png" alt-text="IoT Connector1" lightbox="media/iot-metrics-display/iot-metrics-main.png"::: 
+   :::image type="content" source="media/iot-metrics-display/iot-metrics-main.png" alt-text="Gelen ve normalleştirilmiş ileti sayısını görüntüleyen çizgi grafikleriyle ' IoT Bağlayıcısı ' bölmesinin ekran görüntüsü." lightbox="media/iot-metrics-display/iot-metrics-main.png"::: 
 
-4. Ölçümlerini görüntülemek için bir IoT Bağlayıcısı seçin (örneğin: FHıR hizmeti için bu Azure API 'siyle ilişkili olan (4) IoT bağlayıcıları vardır).
+4. Ölçümlerini görüntülemek için bir IoT Bağlayıcısı seçin. Örneğin, FHıR hizmeti için bu Azure API 'siyle ilişkili dört IoT Bağlayıcısı ( *bağlayıcı 1* , *bağlayıcı 2* vb.) vardır.
 
-   :::image type="content" source="media/iot-metrics-display/iot-metrics-select-connector.png" alt-text="IoT Connector2" lightbox="media/iot-metrics-display/iot-metrics-select-connector.png"::: 
+   :::image type="content" source="media/iot-metrics-display/iot-metrics-select-connector.png" alt-text="IoT Bağlayıcısı sekmeleri 1, 2, 3 ve 4 görüntüleyen ' IoT Bağlayıcısı ' bölmesinin ekran görüntüsü." lightbox="media/iot-metrics-display/iot-metrics-select-connector.png"::: 
 
-> [!NOTE]
-> **Özel** sekme, IoT Bağlayıcısı ölçümlerini görüntülemek için belirli zaman/tarih birleşimleri oluşturulmasına olanak sağlar.
+5. Göstermek istediğiniz IoT Bağlayıcısı ölçümlerinin zaman aralığını (örneğin, **1 saat** , **24 saat** , **7 gün** veya **özel** ) seçin. **Özel** sekmesini seçerek, IoT Bağlayıcısı ölçümlerini görüntülemek için belirli zaman/tarih kombinasyonları oluşturabilirsiniz.
 
-5. Görüntülenecek IoT Bağlayıcısı ölçümlerinin zaman dilimini seçin (örneğin, 1 saat, 24 saat, 7 gün veya özel).
-
-   :::image type="content" source="media/iot-metrics-display/iot-metrics-select-time.png" alt-text="IoT Connector3" lightbox="media/iot-metrics-display/iot-metrics-select-time.png"::: 
+   :::image type="content" source="media/iot-metrics-display/iot-metrics-select-time.png" alt-text="' Bağlayıcı 1 ' için bir ' 1 saat ' zaman aralığı çizgi grafiği görüntüleyen ' IoT Bağlayıcısı ' bölmesinin ekran görüntüsü." lightbox="media/iot-metrics-display/iot-metrics-select-time.png"::: 
  
-## <a name="metrics-types-for-azure-iot-connector-for-fhir-preview"></a>FHıR için Azure IoT Bağlayıcısı için ölçüm türleri (Önizleme) 
-Görüntülenen IoT Bağlayıcısı ölçümleri aşağıdaki gibidir:
+## <a name="metric-types-for-azure-iot-connector-for-fhir-preview"></a>FHıR için Azure IoT Bağlayıcısı için ölçüm türleri (Önizleme) 
+
+Görüntülenebilecek IoT Bağlayıcısı ölçümleri aşağıdaki tabloda listelenmiştir:
 
 |Ölçüm türü|Ölçüm amacı| 
 |-----------|--------------|
-|Gelen Ileti sayısı|Alınan ham gelen ileti sayısı (örneğin: cihaz olayları).|
-|Normalleştirilmiş Ileti sayısı|Normalleştirilmiş iletilerin sayısı.|
-|Ileti grubu sayısı|Belirlenen zaman penceresinde iletileri toplanan grupların sayısı.|
-|Ortalama normalleştirilmiş aşama gecikmesi|Normalleştirme aşamasının ortalama gecikme süresi. Normalleştir, ham gelen iletilerde normalleştirmeyi gerçekleştirmaktır.|
-|Ortalama Grup aşaması gecikmesi|Grup aşamasının ortalama gecikme süresi. Grup aşaması, normalleştirilmiş iletilerde arabelleğe alma, toplama ve gruplandırma gerçekleştirmaktır.| 
-|Toplam hata sayısı|Toplam hata sayısı.| 
+|Gelen Ileti sayısı|Alınan ham gelen ileti sayısını (örneğin, cihaz olayları) görüntüler.|
+|Normalleştirilmiş Ileti sayısı|Normalleştirilmiş ileti sayısını görüntüler.|
+|Ileti grubu sayısı|Belirlenen zaman penceresinde toplanmış iletileri olan grup sayısını görüntüler.|
+|Ortalama normalleştirilmiş aşama gecikmesi|Normalleştirilmiş aşamanın ortalama gecikme süresini görüntüler. Normalleştirilmiş aşama, ham gelen iletilerde normalleştirmeyi gerçekleştirir.|
+|Ortalama Grup aşaması gecikmesi|Grup aşamasının ortalama gecikme süresini görüntüler. Grup aşaması, normalleştirilmiş iletileri arabelleğe alma, toplama ve gruplama işlemlerini gerçekleştirir.| 
+|Toplam hata sayısı|Toplam hata sayısını görüntüler.| 
 
-## <a name="focusing-and-configuring-azure-iot-connector-for-fhir-preview-metrics"></a>FHıR (Önizleme) ölçümleri için Azure IoT bağlayıcısını odaklama ve yapılandırma
-Bu örnekte, **gelen ileti** ölçümlerinin sayısına odaklanacağız.
+## <a name="focus-on-and-configure-azure-iot-connector-for-fhir-preview-metrics"></a>FHıR (Önizleme) ölçümleri için Azure IoT bağlayıcısını odaklayın ve yapılandırın
+
+Bu örnekte, **gelen ileti** ölçümünün sayısına odaklanalım.
 
 1. Odaklanmak istediğiniz zaman bir nokta seçin.
 
-   :::image type="content" source="media/iot-metrics-display/iot-metrics-focus.png" alt-text="IoT Connector4" lightbox="media/iot-metrics-display/iot-metrics-focus.png"::: 
+   :::image type="content" source="media/iot-metrics-display/iot-metrics-focus.png" alt-text="' Gelen Ileti sayısı ' ölçüm bölmesinin, çizgi grafiğinde tek bir zaman noktasını vurgulayan ekran görüntüsü." lightbox="media/iot-metrics-display/iot-metrics-focus.png"::: 
 
-2. Bu ekrandan, daha fazla özelleştirme için **ölçüm ekleyebilir** , **filtre ekleyebilir** ve **bölme uygulayabilirsiniz** . 
+2. **Gelen Ileti sayısı** bölmesinde ölçüm **Ekle** , **Filtre Ekle** veya **bölmeyi Uygula** ' yı seçerek ölçümü daha fazla özelleştirebilirsiniz. 
 
-   :::image type="content" source="media/iot-metrics-display/iot-metrics-add-options.png" alt-text="IoT Connector5" lightbox="media/iot-metrics-display/iot-metrics-add-options.png"::: 
+   :::image type="content" source="media/iot-metrics-display/iot-metrics-add-options.png" alt-text="' Ölçüm Ekle, ' ' Filtre Ekle, ' ve ' bölmeyi Uygula ' düğmelerini vurgulayan ' gelen Ileti sayısı ' ölçüm bölmesinin ekran görüntüsü." lightbox="media/iot-metrics-display/iot-metrics-add-options.png"::: 
 
 ## <a name="conclusion"></a>Sonuç 
-Veri düzlemi ölçümlerine erişim sağlamak, izleme ve sorun giderme için gereklidir.  FHıR için Azure IoT Bağlayıcısı, bu işlemleri ölçümler aracılığıyla yapma konusunda yardımcı olur. 
+Veri düzlemi ölçümlerine erişim sağlamak, izleme ve sorun giderme için gereklidir. FHıR için Azure IoT Bağlayıcısı, bu işlemleri ölçümler aracılığıyla size yardımcı olur. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-FHıR için Azure IoT Bağlayıcısı hakkında sık sorulan sorulara göz atın.
+FHıR için Azure IoT Bağlayıcısı hakkında sık sorulan soruların yanıtlarını alın.
 
 >[!div class="nextstepaction"]
->[FHıR SSS için Azure IoT Bağlayıcısı](fhir-faq.md)
+>[FHıR için Azure IoT Bağlayıcısı SSS](fhir-faq.md)
 
-* Azure portal, FHıR için Azure IoT Bağlayıcısı, IoT Bağlayıcısı (Önizleme) olarak adlandırılır.
-
-FHIR, HL7’nin kayıtlı ticari markasıdır ve HL7’nin izniyle kullanılır.
+* Azure portal, FHıR için Azure IoT Bağlayıcısı, IoT Bağlayıcısı (Önizleme) olarak adlandırılır. FHıR, HL7 'in tescilli ticari markasıdır ve HL7 izniyle kullanılır. 

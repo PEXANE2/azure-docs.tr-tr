@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: c67ef6ddcd709dea8727a67100607bfc4f8cc8f6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 392bb46d481df1f872b9a61beffed9e5b46f4dc5
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099853"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379846"
 ---
 # <a name="video-search-api-upgrade-guide"></a>Video Arama API Yükseltme Kılavuzu
 
@@ -76,11 +76,10 @@ Engellendi|Invalidrequest. engellendi
 
 ### <a name="query-parameters"></a>Sorgu parametreleri
 
-- `modulesRequested`Sorgu parametresi [modüller](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested)olarak yeniden adlandırıldı.  
+- `modulesRequested`Sorgu parametresi [modüller](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested)olarak yeniden adlandırıldı.  
 
 ### <a name="object-changes"></a>Nesne değişiklikleri
 
-- `nextOffsetAddCount` [Videoların](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) alanı olarak yeniden adlandırıldı `nextOffset` . Sapmayı kullanma yönteminiz de değişmiştir. Daha önce, [fark](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) sorgu parametresini `nextOffset` değere ve önceki fark değerine ve sonuç içindeki videoların sayısına göre ayarlamanız gerekir. Şimdi, `offset` sorgu parametresini değere ayarlamanız yeterlidir `nextOffset` .  
+- `nextOffsetAddCount` [Videoların](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) alanı olarak yeniden adlandırıldı `nextOffset` . Sapmayı kullanma yönteminiz de değişmiştir. Daha önce, [fark](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) sorgu parametresini `nextOffset` değere ve önceki fark değerine ve sonuç içindeki videoların sayısına göre ayarlamanız gerekir. Şimdi, `offset` sorgu parametresini değere ayarlamanız yeterlidir `nextOffset` .  
   
-- Alanın veri türü, `relatedVideos` öğesinden `Video[]` [videosmodule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videosmodule) olarak değiştirildi (bkz. [videodetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails)).
-
+- Alanın veri türü, `relatedVideos` öğesinden `Video[]` [videosmodule](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videosmodule) olarak değiştirildi (bkz. [videodetails](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails)).

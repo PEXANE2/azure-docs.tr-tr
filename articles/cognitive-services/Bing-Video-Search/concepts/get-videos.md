@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: 8074b2411a053c8b55457f9ace716481f6b107a5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2fab4a57a939f9516140562cb8b8508b2ba69dc0
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102233"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379897"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Bing Video Arama API'si videoları arayın
 
@@ -44,13 +44,13 @@ Tüm isteklerin bir sunucudan yapılması gerekir.
 
 Bing API'lerinden birini ilk kez çağırıyorsanız istemci kimliği üst bilgisini eklemeyin. İstemci kimliğini yalnızca önceden bir Bing API'sini çağırdıysanız ve Bing, kullanıcı ve cihaz birleşimi için bir istemci kimliği döndürdüyse dahil edin.
 
-Belirli bir etki alanındaki videoları almak için [site:](https://msdn.microsoft.com/library/ff795613.aspx) dize işlecini kullanın.
+Belirli bir etki alanındaki videoları almak için [site:](/previous-versions/bing/search/ff795613(v=msdn.10)) dize işlecini kullanın.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
 ```
 
-Yanıt, Bing'in sorguyla ilişkili olduğunu düşündüğü videoları bir listesini içeren [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) yanıtı içerir. Listedeki her [Video](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video) nesneyi videonun URL’sini, süresini, boyutlarını, kodlama biçimini ve diğer özniteliklerini içerir. Video nesnesi aynı zamanda video küçük resminin URL'sini ve küçük resmin boyutlarını içerir.
+Yanıt, Bing'in sorguyla ilişkili olduğunu düşündüğü videoları bir listesini içeren [Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) yanıtı içerir. Listedeki her [Video](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video) nesneyi videonun URL’sini, süresini, boyutlarını, kodlama biçimini ve diğer özniteliklerini içerir. Video nesnesi aynı zamanda video küçük resminin URL'sini ve küçük resmin boyutlarını içerir.
 
 ```json
 {
@@ -103,9 +103,9 @@ Yanıt, Bing'in sorguyla ilişkili olduğunu düşündüğü videoları bir list
 
 ## <a name="video-thumbnails"></a>Video küçük resimleri
 
-Bing Video Arama API'si tarafından döndürülen video küçük resimlerinin tümünü veya bir alt kümesini görüntüleyebilirsiniz. Alt küme görüntülerseniz kullanıcıya kalan videoları görüntüleme seçeneği sunun. Bing API [kullanımı ve görüntüleme gereksinimlerinin](../UseAndDisplayRequirements.md)bir parçası olarak, Videoları yanıtta belirtilen sırada görüntülerinizin olması gerekir. Küçük resmi yeniden boyutlandırma hakkında bilgi için bkz. [Küçük Resimleri Yeniden Boyutlandırma ve Kırpma](../../bing-web-search/resize-and-crop-thumbnails.md). 
+Bing Video Arama API'si tarafından döndürülen video küçük resimlerinin tümünü veya bir alt kümesini görüntüleyebilirsiniz. Alt küme görüntülerseniz kullanıcıya kalan videoları görüntüleme seçeneği sunun. Bing API [kullanımı ve görüntüleme gereksinimlerinin](../../bing-web-search/use-display-requirements.md)bir parçası olarak, Videoları yanıtta belirtilen sırada görüntülerinizin olması gerekir. Küçük resmi yeniden boyutlandırma hakkında bilgi için bkz. [Küçük Resimleri Yeniden Boyutlandırma ve Kırpma](../../bing-web-search/resize-and-crop-thumbnails.md). 
 
-Kullanıcı küçük resmin üzerine geldiğinde videonun küçük resim bir sürümünü oynatmak için [motionThumbnailUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-motionthumbnailurl) kullanabilirsiniz. Hareket küçük resmini görüntülediğinizde öznitelik belirlediğinizden emin olun.
+Kullanıcı küçük resmin üzerine geldiğinde videonun küçük resim bir sürümünü oynatmak için [motionThumbnailUrl](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-motionthumbnailurl) kullanabilirsiniz. Hareket küçük resmini görüntülediğinizde öznitelik belirlediğinizden emin olun.
 
 <!-- Removing until the images can be sanitized.
 ![Motion thumbnail of a video](../bing-web-search/media/cognitive-services-bing-web-api/bing-web-video-motion-thumbnail.PNG)
@@ -113,27 +113,27 @@ Kullanıcı küçük resmin üzerine geldiğinde videonun küçük resim bir sü
 
 Küçük resme tıklandığında, videoyu görüntülemek için üç seçenek vardır:
 
-- Videoyu konak web sitesinde (örneğin YouTube) görüntülemek için [hostPageUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-hostpageurl) kullanın
-- Videoyu Bing video tarayıcısında görüntülemek için [webSearchUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-websearchurl) kullanın
-- Videoyu kendi deneyiminize eklemek için [embdedHtml](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-embedhtml) kullanın 
+- Videoyu konak web sitesinde (örneğin YouTube) görüntülemek için [hostPageUrl](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-hostpageurl) kullanın
+- Videoyu Bing video tarayıcısında görüntülemek için [webSearchUrl](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-websearchurl) kullanın
+- Videoyu kendi deneyiminize eklemek için [embdedHtml](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-embedhtml) kullanın 
 
 Videoyu oynatırken yayımcı ve oluşturucu özniteliklerini kullandığınızdan emin olun.
 
-Video hakkında öngörüler almak için [videoId](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-videoid) kullanma hakkında daha fazla bilgi için bkz. [Video Öngörüleri](../video-insights.md).
+Video hakkında öngörüler almak için [videoId](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-videoid) kullanma hakkında daha fazla bilgi için bkz. [Video Öngörüleri](../video-insights.md).
 
 ## <a name="filtering-videos"></a>Videoları filtreleme
 
 Video Arama API'si varsayılan olarak sorguyla ilgili tüm videoları döndürür. Yalnızca ücretsiz videolar veya uzunluğu beş dakikayı aşmayan videolar istiyorsanız, aşağıdaki filtre sorgu parametrelerini kullanırsınız:
 
-- [fiyatlandırma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing) &mdash; Videoları fiyatlandırmaya göre filtreleyin (örneğin, ücretsiz olan veya için ödeme yapmanız gereken videolar)
-- [çözüm](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution) &mdash; Videoları çözünürlüğe göre filtreleyin (örneğin, 720p veya daha yüksek çözünürlüklü videolar)
-- [Videouzunluğu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength) &mdash; Videoları video uzunluğuna göre filtreleyin (örneğin, beş dakikadan kısa bir süre içinde olan videolar)
-- [yenilik](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness) &mdash; Videoları yaş (örneğin, son hafta içinde Bing tarafından bulunan videolar) olarak filtreleyin
+- [fiyatlandırma](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing) &mdash; Videoları fiyatlandırmaya göre filtreleyin (örneğin, ücretsiz olan veya için ödeme yapmanız gereken videolar)
+- [çözüm](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution) &mdash; Videoları çözünürlüğe göre filtreleyin (örneğin, 720p veya daha yüksek çözünürlüklü videolar)
+- [Videouzunluğu](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength) &mdash; Videoları video uzunluğuna göre filtreleyin (örneğin, beş dakikadan kısa bir süre içinde olan videolar)
+- [yenilik](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness) &mdash; Videoları yaş (örneğin, son hafta içinde Bing tarafından bulunan videolar) olarak filtreleyin
 
-Belirli bir etki alanındaki videoları almak için sorgu dizesine [site:](https://msdn.microsoft.com/library/ff795613.aspx) dize işlecini ekleyin.
+Belirli bir etki alanındaki videoları almak için sorgu dizesine [site:](/previous-versions/bing/search/ff795613(v=msdn.10)) dize işlecini ekleyin.
 
 > [!NOTE]
-> Sorguya bağlı olarak `site:` sorgu işlecini kullanmanız halinde [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#safesearch) ayarından bağımsız olarak yanıtta yetişkinlere yönelik içerik bulunabilir. `site:` işlecini yalnızca sitenin içeriği hakkında bilgi sahibiyseniz ve senaryonuz, yetişkinlere yönelik içeriğin mevcut olma ihtimalini destekliyorsa kullanın.
+> Sorguya bağlı olarak `site:` sorgu işlecini kullanmanız halinde [safeSearch](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#safesearch) ayarından bağımsız olarak yanıtta yetişkinlere yönelik içerik bulunabilir. `site:` işlecini yalnızca sitenin içeriği hakkında bilgi sahibiyseniz ve senaryonuz, yetişkinlere yönelik içeriğin mevcut olma ihtimalini destekliyorsa kullanın.
 
 Aşağıdaki örnekte ContosoSailing.com adresinden 720p veya daha iyi çözünürlüğe sahip ve Bing’in geçen ay içinde bulduğu ücretsiz videoların nasıl alındığı gösterilmektedir.
 
@@ -149,7 +149,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="expanding-the-query"></a>Sorguyu genişletme
 
-Bing özgün aramayı daraltmak için sorguyu genişletebiliyorsa [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) nesnesi `queryExpansions` alanını içerir. Örneğin, sorgu *Boşluk Temizleme* ise, genişletilmiş sorgular şunlar olabilir: Boşluk Temizleme **Araçları** , **Sıfırdan** Boşluk Temizleme, Boşluk Temizleme **Makinesi** ve **Kolay** Boşluk Temizleme.
+Bing özgün aramayı daraltmak için sorguyu genişletebiliyorsa [Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) nesnesi `queryExpansions` alanını içerir. Örneğin, sorgu *Boşluk Temizleme* ise, genişletilmiş sorgular şunlar olabilir: Boşluk Temizleme **Araçları** , **Sıfırdan** Boşluk Temizleme, Boşluk Temizleme **Makinesi** ve **Kolay** Boşluk Temizleme.
 
 Aşağıdaki örnekte *Boşluk Temizleme* için genişletilmiş sorgular gösterilmektedir.
 
@@ -176,11 +176,11 @@ Aşağıdaki örnekte *Boşluk Temizleme* için genişletilmiş sorgular göster
 }
 ```
 
-`queryExpansions` alanı [Query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query_obj) nesnelerinin listesini içerir. `text` alanı genişletilmiş sorguyu, `displayText` alanı ise genişletme terimini içerir. Metin ve küçük resim alanlarını kullanarak genişletilmiş sorgu dizelerini kullanıcıya gösterebilir ve kullanıcının bu genişletilmiş sorgu dizelerinden seçim yapmasını sağlayabilirsiniz. `webSearchUrl` URL veya `searchLink` URL kullanarak küçük resmi ve metni tıklanabilir hale getirebilirsiniz. `webSearchUrl` kullanarak kullanıcıyı Bing arama sonuçlarına gönderebilir veya `searchLink` ile kendi sonuç sayfanızı sunabilirsiniz.
+`queryExpansions` alanı [Query](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query_obj) nesnelerinin listesini içerir. `text` alanı genişletilmiş sorguyu, `displayText` alanı ise genişletme terimini içerir. Metin ve küçük resim alanlarını kullanarak genişletilmiş sorgu dizelerini kullanıcıya gösterebilir ve kullanıcının bu genişletilmiş sorgu dizelerinden seçim yapmasını sağlayabilirsiniz. `webSearchUrl` URL veya `searchLink` URL kullanarak küçük resmi ve metni tıklanabilir hale getirebilirsiniz. `webSearchUrl` kullanarak kullanıcıyı Bing arama sonuçlarına gönderebilir veya `searchLink` ile kendi sonuç sayfanızı sunabilirsiniz.
 
 ## <a name="pivoting-the-query"></a>Sorguyu özetleme
 
-Bing özgün arama sorgusunu parçalara ayırabiliyorsa [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) nesnesi `pivotSuggestions` alanını içerir. Örneğin, özgün sorgu *Boşluk Temizleme* ise Bing bunu *Boşluk* ve *Temizleme* olmak üzere ikiye bölebilir.
+Bing özgün arama sorgusunu parçalara ayırabiliyorsa [Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) nesnesi `pivotSuggestions` alanını içerir. Örneğin, özgün sorgu *Boşluk Temizleme* ise Bing bunu *Boşluk* ve *Temizleme* olmak üzere ikiye bölebilir.
 
 Aşağıdaki örnekte *Boşluk Temizleme* için öneri özetleri gösterilmektedir.
 
@@ -227,7 +227,7 @@ Aşağıdaki örnekte *Boşluk Temizleme* için öneri özetleri gösterilmekted
 }
 ```
 
-Her bir özet terim için gelen yanıtta önerilen sorguları içeren [Query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query_obj) nesnelerinin listesi yer alır. `text` alanı önerilen sorguyu, `displayText` alanı ise özgün sorguda özetin yerine kullanılan terimi içerir. Örneğin, Pencere Temizleme.
+Her bir özet terim için gelen yanıtta önerilen sorguları içeren [Query](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query_obj) nesnelerinin listesi yer alır. `text` alanı önerilen sorguyu, `displayText` alanı ise özgün sorguda özetin yerine kullanılan terimi içerir. Örneğin, Pencere Temizleme.
 
 `text` ve `thumbnail` alanlarını kullanarak genişletilmiş sorgu dizelerini kullanıcıya gösterebilir ve kullanıcının bu genişletilmiş sorgu dizelerinden seçim yapmasını sağlayabilirsiniz. `webSearchUrl` URL veya `searchLink` URL kullanarak küçük resmi ve metni tıklanabilir hale getirebilirsiniz. `webSearchUrl` kullanarak kullanıcıyı Bing arama sonuçlarına gönderebilir veya `searchLink` ile kendi sonuç sayfanızı sunabilirsiniz.
 

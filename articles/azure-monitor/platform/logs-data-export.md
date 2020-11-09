@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 972c32b5403a7e6f614161271b7cb7e88693e032
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 54d5fdf1f6bc905482186475302901c46de0d285
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335103"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380135"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Izleyici 'de çalışma alanı verilerini dışarı aktarma Log Analytics (Önizleme)
 Azure Izleyici 'de Log Analytics çalışma alanı verileri dışarı aktarma işlemi, Log Analytics çalışma alanınızdaki seçili tablolardan verileri sürekli olarak bir Azure depolama hesabına veya Azure Event Hubs toplanarak dışarı aktaralmanıza olanak sağlar. Bu makalede, bu özellik hakkında ayrıntılar ve çalışma alanlarınızdaki veri dışarı aktarmayı yapılandırma adımları sağlanmaktadır.
@@ -58,7 +58,7 @@ Log Analytics çalışma alanı verileri dışarı aktarma bir Log Analytics ça
 ## <a name="data-completeness"></a>Veri bütünlüğü
 Verilerin dışarı aktarılması, hedefin kullanılamaz durumda olması durumunda 30 dakikaya kadar veri göndermeyi yeniden denemeye devam edecektir. 30 dakika sonra hala kullanılamıyorsa, veriler hedef kullanılabilir olana kadar atılır.
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>Maliyet
 Şu anda veri dışa aktarma özelliği için ek ücret alınmaz. Veri dışa aktarma fiyatlandırması gelecekte duyurulacaktır ve faturalandırma başlamadan önce bir uyarı verilir. Bildirim süresinden sonra veri dışa aktarmayı kullanmaya devam etmeyi seçerseniz, ilgili ücret üzerinden faturalandırılırsınız.
 
 ## <a name="export-destinations"></a>Hedefleri dışarı aktar
@@ -325,7 +325,6 @@ Desteklenen tablolar şu anda aşağıda belirtilenler ile sınırlıdır. Kıs�
 | Containerımageınventory | |
 | Containerınventory | |
 | ContainerLog | |
-| ContainerLog | |
 | Containernodeınventory | |
 | ContainerServiceLog | |
 | CoreAzureBackup | |
@@ -343,7 +342,6 @@ Desteklenen tablolar şu anda aşağıda belirtilenler ile sınırlıdır. Kıs�
 | DnsInventory | |
 | Dynamics365Activity | |
 | Olay | Kısmi destek. Bu tabloya ait verilerden bazıları depolama hesabı üzerinden alınır. Bu veriler şu anda dışarıya aktarılmamış. |
-| ExchangeAssessmentRecommendation | |
 | ExchangeAssessmentRecommendation | |
 | FailedIngestion | |
 | FunctionAppLogs | |

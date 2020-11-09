@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 6bcfb9057739277c1f57b5ebd98b99877f759e9b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8362f5b4d3436e83cbd033fcc3cd088d52122b58
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094107"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379863"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Hızlı başlangıç: Bing Video Arama REST API ve PHP kullanarak video arama
 
@@ -36,7 +36,7 @@ Bu uygulama PHP 'de yazılmış olsa da, API birçok programlama dili ile uyumlu
 
 ## <a name="running-the-application"></a>Uygulamayı çalıştırma
 
-[Bing Video Arama API'si](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) Bing arama motorundan video sonuçları döndürür.
+[Bing Video Arama API'si](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) Bing arama motorundan video sonuçları döndürür.
 
 1. `php.ini` `;extension=php_openssl.dll` Aşağıdaki kodda açıklandığı gibi, satırı açıklama ekleyerek DOSYANıZDA güvenli http desteğini etkinleştirin.
 2. Sık kullandığınız IDE veya düzenleyicide yeni bir PHP projesi oluşturun.

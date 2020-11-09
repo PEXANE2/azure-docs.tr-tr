@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: 68cde1be5f1a1cb0e8757f3143cac9363c6d9ddd
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 5759cd80278d20ee383fbe5922e43d250babe09f
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376041"
+ms.locfileid: "94380683"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Hızlı başlangıç: Soru-Cevap Oluşturma bilgi bankasını oluşturma, eğitme ve yayımlama
 
@@ -117,7 +117,7 @@ Düzenlemelerinizi kaydetmek ve Soru-Cevap Oluşturma eğitmeniz için sağ üst
 
 ## <a name="test-the-knowledge-base"></a>Bilgi Bankası 'nı test etme
 
-# <a name="qnamaker-v1"></a>[QnAMaker v1](#tab/v1)
+# <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
 
 1. Soru-Cevap Oluşturma portalında, sağ üst köşedeki **Test** ' i seçerek yaptığınız değişikliklerin etkili olduğunu test edin.
 2. Metin kutusuna bir örnek Kullanıcı sorgusu girin.
@@ -130,7 +130,7 @@ Düzenlemelerinizi kaydetmek ve Soru-Cevap Oluşturma eğitmeniz için sağ üst
 
 4. **Test panelini kapatmak** Için yeniden **Test** ' i seçin.
 
-# <a name="qnamaker-v2-preview"></a>[QnAMaker v2 (Önizleme)](#tab/v2)
+# <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
 
 1. Soru-Cevap Oluşturma portalında, sağ üst köşedeki **Test** ' i seçerek yaptığınız değişikliklerin etkili olduğunu test edin.
 2. Metin kutusuna bir örnek Kullanıcı sorgusu girin.

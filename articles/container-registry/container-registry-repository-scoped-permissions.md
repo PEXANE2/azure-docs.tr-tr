@@ -3,12 +3,12 @@ title: Azure Container Registry içindeki depoların izinleri
 description: Bir Premium kayıt defterindeki belirli depolara kapsamlı, görüntü çekmek veya göndermek veya başka eylemler gerçekleştirmek için izinler içeren bir belirteç oluşturun
 ms.topic: article
 ms.date: 05/27/2020
-ms.openlocfilehash: 8661ff2e320788d3899ae16dd3bee7d3ff662caa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b65b1bf69337cb172a17043490a5d13c7bd7afc2
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84509415"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381244"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Depo kapsamlı izinlerle belirteç oluşturma
 
@@ -32,7 +32,7 @@ Bu özellik **Premium** kapsayıcı kayıt defteri hizmet katmanında kullanıla
 
 ## <a name="concepts"></a>Kavramlar
 
-Depo kapsamındaki izinleri yapılandırmak için, ilişkili *kapsam haritasına*sahip bir *belirteç* oluşturursunuz. 
+Depo kapsamındaki izinleri yapılandırmak için, ilişkili *kapsam haritasına* sahip bir *belirteç* oluşturursunuz. 
 
 * Oluşturulan bir parolayla birlikte bir **belirteç** , kullanıcının kayıt defteriyle kimlik doğrulamasını sağlar. Belirteç parolası için bir sona erme tarihi ayarlayabilir veya bir belirteci dilediğiniz zaman devre dışı bırakabilirsiniz.  
 
@@ -150,19 +150,19 @@ Belirteçleri ve kapsam eşlemelerini oluşturmak için Azure portal kullanabili
 Aşağıdaki örnek bir belirteç oluşturur ve depo üzerinde aşağıdaki izinlerle bir kapsam haritası oluşturur `samples/hello-world` : `content/write` ve `content/read` .
 
 1. Portalda kapsayıcı Kayıt defterinize gidin.
-1. **Depo izinleri**altında **belirteçler (Önizleme) > + Ekle**' yi seçin.
+1. **Depo izinleri** altında **belirteçler (Önizleme) > + Ekle** ' yi seçin.
 
       :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-add.png" alt-text="Portalda belirteç oluşturma":::
 1. Bir belirteç adı girin.
-1. **Kapsam eşlemesi**altında **Yeni oluştur**' u seçin.
+1. **Kapsam eşlemesi** altında **Yeni oluştur** ' u seçin.
 1. Kapsam eşlemesini yapılandırma:
     1. Kapsam eşlemesi için bir ad ve açıklama girin. 
-    1. **Depolar**' ın altında `samples/hello-world` , ve **izinler**altında, ve ' ı seçin `content/read` `content/write` . Ardından **+ Ekle**' yi seçin.  
+    1. **Depolar** ' ın altında `samples/hello-world` , ve **izinler** altında, ve ' ı seçin `content/read` `content/write` . Ardından **+ Ekle** ' yi seçin.  
 
-        :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-scope-map-add.png" alt-text="Portalda belirteç oluşturma":::
+        :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-scope-map-add.png" alt-text="Portalda kapsam haritası oluşturma":::
 
     1. Depoları ve izinleri ekledikten sonra, kapsam eşlemesini eklemek için **Ekle** ' yi seçin.
-1. **Etkin** ' in varsayılan belirteç **durumunu** kabul edin ve **Oluştur**' u seçin.
+1. **Etkin** ' in varsayılan belirteç **durumunu** kabul edin ve **Oluştur** ' u seçin.
 
 Belirteç doğrulandıktan ve oluşturulduktan sonra, **belirteçler** ekranında belirteç ayrıntıları görüntülenir.
 
@@ -171,12 +171,12 @@ Belirteç doğrulandıktan ve oluşturulduktan sonra, **belirteçler** ekranınd
 Portalda oluşturulan bir belirteci kullanmak için bir parola oluşturmanız gerekir. Bir veya iki parola oluşturabilir ve her biri için bir sona erme tarihi ayarlayabilirsiniz. 
 
 1. Portalda kapsayıcı Kayıt defterinize gidin.
-1. **Depo izinleri**altında **belirteçler (Önizleme)** öğesini seçin ve bir belirteç seçin.
-1. Belirteç ayrıntılarında **Parola1** veya **paSsWorD2**' yi seçin ve Oluştur simgesini seçin.
-1. Parola ekranında, isteğe bağlı olarak parola için bir sona erme tarihi ayarlayın ve **Oluştur**' u seçin. Sona erme tarihi ayarlamanız önerilir.
+1. **Depo izinleri** altında **belirteçler (Önizleme)** öğesini seçin ve bir belirteç seçin.
+1. Belirteç ayrıntılarında **Parola1** veya **paSsWorD2** ' yi seçin ve Oluştur simgesini seçin.
+1. Parola ekranında, isteğe bağlı olarak parola için bir sona erme tarihi ayarlayın ve **Oluştur** ' u seçin. Sona erme tarihi ayarlamanız önerilir.
 1. Parola oluşturduktan sonra güvenli bir konuma kopyalayın ve kaydedin. Ekran kapatıldıktan sonra oluşturulan bir parolayı alamazsınız, ancak yeni bir tane oluşturabilirsiniz.
 
-    :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-password.png" alt-text="Portalda belirteç oluşturma":::
+    :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-password.png" alt-text="Portalda belirteç parolası oluşturma":::
 
 ## <a name="authenticate-with-token"></a>Belirteç ile kimlik doğrulama
 
@@ -204,7 +204,7 @@ Aşağıdaki örneklerde, `hello-world` `alpine` Docker Hub 'ından ve resimleri
 docker pull hello-world
 docker pull alpine
 docker tag hello-world myregistry.azurecr.io/samples/hello-world:v1
-docker tag hello-world myregistry.azurecr.io/samples/alpine:v1
+docker tag alpine myregistry.azurecr.io/samples/alpine:v1
 ```
 
 ### <a name="authenticate-using-token"></a>Belirteç kullanarak kimlik doğrulama
@@ -259,9 +259,9 @@ az acr scope-map update \
 Azure portalında:
 
 1. Kapsayıcı Kayıt defterinize gidin.
-1. **Depo izinleri**altında **kapsam haritaları ' nı (Önizleme)** seçin ve güncelleştirilecek kapsam eşlemesini seçin.
-1. **Depolar**' ın altında `samples/alpine` , ve **izinler**altında, ve ' ı seçin `content/read` `content/write` . Ardından **+ Ekle**' yi seçin.
-1. **Depolar**' ın altında, `samples/hello-world` **izinler**' i seçin ve sonra seçimini kaldırın `content/write` . Ardından **Kaydet**’i seçin.
+1. **Depo izinleri** altında **kapsam haritaları ' nı (Önizleme)** seçin ve güncelleştirilecek kapsam eşlemesini seçin.
+1. **Depolar** ' ın altında `samples/alpine` , ve **izinler** altında, ve ' ı seçin `content/read` `content/write` . Ardından **+ Ekle** ' yi seçin.
+1. **Depolar** ' ın altında, `samples/hello-world` **izinler** ' i seçin ve sonra seçimini kaldırın `content/write` . Sonra **Kaydet** 'i seçin.
 
 Kapsam eşlemesini güncelleştirdikten sonra, şu gönderim başarılı olur:
 
@@ -397,7 +397,7 @@ az acr token update --name MyToken --registry myregistry \
   --scope-map MyNewScopeMap
 ```
 
-Portalda, **belirteçler (Önizleme)** ekranında belirteci seçin ve **Kapsam haritası**altında farklı bir kapsam Haritası seçin.
+Portalda, **belirteçler (Önizleme)** ekranında belirteci seçin ve **Kapsam haritası** altında farklı bir kapsam Haritası seçin.
 
 > [!TIP]
 > Yeni bir kapsam eşlemesiyle bir belirteci güncelleştirdikten sonra yeni belirteç parolaları oluşturmak isteyebilirsiniz. [Az ACR Token Credential Generate][az-acr-token-credential-generate] komutunu kullanın veya Azure Portal belirteç parolasını yeniden oluşturun.
@@ -413,7 +413,7 @@ az acr token update --name MyToken --registry myregistry \
   --status disabled
 ```
 
-Portalda **belirteçler (Önizleme)** ekranındaki belirteci seçin ve **durum**' un altında **devre dışı** ' yı seçin.
+Portalda **belirteçler (Önizleme)** ekranındaki belirteci seçin ve **durum** ' un altında **devre dışı** ' yı seçin.
 
 Kimlik bilgilerini kullanan herkes tarafından erişimi kalıcı olarak geçersiz kılmak üzere bir belirteci silmek için [az ACR Token Delete][az-acr-token-delete] komutunu çalıştırın. 
 
@@ -421,7 +421,7 @@ Kimlik bilgilerini kullanan herkes tarafından erişimi kalıcı olarak geçersi
 az acr token delete --name MyToken --registry myregistry
 ```
 
-Portalda **belirteçler (Önizleme)** ekranındaki belirteci seçin ve **at**' ı seçin.
+Portalda **belirteçler (Önizleme)** ekranındaki belirteci seçin ve **at** ' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 4db81571fe4b77382ccf269351ddbf46ef5f06e2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c19aca20b1b5dff53630c0b51c75689394ad3d53
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93076716"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381091"
 ---
 # <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>Hızlı başlangıç: bir Azure bilişsel hizmeti olan Bing Web Araması REST API web 'de aramak için Java kullanın
 
@@ -31,7 +31,7 @@ Bu hızlı başlangıçta, Bing Web Araması API'si ilk çağrısını yapmak i�
 
 Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız olacaktır:
 
-* [JDK 7 veya 8](https://aka.ms/azure-jdks)
+* [JDK 7 veya 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 * [Gson kitaplığı](https://github.com/google/gson)
 * Abonelik anahtarı
 
@@ -333,4 +333,4 @@ Bing Web Araması API'si yanıtları JSON biçiminde döndürülür. Bu örnek y
 > [!div class="nextstepaction"]
 > [Bing Web Araması API'si tek sayfalı uygulama öğreticisi](../tutorial-bing-web-search-single-page-app.md)
 
-[!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]  
+[!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

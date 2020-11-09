@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/15/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 52615a968ce831a9a5a487f7422ad13bc58ecf6d
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9dfdbbd982503acc063ff88c74dfccde8677eaac
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426477"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380241"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Azure dosyaları performans sorunlarını giderme
 
@@ -26,15 +26,11 @@ Bir dosya paylaşımının ıOPS, giriş veya çıkış sınırlarına ulaşıld
 
 Paylaşımınızın kısıtlandığından emin olmak için, portalda Azure ölçümlerinden yararlanabilirsiniz.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Azure portal depolama hesabınıza gidin.
 
-1. **Tüm hizmetler** ' i seçin ve ardından **ölçümler**' i arayın.
+1. Sol taraftaki menüde, **izleme** altında **ölçümler** ' i seçin.
 
-1. **Ölçümler**’i seçin.
-
-1. Kaynak olarak depolama hesabınızı seçin.
-
-1. Ölçüm ad alanı olarak **Dosya** ' yı seçin.
+1. Depolama hesabı kapsamınız için ölçüm ad alanı olarak **Dosya** ' yı seçin.
 
 1. Ölçüm olarak **işlemler** ' i seçin.
 
@@ -54,7 +50,7 @@ Paylaşımınızın kısıtlandığından emin olmak için, portalda Azure ölç
 
 İsteklerinizin çoğunluğu meta veri merkezli ise (CreateFile/OpenFile/CloseFile/QueryInfo/querydirectory gibi), okuma/yazma işlemlerine kıyasla gecikme daha kötüleşmeyecektir.
 
-İsteklerinizin çoğunun meta veri merkezli olup olmadığını doğrulamak için yukarıdaki adımlardan aynı adımları kullanabilirsiniz. **ResponseType**için bir filtre eklemek yerine, **API adı**için bir filtre ekleyin.
+İsteklerinizin çoğunun meta veri merkezli olup olmadığını doğrulamak için yukarıdaki adımlardan aynı adımları kullanabilirsiniz. **ResponseType** için bir filtre eklemek yerine, **API adı** için bir filtre ekleyin.
 
 ![Ölçümlerinizin API adı için filtre](media/storage-troubleshooting-premium-fileshares/MetadataMetrics.png)
 
@@ -103,7 +99,7 @@ Bu, Linux üzerinde SMB istemcisinin uygulanmasıyla ilgili bilinen bir sorundur
 
 - Yükü birden çok VM arasında yayın.
 - Aynı VM 'de, **nosharesock** seçeneğiyle birden çok bağlama noktası kullanın ve yükü bu bağlama noktalarına yayın.
-- Linux 'ta, her **fsync** çağrısında SMB temizlemeyi zormaktan kaçınmak için **nostrictsync** seçeneğiyle bağlamayı deneyin. Azure dosyaları için bu seçenek veri tutarlılığını engellemez, ancak dizin listelemesi (**ls-l** komutu) üzerinde eski dosya meta verileri oluşmasına neden olabilir. Dosya meta verilerinin (**stat** komutu) doğrudan sorgulanması en güncel dosya meta verilerini döndürür.
+- Linux 'ta, her **fsync** çağrısında SMB temizlemeyi zormaktan kaçınmak için **nostrictsync** seçeneğiyle bağlamayı deneyin. Azure dosyaları için bu seçenek veri tutarlılığını engellemez, ancak dizin listelemesi ( **ls-l** komutu) üzerinde eski dosya meta verileri oluşmasına neden olabilir. Dosya meta verilerinin ( **stat** komutu) doğrudan sorgulanması en güncel dosya meta verilerini döndürür.
 
 ## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Kapsamlı açık/kapalı işlemleri içeren meta veriler ağır iş yükleri için yüksek gecikme süreleri.
 
@@ -114,7 +110,7 @@ Dizin kiraları için destek eksikliği yok.
 ### <a name="workaround"></a>Geçici çözüm
 
 - Mümkünse, kısa bir süre içinde aynı dizinde aşırı açma/kapatma tanıtıcısından kaçının.
-- Linux VM 'Ler için, bir bağlama seçeneği olarak **actimeo = \<sec> ** belirterek Dizin girişi önbellek zaman aşımını artırın. Bu, varsayılan olarak bir saniyedir ve üç ya da beş gibi daha büyük bir değer yardımcı olabilir.
+- Linux VM 'Ler için, bir bağlama seçeneği olarak **actimeo = \<sec>** belirterek Dizin girişi önbellek zaman aşımını artırın. Bu, varsayılan olarak bir saniyedir ve üç ya da beş gibi daha büyük bir değer yardımcı olabilir.
 - Linux sanal makineleri için, çekirdeği 4,20 veya daha yüksek bir sürüme yükseltin.
 
 ## <a name="low-iops-on-centosrhel"></a>CentOS/RHEL üzerinde düşük ıOPS
@@ -176,29 +172,29 @@ GÇ yoğun iş yükleri için Azure dosyalarına erişirken beklenen gecikme sü
 ## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>Dosya paylaşma kısıtlandığında uyarı oluşturma
 
 1. **Azure Portal** **depolama hesabınıza** gidin.
-2. Izleme bölümünde **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı**' na tıklayın.
-3. **Kaynağı Düzenle**' ye tıklayın, depolama hesabı için **dosya kaynağı türünü** seçin ve **bitti**' ye tıklayın. Örneğin, depolama hesabı adı contoso ise, contoso/dosya kaynağını seçin.
+2. Izleme bölümünde **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı** ' na tıklayın.
+3. **Kaynağı Düzenle** ' ye tıklayın, depolama hesabı için **dosya kaynağı türünü** seçin ve **bitti** ' ye tıklayın. Örneğin, depolama hesabı adı contoso ise, contoso/dosya kaynağını seçin.
 4. Koşul eklemek için **Koşul Seç** ' e tıklayın.
 5. Depolama hesabı için desteklenen sinyallerin bir listesini göreceksiniz, **işlem** ölçümünü seçin.
-6. **Sinyal mantığını Yapılandır** dikey penceresinde **Boyut adı** açılan düğmesine tıklayın ve **yanıt türü**' nü seçin.
+6. **Sinyal mantığını Yapılandır** dikey penceresinde **Boyut adı** açılan düğmesine tıklayın ve **yanıt türü** ' nü seçin.
 7. **Boyut değerleri** açılan listesi ' ne tıklayın ve **başarılı olarak daraltma** (SMB Için) veya **CLIENTKıSıTLAR lingerror** (REST için) öğesini seçin.
 
-  > [!NOTE]
-  > Başarılı bir kısıtlama veya Clientazaltıngerror boyut değeri listelenmiyorsa bu, kaynağın kısıtlanmadığını gösterir. Boyut değerini eklemek için **boyut değerleri** açılan listesi ' nin yanına **özel değer Ekle** ' ye tıklayın, başarılı ' i **daraltma** veya **clientkısıtınror**yazın, **Tamam** ' a tıklayın ve ardından #7 adımını tekrarlayın.
+   > [!NOTE]
+   > Başarılı bir kısıtlama veya Clientazaltıngerror boyut değeri listelenmiyorsa bu, kaynağın kısıtlanmadığını gösterir. Boyut değerini eklemek için **boyut değerleri** açılan listesi ' nin yanına **özel değer Ekle** ' ye tıklayın, başarılı ' i **daraltma** veya **clientkısıtınror** yazın, **Tamam** ' a tıklayın ve ardından #7 adımını tekrarlayın.
 
-8. **Boyut adı** açılan düğmesine tıklayın ve **dosya paylaşma**' yı seçin.
+8. **Boyut adı** açılan düğmesine tıklayın ve **dosya paylaşma** ' yı seçin.
 9. **Boyut değerleri** açılan düğmesine tıklayın ve uyarı vermek istediğiniz dosya paylaşımları seçin.
 
-  > [!NOTE]
-  > Dosya paylaşımında standart bir dosya paylaşımınız varsa, **tüm geçerli ve gelecekteki değerleri**seçin. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından boyut değerleri açılır listesi dosya paylaşımlarını listelemiyor. Depolama hesabı içindeki herhangi bir dosya paylaşımı kısıtlanırsa ve uyarı hangi dosya paylaşımının kısıtlanmadığını tanımlamıyorsa standart dosya paylaşımları için azaltma uyarıları tetiklenecektir. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından, her depolama hesabı için bir dosya paylaşımının olması önerilir.
+   > [!NOTE]
+   > Dosya paylaşımında standart bir dosya paylaşımınız varsa, **tüm geçerli ve gelecekteki değerleri** seçin. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından boyut değerleri açılır listesi dosya paylaşımlarını listelemiyor. Depolama hesabı içindeki herhangi bir dosya paylaşımı kısıtlanırsa ve uyarı hangi dosya paylaşımının kısıtlanmadığını tanımlamıyorsa standart dosya paylaşımları için azaltma uyarıları tetiklenecektir. Standart dosya paylaşımları için paylaşım başına ölçümler kullanılamadığından, her depolama hesabı için bir dosya paylaşımının olması önerilir.
 
-10. **Uyarı parametrelerini** tanımlayın (eşik değeri, işleç, toplama ayrıntı düzeyi ve değerlendirme sıklığı) ve **bitti**' ye tıklayın.
+10. **Uyarı parametrelerini** tanımlayın (eşik değeri, işleç, toplama ayrıntı düzeyi ve değerlendirme sıklığı) ve **bitti** ' ye tıklayın.
 
-  > [!TIP]
-  > Statik bir eşik kullanıyorsanız, ölçüm grafiği dosya paylaşımının kısıtlandığı durumlarda makul bir eşik değeri belirlemesine yardımcı olabilir. Dinamik bir eşik kullanıyorsanız, ölçüm grafiği, hesaplanan eşikleri son verilere göre görüntüler.
+    > [!TIP]
+    > Statik bir eşik kullanıyorsanız, ölçüm grafiği dosya paylaşımının kısıtlandığı durumlarda makul bir eşik değeri belirlemesine yardımcı olabilir. Dinamik bir eşik kullanıyorsanız, ölçüm grafiği, hesaplanan eşikleri son verilere göre görüntüler.
 
 11. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir **eylem grubu** (e-posta, SMS, vb.) eklemek için **Eylem grubunu Seç** ' e tıklayın.
-12. Uyarı **kuralı adı**, **Açıklama** ve **önem derecesi**gibi **uyarı ayrıntılarını** girin.
+12. Uyarı **kuralı adı** , **Açıklama** ve **önem derecesi** gibi **uyarı ayrıntılarını** girin.
 13. Uyarı oluşturmak için **Uyarı kuralı oluştur** ' a tıklayın.
 
 Azure Izleyici 'de uyarıları yapılandırma hakkında daha fazla bilgi edinmek için bkz. [Microsoft Azure uyarılara genel bakış]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
@@ -206,30 +202,30 @@ Azure Izleyici 'de uyarıları yapılandırma hakkında daha fazla bilgi edinmek
 ## <a name="how-to-create-alerts-if-a-premium-file-share-is-trending-towards-being-throttled"></a>Premium dosya paylaşımının kısıtlanıyor olması durumunda uyarı oluşturma
 
 1. **Azure Portal** **depolama hesabınıza** gidin.
-2. Izleme bölümünde **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı**' na tıklayın.
-3. **Kaynağı Düzenle**' ye tıklayın, depolama hesabı için **dosya kaynağı türünü** seçin ve **bitti**' ye tıklayın. Örneğin, depolama hesabı adı contoso ise, contoso/dosya kaynağını seçin.
+2. Izleme bölümünde **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı** ' na tıklayın.
+3. **Kaynağı Düzenle** ' ye tıklayın, depolama hesabı için **dosya kaynağı türünü** seçin ve **bitti** ' ye tıklayın. Örneğin, depolama hesabı adı contoso ise, contoso/dosya kaynağını seçin.
 4. Koşul eklemek için **Koşul Seç** ' e tıklayın.
 5. Depolama hesabı için desteklenen sinyallerin bir listesini göreceksiniz, **Çıkış** ölçümünü seçin.
 
-  > [!NOTE]
-  > Giriş, çıkış veya Işlemler ayarladığınız eşik miktarını aştığında uyarılmak için 3 ayrı uyarı oluşturmanız gerekir. Bunun nedeni, uyarının yalnızca tüm koşulların karşılandığı zaman tetiklenir. Bu nedenle tüm koşulları tek bir uyarıya yerleştirirseniz, giriş, çıkış ve Işlem eşik miktarları aşıldıysa yalnızca uyarı alırsınız.
+   > [!NOTE]
+   > Giriş, çıkış veya Işlemler ayarladığınız eşik miktarını aştığında uyarılmak için 3 ayrı uyarı oluşturmanız gerekir. Bunun nedeni, uyarının yalnızca tüm koşulların karşılandığı zaman tetiklenir. Bu nedenle tüm koşulları tek bir uyarıya yerleştirirseniz, giriş, çıkış ve Işlem eşik miktarları aşıldıysa yalnızca uyarı alırsınız.
 
-6. Aşağı kaydırın. **Boyut adı** açılan düğmesine tıklayın ve **dosya paylaşma**' yı seçin.
+6. Aşağı kaydırın. **Boyut adı** açılan düğmesine tıklayın ve **dosya paylaşma** ' yı seçin.
 7. **Boyut değerleri** açılan düğmesine tıklayın ve uyarı vermek istediğiniz dosya paylaşımları seçin.
-8. **Uyarı parametrelerini** tanımlayın (eşik değeri, işleç, toplama ayrıntı düzeyi ve değerlendirme sıklığı) ve **bitti**' ye tıklayın.
+8. **Uyarı parametrelerini** tanımlayın (eşik değeri, işleç, toplama ayrıntı düzeyi ve değerlendirme sıklığı) ve **bitti** ' ye tıklayın.
 
-  > [!NOTE]
-  > Çıkış, giriş ve Işlem ölçümleri dakika başına yapılır, ancak saniye başına çıkış, giriş ve ıOPS sağlanmış olmasına rağmen. (toplama ayrıntı düzeyi hakkında konuşur-dakikada > = daha gürültülü, fark olanı seçin) Bu nedenle, örneğin, sağlanan çıkış, 90 MIB/saniye ise ve eşiğin sağlanan çıkış için %80 olmasını istiyorsanız, aşağıdaki uyarı parametrelerini seçmelisiniz: **eşik değeri**için 75497472, **işleç**için büyük veya eşittir, **toplama türü**için Ortalama. Uyarının ne kadar gürültülü olmasını istediğinize bağlı olarak, toplama ayrıntı düzeyi ve değerlendirme sıklığı için seçilecek değerleri seçebilirsiniz. Örneğin, uyarımın bir saatin zaman diliminde ortalama giriş bölümüne bakması ve uyarı Kuralımın her saat içinde çalıştırılmasını istiyorum ise, **toplama ayrıntı düzeyi** için 1 saat ve **değerlendirme sıklığı**1 saat ' i seçiyorum.
+   > [!NOTE]
+   > Çıkış, giriş ve Işlem ölçümleri dakika başına yapılır, ancak saniye başına çıkış, giriş ve ıOPS sağlanmış olmasına rağmen. (toplama ayrıntı düzeyi hakkında konuşur-dakikada > = daha gürültülü, fark olanı seçin) Bu nedenle, örneğin, sağlanan çıkış, 90 MIB/saniye ise ve eşiğin sağlanan çıkış için %80 olmasını istiyorsanız, aşağıdaki uyarı parametrelerini seçmelisiniz: **eşik değeri** için 75497472, **işleç** için büyük veya eşittir, **toplama türü** için Ortalama. Uyarının ne kadar gürültülü olmasını istediğinize bağlı olarak, toplama ayrıntı düzeyi ve değerlendirme sıklığı için seçilecek değerleri seçebilirsiniz. Örneğin, uyarımın bir saatin zaman diliminde ortalama giriş bölümüne bakması ve uyarı Kuralımın her saat içinde çalıştırılmasını istiyorum ise, **toplama ayrıntı düzeyi** için 1 saat ve **değerlendirme sıklığı** 1 saat ' i seçiyorum.
 
 9. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir **eylem grubu** (e-posta, SMS, vb.) eklemek için **Eylem grubunu Seç** ' e tıklayın.
-10. Uyarı **kuralı adı**, **Açıklama** ve **önem derecesi**gibi **uyarı ayrıntılarını** girin.
+10. Uyarı **kuralı adı** , **Açıklama** ve **önem derecesi** gibi **uyarı ayrıntılarını** girin.
 11. Uyarı oluşturmak için **Uyarı kuralı oluştur** ' a tıklayın.
 
-  > [!NOTE]
-  > Premium dosya paylaşımınızın, sağlanan giriş nedeniyle kısıtlanmak üzere yakın olması durumunda bildirim almak için, lütfen 5. adım ' da olduğu gibi, **Giriş ölçümünü seçin** .
+    > [!NOTE]
+    > Premium dosya paylaşımınızın, sağlanan giriş nedeniyle kısıtlanmak üzere yakın olması durumunda bildirim almak için, lütfen 5. adım ' da olduğu gibi, **Giriş ölçümünü seçin** .
 
-  > [!NOTE]
-  > Premium dosya paylaşımınızın, sağlanan ıOPS nedeniyle kısıtlanmak üzere yakın olması durumunda, bazı değişiklikler yapmanız gerekir. 5. adımda, bunun yerine **işlem** ölçümünü seçin. Ayrıca, 10. adım için, **toplama türü** için tek seçenek Toplam ' dur. Bu nedenle, eşik değeri seçtiğiniz toplama ayrıntı düzeyine bağlı olacaktır. Örneğin, eşiğin sağlanan temel ıOPS 'nin %80 ' i olmasını istediyseniz ve **toplama ayrıntı düzeyi**için 1 saat seçtiniz, **eşik DEĞERI** taban çizgisi IOPS (bayt cinsinden) x 0,8 x 3600 olacaktır. Bu değişikliklerin yanı sıra, yukarıda listelenen adımların aynısını izleyin. 
+    > [!NOTE]
+    > Premium dosya paylaşımınızın, sağlanan ıOPS nedeniyle kısıtlanmak üzere yakın olması durumunda, bazı değişiklikler yapmanız gerekir. 5. adımda, bunun yerine **işlem** ölçümünü seçin. Ayrıca, 10. adım için, **toplama türü** için tek seçenek Toplam ' dur. Bu nedenle, eşik değeri seçtiğiniz toplama ayrıntı düzeyine bağlı olacaktır. Örneğin, eşiğin sağlanan temel ıOPS 'nin %80 ' i olmasını istediyseniz ve **toplama ayrıntı düzeyi** için 1 saat seçtiniz, **eşik DEĞERI** taban çizgisi IOPS (bayt cinsinden) x 0,8 x 3600 olacaktır. Bu değişikliklerin yanı sıra, yukarıda listelenen adımların aynısını izleyin. 
 
 Azure Izleyici 'de uyarıları yapılandırma hakkında daha fazla bilgi edinmek için bkz. [Microsoft Azure uyarılara genel bakış]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
 

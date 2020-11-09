@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/26/2020
 ms.author: thomasge
-ms.openlocfilehash: d34505b1f36d6de77e2bb1df9aa98b7a14b5f44d
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: fdbef15bb7831fedd7c375d565e0cde10f9b9a9e
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171943"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380441"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS tarafından yönetilen Azure Active Directory tümleştirme
 
@@ -22,20 +22,13 @@ Küme yöneticileri, Kubernetes rol tabanlı erişim denetimini (RBAC) bir kulla
 
 [Azure Active Directory tümleştirme kavramları belgelerindeki](concepts-identity.md#azure-active-directory-integration)Azure AD tümleştirme akışı hakkında daha fazla bilgi edinin.
 
-## <a name="region-availability"></a>Bölge kullanılabilirliği
-
-AKS tarafından yönetilen Azure Active Directory tümleştirme, [aks 'in desteklendiği](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)Genel bölgelerde kullanılabilir.
-
-* Azure Kamu Şu anda desteklenmiyor.
-* Azure Çin 21Vianet Şu anda desteklenmemektedir.
-
 ## <a name="limitations"></a>Sınırlamalar 
 
 * AKS tarafından yönetilen Azure AD tümleştirmesi devre dışı bırakılamaz
 * AKS tarafından yönetilen Azure AD tümleştirmesi için RBAC özellikli olmayan kümeler desteklenmez
 * AKS tarafından yönetilen Azure AD tümleştirmesi ile ilişkili Azure AD kiracısı 'nin değiştirilmesi desteklenmiyor
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure CLı sürüm 2.11.0 veya üzeri
 * En düşük [1.18.1](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1181) veya [kubelogin](https://github.com/Azure/kubelogin) sürümü ile kubectl

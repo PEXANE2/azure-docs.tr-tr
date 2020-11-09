@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 1b750554ec231cddd0403c89a33f2af4349ff188
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b6d9ec0760cc8d95f712cfc7a5478de1a99465ef
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099006"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379880"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Öğretici: Tek sayfalı Video Arama uygulaması
 
@@ -47,7 +47,7 @@ Bu öğretici uygulaması şunları gösteriyor:
 
 Öğretici sayfası tamamen bağımsızdır; dışarıdan hiçbir kare, stil sayfası veya resim dosyası kullanmaz. Yalnızca yaygın olarak desteklenen JavaScript dilinin özelliklerini kullanır ve tüm önemli Web tarayıcılarının geçerli sürümlerinde çalışır.
 
-Bu öğreticide, kaynak kodun seçilen bölümlerini açıklıyoruz. [Kaynak kodun](tutorial-bing-video-search-single-page-app-source.md) tamamı sağlanır. Örneği çalıştırmak için, kaynak kodu kopyalayıp bir metin düzenleyiciye yapıştırın ve `bing.html` olarak kaydedin.
+Bu öğreticide, kaynak kodun seçilen bölümlerini açıklıyoruz. [Kaynak kodun]() tamamı sağlanır. Örneği çalıştırmak için, kaynak kodu kopyalayıp bir metin düzenleyiciye yapıştırın ve `bing.html` olarak kaydedin.
 
 ## <a name="app-components"></a>Uygulama bileşenleri
 Tüm tek sayfalı Web uygulamaları gibi bu öğreticinin uygulaması da üç bölümden oluşur:
@@ -263,7 +263,7 @@ function handleOnLoad() {
 
 > [!IMPORTANT]
 > Arama işleminde hata oluşursa, Bing Haber Arama API'si 200 olmayan bir HTTP durum kodu döndürür ve JSON yanıtına hata bilgilerini ekler. Buna ek olarak, istekte hız sınırlaması varsa API boş yanıt döndürür.
-Başarılı bir HTTP isteği, aramanın kendisinin başarılı olduğu anlamına *gelmeyebilir* . 
+Başarılı bir HTTP isteği, aramanın kendisinin başarılı olduğu anlamına *gelmeyebilir*. 
 
 Önceki işlevlerin ikisinde de kodun büyük bölümü hata işlemeye ayrılmıştır. Şu aşamalarda hata oluşabilir:
 

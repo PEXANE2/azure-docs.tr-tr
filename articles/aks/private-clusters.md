@@ -4,22 +4,22 @@ description: Özel bir Azure Kubernetes hizmeti (AKS) kümesi oluşturmayı öğ
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 4ebc5e44f491b5ff5950a13771fe3d7179b6fc9f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5c45c01e34c4663657dbeee803fe0bb5cdae6a3c
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143090"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380581"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Özel bir Azure Kubernetes hizmet kümesi oluşturma
 
-Özel bir kümede, denetim düzlemi veya API sunucusu, [Özel Internetler belgesi Için RFC1918-Address ayırması](https://tools.ietf.org/html/rfc1918) içinde tanımlanan iç IP adreslerine sahiptir. Özel bir küme kullanarak, API sunucunuz ve düğüm havuzlarınız arasındaki ağ trafiğinin yalnızca özel ağ üzerinde kalmasını sağlayabilirsiniz.
+Özel kümede, denetim düzlemi veya API sunucusu, [özel Internet belgesi Için RFC1918-Address ayırması](https://tools.ietf.org/html/rfc1918) içinde tanımlanan iç IP adreslerine sahiptir. Özel bir küme kullanarak, API sunucunuz ve düğüm havuzlarınız arasındaki ağ trafiğinin yalnızca özel ağ üzerinde kalmasını sağlayabilirsiniz.
 
 Denetim düzlemi veya API sunucusu, Azure Kubernetes hizmeti (AKS) tarafından yönetilen bir Azure aboneliğinde bulunur. Müşterinin kümesi veya düğüm havuzu müşterinin aboneliğine ait. Sunucu ve küme veya düğüm havuzu, API sunucusu sanal ağındaki [Azure özel bağlantı hizmeti][private-link-service] ve müşterinin aks kümesinin alt ağında kullanıma sunulan özel bir uç nokta aracılığıyla birbirleriyle iletişim kurabilir.
 
 ## <a name="region-availability"></a>Bölge kullanılabilirliği
 
-Özel küme, [aks 'in desteklendiği](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)Genel bölgelerde kullanılabilir.
+Özel küme, [aks 'in desteklendiği](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)Genel bölgelerde, Azure Kamu 'Da ve Azure Çin 21Vianet bölgelerinde kullanılabilir.
 
 > [!NOTE]
 > Azure Kamu siteleri desteklenir, ancak eksik özel bağlantı desteği nedeniyle US Gov Teksas Şu anda desteklenmiyor.
@@ -43,7 +43,7 @@ az group create -l westus -n MyResourceGroup
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster  
 ```
-Burada *--Enable-Private-Cluster* , özel bir küme için zorunlu bir bayrak. 
+`--enable-private-cluster`, Özel bir küme için zorunlu bir bayrak olur. 
 
 ### <a name="advanced-networking"></a>Gelişmiş ağ  
 
@@ -59,7 +59,7 @@ az aks create \
     --dns-service-ip 10.2.0.10 \
     --service-cidr 10.2.0.0/24 
 ```
-Burada *--Enable-Private-Cluster* , özel bir küme için zorunlu bir bayrak. 
+`--enable-private-cluster`, Özel bir küme için zorunlu bir bayrak olur. 
 
 > [!NOTE]
 > Docker Köprüsü CıDR (172.17.0.1/16) alt ağ CıDR ile çakışıyor, Docker köprü adresini uygun şekilde değiştirin.
@@ -83,9 +83,9 @@ Belirtildiği gibi, sanal ağ eşlemesi özel kümenize erişmenin bir yoludur. 
 3. Sol bölmede **sanal ağ** bağlantısını seçin.  
 4. VM 'nin sanal ağını özel DNS bölgesine eklemek için yeni bir bağlantı oluşturun. DNS bölgesi bağlantısının kullanılabilir olması birkaç dakika sürer.  
 5. Azure portal, kümenizin sanal ağını içeren kaynak grubuna gidin.  
-6. Sağ bölmede sanal ağı seçin. Sanal ağ adı *aks-VNET- \* *biçimindedir.  
+6. Sağ bölmede sanal ağı seçin. Sanal ağ adı *aks-VNET- \** biçimindedir.  
 7. Sol bölmede, eşlemeler ' i **seçin.**  
-8. **Ekle**' yi SEÇIN, VM 'nin sanal ağını ekleyin ve ardından eşlemeyi oluşturun.  
+8. **Ekle** ' yi SEÇIN, VM 'nin sanal ağını ekleyin ve ardından eşlemeyi oluşturun.  
 9. VM 'nin bulunduğu sanal ağa gidin, **eşlemeler ' i seçin,** aks sanal ağını seçin ve ardından eşlemeyi oluşturun. AKS sanal ağındaki adres aralıkları ve VM 'nin sanal ağ çakışması, eşleme başarısız olur. Daha fazla bilgi için bkz.  [sanal ağ eşlemesi][virtual-network-peering].
 
 ## <a name="hub-and-spoke-with-custom-dns"></a>Özel DNS ile hub ve bağlı bileşen
@@ -94,9 +94,9 @@ Belirtildiği gibi, sanal ağ eşlemesi özel kümenize erişmenin bir yoludur. 
 
 ![Özel küme merkezi ve bağlı bileşen](media/private-clusters/aks-private-hub-spoke.png)
 
-1. Varsayılan olarak, özel bir küme sağlandığında, küme yönetilen kaynak grubunda özel bir uç nokta (1) ve özel bir DNS bölgesi (2) oluşturulur. Küme, API sunucusuyla iletişim kurmak üzere özel uç noktasının IP 'sini çözümlemek için özel bölgedeki bir kayıt kullanır.
+1. Varsayılan olarak, özel bir küme sağlandığında, küme tarafından yönetilen kaynak grubunda özel bir uç nokta (1) ve özel bir DNS bölgesi (2) oluşturulur. Küme, API sunucusuyla iletişim kurmak üzere özel uç noktasının IP 'sini çözümlemek için özel bölgedeki bir kayıt kullanır.
 
-2. Özel DNS bölgesi yalnızca küme düğümlerinin eklendiği sanal ağa bağlanır (3). Bu, Özel uç noktanın yalnızca bağlı VNet 'teki konaklarla çözümlenebileceği anlamına gelir. VNet üzerinde özel DNS yapılandırılmadığından (varsayılan) senaryolarda, bu, bağlantı nedeniyle özel DNS bölgesindeki kayıtları çözebilen, DNS için 168.63.129.16 adresinde ana bilgisayar olarak sorun olmadan çalışmaktadır.
+2. Özel DNS bölgesi yalnızca küme düğümlerinin eklendiği sanal ağa bağlanır (3). Bu, Özel uç noktanın yalnızca bağlı VNet 'teki konaklarla çözümlenebileceği anlamına gelir. VNet üzerinde özel DNS yapılandırılmadığından (varsayılan) senaryolarda, bu, bağlantı nedeniyle özel DNS bölgesindeki kayıtları çözümleyebilecek DNS için 168.63.129.16 adresinde ana bilgisayar olarak sorun olmadan çalışmaktadır.
 
 3. Kümenizi içeren VNet 'in özel DNS ayarları (4) olduğu senaryolarda, özel DNS bölgesi özel DNS çözümleyicilerine (5) sahip olan VNet 'e bağlanmadığı takdirde küme dağıtımı başarısız olur. Bu bağlantı, Küme sağlama sırasında veya olay tabanlı dağıtım mekanizmaları (örneğin, Azure Event Grid ve Azure Işlevleri) kullanılarak bölge oluşturma algılandıktan sonra Otomasyon yoluyla, özel bölge oluşturulduktan sonra el ile oluşturulabilir.
 

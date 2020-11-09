@@ -3,12 +3,12 @@ title: Azure Izleyici Application Insights Java
 description: Kod değişikliğine gerek duymadan herhangi bir ortamda çalışan Java uygulamaları için uygulama performansı izleme. Dağıtılmış izleme ve uygulama eşlemesi.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 31ee3c4a2dbf6f6832c0228e70aa079b5f028bc4
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 2459f80746d95234701319bbb5142c8e540890d3
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331932"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379778"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java kodsuz kullanacaksınız uygulama izleme Azure izleyici Application Insights
 
@@ -133,7 +133,7 @@ Tüm ayrıntılar için bkz. [yapılandırma seçenekleri](./java-standalone-con
 
 3.0 + ' da hedefiniz, Standart API 'Leri kullanarak özel telemetrinizi göndermenizi sağlamaktır.
 
-Mikro ölçüm, Opentelemetri API ve popüler günlük çerçevesini destekliyoruz. Application Insights Java 3,0, Telemetriyi otomatik olarak yakalar ve otomatik toplanan telemetriyle birlikte ilişkilendirilecektir.
+Mikro ölçüm, Opentelemetri API ve popüler günlük çerçevesini destekliyoruz. Application Insights Java 3,0, Telemetriyi otomatik olarak yakalar ve otomatik olarak toplanan telemetriyle birlikte ilişkilendirilecektir.
 
 ### <a name="supported-custom-telemetry"></a>Desteklenen özel telemetri
 
@@ -141,13 +141,13 @@ Aşağıdaki tablo, Java 3,0 Aracısı 'nı tamamlamak için etkinleştirebilece
 
 |                     | Micrometer | Log4J, logback, Tem | 2. x SDK |
 |---------------------|------------|---------------------|---------|
-| **Özel olaylar**   |            |                     |  Yes    |
-| **Özel ölçümler**  |  Yes       |                     |  Yes    |
-| **Bağımlılıklar**    |            |                     |  Yes    |
-| **Özel durumlar**      |            |  Yes                |  Yes    |
-| **Sayfa Görüntülemeleri**      |            |                     |  Yes    |
-| **İstekler**        |            |                     |  Yes    |
-| **İzlemeler**          |            |  Yes                |  Yes    |
+| **Özel olaylar**   |            |                     |  Evet    |
+| **Özel ölçümler**  |  Evet       |                     |  Evet    |
+| **Bağımlılıklar**    |            |                     |  Evet    |
+| **Özel durumlar**      |            |  Evet                |  Evet    |
+| **Sayfa Görüntülemeleri**      |            |                     |  Evet    |
+| **İstekler**        |            |                     |  Evet    |
+| **İzlemeler**          |            |  Evet                |  Evet    |
 
 Application Insights 3,0 ile bir SDK 'Yı Şu anda serbest bırakmaya planlanıyoruz.
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 010b65a170d05fb0d2cc55e7519fd27df8b751e1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c47a4fbf51b14d9a13237f77c75dbf2839fb5f80
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095450"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381295"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Öğretici: Bing Web Araması API’sini kullanarak tek sayfalı uygulama oluşturma
 
@@ -36,7 +36,7 @@ Bu örnek uygulama şunları yapabilir:
 > * Abonelik anahtarlarını yönetme
 > * Hataları işleme
 
-Bu uygulamayı kullanmak için Bing Arama API'lerine sahip bir [Azure Bilişsel Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerekir.
+Bu uygulamayı kullanmak için Bing Arama API'lerine sahip bir [Azure Bilişsel Hizmetler hesabı](../cognitive-services-apis-create-account.md) gerekir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -86,7 +86,7 @@ Bu öğretici `scripts.js` dosyasına ve Bing Web Araması API'sini çağırıp 
 
 ## <a name="query-options"></a>Sorgu seçenekleri
 
-HTML formu, [Bing Web Araması API'si v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters)'deki sorgu parametrelerine eşlenen seçenekler içerir. Bu tabloda, örnek uygulamayı kullanarak kullanıcıların arama sonuçlarını nasıl filtreleyebileceğini gösteren bir döküm sağlanır:
+HTML formu, [Bing Web Araması API'si v7](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters)'deki sorgu parametrelerine eşlenen seçenekler içerir. Bu tabloda, örnek uygulamayı kullanarak kullanıcıların arama sonuçlarını nasıl filtreleyebileceğini gösteren bir döküm sağlanır:
 
 | Parametre | Açıklama |
 |-----------|-------------|
@@ -99,7 +99,7 @@ HTML formu, [Bing Web Araması API'si v7](https://docs.microsoft.com/rest/api/co
 | `offset` | Gizli alan. İstekteki ilk arama sonucunun göreli konumu; sayfalama için kullanılır. Her yeni istekle birlikte `0` değerine sıfırlanır. |
 
 > [!NOTE]
-> Bing Web Araması API'si arama sonuçlarını daraltmak için ek sorgu parametreleri sağlar. Bu örnekte yalnızca birkaç parametre kullanılır. Sağlanan parametrelerin tam listesi için bkz. [Bing Web Araması API'si v7 başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters).
+> Bing Web Araması API'si arama sonuçlarını daraltmak için ek sorgu parametreleri sağlar. Bu örnekte yalnızca birkaç parametre kullanılır. Sağlanan parametrelerin tam listesi için bkz. [Bing Web Araması API'si v7 başvurusu](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters).
 
 `bingSearchOptions()` işlevi, Bing Arama API'sinin gerektirdiği biçime uyacak şekilde bu seçenekleri dönüştürür.
 
@@ -289,7 +289,7 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> Başarılı bir HTTP isteği, aramanın kendisinin başarılı olduğu anlamına *gelmez* . Arama işleminde hata oluşursa, Bing Web Araması API'si 200 olmayan bir HTTP durum kodu döndürür ve JSON yanıtına hata bilgilerini ekler. İstekte hız sınırlaması varsa API boş yanıt döndürür.
+> Başarılı bir HTTP isteği, aramanın kendisinin başarılı olduğu anlamına *gelmez*. Arama işleminde hata oluşursa, Bing Web Araması API'si 200 olmayan bir HTTP durum kodu döndürür ve JSON yanıtına hata bilgilerini ekler. İstekte hız sınırlaması varsa API boş yanıt döndürür.
 
 Önceki işlevlerin ikisinde de kodun büyük bölümü hata işlemeye ayrılmıştır. Şu aşamalarda hata oluşabilir:
 
@@ -303,7 +303,7 @@ Hatalar `renderErrorMessage()` çağrısı yapılarak işlenir. Yanıt tüm hata
 
 ## <a name="display-search-results"></a>Arama sonuçlarını görüntüleme
 
-Bing Web Araması API'si tarafından döndürülen sonuçlarla ilişkili [kullanım ve görüntüleme gereksinimleri](useanddisplayrequirements.md) vardır. Yanıtta çeşitli yanıt türleri bulunabileceğinden, en üst düzey `WebPages` koleksiyonunu yinelemek yeterli olmaz. Bunun yerine, örnek uygulama sonuçları belirtimlere göre sıralamak için `RankingResponse` kullanır.
+Bing Web Araması API'si tarafından döndürülen sonuçlarla ilişkili [kullanım ve görüntüleme gereksinimleri](./use-display-requirements.md) vardır. Yanıtta çeşitli yanıt türleri bulunabileceğinden, en üst düzey `WebPages` koleksiyonunu yinelemek yeterli olmaz. Bunun yerine, örnek uygulama sonuçları belirtimlere göre sıralamak için `RankingResponse` kullanır.
 
 > [!NOTE]
 > Tek bir sonuç türü istiyorsanız, `responseFilter` sorgu parametresini kullanın veya Bing Resim Araması gibi diğer Bing Araması uç noktalarını kullanmayı göz önünde bulundurun.

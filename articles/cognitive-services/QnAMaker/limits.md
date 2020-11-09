@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: c61c550e9a09d0f0708e8f1dbc63e76b329a8166
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 1a384eed542d0c09a973e0e68288f9fc1660cc96
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375627"
+ms.locfileid: "94380919"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Bilgi tabanı sınırlarını ve sınırlarını Soru-Cevap Oluşturma
 
@@ -96,14 +96,14 @@ Bilgi bankasındaki içeriğe ilişkin genel sınırlamalar:
 
 ## <a name="create-knowledge-base-call-limits"></a>Bilgi Bankası çağrı sınırları oluşturma:
 Bunlar her bir bilgi tabanı oluşturma eyleminin sınırlarını temsil eder; diğer bir deyişle, *BB oluştur* veya CREATEıNFO API 'sini çağırma ' ya tıklayın.
-* Yanıt başına en fazla alternatif soru sayısı: 300
+* Yanıt başına önerilen en fazla farklı soru sayısı: 300
 * En fazla URL sayısı: 10
 * En fazla dosya sayısı: 10
 
 ## <a name="update-knowledge-base-call-limits"></a>Bilgi Bankası çağrı sınırlarını güncelleştirme
 Bunlar her bir güncelleştirme eyleminin sınırlarını temsil eder; diğer bir deyişle, *kayıt ve eğitim* ' i ve sonra UPDATEıNFO API 'sini çağırır.
 * Her kaynak adının uzunluğu: 300
-* En fazla eklenen veya silinen diğer soru sayısı: 300
+* Önerilen en fazla sayıda alternatif soru eklendi veya silindi: 300
 * Eklenen veya silinen en fazla meta veri alanı sayısı: 10
 * Yenilenebilir en fazla URL sayısı: 5
 

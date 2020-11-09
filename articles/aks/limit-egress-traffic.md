@@ -4,15 +4,14 @@ description: Azure Kubernetes Service (AKS) ' de çıkış trafiğini denetlemek
 services: container-service
 ms.topic: article
 ms.author: jpalma
-ms.date: 06/29/2020
-ms.custom: fasttrack-edit, devx-track-azurecli
+ms.date: 11/09/2020
 author: palma21
-ms.openlocfilehash: dcc015b9ff4cb9b980c7163f526eafbe5cd36119
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: e3b755ca3ca5338acfc1918bd2085d9fba18b8ac
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900472"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380220"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki küme düğümleri için çıkış trafiğini denetleme
 
@@ -63,7 +62,6 @@ Aşağıdaki FQDN/uygulama kuralları gereklidir:
 |----------------------------------|-----------------|----------|
 | **`*.hcp.<location>.azmk8s.io`** | **`HTTPS:443`** | Node <-> API Server iletişimi için gereklidir. *\<location\>* AKS kümenizin dağıtıldığı bölge ile değiştirin. |
 | **`mcr.microsoft.com`**          | **`HTTPS:443`** | Microsoft Container Registry (MCR) içindeki görüntülere erişmek için gereklidir. Bu kayıt defteri ilk taraf görüntülerini/grafiklerini içerir (örneğin, coreDNS, vb.). Bu görüntüler, ölçek ve yükseltme işlemleri de dahil olmak üzere kümenin doğru oluşturulması ve çalışması için gereklidir.  |
-| **`*.cdn.mscr.io`**              | **`HTTPS:443`** | Azure Content Delivery Network (CDN) tarafından desteklenen MCR depolama alanı için gereklidir. |
 | **`*.data.mcr.microsoft.com`**   | **`HTTPS:443`** | Azure Content Delivery Network (CDN) tarafından desteklenen MCR depolama alanı için gereklidir. |
 | **`management.azure.com`**       | **`HTTPS:443`** | Azure API 'sine karşı Kubernetes işlemleri için gereklidir. |
 | **`login.microsoftonline.com`**  | **`HTTPS:443`** | Azure Active Directory kimlik doğrulaması için gereklidir. |
@@ -92,7 +90,6 @@ Aşağıdaki FQDN/uygulama kuralları gereklidir:
 | **`*.hcp.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | Node <-> API Server iletişimi için gereklidir. *\<location\>* AKS kümenizin dağıtıldığı bölge ile değiştirin. |
 | **`*.tun.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | Node <-> API Server iletişimi için gereklidir. *\<location\>* AKS kümenizin dağıtıldığı bölge ile değiştirin. |
 | **`mcr.microsoft.com`**                        | **`HTTPS:443`** | Microsoft Container Registry (MCR) içindeki görüntülere erişmek için gereklidir. Bu kayıt defteri ilk taraf görüntülerini/grafiklerini içerir (örneğin, coreDNS, vb.). Bu görüntüler, ölçek ve yükseltme işlemleri de dahil olmak üzere kümenin doğru oluşturulması ve çalışması için gereklidir. |
-| **`*.cdn.mscr.io`**                            | **`HTTPS:443`** | Azure Content Delivery Network (CDN) tarafından desteklenen MCR depolama alanı için gereklidir. |
 | **`.data.mcr.microsoft.com`**                  | **`HTTPS:443`** | Azure Content Delivery Network (CDN) tarafından desteklenen MCR depolama alanı için gereklidir. |
 | **`management.chinacloudapi.cn`**              | **`HTTPS:443`** | Azure API 'sine karşı Kubernetes işlemleri için gereklidir. |
 | **`login.chinacloudapi.cn`**                   | **`HTTPS:443`** | Azure Active Directory kimlik doğrulaması için gereklidir. |
@@ -119,7 +116,6 @@ Aşağıdaki FQDN/uygulama kuralları gereklidir:
 |---------------------------------------------------------|-----------------|----------|
 | **`*.hcp.<location>.cx.aks.containerservice.azure.us`** | **`HTTPS:443`** | Node <-> API Server iletişimi için gereklidir. *\<location\>* AKS kümenizin dağıtıldığı bölge ile değiştirin.|
 | **`mcr.microsoft.com`**                                 | **`HTTPS:443`** | Microsoft Container Registry (MCR) içindeki görüntülere erişmek için gereklidir. Bu kayıt defteri ilk taraf görüntülerini/grafiklerini içerir (örneğin, coreDNS, vb.). Bu görüntüler, ölçek ve yükseltme işlemleri de dahil olmak üzere kümenin doğru oluşturulması ve çalışması için gereklidir. |
-| **`*.cdn.mscr.io`**                                     | **`HTTPS:443`** | Azure Content Delivery Network (CDN) tarafından desteklenen MCR depolama alanı için gereklidir. |
 | **`*.data.mcr.microsoft.com`**                          | **`HTTPS:443`** | Azure Content Delivery Network (CDN) tarafından desteklenen MCR depolama alanı için gereklidir. |
 | **`management.usgovcloudapi.net`**                      | **`HTTPS:443`** | Azure API 'sine karşı Kubernetes işlemleri için gereklidir. |
 | **`login.microsoftonline.us`**                          | **`HTTPS:443`** | Azure Active Directory kimlik doğrulaması için gereklidir. |

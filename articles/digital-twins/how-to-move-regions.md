@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: cb532098cda290654d6bdebe9cec2edab8ccbf99
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 6393b0b8d794345fded95718a2581ae9b929ad49
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94355796"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381159"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Azure dijital TWINS örneğini farklı bir Azure bölgesine taşıma
 
@@ -120,7 +120,7 @@ Daha sonra, hedef bölgede yeni bir örnek oluşturarak örneğinizin "taşıma"
 
 ### <a name="create-a-new-instance"></a>Yeni örnek oluştur
 
-İlk olarak, hedef bölgenizde Azure dijital TWINS 'in yeni bir örneğini oluşturun. [Örnek ayarlama ve kimlik doğrulama](how-to-set-up-instance-portal.md)bölümündeki adımları izleyin. Bu işaretçileri göz önünde bulundurun:
+İlk olarak, hedef bölgenizde Azure dijital TWINS 'in yeni bir örneğini oluşturun. [Nasıl yapılır: örnek ve kimlik doğrulaması ayarlama](how-to-set-up-instance-portal.md)bölümündeki adımları izleyin. Bu işaretçileri göz önünde bulundurun:
 
 * Farklı bir kaynak grubunda yer *alıyorsa* , yeni örnek için aynı adı koruyabilirsiniz. Özgün örneğinizi içeren aynı kaynak grubunu kullanmanız gerekiyorsa, yeni örneğiniz kendi farklı adına sahip olur.
 * Konum sorulduğunda yeni hedef bölgeyi girin.

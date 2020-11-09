@@ -2,14 +2,14 @@
 title: Yapılandırma seçenekleri-Azure Izleyici Application Insights Java
 description: Azure Izleyici Application Insights Java için yapılandırma seçenekleri
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 11/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 7165afd77e3f60af5e00b92c1063247325897f9f
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 6edb77ec21b4f82f8398312fdff24aa5ea207771
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331915"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381040"
 ---
 # <a name="configuration-options-for-azure-monitor-application-insights-java"></a>Azure Izleyici Application Insights Java için yapılandırma seçenekleri
 
@@ -48,7 +48,7 @@ Göreli bir yol belirtirseniz, bulunduğu dizine göre çözümlenir `applicatio
 
 ## <a name="connection-string"></a>Bağlantı dizesi
 
-Bu gereklidir. Bağlantı dizenizi Application Insights kaynağınız için bulabilirsiniz:
+Bağlantı dizesi gerekiyor. Bağlantı dizenizi Application Insights kaynağınız için bulabilirsiniz:
 
 :::image type="content" source="media/java-ipa/connection-string.png" alt-text="Application Insights bağlantı dizesi":::
 
@@ -105,7 +105,7 @@ Maliyeti azaltmanız gerekiyorsa örnekleme yararlı olur.
 
 Örneğin, örneklemeyi %10 olarak ayarlarsanız, işlemlerinizin yalnızca %10 ' u görürsünüz, ancak bu %10 ' un her biri uçtan uca işlem ayrıntılarına sahip olur.
 
-Örnekleme, **her türlü işlemi yaklaşık 1/3** yakalamak için nasıl ayarlayabileceğiniz bir örnektir. lütfen kullanım örneği için doğru olan örnekleme oranını ayarladığınızdan emin olun:
+Örnekleme, **her türlü işlemin yaklaşık 1/3** ' i yakalamak için nasıl ayarlanacağını gösteren bir örnektir. kullanım örneği için doğru olan örnekleme oranını ayarladığınızdan emin olun:
 
 ```json
 {
@@ -169,16 +169,16 @@ Tüm telemetrinize özel boyutlar eklemek istiyorsanız:
 
 ## <a name="telemetry-processors-preview"></a>Telemetri işlemcileri (Önizleme)
 
-Bu bir önizleme özelliğidir.
+Bu özellik önizlemede.
 
-İstek, bağımlılık ve izleme telemetrisine uygulanacak kuralları yapılandırmanıza olanak tanır. Örneğin,
+İstek, bağımlılık ve izleme telemetrisine uygulanacak kuralları yapılandırmanıza olanak tanır, örneğin:
  * Hassas verileri maskeleme
  * Koşullu özel boyutlar ekleyin
  * Toplama ve görüntüleme için kullanılan telemetri adını güncelleştirme
 
 Daha fazla bilgi için [telemetri işlemcisi](./java-standalone-telemetry-processors.md) belgelerini inceleyin.
 
-## <a name="auto-collected-logging"></a>Otomatik toplanan günlüğe kaydetme
+## <a name="autocollected-logging"></a>Oto toplanan günlüğe kaydetme
 
 Log4J, Logback ve Java. util. Logging otomatik olarak işaretlenir ve bu günlüğe kaydetme çerçeveleri aracılığıyla gerçekleştirilen günlüğe kaydetme otomatik olarak toplanır.
 
@@ -213,13 +213,16 @@ Bunlar `level` , dosyada belirtebileceğiniz geçerli değerlerdir `applicationi
 | Izleme (veya FINEST) | TRACE  | TRACE   | FıNEST  |
 | ALL               | ALL    | ALL     | ALL     |
 
-## <a name="auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>Otomatik toplanan mikro ölçüm ölçümleri (Spring Boot çalıştırıcı ölçümleri dahil)
+## <a name="autocollected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>Oto toplanmış mikro ölçüm ölçümleri (Spring Boot çalıştırıcı ölçümleri dahil)
 
-Uygulamanız [mikro ölçüm](https://micrometer.io)kullanıyorsa, mikro ölçüm küresel kayıt defterine gönderilen ölçümler otomatik olarak toplanır.
+Uygulamanız [mikro ölçüm](https://micrometer.io)kullanıyorsa, mikro ölçüm küresel kayıt defterine gönderilen ölçümler tekrar toplanır.
 
 Ayrıca, uygulamanız [Spring Boot çalıştırıcı](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)kullanıyorsa, Spring Boot çalıştırıcı tarafından yapılandırılan ölçümler de otomatik olarak toplanır.
 
-Mikro ölçüm ölçümlerinin otomatik toplanmasını devre dışı bırakmak için (Spring Boot çalıştırıcı ölçümleri dahil):
+Mikro ölçüm ölçümlerinin (Spring Boot çalıştırıcı ölçümleri dahil) oto toplamayı devre dışı bırakmak için:
+
+> [!NOTE]
+> Özel ölçümler ayrı olarak faturalandırılır ve ek maliyetler oluşturabilir. Ayrıntılı [fiyatlandırma bilgilerini](https://azure.microsoft.com/pricing/details/monitor/)kontrol ettiğinizden emin olun. Mikro ölçüm ve yay çalıştırıcı ölçümlerini devre dışı bırakmak için aşağıdaki yapılandırmayı yapılandırma dosyanıza ekleyin.
 
 ```json
 {
@@ -244,7 +247,7 @@ Application Insights Java 3,0, her 15 dakikada bir sinyal ölçümü gönderir. 
 ```
 
 > [!NOTE]
-> Sinyal verileri de Application Insights kullanımını izlemek için kullanıldığından, bu sinyalin sıklığını azaltamazsınız.
+> Sinyal verileri de Application Insights kullanımını izlemek için kullanıldığından, sinyal sıklığını azaltamazsınız.
 
 ## <a name="http-proxy"></a>HTTP proxy 'Si
 
@@ -279,7 +282,7 @@ Uygulamanız bir güvenlik duvarının arkasındaysa ve Application Insights do�
 
 "Kendi kendine tanılama" Application Insights Java 3,0 ' dan iç günlüğe kaydetme anlamına gelir.
 
-Bu, Application Insights ile ilgili sorunları saptamak ve tanılamak için yararlı olabilir.
+Bu işlevsellik, Application Insights ile ilgili sorunları saptamak ve tanılamak için yararlı olabilir.
 
 Varsayılan olarak, Java 3,0 günlüklerini `INFO` `applicationinsights.log` Bu yapılandırmaya karşılık gelen hem dosya hem de konsola Application Insights.
 

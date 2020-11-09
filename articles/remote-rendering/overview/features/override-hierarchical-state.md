@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bb120a533e4d11b34bb9712bf0164cec5a7728ce
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 29c89d8d3d2ae194ff48b762bc686feefdd3a528
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207742"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381021"
 ---
 # <a name="hierarchical-state-override"></a>Hiyerarşik durumu geçersiz kılma
 
@@ -28,26 +28,26 @@ En az olası ek yük ile bu kullanım örneğini başarmak için, kullanın `Hie
 
 Geçersiz kılınabilen sabit durumlar kümesi şunlardır:
 
-* **`Hidden`**: Sahne grafiğinde ilgili kafesler gizlenir veya gösterilir.
-* **`Tint color`**: İşlenmiş bir nesne, tek bir renk tonu rengi ve renk tonu ağırlığı ile renk tonlu olabilir. Aşağıdaki görüntüde, bir tekerleğin kıyısı renk gösterilmektedir.
+* **`Hidden`** : Sahne grafiğinde ilgili kafesler gizlenir veya gösterilir.
+* **`Tint color`** : İşlenmiş bir nesne, tek bir renk tonu rengi ve renk tonu ağırlığı ile renk tonlu olabilir. Aşağıdaki görüntüde, bir tekerleğin kıyısı renk gösterilmektedir.
   
   ![Bir nesneyi açmak için kullanılan renk tonu rengi](./media/color-tint.png)
 
-* **`See-through`**: Geometri yarı saydam olarak işlenir, örneğin bir nesnenin iç parçalarını açığa çıkarmak için. Aşağıdaki görüntüde, kırmızı hızınızı düşüren Caliper dışında, bkz.-Through modunda işlenen tüm otomobil gösterilmektedir:
+* **`See-through`** : Geometri yarı saydam olarak işlenir, örneğin bir nesnenin iç parçalarını açığa çıkarmak için. Aşağıdaki görüntüde, kırmızı hızınızı düşüren Caliper dışında, bkz.-Through modunda işlenen tüm otomobil gösterilmektedir:
 
   ![Seçili nesneleri saydam hale getirmek için kullanılan modu göster](./media/see-through.png)
 
   > [!IMPORTANT]
   > Yalnızca *Tilebasedcomposition* [işleme modu](../../concepts/rendering-modes.md) kullanıldığında, diğer adım etkisi geçerlidir.
 
-* **`Selected`**: Geometri bir [seçim ana hattı](outlines.md)ile işlenir.
+* **`Selected`** : Geometri bir [seçim ana hattı](outlines.md)ile işlenir.
 
   ![Seçili parçayı vurgulamak için kullanılan ana hat seçeneği](./media/selection-outline.png)
 
-* **`DisableCollision`**: Geometri, [uzamsal sorgulardan](spatial-queries.md)muaf tutulur. **`Hidden`** Bayrak, çakışma durumu bayrağını etkilemez, bu nedenle bu iki bayrak genellikle birlikte ayarlanır.
+* **`DisableCollision`** : Geometri, [uzamsal sorgulardan](spatial-queries.md)muaf tutulur. **`Hidden`** Bayrak, çakışma durumu bayrağını etkilemez, bu nedenle bu iki bayrak genellikle birlikte ayarlanır.
 
-* **`UseCutPlaneFilterMask`**: Kesme düzlemi seçimini denetlemek için tek bir filtre bit maskesi kullanın. Bu bayrak, tek tek filtre maskesinin kullanılması veya üst öğesinden devralınıp alınmayacağını belirler. Filtre bit maskesinin kendisi özelliği aracılığıyla ayarlanır `CutPlaneFilterMask` . Filtrelemenin nasıl çalıştığı hakkında ayrıntılı bilgi için, [Seçmeli kesme düzlemleri paragrafına](cut-planes.md#selective-cut-planes)bakın.
-![Seçmeli kesme düzlemleri](./media/selective-cut-planes.png)
+* **`UseCutPlaneFilterMask`** : Kesme düzlemi seçimini denetlemek için tek bir filtre bit maskesi kullanın. Bu bayrak, tek tek filtre maskesinin kullanılması veya üst öğesinden devralınıp alınmayacağını belirler. Filtre bit maskesinin kendisi özelliği aracılığıyla ayarlanır `CutPlaneFilterMask` . Filtrelemenin nasıl çalıştığı hakkında ayrıntılı bilgi için, [Seçmeli kesme düzlemleri paragrafına](cut-planes.md#selective-cut-planes)bakın. Sahnenin geri kalanı etkilenirken yalnızca tire ve RIM kesildiğinde aşağıdaki örneğe bakın.
+![Seçmeli kesme düzlemleri](./media/selective-cut-planes-hierarchical-override.png)
 
 
 > [!TIP]
@@ -101,7 +101,7 @@ component->SetState(
 
 Bir örneği, `HierarchicalStateOverrideComponent` çok çalışma zamanı ek yükü eklemez. Ancak, etkin bileşenlerin sayısını düşük tutmak her zaman iyi bir uygulamadır. Örneğin, çekilen nesneyi vurgulayan bir seçim sistemi uygularken, vurgu kaldırıldığında bileşeni silmeniz önerilir. Bileşenlerin nötr özelliklerle birlikte tutulması hızlı bir şekilde eklenebilir.
 
-Saydam işleme, sunucunun GPU 'lara standart işleme göre daha fazla iş yükü koyar. Sahne grafiğinin büyük *bölümleri, çok*sayıda geometrinin görünür olması halinde, görünen bir performans sorunu haline gelebilir. Aynı [seçim anahatları](../../overview/features/outlines.md#performance)olan nesneler için de geçerlidir.
+Saydam işleme, sunucunun GPU 'lara standart işleme göre daha fazla iş yükü koyar. Sahne grafiğinin büyük *bölümleri, çok* sayıda geometrinin görünür olması halinde, görünen bir performans sorunu haline gelebilir. Aynı [seçim anahatları](../../overview/features/outlines.md#performance)olan nesneler için de geçerlidir.
 
 ## <a name="api-documentation"></a>API belgeleri
 

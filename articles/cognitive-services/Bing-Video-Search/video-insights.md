@@ -10,21 +10,21 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 2ec57937b2bac430fccd7b6e1fbc05b44d9cf996
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: cbbde354c1bc68a2b1017c3ccba61b846fa62916
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078805"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380768"
 ---
 # <a name="get-insights-about-a-video"></a>Bir video hakkında Öngörüler edinin
 
 > [!WARNING]
-> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](/bing/search-apis/bing-web-search/create-bing-search-service-resource)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
 > Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
-> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
+> Geçiş yönergeleri için bkz. [Bing arama Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
-Bing Video Arama API'si tarafından döndürülen her video, ilgili videolar gibi hakkında daha fazla bilgi almak için kullanabileceğiniz bir video KIMLIĞI içerir. Bir video hakkında Öngörüler almak için API yanıtında [VideoID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-videoid) belirtecini alın. 
+Bing Video Arama API'si tarafından döndürülen her video, ilgili videolar gibi hakkında daha fazla bilgi almak için kullanabileceğiniz bir video KIMLIĞI içerir. Bir video hakkında Öngörüler almak için API yanıtında [VideoID](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-videoid) belirtecini alın. 
 
 ```json
     "value" : [
@@ -39,7 +39,7 @@ Bing Video Arama API'si tarafından döndürülen her video, ilgili videolar gib
     ],
 ```
 
-Daha sonra, KIMLIK ile video ayrıntıları uç noktasına bir GET isteği gönderin. [ID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#id) sorgu parametresini `videoId` belirtece ayarlayın. Almak istediğiniz öngörüleri belirtmek için [modüller](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) sorgu parametresini ayarlayın. Tüm öngörüleri almak için, `modules` tümüne ayarlayın. Yanıt, varsa istediğiniz tüm öngörüleri içerir.
+Daha sonra, KIMLIK ile video ayrıntıları uç noktasına bir GET isteği gönderin. [ID](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#id) sorgu parametresini `videoId` belirtece ayarlayın. Almak istediğiniz öngörüleri belirtmek için [modüller](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) sorgu parametresini ayarlayın. Tüm öngörüleri almak için, `modules` tümüne ayarlayın. Yanıt, varsa istediğiniz tüm öngörüleri içerir.
 
 ```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=All&mkt=en-us HTTP/1.1  
@@ -53,7 +53,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="getting-related-videos-insights"></a>İlgili videoları öngörüleri alma  
 
-Belirtilen videoyla ilgili videoları almak için, [modüller](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) sorgu parametresini olarak ayarlayın `RelatedVideos` .
+Belirtilen videoyla ilgili videoları almak için, [modüller](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) sorgu parametresini olarak ayarlayın `RelatedVideos` .
   
 ```cURL  
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=RelatedVideos&mkt=en-us HTTP/1.1  
@@ -65,7 +65,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Bu isteğin yanıtı, [videolar](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) nesnesi yerine en üst düzey bir [videodetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails) nesnesine sahip olacaktır.  
+Bu isteğin yanıtı, [videolar](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) nesnesi yerine en üst düzey bir [videodetails](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails) nesnesine sahip olacaktır.  
   
 ```json
 {
@@ -103,4 +103,3 @@ Bu isteğin yanıtı, [videolar](https://docs.microsoft.com/rest/api/cognitivese
 
 > [!div class="nextstepaction"]
 > [Popüler Videolar için arama yapın](trending-videos.md)
-

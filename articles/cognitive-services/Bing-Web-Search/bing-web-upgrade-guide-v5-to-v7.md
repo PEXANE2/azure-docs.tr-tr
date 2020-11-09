@@ -11,12 +11,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 95e80907220a58243844b80d81dc187f8dc4c8bc
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 39848bcaded1669c6a6efd5b649ecf8e8343a596
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078705"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381125"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Bing Web Araması API'si v5 'ten v7 'ye yükseltme
 
@@ -80,14 +80,14 @@ Engellendi|Invalidrequest. engellendi
 
 ### <a name="headers"></a>Üst Bilgiler
 
-- İsteğe bağlı [pragma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) istek üst bilgisi eklendi. Varsayılan olarak, Bing önbelleğe alınmış içeriği (varsa) döndürür. Bing'in önbelleğe alınmış içeriği döndürmesini önlemek için, Pragma üst bilgisini no-cache olarak ayarlayın (örneğin, Pragma: no-cache).
+- İsteğe bağlı [pragma](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) istek üst bilgisi eklendi. Varsayılan olarak, Bing önbelleğe alınmış içeriği (varsa) döndürür. Bing'in önbelleğe alınmış içeriği döndürmesini önlemek için, Pragma üst bilgisini no-cache olarak ayarlayın (örneğin, Pragma: no-cache).
 
 ### <a name="query-parameters"></a>Sorgu parametreleri
 
-- [AnswerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) sorgu parametresi eklendi. Yanıtın içermesini istediğiniz yanıt sayısını belirtmek için bu parametreyi kullanın. Yanıtlar, sıralamaya göre seçilir. Örneğin, bu parametreyi üç (3) olarak ayarlarsanız, yanıt, en çok üç dereceli yanıtı içerir.  
+- [AnswerCount](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) sorgu parametresi eklendi. Yanıtın içermesini istediğiniz yanıt sayısını belirtmek için bu parametreyi kullanın. Yanıtlar, sıralamaya göre seçilir. Örneğin, bu parametreyi üç (3) olarak ayarlarsanız, yanıt, en çok üç dereceli yanıtı içerir.  
 
-- [Yükseltme](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) sorgu parametresi eklendi. Bu parametreyi `answerCount` , derecelendirmesinden bağımsız olarak bir veya daha fazla yanıt türünü açıkça içerecek şekilde kullanın. Örneğin, Videoları ve görüntüleri yanıta yükseltmek için, *videoları videolar, görüntüler* olarak ayarlamanız gerekir. Yükseltmek istediğiniz yanıtların listesi sınıra göre sayılmaz `answerCount` . Örneğin, `answerCount` 2 ise ve `promote` *videolar, görüntüler* olarak ayarlanırsa, yanıt Web sayfaları, Haberler, videolar ve görüntüler içerebilir.
+- [Yükseltme](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) sorgu parametresi eklendi. Bu parametreyi `answerCount` , derecelendirmesinden bağımsız olarak bir veya daha fazla yanıt türünü açıkça içerecek şekilde kullanın. Örneğin, Videoları ve görüntüleri yanıta yükseltmek için, *videoları videolar, görüntüler* olarak ayarlamanız gerekir. Yükseltmek istediğiniz yanıtların listesi sınıra göre sayılmaz `answerCount` . Örneğin, `answerCount` 2 ise ve `promote` *videolar, görüntüler* olarak ayarlanırsa, yanıt Web sayfaları, Haberler, videolar ve görüntüler içerebilir.
 
 ### <a name="object-changes"></a>Nesne değişiklikleri
 
-- `someResultsRemoved`Alanı [Webanswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) nesnesine eklediniz. Alan, yanıtın Web yanıtındaki bazı sonuçları dışarıda bırakıldığını belirten bir Boole değeri içerir.  
+- `someResultsRemoved`Alanı [Webanswer](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) nesnesine eklediniz. Alan, yanıtın Web yanıtındaki bazı sonuçları dışarıda bırakıldığını belirten bir Boole değeri içerir.

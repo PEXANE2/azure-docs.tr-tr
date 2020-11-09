@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 998e18f8901dda3430d5289e0590ef8099b6fb8c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b3ce1fdc0b52db2706f81950fff735cf7f95e52b
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095467"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379689"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Bing Web Araması API'si için dil ve bölge desteği
 
@@ -26,7 +26,7 @@ ms.locfileid: "93095467"
 
 Bing Web Araması API'si, üç düzine ülke veya bölgeyi destekler ve birden çok dili vardır. Bir ülkeyi veya bölgeyi bir sorgu ile belirtmek, bu ülkeye veya bölgelere ilgi alanları temelinde arama sonuçlarının iyileştirmesine yardımcı olur. Sonuçlar Bing bağlantıları içerebilir ve bu bağlantılar, belirtilen ülkeye/bölgeye veya dile göre Bing Kullanıcı deneyimini yerelleştiremeyebilir.
 
-Sorgu parametresini kullanarak bir ülke veya bölge belirtebilirsiniz `cc` . Ülke veya bölge belirtildiğinde, [ `Accept-Language` üst](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)bilgiyle bir veya daha fazla dil kodu belirtmeniz gerekir. Her pazarda desteklenen dillerin bir listesi için [pazarlar tablosunu](#markets) kullanın.
+Sorgu parametresini kullanarak bir ülke veya bölge belirtebilirsiniz `cc` . Ülke veya bölge belirtildiğinde, [ `Accept-Language` üst](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)bilgiyle bir veya daha fazla dil kodu belirtmeniz gerekir. Her pazarda desteklenen dillerin bir listesi için [pazarlar tablosunu](#markets) kullanın.
 
 Alternatif olarak, bir Pazar, `mkt` sorgu parametresi ve **pazarlar** tablosundan bir kod ile de belirtebilirsiniz. Bir pazar aynı anda belirtildiğinde bir ülke veya bölgeyi ve tercih edilen dili belirtir. Dili `setLang` sorgu parametresiyle açıkça ayarlayabilirsiniz.
 
@@ -69,13 +69,13 @@ Alternatif olarak, bir Pazar, `mkt` sorgu parametresi ve **pazarlar** tablosunda
 |Tayvan|TW|
 |Türkiye|TR|
 |Birleşik Krallık|GB|
-|Birleşik Devletler|ABD|
+|Amerika Birleşik Devletleri|ABD|
 
 ## <a name="markets"></a>Pazar
 
 |Ülke/bölge|Dil|Pazar kodu|
 |-------|--------|-----------|
-|Arjantin|İspanyolca|es-AR|
+|Arjantin|Spanish|es-AR|
 |Avustralya|İngilizce|En-AU|
 |Avusturya|Almanca|de|
 |Belçika|Felemenkçe|nl-|
@@ -83,7 +83,7 @@ Alternatif olarak, bir Pazar, `mkt` sorgu parametresi ve **pazarlar** tablosunda
 |Brezilya|Portekizce|pt-BR|
 |Kanada|İngilizce|en-CA|
 |Kanada|Fransızca|fr-CA|
-|Şili|İspanyolca|es-CL|
+|Şili|Spanish|es-CL|
 |Danimarka|Danca|da-DK|
 |Finlandiya|Fince|fi-FI|
 |Fransa|Fransızca|fr-FR|
@@ -95,7 +95,7 @@ Alternatif olarak, bir Pazar, `mkt` sorgu parametresi ve **pazarlar** tablosunda
 |Japonya|Japonca|ja-JP|
 |Güney Kore|Korece|ko-KR|
 |Malezya|İngilizce|En-MY|
-|Meksika|İspanyolca|es-MX|
+|Meksika|Spanish|es-MX|
 |Hollanda|Felemenkçe|nl-NL|
 |Yeni Zelanda|İngilizce|En-NZ|
 |Norveç|Norveççe|Hayır-Hayır|
@@ -106,15 +106,15 @@ Alternatif olarak, bir Pazar, `mkt` sorgu parametresi ve **pazarlar** tablosunda
 |Rusya|Rusça|ru-RU|
 |Suudi Arabistan|Arapça|ar-SA|
 |Güney Afrika|İngilizce|En-ZA|
-|İspanya|İspanyolca|es-ES|
+|İspanya|Spanish|es-ES|
 |İsveç|İsveççe|sv-SE|
 |İsviçre|Fransızca|fr-CH|
 |İsviçre|Almanca|devre dışı|
 |Tayvan|Geleneksel Çince|zh-TW|
 |Türkiye|Türkçe|tr-TR|
 |Birleşik Krallık|İngilizce|en-GB|
-|Birleşik Devletler|İngilizce|en-US|
-|Birleşik Devletler|İspanyolca|es-US|
+|Amerika Birleşik Devletleri|İngilizce|en-US|
+|Amerika Birleşik Devletleri|Spanish|es-US|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

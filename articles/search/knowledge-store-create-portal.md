@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/30/2020
-ms.openlocfilehash: 75cacf0dc899f47d55c44e5262b23bae73bfa7ab
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: df6da5ce1dcd5213b3e54abe54c087bfdd8480c5
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88924376"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379982"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure Bilişsel Arama bilgi deposu oluşturma
 
@@ -46,9 +46,9 @@ Aşağıdaki adımlarda, heterojen içerik dosyalarını depolamak için Azure d
 
    + **StorageV2 (genel amaçlı v2)** hesap türünü seçin.
 
-1. Blob Hizmetleri sayfalarını açın ve *otel-incelemeler*adlı bir kapsayıcı oluşturun.
+1. Blob Hizmetleri sayfalarını açın ve *otel-incelemeler* adlı bir kapsayıcı oluşturun.
 
-1. **Karşıya Yükle**'ye tıklayın.
+1. **Karşıya Yükle** 'ye tıklayın.
 
     ![Verileri karşıya yükleme](media/knowledge-store-create-portal/upload-command-bar.png "Otel incelemelerini karşıya yükleyin")
 
@@ -70,15 +70,15 @@ Artık **veri alma** Sihirbazı 'na taşımaya hazırsınız.
 
 ### <a name="step-1-create-a-data-source"></a>1. Adım: Veri kaynağı oluşturma
 
-1. **Verilerinize bağlanın**bölümünde **Azure Blob depolama**' yı seçin, oluşturduğunuz hesabı ve kapsayıcıyı seçin. 
+1. **Verilerinize bağlanın** bölümünde **Azure Blob depolama** ' yı seçin, oluşturduğunuz hesabı ve kapsayıcıyı seçin. 
 
-1. **Ad**için girin `hotel-reviews-ds` .
+1. **Ad** için girin `hotel-reviews-ds` .
 
-1. **Ayrıştırma modu**Için, **sınırlandırılmış metin**' i seçin ve ardından **üstbilgi içerir** onay kutusunu seçin. **Sınırlayıcı karakterin** virgül (,) olduğundan emin olun.
+1. **Ayrıştırma modu** Için, **sınırlandırılmış metin** ' i seçin ve ardından **üstbilgi içerir** onay kutusunu seçin. **Sınırlayıcı karakterin** virgül (,) olduğundan emin olun.
 
-1. **Bağlantı dizesi**' nde, Azure depolama 'Daki **erişim tuşları** sayfasından kopyaladığınız bağlantı dizesini yapıştırın.
+1. **Bağlantı dizesi** ' nde, Azure depolama 'Daki **erişim tuşları** sayfasından kopyaladığınız bağlantı dizesini yapıştırın.
 
-1. **Kapsayıcılar**' de, verileri tutan blob kapsayıcısının adını girin.
+1. **Kapsayıcılar** ' de, verileri tutan blob kapsayıcısının adını girin.
 
     Sayfanız aşağıdaki ekran görüntüsüne benzer görünmelidir.
 
@@ -90,26 +90,26 @@ Artık **veri alma** Sihirbazı 'na taşımaya hazırsınız.
 
 Bu sihirbaz adımında Bilişsel Beceri bilişsel becerileri ile bir beceri oluşturacaksınız. Kaynak veriler, çeşitli dillerdeki müşteri incelemelerinden oluşur. Bu veri kümesiyle ilgili yetenekler, anahtar tümceciği ayıklama, yaklaşım algılaması ve metin çevirisi içerir. Sonraki bir adımda bu zenginler, Azure tabloları olarak bir bilgi deposunda "yansıtılmaktadır" olacaktır.
 
-1. Bilişsel **Hizmetler Ekle**' yi genişletin. **Ücretsiz (sınırlı enzenginler)** varsayılan olarak seçilidir. Bu kaynağı, HotelReviews-Free.csv içindeki kayıt sayısı 19 ve bu ücretsiz kaynak günde 20 işlem kadar izin verdiğinden kullanabilirsiniz.
+1. Bilişsel **Hizmetler Ekle** ' yi genişletin. **Ücretsiz (sınırlı enzenginler)** varsayılan olarak seçilidir. Bu kaynağı, HotelReviews-Free.csv içindeki kayıt sayısı 19 ve bu ücretsiz kaynak günde 20 işlem kadar izin verdiğinden kullanabilirsiniz.
 
-1. **Zenginleştirme Ekle**' yi genişletin.
+1. **Zenginleştirme Ekle** ' yi genişletin.
 
-1. **Beceri adı**için girin `hotel-reviews-ss` .
+1. **Beceri adı** için girin `hotel-reviews-ss` .
 
-1. **Kaynak veri alanı**için **reviews_text**' yi seçin.
+1. **Kaynak veri alanı** için **reviews_text** ' yi seçin.
 
-1. **Zenginleştirme ayrıntı düzeyi**için **sayfalar (5000 karakter öbekleri)** seçeneğini belirleyin
+1. **Zenginleştirme ayrıntı düzeyi** için **sayfalar (5000 karakter öbekleri)** seçeneğini belirleyin
 
 1. Bu bilişsel becerileri seçin:
-    + **Anahtar ifadeleri ayıklama**
+    + **Anahtar tümceleri Ayıkla**
     + **Metin çevirme**
     + **Yaklaşımı Algıla**
 
       ![Beceri kümesi oluşturma](media/knowledge-store-create-portal/hotel-reviews-ss.png "Beceri kümesi oluşturma")
 
-1. **Zenginleştirme bilgilerini bilgi deposuna kaydet**' i genişletin.
+1. **Zenginleştirme bilgilerini bilgi deposuna kaydet** ' i genişletin.
 
-1. Şu **Azure Tablo projeksiyonlarını**seçin:
+1. Şu **Azure Tablo projeksiyonlarını** seçin:
     + **Belgeler**
     + **Sayfalar**
     + **Anahtar tümceleri**
@@ -126,7 +126,7 @@ Bu sihirbaz adımında Bilişsel Beceri bilişsel becerileri ile bir beceri olu�
 
 Bu sihirbaz adımında isteğe bağlı tam metin arama sorguları için bir dizin yapılandıracaksınız. Sihirbaz, alanları ve veri türlerini çıkarması için veri kaynağınızı örnekedecektir. Yalnızca istediğiniz davranışın özniteliklerini seçmeniz gerekir. Örneğin, **alınabilir** özniteliği arama hizmetinin bir alan değeri döndürmesini sağlar, ancak **aranabilir** bir alanda tam metin aramasını etkinleştirir.
 
-1. **Dizin adı**için girin `hotel-reviews-idx` .
+1. **Dizin adı** için girin `hotel-reviews-idx` .
 
 1. Öznitelikler için varsayılan seçimleri kabul edin: işlem hattının oluşturmakta olduğu yeni alanlar için **alınabilir** ve **aranabilir** .
 
@@ -140,15 +140,15 @@ Bu sihirbaz adımında isteğe bağlı tam metin arama sorguları için bir dizi
 
 Bu sihirbaz adımında, veri kaynağını, beceri ve önceki sihirbaz adımlarında tanımladığınız dizini birlikte alacak bir Dizin Oluşturucu yapılandıracaksınız.
 
-1. **Ad**için girin `hotel-reviews-idxr` .
+1. **Ad** için girin `hotel-reviews-idxr` .
 
-1. **Zamanlama**Için varsayılanı **bir kez**saklayın.
+1. **Zamanlama** Için varsayılanı **bir kez** saklayın.
 
 1. Dizin oluşturucuyu çalıştırmak için **Gönder** ' e tıklayın. Veri ayıklama, dizin oluşturma, bilişsel yeteneklerin uygulaması bu adımda gerçekleşir.
 
 ## <a name="monitor-status"></a>İzleme durumu
 
-Bilişsel Beceri dizin oluşturma, tipik metin tabanlı dizin oluşturma özelliğinden daha uzun sürer. İlerlemeyi izleyebilmek için sihirbazın Genel Bakış sayfasında Dizin Oluşturucu listesini açması gerekir. Kendi kendine gezinme için genel bakış sayfasına gidin ve **Dizin oluşturucular**' ye tıklayın.
+Bilişsel Beceri dizin oluşturma, tipik metin tabanlı dizin oluşturma özelliğinden daha uzun sürer. İlerlemeyi izleyebilmek için sihirbazın Genel Bakış sayfasında Dizin Oluşturucu listesini açması gerekir. Kendi kendine gezinme için genel bakış sayfasına gidin ve **Dizin oluşturucular** ' ye tıklayın.
 
 Azure portal, tıklatılabilir bir **Azure bilişsel arama bildirim** durumu bağlantısı için bildirimler etkinlik günlüğünü de izleyebilirsiniz. Yürütmenin tamamlanması birkaç dakika sürebilir.
 

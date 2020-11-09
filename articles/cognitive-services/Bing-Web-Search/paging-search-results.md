@@ -11,12 +11,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: aahi
-ms.openlocfilehash: e7613f4b6bb301c603ae5ded98f271f3cb98b340
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1a52471240ca80335690568faed7849eabc30baf
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074106"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381074"
 ---
 # <a name="how-to-page-through-results-from-the-bing-search-apis"></a>Bing Arama API'leri sonuçları arasında sayfa oluşturma
 
@@ -73,15 +73,15 @@ Host: api.cognitive.microsoft.com
 Bing görüntüsünü ve video API 'Lerini kullanırken `nextOffset` yinelenen arama sonuçlarından kaçınmak için değerini kullanabilirsiniz. `Images`Veya `Videos` Yanıt nesnelerinden değeri alın ve bu parametre ile isteklerinizi kullanın `offset` .  
 
 > [!NOTE]
-> Bing Web Araması API'si, Web sayfalarını, resimleri, Videoları ve haberleri içerebilen arama sonuçlarını döndürür. Bing Web Araması API'si arama sonuçlarıyla çalışırken, görüntü veya haber gibi diğer yanıt türlerini değil, yalnızca [Web sayfalarının](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage)sayfalamalarından olursunuz. Nesnelerde arama sonuçları `WebPage` , diğer yanıt türlerinde de görünen sonuçları içerebilir.
+> Bing Web Araması API'si, Web sayfalarını, resimleri, Videoları ve haberleri içerebilen arama sonuçlarını döndürür. Bing Web Araması API'si arama sonuçlarıyla çalışırken, görüntü veya haber gibi diğer yanıt türlerini değil, yalnızca [Web sayfalarının](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage)sayfalamalarından olursunuz. Nesnelerde arama sonuçları `WebPage` , diğer yanıt türlerinde de görünen sonuçları içerebilir.
 >
 > `responseFilter`Sorgu parametresini herhangi bir filtre değeri belirtmeden kullanırsanız, `count` ve `offset` parametrelerini kullanmayın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Bing Web Araması API 'Leri nelerdir?](bing-api-comparison.md)
-* [Bing Web Araması API'si v7 başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)
-* [Bing Özel Arama API'si v7 başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
-* [Bing Haber Arama API'si v7 başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)
-* [Bing Video Arama API'si v7 başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference)
-* [Bing Resim Arama API'si v7 başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Bing Web Araması API'si v7 başvurusu](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)
+* [Bing Özel Arama API'si v7 başvurusu](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
+* [Bing Haber Arama API'si v7 başvurusu](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)
+* [Bing Video Arama API'si v7 başvurusu](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference)
+* [Bing Resim Arama API'si v7 başvurusu](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
