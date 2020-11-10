@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: a78c67892e2bccb7c98d680539a84c2cc1f49a95
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 6830bdd38e8e1f1d649673cfdaf48e8c50ba6c3e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372302"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413233"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Azure Arc veri denetleyicisi oluşturma
 
@@ -26,7 +26,7 @@ Azure Arc etkin veri Hizmetleri, birden fazla farklı yaklaşım kullanılarak b
 
 Şu anda, Kubernetes Hizmetleri ve dağıtımların desteklenen listesi şunlardır:
 
-- Azure Kubernetes Service (AKS)
+- Azure Kubernetes Hizmeti (AKS)
 - Azure Stack 'de Azure Kubernetes hizmet altyapısı (AKS motoru)
 - Azure Stack CI üzerinde Azure Kubernetes hizmeti
 - Azure RedHat OpenShift (ARO)
@@ -36,7 +36,8 @@ Azure Arc etkin veri Hizmetleri, birden fazla farklı yaklaşım kullanılarak b
 - Genellikle kubeadm kullanarak dağıtılan açık kaynak, yukarı akış Kubernetes
 
 > [!IMPORTANT]
-> * Kubernetes 'in desteklenen en düşük sürümü v 1.14.
+> * Kubernetes 'in desteklenen en düşük sürümü v 1.17.
+> * OCP 'nin desteklenen en düşük sürümü 4,3 ' dir.
 > * Ortamınız ve Azure arasında hangi bağlantının gerekli olduğunu anlamak için [bağlantı gereksinimlerine](connectivity.md) bakın.
 > * Kalıcı depolama alanınızı yapılandırmaya ilişkin ayrıntıları öğrenmek için [depolama yapılandırma kılavuzu](storage-configuration.md) ' na bakın.
 > * Azure Kubernetes hizmetini kullanıyorsanız, kümenizin çalışan düğümü VM 'sinin boyutu en az **Standard_D8s_v3** olmalıdır ve **Premium diskleri kullanmalıdır.** Küme birden çok kullanılabilirlik bölgesini kapsamamalıdır. 
@@ -45,7 +46,7 @@ Azure Arc etkin veri Hizmetleri, birden fazla farklı yaklaşım kullanılarak b
 > [!NOTE]
 > Azure 'da Red Hat OpenShift kapsayıcı platformu kullanıyorsanız, kullanılabilir en son sürümü kullanmanız önerilir.
 
-Seçtiğiniz seçeneğe bağlı olarak, bazı araçlar _gerekli_olacaktır, ancak Azure Arc veri denetleyicisi 'ni oluşturmaya başlamadan önce [tüm istemci araçlarının yüklenmesi](./install-client-tools.md) önerilir.
+Seçtiğiniz seçeneğe bağlı olarak, bazı araçlar _gerekli_ olacaktır, ancak Azure Arc veri denetleyicisi 'ni oluşturmaya başlamadan önce [tüm istemci araçlarının yüklenmesi](./install-client-tools.md) önerilir.
 
 Seçtiğiniz seçenek ne olursa olsun, oluşturma işlemi sırasında aşağıdaki bilgileri sağlamanız gerekir:
 

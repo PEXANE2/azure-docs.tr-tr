@@ -10,16 +10,31 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 10/23/2020
 ms.author: pafarley
-ms.openlocfilehash: a87e76d4a726f7a01b96d602e7f41d60409dae56
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 030b09dae9db11fb14defecde3d14e949b9e6748
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521501"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412740"
 ---
 # <a name="whats-new-in-custom-vision"></a>Özel Görüntü İşleme yenilikleri
 
 Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notları, videolar, blog gönderileri ve diğer bilgi türleri olabilir. Hizmetle güncel kalmasını sağlamak için bu sayfaya yer işareti ekleyin.
+
+
+## <a name="october-2020"></a>Ekim 2020 
+
+### <a name="custom-base-model"></a>Özel temel model
+
+- Bazı uygulamalarda çok sayıda ek eğitim verisi vardır ancak modellerini ayrı olarak hassas ayarlamalar gerekir; Bu, küçük farklılıklar içeren farklı kaynaklardaki görüntülerin daha iyi performansa neden olur. Bu durumda, ilk modeli, büyük bir eğitim verileri hacmiyle her zamanki gibi eğitebilirsiniz. Ardından, istek gövdesinde _CustomBaseModelInfo_ ile 3,4 genel önizleme API 'Sindeki **traınproject** 'i çağırın. Kaynak proje ve aşağı akış hedef projesinde benzer görüntü özellikleri varsa, daha iyi performans sağlayabilirsiniz. 
+
+### <a name="new-domain-information"></a>Yeni etki alanı bilgileri
+
+- Özel Görüntü İşleme 3,4 genel önizleme API 'sindeki **Getdomains** tarafından döndürülen etki alanı bilgileri artık desteklenen verilebilir platformları, model mimarisinin kısa bir açıklamasını ve Compact etki alanlarının modelinin boyutunu içerir.
+
+### <a name="training-divergence-feedback"></a>Eğitim farklılaşma geri bildirimi
+
+- Özel Görüntü İşleme Özel Görüntü İşleme 3,4 genel önizleme API 'SI artık **Getıteration** çağrısından **TrainingErrorDetails** döndürüyor. Başarısız yinelemelerde, bu hatanın eğitim ağırlıklı gösterimi tarafından kaynaklanıp kaynaklanmadığını ortaya koyar. Bu, daha fazla ve daha yüksek kaliteli eğitim verileriyle giderilebilir.
 
 ## <a name="july-2020"></a>Temmuz 2020
 

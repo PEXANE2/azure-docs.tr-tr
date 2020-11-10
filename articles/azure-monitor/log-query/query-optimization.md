@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: ba9f2b10258f19504e3fd37723eceff7b8c37f6a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 7e1deb11eb8ae754198cae5be7ecf7150262a61e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203492"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411397"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularını iyileştirme
-Azure Izleyici günlükleri günlük verilerini depolamak ve bu verileri çözümlemek için sorguları çalıştırmak üzere [azure Veri Gezgini (ADX)](/azure/data-explorer/) kullanır. Sizin için ADX kümelerini oluşturur, yönetir ve korur ve bunları günlük Analizi iş yükünüz için en iyi duruma getirir. Bir sorgu çalıştırdığınızda, en iyi duruma getirilir ve çalışma alanı verilerini depolayan uygun ADX kümesine yönlendirilir. Hem Azure Izleyici günlükleri hem de Azure Veri Gezgini birçok otomatik sorgu iyileştirme mekanizması kullanır. Otomatik iyileştirmeler önemli ölçüde artırma sağlarken, bu durumlar bazı durumlarda sorgu performansınızı ciddi ölçüde İyileştirebileceğiniz bir durumlardır. Bu makalede, performans konuları ve bunları gidermeye yönelik çeşitli teknikler açıklanmaktadır.
+Azure Izleyici günlükleri günlük verilerini depolamak ve bu verileri çözümlemek için sorguları çalıştırmak üzere [azure Veri Gezgini (ADX)](/azure/data-explorer/) kullanır. Sizin için ADX kümelerini oluşturur, yönetir ve korur ve bunları günlük Analizi iş yükünüz için en iyi duruma getirir. Bir sorgu çalıştırdığınızda, en iyi duruma getirilir ve çalışma alanı verilerini depolayan uygun ADX kümesine yönlendirilir. Hem Azure Izleyici günlükleri hem de Azure Veri Gezgini birçok otomatik sorgu iyileştirme mekanizması kullanır. Otomatik iyileştirmeler önemli ölçüde arttırırken, sorgu performansınızı ciddi ölçüde iyileştirebileceğiniz bazı durumlar vardır. Bu makalede, performans konuları ve bunları gidermeye yönelik çeşitli teknikler açıklanmaktadır.
 
 Çoğu teknikte doğrudan Azure Veri Gezgini ve Azure Izleyici günlüklerinde çalıştırılan sorgularda yaygın olarak, burada ele alınan birkaç benzersiz Azure Izleyici günlüğü konuları bulunur. Daha fazla Azure Veri Gezgini iyileştirme ipucu için bkz. [sorgu en iyi uygulamaları](/azure/kusto/query/best-practices).
 
@@ -131,9 +131,9 @@ SecurityEvent
 
 [Max ()](/azure/kusto/query/max-aggfunction), [Sum ()](/azure/kusto/query/sum-aggfunction), [Count ()](/azure/kusto/query/count-aggfunction)ve [AVG ()](/azure/kusto/query/avg-aggfunction) gibi bazı toplama komutlarının mantığı nedeniyle düşük CPU etkisi olsa da, diğerleri daha karmaşıktır ve verimli bir şekilde yürütülmesine izin veren buluşsal yöntemler ve tahminler içerir. Örneğin, [DCount ()](/azure/kusto/query/dcount-aggfunction) , her bir değeri gerçekten saymadan, büyük veri kümelerinin ayrı sayısına kapanış tahmini sağlamak Için HyperLogLog algoritmasını kullanır; yüzdebirlik işlevleri, en yakın derecelendirme yüzdebirlik algoritmasını kullanarak benzer bir şekilde yapılır. Birçok komut, etkilerini azaltmak için isteğe bağlı parametreler içerir. Örneğin, [makeset ()](/azure/kusto/query/makeset-aggfunction) IŞLEVININ, CPU ve belleği önemli ölçüde etkileyen en büyük küme boyutunu tanımlamak için isteğe bağlı bir parametresi vardır.
 
-[JOIN](/azure/kusto/query/joinoperator?pivots=azuremonitor) ve [özetleme](/azure/kusto/query/summarizeoperator) komutları, büyük bir VERI kümesini işlerken yüksek CPU kullanımına neden olabilir. Karmaşıklığı, özetleme olarak ya da JOIN özniteliği olarak kullanılan sütunların *kardinalite*olarak adlandırılan olası değer sayısıyla doğrudan ilgilidir `by` . Katılmayı ve özetlemeyi açıklama ve iyileştirme için bkz. belge makaleleri ve iyileştirme ipuçları.
+[JOIN](/azure/kusto/query/joinoperator?pivots=azuremonitor) ve [özetleme](/azure/kusto/query/summarizeoperator) komutları, büyük bir VERI kümesini işlerken yüksek CPU kullanımına neden olabilir. Karmaşıklığı, özetleme olarak ya da JOIN özniteliği olarak kullanılan sütunların *kardinalite* olarak adlandırılan olası değer sayısıyla doğrudan ilgilidir `by` . Katılmayı ve özetlemeyi açıklama ve iyileştirme için bkz. belge makaleleri ve iyileştirme ipuçları.
 
-Örneğin, **CounterPath** her zaman **CounterName** ve **ObjectName**'e eşlenmiş olduğundan aşağıdaki sorgular tam olarak aynı sonucu üretir. İkinci bir, toplama boyutu daha küçük olduğu için daha verimlidir:
+Örneğin, **CounterPath** her zaman **CounterName** ve **ObjectName** 'e eşlenmiş olduğundan aşağıdaki sorgular tam olarak aynı sonucu üretir. İkinci bir, toplama boyutu daha küçük olduğu için daha verimlidir:
 
 ```Kusto
 //less efficient

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: terrylan
-ms.openlocfilehash: fa873baa2d2006164536dd26e040ffbf5cdd51cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14ff56c32fb1fb6ef2fef862e50277e8ef3e5b81
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85123992"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412893"
 ---
 # <a name="microsoft-services-in-cybersecurity"></a>Sisecurity 'de Microsoft Hizmetleri
 
@@ -37,7 +37,7 @@ Microsoft Hizmetleri tarafından sunulan hizmetler hakkında daha fazla bilgi ed
 * [Active Directory Hizmetleri için çevrimdışı değerlendirme](https://download.microsoft.com/download/1/C/1/1C15BA51-840E-498D-86C6-4BD35D33C79E/Prerequisites_Offline_AD.pdf)
 * [Gelişmiş güvenlik yönetimi ortamı](https://download.microsoft.com/download/A/C/5/AC5D21A6-E04B-4DC4-B1F2-AE060319A4D7/Premier_Support_for_Security/Popis/Enhanced-Security-Admin-Environment-Solution-Datasheet-%5BEN%5D.pdf)
 * [Azure AD uygulama hizmetleri](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/azure-active-directory-implementation-services-solution-brief.pdf)
-* [Yan yana hesap hareketine karşı koruma](https://docs.microsoft.com/azure-advanced-threat-protection/use-case-lateral-movement-path)
+* [Yan yana hesap hareketine karşı koruma](/azure-advanced-threat-protection/use-case-lateral-movement-path)
 * [Olay yanıtı ve kurtarma](/microsoft-365/compliance/gdpr-breach-microsoft-support-professional-services#data-protection-incident-response-overview)
 
 Microsoft Hizmetleri güvenlik danışmanlık hizmetleri hakkında [daha fazla bilgi edinin](https://aka.ms/cyberserv) .

@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: d129c37c909c630623f8a41c06da9aa80e4e2392
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ba0cbbccd1f4a9bc8ff8a4895e238c9150c9b17
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82837643"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413080"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Azure ön kapı hizmeti 'nde Azure Web uygulaması güvenlik duvarı hakkında sık sorulan sorular
 
@@ -64,7 +64,7 @@ Azure 'da WAF İlkeleri uygulanırken iki seçenek vardır. Azure ön kapısına
 
 ## <a name="is-ddos-protection-integrated-with-front-door"></a>DDoS koruması ön kapıla tümleşiktir mı? 
 
-Azure ağ kenarlarında küresel olarak dağıtılan Azure ön kapısı, büyük hacimli saldırıları artışlarını devralarak ve coğrafi olarak yalıtabilir. Bilinen imzaları olan http (ler) saldırılarını otomatik olarak engellemek ve derecelendirmek için özel WAF ilkesi oluşturabilirsiniz. Daha fazla bilgi için arka uçlarınızın dağıtıldığı VNet üzerinde DDoS koruma standardını etkinleştirebilirsiniz. Azure DDoS koruması standart müşterileri, bir saldırı sırasında anında yardım almak için maliyet koruması, SLA garantisi ve DDoS hızlı yanıt ekibinden uzmanlara erişim gibi ek avantajlar sağlar.
+Azure ağ kenarlarında küresel olarak dağıtılan Azure ön kapısı, büyük hacimli saldırıları artışlarını devralarak ve coğrafi olarak yalıtabilir. Bilinen imzaları olan http (ler) saldırılarını otomatik olarak engellemek ve derecelendirmek için özel WAF ilkesi oluşturabilirsiniz. Daha fazla bilgi için arka uçlarınızın dağıtıldığı VNet üzerinde DDoS koruma standardını etkinleştirebilirsiniz. Azure DDoS koruması standart müşterileri, bir saldırı sırasında anında yardım almak için maliyet koruması, SLA garantisi ve DDoS hızlı yanıt ekibinden uzmanlara erişim gibi ek avantajlar sağlar. Daha fazla bilgi için bkz. [ön kapıda DDoS koruması](../../frontdoor/front-door-ddos.md).
 
 ## <a name="why-do-additional-requests-above-the-threshold-configured-for-my-rate-limit-rule-get-passed-to-my-backend-server"></a>Hız sınırı kuralı için yapılandırılan eşiğin üzerinde neden ek istekler, arka uç sunucuma geçirilir?
 

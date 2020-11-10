@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: 75435155ba1dad798d301006a30a5d5b6e96226a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b94b71993285a61042be3c6cd9e4708315fab9f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88611186"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413012"
 ---
 # <a name="azure-firewall-faq"></a>Azure Güvenlik Duvarı hakkında SSS
 
@@ -40,9 +40,9 @@ Azure Güvenlik Duvarı, kuralları ve kural koleksiyonlarını destekler. Kural
 
 Üç tür kural koleksiyonu vardır:
 
-* *Uygulama kuralları*: bir alt ağdan erişilebilen tam etki alanı adlarını (FQDN) yapılandırın.
-* *Ağ kuralları*: kaynak adreslerini, protokolleri, hedef bağlantı noktalarını ve hedef adreslerini içeren kuralları yapılandırın.
-* *NAT kuralları*: gelen Internet bağlantılarına izin vermek için DNAT kurallarını yapılandırın.
+* *Uygulama kuralları* : bir alt ağdan erişilebilen tam etki alanı adlarını (FQDN) yapılandırın.
+* *Ağ kuralları* : kaynak adreslerini, protokolleri, hedef bağlantı noktalarını ve hedef adreslerini içeren kuralları yapılandırın.
+* *NAT kuralları* : gelen Internet bağlantılarına izin vermek için DNAT kurallarını yapılandırın.
 
 ## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Azure Güvenlik Duvarı gelen trafik filtrelemeyi destekliyor mu?
 
@@ -115,7 +115,7 @@ Evet, iki bağlı bileşen sanal ağı arasındaki trafiği yönlendirmek ve fil
 
 ## <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Azure Güvenlik Duvarı aynı sanal ağdaki veya eşlenen sanal ağlardaki alt ağlar arasında ağ trafiğini iletebilir ve filtreleyebilir mi?
 
-Evet. Ancak, aynı VNET 'teki alt ağlar arasında trafiği yeniden yönlendirmek üzere UDRs 'yi yapılandırmak için ek dikkat gerekir. VNET adres aralığının UDR için hedef ön ek olarak kullanılması yeterli olduğundan, bu, tüm trafiği Azure Güvenlik Duvarı örneği aracılığıyla aynı alt ağdaki başka bir makineye de yönlendirir. Bunu önlemek için, **sanal VNET**'in bir sonraki atlama türü ile UDR 'de alt ağ için bir yol ekleyin. Bu yolların yönetilmesi, bir miktar ve hataya açık olabilir. İç ağ kesimlenmesi için önerilen yöntem, UDRs gerektirmeyen ağ güvenlik gruplarını kullanmaktır.
+Evet. Ancak, aynı VNET 'teki alt ağlar arasında trafiği yeniden yönlendirmek üzere UDRs 'yi yapılandırmak için ek dikkat gerekir. VNET adres aralığının UDR için hedef ön ek olarak kullanılması yeterli olduğundan, bu, tüm trafiği Azure Güvenlik Duvarı örneği aracılığıyla aynı alt ağdaki başka bir makineye de yönlendirir. Bunu önlemek için, **sanal VNET** 'in bir sonraki atlama türü ile UDR 'de alt ağ için bir yol ekleyin. Bu yolların yönetilmesi, bir miktar ve hataya açık olabilir. İç ağ kesimlenmesi için önerilen yöntem, UDRs gerektirmeyen ağ güvenlik gruplarını kullanmaktır.
 
 ## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>Azure Güvenlik Duvarı, özel ağlar arasında SNAT 'ye giden bir mıdır?
 
@@ -139,9 +139,9 @@ Hayır. NAT kuralları, çevrilen trafiğe izin vermek için, karşılık gelen 
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>Uygulama kuralı hedef FQDN 'de joker karakterler nasıl çalışır?
 
-Joker karakterler şu anda yalnızca FQDN 'nin sol tarafında kullanılabilir. Örneğin, ***. contoso.com** ve ***contoso.com**.
+Joker karakterler şu anda yalnızca FQDN 'nin sol tarafında kullanılabilir. Örneğin, * *_. contoso.com_* ve * *_contoso.com_*.
 
-***. Contoso.com**yapılandırırsanız, *anyvalue*. contoso.com, ancak contoso.com (etki alanı tepesinde) izin verir. Etki alanı tepesinde izin vermek istiyorsanız, onu hedef FQDN olarak açıkça yapılandırmanız gerekir.
+* *_. Contoso.com_* yapılandırırsanız, *anyvalue*. contoso.com, ancak contoso.com (etki alanı tepesinde) izin verir. Etki alanı tepesinde izin vermek istiyorsanız, onu hedef FQDN olarak açıkça yapılandırmanız gerekir.
 
 ## <a name="what-does-provisioning-state-failed-mean"></a>*Sağlama durumu* ne anlama geliyor?
 
@@ -205,7 +205,7 @@ Set-AzFirewall -AzureFirewall $fw
 
 ## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>Azure Güvenlik duvarında hiçbir kural bu trafiğe izin vermediği halde bir TCP ping ve benzer araçlar, bir hedef FQDN 'ye başarıyla bağlanabilir mi?
 
-TCP ping, aslında hedef FQDN 'ye bağlanmamıştır. Bu durum, Azure Güvenlik Duvarı 'nın saydam proxy 'si giden trafik için 80/443 bağlantı noktasını dinlediğinden oluşur. TCP ping, güvenlik duvarıyla bağlantı kurarak paketi bırakır ve bağlantıyı günlüğe kaydeder. Bu davranışın herhangi bir güvenlik etkisi yoktur. Bununla birlikte, karışıklığı önlemek için bu davranıştaki olası değişiklikleri araştırıyoruz.
+TCP ping, aslında hedef FQDN 'ye bağlanmamıştır. Bu durum, Azure Güvenlik Duvarı 'nın saydam proxy 'si giden trafik için 80/443 bağlantı noktasını dinlediğinden oluşur. TCP ping, güvenlik duvarıyla bir bağlantı kurar ve ardından paketi bırakır. Bu davranışın herhangi bir güvenlik etkisi yoktur. Bununla birlikte, karışıklığı önlemek için bu davranıştaki olası değişiklikleri araştırıyoruz.
 
 ## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>IP grupları tarafından desteklenen IP adresi sayısı için sınırlamalar var mı?
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: aece7278d134145e00b027c184f3817d5566e1e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a5cd7a6019451b27b509aa7f486540c04c29ee2
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81408375"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412655"
 ---
 # <a name="security-control-inventory-and-asset-management"></a>Güvenlik denetimi: envanter ve varlık yönetimi
 
@@ -28,11 +28,11 @@ Abonelikleriniz içindeki tüm kaynakları (işlem, depolama, ağ, bağlantı no
 
 Klasik Azure kaynakları kaynak Graph aracılığıyla bulunabilse de, ileri doğru Azure Resource Manager kaynak oluşturmanız ve kullanılması kesinlikle önerilir.
 
-- [Azure Kaynak Graf ile sorgu oluşturma](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Azure Kaynak Graf ile sorgu oluşturma](../../governance/resource-graph/first-query-portal.md)
 
-- [Azure aboneliklerinizi görüntüleme](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Azure aboneliklerinizi görüntüleme](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-- [Azure RBAC 'yi anlama](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [Azure RBAC 'yi anlama](../../role-based-access-control/overview.md)
 
 ## <a name="62-maintain-asset-metadata"></a>6,2: varlık meta verilerini koruma
 
@@ -42,7 +42,7 @@ Klasik Azure kaynakları kaynak Graph aracılığıyla bulunabilse de, ileri do�
 
 Azure kaynaklarına Etiketler uygulayarak bunları bir taksonomi halinde mantıksal olarak organize etmek için meta veriler verirsiniz.
 
-- [Etiketler oluşturma ve kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../../azure-resource-manager/management/tag-resources.md)
 
 ## <a name="63-delete-unauthorized-azure-resources"></a>6,3: yetkisiz Azure kaynaklarını silme
 
@@ -52,11 +52,11 @@ Azure kaynaklarına Etiketler uygulayarak bunları bir taksonomi halinde mantık
 
 Varlıkları organize etmek ve izlemek için uygun yerlerde etiketleme, yönetim grupları ve ayrı abonelikler kullanın. Envanterin düzenli olarak mutabakatını yapın ve yetkisiz kaynakların aboneliğin zamanında silindiğinden emin olun.
 
-- [Ek Azure abonelikleri oluşturma](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [Ek Azure abonelikleri oluşturma](../../cost-management-billing/manage/create-subscription.md)
 
-- [Yönetim Grupları oluşturma](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [Yönetim Grupları oluşturma](../../governance/management-groups/create-management-group-portal.md)
 
-- [Etiketler oluşturma ve kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../../azure-resource-manager/management/tag-resources.md)
 
 ## <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6,4: onaylanan Azure kaynakları envanterini tanımlama ve sürdürme
 
@@ -76,9 +76,9 @@ Abonelikleriniz içinde oluşturulabilecek kaynak türlerine kısıtlamalar koym
 
 Azure Kaynak Grafiği 'ni kullanarak aboneliklerinde kaynakları sorgulama/bulma.  Ortamda bulunan tüm Azure kaynaklarının onaylandığından emin olun.
 
-- [Azure Ilkesini yapılandırma ve yönetme](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Ilkesini yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Graph ile sorgu oluşturma](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Azure Graph ile sorgu oluşturma](../../governance/resource-graph/first-query-portal.md)
 
 ## <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: işlem kaynakları içindeki onaylanmamış yazılım uygulamaları için izleyici
 
@@ -88,7 +88,7 @@ Azure Kaynak Grafiği 'ni kullanarak aboneliklerinde kaynakları sorgulama/bulma
 
 Sanal makinelerdeki tüm yazılımlarla ilgili bilgi toplamayı otomatik hale getirmek için Azure sanal makine envanterini kullanın. Yazılım adı, sürüm, yayımcı ve yenileme süresi Azure portal kullanılabilir. Yüklemeyi tarih ve diğer bilgilere erişim sağlamak için, Konuk düzeyinde tanılamayı etkinleştirin ve Windows olay günlüklerini Log Analytics çalışma alanına getirin.
 
-- [Azure sanal makine envanterini etkinleştirme](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
+- [Azure sanal makine envanterini etkinleştirme](../../automation/automation-tutorial-installed-software.md)
 
 ## <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: onaylanmamış Azure kaynaklarını ve yazılım uygulamalarını kaldırma
 
@@ -98,11 +98,11 @@ Sanal makinelerdeki tüm yazılımlarla ilgili bilgi toplamayı otomatik hale ge
 
 Sanal makinelerde yüklü olan tüm yazılımları belirlemek için Azure Güvenlik Merkezi 'nin dosya bütünlüğü Izleme (Değişiklik İzleme) ve sanal makine envanterini kullanın. Yetkisiz yazılımı kaldırmak için kendi işleminizi uygulayabilirsiniz. Onaylanmamış yazılımları belirlemek için bir üçüncü taraf çözümü de kullanabilirsiniz.
 
-- [Dosya bütünlüğü Izlemeyi kullanma](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring#using-file-integrity-monitoring)
+- [Dosya bütünlüğü Izlemeyi kullanma](../../security-center/security-center-file-integrity-monitoring.md)
 
-- [Azure Değişiklik İzleme anlama](https://docs.microsoft.com/azure/automation/change-tracking)
+- [Azure Değişiklik İzleme anlama](../../automation/change-tracking.md)
 
-- [Azure sanal makine envanterini etkinleştirme](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
+- [Azure sanal makine envanterini etkinleştirme](../../automation/automation-tutorial-installed-software.md)
 
 ## <a name="68-use-only-approved-applications"></a>6,8: yalnızca onaylanan uygulamaları kullan
 
@@ -112,7 +112,7 @@ Sanal makinelerde yüklü olan tüm yazılımları belirlemek için Azure Güven
 
 Azure Güvenlik Merkezi Uyarlamalı uygulama denetimlerini kullanarak yalnızca yetkili yazılımın yürütüldüğünü ve tüm yetkisiz yazılımların Azure sanal makinelerinde yürütülmesini engellediği emin olun.
 
-- [Azure Güvenlik Merkezi Uyarlamalı uygulama denetimlerini kullanma](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+- [Azure Güvenlik Merkezi Uyarlamalı uygulama denetimlerini kullanma](../../security-center/security-center-adaptive-application.md)
 
 ## <a name="69-use-only-approved-azure-services"></a>6,9: yalnızca onaylanan Azure hizmetlerini kullanın
 
@@ -122,9 +122,9 @@ Azure Güvenlik Merkezi Uyarlamalı uygulama denetimlerini kullanarak yalnızca 
 
 Ortamınızda sağlayabileceğiniz hizmetleri kısıtlamak için Azure Ilkesini kullanın.
 
-- [Azure Ilkesini yapılandırma ve yönetme](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Ilkesini yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+- [Azure Ilkesiyle belirli bir kaynak türünü reddetme](../../governance/policy/samples/index.md)
 
 ## <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6,10: onaylanan yazılım başlıkları envanterini koruyun
 
@@ -136,7 +136,7 @@ Bir kuralın hangi dosya türlerini uygulayabileceği veya uygulanmayabilir beli
 
 Bu gereksinimi karşılamazsa üçüncü taraf çözümünü uygulayın.
 
-- [Azure Güvenlik Merkezi Uyarlamalı uygulama denetimlerini kullanma](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+- [Azure Güvenlik Merkezi Uyarlamalı uygulama denetimlerini kullanma](../../security-center/security-center-adaptive-application.md)
 
 ## <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6,11: kullanıcıların Azure Resource Manager etkileşime geçme yeteneğini sınırlayın
 
@@ -146,7 +146,7 @@ Bu gereksinimi karşılamazsa üçüncü taraf çözümünü uygulayın.
 
 "Microsoft Azure yönetimi" uygulaması için "erişimi engelle" özelliğini yapılandırarak kullanıcıların Azure kaynakları yöneticisi ile etkileşime geçmesini sınırlamak için Azure koşullu erişimi kullanın.
 
-- [Azure Kaynak Yöneticisi 'ne erişimi engellemek için koşullu erişimi yapılandırma](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+- [Azure Kaynak Yöneticisi 'ne erişimi engellemek için koşullu erişimi yapılandırma](../../role-based-access-control/conditional-access-azure-management.md)
 
 ## <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: kullanıcıların işlem kaynakları içinde betikleri yürütme yeteneğini sınırlayın
 
@@ -156,9 +156,9 @@ Bu gereksinimi karşılamazsa üçüncü taraf çözümünü uygulayın.
 
 Betiklerin türüne bağlı olarak, kullanıcıların Azure işlem kaynakları içinde betikleri yürütme yeteneğini sınırlamak için işletim sistemine özgü yapılandırma veya üçüncü taraf kaynakları kullanabilirsiniz.  Ayrıca, Azure Güvenlik Merkezi Uyarlamalı uygulama denetimlerinden yararlanarak yalnızca yetkili yazılımın yürütüldüğünü ve tüm yetkisiz yazılımların Azure sanal makinelerinde yürütülmesini engellemiş olmasını sağlayabilirsiniz.
 
-- [Windows ortamlarında PowerShell betiği yürütmeyi denetleme](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+- [Windows ortamlarında PowerShell betiği yürütmeyi denetleme](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
-- [Azure Güvenlik Merkezi Uyarlamalı uygulama denetimlerini kullanma](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+- [Azure Güvenlik Merkezi Uyarlamalı uygulama denetimlerini kullanma](../../security-center/security-center-adaptive-application.md)
 
 ## <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: yüksek riskli uygulamaları fiziksel olarak veya mantıksal olarak ayırt edin
 
@@ -168,9 +168,9 @@ Betiklerin türüne bağlı olarak, kullanıcıların Azure işlem kaynakları i
 
 İşletme işlemleri için gerekli olan, ancak kuruluşa daha fazla risk doğurabilecek yazılımlar, kendi sanal makinesi ve/veya sanal ağı içinde yalıtılmalı ve bir Azure Güvenlik Duvarı veya ağ güvenlik grubu ile yeterince güvenmelidir.
 
-- [Sanal ağ oluşturma](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [Sanal ağ oluşturma](../../virtual-network/quick-create-portal.md)
 
-- [Güvenlik Yapılandırması ile NSG oluşturma](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [Güvenlik Yapılandırması ile NSG oluşturma](../../virtual-network/tutorial-filter-network-traffic.md)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7b41105bafedb8eeaffe5f266f5dd824957c57e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eeda43b972e30c573743c8c59f75cfae61d7ee85
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441198"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413163"
 ---
 Şimdilik, Ultra diskler ek sınırlamalara sahiptir ve bunlar şu şekildedir:
 
@@ -34,6 +34,7 @@ Aşağıdaki tabloda, Ultra disklerin ' de kullanılabildiği bölgeler ve bunla
 |Orta Güney ABD    |Yalnızca tek VM 'Ler (kullanılabilirlik kümeleri ve sanal makine ölçek kümeleri desteklenmez)|
 |US Gov Arizona     |Yalnızca tek VM 'Ler (kullanılabilirlik kümeleri ve sanal makine ölçek kümeleri desteklenmez)|
 |US Gov Virginia     |Yalnızca tek VM 'Ler (kullanılabilirlik kümeleri ve sanal makine ölçek kümeleri desteklenmez)|
+|US Gov Texas     |Yalnızca tek VM 'Ler (kullanılabilirlik kümeleri ve sanal makine ölçek kümeleri desteklenmez)|
 |Batı ABD     |Yalnızca tek VM 'Ler (kullanılabilirlik kümeleri ve sanal makine ölçek kümeleri desteklenmez)        |
 |Orta Avustralya    |Yalnızca tek VM 'Ler (kullanılabilirlik kümeleri ve sanal makine ölçek kümeleri desteklenmez)|
 |Doğu Avustralya     |Üç kullanılabilirlik bölgesi         |
@@ -44,7 +45,7 @@ Aşağıdaki tabloda, Ultra disklerin ' de kullanılabildiği bölgeler ve bunla
 |Doğu ABD 2     |Üç kullanılabilirlik bölgesi         |
 |Orta Fransa    |İki kullanılabilirlik bölgesi        |
 |Doğu Japonya    |Üç kullanılabilirlik bölgesi        |
-|Kuzey Avrupa    |Üç kullanılabilirlik bölgesi        |
+|North Europe    |Üç kullanılabilirlik bölgesi        |
 |Güney Birleşik Krallık    |Üç kullanılabilirlik bölgesi        |
 |West Europe    | Üç kullanılabilirlik bölgesi|
 |Batı ABD 2    |Üç kullanılabilirlik bölgesi|

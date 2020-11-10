@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dc931c461988daf9ff6fb2f954b52fa58ce94af
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 795f5ede382e561ee810e54e1f8897c5d806e8b8
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369786"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412383"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Azure Active Directory ile güçlü bir kimlik temeli için dört adım
 
@@ -83,7 +83,7 @@ Modern kuruluşlarda, BT departmanları genellikle kullanıcıların işlerini y
 
 [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS), KULLANıCıLARıN, SSO ve koşullu erişim gibi yeteneklerden yararlanması için, Kullanıcı tarafından tasdikli ve kurumsal uygulamalar galerisine ekleyebileceği yararlı uygulamaları belirlemenize yardımcı olabilir.
 
-<em>"**Cloud App Security** , Accenture korumaya yardımcı olan temel güvenlik ilkelerini destekleyecek şekilde, insanlarımızın bulut ve SaaS uygulamalarınızı doğru şekilde kullandığından emin olmamıza yardımcı olur."</em> --- [John Blasi, Direktörü yönetme, bilgi güvenliği, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+<em>" **Cloud App Security** , Accenture korumaya yardımcı olan temel güvenlik ilkelerini destekleyecek şekilde, insanlarımızın bulut ve SaaS uygulamalarınızı doğru şekilde kullandığından emin olmamıza yardımcı olur."</em> --- [John Blasi, Direktörü yönetme, bilgi güvenliği, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 MCAS Ayrıca, gölge BT 'nin risk düzeyini tespit edebilir, kurumsal verilere yetkisiz erişimi, olası veri sızıntısını ve uygulamalarda bulunan diğer güvenlik risklerini de belirleyebilir.
 
@@ -147,7 +147,7 @@ Benzer şekilde, [self servis parola yönetimi raporu](../authentication/howto-s
 
 ### <a name="self-service-app-management"></a>Self Servis uygulama yönetimi
 
-Kullanıcılarınızın erişim panelinden uygulamaları kendi kendine bulabilmesi için, kullanıcıların kendi kendine bulmasını ve erişim istemesini sağlamak istediğiniz uygulamalara [self servis uygulama erişimini](../manage-apps/access-panel-manage-self-service-access.md) etkinleştirmeniz gerekir. Self Servis uygulama erişimi, kullanıcıların uygulamaları kendi kendine bulmasına ve isteğe bağlı olarak iş grubunun bu uygulamalara erişimi onaylamasını sağlayan harika bir yoldur. İş grubunun, uygulamalar üzerinde bu kullanıcılara atanan kimlik bilgilerini, erişim panellerinden doğrudan [uygulama Single-Sign](../manage-apps/application-sign-in-problem-password-sso-gallery.md#configure-password-sso-for-an-azure-ad-gallery-app) yönetmesine izin verebilirsiniz.
+Kullanıcılarınızın erişim panelinden uygulamaları kendi kendine bulabilmesi için, kullanıcıların kendi kendine bulmasını ve erişim istemesini sağlamak istediğiniz uygulamalara [self servis uygulama erişimini](../manage-apps/access-panel-manage-self-service-access.md) etkinleştirmeniz gerekir. Self Servis uygulama erişimi, kullanıcıların uygulamaları kendi kendine bulmasına ve isteğe bağlı olarak iş grubunun bu uygulamalara erişimi onaylamasını sağlayan harika bir yoldur. İş grubunun, uygulamalar üzerinde bu kullanıcılara atanan kimlik bilgilerini, erişim panellerinden doğrudan [uygulama Single-Sign](../manage-apps/troubleshoot-password-based-sso.md#automatically-capture-sign-in-fields-for-an-app) yönetmesine izin verebilirsiniz.
 
 ### <a name="self-service-group-management"></a>Self servis grup yönetimi
 
@@ -267,6 +267,6 @@ BT yolculuğuna kuruluşunuzda daha katı bir kimlik temele başladığınızda,
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Active Directory yeteneklerini ve bu beş adımlı denetim listesini kullanarak, [kimlik altyapınızın güvenliğini sağlamaya yönelik beş](https://aka.ms/securitysteps)adım aracılığıyla güvenli durunuzu nasıl artırabileceğinizi öğrenin.
+Azure Active Directory yeteneklerini ve bu beş adımlı denetim listesini kullanarak, [kimlik altyapınızın güvenliğini sağlamaya yönelik beş](../../security/fundamentals/steps-secure-identity.md)adım aracılığıyla güvenli durunuzu nasıl artırabileceğinizi öğrenin.
 
-Azure AD 'deki kimlik özelliklerinin, kuruluşların kendi kimlik yönetimini geleneksel şirket içi sistemlerden Azure AD 'ye hızla benimsemesini ve taşımasına imkan tanıyan çözümler ve yetenekler sunarak bulut yönetilen yönetimine geçişinizi hızlandırmanıza nasıl yardımcı olabileceğini öğrenin. [Azure AD, şirket Içi Iş yükleri Için bulut tarafından yönetilen yönetim sağlar](https://aka.ms/cloudgoverned).
+Azure AD 'deki kimlik özelliklerinin, kuruluşların kendi kimlik yönetimini geleneksel şirket içi sistemlerden Azure AD 'ye hızla benimsemesini ve taşımasına imkan tanıyan çözümler ve yetenekler sunarak bulut yönetilen yönetimine geçişinizi hızlandırmanıza nasıl yardımcı olabileceğini öğrenin. [Azure AD, şirket Içi Iş yükleri Için bulut tarafından yönetilen yönetim sağlar](./cloud-governed-management-for-on-premises.md).

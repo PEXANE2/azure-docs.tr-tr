@@ -16,12 +16,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77895fd81bd37e304d422aea64da0298fc1673ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a0c8a42edad08308095469039c048f8dd8552af
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85356483"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413471"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-with-azure-active-directory"></a>Azure Active Directory ile eşitlenmeyen bir nesneyle ilgili sorunları giderme
 
@@ -36,7 +36,7 @@ Eşitleme sorunlarını araştırmadan önce Azure AD Connect eşitleme işlemin
 
   ![Azure AD Connect eşitleme işleminin diyagramı](./media/tshoot-connect-object-not-syncing/syncingprocess.png)
 
-### <a name="terminology"></a>**Terminoloji**
+### <a name="terminology"></a>**Terimler**
 
 * **CS:** Bir veritabanındaki bir tablo olan bağlayıcı alanı
 * **MV:** Veritabanındaki bir tablo olan metaverse
@@ -81,17 +81,17 @@ Synchronization Service Manager **işlemler** sekmesi, sorun gidermeyi başlatma
 | tamamlandı- \* -Uyarılar |Çalıştırma tamamlandı, ancak bazı veriler beklenen durumda değil. Hatalar varsa, bu ileti genellikle yalnızca bir belirtidir. Hatalar giderene kadar uyarıları araştırmayın. |
 | başarılı |Sorun yok. |
 
-Bir satır seçtiğinizde, **işlemler** sekmesinin en alt kısmı bu çalıştırmanın ayrıntılarını gösterecek şekilde güncelleştirilir. Bu alanın en sol tarafında, **adım #** başlıklı bir listeniz olabilir. Bu liste yalnızca Ormanınızda birden fazla etki alanınız varsa ve her etki alanı bir adımla temsil edildiğinde görüntülenir. Etki alanı adı, başlık **bölümünün**altında bulunabilir. **Eşitleme istatistikleri** başlığı altında, işlenen değişiklik sayısı hakkında daha fazla bilgi edinebilirsiniz. Değiştirilen nesnelerin listesini almak için bağlantıları seçin. Hatalar içeren nesneler varsa, bu hatalar **Eşitleme hataları** başlığının altında görünür.
+Bir satır seçtiğinizde, **işlemler** sekmesinin en alt kısmı bu çalıştırmanın ayrıntılarını gösterecek şekilde güncelleştirilir. Bu alanın en sol tarafında, **adım #** başlıklı bir listeniz olabilir. Bu liste yalnızca Ormanınızda birden fazla etki alanınız varsa ve her etki alanı bir adımla temsil edildiğinde görüntülenir. Etki alanı adı, başlık **bölümünün** altında bulunabilir. **Eşitleme istatistikleri** başlığı altında, işlenen değişiklik sayısı hakkında daha fazla bilgi edinebilirsiniz. Değiştirilen nesnelerin listesini almak için bağlantıları seçin. Hatalar içeren nesneler varsa, bu hatalar **Eşitleme hataları** başlığının altında görünür.
 
 ### <a name="errors-on-the-operations-tab"></a>Işlemler sekmesinde hatalar
 Hatalar olduğunda Synchronization Service Manager hem hata içindeki nesneyi hem de hatayı daha fazla bilgi sağlayan bağlantılar olarak gösterir.
 
 ![Synchronization Service Manager hataların ekran görüntüsü](./media/tshoot-connect-object-not-syncing/errorsync.png)  
-Hata dizesini seçerek başlayın. (Önceki şekilde, hata dizesi **eşitleme-kural-hatası-işlev-tetiklendi**.) Önce nesneye bir genel bakış sunulur. Gerçek hatayı görmek için **yığın izlemesi**' ni seçin. Bu izleme hata için hata ayıklama düzeyi bilgileri sağlar.
+Hata dizesini seçerek başlayın. (Önceki şekilde, hata dizesi **eşitleme-kural-hatası-işlev-tetiklendi**.) Önce nesneye bir genel bakış sunulur. Gerçek hatayı görmek için **yığın izlemesi** ' ni seçin. Bu izleme hata için hata ayıklama düzeyi bilgileri sağlar.
 
-**Çağrı yığını bilgilerini** sağ tıklatın, **Tümünü Seç**' e tıklayın ve ardından **Kopyala**' yı seçin. Ardından, yığını kopyalayın ve Not Defteri gibi en sevdiğiniz düzenleyicide hataya bakın.
+**Çağrı yığını bilgilerini** sağ tıklatın, **Tümünü Seç** ' e tıklayın ve ardından **Kopyala** ' yı seçin. Ardından, yığını kopyalayın ve Not Defteri gibi en sevdiğiniz düzenleyicide hataya bakın.
 
-Hata **SyncRulesEngine**' den ise, çağrı yığını bilgileri önce nesnedeki tüm öznitelikleri listeler. **InnerException =>** başlığını görene kadar aşağı kaydırın.  
+Hata **SyncRulesEngine** ' den ise, çağrı yığını bilgileri önce nesnedeki tüm öznitelikleri listeler. **InnerException =>** başlığını görene kadar aşağı kaydırın.  
 
   ![InnerException = başlığı altındaki hata bilgilerini gösteren Synchronization Service Manager ekran görüntüsü>](./media/tshoot-connect-object-not-syncing/errorinnerexception.png)
   
@@ -104,19 +104,19 @@ Hata yeterli bilgi vermeirse, verilerin kendisine bakmayı zaman atalım. Nesne 
 
 ### <a name="searching-for-an-object-in-the-cs"></a>CS 'de nesne arama
 
-Synchronization Service Manager, **Bağlayıcılar**' ı seçin, Active Directory bağlayıcısını seçin ve **bağlayıcı alanını ara**' yı seçin.
+Synchronization Service Manager, **Bağlayıcılar** ' ı seçin, Active Directory bağlayıcısını seçin ve **bağlayıcı alanını ara** ' yı seçin.
 
-**Kapsam** kutusunda, CN özniteliğinde aramak istediğinizde **RDN** ' yi seçin veya **distinguishedName 'dir** özniteliğinde aramak istediğinizde **DN veya tutturucu** ' ı seçin. Bir değer girin ve **Ara**' yı seçin. 
+**Kapsam** kutusunda, CN özniteliğinde aramak istediğinizde **RDN** ' yi seçin veya **distinguishedName 'dir** özniteliğinde aramak istediğinizde **DN veya tutturucu** ' ı seçin. Bir değer girin ve **Ara** ' yı seçin. 
  
 ![Bağlayıcı alanı aramasının ekran görüntüsü](./media/tshoot-connect-object-not-syncing/cssearch.png)  
 
 Aradığınız nesneyi bulamazsanız, [etki alanı tabanlı filtreleme](how-to-connect-sync-configure-filtering.md#domain-based-filtering) veya [OU tabanlı filtrelemeyle](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)filtrelenmiş olabilir. Filtrelemenin beklenen şekilde yapılandırıldığını doğrulamak için [Azure AD Connect eşitleme: filtrelemeyi yapılandırma](how-to-connect-sync-configure-filtering.md)' yı okuyun.
 
-Azure AD bağlayıcısını seçerek başka bir faydalı arama gerçekleştirebilirsiniz. **Kapsam** kutusunda, **bekleyen içeri aktar**' ı seçin ve ardından **Ekle** onay kutusunu seçin. Bu arama, Azure AD 'de bulunan ve şirket içi bir nesneyle ilişkilendirilebilen tüm eşitlenmiş nesneleri sağlar.  
+Azure AD bağlayıcısını seçerek başka bir faydalı arama gerçekleştirebilirsiniz. **Kapsam** kutusunda, **bekleyen içeri aktar** ' ı seçin ve ardından **Ekle** onay kutusunu seçin. Bu arama, Azure AD 'de bulunan ve şirket içi bir nesneyle ilişkilendirilebilen tüm eşitlenmiş nesneleri sağlar.  
 
 ![Bir bağlayıcı alanı aramasında artık çalışma görüntüsü](./media/tshoot-connect-object-not-syncing/cssearchorphan.png) 
  
-Bu nesneler başka bir eşitleme altyapısı veya farklı filtreleme yapılandırmasına sahip bir eşitleme altyapısı tarafından oluşturulmuştur. Bu artık nesneler artık yönetilmez. Bu listeyi gözden geçirin ve [Azure AD PowerShell](https://aka.ms/aadposh) cmdlet 'lerini kullanarak bu nesneleri kaldırmayı göz önünde bulundurun.
+Bu nesneler başka bir eşitleme altyapısı veya farklı filtreleme yapılandırmasına sahip bir eşitleme altyapısı tarafından oluşturulmuştur. Bu artık nesneler artık yönetilmez. Bu listeyi gözden geçirin ve [Azure AD PowerShell](/previous-versions/azure/jj151815(v=azure.100)) cmdlet 'lerini kullanarak bu nesneleri kaldırmayı göz önünde bulundurun.
 
 ### <a name="cs-import"></a>CS içeri aktarma
 Bir CS nesnesi açtığınızda, en üstte birkaç sekme vardır. **İçeri** aktarma sekmesi, bir içeri aktarma işleminden sonra hazırlanan verileri gösterir.  
@@ -134,16 +134,16 @@ Bir CS nesnesi açtığınızda, en üstte birkaç sekme vardır. **İçeri** ak
 
 ![Bağlayıcı alanı nesnesindeki kökenini sekmesini gösteren ekran görüntüsü Özellikler penceresi](./media/tshoot-connect-object-not-syncing/cslineage.png)  
 
-Yukarıdaki şekilde, **eylem** sütununda eylem **sağlaması**olan bir gelen eşitleme kuralı gösterilmektedir. Bu, bu bağlayıcı alanı nesnesi mevcut olduğu sürece meta veri deposu nesnesi kalır. Bunun yerine eşitleme kuralları listesi, bir **sağlama** eylemiyle giden eşitleme kuralı gösteriyorsa, meta veri deposu nesnesi silindiğinde bu nesne silinir.  
+Yukarıdaki şekilde, **eylem** sütununda eylem **sağlaması** olan bir gelen eşitleme kuralı gösterilmektedir. Bu, bu bağlayıcı alanı nesnesi mevcut olduğu sürece meta veri deposu nesnesi kalır. Bunun yerine eşitleme kuralları listesi, bir **sağlama** eylemiyle giden eşitleme kuralı gösteriyorsa, meta veri deposu nesnesi silindiğinde bu nesne silinir.  
 
 ![Bağlayıcı alanı nesnesindeki kökenini sekmesinde bir kökenini penceresinin ekran görüntüsü Özellikler penceresi](./media/tshoot-connect-object-not-syncing/cslineageout.png)  
 
-Yukarıdaki şekilde, bir eşitleme kuralı **true**değerine sahip olduğundan, **PasswordSync** sütununda gelen bağlayıcı alanının parola üzerinde değişikliklere katkıda bulunabileceğini de görebilirsiniz. Bu parola, giden kuralı aracılığıyla Azure AD 'ye gönderilir.
+Yukarıdaki şekilde, bir eşitleme kuralı **true** değerine sahip olduğundan, **PasswordSync** sütununda gelen bağlayıcı alanının parola üzerinde değişikliklere katkıda bulunabileceğini de görebilirsiniz. Bu parola, giden kuralı aracılığıyla Azure AD 'ye gönderilir.
 
 **Kökenini** sekmesinden [**Metadize nesne özelliklerini**](#mv-attributes)seçerek meta veri deposuna ulaşabilirsiniz.
 
 ### <a name="preview"></a>Önizleme
-**Bağlayıcı alanı nesne özellikleri** penceresinin sol alt köşesinde **Önizleme** düğmesi bulunur. Tek bir nesneyi eşitleyebileceğiniz **Önizleme** sayfasını açmak için bu düğmeyi seçin. Bu sayfa, bazı özel eşitleme kurallarında sorun giderirken ve bir değişikliğin tek bir nesne üzerinde etkisini görmek istediğinizde yararlıdır. **Tam eşitleme** veya **Delta eşitlemesi**seçebilirsiniz. Ayrıca, yalnızca bellekteki değişikliği tutan **Önizleme Oluştur**seçeneğini de belirleyebilirsiniz. Ya da meta veri deposu güncelleyen **yürütme önizlemesi**seçin ve hedef bağlayıcı alanlarında tüm değişiklikleri aşamalar.  
+**Bağlayıcı alanı nesne özellikleri** penceresinin sol alt köşesinde **Önizleme** düğmesi bulunur. Tek bir nesneyi eşitleyebileceğiniz **Önizleme** sayfasını açmak için bu düğmeyi seçin. Bu sayfa, bazı özel eşitleme kurallarında sorun giderirken ve bir değişikliğin tek bir nesne üzerinde etkisini görmek istediğinizde yararlıdır. **Tam eşitleme** veya **Delta eşitlemesi** seçebilirsiniz. Ayrıca, yalnızca bellekteki değişikliği tutan **Önizleme Oluştur** seçeneğini de belirleyebilirsiniz. Ya da meta veri deposu güncelleyen **yürütme önizlemesi** seçin ve hedef bağlayıcı alanlarında tüm değişiklikleri aşamalar.  
 
 ![Önizleme sayfasının başlangıç önizlemesi seçiliyken ekran görüntüsü](./media/tshoot-connect-object-not-syncing/preview.png)  
 
@@ -158,7 +158,7 @@ Yukarıdaki şekilde, bir eşitleme kuralı **true**değerine sahip olduğundan,
 Kaynak Active Directory bağlayıcı alanından aramaya başlamak genellikle daha iyidir. Ancak, meta veri deposundaki aramayı da başlatabilirsiniz.
 
 ### <a name="searching-for-an-object-in-the-mv"></a>MV 'da nesne arama
-Synchronization Service Manager, aşağıdaki şekilde **Meta dize araması**' nı seçin. Kullanıcıyı bulduğunu bildiğiniz bir sorgu oluşturun. **AccountName** (**sAMAccountName**) ve **userPrincipalName**gibi ortak öznitelikleri arayın. Daha fazla bilgi için bkz. [Sync Service Manager Metadize Search](how-to-connect-sync-service-manager-ui-mvsearch.md).
+Synchronization Service Manager, aşağıdaki şekilde **Meta dize araması** ' nı seçin. Kullanıcıyı bulduğunu bildiğiniz bir sorgu oluşturun. **AccountName** ( **sAMAccountName** ) ve **userPrincipalName** gibi ortak öznitelikleri arayın. Daha fazla bilgi için bkz. [Sync Service Manager Metadize Search](how-to-connect-sync-service-manager-ui-mvsearch.md).
 
 ![Metadize arama sekmesi seçiliyken Synchronization Service Manager ekran görüntüsü](./media/tshoot-connect-object-not-syncing/mvsearch.png)  
 
@@ -167,11 +167,11 @@ Synchronization Service Manager, aşağıdaki şekilde **Meta dize araması**' n
 Nesneyi bulamazsanız, meta veri deposuna henüz ulaşılamadı. Active Directory [bağlayıcı alanında](#connector-space-object-properties)nesneyi aramaya devam edin. Nesneyi Active Directory bağlayıcı alanında bulursanız, nesnenin meta veri deposuna geldiğini engelleyen bir eşitleme hatası olabilir veya bir eşitleme kuralı kapsam filtresi uygulanabilir.
 
 ### <a name="object-not-found-in-the-mv"></a>Nesne MV 'da bulunamadı
-Nesne Active Directory CS ise ve MV 'da yoksa, bir kapsam filtresi uygulanır. Kapsam filtresine bakmak için masaüstü uygulaması menüsüne gidin ve **eşitleme kuralları Düzenleyicisi**' ni seçin. Aşağıdaki filtreyi ayarlayarak nesnesine uygulanabilir kuralları filtreleyin.
+Nesne Active Directory CS ise ve MV 'da yoksa, bir kapsam filtresi uygulanır. Kapsam filtresine bakmak için masaüstü uygulaması menüsüne gidin ve **eşitleme kuralları Düzenleyicisi** ' ni seçin. Aşağıdaki filtreyi ayarlayarak nesnesine uygulanabilir kuralları filtreleyin.
 
   ![Bir gelen eşitleme kuralları aramasını gösteren eşitleme kuralları Düzenleyicisi 'nin ekran görüntüsü](./media/tshoot-connect-object-not-syncing/syncrulessearch.png)
 
-Yukarıdaki listedeki her bir kuralı görüntüleyin ve **kapsam filtresini**denetleyin. Aşağıdaki kapsam filtresinde, **Iscriticalhandle** değeri null veya boş ya da boş ise kapsam içinde olur.
+Yukarıdaki listedeki her bir kuralı görüntüleyin ve **kapsam filtresini** denetleyin. Aşağıdaki kapsam filtresinde, **Iscriticalhandle** değeri null veya boş ya da boş ise kapsam içinde olur.
 
   ![Gelen eşitleme kuralı aramasında kapsam filtresinin ekran görüntüsü](./media/tshoot-connect-object-not-syncing/scopingfilter.png)
 
@@ -191,8 +191,8 @@ Giden kapsam filtresine bakmak için aşağıdaki filtreyi ayarlayarak nesnenin 
 ![Meta veri deposu nesnesinin, öznitelikler sekmesi seçili Özellikler penceresi ekran görüntüsü](./media/tshoot-connect-object-not-syncing/mvobject.png)  
 
 Bir nesne eşitleniyorsa, meta veri deposundaki öznitelik durumları hakkında aşağıdaki soruları sorun.
-- **Cloudfıltered** özniteliği var ve **true**olarak ayarlandı mı? Varsa, [öznitelik tabanlı filtrelemede](how-to-connect-sync-configure-filtering.md#attribute-based-filtering)adımlara göre filtrelenmiştir.
-- Öznitelik **Sourcetutturucu** var mı? Aksi takdirde, bir hesap-kaynak orman topolojisi mi var? Bir nesne, bağlantılı bir posta kutusu olarak tanımlanmışsa ( **msExchRecipientTypeDetails** özelliği **2**' dir), **sourcetutturucu** , etkin bir Active Directory hesabıyla ormana katkıda bulunur. Ana hesabın içeri aktarıldığından ve doğru eşitlendiğinden emin olun. Ana hesap, nesne [bağlayıcıları](#mv-connectors) arasında listelenmiş olmalıdır.
+- **Cloudfıltered** özniteliği var ve **true** olarak ayarlandı mı? Varsa, [öznitelik tabanlı filtrelemede](how-to-connect-sync-configure-filtering.md#attribute-based-filtering)adımlara göre filtrelenmiştir.
+- Öznitelik **Sourcetutturucu** var mı? Aksi takdirde, bir hesap-kaynak orman topolojisi mi var? Bir nesne, bağlantılı bir posta kutusu olarak tanımlanmışsa ( **msExchRecipientTypeDetails** özelliği **2** ' dir), **sourcetutturucu** , etkin bir Active Directory hesabıyla ormana katkıda bulunur. Ana hesabın içeri aktarıldığından ve doğru eşitlendiğinden emin olun. Ana hesap, nesne [bağlayıcıları](#mv-connectors) arasında listelenmiş olmalıdır.
 
 ### <a name="mv-connectors"></a>MV bağlayıcıları
 **Bağlayıcılar** sekmesi, nesnesinin temsili olan tüm bağlayıcı alanlarını gösterir. 
@@ -206,7 +206,7 @@ Bir nesne eşitleniyorsa, meta veri deposundaki öznitelik durumları hakkında 
 
 Bağlayıcıyı Azure AD 'ye kaçırdıysanız, Azure AD 'ye hazırlama ölçütlerini doğrulamak için [MV özniteliklerinin](#mv-attributes) bölümüne bakın.
 
-**Bağlayıcılar** sekmesinden [bağlayıcı alanı nesnesine](#connector-space-object-properties)de gidebilirsiniz. Bir satır seçin ve **Özellikler**' e tıklayın.
+**Bağlayıcılar** sekmesinden [bağlayıcı alanı nesnesine](#connector-space-object-properties)de gidebilirsiniz. Bir satır seçin ve **Özellikler** ' e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure AD Connect eşitleme](how-to-connect-sync-whatis.md)hakkında daha fazla bilgi edinin.

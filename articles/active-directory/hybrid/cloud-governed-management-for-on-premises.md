@@ -13,12 +13,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed23ffa9971bf4c97b784f230053aed4b1acf0a4
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1f717e14e5abe62aafffdeef841889ea2458fa8b
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369803"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413454"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Azure AD, şirket Içi Iş yükleri için bulut tarafından yönetilen yönetim sağlar
 
@@ -39,7 +39,7 @@ Bu yazıda, Microsoft 'un karma IDaaS stratejisi özetlenmektedir ve kuruluşlar
 
 ## <a name="the-azure-ad-approach-to-cloud-governed-identity-management"></a>Bulut tarafından yönetilen kimlik yönetimi için Azure AD yaklaşımı
 
-Kuruluşlar buluta geçiş yaparken, tam ortamları üzerinde denetimlere sahip oldukları, daha fazla güvenlik ve etkinliklere daha fazla görünürlük, Otomasyon tarafından desteklenen ve proaktif içgörüler hakkında daha fazla bilgi sahibi olmaları gerekir. "**Bulut yönetilen yönetimi**", kuruluşların kullanıcılarını, uygulamalarını, gruplarını ve cihazlarını buluttan nasıl yönetip yöneteceğini açıklar.
+Kuruluşlar buluta geçiş yaparken, tam ortamları üzerinde denetimlere sahip oldukları, daha fazla güvenlik ve etkinliklere daha fazla görünürlük, Otomasyon tarafından desteklenen ve proaktif içgörüler hakkında daha fazla bilgi sahibi olmaları gerekir. " **Bulut yönetilen yönetimi** ", kuruluşların kullanıcılarını, uygulamalarını, gruplarını ve cihazlarını buluttan nasıl yönetip yöneteceğini açıklar.
 
 Bu modern dünyada, SaaS uygulamalarının uzamasını ve işbirliği ve dış kimliklerin artan rolünü nedeniyle kuruluşların ölçeği etkin bir şekilde yönetebilmeleri gerekir. Bulutun yeni risk dünyası, bir kuruluşun daha fazla yanıt vermesi gerektiği anlamına gelir. bir bulut kullanıcısını kapatan kötü niyetli bir aktör, bulutu ve şirket içi uygulamaları etkileyebilir.
 
@@ -77,7 +77,7 @@ Azure AD Premium ayrıca, SAP, Oracle eBusiness ve Oracle PeopleSoft dahil diğe
 
 Azure AD, [Konuk kullanıcılar IÇIN ad 'de otomatik olarak hesap oluşturabilir](../external-identities/hybrid-cloud-to-on-premises.md) ve iş konuklarının diğer parolaya gerek kalmadan ŞIRKET içi ad ile tümleşik uygulamalara erişmesini sağlar. Kuruluşlar, [Konuk Kullanıcı için Multi-Factor Authentication (MFA) ilkeleri](../external-identities/conditional-access.md)ayarlayarak uygulama proxy kimlik doğrulaması sırasında MFA denetimleri gerçekleştirilir. Ayrıca, bulut B2B kullanıcıları üzerinde gerçekleştirilen tüm [erişim İncelemeleri](../governance/manage-guest-access-with-access-reviews.md) şirket içi kullanıcılara uygulanır. Örneğin, bulut kullanıcısı yaşam döngüsü yönetim ilkeleriyle silinirse şirket içi kullanıcı da silinir.
 
-**Active Directory hesapları Için kimlik bilgisi yönetimi** Azure AD 'nin self servis parola sıfırlaması, parolalarının unuttutığı kullanıcıların, Şirket [içi Active Directory yazılan](../authentication/concept-sspr-writeback.md)parola ile parolalarını yeniden doğrulaması ve sıfırlamalarını sağlar. Parola sıfırlama işlemi, şirket içi Active Directory parola ilkelerini de kullanabilir: bir Kullanıcı parolasını sıfırladığında, bu dizine işlemeden önce şirket içi Active Directory ilkesini karşıladığından emin olmak denetlenir. Self servis parola sıfırlama [dağıtım planı](https://aka.ms/deploymentplans/sspr) , Web ve Windows ile tümleşik deneyimler aracılığıyla kullanıcılara self servis parola sıfırlamasını sağlamak için en iyi uygulamaları özetler.
+**Active Directory hesapları Için kimlik bilgisi yönetimi** Azure AD 'nin self servis parola sıfırlaması, parolalarının unuttutığı kullanıcıların, Şirket [içi Active Directory yazılan](../authentication/concept-sspr-writeback.md)parola ile parolalarını yeniden doğrulaması ve sıfırlamalarını sağlar. Parola sıfırlama işlemi, şirket içi Active Directory parola ilkelerini de kullanabilir: bir Kullanıcı parolasını sıfırladığında, bu dizine işlemeden önce şirket içi Active Directory ilkesini karşıladığından emin olmak denetlenir. Self servis parola sıfırlama [dağıtım planı](../authentication/howto-sspr-deployment.md) , Web ve Windows ile tümleşik deneyimler aracılığıyla kullanıcılara self servis parola sıfırlamasını sağlamak için en iyi uygulamaları özetler.
 
 ![Azure AD SSPR mimarisi](media/cloud-governed-management-for-on-premises/image3.png)
 
@@ -97,7 +97,7 @@ Federasyon uygulamalarını kimlik sağlayıcısı olarak Azure AD 'ye geçirmey
 
 * Geçiş avantajlarının yanı sıra, açıkça Seviyelendirilmiş dört aşamada geçişin nasıl planlanacağını gösteren [Azure Active Directory, uygulamalarınızı geçirme](https://aka.ms/migrateapps/whitepaper)teknik incelemesi: bulma, sınıflandırma, geçiş ve devam eden yönetim. İşlemin nasıl düşündüğünü ve projenizi kullanımı kolay parçalara nasıl başlayacağınızı öğreneceksiniz. Belge genelinde, bu şekilde size yardımcı olacak önemli kaynakların bağlantıları bulunur.
 
-* Çözüm Kılavuzu, uygulama [kimlik doğrulamasını Active Directory Federasyon Hizmetleri (AD FS) ' den Azure Active Directory](https://aka.ms/migrateapps/adfssolutionguide) bir uygulama geçişi projesi planlama ve yürütme ile aynı dört aşamayı daha ayrıntılı bir şekilde ele geçirmektedir. Bu kılavuzda, bir uygulamayı Active Directory Federasyon Hizmetleri (AD FS) (AD FS) ' dan Azure AD 'ye taşımaya yönelik belirli bir hedefe bu aşamaların nasıl uygulanacağını öğreneceksiniz.
+* Çözüm Kılavuzu, uygulama [kimlik doğrulamasını Active Directory Federasyon Hizmetleri (AD FS) ' den Azure Active Directory](../manage-apps/migrate-adfs-apps-to-azure.md) bir uygulama geçişi projesi planlama ve yürütme ile aynı dört aşamayı daha ayrıntılı bir şekilde ele geçirmektedir. Bu kılavuzda, bir uygulamayı Active Directory Federasyon Hizmetleri (AD FS) (AD FS) ' dan Azure AD 'ye taşımaya yönelik belirli bir hedefe bu aşamaların nasıl uygulanacağını öğreneceksiniz.
 
 * [Active Directory Federasyon Hizmetleri (AD FS) geçişi hazırlık betiği](https://aka.ms/migrateapps/adfstools) mevcut şirket içi Active Directory Federasyon Hizmetleri (AD FS) (AD FS) sunucularında çalıştırılabilir ve bu da Azure AD 'ye geçiş için uygulamaların hazır olduğunu tespit edebilir.
 
@@ -111,7 +111,7 @@ Kuruluşlar [,](../enterprise-users/groups-dynamic-membership.md) [SaaS uygulama
 
 ## <a name="future-directions"></a>Gelecekteki yönergeler
 
-Karma ortamlarda, Microsoft 'un stratejisi, **bulutun kimlik için denetim düzlemi olduğu**, şirket içi dizinlerin ve Active Directory ve diğer şirket içi uygulamalar gibi diğer kimlik sistemlerinin erişimi olan kullanıcıları sağlamaya yönelik hedef olan dağıtımları etkinleştirmektir. Bu strateji, bu uygulama ve iş yüklerindeki haklara, kimliklere ve bunlara dayalı erişim sağlamaya devam edecektir. Bu bitiş durumunda kuruluşlar, son kullanıcı üretkenliğini tamamen buluttan çalıştırabilecektir.
+Karma ortamlarda, Microsoft 'un stratejisi, **bulutun kimlik için denetim düzlemi olduğu** , şirket içi dizinlerin ve Active Directory ve diğer şirket içi uygulamalar gibi diğer kimlik sistemlerinin erişimi olan kullanıcıları sağlamaya yönelik hedef olan dağıtımları etkinleştirmektir. Bu strateji, bu uygulama ve iş yüklerindeki haklara, kimliklere ve bunlara dayalı erişim sağlamaya devam edecektir. Bu bitiş durumunda kuruluşlar, son kullanıcı üretkenliğini tamamen buluttan çalıştırabilecektir.
 
 ![Azure AD mimarisi](media/cloud-governed-management-for-on-premises/image6.png)
 

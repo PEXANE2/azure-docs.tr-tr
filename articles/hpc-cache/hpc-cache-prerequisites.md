@@ -4,14 +4,14 @@ description: Azure HPC önbelleğini kullanma önkoşulları
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 11/05/2020
 ms.author: v-erkel
-ms.openlocfilehash: 92c8d860925ebde7d20befbaa708e8530cd1a0eb
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: a31aee3f4548d3137fa1241aaa3a0f6171cf6895
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92344024"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412519"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC önbelleği önkoşulları
 
@@ -59,9 +59,22 @@ En iyi yöntem, her önbellek için yeni bir alt ağ oluşturmaktır. Önbellek 
 Önbelleğin, sanal ağının dışındaki kaynaklara erişmesi için DNS ihtiyacı vardır. Kullandığınız kaynaklara bağlı olarak, özelleştirilmiş bir DNS sunucusu ayarlamanız ve bu sunucu ile Azure DNS sunucuları arasında iletmeyi yapılandırmanız gerekebilir:
 
 * Azure Blob depolama uç noktalarına ve diğer iç kaynaklara erişmek için, Azure tabanlı DNS sunucusuna ihtiyacınız vardır.
-* Şirket içi depolamaya erişmek için, depolama ana bilgisayar adlarını çözümleyebilecek özel bir DNS sunucusu yapılandırmanız gerekir.
+* Şirket içi depolamaya erişmek için, depolama ana bilgisayar adlarını çözümleyebilecek özel bir DNS sunucusu yapılandırmanız gerekir. Önbelleği oluşturmadan **önce** bunu yapmanız gerekir.
 
 Yalnızca blob depolamaya erişmeniz gerekiyorsa önbelleğiniz için Azure tarafından sağlanmış varsayılan DNS sunucusunu kullanabilirsiniz. Ancak, diğer kaynaklara erişmeniz gerekiyorsa, özel bir DNS sunucusu oluşturmanız ve Azure 'a özgü tüm çözümleme isteklerini Azure DNS sunucusuna iletecek şekilde yapılandırmanız gerekir.
+
+Özel bir DNS sunucusu kullanmak için önbelleğinizi oluşturmadan önce bu kurulum adımlarını gerçekleştirmeniz gerekir:
+
+* Azure HPC önbelleğini barındıracak sanal ağı oluşturun.
+* DNS sunucusunu oluşturun.
+* DNS sunucusunu önbelleğin sanal ağına ekleyin.
+
+  DNS sunucusunu Azure portal sanal ağa eklemek için aşağıdaki adımları izleyin:
+
+  1. Azure portal sanal ağı açın.
+  1. Kenar çubuğu 'ndaki **Ayarlar** menüsünden **DNS sunucuları** ' nı seçin.
+  1. **Özel** ' i seçin
+  1. Alana DNS sunucusunun IP adresini girin.
 
 Basit bir DNS sunucusu, istemci bağlantılarının tüm kullanılabilir önbellek bağlama noktaları arasında yükünü dengelemek için de kullanılabilir.
 
@@ -143,7 +156,7 @@ Daha fazla bilgi için [bkz. NAS yapılandırması ve NFS depolama hedefi sorunl
 * **Dizin erişimi:** `showmount` Depolama sisteminde komutunu etkinleştirin. Azure HPC Cache, depolama hedefi yapılandırmanızın geçerli bir dışarı aktarmaya işaret ettiğini ve ayrıca birden çok takın aynı alt dizinlere (dosya çarpışması için risk) eriş, emin olup olmadığını denetlemek için bu komutu kullanır.
 
   > [!NOTE]
-  > NFS depolama sisteminizde NetApp 'ın ONTAP 9,2 işletim sistemi kullanılıyorsa, ' yi **etkinleştirmeyin `showmount` **. Yardım için [Microsoft hizmetine ve desteğe başvurun](hpc-cache-support-ticket.md) .
+  > NFS depolama sisteminizde NetApp 'ın ONTAP 9,2 işletim sistemi kullanılıyorsa, ' yi **etkinleştirmeyin `showmount`**. Yardım için [Microsoft hizmetine ve desteğe başvurun](hpc-cache-support-ticket.md) .
 
   NFS depolama hedef [sorun giderme makalesinde](troubleshoot-nas.md#enable-export-listing)Dizin listeleme erişimi hakkında daha fazla bilgi edinin.
 

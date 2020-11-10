@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: c817608a9e015c69b252f69000d78437e918b8f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 435cb1d52b5505f4f29bd0c31986a1f7f72208fd
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631520"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412876"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS koruması-dayanıklı çözümler tasarlama
 
@@ -31,7 +31,7 @@ DDoS, uygulama kaynaklarını tüketmeye çalışan bir saldırı türüdür. Am
 ![Azure DDoS koruması 'nın, müşterileri ve bir saldırgandan bir sanal ağı koruma rolü](./media/ddos-best-practices/image1.png)
 
 
-## <a name="fundamental-best-practices"></a>Temel en iyi uygulamalar
+## <a name="fundamental-best-practices"></a>Temel en iyi yöntemler
 
 Aşağıdaki bölümler Azure 'da DDoS-dayanıklı hizmetler oluşturmaya yönelik öngörülü rehberlik sağlar.
 
@@ -42,22 +42,22 @@ Tasarımın, bir uygulamanın tüm yaşam döngüsünün tamamında, tasarım ve
 Microsoft Azure üzerinde çalışan bir hizmetin korunmasına yardımcı olmak için, uygulama mimarinizi iyi bir şekilde kavramanız ve [yazılım kalitesinin beş](/azure/architecture/guide/pillars)ile ilgili olarak odaklanmanız gerekir.
 Tipik trafik birimlerini, uygulama ve diğer uygulamalar arasındaki bağlantı modelini ve genel İnternet 'e açık olan hizmet uç noktalarını bilmeniz gerekir.
 
-Bir uygulamanın, uygulamanın kendisi için hedeflenen bir hizmet reddine yetecek kadar dayanıklı olmasını sağlamak, en önemli öneme sahiptir. Güvenlik ve gizlilik, [güvenlik geliştirme yaşam döngüsü (SDL)](https://www.microsoft.com/sdl/default.aspx)Ile başlayan Azure platformunda yerleşik olarak bulunur. SDL her geliştirme aşamasında güvenliği adresleyen ve Azure 'un sürekli olarak daha güvenli hale getirmek için güncelleştirilmesini sağlar.
+Bir uygulamanın, uygulamanın kendisi için hedeflenen bir hizmet reddine yetecek kadar dayanıklı olmasını sağlamak, en önemli öneme sahiptir. Güvenlik ve gizlilik, [güvenlik geliştirme yaşam döngüsü (SDL)](https://www.microsoft.com/sdl/default.aspx)Ile başlayan Azure platformunda yerleşik olarak bulunur. SDL her geliştirme aşamasında güvenliği adresleyen ve Azure 'un sürekli olarak daha güvenli hale getirmek için güncelleştirilmesini sağlar.
 
 ### <a name="design-for-scalability"></a>Ölçeklenebilirlik için tasarım
 
 Ölçeklenebilirlik, sistemin artan yükü işleyebilme konusunda ne kadar iyi bir sistem olabilir. Uygulamalarınızı, özellikle de DDoS saldırısı durumunda, yükseltilmiş bir yükün talebini karşılayacak şekilde [ölçeklendirmek](/azure/architecture/guide/design-principles/scale-out) üzere tasarlayın. Uygulamanız bir hizmetin tek bir örneğine bağımlıysa, tek bir hata noktası oluşturur. Birden çok örneği sağlamak, sisteminizi daha dayanıklı ve daha ölçeklenebilir hale getirir.
 
-[Azure App Service](/azure/app-service/app-service-value-prop-what-is)için, birden çok örnek sunan bir [App Service planı](/azure/app-service/overview-hosting-plans) seçin. Azure Cloud Services için, rollerinizin her birini [birden çok örnek](/azure/cloud-services/cloud-services-choose-me)kullanacak şekilde yapılandırın. [Azure sanal makineler](../../virtual-machines/index.yml)için, sanal makıne (VM) mimarinizin bırden fazla VM içerdiğinden ve her VM 'nin bir [kullanılabilirlik kümesine](../../virtual-machines/windows/tutorial-availability-sets.md)eklendiğinden emin olun. Otomatik ölçeklendirme özellikleri için [Sanal Makine Ölçek Kümeleri](../../virtual-machine-scale-sets/overview.md) kullanmanızı öneririz.
+[Azure App Service](../../app-service/overview.md)için, birden çok örnek sunan bir [App Service planı](../../app-service/overview-hosting-plans.md) seçin. Azure Cloud Services için, rollerinizin her birini [birden çok örnek](../../cloud-services/cloud-services-choose-me.md)kullanacak şekilde yapılandırın. [Azure sanal makineler](../../virtual-machines/index.yml)için, sanal makıne (VM) mimarinizin bırden fazla VM içerdiğinden ve her VM 'nin bir [kullanılabilirlik kümesine](../../virtual-machines/windows/tutorial-availability-sets.md)eklendiğinden emin olun. Otomatik ölçeklendirme özellikleri için [Sanal Makine Ölçek Kümeleri](../../virtual-machine-scale-sets/overview.md) kullanmanızı öneririz.
 
 ### <a name="defense-in-depth"></a>Derinlemesine savunma
 
 Derinlemesine savunma 'nın arkasındaki fikir, farklı savunma stratejileri kullanarak riskleri yönetmenizde yarar vardır. Bir uygulamadaki güvenlik savunmaları katmanlama, başarılı bir saldırı olasılığını azaltır. Azure platformunun yerleşik yeteneklerini kullanarak uygulamalarınız için güvenli tasarımlar uygulamanızı öneririz.
 
-Örneğin, saldırı riski uygulamanın boyutuyla (*yüzey alanı*) artar. Açık IP adresi alanını ve yük dengeleyiciler üzerinde gerekli olmayan dinleme bağlantı noktalarını ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) ve [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)) kapatmak için bir onay listesi kullanarak yüzey alanını azaltabilirsiniz. [Ağ güvenlik grupları (NSG 'ler)](/azure/virtual-network/security-overview) , saldırı yüzeyini azaltmak için başka bir yoldur.
-Uygulama yapısının doğal bir uzantısı olarak güvenlik kuralları oluşturma ve ağ güvenliğini yapılandırma karmaşıklığını en aza indirmek için [hizmet etiketlerini](/azure/virtual-network/security-overview#service-tags) ve [uygulama güvenlik gruplarını](/azure/virtual-network/security-overview#application-security-groups) kullanabilirsiniz.
+Örneğin, saldırı riski uygulamanın boyutuyla ( *yüzey alanı* ) artar. Açık IP adresi alanını ve yük dengeleyiciler üzerinde gerekli olmayan dinleme bağlantı noktalarını ([Azure Load Balancer](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) ve [Azure Application Gateway](../../application-gateway/application-gateway-create-probe-portal.md)) kapatmak için bir onay listesi kullanarak yüzey alanını azaltabilirsiniz. [Ağ güvenlik grupları (NSG 'ler)](../../virtual-network/network-security-groups-overview.md) , saldırı yüzeyini azaltmak için başka bir yoldur.
+Uygulama yapısının doğal bir uzantısı olarak güvenlik kuralları oluşturma ve ağ güvenliğini yapılandırma karmaşıklığını en aza indirmek için [hizmet etiketlerini](../../virtual-network/network-security-groups-overview.md#service-tags) ve [uygulama güvenlik gruplarını](../../virtual-network/network-security-groups-overview.md#application-security-groups) kullanabilirsiniz.
 
-Mümkün olduğunda Azure hizmetlerini bir [Sanal ağda](/azure/virtual-network/virtual-networks-overview) dağıtmanız gerekir. Bu uygulama, hizmet kaynaklarının özel IP adresleri üzerinden iletişim kurmasına izin verir. Bir sanal ağdan gelen Azure hizmet trafiği, varsayılan olarak kaynak IP adresleri olarak genel IP adreslerini kullanır. [Hizmet uç noktalarının](/azure/virtual-network/virtual-network-service-endpoints-overview) kullanılması, hizmet trafiğini bir sanal ağdan Azure hizmetine ERIŞIRKEN kaynak IP adresleri olarak sanal ağ özel adreslerini kullanacak şekilde geçer.
+Mümkün olduğunda Azure hizmetlerini bir [Sanal ağda](../../virtual-network/virtual-networks-overview.md) dağıtmanız gerekir. Bu uygulama, hizmet kaynaklarının özel IP adresleri üzerinden iletişim kurmasına izin verir. Bir sanal ağdan gelen Azure hizmet trafiği, varsayılan olarak kaynak IP adresleri olarak genel IP adreslerini kullanır. [Hizmet uç noktalarının](../../virtual-network/virtual-network-service-endpoints-overview.md) kullanılması, hizmet trafiğini bir sanal ağdan Azure hizmetine ERIŞIRKEN kaynak IP adresleri olarak sanal ağ özel adreslerini kullanacak şekilde geçer.
 
 Müşterilerin Şirket içi kaynaklarını Azure 'daki kaynaklarıyla birlikte saldırıya uğradığını görtik. Şirket içi bir ortamı Azure 'a bağlıyorsanız, şirket içi kaynakların açık internet 'te etkilenme olasılığını en aza indirmenizi öneririz. Azure 'un ölçek ve gelişmiş DDoS koruma özelliklerini kullanarak Azure 'da iyi bilinen genel varlıkları dağıtabilirsiniz. Bu genel olarak erişilebilen varlıklar, DDoS saldırıları için genellikle bir hedef olduğundan, bunları Azure 'a koymak, şirket içi kaynaklarınızın etkisini azaltır.
 
@@ -71,13 +71,13 @@ Temel koruma, hiçbir ek ücret ödemeden Azure ile varsayılan olarak tümleşi
 
 !["Küresel DDoS risk azaltma varlığı" ve "önde gelen DDoS azaltma kapasitesi" metniyle birlikte Azure ağının, harita gösterimi](./media/ddos-best-practices/image3.png)
 
-Azure 'da temel DDoS koruması hem yazılım hem de donanım bileşenlerinden oluşur. Yazılım denetim düzlemi, saldırı trafiğini çözümleyen ve kaldıracak donanım gereçlerinde ne zaman, nerede ve ne tür trafiğe göz atacağını belirler. Denetim düzlemi, altyapı genelinde bir DDoS koruma *ilkesini*temel alarak bu kararı sağlar. Bu ilke, tüm Azure müşterilerine statik olarak ayarlanır ve evrensel olarak uygulanır.
+Azure 'da temel DDoS koruması hem yazılım hem de donanım bileşenlerinden oluşur. Yazılım denetim düzlemi, saldırı trafiğini çözümleyen ve kaldıracak donanım gereçlerinde ne zaman, nerede ve ne tür trafiğe göz atacağını belirler. Denetim düzlemi, altyapı genelinde bir DDoS koruma *ilkesini* temel alarak bu kararı sağlar. Bu ilke, tüm Azure müşterilerine statik olarak ayarlanır ve evrensel olarak uygulanır.
 
 Örneğin, DDoS koruma ilkesi, korumanın hangi trafik biriminde *tetikleneceğini belirtir.* (Yani, kiracının trafiği, temizleme gereçlerine göre yönlendirilmelidir.) İlke daha sonra, temizleme gereçlerinin saldırıyı nasıl *azaltmalıdır* .
 
 Azure DDoS koruması temel hizmeti, Azure platformunun altyapısının ve korumasının korunmasını hedeflemektedir. Çok kiracılı bir ortamda birden çok müşteriyi etkileyebilecek önemli bir oranı aştığında trafiği azaltır. Uyarı veya müşteri başına özelleştirilmiş ilke sağlamaz.
 
-### <a name="ddos-protection-standard"></a>DDoS koruma standardı
+### <a name="ddos-protection-standard"></a>DDoS Koruması Standart
 
 Standart koruma, gelişmiş DDoS azaltma özellikleri sağlar. Bir sanal ağdaki belirli Azure kaynaklarınızı korumaya yardımcı olmak üzere otomatik olarak ayarlanır. Korumanın, yeni veya mevcut bir sanal ağda etkinleştirilmesi basittir ve uygulama veya kaynak değişikliği gerektirmez. Günlük, uyarı ve telemetri dahil olmak üzere temel hizmet üzerinde çeşitli avantajları vardır. Aşağıdaki bölümlerde, Azure DDoS koruması standart hizmetinin temel özellikleri ana hatlarıyla verilmiştir.
 
@@ -93,13 +93,13 @@ Azure DDoS koruması temel hizmeti, müşterileri korumanıza ve diğer müşter
 
 #### <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>DDoS koruması telemetrisi, izleme ve uyarı
 
-DDoS koruma standardı, DDoS saldırısı süresince [Azure izleyici](/azure/azure-monitor/overview) aracılığıyla zengin telemetri sunar. DDoS korumasının kullandığı Azure Izleyici ölçümlerinden herhangi biri için uyarıları yapılandırabilirsiniz. Azure Izleyici tanılama arabirimi aracılığıyla, gelişmiş analiz için Azure depolama ile splunk (Azure Event Hubs), Azure Izleyici günlükleri ve Azure Storage ile günlüğe kaydetmeyi tümleştirebilir.
+DDoS koruma standardı, DDoS saldırısı süresince [Azure izleyici](../../azure-monitor/overview.md) aracılığıyla zengin telemetri sunar. DDoS korumasının kullandığı Azure Izleyici ölçümlerinden herhangi biri için uyarıları yapılandırabilirsiniz. Azure Izleyici tanılama arabirimi aracılığıyla, gelişmiş analiz için Azure depolama ile splunk (Azure Event Hubs), Azure Izleyici günlükleri ve Azure Storage ile günlüğe kaydetmeyi tümleştirebilir.
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS risk azaltma ilkeleri
 
-Azure Portal ölçümleri **İzle**' yi seçin  >  **Metrics**. **Ölçümler** bölmesinde, kaynak grubunu seçin, **ortak IP adresi**kaynak türünü SEÇIN ve Azure genel IP adresinizi seçin. DDoS ölçümleri **kullanılabilir ölçümler** bölmesinde görünür.
+Azure Portal ölçümleri **İzle** ' yi seçin  >  **Metrics**. **Ölçümler** bölmesinde, kaynak grubunu seçin, **ortak IP adresi** kaynak türünü SEÇIN ve Azure genel IP adresinizi seçin. DDoS ölçümleri **kullanılabilir ölçümler** bölmesinde görünür.
 
-DDoS koruması standardı, korumalı kaynağın her genel IP 'si için, DDoS özellikli olan sanal ağdaki üç etkin Azaltma ilkesi (TCP SYN, TCP ve UDP) uygular. **DDoS risk azaltma tetiklenecek ölçüm gelen paketleri**seçerek ilke eşiklerini görüntüleyebilirsiniz.
+DDoS koruması standardı, korumalı kaynağın her genel IP 'si için, DDoS özellikli olan sanal ağdaki üç etkin Azaltma ilkesi (TCP SYN, TCP ve UDP) uygular. **DDoS risk azaltma tetiklenecek ölçüm gelen paketleri** seçerek ilke eşiklerini görüntüleyebilirsiniz.
 
 ![Kullanılabilir ölçümler ve ölçümler grafiği](./media/ddos-best-practices/image7.png)
 
@@ -113,11 +113,11 @@ Genel IP adresi saldırı altındaysa, DDoS koruması için **DDoS saldırısın
 
 Bu ölçüm üzerinde bir uyarı yapılandırmanızı öneririz. Daha sonra, genel IP adresiniz üzerinde gerçekleştirilen etkin bir DDoS risk azaltma olduğunda size bildirim verilecektir.
 
-Daha fazla bilgi için, [Azure Portal kullanarak Azure DDoS koruması standardını yönetme](/azure/virtual-network/ddos-protection-manage-portal)makalesine bakın.
+Daha fazla bilgi için, [Azure Portal kullanarak Azure DDoS koruması standardını yönetme](../../virtual-network/manage-ddos-protection.md)makalesine bakın.
 
 #### <a name="web-application-firewall-for-resource-attacks"></a>Kaynak saldırıları için Web uygulaması güvenlik duvarı
 
-Uygulama katmanında kaynak saldırılarına özgü, Web uygulamalarının güvenliğini sağlamaya yardımcı olmak için bir Web uygulaması güvenlik duvarı (WAF) yapılandırmanız gerekir. Bir WAF, SQL ınjec, siteler arası komut dosyası, DDoS ve diğer katman 7 saldırılarını engellemek için gelen Web trafiğini inceler. Azure, yaygın güvenlik açıklarından ve güvenlik açıklarından Web uygulamalarınızın merkezi olarak korunması için [Application Gateway bir özelliği olarak WAF](/azure/application-gateway/application-gateway-web-application-firewall-overview) sağlar. Azure iş ortaklarından [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps?search=WAF&page=1)aracılığıyla gereksinimlerinize uygun olabilecek başka WAF teklifleri de mevcuttur.
+Uygulama katmanında kaynak saldırılarına özgü, Web uygulamalarının güvenliğini sağlamaya yardımcı olmak için bir Web uygulaması güvenlik duvarı (WAF) yapılandırmanız gerekir. Bir WAF, SQL ınjec, siteler arası komut dosyası, DDoS ve diğer katman 7 saldırılarını engellemek için gelen Web trafiğini inceler. Azure, yaygın güvenlik açıklarından ve güvenlik açıklarından Web uygulamalarınızın merkezi olarak korunması için [Application Gateway bir özelliği olarak WAF](../../web-application-firewall/ag/ag-overview.md) sağlar. Azure iş ortaklarından [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps?search=WAF&page=1)aracılığıyla gereksinimlerinize uygun olabilecek başka WAF teklifleri de mevcuttur.
 
 Web uygulaması güvenlik duvarları, Volumetric ve durum tükenmesi saldırılarına açıktır. Volumetric ve protokol saldırılarına karşı korumaya yardımcı olmak için WAF sanal ağı üzerinde DDoS koruma standardının etkinleştirilmesini önemle öneririz. Daha fazla bilgi için [DDoS koruması başvuru mimarileri](#ddos-protection-reference-architectures) bölümüne bakın.
 
@@ -179,7 +179,7 @@ DDoS yanıt ekibiniz için, hizmet kullanılabilirliği ve süreklilik planlaman
 
 ### <a name="alerts-during-an-attack"></a>Saldırı sırasında uyarılar
 
-Azure DDoS koruması standardı, herhangi bir kullanıcı müdahalesi olmadan DDoS saldırılarını tanımlar ve azaltır. Korunan genel IP için etkin bir risk azaltma olduğunda bildirim almak için **DDoS saldırısının altındaki**ölçüm üzerinde [bir uyarı yapılandırabilirsiniz](/azure/virtual-network/ddos-protection-manage-portal) . Saldırının ölçeğini, bırakılmakta olan trafiği ve diğer ayrıntıları anlamak için diğer DDoS ölçümleri için uyarı oluşturmayı tercih edebilirsiniz.
+Azure DDoS koruması standardı, herhangi bir kullanıcı müdahalesi olmadan DDoS saldırılarını tanımlar ve azaltır. Korunan genel IP için etkin bir risk azaltma olduğunda bildirim almak için **DDoS saldırısının altındaki** ölçüm üzerinde [bir uyarı yapılandırabilirsiniz](../../virtual-network/manage-ddos-protection.md) . Saldırının ölçeğini, bırakılmakta olan trafiği ve diğer ayrıntıları anlamak için diğer DDoS ölçümleri için uyarı oluşturmayı tercih edebilirsiniz.
 
 #### <a name="when-to-contact-microsoft-support"></a>Microsoft desteği 'ne ne zaman iletişim kura
 
@@ -211,7 +211,7 @@ DDoS saldırısının altında olduğunuzdan şüpheleniyorsanız, normal Azure 
 
 ## <a name="ddos-protection-reference-architectures"></a>DDoS koruması başvuru mimarileri
 
-DDoS koruma standardı, [sanal bir ağa dağıtılan hizmetler için](/azure/virtual-network/virtual-network-for-azure-services)tasarlanmıştır. Diğer hizmetler için, varsayılan DDoS koruması temel hizmeti geçerlidir. Aşağıdaki başvuru mimarileri, mimari desenleriyle birlikte gruplanmış senaryolar tarafından düzenlenir.
+DDoS koruma standardı, [sanal bir ağa dağıtılan hizmetler için](../../virtual-network/virtual-network-for-azure-services.md)tasarlanmıştır. Diğer hizmetler için, varsayılan DDoS koruması temel hizmeti geçerlidir. Aşağıdaki başvuru mimarileri, mimari desenleriyle birlikte gruplanmış senaryolar tarafından düzenlenir.
 
 ### <a name="virtual-machine-windowslinux-workloads"></a>Sanal makine (Windows/Linux) iş yükleri
 
@@ -235,14 +235,14 @@ Bu mimaride, DDoS koruma standardı sanal ağ üzerinde etkinleştirilmiştir. S
 
 #### <a name="paas-web-application"></a>PaaS web uygulaması
 
-Bu başvuru mimarisi, tek bir bölgede Azure App Service uygulamasının çalıştığını gösterir. Bu mimari, [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/)   ve [Azure SQL veritabanı](https://azure.microsoft.com/documentation/services/sql-database/)kullanan bir Web uygulaması için kanıtlanmış bir uygulamalar kümesi gösterir.
+Bu başvuru mimarisi, tek bir bölgede Azure App Service uygulamasının çalıştığını gösterir. Bu mimari, [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) ve [Azure SQL veritabanı](https://azure.microsoft.com/documentation/services/sql-database/)kullanan bir Web uygulaması için kanıtlanmış bir uygulamalar kümesi gösterir.
 Yük devretme senaryoları için bir bekleme bölgesi ayarlanır.
 
 ![PaaS Web uygulaması için başvuru mimarisinin diyagramı](./media/ddos-best-practices/image11.png)
 
 Azure Traffic Manager, gelen istekleri bölgelerden birinde Application Gateway yönlendirir. Normal işlemler sırasında, istekleri etkin bölgede Application Gateway yönlendirir. Bu bölge kullanılamaz duruma gelirse, Traffic Manager bekleme bölgesinde Application Gateway devreder.
 
-İnternet 'ten Web uygulamasına giden tüm trafik, Traffic Manager üzerinden [Application Gateway genel IP adresine](/azure/application-gateway/application-gateway-web-app-overview) yönlendirilir. Bu senaryoda, App Service (Web App) doğrudan dışarıdan verilmez ve Application Gateway tarafından korunur. 
+İnternet 'ten Web uygulamasına giden tüm trafik, Traffic Manager üzerinden [Application Gateway genel IP adresine](../../application-gateway/application-gateway-web-app-overview.md) yönlendirilir. Bu senaryoda, App Service (Web App) doğrudan dışarıdan verilmez ve Application Gateway tarafından korunur. 
 
 Katman 7 (HTTP/HTTPS/WebSocket) saldırılarına karşı korumaya yardımcı olmak için Application Gateway WAF SKU 'SU (mod engelleme) yapılandırmanızı öneririz. Ayrıca, Web Apps [yalnızca Application Gateway IP adresinden gelen trafiği kabul](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/) edecek şekilde yapılandırılmıştır.
 
@@ -252,7 +252,7 @@ Bu başvuru mimarisi hakkında daha fazla bilgi için [Bu makaleye](/azure/archi
 
 #### <a name="hdinsight-on-azure"></a>Azure 'da HDInsight
 
-Bu başvuru mimarisinde, [Azure HDInsight kümesi](/azure/hdinsight/)Için DDoS koruma standardı yapılandırma gösterilmektedir. HDInsight kümesinin bir sanal ağa bağlı olduğundan ve sanal ağ üzerinde DDoS korumasının etkinleştirildiğinden emin olun.
+Bu başvuru mimarisinde, [Azure HDInsight kümesi](../../hdinsight/index.yml)Için DDoS koruma standardı yapılandırma gösterilmektedir. HDInsight kümesinin bir sanal ağa bağlı olduğundan ve sanal ağ üzerinde DDoS korumasının etkinleştirildiğinden emin olun.
 
 ![Sanal ağ ayarlarına sahip "HDInsight" ve "Gelişmiş ayarlar" bölmeleri](./media/ddos-best-practices/image12.png)
 
@@ -260,7 +260,7 @@ Bu başvuru mimarisinde, [Azure HDInsight kümesi](/azure/hdinsight/)Için DDoS 
 
 Bu mimaride, Internet 'ten HDInsight kümesine giden trafik, HDInsight ağ geçidi yük dengeleyicisiyle ilişkili genel IP 'ye yönlendirilir. Ağ Geçidi yük dengeleyici daha sonra trafiği baş düğümlere veya çalışan düğümlerine doğrudan gönderir. HDInsight sanal ağında DDoS koruması standardı etkinleştirildiğinden, sanal ağdaki tüm genel IP 'Ler 3. ve 4. katman için DDoS koruması 'nı alır. Bu başvuru mimarisi, N katmanlı ve çok bölgeli başvuru mimarileri ile birleştirilebilir.
 
-Bu başvuru mimarisi hakkında daha fazla bilgi için Azure [sanal ağ kullanarak Azure HDInsight 'ı genişletme](/azure/hdinsight/hdinsight-extend-hadoop-virtual-network?toc=%2fazure%2fvirtual-network%2ftoc.json) bölümüne bakın.
+Bu başvuru mimarisi hakkında daha fazla bilgi için Azure [sanal ağ kullanarak Azure HDInsight 'ı genişletme](../../hdinsight/hdinsight-plan-virtual-network-deployment.md?toc=%252fazure%252fvirtual-network%252ftoc.json) bölümüne bakın.
 
 
 > [!NOTE]
@@ -270,4 +270,4 @@ Bu başvuru mimarisi hakkında daha fazla bilgi için Azure [sanal ağ kullanara
 
 * [Bulutta paylaşılan sorumluluk](shared-responsibility.md)
 * [Azure DDoS koruması ürün sayfası](https://azure.microsoft.com/services/ddos-protection/)
-* [Azure DDoS koruması belgeleri](/azure/virtual-network/ddos-protection-overview)
+* [Azure DDoS koruması belgeleri](../../virtual-network/ddos-protection-overview.md)

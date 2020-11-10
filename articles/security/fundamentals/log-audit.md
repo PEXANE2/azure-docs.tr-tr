@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: c5ac9daeb741d400a759603c7a3e3e462cc9294f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79c15f2df82125f20dcfaf9992d9047b632c253d
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398878"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412808"
 ---
 # <a name="azure-security-logging-and-auditing"></a>Azure güvenliğini günlüğe kaydetme ve denetleme
 
@@ -42,7 +42,7 @@ Azure günlükleri aşağıdaki türlerde kategorilere ayrılır:
 
 * **Veri düzlemi günlükleri** , Azure Kaynak kullanımının bir parçası olarak oluşturulan olaylar hakkında bilgi sağlar. Bu tür bir günlüğe örnek olarak, bir sanal makinede (VM) Windows olay sistemi, güvenlik ve uygulama günlükleri ve Azure Izleyici aracılığıyla yapılandırılan [tanılama günlükleri](../../azure-monitor/platform/platform-logs-overview.md) verilebilir.
 
-* **İşlenen olaylar** , sizin adınıza işlenmiş olan çözümlenen olaylar/uyarılar hakkında bilgi sağlar. Bu tür örnekler, Azure [Güvenlik Merkezi](../../security-center/security-center-intro.md) 'nin aboneliğinizi işlediği ve çözümleymekte olduğu ve kısa güvenlik uyarıları sağladığı [Azure Güvenlik Merkezi uyarılarından](../../security-center/security-center-managing-and-responding-alerts.md) oluşur.
+* **İşlenen olaylar** , sizin adınıza işlenmiş olan çözümlenen olaylar/uyarılar hakkında bilgi sağlar. Bu tür örnekler, Azure [Güvenlik Merkezi](../../security-center/security-center-introduction.md) 'nin aboneliğinizi işlediği ve çözümleymekte olduğu ve kısa güvenlik uyarıları sağladığı [Azure Güvenlik Merkezi uyarılarından](../../security-center/security-center-managing-and-responding-alerts.md) oluşur.
 
 Aşağıdaki tabloda, Azure 'da kullanılabilen en önemli günlük türleri listelenmektedir:
 
@@ -50,15 +50,15 @@ Aşağıdaki tabloda, Azure 'da kullanılabilen en önemli günlük türleri lis
 | ------------ | -------- | ------ | ----------- |
 |[Etkinlik günlükleri](../../azure-monitor/platform/platform-logs-overview.md)|Azure Resource Manager kaynaklardaki denetim düzlemi olayları|  Aboneliğinizdeki kaynaklarda gerçekleştirilen işlemlere ilişkin öngörüler sağlar.|    REST API, [Azure izleyici](../../azure-monitor/platform/platform-logs-overview.md)|
 |[Azure Kaynak günlükleri](../../azure-monitor/platform/platform-logs-overview.md)|Abonelikte Azure Resource Manager kaynakların çalışması hakkında sık kullanılan veriler|   Kaynağınızın kendisi tarafından gerçekleştirilen işlemlere ilişkin öngörüler sağlar.| Azure İzleyici|
-|[Azure Active Directory raporlama](../../active-directory/reports-monitoring/overview-reports.md)|Günlükler ve raporlar | Kullanıcılar ve grup yönetimiyle ilgili Kullanıcı oturum açma etkinliklerini ve sistem etkinliği bilgilerini raporlar.|[Graph API](../../active-directory/develop/active-directory-graph-api-quickstart.md)|
-|[Sanal makineler ve bulut Hizmetleri](../../azure-monitor/learn/quick-collect-azurevm.md)|Windows olay günlüğü hizmeti ve Linux Syslog|  , Sanal makinelerde sistem verilerini yakalar ve verileri günlüğe kaydeder ve bu verileri seçtiğiniz bir depolama hesabına aktarır.|   Azure Izleyici 'de Windows (Windows Azure Tanılama [[wad](../../monitoring-and-diagnostics/azure-diagnostics.md)] depolama) ve Linux 'u kullanma|
-|[Azure Depolama Analizi](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|Depolama alanı günlüğü, bir depolama hesabı için ölçüm verileri sağlar|İzleme istekleri hakkında öngörüler sağlar, kullanım eğilimlerini analiz eder ve depolama hesabınızla ilgili sorunları tanılar.|   REST API veya [istemci kitaplığı](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
+|[Azure Active Directory raporlama](../../active-directory/reports-monitoring/overview-reports.md)|Günlükler ve raporlar | Kullanıcılar ve grup yönetimiyle ilgili Kullanıcı oturum açma etkinliklerini ve sistem etkinliği bilgilerini raporlar.|[Graph API](../../active-directory/develop/microsoft-graph-intro.md)|
+|[Sanal makineler ve bulut Hizmetleri](../../azure-monitor/learn/quick-collect-azurevm.md)|Windows olay günlüğü hizmeti ve Linux Syslog|  , Sanal makinelerde sistem verilerini yakalar ve verileri günlüğe kaydeder ve bu verileri seçtiğiniz bir depolama hesabına aktarır.|   Azure Izleyici 'de Windows (Windows Azure Tanılama [[wad](../../azure-monitor/platform/diagnostics-extension-overview.md)] depolama) ve Linux 'u kullanma|
+|[Azure Depolama Analizi](/rest/api/storageservices/fileservices/storage-analytics)|Depolama alanı günlüğü, bir depolama hesabı için ölçüm verileri sağlar|İzleme istekleri hakkında öngörüler sağlar, kullanım eğilimlerini analiz eder ve depolama hesabınızla ilgili sorunları tanılar.| REST API veya [istemci kitaplığı](/dotnet/api/overview/azure/storage)|
 |[Ağ güvenlik grubu (NSG) akış günlükleri](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)|JSON biçimi, giden ve gelen akışları kural başına temelinde gösterir|Bir ağ güvenlik grubu üzerinden giriş ve çıkış IP trafiği hakkındaki bilgileri görüntüler.|[Azure Ağ İzleyicisi](../../network-watcher/network-watcher-monitoring-overview.md)|
 |[Uygulama öngörüleri](../../azure-monitor/app/app-insights-overview.md)|Günlükler, özel durumlar ve özel Tanılamalar|  Birden çok platformda Web geliştiricileri için bir uygulama performansı izleme (APM) hizmeti sağlar.| REST API, [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|
-|[İşlem verileri/güvenlik uyarıları](../../security-center/security-center-intro.md)|  Azure Güvenlik Merkezi uyarıları, Azure Izleyici günlükleri uyarıları|    Güvenlik bilgileri ve uyarılar sağlar.|  REST API 'Leri, JSON|
+|[İşlem verileri/güvenlik uyarıları](../../security-center/security-center-introduction.md)|   Azure Güvenlik Merkezi uyarıları, Azure Izleyici günlükleri uyarıları|    Güvenlik bilgileri ve uyarılar sağlar.|  REST API 'Leri, JSON|
 
 ## <a name="log-integration-with-on-premises-siem-systems"></a>Şirket içi SıEM sistemleriyle günlük tümleştirmesi
-[Güvenlik Merkezi uyarılarını tümleştirmek](../../security-center/security-center-export-data-to-siem.md) , güvenlik merkezi uyarılarını, Azure tanılama günlükleri tarafından toplanan sanal makine güvenlik olaylarını ve Azure izleyici günlüklerinizi veya SIEM çözümünüzle Azure denetim günlüklerini nasıl eşitleyeceğinizi tartışır.
+[Güvenlik Merkezi uyarılarını tümleştirmek](../../security-center/security-center-partner-integration.md) , güvenlik merkezi uyarılarını, Azure tanılama günlükleri tarafından toplanan sanal makine güvenlik olaylarını ve Azure izleyici günlüklerinizi veya SIEM çözümünüzle Azure denetim günlüklerini nasıl eşitleyeceğinizi tartışır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

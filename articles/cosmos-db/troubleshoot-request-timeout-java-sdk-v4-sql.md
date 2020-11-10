@@ -8,12 +8,12 @@ ms.date: 10/28/2020
 ms.author: kuthapar
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 442d6638e88462b1dc87e9321dc631fe0a4f3a10
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: a805300ac62d0627c9b06188c9764a6887947afe
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340094"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411295"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-java-v4-sdk-request-timeout-exceptions"></a>Java v4 SDK isteği zaman aşımı özel durumları Azure Cosmos DB tanılama ve sorun giderme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,6 +22,9 @@ SDK, zaman aşımı sınırı gerçekleşmeden önce isteği tamamlayamadıysa H
 
 ## <a name="troubleshooting-steps"></a>Sorun giderme adımları
 Aşağıdaki liste, istek zaman aşımı özel durumları için bilinen nedenleri ve çözümleri içerir.
+
+### <a name="existing-issues"></a>Mevcut sorunlar
+İstekleri daha uzun süreli veya daha sık zaman aşımına uğramış olarak gördüğünüzü, lütfen Java v4 SDK 'sını en son sürüme yükseltin. NOTE: sürüm 4.7.0 ve üstünü kullanmanız önemle önerilir. Daha fazla ayrıntı için [Java v4 SDK sürüm notlarını](sql-api-sdk-java-v4.md) kullanıma alın.
 
 ### <a name="high-cpu-utilization"></a>Yüksek CPU kullanımı
 Yüksek CPU kullanımı en yaygın durumdur. En iyi gecikme için CPU kullanımı yaklaşık %40 olmalıdır. Maksimum (ortalama değil) CPU kullanımını izlemek için kullanılan Aralık olarak 10 saniye kullanın. CPU ani artışları, tek bir sorgu için birden çok bağlantı olabileceği, bölümler arası sorgularla daha yaygındır.

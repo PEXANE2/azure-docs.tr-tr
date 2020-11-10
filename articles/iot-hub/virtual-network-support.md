@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 11/09/2020
 ms.author: jlian
-ms.openlocfilehash: cb6e4b2b10b6b44a544416ad5d57808c7ad4d83f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: fdc106a1a446f51d309ac4317062c8fd20204bae
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427848"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413403"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Özel bağlantı ve yönetilen kimlik ile sanal ağlar için IoT Hub desteği
 
@@ -50,17 +50,17 @@ Devam etmeden önce aşağıdaki önkoşulların karşılandığından emin olun
 
 Özel uç nokta, hizmet API 'Lerinin yanı sıra (cihaz oluşturma ve güncelleştirme gibi) cihaz API 'Leri (cihazdan buluta iletiler gibi) IoT Hub için de kullanılabilir.
 
-1. Azure portal ' de **ağ**, **Özel uç nokta bağlantıları**' nı seçin ve **+ Özel uç noktasına**tıklayın.
+1. Azure portal ' de **ağ** , **Özel uç nokta bağlantıları** ' nı seçin ve **+ Özel uç noktasına** tıklayın.
 
     :::image type="content" source="media/virtual-network-support/private-link.png" alt-text="IoT Hub için özel uç noktanın nereye ekleneceğini gösteren ekran görüntüsü":::
 
 1. İçinde yeni özel bitiş noktasını oluşturmak için abonelik, kaynak grubu, ad ve bölge belirtin. İdeal olarak, Özel uç noktanın hub 'ınız ile aynı bölgede oluşturulması gerekir.
 
-1. **İleri: kaynak**' a tıklayın ve IoT Hub kaynağınız için abonelik sağlayın ve kaynak türü olarak **"Microsoft. Devices/iothubs"** , **kaynak**olarak IoT Hub adı ve hedef alt kaynak olarak **ıothub** seçeneğini belirleyin.
+1. **İleri: kaynak** ' a tıklayın ve IoT Hub kaynağınız için abonelik sağlayın ve kaynak türü olarak **"Microsoft. Devices/iothubs"** , **kaynak** olarak IoT Hub adı ve hedef alt kaynak olarak **ıothub** seçeneğini belirleyin.
 
 1. **İleri** ' ye tıklayın ve içinde özel uç nokta oluşturmak için Sanal ağınızı ve alt ağınızı sağlayın. İsterseniz Azure özel DNS bölgesi ile tümleştirme seçeneğini belirleyin.
 
-1. **İleri: Etiketler**' e tıklayın ve isteğe bağlı olarak kaynağınız için Etiketler sağlayın.
+1. **İleri: Etiketler** ' e tıklayın ve isteğe bağlı olarak kaynağınız için Etiketler sağlayın.
 
 1. Özel bağlantı kaynağınızı oluşturmak için **gözden geçir + oluştur** ' a tıklayın.
 
@@ -90,9 +90,9 @@ Diğer hizmetlerin IoT Hub 'ınızı güvenilir bir Microsoft hizmeti olarak bul
 
 1. IoT Hub portalınızdaki **kimlik** 'e gidin
 
-1. **Durum**altında, **Açık**' ı seçin ve ardından **Kaydet**' e tıklayın.
+1. **Durum** altında, **Açık** ' ı seçin ve ardından **Kaydet** ' e tıklayın.
 
-    :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="IoT Hub için özel uç noktanın nereye ekleneceğini gösteren ekran görüntüsü":::
+    :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="IoT Hub için yönetilen kimliği açmayı gösteren ekran görüntüsü":::
 
 ### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>ARM şablonunu kullanarak oluşturma sırasında IoT Hub yönetilen kimlik atama
 
@@ -174,13 +174,13 @@ IoT Hub, iletileri müşteriye ait bir depolama hesabına yönlendirebilir. Güv
 
 1. Azure portal, depolama hesabınızın **erişim denetimi (IAM)** sekmesine gidin ve **rol ataması Ekle** bölümünde **Ekle** ' ye tıklayın.
 
-2. **Rol**, **Azure AD kullanıcısı, Grup veya hizmet sorumlusu** tarafından, **erişim atama** ve açılır listede IoT Hub kaynak adını seçme olarak, **Depolama Blobu veri katılımcısı** ([*not* katılımcı veya depolama hesabı katılımcısı](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) seçin. **Kaydet** düğmesine tıklayın.
+2. **Rol** , **Azure AD kullanıcısı, Grup veya hizmet sorumlusu** tarafından, **erişim atama** ve açılır listede IoT Hub kaynak adını seçme olarak, **Depolama Blobu veri katılımcısı** ( [*not* katılımcı veya depolama hesabı katılımcısı](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) seçin. **Kaydet** düğmesine tıklayın.
 
-3. Depolama hesabınızdaki **güvenlik duvarları ve sanal ağlar** sekmesine gidin ve **Seçili ağlardan erişime izin ver** seçeneğini etkinleştirin. **Özel durumlar** listesi altında, **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver**kutusunu işaretleyin. **Kaydet** düğmesine tıklayın.
+3. Depolama hesabınızdaki **güvenlik duvarları ve sanal ağlar** sekmesine gidin ve **Seçili ağlardan erişime izin ver** seçeneğini etkinleştirin. **Özel durumlar** listesi altında, **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver** kutusunu işaretleyin. **Kaydet** düğmesine tıklayın.
 
 4. IoT Hub kaynak sayfasında **ileti yönlendirme** sekmesi ' ne gidin.
 
-5. **Özel uç noktalar** bölümüne gidin ve **Ekle**' ye tıklayın. Uç nokta türü olarak **depolama** ' yı seçin.
+5. **Özel uç noktalar** bölümüne gidin ve **Ekle** ' ye tıklayın. Uç nokta türü olarak **depolama** ' yı seçin.
 
 6. Görüntülenen sayfada uç noktanız için bir ad sağlayın, blob depoınızda kullanmayı düşündüğünüz kapsayıcıyı seçin, kodlama ve dosya adı biçimini belirtin. Depolama uç noktanıza **kimlik doğrulama türü** olarak **kimlik tabanlı** ' ı seçin. **Oluştur** düğmesine tıklayın.
 
@@ -192,15 +192,15 @@ IoT Hub, iletileri müşteriye ait bir olay hub 'ı ad alanına yönlendirmek ü
 
 1. Azure portal, Olay Hub 'ları **erişim denetimi (IAM)** sekmesine gidin ve **rol ataması Ekle** bölümünde **Ekle** ' ye tıklayın.
 
-2. **Erişim atama** olarak **Event Hubs veri göndereni** **rol**, **Azure AD kullanıcısı, Grup veya hizmet sorumlusu** olarak seçin ve açılan listeden IoT Hub kaynak adını seçin. **Kaydet** düğmesine tıklayın.
+2. **Erişim atama** olarak **Event Hubs veri göndereni** **rol** , **Azure AD kullanıcısı, Grup veya hizmet sorumlusu** olarak seçin ve açılan listeden IoT Hub kaynak adını seçin. **Kaydet** düğmesine tıklayın.
 
-3. Olay Hub 'larınızdaki **güvenlik duvarları ve sanal ağlar** sekmesine gidin ve **Seçili ağlardan erişime izin ver** seçeneğini etkinleştirin. **Özel durumlar** listesi altında, **Güvenilen Microsoft hizmetlerinin Olay Hub 'Larına erişmesine izin ver**kutusunu işaretleyin. **Kaydet** düğmesine tıklayın.
+3. Olay Hub 'larınızdaki **güvenlik duvarları ve sanal ağlar** sekmesine gidin ve **Seçili ağlardan erişime izin ver** seçeneğini etkinleştirin. **Özel durumlar** listesi altında, **Güvenilen Microsoft hizmetlerinin Olay Hub 'Larına erişmesine izin ver** kutusunu işaretleyin. **Kaydet** düğmesine tıklayın.
 
 4. IoT Hub kaynak sayfasında **ileti yönlendirme** sekmesi ' ne gidin.
 
-5. **Özel uç noktalar** bölümüne gidin ve **Ekle**' ye tıklayın. Uç nokta türü olarak **Olay Hub 'larını** seçin.
+5. **Özel uç noktalar** bölümüne gidin ve **Ekle** ' ye tıklayın. Uç nokta türü olarak **Olay Hub 'larını** seçin.
 
-6. Görüntülenen sayfada uç noktanız için bir ad sağlayın, Olay Hub 'larını ve örneğinizi seçin ve **Oluştur** düğmesine tıklayın.
+6. Görüntülenen sayfada uç noktanız için bir ad sağlayın, Olay Hub 'ı ad alanınızı ve örneğinizi seçin. **Kimlik doğrulama türü** olarak **kimlik tabanlı** ' i seçin ve **Oluştur** düğmesine tıklayın.
 
 Artık özel olay hub 'larınız, hub 'ın sistem tarafından atanan kimliğini kullanacak şekilde ayarlanmıştır ve güvenlik duvarı kısıtlamalarına rağmen Olay Hub 'ınıza erişme iznine sahiptir. Artık bu uç noktayı bir yönlendirme kuralı ayarlamak için kullanabilirsiniz.
 
@@ -210,15 +210,15 @@ IoT Hub, iletileri müşteriye ait Service Bus ad alanına yönlendirmek üzere 
 
 1. Azure portal, hizmet veri yolu **erişim denetimi (IAM)** sekmesine gidin ve **rol ataması Ekle** bölümünde **Ekle** ' ye tıklayın.
 
-2. **Erişim atama** olarak **hizmet veri yolu verileri göndereni** **rol**, **Azure AD kullanıcısı, Grup veya hizmet sorumlusu** olarak seçin ve aşağı açılan listeden IoT Hub kaynak adını seçin. **Kaydet** düğmesine tıklayın.
+2. **Erişim atama** olarak **hizmet veri yolu verileri göndereni** **rol** , **Azure AD kullanıcısı, Grup veya hizmet sorumlusu** olarak seçin ve aşağı açılan listeden IoT Hub kaynak adını seçin. **Kaydet** düğmesine tıklayın.
 
-3. Service Bus 'daki **güvenlik duvarları ve sanal ağlar** sekmesine gidin ve **Seçili ağlardan erişime izin ver** seçeneğini etkinleştirin. **Özel durumlar** listesi altında, **Güvenilen Microsoft hizmetlerinin bu hizmet veri yoluna erişmesine izin ver**kutusunu işaretleyin. **Kaydet** düğmesine tıklayın.
+3. Service Bus 'daki **güvenlik duvarları ve sanal ağlar** sekmesine gidin ve **Seçili ağlardan erişime izin ver** seçeneğini etkinleştirin. **Özel durumlar** listesi altında, **Güvenilen Microsoft hizmetlerinin bu hizmet veri yoluna erişmesine izin ver** kutusunu işaretleyin. **Kaydet** düğmesine tıklayın.
 
 4. IoT Hub kaynak sayfasında **ileti yönlendirme** sekmesi ' ne gidin.
 
-5. **Özel uç noktalar** bölümüne gidin ve **Ekle**' ye tıklayın. Uç nokta türü olarak **Service Bus kuyruğu** veya **Service Bus konusunu** (geçerli olduğu gibi) seçin.
+5. **Özel uç noktalar** bölümüne gidin ve **Ekle** ' ye tıklayın. Uç nokta türü olarak **Service Bus kuyruğu** veya **Service Bus konusunu** (geçerli olduğu gibi) seçin.
 
-6. Görüntülenen sayfada uç noktanız için bir ad sağlayın, Service Bus ' ad alanı ve kuyruk veya konu başlığını (uygun olduğu gibi) seçin. **Oluştur** düğmesine tıklayın.
+6. Görüntülenen sayfada uç noktanız için bir ad sağlayın, Service Bus ' ad alanı ve kuyruk veya konu başlığını (uygun olduğu gibi) seçin. **Kimlik doğrulama türü** olarak **kimlik tabanlı** ' i seçin ve **Oluştur** düğmesine tıklayın.
 
 Artık özel Service Bus uç noktanız, hub 'ın sistem tarafından atanan kimliğini kullanacak şekilde ayarlanmıştır ve güvenlik duvarı kısıtlamalarına rağmen Service Bus kaynağına erişme izni vardır. Artık bu uç noktayı bir yönlendirme kuralı ayarlamak için kullanabilirsiniz.
 
@@ -230,13 +230,13 @@ IoT Hub dosya karşıya yükleme özelliği, cihazların müşteriye ait bir dep
 
 1. Azure portal, depolama hesabınızın **erişim denetimi (IAM)** sekmesine gidin ve **rol ataması Ekle** bölümünde **Ekle** ' ye tıklayın.
 
-2. **Rol**, **Azure AD kullanıcısı, Grup veya hizmet sorumlusu** tarafından, **erişim atama** ve açılır listede IoT Hub kaynak adını seçme olarak, **Depolama Blobu veri katılımcısı** ([*not* katılımcı veya depolama hesabı katılımcısı](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) seçin. **Kaydet** düğmesine tıklayın.
+2. **Rol** , **Azure AD kullanıcısı, Grup veya hizmet sorumlusu** tarafından, **erişim atama** ve açılır listede IoT Hub kaynak adını seçme olarak, **Depolama Blobu veri katılımcısı** ( [*not* katılımcı veya depolama hesabı katılımcısı](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) seçin. **Kaydet** düğmesine tıklayın.
 
-3. Depolama hesabınızdaki **güvenlik duvarları ve sanal ağlar** sekmesine gidin ve **Seçili ağlardan erişime izin ver** seçeneğini etkinleştirin. **Özel durumlar** listesi altında, **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver**kutusunu işaretleyin. **Kaydet** düğmesine tıklayın.
+3. Depolama hesabınızdaki **güvenlik duvarları ve sanal ağlar** sekmesine gidin ve **Seçili ağlardan erişime izin ver** seçeneğini etkinleştirin. **Özel durumlar** listesi altında, **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver** kutusunu işaretleyin. **Kaydet** düğmesine tıklayın.
 
 4. IoT Hub kaynak sayfasında **karşıya dosya yükleme** sekmesine gidin.
 
-5. Görüntülenen sayfada, blob depoınızda kullanmayı düşündüğünüz kapsayıcıyı seçin, **Dosya bildirim ayarlarını**, **SAS TTL**, **varsayılan TTL**ve **en fazla teslim sayısını** istediğiniz şekilde yapılandırın. Depolama uç noktanıza **kimlik doğrulama türü** olarak **kimlik tabanlı** ' ı seçin. **Oluştur** düğmesine tıklayın. Bu adımda bir hata alırsanız, depolama hesabınızı geçici olarak **tüm ağlardan**erişime izin verecek şekilde ayarlayın, sonra yeniden deneyin. Dosya karşıya yükleme yapılandırması tamamlandıktan sonra depolama hesabında güvenlik duvarını yapılandırabilirsiniz.
+5. Görüntülenen sayfada, blob depoınızda kullanmayı düşündüğünüz kapsayıcıyı seçin, **Dosya bildirim ayarlarını** , **SAS TTL** , **varsayılan TTL** ve **en fazla teslim sayısını** istediğiniz şekilde yapılandırın. Depolama uç noktanıza **kimlik doğrulama türü** olarak **kimlik tabanlı** ' ı seçin. **Oluştur** düğmesine tıklayın. Bu adımda bir hata alırsanız, depolama hesabınızı geçici olarak **tüm ağlardan** erişime izin verecek şekilde ayarlayın, sonra yeniden deneyin. Dosya karşıya yükleme yapılandırması tamamlandıktan sonra depolama hesabında güvenlik duvarını yapılandırabilirsiniz.
 
 Şimdi karşıya dosya yükleme için depolama uç noktanız, hub 'ın sistem tarafından atanan kimliğini kullanacak şekilde ayarlanır ve güvenlik duvarı kısıtlamalarına rağmen depolama kaynağına erişme izni vardır.
 
@@ -248,9 +248,9 @@ Bu işlevsellik IoT Hub depolama hesabına bağlantı gerektirir. Güvenlik duva
 
 1. Azure portal, depolama hesabınızın **erişim denetimi (IAM)** sekmesine gidin ve **rol ataması Ekle** bölümünde **Ekle** ' ye tıklayın.
 
-2. **Rol**, **Azure AD kullanıcısı, Grup veya hizmet sorumlusu** tarafından, **erişim atama** ve açılır listede IoT Hub kaynak adını seçme olarak, **Depolama Blobu veri katılımcısı** ([*not* katılımcı veya depolama hesabı katılımcısı](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) seçin. **Kaydet** düğmesine tıklayın.
+2. **Rol** , **Azure AD kullanıcısı, Grup veya hizmet sorumlusu** tarafından, **erişim atama** ve açılır listede IoT Hub kaynak adını seçme olarak, **Depolama Blobu veri katılımcısı** ( [*not* katılımcı veya depolama hesabı katılımcısı](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) seçin. **Kaydet** düğmesine tıklayın.
 
-3. Depolama hesabınızdaki **güvenlik duvarları ve sanal ağlar** sekmesine gidin ve **Seçili ağlardan erişime izin ver** seçeneğini etkinleştirin. **Özel durumlar** listesi altında, **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver**kutusunu işaretleyin. **Kaydet** düğmesine tıklayın.
+3. Depolama hesabınızdaki **güvenlik duvarları ve sanal ağlar** sekmesine gidin ve **Seçili ağlardan erişime izin ver** seçeneğini etkinleştirin. **Özel durumlar** listesi altında, **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver** kutusunu işaretleyin. **Kaydet** düğmesine tıklayın.
 
 Artık toplu içeri/dışarı aktarma işlevini kullanma hakkında bilgi için [içeri aktarma dışarı aktarma işleri oluşturmak](/rest/api/iothub/service/jobs/getimportexportjobs) üzere Azure IoT REST API 'lerini kullanabilirsiniz. `storageAuthenticationType="identityBased"` `inputBlobContainerUri="https://..."` `outputBlobContainerUri="https://..."` Depolama hesabınızın giriş ve çıkış URL 'leri sırasıyla, istek gövdesine ve kullanmanız gerekir.
 
@@ -280,7 +280,7 @@ Python için, GitHub 'dan sınırlı sürümümüzü indirin.
 
 1. [GitHub sürüm sayfasına](https://aka.ms/vnetpythonsdk)gidin.
 
-2. Aşağıdaki dosyayı indirin ve bu, yayın sayfasının alt kısmında bulunan **varlıklar**adlı başlık altında bulabilirsiniz.
+2. Aşağıdaki dosyayı indirin ve bu, yayın sayfasının alt kısmında bulunan **varlıklar** adlı başlık altında bulabilirsiniz.
     > *azure_iot_hub-2.2.0_limited-PY2. PY3-None-Any. WHL*
 
 3. Bir Terminal açın ve indirilen dosyanın bulunduğu klasöre gidin.

@@ -4,16 +4,16 @@ description: Yeni veri dışa aktarma kullanarak IoT verilerinizi Azure 'a ve ö
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 09/15/2020
+ms.date: 11/05/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperfq1
-ms.openlocfilehash: 2cbdeca41746099643fb06ff5861a39b2e032b33
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b16880f42cab21c1437d9adcbeb9825d77475e0e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126712"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413182"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Veri dışarı aktarma kullanarak IoT verilerini bulut hedeflerine dışarı aktarma
 
@@ -46,7 +46,7 @@ Dışarı aktarma hedefi, veri dışa aktarma işlemini yapılandırmadan önce 
 - Azure Event Hubs
 - Azure Service Bus kuyruğu
 - Azure Service Bus konusu
-- Azure Blob Depolama
+- Azure Blob Depolama Alanı
 - Web Kancası
 
 ### <a name="create-an-event-hubs-destination"></a>Event Hubs hedefi oluşturma
@@ -60,12 +60,12 @@ Uygulamasına dışarı aktarmak için mevcut bir Event Hubs ad alanınız yoksa
 1. IoT Central ' de veri dışarı aktarmayı ayarlarken kullanılacak bir anahtar oluşturun:
 
     - Oluşturduğunuz Olay Hub örneğini seçin.
-    - **Paylaşılan erişim ilkeleri > ayarlar**' ı seçin.
+    - **Paylaşılan erişim ilkeleri > ayarlar** ' ı seçin.
     - Yeni bir anahtar oluşturun veya **gönderme** izinleri olan varolan bir anahtarı seçin.
     - Birincil veya ikincil bağlantı dizesini kopyalayın. IoT Central yeni bir hedef ayarlamak için bu bağlantı dizesini kullanın.
     - Alternatif olarak, tüm Event Hubs ad alanı için bir bağlantı dizesi oluşturabilirsiniz:
         1. Azure portal Event Hubs ad alanına gidin.
-        2. **Ayarlar**altında, **paylaşılan erişim ilkeleri** ' ni seçin.
+        2. **Ayarlar** altında, **paylaşılan erişim ilkeleri** ' ni seçin.
         3. Yeni bir anahtar oluşturun veya **gönderme** izinleri olan varolan bir anahtarı seçin.
         4. Birincil veya ikincil bağlantı dizesini kopyalayın
         
@@ -75,17 +75,17 @@ Uygulamasına dışarı aktarmak için mevcut bir Service Bus ad alanınız yoks
 
 1. [Azure Portal yeni bir Service Bus ad alanı](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5)oluşturun. [Azure Service Bus docs](../../service-bus-messaging/service-bus-create-namespace-portal.md)' de daha fazla bilgi edinebilirsiniz.
 
-1. Uygulamasına dışarı aktarmak için bir kuyruk veya konu oluşturmak için Service Bus ad alanına gidin ve **+ Queue** veya **+ konu başlığını**seçin.
+1. Uygulamasına dışarı aktarmak için bir kuyruk veya konu oluşturmak için Service Bus ad alanına gidin ve **+ Queue** veya **+ konu başlığını** seçin.
 
 1. IoT Central ' de veri dışarı aktarmayı ayarlarken kullanılacak bir anahtar oluşturun:
 
     - Oluşturduğunuz kuyruğu veya konuyu seçin.
-    - **Ayarlar/paylaşılan erişim ilkeleri**' ni seçin.
+    - **Ayarlar/paylaşılan erişim ilkeleri** ' ni seçin.
     - Yeni bir anahtar oluşturun veya **gönderme** izinleri olan varolan bir anahtarı seçin.
     - Birincil veya ikincil bağlantı dizesini kopyalayın. IoT Central yeni bir hedef ayarlamak için bu bağlantı dizesini kullanın.
     - Alternatif olarak, tüm Service Bus ad alanı için bir bağlantı dizesi oluşturabilirsiniz:
         1. Azure portal Service Bus ad alanına gidin.
-        2. **Ayarlar**altında, **paylaşılan erişim ilkeleri** ' ni seçin.
+        2. **Ayarlar** altında, **paylaşılan erişim ilkeleri** ' ni seçin.
         3. Yeni bir anahtar oluşturun veya **gönderme** izinleri olan varolan bir anahtarı seçin.
         4. Birincil veya ikincil bağlantı dizesini kopyalayın
 
@@ -102,16 +102,16 @@ Uygulamasına dışarı aktarmak için mevcut bir Service Bus ad alanınız yoks
     |Standart|Blob depolama|
     |Premium|Blob depolamayı engelle|
 
-1. Depolama hesabınızda bir kapsayıcı oluşturmak için depolama hesabınıza gidin. **BLOB hizmeti**altında **bloblara gözatamıyorum**' ı seçin. Yeni bir kapsayıcı oluşturmak için üst kısımdaki **+ kapsayıcı** ' yı seçin.
+1. Depolama hesabınızda bir kapsayıcı oluşturmak için depolama hesabınıza gidin. **BLOB hizmeti** altında **bloblara gözatamıyorum** ' ı seçin. Yeni bir kapsayıcı oluşturmak için üst kısımdaki **+ kapsayıcı** ' yı seçin.
 
-1. **Ayarlar > erişim anahtarlarına**giderek depolama hesabınız için bir bağlantı dizesi oluşturun. İki bağlantı dizesinin birini kopyalayın.
+1. **Ayarlar > erişim anahtarlarına** giderek depolama hesabınız için bir bağlantı dizesi oluşturun. İki bağlantı dizesinin birini kopyalayın.
 
 ### <a name="create-a-webhook-endpoint"></a>Web kancası uç noktası oluşturma
 
 Verileri herkese açık bir HTTP Web kancası uç noktasına aktarabilirsiniz. [Requestbin](https://requestbin.net/)kullanarak bir test Web kancası uç noktası oluşturabilirsiniz. İstek sınırına ulaşıldığında RequestBin kısıtlar isteği:
 
 1. [Requestbin](https://requestbin.net/)'i açın.
-2. Yeni bir RequestBin oluşturun ve **BIN URL 'sini**kopyalayın. Veri dışa aktarmayı test ettiğinizde bu URL 'YI kullanırsınız.
+2. Yeni bir RequestBin oluşturun ve **BIN URL 'sini** kopyalayın. Veri dışa aktarmayı test ettiğinizde bu URL 'YI kullanırsınız.
 
 ## <a name="set-up-data-export"></a>Veri dışarı aktarma ayarlama
 
@@ -119,14 +119,14 @@ Verilerinizi dışarı aktarmak için bir hedef olduğuna göre, IoT Central uyg
 
 1. IoT Central uygulamanızda oturum açın.
 
-1. Sol bölmede **veri dışa aktar**' ı seçin.
+1. Sol bölmede **veri dışa aktar** ' ı seçin.
 
     > [!Tip]
     > Sol bölmede **veri dışa aktarma** 'yı görmüyorsanız, uygulamanızda veri dışarı aktarma yapılandırma izniniz yok demektir. Verilerin dışarı aktarılmasını ayarlamak için bir yöneticiye danışın.
 
-1. **+ Yeni dışarı aktar**'ı seçin.
+1. **+ Yeni dışarı aktar** 'ı seçin.
 
-1. Yeni dışa aktarma için bir görünen ad girin ve veri dışa aktarmanın **etkinleştirildiğinden**emin olun.
+1. Yeni dışa aktarma için bir görünen ad girin ve veri dışa aktarmanın **etkinleştirildiğinden** emin olun.
 
 1. Dışarı aktarılacak veri türünü seçin. Aşağıdaki tabloda desteklenen veri dışa aktarma türleri listelenmektedir:
 
@@ -135,33 +135,37 @@ Verilerinizi dışarı aktarmak için bir hedef olduğuna göre, IoT Central uyg
     |  Telemetri | Neredeyse gerçek zamanlı olarak cihazlardan telemetri iletileri dışarı aktarın. Her bir dışarıya ileti, özgün cihaz iletisinin normalleştirilmiş, Normalleştirilmemiş.   |  [Telemetri ileti biçimi](#telemetry-format)   |
     | Özellik değişiklikleri | Değişiklikleri cihaz ve bulut özelliklerine neredeyse gerçek zamanlı olarak dışa aktarın. Salt okuma cihaz özellikleri için, bildirilen değerlerde yapılan değişiklikler verilir. Okuma-yazma özellikleri için hem bildirilen hem de istenen değerler verilir. | [Özellik değiştirme iletisi biçimi](#property-changes-format) |
 
+<a name="DataExportFilters"></a>
 1. İsteğe bağlı olarak, dışarıya aktarılmış veri miktarını azaltmak için filtre ekleyin. Her bir veri dışa aktarma türü için farklı filtre türleri mevcuttur:
 
     Telemetriyi filtrelemek için şunları yapabilirsiniz:
 
     - Yalnızca cihaz adı, cihaz KIMLIĞI ve cihaz şablonu filtre koşulu ile eşleşen cihazlardan gelen telemetri dahil olmak üzere, dışarıya alınan akışı **filtreleyin** .
     - Özellikleri **filtreleme** : **ad** açılan listesinde bir telemetri öğesi seçerseniz, bu akış yalnızca filtre koşulunu karşılayan telemetri içerir. **Ad** açılan listesinde bir cihaz veya bulut Özellik öğesi seçerseniz, bu akış yalnızca, filtre koşuluyla eşleşen özelliklere sahip cihazlardan telemetri içerir.
-    - **İleti özelliği filtresi**: cihaz SDK 'larını kullanan cihazlar her telemetri iletisinde *ileti özellikleri* veya *uygulama özellikleri* gönderebilir. Özellikler, özel tanımlayıcılarla iletiyi etiketleyerek anahtar-değer çiftlerinin bir çantadir. İleti özellik filtresi oluşturmak için Aradığınız ileti özelliği anahtarını girip bir koşul belirtin. Yalnızca belirtilen filtre koşuluyla eşleşen özelliklere sahip telemetri iletileri verilir. Şu dize karşılaştırma işleçleri destekleniyor: eşittir, eşit değildir, içerir, içermez, yok, yok. [IoT Hub belgelerinden uygulama özellikleri hakkında daha fazla bilgi edinin](../../iot-hub/iot-hub-devguide-messages-construct.md).
+    - **İleti özelliği filtresi** : cihaz SDK 'larını kullanan cihazlar her telemetri iletisinde *ileti özellikleri* veya *uygulama özellikleri* gönderebilir. Özellikler, özel tanımlayıcılarla iletiyi etiketleyerek anahtar-değer çiftlerinin bir çantadir. İleti özellik filtresi oluşturmak için Aradığınız ileti özelliği anahtarını girip bir koşul belirtin. Yalnızca belirtilen filtre koşuluyla eşleşen özelliklere sahip telemetri iletileri verilir. Şu dize karşılaştırma işleçleri destekleniyor: eşittir, eşit değildir, içerir, içermez, yok, yok. [IoT Hub belgelerinden uygulama özellikleri hakkında daha fazla bilgi edinin](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
-    Özellik değişikliklerini filtrelemek için bir **yetenek filtresi**kullanın. Açılan listede bir özellik öğesi seçin. İçe aktarılmış akış yalnızca seçili özellikte filtre koşulunu karşılayan değişiklikleri içerir.
+    Özellik değişikliklerini filtrelemek için bir **yetenek filtresi** kullanın. Açılan listede bir özellik öğesi seçin. İçe aktarılmış akış yalnızca seçili özellikte filtre koşulunu karşılayan değişiklikleri içerir.
 
+<a name="DataExportEnrichmnents"></a>
 1. İsteğe bağlı olarak, daha fazla anahtar-değer çifti meta verileriyle dışarıya aktarılmış iletileri zenginleştirin. Aşağıdaki enzenginler, telemetri ve özellik değişiklikleri veri dışa aktarma türleri için kullanılabilir:
 
-    - **Özel dize**: her iletiye özel bir statik dize ekler. Herhangi bir anahtar girin ve herhangi bir dize değeri girin.
-    - **Özellik**: geçerli cihazdaki bildirilen özelliği veya bulut özelliği değerini her iletiye ekler. Herhangi bir anahtar girin ve bir cihaz ya da bulut özelliği seçin. Verdiğiniz ileti, belirtilen özelliğe sahip olmayan bir cihazdan ise, bu, verdiğiniz ileti zenginleştirme almaz.
+    - **Özel dize** : her iletiye özel bir statik dize ekler. Herhangi bir anahtar girin ve herhangi bir dize değeri girin.
+    - **Özellik** : geçerli cihazdaki bildirilen özelliği veya bulut özelliği değerini her iletiye ekler. Herhangi bir anahtar girin ve bir cihaz ya da bulut özelliği seçin. Verdiğiniz ileti, belirtilen özelliğe sahip olmayan bir cihazdan ise, bu, verdiğiniz ileti zenginleştirme almaz.
 
 1. Yeni bir hedef ekleyin veya önceden oluşturduğunuz hedefi ekleyin. **Yeni bir bağlantı oluştur** bağlantısını seçin ve aşağıdaki bilgileri ekleyin:
 
-    - **Hedef adı**: IoT Central içindeki hedefin görünen adı.
-    - **Hedef türü**: hedef türünü seçin. Hedefini henüz ayarlamadıysanız bkz. [dışarı aktarma hedefini ayarlama](#set-up-export-destination).
+    - **Hedef adı** : IoT Central içindeki hedefin görünen adı.
+    - **Hedef türü** : hedef türünü seçin. Hedefini henüz ayarlamadıysanız bkz. [dışarı aktarma hedefini ayarlama](#set-up-export-destination).
     - Azure Event Hubs, kuyruk veya konu Azure Service Bus için, kaynağınız için bağlantı dizesini yapıştırın ve gerekirse büyük/küçük harfe duyarlı Olay Hub 'ını, kuyruğunu veya konu adını girin.
     - Azure Blob depolama için, kaynağınız için bağlantı dizesini yapıştırın ve gerekirse, büyük/küçük harfe duyarlı kapsayıcı adını girin.
-    - Web kancası için, Web kancası uç noktanız için geri çağırma URL 'sini yapıştırın.
-    - **Oluştur**’u seçin.
+    - Web kancası için, Web kancası uç noktanız için geri çağırma URL 'sini yapıştırın. İsteğe bağlı olarak, Web kancası yetkilendirmesini (OAuth 2,0 ve yetkilendirme belirteci) yapılandırabilir ve özel üstbilgiler ekleyebilirsiniz. 
+        - OAuth 2,0 için yalnızca istemci kimlik bilgileri akışı desteklenir. Hedef kaydedildiğinde IoT Central, bir yetkilendirme belirteci almak için OAuth sağlayıcınızla iletişim kurar. Bu belirteç, bu hedefe gönderilen her ileti için "yetkilendirme" başlığına eklenecektir.
+        - Yetkilendirme belirteci için, bu hedefe gönderilen her ileti için "yetkilendirme" başlığına doğrudan eklenecek bir belirteç değeri belirtebilirsiniz.
+    - **Oluştur** ’u seçin.
 
 1. **+ Hedef** ' i seçin ve açılan listeden bir hedef seçin. Tek bir dışarı aktarmaya en fazla beş hedef ekleyebilirsiniz.
 
-1. Dışarı aktarma işleminizi ayarlamayı bitirdiğinizde **Kaydet**' i seçin. Birkaç dakika sonra verileriniz hedeflerinizin içinde görüntülenir.
+1. Dışarı aktarma işleminizi ayarlamayı bitirdiğinizde **Kaydet** ' i seçin. Birkaç dakika sonra verileriniz hedeflerinizin içinde görüntülenir.
 
 ## <a name="export-contents-and-format"></a>İçeriği ve biçimi dışarı aktar
 
@@ -172,7 +176,7 @@ Veriler, önceki dışa aktarma işleminden bu yana değişiklik kümesini içer
 - Telemetri: _{Container}/{app-id}/{partition_id}/{yyyy}/{mm}/{dd}/{ss}/{mm}/{filename}_
 - Özellik değişiklikleri: _{Container}/{app-id}/{partition_id}/{yyyy}/{mm}/{dd}/{ss}/{mm}/{filename}_
 
-Azure portal içe aktarılmış dosyalara gitmek için dosyaya gidin ve **blobu Düzenle**' yi seçin.
+Azure portal içe aktarılmış dosyalara gitmek için dosyaya gidin ve **blobu Düzenle** ' yi seçin.
 
 ### <a name="azure-event-hubs-and-azure-service-bus-destinations"></a>Azure Event Hubs ve Azure Service Bus hedefleri
 
@@ -194,7 +198,7 @@ Her bir dışarıya gönderilen ileti, cihazın ileti gövdesinde gönderdiği t
 - `schema`: Yük şemasının adı ve sürümü.
 - `templateId`: Cihazla ilişkili cihaz şablonu KIMLIĞI.
 - `enrichments`: Dışa aktarma üzerinde herhangi bir zenginleştirme ayarlanır.
-- `messageProperties`: Cihazın iletiyle birlikte gönderdiği ek özellikler. Bu özellikler bazen *uygulama özellikleri*olarak adlandırılır. [IoT Hub belgelerinden daha fazla bilgi edinin](../../iot-hub/iot-hub-devguide-messages-construct.md).
+- `messageProperties`: Cihazın iletiyle birlikte gönderdiği ek özellikler. Bu özellikler bazen *uygulama özellikleri* olarak adlandırılır. [IoT Hub belgelerinden daha fazla bilgi edinin](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
 Event Hubs ve Service Bus için IoT Central bir cihazdan iletiyi aldıktan sonra yeni bir iletiyi hızlı bir şekilde dışarı aktarır. Her iletinin Kullanıcı özelliklerinde (uygulama özellikleri olarak da anılır),, `iotcentral-device-id` `iotcentral-application-id` ve `iotcentral-message-source` otomatik olarak eklenir.
 
@@ -275,8 +279,8 @@ Aşağıdaki tabloda, [eski veri dışa aktarma](howto-export-data-legacy.md) ve
 | Özellikler  | Eski veri dışa aktarma | Yeni veri dışa aktarma |
 | :------------- | :---------- | :----------- |
 | Kullanılabilir veri türleri | Telemetri, cihazlar, cihaz şablonları | Telemetri, özellik değişiklikleri |
-| Filtreleme | Hiçbiri | , Dışarıya aktarılmış veri türüne bağlıdır. Telemetri için telemetri, ileti özellikleri, özellik değerleri ile filtreleme |
-| Zenginleştirmeleri | Hiçbiri | Cihazdaki özel bir dize veya özellik değeri ile zenginleştirme |
+| Filtreleme | Yok | , Dışarıya aktarılmış veri türüne bağlıdır. Telemetri için telemetri, ileti özellikleri, özellik değerleri ile filtreleme |
+| Zenginleştirmeleri | Yok | Cihazdaki özel bir dize veya özellik değeri ile zenginleştirme |
 | Hedefler | Azure Event Hubs, Azure Service Bus kuyruklar ve konular, Azure Blob depolama | Eski veri dışa aktarma ve Web kancaları ile aynı|
 | Desteklenen uygulama sürümleri | V2, V3 | Yalnızca v3 |
 | Önemli sınırlar | her uygulama için 5 dışarı aktarım, dışarı aktarma başına 1 hedef | 10 dışarı aktarmalar-uygulama başına hedef bağlantı |

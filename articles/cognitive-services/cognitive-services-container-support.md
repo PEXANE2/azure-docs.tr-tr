@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/22/2020
 ms.author: aahi
 keywords: Şirket içi, Docker, kapsayıcı, Kubernetes
-ms.openlocfilehash: a59d9fb4fb15b361259a705a024b9bea975e8072
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 56d88b9223a80ea9981e8830cac44bac7c6edb3b
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368857"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413046"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Bilişsel Hizmetler kapsayıcıları
 
@@ -56,9 +56,9 @@ Bilişsel hizmetler kaynakları [Microsoft Azure](https://azure.microsoft.com)ku
 
 Azure bilişsel hizmetler kapsayıcıları, her biri Azure bilişsel hizmetler 'deki hizmetlerden bir işlev alt kümesini içeren aşağıdaki Docker Kapsayıcıları kümesini sağlar:
 
-| Hizmet | Desteklenen Fiyatlandırma Katmanı | Kapsayıcı | Description |
+| Hizmet | Desteklenen Fiyatlandırma Katmanı | Kapsayıcı | Açıklama |
 |--|--|--|--|
-| [Anomali algılayıcısı][ad-containers] | F0, S0 | **Anomali-algılayıcı** ( [görüntü](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | Anomali algılayıcı API 'SI, makine öğrenimi ile zaman serisi verilerinizde bulunan normalleştirikleri izlemenize ve algılamanıza olanak sağlar.<br>[Erişim izni isteme][request-access] |
+| [Anomali algılayıcısı][ad-containers] | F0, S0 | **Anomali-algılayıcı** ( [görüntü](https://hub.docker.com/_/microsoft-azure-cognitive-services-decision-anomaly-detector))  | Anomali algılayıcı API 'SI, makine öğrenimi ile zaman serisi verilerinizde bulunan normalleştirikleri izlemenize ve algılamanıza olanak sağlar.<br>[Erişim izni isteme][request-access] |
 | [Görüntü İşleme][cv-containers] | F0, S1 | **Oku** OCR ( [görüntü](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Okuma OCR kapsayıcısı, JPEG, PNG, BMP, PDF ve TIFF dosya biçimleri desteğiyle, görüntülerden ve belgelerden yazdırılmış ve el yazısı metinleri ayıklamanızı sağlar. Daha fazla bilgi için bkz. [okuma API 'si belgeleri](./computer-vision/concept-recognizing-text.md).<br>[Erişim izni isteme][request-access] |
 | [Yüz Tanıma][fa-containers] | F0, S0 | **Yüz Tanıma** | Görüntülerde insan yüzlerini algılar ve yüzleri (Nosi ve gözler gibi), cinsiyet, yaş ve diğer makine tarafından öngörülen yüz özellikleri dahil olmak üzere öznitelikleri tanımlar. Algılamanın yanı sıra, benzer bir veya aynı yüzün zaten mevcut olup olmadığını görmek için aynı görüntüde veya farklı görüntülerde iki yüzün aynı olup olmadığını denetleyebilir veya bir veritabanı ile yüzleri karşılaştırın. Ayrıca, paylaşılan görsel nitelikleri kullanarak benzer yüzeyleri gruplar halinde düzenleyebilir. |
 | [Form tanıyıcı][fr-containers] | F0, S0 | **Form Tanıma** | Form, formlardan anahtar-değer çiftlerini ve tabloları tanımlamak ve ayıklamak için makine öğrenimi teknolojisini uygular. |

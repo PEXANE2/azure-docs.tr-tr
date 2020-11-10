@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: alsin
-ms.openlocfilehash: da17122de8db41b6ba9ae9597d52bc3e1d8d0062
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c1200121d1c768a3fdddd7749184d7f8b5c98a96
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962403"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413114"
 ---
 # <a name="preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Önizleme: Azure Hibrit Avantajı – Linux Sanal Makineleri için nasıl uygulanır?
 
@@ -25,7 +25,7 @@ Azure Hibrit Avantajı, önceden var olan Red hat veya SUSE yazılım aboneliği
 
 > [!IMPORTANT]
 > Linux VM 'Leri için Azure Hibrit Avantajı Şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="benefit-description"></a>Avantaj açıklaması
 
@@ -57,7 +57,7 @@ Bu aşamada, formu [buraya](https://aka.ms/ahb-linux-form)doldurarak avantaja er
 1.    [Red Hat bulut erişim programına](https://aka.ms/rhel-cloud-access) kaydolun
 1.    Azure aboneliklerinizi bulut erişimi için etkinleştirin ve avantajını kullanmak istediğiniz VM 'Leri içeren abonelikleri etkinleştirin
 1.    Azure portal veya Azure CLı aracılığıyla mevcut sanal makinelerinize avantajını uygulayın
-1.    VM 'lerinizi, ayrı bir güncelleştirme kaynağıyla avantajını alacak şekilde kaydedin
+1.    İsteğe bağlı, sanal makinelerinizi ayrı bir güncelleştirme kaynağıyla elde edin (anahtarlamalı VM 'Ler [rhuı](../workloads/redhat/redhat-rhui.md) 'e bağlı KALABILIR veya RHSM aracılığıyla kaydedilebilir)
 
 ### <a name="suse-customers"></a>SUSE müşterileri
 
@@ -147,13 +147,14 @@ Y: Hayır. VM 'niz üzerinde çalışan ile yanlış eşleşen bir lisans türü
 
 Y: Red Hat bulut erişimi aboneliğinin, Red Hat 'ten Azure 'a yayılması biraz zaman alabilir. Bir iş gününden sonra hatayı görmeye devam ediyorsanız, Microsoft destek 'e başvurun.
 
-## <a name="common-errors"></a>Sık karşılaşılan hatalar
-Bu bölüm, azaltma için sık karşılaşılan hataların ve adımların bir listesini içerir.
+## <a name="common-issues"></a>Genel sorunlar
+Bu bölüm, karşılaşılan yaygın sorunların ve hafifletme adımlarının bir listesini içerir.
 
 | Hata | Risk azaltma |
 | ----- | ---------- |
 | "Abonelik, Azure Hibrit Avantajı Linux önizlemesi için kayıtlı değil. Adım adım yönergeler için bkz. https://aka.ms/ahb-linux " | https://aka.ms/ahb-linux-formAzure hibrit avantajı Linux önizlemesi için kaydolmak üzere konumundaki formu doldurun.
 | "Kayıtlarımız Azure aboneliğinizde Red Hat bulutu erişimini başarıyla etkinleştirmediyseniz, bu eylem tamamlanamadı...." | RHEL VM 'lerle ilgili avantajını kullanabilmeniz için, önce Azure aboneliklerinizi Red Hat bulut erişimi ile kaydetmeniz gerekir. Red Hat bulut erişimi için Azure aboneliklerinizi kaydetme hakkında daha fazla bilgi edinmek üzere bu bağlantıyı ziyaret edin
+|"Azure Hibrit Avantajı seçeneği portalda gösterilmez" | Bu, paylaşılan görüntü Galerisi, anlık görüntüler veya yakalanan PAYG görüntülerinden oluşturulan RHEL ve SLES VM 'Ler için bilinen bir sorundur. Bu durumda, "[Azure CLI 'de avantajı etkinleştirme ve devre dışı bırakma](#enable-and-disable-the-benefit-in-the-azure-cli)" bölümünde açıklanan CLI adımlarını kullanın. AHB 'nin durumunu görüntülemek için komutunu kullanın ` az vm get-instance-view -g MyResourceGroup -n MyVm` .|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Formu [burada](https://aka.ms/ahb-linux-form)doldurarak Önizlemeyi kullanmaya başlayın.

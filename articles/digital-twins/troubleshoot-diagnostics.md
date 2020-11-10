@@ -1,34 +1,38 @@
 ---
-title: Tanılamayı ayarla
+title: Tanılama günlüklerini etkinleştirme ve sorgulama
 titleSuffix: Azure Digital Twins
-description: Bkz. tanılama ayarlarıyla günlüğü etkinleştirme.
+description: Tanılama ayarlarıyla günlüğe yazmayı etkinleştirme ve günlükleri anında görüntülemek için sorgulama bölümüne bakın.
 author: baanders
 ms.author: baanders
-ms.date: 7/28/2020
+ms.date: 11/9/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 11a7b4876c773922d4b0ed28f7047912b738ee6a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0d775ffa1ce063c01fc6762d77201e5a4caaad87
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091744"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411774"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure dijital TWINS sorunlarını giderme: tanılama günlüğü
 
-Azure dijital TWINS, kaynaklarınızın durumu hakkında bilgi veren hizmet örneğiniz için [ölçümleri](troubleshoot-metrics.md) toplar. Bu ölçümleri, Azure Digital TWINS hizmetinin genel sistem durumunu ve ona bağlı kaynakları değerlendirmek için kullanabilirsiniz. Bu kullanıcıya yönelik istatistikler, Azure dijital Tağınızda neler olduğunu görmenizi ve Azure desteği ile iletişim kurmaya gerek kalmadan sorunlar için kök neden analizi gerçekleştirmeye yardımcı olur.
+Azure dijital TWINS, performansını, erişimini ve diğer verileri izlemek için hizmet örneğiniz için günlük toplayabilirler. Azure dijital TWINS Örneğinizde neler olduğunu görmek için bu günlükleri kullanabilir ve Azure desteği ile iletişim kurmaya gerek kalmadan sorunlar için kök neden analizi gerçekleştirebilirsiniz.
 
-Bu makalede, Azure dijital TWINS örneğinden ölçüm verileriniz için **tanılama günlüğü açma işleminin** nasıl yapılacağı gösterilir. Hizmet sorunlarını gidermenize yardımcı olması için bu günlükleri kullanabilir ve Azure dijital TWINS ölçümlerini farklı hedeflere göndermek için tanılama ayarlarını yapılandırabilirsiniz. Bu ayarlar hakkında daha fazla bilgi [*için Tanılama ayarları oluşturma ' da, farklı hedeflere platform günlükleri ve ölçümleri gönderebilirsiniz*](../azure-monitor/platform/diagnostic-settings.md).
+Bu makalede, Azure dijital TWINS örneğinden günlükleri toplamaya başlamak için [Azure Portal](https://portal.azure.com) [**Tanılama ayarlarının nasıl yapılandırılacağı**](#turn-on-diagnostic-settings) gösterilir. Günlüklerin nerede depolanması gerektiğini de belirtebilirsiniz (örneğin, Log Analytics veya tercih ettiğiniz bir depolama hesabı).
 
-## <a name="turn-on-diagnostic-settings-with-the-azure-portal"></a>Tanılama ayarlarını Azure portal açın
+Bu makalede, Azure Digital TWINS 'in topladığı tüm [günlük kategorilerinin](#log-categories) ve [günlük şemalarının](#log-schemas) listeleri de bulunur.
 
-Azure dijital TWINS örneğiniz için tanılama ayarlarının nasıl etkinleştirileceği aşağıda verilmiştir:
+Günlükleri ayarladıktan sonra, [**günlükleri sorgulayabilirsiniz ve**](#view-and-query-logs) hızlı bir şekilde özel Öngörüler toplayabilirsiniz.
+
+## <a name="turn-on-diagnostic-settings"></a>Tanılama ayarlarını aç 
+
+Azure dijital TWINS örneğiniz üzerinde günlük toplamaya başlamak için tanılama ayarlarını açın. Ayrıca, dışarıya kaydedilen günlüklerin depolanacağı hedefi de seçebilirsiniz. Azure dijital TWINS örneğiniz için tanılama ayarlarının nasıl etkinleştirileceği aşağıda verilmiştir.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın ve Azure dijital TWINS örneğinize gidin. Bunu, adını Portal arama çubuğuna yazarak bulabilirsiniz. 
 
-2. Menüden **Tanılama ayarları** ' nı seçin ve ardından **Tanılama ayarı ekleyin** .
+2. Menüden **Tanılama ayarları** ' nı seçin ve ardından **Tanılama ayarı ekleyin**.
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Tanılama Ayarları sayfasını ve eklenecek düğmeyi gösteren ekran görüntüsü":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Tanılama Ayarları sayfasını ve eklenecek düğmeyi gösteren ekran görüntüsü" lightbox="media/troubleshoot-diagnostics/diagnostic-settings.png":::
 
 3. Aşağıdaki sayfada aşağıdaki değerleri girin:
      * **Tanılama ayarı adı** : Tanılama ayarlarına bir ad verin.
@@ -39,7 +43,7 @@ Azure dijital TWINS örneğiniz için tanılama ayarlarının nasıl etkinleşti
         - Queryoperation başvurusu destekleniyor
         - Tüm Ölçümler
         
-        Bu seçenekler hakkında daha fazla ayrıntı için aşağıdaki [*Kategori ayrıntıları*](#category-details) bölümüne bakın.
+        Bu kategoriler ve içerdikleri bilgiler hakkında daha fazla ayrıntı için aşağıdaki [*günlük kategorileri*](#log-categories) bölümüne bakın.
      * **Hedef ayrıntıları** : günlükleri nereye göndermek istediğinizi seçin. Üç seçenekten herhangi bir birleşimini seçebilirsiniz:
         - Log Analytics’e gönderme
         - Bir depolama hesabına arşivle
@@ -49,13 +53,15 @@ Azure dijital TWINS örneğiniz için tanılama ayarlarının nasıl etkinleşti
     
 4. Yeni ayarları kaydedin. 
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="Tanılama Ayarları sayfasını ve eklenecek düğmeyi gösteren ekran görüntüsü":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="Kullanıcının bir tanılama ayarı adı doldurduğu ve kategori ayrıntıları ve hedef ayrıntıları için bazı onay kutusu seçimleri yaptığı tanılama ayarı sayfasını gösteren ekran görüntüsü. Kaydet düğmesi vurgulanır." lightbox="media/troubleshoot-diagnostics/diagnostic-settings-details.png":::
 
 Yeni ayarlar yaklaşık 10 dakika içinde etkili olur. Bundan sonra, olay, örneğiniz için **Tanılama ayarları** sayfasında yapılandırılan hedefte geri görüntülenir. 
 
-## <a name="category-details"></a>Kategori ayrıntıları
+Tanılama ayarları ve kurulum seçenekleri hakkında daha ayrıntılı bilgi için, [*Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek üzere tanılama ayarlarını oluştur*](../azure-monitor/platform/diagnostic-settings.md)' u ziyaret edebilirsiniz.
 
-Tanılama ayarlarını ayarlarken **Kategori ayrıntıları** altında seçilebilecekleri günlük kategorileri hakkında daha fazla ayrıntı aşağıda verilmiştir.
+## <a name="log-categories"></a>Günlük kategorileri
+
+Azure Digital TWINS 'in topladığı günlük kategorileri hakkında daha fazla ayrıntı aşağıda verilmiştir.
 
 | Günlük kategorisi | Açıklama |
 | --- | --- |
@@ -108,7 +114,7 @@ API günlüklerinin alan ve özellik açıklamaları aşağıda verilmiştir.
 
 | Alan adı | Veri türü | Açıklama |
 |-----|------|-------------|
-| `Time` | DateTime | Bu olayın gerçekleştiği tarih ve saat (UTC) |
+| `Time` | Tarih-Saat | Bu olayın gerçekleştiği tarih ve saat (UTC) |
 | `ResourceID` | Dize | Olayın gerçekleştiği kaynak için Azure Resource Manager kaynak KIMLIĞI |
 | `OperationName` | Dize  | Olay sırasında gerçekleştirilen eylemin türü |
 | `OperationVersion` | Dize | Olay sırasında kullanılan API sürümü |
@@ -194,7 +200,7 @@ Bu, Günlükler için şemadır `ADTEventRoutesOperation` . Bunlar, özel duruml
 
 |Alan adı | Veri türü | Açıklama |
 |-----|------|-------------|
-| `Time` | DateTime | Bu olayın gerçekleştiği tarih ve saat (UTC) |
+| `Time` | Tarih-Saat | Bu olayın gerçekleştiği tarih ve saat (UTC) |
 | `ResourceId` | Dize | Olayın gerçekleştiği kaynak için Azure Resource Manager kaynak KIMLIĞI |
 | `OperationName` | Dize  | Olay sırasında gerçekleştirilen eylemin türü |
 | `Category` | Dize | Yayılmakta olan kaynağın türü |
@@ -222,6 +228,34 @@ Aşağıda bu tür Günlükler için örnek JSON gövdeleri verilmiştir.
   }
 }
 ```
+
+## <a name="view-and-query-logs"></a>Günlükleri görüntüleme ve sorgulama
+
+Bu makalenin önceki kısımlarında, depolanacak günlük türlerini ve bunların depolama konumunu belirttiğini yapılandırdınız.
+
+Sorunu gidermek ve bu günlüklerden Öngörüler oluşturmak için **özel sorgular** oluşturabilirsiniz. Başlamak için, hizmet tarafından sunulan ve müşterilerin örnekleri hakkında sahip olabileceği yaygın soruların ele aldığı birkaç örnek sorgudan yararlanabilirsiniz.
+
+Örneğiniz için günlüklerin nasıl sorgulanacağını burada bulabilirsiniz.
+
+1. [Azure Portal](https://portal.azure.com) oturum açın ve Azure dijital TWINS örneğinize gidin. Bunu, adını Portal arama çubuğuna yazarak bulabilirsiniz. 
+
+2. Günlük sorgusu sayfasını açmak için menüden **Günlükler** ' i seçin. Sayfa, *sorgular* adlı bir pencerede açılır.
+
+    :::image type="content" source="media/troubleshoot-diagnostics/logs.png" alt-text="Azure dijital TWINS örneği için Günlükler sayfasını gösteren ekran görüntüsü. DigitalTwin API gecikmesi ve model API gecikme süresi gibi farklı günlük seçeneklerinden sonra adlı önceden oluşturulmuş sorguları gösteren bir sorgular penceresi vardır." lightbox="media/troubleshoot-diagnostics/logs.png":::
+
+    Bunlar, çeşitli Günlükler için yazılan önceden oluşturulmuş örnek sorgulardır. Sorgu düzenleyicisine yüklemek için sorgulardan birini seçebilir ve örneğiniz için bu günlükleri görmek üzere çalıştırabilirsiniz.
+
+    Ayrıca sorgu Düzenleyicisi sayfasına herhangi bir şey yapmadan, özel sorgu kodu yazabileceğiniz veya düzenleyebileceğiniz sorgu Düzenleyicisi sayfasına doğrudan gidebileceğiniz *sorgular* penceresini kapatabilirsiniz.
+
+3. *Sorgular* penceresinden çıktıktan sonra ana sorgu Düzenleyicisi sayfasını görürsünüz. Burada örnek sorguların metnini görüntüleyebilir ve düzenleyebilir ya da kendi sorgularınızı sıfırdan yazabilirsiniz.
+    :::image type="content" source="media/troubleshoot-diagnostics/logs-query.png" alt-text="Azure dijital TWINS örneği için Günlükler sayfasını gösteren ekran görüntüsü. Sorgular penceresi kayboluyor ve bunun yerine farklı günlüklerin bir listesi, düzenlenebilir sorgu kodunu gösteren bir düzenleme bölmesi ve sorgu geçmişini gösteren bir bölme bulunur." lightbox="media/troubleshoot-diagnostics/logs-query.png":::
+
+    Sol bölmede, 
+    - *Tablolar* sekmesi, sorgularda kullanılabilecek farklı Azure dijital TWINS [günlük kategorilerini](#log-categories) gösterir. 
+    - *Sorgular* sekmesi, düzenleyiciye yükleyebilmeniz için örnek sorguları içerir.
+    - *Filtre* sekmesi, sorgunun döndürdüğü verilerin filtrelenmiş bir görünümünü özelleştirmenize olanak sağlar.
+
+Günlük sorguları ve bunların nasıl yazılacağı hakkında daha ayrıntılı bilgi için [*Azure izleyici 'de günlük sorgularına genel bakış*](../azure-monitor/log-query/log-query-overview.md)sayfasını ziyaret edebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

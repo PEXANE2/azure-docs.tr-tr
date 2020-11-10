@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
-ms.openlocfilehash: 3a44efac274bf5c5d6cfc6a0f044ee89b479cbe6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 691fbf3be4e39a724a8a290c3ec147a679013cba
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897084"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413097"
 ---
 # <a name="azure-functions-networking-options"></a>Azure İşlevleri ağ seçenekleri
 
@@ -116,6 +116,9 @@ Ayrıca, aşağıdaki Azure CLı komutunu kullanarak sanal ağ tetikleyicilerini
 ```azurecli-interactive
 az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.functionsRuntimeScaleMonitoringEnabled=1 --resource-type Microsoft.Web/sites
 ```
+
+> [!TIP]
+> App Service plan örneklerinizin ne zaman ölçekleneceğini öğrenmek için tetikleyicilerlerinizi izlemesi gerekeceğinden, sanal ağ tetikleyicilerinin etkinleştirilmesi uygulamanızın performansını etkileyebilir. Bu etkinin çok küçük olması olasıdır.
 
 Sanal ağ Tetikleyicileri, Işlevler çalışma zamanının 2. x ve üzerinde desteklenir. Aşağıdaki HTTP olmayan tetikleyici türleri desteklenir.
 

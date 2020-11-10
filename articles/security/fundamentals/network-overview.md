@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 496ee1bc97f6b72e09a62ae3491af7ccc7328583
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a26228b33a7d90df558de2ecdf4686910e606a54
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80811093"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413301"
 ---
 # <a name="azure-network-security-overview"></a>Azure ağ güvenliğine genel bakış
 
@@ -63,7 +63,7 @@ Azure, çeşitli ağ erişim denetimi türlerini destekler, örneğin:
 Herhangi bir güvenli dağıtım için bazı ağ erişim denetimi ölçüsü gerekir. Ağ erişim denetimi hedefi, sanal makine iletişimini gerekli sistemlerle kısıtlamadır. Diğer iletişim denemeleri engellenir.
 
 > [!NOTE]
-> Depolama güvenlik duvarları, [Azure depolama güvenliğine genel bakış](storage-overview.md) makalesinde ele alınmıştır
+> Depolama güvenlik duvarları, [Azure depolama güvenliğine genel bakış](../../storage/blobs/security-recommendations.md) makalesinde ele alınmıştır
 
 #### <a name="network-security-rules-nsgs"></a>Ağ güvenlik kuralları (NSG 'ler)
 
@@ -77,11 +77,11 @@ NSG 'ler uygulama katmanı denetimi veya kimliği doğrulanmış erişim denetim
 
 Daha fazla bilgi edinin:
 
-* [Ağ güvenlik grupları](../../virtual-network/security-overview.md)
+* [Ağ güvenlik grupları](../../virtual-network/network-security-groups-overview.md)
 
 #### <a name="asc-just-in-time-vm-access"></a>ASC tam zamanında VM erişimi
 
-[Azure Güvenlik Merkezi](../../security-center/security-center-intro.md) VM 'Lerde NSG 'leri yönetebilir ve uygun rol tabanlı erişim denetimi [RBAC](/azure/role-based-access-control/overview) izinleri istediğinde, VM 'ye erişimi kilitler. Kullanıcı başarıyla yetkilendirildiğinde, belirtilen süre boyunca seçilen bağlantı noktalarına erişime izin vermek için NSG 'lerdeki değişiklikler yapar. Süre sona erdiğinde NSG 'ler önceki güvenli durumlarına geri yüklenir.
+[Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md) VM 'Lerde NSG 'leri yönetebilir ve uygun rol tabanlı erişim denetimi [RBAC](../../role-based-access-control/overview.md) izinleri istediğinde, VM 'ye erişimi kilitler. Kullanıcı başarıyla yetkilendirildiğinde, belirtilen süre boyunca seçilen bağlantı noktalarına erişime izin vermek için NSG 'lerdeki değişiklikler yapar. Süre sona erdiğinde NSG 'ler önceki güvenli durumlarına geri yüklenir.
 
 Daha fazla bilgi edinin:
 
@@ -141,7 +141,7 @@ Azure Güvenlik Duvarı, Azure Sanal Ağ kaynaklarınızı koruyan yönetilen, b
 
 Daha fazla bilgi edinin:
 
-* [Azure Güvenlik Duvarı 'na genel bakış](/azure/firewall/overview)
+* [Azure Güvenlik Duvarı 'na genel bakış](../../firewall/overview.md)
 
 ## <a name="secure-remote-access-and-cross-premises-connectivity"></a>Güvenli uzaktan erişim ve şirketler arası bağlantı
 
@@ -202,7 +202,7 @@ Dağıtımlarınız için birçok sanal ağ kullanmak mümkündür. Bunu yapman�
 
 Bir seçenek, bir sanal ağ üzerindeki hizmetlere, başka bir sanal ağ üzerinde bulunan hizmetlere bağlanmak için, internet üzerinden "geri döngü" yaparak bir seçenektir. Bağlantı bir sanal ağda başlatılır, internet üzerinden geçer ve ardından hedef sanal ağa geri gelir. Bu seçenek, herhangi bir internet tabanlı iletişimde bulunan güvenlik sorunlarıyla bağlantı sunar.
 
-İki sanal ağ arasında bağlanan bir siteden siteye VPN oluşturmak daha iyi bir seçenek olabilir. Bu yöntem, yukarıda bahsedilen şirket içi siteden siteye VPN bağlantısıyla aynı [IPSec tünel modu](https://technet.microsoft.com/library/cc786385.aspx) protokolünü kullanır.
+İki sanal ağ arasında bağlanan bir siteden siteye VPN oluşturmak daha iyi bir seçenek olabilir. Bu yöntem, yukarıda bahsedilen şirket içi siteden siteye VPN bağlantısıyla aynı [IPSec tünel modu](/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) protokolünü kullanır.
 
 Bu yaklaşımın avantajı, VPN bağlantısının Internet üzerinden bağlanmak yerine Azure ağ dokusunda kurulduğu bir avantajdır. Bu, internet üzerinden bağlanan siteden siteye VPN 'lerle karşılaştırıldığında ek bir güvenlik katmanı sağlar.
 
@@ -237,7 +237,7 @@ Azure Application Gateway, Web tabanlı hizmetleriniz için HTTP tabanlı yük d
 
 Daha fazla bilgi edinin:
 
-* [Application Gateway’e genel bakış](/azure/application-gateway/application-gateway-introduction)
+* [Application Gateway’e genel bakış](../../application-gateway/overview.md)
 
 ### <a name="network-level-load-balancing"></a>Ağ düzeyinde yük dengeleme
 
@@ -252,8 +252,8 @@ Azure Load Balancer kullanarak Azure 'da ağ düzeyinde yük dengelemenin avanta
 
 Daha fazla bilgi edinin:
 
-* [Birden çok sanal makine veya hizmet arasında Internet 'e yönelik yük dengeleyici](/azure/load-balancer/load-balancer-internet-overview)
-* [İç Yük Dengeleyiciye genel bakış](/azure/load-balancer/load-balancer-internal-overview)
+* [Birden çok sanal makine veya hizmet arasında Internet 'e yönelik yük dengeleyici](../../load-balancer/load-balancer-overview.md)
+* [İç Yük Dengeleyiciye genel bakış](../../load-balancer/load-balancer-overview.md)
 
 ### <a name="global-load-balancing"></a>Küresel Yük Dengeleme
 
@@ -381,7 +381,7 @@ Güvenlik Merkezi, ağ güvenliğini iyileştirmenize ve izlemenize yardımcı o
 
 Daha fazla bilgi edinin:
 
-* [Azure Güvenlik Merkezi'ne Giriş](../../security-center/security-center-intro.md)
+* [Azure Güvenlik Merkezi'ne Giriş](../../security-center/security-center-introduction.md)
 
 ### <a name="virtual-network-tap"></a>Sanal ağ dokunma
 

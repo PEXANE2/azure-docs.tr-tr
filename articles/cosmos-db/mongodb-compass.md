@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 author: christopheranderson
 ms.author: chrande
-ms.openlocfilehash: 6c48639279556d495be57a2933f1d7f3c139294a
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 43bcd54955cb1a8aaf08785368faf13c14f8322c
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93361123"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413063"
 ---
 # <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sine bağlanmak için MongoDB pusula kullanma
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -27,9 +27,6 @@ MongoDB pusula kullanarak Cosmos DB hesabınıza bağlanmak için şunları yapm
 
 * [Pusula](https://www.mongodb.com/download-center/compass?jmp=hero) indirme ve yükleme
 * Cosmos DB [bağlantı dizesi](connect-mongodb-account.md) bilgilerinizi içermelidir
-
-> [!NOTE]
-> Şu anda, MongoDB sunucu sürümü 3,2 için Azure Cosmos DB API 'sinin en son MongoDB pusula sürümü ile desteklenir. MongoDB pusula, 3,6 sunucu sürümü ile henüz desteklenmiyor. 
 
 ## <a name="connect-to-cosmos-dbs-api-for-mongodb"></a>MongoDB için Cosmos DB API 'sine bağlanma
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ec81a8f7f9d9f45f1d068a415a599ce30a0d4581
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dafc55656be2d8ef2c0f52d633c7db7eeee83534
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397258"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412791"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure bekleyen verileri şifreleme
 
@@ -48,7 +48,7 @@ Rest 'de şifreleme, depolanan veriler (bekleyen) için veri koruması sağlar. 
 
 Bekleyen şifreleme, verilerin disk üzerinde şifrelendiğinden emin olmak için, saldırganın şifrelenmemiş verilere erişmesini engellemek üzere tasarlanmıştır. Bir saldırgan şifrelenmiş verileri olan ancak şifreleme anahtarları olmayan bir sabit sürücü alırsa, verileri okumak için saldırganın şifrelemeyi ertelemeniz gerekir. Bu saldırı, sabit bir sürücüdeki şifrelenmemiş verilere erişenden çok daha karmaşık ve kaynak kullanıyor. Bu nedenle, bekleyen şifreleme son derece önerilir ve birçok kuruluş için yüksek öncelikli bir gereksinimdir.
 
-Bekleyen şifreleme, bir kuruluşun veri idare ve uyumluluk çabalarına ihtiyacı olarak da gerekli olabilir. HIPAA, PCI ve Fedratin gibi sektör ve kamu düzenlemeleri, veri koruma ve şifreleme gereksinimleriyle ilgili belirli korumaları düzenleyin. Bekleyen şifreleme, bu düzenlemelerle uyumluluk için gerekli olan zorunlu bir ölçüdür. Microsoft 'un FIPS 140-2 doğrulamasına yaklaşımı hakkında daha fazla bilgi için bkz. [Federal bilgi Işleme standardı (FIPS) yayını 140-2](https://docs.microsoft.com/microsoft-365/compliance/offering-fips-140-2).
+Bekleyen şifreleme, bir kuruluşun veri idare ve uyumluluk çabalarına ihtiyacı olarak da gerekli olabilir. HIPAA, PCI ve Fedratin gibi sektör ve kamu düzenlemeleri, veri koruma ve şifreleme gereksinimleriyle ilgili belirli korumaları düzenleyin. Bekleyen şifreleme, bu düzenlemelerle uyumluluk için gerekli olan zorunlu bir ölçüdür. Microsoft 'un FIPS 140-2 doğrulamasına yaklaşımı hakkında daha fazla bilgi için bkz. [Federal bilgi Işleme standardı (FIPS) yayını 140-2](/microsoft-365/compliance/offering-fips-140-2).
 
 Uyumluluk ve mevzuat gereksinimlerinin karşılamalarının yanı sıra, bekleyen şifreleme da derinlemesine savunma koruması sağlar. Microsoft Azure, hizmetler, uygulamalar ve veriler için uyumlu bir platform sağlar. Ayrıca kapsamlı tesis ve fiziksel güvenlik, veri erişim denetimi ve denetim sağlar. Ancak, diğer güvenlik ölçülerinden biri başarısız olduğunda ve bekleyen şifreleme bu tür bir güvenlik ölçüsü sağladığından, ek "çakışan" güvenlik önlemleri sağlanması önemlidir.
 
@@ -115,22 +115,22 @@ Microsoft Azure Hizmetleri, bekleyen modellerdeki bir veya daha fazla şifreleme
 
 ### <a name="azure-disk-encryption"></a>Azure disk şifrelemesi
 
-Hizmet olarak altyapı (IaaS) özelliklerinin kullanıldığı tüm müşteriler, Azure disk şifrelemesi aracılığıyla IaaS VM 'Leri ve diskleri için bekleyen şifreleme elde edebilir. Azure disk şifrelemesi hakkında daha fazla bilgi için bkz. [Azure disk şifrelemesi belgeleri](../azure-security-disk-encryption-overview.md).
+Hizmet olarak altyapı (IaaS) özelliklerinin kullanıldığı tüm müşteriler, Azure disk şifrelemesi aracılığıyla IaaS VM 'Leri ve diskleri için bekleyen şifreleme elde edebilir. Azure disk şifrelemesi hakkında daha fazla bilgi için bkz. [Azure disk şifrelemesi belgeleri](./azure-disk-encryption-vms-vmss.md).
 
 #### <a name="azure-storage"></a>Azure depolama
 
 Tüm Azure depolama hizmetleri (BLOB depolama, kuyruk depolama, tablo depolama ve Azure dosyaları), bekleyen sunucu tarafı şifrelemeyi destekler; Ayrıca, bazı hizmetler müşteri tarafından yönetilen anahtarları ve istemci tarafı şifrelemeyi destekler.
 
-- Sunucu tarafı: tüm Azure depolama hizmetleri, varsayılan olarak, uygulama tarafından saydam olan hizmet tarafından yönetilen anahtarları kullanarak sunucu tarafı şifrelemeyi etkinleştirir. Daha fazla bilgi için bkz. [bekleyen veriler Için Azure depolama hizmeti şifrelemesi](../../storage/common/storage-service-encryption.md). Azure Blob depolama ve Azure dosyaları, Azure Key Vault 'de RSA 2048 bit müşteri tarafından yönetilen anahtarları da destekler. Daha fazla bilgi için [Azure Key Vault depolama hizmeti şifrelemesi müşteri tarafından yönetilen anahtarları kullanma](../../storage/common/storage-encryption-keys-portal.md)konusuna bakın.
+- Sunucu tarafı: tüm Azure depolama hizmetleri, varsayılan olarak, uygulama tarafından saydam olan hizmet tarafından yönetilen anahtarları kullanarak sunucu tarafı şifrelemeyi etkinleştirir. Daha fazla bilgi için bkz. [bekleyen veriler Için Azure depolama hizmeti şifrelemesi](../../storage/common/storage-service-encryption.md). Azure Blob depolama ve Azure dosyaları, Azure Key Vault 'de RSA 2048 bit müşteri tarafından yönetilen anahtarları da destekler. Daha fazla bilgi için [Azure Key Vault depolama hizmeti şifrelemesi müşteri tarafından yönetilen anahtarları kullanma](../../storage/common/customer-managed-keys-configure-key-vault.md)konusuna bakın.
 - İstemci tarafı: Azure Blob 'Ları, tablolar ve kuyruklar, istemci tarafı şifrelemeyi destekler. İstemci tarafı şifreleme kullanılırken, müşteriler verileri şifreler ve verileri şifrelenmiş bir blob olarak yükler. Anahtar Yönetimi Müşteri tarafından yapılır. Daha fazla bilgi için bkz. [Istemci tarafı şifreleme ve Microsoft Azure depolama için Azure Key Vault](../../storage/common/storage-client-side-encryption.md).
 
 #### <a name="azure-sql-database"></a>Azure SQL Veritabanı
 
 Azure SQL veritabanı şu anda Microsoft tarafından yönetilen hizmet tarafı ve istemci tarafı şifreleme senaryoları için bekleyen şifrelemeyi desteklemektedir.
 
-Sunucu şifrelemesi desteği şu anda Saydam Veri Şifrelemesi adlı SQL özelliği aracılığıyla sunulmaktadır. Azure SQL veritabanı müşterisi, TDE anahtarı etkinleştirildikten sonra otomatik olarak oluşturulur ve yönetilir. Bekleyen şifreleme, veritabanı ve sunucu düzeylerinde etkinleştirilebilir. Haziran 2017 itibariyle, yeni oluşturulan veritabanlarında [Saydam veri şifrelemesi (TDE)](https://msdn.microsoft.com/library/bb934049.aspx) varsayılan olarak etkindir. Azure SQL veritabanı, Azure Key Vault 'de RSA 2048 bit müşteri tarafından yönetilen anahtarları destekler. Daha fazla bilgi için bkz. [Azure SQL veritabanı ve veri ambarı için kendi anahtarını getir desteğiyle saydam veri şifrelemesi](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql?view=azuresqldb-current).
+Sunucu şifrelemesi desteği şu anda Saydam Veri Şifrelemesi adlı SQL özelliği aracılığıyla sunulmaktadır. Azure SQL veritabanı müşterisi, TDE anahtarı etkinleştirildikten sonra otomatik olarak oluşturulur ve yönetilir. Bekleyen şifreleme, veritabanı ve sunucu düzeylerinde etkinleştirilebilir. Haziran 2017 itibariyle, yeni oluşturulan veritabanlarında [Saydam veri şifrelemesi (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) varsayılan olarak etkindir. Azure SQL veritabanı, Azure Key Vault 'de RSA 2048 bit müşteri tarafından yönetilen anahtarları destekler. Daha fazla bilgi için bkz. [Azure SQL veritabanı ve veri ambarı için kendi anahtarını getir desteğiyle saydam veri şifrelemesi](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql?view=azuresqldb-current).
 
-Azure SQL veritabanı verilerinin istemci tarafı şifrelemesi [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) özelliği aracılığıyla desteklenir. Always Encrypted, istemci tarafından oluşturulan ve depolanan bir anahtarı kullanır. Müşteriler ana anahtarı bir Windows sertifika deposunda, Azure Key Vault veya yerel bir donanım güvenlik modülünde depolayabilirler. SQL Server Management Studio kullanarak, SQL kullanıcıları hangi sütunu şifrelemek için kullanmak istediğiniz anahtarı seçer.
+Azure SQL veritabanı verilerinin istemci tarafı şifrelemesi [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) özelliği aracılığıyla desteklenir. Always Encrypted, istemci tarafından oluşturulan ve depolanan bir anahtarı kullanır. Müşteriler ana anahtarı bir Windows sertifika deposunda, Azure Key Vault veya yerel bir donanım güvenlik modülünde depolayabilirler. SQL Server Management Studio kullanarak, SQL kullanıcıları hangi sütunu şifrelemek için kullanmak istediğiniz anahtarı seçer.
 
 ## <a name="conclusion"></a>Sonuç
 

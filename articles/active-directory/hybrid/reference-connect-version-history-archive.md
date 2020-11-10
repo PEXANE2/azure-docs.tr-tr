@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f80808f917036dfba122a97bbd255d466f40e476
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0adf548b009ad6fe0c85501b9777ff23723b3e24
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90018501"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413420"
 ---
 # <a name="azure-ad-connect-version-release-history-archive"></a>Azure AD Connect: sürüm sürümü geçmiş Arşivi
 
@@ -167,7 +167,7 @@ ADSync DB için SQL Always on kullanılabilirliği yapılandırılırsa Azure AD
 ### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
 
 - Azure AD Connect ' deki ping Federate tümleştirmesi artık genel kullanıma sunulmuştur. [Ping Federate ile Azure AD federasyon oluşturma hakkında daha fazla bilgi edinin](./plan-connect-user-signin.md#federation-with-pingfederate)
-- Azure AD Connect, bir güncelleştirme her yapıldığında AD FS Azure AD güveninin yedeklemesini oluşturur ve gerektiğinde kolayca geri yüklemek için ayrı bir dosyada depolar. [Azure AD Connect ' de yeni işlevsellik ve Azure AD güven yönetimi hakkında daha fazla bilgi edinin](https://aka.ms/fedtrustinaadconnect).
+- Azure AD Connect, bir güncelleştirme her yapıldığında AD FS Azure AD güveninin yedeklemesini oluşturur ve gerektiğinde kolayca geri yüklemek için ayrı bir dosyada depolar. [Azure AD Connect ' de yeni işlevsellik ve Azure AD güven yönetimi hakkında daha fazla bilgi edinin](./how-to-connect-azure-ad-trust.md).
 - Yeni sorun giderme araçları, birincil e-posta adresini değiştirme ve hesabı genel adres listesinden gizleme sorunlarını gidermeye yardımcı olur
 - Azure AD Connect, en son SQL Server 2012 yerel Istemcisini içerecek şekilde güncelleştirildi
 - Kullanıcı oturum açma 'yı Parola karması eşitleme veya "Kullanıcı oturum açma değiştirme" görevinde geçiş kimlik doğrulamasından geçirdiğinizde, sorunsuz tek Sign-On onay kutusu varsayılan olarak etkinleştirilir.
@@ -212,8 +212,8 @@ Yeni özellikler ve geliştirmeler
 - Cihaz geri yazma yapılandırması artık yalnızca Azure AD Connect Sihirbazı içinde yönetiliyor.
 - SQL bağlantı sorunlarını ve çeşitli diğer sorun giderme yardımcı programlarını gidermek için kullanılabilen ADSyncTools. psm1 adlı yeni bir PowerShell modülü eklenmiştir. [Burada](tshoot-connect-tshoot-sql-connectivity.md)ADSyncTools modülü hakkında daha fazla bilgi edinin. 
 - Yeni "cihaz seçeneklerini yapılandır" ek görevi eklendi. Aşağıdaki iki işlemi yapılandırmak için görevini kullanabilirsiniz: 
-  - **Karma Azure AD katılımı**: ortamınızda şirket ıçı bir ad alanı varsa ve Azure Active Directory tarafından sunulan yetenekler için de avantaj istiyorsanız, karma Azure AD 'ye katılmış cihazları uygulayabilirsiniz. Bunlar hem şirket içi Active Directory alanınıza hem de Azure Active Directory alanınıza katılmış cihazlardır.
-  - **Cihaz geri yazma**: cihazların AD FS (2012 R2 veya üzeri) korunan cihazlara göre koşullu erişimi etkinleştirmek için cihaz geri yazma kullanılır
+  - **Karma Azure AD katılımı** : ortamınızda şirket ıçı bir ad alanı varsa ve Azure Active Directory tarafından sunulan yetenekler için de avantaj istiyorsanız, karma Azure AD 'ye katılmış cihazları uygulayabilirsiniz. Bunlar hem şirket içi Active Directory alanınıza hem de Azure Active Directory alanınıza katılmış cihazlardır.
+  - **Cihaz geri yazma** : cihazların AD FS (2012 R2 veya üzeri) korunan cihazlara göre koşullu erişimi etkinleştirmek için cihaz geri yazma kullanılır
 
     >[!NOTE] 
     > - Eşitleme seçeneklerini özelleştirmek için cihaz geri yazmayı etkinleştirme seçeneği de gri kalır. 
@@ -362,7 +362,7 @@ Azure AD Connect AD DS hesabı oluşturduğunda [AD DS hesabına kilit kilitleme
 *   KENDISINE özgü Ace 'Ler hariç belirli bir nesnedeki tüm Ace 'Leri kaldırın. Kendi kendine geldiğinde varsayılan izinleri değiştirmeden tutmak istiyoruz.
 *   Bu özel izinleri ata:
 
-Tür     | Adı                          | Access               | Uygulanan Öğe
+Tür     | Name                          | Access               | Uygulanan Öğe
 ---------|-------------------------------|----------------------|--------------|
 İzin Ver    | SİSTEM                        | Tam Denetim         | Bu nesne  |
 İzin Ver    | Enterprise Admins             | Tam Denetim         | Bu nesne  |
@@ -418,34 +418,34 @@ Durum: Ekim 27 2017
 Durum: Ekim 19 2017
 
 > [!IMPORTANT]
-> Azure AD Connect sürüm 1.1.647.0 ve Azure AD Connect Health Aracısı (eşitleme için) arasında bilinen bir uyumluluk sorunu var 3.0.127.0. Bu sorun, sistem durumu aracısının Azure AD Connect eşitleme hizmeti (nesne eşitleme hataları ve çalışma geçmişi verileri dahil) ile Azure AD Sistem Sağlığı Hizmeti arasında sistem durumu verileri göndermesini engeller. Azure AD Connect dağıtımınızı 1.1.647.0 sürümüne el ile yükseltmeden önce lütfen Azure AD Connect sunucunuzda yüklü olan Azure AD Connect Health aracısının geçerli sürümünü doğrulayın. Bunu, *Denetim Masası → Ekle Program Ekle* ' ye giderek, uygulama *Microsoft Azure AD Connect Health Aracısı*' na bakın. Sürümü 3.0.127.0 ise, yükseltmeden önce bir sonraki Azure AD Connect sürümünün kullanılabilmesini beklemeniz önerilir. Sistem Durumu Aracısı sürümü 3.0.127.0 değilse, el ile, yerinde yükseltme işlemine devam etmek iyi olur. Bu sorunun, yeni Azure AD Connect yüklemesi gerçekleştiren esnek yükseltme veya müşterileri etkilemediğini unutmayın.
+> Azure AD Connect sürüm 1.1.647.0 ve Azure AD Connect Health Aracısı (eşitleme için) arasında bilinen bir uyumluluk sorunu var 3.0.127.0. Bu sorun, sistem durumu aracısının Azure AD Connect eşitleme hizmeti (nesne eşitleme hataları ve çalışma geçmişi verileri dahil) ile Azure AD Sistem Sağlığı Hizmeti arasında sistem durumu verileri göndermesini engeller. Azure AD Connect dağıtımınızı 1.1.647.0 sürümüne el ile yükseltmeden önce lütfen Azure AD Connect sunucunuzda yüklü olan Azure AD Connect Health aracısının geçerli sürümünü doğrulayın. Bunu, *Denetim Masası → Ekle Program Ekle* ' ye giderek, uygulama *Microsoft Azure AD Connect Health Aracısı* ' na bakın. Sürümü 3.0.127.0 ise, yükseltmeden önce bir sonraki Azure AD Connect sürümünün kullanılabilmesini beklemeniz önerilir. Sistem Durumu Aracısı sürümü 3.0.127.0 değilse, el ile, yerinde yükseltme işlemine devam etmek iyi olur. Bu sorunun, yeni Azure AD Connect yüklemesi gerçekleştiren esnek yükseltme veya müşterileri etkilemediğini unutmayın.
 >
 >
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 #### <a name="fixed-issues"></a>Düzeltilen sorunlar
 * Azure AD Connect sihirbazında *Kullanıcı oturum açma görevini değiştirme* ile ilgili bir sorun düzeltildi:
 
-  * Bu sorun, parola eşitlemesi **etkinken**mevcut bir Azure AD Connect dağıtımınız varsa ve Kullanıcı oturum açma yöntemini *doğrudan kimlik doğrulama*olarak ayarlamaya çalışıyorsanız oluşur. Değişiklik uygulanmadan önce, sihirbaz "*parola eşitlemesini devre dışı bırak*" isteminde yanlış bir şekilde gösteriliyor. Ancak, değişiklik uygulandıktan sonra parola eşitleme etkin kalır. Bu düzeltmeyle, sihirbaz artık istemi göstermez.
+  * Bu sorun, parola eşitlemesi **etkinken** mevcut bir Azure AD Connect dağıtımınız varsa ve Kullanıcı oturum açma yöntemini *doğrudan kimlik doğrulama* olarak ayarlamaya çalışıyorsanız oluşur. Değişiklik uygulanmadan önce, sihirbaz " *parola eşitlemesini devre dışı bırak* " isteminde yanlış bir şekilde gösteriliyor. Ancak, değişiklik uygulandıktan sonra parola eşitleme etkin kalır. Bu düzeltmeyle, sihirbaz artık istemi göstermez.
 
   * Tasarım yaparak sihirbaz, Kullanıcı *oturum açma yöntemini değiştirme* görevini kullanarak Kullanıcı oturum açma yöntemini güncelleştirdiğinizde parola eşitlemesini devre dışı bırakır. Bu, birincil kullanıcı oturum açma yöntemi olarak doğrudan kimlik doğrulamayı veya Federasyonu etkinleştirse bile, parola eşitlemesini tutmak isteyen müşterilerin kesintiye uğramasını önlemek için kullanılır.
 
   * Kullanıcı oturum açma yöntemini güncelleştirdikten sonra parola eşitlemesini devre dışı bırakmak istiyorsanız, sihirbazda *eşitleme yapılandırmasını Özelleştir* görevini yürütmelisiniz. *Isteğe bağlı özellikler* sayfasına gittiğinizde *parola eşitleme* seçeneğinin işaretini kaldırın.
 
-  * Sorunsuz çoklu oturum açmayı etkinleştirmeyi/devre dışı bırakmayı denediğinizde de aynı sorunun oluştuğunu unutmayın. Özellikle, parola eşitleme etkin olan bir Azure AD Connect dağıtımınız vardır ve Kullanıcı oturum açma yöntemi zaten *geçişli kimlik doğrulama*olarak yapılandırılmıştır. Kullanıcı oturum açma görevini *Değiştir* ' i kullanarak, Kullanıcı oturum açma yöntemi "geçişli kimlik doğrulaması" olarak yapılandırıldıklarında, *sorunsuz çoklu oturum açma seçeneğini etkinleştirin* /işaretini kaldırın. Değişiklik uygulanmadan önce, sihirbaz "*parola eşitlemesini devre dışı bırak*" isteminde yanlış bir şekilde gösteriliyor. Ancak, değişiklik uygulandıktan sonra parola eşitleme etkin kalır. Bu düzeltmeyle, sihirbaz artık istemi göstermez.
+  * Sorunsuz çoklu oturum açmayı etkinleştirmeyi/devre dışı bırakmayı denediğinizde de aynı sorunun oluştuğunu unutmayın. Özellikle, parola eşitleme etkin olan bir Azure AD Connect dağıtımınız vardır ve Kullanıcı oturum açma yöntemi zaten *geçişli kimlik doğrulama* olarak yapılandırılmıştır. Kullanıcı oturum açma görevini *Değiştir* ' i kullanarak, Kullanıcı oturum açma yöntemi "geçişli kimlik doğrulaması" olarak yapılandırıldıklarında, *sorunsuz çoklu oturum açma seçeneğini etkinleştirin* /işaretini kaldırın. Değişiklik uygulanmadan önce, sihirbaz " *parola eşitlemesini devre dışı bırak* " isteminde yanlış bir şekilde gösteriliyor. Ancak, değişiklik uygulandıktan sonra parola eşitleme etkin kalır. Bu düzeltmeyle, sihirbaz artık istemi göstermez.
 
 * Azure AD Connect sihirbazında *Kullanıcı oturum açma görevini değiştirme* ile ilgili bir sorun düzeltildi:
 
-  * Bu sorun, parola eşitlemesi **devre dışı bırakılmış**bir Azure AD Connect dağıtımınız varsa ve Kullanıcı oturum açma yöntemini *doğrudan kimlik doğrulama*olarak ayarlamaya çalışıyorsanız oluşur. Değişiklik uygulandığında, sihirbaz hem geçişli kimlik doğrulaması hem de parola eşitlemeyi mümkün olur. Bu düzeltmeyle, sihirbaz artık parola eşitlemeyi etkinleştirmezse.
+  * Bu sorun, parola eşitlemesi **devre dışı bırakılmış** bir Azure AD Connect dağıtımınız varsa ve Kullanıcı oturum açma yöntemini *doğrudan kimlik doğrulama* olarak ayarlamaya çalışıyorsanız oluşur. Değişiklik uygulandığında, sihirbaz hem geçişli kimlik doğrulaması hem de parola eşitlemeyi mümkün olur. Bu düzeltmeyle, sihirbaz artık parola eşitlemeyi etkinleştirmezse.
 
-  * Daha önce, parola eşitleme doğrudan kimlik doğrulamayı etkinleştirmek için bir önkoşul idi. Kullanıcı oturum açma yöntemini *geçişli kimlik doğrulaması*olarak ayarladığınızda, sihirbaz hem geçişli kimlik doğrulaması hem de parola eşitlemesini etkinleştirir. Son olarak parola eşitleme, önkoşul olarak kaldırılmıştır. Azure AD Connect sürüm 1.1.557.0 bir parçası olarak, Kullanıcı oturum açma yöntemini *doğrudan kimlik doğrulama*olarak ayarladığınızda parola eşitlemesini etkinleştirmemelidir Azure AD Connect bir değişiklik yapılmıştır. Ancak, değişiklik yalnızca Azure AD Connect yüklemesine uygulandı. Bu düzeltmeyle aynı değişiklik *Kullanıcı oturum açma görevini Değiştir* görevine de uygulanır.
+  * Daha önce, parola eşitleme doğrudan kimlik doğrulamayı etkinleştirmek için bir önkoşul idi. Kullanıcı oturum açma yöntemini *geçişli kimlik doğrulaması* olarak ayarladığınızda, sihirbaz hem geçişli kimlik doğrulaması hem de parola eşitlemesini etkinleştirir. Son olarak parola eşitleme, önkoşul olarak kaldırılmıştır. Azure AD Connect sürüm 1.1.557.0 bir parçası olarak, Kullanıcı oturum açma yöntemini *doğrudan kimlik doğrulama* olarak ayarladığınızda parola eşitlemesini etkinleştirmemelidir Azure AD Connect bir değişiklik yapılmıştır. Ancak, değişiklik yalnızca Azure AD Connect yüklemesine uygulandı. Bu düzeltmeyle aynı değişiklik *Kullanıcı oturum açma görevini Değiştir* görevine de uygulanır.
 
-  * Sorunsuz çoklu oturum açmayı etkinleştirmeyi/devre dışı bırakmayı denediğinizde de aynı sorunun oluştuğunu unutmayın. Özellikle, parola eşitleme devre dışı bırakılmış bir Azure AD Connect dağıtımınız vardır ve Kullanıcı oturum açma yöntemi zaten *geçişli kimlik doğrulama*olarak yapılandırılmıştır. Kullanıcı oturum açma görevini *Değiştir* ' i kullanarak, Kullanıcı oturum açma yöntemi "geçişli kimlik doğrulaması" olarak yapılandırıldıklarında, *sorunsuz çoklu oturum açma seçeneğini etkinleştirin* /işaretini kaldırın. Değişiklik uygulandığında sihirbaz parola eşitlemesini mümkün olur. Bu düzeltmeyle, sihirbaz artık parola eşitlemeyi etkinleştirmezse. 
+  * Sorunsuz çoklu oturum açmayı etkinleştirmeyi/devre dışı bırakmayı denediğinizde de aynı sorunun oluştuğunu unutmayın. Özellikle, parola eşitleme devre dışı bırakılmış bir Azure AD Connect dağıtımınız vardır ve Kullanıcı oturum açma yöntemi zaten *geçişli kimlik doğrulama* olarak yapılandırılmıştır. Kullanıcı oturum açma görevini *Değiştir* ' i kullanarak, Kullanıcı oturum açma yöntemi "geçişli kimlik doğrulaması" olarak yapılandırıldıklarında, *sorunsuz çoklu oturum açma seçeneğini etkinleştirin* /işaretini kaldırın. Değişiklik uygulandığında sihirbaz parola eşitlemesini mümkün olur. Bu düzeltmeyle, sihirbaz artık parola eşitlemeyi etkinleştirmezse. 
 
-* Azure AD Connect yükseltmenin başarısız olmasına neden olan bir sorun düzeltildi *, "eşitleme hizmeti yükseltilemiyor*" hatası oluştu. Ayrıca, eşitleme hizmeti artık olay hatasıyla başlayamaz "*veritabanının sürümü yüklü ikili dosyaların sürümünden daha yeni olduğundan hizmet başlatılamadı*". Bu sorun, yükseltmenin gerçekleştiği yöneticinin Azure AD Connect tarafından kullanılmakta olan SQL Server 'da sysadmin ayrıcalığı olmadığında oluşur. Bu düzeltmeyle Azure AD Connect, yalnızca yöneticinin yükseltme sırasında ADSync veritabanına db_owner ayrıcalığına sahip olmasını gerektirir.
+* Azure AD Connect yükseltmenin başarısız olmasına neden olan bir sorun düzeltildi *, "eşitleme hizmeti yükseltilemiyor* " hatası oluştu. Ayrıca, eşitleme hizmeti artık olay hatasıyla başlayamaz " *veritabanının sürümü yüklü ikili dosyaların sürümünden daha yeni olduğundan hizmet başlatılamadı* ". Bu sorun, yükseltmenin gerçekleştiği yöneticinin Azure AD Connect tarafından kullanılmakta olan SQL Server 'da sysadmin ayrıcalığı olmadığında oluşur. Bu düzeltmeyle Azure AD Connect, yalnızca yöneticinin yükseltme sırasında ADSync veritabanına db_owner ayrıcalığına sahip olmasını gerektirir.
 
 * [Sorunsuz çoklu oturum açmayı](./how-to-connect-sso.md)etkinleştirmiş etkilenen müşterilerin etkilediği Azure AD Connect bir yükseltme sorunu düzeltildi. Azure AD Connect yükseltildikten sonra, özellik etkin ve tamamen işlevsel olsa bile sorunsuz tek Sign-On Azure AD Connect sihirbazında devre dışı olarak görünür. Bu düzeltmeyle, özellik artık sihirbazda etkin şekilde doğru şekilde görünür.
 
-* Kaynak çıpası ile ilgili hiçbir değişiklik yapılmasa bile, *yapılandırmaya hazırlanma* sayfasında her zaman "*kaynak bağlayıcısını yapılandırma*" istemi göstermek için Azure AD Connect sihirbaza neden olan bir sorun düzeltildi.
+* Kaynak çıpası ile ilgili hiçbir değişiklik yapılmasa bile, *yapılandırmaya hazırlanma* sayfasında her zaman " *kaynak bağlayıcısını yapılandırma* " istemi göstermek için Azure AD Connect sihirbaza neden olan bir sorun düzeltildi.
 
 * Azure AD Connect el ile yerinde yükseltmesini gerçekleştirirken, müşterinin ilgili Azure AD kiracısının genel yönetici kimlik bilgilerini sağlaması gerekir. Daha önce, genel yönetici kimlik bilgileri farklı bir Azure AD kiracısına ait olsa bile yükseltme devam edebiliyordu. Yükseltme başarıyla tamamlandı olarak göründüğünde, bazı konfigürasyonlar yükseltme ile düzgün bir şekilde kalıcı olmaz. Bu değişiklik ile, belirtilen kimlik bilgileri Azure AD kiracısı ile eşleşmezse, sihirbaz yükseltmenin devam etmesini engeller.
 
@@ -480,7 +480,7 @@ Durum: Eylül 05 2017
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 
 #### <a name="known-issues"></a>Bilinen sorunlar
-* Azure AD Connect yükseltmenin "*eşitleme hizmeti yükseltilemiyor*" hatasıyla başarısız olmasına neden olan bilinen bir sorun var. Ayrıca, eşitleme hizmeti artık olay hatasıyla başlayamaz "*veritabanının sürümü yüklü ikili dosyaların sürümünden daha yeni olduğundan hizmet başlatılamadı*". Bu sorun, yükseltmenin gerçekleştiği yöneticinin Azure AD Connect tarafından kullanılmakta olan SQL Server 'da sysadmin ayrıcalığı olmadığında oluşur. Dbo izinleri yeterli değildir.
+* Azure AD Connect yükseltmenin " *eşitleme hizmeti yükseltilemiyor* " hatasıyla başarısız olmasına neden olan bilinen bir sorun var. Ayrıca, eşitleme hizmeti artık olay hatasıyla başlayamaz " *veritabanının sürümü yüklü ikili dosyaların sürümünden daha yeni olduğundan hizmet başlatılamadı* ". Bu sorun, yükseltmenin gerçekleştiği yöneticinin Azure AD Connect tarafından kullanılmakta olan SQL Server 'da sysadmin ayrıcalığı olmadığında oluşur. Dbo izinleri yeterli değildir.
 
 * [Kesintisiz çoklu oturum açma](how-to-connect-sso.md)özelliği sunan müşterileri etkileyen Azure AD Connect yükseltmesinde bilinen bir sorun vardır. Azure AD Connect yükseltildikten sonra, özellik etkin olmaya devam etse bile Özellik sihirbazda devre dışı olarak görünür. Bu soruna yönelik bir çözüm gelecek sürümde sunulacaktır. Bu görüntü sorunuyla ilgili olan müşteriler, sihirbazda sorunsuz tek Sign-On etkinleştirerek el ile düzeldebilir.
 
@@ -495,12 +495,12 @@ Durum: Eylül 05 2017
 * Yükseltmeden sonra tam eşitleme adımlarının gereksiz yere oluşmasına neden olan bir sorun düzeltildi. Genel olarak, kullanıma hazır eşitleme kurallarında değişiklikler varsa yükseltmeden sonra tam eşitleme adımlarının çalıştırılması gerekir. Bu sorun, yeni satır karakterleri ile eşitleme kuralı ifadesiyle karşılaşıldığında yanlış bir değişikliği algılayan değişiklik algılama mantığındaki bir hata nedeniyle oluştu. Okunabilirliğini geliştirmek için yeni satır karakterleri eşitleme kuralı ifadesine eklenir.
 * Otomatik yükseltmeden sonra Azure AD Connect sunucusunun düzgün çalışmamasına neden olabilecek bir sorun düzeltildi. Bu sorun, sürüm 1.1.443.0 (veya önceki sürümler) olan Azure AD Connect sunucularını etkiler. Sorun hakkında daha fazla bilgi için, [Azure AD Connect otomatik bir yükseltmeden sonra düzgün şekilde çalışmıyor](https://support.microsoft.com/help/4038479/azure-ad-connect-is-not-working-correctly-after-an-automatic-upgrade)makalesine başvurun.
 * Hatalarla karşılaşıldığında, otomatik yükseltmenin 5 dakikada bir yeniden denenmesine neden olabilecek bir sorun düzeltildi. Düzeltmeyle birlikte, hata ile karşılaşıldığında otomatik yükseltme üstel geri dönüş ile yeniden dener.
-* Parola eşitleme olayının 611 hatalı olarak Windows uygulama olay günlüklerinde **hata**yerine **bilgilendirici** olarak gösterildiği bir sorun düzeltildi. Olay 611, parola eşitleme bir sorunla karşılaştığında oluşturulur. 
+* Parola eşitleme olayının 611 hatalı olarak Windows uygulama olay günlüklerinde **hata** yerine **bilgilendirici** olarak gösterildiği bir sorun düzeltildi. Olay 611, parola eşitleme bir sorunla karşılaştığında oluşturulur. 
 * Azure AD Connect sihirbazında, grup geri yazma için gerekli bir OU seçilmeksizin grup geri yazma özelliğinin etkinleştirilmesini sağlayan bir sorun düzeltildi.
 
 #### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
 * Ek görevler altında Azure AD Connect sihirbazına bir sorun giderme görevi eklendi. Müşteriler, parola eşitlemeyle ilgili sorunları gidermek ve genel tanılamayı toplamak için bu görevden faydalanabilir. Gelecekte, sorun giderme görevi, Dizin eşitlemeyle ilgili diğer sorunları içerecek şekilde genişletilir.
-* Azure AD Connect artık **var olan veritabanını kullan**adlı yeni bir yükleme modunu desteklemektedir. Bu yükleme modu, müşterilerin var olan bir ADSync veritabanını belirten Azure AD Connect yüklemesine olanak tanır. Bu özellik hakkında daha fazla bilgi için [var olan bir veritabanını kullanma](how-to-connect-install-existing-database.md)makalesine bakın.
+* Azure AD Connect artık **var olan veritabanını kullan** adlı yeni bir yükleme modunu desteklemektedir. Bu yükleme modu, müşterilerin var olan bir ADSync veritabanını belirten Azure AD Connect yüklemesine olanak tanır. Bu özellik hakkında daha fazla bilgi için [var olan bir veritabanını kullanma](how-to-connect-install-existing-database.md)makalesine bakın.
 * Daha iyi güvenlik için Azure AD Connect, Dizin eşitleme için Azure AD 'ye bağlanmak üzere artık varsayılan olarak TLS 1.2 'yi kullanmaktır. Daha önce varsayılan olarak TLS 1.0 idi.
 * Azure AD Connect parola eşitleme Aracısı başlatıldığında, parola eşitleme için Azure AD iyi bilinen uç noktaya bağlanmaya çalışır. Başarılı bağlantı kurulduğunda, bölgeye özgü bir uç noktaya yeniden yönlendirilir. Daha önce, parola eşitleme Aracısı yeniden başlatılana kadar bölgeye özgü uç noktayı önbelleğe alır. Artık, aracı, bölgeye özgü uç nokta ile bağlantı sorunuyla karşılaşırsa, önbelleği temizler ve iyi bilinen uç noktayla yeniden dener. Bu değişiklik, önbelleğe alınmış bölgeye özgü uç nokta artık kullanılabilir olmadığında parola eşitlemesinin farklı bölgeye özgü bir uç noktaya yük devredebilmesini sağlar.
 * Şirket içi AD ormanında yapılan değişiklikleri eşitlemek için bir AD DS hesabı kullanmanız gerekir. (İ) AD DS hesabı oluşturup kendi kimlik bilgisini Azure AD Connect veya (ii) bir kurumsal yönetici kimlik bilgilerini sağlayıp sizin için AD DS hesabı oluşturmasına Azure AD Connect izin verebilirsiniz. Daha önce, (i) Azure AD Connect sihirbazında varsayılan seçenektir. Şimdi, (ii) varsayılan seçenektir.
@@ -608,7 +608,7 @@ Durum: Temmuz 2017
 ### <a name="pass-through-authentication"></a>Doğrudan Kimlik Doğrulama
 
 #### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
-* Doğrudan kimlik doğrulaması için gereken aracının adı, *Microsoft Azure AD uygulama proxy Bağlayıcısı* 'Ndan *Microsoft Azure AD Connect kimlik doğrulama aracısına*değiştirilmiştir.
+* Doğrudan kimlik doğrulaması için gereken aracının adı, *Microsoft Azure AD uygulama proxy Bağlayıcısı* 'Ndan *Microsoft Azure AD Connect kimlik doğrulama aracısına* değiştirilmiştir.
 
 * Doğrudan kimlik doğrulamasını etkinleştirme, varsayılan olarak parola karması eşitlemesini artık etkinleştirmiyor.
 
@@ -705,7 +705,7 @@ Bu sorun, Sihirbazı çalıştırdığınızda **tüm etki alanlarını ve OU 'L
   * CertPublicKeyParametersOid
   * CertVersion
   * CertSignatureAlgorithmOid
-  * Seç
+  * Şunu seçin:
   * CertKeyAlgorithmParams
   * CertHashString
   * Konum

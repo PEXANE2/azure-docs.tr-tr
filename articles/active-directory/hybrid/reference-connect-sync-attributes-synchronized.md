@@ -16,12 +16,12 @@ ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9411c22183620f883b4d2819eb3078e49837e578
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ec05c4160c6502904644bf7035bda0bed66cc33
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90016087"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413199"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect eşitleme: Azure Active Directory ile eşitlenen öznitelikler
 Bu konu, Azure AD Connect eşitleme tarafından eşitlenen öznitelikleri listeler.  
@@ -373,7 +373,7 @@ Bu durumda, bu konudaki özniteliklerin listesiyle başlayın ve kişisel verile
 Bu grup, genel bir iş yükü veya uygulama için gereken en az öznitelik olarak kullanılan bir öznitelikler kümesidir. Bu, başka bir bölümde veya Microsoft dışı bir uygulamada listelenmeyen bir iş yükü için kullanılabilir. Bu, açıkça aşağıdakiler için kullanılır:
 
 * Yammer (yalnızca Kullanıcı tüketilecektir)
-* [SharePoint gibi kaynaklar tarafından sunulan karma Işletmeler arası (B2B) Şirket içi işbirliği senaryoları](https://go.microsoft.com/fwlink/?LinkId=747036)
+* [SharePoint gibi kaynaklar tarafından sunulan karma Işletmeler arası (B2B) Şirket içi işbirliği senaryoları](/sharepoint/create-b2b-extranet)
 
 Bu grup, Azure AD dizini Microsoft 365, Dynamics veya Intune 'u desteklemek için kullanılmazsa kullanılabilecek bir öznitelikler kümesidir. Küçük bir çekirdek öznitelikleri kümesine sahiptir. Üçüncü taraf uygulamalara yönelik çoklu oturum açma veya sağlama, burada açıklanan özniteliklere ek olarak özniteliklerin eşitlenmesini gerektirir. Uygulama gereksinimleri, her bir uygulama için [SaaS uygulama öğreticisinde](../saas-apps/tutorial-list.md) açıklanmıştır.
 
@@ -420,7 +420,7 @@ Bu öznitelikler, seçtiğiniz diğer uygulamalara ek olarak **Kullanıcı** iç
 | msDS-KeyCredentialLink |X |Iş için Windows Hello 'ya Kullanıcı kaydolduktan sonra. | 
 
 ## <a name="exchange-hybrid-writeback"></a>Exchange karma geri yazma
-**Exchange karma**'i etkinleştirmeyi seçtiğinizde, bu ÖZNITELIKLER Azure AD 'den şirket içi Active Directory geri yazılır. Exchange sürümünüze bağlı olarak, daha az öznitelik eşitlenebilir.
+**Exchange karma** 'i etkinleştirmeyi seçtiğinizde, bu ÖZNITELIKLER Azure AD 'den şirket içi Active Directory geri yazılır. Exchange sürümünüze bağlı olarak, daha az öznitelik eşitlenebilir.
 
 | Öznitelik adı (Şirket içi AD) | Öznitelik adı (Connect UI) | Kullanıcı | İletişim | Grup | Yorum |
 | --- |:---:|:---:|:---:| --- |---|
@@ -435,7 +435,7 @@ Bu öznitelikler, seçtiğiniz diğer uygulamalara ek olarak **Kullanıcı** iç
 | publicDelegates| ms-Exch-Genel-Temsilciler  |X | | |Exchange Online posta kutusuna, şirket içi Exchange posta kutusu olan kullanıcılar için Sendonbeyarı Azure AD Connect Build 1.1.552.0 veya After gerektirir. |
 
 ## <a name="exchange-mail-public-folder"></a>Exchange posta genel klasörü
-**Exchange mail ortak klasörünü**etkinleştirmeyi seçtiğinizde bu öznitelikler şirket Içi ACTIVE DIRECTORY Azure AD 'ye eşitlenir.
+**Exchange mail ortak klasörünü** etkinleştirmeyi seçtiğinizde bu öznitelikler şirket Içi ACTIVE DIRECTORY Azure AD 'ye eşitlenir.
 
 | Öznitelik adı | PublicFolder | Yorum |
 | --- | :---:| --- |
@@ -468,7 +468,7 @@ Cihaz nesneleri Active Directory oluşturulur. Bu nesneler, Azure AD 'ye veya et
 
 ## <a name="notes"></a>Notlar
 * Alternatif KIMLIK kullanılırken, şirket içi öznitelik userPrincipalName, onPremisesUserPrincipalName Azure AD özniteliğiyle eşitlenir. Alternatif ID özniteliği, örneğin posta, Azure AD özniteliği userPrincipalName ile eşitlenir.
-* Yukarıdaki listelerde, **Kullanıcı** nesne türü **InetOrgPerson**nesne türü için de geçerlidir.
+* Yukarıdaki listelerde, **Kullanıcı** nesne türü **InetOrgPerson** nesne türü için de geçerlidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Azure AD Connect eşitleme](how-to-connect-sync-whatis.md) yapılandırması hakkında daha fazla bilgi edinin.

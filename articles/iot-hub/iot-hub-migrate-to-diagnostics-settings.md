@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub tanılama ayarlarına geçiş | Microsoft Docs
-description: Azure IoT Hub 'yi, IoT Hub 'ınızdaki işlemlerin durumunu gerçek zamanlı olarak izlemek üzere Operations Monitoring yerine Azure tanılama ayarlarını kullanacak şekilde güncelleştirme.
+title: Azure IoT Hub işlemleri izlemeyi Azure Izleyici 'de kaynak günlüklerine IoT Hub geçirme | Microsoft Docs
+description: Azure IoT Hub 'yi, IoT Hub 'ınızdaki işlemlerin durumunu gerçek zamanlı olarak izlemek için işlem izleme yerine Azure Izleyici 'yi kullanacak şekilde güncelleştirme.
 author: kgremban
 manager: philmea
 ms.service: iot-hub
@@ -8,29 +8,55 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
-ms.openlocfilehash: 40c90142330b0530f1127beae1624ff27d7eb6ca
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: eb53e7052db6d4de365864184b9bd2e6585b7e2d
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541494"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412131"
 ---
-# <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>IoT Hub işlemler izlemeden tanılama ayarlarına geçirin
+# <a name="migrate-your-iot-hub-from-operations-monitoring-to-azure-monitor-resource-logs"></a>IoT Hub işlemler izlemeden Azure Izleyici kaynak günlüklerine geçirme
 
-IoT Hub içindeki işlemlerin durumunu izlemek için [İşlem izlemeyi](iot-hub-operations-monitoring.md) kullanan müşteriler, bu Iş akışını Azure izleyici 'nin bir özelliği olan [Azure tanılama ayarlarına](../azure-monitor/platform/platform-logs-overview.md)geçirebilir. Tanılama ayarları birçok Azure hizmeti için kaynak düzeyinde tanılama bilgilerini sağlar.
+IoT Hub içindeki işlemlerin durumunu izlemek için [İşlem izlemeyi](iot-hub-operations-monitoring.md) kullanan müşteriler, Azure izleyici 'nin bir özelliği olan [Azure izleyici kaynak günlüklerine](../azure-monitor/platform/platform-logs-overview.md)bu iş akışını geçirebilir. Kaynak günlükleri birçok Azure hizmeti için kaynak düzeyinde tanılama bilgilerini sağlar.
 
-**IoT Hub işlemler izleme işlevi kullanım dışıdır** ve portaldan kaldırılmıştır. Bu makalede, iş yüklerinizi işlemler izlemeden tanılama ayarlarına taşıma adımları sağlanır. Kullanımdan kaldırma zaman çizelgesi hakkında daha fazla bilgi için bkz. Azure [izleme Ile Azure IoT çözümlerinizi izleme ve Azure Kaynak durumu](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/).
+**IoT Hub işlemler izleme işlevi kullanım dışıdır** ve portaldan kaldırılmıştır. Bu makalede, iş yüklerinizi işlemler izlemeden Azure Izleyici kaynak günlüklerine taşımaya yönelik adımlar sağlanmaktadır. Kullanımdan kaldırma zaman çizelgesi hakkında daha fazla bilgi için bkz. Azure [izleme Ile Azure IoT çözümlerinizi izleme ve Azure Kaynak durumu](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/).
 
 ## <a name="update-iot-hub"></a>Güncelleştirme IoT Hub
 
-Azure portal IoT Hub güncelleştirmek için, önce tanılama ayarlarını açın, sonra işlem izlemeyi devre dışı bırakın.  
+Azure portal IoT Hub güncelleştirmek için, önce bir tanılama ayarı oluşturun, sonra işlem izlemeyi kapatın.  
 
-[!INCLUDE [iot-hub-diagnostics-settings](../../includes/iot-hub-diagnostics-settings.md)]
+### <a name="create-a--diagnostic-setting"></a>Tanılama ayarı oluştur
+
+1. [Azure Portal](https://portal.azure.com) oturum açın ve IoT Hub 'ınıza gidin.
+
+1. Sol bölmedeki **izleme** altında **Tanılama ayarları** ' nı seçin. Ardından **Tanılama ayarı Ekle** ' yi seçin.
+
+   :::image type="content" source="media/iot-hub-migrate-to-diagnostics-settings/open-diagnostic-settings.png" alt-text="Izleme bölümündeki tanılama ayarlarını vurgulayan ekran görüntüsü.":::
+
+1. **Tanılama ayarı** bölmesinde, tanılama ayarına bir ad verin.
+
+1. **Kategori ayrıntıları** ' nın altında, izlemek istediğiniz işlemlerin kategorilerini seçin. IoT Hub bulunan işlemlerin kategorileri hakkında daha fazla bilgi için bkz. [kaynak günlükleri](monitor-iot-hub-reference.md#resource-logs).
+
+1. **Hedef ayrıntıları** ' nın altında, günlükleri nereye göndermek istediğinizi seçin. Bu hedeflerin herhangi bir birleşimini seçebilirsiniz:
+
+   * Bir depolama hesabına arşivle
+   * Bir olay hub'ına akış yap
+   * Log Analytics çalışma alanı aracılığıyla Azure Izleyici günlüklerine gönder
+
+   Aşağıdaki ekran görüntüsünde, bağlantı ve cihaz telemetri kategorilerindeki işlemleri bir Log Analytics çalışma alanına yönlendiren bir tanılama ayarı gösterilmektedir:
+
+   :::image type="content" source="media/iot-hub-migrate-to-diagnostics-settings/add-diagnostic-setting.png" alt-text="Tamamlanmış bir tanılama ayarını gösteren ekran görüntüsü.":::
+
+1. Ayarları kaydetmek için **Kaydet** ’i seçin.
+
+Yeni ayarlar yaklaşık 10 dakika içinde etkili olur. Bundan sonra, Günlükler yapılandırılmış hedefte görüntülenir. Tanılamayı yapılandırma hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızdan günlük verilerini toplama ve](/azure/azure-monitor/platform/platform-logs-overview)kullanma.
+
+PowerShell ve Azure CLı dahil olmak üzere tanılama ayarlarını oluşturma hakkında daha ayrıntılı bilgi için bkz. Azure Izleyici belgelerindeki [Tanılama ayarları](/azure/azure-monitor/platform/diagnostic-settings) .
 
 ### <a name="turn-off-operations-monitoring"></a>İşlem izlemeyi kapat
 
 > [!NOTE]
-> 11 Mart 2019 itibariyle, işlemler izleme özelliği IoT Hub Azure portal arabiriminden kaldırılmıştır. Aşağıdaki adımlar artık uygulanmaz. Geçiş yapmak için yukarıdaki Azure Izleyici tanılama ayarlarında doğru kategorilerin açık olduğundan emin olun.
+> 11 Mart 2019 itibariyle, işlemler izleme özelliği IoT Hub Azure portal arabiriminden kaldırılmıştır. Aşağıdaki adımlar artık uygulanmaz. Geçiş yapmak için, yukarıdaki Azure Izleyici tanılama ayarıyla doğru kategorilerin bir hedefe yönlendirildiğinden emin olun.
 
 Yeni tanılama ayarlarını iş akışınızda test etmeniz durumunda, işlemler izleme özelliğini kapatabilirsiniz. 
 
@@ -42,9 +68,9 @@ Yeni tanılama ayarlarını iş akışınızda test etmeniz durumunda, işlemler
 
 ## <a name="update-applications-that-use-operations-monitoring"></a>İşlem izlemeyi kullanan uygulamaları güncelleştirme
 
-İşlem izleme ve tanılama ayarlarının şemaları biraz farklılık gösterir. Tanılama ayarları tarafından kullanılan şemaya eşlemek için, günümüzde işlemleri izleme kullanan uygulamaları güncelleştirmeniz önemlidir. 
+İşlem izleme ve kaynak günlüklerinin şemaları biraz farklılık gösterir. Kaynak günlükleri tarafından kullanılan şemayla eşlenecek işlemleri izlemeyi bugün kullanan uygulamaları güncelleştirmeniz önemlidir.
 
-Ayrıca, Tanılama ayarları izleme için beş yeni kategori sunar. Mevcut şema için uygulamaları güncelleştirdikten sonra yeni kategorileri de ekleyin:
+Ayrıca, IoT Hub kaynak günlükleri izleme için beş yeni kategori sunar. Mevcut şema için uygulamaları güncelleştirdikten sonra yeni kategorileri de ekleyin:
 
 * Buluttan cihaza ikizi işlemleri
 * Cihazdan buluta ikizi işlemleri
@@ -60,4 +86,4 @@ Cihazdaki cihaz bağlantısını ve bağlantı kesmeyi izlemek için, uyarılar�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[İzleyici IoT Hub](monitor-iot-hub.md)
+[IoT Hub’ı izleme](monitor-iot-hub.md)

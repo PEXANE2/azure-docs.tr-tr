@@ -8,12 +8,12 @@ ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 3979e5e904eb54db9566eb014f7e455ebaceaff0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 012e155737b9251827c668b3a9cacbbe8d59ae77
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93087188"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411363"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB kullanırken karşılaşılan sorgu sorunlarını giderme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -494,3 +494,4 @@ Her sorgu için ru ölçüyle ilgili bilgiler için aşağıdaki makalelere bak�
 * [.NET SDK kullanarak SQL sorgu yürütme ölçümleri alın](profile-sql-api-query.md)
 * [Azure Cosmos DB ile sorgu performansını ayarlama](./sql-api-query-metrics.md)
 * [.NET SDK’sı için performans ipuçları](performance-tips.md)
+* [Java v4 SDK için performans ipuçları](performance-tips-java-sdk-v4-sql.md)

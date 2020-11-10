@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/03/2019
 ms.author: terrylan
-ms.openlocfilehash: 0bf9b4d3aa1926343ad25000a05762a31d49617d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4a3b2afd8b1a5ffdbb1fe0db1c3e345a9c99154
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73889852"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412621"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Azure Güvenlik en iyi uygulamaları ve desenleri
 
@@ -28,8 +28,8 @@ Aşağıdaki makaleler, Azure kullanarak bulut çözümlerinizi tasarlarken, da�
 
 En iyi uygulamalar BT profesyonelleri için bir kaynak olmak üzere tasarlanmıştır. Bu, güvenli Azure çözümleri oluşturup dağıtan tasarımcılar, mimarlar, geliştiriciler ve test ediciler içerebilir.
 
-* [Azure sınır güvenliği en iyi yöntemleri](/azure/security/fundamentals/network-best-practices#adopt-a-zero-trust-approach)
-* [Azure güvenliği için en iyi yöntemler](database-best-practices.md)
+* [Azure sınır güvenliği en iyi yöntemleri](./network-best-practices.md#adopt-a-zero-trust-approach)
+* [Azure güvenliği için en iyi yöntemler](../../azure-sql/database/security-best-practice.md)
 * [Azure veri güvenliği ve şifreleme en iyi uygulamaları](data-encryption-best-practices.md)
 * [Azure kimlik yönetimi ve erişim denetimi için en iyi güvenlik yöntemleri](identity-management-best-practices.md)
 * [Azure ağ güvenliğine yönelik en iyi yöntemler](network-best-practices.md)
@@ -38,7 +38,7 @@ En iyi uygulamalar BT profesyonelleri için bir kaynak olmak üzere tasarlanmı�
 * [Azure Service Fabric güvenliği en iyi yöntemleri](service-fabric-best-practices.md)
 * [Azure VM güvenliği için en iyi yöntemler](iaas.md)
 * [Azure’da güvenli karma ağ mimarisi uygulama](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)
-* [Nesnelerin İnterneti güvenliğine yönelik en iyi yöntemler](iot-best-practices.md)
+* [Nesnelerin İnterneti güvenliğine yönelik en iyi yöntemler](../../iot-fundamentals/iot-security-best-practices.md)
 * [Azure'da PaaS veritabanlarının güvenliğini sağlama](paas-applications-using-sql.md)
 * [Azure App Service'i kullanarak PaaS web ve mobil uygulamalarının güvenliğini sağlama](paas-applications-using-app-services.md)
 * [Azure Depolama’yı kullanarak PaaS web ve mobil uygulamalarının güvenliğini sağlama](paas-applications-using-storage.md)
