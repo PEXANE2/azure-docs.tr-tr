@@ -3,85 +3,94 @@ title: Olay tabanlı video kaydı için bir sinyal kapısı Yapılandırma-Azure
 description: Bu makalede, bir medya grafiğinde sinyal kapısını yapılandırma hakkında rehberlik sunulmaktadır.
 ms.topic: how-to
 ms.date: 11/3/2020
-ms.openlocfilehash: 4204a43915f9c79cae7dfe82b37e741fee89fb4a
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: afcec7c03f1353f08b58311278f5a533e0c911bc
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93380239"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410802"
 ---
 # <a name="configure-a-signal-gate-for-event-based-video-recording"></a>Olay tabanlı video kaydı için sinyal kapısı yapılandırma
 
-Bir ortam grafiğinde, [sinyal kapısı işlemci düğümü](media-graph-concept.md#signal-gate-processor) , bir olay tarafından tetiklendiğinde bir düğümden diğerine medya iletmesine olanak tanır. Tetiklendiğinde, ağ geçidi açılır ve belirtilen süre boyunca medya akışına izin verir. Ağ geçidini tetiklemeye yönelik olay yokluğunda, ağ geçidi kapanır ve medya akışı durur. Sinyal kapısı işlemcisi, olay tabanlı video kaydı için geçerlidir.
-Bu makalede, sinyal kapısı işlemcisinin nasıl yapılandırılacağı hakkında ayrıntılı bilgi edineceksiniz.
+Bir medya grafiğinde, [sinyal kapısı işlemci düğümü](media-graph-concept.md#signal-gate-processor) , bir olay tarafından tetiklendiğinde bir düğümden diğerine medya iletmesine olanak tanır. Tetiklendiğinde, ağ geçidi açılır ve belirtilen süre boyunca medya akışına izin verir. Ağ geçidini tetiklemeye yönelik olaylar yokluğunda, ağ geçidi kapanır ve medya akışı durur. Olay tabanlı video kaydı için sinyal kapısı işlemcisini kullanabilirsiniz.
 
-## <a name="suggested-pre-reading"></a>Önerilen önceden okuma
+Bu makalede, sinyal kapısı işlemcisini yapılandırmayı öğreneceksiniz.
+
+## <a name="suggested-prereading"></a>Önerilen prereading
 -   [Medya grafiği](media-graph-concept.md)
 -   [Olay tabanlı video kaydı](event-based-video-recording-concept.md)
 
 
 ## <a name="problem"></a>Sorun
-Kullanıcı, ağ geçidi bir olay tarafından tetiklendikten önce veya sonra belirli bir zamanı kaydetmeye başlamak isteyebilir. Kullanıcı, sistem içinde kabul edilebilir gecikmeyi bilir, böylece Kullanıcı sinyal kapısı işlemcisinin gecikmesini belirtmek istemektedir. Kullanıcı, kaydetme süresinin kaç tane yeni olay alındıklarından bağımsız olarak, en kısa ve en uzun süreyi belirtmek ister.
+Bir Kullanıcı, bir olay tarafından tetiklendikten önce veya sonra belirli bir zamanda kayıt başlatmak isteyebilir. Kullanıcı, sistem içinde kabul edilebilir gecikme süresini bilir. Bu nedenle, sinyal kapısı işlemcisinin gecikmesini belirtmek ister. Ayrıca, kaç yeni olay alındıklarından bağımsız olarak, kayıtlarının en düşük ve en uzun süresini belirtmek ister.
  
 ### <a name="use-case-scenario"></a>Kullanım örneği senaryosu
-Binanın ön kapısının açıldığı her seferinde video kaydetmek istediğinizi varsayalım. Yukarıdaki kapıdan önce **X** saniye kaydedilmesini istiyorsunuz. Kapı bir daha açılmadıysa, kaydın en az **Y** saniye olmasını istersiniz. Kapı sürekli olarak açılırsa, kaydın en fazla **Z** saniyelik olmasını istersiniz. Kapı sensörizin **K** saniye gecikme süresine sahip olduğunu ve olayların yoksayılacağı ("geç alındı"), olayların gelmesi için en az **K** saniyeye izin vermek istediğinizi bilirsiniz.
+Binanın ön kapısının açıldığı her seferinde video kaydetmek istediğinizi varsayalım. Kaydın şunları yapmak istiyorsunuz: 
+
+- Kapı açılmadan önce *X* saniye ekleyin. 
+- Kapı yeniden açılmazsa en az *Y* saniye. 
+- Kapı sürekli açılırsa en fazla *Z* saniye. 
+ 
+Kapı sensörlerinizin *K* saniye gecikme süresi olduğunu bilirsiniz. Olayların, geç olarak yok sayılacağı olasılığını azaltmak için olayların gelmesi için en az *K* saniyeye izin vermek istersiniz.
 
 
 ## <a name="solution"></a>Çözüm
 
-**_Sinyal kapısı Işlemci parametrelerini değiştirme_* _
+Sorunu gidermek için, sinyal kapısı işlemci parametrelerinizi değiştirin.
 
-Sinyal kapısı işlemcisi 4 parametre ile yapılandırılır:
-- _ *etkinleştirme değerlendirme penceresi**
-- **etkinleştirme sinyali boşluğu**
-- **Minimum etkinleştirme penceresi**
-- **en yüksek etkinleştirme penceresi**. 
+Bir sinyal kapısı işlemcisini yapılandırmak için şu dört parametreyi kullanın:
+- Etkinleştirme değerlendirme penceresi
+- Etkinleştirme sinyali boşluğu
+- Minimum etkinleştirme penceresi
+- En yüksek etkinleştirme penceresi
 
-Sinyal kapısı işlemcisi tetiklendiğinde, en düşük etkinleştirme süresi boyunca açık kalır. Etkinleştirme olayı, en erken olayın zaman damgasında başlar ve etkinleştirme sinyali denkleştirilmesi gerekir. Sinyal kapısı işlemcisi yeniden tetikleniyorsa, zamanlayıcı sıfırlanır ve ağ geçidi en az etkinleştirme süresi boyunca açık kalır. Sinyal kapısı işlemcisi, en yüksek etkinleştirme süresinden daha uzun bir süre açık kalmayacaktır. Bir olay **(olay 1)** , medya zaman damgalarına dayalı olarak, sistem lags ve **olay 1** ' **den sonra sinyal** kapısı işlemcisine alınırsa, başka bir olaydan **(olay** 1) daha önce gerçekleşen bir olaydır. Olay **1** , **olay 2** ve **etkinleştirme değerlendirme penceresinin** varışı arasında gelmezse, **olay 1** yok sayılamaz ve sinyal kapısı işlemcisi üzerinden geçirilmeyecektir. Bağıntı kimlikleri her olay için ayarlanır. Bu kimlikler ilk olaydan ayarlanır ve aşağıdaki her olay için sıralıdır.
+Sinyal kapısı işlemcisi tetiklendiğinde, en düşük etkinleştirme süresi boyunca açık kalır. Etkinleştirme olayı, en erken olayın zaman damgasında başlar ve etkinleştirme sinyali denkleştirilmesi gerekir. 
+
+Sinyal kapısı işlemcisi açıkken tekrar tetikleniyorsa, süreölçer sıfırlanır ve ağ geçidi en az etkinleştirme süresi boyunca açık kalır. Sinyal kapısı işlemcisi, en yüksek etkinleştirme süresinden daha uzun bir süre açık kalır. 
+
+Bir olay (olay 1), medya zaman damgalarına dayalı olarak, sistem lags ve olay 1 ' den sonra sinyal kapısı işlemcisine ulaştığında yok sayıardı edilebilir. Olay 1, olay 2 ve etkinleştirme değerlendirme penceresinin varışı arasında gelmezse, olay 1 yok sayıdır. Sinyal kapısı işlemcisi aracılığıyla geçirilmiyor. 
+
+Bağıntı kimlikleri her olay için ayarlanır. Bu kimlikler ilk olaydan ayarlanır. Bunlar, aşağıdaki her olay için sıralıdır.
 
 > [!IMPORTANT]
-> Medya süresi, medyada bir olay oluştuğunda oluşan medya zaman damgasını temel alır. Sinyal kapıya ulaşan olay sırası, medya zamanında ulaşan olay sırasını yansıtmayabilir.
+> Medya süresi, medyada bir olay oluştuğunda oluşan medya zaman damgasına dayalıdır. Sinyal Kapısı ' ne gelen olayların sırası, medya zamanına ulaşan olayların sırasını yansıtmayabilir.
 
 
-### <a name="parameters-based-on-when-events-arrive-in-physical-time-to-the-signal-gate"></a>Parametreler: (olayların sinyal kapıya fiziksel zamanlı olarak ulaştığını temel alır)
+### <a name="parameters-based-on-the-physical-time-that-events-arrive-at-the-signal-gate"></a>Olayların sinyal kapısını aldığı fiziksel saate göre parametreler
 
-* **minimumactivationtime (en az bir kayıt süresi)** = maksimum **Umactivationtime** tarafından kesilmediği takdirde, sinyal kapısı işlemcisinin yeni olayları almak üzere tetiklendikten sonra açık kalacağı en az saniye sayısı
-* **Maximumactivationtime (bir kaydın en uzun olası süresi)** = ilk olaydan, alınan olayların ne olursa olsun, sinyal kapısı işlemcisinin yeni olayları almak için tetiklendikten sonra açık kalacağı en fazla saniye sayısı
-* **Activationsignalkayması** = sinyal kapısı işlemcisinin etkinleştirilmesi ile video kaydının başladığı zaman arasındaki saniye sayısı, kaydın tetikleme olayından önce başlatılması için genellikle bu değer negatif olur
-* **activationEvaluationWindow** = ilk tetikleme olayından başlayarak, medya zamanında ilk olaydan önce gerçekleşen bir olayın, yok sayılmadan ve "geç varış" olarak kabul edilmeden önce sinyal kapısı işlemcisine ulaşması gereken saniye sayısı
+* **minimumactivationtime (en kısa bir kayıt süresi)** : en az umactivationtime tarafından kesintiye uğramadığı sürece, sinyal kapısı işlemcisinin yeni olayları almak için tetiklendikten sonra açık kalacağı en az saniye sayısı.
+* **Maximumactivationtime (bir kaydın en uzun olası süresi)** : ilk olaydan, alınan olayların ne olursa olsun, sinyal kapısı işlemcisinin yeni olayları almak için tetiklendikten sonra açık kaldığı en fazla saniye sayısı.
+* **Activationsignalkayması** : sinyal kapısı işlemcisinin etkinleştirilmesi ile video kaydının başlangıcı arasındaki saniye sayısı. Genellikle, bu değer, tetikleme olayından önce kaydı başlattığı için negatiftir.
+* **activationEvaluationWindow** : ilk tetikleme olayından başlayarak, medya zamanında ilk olaydan önce gerçekleşen bir olayın, yok sayılmadan ve geç olarak kabul edilmeden önce sinyal kapısı işlemcisine gelmesi gereken saniye sayısı.
 
 > [!NOTE]
-> Geç varış, etkinleştirme değerlendirme penceresi geçtiğinde, ancak bu olay medya zamanında ilk olaydan önce ulaştığında gelen olaydır.
+> *Geç varış* , etkinleştirme değerlendirme penceresi geçtikten sonra, ancak medya zamanında ilk olaydan önce gelen olaydır.
 
 ### <a name="limits-of-parameters"></a>Parametrelerin limitleri
 
-* **activationEvaluationWindow: 0 saniye ila 10 saniye**
-
-* **Activationsignalkayması:-1 dakika-1 dakika**
-
-* **minimumActivationTime: 1 saniye-1 saat**
-
-* **maximumActivationTime: 1 saniye-1 saat**
+* **activationEvaluationWindow** : 0 saniye ila 10 saniye
+* **Activationsignalkayması** :-1 dakika-1 dakika
+* **Minimumactivationtime** : 1 saniye-1 saat
+* **Maximumactivationtime** : 1 saniye-1 saat
 
 
-Kullanım örneğine göre parametreler aşağıdaki şekilde ayarlanır:
+Kullanım durumunda, parametreleri aşağıdaki gibi ayarlarsınız:
 
-* **activationEvaluationWindow = K sn**
-* **Activationsignalkayması =-X sn**
-* **minimumActivationWindow = Y sn**
-* **maximumActivationWindow = Z sn**
+* **activationEvaluationWindow** : *K* saniye
+* **Activationsignalkayması** : *-X* saniye
+* **Minimumactivationwindow** : *Y* saniye
+* **Maximumactivationwindow** : *Z* saniye
 
 
-Aşağıda, sinyal kapısı Işlemci düğümü bölümünün bir medya grafiği topolojisinde aşağıdaki parametre değerleri için nasıl benzediklerine bir örnek verilmiştir:
-* **activationEvaluationWindow = 1 saniye**
-* **Activationsignalkayması =-5 saniye**
-* **minimumActivationTime = 20 saniye**
-* **maximumActivationTime = 40 saniye**
+**Sinyal kapısı işlemci** düğümü bölümünün şu parametre değerleri için bir medya grafik topolojisinde nasıl görüneceğine ilişkin bir örnek aşağıda verilmiştir:
+* **activationEvaluationWindow** : 1 saniye
+* **Activationsignalkayması** :-5 saniye
+* en **az Umactivationtime** : 20 saniye
+* **Maximumactivationtime** : 40 saniye
 
 > [!IMPORTANT]
 > [Iso 8601 süre biçimi](https://en.wikipedia.org/wiki/ISO_8601#Durations
-) her bir parametre değeri için beklenmektedir. 
-**Ex: PT1S = 1 saniye**
+) her bir parametre değeri için beklenmektedir. Örneğin, PT1S = 1 saniye.
 
 
 ```
@@ -107,51 +116,48 @@ Aşağıda, sinyal kapısı Işlemci düğümü bölümünün bir medya grafiği
 ```
 
 
-Bu sinyal kapısı işlemci yapılandırmasının farklı kayıt senaryolarında nasıl davranacağını ele alalım.
+Bu sinyal kapısı işlemci yapılandırmasının farklı kayıt senaryolarında nasıl davranacağını göz önünde bulundurun.
 
+### <a name="recording-scenarios"></a>Kayıt senaryoları
 
-**1 kaynaktan 1 olay ( *normal etkinleştirme* )**
+**Bir kaynaktan bir olay ( *normal etkinleştirme* )**
 
-Bir sinyal kapısı işlemcisi bir olay alma, bir olay, ağ geçidiyle gelen olaydan önce "etkinleştirme sinyali kayması" (5) saniye başlayan bir kayıtla sonuçlanır. "En az etkinleştirme süresi" (20) saniye, kaydın geri kalanı ise, ağ geçidini yeniden almak için en düşük etkinleştirme süresi tamamlanmadan önce başka hiçbir olay gelmedikçe.
+Bir olay, bir olay, ağ geçidi 'ne ulaşmadan önce 5 saniye (etkinleştirme sinyali = 5 saniye) başlayan bir kayıtta sonuçları alan bir sinyal geçidi işlemcisi. Ağ geçidini almak için en düşük etkinleştirme zamanının sonundan önce başka hiçbir olay gelmediğinden, kaydın geri kalanı 20 saniyedir (minimum etkinleştirme süresi = 20 saniye).
 
 Örnek Diyagram:
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/configure-signal-gate-how-to/normal-activation.svg" alt-text="Normal etkinleştirme":::
+> :::image type="content" source="./media/configure-signal-gate-how-to/normal-activation.svg" alt-text="Bir kaynaktan bir olayın normal etkinleştirilmesini gösteren diyagram.":::
 
 * Kayıt süresi =-fark + minimumActivationTime = [E1 + kayması, E1 + minimumActivationTime]
 
 
-**1 kaynaktan 2 olay ( *retriggered etkinleştirme* )**
+**Bir kaynaktan iki olay ( *retriggered etkinleştirme* )**
 
-İki olay alan sinyal kapısı işlemcisi, ağ geçidini ilk olaydan önce "etkinleştirme sinyali kayması" (beş) saniye sonra Başlatan bir kayıtla sonuçlanır. İkinci olay ilk olaydan sonra beş saniye gelir, bu, ilk olaydan "minimum etkinleştirme süresi" (20) saniyeden önce, bu nedenle kapı açık kalmak için retriggered. Kaydın geri kalanı "en az etkinleştirme süresi" (20) saniye uzunluğundadır, bu yana 2. etkinliğin en düşük etkinleştirme süresi, ağ geçidini yeniden almak için tamamlanmadan önce başka hiçbir olay gelmedikçe.
-
-Örnek Diyagram:
-> [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/configure-signal-gate-how-to/retriggering-activation.svg" alt-text="Retriggered etkinleştirmesi":::
-
-* Kayıt süresi =-fark + (1. etkinliğin varışı) + en düşük Umactivationtime
-
-
-**1 kaynaktaki N olay ( *en fazla etkinleştirme* )**
-
-N olay alan bir sinyal geçidi işlemcisi, ağ geçidini ilk olaydan önce "etkinleştirme sinyali kayması" (5) saniye sonra Başlatan bir kayda neden olur. Her olay, önceki olaydan "en az etkinleştirme süresi" (20) saniye tamamlanmadan önce ulaştığında, ağ geçidi sürekli olarak retriggered ve ilk olaydan sonra "en uzun etkinleştirme süresi" (40) saniye sonra açık kalır ve bu da hiçbir yeni olayı kabul etmez.
+İki olay alan bir sinyal geçidi işlemcisi, olay kapıya ulaşmadan önce 5 saniye (etkinleştirme sinyali kayması = 5 saniye) başlayan bir kayıtla sonuçlanır. Ayrıca, olay 2 olay 1 ' den 5 saniye sonra gider. Olay 2 olay 1 ' in en az etkinleştirme süresi (20 saniye) sonundan önce alındığından, ağ geçidi retriggered olur. Kaydın geri kalanı 20 saniye (en az etkinleştirme süresi = 20 saniye) olduğundan, ağ geçidini yeniden almak için olay 2 ' den en düşük etkinleştirme zamanının sonundan önce hiçbir olay gelmediği için.
 
 Örnek Diyagram:
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/configure-signal-gate-how-to/maximum-activation.svg" alt-text="En fazla etkinleştirme":::
+> :::image type="content" source="./media/configure-signal-gate-how-to/retriggering-activation.svg" alt-text="Bir kaynaktaki iki olayın retriggered etkinleştirmesini gösteren diyagram.":::
+
+* Kayıt süresi =-fark + (olay 2 ' nin varışı-olay 1 ' in varışı) + en düşük Umactivationtime
+
+
+**Bir kaynaktan *N* olay ( *en fazla etkinleştirme* )**
+
+*N* olayları alan bir sinyal geçidi işlemcisi, ağ geçidini ilk olay ulaşmadan önce 5 saniye (etkinleştirme sinyali kayması = 5 saniye) başlatan bir kayıtla sonuçlanır. Her olay, önceki olaydan 20 saniyelik en düşük etkinleştirme zamanının sonundan önce ulaştığında, geçit sürekli olarak retriggered. İlk olaydan sonra 40 saniyelik en fazla etkinleştirme zamanına kadar açık kalır. Ardından, ağ geçidi kapanır ve artık yeni olayları kabul etmez.
+
+Örnek Diyagram:
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/configure-signal-gate-how-to/maximum-activation.svg" alt-text="Bir kaynaktan en fazla N olay etkinleştirmeyi gösteren diyagram.":::
  
 * Kayıt süresi =-fark + maximumActivationTime
 
 > [!IMPORTANT]
-> Diyagramlar, her olayın fiziksel ve medya zamanında aynı örneğe ulaştığı varsayılmıştır. (Geç varış yok)
+> Yukarıdaki diyagramlarda, her olayın fiziksel saat ve medya zamanında aynı anında ulaştığı varsayılmıştır. Diğer bir deyişle, hiç geç yok olduğunu varsaymaktadır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-### <a name="try-it-out"></a>Deneyin
-
-[Olay tabanlı video kaydı öğreticisi](event-based-video-recording-tutorial.md)
-
-Olay tabanlı video kaydı öğreticisini kullanarak, [topology.jsüzerinde](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json)düzenleyin, signalgateProcessor düğümünün parametrelerini değiştirin, ardından öğreticinin geri kalanını izleyin. Parametrelerin etkisini analiz etmek için video kayıtlarını gözden geçirin.
+[Olay tabanlı video kaydı öğreticisini](event-based-video-recording-tutorial.md)deneyin. [Üzerindetopology.js](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json)düzenleyerek başlayın. SignalgateProcessor düğümünün parametrelerini değiştirin ve ardından öğreticinin geri kalanını izleyin. Parametrelerin etkisini analiz etmek için video kayıtlarını gözden geçirin.
 
 
 

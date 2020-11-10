@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 3723345b10524b2063b3ec8fe43608f49b5b279b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 042a3edf8efe080064a3c41fd55975a40bf47e5e
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87375224"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386607"
 ---
 Bing Web Araması istemci kitaplığı, Bing Web Araması Java uygulamanıza tümleştirmeyi kolaylaştırır. Bu hızlı başlangıçta istek göndermeyi, JSON yanıtı almayı, sonuçları filtrelemeyi ve ayrıştırmayı öğreneceksiniz.
 
@@ -24,7 +24,7 @@ Kodu hemen görmek istiyor musunuz? [Java için Bing arama istemci kitaplıklar�
 
 Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız olacaktır:
 
-* [JDK 7 veya 8](https://aka.ms/azure-jdks)
+* [JDK 7 veya 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 * [Apache Maven](https://maven.apache.org/download.cgi) veya favori derleme otomasyonu aracınız
 * Abonelik anahtarı
 
@@ -122,7 +122,7 @@ import com.microsoft.azure.cognitiveservices.search.websearch.models.VideoObject
 import com.microsoft.azure.cognitiveservices.search.websearch.models.WebPage;
 ```
 
-Projeyi Maven ile oluşturduysanız paketin tanımlanmış olması gerekir. Aksi takdirde paketi bu adımda tamamlayın. Örnek:
+Projeyi Maven ile oluşturduysanız paketin tanımlanmış olması gerekir. Aksi takdirde paketi bu adımda tamamlayın. Örneğin:
 
 ```java
 package com.bingwebsearch.app
@@ -295,4 +295,4 @@ Bu projeyi tamamladıktan sonra abonelik anahtarınızı program kodundan kaldı
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Azure Java SDK başvurusu](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-java-stable)
+* [Azure Java SDK başvurusu](/java/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-java-stable)

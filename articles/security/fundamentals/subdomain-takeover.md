@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2020
 ms.author: memildin
-ms.openlocfilehash: d1837d84c97227ba3d8743c3717e2f68dafd6b95
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 7c09a7f6c6a313852fc6212c6190a584ba5f67bd
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911401"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409901"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>DNS girişlerinin tehlikini önleyin ve alt etki alanı devralmayı önleyin
 
@@ -27,7 +27,7 @@ Bu makalede, alt etki alanının genel güvenlik tehdidi ve buna karşı hafifle
 
 ## <a name="what-is-subdomain-takeover"></a>Alt etki alanı nedir?
 
-Alt etki alanı kaynakları, çok sayıda kaynağı düzenli olarak oluşturan ve silen kuruluşlar için ortak, yüksek öneme sahip bir tehdittir. Sağlanabilen bir Azure kaynağına işaret eden bir [DNS kaydınız](https://docs.microsoft.com/azure/dns/dns-zones-records#dns-records) varsa, alt etki alanı ele alma işlemi gerçekleşebilir. Bu tür DNS kayıtları, "dangze DNS" girişleri olarak da bilinir. CNAME kayıtları özellikle bu tehdide karşı savunmasız. Alt etki alanı cılar, kötü amaçlı aktörlerin bir kuruluşun etki alanı için tasarlanan trafiği kötü amaçlı etkinlik gerçekleştiren bir siteye yeniden yönlendirmesine olanak sağlar.
+Alt etki alanı kaynakları, çok sayıda kaynağı düzenli olarak oluşturan ve silen kuruluşlar için ortak, yüksek öneme sahip bir tehdittir. Sağlanabilen bir Azure kaynağına işaret eden bir [DNS kaydınız](../../dns/dns-zones-records.md#dns-records) varsa, alt etki alanı ele alma işlemi gerçekleşebilir. Bu tür DNS kayıtları, "dangze DNS" girişleri olarak da bilinir. CNAME kayıtları özellikle bu tehdide karşı savunmasız. Alt etki alanı cılar, kötü amaçlı aktörlerin bir kuruluşun etki alanı için tasarlanan trafiği kötü amaçlı etkinlik gerçekleştiren bir siteye yeniden yönlendirmesine olanak sağlar.
 
 Bir alt etki alanı için ortak senaryo:
 
@@ -89,7 +89,7 @@ Araç, aşağıdaki tabloda listelenen Azure kaynaklarını destekler. Araç, t�
 | Hizmet                   | Tür                                        | FQDNproperty                               | Örnek                         |
 |---------------------------|---------------------------------------------|--------------------------------------------|---------------------------------|
 | Azure Front Door          | Microsoft. Network/frontkapaklı                | Properties. cName                           | `abc.azurefd.net`               |
-| Azure Blob Depolama        | Microsoft. Storage/storageaccounts           | Properties. BID. blob           | `abc. blob.core.windows.net`    |
+| Azure Blob Depolama Alanı        | Microsoft. Storage/storageaccounts           | Properties. BID. blob           | `abc. blob.core.windows.net`    |
 | Azure CDN                 | Microsoft. CDN/profiller/uç noktaları            | Properties. hostName                        | `abc.azureedge.net`             |
 | Genel IP adresleri       | Microsoft. Network/publicıpaddresses         | Properties. dnsSettings. FQDN                | `abc.EastUs.cloudapp.azure.com` |
 | Azure Traffic Manager     | Microsoft. Network/trafficmanagerprofiles    | Properties. dnsConfig. FQDN                  | `abc.trafficmanager.net`        |

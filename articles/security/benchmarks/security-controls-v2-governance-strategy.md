@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 420ab87591e230592ec8f728c6acb155266b5912
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae0930e0845e8e8bd6dc4571dc3e8e27491a7be6
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403535"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408801"
 ---
 # <a name="security-control-v2-governance-and-strategy"></a>Güvenlik denetimi v2: Idare ve strateji
 
@@ -45,19 +45,19 @@ Bu strateji aşağıdaki öğeler için belgelenmiş kılavuz, ilke ve standartl
 - Uygun şifreleme standartları
 
 Daha fazla bilgi için aşağıdaki başvurulara bakın:
-- [Azure Güvenlik mimarisi önerisi-depolama, veri ve şifreleme](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json)
+- [Azure Güvenlik mimarisi önerisi-depolama, veri ve şifreleme](/azure/architecture/framework/security/storage-data-encryption?amp;bc=%252fsecurity%252fcompass%252fbreadcrumb%252ftoc.json&toc=%252fsecurity%252fcompass%252ftoc.json)
 
 - [Azure güvenlik temelleri-Azure veri güvenliği, şifreleme ve depolama](../fundamentals/encryption-overview.md)
 
-- [Bulut benimseme çerçevesi-Azure veri güvenliği ve şifreleme en iyi uygulamaları](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
+- [Bulut benimseme çerçevesi-Azure veri güvenliği ve şifreleme en iyi uygulamaları](../fundamentals/data-encryption-best-practices.md?amp;bc=%252fazure%252fcloud-adoption-framework%252f_bread%252ftoc.json&toc=%252fazure%252fcloud-adoption-framework%252ftoc.json)
 
 - [Azure Güvenlik kıyaslaması-varlık yönetimi](security-controls-v2-asset-management.md)
 
 - [Azure Güvenlik kıyaslaması-veri koruma](security-controls-v2-data-protection.md)
 
-**Sorumluluk**: müşteri
+**Sorumluluk** : müşteri
 
-**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Tüm paydaşlar](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -79,9 +79,9 @@ Segmentleme stratejisinin ağ güvenliği, kimlik ve erişim modelleri ve uygula
 
 - [Kurumsal segmentasyon stratejisi ile ağ segmentlemesini hizalayın](/security/compass/network-security-containment#align-network-segmentation-with-enterprise-segmentation-strategy)
 
-**Sorumluluk**: müşteri
+**Sorumluluk** : müşteri
 
-**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Tüm paydaşlar](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -95,9 +95,9 @@ Bireysel varlıklarınızla ve barındırıldığı ortamda riskleri sürekli ol
 
 - [Azure Güvenlik kıyaslaması-Posture ve güvenlik açığı yönetimi](security-controls-v2-posture-vulnerability-management.md)
 
-**Sorumluluk**: müşteri
+**Sorumluluk** : müşteri
 
-**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Tüm paydaşlar](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -105,19 +105,19 @@ Bireysel varlıklarınızla ve barındırıldığı ortamda riskleri sürekli ol
 
 | Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
 |--|--|--|--|
-| GS-4 | Yok | PL, PM |
+| GS-4 | YOK | PL, PM |
 
 Güvenlik kuruluşunuzdaki roller ve sorumlulukların açık bir stratejisini belgelemenizi ve iletdiğinizden emin olun. Güvenlik kararlarını açık bir şekilde yapın, paylaşılan sorumluluk modelinde herkese eğitilendir ve bulutu güvenli hale getirmek için teknik ekipleri teknolojide eğitin.
 
-- [Azure Güvenlik En Iyi Yöntem 1 – Insanlar: ekipleri bulut güvenlik yolculuğunda eğitin](https://aka.ms/AzSec1)
+- [Azure Güvenlik En Iyi Yöntem 1 – Insanlar: ekipleri bulut güvenlik yolculuğunda eğitin](/azure/cloud-adoption-framework/security/security-top-10#1-people-educate-teams-about-the-cloud-security-journey)
 
-- [Azure Güvenlik En Iyi uygulaması 2-Insanlar: bulut güvenlik teknolojisindeki takımları eğitin](https://aka.ms/AzSec2)
+- [Azure Güvenlik En Iyi uygulaması 2-Insanlar: bulut güvenlik teknolojisindeki takımları eğitin](/azure/cloud-adoption-framework/security/security-top-10#2-people-educate-teams-on-cloud-security-technology)
 
-- [Azure Güvenlik En Iyi Yöntem 3-Işlem: bulut güvenlik kararları için sorumluluk atama](https://aka.ms/AzSec3)
+- [Azure Güvenlik En Iyi Yöntem 3-Işlem: bulut güvenlik kararları için sorumluluk atama](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
-**Sorumluluk**: müşteri
+**Sorumluluk** : müşteri
 
-**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Tüm paydaşlar](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -145,7 +145,7 @@ Bu strateji aşağıdaki öğeler için belgelenmiş kılavuz, ilke ve standartl
 
 Daha fazla bilgi için aşağıdaki başvurulara bakın:
 
-- [Azure Güvenlik En Iyi Yöntem 11 mimarisi. Tek Birleşik güvenlik stratejisi](https://aka.ms/AzSec11)
+- [Azure Güvenlik En Iyi Yöntem 11 mimarisi. Tek Birleşik güvenlik stratejisi](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
 - [Azure Güvenlik kıyaslaması-ağ güvenliği](security-controls-v2-network-security.md)
 
@@ -153,9 +153,9 @@ Daha fazla bilgi için aşağıdaki başvurulara bakın:
 
 - [Kurumsal ağ mimarisi stratejisi](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture)
 
-**Sorumluluk**: müşteri
+**Sorumluluk** : müşteri
 
-**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Tüm paydaşlar](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -185,13 +185,13 @@ Daha fazla bilgi için aşağıdaki başvurulara bakın:
 
 - [Azure Güvenlik kıyaslaması-ayrıcalıklı erişim](security-controls-v2-privileged-access.md)
 
-- [Azure Güvenlik En Iyi Yöntem 11 mimarisi. Tek Birleşik güvenlik stratejisi](https://aka.ms/AzSec11)
+- [Azure Güvenlik En Iyi Yöntem 11 mimarisi. Tek Birleşik güvenlik stratejisi](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
 - [Azure Identity Management güvenliğine genel bakış](../fundamentals/identity-management-overview.md)
 
-**Sorumluluk**: müşteri
+**Sorumluluk** : müşteri
 
-**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Tüm paydaşlar](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -224,15 +224,15 @@ Daha fazla bilgi için aşağıdaki başvurulara bakın:
 
 - [Azure Güvenlik kıyaslaması-olay yanıtı](security-controls-v2-incident-response.md)
 
-- [Azure Güvenlik En Iyi Yöntem 4-Işlem. Bulut için olay yanıtı Işlemini Güncelleştir](https://aka.ms/AzSec4)
+- [Azure Güvenlik En Iyi Yöntem 4-Işlem. Bulut için olay yanıtı Işlemini Güncelleştir](/azure/cloud-adoption-framework/security/security-top-10#3-process-assign-accountability-for-cloud-security-decisions)
 
 - [Azure benimseme çerçevesi, günlüğe kaydetme ve raporlama kararı Kılavuzu](/azure/cloud-adoption-framework/decision-guides/logging-and-reporting/)
 
 - [Azure Kurumsal ölçek, yönetim ve izleme](/azure/cloud-adoption-framework/ready/enterprise-scale/management-and-monitoring)
 
-**Sorumluluk**: müşteri
+**Sorumluluk** : müşteri
 
-**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Tüm paydaşlar](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -259,9 +259,8 @@ Daha fazla bilgi için aşağıdaki başvurulara bakın:
 
 - [Azure benimseme çerçevesi-iş sürekliliği ve olağanüstü durum kurtarma](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery)
 
-**Sorumluluk**: müşteri
+**Sorumluluk** : müşteri
 
-**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Tüm paydaşlar](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
-

@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d839ea042dec2224885f9ba4a0cb6adef5108568
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff023ad98c7ffa269223b5d0b4a1cecc5fde1feb
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458629"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410224"
 ---
 # <a name="azure-encryption-overview"></a>Azure'da şifrelemeye genel bakış
 
@@ -45,15 +45,15 @@ Azure, hizmet tarafından yönetilen anahtarlar, Key Vault içindeki müşteri t
 
 Üç sunucu tarafı şifreleme modeli, gereksinimlerinize göre seçebileceğiniz farklı anahtar yönetim özellikleri sunar:
 
-- **Hizmet tarafından yönetilen anahtarlar**: düşük ek yük ile denetim ve kolaylık sağlayan bir bileşim sunar.
+- **Hizmet tarafından yönetilen anahtarlar** : düşük ek yük ile denetim ve kolaylık sağlayan bir bileşim sunar.
 
-- **Müşteri tarafından yönetilen anahtarlar**: kendi anahtarlarınızı getır (bYok) desteği de dahil olmak üzere anahtarlar üzerinde denetim sağlar veya yenilerini oluşturmanıza izin verir.
+- **Müşteri tarafından yönetilen anahtarlar** : kendi anahtarlarınızı getır (bYok) desteği de dahil olmak üzere anahtarlar üzerinde denetim sağlar veya yenilerini oluşturmanıza izin verir.
 
-- **Müşteri denetimli donanımda hizmet tarafından yönetilen anahtarlar**: özel deponuzdaki anahtarları Microsoft denetimi dışında yönetmenizi sağlar. Bu özellik kendi anahtarınızı barındırın (HYOK) olarak adlandırılır. Ancak, yapılandırma karmaşıktır ve çoğu Azure hizmeti bu modeli desteklemez.
+- **Müşteri denetimli donanımda hizmet tarafından yönetilen anahtarlar** : özel deponuzdaki anahtarları Microsoft denetimi dışında yönetmenizi sağlar. Bu özellik kendi anahtarınızı barındırın (HYOK) olarak adlandırılır. Ancak, yapılandırma karmaşıktır ve çoğu Azure hizmeti bu modeli desteklemez.
 
 ### <a name="azure-disk-encryption"></a>Azure disk şifrelemesi
 
-Windows ve Linux sanal makinelerini, [Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) teknolojisini ve Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) [' i kullanarak](/azure/security/fundamentals/azure-disk-encryption-vms-vmss), hem işletim sistemi disklerini hem de tam birim şifrelemesi ile veri disklerini korumak üzere koruyabilirsiniz.
+Windows ve Linux sanal makinelerini, [Windows BitLocker](/previous-versions/windows/it-pro/windows-vista/cc766295(v=ws.10)) teknolojisini ve Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) [' i kullanarak](./azure-disk-encryption-vms-vmss.md), hem işletim sistemi disklerini hem de tam birim şifrelemesi ile veri disklerini korumak üzere koruyabilirsiniz.
 
 Şifreleme anahtarları ve gizli dizileri [Azure Key Vault aboneliğinizde](../../key-vault/general/overview.md)korunmuş. Azure Backup hizmetini kullanarak, anahtar şifreleme anahtarı (KEK) yapılandırmasını kullanan şifrelenmiş sanal makineleri (VM) yedekleyebilir ve geri yükleyebilirsiniz.
 
@@ -83,13 +83,13 @@ Son olarak, Azure depolama 'ya veri yüklemeden önce, istemci tarafı şifrelem
 
 #### <a name="transparent-data-encryption"></a>Saydam Veri Şifrelemesi
 
-[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) , kurtarma sırasında kullanılabilirlik için veritabanı önyükleme kaydında depolanan bir veritabanı şifreleme anahtarı (dek) kullanarak [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL veritabanı](../../azure-sql/database/sql-database-paas-overview.md)ve [Azure SYNAPSE Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) veri dosyalarını gerçek zamanlı olarak şifrelemek için kullanılır.
+[TDE](/sql/relational-databases/security/encryption/transparent-data-encryption-tde) , kurtarma sırasında kullanılabilirlik için veritabanı önyükleme kaydında depolanan bir veritabanı şifreleme anahtarı (dek) kullanarak [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL veritabanı](../../azure-sql/database/sql-database-paas-overview.md)ve [Azure SYNAPSE Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) veri dosyalarını gerçek zamanlı olarak şifrelemek için kullanılır.
 
 TDE, AES ve üçlü veri şifreleme standardı (3DES) şifreleme algoritmaları kullanarak verileri ve günlük dosyalarını korur. Veritabanı dosyasının şifrelenmesi sayfa düzeyinde gerçekleştirilir. Şifrelenmiş bir veritabanındaki sayfalar diske yazılmadan önce şifrelenir ve belleğe okunduklarında şifresi çözülür. TDE, yeni oluşturulan Azure SQL veritabanlarında varsayılan olarak etkinleştirilmiştir.
 
 #### <a name="always-encrypted-feature"></a>Always Encrypted özelliği
 
-Azure SQL 'de [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) özelliği ile, istemci uygulamalarında VERILERI Azure SQL veritabanı 'nda depolamadan önce şifreleyebilirsiniz. Ayrıca, üçüncü taraflara şirket içi veritabanı yönetiminin temsilciliğini etkinleştirebilir ve verileri ve bunları yöneten ancak erişimi olmayan, bu verilere ait olmayan ayrımı koruyabilirsiniz.
+Azure SQL 'de [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) özelliği ile, istemci uygulamalarında VERILERI Azure SQL veritabanı 'nda depolamadan önce şifreleyebilirsiniz. Ayrıca, üçüncü taraflara şirket içi veritabanı yönetiminin temsilciliğini etkinleştirebilir ve verileri ve bunları yöneten ancak erişimi olmayan, bu verilere ait olmayan ayrımı koruyabilirsiniz.
 
 #### <a name="cell-level-or-column-level-encryption"></a>Hücre düzeyi veya sütun düzeyinde şifreleme
 
@@ -125,9 +125,9 @@ Microsoft, müşterilere bulut hizmetleri ve müşteriler arasında seyahat edil
 
 Azure depolama ile Azure portal aracılığıyla etkileşim kurarken tüm işlemler HTTPS üzerinden gerçekleşir. Azure depolama ile etkileşim kurmak için depolama REST API HTTPS üzerinden de kullanabilirsiniz. Depolama hesabı için gerekli olan güvenli aktarımı etkinleştirerek depolama hesaplarındaki nesnelere erişmek için REST API 'Lerini çağırdığınızda HTTPS kullanımını zorunlu kılabilirsiniz.
 
-Azure depolama nesnelerine erişim yetkisi vermek için kullanılabilen paylaşılan erişim Imzaları ([SAS](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)), paylaşılan erişim imzaları KULLANDıĞıNıZDA yalnızca HTTPS protokolünün kullanılabileceğini belirtme seçeneği de vardır. Bu yaklaşım, SAS belirteçleriyle bağlantı gönderen herhangi bir gövdenin uygun protokolü kullanmasını sağlar.
+Azure depolama nesnelerine erişim yetkisi vermek için kullanılabilen paylaşılan erişim Imzaları ([SAS](../../storage/common/storage-sas-overview.md)), paylaşılan erişim imzaları KULLANDıĞıNıZDA yalnızca HTTPS protokolünün kullanılabileceğini belirtme seçeneği de vardır. Bu yaklaşım, SAS belirteçleriyle bağlantı gönderen herhangi bir gövdenin uygun protokolü kullanmasını sağlar.
 
-Azure dosya paylaşımlarına erişmek için kullanılan [SMB 3,0](https://technet.microsoft.com/library/dn551363(v=ws.11).aspx#BKMK_SMBEncryption), şifrelemeyi destekler ve windows Server 2012 R2, Windows 8, Windows 8.1 ve Windows 10 ' da kullanılabilir. Çapraz bölge erişimine ve hatta masaüstüne erişime izin verir.
+Azure dosya paylaşımlarına erişmek için kullanılan [SMB 3,0](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn551363(v=ws.11)#BKMK_SMBEncryption), şifrelemeyi destekler ve windows Server 2012 R2, Windows 8, Windows 8.1 ve Windows 10 ' da kullanılabilir. Çapraz bölge erişimine ve hatta masaüstüne erişime izin verir.
 
 İstemci tarafı şifreleme, verileri Azure depolama örneğinize gönderilmeden önce şifreler, böylece ağ üzerinde ilerledikçe şifrelenir.
 
@@ -143,7 +143,7 @@ Windows çalıştıran VM 'Ler arasında geçiş yapılan veriler, bağlantını
 
 ### <a name="rdp-sessions"></a>RDP oturumları
 
-Bir Windows istemci bilgisayarından [Uzak Masaüstü Protokolü (RDP)](https://msdn.microsoft.com/library/aa383015(v=vs.85).aspx) kullanarak veya bir RDP istemcisinin yüklü olduğu bir Mac 'TEN bir VM 'ye bağlanabilir ve oturum açabilirsiniz. RDP oturumlarındaki ağ üzerinden aktarım sırasında bulunan veriler TLS ile korunabilir.
+Bir Windows istemci bilgisayarından [Uzak Masaüstü Protokolü (RDP)](/windows/win32/termserv/remote-desktop-protocol) kullanarak veya bir RDP istemcisinin yüklü olduğu bir Mac 'TEN bir VM 'ye bağlanabilir ve oturum açabilirsiniz. RDP oturumlarındaki ağ üzerinden aktarım sırasında bulunan veriler TLS ile korunabilir.
 
 Ayrıca, uzak masaüstü 'Nü kullanarak Azure 'da bir Linux VM 'sine bağlanabilirsiniz.
 
@@ -163,7 +163,7 @@ Siteden siteye VPN 'Ler, aktarım şifrelemesi için [IPSec](https://en.wikipedi
 
 ### <a name="point-to-site-vpns"></a>Noktadan siteye VPN’ler
 
-Noktadan siteye VPN 'Ler, tek tek istemci bilgisayarlarının bir Azure sanal ağına erişmesine izin verir. [Güvenli Yuva Tünel Protokolü (SSTP)](https://technet.microsoft.com/library/2007.06.cableguy.aspx) , VPN tüneli oluşturmak için kullanılır. Güvenlik duvarlarına çapraz geçiş yapabilir (tünel bir HTTPS bağlantısı olarak görünür). Noktadan siteye bağlantı için kendi iç ortak anahtar altyapısı (PKI) kök sertifika yetkilinizi (CA) kullanabilirsiniz.
+Noktadan siteye VPN 'Ler, tek tek istemci bilgisayarlarının bir Azure sanal ağına erişmesine izin verir. [Güvenli Yuva Tünel Protokolü (SSTP)](/previous-versions/technet-magazine/cc162322(v=msdn.10)) , VPN tüneli oluşturmak için kullanılır. Güvenlik duvarlarına çapraz geçiş yapabilir (tünel bir HTTPS bağlantısı olarak görünür). Noktadan siteye bağlantı için kendi iç ortak anahtar altyapısı (PKI) kök sertifika yetkilinizi (CA) kullanabilirsiniz.
 
 Sertifika kimlik doğrulaması veya PowerShell ile Azure portal kullanarak bir sanal ağa yönelik bir noktadan siteye VPN bağlantısı yapılandırabilirsiniz.
 
@@ -201,9 +201,9 @@ Key Vault, kuruluşların donanım güvenlik modülleri (HSM) ve anahtar yöneti
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure güvenliğine genel bakış](get-started-overview.md)
+- [Azure güvenliğine genel bakış](./overview.md)
 - [Azure ağ güvenliğine genel bakış](network-overview.md)
-- [Azure veritabanı güvenliğine genel bakış](database-security-overview.md)
+- [Azure veritabanı güvenliğine genel bakış](../../azure-sql/database/security-overview.md)
 - [Azure sanal makineler güvenliğine genel bakış](virtual-machines-overview.md)
 - [Bekleme sırasında veri şifrelemesi](encryption-atrest.md)
 - [Veri güvenliği ve şifreleme için en iyi uygulamalar](data-encryption-best-practices.md)

@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: f496d0f38452fa7cf64bc9eef370bd0b2116cfa5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe703b9589dcd49298ac45d5a14032ca7e556bfd
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049970"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408422"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift destek ilkesi
 
@@ -30,6 +30,7 @@ Azure Red Hat OpenShift 4 kümelerine yönelik belirli yapılandırmalarda, küm
 * Tüm küme sanal makinelerinin, en azından Azure Resource Manager (ARM) ve hizmet günlüğü (Genfiliz) uç noktalarına doğrudan giden internet erişimi olması gerekir.  HTTPS proxy için hiçbir form desteklenmez.
 * Kümenin sanal ağının DNS yapılandırmasını değiştirmeyin. Varsayılan Azure DNS Çözümleyicisinin kullanılması gerekir.
 * Kümenin MachineConfig nesnelerinden hiçbirini (örneğin, kubelet yapılandırması) herhangi bir şekilde geçersiz kılmayın.
+* Hiçbir Unsupportedconfiggeçersiz kılma seçeneği ayarlama. Bu seçeneklerin ayarlanması, küçük sürüm yükseltmelerini engeller.
 * Azure Red Hat OpenShift hizmeti, kümenize özel bağlantı hizmeti aracılığıyla erişir.  Hizmet erişimini kaldırmayın veya değiştirmeyin.
 * RHCOS olmayan işlem düğümleri desteklenmez. Örneğin, bir RHEL işlem düğümü kullanamazsınız.
 

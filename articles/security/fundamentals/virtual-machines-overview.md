@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: d2862d5ab2c42ebdd1787022dc86119bc4e0f596
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d22ce3941b00903be8532caaa36a9ce55e2f2c6f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86229372"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409799"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure sanal makineler güvenliğine genel bakış
 Bu makale, sanal makinelerle kullanılabilecek çekirdek Azure Güvenlik özelliklerine genel bir bakış sağlar.
@@ -51,11 +51,11 @@ Azure için Microsoft kötü amaçlı yazılımdan koruma, uygulamalar ve kirac�
 Sanal makinelerinizi korumaya yardımcı olmak için kötü amaçlı yazılımdan koruma yazılımları hakkında daha fazla bilgi
 
 * [Azure Sanal Makinelerinde Kötü Amaçlı Yazılıma Karşı Koruma Çözümleri Dağıtma](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
-* [Windows VM 'de bir hizmet olarak Trend mikro derin güvenliği 'ni yüklemek ve yapılandırmak](/azure/virtual-machines/windows/classic/install-trend)
-* [Windows VM 'de Symantec Endpoint Protection 'i yüklemek ve yapılandırmak](/azure/virtual-machines/windows/classic/install-symantec)
+* [Windows VM 'de bir hizmet olarak Trend mikro derin güvenliği 'ni yüklemek ve yapılandırmak](../../virtual-machines/extensions/trend.md)
+* [Windows VM 'de Symantec Endpoint Protection 'i yüklemek ve yapılandırmak](../../virtual-machines/extensions/symantec.md)
 * [Azure Marketi 'nde güvenlik çözümleri](https://azure.microsoft.com/marketplace/?term=security)
 
-Daha da güçlü koruma için, [Windows Defender Gelişmiş tehdit koruması](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection)'nı kullanmayı göz önünde bulundurun. Windows Defender ATP ile şunları alırsınız:
+Daha da güçlü koruma için, [Windows Defender Gelişmiş tehdit koruması](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection)'nı kullanmayı göz önünde bulundurun. Windows Defender ATP ile şunları alırsınız:
 
 * [Saldırı yüzeyini azaltma](/windows/security/threat-protection/windows-defender-atp/overview-attack-surface-reduction)  
 * [Yeni nesil koruma](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)  
@@ -75,22 +75,22 @@ Daha fazla bilgi edinin:
 
 Anahtar güvenliğini iyileştirmek, şifreleme ve kimlik doğrulama korumalarını geliştirebilir. Kritik gizli dizilerlerinizin ve anahtarların yönetim ve güvenliğini Azure Key Vault içinde depolayarak kolaylaştırabilirsiniz.
 
-Key Vault, anahtarlarınızı FIPS 140-2 düzey 2 standartlarına sertifikalı donanım güvenlik modüllerinde (HSM 'ler) depolama seçeneği sunar. Yedekleme veya [Saydam veri şifrelemesi](https://msdn.microsoft.com/library/bb934049.aspx) için SQL Server şifreleme anahtarlarınızın tümü, uygulamalarınızda herhangi bir anahtar veya gizli dizi ile Key Vault depolanabilir. Bu korumalı öğelere izinler ve erişim [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)üzerinden yönetilir.
+Key Vault, anahtarlarınızı FIPS 140-2 düzey 2 standartlarına sertifikalı donanım güvenlik modüllerinde (HSM 'ler) depolama seçeneği sunar. Yedekleme veya [Saydam veri şifrelemesi](/sql/relational-databases/security/encryption/transparent-data-encryption) için SQL Server şifreleme anahtarlarınızın tümü, uygulamalarınızda herhangi bir anahtar veya gizli dizi ile Key Vault depolanabilir. Bu korumalı öğelere izinler ve erişim [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)üzerinden yönetilir.
 
 Daha fazla bilgi edinin:
 
-* [Azure Key Vault nedir?](/azure/key-vault/key-vault-overview)
-* [Azure Key Vault blogu](https://blogs.technet.microsoft.com/kv/)
+* [Azure Key Vault nedir?](../../key-vault/general/overview.md)
+* [Azure Key Vault blogu](/archive/blogs/kv/)
 
 ## <a name="virtual-machine-disk-encryption"></a>Sanal makine disk şifrelemesi
 
-Azure disk şifrelemesi, Windows ve Linux sanal makine disklerinizi şifrelemek için yeni bir özelliktir. Azure disk şifrelemesi, işletim sistemi ve veri diskleri için birim şifrelemesi sağlamak üzere Windows 'un sektör standardı [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) özelliğini ve Linux 'un [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) özelliğini kullanır.
+Azure disk şifrelemesi, Windows ve Linux sanal makine disklerinizi şifrelemek için yeni bir özelliktir. Azure disk şifrelemesi, işletim sistemi ve veri diskleri için birim şifrelemesi sağlamak üzere Windows 'un sektör standardı [BitLocker](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11)) özelliğini ve Linux 'un [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) özelliğini kullanır.
 
 Çözüm, Anahtar Kasası aboneliğinizdeki disk şifreleme anahtarlarını ve gizli dizileri denetlemenize ve yönetmenize yardımcı olmak için Azure Key Vault ile tümleşiktir. Sanal makine disklerindeki tüm verilerin Azure Storage 'da bekleyen olarak şifrelenmesini sağlar.
 
 Daha fazla bilgi edinin:
 
-* [IaaS VM 'Leri için Azure disk şifrelemesi](/azure/security/azure-security-disk-encryption-overview)
+* [IaaS VM 'Leri için Azure disk şifrelemesi](./azure-disk-encryption-vms-vmss.md)
 * [Hızlı Başlangıç: Azure PowerShell ile bir Windows IaaS VM'ini Şifreleme](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
 
 ## <a name="virtual-machine-backup"></a>Sanal makine yedeklemesi
@@ -99,8 +99,8 @@ Azure Backup, uygulama verilerinizi sıfır sermaye yatırımı ve en az işleti
 
 Daha fazla bilgi edinin:
 
-* [Azure Backup nedir?](/azure/backup/backup-introduction-to-azure-backup)
-* [Azure Backup hizmeti SSS](/azure/backup/backup-azure-backup-faq)
+* [Azure Backup nedir?](../../backup/backup-overview.md)
+* [Azure Backup hizmeti SSS](../../backup/backup-azure-backup-faq.md)
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
 
@@ -108,17 +108,17 @@ Kuruluşunuzun BCDR stratejisinin önemli bir kısmı, planlı ve plansız kesin
 
 Site Recovery:
 
-* **BCDR stratejinizi basitleştirir**: Site Recovery, tek bir konumdan birden çok iş iş yükünün ve uygulamanın çoğaltma, yük devretme ve kurtarma işlemlerini kolayca yapmayı kolaylaştırır. Site Recovery, çoğaltma ve yük devretme işlemlerini düzenler, ancak uygulama verilerinizi engellemez veya onunla ilgili herhangi bir bilgi vermez.
-* **Esnek çoğaltma sağlar**: Site Recovery kullanarak Hyper-V sanal makinelerinde, VMware sanal makinelerinde ve Windows/Linux fiziksel sunucularında çalışan iş yüklerini çoğaltabilirsiniz.
-* **Yük devretmeyi ve kurtarmayı destekler**: Site Recovery, üretim ortamlarını etkilemeden olağanüstü durum kurtarma detaylarını desteklemek için test yük devretmesi sağlar. Ayrıca, beklenen kesintilere yönelik olarak sıfır veri kaybı sunan planlanan yük devretmeler veya beklenmeyen olağanüstü durumlar için minimum düzeyde veri kaybıyla sonuçlanan (çoğaltma sıklığına bağlı olarak) planlanmamış yük devretmeler çalıştırabilirsiniz. Yük devretmeden sonra, birincil sitelerinize geri dönebilirsiniz. Yük devretme işlemini özelleştirebilmeniz ve çok katmanlı uygulamaları kurtarabilmeniz için Site Recovery, betikleri ve Azure otomasyonu çalışma kitaplarını içeren kurtarma planları sunar.
-* **İkincil veri merkezlerini ortadan kaldırır**: ikincil bir şirket içi siteye veya Azure 'a çoğaltabilirsiniz. Olağanüstü durum kurtarma için Azure 'un bir hedef olarak kullanılması, ikincil bir sitenin korunmasının maliyetini ve karmaşıklığını ortadan kaldırır. Çoğaltılan veriler Azure depolama 'da depolanır.
-* **Mevcut BCDR teknolojileriyle tümleştirilir**: diğer uygulamaların BCDR özellikleriyle Site Recovery iş ortakları. Örneğin, kurumsal iş yüklerinin SQL Server arka ucunun korunmasına yardımcı olmak için Site Recovery kullanabilirsiniz. Bu, kullanılabilirlik gruplarının yük devretmesini yönetmek için SQL Server her zaman açık için yerel destek içerir.
+* **BCDR stratejinizi basitleştirir** : Site Recovery, tek bir konumdan birden çok iş iş yükünün ve uygulamanın çoğaltma, yük devretme ve kurtarma işlemlerini kolayca yapmayı kolaylaştırır. Site Recovery, çoğaltma ve yük devretme işlemlerini düzenler, ancak uygulama verilerinizi engellemez veya onunla ilgili herhangi bir bilgi vermez.
+* **Esnek çoğaltma sağlar** : Site Recovery kullanarak Hyper-V sanal makinelerinde, VMware sanal makinelerinde ve Windows/Linux fiziksel sunucularında çalışan iş yüklerini çoğaltabilirsiniz.
+* **Yük devretmeyi ve kurtarmayı destekler** : Site Recovery, üretim ortamlarını etkilemeden olağanüstü durum kurtarma detaylarını desteklemek için test yük devretmesi sağlar. Ayrıca, beklenen kesintilere yönelik olarak sıfır veri kaybı sunan planlanan yük devretmeler veya beklenmeyen olağanüstü durumlar için minimum düzeyde veri kaybıyla sonuçlanan (çoğaltma sıklığına bağlı olarak) planlanmamış yük devretmeler çalıştırabilirsiniz. Yük devretmeden sonra, birincil sitelerinize geri dönebilirsiniz. Yük devretme işlemini özelleştirebilmeniz ve çok katmanlı uygulamaları kurtarabilmeniz için Site Recovery, betikleri ve Azure otomasyonu çalışma kitaplarını içeren kurtarma planları sunar.
+* **İkincil veri merkezlerini ortadan kaldırır** : ikincil bir şirket içi siteye veya Azure 'a çoğaltabilirsiniz. Olağanüstü durum kurtarma için Azure 'un bir hedef olarak kullanılması, ikincil bir sitenin korunmasının maliyetini ve karmaşıklığını ortadan kaldırır. Çoğaltılan veriler Azure depolama 'da depolanır.
+* **Mevcut BCDR teknolojileriyle tümleştirilir** : diğer uygulamaların BCDR özellikleriyle Site Recovery iş ortakları. Örneğin, kurumsal iş yüklerinin SQL Server arka ucunun korunmasına yardımcı olmak için Site Recovery kullanabilirsiniz. Bu, kullanılabilirlik gruplarının yük devretmesini yönetmek için SQL Server her zaman açık için yerel destek içerir.
 
 Daha fazla bilgi edinin:
 
-* [Azure Site Recovery nedir?](/azure/site-recovery/site-recovery-overview)
-* [Azure Site Recovery nasıl çalışır?](/azure/site-recovery/site-recovery-components)
-* [Hangi iş yükleri Azure Site Recovery korumalıdır?](/azure/site-recovery/site-recovery-workload)
+* [Azure Site Recovery nedir?](../../site-recovery/site-recovery-overview.md)
+* [Azure Site Recovery nasıl çalışır?](/azure/security/fundamentals/azure-to-azure-architecture)
+* [Hangi iş yükleri Azure Site Recovery korumalıdır?](../../site-recovery/site-recovery-workload.md)
 
 ## <a name="virtual-networking"></a>Sanal ağ
 
@@ -129,7 +129,7 @@ Azure sanal ağı, fiziksel Azure ağ dokusunun üzerine oluşturulan mantıksal
 Daha fazla bilgi edinin:
 
 * [Azure ağ güvenliğine genel bakış](network-overview.md)
-* [Sanal ağa genel bakış](/azure/virtual-network/virtual-networks-overview)
+* [Sanal ağa genel bakış](../../virtual-network/virtual-networks-overview.md)
 * [Kurumsal senaryolar için ağ özellikleri ve ortaklıkları](https://azure.microsoft.com/blog/networking-enterprise/)
 
 ## <a name="security-policy-management-and-reporting"></a>Güvenlik İlkesi Yönetimi ve raporlama
@@ -138,14 +138,14 @@ Azure Güvenlik Merkezi, tehditleri önlemenize, algılamanıza ve yanıtlamanı
 
 Güvenlik Merkezi, sanal makinelerinizin güvenliğini en uygun hale getirmenize ve izlemenize yardımcı olur:
 
-* Sanal makineler için [güvenlik önerileri](/azure/security-center/security-center-recommendations) sağlama. Örnek öneriler şunlardır: sistem güncelleştirmelerini uygulama, ACL uç noktalarını yapılandırma, kötü amaçlı yazılımdan koruma, ağ güvenlik gruplarını etkinleştirme ve disk şifrelemeyi uygulama.
+* Sanal makineler için [güvenlik önerileri](../../security-center/security-center-recommendations.md) sağlama. Örnek öneriler şunlardır: sistem güncelleştirmelerini uygulama, ACL uç noktalarını yapılandırma, kötü amaçlı yazılımdan koruma, ağ güvenlik gruplarını etkinleştirme ve disk şifrelemeyi uygulama.
 * Sanal makinelerinizin durumunu izleme.
 
 Daha fazla bilgi edinin:
 
-* [Azure Güvenlik Merkezi'ne Giriş](/azure/security-center/security-center-intro)
-* [Azure Güvenlik Merkezi hakkında sık sorulan sorular](/azure/security-center/security-center-faq)
-* [Azure Güvenlik Merkezi planlama ve işlemler](/azure/security-center/security-center-planning-and-operations-guide)
+* [Azure Güvenlik Merkezi'ne Giriş](../../security-center/security-center-introduction.md)
+* [Azure Güvenlik Merkezi hakkında sık sorulan sorular](../../security-center/faq-general.md)
+* [Azure Güvenlik Merkezi planlama ve işlemler](../../security-center/security-center-planning-and-operations-guide.md)
 
 ## <a name="compliance"></a>Uyumluluk
 

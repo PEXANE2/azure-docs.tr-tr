@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 1fb30cc0634224213dc9a188a16902e07d379904
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87b9e4a3ca7151b3666928b00add175eddeea050
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82127769"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409391"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Özel Görüntü İşleme projesi için bir etki alanı seçin
 
@@ -42,27 +42,15 @@ ms.locfileid: "82127769"
 
 ## <a name="compact-domains"></a>Compact etki alanları
 
-Compact etki alanları tarafından oluşturulan modeller yerel olarak çalışacak şekilde aktarılabilir. Model performansı seçilen etki alanına göre değişir. Aşağıdaki tabloda, Intel Masaüstü CPU ve NVIDIA GPU 1 ' deki model boyutunu ve çıkarım zamanını raporlarız \[ \] . 
+Compact etki alanları tarafından oluşturulan modeller yerel olarak çalışacak şekilde aktarılabilir. Özel Görüntü İşleme 3,4 genel önizleme API 'sinde, GetDomains API 'sini çağırarak, Compact etki alanları için dışarı aktarılabilir platformların bir listesini alabilirsiniz.
 
-> [!NOTE]
-> Bu numaralar ön işleme ve anında işleme süresini içermez.
+Model performansı seçilen etki alanına göre değişir. Aşağıdaki tabloda, Intel Masaüstü CPU ve NVIDIA GPU 1 ' deki model boyutunu ve çıkarım zamanını raporlarız \[ \] . Bu numaralar ön işleme ve anında işleme süresini içermez.
 
-|Görev|Etki alanı|Model boyutu|CPU çıkarımı süresi|GPU çıkarımı süresi|
+|Görev|Etki alanı|Model Boyutu|CPU çıkarımı süresi|GPU çıkarımı süresi|
 |---|---|---|---|---|
 |Sınıflandırma|General (compact) (Genel (kompakt))|5 MB|13 MS|5 MS|
 |Nesne Algılama|General (compact) (Genel (kompakt))|45 MB|35 MS|5 MS|
 |Nesne Algılama|Genel (Compact) [S1]|14 MB|27 MS|7 MS|
-
-## <a name="vaidk-vision-ai-dev-kit"></a>VAıDK (Vision AI Dev Kit)
-
-Bir Compact etki alanı seçildiğinde, "temel platformlar" ve "Vision AI Dev Kit" arasında ayrım yapılmasına izin veren "dışa aktarma özellikleri" ek seçeneği sağlanır.
-
-_Dışa aktarma özellikleri_ altında iki seçenek vardır:
-
-- Temel platformlar (TensorFlow, CoreML, ONNX, vb.)
-- Vision AI geliştirme seti.
-
-_VISION AI Dev Kit_ 'i seçildiğinde, genel _,_ yer _işaretleri_ve _Perakende_ , _yiyecek_ compact etki alanlarının her Ikisi de nesne algılaması için _Genel (Compact)_ ve _Genel (Compact) [S1]_ kullanılabilir.
 
 >[!NOTE]
 >Nesne algılaması için __Genel (Compact)__ etki alanı özel bir özelleştirmediğiniz mantığı gerektirir. Ayrıntılı bilgi için lütfen bkz. bir örnek komut dosyası. Gönderme işlemi mantığı olmadan bir modele ihtiyacınız varsa __Genel (Compact) [S1]__ kullanın.

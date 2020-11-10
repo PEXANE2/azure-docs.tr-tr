@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 42582c9474647c4c203bd0cafae0be664398ba41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa2025fa31ac960eb6c61d03bafd582de4f0e55c
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533912"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410596"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure genel bulutunda yalıtım
 
@@ -86,11 +86,11 @@ Azure Active Directory için bazı diğer yetenekler şunlardır:
 
 - Azure AD, barındırıldıkları yerden bağımsız olarak SaaS uygulamaları için SSO özelliğini etkinleştirir. Bazı uygulamalar Azure AD federasyonu kullanırken diğerleri parola SSO hizmetinden yararlanır. Federasyon uygulamaları, Kullanıcı hazırlama ve [parola](https://www.techopedia.com/definition/31415/password-vault)oluşturma işlemlerini de destekleyebilir.
 
-- [Azure Storage](https://azure.microsoft.com/services/storage/) verilerine erişim, kimlik doğrulaması ile denetlenir. Her depolama hesabında birincil anahtar ([depolama hesabı anahtarı](../../storage/common/storage-create-storage-account.md)veya sak) ve ikincil gizli anahtar (paylaşılan erişim IMZASı veya SAS) bulunur.
+- [Azure Storage](https://azure.microsoft.com/services/storage/) verilerine erişim, kimlik doğrulaması ile denetlenir. Her depolama hesabında birincil anahtar ([depolama hesabı anahtarı](../../storage/common/storage-account-create.md)veya sak) ve ikincil gizli anahtar (paylaşılan erişim IMZASı veya SAS) bulunur.
 
-- Azure AD, şirket içi dizinlerle [Active Directory Federasyon Hizmetleri (AD FS)](../../active-directory/hybrid/how-to-connect-fed-azure-adfs.md), eşitleme ve çoğaltma kullanarak Federasyon aracılığıyla bir hizmet olarak kimlik sağlar.
+- Azure AD, şirket içi dizinlerle [Active Directory Federasyon Hizmetleri (AD FS)](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs), eşitleme ve çoğaltma kullanarak Federasyon aracılığıyla bir hizmet olarak kimlik sağlar.
 
-- [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) , kullanıcıların oturum açma işlemlerini bir mobil uygulama, telefon araması veya kısa mesaj kullanarak doğrulamasını gerektiren Multi-Factor Authentication hizmetidir. Azure Multi-Factor Authentication sunucusu ile şirket içi kaynakların güvenliğini sağlamaya ve ayrıca SDK kullanan özel uygulamalarla ve dizinlerden yardım almak için Azure AD ile birlikte kullanılabilir.
+- [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) , kullanıcıların oturum açma işlemlerini bir mobil uygulama, telefon araması veya kısa mesaj kullanarak doğrulamasını gerektiren Multi-Factor Authentication hizmetidir. Azure Multi-Factor Authentication sunucusu ile şirket içi kaynakların güvenliğini sağlamaya ve ayrıca SDK kullanan özel uygulamalarla ve dizinlerden yardım almak için Azure AD ile birlikte kullanılabilir.
 
 - [Azure AD Domain Services](https://azure.microsoft.com/services/active-directory-ds/) , Azure sanal makinelerini etki alanı denetleyicilerini dağıtmaya gerek kalmadan bir Active Directory etki alanına aktarmanıza olanak tanır. Şirket Active Directory kimlik bilgilerinizle bu sanal makinelerde oturum açabilir ve tüm Azure sanal makinelerinizde güvenlik temellerini zorlamak için grup ilkesi kullanarak etki alanına katılmış sanal makineleri yönetebilirsiniz.
 
@@ -119,7 +119,7 @@ Microsoft Azure, uygulamanızın veya kuruluşunuzun ihtiyaçlarını karşılay
 
 ### <a name="dedicated-hosts"></a>Ayrılmış konaklar
 
-Önceki bölümde açıklanan yalıtılmış konaklara ek olarak, Azure ayrıca adanmış konaklar da sunar. Azure 'daki adanmış konaklar, bir veya daha fazla sanal makineyi barındırabilen ve tek bir Azure aboneliğine adanmış fiziksel sunucular sağlayan bir hizmettir. Adanmış konaklar, fiziksel sunucu düzeyinde donanım yalıtımı sağlar. Konaklarınıza başka VM 'Ler yerleştirilmeyecektir. Ayrılmış konaklar aynı veri merkezlerinde dağıtılır ve aynı ağı ve temel alınan depolama altyapısını diğer, yalıtılmış olmayan konaklarla paylaşır. Daha fazla bilgi için bkz. [Azure adanmış konaklara](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)yönelik ayrıntılı genel bakış.
+Önceki bölümde açıklanan yalıtılmış konaklara ek olarak, Azure ayrıca adanmış konaklar da sunar. Azure 'daki adanmış konaklar, bir veya daha fazla sanal makineyi barındırabilen ve tek bir Azure aboneliğine adanmış fiziksel sunucular sağlayan bir hizmettir. Adanmış konaklar, fiziksel sunucu düzeyinde donanım yalıtımı sağlar. Konaklarınıza başka VM 'Ler yerleştirilmeyecektir. Ayrılmış konaklar aynı veri merkezlerinde dağıtılır ve aynı ağı ve temel alınan depolama altyapısını diğer, yalıtılmış olmayan konaklarla paylaşır. Daha fazla bilgi için bkz. [Azure adanmış konaklara](../../virtual-machines/dedicated-hosts.md)yönelik ayrıntılı genel bakış.
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Hyper-V & kök VM & Konuk VM 'Ler arasında kök işletim sistemi yalıtımı
 
@@ -194,7 +194,7 @@ Bu nedenle, Azure Storage mantıksal dışında Azure Işlem ile ağ bağlantıs
 
 ![Depolama erişim denetimi kullanarak yalıtım](./media/isolation-choices/azure-isolation-fig9.png)
 
-**Azure depolama verilerine (tablolar dahil) erişim** , kapsamlı erişim veren bir [SAS (paylaşılan erişim imzası)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) belirteci aracılığıyla denetlenebilir. SAS, [sak (depolama hesabı anahtarı)](https://msdn.microsoft.com/library/azure/ee460785.aspx)ile imzalanmış bir sorgu şablonu (URL) ile oluşturulur. Bu [IMZALı URL](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) , başka bir işleme (yani, temsilcili) verilebilir, bu, daha sonra sorgunun ayrıntılarını doldurabilir ve depolama hizmeti isteğini oluşturabilir. SAS, depolama hesabının gizli anahtarını göstermeden istemcilere zaman tabanlı erişim sağlamanıza olanak sağlar.
+**Azure depolama verilerine (tablolar dahil) erişim** , kapsamlı erişim veren bir [SAS (paylaşılan erişim imzası)](../../storage/common/storage-sas-overview.md) belirteci aracılığıyla denetlenebilir. SAS, [sak (depolama hesabı anahtarı)](/previous-versions/azure/reference/ee460785(v=azure.100))ile imzalanmış bir sorgu şablonu (URL) ile oluşturulur. Bu [IMZALı URL](../../storage/common/storage-sas-overview.md) , başka bir işleme (yani, temsilcili) verilebilir, bu, daha sonra sorgunun ayrıntılarını doldurabilir ve depolama hizmeti isteğini oluşturabilir. SAS, depolama hesabının gizli anahtarını göstermeden istemcilere zaman tabanlı erişim sağlamanıza olanak sağlar.
 
 SAS, belirli bir süre boyunca ve belirli bir izin kümesiyle, bir istemci sınırlı izinleri, depolama hesabımızda bulunan nesnelere sağlayabilmemiz anlamına gelir. Hesap erişim anahtarlarınızı paylaşmak zorunda kalmadan bu sınırlı izinleri sağlayabiliriz.
 
@@ -225,13 +225,13 @@ Birçok kuruluş için, [bekleyen veri şifreleme](isolation-choices.md) , veri 
 
 - [Depolama hizmeti şifrelemesi](../../storage/blobs/security-recommendations.md) , depolama hizmetinin verileri Azure depolama 'ya yazarken otomatik olarak şifrelemesine olanak tanır.
 - [İstemci tarafı şifreleme](../../storage/blobs/security-recommendations.md) , bekleyen şifreleme özelliğini de sağlar.
-- [Azure disk şifrelemesi](../azure-security-disk-encryption-overview.md) , bir IaaS sanal makinesi tarafından kullanılan işletim sistemi disklerini ve veri disklerini şifrelemenizi sağlar.
+- [Azure disk şifrelemesi](./azure-disk-encryption-vms-vmss.md) , bir IaaS sanal makinesi tarafından kullanılan işletim sistemi disklerini ve veri disklerini şifrelemenizi sağlar.
 
 #### <a name="azure-disk-encryption"></a>Azure Disk Şifrelemesi
 
-Sanal makineler için [Azure disk şifrelemesi](../azure-security-disk-encryption-overview.md) (VM 'ler), [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)DENETLEDIĞINIZ anahtarlar ve ilkelerle VM disklerini (önyükleme ve veri diskleri dahil) şifreleyerek kurumsal güvenlik ve uyumluluk gereksinimlerini sağlamanıza yardımcı olur.
+Sanal makineler için [Azure disk şifrelemesi](./azure-disk-encryption-vms-vmss.md) (VM 'ler), [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)DENETLEDIĞINIZ anahtarlar ve ilkelerle VM disklerini (önyükleme ve veri diskleri dahil) şifreleyerek kurumsal güvenlik ve uyumluluk gereksinimlerini sağlamanıza yardımcı olur.
 
-Windows için disk şifreleme çözümü, [Microsoft BitLocker Sürücü Şifrelemesi](https://technet.microsoft.com/library/cc732774.aspx)tabanlıdır ve Linux çözümü [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)' i temel alır.
+Windows için disk şifreleme çözümü, [Microsoft BitLocker Sürücü Şifrelemesi](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11))tabanlıdır ve Linux çözümü [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)' i temel alır.
 
 Çözüm, Microsoft Azure ' de etkinleştirildiklerinde IaaS VM 'Leri için aşağıdaki senaryoları destekler:
 
@@ -243,7 +243,7 @@ Windows için disk şifreleme çözümü, [Microsoft BitLocker Sürücü Şifrel
 - Windows istemci işletim sistemi çalıştıran IaaS sanal makinelerinde şifrelemeyi etkinleştirme
 - Bağlama yollarındaki birimlerde şifrelemeyi etkinleştirme
 - [Mdaddm](https://en.wikipedia.org/wiki/Mdadm) kullanılarak disk ŞERIDI (RAID) Ile yapılandırılmış Linux VM 'lerinde şifrelemeyi etkinleştirme
-- Veri diskleri için [LVM (mantıksal birim Yöneticisi)](https://msdn.microsoft.com/library/windows/desktop/bb540532) kullanarak Linux VM 'lerde şifrelemeyi etkinleştirme
+- Veri diskleri için [LVM (mantıksal birim Yöneticisi)](/windows/win32/fileio/about-volume-management) kullanarak Linux VM 'lerde şifrelemeyi etkinleştirme
 - Depolama alanları kullanılarak yapılandırılan Windows VM 'lerinde şifrelemeyi etkinleştirme
 - Tüm Azure ortak bölgeleri desteklenir
 

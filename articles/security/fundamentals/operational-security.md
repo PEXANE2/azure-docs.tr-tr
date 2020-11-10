@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a5decd3e222af11c402cbff4585532a0cf22282e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: f968267d4233c765bfd107d81957cf04edace923
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168061"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408524"
 ---
 # <a name="azure-operational-security"></a>Azure operasyonel güvenlik
 ## <a name="introduction"></a>Giriş
@@ -43,13 +43,13 @@ Azure operasyonel güvenlik, kullanıcıların verilerini, uygulamalarını ve d
 Bu Teknik İnceleme, Microsoft 'un Microsoft Azure bulut platformunda Azure operasyonel güvenlik yaklaşımını ve aşağıdaki hizmetleri kapsamakta olduğunu özetler:
 1.  [Azure İzleyici](../../azure-monitor/index.yml)
 
-2.  [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md)
+2.  [Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md)
 
 3.  [Azure İzleyici](../../azure-monitor/overview.md)
 
 4.  [Azure Ağ İzleyicisi](../../network-watcher/network-watcher-monitoring-overview.md)
 
-5.  [Azure depolama Analizi](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)
+5.  [Azure depolama Analizi](/rest/api/storageservices/fileservices/storage-analytics)
 
 6.  [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)
 
@@ -100,15 +100,15 @@ Uygulama verilerinizi korur ve herhangi bir sermaye yatırımı olmadan en düş
 Azure Backup'ta korunan veriler belirli bir coğrafi bölgede yer alan bir yedekleme kasasında depolanır. Veriler aynı bölge içinde çoğaltılır ve kasa türüne bağlı olarak, daha fazla esneklik için başka bir bölgeye de çoğaltılabilir.
 
 ### <a name="management-solutions"></a>Yönetim Çözümleri
-[Azure izleyici](../../security-center/security-center-intro.md) , Microsoft 'un Şirket içi ve bulut altyapınızı yönetmenize ve korumanıza yardımcı olan bulut tabanlı BT yönetimi çözümüdür.
+[Azure izleyici](../../security-center/security-center-introduction.md) , Microsoft 'un Şirket içi ve bulut altyapınızı yönetmenize ve korumanıza yardımcı olan bulut tabanlı BT yönetimi çözümüdür.
 
 
-[Yönetim çözümleri](../../monitoring/monitoring-solutions.md) , bir veya daha fazla Azure izleyici hizmetini kullanarak belirli bir yönetim senaryosunu uygulayan, önceden paketlenmiş, günlüğe kaydetme kümeleridir. Azure Izleyici 'de yatırımınızın değerini artırmak için Microsoft ve Azure aboneliğinize kolayca ekleyebileceğiniz iş ortakları tarafından sunulan farklı çözümler vardır. İş ortağı olarak, uygulamalarınızı ve hizmetlerinizi desteklemek ve bunları Azure Marketi veya hızlı başlangıç şablonları aracılığıyla kullanıcılara sağlamak için kendi çözümlerinizi oluşturabilirsiniz.
+[Yönetim çözümleri](../../azure-monitor/insights/solutions.md) , bir veya daha fazla Azure izleyici hizmetini kullanarak belirli bir yönetim senaryosunu uygulayan, önceden paketlenmiş, günlüğe kaydetme kümeleridir. Azure Izleyici 'de yatırımınızın değerini artırmak için Microsoft ve Azure aboneliğinize kolayca ekleyebileceğiniz iş ortakları tarafından sunulan farklı çözümler vardır. İş ortağı olarak, uygulamalarınızı ve hizmetlerinizi desteklemek ve bunları Azure Marketi veya hızlı başlangıç şablonları aracılığıyla kullanıcılara sağlamak için kendi çözümlerinizi oluşturabilirsiniz.
 
 
 ![Yönetim Çözümleri](./media/operational-security/azure-operational-security-fig4.png)
 
-Ek işlevsellik sağlamak için birden çok hizmet kullanan çözüme iyi bir örnek [güncelleştirme yönetimi çözümüdür](../../automation/update-management/update-mgmt-overview.md). Bu çözüm, her aracıdaki gerekli güncelleştirmeler hakkında bilgi toplamak için Windows ve Linux için [Azure izleyici günlükleri](../../log-analytics/log-analytics-queries.md) Aracısı 'nı kullanır. Bu verileri, eklenen bir panoyla çözümleyebileceğiniz Azure Izleyici günlükleri deposuna yazar.
+Ek işlevsellik sağlamak için birden çok hizmet kullanan çözüme iyi bir örnek [güncelleştirme yönetimi çözümüdür](../../automation/update-management/overview.md). Bu çözüm, her aracıdaki gerekli güncelleştirmeler hakkında bilgi toplamak için Windows ve Linux için [Azure izleyici günlükleri](../../azure-monitor/log-query/log-query-overview.md) Aracısı 'nı kullanır. Bu verileri, eklenen bir panoyla çözümleyebileceğiniz Azure Izleyici günlükleri deposuna yazar.
 
 Bir dağıtım oluşturduğunuzda, gerekli güncelleştirmeleri yüklemek için [Azure Otomasyonu](../../automation/automation-intro.md) 'nda runbook 'lar kullanılır. Bu işlemi baştan sona portalda yönetirsiniz ve altyapısal ayrıntılar konusunda endişelenmeniz gerekmez.
 
@@ -148,19 +148,19 @@ Güvenlik Merkezi, verilerinizin güvenlik durumunu değerlendirmek, güvenlik �
 
 Müşterilerin tehditleri önlemesine, algılamasına ve yanıt vermesine yardımcı olmak amacıyla Azure Güvenlik Merkezi, güvenlikle ilgili veriler, meta veriler, olay günlükleri, kilitlenme dökümü dosyaları ve diğer verileri toplar ve işler. Microsoft kodlamadan hizmet çalıştırma konularına kadar her alanda uyumluluk ve güvenlik yönergelerine kesin olarak bağlı kalmaktadır.
 
--   **Veri ayırma**: Veriler hizmet boyunca her bir bileşende mantıksal olarak ayrı tutulur. Tüm veriler kuruluşa göre etiketlenir. Bu etiketleme, veri yaşam döngüsü boyunca devam eder ve her bir hizmet katmanında uygulanır.
+-   **Veri ayırma** : Veriler hizmet boyunca her bir bileşende mantıksal olarak ayrı tutulur. Tüm veriler kuruluşa göre etiketlenir. Bu etiketleme, veri yaşam döngüsü boyunca devam eder ve her bir hizmet katmanında uygulanır.
 
--   **Veri erişimi**: güvenlik önerileri sağlamak ve olası güvenlik tehditlerini araştırmak için Microsoft personeli, kilitlenme döküm dosyaları, işlem oluşturma OLAYLARı, VM diski anlık görüntüleri ve yapıtlar dahil olmak üzere Azure hizmetleri tarafından toplanan veya çözümlenen bilgilere erişebilir. bu durum, Istemeden müşteri verilerini veya kişisel verileri sanal makinelerinizden alabilir. Microsoft [çevrimiçi hizmet koşulları ve gizlilik bildirimi](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)'ne uyduk, bu durum Microsoft 'un müşteri verilerini kullanmamasından veya herhangi bir reklam veya benzer ticari amaçlar için bilgileri türettiğiniz durumdur.
+-   **Veri erişimi** : güvenlik önerileri sağlamak ve olası güvenlik tehditlerini araştırmak için Microsoft personeli, kilitlenme döküm dosyaları, işlem oluşturma OLAYLARı, VM diski anlık görüntüleri ve yapıtlar dahil olmak üzere Azure hizmetleri tarafından toplanan veya çözümlenen bilgilere erişebilir. bu durum, Istemeden müşteri verilerini veya kişisel verileri sanal makinelerinizden alabilir. Microsoft [çevrimiçi hizmet koşulları ve gizlilik bildirimi](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)'ne uyduk, bu durum Microsoft 'un müşteri verilerini kullanmamasından veya herhangi bir reklam veya benzer ticari amaçlar için bilgileri türettiğiniz durumdur.
 
--   **Veri kullanımı**: Microsoft önleme ve algılama özelliklerimizi geliştirmek amacıyla birden fazla kiracıda görülen modelleri ve tehdit bilgilerini kullanır; bunu [Gizlilik Bildirimi](https://www.microsoft.com/en-us/privacystatement/OnlineServices/) belgemizde açıklanan gizlilik taahhütlerine uygun şekilde yaparız.
+-   **Veri kullanımı** : Microsoft önleme ve algılama özelliklerimizi geliştirmek amacıyla birden fazla kiracıda görülen modelleri ve tehdit bilgilerini kullanır; bunu [Gizlilik Bildirimi](https://www.microsoft.com/en-us/privacystatement/OnlineServices/) belgemizde açıklanan gizlilik taahhütlerine uygun şekilde yaparız.
 
 ### <a name="data-location"></a>Veri konumu
 
 Azure Güvenlik Merkezi, kilitlenme döküm dosyalarının kısa ömürlü kopyalarını toplar ve açıktan yararlanma girişimlerinin ve başarılı uzlaşmaların kanıtı olarak analiz eder. Azure Güvenlik Merkezi bu analizi çalışma alanıyla aynı coğrafi bölgede gerçekleştirir ve analiz tamamlandığında kısa ömürlü kopyaları siler. Makine yapıları VM ile aynı bölgede merkezi olarak depolanır.
 
--   **Depolama hesaplarınız**: sanal makinelerin çalıştığı her bölge için bir depolama hesabı belirtilir. Bunun yapılması verileri, verilerin toplandığı sanal makine ile aynı bölgede depolamanızı sağlar.
+-   **Depolama hesaplarınız** : sanal makinelerin çalıştığı her bölge için bir depolama hesabı belirtilir. Bunun yapılması verileri, verilerin toplandığı sanal makine ile aynı bölgede depolamanızı sağlar.
 
--   **Azure Güvenlik Merkezi Depolama**: İş ortağı uyarıları, öneriler ve güvenlik durumu gibi güvenlik uyarıları hakkında bilgiler, şu anda Birleşik Devletler’de bulunan merkezde depolanmaktadır. Bu bilgiler size güvenlik uyarısı, öneri veya sistem durumu sağlamak üzere gerektiğinde sanal makinelerinizden toplanan ilgili yapılandırma bilgilerini ve güvenlik olaylarını içerebilir.
+-   **Azure Güvenlik Merkezi Depolama** : İş ortağı uyarıları, öneriler ve güvenlik durumu gibi güvenlik uyarıları hakkında bilgiler, şu anda Birleşik Devletler’de bulunan merkezde depolanmaktadır. Bu bilgiler size güvenlik uyarısı, öneri veya sistem durumu sağlamak üzere gerektiğinde sanal makinelerinizden toplanan ilgili yapılandırma bilgilerini ve güvenlik olaylarını içerebilir.
 
 
 ## <a name="azure-monitor"></a>Azure İzleyici
@@ -199,7 +199,7 @@ Tanılama günlükleri, [etkinlik günlüğünden (eski adıyla denetim günlü�
 
 ### <a name="metrics"></a>Ölçümler
 
-Azure Izleyici, Azure 'da iş yüklerinizin performans ve sistem durumu hakkında görünürlük elde etmek için telemetri kullanmanıza olanak sağlar. Azure Telemetri verilerinin en önemli türü, çoğu Azure kaynağı tarafından yayınlanan ölçümleridir (performans sayaçları da denir). Azure Izleyici, izleme ve sorun giderme amacıyla bu [ölçümleri](../../monitoring/monitoring-data-collection.md) yapılandırmak ve kullanmak için çeşitli yollar sağlar. Ölçümler, önemli bir telemetri kaynağıdır ve aşağıdaki görevleri yerine etkinleştirecektir:
+Azure Izleyici, Azure 'da iş yüklerinizin performans ve sistem durumu hakkında görünürlük elde etmek için telemetri kullanmanıza olanak sağlar. Azure Telemetri verilerinin en önemli türü, çoğu Azure kaynağı tarafından yayınlanan ölçümleridir (performans sayaçları da denir). Azure Izleyici, izleme ve sorun giderme amacıyla bu [ölçümleri](../../azure-monitor/platform/data-platform.md) yapılandırmak ve kullanmak için çeşitli yollar sağlar. Ölçümler, önemli bir telemetri kaynağıdır ve aşağıdaki görevleri yerine etkinleştirecektir:
 
 -   Bir portal grafiğinde ölçümlerini ayırarak ve bu grafiği bir panoya sabitleyerek kaynağınızın (VM, Web sitesi veya mantıksal uygulama gibi) **performansını izleyin** .
 
@@ -225,22 +225,22 @@ Ağ güvenliğinizi denetlemek, ağ güvenlik açıklarını saptamak ve BT güv
 
 Ağ Izleyicisi Şu anda aşağıdaki yeteneklere sahiptir:
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview">Denetim günlükleri</a>**-ağ yapılandırmasının bir parçası olarak gerçekleştirilen işlemler günlüğe kaydedilir. Bu Günlükler Azure portal görüntülenebilir veya Power BI ya da üçüncü taraf araçları gibi Microsoft araçları kullanılarak alınabilir. Denetim günlükleri Portal, PowerShell, CLı ve REST API aracılığıyla kullanılabilir. Denetim günlükleri hakkında daha fazla bilgi için bkz. Kaynak Yöneticisi ile denetim işlemleri. Denetim günlükleri tüm ağ kaynaklarında yapılan işlemler için kullanılabilir.
+-   **<a href="/azure/network-watcher/network-watcher-monitoring-overview">Denetim günlükleri</a>** -ağ yapılandırmasının bir parçası olarak gerçekleştirilen işlemler günlüğe kaydedilir. Bu Günlükler Azure portal görüntülenebilir veya Power BI ya da üçüncü taraf araçları gibi Microsoft araçları kullanılarak alınabilir. Denetim günlükleri Portal, PowerShell, CLı ve REST API aracılığıyla kullanılabilir. Denetim günlükleri hakkında daha fazla bilgi için bkz. Kaynak Yöneticisi ile denetim işlemleri. Denetim günlükleri tüm ağ kaynaklarında yapılan işlemler için kullanılabilir.
 
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview">IP akışı doğrulama </a>** -akış bilgileri 5 demet paket parametrelerine (hedef IP, kaynak IP, hedef bağlantı noktası, kaynak bağlantı noktası ve protokol) bağlı olarak bir pakete izin verilip verilmediğini denetler. Paket bir ağ güvenlik grubu tarafından reddedilirse, paketi reddeden kural ve ağ güvenlik grubu döndürülür.
+-   **<a href="/azure/network-watcher/network-watcher-ip-flow-verify-overview">IP akışı doğrulama</a>** -akış bilgileri 5 demet paket parametrelerine (hedef IP, kaynak IP, hedef bağlantı noktası, kaynak bağlantı noktası ve protokol) bağlı olarak bir pakete izin verilip verilmediğini denetler. Paket bir ağ güvenlik grubu tarafından reddedilirse, paketi reddeden kural ve ağ güvenlik grubu döndürülür.
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview">Sonraki atlama</a>** -Azure ağ dokusunda yönlendirilmekte olan paketlerin bir sonraki atlamasını belirler ve bu, Kullanıcı tanımlı hatalı yapılandırılmış yolların tanılanmasına olanak tanır.
+-   **<a href="/azure/network-watcher/network-watcher-next-hop-overview">Sonraki atlama</a>** -Azure ağ dokusunda yönlendirilmekte olan paketlerin bir sonraki atlamasını belirler ve bu, Kullanıcı tanımlı hatalı yapılandırılmış yolların tanılanmasına olanak tanır.
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview">Güvenlik grubu görünümü</a>** -bir VM 'ye uygulanan geçerli ve uygulanan güvenlik kurallarını alır.
+-   **<a href="/azure/network-watcher/network-watcher-security-group-view-overview">Güvenlik grubu görünümü</a>** -bir VM 'ye uygulanan geçerli ve uygulanan güvenlik kurallarını alır.
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview">NSG akış günlüğü</a>** -ağ güvenlik grupları için akış günlükleri, gruptaki güvenlik kuralları tarafından izin verilen veya reddedilen trafikle ilgili günlükleri yakalamanızı sağlar. Akış, 5 demet bilgi ile tanımlanır: kaynak IP, hedef IP, kaynak bağlantı noktası, hedef bağlantı noktası ve protokol.
+-   **<a href="/azure/network-watcher/network-watcher-nsg-flow-logging-overview">NSG akış günlüğü</a>** -ağ güvenlik grupları için akış günlükleri, gruptaki güvenlik kuralları tarafından izin verilen veya reddedilen trafikle ilgili günlükleri yakalamanızı sağlar. Akış, 5 demet bilgi ile tanımlanır: kaynak IP, hedef IP, kaynak bağlantı noktası, hedef bağlantı noktası ve protokol.
 
 ## <a name="azure-storage-analytics"></a>Azure Depolama Analizi
 
-[Depolama Analizi](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) , toplanan işlem istatistiklerini ve bir depolama hizmetine yapılan isteklere ilişkin kapasite verilerini içeren ölçümleri saklayabilir. İşlemler hem API işlem düzeyinde hem de depolama hizmeti düzeyinde raporlanır ve depolama hizmeti düzeyinde kapasite raporlanır. Ölçüm verileri, depolama hizmeti kullanımını analiz etmek, depolama hizmetinde yapılan isteklerle ilgili sorunları tanılamak ve bir hizmeti kullanan uygulamaların performansını geliştirmek için kullanılabilir.
+[Depolama Analizi](/rest/api/storageservices/fileservices/storage-analytics) , toplanan işlem istatistiklerini ve bir depolama hizmetine yapılan isteklere ilişkin kapasite verilerini içeren ölçümleri saklayabilir. İşlemler hem API işlem düzeyinde hem de depolama hizmeti düzeyinde raporlanır ve depolama hizmeti düzeyinde kapasite raporlanır. Ölçüm verileri, depolama hizmeti kullanımını analiz etmek, depolama hizmetinde yapılan isteklerle ilgili sorunları tanılamak ve bir hizmeti kullanan uygulamaların performansını geliştirmek için kullanılabilir.
 
-[Azure depolama Analizi](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) günlüğe kaydetme gerçekleştirir ve depolama hesabı için ölçüm verileri sağlar. Bu verileri kullanarak istekleri izleyebilir, kullanım eğilimlerini çözümleyebilir ve depolama hesabınızla ilgili sorunları tanılayabilirsiniz. [BLOB, kuyruk ve tablo Hizmetleri](../../storage/common/storage-introduction.md)için depolama Analizi günlüğe kaydetme kullanılabilir. Depolama Analizi, bir depolama cihazına gönderilen başarılı ve başarısız isteklerle ilgili ayrıntılı bilgileri günlüğe kaydeder.
+[Azure depolama Analizi](/rest/api/storageservices/fileservices/storage-analytics) günlüğe kaydetme gerçekleştirir ve depolama hesabı için ölçüm verileri sağlar. Bu verileri kullanarak istekleri izleyebilir, kullanım eğilimlerini çözümleyebilir ve depolama hesabınızla ilgili sorunları tanılayabilirsiniz. [BLOB, kuyruk ve tablo Hizmetleri](../../storage/common/storage-introduction.md)için depolama Analizi günlüğe kaydetme kullanılabilir. Depolama Analizi, bir depolama cihazına gönderilen başarılı ve başarısız isteklerle ilgili ayrıntılı bilgileri günlüğe kaydeder.
 
 Bu bilgileri kullanarak istekleri ayrı ayrı izleyebilir ve depolama hizmetiyle ilgili sorunları tanılayabilirsiniz. İstekler en iyi çaba temelinde günlüğe kaydedilir. Günlük girişleri yalnızca hizmet uç noktasında yapılan istekler varsa oluşturulur. Örneğin, bir depolama hesabının kendi BLOB uç noktasında etkinliği varsa ancak tablo veya sıra uç noktalarında etkinlik varsa, yalnızca blob hizmeti ile ilgili günlükler oluşturulur.
 
@@ -256,7 +256,7 @@ Depolama Analizi tarafından gerçekleştirilen aşağıdaki eylemler faturaland
 -   Ölçümler için tablo varlıkları oluşturma istekleri.
 
 > [!Note]
-> Faturalandırma ve veri saklama ilkeleri hakkında daha fazla bilgi için bkz. [depolama Analizi ve faturalandırma](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-and-billing).
+> Faturalandırma ve veri saklama ilkeleri hakkında daha fazla bilgi için bkz. [depolama Analizi ve faturalandırma](/rest/api/storageservices/fileservices/storage-analytics-and-billing).
 > En iyi performans için, olası azaltmayı önlemek üzere sanal makineye bağlı yüksek oranda kullanılan disklerin sayısını sınırlandırmak istersiniz. Tüm diskler aynı anda yüksek oranda kullanılıyorsa, depolama hesabı daha büyük bir sayı diski destekleyebilir.
 
 > [!Note]
@@ -271,7 +271,7 @@ Aşağıdaki kimlik doğrulamalı ve anonim istek türleri günlüğe kaydedilir
 |Zaman aşımı, azaltma, ağ, yetkilendirme hatalarını ve diğer hataları içeren başarısız istekler | Başarısız ve başarılı istekler dahil, paylaşılan erişim Imzası (SAS) kullanan istekler |
 | Başarısız ve başarılı istekler dahil, paylaşılan erişim Imzası (SAS) kullanan istekler |Hem istemci hem de sunucuya yönelik zaman aşımı hataları |
 |   Analiz verisi istekleri |    304 hata koduna sahip başarısız GET istekleri (Değiştirilmemiş) |
-| Günlük oluşturma veya silme gibi Depolama Analizi kendisi tarafından yapılan istekler günlüğe kaydedilmez. Günlüğe kaydedilen verilerin tam listesi, [depolama Analizi günlüğe kaydedilmiş işlemler ve durum iletileri](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages) ve [depolama Analizi günlük biçimi](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format) konularında belgelenmiştir. | Diğer tüm başarısız anonim istekler günlüğe kaydedilmez. Günlüğe kaydedilen verilerin tam listesi, [depolama Analizi günlüğe kaydedilmiş işlemler ve durum iletileri](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages) ve [depolama Analizi günlük biçiminde](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format)belgelenmiştir. |
+| Günlük oluşturma veya silme gibi Depolama Analizi kendisi tarafından yapılan istekler günlüğe kaydedilmez. Günlüğe kaydedilen verilerin tam listesi, [depolama Analizi günlüğe kaydedilmiş işlemler ve durum iletileri](/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages) ve [depolama Analizi günlük biçimi](/rest/api/storageservices/fileservices/storage-analytics-log-format) konularında belgelenmiştir. | Diğer tüm başarısız anonim istekler günlüğe kaydedilmez. Günlüğe kaydedilen verilerin tam listesi, [depolama Analizi günlüğe kaydedilmiş işlemler ve durum iletileri](/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages) ve [depolama Analizi günlük biçiminde](/rest/api/storageservices/fileservices/storage-analytics-log-format)belgelenmiştir. |
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
@@ -281,7 +281,7 @@ Azure AD, çok faktörlü kimlik doğrulaması, cihaz kaydı, self servis parola
 
 -   Güvenlik raporlama ve izleme ile uygulama kullanımını izleyin ve işinizi gelişmiş tehditlere karşı koruyun.
 
-Azure Active Directory (Azure AD), dizininize yönelik güvenlik, etkinlik ve denetim raporlarını içerir. [Azure Active Directory Denetim raporu,](../../active-directory/active-directory-reporting-azure-portal.md) müşterilerin Azure Active Directory oluşan ayrıcalıklı eylemleri belirlemesine yardımcı olur. Ayrıcalıklı eylemler, yükseltme değişiklikleri (örneğin, rol oluşturma veya parola sıfırlama), ilke yapılandırmalarını değiştirme (örneğin parola ilkeleri) veya dizin yapılandırmasındaki değişiklikler (örneğin, etki alanı Federasyon ayarlarındaki değişiklikler) içerir.
+Azure Active Directory (Azure AD), dizininize yönelik güvenlik, etkinlik ve denetim raporlarını içerir. [Azure Active Directory Denetim raporu,](../../active-directory/reports-monitoring/overview-reports.md) müşterilerin Azure Active Directory oluşan ayrıcalıklı eylemleri belirlemesine yardımcı olur. Ayrıcalıklı eylemler, yükseltme değişiklikleri (örneğin, rol oluşturma veya parola sıfırlama), ilke yapılandırmalarını değiştirme (örneğin parola ilkeleri) veya dizin yapılandırmasındaki değişiklikler (örneğin, etki alanı Federasyon ayarlarındaki değişiklikler) içerir.
 
 Raporlar, olay adı, eylemi gerçekleştiren aktör, değişiklikten etkilenen hedef kaynak ve Tarih ve saat (UTC) için denetim kaydı sağlar. Müşteriler, [Denetim günlüklerinizi görüntüleme](../../active-directory/reports-monitoring/overview-reports.md)başlığı altında açıklandığı gibi, Azure Active Directory [Azure Portal](https://portal.azure.com/)aracılığıyla denetim olaylarının listesini alabilir. Kapsama dahil olan raporların listesi şu şekildedir:
 
@@ -299,14 +299,14 @@ Raporlar, olay adı, eylemi gerçekleştiren aktör, değişiklikten etkilenen h
 
 
 
-Bu raporların verileri, uygulamanızın SıEM sistemleri, denetim ve iş zekası araçları gibi yararlı olabilir. Azure AD raporlama [API 'leri](../../active-directory/active-directory-reporting-api-getting-started-azure-portal.md) , BIR dizi REST tabanlı API aracılığıyla verilere programlı erişim sağlar. Çeşitli programlama dilleri ve araçlarından bu API 'Leri çağırabilirsiniz.
+Bu raporların verileri, uygulamanızın SıEM sistemleri, denetim ve iş zekası araçları gibi yararlı olabilir. Azure AD raporlama [API 'leri](../../active-directory/reports-monitoring/concept-reporting-api.md) , BIR dizi REST tabanlı API aracılığıyla verilere programlı erişim sağlar. Çeşitli programlama dilleri ve araçlarından bu API 'Leri çağırabilirsiniz.
 
 Azure AD denetim raporundaki olaylar 180 gün boyunca tutulur.
 
 > [!Note]
 > Raporlarda bekletme hakkında daha fazla bilgi için bkz. [Azure Active Directory rapor bekletme ilkeleri](../../active-directory/reports-monitoring/reference-reports-data-retention.md).
 
-[Denetim olaylarını](../../active-directory/active-directory-reporting-activity-audit-logs.md) daha uzun bekletme dönemlerinde depolamayla ilgilenen müşteriler Için, Raporlama API 'si düzenli olarak denetim olaylarını ayrı bir veri deposuna çekmek üzere kullanılabilir.
+[Denetim olaylarını](../../active-directory/reports-monitoring/concept-audit-logs.md) daha uzun bekletme dönemlerinde depolamayla ilgilenen müşteriler Için, Raporlama API 'si düzenli olarak denetim olaylarını ayrı bir veri deposuna çekmek üzere kullanılabilir.
 
 ## <a name="summary"></a>Özet
 
@@ -342,4 +342,3 @@ Microsoft, kendi hizmet ve yazılımlarını, bulut altyapısının dayanıklı 
 Daha akıllı ve etkili tehdit algılama işlemleri gerçekleştirmek için Microsoft güvenlik verilerini ve analizini kullanın.
 
 - [Azure Güvenlik Merkezi planlama ve işlemler](../../security-center/security-center-planning-and-operations-guide.md) Kuruluşunuzun güvenlik gereksinimlerine ve bulut yönetimi modeline göre güvenlik merkezi kullanımını iyileştirmek için izleyebileceğiniz bir dizi adım ve görev.
-

@@ -15,12 +15,12 @@ ms.date: 06/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 875c503a9959565d76d46902b5ecb386995ef1e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8dddfb8426b769c06cb5b7494431b7eee34dbf9e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86144723"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410904"
 ---
 # <a name="adsync-service-account"></a>AD Eşitleme hizmeti hesabı
 Azure AD Connect, Active Directory ve Azure Active Directory arasındaki eşitlemeyi düzenleyen bir şirket içi hizmeti yüklüyor.  Microsoft Azure AD eşitleme eşitleme hizmeti (ADSync), şirket içi ortamınızdaki bir sunucuda çalışır.  Hizmetin kimlik bilgileri hızlı yüklemelerde varsayılan olarak ayarlanır ancak kuruluş güvenlik gereksinimlerinizi karşılayacak şekilde özelleştirilebilir.  Bu kimlik bilgileri, şirket içi ormanlarınız veya Azure Active Directory bağlanmak için kullanılmaz.
@@ -61,7 +61,7 @@ AdSync hizmeti şifreleme anahtarları bulunamadı ve yeniden oluşturuldu.  Bu 
 
 Bu sorun giderilir Microsoft Azure AD Eşitleme şifreleme anahtarları, AdSync hizmeti oturum açma kimlik bilgileri değiştirilirse erişilemez duruma gelir.  Kimlik bilgileri değiştirilmişse, oturum açma hesabını ilk yapılandırılmış değerine (örn.) yeniden değiştirmek için hizmetler uygulamasını kullanın. NT SERVICE\AdSync) ve hizmeti yeniden başlatın.  Bu, AdSync hizmetinin doğru işlemini hemen geri yükler.
 
-Daha fazla bilgi için lütfen aşağıdaki [makaleye](https://go.microsoft.com/fwlink/?linkid=2086764) bakın.
+Daha fazla bilgi için lütfen aşağıdaki [makaleye](./whatis-hybrid-identity.md) bakın.
 
 ### <a name="example-2"></a>Örnek 2
 
@@ -69,7 +69,7 @@ Yerel veritabanı (LocalDB) bağlantısı kurulamadığından hizmet başlatıla
 
 Bu sorun giderilir Microsoft Azure AD eşitleme hizmeti, AdSync hizmeti oturum açma kimlik bilgileri değiştirilirse yerel veritabanı sağlayıcısına erişim iznini kaybedecektir.  Kimlik bilgileri değiştirilmişse, oturum açma hesabını ilk yapılandırılmış değerine (örn.) yeniden değiştirmek için hizmetler uygulamasını kullanın. NT SERVICE\AdSync) ve hizmeti yeniden başlatın.  Bu, AdSync hizmetinin doğru işlemini hemen geri yükler.
 
-Daha fazla bilgi için lütfen aşağıdaki [makaleye](https://go.microsoft.com/fwlink/?linkid=2086764) bakın.
+Daha fazla bilgi için lütfen aşağıdaki [makaleye](./whatis-hybrid-identity.md) bakın.
 
 Ek ayrıntılar sağlayıcı tarafından aşağıdaki hata bilgileri döndürüldü:
  

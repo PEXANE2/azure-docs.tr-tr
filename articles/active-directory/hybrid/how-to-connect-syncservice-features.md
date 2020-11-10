@@ -16,23 +16,23 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db5dbef2b57fb89b33ea116d0373184cdade0ac5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 261ab5d0f039705a2566b7c28ff4c06778bb661a
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85356772"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410547"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect eşitleme hizmeti özellikleri
 
 Azure AD Connect eşitleme özelliğinin iki bileşeni vardır:
 
-* **Eşitleme altyapısı**olarak da adlandırılan **Azure AD Connect Sync**adlı şirket içi bileşen.
+* **Eşitleme altyapısı** olarak da adlandırılan **Azure AD Connect Sync** adlı şirket içi bileşen.
 * Azure AD 'de bulunan hizmet **Azure AD Connect eşitleme hizmeti** olarak da bilinir
 
 Bu konu, **Azure AD Connect eşitleme hizmetinin** aşağıdaki özelliklerinin nasıl çalıştığını ve Windows PowerShell kullanarak bunları nasıl yapılandırabileceğinizi açıklamaktadır.
 
-Bu ayarlar, [Windows PowerShell için Azure Active Directory modülü](https://aka.ms/aadposh)tarafından yapılandırılır. Azure AD Connect 'den ayrı olarak indirin ve yükleyin. Bu konuda belgelenen cmdlet 'ler [2016 Mart sürümünde (derleme 9031,1)](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1)sunulmuştur. Bu konu başlığında belgelenmeyen cmdlet 'ler yoksa veya aynı sonucu üretmedikleri takdirde, en son sürümü çalıştırdığınızdan emin olun.
+Bu ayarlar, [Windows PowerShell için Azure Active Directory modülü](/previous-versions/azure/jj151815(v=azure.100))tarafından yapılandırılır. Azure AD Connect 'den ayrı olarak indirin ve yükleyin. Bu konuda belgelenen cmdlet 'ler [2016 Mart sürümünde (derleme 9031,1)](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1)sunulmuştur. Bu konu başlığında belgelenmeyen cmdlet 'ler yoksa veya aynı sonucu üretmedikleri takdirde, en son sürümü çalıştırdığınızdan emin olun.
 
 Azure AD dizininizde yapılandırmayı görmek için çalıştırın `Get-MsolDirSyncFeatures` .  
 ![Get-MsolDirSyncFeatures sonucu](./media/how-to-connect-syncservice-features/getmsoldirsyncfeatures.png)

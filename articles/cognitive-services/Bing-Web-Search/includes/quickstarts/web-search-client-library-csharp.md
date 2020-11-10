@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9dbed0de3cf6cc911111825a75430d0c616f4dc4
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: d391586ade9e9a58344f9b1666802a453770152a
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217600"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386592"
 ---
 Bing Web Araması istemci kitaplığı, Bing Web Araması C# uygulamanıza tümleştirmeyi kolaylaştırır. Bu hızlı başlangıçta istemci başlatmayı, istek göndermeyi ve yanıtı yazdırmayı öğreneceksiniz.
 
@@ -36,7 +36,7 @@ Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız ol
 > [!TIP]
 > [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)'Dan bir Visual Studio çözümü olarak en son kodu alın.
 
-İlk adım yeni bir konsol projesi oluşturmaktır. Bir konsol projesi ayarlamayla ilgili yardıma ihtiyacınız varsa, bkz. [Merhaba Dünya--Ilk programınız (C# Programlama Kılavuzu)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Bing Web Araması SDK'sını uygulamanızda kullanmak için NuGet Paket Yöneticisi'ni kullanarak `Microsoft.Azure.CognitiveServices.Search.WebSearch` paketini yüklemeniz gerekir.
+İlk adım yeni bir konsol projesi oluşturmaktır. Bir konsol projesi ayarlamayla ilgili yardıma ihtiyacınız varsa, bkz. [Merhaba Dünya--Ilk programınız (C# Programlama Kılavuzu)](/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Bing Web Araması SDK'sını uygulamanızda kullanmak için NuGet Paket Yöneticisi'ni kullanarak `Microsoft.Azure.CognitiveServices.Search.WebSearch` paketini yüklemeniz gerekir.
 
 [Web Arama SDK'sı paketi](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) şunları da yükler:
 
@@ -424,4 +424,3 @@ Bu projeyi tamamladıktan sonra abonelik anahtarınızı uygulama kodundan kald�
 
 > [!div class="nextstepaction"]
 > [Bilişsel hizmetler Node.js SDK örnekleri](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
-                                    

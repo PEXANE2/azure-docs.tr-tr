@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b26979f424798bacf6b40d43e5ab603844f595c3
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 99e7a8fcb34c963cfab366f1913508a7ff3f4a51
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360862"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408711"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>Güvenlik denetimi v2: günlük kaydı ve tehdit algılama
 
@@ -30,7 +30,7 @@ Azure hizmet telemetrisini izlemeyi ve hizmet günlüklerini çözümlemeyi teme
 
 Ayrıca, ortamınızda belirli ölçütlerle eşleşen tehditleri araya analizi kuralları oluşturmak için Azure Sentinel kullanın. Kurallar, her olayı araştırmak için ölçütler eşleştiğinde olaylar oluşturur. Azure Sentinel, tehdit algılama özelliğini geliştirmek için üçüncü taraf tehdit bilgilerini de içeri aktarabilir. 
 
-- [Azure Güvenlik Merkezi’nde tehdit koruması](../../security-center/threat-protection.md)
+- [Azure Güvenlik Merkezi’nde tehdit koruması](../../security-center/azure-defender.md)
 
 - [Azure Güvenlik Merkezi güvenlik uyarıları başvuru kılavuzu](../../security-center/alerts-reference.md)
 
@@ -73,7 +73,7 @@ Azure Güvenlik Merkezi, çok fazla sayıda başarısız kimlik doğrulama giri�
 
 - [Azure kimlik koruması 'nı etkinleştirme](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Azure Güvenlik Merkezi’nde tehdit koruması](../../security-center/threat-protection.md)
+- [Azure Güvenlik Merkezi’nde tehdit koruması](../../security-center/azure-defender.md)
 
 **Sorumluluk** : müşteri
 
@@ -230,4 +230,3 @@ Azure içindeki kaynaklar tarafından oluşturulan tüm Günlükler varsayılan 
 - [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
 - [Altyapı ve uç nokta güvenliği](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
-

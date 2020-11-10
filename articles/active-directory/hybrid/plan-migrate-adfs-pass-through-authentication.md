@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0ee8661ca985e1882cff54d2fc2cdc5e9ad0a22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e0edda2a01d6b17aebba3fbe4dbf039bf1d2f2c5
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335978"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411125"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Azure Active Directory için Federasyondan geçişli kimlik doğrulamaya geçiş
 
@@ -67,22 +67,22 @@ Hangi yöntemi kullanacağınızı anlamak için aşağıdaki bölümlerde bulun
 
 1. Genel yönetici hesabı kullanarak [Azure AD portalında](https://aad.portal.azure.com/) oturum açın.
 2. **Kullanıcı oturum açma** bölümünde aşağıdaki ayarları doğrulayın:
-   * **Federasyon** , **etkin**olarak ayarlandı.
-   * **Kesintisiz çoklu oturum açma** **devre dışı**olarak ayarlanmıştır.
-   * **Geçişli kimlik doğrulaması** **devre dışı**olarak ayarlanır.
+   * **Federasyon** , **etkin** olarak ayarlandı.
+   * **Kesintisiz çoklu oturum açma** **devre dışı** olarak ayarlanmıştır.
+   * **Geçişli kimlik doğrulaması** **devre dışı** olarak ayarlanır.
 
    ![Azure AD Connect Kullanıcı oturum açma bölümündeki ayarların ekran görüntüsü](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image1.png)
 
 #### <a name="verify-how-federation-was-configured"></a>Federasyonun nasıl yapılandırıldığını doğrulama
 
-1. Azure AD Connect sunucunuzda Azure AD Connect açın. **Yapılandır**'ı seçin.
-2. **Ek görevler** sayfasında, **geçerli yapılandırmayı görüntüle**' yi seçin ve ardından **İleri**' yi seçin.<br />
+1. Azure AD Connect sunucunuzda Azure AD Connect açın. **Yapılandır** 'ı seçin.
+2. **Ek görevler** sayfasında, **geçerli yapılandırmayı görüntüle** ' yi seçin ve ardından **İleri** ' yi seçin.<br />
  
    ![Ek görevler sayfasında geçerli yapılandırmayı görüntüle seçeneğinin ekran görüntüsü](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image2.png)<br />
-3. **Federasyonu yönetmek > ek görevler**altında **Active Directory Federasyon Hizmetleri (AD FS) (AD FS)** kaydırın.<br />
+3. **Federasyonu yönetmek > ek görevler** altında **Active Directory Federasyon Hizmetleri (AD FS) (AD FS)** kaydırın.<br />
 
-   * Bu bölümde AD FS yapılandırması görüntülenirse, AD FS özgün olarak Azure AD Connect kullanarak yapılandırıldığını varsayabilirsiniz. Azure AD Connect **Kullanıcı oturum açma** seçeneğini kullanarak etki alanlarınızı, Federasyon kimliğinden yönetilen kimliğe dönüştürebilirsiniz. İşlem hakkında daha fazla bilgi için, **A: Azure AD Connect kullanarak geçişli kimlik doğrulamasını yapılandırma**bölümüne bakın.
-   * Geçerli ayarlarda AD FS listelenmemişse, PowerShell kullanarak etki alanlarınızı, Federasyon kimliğinden yönetilen kimliğe el ile dönüştürmeniz gerekir. Bu işlem hakkında daha fazla bilgi için, **B: Azure AD Connect ve PowerShell 'i kullanarak Federasyondan geçişli kimlik doğrulamaya geçiş yapma**başlıklı Bölüm seçeneğine bakın.
+   * Bu bölümde AD FS yapılandırması görüntülenirse, AD FS özgün olarak Azure AD Connect kullanarak yapılandırıldığını varsayabilirsiniz. Azure AD Connect **Kullanıcı oturum açma** seçeneğini kullanarak etki alanlarınızı, Federasyon kimliğinden yönetilen kimliğe dönüştürebilirsiniz. İşlem hakkında daha fazla bilgi için, **A: Azure AD Connect kullanarak geçişli kimlik doğrulamasını yapılandırma** bölümüne bakın.
+   * Geçerli ayarlarda AD FS listelenmemişse, PowerShell kullanarak etki alanlarınızı, Federasyon kimliğinden yönetilen kimliğe el ile dönüştürmeniz gerekir. Bu işlem hakkında daha fazla bilgi için, **B: Azure AD Connect ve PowerShell 'i kullanarak Federasyondan geçişli kimlik doğrulamaya geçiş yapma** başlıklı Bölüm seçeneğine bakın.
 
 ### <a name="document-current-federation-settings"></a>Geçerli Federasyon ayarlarını belgele
 
@@ -98,7 +98,7 @@ Get-MsolDomainFederationSettings -DomainName YourDomain.extention | fl *
 Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 ```
 
-Federasyon tasarımınız ve dağıtım belgeleriniz için özelleştirilmiş olabilecek tüm ayarları doğrulayın. Özellikle, **Preferredauthenticationprotocol**, **Supportsmfa**ve **promptloginbehavior**içindeki özelleştirmeleri arayın.
+Federasyon tasarımınız ve dağıtım belgeleriniz için özelleştirilmiş olabilecek tüm ayarları doğrulayın. Özellikle, **Preferredauthenticationprotocol** , **Supportsmfa** ve **promptloginbehavior** içindeki özelleştirmeleri arayın.
 
 Daha fazla bilgi için şu makalelere bakın:
 
@@ -106,7 +106,7 @@ Daha fazla bilgi için şu makalelere bakın:
 * [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
 
 > [!NOTE]
-> **Supportsmfa** **değeri true**olarak ayarlanırsa, Kullanıcı kimlik doğrulama akışına ikinci öğeli bir sınama eklemek için bir şirket içi Multi-Factor Authentication çözümü kullanıyorsunuz. Bu kurulum artık Azure AD kimlik doğrulama senaryolarında çalışmaz. 
+> **Supportsmfa** **değeri true** olarak ayarlanırsa, Kullanıcı kimlik doğrulama akışına ikinci öğeli bir sınama eklemek için bir şirket içi Multi-Factor Authentication çözümü kullanıyorsunuz. Bu kurulum artık Azure AD kimlik doğrulama senaryolarında çalışmaz. 
 >
 > Bunun yerine, aynı işlevi gerçekleştirmek için Azure Multi-Factor Authentication bulut tabanlı hizmetini kullanın. Devam etmeden önce Multi-Factor Authentication gereksinimlerinizi dikkatle değerlendirin. Etki alanlarınızı dönüştürmeden önce Azure Multi-Factor Authentication, lisanslama etkilerini ve Kullanıcı kayıt işlemini nasıl kullanacağınızı anladığınızdan emin olun.
 
@@ -132,9 +132,9 @@ Federasyon kimliğinden yönetilen kimliğe dönüştürmeden önce Azure AD, Mi
 |-|-|
 | Diğer uygulamalarla AD FS kullanmayı planlayın (Azure AD ve Microsoft 365 dışında). | Etki alanlarınızı dönüştürdükten sonra hem AD FS hem de Azure AD 'yi kullanırsınız. Kullanıcı deneyimini göz önünde bulundurun. Bazı senaryolarda, kullanıcıların iki kez kimlik doğrulaması yapması gerekebilir: Azure AD 'ye (bir Kullanıcı, Microsoft 365 gibi diğer uygulamalara SSO erişimi alır) ve hala bağlı olan taraf güveni olarak AD FS bağlı olan tüm uygulamalar için. |
 | AD FS örneğiniz çok büyük bir özelleştirilmiş ve onload.js dosyasındaki belirli özelleştirme ayarlarına bağımlıdır (örneğin, oturum açma deneyimini, kullanıcıların kullanıcı asıl adı (UPN) yerine yalnızca bir **sAMAccountName** biçimi kullanması için değiştirdiyseniz veya kuruluşunuz, oturum açma deneyimini yoğun bir şekilde markalandırmıştır). onload.js dosyası Azure AD 'de yinelenemez. | Devam etmeden önce Azure AD 'nin geçerli özelleştirme gereksinimlerinizi karşılayabildiğini doğrulamanız gerekir. Daha fazla bilgi ve yönergeler için AD FS marka ve AD FS özelleştirme bölümlerine bakın.|
-| Kimlik doğrulama istemcilerinin önceki sürümlerini engellemek için AD FS kullanırsınız.| [Koşullu erişim denetimleri](../conditional-access/concept-conditional-access-conditions.md) ve [Exchange Online istemci erişim kurallarından](https://aka.ms/EXOCAR)oluşan bir birleşimi kullanarak, kimlik doğrulama istemcilerinin önceki sürümlerini engelleyen AD FS denetimlerini değiştirmeyi düşünün. |
+| Kimlik doğrulama istemcilerinin önceki sürümlerini engellemek için AD FS kullanırsınız.| [Koşullu erişim denetimleri](../conditional-access/concept-conditional-access-conditions.md) ve [Exchange Online istemci erişim kurallarından](/exchange/clients-and-mobile-in-exchange-online/client-access-rules/client-access-rules)oluşan bir birleşimi kullanarak, kimlik doğrulama istemcilerinin önceki sürümlerini engelleyen AD FS denetimlerini değiştirmeyi düşünün. |
 | Kullanıcıların AD FS kimlik doğrulaması yapıldığında, şirket içi Multi-Factor Authentication sunucusu çözümüne karşı kullanıcıların Multi-Factor Authentication gerçekleştirmesini zorunlu kılabilirsiniz.| Yönetilen bir kimlik etki alanında, kimlik doğrulama akışına şirket içi Multi-Factor Authentication çözümü aracılığıyla çok faktörlü kimlik doğrulama sınaması ekleyemezsiniz. Ancak, etki alanı dönüştürüldükten sonra çok faktörlü kimlik doğrulaması için Azure Multi-Factor Authentication hizmetini kullanabilirsiniz.<br /><br /> Kullanıcılarınız Şu anda Azure Multi-Factor Authentication kullanmıyorsanız, bir kerelik Kullanıcı kaydı adımı gereklidir. Kullanıcılarınıza planlı kaydı hazırlamanız ve bu kayıtları iletmeli. |
-| Microsoft 365 erişimi denetlemek için şu anda AD FS erişim denetim ilkeleri (AuthZ kuralları) kullanıyorsunuz.| Aynı Azure AD [koşullu erişim ilkeleri](../conditional-access/overview.md) ve [Exchange Online istemci erişim kuralları](https://aka.ms/EXOCAR)ile ilkeleri değiştirmeyi göz önünde bulundurun.|
+| Microsoft 365 erişimi denetlemek için şu anda AD FS erişim denetim ilkeleri (AuthZ kuralları) kullanıyorsunuz.| Aynı Azure AD [koşullu erişim ilkeleri](../conditional-access/overview.md) ve [Exchange Online istemci erişim kuralları](/exchange/clients-and-mobile-in-exchange-online/client-access-rules/client-access-rules)ile ilkeleri değiştirmeyi göz önünde bulundurun.|
 
 ### <a name="common-ad-fs-customizations"></a>Ortak AD FS özelleştirmeleri
 
@@ -247,10 +247,10 @@ AD FS ortamınızı başlangıçta Azure AD Connect kullanarak yapılandırdıys
 İlk olarak, oturum açma yöntemini değiştirin:
 
 1. Azure AD Connect sunucusunda, Azure AD Connect sihirbazını açın.
-2. **Kullanıcı oturumunu Değiştir**' i seçin ve ardından **İleri**' yi seçin. 
+2. **Kullanıcı oturumunu Değiştir** ' i seçin ve ardından **İleri** ' yi seçin. 
 3. **Azure AD 'ye Bağlan** sayfasında, bir genel yönetici hesabının kullanıcı adını ve parolasını girin.
-4. **Kullanıcı oturum açma** sayfasında, **geçişli kimlik doğrulaması** düğmesini seçin, **Çoklu oturum açmayı etkinleştir**' i seçin ve ardından **İleri**' yi seçin.
-5. **Çoklu oturum açmayı etkinleştir** sayfasında, bir etki alanı yönetici hesabının kimlik bilgilerini girin ve ardından **İleri**' yi seçin.
+4. **Kullanıcı oturum açma** sayfasında, **geçişli kimlik doğrulaması** düğmesini seçin, **Çoklu oturum açmayı etkinleştir** ' i seçin ve ardından **İleri** ' yi seçin.
+5. **Çoklu oturum açmayı etkinleştir** sayfasında, bir etki alanı yönetici hesabının kimlik bilgilerini girin ve ardından **İleri** ' yi seçin.
 
    > [!NOTE]
    > Sorunsuz SSO 'yu etkinleştirmek için etki alanı yönetici hesabı kimlik bilgileri gereklidir. İşlem bu yükseltilmiş izinleri gerektiren aşağıdaki eylemleri tamamlar. Etki alanı yönetici hesabı kimlik bilgileri Azure AD Connect veya Azure AD 'de depolanmaz. Etki alanı yöneticisi hesabı kimlik bilgileri yalnızca özelliği açmak için kullanılır. İşlem başarıyla tamamlandığında kimlik bilgileri atılır.
@@ -259,22 +259,22 @@ AD FS ortamınızı başlangıçta Azure AD Connect kullanarak yapılandırdıys
    > 2. Bilgisayar hesabının Kerberos şifre çözme anahtarı Azure AD ile güvenli bir şekilde paylaşılır.
    > 3. Azure AD oturum açma sırasında kullanılan iki URL 'yi temsil eden iki Kerberos hizmet asıl adı (SPN) oluşturulur.
 
-6. **Yapılandırmaya hazırlanma** sayfasında, **yapılandırma tamamlandığında eşitleme işlemini başlat** onay kutusunun işaretli olduğundan emin olun. Ardından **Yapılandır**' ı seçin.<br />
+6. **Yapılandırmaya hazırlanma** sayfasında, **yapılandırma tamamlandığında eşitleme işlemini başlat** onay kutusunun işaretli olduğundan emin olun. Ardından **Yapılandır** ' ı seçin.<br />
 
    ![Yapılandırmaya hazırlanma sayfasının ekran görüntüsü](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image8.png)<br />
-7. Azure AD portalında **Azure Active Directory**' yi ve ardından **Azure AD Connect**' ı seçin.
+7. Azure AD portalında **Azure Active Directory** ' yi ve ardından **Azure AD Connect** ' ı seçin.
 8. Bu ayarları doğrulayın:
-   * **Federasyon** **devre dışı**olarak ayarlandı.
-   * **Kesintisiz çoklu oturum açma** **özelliği etkin**olarak ayarlanmıştır.
-   * **Geçişli kimlik doğrulaması** **etkin**olarak ayarlanır.<br />
+   * **Federasyon** **devre dışı** olarak ayarlandı.
+   * **Kesintisiz çoklu oturum açma** **özelliği etkin** olarak ayarlanmıştır.
+   * **Geçişli kimlik doğrulaması** **etkin** olarak ayarlanır.<br />
 
    ![Kullanıcı oturum açma bölümündeki ayarları gösteren ekran görüntüsü](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image9.png)<br />
 
 İleri'ye basın. ek kimlik doğrulama yöntemleri dağıtma:
 
-1. Azure Portal, **Azure Active Directory**  >  **Azure AD Connect**' e gidin ve ardından **geçişli kimlik doğrulaması**' nı seçin.
+1. Azure Portal, **Azure Active Directory**  >  **Azure AD Connect** ' e gidin ve ardından **geçişli kimlik doğrulaması** ' nı seçin.
 2. **Geçişli kimlik doğrulaması** sayfasında **İndir** düğmesini seçin.
-3. **Aracı indir** sayfasında, **Koşulları kabul et ve indir**' i seçin.
+3. **Aracı indir** sayfasında, **Koşulları kabul et ve indir** ' i seçin.
 
    Ek kimlik doğrulama aracıları indirilmek üzere başladı. İkincil kimlik doğrulama aracısını etki alanına katılmış bir sunucuya yükler. 
 
@@ -292,7 +292,7 @@ AD FS ortamınızı başlangıçta Azure AD Connect kullanarak yapılandırdıys
 [Teste ve sonraki adımlara](#testing-and-next-steps)atlayın.
 
 > [!IMPORTANT]
-> **B: Azure AD Connect ve PowerShell 'i kullanarak Federasyondan geçişli kimlik doğrulamaya geçiş yapın Bölüm seçeneğini**atlayın. Bu bölümdeki adımlar, oturum açma yöntemini doğrudan kimlik doğrulama olarak değiştirmek ve sorunsuz SSO 'yu etkinleştirmek için seçeneğini belirlediyseniz uygulanmaz. 
+> **B: Azure AD Connect ve PowerShell 'i kullanarak Federasyondan geçişli kimlik doğrulamaya geçiş yapın Bölüm seçeneğini** atlayın. Bu bölümdeki adımlar, oturum açma yöntemini doğrudan kimlik doğrulama olarak değiştirmek ve sorunsuz SSO 'yu etkinleştirmek için seçeneğini belirlediyseniz uygulanmaz. 
 
 #### <a name="option-b-switch-from-federation-to-pass-through-authentication-by-using-azure-ad-connect-and-powershell"></a>Seçenek B: Azure AD Connect ve PowerShell kullanarak Federasyondan geçişli kimlik doğrulamaya geçiş yapma
 
@@ -301,10 +301,10 @@ AD FS ortamınızı başlangıçta Azure AD Connect kullanarak yapılandırdıys
 İlk olarak, doğrudan kimlik doğrulamasını etkinleştirin:
 
 1. Azure AD Connect sunucusunda, Azure AD Connect sihirbazını açın.
-2. **Kullanıcı oturumunu Değiştir**' i seçin ve ardından **İleri**' yi seçin.
+2. **Kullanıcı oturumunu Değiştir** ' i seçin ve ardından **İleri** ' yi seçin.
 3. **Azure AD 'ye Bağlan** sayfasında, bir genel yönetici hesabının kullanıcı adını ve parolasını girin.
-4. **Kullanıcı oturum açma** sayfasında, **geçişli kimlik doğrulaması** düğmesini seçin. **Çoklu oturum açmayı etkinleştir**' i seçin ve ardından **İleri**' yi seçin.
-5. **Çoklu oturum açmayı etkinleştir** sayfasında, bir etki alanı yönetici hesabının kimlik bilgilerini girin ve ardından **İleri**' yi seçin.
+4. **Kullanıcı oturum açma** sayfasında, **geçişli kimlik doğrulaması** düğmesini seçin. **Çoklu oturum açmayı etkinleştir** ' i seçin ve ardından **İleri** ' yi seçin.
+5. **Çoklu oturum açmayı etkinleştir** sayfasında, bir etki alanı yönetici hesabının kimlik bilgilerini girin ve ardından **İleri** ' yi seçin.
 
    > [!NOTE]
    > Sorunsuz SSO 'yu etkinleştirmek için etki alanı yönetici hesabı kimlik bilgileri gereklidir. İşlem bu yükseltilmiş izinleri gerektiren aşağıdaki eylemleri tamamlar. Etki alanı yönetici hesabı kimlik bilgileri Azure AD Connect veya Azure AD 'de depolanmaz. Etki alanı yöneticisi hesabı kimlik bilgileri yalnızca özelliği açmak için kullanılır. İşlem başarıyla tamamlandığında kimlik bilgileri atılır.
@@ -313,30 +313,30 @@ AD FS ortamınızı başlangıçta Azure AD Connect kullanarak yapılandırdıys
    > 2. Bilgisayar hesabının Kerberos şifre çözme anahtarı Azure AD ile güvenli bir şekilde paylaşılır.
    > 3. Azure AD oturum açma sırasında kullanılan iki URL 'yi temsil eden iki Kerberos hizmet asıl adı (SPN) oluşturulur.
 
-6. **Yapılandırmaya hazırlanma** sayfasında, **yapılandırma tamamlandığında eşitleme işlemini başlat** onay kutusunun işaretli olduğundan emin olun. Ardından **Yapılandır**' ı seçin.<br />
+6. **Yapılandırmaya hazırlanma** sayfasında, **yapılandırma tamamlandığında eşitleme işlemini başlat** onay kutusunun işaretli olduğundan emin olun. Ardından **Yapılandır** ' ı seçin.<br />
 
    ![Yapılandırmaya hazırlanma sayfasını ve Yapılandır düğmesini gösteren ekran görüntüsü](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image18.png)<br />
-   **Yapılandır**' ı seçtiğinizde aşağıdaki adımlar oluşur:
+   **Yapılandır** ' ı seçtiğinizde aşağıdaki adımlar oluşur:
 
    1. İlk geçişli kimlik doğrulama Aracısı yüklenir.
    2. Doğrudan geçiş özelliği etkinleştirilmiştir.
    3. Sorunsuz SSO etkin.
 
 7. Bu ayarları doğrulayın:
-   * **Federasyon** , **etkin**olarak ayarlandı.
-   * **Kesintisiz çoklu oturum açma** **özelliği etkin**olarak ayarlanmıştır.
-   * **Geçişli kimlik doğrulaması** **etkin**olarak ayarlanır.
+   * **Federasyon** , **etkin** olarak ayarlandı.
+   * **Kesintisiz çoklu oturum açma** **özelliği etkin** olarak ayarlanmıştır.
+   * **Geçişli kimlik doğrulaması** **etkin** olarak ayarlanır.
    
    ![Kullanıcı oturum açma bölümünde doğrulanacak ayarları gösteren ekran görüntüsü.](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image19.png)
-8. **Doğrudan kimlik doğrulaması** ' nı seçin ve durumun **etkin**olduğunu doğrulayın.<br />
+8. **Doğrudan kimlik doğrulaması** ' nı seçin ve durumun **etkin** olduğunu doğrulayın.<br />
    
    Kimlik doğrulama Aracısı etkin değilse, bir sonraki adımda etki alanı dönüştürme işlemine devam etmeden önce bazı [sorun giderme adımlarını uygulayın](./tshoot-connect-pass-through-authentication.md) . Geçiş kimlik doğrulama aracılarınızın başarılı bir şekilde yüklendiğini ve Azure portal durumunun **etkin** olduğunu doğrulamadan önce etki alanlarınızı dönüştürürseniz, kimlik doğrulama kesintisine neden olur.
 
 Ardından, ek kimlik doğrulama aracılarını dağıtın:
 
-1. Azure Portal, **Azure Active Directory**  >  **Azure AD Connect**' e gidin ve ardından **geçişli kimlik doğrulaması**' nı seçin.
+1. Azure Portal, **Azure Active Directory**  >  **Azure AD Connect** ' e gidin ve ardından **geçişli kimlik doğrulaması** ' nı seçin.
 2. **Geçişli kimlik doğrulaması** sayfasında **İndir** düğmesini seçin. 
-3. **Aracı indir** sayfasında, **Koşulları kabul et ve indir**' i seçin.
+3. **Aracı indir** sayfasında, **Koşulları kabul et ve indir** ' i seçin.
  
    Kimlik doğrulama Aracısı indirilmek üzere başlatılır. İkincil kimlik doğrulama aracısını etki alanına katılmış bir sunucuya yükler.
 
@@ -362,11 +362,11 @@ Azure AD PowerShell modülünü kullanarak dönüştürmeyi doldurun:
    Set-MsolDomainAuthentication -Authentication Managed -DomainName <domain name>
    ```
  
-3. Azure AD portalında **Azure Active Directory**  >  **Azure AD Connect**' ni seçin.
+3. Azure AD portalında **Azure Active Directory**  >  **Azure AD Connect** ' ni seçin.
 4. Tüm Federasyon etki alanlarınızı dönüştürdükten sonra, bu ayarları doğrulayın:
-   * **Federasyon** **devre dışı**olarak ayarlandı.
-   * **Kesintisiz çoklu oturum açma** **özelliği etkin**olarak ayarlanmıştır.
-   * **Geçişli kimlik doğrulaması** **etkin**olarak ayarlanır.<br />
+   * **Federasyon** **devre dışı** olarak ayarlandı.
+   * **Kesintisiz çoklu oturum açma** **özelliği etkin** olarak ayarlanmıştır.
+   * **Geçişli kimlik doğrulaması** **etkin** olarak ayarlanır.<br />
 
    ![Azure AD portalındaki Kullanıcı oturum açma bölümündeki ayarları gösteren ekran görüntüsü.](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image26.png)<br />
 
@@ -382,13 +382,13 @@ Doğrudan kimlik doğrulamasını test etmek için:
 
 1. Sorunsuz SSO 'nun oturumunuzu otomatik olarak açmasını sağlamak için Internet Explorer 'ı InPrivate modda açın.
 2. Office 365 oturum açma sayfasına ( [https://portal.office.com](https://portal.office.com/) ) gidin.
-3. Bir Kullanıcı UPN 'si girin ve ardından **İleri**' yi seçin. Şirket içi Active Directory örneğinden eşitlenmiş bir karma kullanıcının UPN 'sini girdiğinizden ve daha önce federal kimlik doğrulamasını kullanmış olduğunuzdan emin olun. Kullanıcı adını ve parolayı girdiğiniz bir sayfa görüntülenir:
+3. Bir Kullanıcı UPN 'si girin ve ardından **İleri** ' yi seçin. Şirket içi Active Directory örneğinden eşitlenmiş bir karma kullanıcının UPN 'sini girdiğinizden ve daha önce federal kimlik doğrulamasını kullanmış olduğunuzdan emin olun. Kullanıcı adını ve parolayı girdiğiniz bir sayfa görüntülenir:
 
    ![Kullanıcı adı gireceğiniz oturum açma sayfasını gösteren ekran görüntüsü](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image27.png)
 
    ![Parola girebileceğiniz oturum açma sayfasını gösteren ekran görüntüsü](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image28.png)
 
-4. Parolayı girdikten ve **oturum aç**' ı seçtikten sonra Office 365 portalına yönlendirilirsiniz.
+4. Parolayı girdikten ve **oturum aç** ' ı seçtikten sonra Office 365 portalına yönlendirilirsiniz.
 
    ![Office 365 portalını gösteren ekran görüntüsü](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image29.png)
 

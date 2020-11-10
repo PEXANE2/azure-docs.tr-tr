@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ab42acbc07072f48d28b3adb5bc4c65672f257bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bde95006865a2aab2da4a5d6d27ccccc14d74d12
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314326"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408931"
 ---
 # <a name="security-control-v2-data-protection"></a>Güvenlik denetimi v2: veri koruma
 
@@ -32,11 +32,11 @@ Azure SQL veritabanlarında depolanan bilgilerin sınıflandırmasına ve etiket
 
 - [Azure Information Protection kullanarak gizli bilgileri etiketleme](/azure/information-protection/what-is-information-protection) 
 
-- [Azure SQL veri bulmayı uygulama](/azure/sql-database/sql-database-data-discovery-and-classification)
+- [Azure SQL veri bulmayı uygulama](../../azure-sql/database/data-discovery-and-classification-overview.md)
 
-**Sorumluluk**: paylaşılan
+**Sorumluluk** : paylaşılan
 
-**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)  
 
@@ -60,9 +60,9 @@ Microsoft tarafından yönetilen temel platform için, Microsoft tüm müşteri 
 
 - [Azure 'da müşteri veri korumasını anlama](../fundamentals/protection-customer-data.md)
 
-**Sorumluluk**: paylaşılan
+**Sorumluluk** : paylaşılan
 
-**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -86,11 +86,11 @@ Veri kaybı önleme (DLP) uyumluluğu için gerekliyse, bir ana bilgisayar taban
 
 - [Azure SQL ATP 'yi etkinleştirme](../../azure-sql/database/threat-detection-overview.md)
 
-- [Azure depolama ATP 'yi etkinleştirme](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection?tabs=azure-security-center)
+- [Azure depolama ATP 'yi etkinleştirme](../../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
 
-**Sorumluluk**: paylaşılan
+**Sorumluluk** : paylaşılan
 
-**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik işlemleri](/azure/cloud-adoption-framework/organize/cloud-security) 
 
@@ -116,9 +116,9 @@ Azure, varsayılan olarak Azure veri merkezleri arasında aktarım halindeki ver
 
 - [Yoldaki Azure verileri için çift şifreleme](../fundamentals/double-encryption.md#data-in-transit)
 
-**Sorumluluk**: paylaşılan
+**Sorumluluk** : paylaşılan
 
-**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -140,15 +140,15 @@ Azure, bekleyen veriler için varsayılan olarak şifreleme sağlar. Son derece 
 
 - [Azure 'da bekleyen şifrelemeyi anlama](../fundamentals/encryption-atrest.md#encryption-at-rest-in-microsoft-cloud-services)
 
-- [Müşteri tarafından yönetilen şifreleme anahtarlarını yapılandırma](../../storage/common/storage-encryption-keys-portal.md)
+- [Müşteri tarafından yönetilen şifreleme anahtarlarını yapılandırma](../../storage/common/customer-managed-keys-configure-key-vault.md)
 
 - [Şifreleme modeli ve anahtar yönetimi tablosu](../fundamentals/encryption-models.md)
 
 - [Azure 'da Rest çift Şifrelemeli veriler](../fundamentals/double-encryption.md#data-at-rest)
 
-**Sorumluluk**: paylaşılan
+**Sorumluluk** : paylaşılan
 
-**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -157,4 +157,3 @@ Azure, bekleyen veriler için varsayılan olarak şifreleme sağlar. Son derece 
 - [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 - [Veri güvenliği](/azure/cloud-adoption-framework/organize/cloud-security-data-security)
-

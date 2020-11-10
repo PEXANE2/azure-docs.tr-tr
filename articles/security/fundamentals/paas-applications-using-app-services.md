@@ -16,16 +16,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2019
 ms.author: terrylan
-ms.openlocfilehash: fc273c2e6e27c191b4407ffae86a4ba227ee642b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e583bb1b9cad79ee3e48e838d81d6a504c44f72c
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87131047"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408099"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>Azure App Service kullanarak PaaS Web ve mobil uygulamaları güvenli hale getirmek için en iyi yöntemler
 
-Bu makalede, PaaS Web ve mobil uygulamalarınızın güvenliğini sağlamaya yönelik [Azure App Service](/azure/app-service/overview) en iyi güvenlik uygulamaları hakkında bir koleksiyon ele alınmaktadır. Bu en iyi uygulamalar, Azure deneyimimizden ve sizin gibi müşterilerin deneyimlerini elde edilmiştir.
+Bu makalede, PaaS Web ve mobil uygulamalarınızın güvenliğini sağlamaya yönelik [Azure App Service](../../app-service/overview.md) en iyi güvenlik uygulamaları hakkında bir koleksiyon ele alınmaktadır. Bu en iyi uygulamalar, Azure deneyimimizden ve sizin gibi müşterilerin deneyimlerini elde edilmiştir.
 
 Azure App Service, herhangi bir platform veya cihaz için Web uygulamaları ve mobil uygulamalar oluşturmanıza ve bulutta veya şirket içinde her yerden verilere bağlanmanıza olanak tanıyan bir hizmet olarak platform (PaaS) sunumudur. App Service, daha önce Azure Web siteleri ve Azure Mobile Services olarak ayrı olarak sunulan Web ve mobil özellikleri içerir. Ayrıca iş süreçlerini otomatikleştirmek ve bulut API'leri barındırmak için yeni özellikler içerir. Tek bir tümleşik hizmet olarak, App Service Web, mobil ve tümleştirme senaryolarına zengin bir özellik kümesi sunar.
 
@@ -33,7 +33,7 @@ Azure App Service, herhangi bir platform veya cihaz için Web uygulamaları ve m
 App Service, kimlik sağlayıcınız için bir OAuth 2,0 hizmeti sağlar. OAuth 2,0, Web uygulamaları, masaüstü uygulamaları ve cep telefonları için belirli yetkilendirme akışları sağlarken istemci geliştiricisi basitliği üzerine odaklanır. Azure AD, mobil uygulamalar ve Web uygulamalarına erişim yetkisi vermek için OAuth 2,0 kullanır. Daha fazla bilgi için bkz. [Azure App Service kimlik doğrulaması ve yetkilendirme](../../app-service/overview-authentication-authorization.md).
 
 ## <a name="restrict-access-based-on-role"></a>Role göre erişimi kısıtla
-Erişim kısıtlama, veri erişimi için güvenlik ilkeleri zorlamak isteyen kuruluşlar için zorunludur. Rol tabanlı erişim denetimi 'ni (RBAC), belirli bir kapsamdaki kullanıcılara, gruplara ve uygulamalara izin atamak için (örneğin, bilmeniz gerekenler ve en az ayrıcalık güvenliği ilkeleri) kullanabilirsiniz. Kullanıcılara uygulamalara erişim verme hakkında daha fazla bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](/azure/role-based-access-control/overview).
+Erişim kısıtlama, veri erişimi için güvenlik ilkeleri zorlamak isteyen kuruluşlar için zorunludur. Rol tabanlı erişim denetimi 'ni (RBAC), belirli bir kapsamdaki kullanıcılara, gruplara ve uygulamalara izin atamak için (örneğin, bilmeniz gerekenler ve en az ayrıcalık güvenliği ilkeleri) kullanabilirsiniz. Kullanıcılara uygulamalara erişim verme hakkında daha fazla bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ## <a name="protect-your-keys"></a>Anahtarlarınızı koruyun
 Abonelik anahtarlarınızı kaybetmeniz durumunda güvenliğin ne kadar iyi olduğunu farketmez. Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olur. Key Vault, anahtarları ve gizli dizileri (kimlik doğrulaması anahtarları, depolama hesabı anahtarları, veri şifreleme anahtarları,) şifreleyebilirsiniz. PFX dosyaları ve parolalar), donanım güvenlik modülleri (HSM 'ler) tarafından korunan anahtarları kullanarak. Ek güvenlik için HSM'lerde anahtarları içeri aktarabilir veya oluşturabilirsiniz. Otomatik yenilemeyle TLS sertifikalarınızı yönetmek için Key Vault de kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Key Vault nedir?](../../key-vault/general/overview.md) .

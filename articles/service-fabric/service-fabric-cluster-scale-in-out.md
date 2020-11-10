@@ -3,12 +3,12 @@ title: Bir Service Fabric kümesini içinde veya dışarı ölçeklendirin
 description: Her düğüm türü/sanal makine ölçek kümesi için otomatik ölçek kuralları ayarlayarak, talebe eşleştirmek için bir Service Fabric kümesini içinde veya dışarı ölçeklendirin. Service Fabric kümesine düğüm ekleme veya kaldırma
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: c9393ca4531dea58859a4fc60509524e9c4a0b7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ee04c73b75d6b335e450ff816c51f0a3089b918
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86246495"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409969"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Bir kümenin ölçeğini daraltma veya genişletme
 
@@ -54,7 +54,6 @@ Kümenizin birden çok düğüm türü varsa, ölçeğini ölçeklendirmek isted
 > [!NOTE]
 > Bir senaryoya göre, düğüm türü bir altın veya gümüş [dayanıklılık düzeyine][durability] sahip değilse, [Remove-ServiceFabricNodeState cmdlet 'ini](/powershell/module/servicefabric/remove-servicefabricnodestate) uygun düğüm adıyla çağırmanız gerekir. Bronz dayanıklılık için, aynı anda birden fazla düğümde ölçeklendirilmesi önerilmez.
 > 
-> 
 
 ## <a name="manually-add-vms-to-a-node-typevirtual-machine-scale-set"></a>VM 'Leri bir düğüm türüne/sanal makine ölçek kümesine el ile ekleme
 
@@ -97,6 +96,9 @@ Durum bilgisi olan bir hizmet için, hizmetinizin kullanılabilirliği ve bakım
 ### <a name="remove-the-service-fabric-node"></a>Service Fabric düğümünü kaldırma
 
 Düğüm durumunu el ile kaldırma adımları yalnızca *bronz* dayanıklılık katmanı olan düğüm türleri için geçerlidir.  *Gümüş* ve *altın* dayanıklılık katmanı için, bu adımlar platform tarafından otomatik olarak yapılır. Dayanıklılık hakkında daha fazla bilgi için bkz. [Service Fabric küme kapasitesi planlaması][durability].
+
+>[!NOTE]
+> Dayanıklılık düzeyi Gold veya gümüş etkin olan herhangi bir sanal makine ölçek kümesi için en az beş düğüm sayısını koruyun. Bu eşiğin altına ölçeklendirirseniz kümeniz hata durumuna girer ve kaldırılan düğümleri el ile temizlemeniz gerekir.
 
 Küme düğümlerini yükseltme ve hata etki alanlarına eşit olarak dağıtarak eşit bir şekilde kullanılmalarını sağlamak için önce en son oluşturulan düğümün kaldırılması gerekir. Başka bir deyişle düğümler, oluşturma sırasının tersine kaldırılmalıdır. En son oluşturulan düğüm, `virtual machine scale set InstanceId` özelliğinin değeri en yüksek olandır. Aşağıdaki kod örnekleri en son oluşturulan düğümü döndürür.
 
@@ -239,6 +241,9 @@ Bir VM kaldırıldığında bir düğümün kaldırıldığından emin olmak iç
 
 1. Kümenizdeki düğüm türleri için altın veya gümüş bir dayanıklılık düzeyi seçin. Bu, size altyapı tümleştirmesi sağlar. Daha sonra, ' de ölçeklendirirseniz, düğümleri sistem hizmetleri (FM) durumundan otomatik olarak kaldırır.
 [Dayanıklılık düzeylerinin ayrıntılarına](service-fabric-cluster-capacity.md) bakın
+
+> [!NOTE]
+> Dayanıklılık düzeyi Gold veya gümüş etkin olan herhangi bir sanal makine ölçek kümesi için en az beş düğüm sayısını koruyun. Bu eşiğin altına ölçeklendirirseniz kümeniz hata durumuna girer ve kaldırılan düğümleri el ile temizlemeniz gerekir.
 
 2. VM örneği içinde ölçeklendirildiğinde [Remove-ServiceFabricNodeState cmdlet 'ini](/powershell/module/servicefabric/remove-servicefabricnodestate)çağırmanız gerekir.
 

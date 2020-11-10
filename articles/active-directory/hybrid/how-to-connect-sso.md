@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7baa851943db3e8c691b50c2cb5446a2adbbccc
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5e50b9e5dc683eb30452dbb96d82c9f66de93763
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458000"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408014"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory Sorunsuz Çoklu Oturum Açma
 
@@ -63,11 +63,11 @@ Kesintisiz SSO, [Parola karması eşitlemesi](how-to-connect-password-hash-synch
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Evet\*|Yes|Yes|Evet\*\*\*|Yok
-|Windows 8.1|Yes\*|Yes\*\*\*|Yes|Evet\*\*\*|Yok
-|Windows 8|Yes\*|Yok|Yes|Evet\*\*\*|Yok
-|Windows 7|Evet\*|Yok|Yes|Evet\*\*\*|Yok
-|Windows Server 2012 R2 veya üzeri|Yes\*\*|Yok|Yes|Evet\*\*\*|Yok
+|Windows 10|Evet\*|Evet|Evet|Evet\*\*\*|YOK
+|Windows 8.1|Evet\*|Yes\*\*\*|Evet|Evet\*\*\*|YOK
+|Windows 8|Evet\*|YOK|Evet|Evet\*\*\*|YOK
+|Windows 7|Evet\*|YOK|Evet|Evet\*\*\*|YOK
+|Windows Server 2012 R2 veya üzeri|Yes\*\*|YOK|Evet|Evet\*\*\*|YOK
 |Mac OS X|Yok|Yok|Evet\*\*\*|Evet\*\*\*|Evet\*\*\*
 
 
@@ -85,7 +85,7 @@ Kesintisiz SSO, [Parola karması eşitlemesi](how-to-connect-password-hash-synch
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [**Hızlı başlangıç**](how-to-connect-sso-quick-start.md) -Azure AD sorunsuz SSO 'yu alın ve çalıştırın.
-- [**Dağıtım planı**](https://aka.ms/deploymentplans/sso) -adım adım dağıtım planı.
+- [**Dağıtım planı**](../manage-apps/plan-sso-deployment.md) -adım adım dağıtım planı.
 - [**Teknik kapsamlı**](how-to-connect-sso-how-it-works.md) bakış-bu özelliğin nasıl çalıştığını anlayın.
 - [**Sık sorulan sorular**](how-to-connect-sso-faq.md) -sık sorulan soruların yanıtları.
 - [**Sorun giderme**](tshoot-connect-sso.md) -özellikle ilgili yaygın sorunları çözmeyi öğrenin.

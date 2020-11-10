@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 72aff2a2761d3aae695968bd5b4b9d07eab1697f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5a5b20efbf804c2ea1097f905da1cfd62727ff15
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547699"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410700"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Başvuru IoT Hub kotaları ve azaltma
 
@@ -69,7 +69,7 @@ Aşağıdaki tabloda zorlanan kısıtlar gösterilmektedir. Değerler tek bir hu
 
    Son olarak, yük boyutunuz 156KB ve 160 KB arasındaysa, 160 KB/sn/birim sınırına geçmeden önce hub 'ınızdaki birim başına yalnızca bir saniyede 1 çağrı yapabilirsiniz.
 
-*  S2 için *iş cihazı işlemleri (güncelleştirme ikizi, doğrudan yöntemini çağır)* , yalnızca işleri kullanarak yöntemleri çağırdığınızda 50/sn/birim için geçerlidir. Doğrudan metotları doğrudan çağırdığınızda, 24 MB/sn/birim (S2 için) için özgün azaltma sınırı uygulanır.
+*  2. katman için *işler cihaz işlemleri (güncelleştirme ikizi, doğrudan yöntem çağırma)* -S3, 50/sn/birim yalnızca işleri kullanarak yöntemleri çağırdığınızda için geçerlidir. Doğrudan metotları doğrudan çağırdığınızda, 24 MB/sn/birim (S3 için) orijinal azaltma sınırı uygulanır.
 
 *  **Kota** , *her gün* hub 'ınızda gönderebilmeniz için toplam ileti sayısıdır. Hub 'ın kota sınırını [IoT Hub fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/iot-hub/) **toplam ileti sayısı/gün** sütununda bulabilirsiniz.
 
@@ -139,4 +139,4 @@ IoT Hub azaltma davranışının derinlemesine bir tartışması için bkz. blog
 Bu IoT Hub geliştirici kılavuzundaki diğer başvuru konuları şunları içerir:
 
 * [IoT Hub uç noktaları](iot-hub-devguide-endpoints.md)
-* [İzleyici IoT Hub](monitor-iot-hub.md)
+* [IoT Hub’ı izleme](monitor-iot-hub.md)

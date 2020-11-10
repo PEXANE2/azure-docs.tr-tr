@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: d5de8da548c2e141eb921aa4f95e82f7199ae1f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e8310d5941916ed3e4a9d7c66af96779be8f939
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602379"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410304"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Azure Active Directory karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçin
 
@@ -221,4 +221,4 @@ Günümüzde dünya dünyasında tehditler günde 24 saat ve her yerden gelir. D
 
 Azure AD 'yi [kullanmaya](../fundamentals/active-directory-whatis.md) başlayın ve kuruluşunuz için doğru kimlik doğrulama çözümünü dağıtın.
 
-Federe 'dan bulut kimlik doğrulamasına geçiş yapmayı düşünüyorsanız, [oturum açma yöntemini değiştirme](../../active-directory/hybrid/plan-connect-user-signin.md)hakkında daha fazla bilgi edinin. Geçişi planlayıp uygulamanıza yardımcı olması için [Bu proje dağıtım planlarını](https://aka.ms/deploymentplans) kullanın veya yeni [hazırlanmış piyasaya çıkma](../../active-directory/hybrid/how-to-connect-staged-rollout.md) özelliğini kullanarak Federasyon kullanıcılarını, hazırlanmış bir yaklaşımda bulut kimlik doğrulamasını kullanmaya geçirin.
+Federe 'dan bulut kimlik doğrulamasına geçiş yapmayı düşünüyorsanız, [oturum açma yöntemini değiştirme](../../active-directory/hybrid/plan-connect-user-signin.md)hakkında daha fazla bilgi edinin. Geçişi planlayıp uygulamanıza yardımcı olması için [Bu proje dağıtım planlarını](../fundamentals/active-directory-deployment-plans.md) kullanın veya yeni [hazırlanmış piyasaya çıkma](../../active-directory/hybrid/how-to-connect-staged-rollout.md) özelliğini kullanarak Federasyon kullanıcılarını, hazırlanmış bir yaklaşımda bulut kimlik doğrulamasını kullanmaya geçirin.

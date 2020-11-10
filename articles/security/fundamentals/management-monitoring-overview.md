@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: c5525fc43f23ecd1760c5a869d8171aee0e9415d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e74b540610d3b6520f4c8e25ca2df7bf628706f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91395779"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410343"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure Güvenlik yönetimi ve izlemeye genel bakış
 Bu makalede, Azure 'un Azure Cloud Services ve sanal makinelerin yönetimine ve izlenmesine yardımcı olmak için Azure 'un sağladığı güvenlik özelliklerine ve hizmetlerine genel bir bakış sunulmaktadır.
@@ -48,8 +48,8 @@ Daha fazla bilgi edinin:
 
 * [Azure Sanal Makinelerinde Kötü Amaçlı Yazılıma Karşı Koruma Çözümleri Dağıtma](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [Azure Cloud Services ve sanal makineler için Microsoft kötü amaçlı yazılımdan koruma](antimalware.md)
-* [Windows VM 'de bir hizmet olarak Trend mikro derin güvenliği 'ni yüklemek ve yapılandırmak](/azure/virtual-machines/windows/classic/install-trend)
-* [Windows VM 'de Symantec Endpoint Protection 'i yüklemek ve yapılandırmak](/azure/virtual-machines/windows/classic/install-symantec)
+* [Windows VM 'de bir hizmet olarak Trend mikro derin güvenliği 'ni yüklemek ve yapılandırmak](../../virtual-machines/extensions/trend.md)
+* [Windows VM 'de Symantec Endpoint Protection 'i yüklemek ve yapılandırmak](../../virtual-machines/extensions/symantec.md)
 * [Azure sanal makinelerini korumaya yönelik yeni kötü amaçlı yazılımdan koruma seçenekleri](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
@@ -61,7 +61,7 @@ Multi-Factor Authentication, kullanıcıların basit bir oturum açma işlemi ta
 Daha fazla bilgi edinin:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [Azure Multi-Factor Authentication nedir?](/azure/active-directory/authentication/multi-factor-authentication)
+* [Azure Multi-Factor Authentication nedir?](../../active-directory/authentication/concept-mfa-howitworks.md)
 * [Azure Multi-Factor Authentication nasıl çalışır?](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
@@ -112,7 +112,7 @@ Kimlik koruması, bildirimler ve önerilen düzeltme sağlayarak riskleri gerçe
 
 Daha fazla bilgi edinin:
 
-* [Azure Active Directory Kimlik Koruması](/azure/active-directory/active-directory-identityprotection)
+* [Azure Active Directory Kimlik Koruması](../../active-directory/identity-protection/overview-identity-protection.md)
 * [Channel 9: Azure AD ve kimlik Show: kimlik koruması önizlemesi](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="security-center"></a>Güvenlik Merkezi
@@ -129,8 +129,8 @@ Güvenlik Merkezi, Azure kaynaklarınızın güvenliğini iyileştirebilmenizi v
 
 Daha fazla bilgi edinin:
 
-* [Azure Güvenlik Merkezi'ne Giriş](../../security-center/security-center-intro.md)
-* [Azure Güvenlik Merkezi 'nde güvenli puanınızı geliştirme](../../security-center/security-center-secure-score.md)
+* [Azure Güvenlik Merkezi'ne Giriş](../../security-center/security-center-introduction.md)
+* [Azure Güvenlik Merkezi 'nde güvenli puanınızı geliştirme](../../security-center/secure-score-security-controls.md)
 
 ## <a name="intelligent-security-graph"></a>Intelligent Security Graph
 

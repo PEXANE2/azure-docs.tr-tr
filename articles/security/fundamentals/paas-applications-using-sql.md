@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: a02b2157209b5f47ac7ffbde4e15f3e7df1c258b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 278812754c636d434bf579c0408832f1e99d3445
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462539"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408082"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>Azure 'da PaaS veritabanlarını güvenli hale getirmek için en iyi yöntemler
 
@@ -40,7 +40,7 @@ Azure SQL veritabanı, iki kimlik doğrulama türünden birini kullanacak şekil
 
 - **Azure Active Directory kimlik doğrulaması** , Azure Active Directory tarafından yönetilen kimlikleri kullanır ve yönetilen ve tümleşik etki alanları için desteklenir. Azure Active Directory kimlik doğrulaması kullanmak için, Azure AD kullanıcıları ve grupları 'nı yönetmeye izin verilen "Azure AD yöneticisi" adlı başka bir sunucu yöneticisi oluşturmanız gerekir. Bu yönetici normal bir sunucu yöneticisinin gerçekleştirebileceği tüm işlemleri yapabilir.
 
-[Azure Active Directory kimlik doğrulaması](../../active-directory/develop/authentication-scenarios.md) , Azure ACTIVE DIRECTORY (ad) kimlikleri KULLANıLARAK Azure SQL veritabanı ve Azure SYNAPSE Analytics 'e bağlanma mekanizmasıdır. Azure AD, veritabanı sunucularında Kullanıcı kimliklerinin kullanımını durdurabilmeniz için SQL Server kimlik doğrulaması için bir alternatif sağlar. Azure AD kimlik doğrulaması, veritabanı kullanıcılarının ve diğer Microsoft hizmetlerinin kimliklerini tek bir merkezi konumda merkezi olarak yönetmenize olanak sağlar. Merkezi kimlik yönetimi, tüm veritabanı kullanıcılarını aynı yerden yönetmenizi sağlar ve izin yönetimini kolaylaştırır.  
+[Azure Active Directory kimlik doğrulaması](../../active-directory/develop/authentication-vs-authorization.md) , Azure ACTIVE DIRECTORY (ad) kimlikleri KULLANıLARAK Azure SQL veritabanı ve Azure SYNAPSE Analytics 'e bağlanma mekanizmasıdır. Azure AD, veritabanı sunucularında Kullanıcı kimliklerinin kullanımını durdurabilmeniz için SQL Server kimlik doğrulaması için bir alternatif sağlar. Azure AD kimlik doğrulaması, veritabanı kullanıcılarının ve diğer Microsoft hizmetlerinin kimliklerini tek bir merkezi konumda merkezi olarak yönetmenize olanak sağlar. Merkezi kimlik yönetimi, tüm veritabanı kullanıcılarını aynı yerden yönetmenizi sağlar ve izin yönetimini kolaylaştırır.  
 
 ### <a name="benefits-of-using-azure-ad-instead-of-sql-authentication"></a>SQL kimlik doğrulaması yerine Azure AD kullanmanın avantajları
 
@@ -50,7 +50,7 @@ Azure SQL veritabanı, iki kimlik doğrulama türünden birini kullanacak şekil
 - , Veritabanı düzeyinde kimliklerin kimliğini doğrulamak için kapsanan veritabanı kullanıcılarını kullanır.
 - SQL veritabanı 'na bağlanan uygulamalar için belirteç tabanlı kimlik doğrulamasını destekler.
 - Etki alanı eşitlemesi olmadan yerel bir Azure AD için Active Directory Federasyon Hizmetleri (AD FS) (ADFS) veya yerel kullanıcı/parola kimlik doğrulaması ile etki alanı Federasyonu destekler.
-- [Multi-Factor Authentication (MFA)](/azure/active-directory/authentication/multi-factor-authentication)Içeren Active Directory evrensel kimlik doğrulaması kullanan SQL Server Management Studio bağlantılarını destekler. MFA telefon görüşmesi, SMS mesajı, pin ile akıllı kart veya mobil uygulama bildirimi gibi çok sayıda kolay doğrulama seçeneğine sahiptir. Daha fazla bilgi için bkz. [SQL veritabanı ve Azure SYNAPSE Analytics Ile evrensel kimlik doğrulaması](../../azure-sql/database/authentication-mfa-ssms-overview.md).
+- [Multi-Factor Authentication (MFA)](../../active-directory/authentication/concept-mfa-howitworks.md)Içeren Active Directory evrensel kimlik doğrulaması kullanan SQL Server Management Studio bağlantılarını destekler. MFA telefon görüşmesi, SMS mesajı, pin ile akıllı kart veya mobil uygulama bildirimi gibi çok sayıda kolay doğrulama seçeneğine sahiptir. Daha fazla bilgi için bkz. [SQL veritabanı ve Azure SYNAPSE Analytics Ile evrensel kimlik doğrulaması](../../azure-sql/database/authentication-mfa-ssms-overview.md).
 
 Azure AD kimlik doğrulaması hakkında daha fazla bilgi için bkz.
 

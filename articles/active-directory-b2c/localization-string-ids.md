@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/15/2020
+ms.date: 11/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f75fbf286741fcc122332574332a30ad7fa23644
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 45357092784bd9c8821a81b07ce3c381c4ce7989
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096207"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410513"
 ---
 # <a name="localization-string-ids"></a>Yerelleştirme dizesi kimlikleri
 
@@ -33,7 +33,7 @@ KIMLIĞI `api.signuporsignin` ve [kendini onaylanan teknik profiliyle](self-asse
 | **logonIdentifier_email** | E-posta Adresi |
 | **requiredField_email** | Lütfen e-postanızı girin |
 | **invalid_email** | Lütfen geçerli bir e-posta adresi girin |
-| **email_pattern** | ^ [a-zA-Z0-9.! # $% & ' '*+/=? ^ _ \` { \| } ~-] + @ [a-Za-z0-9-] + (?: \\ . [ a-zA-Z0-9-] +)*$ |
+| **email_pattern** | ^ [a-zA-Z0-9.! # $% & ' ' *+/=? ^ _ \` { \| } ~-] + @ [a-Za-z0-9-] + (?: \\ . [ a-zA-Z0-9-] +)*$ |
 | **local_intro_username** | Kullanıcı adınızla oturum açın |
 | **logonIdentifier_username** | Kullanıcı adı |
 | **requiredField_username** | Lütfen Kullanıcı adınızı girin |
@@ -87,6 +87,7 @@ Aşağıdaki örnek, Facebook kimlik sağlayıcısını Arapça olarak yerelleş
 | ID | Varsayılan değer |
 | -- | ------------- |
 | **Usermessageifınvalidpassword** | Parolanız yanlış. |
+| **UserMessageIfPasswordExpired**| Parolanızın süresi doldu.|
 | **UserMessageIfClaimsPrincipalDoesNotExist** | Hesabınızı bulamıyoruz. |
 | **UserMessageIfOldPasswordUsed** | Eski bir parola kullandınız gibi görünüyor. |
 | **DefaultMessage** | Geçersiz Kullanıcı adı veya parola. |
@@ -122,6 +123,7 @@ Aşağıdaki örnek, Facebook kimlik sağlayıcısını Arapça olarak yerelleş
     <LocalizedString ElementType="UxElement" StringId="email_pattern">^[a-zA-Z0-9.!#$%&amp;’'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$</LocalizedString>
     <LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">Facebook</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidPassword">Your password is incorrect.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfPasswordExpired">Your password has expired.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalDoesNotExist">We can't seem to find your account.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfOldPasswordUsed">Looks like you used an old password.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="DefaultMessage">Invalid username or password.</LocalizedString>

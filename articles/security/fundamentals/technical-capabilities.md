@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
-ms.openlocfilehash: 3ac044666b8f723e3cc26fd7a30f5dd8a8f77d90
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 3113216b2d8a7572bcb864819a379de6823ee444
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168044"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409884"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure güvenliğe yönelik teknik özellikler
 Bu makalede, Azure 'da verilerinizi, kaynaklarınızı ve uygulamalarınızı korumanıza ve işletmenizin güvenlik ihtiyaçlarını karşılamanıza yardımcı olan güvenlik hizmetlerine giriş sunulmaktadır.
@@ -48,7 +48,7 @@ Azure, Kullanıcı kimliklerini ve kimlik bilgilerini yönetmenizi ve erişimi d
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-Microsoft kimlik ve erişim yönetimi çözümleri, çok faktörlü kimlik doğrulaması ve koşullu erişim ilkeleri gibi ek doğrulama düzeylerini etkinleştirerek, şirket veri merkezinde ve buluta uygulamalara ve kaynaklara erişimi korumaya yardımcı olur. Gelişmiş güvenlik raporlaması, denetim ve uyarı özellikleriyle şüpheli etkinliklerin izlenmesi, olası güvenlik sorunlarının önlenmesine yardımcı olur. [Azure Active Directory Premium](../../active-directory/active-directory-whatis.md) binlerce bulut uygulamasında çoklu oturum açma ve şirket içinde çalıştırdığınız Web uygulamalarına erişim sağlar.
+Microsoft kimlik ve erişim yönetimi çözümleri, çok faktörlü kimlik doğrulaması ve koşullu erişim ilkeleri gibi ek doğrulama düzeylerini etkinleştirerek, şirket veri merkezinde ve buluta uygulamalara ve kaynaklara erişimi korumaya yardımcı olur. Gelişmiş güvenlik raporlaması, denetim ve uyarı özellikleriyle şüpheli etkinliklerin izlenmesi, olası güvenlik sorunlarının önlenmesine yardımcı olur. [Azure Active Directory Premium](../../active-directory/fundamentals/active-directory-whatis.md) binlerce bulut uygulamasında çoklu oturum açma ve şirket içinde çalıştırdığınız Web uygulamalarına erişim sağlar.
 
 Azure Active Directory (Azure AD) güvenlik avantajları şunlardır:
 
@@ -88,17 +88,17 @@ Birçok kuruluş, son kullanıcı üretkenliği için Microsoft 365, Box ve Sale
 
 [Azure AD, şirket içi Active Directory buluta genişlettiğinden](../../active-directory/manage-apps/what-is-single-sign-on.md), kullanıcıların kendi birincil kurumsal hesaplarını yalnızca etki alanına katılmış cihazlarda ve şirket kaynaklarında oturum açmasını ve ayrıca işleri için gereken tüm Web ve SaaS uygulamalarını kullanmasını sağlar.
 
-Kullanıcıların birden çok Kullanıcı adı ve parola kümesini yönetmesi gerekmez, uygulama erişimi kuruluş gruplarına ve çalışanların durumlarına göre otomatik olarak sağlanabilir veya etkinleştirilebilir. Azure AD, kullanıcıların SaaS uygulamaları genelinde erişimini merkezi olarak yönetmenizi sağlayan [güvenlik ve erişim idare denetimleri sunmaktadır](../../active-directory/active-directory-enterprise-apps-manage-sso.md) .
+Kullanıcıların birden çok Kullanıcı adı ve parola kümesini yönetmesi gerekmez, uygulama erişimi kuruluş gruplarına ve çalışanların durumlarına göre otomatik olarak sağlanabilir veya etkinleştirilebilir. Azure AD, kullanıcıların SaaS uygulamaları genelinde erişimini merkezi olarak yönetmenizi sağlayan [güvenlik ve erişim idare denetimleri sunmaktadır](../../active-directory/manage-apps/view-applications-portal.md) .
 
 #### <a name="multi-factor-authentication"></a>Multi-factor authentication
 
-[Azure Multi-Factor Authentication (MFA)](../../active-directory/authentication/multi-factor-authentication.md) , birden fazla doğrulama yönteminin kullanılmasını gerektiren bir kimlik doğrulama yöntemidir ve Kullanıcı oturum açma işlemlerine ve işlemlerine kritik ikinci bir güvenlik katmanı ekler. MFA, kullanıcıların basit bir oturum açma işlemi taleplerini karşılarken veri ve uygulamalara erişimi [korumaya yardımcı olur](../../active-directory/authentication/concept-mfa-howitworks.md) . Telefon araması, SMS mesajı veya mobil uygulama bildirimi ya da doğrulama kodu ve üçüncü taraf OAuth belirteçleri aracılığıyla güçlü kimlik doğrulaması sağlar.
+[Azure Multi-Factor Authentication (MFA)](../../active-directory/authentication/concept-mfa-howitworks.md) , birden fazla doğrulama yönteminin kullanılmasını gerektiren bir kimlik doğrulama yöntemidir ve Kullanıcı oturum açma işlemlerine ve işlemlerine kritik ikinci bir güvenlik katmanı ekler. MFA, kullanıcıların basit bir oturum açma işlemi taleplerini karşılarken veri ve uygulamalara erişimi [korumaya yardımcı olur](../../active-directory/authentication/concept-mfa-howitworks.md) . Telefon araması, SMS mesajı veya mobil uygulama bildirimi ya da doğrulama kodu ve üçüncü taraf OAuth belirteçleri aracılığıyla güçlü kimlik doğrulaması sağlar.
 
 #### <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>Güvenlik izleme, uyarılar ve makine öğrenimi tabanlı raporlar
 
 Tutarsız erişim düzenlerini belirleyen güvenlik izleme ve uyarılar ve makine öğrenimi tabanlı raporlar işletmenizi korumanıza yardımcı olabilir. Azure Active Directory erişim ve kullanım raporlarını, kuruluşunuzun dizininin bütünlüğü ve güvenliğine ilişkin görünürlük elde etmek için kullanabilirsiniz. Bu bilgilerle bir dizin Yöneticisi, olası güvenlik risklerini daha iyi bir şekilde belirleyebilir ve bu da riskleri hafifletmek için yeterli planlayabilirler.
 
-Azure portal veya [Azure Active Directory portalında](https://aad.portal.azure.com/), [raporlar](../../active-directory/active-directory-reporting-azure-portal.md) aşağıdaki yollarla kategorilere ayrılır:
+Azure portal veya [Azure Active Directory portalında](https://aad.portal.azure.com/), [raporlar](../../active-directory/reports-monitoring/overview-reports.md) aşağıdaki yollarla kategorilere ayrılır:
 
 - Anomali raporları – anormal olduğunu bulduğumuz oturum açma olaylarını içerir. Amacınız, Bu etkinlikten haberdar olmanız ve bir olayın şüpheli olup olmadığı konusunda karar vermenize olanak sağlamaktır.
 
@@ -142,7 +142,7 @@ Azure AD Privileged Identity Management şunları yapmanızı sağlar:
 
 #### <a name="identity-protection"></a>Kimlik koruması
 
-[Azure AD kimlik koruması](../../active-directory/identity-protection/overview.md) , risk algılamaları ve kuruluşunuzun kimliklerini etkileyen olası güvenlik açıklarına birleştirilmiş bir görünüm sağlayan bir güvenlik hizmetidir. Kimlik koruması mevcut Azure Active Directory anomali algılama yeteneklerini kullanır (Azure AD 'nin Anomus etkinlik raporları aracılığıyla kullanılabilir) ve gerçek zamanlı anormallikleri tespit eden yeni risk algılama türlerini tanıtır.
+[Azure AD kimlik koruması](../../active-directory/identity-protection/overview-identity-protection.md) , risk algılamaları ve kuruluşunuzun kimliklerini etkileyen olası güvenlik açıklarına birleştirilmiş bir görünüm sağlayan bir güvenlik hizmetidir. Kimlik koruması mevcut Azure Active Directory anomali algılama yeteneklerini kullanır (Azure AD 'nin Anomus etkinlik raporları aracılığıyla kullanılabilir) ve gerçek zamanlı anormallikleri tespit eden yeni risk algılama türlerini tanıtır.
 
 ## <a name="secure-resource-access"></a>Güvenli kaynak erişimi
 
@@ -183,35 +183,35 @@ Yoldaki verilerin korunması, veri koruma stratejinizin önemli bir parçası ol
 
 Daha büyük veri kümeleri, [ExpressRoute](https://azure.microsoft.com/services/expressroute/)gibi adanmış bir yüksek hızlı WAN bağlantısı üzerinden taşınabilir. ExpressRoute kullanmayı seçerseniz, verileri uygulama düzeyinde [SSL/TLS](https://support.microsoft.com/kb/257591) veya ek koruma için diğer protokolleri kullanarak da şifreleyebilirsiniz.
 
-Azure portalını kullanarak Azure depolama ile etkileşim ediyorsanız, tüm işlemler HTTPS üzerinden gerçekleşir. [Azure depolama](https://azure.microsoft.com/services/storage/) ve [Azure SQL veritabanı](https://azure.microsoft.com/services/sql-database/)Ile etkileşim kurmak için https üzerinden [depolama REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) de kullanılabilir.
+Azure portalını kullanarak Azure depolama ile etkileşim ediyorsanız, tüm işlemler HTTPS üzerinden gerçekleşir. [Azure depolama](https://azure.microsoft.com/services/storage/) ve [Azure SQL veritabanı](https://azure.microsoft.com/services/sql-database/)Ile etkileşim kurmak için https üzerinden [depolama REST API](/rest/api/storageservices/) de kullanılabilir.
 
-Yoldaki verileri koruyamadığı kuruluşlar, [ortadaki adam saldırıları](https://technet.microsoft.com/library/gg195821.aspx), [gizlice dinleme](https://technet.microsoft.com/library/gg195641.aspx)ve oturum ele geçirme işlemleri için daha açıktır. Bu saldırılar gizli verilere erişim kazanmanın ilk adımı olabilir.
+Yoldaki verileri koruyamadığı kuruluşlar, [ortadaki adam saldırıları](/previous-versions/office/skype-server-2010/gg195821(v=ocs.14)), [gizlice dinleme](/previous-versions/office/skype-server-2010/gg195641(v=ocs.14))ve oturum ele geçirme işlemleri için daha açıktır. Bu saldırılar gizli verilere erişim kazanmanın ilk adımı olabilir.
 
 [VPN Gateway Için planlama ve tasarım](../../vpn-gateway/vpn-gateway-about-vpngateways.md)makalesini okuyarak Azure VPN seçeneği hakkında daha fazla bilgi edinebilirsiniz.
 
 ### <a name="enforce-file-level-data-encryption"></a>Dosya düzeyinde veri şifrelemeyi zorunlu kıl
 
-[Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) , dosyalarınızın ve e-postanızı güvenli hale getirmeye yardımcı olmak için şifreleme, kimlik ve yetkilendirme ilkeleri kullanır. Azure RMS, hem kuruluşunuzda hem de kuruluşunuzun dışında tutarak telefon, tablet ve bilgisayar gibi birden çok cihazda çalışmaktadır. Bu özellik, Azure RMS kuruluşunuzun sınırlarını terk ettiğinde bile verilerle kalan bir koruma düzeyi eklediğinden mümkündür.
+[Azure RMS](/azure/information-protection/what-is-azure-rms) , dosyalarınızın ve e-postanızı güvenli hale getirmeye yardımcı olmak için şifreleme, kimlik ve yetkilendirme ilkeleri kullanır. Azure RMS, hem kuruluşunuzda hem de kuruluşunuzun dışında tutarak telefon, tablet ve bilgisayar gibi birden çok cihazda çalışmaktadır. Bu özellik, Azure RMS kuruluşunuzun sınırlarını terk ettiğinde bile verilerle kalan bir koruma düzeyi eklediğinden mümkündür.
 
 Dosyalarınızı korumak için Azure RMS kullandığınızda, endüstri standardı şifrelemeyi, [fıps 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf)tam desteğiyle kullanıyorsunuz demektir. Veri koruma için Azure RMS özelliğinden yararlanarak, bir bulut depolama hizmeti gibi, denetimi altında olmayan bir depolama alanına kopyalansa bile, korumanın dosyayla birlikte kalması güvencesi vardır. Aynı durum, e-posta ile paylaşılan dosyalar için de aynıdır, dosya bir e-posta iletisi eki olarak korunur ve bu da korumalı ekin nasıl açılacağı hakkında yönergeler sağlar.
 Azure RMS benimseme planlaması sırasında aşağıdakiler önerilir:
 
-- [RMS Sharing uygulamasını](https://technet.microsoft.com/library/dn339006.aspx)yükler. Bu uygulama, kullanıcıların dosyaları doğrudan kolayca koruyabilmesi için bir Office eklentisi yükleyerek Office uygulamalarıyla tümleşir.
+- [RMS Sharing uygulamasını](/azure/information-protection/rms-client/sharing-app-windows)yükler. Bu uygulama, kullanıcıların dosyaları doğrudan kolayca koruyabilmesi için bir Office eklentisi yükleyerek Office uygulamalarıyla tümleşir.
 
 - Uygulamaları ve Hizmetleri Azure RMS destekleyecek şekilde yapılandırma
 
-- İş gereksinimlerinizi yansıtan [özel şablonlar](https://technet.microsoft.com/library/dn642472.aspx) oluşturun. Örneğin: en üst gizli dizi ile ilgili tüm e-postalara uygulanması gereken üst gizli veriler için bir şablon.
+- İş gereksinimlerinizi yansıtan [özel şablonlar](/azure/information-protection/configure-policy-templates) oluşturun. Örneğin: en üst gizli dizi ile ilgili tüm e-postalara uygulanması gereken üst gizli veriler için bir şablon.
 
 [Veri sınıflandırması](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) ve dosya koruması zayıf kuruluşlar, veri sızıntısı konusunda daha açıktır. Doğru dosya koruması olmadan kuruluşlar, iş öngörüleri elde edemezler, uygunsuz kullanımı izleyebilir ve dosyalara kötü amaçlı erişimi engelleyebilir.
 
 > [!Note]
-> [Azure Rights Management](https://technet.microsoft.com/library/jj585016.aspx)kullanmaya başlama makalesini okuyarak Azure RMS hakkında daha fazla bilgi edinebilirsiniz.
+> [Azure Rights Management](/azure/information-protection/requirements)kullanmaya başlama makalesini okuyarak Azure RMS hakkında daha fazla bilgi edinebilirsiniz.
 
 ## <a name="secure-your-application"></a>Uygulamanızın güvenliğini sağlama
 Azure, uygulamanızın üzerinde çalıştığı altyapı ve platformun güvenliğini sağlamaktan sorumludur. uygulamanızın kendisini güvenli hale getirmek sizin sorumluluğunuzdadır. Diğer bir deyişle, uygulama kodunuzu ve içeriğinizi güvenli bir şekilde geliştirmeniz, dağıtmanız ve yönetmeniz gerekir. Bu olmadan, uygulama kodunuz veya içeriğiniz tehditlere açık olmaya devam edebilir.
 
 ### <a name="web-application-firewall"></a>Web uygulaması güvenlik duvarı
-[Web uygulaması güvenlik duvarı (WAF)](../../application-gateway/waf-overview.md) , yaygın güvenlik açıklarından ve güvenlik açıklarından Web uygulamalarınızın merkezi korumasını sağlayan bir [Application Gateway](../../application-gateway/overview.md) özelliğidir.
+[Web uygulaması güvenlik duvarı (WAF)](../../web-application-firewall/ag/ag-overview.md) , yaygın güvenlik açıklarından ve güvenlik açıklarından Web uygulamalarınızın merkezi korumasını sağlayan bir [Application Gateway](../../application-gateway/overview.md) özelliğidir.
 
 Web uygulaması güvenlik duvarı bu işlemi [OWASP çekirdek kural kümeleri](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 veya 2.2.9’daki kurallara göre yapar. Web uygulamaları, bilinen yaygın güvenlik açıklarından yararlanan kötü amaçlı saldırıların giderek daha fazla hedefi olmaktadır. Bu açıklardan yararlanma örnekleri arasında SQL ekleme saldırıları, siteler arası komut dosyası saldırıları yaygındır. Uygulama kodunda bu tür saldırıların önlenmesi zor olabilir ve uygulama topolojisinin birden fazla katmanında ayrıntılı bakım, düzeltme eki uygulama ve izleme işlemleri gerektirebilir. Merkezi bir web uygulaması güvenlik duvarı, güvenlik yönetimini çok daha kolay hale getirir ve yetkisiz erişim ya da izinsiz giriş tehditlerine karşı uygulama yöneticilerine daha iyi güvence verir. Bir WAF çözümü, bilinen bir güvenlik açığına merkezi bir konumda düzeltme eki uygulayarak güvenlik tehdidine karşı, web uygulamalarının her birinin güvenliğini sağlamaya göre daha hızlı tepki verebilir. Var olan uygulama ağ geçitleri, web uygulaması güvenlik duvarı bulunan bir uygulama ağ geçidine kolaylıkla dönüştürülebilir.
 
@@ -232,7 +232,7 @@ Web uygulaması güvenlik duvarının koruma sağladığı bazı yaygın web gü
 - Yaygın uygulama yapılandırmalarını algılama (yani, Apache, IIS vb.)
 
 > [!Note]
-> Kuralların ve korumalarının daha ayrıntılı bir listesi için aşağıdaki [çekirdek kural kümelerine](../../application-gateway/waf-overview.md)bakın:
+> Kuralların ve korumalarının daha ayrıntılı bir listesi için aşağıdaki [çekirdek kural kümelerine](../../web-application-firewall/ag/ag-overview.md)bakın:
 
 Azure, uygulamanız için hem gelen hem de giden trafiğin güvenliğini sağlamaya yardımcı olmak için çok kullanımı kolay özellikler de sağlar. Ayrıca, Azure, Web uygulamanızı güvenlik açıklarına karşı taramak için dışarıdan sağlanan işlevselliği sunarak müşterilerin uygulama kodlarını güvenli hale getirmeye yardımcı olur.
 
@@ -265,7 +265,7 @@ Azure App Service, Azure Cloud Services ve sanal makineler tarafından kullanıl
 ## <a name="secure-your-network"></a>Ağınızı güvenli hale getirin
 Microsoft Azure, uygulamanızı ve hizmet bağlantı gereksinimlerinizi desteklemek için sağlam bir ağ altyapısı içerir. Azure 'da bulunan kaynaklar arasında, şirket içi ve Azure 'da barındırılan kaynaklar arasında ve Internet ve Azure arasında ağ bağlantısı kurulabilir.
 
-[Azure ağ altyapısı](../../virtual-machines/windows/infrastructure-example.md) , [sanal ağlar (VNet)](../../virtual-network/virtual-networks-overview.md)ile Azure kaynaklarını birbirine güvenli bir şekilde bağlamanıza olanak sağlar. VNet, buluttaki kendi ağınızın bir gösterimidir. VNet, aboneliğiniz için ayrılmış olan Azure bulut ağının mantıksal bir yalıtımına sahiptir. VNET 'leri şirket içi ağlarınıza bağlayabilirsiniz.
+[Azure ağ altyapısı](/previous-versions/azure/virtual-machines/windows/infrastructure-example) , [sanal ağlar (VNet)](../../virtual-network/virtual-networks-overview.md)ile Azure kaynaklarını birbirine güvenli bir şekilde bağlamanıza olanak sağlar. VNet, buluttaki kendi ağınızın bir gösterimidir. VNet, aboneliğiniz için ayrılmış olan Azure bulut ağının mantıksal bir yalıtımına sahiptir. VNET 'leri şirket içi ağlarınıza bağlayabilirsiniz.
 
 ![Ağınızı güvenli hale getirme (koruma)](./media/technical-capabilities/azure-security-technical-capabilities-fig6.png)
 
@@ -335,7 +335,7 @@ Bu yöntem, çeşitli kaynaklardan gelen verileri birleştirerek Azure hizmetini
 
 ### <a name="azure-security-center"></a>Azure Güvenlik Merkezi
 
-[Azure Güvenlik Merkezi](../../security-center/security-center-intro.md), Azure kaynaklarınızın güvenliğine yönelik artırılmış görünürlük ve denetim yoluyla tehditleri engellemenize, algılamanıza ve yanıtlamanıza yardımcı olur. Aboneliklerinizde, tümleşik güvenlik izleme ve ilke yönetimi sağlar; normal koşullarda gözden kaçabilecek tehditleri algılamaya yardımcı olur ve güvenlik çözümlerinin geniş ekosistemiyle çalışır.
+[Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md), Azure kaynaklarınızın güvenliğine yönelik artırılmış görünürlük ve denetim yoluyla tehditleri engellemenize, algılamanıza ve yanıtlamanıza yardımcı olur. Aboneliklerinizde, tümleşik güvenlik izleme ve ilke yönetimi sağlar; normal koşullarda gözden kaçabilecek tehditleri algılamaya yardımcı olur ve güvenlik çözümlerinin geniş ekosistemiyle çalışır.
 
 Güvenlik Merkezi, olası güvenlik açıklarını tanımlamak için Azure kaynaklarınızın güvenlik durumunu inceler. Gerekli denetimlerin yapılandırılması işlemi boyunca bir öneri listesi size rehberlik eder.
 
@@ -378,7 +378,7 @@ Ağ güvenliğinizi denetlemek, ağ güvenlik açıklarını saptamak ve BT güv
 
 ### <a name="storage-analytics"></a>Depolama analizi
 
-[Depolama Analizi](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) , toplanan işlem istatistiklerini ve bir depolama hizmetine yapılan isteklere ilişkin kapasite verilerini içeren ölçümleri saklayabilir. İşlemler hem API işlem düzeyinde hem de depolama hizmeti düzeyinde raporlanır ve depolama hizmeti düzeyinde kapasite raporlanır. Ölçüm verileri, depolama hizmeti kullanımını analiz etmek, depolama hizmetinde yapılan isteklerle ilgili sorunları tanılamak ve bir hizmeti kullanan uygulamaların performansını geliştirmek için kullanılabilir.
+[Depolama Analizi](/rest/api/storageservices/fileservices/storage-analytics) , toplanan işlem istatistiklerini ve bir depolama hizmetine yapılan isteklere ilişkin kapasite verilerini içeren ölçümleri saklayabilir. İşlemler hem API işlem düzeyinde hem de depolama hizmeti düzeyinde raporlanır ve depolama hizmeti düzeyinde kapasite raporlanır. Ölçüm verileri, depolama hizmeti kullanımını analiz etmek, depolama hizmetinde yapılan isteklerle ilgili sorunları tanılamak ve bir hizmeti kullanan uygulamaların performansını geliştirmek için kullanılabilir.
 
 ### <a name="application-insights"></a>Application Insights
 
@@ -386,13 +386,13 @@ Ağ güvenliğinizi denetlemek, ağ güvenlik açıklarını saptamak ve BT güv
 
 Şunları izler:
 
-- **İstek oranları, yanıt süreleri ve hata oranları**: Hangi sayfaların günün hangi saatlerinde popüler olduğunu ve kullanıcılarınızın konumunu öğrenin. En iyi performansı hangi sayfaların gösterdiğini görün. Daha fazla istek olduğunda yanıt süreleriniz ve hata oranlarınız yükseliyorsa bir kaynak atama sorununuz olabilir.
+- **İstek oranları, yanıt süreleri ve hata oranları** : Hangi sayfaların günün hangi saatlerinde popüler olduğunu ve kullanıcılarınızın konumunu öğrenin. En iyi performansı hangi sayfaların gösterdiğini görün. Daha fazla istek olduğunda yanıt süreleriniz ve hata oranlarınız yükseliyorsa bir kaynak atama sorununuz olabilir.
 
-- **Bağımlılık oranları, yanıt süreleri ve hata oranları**: Dış hizmetlerin sizi yavaşlatıp yavaşlatmadığını öğrenin.
+- **Bağımlılık oranları, yanıt süreleri ve hata oranları** : Dış hizmetlerin sizi yavaşlatıp yavaşlatmadığını öğrenin.
 
 - **Özel durumlar** -toplu istatistikleri analiz edin veya belirli örnekleri seçip yığın izlemenin ve ilgili isteklerin detayına gidin. Hem sunucu hem de tarayıcı özel durumları raporlanır.
 
-- **Sayfa görüntüleme sayısı ve yükleme performansı**: Kullanıcılarınızın tarayıcıları tarafından gerçekleştirilir.
+- **Sayfa görüntüleme sayısı ve yükleme performansı** : Kullanıcılarınızın tarayıcıları tarafından gerçekleştirilir.
 
 - **Web sayfalarından alınan Ajax çağrıları** -ücretler, yanıt süreleri ve hata oranları.
 
@@ -402,7 +402,7 @@ Ağ güvenliğinizi denetlemek, ağ güvenlik açıklarını saptamak ve BT güv
 
 - Docker veya Azure’dan **konak tanılama**.
 
-- Uygulamanızdan **tanılama izleme günlükleri**: İzleme olayları ile istekler arasında bağıntı kurmanıza imkan tanır.
+- Uygulamanızdan **tanılama izleme günlükleri** : İzleme olayları ile istekler arasında bağıntı kurmanıza imkan tanır.
 
 - Satılan öğeler veya oyun kazanıldı gibi iş olaylarını izlemek için istemci veya sunucu kodunda yazdığınız **özel olaylar ve ölçümler** .
 

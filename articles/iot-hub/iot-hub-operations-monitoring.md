@@ -1,27 +1,27 @@
 ---
 title: Azure IoT Hub işlemleri izleme (kullanım dışı) | Microsoft Docs
 description: IoT Hub 'ınızdaki işlemlerin durumunu gerçek zamanlı olarak izlemek için Azure IoT Hub işlemler izleme 'yi kullanma.
-author: nberdy
-manager: briz
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.author: nberdy
+ms.author: robinsh
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: 559dac0f37daf612404fca839e9918e97077029e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 045d5693c4388c6285bc6983ac2a385ceac9f6d0
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538502"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408133"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub işlemleri izleme (kullanım dışı)
 
 IoT Hub işlemler izleme, IoT Hub 'ınızdaki işlemlerin durumunu gerçek zamanlı olarak izlemenize olanak sağlar. IoT Hub birkaç işlem kategorisi içindeki olayları izler. İşlemek için bir veya daha fazla kategoriden bir veya daha fazla kategorinin bir uç noktasına olay göndermeyi tercih edebilirsiniz. Verileri hatalara göre izleyebilir veya veri desenlerine göre daha karmaşık işleme ayarlayabilirsiniz.
 
 >[!NOTE]
->IoT Hub **işlemleri izleme kullanım dışıdır ve 10 mart 2019 ' de IoT Hub kaldırılmıştır** . IoT Hub işlemlerini ve durumunu izlemek için bkz. [Monitor IoT Hub](monitor-iot-hub.md). Kullanımdan kaldırma zaman çizelgesi hakkında daha fazla bilgi için bkz. Azure [izleme Ile Azure IoT çözümlerinizi izleme ve Azure Kaynak durumu](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health).
+>IoT Hub **işlemleri izleme kullanım dışıdır ve 10 mart 2019 ' de IoT Hub kaldırılmıştır**. IoT Hub işlemlerini ve durumunu izlemek için bkz. [Monitor IoT Hub](monitor-iot-hub.md). Kullanımdan kaldırma zaman çizelgesi hakkında daha fazla bilgi için bkz. Azure [izleme Ile Azure IoT çözümlerinizi izleme ve Azure Kaynak durumu](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health).
 
 IoT Hub altı olay kategorisini izler:
 
@@ -267,8 +267,8 @@ class Program
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-IoT Hub yeteneklerini daha fazla incelemek için bkz.:
+IoT Hub izlemek üzere Azure Izleyici kullanarak daha fazla araştırma yapmak için, bkz.:
 
-* [IoT Hub Geliştirici Kılavuzu](iot-hub-devguide.md)
+* [IoT Hub’ı izleme](monitor-iot-hub.md)
 
-* [Azure IOT Edge ile sınır cihazlarına Al dağıtma](../iot-edge/quickstart-linux.md)
+* [IoT Hub işlemleri izlemeyi Azure Izleyici 'ye geçirme](iot-hub-migrate-to-diagnostics-settings.md)

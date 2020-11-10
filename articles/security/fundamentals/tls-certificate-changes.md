@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 93c2f847678292a1d38eff540a813b591c255ef0
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: dbc426144678f5bd7382b0961bf9bc3f5339b97a
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043218"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409816"
 ---
 # <a name="azure-tls-certificate-changes"></a>Azure TLS sertifikası değişiklikleri  
 
@@ -22,12 +22,12 @@ Microsoft, Azure hizmetlerini farklı bir kök sertifika yetkilisi (CA) kümesin
 
 ## <a name="when-will-this-change-happen"></a>Bu değişiklik ne zaman meydana gelir?
 
-- [Azure Active Directory](/azure/active-directory) (Azure AD) Hizmetleri, bu geçişe 7 Temmuz 2020 tarihinde başlamıştır.
+- [Azure Active Directory](../../active-directory/index.yml) (Azure AD) Hizmetleri, bu geçişe 7 Temmuz 2020 tarihinde başlamıştır.
 - Yeni oluşturulan tüm Azure TLS/SSL uç noktaları, yeni kök CA 'Lara zincirleme olan güncelleştirilmiş sertifikaları içerir.
 - Mevcut Azure uç noktaları, 13 Ağustos 2020 ' den itibaren aşamalı bir şekilde geçiş yapacaktır.
-- [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) ve [DPS](/azure/iot-dps/) , Baltimore CyberTrust kök CA 'da kalacak, ancak ara CA 'ları değişecektir. [Ayrıntılar için buraya tıklayın](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456).
-- [Azure depolama](/azure/storage) , Baltimore CyberTrust kök CA 'da kalacak, ancak ara CA 'ları değişecektir. [Ayrıntılar için buraya tıklayın](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518).
-- [Redsıs Için Azure önbelleği](/azure/azure-cache-for-redis) , Baltimore CyberTrust kök CA 'da kalacak, ancak ara CA 'ları değişecektir. [Ayrıntılar için buraya tıklayın](../../azure-cache-for-redis/cache-whats-new.md).
+- [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) ve [DPS](../../iot-dps/index.yml) , Baltimore CyberTrust kök CA 'da kalacak, ancak ara CA 'ları değişecektir. [Ayrıntılar için buraya tıklayın](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456).
+- [Azure depolama](../../storage/index.yml) , Baltimore CyberTrust kök CA 'da kalacak, ancak ara CA 'ları değişecektir. [Ayrıntılar için buraya tıklayın](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518).
+- [Redsıs Için Azure önbelleği](../../azure-cache-for-redis/index.yml) , Baltimore CyberTrust kök CA 'da kalacak, ancak ara CA 'ları değişecektir. [Ayrıntılar için buraya tıklayın](../../azure-cache-for-redis/cache-whats-new.md).
 > [!IMPORTANT]
 > Müşterilerin, Azure hizmetlerine bağlanmaya çalışırken bağlantı başarısızlıklarını engellemek için bu değişiklikten sonra uygulama (ler) i güncelleştirmeleri güncelleştirmesi gerekebilir.
 

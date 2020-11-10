@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: f4b8b4b56693023ede2ccf8ae7eeac7ed5e16824
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: c1cdeaa41dda11f2ab520cf8d31ddb2116587082
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216870"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409578"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>Azure NetApp Files için NFS istemcisini yapılandırma
 
@@ -46,7 +46,7 @@ Bu bölümdeki örneklerde aşağıdaki etki alanı adı ve IP adresi kullanıl�
 
 1. `/etc/resolv.conf`Doğru DNS sunucusuyla yapılandırın.  
 
-    Örnek:  
+    Örneğin:  
 
     `[root@reddoc cbs]# cat /etc/resolv.conf`   
     `search contoso.com`   
@@ -72,10 +72,13 @@ Bu bölümdeki örneklerde aşağıdaki etki alanı adı ve IP adresi kullanıl�
 
     `sudo realm join $DOMAIN.NAME -U $SERVICEACCOUNT --computer-ou="OU=$YOUROU"`
 
-    Örnek: 
+    Örneğin: 
 
     `sudo realm join CONTOSO.COM -U ad_admin --computer-ou="CN=Computers"`
-
+    
+    `default_realm`' De sağlanan bölge olarak ayarlandığından emin olun `/etc/krb5.conf` .  Aksi takdirde, `[libdefaults]` Aşağıdaki örnekte gösterildiği gibi dosyanın bölümüne ekleyin:
+    
+    `default_realm = CONTOSO.COM`
 
 7. Tüm NFS hizmetlerini yeniden başlatın:  
  
@@ -88,7 +91,7 @@ Bu bölümdeki örneklerde aşağıdaki etki alanı adı ve IP adresi kullanıl�
  
     `sudo kinit $SERVICEACCOUNT@DOMAIN`  
 
-    Örnek:   
+    Örneğin:   
 
     `sudo kinit ad_admin@CONTOSO.COM`
 
@@ -199,18 +202,18 @@ Bu bölümdeki örneklerde aşağıdaki etki alanı adı ve IP adresi kullanıl�
 
 5. Ubuntu 18,04, varsayılan olarak zaman hatası kullanır. [Ubuntu Bionic](https://ubuntu.com/blog/ubuntu-bionic-using-chrony-to-configure-ntp)içindeki yapılandırma yönergelerinden sonra, NTP 'yi yapılandırmak için zaman hatası kullanımı.
 
-6. Active Directory Etki Alanı ekleyin:   
+6. Active Directory etki alanına ekleyin:   
  
     `sudo realm join $DOMAIN.NAME -U $SERVICEACCOUNT --computer-ou="OU=$YOUROU"`
  
-    Örnek:    
+    Örneğin:    
     `sudo realm join CONTOSO.COM -U ad_admin --computer-ou="CN=Computers"`
 
 7. `kinit`Bilet almak için kullanıcıyla birlikte gerçekleştirin: 
  
     `sudo kinit $SERVICEACCOUNT`   
  
-    Örnek:    
+    Örneğin:    
     `sudo kinit ad_admin`  
 
 ### <a name="ubuntu-configuration-if-you-are-using-dual-protocol"></a>İkili protokol kullanıyorsanız Ubuntu yapılandırması  

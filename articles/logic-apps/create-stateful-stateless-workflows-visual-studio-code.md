@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
-ms.date: 10/16/2020
-ms.openlocfilehash: 51fd8b8427dd8214e22fa59e50b26bb9db237946
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/09/2020
+ms.openlocfilehash: 749807349fd83f9639461fd4ddd9ab771d108119
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322054"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410564"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Azure Logic Apps (Önizleme) uzantısıyla Visual Studio Code'da durum bilgisi olan veya olmayan iş akışları oluşturma
 
@@ -109,8 +109,6 @@ Bu genel önizleme için, bu yetenekler kullanılamaz veya desteklenmez:
   Daha önce belirtilen Tetikleyiciler hariç, *durum bilgisi olan* Iş akışları Azure 'da dağıtılan ve Logic Apps çalışma zamanına göre yerel olarak çalışan yerleşik Tetikleyiciler ve eylemler ile birlikte [yönetilen bağlayıcılar](../connectors/apis-list.md#managed-api-connectors)için hem Tetikleyicileri hem de eylemleri kullanabilir. Ancak *durum bilgisiz* iş akışları Şu anda yalnızca yönetilen bağlayıcılar için eylemleri destekler, *tetiklerdir* . Azure 'da bağlayıcıları durum bilgisiz iş akışınız için etkinleştirebilseniz de tasarımcı, seçtiğiniz herhangi bir yönetilen bağlayıcı tetikleyicisi göstermez.
 
 * Yeni **mantıksal uygulama (Önizleme)** kaynak türünü yalnızca [Azure 'daki bir Premium veya App Service barındırma planına](#publish-azure) veya [tümleştirme hizmeti ortamları (sesleri)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)değil bir [Docker kapsayıcısına](#deploy-docker)dağıtabilirsiniz. **Tüketim** barındırma planları bu kaynak türünü dağıtmak için desteklenmez ve kullanılabilir değildir.
-
-* Azure portal yeni **mantıksal uygulama (Önizleme)** kaynak türü ile yeni mantıksal uygulamalar oluşturamazsınız. Bu mantıksal uygulamaları yalnızca Visual Studio Code için oluşturabilirsiniz. Ancak, Visual Studio Code Azure 'a bu kaynak türüyle Logic Apps dağıttıktan sonra, [Bu mantıksal uygulamalara yeni iş akışları ekleyebilirsiniz](#add-workflows).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -530,7 +528,7 @@ Mantıksal uygulamanızı test etmek için aşağıdaki adımları izleyerek bir
    | **İptal edildi** | Çalıştırma, dış sorunlar nedeniyle durdurulmuş veya bitmedi; Örneğin, bir sistem kesintisi veya bir Azure aboneliği. |
    | **Yürütüldükten** | Çalıştırma tetiklendi ve başlatıldı, ancak bir iptal isteği alındı. |
    | **Başarısız** | Çalıştırmada en az bir eylem başarısız oldu. Hata işlemek için iş akışında sonraki hiçbir eylem ayarlanmadı. |
-   | **Çalışma** | Çalıştırma tetiklendi ve devam ediyor, ancak bu durum [eylem sınırları](logic-apps-limits-and-config.md) veya [geçerli fiyatlandırma planı](https://azure.microsoft.com/pricing/details/logic-apps/)nedeniyle kısıtlanan bir çalıştırma için de görünebilir. <p><p>**İpucu** : [tanılama günlüğü](monitor-logic-apps-log-analytics.md)ayarlarsanız, gerçekleşen tüm kısıtlama olayları hakkında bilgi edinebilirsiniz. |
+   | **Çalışıyor** | Çalıştırma tetiklendi ve devam ediyor, ancak bu durum [eylem sınırları](logic-apps-limits-and-config.md) veya [geçerli fiyatlandırma planı](https://azure.microsoft.com/pricing/details/logic-apps/)nedeniyle kısıtlanan bir çalıştırma için de görünebilir. <p><p>**İpucu** : [tanılama günlüğü](monitor-logic-apps-log-analytics.md)ayarlarsanız, gerçekleşen tüm kısıtlama olayları hakkında bilgi edinebilirsiniz. |
    | **Başarılı** | Çalıştırma başarılı oldu. Herhangi bir eylem başarısız olursa, iş akışındaki sonraki bir eylem bu hatayı işledi. |
    | **Zaman aşımına uğradı** | Geçerli süre, [ **gün cinsinden çalışma geçmişi tutma** ayarı](logic-apps-limits-and-config.md#run-duration-retention-limits)tarafından denetlenen çalışma süresi sınırını aştığından çalıştırma zaman aşımına uğradı. Bir çalıştırmanın süresi, çalışma başlangıç zamanı ve çalıştırma süresi sınırı kullanılarak bu başlangıç saatinde hesaplanır. <p><p>**Note** : çalıştırmanın süresi Ayrıca, [ **gün cinsinden çalıştırma geçmişi tutma**](logic-apps-limits-and-config.md#run-duration-retention-limits)tarafından da denetlenen geçerli *çalışma geçmişi saklama sınırını* aşarsa, çalıştırma, günlük temizleme işi tarafından temizlenir. Çalışma zamanının zaman aşımına uğrayıp tamamlanmayacağı, saklama dönemi her zaman çalıştırmanın başlangıç zamanı ve *geçerli* saklama limiti kullanılarak hesaplanır. Bu nedenle, bir uçuş çalışmasının süre sınırını azaltmanız durumunda çalıştırma zaman aşımına uğrar. Ancak çalıştırma, çalıştırma geçmişinden, çalışma süresinin bekletme sınırını aşıp aşılmadığını temel alarak, çalışır durumda kalır veya temizlenir. |
    | **Bekleme** | Çalışan, hala çalışmakta olan önceki bir iş akışı örneği nedeniyle başlatılmış veya duraklatılmış. |
@@ -551,7 +549,7 @@ Mantıksal uygulamanızı test etmek için aşağıdaki adımları izleyerek bir
    | İptal edildi | !["Durdurulan" eylem durumu simgesi][aborted-icon] | Bu eylem, dış sorunlar nedeniyle durdurulmuş veya bitmedi; Örneğin, bir sistem kesintisi veya bir Azure aboneliği. |
    | İptal Edildi | !["Iptal edildi" eylem durumu simgesi][cancelled-icon] | Eylem çalışıyor ancak iptal isteği alındı. |
    | Başarısız | !["Başarısız" eylem durumu simgesi][failed-icon] | Eylem başarısız oldu. |
-   | Çalışma | !["Çalışıyor" eylem durumu simgesi][running-icon] | Eylem şu anda çalışıyor. |
+   | Çalışıyor | !["Çalışıyor" eylem durumu simgesi][running-icon] | Eylem şu anda çalışıyor. |
    | Atlandı | !["Atlanan" eylem durumu simgesi][skipped-icon] | Eylem, hemen önceki eylem başarısız olduğu için atlandı. Bir eylem, `runAfter` Geçerli eylemin çalıştırılabilmesi için önceki eylemin başarıyla çalışmasını gerektiren bir koşula sahiptir. |
    | Başarılı | !["Başarılı" eylem durumu simgesi][succeeded-icon] | Eylem başarılı oldu. |
    | Yeniden denemeler ile başarılı oldu | !["Yeniden denemeler tamamlandı" eylem durumu simgesi][succeeded-with-retries-icon] | Eylem, yalnızca bir veya daha fazla yeniden denemeden sonra başarılı oldu. Yeniden deneme geçmişini gözden geçirmek için, çalışma geçmişi Ayrıntıları görünümünde, giriş ve çıkışları görüntüleyebilmeniz için bu eylemi seçin. |
@@ -774,12 +772,7 @@ Visual Studio Code, özgün **Logic Apps** veya **mantıksal uygulama (Önizleme
 
 ## <a name="find-and-manage-deployed-logic-apps-in-the-portal"></a>Portalda dağıtılan Logic Apps bulma ve yönetme
 
-Azure portal, Azure aboneliğinizdeki tüm dağıtılan mantıksal uygulamaları, özgün **Logic Apps** kaynak türü veya **mantıksal uygulama (Önizleme)** kaynak türü olup olmadıkları gibi görüntüleyebilirsiniz. Şu anda her kaynak türü Azure 'da ayrı kategoriler olarak düzenlenir ve yönetilir.
-
-> [!NOTE]
-> Genel önizleme için, yalnızca Azure portal dağıtılan **mantıksal uygulama (Önizleme)** kaynaklarını görüntüleyebilir, yeni **mantıksal uygulama (Önizleme)** kaynakları oluşturmamalıdır. Bu mantıksal uygulamaları yalnızca Visual Studio Code için oluşturabilirsiniz. Ancak, bu kaynak türüyle dağıtılan Logic Apps 'e [iş akışları ekleyebilirsiniz](#add-workflows) .
-
-**Mantıksal uygulama (Önizleme)** kaynak türüne sahip mantıksal uygulamaları bulmak için şu adımları izleyin:
+Azure portal, Azure aboneliğinizdeki tüm dağıtılan mantıksal uygulamaları, özgün **Logic Apps** kaynak türü veya **mantıksal uygulama (Önizleme)** kaynak türü olup olmadıkları gibi görüntüleyebilirsiniz. Şu anda her kaynak türü Azure 'da ayrı kategoriler olarak düzenlenir ve yönetilir. **Mantıksal uygulama (Önizleme)** kaynak türüne sahip mantıksal uygulamaları bulmak için şu adımları izleyin:
 
 1. Azure portal arama kutusuna girin `logic app preview` . Sonuçlar listesi göründüğünde, **Hizmetler** altında **mantıksal uygulama (Önizleme)** öğesini seçin.
 

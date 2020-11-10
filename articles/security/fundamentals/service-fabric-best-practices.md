@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 4548bf77c01194802c2e6203bcbf9fbd240370a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93b25e65914ce603b4a969eda7fd7c048704e466
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81461659"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410021"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric güvenliği en iyi yöntemleri
 Azure 'da uygulama dağıtmak hızlı, kolay ve ekonomik bir işlemdir. Bulut uygulamanızı üretime dağıtmadan önce, uygulamanızda güvenli kümeler uygulamaya yönelik temel ve önerilen en iyi yöntemler listesini gözden geçirin.
@@ -132,7 +132,7 @@ Sertifika, Azure 'daki SSL/TLS sertifikaları için aşağıdaki gereksinimleri 
 -   Sertifikanın konu adı, bulut hizmetinize erişmek için kullanılan etki alanı adıyla aynı olmalıdır.
 
     - Bulut hizmetinize erişmek için kullanmak üzere özel bir etki alanı adı alın.
-    - Bir CA 'dan, hizmetinizin özel etki alanı adıyla eşleşen bir konu adına sahip bir sertifika isteyin. Örneğin, özel etki alanı adınız __contoso__**. com**ise, CA 'nızdan alınan sertifikanın konu adı **. contoso.com** veya __www__**. contoso.com**olmalıdır.
+    - Bir CA 'dan, hizmetinizin özel etki alanı adıyla eşleşen bir konu adına sahip bir sertifika isteyin. Örneğin, özel etki alanı adınız __contoso__**. com** ise, CA 'nızdan alınan sertifikanın konu adı **. contoso.com** veya __www__**. contoso.com** olmalıdır.
 
     >[!NOTE]
     >__Cloudapp__**.net** etkı alanı IÇIN bir CA 'dan SSL/TLS sertifikası elde edilemez.
@@ -178,6 +178,6 @@ Azure Service Fabric, bir [Service Fabric kümesine](../../service-fabric/servic
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Service Fabric güvenlik denetim listesi](service-fabric-checklist.md)
+- [Service Fabric güvenlik denetim listesi](../../service-fabric/service-fabric-best-practices-security.md)
 - Service Fabric [geliştirme ortamınızı](../../service-fabric/service-fabric-get-started.md)ayarlayın.
 - [Service Fabric destek seçenekleri](../../service-fabric/service-fabric-support.md)hakkında bilgi edinin.

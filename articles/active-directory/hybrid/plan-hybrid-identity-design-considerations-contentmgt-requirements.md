@@ -16,15 +16,15 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d970fd133f8c43319e7f1fdb6b3a50c3c05f687
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57990fda7475b95bd6582fa5a495ac8d24aa55d5
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "64918437"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408541"
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>Karma kimlik çözümünüz için içerik yönetimi gereksinimlerini belirleme
-İşletmenizin içerik yönetimi gereksinimlerini anlamak, hangi karma kimlik çözümünün kullanılacağı kararını doğrudan etkileyebilir. Birden çok cihazın ve kullanıcıların kendi[cihazlarını (](https://aka.ms/byodcg)KCG) getirebilmesi sayesinde, Şirket kendi verilerini korumalıdır, ancak aynı zamanda kullanıcının gizliliğini korumak zorunda kalır. Genellikle bir Kullanıcı kendi cihazına sahip olduğunda, kullandıkları uygulamaya göre farklı olacak birden çok kimlik bilgisi de olabilir. Kişisel kimlik bilgileri kullanılarak oluşturulan içeriklerin ve şirket kimlik bilgileri kullanılarak oluşturulanların ayırt edilmesi önemlidir. Kimlik çözümünüz, gizliliği güvence altına alırken ve veri sızıntılarına karşı korumayı artırarak son kullanıcıya sorunsuz bir deneyim sunmak için bulut hizmetleriyle etkileşime girebilmelidir. 
+İşletmenizin içerik yönetimi gereksinimlerini anlamak, hangi karma kimlik çözümünün kullanılacağı kararını doğrudan etkileyebilir. Birden çok cihazın ve kullanıcıların kendi[cihazlarını (](/mem/intune/fundamentals/byod-technology-decisions)KCG) getirebilmesi sayesinde, Şirket kendi verilerini korumalıdır, ancak aynı zamanda kullanıcının gizliliğini korumak zorunda kalır. Genellikle bir Kullanıcı kendi cihazına sahip olduğunda, kullandıkları uygulamaya göre farklı olacak birden çok kimlik bilgisi de olabilir. Kişisel kimlik bilgileri kullanılarak oluşturulan içeriklerin ve şirket kimlik bilgileri kullanılarak oluşturulanların ayırt edilmesi önemlidir. Kimlik çözümünüz, gizliliği güvence altına alırken ve veri sızıntılarına karşı korumayı artırarak son kullanıcıya sorunsuz bir deneyim sunmak için bulut hizmetleriyle etkileşime girebilmelidir. 
 
 Aşağıdaki şekilde gösterildiği gibi, içerik yönetimi sağlamak için kimlik çözümünüz farklı teknik denetimlerle yararlanılabilir olacaktır:
 
@@ -69,4 +69,3 @@ Karma kimlik çözümünüzü planlarken, kuruluşunuzun gereksinimlerine göre 
 
 ## <a name="see-also"></a>Ayrıca Bkz.
 [Tasarım konularına genel bakış](plan-hybrid-identity-design-considerations-overview.md)
-

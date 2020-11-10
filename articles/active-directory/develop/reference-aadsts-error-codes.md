@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/30/2020
+ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4bd738197c84d7dce36f087d170f61a55d8e9f32
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 59ed397f3bd54a324f8fa375a3ea870860c31142
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241336"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410938"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD Kimlik Doğrulaması ve yetkilendirme hata kodları
 
@@ -74,7 +74,7 @@ Azure Active Directory (Azure AD) güvenlik belirteci hizmeti 'nden (STS) dönd�
 ## <a name="lookup-current-error-code-information"></a>Geçerli hata kodu bilgilerini ara
 Hata kodları ve mesajlar değiştirilebilir.  En güncel bilgiler için, [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) AADSTS hata açıklamalarını, düzeltmeleri ve önerilen bazı geçici çözümleri bulmak için sayfaya göz atın.  
 
-Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADSTS16000" hata kodunu aldıysanız, [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) "16000" için bir arama yapın.  Ayrıca, URL 'ye hata kodu numarasını ekleyerek doğrudan belirli bir hataya da bağlanabilirsiniz: [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000) .
+Örneğin, "AADSTS50058" hata kodunu aldıysanız, [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) "50058" için bir arama yapın.  Ayrıca, URL 'ye hata kodu numarasını ekleyerek doğrudan belirli bir hataya da bağlanabilirsiniz: [https://login.microsoftonline.com/error?code=50058](https://login.microsoftonline.com/error?code=50058) .
 
 ## <a name="aadsts-error-codes"></a>AADSTS hata kodları
 
