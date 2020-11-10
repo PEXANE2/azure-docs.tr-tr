@@ -1,19 +1,19 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: luis
+ms.subservice: qna-maker
 ms.topic: include
 ms.custom: include file
-ms.date: 04/27/2020
-ms.openlocfilehash: fabd79829425147667c46f686a1ec1ceb6a29b00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 11/09/2020
+ms.openlocfilehash: fa497b69b067d5556f11effdb52505895ecc3bdd
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87132916"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386623"
 ---
 Bu Postman tabanlı hızlı başlangıç, bilgi tabanınızdan yanıt alma konusunda size yol gösterir.
 
@@ -28,6 +28,8 @@ Bu Postman tabanlı hızlı başlangıç, bilgi tabanınızdan yanıt alma konus
 > Bilgi tabanınızdan bir soruya yanıt oluşturmaya hazırsanız, bilgi bankasını [eğitmeniz](../Quickstarts/create-publish-knowledge-base.md#save-and-train) ve [yayımlamanız](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) gerekir. Bilgi Bankası 'niz yayımlandığında **Yayımla** sayfası, yanıt oluşturmak için http isteği ayarlarını görüntüler. **Postman** sekmesi, yanıt oluşturmak için gereken ayarları gösterir.
 
 ## <a name="set-up-postman-for-requests"></a>İstekler için Postman ayarla
+
+# <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
 
 Bu hızlı başlangıç, Postman **Post** isteği için aynı ayarları kullanır ve daha sonra, sorgulanılmaya çalıştığınız öğesine göre Service 'e gönderilen JSON gövde gönderisini yapılandırır.
 
@@ -44,6 +46,25 @@ Postman 'ı yapılandırmak için bu yordamı kullanın, sonra JSON gövdesini y
     ||`{"question":"<Your question>"}`|POST isteğinin gövdesi JSON nesnesi olarak. Bu değer, sorgunun ne işe hazırlandığına bağlı olarak, aşağıdaki her bir bölümde değişecektir.|
 
 1. Postman 'ı açın ve yayımlanan Bilgi Bankası ayarlarınıza sahip yeni bir temel **gönderi** isteği oluşturun. Aşağıdaki bölümlerde, POSTAYı Bilgi Bankası ile değiştirmek için JSON gövdesini değiştirin.
+
+# <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
+
+Bu hızlı başlangıç, Postman **Post** isteği için aynı ayarları kullanır ve daha sonra, sorgulanılmaya çalıştığınız öğesine göre Service 'e gönderilen JSON gövde gönderisini yapılandırır.
+
+Postman 'ı yapılandırmak için bu yordamı kullanın, sonra JSON gövdesini yapılandırmak için sonraki her bölümü okuyun.
+
+1. Bilgi Bankası 'nın **Ayarlar** sayfasında, bilgi bankasından yanıt oluşturmak için kullanılan yapılandırmayı görmek Için **Postman** sekmesini seçin. Postman 'da kullanmak için aşağıdaki bilgileri kopyalayın.
+
+    |Name|Ayar|Amaç ve değer|
+    |--|--|--|
+    |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|Bu, URL için HTTP yöntemidir ve yoldur.|
+    |`Host`|`https://YOUR-RESOURCE_NAME.cognitiveservices.azure.com/qnamaker`|Bu, URL 'nin ana bilgisayarı. Tüm generateAnswer URL 'sini almak için Konağı ve gönderi değerlerini birleştirin.|
+    |`Ocp-Apim-Subscription-Key`|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`|İsteğinizi yetkilendirmek için üst bilgi değeri. |
+    |`Content-type`|`application/json`|İçeriğiniz için üst bilgi değeri.|
+    ||`{"question":"<Your question>"}`|POST isteğinin gövdesi JSON nesnesi olarak. Bu değer, sorgunun ne işe hazırlandığına bağlı olarak, aşağıdaki her bir bölümde değişecektir.|
+
+1. Postman 'ı açın ve yayımlanan Bilgi Bankası ayarlarınıza sahip yeni bir temel **gönderi** isteği oluşturun. Aşağıdaki bölümlerde, POSTAYı Bilgi Bankası ile değiştirmek için JSON gövdesini değiştirin.
+---
 
 ## <a name="use-metadata-to-filter-answer"></a>Yanıtı filtrelemek için meta verileri kullanma
 
