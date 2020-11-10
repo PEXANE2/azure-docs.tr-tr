@@ -64,6 +64,8 @@
           href: connection-monitor-preview-create-using-portal.md
         - name: ARMClient kullanma
           href: connection-monitor-preview-create-using-arm-client.md
+        - name: PowerShell'i kullanma
+          href: connection-monitor-create-using-powershell.md
     - name: Bağlantı İzleyicisi’ne geçiş (Önizleme)
       items:
         - name: Ağ Performansı İzleyicisi’nden

@@ -120,6 +120,8 @@
           href: understand/subscription-transfer.md
         - name: İş ortakları arasında abonelik aktarma (Önizleme)
           href: manage/azure-plan-subscription-transfer-partners.md
+        - name: Azure EA portalını kullanmaya başlama
+          href: manage/ea-portal-get-started.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Maliyet Yönetimi ve Faturalandırma’yı yapılandırma
@@ -200,8 +202,6 @@
               href: manage/cancel-azure-subscription.md
         - name: Kurumsal Sözleşme aboneliklerini yönetme
           items:
-            - name: Azure EA portalını kullanmaya başlama
-              href: manage/ea-portal-get-started.md
             - name: Azure'da EA rolleri
               href: manage/understand-ea-roles.md
             - name: Azure EA portalı yönetimi

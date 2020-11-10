@@ -40,6 +40,8 @@
       href: front-door-backend-pool.md
     - name: Front Door ile önbelleğe alma
       href: front-door-caching.md
+    - name: DDoS koruması
+      href: front-door-ddos.md
     - name: Front Door hakkında SSS
       href: front-door-faq.md
     - name: Coğrafi filtreleme

@@ -173,7 +173,7 @@
           href: sql/resource-consumption-models.md
         - name: İşlenen veriler
           href: sql/data-processed.md
-        - name: İsteğe bağlı SQL en iyi yöntemleri
+        - name: Sunucusuz SQL havuzu için en iyi yöntemler
           href: sql/best-practices-sql-on-demand.md
         - name: Ayrılmış SQL havuzu için en iyi yöntemler
           href: sql/best-practices-sql-pool.md
