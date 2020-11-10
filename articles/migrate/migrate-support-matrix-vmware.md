@@ -2,13 +2,13 @@
 title: Azure geçişi 'nde VMware değerlendirmesi desteği
 description: Azure geçişi sunucu değerlendirmesi ile VMware VM değerlendirmesi desteği hakkında bilgi edinin.
 ms.topic: conceptual
-ms.date: 06/08/2020
-ms.openlocfilehash: 8b119b56e7e4c7fac74c57cc5c48fb44f91a7ee6
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.date: 11/10/2020
+ms.openlocfilehash: 6e033bdf0f1492d6cbb4c41192cca8206816917d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345440"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444954"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware değerlendirmesi için destek matrisi 
 
@@ -66,14 +66,14 @@ Sunucu değerlendirmesi, makineleri keşfetmenin yanı sıra makinelerde çalı�
 
 **Destek** | **Ayrıntılar**
 --- | ---
-**Desteklenen makineler** | Uygulama bulma Şu anda yalnızca VMware VM 'Leri için destekleniyor. Her bir Azure geçişi gerecinden en fazla 10000 VMware VM 'ye yüklenmiş uygulamaları bulabilirsiniz.
-**İşletim sistemleri** | Uygulama bulma, tüm Windows ve Linux sürümlerini çalıştıran VM 'Ler için desteklenir.
+**Desteklenen makineler** | Şu anda yalnızca VMware VM 'Leri için destekleniyor. Her bir Azure geçişi gerecinden en fazla 10000 VMware VM 'ye yüklenmiş uygulamaları bulabilirsiniz.
+**İşletim sistemleri** | Tüm Windows ve Linux sürümlerini çalıştıran VM 'Ler için destek.
 **VM gereksinimleri** | VMware araçlarının, uygulamaları keşfetmesini istediğiniz VM 'lerde yüklü ve çalışıyor olması gerekir. <br/><br/> VMware araçları sürümü 10.2.0 'dan daha sonra olmalıdır.<br/><br/> VM 'Lerin PowerShell sürüm 2,0 veya sonraki bir sürümü yüklü olmalıdır.
-**Bulma** | Uygulama bulma aracısız. Makine konuk kimlik bilgilerini kullanır ve WMI ve SSH çağrılarını kullanarak makinelere uzaktan erişir.
+**Bulma** | Bir VM 'de yüklü uygulamalar hakkında bilgiler, VM 'de yüklü olan VMware araçları kullanılarak vCenter Server toplayın. Gereç, vSphere API 'Lerini kullanarak vCenter Server uygulama bilgilerini toplar. Uygulama bulma aracısız. Sanal makinelere hiçbir şey yüklenmez ve gereç doğrudan VM 'lere bağlanamaz. WMI/SSH, sanal makinelerde etkinleştirilmelidir ve kullanılabilir olmalıdır.
 **vCenter** | Değerlendirme için kullanılan vCenter Server salt oku hesabı, **Virtual Machines**  >  uygulama bulma için VM ile etkileşime geçmek üzere sanal makineler **Konuk işlemleri** için etkinleştirilmiş ayrıcalıklara ihtiyaç duyuyor.
 **VM erişimi** | Uygulama bulma 'nın uygulama bulma için VM 'de yerel bir kullanıcı hesabı olması gerekir.<br/><br/> Azure geçişi Şu anda tüm Windows sunucuları için bir kimlik bilgisi ve tüm Linux sunucuları için bir kimlik bilgisi kullanımını desteklemektedir.<br/><br/> Windows VM 'ler için bir Konuk Kullanıcı hesabı ve tüm Linux sanal makineleri için normal/normal kullanıcı hesabı (sudo erişimi olmayan) oluşturursunuz.
 **Bağlantı noktası erişimi** | Azure geçişi gereci, uygulamaları bulmayı istediğiniz VM 'Leri çalıştıran ESXi konaklarında TCP bağlantı noktası 443 ' e bağlanabilmelidir. VCenter Server, uygulama bilgilerini içeren dosyayı indirmek için bir ESXI ana bilgisayar bağlantısı döndürür.
-**Sınırlar** | Uygulama bulma için, her bir Azure geçişi gereci üzerinde en fazla 10000 VM bulabilirsiniz.
+
 
 
 ## <a name="dependency-analysis-requirements-agentless"></a>Bağımlılık Analizi gereksinimleri (aracısız)
@@ -82,17 +82,15 @@ Sunucu değerlendirmesi, makineleri keşfetmenin yanı sıra makinelerde çalı�
 
 **Gereksinim** | **Ayrıntılar**
 --- | --- 
-**Dağıtımdan önce** | Sunucu değerlendirme aracı projeye eklenerek bir Azure geçişi projesi olması gerekir.<br/><br/>  Şirket içi VMware makinelerinizi bulmaya yönelik bir Azure geçiş gereci ayarladıktan sonra bağımlılık görselleştirmesini dağıtırsınız.<br/><br/> İlk kez bir proje oluşturmayı [öğrenin](create-manage-projects.md) .<br/> Mevcut bir projeye değerlendirme aracı eklemeyi [öğrenin](how-to-assess.md) .<br/> VMware VM 'lerinin değerlendirmesi için Azure geçişi gerecini ayarlamayı [öğrenin](how-to-set-up-appliance-vmware.md) .
 **Desteklenen makineler** | Şu anda yalnızca VMware VM 'Leri için destekleniyor.
-**Windows VM'leri** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 bit).<br/>Microsoft Windows Server 2008 (32-bit). PowerShell 'in yüklü olduğundan emin olun.
-**vCenter Server kimlik bilgileri** | Bağımlılık görselleştirmesine, salt okuma erişimi olan bir vCenter Server hesabına ve konuk Işlemleri > sanal makineler için etkinleştirilmiş ayrıcalıklara sahip olması gerekir.
-**Windows VM izinleri** |  Bağımlılık analizi için, Azure geçişi gereci, Windows VM 'lerine erişmek için bir etki alanı yöneticisi hesabı veya yerel yönetici hesabı gerekir.
-**Linux VM'leri** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Desek6, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.<br/> SUSE Linux Enterprise Server 11 ve üzeri
-**Linux hesabı** | Bağımlılık analizi için, Linux makinelerde Azure geçişi gereci bir kök kullanıcı hesabına ihtiyaç duyuyor<br/><br/> Alternatif olarak, Kullanıcı hesabının/bin/netstat ve/bin/ls dosyalarında bu izinlere ihtiyacı vardır: CAP_DAC_READ_SEARCH ve CAP_SYS_PTRACE. Aşağıdaki komutları kullanarak bu özellikleri ayarlayın: <br/> sudo setcap CAP_DAC_READ_SEARCH, CAP_SYS_PTRACE = EP/bin/ls <br/> sudo setcap CAP_DAC_READ_SEARCH, CAP_SYS_PTRACE = EP/bin/netstat
-**Gerekli aracılar** | Çözümlemek istediğiniz makinelerde aracı gerekmez.
-**VMware araçları** | VMware araçları (10,2 ' den sonraki sürümler), çözümlemek istediğiniz her sanal makinede yüklü ve çalışır olmalıdır.
-**PowerShell** | Windows VM 'lerinin PowerShell sürüm 2,0 veya üzeri yüklü olmalıdır.
-**Bağlantı noktası erişimi** | Çözümlemek istediğiniz VM 'Leri çalıştıran ESXi konağında, Azure geçiş gereci 443 numaralı TCP bağlantı noktasına bağlanabilmelidir.
+**Windows VM'leri** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 bit).<br/>Microsoft Windows Server 2008 (32-bit). 
+**Linux VM'leri** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Desek6, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.<br/> SUSE Linux Enterprise Server 11 ve üzeri.
+**VM gereksinimleri** | VMware araçları (10.2.0 ' den sonraki sürümler), çözümlemek istediğiniz VM 'lerde yüklü ve çalışır olmalıdır.<br/><br/> VM 'Lerin PowerShell sürüm 2,0 veya sonraki bir sürümü yüklü olmalıdır.
+**Bulma yöntemi** |  VM 'Ler arasında bağımlılık bilgileri, sanal makinede yüklü olan VMware araçları kullanılarak vCenter Server toplanır. Gereç, vSphere API 'Lerini kullanarak vCenter Server bilgileri toplar. Bulma aracısız. VM 'ye hiçbir şey yüklenmez ve gereç doğrudan VM 'lere bağlanamaz. WMI/SSH, sanal makinelerde etkinleştirilmelidir ve kullanılabilir olmalıdır.
+**vCenter hesabı** | Değerlendirme için Azure geçişi tarafından kullanılan salt tanımlı hesabın, **sanal makineler > Konuk işlemleri** için etkinleştirilmiş ayrıcalıkları vardır.
+**Windows VM izinleri** |  VM 'lerde yerel yönetici izinlerine sahip bir hesap (yerel yönetici veya etki alanı).
+**Linux hesabı** | Kök kullanıcı hesabı veya/bin/netstat ve/bin/ls dosyalarında şu izinlere sahip bir hesap: CAP_DAC_READ_SEARCH ve CAP_SYS_PTRACE.<br/><br/> Aşağıdaki komutları kullanarak bu özellikleri ayarlayın: <br/><br/> sudo setcap CAP_DAC_READ_SEARCH, CAP_SYS_PTRACE = EP/bin/ls<br/><br/> sudo setcap CAP_DAC_READ_SEARCH, CAP_SYS_PTRACE = EP/bin/netstat
+**Bağlantı noktası erişimi** | Azure geçişi gereci, bağımlılıklarını öğrenmek istediğiniz VM 'Leri çalıştıran ESXI konaklarında TCP bağlantı noktası 443 ' e bağlanabilmelidir. VCenter Server, bağımlılık bilgilerini içeren dosyayı indirmek için bir ESXI ana bilgisayar bağlantısı döndürür.
 
 
 ## <a name="dependency-analysis-requirements-agent-based"></a>Bağımlılık Analizi gereksinimleri (aracı tabanlı)

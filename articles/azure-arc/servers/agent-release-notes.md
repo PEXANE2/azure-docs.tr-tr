@@ -2,13 +2,13 @@
 title: Azure Arc etkin sunucular aracısındaki yenilikler
 description: Bu makalede, Azure Arc etkin sunucular aracısına yönelik sürüm notları bulunur. Özetlenen birçok sorun için ek ayrıntıların bağlantıları vardır.
 ms.topic: conceptual
-ms.date: 09/16/2020
-ms.openlocfilehash: 1918d03b5bbfaaa64b7d74c18fad4eb9a86800a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/10/2020
+ms.openlocfilehash: 5322a92bfc67d9f80c2271a3ef9b5626455e9ad7
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908164"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445294"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Azure Arc etkin sunucular aracısındaki yenilikler
 
@@ -17,6 +17,21 @@ Azure Arc etkin sunucular bağlı makine Aracısı, iyileştirmeleri sürekli ol
 - En son yayınlar
 - Bilinen sorunlar
 - Hata düzeltmeleri
+
+## <a name="november-2020"></a>Kasım 2020
+
+### <a name="fixed"></a>Sabit
+
+RPM tabanlı dağıtımlarla yükseltildikten sonra ara sunucu yapılandırmasının kaybedilme sorunu çözüldü.
+
+## <a name="october-2020"></a>Ekim 2020
+
+### <a name="fixed"></a>Sabit
+
+- Alternatif GC Daemon birimi dosya konumunu işlemek için sabit proxy betiği.
+- GuestConfig Aracısı güvenilirlik değişiklikleri.
+- US Gov Virginia bölge için GuestConfig Aracısı desteği.
+- GuestConfig Aracısı uzantısı, hatalara karşı daha ayrıntılı olması için iletileri rapor ediyor.
 
 ## <a name="september-2020"></a>Eylül 2020
 

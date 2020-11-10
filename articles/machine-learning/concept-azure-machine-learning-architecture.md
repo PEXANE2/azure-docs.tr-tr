@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: c96263b5d40d4f6a4904a6da3d40ad98ac81f030
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f17cdd42c892f6c0d218875cf304846937ba58d7
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322309"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444850"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning nasıl kullanılır: mimari ve kavramlar
 
@@ -36,7 +36,7 @@ ms.locfileid: "93322309"
   * [Pipelines](#ml-pipelines)
   * [Veri kümeleri](#datasets-and-datastores)
   * [Modeller](#models)
-  * [Noktalarının](#endpoints)
+  * [Uç Noktalar](#endpoints)
 
 Çalışma alanı, çalışma alanı tarafından kullanılan diğer Azure kaynaklarını içerir:
 
@@ -46,6 +46,19 @@ ms.locfileid: "93322309"
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): işlem hedefleri ve çalışma alanı için gereken diğer hassas bilgiler tarafından kullanılan gizli dizileri depolar.
 
 Çalışma alanını başkalarıyla paylaşabilirsiniz.
+
+### <a name="create-workspace"></a>Çalışma alanı oluşturma
+
+Aşağıdaki diyagramda, çalışma alanı oluşturma iş akışı gösterilmektedir.
+
+* Desteklenen Azure Machine Learning istemcilerinden birinden (Azure CLı, Python SDK, Azure portal) Azure AD 'de oturum açıp uygun Azure Resource Manager belirtecini istemeniz gerekir.
+* Çalışma alanını oluşturmak için Azure Resource Manager çağırın. 
+* Azure Resource Manager, çalışma alanını sağlamak için Azure Machine Learning kaynak sağlayıcısıyla iletişim kurar.
+* Mevcut kaynakları belirtmezseniz, aboneliğinizde gereken ek kaynaklar oluşturulur.
+
+Gerektiğinde, bir çalışma alanına (Azure Kubernetes hizmeti veya VM 'Ler gibi) bağlı diğer işlem hedeflerini de sağlayabilirsiniz.
+
+[![Çalışma alanı iş akışı oluştur](media/concept-azure-machine-learning-architecture/create-workspace.png)](media/concept-azure-machine-learning-architecture/create-workspace.png#lightbox)
 
 ## <a name="computes"></a>Karmasını
 
@@ -114,6 +127,10 @@ Bir modeli eğitme için bir komut dosyası gönderdiğinizde bir çalıştırma
 
 Bir çalıştırma gönderdiğinizde, Azure Machine Learning betiği içeren dizini zip dosyası olarak sıkıştırır ve işlem hedefine gönderir. ZIP dosyası daha sonra ayıklanır ve betik burada çalıştırılır. Azure Machine Learning Ayrıca ZIP dosyasını çalışma kaydının bir parçası olarak bir anlık görüntü olarak depolar. Çalışma alanına erişimi olan herkes bir çalıştırma kaydına gözatabilir, anlık görüntüyü indirebilir.
 
+Aşağıdaki diyagramda, kod anlık görüntüsü iş akışı gösterilmektedir.
+
+[![Kod anlık görüntüsü iş akışı](media/concept-azure-machine-learning-architecture/code-snapshot.png)](media/concept-azure-machine-learning-architecture/code-snapshot.png#lightbox)
+
 ### <a name="logging"></a>Günlüğe Kaydetme
 
 Azure Machine Learning, standart çalıştırma ölçümlerini sizin için otomatik olarak günlüğe kaydeder. Ancak, [isteğe bağlı ölçümleri günlüğe kaydetmek Için Python SDK 'sını](how-to-track-experiments.md)de kullanabilirsiniz.
@@ -129,6 +146,31 @@ Günlüklerinizi görüntülemenin birden çok yolu vardır: çalışma durumunu
 Kaynak dizinin yerel bir git deposu olduğu bir eğitim çalıştırması başlattığınızda, depo hakkındaki bilgiler çalıştırma geçmişinde depolanır. Bu, komut dosyası çalıştırma yapılandırması veya ML işlem hattı kullanılarak gönderilen çalışmalarla birlikte çalışır. Ayrıca SDK veya Machine Learning CLı 'dan gönderilen çalıştırmalar için de çalışır.
 
 Daha fazla bilgi için bkz. [Azure Machine Learning Için git tümleştirmesi](concept-train-model-git-integration.md).
+
+### <a name="training-workflow"></a>Eğitim iş akışı
+
+Bir modeli eğitemek için bir deneme çalıştırdığınızda aşağıdaki adımlar gerçekleşir. Bunlar aşağıdaki eğitim iş akışı diyagramında gösterilmektedir:
+
+* Azure Machine Learning, önceki bölümde kaydedilen kod anlık görüntüsünün anlık görüntü KIMLIĞIYLE çağırılır.
+* Azure Machine Learning, bir çalıştırma KIMLIĞI (isteğe bağlı) ve Machine Learning bir hizmet belirteci oluşturur. Bu, daha sonra Machine Learning hizmetiyle iletişim kurmak için Machine Learning İşlem/VM gibi işlem hedefleri tarafından daha sonra kullanılır.
+* Eğitim işlerini çalıştırmak için yönetilen bir işlem hedefi (Machine Learning İşlem gibi) veya yönetilmeyen bir işlem hedefi (VM 'Ler gibi) seçebilirsiniz. Her iki senaryo için de veri akışları aşağıda verilmiştir:
+   * Microsoft aboneliğindeki bir anahtar kasasında SSH kimlik bilgileri tarafından erişilen VM 'Ler/HDInsight. Azure Machine Learning, işlem hedefinde yönetim kodu çalıştırır:
+
+   1. Ortamı hazırlar. (Docker, VM 'Ler ve yerel bilgisayarlar için bir seçenektir. Docker kapsayıcılarındaki denemeleri 'ın nasıl çalıştığını anlamak için Machine Learning İşlem için aşağıdaki adımlara bakın.)
+   1. Kodu indirir.
+   1. Ortam değişkenlerini ve konfigürasyonları ayarlar.
+   1. Kullanıcı komut dosyalarını çalıştırır (önceki bölümde bahsedilen kod anlık görüntüsü).
+
+   * Machine Learning İşlem, çalışma alanı tarafından yönetilen bir kimlikle erişilir.
+Machine Learning İşlem yönetilen bir işlem hedefi olduğundan (Microsoft tarafından yönetilen), Microsoft Aboneliğiniz kapsamında çalışır.
+
+   1. Gerekirse uzak Docker oluşturma kapalıdır.
+   1. Yönetim kodu kullanıcının Azure dosya paylaşımında yazılır.
+   1. Kapsayıcı bir başlangıç komutuyla başlatılır. Diğer bir deyişle, önceki adımda açıklandığı gibi yönetim kodu.
+
+* Çalıştırma tamamlandıktan sonra, çalıştırmaları ve ölçümleri sorgulayabilirsiniz. Aşağıdaki akış diyagramında, bu adım, eğitim işlem hedefi Cosmos DB veritabanındaki depolamadan Azure Machine Learning için yeniden çalıştırma ölçümleri yazdığında meydana gelir. İstemciler, Azure Machine Learning çağırabilir. Machine Learning, Cosmos DB veritabanından çekme ölçümlerini açıp istemciye geri döndürmeyecektir.
+
+[![Eğitim iş akışı](media/concept-azure-machine-learning-architecture/training-and-metrics.png)](media/concept-azure-machine-learning-architecture/training-and-metrics.png#lightbox)
 
 ## <a name="models"></a>Modeller
 
@@ -178,9 +220,21 @@ Bir uç nokta, modelinize veya tümleşik cihaz dağıtımları için bir IoT mo
 
 Bir modeli Web hizmeti olarak dağıtırken, uç nokta Azure Container Instances, Azure Kubernetes hizmeti veya FPGAs üzerinde dağıtılabilir. Hizmeti modelinizde, betiğinizden ve ilişkili dosyalardan oluşturursunuz. Bunlar, modelin yürütme ortamını içeren bir temel kapsayıcı görüntüsüne yerleştirilir. Görüntüde, Web hizmetine gönderilen Puanlama isteklerini alan, yük dengeli bir HTTP uç noktası bulunur.
 
-Web hizmetinizi izlemek için telemetri veya model telemetrisini Application Insights sağlayabilirsiniz. Telemetri verilerine yalnızca sizin erişebilirsiniz.  Application Insights ve depolama hesabı örneklerinizin içinde depolanır.
+Web hizmetinizi izlemek için telemetri veya model telemetrisini Application Insights sağlayabilirsiniz. Telemetri verilerine yalnızca sizin erişebilirsiniz.  Application Insights ve depolama hesabı örneklerinizin içinde depolanır. Otomatik ölçeklendirmeyi etkinleştirdiyseniz, Azure dağıtımınızı otomatik olarak ölçeklendirir.
 
-Otomatik ölçeklendirmeyi etkinleştirdiyseniz, Azure dağıtımınızı otomatik olarak ölçeklendirir.
+Aşağıdaki diyagramda, Web hizmeti uç noktası olarak dağıtılan bir model için çıkarım iş akışı gösterilmektedir:
+
+Ayrıntılar aşağıda verilmiştir:
+
+* Kullanıcı, Azure Machine Learning SDK gibi bir istemciyi kullanarak bir modeli kaydeder.
+* Kullanıcı bir model, bir puan dosyası ve diğer model bağımlılıklarını kullanarak bir görüntü oluşturur.
+* Docker görüntüsü oluşturulup Azure Container Registry depolanır.
+* Web hizmeti, önceki adımda oluşturulan görüntüyü kullanarak işlem hedefine (Container Instances/AKS) dağıtılır.
+* Puanlama isteği ayrıntıları, Kullanıcı aboneliğindeki Application Insights depolanır.
+* Telemetri ayrıca Microsoft/Azure aboneliğine de gönderilir.
+
+[![Çıkarım iş akışı](media/concept-azure-machine-learning-architecture/inferencing.png)](media/concept-azure-machine-learning-architecture/inferencing.png#lightbox)
+
 
 Bir modeli Web hizmeti olarak dağıtmaya ilişkin bir örnek için, bkz. [Azure Container Instances bir görüntü sınıflandırma modeli dağıtma](tutorial-deploy-models-with-aml.md).
 

@@ -1,30 +1,30 @@
 ---
 title: Azure IoT Gezginini yüklemeyi ve kullanmayı | Microsoft Docs
-description: Azure IoT gezgin aracını yükleyip IoT Hub 'a bağlı IoT Tak ve Kullan cihazlarıyla etkileşim kurmak için bu aracı kullanın.
-author: rido-min
-ms.author: rmpablos
-ms.date: 09/23/2020
+description: Azure IoT gezgin aracını yükleyip IoT Hub 'ına bağlı IoT Tak ve Kullan cihazlarıyla etkileşim kurmak için bu aracı kullanın. Bu makalede IoT Tak ve Kullan cihazlarıyla çalışmaya odaklanmakla birlikte Aracı, hub 'ınıza bağlı herhangi bir cihazla birlikte kullanabilirsiniz.
+author: dominicbetts
+ms.author: dobett
+ms.date: 11/10/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc
-ms.openlocfilehash: bf68bdafbb8b6fde187a2d787bb5464e5ece4cb2
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.custom: contperfq2
+ms.openlocfilehash: 8482ba608ee5fcefb006234b339cd9b711a38020
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019163"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445311"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Azure IoT Gezginini yükleyip kullanma
 
-Azure IoT Explorer, IoT Tak ve Kullan cihazlarınızı etkileşimli ve test etmeye yönelik bir grafik aracıdır. Aracı yerel makinenize yükledikten sonra, bir hub 'a bağlanmak için kullanabilirsiniz. Aracı, cihazların gönderdiği Telemetriyi görüntülemek, cihaz özellikleriyle çalışmak ve komutları çağırmak için kullanabilirsiniz.
+Azure IoT Gezgini, IoT Hub 'ınıza bağlı cihazlarla ve bunlarla etkileşim kurmaya yönelik bir grafik aracıdır. Bu makale, IoT Tak ve Kullan cihazlarınızı test etmek için aracı kullanma konusuna odaklanır. Aracı yerel makinenize yükledikten sonra, bir hub 'a bağlanmak için kullanabilirsiniz. Aracı, cihazların gönderdiği Telemetriyi görüntülemek, cihaz özellikleriyle çalışmak ve komutları çağırmak için kullanabilirsiniz.
 
 Bu makale, şunları nasıl yapacağınızı gösterir:
 
 - Azure IoT gezgin aracını yükleyip yapılandırın.
-- Cihazlarınızla etkileşim kurmak ve bunları test etmek için aracını kullanın.
+- IoT Tak ve Kullan cihazlarınızla etkileşim kurmak ve test etmek için aracını kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+Aracı kullanma hakkında daha fazla genel bilgi için GitHub [Benioku dosyasına](https://github.com/Azure/azure-iot-explorer/blob/master/README.md)bakın.
 
 Azure IoT gezgin aracını kullanmak için şunlar gerekir:
 
@@ -40,13 +40,13 @@ Azure IoT gezgin aracını kullanmak için şunlar gerekir:
 
 ## <a name="use-azure-iot-explorer"></a>Azure IoT Gezginini Kullanma
 
-Bir cihaz için kendi cihazınızı bağlayabilirsiniz ya da örnek sanal cihazlardan birini kullanabilirsiniz. Sanal cihaz örneğini çalıştırmak için [Bu yönergeleri](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples) izleyin.
+Bir cihaz için kendi cihazınızı bağlayabilirsiniz ya da örnek sanal cihazlardan birini kullanabilirsiniz. Farklı dillerde yazılmış bazı örnek sanal cihazlarda bkz. IoT Hub hızlı başlangıçlara [örnek ıot Tak ve kullan cihaz uygulaması bağlama](quickstart-connect-device-node.md) .
 
 ### <a name="connect-to-your-hub"></a>Hub 'ınıza bağlanın
 
-Azure IoT Gezginini ilk kez çalıştırdığınızda IoT Hub 'ınızın bağlantı dizesi istenir. Bağlantı dizesini ekledikten sonra **Bağlan**' ı seçin. Bağlantı dizesini güncelleştirerek, aracın ayarlarını başka bir IoT Hub 'ına geçiş yapmak için kullanabilirsiniz.
+Azure IoT Gezginini ilk kez çalıştırdığınızda IoT Hub 'ınızın bağlantı dizesi istenir. Bağlantı dizesini ekledikten sonra **Bağlan** ' ı seçin. Bağlantı dizesini güncelleştirerek, aracın ayarlarını başka bir IoT Hub 'ına geçiş yapmak için kullanabilirsiniz.
 
-IoT Tak ve Kullan cihazının model tanımı, genel depoda, bağlı cihazda veya yerel bir klasörde depolanır. Varsayılan olarak, araç genel depoda ve bağlı cihazınızda model tanımınızı arar. Kaynak ekleyebilir ve kaldırabilir veya **Ayarlar**' da kaynakların önceliğini yapılandırabilirsiniz:
+IoT Tak ve Kullan cihazının model tanımı, genel depoda, bağlı cihazda veya yerel bir klasörde depolanır. Varsayılan olarak, araç genel depoda ve bağlı cihazınızda model tanımınızı arar. Kaynak ekleyebilir ve kaldırabilir veya **Ayarlar** ' da kaynakların önceliğini yapılandırabilirsiniz:
 
 Kaynak eklemek için:
 
@@ -78,7 +78,7 @@ Araç IoT Hub 'ınıza bağlandıktan sonra, IoT Hub 'ınıza kayıtlı cihaz ki
 
 ### <a name="device"></a>Cihaz
 
-Bu bölümde **cihaz kimliği**,  **cihaz ikizi**, **telemetri**, **doğrudan yöntem**, **buluttan cihaza ileti**, **modül kimliği**  sekmeleri bulunur.
+Bu bölümde **cihaz kimliği** ,  **cihaz ikizi** , **telemetri** , **doğrudan yöntem** , **buluttan cihaza ileti** , **modül kimliği**  sekmeleri bulunur.
 
 - [Cihaz kimlik bilgilerini](../iot-hub/iot-hub-devguide-identity-registry.md) **cihaz kimliği** sekmesinden görüntüleyebilir ve güncelleştirebilirsiniz.
 - Device [ikizi](../iot-hub/iot-hub-devguide-device-twins.md) bilgilerine **Device ikizi** sekmesinden erişebilirsiniz.
@@ -89,7 +89,7 @@ Bu bölümde **cihaz kimliği**,  **cihaz ikizi**, **telemetri**, **doğrudan y�
 
 ### <a name="iot-plug-and-play-components"></a>IoT Tak ve Kullan bileşenleri
 
-Cihaz hub 'a bir **model kimliği**kullanarak bağlıysa araç, **model kimliğini**görebileceğiniz ' ' **IoT Tak ve kullan bileşenleri** sekmesini gösterir.
+Cihaz hub 'a bir **model kimliği** kullanarak bağlıysa, araç, **model kimliğini** görebileceğiniz **IoT Tak ve kullan bileşenleri** sekmesini gösterir.
 
 **Model kimliği** yapılandırılmış kaynaklardan birinde, genel depolarınızda veya yerel klasöründen kullanılabiliyorsa, bileşen listesi görüntülenir. Bir bileşeni seçtiğinizde, kullanılabilen özellikler, komutlar ve telemetri gösterilir.
 
@@ -99,7 +99,7 @@ Cihaz hub 'a bir **model kimliği**kullanarak bağlıysa araç, **model kimliği
 
 #### <a name="properties"></a>Özellikler
 
-:::image type="content" source="media/howto-use-iot-explorer/properties-iot-explorer.png" alt-text="Azure IoT Explorer 'da bileşenleri görüntüleme":::
+:::image type="content" source="media/howto-use-iot-explorer/properties-iot-explorer.png" alt-text="Azure IoT Explorer 'da özellikleri görüntüleme":::
 
 **Özellikler (salt okuma)** sekmesindeki bir arabirimde tanımlanmış salt okuma özelliklerini görüntüleyebilirsiniz. **Özellikler (yazılabilir)** sekmesindeki bir arabirimde tanımlanan yazılabilir özellikleri güncelleştirebilirsiniz:
 
@@ -109,7 +109,7 @@ Cihaz hub 'a bir **model kimliği**kullanarak bağlıysa araç, **model kimliği
 1. Cihaza gönderilecek yükün önizlemesini görüntüleyin.
 1. Değişikliği gönder.
 
-Bir değişiklik gönderdikten sonra, güncelleştirme durumunu takip edebilirsiniz: **eşitleniyor**, **başarılı**veya **hata**. Eşitleme tamamlandığında, **bildirilen özellik** sütununda, özelliğinin yeni değerini görürsünüz. Eşitleme tamamlanmadan önce diğer sayfalara gittiğinizde, güncelleştirme tamamlandığında araç sizi size bildirir. Ayrıca, bildirim geçmişini görmek için aracın bildirim merkezini de kullanabilirsiniz.
+Bir değişiklik gönderdikten sonra, güncelleştirme durumunu takip edebilirsiniz: **eşitleniyor** , **başarılı** veya **hata**. Eşitleme tamamlandığında, **bildirilen özellik** sütununda, özelliğinin yeni değerini görürsünüz. Eşitleme tamamlanmadan önce diğer sayfalara gittiğinizde, güncelleştirme tamamlandığında araç sizi size bildirir. Ayrıca, bildirim geçmişini görmek için aracın bildirim merkezini de kullanabilirsiniz.
 
 #### <a name="commands"></a>Komutlar
 
@@ -126,13 +126,7 @@ Seçili arabirime yönelik Telemetriyi görüntülemek için **telemetri** sekme
 
 #### <a name="known-issues"></a>Bilinen Sorunlar
 
-- IoT Edge desteği: geçerli sürüm, cihaz listesinde IoT Edge cihazları göstermiyor.
-- DTDL dil özellikleri: IoT Explorer 0.12. x tam DTDL v2 uyumlu değil, desteklenmeyen özellikler şunlardır:
-  - İle arabirim devralma `extends`
-  - Haritada eşle (iç içe eşleme)
-  - Dizi türü
-  - Özel şemalar
-  - Özel anlam türleri
+Aracın en son sürümü tarafından desteklenen IoT özelliklerinin bir listesi için bkz. [özellik listesi](https://github.com/Azure/azure-iot-explorer/wiki).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

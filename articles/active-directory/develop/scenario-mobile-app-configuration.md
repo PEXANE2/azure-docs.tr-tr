@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 43cb891ad63a23353437082f7cb1b1e45f146e5b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a18a36b8583f8534b2a2e643e5c155dc7a2d65e2
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204227"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444070"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Web API 'Lerini çağıran bir mobil uygulama yapılandırma
 
@@ -148,9 +148,9 @@ Daha fazla bilgi için bkz. [msal.net Ile UWP 'e özgü hususlar](msal-net-uwp-c
 
 Android ve iOS 'ta aracılar şunları etkinleştirir:
 
-- **Çoklu oturum açma (SSO)**: Azure Active Directory (Azure AD) ile KAYıTLı cihazlarda SSO 'yu kullanabilirsiniz. SSO kullandığınızda kullanıcılarınızın her uygulamada oturum açması gerekmez.
-- **Cihaz kimliği**: Bu ayar, Azure AD cihazlarıyla ilgili koşullu erişim ilkelerini sağlar. Kimlik doğrulama işlemi, cihaz çalışma alanına katıldığında oluşturulan cihaz sertifikasını kullanır.
-- **Uygulama tanımlama doğrulaması**: bir uygulama aracıyı çağırdığında, yeniden yönlendirme URL 'sini geçirir. Sonra aracı tarafından doğrulanır.
+- **Çoklu oturum açma (SSO)** : Azure Active Directory (Azure AD) ile KAYıTLı cihazlarda SSO 'yu kullanabilirsiniz. SSO kullandığınızda kullanıcılarınızın her uygulamada oturum açması gerekmez.
+- **Cihaz kimliği** : Bu ayar, Azure AD cihazlarıyla ilgili koşullu erişim ilkelerini sağlar. Kimlik doğrulama işlemi, cihaz çalışma alanına katıldığında oluşturulan cihaz sertifikasını kullanır.
+- **Uygulama tanımlama doğrulaması** : bir uygulama aracıyı çağırdığında, yeniden yönlendirme URL 'sini geçirir. Sonra aracı tarafından doğrulanır.
 
 ### <a name="enable-the-broker-on-xamarin"></a>Xamarin üzerinde aracıyı etkinleştirme
 
@@ -367,5 +367,4 @@ Android 'de bir aracısının etkinleştirilmesi hakkında daha fazla bilgi içi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-> [!div class="nextstepaction"]
-> [Belirteç alma](scenario-mobile-acquire-token.md)
+Bu senaryonun bir sonraki makalesine geçin, [bir belirteç](scenario-mobile-acquire-token.md)alır.

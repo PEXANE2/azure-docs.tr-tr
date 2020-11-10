@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: 47a97bb8fbe52d3dde84afd77997b179a5c9248d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 22901c4e8409fc4846c1566a57b2679f4fa92396
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325497"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444577"
 ---
 # <a name="audit-and-manage-azure-machine-learning-using-azure-policy"></a>Azure Ilkesi kullanarak Azure Machine Learning denetleme ve yönetme
 
@@ -42,11 +42,11 @@ Buradan görüntülenecek ilke tanımlarını seçebilirsiniz. Bir tanımı gör
 
 ## <a name="workspaces-encryption-with-customer-managed-key"></a>Müşteri tarafından yönetilen anahtarla çalışma alanları şifrelemesi
 
-Çalışma alanlarının, müşteri tarafından yönetilen bir anahtarla mi (CMK) şifrelendiğini, yoksa ölçümleri ve meta verileri şifrelemek için Microsoft tarafından yönetilen bir anahtar kullanmayı denetler. CMK kullanma hakkında daha fazla bilgi için, kurumsal güvenlik makalesinin [Azure Cosmos DB](concept-enterprise-security.md#azure-cosmos-db) bölümüne bakın.
+Çalışma alanlarının, müşteri tarafından yönetilen bir anahtarla mi şifrelendiğini yoksa ölçümleri ve meta verileri şifrelemek için Microsoft tarafından yönetilen bir anahtar mı kullandığını denetler. Müşteri tarafından yönetilen anahtarı kullanma hakkında daha fazla bilgi için veri şifreleme makalesinin [Azure Cosmos DB](concept-data-encryption.md#azure-cosmos-db) bölümüne bakın.
 
-Bu ilkeyi yapılandırmak için, efekt parametresini __Denetim__ veya __reddetme__ olarak ayarlayın. __Denetim__ olarak ayarlanırsa, BIR CMK olmadan çalışma alanları oluşturabilir ve etkinlik günlüğünde bir uyarı olayı oluşturulur.
+Bu ilkeyi yapılandırmak için, efekt parametresini __Denetim__ veya __reddetme__ olarak ayarlayın. __Denetim__ olarak ayarlanırsa, müşteri tarafından yönetilen anahtar olmadan çalışma alanları oluşturabilir ve etkinlik günlüğünde bir uyarı olayı oluşturulur.
 
-İlke __Reddet__ olarak ayarlandıysa, BIR CMK belirtmediği takdirde bir çalışma alanı oluşturamazsınız. CMK olmadan bir çalışma alanı oluşturmaya çalışmak, şuna benzer bir hatayla sonuçlanır `Resource 'clustername' was disallowed by policy` ve etkinlik günlüğünde bir hata oluşturur. İlke tanımlayıcısı bu hatanın bir parçası olarak da döndürülür.
+İlke __Reddet__ olarak ayarlandıysa, müşteri tarafından yönetilen bir anahtar belirtmediği takdirde bir çalışma alanı oluşturamazsınız. Müşteri tarafından yönetilen anahtar olmadan bir çalışma alanı oluşturmaya çalışmak, şuna benzer bir hatayla sonuçlanır `Resource 'clustername' was disallowed by policy` ve etkinlik günlüğünde bir hata oluşturur. İlke tanımlayıcısı bu hatanın bir parçası olarak da döndürülür.
 
 ## <a name="workspaces-should-use-private-link"></a>Çalışma alanlarının özel bağlantı kullanması gerekir
 

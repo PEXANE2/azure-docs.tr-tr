@@ -8,16 +8,16 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 6b39c1d6fe2e84055e7c94dde076514d04a24f36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5ecd8f13a3255a565168f62f358a6a38e3cbab4
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91000876"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445226"
 ---
 # <a name="managed-hsm-local-rbac-built-in-roles"></a>Yönetilen HSM yerel RBAC yerleşik rolleri
 
-Yönetilen HSM yerel RBAC, kullanıcılara, hizmet sorumlularına, gruplara ve yönetilen kimliklere atayabileceğiniz birkaç yerleşik rol içerir. Bir sorumlunun bir işlem gerçekleştirmesine izin vermek için, onlara bu işlemleri gerçekleştirme izni veren bir rol atamanız gerekir. Tüm bu roller ve işlemler yalnızca veri düzlemi işlemleri için izinleri yönetmenizi sağlar. Yönetilen HSM kaynağı için denetim düzlemi izinlerini yönetmek için (yeni bir yönetilen HSM oluşturma veya güncelleştirme, taşıma, varolan bir tane silme gibi), [Azure rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md)kullanmanız gerekir.
+Yönetilen HSM yerel RBAC, kullanıcılara, hizmet sorumlularına, gruplara ve yönetilen kimliklere atayabileceğiniz birkaç yerleşik rol içerir. Bir sorumlunun bir işlem gerçekleştirmesine izin vermek için, onlara bu işlemleri gerçekleştirme izni veren bir rol atamanız gerekir. Tüm bu roller ve işlemler yalnızca veri düzlemi işlemleri için izinleri yönetmenizi sağlar. Yönetilen HSM kaynağı için denetim düzlemi izinlerini yönetmek için (yeni bir yönetilen HSM oluşturma veya güncelleştirme, taşıma, varolan bir tane silme gibi), [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md)kullanmanız gerekir.
 
 ## <a name="built-in-roles"></a>Yerleşik roller
 
@@ -77,5 +77,5 @@ Yönetilen HSM yerel RBAC, kullanıcılara, hizmet sorumlularına, gruplara ve y
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure rol tabanlı erişim denetimine (RBAC)](../../role-based-access-control/overview.md)genel bakış.
+- Bkz. [Azure rol tabanlı erişim denetimine genel bakış (Azure RBAC)](../../role-based-access-control/overview.md).
 - [YÖNETILEN HSM rol yönetimi](role-management.md) hakkında öğreticiye bakın

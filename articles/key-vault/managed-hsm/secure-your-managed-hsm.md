@@ -1,6 +1,6 @@
 ---
 title: Yönetilen HSM Azure Key Vault yönetilen HSM 'ye güvenli erişim
-description: Azure RBAC ve yerel olarak yönetilen HSM RBAC kullanarak yönetilen HSM 'ye erişimi güvenli hale getirme hakkında bilgi edinin
+description: Azure RBAC ve yönetilen HSM yerel RBAC kullanarak yönetilen HSM 'ye erişimi güvenli hale getirme hakkında bilgi edinin
 services: key-vault
 author: amitbapat
 tags: azure-resource-manager
@@ -9,18 +9,18 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 18ffa0f878effda8888200c13ab312851aaebdcd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99918d039052c9913400b85ac3caa4a1a5481155
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91000920"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445328"
 ---
 # <a name="secure-access-to-your-managed-hsms"></a>Yönetilen HSM 'lerinizde güvenli erişim
 
 Azure Key Vault yönetilen HSM, şifreleme anahtarlarını koruyan bir bulut hizmetidir. Bu veriler hassas ve iş açısından kritik olduğundan, yalnızca yetkili uygulamalara ve kullanıcılara erişmesine izin vererek yönetilen HSM 'lerinizdeki erişimi güvenli hale getirmeniz gerekir. Bu makalede, yönetilen HSM erişim denetimi modeline bir genel bakış sunulmaktadır. Kimlik doğrulama ve yetkilendirmeyi açıklar ve yönetilen HSM 'lerinizde erişimin güvenliğini nasıl sağlayabileceğinizi açıklar.
 
-Bu öğreticide, Azure RBAC ve yerel olarak yönetilen HSM RBAC kullanarak görev ve erişim denetimi ile ilgili nasıl ayrım yapılacağını gösteren basit bir örnek gösterilmektedir. Yönetilen HSM erişim denetimi modeli hakkında bilgi edinmek için bkz. [YÖNETILEN HSM erişim denetimi](access-control.md) .
+Bu öğretici, Azure RBAC ve yönetilen HSM yerel RBAC kullanarak görev ve erişim denetimi ile ilgili nasıl ayrım yapılacağını gösteren basit bir örnekte size kılavuzluk eder. Yönetilen HSM erişim denetimi modeli hakkında bilgi edinmek için bkz. [YÖNETILEN HSM erişim denetimi](access-control.md) .
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -48,9 +48,9 @@ Bu örnekte, oturum açma işlemleri için RSA 2.048 bit anahtarı kullanan bir 
 
 Uygulamamızı yöneten, dağıtan ve denetlayan aşağıdaki rolleri belirledik:
 
-- **Güvenlik ekibi**: CSO (Güvenlik Müdürü) veya benzer katkıda bulunanlar ofisindeki BT personeli. Güvenlik ekibi, anahtarların doğru safekinden ping işlemi yapmaktan sorumludur. Oturum açmak için RSA veya EC anahtarları, veri şifreleme için RSA veya AES anahtarları.
-- **Geliştiriciler ve işleçler**: uygulamayı geliştiren ve Azure 'da dağıtan personel. Bu ekibin üyeleri güvenlik personelinin bir parçası değildir. Bunlar RSA anahtarları gibi hassas verilere erişemez. Yalnızca dağıttıkları uygulamanın bu hassas verilere erişimi olmalıdır.
-- **Denetçiler**: Bu rol, geliştirme veya genel BT personelinin üyesi olmayan katkıda bulunanlar içindir. Güvenlik standartlarıyla uyumluluğu sağlamak için sertifikaların, anahtarların ve parolaların kullanımını ve bakımını gözden geçirir.
+- **Güvenlik ekibi** : CSO (Güvenlik Müdürü) veya benzer katkıda bulunanlar ofisindeki BT personeli. Güvenlik ekibi, anahtarların doğru safekinden ping işlemi yapmaktan sorumludur. Oturum açmak için RSA veya EC anahtarları, veri şifreleme için RSA veya AES anahtarları.
+- **Geliştiriciler ve işleçler** : uygulamayı geliştiren ve Azure 'da dağıtan personel. Bu ekibin üyeleri güvenlik personelinin bir parçası değildir. Bunlar RSA anahtarları gibi hassas verilere erişemez. Yalnızca dağıttıkları uygulamanın bu hassas verilere erişimi olmalıdır.
+- **Denetçiler** : Bu rol, geliştirme veya genel BT personelinin üyesi olmayan katkıda bulunanlar içindir. Güvenlik standartlarıyla uyumluluğu sağlamak için sertifikaların, anahtarların ve parolaların kullanımını ve bakımını gözden geçirir.
 
 Uygulamamızın kapsamı dışında başka bir rol var: abonelik (veya kaynak grubu) Yöneticisi. Abonelik Yöneticisi güvenlik ekibi için ilk erişim izinlerini ayarlar. Uygulama için gerekli kaynaklara sahip bir kaynak grubunu kullanarak güvenlik ekibine erişim izni verir.
 
@@ -79,10 +79,10 @@ Aşağıdaki tabloda, yönetilen HSM 'ye erişmek üzere takımlar ve kaynaklar 
 | Rol | Yönetim düzlemi rolü | Veri düzlemi rolü |
 | --- | --- | --- |
 | Güvenlik ekibi | Yönetilen HSM Katılımcısı | Yönetilen HSM Yöneticisi |
-| Geliştiriciler ve operatörler | Yok | Yok |
-| Denetçiler | Yok | Yönetilen HSM şifre denetleyicisi |
-| Uygulama tarafından kullanılan VM 'nin yönetilen tanımlaması| Yok | Yönetilen HSM şifre kullanıcısı |
-| Uygulama tarafından kullanılan depolama hesabının yönetilen kimliği| Yok| Yönetilen HSM hizmeti şifrelemesi |
+| Geliştiriciler ve operatörler | Hiçbiri | Hiçbiri |
+| Denetçiler | Hiçbiri | Yönetilen HSM şifre denetleyicisi |
+| Uygulama tarafından kullanılan VM 'nin yönetilen tanımlaması| Hiçbiri | Yönetilen HSM şifre kullanıcısı |
+| Uygulama tarafından kullanılan depolama hesabının yönetilen kimliği| Hiçbiri| Yönetilen HSM hizmeti şifrelemesi |
 
 Üç takım rolünün, yönetilen HSM izinleriyle birlikte diğer kaynaklara erişmesi gerekir. VM 'Leri (veya Azure App Service Web Apps özelliğini) dağıtmak için, geliştiricilerin ve işleçlerin `Contributor` Bu kaynak türlerine erişmesi gerekir. Denetçilerin, yönetilen HSM günlüklerinin depolandığı depolama hesabına okuma erişimi olması gerekir.
 

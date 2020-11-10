@@ -9,19 +9,19 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0d2d28a525f38aad3f48e439992a23abde0b7718
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2a0202c5259ccebedf03ade217f57b6305b9fa1b
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786080"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444937"
 ---
 # <a name="create-sas-definition-and-fetch-shared-access-signature-tokens-in-code"></a>SAS tanımı oluştur ve paylaşılan erişim imza belirteçlerini kodda getir
 
 Depolama hesabınızı, Anahtar Kasanızda depolanan paylaşılan erişim imzası (SAS) belirteçleriyle yönetebilirsiniz. Daha fazla bilgi için bkz. [SAS kullanarak Azure depolama kaynaklarına sınırlı erişim verme](../../storage/common/storage-sas-overview.md).
 
 > [!NOTE]
-> Paylaşılan anahtar yetkilendirmesi üzerinde üstün güvenlik ve kullanım kolaylığı sağlamak üzere depolama hesabınızı güvenli hale getirmek için [rol tabanlı Access Control (RBAC)](../../storage/common/storage-auth-aad.md) kullanmanızı öneririz.
+> Paylaşılan anahtar yetkilendirmesi üzerinde üstün güvenlik ve kullanım kolaylığı sağlamak üzere depolama hesabınızı güvenli hale getirmek için [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../storage/common/storage-auth-aad.md) kullanmanızı öneririz.
 
 Bu makalede bir SAS tanımı oluşturan ve SAS belirteçlerini getiren .NET kodu örnekleri sağlanmaktadır. Key Vault yönetilen depolama hesapları için oluşturulan istemci dahil olmak üzere, tüm ayrıntılar için bkz. [sharelink](/samples/azure/azure-sdk-for-net/share-link/) örneğimize bakın. SAS belirteçlerini oluşturma ve depolama hakkında daha fazla bilgi için bkz. [Key Vault ve Azure CLI ile depolama hesabı anahtarlarını yönetme](overview-storage-keys.md) veya [Key Vault ve Azure PowerShell depolama hesabı anahtarlarını yönetme](overview-storage-keys-powershell.md).
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 341d24e73c9e07bb3155535d98a88145643c1692
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 889a70005f1cbabaad525147b4661ea04886138a
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201792"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445617"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>Model dönüştürme REST API’yi kullanma
 
@@ -20,13 +20,13 @@ ms.locfileid: "92201792"
 
 İsteklerin gönderileceği temel URL 'Ler için [kullanılabilir bölgelerin listesine](../../reference/regions.md) bakın.
 
-## <a name="common-headers"></a>Ortak üstbilgiler
+## <a name="common-headers"></a>Yaygın üst bilgiler
 
 ### <a name="common-request-headers"></a>Ortak istek üstbilgileri
 
 Tüm istekler için bu üst bilgiler belirtilmelidir:
 
-- **Yetkilendirme** üst bilgisi "taşıyıcı [*belirteç*]" değerine sahip olmalıdır, burada [*belirteç*] bir [hizmet erişim belirtecidir](../tokens.md).
+- **Yetkilendirme** üst bilgisi "taşıyıcı [ *belirteç* ]" değerine sahip olmalıdır, burada [ *belirteç* ] bir [hizmet erişim belirtecidir](../tokens.md).
 
 ### <a name="common-response-headers"></a>Ortak yanıt üst bilgileri
 
@@ -45,9 +45,9 @@ Dönüştürme hizmeti şunları yapmak için üç REST API uç noktası sağlar
 ### <a name="start-conversion-using-a-linked-storage-account"></a>Bağlı depolama hesabı kullanarak dönüştürmeyi Başlat
 [Depolama hesaplarını bağlama](../create-an-account.md#link-storage-accounts)adımlarını Izleyerek Azure uzaktan işleme hesabınızın, belirtilen depolama hesabına erişimi olması gerekir.
 
-| Uç Noktası | Yöntem |
+| Uç Nokta | Yöntem |
 |-----------|:-----------|
-| /V1/accounts/**AccountID**/Conversions/Create | POST |
+| /V1/accounts/ **AccountID** /Conversions/Create | POST |
 
 JSON belgesinde kaydırılan, devam eden dönüştürmenin KIMLIĞINI döndürür. Alan adı "Conversionıd" dir.
 
@@ -77,15 +77,15 @@ JSON belgesinde kaydırılan, devam eden dönüştürmenin KIMLIĞINI döndürü
 ### <a name="start-conversion-using-provided-shared-access-signatures"></a>Belirtilen paylaşılan erişim imzalarını kullanarak dönüştürmeye başla
 ARR hesabınız depolama hesabınıza bağlı değilse, bu REST arabirimi *paylaşılan erişim imzaları (SAS)* kullanarak erişim sağlamanıza olanak tanır.
 
-| Uç Noktası | Yöntem |
+| Uç Nokta | Yöntem |
 |-----------|:-----------|
-| /V1/accounts/**AccountID**/Conversions/createwithsharedaccesssignature | POST |
+| /V1/accounts/ **AccountID** /Conversions/createwithsharedaccesssignature | POST |
 
 JSON belgesinde kaydırılan, devam eden dönüştürmenin KIMLIĞINI döndürür. Alan adı `conversionId` .
 
 #### <a name="request-body"></a>İstek gövdesi
 
-İstek gövdesi, yukarıdaki REST çağrısını oluştur ile aynıdır, ancak giriş ve çıkış *paylaşılan erişim imzaları (SAS) belirteçlerini*içerir. Bu belirteçler, girişi okumak ve dönüştürme sonucunu yazmak için depolama hesabına erişim sağlar.
+İstek gövdesi, yukarıdaki REST çağrısını oluştur ile aynıdır, ancak giriş ve çıkış *paylaşılan erişim imzaları (SAS) belirteçlerini* içerir. Bu belirteçler, girişi okumak ve dönüştürme sonucunu yazmak için depolama hesabına erişim sağlar.
 
 > [!NOTE]
 > Bu SAS URI belirteçleri, tam URI değil, sorgu dizeleridir. 
@@ -118,9 +118,9 @@ JSON belgesinde kaydırılan, devam eden dönüştürmenin KIMLIĞINI döndürü
 Yukarıdaki REST çağrılarından biriyle başlatılan devam eden bir dönüştürmenin durumu aşağıdaki arabirim kullanılarak sorgulanabilir:
 
 
-| Uç Noktası | Yöntem |
+| Uç Nokta | Yöntem |
 |-----------|:-----------|
-| /V1/accounts/**AccountID**/Conversions/**conversionıd** | GET |
+| /V1/accounts/ **AccountID** /Conversions/ **conversionıd** | GET |
 
 Aşağıdaki değerlere sahip olabilir bir "durum" alanı olan bir JSON belgesi döndürür:
 
@@ -130,6 +130,21 @@ Aşağıdaki değerlere sahip olabilir bir "durum" alanı olan bir JSON belgesi 
 - Hataları
 
 Durum "hata" ise, hata bilgilerini içeren "ileti" alt alanına sahip ek bir "hata" alanı olacaktır. Ek Günlükler, çıkış kapsayıcınıza yüklenecek.
+
+## <a name="list-conversions"></a>Liste dönüştürmeleri
+
+Bir hesap için tüm dönüştürmelerin bir listesini almak için arabirimini kullanın:
+
+| Uç Nokta | Yöntem |
+|-----------|:-----------|
+| /V1/accounts/ **AccountID** /dönüşümler? skiptoken = **skiptoken** | GET |
+
+| Parametre | Gerekli |
+|-----------|:-----------|
+| Accoun | Yes |
+| skiptoken | No |
+
+Dönüştürme dizisini ve bunların ayrıntılarını içeren bir JSON belgesi döndürür. Bu sorgu, tek seferde en fazla 50 dönüştürme döndürür. Alınacak daha fazla dönüştürme olduğu durumlarda, yanıt bir sonraki sonuç kümesini almak için sorgulanabilecek skipToken 'ı içeren bir **NextLink** özelliği içerir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

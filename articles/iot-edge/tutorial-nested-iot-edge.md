@@ -1,0 +1,609 @@
+---
+title: Öğretici-IoT Edge cihaz hiyerarşisi oluşturma-Azure IoT Edge
+description: Bu öğreticide, ağ geçitlerini kullanarak IoT Edge cihazların hiyerarşik yapısını nasıl oluşturacağınız gösterilmektedir.
+author: v-tcassi
+manager: philmea
+ms.author: v-tcassi
+ms.date: 11/10/2020
+ms.topic: tutorial
+ms.service: iot-edge
+services: iot-edge
+monikerRange: '>=iotedge-2020-11'
+ms.openlocfilehash: 624a147a463ad3be7e15a469294f07793046aaf3
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445973"
+---
+# <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Öğretici: IoT Edge cihazları hiyerarşisi oluşturma (Önizleme)
+
+Hiyerarşik katmanlarda düzenlenmiş ağlarda Azure IoT Edge düğümleri dağıtın. Hiyerarşideki her katman, altındaki katmandaki cihazlardan gelen iletileri ve istekleri işleyen bir ağ geçidi aygıtıdır.
+
+>[!NOTE]
+>Bu özellik, Linux kapsayıcıları çalıştıran, genel önizlemede olan IoT Edge sürüm 1,2 gerektirir.
+
+Yalnızca en üst katmanın buluta bağlantısı olması için bir cihaz hiyerarşisi oluşturabilir ve alt katmanlar yalnızca komşu Kuzey ve Güney katmanlarla iletişim kurabilir. Bu ağ katmanlama, [ISA-95 standardını](https://en.wikipedia.org/wiki/ANSI/ISA-95)izleyen en endüstriyel ağların temelidir.
+
+Bu öğreticinin amacı, bir üretim ortamına benzetim yapan bir IoT Edge cihazları hiyerarşisi oluşturmaktır. Sonunda, kapsayıcı görüntülerini hiyerarşi aracılığıyla indirerek internet erişimi olmadan daha düşük bir katman cihazına [sanal sıcaklık algılayıcısı modülünü](https://azuremarketplace.microsoft.com/marketplace/apps/azure-iot.simulated-temperature-sensor) dağıtacaksınız.
+
+Bu öğreticiyi başarmak için, bu öğreticide IoT Edge cihaz hiyerarşisi oluşturma, cihazlarınıza IoT Edge çalışma zamanı kapsayıcıları dağıtma ve cihazlarınızı yerel olarak yapılandırma işlemleri adım adım açıklanmıştır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+
+> [!div class="checklist"]
+>
+> * IoT Edge cihazların hiyerarşisinde ilişkiler oluşturun ve tanımlayın.
+> * Hiyerarşinizdeki cihazlarda IoT Edge çalışma zamanını yapılandırın.
+> * Cihaz hiyerarşiniz genelinde tutarlı sertifikalar yükler.
+> * Hiyerarşinizdeki cihazlara iş yükleri ekleyin.
+> * Düşük katman cihazlarınızdan tek bir bağlantı noktası üzerinden HTTP trafiğini güvenli bir şekilde yönlendirmek için bir API proxy modülü kullanın.
+
+Bu öğreticide, aşağıdaki ağ katmanları tanımlanmıştır:
+
+* **Üst katman** : bu katmandaki IoT Edge cihazlar doğrudan buluta bağlanabilir.
+
+* **Alt katman** : IoT Edge cihazlar bu katmanda doğrudan buluta bağlanamaz. Veri göndermek ve almak için bir veya daha fazla ara IoT Edge cihazlarından birine gitmeleri gerekir.
+
+Bu öğreticide kolaylık sağlamak için iki cihaz hiyerarşisi kullanılmaktadır. Bir cihaz, **topLayerDevice** , hiyerarşinin en üst katmanında, doğrudan buluta bağlanabilecek bir cihazı temsil eder. Bu cihaza **ana cihaz** da denir. Diğer cihaz, küçük **harf Layerdevice** , hiyerarşinin alt katmanında doğrudan buluta bağlanamaz bir cihazı temsil eder. Bu cihaza **alt cihaz** da denir. Üretim ortamınızı temsil etmek için ek alt katman cihazları ekleyebilirsiniz. Diğer tüm ek katman cihazlarının yapılandırması, küçük **Layerdevice** 'ın yapılandırmasını izler.
+
+## <a name="prerequisites"></a>Önkoşullar
+
+IoT Edge cihazlarının bir hiyerarşisini oluşturmak için şunlar gerekir:
+
+* İnternet bağlantısı olan bir bilgisayar (Windows veya Linux).
+* IoT Edge cihaz olarak yapılandırılacak iki Linux cihaz. Kullanılabilir cihazlar yoksa, [Azure sanal makinelerini](https://docs.microsoft.com/azure/virtual-machines/linux/)kullanabilirsiniz.
+* Geçerli aboneliği olan bir Azure hesabı. [Azure aboneliğiniz](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing) yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+* Azure 'da ücretsiz veya standart bir katman [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) .
+* Azure CLı v 2.3.1, Azure IoT uzantısı v 0.9.10 veya üzeri yüklü. Bu öğretici [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)kullanır. Azure Cloud Shell hakkında bilgi sahibi değilseniz, [Ayrıntılar için hızlı başlangıç ' a bakın](https://docs.microsoft.com/azure/iot-edge/quickstart-linux#use-azure-cloud-shell).
+
+Ayrıca, bir fabrika ortamının benzetimini yapmak için Azure sanal makinelerini önceden yapılandırılmış cihazlar olarak dağıtan [endüstriyel IoT örneği için](https://aka.ms/iotedge-nested-sample)komut dosyalı Azure IoT Edge ' yi izleyerek bu senaryoyu deneyebilirsiniz.
+
+## <a name="configure-your-iot-edge-device-hierarchy"></a>IoT Edge cihaz hiyerarşinizi yapılandırma
+
+### <a name="create-a-hierarchy-of-iot-edge-devices"></a>IoT Edge cihaz hiyerarşisi oluşturma
+
+IoT Edge cihazlarınızı oluşturmaya yönelik ilk adım, Azure portal veya Azure CLı aracılığıyla yapılabilir. Bu öğreticide, iki IoT Edge cihaz hiyerarşisi oluşturulur: **topLayerDevice** ve onun alt küçük **harf layerdevice**.
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. [Azure portal](https://ms.portal.azure.com/)IoT Hub gidin.
+
+1. Sol bölmedeki menüden, **otomatik cihaz yönetimi** altında **IoT Edge** ' yi seçin.
+
+1. **+ IoT Edge cihaz ekle** ' yi seçin. Bu cihaz üst katman cihazı olacak, uygun bir benzersiz cihaz KIMLIĞI girin. **Kaydet** ’i seçin.
+
+1. **+ IoT Edge cihaz ekle** ' yi seçin. Bu cihaz kenar alt katman cihazı olacak, uygun bir benzersiz cihaz KIMLIĞI girin.
+
+1. **Bir üst cihaz ayarla** ' yı seçin, cihaz listesinden en üst katman cihazınızı seçin ve **Tamam** ' ı seçin. **Kaydet** ’i seçin.
+
+   ![Alt katman cihazı için üst öğe ayarlanıyor](./media/tutorial-nested-iot-edge/set-parent-device.png)
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. [Azure Cloud Shell](https://shell.azure.com/), hub 'ınızda bir IoT Edge cihaz oluşturmak için aşağıdaki komutu girin. Bu cihaz üst katman cihazı olacak ve uygun bir benzersiz cihaz KIMLIĞI girin:
+
+   ```azurecli-interactive
+   az iot hub device-identity create --device-id {top_layer_device_id} --edge-enabled --hub-name {hub_name}
+   ```
+
+1. Alt IoT Edge cihazınızı oluşturmak ve cihazlar arasında üst-alt ilişkisi oluşturmak için aşağıdaki komutu girin:
+
+    ```azurecli-interactive
+    az iot hub device-identity create --device-id {lower_layer_device_id} --edge-enabled --pd {top_layer_device_id} --hub-name {iothub_name}
+    ```
+
+---
+
+Her bir IoT Edge cihazının bağlantı dizesini unutmayın. Bunlar daha sonra kullanılacaktır.
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. [Azure Portal](https://ms.portal.azure.com/), IoT Hub **IoT Edge** bölümüne gidin.
+
+1. Cihazlar listesinde cihazlardan birinin cihaz KIMLIĞINE tıklayın.
+
+1. **Birincil bağlantı dizesi** alanında **Kopyala** ' yı seçin ve tercih ettiğiniz bir yere kaydedin.
+
+1. Diğer tüm cihazlar için yineleyin.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. [Azure Cloud Shell](https://shell.azure.com/), her bir cihaz için, cihazınızın bağlantı dizesini almak ve istediğiniz bir yere kaydetmek için aşağıdaki komutu girin:
+
+   ```azurecli-interactive
+   az iot hub device-identity connection-string show --device-id {device_id} --hub-name {hub_name}
+   ```
+
+---
+
+### <a name="create-certificates"></a>Sertifika oluşturma
+
+Bir [ağ geçidi senaryosunda](iot-edge-as-gateway.md) tüm cihazların aralarında güvenli bağlantıları ayarlaması için paylaşılan bir sertifika gerekir. Bu senaryodaki her iki cihaz için tanıtım sertifikaları oluşturmak için aşağıdaki adımları kullanın.
+
+Bir Linux cihazında tanıtım sertifikaları oluşturmak için, kuşak betikleri klonlamanız ve bunları Bash 'te yerel olarak çalışacak şekilde ayarlamanız gerekir.
+
+1. Tanıtım sertifikaları oluşturmak için betikler içeren IoT Edge Git deposunu kopyalayın.
+
+   ```bash
+   git clone https://github.com/Azure/iotedge.git
+   ```
+
+1. Üzerinde çalışmak istediğiniz dizine gidin. Tüm sertifika ve anahtar dosyaları bu dizinde oluşturulacaktır.
+
+1. Yapılandırma ve betik dosyalarını kopyalanan IoT Edge deposundan çalışma dizininize kopyalayın.
+
+   ```bash
+   cp <path>/iotedge/tools/CACertificates/*.cnf .
+   cp <path>/iotedge/tools/CACertificates/certGen.sh .
+   ```
+
+1. Kök CA sertifikasını ve bir ara sertifikayı oluşturun.
+
+   ```bash
+   ./certGen.sh create_root_and_intermediate
+   ```
+
+   Bu betik komutu birkaç sertifika ve anahtar dosyası oluşturur, ancak ağ geçidi hiyerarşisi için **kök CA sertifikası** olarak aşağıdaki dosyayı kullanıyoruz:
+
+   * `<WRKDIR>/certs/azure-iot-test-only.root.ca.cert.pem`  
+
+1. Aşağıdaki komutla iki IoT Edge cihaz CA sertifikası ve özel anahtar kümesi oluşturun: en üst katman cihazı için bir küme ve alt katman cihazı için bir küme. CA sertifikalarının birbirinden ayırt edilebilmesi için hatırlanabilen adlar sağlayın.
+
+   ```bash
+   ./certGen.sh create_edge_device_ca_certificate "top-layer-device"
+   ./certGen.sh create_edge_device_ca_certificate "lower-layer-device"
+   ```
+
+   Bu betik komutu birkaç sertifika ve anahtar dosyası oluşturur, ancak her bir IoT Edge cihazında aşağıdaki sertifikayı ve anahtar çiftini kullanıyoruz ve config. YAML dosyasında başvurulur:
+
+   * `<WRKDIR>/certs/iot-edge-device-<CA cert name>-full-chain.cert.pem`
+   * `<WRKDIR>/private/iot-edge-device-<CA cert name>.key.pem`
+
+Her cihazın kök CA sertifikasının bir kopyasına ve kendi cihaz CA sertifikasının ve özel anahtarının bir kopyasına ihtiyacı vardır. Sertifikaları her cihaza taşımak için bir USB sürücüsü veya [güvenli dosya kopyalama](https://www.ssh.com/ssh/scp/) kullanabilirsiniz.
+
+1. Sertifikalar aktarıldıktan sonra her bir cihaz için kök CA 'yı yükler.
+
+   ```bash
+   sudo cp <path>/azure-iot-test-only.root.ca.cert.pem /usr/local/share/ca-certificates/azure-iot-test-only.root.ca.cert.pem.crt
+   sudo update-ca-certificates
+   ```
+
+   Bu komut,/etc/SSL/certs' ye bir sertifika eklenmiş olmalıdır.
+
+### <a name="install-iot-edge-on-the-devices"></a>Cihazlara IoT Edge yüklemesi
+
+Her iki cihazda da bu adımları izleyerek IoT Edge 'yi yükler.
+
+1. Cihazınızdaki paket listelerini güncelleştirin.
+
+   ```bash
+   sudo apt-get update
+   ```
+
+1. Moby altyapısını yükler.
+
+   ```bash
+   sudo apt-get install moby-engine
+   ```
+
+1. Hsmlib ve IoT Edge Daemon 'ı yükler <!-- Update with proper image links on release -->
+
+   ```bash
+   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/libiothsm-std_1.2.0.rc1-1-1_debian9_amd64.deb -o libiothsm-std.deb
+   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/iotedge_1.2.0_rc1-1_debian9_amd64.deb -o iotedge.deb
+   sudo dpkg -i ./libiothsm-std.deb
+   sudo dpkg -i ./iotedge.deb
+   ```
+
+### <a name="configure-the-iot-edge-runtime"></a>IoT Edge çalışma zamanını yapılandırma
+
+Her iki cihazlarınızda bu adımları izleyerek IoT Edge çalışma zamanını yapılandırın. Cihazlarınız için IoT Edge çalışma zamanının yapılandırılması, hepsi IoT Edge yapılandırma dosyasını düzenleyerek gerçekleştirilen dört adımdan oluşur:
+
+1. Cihaz bağlantı dizesini yapılandırma dosyasına ekleyerek her bir cihazı el ile sağlayın.
+
+1. Yapılandırma dosyasını cihaz CA sertifikasına, cihaz CA özel anahtarına ve kök CA sertifikasına girerek cihazınızın sertifikalarını ayarlamayı tamamlayın.
+
+1. IoT Edge aracısını kullanarak sistemi önyükleyebilirsiniz.
+
+1. **En üst katman** cihazınız için **hostname** parametresini güncelleştirin ve **alt katman** cihazlarınız için **hostname** parametresini ve **parent_hostname** parametresini güncelleştirin.
+
+Cihazlarınızı yapılandırmak için bu adımları tamamlayıp IoT Edge hizmetini yeniden başlatın.
+
+1. Her cihazda IoT Edge yapılandırma dosyasını açın.
+
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
+   ```
+
+1. Dosyanın sağlama yapılandırmalarını bulun ve **bir bağlantı dizesi kullanarak el ile sağlama yapılandırmasının** açıklamasını kaldırın.
+
+1. **Device_connection_string** değerini IoT Edge cihazınızdan bağlantı dizesiyle güncelleştirin. Diğer sağlama bölümlerinin açıklama olarak belirlendiğinden emin olun. **Sağlama:** satırının önünde boşluk olmadığından ve iç içe yerleştirilmiş öğelerin iki boşlukla girintilendiğinden emin olun.
+
+   ```yml
+   # Manual provisioning configuration using a connection string
+   provisioning:
+     source: "manual"
+     device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+     dynamic_reprovisioning: false
+   ```
+
+   >[!TIP]
+   >Pano içeriğini nano `Shift+Right Click` veya Press 'e yapıştırmak için `Shift+Insert` .
+
+1. **Sertifikalar** bölümünü bulun. Önceki bölümde oluşturduğunuz ve IoT Edge cihaza taşınan sertifikaları işaret etmek için üç sertifika alanını açıklama ve güncelleştirme. Dosya URI 'SI yollarını sağlayın, bu biçimi alır `file:///<path>/<filename>` .
+
+   ```yml
+   certificates:
+     device_ca_cert: "<File URI path to the device CA certificate unique to this device.>"
+     device_ca_pk: "<File URI path to the device CA private key unique to this device.>"
+     trusted_ca_certs: "<File URI path to the root CA certificate shared by all devices in the gateway hierarchy.>"
+   ```
+
+1. **Üst katman** cihazınız için **ana bilgisayar adı** parametresini bulun. Değeri, IoT Edge cihazın tam etki alanı adı (FQDN) veya IP adresi olacak şekilde güncelleştirin. Hiyerarşinizdeki cihazlar arasında tutarlı olarak seçtiğiniz değeri kullanın.
+
+   ```yml
+   hostname: <device fqdn or IP>
+   ```
+
+1. **Daha düşük katmanlardaki** IoT Edge cihazlar için, yapılandırma dosyasını üst aygıtın ana **bilgisayar adı** alanındaki ile eşleşen FQDN veya IP 'nin IP 'sine işaret etmek üzere güncelleştirin. **Üst katmandaki** IoT Edge cihazlar için bu parametreyi boş bırakın.
+
+   ```yml
+   parent_hostname: <parent device fqdn or IP>
+   ```
+
+   > [!NOTE]
+   > Birden fazla alt katman içeren Hiyerarşiler için, *parent_hostname* alanını hemen yukarıdaki katmanda bulunan cihaz FQDN 'siyle güncelleştirin.
+
+1. **Üst katman** cihazınız için **Aracı** YAML bölümünü bulun ve görüntü değerini IoT Edge aracısının doğru sürümüne güncelleştirin. Bu durumda, en üst katmanın IoT Edge aracısını IoT Edge aracı görüntüsünün genel önizleme sürümü ile Azure Container Registry kullanıma sunacağız.
+
+   ```yml
+   agent:
+     name: "edgeAgent"
+     type: "docker"
+     env: {}
+     config:
+       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1"
+       auth: {}
+   ```
+
+1. **Alt katmanlarda** IoT Edge cihazlar için, görüntü değerinin etki alanı adını, üst cihazın FQDN 'SINI veya IP 'sini ve ardından API proxy bağlantı noktası 8000 ' ü gösterecek şekilde güncelleştirin. Sonraki bölümde API proxy modülünü ekleyeceksiniz.
+
+   ```yml
+   agent:
+     name: "edgeAgent"
+     type: "docker"
+     env: {}
+     config:
+       image: "<parent_device_fqdn_or_ip>:8000/azureiotedge-agent:1.2.0-rc1"
+       auth: {}
+   ```
+
+1. Dosyayı kaydedin ve kapatın.
+
+   `CTRL + X`, `Y`, `Enter`
+
+1. Yapılandırma dosyasına sağlama bilgilerini girdikten sonra, arka plan programını yeniden başlatın:
+
+   ```bash
+   sudo systemctl restart iotedge
+   ```
+
+## <a name="deploy-modules-to-the-top-layer-device"></a>Modülleri üst katman cihazına dağıt
+
+IoT Edge çalışma zamanının ve dağıtım iş yüklerinin yapılandırılmasını tamamlamaya yönelik kalan adımlar, Azure portal veya Azure CLı aracılığıyla buluttan yapılır.
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+[Azure Portal](https://ms.portal.azure.com/):
+
+1. IoT Hub gidin.
+
+1. Sol bölmedeki menüden, **otomatik cihaz yönetimi** altında **IoT Edge** ' yi seçin.
+
+1. Cihazlar listesinde **en üst katman** sınır CIHAZıNıZıN cihaz kimliğine tıklayın.
+
+1. Üstteki çubukta **modülleri ayarla** ' yı seçin.
+
+1. Dişli simgesinin yanındaki **çalışma zamanı ayarları** ' nı seçin.
+
+1. **Edge hub** 'ı altında, görüntü alanına girin `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1` .
+
+   ![Edge hub görüntüsünü düzenleme](./media/tutorial-nested-iot-edge/edge-hub-image.png)
+
+1. Aşağıdaki ortam değişkenlerini Edge hub modülünüzü ekleyin:
+
+    | Ad | Değer |
+    | - | - |
+    | `experimentalFeatures__enabled` | `true` |
+    | `experimentalFeatures__nestedEdgeEnabled` | `true` |
+
+   ![Edge hub 'ının ortam değişkenlerini düzenleme](./media/tutorial-nested-iot-edge/edge-hub-environment-variables.png)
+
+1. **Edge Aracısı** altında, görüntü alanına girin `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1` . **Kaydet** ’i seçin.
+
+1. Docker kayıt defteri modülünü en üst katman cihazınıza ekleyin. **+ Ekle** ' yi seçin ve açılan listeden **IoT Edge modülü** ' nü seçin. `registry`Docker kayıt defteri modülünüzün adını sağlayın ve `registry:latest` görüntü URI 'si için girin. Ardından, ' den kapsayıcı görüntülerini indirmek ve kayıt defteri 'nde bu görüntüleri çalıştırmak için Microsoft Container Registry 'de yerel kayıt defteri modülünüzü işaret etmek üzere ortam değişkenleri ekleyin ve seçenekler oluşturun: 5000.
+
+1. Ortam değişkenleri sekmesinde, aşağıdaki ortam değişkeni adı-değer çiftini girin:
+
+    | Ad | Değer |
+    | - | - |
+    | `REGISTRY_PROXY_REMOTEURL` | `https://mcr.microsoft.com` |
+
+1. Kapsayıcı oluşturma seçenekleri sekmesinde aşağıdaki JSON 'u girin:
+
+   ```json
+   {
+    "HostConfig": {
+        "PortBindings": {
+            "5000/tcp": [
+                {
+                    "HostPort": "5000"
+                }
+            ]
+         }
+      }
+   }
+   ```
+
+1. Sonra, API proxy modülünü en üst katman cihazınıza ekleyin. **+ Ekle** ' yi seçin ve açılan listeden **Market modülü** ' nü seçin. Modülünü arayın `IoT Edge API Proxy` ve seçin. IoT Edge API proxy, 8000 bağlantı noktasını kullanır ve `registry` Varsayılan olarak bağlantı noktası 5000 ' de adlı kayıt defteri modülünüzü kullanacak şekilde yapılandırılmıştır.
+
+1. Dağıtımı gerçekleştirmek için **gözden geçir + oluştur** ' u ve ardından **Oluştur** ' u seçin. İnternet erişimi olan en üst katman cihazınızın IoT Edge çalışma zamanı, IoT Edge hub ve IoT Edge Aracısı için **genel önizleme** yapılandırmalarını çeker ve çalıştırır.
+
+   ![Edge hub, Edge Aracısı, kayıt modülü ve API ara sunucu modülünü içeren dağıtımı tamamen yapın](./media/tutorial-nested-iot-edge/complete-top-layer-deployment.png)
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. [Azure Cloud Shell](https://shell.azure.com/), dosyasında bir deployment.jsoluşturmak için aşağıdaki komutu girin:
+
+   ```azurecli-interactive
+   code deploymentTopLayer.json
+   ```
+
+1. Aşağıdaki JSON içeriğini deployment.jsüzerine kopyalayın, kaydedin ve kapatın.
+
+   ```json
+   {
+       "modulesContent": {
+           "$edgeAgent": {
+               "properties.desired": {
+                   "modules": {
+                       "dockerContainerRegistry": {
+                           "settings": {
+                               "image": "registry:latest",
+                               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5000/tcp\":[{\"HostPort\":\"5000\"}]}}}"
+                           },
+                           "type": "docker",
+                           "version": "1.0",
+                           "env": {
+                               "REGISTRY_PROXY_REMOTEURL": {
+                                   "value": "https://mcr.microsoft.com"
+                           },
+                           "status": "running",
+                           "restartPolicy": "always"
+                       },
+                       "IoTEdgeAPIProxy": {
+                           "settings": {
+                               "image": "mcr.microsoft.com/azureiotedge-api-proxy",
+                               "createOptions": "{\"HostConfig\": {\"PortBindings\": {\"8000/tcp\": [{\"HostPort\":\"8000\"}]}}}"
+                           },
+                           "type": "docker",
+                           "env": {
+                               "NGINX_DEFAULT_PORT": {
+                                   "value": "8000"
+                               },
+                               "DOCKER_REQUEST_ROUTE_ADDRESS": {
+                                   "value": "registry:5000"
+                               },
+                               "BLOB_UPLOAD_ROUTE_ADDRESS": {
+                                   "value": "AzureBlobStorageonIoTEdge:11002"
+                               }
+                           },
+                           "status": "running",
+                           "restartPolicy": "always",
+                           "version": "1.0"
+                       }
+                   },
+                   "runtime": {
+                       "settings": {
+                           "minDockerVersion": "v1.25",
+                       },
+                       "type": "docker"
+                   },
+                   "schemaVersion": "1.1",
+                   "systemModules": {
+                       "edgeAgent": {
+                           "settings": {
+                               "image": "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1",
+                               "createOptions": ""
+                           },
+                           "type": "docker"
+                       },
+                       "edgeHub": {
+                           "settings": {
+                               "image": "mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1",
+                               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
+                           },
+                           "type": "docker",
+                           "env": {
+                               "experimentalFeatures__enabled": {
+                                   "value": "true"
+                               },
+                               "experimentalFeatures__nestedEdgeEnabled": {
+                                   "value": "true"
+                               }
+                           },
+                           "status": "running",
+                           "restartPolicy": "always"
+                       }
+                   }
+               }
+           },
+           "$edgeHub": {
+               "properties.desired": {
+                   "routes": {
+                       "route": "FROM /messages/* INTO $upstream"
+                   },
+                   "schemaVersion": "1.1",
+                   "storeAndForwardConfiguration": {
+                       "timeToLiveSecs": 7200
+                   }
+               }
+           }
+       }
+   }
+   ```
+
+1. En üst katman sınır cihazınıza bir dağıtım oluşturmak için aşağıdaki komutu girin:
+
+   ```azurecli-interactive
+   az iot edge set-modules --device-id <top_layer_device_id> --hub-name <iot_hub_name> --content ./deploymentTopLayer.json
+   ```
+
+---
+
+## <a name="deploy-modules-to-the-lower-layer-device"></a>Modülleri alt katman cihazına dağıt
+
+Buluttan iş yüklerini **alt katman** cihazlarınıza dağıtmak için hem Azure Portal hem de Azure CLI kullanabilirsiniz.
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+[Azure Portal](https://ms.portal.azure.com/):
+
+1. IoT Hub gidin.
+
+1. Sol bölmedeki menüden, **otomatik cihaz yönetimi** altında **IoT Edge** ' yi seçin.
+
+1. IoT Edge cihazlar listesinde alt katman cihazınızın cihaz KIMLIĞINE tıklayın.
+
+1. Üstteki çubukta **modülleri ayarla** ' yı seçin.
+
+1. Dişli simgesinin yanındaki **çalışma zamanı ayarları** ' nı seçin.
+
+1. **Edge hub** 'ı altında, görüntü alanına girin `$upstream:8000/azureiotedge-hub:1.2.0-rc1` .
+
+1. Aşağıdaki ortam değişkenlerini Edge hub modülünüzü ekleyin:
+
+    | Ad | Değer |
+    | - | - |
+    | `experimentalFeatures__enabled` | `true` |
+    | `experimentalFeatures__nestedEdgeEnabled` | `true` |
+
+1. **Edge Aracısı** altında, görüntü alanına girin `$upstream:8000/azureiotedge-agent:1.2.0-rc1` . **Kaydet** ’i seçin.
+
+1. Sıcaklık algılayıcısı modülünü ekleyin. **+ Ekle** ' yi seçin ve açılan listeden **Market modülü** ' nü seçin. Modülünü arayın `Simulated Temperature Sensor` ve seçin.
+
+1. **IoT Edge modüller** altında, `Simulated Temperature Sensor` az önce eklediğiniz modülü seçin ve görüntü URI 'sini öğesine işaret etmek için güncelleştirin `$upstream:8000/azureiotedge-simulated-temperature-sensor:1.0` .
+
+1. Dağıtımı tamamladıktan sonra **Kaydet** , **gözden geçir** ve **Oluştur** ' u seçin.
+
+   ![Edge hub, Edge Aracısı ve sanal sıcaklık algılayıcısı içeren dağıtımı tamamen yapın](./media/tutorial-nested-iot-edge/complete-lower-layer-deployment.png)
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. [Azure Cloud Shell](https://shell.azure.com/), dosyasında bir deployment.jsoluşturmak için aşağıdaki komutu girin:
+
+   ```azurecli-interactive
+   code deploymentLowerLayer.json
+   ```
+
+1. Aşağıdaki JSON içeriğini deployment.jsüzerine kopyalayın, kaydedin ve kapatın.
+
+   ```json
+   {
+       "modulesContent": {
+           "$edgeAgent": {
+               "properties.desired": {
+                   "modules": {
+                       "simulatedTemperatureSensor": {
+                           "settings": {
+                               "image": "$upstream:8000/azureiotedge-simulated-temperature-sensor:1.0",
+                               "createOptions": ""
+                           },
+                           "type": "docker",
+                           "status": "running",
+                           "restartPolicy": "always",
+                           "version": "1.0"
+                       }
+                   },
+                   "runtime": {
+                       "settings": {
+                           "minDockerVersion": "v1.25",
+                       },
+                       "type": "docker"
+                   },
+                   "schemaVersion": "1.1",
+                   "systemModules": {
+                       "edgeAgent": {
+                           "settings": {
+                               "image": "$upstream:8000/azureiotedge-agent:1.2.0-rc1",
+                               "createOptions": ""
+                           },
+                           "type": "docker"
+                       },
+                       "edgeHub": {
+                           "settings": {
+                               "image": "$upstream:8000/azureiotedge-hub:1.2.0-rc1",
+                               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
+                           },
+                           "type": "docker",
+                           "env": {
+                               "experimentalFeatures__enabled": {
+                                   "value": "true"
+                               },
+                               "experimentalFeatures__nestedEdgeEnabled": {
+                                   "value": "true"
+                               }
+                           },
+                           "status": "running",
+                           "restartPolicy": "always"
+                       }
+                   }
+               }
+           },
+           "$edgeHub": {
+               "properties.desired": {
+                   "routes": {
+                       "route": "FROM /messages/* INTO $upstream"
+                   },
+                   "schemaVersion": "1.1",
+                   "storeAndForwardConfiguration": {
+                       "timeToLiveSecs": 7200
+                   }
+               }
+           }
+       }
+   }
+   ```
+
+1. Alt katman uç cihazınıza bir küme modülleri dağıtımı oluşturmak için aşağıdaki komutu girin:
+
+   ```azurecli-interactive
+   az iot edge set-modules --device-id <lower_layer_device_id> --hub-name <iot_hub_name> --content ./deploymentLowerLayer.json
+
+---
+
+Notice that the image URI that we used for the simulated temperature sensor module pointed to `$upstream:8000` instead of to a container registry. We configured this device to not have direct connections to the cloud, because it's in a lower layer. To pull container images, this device requests the image from its parent device instead. At the top layer, the API proxy module routes this container request to the registry module, which handles the image pull.
+
+On the device details page for your lower layer IoT Edge device, you should now see the temperature sensor module listed along the system modules as **Specified in deployment**. It may take a few minutes for the device to receive its new deployment, request the container image, and start the module. Refresh the page until you see the temperature sensor module listed as **Reported by device**.
+
+You can also watch the messages arrive at your IoT hub by using the [Azure IoT Hub extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+
+## Clean up resources
+
+You can delete the local configurations and the Azure resources that you created in this article to avoid charges.
+
+To delete the resources:
+
+1. Sign in to the [Azure portal](https://portal.azure.com) and select **Resource groups**.
+
+2. Select the name of the resource group that contains your IoT Edge test resources. 
+
+3. Review the list of resources contained in your resource group. If you want to delete all of them, you can select **Delete resource group**. If you want to delete only some of them, you can click into each resource to delete them individually. 
+
+## Next steps
+
+In this tutorial, you configured two IoT Edge devices as gateways and set one as the parent device of the other. Then, you demonstrated pulling a container image onto the child device through a gateway. You can also try out this scenario by following the scripted [Azure IoT Edge for Industrial IoT sample](https://aka.ms/iotedge-nested-sample), which deploys Azure virtual machines as preconfigured devices to simulate a factory environment.
+
+To see how Azure IoT Edge can create more solutions for your business, continue on to the other tutorials.
+
+> [!div class="nextstepaction"]
+> [Deploy an Azure Machine Learning model as a module](tutorial-deploy-machine-learning.md)

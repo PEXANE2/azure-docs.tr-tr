@@ -5,17 +5,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 11/10/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4e8623ecb351fa99a437de70a9b74a70fb6228cd
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5f2d3ba12fa65beb7156e056c23e44b028cbb520
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151146"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445073"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure Depolama için şifreleme ve Azure Key Vault Client-Side
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -174,7 +174,7 @@ Kullanıcılar isteğe bağlı olarak, tüm karşıya yüklemeler ve indirmeleri
 
 
 # <a name="net-v12"></a>[.NET V12](#tab/dotnet)
-Bir **Clientsideencryptionoptions** nesnesi oluşturun ve bunu, **Specializedblobclientoptions**ile istemci oluşturma üzerinde ayarlayın. Şifreleme seçeneklerini API başına temelinde ayarlayamazsınız. Diğer her şey, dahili olarak istemci kitaplığı tarafından işlenir.
+Bir **Clientsideencryptionoptions** nesnesi oluşturun ve bunu, **Specializedblobclientoptions** ile istemci oluşturma üzerinde ayarlayın. Şifreleme seçeneklerini API başına temelinde ayarlayamazsınız. Diğer her şey, dahili olarak istemci kitaplığı tarafından işlenir.
 
 ```csharp
 // Your key and key resolver instances, either through KeyVault SDK or an external implementation
@@ -207,9 +207,9 @@ MemoryStream outputStream = new MemoryStream();
 blob.DownloadTo(outputStream);
 ```
 
-Şifreleme seçenekleri uygulamak için bir **BlobServiceClient** gerekli değildir. Ayrıca, **BlobContainerClient** / **blobclientoptions** nesnelerini kabul eden blobcontainerclient**blobclient** oluşturuculara de geçirilebilir.
+Şifreleme seçenekleri uygulamak için bir **BlobServiceClient** gerekli değildir. Ayrıca, **BlobContainerClient** / **blobclientoptions** nesnelerini kabul eden blobcontainerclient **blobclient** oluşturuculara de geçirilebilir.
 
-İstenen bir **Blobclient** nesnesi zaten varsa ancak istemci tarafı şifreleme seçenekleri olmadan, bu nesnenin bir kopyasını verilen **clientsideencryptionoptions**ile oluşturmak için bir genişletme yöntemi vardır. Bu genişletme yöntemi, sıfırdan yeni bir **Blobclient** nesnesi oluşturma yükünden kaçınır.
+İstenen bir **Blobclient** nesnesi zaten varsa ancak istemci tarafı şifreleme seçenekleri olmadan, bu nesnenin bir kopyasını verilen **clientsideencryptionoptions** ile oluşturmak için bir genişletme yöntemi vardır. Bu genişletme yöntemi, sıfırdan yeni bir **Blobclient** nesnesi oluşturma yükünden kaçınır.
 
 ```csharp
 using Azure.Storage.Blobs.Specialized;
@@ -223,7 +223,7 @@ BlobClient clientSideEncryptionBlob = plaintextBlob.WithClientSideEncryptionOpti
 ```
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
-**Blobencryptionpolicy** nesnesi oluşturun ve bunu istek SEÇENEKLERINDE (API başına veya **defaultrequestoptions**kullanarak istemci düzeyinde) ayarlayın. Diğer her şey, dahili olarak istemci kitaplığı tarafından işlenir.
+**Blobencryptionpolicy** nesnesi oluşturun ve bunu istek SEÇENEKLERINDE (API başına veya **defaultrequestoptions** kullanarak istemci düzeyinde) ayarlayın. Diğer her şey, dahili olarak istemci kitaplığı tarafından işlenir.
 
 ```csharp
 // Create the IKey used for encryption.
@@ -247,7 +247,7 @@ blob.DownloadToStream(outputStream, null, options, null);
 
 ### <a name="queue-service-encryption"></a>Kuyruk hizmeti şifreleme
 # <a name="net-v12"></a>[.NET V12](#tab/dotnet)
-Bir **Clientsideencryptionoptions** nesnesi oluşturun ve **SpecializedQueueClientOptions**ile istemci oluşturma üzerinde ayarlayın. Şifreleme seçeneklerini API başına temelinde ayarlayamazsınız. Diğer her şey, dahili olarak istemci kitaplığı tarafından işlenir.
+Bir **Clientsideencryptionoptions** nesnesi oluşturun ve **SpecializedQueueClientOptions** ile istemci oluşturma üzerinde ayarlayın. Şifreleme seçeneklerini API başına temelinde ayarlayamazsınız. Diğer her şey, dahili olarak istemci kitaplığı tarafından işlenir.
 
 ```csharp
 // Your key and key resolver instances, either through KeyVault SDK or an external implementation
@@ -279,7 +279,7 @@ QueueMessage[] queue.ReceiveMessages();
 
 Şifreleme seçenekleri uygulamak için bir **QueueServiceClient** gerekli değildir. Ayrıca, **QueueClientOptions** nesnelerini kabul eden **queueclient** oluşturuculara de geçirilebilir.
 
-İstenen bir **Queueclient** nesnesi zaten varsa ancak istemci tarafı şifreleme seçenekleri olmadan, bu nesnenin bir kopyasını verilen **clientsideencryptionoptions**ile oluşturmak için bir genişletme yöntemi vardır. Bu genişletme yöntemi, sıfırdan yeni bir **Queueclient** nesnesi oluşturma yükünü önler.
+İstenen bir **Queueclient** nesnesi zaten varsa ancak istemci tarafı şifreleme seçenekleri olmadan, bu nesnenin bir kopyasını verilen **clientsideencryptionoptions** ile oluşturmak için bir genişletme yöntemi vardır. Bu genişletme yöntemi, sıfırdan yeni bir **Queueclient** nesnesi oluşturma yükünü önler.
 
 ```csharp
 using Azure.Storage.Queues.Specialized;
@@ -292,7 +292,7 @@ ClientSideEncryptionOptions encryptionOptions;
 QueueClient clientSideEncryptionQueue = plaintextQueue.WithClientSideEncryptionOptions(encryptionOptions);
 ```
 
-Bazı kullanıcılar, alınan tüm iletilerin başarıyla çözülebileceği ve anahtarın veya Çözümleyicisinin oluşturması gereken sıralara sahip olabilir. Yukarıdaki örneğin son satırı Bu durumda oluşturulur ve alınan iletilerden hiçbiri erişilebilir olmayacaktır. Bu senaryolarda, **QueueClientSideEncryptionOptions** alt sınıfı istemcilere şifreleme seçenekleri sağlamak için kullanılabilir. Bir kuyruk iletisi şifresi çözülemezse tetiklenecek ve olay için en az bir çağrı eklendiği sürece tetiklenecek bir olay **Decryptionfailed** sunar. Tek tek başarısız iletiler bu şekilde işlenebilir ve bu, **Receivemessages**tarafından döndürülen son **queuemessage []** öğesinden filtrelenirler.
+Bazı kullanıcılar, alınan tüm iletilerin başarıyla çözülebileceği ve anahtarın veya Çözümleyicisinin oluşturması gereken sıralara sahip olabilir. Yukarıdaki örneğin son satırı Bu durumda oluşturulur ve alınan iletilerden hiçbiri erişilebilir olmayacaktır. Bu senaryolarda, **QueueClientSideEncryptionOptions** alt sınıfı istemcilere şifreleme seçenekleri sağlamak için kullanılabilir. Bir kuyruk iletisi şifresi çözülemezse tetiklenecek ve olay için en az bir çağrı eklendiği sürece tetiklenecek bir olay **Decryptionfailed** sunar. Tek tek başarısız iletiler bu şekilde işlenebilir ve bu, **Receivemessages** tarafından döndürülen son **queuemessage []** öğesinden filtrelenirler.
 
 ```csharp
 // Create your encryption options using the sub-class.
@@ -324,7 +324,7 @@ Debug.Assert(messages.Length == 4)
 ```
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
-Bir **Queueencryptionpolicy** nesnesi oluşturun ve bunu istek SEÇENEKLERINDE (API başına veya **defaultrequestoptions**kullanarak istemci düzeyinde) ayarlayın. Diğer her şey, dahili olarak istemci kitaplığı tarafından işlenir.
+Bir **Queueencryptionpolicy** nesnesi oluşturun ve bunu istek SEÇENEKLERINDE (API başına veya **defaultrequestoptions** kullanarak istemci düzeyinde) ayarlayın. Diğer her şey, dahili olarak istemci kitaplığı tarafından işlenir.
 
 ```csharp
 // Create the IKey used for encryption.
@@ -344,7 +344,7 @@ Bir **Queueencryptionpolicy** nesnesi oluşturun ve bunu istek SEÇENEKLERINDE (
 ---
 
 ### <a name="table-service-encryption-v11-only"></a>Tablo hizmeti şifrelemesi (yalnızca v11)
-Bir şifreleme ilkesi oluşturup istek seçeneklerinde ayarlamaya ek olarak, **Tablerequestoptions**Içinde bir **encryptionresolver** belirtmeniz veya varlıkta [encryptproperty] özniteliğini ayarlamanız gerekir.
+Bir şifreleme ilkesi oluşturup istek seçeneklerinde ayarlamaya ek olarak, **Tablerequestoptions** Içinde bir **encryptionresolver** belirtmeniz veya varlıkta [encryptproperty] özniteliğini ayarlamanız gerekir.
 
 #### <a name="using-the-resolver"></a>Çözümleyici 'yi kullanma
 
@@ -383,7 +383,7 @@ Bir şifreleme ilkesi oluşturup istek seçeneklerinde ayarlamaya ek olarak, **T
 ```
 
 #### <a name="using-attributes"></a>Öznitelikleri kullanma
-Yukarıda belirtildiği gibi, varlık TableEntity uygularsa, Özellikler **Encryptionresolver**'ı belirtmek yerine [EncryptProperty] özniteliğiyle birlikte kullanılabilir.
+Yukarıda belirtildiği gibi, varlık TableEntity uygularsa, Özellikler **Encryptionresolver** 'ı belirtmek yerine [EncryptProperty] özniteliğiyle birlikte kullanılabilir.
 
 ```csharp
 [EncryptProperty]

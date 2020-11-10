@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting, contperfq4
-ms.date: 10/02/2020
-ms.openlocfilehash: b49e7ab7f3412177ee9eafad8d1a68525e054421
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/09/2020
+ms.openlocfilehash: 46763bddd0f173ccf73edc54e5f2688d3bf6efc0
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314768"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445413"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning'deki bilinen sorunlar ve sorun giderme
 
@@ -258,7 +258,20 @@ Veri kayması izleyicileri için sınırlamalar ve bilinen sorunlar:
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısı
 
-* **Uzun süreli işlem hazırlama süresi:**
+### <a name="dataset-visualization-in-the-designer"></a>Tasarımcıda veri kümesi görselleştirmesi
+
+**Veri kümesi varlık sayfasında** veya SDK kullanarak bir veri kümesini kaydettikten sonra, bu dosyayı tasarımcı tuvalinin sol tarafında bulunan **veri kümeleri** kategorisi altında bulabilirsiniz.
+
+Ancak, veri kümesini tuvale sürüklediğiniz ve görselleştirebileceğiniz zaman, aşağıdaki nedenlerden bazıları nedeniyle görselleştirilemiyor olabilir:
+
+- Şu anda tasarımcıda tablo veri kümesini görselleştirebilirsiniz. Tasarımcı dışında bir dosya veri kümesi kaydettiğinizde, tasarımcı tuvalinde görselleştirilemez.
+- Veri kümeniz sanal ağ (VNet) içinde depolanır. Görselleştirmek istiyorsanız, veri deposundaki çalışma alanı yönetilen kimliğini etkinleştirmeniz gerekir.
+    1. İlgili veri deposuna gidin ve **kimlik bilgilerini güncelleştir** 
+     :::image type="content" source="./media/resource-known-issues/datastore-update-credential.png" alt-text="güncelleştirme kimlik bilgilerini"::: seçin
+    1. Çalışma alanı yönetilen kimliğini etkinleştirmek için **Evet** ' i seçin.
+    :::image type="content" source="./media/resource-known-issues/enable-workspace-managed-identity.png" alt-text="Çalışma alanı yönetilen kimliğini etkinleştir":::
+
+### <a name="long-compute-preparation-time"></a>Uzun süreli işlem hazırlık süresi
 
 Bir işlem hedefine ilk kez bağlandığınızda ya da daha uzun bir süre sonra bu işlem birkaç dakika olabilir. 
 
@@ -269,7 +282,7 @@ import time
 time.sleep(600)
 ```
 
-* **Gerçek zamanlı uç noktalar için günlük:**
+### <a name="log-for-real-time-endpoints"></a>Gerçek zamanlı uç noktalar için günlük
 
 Gerçek zamanlı uç noktaların günlükleri müşteri verileri. Gerçek zamanlı uç nokta sorunlarını gidermek için, günlükleri etkinleştirmek üzere aşağıdaki kodu kullanabilirsiniz. 
 

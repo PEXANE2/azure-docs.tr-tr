@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 8e065651a5527c0ab425614197ce128325454942
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24e3841abc9c397ab307e55405bdcc208815570e
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257682"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444172"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Web API 'Lerini çağıran Daemon uygulaması-kod yapılandırması
 
@@ -34,7 +34,7 @@ Bu Microsoft kitaplıkları, Daemon uygulamalarını destekler:
 
 ## <a name="configure-the-authority"></a>Yetkilendirmeyi yapılandırma
 
-Daemon uygulamaları, temsilci izinleri yerine uygulama izinleri kullanır. Bu nedenle, desteklenen hesap türü herhangi bir kuruluş dizininde veya kişisel Microsoft hesabı (örneğin, Skype, Xbox, Outlook.com) bir hesap olamaz. Bir Microsoft kişisel hesabına yönelik bir Daemon uygulamasına izin vermek için kiracı yöneticisi yoktur. *Kuruluşumdaki hesaplar* veya *herhangi bir kuruluştaki hesaplar*' ı seçmeniz gerekir.
+Daemon uygulamaları, temsilci izinleri yerine uygulama izinleri kullanır. Bu nedenle, desteklenen hesap türü herhangi bir kuruluş dizininde veya kişisel Microsoft hesabı (örneğin, Skype, Xbox, Outlook.com) bir hesap olamaz. Bir Microsoft kişisel hesabına yönelik bir Daemon uygulamasına izin vermek için kiracı yöneticisi yoktur. *Kuruluşumdaki hesaplar* veya *herhangi bir kuruluştaki hesaplar* ' ı seçmeniz gerekir.
 
 Bu nedenle, uygulama yapılandırmasında belirtilen yetki kiralanmalıdır (kiracı KIMLIĞI veya kuruluşunuzla ilişkili bir etki alanı adı belirterek).
 
@@ -51,7 +51,7 @@ MSAL kitaplıklarında, istemci kimlik bilgileri (gizli veya sertifika) gizli is
 
 Yapılandırma dosyası şunları tanımlar:
 
-- Birlikte *yetkiyi*oluşturan bulut örneği ve Kiracı kimliği.
+- Birlikte *yetkiyi* oluşturan bulut örneği ve Kiracı kimliği.
 - Uygulama kaydından aldığınız istemci KIMLIĞI.
 - Bir istemci parolası ya da bir sertifika.
 
@@ -352,17 +352,14 @@ ConfidentialClientApplication cca =
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-> [!div class="nextstepaction"]
-> [Daemon uygulaması-uygulama belirteçleri alınıyor](./scenario-daemon-acquire-token.md?tabs=dotnet)
+Bu senaryodaki bir sonraki makaleye geçin, [uygulama için bir belirteç alın](./scenario-daemon-acquire-token.md?tabs=dotnet).
 
 # <a name="python"></a>[Python](#tab/python)
 
-> [!div class="nextstepaction"]
-> [Daemon uygulaması-uygulama belirteçleri alınıyor](./scenario-daemon-acquire-token.md?tabs=python)
+Bu senaryodaki bir sonraki makaleye geçin, [uygulama için bir belirteç alın](./scenario-daemon-acquire-token.md?tabs=python).
 
 # <a name="java"></a>[Java](#tab/java)
 
-> [!div class="nextstepaction"]
-> [Daemon uygulaması-uygulama belirteçleri alınıyor](./scenario-daemon-acquire-token.md?tabs=java)
+Bu senaryodaki bir sonraki makaleye geçin, [uygulama için bir belirteç alın](./scenario-daemon-acquire-token.md?tabs=java).
 
 ---

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3fda153d4c48ced17d1a9ba5f060b435b161542e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 524b34c48146dc9e6102ed8d20ff8d1076706ba7
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127646"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444971"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Portalda Azure Stream Analytics işi test etme
 
@@ -111,6 +111,19 @@ Canlı verileri kullanmak yerine, Azure Stream Analytics sorgunuzu test etmek i�
 4.  Zaman aşımı boyutu bir dakikadır. Böylece pencere boyutu bir dakikadan büyük olan herhangi bir sorgu herhangi bir veri alamaz.
 
 5.  Machine Learning desteklenmez.
+
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+1.  Bu hatayı alırsanız "sonuçlar getirilirken bir ağ bağlantısı sorunu vardı. Lütfen ağınızı ve güvenlik duvarı ayarlarınızı denetleyin. ", aşağıdaki adımları izleyin:
+
+  * Hizmetle bağlantıyı denetlemek için [https://queryruntime.azurestreamanalytics.com/api/home/index](https://queryruntime.azurestreamanalytics.com/api/home/index) bir tarayıcıda açın. Bu bağlantıyı açamazsınız, güvenlik duvarı ayarlarınızı güncelleştirin.
+  
+2. Bu hatayı alırsanız "istek boyutu çok büyük. Lütfen giriş verilerinin boyutunu azaltın ve yeniden deneyin. ", aşağıdaki adımları izleyin:
+
+  * Giriş boyutunu küçültün: sorgunuzu daha küçük boyutlu örnek dosyayla veya daha küçük bir zaman aralığıyla test edin.
+  * Sorgu boyutunu azalt – bir sorgu seçimini test etmek Için, sorgunun bir kısmını seçin ve ardından **Seçili sorguyu sına** ' ya tıklayın.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Stream Analytics kullanarak bir IoT çözümü oluşturun](./stream-analytics-build-an-iot-solution-using-stream-analytics.md): Bu öğretici, ücretsiz olarak trafiği taklit edecek bir veri Oluşturucu ile uçtan uca bir çözüm oluşturmanıza kılavuzluk eder.

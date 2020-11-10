@@ -8,17 +8,17 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 370be4501a113403a9b1db14571f5a021ac15517
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 78d4d9a8b5023731530c5e348f5c9ba72815d410
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149100"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445651"
 ---
 # <a name="managed-hsm-role-management"></a>Yönetilen HSM rol yönetimi
 
 > [!NOTE]
-> Key Vault iki tür kaynak destekler: kasaların ve yönetilen HSM 'ler. Bu makale, **YÖNETILEN HSM**ile ilgilidir. Kasayı yönetme hakkında bilgi edinmek istiyorsanız lütfen bkz. [Azure CLI kullanarak Key Vault yönetme](../general/manage-with-cli2.md).
+> Key Vault iki tür kaynak destekler: kasaların ve yönetilen HSM 'ler. Bu makale, **YÖNETILEN HSM** ile ilgilidir. Kasayı yönetme hakkında bilgi edinmek istiyorsanız lütfen bkz. [Azure CLI kullanarak Key Vault yönetme](../general/manage-with-cli2.md).
 
 Yönetilen HSM 'ye genel bakış için bkz. [YÖNETILEN HSM nedir?](overview.md). Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -60,7 +60,7 @@ az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Cr
 
 ### <a name="assign-role-for-a-specific-key"></a>Belirli bir anahtar için rol ata
 
-`az keyvault role assignment create` **Myrsakey**adlı belirli bir anahtar için Kullanıcı asıl adı **kullanıcı2 \@ contoso.com** tarafından tanımlanan kullanıcıya **yönetilen bir HSM şifre Müdürü** rolü atamak için komutunu kullanın.
+`az keyvault role assignment create` **Myrsakey** adlı belirli bir anahtar için Kullanıcı asıl adı **kullanıcı2 \@ contoso.com** tarafından tanımlanan kullanıcıya **yönetilen bir HSM şifre Müdürü** rolü atamak için komutunu kullanın.
 
 ```azurecli-interactive
 az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys/myrsakey
@@ -97,7 +97,7 @@ az keyvault role assignment list --hsm-name ContosoMHSM --assignee user2@contoso
 
 ## <a name="delete-a-role-assignment"></a>Rol atamasını silme
 
-`az keyvault role assignment delete`Key **myrsakey2**için Kullanıcı **kullanıcı2 \@ contoso.com** 'e atanan bir **yönetilen HSM şifre Müdürü** rolünü silmek için komutunu kullanın.
+`az keyvault role assignment delete`Key **myrsakey2** için Kullanıcı **kullanıcı2 \@ contoso.com** 'e atanan bir **yönetilen HSM şifre Müdürü** rolünü silmek için komutunu kullanın.
 
 ```azurecli-interactive
 az keyvault role assignment delete --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys/myrsakey2
@@ -113,7 +113,7 @@ az keyvault role definition list --hsm-name ContosoMHSM
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure rol tabanlı erişim denetimine (RBAC)](../../role-based-access-control/overview.md)genel bakış.
+- Bkz. [Azure rol tabanlı erişim denetimine genel bakış (Azure RBAC)](../../role-based-access-control/overview.md).
 - [YÖNETILEN HSM rol yönetimi](role-management.md) hakkında öğreticiye bakın
 - [YÖNETILEN HSM erişim denetimi modeli](access-control.md) hakkında daha fazla bilgi edinin
 - [YÖNETILEN HSM yerel RBAC için yerleşik rollere](built-in-roles.md) bakın

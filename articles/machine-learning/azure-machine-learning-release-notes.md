@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 44afcf6883298eb36cd1219e6d60a8444a487412
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 5054451b181223d3d6deece6812358cfd08b1e30
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423020"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445090"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
@@ -1084,7 +1084,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
 
 + **Yeni özellikler**
   + Veri kümesi: `on_error` `out_of_range_datetime` `to_pandas_dataframe` veriler ile doldurmak yerine hata değerleri olduğunda, Için iki seçenek ekleyin ve başarısız olur `None` .
-  + Çalışma alanı: `hbi_workspace` hassas verilerle daha fazla şifrelemeyi sağlayan ve çalışma alanlarında gelişmiş tanılamayı devre dışı bırakan çalışma alanları için bayrak eklendi. Ayrıca, çalışma alanınızı `cmk_keyvault` `resource_cmk_uri` sağlarken aboneliğinizde bir Cosmos DB örneği oluşturan bir çalışma alanı oluştururken ve parametrelerini belirterek ilişkili Cosmos DB örneği için kendi anahtarlarınızı getirme desteği ekledik. [Buradan daha fazla bilgi edinin.](./concept-enterprise-security.md#azure-cosmos-db)
+  + Çalışma alanı: `hbi_workspace` hassas verilerle daha fazla şifrelemeyi sağlayan ve çalışma alanlarında gelişmiş tanılamayı devre dışı bırakan çalışma alanları için bayrak eklendi. Ayrıca, çalışma alanınızı `cmk_keyvault` `resource_cmk_uri` sağlarken aboneliğinizde bir Cosmos DB örneği oluşturan bir çalışma alanı oluştururken ve parametrelerini belirterek ilişkili Cosmos DB örneği için kendi anahtarlarınızı getirme desteği ekledik. [Buradan daha fazla bilgi edinin.](./concept-data-encryption.md#azure-cosmos-db)
 
 + **Hata düzeltmeleri ve geliştirmeleri**
   + **azureml-automl-runtime**

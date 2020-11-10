@@ -2,19 +2,19 @@
 title: Etiketleri ve bildirimleri temizleme
 description: Bir Azure Container Registry 'den yaş ve etiket filtresine göre birden çok etiketi ve bildirimi silmek için bir temizleme komutu kullanın ve isteğe bağlı olarak temizleme işlemlerini zamanlayın.
 ms.topic: article
-ms.date: 05/14/2020
-ms.openlocfilehash: ab6794648babd2bd491ded5788455b75c10d675a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/10/2020
+ms.openlocfilehash: 406a1f231af57407e9475a8888b68aad9d88dcb3
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83652643"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445124"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Azure Container Registry 'den görüntüleri otomatik olarak Temizleme
 
 Bir Azure Container Registry 'yi bir geliştirme iş akışının parçası olarak kullandığınızda, kayıt defteri kısa bir süre sonra gerek duyulmayan görüntülerle veya diğer yapıtlarla hızlıca doldurabilir. Belirli bir süreden eski olan veya belirtilen bir ad filtresiyle eşleşen tüm etiketleri silmek isteyebilirsiniz. Birden çok yapıyı hızlıca silmek için bu makalede, `acr purge` isteğe bağlı veya [Zamanlanmış](container-registry-tasks-scheduled.md) bir ACR görevi olarak çalıştırabileceğiniz komut tanıtılmaktadır. 
 
-`acr purge`Komut şu anda `mcr.microsoft.com/acr/acr-cli:0.2` GitHub 'daki [ACR-CLI](https://github.com/Azure/acr-cli) deposunda bulunan kaynak kodundan oluşturulan ortak bir kapsayıcı görüntüsünde () dağıtılır.
+`acr purge`Komut şu anda `mcr.microsoft.com/acr/acr-cli:0.3` GitHub 'daki [ACR-CLI](https://github.com/Azure/acr-cli) deposunda bulunan kaynak kodundan oluşturulan ortak bir kapsayıcı görüntüsünde () dağıtılır.
 
 Bu makalede ACR görev örneklerini çalıştırmak için Azure Cloud Shell veya yerel bir Azure CLı yüklemesi kullanabilirsiniz. Yerel olarak kullanmak isterseniz, 2.0.76 veya üzeri sürümü gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install]. 
 
@@ -42,8 +42,9 @@ En azından, çalıştırdığınızda şunları belirtin `acr purge` :
 
 `acr purge` isteğe bağlı birkaç parametreyi destekler. Aşağıdaki ikisi bu makaledeki örneklerde kullanılmıştır:
 
-* `--untagged` -İlişkili etiketleri (*etiketlenmemiş bildirimler*) olmayan bildirimlerin silineceğini belirtir.
+* `--untagged` -İlişkili etiketleri ( *etiketlenmemiş bildirimler* ) olmayan bildirimlerin silineceğini belirtir.
 * `--dry-run` -Hiçbir veri silinmediğini belirtir, ancak çıktı komutun bu bayrak olmadan çalıştırıldığı ile aynı olur. Bu parametre, korumak istediğiniz verileri yanlışlıkla silmediğinden emin olmak için bir temizleme komutunun test edilmesi için yararlıdır.
+* `--keep` -Kaldırılacak etiketlerin en son x sayısının korunacağını belirtir.
 
 Ek parametreler için, öğesini çalıştırın `acr purge --help` . 
 

@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: ab3f3765a0e988c7e93cca5782b47b3f2d32aef4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2c9d00f1d78d2dea46d4ff4a08433360e00c7b9d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312553"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445634"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning çalışma alanları oluşturma ve yönetme 
 
@@ -193,7 +193,7 @@ Azure Güvenlik Merkezi, hibrit bulut iş yükleri arasında birleşik güvenlik
 
 Varsayılan olarak, çalışma alanının ölçümleri ve meta verileri Microsoft 'un koruduğu bir Azure Cosmos DB örneğine depolanır. Bu veriler, Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir.
 
-Çalışma alanınızda Microsoft 'un topladığı verileri sınırlandırmak için portalda __yüksek iş etkisi çalışma alanını__ seçin veya `hbi_workspace=true ` Python 'da ayarlayın. Bu ayar hakkında daha fazla bilgi için bkz. [bekleyen şifreleme](concept-enterprise-security.md#encryption-at-rest).
+Çalışma alanınızda Microsoft 'un topladığı verileri sınırlandırmak için portalda __yüksek iş etkisi çalışma alanını__ seçin veya `hbi_workspace=true ` Python 'da ayarlayın. Bu ayar hakkında daha fazla bilgi için bkz. [bekleyen şifreleme](concept-data-encryption.md#encryption-at-rest).
 
 > [!IMPORTANT]  
 > Yüksek iş etkisi seçilmesi, yalnızca bir çalışma alanı oluşturulurken yapılabilir. Çalışma alanı oluşturulduktan sonra bu ayarı değiştiremezsiniz.   
@@ -318,7 +318,7 @@ Workspace.list('<subscription-id>')
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Üst arama alanına **Machine Learning** yazın.  
 

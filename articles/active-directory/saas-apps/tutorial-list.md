@@ -12,18 +12,18 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: celested
-ms.openlocfilehash: fc94abdfbf5263a559c71d8321a8df7a8c6965a1
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 19889c05447db05cc20c8f46e97bd8d16ff43bdf
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359859"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445668"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>SaaS uygulamalarını Azure Active Directory ile tümleştirme öğreticileri
 
 Bulut özellikli [bir hizmet olarak yazılım (SaaS)](https://azure.microsoft.com/overview/what-is-saas/) uygulaması Azure Active Directory ile tümleştirmenize yardımcı olmak için, yapılandırma boyunca size kılavuzluk eden bir öğretici koleksiyonu geliştirdik.
 
-Azure AD ile önceden tümleştirilmiş olan tüm SaaS uygulamalarının listesi için bkz. [market Active Directory](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps).
+Azure AD ile önceden tümleştirilmiş olan tüm SaaS uygulamalarının listesi için bkz. [market Active Directory](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/azure-active-directory-apps).
 
 Otomatik sağlama galerisine veya SSO galerisine eklenecek bir SAML/OıDC özellikli uygulamaya eklenecek bir [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) etkin uygulaması istemek için [uygulama ağ portalı](../azuread-dev/howto-app-gallery-listing.md) 'nı kullanın.
 

@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 11/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ed7b61e9e0379462e0dfbcdcc93acfccf470d95f
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 498934c01970b296c1491e7ccd36ad947324306a
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427046"
+ms.locfileid: "94445345"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Sorgu için otomatik tamamlamayı ve önerilen sonuçları etkinleştirmek üzere bir öneri aracı oluşturun
 
@@ -26,9 +26,9 @@ Azure Bilişsel Arama, "yazarken arama" özelliği, bir [arama dizinine](search-
 
 Bu özellikleri ayrı olarak veya birlikte kullanabilirsiniz. Bu davranışları Azure Bilişsel Arama uygulamak için bir dizin ve sorgu bileşeni vardır. 
 
-+ Dizinde bir öneri aracı ekleyin. [Dizin oluşturma (REST) (/REST/api/SearchService/create-Index) veya bir [Öneri araçları özelliği](/dotnet/api/azure.search.documents.indexes.models.searchindex.suggesters)portalını kullanabilirsiniz. Bu makalenin geri kalanında bir öneri aracı oluşturmaya odaklanılmıştır.
++ Arama dizini tanımına bir öneri aracı ekleyin. Bu makalenin geri kalanında bir öneri aracı oluşturmaya odaklanılmıştır.
 
-+ Sorgu isteğinde, [aşağıda listelenen API](#how-to-use-a-suggester)'lerden birini çağırın.
++ [Aşağıda listelenen API](#how-to-use-a-suggester)'lerden birini kullanarak bir öneri Isteği veya AutoComplete isteği biçiminde öneri aracı etkin bir sorgu çağırın.
 
 İsteğe bağlı arama türü, dize alanları için alan temelinde desteklenir. Ekran görüntüsünde gösterilenle benzer bir deneyim istiyorsanız, aynı arama çözümü içinde her iki typeahead davranışını da uygulayabilirsiniz. Her iki istek de, bir Kullanıcı en az üç karakter girişi dizesi sağladıktan sonra, belirli dizin ve yanıtların *belge* koleksiyonunu hedefler.
 
@@ -36,9 +36,9 @@ Bu özellikleri ayrı olarak veya birlikte kullanabilirsiniz. Bu davranışları
 
 Bir öneri aracı, kısmi sorgularda eşleşme için ön ekleri depolayarak, arama türü davranışlarını destekleyen bir iç veri yapısıdır. Belirteçlerin gösterildiği gibi, ön ekler, bir öneri aracı Fields koleksiyonunda belirtilen her bir alan için bir tane olmak üzere ters dizinler halinde depolanır.
 
-## <a name="define-a-suggester"></a>Öneri aracı tanımlama
+## <a name="how-to-create-a-suggester"></a>Öneri aracı oluşturma
 
-Bir öneri aracı oluşturmak için bir [dizin şemasına](/rest/api/searchservice/create-index) bir tane ekleyin ve [her bir özelliği ayarlayın](#property-reference). Bir öneri aracı oluşturmak için en iyi zaman, onu kullanacak alanı da tanımlamanız durumunda olur.
+Bir öneri aracı oluşturmak için bir [Dizin tanımına](/rest/api/searchservice/create-index)bir tane ekleyin. Bir öneri aracı, typeahead deneyiminin etkinleştirildiği bir ad ve alan koleksiyonu alır. ve [her bir özelliği ayarlayın](#property-reference). Bir öneri aracı oluşturmak için en iyi zaman, onu kullanacak alanı da tanımlamanız durumunda olur.
 
 + Yalnızca dize alanlarını kullan
 
@@ -60,12 +60,22 @@ Her iki arama türü deneyiminden de faydalanmak için, otomatik tamamlama için
 
 Bir çözümleyici seçiminiz, alanların nasıl simgeleştirilmiş ve daha sonra önekli olduğunu belirler. Örneğin, "bağlama duyarlı" gibi bir hecelenmiş dize için, dil Çözümleyicisi kullanmak bu belirteç kombinasyonlarına neden olur: "bağlam", "hassas", "bağlama duyarlı". Standart Lucene Çözümleyicisi 'ni kullandınız, hecelenmiş dize yok. 
 
-Çözümleyiciler değerlendirirken, koşulların nasıl simgeleştirilmiş ve daha sonra önekli olduğunu öğrenmek için [metin ANALIZI API](/rest/api/searchservice/test-analyzer) 'sini kullanmayı göz önünde bulundurun. Bir dizin oluşturduktan sonra, belirteç çıkışını görüntülemek için bir dizedeki çeşitli Çözümleyicileri deneyebilirsiniz.
+Çözümleyiciler değerlendirirken, koşulların nasıl işlendiği hakkında Öngörüler için [metin ANALIZI API](/rest/api/searchservice/test-analyzer) 'sini kullanmayı göz önünde bulundurun. Bir dizin oluşturduktan sonra, belirteç çıkışını görüntülemek için bir dizedeki çeşitli Çözümleyicileri deneyebilirsiniz.
 
 [Özel çözümleyiciler](index-add-custom-analyzers.md) veya [önceden tanımlanmış çözümleyiciler](index-add-custom-analyzers.md#predefined-analyzers-reference) kullanan alanlar (Standart Lucene hariç), zayıf sonuçları engellemek için açıkça izin verilmez.
 
 > [!NOTE]
 > Çözümleyici kısıtlamasından çalışmanız gerekiyorsa, örneğin belirli sorgu senaryolarında bir anahtar sözcük veya Ngram Çözümleyicisi gerekiyorsa, aynı içerik için iki ayrı alan kullanmanız gerekir. Bu, diğer alanlardan birinin bir öneri aracı sahip olmasını sağlar, ancak diğeri özel bir çözümleyici yapılandırmasıyla ayarlanacaktır.
+
+## <a name="create-using-the-portal"></a>Portalı kullanarak oluşturma
+
+Dizin oluşturmak için **dizin ekleme** veya **veri alma** Sihirbazı 'nı kullanırken, bir öneri aracı etkinleştirme seçeneğiniz vardır:
+
+1. Dizin tanımında, öneri aracı için bir ad girin.
+
+1. Yeni alanlar için her alan tanımında, öneri aracı sütununda bir onay kutusu seçin. Onay kutusu yalnızca dize alanlarında kullanılabilir. 
+
+Daha önce belirtildiği gibi, çözümleyici seçimi simgeleştirme ve ön eklemeyi etkiler. Öneri araçları etkinleştirilirken alan tanımının tamamını göz önünde bulundurun. 
 
 ## <a name="create-using-rest"></a>REST kullanarak oluşturma
 
@@ -131,9 +141,9 @@ private static void CreateIndex(string indexName, SearchIndexClient indexClient)
 
 |Özellik      |Açıklama      |
 |--------------|-----------------|
-|`name`        |Öneri aracı adı.|
-|`searchMode`  |Aday tümcecikleri aramak için kullanılan strateji. Şu anda desteklenen tek mod, `analyzingInfixMatching` bir terimin başlangıcında Şu anda eşleşen.|
-|`sourceFields`|Önerilerin içerik kaynağı olan bir veya daha fazla alanın listesi. Alanların ve türünde olması gerekir `Edm.String` `Collection(Edm.String)` . Alanda bir çözümleyici belirtilmişse, [Bu listeden](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) bir adlandırılmış çözümleyici olmalıdır (özel çözümleyici değil).<p/> En iyi uygulama olarak, bir arama çubuğunda veya açılan listede bir tamamlanmış dize olup olmadığı için, yalnızca beklenen ve uygun bir yanıta ödünç veren alanları belirtin.<p/>Bir otel adı duyarlık içerdiğinden iyi bir adaydır. Açıklamalar ve açıklamalar gibi ayrıntılı alanlar çok yoğun. Benzer şekilde, Kategoriler ve Etiketler gibi yinelenen alanlar daha az etkilidir. Örneklerde, birden fazla alanı dahil etbileceğinizi göstermek için, "Category" de yer alır. |
+|`name`        | Öneri aracı tanımında belirtilmiştir, ancak otomatik tamamlama veya öneriler isteği üzerinde de çağırılır. |
+|`sourceFields`| Öneri aracı tanımında belirtilmiştir. Bu, içeriğin kaynağı olan dizindeki bir veya daha fazla alanın listesidir. Alanların ve türünde olması gerekir `Edm.String` `Collection(Edm.String)` . Alanda bir çözümleyici belirtilmişse, [Bu listeden](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) bir adlandırılmış sözlü Çözümleyicisi olmalıdır (özel çözümleyici değil).<p/> En iyi uygulama olarak, bir arama çubuğunda veya açılan listede bir tamamlanmış dize olup olmadığı için, yalnızca beklenen ve uygun bir yanıta ödünç veren alanları belirtin.<p/>Bir otel adı duyarlık içerdiğinden iyi bir adaydır. Açıklamalar ve açıklamalar gibi ayrıntılı alanlar çok yoğun. Benzer şekilde, Kategoriler ve Etiketler gibi yinelenen alanlar daha az etkilidir. Örneklerde, birden fazla alanı dahil etbileceğinizi göstermek için, "Category" de yer alır. |
+|`searchMode`  | Yalnızca REST parametresi, portalda da görünür. Bu parametre .NET SDK 'da kullanılamaz. Aday tümcecikleri aramak için kullanılan stratejiyi gösterir. Şu anda desteklenen tek mod, `analyzingInfixMatching` bir terimin başlangıcında Şu anda eşleşen.|
 
 <a name="how-to-use-a-suggester"></a>
 
@@ -160,7 +170,7 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 
 ## <a name="sample-code"></a>Örnek kod
 
-+ [C# ' de ilk uygulamanızı oluşturma (3. ders-arama](tutorial-csharp-type-ahead-and-suggestions.md) -adım-yazma) örneği bir öneri aracı yapımı, önerilen sorgular, otomatik tamamlama ve çok yönlü gezinme gösterir. Bu kod örneği, korumalı alan Azure Bilişsel Arama hizmetinde çalışır ve tüm yapmanız gerekir. böylece, uygulamayı çalıştırmak için F5 'e basın. Abonelik ya da oturum açma gerekli değildir.
++ [C# ' de ilk uygulamanızı oluşturma (Ders 3-bir arama-yazma)](tutorial-csharp-type-ahead-and-suggestions.md) örneği örnek, önerilen sorguları, otomatik tamamlamayı ve çok yönlü gezintiyi gösterir. Bu kod örneği, korumalı alan Azure Bilişsel Arama hizmetinde çalışır ve önceden yüklenmiş bir öneri aracı dizini kullanır. bu nedenle, tüm yapmanız gerekir, uygulamayı çalıştırmak için F5 'e basın. Abonelik ya da oturum açma gerekli değildir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

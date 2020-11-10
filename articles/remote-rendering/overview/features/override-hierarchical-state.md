@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 29c89d8d3d2ae194ff48b762bc686feefdd3a528
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 851a87885ac765c829e8c2be9fd1205e22906ca9
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381021"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445163"
 ---
 # <a name="hierarchical-state-override"></a>Hiyerarşik durumu geçersiz kılma
 
@@ -39,6 +39,13 @@ Geçersiz kılınabilen sabit durumlar kümesi şunlardır:
 
   > [!IMPORTANT]
   > Yalnızca *Tilebasedcomposition* [işleme modu](../../concepts/rendering-modes.md) kullanıldığında, diğer adım etkisi geçerlidir.
+
+* **`Shell`** : Geometri, saydam, doygun bir kabuk olarak işlenir. Bu mod, bir sahnenin önemli olmayan bölümlerinin soluklaşulurken bir şekil ve göreli konumlandırma hissi olmaya devam ediyor. Kabuk işleme görünümünü değiştirmek için, [Shellrenderingsettings](shell-effect.md) durumunu kullanın. Araba modelinin, mavi sprinler dışında tamamen kabuk tarafından işlenmiş olması için aşağıdaki resme bakın:
+
+  ![Belirli nesneleri soluklaştırmak için kullanılan kabuk modu](./media/shell.png)
+
+  > [!IMPORTANT]
+  > Kabuk etkisi yalnızca *Tilebasedcomposition* [işleme modu](../../concepts/rendering-modes.md) kullanıldığında işe yarar.
 
 * **`Selected`** : Geometri bir [seçim ana hattı](outlines.md)ile işlenir.
 
@@ -101,7 +108,7 @@ component->SetState(
 
 Bir örneği, `HierarchicalStateOverrideComponent` çok çalışma zamanı ek yükü eklemez. Ancak, etkin bileşenlerin sayısını düşük tutmak her zaman iyi bir uygulamadır. Örneğin, çekilen nesneyi vurgulayan bir seçim sistemi uygularken, vurgu kaldırıldığında bileşeni silmeniz önerilir. Bileşenlerin nötr özelliklerle birlikte tutulması hızlı bir şekilde eklenebilir.
 
-Saydam işleme, sunucunun GPU 'lara standart işleme göre daha fazla iş yükü koyar. Sahne grafiğinin büyük *bölümleri, çok* sayıda geometrinin görünür olması halinde, görünen bir performans sorunu haline gelebilir. Aynı [seçim anahatları](../../overview/features/outlines.md#performance)olan nesneler için de geçerlidir.
+Saydam işleme, sunucunun GPU 'lara standart işleme göre daha fazla iş yükü koyar. Sahne grafiğinin büyük *bölümleri, çok* sayıda geometrinin görünür olması halinde, görünen bir performans sorunu haline gelebilir. Aynı [seçim anahatları](../../overview/features/outlines.md#performance) olan nesneler ve [kabuk işleme](../../overview/features/shell-effect.md#performance) için de geçerlidir. 
 
 ## <a name="api-documentation"></a>API belgeleri
 

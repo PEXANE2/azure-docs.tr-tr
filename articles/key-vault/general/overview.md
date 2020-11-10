@@ -10,19 +10,19 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 856c5f106f164a98b60fdb3eeda31d6099d5b7bd
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 5025c4ad81433b6eb18f5beded860625791ffce5
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932014"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445107"
 ---
 # <a name="about-azure-key-vault"></a>Azure Key Vault hakkında
 
 Azure Key Vault aşağıdaki sorunları çözmeye yardımcı olur:
 
-- **Gizli Dizi Yönetimi**: Belirteçleri, parolaları, sertifikaları, API anahtarlarını ve diğer gizli dizileri Güvenle depolamak ve bunlara erişimi sıkı bir şekilde denetlemek için Azure Key Vault kullanılabilir.
-- **Anahtar Yönetimi**: Azure Key Vault, Anahtar Yönetimi çözümü olarak da kullanılabilir. Azure Key Vault, verilerinizi şifrelemek için kullanılan şifreleme anahtarlarını oluşturmayı ve denetlemeyi kolaylaştırır. 
+- **Gizli Dizi Yönetimi** : Belirteçleri, parolaları, sertifikaları, API anahtarlarını ve diğer gizli dizileri Güvenle depolamak ve bunlara erişimi sıkı bir şekilde denetlemek için Azure Key Vault kullanılabilir.
+- **Anahtar Yönetimi** : Azure Key Vault, Anahtar Yönetimi çözümü olarak da kullanılabilir. Azure Key Vault, verilerinizi şifrelemek için kullanılan şifreleme anahtarlarını oluşturmayı ve denetlemeyi kolaylaştırır. 
 - **Sertifika yönetimi** -Azure Key Vault Ayrıca Azure ve iç bağlı kaynaklarınız ile kullanmak üzere genel ve özel aktarım katmanı güvenlik/GÜVENLI yuva KATMANı (TLS/SSL) sertifikalarını kolayca sağlamanıza, yönetmenize ve dağıtmanıza olanak tanıyan bir hizmettir.
 
 Azure Key Vault iki hizmet katmanına sahiptir: bir yazılım anahtarıyla şifreleyen standart ve HSM korumalı anahtarlar içeren Premium katman. Standart ve Premium Katmanlar arasındaki karşılaştırmayı görmek için [Azure Key Vault fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/key-vault/)bakın.
@@ -39,7 +39,7 @@ Uygulamalarınız, URI 'Leri kullanarak ihtiyaç duydukları bilgilere güvenli 
 
 Bir anahtar kasasına erişim, bir çağıranın (kullanıcı ya da uygulama) erişim elde edebilmesi için uygun kimlik doğrulaması ve yetkilendirme gerektirir. Kimlik doğrulama işlemi çağıranın kimliğini, yetkilendirme işlemi ise çağıranın yapmaya izinli olduğu işlemleri belirler.
 
-Kimlik doğrulaması Azure Active Directory aracılığıyla yapılır. Yetkilendirme, rol tabanlı erişim denetimi (RBAC) veya Key Vault erişim ilkesi aracılığıyla yapılabilir. Kasaların yönetimi gerçekleştirilirken RBAC, bir kasada depolanmış verilere erişmeye çalışırken ise anahtar kasası erişim ilkesi kullanılır.
+Kimlik doğrulaması Azure Active Directory aracılığıyla yapılır. Yetkilendirme, Azure rol tabanlı erişim denetimi (Azure RBAC) veya Key Vault erişim ilkesi aracılığıyla yapılabilir. Azure RBAC, kasaların yönetimiyle ilgilenirken kullanılır ve bir kasada depolanan verilere erişmeye çalışırken Anahtar Kasası erişim ilkesi kullanılır.
 
 Azure Anahtar kasaları, yazılım korumalı veya Azure Key Vault Premium katmanı ile donanım güvenlik modülleri (HSM 'ler) tarafından korunan donanım korumalı olabilir. Yazılım korumalı anahtarlar, gizlilikler ve sertifikalar, sektör standardı algoritmalar ve anahtar uzunlukları kullanılarak Azure tarafından korunur.  Ek güvence gerektiren durumlar için HSM sınırında hiçbir yerde hiçbir yerde olmayan HSM 'lerde içeri aktarabilir veya anahtarlar oluşturabilirsiniz. Azure Key Vault, Federal bilgi Işleme standartları (FIPS) 140-2 düzey 2 olan nCipher HSMs 'yi kullanır. NCipher araçlarını kullanarak HSM 'nizden bir anahtarı Azure Key Vault taşıyabilirsiniz.
 

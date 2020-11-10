@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 48a822adc34019ca2f6a39aa70211cae7fbf6030
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 1abbabd3c231a70ca473c4b64e9a8c75d2119c89
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289880"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445532"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Anahtar Kasası için Azure Güvenlik Temelleri
 
@@ -344,7 +344,7 @@ https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: uygun yerlerde varsayılan parolaları değiştirme
 
-**Rehberlik** : uygulanamaz; Azure Key Vault, kimlik doğrulama Active Directory tarafından sağlandığı ve rol tabanlı erişim denetimiyle güvenli hale getirildiği için varsayılan parola kavramına sahip değildir.
+**Rehberlik** : uygulanamaz; Azure Key Vault, Active Directory tarafından sağlanan ve Azure rol tabanlı erişim denetimi (Azure RBAC) ile güvenliği sağlanmış olarak, kimlik doğrulaması için varsayılan parola kavramına sahip değildir.
 
 
 **Azure Güvenlik Merkezi izleme** : uygulanamaz
@@ -445,7 +445,7 @@ Koşullu erişim Azure Active Directory konum koşulu nedir?: https://docs.micro
 
 ### <a name="39-use-azure-active-directory"></a>3,9: Azure Active Directory kullanın
 
-**Rehberlik** : Key Vault gibi Azure kaynakları için merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure Active Directory (Azure AD) kullanın. Bu, gizli kaynakları yönetmek için rol tabanlı erişim denetimi (RBAC) sağlar.
+**Rehberlik** : Key Vault gibi Azure kaynakları için merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure Active Directory (Azure AD) kullanın. Bu, Azure rol tabanlı erişim denetimi 'nin (Azure RBAC) hassas kaynakları yönetme olanağı sağlar.
 
  
 

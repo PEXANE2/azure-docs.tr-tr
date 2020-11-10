@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 1e8f1d2964f42c480026d13bed59921dd3f07610
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: f7f9acd18da57bd83e688249600b8468cc4ebbe5
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286229"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445566"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Key Vault Kimlik Doğrulamasının temelleri
 
@@ -45,9 +45,9 @@ Azure Active Directory bir kullanıcı veya uygulamayı nasıl kaydedeceğinizi 
 * Azure Active Directory [bağlantısına](../../active-directory/fundamentals/add-users-azure-active-directory.md) Kullanıcı kaydetme
 * Azure Active Directory [bağlantısına](../../active-directory/develop/quickstart-register-app.md) uygulama kaydetme
 
-## <a name="assign-your-security-principal-a-role-in-azure-active-directory"></a>Güvenlik sorumlusuna rol atama Azure Active Directory
+## <a name="assign-your-security-principal-a-role"></a>Güvenlik sorumlusuna rol atama
 
-Azure Active Directory, güvenlik ilkelerine izinler atamak için rol tabanlı erişim denetimi 'ni (RBAC) kullanır. Bu izinler rol atamaları olarak adlandırılır.
+Güvenlik sorumlularına izin atamak için Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) kullanabilirsiniz. Bu izinlere rol atamaları denir.
 
 Anahtar Kasası bağlamında, bu rol atamaları, anahtar kasasının yönetim düzleminde (denetim düzlemi olarak da bilinir) bir güvenlik sorumlusunun erişim düzeyini tespit ediyor. Bu rol atamaları doğrudan veri düzlemi gizli dizileri için erişim sağlamaz, ancak anahtar kasasının özelliklerini yönetmek için erişim sağlar. Örneğin, bir **okuyucu rolü** atanan bir kullanıcı veya uygulamanın, Anahtar Kasası güvenlik duvarı ayarlarında değişiklik yapmasına izin verilmez, ancak **katkıda bulunan bir rolün** atandığı kullanıcı veya uygulama değişiklik yapabilir. Hiçbir rolün, Anahtar Kasası veri düzlemine erişim atanıncaya kadar, değerlerini oluşturma veya alma gibi parolalar, anahtarlar ve sertifikalar üzerinde işlem gerçekleştirmek için doğrudan erişimi olmayacaktır. Bu, bir sonraki adımda ele alınmıştır.
 
@@ -57,7 +57,7 @@ Anahtar Kasası bağlamında, bu rol atamaları, anahtar kasasının yönetim d�
 >[!NOTE]
 > Bir kullanıcıya Azure Active Directory kiracı düzeyinde bir rol ataması atadığınızda, bu izin kümesi, atama kapsamındaki tüm abonelikler, kaynak grupları ve kaynaklara göre yapılır. En az ayrıcalığın sorumlusunu izlemek için, bu rol atamasını daha ayrıntılı bir kapsamda yapabilirsiniz. Örneğin, bir kullanıcıya abonelik düzeyinde bir okuyucu rolü ve tek bir Anahtar Kasası için sahip rolü atayabilirsiniz. Daha ayrıntılı bir kapsamda rol ataması yapmak için bir aboneliğin, kaynak grubunun veya anahtar kasasının kimlik erişim yönetimi (ıAM) ayarlarına gidin.
 
-* Azure Active Directory rolleri [bağlantısı](../../role-based-access-control/built-in-roles.md) hakkında daha fazla bilgi edinmek için
+* Azure rolleri [bağlantısı](../../role-based-access-control/built-in-roles.md) hakkında daha fazla bilgi edinmek için
 * Rol [atamaları atama](../../role-based-access-control/role-assignments-portal.md) veya kaldırma hakkında daha fazla bilgi edinmek için
 
 ## <a name="configure-key-vault-access-policies-for-your-security-principal"></a>Güvenlik sorumlusu için Anahtar Kasası erişim ilkelerini yapılandırma
@@ -91,7 +91,7 @@ Veri düzlemi erişimi veya anahtarlar, gizlilikler ve Anahtar Kasası 'nda depo
 Anahtar Kasası erişim ilkeleri, kullanıcılara ve uygulamalara bir anahtar kasasında veri düzlemi işlemleri gerçekleştirme erişimi verir.
 
 > [!NOTE]
-> Bu erişim modeli aşağıda belgelenen Anahtar Kasası RBAC (seçenek 2) ile uyumlu değildir. Birini seçmeniz gerekir. Anahtar kasanızın erişim Ilkesi sekmesine tıkladığınızda bu seçimi yapma fırsatına sahip olursunuz.
+> Bu erişim modeli, aşağıda belgelenen Anahtar Kasası (seçenek 2) için Azure RBAC ile uyumlu değildir. Birini seçmeniz gerekir. Anahtar kasanızın erişim Ilkesi sekmesine tıkladığınızda bu seçimi yapma fırsatına sahip olursunuz.
 
 Klasik erişim ilkeleri ayrıntılı olduğundan, her bir kullanıcının veya uygulamanın bir anahtar kasasında bireysel işlemler gerçekleştirmesine izin verebilir veya bu yeteneği reddedebileceğiniz anlamına gelir. İşte birkaç örnek:
 
@@ -104,25 +104,25 @@ Ancak, klasik erişim ilkeleri nesne düzeyindeki izinler için izin vermez ve a
 > [!IMPORTANT]
 > Klasik Anahtar Kasası erişim ilkeleri ve Azure Active Directory rol atamaları birbirinden bağımsızdır. Güvenlik sorumlusu atama bir abonelik düzeyindeki ' katılımcı ' rolü otomatik olarak güvenlik sorumlusuna, abonelik kapsamındaki her anahtar kasasında veri düzlemi işlemleri gerçekleştirme imkanı vermez. Güvenlik sorumlusunun yine de verilmesi gerekir veya veri düzlemi işlemlerini gerçekleştirmek için kendilerine erişim ilkesi izinleri vermelidir.
 
-### <a name="data-plane-access-option-2--key-vault-rbac-preview"></a>Veri düzlemi erişim seçeneği 2: Key Vault RBAC (Önizleme)
+### <a name="data-plane-access-option-2--azure-rbac-for-key-vault-preview"></a>Veri düzlemi erişim seçeneği 2: Key Vault için Azure RBAC (Önizleme)
 
-Anahtar Kasası veri düzlemine erişim vermek için yeni bir yol, Anahtar Kasası rol tabanlı erişim denetimi (RBAC) kullanmaktır.
+Anahtar Kasası veri düzlemine erişim vermek için yeni bir yol, Anahtar Kasası için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanmaktır.
 
 > [!NOTE]
 > Bu erişim modeli yukarıda gösterilen Anahtar Kasası klasik erişim ilkeleriyle uyumlu değil. Birini seçmeniz gerekir. Anahtar kasanızın erişim Ilkesi sekmesine tıkladığınızda bu seçimi yapma fırsatına sahip olursunuz.
 
 Key Vault rol atamaları, anahtarlara, sırları ve sertifikalara erişmek için kullanılan ortak izin kümelerini çevreleyen bir dizi Azure yerleşik rol atamalarından oluşur. Bu izin modeli, klasik Anahtar Kasası erişim ilkesi modelinde kullanılamayan ek yetenekler de sunar.
 
-* RBAC izinleri, kullanıcılara bir abonelik, kaynak grubu veya ayrı bir Anahtar Kasası düzeyinde atanmış bu rollere sahip olmasını sağlayarak ölçeklenebilir şekilde yönetilebilir. Bir Kullanıcı, RBAC atamasının kapsamındaki tüm anahtar kasaları için veri düzlemi izinlerine sahip olacaktır. Bu, Anahtar Kasası başına Kullanıcı/uygulama başına bireysel erişim ilkesi izinleri atama gereksinimini ortadan kaldırır.
+* Azure RBAC izinleri, kullanıcılara bir abonelikte, kaynak grubunda veya tek bir Anahtar Kasası düzeyinde atanmış bu rollere sahip olmasını sağlayarak ölçeklenebilir şekilde yönetilebilir. Bir kullanıcının Azure RBAC atamasının kapsamındaki tüm anahtar kasaları için veri düzlemi izinleri olacaktır. Bu, Anahtar Kasası başına Kullanıcı/uygulama başına bireysel erişim ilkesi izinleri atama gereksinimini ortadan kaldırır.
 
-* RBAC izinleri Privileged Identity Management veya PıM ile uyumludur. Bu, Key Vault Yöneticisi gibi ayrıcalıklı roller için tam zamanında erişim denetimleri yapılandırmanıza olanak tanır. Bu, en iyi güvenlik uygulamasıdır ve anahtar kasalarınıza olan erişimi ortadan kaldırarak en az ayrıcalık sorumlusunu izler.
+* Azure RBAC izinleri Privileged Identity Management veya PıM ile uyumludur. Bu, Key Vault Yöneticisi gibi ayrıcalıklı roller için tam zamanında erişim denetimleri yapılandırmanıza olanak tanır. Bu, en iyi güvenlik uygulamasıdır ve anahtar kasalarınıza olan erişimi ortadan kaldırarak en az ayrıcalık sorumlusunu izler.
 
-* RBAC izinleri, nesne başına ayrıntılı izinlerle uyumludur, bu sayede bir kullanıcıyı yalnızca Anahtar Kasası nesnelerinizin bir bölümü üzerinde işlem gerçekleştirerek kısıtlayabilirsiniz. Bu, birden fazla uygulamanın uygulamalar arasında erişimi yalıtmaya devam ederken tek bir anahtar kasasını paylaşmasına izin verir.
+* Azure RBAC izinleri, nesne başına ayrıntılı izinlerle uyumludur, bu sayede bir kullanıcının yalnızca bazı Anahtar Kasası nesnelerinizin işlemlerini gerçekleştirmesini kısıtlayabilirsiniz. Bu, birden fazla uygulamanın uygulamalar arasında erişimi yalıtmaya devam ederken tek bir anahtar kasasını paylaşmasına izin verir.
 
-RBAC Key Vault hakkında daha fazla bilgi için aşağıdaki belgelere bakın:
+Key Vault için Azure RBAC hakkında daha fazla bilgi için aşağıdaki belgelere bakın:
 
-* RBAC [bağlantısı](./secure-your-key-vault.md#management-plane-and-azure-rbac) Azure Key Vault
-* RBAC rollerini Azure Key Vault (Önizleme) [bağlantısı](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview)
+* Key Vault için Azure RBAC [bağlantısı](./secure-your-key-vault.md#management-plane-and-azure-rbac)
+* Key Vault rolleri için Azure RBAC (Önizleme) [bağlantısı](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview)
 
 ## <a name="configure-key-vault-firewall"></a>Key Vault güvenlik duvarını yapılandırma
 

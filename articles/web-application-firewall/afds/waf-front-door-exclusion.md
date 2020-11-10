@@ -4,19 +4,19 @@ description: Bu makalede, Azure portal ile Azure 'da dışlama listeleri yapıla
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/05/2020
+ms.date: 11/10/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 73372f3c38e12d0d4ac972a569da36a04ad533da
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 943124982fe1f2ccf142bb9161ec8ada07e63df5
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125824"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444988"
 ---
 # <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Ön kapı hizmeti dışlama listeleriyle Web uygulaması güvenlik duvarı (WAF) 
 
-Bazen Web uygulaması güvenlik duvarı (WAF), uygulamanız için izin vermek istediğiniz bir isteği engelleyebilirler. Örneğin Active Directory, kimlik doğrulaması için kullanılan belirteçleri ekler. Bu belirteçler, WAF kurallarından yanlış pozitif bir pozitif tetikleyebildiği özel karakterler içerebilir. WAF dışlama listeleri, bir WAF değerlendirmesinden belirli istek özniteliklerini atlamanızı sağlar.  Bir dışlama listesi  [Psershell](https://docs.microsoft.com/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-3.5.0), [Azure CLı](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add), [REST API](https://docs.microsoft.com/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)veya Azure Portal kullanılarak yapılandırılabilir. Aşağıdaki örnek Azure portal yapılandırmasını gösterir. 
+Bazen Web uygulaması güvenlik duvarı (WAF), uygulamanız için izin vermek istediğiniz bir isteği engelleyebilirler. Örneğin Active Directory, kimlik doğrulaması için kullanılan belirteçleri ekler. Bu belirteçler, WAF kurallarından yanlış pozitif bir pozitif tetikleyebildiği özel karakterler içerebilir. WAF dışlama listeleri, bir WAF değerlendirmesinden belirli istek özniteliklerini atlamanızı sağlar.  Dışlama listesi  [PowerShell](https://docs.microsoft.com/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-3.5.0), [Azure CLı](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add), [REST API](https://docs.microsoft.com/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)veya Azure Portal kullanılarak yapılandırılabilir. Aşağıdaki örnek Azure portal yapılandırmasını gösterir. 
 ## <a name="configure-exclusion-lists-using-the-azure-portal"></a>Dışlama listelerini Azure portal kullanarak yapılandırma
 Özel **durumları yönetme** işlemi, WAF portalından **yönetilen kurallar** altında erişilebilir
 
@@ -36,15 +36,31 @@ Aşağıdaki öznitelikler ada göre dışlama listelerine eklenebilir. Kulland�
 
 Tam bir istek üst bilgisi, gövde, tanımlama bilgisi veya sorgu dizesi özniteliği eşleşmesi belirtebilirsiniz.  Ya da isteğe bağlı olarak kısmi eşleşmeler belirtebilirsiniz. Aşağıdaki işleçler desteklenen eşleşme ölçütleridir:
 
-- **Eşittir**: Bu işleç tam eşleşme için kullanılır. Örneğin, **yataya**adı adlı bir üst bilgi seçmek için, Selector 'un **yataya**kümesi olarak ayarlandığı Equals işlecini kullanın.
-- **Ile başlar**: Bu işleç, belirtilen Seçici değeriyle başlayan tüm alanlarla eşleşir.
-- **Şununla biter**: Bu işleç, belirtilen Seçici değeriyle biten tüm istek alanlarıyla eşleşir.
-- **Contains**: Bu işleç, belirtilen Seçici değerini içeren tüm istek alanlarıyla eşleşir.
-- **Eşittir any**: Bu işleç tüm istek alanlarıyla eşleşir. * Seçici değeridir.
+- **Eşittir** : Bu işleç tam eşleşme için kullanılır. Örneğin, **yataya** adı adlı bir üst bilgi seçmek için, Selector 'un **yataya** kümesi olarak ayarlandığı Equals işlecini kullanın.
+- **Ile başlar** : Bu işleç, belirtilen Seçici değeriyle başlayan tüm alanlarla eşleşir.
+- **Şununla biter** : Bu işleç, belirtilen Seçici değeriyle biten tüm istek alanlarıyla eşleşir.
+- **Contains** : Bu işleç, belirtilen Seçici değerini içeren tüm istek alanlarıyla eşleşir.
+- **Eşittir any** : Bu işleç tüm istek alanlarıyla eşleşir. * Seçici değeridir.
 
 Üst bilgi ve tanımlama bilgisi adları büyük/küçük harfe duyarlıdır.
 
-Dışlama listesini, yönetilen kural kümesi içindeki tüm kurallara, belirli bir kural grubu için kurallara veya önceki örnekte gösterildiği gibi tek bir kurala uygulayabilirsiniz. 
+Bir üst bilgi değeri, tanımlama bilgisi değeri, post bağımsız değişkeni değeri veya sorgu bağımsız değişken değeri bazı kurallar için hatalı pozitif sonuçlar oluşturuyorsa, isteğin bu bölümünün kural tarafından dikkate alınması dışında bırakabilirsiniz:
+
+
+|WAF günlüklerinden matchVariableName  |Portalda kural dışlama  |
+|---------|---------|
+|Tanımlama, ıevalue: SOME_NAME        |İstek tanımlama bilgisi adı eşittir SOME_NAME|
+|HeaderValue: SOME_NAME        |İstek üst bilgisi adı SOME_NAME eşittir|
+|PostParamValue: SOME_NAME     |İstek gövdesi Post args adı eşittir SOME_NAME|
+|QueryParamValue: SOME_NAME    |Sorgu dizesi args adı eşittir SOME_NAME|
+
+
+Şu anda yalnızca WAF günlüklerinde yukarıdaki matchVariableNames için kural dışlamalarını destekliyoruz. Diğer tüm Matchvariableadları için, hatalı pozitif sonuçlar veren kuralları devre dışı bırakmanız ya da açıkça bu isteklere izin veren özel bir kural oluşturmanız gerekir. Özellikle, matchVariableName, tanımlama bilgisi, HeaderName, PostParamName veya QueryParamName olduğunda, adın kendisi kuralın tetikleneceği anlamına gelir. Kural dışlamanın Şu anda bu matchVariableNames desteği yok.
+
+
+*Foo* adlı bir istek gövdesi Post bağımsız değişkenlerini hariç tutdıysanız, hiçbir kural WAF günlüklerinizi matchVariableName olarak, PostParamValue: foo olarak göstermelidir. Ancak, post param değerlerinin ınitialbodycontents 'in bir parçası olduğundan, FOO Post parametresi değeri ile eşleşen matchVariableName ınitialbodycontents içeren bir kural görebilirsiniz.
+
+Dışlama listelerini yönetilen kural kümesi içindeki tüm kurallara, belirli bir kural grubu için kurallara veya önceki örnekte gösterildiği gibi tek bir kurala uygulayabilirsiniz.
 
 ## <a name="define-exclusion-based-on-web-application-firewall-logs"></a>Web uygulaması güvenlik duvarı günlüklerine göre dışlama tanımlama
  [Azure Web uygulaması güvenlik duvarı izleme ve günlüğe kaydetme](waf-front-door-monitor.md) , engellenen bir istek ile eşleşen ayrıntıları gösterir. Bir üst bilgi değeri, tanımlama bilgisi değeri, post bağımsız değişkeni değeri veya sorgu bağımsız değişken değeri bazı kurallar için hatalı pozitif sonuçlar oluşturuyorsa, isteğin bu bölümünü kural tarafından dikkate alınacaksa hariç bırakabilirsiniz. Aşağıdaki tabloda, WAF günlüklerinden ve karşılık gelen dışlama koşullarında örnek değerler gösterilmektedir.

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c3dd4e5138741a3c035507358830f3572cf92751
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc08df7390285f9b6e4701bb1ca5c4227b19f1da
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91739699"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445039"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault güvenliği
 
@@ -25,7 +25,7 @@ Bulutta sertifikalar, bağlantı dizeleri ve parolalar gibi şifreleme anahtarla
 Bir Azure aboneliğinde bir Anahtar Kasası oluşturduğunuzda, bu, aboneliğin Azure AD kiracısı ile otomatik olarak ilişkilendirilir. Bir kasadaki içeriği yönetmeye veya almaya çalışan herkes Azure AD tarafından kimlik doğrulamasından uymalıdır.
 
 - Kimlik doğrulama, arayanın kimliğini belirler.
-- Yetkilendirme, çağıranın hangi işlemleri gerçekleştirebileceğini belirler. Key Vault yetkilendirme, [rol tabanlı erişim denetimi](../../role-based-access-control/overview.md) (RBAC) ve Azure Key Vault erişim ilkelerinin bir birleşimini kullanır.
+- Yetkilendirme, çağıranın hangi işlemleri gerçekleştirebileceğini belirler. Key Vault yetkilendirme, [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) ve Azure Key Vault erişim ilkelerinin bir birleşimini kullanır.
 
 ### <a name="access-model-overview"></a>Erişim modeline genel bakış
 
@@ -34,7 +34,7 @@ Kasaların erişimi iki arabirim veya düzler aracılığıyla gerçekleşir. Bu
 - *Yönetim düzlemi* Key Vault kendisini yönettiğiniz yerdir ve bu, kasaların oluşturulması ve silinmesi için kullanılan arabirimdir. Ayrıca, Anahtar Kasası özelliklerini okuyabilir ve erişim ilkelerini yönetebilirsiniz.
 - *Veri düzlemi* , bir anahtar kasasında depolanan verilerle çalışmanıza olanak sağlar. Anahtarlar, gizli diziler ve sertifikalar ekleyebilir, silebilir ve değiştirebilirsiniz.
 
-Her iki düzlemde bir anahtar kasasına erişmek için, tüm çağıranların (kullanıcılar veya uygulamalar) kimliğinin doğrulanması ve yetkilendirilmiş olması gerekir. Her iki düzlem de kimlik doğrulaması için Azure Active Directory (Azure AD) kullanır. Yetkilendirme için, yönetim düzlemi rol tabanlı erişim denetimi (RBAC) kullanır ve veri düzlemi bir Key Vault erişim ilkesi kullanır.
+Her iki düzlemde bir anahtar kasasına erişmek için, tüm çağıranların (kullanıcılar veya uygulamalar) kimliğinin doğrulanması ve yetkilendirilmiş olması gerekir. Her iki düzlem de kimlik doğrulaması için Azure Active Directory (Azure AD) kullanır. Yetkilendirme için, yönetim düzlemi Azure rol tabanlı erişim denetimi (Azure RBAC) kullanır ve veri düzlemi bir Key Vault erişim ilkesi kullanır.
 
 Her iki düzlemde kimlik doğrulama için tek bir mekanizmanın çeşitli avantajları vardır:
 
@@ -46,11 +46,11 @@ Her iki düzlemde kimlik doğrulama için tek bir mekanizmanın çeşitli avanta
 
 Bir kaynak grubunda bir Anahtar Kasası oluşturduğunuzda, Azure AD 'yi kullanarak erişimi yönetirsiniz. Kullanıcılara veya gruplara bir kaynak grubundaki anahtar kasalarını yönetme yeteneği vermiş olursunuz. Uygun Azure rollerini atayarak belirli bir kapsam düzeyinde erişim izni verebilirsiniz. Anahtar kasalarını yönetmek üzere bir kullanıcıya erişim izni vermek için, belirli bir kapsamdaki kullanıcıya önceden tanımlanmış bir `key vault Contributor` rol atarsınız. Aşağıdaki kapsamlar düzeyleri bir Azure rolüne atanabilir:
 
-- **Abonelik**: abonelik düzeyinde atanan bir Azure rolü, bu aboneliğin içindeki tüm kaynak grupları ve kaynaklar için geçerlidir.
-- **Kaynak grubu**: kaynak grubu düzeyinde atanan bir Azure rolü, bu kaynak grubundaki tüm kaynaklar için geçerlidir.
-- **Belirli kaynak**: belirli bir kaynak için atanan bir Azure rolü bu kaynak için geçerlidir. Bu durumda, kaynak belirli bir Anahtar Kasası olur.
+- **Abonelik** : abonelik düzeyinde atanan bir Azure rolü, bu aboneliğin içindeki tüm kaynak grupları ve kaynaklar için geçerlidir.
+- **Kaynak grubu** : kaynak grubu düzeyinde atanan bir Azure rolü, bu kaynak grubundaki tüm kaynaklar için geçerlidir.
+- **Belirli kaynak** : belirli bir kaynak için atanan bir Azure rolü bu kaynak için geçerlidir. Bu durumda, kaynak belirli bir Anahtar Kasası olur.
 
-Önceden tanımlanmış birkaç rol vardır. Önceden tanımlanmış bir rol gereksinimlerinize uygun değilse, kendi rolünüzü tanımlayabilirsiniz. Daha fazla bilgi için bkz. [RBAC: yerleşik roller](../../role-based-access-control/built-in-roles.md).
+Önceden tanımlanmış birkaç rol vardır. Önceden tanımlanmış bir rol gereksinimlerinize uygun değilse, kendi rolünüzü tanımlayabilirsiniz. Daha fazla bilgi için bkz. [Azure RBAC: yerleşik roller](../../role-based-access-control/built-in-roles.md).
 
 > [!IMPORTANT]
 > Bir kullanıcının bir `Contributor` Anahtar Kasası yönetim düzlemine izinleri varsa, kullanıcı Key Vault erişim ilkesi ayarlayarak kendilerine veri düzlemine erişim izni verebilir. `Contributor`Anahtar kasalarınıza kimin rol erişimi olduğunu sıkı bir şekilde denetleyebilirsiniz. Anahtar kasalarınızı, anahtarlarınızı, sırları ve sertifikalarınızı yalnızca yetkili kişilerin erişebildiğinden ve yönetebilmesi için emin olun.
@@ -79,7 +79,7 @@ Azure Key Vault ağ adresi hakkında daha fazla bilgi için [Azure Key Vault Iç
 
 *   Key Vault ön ucu (veri düzlemi), çok kiracılı bir sunucusudur. Bu, farklı müşterilerden gelen anahtar kasalarının aynı genel IP adresini paylaşabileceği anlamına gelir. Yalıtıma ulaşmak için her HTTP isteğinin, diğer isteklerden bağımsız olarak kimliği doğrulanır ve yetkilendirilir.
 *   Güvenlik açıklarını bildirmek için TLS 'nin eski sürümlerini tanımlayabilir, ancak genel IP adresi paylaşıldığından, Anahtar Kasası hizmet ekibinin Aktarım düzeyinde her Anahtar Kasası için eski TLS sürümlerini devre dışı bırakmasına olanak yoktur.
-*   HTTPS protokolü, istemcinin TLS anlaşmasına katılmasına izin verir. **İstemciler en son TLS sürümünü zorunlu kılabilir**ve bir istemci bunu her seferinde, tüm bağlantı ilgili düzey korumayı kullanır. Key Vault hala eski TLS sürümlerini desteklediğinde, daha yeni TLS sürümlerini kullanan bağlantıların güvenliğine zarar vermez.
+*   HTTPS protokolü, istemcinin TLS anlaşmasına katılmasına izin verir. **İstemciler en son TLS sürümünü zorunlu kılabilir** ve bir istemci bunu her seferinde, tüm bağlantı ilgili düzey korumayı kullanır. Key Vault hala eski TLS sürümlerini desteklediğinde, daha yeni TLS sürümlerini kullanan bağlantıların güvenliğine zarar vermez.
 *   TLS protokolünde bilinen güvenlik açıklarına karşın, saldırgan güvenlik açıklarına sahip bir TLS sürümü ile bağlantı başlattığında kötü amaçlı bir aracının anahtar kasasından bilgi ayıklamasına imkan tanıyan bilinen bir saldırı yoktur. Saldırganın kendisi için kimlik doğrulaması ve yetkilendirme yapması gerekir ve meşru istemciler her zaman son TLS sürümleriyle bağlandığında, kimlik bilgilerinin eski TLS sürümlerindeki güvenlik açıklarına sızma yolu yoktur.
 
 ## <a name="logging-and-monitoring"></a>Günlüğe kaydetme ve izleme
@@ -91,4 +91,4 @@ Depolama hesaplarını güvenle yönetme önerisi için [Azure depolama Güvenli
 ## <a name="next-steps"></a>Sonraki Adımlar
 
 - [Azure Key Vault için sanal ağ hizmeti uç noktaları](overview-vnet-service-endpoints.md)
-- [RBAC: yerleşik roller](../../role-based-access-control/built-in-roles.md)
+- [Azure RBAC: yerleşik roller](../../role-based-access-control/built-in-roles.md)

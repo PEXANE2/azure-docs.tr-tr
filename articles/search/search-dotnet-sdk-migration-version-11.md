@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f6953f145621e11506a009fa59d67a5f40508a13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90fc356929a9ea5713a8d359dfaa83286017b8f8
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539580"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445447"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Azure Bilişsel Arama .NET SDK sürüm 11 ' e yükseltme
 
@@ -49,7 +49,7 @@ Uygun olduğunda, aşağıdaki tablo iki sürüm arasındaki istemci kitaplıkla
 |---------------------|------------------------------|------------------------------|
 | Sorgular için kullanılan istemci ve bir dizini doldurma. | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) | [SearchClient](/dotnet/api/azure.search.documents.searchclient) |
 | Dizinler, çözümleyiciler, eş anlamlı haritalar için kullanılan istemci | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) |
-| Dizin oluşturucular, veri kaynakları, becerileri için kullanılan istemci | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient (**Yeni**)](/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
+| Dizin oluşturucular, veri kaynakları, becerileri için kullanılan istemci | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient ( **Yeni** )](/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
 
 > [!Important]
 > `SearchIndexClient` Her iki sürümde de bulunur, ancak farklı işlemleri destekler. Sürüm 10 ' da `SearchIndexClient` Dizinler ve diğer nesneler oluşturun. Sürüm 11 ' de `SearchIndexClient` var olan dizinlerle birlikte kullanılır. Kodu güncelleştirirken karışıklık oluşmasını önlemek için, istemci başvurularının güncelleştirildiği sırayı en az bir hale getirin. [Yükseltme adımlarında](#UpgradeSteps) aşağıdaki sıra, herhangi bir dize değiştirme sorununu azaltmaya yardımcı olur.
@@ -169,6 +169,24 @@ Aşağıdaki adımlar, özellikle de istemci başvurularına bağlı olarak, ger
    ```
 
 1. Dizin oluşturucudan ilgili nesneler için yeni istemci başvuruları ekleyin. Dizin oluşturucular, veri kaynakları veya becerileri kullanıyorsanız, istemci başvurularını [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient)olarak değiştirin. Bu istemci, sürüm 11 ' de yenidir ve öncül değildir.
+
+1. Koleksiyonları yeniden ziyaret edin. Yeni SDK 'da, liste null değerler içeriyorsa aşağı akış sorunlarından kaçınmak için tüm listeler salt okunurdur. Kod değişikliği bir listeye öğe eklemektir. Örneğin, bir Select özelliğine dizeler atamak yerine, bunları aşağıdaki şekilde ekleyebilirsiniz:
+
+   ```csharp
+   var options = new SearchOptions
+    {
+       SearchMode = SearchMode.All,
+       IncludeTotalCount = true
+    };
+
+    // Select fields to return in results.
+    options.Select.Add("HotelName");
+    options.Select.Add("Description");
+    options.Select.Add("Tags");
+    options.Select.Add("Rooms");
+    options.Select.Add("Rating");
+    options.Select.Add("LastRenovationDate");
+   ```
 
 1. Sorgular ve veri içeri aktarma için istemci başvurularını güncelleştirin. [Searchındexclient](/dotnet/api/microsoft.azure.search.searchindexclient) örnekleri [searchclient](/dotnet/api/azure.search.documents.searchclient)olarak değiştirilmelidir. Ad karışıklığı önlemek için, bir sonraki adıma geçmeden önce tüm örnekleri yakalediğinizden emin olun.
 

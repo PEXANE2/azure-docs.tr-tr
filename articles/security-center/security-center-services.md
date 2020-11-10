@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 67c52728b72f0941ae3c9b39552ca398c12c67a2
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 40d70c7bd740d8c72ddb72047a3bae3586e1aa1f
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425146"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445260"
 ---
 # <a name="feature-coverage-for-machines"></a>Makineler için özellik kapsamı
 
@@ -35,7 +35,7 @@ Aşağıdaki iki sekmede, Azure Güvenlik Merkezi 'nin Windows ve Linux sanal ma
 |[Dosya daha az güvenlik uyarısı](alerts-reference.md#alerts-windows)|✔|✔|✔|Yes|
 |[Ağ tabanlı güvenlik uyarıları](other-threat-protections.md#network-layer)|✔|✔|-|Yes|
 |[Tam zamanında VM erişimi](security-center-just-in-time.md)|✔|-|-|Yes|
-|[Yerel güvenlik açığı değerlendirmesi](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Yes|
+|[Yerel güvenlik açığı değerlendirmesi](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|✔|Yes|
 |[Dosya bütünlüğünü izleme](security-center-file-integrity-monitoring.md)|✔|✔|✔|Yes|
 |[Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md)|✔|-|✔|Yes|
 |[Ağ eşlemesi](security-center-network-recommendations.md#network-map)|✔|✔|-|Yes|
@@ -46,7 +46,7 @@ Aşağıdaki iki sekmede, Azure Güvenlik Merkezi 'nin Windows ve Linux sanal ma
 |Güvenlik yapılandırması hataları değerlendirmesi|✔|✔|✔|Azure: Hayır<br><br>Yay etkin: Evet|
 |[Endpoint Protection değerlendirmesi](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: Hayır<br><br>Yay etkin: Evet|
 |Disk şifrelemesi değerlendirmesi|✔</br>( [desteklenen senaryolar](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)için)|✔|-|No|
-|Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|-|No|
+|Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|✔|No|
 |[Ağ güvenlik değerlendirmesi](security-center-network-recommendations.md)|✔|✔|-|No|
 
 
@@ -59,7 +59,7 @@ Aşağıdaki iki sekmede, Azure Güvenlik Merkezi 'nin Windows ve Linux sanal ma
 |[Dosya daha az güvenlik uyarısı](alerts-reference.md#alerts-windows)|-|-|-|Yes|
 |[Ağ tabanlı güvenlik uyarıları](other-threat-protections.md#network-layer)|✔|✔|-|Yes|
 |[Tam zamanında VM erişimi](security-center-just-in-time.md)|✔|-|-|Yes|
-|[Yerel güvenlik açığı değerlendirmesi](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Yes|
+|[Yerel güvenlik açığı değerlendirmesi](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|✔|Yes|
 |[Dosya bütünlüğünü izleme](security-center-file-integrity-monitoring.md)|✔|✔|✔|Yes|
 |[Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md)|✔|-|✔|Yes|
 |[Ağ eşlemesi](security-center-network-recommendations.md#network-map)|✔|✔|-|Yes|
@@ -70,7 +70,7 @@ Aşağıdaki iki sekmede, Azure Güvenlik Merkezi 'nin Windows ve Linux sanal ma
 |Güvenlik yapılandırması hataları değerlendirmesi|✔|✔|✔|Azure: Hayır<br><br>Yay etkin: Evet|
 |[Endpoint Protection değerlendirmesi](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|No|
 |Disk şifrelemesi değerlendirmesi|✔</br>( [desteklenen senaryolar](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)için)|✔|-|No|
-|Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|-|No|
+|Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|✔|No|
 |[Ağ güvenlik değerlendirmesi](security-center-network-recommendations.md)|✔|✔|-|No|
 
 --- 

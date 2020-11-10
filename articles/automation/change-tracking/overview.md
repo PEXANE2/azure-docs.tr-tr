@@ -3,14 +3,14 @@ title: Azure Otomasyonu Değişiklik İzleme ve envantere genel bakış
 description: Bu makalede, ortamınızdaki yazılım ve Microsoft hizmet değişikliklerini belirlemenize yardımcı olan Değişiklik İzleme ve envanter özelliği açıklanır.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 10/26/2020
+ms.date: 11/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 39caa60196eca1afb7df1b0acbecddb557796fc3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: b5390e4b3dc6d77390c3fca6323cbd52544c638a
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130349"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445430"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Değişiklik İzleme ve envantere genel bakış
 
@@ -61,6 +61,16 @@ Değişiklik İzleme ve stok, aşağıdaki sınırlamalara sahip değildir veya 
 Değişiklik İzleme ve envanter, Log Analytics Aracısı gereksinimlerini karşılayan tüm işletim sistemlerinde desteklenir. Log Analytics Aracısı tarafından şu anda desteklenen Windows ve Linux işletim sistemi sürümlerinin bir listesi için [desteklenen işletim sistemleri](../../azure-monitor/platform/agents-overview.md#supported-operating-systems) bölümüne bakın.
 
 TLS 1,2 için istemci gereksinimlerini anlamak üzere bkz. [Azure Otomasyonu Için tls 1,2 zorlaması](../automation-managing-data.md#tls-12-enforcement-for-azure-automation).
+
+### <a name="python-requirement"></a>Python gereksinimi
+
+Değişiklik İzleme ve stok yalnızca Python2 destekler. Makineniz, varsayılan olarak Python 2 ' yi içermeyen bir demi kullanıyorsa, onu yüklemelisiniz. Aşağıdaki örnek komutlar farklı distros üzerinde Python 2 ' ye yüklenir.
+
+- Red hat, CentOS, Oracle: `yum install -y python2`
+- Ubuntu, debir: `apt-get install -y python2`
+- SUSE `zypper install -y python2`
+
+Python2 yürütülebilir dosyası *Python* 'un diğer adı olmalıdır.
 
 ## <a name="network-requirements"></a>Ağ gereksinimleri
 
@@ -127,7 +137,7 @@ Değişiklik İzleme ve envanter özyineleme destekler, bu da dizinler genelinde
 
 - Birden çok dosyayı izlemek için joker karakterler gereklidir.
 
-- Joker karakterleri yalnızca bir dosya yolunun son kesiminde (örneğin, **arayacak \\ dosyası** _ veya _ */etc/* . conf * *) kullanabilirsiniz.
+- Joker karakterleri yalnızca bir dosya yolunun son kesiminde (örneğin, **arayacak \\ dosyası** _ veya _ */etc/*. conf * *) kullanabilirsiniz.
 
 - Bir ortam değişkeni geçersiz bir yol içeriyorsa, doğrulama başarılı olur ancak yürütme sırasında yol başarısız olur.
 

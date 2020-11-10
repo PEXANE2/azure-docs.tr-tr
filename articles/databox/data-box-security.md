@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 00b6fab2aeebeeb0f39e07a0751e02cefd195b28
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: f9330f99a0473aa38da2fcbb8ae0624a37746613
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337367"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444767"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box güvenliği ve veri koruması
 
@@ -63,7 +63,7 @@ Data Box cihazı aşağıdaki özelliklerle korunur:
 Data Box içine ve dışına akıtılan veriler şu özelliklerle korunur:
 
 - Bekleyen veriler için 256 bit AES şifreleme.
-- Kullanım halindeki veriler için şifrelenmiş protokoller kullanılabilir. Veri sunucularınızdan verileri korumak için şifreleme ile SMB 3,0 kullanmanızı öneririz.
+- Kullanım halindeki veriler için şifrelenmiş protokoller kullanılabilir. Veri sunucularınızdaki verileri korumak için şifreleme ile SMB 3,0 kullanmanızı öneririz.
 - Azure’a yapılan yüklenme tamamlandıktan sonra cihazdaki verilerin güvenli bir şekilde silinmesi. Data silinme, [NIST 800-88r1 standartlarında ata sabit disk sürücüleri için ek A](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)'daki yönergelere göre belirlenir. Veri silinme olayı, [Sipariş geçmişine](data-box-logs.md#download-order-history)kaydedilir.
 
 ### <a name="data-box-service-protection"></a>Data Box hizmeti koruması
@@ -106,7 +106,7 @@ Daha fazla bilgi için, [Güven Merkezi](https://www.microsoft.com/trustcenter)�
 
 Data Box’da aşağıdaki güvenlik yönergeleri uygulanmıştır: 
 
-|Yönerge   |Description   |
+|Yönerge   |Açıklama   |
 |---------|---------|
 |[IEC 60529 IP52](https://www.iec.ch/)    | Su ve toz koruması için         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | Olumsuz taşıma koşullarına dayanıklılık için          |

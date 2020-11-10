@@ -8,17 +8,17 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 6a3916a41635a1c76bddbb092294f6d362fc6050
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1e6f4e16e3eda8519913a9e2ae14f7cc909bf61
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88924720"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445464"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure Bilişsel Arama enzenginleştirme ardışık düzeninde AML yeteneği
 
 > [!IMPORTANT] 
-> Bu yetenek Şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Şu anda .NET SDK desteği yok.
+> Bu yetenek Şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Şu anda .NET SDK desteği yok.
 
 **AML** BECERISI, AI zenginleştirme 'yi özel bir [Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) (AML) modeliyle genişletmenizi sağlar. AML modelinin [eğitilmesi ve dağıtılması](../machine-learning/concept-azure-machine-learning-architecture.md#workspace)bir **AML** becerisi onu AI zenginleştirme ile tümleştirir.
 
@@ -29,7 +29,7 @@ Yerleşik yetenekler gibi, **AML** becerilerinin giriş ve çıkışları vardı
 > * `503 Service Unavailable`
 > * `429 Too Many Requests`
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [AML çalışma alanı](../machine-learning/concept-workspace.md)
 * Bu çalışma alanında [dağıtılan bir modelle](../machine-learning/how-to-deploy-azure-kubernetes-service.md) bir [Azure Kubernetes hizmeti AML işlem hedefi](../machine-learning/concept-compute-target.md)
@@ -58,9 +58,9 @@ Parametreler büyük/küçük harfe duyarlıdır. Kullanmak istediğiniz paramet
 
 Hangi AML yetenek parametrelerinin gerekli olduğu, AML hizmetinizin kullandığı kimlik doğrulamasına bağlıdır. AML hizmetleri üç kimlik doğrulama seçeneği sunar:
 
-* [Anahtar tabanlı kimlik doğrulaması](../machine-learning/concept-enterprise-security.md#authentication-for-web-service-deployment). AML becerilerinden Puanlama isteklerinin kimliğini doğrulamak için bir statik anahtar sağlanır
+* [Anahtar tabanlı kimlik doğrulaması](../machine-learning/how-to-authenticate-web-service.md#key-based-authentication). AML becerilerinden Puanlama isteklerinin kimliğini doğrulamak için bir statik anahtar sağlanır
   * _URI_ ve _anahtar_ parametrelerini kullanma
-* [Belirteç tabanlı kimlik doğrulama](../machine-learning/concept-enterprise-security.md#authentication). AML hizmeti, [belirteç tabanlı kimlik doğrulaması kullanılarak dağıtılır](../machine-learning/how-to-deploy-azure-kubernetes-service.md#authentication-with-tokens). Azure Bilişsel Arama hizmetinin [yönetilen kimliğine](../active-directory/managed-identities-azure-resources/overview.md) , AML hizmetinin çalışma alanında [okuyucu rolü](../machine-learning/how-to-assign-roles.md) verilir. AML yeteneği daha sonra, bir statik anahtar gerekmeden AML hizmetinde kimlik doğrulaması yapmak için Azure Bilişsel Arama hizmetinin yönetilen kimliğini kullanır.
+* [Belirteç tabanlı kimlik doğrulama](../machine-learning/how-to-authenticate-web-service.md#token-based-authentication). AML hizmeti, [belirteç tabanlı kimlik doğrulaması kullanılarak dağıtılır](../machine-learning/how-to-authenticate-web-service.md#token-based-authentication). Azure Bilişsel Arama hizmetinin [yönetilen kimliğine](../active-directory/managed-identities-azure-resources/overview.md) , AML hizmetinin çalışma alanında [okuyucu rolü](../machine-learning/how-to-assign-roles.md) verilir. AML yeteneği daha sonra, bir statik anahtar gerekmeden AML hizmetinde kimlik doğrulaması yapmak için Azure Bilişsel Arama hizmetinin yönetilen kimliğini kullanır.
   * _RESOURCEID_ parametresini kullanın.
   * Azure Bilişsel Arama hizmeti AML çalışma alanından farklı bir bölgedeyse, AML hizmetinin dağıtıldığı bölgeyi ayarlamak için _Region_ parametresini kullanın
 * Kimlik doğrulaması yok. AML hizmetini kullanmak için kimlik doğrulaması gerekmez
