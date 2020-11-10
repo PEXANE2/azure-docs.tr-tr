@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: how-to
 ms.date: 11/09/2020
-ms.openlocfilehash: 78e22a9ec150435c1bc83873a2fcf0a00560c0c1
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 4378a648b8b7a545c9e4b638d08592aa32fff3aa
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375967"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427675"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Dışarı aktarma kullanarak Bilgi Bankası geçirme
 
@@ -59,12 +59,12 @@ Geçiş işlemi, aşağıdaki REST API 'Leri kullanılarak programlı olarak kul
 
 **Dışarı Aktarma**
 
-* [Bilgi Bankası API 'sini indirin](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download)
+* [Bilgi Bankası API 'sini indirin](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/download)
 
 **İçeri Aktar**
 
-* [API değiştirme (aynı Bilgi Bankası KIMLIĞIYLE yeniden yükle)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)
-* [API oluştur (yeni Bilgi Bankası KIMLIĞIYLE yükle)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
+* [API değiştirme (aynı Bilgi Bankası KIMLIĞIYLE yeniden yükle)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/replace)
+* [API oluştur (yeni Bilgi Bankası KIMLIĞIYLE yükle)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/create)
 
 
 ## <a name="chat-logs-and-alterations"></a>Sohbet günlükleri ve değişiklikleri

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: b74c7c3e9678c89edbe90d648520b9526c8fb569
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e2e97b857f648390ec017a529115b23c4f17a68d
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748649"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427998"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>Öğretici: video analizi için IoT Edge örneği oluşturma (Intel NUC)
 
@@ -27,13 +27,13 @@ IoT Edge, bu hizmetler doğrudan platformlar arası IoT cihazlarında çalışı
 
 Bu öğreticide, IoT Edge çalışma zamanının bir Intel NUC cihazında nasıl yükleneceği ve yapılandırılacağı gösterilmektedir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * IoT Edge güncelleştirin ve yapılandırın
 > * IoT Edge ağ geçidini kurma
 > * Yerel bir ONVıF-uyumlu kamerayı Intel NUC cihazınıza bağlama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Başlamadan önce, Azure IoT Central (YOLO v3) veya [azure IoT Central (OpenVINO &trade; ) öğreticisinde bir video analizi oluşturmanız](tutorial-video-analytics-create-app-openvino.md)için önceki [bir canlı video analizi uygulaması oluşturun](./tutorial-video-analytics-create-app-yolo-v3.md) .
 * Linux çalıştıran Intel NUC gibi bir cihaz, Docker kapsayıcılarını çalıştırabilecek ve video analizlerini çalıştırmak için yeterli işleme gücüne sahip.
@@ -117,9 +117,9 @@ IoT Central uygulamanıza kaydolmak ve bağlanmak için IoT Edge yapılandırın
 
 1. `{scope_id}`Önceki öğreticideki *scratchpad.txt* dosyasında bir Note oluşturduğunuz **kimlik kapsamıyla** değiştirin.
 
-1. `{registration_id}`Önceki öğreticide oluşturduğunuz cihaz *LVA-Gateway-001* ile değiştirin.
+1. `{registration_id}`Önceki öğreticide oluşturduğunuz cihaz *ağ geçidi-001* ile değiştirin.
 
-1. `{symmetric_key}` **LVA-Gateway-001** cihazının **birincil anahtarıyla** değiştirin, önceki öğreticideki *scratchpad.txt* dosyasında bir değişiklik yaptınız.
+1. `{symmetric_key}` **Ağ geçidi-001** cihazının **birincil anahtarıyla** değiştirin, önceki öğreticideki *scratchpad.txt* dosyasında bir değişiklik yaptınız.
 
 1. IoT Edge Daemon 'u yeniden başlatmak için aşağıdaki komutu çalıştırın:
 

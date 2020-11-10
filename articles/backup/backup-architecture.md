@@ -3,12 +3,12 @@ title: Mimariye Genel Bakış
 description: Azure Backup hizmeti tarafından kullanılan mimariye, bileşenlere ve işlemlere genel bir bakış sağlar.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: f5d4c881244ddae41ba4c706812bd7b8274a374e
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 288b073c20b93bf1802f34f5dcd17b12430bb279
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173277"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427743"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup mimarisi ve bileşenler
 
@@ -22,11 +22,11 @@ Azure Backup, şirket içi makinelerde ve Azure sanal makine (VM) örneklerinde 
 
 Makineleri ve verileri bir dizi yöntemi kullanarak yedekleyebilirsiniz:
 
-- **Şirket içi makineleri yedekleme**:
+- **Şirket içi makineleri yedekleme** :
   - Şirket içi Windows makinelerini, Azure Backup Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı 'nı kullanarak doğrudan Azure 'a yedekleyebilirsiniz. Linux makineleri desteklenmez.
   - Şirket içi makineleri, System Center Data Protection Manager (DPM) veya Microsoft Azure Backup sunucusu (MABS) olan bir yedekleme sunucusuna yedekleyebilirsiniz. Daha sonra yedekleme sunucusunu Azure 'da bir kurtarma hizmetleri kasasına yedekleyebilirsiniz.
 
-- **Azure VM 'Lerini yedekleme**:
+- **Azure VM 'Lerini yedekleme** :
   - Azure VM 'lerini doğrudan yedekleyebilirsiniz. Azure Backup, VM üzerinde çalışan Azure VM aracısına bir yedekleme uzantısı yüklüyor. Bu uzantı tüm VM 'yi yedekler.
   - MARS Aracısı 'nı çalıştırarak, Azure VM 'de belirli dosya ve klasörleri yedekleyebilirsiniz.
   - Azure VM 'lerini Azure 'da çalışan MABS 'lere yedekleyebilir ve ardından MABS 'yi bir kurtarma hizmetleri kasasına yedekleyebilirsiniz.
@@ -35,7 +35,7 @@ Makineleri ve verileri bir dizi yöntemi kullanarak yedekleyebilirsiniz:
 
 ## <a name="where-is-data-backed-up"></a>Veriler nerede yedeklenir?
 
-Azure Backup, bir kasaların kurtarma hizmetleri kasalarında ve yedeklemelerdeki yedeklenen verileri depolar. Kasa, Azure 'da Yedekleme kopyaları, kurtarma noktaları ve yedekleme ilkeleri gibi verileri tutmak için kullanılan çevrimiçi bir depolama varlıktır.
+Azure Backup, yedekleme ve kurtarma hizmetleri kasalarında ve yedeklemelerdeki yedeklenen verileri depolar. Kasa, Azure 'da Yedekleme kopyaları, kurtarma noktaları ve yedekleme ilkeleri gibi verileri tutmak için kullanılan çevrimiçi bir depolama varlıktır.
 
 Kasaların aşağıdaki özellikleri vardır:
 
@@ -43,9 +43,9 @@ Kasaların aşağıdaki özellikleri vardır:
 - Azure VM 'Leri ve şirket içi makineler dahil olmak üzere bir kasadaki yedeklenen öğeleri izleyebilirsiniz.
 - [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)ile kasa erişimini yönetebilirsiniz.
 - Kasadaki verilerin artıklık için nasıl çoğaltılacağı belirtirsiniz:
-  - **Yerel olarak yedekli depolama (LRS)**: bir veri merkezindeki hataya karşı korumak için LRS kullanabilirsiniz. LRS, verileri bir depolama ölçek birimine çoğaltır. [Daha fazla bilgi edinin](../storage/common/storage-redundancy.md#locally-redundant-storage).
-  - **Coğrafi olarak yedekli depolama (GRS)**: bölge genelinde kesintilere karşı koruma sağlamak için GRS kullanabilirsiniz. GRS, verilerinizi ikincil bir bölgeye çoğaltır. [Daha fazla bilgi edinin](../storage/common/storage-redundancy.md#geo-redundant-storage).
-  - Bölgesel olarak **yedekli depolama (ZRS)**: verileri [kullanılabilirlik bölgelerinde](../availability-zones/az-overview.md#availability-zones)çoğaltır, bu da verileri, aynı bölgedeki veri fazlalığını ve dayanıklılığı garanti altına alır. [Daha fazla bilgi edinin](../storage/common/storage-redundancy.md#zone-redundant-storage)
+  - **Yerel olarak yedekli depolama (LRS)** : bir veri merkezindeki hataya karşı korumak için LRS kullanabilirsiniz. LRS, verileri bir depolama ölçek birimine çoğaltır. [Daha fazla bilgi edinin](../storage/common/storage-redundancy.md#locally-redundant-storage).
+  - **Coğrafi olarak yedekli depolama (GRS)** : bölge genelinde kesintilere karşı koruma sağlamak için GRS kullanabilirsiniz. GRS, verilerinizi ikincil bir bölgeye çoğaltır. [Daha fazla bilgi edinin](../storage/common/storage-redundancy.md#geo-redundant-storage).
+  - Bölgesel olarak **yedekli depolama (ZRS)** : verileri [kullanılabilirlik bölgelerinde](../availability-zones/az-overview.md#availability-zones)çoğaltır, bu da verileri, aynı bölgedeki veri fazlalığını ve dayanıklılığı garanti altına alır. [Daha fazla bilgi edinin](../storage/common/storage-redundancy.md#zone-redundant-storage)
   - Varsayılan olarak, kurtarma hizmetleri kasaları GRS kullanır.
 
 Kurtarma Hizmetleri kasaları aşağıdaki ek özelliklere sahiptir:
@@ -87,8 +87,8 @@ Depolama alanı tüketimi, kurtarma süresi hedefi (RTO) ve ağ tüketimi her bi
 
 - A veri kaynağı, aylık olarak yedeklenen, a1-A10 olan 10 depolama blobundan oluşur.
 - A2, A3, A4 ve A9 blokları ilk ayda, A5 bloku ise sonraki ayda değişmektedir.
-- İkinci ayda değişiklik yedeklemeleri için a2, a3, A4 ve A9 blokları yedeklenir. Üçüncü ayda değiştirilen A5 blokuna ek olarak aynı bloklar tekrar yedeklenir. Sonraki tam yedeklemeye kadar değiştirilen bloklar yedeklenmeye devam eder.
-- Artımlı yedeklemeler için, ikinci ayda, a2, a3, A4 ve A9 blokları değiştirilmiş ve aktarıldı olarak işaretlenir. Üçüncü ayda yalnızca değiştirilen A5 bloku işaretlenir ve aktarılır.
+- Değişiklik yedeklemeleri için, ikinci ayda değiştirilen a2, a3, A4 ve A9 blokları yedeklenir. Üçüncü ayda değiştirilen A5 blokuna ek olarak aynı bloklar tekrar yedeklenir. Sonraki tam yedeklemeye kadar değiştirilen bloklar yedeklenmeye devam eder.
+- Artımlı yedeklemeler için, ikinci ayın a2, a3, A4 ve A9 blokları değiştirildi ve aktarıldı olarak işaretlenir. Üçüncü ayda yalnızca değiştirilen A5 bloku işaretlenir ve aktarılır.
 
 ![Yedekleme yöntemlerinin karşılaştırmalarını gösteren resim](./media/backup-architecture/backup-method-comparison.png)
 
@@ -123,6 +123,12 @@ Yinelenenleri kaldırılmış diskleri yedekleme | | | ![Kısmi][yellow]<br/><br
 - "Aylık", "yıllık" yedekleme noktaları için bekletme, uzun süreli saklama (LTR) olarak adlandırılır
 - Bir kasa oluşturulduğunda, "DefaultPolicy" de oluşturulur ve kaynakları yedeklemek için kullanılabilir.
 - Bir yedekleme ilkesinin bekletme döneminde yapılan tüm değişiklikler, yeni olanlardan başka tüm eski kurtarma noktalarına daha etkin bir şekilde uygulanır.
+
+### <a name="impact-of-policy-change-on-recovery-points"></a>Kurtarma noktalarında ilke değişikliğinin etkisi
+
+- **Saklama süresi artırıldı/azaltılır:** Saklama süresi değiştirildiğinde, yeni saklama süresi var olan kurtarma noktalarına da uygulanır. Sonuç olarak, bazı kurtarma noktaları temizlenir. Saklama süresi artdıysa, var olan kurtarma noktalarının da daha fazla bekletme elde edilir.
+- **Günlük 'den haftalık olarak değiştirildi:** Zamanlanan yedeklemeler günlük olarak haftalık olarak değiştirildiğinde, mevcut günlük kurtarma noktaları temizlenir.
+- **Haftalık olarak günlük olarak değiştirildi:** Mevcut haftalık yedeklemeler, geçerli bekletme ilkesine göre kalan gün sayısına göre tutulacaktır.
 
 ### <a name="additional-reference"></a>Ek başvurular
 
@@ -204,7 +210,7 @@ Disk depolama ve VM 'Ler için kullanılabilir disk türleri hakkında daha fazl
 
 Azure Backup ile Premium depolamayı kullanarak Azure VM 'Leri yedekleyebilirsiniz:
 
-- VM 'Leri Premium Depolama ile yedekleme işlemi sırasında, yedekleme hizmeti depolama hesabında *AzureBackup*adlı geçici bir hazırlama konumu oluşturur. Hazırlama konumunun boyutu, kurtarma noktası anlık görüntüsünün boyutuna eşittir.
+- VM 'Leri Premium Depolama ile yedekleme işlemi sırasında, yedekleme hizmeti depolama hesabında *AzureBackup* adlı geçici bir hazırlama konumu oluşturur. Hazırlama konumunun boyutu, kurtarma noktası anlık görüntüsünün boyutuna eşittir.
 - Premium depolama hesabının geçici hazırlama konumuna uyum sağlamak için yeterli boş alana sahip olduğundan emin olun. Daha fazla bilgi için bkz. [Premium sayfa BLOB depolama hesapları Için ölçeklenebilirlik hedefleri](../storage/blobs/scalability-targets-premium-page-blobs.md). Hazırlama konumunu değiştirmeyin.
 - Yedekleme işi tamamlandıktan sonra, hazırlama konumu silinir.
 - Hazırlama konumu için kullanılan depolama fiyatı, [Premium Depolama fiyatlandırmasıyla](../virtual-machines/disks-types.md#billing)tutarlıdır.

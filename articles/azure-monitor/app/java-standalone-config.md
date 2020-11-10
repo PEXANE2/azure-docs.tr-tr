@@ -4,12 +4,12 @@ description: Azure Izleyici Application Insights Java için yapılandırma seçe
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 6edb77ec21b4f82f8398312fdff24aa5ea207771
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: b703a708af564b9dafc8c1409333a2cfed6d2653
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381040"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427709"
 ---
 # <a name="configuration-options-for-azure-monitor-application-insights-java"></a>Azure Izleyici Application Insights Java için yapılandırma seçenekleri
 
@@ -178,7 +178,7 @@ Bu özellik önizlemede.
 
 Daha fazla bilgi için [telemetri işlemcisi](./java-standalone-telemetry-processors.md) belgelerini inceleyin.
 
-## <a name="autocollected-logging"></a>Oto toplanan günlüğe kaydetme
+## <a name="auto-collected-logging"></a>Otomatik toplanan günlüğe kaydetme
 
 Log4J, Logback ve Java. util. Logging otomatik olarak işaretlenir ve bu günlüğe kaydetme çerçeveleri aracılığıyla gerçekleştirilen günlüğe kaydetme otomatik olarak toplanır.
 
@@ -213,13 +213,13 @@ Bunlar `level` , dosyada belirtebileceğiniz geçerli değerlerdir `applicationi
 | Izleme (veya FINEST) | TRACE  | TRACE   | FıNEST  |
 | ALL               | ALL    | ALL     | ALL     |
 
-## <a name="autocollected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>Oto toplanmış mikro ölçüm ölçümleri (Spring Boot çalıştırıcı ölçümleri dahil)
+## <a name="auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>Otomatik toplanan mikro ölçüm ölçümleri (Spring Boot çalıştırıcı ölçümleri dahil)
 
-Uygulamanız [mikro ölçüm](https://micrometer.io)kullanıyorsa, mikro ölçüm küresel kayıt defterine gönderilen ölçümler tekrar toplanır.
+Uygulamanız [mikro ölçüm](https://micrometer.io)kullanıyorsa, mikro ölçüm küresel kayıt defterine gönderilen ölçümler otomatik olarak toplanır.
 
 Ayrıca, uygulamanız [Spring Boot çalıştırıcı](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)kullanıyorsa, Spring Boot çalıştırıcı tarafından yapılandırılan ölçümler de otomatik olarak toplanır.
 
-Mikro ölçüm ölçümlerinin (Spring Boot çalıştırıcı ölçümleri dahil) oto toplamayı devre dışı bırakmak için:
+Mikro ölçüm ölçümlerinin otomatik toplanmasını devre dışı bırakmak için (Spring Boot çalıştırıcı ölçümleri dahil):
 
 > [!NOTE]
 > Özel ölçümler ayrı olarak faturalandırılır ve ek maliyetler oluşturabilir. Ayrıntılı [fiyatlandırma bilgilerini](https://azure.microsoft.com/pricing/details/monitor/)kontrol ettiğinizden emin olun. Mikro ölçüm ve yay çalıştırıcı ölçümlerini devre dışı bırakmak için aşağıdaki yapılandırmayı yapılandırma dosyanıza ekleyin.

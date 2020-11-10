@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: 8d067d30220c76de5617aab2c42365351888d744
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 393fceaa91600ab143912bb3af38c349f29f770a
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780028"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427947"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Azure SQL yönetilen örnek denetimi 'ni kullanmaya başlama
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -118,7 +118,7 @@ Aşağıdaki bölümde, yönetilen örneğiniz üzerinde denetim yapılandırmas
         GO
         ```
 
-        [Sunucu denetim belirtimini veya veritabanı denetim belirtimini oluşturarak](#createspec)devam edin.
+     1. [Sunucu denetim belirtimini veya veritabanı denetim belirtimini oluşturarak](#createspec)devam edin.
 
    - <a id="blobssms"></a>SQL Server Management Studio 18 ' i kullanarak denetim günlükleri için blob depolamayı yapılandırma (Önizleme):
 
@@ -234,15 +234,15 @@ Azure SQL yönetilen örneği ve SQL Server veritabanlarında veritabanlarında 
 - Azure SQL yönetilen örneği ile denetim, sunucu düzeyinde çalışarak `.xel` günlük dosyalarını Azure Blob depolama alanında depolar.
 - SQL Server, denetim sunucu düzeyinde çalışmaktadır, ancak olayları dosyalar sistem/Windows olay günlüklerine depolar.
 
-Yönetilen örneklerde XEvent denetimi Azure Blob depolama hedeflerini destekler. Dosya ve Windows günlükleri **desteklenmez** .
+Yönetilen örneklerde XEvent denetimi Azure Blob depolama hedeflerini destekler. Dosya ve Windows günlükleri **desteklenmez**.
 
 `CREATE AUDIT`Azure Blob depolamaya denetim için söz diziminde önemli farklılıklar şunlardır:
 
 - Yeni bir sözdizimi `TO URL` sağlanır ve dosyaların yerleştirildiği Azure Blob depolama KAPSAYıCıSıNıN URL 'sini belirtmenize olanak sağlar `.xel` .
 - `TO EXTERNAL MONITOR`Event Hubs ve Azure izleyici günlük hedeflerini etkinleştirmek için yeni bir sözdizimi sağlanır.
 - `TO FILE`Azure SQL yönetilen örneği Windows dosya paylaşımlarına erişemediği için sözdizimi **desteklenmiyor** .
-- Kapalı seçeneği **desteklenmez** .
-- `queue_delay` /0 **desteklenmez** .
+- Kapalı seçeneği **desteklenmez**.
+- `queue_delay` /0 **desteklenmez**.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

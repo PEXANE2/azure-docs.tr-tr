@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 54d5fdf1f6bc905482186475302901c46de0d285
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 19d464f0148572f30ecd0c3ab1dcee7bd0315b87
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380135"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427811"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Izleyici 'de çalışma alanı verilerini dışarı aktarma Log Analytics (Önizleme)
 Azure Izleyici 'de Log Analytics çalışma alanı verileri dışarı aktarma işlemi, Log Analytics çalışma alanınızdaki seçili tablolardan verileri sürekli olarak bir Azure depolama hesabına veya Azure Event Hubs toplanarak dışarı aktaralmanıza olanak sağlar. Bu makalede, bu özellik hakkında ayrıntılar ve çalışma alanlarınızdaki veri dışarı aktarmayı yapılandırma adımları sağlanmaktadır.
@@ -77,8 +77,9 @@ Log Analytics veri dışa aktarma, zaman tabanlı bekletme ilkelerinde *allowPro
 ### <a name="event-hub"></a>Olay hub'ı
 Veriler, Azure Izleyici 'ye ulaştığında neredeyse gerçek zamanlı olarak olay hub 'ınıza gönderilir. Bir olay hub 'ı, adı " *ve ardından tablonun adı ile* dışarı aktarma yaptığınız her veri türü için oluşturulur. Örneğin, *securityevent* tablosu, *har-securityevent* adlı bir olay hub 'ına gönderilir. Dışarı aktarılmış verilerin belirli bir olay hub 'ına ulaşmasını istiyorsanız veya 47 karakter sınırını aşan bir ada sahip bir tablonuz varsa, kendi olay hub 'ınızın adını girip tanımlanmış tablolar için tüm verileri buna aktarabilirsiniz.
 
-İçe aktarılmış verilerin hacmi genellikle zaman içinde artar ve daha büyük aktarım hızlarını işlemek ve kısıtlama senaryolarından ve veri gecikmesinden kaçınmak için Olay Hub 'ı ölçeğinin artması gerekir. İşleme birimlerinin sayısını otomatik olarak artırmak ve kullanım ihtiyaçlarını karşılamak için Event Hubs otomatik Şişir özelliğini kullanmanız gerekir. Ayrıntılar için bkz. [Azure Event Hubs üretilen iş birimlerini otomatik olarak ölçeklendirme](../../event-hubs/event-hubs-auto-inflate.md) .
-
+Dikkat edilmesi gerekenler:
+1. ' Temel ' Olay Hub 'ı SKU, daha düşük olay boyutu [sınırını](https://docs.microsoft.com/azure/event-hubs/event-hubs-quotas#basic-vs-standard-tiers) destekler ve çalışma alanınızdaki bazı Günlükler onu aşabilir ve bırakılamaz. Dışarı aktarma hedefi olarak ' Standard ' veya ' adanmış ' Olay Hub 'ı kullanmanızı öneririz.
+2. İçe aktarılmış verilerin hacmi genellikle zaman içinde artar ve daha büyük aktarım hızlarını işlemek ve kısıtlama senaryolarından ve veri gecikmesinden kaçınmak için Olay Hub 'ı ölçeğinin artması gerekir. İşleme birimlerinin sayısını otomatik olarak artırmak ve kullanım ihtiyaçlarını karşılamak için Event Hubs otomatik Şişir özelliğini kullanmanız gerekir. Ayrıntılar için bkz. [Azure Event Hubs üretilen iş birimlerini otomatik olarak ölçeklendirme](../../event-hubs/event-hubs-auto-inflate.md) .
 
 ## <a name="prerequisites"></a>Önkoşullar
 Log Analytics veri dışarı aktarma yapılandırmadan önce tamamlanması gereken önkoşullar aşağıda verilmiştir.

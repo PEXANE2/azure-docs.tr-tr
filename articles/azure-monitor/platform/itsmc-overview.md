@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: c34cd8e399a005f5eadb3751fb0575f6ecfc27ed
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 90a5f0f84c72895a8450a42260b07f6dbea15e37
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380887"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94428049"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı kullanarak Azure 'ı ıTSM araçlarına bağlama
 
@@ -28,6 +28,9 @@ ISMC aşağıdaki ıTSM araçlarıyla bağlantıları destekler:
 -   System Center Service Manager
 -   Provance
 -   Cherwell
+
+   >[!NOTE]
+> 1-Ekim-2020 Cherwell ve Azure uyarısı ile Provance ıSM tümleştirmeleri artık yeni müşteriler için etkinleştirilmeyecektir. Yeni ıTSM bağlantıları desteklenecek. Mevcut ıTSM bağlantıları desteklenecek.
 
 ISMC ile şunları yapabilirsiniz:
 
@@ -150,7 +153,8 @@ Eylem grupları, Azure uyarılarınız için eylemleri tetiklemenin modüler ve 
 
    ![ITSM bileti penceresini gösteren ekran görüntüsü.](media/itsmc-overview/itsm-action-configuration.png)
    
-   * İş öğesi açılan kutusu "olay" nda seçtiğiniz bir durumda: radyo düğmeleri seçiminde her bir **günlük girişi için bireysel iş öğeleri oluştur** ' u seçerseniz, her uyarı yeni bir iş öğesi oluşturur. Radyo düğmeleri seçiminde **her yapılandırma öğesi için bireysel çalışma öğeleri oluştur** ' u seçerseniz, her yapılandırma öğesinin kendi iş öğesi olur. 
+   * İş öğesi açılan kutusu "olay" nda seçtiğiniz bir durumda: radyo düğmeleri seçiminde her bir **günlük girişi için bireysel iş öğeleri oluştur** ' u seçerseniz, her uyarı yeni bir iş öğesi oluşturur. Radyo düğmeleri seçiminde **her yapılandırma öğesi için bireysel çalışma öğeleri oluştur** ' u seçerseniz, her yapılandırma öğesinin kendi iş öğesi olur.
+   ![ITSM bileti penceresini gösteren ekran görüntüsü.](media/itsmc-overview/itsm-action-configuration-event.png)
 
 10. **Tamam** ’ı seçin.
 
@@ -249,7 +253,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 - Planlanan bitiş tarihi
 - Çalışma başlangıç tarihi
 - Çalışma bitiş tarihi
-- Açıklama
+- Description
 - Bilgisayar
 
 ## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow olayı için çıkış verileri
@@ -296,7 +300,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 | PlannedEndDate_t  |   Planlanan bitiş tarihi |
 | WorkStartDate_t  | Gerçek başlangıç tarihi |
 | WorkEndDate_t | Gerçek bitiş tarihi|
-| Description_s | Açıklama |
+| Description_s | Description |
 | Bilgisayar  | Yapılandırma öğesi |
 
 

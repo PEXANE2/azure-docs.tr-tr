@@ -7,12 +7,12 @@ ms.date: 11/09/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
-ms.openlocfilehash: b619b258084b457621ad1a5650aaf621df9677a7
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 021628b92f1068743b097a455306df742f308f86
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376511"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427692"
 ---
 # <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>Hızlı başlangıç: Bilgi Bankası 'Nı yönetmek için kıvrımlı ve REST kullanma
 
@@ -20,7 +20,7 @@ Bu hızlı başlangıçta bilgi bankasını oluşturma, yayımlama ve sorgulama 
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 # <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
 
@@ -414,8 +414,8 @@ Yanıt durumu, sonuç olmadan 204 ' dir. `-v`Kıvrımlı komutuna ilişkin ayrı
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Yazma](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) Başvuru belgeleri
-* [Çalışma zamanı](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/) Başvuru belgeleri
+* [Yazma](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) Başvuru belgeleri
+* [Çalışma zamanı](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/runtime) Başvuru belgeleri
 * [Kıvrımlı kullanarak örnek BASH betikleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/curl/QnAMaker)
 
 ## <a name="next-steps"></a>Sonraki adımlar
