@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 70ddc2191cc06a1bede87adc5940e0f7dea63384
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 853ab82ab40cc7ebee1c74feaf6aad87adf39ece
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257546"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443118"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Senaryo: Web API 'Lerini çağıran mobil uygulama
 
@@ -40,10 +40,10 @@ Kişiselleştirilmiş, sorunsuz bir kullanıcı deneyimi, mobil uygulamalar içi
 
 Mobil uygulamalar için dikkat edilmesi gerekenler:
 
-- **Kullanıcı deneyimi anahtar**: oturum açmadan önce kullanıcıların uygulamanızın değerini görmesine izin verin. Yalnızca gerekli izinleri iste.
-- **Tüm Kullanıcı yapılandırmalarının desteklenmesi**: birçok mobil iş kullanıcısının koşullu erişim ilkelerine ve cihaz uyumluluk ilkelerine uyması gerekir. Bu anahtar senaryolarını desteklediğinizden emin olun.
-- **Çoklu oturum açma (SSO) uygulama**: msal ve Microsoft Identity platformunu kullanarak, cihazın tarayıcısı veya Microsoft Authenticator (ve Android üzerinde Intune şirket portalı) aracılığıyla çoklu oturum açmayı etkinleştirebilirsiniz.
-- **Paylaşılan cihaz modunu Uygula**: Örneğin, hastaneler, üretim, perakende ve finans gibi paylaşılan cihaz senaryolarında kullanılacak şekilde uygulamanızı etkinleştirin. [Paylaşılan cihaz modunu destekleme hakkında daha fazla bilgi edinin](msal-shared-devices.md).
+- **Kullanıcı deneyimi anahtar** : oturum açmadan önce kullanıcıların uygulamanızın değerini görmesine izin verin. Yalnızca gerekli izinleri iste.
+- **Tüm Kullanıcı yapılandırmalarının desteklenmesi** : birçok mobil iş kullanıcısının koşullu erişim ilkelerine ve cihaz uyumluluk ilkelerine uyması gerekir. Bu anahtar senaryolarını desteklediğinizden emin olun.
+- **Çoklu oturum açma (SSO) uygulama** : msal ve Microsoft Identity platformunu kullanarak, cihazın tarayıcısı veya Microsoft Authenticator (ve Android üzerinde Intune şirket portalı) aracılığıyla çoklu oturum açmayı etkinleştirebilirsiniz.
+- **Paylaşılan cihaz modunu Uygula** : Örneğin, hastaneler, üretim, perakende ve finans gibi paylaşılan cihaz senaryolarında kullanılacak şekilde uygulamanızı etkinleştirin. [Paylaşılan cihaz modunu destekleme hakkında daha fazla bilgi edinin](msal-shared-devices.md).
 
 ## <a name="specifics"></a>Özelliklerini
 
@@ -59,5 +59,4 @@ Microsoft Identity platformunda bir mobil uygulama oluştururken aşağıdaki no
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-> [!div class="nextstepaction"]
-> [Uygulama kaydı](scenario-mobile-app-registration.md)
+Bu senaryonun [uygulama kaydı](scenario-mobile-app-registration.md)olan sonraki makaleye geçin.

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 613ba527c8f86257dd271d3cc9e43c97fc475068
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfbfb1ff5b6cb9c711d987608226c51822dfc935
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257461"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442965"
 ---
 # <a name="protected-web-api-code-configuration"></a>Korumalı Web API 'SI: kod yapılandırması
 
@@ -55,7 +55,7 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 ```
 
 > [!IMPORTANT]
-> İstemci uygulaması, *Web API 'si Için*Microsoft Identity platform uç noktasına taşıyıcı belirtecini ister. Web API 'SI, belirtecin doğrulanması ve içerdiği talepleri görüntülemesi gereken tek uygulamadır. İstemci uygulamaları, belirteçlerdeki talepleri incelemeye asla denememelidir.
+> İstemci uygulaması, *Web API 'si Için* Microsoft Identity platform uç noktasına taşıyıcı belirtecini ister. Web API 'SI, belirtecin doğrulanması ve içerdiği talepleri görüntülemesi gereken tek uygulamadır. İstemci uygulamaları, belirteçlerdeki talepleri incelemeye asla denememelidir.
 >
 > Gelecekte, Web API 'SI belirtecin şifrelenmesini gerektirebilir. Bu gereksinim, erişim belirteçlerini görüntüleyebilen istemci uygulamalarına erişimi engeller.
 
@@ -119,7 +119,7 @@ _Microsoft. Identity. Web_ , .net için ASP.NET Core, kimlik doğrulama ara yaz�
 
 #### <a name="using-microsoftidentityweb-templates"></a>Microsoft. Identity. Web şablonlarını kullanma
 
-Microsoft. Identity. Web proje şablonlarını kullanarak sıfırdan bir Web API 'SI oluşturabilirsiniz. Ayrıntılar için bkz. [Microsoft. Identity. Web-Web API proje şablonu](https://aka.ms/ms-id-web/webapi-project-templates)
+Microsoft. Identity. Web proje şablonlarını kullanarak sıfırdan bir Web API 'SI oluşturabilirsiniz. Ayrıntılar için bkz. [Microsoft. Identity. Web-Web API proje şablonu](https://aka.ms/ms-id-web/webapi-project-templates).
 
 #### <a name="starting-from-an-existing-aspnet-core-31-application"></a>Mevcut bir ASP.NET Core 3,1 uygulamasından başlayarak
 
@@ -140,7 +140,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
- Şu anda ASP.NET Core şablonları, kuruluşunuzdaki veya herhangi bir kuruluşun içindeki kullanıcıların oturum açmasını sağlayan Azure Active Directory (Azure AD) Web API 'Leri oluşturur. Kişisel hesaplarla kullanıcıları oturum açtıklarında oturum açabilirler. Ancak, *Startup.cs*' deki kodu değiştirerek [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) kullanarak şablonları Microsoft Identity platform uç noktasını kullanacak şekilde değiştirebilirsiniz:
+ Şu anda ASP.NET Core şablonları, kuruluşunuzdaki veya herhangi bir kuruluşun içindeki kullanıcıların oturum açmasını sağlayan Azure Active Directory (Azure AD) Web API 'Leri oluşturur. Kişisel hesaplarla kullanıcıları oturum açtıklarında oturum açabilirler. Ancak, *Startup.cs* ' deki kodu değiştirerek [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) kullanarak şablonları Microsoft Identity platform uç noktasını kullanacak şekilde değiştirebilirsiniz:
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -170,7 +170,7 @@ services.AddControllers();
 ```
 
 > [!NOTE]
-> Microsoft. Identity. Web kullanıyorsanız ve ' `Audience` de *appsettings.js*' yi ayarlamazsanız, aşağıdakiler kullanılır:
+> Microsoft. Identity. Web kullanıyorsanız ve ' `Audience` de *appsettings.js* ' yi ayarlamazsanız, aşağıdakiler kullanılır:
 > -  `$"{ClientId}"`[erişim belirtecinin kabul edilen sürümünü](scenario-protected-web-api-app-registration.md#accepted-token-version) `2` veya Azure AD B2C Web API 'lerini olarak ayarladıysanız.
 > - `$"api://{ClientId}` diğer tüm durumlarda (v 1.0 [erişim belirteçleri](access-tokens.md)için).
 > Ayrıntılar için bkz. Microsoft. Identity. Web [kaynak kodu](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/Resource/RegisterValidAudience.cs#L70-L83).
@@ -210,7 +210,7 @@ Doğrulayıcılar **Tokenvalidationparameters** sınıfının özellikleriyle il
 
 Çoğu durumda, parametreleri değiştirmeniz gerekmez. Tek kiracılar olmayan uygulamalar özel durumlardır. Bu Web Apps kullanıcıları herhangi bir kuruluştan veya kişisel Microsoft hesaplarından kabul eder. Bu durumda verenler doğrulanması gerekir. Microsoft. Identity. Web, veren doğrulamasının yanı sıra ele alır. Ayrıntılar için bkz. Microsoft. Identity. Web [Aadıssuervalidator](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs).
 
-ASP.NET Core, belirteç doğrulama parametrelerini özelleştirmek istiyorsanız, *Startup.cs*içinde aşağıdaki kod parçacığını kullanın:
+ASP.NET Core, belirteç doğrulama parametrelerini özelleştirmek istiyorsanız, *Startup.cs* içinde aşağıdaki kod parçacığını kullanın:
 
 ```c#
 services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -242,5 +242,4 @@ Ayrıca, Azure Işlevlerinde gelen erişim belirteçlerini doğrulayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-> [!div class="nextstepaction"]
-> [Kodunuzda kapsamları ve uygulama rollerini doğrulama](scenario-protected-web-api-verification-scope-app-roles.md)
+Bu senaryodaki sonraki makaleye geçin, [kodunuzda kapsamları ve uygulama rollerini doğrulayın](scenario-protected-web-api-verification-scope-app-roles.md).

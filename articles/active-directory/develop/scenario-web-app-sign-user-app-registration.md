@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0f4ad8db5b750a8e75a921a6d459a1a294a4bad0
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 29f5d2960a678204387b2bd1dfd6d4acdc4f9c3d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910041"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442523"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Kullanıcılarda oturum açan Web uygulaması: uygulama kaydı
 
@@ -123,5 +123,4 @@ Web uygulamanızın oluşturulmasını önyüklemek için bu bağlantıları kul
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-> [!div class="nextstepaction"]
-> [Uygulamanın kod yapılandırması](scenario-web-app-sign-user-app-configuration.md)
+Bu senaryonun, [uygulamanın kod yapılandırması](scenario-web-app-sign-user-app-configuration.md)olan bir sonraki makaleye geçin.

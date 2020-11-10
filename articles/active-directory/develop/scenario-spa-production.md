@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 21ba0193c3f1e19ffc74452aaceee34759c7e606
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a51442870fb72e2b3cd93d9f03736d2c679ed06
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88949023"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442829"
 ---
 # <a name="single-page-application-move-to-production"></a>Tek sayfalı uygulama: üretime taşı
 
@@ -36,27 +36,12 @@ SPA ve Web API projelerinizi, sırasıyla Azure Storage ve Azure Uygulama Hizmet
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kullanıcı oturumu açma ve **MSAL.js**kullanarak **Microsoft Graph API** 'sini çağırmak için bir erişim belirteci alma kodunu açıklayan hızlı başlangıç örneğinin derinlemesine bakış:
+- Kullanıcı oturumu açma ve **MSAL.js** : [JavaScript Spa öğreticisini](./tutorial-v2-javascript-spa.md)kullanarak **Microsoft Graph API** 'sini çağırmak için bir erişim belirteci alma kodunu açıklayan hızlı başlangıç örneğinin derinlemesine bakış.
 
-> [!div class="nextstepaction"]
-> [JavaScript SPA öğreticisi](./tutorial-v2-javascript-spa.md)
+- [Bir ASP.net arka ucu ile](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi) **MSAL.js** : Spa kullanarak kendı arka uç web API 'niz (ASP.NET Core) için belirteçlerin nasıl alınacağını gösteren örnek.
 
-**MSAL.js**kullanarak kendi arka uç Web API 'niz (ASP.NET Core) için belirteçlerin nasıl alınacağını gösteren örnek:
+- **Passport-Azure-AD** : [Node.js Web API (Azure AD](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)) kullanarak arka uç web API 'niz (Node.js) için erişim belirteçlerinin nasıl doğrulandığını gösteren örnek.
 
-> [!div class="nextstepaction"]
-> [ASP.NET arka ucu olan SPA](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi)
+- **Azure Active Directory B2C** (Azure AD B2C): [Spa Azure AD B2C](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)ile kaydedilmiş bir uygulamadaki kullanıcılara oturum açmak için **MSAL.js** nasıl kullanılacağını gösteren örnek.
 
-**Passport-Azure-AD**kullanarak arka uç Web API 'niz (Node.js) için erişim belirteçlerinin nasıl doğrulandığını gösteren örnek.
-
-> [!div class="nextstepaction"]
-> [Node.js Web API 'SI (Azure AD)](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)
-
-**Azure Active Directory B2C** (Azure AD B2C) ile kaydedilmiş bir uygulamada kullanıcıları oturum açmak için **MSAL.js** nasıl kullanacağınızı gösteren örnek:
-
-> [!div class="nextstepaction"]
-> [Azure AD B2C ile SPA](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
-
-**Azure Active Directory B2C** (Azure AD B2C) ile kaydedilen uygulamalar için erişim belirteçlerini doğrulamak üzere **Passport-Azure-AD** ' nin nasıl kullanılacağını gösteren örnek
-
-> [!div class="nextstepaction"]
-> [Node.js Web API 'SI (Azure AD B2C)](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)
+- **Azure Active Directory B2C** (Azure AD B2C) ile kaydedilen uygulamalar için erişim belirteçlerini doğrulamak üzere **Passport-Azure-AD** ' i nasıl kullanacağınızı gösteren örnek: [Node.js Web API 'si (Azure AD B2C)](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi).

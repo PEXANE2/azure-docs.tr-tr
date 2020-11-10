@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 1437ef8675d0ddc96eb7fc641b3663b66c3ea11b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: f9bbf6e9d1d932f7225807613b789821c1462932
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285245"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94441860"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Azure Anahtar Kasası erişim ilkesi sorunlarını giderme
 
@@ -53,7 +53,7 @@ Uygulamanın Ayrıca anahtar kasasına atanmış en az bir kimlik ve erişim yö
 
 Key Vault yeniden dağıtımı, Key Vault erişim ilkesini siler ve ARM şablonundaki erişim ilkesiyle değiştirir. Key Vault erişim ilkeleri için artımlı bir seçenek yoktur. Key Vault erişim ilkelerini korumak için, Key Vault içindeki mevcut erişim ilkelerini okumanız ve ARM şablonunu bu ilkelerle doldurmanız gerekir.
 
-Bu senaryo için yardımcı olabilecek başka bir seçenek, erişim ilkelerine alternatif olarak RBAC rollerini kullanmaktır. RBAC ile, ilkeyi yeniden belirtmeden anahtar kasasını yeniden dağıtabilirsiniz. Bu [çözümü daha fazla bulabilirsiniz.](./rbac-guide.md)
+Bu senaryo için yardımcı olabilecek başka bir seçenek, erişim ilkelerine alternatif olarak Azure RBAC ve rolleri kullanıyor. Azure RBAC ile, ilkeyi yeniden belirtmeden anahtar kasasını yeniden dağıtabilirsiniz. Bu [çözümü daha fazla bulabilirsiniz.](./rbac-guide.md)
 
 ### <a name="recommended-troubleshooting-steps-for-following-error-types"></a>Aşağıdaki hata türleri için önerilen sorun giderme adımları
 

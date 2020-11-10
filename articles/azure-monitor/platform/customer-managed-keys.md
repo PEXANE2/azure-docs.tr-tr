@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/09/2020
-ms.openlocfilehash: 7f62aade114613261a22a818ab47e096eb16084b
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 62621a36955808ec3f2c796681fe660e6e8524bc
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427981"
+ms.locfileid: "94443390"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure İzleyici müşteri tarafından yönetilen anahtar 
 
@@ -27,9 +27,10 @@ Azure Izleyici, tüm veri ve kaydedilmiş sorguların Microsoft tarafından yön
 
 Müşteri tarafından yönetilen anahtar özelliği adanmış Log Analytics kümelerine dağıtılır. Bu, verilerinizi [kasa](#customer-lockbox-preview) denetimiyle korumanıza olanak sağlar ve istediğiniz zaman verilerinize erişimi iptal etmek için size denetim sağlar. Son 14 gün içinde alınan veriler, verimli sorgu altyapısı işlemi için etkin-önbellek (SSD-desteklenen) olarak da tutulur. Bu veriler, müşteri tarafından yönetilen anahtar yapılandırmasına bakılmaksızın Microsoft anahtarlarıyla şifreli olarak kalır, ancak SSD verileri üzerindeki denetiminiz [anahtar iptalinde](#key-revocation)kalır. SSD verilerinin 2021 birinci yarısında Customer-Managed anahtarla şifrelenmesini sağlamak için çalışıyoruz.
 
-Bölgenizde adanmış küme sağlamak için gereken kapasiteye sahip olduğunuzu doğrulamak için, aboneliğinizin önceden izin verilmesini gerektiririz. Customer-Managed anahtar yapılandırmasına başlamadan önce aboneliğinizin izin verilmesini sağlamak için Microsoft kişinizi kullanın veya destek isteği açın.
-
 [Log Analytics kümeleri fiyatlandırma modeli](./manage-cost-storage.md#log-analytics-dedicated-clusters) 1000 GB/gün düzeyinden Itibaren kapasite rezervasyonları kullanır.
+
+> [!IMPORTANT]
+> Geçici kapasite kısıtlamaları nedeniyle, bir küme oluşturmadan önce ' a ön kayıt yapmanız gerekir. Kişilerinizi Microsoft 'a kullanın veya abonelik kimliklerinizi kaydetmek için destek isteği ' ni açın.
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Customer-Managed anahtarı Azure Izleyici 'de nasıl kullanılır
 
@@ -63,11 +64,11 @@ Aşağıdaki kurallar geçerlidir:
 
 ## <a name="customer-managed-key-provisioning-procedure"></a>Customer-Managed anahtar sağlama yordamı
 
-1. Aboneliğe izin verme--yetenek adanmış Log Analytics kümelerinde dağıtılır. Bölgenizde gerekli kapasiteye sahip olduğunuzu doğrulamak için aboneliğinizin önceden izin verilmesini istiyoruz. Aboneliğinizi izin verilen Microsoft Kişinizden yararlanın.
-2. Azure Key Vault oluşturma ve anahtar depolama
-3. Küme oluşturuluyor
-4. Key Vault izinler veriliyor
-5. Log Analytics çalışma alanlarını bağlama
+1. Küme oluşturmaya izin vermek için aboneliğinizi kaydetme
+1. Azure Key Vault oluşturma ve anahtar depolama
+1. Küme oluşturuluyor
+1. Key Vault izinler veriliyor
+1. Log Analytics çalışma alanlarını bağlama
 
 Customer-Managed anahtar yapılandırması Azure portal desteklenmez ve sağlama [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/), [CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics) veya [rest](https://docs.microsoft.com/rest/api/loganalytics/) istekleri aracılığıyla gerçekleştirilir.
 
@@ -149,7 +150,6 @@ Bu, bağlı bir çalışma alanı olmayan bir kümeyi sildiğinizde ilgili deği
 
 > [!IMPORTANT]
 > Customer-Managed anahtar özelliği bölgesel. Azure Key Vault, kümeniz ve bağlı Log Analytics çalışma alanlarınızın aynı bölgede olması gerekir, ancak bunlar farklı aboneliklerde olabilir.
-> Bölgenizde adanmış küme sağlamak için gereken kapasiteye sahip olduğunuzu doğrulamak için, aboneliğinizin önceden izin verilmesini gerektiririz. Customer-Managed anahtar yapılandırmasına başlamadan önce aboneliğinizin izin verilmesini sağlamak için Microsoft kişinizi kullanın veya destek isteği açın. 
 
 ### <a name="storing-encryption-key-kek"></a>Şifreleme anahtarını depolama (KEK)
 
@@ -200,6 +200,25 @@ az monitor log-analytics cluster update --name "cluster-name" --resource-group "
 
 ```powershell
 Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -KeyVaultUri "key-uri" -KeyName "key-name" -KeyVersion "key-version"
+```
+
+```rst
+PATCH https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/cluster-name"?api-version=2020-08-01
+Authorization: Bearer <token> 
+Content-type: application/json
+ 
+{
+  "properties": {
+    "keyVaultProperties": {
+      "keyVaultUri": "https://key-vault-name.vault.azure.net",
+      "kyName": "key-name",
+      "keyVersion": "current-version"
+  },
+  "sku": {
+    "name": "CapacityReservation",
+    "capacity": 1000
+  }
+}
 ```
 
 **Response**
@@ -288,6 +307,11 @@ Kendi depolama alanınızı (BYOS) getirip çalışma alanınıza bağladığın
 
 Çalışma alanınıza *sorgu* için bir depolama hesabı bağlayın-- *kayıtlı aramalar* sorguları depolama hesabınıza kaydedilir. 
 
+```azurecli
+$storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
+az monitor log-analytics workspace linked-storage create --type Query --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
+```
+
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
 New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Query -StorageAccountIds $storageAccount.Id
@@ -314,6 +338,11 @@ Yapılandırmadan sonra, yeni *Kaydedilmiş arama* sorgusu, depolama alanına ka
 **KCG 'LERI log-Alerts sorguları için yapılandırma**
 
 Çalışma alanınıza *Uyarılar* için bir depolama hesabı bağlayın-- *log-Alerts* sorguları depolama hesabınıza kaydedilir. 
+
+```azurecli
+$storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
+az monitor log-analytics workspace linked-storage create --type ALerts --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
+```
 
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"

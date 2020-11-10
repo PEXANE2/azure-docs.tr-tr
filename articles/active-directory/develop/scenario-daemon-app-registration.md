@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 508101ad615dd96559b1c68a61be7c08772545db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b77cc93385efb0bbb8a9b87d29de9bad5cd4ceb
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80885489"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443339"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>Web API 'Lerini çağıran Daemon uygulaması-uygulama kaydı
 
@@ -35,14 +35,14 @@ Gizli istemci uygulamanızın *yalnızca* istemci kimlik bilgileri akışını k
 
 ## <a name="api-permissions---app-permissions-and-admin-consent"></a>API izinleri-uygulama izinleri ve yönetici onayı
 
-Bir Daemon uygulaması, API 'lere yalnızca uygulama izinleri isteyebilir (temsilci izinleri yoktur). Uygulama kaydı için **API izinleri** sayfasında, **izin Ekle** ' yi seçtikten sonra API ailesini seçtikten sonra **Uygulama izinleri**' ni seçin ve ardından izinlerinizi seçin.
+Bir Daemon uygulaması, API 'lere yalnızca uygulama izinleri isteyebilir (temsilci izinleri yoktur). Uygulama kaydı için **API izinleri** sayfasında, **izin Ekle** ' yi seçtikten sonra API ailesini seçtikten sonra **Uygulama izinleri** ' ni seçin ve ardından izinlerinizi seçin.
 
 ![Uygulama izinleri ve yönetici onayı](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
 
 > [!NOTE]
 > Çağırmak istediğiniz Web API 'sinin, temsilci izinleri değil *Uygulama izinleri (uygulama rolleri)* tanımlamasına ihtiyacı vardır. Böyle bir API 'yi kullanıma sunma hakkında daha fazla bilgi için bkz. [Protected Web API: uygulama kaydı-Web API 'niz bir Daemon uygulaması tarafından çağrıldığında](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app).
 
-Daemon uygulamaları, kiracı yöneticisinin Web API 'sini çağıran uygulamaya ön onayını gerektirir. Kiracı yöneticileri, ** *kuruluşumuza* yönetici izni ver** ' i seçerek aynı **API izin** sayfasında bu onayı sağlar
+Daemon uygulamaları, kiracı yöneticisinin Web API 'sini çağıran uygulamaya ön onayını gerektirir. Kiracı yöneticileri, ***kuruluşumuza* yönetici izni ver** ' i seçerek aynı **API izin** sayfasında bu onayı sağlar
 
 Çok kiracılı bir uygulama için bir ISV oluşturuyorsanız, [çok kiracılı Daemon uygulamalarının dağıtım durumunu](scenario-daemon-production.md#deployment---multitenant-daemon-apps)okumanız gerekir.
 
@@ -50,5 +50,4 @@ Daemon uygulamaları, kiracı yöneticisinin Web API 'sini çağıran uygulamaya
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-> [!div class="nextstepaction"]
-> [Daemon uygulaması-uygulama kodu yapılandırması](./scenario-daemon-app-configuration.md)
+Bu senaryonun [uygulama kodu yapılandırması](./scenario-daemon-app-configuration.md)olan bir sonraki makaleye geçin.

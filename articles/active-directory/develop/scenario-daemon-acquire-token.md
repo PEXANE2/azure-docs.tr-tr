@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 13000c5a61dc2c4d49aa395271beddef64d32245
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c13b6ed991403e65c4c4d71c964f1f7f4d1ffe7b
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119224"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443322"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Web API 'Lerini çağıran Daemon uygulaması-belirteç alma
 
@@ -57,7 +57,7 @@ final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default"
 
 > [!IMPORTANT]
 > MSAL, sürüm 1,0 erişim belirtecini kabul eden bir kaynak için bir erişim belirteci istediğinde, Azure AD, son eğik çizgiden önce her şeyi alarak ve bunu kaynak tanımlayıcısı olarak kullanarak istenen kapsamdaki hedef kitleyi ayrıştırır.
-> Bu nedenle, Azure SQL veritabanı (**https: \/ /Database.Windows.net**) gibi, kaynak bir eğik ÇIZGI (Azure SQL veritabanı için) ile biten bir hedef kitle beklediğinde `https://database.windows.net/` , bir kapsamını istemeniz gerekir `https://database.windows.net//.default` . (Çift eğik çizgiye göz önünde edin.) Ayrıca bkz. MSAL.NET sorun [#747: kaynak URL 'sinin sondaki eğik çizgi atlandığından SQL kimlik doğrulama hatasına neden olur](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
+> Bu nedenle, Azure SQL veritabanı ( **https: \/ /Database.Windows.net** ) gibi, kaynak bir eğik ÇIZGI (Azure SQL veritabanı için) ile biten bir hedef kitle beklediğinde `https://database.windows.net/` , bir kapsamını istemeniz gerekir `https://database.windows.net//.default` . (Çift eğik çizgiye göz önünde edin.) Ayrıca bkz. MSAL.NET sorun [#747: kaynak URL 'sinin sondaki eğik çizgi atlandığından SQL kimlik doğrulama hatasına neden olur](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API 'SI
 
@@ -202,7 +202,7 @@ Daha fazla bilgi için bkz. protokol belgeleri: [Microsoft Identity platform ve 
 
 ## <a name="application-token-cache"></a>Uygulama belirteci önbelleği
 
-MSAL.NET ' de, `AcquireTokenForClient` uygulama belirteci önbelleğini kullanır. (Tüm diğer AcquireToken*xx* yöntemleri kullanıcı belirteci önbelleğini kullanır.) `AcquireTokenSilent` Çağrısı yapmadan önce çağrı yapmayın `AcquireTokenForClient` , çünkü `AcquireTokenSilent` *Kullanıcı* belirteci önbelleğini kullanır. `AcquireTokenForClient`*uygulama* belirteci önbelleğinin kendisini denetler ve güncelleştirir.
+MSAL.NET ' de, `AcquireTokenForClient` uygulama belirteci önbelleğini kullanır. (Tüm diğer AcquireToken *xx* yöntemleri kullanıcı belirteci önbelleğini kullanır.) `AcquireTokenSilent` Çağrısı yapmadan önce çağrı yapmayın `AcquireTokenForClient` , çünkü `AcquireTokenSilent` *Kullanıcı* belirteci önbelleğini kullanır. `AcquireTokenForClient`*uygulama* belirteci önbelleğinin kendisini denetler ve güncelleştirir.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
@@ -233,17 +233,14 @@ Content: {
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-> [!div class="nextstepaction"]
-> [Daemon uygulaması-bir Web API 'SI çağırma](./scenario-daemon-call-api.md?tabs=dotnet)
+Bu senaryonun [bir Web API 'Sini çağırarak bir](./scenario-daemon-call-api.md?tabs=dotnet)sonraki makaleye geçin.
 
 # <a name="python"></a>[Python](#tab/python)
 
-> [!div class="nextstepaction"]
-> [Daemon uygulaması-bir Web API 'SI çağırma](./scenario-daemon-call-api.md?tabs=python)
+Bu senaryonun [bir Web API 'Sini çağırarak bir](./scenario-daemon-call-api.md?tabs=python)sonraki makaleye geçin.
 
 # <a name="java"></a>[Java](#tab/java)
 
-> [!div class="nextstepaction"]
-> [Daemon uygulaması-bir Web API 'SI çağırma](./scenario-daemon-call-api.md?tabs=java)
+Bu senaryonun [bir Web API 'Sini çağırarak bir](./scenario-daemon-call-api.md?tabs=java)sonraki makaleye geçin.
 
 ---

@@ -10,12 +10,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e8ae0463633940ba3192815af6a07a6356901044
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 47427f8d3690218060fd1e6221b1b089c68d6e1d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426995"
+ms.locfileid: "94441843"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Key Vault ve Azure CLı ile depolama hesabı anahtarlarını yönetme
 
@@ -34,11 +34,11 @@ Microsoft 'un bulut tabanlı kimlik ve erişim yönetimi hizmeti olan Azure Acti
 
 Azure AD, depolama hesabı kimlik bilgileri yerine bir uygulama veya Kullanıcı kimliği kullanarak istemci uygulamanızın kimliğini doğrulayabilmeniz için izin verir. Azure 'da çalıştırdığınızda [Azure ad yönetilen kimliğini](../../active-directory/managed-identities-azure-resources/index.yml) kullanabilirsiniz. Yönetilen kimlikler, istemci kimlik doğrulaması gereksinimini ortadan kaldırır ve uygulamanızda veya uygulamanızdaki kimlik bilgilerini depolar.
 
-Azure AD, Key Vault tarafından da desteklenen yetkilendirmeyi yönetmek için rol tabanlı erişim denetimi 'ni (RBAC) kullanır.
+Azure AD, Key Vault tarafından da desteklenen yetkilendirmeyi yönetmek için Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) kullanır.
 
 ## <a name="service-principal-application-id"></a>Hizmet sorumlusu uygulama KIMLIĞI
 
-Bir Azure AD kiracısı, kayıtlı her uygulamayı bir [hizmet sorumlusu](../../active-directory/develop/developer-glossary.md#service-principal-object)ile sağlar. Hizmet sorumlusu, RBAC aracılığıyla diğer Azure kaynaklarına erişim için yetkilendirme kurulumu sırasında kullanılan uygulama KIMLIĞI olarak görev yapar.
+Bir Azure AD kiracısı, kayıtlı her uygulamayı bir [hizmet sorumlusu](../../active-directory/develop/developer-glossary.md#service-principal-object)ile sağlar. Hizmet sorumlusu, Azure RBAC aracılığıyla diğer Azure kaynaklarına erişim için yetkilendirme kurulumu sırasında kullanılan uygulama KIMLIĞI olarak görev yapar.
 
 Key Vault, tüm Azure AD kiracılarında önceden kaydedilmiş bir Microsoft uygulamasıdır. Key Vault, her bir Azure bulutu 'nda aynı uygulama KIMLIĞI altına kaydedilir.
 
@@ -53,7 +53,7 @@ Key Vault, tüm Azure AD kiracılarında önceden kaydedilmiş bir Microsoft uyg
 Bu kılavuzu gerçekleştirmek için, önce aşağıdakileri yapmanız gerekir:
 
 - [Azure CLI 'Yı yükler](/cli/azure/install-azure-cli).
-- [Anahtar Kasası oluşturma](quick-create-cli.md)
+- [Anahtar kasası oluşturma](quick-create-cli.md)
 - [Bir Azure depolama hesabı oluşturun](../../storage/common/storage-account-create.md?tabs=azure-cli). Depolama hesabı adı yalnızca küçük harfler ve rakamlar kullanmalıdır. Adın uzunluğu 3 ile 24 karakter arasında olmalıdır.
       
 ## <a name="manage-storage-account-keys"></a>Depolama hesabı anahtarlarını yönetme

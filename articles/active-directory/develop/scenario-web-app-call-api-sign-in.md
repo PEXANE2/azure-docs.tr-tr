@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5246100815fde569c55027a555464c44a240d4b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7f59f235f4baa270b36b01cc4532227ab23fbc8
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88120006"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442540"
 ---
 # <a name="a-web-app-that-calls-web-apis-remove-accounts-from-the-token-cache-on-global-sign-out"></a>Web API 'Lerini çağıran bir Web uygulaması: genel oturum açma sırasında belirteç önbelleğinden hesapları kaldırma
 
@@ -50,22 +50,18 @@ Python örneği genel oturum kapatma üzerindeki önbellekten hesapları kaldır
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-> [!div class="nextstepaction"]
-> [Web uygulaması için belirteç alma](./scenario-web-app-call-api-acquire-token.md?tabs=aspnetcore)
+Bu senaryodaki bir sonraki makaleye geçin, [Web uygulaması için bir belirteç alın](./scenario-web-app-call-api-acquire-token.md?tabs=aspnetcore).
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-> [!div class="nextstepaction"]
-> [Web uygulaması için belirteç alma](./scenario-web-app-call-api-acquire-token.md?tabs=aspnet)
+Bu senaryodaki bir sonraki makaleye geçin, [Web uygulaması için bir belirteç alın](./scenario-web-app-call-api-acquire-token.md?tabs=aspnet).
 
 # <a name="java"></a>[Java](#tab/java)
 
-> [!div class="nextstepaction"]
-> [Web uygulaması için belirteç alma](./scenario-web-app-call-api-acquire-token.md?tabs=java)
+Bu senaryodaki bir sonraki makaleye geçin, [Web uygulaması için bir belirteç alın](./scenario-web-app-call-api-acquire-token.md?tabs=java).
 
 # <a name="python"></a>[Python](#tab/python)
 
-> [!div class="nextstepaction"]
-> [Web uygulaması için belirteç alma](./scenario-web-app-call-api-acquire-token.md?tabs=python)
+Bu senaryodaki bir sonraki makaleye geçin, [Web uygulaması için bir belirteç alın](./scenario-web-app-call-api-acquire-token.md?tabs=python).
 
 ---

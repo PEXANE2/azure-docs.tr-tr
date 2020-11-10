@@ -12,18 +12,18 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: edcfa19ed93733c4d6b060ebcb5ff179708195aa
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 07637a8be49fb2449c5c92c1a1ea4b2c7ace9a8d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486931"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442268"
 ---
 # <a name="manage-app-consent-policies"></a>Uygulama onayı ilkelerini yönetme
 
 Azure AD PowerShell ile uygulama onay ilkelerini görüntüleyebilir ve yönetebilirsiniz.
 
-Bir uygulama onay ilkesi, bir veya daha fazla "içerir" koşul kümesi ve sıfır veya daha fazla "hariç" koşul kümesi içerir. Bir uygulama onay ilkesinde dikkate alınan bir olay için, *en az* bir "içerme" koşulu kümesiyle eşleşmesi gerekir ve *herhangi* bir "hariç" koşul kümesi olmamalıdır.
+Bir uygulama onay ilkesi, bir veya daha fazla "içerir" koşul kümesi ve sıfır veya daha fazla "hariç" koşul kümesi içerir. Bir olayın bir uygulama onay ilkesinde kabul edilmesi için, *en az* bir "içerme" koşulu *kümesiyle eşleşmesi ve "* dışladığı" koşul kümesiyle eşleşmemesi gerekir.
 
 Her koşul kümesi birkaç koşuldan oluşur. Bir olayın bir koşul kümesiyle eşleşmesi için, koşul kümesindeki *Tüm* koşulların karşılanması gerekir.
 
@@ -133,7 +133,7 @@ Aşağıdaki tabloda, uygulama izin ilkeleri için desteklenen koşulların list
 | Koşul | Açıklama|
 |:---------------|:----------|
 | PermissionClassification | Verilen iznin [izin sınıflandırması](configure-permission-classifications.md) veya "tümü", herhangi bir izin sınıflandırmasıyla (sınıflandırılmamış izinler dahil) eşleşir. Varsayılan değer "All" dır. |
-| PermissionType | Verilen iznin izin türü. Temsilci izinleri için uygulama izinleri (örn. uygulama rolleri) veya "temsilci" için "uygulama" kullanın. <br><br>**Not**: "delegatedUserConsentable" DEĞERI, API yayımcısı tarafından yönetici onayı gerektirecek şekilde yapılandırılmamış izin verilen izinleri belirtir — bu değer yerleşik izin verme ilkelerinde kullanılabilir, ancak özel izin verme ilkelerinde kullanılamaz. Gereklidir. |
+| PermissionType | Verilen iznin izin türü. Temsilci izinleri için uygulama izinleri (örn. uygulama rolleri) veya "temsilci" için "uygulama" kullanın. <br><br>**Not** : "delegatedUserConsentable" DEĞERI, API yayımcısı tarafından yönetici onayı gerektirecek şekilde yapılandırılmamış izin verilen izinleri belirtir — bu değer yerleşik izin verme ilkelerinde kullanılabilir, ancak özel izin verme ilkelerinde kullanılamaz. Gereklidir. |
 | ResourceApplication | Bir iznin verildiği kaynak uygulamanın (ör. API) veya herhangi bir kaynak uygulamasıyla veya API ile eşleşmek için "Any" **AppID** 'si. Varsayılan değer "Any" dır. |
 | İzinler | Eşleşen belirli izinler için izin kimliklerinin listesi veya herhangi bir izinle eşleşecek şekilde tek değeri "tümü" olan bir liste. Varsayılan, tek "All" değeridir. <ul><li>Temsilci izin kimlikleri, API 'nin ServicePrincipal nesnesinin **OAuth2Permissions** özelliğinde bulunabilir.</li><li>Uygulama izin kimlikleri, API 'nin ServicePrincipal nesnesinin **Approles** özelliğinde bulunabilir.</li></ol> |
 | Clientapplicationıds | İstemci uygulamalarının eşleşmesi için **AppID** değerlerinin listesi veya herhangi bir istemci uygulamasıyla eşleşmesi için tek değeri "tümü" olan bir liste. Varsayılan, tek "All" değeridir. |

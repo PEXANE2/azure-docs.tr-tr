@@ -11,18 +11,18 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 174db339079de91a87cef9551bc79e6f03701605
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4123b0424e52c6a2919de4b60bcc6158062b0f1
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257138"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442642"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>Senaryo: Web API 'Lerini çağıran bir Web uygulaması
 
 Microsoft Identity platformunda kullanıcıları imzalayan ve ardından oturum açmış kullanıcı adına Web API 'Lerini çağıran bir Web uygulaması oluşturmayı öğrenin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu senaryo, zaten bir senaryoyu tamamlamış olduğunu varsayar [: kullanıcıları oturum açan Web uygulaması](scenario-web-app-sign-user-overview.md).
 
@@ -30,7 +30,7 @@ Bu senaryo, zaten bir senaryoyu tamamlamış olduğunu varsayar [: kullanıcıla
 
 ' Deki kullanıcıları imzalamak ve oturum açmış kullanıcı adına bir Web API 'SI çağırmak için Web uygulamanıza kimlik doğrulaması eklersiniz.
 
-![Web API'lerini çağıran web uygulaması](./media/scenario-webapp/web-app.svg)
+![Web API’lerini çağıran web uygulaması](./media/scenario-webapp/web-app.svg)
 
 Web API 'Lerini çağıran Web uygulamaları gizli istemci uygulamalardır.
 Bu nedenle, Azure Active Directory (Azure AD) ile bir gizli dizi (uygulama parolası veya sertifika) kaydettikleri budur. Bu gizli dizi, bir belirteç almak için Azure AD çağrısı sırasında geçirilir.
@@ -53,5 +53,4 @@ Bu senaryoya yönelik geliştirme, bu özel görevleri içerir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-> [!div class="nextstepaction"]
-> [Web API 'Leri çağıran bir Web uygulaması: uygulama kaydı](scenario-web-app-call-api-app-registration.md)
+Bu senaryonun [uygulama kaydı](scenario-web-app-call-api-app-registration.md)olan sonraki makaleye geçin.

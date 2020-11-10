@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1e5c8b788f1abbfbd46c4dfe6c7bb9d87adcee86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d737f107e7a9b1476fdf86ac0320931ea137671
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257275"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442914"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>Korumalı Web API 'SI: kapsamları ve uygulama rollerini doğrulama
 
@@ -100,7 +100,7 @@ Web API 'niz bir [Daemon uygulaması](scenario-daemon-overview.md)tarafından ç
 
 Şimdi API 'nizin aldığı belirtecin `roles` talebi içerdiğini ve bu talebin beklenen değere sahip olduğunu doğrulaması gerekir. Doğrulama kodu, izin verilen izinleri doğrulayan koda benzerdir, ancak denetleyici eylemi kapsamlar yerine roller için test eder:
 
-### <a name="aspnet-core"></a>ASP.NET Çekirdeği
+### <a name="aspnet-core"></a>ASP.NET Core
 
 ```csharp
 [Authorize]
@@ -152,5 +152,4 @@ Ters koşulun denetlenmesi, yalnızca bir kullanıcının API 'nizi çağırmas�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-> [!div class="nextstepaction"]
-> [Üretime taşıma](scenario-protected-web-api-production.md)
+Bu senaryodaki sonraki makaleye geçin, [üretime geçin](scenario-protected-web-api-production.md).

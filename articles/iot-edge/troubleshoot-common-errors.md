@@ -4,19 +4,19 @@ description: IoT Edge çözümü dağıtımında karşılaşılan yaygın sorunl
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/27/2020
+ms.date: 11/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: ed93d24bc06a6622a8ace2b0ab6b44582da001c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98ee865a3ddf6c26ffe9cb77767f3872b42018d8
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82783753"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442370"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge için genel sorunlar ve çözümler
 
@@ -153,13 +153,13 @@ IoT Edge cihazını bir ağ geçidi olarak kullanmanız gerekmiyorsa, edgeHub '�
 
 Azure portalında:
 
-1. IoT Hub 'ınıza gidip **IoT Edge**seçin.
+1. IoT Hub 'ınıza gidip **IoT Edge** seçin.
 
 2. Güncelleştirmek istediğiniz IoT Edge cihazı seçin.
 
-3. **Modülleri Ayarlama**'yı seçin.
+3. **Modülleri Ayarlama** 'yı seçin.
 
-4. **Çalışma zamanı ayarları**' nı seçin.
+4. **Çalışma zamanı ayarları** ' nı seçin.
 
 5. **Edge hub 'ı** modül ayarları ' nda, **oluşturma seçenekleri** metin kutusundan her şeyi silin.
 
@@ -221,8 +221,8 @@ Bu hatayı gördüğünüzde, sanal makinenizin DNS adını yapılandırarak ve 
 
    ![Sanal makinenin DNS adını yapılandırın](./media/troubleshoot/configure-dns.png)
 
-3. **DNS ad etiketi** için bir değer girin ve **Kaydet**' i seçin.
-4. Yeni DNS adını, biçiminde olmalıdır ** \<DNSnamelabel\> . \<vmlocation\> cloudapp.azure.com**.
+3. **DNS ad etiketi** için bir değer girin ve **Kaydet** ' i seçin.
+4. Yeni DNS adını, biçiminde olmalıdır **\<DNSnamelabel\> . \<vmlocation\> cloudapp.azure.com**.
 5. Sanal makinenin içinde, DNS adınızla IoT Edge çalışma zamanını ayarlamak için aşağıdaki komutu kullanın:
 
    * Linux 'ta:
@@ -272,11 +272,11 @@ IoT Edge çalışma zamanının parçası olan IoT Edge hub, varsayılan olarak 
 
 **Çözünürlüğüne**
 
-IoT Edge hub 'ı için **Optimizeforperformance** ortam değişkenini **false**olarak ayarlayın. Ortam değişkenlerini ayarlamak için iki yol vardır:
+IoT Edge hub 'ı için **Optimizeforperformance** ortam değişkenini **false** olarak ayarlayın. Ortam değişkenlerini ayarlamak için iki yol vardır:
 
 Azure portalında:
 
-IoT Hub, IoT Edge cihazınızı ve cihaz ayrıntıları sayfasında, **Modül**  >  **çalışma zamanı ayarlarını**ayarla ' yı seçin. *Yanlış*olarak ayarlanan *Optimizeforperformance* adlı IoT Edge hub modülü için bir ortam değişkeni oluşturun.
+IoT Hub, IoT Edge cihazınızı ve cihaz ayrıntıları sayfasında, **Modül**  >  **çalışma zamanı ayarlarını** ayarla ' yı seçin. *Yanlış* olarak ayarlanan *Optimizeforperformance* adlı IoT Edge hub modülü için bir ortam değişkeni oluşturun.
 
 ![OptimizeForPerformance, false olarak ayarlandı](./media/troubleshoot/optimizeforperformance-false.png)
 
@@ -331,6 +331,25 @@ Otomatik dağıtım, bir cihazı hedefliyorsa, tek bir cihaz için modülleri el
 Her cihaz için bir otomatik dağıtım veya tek cihaz dağıtımı olmak üzere yalnızca bir tür dağıtım mekanizması kullanın. Bir cihazı hedefleyen birden fazla otomatik dağıtımınız varsa, belirli bir cihaza doğru bir uygulama olduğundan emin olmak için öncelik veya hedef açıklamalarını değiştirebilirsiniz. Ayrıca, ikizi cihazını otomatik dağıtımın hedef açıklamasıyla artık eşleşmesiz şekilde güncelleştirebilirsiniz.
 
 Daha fazla bilgi için bkz. [tek cihazlarda veya ölçekte IoT Edge otomatik dağıtımları anlama](module-deployment-monitoring.md).
+
+<!-- <1.2> -->
+::: moniker range=">=iotedge-2020-11"
+
+## <a name="iot-edge-behind-a-gateway-cannot-perform-http-requests-and-start-edgeagent-module"></a>Bir ağ geçidinin arkasında IoT Edge HTTP istekleri gerçekleştiremez ve edgeAgent modülünü başlatamıyor
+
+**Gözlemlenen davranış:**
+
+IoT Edge Daemon geçerli bir yapılandırma dosyası ile etkin, ancak edgeAgent modülünü başlatamıyor. Komut `iotedge list` boş bir liste döndürür. IoT Edge Daemon günlükleri raporu `Could not perform HTTP request` .
+
+**Kök nedeni:**
+
+Bir ağ geçidinin arkasındaki cihazların IoT Edge, `parent_hostname` config. YAML dosyasının alanında belirtilen üst IoT Edge cihazdan modül görüntülerini alın. `Could not perform HTTP request`Hata, alt CIHAZıN http aracılığıyla üst cihazına erişemeyeceği anlamına gelir.
+
+**Çözünürlüğüne**
+
+Üst IoT Edge cihazın alt IoT Edge cihazdan gelen istekleri aldığından emin olun. Alt cihazdan gelen istekler için 443 ve 6617 bağlantı noktalarında ağ trafiğini açın.
+
+:::moniker-end
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

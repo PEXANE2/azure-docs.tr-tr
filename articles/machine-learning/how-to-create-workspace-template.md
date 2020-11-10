@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 70e3185257c7c70d74fdc8492cf0a2b4970c03b1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2c415fc92d2d338c568c422b1db2579563527839
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305479"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442064"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Machine Learning için bir çalışma alanı oluşturmak üzere Azure Resource Manager şablonu kullanma
 
@@ -34,7 +34,7 @@ Daha fazla bilgi için bkz. [Azure Resource Manager şablonuyla uygulama dağıt
 
 * Bazı senaryolar için bir destek bileti açmanız gerekir. Bu senaryolar şunlardır:
 
-    * __Müşteri tarafından yönetilen bir anahtarla özel bağlantı etkin çalışma alanı (CMK)__
+    * __Müşteri tarafından yönetilen anahtarın bulunduğu Özel Bağlantı özellikli çalışma alanı__
     * __Sanal ağınızın arkasındaki çalışma alanı için Azure Container Registry__
 
     Daha fazla bilgi için bkz. [kotaları yönetme ve artırma](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
@@ -170,7 +170,7 @@ Aşağıdaki örnek şablon, üç ayarı olan bir çalışma alanının nasıl o
 > [!IMPORTANT]
 > Bir çalışma alanı oluşturulduktan sonra gizli verilerin, şifrelemenin, Anahtar Kasası KIMLIĞININ veya anahtar tanımlayıcılarının ayarlarını değiştiremezsiniz. Bu değerleri değiştirmek için yeni değerleri kullanarak yeni bir çalışma alanı oluşturmanız gerekir.
 
-Daha fazla bilgi için bkz. [bekleyen şifreleme](concept-enterprise-security.md#encryption-at-rest).
+Daha fazla bilgi için bkz. [bekleyen şifreleme](concept-data-encryption.md#encryption-at-rest).
 
 > [!IMPORTANT]
 > Bu şablonu kullanmadan önce aboneliğinizin karşılaması gereken bazı özel gereksinimler vardır:
@@ -252,7 +252,7 @@ New-AzResourceGroupDeployment `
 ```
 ---
 
-Müşteri tarafından yönetilen bir anahtar kullanırken Azure Machine Learning, Cosmos DB örneğini içeren ikincil bir kaynak grubu oluşturur. Daha fazla bilgi için bkz. [rest-Cosmos DB şifreleme](concept-enterprise-security.md#encryption-at-rest).
+Müşteri tarafından yönetilen bir anahtar kullanırken Azure Machine Learning, Cosmos DB örneğini içeren ikincil bir kaynak grubu oluşturur. Daha fazla bilgi için bkz. [rest-Cosmos DB şifreleme](concept-data-encryption.md#encryption-at-rest).
 
 Verileriniz için sağlayabilmeniz için ek bir yapılandırma **confidential_data** parametresini **true** olarak ayarlayasağlamaktır. Bunu yaptığınızda, şunları yapar:
 
@@ -264,7 +264,7 @@ Verileriniz için sağlayabilmeniz için ek bir yapılandırma **confidential_da
     > [!IMPORTANT]
     > Bir çalışma alanı oluşturulduktan sonra gizli verilerin, şifrelemenin, Anahtar Kasası KIMLIĞININ veya anahtar tanımlayıcılarının ayarlarını değiştiremezsiniz. Bu değerleri değiştirmek için yeni değerleri kullanarak yeni bir çalışma alanı oluşturmanız gerekir.
 
-  Daha fazla bilgi için bkz. [bekleyen şifreleme](concept-enterprise-security.md#encryption-at-rest).
+  Daha fazla bilgi için bkz. [bekleyen şifreleme](concept-data-encryption.md#encryption-at-rest).
 
 ## <a name="deploy-workspace-behind-a-virtual-network"></a>Çalışma alanını bir sanal ağın arkasına dağıtma
 

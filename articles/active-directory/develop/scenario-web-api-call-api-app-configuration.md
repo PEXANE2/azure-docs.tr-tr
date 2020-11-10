@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 993e1a513fae726e00a29c4b9927a0a039572f74
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4a888c3ad771e4a7edbd7110ba584050fe68e810
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365944"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443798"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Web API 'Leri çağıran bir Web API 'SI: kod yapılandırması
 
@@ -256,5 +256,4 @@ OBO protokolü hakkında daha fazla bilgi için bkz. [Microsoft Identity platfor
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-> [!div class="nextstepaction"]
-> [Web API 'Lerini çağıran bir Web API 'SI: uygulama için belirteç alma](scenario-web-api-call-api-acquire-token.md)
+Bu senaryodaki bir sonraki makaleye geçin, [uygulama için bir belirteç alın](scenario-web-api-call-api-acquire-token.md).

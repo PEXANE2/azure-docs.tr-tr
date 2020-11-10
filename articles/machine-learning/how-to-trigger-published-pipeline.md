@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 02/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4
-ms.openlocfilehash: 64f1c83a570e936759d674f40db201fb2f2cd0e5
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: dabcf30488e45fbe6c7c5b9e5aa0c8bd57f28fd8
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146271"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443509"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>Bir mantıksal uygulamadan Machine Learning işlem hattının çalıştırılmasını tetikleme
 
@@ -96,11 +96,11 @@ Mantıksal uygulamanız sağlandıktan sonra, işlem hattınızda bir tetikleyic
 1. **Kaydet** ' i seçin ve zamanlamanız artık hazırdır.
 
 > [!IMPORTANT]
-> İşlem hattınızı erişimi yönetmek için rol tabanlı erişim denetimi (RBAC) kullanıyorsanız, işlem [hattı senaryonuz için izinleri ayarlayın (eğitim veya Puanlama)](how-to-assign-roles.md#q-what-are-the-permissions-needed-to-perform-some-common-scenarios-in-the-azure-machine-learning-service)
+> İşlem hattınızı erişimi yönetmek için rol tabanlı erişim denetimi (RBAC) kullanıyorsanız, işlem [hattı senaryonuz (eğitim veya Puanlama) için izinleri ayarlayın](how-to-assign-roles.md#common-scenarios).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 > [!div class="nextstepaction"]
 > [Batch Puanlama için Azure Machine Learning işlem hatları kullanma](tutorial-pipeline-batch-scoring-classification.md)

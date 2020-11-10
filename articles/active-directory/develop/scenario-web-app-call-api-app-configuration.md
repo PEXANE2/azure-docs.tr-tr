@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: c8d68a17b3b991b88e02cf056dcb46da2debfa71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b24b95423adb271b8a4016430e7d2b381c386cd2
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403203"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443764"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Web API 'Leri çağıran bir Web uygulaması: kod yapılandırması
 
@@ -519,5 +519,4 @@ def _build_msal_app(cache=None):
 
 Bu noktada, Kullanıcı oturum açtığında belirteç önbelleğinde bir belirteç depolanır. Daha sonra, Web uygulamasının diğer bölümlerinde nasıl kullanıldığını görelim.
 
-> [!div class="nextstepaction"]
-> [Web API 'Lerini çağıran bir Web uygulaması: genel oturum kapatma sırasında önbellekten hesap kaldırma](scenario-web-app-call-api-sign-in.md)
+[Genel oturum açma sırasında önbellekten hesapları kaldır](scenario-web-app-call-api-sign-in.md)

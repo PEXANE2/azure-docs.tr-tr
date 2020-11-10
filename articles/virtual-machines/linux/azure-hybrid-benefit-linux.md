@@ -9,15 +9,15 @@ ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
-ms.author: alsin
-ms.openlocfilehash: c1200121d1c768a3fdddd7749184d7f8b5c98a96
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.author: mathapli
+ms.openlocfilehash: feaa2471f2867257deb06ab32ed5fc0a26a0d37e
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413114"
+ms.locfileid: "94443441"
 ---
-# <a name="preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Önizleme: Azure Hibrit Avantajı – Linux Sanal Makineleri için nasıl uygulanır?
+# <a name="public-preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Genel Önizleme: Azure Hibrit Avantajı – nasıl uygulandığı Linux Sanal Makineleri
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -45,30 +45,26 @@ Linux VM 'lerle avantajı zaten kullanıyorsanız, ayrılmış örnekler, adanm�
 
 ## <a name="how-to-get-started"></a>Nasıl kullanmaya başlarım
 
-Azure Hibrit Avantajı Şu anda Linux VM 'Leri için bir önizleme aşamasındadır. Önizlemeye erişim kazandıktan sonra, Azure portal veya Azure CLı kullanarak avantaja izin verebilir.
+Azure Hibrit Avantajı Şu anda Linux VM 'Leri için bir önizleme aşamasındadır. Önizlemeye erişim kazandıktan sonra, Azure CLı kullanarak avantaja izin verebilir.
 
-### <a name="preview"></a>Önizleme
+### <a name="public-preview"></a>Genel Önizleme
 
-Bu aşamada, formu [buraya](https://aka.ms/ahb-linux-form)doldurarak avantaja erişebilirsiniz. Formu doldurduktan sonra Azure abonelikleriniz avantajdan etkinleştirilir ve Microsoft 'tan üç iş günü içinde bir onay alacaksınız.
+Azure Hibrit Avantajı (Linux için) Şu anda genel önizleme aşamasındadır. Red Hat ve SUSE dağıtımları avantajını etkinleştirmek için aşağıdaki adımları kullanabilirsiniz. 
 
 ### <a name="red-hat-customers"></a>Red Hat müşterileri
 
-1.    Yukarıdaki önizleme isteği formunu doldurun
 1.    [Red Hat bulut erişim programına](https://aka.ms/rhel-cloud-access) kaydolun
 1.    Azure aboneliklerinizi bulut erişimi için etkinleştirin ve avantajını kullanmak istediğiniz VM 'Leri içeren abonelikleri etkinleştirin
-1.    Azure portal veya Azure CLı aracılığıyla mevcut sanal makinelerinize avantajını uygulayın
-1.    İsteğe bağlı, sanal makinelerinizi ayrı bir güncelleştirme kaynağıyla elde edin (anahtarlamalı VM 'Ler [rhuı](../workloads/redhat/redhat-rhui.md) 'e bağlı KALABILIR veya RHSM aracılığıyla kaydedilebilir)
+1.    Azure CLı aracılığıyla mevcut sanal makinelerinize avantajını uygulayın
+1.    VM 'lerinizi, ayrı bir güncelleştirme kaynağıyla avantajını alacak şekilde kaydedin
+
 
 ### <a name="suse-customers"></a>SUSE müşterileri
 
-1.    Yukarıdaki önizleme isteği formunu doldurun
 1.    SUSE genel bulut programına kaydolun
-1.    Azure portal veya Azure CLı aracılığıyla mevcut sanal makinelerinize avantajını uygulayın
+1.    Azure CLı aracılığıyla mevcut sanal makinelerinize avantajını uygulayın
 1.    VM 'lerinizi, ayrı bir güncelleştirme kaynağıyla avantajını alacak şekilde kaydedin
 
-### <a name="enable-and-disable-the-benefit-in-the-azure-portal"></a>Azure portal avantajı etkinleştirin ve devre dışı bırakın
-
-**Yapılandırma** dikey penceresini ziyaret ederek ve bu adımları izleyerek var olan sanal makinelerde avantaja izin verebilir. VM oluşturma deneyimi sırasında yeni VM 'lerde avantaja izin verebilir.
 
 ### <a name="enable-and-disable-the-benefit-in-the-azure-cli"></a>Azure CLı 'de avantajı etkinleştirme ve devre dışı bırakma
 
@@ -109,12 +105,8 @@ az vm list -o json | jq '.[] | {VMName: .name, ResourceID: .id}'
 ```
 
 ## <a name="check-ahb-status-of-a-vm"></a>Bir VM 'nin AHB durumunu denetleme
-Bir VM 'nin AHB durumunu üç şekilde görüntüleyebilirsiniz: portalda, Azure CLı kullanarak veya Azure Instance Metadata Service (Azure ıMDS) kullanarak.
+Bir VM 'nin AHB durumunu iki şekilde görüntüleyebilirsiniz: Azure CLı veya Azure Instance Metadata Service (Azure ıMDS) kullanarak.
 
-
-### <a name="portal"></a>Portal
-
-VM 'niz için, AHB 'nin etkin olup olmadığını görmek için yapılandırma dikey penceresini görüntüleyin ve lisanslama durumunu denetleyin.
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -152,9 +144,7 @@ Bu bölüm, karşılaşılan yaygın sorunların ve hafifletme adımlarının bi
 
 | Hata | Risk azaltma |
 | ----- | ---------- |
-| "Abonelik, Azure Hibrit Avantajı Linux önizlemesi için kayıtlı değil. Adım adım yönergeler için bkz. https://aka.ms/ahb-linux " | https://aka.ms/ahb-linux-formAzure hibrit avantajı Linux önizlemesi için kaydolmak üzere konumundaki formu doldurun.
 | "Kayıtlarımız Azure aboneliğinizde Red Hat bulutu erişimini başarıyla etkinleştirmediyseniz, bu eylem tamamlanamadı...." | RHEL VM 'lerle ilgili avantajını kullanabilmeniz için, önce Azure aboneliklerinizi Red Hat bulut erişimi ile kaydetmeniz gerekir. Red Hat bulut erişimi için Azure aboneliklerinizi kaydetme hakkında daha fazla bilgi edinmek üzere bu bağlantıyı ziyaret edin
-|"Azure Hibrit Avantajı seçeneği portalda gösterilmez" | Bu, paylaşılan görüntü Galerisi, anlık görüntüler veya yakalanan PAYG görüntülerinden oluşturulan RHEL ve SLES VM 'Ler için bilinen bir sorundur. Bu durumda, "[Azure CLI 'de avantajı etkinleştirme ve devre dışı bırakma](#enable-and-disable-the-benefit-in-the-azure-cli)" bölümünde açıklanan CLI adımlarını kullanın. AHB 'nin durumunu görüntülemek için komutunu kullanın ` az vm get-instance-view -g MyResourceGroup -n MyVm` .|
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Formu [burada](https://aka.ms/ahb-linux-form)doldurarak Önizlemeyi kullanmaya başlayın.
+* [Azure CLI](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest&preserve-view=true) kullanarak Azure hibrit avantajı için VM oluşturma ve güncelleştirme ve lisans türleri (RHEL_BYOS SLES_BYOS) ekleme hakkında bilgi edinin.

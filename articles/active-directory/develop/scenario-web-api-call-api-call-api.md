@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 9212e99ae317a3abec4bebfc7fb131c6774f8e4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8eb737752741dc55da24ad6b605b081053b8a11
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396204"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443710"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Web API 'Leri çağıran bir Web API 'si: API çağırma
 
@@ -26,7 +26,7 @@ Belirteciniz olduktan sonra korumalı bir Web API 'SI çağırabilirsiniz. Genel
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-*Microsoft. Identity. Web*kullandığınızda, üç kullanım senaryosundan yararlanabilirsiniz:
+*Microsoft. Identity. Web* kullandığınızda, üç kullanım senaryosundan yararlanabilirsiniz:
 
 - [Seçenek 1: Microsoft Graph SDK ile Microsoft Graph çağırma](#option-1-call-microsoft-graph-with-the-sdk)
 - [2. seçenek: yardımcı sınıfla bir aşağı akış Web API 'SI çağırma](#option-2-call-a-downstream-web-api-with-the-helper-class)
@@ -117,7 +117,7 @@ Bu senaryoda, `.AddDownstreamWebApi()` [kod yapılandırmasında](scenario-web-a
 
 #### <a name="option-3-call-a-downstream-web-api-without-the-helper-class"></a>Seçenek 3: yardımcı sınıfı olmadan bir aşağı akış Web API 'SI çağırma
 
-Hizmeti kullanarak bir belirteci el ile almaya karar verdiyseniz `ITokenAcquisition` , artık belirtecini kullanmanız gerekir. Bu durumda, aşağıdaki kod, [Web API 'lerini çağıran bir Web API 'sinde gösterilen örnek koda devam eder: uygulama için bir belirteç alın](scenario-web-api-call-api-acquire-token.md). Kod, API denetleyicilerinin eylemleri içinde çağrılır. *ToDoList*adlı bir aşağı akış API 'si çağırır.
+Hizmeti kullanarak bir belirteci el ile almaya karar verdiyseniz `ITokenAcquisition` , artık belirtecini kullanmanız gerekir. Bu durumda, aşağıdaki kod, [Web API 'lerini çağıran bir Web API 'sinde gösterilen örnek koda devam eder: uygulama için bir belirteç alın](scenario-web-api-call-api-acquire-token.md). Kod, API denetleyicilerinin eylemleri içinde çağrılır. *ToDoList* adlı bir aşağı akış API 'si çağırır.
 
  Belirteci aldıktan sonra, aşağı akış API 'sini çağırmak için bunu bir taşıyıcı belirteç olarak kullanın.
 
@@ -164,5 +164,4 @@ Bu akışı MSAL Python ile gösteren bir örnek henüz kullanılamamaktadır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-> [!div class="nextstepaction"]
-> [Web API 'Lerini çağıran bir Web API 'SI: üretime taşı](scenario-web-api-call-api-production.md)
+Bu senaryodaki sonraki makaleye geçin, [üretime geçin](scenario-web-api-call-api-production.md).

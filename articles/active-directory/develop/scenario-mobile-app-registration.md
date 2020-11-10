@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: e0f1cc446b6b957b17153dd538922d2b9acd891f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35c1ffb370a158acc91e2378119055337e28580d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442743"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443101"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Web API 'Lerini çağıran mobil uygulamaları kaydetme
 
@@ -50,19 +50,19 @@ Bu deneyim, uygulamanızın Microsoft Authenticator (ve Android 'de Intune Şirk
 
 Uygulama kayıt portalı, iOS ve Android uygulamaları için aracılı yanıt URI 'sini hesaplamanıza yardımcı olmak için bir önizleme deneyimi sağlar:
 
-1. Uygulama kayıt portalında **kimlik doğrulama**' yı seçin,  >  **Yeni deneyimi deneyin**.
+1. Uygulama kayıt portalında **kimlik doğrulama** ' yı seçin,  >  **Yeni deneyimi deneyin**.
 
    ![Yeni bir deneyim seçtiğiniz kimlik doğrulama dikey penceresi](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 
-2. **Platform Ekle**' yi seçin.
+2. **Platform Ekle** ' yi seçin.
 
    ![Platform ekleme](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
 
-3. Platformların listesi desteklenmiş olduğunda **iOS**' ı seçin.
+3. Platformların listesi desteklenmiş olduğunda **iOS** ' ı seçin.
 
    ![Bir mobil uygulama seçin](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
 
-4. Paket KIMLIĞINIZI girip **Kaydet**' i seçin.
+4. Paket KIMLIĞINIZI girip **Kaydet** ' i seçin.
 
    ![Paket KIMLIĞINIZI girin](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
 
@@ -72,16 +72,16 @@ Adımları tamamladığınızda, aşağıdaki görüntüde olduğu gibi yeniden 
 
 Yeniden yönlendirme URI 'sini el ile yapılandırmayı tercih ediyorsanız, bunu uygulama bildirimi aracılığıyla yapabilirsiniz. Bildirim için önerilen biçim aşağıda verilmiştir:
 
-- **iOS**: `msauth.<BUNDLE_ID>://auth`
+- **iOS** : `msauth.<BUNDLE_ID>://auth`
   - Örneğin, şunu girin `msauth.com.yourcompany.appName://auth`
-- **Android**: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
+- **Android** : `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
   - Anahtar araç komutu aracılığıyla sürüm anahtarını veya hata ayıklama anahtarını kullanarak Android imza karmasını oluşturabilirsiniz.
 
 ### <a name="username-password-authentication"></a>Kullanıcı adı-parola kimlik doğrulaması
 
 Uygulamanız yalnızca Kullanıcı adı-parola kimlik doğrulaması kullanıyorsa, uygulamanız için bir yeniden yönlendirme URI 'SI kaydetmeniz gerekmez. Bu akış Microsoft Identity Platform sürüm 2,0 uç noktasına gidiş dönüş yapar. Uygulamanız belirli bir URI üzerinde geri çağrılmayacaktır.
 
-Ancak, uygulamanızı ortak bir istemci uygulaması olarak belirlemeniz gerekir. Bunu yapmak için uygulamanızın **kimlik doğrulama** bölümünde öğesini başlatın. **Gelişmiş ayarlar** alt bölümünde, **varsayılan istemci türü** paragrafında, **uygulamayı ortak bir istemci olarak değerlendir**için **Evet**' i seçin.
+Ancak, uygulamanızı ortak bir istemci uygulaması olarak belirlemeniz gerekir. Bunu yapmak için uygulamanızın **kimlik doğrulama** bölümünde öğesini başlatın. **Gelişmiş ayarlar** alt bölümünde, **varsayılan istemci türü** paragrafında, **uygulamayı ortak bir istemci olarak değerlendir** için **Evet** ' i seçin.
 
 ## <a name="api-permissions"></a>API izinleri
 
@@ -91,5 +91,4 @@ Mobil uygulamalar, oturum açmış kullanıcı adına API 'Leri çağırır. Uyg
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-> [!div class="nextstepaction"]
-> [Kod yapılandırması](scenario-mobile-app-configuration.md)
+Bu senaryonun [uygulama kodu yapılandırması](scenario-mobile-app-configuration.md)olan bir sonraki makaleye geçin.

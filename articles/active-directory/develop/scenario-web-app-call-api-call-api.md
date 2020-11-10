@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 815b1789c54d1ce505c16dc89e199d451ae9a588
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 846c47017ba2887c287dd080c44c46b372660d0e
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396136"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443611"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Web API 'Leri çağıran bir Web uygulaması: Web API 'SI çağırma
 
@@ -29,7 +29,7 @@ Korumalı bir Web API 'SI çağırmak dile ve tercih ettiğiniz çerçeveye bağ
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-*Microsoft. Identity. Web*kullandığınızda, bir API 'yi çağırmak için üç kullanım seçeneğiniz vardır:
+*Microsoft. Identity. Web* kullandığınızda, bir API 'yi çağırmak için üç kullanım seçeneğiniz vardır:
 
 - [Seçenek 1: Microsoft Graph SDK ile Microsoft Graph çağırma](#option-1-call-microsoft-graph-with-the-sdk)
 - [2. seçenek: yardımcı sınıfla bir aşağı akış Web API 'SI çağırma](#option-2-call-a-downstream-web-api-with-the-helper-class)
@@ -199,5 +199,4 @@ def graphcall():
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-> [!div class="nextstepaction"]
-> [Üretime taşıma](scenario-web-app-call-api-production.md)
+Bu senaryodaki sonraki makaleye geçin, [üretime geçin](scenario-web-app-call-api-production.md).

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 03b077c7cadbfd101705c040e485c5766909c2de
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4fb62ec8d3a6fa97fe6db5b146ba58d3ad66b1b4
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318163"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94441996"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web hizmeti olarak dağıtılan bir Azure Machine Learning modelini kullanma
 
@@ -119,7 +119,7 @@ Azure Machine Learning, Web hizmetlerinizi erişimi denetlemek için iki yol sa�
 
 Bir anahtara veya belirteçle güvenli hale getirilmiş bir hizmete istek gönderilirken, anahtar veya belirteci geçirmek için __Yetkilendirme__ üst bilgisini kullanın. Anahtar veya belirtecin olarak biçimlendirilmesi gerekir `Bearer <key-or-token>` , burada `<key-or-token>` anahtar veya belirteç değeridir.
 
-Anahtarlar ve belirteçler arasındaki başlıca fark, **anahtarların statik olduğu ve el ile yeniden üretilme** ve **belirteçlerin süre sonu üzerine yenilenmesi gerektiği**. Anahtar tabanlı kimlik doğrulaması, Azure Container Instance ve Azure Kubernetes hizmeti tarafından dağıtılan Web Hizmetleri için desteklenir ve belirteç tabanlı kimlik doğrulaması **yalnızca** Azure Kubernetes hizmet dağıtımları için kullanılabilir. Daha fazla bilgi ve belirli kod örnekleri için bkz. [nasıl yapılır](how-to-setup-authentication.md#web-service-authentication) kimlik doğrulaması.
+Anahtarlar ve belirteçler arasındaki başlıca fark, **anahtarların statik olduğu ve el ile yeniden üretilme** ve **belirteçlerin süre sonu üzerine yenilenmesi gerektiği**. Anahtar tabanlı kimlik doğrulaması, Azure Container Instance ve Azure Kubernetes hizmeti tarafından dağıtılan Web Hizmetleri için desteklenir ve belirteç tabanlı kimlik doğrulaması **yalnızca** Azure Kubernetes hizmet dağıtımları için kullanılabilir. Kimlik doğrulamasını yapılandırma hakkında daha fazla bilgi için bkz. [Web Hizmetleri olarak dağıtılan modeller için kimlik doğrulamasını yapılandırma](how-to-authenticate-web-service.md).
 
 
 #### <a name="authentication-with-keys"></a>Anahtarlar ile kimlik doğrulama

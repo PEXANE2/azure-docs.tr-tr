@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: ea0312cd8129fce342f94cfab5701d1773aca309
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dad7b0563fd1ca0dbf60403bc6172e7616e278b2
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728344"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443662"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Kullanıcılara oturum açan Web uygulaması: kod yapılandırması
 
@@ -245,7 +245,7 @@ Microsoft Identity platform (eski adıyla Azure AD v 2.0) ile kimlik doğrulamas
      }).AddMicrosoftIdentityUI();
     ```
 
-3. `Configure` *Startup.cs*içindeki yönteminde, kimlik doğrulamasını bir çağrısıyla etkinleştirin`app.UseAuthentication();`
+3. `Configure` *Startup.cs* içindeki yönteminde, kimlik doğrulamasını bir çağrısıyla etkinleştirin`app.UseAuthentication();`
 
    ```c#
    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -259,7 +259,7 @@ Microsoft Identity platform (eski adıyla Azure AD v 2.0) ile kimlik doğrulamas
    ```
 
 Yukarıdaki kodda:
-- `AddMicrosoftIdentityWebAppAuthentication`Uzantı yöntemi **Microsoft. Identity. Web**içinde tanımlanmıştır. İçerdiği
+- `AddMicrosoftIdentityWebAppAuthentication`Uzantı yöntemi **Microsoft. Identity. Web** içinde tanımlanmıştır. İçerdiği
   - Kimlik doğrulama hizmetini ekler.
   - Yapılandırma dosyasını okuma seçeneklerini yapılandırır (burada "AzureAD" bölümünden)
   - OpenID Connect seçeneklerini, yetkilinin Microsoft Identity platform uç noktası olmasını sağlayacak şekilde yapılandırır.
@@ -270,7 +270,7 @@ Yukarıdaki kodda:
 
 - `AddMicrosoftIdentityWebAppAuthentication` , gelişmiş senaryolar için başka parametrelere sahiptir. Örneğin, OpenID Connect ara yazılım olaylarını izlemek, kimlik doğrulaması çalışmazsa Web uygulamanızın sorunlarını gidermenize yardımcı olabilir. İsteğe bağlı parametresinin olarak ayarlanması, `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` `true` HTTP yanıtından ' deki kullanıcının kimliğine ilerledikçe, bilgilerin ASP.NET Core ara yazılım tarafından nasıl işlendiğini gösterir `HttpContext.User` .
 
-- `AddMicrosoftIdentityUI`Genişletme yöntemi **Microsoft. Identity. Web. UI**içinde tanımlanmıştır. Oturum açma ve oturum kapatma işlemek için varsayılan bir denetleyici sağlar.
+- `AddMicrosoftIdentityUI`Genişletme yöntemi **Microsoft. Identity. Web. UI** içinde tanımlanmıştır. Oturum açma ve oturum kapatma işlemek için varsayılan bir denetleyici sağlar.
 
 Microsoft. Identity. Web ' de Web uygulamaları oluşturmanıza nasıl olanak tanıyan hakkında daha fazla ayrıntı bulabilirsiniz. <https://aka.ms/ms-id-web/webapp>
 
@@ -344,22 +344,18 @@ Sonraki makalede, oturum açma ve oturum kapatma tetiklemeyi öğreneceksiniz.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-> [!div class="nextstepaction"]
-> [Oturum açma ve oturumu kapatma](./scenario-web-app-sign-user-sign-in.md?tabs=aspnetcore)
+Bu senaryodaki bir sonraki makaleye geçin, [oturum açın ve oturumu kapatın](./scenario-web-app-sign-user-sign-in.md?tabs=aspnetcore).
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-> [!div class="nextstepaction"]
-> [Oturum açma ve oturumu kapatma](./scenario-web-app-sign-user-sign-in.md?tabs=aspnet)
+Bu senaryodaki bir sonraki makaleye geçin, [oturum açın ve oturumu kapatın](./scenario-web-app-sign-user-sign-in.md?tabs=aspnet).
 
 # <a name="java"></a>[Java](#tab/java)
 
-> [!div class="nextstepaction"]
-> [Oturum açma ve oturumu kapatma](./scenario-web-app-sign-user-sign-in.md?tabs=java)
+Bu senaryodaki bir sonraki makaleye geçin, [oturum açın ve oturumu kapatın](./scenario-web-app-sign-user-sign-in.md?tabs=java).
 
 # <a name="python"></a>[Python](#tab/python)
 
-> [!div class="nextstepaction"]
-> [Oturum açma ve oturumu kapatma](./scenario-web-app-sign-user-sign-in.md?tabs=python)
+Bu senaryodaki bir sonraki makaleye geçin, [oturum açın ve oturumu kapatın](./scenario-web-app-sign-user-sign-in.md?tabs=python).
 
 ---
