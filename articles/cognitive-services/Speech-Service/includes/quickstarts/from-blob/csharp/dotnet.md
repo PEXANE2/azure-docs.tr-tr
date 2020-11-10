@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 05cf63f741e287112ace76a5249ae2ca8d01f34f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b0e8b38f4760bf9e9adf8d26dfd6b7a15c904eab
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91376896"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94424700"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -19,7 +19,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 > [!div class="checklist"]
 > * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programmming-language-csharp)
 > * [Azure konuşma kaynağı oluşturma](../../../../overview.md#try-the-speech-service-for-free)
-> * [Azure Blob 'a kaynak dosya yükleme](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
+> * [Azure Blob 'a kaynak dosya yükleme](../../../../../../storage/blobs/storage-quickstart-blobs-portal.md)
 
 ## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio 'da açın
 
@@ -32,8 +32,8 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 
 1. Çözüm Gezgini, **HelloWorld** projesine sağ tıklayın ve ardından NuGet Paket Yöneticisi ' ni görüntülemek Için **NuGet Paketlerini Yönet** ' i seçin.
 1. Sağ üst köşede, **paket kaynağı** açılan kutusunu bulun ve ' nin seçili olduğundan emin olun **`nuget.org`** .
-1. Sol üst köşede, **Araştır**' ı seçin.
-1. Arama kutusuna *newtonsoft.js* yazın ve **ENTER**' u seçin.
+1. Sol üst köşede, **Araştır** ' ı seçin.
+1. Arama kutusuna *newtonsoft.js* yazın ve **ENTER** ' u seçin.
 1. Arama sonuçlarından, paketteki [**Newtonsoft.Js**](https://www.nuget.org/packages/Newtonsoft.Json) seçin ve ardından en son kararlı sürümü yüklemek için **yüklenir** ' i seçin.
 1. Yüklemeyi başlatmak için tüm anlaşmaları ve lisansları kabul edin.
    Paket yüklendikten sonra, **Paket Yöneticisi konsol** penceresinde bir onay görüntülenir.
@@ -552,8 +552,8 @@ namespace BatchClient
 
 Artık uygulamanızı oluşturmaya ve konuşma tanıma özelliğini kullanarak konuşma tanıma 'yı test etmeye hazır olursunuz.
 
-1. **Kodu derleyin** -Visual Studio menü **çubuğundan derleme**  >  **Build Solution**' ı seçin.
-2. **Uygulamanızı başlatın** -menü çubuğundan hata **Debug**  >  **ayıklamayı Başlat hata** Ayıkla ' yı seçin veya **F5**tuşuna basın.
+1. **Kodu derleyin** -Visual Studio menü **çubuğundan derleme**  >  **Build Solution** ' ı seçin.
+2. **Uygulamanızı başlatın** -menü çubuğundan hata **Debug**  >  **ayıklamayı Başlat hata** Ayıkla ' yı seçin veya **F5** tuşuna basın.
 3. **Tanımayı Başlat** -bu, İngilizce bir tümceciği konuşarak ister. Konuşma konuşma hizmetine gönderilir, metin olarak yeniden oluşturulur ve konsolunda işlenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -2,14 +2,14 @@
 title: Kaynak sağlayıcıları ve kaynak türleri
 description: Azure Resource Manager destekleyen kaynak sağlayıcılarını açıklar. Şemaları, kullanılabilir API sürümlerini ve kaynakları barındırabildiğiniz bölgeleri açıklar.
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 11/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8b1a9e6d539d37fb26d8fb0e3a541415dd574e9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 702836e0dc98b06ccf6e0eeb0d0f373374c4e783
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89278896"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426468"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure kaynak sağlayıcıları ve türleri
 
@@ -32,7 +32,7 @@ Kaynak sağlayıcılarını Azure hizmetleriyle eşleyen bir liste için bkz. [A
 
 ## <a name="register-resource-provider"></a>Kaynak sağlayıcısını kaydetme
 
-Kaynak sağlayıcısını kullanmadan önce, Azure aboneliğinizin kaynak sağlayıcısını kaydetmeniz gerekir. Bu adım, aboneliğinizi kaynak sağlayıcısıyla çalışacak şekilde yapılandırır. Kayıt kapsamı her zaman abonelik olur. Varsayılan olarak, birçok kaynak sağlayıcısı otomatik olarak kaydedilir. Ancak, bazı kaynak sağlayıcılarını el ile kaydetmeniz gerekebilir.
+Kaynak sağlayıcısını kullanmadan önce, Azure aboneliğinizin kaynak sağlayıcısı için kayıtlı olması gerekir. Kayıt, aboneliğinizi kaynak sağlayıcısıyla çalışacak şekilde yapılandırır. Bazı kaynak sağlayıcıları varsayılan olarak kaydedilir. Diğer kaynak sağlayıcıları, belirli eylemleri gerçekleştirdiğinizde otomatik olarak kaydedilir. Örneğin, Portal üzerinden bir kaynak oluşturduğunuzda, kaynak sağlayıcısı genellikle sizin için kaydedilir. Diğer senaryolarda, bir kaynak sağlayıcısını el ile kaydetmeniz gerekebilir.
 
 Bu makalede, bir kaynak sağlayıcısının kayıt durumunu denetleme ve gerektiğinde kaydetme işlemlerinin nasıl yapılacağı gösterilir. Kaynak sağlayıcısı için işlem yapmak için izninizin olması gerekir `/register/action` . İzin katkıda bulunan ve sahip rollerine dahildir.
 
@@ -45,23 +45,23 @@ Aboneliğinizde kaynak sağlayıcınızdan hala kaynak türleri varsa, bir kayna
 Tüm kaynak sağlayıcılarını ve aboneliğiniz için kayıt durumunu görmek için:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. Azure portalı menüsünde **Tüm hizmetler**’i seçin.
+2. Azure portalı menüsünde **Tüm hizmetler** ’i seçin.
 
     ![abonelikleri Seç](./media/resource-providers-and-types/select-all-services.png)
 
-3. **Tüm hizmetler** kutusunda, **abonelik**girin ve ardından **abonelikler**' i seçin.
+3. **Tüm hizmetler** kutusunda, **abonelik** girin ve ardından **abonelikler** ' i seçin.
 4. Görüntülenecek abonelik listesinden aboneliği seçin.
 5. **Kaynak sağlayıcıları** ' nı seçin ve kullanılabilir kaynak sağlayıcılarının listesini görüntüleyin.
 
     ![Kaynak sağlayıcılarını göster](./media/resource-providers-and-types/show-resource-providers.png)
 
-6. Bir kaynak sağlayıcısını kaydetmek için **Kaydet**' i seçin. Önceki ekran görüntüsünde, **kayıt** bağlantısı **Microsoft. Blueprint**için vurgulanır.
+6. Bir kaynak sağlayıcısını kaydetmek için **Kaydet** ' i seçin. Önceki ekran görüntüsünde, **kayıt** bağlantısı **Microsoft. Blueprint** için vurgulanır.
 
 Belirli bir kaynak sağlayıcısına ilişkin bilgileri görmek için:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. Azure portalı menüsünde **Tüm hizmetler**’i seçin.
-3. **Tüm hizmetler** kutusunda, **Kaynak Gezgini**' ni girin ve ardından **Kaynak Gezgini**' yi seçin.
+2. Azure portalı menüsünde **Tüm hizmetler** ’i seçin.
+3. **Tüm hizmetler** kutusunda, **Kaynak Gezgini** ' ni girin ve ardından **Kaynak Gezgini** ' yi seçin.
 
     ![Tüm hizmetleri seçin](./media/resource-providers-and-types/select-resource-explorer.png)
 
@@ -83,8 +83,6 @@ Belirli bir kaynak sağlayıcısına ilişkin bilgileri görmek için:
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 Azure 'daki tüm kaynak sağlayıcılarını ve aboneliğinizin kayıt durumunu görmek için şunu kullanın:
 
 ```azurepowershell-interactive
@@ -101,6 +99,12 @@ Microsoft.ClassicNetwork         Registered
 Microsoft.ClassicStorage         Registered
 Microsoft.CognitiveServices      Registered
 ...
+```
+
+Aboneliğiniz için tüm kayıtlı kaynak sağlayıcılarını görmek için şunu kullanın:
+
+```azurepowershell-interactive
+ Get-AzResourceProvider -ListAvailable | Where-Object RegistrationState -eq "Registered" | Select-Object ProviderNamespace, RegistrationState | Sort-Object ProviderNamespace
 ```
 
 Bir kaynak sağlayıcısını kaydetmek için şunu kullanın:
@@ -186,11 +190,11 @@ West US
 ...
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI’si
 
 Azure 'daki tüm kaynak sağlayıcılarını ve aboneliğinizin kayıt durumunu görmek için şunu kullanın:
 
-```azurecli
+```azurecli-interactive
 az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
 ```
 
@@ -206,9 +210,15 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
+Aboneliğiniz için tüm kayıtlı kaynak sağlayıcılarını görmek için şunu kullanın:
+
+```azurecli-interactive
+az provider list --query "sort_by([?registrationState=='Registered'].{Provider:namespace, Status:registrationState}, &Provider)" --out table
+```
+
 Bir kaynak sağlayıcısını kaydetmek için şunu kullanın:
 
-```azurecli
+```azurecli-interactive
 az provider register --namespace Microsoft.Batch
 ```
 
@@ -216,7 +226,7 @@ Bu, kaydın devam eden bir ileti döndürür.
 
 Belirli bir kaynak sağlayıcısına ilişkin bilgileri görmek için şunu kullanın:
 
-```azurecli
+```azurecli-interactive
 az provider show --namespace Microsoft.Batch
 ```
 
@@ -235,7 +245,7 @@ az provider show --namespace Microsoft.Batch
 
 Bir kaynak sağlayıcısının kaynak türlerini görmek için şunu kullanın:
 
-```azurecli
+```azurecli-interactive
 az provider show --namespace Microsoft.Batch --query "resourceTypes[*].resourceType" --out table
 ```
 
@@ -254,7 +264,7 @@ API sürümü, kaynak sağlayıcısı tarafından yayınlanan REST API işlemler
 
 Bir kaynak türü için kullanılabilir API sürümlerini almak için şunu kullanın:
 
-```azurecli
+```azurecli-interactive
 az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceType=='batchAccounts'].apiVersions | [0]" --out table
 ```
 
@@ -274,7 +284,7 @@ Tüm bölgelerde Kaynak Yöneticisi desteklenir, ancak dağıttığınız kaynak
 
 Kaynak türü için desteklenen konumları almak için kullanın.
 
-```azurecli
+```azurecli-interactive
 az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceType=='batchAccounts'].locations | [0]" --out table
 ```
 

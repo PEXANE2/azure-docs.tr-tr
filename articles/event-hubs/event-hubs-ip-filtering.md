@@ -3,30 +3,20 @@ title: Azure Event Hubs güvenlik duvarı kuralları | Microsoft Docs
 description: Belirli IP adreslerinden Azure Event Hubs bağlantılara izin vermek için güvenlik duvarı kurallarını kullanın.
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 596d506c0c4f6d79696b3019fd903e549149c656
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: e07f863bf8b7d5f64ec0ba04bf16fba12f4a785d
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056217"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427454"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>Belirli IP adreslerinden veya aralıklardan Azure Event Hubs ad alanlarına erişime izin ver
 Varsayılan olarak, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geldiği sürece, Event Hubs ad alanlarına internet 'ten erişilebilir. IP güvenlik duvarı ile bunu, [CIDR (sınıfsız Inter-Domain yönlendirme)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir IPv4 adresi veya IPv4 adres aralıkları kümesiyle sınırlayabilirsiniz.
 
 Bu özellik, Azure Event Hubs yalnızca belirli bilinen sitelerden erişilebilir olması gereken senaryolarda yardımcı olur. Güvenlik duvarı kuralları, belirli IPv4 adreslerinden kaynaklanan trafiği kabul etmek için kuralları yapılandırmanızı sağlar. Örneğin, [Azure Express Route][express-route]ile Event Hubs kullanıyorsanız, yalnızca şirket ıçı altyapı IP adreslerinden gelen trafiğe izin vermek için bir **güvenlik duvarı kuralı** oluşturabilirsiniz. 
 
->[!IMPORTANT]
-> Event Hubs ad alanınız için güvenlik duvarı kurallarını açmak, istekler izin verilen genel IP adreslerinden çalışan bir hizmetten kaynaklanmadığı takdirde varsayılan olarak gelen istekleri engeller. Engellenen istekler diğer Azure hizmetlerinden, Azure portal, günlük ve ölçüm hizmetlerinden ve bu şekilde devam eder. 
->
-> IP filtrelemesi etkinleştirildiğinde Event Hubs kaynaklarına erişemeyen hizmetlerden bazıları aşağıda verilmiştir. Listenin **ayrıntılı olduğunu** unutmayın.
->
-> - Azure Stream Analytics
-> - Azure IoT Hub yolları
-> - Azure IoT Device Explorer
-> - Azure Event Grid
-> - Azure Izleyici (Tanılama Ayarları)
->
-> Özel durum olarak, IP filtrelemesi etkinleştirildiğinde bile belirli güvenilen hizmetlerden Event Hubs kaynaklara erişime izin verebilirsiniz. Güvenilen hizmetlerin bir listesi için bkz. [Güvenilen Microsoft Hizmetleri](#trusted-microsoft-services).
+>[!WARNING]
+> Event Hubs ad alanınız için güvenlik duvarı kurallarını açmak, istekler izin verilen genel IP adreslerinden çalışan bir hizmetten kaynaklanmadığı takdirde varsayılan olarak gelen istekleri engeller. Engellenen istekler diğer Azure hizmetlerinden, Azure portal, günlük ve ölçüm hizmetlerinden ve bu şekilde devam eder. Özel durum olarak, IP filtrelemesi etkinleştirildiğinde bile belirli güvenilen hizmetlerden Event Hubs kaynaklara erişime izin verebilirsiniz. Güvenilen hizmetlerin bir listesi için bkz. [Güvenilen Microsoft Hizmetleri](#trusted-microsoft-services).
 
 ## <a name="ip-firewall-rules"></a>IP güvenlik duvarı kuralları
 IP güvenlik duvarı kuralları Event Hubs ad alanı düzeyinde uygulanır. Bu nedenle, kurallar desteklenen herhangi bir protokolü kullanarak istemcilerden gelen tüm bağlantılara uygulanır. Event Hubs ad alanındaki izin verilen bir IP kuralıyla eşleşmeyen bir IP adresinden gelen bağlantı girişimleri yetkisiz olarak reddedilir. Yanıt, IP kuralından bahsetmez. IP filtresi kuralları sırasıyla uygulanır ve IP adresiyle eşleşen ilk kural kabul etme veya reddetme eylemini belirler.
@@ -46,8 +36,8 @@ Bu bölümde, bir Event Hubs ad alanı için IP güvenlik duvarı kuralları olu
     !["Tüm ağlar" seçeneği belirlenmiş "güvenlik duvarı ve sanal ağlar" sayfasını gösteren ekran görüntüsü.](./media/event-hubs-firewall/firewall-all-networks-selected.png)
 1. Belirli IP adreslerine erişimi kısıtlamak için **Seçili ağlar** seçeneğinin seçili olduğunu onaylayın. **Güvenlik duvarı** bölümünde şu adımları izleyin:
     1. Geçerli istemci IP 'nize ad alanına erişim sağlamak için **ISTEMCI IP adresi ekle** seçeneğini belirleyin. 
-    2. **Adres aralığı**IÇIN, CIDR gösteriminde belirli bir IPv4 adresi veya bir IPv4 adresi aralığı girin. 
-3. **Güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına izin**vermek isteyip istemediğinizi belirtin. Ayrıntılar için bkz. [Güvenilen Microsoft Hizmetleri](#trusted-microsoft-services) . 
+    2. **Adres aralığı** IÇIN, CIDR gösteriminde belirli bir IPv4 adresi veya bir IPv4 adresi aralığı girin. 
+3. **Güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına izin** vermek isteyip istemediğinizi belirtin. Ayrıntılar için bkz. [Güvenilen Microsoft Hizmetleri](#trusted-microsoft-services) . 
 
       ![Güvenlik Duvarı-tüm ağlar seçeneği seçildi](./media/event-hubs-firewall/firewall-selected-networks-trusted-access-disabled.png)
 3. Ayarları kaydetmek için araç çubuğunda **Kaydet** ' i seçin. Onayın Portal bildirimlerinde gösterilmesi için birkaç dakika bekleyin.
@@ -71,7 +61,7 @@ Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir Event Hubs ad alanına bi
 
 > [!NOTE]
 > Mümkün olan reddetme kuralları olmadığı sürece, Azure Resource Manager şablonu, bağlantıları kısıtlayameyen **"Izin ver"** olarak ayarlanmış varsayılan eylemi içerir.
-> Sanal ağ veya güvenlik duvarları kuralları yaparken, ***"DefaultAction"*** öğesini değiştirmemiz gerekir
+> Sanal ağ veya güvenlik duvarları kuralları yaparken, **_"DefaultAction"_ öğesini değiştirmemiz gerekir**
 > 
 > Kaynak
 > ```json

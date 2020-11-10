@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ae25c63e9c6e3bf6ad363cde9eb641703562811
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: ed7b61e9e0379462e0dfbcdcc93acfccf470d95f
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360029"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427046"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Sorgu için otomatik tamamlamayı ve önerilen sonuçları etkinleştirmek üzere bir öneri aracı oluşturun
 
@@ -26,7 +26,7 @@ Azure Bilişsel Arama, "yazarken arama" özelliği, bir [arama dizinine](search-
 
 Bu özellikleri ayrı olarak veya birlikte kullanabilirsiniz. Bu davranışları Azure Bilişsel Arama uygulamak için bir dizin ve sorgu bileşeni vardır. 
 
-+ Dizinde bir öneri aracı ekleyin. Portal, [REST API](/rest/api/searchservice/create-index)veya [.NET SDK 'sını](/dotnet/api/microsoft.azure.search.models.suggester)kullanabilirsiniz. Bu makalenin geri kalanında bir öneri aracı oluşturmaya odaklanılmıştır.
++ Dizinde bir öneri aracı ekleyin. [Dizin oluşturma (REST) (/REST/api/SearchService/create-Index) veya bir [Öneri araçları özelliği](/dotnet/api/azure.search.documents.indexes.models.searchindex.suggesters)portalını kullanabilirsiniz. Bu makalenin geri kalanında bir öneri aracı oluşturmaya odaklanılmıştır.
 
 + Sorgu isteğinde, [aşağıda listelenen API](#how-to-use-a-suggester)'lerden birini çağırın.
 
@@ -107,24 +107,23 @@ REST API [Dizin oluşturma](/rest/api/searchservice/create-index) veya [güncell
 
 ## <a name="create-using-net"></a>.NET kullanarak oluşturma
 
-C# ' de, bir [öneri aracı nesnesi](/dotnet/api/microsoft.azure.search.models.suggester)tanımlayın. `Suggesters` bir koleksiyon ancak yalnızca bir öğe alabilir. 
+C# ' de, bir [SearchSuggester nesnesi](/dotnet/api/azure.search.documents.indexes.models.searchsuggester)tanımlayın. `Suggesters` , bir Searchındex nesnesi üzerinde bir koleksiyon, ancak yalnızca bir öğe alabilir. 
 
 ```csharp
-private static void CreateHotelsIndex(SearchServiceClient serviceClient)
+private static void CreateIndex(string indexName, SearchIndexClient indexClient)
 {
-    var definition = new Index()
-    {
-        Name = "hotels-sample-index",
-        Fields = FieldBuilder.BuildForType<Hotel>(),
-        Suggesters = new List<Suggester>() {new Suggester()
-            {
-                Name = "sg",
-                SourceFields = new string[] { "HotelName", "Category" }
-            }}
-    };
+    FieldBuilder fieldBuilder = new FieldBuilder();
+    var searchFields = fieldBuilder.Build(typeof(Hotel));
 
-    serviceClient.Indexes.Create(definition);
+    //var suggester = new SearchSuggester("sg", sourceFields = "HotelName", "Category");
 
+    var definition = new SearchIndex(indexName, searchFields);
+
+    var suggester = new SearchSuggester("sg", new[] { "HotelName", "Category"});
+
+    definition.Suggesters.Add(suggester);
+
+    indexClient.CreateOrUpdateIndex(definition);
 }
 ```
 
@@ -134,7 +133,7 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 |--------------|-----------------|
 |`name`        |Öneri aracı adı.|
 |`searchMode`  |Aday tümcecikleri aramak için kullanılan strateji. Şu anda desteklenen tek mod, `analyzingInfixMatching` bir terimin başlangıcında Şu anda eşleşen.|
-|`sourceFields`|Önerilerin içerik kaynağı olan bir veya daha fazla alanın listesi. Alanların ve türünde olması gerekir `Edm.String` `Collection(Edm.String)` . Alanda bir çözümleyici belirtilmişse, [Bu listeden](/dotnet/api/microsoft.azure.search.models.analyzername) bir adlandırılmış çözümleyici olmalıdır (özel çözümleyici değil).<p/> En iyi uygulama olarak, bir arama çubuğunda veya açılan listede bir tamamlanmış dize olup olmadığı için, yalnızca beklenen ve uygun bir yanıta ödünç veren alanları belirtin.<p/>Bir otel adı duyarlık içerdiğinden iyi bir adaydır. Açıklamalar ve açıklamalar gibi ayrıntılı alanlar çok yoğun. Benzer şekilde, Kategoriler ve Etiketler gibi yinelenen alanlar daha az etkilidir. Örneklerde, birden fazla alanı dahil etbileceğinizi göstermek için, "Category" de yer alır. |
+|`sourceFields`|Önerilerin içerik kaynağı olan bir veya daha fazla alanın listesi. Alanların ve türünde olması gerekir `Edm.String` `Collection(Edm.String)` . Alanda bir çözümleyici belirtilmişse, [Bu listeden](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) bir adlandırılmış çözümleyici olmalıdır (özel çözümleyici değil).<p/> En iyi uygulama olarak, bir arama çubuğunda veya açılan listede bir tamamlanmış dize olup olmadığı için, yalnızca beklenen ve uygun bir yanıta ödünç veren alanları belirtin.<p/>Bir otel adı duyarlık içerdiğinden iyi bir adaydır. Açıklamalar ve açıklamalar gibi ayrıntılı alanlar çok yoğun. Benzer şekilde, Kategoriler ve Etiketler gibi yinelenen alanlar daha az etkilidir. Örneklerde, birden fazla alanı dahil etbileceğinizi göstermek için, "Category" de yer alır. |
 
 <a name="how-to-use-a-suggester"></a>
 
@@ -144,8 +143,8 @@ Bir sorguda bir öneri aracı kullanılır. Bir öneri aracı oluşturulduktan s
 
 + [Öneriler REST API](/rest/api/searchservice/suggestions)
 + [Otomatik tamamlama REST API](/rest/api/searchservice/autocomplete)
-+ [SuggestWithHttpMessagesAsync yöntemi](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync)
-+ [AutocompleteWithHttpMessagesAsync yöntemi](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync)
++ [Mümütasync yöntemi](/dotnet/api/azure.search.documents.searchclient.suggestasync)
++ [Oto Tamteasync yöntemi](/dotnet/api/azure.search.documents.searchclient.autocompleteasync)
 
 Bir arama uygulamasında, istemci kodu, kısmi sorguyu toplamak ve eşleşmeyi sağlamak için [jQuery UI AutoComplete](https://jqueryui.com/autocomplete/) gibi bir kitaplıktan faydalanmalıdır. Bu görev hakkında daha fazla bilgi için bkz. [otomatik tamamlama veya önerilen sonuçları istemci koduna ekleme](search-autocomplete-tutorial.md).
 

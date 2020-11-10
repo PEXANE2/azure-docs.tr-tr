@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: 5759cd80278d20ee383fbe5922e43d250babe09f
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: b22c73b3f0626b9938608e88c3382e3f5e8d97fc
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380683"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427488"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Hızlı başlangıç: Soru-Cevap Oluşturma bilgi bankasını oluşturma, eğitme ve yayımlama
 
@@ -135,13 +135,12 @@ Düzenlemelerinizi kaydetmek ve Soru-Cevap Oluşturma eğitmeniz için sağ üst
 1. Soru-Cevap Oluşturma portalında, sağ üst köşedeki **Test** ' i seçerek yaptığınız değişikliklerin etkili olduğunu test edin.
 2. Metin kutusuna bir örnek Kullanıcı sorgusu girin.
 
-    `How many Azure services are used by a knowledge base?`
+    `whats the size of the touchscreen`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/enable-short-answer.png" alt-text="Soruyu gösteren sohbet kullanıcı arabirimi iletişim kutusunun ekran görüntüsü: küçük bir Passport 'un ne kadar sayfa olacağını öğrenmek? Yanıt: yalnızca 36 sayfa Passport kitapçık, minors 'ler için verilir.":::
+3. Bilgi tabanınız için MRC özelliğini etkinleştirirseniz, **kısa yanıtı görüntüle** ' yi seçerek, varsa test bölmesindeki Yanıt ile birlikte, varsa kesin bir yanıt da görürsünüz. 
 
-3. Bilgi tabanınız için MRC özelliğini etkinleştirirseniz, **kısa yanıtı etkinleştir (deneysel)** seçeneğini belirleyerek, varsa test bölmesindeki Yanıt ile birlikte de kesin bir yanıt görürsünüz. 
-
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/enable-short-answer-checked.png" alt-text="Soruyu gösteren sohbet kullanıcı arabirimi iletişim kutusunun ekran görüntüsü: küçük bir Passport 'un ne kadar sayfa olacağını öğrenmek? Yanıt: 36. tek bir satırda, izleyen ikinci satır: yalnızca 36 sayfa Passport kitapçık, minors 'ler için verilir.":::
+    ![Yönetilen etkin test bölmesi](../media/conversational-context/test-pane-with-managed.png)
+    
 
 4. Yanıtı daha ayrıntılı incelemek için ıncele ' yi seçin. Bilgi tabanınızı yayımlamadan önce Bilgi Bankası 'nda yaptığınız değişiklikleri test etmek için test penceresi kullanılır. 
 5. **Test panelini kapatmak** Için yeniden **Test** ' i seçin.

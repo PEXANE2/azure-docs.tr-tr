@@ -10,50 +10,55 @@ ms.custom:
 - devx-track-python
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 5/26/2020
-ms.openlocfilehash: 8d181483032deed35adfd6eebcbf870b89593407
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 10/28/2020
+ms.openlocfilehash: 12452367de0e8f936d30387df709d5d2779bfcb1
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93332075"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427641"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Python kullanma
 
 Bu hızlı başlangıçta Python kullanarak MySQL için Azure veritabanı 'na bağlanırsınız. Ardından, Mac, Ubuntu Linux ve Windows platformlarındaki veritabanındaki verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini kullanın. 
 
-Bu konuda, Python kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve MySQL için Azure veritabanı ile çalışmaya yeni başladığınızı varsaymaktadır.
+## <a name="prerequisites"></a>Önkoşullar
+Bu hızlı başlangıç için şunlar gerekir:
 
-## <a name="prerequisites"></a>Ön koşullar
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free).
+- [Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md) kullanarak MySQL Için Azure veritabanı tek sunucu oluşturma <br/> ya da bir tane yoksa [Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md) .
+- Genel veya özel erişim kullanıyor olmanız temelinde, bağlantıyı etkinleştirmek için aşağıdaki eylemlerden **birini** doldurun.
 
-- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- MySQL için Azure veritabanı sunucusu. [Azure Portal kullanarak MySQL Için Azure veritabanı sunucusu oluşturun](quickstart-create-mysql-server-database-using-azure-portal.md) veya [Azure CLI kullanarak MySQL için Azure veritabanı sunucusu oluşturun](quickstart-create-mysql-server-database-using-azure-cli.md).
+   |Eylem| Bağlantı yöntemi|Nasıl yapılır kılavuzu|
+   |:--------- |:--------- |:--------- |
+   | **Güvenlik duvarı kurallarını yapılandırma** | Genel | [Portal](./howto-manage-firewall-using-portal.md) <br/> [CLI](./howto-manage-firewall-using-cli.md)|
+   | **Hizmet uç noktasını yapılandır** | Genel | [Portal](./howto-manage-vnet-using-portal.md) <br/> [CLI](./howto-manage-vnet-using-cli.md)| 
+   | **Özel bağlantıyı Yapılandır** | Özel | [Portal](./howto-configure-privatelink-portal.md) <br/> [CLI](./howto-configure-privatelink-cli.md) | 
 
-> [!IMPORTANT] 
-> Bağlanmakta olduğunuz IP adresinin [Azure Portal](./howto-manage-firewall-using-portal.md) veya [Azure CLI](./howto-manage-firewall-using-cli.md) kullanarak sunucunun güvenlik duvarı kurallarını eklendiğinden emin olun
+- [Veritabanı ve yönetici olmayan kullanıcı oluşturma](./howto-create-users.md)
 
 ## <a name="install-python-and-the-mysql-connector"></a>Python’u ve MySQL bağlayıcısını yükleme
 
 Aşağıdaki adımları kullanarak bilgisayarınıza Python ve Python için MySQL bağlayıcısını yüklersiniz: 
 
 > [!NOTE]
-> Bu hızlı başlangıç, MySQL 'e bağlanmak için ham SQL sorgu yaklaşımını kullanır. Bir Web çerçevesi kullanıyorsanız, Framework için önerilen bağlayıcıyı kullanın, örneğin, Docgo için [mysqlclient](https://pypi.org/project/mysqlclient/) .
+> Bu hızlı başlangıçta [MySQL Bağlayıcısı/Python Geliştirici Kılavuzu](https://dev.mysql.com/doc/connector-python/en/)kullanılıyor.
 
 1. İşletim sistemi için [Python 3,7 veya üstünü](https://www.python.org/downloads/) indirin ve yükleyin. MySQL Bağlayıcısı için gerekli olduğundan Python 'u uygulamanıza eklediğinizden emin olun `PATH` .
    
-1. Bir komut istemi veya `bash` kabuk açın ve `python -V` büyük harf V anahtarıyla çalıştırarak Python sürümünüzü denetleyin.
+2. Bir komut istemi veya `bash` kabuk açın ve `python -V` büyük harf V anahtarıyla çalıştırarak Python sürümünüzü denetleyin.
    
-1. `pip`Paket yükleyicisi, Python 'un en son sürümlerine dahildir. ' İ `pip` çalıştırarak en son sürüme güncelleştirin `pip install -U pip` . 
+3. `pip`Paket yükleyicisi, Python 'un en son sürümlerine dahildir. ' İ `pip` çalıştırarak en son sürüme güncelleştirin `pip install -U pip` . 
    
    `pip`Yüklü değilse, ile indirip yükleyebilirsiniz `get-pip.py` . Daha fazla bilgi için bkz. [yükleme](https://pip.pypa.io/en/stable/installing/). 
    
-1. `pip`Python Için MySQL bağlayıcısını ve bağımlılıklarını yüklemek için kullanın:
+4. `pip`Python Için MySQL bağlayıcısını ve bağımlılıklarını yüklemek için kullanın:
    
    ```bash
    pip install mysql-connector-python
    ```
    
-   MySQL için Python bağlayıcısını [MySQL.com](https://dev.mysql.com/downloads/connector/python/)adresinden da yükleyebilirsiniz. Python için MySQL Bağlayıcısı hakkında daha fazla bilgi için [MySQL Bağlayıcısı/Python Geliştirici Kılavuzu](https://dev.mysql.com/doc/connector-python/en/)' na bakın. 
+[Sorun mu yaşıyorsunuz? Bize bilgi verin](https://aka.ms/mysql-doc-feedback)
 
 ## <a name="get-connection-information"></a>Bağlantı bilgilerini alma
 
@@ -69,23 +74,17 @@ Azure portal MySQL için Azure veritabanı 'na bağlanmak üzere gereken bağlan
    
    :::image type="content" source="./media/connect-python/azure-database-for-mysql-server-overview-name-login.png" alt-text="MySQL için Azure veritabanı sunucu adı 2":::
 
-## <a name="run-the-python-examples"></a>Python örneklerini çalıştırma
+## <a name="step-1-create-a-table-and-insert-data"></a>1. Adım: tablo oluşturma ve veri ekleme
 
-Bu makaledeki her kod örneği için:
+Sunucu ve veritabanına bağlanmak, tablo oluşturmak ve **Insert** SQL ifadesini kullanarak verileri yüklemek için aşağıdaki kodu kullanın. Kod MySQL. Connector kitaplığını içeri aktarır ve yöntemini kullanır:
+- config koleksiyonundaki [bağımsız değişkenleri](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) kullanarak MySQL Için Azure veritabanı 'na bağlanmak üzere [Connect ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) işlevi. 
+- [cursor.exeCute ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) yöntemi MySQL veritabanında SQL sorgusunu yürütür. 
+- imleç kullanarak işiniz bittiğinde [Cursor. Close ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-close.html) .
+- bağlantıyı bağlantıyı kapatmak için [conn. Close ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlconnection-close.html) .
 
-1. Metin düzenleyicisinde yeni bir dosya oluşturun.
-1. Kod örneğini dosyaya ekleyin. Kodda,,, `<mydemoserver>` `<myadmin>` `<mypassword>` ve `<mydatabase>` yer tutucuları MySQL sunucunuzun ve veritabanınızın değerleriyle değiştirin.
-1. Dosyayı, *C:\pythonmysql\createtable.py* veya */Home/username/pythonmysql/CreateTable.py* gibi *. Kopyala* uzantısıyla bir proje klasörüne kaydedin.
-1. Kodu çalıştırmak için, bir komut istemi veya kabuğu açın `bash` ve dizini proje klasörünüze değiştirin (örneğin,) `cd pythonmysql` . `python`Komutun ardından dosya adını yazın `python createtable.py` ve ENTER tuşuna basın. 
-   
-   > [!NOTE]
-   > Windows 'ta *python.exe* BULUNAMAZSA, yol ortam değişkeninizin Python yolunu eklemeniz veya örneğin *python.exe* tam yolunu sağlamanız gerekebilir `C:\python27\python.exe createtable.py` .
-
-## <a name="create-a-table-and-insert-data"></a>Tablo oluşturma ve veri ekleme
-
-Sunucu ve veritabanına bağlanmak, tablo oluşturmak ve **Insert** SQL ifadesini kullanarak verileri yüklemek için aşağıdaki kodu kullanın. 
-
-Kod MySQL. Connector kitaplığını içeri aktarır ve config koleksiyonundaki [bağımsız değişkenleri](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) kullanarak MySQL Için Azure veritabanı 'na bağlanmak üzere [Connect ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) işlevini kullanır. Kod, bağlantıda bir imleç kullanır ve [cursor.exeCute ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) yöntemi MySQL veritabanında SQL sorgusunu yürütür. 
+> [!IMPORTANT]
+> - SSL varsayılan olarak etkindir. Yerel ortamınızdan bağlantı kurmak için [DIGICERTGLOBALROOTG2 SSL sertifikasını](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) indirmeniz gerekebilir.
+> - ,, `<mydemoserver>` `<myadmin>` `<mypassword>` Ve `<mydatabase>` yer tutucuları MySQL sunucunuzun ve veritabanınızın değerleriyle değiştirin.
 
 ```python
 import mysql.connector
@@ -96,7 +95,9 @@ config = {
   'host':'<mydemoserver>.mysql.database.azure.com',
   'user':'<myadmin>@<mydemoserver>',
   'password':'<mypassword>',
-  'database':'<mydatabase>'
+  'database':'<mydatabase>',
+  'client_flags': [ClientFlag.SSL],
+  'ssl_cert': '/var/wwww/html/DigiCertGlobalRootG2.crt.pem'
 }
 
 # Construct connection string
@@ -136,40 +137,15 @@ else:
   print("Done.")
 ```
 
-## <a name="read-data"></a>Verileri okuma
+[Sorun mu yaşıyorsunuz? Bize bilgi verin](https://aka.ms/mysql-doc-feedback)
 
-Bağlanmak ve **SELECT** SQL deyimi kullanarak verileri okumak için aşağıdaki kodu kullanın. 
+## <a name="step-2-read-data"></a>2. Adım: verileri okuma
 
-Kod MySQL. Connector kitaplığını içeri aktarır ve config koleksiyonundaki [bağımsız değişkenleri](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) kullanarak MySQL Için Azure veritabanı 'na bağlanmak üzere [Connect ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) işlevini kullanır. Kod, bağlantıda bir imleç kullanır ve [cursor.exeCute ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) yöntemi MySQL veritabanında SQL sorgusunu yürütür. 
+Bağlanmak ve **SELECT** SQL deyimi kullanarak verileri okumak için aşağıdaki kodu kullanın. Kod MySQL. Connector kitaplığını içeri aktarır ve [cursor.exeCute ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) yöntemini kullanarak MySQL veritabanında SQL sorgusunu yürütür. 
 
 Kod, [fetchAll ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-fetchall.html) yöntemini kullanarak veri satırlarını okur, sonuç kümesini bir koleksiyon satırında tutar ve `for` satırlarda döngü yapmak için bir yineleyici kullanır.
 
 ```python
-import mysql.connector
-from mysql.connector import errorcode
-
-# Obtain connection string information from the portal
-config = {
-  'host':'<mydemoserver>.mysql.database.azure.com',
-  'user':'<myadmin>@<mydemoserver>',
-  'password':'<mypassword>',
-  'database':'<mydatabase>'
-}
-
-# Construct connection string
-try:
-   conn = mysql.connector.connect(**config)
-   print("Connection established")
-except mysql.connector.Error as err:
-  if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-    print("Something is wrong with the user name or password")
-  elif err.errno == errorcode.ER_BAD_DB_ERROR:
-    print("Database does not exist")
-  else:
-    print(err)
-else:
-  cursor = conn.cursor()
-
   # Read data
   cursor.execute("SELECT * FROM inventory;")
   rows = cursor.fetchall()
@@ -179,97 +155,27 @@ else:
   for row in rows:
     print("Data row = (%s, %s, %s)" %(str(row[0]), str(row[1]), str(row[2])))
 
-  # Cleanup
-  conn.commit()
-  cursor.close()
-  conn.close()
-  print("Done.")
 ```
 
-## <a name="update-data"></a>Verileri güncelleştirme
+## <a name="step-3-update-data"></a>3. Adım: verileri güncelleştirme
 
-Bağlanmak ve bir **UPDATE** SQL deyimi kullanarak verileri güncelleştirmek için aşağıdaki kodu kullanın. 
-
-Kod MySQL. Connector kitaplığını içeri aktarır ve config koleksiyonundaki [bağımsız değişkenleri](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) kullanarak MySQL Için Azure veritabanı 'na bağlanmak üzere [Connect ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) işlevini kullanır. Kod, bağlantıda bir imleç kullanır ve [cursor.exeCute ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) yöntemi MySQL veritabanında SQL sorgusunu yürütür. 
+Bağlanmak ve bir **UPDATE** SQL deyimi kullanarak verileri güncelleştirmek için aşağıdaki kodu kullanın. Kod MySQL. Connector kitaplığını içeri aktarır ve [cursor.exeCute ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) yöntemini kullanarak MySQL veritabanında SQL sorgusunu yürütür. 
 
 ```python
-import mysql.connector
-from mysql.connector import errorcode
-
-# Obtain connection string information from the portal
-config = {
-  'host':'<mydemoserver>.mysql.database.azure.com',
-  'user':'<myadmin>@<mydemoserver>',
-  'password':'<mypassword>',
-  'database':'<mydatabase>'
-}
-
-# Construct connection string
-try:
-   conn = mysql.connector.connect(**config)
-   print("Connection established")
-except mysql.connector.Error as err:
-  if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-    print("Something is wrong with the user name or password")
-  elif err.errno == errorcode.ER_BAD_DB_ERROR:
-    print("Database does not exist")
-  else:
-    print(err)
-else:
-  cursor = conn.cursor()
-
   # Update a data row in the table
   cursor.execute("UPDATE inventory SET quantity = %s WHERE name = %s;", (200, "banana"))
   print("Updated",cursor.rowcount,"row(s) of data.")
-
-  # Cleanup
-  conn.commit()
-  cursor.close()
-  conn.close()
-  print("Done.")
 ```
 
-## <a name="delete-data"></a>Verileri silme
+## <a name="step-4-delete-data"></a>4. Adım: verileri silme
 
-Bağlanmak ve **DELETE** SQL deyimini kullanarak verileri kaldırmak için aşağıdaki kodu kullanın. 
-
-Kod MySQL. Connector kitaplığını içeri aktarır ve config koleksiyonundaki [bağımsız değişkenleri](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) kullanarak MySQL Için Azure veritabanı 'na bağlanmak üzere [Connect ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) işlevini kullanır. Kod, bağlantıda bir imleç kullanır ve [cursor.exeCute ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) yöntemi MySQL veritabanında SQL sorgusunu yürütür. 
+Bağlanmak ve **DELETE** SQL deyimini kullanarak verileri kaldırmak için aşağıdaki kodu kullanın. Kod MySQL. Connector kitaplığını içeri aktarır ve [cursor.exeCute ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) yöntemini kullanarak MySQL veritabanında SQL sorgusunu yürütür. 
 
 ```python
-import mysql.connector
-from mysql.connector import errorcode
-
-# Obtain connection string information from the portal
-config = {
-  'host':'<mydemoserver>.mysql.database.azure.com',
-  'user':'<myadmin>@<mydemoserver>',
-  'password':'<mypassword>',
-  'database':'<mydatabase>'
-}
-
-# Construct connection string
-try:
-   conn = mysql.connector.connect(**config)
-   print("Connection established.")
-except mysql.connector.Error as err:
-  if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-    print("Something is wrong with the user name or password.")
-  elif err.errno == errorcode.ER_BAD_DB_ERROR:
-    print("Database does not exist.")
-  else:
-    print(err)
-else:
-  cursor = conn.cursor()
 
   # Delete a data row in the table
   cursor.execute("DELETE FROM inventory WHERE name=%(param1)s;", {'param1':"orange"})
   print("Deleted",cursor.rowcount,"row(s) of data.")
-
-  # Cleanup
-  conn.commit()
-  cursor.close()
-  conn.close()
-  print("Done.")
 ```
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
@@ -283,6 +189,10 @@ az group delete \
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
+> [!div class="nextstepaction"]
+> [Portalı kullanarak MySQL için Azure veritabanı sunucusunu yönetme](./howto-create-manage-server-portal.md)<br/>
 
 > [!div class="nextstepaction"]
-> [Dışarı Aktarma ve İçeri Aktarma seçeneğini kullanarak veritabanınızı geçirme](./concepts-migrate-import-export.md)
+> [CLı kullanarak MySQL için Azure veritabanı sunucusunu yönetme](./how-to-manage-single-server-cli.md)
+
+[Aradığınızı bulamıyor musunuz? Bize bilgi verin.](https://aka.ms/mysql-doc-feedback)

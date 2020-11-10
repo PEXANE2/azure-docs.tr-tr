@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/14/2020
+ms.date: 11/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: bca960100ee0c9d7e2a779dc86030fc59949dca5
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: e3503a9eef5c11db35684ca61fb1ee39525a465d
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055979"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427607"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Blok Blobları için nesne çoğaltmasını yapılandırma
 
@@ -45,15 +45,15 @@ Hem kaynak hem de hedef depolama hesaplarına erişiminiz varsa, her iki hesap �
 
 Azure portal nesne çoğaltmasını yapılandırmadan önce, zaten mevcut değilse kaynak ve hedef kapsayıcıları ilgili depolama hesaplarında oluşturun. Ayrıca, blob sürüm oluşturmayı etkinleştirin ve kaynak hesapta akışı değiştirin ve hedef hesapta blob sürümü oluşturmayı etkinleştirin.
 
-# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Azure portal, ilkeyi hedef hesap için yapılandırdıktan sonra kaynak hesapta otomatik olarak oluşturur.
 
 Azure portal bir çoğaltma ilkesi oluşturmak için şu adımları izleyin:
 
 1. Azure portal kaynak depolama hesabına gidin.
-1. **BLOB hizmeti**altında, **nesne çoğaltma**' yı seçin.
-1. **Çoğaltma kurallarını ayarla**' yı seçin.
+1. **BLOB hizmeti** altında, **nesne çoğaltma** ' yı seçin.
+1. **Çoğaltma kurallarını ayarla** ' yı seçin.
 1. Hedef aboneliği ve depolama hesabını seçin.
 1. **Kapsayıcı çiftleri** bölümünde, kaynak hesaptan kaynak kapsayıcısını ve hedef hesaptan bir hedef kapsayıcıyı seçin. Çoğaltma İlkesi başına en fazla 10 kapsayıcı çifti oluşturabilirsiniz.
 
@@ -65,19 +65,19 @@ Azure portal bir çoğaltma ilkesi oluşturmak için şu adımları izleyin:
 
     Aşağıdaki görüntüde, bir çoğaltma kuralının bir parçası olarak hangi Blobların kopyalanacağını kısıtlayan filtreler gösterilmektedir.
 
-    :::image type="content" source="media/object-replication-configure/configure-replication-copy-prefix.png" alt-text="Azure portal 'de çoğaltma kurallarını gösteren ekran görüntüsü":::
+    :::image type="content" source="media/object-replication-configure/configure-replication-copy-prefix.png" alt-text="Bir çoğaltma kuralı için filtreleri gösteren ekran görüntüsü":::
 
 1. Varsayılan olarak, kopyalama kapsamı yalnızca yeni nesneleri kopyalamak üzere ayarlanır. Kapsayıcıdaki tüm nesneleri kopyalamak veya özel bir tarih ve saatten başlayarak nesneleri kopyalamak için, **değişiklik** bağlantısını seçin ve kapsayıcı çiftinin kopya kapsamını yapılandırın.
 
     Aşağıdaki görüntüde nesneleri belirtilen bir tarih ve saatten kopyalayan özel bir kopya kapsamı gösterilmektedir.
 
-    :::image type="content" source="media/object-replication-configure/configure-replication-copy-scope.png" alt-text="Azure portal 'de çoğaltma kurallarını gösteren ekran görüntüsü":::
+    :::image type="content" source="media/object-replication-configure/configure-replication-copy-scope.png" alt-text="Nesne çoğaltma için özel kopya kapsamını gösteren ekran görüntüsü":::
 
 1. Çoğaltma ilkesini oluşturmak ve verileri çoğaltmaya başlamak için **Kaydet ve Uygula '** yı seçin.
 
 Nesne çoğaltmasını yapılandırdıktan sonra, aşağıdaki görüntüde gösterildiği gibi, Azure portal çoğaltma ilkesini ve kurallarını görüntüler.
 
-:::image type="content" source="media/object-replication-configure/object-replication-policies-portal.png" alt-text="Azure portal 'de çoğaltma kurallarını gösteren ekran görüntüsü":::
+:::image type="content" source="media/object-replication-configure/object-replication-policies-portal.png" alt-text="Azure portal nesne çoğaltma ilkesini gösteren ekran görüntüsü":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -244,7 +244,7 @@ Aşağıdaki tabloda, her senaryodaki JSON dosyasındaki ilke KIMLIĞI ve kural 
 
 | Bu hesap için JSON dosyasını oluştururken... | İlke KIMLIĞI ve kural kimliklerini bu değere ayarlayın... |
 |-|-|
-| Hedef hesap | *Varsayılan*dize değeri. Azure depolama, ilke KIMLIĞI ve kural kimliklerini sizin için oluşturur. |
+| Hedef hesap | *Varsayılan* dize değeri. Azure depolama, ilke KIMLIĞI ve kural kimliklerini sizin için oluşturur. |
 | Kaynak hesap | Hedef hesapta tanımlı ilkeyi JSON dosyası olarak indirdiğinizde döndürülen ilke KIMLIĞI ve kural kimliklerinin değerleri. |
 
 Aşağıdaki örnek, *b* önekiyle eşleşen tek bir kuralla hedef hesapta bir çoğaltma ilkesi tanımlar ve çoğaltılacak Bloblar için en düşük oluşturma süresini ayarlar. Açılı ayraçlar içindeki değerleri kendi değerlerinizle değiştirmeyi unutmayın:
@@ -272,7 +272,7 @@ Aşağıdaki örnek, *b* önekiyle eşleşen tek bir kuralla hedef hesapta bir �
 }
 ```
 
-# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Hedef hesapta nesne çoğaltmasını Azure portal bir JSON dosyası ile yapılandırmak için aşağıdaki adımları izleyin:
 
@@ -281,19 +281,19 @@ Hedef hesapta nesne çoğaltmasını Azure portal bir JSON dosyası ile yapılan
     Çoğaltma ilkesini tanımlayan bir JSON dosyası oluşturmanın kolay bir yolu, öncelikle Azure portal iki depolama hesabı arasında bir test çoğaltma ilkesi oluşturmaktır. Daha sonra çoğaltma kurallarını indirebilir ve JSON dosyasını gerektiği gibi değiştirebilirsiniz.
 
 1. Azure portal hedef hesabın **nesne çoğaltma** ayarları ' na gidin.
-1. **Çoğaltma kurallarını karşıya yükle**' yi seçin.
+1. **Çoğaltma kurallarını karşıya yükle** ' yi seçin.
 1. JSON dosyasını karşıya yükleyin. Azure portal, aşağıdaki görüntüde gösterildiği gibi, oluşturulacak ilke ve kuralları görüntüler.
 
-    :::image type="content" source="media/object-replication-configure/replication-rules-upload-portal.png" alt-text="Azure portal 'de çoğaltma kurallarını gösteren ekran görüntüsü":::
+    :::image type="content" source="media/object-replication-configure/replication-rules-upload-portal.png" alt-text="Çoğaltma İlkesi tanımlamak için bir JSON dosyasının nasıl karşıya yükleneceğini gösteren ekran görüntüsü":::
 
 1. Hedef hesapta çoğaltma ilkesini oluşturmak için **karşıya yükle** ' yi seçin.
 
 Daha sonra kaynak hesabı yapılandırmak için başka bir kullanıcıya sağlayabileceğiniz ilke tanımını içeren bir JSON dosyası indirebilirsiniz. Bu JSON dosyasını indirmek için şu adımları izleyin:
 
 1. Azure portal hedef hesabın **nesne çoğaltma** ayarları ' na gidin.
-1. İndirmek istediğiniz ilkenin yanındaki **daha fazla** düğmesini seçin, ardından aşağıdaki görüntüde gösterildiği gibi, **kuralları indir**' i seçin.
+1. İndirmek istediğiniz ilkenin yanındaki **daha fazla** düğmesini seçin, ardından aşağıdaki görüntüde gösterildiği gibi, **kuralları indir** ' i seçin.
 
-    :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="Azure portal 'de çoğaltma kurallarını gösteren ekran görüntüsü":::
+    :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="Çoğaltma kurallarının bir JSON dosyasına nasıl indirileceği gösteren ekran görüntüsü":::
 
 1. Kaynak hesapta ilkeyi yapılandırmak üzere başka bir kullanıcıyla paylaşmak için JSON dosyasını yerel bilgisayarınıza kaydedin.
 
@@ -330,7 +330,7 @@ Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 
 Hedef hesabın çoğaltma ilkesi tanımını Azure CLı 'dan bir JSON dosyasına yazmak için [az Storage Account veya-Policy komutunu ya](/cli/azure/storage/account/or-policy#az_storage_account_or_policy_show) da bir dosyaya çıktıyı göster komutunu çağırın.
 
-Aşağıdaki örnek, ilke tanımını *policy.js*ADLı bir JSON dosyasına yazar. Açılı ayraçlar ve dosya yolundaki değerleri kendi değerlerinizle değiştirmeyi unutmayın:
+Aşağıdaki örnek, ilke tanımını *policy.js* ADLı bir JSON dosyasına yazar. Açılı ayraçlar ve dosya yolundaki değerleri kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```azurecli
 az storage account or-policy show \
@@ -353,15 +353,15 @@ az storage account or-policy create \
 
 Azure portal, PowerShell veya Azure CLı kullanarak kaynak hesabındaki bir Blobun çoğaltma durumunu kontrol edebilirsiniz. Çoğaltma tamamlanana veya başarısız olana kadar nesne çoğaltma özellikleri doldurulmuyor.
 
-# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Azure portal kaynak hesabındaki bir Blobun çoğaltma durumunu denetlemek için şu adımları izleyin:
 
 1. Azure portal kaynak hesabına gidin.
 1. Kaynak blobu içeren kapsayıcıyı bulun.
-1. Özelliklerini göstermek için blobu seçin. Blob başarıyla çoğaltılırsa, **nesne çoğaltma** bölümünde durumun *tamamlandı*olarak ayarlandığını görürsünüz. Bu kapsayıcının nesne çoğaltmasını yöneten kuralın çoğaltma ilkesi KIMLIĞI ve KIMLIĞI de listelenir.
+1. Özelliklerini göstermek için blobu seçin. Blob başarıyla çoğaltılırsa, **nesne çoğaltma** bölümünde durumun *tamamlandı* olarak ayarlandığını görürsünüz. Bu kapsayıcının nesne çoğaltmasını yöneten kuralın çoğaltma ilkesi KIMLIĞI ve KIMLIĞI de listelenir.
 
-:::image type="content" source="media/object-replication-configure/check-replication-status-source.png" alt-text="Azure portal 'de çoğaltma kurallarını gösteren ekran görüntüsü":::
+:::image type="content" source="media/object-replication-configure/check-replication-status-source.png" alt-text="Kaynak hesabındaki bir Blobun çoğaltma durumunu gösteren ekran görüntüsü":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -392,18 +392,24 @@ az storage blob show \
 
 ---
 
+Kaynak hesaptaki bir Blobun çoğaltma durumu hata gösteriyorsa, aşağıdaki olası nedenleri araştırın:
+
+- Hedef hesapta nesne çoğaltma ilkesinin yapılandırıldığından emin olun.
+- Hedef kapsayıcının hala mevcut olduğunu doğrulayın.
+- Kaynak blobu, yazma işleminin bir parçası olarak müşteri tarafından sağlanmış bir anahtarla şifrelendiyse, nesne çoğaltma başarısız olur. Müşteri tarafından sunulan anahtarlar hakkında daha fazla bilgi için bkz. [BLOB depolama için istekte bir şifreleme anahtarı sağlama](encryption-customer-provided-keys.md).
+
 ## <a name="remove-a-replication-policy"></a>Çoğaltma ilkesini kaldırma
 
 Bir çoğaltma ilkesini ve ilişkili kurallarını kaldırmak için Azure portal, PowerShell veya CLı kullanın.
 
-# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Azure portal bir çoğaltma ilkesini kaldırmak için şu adımları izleyin:
 
 1. Azure portal kaynak depolama hesabına gidin.
-1. **Ayarlar**altında, **nesne çoğaltma**' yı seçin.
+1. **Ayarlar** altında, **nesne çoğaltma** ' yı seçin.
 1. İlke adının yanındaki **diğer** düğmesine tıklayın.
-1. **Kuralları Sil**' i seçin.
+1. **Kuralları Sil** ' i seçin.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

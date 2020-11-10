@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 001b1e0b9c738e263e8425f43076ef6e451a297f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50d592d0020ae1b5a704296ef68f5153f0207714
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018833"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427584"
 ---
 # <a name="specify-a-customer-provided-key-on-a-request-to-blob-storage-with-net"></a>.NET ile BLOB depolama için istekte müşteri tarafından sağlanmış bir anahtar belirtin
 
@@ -75,5 +75,5 @@ async static Task UploadBlobWithClientKey(string accountName, string containerNa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- [BLOB depolama için istekte bir şifreleme anahtarı sağlayın](encryption-customer-provided-keys.md)
 - [Bekleyen veri için Azure Depolama şifrelemesi](../common/storage-service-encryption.md)
-- [Azure kaynakları için Azure Active Directory ve yönetilen kimlikler ile bloblara ve kuyruklara erişim yetkisi verme](../common/storage-auth-aad-msi.md)

@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 10/06/2020
-ms.openlocfilehash: e16342b4b46a189a5a5c4c0554fb2d870c9cdcac
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: af967c58cdeb2c750178141193a711a66af7477c
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91877235"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426785"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central-openvinotrade"></a>Öğretici: Azure IoT Central (OpenVINO) üzerinde bir video analizi oluşturma-nesne ve hareket algılama uygulaması &trade;
 
@@ -109,10 +109,10 @@ Bu öğretici, çözümünüzü &trade; nesne ve hareket algılama Için OpenVIN
 
 ### <a name="replace-the-manifest"></a>Bildirimi değiştirme
 
-**LVA Edge Gateway** sayfasında **+ bildirimi Değiştir**' i seçin.
+**LVA Edge Gateway v2** sayfasında **+ bildirimi Değiştir** ' i seçin.
 
 :::image type="content" source="./media/tutorial-video-analytics-create-app-openvino/replace-manifest.png" alt-text="Bildirimi Değiştir":::
 
-*LVA-yapılandırma* klasörüne gidin ve daha önce düzenlediğiniz bildirim dosyasında *deployment.openvino.amd64.js* seçin. **Karşıya Yükle**’yi seçin. Doğrulama tamamlandığında **Değiştir**' i seçin.
+*LVA-yapılandırma* klasörüne gidin ve daha önce düzenlediğiniz bildirim dosyasında *deployment.openvino.amd64.js* seçin. **Karşıya Yükle** ’yi seçin. Doğrulama tamamlandığında **Değiştir** ' i seçin.
 
 [!INCLUDE [iot-central-video-analytics-part4](../../../includes/iot-central-video-analytics-part4.md)]

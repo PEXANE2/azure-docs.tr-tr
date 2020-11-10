@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: aa4ddfc773e2226fe155b563c237f1c533d52311
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 23173432db9364f25901e6e9b285d390c6a63a34
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127037"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426554"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>Öğretici: video analizi için IoT Edge örneği oluşturma (Linux VM)
 
@@ -27,7 +27,7 @@ IoT Edge, bu hizmetler doğrudan platformlar arası IoT cihazlarında çalışı
 
 Bu öğreticide bir Azure VM 'de IoT Edge cihazının nasıl hazırlanacağı gösterilmektedir. IoT Edge örnek, Azure IoT Central video analizi-nesne ve hareket algılama uygulama şablonunun kullandığı canlı video analizi modüllerini çalıştırır.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Azure IoT Edge çalışma zamanı yüklü bir Azure VM oluşturma
 > * Canlı video analizi modülünü barındırmak ve IoT Central bağlanmak için IoT Edge yüklemesini hazırlayın
@@ -50,12 +50,12 @@ En son IoT Edge çalışma zamanı ve canlı video analizi modülleri yüklü bi
 | ----- | ----- |
 | Abonelik | Azure aboneliğinizi seçin. |
 | Kaynak grubu | *LVA-RG* -önceki öğreticide oluşturduğunuz kaynak grubu. |
-| Bölge       | *Doğu ABD* |
+| Region       | *Doğu ABD* |
 | DNS etiketi öneki | VM için benzersiz bir DNS ön eki seçin. |
 | Yönetici Kullanıcı adı | *AzureUser* |
 | Yönetici Parolası | Bir parola girin. *scratchpad.txt* dosyadaki parolayı bir yere göz önünde, daha sonra kullanacaksınız. |
 | Kapsam Kimliği | **Kapsam kimliği** , ağ geçidi cihazını eklediğinizde önceki öğreticideki *scratchpad.txt* dosyasında bir Note yaptık. |
-| Cihaz Kimliği | *LVA-Gateway-001* -önceki öğreticide oluşturduğunuz ağ geçidi aygıtıdır. |
+| Cihaz Kimliği | *ağ geçidi-001* -önceki öğreticide oluşturduğunuz ağ geçidi cihazı. |
 | Cihaz anahtarı | Cihaz birincil anahtarı, ağ geçidi cihazını eklediğinizde önceki öğreticideki *scratchpad.txt* dosyasında bir Note. |
 | IoT Merkezi uygulama konağı | Önceki öğreticideki *scratchpad.txt* dosyasında bir Note oluşturduğunuz **Uygulama URL 'si** . Örneğin, *Traders.azureiotcentral.com*. |
 | IoT Merkezi uygulaması API belirteci | Önceki öğreticide bir örneği yaptığınız operatör API belirteci. |
@@ -64,11 +64,11 @@ En son IoT Edge çalışma zamanı ve canlı video analizi modülleri yüklü bi
 | Ubuntu işletim sistemi sürümü | *18,04-LTS* |
 | Konum | *[resourceGroup (). Location]* |
 
-**Gözden geçir + oluştur**’u seçin. Doğrulama tamamlandığında **Oluştur**' u seçin. Dağıtımın tamamlanabilmesi için genellikle üç dakika sürer. Dağıtım tamamlandığında, Azure portal **LVA-RG** kaynak grubuna gidin.
+**Gözden geçir + oluştur** ’u seçin. Doğrulama tamamlandığında **Oluştur** ' u seçin. Dağıtımın tamamlanabilmesi için genellikle üç dakika sürer. Dağıtım tamamlandığında, Azure portal **LVA-RG** kaynak grubuna gidin.
 
 ## <a name="ensure-the-iot-edge-runtime-loads-the-modules"></a>IoT Edge çalışma zamanının modülleri yüklediğini emin olun
 
-Azure portal, **LVA-RG** kaynak grubuna gidin ve sanal makineyi seçin. Ardından, **destek + sorun giderme** bölümünde **seri konsol**' yi seçin.
+Azure portal, **LVA-RG** kaynak grubuna gidin ve sanal makineyi seçin. Ardından, **destek + sorun giderme** bölümünde **seri konsol** ' yi seçin.
 
 Bir istem almak için **ENTER** tuşuna basın `login:` . Sanal makineyi oluştururken seçtiğiniz Kullanıcı adı ve parola olarak *AzureUser* kullanın.
 
@@ -117,7 +117,7 @@ Docker kapsayıcılarını listelemek için aşağıdaki komutu kullanın:
 sudo docker ps
 ```
 
-Liste, **live555**adlı bir kapsayıcı içerir.
+Liste, **live555** adlı bir kapsayıcı içerir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

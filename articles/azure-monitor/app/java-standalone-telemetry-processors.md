@@ -3,12 +3,12 @@ title: Telemetri işlemcileri (Önizleme)-Azure Izleyici Application Insights Ja
 description: Azure Izleyici için telemetri işlemcileri Application Insights Java
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 1908e36dcf5b24301a08e543c5cf7cc106af6bff
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: e3c41a7a9968a7de743f0c513b1f2b194501d0df
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93380334"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425805"
 ---
 # <a name="telemetry-processors-preview-for-azure-monitor-application-insights-java"></a>Azure Izleyici Application Insights Java için telemetri işlemcileri (Önizleme)
 
@@ -305,7 +305,7 @@ Giriş alanı adının/api/v1/Document/12345678/updateolduğunu varsayalım. Şu
         "name": {
           "toAttributes": {
             "rules": [
-              "^/api/v1/document/(?P<documentId>.*)/update$"
+              "^/api/v1/document/(?<documentId>.*)/update$"
             ]
           }
         }
@@ -340,7 +340,7 @@ Yayılma adının "{operation_website}" olarak yeniden adlandırılması ve yay�
         "name": {
           "toAttributes": {
             "rules": [
-              "(?P<operation_website>.*?)$"
+              "(?<operation_website>.*?)$"
             ]
           }
         }

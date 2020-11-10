@@ -10,12 +10,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 58b4a8c445548c711c2ad76c2d983acaec11ca7f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e8ae0463633940ba3192815af6a07a6356901044
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786284"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426995"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Key Vault ve Azure CLı ile depolama hesabı anahtarlarını yönetme
 
@@ -46,14 +46,14 @@ Key Vault, tüm Azure AD kiracılarında önceden kaydedilmiş bir Microsoft uyg
 | --- | --- | --- |
 | Azure AD | Azure Kamu | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Azure genel | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| Diğer  | Herhangi biri | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Diğer  | Herhangi bir | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kılavuzu gerçekleştirmek için, önce aşağıdakileri yapmanız gerekir:
 
 - [Azure CLI 'Yı yükler](/cli/azure/install-azure-cli).
-- [Anahtar kasası oluşturma](quick-create-cli.md)
+- [Anahtar Kasası oluşturma](quick-create-cli.md)
 - [Bir Azure depolama hesabı oluşturun](../../storage/common/storage-account-create.md?tabs=azure-cli). Depolama hesabı adı yalnızca küçük harfler ve rakamlar kullanmalıdır. Adın uzunluğu 3 ile 24 karakter arasında olmalıdır.
       
 ## <a name="manage-storage-account-keys"></a>Depolama hesabı anahtarlarını yönetme
@@ -137,29 +137,13 @@ az keyvault storage sas-definition create --vault-name <YourKeyVaultName> --acco
 
 ### <a name="verify-the-shared-access-signature-definition"></a>Paylaşılan erişim imzası tanımını doğrulama
 
-Paylaşılan erişim imzası tanımının Azure CLı [az keykasası gizli listesini](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-list) kullanarak anahtar kasasında depolandığını ve [az keykasasecret gizli gösterme](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) komutlarını doğrulayabilirsiniz.
+Paylaşılan erişim imzası tanımının Azure CLı [az keykasası Storage SAS-Definition Show](/cli/azure/keyvault/storage/sas-definition?#az_keyvault_storage_sas_definition_show) komutunu kullanarak anahtar kasasında depolandığını doğrulayabilirsiniz.
 
-İlk olarak, [az keykasasecret List](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-list) komutunu kullanarak anahtar kasanızda paylaşılan erişim imzası tanımını bulun.
-
-```azurecli-interactive
-az keyvault secret list --vault-name <YourKeyVaultName>
-```
-
-SAS tanımınıza karşılık gelen gizli dizi şu özelliklere sahip olacaktır:
-
-```console
-    "contentType": "application/vnd.ms-sastoken-storage",
-    "id": "https://<YourKeyVaultName>.vault.azure.net/secrets/<YourStorageAccountName>-<YourSASDefinitionName>",
-```
-
-Artık bu gizli dizi içeriğini görüntülemek için [az keykasası Secret Show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) komutunu ve `id` özelliğini kullanabilirsiniz.
+Artık bu gizli dizi içeriğini görüntülemek için [az keykasası Storage SAS-Definition Show](/cli/azure/keyvault/storage/sas-definition?#az_keyvault_storage_sas_definition_show) komutunu ve `id` özelliğini kullanabilirsiniz.
 
 ```azurecli-interactive
-az keyvault secret show --vault-name <YourKeyVaultName> --id <SasDefinitionID>
+az keyvault storage sas-definition show --id https://<YourKeyVaultName>.vault.azure.net/storage/<YourStorageAccountName>/sas/<YourSASDefinitionName>
 ```
-
-Bu komutun çıktısı, SAS tanım dizenizi olarak gösterir `value` .
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

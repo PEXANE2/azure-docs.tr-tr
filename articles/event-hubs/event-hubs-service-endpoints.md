@@ -3,12 +3,12 @@ title: Sanal ağ hizmeti uç noktaları-Azure Event Hubs | Microsoft Docs
 description: Bu makalede bir sanal ağa Microsoft. EventHub hizmet uç noktası ekleme hakkında bilgi sağlanır.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: cb0d9a9c4d5e2503e68620ec4e6386d8e05d471c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 029338e3835d03b1a66ff6629e872c84113b0ff2
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88185085"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427216"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>Belirli sanal ağlardan Azure Event Hubs ad alanlarına erişime izin ver 
 
@@ -18,20 +18,11 @@ En az bir sanal ağ alt ağ hizmeti uç noktasına bağlanacak şekilde yapılan
 
 Sonuç olarak, alt ağa ve ilgili Event Hubs ad alanıyla ilişkili olan iş yükleri arasında özel ve yalıtılmış bir ilişki vardır. Bu, bir genel IP aralığında yer alan mesajlaşma hizmeti uç noktasının observable ağ adresi artma. Bu davranış için bir özel durum vardır. Hizmet uç noktasının etkinleştirilmesi, varsayılan olarak `denyall` sanal ağla Ilişkili [IP güvenlik duvarında](event-hubs-ip-filtering.md) kuralı etkinleştirir. Olay Hub 'ı genel uç noktasına erişimi etkinleştirmek için IP güvenlik duvarında belirli IP adresleri ekleyebilirsiniz. 
 
->[!IMPORTANT]
+>[!WARNING]
+> Event Hubs ad alanınız için sanal ağların etkinleştirilmesi, istekler izin verilen sanal ağlardan çalışan bir hizmetten kaynaklanmadığı takdirde varsayılan olarak gelen istekleri engeller. Engellenen istekler diğer Azure hizmetlerinden, Azure portal, günlük ve ölçüm hizmetlerinden ve bu şekilde devam eder. Bir özel durum olarak, sanal ağlar etkinleştirildiğinde bile belirli güvenilen hizmetlerden Event Hubs kaynaklara erişime izin verebilirsiniz. Güvenilen hizmetler listesi için bkz. [Güvenilen hizmetler](#trusted-microsoft-services).
+
+> [!NOTE]
 > Sanal ağlar, Event Hubs **Standart** ve **adanmış** katmanlarında desteklenir. **Temel** katmanda desteklenmez.
->
-> Event Hubs ad alanınız için güvenlik duvarı kurallarını açmak, istekler izin verilen sanal ağlardan çalışan bir hizmetten kaynaklanmadığı takdirde varsayılan olarak gelen istekleri engeller. Engellenen istekler diğer Azure hizmetlerinden, Azure portal, günlük ve ölçüm hizmetlerinden ve bu şekilde devam eder. 
->
-> Sanal ağlar etkinleştirildiğinde Event Hubs kaynaklarına erişemeyen hizmetlerden bazıları aşağıda verilmiştir. Listenin **ayrıntılı olduğunu** unutmayın.
->
-> - Azure Stream Analytics
-> - Azure IoT Hub yolları
-> - Azure IoT Device Explorer
-> - Azure Event Grid
-> - Azure Izleyici (Tanılama Ayarları)
->
-> Bir özel durum olarak, sanal ağlar etkinleştirildiğinde bile belirli güvenilen hizmetlerden Event Hubs kaynaklara erişime izin verebilirsiniz. Güvenilen hizmetler listesi için bkz. [Güvenilen hizmetler](#trusted-microsoft-services).
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>VNet tümleştirmesi tarafından etkinleştirilen gelişmiş güvenlik senaryoları 
 
@@ -45,7 +36,7 @@ Bu, güvenlik duyarlı bulut çözümlerinizin yalnızca Azure sektör lideri g�
 
 **Sanal ağ kuralları** , Azure Event Hubs ad uzayının belirli bir sanal ağ alt ağından gelen bağlantıları kabul edip etmediğini denetleyen güvenlik duvarı güvenlik özelliğidir.
 
-Bir Event Hubs ad alanını bir sanal ağa bağlamak iki adımlı bir işlemdir. Önce bir sanal ağın alt ağında bir **sanal ağ hizmeti uç noktası** oluşturmanız ve bunu [hizmet uç noktası genel bakış][vnet-sep] makalesinde açıklandığı gibi **Microsoft. EventHub** için etkinleştirmeniz gerekir. Hizmet uç noktasını ekledikten sonra, Event Hubs ad alanını bir **sanal ağ kuralıyla**bağlayın.
+Bir Event Hubs ad alanını bir sanal ağa bağlamak iki adımlı bir işlemdir. Önce bir sanal ağın alt ağında bir **sanal ağ hizmeti uç noktası** oluşturmanız ve bunu [hizmet uç noktası genel bakış][vnet-sep] makalesinde açıklandığı gibi **Microsoft. EventHub** için etkinleştirmeniz gerekir. Hizmet uç noktasını ekledikten sonra, Event Hubs ad alanını bir **sanal ağ kuralıyla** bağlayın.
 
 Sanal ağ kuralı, bir sanal ağ alt ağıyla Event Hubs ad alanının bir ilişkidir. Kural var olsa da, alt ağa erişen tüm iş yükleri Event Hubs ad alanına erişim izni verilir. Event Hubs kendisi hiçbir şekilde giden bağlantı oluşturmaz, erişim elde etmek zorunda kalmaz ve bu nedenle bu kuralı etkinleştirerek alt ağınız için hiçbir şekilde erişim izni verilmemiş olur.
 
@@ -64,20 +55,20 @@ Bu bölümde, bir sanal ağ hizmeti uç noktası eklemek için Azure portal nas�
 
     ![Güvenlik Duvarı-tüm ağlar seçeneği seçildi](./media/event-hubs-firewall/firewall-all-networks-selected.png)
 1. Belirli ağlara erişimi kısıtlamak için, henüz seçili değilse sayfanın en üstündeki **Seçili ağlar** seçeneğini belirleyin.
-2. Sayfanın **sanal ağ** bölümünde, * * + var olan sanal ağı ekle * * * seçeneğini belirleyin. Yeni bir VNet oluşturmak istiyorsanız **+ Yeni sanal ağ oluştur** ' u seçin. 
+2. Sayfanın **sanal ağ** bölümünde **+ var olan sanal ağı ekle** _ ' yi seçin. Yeni bir VNet oluşturmak istiyorsanız _ *+ Yeni sanal ağ oluştur* ' u seçin. 
 
     ![var olan sanal ağı ekle](./media/event-hubs-tutorial-vnet-and-firewalls/add-vnet-menu.png)
-3. Sanal ağlar listesinden sanal ağı seçin ve ardından **alt ağı**seçin. Sanal ağı listeye eklemeden önce hizmet uç noktasını etkinleştirmeniz gerekir. Hizmet uç noktası etkinleştirilmemişse, Portal bunu etkinleştirmenizi ister.
+3. Sanal ağlar listesinden sanal ağı seçin ve ardından **alt ağı** seçin. Sanal ağı listeye eklemeden önce hizmet uç noktasını etkinleştirmeniz gerekir. Hizmet uç noktası etkinleştirilmemişse, Portal bunu etkinleştirmenizi ister.
    
    ![alt ağ seçin](./media/event-hubs-tutorial-vnet-and-firewalls/select-subnet.png)
 
-4. Alt ağ için hizmet uç noktası **Microsoft. EventHub**için etkinleştirildikten sonra aşağıdaki başarılı iletiyi görmeniz gerekir. Ağı eklemek için sayfanın alt kısmındaki **Ekle** ' yi seçin. 
+4. Alt ağ için hizmet uç noktası **Microsoft. EventHub** için etkinleştirildikten sonra aşağıdaki başarılı iletiyi görmeniz gerekir. Ağı eklemek için sayfanın alt kısmındaki **Ekle** ' yi seçin. 
 
     ![alt ağ seçin ve uç noktayı etkinleştirin](./media/event-hubs-tutorial-vnet-and-firewalls/subnet-service-endpoint-enabled.png)
 
     > [!NOTE]
     > Hizmet uç noktasını etkinleştiremeyebilirsiniz, Kaynak Yöneticisi şablonunu kullanarak eksik sanal ağ hizmeti uç noktasını yoksayabilirsiniz. Portalda bu işlev kullanılamaz.
-5. **Güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına izin**vermek isteyip istemediğinizi belirtin. Ayrıntılar için bkz. [Güvenilen Microsoft Hizmetleri](#trusted-microsoft-services) . 
+5. **Güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına izin** vermek isteyip istemediğinizi belirtin. Ayrıntılar için bkz. [Güvenilen Microsoft Hizmetleri](#trusted-microsoft-services) . 
 6. Ayarları kaydetmek için araç çubuğunda **Kaydet** ' i seçin. Onayın Portal bildirimlerinde gösterilmesi için birkaç dakika bekleyin.
 
     ![Ağı kaydet](./media/event-hubs-tutorial-vnet-and-firewalls/save-vnet.png)
@@ -99,7 +90,7 @@ Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir Event Hubs ad alanına bi
 
 > [!NOTE]
 > Mümkün olan reddetme kuralları olmadığı sürece, Azure Resource Manager şablonu, bağlantıları kısıtlayameyen **"Izin ver"** olarak ayarlanmış varsayılan eylemi içerir.
-> Sanal ağ veya güvenlik duvarları kuralları yaparken, ***"DefaultAction"*** öğesini değiştirmemiz gerekir
+> Sanal ağ veya güvenlik duvarları kuralları yaparken, **_"DefaultAction"_ öğesini değiştirmemiz gerekir**
 > 
 > Kaynak
 > ```json

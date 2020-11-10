@@ -3,12 +3,12 @@ title: Azure Izleyici Application Insights Java
 description: Kod değişikliğine gerek duymadan herhangi bir ortamda çalışan Java uygulamaları için uygulama performansı izleme. Dağıtılmış izleme ve uygulama eşlemesi.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 2459f80746d95234701319bbb5142c8e540890d3
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: f7cda0f9389f0b628aca82dd6c65acba140e739b
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379778"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426842"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java kodsuz kullanacaksınız uygulama izleme Azure izleyici Application Insights
 
@@ -16,9 +16,9 @@ Java kodsuz kullanacaksınız uygulama izleme kolaylık sağlaması, hiçbir kod
 
  Java Aracısı herhangi bir ortamda çalışarak tüm Java uygulamalarınızı izlemenizi sağlar. Diğer bir deyişle, şirket içinde Java uygulamalarınızı, şirket içinde, Windows, Linux 'ta çalıştırıp, Java 3,0 aracısının uygulamanızı izleyecektir.
 
-Application Insights Java SDK 'sını uygulamanıza eklemek artık gerekli değildir, çünkü 3,0 Aracısı istekleri, bağımlılıkları ve günlükleri kendi kendine toplar.
+Application Insights Java SDK 'sını uygulamanıza eklemek artık gerekli değildir, çünkü 3,0 Aracısı istekleri, bağımlılıkları ve günlükleri kendi kendine otomatik olarak toplar.
 
-Uygulamanız için hala özel telemetri gönderebilirsiniz. 3,0 Aracısı, tüm oto toplanan Telemetriyi izleyip onunla ilişkilendirilecektir.
+Uygulamanız için hala özel telemetri gönderebilirsiniz. 3,0 Aracısı, otomatik olarak toplanan Telemetriyi izleyip onunla ilişkilendirilecektir.
 
 3,0 Aracısı Java 8 ve üstünü destekler.
 
@@ -82,7 +82,7 @@ Bağlantı dizenizi Application Insights kaynağınız için bulabilirsiniz:
 * Örnekleme
 * JMX ölçümleri
 * Özel boyutlar
-* Telemetri işlemcileri
+* Telemetri işlemcileri (Önizleme)
 * Otomatik toplanan günlüğe kaydetme
 * Otomatik toplanan mikro ölçüm ölçümleri (Spring Boot çalıştırıcı ölçümleri dahil)
 * Sinyal
@@ -91,7 +91,7 @@ Bağlantı dizenizi Application Insights kaynağınız için bulabilirsiniz:
 
 Tüm ayrıntılar için bkz. [yapılandırma seçenekleri](./java-standalone-config.md) .
 
-## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>Oto toplanan istekler, bağımlılıklar, Günlükler ve ölçümler
+## <a name="auto-collected-requests-dependencies-logs-and-metrics"></a>Otomatik toplanan istekler, bağımlılıklar, Günlükler ve ölçümler
 
 ### <a name="requests"></a>İstekler
 
@@ -141,13 +141,13 @@ Aşağıdaki tablo, Java 3,0 Aracısı 'nı tamamlamak için etkinleştirebilece
 
 |                     | Micrometer | Log4J, logback, Tem | 2. x SDK |
 |---------------------|------------|---------------------|---------|
-| **Özel olaylar**   |            |                     |  Evet    |
-| **Özel ölçümler**  |  Evet       |                     |  Evet    |
-| **Bağımlılıklar**    |            |                     |  Evet    |
-| **Özel durumlar**      |            |  Evet                |  Evet    |
-| **Sayfa Görüntülemeleri**      |            |                     |  Evet    |
-| **İstekler**        |            |                     |  Evet    |
-| **İzlemeler**          |            |  Evet                |  Evet    |
+| **Özel olaylar**   |            |                     |  Yes    |
+| **Özel ölçümler**  |  Yes       |                     |  Yes    |
+| **Bağımlılıklar**    |            |                     |  Yes    |
+| **Özel durumlar**      |            |  Yes                |  Yes    |
+| **Sayfa Görüntülemeleri**      |            |                     |  Yes    |
+| **İstekler**        |            |                     |  Yes    |
+| **İzlemeler**          |            |  Yes                |  Yes    |
 
 Application Insights 3,0 ile bir SDK 'Yı Şu anda serbest bırakmaya planlanıyoruz.
 

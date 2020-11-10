@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2020
 ms.author: yelevin
-ms.openlocfilehash: b769703f7e7054571a3b65a021c0123d8ae07078
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: 140228a65be166bc172e81267c4449b49621e02c
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148244"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425788"
 ---
 # <a name="enable-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Azure Sentinel 'de Kullanıcı ve varlık davranış analizlerini (UEBA) etkinleştirme 
 
 > [!IMPORTANT]
 >
-> - UEBA özelliği artık aşağıdaki Azure Sentinel coğrafi bölgeler ve bölgelerde **genel kullanıma** sunulmuştur:
+> - Artık UEBA ve varlık sayfaları özellikleri şu Azure Sentinel coğrafi bölgeler ve bölgelerde **genel kullanıma** sunulmuştur:
 >    - Birleşik Devletler Coğrafya
 >    - Avrupa Batı Bölgesi
 >    - Avustralya Coğrafya
 >
-> - Diğer tüm coğrafi bölgeler ve bölgelerde, bu özellik **genel önizlemede** olmaya devam eder ve hizmet düzeyi sözleşmesi olmadan sağlanır. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> - Diğer tüm coğrafi bölgeler ve bölgelerde bu özellikler **Önizleme** aşamasında olmaya devam eder. Beta, önizleme veya henüz genel kullanıma sunulmayan Azure özelliklerine uygulanan ek koşullar için [Microsoft Azure önizlemeleri için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 'na bakın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

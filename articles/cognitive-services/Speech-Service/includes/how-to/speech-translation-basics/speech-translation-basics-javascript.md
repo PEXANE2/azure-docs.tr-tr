@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: v-demjoh
 ms.custom: devx-track-js
-ms.openlocfilehash: c63b55905ea16c0597e1f8f1179153229018ed32
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: c7e9f1ee6a347caa71be2057905eb4ec6e6a1b0b
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470675"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425157"
 ---
 Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı algılayabilir ve diğer dillere çevirebilir. Bu hızlı başlangıçta, uygulama ve ürünlarınızdaki konuşma SDK 'sını kullanarak yüksek kaliteli konuşma çevirisi gerçekleştirme hakkında bilgi edinebilirsiniz. Bu hızlı başlangıçta aşağıdakiler dahil konular ele alınmaktadır:
 
@@ -66,18 +66,18 @@ Hakkında daha fazla bilgi için `require` bkz. <a href="https://nodejs.org/en/k
 
 ## <a name="create-a-translation-configuration"></a>Çeviri yapılandırması oluşturma
 
-Konuşma SDK 'sını kullanarak çeviri hizmetini çağırmak için bir oluşturmanız gerekir [`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest&preserve-view=true) . Bu sınıf, uygulamanız hakkında, anahtarınız ve ilgili bölge, uç nokta, ana bilgisayar veya yetkilendirme belirteci gibi bilgileri içerir.
+Konuşma SDK 'sını kullanarak çeviri hizmetini çağırmak için bir oluşturmanız gerekir [`SpeechTranslationConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?preserve-view=true&view=azure-node-latest) . Bu sınıf, uygulamanız hakkında, anahtarınız ve ilgili bölge, uç nokta, ana bilgisayar veya yetkilendirme belirteci gibi bilgileri içerir.
 
 > [!NOTE]
 > Konuşma tanıma, konuşma birleştirme, çeviri veya amaç tanıma işlemlerini gerçekleştirmekten bağımsız olarak her zaman bir yapılandırma oluşturacaksınız.
-Şunları başlatabilmeniz için birkaç yol vardır [`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest&preserve-view=true) :
+Şunları başlatabilmeniz için birkaç yol vardır [`SpeechTranslationConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?preserve-view=true&view=azure-node-latest) :
 
 * Abonelik ile: bir anahtarı ve ilişkili bölgeyi geçirin.
 * Uç nokta ile: bir konuşma hizmeti uç noktasında geçirin. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
 * Bir ana bilgisayar ile: bir konak adresini geçirin. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
 * Yetkilendirme belirteci ile: bir yetkilendirme belirtecini ve ilişkili bölgeyi geçirin.
 
-Bir [`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest&preserve-view=true) anahtar ve bölge kullanarak nasıl oluşturulduğuna göz atalım. [Konuşma hizmetini ücretsiz deneyin](../../../overview.md#try-the-speech-service-for-free)bölümündeki adımları izleyerek bu kimlik bilgilerini alın.
+Bir [`SpeechTranslationConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?preserve-view=true&view=azure-node-latest) anahtar ve bölge kullanarak nasıl oluşturulduğuna göz atalım. [Konuşma hizmetini ücretsiz deneyin](../../../overview.md#try-the-speech-service-for-free)bölümündeki adımları izleyerek bu kimlik bilgilerini alın.
 
 ```javascript
 const speechTranslationConfig = SpeechTranslationConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
@@ -85,15 +85,15 @@ const speechTranslationConfig = SpeechTranslationConfig.fromSubscription("YourSu
 
 ## <a name="initialize-a-translator"></a>Çeviriciyi başlatma
 
-Bir oluşturduktan sonra [`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest&preserve-view=true) , bir sonraki adım bir ' ı başlatmaktır [`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true) . Bir başlattığınızda [`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true) , bunu geçirmeniz gerekir `speechTranslationConfig` . Bu, çeviri hizmetinin isteğinizi doğrulamak için ihtiyaç duyduğu kimlik bilgilerini sağlar.
+Bir oluşturduktan sonra [`SpeechTranslationConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?preserve-view=true&view=azure-node-latest) , bir sonraki adım bir ' ı başlatmaktır [`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest) . Bir başlattığınızda [`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest) , bunu geçirmeniz gerekir `speechTranslationConfig` . Bu, çeviri hizmetinin isteğinizi doğrulamak için ihtiyaç duyduğu kimlik bilgilerini sağlar.
 
-Cihazınızın varsayılan mikrofonuna göre sunulan konuşmayı çevirmezseniz, şöyle [`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true) görünmelidir:
+Cihazınızın varsayılan mikrofonuna göre sunulan konuşmayı çevirmezseniz, şöyle [`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest) görünmelidir:
 
 ```javascript
 const translator = new TranslationRecognizer(speechTranslationConfig);
 ```
 
-Ses giriş cihazını belirtmek isterseniz, oluşturmanız ve ' ı [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true) `audioConfig` başlatırken parametresini sağlamanız gerekir [`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true) .
+Ses giriş cihazını belirtmek isterseniz, oluşturmanız ve ' ı [`AudioConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?preserve-view=true&view=azure-node-latest) `audioConfig` başlatırken parametresini sağlamanız gerekir [`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest) .
 
 > [!TIP]
 > [Ses giriş cihazınız için CIHAZ kimliğini nasıl alabileceğinizi öğrenin](../../../how-to-select-audio-input-devices.md).
@@ -104,7 +104,7 @@ const audioConfig = AudioConfig.fromDefaultMicrophoneInput();
 const recognizer = new TranslationRecognizer(speechTranslationConfig, audioConfig);
 ```
 
-Mikrofon kullanmak yerine bir ses dosyası sağlamak istiyorsanız, yine de sağlamanız gerekir `audioConfig` . Ancak, bu yalnızca **Node.js** hedeflenirken ve [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true) ' yi çağırmak yerine bir oluşturduğunuzda, `fromDefaultMicrophoneInput` parametresini çağırarak `fromWavFileOutput` ve geçireceğiz `filename` .
+Mikrofon kullanmak yerine bir ses dosyası sağlamak istiyorsanız, yine de sağlamanız gerekir `audioConfig` . Ancak, bu yalnızca **Node.js** hedeflenirken ve [`AudioConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?preserve-view=true&view=azure-node-latest) ' yi çağırmak yerine bir oluşturduğunuzda, `fromDefaultMicrophoneInput` parametresini çağırarak `fromWavFileOutput` ve geçireceğiz `filename` .
 
 ```javascript
 const audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");
@@ -113,13 +113,13 @@ const recognizer = new TranslationRecognizer(speechTranslationConfig, audioConfi
 
 ## <a name="translate-speech"></a>Konuşmayı çevirme
 
-JavaScript için konuşma SDK 'Sı için [Translationtanıyıcı sınıfı](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true) , konuşma çevirisi için kullanabileceğiniz birkaç yöntem sunar.
+JavaScript için konuşma SDK 'Sı için [Translationtanıyıcı sınıfı](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest) , konuşma çevirisi için kullanabileceğiniz birkaç yöntem sunar.
 
 * Tek kararlı çeviri (Async)-blok olmayan (zaman uyumsuz) modda çeviri gerçekleştirir. Bu, tek bir utterance 'yi çevirecek. Tek bir utterüance 'in sonunda, sonda sessizlik dinlemesi veya en fazla 15 saniyelik ses işlenene kadar belirlenir.
-* Sürekli çeviri (Async)-zaman uyumsuz olarak sürekli çeviri işlemini başlatır. Kullanıcı olaylara kaydolur ve çeşitli uygulama durumlarını işler. Zaman uyumsuz sürekli çeviriyi durdurmak için çağrısı yapın [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true#stopcontinuousrecognitionasync) .
+* Sürekli çeviri (Async)-zaman uyumsuz olarak sürekli çeviri işlemini başlatır. Kullanıcı olaylara kaydolur ve çeşitli uygulama durumlarını işler. Zaman uyumsuz sürekli çeviriyi durdurmak için çağrısı yapın [`stopContinuousRecognitionAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest#stopcontinuousrecognitionasync) .
 
 > [!NOTE]
-> [Konuşma tanıma modunu seçme](../../../how-to-choose-recognition-mode.md)hakkında daha fazla bilgi edinin.
+> [Konuşma tanıma modunu seçme](../../../get-started-speech-to-text.md)hakkında daha fazla bilgi edinin.
 ### <a name="specify-a-target-language"></a>Hedef dil belirtin
 
 Çevirmek için hem bir kaynak dili hem de en az bir hedef dil belirtmeniz gerekir.
@@ -132,7 +132,7 @@ speechTranslationConfig.addTargetLanguage("de");
 
 ### <a name="single-shot-recognition"></a>Tek atışı tanıma
 
-Şu kullanılarak zaman uyumsuz tek kararlı çeviri örneği aşağıda verilmiştir [`recognizeOnceAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true#recognizeonceasync) :
+Şu kullanılarak zaman uyumsuz tek kararlı çeviri örneği aşağıda verilmiştir [`recognizeOnceAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest#recognizeonceasync) :
 
 ```javascript
 recognizer.recognizeOnceAsync(result => {
@@ -140,7 +140,7 @@ recognizer.recognizeOnceAsync(result => {
 });
 ```
 
-Sonucu işlemek için bazı kodlar yazmanız gerekir. Bu örnek, [`result.reason`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognitionresult?view=azure-node-latest&preserve-view=true) bir çevirisini Almanca için değerlendirir:
+Sonucu işlemek için bazı kodlar yazmanız gerekir. Bu örnek, [`result.reason`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognitionresult?preserve-view=true&view=azure-node-latest) bir çevirisini Almanca için değerlendirir:
 
 ```javascript
 recognizer.recognizeOnceAsync(
@@ -179,20 +179,20 @@ recognizer.recognized = function (s, e) {
 
 ### <a name="continuous-translation"></a>Sürekli çeviri
 
-Sürekli çeviri, tek kararlı tanıma göre biraz daha karmaşıktır. `recognizing` `recognized` Tanıma sonuçlarını almak için,, ve olaylarına abone olmanızı gerektirir `canceled` . Çeviriyi durdurmak için çağrısı yapmanız gerekir [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true#stopcontinuousrecognitionasync) . İşte, bir ses giriş dosyasında sürekli çevirinin nasıl gerçekleştirilebileceğini gösteren bir örnek.
+Sürekli çeviri, tek kararlı tanıma göre biraz daha karmaşıktır. `recognizing` `recognized` Tanıma sonuçlarını almak için,, ve olaylarına abone olmanızı gerektirir `canceled` . Çeviriyi durdurmak için çağrısı yapmanız gerekir [`stopContinuousRecognitionAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest#stopcontinuousrecognitionasync) . İşte, bir ses giriş dosyasında sürekli çevirinin nasıl gerçekleştirilebileceğini gösteren bir örnek.
 
-Girişi tanımlayarak ve şunu başlatarak başlayalım [`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true) :
+Girişi tanımlayarak ve şunu başlatarak başlayalım [`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest) :
 
 ```javascript
 const translator = new TranslationRecognizer(speechTranslationConfig);
 ```
 
-Kaynağından gönderilen olaylara abone edeceğiz [`TranslationRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true) .
+Kaynağından gönderilen olaylara abone edeceğiz [`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest) .
 
-* [`recognizing`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true#recognizing): Ara çeviri sonuçları içeren olaylar için sinyal.
-* [`recognized`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true#recognized): Son çeviri sonuçlarını içeren olaylar için sinyal (başarılı bir çeviri denemesi olduğunu gösterir).
-* [`sessionStopped`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true#sessionstopped): Bir çeviri oturumunun sonunu belirten olaylar için sinyal (işlem).
-* [`canceled`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?view=azure-node-latest&preserve-view=true#canceled): İptal edilen Çeviri sonuçlarını içeren olaylar için sinyal (sonuç veya doğrudan iptal isteği olarak iptal edilen bir çeviri girişimi veya ya da bir aktarım ya da protokol arızası).
+* [`recognizing`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest#recognizing): Ara çeviri sonuçları içeren olaylar için sinyal.
+* [`recognized`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest#recognized): Son çeviri sonuçlarını içeren olaylar için sinyal (başarılı bir çeviri denemesi olduğunu gösterir).
+* [`sessionStopped`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest#sessionstopped): Bir çeviri oturumunun sonunu belirten olaylar için sinyal (işlem).
+* [`canceled`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest#canceled): İptal edilen Çeviri sonuçlarını içeren olaylar için sinyal (sonuç veya doğrudan iptal isteği olarak iptal edilen bir çeviri girişimi veya ya da bir aktarım ya da protokol arızası).
 
 ```javascript
 recognizer.recognizing = (s, e) => {
@@ -221,7 +221,7 @@ recognizer.sessionStopped = (s, e) => {
 };
 ```
 
-Her şey ayarlandığında, çağırabiliriz [`startContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#startcontinuousrecognitionasync) .
+Her şey ayarlandığında, çağırabiliriz [`startContinuousRecognitionAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?preserve-view=true&view=azure-node-latest#startcontinuousrecognitionasync) .
 
 ```javascript
 // Starts continuous recognition. Uses stopContinuousRecognitionAsync() to stop recognition.
@@ -232,13 +232,13 @@ recognizer.startContinuousRecognitionAsync();
 
 ## <a name="choose-a-source-language"></a>Kaynak dili seçin
 
-Konuşma çevirisi için ortak bir görev, giriş (veya kaynak) dilini belirtmektir. Giriş dilini Italyanca olarak nasıl değiştirebileceğinizi göz atalım. Kodunuzda, [`SpeechTranslationConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest&preserve-view=true) daha sonra hemen altına aşağıdaki satırı ekleyin.
+Konuşma çevirisi için ortak bir görev, giriş (veya kaynak) dilini belirtmektir. Giriş dilini Italyanca olarak nasıl değiştirebileceğinizi göz atalım. Kodunuzda, [`SpeechTranslationConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?preserve-view=true&view=azure-node-latest) daha sonra hemen altına aşağıdaki satırı ekleyin.
 
 ```javascript
 speechTranslationConfig.speechRecognitionLanguage = "it-IT";
 ```
 
-[`speechRecognitionLanguage`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?view=azure-node-latest&preserve-view=true#speechrecognitionlanguage)Özelliği, bir dil yerel ayar dizesi bekliyor. Desteklenen [yerel ayarlar/diller](../../../language-support.md)listesindeki **yerel ayar** sütununda herhangi bir değer sağlayabilirsiniz.
+[`speechRecognitionLanguage`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?preserve-view=true&view=azure-node-latest#speechrecognitionlanguage)Özelliği, bir dil yerel ayar dizesi bekliyor. Desteklenen [yerel ayarlar/diller](../../../language-support.md)listesindeki **yerel ayar** sütununda herhangi bir değer sağlayabilirsiniz.
 
 ## <a name="choose-one-or-more-target-languages"></a>Bir veya daha fazla hedef dil seçin
 

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/06/2020
+ms.date: 11/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 20e48640d52fba7b3262014c2e84cfc56c7110cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1aff57c2823b111251c99cb3dbcdea0fd90ad2c
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767235"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425958"
 ---
 # <a name="blob-versioning"></a>Blob sürümü oluşturma
 
@@ -36,13 +36,15 @@ Blob sürümü oluşturmayı nasıl etkinleştireceğinizi öğrenmek için bkz.
 
 Bir sürüm, belirli bir noktadaki bir Blobun durumunu yakalar. Blob sürümü oluşturma bir depolama hesabı için etkinleştirildiğinde, blob her değiştirildiğinde veya silindiğinde Azure Storage otomatik olarak bir blob 'un yeni bir sürümünü oluşturur.
 
-Sürüm oluşturma özelliği etkinken bir blob oluşturduğunuzda, yeni blob blob 'un geçerli sürümüdür (veya temel Blobun). Bu blobu daha sonra değiştirirseniz, Azure depolama, değiştirilmeden önce blob durumunu yakalayan bir sürüm oluşturur. Değiştirilen blob yeni geçerli sürüm olur. Blobu her değiştirdiğiniz zaman yeni bir sürüm oluşturulur. BLOB en fazla 1000 ilişkili sürüme sahip olabilir.
+Sürüm oluşturma özelliği etkinken bir blob oluşturduğunuzda, yeni blob blob 'un geçerli sürümüdür (veya temel Blobun). Bu blobu daha sonra değiştirirseniz, Azure depolama, değiştirilmeden önce blob durumunu yakalayan bir sürüm oluşturur. Değiştirilen blob yeni geçerli sürüm olur. Blobu her değiştirdiğiniz zaman yeni bir sürüm oluşturulur.
+
+Blob sınırsız sayıda sürüme sahip olabilir. Ancak, blob başına çok sayıda sürüme sahip olmak blob listeleme işlemlerine yönelik gecikmeyi artırabilir. Microsoft, blob başına 1000 ' den az sürümden bakım yapmanızı önerir. Eski sürümleri otomatik olarak silmek için yaşam döngüsü yönetimi kullanabilirsiniz. Yaşam döngüsü yönetimi hakkında daha fazla bilgi için bkz. [Azure Blob depolama erişim katmanlarını otomatikleştirerek maliyetleri iyileştirme](storage-lifecycle-management-concepts.md).
 
 Sürüm oluşturma etkinken bir blobu sildiğinizde, Azure depolama, silinmeden önce blob durumunu yakalayan bir sürüm oluşturur. Blob 'un geçerli sürümü silinir, ancak gerekirse yeniden oluşturulabilmesi için Blobun sürümleri korunur. 
 
 Blob sürümleri sabittir. Mevcut bir blob sürümünün içeriğini veya meta verilerini değiştiremezsiniz.
 
-Blob sürümü oluşturma genel amaçlı v2, Blok Blobu ve BLOB depolama hesapları için kullanılabilir. Azure Data Lake Storage 2. ile kullanım için etkinleştirilmiş hiyerarşik bir ad alanı olan depolama hesapları Şu anda desteklenmemektedir. 
+Blob sürümü oluşturma genel amaçlı v2, Blok Blobu ve BLOB depolama hesapları için kullanılabilir. Azure Data Lake Storage 2. ile kullanım için etkinleştirilmiş hiyerarşik bir ad alanı olan depolama hesapları Şu anda desteklenmemektedir.
 
 Azure depolama REST API sürüm 2019-10-10 ve üzeri, blob sürümü oluşturmayı destekler.
 
@@ -79,11 +81,11 @@ Sürüm KIMLIĞI olmadan [BLOB silme](/rest/api/storageservices/delete-blob) iş
 
 Aşağıdaki diyagramda, sürümlü bir blob üzerinde silme işleminin etkisi gösterilmektedir:
 
-:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="Yazma işlemlerinin sürümlü Blobları nasıl etkilediğini gösteren diyagram.":::
+:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="Sürümlü blob silme işlemini gösteren diyagram.":::
 
 Blob 'a yeni veri yazmak Blobun yeni bir sürümünü oluşturur. Aşağıdaki diyagramda gösterildiği gibi, var olan tüm sürümler etkilenmez.
 
-:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="Yazma işlemlerinin sürümlü Blobları nasıl etkilediğini gösteren diyagram.":::
+:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="Silinmeden sonra sürümlü blob 'un yeniden oluşturulmasını gösteren diyagram.":::
 
 ### <a name="blob-types"></a>Blob türleri
 
@@ -122,7 +124,7 @@ Sürüm oluşturma devre dışı bırakıldıktan sonra sürüm KIMLIĞINI kulla
 
 Aşağıdaki diyagramda, sürüm oluşturma işlemi devre dışı bırakıldıktan sonra bir Blobun nasıl değiştirileceği gösterilmektedir ve sürümü bulunmayan bir blob oluşturulur. Blob ile ilişkili tüm mevcut sürümler korunur.
 
-:::image type="content" source="media/versioning-overview/modify-base-blob-versioning-disabled.png" alt-text="Yazma işlemlerinin sürümlü Blobları nasıl etkilediğini gösteren diyagram.":::
+:::image type="content" source="media/versioning-overview/modify-base-blob-versioning-disabled.png" alt-text="Sürüm oluşturma devre dışı bırakıldıktan sonra değiştirilen temel blobu gösteren diyagram.":::
 
 ## <a name="blob-versioning-and-soft-delete"></a>Blob sürümü oluşturma ve geçici silme
 
@@ -138,7 +140,7 @@ Bir Blobun önceki bir sürümünü kaldırmak için sürüm KIMLIĞINI belirter
 
 Aşağıdaki diyagramda bir Blobu veya blob sürümünü sildiğinizde ne olacağı gösterilmektedir.
 
-:::image type="content" source="media/versioning-overview/soft-delete-historical-version.png" alt-text="Yazma işlemlerinin sürümlü Blobları nasıl etkilediğini gösteren diyagram.":::
+:::image type="content" source="media/versioning-overview/soft-delete-historical-version.png" alt-text="Geçici silme özelliği etkinken bir sürümü silmeyi gösteren diyagram.":::
 
 Bir depolama hesabında hem sürüm oluşturma hem de geçici silme etkinse, bir blob veya blob sürümü değiştirildiğinde veya silindiğinde, geçici olarak silinen anlık görüntü oluşturulmaz.
 
@@ -150,7 +152,7 @@ Geçici olarak silinen sürümleri geri alma **blobu** ile geri yükleme, herhan
 
 Aşağıdaki diyagramda, **silme blobu** işlemiyle, geçici olarak silinen blob sürümlerinin nasıl geri yükleneceği ve BLOB 'un geçerli sürümünün **BLOB kopyalama** işlemiyle nasıl geri yükleneceği gösterilmektedir.
 
-:::image type="content" source="media/versioning-overview/undelete-version.png" alt-text="Yazma işlemlerinin sürümlü Blobları nasıl etkilediğini gösteren diyagram.":::
+:::image type="content" source="media/versioning-overview/undelete-version.png" alt-text="Geçici olarak silinen sürümlerin nasıl geri yükleneceğini gösteren diyagram.":::
 
 Geçici silme bekletme süresi geçtikten sonra, geçici olarak silinen blob sürümleri kalıcı olarak silinir.
 
@@ -169,7 +171,7 @@ Sürümlü bir Blobun anlık görüntüsünü aldığınızda, anlık görüntü
 
 Aşağıdaki diyagramda, sürümlü bir Blobun anlık görüntüsünü alırken ne olacağı gösterilmektedir. Diyagramda, sürüm KIMLIĞI 2 ve 3 olan blob sürümleri ve anlık görüntüler aynı verileri içerir.
 
-:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="Yazma işlemlerinin sürümlü Blobları nasıl etkilediğini gösteren diyagram.":::
+:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="Sürümlü bir Blobun anlık görüntülerini gösteren diyagram.":::
 
 ## <a name="authorize-operations-on-blob-versions"></a>Blob sürümlerinde yetkilendirme işlemleri
 
@@ -185,7 +187,7 @@ Blob sürümü oluşturma, verilerinizi yanlışlıkla veya kötü amaçlı olar
 
 Aşağıdaki tabloda, hangi Azure RBAC eylemlerinin bir blob veya blob sürümünü silmenin desteklediği gösterilmektedir.
 
-| Açıklama | Blob hizmeti işlemi | Azure RBAC verileri eylemi gerekiyor | Azure yerleşik rol desteği |
+| Description | Blob hizmeti işlemi | Azure RBAC verileri eylemi gerekiyor | Azure yerleşik rol desteği |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | Blobun geçerli sürümü siliniyor | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/Sil** | Depolama Blob Verileri Katkıda Bulunanı |
 | Bir sürümü silme | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/deleteBlobVersion/Action** | Depolama Blob Verileri Sahibi |
@@ -269,7 +271,7 @@ Aşağıdaki tabloda, yeni katmana taşındığında bir blob veya sürüm için
 
 Aşağıdaki diyagramda, sürümlü bir blob farklı bir katmana taşındığında nesnelerin nasıl faturalandırılabileceği gösterilmektedir.
 
-:::image type="content" source="media/versioning-overview/versioning-billing-tiers.png" alt-text="Yazma işlemlerinin sürümlü Blobları nasıl etkilediğini gösteren diyagram.":::
+:::image type="content" source="media/versioning-overview/versioning-billing-tiers.png" alt-text="Sürümlü bir blob açık şekilde katmanlandığı zaman nesnelerin nasıl faturalandırıldığını gösteren diyagram.":::
 
 Bir blob, sürüm veya anlık görüntü için katmanı açıkça ayarlamak geri alınamaz. Bir blobu yeni bir katmana taşır ve sonra özgün katmanına geri taşırsanız, özgün katmandaki diğer nesnelerle blokları paylaşsa bile nesnenin tam içerik uzunluğu için ücretlendirilirsiniz.
 

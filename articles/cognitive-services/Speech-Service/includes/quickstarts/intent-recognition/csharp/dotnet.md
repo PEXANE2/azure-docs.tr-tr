@@ -7,12 +7,12 @@ ms.topic: include
 ms.author: trbye
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 83e2c0486c193608739b78665d9dbbc3a52afc9e
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: c242bbb803e359664eb2fb63262f0c540723f9c6
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470921"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425285"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -46,14 +46,14 @@ Bir nesneyi başlatabilmeniz için `IntentRecognizer` , lusıs tahmin kaynağın
 Bu kodu `RecognizeIntentAsync()` yöntemine ekleyin. Bu değerleri güncelleştirdiğinizden emin olun:
 
 * `"YourLanguageUnderstandingSubscriptionKey"`Lusıs tahmin anahtarınızla değiştirin.
-* `"YourLanguageUnderstandingServiceRegion"`Lusıs konumunuz ile değiştirin. Bölgeden **bölge tanımlayıcısı** kullanın [.](https://aka.ms/speech/sdkregion)
+* `"YourLanguageUnderstandingServiceRegion"`Lusıs konumunuz ile değiştirin. Bölgeden **bölge tanımlayıcısı** kullanın [.](../../../../regions.md)
 
 >[!TIP]
 > Bu değerleri bulmak için yardıma ihtiyacınız varsa bkz. [Amaç tanıma için BIR lusıs uygulaması oluşturma](#create-a-luis-app-for-intent-recognition).
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=26)]
 
-Bu örnek `FromSubscription()` , oluşturmak için yöntemini kullanır `SpeechConfig` . Kullanılabilir yöntemlerin tam listesi için bkz. [SpeechConfig Class](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true).
+Bu örnek `FromSubscription()` , oluşturmak için yöntemini kullanır `SpeechConfig` . Kullanılabilir yöntemlerin tam listesi için bkz. [SpeechConfig Class](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet).
 
 Konuşma SDK 'Sı, dil için en-US kullanarak varsayılan olarak tanıma yapılır, kaynak dili seçme hakkında bilgi için bkz. [konuşmayı için kaynak dilini belirtme](../../../../how-to-specify-source-language.md) .
 
@@ -103,7 +103,7 @@ Bu noktada, kodunuzun şöyle görünmesi gerekir:
 
 Artık uygulamanızı oluşturmaya ve konuşma tanıma özelliğini kullanarak konuşma tanıma 'yı test etmeye hazır olursunuz.
 
-1. **Kodu derleyin** -Visual Studio menü **çubuğundan derleme**  >  **Build Solution**' ı seçin.
+1. **Kodu derleyin** -Visual Studio menü **çubuğundan derleme**  >  **Build Solution** ' ı seçin.
 2. **Uygulamanızı başlatın** -menü çubuğundan hata **Debug**  >  **ayıklamayı Başlat hata** Ayıkla ' yı seçin veya <kbd>F5</kbd>tuşuna basın.
 3. **Tanımayı Başlat** -bu, İngilizce bir tümceciği konuşarak ister. Konuşma konuşma hizmetine gönderilir, metin olarak yeniden oluşturulur ve konsolunda işlenir.
 

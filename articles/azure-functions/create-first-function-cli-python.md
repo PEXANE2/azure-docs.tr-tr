@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 71745243c29fac95fca452f3c907bcf50982ea97
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 9c88feca5bf4bdac91af7f88c24cd342dc1b04cf
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93425172"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426298"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>Hızlı başlangıç: Azure 'da komut satırından bir Python işlevi oluşturma
 
@@ -64,6 +64,50 @@ Azure CLı veya Azure kaynakları oluşturmak için Azure PowerShell kullanıp k
 + `python --version` `py --version` Python sürüm raporlarınızı 3.8. x, 3.7. x veya 3.6. x olarak denetlemek için (Linux/MacOS) veya (Windows) öğesini çalıştırın.
 
 ---
+
+## <a name="create-and-activate-a-virtual-environment"></a><a name="create-venv"></a>Sanal ortam oluşturma ve etkinleştirme
+
+Uygun bir klasörde, adlı bir sanal ortam oluşturmak ve etkinleştirmek için aşağıdaki komutları çalıştırın `.venv` . Azure Işlevleri tarafından desteklenen Python 3,8, 3,7 veya 3,6 kullandığınızdan emin olun.
+
+# <a name="bash"></a>[Bash](#tab/bash)
+
+```bash
+python -m venv .venv
+```
+
+```bash
+source .venv/bin/activate
+```
+
+Python, venv paketini Linux dağıtımına yüklememediyse aşağıdaki komutu çalıştırın:
+
+```bash
+sudo apt-get install python3-venv
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+py -m venv .venv
+```
+
+```powershell
+.venv\scripts\activate
+```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+py -m venv .venv
+```
+
+```cmd
+.venv\scripts\activate
+```
+
+---
+
+Bu etkinleştirilmiş sanal ortamda sonraki tüm komutları çalıştırırsınız. 
 
 ## <a name="create-a-local-function-project"></a>Yerel işlev projesi oluşturma
 

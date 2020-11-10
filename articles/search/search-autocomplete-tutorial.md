@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 11/10/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 5dd2d9e932bd1be3da74a2bdc9bd918401076aa3
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 1bf0a4a86ccc36960f218fabebda5bc82eb29019
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348619"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426179"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>İstemci uygulamalarına otomatik tamamlama ve öneriler ekleme
 
@@ -56,8 +56,8 @@ REST ve .NET SDK başvuru sayfaları için bu bağlantıları izleyin:
 
 + [Öneriler REST API](/rest/api/searchservice/suggestions) 
 + [Otomatik tamamlama REST API](/rest/api/searchservice/autocomplete) 
-+ [SuggestWithHttpMessagesAsync yöntemi](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync)
-+ [AutocompleteWithHttpMessagesAsync yöntemi](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync)
++ [Mümütasync yöntemi](/dotnet/api/azure.search.documents.searchclient.suggestasync)
++ [Oto Tamteasync yöntemi](/dotnet/api/azure.search.documents.searchclient.autocompleteasync)
 
 ## <a name="structure-a-response"></a>Yanıt yapısı
 
@@ -139,45 +139,43 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 ### <a name="suggest-function"></a>Öner işlevi
 
-C# ve MVC uygulaması kullanıyorsanız, **HomeController.cs** dosyası denetleyiciler dizini altında, önerilen sonuçlar için bir sınıf oluşturabileceğiniz yerdir. .NET ' te, bir önerme işlevi [Documentsoperationsextensions. önerme metodunu](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest)temel alır. .NET SDK hakkında daha fazla bilgi için bkz. [.NET uygulamasından Azure bilişsel arama kullanma](search-howto-dotnet-sdk.md).
+C# ve MVC uygulaması kullanıyorsanız, **HomeController.cs** dosyası denetleyiciler dizini altında, önerilen sonuçlar için bir sınıf oluşturabileceğiniz yerdir. .NET ' te, bir önerme işlevi, [mübir tasync yöntemi](/dotnet/api/azure.search.documents.searchclient.suggestasync)temel alır. .NET SDK hakkında daha fazla bilgi için bkz. [.NET uygulamasından Azure bilişsel arama kullanma](search-howto-dotnet-sdk.md).
 
-`InitSearch`Yöntemi, Azure bilişsel arama hizmetine kimliği doğrulanmış BIR http Dizin istemcisi oluşturur. [SuggestParameters](/dotnet/api/microsoft.azure.search.models.suggestparameters) sınıfındaki özellikler, sonuçlarda hangi alanların arandığını ve döndürüleceğini, eşleşmelerin sayısını ve belirsiz eşleşme kullanılıp kullanılmadığını belirtir. 
+`InitSearch`Yöntemi, Azure bilişsel arama hizmetine kimliği doğrulanmış BIR http Dizin istemcisi oluşturur. [Mür TOptions](/dotnet/api/azure.search.documents.suggestoptions) sınıfının özellikleri, sonuçlarda hangi alanların arandığını ve döndürüleceğini, eşleşmelerin sayısını ve belirsiz eşleşme kullanılıp kullanılmadığını belirleme. 
 
 Otomatik tamamlama için, belirsiz eşleştirme bir düzenleme mesafesi (Atlanan veya yanlış yerleştirilmiş bir karakter) ile sınırlıdır. Otomatik tamamlama sorgularında benzer bir eşleştirmede bazen Dizin boyutuna ve bunların nasıl parçalı olduğuna bağlı olarak beklenmedik sonuçlar üretebileceğini unutmayın. Daha fazla bilgi için bkz. [bölüm ve parça kavramları](search-capacity-planning.md#concepts-search-units-replicas-partitions-shards).
 
 ```csharp
-public ActionResult Suggest(bool highlights, bool fuzzy, string term)
+public async Task<ActionResult> SuggestAsync(bool highlights, bool fuzzy, string term)
 {
     InitSearch();
 
-    // Call suggest API and return results
-    SuggestParameters sp = new SuggestParameters()
+    var options = new SuggestOptions()
     {
-        Select = HotelName,
-        SearchFields = HotelName,
         UseFuzzyMatching = fuzzy,
-        Top = 5
+        Size = 8,
     };
 
     if (highlights)
     {
-        sp.HighlightPreTag = "<b>";
-        sp.HighlightPostTag = "</b>";
+        options.HighlightPreTag = "<b>";
+        options.HighlightPostTag = "</b>";
     }
 
-    DocumentSuggestResult resp = _indexClient.Documents.Suggest(term, "sg", sp);
+    // Only one suggester can be specified per index.
+    // The suggester for the Hotels index enables autocomplete/suggestions on the HotelName field only.
+    // During indexing, HotelNames are indexed in patterns that support autocomplete and suggested results.
+    var suggestResult = await _searchClient.SuggestAsync<Hotel>(term, "sg", options).ConfigureAwait(false);
 
     // Convert the suggest query results to a list that can be displayed in the client.
-    List<string> suggestions = resp.Results.Select(x => x.Text).ToList();
-    return new JsonResult
-    {
-        JsonRequestBehavior = JsonRequestBehavior.AllowGet,
-        Data = suggestions
-    };
+    List<string> suggestions = suggestResult.Value.Results.Select(x => x.Text).ToList();
+
+    // Return the list of suggestions.
+    return new JsonResult(suggestions);
 }
 ```
 
-Suggest işlevi, arama terimi girişine ek olarak isabet vurgularının veya benzer öğe eşleştirme özelliğinin kullanılıp kullanılmadığını belirleyen iki parametre alır. Yöntemi, daha sonra öneri API 'sine geçirilen bir [SuggestParameters nesnesi](/dotnet/api/microsoft.azure.search.models.suggestparameters)oluşturur. Ardından alınan sonuç istemcide gösterilebilmesi için JSON biçimine dönüştürülür.
+Mümülen Tasync işlevi, arama terimi girişine ek olarak, vuruş vurgulamaları döndürülüp döndürülmeyeceğini veya benzer eşleşme kullanıldığını belirleyecek iki parametre alır. Önerilen sonuçlara kadar en fazla sekiz eşleşme eklenebilir. Yöntemi, öner API 'sine geçirilen bir [Müde bir TOptions nesnesi](/dotnet/api/azure.search.documents.suggestoptions)oluşturur. Ardından alınan sonuç istemcide gösterilebilmesi için JSON biçimine dönüştürülür.
 
 ## <a name="autocomplete"></a>Otomatik Tamamlama
 
@@ -185,7 +183,7 @@ Suggest işlevi, arama terimi girişine ek olarak isabet vurgularının veya ben
 
 ```javascript
 $(function () {
-    // using modified jQuery Autocomplete plugin v1.2.6 https://xdsoft.net/jqplugins/autocomplete/
+    // using modified jQuery Autocomplete plugin v1.2.8 https://xdsoft.net/jqplugins/autocomplete/
     // $.autocomplete -> $.autocompleteInline
     $("#searchbox1").autocompleteInline({
         appendMethod: "replace",
@@ -220,28 +218,25 @@ $(function () {
 
 ### <a name="autocomplete-function"></a>AutoComplete işlevi
 
-AutoComplete, [Documentsoperationsextensions. AutoComplete yöntemine](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete)göre belirlenir. Önerilerle birlikte bu kod bloğu **HomeController.cs** dosyasına gidebilirler.
+AutoComplete, otomatik olarak oluşturulan [Teasync yöntemini](/dotnet/api/azure.search.documents.searchclient.autocompleteasync)temel alır. Önerilerle birlikte bu kod bloğu **HomeController.cs** dosyasına gidebilirler.
 
 ```csharp
-public ActionResult AutoComplete(string term)
+public async Task<ActionResult> AutoCompleteAsync(string term)
 {
     InitSearch();
-    //Call autocomplete API and return results
-    AutocompleteParameters ap = new AutocompleteParameters()
-    {
-        AutocompleteMode = AutocompleteMode.OneTermWithContext,
-        UseFuzzyMatching = false,
-        Top = 5
-    };
-    AutocompleteResult autocompleteResult = _indexClient.Documents.Autocomplete(term, "sg", ap);
 
-    // Convert the Suggest results to a list that can be displayed in the client.
-    List<string> autocomplete = autocompleteResult.Results.Select(x => x.Text).ToList();
-    return new JsonResult
+    // Setup the autocomplete parameters.
+    var ap = new AutocompleteOptions()
     {
-        JsonRequestBehavior = JsonRequestBehavior.AllowGet,
-        Data = autocomplete
+        Mode = AutocompleteMode.OneTermWithContext,
+        Size = 6
     };
+    var autocompleteResult = await _searchClient.AutocompleteAsync(term, "sg", ap).ConfigureAwait(false);
+
+    // Convert the autocompleteResult results to a list that can be displayed in the client.
+    List<string> autocomplete = autocompleteResult.Value.Results.Select(x => x.Text).ToList();
+
+    return new JsonResult(autocomplete);
 }
 ```
 

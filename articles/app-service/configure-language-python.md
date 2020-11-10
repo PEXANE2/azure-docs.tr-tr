@@ -2,15 +2,15 @@
 title: Linux Python uygulamalarını yapılandırma
 description: Hem Azure portal hem de Azure CLı kullanarak Web uygulamalarının çalıştırıldığı Python kapsayıcısını nasıl yapılandıracağınızı öğrenin.
 ms.topic: quickstart
-ms.date: 10/06/2020
+ms.date: 11/06/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 935baef209811146d0b60f4fc02986818fd103a7
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9e0e9098959231d4283608e8191081ae2df6737a
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743785"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425924"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service için bir Linux Python uygulaması yapılandırma
 
@@ -26,7 +26,7 @@ Yapılandırma için [Azure Portal](https://portal.azure.com) ya da Azure CLI 'y
 
 - **Azure CLI** : iki seçeneğiniz vardır.
 
-    - Kod bloklarının sağ üst köşesinde bulunan **deneyin** düğmesini kullanarak açabileceğiniz [Azure Cloud Shell](../cloud-shell/overview.md)komutları çalıştırın.
+    - [Azure Cloud Shell](../cloud-shell/overview.md)komutları çalıştırın.
     - [Azure CLI](/cli/azure/install-azure-cli)'nın en son sürümünü yükleyerek komutları yerel olarak çalıştırın ve [az Login](/cli/azure/reference-index#az-login)komutunu kullanarak Azure 'da oturum açın.
     
 > [!NOTE]
@@ -40,7 +40,7 @@ Yapılandırma için [Azure Portal](https://portal.azure.com) ya da Azure CLI 'y
 
     -  [Az WebApp config Show](/cli/azure/webapp/config#az_webapp_config_show)komutuyla geçerli Python sürümünü göster:
     
-        ```azurecli-interactive
+        ```azurecli
         az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
         ```
         
@@ -48,13 +48,13 @@ Yapılandırma için [Azure Portal](https://portal.azure.com) ya da Azure CLI 'y
     
     - Python sürümünü [az WebApp config Set](/cli/azure/webapp/config#az_webapp_config_set) ile ayarla
         
-        ```azurecli-interactive
+        ```azurecli
         az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "PYTHON|3.7"
         ```
     
     - [Az WebApp List-çalışma zamanları](/cli/azure/webapp#az_webapp_list_runtimes)ile Azure App Service desteklenen tüm Python sürümlerini gösterin:
     
-        ```azurecli-interactive
+        ```azurecli
         az webapp list-runtimes --linux | grep PYTHON
         ```
     
@@ -68,7 +68,7 @@ Bunun yerine kendi kapsayıcı görüntünüzü oluşturarak desteklenmeyen bir 
 App Service, Oryx olarak adlandırılan yapı sistemi, git veya ZIP paketleri kullanarak uygulamanızı dağıtırken aşağıdaki adımları gerçekleştirir:
 
 1. Bu ayar tarafından belirtilmişse özel bir ön derleme betiği çalıştırın `PRE_BUILD_COMMAND` .
-1. Şu komutu çalıştırın: `pip install -r requirements.txt`. *requirements.txt* dosya projenin kök klasöründe bulunmalıdır. Aksi takdirde, yapı işlemi şu hatayı raporlar: "setup.py bulunamadı veya requirements.txt; Pınstall çalışmıyor. "
+1. `pip install -r requirements.txt` komutunu çalıştırın. *requirements.txt* dosya projenin kök klasöründe bulunmalıdır. Aksi takdirde, yapı işlemi şu hatayı raporlar: "setup.py bulunamadı veya requirements.txt; Pınstall çalışmıyor. "
 1. Depo kökünde *Manage.py* bulunursa (bir Docgo uygulaması olduğunu), *Manage.py collectstatic* komutunu çalıştırın. Ancak, `DISABLE_COLLECTSTATIC` ayar ise, `true` Bu adım atlanır.
 1. Ayar tarafından belirtilmişse özel derleme sonrası betiği çalıştırın `POST_BUILD_COMMAND` .
 
@@ -81,6 +81,8 @@ Varsayılan olarak,, `PRE_BUILD_COMMAND` `POST_BUILD_COMMAND` ve `DISABLE_COLLEC
 - Oluşturma sonrası komutları çalıştırmak için, `POST_BUILD_COMMAND` ayarı gibi bir komut ya da, `echo Post-build command` Proje kökle ilişkili bir betik dosyasının yolunu (gibi) ya da gibi ayarlayın `scripts/postbuild.sh` . Tüm komutların, proje kök klasörü için göreli yollar kullanması gerekir.
 
 Derleme Otomasyonu 'nu özelleştiren ek ayarlar için bkz. [Oryx Configuration](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md). 
+
+Derleme ve dağıtım günlüklerine erişmek için bkz. [erişim dağıtım günlükleri](#access-deployment-logs).
 
 App Service çalışma ve Linux 'ta Python uygulamaları oluşturma hakkında daha fazla bilgi için bkz. [Python uygulamalarını ne şekilde algıladığını ve bunları yapılandırma](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/python.md).
 
@@ -164,9 +166,13 @@ Ana uygulama modülünüz farklı bir dosyada bulunuyorsa uygulama nesnesi için
 
 ### <a name="default-behavior"></a>Varsayılan davranış
 
-App Service özel komut dosyası, Django uygulaması veya Flask uygulaması bulamazsa _opt/defaultsite_ klasöründe bulunan varsayılan salt okunur uygulamayı çalıştırır. Varsayılan uygulama aşağıdaki gibi görünür:
+App Service özel bir komut, Docgo uygulaması veya bir Flask uygulaması bulamazsa, _opt/Defaultsite_ klasöründe bulunan ve aşağıdaki görüntüde gösterilen varsayılan salt okunurdur bir uygulama çalıştırır.
 
-![Varsayılan Linux'ta App Service web sayfası](media/configure-language-python/default-python-app.png)
+Kodu dağıttıysanız ve yine de varsayılan uygulamayı görüyorsanız, bkz. [sorun giderme-uygulama görünmüyor](#app-doesnt-appear).
+
+[![Varsayılan Linux'ta App Service web sayfası](media/configure-language-python/default-python-app.png)](#app-doesnt-appear)
+
+Yine, varsayılan uygulama yerine dağıtılan bir uygulamayı görmeyi düşünüyorsanız, bkz. [sorun giderme-uygulama görünmüyor](#app-doesnt-appear).
 
 ## <a name="customize-startup-command"></a>Başlangıç komutunu Özelleştir
 
@@ -182,7 +188,7 @@ Başlangıç komutunu veya komut dosyasını belirtmek için:
 
 - **Azure CLI** : başlangıç komutunu veya dosyayı ayarlamak için [az WebApp config Set](/cli/azure/webapp/config#az_webapp_config_set) komutunu parametresiyle birlikte kullanın `--startup-file` :
 
-    ```azurecli-interactive
+    ```azurecli
     az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
     ```
         
@@ -258,33 +264,81 @@ Popüler Web çerçeveleri `X-Forwarded-*` Standart uygulama hiyerarşinizdeki b
 
 Günlüklere Azure Portal erişmek için, **Monitoring**  >  uygulamanızın sol taraftaki menüsünde izleme **günlüğü akışı** ' nı seçin.
 
+## <a name="access-deployment-logs"></a>Dağıtım günlüklerine erişim
+
+Kodunuzu dağıttığınızda App Service, [derleme otomasyonunu özelleştirme](#customize-build-automation)bölümünde açıklanan yapı işlemini gerçekleştirir. Derleme kendi kapsayıcısında çalıştığından, derleme günlükleri uygulamanın tanılama günlüklerinden ayrı olarak depolanır.
+
+Dağıtım günlüklerine erişmek için aşağıdaki adımları kullanın:
+
+1. Web uygulamanız için Azure Portal Sol menüdeki **dağıtım**  >  **Dağıtım Merkezi (Önizleme)** öğesini seçin.
+1. **Günlükler** sekmesinde, en son kayıt IÇIN **tamamlama kimliğini** seçin.
+1. Görüntülenen **günlük ayrıntıları** sayfasında, "çalışan Oryx Build..." seçeneğinin yanında görünen **günlükleri göster..** . bağlantısını seçin.
+
+*requirements.txt* hatalı bağımlılıklar ve ön veya derleme sonrası betiklerdeki hatalar gibi derleme sorunları bu günlüklerde görüntülenir. Gereksinimler dosyanız *requirements.txt* tam olarak adlandırılmışsa veya projenizin kök klasöründe görünmezse hatalar da görüntülenir.
+
 ## <a name="open-ssh-session-in-browser"></a>Tarayıcıda SSH oturumu açma
 
 [!INCLUDE [Open SSH session in browser](../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
+SSH oturumuna başarıyla bağlandığınızda, pencerenin alt kısmındaki "SSH BAĞLANTıSı kuruldu" iletisini görmeniz gerekir. "SSH_CONNECTION_CLOSED" gibi hatalar veya kapsayıcının yeniden başlatıldığı bir ileti görürseniz, uygulama kapsayıcısının başlamasını engelleyen bir hata olabilir. Olası sorunları araştırmaya yönelik adımlar için bkz. [sorun giderme](#troubleshooting) .
+
 ## <a name="troubleshooting"></a>Sorun giderme
 
-- **Kendi uygulama kodunuzu dağıttıktan sonra varsayılan uygulamayı görüyorsunuz.** App Service için uygulama kodunuzu dağıtmadığınız ya da App Service uygulama kodunuzu bulamadığı ve bunun yerine varsayılan uygulamayı çalıştırmadığınız için varsayılan uygulama görüntülenir.
+Genel olarak, sorun gidermenin ilk adımı App Service tanılamayı kullanmaktır:
+
+1. Web uygulamanız için Azure portal, sol menüden **Tanıla ve sorunları çöz** ' ü seçin.
+1. **Kullanılabilirlik ve performans ' ı** seçin.
+1. **Uygulama günlükleri** , **kapsayıcı kilitlenme** ve **kapsayıcı sorunları** seçeneklerinde, en yaygın sorunların görüneceği bilgileri inceleyin.
+
+Ardından, tüm hata iletileri için [dağıtım günlüklerini](#access-deployment-logs) ve [uygulama günlüklerini](#access-diagnostic-logs) inceleyin. Bu Günlükler genellikle uygulama dağıtımını veya uygulama başlangıcını engelleyebilen belirli sorunları belirler. Örneğin, *requirements.txt* dosyanızda yanlış dosya adı varsa veya proje kök klasörünüzde mevcut değilse, derleme başarısız olabilir.
+
+Aşağıdaki bölümler, belirli sorunlar için ek rehberlik sağlar.
+
+- [Uygulama görünmez-varsayılan uygulama gösterilir](#app-doesnt-appear)
+- [Uygulama görünmüyor-"hizmet kullanılamıyor" iletisi](#service-unavailable)
+- [Setup.py veya requirements.txtbulunamadı ](#could-not-find-setuppy-or-requirementstxt)
+- [Parola yazıldığında SSH oturumunda görünmez](#other-issues)
+- [SSH oturumundaki komutlar kesilmiş görünüyor](#other-issues)
+- [Statik varlıklar bir Docgo uygulamasında görünmüyor](#other-issues)
+- [Önemli SSL bağlantısı gerekiyor](#other-issues)
+
+#### <a name="app-doesnt-appear"></a>Uygulama görünmüyor
+
+- **Kendi uygulama kodunuzu dağıttıktan sonra varsayılan uygulamayı görüyorsunuz.** App Service için uygulama kodunuzu dağıtmadığınız ya da App Service uygulama kodunuzu bulamadığı ve bunun yerine varsayılan uygulamayı çalıştırmadığınız için [Varsayılan uygulama](#default-behavior) görüntülenir.
 
     - App Service'i yeniden başlatın, 15-20 saniye bekleyin ve uygulamayı yeniden denetleyin.
     
-    - Windows tabanlı örnek yerine Linux için App Service’i kullandığınızdan emin olun. Azure CLI’de `<resource-group-name>` ve `<app-service-name>` hizmetini uygun bir şekilde değiştiren `az webapp show --resource-group <resource-group-name> --name <app-name> --query kind` komutunu çalıştırın. Çıktı olarak `app,linux` görünmelidir, aksi takdirde App Service’i yeniden oluşturun ve Linux’u seçin.
+    - Windows tabanlı örnek yerine Linux için App Service’i kullandığınızdan emin olun. Azure CLI’de `<resource-group-name>` ve `<app-name>` hizmetini uygun bir şekilde değiştiren `az webapp show --resource-group <resource-group-name> --name <app-name> --query kind` komutunu çalıştırın. Çıktı olarak `app,linux` görünmelidir, aksi takdirde App Service’i yeniden oluşturun ve Linux’u seçin.
     
-    - SSH veya Kudu kullanarak doğrudan App Service'e bağlanın ve dosyalarınızın *site/wwwroot* dizininde bulunduğunu doğrulayın. Dosyalarınız orada değilse dağıtım işlemlerinizi gözden geçirin ve uygulamayı yeniden dağıtın.
+    - App Service kapsayıcısına doğrudan bağlanmak ve dosyalarınızın *site/Wwwroot* altında mevcut olduğunu doğrulamak için [SSH](#open-ssh-session-in-browser) kullanın. Dosyalarınız yoksa, aşağıdaki adımları kullanın:
+      1. 1 değeriyle adlı bir uygulama ayarı oluşturun `SCM_DO_BUILD_DURING_DEPLOYMENT` , kodunuzu yeniden dağıtın, birkaç dakika bekleyin ve ardından uygulamaya yeniden erişmeyi deneyin. Uygulama ayarları oluşturma hakkında daha fazla bilgi için, [Azure portal App Service uygulama yapılandırma](configure-common.md)konusuna bakın.
+      1. Dağıtım işleminizi gözden geçirin, [dağıtım günlüklerine bakın](#access-deployment-logs), hataları düzeltin ve uygulamayı yeniden dağıtın.
     
     - Dosyalarınız oradaysa App Service başlangıç dosyanızı tanımlayamamış olabilir. Uygulamanızın App Service'in [Django](#django-app) veya [Flask](#flask-app) için beklediği şekilde yapılandırılmış olduğundan emin olun veya [özel başlangıç komutu](#customize-startup-command) kullanın.
 
-- **Tarayıcıda "Hizmet Kullanılamıyor" iletisini görüyorsunuz.** Bu durum, tarayıcının App Service'ten yanıt beklerken zaman aşımına uğradığını gösterir. Bunun nedeni App Service'in Gunicorn sunucusunu başlatmış olması ancak uygulama kodunu belirten bağımsız değişkenlerin hatalı olmasıdır.
+- <a name="service-unavailable"></a>**"Hizmet kullanılamıyor" iletisini tarayıcıda görürsünüz.** Tarayıcı App Service bir yanıt beklerken zaman aşımına uğradı. Bu, App Service Gunic,Server 'ın başlatıldığını, ancak uygulamanın başlamadığını gösterir. Bu durum, Gunicbir bağımsız değişkenlerin yanlış olduğunu veya uygulama kodunda bir hata olduğunu gösteriyor olabilir.
 
     - Özellikle App Service Planınızda en düşük fiyatlandırma katmanlarını kullanıyorsanız tarayıcıyı yenileyin. Ücretsiz katmanları kullandığınızda uygulamanın başlaması daha uzun sürebilir ve tarayıcıyı yenilediğinizde yanıt verebilir.
 
     - Uygulamanızın App Service'in [Django](#django-app) veya [Flask](#flask-app) için beklediği şekilde yapılandırılmış olduğundan emin olun veya [özel başlangıç komutu](#customize-startup-command) kullanın.
 
-    - Herhangi bir hata iletisi için [günlük akışını](#access-diagnostic-logs) inceleyin.
+    - Herhangi bir hata iletisi için [uygulama günlüğü akışını](#access-diagnostic-logs) inceleyin. Günlükler, uygulama kodundaki hataları gösterir.
+
+#### <a name="could-not-find-setuppy-or-requirementstxt"></a>Setup.py veya requirements.txt bulunamadı
 
 - **Günlük akışında "Setup.py bulunamadı veya requirements.txt; Pyx Install çalışmıyor. "** : Oryx derleme işlemi *requirements.txt* dosyanızı bulamadı.
 
-    - App Service doğrudan bağlanmak ve *requirements.txt* doğrudan *site/Wwwroot* altında var olduğunu doğrulamak Için SSH veya kudu konsolunu kullanın. Mevcut değilse, siteyi deponuzda mevcut yapın ve dağıtımınıza dahil edin. Ayrı bir klasörde varsa, onu köke taşıyın.
+    - [SSH](#open-ssh-session-in-browser) aracılığıyla Web uygulamasının kapsayıcısına bağlanın ve *requirements.txt* doğru şekilde adlandırıldığını ve doğrudan *site/Wwwroot* altında mevcut olduğunu doğrulayın. Mevcut değilse, siteyi deponuzda mevcut yapın ve dağıtımınıza dahil edin. Ayrı bir klasörde varsa, onu köke taşıyın.
+
+#### <a name="other-issues"></a>Diğer sorunlar
+
+- **Girilen parolalar SSH oturumunda görünmez** : güvenlik nedenleriyle, sız yazarken SSH oturumu parolanızı gizli tutar. Ancak karakterler kaydediliyor, bu nedenle parolanızı her zamanki gibi yazın ve bitince **ENTER** tuşuna basın.
+
+- **SSH oturumundaki komutlar kesilmiyor** : Düzenleyici sözcük kaydırma komutları olmayabilir, ancak yine de düzgün çalışmalıdır.
+
+- **Statik varlıklar bir Docgo uygulamasında görünmüyor** : [whitenoıse modülünü](http://whitenoise.evans.io/en/stable/django.html) etkinleştirdiğinizden emin olun
+
+- **"ÖNEMLI SSL bağlantısı gerekiyor" iletisini görürsünüz** : uygulamanın içinden kaynaklara (veritabanları gibi) erişmek için kullanılan tüm Kullanıcı adlarını ve parolaları denetleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

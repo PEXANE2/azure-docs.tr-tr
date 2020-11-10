@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 47aada0abe2520ba81689ca8fa17787fde847d83
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 2e26028c47e8c96f8c1adabc468ee6f03e3cb19c
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360258"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427318"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Eşleme veri akışında havuz dönüştürme
 
@@ -105,7 +105,7 @@ Varsayılan olarak, veriler belirleyici olmayan bir sırada birden çok havuza y
 ![Özel havuz sıralamasını gösteren ekran görüntüsü.](media/data-flow/custom-sink-ordering.png "Özel havuz sıralamasını gösteren ekran görüntüsü.")
 
 > [!NOTE]
-> [Önbelleğe alınmış aramaları](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-expression-builder#cached-lookup)kullanırken, havuz sıraağınızın önbelleğe alınmış havuzları 0 olarak ayarlanmış olduğundan emin olun.
+> [Önbelleğe alınmış aramaları](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-expression-builder#cached-lookup)kullanırken, havuz sıraağınızın önbelleğe alınmış havuzlarınızın, sıralamada en düşük (veya ilk) olarak ayarlandığından emin olun.
 
 ![Özel havuz sıralaması](media/data-flow/cache-2.png "Özel havuz sıralaması")
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: d69cb782b3be7035b7571653dcb434e44d22da93
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: edf08715290fc68b65f2d910440093be7df37af0
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91377232"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425070"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -18,7 +18,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 > [!div class="checklist"]
 > * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
 > * [Azure konuşma kaynağı oluşturma](../../../../overview.md#try-the-speech-service-for-free)
-> * [Azure Blob 'a kaynak dosya yükleme](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
+> * [Azure Blob 'a kaynak dosya yükleme](../../../../../../storage/blobs/storage-quickstart-blobs-portal.md)
 
 ## <a name="download-and-install-the-api-client-library"></a>API istemci kitaplığını indirme ve yükleme
 
@@ -27,9 +27,9 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 Yükleme için aşağıdaki adımları izleyin:
 
 1. https://editor.swagger.io öğesine gidin.
-1. **Dosya**' ya ve ardından **URL içeri aktar**' a tıklayın.
+1. **Dosya** ' ya ve ardından **URL içeri aktar** ' a tıklayın.
 1. Konuşma hizmeti aboneliğinizin bölgesi de dahil olmak üzere Swagger URL 'sini girin: `https://<your-region>.cris.ai/docs/v2.0/swagger` .
-1. **Istemci oluştur** ' a tıklayın ve **Python**' ı seçin.
+1. **Istemci oluştur** ' a tıklayın ve **Python** ' ı seçin.
 1. İstemci kitaplığını kaydedin.
 1. İndirilen python-client-generated.zip dosya sisteminizde herhangi bir yere ayıklayın.
 1. PIP: kullanarak, Python ortamınıza ayıklanan Python-Client modülünü yükler `pip install path/to/package/python-client` .

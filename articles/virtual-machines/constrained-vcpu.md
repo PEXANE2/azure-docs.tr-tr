@@ -6,12 +6,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 03/09/2018
 ms.author: mimckitt
-ms.openlocfilehash: c7852bd1b6d93357c1c9127686d1edbb5c702a3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 530ae08dabe54ed279a4055e52109aad0ef4f842
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88701648"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426162"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>Kısıtlanmış vCPU özellikli VM boyutları
 
@@ -24,7 +24,7 @@ VCPU sayısı, özgün VM boyutunun bir yarısı veya bir çeyrekte kısıtlanab
 SQL Server veya Oracle için ücretlendirilen lisanslama ücretleri yeni vCPU sayısı ile sınırlıdır ve diğer ürünlerin yeni vCPU sayısı temelinde ücretlendirilmelidir. Bu, VM özelliklerinin etkin (Faturalanabilir) vCPU 'Lara oranını artırdığı için %50 ile %75 arasında bir sonuç verir. Bu yeni VM boyutları, müşteri iş yüklerinin, yazılım lisanslama maliyetini iyileştirirken aynı bellek, depolama ve g/ç bant genişliğini kullanmasına izin verir. Şu anda, işletim maliyeti, işletim sistemi lisansı içeren işlem maliyeti, özgün boyutuyla aynı kalır. Daha fazla bilgi için bkz. [Azure VM boyutları daha fazla maliyetli veritabanı iş yükleri için](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
 
 
-| Adı                | Sanal işlemci | Özellikler           |
+| Name                | Sanal işlemci | Özellikler           |
 |---------------------|------|-----------------|
 | Standard_M8-2ms     | 2    | M8ms ile aynı    |
 | Standard_M8-4ms     | 4    | M8ms ile aynı    |
@@ -63,6 +63,17 @@ SQL Server veya Oracle için ücretlendirilen lisanslama ücretleri yeni vCPU sa
 | Standard_E32 8ds_v4 | 8    | E32ds_v4 ile aynı|
 | Standard_E64 32ds_v4| 32   | E64ds_v4 ile aynı|
 | Standard_E64 16ds_v4| 16   | E64ds_v4 ile aynı|
+| Standard_E4 2as_v4  | 2    | E4as_v4 ile aynı |
+| Standard_E8 4as_v4  | 4    | E8as_v4 ile aynı |
+| Standard_E8 2as_v4  | 2    | E8as_v4 ile aynı |
+| Standard_E16 8as_v4 | 8    | E16as_v4 ile aynı|
+| Standard_E16 4as_v4 | 4    | E16as_v4 ile aynı|
+| Standard_E32 16as_v4| 16   | E32as_v4 ile aynı|
+| Standard_E32 8as_v4 | 8    | E32as_v4 ile aynı|
+| Standard_E64 32as_v4| 32   | E64as_v4 ile aynı|
+| Standard_E64 16as_v4| 16   | E64as_v4 ile aynı|
+| Standard_E96 48as_v4| 48   | E96as_v4 ile aynı|
+| Standard_E96 24as_v4| 24   | E96as_v4 ile aynı|
 | Standard_GS4-8      | 8    | GS4 ile aynı     |
 | Standard_GS4-4      | 4    | GS4 ile aynı     |
 | Standard_GS5-16     | 16   | GS5 ile aynı     |

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78ea26adb8299cc13d4677c66a0e06cba901d9dc
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 00cb63f63ffb1f2e10a276cfdeee9c5e8e1022de
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977383"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427386"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows için sanal makine uzantıları ve özellikleri
 
@@ -42,7 +42,7 @@ Birçok farklı Azure VM uzantısı, her biri belirli bir kullanım durumu ile k
 
 İşleme özgü uzantılara ek olarak, hem Windows hem de Linux sanal makineleri için özel bir betik uzantısı vardır. Windows için özel Betik uzantısı, bir VM 'de herhangi bir PowerShell betiğinin çalıştırılmasını sağlar. Özel betikler, yerel Azure araçlarının sağlayabildiklerinin ötesinde yapılandırılması gereken Azure dağıtımlarını tasarlamak için yararlıdır. Daha fazla bilgi için bkz. [WINDOWS VM özel Betik uzantısı](custom-script-windows.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 SANAL makinede uzantıyı işlemek için Azure Windows aracısının yüklü olması gerekir. Bazı ayrı uzantılar, kaynaklara veya bağımlılıklara erişim gibi önkoşullara sahiptir.
 
@@ -92,7 +92,7 @@ Aşağıdaki yöntemler mevcut bir VM 'ye karşı bir uzantı çalıştırmak i�
 
 ### <a name="powershell"></a>PowerShell
 
-Tek tek uzantıları çalıştırmak için çeşitli PowerShell komutları vardır. Bir listeyi görmek için, [Get-Command](/powershell/module/microsoft.powershell.core/get-command) ve *EXTENSION*FILTER kullanın:
+Tek tek uzantıları çalıştırmak için çeşitli PowerShell komutları vardır. Bir listeyi görmek için, [Get-Command](/powershell/module/microsoft.powershell.core/get-command) ve *EXTENSION* FILTER kullanın:
 
 ```powershell
 Get-Command Set-Az*Extension* -Module Az.Compute
@@ -142,7 +142,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
 
 ### <a name="azure-portal"></a>Azure portal
 
-VM uzantıları, mevcut bir VM 'ye Azure portal aracılığıyla uygulanabilir. Portalda VM 'yi seçin, **Uzantılar**' ı seçin ve **Ekle**' yi seçin. Kullanılabilir uzantılar listesinden istediğiniz uzantıyı seçin ve sihirbazdaki yönergeleri izleyin.
+VM uzantıları, mevcut bir VM 'ye Azure portal aracılığıyla uygulanabilir. Portalda VM 'yi seçin, **Uzantılar** ' ı seçin ve **Ekle** ' yi seçin. Kullanılabilir uzantılar listesinden istediğiniz uzantıyı seçin ve sihirbazdaki yönergeleri izleyin.
 
 Aşağıdaki örnekte, Microsoft kötü amaçlı yazılımdan koruma uzantısının Azure portal yüklemesi gösterilmektedir:
 
@@ -286,15 +286,15 @@ Microsoft.Compute     CustomScriptExtension                1.9
 
 #### <a name="agent-updates"></a>Aracı güncelleştirmeleri
 
-Windows Konuk Aracısı yalnızca *uzantı işleme kodu*Içerir, *Windows sağlama kodu* ayrı olur. Windows Konuk Aracısı 'nı kaldırabilirsiniz. Pencere Konuk aracısının otomatik güncelleştirilmesini devre dışı bırakılamaz.
+Windows Konuk Aracısı yalnızca *uzantı işleme kodu* Içerir, *Windows sağlama kodu* ayrı olur. Windows Konuk Aracısı 'nı kaldırabilirsiniz. Pencere Konuk aracısının otomatik güncelleştirilmesini devre dışı bırakılamaz.
 
-*Uzantı işleme kodu* , Azure dokusuna iletişim kurmaktan ve Yüklemeler, raporlama durumu, tek tek uzantıları güncelleştirme ve bunları KALDıRMA gibi VM uzantıları işlemlerinin işlenmesine yöneliktir. Güncelleştirmeler, güvenlik düzeltmelerini, hata düzeltmelerini ve *uzantı işleme koduna*yönelik geliştirmeleri içerir.
+*Uzantı işleme kodu* , Azure dokusuna iletişim kurmaktan ve Yüklemeler, raporlama durumu, tek tek uzantıları güncelleştirme ve bunları KALDıRMA gibi VM uzantıları işlemlerinin işlenmesine yöneliktir. Güncelleştirmeler, güvenlik düzeltmelerini, hata düzeltmelerini ve *uzantı işleme koduna* yönelik geliştirmeleri içerir.
 
 Çalıştırdığınız sürümü denetlemek için bkz. [yüklü Windows Konuk aracısını algılama](agent-windows.md#detect-the-vm-agent).
 
 #### <a name="extension-updates"></a>Uzantı güncelleştirmeleri
 
-Bir uzantı güncelleştirmesi kullanılabilir olduğunda, Windows Konuk Aracısı uzantıyı indirir ve yükseltir. Otomatik uzantı güncelleştirmeleri, *küçük* veya *Düzeltme*olabilir. Uzantıyı sağladığınızda uzantıların *küçük* güncelleştirmelerini kabul edebilir veya devre dışı bırakabilirsiniz. Aşağıdaki örnek, bir Kaynak Yöneticisi şablonundaki alt sürümlerin otomatik olarak *': true, '* ile nasıl yükseltilleceğini gösterir:
+Bir uzantı güncelleştirmesi kullanılabilir olduğunda, Windows Konuk Aracısı uzantıyı indirir ve yükseltir. Otomatik uzantı güncelleştirmeleri, *küçük* veya *Düzeltme* olabilir. Uzantıyı sağladığınızda uzantıların *küçük* güncelleştirmelerini kabul edebilir veya devre dışı bırakabilirsiniz. Aşağıdaki örnek, bir Kaynak Yöneticisi şablonundaki alt sürümlerin otomatik olarak *': true, '* ile nasıl yükseltilleceğini gösterir:
 
 ```json
     "properties": {
@@ -322,7 +322,7 @@ Uzantının ' oto Upgrademinorversion ' ile sağlanması durumunda VM modelinden
  $vm.Extensions
 ```
 
-Aşağıdaki örnek çıktıda, ' *true*' olarak ayarlanmış *olan bir çıktı* gösterilmektedir:
+Aşağıdaki örnek çıktıda, ' *true* ' olarak ayarlanmış *olan bir çıktı* gösterilmektedir:
 
 ```powershell
 ForceUpdateTag              :
@@ -336,7 +336,7 @@ AutoUpgradeMinorVersion     : True
 
 Uzantıya yönelik bir güncelleştirmenin ne zaman oluştuğunu görmek için, *C:\windowsazure\logs\waappagent.log* konumundaki VM 'deki aracı günlüklerini gözden geçirin.
 
-Aşağıdaki örnekte, VM 'de *Microsoft. COMPUTE. CustomScriptExtension 1,8* yüklü. *1,9*sürümüne bir düzeltme sunuldu:
+Aşağıdaki örnekte, VM 'de *Microsoft. COMPUTE. CustomScriptExtension 1,8* yüklü. *1,9* sürümüne bir düzeltme sunuldu:
 
 ```powershell
 [INFO]  Getting plugin locations for plugin 'Microsoft.Compute.CustomScriptExtension'. Current Version: '1.8', Requested Version: '1.9'
@@ -345,7 +345,7 @@ Aşağıdaki örnekte, VM 'de *Microsoft. COMPUTE. CustomScriptExtension 1,8* y�
 
 ## <a name="agent-permissions"></a>Aracı izinleri
 
-Görevlerini gerçekleştirmek için aracının *yerel sistem*olarak çalıştırılması gerekir.
+Görevlerini gerçekleştirmek için aracının *yerel sistem* olarak çalıştırılması gerekir.
 
 ## <a name="troubleshoot-vm-extensions"></a>VM uzantılarının sorunlarını giderme
 
@@ -355,7 +355,7 @@ Aşağıdaki sorun giderme adımları tüm VM uzantıları için geçerlidir.
 
 1. Windows Konuk Aracısı günlüğünü denetlemek için, uzantınızın *C:\windowsazure\logs\waappagent.log* dizininde sağlanması durumunda etkinliğe bakın.
 
-2. *C:\windowsazure\logs\eklentilerimiz \<extensionName> * hakkında daha fazla bilgi için gerçek uzantı günlüklerine bakın
+2. *\\ <extensionName> C:\windowsazure\logs\eklentilerimiz* hakkında daha fazla bilgi için gerçek uzantı günlüklerine bakın
 
 3. Hata kodları, bilinen sorunlar vb. için uzantıya özgü belge sorunlarını giderme bölümlerini denetleyin.
 
@@ -403,7 +403,7 @@ Extensions[0]           :
     Message             : Finished executing command
 ```
 
-Uzantı yürütme durumu Azure portal da bulunabilir. Bir uzantının durumunu görüntülemek için VM 'yi seçin, **Uzantılar**' ı seçin ve ardından istediğiniz uzantıyı seçin.
+Uzantı yürütme durumu Azure portal da bulunabilir. Bir uzantının durumunu görüntülemek için VM 'yi seçin, **Uzantılar** ' ı seçin ve ardından istediğiniz uzantıyı seçin.
 
 ### <a name="rerun-vm-extensions"></a>VM uzantılarını yeniden çalıştır
 
@@ -416,12 +416,12 @@ Remove-AzVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "
 Azure portal bir uzantıyı aşağıdaki gibi da kaldırabilirsiniz:
 
 1. Bir VM seçin.
-2. **Uzantılar**' ı seçin.
+2. **Uzantılar** ' ı seçin.
 3. İstediğiniz uzantıyı seçin.
-4. **Kaldır**' ı seçin.
+4. **Kaldır** ' ı seçin.
 
 ## <a name="common-vm-extensions-reference"></a>Ortak VM uzantıları başvurusu
-| Uzantı adı | Açıklama | Daha fazla bilgi |
+| Uzantı adı | Description | Daha fazla bilgi |
 | --- | --- | --- |
 | Windows için Özel Betik Uzantısı |Azure sanal makinesinde betikleri çalıştırma |[Windows için Özel Betik Uzantısı](custom-script-windows.md) |
 | Windows için DSC Uzantısı |PowerShell DSC (Istenen durum yapılandırması) uzantısı |[Windows için DSC Uzantısı](dsc-overview.md) |

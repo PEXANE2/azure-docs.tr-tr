@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: monitoring
 ms.topic: tutorial
 ms.date: 10/15/2020
-ms.openlocfilehash: 924ac3a58a005b84cbf87f833e97862e26a5b8e0
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 2970bb58bb73d52c75729b00a8209a9c576d4ec0
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363366"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427420"
 ---
 # <a name="monitor-your-synapse-workspace"></a>SYNAPSE çalışma alanınızı izleme
 
@@ -31,8 +31,7 @@ SYNAPSE Studio 'Yu açın ve **izleyici** hub 'ına gidin. Burada, çalışma al
 ## <a name="integration"></a>Tümleştirme
 
 1. **Tümleştirme >** işlem hattına gidin. Bu görünümde, çalışma alanınızda bir işlem hattının her çalıştırılışında görebilirsiniz. 
-1. Önceki adımda çalıştırdığınız işlem hattını bulun ve **ardışık düzen adına** tıklayın.
-1. Artık söz konusu işlem hattının içindeki tek tek etkinliklerin nasıl çalışacağını görebilirsiniz.
+1. Önceki adımda çalıştırdığınız işlem hattını bulun ve ayrıntılarını görüntülemek için **ardışık düzen adına** tıklayın.
 1. SYNAPSE Studio 'nun en üstündeki **Içerik Haritası çubuğu** ' na tıklayın, önceki görünüme dönmek için **tüm işlem hattı çalıştırmaları** ' na tıklayın.
 
 ## <a name="apache-spark-activities"></a>Apache Spark etkinlikleri

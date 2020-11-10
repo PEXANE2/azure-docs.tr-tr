@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 8bcc3e41f87570822f48a111fe98d1fdaf72679f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 09b537d82ce4e9e44c36df628d120623e69abfaf
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470983"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94424818"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -41,14 +41,14 @@ Bir nesneyi başlatabilmeniz için `IntentRecognizer` , lusıs tahmin kaynağın
 Bu kodu içindeki try/catch bloğuna ekleyin `main()` . Bu değerleri güncelleştirdiğinizden emin olun:
 
 * `"YourLanguageUnderstandingSubscriptionKey"`Lusıs tahmin anahtarınızla değiştirin.
-* `"YourLanguageUnderstandingServiceRegion"`Lusıs konumunuz ile değiştirin. Bölgeden **bölge tanımlayıcısı** kullan [region](https://aka.ms/speech/sdkregion)
+* `"YourLanguageUnderstandingServiceRegion"`Lusıs konumunuz ile değiştirin. Bölgeden **bölge tanımlayıcısı** kullan [region](../../../../regions.md)
 
 >[!TIP]
 > Bu değerleri bulmak için yardıma ihtiyacınız varsa bkz. [Amaç tanıma için BIR lusıs uygulaması oluşturma](#create-a-luis-app-for-intent-recognition).
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=27)]
 
-Bu örnek `FromSubscription()` , oluşturmak için yöntemini kullanır `SpeechConfig` . Kullanılabilir yöntemlerin tam listesi için bkz. [SpeechConfig Class](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true).
+Bu örnek `FromSubscription()` , oluşturmak için yöntemini kullanır `SpeechConfig` . Kullanılabilir yöntemlerin tam listesi için bkz. [SpeechConfig Class](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet).
 
 Konuşma SDK 'Sı, dil için en-US kullanarak varsayılan olarak tanıma yapılır, kaynak dili seçme hakkında bilgi için bkz. [konuşmayı için kaynak dilini belirtme](../../../../how-to-specify-source-language.md) .
 
@@ -104,7 +104,7 @@ Bu noktada, kodunuzun şöyle görünmesi gerekir:
 
 ## <a name="build-and-run-your-app"></a>Uygulamanızı derleyin ve çalıştırın
 
-<kbd>F11</kbd>tuşuna basın veya **Run**  >  **hata ayıklamayı**Çalıştır ' ı seçin.
+<kbd>F11</kbd>tuşuna basın veya **Run**  >  **hata ayıklamayı** Çalıştır ' ı seçin.
 Mikrofonunuzdan yapılan sonraki 15 saniyelik konuşma girişi tanınır ve konsol penceresinde günlüğe kaydedilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/13/2020
 ms.author: trbye
-ms.openlocfilehash: e1d2493474736ebbcdb54aeb697716e1dc7d6ee6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 09a4f36f2b4b0e90dc17489721cd52b0f70f17ba
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91376790"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425555"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -18,7 +18,7 @@ Başlamadan önce şunları yaptığınızdan emin olun:
 > [!div class="checklist"]
 > * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=linux&pivots=programmming-language-cpp)
 > * [Azure konuşma kaynağı oluşturma](../../../../overview.md#try-the-speech-service-for-free)
-> * [Azure Blob 'a kaynak dosya yükleme](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
+> * [Azure Blob 'a kaynak dosya yükleme](../../../../../../storage/blobs/storage-quickstart-blobs-portal.md)
 
 ## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio 'da açın
 

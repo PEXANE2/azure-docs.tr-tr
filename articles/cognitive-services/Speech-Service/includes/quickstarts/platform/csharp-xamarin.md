@@ -11,18 +11,18 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d41af4dc9b40c0c814c83ee27a671fabf191103d
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 3f441e2f89d0f85a7a4e2fff5490fed5e2879506
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097125"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425322"
 ---
-Bu kılavuzda, .NET ile iOS, Android ve Windows için modern ve performanslı uygulamalar oluşturmaya yönelik açık kaynaklı bir platform olan [Xamarin](https://docs.microsoft.com/xamarin/get-started/what-is-xamarin)için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir. Yalnızca paket adının kendi kendinize başlatılmasını istiyorsanız `Install-Package Microsoft.CognitiveServices.Speech` NuGet konsolunda öğesini çalıştırın.
+Bu kılavuzda, .NET ile iOS, Android ve Windows için modern ve performanslı uygulamalar oluşturmaya yönelik açık kaynaklı bir platform olan [Xamarin](/xamarin/get-started/what-is-xamarin)için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir. Yalnızca paket adının kendi kendinize başlatılmasını istiyorsanız `Install-Package Microsoft.CognitiveServices.Speech` NuGet konsolunda öğesini çalıştırın.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç şunları gerektirir:
 

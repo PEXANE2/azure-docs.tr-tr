@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: trbye
-ms.openlocfilehash: eae4aece79cd387aaa7e708591ca31442eaa05c3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0e2324f7e524567b07f0228e046605b781bc4916
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135836"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94424847"
 ---
 Bu kılavuzda, Python için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir. Yalnızca paket adının kendi kendinize başlamanızı istiyorsanız, ' yi çalıştırın `pip install azure-cognitiveservices-speech` .
 
@@ -76,7 +76,7 @@ import azure.cognitiveservices.speech as speechsdk
 1. [Visual Studio Code](https://code.visualstudio.com/Download) uygulamasını indirip yükleyin.
 1. Visual Studio Code açın ve Python uzantısını yükler. Menüden **Dosya**  >  **tercihleri**  >  **uzantıları** ' nı seçin. **Python** için arama yapın ve **Install** 'a tıklayın.
 
-   ![Python uzantısını yükler](~/articles/cognitive-services/speech-service/media/sdk/qs-python-vscode-python-extension.png)
+   ![Python uzantısını yükleme](~/articles/cognitive-services/speech-service/media/sdk/qs-python-vscode-python-extension.png)
 
 1. Ayrıca, Visual Studio Code içinden, tümleşik komut satırından konuşma SDK 'Sı Python paketini de yüklemelisiniz:
    1. Bir Terminal açın (açılan menülerden, **terminalden**  >  **Yeni terminalden** )
@@ -90,7 +90,7 @@ Konuşma SDK 'Sı Python paketine yönelik güncelleştirmeler PyPI aracılığ�
 Yeni bir sürüm varsa, komutunu komutuyla güncelleştirebilirsiniz `pip install --upgrade azure-cognitiveservices-speech` .
 Değişkeni inceleyerek Şu anda hangi sürümün yüklü olduğunu denetleyin `azure.cognitiveservices.speech.__version__` .
 
-Bir sorununuz varsa veya bir özellik eksikse, bkz. [destek ve yardım seçenekleri](~/articles/cognitive-services/speech-service/support.md).
+Bir sorununuz varsa veya bir özellik eksikse, bkz. [destek ve yardım seçenekleri](../../../../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

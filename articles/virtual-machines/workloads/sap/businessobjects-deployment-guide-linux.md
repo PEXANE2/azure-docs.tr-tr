@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 7253e257f9d721c09f2e041c1473a9d81d09a321
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 1f15a3b4d8f51ec79fffce09bc006942d08096a6
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094517"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427471"
 ---
-# <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Azure 'da Linux için SAP BusinessObjects bı platformu dağıtım kılavuzu
+# <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Azure’da Linux için SAP BusinessObjects İş Zekası platformu dağıtım kılavuzu
 
 Bu makalede, Linux için Azure 'da SAP BOBI platformunu dağıtma stratejisi açıklanır. Bu örnekte, kendi install dizini olarak Premium SSD yönetilen diskleri olan iki sanal makine yapılandırılır. MySQL için Azure veritabanı, CMS veritabanı için kullanılır ve dosya deposu sunucusu için Azure NetApp Files her iki sunucu arasında paylaşılır. Varsayılan Tomcat Java Web uygulaması ve bı Platform uygulaması her iki sanal makinede birlikte yüklenir. Kullanıcı isteğinin yükünü dengelemek için, yerel TLS/SSL boşaltma özelliklerine sahip Application Gateway kullanılır.
 
@@ -113,7 +113,7 @@ SAP BOBI platformu dosya deposu sunucusu için Azure NetApp Files oluştururken,
 
 Bu bölümdeki adımlarda aşağıdaki ön ekler kullanılır:
 
-**[A]**: adım tüm konaklar için geçerlidir
+**[A]** : adım tüm konaklar için geçerlidir
 
 ### <a name="format-and-mount-sap-file-system"></a>SAP dosya sistemi biçimlendirme ve bağlama
 
@@ -210,9 +210,9 @@ Bu bölümdeki adımlarda aşağıdaki ön ekler kullanılır:
 
    > [!Important]
    >
-   > SANAL makinede bulunan/etc/ıdmapd.exe içindeki NFS etki alanını Azure NetApp Files: **defaultv4iddomain.com**konumundaki varsayılan etki alanı yapılandırmasıyla eşleşecek şekilde ayarladığınızdan emin olun. NFS istemcisindeki (yani, VM) ve NFS sunucusunun etki alanı yapılandırması arasında uyuşmazlık varsa (örneğin, Azure NetApp yapılandırması), VM 'Lere bağlı Azure NetApp birimlerinde dosya izinleri hiç kimse tarafından görüntülenir.
+   > SANAL makinede bulunan/etc/ıdmapd.exe içindeki NFS etki alanını Azure NetApp Files: **defaultv4iddomain.com** konumundaki varsayılan etki alanı yapılandırmasıyla eşleşecek şekilde ayarladığınızdan emin olun. NFS istemcisindeki (yani, VM) ve NFS sunucusunun etki alanı yapılandırması arasında uyuşmazlık varsa (örneğin, Azure NetApp yapılandırması), VM 'Lere bağlı Azure NetApp birimlerinde dosya izinleri hiç kimse tarafından görüntülenir.
 
-   Doğrulayın `nfs4_disable_idmapping` . **Y**olarak ayarlanmalıdır. Bulunduğu dizin yapısını oluşturmak için `nfs4_disable_idmapping` Mount komutunu yürütün. Erişim çekirdek/sürücü için ayrıldığından,/sys/modules altında dizini el ile oluşturamazsınız.
+   Doğrulayın `nfs4_disable_idmapping` . **Y** olarak ayarlanmalıdır. Bulunduğu dizin yapısını oluşturmak için `nfs4_disable_idmapping` Mount komutunu yürütün. Erişim çekirdek/sürücü için ayrıldığından,/sys/modules altında dizini el ile oluşturamazsınız.
 
    ```bash
    # Check nfs4_disable_idmapping
@@ -274,7 +274,7 @@ Yönergeler yalnızca MySQL için Azure DB kullanıyorsanız geçerlidir. Diğer
 
 ### <a name="create-an-azure-database-for-mysql"></a>MySQL için Azure veritabanı oluşturma
 
-Azure portal oturum açın ve [MySQL Için Azure veritabanı 'nın bu hızlı başlangıç kılavuzunda](../../../mysql/quickstart-create-mysql-server-database-using-azure-portal.md#create-an-azure-database-for-mysql-server)bahsedilen adımları izleyin. MySQL için Azure veritabanı sağlanırken birkaç noktaya göz önünde
+Azure portal oturum açın ve [MySQL Için Azure veritabanı 'nın bu hızlı başlangıç kılavuzunda](../../../mysql/quickstart-create-mysql-server-database-using-azure-portal.md)bahsedilen adımları izleyin. MySQL için Azure veritabanı sağlanırken birkaç noktaya göz önünde
 
 1. SAP BI platformu uygulama sunucularınızın çalıştığı MySQL için Azure veritabanı 'nın aynı bölgesini seçin.
 
@@ -296,9 +296,9 @@ Azure portal oturum açın ve [MySQL Için Azure veritabanı 'nın bu hızlı ba
 Varsayılan olarak, oluşturulan sunucu bir güvenlik duvarıyla korunur ve herkese açık bir şekilde erişemez. SAP BI platformu uygulama sunucularının çalıştığı sanal ağa erişim sağlamak için aşağıdaki adımları izleyin.  
 
 1. Azure portal sunucu kaynaklarına gidin ve sunucu kaynağınız için sol taraftaki menüden **bağlantı güvenliği** ' ni seçin.
-2. **Azure hizmetlerine erişime Izin vermek**için **Evet** ' i seçin.
-3. VNET kuralları altında **var olan sanal ağı ekleme**' yi seçin. SAP BI platformu uygulama sunucusunun sanal ağını ve alt ağını seçin. Ayrıca, [MySQL](../../../mysql/connect-workbench.md) çalışma sunucusunu MySQL Için Azure veritabanı 'na bağlayabileceğiniz bağlantı kutusu veya diğer sunuculara erişim sağlamanız gerekir. MySQL çalışma ekranı, CMS ve denetim veritabanı oluşturmak için kullanılacak
-4. Sanal ağlar eklendikten sonra **Kaydet**' i seçin.
+2. **Azure hizmetlerine erişime Izin vermek** için **Evet** ' i seçin.
+3. VNET kuralları altında **var olan sanal ağı ekleme** ' yi seçin. SAP BI platformu uygulama sunucusunun sanal ağını ve alt ağını seçin. Ayrıca, [MySQL](../../../mysql/connect-workbench.md) çalışma sunucusunu MySQL Için Azure veritabanı 'na bağlayabileceğiniz bağlantı kutusu veya diğer sunuculara erişim sağlamanız gerekir. MySQL çalışma ekranı, CMS ve denetim veritabanı oluşturmak için kullanılacak
+4. Sanal ağlar eklendikten sonra **Kaydet** ' i seçin.
 
 ### <a name="create-cms-and-audit-database"></a>CMS ve denetim veritabanı oluşturma
 
@@ -395,15 +395,15 @@ SAP BOBı uygulama sunucusunun veritabanına erişmesi için veritabanı istemci
 
 Bu bölümdeki adımlarda aşağıdaki ön ekler kullanılır:
 
-**[A]**: adım tüm konaklar için geçerlidir.
+**[A]** : adım tüm konaklar için geçerlidir.
 
 1. **[A]** LINUX (SLES veya RHEL) özelliğine dayalı olarak çekirdek parametreleri ayarlamanız ve gerekli kitaplıkları yüklemeniz gerekir. [UNIX Için Iş zekası platformu Yükleme Kılavuzu](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US)'ndaki **sistem gereksinimleri** bölümüne bakın.
 
 2. **[A]** makinenizde saat diliminin doğru ayarlandığından emin olun. Yükleme Kılavuzu 'ndaki [diğer UNIX ve Linux gereksinimleri bölümüne](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US/46b143336e041014910aba7db0e91070.html) bakın.
 
-3. **[A]** yazılımın arka plan işlemlerinin çalışacağı kullanıcı hesabı (**BL1**adm) ve grup (sapsys) oluşturun. Yüklemeyi yürütmek ve yazılımı çalıştırmak için bu hesabı kullanın. Hesap, kök ayrıcalık gerektirmez.
+3. **[A]** yazılımın arka plan işlemlerinin çalışacağı kullanıcı hesabı ( **BL1** adm) ve grup (sapsys) oluşturun. Yüklemeyi yürütmek ve yazılımı çalıştırmak için bu hesabı kullanın. Hesap, kök ayrıcalık gerektirmez.
 
-4. **[A]** desteklenen bir UTF-8 yerel ayarı kullanmak için Kullanıcı hesabı (**BL1**adm) ortamı ayarlama ve konsol yazılımınızın UTF-8 karakter kümelerini desteklediğinden emin olun. İşletim sisteminizin doğru yerel ayarı kullandığından emin olmak için, LC_ALL ve LANG ortam değişkenlerini (**BL1**adm) Kullanıcı ortamınızdaki tercih ettiğiniz yerel ayara ayarlayın.
+4. **[A]** desteklenen bir UTF-8 yerel ayarı kullanmak için Kullanıcı hesabı ( **BL1** adm) ortamı ayarlama ve konsol yazılımınızın UTF-8 karakter kümelerini desteklediğinden emin olun. İşletim sisteminizin doğru yerel ayarı kullandığından emin olmak için, LC_ALL ve LANG ortam değişkenlerini ( **BL1** adm) Kullanıcı ortamınızdaki tercih ettiğiniz yerel ayara ayarlayın.
 
    ```bash
    # This configuration is for bash shell. If you are using any other shell for sidadm, kindly set environment variable accordingly.
@@ -413,7 +413,7 @@ Bu bölümdeki adımlarda aşağıdaki ön ekler kullanılır:
    export LC_ALL=en_US.utf8
    ```
 
-5. **[A]** Kullanıcı hesabını yapılandırın (**BL1**adm).
+5. **[A]** Kullanıcı hesabını yapılandırın ( **BL1** adm).
 
    ```bash
    # Set ulimit for bl1adm to unlimited
@@ -445,7 +445,7 @@ Bu bölümdeki adımlarda aşağıdaki ön ekler kullanılır:
 
 ## <a name="installation"></a>Yükleme
 
-Sunucuda kullanıcı hesabı **BL1**adm için yerel ayarı denetle
+Sunucuda kullanıcı hesabı **BL1** adm için yerel ayarı denetle
 
 ```bash
 bl1adm@azusbosl1:~> locale
@@ -453,7 +453,7 @@ LANG=en_US.utf8
 LC_ALL=en_US.utf8
 ```
 
-SAP BusinessObjects bı platformunun medyasına gidin ve **BL1**adm kullanıcısı ile aşağıdaki komutu çalıştırın
+SAP BusinessObjects bı platformunun medyasına gidin ve **BL1** adm kullanıcısı ile aşağıdaki komutu çalıştırın
 
 ```bash
 ./setup.sh -InstallDir /usr/sap/BL1
@@ -465,17 +465,17 @@ Sürümünüze özgü olan UNIX için [SAP BOBI platformu](https://help.sap.com/
 
 - **Yükleme türünü seçin** ekranında, diğer sunucu için ilk sunucuda (Azusbosl1) **tam** yükleme ' yi seçin (azusbosl2), var olan bobi kurulumunu genişletmek için **özel/Genişlet** ' i seçin.
 
-- **Varsayılan veya var olan veritabanını Seç** ekranında, **var olan bir veritabanını Yapılandır**' ı SEÇIN, bu, CMS ve denetim veritabanı ' nı seçmenizi ister. CMS veritabanı türü ve denetim veritabanı türü için **MySQL** ' i seçin.
+- **Varsayılan veya var olan veritabanını Seç** ekranında, **var olan bir veritabanını Yapılandır** ' ı SEÇIN, bu, CMS ve denetim veritabanı ' nı seçmenizi ister. CMS veritabanı türü ve denetim veritabanı türü için **MySQL** ' i seçin.
 
   Yükleme sırasında denetim yapılandırmak istemiyorsanız, Denetim veritabanı yok ' u da seçebilirsiniz.
 
 - SAP BOBI mimarisine bağlı olarak **Java Web uygulaması sunucu ekranında** uygun seçenekleri belirleyin. Bu örnekte, aynı SAP BOBI platformuna Tomcat sunucusu yüklenen 1 seçeneğini belirledik.
 
-- CMS veritabanı bilgilerini **CONFIGURE CMS Repository Database-MySQL**' de girin. Linux yüklemesinde CMS veritabanı bilgileri için örnek giriş. MySQL için Azure veritabanı varsayılan bağlantı noktası 3306 ' de kullanılır
+- CMS veritabanı bilgilerini **CONFIGURE CMS Repository Database-MySQL** ' de girin. Linux yüklemesinde CMS veritabanı bilgileri için örnek giriş. MySQL için Azure veritabanı varsayılan bağlantı noktası 3306 ' de kullanılır
   
   ![Linux-CMS veritabanında SAP BOBI dağıtımı](media/businessobjects-deployment-guide/businessobjects-deployment-linux-sql-cms.png)
 
-- Seçim Denetim **deposu veritabanını yapılandırma-MySQL**' de denetim veritabanı bilgilerini girin. Linux yüklemesinde veritabanı bilgilerini denetle için örnek giriş.
+- Seçim Denetim **deposu veritabanını yapılandırma-MySQL** ' de denetim veritabanı bilgilerini girin. Linux yüklemesinde veritabanı bilgilerini denetle için örnek giriş.
 
   ![Linux üzerinde SAP BOBI dağıtımı-denetim veritabanı](media/businessobjects-deployment-guide/businessobjects-deployment-linux-sql-audit.png)
 
@@ -557,7 +557,7 @@ Yedekleme işleminin bir parçası olarak, anlık görüntü alınır ve veriler
 
 #### <a name="backup--restore-for-file-repository-server"></a>Dosya deposu sunucusu için yedekleme & geri yükleme
 
-**Azure NetApp Files**için, anlık görüntü ilkeleri kullanarak isteğe bağlı anlık görüntüler oluşturabilir ve otomatik anlık görüntü zamanlayabilirsiniz. Anlık görüntü kopyaları, ANF biriminizin bir zaman içinde kopyasını sağlar. Daha fazla bilgi için bkz. [Azure NetApp Files kullanarak anlık görüntüleri yönetme](../../../azure-netapp-files/azure-netapp-files-manage-snapshots.md).
+**Azure NetApp Files** için, anlık görüntü ilkeleri kullanarak isteğe bağlı anlık görüntüler oluşturabilir ve otomatik anlık görüntü zamanlayabilirsiniz. Anlık görüntü kopyaları, ANF biriminizin bir zaman içinde kopyasını sağlar. Daha fazla bilgi için bkz. [Azure NetApp Files kullanarak anlık görüntüleri yönetme](../../../azure-netapp-files/azure-netapp-files-manage-snapshots.md).
 
 **Azure dosya** yedeklemesi, VM yedeklemesinden birlikte yedekleme ve geri yükleme işlevini merkezileştiren ve işlem çalışmasını kolaylaştıran yerel [Azure Backup](../../../backup/backup-overview.md) hizmetiyle tümleşiktir. Daha fazla bilgi için bkz. [Azure dosya paylaşma yedekleme](../../../backup/azure-file-share-backup-overview.md) ve [SSS-Azure dosyalarını yedekleme](../../../backup/backup-azure-files-faq.md).
 

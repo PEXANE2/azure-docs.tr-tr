@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2020
 ms.author: yelevin
-ms.openlocfilehash: bc3da6f0d82adab2d21d4dbd91dee8654145b896
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: ecb4203c822f5b72068e11d0ad4b988d294aab0d
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951494"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427063"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Azure Sentinel müşteri tarafından yönetilen anahtarı ayarlama
 
 Bu makalede, Azure Sentinel için müşteri tarafından yönetilen bir anahtar (CMK) yapılandırma ile ilgili arka plan bilgileri ve adımlar sağlanmaktadır. CMK, Azure Sentinel 'e kaydedilmiş veya gönderilen tüm verilerin, sizin tarafınızdan oluşturulmuş veya size ait bir Azure Key Vault anahtarıyla ilgili tüm depolama kaynaklarında şifrelenmesini sağlar.
 
 > [!NOTE]
-> - Azure Sentinel CMK özelliği yalnızca **yeni müşterilere**sağlanır.
+> - Azure Sentinel CMK özelliği yalnızca **yeni müşterilere** sağlanır.
 >
-> - Bu özelliğe erişim, Azure Özellik kaydı tarafından denetlenir.İletişim kurarak erişim isteyebilirsiniz azuresentinelCMK@microsoft.com . Bekleyen istekler kullanılabilir kapasiteye göre onaylanır.
+> - Bu özelliğe erişim, Azure Özellik kaydı tarafından denetlenir. İletişim kurarak erişim isteyebilirsiniz azuresentinelCMK@microsoft.com . Bekleyen istekler kullanılabilir kapasiteye göre onaylanır.
 >
 > - CMK özelliği yalnızca, günde 1 GB veya daha fazla TB gönderen müşteriler tarafından kullanılabilir. Azure aboneliğinizde CMK sağlamak üzere Microsoft 'a uyguladığınızda, ek fiyatlandırma hakkında bilgi alacaksınız. [Log Analytics fiyatlandırması](../azure-monitor/platform/manage-cost-storage.md#log-analytics-dedicated-clusters)hakkında daha fazla bilgi edinin.
 
@@ -36,14 +36,14 @@ Bu makalede, Azure Sentinel için müşteri tarafından yönetilen bir anahtar (
 
 Azure Sentinel çözümü, Log Analytics ve diğerleri dahil olmak üzere günlük toplama ve özellikler için çeşitli depolama kaynakları kullanır. Azure Sentinel CMK yapılandırmasının bir parçası olarak, ilgili depolama kaynaklarında CMK ayarlarını da yapılandırmanız gerekir. Log Analytics dışındaki depolama kaynaklarında kaydedilen veriler de şifrelenir.
 
-[CMK](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-cmk-overview)hakkında daha fazla bilgi edinin.
+[CMK](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-overview)hakkında daha fazla bilgi edinin.
 
 > [!NOTE]
 > Azure Sentinel 'de CMK 'yi etkinleştirirseniz CMK 'yı desteklemeyen tüm genel Önizleme özellikleri etkinleştirilmeyecektir.
 
 ## <a name="enable-cmk"></a>CMK 'yi etkinleştir 
 
-CMK sağlamak için şu adımları izleyin: 
+CMK sağlamak için şu adımları izleyin: 
 
 1.  Azure Key Vault oluşturun ve anahtarı depolarsınız.
 
@@ -114,7 +114,7 @@ Bir kullanıcının, anahtar şifreleme anahtarını silerek veya Azure Sentinel
 
 Erişim İptalden sonra geri yüklenirse, Azure Sentinel bir saat içinde verilere erişimi geri yükler.
 
-Bunun Azure Izleyici 'de nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure izleyici CMK iptali](../azure-monitor/platform/customer-managed-keys.md#cmk-kek-revocation).
+Bunun Azure Izleyici 'de nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure izleyici CMK iptali](../azure-monitor/platform/customer-managed-keys.md#key-revocation).
 
 ## <a name="key-encryption-key-rotation"></a>Anahtar şifreleme anahtarı döndürme
 
@@ -127,7 +127,7 @@ Key Vault, anahtarın yeni bir sürümünü oluşturarak anahtar döndürme ger�
 
 Anahtarın önceki sürümünü 24 saat sonra devre dışı bırakabilir veya Azure Key Vault denetim günlükleri artık önceki sürümü kullanan herhangi bir etkinliği göstermez.
 
-Aynı anahtarı Azure Sentinel 'de ve Log Analytics ' de kullanırsanız, anahtar döndürme gerçekleştirmek için Log Analytics küme kaynağını yeni Azure Key Vault anahtarı sürümüyle açıkça güncelleştirmeniz gerekir. Daha fazla bilgi için bkz. [Azure izleyici CMK dönüşü](../azure-monitor/platform/customer-managed-keys.md#cmk-kek-rotation).
+Aynı anahtarı Azure Sentinel 'de ve Log Analytics ' de kullanırsanız, anahtar döndürme gerçekleştirmek için Log Analytics küme kaynağını yeni Azure Key Vault anahtarı sürümüyle açıkça güncelleştirmeniz gerekir. Daha fazla bilgi için bkz. [Azure izleyici CMK dönüşü](../azure-monitor/platform/customer-managed-keys.md#key-rotation).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede, Azure Sentinel 'de müşteri tarafından yönetilen bir anahtarın nasıl ayarlanacağını öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:

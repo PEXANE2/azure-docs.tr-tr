@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: iot-central
 author: dominicbetts
 ms.service: iot-central
@@ -8,90 +8,52 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 164f5803b6e9e62447423735e98f6e4c36c73f13
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: de916fcbe0623185821e2f5da15a8f9cf71dfd4e
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91877240"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426791"
 ---
-### <a name="add-relationships"></a>İlişki Ekle
-
-**LVA Edge Gateway** cihaz şablonunda, **modüller/LVA sınır ağ geçidi modülü**altında **ilişkiler**' i seçin. **+ Ilişki Ekle** ' yi seçin ve aşağıdaki iki ilişkiyi ekleyin:
-
-|Görünen Ad               |Adı          |Hedef |
-|-------------------------- |------------- |------ |
-|LVA Edge hareket algılayıcısı   |Varsayılanı kullan   |LVA Edge hareket algılayıcısı cihazı |
-|LVA Edge nesne algılayıcısı   |Varsayılanı kullan   |LVA Edge nesne algılayıcısı cihazı |
-
-Ardından **Kaydet**’i seçin.
-
-:::image type="content" source="media/iot-central-video-analytics-part4/relationships.png" alt-text="İlişki Ekle":::
-
-### <a name="add-views"></a>Görünümler ekleme
-
-**LVA Edge Gateway** cihaz şablonu hiçbir görünüm tanımı içermez.
-
-Cihaz şablonuna bir görünüm eklemek için:
-
-1. **LVA sınır ağ geçidi** cihaz şablonunda, **Görünümler** ' e gidin ve cihaz kutucuğunu **görselleştirmeyi** seçin.
-
-1. *LVA Edge Gateway cihazını* görünüm adı olarak girin.
-
-1. Görünüme aşağıdaki kutucukları ekleyin:
-
-    * **Cihaz bilgileri** özelliklerine sahip bir kutucuk: **cihaz modeli**, **üretici**, **işletim sistemi**, **Işlemci mimarisi**, **yazılım sürümü**, **toplam bellek**ve **toplam depolama alanı**.
-    * **Boş belleği** ve **sistem sinyal** telemetrisi değerlerini içeren bir çizgi grafik kutucuğu.
-    * Şu olaylarla bir olay geçmişi kutucuğu: **Kamera oluşturma**, **kamerayı silme**, **modül yeniden başlatma**, modül **başlatıldı**, **Modül durdu**.
-    * **IoT Central Istemci durumu** telemetrisini gösteren bir 2x1 bilinen son değer kutucuğu.
-    * **Modül durumu** telemetrisini gösteren 2x1 bilinen son değer kutucuğu.
-    * **Sistem sinyal** telemetrisini gösteren 1x1 bilinen son değer kutucuğu.
-    * **Bağlı kameraları** Telemetriyi gösteren 1x1 bilinen son değer kutucuğu.
-
-    :::image type="content" source="media/iot-central-video-analytics-part4/gateway-dashboard.png" alt-text="İlişki Ekle":::
-
-1. **Kaydet**’i seçin.
-
 ### <a name="publish-the-device-template"></a>Cihaz şablonunu yayımlama
 
 Uygulamaya bir cihaz ekleyebilmeniz için önce cihaz şablonunu yayımlamanız gerekir:
 
-1. **LVA sınır ağ geçidi** cihaz şablonunda **Yayımla**' yı seçin.
+1. **LVA Edge Gateway v2** cihaz şablonunda **Yayımla** ' yı seçin.
 
-1. **Bu cihaz şablonunu uygulama üzerinde Yayımla** sayfasında **Yayımla**' yı seçin.
+1. **Bu cihaz şablonunu uygulama üzerinde Yayımla** sayfasında **Yayımla** ' yı seçin.
 
-**LVA Edge Gateway** artık, uygulamadaki **cihazlar** sayfasında kullanılacak cihaz türü olarak kullanılabilir.
+**LVA Edge Gateway v2** , artık uygulamanın **cihazlar** sayfasında kullanılacak cihaz türü olarak kullanılabilir.
 
-## <a name="add-a-gateway-device"></a>Ağ geçidi cihazı ekleme
+## <a name="migrate-the-gateway-device"></a>Ağ Geçidi cihazını geçirme
 
-Uygulamaya **LVA Edge Gateway** cihazı eklemek için:
+Mevcut **ağ geçidi-001** cihazı, **LVA Edge Gateway** cihaz şablonunu kullanır. Yeni Dağıtım bildiriminizi kullanmak için cihazı yeni cihaz şablonuna geçirin:
 
-1. **Cihazlar** sayfasına gidin ve **LVA Edge Gateway** cihaz şablonunu seçin.
+**Ağ geçidi-001** cihazını geçirmek için:
 
-1. **+ Yeni** seçeneğini belirleyin.
+1. **Cihazlar** sayfasına gidin ve listede vurgulamak için **ağ geçidi-001** cihazını seçin.
 
-1. **Yeni bir cihaz oluştur** iletişim kutusunda cihaz adını *LVA Gateway 001*olarak değiştirin ve cihaz kimliğini *LVA-Gateway-001*olarak değiştirin.
+1. **Geçir** seçeneğini belirleyin. **Geçiş** simgesi görünmüyorsa, daha fazla seçenek görmek için **...** seçeneğini belirleyin.
 
-    > [!NOTE]
-    > Cihaz KIMLIĞI uygulamada benzersiz olmalıdır.
+    :::image type="content" source="media/iot-central-video-analytics-part4/migrate-device.png" alt-text="Ağ Geçidi cihazını yeni bir sürüme geçirme":::
 
-1. **Oluştur**’u seçin.
+1. **Geçir** iletişim kutusundaki listede, **LVA Edge Gateway v2** ' yi seçin ve ardından **geçir** ' i seçin.
 
-Cihaz durumu **kayıtlı**.
+Birkaç saniye sonra geçiş tamamlanır. Cihazınız artık, özelleştirilmiş dağıtım bildiriminiz ile **LVA Edge Gateway v2** cihaz şablonunu kullanıyor.
 
 ### <a name="get-the-device-credentials"></a>Cihaz kimlik bilgilerini al
 
 Cihazın IoT Central uygulamanıza bağlanmasına izin veren kimlik bilgileri gerekir. Cihaz kimlik bilgilerini al:
 
-1. **Cihazlar** sayfasında, oluşturduğunuz **LVA-Gateway-001** cihazını seçin.
+1. **Cihazlar** sayfasında, **ağ geçidi-001** cihazını seçin.
 
-1. **Bağlan**'ı seçin.
+1. **Bağlan** ’ı seçin.
 
-1. **Cihaz bağlantısı** sayfasında, **kimlik KAPSAMı**, **cihaz kimliği**ve cihaz **birincil anahtarı** *scratchpad.txt* dosyasında bir Note olun. Bu değerleri daha sonra kullanırsınız.
+1. **Cihaz bağlantısı** sayfasında, **kimlik KAPSAMı** , **cihaz kimliği** ve cihaz **birincil anahtarı** *scratchpad.txt* dosyasında bir Note olun. Bu değerleri daha sonra kullanırsınız.
 
-1. Bağlantı yönteminin, **paylaşılan erişim imzası**olarak ayarlandığından emin olun.
+1. Bağlantı yönteminin, **paylaşılan erişim imzası** olarak ayarlandığından emin olun.
 
-1. **Kapat**’ı seçin.
+1. **Kapat** ’ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

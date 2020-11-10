@@ -6,70 +6,88 @@ ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 5/26/2020
-ms.openlocfilehash: ec406208f862eac2450cc6352f13f3596a7c9775
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 10/28/2020
+ms.openlocfilehash: 17d8d2638751d504c2a9a7ba90452faeb8ed36f1
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337396"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425975"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için PHP kullanma
-Bu hızlı başlangıçta [PHP](https://secure.php.net/manual/intro-whatis.php) uygulaması kullanarak MySQL için Azure Veritabanı'na nasıl bağlanacağınız gösterilmiştir. Ayrıca veritabanında veri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini nasıl kullanacağınız da gösterilmiştir. Bu konuda, PHP kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve MySQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
+Bu hızlı başlangıçta [PHP](https://secure.php.net/manual/intro-whatis.php) uygulaması kullanarak MySQL için Azure Veritabanı'na nasıl bağlanacağınız gösterilmiştir. Ayrıca veritabanında veri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini nasıl kullanacağınız da gösterilmiştir.
 
-## <a name="prerequisites"></a>Ön koşullar
-Bu hızlı başlangıçta, başlangıç noktası olarak şu kılavuzlardan birinde oluşturulan kaynaklar kullanılmaktadır:
-- [Azure portalını kullanarak MySQL için Azure Veritabanı sunucusu oluşturma](./quickstart-create-mysql-server-database-using-azure-portal.md)
-- [Azure CLI aracını kullanarak MySQL için Azure Veritabanı sunucusu oluşturma](./quickstart-create-mysql-server-database-using-azure-cli.md)
+## <a name="prerequisites"></a>Önkoşullar
+Bu hızlı başlangıç için şunlar gerekir:
 
-> [!IMPORTANT] 
-> Bağlanmakta olduğunuz IP adresinin [Azure Portal](./howto-manage-firewall-using-portal.md) veya [Azure CLI](./howto-manage-firewall-using-cli.md) kullanarak sunucunun güvenlik duvarı kurallarını eklendiğinden emin olun
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free).
+- [Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md) kullanarak MySQL Için Azure veritabanı tek sunucu oluşturma <br/> ya da bir tane yoksa [Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md) .
+- Genel veya özel erişim kullanıyor olmanız temelinde, bağlantıyı etkinleştirmek için aşağıdaki eylemlerden **birini** doldurun.
 
-## <a name="install-php"></a>PHP'yi yükleme
-PHP'yi kendi sunucunuza yükleyin veya PHP içeren bir Azure [web uygulaması](../app-service/overview.md) oluşturun.
+    |Eylem| Bağlantı yöntemi|Nasıl yapılır kılavuzu|
+    |:--------- |:--------- |:--------- |
+    | **Güvenlik duvarı kurallarını yapılandırma** | Genel | [Portal](./howto-manage-firewall-using-portal.md) <br/> [CLI](./howto-manage-firewall-using-cli.md)|
+    | **Hizmet uç noktasını yapılandır** | Genel | [Portal](./howto-manage-vnet-using-portal.md) <br/> [CLI](./howto-manage-vnet-using-cli.md)|
+    | **Özel bağlantıyı Yapılandır** | Özel | [Portal](./howto-configure-privatelink-portal.md) <br/> [CLI](./howto-configure-privatelink-cli.md) |
 
-### <a name="macos"></a>macOS
-- [PHP 7.1.4 sürümünü](https://secure.php.net/downloads.php) indirin.
-- PHP'yi yükleyin ve diğer yapılandırmalar için [PHP kılavuzuna](https://secure.php.net/manual/install.macosx.php) bakın.
+- [Veritabanı ve yönetici olmayan kullanıcı oluşturma](/howto-create-users?tabs=single-server)
+- İşletim sisteminiz için en son PHP sürümünü yükler
+    - [MacOS üzerinde PHP](https://secure.php.net/manual/install.macosx.php)
+    - [Linux üzerinde PHP](https://secure.php.net/manual/install.unix.php)
+    - [Windows üzerinde PHP](https://secure.php.net/manual/install.windows.php)
 
-### <a name="linux-ubuntu"></a>Linux (Ubuntu)
-- [PHP 7.1.4 iş parçacığı güvenli olmayan (x64) sürümünü](https://secure.php.net/downloads.php) indirin.
-- PHP'yi yükleyin ve diğer yapılandırmalar için [PHP kılavuzuna](https://secure.php.net/manual/install.unix.php) bakın.
-
-### <a name="windows"></a>Windows
-- [PHP 7.1.4 iş parçacığı güvenli olmayan (x64) sürümünü](https://windows.php.net/download#php-7.1) indirin.
-- PHP'yi yükleyin ve diğer yapılandırmalar için [PHP kılavuzuna](https://secure.php.net/manual/install.windows.php) bakın.
+> [!NOTE]
+> Bu hızlı başlangıçta, Connect 'i yönetmek ve sunucuyu sorgulamak için [mysqli](https://www.php.net/manual/en/book.mysqli.php) Library kullanıyoruz.
 
 ## <a name="get-connection-information"></a>Bağlantı bilgilerini alma
-MySQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerini alın. Tam sunucu adına ve oturum açma kimlik bilgilerine ihtiyacınız vardır.
+Aşağıdaki adımları izleyerek Azure portal veritabanı sunucusu bağlantı bilgilerini alabilirsiniz:
 
 1. [Azure Portal](https://portal.azure.com/)oturum açın.
-2. Azure portalında sol taraftaki menüden **Tüm kaynaklar** 'a tıklayın ve oluşturduğunuz sunucuyu (örneğin, **mydemoserver** ) arayın.
-3. Sunucunun adına tıklayın.
-4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı** ’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
- :::image type="content" source="./media/connect-php/1_server-overview-name-login.png" alt-text="MySQL için Azure Veritabanı sunucu adı":::
+2. MySQL için Azure veritabanları sayfasına gidin. **MySQL Için Azure veritabanı** 'nı arayabilir ve seçebilirsiniz.
+:::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/find-azure-mysql-in-portal.png" alt-text="MySQL için Azure veritabanı 'nı bulun":::
 
-## <a name="connect-and-create-a-table"></a>Bağlanma ve tablo oluşturma
-Bağlanmak ve **CREATE TABLE** SQL deyimini kullanarak tablo oluşturmak için aşağıdaki kodu kullanın. 
+2. MySQL sunucunuzu (örneğin, **demosunucum** ) seçin.
+3. **Genel bakış** sayfasında sunucu **adı** ' nın yanında tam sunucu adını ve **Sunucu Yöneticisi oturum açma adı** ' nın yanındaki yönetici kullanıcı adını kopyalayın. Sunucu adını veya ana bilgisayar adını kopyalamak için üzerine gelin ve **Kopyala** simgesini seçin.
 
-Kod, PHP'de bulunan **MySQL Improved extension** (mysqli) sınıfını kullanır. Kod, MySQL'e bağlanmak için [mysqli_init](https://secure.php.net/manual/mysqli.init.php) ve [mysqli_real_connect](https://secure.php.net/manual/mysqli.real-connect.php) yöntemlerini çağırır. Ardından sorgu çalıştırmak için [mysqli_query](https://secure.php.net/manual/mysqli.query.php) yöntemini çağırır. Daha sonra bağlantıyı kapatmak için [mysqli_close](https://secure.php.net/manual/mysqli.close.php) yöntemini çağırır.
+> [!IMPORTANT]
+> - Parolanızı unuttuysanız [parolayı sıfırlayabilirsiniz](./howto-create-manage-server-portal.md#update-admin-password).
+> - **Ana bilgisayar, Kullanıcı adı, parola** ve **db_name** parametrelerini kendi değerlerinizle değiştirin * *
 
-host, username, password ve db_name parametre değerlerini kendi değerlerinizle değiştirin. 
+## <a name="step-1-connect-to-the-server"></a>1. Adım: sunucuya bağlanma
+SSL varsayılan olarak etkindir. Yerel ortamınızdan bağlantı kurmak için [DIGICERTGLOBALROOTG2 SSL sertifikasını](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) indirmeniz gerekebilir. Bu kod şunu çağırır:
+- MySQLi 'u başlatmak için [mysqli_init](https://secure.php.net/manual/mysqli.init.php) .
+- SSL sertifika yolunu işaret [mysqli_ssl_set](https://www.php.net/manual/en/mysqli.ssl-set.php) . Bu, yerel ortamınız için gereklidir, ancak App Service Web uygulaması veya Azure sanal makineleri için gerekli değildir.
+- MySQL 'e bağlanmak için [mysqli_real_connect](https://secure.php.net/manual/mysqli.real-connect.php) .
+- bağlantıyı kapatmak için [mysqli_close](https://secure.php.net/manual/mysqli.close.php) .
+
 
 ```php
-<?php
 $host = 'mydemoserver.mysql.database.azure.com';
 $username = 'myadmin@mydemoserver';
 $password = 'your_password';
 $db_name = 'your_database';
 
-//Establishes the connection
+//Initializes MySQLi
 $conn = mysqli_init();
-mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
-if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
-}
 
+// If using  Azure Virtual machines or Azure Web App, 'mysqli-ssl_set()' is not required as the certificate is already installed on the machines.
+mysqli_ssl_set($conn,NULL,NULL, "/var/www/html/DigiCertGlobalRootG2.crt.pem", NULL, NULL);
+
+// Establish the connection
+mysqli_real_connect($conn, 'mydemoserver.mysql.database.azure.com', 'myadmin@mydemoserver', 'yourpassword', 'quickstartdb', 3306, MYSQLI_CLIENT_SSL);
+
+//If connection failed, show the error
+if (mysqli_connect_errno($conn))
+{
+    die('Failed to connect to MySQL: '.mysqli_connect_error());
+}
+```
+[Sorun mu yaşıyorsunuz? Bize bilgi verin](https://aka.ms/mysql-doc-feedback)
+
+## <a name="step-2-create-a-table"></a>2. Adım: tablo oluşturma
+Bağlanmak için aşağıdaki kodu kullanın. Bu kod şunu çağırır:
+- sorguyu çalıştırmak için [mysqli_query](https://secure.php.net/manual/mysqli.query.php) .
+```php
 // Run the create table query
 if (mysqli_query($conn, '
 CREATE TABLE Products (
@@ -82,139 +100,56 @@ PRIMARY KEY (`Id`)
 ')) {
 printf("Table created\n");
 }
-
-//Close the connection
-mysqli_close($conn);
-?>
 ```
 
-## <a name="insert-data"></a>Veri ekleme
-Bağlanmak ve **INSERT** SQL deyimi kullanarak veri eklemek için aşağıdaki kodu kullanın.
+## <a name="step-3-insert-data"></a>3. Adım: veri ekleme
+**Insert** SQL ifadesini kullanarak veri eklemek için aşağıdaki kodu kullanın. Bu kod yöntemleri kullanır:
+- hazırlanmış INSERT deyimleri oluşturmak için [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php)
+- Her yerleştirilen sütun değeri için parametreleri bağlamak [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php) .
+- [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php)
+- yöntemi kullanarak deyimin kapatılmasını [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php)
 
-Kod, PHP'de bulunan **MySQL Improved extension** (mysqli) sınıfını kullanır. Kod, [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php) yöntemini kullanarak hazır bir INSERT deyimi oluşturur, ardından [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php) yöntemini kullanarak, eklenen her bir sütun değerine ilişkin parametreleri bağlar. Kod, [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) yöntemini kullanarak deyimi çalıştırır ve ardından [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php) yöntemini kullanarak deyimi kapatır.
-
-host, username, password ve db_name parametre değerlerini kendi değerlerinizle değiştirin. 
 
 ```php
-<?php
-$host = 'mydemoserver.mysql.database.azure.com';
-$username = 'myadmin@mydemoserver';
-$password = 'your_password';
-$db_name = 'your_database';
-
-//Establishes the connection
-$conn = mysqli_init();
-mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
-if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
-}
-
 //Create an Insert prepared statement and run it
 $product_name = 'BrandNewProduct';
 $product_color = 'Blue';
 $product_price = 15.5;
-if ($stmt = mysqli_prepare($conn, "INSERT INTO Products (ProductName, Color, Price) VALUES (?, ?, ?)")) {
-mysqli_stmt_bind_param($stmt, 'ssd', $product_name, $product_color, $product_price);
-mysqli_stmt_execute($stmt);
-printf("Insert: Affected %d rows\n", mysqli_stmt_affected_rows($stmt));
-mysqli_stmt_close($stmt);
+if ($stmt = mysqli_prepare($conn, "INSERT INTO Products (ProductName, Color, Price) VALUES (?, ?, ?)"))
+{
+    mysqli_stmt_bind_param($stmt, 'ssd', $product_name, $product_color, $product_price);
+    mysqli_stmt_execute($stmt);
+    printf("Insert: Affected %d rows\n", mysqli_stmt_affected_rows($stmt));
+    mysqli_stmt_close($stmt);
 }
 
-// Close the connection
-mysqli_close($conn);
-?>
 ```
 
-## <a name="read-data"></a>Verileri okuma
-Bağlanmak ve **SELECT** SQL deyimi kullanarak verileri okumak için aşağıdaki kodu kullanın.  Kod, PHP'de bulunan **MySQL Improved extension** (mysqli) sınıfını kullanır. Kod, [mysqli_query](https://secure.php.net/manual/mysqli.query.php) yöntemini kullanarak SQL sorgusunu gerçekleştirir ve [mysqli_fetch_assoc](https://secure.php.net/manual/mysqli-result.fetch-assoc.php) yöntemini kullanarak elde edilen satırları getirir.
-
-host, username, password ve db_name parametre değerlerini kendi değerlerinizle değiştirin. 
+## <a name="step-4-read-data"></a>4. Adım: verileri okuma
+Bir **Select** SQL ifadesini kullanarak verileri okumak için aşağıdaki kodu kullanın.  Kod yöntemini kullanır:
+- **Select** sorgusunu yürütmek [mysqli_query](https://secure.php.net/manual/mysqli.query.php)
+- elde edilen satırları getirmek için [mysqli_fetch_assoc](https://secure.php.net/manual/mysqli-result.fetch-assoc.php) .
 
 ```php
-<?php
-$host = 'mydemoserver.mysql.database.azure.com';
-$username = 'myadmin@mydemoserver';
-$password = 'your_password';
-$db_name = 'your_database';
-
-//Establishes the connection
-$conn = mysqli_init();
-mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
-if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
-}
-
 //Run the Select query
 printf("Reading data from table: \n");
 $res = mysqli_query($conn, 'SELECT * FROM Products');
-while ($row = mysqli_fetch_assoc($res)) {
-var_dump($row);
-}
+while ($row = mysqli_fetch_assoc($res))
+ {
+    var_dump($row);
+ }
 
-//Close the connection
-mysqli_close($conn);
-?>
-```
-
-## <a name="update-data"></a>Verileri güncelleştirme
-Bağlanmak ve bir **UPDATE** SQL deyimi kullanarak verileri güncelleştirmek için aşağıdaki kodu kullanın.
-
-Kod, PHP'de bulunan **MySQL Improved extension** (mysqli) sınıfını kullanır. Kod, [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php) yöntemini kullanarak hazır bir UPDATE deyimi oluşturur, ardından [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php) yöntemini kullanarak, güncelleştirilen her bir sütun değerine ilişkin parametreleri bağlar. Kod, [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) yöntemini kullanarak deyimi çalıştırır ve ardından [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php) yöntemini kullanarak deyimi kapatır.
-
-host, username, password ve db_name parametre değerlerini kendi değerlerinizle değiştirin. 
-
-```php
-<?php
-$host = 'mydemoserver.mysql.database.azure.com';
-$username = 'myadmin@mydemoserver';
-$password = 'your_password';
-$db_name = 'your_database';
-
-//Establishes the connection
-$conn = mysqli_init();
-mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
-if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
-}
-
-//Run the Update statement
-$product_name = 'BrandNewProduct';
-$new_product_price = 15.1;
-if ($stmt = mysqli_prepare($conn, "UPDATE Products SET Price = ? WHERE ProductName = ?")) {
-mysqli_stmt_bind_param($stmt, 'ds', $new_product_price, $product_name);
-mysqli_stmt_execute($stmt);
-printf("Update: Affected %d rows\n", mysqli_stmt_affected_rows($stmt));
-
-//Close the connection
-mysqli_stmt_close($stmt);
-}
-
-mysqli_close($conn);
-?>
 ```
 
 
-## <a name="delete-data"></a>Verileri silme
-Bağlanmak ve **DELETE** SQL deyimi kullanarak verileri okumak için aşağıdaki kodu kullanın. 
-
-Kod, PHP'de bulunan **MySQL Improved extension** (mysqli) sınıfını kullanır. Kod, [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php) yöntemini kullanarak hazır bir DELETE deyimi oluşturur, ardından [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php) yöntemini kullanarak deyimdeki WHERE yan tümcesine ilişkin parametreleri bağlar. Kod, [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) yöntemini kullanarak deyimi çalıştırır ve ardından [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php) yöntemini kullanarak deyimi kapatır.
-
-host, username, password ve db_name parametre değerlerini kendi değerlerinizle değiştirin. 
+## <a name="step-5-delete-data"></a>5. Adım: verileri silme
+**Delete** SQL ifadesini kullanarak aşağıdaki kod satırlarını silin. Kod yöntemleri kullanır:
+- hazırlanmış bir DELETE ifadesini oluşturmak için [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php)
+- parametreleri [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php) bağlar
+- [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) hazırlanan DELETE ifadesini yürütür
+- [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php) , ifadeyi kapatır
 
 ```php
-<?php
-$host = 'mydemoserver.mysql.database.azure.com';
-$username = 'myadmin@mydemoserver';
-$password = 'your_password';
-$db_name = 'your_database';
-
-//Establishes the connection
-$conn = mysqli_init();
-mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
-if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
-}
-
 //Run the Delete statement
 $product_name = 'BrandNewProduct';
 if ($stmt = mysqli_prepare($conn, "DELETE FROM Products WHERE ProductName = ?")) {
@@ -223,10 +158,6 @@ mysqli_stmt_execute($stmt);
 printf("Delete: Affected %d rows\n", mysqli_stmt_affected_rows($stmt));
 mysqli_stmt_close($stmt);
 }
-
-//Close the connection
-mysqli_close($conn);
-?>
 ```
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
@@ -241,4 +172,9 @@ az group delete \
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
-> [SSL aracılığıyla MySQL için Azure Veritabanı'na bağlanma](howto-configure-ssl.md)
+> [Portalı kullanarak MySQL için Azure veritabanı sunucusunu yönetme](./howto-create-manage-server-portal.md)<br/>
+
+> [!div class="nextstepaction"]
+> [CLı kullanarak MySQL için Azure veritabanı sunucusunu yönetme](./how-to-manage-single-server-cli.md)
+
+[Aradığınızı bulamıyor musunuz? Bize bilgi verin.](https://aka.ms/mysql-doc-feedback)

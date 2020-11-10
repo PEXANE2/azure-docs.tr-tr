@@ -3,12 +3,12 @@ title: Azure Service Bus için IP güvenlik duvarı kurallarını yapılandırma
 description: Belirli IP adreslerinden Azure Service Bus bağlantılara izin vermek için güvenlik duvarı kuralları kullanma.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 561ee90fb6d1e25123d15a09bbf143aef59bcf6f
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 3aacf54dca07f0e1f2a66c8cdd85f892dda68cd4
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058072"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426589"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>Belirli IP adreslerinden veya aralıklardan Azure Service Bus ad alanına erişime izin ver
 Varsayılan olarak, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geldiği sürece, Service Bus ad alanlarına internet 'ten erişilebilir. IP güvenlik duvarı ile bunu, [CIDR (sınıfsız Inter-Domain yönlendirme)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir IPv4 adresi veya IPv4 adres aralıkları kümesiyle sınırlayabilirsiniz.
@@ -22,25 +22,17 @@ Bu özellik, Azure Service Bus yalnızca belirli bilinen sitelerden erişilebili
 IP güvenlik duvarı kuralları Service Bus ad alanı düzeyinde uygulanır. Bu nedenle, kurallar desteklenen herhangi bir protokolü kullanarak istemcilerden gelen tüm bağlantılara uygulanır. Service Bus ad alanındaki izin verilen bir IP kuralıyla eşleşmeyen bir IP adresinden gelen bağlantı girişimleri yetkisiz olarak reddedilir. Yanıt, IP kuralından bahsetmiyor. IP filtresi kuralları sırasıyla uygulanır ve IP adresiyle eşleşen ilk kural kabul etme veya reddetme eylemini belirler.
 
 >[!WARNING]
-> Güvenlik duvarı kuralları uygulamak, diğer Azure hizmetlerinin Service Bus etkileşimde olmasını engelleyebilir.
->
-> IP filtrelemesi (güvenlik duvarı kuralları) uygulandığında güvenilir Microsoft Hizmetleri desteklenmez ve yakında kullanıma sunulacaktır.
->
-> IP filtrelemesi ile çalışmayan yaygın Azure senaryoları ( **listenin ayrıntılı olmadığına** unutmayın)-
-> - Azure Event Grid ile tümleştirme
-> - Azure IoT Hub yolları
-> - Azure IoT Device Explorer
+> Güvenlik duvarı kuralları uygulamak, diğer Azure hizmetlerinin Service Bus etkileşimde olmasını engelleyebilir. Özel durum olarak, IP filtrelemesi etkinleştirildiğinde bile belirli güvenilen hizmetlerden Service Bus kaynaklara erişime izin verebilirsiniz. Güvenilen hizmetler listesi için bkz. [Güvenilen hizmetler](#trusted-microsoft-services). 
 >
 > Aşağıdaki Microsoft hizmetlerinin bir sanal ağda olması gerekir
 > - Azure App Service
 > - Azure İşlevleri
-> - Azure Izleyici (Tanılama ayarı)
 
 ## <a name="use-azure-portal"></a>Azure portalı kullanma
 Bu bölümde, bir Service Bus ad alanı için IP güvenlik duvarı kuralları oluşturmak üzere Azure portal nasıl kullanılacağı gösterilmektedir. 
 
 1. [Azure portal](https://portal.azure.com) **Service Bus ad alanına** gidin.
-2. Sol taraftaki menüde, **Ayarlar**altında **ağ** seçeneği ' ni seçin.  
+2. Sol taraftaki menüde, **Ayarlar** altında **ağ** seçeneği ' ni seçin.  
 
     > [!NOTE]
     > **Ağ** sekmesini yalnızca **Premium** ad alanları için görürsünüz.  
@@ -49,13 +41,13 @@ Bu bölümde, bir Service Bus ad alanı için IP güvenlik duvarı kuralları ol
 
     :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="Ağ sayfası-varsayılan" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
     
-    **Tüm ağlar** seçeneğini belirlerseniz, Service Bus ad alanınız HERHANGI bir IP adresinden gelen bağlantıları kabul eder. Bu varsayılan ayar 0.0.0.0/0 IP adresi aralığını kabul eden bir kuralla eşdeğerdir. 
+    **Tüm ağlar** seçeneğini belirlerseniz, Service Bus ad alanınız HERHANGI bir IP adresinden gelen bağlantıları kabul eder. Bu varsayılan ayar 0.0.0.0/0 IP adres aralığını kabul eden kuralla eşdeğerdir. 
 
     ![Azure portal ağ sayfasının ekran görüntüsü. Tüm ağlardan erişime izin verme seçeneği güvenlik duvarları ve sanal ağlar sekmesinde seçilir.](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
 1. Yalnızca belirtilen IP adresinden erişime izin vermek için, henüz seçili değilse **Seçili ağlar** seçeneğini belirleyin. **Güvenlik duvarı** bölümünde şu adımları izleyin:
     1. Geçerli istemci IP 'nize ad alanına erişim sağlamak için **ISTEMCI IP adresi ekle** seçeneğini belirleyin. 
-    2. **Adres aralığı**IÇIN, CIDR gösteriminde belirli bir IPv4 adresi veya bir IPv4 adresi aralığı girin. 
-    3. **Güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına izin**vermek isteyip istemediğinizi belirtin. 
+    2. **Adres aralığı** IÇIN, CIDR gösteriminde belirli bir IPv4 adresi veya bir IPv4 adresi aralığı girin. 
+    3. **Güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına izin** vermek isteyip istemediğinizi belirtin. 
 
         > [!WARNING]
         > **Seçili ağlar** seçeneğini BELIRLEYIP bir IP adresi veya adres aralığı belirtmezseniz, hizmet tüm ağlardan gelen trafiğe izin verir. 
@@ -65,6 +57,8 @@ Bu bölümde, bir Service Bus ad alanı için IP güvenlik duvarı kuralları ol
 
     > [!NOTE]
     > Belirli sanal ağlara erişimi kısıtlamak için bkz. [belirli ağlardan erişime Izin ver](service-bus-service-endpoints.md).
+
+[!INCLUDE [service-bus-trusted-services](../../includes/service-bus-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>Resource Manager şablonu kullanma
 Bu bölümde, bir sanal ağ ve bir güvenlik duvarı kuralı oluşturan örnek bir Azure Resource Manager şablonu bulunur.
@@ -78,7 +72,7 @@ Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir Service Bus ad alanına b
 
 > [!NOTE]
 > Mümkün olan reddetme kuralları olmadığı sürece, Azure Resource Manager şablonu, bağlantıları kısıtlayameyen **"Izin ver"** olarak ayarlanmış varsayılan eylemi içerir.
-> Sanal ağ veya güvenlik duvarları kuralları yaparken, ***"DefaultAction"*** öğesini değiştirmemiz gerekir
+> Sanal ağ veya güvenlik duvarları kuralları yaparken, **_"DefaultAction"_ öğesini değiştirmemiz gerekir**
 > 
 > Kaynak
 > ```json

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 845336385fe7490d4c62df41af873c237ae34871
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 293a3fc10920a29cd41e4bdb946e5bb06762eb52
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996328"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427505"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Izleyici, ayrılmış kümeleri günlüğe kaydeder
 
@@ -47,9 +47,9 @@ Küme kapasitesi ayırma düzeyi, altındaki parametresi kullanılarak Azure Res
 
 Bir kümede kullanıma yönelik iki faturalandırma modu vardır. Bu, `billingType` kümeniz yapılandırılırken parametresi tarafından belirtilebilir. 
 
-1. **Küme**: Bu durumda (varsayılan), alınan verilerin faturalandırılması küme düzeyinde yapılır. Kümeyle ilişkilendirilen her çalışma alanından alınan veri miktarları, küme için günlük faturanızı hesaplamak üzere toplanır. 
+1. **Küme** : Bu durumda (varsayılan), alınan verilerin faturalandırılması küme düzeyinde yapılır. Kümeyle ilişkilendirilen her çalışma alanından alınan veri miktarları, küme için günlük faturanızı hesaplamak üzere toplanır. 
 
-2. **Çalışma alanları**: kümenizin kapasite ayırma maliyeti, kümedeki çalışma alanlarıyla orantılı olarak atanır (her çalışma alanı Için [Azure Güvenlik Merkezi](../../security-center/index.yml) 'nden düğüm başına ayırmalar için hesap oluşturulduktan sonra).
+2. **Çalışma alanları** : kümenizin kapasite ayırma maliyeti, kümedeki çalışma alanlarıyla orantılı olarak atanır (her çalışma alanı Için [Azure Güvenlik Merkezi](../../security-center/index.yml) 'nden düğüm başına ayırmalar için hesap oluşturulduktan sonra).
 
 Çalışma alanınız düğüm başına eski fiyatlandırma katmanını kullanıyorsa, bir kümeye bağlandığında kümenin kapasite rezervasyonuna ve düğüm başına artık olmayan verilere göre faturalandırılır. Azure Güvenlik Merkezi 'nden düğüm başına veri ayırmaları uygulanmasına devam edilecek.
 
@@ -62,12 +62,12 @@ Log Analytics adanmış kümeler için daha fazla ayrıntı faturalandırılır.
 
 Aşağıdaki özellikler belirtilmelidir:
 
-- **Clustername**: yönetimsel amaçlar için kullanılır. Kullanıcılar bu ada gösterilmez.
-- **Resourcegroupname**: tüm Azure kaynakları için, kümeler bir kaynak grubuna aittir. Kümeler genellikle kuruluştaki birçok ekip tarafından paylaşıldığından, merkezi bir BT kaynak grubu kullanmanızı öneririz. Daha fazla tasarım konusunda dikkat edilmesi gereken noktalar için [Azure Izleyici günlüklerinin dağıtımını tasarlama](../platform/design-logs-deployment.md) konusunu inceleyin
-- **Konum**: bir küme, belirli bir Azure bölgesinde bulunur. Yalnızca bu bölgede bulunan çalışma alanları bu kümeyle bağlantılı olabilir.
-- **Skucapacity**: bir *küme* kaynağı oluştururken *Kapasite ayırma* düzeyini (SKU) belirtmeniz gerekir. *Kapasite ayırma* DÜZEYI 1.000 gb Ila 3.000 GB arasında olabilir. Bunu, daha sonra gerekirse 100 adımlarında güncelleştirebilirsiniz. Gün başına 3.000 GB 'den yüksek kapasite ayırma düzeyine ihtiyacınız varsa, adresinden bizimle iletişime geçin LAIngestionRate@microsoft.com . Küme maliyetleri hakkında daha fazla bilgi için bkz. [Log Analytics kümeleri Için maliyetleri yönetme](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
+- **Clustername** : yönetimsel amaçlar için kullanılır. Kullanıcılar bu ada gösterilmez.
+- **Resourcegroupname** : tüm Azure kaynakları için, kümeler bir kaynak grubuna aittir. Kümeler genellikle kuruluştaki birçok ekip tarafından paylaşıldığından, merkezi bir BT kaynak grubu kullanmanızı öneririz. Daha fazla tasarım konusunda dikkat edilmesi gereken noktalar için [Azure Izleyici günlüklerinin dağıtımını tasarlama](../platform/design-logs-deployment.md) konusunu inceleyin
+- **Konum** : bir küme, belirli bir Azure bölgesinde bulunur. Yalnızca bu bölgede bulunan çalışma alanları bu kümeyle bağlantılı olabilir.
+- **Skucapacity** : bir *küme* kaynağı oluştururken *Kapasite ayırma* düzeyini (SKU) belirtmeniz gerekir. *Kapasite ayırma* DÜZEYI 1.000 gb Ila 3.000 GB arasında olabilir. Bunu, daha sonra gerekirse 100 adımlarında güncelleştirebilirsiniz. Gün başına 3.000 GB 'den yüksek kapasite ayırma düzeyine ihtiyacınız varsa, adresinden bizimle iletişime geçin LAIngestionRate@microsoft.com . Küme maliyetleri hakkında daha fazla bilgi için bkz. [Log Analytics kümeleri Için maliyetleri yönetme](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
 
-*Küme* kaynağını oluşturduktan sonra, *SKU*, * Keyvaultproperties veya *billingtype*gibi ek özellikleri düzenleyebilirsiniz. Daha fazla ayrıntı için aşağıya bakın.
+*Küme* kaynağını oluşturduktan sonra, *SKU* , * Keyvaultproperties veya *billingtype* gibi ek özellikleri düzenleyebilirsiniz. Daha fazla ayrıntı için aşağıya bakın.
 
 > [!WARNING]
 > Küme oluşturma işlemi kaynak ayırmayı ve sağlamayı tetikler. Bu işlemin tamamlanması bir saate kadar sürebilir. Bunu zaman uyumsuz olarak çalıştırmanız önerilir.
@@ -162,7 +162,7 @@ Log Analytics kümesinin sağlanması bir süre sürer. Sağlama durumunu çeşi
 
 *Küme* kaynağınızı oluşturduktan ve tam olarak sağlandıktan sonra, PowerShell veya REST API kullanarak küme düzeyindeki ek özellikleri düzenleyebilirsiniz. Küme oluşturma sırasında kullanılabilen özellikler dışında, ek özellikler yalnızca küme sağlandıktan sonra ayarlanabilir:
 
-- **Keyvaultproperties**: bir [Azure Monitor müşteri tarafından yönetilen anahtarı](../platform/customer-managed-keys.md#cmk-provisioning-procedure)sağlamak için kullanılan Azure Key Vault yapılandırmak için kullanılır. Şu parametreleri içerir:  *Keyvaulturi*, *KeyName*, *keyversion*. 
+- **Keyvaultproperties** : bir [Azure Monitor müşteri tarafından yönetilen anahtarı](../platform/customer-managed-keys.md#customer-managed-key-provisioning-procedure)sağlamak için kullanılan Azure Key Vault yapılandırmak için kullanılır. Şu parametreleri içerir:  *Keyvaulturi* , *KeyName* , *keyversion*. 
 - **billingtype** - *billingtype* özelliği *küme* kaynağı ve verileri için faturalandırma atışmasını belirler:
   - **Küme** (varsayılan)-kümeniz Için kapasite ayırma maliyetleri, *küme* kaynağına atanır.
   - **Çalışma alanları** -bu, günün Toplam alınan verileri kapasite rezervasyonunun altındaysa *, kümeniz için* kapasite ayırma maliyetleri kümedeki çalışma alanlarıyla orantılı olarak atanır. Küme fiyatlandırma modeli hakkında daha fazla bilgi edinmek için bkz. [Log Analytics adanmış kümeler](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) . 
@@ -180,9 +180,9 @@ Update-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -Cl
 **REST**
 
 > [!NOTE]
-> Düzeltme ekini kullanarak *cluster* kaynak *SKU 'su*, *Keyvaultproperties* veya *billingtype* 'ı güncelleştirebilirsiniz.
+> Düzeltme ekini kullanarak *cluster* kaynak *SKU 'su* , *Keyvaultproperties* veya *billingtype* 'ı güncelleştirebilirsiniz.
 
-Örnek: 
+Örneğin: 
 
 *Call*
 

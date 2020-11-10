@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 5194e088ce2bd35208a92c5295457e6c34cd2cc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18504f1ed4200889b20c9608c9c0ad2c13c9aaa5
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570333"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425771"
 ---
 # <a name="wildcard-domains"></a>Joker karakter etki alanları
 
@@ -27,7 +27,7 @@ Joker karakter etki alanları desteğiyle geliştirilmiş önemli senaryolar şu
 - Artık bir uygulama yeni bir alt etki alanı eklerse üretim Azure ön kapısının yapılandırmasını değiştirmeniz gerekli değildir. Daha önce, alt etki alanını eklemeniz, ona bir sertifika bağlamanız, bir Web uygulaması güvenlik duvarı (WAF) ilkesi bağlamanız ve ardından etki alanını farklı yönlendirme kurallarına eklemeniz gerekiyordu.
 
 > [!NOTE]
-> Şu anda joker etki alanları yalnızca API, PowerShell ve Azure CLı aracılığıyla desteklenir. Azure portal joker etki alanlarını ekleme ve yönetme desteği kullanılamaz.
+> Şu anda, yalnızca API, PowerShell ve Azure CLı aracılığıyla Azure DNS aracılığıyla joker karakter alanları eklemek desteklenir. Azure portal joker etki alanlarını ekleme ve yönetme desteği kullanılamaz.
 
 ## <a name="adding-wildcard-domains"></a>Joker karakter etki alanları ekleme
 
