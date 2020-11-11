@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: a0995fe4dea9f8399565c052bde68acb49b06430
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 70b983d0fc2b13957a3701c778dec074b328a770
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/10/2020
-ms.locfileid: "94424727"
+ms.locfileid: "94482717"
 ---
 Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı tanıyabilme ve (genellikle konuşma-metin olarak adlandırılır). Bu hızlı başlangıçta, uygulama ve ürünlerinize yönelik konuşma SDK 'sını kullanarak yüksek kaliteli bir konuşmayı metne dönüştürme işlemini nasıl gerçekleştireceğinizi öğreneceksiniz.
 
@@ -31,7 +31,7 @@ Herhangi bir şey yapabilmeniz için önce konuşma SDK 'sını yüklemeniz gere
 
 ## <a name="create-a-speech-configuration"></a>Konuşma yapılandırması oluşturma
 
-Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir oluşturmanız gerekir [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) . Bu sınıf, uygulamanız hakkında, anahtarınız ve ilgili bölge, uç nokta, ana bilgisayar veya yetkilendirme belirteci gibi bilgileri içerir. [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable)Anahtarınızı ve bölgenizi kullanarak oluşturun. Bölge tanımlarınızı bulmak için [bölge desteği](../../../regions.md#speech-sdk) sayfasına bakın.
+Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir oluşturmanız gerekir [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) . Bu sınıf, uygulamanız hakkında, anahtarınız ve ilgili bölge, uç nokta, ana bilgisayar veya yetkilendirme belirteci gibi bilgileri içerir. [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable)Anahtarınızı ve bölgenizi kullanarak oluşturun. Anahtar-bölge çiftini bulmak için [anahtarlar ve bölge bulma](../../../overview.md#find-keys-and-region) sayfasına bakın.
 
 ```java
 import com.microsoft.cognitiveservices.speech.*;

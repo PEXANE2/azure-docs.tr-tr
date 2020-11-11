@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: trbye
-ms.openlocfilehash: 086cbd7247b9a9eb3f7af2137aee2f563b1790a6
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 434548d7d00468605ad0f1a52af99fbc4278adc1
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425523"
+ms.locfileid: "94482664"
 ---
 Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı tanıyabilme ve (genellikle konuşma-metin olarak adlandırılır). Bu hızlı başlangıçta, uygulama ve ürünlerinize yönelik konuşma SDK 'sını kullanarak yüksek kaliteli bir konuşmayı metne dönüştürme işlemini nasıl gerçekleştireceğinizi öğreneceksiniz.
 
@@ -31,7 +31,7 @@ Herhangi bir şey yapabilmeniz için önce konuşma SDK 'sını yüklemeniz gere
 
 ## <a name="create-a-speech-configuration"></a>Konuşma yapılandırması oluşturma
 
-Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir oluşturmanız gerekir [`SpeechConfig`](/cpp/cognitive-services/speech/speechconfig) . Bu sınıf, uygulamanız hakkında, anahtarınız ve ilgili bölge, uç nokta, ana bilgisayar veya yetkilendirme belirteci gibi bilgileri içerir. [`SpeechConfig`](/cpp/cognitive-services/speech/speechconfig)Anahtarınızı ve bölgenizi kullanarak oluşturun. Bölge tanımlarınızı bulmak için [bölge desteği](../../../regions.md#speech-sdk) sayfasına bakın.
+Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir oluşturmanız gerekir [`SpeechConfig`](/cpp/cognitive-services/speech/speechconfig) . Bu sınıf, uygulamanız hakkında, anahtarınız ve ilgili bölge, uç nokta, ana bilgisayar veya yetkilendirme belirteci gibi bilgileri içerir. [`SpeechConfig`](/cpp/cognitive-services/speech/speechconfig)Anahtarınızı ve bölgenizi kullanarak oluşturun. Anahtar-bölge çiftini bulmak için [anahtarlar ve bölge bulma](../../../overview.md#find-keys-and-region) sayfasına bakın.
 
 ```cpp
 using namespace std;

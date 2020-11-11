@@ -4,14 +4,14 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: eaa7efe761490a639acabd9fd6d91378e1259a67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff9eca855269597477bc42a319c99c886576d92c
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779618"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94482627"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Dağıtılan bir Iletişim Hizmetleri kaynağı. [Iletişim Hizmetleri kaynağı oluşturun](../../create-communication-resource.md).
@@ -147,7 +147,8 @@ Bu, çağrının geçerli durumunu temsil eden bir dize döndürür:
 * ' Connected '-çağrı bağlı
 * ' Hold '-çağrı beklemeye koyuyor, Yerel uç nokta ve uzak katılımcı arasında medya akışı yok
 * Çağrının ' bağlantısı kesildi ' durumuna geçmeden önce ' bağlantısı kesiliyor '-geçiş durumu
-* ' Bağlantısı kesildi '-son çağrı durumu
+* ' Bağlantısı kesildi '-son çağrı durumu.
+   * Ağ bağlantısı kaybolursa, durum yaklaşık 2 dakika sonra ' bağlantısı kesildi ' durumuna geçer.
 
 
 * Belirli bir çağrının neden bitmediğini görmek için, `callEndReason` özelliği inceleyin.
@@ -233,6 +234,9 @@ const source callClient.getDeviceManager().getCameraList()[1];
 localVideoStream.switchSource(source);
 
 ```
+### <a name="faq"></a>SSS
+ * Ağ bağlantısı kaybolursa, çağrı durumu ' bağlantısız ' olarak değişir mi?
+    * Evet, ağ bağlantısı 2 dakikadan fazla kaybolursa, çağrı bağlantısı kesik duruma geçer ve çağrı sona bırakılır.
 
 ## <a name="remote-participants-management"></a>Uzak katılımcılar yönetimi
 
@@ -270,7 +274,8 @@ Durum aşağıdakilerden biri olabilir
 * ' Connected '-katılımcı çağrıya bağlı
 * ' Hold '-katılımcı beklemeye açık
 * ' EarlyMedia '-katılımcı çağrıya bağlanmadan önce duyuru yürütülür
-* ' Bağlantısı kesildi '-son durum-katılımcının çağrı bağlantısı kesildi
+* ' Bağlantısı kesildi '-son durum-katılımcının çağrı bağlantısı kesildi.
+   * Uzak katılımcı ağ bağlantılarını kaybederse, uzak katılımcı durumu yaklaşık 2 dakika sonra ' bağlantısı kesildi ' durumuna geçer.
 
 Katılımcının çağrıyı neden bıraktı olduğunu öğrenmek için, `callEndReason` özelliği inceleyin:
 ```js
@@ -410,7 +415,9 @@ Daha sonra yöntemini çağırarak ölçekleme modunu güncelleştirebilirsiniz 
 ```js
 view.updateScalingMode('Crop')
 ```
-
+### <a name="faq"></a>SSS
+* Uzak bir katılımcı ağ bağlantılarını kaybederse, durumları ' bağlantısı kesildi ' olarak değişir mi?
+    * Evet, uzak bir katılımcı ağ bağlantılarını 2 dakikadan uzun bir süre kaybederse, bu durum kesilmeden geçiş yapılır ve çağrıdan kaldırılır.
 ## <a name="device-management"></a>Cihaz yönetimi
 
 `DeviceManager` ses/video akışlarınızı iletmek için bir çağrıda kullanılabilecek yerel cihazları listelemenizi sağlar. Ayrıca, yerel tarayıcı API 'sini kullanarak bir kullanıcıdan mikrofona ve kameraya erişim izni talep etmenizi sağlar.
