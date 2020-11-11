@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/02/2020
-ms.openlocfilehash: e8b13369cb961d4be49f0045805a805fda38a59c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/10/2020
+ms.openlocfilehash: cac14687c6193d58069240529955e69fc680b2e8
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319823"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491826"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -43,9 +43,9 @@ Aboneliğiniz kapsamında bir Azure Cosmos hesabı oluşturduktan sonra [veritab
 
 Cosmos kapsayıcısının (veya paylaşılan üretilen iş veritabanı) en az 400 RU/sn aktarım hızına sahip olması gerekir. Kapsayıcı büyüdükçe, desteklenen en düşük aktarım hızı da aşağıdaki etkenlere bağlıdır:
 
-* Kapsayıcıda şimdiye kadar sağlanan en yüksek aktarım hızı. Örneğin, verimlilik 50.000 RU/sn 'ye yükseldiğinde, olası en düşük sağlanan aktarım hızı 500 RU/s olacaktır
-* Kapsayıcıda GB cinsinden geçerli depolama alanı. Örneğin, kapsayıcınızda 100 GB depolama alanı varsa, en düşük sağlanan verimlilik 1000 RU/s olacaktır
-* Paylaşılan bir üretilen iş veritabanında en düşük aktarım hızı, her zaman bir paylaşılan üretilen iş veritabanında oluşturduğunuz toplam kapsayıcı sayısına, kapsayıcı başına 100 RU/sn ile ölçülür. Örneğin, paylaşılan bir üretilen iş veritabanı içinde beş kapsayıcı oluşturduysanız, verimlilik en az 500 RU/sn olmalıdır
+* Kapsayıcıda şimdiye kadar sağlanan en yüksek aktarım hızı. Örneğin, aktarım hızı 50.000 RU/sn 'ye yükseldiğinde, olası en düşük sağlanan aktarım hızı 500 RU/s olacaktır.
+* Kapsayıcıda GB cinsinden geçerli depolama alanı. Örneğin, kapsayıcınızda 100 GB depolama alanı varsa, en düşük olası üretilen işlem 1000 RU/s olacaktır. **Note:** Kapsayıcınız veya VERITABANıNıZ 1 TB 'tan fazla veri içeriyorsa, hesabınız ["yüksek depolama/düşük aktarım hızı" programına](set-throughput.md#high-storage-low-throughput-program)uygun olabilir.
+* Paylaşılan bir üretilen iş veritabanında en düşük aktarım hızı, her zaman bir paylaşılan üretilen iş veritabanında oluşturduğunuz toplam kapsayıcı sayısına, kapsayıcı başına 100 RU/sn ile ölçülür. Örneğin, paylaşılan bir üretilen iş veritabanı içinde beş kapsayıcı oluşturduysanız, verimlilik en az 500 RU/sn olmalıdır.
 
 Kapsayıcının veya bir veritabanının geçerli ve en düşük aktarım hızı Azure portal veya SDK 'lardan alınabilir. Daha fazla bilgi için bkz. [kapsayıcılar ve veritabanları üzerinde üretilen Iş sağlama](set-throughput.md). 
 

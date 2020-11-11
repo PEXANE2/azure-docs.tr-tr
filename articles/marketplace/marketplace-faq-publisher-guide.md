@@ -4,15 +4,15 @@ description: Azure Marketi ve Microsoft AppSource hakkında sık sorulan sorular
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 09/11/2020
-ms.openlocfilehash: a5c5d7ae4dbf1126d171c78bbd4e353f11402260
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e72acb532a33d0b3751bb8ad5051b1a3df4d7514
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126728"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491486"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market hakkında sık sorulan sorular
 
@@ -60,7 +60,7 @@ Müşterilerin ticari Market teklifinizi kullanma yolları, teklifleri nasıl ol
 
 - Otomatik olarak sağladığınız çözümler, ister ücretli olsun, kendi lisansını getir (KLG) ya da ücretsiz olarak, müşterileri *hemen almak* için tasarlanmıştır.
 - Sınama sürücüsünü destekleyen teklifler (demo), müşteriyi *Test* etmek için müşterinin isteği ister. 
-- Ticari Market dışında bir deneme sağlayan hizmet olarak yazılım (SaaS) teklifleri *ücretsiz deneme* .
+- Ticari Market dışında bir deneme sağlayan hizmet olarak yazılım (SaaS) teklifleri *ücretsiz deneme*.
 - Basit listeler müşterinin *benimle iletişim* istemesine izin verir.
 
 ### <a name="how-do-i-create-offers-for-the-commercial-marketplace"></a>Ticari Market için teklifler oluşturmak Nasıl yaparım? misiniz?

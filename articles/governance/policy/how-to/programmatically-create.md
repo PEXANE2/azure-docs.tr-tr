@@ -3,12 +3,12 @@ title: Programlı olarak ilkeler oluşturma
 description: Bu makalede Azure CLı, Azure PowerShell ve REST API ile Azure Ilkesi için ilkeler oluşturma ve yönetme işlemi adım adım açıklanmaktadır.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 9b0c2e50536a847555dfa5cc6b9c823cfc1a4cfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bf2b1864331fd785ecdd70be4af79be01f1e5e0
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89047088"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491809"
 ---
 # <a name="programmatically-create-policies"></a>Programlı olarak ilkeler oluşturma
 
@@ -16,7 +16,7 @@ Bu makale, ilkeleri programlı olarak oluşturma ve yönetme konusunda size kıl
 
 Uyumluluk hakkında daha fazla bilgi için bkz. [Uyumluluk verileri alma](get-compliance-data.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdaki önkoşulların karşılandığından emin olun:
 
@@ -69,7 +69,7 @@ Kaynaklarınızın daha iyi görünürlüğüne yönelik ilk adım, kaynakların
    New-AzPolicyDefinition -Name 'AuditStorageAccounts' -DisplayName 'Audit Storage Accounts Open to Public Networks' -Policy 'AuditStorageAccounts.json'
    ```
 
-   Komut, _ortak ağlarda açık olan denetim depolama hesapları_adlı bir ilke tanımı oluşturur.
+   Komut, _ortak ağlarda açık olan denetim depolama hesapları_ adlı bir ilke tanımı oluşturur.
    Kullanabileceğiniz diğer parametreler hakkında daha fazla bilgi için, bkz. [New-AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition).
 
    Konum parametreleri olmadan çağrıldığında, `New-AzPolicyDefinition` Varsayılan olarak ilke tanımını oturum bağlamının seçili aboneliğine kaydetme varsayılan değeri. Tanımı farklı bir konuma kaydetmek için aşağıdaki parametreleri kullanın:
@@ -92,7 +92,7 @@ Kaynaklarınızın daha iyi görünürlüğüne yönelik ilk adım, kaynakların
 
    - Kaynak `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Kaynak grubu- `/subscriptions/{subId}/resourceGroups/{rgName}`
-   - Aboneliğiniz `/subscriptions/{subId}/`
+   - Aboneliğiniz `/subscriptions/{subId}`
    - Yönetim grubu- `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 Kaynak Yöneticisi PowerShell modülünü kullanarak kaynak ilkelerini yönetme hakkında daha fazla bilgi için bkz. [az. resources](/powershell/module/az.resources/#policies).
@@ -202,7 +202,7 @@ Bir ilke tanımı oluşturmak için aşağıdaki yordamı kullanın:
    az policy definition create --name 'audit-storage-accounts-open-to-public-networks' --display-name 'Audit Storage Accounts Open to Public Networks' --description 'This policy ensures that storage accounts with exposures to public networks are audited.' --rules '<path to json file>' --mode All
    ```
 
-   Komut, _ortak ağlarda açık olan denetim depolama hesapları_adlı bir ilke tanımı oluşturur.
+   Komut, _ortak ağlarda açık olan denetim depolama hesapları_ adlı bir ilke tanımı oluşturur.
    Kullanabileceğiniz diğer parametreler hakkında daha fazla bilgi için, bkz. [az Policy Definition Create](/cli/azure/policy/definition#az-policy-definition-create).
 
    Konum parametreleri olmadan çağrıldığında, `az policy definition creation` Varsayılan olarak ilke tanımını oturum bağlamının seçili aboneliğine kaydetme varsayılan değeri. Tanımı farklı bir konuma kaydetmek için aşağıdaki parametreleri kullanın:

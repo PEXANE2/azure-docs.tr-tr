@@ -6,12 +6,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 01/14/2019
 ms.author: cshoe
-ms.openlocfilehash: 1dd9fabbe235e45290e607f861b67466d33319ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58ee9b682bc97dc4044d811392cf4ff5b51a69fd
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212173"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491367"
 ---
 # <a name="using-the-azure-function-return-value"></a>Azure Işlevi dönüş değerini kullanma
 
@@ -21,7 +21,7 @@ Dönüş değerine sahip dillerde bir işlev [Çıkış bağlamasını](./functi
 
 * C# sınıf kitaplığında, çıkış bağlama özniteliğini yöntem dönüş değerine uygulayın.
 * Java 'da, çıkış bağlama ek açıklamasını Function yöntemine uygulayın.
-* Diğer dillerde, `name` * üzerindefunction.js* özelliğini olarak ayarlayın `$return` .
+* Diğer dillerde, `name` *üzerindefunction.js* özelliğini olarak ayarlayın `$return` .
 
 Birden çok çıkış bağlaması varsa, bunlardan yalnızca biri için dönüş değerini kullanın.
 
@@ -129,6 +129,27 @@ module.exports = function (context, input) {
     context.log('Node.js script processed queue message', json);
     context.done(null, json);
 }
+```
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+Dosyadaki *function.js* çıktı bağlaması aşağıda verilmiştir:
+
+```json
+{
+    "name": "Response",
+    "type": "blob",
+    "direction": "out",
+    "path": "output-container/{blobname}"
+}
+```
+
+Bir http çıkış bağlaması için dönüş değerini kullanan PowerShell kodu aşağıda verilmiştir:
+
+```powershell
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = [HttpStatusCode]::OK
+    Body = $blobname
+    })
 ```
 
 # <a name="python"></a>[Python](#tab/python)

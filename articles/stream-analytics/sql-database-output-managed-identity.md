@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: c703dd4053cc27d469d83d344da910e8e5b23ddb
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ec260c2e71d1716eb4de9ad25942f61169356dfb
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129907"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491350"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Azure Stream Analytics işinden Azure SQL veritabanına erişmek için Yönetilen kimlikler kullanma (Önizleme)
 
@@ -123,6 +123,10 @@ Uygun çıktı şemasıyla SQL veritabanınızda bir tablo oluşturduğunuzdan e
 1. **> SQL veritabanı Ekle** ' yi seçin. SQL veritabanı çıkış havuzunun çıkış özellikleri penceresinde, kimlik doğrulama modu açılır listesinden **yönetilen kimlik** ' i seçin.
 
 1. Kalan özellikleri doldurun. SQL veritabanı çıkışı oluşturma hakkında daha fazla bilgi için, bkz. [Stream Analytics BIR SQL veritabanı çıkışı oluşturma](sql-database-output.md). İşiniz bittiğinde **Kaydet** ' i seçin. 
+
+## <a name="remove-managed-identity"></a>Yönetilen kimliği kaldır
+
+Stream Analytics işi için oluşturulan yönetilen kimlik yalnızca iş silindiğinde silinir. İşi silmeden yönetilen kimliği silmenin bir yolu yoktur. Artık yönetilen kimliği kullanmak istemiyorsanız, çıkışın kimlik doğrulama yöntemini değiştirebilirsiniz. Yönetilen kimlik, iş silinene kadar mevcut olmaya devam eder ve yönetilen kimlik kimlik doğrulamasını yeniden kullanmaya karar verirseniz kullanılacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,39 +1,61 @@
 ---
-title: Azure Izleyici 'de Günlükler | Microsoft Docs
-description: İzleme verilerinin gelişmiş analizine yönelik olarak kullanılan Azure Izleyici 'de günlükleri açıklar.
+title: Azure İzleyici Günlükleri
+description: İzleme verilerinin gelişmiş analizine yönelik olarak kullanılan Azure Izleyici günlüklerini açıklar.
 documentationcenter: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: na
-ms.date: 09/09/2020
+ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: e08c649b9a1d7e8b909a413ee435fce30a8d7e48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 462242b001da5a5a6d2eba8e4bd06315c0b263a6
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90032799"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491877"
 ---
 # <a name="azure-monitor-logs-overview"></a>Azure Izleyici günlüklerine genel bakış
-Azure Izleyici günlükleri, çeşitli kaynaklardan günlük verilerini toplayıp düzenleyen ve gelişmiş bir sorgu dili kullanarak analiz için kullanılabilir hale getiren bir Azure Izleyici özelliğidir. Farklı kaynaklardaki veriler tek bir çalışma alanında birleştirilebilir ve bu tür görevler ve eğilim, uyarı ve görselleştirmeyi gerçekleştirmek için birlikte analiz edilebilir.
+Azure Izleyici günlükleri, [izlenen kaynaklardan](../monitor-reference.md)gelen günlük ve performans verilerini toplayan ve düzenleyen bir Azure izleyici özelliğidir. Azure hizmetlerinden farklı kaynaklardan gelen veriler, [sanal makine aracılarından](agents-overview.md) [gelen günlük](platform-logs-overview.md) ve performans verileri ve [uygulamalardan](../app/app-insights-overview.md) kullanım ve performans verileri tek bir çalışma alanında birleştirilebilir ve bu sayede milyonlarca kaydı hızlı bir şekilde analiz etme yeteneğine sahip olan gelişmiş bir sorgu dili kullanılarak analiz edilebilir. Yalnızca belirli bir kayıt kümesini alan basit bir sorgu gerçekleştirebilir veya izleme verilerinizde kritik desenleri belirlemek için gelişmiş veri analizi gerçekleştirebilirsiniz. Günlük sorgularıyla ve sonuçlarıyla birlikte Log Analytics kullanarak etkileşimli olarak çalışın, sorunları önceden bilgilendirerek bir uyarı kurallarında kullanın veya sonuçları bir çalışma kitabı veya panoda görselleştirin.
 
-## <a name="relationship-to-azure-monitor-metrics"></a>Azure Izleyici ölçümleriyle ilişki
-Azure Izleyici ölçümleri sayısal verileri bir zaman serisi veritabanında depolar, bu da bu verilerin Azure Izleyici günlüklerinden daha hafif olmasını sağlar ve sorunların uyarı ve hızlı bir şekilde algılanması için özellikle yararlı hale gelir. Yalnızca belirli bir yapıda sayısal veriler depolayabilse de, Günlükler her biri kendi yapısıyla çeşitli farklı veri türlerini depolayabilse de ölçümler. Ayrıca, ölçüm verilerinin çözümlenmesi için kullanılamayan günlük sorgularını kullanarak Günlükler verilerinde karmaşık analizler gerçekleştirebilirsiniz.
-
-Sayısal veriler genellikle ölçümlere ek olarak veri kaynaklarından günlüklere gönderilir. Günlüklerde bu verilerin toplanması ve bu verileri saklamak için ek bir ücret söz konusu olduğunda, ölçüm verilerini günlük sorgularına dahil etmenize ve diğer izleme verileriyle çözümlemenize olanak tanır.
-
-## <a name="relationship-to-azure-data-explorer"></a>Azure Veri Gezgini ile ilişki
-Azure Izleyici günlükleri Azure Veri Gezgini tabanlıdır. Log Analytics çalışma alanı kabaca Azure Veri Gezgini 'deki bir veritabanının eşdeğeridir, tablolar aynı şekilde yapılandırılmıştır ve her ikisi de aynı kusto sorgu dilini (KQL) kullanır. Azure portal Azure Izleyici sorgularıyla çalışmak için Log Analytics kullanma deneyimi, Azure Veri Gezgini Web Kullanıcı arabirimini kullanarak deneyimle benzerdir. [Azure Veri Gezgini sorgusunda bir Log Analytics çalışma alanından da veri](/azure/data-explorer/query-monitor-data)ekleyebilirsiniz. 
+> [!NOTE]
+> Azure Izleyici günlükleri, Azure Izleyicisini destekleyen veri platformunun bir yarısıdır. Diğer bir deyişle, sayısal verileri bir zaman serisi veritabanında depolayan [Azure Izleyici ölçümleri](data-platform-metrics.md) vardır. Bu, bu verilerin Azure Izleyici günlüklerinde verileri daha basit hale getirir ve neredeyse gerçek zamanlı senaryoları destekleyerek, sorunların uyarı ve hızlı bir şekilde algılanması için oldukça yararlı hale gelir. Yalnızca belirli bir yapıda sayısal veriler depolayabilse de, Günlükler her biri kendi yapısıyla çeşitli farklı veri türlerini depolayabilse de ölçümler. Ayrıca, ölçüm verilerinin çözümlenmesi için kullanılamayan günlük sorgularını kullanarak Günlükler verilerinde karmaşık analizler gerçekleştirebilirsiniz.
 
 
-## <a name="structure-of-data"></a>Veri yapısı
-Azure Izleyici günlükleri tarafından toplanan veriler, her biri belirli bir kaynaktaki verilerin depolandığı birden çok tablo içeren bir [Log Analytics çalışma alanında](./design-logs-deployment.md) depolanır. Çalışma alanı verilerin coğrafi konumunu, hangi kullanıcıların verilere erişebileceğini tanımlayan erişim haklarını ve fiyatlandırma katmanı ve veri saklama gibi yapılandırma ayarlarını tanımlar. Gereksinimlerinize bağlı olarak, tüm izleme verileriniz için tek bir çalışma alanı kullanabilir veya birden çok çalışma alanı oluşturabilirsiniz. Bkz. birden çok çalışma alanı oluşturma konusunda dikkat edilmesi gereken [Azure Izleyici günlükleri dağıtımınızı tasarlama](design-logs-deployment.md) .
+## <a name="what-can-you-do-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile neler yapabilirsiniz?
+Aşağıdaki tabloda Azure Izleyici 'de günlükleri kullanmanın farklı yolları açıklanmaktadır:
 
-Her çalışma alanı birden fazla veri satırı içeren ayrı sütunlarda düzenlenmiş birden çok tablo içerir. Her tablo, veri kaynağı tarafından belirtilen veri satırları tarafından paylaşılan benzersiz bir sütun kümesi tarafından tanımlanır. 
+|  |  |
+|:---|:---|
+| **Analiz** | [Günlük sorgularını](../log-query/log-query-overview.md) yazmak ve güçlü bir analiz altyapısı kullanarak günlük verilerini etkileşimli olarak çözümlemek için Azure Portal [Log Analytics](../log-query/get-started-portal.md) kullanın |
+| **Uyarı** | Sorgu sonuçları belirli bir sonuçla eşleşiyorsa bildirim gönderen veya [otomatik eylem](action-groups.md) alan bir [günlük uyarı kuralı](alerts-log.md) yapılandırın. |
+| **Görselleştirme** | Bir [Azure panosuna](../../azure-portal/azure-portal-dashboards.md)tablo veya grafik olarak işlenen sorgu sonuçlarını sabitleme.<br>Etkileşimli bir raporda birden fazla veri kümesiyle birleştirilecek bir [çalışma kitabı](../app/usage-workbooks.md) oluşturun. <br>Farklı görselleştirmeler kullanmak ve Azure dışındaki kullanıcılarla paylaşmak için bir sorgunun sonuçlarını [Power BI](powerbi.md) dışarı aktarın.<br>Bir sorgunun sonuçlarını [Grafana](grafana-plugin.md) olarak dışa aktarın ve diğer veri kaynaklarıyla birleştirin.|
+| **İçgörüler** | Belirli uygulamalar ve hizmetler için özelleştirilmiş bir izleme deneyimi sağlayan [öngörüleri](../monitor-reference.md#insights-and-core-solutions) destekleme.  |
+| **Almanın** | [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics)kullanarak bir komut satırından günlük sorgusu sonuçlarına erişin.<br>[PowerShell cmdlet 'lerini](https://docs.microsoft.com/powershell/module/az.operationalinsights)kullanarak bir komut satırından günlük sorgusu sonuçlarına erişin.<br>[REST API](https://dev.loganalytics.io/)kullanarak özel bir uygulamadan günlük sorgusu sonuçlarına erişin. |
+| **Dışarı Aktarma** | Azure depolama hesabına veya Azure Event Hubs [otomatik olarak günlük verilerinin dışarı aktarılmasını](logs-data-export.md) yapılandırın.<br>Günlük verilerini almak ve [Logic Apps](logicapp-flow-connector.md)kullanarak bir dış konuma kopyalamak için bir iş akışı oluşturun. |
+
+![Günlüklere genel bakış](media/data-platform-logs/logs-overview.png)
+
+
+## <a name="data-collection"></a>Veri toplama
+Bir Log Analytics çalışma alanı oluşturduktan sonra, verilerini göndermek için farklı kaynaklar yapılandırmanız gerekir. Hiçbir veri otomatik olarak toplanmaz. Bu yapılandırma, veri kaynağına bağlı olarak farklı olacaktır. Örneğin, Azure kaynaklarından kaynak günlüklerini çalışma alanına göndermek için [Tanılama ayarları oluşturun](diagnostic-settings.md) . Sanal makinelerden veri toplamak için [VM'ler için Azure izleyici etkinleştirin](../insights/vminsights-enable-overview.md) . Ek olayları ve performans verilerini toplamak için [çalışma alanındaki veri kaynaklarını](data-sources.md) yapılandırın.
+
+- Azure izleyici günlüklerine veri göndermek için yapılandırabileceğiniz veri kaynaklarının tüm listesi için bkz. [Azure izleyici tarafından Izlenen nedir?](../monitor-reference.md) .
+
+
+## <a name="log-analytics-workspaces"></a>Log Analytics çalışma alanları
+Azure Izleyici günlükleri tarafından toplanan veriler, bir veya daha fazla [Log Analytics çalışma](./design-logs-deployment.md)alanında depolanır. Çalışma alanı verilerin coğrafi konumunu, hangi kullanıcıların verilere erişebileceğini tanımlayan erişim haklarını ve fiyatlandırma katmanı ve veri saklama gibi yapılandırma ayarlarını tanımlar.  
+
+Azure Izleyici günlüklerini kullanmak için en az bir çalışma alanı oluşturmanız gerekir. Tek bir çalışma alanı tüm izleme verileriniz için yeterli olabilir veya gereksinimlerinize bağlı olarak birden çok çalışma alanı oluşturmayı tercih edebilir. Örneğin, üretim verileriniz ve test için bir çalışma alanınız olabilir. 
+
+- Yeni bir çalışma alanı oluşturmak için [Azure portal Log Analytics çalışma alanı oluşturma](../learn/quick-create-workspace.md) bölümüne bakın.
+- Bkz. birden çok çalışma alanı oluşturma konusunda dikkat edilmesi gereken [Azure Izleyici günlükleri dağıtımınızı tasarlama](design-logs-deployment.md) .
+
+## <a name="data-structure"></a>Veri yapısı
+Günlük sorguları Log Analytics çalışma alanından verilerini alır. Her çalışma alanı birden fazla veri satırı içeren ayrı sütunlarda düzenlenmiş birden çok tablo içerir. Her tablo, veri kaynağı tarafından belirtilen veri satırları tarafından paylaşılan benzersiz bir sütun kümesi tarafından tanımlanır. 
 
 [![Azure Izleyici günlükleri yapısı](media/data-platform-logs/logs-structure.png)](media/data-platform-logs/logs-structure.png#lightbox)
 
 
-Application Insights günlük verileri Azure Izleyici günlüklerinde de depolanır, ancak uygulamanızın nasıl yapılandırıldığına bağlı olarak farklı bir şekilde depolanır. Çalışma alanı tabanlı bir uygulama için veriler, uygulama istekleri, özel durumlar ve sayfa görünümleri gibi verileri tutmak üzere standart bir tablo kümesindeki Log Analytics çalışma alanında depolanır. Birden çok uygulama aynı çalışma alanını kullanabilir. Klasik bir uygulama için, veriler Log Analytics çalışma alanında depolanmaz. Aynı sorgu dilini kullanır ve Azure portal aynı Log Analytics aracını kullanarak sorgular oluşturup çalıştırırsınız. Klasik uygulamalar için veriler birbirinden ayrı olarak depolanır. Tablo ve sütun adları farklı olsa da, genel yapısı çalışma alanı tabanlı uygulamalarla aynıdır. Bu ikisinin ayrıntılı karşılaştırması için [çalışma alanı tabanlı kaynak değişikliklerine](../app/apm-tables.md) bakın.
+Application Insights günlük verileri Azure Izleyici günlüklerinde de depolanır, ancak uygulamanızın nasıl yapılandırıldığına bağlı olarak farklı bir şekilde depolanır. Çalışma alanı tabanlı bir uygulama için veriler, uygulama istekleri, özel durumlar ve sayfa görünümleri gibi verileri tutmak üzere standart bir tablo kümesindeki Log Analytics çalışma alanında depolanır. Birden çok uygulama aynı çalışma alanını kullanabilir. Klasik bir uygulama için, veriler Log Analytics çalışma alanında depolanmaz. Aynı sorgu dilini kullanır ve Azure portal aynı Log Analytics aracını kullanarak sorgular oluşturup çalıştırırsınız. Klasik uygulamalar için veriler birbirinden ayrı olarak depolanır. Tablo ve sütun adları farklı olsa da, genel yapısı çalışma alanı tabanlı uygulamalarla aynıdır. Çalışma alanı tabanlı ve klasik uygulamalar için şemanın ayrıntılı bir karşılaştırması için [çalışma alanı tabanlı kaynak değişikliklerine](../app/apm-tables.md) bakın.
 
 
 > [!NOTE]
@@ -42,13 +64,24 @@ Application Insights günlük verileri Azure Izleyici günlüklerinde de depolan
 
 [![Application Insights için Azure Izleyici günlük yapısı](media/data-platform-logs/logs-structure-ai.png)](media/data-platform-logs/logs-structure-ai.png#lightbox)
 
+
 ## <a name="log-queries"></a>Günlük sorguları
-Veriler, verileri işlemek ve sonuçları döndürmek için salt okunurdur bir istek olan [günlük sorgusu](../log-query/log-query-overview.md) kullanılarak bir Log Analytics çalışma alanından alınır. Günlük sorguları, Azure Veri Gezgini tarafından kullanılan sorgu dili olan [kusto sorgu dili 'nde (KQL)](/azure/data-explorer/kusto/query/)yazılır. Günlük sorgularını düzenlemek ve çalıştırmak ve sonuçları etkileşimli olarak çözümlemek için Azure portal bir araç olan Log Analytics kullanın. Daha sonra, Azure Izleyici 'de günlük sorgu uyarıları ve çalışma kitapları gibi diğer özellikleri desteklemek için oluşturduğunuz sorguları kullanabilirsiniz.
+Veriler, verileri işlemek ve sonuçları döndürmek için salt okunurdur bir istek olan günlük sorgusu kullanılarak bir Log Analytics çalışma alanından alınır. Günlük sorguları, Azure Veri Gezgini tarafından kullanılan sorgu dili olan [kusto sorgu dilinde (KQL)](/azure/data-explorer/kusto/query/)yazılır. Sonuçları etkileşimli olarak analiz etmek, uyarı kurallarında kullanmak veya sonuçları çalışma kitaplarına veya panolara eklemek için Log Analytics günlük sorguları yazabilirsiniz. Öngörüler, görünümlerini ve çalışma kitaplarını desteklemek için önceden oluşturulmuş sorgular içerir.
+
+- Günlük sorgularının kullanıldığı bir liste için bkz. [Azure izleyici 'de günlük sorguları](log-query/../../log-query/log-query-overview.md) ve başlamanıza başlamak için öğreticilere ve diğer belgelere başvurular.
+
+![Log Analytics](media/data-platform-logs/log-analytics.png)
+
+## <a name="log-analytics"></a>Log Analytics
+Günlük sorgularını düzenlemek ve çalıştırmak ve sonuçlarını etkileşimli olarak çözümlemek için Azure portal bir araç olan Log Analytics kullanın. Daha sonra, Azure Izleyici 'de günlük sorgu uyarıları ve çalışma kitapları gibi diğer özellikleri desteklemek için oluşturduğunuz sorguları kullanabilirsiniz. Azure Izleyici menüsündeki **Günlükler** seçeneğinden veya Azure Portal diğer hizmetlerden Log Analytics erişin.
+
+- Log Analytics açıklaması için bkz. [Azure izleyici 'de Log Analytics genel bakış](/log-query/log-analytics-overview.md) . 
+- Basit bir günlük sorgusu oluşturmak ve sonuçlarını çözümlemek için Log Analytics özelliklerini kullanma hakkında bilgi almak için [Log Analytics öğreticiye](/log-query/log-analytics-tutorial.md) bakın.
 
 
-## <a name="sources-of-data-for-azure-monitor-logs"></a>Azure Izleyici günlükleri için veri kaynakları
-Azure Izleyici, Azure Izleyici ve sanal makinelerde çalışan aracılarda bulunan kaynaklar da dahil olmak üzere çeşitli kaynaklardan günlük verilerini toplar. Log Analytics çalışma alanına veri gönderen veri kaynaklarının tamamen listesi için bkz. [Azure izleyici tarafından Izlenen nedir?](../monitor-reference.md) .
 
+## <a name="relationship-to-azure-data-explorer"></a>Azure Veri Gezgini ile ilişki
+Azure Izleyici günlükleri Azure Veri Gezgini tabanlıdır. Log Analytics çalışma alanı kabaca Azure Veri Gezgini 'deki bir veritabanının eşdeğeridir, tablolar aynı şekilde yapılandırılmıştır ve her ikisi de aynı kusto sorgu dilini (KQL) kullanır. Azure portal Azure Izleyici sorgularıyla çalışmak için Log Analytics kullanma deneyimi, Azure Veri Gezgini Web Kullanıcı arabirimini kullanarak deneyimle benzerdir. [Azure Veri Gezgini sorgusunda bir Log Analytics çalışma alanından da veri](/azure/data-explorer/query-monitor-data)ekleyebilirsiniz. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -56,4 +89,3 @@ Azure Izleyici, Azure Izleyici ve sanal makinelerde çalışan aracılarda bulun
 - Log Analytics çalışma alanından verileri almak ve analiz etmek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin.
 - [Azure izleyici 'de ölçümler](data-platform-metrics.md)hakkında bilgi edinin.
 - Azure 'daki farklı kaynaklar için [kullanılabilen izleme verileri](data-sources.md) hakkında bilgi edinin.
-

@@ -5,14 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/19/2020
-ms.author: keferna
-author: keferna
-ms.openlocfilehash: 1af2793bc32c1f3cdbdcd016562b761e05427073
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.author: trkeya
+author: trkeya
+ms.openlocfilehash: 0b445f9d4fdda0b1fac9dcdb4344533cfd7d37a9
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125147"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491248"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Test sürüşü Azure Resource Manager
 
@@ -76,7 +76,7 @@ Parametreleriniz için geçerli herhangi bir ad kullanabilirsiniz; test sürüc�
 | Meta veri türü   | Parametre türü  | Açıklama     | Örnek değer    |
 |---|---|---|---|
 | **BaseUri**     | string          | Dağıtım paketinizin temel URI 'SI| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
-| **nitelen**    | string          | Yeni rastgele Kullanıcı adı.| admin68876      |
+| **username**    | string          | Yeni rastgele Kullanıcı adı.| admin68876      |
 | **parola**    | güvenli dize    | Yeni rastgele parola | LP! ACS \^ 2kh     |
 | **oturum kimliği**   | string          | Benzersiz test sürücüsü oturum KIMLIĞI (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
@@ -326,7 +326,7 @@ Tamamlanacak son bölüm, Azure aboneliğinizi ve Azure Active Directory (AD) ba
 
    1. Test sürücüsü için kullanmakta olduğunuz **aboneliğin** türünü seçin.
    1. **Erişim denetimi (IAM)** öğesini seçin.
-   1. **Rol atamaları** sekmesini seçin ve **rol ataması ekleyin** .
+   1. **Rol atamaları** sekmesini seçin ve **rol ataması ekleyin**.
 
       ![Yeni Access Control sorumlusu ekleme](media/test-drive/access-control-principal.jpg)
 
@@ -348,7 +348,7 @@ Tüm test sürücüsü alanlarınız tamamlandığına göre, teklifinizi yenide
 1. Azure aboneliğinizi Azure portal içinde açın.
 1. Test sürücünüzün doğru bir şekilde dağıtmakta olduğunu doğrulayın.
 
-   ![Azure portal](media/test-drive/azure-portal.png)
+   ![Azure portalı](media/test-drive/azure-portal.png)
 
 Müşterileriniz için sağlanan test sürücü örneklerini silmeyin; test sürücüsü hizmeti, bir müşteri bittikten sonra bu kaynak gruplarını otomatik olarak temizler.
 

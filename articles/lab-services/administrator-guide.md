@@ -3,21 +3,23 @@ title: Yönetici Kılavuzu Azure Lab Services | Microsoft Docs
 description: Bu kılavuz, Azure Lab Services kullanarak laboratuvar hesapları oluşturan ve yöneten yöneticilere yardımcı olur.
 ms.topic: article
 ms.date: 10/20/2020
-ms.openlocfilehash: a39ee2cc57c8fc1497c3798759bd40d1ed2976e3
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 8670a9d56575dbfb6d3e565ec97191581dc612a8
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425309"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491044"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services Yönetici Kılavuzu
-Bir University 'in bulut kaynaklarını yöneten bilgi teknolojisi (BT) yöneticileri, genellikle okulunuzun laboratuvar hesabını ayarlamaktan sorumludur. Laboratuvar hesabı kurulduktan sonra, Yöneticiler veya eğitimciler laboratuvar hesabı içinde bulunan derslik laboratuvarları oluşturur. Bu makalede, söz konusu Azure kaynaklarına ve bunları oluşturmaya yönelik kılavuza yönelik yüksek düzeyde bir genel bakış sunulmaktadır.
+Bir University 'in bulut kaynaklarını yöneten bilgi teknolojisi (BT) yöneticileri, genellikle okulunuzun laboratuvar hesabını ayarlamaktan sorumludur. Laboratuvar hesabı kurulduktan sonra Yöneticiler veya eğitimciler laboratuvar hesabı içinde bulunan laboratuvarlar oluşturur. Bu makalede, söz konusu Azure kaynaklarına ve bunları oluşturmaya yönelik kılavuza yönelik yüksek düzeyde bir genel bakış sunulmaktadır.
 
 ![Laboratuvar hesabındaki Azure kaynaklarının üst düzey görünümü](./media/administrator-guide/high-level-view.png)
 
-- Sınıf laboratuvarları Azure Lab Services sahip bir Azure aboneliği içinde barındırılır.
+- Labs Azure Lab Services sahip bir Azure aboneliği içinde barındırılır.
 - Laboratuvar hesapları, paylaşılan görüntü Galerisi ve görüntü sürümleri aboneliğiniz dahilinde barındırılır.
-- Laboratuvar hesabınıza ve paylaşılan görüntü galerinize aynı kaynak grubunda sahip olabilirsiniz. Bu diyagramda, farklı kaynak gruplarında yer alırlar. 
+- Laboratuvar hesabınıza ve paylaşılan görüntü galerinize aynı kaynak grubunda sahip olabilirsiniz. Bu diyagramda, farklı kaynak gruplarında yer alırlar.
+
+Mimari hakkında daha fazla bilgi için şu makaleye bakın: [Labs mimari temelleri](https://docs.microsoft.com/azure/lab-services/classroom-labs-fundamentals)
 
 ## <a name="subscription"></a>Abonelik
 Üniversiteniz bir veya daha fazla Azure aboneliğine sahip. Laboratuvar hesapları da dahil olmak üzere, içinde kullanılan tüm Azure resources\services için faturalandırma ve güvenliği yönetmek üzere bir abonelik kullanılır.
@@ -25,9 +27,9 @@ Bir University 'in bulut kaynaklarını yöneten bilgi teknolojisi (BT) yönetic
 Laboratuvar hesabı ve aboneliği arasındaki ilişki önemlidir çünkü:
 
 - Faturalandırma, laboratuvar hesabını içeren abonelikle raporlanır.
-- Kullanıcılara aboneliğin Azure Active Directory (AD) kiracısındaki Azure Lab Services erişim izni verebilirsiniz. Bir kullanıcıyı laboratuvar hesabı sahip\katkıda bulunan, derslik Laboratuvarı oluşturan veya derslik laboratuvar sahibi olarak ekleyebilirsiniz.
+- Kullanıcılara aboneliğin Azure Active Directory (AD) kiracısındaki Azure Lab Services erişim izni verebilirsiniz. Bir kullanıcıyı laboratuvar hesabı sahip\katkıda bulunan, laboratuvar Oluşturucu veya laboratuvar sahibi olarak ekleyebilirsiniz.
 
-Sınıf laboratuvarları ve bunların sanal makineleri (VM 'Ler) Azure Lab Services sahip olunan bir abonelikte sizin için yönetilir ve barındırılır.
+Labs ve sanal makineleri (VM 'Ler) Azure Lab Services sahip olunan bir abonelikte sizin için yönetilir ve barındırılır.
 
 ## <a name="resource-group"></a>Kaynak grubu
 Bir abonelik bir veya daha fazla kaynak grubu içeriyor. Kaynak grupları, aynı çözüm içinde birlikte kullanılan Azure kaynakları mantıksal gruplandırmaları oluşturmak için kullanılır.  
@@ -42,81 +44,81 @@ Bir laboratuvar hesabının veya paylaşılan görüntü galerisinin kaynak grub
 
 ## <a name="lab-account"></a>Laboratuvar hesabı
 
-Laboratuvar hesabı bir veya daha fazla sınıf Laboratuvarı için kapsayıcı görevi görür. Azure Lab Services kullanmaya başlarken, yalnızca tek bir laboratuar hesabı olması yaygındır. Laboratuvar kullanımınız ölçeklenirken daha sonra daha fazla laboratuvar hesabı oluşturmayı tercih edebilirsiniz.
+Laboratuvar hesabı bir veya daha fazla laboratuvarda kapsayıcı görevi görür. Azure Lab Services kullanmaya başlarken, yalnızca tek bir laboratuar hesabı olması yaygındır. Laboratuvar kullanımınız ölçeklenirken daha sonra daha fazla laboratuvar hesabı oluşturmayı tercih edebilirsiniz.
 
 Aşağıdaki listede birden çok laboratuvar hesabının faydalı olabileceği senaryolar vurgulanmıştır:
 
-- **Sınıf laboratuvarları genelinde farklı ilke gereksinimlerini yönetme**
+- **Laboratuvarlar genelinde farklı ilke gereksinimlerini yönetme**
 
-    Bir laboratuvar hesabı ayarlarken, laboratuvar hesabı altındaki *Tüm* sınıf laboratuvarları için uygulanan ilkeler ayarlarsınız, örneğin:
-    - Sınıf laboratuvarının erişebileceği paylaşılan kaynaklarla Azure sanal ağı. Örneğin, bir sanal ağ içindeki paylaşılan bir veri kümesine erişmesi gereken bir derslik Laboratuvarı kümesine sahip olabilirsiniz.
-    - Sınıf laboratuvarlarının VM oluşturmak için kullanabileceği sanal makine (VM) görüntüleri. Örneğin, Linux Market görüntüsü [için veri bilimi VM'si](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) erişmesi gereken bir derslik Laboratuvarı kümesine sahip olabilirsiniz.
+    Bir laboratuvar hesabı ayarlarken, laboratuvar hesabı altındaki *Tüm* laboratuvarlara uygulanan ilkeler ayarlarsınız; örneğin:
+    - Laboratuvarın erişebileceği paylaşılan kaynaklarla Azure sanal ağı. Örneğin, bir sanal ağ içindeki paylaşılan bir veri kümesine erişmesi gereken bir Labs kümesine sahip olabilirsiniz.
+    - Laboratuvarların VM oluşturmak için kullanabileceği sanal makine (VM) görüntüleri. Örneğin, Linux Market görüntüsü [için veri bilimi VM'si](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) erişmesi gereken bir Labs kümesine sahip olabilirsiniz.
 
-    Bir diğerinden benzersiz ilke gereksinimlerine sahip derslabs varsa, bu derslik laboratuvarlarını ayrı ayrı yönetmek için ayrı laboratuvar hesapları oluşturmak yararlı olabilir.
+    Bir diğerinden benzersiz ilke gereksinimlerine sahip laboratuvarınız varsa, bu laboratuvarları ayrı ayrı yönetmek için ayrı laboratuvar hesapları oluşturmak yararlı olabilir.
 
 - **Laboratuvar hesabına göre bütçeyi ayır**
   
-    Tek bir laboratuar hesabı aracılığıyla tüm sınıf Laboratuvarı maliyetlerini raporlamak yerine, daha net bir şekilde ayrılmış bütçe gerekebilir. Örneğin, bir bütçeyi Departmanlar arasında ayırmak için University 'in Math departmanı, bilgisayar bilimi departmanı ve benzeri laboratuvar hesapları oluşturabilirsiniz.  Daha sonra [Azure maliyet yönetimi](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview)'ni kullanarak her bir laboratuvar hesabının maliyetini görüntüleyebilirsiniz.
+    Tek bir laboratuar hesabı aracılığıyla tüm Laboratuvar maliyetlerini raporlamak yerine, daha net bir şekilde ayrılmış bütçe gerekebilir. Örneğin, bir bütçeyi Departmanlar arasında ayırmak için University 'in Math departmanı, bilgisayar bilimi departmanı ve benzeri laboratuvar hesapları oluşturabilirsiniz.  Daha sonra [Azure maliyet yönetimi](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview)'ni kullanarak her bir laboratuvar hesabının maliyetini görüntüleyebilirsiniz.
 
 - **Active\production Labs 'den pilot Labs 'i yalıtma**
   
     Active\production Labs 'i etkilemeden laboratuvar hesabı için ilke değişikliklerini pilot yapmak istediğiniz durumlar olabilir. Bu senaryoda, pilot çalışması amaçlarıyla ayrı bir laboratuvar hesabı oluşturmak, değişiklikleri yalıtmanızı sağlar. 
 
-## <a name="classroom-lab"></a>Sınıf Laboratuvarı
+## <a name="lab"></a>Laboratuvar
 
-Bir sınıf Laboratuvarı, her biri tek bir öğrenciye atanan sanal makineler (VM) içerir.  Genel olarak şunları yapabilirsiniz:
+Laboratuvar, her biri tek bir öğrenciye atanan sanal makineler (VM) içerir.  Genel olarak şunları yapabilirsiniz:
 
-- Her sınıf için bir derslik Laboratuvarı olmalıdır.
-- Her bir Yarıyılı: (veya sınıfınızın sunulduğu her zaman çerçevesinde) yeni bir sınıf Laboratuvarı kümesi oluşturun. Genellikle aynı görüntü gereksinimlerine sahip sınıflar için, Labs ve semeyenlerin tamamında görüntüleri yeniden kullanmak üzere [paylaşılan bir görüntü Galerisi](#shared-image-gallery) kullanmanız gerekir.
+- Her sınıf için bir laboratuvarınız vardır.
+- Her bir Yarıyılı: (veya sınıfınızın sunulduğu her bir zaman çerçevesi için) yeni bir laboratuvar kümesi oluşturun. Genellikle aynı görüntü gereksinimlerine sahip sınıflar için, Labs ve semeyenlerin tamamında görüntüleri yeniden kullanmak üzere [paylaşılan bir görüntü Galerisi](#shared-image-gallery) kullanmanız gerekir.
 
-Sınıf Laboratuvarlarınızı nasıl yapılandıracağınızı belirlerken aşağıdaki noktaları göz önünde bulundurun:
+Laboratuvarlarınızı nasıl yapılandıracağınızı belirlerken aşağıdaki noktaları göz önünde bulundurun:
 
-- **Bir sınıf laboratuvarında bulunan tüm VM 'Ler yayımlanan aynı görüntüyle dağıtılır**
+- **Bir laboratuvardaki tüm VM 'Ler yayımlanan aynı görüntüyle dağıtılır**
 
-    Sonuç olarak, farklı laboratuvar görüntülerinin aynı anda yayımlanmasını gerektiren bir sınıfınız varsa, her biri için ayrı sınıf laboratuvarları oluşturulmalıdır.
+    Sonuç olarak, farklı laboratuvar görüntülerinin aynı anda yayımlanmasını gerektiren bir sınıfınız varsa, her biri için ayrı laboratuların oluşturulması gerekir.
   
 - **Kullanım kotası laboratuvar düzeyinde ayarlanır ve laboratuvardaki tüm kullanıcılar için geçerlidir**
 
-    Kullanıcılara farklı kotalar ayarlamak için ayrı bir derslik Laboratuvarı oluşturmanız gerekir. Ancak, kotayı ayarladıktan sonra belirli bir kullanıcıya daha fazla saat eklemek mümkündür.
+    Kullanıcılara farklı kotalar ayarlamak için ayrı Labs oluşturmanız gerekir. Ancak, kotayı ayarladıktan sonra belirli bir kullanıcıya daha fazla saat eklemek mümkündür.
   
 - **Başlatma veya kapatılma zamanlaması laboratuvar düzeyinde ayarlanır ve laboratuvardaki tüm VM 'lere uygulanır**
 
-    Önceki noktaya benzer şekilde, kullanıcılar için farklı zamanlamalar ayarlamanız gerekiyorsa ayrı sınıf laboratuvarları oluşturmanız gerekir.
+    Önceki noktaya benzer şekilde, kullanıcılar için farklı zamanlamalar ayarlamanız gerekiyorsa ayrı Labs oluşturmanız gerekir.
 
-Varsayılan olarak, her derslik Laboratuvarı kendi sanal ağına sahip olur.  VNET eşlemesi etkinse, her sınıf laboratuvarının belirtilen sanal ağa eşlenmiş kendi alt ağı olur.
+Varsayılan olarak, her laboratuvarın kendi sanal ağı olur.  VNET eşlemesi etkinse, her laboratuvarın belirtilen sanal ağa eşlenmiş bir alt ağı olur.
 
 ## <a name="shared-image-gallery"></a>Paylaşılan görüntü Galerisi
 
-Paylaşılan görüntü Galerisi bir laboratuvar hesabına iliştirilir ve görüntüleri depolamak için merkezi bir depo işlevi görür. Bir eğitimci, bir ders laboratuvarının şablon sanal makinesinden (VM) dışa aktarmaya seçerse, bir görüntü galeriye kaydedilir. Bir eğitimci, şablon VM 'de değişiklik yaptığında ve dışarı aktardığında, önceki sürümler korunurken görüntünün yeni sürümleri kaydedilir.
+Paylaşılan görüntü Galerisi bir laboratuvar hesabına iliştirilir ve görüntüleri depolamak için merkezi bir depo işlevi görür. Bir eğitimci, bir laboratuvarın şablon sanal makinesinden (VM) dışarı aktarmayı seçtiğinde galeriye kaydedilir. Bir eğitimci, şablon VM 'de değişiklik yaptığında ve dışarı aktardığında, önceki sürümler korunurken görüntünün yeni sürümleri kaydedilir.
 
-Eğitmenler, yeni bir sınıf Laboratuvarı oluştururken paylaşılan görüntü galerisinden bir görüntü sürümü yayımlayabilir. Galeri bir görüntünün birden çok sürümünü depolasa da, eğitimciler yalnızca Laboratuvar oluşturma sırasında en son sürümü seçebilir.
+Eğitmenler, yeni bir laboratuvar oluşturduklarında paylaşılan görüntü galerisinden bir görüntü sürümü yayımlayabilir. Galeri bir görüntünün birden çok sürümünü depolasa da, eğitimciler yalnızca Laboratuvar oluşturma sırasında en son sürümü seçebilir.
 
-Paylaşılan görüntü Galerisi yalnızca birkaç derslik laboratuvarından başlayarak hemen ihtiyacınız olmayan isteğe bağlı bir kaynaktır. Ancak, paylaşılan görüntü galerisinin kullanılması, daha fazla sınıf Laboratuvarı sağlamak için ölçeklendirerek yararlı olan birçok avantaja sahiptir:
+Paylaşılan görüntü Galerisi yalnızca birkaç laboratuvardan başlayarak hemen ihtiyacınız olmayan isteğe bağlı bir kaynaktır. Ancak, paylaşılan görüntü galerisinin kullanılması, daha fazla laboratuvarın olması için ölçeklendirmeniz açısından yararlı olan birçok avantaja sahiptir:
 
 - **Bir şablon VM görüntüsünün sürümlerini kaydetmenizi ve yönetmenizi sağlar**
 
-    Ortak Market galerisindeki bir görüntüye özel bir görüntü oluşturmak veya değişiklikler (yazılım, yapılandırma vb.) yapmak yararlı olabilir.  Örneğin, eğitimciler 'in farklı software\araçları yüklenmesi gerekir. Öğrencilerin, bu önkoşulların kendilerine ait önkoşulları el ile yüklemesini gerektirmek yerine, şablon VM görüntüsünün farklı sürümleri paylaşılan bir görüntü galerisine aktarılabilir. Bu görüntü sürümleri, yeni sınıf laboratuvarları oluştururken kullanılabilir.
-- **Sınıf laboratuvarları genelinde şablon VM görüntülerinin sharing\yeniden kullanılmasını mümkün**
+    Ortak Market galerisindeki bir görüntüye özel bir görüntü oluşturmak veya değişiklikler (yazılım, yapılandırma vb.) yapmak yararlı olabilir.  Örneğin, eğitimciler 'in farklı software\araçları yüklenmesi gerekir. Öğrencilerin, bu önkoşulların kendilerine ait önkoşulları el ile yüklemesini gerektirmek yerine, şablon VM görüntüsünün farklı sürümleri paylaşılan bir görüntü galerisine aktarılabilir. Bu görüntü sürümleri, yeni Labs oluştururken kullanılabilir.
+- **Labs genelinde şablon VM görüntülerinin sharing\yeniden kullanılmasını mümkün**
 
-    Yeni bir sınıf Laboratuvarı oluşturduğunuz her seferinde görüntüyü sıfırdan yapılandırmanız gerekmiyorsa görüntüyü kaydedebilir ve yeniden kullanabilirsiniz. Örneğin, aynı görüntüde olması gereken birden çok sınıf sunulursa, bu görüntünün yalnızca bir kez oluşturulması ve paylaşılan görüntü galerisine aktarılması gerekir, böylece sınıf laboratuvarları arasında paylaşılabilir.
+    Yeni bir laboratuvar oluşturduğunuz her seferinde görüntüyü sıfırdan yapılandırmak zorunda kalmazsınız, böylece bir görüntüyü kaydedebilir ve yeniden kullanabilirsiniz. Örneğin, aynı görüntüde olması gereken birden çok sınıf sunulursa, bu görüntünün yalnızca bir kez oluşturulması ve paylaşılan görüntü galerisine aktarılması gerekir, böylece laboratuvarlar arasında paylaşılabilir.
 - **Çoğaltma aracılığıyla görüntü kullanılabilirliğini sağlar**
 
-    Bir sınıf laboratuvarında paylaşılan görüntü galerisine kaydettiğinizde, görüntünüz [aynı coğrafya içindeki diğer bölgelere](https://azure.microsoft.com/global-infrastructure/regions/)otomatik olarak çoğaltılır. Bir bölge için kesinti olması durumunda, başka bir bölgeden bir görüntü çoğaltmasından dolayı görüntünün sınıf laboratuvarınızda yayımlanması etkilenmez.  VM 'Lerin birden çok çoğaltmalardan yayımlanması performansa da yardımcı olabilir.
+    Bir laboratuvardan paylaşılan görüntü galerisine kaydettiğinizde, görüntünüz [aynı coğrafya içindeki diğer bölgelere](https://azure.microsoft.com/global-infrastructure/regions/)otomatik olarak çoğaltılır. Bir bölge için kesinti olması durumunda, başka bir bölgeden bir görüntü çoğaltmasından dolayı görüntünün laboratuvarınızda yayımlanması etkilenmez.  VM 'Lerin birden çok çoğaltmalardan yayımlanması performansa da yardımcı olabilir.
 
 Paylaşılan görüntüleri mantıksal olarak gruplamak için birkaç seçeneğiniz vardır:
 
 - Birden çok paylaşılan görüntü galerisi oluşturun. Her laboratuvar hesabı yalnızca bir paylaşılan görüntü galerisine bağlanabilir, bu nedenle bu seçenek ayrıca birden çok laboratuvar hesabı oluşturmanızı gerektirir.
-- Veya, birden çok laboratuvar hesabı tarafından paylaşılan tek bir paylaşılan görüntü Galerisi de kullanabilirsiniz. Bu durumda, her laboratuvar hesabı yalnızca içerdiği sınıf laboratuvarları için geçerli olan görüntüleri etkinleştirebilir.
+- Veya, birden çok laboratuvar hesabı tarafından paylaşılan tek bir paylaşılan görüntü Galerisi de kullanabilirsiniz. Bu durumda, her laboratuvar hesabı yalnızca içerdiği laboratuvarlara uygulanabilen görüntüleri etkinleştirebilir.
 
 ## <a name="naming"></a>Adlandırma
 
-Azure Lab Services kullanmaya başlarken, kaynak grupları, laboratuvar hesapları, sınıf laboratuvarları ve paylaşılan görüntü Galerisi için adlandırma kuralları oluşturmanızı öneririz. Oluşturduğunuz adlandırma kuralları, kuruluşunuzun ihtiyaçlarına göre benzersiz olacaktır, ancak aşağıdaki tabloda genel yönergeler özetlenmektedir.
+Azure Lab Services kullanmaya başlarken, kaynak grupları, laboratuvar hesapları, laboratuvarlar ve paylaşılan görüntü Galerisi için adlandırma kuralları oluşturmanızı öneririz. Oluşturduğunuz adlandırma kuralları, kuruluşunuzun ihtiyaçlarına göre benzersiz olacaktır, ancak aşağıdaki tabloda genel yönergeler özetlenmektedir.
 
 | Kaynak türü | Rol | Önerilen düzen | Örnekler |
 | ------------- | ---- | ----------------- | -------- | 
 | Kaynak grubu | Bir veya daha fazla laboratuvar hesabı ve bir veya daha fazla paylaşılan görüntü Galerisi içerir | \<organization short name\>-\<environment\>-RG<ul><li>**Kuruluş kısa adı** , kaynak grubunun desteklediği kuruluşun adını tanımlar</li><li>**Ortam** , kaynak için pilot veya üretim gibi ortamı tanımlar</li><li>**RG** , kaynak türü: kaynak grubu için bir temsil eder.</li></ul> | contosoüniversıtylabs-RG<br/>contosoüniversıtylabs-pilot-RG<br/>contosoüniversıtylabs-prod-RG |
 | Laboratuvar hesabı | Bir veya daha fazla Laboratuvarı içerir | \<organization short name\>-\<environment\>-La<ul><li>**Kuruluş kısa adı** , kaynak grubunun desteklediği kuruluşun adını tanımlar</li><li>**Ortam** , kaynak için pilot veya üretim gibi ortamı tanımlar</li><li>**La** , kaynak türü: Laboratuvar hesabı için temsil eder.</li></ul> | contosoüniversıtylabs-La<br/>mathdeptlabs-La<br/>bilimsel deptlabs-pilot-La<br/>bilimsel deptlabs-prod-La |
-| Sınıf Laboratuvarı | Bir veya daha fazla sanal makine içeriyor |\<class name\>-\<timeframe\>-\<educator identifier\><ul><li>**Sınıf adı** , laboratuvarın desteklediği sınıfın adını tanımlar.</li><li>**Zaman çerçevesi** , sınıfın sunulduğu zaman dilimini tanımlar.</li>**Eğitim tanımlayıcısı** , laboratuvarın sahibi olan eğitimci 'yi tanımlar.</li></ul> | CS1234-fall2019-johntikan<br/>CS1234-spring2019-johntikan |
+| Laboratuvar | Bir veya daha fazla sanal makine içeriyor |\<class name\>-\<timeframe\>-\<educator identifier\><ul><li>**Sınıf adı** , laboratuvarın desteklediği sınıfın adını tanımlar.</li><li>**Zaman çerçevesi** , sınıfın sunulduğu zaman dilimini tanımlar.</li>**Eğitim tanımlayıcısı** , laboratuvarın sahibi olan eğitimci 'yi tanımlar.</li></ul> | CS1234-fall2019-johntikan<br/>CS1234-spring2019-johntikan |
 | Paylaşılan görüntü Galerisi | Bir veya daha fazla VM görüntüsü sürümü içeriyor | \<organization short name\>'ndeki | contosoüniversıtylabsgallery |
 
 Diğer Azure kaynaklarını adlandırma hakkında daha fazla bilgi için bkz. [Azure kaynakları Için adlandırma kuralları](/azure/architecture/best-practices/naming-conventions).
@@ -133,29 +135,29 @@ Bölge, kaynak grubuyla ilgili bilgilerin depolandığı veri merkezini belirtir
 
 Laboratuvar hesabının konumu, bu kaynağın bulunduğu bölgeyi gösterir.  
 
-### <a name="classroom-lab"></a>Sınıf Laboratuvarı
+### <a name="lab"></a>Laboratuvar
 
-Bir sınıf laboratuvarının bulunduğu konum aşağıdaki faktörlere göre farklılık gösterir:
+Laboratuvarın bulunduğu konum aşağıdaki faktörlere göre farklılık gösterir:
 
   - **Laboratuvar hesabı bir sanal ağa (VNet) eşlenmez**
   
-    Laboratuvar hesabı aynı bölgedeyse [VNET ile](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) eşlenebilir.  Laboratuvar hesabı VNet ile eşlenirse, derslik Labs hem laboratuvar hesabı hem de VNet ile aynı bölgede otomatik olarak oluşturulur.
+    Laboratuvar hesabı aynı bölgedeyse [VNET ile](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) eşlenebilir.  Laboratuvar hesabı VNet ile eşlenirse, laboratuvarlar hem laboratuvar hesabı hem de VNet ile aynı bölgede otomatik olarak oluşturulur.
 
     > [!NOTE]
     > Laboratuvar hesabı VNet ile eşlenirse, laboratuvar **oluşturucusunun laboratuvar konumunu seçmesine Izin ver** ayarı devre dışıdır. Makalede bu ayar hakkında daha fazla bilgi bulunabilir: [Laboratuvar oluşturucunun laboratuvar için konum seçmesine Izin ver](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location).
     
-  - * * VNet yok **_ve_*_ laboratuvar oluşturucularının laboratuvarı seçmesini location_ *
+  - * * VNet yok * *_ve_* _ laboratuvar oluşturucularının laboratuvarı seçmesini location_ *
   
-    Laboratuvar hesabıyla eşlenen **VNET olmadığında** *ve* [Laboratuvar oluşturucularının laboratuvar konumunu seçmesini izin verilmediği durumlarda **not** ](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location), sınıf laboratuvarları, kullanılabilir VM kapasitesi olan bir bölgede otomatik olarak oluşturulur.  Özellikle Azure Lab Services, [Laboratuvar hesabıyla aynı coğrafya içinde olan bölgelerde](https://azure.microsoft.com/global-infrastructure/regions)kullanılabilirliği arar.
+    Laboratuvar hesabıyla eşlenen **VNET olmadığında** *ve* [Laboratuvar oluşturucularının laboratuvar konumunu seçmesini izin verilmiyorsa, **not**](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)laboratuvarlar, kullanılabilir VM kapasitesi olan bir bölgede otomatik olarak oluşturulur.  Özellikle Azure Lab Services, [Laboratuvar hesabıyla aynı coğrafya içinde olan bölgelerde](https://azure.microsoft.com/global-infrastructure/regions)kullanılabilirliği arar.
 
-  - * * VNet eşlenmez **_ve_*_ laboratuvar oluşturucularının laboratuvarı seçmesini location_ *
+  - * * VNet eşlenmez * *_ve_* _ laboratuvar oluşturucularının laboratuvarı seçmesini location_ *
        
     VNET **eşlenmez** ve laboratuvar [oluşturucuları laboratuvar konumunu seçmelerine izin verildiğinde](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location), laboratuvar Oluşturucu tarafından seçilebilecek konumlar kullanılabilir kapasiteyi temel alır.
 
 > [!NOTE]
 > Bir bölge için yeterli VM kapasitesi olduğundan emin olmak için, ilk olarak laboratuvar hesabı aracılığıyla veya laboratuvar oluştururken kapasite istemeniz önemlidir.
 
-Genel bir kural, bir kaynağın bölgesini kullanıcılarına en yakın bir kaynak olarak ayarlamak. Derslik laboratuvarları için bu, öğrencilerinize en yakın derslik Laboratuvarı oluşturma anlamına gelir. Öğrencilerin dünyanın her yerinden bulunduğu çevrimiçi kurslar için, merkezi olarak bulunan bir derslik laboratuvarı oluşturmak üzere en iyi kararlarınızı kullanmanız gerekir. Ya da bir sınıfı, öğrencilerinizin bölgesine göre birden çok sınıf laboratuvarlarına bölebilirsiniz.
+Genel bir kural, bir kaynağın bölgesini kullanıcılarına en yakın bir kaynak olarak ayarlamak. Laboratuvarlar için bu, öğrencilerinize en yakın Laboratuvarı oluşturma anlamına gelir. Öğrencilerin dünyanın her yerinden bulunduğu çevrimiçi kurslar için, merkezi olarak bulunan bir laboratuvar oluşturmak üzere en iyi kararlarınızı kullanmanız gerekir. Ya da, bir sınıfı öğrencilerinizin bölgesine göre birden çok laboratuvarya bölebilirsiniz.
 
 ### <a name="shared-image-gallery"></a>Paylaşılan görüntü Galerisi
 
@@ -163,7 +165,7 @@ Bölge, hedef bölgelere otomatik olarak çoğaltılmadan önce ilk görüntü s
 
 ## <a name="vm-sizing"></a>VM boyutlandırma
 
-Yöneticiler veya laboratuvar oluşturucuları bir sınıf Laboratuvarı oluşturduklarında, derslerinden ihtiyaçlarına göre aşağıdaki VM boyutları arasından seçim yapabilir. Kullanılabilir işlem boyutlarının, laboratuvar hesabınızın bulunduğu bölgeye bağlı olduğunu unutmayın:
+Yöneticiler veya laboratuvar oluşturucuları bir laboratuvar oluşturduklarında, kendi derslik gereksinimlerine göre aşağıdaki VM boyutları arasından seçim yapabilir. Kullanılabilir işlem boyutlarının, laboratuvar hesabınızın bulunduğu bölgeye bağlı olduğunu unutmayın:
 
 | Boyut | Özellikler | Seriler | Önerilen kullanım |
 | ---- | ----- | ------ | ------------- |
@@ -178,35 +180,35 @@ Yöneticiler veya laboratuvar oluşturucuları bir sınıf Laboratuvarı oluştu
 
 ## <a name="manage-identity"></a>Kimliği Yönet
 
-[Azure rol tabanlı erişim denetimi (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)kullanarak, laboratuvar hesaplarına ve sınıf laboratuvarlarına erişim sağlamak için aşağıdaki roller atanabilir:
+[Azure rol tabanlı erişim denetimi (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)kullanarak, laboratuvar hesaplarına ve laboratuvarlara erişim sağlamak için aşağıdaki roller atanabilir:
 
 - **Laboratuvar hesap sahibi**
 
     Laboratuvar hesabını oluşturan yönetici, laboratuvar hesabının **sahip** rolüne otomatik olarak eklenir.  **Sahip** rolüne atanan bir yönetici şunları yapabilir:
      - Laboratuvar hesabının ayarlarını değiştirin.
      - Diğer yöneticilere, laboratuvar hesabına sahipler veya katkıda bulunanlar olarak erişim izni verin.
-     - Eğitimciler, oluşturucular, sahipler veya katkıda bulunanlar olarak ders laboratuvarlarına erişim izni verin.
-     - Laboratuvar hesabındaki tüm sınıf laboratuvarlarını oluşturun ve yönetin.
+     - Eğitimciler 'e oluşturucular, sahipler veya katkıda bulunanlar olarak erişim izni verin.
+     - Laboratuvar hesabındaki tüm laboratuvarları oluşturun ve yönetin.
 
 - **Laboratuvar hesabı Katılımcısı**
 
     **Katkıda** bulunan rolüne atanan bir yönetici şunları yapabilir:
     - Laboratuvar hesabının ayarlarını değiştirin.
-    - Laboratuvar hesabı içindeki tüm sınıf laboratuvarlarını oluşturun ve yönetin.
+    - Laboratuvar hesabı içindeki tüm laboratuvarları oluşturun ve yönetin.
 
-    Ancak, diğer kullanıcılara laboratuvar hesapları veya sınıf laboratuvarları için erişim *izni veremeyiz* .
+    Ancak, diğer kullanıcılara laboratuvar hesaplarına veya laboratuvarlara erişim *izni veremeyiz* .
 
-- **Sınıf Laboratuvarı Oluşturucu**
+- **Laboratuvar oluşturucu**
 
-    Bir laboratuar hesabı içinde sınıf laboratuvarları oluşturmak için, bir eğitimci, **Laboratuvar Oluşturucu** rolünün bir üyesi olmalıdır.  Bir eğitimci bir sınıf Laboratuvarı oluşturduğunda, otomatik olarak laboratuvarın sahibi olarak eklenir.  [ **Laboratuvar Oluşturucu** rolüne kullanıcı ekleme](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#add-a-user-to-the-lab-creator-role)hakkında öğreticiye bakın. 
+    Laboratuvar hesabı içinde Labs oluşturmak için, bir eğitimci, **Laboratuvar Oluşturucu** rolünün bir üyesi olmalıdır.  Bir eğitimci bir laboratuvar oluşturduğunda, otomatik olarak laboratuvarın sahibi olarak eklenir.  [ **Laboratuvar Oluşturucu** rolüne kullanıcı ekleme](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#add-a-user-to-the-lab-creator-role)hakkında öğreticiye bakın. 
 
-- **Derslik Laboratuvarı owner\katkıda bulunan**
+- **Laboratuvar sahip\katkıda bulunan**
   
-    Bir eğitimci, bir laboratuvarın **sahibi** veya **katkıda bulunan** rolü üyesi olduklarında bir sınıf laboratuvarının ayarlarını görüntüleyebilir ve değiştirebilir; Ayrıca, laboratuvar hesabının **okuyucu** rolünün bir üyesi olmaları gerekir.
+    Bir eğitimci, bir laboratuvarın **sahibi** veya **katkıda bulunan** rolü üyesi olduklarında bir laboratuvarın ayarlarını görüntüleyebilir ve değiştirebilir; Ayrıca, laboratuvar hesabının **okuyucu** rolünün bir üyesi olmaları gerekir.
 
     Laboratuvarın **sahibi** ve **katkıda bulunan** rolleri arasındaki önemli bir fark *, katkıda bulunan* diğer kullanıcılara Laboratuvarı yönetmek için başka kullanıcılara erişim izni veremeyiz.
 
-    Ayrıca, bir *eğitimci,* Ayrıca **Laboratuvar Oluşturucu** rolünün bir üyesi olmadıkları takdirde yeni sınıf laboratuvarları oluşturamaz.
+    Ayrıca, bir eğitimci, ayrıca **Laboratuvar Oluşturucu** rolünün bir üyesi olmadıkları takdirde yeni *Labs oluşturamaz.*
 
 - **Paylaşılan görüntü Galerisi**
 
@@ -214,8 +216,8 @@ Yöneticiler veya laboratuvar oluşturucuları bir sınıf Laboratuvarı oluştu
 
 Rol atamaya yardımcı olacak bazı ipuçları aşağıda verilmiştir:
    - Genellikle, yalnızca Yöneticiler laboratuvar hesabının **sahibi** veya **katkıda bulunan** rollerinin üyesi olmalıdır; birden fazla owner\contributor. olabilir
-   - Yeni sınıf laboratuvarları oluşturma ve oluşturdukları laboratuvarları yönetme olanağı veren bir eğitimci sağlamak için; yalnızca **Laboratuvar Oluşturucu** rolüne erişim atamanız gerekir.
-   - Bir eğitimci sağlamak için, belirli sınıf laboratuvarlarını yönetme yeteneği, ancak yeni Labs oluşturma yeteneği *yoktur* ; yönetebilecekleri her bir sınıf laboratuvarın **sahibi** veya **katkıda bulunan** rolüne erişim atamanız gerekir.  Örneğin, hem bir çoklu yönetici Laboratuvarı hem de bir eğitim Yardımcısı ile bir sınıf laboratuvarına sahip olmak isteyebilirsiniz.  Bir [sınıfa bir sınıf laboratuvarına sahip olarak Kullanıcı ekleme](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-add-user-lab-owner)kılavuzuna bakın.
+   - Bir eğitimcinin yeni Labs oluşturma ve oluşturdukları laboratuvarları yönetme olanağı sunmak için; yalnızca **Laboratuvar Oluşturucu** rolüne erişim atamanız gerekir.
+   - Bir eğitimcinin belirli laboratuvarları yönetme yeteneğini, ancak yeni laboratuvarlar oluşturma yeteneğini *değil* ; yöneteceği laboratuvarların her biri için **sahip** veya **katkıda bulunan** rolüne erişim atamanız gerekir.  Örneğin, hem professlı hem de bir eğitim Yardımcısı 'nın laboratuvara sahip olmasını sağlamak isteyebilirsiniz.  [Kullanıcıyı bir laboratuvara sahip olarak ekleme](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-add-user-lab-owner)hakkında rehberlik bölümüne bakın.
 
 ## <a name="pricing"></a>Fiyatlandırma
 
@@ -235,7 +237,7 @@ Görüntü sürümlerini depolamak için, paylaşılan bir görüntü Galerisi s
 
 #### <a name="replication-and-network-egress-charges"></a>Çoğaltma ve ağ çıkış ücretleri
 
-Bir sınıf laboratuvarının şablon sanal makinesini (VM) kullanarak bir görüntü sürümünü kaydettiğinizde Azure Lab Services önce onu bir kaynak bölgede depolar ve sonra kaynak görüntü sürümünü bir veya daha fazla hedef bölgeye otomatik olarak çoğaltır. Azure Lab Services, kaynak görüntü sürümünü sınıf laboratuvarının bulunduğu [coğrafya içindeki](https://azure.microsoft.com/global-infrastructure/regions/) tüm hedef bölgelere otomatik olarak çoğalttığını unutmayın. Örneğin, sınıf laboratuvarınız ABD Coğrafya 'içindeyse, bir görüntü sürümü ABD içinde mevcut olan sekiz bölgenin her birine çoğaltılır
+Bir laboratuvarın şablon sanal makinesini (VM) kullanarak bir görüntü sürümünü kaydettiğinizde Azure Lab Services önce onu bir kaynak bölgede depolar ve ardından kaynak görüntü sürümünü otomatik olarak bir veya daha fazla hedef bölgeye çoğaltır. Azure Lab Services, kaynak görüntü sürümünü laboratuvarın bulunduğu [coğrafya içindeki](https://azure.microsoft.com/global-infrastructure/regions/) tüm hedef bölgelere otomatik olarak çoğalttığını unutmayın. Örneğin, laboratuvarınız ABD Coğrafya 'içindeyse, bir görüntü sürümü ABD içinde mevcut olan sekiz bölgenin her birine çoğaltılır
 
 Bir görüntü sürümü kaynak bölgeden ek hedef bölgelere çoğaltıldığında bir ağ çıkış ücreti oluşur. Ücretlendirilen miktar, görüntünün verileri ilk başta kaynak bölgeden dışarıya aktarıldığında görüntü sürümünün boyutunu temel alır.  Fiyatlandırma ayrıntıları için aşağıdaki makaleye bakın: [bant genişliği fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/bandwidth/).
 
@@ -266,4 +268,10 @@ Maliyetleri azaltmanın bir yolu olarak belirli bölgelere yönelik çoğaltmay�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Laboratuvar hesabı ve laboratuvar oluşturmaya yönelik adım adım yönergeler için öğreticiye bakın: Kurulum [Kılavuzu](tutorial-setup-lab-account.md)
+Laboratuvar ortamının kurulması için ortak olan sonraki adımlar.
+
+- [Laboratuvar hesabı kurulum kılavuzu](account-setup-guide.md)
+- [Laboratuvar Kurulum Kılavuzu](setup-guide.md)
+- [Laboratuvarlar için maliyet yönetimi](cost-management-guide.md)
+- [Takımlar içinde Azure Lab Services kullanma](lab-services-within-teams-overview.md)
+

@@ -7,16 +7,16 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3e9674916ea9bb5e756a5e57ff18517f53ca7497
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 05502b344b1224dff5d12f95b96b05baace98970
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427567"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491010"
 ---
 # <a name="configure-an-openvpn-client-for-azure-virtual-wan"></a>Azure sanal WAN için OpenVPN istemcisi yapılandırma
 
-Bu makale, **OpenVPN &reg; protokol** istemcilerini yapılandırmanıza yardımcı olur. OpenVPN protokolünü kullanarak bağlanmak için Windows 10 için Azure VPN Istemcisini de kullanabilirsiniz 
+Bu makale, **OpenVPN &reg; protokol** istemcilerini yapılandırmanıza yardımcı olur. OpenVPN protokolünü kullanarak bağlanmak için Windows 10 için Azure VPN Istemcisini de kullanabilirsiniz. [Burada](openvpn-azure-ad-client.md) daha fazla yönerge bulabilirsiniz
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 01021530c491fd25a199f32475c031a0e7f6cd0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26f0006ad2b26757e335ba1819c2b82ba519f8cc
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89376647"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491452"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Işlevleri için Azure kuyruk depolama tetikleyicisi
 
@@ -163,7 +163,7 @@ Depolama kuyruğu tetikleyicisi, *türünün türü* olarak ayarlandığı *func
 }
 ```
 
-* _ \_ İnit_ \_ . Kopyala* kodu bir parametre bildirir `func.QueueMessage` ve bu, işlevinizdeki sıra iletisini okumanızı sağlar.
+*_\_ İnit_ \_ . Kopyala* kodu bir parametre bildirir `func.QueueMessage` ve bu, işlevinizdeki sıra iletisini okumanızı sağlar.
 
 ```python
 import logging
@@ -336,7 +336,7 @@ Gibi bir yöntem parametresi kullanarak ileti verilerine erişin `string paramNa
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Gibi bir yöntem parametresi kullanarak ileti verilerine erişin `string paramName` . , `paramName` `name` * Üzerindefunction.js*özelliğinde belirtilen değerdir. Aşağıdaki türlerden birine bağlanabilirsiniz:
+Gibi bir yöntem parametresi kullanarak ileti verilerine erişin `string paramName` . , `paramName` `name` *Üzerindefunction.js* özelliğinde belirtilen değerdir. Aşağıdaki türlerden birine bağlanabilirsiniz:
 
 * Nesne-Işlevler çalışma zamanı, kodunuzda tanımlanan rastgele bir sınıfın örneğine bir JSON yükünü seri durumdan çıkarır. 
 * `string`
@@ -347,7 +347,7 @@ Gibi bir yöntem parametresi kullanarak ileti verilerine erişin `string paramNa
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Kuyruk öğesi yükü, `context.bindings.<NAME>` `<NAME>` * üzerindefunction.js*tanımlanan adla eşleşen bir ile kullanılabilir. Yük JSON ise, değer bir nesne olarak seri durumdan çıkarılacak.
+Kuyruk öğesi yükü, `context.bindings.<NAME>` `<NAME>` *üzerindefunction.js* tanımlanan adla eşleşen bir ile kullanılabilir. Yük JSON ise, değer bir nesne olarak seri durumdan çıkarılacak.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -365,7 +365,7 @@ Sıra tetikleyicisi çeşitli [meta veri özellikleri](./functions-bindings-expr
 
 |Özellik|Tür|Açıklama|
 |--------|----|-----------|
-|`QueueTrigger`|`string`|Kuyruk yükü (geçerli bir dize varsa). Kuyruk iletisi yükü bir dizeyse, `QueueTrigger` `name` * üzerindefunction.js*özelliği tarafından adlandırılan değişkenle aynı değere sahiptir.|
+|`QueueTrigger`|`string`|Kuyruk yükü (geçerli bir dize varsa). Kuyruk iletisi yükü bir dizeyse, `QueueTrigger` `name` *üzerindefunction.js* özelliği tarafından adlandırılan değişkenle aynı değere sahiptir.|
 |`DequeueCount`|`int`|Bu iletinin sıraya alınma sayısı.|
 |`ExpirationTime`|`DateTimeOffset`|İletinin süre sonu.|
 |`Id`|`string`|Kuyruk ileti KIMLIĞI.|
@@ -375,7 +375,7 @@ Sıra tetikleyicisi çeşitli [meta veri özellikleri](./functions-bindings-expr
 
 ## <a name="poison-messages"></a>Zarar iletileri
 
-Bir kuyruk tetikleyicisi işlevi başarısız olduğunda, Azure Işlevleri, ilk deneme dahil olmak üzere belirli bir kuyruk iletisi için işlevi en fazla beş kez yeniden dener. Tüm beş deneme başarısız olursa, işlevler çalışma zamanı * &lt; originalsıra>-Poison*adlı bir kuyruğa ileti ekler. Onları günlüğe kaydederek veya el ile ilgilenilmesi gereken bir bildirim göndererek, zarar kuyruğundan iletileri işlemek için bir işlev yazabilirsiniz.
+Bir kuyruk tetikleyicisi işlevi başarısız olduğunda, Azure Işlevleri, ilk deneme dahil olmak üzere belirli bir kuyruk iletisi için işlevi en fazla beş kez yeniden dener. Tüm beş deneme başarısız olursa, işlevler çalışma zamanı *&lt; originalsıra>-Poison* adlı bir kuyruğa ileti ekler. Onları günlüğe kaydederek veya el ile ilgilenilmesi gereken bir bildirim göndererek, zarar kuyruğundan iletileri işlemek için bir işlev yazabilirsiniz.
 
 Zarar iletilerini el ile işlemek için kuyruk iletisinin [Dequeuecount](#message-metadata) değerini kontrol edin.
 
@@ -408,7 +408,7 @@ Dosyadaki [host.js](functions-host-json.md#queues) , sıra tetikleyicisi davran�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [BLOB depolama iletilerini yazma (çıkış bağlama)](./functions-bindings-storage-blob-output.md)
+- [Yazma kuyruğu depolama iletileri (çıkış bağlaması)](./functions-bindings-storage-queue-output.md)
 
 <!-- LINKS -->
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 51c611b2565ae0a5a054a45f0aedcb039351b46b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 582dafba40012e9ff9c59bc09adb1a0831e999f5
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88208359"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491231"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Izleme günlükleri ile Azure Işlevlerini izleme
 
@@ -22,23 +22,23 @@ Azure Izleyici günlükleri, toplanan verileri hızlı bir şekilde almak, birle
 Azure Izleyici, Azure Veri Gezgini tarafından kullanılan ve basit günlük sorguları için uygun olan, ayrıca toplamalar, birleşimler ve akıllı analiz gibi gelişmiş işlevleri de içeren [kusto sorgu dilinin](/azure/kusto/query/) bir sürümünü kullanır. [Birden çok ders](../azure-monitor/log-query/get-started-queries.md)kullanarak sorgu dilini hızlıca öğrenebilirsiniz.
 
 > [!NOTE]
-> Azure Izleyici günlükleri ile tümleştirme Şu anda Windows tüketim, Premium ve adanmış barındırma planlarında çalışan işlev uygulamaları için genel önizlemededir.
+> Azure Izleyici günlükleri ile tümleştirme Şu anda Windows tüketim, Premium ve adanmış barındırma planlarında çalışan v2 ve v3 işlev uygulamaları için genel önizlemededir.
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
-1. [Azure Portal](https://portal.azure.com)Işlev uygulamanızın **izleme** bölümünden **Tanılama ayarları**' nı ve ardından **Tanılama ayarı Ekle**' yi seçin.
+1. [Azure Portal](https://portal.azure.com)Işlev uygulamanızın **izleme** bölümünden **Tanılama ayarları** ' nı ve ardından **Tanılama ayarı Ekle** ' yi seçin.
 
    :::image type="content" source="media/functions-monitor-log-analytics/diagnostic-settings-add.png" alt-text="Tanılama ayarlarını seçin":::
 
-1. **Tanılama ayarları** sayfasında, **Kategori ayrıntıları** ve **günlüğü**altında **functionapplogs**' u seçin.
+1. **Tanılama ayarları** sayfasında, **Kategori ayrıntıları** ve **günlüğü** altında **functionapplogs** ' u seçin.
 
    **Functionapplogs** tablosu, istenen günlükleri içerir.
 
-1. **Hedef ayrıntıları**altında **Log Analytics gönder**' i seçin ve sonra **Log Analytics çalışma alanınızı**seçin. 
+1. **Hedef ayrıntıları** altında **Log Analytics gönder** ' i seçin ve sonra **Log Analytics çalışma alanınızı** seçin. 
 
-1. Bir **Tanılama ayarları adı**girin ve ardından **Kaydet**' i seçin.
+1. Bir **Tanılama ayarları adı** girin ve ardından **Kaydet** ' i seçin.
 
-   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="Tanılama ayarlarını seçin":::
+   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="Tanılama ayarı ekleme":::
 
 ## <a name="user-generated-logs"></a>Kullanıcı tarafından oluşturulan Günlükler
 
@@ -81,15 +81,15 @@ logging.info('My app logs here.')
 
 Oluşturulan günlükleri sorgulamak için:
  
-1. İşlev uygulamanızdan **Tanılama ayarları**' nı seçin. 
+1. İşlev uygulamanızdan **Tanılama ayarları** ' nı seçin. 
 
 1. **Tanılama ayarları** listesinden, işlev günlüklerini göndermek için yapılandırdığınız Log Analytics çalışma alanını seçin. 
 
-1. **Log Analytics çalışma alanı** sayfasında **Günlükler**' i seçin.
+1. **Log Analytics çalışma alanı** sayfasında **Günlükler** ' i seçin.
 
-   Azure Işlevleri, tüm günlükleri **Logmanagement**altındaki **functionapplogs** tablosuna yazar. 
+   Azure Işlevleri, tüm günlükleri **Logmanagement** altındaki **functionapplogs** tablosuna yazar. 
 
-   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Tanılama ayarlarını seçin":::
+   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Log Analytics çalışma alanındaki sorgu penceresi":::
 
 Bazı örnek sorgular aşağıda verilmiştir:
 
@@ -111,7 +111,7 @@ FunctionAppLogs
 
 ```
 
-### <a name="exceptions"></a>Özel Durumlar
+### <a name="exceptions"></a>Özel durumlar
 
 ```
 

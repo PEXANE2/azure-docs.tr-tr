@@ -2,19 +2,19 @@
 title: Azure'a Dağıt düğmesi
 description: Bir GitHub deposundan Azure Resource Manager şablonları dağıtmak için düğmeyi kullanın.
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: 62a0a8b0336d9a7fcf00efb172775b9606bcef98
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/10/2020
+ms.openlocfilehash: 7d002508f6b2402f8cff40fb0369896080ecbbad
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675389"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490908"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>GitHub deposundan şablon dağıtmak için bir dağıtım düğmesi kullanın
 
 Bu makalede, bir GitHub deposundan şablon dağıtmak için **Azure 'Da dağıtma** düğmesinin nasıl kullanılacağı açıklanır. Düğme doğrudan GitHub deponuzdaki README.md dosyasına eklenebilir. İsterseniz, depoya başvuran bir Web sayfasına düğmeyi de ekleyebilirsiniz.
 
-Dağıtım kapsamı, şablon şemasına göre belirlenir. Daha fazla bilgi için bkz.
+Dağıtım kapsamı, şablon şemasına göre belirlenir. Daha fazla bilgi için bkz:
 
 * [kaynak grupları](deploy-to-resource-group.md)
 * [Aboneliklerin](deploy-to-subscription.md)
@@ -71,6 +71,14 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.github
 
 Bağlantı için tam URL 'niz vardır.
 
+GitHub deposu yerine [Azure Repos git](/azure/devops/repos/git/) kullanıyorsanız, Azure 'a dağıt düğmesini kullanmaya devam edebilirsiniz. Deponuzın ortak olduğundan emin olun. Şablonu almak için [öğeler işlemini](/rest/api/azure/devops/git/items/get) kullanın. İsteğiniz aşağıdaki biçimde olmalıdır:
+
+```http
+https://dev.azure.com/{organization-name}/{project-name}/_apis/git/repositories/{repository-name}/items?scopePath={url-encoded-path}&api-version=6.0
+```
+
+Bu istek URL 'sini kodlayın.
+
 ## <a name="create-deploy-to-azure-button"></a>Azure 'a dağıt düğmesine oluştur
 
 Son olarak, bağlantı ve görüntüyü bir araya getirin.
@@ -87,6 +95,12 @@ HTML için şunu kullanın:
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json" target="_blank">
   <img src="https://aka.ms/deploytoazurebutton"/>
 </a>
+```
+
+Azure deposu ile git için, düğme biçimindedir:
+
+```markdown
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fdev.azure.com%2Forgname%2Fprojectname%2F_apis%2Fgit%2Frepositories%2Freponame%2Fitems%3FscopePath%3D%252Freponame%252Fazuredeploy.json%26api-version%3D6.0)
 ```
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma

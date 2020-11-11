@@ -4,15 +4,15 @@ description: Microsoft AppSource ve Azure Market tekliflerinizin pazara sunma ko
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 07/06/2020
-ms.openlocfilehash: 33198f95ef0309cada6f5f11c809811f23d7f826
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ea6a0035a9f9354be5c14699936c6a07dea1150
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708654"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94492098"
 ---
 # <a name="offer-listing-best-practices"></a>En iyi teklif listeleme deneyimleri
 
@@ -34,7 +34,7 @@ Farklı bir çevrimiçi mağazaya yönelik Kategoriler ve endüstriler, farklı 
 
 | Çevrimiçi mağaza | Kategoriler <br>çevrimiçi mağazaya göre | Kategoriler <br>çevrimiçi mağazaya göre | Sektörler <br> AppSource için |
 | :------------------- |:----------------:|:------:|:-------------:|
-| **Teklif Türü**   |  **Azure Market**  | **AppSource**  |
+| **Teklif türü**   |  **Azure Market**  | **AppSource**  |
 | Azure Uygulaması | X | |
 | Kapsayıcı | X | |
 | Danışmanlık Hizmetleri | | | X |
@@ -96,7 +96,7 @@ Sektör seçimi yalnızca Azure Marketi 'nde yayınlanan AppSource ve danışman
 | **Eğitim** | Daha yüksek eğitim <br> Birincil & Ikincil edu/K-12 <br> Kitaplıklar & Museums |
 | **Finansal hizmetler** | Bankacılık & büyük pazarlar <br> Eleri | 
 | **Kamu** |  Savunma & zekası <br> Cıvilian kamu <br> Genel güvenlik & de |
-| **Sağlık Hizmetleri** | Sistem durumu ödemi veya <br> Sistem durumu sağlayıcısı <br> Pharmaceuticals | 
+| **Sağlık** | Sistem durumu ödemi veya <br> Sistem durumu sağlayıcısı <br> Pharmaceuticals | 
 | **& yolculuğu seyahat** | Seyahat & ulaşım <br> Oteller & boş <br> Restoran hizmetleri & Restoranlar | 
 | **& kaynaklarını üretim** | Kimyasal & Agrokimyasal <br> Ayrık üretim <br> Enerji | 
 | **Medya & Iletişimleri** | Medya & eğlence <br> Telekomünikasyon | 
@@ -130,8 +130,8 @@ Anahtar sözcükler, müşterilerin arama yaparken teklifinizi bulmasına yardı
 ## <a name="link-to-your-offer-page-from-your-website"></a>Web sitenizdeki teklif sayfanıza bağlantı
 
 Sitenizdeki AppSource veya Azure Market rozetini ticari Market 'teki listelemenize bağladığınızda, URL 'nin sonuna aşağıdaki sorgu parametrelerini ekleyerek güçlü analiz ve raporlamayı destekleyebilirsiniz:
-* **src**: trafiğin appsource 'a yönlendirildiği kaynağı (örneğin, Web sitesi, LinkedIn veya Facebook) dahil edin.
-* **mktcmpıd**: herhangi bir harf, sayı, alt çizgi ve kısa çizgi birleşimine kadar en fazla 16 karakter içerebilen pazarlama kampanyası Kimliğiniz (örneğin, *blogpost_12*).
+* **src** : trafiğin appsource 'a yönlendirildiği kaynağı (örneğin, Web sitesi, LinkedIn veya Facebook) dahil edin.
+* **mktcmpıd** : herhangi bir harf, sayı, alt çizgi ve kısa çizgi birleşimine kadar en fazla 16 karakter içerebilen pazarlama kampanyası Kimliğiniz (örneğin, *blogpost_12* ).
 
 Aşağıdaki örnek URL, önceki sorgu parametrelerinin her ikisini de içerir: `https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 

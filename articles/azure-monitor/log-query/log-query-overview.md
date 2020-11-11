@@ -1,101 +1,82 @@
 ---
-title: Azure Izleyici 'de günlük sorgularına genel bakış | Microsoft Docs
-description: Günlük sorgularıyla ilgili yaygın soruların yanıtlarını verir ve bunları kullanmaya başlamanızı sağlar.
+title: Azure Izleyici 'de günlük sorguları
+description: Azure Izleyici tarafından kullanılan kusto sorgu dili için başvuru bilgileri. Azure izleyici günlük sorgularında desteklenmeyen Azure Izleyici ve öğelerine özgü ek öğeler içerir.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/19/2019
-ms.openlocfilehash: 55463f6af47ef8eda712b1787a89a710c08c1fe6
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.date: 10/09/2020
+ms.openlocfilehash: 6174bcbe5a014cff8dbd8dff242880d7f0ef7aa0
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995201"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491401"
 ---
-# <a name="overview-of-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularına genel bakış
-Günlük sorguları, [Azure Izleyici günlüklerinde](../platform/data-platform-logs.md)toplanan verilerin değerini tamamen kullanmanıza yardımcı olur. Güçlü bir sorgu dili, birden çok tablodan veri birleştirme, büyük veri kümelerini toplama ve en az kodla karmaşık işlemler gerçekleştirmenize olanak tanır. Neredeyse her soru yanıtlanarak, destekleyici veriler toplandıkça ve analiz, doğru sorgunun nasıl oluşturulacağını anlamış olabilir.
+# <a name="log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorguları
+Azure Izleyici günlükleri Azure Veri Gezgini tabanlıdır ve günlük sorguları aynı kusto sorgu dili (KQL) kullanılarak yazılır. Bu, okumak ve yazmak için tasarlanan zengin bir dildir. bu nedenle, bazı temel kılavuzlarla sorgu yazmaya başlayabilmeniz gerekir.
 
-Azure Izleyici 'deki [Öngörüler](../insights/insights-overview.md) ve [çözümler](../monitor-reference.md) gibi bazı özellikler, sizi temel sorgulara açmadan günlük verilerini işler. Azure Izleyici 'nin diğer özelliklerinden tamamen yararlanmak için sorguların nasıl oluşturulduğunu ve Azure Izleyici günlüklerinde verileri etkileşimli olarak analiz etmek için bunları nasıl kullanabileceğinizi anlamanız gerekir.
+Azure Izleyici 'de sorguları kullanacağınız yerlerde şunlar yer alır:
 
-Azure Izleyici 'de günlük sorguları hakkında bilgi edinmek için bu makaleyi başlangıç noktası olarak kullanın. Ortak soruları yanıtlar ve daha fazla ayrıntı ve ders sağlayan diğer belgelere bağlantılar sağlar.
+- [Log Analytics](../log-query/log-analytics-overview.md). Günlük sorgularını düzenlemede ve sonuçlarını etkileşimli olarak analiz etmek için Azure portal birincil araç. Bir günlük sorgusunu Azure Izleyici 'de başka bir yerde kullanmak isteseniz bile, genellikle onu son konumuna kopyalamadan önce Log Analytics yazın ve test edin.
+- [Uyarı kurallarını günlüğe kaydedin](../platform/alerts-overview.md). Çalışma alanınızdaki verilerden sorunları önceden belirler.  Her uyarı kuralı, düzenli aralıklarla otomatik olarak çalıştırılan bir günlük sorgusuna dayalıdır.  Sonuçlar, bir uyarının oluşturulup oluşturulmadığını belirlemede denetlenir.
+- [Çalışma kitapları](../platform/workbooks-overview.md). Azure portal etkileşimli görsel raporlarında farklı görselleştirmeler kullanarak günlük sorgularının sonuçlarını ekleyin.
+- [Azure panoları](../learn/tutorial-logs-dashboards.md). Her bir sorgunun sonucunu, günlük ve ölçüm verilerini birlikte görselleştirmenizi ve isteğe bağlı olarak diğer Azure kullanıcılarıyla paylaşmayı sağlayan bir Azure panosuna sabitleyin.
+- [Logic Apps](../platform/logicapp-flow-connector.md).  Logic Apps kullanarak otomatikleştirilmiş bir iş akışında günlük sorgusunun sonuçlarını kullanın.
+- [PowerShell](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresult). Bir komut satırından veya Get-Azoperationalınsightssearchresults kullanan bir Azure Otomasyonu runbook 'tan bir PowerShell betiğindeki günlük sorgusunun sonuçlarını kullanın.
+- [Azure Izleyici günlükleri API 'si](https://dev.loganalytics.io). Herhangi bir REST API istemcisinden çalışma alanından günlük verilerini alın.  API isteği alınacak verileri belirlemede Azure Izleyici 'ye karşı çalıştırılan bir sorgu içerir.
 
-## <a name="how-can-i-learn-how-to-write-queries"></a>Sorguların nasıl yazılacağını nasıl öğrenirim?
-Herhangi bir öğeye doğrudan gitmek istiyorsanız aşağıdaki öğreticilerle başlayabilirsiniz:
+## <a name="getting-started"></a>Başlarken
+KQL kullanarak günlük sorgularını yazmaya başlamak için en iyi yol, kullanılabilir öğreticileri ve örnekleri kullanmaktır.
 
-- [Azure izleyici 'de Log Analytics kullanmaya](get-started-portal.md)başlayın.
-- [Azure izleyici 'de günlük sorgularını kullanmaya](get-started-queries.md)başlayın.
-
-Temel bilgileri aldıktan sonra, tanıtım ortamımızdan başlayarak kendi verilerinizi veya verilerinizi kullanarak birden çok dersi adım adım inceleyin: 
-
-- [Azure Izleyici günlük sorgularındaki dizelerle çalışma](string-operations.md)
- 
-## <a name="what-language-do-log-queries-use"></a>Günlük sorgularının hangi dillerde kullanıldığı.
-Azure Izleyici günlükleri [azure Veri Gezgini](/azure/data-explorer)tabanlıdır ve günlük sorguları aynı kusto sorgu DILI (KQL) kullanılarak yazılır. Bu, okunması ve yazarı kolay bir şekilde tasarlanan ve en az kılavuzla kullanmaya başlayabilmeniz gereken zengin bir dildir.
-
-KQL hakkındaki tüm belgeler ve kullanılabilen farklı işlevlerde başvuru için bkz. [Azure Veri Gezgini KQL belgeleri](/azure/kusto/query) .<br>
-Azure Izleyici günlüklerinden verileri kullanarak dile yönelik hızlı bir anlatım için bkz. [Azure izleyici 'de günlük sorgularıyla çalışmaya başlama](get-started-queries.md) .
-Azure Izleyici tarafından kullanılan KQL sürümündeki küçük farklılıklar için bkz. [Azure izleyici günlük sorgu dili farklılıkları](data-explorer-difference.md) .
-
-## <a name="what-data-is-available-to-log-queries"></a>Günlük sorgularının hangi verileri kullanılabilir?
-Azure Izleyici günlüklerinde toplanan tüm veriler, günlük sorgularını almak ve analiz etmek için kullanılabilir. Farklı veri kaynakları verileri farklı tablolara yazacak, ancak birden çok kaynak genelinde verileri çözümlemek için tek bir sorguya birden fazla tablo ekleyebilirsiniz. Bir sorgu oluşturduğunuzda, hangi tabloların aradığınız verileri olduğunu belirleyerek başlar. Verilerin nasıl yapılandırıldığını gösteren bir açıklama için bkz. [Azure Izleyici günlüklerinin yapısı](../platform/data-platform-logs.md) .
-
-## <a name="what-does-a-log-query-look-like"></a>Günlük sorgusu nasıl görünür?
-Bir sorgu, tablodaki tüm kayıtları almak için tek bir tablo adı kadar basit olabilir:
-
-```Kusto
-Syslog
-```
-
-Ya da belirli kayıtları filtreleyebilir, özetleyebilir ve sonuçları bir grafik halinde görselleştirebilir:
-
-```
-SecurityEvent
-| where TimeGenerated > ago(7d)
-| where EventID == 4625
-| summarize count() by Computer, bin(TimeGenerated, 1h)
-| render timechart 
-```
-
-Daha karmaşık analizler için, bir birleştirmeyi kullanarak birden çok tablodan veri alabilir ve sonuçları analiz edebilirsiniz.
-
-```Kusto
-app("ContosoRetailWeb").requests
-| summarize count() by bin(timestamp,1hr)
-| join kind= inner (Perf
-    | summarize avg(CounterValue) 
-      by bin(TimeGenerated,1hr))
-on $left.timestamp == $right.TimeGenerated
-```
-KQL hakkında bilgi sahibi olmadığınız halde, bu sorgular tarafından kullanılan temel mantığı en az şekilde belirleyebilmelisiniz. Bunlar bir tablonun adıyla başlar ve bu verileri filtrelemek ve işlemek için birden çok komut eklemektir. Bir sorgu herhangi bir sayıda komutu kullanabilir ve kullanılabilir farklı KQL komutlarına alıştıkça daha karmaşık sorgular yazabilirsiniz.
-
-Dili ve ortak işlevleri tanıtan günlük sorguları hakkında bir öğretici için bkz. [Azure izleyici 'de günlük sorgularıyla çalışmaya başlama](get-started-queries.md) .<br>
+- [Log Analytics öğretici](log-analytics-tutorial.md) -sorguları düzenlemek ve çalıştırmak için Azure Portal kullanacağınız araç olan Log Analytics özelliklerini kullanma hakkında öğretici. Ayrıca sorgu diliyle doğrudan çalışmaksızın basit sorgular yazmanızı sağlar. Daha önce Log Analytics kullanmadıysanız, diğer öğreticiler ve örneklerle kullanacağınız aracı anlamak için Buradan başlayın.
+- [KQL öğreticisi](/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor) -temel KQL kavramları ve ortak işleçlerle Kılavuzlu yol. Bu, dilin kendisi ve günlük sorgularının yapısıyla hızlı bir şekilde başlamak için en iyi yerdir. 
+- [Örnek sorgular](example-queries.md) -Log Analytics bulunan örnek sorguların açıklaması. Sorguları değişiklik yapmadan kullanabilir veya KQL 'yi öğrenmek için bunları örnek olarak kullanabilirsiniz.
+- [Sorgu örnekleri](/azure/data-explorer/kusto/query/samples?pivots=azuremonitor) -çeşitli farklı kavramları gösteren örnek sorgular.
 
 
-## <a name="what-is-log-analytics"></a>Log Analytics nedir?
-Log Analytics, Azure portalında bulunan ve günlük sorgusu yazmanın yanı sıra bu sorguların sonuçlarının etkileşimli olarak analiz edilmesini sağlayan temel araçtır. Günlük sorgusu Azure Izleyici 'de başka bir yerde kullanılsa bile, genellikle Log Analytics kullanarak sorguyu yazın ve test edersiniz.
 
-Azure portal çeşitli yerlerden Log Analytics başlatabilirsiniz. Log Analytics için kullanılabilir olan verilerin kapsamı, nasıl başladiğinize göre belirlenir. Daha fazla ayrıntı için bkz. [sorgu kapsamı](scope.md) .
+## <a name="reference-documentation"></a>Başvuru belgeleri
+Tüm komutlar ve işleçler için başvuru dahil olmak üzere [KQL belgeleri](/azure/data-explorer/kusto/query/) Azure Veri Gezgini belgelerinde bulunabilir. KQL kullanarak yeterliliğiz olsa da, daha önce kullanmadığınız yeni komutları ve senaryoları araştırmak için başvuruyu hala düzenli olarak kullanacaksınız.
 
-- **Azure izleyici** menüsünde veya **Log Analytics çalışma alanları** menüsünden **Günlükler** ' i seçin.
-- Bir Application Insights uygulamasının **genel bakış** sayfasında **Günlükler** ' i seçin.
-- Azure kaynağı menüsündeki **günlükleri** seçin.
 
-![Log Analytics](media/log-query-overview/log-analytics.png)
+## <a name="language-differences"></a>Dil farkları
+Azure Izleyici, Azure Veri Gezgini ile aynı KQL 'i kullandığında bazı farklılıklar vardır. KQL belgeleri, Azure Izleyici tarafından desteklenmeyen veya farklı işlevlere sahip olan işleçleri belirler. Azure Izleyici 'ye özgü operatörler Azure Izleyici içeriğinde belgelenmiştir. Aşağıdaki bölümlerde, hızlı başvuru için dilin sürümleri arasındaki farkları listeleyin.
 
-Özelliklerinden birkaçını tanıtan bir Log Analytics Öğretici Kılavuzu için bkz. [Azure izleyici Log Analytics kullanmaya başlama](get-started-portal.md) .
+### <a name="statements-not-supported-in-azure-monitor"></a>Azure Izleyici 'de desteklenmeyen deyimler
 
-## <a name="where-else-are-log-queries-used"></a>Günlük sorgularının kullanıldığı yer nedir?
-Günlük sorgularıyla etkileşimli olarak çalışmaya ek olarak, Azure Izleyici 'deki sorguları kullanacağınız Log Analytics, Azure Izleyici 'de bulunan ve bunlara ilişkin sonuçlarla birlikte şunları içerir:
+* [Ek](/azure/kusto/query/aliasstatement)
+* [Sorgu parametreleri](/azure/kusto/query/queryparametersstatement)
 
-- **Uyarı kuralları.** [Uyarı kuralları](../platform/alerts-overview.md) çalışma alanınızdaki verilerden sorunları önceden belirler.  Her uyarı kuralı, düzenli aralıklarla otomatik olarak çalıştırılan bir günlük aramasını temel alır.  Sonuçlar, bir uyarının oluşturulup oluşturulmadığını belirlemede denetlenir.
-- **Panoların.** Herhangi bir sorgunun sonucunu, günlük ve ölçüm verilerini birlikte görselleştirmenize ve isteğe bağlı olarak diğer Azure kullanıcılarıyla paylaşmanıza olanak sağlayan bir [Azure panosuna](../learn/tutorial-logs-dashboards.md) sabitleyebilirsiniz.
-- **Görünümler.**  [Görünüm Tasarımcısı](../platform/view-designer.md)ile Kullanıcı panolarına dahil edilecek veri görselleştirmeleri oluşturabilirsiniz.  Günlük sorguları, her görünümdeki [Kutucuklar](../platform/view-designer-tiles.md) ve [görselleştirme parçaları](../platform/view-designer-parts.md) tarafından kullanılan verileri sağlar.  
-- **İşlemi.**  Azure Izleyici 'den Excel 'e veya [Power BI](../platform/powerbi.md)günlük verilerini içeri aktardığınızda, dışarı aktarılacak verileri tanımlamak için bir günlük sorgusu oluşturun.
-- **PowerShell.** Azure Izleyici 'den günlük verilerini almak için [Get-Azoperationalınsightssearchresults](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresult) kullanan bir komut satırından veya bir Azure Otomasyonu runbook 'tan PowerShell betiği çalıştırabilirsiniz.  Bu cmdlet alınacak verileri belirlemede bir sorgu gerektirir.
-- **Azure Izleyici günlükleri API 'SI.**  [Azure Izleyici günlükleri API 'si](https://dev.loganalytics.io) , herhangi bir REST API istemcisinin, çalışma alanından günlük verilerini almasına izin verir.  API isteği alınacak verileri belirlemede Azure Izleyici 'ye karşı çalıştırılan bir sorgu içerir.
+### <a name="functions-not-supported-in-azure-monitor"></a>Azure Izleyici 'de desteklenmeyen işlevler
 
+* [cluster()](/azure/kusto/query/clusterfunction)
+* [cursor_after()](/azure/kusto/query/cursorafterfunction)
+* [cursor_before_or_at()](/azure/kusto/query/cursorbeforeoratfunction)
+* [cursor_current (), current_cursor ()](/azure/kusto/query/cursorcurrent)
+* [veritabanı ()](/azure/kusto/query/databasefunction)
+* [current_principal()](/azure/kusto/query/current-principalfunction)
+* [extent_id()](/azure/kusto/query/extentidfunction)
+* [extent_tags()](/azure/kusto/query/extenttagsfunction)
+
+### <a name="operators-not-supported-in-azure-monitor"></a>Azure Izleyici 'de desteklenmeyen işleçler
+
+* [Çapraz küme birleşimi](/azure/kusto/query/joincrosscluster)
+
+### <a name="plugins-not-supported-in-azure-monitor"></a>Eklentiler Azure Izleyici 'de desteklenmiyor
+
+* [Python eklentisi](/azure/kusto/query/pythonplugin)
+* [sql_request eklentisi](/azure/kusto/query/sqlrequestplugin)
+
+
+### <a name="additional-operators-in-azure-monitor"></a>Azure Izleyici 'de ek işleçler
+Aşağıdaki operatörler belirli Azure Izleyici özelliklerini destekler ve Azure Izleyici dışında kullanılamaz.
+
+* [uygulama ()](app-expression.md)
+* [Kaynak ()](resource-expression.md)
+* [çalışma alanı ()](workspace-expression.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure portal Log Analytics kullanma hakkında öğreticiyi](get-started-portal.md)adım adım inceleyin.
-- [Sorgu yazma hakkında öğreticiyi](get-started-queries.md)adım adım inceleyin.
+- [Sorgu yazma hakkında öğreticiyi](/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor)adım adım inceleyin.
+- [Kusto sorgu dili için tüm başvuru belgelerine](/azure/kusto/query/)erişin.
+

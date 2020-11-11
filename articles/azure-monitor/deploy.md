@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 0a5c788b4429b5048a1b94fa8adfb2d9367982da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0591825bf187648293d5aabc88597b19ab2436e
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033481"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491061"
 ---
 # <a name="deploy-azure-monitor"></a>Azure İzleyici’yi dağıtma
 Azure izleyici 'nin tüm Azure kaynaklarınızın izlenmesini sağlamak için Azure izleyici bileşenleri yapılandırma ve Azure Izleyici 'nin toplanacak izleme verilerini oluşturmak için Azure kaynaklarını yapılandırma bir birleşimidir. Bu makalede, Azure aboneliğinizdeki tüm kaynakları izlemek için ortak bir yapılandırma kullanarak Azure Izleyici 'nin tamamen uygulanması için gereken farklı adımlar açıklanmaktadır. Her adımın temel açıklamaları, ayrıntılı yapılandırma gereksinimleri için diğer belgelerin bağlantılarıyla birlikte sağlanır.
@@ -118,7 +118,7 @@ Bu aracıları yükleme ve yapılandırma hakkında ayrıntılı bilgi için, bk
 Azure Izleyici, izlemek istediğiniz her uygulama için yapılandırmanız gereken [Application Insights](app/app-insights-overview.md)kullanarak özel uygulamalarınızı izler. Yapılandırma işlemi, izlenen uygulamanın türüne ve gerçekleştirmek istediğiniz izleme türüne göre değişir. Application Insights tarafından toplanan veriler, özelliğe bağlı olarak Azure Izleyici ölçümleri, Azure Izleyici günlükleri ve Azure Blob depolama alanında depolanır. Performans verileri, Azure Izleyici ölçümlerinde ve Azure Izleyici günlüklerinde ek yapılandırma gerekmeden depolanır.
 
 ### <a name="create-an-application-resource"></a>Uygulama kaynağı oluşturma
-İzlemek istediğiniz her uygulama için Application Insights bir kaynak oluşturmanız gerekir. Application Insights tarafından toplanan günlük verileri, çalışma alanı tabanlı bir uygulama için Azure Izleyici günlüklerinde depolanır. Klasik uygulamalar için günlük verileri, [veri yapısı](platform/data-platform-logs.md#structure-of-data)bölümünde açıklandığı gibi Log Analytics çalışma alanınızdan ayrı bir şekilde depolanır.
+İzlemek istediğiniz her uygulama için Application Insights bir kaynak oluşturmanız gerekir. Application Insights tarafından toplanan günlük verileri, çalışma alanı tabanlı bir uygulama için Azure Izleyici günlüklerinde depolanır. Klasik uygulamalar için günlük verileri, [veri yapısında](platform/data-platform-logs.md#data-structure)açıklandığı gibi Log Analytics çalışma alanınızdan ayrı bir şekilde depolanır.
 
  Uygulamayı oluştururken klasik veya çalışma alanı tabanlı ' i kullanmayı seçmeniz gerekir. Bkz. klasik bir uygulama oluşturmak için [Application Insights kaynağı oluşturma](app/create-new-resource.md) . Çalışma alanı tabanlı bir uygulama oluşturmak için [çalışma alanı tabanlı Application Insights kaynaklarına (Önizleme)](app/create-workspace-resource.md) bakın.
 

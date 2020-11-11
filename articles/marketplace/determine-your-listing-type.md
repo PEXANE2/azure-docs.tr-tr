@@ -4,15 +4,15 @@ description: Bu makalede, Microsoft AppSource ve Azure Market 'Te teklifler yay�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 09/04/2020
-ms.openlocfilehash: 0b4941d326359a51ff6a75385a74a8bcdabfa075
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 17b53d656d0344e4178b3034a972e26d6aa0bc15
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129006"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94492115"
 ---
 # <a name="determine-your-publishing-option"></a>Yayımlama seçeneğinizi belirleme
 
@@ -32,7 +32,7 @@ Aşağıdaki tabloda, Microsoft AppSource ve Azure Marketi 'nde teklif türleri 
 
 |   | **Liste (kişi)**  | **Liste (deneme)**  | **Ücretsiz** | **KLG** | **İşlem**|
 | :--------- | :----------- | :------------ | :----------- | :---------- |:---------- |
-| **Sanal makine** |  |  |  | Azure Market |  Azure Market |
+| **Sanal Makine** |  |  |  | Azure Market |  Azure Market |
 | **Azure uygulamaları (çoklu VM)** |  |  | Azure Market | Azure Market | Azure Market  |
 | **Kapsayıcı görüntüsü** |  |  | Azure Market | Azure Market |   |
 | **IoT Edge modülü** |  |  | Azure Market | Azure Market |   |
@@ -54,9 +54,9 @@ Mevcut olan liste seçenekleri, müşteri adayı paylaşma ve [ticari Market ava
 | **Yayımlama seçeneği**    | **Açıklama**  |
 | :------------------- | :-------------------|
 | **Liste** | Uygulama veya hizmetinizin, bir ticari Market kullanıcısına **Ilgili kişi** listeleme seçenekleri aracılığıyla müşteriye bağlanmanızı istemesini sağlayan basit listesi. |
-| **Deneme** | Ticari Market 'i kullanarak, çözümünüzün deneme deneyiminizin sağlamasını geliştirin ve bu sayede, olası kullanıcıların satın alınmadan önce sınırlı bir süre boyunca SaaS, IaaS veya Microsoft uygulama içi deneyiminizi kullanmasına olanak sağlar. Deneme yayımlama seçeneği için kullanılan liste seçenekleri, **ücretsiz deneme** veya **Test sürüşdir** . |
-| **KLG** | Keşfedilebilirliğini geliştirmek ve çözümünüzün sağlamasını otomatik hale getirmek için ticari Market 'i kullanın ve mali işlemi ayrı olarak doldurun. KLG teklif türleri şirket içinde bulut geçişleri için idealdir. Listeleme seçeneği **Şimdi alınır** .
-| **İşlem** | Transact teklifleri ticari Market aracılığıyla satılır. Microsoft, faturalandırma ve koleksiyonlardan sorumludur. Listeleme seçeneği **Şimdi alınır** .|
+| **Deneme** | Ticari Market 'i kullanarak, çözümünüzün deneme deneyiminizin sağlamasını geliştirin ve bu sayede, olası kullanıcıların satın alınmadan önce sınırlı bir süre boyunca SaaS, IaaS veya Microsoft uygulama içi deneyiminizi kullanmasına olanak sağlar. Deneme yayımlama seçeneği için kullanılan liste seçenekleri, **ücretsiz deneme** veya **Test sürüşdir**. |
+| **KLG** | Keşfedilebilirliğini geliştirmek ve çözümünüzün sağlamasını otomatik hale getirmek için ticari Market 'i kullanın ve mali işlemi ayrı olarak doldurun. KLG teklif türleri şirket içinde bulut geçişleri için idealdir. Listeleme seçeneği **Şimdi alınır**.
+| **İşlem** | Transact teklifleri ticari Market aracılığıyla satılır. Microsoft, faturalandırma ve koleksiyonlardan sorumludur. Listeleme seçeneği **Şimdi alınır**.|
 
 > [!Note]
 > Transact Publishing seçeneğini kullanırken, bir teklif türü seçmeden ve teklifinizi oluşturmadan önce fiyatlandırma, faturalandırma, faturalama ve ödeme konularını anlamak önemlidir. Daha fazla bilgi edinmek için [ticari Market Transact özellikleri](./marketplace-commercial-transaction-capabilities-and-considerations.md)makalesine bakın.

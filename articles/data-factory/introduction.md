@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 1840bf93cbca73e593465c999b416e7cbd7af201
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 730141d22b318d79c8c2b7d995b98ee1c311aaf5
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89536321"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491282"
 ---
 # <a name="what-is-azure-data-factory"></a>Azure Data Factory nedir?
 
@@ -22,7 +22,7 @@ ms.locfileid: "89536321"
 
 Büyük veri dünyasında ham ve düzensiz veriler genellikle ilişkisel, ilişkisel olmayan ve diğer depolama sistemlerinde depolanır. Ancak, ham veriler kendi başlarına analiz uzmanlarına, veri bilimcilerine veya iş karar mekanizmalarına anlamlı bilgiler sağlamak için uygun bağlama veya anlama sahip değildir. 
 
-Büyük veri için gerekli olan, muazzam büyüklükteki bu ham veri depolarını eyleme dönüştürülebilen iş öngörüleri haline getirmek için düzenleyici ve faaliyete geçiren süreçler sağlayan bir hizmettir. Azure Data Factory, bu karmaşık karma ayıkla-dönüştür-yükle (ETL), ayıkla-yükle-dönüştür (ELT) ve veri tümleştirme projeleri için oluşturulmuş, yönetilen bir bulut hizmetidir.
+Büyük veriler, ham verilerin bu zenginleştirme mağazalarını uygulanabilir iş öngörülerine daraltmak için işlemleri düzenleyebilen ve işleştirebilecek bir hizmet gerektirir. Azure Data Factory, bu karmaşık karma ayıkla-dönüştür-yükle (ETL), ayıkla-yükle-dönüştür (ELT) ve veri tümleştirme projeleri için oluşturulmuş, yönetilen bir bulut hizmetidir.
 
 Örneğin bulutta çalışan oyunların oluşturduğu petabaytlarca oyun günlüğünü toplayan bir oyun şirketini düşünün. Şirket müşteri tercihleri, demografik bilgiler ve kullanıcı davranışları hakkında içgörü elde etme amacıyla bu günlükleri analiz etmek istiyor. Ayrıca yukarı satış ve çapraz satış fırsatlarını belirlemek, yeni cazip özellikler geliştirmek, işleri büyütmek ve müşterilerine daha iyi bir deneyim sunmayı amaçlamaktadır.
 
@@ -58,12 +58,12 @@ Dönüştürmeleri el ile kodlayarak, ADF, HDInsight Hadoop, Spark, Data Lake An
 ### <a name="cicd-and-publish"></a>CI/CD ve yayımlama
 Data Factory, Azure DevOps ve GitHub kullanarak veri işlem hatlarınızın CI/CD 'si için tam destek sunar. Bu, tamamlanmış ürünü yayımlamadan önce ETL işlemlerinizi artımlı olarak geliştirmenize ve sunmanıza olanak tanır. Ham veriler iş için kullanılabilir biçime getirildikten sonra, verileri Azure Veri Ambarı, Azure SQL Veritabanı, Azure CosmosDB'ye veya şirket kullanıcılarınızın iş zekası araçlarından işaret edebildiği herhangi bir analiz altyapısına yükleyebilirsiniz.
 
-### <a name="monitor"></a>İzleme
+### <a name="monitor"></a>İzleyici
 Veri tümleştirme işlem hattınızı başarıyla oluşturup dağıtarak iyileştirilmiş verilerden iş değeri elde ettikten sonra, başarı ve hata oranları için zamanlanmış etkinlikleri ve işlem hatlarını izleyin. Azure Data Factory, Azure Izleyici, API, PowerShell, Azure Izleyici günlükleri ve Azure portal sistem durumu bölmeleri aracılığıyla işlem hattı izleme için yerleşik desteğe sahiptir.
 
 ## <a name="top-level-concepts"></a>Üst düzey kavramlar
 Azure aboneliğinin bir veya birden çok Azure Data Factory örneği (veya veri fabrikası) olabilir. Azure Data Factory, aşağıdaki anahtar bileşenlerinden oluşur.
-- İşlem hatları
+- Pipelines
 - Etkinlikler
 - Veri kümeleri
 - Bağlı hizmetler

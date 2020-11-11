@@ -4,16 +4,16 @@ description: Mevcut bir ticari Market teklifine veya planına güncelleştirme y
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 10/27/2020
 ms.custom: contperfq2
-ms.openlocfilehash: 376852c214d503867cd938507760e963b9b75e93
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 3d96973d4d1e37ae3fee21eb70e3e32a45867f0c
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129992"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491962"
 ---
 # <a name="update-existing-offers-in-the-commercial-marketplace"></a>Ticari Market 'teki mevcut teklifleri güncelleştirme
 
@@ -49,7 +49,7 @@ Zaten yayımladığınız bir teklifine yeni bir plan eklemek için bu adımlar�
 Zaten yayımladığınız bir teklifin planında değişiklik yapmak için bu adımları uygulayın.
 
 1. Mevcut teklifiniz için **teklif genel bakış** sayfasında, değiştirmek istediğiniz planı seçin. Plana **genel bakış** listesinden erişilemezse, **tüm planları göster** ' i seçin.
-1. Plan **adını** , **fiyatlandırma modelini** veya **kullanılabilirliği** seçin. *Şu anda planlar yalnızca İngilizce (Birleşik Devletler) olarak kullanılabilir* .
+1. Plan **adını** , **fiyatlandırma modelini** veya **kullanılabilirliği** seçin. *Şu anda planlar yalnızca İngilizce (Birleşik Devletler) olarak kullanılabilir*.
 1. Plan adı, açıklama veya hedef kitle kullanılabilirliğine herhangi bir değişiklik yaptıktan sonra **Taslağı kaydet** ' i seçin.
 1. Güncelleştirmelerinizi yayımlamaya hazırsanız **gözden geçir ve Yayımla '** yı seçin. **[İnceleme ve yayımlama](../review-publish-offer.md)** sayfası açılır ve güncelleştirmelerinizin tamamlanma durumunu sağlar.
 1. Güncelleştirilmiş planı yayımlamaya göndermek için **Yayımla** ' yı seçin. Gözden geçirmeniz ve onaylamanız için güncelleştirilmiş teklifin önizleme sürümü kullanılabilir olduğunda size e-posta göndereceğiz.

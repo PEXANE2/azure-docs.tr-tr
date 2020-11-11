@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: d16343864d9602d644b31d34a2b66e39211b6ece
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: f6fbd963966dd1a5c433a97cb8d37ae22998be4c
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079348"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491197"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>Sağlanan aktarım hızı ve sunucusuz arasından seçim yapma
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -19,9 +19,6 @@ ms.locfileid: "93079348"
 Azure Cosmos DB iki farklı kapasite modunda kullanılabilir: [sağlanan aktarım hızı](set-throughput.md) ve [sunucusuz](serverless.md). Her iki modda da tam olarak aynı veritabanı işlemlerini gerçekleştirebilirsiniz, ancak bu işlemler için faturalandırıldığınız şekilde tamamen farklıdır. Aşağıdaki videoda, bu modlar arasındaki temel farklılıklar ve farklı iş yükleri türlerine nasıl uydukları açıklanmaktadır:
 
 > [!VIDEO https://www.youtube.com/embed/CgYQo6uHyt0]
-
-> [!NOTE]
-> Sunucusuz Şu anda yalnızca Azure Cosmos DB Çekirdek (SQL) API 'sinde destekleniyor.
 
 ## <a name="detailed-comparison"></a>Ayrıntılı karşılaştırma
 

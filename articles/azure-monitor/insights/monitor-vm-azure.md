@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 85c4807d5bf71078e3cfb26bbc27e9eecc10c041
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84db7f58c292cf0a9d01cf90da4b847691f601fb
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90029470"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491639"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure Izleyici ile Azure sanal makinelerini izleme
 Bu makalede, Azure Izleyici 'nin, Azure sanal makinelerindeki izleme verilerini toplamak ve analiz etmek için, sistem durumlarını korumak üzere nasıl kullanılacağı açıklanır. Sanal makineler, Azure Izleyici ile [diğer Azure kaynakları](monitor-azure-resource.md)gibi kullanılabilirlik ve performans için izlenebilir, ancak Konuk işletim sistemini ve sistemi ve içinde çalışan iş yüklerini izlemeniz gerektiğinden diğer kaynaklardan benzersizdir. 
@@ -82,11 +82,11 @@ Azure portal sanal makine menüsündeki **Öngörüler** seçeneğinden VM'ler i
 ### <a name="configure-log-analytics-workspace"></a>Log Analytics çalışma alanını Yapılandır
 VM'ler için Azure İzleyici tarafından kullanılan Log Analytics Aracısı bir [Log Analytics çalışma alanına](../platform/data-platform-logs.md)veri gönderir. Log Analytics çalışma alanını yapılandırarak ek performans verileri, olaylar ve diğer izleme verilerini aracıdan etkinleştirebilirsiniz. Çalışma alanına bağlanan herhangi bir aracı yapılandırmayı otomatik olarak indirecek ve tanımlanan verileri toplamaya başladıktan sonra yalnızca bir kez yapılandırılması gerekir. 
 
-**Kullanmaya başlama**alanı **yapılandırması** ' nı seçerek çalışma alanının yapılandırmasına doğrudan VM'ler için Azure izleyici erişebilirsiniz. Menüsünü açmak için çalışma alanı adına tıklayın.
+**Kullanmaya başlama** alanı **yapılandırması** ' nı seçerek çalışma alanının yapılandırmasına doğrudan VM'ler için Azure izleyici erişebilirsiniz. Menüsünü açmak için çalışma alanı adına tıklayın.
 
 ![Çalışma alanı yapılandırması](media/monitor-vm-azure/workspace-configuration.png)
 
-Çalışma alanı menüsünden **Gelişmiş ayarlar** ' ı ve ardından veri kaynaklarını yapılandırmak için **veriler** ' i seçin. Windows aracıları için **Windows olay günlükleri** ' ni seçin ve *sistem* ve *uygulama*gibi ortak olay günlükleri ekleyin. Linux aracıları için **Syslog** ' ı seçin ve *Aralık* ve *Daemon*gibi ortak tesisler ekleyin. Kullanılabilir veri kaynaklarının bir listesi ve bunları yapılandırma hakkında ayrıntılı bilgi için bkz. [Azure izleyici 'de aracı veri kaynakları](../platform/agent-data-sources.md) . 
+Çalışma alanı menüsünden **Gelişmiş ayarlar** ' ı ve ardından veri kaynaklarını yapılandırmak için **veriler** ' i seçin. Windows aracıları için **Windows olay günlükleri** ' ni seçin ve *sistem* ve *uygulama* gibi ortak olay günlükleri ekleyin. Linux aracıları için **Syslog** ' ı seçin ve *Aralık* ve *Daemon* gibi ortak tesisler ekleyin. Kullanılabilir veri kaynaklarının bir listesi ve bunları yapılandırma hakkında ayrıntılı bilgi için bkz. [Azure izleyici 'de aracı veri kaynakları](../platform/agent-data-sources.md) . 
 
 ![Olayları yapılandırma](media/monitor-vm-azure/configure-events.png)
 
@@ -139,7 +139,7 @@ Bir sanal makine için izleme verileri koleksiyonunu yapılandırdıktan sonra, 
 | Ölçümler | [Ölçüm Gezgini](../platform/metrics-getting-started.md) ' ni geçerli sanal makineye ayarlı kapsam ile açın. |
 | Tanılama ayarları | Geçerli sanal makine için [Tanılama uzantısını](../platform/diagnostics-extension-overview.md) etkinleştirin ve yapılandırın. |
 | Danışman önerileri | [Azure Advisor](../../advisor/index.yml)'ın geçerli sanal makinesine yönelik öneriler. |
-| Günlükler | [Kapsamın](../log-query/scope.md) geçerli sanal makineye ayarlandığı [Log Analytics](../log-query/log-query-overview.md#what-is-log-analytics) açın. |
+| Günlükler | [Kapsamın](../log-query/scope.md) geçerli sanal makineye ayarlandığı [Log Analytics](../log-query/log-analytics-overview.md) açın. |
 | Bağlantı İzleyicisi | Geçerli sanal makine ile diğer sanal makineler arasındaki bağlantıları izlemek için [ağ Izleyicisi bağlantı izleyicisini](../../network-watcher/connection-monitor-preview.md) açın. |
 
 
@@ -170,7 +170,7 @@ VM'ler için Azure İzleyici, *ınsightsölçümlerini* tablosuna yazılan önce
 
 
 > [!NOTE]
-> Log Analytics Aracısı tarafından toplanan performans verileri, VM'ler için Azure İzleyici bunu *ınsightsölçümlerini* tablosuna toplayacağı için *perf* tablosuna yazar. Bu veriler aynıdır, ancak tablolar farklı bir yapıya sahiptir. *Perf*tabanlı mevcut sorgulara sahipseniz, *ınsightsölçümlerini*kullanmak için yeniden yazılması gerekir.
+> Log Analytics Aracısı tarafından toplanan performans verileri, VM'ler için Azure İzleyici bunu *ınsightsölçümlerini* tablosuna toplayacağı için *perf* tablosuna yazar. Bu veriler aynıdır, ancak tablolar farklı bir yapıya sahiptir. *Perf* tabanlı mevcut sorgulara sahipseniz, *ınsightsölçümlerini* kullanmak için yeniden yazılması gerekir.
 
 
 ## <a name="alerts"></a>Uyarılar

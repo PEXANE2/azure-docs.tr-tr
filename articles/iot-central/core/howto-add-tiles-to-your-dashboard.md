@@ -1,18 +1,17 @@
 ---
-title: Azure IoT Central panonuza kutucuk ekleme | Microsoft Docs
+title: Azure IoT Central panonuza yapılandırma | Microsoft Docs
 description: Oluşturucu olarak, varsayılan Azure IoT Central uygulama panosunu kutucuklar ile yapılandırmayı öğrenin.
-author: Haley-Rowland
-ms.author: harowl
-ms.date: 05/27/2020
+author: TheJasonAndrew
+ms.author: v-anjaso
+ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
-services: iot-central
-ms.openlocfilehash: 5276f9b8c6dd3bdc305142e5b9452cd9c5d60bce
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 2ea2dd18cd5816c7c1406ac201421a2983e431a3
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94377003"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94492045"
 ---
 # <a name="configure-the-application-dashboard"></a>Uygulama panosunu yapılandırma
 
@@ -29,23 +28,26 @@ Aşağıdaki ekran görüntüsünde, Pano **özel uygulama** şablonundan oluşt
 
 **Düzenle** veya **Yeni** seçeneğini belirledikten sonra Pano *düzenleme* modundadır. Panoya kutucuk eklemek ve panodaki kutucukları özelleştirmek ve kaldırmak için **Pano düzenleme** bölmesindeki araçları kullanabilirsiniz. Örneğin, bir veya daha fazla cihaz tarafından bildirilen geçerli sıcaklığın gösterilmesi için bir **telemetri** kutucuğu eklemek için:
 
-1. **Panoyu Düzenle** panelinde bir **cihaz grubu** seçin.
-1. Kutucukta göstermek için **cihazlar** açılan menüsünde bir veya daha fazla cihaz seçin. Artık cihazlarda kullanılabilir telemetri, Özellikler ve komutları görürsünüz.
-1. Telemetri bölümünde **sıcaklık** ' ı seçin ve ardından **kutucuk Ekle** ' yi seçin. Kutucuk artık, görselleştirmeyi değiştirebileceğiniz, kutucuğu yeniden boyutlandırmanın ve yapılandırabileceğiniz Pano üzerinde görüntülenir:
+1. Bir **cihaz grubu** seçin ve ardından kutucukta göstermek için cihazlar **açılan menüsünde cihazlarınızı seçin** . Artık cihazlarda kullanılabilir telemetri, Özellikler ve komutları görürsünüz.
+
+1. Gerekirse, kutucukta gösterilecek bir telemetri değeri seçmek için açılan menüyü kullanın. Bir kutucuğa **+ telemetri** , **+ özellik** veya **+ bulut özelliği** seçerek daha fazla öğe ekleyebilirsiniz.
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="Panoya bir sıcaklık telemetri kutucuğu ekleme":::
 
-Panoya kutucuk ekleme ve özelleştirmeyi bitirdiğinizde **Kaydet** ' i seçin.
+Kutucukta gösterilecek tüm değerleri seçtiğinizde **kutucuk Ekle** ' ye tıklayın. Kutucuk artık Pano üzerinde görüntülenir, burada görselleştirmeyi değiştirebilir, yeniden boyutlandırabilir, taşıyabilir ve yapılandırabiliriz.
+
+Panodaki kutucukları ekleme ve özelleştirmeyi bitirdiğinizde **Kaydet** ' i seçerek değişiklikleri panoda kaydederek düzenleme modundan çıkar.
 
 ## <a name="customize-tiles"></a>Kutucukları Özelleştir
 
-Panodaki bir kutucuğu özelleştirmek için panonun Düzenleme modunda olması gerekir. Kullanılabilir özelleştirme seçenekleri [kutucuk türüne](#tile-types)bağlıdır:
+Bir kutucuğu düzenlemek için, düzenleme modunda olmanız gerekir.  Kullanılabilir özelleştirme seçenekleri [kutucuk türüne](#tile-types)bağlıdır:
 
-* Bir kutucukta cetvel simgesi görselleştirmeyi değiştirmenize olanak sağlar. Görsel öğeler çizgi grafiklerini, bilinen son değerleri ve ısı haritalarını içerir.
+* Bir kutucukta cetvel simgesi görselleştirmeyi değiştirmenize olanak sağlar. Görselleştirmeler çizgi grafikleri, çubuk grafikler, pasta grafikleri, bilinen son değerler, ana performans göstergeleri (veya KPI 'Lar), heavmaps ve haritalar içerir.
 
 * Kare simgesi kutucuğu yeniden boyutlandırmanızı sağlar.
 
 * Dişli simgesi görselleştirmeyi yapılandırmanızı sağlar. Örneğin, bir çizgi grafik görselleştirmesi için, göstergeyi ve eksenleri göstermeyi seçebilir ve çizilmesi için zaman aralığını seçebilirsiniz.
+
 
 ## <a name="tile-types"></a>Döşeme türleri
 
@@ -91,11 +93,16 @@ Sayısal **KPI** , **bilinen son değer** ve **özellik** kutucukları için, ge
 
 Koşullu biçimlendirme kurallarınızı ekleyin:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="Ortalama akış için koşullu biçimlendirme kurallarını gösteren ekran görüntüsü. Üç kural vardır-daha az Tha 20 yeşil, 50 ' den az sarı ve 50 ' den fazla şey kırmızıdır":::
-
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="Ortalama akış için koşullu biçimlendirme kurallarını gösteren ekran görüntüsü. Üç kural vardır-20 ' den az yeşil, 50 ' den az sarı ve 50 ' den fazla şey kırmızıya sahiptir":::
+   
 Aşağıdaki ekran görüntüsünde koşullu biçimlendirme kuralının etkisi gösterilmektedir:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="Ortalama su akışı kutucuğunda sarı arka plan rengini gösteren ekran görüntüsü. Kutucuktaki sayı 40,84 ' dir":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="Ortalama su akışı kutucuğunda kırmızı arka plan rengini gösteren ekran görüntüsü. Kutucuktaki sayı 50,54 ' dir":::
+
+### <a name="tile-formatting"></a>"kutucuk" biçimlendirmesi
+KPI, LKV ve özellik kutucuklarında kullanılabilen bu özellik, kullanıcıların yazı tipi boyutunu ayarlamasına, ondalık duyarlık, kısaltma sayısal değerlerini (örneğin, 1.7 K olarak format 1.700), veya dize değerlerini kutucuklarına sarmasına olanak tanır.
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/tile-format.png" alt-text="Kutucuk biçimi":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

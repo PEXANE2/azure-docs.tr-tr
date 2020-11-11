@@ -7,12 +7,12 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 8a503a5456fc28bd1b3ebb69c784fc59b3c6e7df
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 9b434c426264fcfee0dfe663a7d1b21a354badec
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92050074"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491265"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Azure Veri Gezgini kullanarak Azure Izleyici 'de verileri sorgulama (Önizleme)
 Azure Veri Gezgini proxy kümesi, Azure Izleyici 'de Azure Veri Gezgini, Log Analytics çalışma alanları ve klasik Application Insights uygulamaları arasında çapraz ürün sorguları gerçekleştirmenizi sağlar. Azure Izleyici veya klasik Application Insights uygulamalarında Log Analytics çalışma alanlarını ara sunucu kümeleri olarak eşleyebilirsiniz. Daha sonra Azure Veri Gezgini araçları 'nı kullanarak proxy kümesini sorgulayabilir ve bir çapraz küme sorgusunda buna başvurabilirsiniz. Makalede bir proxy kümesine bağlanma, Azure Veri Gezgini Web Kullanıcı arabirimine bir proxy kümesi ekleme ve Log Analytics çalışma alanlarınızda ya da Azure Veri Gezgini klasik Application Insights uygulamalarında sorgu çalıştırmanın nasıl yapılacağı gösterilir.
@@ -28,7 +28,7 @@ Aşağıdaki diyagramda Azure Veri Gezgini proxy akışı gösterilmektedir:
 ## <a name="connect-to-the-proxy"></a>Ara sunucuya Bağlan
 Log Analytics çalışma alanınızı veya klasik Application Insights uygulamanızı bağlamak için[Azure Veri Gezgini Web Kullanıcı arabirimini](https://dataexplorer.azure.com/clusters)açın. Log Analytics veya Application Insights kümenize bağlanmadan önce, Azure Veri Gezgini yerel kümenizin ( *Yardım* kümesi gibi) sol menüde göründüğünü doğrulayın.
 
-:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-data-explorer-web-ui-help-cluster.png" alt-text="Azure Veri Gezgini proxy akışı.":::
+:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-data-explorer-web-ui-help-cluster.png" alt-text="Azure Veri Gezgini yerel kümesi.":::
 
 **Küme Ekle** ' ye tıklayın ve ardından aşağıdaki biçimlerden birine Log Analytics veya Application Insights kümesinin URL 'sini ekleyin. 
     
@@ -37,14 +37,14 @@ Log Analytics çalışma alanınızı veya klasik Application Insights uygulaman
 
 Bağlantıyı oluşturmak için **Ekle** ' ye tıklayın.
 
-:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-proxy-add-cluster.png" alt-text="Azure Veri Gezgini proxy akışı.":::
+:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-proxy-add-cluster.png" alt-text="Küme ekleyin.":::
  
 > [!NOTE]
 > Birden fazla proxy kümesine bağlantı eklerseniz, her birine farklı bir ad verin. Aksi takdirde, sol bölmede hepsi aynı ada sahip olacaktır.
 
 Bağlantı kurulduktan sonra, Log Analytics veya Application Insights kümeniz yerel Azure Veri Gezgini kümenizin sol bölmesinde görünür. 
 
-:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-azure-data-explorer-clusters.png" alt-text="Azure Veri Gezgini proxy akışı.":::
+:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-azure-data-explorer-clusters.png" alt-text="Log Analytics ve Azure Veri Gezgini kümeleri.":::
  
 > [!NOTE]
 > Eşlenebilir Azure Izleyici çalışma alanlarının sayısı 100 ile sınırlıdır.
@@ -70,7 +70,7 @@ Log Analytics veya Application Insights kümenizdeki sorguları çalıştırın.
 Perf | take 10 // Demonstrate query through the proxy on the Log Analaytics workspace
 ```
 
-:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-proxy-query-la.png" alt-text="Azure Veri Gezgini proxy akışı.":::
+:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-proxy-query-la.png" alt-text="Log Analytics çalışma alanını sorgulayın.":::
 
 ### <a name="cross-query-of-your-log-analytics-or-application-insights-proxy-cluster-and-the-azure-data-explorer-native-cluster"></a>Log Analytics veya Application Insights proxy kümenizin çapraz sorgusu ve Azure Veri Gezgini yerel kümesi
 
@@ -85,7 +85,7 @@ union StormEvents, cluster('https://ade.loganalytics.io/subscriptions/<subscript
 let CL1 = 'https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>';
 union <Azure Data Explorer table>, cluster(CL1).database(<workspace-name>).<table name>
 ```
-UNION yerine [ `join` işleci](/azure/data-explorer/kusto/query/joinoperator?pivots=azuredataexplorer)kullanmak, Azure Veri Gezgini yerel kümesinde (proxy üzerinde değil) çalıştırmak için bir [İpucu](/azure/data-explorer/kusto/query/joinoperator?pivots=azuredataexplorer#join-hints) gerektirebilir. 
+UNION yerine [ `join` işleci](/azure/data-explorer/kusto/query/joinoperator?pivots=azuremonitor)kullanmak, Azure Veri Gezgini yerel kümesinde (proxy üzerinde değil) çalıştırmak için bir [İpucu](/azure/data-explorer/kusto/query/joinoperator?pivots=azuremonitor#join-hints) gerektirebilir. 
 
 ### <a name="join-data-from-an-azure-data-explorer-cluster-in-one-tenant-with-an-azure-monitor-resource-in-another"></a>Azure Izleyici kaynağı ile bir Kiracıdaki Azure Veri Gezgini kümesinden veri ekleme
 
@@ -113,7 +113,7 @@ Aşağıdaki komutlar proxy tarafından desteklenir:
 
 Aşağıdaki görüntüde, Azure Veri Gezgini Web kullanıcı arabiriminden tablosal bir işlevi sorgulama örneği gösterilmektedir. İşlevini kullanmak için, sorgu penceresinde adı çalıştırın.
 
-:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-proxy-function-query.png" alt-text="Azure Veri Gezgini proxy akışı.":::
+:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-proxy-function-query.png" alt-text="Azure Veri Gezgini Web kullanıcı arabiriminden tablosal bir işlev sorgulayın.":::
  
 > [!NOTE]
 > Azure Izleyici yalnızca parametreleri desteklemeyen tablolu işlevleri destekler.
@@ -124,7 +124,7 @@ Log Analytics veya Application Insights kümelerini çağırırken aşağıdaki 
 
 |Sözdizimi açıklaması  |Application Insights  |Log Analytics  |
 |----------------|---------|---------|
-| Bu abonelikte yalnızca tanımlı kaynağı içeren bir küme içindeki veritabanı (**çapraz küme sorguları için önerilir**) |   küme ( `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>').database('<ai-app-name>` ) | küme ( `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>` )     |
+| Bu abonelikte yalnızca tanımlı kaynağı içeren bir küme içindeki veritabanı ( **çapraz küme sorguları için önerilir** ) |   küme ( `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>').database('<ai-app-name>` ) | küme ( `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>` )     |
 | Bu abonelikteki tüm uygulamaları/çalışma alanlarını içeren küme    |     küme ( `https://ade.applicationinsights.io/subscriptions/<subscription-id>` )    |    küme ( `https://ade.loganalytics.io/subscriptions/<subscription-id>` )     |
 |Abonelikteki tüm uygulamaları/çalışma alanlarını içeren ve bu kaynak grubunun üyesi olan küme    |   küme ( `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>` )      |    küme ( `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>` )      |
 |Bu abonelikte yalnızca tanımlı kaynağı içeren küme      |    küme ( `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>` )    |  küme ( `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>` )     |

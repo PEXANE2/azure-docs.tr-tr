@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: e322135cfdb7aaff331367e84c603e8344436528
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a086d9fe150766c6b31210f29bf802a75e0ee4ec
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906249"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491741"
 ---
 # <a name="azure-cosmos-db-output-from-azure-stream-analytics"></a>Azure Stream Analytics çıkışı Azure Cosmos DB
 
@@ -34,12 +34,12 @@ Aşağıdaki tabloda Azure Cosmos DB çıktısı oluşturma özellikleri açıkl
 | Hesap Kimliği | Azure Cosmos DB hesabının adı veya uç nokta URI 'SI. |
 | Hesap anahtarı | Azure Cosmos DB hesabının paylaşılan erişim anahtarı. |
 | Veritabanı | Azure Cosmos DB veritabanı adı. |
-| Kapsayıcı adı | Cosmos DB olması gereken, kullanılacak kapsayıcı adı. Örnek:  <br /><ul><li> _MyContainer_: "myContainer" adlı bir kapsayıcı var olmalıdır.</li>|
+| Kapsayıcı adı | Cosmos DB olması gereken, kullanılacak kapsayıcı adı. Örnek:  <br /><ul><li> _MyContainer_ : "myContainer" adlı bir kapsayıcı var olmalıdır.</li>|
 | Belge KIMLIĞI |İsteğe bağlı. Ekleme veya güncelleştirme işlemlerinin dayandığı birincil anahtarı belirtmek için kullanılan çıkış olaylarında alanın adı.
 
 ## <a name="partitioning"></a>Bölümleme
 
-Bölüm anahtarı, sorgudaki bölüm BY yan tümcesine dayalıdır. Çıktı yazıcılarının sayısı, [tam paralelleştirilmiş sorgular](stream-analytics-scale-jobs.md)için giriş bölümlemesini izler. Stream Analytics Cosmos DB çıkış bölümü anahtarını bir dizeye dönüştürür. Örneğin, bigint türünde 1 değeri olan bir bölüm anahtarınız varsa, bu dize tür dizesinin "1" değerine dönüştürülür.
+Bölüm anahtarı, sorgudaki bölüm BY yan tümcesine dayalıdır. Çıktı yazıcılarının sayısı, [tam paralelleştirilmiş sorgular](stream-analytics-scale-jobs.md)için giriş bölümlemesini izler. Stream Analytics Cosmos DB çıkış bölümü anahtarını bir dizeye dönüştürür. Örneğin, bigint türünde 1 değeri olan bir bölüm anahtarınız varsa, bu dize tür dizesinin "1" değerine dönüştürülür. Bu dönüştürme, Bölüm özelliğinin Cosmos DB yazılıp yazılmadığına bakılmaksızın her zaman gerçekleşir.
 
 ## <a name="output-batch-size"></a>Çıkış toplu iş boyutu
 

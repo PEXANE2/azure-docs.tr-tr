@@ -3,12 +3,12 @@ title: Azure Işlevlerinin güvenliğini sağlama
 description: Azure 'da çalışan işlev kodunuzun genel saldırılara karşı daha güvenli hale getirme hakkında bilgi edinin.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: cd97193fdf6549e667578e36f0be9104e4381d30
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: ee54ff8c1efaee00999888891e6de255060aa416
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102315"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491333"
 ---
 # <a name="securing-azure-functions"></a>Azure Işlevlerinin güvenliğini sağlama
 
@@ -28,7 +28,7 @@ Güvenlik Merkezi, portaldaki işlev uygulamanızla tümleştirilir. Yapılandı
 
 ### <a name="log-and-monitor"></a>Günlüğe kaydetme ve izleme
 
-Saldırıları tespit etmek için bir tane, etkinlik izleme etkinliği ve günlüğe kaydetme analizinden biridir. İşlevler, işlev uygulamanız için günlüğü, performansı ve hata verilerini toplamak üzere Application Insights ile tümleşir. Application Insights, performans bozuklularını otomatik olarak algılar ve sorunları tanılamanıza ve işlevlerinizin nasıl kullanıldığını anlamanıza yardımcı olacak güçlü analiz araçları içerir. Daha fazla bilgi için bkz. [Azure Işlevlerini izleme](functions-monitoring.md).
+Saldırıları algılamadaki yollardan biri, etkinlik izleme etkinliği ve günlüğe kaydetme analizinden biridir. İşlevler, işlev uygulamanız için günlüğü, performansı ve hata verilerini toplamak üzere Application Insights ile tümleşir. Application Insights, performans bozuklularını otomatik olarak algılar ve sorunları tanılamanıza ve işlevlerinizin nasıl kullanıldığını anlamanıza yardımcı olacak güçlü analiz araçları içerir. Daha fazla bilgi için bkz. [Azure Işlevlerini izleme](functions-monitoring.md).
 
 İşlevler ayrıca, daha kolay analize yönelik işlev uygulama günlüklerini sistem olaylarıyla birleştirmenize olanak tanımak için Azure Izleyici günlükleri ile tümleşir. Bir günlük Analizi çalışma alanı gibi işlevleriniz için tercih ettiğiniz hedefe yönelik platform günlüklerinin ve ölçümlerinin akış dışa aktarılmasını yapılandırmak için tanılama ayarlarını kullanabilirsiniz. Daha fazla bilgi edinmek için bkz. Azure [Izleme günlükleri Ile Azure Işlevlerini izleme](functions-monitor-log-analytics.md). 
 

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/18/2020
+ms.date: 11/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: 325931ea024221bc89df3b2e25f3e7844130f4dc
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 53628f5aa0bc5ab5dedde5deb9950c7b13fb4bf6
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741069"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490755"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Azure RBAC sorunlarını giderme
 
@@ -68,6 +68,7 @@ $ras.Count
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
     ```
+- Bir abonelik için son sahip rol atamasını kaldırmaya çalışırsanız, "son RBAC yönetici ataması silinemiyor." hatasını görebilirsiniz. Aboneliğin en son sahip rol atamasının kaldırılması, aboneliğin orphankaçınmak için desteklenmez. Aboneliğinizi iptal etmek istiyorsanız bkz. [Azure aboneliğinizi Iptal etme](../cost-management-billing/manage/cancel-azure-subscription.md).
 
 ## <a name="problems-with-custom-roles"></a>Özel rollerle ilgili sorunlar
 
@@ -227,7 +228,7 @@ Bu öğeler, **sanal makineye** **yazma** erişimi gerektirir:
 * Uç Noktalar  
 * IP adresleri  
 * Diskler  
-* Uzantıları  
+* Uzantılar  
 
 Bunlar, hem **sanal makineye** hem de **kaynak grubuna** (etki alanı adıyla birlikte) **yazma** erişimi gerektirir:  
 
@@ -239,7 +240,7 @@ Bu kutucukların herhangi birine erişemiyorsanız, yöneticinizden kaynak grubu
 
 ## <a name="azure-functions-and-write-access"></a>Azure Işlevleri ve yazma erişimi
 
-[Azure işlevlerinin](../azure-functions/functions-overview.md) bazı özellikleri yazma erişimi gerektirir. Örneğin, bir kullanıcıya [okuyucu](built-in-roles.md#reader) rolü atanırsa, işlevleri bir işlev uygulamasında görüntüleyemeyecektir. Portal görüntülenir **(erişim yok)** .
+[Azure işlevlerinin](../azure-functions/functions-overview.md) bazı özellikleri yazma erişimi gerektirir. Örneğin, bir kullanıcıya [okuyucu](built-in-roles.md#reader) rolü atanırsa, işlevleri bir işlev uygulamasında görüntüleyemeyecektir. Portal görüntülenir **(erişim yok)**.
 
 ![İşlev uygulamalarına erişim yok](./media/troubleshooting/functionapps-noaccess.png)
 

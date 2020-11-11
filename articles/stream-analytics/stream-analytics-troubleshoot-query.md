@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: c2c199b2366f2708af19c1868cce09e0ba38fc96
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ef03560cff704255d2779a747d124e0b39a1c657
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130264"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491316"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics sorgularının sorunlarını giderme
 
@@ -50,6 +50,8 @@ Bu makalede, Azure Stream Analytics sorguları geliştirmeyle ilgili yaygın sor
 ## <a name="resource-utilization-is-high"></a>Kaynak kullanımı yüksek
 
 Azure Stream Analytics ' de paralelleştirme avantajını kullandığınızdan emin olun. Giriş bölümlerini yapılandırarak ve analiz sorgu tanımını ayarlayarak Stream Analytics işlerin [sorgu paralel hale getirme ile ölçeklendirmeyi](stream-analytics-parallelization.md) öğrenebilirsiniz.
+
+Kaynak kullanımı düzenli olarak %80 üzerinde ise, eşik gecikmesi gecikmelidir ve biriktirme listesi olaylarının sayısı artmakta olduğundan, akış birimlerini artırmayı düşünün. Yüksek kullanım, işin en fazla ayrılmış kaynağa yakın kullandığını gösterir.
 
 ## <a name="debug-queries-progressively"></a>Sorgularda aşamalı olarak hata ayıklama
 

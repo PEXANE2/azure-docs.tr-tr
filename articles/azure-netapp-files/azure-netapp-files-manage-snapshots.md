@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 11/10/2020
 ms.author: b-juche
-ms.openlocfilehash: 0d7839b11e48e3e260f4d6b1323d1831e28222de
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: e578e377e322e6b6a23f0990ca1fa0285a4ec87d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421888"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491656"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp Files kullanarak anlık görüntüleri yönetme
 
@@ -41,7 +41,7 @@ Azure NetApp Files, otomatik anlık görüntü oluşturmayı zamanlamak için is
 
     ![Yeni anlık görüntü](../media/azure-netapp-files/azure-netapp-files-new-snapshot.png)
 
-4. **Tamam** ’a tıklayın. 
+4. **Tamam** düğmesine tıklayın. 
 
 ## <a name="manage-snapshot-policies"></a>Anlık görüntü ilkelerini yönetme
 
@@ -108,6 +108,8 @@ Bir birimin anlık görüntü ilkesini kullanmasını istiyorsanız [ilkeyi biri
 
 Bir birimin oluşturduğunuz bir anlık görüntü ilkesini kullanmasını istiyorsanız ilkeyi birime uygulamanız gerekir. 
 
+Çapraz bölge çoğaltmasında bir hedef birime anlık görüntü ilkesi uygulayamazsınız.  
+
 1.  **Birimler** sayfasına gidin, anlık görüntü ilkesi uygulamak istediğiniz birime sağ tıklayın ve **Düzenle** ' yi seçin.
 
     ![Birimler sağ tıklama menüsü](../media/azure-netapp-files/volume-right-cick-menu.png) 
@@ -173,13 +175,15 @@ Takılan birim,  `.snapshot` istemci tarafından erişilebilen (NFS istemcileri 
 
 Birimi oluştururken anlık görüntü yolunu gizle onay kutusunu seçtiyseniz, anlık görüntü dizini gizlenir. Birimi seçerek birimin anlık görüntü yolunu Gizle durumunu görüntüleyebilirsiniz. Birimin sayfasında **Düzenle** ' ye tıklayarak anlık görüntü yolunu gizle seçeneğini düzenleyebilirsiniz.  
 
+Çapraz bölge çoğaltmasında bir hedef birim için, anlık görüntü yolunu Gizle varsayılan olarak etkindir ve ayar değiştirilemez.
+
 ![Birim anlık görüntü seçeneklerini düzenleme](../media/azure-netapp-files/volume-edit-snapshot-options.png) 
 
 ### <a name="restore-a-file-by-using-a-linux-nfs-client"></a>Linux NFS istemcisi kullanarak bir dosyayı geri yükleme 
 
 1. `ls`Dizinden geri yüklemek istediğiniz dosyayı listelemek için Linux komutunu kullanın `.snapshot` . 
 
-    Örnek:
+    Örneğin:
 
     `$ ls my.txt`   
     `ls: my.txt: No such file or directory`   
@@ -194,7 +198,7 @@ Birimi oluştururken anlık görüntü yolunu gizle onay kutusunu seçtiyseniz, 
 
 2. `cp`Dosyayı üst dizine kopyalamak için komutunu kullanın.  
 
-    Örnek: 
+    Örneğin: 
 
     `$ cp .snapshot/hourly.2020-05-15_1306/my.txt .`   
 

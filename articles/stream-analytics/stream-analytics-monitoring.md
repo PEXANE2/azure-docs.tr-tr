@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: cdddbce3e9eb0a5c933ace186607186265197dc4
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f8e0d49c2a35a1e97c79e6d4b8c867a4a8ab88b3
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123515"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491537"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Stream Analytics iş izlemeyi ve sorguların nasıl izleneceğini anlayın
 
@@ -43,7 +43,7 @@ Bu pencere gösterildiği gibi görünür:
 | Sıra dışı olaylar    | Olay sıralama Ilkesine bağlı olarak, ayarlanmış bir zaman damgasına bırakılan veya verilen zaman damgası dışında alınan olay sayısı. Bu, sipariş dışı tolerans penceresi ayarının yapılandırmasından etkilenebilir. |
 | Çıkış olayları          | Stream Analytics işi tarafından çıktı hedefine, olay sayısında gönderilen veri miktarı. |
 | Çalışma zamanı hataları         | Sorgu işlemeyle ilgili toplam hata sayısı (olayları alırken veya sonuçları yazarken bulunan hatalar hariç) |
-| SU kullanımı yüzdesi       | İşin ölçek sekmesinden bir işe atanan akış birimlerinin kullanımı. Bu gösterge %80 veya üzeri bir duruma ulaşılmalıdır, olay işlemenin ilerleme durumunu geciktirebileceği veya durmuş olabileceği büyük bir olasılık vardır. |
+| SU kullanımı yüzdesi       | Kaynak kullanımı düzenli olarak %80 üzerinde ise, eşik gecikmesi gecikmelidir ve biriktirme listesi olaylarının sayısı artmakta olduğundan, akış birimlerini artırmayı düşünün. Yüksek kullanım, işin en fazla ayrılmış kaynağa yakın kullandığını gösterir. |
 | Filigran gecikmesi       | İş içindeki tüm çıkışların tüm bölümlerinde en fazla eşik gecikmesi. |
 
 [Stream Analytics işinizin performansını izlemek](./stream-analytics-set-up-alerts.md#scenarios-to-monitor)için bu ölçümleri kullanabilirsiniz. 

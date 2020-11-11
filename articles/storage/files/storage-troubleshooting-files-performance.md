@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/15/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 9dfdbbd982503acc063ff88c74dfccde8677eaac
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 4d21bfa69022cbebdcbf80c3bee4aec76bf99c53
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380241"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491129"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Azure dosyaları performans sorunlarını giderme
 
@@ -111,7 +111,7 @@ Dizin kiraları için destek eksikliği yok.
 
 - Mümkünse, kısa bir süre içinde aynı dizinde aşırı açma/kapatma tanıtıcısından kaçının.
 - Linux VM 'Ler için, bir bağlama seçeneği olarak **actimeo = \<sec>** belirterek Dizin girişi önbellek zaman aşımını artırın. Bu, varsayılan olarak bir saniyedir ve üç ya da beş gibi daha büyük bir değer yardımcı olabilir.
-- Linux sanal makineleri için, çekirdeği 4,20 veya daha yüksek bir sürüme yükseltin.
+- RHEL/CentOS VM 'Leri için sistemi RHEL/CentOS 8,2 ' ye yükseltin. Diğer Linux VM 'Ler için, çekirdeği 5,0 veya daha yüksek bir sürüme yükseltin.
 
 ## <a name="low-iops-on-centosrhel"></a>CentOS/RHEL üzerinde düşük ıOPS
 

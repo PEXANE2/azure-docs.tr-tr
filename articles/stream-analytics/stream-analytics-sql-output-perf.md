@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı 'na Azure Stream Analytics çıkışı
+title: Azure Stream Analytics Azure SQL veritabanı 'nda üretilen iş performansını artırma
 description: Azure Stream Analytics SQL Azure veri çıktısı alma ve daha yüksek yazma işleme ücretleri elde etme hakkında bilgi edinin.
 author: chetanmsft
 ms.author: chetang
@@ -7,14 +7,14 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: 362c16a87e5a24c35b3aa637171b6a3f77aa62a6
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: a902cbc8256e249a608a5da8436a1145ddb0d565
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346341"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490942"
 ---
-# <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure SQL veritabanı 'na Azure Stream Analytics çıkışı
+# <a name="increase-throughput-performance-to-azure-sql-database-from-azure-stream-analytics"></a>Azure Stream Analytics Azure SQL veritabanı 'nda üretilen iş performansını artırma
 
 Bu makalede, Azure Stream Analytics kullanarak Azure SQL veritabanı 'na veri yüklerken daha iyi yazma performansı elde etme ipuçları ele alınmaktadır.
 

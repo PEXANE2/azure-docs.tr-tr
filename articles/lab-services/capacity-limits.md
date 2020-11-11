@@ -3,12 +3,12 @@ title: Azure Lab Services kapasite sınırları
 description: Azure Lab Services kapasite sınırları (sanal makine limitleri) hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 92bdc714d70b3d73ca2cbc76b1f5dc5366582cbd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9866628cd11ec8df67e6fe16ae8806f0f30ae9a1
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85444106"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491027"
 ---
 # <a name="capacity-limits-in-azure-lab-services"></a>Azure Lab Services kapasite sınırları
 Azure Lab Services Azure Işlem kotası kısıtlamalarına uyacak ve sahtekarlığı hafifletmek için Azure aboneliklerinde varsayılan kapasite sınırlarına sahiptir. Tüm Azure aboneliklerinin, abonelik türü, standart işlem çekirdeği sayısı ve Azure Lab Services içinde kullanılabilir GPU çekirdekleri temelinde değişebilen bir başlangıç kapasitesi sınırı olacaktır. Sınır artışı için istek yapmadan önce laboratuvarlarınızın içinde oluşturabileceğiniz sanal makinelerin sayısını kısıtlar.  
@@ -50,4 +50,5 @@ Destek isteğini gönderdikten sonra, isteği gözden geçitireceğiz. Gerekirse
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makaleye bakın:
+- [Yönetici Kılavuzu-VM boyutlandırma](administrator-guide.md#vm-sizing).
 - [Sık sorulan sorular](classroom-labs-faq.md).

@@ -11,12 +11,12 @@ author: jpe316
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2, devx-track-python, deploy
-ms.openlocfilehash: 6ac28e430681f35d9935cf0f484529074403bf54
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9ec82dcd7578744dc7443d48dc28820413f14005
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324977"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491707"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>Azure Machine Learning ile ML modellerini alan programlanabilir kapı dizileri (FPGAs) ile dağıtma 
 
@@ -362,6 +362,8 @@ converted_model.delete()
 ## <a name="next-steps"></a>Sonraki adımlar
 
 + [Web Hizmetleri belgenizi güvenli hale getirme](how-to-secure-web-service.md) hakkında bilgi edinin.
+
++ FPGA ve [Azure Machine Learning fiyatlandırma ve maliyetler](https://azure.microsoft.com/pricing/details/machine-learning/)hakkında bilgi edinin.
 
 + [Hiper ölçekli donanım: Azure + FPGA üzerinde ölçekli ML: derleme 2018 (video)](https://channel9.msdn.com/events/Build/2018/BRK3202)
 

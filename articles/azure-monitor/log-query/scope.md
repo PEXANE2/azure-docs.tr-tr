@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: 2036505dea134a59e7dc0c75a030175b15dac0b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 066e9cf6c63c9f2073ba869e8b40e25bfc993cd8
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90031951"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491384"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Azure Izleyici 'de günlük sorgusu kapsamı ve zaman aralığı Log Analytics
 [Azure portal Log Analytics](get-started-portal.md)bir [günlük sorgusu](log-query-overview.md) çalıştırdığınızda, sorgu tarafından değerlendirilen veri kümesi, seçtiğiniz kapsama ve zaman aralığına bağlıdır. Bu makalede kapsam ve zaman aralığı ve gereksinimlerinize bağlı olarak her bir şekilde nasıl ayarlayabileceğiniz açıklanır. Ayrıca, farklı kapsam türlerinin davranışlarını açıklar.
@@ -48,12 +48,10 @@ Sorgu kapsamı bir Log Analytics çalışma alanı veya Application Insights uyg
 Sorgu kapsamı, kaynak veya kaynak kümesi için veri içeren herhangi bir çalışma alanı içerdiğinden, bir kaynağa kapsam yaparken aşağıdaki komutları kullanamazsınız:
 
 - [uygulamanızda](app-expression.md)
-- [alanında](workspace-expression.md)
+- [workspace (çalışma alanı)](workspace-expression.md) 
  
 
-## <a name="query-limits"></a>Sorgu sınırları
-Azure kaynağının birden çok Log Analytics çalışma alanına veri yazması için iş gereksinimlerinize sahip olabilirsiniz. Çalışma alanının kaynakla aynı bölgede olması gerekmez ve tek bir çalışma alanının çeşitli bölgelerdeki kaynaklardan veri toplaması gerekebilir.  
-
+## <a name="query-scope-limits"></a>Sorgu kapsamı sınırları
 Tek bir sorgudaki dağıtılmış verileri otomatik olarak birleştirebileceğinizden bu yana, kapsamı bir kaynağa veya kaynak kümesine ayarlamak özellikle güçlü bir Log Analytics özelliğidir. Verilerin birden çok Azure bölgesindeki çalışma alanlarından alınması gerekiyorsa performansı önemli ölçüde etkileyebilir.
 
 Log Analytics, belirli sayıda bölge kullanılırken bir uyarı veya hata vererek, birden çok bölgedeki çalışma alanlarını kapsayan sorgulardan aşırı yüke karşı korumaya yardımcı olur. Kapsam 5 veya daha fazla bölgede çalışma alanı içeriyorsa sorgunuz bir uyarı alır. çalışmaya devam eder, ancak tamamlanması aşırı zaman alabilir.
@@ -66,28 +64,24 @@ Kapsam, 20 veya daha fazla bölgede çalışma alanları içeriyorsa, bu sorgunu
 
 
 ## <a name="time-range"></a>Zaman aralığı
-Zaman aralığı, kaydın oluşturulduğu zamana göre sorgu için değerlendirilen kayıt kümesini belirtir. Bu, aşağıdaki tabloda belirtildiği gibi çalışma alanı veya uygulamadaki her kayıtta standart bir sütun tarafından tanımlanır.
+Zaman aralığı, kaydın oluşturulduğu zamana göre sorgu için değerlendirilen kayıt kümesini belirtir. Bu, aşağıdaki tabloda belirtildiği gibi çalışma alanı veya uygulamadaki her kayıtta **TimeGenerated** sütunu tarafından tanımlanır. Klasik bir Application Insights uygulaması için zaman **damgası** sütunu zaman aralığı için kullanılır.
 
-| Konum | Sütun |
-|:---|:---|
-| Log Analytics çalışma alanı          | TimeGenerated |
-| Application Insights uygulaması | timestamp     |
 
 Log Analytics penceresinin en üstündeki saat seçicisinden seçim yaparak zaman aralığını ayarlayın.  Önceden tanımlanmış bir süre seçebilir veya belirli bir zaman aralığı belirtmek için **özel** ' i seçebilirsiniz.
 
 ![Saat seçici](media/scope/time-picker.png)
 
-Sorguda, yukarıdaki tabloda gösterildiği gibi standart zaman sütununu kullanan bir filtre ayarlarsanız, saat seçici **sorgu olarak ayarlanır**ve zaman seçici devre dışı bırakılır. Bu durumda, izleyen işlemin yalnızca filtrelenmiş kayıtlarla çalışması için filtreyi sorgunun en üstüne koymak en verimli yoldur.
+Sorguda, yukarıdaki tabloda gösterildiği gibi standart zaman sütununu kullanan bir filtre ayarlarsanız, saat seçici **sorgu olarak ayarlanır** ve zaman seçici devre dışı bırakılır. Bu durumda, izleyen işlemin yalnızca filtrelenmiş kayıtlarla çalışması için filtreyi sorgunun en üstüne koymak en verimli yoldur.
 
 ![Filtrelenmiş sorgu](media/scope/query-filtered.png)
 
-Başka bir çalışma alanı veya uygulamadan veri almak için [çalışma alanı](workspace-expression.md) veya [uygulama](app-expression.md) komutunu kullanırsanız, zaman seçici farklı davranabilir. Kapsam bir Log Analytics çalışma alanım ve **uygulama**kullanıyorsanız ya da kapsam bir Application Insights uygulama ise ve **çalışma alanı**kullanıyorsanız, Log Analytics filtrede kullanılan sütunun saat filtresini belirlemesi gerektiğini anlayamayabilir.
+Başka bir çalışma alanından veya klasik uygulamadan veri almak için [çalışma alanı](workspace-expression.md) veya [uygulama](app-expression.md) komutunu kullanırsanız, zaman seçici farklı davranabilir. Kapsam bir Log Analytics çalışma alanım ve **uygulama** kullanıyorsanız ya da kapsam klasik bir Application Insights uygulaması ise ve **çalışma alanı** kullanıyorsanız, Log Analytics filtrede kullanılan sütunun saat filtresini belirlemesi gerektiğini anlayamayabilir.
 
 Aşağıdaki örnekte, kapsam bir Log Analytics çalışma alanına ayarlanır.  Sorgu, başka bir Log Analytics çalışma alanından veri almak için **çalışma alanını** kullanır. Saat Seçici, beklenen **TimeGenerated** sütununu kullanan bir filtre gördüğünden **sorgu içinde ayarlanacak** şekilde değişir.
 
 ![Çalışma alanıyla sorgula](media/scope/query-workspace.png)
 
-Sorgu, Application Insights uygulamadan veri almak için **uygulama** kullanıyorsa, Log Analytics filtrenin **zaman damgası** sütununu tanımaz ve zaman seçici değişmeden kalır. Bu durumda, her iki filtre de uygulanır. Örnekte, **WHERE** yan tümcesinde 7 gün belirtse de yalnızca son 24 saat içinde oluşturulan kayıtlar sorguya dahil edilir.
+Sorgu, klasik bir Application Insights uygulamasından veri almak için **uygulama** kullanıyorsa, Log Analytics filtrenin **zaman damgası** sütununu tanımaz ve zaman seçici değişmeden kalır. Bu durumda, her iki filtre de uygulanır. Örnekte, **WHERE** yan tümcesinde 7 gün belirtse de yalnızca son 24 saat içinde oluşturulan kayıtlar sorguya dahil edilir.
 
 ![Uygulamayla sorgulama](media/scope/query-app.png)
 

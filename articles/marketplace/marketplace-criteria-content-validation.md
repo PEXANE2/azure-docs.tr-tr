@@ -4,15 +4,15 @@ description: Bu makalede, Azure Marketi 'nde yeni teklifler, hizmetler ve diğer
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 09/04/2020
-ms.openlocfilehash: 75bf1e3d81b466098884a354826019aa94a94174
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 3b2fc1ea37b09f6e4813d2a3c2333bc6d744293d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126116"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491503"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Azure Marketi listeleme yönergeleri
 
@@ -31,7 +31,7 @@ Bu makalede, Azure Marketi 'nde yeni teklifleri ve hizmetleri listeleme gereksin
 | 7 | Videolar | <ul><li>Video gerekmez, ancak sağlanmışsa, herhangi bir hata olmadan kayıttan yürütülmesi gerekir.</li><li>Sağlanmışsa, bir geçiş çözümü *göstermediği müddetçe* rakip şirketlerine başvurmayabilir. |<ul><li>En ideal olarak Uzunluk 3 dakikadır.</li><li>Çözüm teklifi, video içeriği aracılığıyla kolayca anlaşılır.</li><li>Çözüm özellikleri tanıtımı sağlar. |
 | 8 | Liste durumu (listeleme seçenekleri) | <ul><li>Aşağıdaki türlerden biri olarak etiketlenmelidir: <ul><li>*Benimle iletişim kurun*</li><li>*Deneme sürümü* / *Deneme sürümünü şimdi al* / *Denemeyi Başlat* / *Sınama sürücüsü*</li><li>*Hemen* / satın alın *Hemen alın*</li></ul></ul> | Müşteri, sonraki adımların ne olduğunu kolay bir şekilde anlayabilir: <ol><li>Denemeyi deneyin.</li><li>Hemen satın alın.</li><li>Kavram kanıtı (POC), değerlendirme veya Brit açısından düzenlemek için e-posta veya telefon numarası ile iletişim kurun.</li></ol> | 
 | 9 | Çözüm fiyatlandırması | Çözüm fiyatlandırma sekmesi/ayrıntıları olmalıdır ve fiyatlandırma, iş ortağı çözümü sunumunun yerel para birimi cinsinden olmalıdır. | Müşteri seçenekleri sağlamak için katman fiyatlandırmasıyla birden çok faturalandırma seçeneği kullanılabilir olmalıdır. |
-| 10 | Daha fazlasını öğrenin | En alttaki bağlantılar (açıklama altında, sol taraftaki Azure Marketi bağlantıları değil), çözüm hakkında daha fazla bilgi sağlar ve genel olarak kullanılabilir ve doğru şekilde görüntülenir. |    Yalnızca iş ortağı giriş sayfasına değil belirli öğelerin (örneğin, iş ortağı sitesindeki özellikler sayfaları) bağlantıları. | 
+| 10 | Daha fazla bilgi edinin | En alttaki bağlantılar (açıklama altında, sol taraftaki Azure Marketi bağlantıları değil), çözüm hakkında daha fazla bilgi sağlar ve genel olarak kullanılabilir ve doğru şekilde görüntülenir. |    Yalnızca iş ortağı giriş sayfasına değil belirli öğelerin (örneğin, iş ortağı sitesindeki özellikler sayfaları) bağlantıları. | 
 | 11 | Çözüm desteği ve yardım | Aşağıdakilerden en az birine bağlantı: <ul><li>Telefon numaraları</li><li>E-posta desteği</li><li>Sohbet aracıları</li><li>Topluluk forumları |<ul><li>Tüm destek yöntemleri listelenmiştir.</li><li>Ücretli destek, *deneme* veya *Test sürücü* döneminde ücretsiz olarak sunulur. |
 | 12 | Yasal Bildirim | İlkeler veya koşullar ortak bir URL aracılığıyla kullanılabilir. |  |
 |||
@@ -48,7 +48,7 @@ Bu makalede, Azure Marketi 'nde yeni teklifleri ve hizmetleri listeleme gereksin
 | Hayır. | Listeleme öğesi | Temel gereksinim | En iyi gereksinim | 
 |:--- |:--- |:--- |:--- |
 | 1 | Teklif başlığı |<ul><li>Yalnızca küçük harf, alfasayısal karakter, kısa çizgi veya alt çizgi içermelidir. Başlık yayımlandıktan sonra değiştirilemez.</li><li>Çözüm sunumunu açıklar.</li><li>İş ortağının Web sitesinde çevrimiçi çözüm promosyonu ile eşleşir. | Anahtar arama sözcüklerini içerir. |
-| 2 | Teknik bilgiler: yapılandırma |<ul><li>Hizmet olarak yazılım (SaaS) uygulamaları için yalnızca uygulamanızı listelemek mı yoksa müşterilerin uygulamanızı Azure üzerinden satın almasını mı istediğinizi seçin.</li><li>Teklifinizin Alım düğmenizde istediğiniz metni seçin: *ücretsiz* , *ücretsiz deneme* veya *benimle iletişim kurun* .</li><li>Açılır pencerede, uygulamanız teknolojiden yararlanıyorsa yalnızca geçerli bir ürün seçin: Cortana Intelligence, Power BI çözüm şablonları veya güç uygulamaları. |  |
+| 2 | Teknik bilgiler: yapılandırma |<ul><li>Hizmet olarak yazılım (SaaS) uygulamaları için yalnızca uygulamanızı listelemek mı yoksa müşterilerin uygulamanızı Azure üzerinden satın almasını mı istediğinizi seçin.</li><li>Teklifinizin Alım düğmenizde istediğiniz metni seçin: *ücretsiz* , *ücretsiz deneme* veya *benimle iletişim kurun*.</li><li>Açılır pencerede, uygulamanız teknolojiden yararlanıyorsa yalnızca geçerli bir ürün seçin: Cortana Intelligence, Power BI çözüm şablonları veya güç uygulamaları. |  |
 | 3 | Sınama sürücüsü | *Evet* veya *Hayır* 'ı seçin | Müşteri, sonraki adımların ne olduğunu kolay bir şekilde anlayabilir: <ol><li>Denemeyi deneyin.</li><li>Hemen satın alın.</li><li>POC, değerlendirme veya Brit için düzenlemek amacıyla e-posta veya telefon numarası ile iletişim kurun.</li></ol> |
 | 4 | Çevrimiçi mağaza ayrıntıları: teklif Özeti | Uygulamanızın arama sayfasında görünür ve en fazla 100 karakter vardır. | |
 | 5 | Çevrimiçi mağaza ayrıntıları: Industries | Sektörler (maks. 2): uygulamanızın en iyi hizalandığı ve için geçerli olduğu endüstrileri seçin. | |
@@ -85,7 +85,7 @@ Bu makalede, Azure Marketi 'nde yeni teklifleri ve hizmetleri listeleme gereksin
 | 9 | Yetkinlikler | Aşağıdakilerden en az birinde uzmanlığa sahip olmalıdır:<ul><li>Uygulama Geliştirme</li><li>Uygulama Tümleştirme</li><li>Uygulama Yaşam Döngüsü Yönetimi</li><li>Bulut platformu<li>Veri Analizi</li><li>Veri Merkezi</li><li>Veri platformu</li><li>DevOps |
 | 10 | Ürünler | Azure ürünleri olmalıdır. | |
 | 11 | Ülke/bölge | Ülke/bölgenin seçili para birimiyle eşleştiğinden emin olun. | |
-| 12 | Daha fazlasını öğrenin  | <ul><li>En alttaki bağlantılar (açıklama altında, sol taraftaki Azure Marketi bağlantıları değil), çözüm hakkında daha fazla bilgi sağlar ve genel olarak kullanılabilir ve doğru şekilde görüntülenir.</li><li>Bağlantıların "kolay ad" olması ve herhangi bir indirmelerin dosya adı olarak gösterilmemelidir. | |
+| 12 | Daha fazla bilgi edinin  | <ul><li>En alttaki bağlantılar (açıklama altında, sol taraftaki Azure Marketi bağlantıları değil), çözüm hakkında daha fazla bilgi sağlar ve genel olarak kullanılabilir ve doğru şekilde görüntülenir.</li><li>Bağlantıların "kolay ad" olması ve herhangi bir indirmelerin dosya adı olarak gösterilmemelidir. | |
 ||||
 
 ## <a name="next-steps"></a>Sonraki adımlar
