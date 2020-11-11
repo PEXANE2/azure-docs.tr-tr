@@ -5,14 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/13/2019
-author: keferna
-ms.author: keferna
-ms.openlocfilehash: bf253c4e3b273bc1500e5abbd4dfc045a7909ffd
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+author: trkeya
+ms.author: trkeya
+ms.openlocfilehash: b3f46f934241d924789b97c24cf9b68213d94d63
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125691"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490092"
 ---
 # <a name="test-drive-technical-configuration"></a>Test sürüşü teknik yapılandırması
 
@@ -98,9 +98,4 @@ Iş Ortağı Merkezi 'nde **Test** sürücüsü sekmesinde bulunan **Test sürü
 - [Sınama sürücüsü En Iyi uygulamaları](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [Genel bakış](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)(PDF; açılır pencere engelleyicinizin kapalı olduğundan emin olun)
 - [Ticari Market 'te mevcut bir teklifi güncelleştirme](partner-center-portal/update-existing-offer.md)
-
-## <a name="additional-resources"></a>Ek Kaynaklar
-
-## <a name="feedback"></a>Geri Bildirim
-
-[Bu ürün](https://feedback.azure.com/forums/216369-azure-marketplace) için geri bildirim gönderin ve görüntüleyin
+- [Azure Marketi geri bildirim Forumu](https://feedback.azure.com/forums/216369-azure-marketplace)

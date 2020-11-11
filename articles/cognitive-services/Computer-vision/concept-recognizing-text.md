@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 34a7cd8669c1545361bc7cd9579cfb6140c0c946
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: ac3edc466d640fdb98fd38ba59938aa13fe00f73
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331711"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489157"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optik Karakter Tanıma (OCR)
 
@@ -73,6 +73,9 @@ Okuma API 'sinin [okuma çağrısı](https://westcentralus.dev.cognitive.microso
 
 **Durum** alanı **başarılı** değerine sahip olduğunda JSON yanıtı, yansımanız veya belgenizdeki ayıklanan metin içeriğini içerir. JSON yanıtı, tanınan sözcüklerin orijinal satır gruplandırmaları saklar. Ayıklanan metin çizgilerini ve bunların sınırlayıcı kutu koordinatlarını içerir. Her metin satırı, tüm ayıklanan kelimeleri ve bunların koordinatlarını ve güvenirlik puanlarını içerir.
 
+> [!NOTE]
+> İşleme gönderilen veriler `Read` geçici olarak şifrelenir ve REST durumunda saklanır ve 48 saat içinde silinir. Bu, uygulamalarınızın ayıklanan metni hizmet yanıtının bir parçası olarak almasına olanak sağlar.
+
 ## <a name="sample-json-output"></a>Örnek JSON çıkışı
 
 Başarılı bir JSON yanıtı örneğine bakın:
@@ -87,7 +90,6 @@ Başarılı bir JSON yanıtı örneğine bakın:
     "readResults": [
       {
         "page": 1,
-        "language": "en",
         "angle": 0.8551,
         "width": 2661,
         "height": 1901,

@@ -5,15 +5,18 @@ author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: how-to
-ms.date: 10/20/2020
-ms.openlocfilehash: 9568dfc2cfd678d0ce2dea8475328358906e16d1
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.date: 11/10/2020
+ms.openlocfilehash: 7733a6211363b4f1c9e9006f757b4d152c7af7f5
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92525212"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489565"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı 'nda sunucu parametrelerini yapılandırma-esnek sunucu
+
+> [!IMPORTANT] 
+> MySQL için Azure veritabanı-esnek sunucu şu anda genel önizlemededir.
 
 Sunucu parametrelerini kullanarak MySQL için Azure veritabanı esnek sunucu yapılandırması ' nı yönetebilirsiniz. Sunucuyu oluştururken sunucu parametreleri varsayılan ve önerilen değer ile yapılandırılır.  
 
@@ -28,13 +31,13 @@ Bu makalede, Azure portal kullanarak sunucu parametrelerinin nasıl görüntüle
 2. **Ayarlar** bölümünde **sunucu parametreleri** ' ne tıklayarak MySQL için Azure veritabanı esnek sunucusu için sunucu parametreleri sayfasını açın.
 [:::image type="content" source="./media/how-to-server-parameters/azure-portal-server-parameters.png" alt-text="Azure portal sunucu parametreleri sayfası":::](./media/how-to-server-parameters/azure-portal-server-parameters.png#lightbox)
 3. Ayarlamanız gereken herhangi bir sunucu parametresini bulun. Amacı ve izin verilen değerleri anlamak için **Açıklama** sütununu gözden geçirin.
-[:::image type="content" source="./media/how-to-server-parameters/3-toggle-parameter.png" alt-text="Azure portal sunucu parametreleri sayfası":::](./media/how-to-server-parameters/3-toggle-parameter.png#lightbox)
+[:::image type="content" source="./media/how-to-server-parameters/3-toggle-parameter.png" alt-text="Açılan listesini numaralandır":::](./media/how-to-server-parameters/3-toggle-parameter.png#lightbox)
 4. Değişikliklerinizi kaydetmek için  **Kaydet** ' e tıklayın.
-[:::image type="content" source="./media/how-to-server-parameters/4-save-parameters.png" alt-text="Azure portal sunucu parametreleri sayfası":::](./media/how-to-server-parameters/4-save-parameters.png#lightbox)
-5. Statik parametreler, sunucu yeniden başlatmanın etkin olmasını gerektiren bir işlem olur. Statik parametreyi değiştiriyorsanız, **Şimdi yeniden başlatmanız** veya **daha sonra yeniden başlatmanız**istenir.
-[:::image type="content" source="./media/how-to-server-parameters/5-save-parameter.png" alt-text="Azure portal sunucu parametreleri sayfası":::](./media/how-to-server-parameters/5-save-parameter.png#lightbox)
-6. Parametreler için yeni değerler kaydettiyseniz, **Tümünü Sıfırla**' yı seçerek her şeyi varsayılan değerlere geri döndürebilirsiniz.
-[:::image type="content" source="./media/how-to-server-parameters/6-reset-parameters.png" alt-text="Azure portal sunucu parametreleri sayfası":::](./media/how-to-server-parameters/6-reset-parameters.png#lightbox)
+[:::image type="content" source="./media/how-to-server-parameters/4-save-parameters.png" alt-text="Değişiklikleri kaydetme veya atma":::](./media/how-to-server-parameters/4-save-parameters.png#lightbox)
+5. Statik parametreler, sunucu yeniden başlatmanın etkin olmasını gerektiren bir işlem olur. Statik parametreyi değiştiriyorsanız, **Şimdi yeniden başlatmanız** veya **daha sonra yeniden başlatmanız** istenir.
+[:::image type="content" source="./media/how-to-server-parameters/5-save-parameter.png" alt-text="Statik parametre kaydederken yeniden Başlat":::](./media/how-to-server-parameters/5-save-parameter.png#lightbox)
+6. Parametreler için yeni değerler kaydettiyseniz, **Tümünü Sıfırla** ' yı seçerek her şeyi varsayılan değerlere geri döndürebilirsiniz.
+[:::image type="content" source="./media/how-to-server-parameters/6-reset-parameters.png" alt-text="Tümünü Varsayılana sıfırla":::](./media/how-to-server-parameters/6-reset-parameters.png#lightbox)
 
 ## <a name="setting-non-modifiable-server-parameters"></a>Değiştirilemeyen sunucu parametreleri ayarlanıyor
 
@@ -45,7 +48,7 @@ Güncelleştirmek istediğiniz sunucu parametresi değiştirilebilir değilse, i
 3. Sunucu parametrelerini şu biçimde ekleyin: değer `SET parameter_name=YOUR_DESIRED_VALUE` sütununda değer sütunu.
 
     Örneğin, için ayarını yaparak sunucunuzun karakter kümesini değiştirebilirsiniz. `init_connect``SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;`
-4. Değişikliklerinizi kaydetmek için **Kaydet**’e tıklayın.
+4. **Kaydet** ’a tıklayarak değişikliklerinizi kaydedin.
 
 >[!Note]
 > `init_connect`, SÜPER ayrıcalıklar gerektirmeyen parametreleri oturum düzeyinde değiştirmek için kullanılabilir. Parametreyi `init_connect` kullanarak ayarlayıp ayarlayamayacağınızı doğrulamak için `set session parameter_name=YOUR_DESIRED_VALUE;` komutunu yürütün. **Erişim reddedildi; SÜPER ayrıcalıklar gerekiyor** hatası alırsanız ilgili parametreyi "init_connect" kullanarak ayarlayamazsınız.
@@ -76,7 +79,7 @@ SELECT name FROM mysql.time_zone_name;
 
 Genel düzey saat dilimi Azure portal **sunucu parametreleri** sayfasından ayarlanabilir. Aşağıdaki, genel saat dilimini "ABD/Pasifik" değerine ayarlar.
 
-[:::image type="content" source="./media/how-to-server-parameters/timezone.png" alt-text="Azure portal sunucu parametreleri sayfası":::](./media/how-to-server-parameters/timezone.png#lightbox)
+[:::image type="content" source="./media/how-to-server-parameters/timezone.png" alt-text="Saat dilimi parametresini ayarla":::](./media/how-to-server-parameters/timezone.png#lightbox)
 
 ### <a name="setting-the-session-level-time-zone"></a>Oturum düzeyi saat dilimini ayarlama
 

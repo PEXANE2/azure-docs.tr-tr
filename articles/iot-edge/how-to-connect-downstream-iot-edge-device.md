@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 83db314070f4c8857ebaa10b26d0adf51372776f
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: d5da6576258d3e33296781bbc262494220140ddc
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447791"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489293"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>Bir aşağı akış IoT Edge cihazını bir Azure IoT Edge ağ geçidine bağlama (Önizleme)
 
@@ -43,7 +43,7 @@ Bu makaledeki tüm adımlar, bir IoT Edge cihazını aşağı akış IoT cihazla
 
 * Ücretsiz veya standart bir IoT Hub 'ı.
 * En az iki **IoT Edge cihaz** , biri en üst katman cihazıdır ve bir veya daha fazla alt katman cihazıdır. Kullanılabilir IoT Edge cihazları yoksa [Ubuntu sanal makinelerinde Azure IoT Edge çalıştırabilirsiniz](how-to-install-iot-edge-ubuntuvm.md).
-* Cihazları oluşturmak ve yönetmek için Azure CLı kullanıyorsanız, Azure IoT uzantısı v 0.9.10 veya üzeri yüklü olan Azure CLı v 2.3.1 ' yi kullanın.
+* Cihazları oluşturmak ve yönetmek için Azure CLı kullanıyorsanız, Azure IoT uzantısı v 0.10.6 veya üzeri yüklü olan Azure CLı v 2.3.1 ' yi kullanın.
 
 Bu makalede, senaryonuza doğru ağ geçidi hiyerarşisini oluşturmanıza yardımcı olacak ayrıntılı adımlar ve seçenekler sağlanmaktadır. Kılavuzlu bir öğretici için bkz. [ağ geçitlerini kullanarak IoT Edge cihazları hiyerarşisi oluşturma](tutorial-nested-iot-edge.md).
 

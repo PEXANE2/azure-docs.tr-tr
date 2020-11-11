@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 624a147a463ad3be7e15a469294f07793046aaf3
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5b2a74450477d562231eafd684b3d781d92f700d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445973"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489582"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Öğretici: IoT Edge cihazları hiyerarşisi oluşturma (Önizleme)
 
@@ -53,7 +53,7 @@ IoT Edge cihazlarının bir hiyerarşisini oluşturmak için şunlar gerekir:
 * IoT Edge cihaz olarak yapılandırılacak iki Linux cihaz. Kullanılabilir cihazlar yoksa, [Azure sanal makinelerini](https://docs.microsoft.com/azure/virtual-machines/linux/)kullanabilirsiniz.
 * Geçerli aboneliği olan bir Azure hesabı. [Azure aboneliğiniz](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing) yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 * Azure 'da ücretsiz veya standart bir katman [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) .
-* Azure CLı v 2.3.1, Azure IoT uzantısı v 0.9.10 veya üzeri yüklü. Bu öğretici [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)kullanır. Azure Cloud Shell hakkında bilgi sahibi değilseniz, [Ayrıntılar için hızlı başlangıç ' a bakın](https://docs.microsoft.com/azure/iot-edge/quickstart-linux#use-azure-cloud-shell).
+* Azure CLı v 2.3.1, Azure IoT uzantısı v 0.10.6 veya üzeri yüklü. Bu öğretici [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)kullanır. Azure Cloud Shell hakkında bilgi sahibi değilseniz, [Ayrıntılar için hızlı başlangıç ' a bakın](https://docs.microsoft.com/azure/iot-edge/quickstart-linux#use-azure-cloud-shell).
 
 Ayrıca, bir fabrika ortamının benzetimini yapmak için Azure sanal makinelerini önceden yapılandırılmış cihazlar olarak dağıtan [endüstriyel IoT örneği için](https://aka.ms/iotedge-nested-sample)komut dosyalı Azure IoT Edge ' yi izleyerek bu senaryoyu deneyebilirsiniz.
 

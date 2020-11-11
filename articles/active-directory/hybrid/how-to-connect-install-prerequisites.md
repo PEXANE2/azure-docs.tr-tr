@@ -16,12 +16,12 @@ ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f337a66f50338692508ab2e5b4b7d489c735aa20
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: eccc0e71c73fb8bd2a5a50ebd0dda048d34dbea0
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420504"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488409"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect Önkoşulları
 Bu makalede Azure Active Directory (Azure AD) Connect için Önkoşullar ve donanım gereksinimleri açıklanmaktadır.
@@ -102,7 +102,7 @@ BT ortamınızın bu kritik bileşeninin güvenlik saldırısı yüzeyini azaltm
 ### <a name="connectivity"></a>Bağlantı
 * Azure AD Connect sunucusu hem intranet hem de internet için DNS çözümüne ihtiyaç duyuyor. DNS sunucusu, adları hem şirket içi Active Directory hem de Azure AD uç noktalarına çözümleyebilmelidir.
 * İntranetinizde güvenlik duvarları varsa ve Azure AD Connect sunucuları ile etki alanı denetleyicileriniz arasında bağlantı noktaları açmanız gerekiyorsa, daha fazla bilgi için bkz. [Azure AD Connect bağlantı noktaları](reference-connect-ports.md) .
-* Proxy 'niz veya güvenlik duvarınız hangi URL 'Lere erişilebileceğini sınırlarıyorsa, [Office 365 URL 'lerinde ve IP adresi aralıklarında](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) belgelenen URL 'lerin açılması gerekir.
+* Proxy 'niz veya güvenlik duvarınız hangi URL 'Lere erişilebileceğini sınırlarıyorsa, [Office 365 URL 'lerinde ve IP adresi aralıklarında](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) belgelenen URL 'lerin açılması gerekir. Ayrıca bkz. [güvenlik duvarınızdaki veya proxy sunucunuzdaki Azure Portal URL 'leri](../../azure-portal/azure-portal-safelist-urls.md?tabs=public-cloud).
   * Almanya veya Microsoft Azure Kamu Bulutu 'nda Microsoft bulutu kullanıyorsanız, URL 'Ler için [Azure AD Connect eşitleme hizmeti örneklerine göz](reference-connect-instances.md) atın.
 * Azure AD Connect (sürüm 1.1.614.0 ve sonrası), eşitleme altyapısı ile Azure AD arasındaki iletişimi şifrelemek için varsayılan olarak TLS 1,2 kullanır. TLS 1,2, temel işletim sisteminde kullanılabilir değilse, Azure AD Connect daha eski protokollere (TLS 1,1 ve TLS 1,0) artımlı olarak geri döner.
 * Sürüm 1.1.614.0 ' den önce, eşitleme altyapısı ve Azure AD arasındaki iletişimi şifrelemek için varsayılan olarak Azure AD Connect TLS 1,0 kullanır. TLS 1,2 ' ye geçmek için [Azure AD Connect IÇIN tls 1,2](#enable-tls-12-for-azure-ad-connect)' yi etkinleştirme ' deki adımları izleyin.

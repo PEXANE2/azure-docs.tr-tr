@@ -3,12 +3,12 @@ title: Giriş
 description: Azure 'da VMware tabanlı iş yüklerini dağıtmak ve yönetmek için Azure VMware çözümünün özelliklerini ve avantajlarını öğrenin.
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: b71427402e08167e5868128ed1e553c69bef425d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1875f535a5ca3e346362409c143da82cb8c07a12
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91574475"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488596"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Azure VMware Çözümü nedir?
 
@@ -44,7 +44,7 @@ Azure VMware çözümü özel bulutu ve VMware yazılımının düzenli yükselt
 
 ## <a name="monitoring-your-private-cloud"></a>Özel bulutunuzu izleme
 
-Azure VMware çözümü aboneliğinize dağıtıldıktan sonra, [Azure izleyici günlükleri](../azure-monitor/overview.md) otomatik olarak oluşturulur. Ayrıca, özel bulutunuzun içindeki sanal makinelerinizde bulunan günlükleri toplayabilirsiniz. [MMA aracısını](../azure-monitor/platform/log-analytics-agent.md#installation-options) Azure VMware çözümünüz özel bulutlarında çalışan Linux ve Windows sanal makinelerine indirip yükleyebilir, ayrıca [Azure tanılama uzantısını](../azure-monitor/platform/diagnostics-extension-overview.md)etkinleştirebilirsiniz. Hatta, normalde sanal makinelerinizde çalıştırdığınız sorguların aynısını de çalıştırabilirsiniz. Sorgu oluşturma hakkında daha fazla bilgi için bkz. [sorguları yazma](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries). Azure VMware çözümünün içindeki izleme desenleri, IaaS platformu içindeki Azure sanal makinelerine benzerdir. Ek bilgi ve nasıl yapılır için bkz. Azure [izleyici Ile Azure sanal makinelerini izleme](../azure-monitor/insights/monitor-vm-azure.md).
+Azure VMware çözümü aboneliğinize dağıtıldıktan sonra, [Azure izleyici günlükleri](../azure-monitor/overview.md) otomatik olarak oluşturulur. Ayrıca, özel bulutunuzun içindeki sanal makinelerinizde bulunan günlükleri toplayabilirsiniz. [MMA aracısını](../azure-monitor/platform/log-analytics-agent.md#installation-options) Azure VMware çözümünüz özel bulutlarında çalışan Linux ve Windows sanal makinelerine indirip yükleyebilir, ayrıca [Azure tanılama uzantısını](../azure-monitor/platform/diagnostics-extension-overview.md)etkinleştirebilirsiniz. Hatta, normalde sanal makinelerinizde çalıştırdığınız sorguların aynısını de çalıştırabilirsiniz. Sorgu oluşturma hakkında daha fazla bilgi için bkz. [Azure Izleyici günlüklerine genel bakış](../azure-monitor/platform/data-platform-logs.md). Azure VMware çözümünün içindeki izleme desenleri, IaaS platformu içindeki Azure sanal makinelerine benzerdir. Ek bilgi ve nasıl yapılır için bkz. Azure [izleyici Ile Azure sanal makinelerini izleme](../azure-monitor/insights/monitor-vm-azure.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

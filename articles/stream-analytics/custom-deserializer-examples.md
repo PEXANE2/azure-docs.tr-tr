@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a69ca707577ceddc56ae691d6e5e701458cae28
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 4adf0b8a7c12abed9689b9ac0cc9c5d5c8c3f980
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346610"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488443"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>.NET özel seri hale getiriciler kullanarak her biçimdeki girişi oku
 
@@ -227,7 +227,7 @@ Aşağıdaki JavaScript kodu, REST API kullanılırken .NET seri hale getirici s
 Bu özellik aşağıdaki bölgelerde kullanılabilir:
 
 * Orta Batı ABD
-* North Europe
+* Kuzey Avrupa
 * Doğu ABD
 * Batı ABD
 * Doğu ABD 2
@@ -249,9 +249,9 @@ Bu işlev desteklenmiyor. Bu özelliğe ihtiyaç duyuyorsanız, bu istek için [
 
 Seri hale getirinizi uyguladıktan sonra, diğer kişilere topluluk ile paylaşarak yardımcı olabilirsiniz. Kodunuzu [Azure Stream Analytics GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers)deposuna gönderebilirsiniz.
 
-### <a name="what-are-the-other-limitation-of-using-custom-deserializers-in-stream-analytics"></a>Stream Analytics özel seri hale getiriciler kullanmanın diğer sınırlamaları nelerdir?
+### <a name="what-are-the-other-limitations-of-using-custom-deserializers-in-stream-analytics"></a>Stream Analytics özel seri hale getiricilerin kullanılmasıyla ilgili diğer sınırlamalar nelerdir?
 
-Giriş, MapField türünü içeren şema içeren bir prototip biçimindeyse, özel bir seri hale getirici uygulayabilmeniz mümkün olmayacaktır. Bu tür ileri doğru şekilde desteklemek için çalışıyoruz.
+Giriş, türü içeren bir şema ile `MapField` prototipsiz biçimindeyse, özel bir seri hale getirici uygulayabilmeniz mümkün olmayacaktır. Ayrıca, özel seri hale getiriciler örnek verileri veya önizleme verilerini desteklemez. 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

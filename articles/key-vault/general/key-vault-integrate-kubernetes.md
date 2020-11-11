@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: 973d3ebe2879a2e98a72ce1f7571a1f00cd67a93
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b7d587f2be5141f7de82e9294b1fdb9fba4a6a41
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94356153"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488652"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Öğretici: Kubernetes 'te gizli dizi için Azure Key Vault sağlayıcıyı yapılandırma ve çalıştırma
 
@@ -52,6 +52,12 @@ Bu işlem bir dizi anahtar/değer çiftini döndürür:
 ![ContosoServicePrincipal için AppID ve parolayı gösteren ekran görüntüsü](../media/kubernetes-key-vault-1.png)
 
 **AppID** ve **parola** kimlik bilgilerini daha sonra kullanmak üzere kopyalayın.
+
+## <a name="flow-for-using-managed-identity"></a>Yönetilen kimlik kullanımı için akış
+
+Bu diyagramda, yönetilen kimlik için AKS – Key Vault tümleştirme akışı gösterilmektedir:
+
+![Yönetilen kimlik için AKS – Key Vault tümleştirme akışını gösteren diyagram](../media/aks-key-vault-integration-flow.png)
 
 ## <a name="deploy-an-azure-kubernetes-service-aks-cluster-by-using-the-azure-cli"></a>Azure CLı kullanarak bir Azure Kubernetes hizmeti (AKS) kümesi dağıtma
 

@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperfq1
-ms.date: 11/09/2020
+ms.date: 11/10/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: ab5a4717f32269f34a9351cb0ffa3796b89ccd6e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 07c0169dcbadc6dc8ae293d69e197c2cd1ec2275
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412757"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489803"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Güvenlik Duvarı nedir?
 
@@ -29,6 +29,17 @@ Aboneliklerle sanal ağlarda uygulama ve ağ bağlantısı ilkelerini merkezi ol
 ## <a name="features"></a>Özellikler
 
 Azure Güvenlik duvarı özellikleri hakkında bilgi edinmek için bkz. [Azure Güvenlik Duvarı Özellikleri](features.md).
+
+## <a name="pricing-and-sla"></a>Fiyatlandırma ve SLA
+
+Azure Güvenlik Duvarı fiyatlandırma bilgileri için bkz. [Azure Güvenlik Duvarı fiyatlandırması](https://azure.microsoft.com/pricing/details/azure-firewall/).
+
+Azure Güvenlik Duvarı SLA bilgileri için bkz. [Azure Güvenlik Duvarı SLA 'sı](https://azure.microsoft.com/support/legal/sla/azure-firewall/).
+
+## <a name="whats-new"></a>Yenilikler
+
+Azure Güvenlik Duvarı yenilikleri hakkında bilgi edinmek için bkz. [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Firewall).
+
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 

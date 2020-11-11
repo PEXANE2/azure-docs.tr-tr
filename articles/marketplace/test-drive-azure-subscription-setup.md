@@ -4,15 +4,15 @@ description: Müşteri katılımı ve Operations test sürücüleri için Dynami
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 11/09/2020
-ms.openlocfilehash: 8e77c21c6d776aef20fa3ca71ad12fdb424b07ab
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 6f74f3b1f5aad153903ba5d290a290973203a875
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94415343"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489395"
 ---
 # <a name="set-up-an-azure-marketplace-subscription-for-hosted-test-drives"></a>Barındırılan test sürücüleri için bir Azure Marketi aboneliği ayarlama
 
@@ -91,7 +91,7 @@ Bu makalede, test sürücüleri için bir Azure Market aboneliği ve **dynamics 
     4. Yeni bir kullanıcı ekleyin (formun uygulama KULLANıCıSı için olduğundan emin olun).
     5. **Birincil e-posta** ve **Kullanıcı adı** alanlarında aynı kullanıcı adını girin. **Uygulama kimliğinde** **Azure ApplicationId** 'yi ekleyin.
     6. Tüm **tam adı** verin.
-    7. **Kaydet** 'i seçin.
+    7. **Kaydet** ’i seçin.
     8. **Rolleri Yönet** ' i seçin.
     9. Okuma, yazma ve rol ayrıcalıklarını ( *Sistem Yöneticisi* gibi) içeren özel veya OOB güvenlik rolü atayın.
 

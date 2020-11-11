@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5423fc27ecc58bcd79b36a845e4b7569f342f712
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: eef4f6b8ee5821e54b5b7709eee7f8dad8749e63
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286696"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488545"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault günlüğü
 
@@ -93,12 +93,14 @@ Aşağıdaki tabloda, **OperationName** değerleri ve karşılık gelen REST API
 | **VaultDelete** |[Bir anahtar kasasını silme](/rest/api/keyvault/vaults) |
 | **VaultPatch** |[Bir anahtar kasasını güncelleştirme](/rest/api/keyvault/vaults) |
 | **VaultList** |[Bir kaynak grubundaki tüm anahtar kasalarını listeleme](/rest/api/keyvault/vaults) |
+| **Vaulttemizleme** |[Silinen kasayı temizle](/rest/api/keyvault/vaults/purgedeleted) |
+| **VaultRecover** |Silinen kasayı kurtar|
+| **VaultGetDeleted** |[Silinen kasayı al](/rest/api/keyvault/vaults/getdeleted) |
+| **VaultListDeleted** |[Silinen kasaları Listele](/rest/api/keyvault/vaults/listdeleted) |
 | **KeyCreate** |[Bir anahtar oluşturma](/rest/api/keyvault/createkey) |
 | **KeyGet** |[Bir anahtar hakkında bilgi edinme](/rest/api/keyvault/getkey) |
 | **KeyImport** |[Bir kasaya bir anahtar aktarma](/rest/api/keyvault/vaults) |
-| **KeyBackup** |[Anahtar yedekleme](/rest/api/keyvault/backupkey) |
 | **KeyDelete** |[Bir anahtarı silme](/rest/api/keyvault/deletekey) |
-| **KeyRestore** |[Bir anahtarı geri yükleme](/rest/api/keyvault/restorekey) |
 | **KeySign** |[Bir anahtar ile oturum açma](/rest/api/keyvault/sign) |
 | **KeyVerify** |[Bir anahtar ile doğrulama](/rest/api/keyvault/vaults) |
 | **KeyWrap** |[Bir anahtarı sarmalama](/rest/api/keyvault/wrapkey) |
@@ -106,14 +108,56 @@ Aşağıdaki tabloda, **OperationName** değerleri ve karşılık gelen REST API
 | **KeyEncrypt** |[Bir anahtar ile şifreleme](/rest/api/keyvault/encrypt) |
 | **KeyDecrypt** |[Bir anahtar ile şifre çözme](/rest/api/keyvault/decrypt) |
 | **KeyUpdate** |[Bir anahtarı güncelleştirme](/rest/api/keyvault/updatekey) |
-| **KeyList** |[Bir kasadaki anahtarları listeleme](/rest/api/keyvault/vaults) |
+| **KeyList** |[Bir kasadaki anahtarları listeleme](/rest/api/keyvault/getkeys) |
 | **KeyListVersions** |[Bir anahtarın sürümlerini listeleme](/rest/api/keyvault/getkeyversions) |
+| **KeyPurge** |[Bir anahtarı Temizleme](/rest/api/keyvault/purgedeletedkey) |
+| **KeyBackup** |[Anahtar yedekleme](/rest/api/keyvault/backupkey) |
+| **KeyRestore** |[Bir anahtarı geri yükleme](/rest/api/keyvault/restorekey) |
+| **Anahtar kurtarma** |[Bir anahtarı kurtarma](/rest/api/keyvault/recoverdeletedkey) |
+| **KeyGetDeleted** |[Silinen anahtarı al](/rest/api/keyvault/getdeletedkey) |
+| **KeyListDeleted** |[Bir kasada silinen anahtarları listeleme](/rest/api/keyvault/getdeletedkeys) |
+| **CertificateGet** |[Bir sertifika hakkında bilgi edinme](/rest/api/keyvault/getcertificate) |
+| **Sertifikaoluştur** |[Sertifika oluşturma](/rest/api/keyvault/createcertificate) |
+| **Certificateımport** |[Bir sertifikayı kasaya aktarma](/rest/api/keyvault/importcertificate) |
+| **CertificateUpdate** |[Sertifikayı güncelleştirme](/rest/api/keyvault/updatecertificate) |
+| **Sertifika listesi** |[Bir kasadaki sertifikaları listeleme](/rest/api/keyvault/getcertificates) |
+| **CertificateListVersions** |[Bir sertifikanın sürümlerini listeleyin](/rest/api/keyvault/getcertificateversions) |
+| **CertificateDelete** |[Sertifikayı silme](/rest/api/keyvault/deletecertificate) |
+| **Sertifikatemizleme** |[Bir sertifikayı Temizleme](/rest/api/keyvault/purgedeletedcertificate) |
+| **CertificateBackup** |[Sertifika yedekleme](/rest/api/keyvault/backupcertificate) |
+| **CertificateRestore** |[Sertifikayı geri yükleme](/rest/api/keyvault/restorecertificate) |
+| **Sertifika Aterecover** |[Sertifikayı kurtarma](/rest/api/keyvault/recoverdeletedcertificate) |
+| **CertificateGetDeleted** |[Silinen sertifikayı al](/rest/api/keyvault/getdeletedcertificate) |
+| **CertificateListDeleted** |[Bir kasada silinen sertifikaları listeleme](/rest/api/keyvault/getdeletedcertificates) |
+| **CertificatePolicyGet** |[Sertifika ilkesini al](/rest/api/keyvault/getcertificatepolicy) |
+| **CertificatePolicyUpdate** |[Sertifika ilkesini Güncelleştir](/rest/api/keyvault/updatecertificatepolicy) |
+| **CertificatePolicySet** |[Sertifika İlkesi Oluştur](/rest/api/keyvault/createcertificate) |
+| **CertificateContactsGet** |[Sertifika kişilerini al](/rest/api/keyvault/getcertificatecontacts) |
+| **CertificateContactsSet** |[Sertifika kişilerini ayarla](/rest/api/keyvault/setcertificatecontacts) |
+| **CertificateContactsDelete** |[Sertifika kişilerini silme](/rest/api/keyvault/deletecertificatecontacts) |
+| **Certificateıssuerget** |[Sertifika vereni al](/rest/api/keyvault/getcertificateissuer) |
+| **Certificateıssuerset** |[Sertifikayı vereni ayarla](/rest/api/keyvault/setcertificateissuer) |
+| **Certificateıssuerupdate** |[Sertifikayı vereni Güncelleştir](/rest/api/keyvault/updatecertificateissuer) |
+| **Certificateıssuerdelete** |[Sertifikayı vereni Sil](/rest/api/keyvault/deletecertificateissuer) |
+| **Certificateıssuerslistesi** |[Sertifika verenler listeleyin](/rest/api/keyvault/getcertificateissuers) |
+| **Sertifikakaydı** |Sertifika kaydetme |
+| **CertificateRenew** |Sertifikayı yenileme |
+| **CertificatePendingGet** |Bekleyen sertifikayı al |
+| **CertificatePendingMerge** |Sertifika birleştirmesi bekleniyor |
+| **CertificatePendingUpdate** |Sertifika güncelleştirmesi bekleniyor |
+| **CertificatePendingDelete** |Bekleyen sertifikayı Sil |
 | **SecretSet** |[Gizli anahtar oluşturma](/rest/api/keyvault/updatecertificate) |
 | **SecretGet** |[Gizli dizi alın](/rest/api/keyvault/getsecret) |
 | **SecretUpdate** |[Gizli anahtarı güncelleştirme](/rest/api/keyvault/updatesecret) |
 | **SecretDelete** |[Gizli anahtarı silme](/rest/api/keyvault/deletesecret) |
-| **SecretList** |[Bir kasadaki gizli anahtarları listeleme](/rest/api/keyvault/vaults) |
+| **SecretList** |[Bir kasadaki gizli anahtarları listeleme](/rest/api/keyvault/getsecrets) |
 | **SecretListVersions** |[Bir gizli anahtarın sürümlerini listeleme](/rest/api/keyvault/getsecretversions) |
+| **Secrettemizleme** |[Gizli dizi Temizleme](/rest/api/keyvault/purgedeletedsecret) |
+| **SecretBackup** |[Gizli dizi yedekleme](/rest/api/keyvault/backupsecret) |
+| **SecretRestore** |[Gizli anahtarı geri yükleme](/rest/api/keyvault/restoresecret) |
+| **SecretRecover** |[Gizli dizi kurtarma](/rest/api/keyvault/recoverdeletedsecret) |
+| **SecretGetDeleted** |[Silinen gizli dizi al](/rest/api/keyvault/getdeletedsecret) |
+| **SecretListDeleted** |[Bir kasada silinen gizli dizileri listeleyin](/rest/api/keyvault/getdeletedsecrets) |
 | **VaultAccessPolicyChangedEventGridNotification** | Kasa erişimi ilkesi değiştirilmiş olayı yayınlandı |
 | **Secretyaklaştığında Expiryeventgridnotification** |Süre sonu olayı yayımlanan gizli dizi |
 | **Secretexpio Ventgridnotification** |Gizli zaman aşımına uğradı olayı yayımlandı |

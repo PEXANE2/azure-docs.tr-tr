@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 4d03e651006661a2fa82901d64f8fb6ac2236210
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: 0dc55f4d77fde48590b1fbf206ed988e8fb9ec0e
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098782"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490279"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB sağlanan üretilen iş hızına giriş
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -73,7 +73,7 @@ Azure Cosmos DB hesabınız zaten >= 25 kapsayıcılarıyla paylaşılan bir ür
 
 İş yükleriniz bir veritabanındaki tüm koleksiyonları silmeyi ve yeniden oluşturmayı içeriyorsa, boş veritabanını bırakıp koleksiyon oluşturmadan önce yeni bir veritabanı oluşturmanız önerilir. Aşağıdaki görüntüde bir fiziksel bölümün, bir veritabanı içindeki farklı kapsayıcılara ait bir veya daha fazla mantıksal bölümü nasıl barındıragösterdiği gösterilmektedir:
 
-:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="Bir kapsayıcının bir veya daha fazla mantıksal bölümünü barındıran fiziksel bölüm" border="false":::
+:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="Farklı kapsayıcılara ait bir veya daha fazla mantıksal bölümü barındıran fiziksel bölüm " border="false":::
 
 ## <a name="set-throughput-on-a-database-and-a-container"></a>Bir veritabanında ve kapsayıcıda üretilen işi ayarlama
 
@@ -82,7 +82,7 @@ Azure Cosmos DB hesabınız zaten >= 25 kapsayıcılarıyla paylaşılan bir ür
 * *"K"* ru 'nin sağlanan standart (el ile) üretilen iş hızına sahip *Z* adlı bir Azure Cosmos veritabanı oluşturabilirsiniz. 
 * Sonra, veritabanı içinde *A* , *B* , *C* , *D* ve *E* adlı beş kapsayıcı oluşturun. B kapsayıcısını oluştururken, **Bu kapsayıcı seçeneği için adanmış üretilen iş üretimini sağlamayı** etkinleştirdiğinizden emin olun ve bu kapsayıcıda *"P"* ru sağlanan aktarım hızını açık olarak yapılandırın. Yalnızca veritabanı ve kapsayıcı oluştururken paylaşılan ve ayrılmış aktarım hızını yapılandırabilirsiniz. 
 
-   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Bir kapsayıcının bir veya daha fazla mantıksal bölümünü barındıran fiziksel bölüm":::
+   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Aktarım hızını kapsayıcı düzeyinde ayarlama":::
 
 * *"K"* Rus verimlilik, *A* , *C* , *D* ve *E* dört kapsayıcı genelinde paylaşılır. *Bir* , *C* , *D* veya *E* için kullanılabilir aktarım hızı miktarı farklılık gösterir. Her bir kapsayıcının verimlilik için SLA 'lar yoktur.
 * *B* adlı kapsayıcı, *"P"* ru aktarım hızını her zaman almak için garanti edilir. SLA 'Lar tarafından desteklenir.
@@ -109,7 +109,7 @@ Bu yöntemlerin yanıtı, kapsayıcı veya veritabanı için [sağlanan en düş
 Gerçek minimum RU/sn, hesap yapılandırmanıza göre farklılık gösterebilir. Ancak genellikle en yüksek değer:
 
 * 400 RU/sn 
-* GB cinsinden geçerli depolama alanı * 10 RU/sn
+* GB * 10 RU/sn cinsinden geçerli depolama alanı (Kapsayıcınız veya veritabanınız 1 TB 'den fazla veri içermiyorsa, bkz. [yüksek depolama/düşük aktarım hızı programı](#high-storage-low-throughput-program))
 * Veritabanı veya kapsayıcı/100 üzerinde sağlanan en yüksek RU/sn
 * Kapsayıcı sayısı * 100 RU/sn (yalnızca paylaşılan üretilen iş veritabanı)
 

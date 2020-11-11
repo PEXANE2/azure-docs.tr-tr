@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: b-juche
-ms.openlocfilehash: d0a16dc639fb3206b480c1091a66686955cbb11d
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 9740506da2c03996db756175551867ed43575a7c
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932354"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488188"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için SMB birimi oluşturma
 
@@ -45,7 +45,7 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
     |    AD Web Hizmetleri    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    Icmpv4             |    Yok       |    Yankı yanıtı    |
+    |    Icmpv4             |    YOK       |    Yankı yanıtı    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -119,19 +119,19 @@ Azure NetApp Files için ek AEKLEYEN konular geçerlidir:
 
 Bir Active Directory bağlantısı oluşturduğunuzda, AEKLEMELERI için aşağıdaki özellikleri aklınızda bulabilirsiniz:
 
-* **BIRINCIL DNS**, **Ikincil DNS**ve **ad DNS etki alanı ADıNA** ilişkin bilgileri, aeklemeleri menüsünde bulabilirsiniz.  
+* **BIRINCIL DNS** , **Ikincil DNS** ve **ad DNS etki alanı ADıNA** ilişkin bilgileri, aeklemeleri menüsünde bulabilirsiniz.  
 DNS sunucuları için, Active Directory bağlantısını yapılandırmak için iki IP adresi kullanılacaktır. 
 * **Kuruluş birimi yolu** `OU=AADDC Computers` .  
-Bu ayar, **NetApp hesabı**altındaki **Active Directory bağlantılarında** yapılandırılır:
+Bu ayar, **NetApp hesabı** altındaki **Active Directory bağlantılarında** yapılandırılır:
 
   ![Kuruluş birimi yolu](../media/azure-netapp-files/azure-netapp-files-org-unit-path.png)
 
-* **Kullanıcı adı** kimlik bilgileri, Azure AD grubunun **Azure AD DC yöneticileri**üyesi olan herhangi bir kullanıcı olabilir.
+* **Kullanıcı adı** kimlik bilgileri, Azure AD grubunun **Azure AD DC yöneticileri** üyesi olan herhangi bir kullanıcı olabilir.
 
 
 ## <a name="create-an-active-directory-connection"></a>Active Directory bağlantısı oluşturma
 
-1. NetApp hesabınızdan **Active Directory bağlantılar**' a ve ardından **Birleştir**' e tıklayın.  
+1. NetApp hesabınızdan **Active Directory bağlantılar** ' a ve ardından **Birleştir** ' e tıklayın.  
 
     ![Active Directory bağlantıları](../media/azure-netapp-files/azure-netapp-files-active-directory-connections.png)
 
@@ -146,7 +146,7 @@ Bu ayar, **NetApp hesabı**altındaki **Active Directory bağlantılarında** ya
     * **AD DNS etki alanı adı**  
         Bu, birleştirmek istediğiniz Active Directory Domain Services etki alanı adıdır.
     * **AD site adı**  
-        Bu, etki alanı denetleyicisi bulmanın sınırlandırılacak site adıdır.
+        Bu, etki alanı denetleyicisi bulmanın sınırlandırılacak site adıdır. Bu, Active Directory Siteleri ve Hizmetleri içindeki site adıyla eşleşmelidir.
     * **SMB sunucusu (bilgisayar hesabı) ön eki**  
         Bu, Azure NetApp Files yeni hesapların oluşturulması için kullanacağı Active Directory makine hesabının adlandırma ön ekidir.
 
@@ -234,7 +234,7 @@ Bu ayar, **NetApp hesabı**altındaki **Active Directory bağlantılarında** ya
 
         ![Active Directory kimlik bilgileri](../media/azure-netapp-files/active-directory-credentials.png)
 
-3. **Katıl**’a tıklayın.  
+3. **Katıl** ’a tıklayın.  
 
     Oluşturduğunuz Active Directory bağlantı görüntülenir.
 
@@ -246,7 +246,7 @@ Bu ayar, **NetApp hesabı**altındaki **Active Directory bağlantılarında** ya
 
     ![Birimlere git](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
 
-2. Birim oluşturmak için **+ Birim ekle**'ye tıklayın.  
+2. Birim oluşturmak için **+ Birim ekle** 'ye tıklayın.  
     Birim oluştur penceresi görüntülenir.
 
 3. Birim Oluştur penceresinde **Oluştur** ' a tıklayın ve temel bilgiler sekmesinde aşağıdaki alanlar için bilgi sağlayın:   
@@ -294,7 +294,7 @@ Bu ayar, **NetApp hesabı**altındaki **Active Directory bağlantılarında** ya
 4. **Protokol** ' e tıklayın ve aşağıdaki bilgileri doldurun:  
     * Birimin protokol türü olarak **SMB** ' yi seçin. 
     * Açılır listeden **Active Directory** bağlantınızı seçin.
-    * **Paylaşım adı**' nda paylaşılan birimin adını belirtin.
+    * **Paylaşım adı** ' nda paylaşılan birimin adını belirtin.
 
     ![SMB protokolünü belirtin](../media/azure-netapp-files/azure-netapp-files-protocol-smb.png)
 

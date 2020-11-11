@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 75d22a5021c7c8ae3a12f25644f2875e0ccf8cdd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: c811a2ea5c06250068e7c0276e4b79e9108d920d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098765"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490364"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB sunucusuz (Önizleme)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -50,9 +50,6 @@ Kullanım örneğine en uygun teklifi seçme hakkında daha fazla bilgi için bk
 ## <a name="using-serverless-resources"></a>Sunucusuz kaynakları kullanma
 
 Sunucusuz yeni bir Azure Cosmos hesap türüdür. Bu, yeni bir hesap oluştururken **sağlanan aktarım hızı** ve **sunucusuz** arasında seçim yapmanız gerektiği anlamına gelir. Sunucusuz kullanmaya başlamak için yeni bir sunucusuz hesap oluşturmanız gerekir. Önizleme sürümü sırasında, yeni bir sunucusuz hesap oluşturmak için desteklenen tek yol [Azure Portal kullanmaktır](create-cosmosdb-resources-portal.md). Var olan hesapların sunucusuz moda geçirilmesi Şu anda desteklenmiyor.
-
-> [!NOTE]
-> Sunucusuz Şu anda yalnızca Azure Cosmos DB Çekirdek (SQL) API 'sinde destekleniyor.
 
 Sunucusuz hesapta oluşturulan herhangi bir kapsayıcı sunucusuz bir kapsayıcıdır. Sunucusuz kapsayıcılar, sağlanan aktarım hızı modunda oluşturulan kapsayıcılarla aynı özellikleri sunar, böylece verilerinizi tam olarak aynı şekilde okuyup sorgular. Ancak sunucusuz hesaplar ve kapsayıcılar de belirli özelliklere sahiptir:
 

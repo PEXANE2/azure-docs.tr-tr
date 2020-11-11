@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9456d663eb1600bf73b1fe253560c2d9f29205ae
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 45dac4425f4d2f563cbc942f23d81583728139f6
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92377117"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489463"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory Microsoft 365 Gruplar üzerinde bir adlandırma ilkesi zorlama
 
@@ -85,26 +85,26 @@ Seçili Yöneticiler, tüm grup iş yükleri ve uç noktalarında bu ilkelerden 
 ## <a name="configure-naming-policy-in-azure-portal"></a>Azure portal adlandırma ilkesini yapılandırma
 
 1. [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) bir grup yönetici hesabıyla oturum açın.
-1. **Gruplar**' ı seçin ve adlandırma ilkesi sayfasını açmak için **adlandırma ilkesi** ' ni seçin.
+1. **Gruplar** ' ı seçin ve adlandırma ilkesi sayfasını açmak için **adlandırma ilkesi** ' ni seçin.
 
     ![Yönetim merkezinde adlandırma ilkesi sayfasını açın](./media/groups-naming-policy/policy.png)
 
 ### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>Ön ek adlandırma ilkesini görüntüleme veya düzenleme
 
-1. **Adlandırma ilkesi** sayfasında **grup adlandırma ilkesi**' ni seçin.
+1. **Adlandırma ilkesi** sayfasında **grup adlandırma ilkesi** ' ni seçin.
 1. Adlandırma ilkesinin bir parçası olarak zorlamak istediğiniz öznitelikleri veya dizeleri seçerek geçerli ön eki veya sonek adlandırma ilkelerini tek tek görüntüleyebilir veya düzenleyebilirsiniz.
-1. Listeden bir ön eki veya soneki kaldırmak için ön eki veya soneki seçin, sonra **Sil**' i seçin. Aynı anda birden çok öğe silinebilir.
-1. Yeni ilkeye ilişkin değişikliklerinizi kaydederek **Kaydet**' i seçerek devreye geçin.
+1. Listeden bir ön eki veya soneki kaldırmak için ön eki veya soneki seçin, sonra **Sil** ' i seçin. Aynı anda birden çok öğe silinebilir.
+1. Yeni ilkeye ilişkin değişikliklerinizi kaydederek **Kaydet** ' i seçerek devreye geçin.
 
 ### <a name="edit-custom-blocked-words"></a>Özel engellenen sözcükleri Düzenle
 
-1. **Adlandırma ilkesi** sayfasında, **Engellenen sözcükler**' i seçin.
+1. **Adlandırma ilkesi** sayfasında, **Engellenen sözcükler** ' i seçin.
 
     ![adlandırma ilkesi için engellenen sözcükler listesini düzenle ve karşıya yükle](./media/groups-naming-policy/blockedwords.png)
 
-1. **İndir**' i seçerek özel engellenen sözcüklerin geçerli listesini görüntüleyin veya düzenleyin.
+1. **İndir** ' i seçerek özel engellenen sözcüklerin geçerli listesini görüntüleyin veya düzenleyin.
 1. Dosya simgesini seçerek özel engellenen sözcüklerin yeni listesini karşıya yükleyin.
-1. Yeni ilkeye ilişkin değişikliklerinizi kaydederek **Kaydet**' i seçerek devreye geçin.
+1. Yeni ilkeye ilişkin değişikliklerinizi kaydederek **Kaydet** ' i seçerek devreye geçin.
 
 ## <a name="install-powershell-cmdlets"></a>PowerShell cmdlet'lerini yükleme
 
@@ -123,7 +123,7 @@ PowerShell komutlarını çalıştırmadan önce Windows PowerShell Graph için 
    Install-Module AzureADPreview
    ```
 
-   Güvenilmeyen bir depoya erişmek isteyip istemediğiniz sorulursa **Y**girin. Yeni modülün yüklenmesi birkaç dakika sürebilir.
+   Güvenilmeyen bir depoya erişmek isteyip istemediğiniz sorulursa **Y** girin. Yeni modülün yüklenmesi birkaç dakika sürebilir.
 
 ## <a name="configure-naming-policy-in-powershell"></a>PowerShell 'de adlandırma ilkesini yapılandırma
 
@@ -136,7 +136,7 @@ PowerShell komutlarını çalıştırmadan önce Windows PowerShell Graph için 
    Connect-AzureAD
    ```
 
-   Açılan **Hesabınızda oturum açın** ekranında hizmetinizle bağlantı kurmak için yönetici hesabınızın adını ve parolasını girin **Oturum aç**'ı seçin.
+   Açılan **Hesabınızda oturum açın** ekranında hizmetinizle bağlantı kurmak için yönetici hesabınızın adını ve parolasını girin **Oturum aç** 'ı seçin.
 
 1. Bu kuruluşun grup ayarlarını oluşturmak için [Grup ayarlarını yapılandırmak üzere Azure Active Directory cmdlet 'lerinde](../enterprise-users/groups-settings-cmdlets.md) adımları izleyin.
 
@@ -206,7 +206,7 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 
 ### <a name="remove-the-naming-policy-using-azure-portal"></a>Azure portal kullanarak adlandırma ilkesini kaldırma
 
-1. **Adlandırma ilkesi** sayfasında **ilkeyi Sil**' i seçin.
+1. **Adlandırma ilkesi** sayfasında **ilkeyi Sil** ' i seçin.
 1. Silme işlemini doğruladıktan sonra, tüm önek-sonek adlandırma ilkesi ve özel engellenen sözcükler dahil olmak üzere, adlandırma ilkesi kaldırılır.
 
 ### <a name="remove-the-naming-policy-using-azure-ad-powershell"></a>Azure AD PowerShell kullanarak adlandırma ilkesini kaldırma
@@ -249,7 +249,6 @@ Mobil uygulamayı gruplar | Gruplar mobil uygulamasında oluşturulan gruplar, a
 Planner | Planner, adlandırma ilkesiyle uyumludur. Planner, plan adını girerken adlandırma ilkesi önizlemesini gösterir. Kullanıcı özel engellenen bir sözcüğe girdiğinde, plan oluşturulurken bir hata iletisi gösterilir.
 Müşteri Etkileşimi için Dynamics 365 | Müşteri katılımı için Dynamics 365, adlandırma ilkesiyle uyumludur. Dynamics 365, Kullanıcı bir grup adı veya Grup e-posta diğer adı yazdığında, adlandırma ilkesi tarafından zorlanan adı gösterir. Kullanıcı özel engellenen bir sözcüğe girdiğinde, kullanıcının kaldırabilmesi için engellenen sözcükle bir hata iletisi gösterilir.
 Okul veri eşitleme (SDS) | SDS ile oluşturulan gruplar, adlandırma ilkesiyle uyumlu, ancak adlandırma ilkesi otomatik olarak uygulanmaz. SDS yöneticileri, grupların oluşturulması gereken sınıf adlarına ön ekleri ve sonekleri eklemek ve ardından SDS 'ye yüklenmesi gerekir. Grup oluşturma veya düzenleme işlemi, aksi takdirde başarısız olur.
-Outlook Müşteri Yöneticisi (OCM) | Outlook müşteri yöneticisi, Outlook müşteri yöneticisi 'nde oluşturulan gruba otomatik olarak uygulanan adlandırma ilkesiyle uyumludur. Özel engellenen bir sözcük algılanırsa, OCM 'de Grup oluşturma engellenir ve kullanıcının OCM uygulamasını kullanımı engellenir.
 Sınıf uygulaması | Sınıf uygulamasında oluşturulan gruplar, adlandırma ilkesiyle uyumlu değildir, ancak adlandırma ilkesi otomatik olarak uygulanmaz ve bir sınıf grubu adı girerken, adlandırma ilkesi önizlemesi kullanıcılara gösterilmez. Kullanıcılar, ön ekler ve sonekler ile zorlanan derslik grubu adını girmelidir. Aksi takdirde, sınıf grubu oluşturma veya düzenleme işlemi hatalarla başarısız olur.
 Power BI | Power BI çalışma alanları, adlandırma ilkesiyle uyumludur.    
 Yammer | Yammer 'da Azure Active Directory hesabıyla oturum açmış bir Kullanıcı bir grup oluşturur veya bir grup adını düzenlediğinde, Grup adı adlandırma ilkesiyle uyumlu olur. Bu, hem Microsoft 365 bağlı gruplar hem de diğer tüm Yammer grupları için geçerlidir.<br>Adlandırma ilkesi gerçekleşmeden önce bir Microsoft 365 bağlantılı Grup oluşturulduysa, Grup adı otomatik olarak adlandırma ilkelerini takip etmez. Kullanıcı, Grup adını düzenlediklerinde, ön eki ve soneki eklemesi istenir.

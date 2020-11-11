@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: guybo
-ms.openlocfilehash: 0236644930af699180cf26b4baee7bb591d8bbaa
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b27b7344d84ce1361d8294fa4f3490c50afbb4c3
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978943"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489667"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure 'da desteklenen Linux dağıtımları
 
@@ -70,11 +70,11 @@ Microsoft, CoreOS kullanıcıları için iki (2) geçiş kanalına sahiptir.
 - Kinvolk tarafından yataylı ("Kinvolk by Yataykapsayıcı Linux" girdisine bakın.)
 - [Fedora çekirdek işletim sistemi](https://docs.fedoraproject.org/en-US/fedora-coreos/provisioning-azure/) (müşteriler kendi görüntüsünü karşıya yüklemelidir. [Geçiş belgeleri](https://docs.fedoraproject.org/en-US/fedora-coreos/migrate-cl/)aşağıda verilmiştir.
 
-### <a name="credativ"></a>Credavtiv
+### <a name="credativ"></a>credativ
 
-[https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure](https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure)
+[https://www.credativ.de/en/portfolio/support/open-source-support-center/](https://www.credativ.de/en/portfolio/support/open-source-support-center/)
 
-Credadtiv, ücretsiz yazılım kullanarak profesyonel çözümlerin geliştirilmesi ve uygulanması konusunda uzmanlaşmış bağımsız bir danışmanlık ve hizmetler şirketidir. Önde gelen açık kaynaklı uzmanlar olarak, Crefetiv, desteğini kullanan pek çok BT departmanının kullanıldığı Uluslararası tanıma sahiptir. Credadtiv, Microsoft ile birlikte, şu anda Demallik 8 (Jesan) ve 7 ' den önce (Wheezy) ilgili Dekamu görüntülerini hazırlıyor. Her iki görüntü de Azure 'da çalışmak üzere özel olarak tasarlanmıştır ve platform aracılığıyla kolayca yönetilebilir. Credavtiv Ayrıca, Azure için açık kaynak destek merkezleri aracılığıyla uzun süreli bakım ve güncelleştirme görüntülerinin güncelleştirilmesini de destekleyecektir.
+credadtiv, ücretsiz yazılım kullanarak profesyonel çözümlerin geliştirilmesi ve uygulanması konusunda uzmanlaşmış bağımsız bir danışmanlık ve hizmetler şirketidir. Önde gelen açık kaynaklı uzmanlar olarak, crefetiv, desteğini kullanan pek çok BT departmanının kullanıldığı Uluslararası tanıma sahiptir. Microsoft ile birlikte, credavtiv, görüntü oluşturmaya yönelik görüntüleri hazırlıyor. Görüntüler, Azure 'da çalışmak üzere özel olarak tasarlanmıştır ve platform aracılığıyla kolayca yönetilebilir. credavtiv Ayrıca, Azure için açık kaynak destek merkezleri aracılığıyla uzun süreli bakım ve güncelleştirme görüntülerinin güncelleştirilmesini de destekleyecektir.
 
 ### <a name="kinvolk"></a>Kinvolk
 [https://www.kinvolk.io/flatcar-container-linux/](https://www.kinvolk.io/flatcar-container-linux/)

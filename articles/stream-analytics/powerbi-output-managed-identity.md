@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/10/2020
-ms.openlocfilehash: 29f02f80aa5bff1304dc593d68954e15fe6e66bb
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 469610d7195835a4b68e4d887c5be57a8926ba37
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346443"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489514"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Azure Stream Analytics işinizin kimliğini doğrulamak için yönetilen kimliği kullanın Power BI
 
@@ -209,6 +209,10 @@ POST https://api.powerbi.com/v1.0/myorg/groups/{groupId}/users
     "principalType": "App"
 }
 ```
+
+## <a name="remove-managed-identity"></a>Yönetilen kimliği kaldır
+
+Stream Analytics işi için oluşturulan yönetilen kimlik yalnızca iş silindiğinde silinir. İşi silmeden yönetilen kimliği silmenin bir yolu yoktur. Artık yönetilen kimliği kullanmak istemiyorsanız, çıkışın kimlik doğrulama yöntemini değiştirebilirsiniz. Yönetilen kimlik, iş silinene kadar mevcut olmaya devam eder ve yönetilen kimlik kimlik doğrulamasını yeniden kullanmaya karar verirseniz kullanılacaktır.
 
 ## <a name="limitations"></a>Sınırlamalar
 Bu özelliğin sınırlamaları aşağıda verilmiştir:

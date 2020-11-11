@@ -4,15 +4,15 @@ description: Microsoft AppSource ve Azure Marketi 'nden gelen müşteri adaylar�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: 3cdbe1f3428418f082d53febca950a6a443fe5ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4dabee6a725fd02b7be6dd12c8a032e3d816835
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86120387"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489378"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>Ticari Market müşteri adaylarını yönetmek için bir HTTPS uç noktası kullanın
 
@@ -25,17 +25,17 @@ Bu makalede, Iş Ortağı Merkezi 'nde müşteri adaylarını yapılandırmak i�
 
 ## <a name="create-a-flow-by-using-power-automate"></a>Power otomatikleştir kullanarak akış oluşturma
 
-1. [Power otomatikleştirir](https://flow.microsoft.com/) Web sayfasını açın. **Oturum aç**'ı seçin. Henüz bir hesabınız yoksa ücretsiz **kaydolun** ' ı seçerek ücretsiz bir Power otomatikleştir hesabı oluşturun.
+1. [Power otomatikleştirir](https://flow.microsoft.com/) Web sayfasını açın. **Oturum aç** 'ı seçin. Henüz bir hesabınız yoksa ücretsiz **kaydolun** ' ı seçerek ücretsiz bir Power otomatikleştir hesabı oluşturun.
 
 1. Oturum açın ve menüden **Akışlarım** ' ı seçin.
 
     ![Akışlarım oturum aç](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
 
-1. **+ Yeni**altında, **boş 'tan + anında**' yı seçin.
+1. **+ Yeni** altında, **boş 'tan + anında** ' yı seçin.
 
     ![Akışlarım + otomatik--boş](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-create-fromblank.png)
 
-1. Akışınızı adlandırın ve ardından **bu akışın nasıl tetikleneceğini seçin**altında **bir http isteği alındığında**öğesini seçin.
+1. Akışınızı adlandırın ve ardından **bu akışın nasıl tetikleneceğini seçin** altında **bir http isteği alındığında** öğesini seçin.
 
     ![Otomatik akış penceresi atlama düğmesi oluştur](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
 
@@ -43,7 +43,7 @@ Bu makalede, Iş Ortağı Merkezi 'nde müşteri adaylarını yapılandırmak i�
 
     ![Flow adımını Genişlet](./media/commercial-marketplace-lead-management-instructions-https/expand-flow-step.png)
 
-1. **Istek GÖVDESI JSON şemasını**yapılandırmak için aşağıdaki yöntemlerden birini kullanın:
+1. **Istek GÖVDESI JSON şemasını** yapılandırmak için aşağıdaki yöntemlerden birini kullanın:
 
     - JSON şemasını **Istek GÖVDESI JSON şeması** metin kutusuna kopyalayın.
     - **Şema oluşturmak için örnek yük kullanma** öğesini seçin. **Örnek JSON yükü girin veya yapıştırın** metın kutusunda JSON örneğine yapıştırın. Şemayı oluşturmak için **bitti** ' yi seçin.
@@ -132,7 +132,7 @@ Bu makalede, Iş Ortağı Merkezi 'nde müşteri adaylarını yapılandırmak i�
 
 ### <a name="connect-to-a-crm-system"></a>Bir CRM sistemine bağlanma
 
-1. **+ Yeni adım**’ı seçin.
+1. **+ Yeni adım** ’ı seçin.
 1. **Arama bağlayıcılar ve Eylemler '** in bulunduğu yeri arayarak istediğiniz CRM sistemini seçin. Yeni bir kayıt oluşturma eylemi ile **Eylemler** sekmesinde bunu seçin. Aşağıdaki ekran, örnek olarak **Yeni bir kayıt (Dynamics 365) oluşturur** .
 
     ![Yeni kayıt oluşturma](./media/commercial-marketplace-lead-management-instructions-https/create-new-record.png)
@@ -151,8 +151,8 @@ Bu makalede, Iş Ortağı Merkezi 'nde müşteri adaylarını yapılandırmak i�
 
 ### <a name="set-up-email-notification"></a>E-posta bildirimini ayarlama
 
-1. JSON şemasını tamamladığınıza göre **+ yeni adım**' ı seçin.
-1. **Eylem seçin**altında **Eylemler**' i seçin.
+1. JSON şemasını tamamladığınıza göre **+ yeni adım** ' ı seçin.
+1. **Eylem seçin** altında **Eylemler** ' i seçin.
 1. **Eylemler** sekmesinde, **e-posta gönder (Office 365 Outlook)** seçeneğini belirleyin.
 
     >[!NOTE]
@@ -162,15 +162,15 @@ Bu makalede, Iş Ortağı Merkezi 'nde müşteri adaylarını yapılandırmak i�
 
 1. **E-posta gönder** penceresinde, aşağıdaki gerekli alanları yapılandırın:
 
-   - **Kime**: müşteri adaylarının gönderileceği en az bir geçerli e-posta adresi girin.
-   - **Konu**: Power otomatikleştir, aşağıdaki ekranda gösterilen **leadsource** gibi dinamik içerik ekleme seçeneği sunar. Bir alan adı girerek başlayın. Ardından açılır penceredeki dinamik içerik seçme listesini seçin. 
+   - **Kime** : müşteri adaylarının gönderileceği en az bir geçerli e-posta adresi girin.
+   - **Konu** : Power otomatikleştir, aşağıdaki ekranda gösterilen **leadsource** gibi dinamik içerik ekleme seçeneği sunar. Bir alan adı girerek başlayın. Ardından açılır penceredeki dinamik içerik seçme listesini seçin. 
 
         >[!NOTE] 
         > Alan adları eklediğinizde, her bir adı iki nokta üst üste (:)) takip edebilirsiniz. sonra yeni bir satır oluşturmak için **ENTER** ' u seçin. Alan adlarınızı ekledikten sonra, dinamik seçim listesinden ilgili her parametreyi ekleyebilirsiniz.
 
         ![Dinamik içerik kullanarak e-posta eylemi ekleme](./media/commercial-marketplace-lead-management-instructions-https/add-email-using-dynamic-content.png)
 
-   - **Gövde**: dinamik içerik seçim listesinden, e-postanın gövdesinde istediğiniz bilgileri ekleyin. Örneğin, soyadı, ad, e-posta ve şirket kullanın. E-posta bildirimini ayarlamayı tamamladığınızda, aşağıdaki ekranda örneğe benzer şekilde görünür.
+   - **Gövde** : dinamik içerik seçim listesinden, e-postanın gövdesinde istediğiniz bilgileri ekleyin. Örneğin, soyadı, ad, e-posta ve şirket kullanın. E-posta bildirimini ayarlamayı tamamladığınızda, aşağıdaki ekranda örneğe benzer şekilde görünür.
 
 
        ![E-posta bildirimi örneği](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)
@@ -179,11 +179,11 @@ Bu makalede, Iş Ortağı Merkezi 'nde müşteri adaylarını yapılandırmak i�
 
    ![HTTP POST URL 'SI](./media/commercial-marketplace-lead-management-instructions-https/http-post-url.png)
 
-### <a name="testing"></a>Test Etme
+### <a name="testing"></a>Sınama
 
 Yapılandırmanızı [Postman](https://app.getpostman.com/app/download/win64)ile test edebilirsiniz. Çevrimiçi Postman indirmesi Windows için kullanılabilir. 
 
-1. Postman 'ı başlatın ve **New**  >  Test aracınızı ayarlamak için yeni**istek** ' ı seçin. 
+1. Postman 'ı başlatın ve **New**  >  Test aracınızı ayarlamak için yeni **istek** ' ı seçin. 
 
    ![Test aracınızı ayarlama isteği](./media/commercial-marketplace-lead-management-instructions-https/postman-request.png)
 
@@ -195,18 +195,18 @@ Yapılandırmanızı [Postman](https://app.getpostman.com/app/download/win64)ile
 
    ![Akışımı test etme](./media/commercial-marketplace-lead-management-instructions-https/test-my-flow.png)
 
-1. Power otomatikleştirmek için oluşturduğunuz akıştan gelen HTTP POST URL 'sini, **istek URL 'Si girin**ifadesini yapıştırın.
+1. Power otomatikleştirmek için oluşturduğunuz akıştan gelen HTTP POST URL 'sini, **istek URL 'Si girin** ifadesini yapıştırın.
 
    ![HTTP POST URL 'sini yapıştırın](./media/commercial-marketplace-lead-management-instructions-https/paste-http-post-url.png)
 
-1. [Power otomatikleştirmeye](https://flow.microsoft.com/)geri dönün. Power otomatikleştir menü çubuğundan **Akışlarıma** giderek müşteri adaylarını göndermek için oluşturduğunuz akışı bulun. Daha fazla seçenek görmek için akış adının yanındaki üç noktayı seçin ve **Düzenle**' yi seçin.
+1. [Power otomatikleştirmeye](https://flow.microsoft.com/)geri dönün. Power otomatikleştir menü çubuğundan **Akışlarıma** giderek müşteri adaylarını göndermek için oluşturduğunuz akışı bulun. Daha fazla seçenek görmek için akış adının yanındaki üç noktayı seçin ve **Düzenle** ' yi seçin.
 
 
-1. Sağ üst köşedeki **Test** ' i seçin, **tetikleme eylemini gerçekleştir**' i seçin ve ardından **Test**' i seçin. Ekranın en üstünde testin başlatıldığını belirten bir gösterge görürsünüz.
+1. Sağ üst köşedeki **Test** ' i seçin, **tetikleme eylemini gerçekleştir** ' i seçin ve ardından **Test** ' i seçin. Ekranın en üstünde testin başlatıldığını belirten bir gösterge görürsünüz.
 
    ![Tetikleyici eylemi seçeneğini gerçekleştirmem](./media/commercial-marketplace-lead-management-instructions-https/test-flow-trigger-action.png)
 
-1. Postman uygulamanıza geri dönün ve **Gönder**' i seçin.
+1. Postman uygulamanıza geri dönün ve **Gönder** ' i seçin.
 
    ![Gönder düğmesi](./media/commercial-marketplace-lead-management-instructions-https/postman-send.png)
 
@@ -229,16 +229,16 @@ Yayımlama portalında teklifiniz için lider yönetimi bilgilerini yapılandır
 
 1. Teklifinizi seçin ve **teklif kurulumu** sekmesine gidin.
 
-1. **Müşteri müşteri adayları** bölümünde **Bağlan**' ı seçin.
+1. **Müşteri müşteri adayları** bölümünde **Bağlan** ' ı seçin.
 
     :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-https/customer-leads.png" alt-text="Müşteri liderleri":::
 
-1. **Bağlantı ayrıntıları** açılır penceresinde, **müşteri adayı hedefi**için **https uç noktası** ' nı seçin. Önceki adımları izleyerek oluşturduğunuz akıştan HTTP POST URL 'sini **https uç noktası URL 'si** alanına yapıştırın.
+1. **Bağlantı ayrıntıları** açılır penceresinde, **müşteri adayı hedefi** için **https uç noktası** ' nı seçin. Önceki adımları izleyerek oluşturduğunuz akıştan HTTP POST URL 'sini **https uç noktası URL 'si** alanına yapıştırın.
     ![Bağlantı ayrıntıları Iletişim e-postası](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
 
-1. **İletişim e-postası**altında, şirketinizdeki kişilerin yeni bir müşteri adayı alındığında e-posta bildirimleri alması gereken e-posta adreslerini girin. Birden çok e-postayı noktalı virgülle ayırarak sağlayabilirsiniz.
+1. **İletişim e-postası** altında, şirketinizdeki kişilerin yeni bir müşteri adayı alındığında e-posta bildirimleri alması gereken e-posta adreslerini girin. Birden çok e-postayı noktalı virgülle ayırarak sağlayabilirsiniz.
 
-1. **Tamam**’ı seçin.
+1. **Tamam** ’ı seçin.
 
 Bir müşteri adayı hedefine başarıyla bağlandığınızdan emin olmak için **Doğrula** düğmesini seçin. Başarılı olursa, müşteri adayı hedefinde bir test liderine sahip olacaksınız.
 

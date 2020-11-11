@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 10/07/2019
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 67cccc1eaa889d0180da9b5ae0fca9b75366edd9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 79b58b76954cf15289e85dbf763b7a399897635d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101162"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489888"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Azure Tablo Depolama ve Azure Cosmos DB Tablo API’sini C++ ile kullanma
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -95,7 +95,7 @@ const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=ht
 Uygulamanızı yerel Windows tabanlı bilgisayarınızda test etmek için [Azure SDK](https://azure.microsoft.com/downloads/)ile birlikte yüklenen Azure Storage öykünücüsü ' nü kullanabilirsiniz. Depolama öykünücüsü, yerel geliştirme makinenizde bulunan Azure blob, kuyruk ve tablo hizmetlerinin benzetimini yapan bir yardımcı programdır. Aşağıdaki örnek, bağlantı dizesini yerel depolama öykünücüsünüzün tutacak statik bir alanın nasıl bildirilemeyeceğini göstermektedir:  
 
 ```cpp
-// Define the connection string with Azure storage emulator.
+// Define the connection string with Azure Storage Emulator.
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 

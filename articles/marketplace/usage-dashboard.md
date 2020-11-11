@@ -1,20 +1,20 @@
 ---
-title: Microsoft ticari Market Analytics, Azure Marketi ve Microsoft AppSource kullanım panosu
-description: Tüm VM 'ler için kullanım ve ölçümlenen faturalandırma ölçümlerinin nasıl erişebileceğini öğrenin. Ticari Market altında Iş Ortağı Merkezi ' ndeki kullanım panosuna gidin.
+title: Ticari Market Analytics 'te kullanım panosu | Azure Marketi
+description: Azure Marketi 'Nde yayınlanan tekliflere yönelik tüm kullanım ve ölçümlü faturalandırma ölçümlerine nasıl erişebileceğinizi öğrenin.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/09/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 9a1b6197241b93edf778295f196ccc92c45d85d6
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 1ae30d97e64dc17086e199c3fcc8188f54e6ab69
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94415317"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490126"
 ---
-# <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Microsoft ticari Market Analytics 'teki kullanım panosu
+# <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Ticari market analizinde Kullanım panosu
 
 Bu makalede, Iş Ortağı Merkezi 'ndeki kullanım panosu hakkında bilgi sağlanır. Bu Pano tüm sanal makineleri (VM) üç ayrı sekmede normalleştirilmiş kullanım, ham kullanım ve ölçümlü faturalandırma ölçümleri sunar: VM normalleştirilmiş kullanımı, VM ham kullanımı ve tarifeli faturalandırma kullanımı.
 

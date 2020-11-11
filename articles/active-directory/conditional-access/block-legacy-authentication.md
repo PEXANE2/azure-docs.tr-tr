@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 10/16/2020
+ms.date: 11/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1485c2abd24022dbfa6476e3c5a530413b9cb4f2
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: e85f36f1b970a4848ee132fe37bd1b0f4f4fdc82
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233806"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489531"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Nasıl yapılır: koşullu erişimle Azure AD 'de eski kimlik doğrulamasını engelleme   
 
@@ -116,6 +116,10 @@ Kuruluşunuz tüm kuruluş genelinde eski kimlik doğrulamasını engellemeye uy
 İlkenin etkili olması 24 saate kadar sürebilir.
 
 **Diğer istemciler** koşulu için kullanılabilir tüm izin denetimlerini seçebilirsiniz; Ancak, son kullanıcı deneyimi her zaman aynı engellenen erişimdir.
+
+### <a name="sharepoint-online-and-b2b-guest-users"></a>SharePoint Online ve B2B Konuk kullanıcıları
+
+SharePoint Online 'a eski kimlik doğrulama aracılığıyla B2B Kullanıcı erişimini engellemek için, kuruluşların PowerShell komutunu kullanarak SharePoint 'te eski kimlik doğrulamasını devre dışı bırakmasına `Set-SPOTenant` ve `-LegacyAuthProtocolsEnabled` parametresini olarak ayarına izin vermelidir `$false` . Bu parametreyi ayarlama hakkında daha fazla bilgi, [set-SPOTenant](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps) Ile Ilgili SharePoint PowerShell başvuru belgesinde bulunabilir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

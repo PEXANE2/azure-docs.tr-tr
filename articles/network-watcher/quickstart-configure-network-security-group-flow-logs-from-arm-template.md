@@ -1,30 +1,30 @@
 ---
-title: 'Hızlı başlangıç: Azure Resource Manager şablonu kullanarak NSG akış günlüklerini yapılandırma'
-description: Azure Resource Manager şablonu (ARM şablonu) ve Azure PowerShell kullanarak NSG akış günlüklerinin nasıl etkinleştirileceğini öğrenin.
+title: 'Hızlı başlangıç: Azure Resource Manager şablonu kullanarak ağ güvenlik grubu akış günlüklerini yapılandırma (ARM şablonu)'
+description: Ağ güvenlik grubu (NSG) akış günlüklerinin bir Azure Resource Manager şablonu (ARM şablonu) ve Azure PowerShell kullanarak programlı bir şekilde nasıl etkinleştirileceğini öğrenin.
 services: network-watcher
 author: damendo
-Customer intent: I need to enable the NSG flow logs using Azure Resource Manager Template
+Customer intent: I need to enable the network security group flow logs by using an Azure Resource Manager template.
 ms.service: network-watcher
 ms.topic: quickstart
 ms.date: 07/22/2020
 ms.author: damendo
 ms.custom: subject-armqs
-ms.openlocfilehash: 96f30c05527754cbce3b7593c8d62fb56844d41e
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 563f111a656376899fcd0201b42f87bfea445865
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042753"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488052"
 ---
-# <a name="quickstart-configure-nsg-flow-logs-using-an-arm-template"></a>Hızlı başlangıç: bir ARM şablonu kullanarak NSG akış günlüklerini yapılandırma
+# <a name="quickstart-configure-network-security-group-flow-logs-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak ağ güvenlik grubu akış günlüklerini yapılandırma
 
-Bu hızlı başlangıçta, bir [Azure Resource Manager](../azure-resource-manager/management/overview.md) şablonu (ARM şablonu) ve Azure PowerShell kullanarak [NSG akış günlüklerini](network-watcher-nsg-flow-logging-overview.md) etkinleştirirsiniz.
+Bu hızlı başlangıçta [ağ güvenlik grubu (NSG) akış günlüklerini](network-watcher-nsg-flow-logging-overview.md) bir [Azure Resource Manager](../azure-resource-manager/management/overview.md) şablonu (ARM şablonu) ve Azure PowerShell kullanarak nasıl etkinleştireceğinizi öğreneceksiniz.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-NSG akış günlüğü nesnesinin özelliklerine genel bir bakış sunarak ve ardından birkaç örnek şablon tarafından başlayacağız. Ardından, şablonu yerel bir PowerShell örneği kullanarak dağıtın.
+NSG akış günlüğü nesnesinin özelliklerine ilişkin bir genel bakış ile başlayacağız. Örnek Şablonlar sunuyoruz. Ardından, şablonu dağıtmak için yerel bir Azure PowerShell örneği kullanıyoruz.
 
-Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure’a dağıtma** düğmesini seçin. Şablon Azure portalda açılır.
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure’a dağıtma** düğmesini seçin. Şablon Azure portal açılır.
 
 [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-networkwatcher-flowLogs-create%2Fazuredeploy.json)
 
@@ -34,18 +34,18 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-networkwatcher-flowlogs-create) alınmıştır.
+Bu hızlı başlangıçta kullandığımız şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-networkwatcher-flowlogs-create).
 
 :::code language="json" source="~/quickstart-templates/101-networkwatcher-flowlogs-create/azuredeploy.json":::
 
-Şablonda birden çok kaynak tanımlanmıştır:
+Bu kaynaklar şablonda tanımlanmıştır:
 
 - [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
 - [Microsoft. resources/dağıtımlar](/azure/templates/microsoft.resources/deployments)
 
 ## <a name="nsg-flow-logs-object"></a>NSG akış günlükleri nesnesi
 
-NSG akış günlüğü nesnesi tüm parametreleri aşağıda gösterilmiştir. Özelliklere yönelik kapsamlı bir genel bakış için bkz. [Microsoft. Network networkWatchers/flowLogs](/azure/templates/microsoft.network/networkwatchers/flowlogs).
+Aşağıdaki kod bir NSG akış günlükleri nesnesini ve parametrelerini gösterir. Bir kaynak oluşturmak için `Microsoft.Network/networkWatchers/flowLogs` , bu kodu şablonunuzun kaynaklar bölümüne ekleyin:
 
 ```json
 {
@@ -76,20 +76,20 @@ NSG akış günlüğü nesnesi tüm parametreleri aşağıda gösterilmiştir. �
 }
 ```
 
-Bir kaynak oluşturmak için `Microsoft.Network/networkWatchers/flowLogs` , YUKARıDAKI JSON 'ı şablonunuzun kaynaklar bölümüne ekleyin.
+NSG akış günlükleri nesne özelliklerine yönelik kapsamlı bir genel bakış için bkz. [Microsoft. Network networkWatchers/flowLogs](/azure/templates/microsoft.network/networkwatchers/flowlogs).
 
-## <a name="creating-your-template"></a>Şablonunuz oluşturma
+## <a name="create-your-template"></a>Şablonunuzu oluşturma
 
-ARM şablonlarını ilk kez kullanıyorsanız, aşağıdaki bağlantıları kullanarak bunlarla ilgili daha fazla bilgi edinebilirsiniz.
+ARM şablonlarını ilk kez kullanıyorsanız ARM şablonları hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
 - [ARM şablonları ve Azure PowerShell kaynak dağıtma](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template)
 - [Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
-Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablonlarından](https://azure.microsoft.com/resources/templates/101-networkwatcher-flowlogs-create) alınmıştır.
+Aşağıdaki örnek, tamamlanmış bir şablondur. Ayrıca, şablonun en basit sürümüdür. Örnek, NSG akış günlüklerini ayarlamak için geçirilen minimum parametreleri içerir. Daha fazla örnek için, [bir Azure Resource Manager şablonundan NSG akış günlüklerini yapılandırma](network-watcher-nsg-flow-logging-azure-resource-manager.md)genel bakış makalesine bakın.
 
-Tüm şablon örneği aşağıda, NSG akış günlüklerini ayarlamak için en az parametrelerin geçirildiği en basit sürümdür. Daha fazla örnek için bu [nasıl yapılır kılavuzuna](network-watcher-nsg-flow-logging-azure-resource-manager.md)bakın.
+### <a name="example"></a>Örnek
 
-**Örnek** : aşağıdaki şablon, hedef NSG 'de NSG akış günlüklerini etkinleştirirler ve bunları belirli bir depolama hesabında depolar.
+Aşağıdaki şablon bir NSG için akış günlüklerini etkinleştirerek günlükleri belirli bir depolama hesabında depolar:
 
 ```json
 {
@@ -116,16 +116,19 @@ Tüm şablon örneği aşağıda, NSG akış günlüklerini ayarlamak için en a
 ```
 
 > [!NOTE]
-> - Kaynak adı, _üst Resource_Child_ biçimindeki bir kaynağa sahiptir. Burada, üst kaynak bölgesel ağ Izleyicisi örneğidir (Biçim: NetworkWatcher_RegionName. Örnek: NetworkWatcher_centraluseuap)
+> - Kaynak adı _ParentResource_ChildResource_ biçimini kullanır. Örneğimizde, üst kaynak bölgesel Azure ağ Izleyicisi örneğidir:
+>    - **Biçim** : NetworkWatcher_RegionName
+>    - **Örnek** : NetworkWatcher_centraluseuap
 > - `targetResourceId` hedef NSG 'nin kaynak KIMLIĞIDIR.
 > - `storageId` , hedef depolama hesabının kaynak KIMLIĞIDIR.
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-Bu öğreticide, akış günlüğünü etkinleştirmek için mevcut bir kaynak grubunuz ve bir NSG olduğunu varsaymaktadır.
-Yukarıdaki örnek şablonlardan herhangi birini olarak yerel olarak kaydedebilirsiniz `azuredeploy.json` . Özellik değerlerini aboneliğinizdeki geçerli kaynaklara işaret eden bir şekilde güncelleştirin.
+Bu öğreticide, akış günlüğünü etkinleştirebildiğiniz mevcut bir kaynak grubunuz ve NSG olduğunu varsaymaktadır.
 
-Şablonu dağıtmak için PowerShell 'de aşağıdaki komutu çalıştırın.
+Bu makalede görüntülenen örnek şablonlardan herhangi birini, *azuredeploy.js* için yerel olarak kaydedebilirsiniz. Özellik değerlerini aboneliğinizdeki geçerli kaynaklara işaret eden şekilde güncelleştirin.
+
+Şablonu dağıtmak için Azure PowerShell ' de aşağıdaki komutu çalıştırın:
 
 ```azurepowershell-interactive
 $context = Get-AzSubscription -SubscriptionId <subscription Id>
@@ -135,29 +138,34 @@ New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatc
 ```
 
 > [!NOTE]
-> Yukarıdaki komutlar, NSG 'yi içeren kaynak grubuna değil NetworkWatcherRG kaynak grubuna bir kaynak dağıtmakta
+> Bu komutlar, NSG 'yi içeren kaynak grubuna değil, örnek NetworkWatcherRG kaynak grubuna bir kaynak dağıtır.
 
 ## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 
-Dağıtımınızın başarılı olup olmadığını denetlemek için birkaç yol vardır. PowerShell konsolunuzun olarak gösterilmesi `ProvisioningState` gerekir `Succeeded` . Ayrıca, değişikliklerinizi onaylamak için [NSG akış günlükleri portalı sayfasını](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) ziyaret edebilirsiniz. Dağıtım ile ilgili sorunlar varsa bkz. [Azure Resource Manager ile yaygın Azure dağıtım hatalarıyla Ilgili sorunları giderme](../azure-resource-manager/templates/common-deployment-errors.md).
+Dağıtımınızın başarılı olup olmadığını görmek için iki seçeneğiniz vardır:
+
+- PowerShell konsolunuz `ProvisioningState` olarak gösterilir `Succeeded` .
+- Değişikliklerinizi onaylamak için [NSG akış günlükleri portalı sayfasına](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) gidin. 
+
+Dağıtım ile ilgili sorunlar varsa bkz. [Azure Resource Manager ile yaygın Azure dağıtım hatalarıyla Ilgili sorunları giderme](../azure-resource-manager/templates/common-deployment-errors.md).
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Azure, dağıtım modu aracılığıyla kaynak silmeyi mümkün `Complete` . Bir akış günlükleri kaynağını silmek için, `Complete` silmek istediğiniz kaynağı dahil etmeden bir dağıtımı modda belirtin. [Dağıtım modundan tamamen](../azure-resource-manager/templates/deployment-modes.md#complete-mode)ilgili daha fazla bilgi edinin.
+Azure kaynaklarını, tüm dağıtım modunu kullanarak silebilirsiniz. Bir akış günlükleri kaynağını silmek için, silmek istediğiniz kaynağı dahil etmeden bir dağıtımı tamamlanmış modda belirtin. [Dağıtım modundan tamamen](../azure-resource-manager/templates/deployment-modes.md#complete-mode)ilgili daha fazla bilgi edinin.
 
-Alternatif olarak, aşağıdaki adımlar uyarınca Azure portal NSG akış günlüğünü devre dışı bırakabilirsiniz:
+Ayrıca Azure portal bir NSG akış günlüğünü devre dışı bırakabilirsiniz:
 
-1. Azure portalda oturum açın
-1. Portalın sol üst köşesinde **Tüm hizmetler** ’i seçin. **Filtre** kutusuna _Ağ İzleyicisi_ yazın. **Ağ İzleyicisi** , arama sonuçlarında görüntülendiğinde seçin.
+1. Azure portalında oturum açın.
+1. **Tüm Hizmetler** ’i seçin. **Filtre** kutusuna **Ağ İzleyicisi** ' ni girin. Arama sonuçlarında **Ağ İzleyicisi** ' ni seçin.
 1. **Günlükler** altında **NSG akış günlükleri** ' ni seçin.
-1. NSG 'ler listesinden, akış günlüklerini devre dışı bırakmak istediğiniz NSG 'yi seçin.
-1. **Akış günlükleri ayarları** altında akışlar günlük durumunu **kapalı** olarak ayarlayın.
-1. Aşağı kaydırın ve **Kaydet** ' i seçin.
+1. NSG 'ler listesinde, akış günlüklerini devre dışı bırakmak istediğiniz NSG 'yi seçin.
+1. **Akış günlükleri ayarları** altında **kapalı** ' yı seçin.
+1. **Kaydet** ’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta NSG akış günlüklerini etkinleştirdiniz. Şimdi, kullanarak NSG akış verilerinizi görselleştirmeyi öğrenmeniz gerekir:
+Bu hızlı başlangıçta, bir ARM şablonu kullanarak NSG akış günlüklerini etkinleştirmeyi öğrendiniz. Ardından, aşağıdaki seçeneklerden birini kullanarak NSG akış verilerinizi görselleştirmeyi öğrenin:
 
 - [Microsoft Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
-- [Açık kaynak araçları](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+- [Açık kaynaklı Araçlar](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 - [Azure Trafik Analizi](traffic-analytics.md)

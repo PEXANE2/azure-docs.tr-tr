@@ -4,12 +4,12 @@ description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtla
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 9f0eb1ec7c979e6f35c21f49cad9ab9975a221fc
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 33250b0ba9209f7806346668dac0ef308101e7c2
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357302"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94487802"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
@@ -194,6 +194,12 @@ Hayır. İnternet 'ten özel bulutlara doğrudan gelen ağ trafiğine izin veril
 
 Evet. İnternet 'e yönelik VM erişimini kısıtlayan bir güvenlik duvarı oluşturmak için NSX-T Yöneticisi ' ni kullanmanız gerekir.
 
+
+#### <a name="can-azure-vmware-solution-use-azure-virtual-wan-hosted-expressroute-gateways"></a>Azure VMware çözümü, Azure sanal WAN barındırılan ExpressRoute ağ geçitlerini kullanabilir mi?
+Evet.
+
+#### <a name="can-transit-connectivity-be-established-between-on-premises-and-azure-vmware-solution-through-azure-virtual-wan-over-expressroute-global-reach"></a>ExpressRoute Global Reach üzerinden Azure sanal WAN aracılığıyla şirket içi ve Azure VMware çözümü arasında geçiş bağlantısı kurulabilir mi?
+Azure sanal WAN, iki bağlı ExpressRoute bağlantı hattı ve sanal WAN ExpressRoute ağ geçidi arasında geçişli yönlendirme sağlamaz. ExpressRoute Global Reach kullanmak şirket içi ve Azure VMware çözümü arasında bağlantıya izin verir, ancak sanal WAN hub 'ı yerine Microsoft 'un küresel ağı üzerinden gider.
 
 
 ## <a name="accounts-and-privileges"></a>Hesaplar ve ayrıcalıklar

@@ -4,15 +4,15 @@ description: Microsoft AppSource ve Azure Marketi için müşteri adaylarını y
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: c3667de6a9bf85109a94201aa8e144869e4b033f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73caf848ab5c6f8e973469066ce4612a075a52f5
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86117124"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489327"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Salesforce için lider yönetimini yapılandırma
 
@@ -31,7 +31,7 @@ Bu makalede, Salesforce sisteminizin Microsoft AppSource ve Azure Market 'teki t
 
        ![Salesforce kurulumu](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-1.png)
 
-    1. **Kurulum** sayfasında **platform araçları**  >  **özellik ayarları**  >  **Pazarlama**  >  **Web-müşteri adayı**' na gidin.
+    1. **Kurulum** sayfasında **platform araçları**  >  **özellik ayarları**  >  **Pazarlama**  >  **Web-müşteri adayı** ' na gidin.
 
         ![Salesforce Web 'den sağlama](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
 
@@ -41,18 +41,18 @@ Bu makalede, Salesforce sisteminizin Microsoft AppSource ve Azure Market 'teki t
 
        ![Salesforce klasik kurulum](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-setup.png)
 
-    1. **Kurulum** sayfasında, **derleme**  >  **Özelleştir**  >  **müşteri adaylarını**  >  **Web 'den müşteri adayı**' nı seçin.
+    1. **Kurulum** sayfasında, **derleme**  >  **Özelleştir**  >  **müşteri adaylarını**  >  **Web 'den müşteri adayı** ' nı seçin.
 
         ![Salesforce klasik Web 'den sağlama](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
 
    Kalan adımlar, her iki Salesforce deneyimi için de aynıdır.
 
 1. Web 'den **müşteri adayı kurulumu** sayfasında, **Web 'Den müşteri adayı oluştur form** düğmesini seçin.
-1. **Web 'Den müşteri adayı kurulumunda**, Web 'Den yapılacak **Müşteri formu oluştur**' u seçin.
+1. **Web 'Den müşteri adayı kurulumunda** , Web 'Den yapılacak **Müşteri formu oluştur** ' u seçin.
 
     ![Salesforce Web 'den müşteri adayına kurulum](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-3.png)
 
-1. **Web 'Den müşteri adayı oluşturma formunda**, ayarın temizlenmiş olduğundan emin olun `Include reCAPTCHA in HTML` ve **Oluştur**' u seçin.
+1. **Web 'Den müşteri adayı oluşturma formunda** , ayarın temizlenmiş olduğundan emin olun `Include reCAPTCHA in HTML` ve **Oluştur** ' u seçin.
 
     ![Salesforce bir Web 'den müşteri adayı form bölmesi oluşturma](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-4.png)
 
@@ -60,7 +60,7 @@ Bu makalede, Salesforce sisteminizin Microsoft AppSource ve Azure Market 'teki t
 
     ![Salesforce HTML "OID" değerini gösteren bir Web-müşteri adayı formu oluştur](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-5.png)
 
-1. **Tamamlandı**' ı seçin.
+1. **Tamamlandı** ' ı seçin.
 
 ## <a name="configure-your-offer-to-send-leads-to-salesforce"></a>Teklifinizi Salesforce 'a göndermek için teklifinizi yapılandırma
 
@@ -70,7 +70,7 @@ Yayımlama portalında teklifiniz için lider yönetimi bilgilerini yapılandır
 
 1. Teklifinizi seçin ve **teklif kurulumu** sekmesine gidin.
 
-1. **Müşteri müşteri adayları** bölümünde **Bağlan**' ı seçin.
+1. **Müşteri müşteri adayları** bölümünde **Bağlan** ' ı seçin.
 
     :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-salesforce/customer-leads.png" alt-text="Müşteri liderleri":::
 
@@ -78,11 +78,11 @@ Yayımlama portalında teklifiniz için lider yönetimi bilgilerini yapılandır
 
     ![Bağlantı ayrıntıları açılır penceresi kişi e-posta kutusunu doğrula](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-connection-details.png)
 
-1. **İletişim e-postası**altında, şirketinizdeki kişilerin yeni bir müşteri adayı alındığında e-posta bildirimleri alması gereken e-posta adreslerini girin. Birden çok e-postayı noktalı virgülle ayırarak sağlayabilirsiniz.
+1. **İletişim e-postası** altında, şirketinizdeki kişilerin yeni bir müşteri adayı alındığında e-posta bildirimleri alması gereken e-posta adreslerini girin. Birden çok e-postayı noktalı virgülle ayırarak sağlayabilirsiniz.
 
-1. **Tamam**’ı seçin.
+1. **Tamam** ’ı seçin.
 
-Bir müşteri adayı hedefine başarıyla bağlandığınızdan emin olmak için **Doğrula**' yı seçin. Başarılı olursa, müşteri adayı hedefinde bir test liderine sahip olacaksınız.
+Bir müşteri adayı hedefine başarıyla bağlandığınızdan emin olmak için **Doğrula** ' yı seçin. Başarılı olursa, müşteri adayı hedefinde bir test liderine sahip olacaksınız.
 
 >[!NOTE]
 >Teklif için müşteri adaylarını almadan önce teklifin geri kalanını yapılandırmayı ve bunu yayımlamanız gerekir.

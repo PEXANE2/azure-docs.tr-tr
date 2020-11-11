@@ -4,15 +4,15 @@ description: Microsoft AppSource ve Azure Market teklifinizden müşteri adaylar
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 10/01/2020
-ms.openlocfilehash: 5627d6afab22defebeebd3f04695ef95390f1163
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d5f2248d94796d5e3ee76301642a95abddebfe4
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653324"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489344"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>Ticari Market teklifinizin müşteri adayları
 
@@ -50,19 +50,19 @@ Bir müşteri adayının oluşturulduğu yer şunlardır:
 
 Müşteri alma işlemi sırasında aldığınız her bir müşteri, belirli alanlardaki verilere sahiptir. İçin ilk aranacak alan, şu `LeadSource` biçimi izleyen alandır: **Kaynak-eylem**  |  **teklifi**.
 
-**Kaynaklar**: Bu alanın değeri, müşteri adayını oluşturan Market 'e göre doldurulur. Olası değerler şunlardır `"AzureMarketplace"` , `"AzurePortal"` ve `"AppSource (SPZA)"` .
+**Kaynaklar** : Bu alanın değeri, müşteri adayını oluşturan Market 'e göre doldurulur. Olası değerler şunlardır `"AzureMarketplace"` , `"AzurePortal"` ve `"AppSource (SPZA)"` .
 
-**Eylemler**: Bu alanın değeri, müşterinin müşteri adayını oluşturan Market 'te aldığı eyleme göre doldurulur.
+**Eylemler** : Bu alanın değeri, müşterinin müşteri adayını oluşturan Market 'te aldığı eyleme göre doldurulur.
 
 Olası değerler şunlardır:
 
-- **"INS"**: *yükleme*anlamına gelir. Bu eylem, bir müşteri ürününüzü edindiğinde Azure Market veya AppSource 'ta yer alır.
-- **"Plt"**: *iş ortağının LED deneme sürümünü*temsil eder. Bu eylem, bir müşteri **benimle Iletişim kurma** seçeneğini seçtiğinde appsource 'ta bulunur.
-- **"DNC"**: *başvurmayın*için temsil eder. Bu eylem, uygulama sayfanızda çapraz listeye alınan bir iş ortağı ile iletişim kurulması istendiğinde AppSource 'ta yer alır. Bu müşterinin uygulamanızda çapraz listelenme bildirimini paylaşıyoruz, ancak bunlara başvurulmaları gerekmez.
-- **"Oluştur"**: Bu eylem yalnızca Azure Portal içindedir ve bir müşteri, teklifinizi kendi hesaplarına satın aldığında oluşturulur.
-- **"Starttestdrive"**: Bu eylem yalnızca **Test sürücü** seçeneği içindir ve bir müşteri test sürücüsünü başlattığında oluşturulur.
+- **"INS"** : *yükleme* anlamına gelir. Bu eylem, bir müşteri ürününüzü edindiğinde Azure Market veya AppSource 'ta yer alır.
+- **"Plt"** : *iş ortağının LED deneme sürümünü* temsil eder. Bu eylem, bir müşteri **benimle Iletişim kurma** seçeneğini seçtiğinde appsource 'ta bulunur.
+- **"DNC"** : *başvurmayın* için temsil eder. Bu eylem, uygulama sayfanızda çapraz listeye alınan bir iş ortağı ile iletişim kurulması istendiğinde AppSource 'ta yer alır. Bu müşterinin uygulamanızda çapraz listelenme bildirimini paylaşıyoruz, ancak bunlara başvurulmaları gerekmez.
+- **"Oluştur"** : Bu eylem yalnızca Azure Portal içindedir ve bir müşteri, teklifinizi kendi hesaplarına satın aldığında oluşturulur.
+- **"Starttestdrive"** : Bu eylem yalnızca **Test sürücü** seçeneği içindir ve bir müşteri test sürücüsünü başlattığında oluşturulur.
 
-**Teklifler**: ticari Market 'te birden fazla teklifiniz olabilir. Bu alanın değeri, müşteri adayını oluşturan teklifine göre doldurulur. Yayımcı KIMLIĞI ve teklif KIMLIĞI bu alana gönderilir ve teklifi Market 'e yayımladığınızda verdiğiniz değerlerdir.
+**Teklifler** : ticari Market 'te birden fazla teklifiniz olabilir. Bu alanın değeri, müşteri adayını oluşturan teklifine göre doldurulur. Yayımcı KIMLIĞI ve teklif KIMLIĞI bu alana gönderilir ve teklifi Market 'e yayımladığınızda verdiğiniz değerlerdir.
 
 Aşağıdaki örnekler, değerleri beklenen biçimde göstermektedir `publisherid.offerid` : 
 
@@ -89,10 +89,10 @@ Müşterinin bilgileri birden çok alan aracılığıyla gönderilir. Aşağıda
 
 Müşteri adaylarını satış döngüsüyle yönlendirmeyi sağlayacak bazı öneriler aşağıda verilmiştir:
 
-- **İşlem**: kilometre taşları, analiz ve açık ekip sahipliğiyle açık bir satış işlemi tanımlayın.
-- **Nitelik**: bir müşteri adayının tam nitelikli olup olmadığını gösteren önkoşulları tanımlayın. Satış veya pazarlama temsilcilerinin, müşteri adaylarını tam satış süreci boyunca almadan önce dikkatli bir şekilde nitelediğinizden emin olun.
-- **İzleme**: 24 saat içinde izlemeyi unutmayın. Müşteri, bir test sürücüsü dağıtduktan sonra müşteri adayını tercih ettiğiniz şekilde hemen alacaksınız. hala normal olduklarından içinde e-posta gönderin. Ürününüzün sorunu için iyi bir çözüm olup olmadığını daha iyi anlamak için bir telefon araması zamanlaması isteyin. Tipik işlemin çok sayıda izleme çağrısı gerektirmesini bekler.
-- **Nurra**: daha yüksek bir kâr marjına yol açmak için müşteri adaylarına ulaşın. İade et, ancak onları Not etmeyin. Kapatmadan önce e-posta fırsatlarından en az birkaç kez bakmasını öneririz; ilk denemeden sonra vermeyin. Bu müşterilerin ürününüze doğrudan sahip olduğunu ve ücretsiz denemede zaman harcadığını unutmayın; Harika adaylardır.
+- **İşlem** : kilometre taşları, analiz ve açık ekip sahipliğiyle açık bir satış işlemi tanımlayın.
+- **Nitelik** : bir müşteri adayının tam nitelikli olup olmadığını gösteren önkoşulları tanımlayın. Satış veya pazarlama temsilcilerinin, müşteri adaylarını tam satış süreci boyunca almadan önce dikkatli bir şekilde nitelediğinizden emin olun.
+- **İzleme** : 24 saat içinde izlemeyi unutmayın. Müşteri, bir test sürücüsü dağıtduktan sonra müşteri adayını tercih ettiğiniz şekilde hemen alacaksınız. hala normal olduklarından içinde e-posta gönderin. Ürününüzün sorunu için iyi bir çözüm olup olmadığını daha iyi anlamak için bir telefon araması zamanlaması isteyin. Tipik işlemin çok sayıda izleme çağrısı gerektirmesini bekler.
+- **Nurra** : daha yüksek bir kâr marjına yol açmak için müşteri adaylarına ulaşın. İade et, ancak onları Not etmeyin. Kapatmadan önce e-posta fırsatlarından en az birkaç kez bakmasını öneririz; ilk denemeden sonra vermeyin. Bu müşterilerin ürününüze doğrudan sahip olduğunu ve ücretsiz denemede zaman harcadığını unutmayın; Harika adaylardır.
 
 Teknik kurulum hazır olduktan sonra, bu müşteri adaylarını geçerli satış ve pazarlama stratejinize ve işletimsel süreçlerinize ekleyin. Genel Satış sürecinizi daha iyi anlamak ve yüksek kaliteli müşteri adayları sağlamak için sizinle birlikte çalışmak ve başarılı olmak için yeterli veri sunmak istiyoruz. Size bu müşterileri başarılı hale getirmeye yardımcı olmak için size ek veriler gönderdiğimiz müşteri adaylarını iyileştirebilecek ve geliştirebilmemiz için geri bildirimde bulunun. Satış ekibinizin ticari Market liderlerine göre daha başarılı olmasını sağlamak için [geri bildirim](mailto:AzureMarketOnboard@microsoft.com) ve öneriler sağlamayı düşünüyorsanız bize bilgi verin.
 

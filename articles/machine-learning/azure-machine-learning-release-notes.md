@@ -9,18 +9,62 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 5054451b181223d3d6deece6812358cfd08b1e30
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 0afd1f2f8dd06c3c224d64304eec2e18489a7e81
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445090"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489140"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
 Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) sayfasına gidin.
 
 Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen sorunlar listesine](resource-known-issues.md) bakın.
+
+
+## <a name="2020-11-09"></a>2020-11-09
+
+### <a name="azure-machine-learning-sdk-for-python-v1180"></a>Python v 1.18.0 için SDK Azure Machine Learning
++ **Hata düzeltmeleri ve geliştirmeleri**
+  + **azureml-automl-core**
+    +  Kısa süreli serinin, Gauss gürültüsü ile doldurmaya izin vererek geliştirilmiş işlemesi.
+  + **azureml-automl-runtime**
+    + DateTime sütununda OutOfBoundsDatetime değeri varsa ConfigException oluşturun
+    + Kısa süreli serinin, Gauss gürültüsü ile doldurmaya izin vererek geliştirilmiş işlemesi.
+    + Her metin sütununun, bu metin sütunundaki dizelerin uzunluğuna bağlı olarak, n-gram aralığında char-gram dönüşümünden yararlanmasını sağlamak
+    + Kullanıcının yerel işlem sırasında çalışan, oto ml denemeleri için en iyi mod için ham Özellik açıklamaları sağlama
+  + **azureml-core**
+    + Gelecek sürümlerde önemli sürümlerde çekmeden kaçınmak için paketi sabitleme: pyjwt.
+    + Deneme oluşturma, bu tür denemeler varsa veya yeni bir deneme varsa, bu söz konusu ada sahip etkin veya son arşivlenmiş denemeyi döndürür.
+    + Ada göre get_experiment çağrısı, bu verilen ada sahip etkin veya son arşivlenmiş denemeyi döndürür.
+    + Kullanıcılar yeniden etkinleştirme sırasında bir deneme yeniden adlandırılamıyor.
+    + Bir veri kümesi bir denemeye yanlış bir şekilde geçirildiğinde olası düzeltmeleri içeren hata iletisi geliştirildi (ör. ScriptRunConfig). 
+    + `OutputDatasetConfig.register_on_complete`Adı zaten mevcut olduğunda ne olacağı hakkında davranışı eklemek için geliştirilmiş belgeler.
+    + Ortak ortam değişkenleriyle çakışabilecek potansiyel veri kümesi girişi ve çıkış adlarını belirtme, şimdi bir uyarı oluşmasına neden olur
+    + `grant_workspace_access`Veri depoları kaydedilirken yeniden parametre yeniden `True`Machine Learning Studio sanal ağın arkasındaki verilere erişecek şekilde ayarlayın.
+      [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network)
+    + Bağlı hizmet API 'SI iyileştiriliyor. Kaynak kimliği sağlamak yerine, yapılandırmada tanımlı 3 ayrı parametre sub_id, RG ve adı vardır.
+    + Müşterilerin belirteç bozulması sorunlarını kendi kendine çözümlemesine olanak tanımak için, çalışma alanı belirteci eşitlemesini ortak bir yöntem olacak şekilde etkinleştirin.
+    + Bu değişiklik, boş bir dizenin bir script_param değer olarak kullanılmasına izin verir
+  + **azureml-pipeline-core**
+    + SynapseCompute Type ve SynapseSparkStep desteklemek için SDK. Müşteriler, SYNAPSE Spark havuzunda deneme ve işlem hattı çalıştırma çalıştırabilir.
+  + **azureml-pipeline-steps**
+    + SynapseCompute Type ve SynapseSparkStep desteklemek için SDK. Müşteriler, SYNAPSE Spark havuzunda deneme ve işlem hattı çalıştırma çalıştırabilir.
+  + **azureml-SYNAPSE**
+    + Kullanıcı gönderme Syanpse işini etkinleştirmek ve not defterinde iş ilerlemesini görüntülemek için SYNAPSE Magic ve mini Izleme ekleyin.
+  + **azureml-train-automl-client**
+    +  Kısa süreli serinin, Gauss gürültüsü ile doldurmaya izin vererek geliştirilmiş işlemesi.
+  + **azureml-tren-oto ml-çalışma zamanı**
+    + DateTime sütununda OutOfBoundsDatetime değeri varsa ConfigException oluşturun
+    + Kullanıcının yerel işlem noktasında çalışan, oto ml denemeleri için en iyi model için ham Özellik açıklamaları sağlamaya yönelik destek eklendi
+    + Kısa süreli serinin, Gauss gürültüsü ile doldurmaya izin vererek geliştirilmiş işlemesi.
+  + **azureml-train-core**
+    + Bu değişiklik, boş bir dizenin bir script_param değer olarak kullanılmasına izin verir
+  + **azureml-tren-restclients-Hyperdrive**
+    + Benioku dosyası daha fazla bağlam sunacak şekilde değiştirildi
+  + **azureml-widgets**
+    + Pencere öğesi için grafiklere/paralel koordinatlar kitaplığına dize desteği ekleyin.
 
 ## <a name="2020-11-05"></a>2020-11-05
 
@@ -29,6 +73,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
 Veri etiketlemesi içindeki görüntü örneği segmentleme (Çokgen ek açıklamaları) proje türü artık kullanılabilir. böylece kullanıcılar görüntülerde nesnelerin dağılımından oluşan poligonları çizebilir ve bunlara ek açıklama ekleyebilir. Kullanıcılar bir görüntü içinde ilgilendiğiniz her nesneye bir sınıf ve çokgen atayabilecektir.
 
 [Görüntü örneği segmentleme etiketleme](how-to-label-images.md)hakkında daha fazla bilgi edinin.
+
 
 
 ## <a name="2020-10-26"></a>2020-10-26
@@ -270,7 +315,7 @@ Veri etiketlemesi içindeki görüntü örneği segmentleme (Çokgen ek açıkla
     + Yerel zaman uyumsuz kaldırıldı, yönetilen ortam, oto ml 'den çalışır. Tüm yerel çalıştırmalar çalıştırmanın başlatıldığı ortamda çalışır.
     + Kullanıcı tarafından sağlanmayan betikler olmadan, oto ml çalıştırmaları gönderilirken düzeltilen anlık görüntü sorunları.
     + Veriler Nan içerdiğinde ve korleştirme kapalıyken düzeltilen alt çalıştırma sorunları.
-  + **azureml-train-automl-runtime**
+  + **azureml-tren-oto ml-çalışma zamanı**
     + Okuma sırasında içerik değiştirildiğinde, reml, dataprep 'ten yeni bir hata kodu oluşturur.
     + Kullanıcı tarafından sağlanmayan betikler olmadan, oto ml çalıştırmaları gönderilirken düzeltilen anlık görüntü sorunları.
     + Veriler Nan içerdiğinde ve korleştirme kapalıyken düzeltilen alt çalıştırma sorunları.
@@ -461,7 +506,7 @@ Veri etiketlemesi içindeki görüntü örneği segmentleme (Çokgen ek açıkla
     + Uzaktan işlem hedefinde bir oto ml denemesi gerçekleştirirken azureml_automl. log ' ın oluşturulmamasına veya eksik Günlükler oluşmasına neden olan bir hatayı düzeltir.
     + İmletilmiş sınıflarla sınıflandırma veri kümeleri için, özellik Sweeper, alt örneklenen veriler için bu değeri belirlerse, ağırlık dengelemesi, sınıflandırma görevinin performansını belirli bir eşiğin arttıran, ağırlık dengelemesi uygulayacağız.
     + Parallel ml çalıştırmaları artık paralel çalıştırma adımının alt çalıştırması olarak işaretlenir.
-  + **azureml-train-automl-runtime**
+  + **azureml-tren-oto ml-çalışma zamanı**
     + Hizmet Kullanıcı hatası oluşturursa UserErrorException 'yı yükseltmek için, oto ml çalıştırma davranışı değiştirildi
     + Parallel ml çalıştırmaları artık paralel çalıştırma adımının alt çalıştırması olarak işaretlenir.
 

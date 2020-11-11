@@ -6,16 +6,20 @@ ms.author: ambhatna
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 11/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 87ec99a68c538e8133d64351cdecbbf8b10459e6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 58e7c024d6494aee745884997e42b527c51ab237
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92525169"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489548"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>Azure CLı kullanarak MySQL için Azure veritabanı esnek sunucusu 'nda sunucu parametrelerini yapılandırma
+
+> [!IMPORTANT] 
+> MySQL için Azure veritabanı-esnek sunucu şu anda genel önizlemededir.
+
 Azure komut satırı yardımcı programını kullanarak MySQL için Azure veritabanı esnek sunucusu için parametreleri listeleyebilir, gösterebilir ve güncelleştirebilirsiniz. Sunucuyu oluştururken sunucu parametreleri varsayılan ve önerilen değer ile yapılandırılır.  
 
 Bu makalede, Azure CLı kullanılarak sunucu parametrelerini listeleme, gösterme ve güncelleştirme işlemlerinin nasıl yapılacağı açıklanır.
@@ -31,7 +35,7 @@ Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 ## <a name="list-server-parameters-for-azure-database-for-mysql-flexible-server"></a>MySQL için Azure veritabanı esnek sunucusu için sunucu parametrelerini listeleyin
 Bir sunucudaki tüm parametreleri ve değerlerini listelemek için [az MySQL esnek-sunucu parametre listesi](/cli/azure/mysql/flexible-server/parameter) komutunu çalıştırın.
 
-Sunucu **mydemoserver.MySQL.Database.Azure.com** sunucu parametrelerini, **myresourcegroup**kaynak grubu altında listeleyebilirsiniz.
+Sunucu **mydemoserver.MySQL.Database.Azure.com** sunucu parametrelerini, **myresourcegroup** kaynak grubu altında listeleyebilirsiniz.
 ```azurecli-interactive
 az mysql flexible-server parameter list --resource-group myresourcegroup --server-name mydemoserver
 ```
@@ -94,7 +98,7 @@ SELECT name FROM mysql.time_zone_name;
 
 Genel düzey saat dilimi, [az MySQL esnek-sunucu parametre kümesi](/cli/azure/mysql/flexible-server/parameter) komutu kullanılarak ayarlanabilir.
 
-Aşağıdaki komut, **myresourcegroup** kaynak grubu altındaki Server **mydemoserver.MySQL.Database.Azure.com** 'ın **Saat \_ dilimi** sunucu parametresini **ABD/Pasifik**olarak güncelleştirir.
+Aşağıdaki komut, **myresourcegroup** kaynak grubu altındaki Server **mydemoserver.MySQL.Database.Azure.com** 'ın **Saat \_ dilimi** sunucu parametresini **ABD/Pasifik** olarak güncelleştirir.
 
 ```azurecli-interactive
 az mysql flexible-server parameter set --name time_zone --resource-group myresourcegroup --server-name mydemoserver --value "US/Pacific"

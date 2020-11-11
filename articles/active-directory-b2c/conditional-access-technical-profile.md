@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f88548b57cee9b5f637247fda1536488382ae2f6
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: bc811ab3cab4b79b81b16dd94a2c72225046e35a
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042635"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488287"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde koşullu erişim teknik profili tanımlama
 
@@ -49,11 +49,11 @@ Aşağıdaki örnekte, bir koşullu erişim teknik profili gösterilmektedir:
 
 Her oturum açma için, Azure AD B2C tüm ilkeleri değerlendirir ve Kullanıcı erişimi vermeden önce tüm gereksinimlerin karşılanmasını sağlar. "Erişimi engelle" diğer tüm yapılandırma ayarlarını geçersiz kılar. Koşullu erişim teknik profilinin **değerlendirme** modu, oturum açma sırasında Azure AD B2C tarafından toplanan sinyalleri yerel bir hesapla değerlendirir. Koşullu erişim teknik profilinin sonucu, koşullu erişim değerlendirmesinden kaynaklanan bir talepler kümesidir. Azure AD B2C ilkesi, kullanıcıyı engelle veya Multi-Factor Authentication ile kullanıcıyı zorluk taşıyan bir eylem gerçekleştirmek için bu talepleri bir sonraki düzenleme adımında kullanır. Bu mod için aşağıdaki seçenekler yapılandırılabilir.
 
-### <a name="metadata"></a>Meta veri
+### <a name="metadata"></a>Meta Veriler
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| OperationType | Yes | **Değerlendirme**olmalıdır.  |
+| OperationType | Yes | **Değerlendirme** olmalıdır.  |
 
 ### <a name="input-claims"></a>Giriş talepleri
 
@@ -61,7 +61,7 @@ Her oturum açma için, Azure AD B2C tüm ilkeleri değerlendirir ve Kullanıcı
 
 | Claimreferenceıd | Gerekli | Veri Türü | Açıklama |
 | --------- | -------- | ----------- |----------- |
-| UserId | Yes | dize | Oturum açan kullanıcının tanımlayıcısı. |
+| UserId | Yes | string | Oturum açan kullanıcının tanımlayıcısı. |
 | AuthenticationMethodsUsed | Yes |stringCollection | Kullanıcının oturum açmak için kullandığı yöntemlerin listesi. Olası değerler: `Password` , ve `OneTimePasscode` . |
 | Ifederal | Yes |boolean | Bir kullanıcının bir Federasyon hesabıyla oturum açmış olup olmadığını gösterir. Değer olmalıdır `false` . |
 | IsMfaRegistered | Yes |boolean | Kullanıcının Multi-Factor Authentication için telefon numarasını zaten kaydetmediğini belirtir. |
@@ -111,11 +111,11 @@ Aşağıdaki örnek, oturum açma tehdidi değerlendirmek için kullanılan koş
 
 Koşullu erişim teknik profilinin **Düzeltme** modu, oturum açma tanımlanan tehdidi düzeltilen Azure AD B2C bildirir. Düzeltme modu için aşağıdaki seçenekler yapılandırılabilir.
 
-### <a name="metadata"></a>Meta veri
+### <a name="metadata"></a>Meta Veriler
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| OperationType | Yes | **Düzeltme**olmalıdır.  |
+| OperationType | Yes | **Düzeltme** olmalıdır.  |
 
 ### <a name="input-claims"></a>Giriş talepleri
 
@@ -130,7 +130,7 @@ Koşullu erişim teknik profilinin **Düzeltme** modu, oturum açma tanımlanan 
 
 ### <a name="output-claims"></a>Çıkış talepleri
 
-Koşullu Erişim Protokolü Sağlayıcısı herhangi bir **outputclaim**döndürmez, bu nedenle çıkış taleplerini belirtmeniz gerekmez. Ancak, özniteliği ayarladığınız sürece koşullu erişim Protokolü sağlayıcısı tarafından döndürülmeyen talepleri dahil edebilirsiniz `DefaultValue` .
+Koşullu Erişim Protokolü Sağlayıcısı herhangi bir **outputclaim** döndürmez, bu nedenle çıkış taleplerini belirtmeniz gerekmez. Ancak, özniteliği ayarladığınız sürece koşullu erişim Protokolü sağlayıcısı tarafından döndürülmeyen talepleri dahil edebilirsiniz `DefaultValue` .
 
 **Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
 
@@ -428,7 +428,7 @@ Aşağıdaki örnekte gösterildiği gibi yeni talepleri kullanan bir Kullanıc�
             </Precondition>
             <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
               <Value>CAChallengeIsMfa</Value>
-              <Value>false</Value>
+              <Value>False</Value>
               <Action>SkipThisOrchestrationStep</Action>
             </Precondition>
           </Preconditions>
@@ -458,7 +458,7 @@ Aşağıdaki örnekte gösterildiği gibi yeni talepleri kullanan bir Kullanıc�
             </Precondition>
             <Precondition Type="ClaimEquals" ExecuteActionsIf="false">
               <Value>CAChallengeIsBlock</Value>
-              <Value>true</Value>
+              <Value>True</Value>
               <Action>SkipThisOrchestrationStep</Action>
             </Precondition>
           </Preconditions>

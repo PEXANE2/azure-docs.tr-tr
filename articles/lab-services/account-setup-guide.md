@@ -3,89 +3,124 @@ title: Azure Lab Services için hızlandırılmış laboratuvar hesabı kurulum 
 description: Bu kılavuz, yöneticilerin okuldaki kullanım için hızlı bir şekilde laboratuvar hesabı ayarlamış yardımcı olur.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0855e59aced37e50c088cfe89ffeb3d0af9fcdca
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: 4d9a64fe23c3e5b74e77e704154f5e74bf2066d9
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148312"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490568"
 ---
 # <a name="lab-account-setup-guide"></a>Laboratuvar hesabı kurulum kılavuzu
+Azure Lab Services ortamınızı ayarlamak için, yöneticilerin öncelikle Azure aboneliğinizde bir **Laboratuvar hesabı** ayarlaması gerekir. Laboratuvar hesabı, laboratuvarlarınız için bir kapsayıcıdır ve yalnızca birkaç dakika sürer.
 
-İlk adım olarak, Yöneticiler Azure aboneliğinizde bir laboratuvar hesabı ayarlamış olmalıdır. Laboratuvar hesabı, sınıf laboratuvarlarınız için bir kapsayıcıdır ve yalnızca birkaç dakika sürer.
+Bu kılavuz üç bölümden oluşur:
+-  İlk bölüm, laboratuvar hesabınızı *ayarlamadan önce* tamamlanması gereken önkoşullara odaklanır.
+-  İkinci bölüm, laboratuvar hesabı ayarlarınızı planlamaya yönelik rehberlik sağlar.
+-  Üçüncü bölüm, bir laboratuar hesabı ayarlamaya yönelik adım adım yönergeler sağlar.
 
-## <a name="understand-your-schools-lab-account-requirements"></a>Okulunuzun laboratuvar hesabı gereksinimlerini anlayın
+## <a name="prerequisites-for-setting-up-your-lab-account"></a>Laboratuvar hesabınızı ayarlamaya yönelik önkoşullar
+Bu bölümde, bir laboratuvar hesabı ayarlamadan önce gerçekleştirmeniz gereken önkoşullar özetlenmektedir.
 
-Laboratuvar hesabınızı okulunuzun ihtiyaçlarına göre nasıl yapılandıracağınızı anlamak için, bu soruları göz önünde bulundurmanız gerekir.
+### <a name="obtain-an-azure-subscription"></a>Azure aboneliği edinme
+Laboratuvar hesabı oluşturmak için okulunuz için ayarlanmış bir Azure aboneliğine erişmeniz gerekir. Okulunuzda bir veya daha fazla abonelik olabilir. Laboratuvar hesapları da dahil olmak üzere tüm Azure kaynaklarınız ve hizmetleriniz için faturalandırma ve güvenliği yönetmek üzere bir abonelik kullanırsınız.  Azure abonelikleri genellikle BT departmanınız tarafından yönetilir.  Daha fazla bilgi için aşağıdaki konuyu okuyun:
+ - [Yönetici Kılavuzu-abonelik](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#subscription)
 
-### <a name="do-i-have-access-to-an-azure-subscription"></a>Bir Azure aboneliğine erişimim var mı?
+### <a name="estimate-the-number-of-vms-and-vm-sizes-that-you-need"></a>İhtiyaç duyduğunuz VM 'Lerin ve VM boyutlarının sayısını tahmin edin
+Okulunuzun ihtiyaç duyduğu sanal makine (VM) sayısını ve [VM boyutlarını](https://docs.microsoft.com/azure/lab-services/administrator-guide#vm-sizing) tahmin etmeniz gerekir.  Labs\images'nizi nasıl yapılandıracağınıza ilişkin yönergeler için aşağıdaki blog gönderisini okuyun.  Bu blog gönderisi Ayrıca ihtiyaç duyacağınız sanal makine sayısına ve VM boyutlarına karar vermenize yardımcı olur:
+- [Fiziksel laboratuvardan Azure Lab Services taşıma](https://techcommunity.microsoft.com/t5/azure-lab-services/moving-from-a-physical-lab-to-azure-lab-services/ba-p/1654931)
 
-Laboratuvar hesabı oluşturmak için okulunuz için yapılandırılmış bir Azure aboneliğine erişmeniz gerekir. Okulunuzda bir veya daha fazla abonelik olabilir. Laboratuvar hesapları da dahil olmak üzere tüm Azure kaynaklarınız ve hizmetleriniz için faturalandırma ve güvenliği yönetmek üzere bir abonelik kullanırsınız.
+Ayrıca, laboratuvarların nasıl yapılandırılabileceğine ilişkin ek yönergeler açıklayan bu makaleye bakın:
+- [Yönetici Kılavuzu-laboratuvar](https://docs.microsoft.com/azure/lab-services/administrator-guide#classroom-lab)
 
-### <a name="how-many-lab-accounts-need-to-be-created"></a>Kaç laboratuvar hesabının oluşturulması gerekiyor?
+### <a name="understand-subscription-vm-limits-and-regional-vm-capacity"></a>Abonelik VM sınırlarını ve bölgesel VM kapasitesini anlayın
+Laboratuvarlarınızın sanal makine sayısı ve VM boyutlarının tahmininden sonra şunları yapmanız gerekir:
 
-Hızlıca kullanmaya başlamak için tek bir laboratuar hesabı oluşturun ve daha sonra gerektiğinde ek laboratuvar hesapları oluşturun. Örneğin, bölüm başına en sonunda bir laboratuar hesabınız olabilir.
+- Azure aboneliğinizin kapasite sınırının, laboratuvarlarda kullanmayı planladığınız sanal makine sayısı ve VM boyutu için izin verdiğinden emin olun.
+
+- Kullanılabilir yeterli VM kapasitesi olan bir bölge içinde laboratuvar hesabınızı oluşturun.
+
+Daha fazla bilgi edinmek için aşağıdaki blog gönderisini okuyun: [VM abonelik limitleri ve bölgesel kapasite](https://techcommunity.microsoft.com/t5/azure-lab-services/vm-subscription-limits-and-regional-capacity/ba-p/1845553).
+
+### <a name="decide-how-many-lab-accounts-to-create"></a>Kaç tane laboratuvar hesabı oluşturulacağını belirleyin
+
+Hızlıca kullanmaya başlamak için kendi kaynak grubu içinde tek bir laboratuar hesabı oluşturun.  Daha sonra, gerektiğinde ek laboratuvar hesapları (ve kaynak grupları) oluşturabilirsiniz. Örneğin, en sonunda, maliyetleri açık bir şekilde ayırmak için bir laboratuvar hesabına ve bir departman başına kaynak grubuna sahip olabilirsiniz.  Laboratuvar hesapları, kaynak grupları ve maliyet ayrımı hakkında daha fazla bilgi edinmek için aşağıdaki makaleleri okuyun:
+- [Yönetici Kılavuzu-kaynak grubu](https://docs.microsoft.com/azure/lab-services/administrator-guide#resource-group)
+- [Yönetici Kılavuzu-laboratuvar hesabı](https://docs.microsoft.com/azure/lab-services/administrator-guide#lab-account) 
+- [Azure Lab Services için maliyet yönetimi](https://docs.microsoft.com/azure/lab-services/cost-management-guide)
+
+## <a name="planning-your-lab-accounts-settings"></a>Laboratuvar hesabınızın ayarlarını planlama
+
+Laboratuvar hesabınızın ayarlarını planlamak için aşağıdaki soruları göz önünde bulundurmanız gerekir.
 
 ### <a name="who-should-be-owners-and-contributors-of-the-lab-account"></a>Laboratuvar hesabının sahipleri ve katkıda bulunanlar kim olmalıdır?
 
-Yöneticileriniz genellikle laboratuvar hesabı için sahipler ve katkıda bulunanlar. Laboratuvar hesabındaki tüm laboratuvarlara uygulanan ilkeleri yönetmekten sorumludur. Laboratuvar hesabını oluşturan kişi otomatik olarak bir sahip olur. Genellikle aboneliğinizle ilişkili olan Azure Active Directory (Azure AD) kiracısından ek sahipler ve katkıda bulunanlar ekleyebilirsiniz. Bu, laboratuvar hesabı düzeyinde sahip veya katkıda bulunan rolü atayarak bir laboratuvar hesabının yönetilmesine yardımcı olmak için yararlı olabilir.
+   Okulunuzun BT yöneticileri genellikle laboratuvar hesabı için sahipler ve katkıda bulunanlar olur. Laboratuvar hesabındaki tüm laboratuvarlara uygulanan ilkeleri yönetmekten sorumludur. Laboratuvar hesabını oluşturan kişi otomatik olarak bir sahip olur. Aboneliğinizle ilişkili Azure Active Directory (AD) kiracısından ek sahipler ve katkıda bulunanlar ekleyebilirsiniz. Laboratuvar hesabı sahibi ve katkıda bulunan rolleri hakkında daha fazla bilgi için şunu okuyun:
+   -  [Yönetici Kılavuzu-kimliği Yönet](https://docs.microsoft.com/azure/lab-services/administrator-guide#manage-identity).
 
-[!INCLUDE [Select a tenant](./includes/multi-tenant-support.md)]
+   [!INCLUDE [Select a tenant](./includes/multi-tenant-support.md)]
 
-Laboratuvar kullanıcıları yalnızca Azure Lab Services içindeki kiracılar arasında erişimi olan sanal makinelerin tek bir listesini görür.
+   Laboratuvar kullanıcıları yalnızca Azure Lab Services içindeki kiracılar arasında erişimi olan sanal makinelerin tek bir listesini görür.
 
-### <a name="who-will-be-allowed-to-create-and-manage-labs"></a>Laboratuvarları oluşturmalarına ve yönetmesine izin verilecek kim?
+### <a name="who-will-be-allowed-to-create-labs"></a>Laboratuvarların oluşturmasına izin verilecek kim?
 
-Yöneticileriniz ve fakülte üyelerinizin laboratuvarları oluşturmasını ve yönetmesini tercih edebilirsiniz. Bu kullanıcılar (genellikle aboneliğinizle ilişkili Azure AD kiracısından) laboratuvar hesabı içindeki laboratuvar Oluşturucu rolüne atanır.
+   BT ve fakülte üyelerinizin laboratuvarları oluşturmasını tercih edebilirsiniz. Bir Kullanıcı laboratuvar oluşturduğunda, otomatik olarak laboratuvarın sahibi olarak atanır.  Laboratuvarlar oluşturmak için (genellikle aboneliğinizle ilişkili Azure AD kiracısından) laboratuvar hesabındaki laboratuvar Oluşturucu rolüne atanmalıdır.  Laboratuvar Oluşturucu rolü hakkında daha fazla bilgi için şunu okuyun:
+   -  [Yönetici Kılavuzu-kimlik yönetme](https://docs.microsoft.com/azure/lab-services/administrator-guide#manage-identity)
 
-### <a name="do-you-want-to-give-lab-creators-the-ability-to-save-images-that-can-be-shared-across-labs"></a>Laboratuvar oluşturucuları, laboratuvarlar arasında paylaşılabilen görüntüleri kaydetme yeteneği vermek istiyor musunuz?
+### <a name="who-will-be-allowed-to-own-and-manage-labs"></a>Laboratuvarlara sahip ve bunları yönetmesine izin verilecek kim?
 
-Paylaşılan görüntü Galerisi, görüntüleri kaydetmek ve paylaşmak için kullanabileceğiniz bir depodur. Aynı görüntülere ihtiyacı olan birkaç sınıfınız varsa, laboratuvar oluşturucuları görüntüyü bir kez oluşturabilir ve laboratuvarlar arasında paylaşabilir. Ancak, başlamak için, her zaman bir daha sonra ekleyebileceğiniz paylaşılan görüntü galerisine ihtiyacınız yoktur.
+   Ayrıca, Labs 'in laboratuvarları oluşturma *yeteneği vermeden own\manage Labs 'i* de ve fakülte olarak tercih edebilirsiniz.  Bu durumda, aboneliğinizin Azure AD kiracısındaki kullanıcılara mevcut laboratuvarlara sahip veya katılımcı atanır.  Laboratuvarın sahibi ve katkıda bulunan rolleri hakkında daha fazla bilgi için şunu okuyun:
+   - [Yönetici Kılavuzu-kimlik yönetme](https://docs.microsoft.com/azure/lab-services/administrator-guide#manage-identity)
 
-Bu soruya "Evet" yanıtını verdiyseniz, laboratuvar hesabınıza paylaşılan bir görüntü Galerisi oluşturmanız veya eklemeniz gerekir. "Bilmiyorum" yanıtını verdiyseniz, bu kararı daha sonra erteleyebilirsiniz.
+### <a name="do-you-want-to-save-images-that-can-be-shared-across-labs"></a>Laboratuvarlar arasında paylaşılabilen görüntüleri kaydetmek istiyor musunuz?
+Paylaşılan görüntü Galerisi, görüntüleri kaydetmek ve paylaşmak için kullanabileceğiniz bir depodur. Aynı görüntüde olması gereken sınıflar için, laboratuvar oluşturucuları görüntüyü oluşturup paylaşılan görüntü galerisine dışarı aktarabilir.  Bir görüntü paylaşılan görüntü galerisine aktarıldığında, yeni Labs oluşturmak için kullanılabilir.
 
-### <a name="which-images-in-azure-marketplace-will-your-classroom-labs-use"></a>Ders laboratuvarlarınızın Azure Market 'teki hangi görüntüleri kullanması gerekir?
+Ayrıca, görüntülerinizi fiziksel ortamınızda oluşturup paylaşılan görüntü galerisine aktarabilirsiniz.  Bu işlemle ilgili daha fazla bilgi için aşağıdaki blog gönderisini okuyun: 
+- [Özel görüntüyü paylaşılan görüntü galerisine aktar](https://techcommunity.microsoft.com/t5/azure-lab-services/import-custom-image-to-shared-image-gallery/ba-p/1777353)
 
+Paylaşılan bir görüntü Galerisi kullanmanız gerektiğine karar verirseniz, laboratuvar hesabınıza paylaşılan bir görüntü Galerisi oluşturmanız veya eklemeniz gerekir. Ayrıca, bu kararı daha sonra bir laboratuvar hesabına iliştirilene kadar erteleyebilirsiniz.  Paylaşılan görüntü galerisi hakkında daha fazla bilgi için şunu okuyun:
+- [Yönetici Kılavuzu-paylaşılan görüntü Galerisi](https://docs.microsoft.com/azure/lab-services/administrator-guide#shared-image-gallery)
+- [Yönetici Kılavuzu-paylaşılan görüntü Galerisi fiyatlandırması](https://docs.microsoft.com/azure/lab-services/administrator-guide#shared-image-gallery-2)
+
+### <a name="which-images-in-azure-marketplace-will-your-labs-use"></a>Azure Marketi 'ndeki hangi görüntüler laboratuvarlarınız için kullanılır?
 Azure Marketi, laboratuvar oluşturucularının laboratuvarı oluşturmak için görüntüyü kullanabilmesi için etkinleştirebileceğiniz yüzlerce görüntü sağlar. Bazı resimlerde, laboratuvarın zaten ihtiyacı olan her şey bulunabilir. Diğer durumlarda, bir görüntüyü başlangıç noktası olarak kullanabilir ve ardından Laboratuvar Oluşturucu ek uygulamalar veya Araçlar yükleyerek bunu özelleştirebilir.
 
-Kullanmanız gereken görüntüleri bilmiyorsanız, bunları etkinleştirmek için her zaman daha sonra geri dönebilirsiniz. Ayrıca, hangi görüntülerin kullanılabilir olduğunu görmenin en iyi yolu, ilk olarak bir laboratuar hesabı oluşturmaktır. Bu sayede, kullanılabilir görüntülerin ve içeriklerinin listesini gözden geçirebilmeniz için erişim elde edersiniz.
+Hangi görüntülerden ihtiyacınız olduğunu bilmiyorsanız, daha sonra bunları etkinleştirmek için daha sonra geri dönebilirsiniz. Ayrıca, hangi görüntülerin kullanılabilir olduğunu görmenin en iyi yolu, ilk olarak bir laboratuar hesabı oluşturmaktır. Bu, kullanılabilir görüntülerin ve içeriklerinin listesini gözden geçirebilmeniz için size erişmenizi sağlar.  Market görüntüleri hakkında daha fazla bilgi için şunu okuyun:
+- [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerini belirtme](https://docs.microsoft.com/azure/lab-services/specify-marketplace-images)
   
-### <a name="do-the-labs-virtual-machines-need-to-have-access-to-other-azure-or-on-premises-resources"></a>Laboratuvarın sanal makinelerinin diğer Azure veya şirket içi kaynaklara erişimi olması gerekiyor mu?
+### <a name="do-the-labs-vms-need-to-have-access-to-other-azure-or-on-premises-resources"></a>Laboratuvarın VM 'lerinin diğer Azure veya şirket içi kaynaklara erişimi olması gerekiyor mu?
+Laboratuvar hesabı ayarladığınızda, laboratuvar hesabınızı bir sanal ağ (VNet) ile de eşleyebilir.  Hem VNet hem de laboratuvar hesabınızın aynı bölgede bulunması gerektiğini aklınızda bulundurun.  VNet ile eş yapmanız gerekip gerekmediğine karar vermek için aşağıdaki senaryoları göz önünde bulundurun:
 
-Bir laboratuvar hesabı ayarlarken, bir sanal ağ ile eş oluşturma seçeneğiniz de vardır. Bunun gerekli olup olmadığına karar vermek için aşağıdaki soruları göz önünde bulundurun:
-
-- **Bir lisanslama sunucusuna erişim sağlamanız gerekiyor mu?**
+- **Lisanslama sunucusuna erişim**
   
-   Azure Marketi görüntülerini kullanmayı planlıyorsanız, işletim sistemi lisansının maliyeti Laboratuvar Hizmetleri fiyatlandırmasına paketlenmiştir. Bu nedenle, işletim sisteminin kendisi için lisans sağlamanız gerekmez. Ancak, yüklü ek yazılımlar ve uygulamalar için uygun şekilde bir lisans sağlamanız gerekir.
+   Azure Marketi görüntülerini kullandığınızda, işletim sistemi lisansının maliyeti Laboratuvar Hizmetleri fiyatlandırmasına paketlenmiştir. Ancak, işletim sisteminin kendisi için lisans sağlamanız gerekmez. Ancak, yüklü ek yazılımlar ve uygulamalar için uygun şekilde bir lisans sağlamanız gerekir.  Bir lisanslama sunucusuna erişmek için:
+   - Şirket içi lisanslama sunucusuna bağlanmayı seçebilirsiniz.  Şirket içi lisanslama sunucusuna bağlanmak ek kurulum gerektirir.
+   - Daha hızlı bir şekilde ayarlanarak, bir Azure VM üzerinde barındırmanıza olanak tanıyan bir lisans sunucusu oluşturmaktır.  Azure VM, laboratuvar hesabınıza sahip olduğunuz bir sanal ağ içinde bulunur.
 
-- **Laboratuvar VM 'lerinin dosya paylaşma veya veritabanı gibi diğer şirket içi kaynaklara erişmesi gerekir mi?**
+- **Dosya paylaşma veya veritabanı gibi diğer şirket içi kaynaklara erişim**
 
-   Genellikle siteden siteye sanal ağ geçidi kullanarak şirket içi kaynaklara erişim sağlamak için bir sanal ağ oluşturursunuz. Yapılandırılmış bir sanal ağınız yoksa, bunun için ek zaman yatırmaya ihtiyacınız vardır.
+   Genellikle siteden siteye sanal ağ geçidi kullanarak şirket içi kaynaklara erişim sağlamak için bir VNet oluşturursunuz. Bu ortam türünün ayarlanması, ek zaman alır.
 
-- **Laboratuvar VM 'lerinin bir sanal ağ içinde bulunan diğer Azure kaynaklarına erişmesi gerekiyor mu?**
+- **VNet dışında bulunan diğer Azure kaynaklarına erişim**
 
-   Bir sanal ağ içinde güvenliği *bulunmayan* Azure kaynaklarına erişmeniz gerekiyorsa, herhangi bir eşleme yapmadan bu kaynaklara genel İnternet üzerinden erişebilirsiniz.
+   Bir sanal ağ içinde güvenli *olmayan* Azure kaynaklarına erişmeniz gerekiyorsa, herhangi bir eşleme yapmadan bu kaynaklara genel İnternet üzerinden erişebilirsiniz.
 
-Bir veya daha fazla soruya "Evet" yanıtını verdiyseniz, laboratuvar hesabını bir sanal ağ ile eşetmeniz gerekir. "Bilmiyorum" yanıtını verdiyseniz, bu kararı daha sonra erteleyebilirsiniz. Laboratuvar hesabı oluşturduktan sonra her zaman bir sanal ağı tercih edebilirsiniz.
+Sanal ağlar hakkında daha fazla bilgi için şunu okuyun:
+- [Mimari temelleri-sanal ağ](https://docs.microsoft.com/azure/lab-services/classroom-labs-fundamentals#virtual-network)
+- [Sanal ağa bağlanma](https://docs.microsoft.com/azure/lab-services/how-to-connect-peer-virtual-network)
+- [Azure Lab Services paylaşılan kaynakla Laboratuvar oluşturma](https://docs.microsoft.com/azure/lab-services/how-to-create-a-lab-with-shared-resource)
 
 ## <a name="set-up-your-lab-account"></a>Laboratuvar hesabınızı ayarlama
 
-Laboratuvar hesabınızın gereksinimlerini anladıktan sonra, ayarlamaya hazırsınız demektir.
+Planlamayı tamamladıktan sonra laboratuvar hesabınızı ayarlamaya hazırsınız demektir.  Bu adımlar, [takımlar ile](https://docs.microsoft.com/azure/lab-services/lab-services-within-teams-overview)bir laboratuvar Azure Lab Services ayarlamak için geçerlidir.
 
 1. **Laboratuvar hesabınızı oluşturun.** Yönergeler için [Laboratuvar hesabı oluşturma](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#create-a-lab-account) öğreticisine bakın.
+   
+    Adlandırma hakkında daha fazla bilgi için aşağıdaki makaleye bakın:
 
-   Laboratuvar hesabı oluştururken, ilgili Azure kaynakları hakkında bilgi edinmek için size yardımcı olabilir. Daha fazla bilgi için aşağıdaki makalelere bakın:
-
-   - [Abonelik](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#subscription)
-   - [Kaynak grubu](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#resource-group)
-   - [Laboratuvar hesabı](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#lab-account)
-   - [Sınıf Laboratuvarı](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#classroom-lab)
-   - [Bölge ve konum seçme](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#regionslocations)
    - [Kaynaklar için adlandırma Kılavuzu](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#naming)
 
 2. **Laboratuvar Oluşturucu rolüne kullanıcı ekleyin.** Yönergeler için bkz. [Laboratuvar Oluşturucu rolüne kullanıcı ekleme](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#add-a-user-to-the-lab-creator-role).
 
-   Ayrıca, laboratuvar hesaplarını ve laboratuvarları yönetecek kullanıcılara atanabilecek farklı roller hakkında daha fazla bilgi için bkz. [kimlik yönetme Kılavuzu](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#manage-identity).
 
 3. **Eş sanal ağa bağlanın.** Yönergeler için bkz. [laboratuvarınızın ağını bir eş sanal ağ ile bağlama](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network).
 
@@ -97,12 +132,13 @@ Laboratuvar hesabınızın gereksinimlerini anladıktan sonra, ayarlamaya hazır
 
    ![Azure Marketi görüntülerini gözden geçirme ekran görüntüsü](./media/setup-guide/review-marketplace-images.png)
 
-   Laboratuvar hesabınıza eklenmiş bir paylaşılan görüntü galeriniz varsa ve özel görüntülerin laboratuvar oluşturucuları tarafından paylaşılmasını etkinleştirmek istiyorsanız, aşağıdaki ekran görüntüsünde gösterilenler ile benzer adımları uygulayın:
+   Laboratuvar hesabınıza bir paylaşılan görüntü Galerisi eklenmişse ve özel görüntülerin laboratuvar oluşturucuları tarafından paylaşılmasını etkinleştirmek istiyorsanız, aşağıdaki ekran görüntüsünde gösterildiği gibi benzer adımları uygulayın:
 
    ![Paylaşılan görüntü galerisinde özel görüntüleri etkinleştirme ekran görüntüsü](./media/setup-guide/enable-sig-custom-images.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Laboratuvar hesaplarını yönetme](how-to-manage-lab-accounts.md)
+Laboratuvar ortamının kurulması için ortak olan sonraki adımlar:
 
-- [Sınıf Laboratuvarı Kurulum Kılavuzu](setup-guide.md)
+- [Laboratuvar hesaplarını yönetme](how-to-manage-lab-accounts.md)
+- [Laboratuvar Kurulum Kılavuzu](setup-guide.md)

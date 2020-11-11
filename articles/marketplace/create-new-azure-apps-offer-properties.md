@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 1414f2ce53d1764e788749fc2d225c56f624bcdc
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 6f92c138a02c9dbdc1d22ca04c733cfbee69dcd0
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94370458"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488528"
 ---
 # <a name="how-to-configure-your-azure-application-offer-properties"></a>Azure uygulaması teklif özelliklerinizi yapılandırma
 
@@ -76,10 +76,6 @@ Standart sözleşme yerine kendi hüküm ve koşullarınızı sağlamayı tercih
 
 1. **Yasal** ' ın altında, **Microsoft 'un ticari Market Için standart sözleşmeyi kullan** onay kutusunun temizlenmiş olduğundan emin olun.
 1. **Hüküm ve koşullar** kutusunda en fazla 10.000 karakter girin.
-
-   > [!NOTE]
-   > Daha uzun bir açıklamaya ihtiyacınız varsa, hüküm ve koşullarınızın nerede bulunmalarından işaret eden tek bir Web adresi girin. Bu, müşterilere etkin bir bağlantı olarak görüntülenecektir.
-
 1. Sonraki sekmeye geçmeden önce **Taslağı kaydet** ' i seçin: teklif listesi.
 
 ## <a name="next-steps"></a>Sonraki adımlar

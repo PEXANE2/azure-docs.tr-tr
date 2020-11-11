@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 381ee08f44ad8fb4dade9b6229f5a5925cf2b6b7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a17143045b368038e24ac40f131325a623fc934d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376793"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489616"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Azure Active Directory statik grup üyeliğini dinamik olarak değiştirme
 
@@ -32,10 +32,10 @@ Azure Active Directory (Azure AD) Içinde, bir grubun üyeliğini statik (veya t
 
 ## <a name="change-the-membership-type-for-a-group"></a>Grubun üyelik türünü değiştirme
 
-1. Azure AD [Yönetim merkezinde](https://aad.portal.azure.com) , genel yönetici veya Azure AD kuruluşunuzda Kullanıcı Yöneticisi olan bir hesapla oturum açın.
-2. **Grupları**seçin.
+1. Azure AD kuruluşunuzda genel yönetici, Kullanıcı Yöneticisi veya Grup Yöneticisi olan bir hesapla [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
+2. **Grupları** seçin.
 3. **Tüm gruplar** listesinden, değiştirmek istediğiniz grubu açın.
-4. **Özellikler**’i seçin.
+4. **Özellikler** ’i seçin.
 5. Grubun **Özellikler** sayfasında, istediğiniz üyelik türüne bağlı olarak atanan (statik), dinamik Kullanıcı veya dinamik cihazın **üyelik türünü** seçin. Dinamik üyelik için kural Oluşturucu 'yu kullanarak basit bir kural için seçenekleri seçebilir veya bir üyelik kuralı yazabilirsiniz. 
 
 Aşağıdaki adımlar, bir grup Kullanıcı grubu için statik ve dinamik üyeliğe değiştirme örneğidir.
@@ -44,7 +44,7 @@ Aşağıdaki adımlar, bir grup Kullanıcı grubu için statik ve dinamik üyeli
   
    ![Dinamik kullanıcının üyelik türünü seçin](./media/groups-change-type/select-group-to-convert.png)
   
-2. **Dinamik sorgu Ekle**' yi seçin ve kuralı sağlayın.
+2. **Dinamik sorgu Ekle** ' yi seçin ve kuralı sağlayın.
   
    ![dinamik grup için kural girin](./media/groups-change-type/enter-rule.png)
   

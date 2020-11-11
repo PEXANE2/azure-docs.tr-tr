@@ -7,18 +7,18 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: f3f6e33c7c37089f7a9e87ab61bb00c966d8ccc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ffaf66cbb5d9fa0b294f5749a1923684f16c2979
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90881908"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488118"
 ---
 # <a name="azure-functions-output-from-azure-stream-analytics"></a>Azure Stream Analytics Azure Işlevleri çıkışı
 
 Azure Işlevleri, altyapıyı açıkça sağlamak veya yönetmek zorunda kalmadan kodu isteğe bağlı olarak çalıştırmak için kullanabileceğiniz sunucusuz bir işlem hizmetidir. Azure veya iş ortağı hizmetlerinde gerçekleşen olaylar tarafından tetiklenen kodu uygulamanıza olanak tanır. Azure Işlevlerinin tetikleyicilere yanıt vermesi bu özelliği Azure Stream Analytics için doğal bir çıkış yapar. Bu çıkış bağdaştırıcısı, kullanıcıların Azure Işlevlerine Stream Analytics bağlanmasına ve çeşitli olaylara yanıt olarak bir betiği ya da kod parçasını çalıştırmasına olanak sağlar.
 
-Azure Işlevleri Stream Analytics çıkışı, Azure Çin 21Vianet ve Azure Almanya (T-Systems Uluslararası) bölgelerinde Şu anda kullanılamıyor.
+Azure Işlevleri Stream Analytics çıkışı, Azure Çin 21Vianet ve Azure Almanya (T-Systems Uluslararası) bölgelerinde kullanılamaz. Çoklu kiracı kümesinde çalışan bir Stream Analytics işinden bir sanal ağ (VNet) içindeki Azure Işlevlerine bağlantı de desteklenmez.
 
 Azure Stream Analytics HTTP Tetikleyicileri aracılığıyla Azure Işlevlerini çağırır. Azure Işlevleri çıkış bağdaştırıcısı, aşağıdaki yapılandırılabilir özelliklerle kullanılabilir:
 

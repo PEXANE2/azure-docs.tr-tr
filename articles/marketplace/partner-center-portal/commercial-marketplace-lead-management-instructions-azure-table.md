@@ -4,15 +4,15 @@ description: Azure Tablo Depolamayı kullanarak Microsoft AppSource ve Azure Mar
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 08/25/2020
-ms.openlocfilehash: 925bc79d54def3f2aec4657196b8cea53704396f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 70ce1807ea6080e3efc0cf3266a9940c9ddb9cd3
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130655"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489361"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Azure Tablo Depolamayı kullanarak ticari Market müşteri adaylarını yönetme
 
@@ -38,7 +38,7 @@ Müşteri ilişkileri yönetimi (CRM) sisteminiz Iş Ortağı Merkezi 'nde Micro
 
 1. Azure portal **ana** sayfasında, depolama hesabınıza erişmek için **Tüm kaynaklarınızı gör** ' ü seçin. Ayrıca, Azure portal sol menü çubuğundan **tüm kaynaklar** ' ı da seçebilirsiniz.
 
-    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="Azure depolama hesabı oluşturma adımları.":::
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="Azure depolama hesabınıza erişin.":::
 
 1. Depolama hesabı bölmesinizden **erişim anahtarları** ' nı seçin ve anahtar için **bağlantı dizesi** değerini kopyalayın. Azure Market teklifiniz için müşteri adaylarını almak üzere Yayımlama portalında sağlamanız gereken **depolama hesabı bağlantı dizesi** değeri olduğundan bu değeri kaydedin.
 
@@ -48,7 +48,7 @@ Müşteri ilişkileri yönetimi (CRM) sisteminiz Iş Ortağı Merkezi 'nde Micro
     DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.screens.net
     ```
 
-    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png" alt-text="Azure depolama hesabı oluşturma adımları.":::
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png" alt-text="Azure depolama anahtarı.":::
 
 
 1. Depolama hesabı bölmesinizden **Tablolar** ' ı seçin ve tablo oluşturmak Için **+ tablo** ' yı seçin. Tablonuz için bir ad girin ve **Tamam** ' ı seçin. Müşteri adayları alındığında e-posta bildirimleri almak üzere bir akış yapılandırmak istiyorsanız bu değeri kaydedin.
@@ -185,7 +185,7 @@ Yayımlama portalında teklifiniz için lider yönetimi bilgilerini yapılandır
 
 1. **Müşteri müşteri adayları** bölümünde **Bağlan** ' ı seçin.
 
-    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-table/customer-leads.png" alt-text="Azure depolama hesabı oluşturma adımları.":::
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-table/customer-leads.png" alt-text="Müşteri liderleri":::
 
 1. **Bağlantı ayrıntıları** açılır penceresinde, **müşteri adayı hedefi** için **Azure tablosu** ' nu seçin. 
      ![Lider yönetimi, bağlantı ayrıntıları](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)
