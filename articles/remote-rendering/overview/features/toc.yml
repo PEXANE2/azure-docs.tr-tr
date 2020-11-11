@@ -18,6 +18,8 @@
   href: color-materials.md
 - name: Ana hattı işleme
   href: outlines.md
+- name: Kabuk işleme
+  href: shell-effect.md
 - name: Tek taraflı işleme
   href: single-sided-rendering.md
 - name: Uzamsal sorgular

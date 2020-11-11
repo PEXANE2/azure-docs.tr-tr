@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: 44c9dbb0eed5e8f7a868832af93a3b841f67f784
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d0ae4ef48bfb79130180cc477eb2a6fbeb470eb6
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310700"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506439"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>Azure SYNAPSE Analytics ile Apache Spark için .NET kullanın
 
@@ -48,15 +48,15 @@ Spark Batch iş tanımları veya etkileşimli Azure SYNAPSE Analytics Not defter
 
     **Windows 'da:**
 
-Dosyayı yayımlanan tüm ikili dosyalarla bin dizinine ayıklamak için [7-zip](https://www.7-zip.org/) veya [WinZip](https://www.winzip.com/)gibi bir ayıklama programı kullanın.
+    Dosyayı yayımlanan tüm ikili dosyalarla bin dizinine ayıklamak için [7-zip](https://www.7-zip.org/) veya [WinZip](https://www.winzip.com/)gibi bir ayıklama programı kullanın.
 
-     **On Linux:**
+    **Linux 'ta:**
 
-     1. Open a bash shell and cd into the bin directory with all the published binaries and run the following command.
+    Bir bash kabuğu ve CD 'yi, yayımlanan tüm ikili dosyalarla bin dizinine açın ve aşağıdaki komutu çalıştırın.
 
-       ```bash
-       zip -r publish.zip
-       ```
+    ```bash
+    zip -r publish.zip
+    ```
 
 ## <a name="net-for-apache-spark-in-azure-synapse-analytics-notebooks"></a>Azure SYNAPSE Analytics not defterlerinde Apache Spark için .NET 
 

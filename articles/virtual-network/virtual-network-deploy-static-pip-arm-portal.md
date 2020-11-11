@@ -1,5 +1,5 @@
 ---
-title: Statik bir genel IP adresi olan VM oluşturma-Azure portal | Microsoft Docs
+title: Statik bir genel IP adresi ile VM oluşturma-Azure portal
 description: Azure portal kullanarak statik bir genel IP adresi ile VM oluşturmayı öğrenin.
 services: virtual-network
 documentationcenter: na
@@ -11,77 +11,91 @@ ms.devlang: ''
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/08/2018
+ms.date: 11/12/2020
 ms.author: allensu
-ms.openlocfilehash: 9e06e4079a5118e0aa9dedb1fca719f0b28e5716
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ae0b869b24c4e05c88b936eceb1b9b1db3a9405
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448627"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506320"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Azure portal kullanarak statik genel IP adresi içeren bir sanal makine oluşturun
 
-Statik bir genel IP adresine sahip bir sanal makine oluşturabilirsiniz. Genel bir IP adresi, internet 'ten bir sanal makineyle iletişim kurmanızı sağlar. Adresin hiçbir şekilde değişmeyeceğinden emin olmak için dinamik bir adres yerine statik bir genel IP adresi atayın. [Statik genel IP adresleri](virtual-network-ip-addresses-overview-arm.md#allocation-method)hakkında daha fazla bilgi edinin. Var olan bir sanal makineye atanan bir genel IP adresini dinamik veya özel IP adresleriyle çalışacak şekilde değiştirmek için bkz. [IP adreslerini ekleme, değiştirme veya kaldırma](virtual-network-network-interface-addresses.md). Genel IP adreslerinin nominal bir [ücreti](https://azure.microsoft.com/pricing/details/ip-addresses)vardır ve abonelik başına KULLANABILECEĞINIZ genel IP adresi sayısı için bir [sınır](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) vardır.
+Genel bir IP adresi, internet 'ten bir sanal makineyle iletişim kurmanızı sağlar. 
+
+Adresin hiçbir şekilde değişmeyeceğinden emin olmak için dinamik bir adres yerine statik bir genel IP adresi atayın.   
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-https://portal.azure.com adresinden Azure portalında oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
-1. Azure portalının sol üst köşesinde bulunan **+ Kaynak oluştur** seçeneğini belirleyin.
-2. **İşlem**' ı seçin ve ardından **WINDOWS Server 2016 VM**veya seçtiğiniz başka bir işletim sistemini seçin.
-3. Aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve sonra **Tamam**’ı seçin:
+1. Portalın sol üst tarafında, **kaynak oluştur**  >  **işlem**  >  **sanal makinesi** ' ni seçin veya arama kutusunda **sanal makine** ara ' yı seçin.
+   
+2. **Sanal makine oluştur** ' da **temel bilgiler** sekmesinde değerleri yazın veya seçin:
 
-    |Ayar|Değer|
-    |---|---|
-    |Adı|myVM|
-    |Kullanıcı adı| Seçtiğiniz bir kullanıcı adını girin.|
-    |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır.|
-    |Abonelik| Aboneliğinizi seçin.|
-    |Kaynak grubu| **Mevcut olanı kullan**’ı seçin ve **myResourceGroup** seçeneğini belirleyin.|
-    |Konum| **Doğu ABD** seçin|
+    | Ayar | Değer                                          |
+    |-----------------------|----------------------------------|
+    | **Proje ayrıntıları** |  |
+    | Abonelik | Azure aboneliğinizi seçin |
+    | Kaynak Grubu | **Yeni oluştur** ’u seçin. </br> **Ad** alanına **myresourcegroup** yazın. </br> **Tamam** ’ı seçin. |
+    | **Örnek ayrıntıları** |  |
+    | Sanal makine adı | **Myvm 'yi** girin |
+    | Region | **Doğu ABD** seçin |
+    | Kullanılabilirlik seçenekleri | **Altyapı yedekliliği gerekli değil** ' i seçin |
+    | Görüntü | **Windows Server 2019 Datacenter-Gen1** seçin |
+    | Azure Spot örneği | **Hayır** seçin |
+    | Boyut | VM boyutunu seçin veya varsayılan ayarı yapın |
+    | **Yönetici hesabı** |  |
+    | Kullanıcı adı | Kullanıcı adı girin |
+    | Parola | Parola girin |
+    | Parolayı onayla | Parolayı yeniden girin |
 
-4. Sanal makine için bir boyut seçin ve **Seç** seçeneğini belirleyin.
-5. **Ayarlar**altında **genel IP adresi**' ni seçin.
-6. *Mypublicıpaddress*yazın, **statik**' i seçin ve ardından aşağıdaki resimde gösterildiği gibi **Tamam**' ı seçin:
+3. **Ağ** sekmesini seçin veya **Sonraki: diskler** ' i ve sonra **İleri: ağ** ' ı seçin.
+  
+4. Ağ sekmesinde, şunu seçin veya girin:
 
-   ![Statik seçin](./media/virtual-network-deploy-static-pip-arm-portal/select-static.png)
+    | Ayar | Değer |
+    |-|-|
+    | **Ağ arabirimi** |  |
+    | Sanal ağ | Varsayılan ağ adını kabul edin. |
+    | Alt ağ | Varsayılan alt ağ yapılandırmasını kabul edin. |
+    | Genel IP | **Yeni oluştur** ’u seçin. </br> **Genel IP adresi oluştur** bölümünde adı **Mypublicıp** yazın. </br> **SKU** için **Standart** ' ı seçin. </br> **Atama** , **statik** seçeneğini belirleyin. </br> **Tamam** ’ı seçin.  |
+    | NIC ağ güvenlik grubu | **Temel** seçin|
+    | Genel gelen bağlantı noktaları | **Seçili bağlantı noktalarına Izin ver** ' i seçin. |
+    | Gelen bağlantı noktalarını seçin | RDP 'yi seçin **(3389)** |
 
-   Genel IP adresinin standart bir SKU olması gerekiyorsa, **SKU**altında **Standart** ' ı seçin. [Genel IP adresi SKU 'ları](virtual-network-ip-addresses-overview-arm.md#sku)hakkında daha fazla bilgi edinin. Sanal makine, genel bir Azure Load Balancer arka uç havuzuna eklenecektir, sanal makinenin genel IP adresi SKU 'su, yük dengeleyicinin genel IP adresi SKU 'SU ile aynı olmalıdır. Ayrıntılar için bkz. [Azure Load Balancer](../load-balancer/skus.md).
-
-6. Bir bağlantı noktası seçin veya **Genel gelen bağlantı noktalarını seçin**altında bağlantı noktası yok. Portal 3389, Windows Server sanal makinesine internet 'ten uzaktan erişimi etkinleştirmek için seçilidir. 3389 numaralı bağlantı noktasını Internet 'ten açmak, üretim iş yükleri için önerilmez.
-
-   ![Bir bağlantı noktası seçin](./media/virtual-network-deploy-static-pip-arm-portal/select-port.png)
-
-7. Kalan varsayılan ayarları kabul edin ve **Tamam**' ı seçin.
-8. **Özet** sayfasında **Oluştur**'u seçin. Sanal makinenin dağıtılması birkaç dakika sürer.
-9. Sanal makine dağıtıldıktan sonra portalın üst kısmındaki arama kutusuna *Mypublicıpaddress* yazın. Arama sonuçlarında **Mypublicıpaddress** göründüğünde seçin.
-10. Aşağıdaki resimde gösterildiği gibi, atanan genel IP adresini ve adresin **Myvm** sanal makinesine atandığını görebilirsiniz:
-
-    ![Ekran görüntüsü, ı P adresi ve adı verilen ada sahip ortak ı P adresi bölmesini gösterir. ](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-overview.png)
-
-    Azure, içinde sanal makineyi oluşturduğunuz bölgede kullanılan adreslerden ortak bir IP adresi atamıştır. Azure [Genel](https://www.microsoft.com/download/details.aspx?id=56519), [US government](https://www.microsoft.com/download/details.aspx?id=57063), [Çin](https://www.microsoft.com/download/details.aspx?id=57062) ve [Almanya](https://www.microsoft.com/download/details.aspx?id=57064) bulutları için bu aralıkların (ön ekler) listesini indirebilirsiniz.
-
-11. Atamanın **statik**olduğunu onaylamak için **yapılandırma** ' yı seçin.
-
-    ![Ekran görüntüsü, seçili yapılandırma öğesinin bulunduğu ortak ı P adresi bölmesini gösterir.](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-configuration.png)
-
-> [!WARNING]
-> Sanal makinenin işletim sistemi içindeki IP adresi ayarlarını değiştirmeyin. İşletim sistemi, Azure genel IP adreslerinden oluşan farkında değildir. İşletim sistemine özel IP adresi ayarları ekleyebilse de, gerekmedikçe, [bir işletim sistemine özel bır IP adresi ekleme](virtual-network-network-interface-addresses.md#private)' yi bulana kadar yapmamasını öneririz.
+    > [!WARNING]
+    > Portal 3389, Windows Server sanal makinesine internet 'ten uzaktan erişimi etkinleştirmek için seçilidir. 3389 numaralı bağlantı noktasını Internet 'e açmak, üretim iş yüklerini yönetmek için önerilmez. </br> Azure sanal makinelerine güvenli erişim için bkz. **[Azure nasıl yapılır?](/azure/bastion/bastion-overview)**
+   
+5. **Gözden geçir + oluştur** ’u seçin. 
+  
+6. Ayarları gözden geçirin ve ardından **Oluştur** ' u seçin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Artık gerekli olmadığında kaynak grubunu ve içerdiği tüm kaynakları silin:
 
-1. Portalın üst kısmındaki **Ara** kutusuna *myResourceGroup* değerini girin. Arama sonuçlarında **myResourceGroup** seçeneğini gördüğünüzde bunu seçin.
-2. **Kaynak grubunu sil**'i seçin.
-3. **KAYNAK GRUBU ADINI YAZIN:** için *myResourceGroup* girin ve **Sil**’i seçin.
+1. Portalın üst kısmındaki **Ara** kutusuna **myResourceGroup** değerini girin. Arama sonuçlarında **myResourceGroup** seçeneğini gördüğünüzde bunu seçin.
+2. **Kaynak grubunu sil** 'i seçin.
+3. **KAYNAK GRUBU ADINI YAZIN:** için **myResourceGroup** girin ve **Sil** ’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure 'da [genel IP adresleri](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) hakkında daha fazla bilgi edinin
-- Tüm [genel IP adresi ayarları](virtual-network-public-ip-address.md#create-a-public-ip-address) hakkında daha fazla bilgi edinin
-- [Özel IP adresleri](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) hakkında daha fazla bilgi edinin ve bir Azure sanal makinesine [STATIK bir özel IP adresi](virtual-network-network-interface-addresses.md#add-ip-addresses) atama
-- [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sanal makineleri oluşturma hakkında daha fazla bilgi edinin
+Bkz. [IP adreslerini ekleme, değiştirme veya kaldırma](virtual-network-network-interface-addresses.md):
+
+* Dinamik olan bir genel IP adresini statik olarak değiştirmek için.
+* Özel IP adresleriyle çalışın.
+
+Genel IP adreslerinin nominal bir [ücreti](https://azure.microsoft.com/pricing/details/ip-addresses)vardır. Abonelik başına kullanabileceğiniz genel IP adresi sayısı için bir [sınır](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) vardır.
+
+Sanal makinenin genel IP adresi SKU 'SU, bir arka uç havuzuna eklendiğinde Azure Load Balancer ortak IP SKU 'SU ile eşleşmelidir. Ayrıntılar için bkz. [Azure Load Balancer](../load-balancer/skus.md).
+
+Azure [Genel](https://www.microsoft.com/download/details.aspx?id=56519), [US government](https://www.microsoft.com/download/details.aspx?id=57063), [Çin](https://www.microsoft.com/download/details.aspx?id=57062) ve [Almanya](https://www.microsoft.com/download/details.aspx?id=57064) bulutları için bu aralıkların (ön ekler) listesini indirebilirsiniz.
+
+- [Statik genel IP adresleri](virtual-network-ip-addresses-overview-arm.md#allocation-method)hakkında daha fazla bilgi edinin.
+- Azure 'da [genel IP adresleri](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) hakkında daha fazla bilgi edinin.
+- Tüm [genel IP adresi ayarları](virtual-network-public-ip-address.md#create-a-public-ip-address)hakkında daha fazla bilgi edinin.
+- [Özel IP adresleri](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) hakkında daha fazla bilgi edinin ve bir Azure sanal makinesine [STATIK bir özel IP adresi](virtual-network-network-interface-addresses.md#add-ip-addresses) atama.
