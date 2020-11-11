@@ -13,12 +13,14 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: f7073fbf39344fe39e179d55a5a8f395a6ba6240
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+- fasttrack-edit
+- iot
+ms.openlocfilehash: b179bb3566cc19b8033a56348db34cd1f05cee10
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357422"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506405"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Azure IoT Hub bağlantısını izleme, tanılama ve sorun giderme
 
@@ -159,6 +161,11 @@ AzureDiagnostics
 IoT çözümleri geliştirici veya operatörü olarak, Connect/Disconnect olaylarını ve günlüklerdeki ilgili hataları yorumlamak için bu davranışın farkında olmanız gerekir. Cihazların belirteç ömrü veya yenileme davranışını değiştirmek istiyorsanız, cihazın bir cihaz ikizi ayarı mı yoksa bunu mümkün kılan bir cihaz yöntemi mi uyguladığını denetleyin.
 
 Cihaz bağlantılarını Olay Hub 'ı ile izliyorsanız, SAS belirteci yenilemesi nedeniyle düzenli olarak kesilen bağlantıları filtreleyerek derlediğinizden emin olun; Örneğin, bağlantı kesme olayının ardından belirli bir zaman aralığında bir Connect olayı olduğu sürece, bağlantıları kesilen eylemleri tetiklememe.
+
+> [!NOTE]
+> IoT Hub, cihaz başına yalnızca bir etkin MQTT bağlantısını destekler. Aynı cihaz KIMLIĞI adına göre yeni MQTT bağlantısı, IoT Hub var olan bağlantıyı bırakmaya neden olur.
+>
+> 400027 Connectionforcefullyıclosedonnewconnection IoT Hub günlüklerinde oturum açacaktır
 
 ## <a name="i-tried-the-steps-but-they-didnt-work"></a>Adımları denedim, ancak bunlar çalışmadı
 

@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 41bbac2032c69861790b806e914827183f83844b
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 448707ab84ccca03dc0572d2ebed1b4bd1b6325f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93396082"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505300"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Hızlı başlangıç: ilk Azure Spring Cloud uygulamanızı dağıtın
 
@@ -163,11 +163,11 @@ Visual Studio 'da, API proje şablonuyla "Hello-World" adlı bir ASP.NET Core We
    ```csharp
    public static IHostBuilder CreateHostBuilder(string[] args) =>
                Host.CreateDefaultBuilder(args)
+                   .UseAzureSpringCloudService()
                    .ConfigureWebHostDefaults(webBuilder =>
                    {
                        webBuilder.UseStartup<Startup>();
-                   })
-                   .UseAzureSpringCloudService();
+                   });
    ```
 
 4. *Startup.cs* dosyasında, `using` ve yöntemlerinin sonunda Steeltoe hizmeti bulma 'yı kullanan bir yönerge ve kod ekleyin `ConfigureServices` `Configure` :

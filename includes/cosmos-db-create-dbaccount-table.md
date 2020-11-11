@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,40 +8,41 @@ ms.topic: include
 ms.date: 01/24/2020
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 5015371afc67574a214097f8d3eef661df29c22f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 941e2ee7b8eba957d970998324156c50a86439af
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85115056"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94503925"
 ---
 1. Yeni bir tarayıcı penceresinde [Azure portalında](https://portal.azure.com/) oturum açın.
 
-2. Sol taraftaki menüde **kaynak oluştur**' u seçin.
+2. Sol taraftaki menüde **kaynak oluştur** ' u seçin.
    
    :::image type="content" source="./media/cosmos-db-create-dbaccount-table/create-nosql-db-databases-json-tutorial-0.png" alt-text="Azure portalında kaynak oluşturma":::
    
-3. **Yeni** sayfada **veritabanları**  >  **Azure Cosmos DB**' nı seçin.
+3. **Yeni** sayfada **veritabanları**  >  **Azure Cosmos DB** ' nı seçin.
    
-   :::image type="content" source="./media/cosmos-db-create-dbaccount-table/create-nosql-db-databases-json-tutorial-1.png" alt-text="Azure portalında kaynak oluşturma":::
+   :::image type="content" source="./media/cosmos-db-create-dbaccount-table/create-nosql-db-databases-json-tutorial-1.png" alt-text="Azure portalındaki Veritabanları bölmesi":::
    
 3. **Azure Cosmos DB hesabı oluştur** sayfasında, yeni Azure Cosmos DB hesabının ayarlarını girin. 
  
     Ayar|Değer|Açıklama
     ---|---|---
     Abonelik|Aboneliğiniz|Bu Azure Cosmos DB hesabı için kullanmak istediğiniz Azure aboneliğini seçin. 
-    Kaynak Grubu|**Yeni**, sonra hesap adı oluştur|**Yeni oluştur**’u seçin. Ardından, hesabınız için yeni bir kaynak grubu adı girin. Basitlik için Azure Cosmos DB hesap adınızla aynı adı kullanın. 
+    Kaynak Grubu|**Yeni** , sonra hesap adı oluştur|**Yeni oluştur** ’u seçin. Ardından, hesabınız için yeni bir kaynak grubu adı girin. Basitlik için Azure Cosmos DB hesap adınızla aynı adı kullanın. 
     Hesap Adı|Benzersiz bir ad|Azure Cosmos DB hesabınızı tanımlayan benzersiz bir ad girin.<br><br>Hesap adı yalnızca küçük harf, sayı ve kısa çizgi (-) kullanabilir ve 3 ila 31 karakter uzunluğunda olmalıdır.
-    API|Tablo|API, oluşturulacak hesap türünü belirler. Azure Cosmos DB beş API sağlar: belge veritabanları için çekirdek (SQL), grafik veritabanları için Gremlin, belge veritabanları için MongoDB, Azure tablosu ve Cassandra. Her API için ayrı bir hesap oluşturmanız gerekir. <br><br>**Azure tablosu**' nu seçin, çünkü bu hızlı başlangıçta tablo API'si ile birlikte çalışacak bir tablo oluşturuyorsunuz. <br><br>[Tablo API'si hakkında daha fazla bilgi edinin](../articles/cosmos-db/table-introduction.md).|
+    API|Tablo|API, oluşturulacak hesap türünü belirler. Azure Cosmos DB beş API sağlar: belge veritabanları için çekirdek (SQL), grafik veritabanları için Gremlin, belge veritabanları için MongoDB, Azure tablosu ve Cassandra. Her API için ayrı bir hesap oluşturmanız gerekir. <br><br>**Azure tablosu** ' nu seçin, çünkü bu hızlı başlangıçta tablo API'si ile birlikte çalışacak bir tablo oluşturuyorsunuz. <br><br>[Tablo API'si hakkında daha fazla bilgi edinin](../articles/cosmos-db/table-introduction.md).|
     Konum|Kullanıcılarınıza en yakın bölge|Azure Cosmos DB hesabınızın barındırılacağı coğrafi konumu seçin. Verilere en hızlı erişimi sağlamak için kullanıcılarınıza en yakın olan konumu kullanın.
+    Kapasite modu|Sağlanan aktarım hızı veya sunucusuz|[Sağlanan aktarım](../articles/cosmos-db/set-throughput.md) hızı modunda bir hesap oluşturmak için **sağlanan aktarım hızı** ' nı seçin. [Sunucusuz modda bir](../articles/cosmos-db/serverless.md) hesap oluşturmak Için **sunucusuz** ' ı seçin.
 
     Ek ücretlerden kaçınmak için, **coğrafi artıklık** ve **çok bölgeli yazma** seçeneklerini **devre dışı** bırakmak ve **ağ** ve **Etiketler** bölümlerini atlamak için kullanabilirsiniz.
 
-5. **Gözden geçir + oluştur**' u seçin. Doğrulama tamamlandıktan sonra, hesabı oluşturmak için **Oluştur** ' u seçin. 
+5. **Gözden geçir + oluştur** ' u seçin. Doğrulama tamamlandıktan sonra, hesabı oluşturmak için **Oluştur** ' u seçin. 
  
-   :::image type="content" source="./media/cosmos-db-create-dbaccount-table/azure-cosmos-db-create-new-account.png" alt-text="Azure portalında kaynak oluşturma":::
+   :::image type="content" source="./media/cosmos-db-create-dbaccount-table/azure-cosmos-db-create-new-account.png" alt-text="Azure Cosmos DB için yeni hesap sayfası":::
 
-6. Hesabın oluşturulması birkaç dakika sürer. **Dağıtımınızın devam**ettiği bir ileti görürsünüz. Dağıtımın bitmesini bekleyin ve sonra **Kaynağa Git**' i seçin.
+6. Hesabın oluşturulması birkaç dakika sürer. **Dağıtımınızın devam** ettiği bir ileti görürsünüz. Dağıtımın bitmesini bekleyin ve sonra **Kaynağa Git** ' i seçin.
 
-    :::image type="content" source="./media/cosmos-db-create-dbaccount-table/azure-cosmos-db-account-created.png" alt-text="Azure portalında kaynak oluşturma":::
+    :::image type="content" source="./media/cosmos-db-create-dbaccount-table/azure-cosmos-db-account-created.png" alt-text="Azure portal bildirimleri bölmesi":::
 

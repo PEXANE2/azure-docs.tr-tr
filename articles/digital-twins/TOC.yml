@@ -111,7 +111,7 @@
       items:
         - name: Ölçümleri Azure İzleyici’de görüntüleme
           href: troubleshoot-metrics.md
-        - name: Tanılama günlüklerini etkinleştirme
+        - name: Tanılama günlüklerini etkinleştirme ve sorgulama
           href: troubleshoot-diagnostics.md
         - name: Uyarıları etkinleştirme
           href: troubleshoot-alerts.md

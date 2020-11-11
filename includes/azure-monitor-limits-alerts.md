@@ -1,19 +1,19 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: azure-monitor
 author: rboucher
 tags: azure-service-management
 ms.topic: include
-ms.date: 08/11/2020
+ms.date: 10/01/2020
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 332841d4ee4791cb8da1620aa292b05bbde74955
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 33d701fe8dc19b3deaa05cf6f10643bdb1059aa1
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88162831"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505764"
 ---
 | Kaynak | Varsayılan limit | Üst sınır |
 | --- | --- | --- |
@@ -23,7 +23,3 @@ ms.locfileid: "88162831"
 | Günlük uyarıları | Abonelik başına 512 etkin uyarı kuralı. Kaynak başına 200 etkin uyarı kuralı. | Destek çağırma |
 | Eylem grupları |Abonelik başına 2.000 eylem grubu. | Destek çağırma |
 | Uyarı kuralları ve eylem kuralları açıklaması uzunluğu| Günlük arama uyarıları 4096 karakterleri<br/>Tüm diğer 2048 karakterleri | Varsayılan ile aynı |
-| Otomatik ölçeklendirme ayarları |her abonelik için bölge başına 100. | Varsayılan ile aynı |
-| Otomatik ölçeklendirme profilleri |Otomatik ölçeklendirme ayarı başına 20 profil. | Varsayılan ile aynı |
-
-

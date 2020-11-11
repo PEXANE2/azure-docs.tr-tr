@@ -2,16 +2,16 @@
 title: 'Hızlı başlangıç: Python uygulaması oluşturma'
 description: İlk Python uygulamanızı App Service bir Linux kapsayıcısına dağıtarak Azure App Service kullanmaya başlayın.
 ms.topic: quickstart
-ms.date: 09/22/2020
+ms.date: 11/10/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 adobe-target: true
-ms.openlocfilehash: c77465997f74d0f279080a68fd317af0d161127a
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: b32977ac1c8cfe0c461bcd1628c08a0ca215ba93
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357530"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506201"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Hızlı başlangıç: Linux üzerinde Azure App Service bir Python uygulaması oluşturma
 
@@ -64,7 +64,7 @@ Bu komut, kimlik bilgilerinizi toplamak için bir tarayıcı açar. Komut tamaml
 
 Oturum açtıktan sonra, aboneliğinizdeki kaynaklarla çalışmak için Azure CLı ile Azure komutlarını çalıştırabilirsiniz.
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/FlaskCLIQuickstartHelp)
+Sorun mu yaşıyorsunuz? [Bize bilgi verin](https://aka.ms/FlaskCLIQuickstartHelp).
 
 ## <a name="clone-the-sample"></a>Örneği
 
@@ -96,7 +96,7 @@ cd python-docs-hello-django
 
 Örnek, uygulamayı başlatırken Azure App Service tanıdığı çerçeveye özgü kod içerir. Daha fazla bilgi için bkz. [kapsayıcı başlatma işlemi](configure-language-python.md#container-startup-process).
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/FlaskCLIQuickstartHelp)
+Sorun mu yaşıyorsunuz? [Bize bilgi verin](https://aka.ms/FlaskCLIQuickstartHelp).
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 
@@ -146,7 +146,7 @@ cd python-docs-hello-django
 1. Terminal pencerenizde, **Ctrl** + geliştirme sunucusundan çıkmak için CTRL **C** tuşuna basın.
 ::: zone-end
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/FlaskCLIQuickstartHelp)
+Sorun mu yaşıyorsunuz? [Bize bilgi verin](https://aka.ms/FlaskCLIQuickstartHelp).
 
 ## <a name="deploy-the-sample"></a>Örneği dağıtma
 
@@ -167,13 +167,13 @@ Komutun tamamlanması birkaç dakika sürebilir. Çalıştırılırken, kaynak g
 
 ![Az WebApp up komutunun örnek çıktısı](./media/quickstart-python/az-webapp-up-output.png)
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/FlaskCLIQuickstartHelp)
+Sorun mu yaşıyorsunuz? İlk olarak [sorun giderme kılavuzuna](configure-language-python.md#troubleshooting)başvurun, aksi takdirde [bize bilgi verin](https://aka.ms/FlaskCLIQuickstartHelp).
 
 [!include [az webapp up command note](../../includes/app-service-web-az-webapp-up-note.md)]
 
 ## <a name="browse-to-the-app"></a>Uygulamaya göz atma
 
-URL 'de Web tarayıcınızda dağıtılan uygulamaya gidin `http://<app-name>.azurewebsites.net` . Başlangıçta uygulamanın başlatılması birkaç dakika sürer.
+URL 'de Web tarayıcınızda dağıtılan uygulamaya gidin `http://<app-name>.azurewebsites.net` . Uygulamanın başlaması bir veya iki dakika sürebilir, bu nedenle varsayılan bir uygulama sayfası görürseniz bir dakika bekleyip Tarayıcıyı yenileyin.
 
 Python örnek kodu, yerleşik bir görüntü kullanarak App Service bir Linux kapsayıcısı çalıştırıyor.
 
@@ -181,7 +181,7 @@ Python örnek kodu, yerleşik bir görüntü kullanarak App Service bir Linux ka
 
 **Tebrikler!** App Service için Python uygulamanızı dağıttınız.
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/FlaskCLIQuickstartHelp)
+Sorun mu yaşıyorsunuz? İlk olarak [sorun giderme kılavuzuna](configure-language-python.md#troubleshooting)başvurun, aksi takdirde [bize bilgi verin](https://aka.ms/FlaskCLIQuickstartHelp).
 
 ## <a name="redeploy-updates"></a>Güncelleştirmeleri yeniden Dağıt
 
@@ -218,7 +218,7 @@ Dağıtım tamamlandıktan sonra tarayıcı penceresine geri dönün `http://<ap
 
 ![Azure 'da güncelleştirilmiş örnek bir Python uygulaması çalıştırma](./media/quickstart-python/run-updated-hello-world-sample-python-app-in-browser.png)
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/FlaskCLIQuickstartHelp)
+Sorun mu yaşıyorsunuz? İlk olarak [sorun giderme kılavuzuna](configure-language-python.md#troubleshooting)başvurun, aksi takdirde [bize bilgi verin](https://aka.ms/FlaskCLIQuickstartHelp).
 
 > [!TIP]
 > Visual Studio Code, Python web uygulamalarını App Service dağıtma sürecini kolaylaştıran Python ve Azure App Service için güçlü uzantılar sağlar. Daha fazla bilgi için bkz. [Visual Studio Code App Service Için Python uygulamaları dağıtma](/azure/python/tutorial-deploy-app-service-on-linux-01).
@@ -241,7 +241,7 @@ Ayrıca, tarayıcıdan `https://<app-name>.scm.azurewebsites.net/api/logs/docker
 
 Günlük akışını istediğiniz zaman durdurmak için terminalde **CTRL** + **C** tuşuna basın.
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/FlaskCLIQuickstartHelp)
+Sorun mu yaşıyorsunuz? [Bize bilgi verin](https://aka.ms/FlaskCLIQuickstartHelp).
 
 ## <a name="manage-the-azure-app"></a>Azure uygulamasını yönetme
 
@@ -259,7 +259,7 @@ Uygulamanın seçilmesi, **genel bakış** sayfasını açar, buradan göz at, d
 
 App Service menüsü, uygulamanızı yapılandırmak için farklı sayfalar sağlar.
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/FlaskCLIQuickstartHelp)
+Sorun mu yaşıyorsunuz? İlk olarak [sorun giderme kılavuzuna](configure-language-python.md#troubleshooting)başvurun, aksi takdirde [bize bilgi verin](https://aka.ms/FlaskCLIQuickstartHelp).
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -275,7 +275,7 @@ Komut *. Azure/config* dosyasında önbelleğe alınmış kaynak grubu adını k
 
 `--no-wait`Bağımsız değişkeni, işlem tamamlanmadan önce komutun dönmesini sağlar.
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/FlaskCLIQuickstartHelp)
+Sorun mu yaşıyorsunuz? [Bize bilgi verin](https://aka.ms/FlaskCLIQuickstartHelp).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

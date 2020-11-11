@@ -160,6 +160,8 @@
         - name: Kurumsal güvenliğe genel bakış
           displayName: authorization authentication encryption aad azure active directory
           href: concept-enterprise-security.md
+        - name: Veri şifrelemesi
+          href: concept-data-encryption.md
         - name: Güvenlik temeli
           href: security-baseline.md
     - name: Sorumlu makine öğrenmesi
@@ -182,14 +184,17 @@
       items:
         - name: Kimlik ve erişim yönetimi
           items:
-            - name: Kimlik doğrulamasını ayarlama
+            - name: Çalışma alanı kimlik doğrulaması
               displayName: 'authentication, auth, oauth'
               href: how-to-setup-authentication.md
-            - name: Kullanıcıları ve rolleri yönetme
+            - name: Web hizmeti kimlik doğrulaması
+              displayName: 'authentication, model, web service'
+              href: how-to-authenticate-web-service.md
+            - name: Erişimi yönetme (yetkilendirme)
               href: how-to-assign-roles.md
-            - name: Erişim denetimi için yönetilen kimlikler kullanma
+            - name: Erişim denetimi için yönetilen kimlikler
               href: how-to-use-managed-identities.md
-            - name: AKS dağıtımlarında Azure AD kimliği kullanma
+            - name: AKS dağıtımlarında Azure AD kimliği
               href: how-to-use-azure-ad-identity.md
         - name: Ağ güvenliği
           items:

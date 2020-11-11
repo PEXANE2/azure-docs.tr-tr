@@ -1,21 +1,21 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: azure-communication-services
-author: matthewrobertson
-manager: nimag
+author: tomaschladek
+manager: nmurav
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
 ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
-ms.author: marobert
-ms.openlocfilehash: a9c8d604e5564526936f37edcc9eec5891443a47
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.author: tchladek
+ms.openlocfilehash: de578ec286a8232ee8d4e259b2f37fb76101f7a5
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779842"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506279"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -28,7 +28,7 @@ ms.locfileid: "91779842"
 
 ### <a name="create-a-new-java-application"></a>Yeni bir Java uygulaması oluşturma
 
-Terminal veya komut pencerenizi açın ve Java uygulamanızı oluşturmak istediğiniz dizine gidin. Maven-,-hızlı başlangıç şablonundan Java projesi oluşturmak için aşağıdaki komutu çalıştırın.
+Terminal veya komut pencerenizi açın. Java uygulamanızı oluşturmak istediğiniz dizine gidin. Maven-,-hızlı başlangıç şablonundan Java projesi oluşturmak için aşağıdaki komutu çalıştırın.
 
 ```console
 mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=communication-quickstart -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
@@ -60,23 +60,23 @@ Proje dizininden:
 Başlamak için aşağıdaki kodu kullanın:
 
 ```java
-import com.azure.communication.common.CommunicationUser;
-import com.azure.communication.administration.models.CommunicationIdentityToken;
-import com.azure.communication.administration.CommunicationIdentityClient;
-import com.azure.communication.administration.CommunicationIdentityClientBuilder;
+import com.azure.communication.administration.*;
+import com.azure.communication.common.*;
 import java.io.*;
+import java.util.*;
+import java.time.*;
+
+import com.azure.core.http.*;
 
 public class App
 {
     public static void main( String[] args ) throws IOException
     {
-        System.out.println("Azure Communication Services - User Access Tokens Quickstart");
+        System.out.println("Azure Communication Services - Access Tokens Quickstart");
         // Quickstart code goes here
     }
 }
 ```
-
-[!INCLUDE [User Access Tokens Object Model](user-access-tokens-object-model.md)]
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
@@ -85,65 +85,77 @@ public class App
 `main` yöntemine aşağıdaki kodu ekleyin:
 
 ```java
-// Your can find your endpoint and access token from your resource in the Azure Portal
+// Your can find your endpoint and access key from your resource in the Azure Portal
 String endpoint = "https://<RESOURCE_NAME>.communication.azure.com";
-String accessToken = "SECRET";
+String accessKey = "SECRET";
 
 // Create an HttpClient builder of your choice and customize it
 // Use com.azure.core.http.netty.NettyAsyncHttpClientBuilder if that suits your needs
+// -> Add "import com.azure.core.http.netty.*;"
+// -> Add azure-core-http-netty dependency to file pom.xml
+
 HttpClient httpClient = new NettyAsyncHttpClientBuilder().build();
 
 CommunicationIdentityClient communicationIdentityClient = new CommunicationIdentityClientBuilder()
     .endpoint(endpoint)
-    .credential(new CommunicationClientCredential(accessToken))
+    .credential(new CommunicationClientCredential(accessKey))
     .httpClient(httpClient)
     .buildClient();
 ```
 
 İstemciyi, arabirimini uygulayan herhangi bir özel HTTP istemcisiyle başlatabilirsiniz `com.azure.core.http.HttpClient` . Yukarıdaki kod, tarafından sunulan [Azure Core Netty http istemcisinin](https://docs.microsoft.com/java/api/overview/azure/core-http-netty-readme?view=azure-java-stable&preserve-view=true) kullanımını gösterir `azure-core` .
 
-## <a name="create-a-user"></a>Kullanıcı oluşturma
+## <a name="create-an-identity"></a>Kimlik oluşturma
 
-Azure Iletişim Hizmetleri, hafif bir kimlik dizini sağlar. `createUser`Dizinde benzersiz olan yeni bir giriş oluşturmak için yöntemini kullanın `Id` . Uygulamanızın kullanıcıları ve Iletişim Hizmetleri tarafından oluşturulan kimlikler (örneğin, uygulama sunucunuzun veritabanında depolayarak) arasında bir eşleme korumanız gerekir.
+Azure Iletişim Hizmetleri, hafif bir kimlik dizini sağlar. `createUser`Dizinde benzersiz olan yeni bir giriş oluşturmak için yöntemini kullanın `Id` . Uygulamanın kullanıcılarına eşleme ile alınan kimliği depola. Örneğin, bunları uygulama sunucunuzun veritabanında depolayarak. Daha sonra erişim belirteçleri vermek için kimlik gereklidir.
 
 ```java
-CommunicationUser user = communicationIdentityClient.createUser();
-System.out.println("\nCreated a user with ID: " + user.getId());
+CommunicationUser identity = communicationIdentityClient.createUser();
+System.out.println("\nCreated an identity with ID: " + identity.getId());
 ```
 
-## <a name="issue-user-access-tokens"></a>Kullanıcı erişim belirteçleri verme
+## <a name="issue-access-tokens"></a>Erişim belirteçleri verme
 
-`issueToken`Iletişim Hizmetleri kullanıcısına erişim belirteci vermek için yöntemini kullanın. İsteğe bağlı parametreyi sağlamazsanız, `user` Yeni bir Kullanıcı oluşturulur ve belirteçle döndürülür.
+`issueToken`Zaten var olan Iletişim Hizmetleri kimliği için bir erişim belirteci vermek üzere metodunu kullanın. Parametresi `scopes` , bu erişim belirtecini yetkilendirecek temel öğeler kümesini tanımlar. [Desteklenen eylemlerin listesine](../../concepts/authentication.md)bakın. Parametresinin yeni örneği, `user` Azure Iletişim hizmeti kimliğinin dize gösterimine göre oluşturulabilir.
 
 ```java
-// Issue an access token with the "voip" scope for a new user
+// Issue an access token with the "voip" scope for an identity
 List<String> scopes = new ArrayList<>(Arrays.asList("voip"));
-CommunicationUserToken response = communicationIdentityClient.issueToken(user, scopes);
+CommunicationUserToken response = communicationIdentityClient.issueToken(identity, scopes);
 OffsetDateTime expiresOn = response.getExpiresOn();
 String token = response.getToken();
-String userId = response.getUser().getId();
-System.out.println("\nIssued a access token with 'voip' scope for identity with ID: " + userId + ": " + token);
-System.out.println(token);
+String identityId = response.getUser().getId();
+System.out.println("\nIssued a access token with 'voip' scope for identity with ID: " + identityId + ": " + token);
 ```
 
-Kullanıcı erişim belirteçleri, kullanıcılarınızın hizmet kesintilerini yaşmasını engellemek için yeniden verilmesini gerektiren kısa süreli kimlik bilgileridir. `expiresAt`Response özelliği, belirtecin ömrünü gösterir.
+Erişim belirteçleri yeniden verilmesini gerektiren kısa ömürlü kimlik bilgileridir. Bunu yapmamak, uygulamanızın kullanıcı deneyiminin kesintiye uğramasına neden olabilir. `expiresAt`Response özelliği, erişim belirtecinin ömrünü gösterir.
 
-## <a name="revoke-user-access-tokens"></a>Kullanıcı erişim belirteçlerini iptal et
+## <a name="refresh-access-tokens"></a>Erişim belirteçlerini yenileme
 
-Bazı durumlarda, örneğin, bir kullanıcı hizmetinize kimlik doğrulamak için kullandıkları parolayı değiştirdiğinde Kullanıcı erişim belirteçlerini açıkça iptal etmeniz gerekebilir. Bu, `revokeTokens` kullanıcının tüm erişim belirteçlerini geçersiz kılmak için yöntemini kullanır.
+Bir erişim belirtecini yenilemek için, öğesini kullanarak yeniden `CommunicationUser` yayımlayın:
 
 ```java  
-communicationIdentityClient.revokeTokens(user, OffsetDateTime.now());
-System.out.println("\nRevoked tokens for the user with ID: " + user.getId());
+// Value existingIdentity represents identity of Azure Communication Services stored during identity creation
+CommunicationUser identity = new CommunicationUser(existingIdentity);
+response = communicationIdentityClient.issueToken(identity, scopes);
 ```
 
-## <a name="delete-a-user"></a>Kullanıcı silme
+## <a name="revoke-access-tokens"></a>Erişim belirteçlerini iptal et
 
-Bir kullanıcının silinmesi, tüm etkin belirteçleri iptal eder ve kimlikler için sonraki belirteçleri yayınlamaya engel olur. Ayrıca, kullanıcıyla ilişkili tüm kalıcı içeriği de kaldırır.
+Bazı durumlarda, erişim belirteçlerini açıkça iptal edebilirsiniz. Örneğin, bir uygulamanın kullanıcısı hizmetinize kimlik doğrulaması yapmak için kullandıkları parolayı değiştirdiğinde. Yöntem `revokeTokens` , kimliğe verilen tüm etkin erişim belirteçlerini geçersiz kılar.
+
+```java  
+communicationIdentityClient.revokeTokens(identity, OffsetDateTime.now());
+System.out.println("\nRevoked access tokens for the user with ID: " + identity.getId());
+```
+
+## <a name="delete-an-identity"></a>Kimlik silme
+
+Bir kimlik silindiğinde tüm etkin erişim belirteçleri iptal olur ve kimlik için erişim belirteçleri yayınınızdan sonra. Ayrıca, kimlik ile ilişkili tüm kalıcı içeriği de kaldırır.
 
 ```java
-communicationIdentityClient.deleteUser(user);
-System.out.println("\nSuccessfully deleted the identity with ID: " + user.getId());
+communicationIdentityClient.deleteUser(identity);
+System.out.println("\nSuccessfully deleted the identity with ID: " + identity.getId());
 ```
 
 ## <a name="run-the-code"></a>Kodu çalıştırma

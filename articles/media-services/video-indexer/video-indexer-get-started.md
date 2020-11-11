@@ -10,18 +10,18 @@ ms.subservice: video-indexer
 ms.topic: quickstart
 ms.date: 10/30/2020
 ms.author: juliako
-ms.openlocfilehash: 9ad004f65335d79205cbaddaa190b92a19c327d5
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 7099b0d303965b987fb316170738cc82568dc6d6
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147292"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505606"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Hızlı başlangıç: nasıl kaydolun ve ilk videonuzu karşıya yükleyebilirsiniz
 
 Bu başlangıç hızlı başlangıcı, Video Indexer Web sitesinde oturum açmayı ve ilk videonuzu karşıya yüklemeyi gösterir.
 
-Video Indexer hesabınızı oluştururken ücretsiz bir deneme hesabı (belirli sayıda ücretsiz dizin oluşturma dakikası elde edersiniz) veya ücretli bir seçenek (kota sınırlaması olmaz) arasından seçim yapabilirsiniz. Ücretsiz deneme kullanıldığında Video Indexer, web sitesi kullanıcılarına 600 dakikaya kadar ve API kullanıcılarına ise 2400 dakikaya kadar ücretsiz dizin oluşturma olanağı sunar. Ücretli seçenek kullanıldığında [Azure aboneliğinize ve bir Azure Media Services hesabına bağlı](connect-to-azure.md) bir Video Indexer hesabı oluşturulur. Dizin oluşturma faaliyeti yapılan dakika sayısının yanı sıra Azure Media Services hesabıyla ilgili ücretler için ödeme yaparsınız. 
+Video Indexer hesabınızı oluştururken ücretsiz bir deneme hesabı (belirli sayıda ücretsiz dizin oluşturma dakikası elde edersiniz) veya ücretli bir seçenek (kota sınırlaması olmaz) arasından seçim yapabilirsiniz. Ücretsiz deneme kullanıldığında Video Indexer, web sitesi kullanıcılarına 600 dakikaya kadar ve API kullanıcılarına ise 2400 dakikaya kadar ücretsiz dizin oluşturma olanağı sunar. Ücretli seçenek kullanıldığında [Azure aboneliğinize ve bir Azure Media Services hesabına bağlı](connect-to-azure.md) bir Video Indexer hesabı oluşturulur. Dizin oluşturma için ödeme yaparsınız. daha fazla bilgi için bkz. [Media Services fiyatlandırması](https://azure.microsoft.com/pricing/details/media-services/). 
 
 ## <a name="sign-up-for-video-indexer"></a>Video Indexer’a kaydolma
 
@@ -51,12 +51,12 @@ Video Indexer ile kullanabileceğiniz dosya biçimlerinin bir listesi için bkz.
 1. Videonuz karşıya yüklendikten sonra Video Indexer videoyu dizinlemeye ve analiz etmeye başlar. İlerleme durumunu görürsünüz. 
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="Karşıya yükle":::
+    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="Karşıya yükleme ilerleme durumu":::
 1. Video Indexer çözümlendikten sonra, videonuza bağlantı içeren bir e-posta alacaksınız ve videonuzda nelerin bulunmuştur ilgili kısa bir açıklama alırsınız. Örneğin: insanlar, konuşulan ve yazılı sözcükler, konular ve adlandırılmış varlıklar.
 1. Daha sonra videonuzu kitaplık listesinde bulabilir ve farklı işlemler yapabilirsiniz. Örneğin: arama, yeniden dizin, düzenleme.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/video-indexer-get-started/uploaded.png" alt-text="Karşıya yükle":::
+    > :::image type="content" source="./media/video-indexer-get-started/uploaded.png" alt-text="Karşıya yükleme karşıya yüklendi":::
  
 ## <a name="see-also"></a>Ayrıca bkz.
 

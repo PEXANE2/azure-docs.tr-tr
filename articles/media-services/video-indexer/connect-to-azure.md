@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: a101afb2089e4ab1fa32bd0668c60b477039b566
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 0d954123b0d48a4b78c0dcda98898b7ab539d502
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330589"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504518"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure 'a bağlı bir Video Indexer hesabı oluşturun
 
-Video Indexer hesabınızı oluştururken ücretsiz bir deneme hesabı (belirli sayıda ücretsiz dizin oluşturma dakikası elde edersiniz) veya ücretli bir seçenek (kota sınırlaması olmaz) arasından seçim yapabilirsiniz. Ücretsiz deneme kullanıldığında Video Indexer, web sitesi kullanıcılarına 600 dakikaya kadar ve API kullanıcılarına ise 2400 dakikaya kadar ücretsiz dizin oluşturma olanağı sunar. Ücretli seçenek kullanıldığında Azure aboneliğinize ve bir Azure Media Services hesabına bağlı bir Video Indexer hesabı oluşturulur. Dizin oluşturma faaliyeti yapılan dakika sayısının yanı sıra medya hesabı ile ilgili ücretler için ödeme yaparsınız.
+Video Indexer hesabınızı oluştururken ücretsiz bir deneme hesabı (belirli sayıda ücretsiz dizin oluşturma dakikası elde edersiniz) veya ücretli bir seçenek (kota sınırlaması olmaz) arasından seçim yapabilirsiniz. Ücretsiz deneme kullanıldığında Video Indexer, web sitesi kullanıcılarına 600 dakikaya kadar ve API kullanıcılarına ise 2400 dakikaya kadar ücretsiz dizin oluşturma olanağı sunar. Ücretli seçenekle, Azure aboneliğinize bağlı bir Video Indexer hesabı oluşturursunuz. Dizin oluşturma için ödeme yaparsınız. daha fazla bilgi için bkz. [Media Services fiyatlandırması](https://azure.microsoft.com/pricing/details/media-services/).
 
 Bu makalede, bir Azure aboneliğine ve bir Azure Media Services hesabına bağlı Video Indexer hesabının nasıl oluşturulacağı gösterilmektedir. Bu konuda otomatik (varsayılan) Flow kullanılarak Azure 'a bağlanmak için gereken adımlar sağlanmaktadır. Ayrıca, Azure 'a el ile nasıl bağlanagösterdiğini gösterir (Gelişmiş).
 

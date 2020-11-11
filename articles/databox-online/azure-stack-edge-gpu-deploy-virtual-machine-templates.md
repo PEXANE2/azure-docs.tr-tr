@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: eeefbcdc080620c60f7cd49b8f749375e23ddd02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0d02532f39d676772e5ee5d6414b802faffba7c
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899710"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505946"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>Şablonlar aracılığıyla Azure Stack Edge Pro GPU cihazınızda sanal makineler dağıtma
 
@@ -79,7 +79,7 @@ VM oluşturma için gerekli olacak kaynakları oluşturmak için bu önkoşullar
 [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) ile yeni bir Azure kaynak grubu oluşturun. Kaynak grubu, depolama hesabı, disk, yönetilen disk gibi Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
 > [!IMPORTANT]
-> Tüm kaynaklar cihazla aynı konumda oluşturulur ve konum **Dbelocal**olarak ayarlanır.
+> Tüm kaynaklar cihazla aynı konumda oluşturulur ve konum **Dbelocal** olarak ayarlanır.
 
 ```powershell
 New-AzureRmResourceGroup -Name <Resource group name> -Location DBELocal
@@ -149,7 +149,7 @@ Tipik bir ortamda, DNS 'niz, tüm depolama hesaplarının bir girdiyle Azure Sta
 
 ### <a name="optional-install-certificates"></a>Seçim Sertifikaları yükler
 
-*Http*kullanarak Depolama Gezgini aracılığıyla bağlanacaksınız bu adımı atlayın. *Https*kullanıyorsanız, Depolama Gezgini uygun sertifikaları yüklemeniz gerekir. Bu durumda, blob uç noktası sertifikasını yükler. Daha fazla bilgi için bkz. [sertifikaları yönetme](azure-stack-edge-j-series-manage-certificates.md)bölümünde sertifika oluşturma ve karşıya yükleme. 
+*Http* kullanarak Depolama Gezgini aracılığıyla bağlanacaksınız bu adımı atlayın. *Https* kullanıyorsanız, Depolama Gezgini uygun sertifikaları yüklemeniz gerekir. Bu durumda, blob uç noktası sertifikasını yükler. Daha fazla bilgi için bkz. [sertifikaları yönetme](azure-stack-edge-j-series-manage-certificates.md)bölümünde sertifika oluşturma ve karşıya yükleme. 
 
 ### <a name="create-and-upload-a-vhd"></a>VHD oluşturma ve yükleme
 
@@ -159,7 +159,7 @@ Sonraki adımda karşıya yüklemek için kullanabileceğiniz bir sanal disk yan
 
 ### <a name="use-storage-explorer-for-upload"></a>Karşıya yüklemek için Depolama Gezgini kullan
 
-1. Depolama Gezgini'ni açın. **Düzenle** ' ye gidin ve uygulamanın **Azure Stack API 'leri hedef**olarak ayarlandığından emin olun.
+1. Depolama Gezgini'ni açın. **Düzenle** ' ye gidin ve uygulamanın **Azure Stack API 'leri hedef** olarak ayarlandığından emin olun.
 
     ![Hedefi Azure Stack API 'Ler olarak ayarla](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/set-target-apis-1.png)
 
@@ -181,31 +181,31 @@ Sonraki adımda karşıya yüklemek için kullanabileceğiniz bir sanal disk yan
 
     ![Depolama Gezgini yeniden Başlat](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/restart-storage-explorer-1.png)
 
-4. Sol bölmede **depolama hesapları** ' na sağ tıklayın ve **Azure depolama 'ya Bağlan**' ı seçin. 
+4. Sol bölmede **depolama hesapları** ' na sağ tıklayın ve **Azure depolama 'ya Bağlan** ' ı seçin. 
 
     ![Azure depolama 'ya bağlanma 1](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-1.png)
 
-5. **Depolama hesabı adını ve anahtarını kullan**’ı seçin. **İleri**’yi seçin.
+5. **Depolama hesabı adını ve anahtarını kullan** ’ı seçin. **İleri** ’yi seçin.
 
     ![Azure depolama 'ya bağlanma 2](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-2.png)
 
-6. **Ad ve anahtar Ile Bağlan**bölümünde, **görünen ad**, **depolama hesabı adı**, Azure depolama **hesabı anahtarı**' nı belirtin. **Diğer** depolama etki alanını seçin ve sonra `<device name>.<DNS domain>` bağlantı dizesini belirtin. Depolama Gezgini bir sertifika yüklemediğiniz takdirde, **http kullan** seçeneğini işaretleyin. **İleri**’yi seçin.
+6. **Ad ve anahtar Ile Bağlan** bölümünde, **görünen ad** , **depolama hesabı adı** , Azure depolama **hesabı anahtarı** ' nı belirtin. **Diğer** depolama etki alanını seçin ve sonra `<device name>.<DNS domain>` bağlantı dizesini belirtin. Depolama Gezgini bir sertifika yüklemediğiniz takdirde, **http kullan** seçeneğini işaretleyin. **İleri** ’yi seçin.
 
     ![Ad ve anahtarla Bağlan](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-name-key-1.png)
 
-7. **Bağlantı özetini** gözden geçirin ve **Bağlan**' ı seçin.
+7. **Bağlantı özetini** gözden geçirin ve **Bağlan** ' ı seçin.
 
-8. Depolama hesabı sol bölmede görüntülenir. Depolama hesabını seçin ve genişletin. **BLOB kapsayıcıları**' nı seçin, sağ tıklayın ve **BLOB kapsayıcısı oluştur**' u seçin. Blob Kapsayıcınız için bir ad sağlayın.
+8. Depolama hesabı sol bölmede görüntülenir. Depolama hesabını seçin ve genişletin. **BLOB kapsayıcıları** ' nı seçin, sağ tıklayın ve **BLOB kapsayıcısı oluştur** ' u seçin. Blob Kapsayıcınız için bir ad sağlayın.
 
-9. Yeni oluşturduğunuz kapsayıcıyı seçin ve sağ bölmede **karşıya yükle > dosyaları**karşıya yükle ' yi seçin. 
+9. Yeni oluşturduğunuz kapsayıcıyı seçin ve sağ bölmede **karşıya yükle > dosyaları** karşıya yükle ' yi seçin. 
 
     ![VHD dosyasını karşıya yükle 1](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/upload-vhd-file-1.png)
 
-10. **Seçilen dosyalara**yüklemek istediğiniz VHD 'yi inceleyin ve üzerine gelin. **BLOB türünü** **Sayfa Blobu** olarak seçin ve **karşıya yükle**' yi seçin.
+10. **Seçilen dosyalara** yüklemek istediğiniz VHD 'yi inceleyin ve üzerine gelin. **BLOB türünü** **Sayfa Blobu** olarak seçin ve **karşıya yükle** ' yi seçin.
 
     ![VHD dosyasını karşıya yükle 2](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/upload-vhd-file-2.png)
 
-11. VHD blob kapsayıcısına yüklendikten sonra, VHD 'yi seçin, sağ tıklayın ve ardından **Özellikler**' i seçin. 
+11. VHD blob kapsayıcısına yüklendikten sonra, VHD 'yi seçin, sağ tıklayın ve ardından **Özellikler** ' i seçin. 
 
     ![VHD dosyasını karşıya yükle 3](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/upload-vhd-file-3.png)
 
@@ -402,7 +402,7 @@ Dosya `CreateImageAndVnet.parameters.json` aşağıdaki parametreleri alır:
 
 ### <a name="edit-parameters-file-to-create-vm"></a>VM oluşturmak için parametreleri dosyasını Düzenle
  
-Bir VM oluşturmak için `CreateVM.parameters.json` parametre dosyasını kullanın. Aşağıdaki parametreleri alır.
+Sanal makine oluşturmak için `CreateVM.parameters.json` parametre dosyasını kullanın. Aşağıdaki parametreleri alır.
     
 ```json
 "vmName": {
@@ -441,7 +441,7 @@ Bir VM oluşturmak için `CreateVM.parameters.json` parametre dosyasını kullan
 
 1. Benzersiz bir ad, ağ arabirimi adı ve ipconfig adı sağlayın. 
 1. Bir Kullanıcı adı, parola ve desteklenen bir VM boyutu girin.
-1. İçin parametrelerde verilen **Vağadı**, **subnetName**ve **ImageName** için aynı adı verin `CreateImageAndVnet.parameters.json` . Örneğin, Vağadı, subnetName ve GörüntüAdı **vnet1**, **subnet1**ve **image1**olarak verildiyse, bu şablondaki parametreler için bu değerleri de aynı şekilde saklayın.
+1. İçin parametrelerde verilen **Vağadı** , **subnetName** ve **ImageName** için aynı adı verin `CreateImageAndVnet.parameters.json` . Örneğin, Vağadı, subnetName ve GörüntüAdı **vnet1** , **subnet1** ve **image1** olarak verildiyse, bu şablondaki parametreler için bu değerleri de aynı şekilde saklayın.
 1. Artık yukarıda tanımlanan alt ağ ağında bulunan VM 'ye atamak için bir statik IP adresi gerekir. **Privateıpaddress** öğesini parametre dosyasındaki bu adresle değiştirin. VM 'nin yerel DCHP sunucusundan bir IP adresi almasını sağlamak için `privateIPAddress` değeri boş bırakın.  
     
     ```json
@@ -550,7 +550,8 @@ VM oluşturma şablonunu dağıtın `CreateVM.json` . Bu şablon, mevcut VNet 't
         
         PS C:\07-30-2020>
     ```   
-`New-AzureRmResourceGroupDeployment`Komutunu parametresiyle zaman uyumsuz olarak da çalıştırabilirsiniz `–AsJob` . Cmdlet arka planda çalıştırıldığında örnek bir çıktı aşağıda verilmiştir. Ardından cmdlet 'ini kullanarak oluşturulan işin durumunu sorgulayabilirsiniz `Get-Job` .
+
+    `New-AzureRmResourceGroupDeployment`Komutunu parametresiyle zaman uyumsuz olarak da çalıştırabilirsiniz `–AsJob` . Cmdlet arka planda çalıştırıldığında örnek bir çıktı aşağıda verilmiştir. Ardından cmdlet 'ini kullanarak oluşturulan işin durumunu sorgulayabilirsiniz `Get-Job` .
 
     ```powershell   
     PS C:\WINDOWS\system32> New-AzureRmResourceGroupDeployment `
@@ -568,7 +569,6 @@ VM oluşturma şablonunu dağıtın `CreateVM.json` . Bu şablon, mevcut VNet 't
      
     Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
     --     ----            -------------   -----         -----------     --------             -------
-    2      Long Running... AzureLongRun... Completed     True            localhost            New-AzureRmResourceGro...
     ```
 
 7. VM 'nin başarıyla sağlanıp sağlanmadığını denetleyin. Şu komutu çalıştırın:
@@ -615,7 +615,7 @@ On the client used to access your Azure Stack Edge Pro device, set up a global v
 
 ### On Windows client 
 
-`$Env:AZCOPY_DEFAULT_SERVICE_API_VERSION = "2017-11-09"`
+`$Env:AZCOPY_DEFAULT_SERVICE_API_VERSION = "2017-11-09"`
 
 ### On Linux client
 

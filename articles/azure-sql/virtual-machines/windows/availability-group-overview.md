@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: eb17b8286ce994146c1fa9867cd8131a909c8ace
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: d04f689dec3a3c182c0da23007247c20c4f8063d
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146697"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504399"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Azure VM 'lerinde SQL Server her zaman kullanılabilirlik grubu
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -72,27 +72,26 @@ Başlamak için bkz. [DNN dinleyicisini yapılandırma](availability-group-distr
 
 Azure VM 'lerinde SQL Server için bir kullanılabilirlik grubu dağıtmaya yönelik birden çok seçenek mevcuttur, bazıları diğerlerinden daha fazla otomasyon sağlar. 
 
-Aşağıdaki tabloda kullanılabilir seçeneklerin karşılaştırması verilmiştir: 
+Aşağıdaki tabloda kullanılabilir seçeneklerin karşılaştırması verilmiştir:
 
-| |**[Azure portal](availability-group-azure-portal-configure.md)**|**[Azure CLı/PowerShell](./availability-group-az-commandline-configure.md)**|**[Hızlı başlangıç şablonları](availability-group-quickstart-template-configure.md)**|**[El ile](availability-group-manually-configure-prerequisites-tutorial.md)** | 
-|---------|---------|---------|--------- |---------|
+| | Azure portal | Azure CLı/PowerShell | Hızlı başlangıç şablonları | El ile |
+|---------|---------|---------|---------|---------|
 |**SQL Server sürümü** |2016 + |2016 +|2016 +|2012 +|
-|**SQL Server yayını** |Kurumsal |Kurumsal |Kurumsal |Kurumsal, standart|
-|**Windows Server sürümü**| 2016 + | 2016 + | 2016 + | Tümü| 
+|**SQL Server yayını** |Enterprise |Enterprise |Enterprise |Kurumsal, standart|
+|**Windows Server sürümü**| 2016 + | 2016 + | 2016 + | Tümü|
 |**Sizin için kümeyi oluşturur**|Yes|Yes | Yes |Hayır|
 |**Sizin için kullanılabilirlik grubunu oluşturur** |Yes |Hayır|Hayır|Hayır|
 |**Bağımsız olarak dinleyici ve yük dengeleyici oluşturur** |Hayır|Hayır|Hayır|Yes|
 |**Bu yöntem kullanılarak DNN dinleyicisi oluşturulabilir mi?**|Hayır|Hayır|Hayır|Yes|
-|**Wsfc çekirdek yapılandırması**|Bulut tanığı|Bulut tanığı|Bulut tanığı|Tümü|
+|**WSFC çekirdek yapılandırması**|Bulut tanığı|Bulut tanığı|Bulut tanığı|Tümü|
 |**Birden çok bölgeye sahip DR** |Hayır|Hayır|Hayır|Yes|
 |**Multisubnet desteği** |Yes|Yes|Yes|Yes|
 |**Mevcut bir AD için destek**|Yes|Yes|Yes|Yes|
 |**Aynı bölgede multizone ile DR**|Yes|Yes|Yes|Yes|
 |**AD olmadan dağıtılmış AG**|Hayır|Hayır|Hayır|Yes|
 |**Küme olmadan dağıtılmış AG** |Hayır|Hayır|Hayır|Yes|
-||||||
 
-
+Daha fazla bilgi için bkz. [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md), [hızlı başlangıç şablonları](availability-group-quickstart-template-configure.md)ve [el ile](availability-group-manually-configure-prerequisites-tutorial.md).
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler 
 

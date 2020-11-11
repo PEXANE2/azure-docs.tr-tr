@@ -24,6 +24,8 @@
       href: howto-add-update-pull-secret.md
     - name: Azure Red Hat OpenShift 4 kümesi için DNS iletmeyi yapılandırma
       href: dns-forwarding.md
+    - name: Azure Red Hat OpenShift 4 için yerleşik kapsayıcı kayıt defterini yapılandırma
+      href: built-in-container-registry.md
     - name: Azure Red Hat OpenShift 4 kümesi için Azure Active Directory kimlik doğrulamasını yapılandırma
       items:
         - name: Azure Active Directory kimlik doğrulamasını yapılandırma (CLI)
@@ -44,6 +46,10 @@
               href: ../azure-monitor/insights/container-insights-azure-redhat4-setup.md
             - name: Azure Red Hat OpenShift 3.11’de kapsayıcılar için Azure İzleyici’yi devre dışı bırakma (önizleme)
               href: ../azure-monitor/insights/container-insights-optout-openshift-v4.md
+    - name: Azure Red Hat OpenShift 4 kümesinde Open Liberty/WebSphere Liberty
+      items:
+        - name: Azure Red Hat OpenShift 4 kümesinde bir Open Liberty/WebSphere Liberty uygulaması dağıtma
+          href: howto-deploy-java-liberty-app.md
     - name: Azure Red Hat OpenShift 3.11
       items:
         - name: Azure Red Hat OpenShift 3.11 için Azure Red Hat OpenShift geliştirme ortamınızı ayarlama

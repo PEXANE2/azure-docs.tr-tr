@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: trkeya
 ms.author: trkeya
-ms.openlocfilehash: b3f46f934241d924789b97c24cf9b68213d94d63
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 6faecdd561d7c434d2948e70886d6f1b19115d9f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490092"
+ms.locfileid: "94504841"
 ---
 # <a name="test-drive-technical-configuration"></a>Test sürüşü teknik yapılandırması
 
@@ -93,9 +93,10 @@ Iş Ortağı Merkezi 'nde **Test** sürücüsü sekmesinde bulunan **Test sürü
 
 Şu anda Iş Ortağı Merkezi 'nde test sürücünüzü oluşturuyorsanız, devam etmeden önce **Taslağı kaydet** ' i seçin.
 
+## <a name="additional-resources"></a>Ek Kaynaklar
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Sınama sürücüsü En Iyi uygulamaları](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [Genel bakış](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)(PDF; açılır pencere engelleyicinizin kapalı olduğundan emin olun)
 - [Ticari Market 'te mevcut bir teklifi güncelleştirme](partner-center-portal/update-existing-offer.md)
-- [Azure Marketi geri bildirim Forumu](https://feedback.azure.com/forums/216369-azure-marketplace)

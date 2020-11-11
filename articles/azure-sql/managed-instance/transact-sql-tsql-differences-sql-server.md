@@ -9,14 +9,14 @@ ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
-ms.date: 06/02/2020
+ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 2e07a54e20e6e60214b2905cf9321120484503eb
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 873bebc462ce4756d38f966a87edda167bd49501
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337653"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506388"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL yönetilen örneği arasındaki T-SQL farklılıkları
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -99,7 +99,7 @@ SQL yönetilen örneği 'nde XEvent denetimi Azure Blob depolama hedeflerini des
 - `TO URL`Dosyaların yerleştirildiği Azure Blob depolama KAPSAYıCıSıNıN URL 'sini belirtmek için kullanabileceğiniz yeni bir sözdizimi sağlanır `.xel` .
 - `TO FILE`SQL yönetilen örnek Windows dosya paylaşımlarına erişemediği için sözdizimi desteklenmiyor.
 
-Daha fazla bilgi için bkz. 
+Daha fazla bilgi için bkz: 
 
 - [SUNUCU DENETIMI OLUŞTUR](/sql/t-sql/statements/create-server-audit-transact-sql) 
 - [SUNUCU DENETIMINI DEĞIŞTIR](/sql/t-sql/statements/alter-server-audit-transact-sql)
@@ -410,7 +410,7 @@ SQL yönetilen örneğindeki bağlantılı sunucular, sınırlı sayıda hedefi 
 
 ### <a name="polybase"></a>PolyBase
 
-, Bir veya Azure Blob depolama alanındaki dosyalara başvuran dış tablolar desteklenmez. PolyBase hakkında daha fazla bilgi için bkz. [PolyBase](/sql/relational-databases/polybase/polybase-guide).
+Tek desteklenen dış kaynak türü, Azure SQL veritabanı ve diğer Azure SQL yönetilen örneği için RDBMS 'dir. PolyBase hakkında daha fazla bilgi için bkz. [PolyBase](/sql/relational-databases/polybase/polybase-guide).
 
 ### <a name="replication"></a>Çoğaltma
 

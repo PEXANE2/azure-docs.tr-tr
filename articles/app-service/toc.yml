@@ -36,6 +36,20 @@
       href: quickstart-multi-container.md
 - name: Öğreticiler
   items:
+    - name: Güvenli uygulama depolama alanına ve Microsoft Graph’e erişir
+      items:
+        - name: Genel Bakış
+          href: scenario-secure-app-overview.md
+        - name: App Service kimlik doğrulamasını ayarlama
+          href: scenario-secure-app-authentication-app-service.md
+        - name: Güvenli uygulama depolama alanına erişir
+          href: scenario-secure-app-access-storage.md
+        - name: Güvenli uygulama kullanıcı olarak Microsoft Graph’e erişir
+          href: scenario-secure-app-access-microsoft-graph-as-user.md
+        - name: 'Güvenli uygulama, uygulama olarak Microsoft Graph’e erişir'
+          href: scenario-secure-app-access-microsoft-graph-as-app.md
+        - name: Kaynakları temizleme
+          href: scenario-secure-app-clean-up-resources.md
     - name: DB ile uygulama
       items:
         - name: SQL DB ile .NET Core
@@ -76,7 +90,7 @@
       href: tutorial-troubleshoot-monitor.md
 - name: Örnekler
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: samples-cli.md
     - name: Azure PowerShell
       href: samples-powershell.md
@@ -277,7 +291,7 @@
           href: webjobs-sdk-how-to.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/appservice
     - name: Azure PowerShell
       href: /powershell/module/az.websites/#app_service

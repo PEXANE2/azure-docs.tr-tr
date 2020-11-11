@@ -158,6 +158,8 @@
           items:
             - name: Azure VM yedeklemelerini yönetme
               href: backup-azure-manage-vms.md
+            - name: Kurtarma noktalarını yönetme
+              href: manage-recovery-points.md
     - name: Azure VM yedeklemesinde SQL Server veritabanı
       items:
         - name: Genel Bakış

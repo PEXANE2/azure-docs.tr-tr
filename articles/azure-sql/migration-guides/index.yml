@@ -1,0 +1,73 @@
+### YamlMime:Landing
+title: Azure SQL'e geçiş
+summary: 'Buluttaki SQL Server veritabanı altyapısı ürünlerinin Azure SQL ailesine geçme hakkındaki belgeleri bulabilirsiniz: Azure SQL Veritabanı, Azure SQL Yönetilen Örnek ve Azure VM’de SQL Server. '
+metadata:
+  title: Azure SQL'e geçiş
+  description: Azure SQL Veritabanı’ndaki tam olarak yönetilen veritabanından Azure SQL Yönetilen Örneği’ndeki tam olarak yönetilen örnek veya yüklü SQL Server’dan Azure’daki bir sanal makineye kadar çeşitlilik gösteren, Azure SQL buluttaki SQL Server veritabanı altyapısı ürünlerinden oluşan bir aile olan Azure SQL’e geçmenize yardımcı olacak belgeleri bulun.
+  services: sql-database
+  ms.service: sql-database
+  ms.subservice: service
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: landing-page
+  author: MashaMSFT
+  ms.author: mathoma
+  ms.reviewer: sstein
+  ms.date: 11/06/2020
+  ms.openlocfilehash: 940f28fa76a8f735318010eab4b55d464295c25a
+  ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 11/11/2020
+  ms.locfileid: "94495297"
+landingContent:
+- title: Azure SQL Veritabanı
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Genel Bakış
+      url: database/sql-server-to-sql-database-overview.md
+    - text: SQL Server'dan
+      url: database/sql-server-to-sql-database-guide.md
+    - text: DB2’den
+      url: database/db2-to-sql-database-guide.md
+- title: Azure SQL Yönetilen Örneği
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Genel Bakış
+      url: managed-instance/sql-server-to-managed-instance-overview.md
+    - text: SQL Server'dan
+      url: managed-instance/sql-server-to-managed-instance-guide.md
+    - text: DB2’den
+      url: managed-instance/db2-to-managed-instance-guide.md
+- title: Azure VM’lerde SQL Server
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Genel Bakış
+      url: virtual-machines/sql-server-to-sql-on-azure-vm-migration-overview.md
+    - text: SQL Server'dan
+      url: virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide.md
+    - text: DB2’den
+      url: virtual-machines/db2-to-sql-on-azure-vm-guide.md
+- title: Geçiş araçları
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Azure Geçişi
+      url: /azure/migrate/migrate-services-overview
+    - text: Azure Veritabanı Geçiş Hizmeti (DMS)
+      url: /azure/dms/dms-overview
+    - text: Data Migration Yardımcısı (DMA)
+      url: /sql/dma/dma-migrateonpremsqltosqldb
+    - text: İşlem çoğaltması
+      url: /sql/relational-databases/replication/transactional/transactional-replication
+    - text: İçeri ve dışarı aktarma hizmeti / BACPAC
+      url: ../database/database-import.md
+    - text: Toplu kopyalama
+      url: /sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server
+    - text: Azure Data Factory
+      url: /azure/data-factory/connector-azure-sql-database
+    - text: SQL Data Sync
+      url: ../database/sql-data-sync-data-sql-server-sql-database.md

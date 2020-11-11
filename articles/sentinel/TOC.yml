@@ -199,6 +199,8 @@
           href: bookmarks.md
         - name: Avlanmak için canlı akış kullanma
           href: livestream.md
+        - name: REST-API ile avlanma sorgularını yönetme
+          href: hunting-with-rest-api.md
     - name: Azure Sentinel’ı kaldırma
       href: offboard.md
 - name: Başvuru (Yeni!)

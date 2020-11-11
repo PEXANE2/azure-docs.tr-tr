@@ -3,31 +3,31 @@ title: Düzenli aralıklarla yedekleme yapılandırmasını anlama
 description: Güvenilir durum bilgisi olan hizmetlerin veya Reliable Actors düzenli olarak yedeklenmesini yapılandırmak için Service Fabric düzenli yedekleme ve geri yükleme özelliğini kullanın.
 ms.topic: article
 ms.date: 2/01/2019
-ms.openlocfilehash: 633b13104ecc1697685f49a42b2a9c76b43b81d0
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 2607502af44b178131820d78f23bcdf4e32454a0
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205702"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506133"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Azure Service Fabric düzenli aralıklarla yedekleme yapılandırmasını anlama
 
 Güvenilir durum bilgisi olan hizmetlerin veya Reliable Actors düzenli olarak yedeklenmesini yapılandırma aşağıdaki adımlardan oluşur:
 
-1. **Yedekleme Ilkelerinin oluşturulması**: Bu adımda, gereksinimlere bağlı olarak bir veya daha fazla yedekleme ilkesi oluşturulur.
+1. **Yedekleme Ilkelerinin oluşturulması** : Bu adımda, gereksinimlere bağlı olarak bir veya daha fazla yedekleme ilkesi oluşturulur.
 
-2. **Yedeklemeyi etkinleştirme**: Bu adımda, **1. adımda** oluşturulan yedekleme Ilkelerini gerekli varlıklar, _uygulama_, _hizmet_veya bir _bölüme_ilişkilendirirsiniz.
+2. **Yedeklemeyi etkinleştirme** : Bu adımda, **1. adımda** oluşturulan yedekleme Ilkelerini gerekli varlıklar, _uygulama_ , _hizmet_ veya bir _bölüme_ ilişkilendirirsiniz.
 
 ## <a name="create-backup-policy"></a>Yedekleme Ilkesi oluştur
 
 Bir yedekleme ilkesi aşağıdaki yapılandırmalardan oluşur:
 
-* **Veri kaybına otomatik geri yükleme**: Bölüm bir veri kaybı olayı yaşıyorsa, geri yüklemenin en son kullanılabilir yedekleme kullanılarak otomatik olarak tetikleneceğini belirtir.
+* **Veri kaybına otomatik geri yükleme** : Bölüm bir veri kaybı olayı yaşıyorsa, geri yüklemenin en son kullanılabilir yedekleme kullanılarak otomatik olarak tetikleneceğini belirtir.
 > [!NOTE]
 > Üretim kümelerinde otomatik geri yükleme ayarlaması önerilmez
 >
 
-* **En yüksek artımlı yedeklemeler**: iki tam yedekleme arasında alınacak en yüksek artımlı yedekleme sayısını tanımlar. En yüksek artımlı yedeklemeler üst sınırı belirtir. Aşağıdaki koşullardan birinde, belirtilen sayıda artımlı yedekleme işlemi tamamlanmadan tam yedekleme yapılabilir
+* **En yüksek artımlı yedeklemeler** : iki tam yedekleme arasında alınacak en yüksek artımlı yedekleme sayısını tanımlar. En yüksek artımlı yedeklemeler üst sınırı belirtir. Aşağıdaki koşullardan birinde, belirtilen sayıda artımlı yedekleme işlemi tamamlanmadan tam yedekleme yapılabilir
 
     1. Çoğaltma, birincil hale geldiği için hiçbir şekilde tam yedekleme gerçekleştirmiştir.
 
@@ -35,9 +35,9 @@ Bir yedekleme ilkesi aşağıdaki yapılandırmalardan oluşur:
 
     3. Çoğaltma, MaxAccumulatedBackupLogSizeInMB sınırını geçti.
 
-* **Yedekleme zamanlaması**: Düzenli yedeklemelerin alınacağı saat veya sıklık. Yedeklemeleri belirtilen aralıklarla veya günlük/haftalık sabit bir zamanda yinelenecek şekilde zamanlayabilirsiniz.
+* **Yedekleme zamanlaması** : Düzenli yedeklemelerin alınacağı saat veya sıklık. Yedeklemeleri belirtilen aralıklarla veya günlük/haftalık sabit bir zamanda yinelenecek şekilde zamanlayabilirsiniz.
 
-    1. **Sıklık tabanlı yedekleme zamanlaması**: Bu zamanlama türü, ihtiyalığın sabit aralıklarla veri yedeklemesi yapması durumunda kullanılmalıdır. Art arda iki yedekleme arasındaki istenen zaman aralığı ıSO8601 biçimi kullanılarak tanımlanır. Sıklık tabanlı yedekleme zamanlaması, dakikada zaman aralığını destekler.
+    1. **Sıklık tabanlı yedekleme zamanlaması** : Bu zamanlama türü, ihtiyalığın sabit aralıklarla veri yedeklemesi yapması durumunda kullanılmalıdır. Art arda iki yedekleme arasındaki istenen zaman aralığı ıSO8601 biçimi kullanılarak tanımlanır. Sıklık tabanlı yedekleme zamanlaması, dakikada zaman aralığını destekler.
         ```json
         {
             "ScheduleKind": "FrequencyBased",
@@ -45,8 +45,8 @@ Bir yedekleme ilkesi aşağıdaki yapılandırmalardan oluşur:
         }
         ```
 
-    2. **Zaman tabanlı yedekleme zamanlaması**: Bu zamanlama türü, ihtiyaç duyuyorsa günün veya haftanın belirli saatlerinde veri yedeklemesi gerçekleştirmek için kullanılmalıdır. Zamanlama sıklığı türü her gün veya haftalık olabilir.
-        1. ** _Günlük_ saat tabanlı yedekleme zamanlaması**: Bu zamanlama türü, günün belirli saatlerinde veri yedeklemesi yapmak için kimlik gereksinimi olması durumunda kullanılmalıdır. Bunu belirtmek için, `ScheduleFrequencyType` _günlük_olarak ayarlayın ve `RunTimes` ISO8601 biçimindeki gün boyunca istenen saat listesine ayarlayın, zaman içinde belirtilen tarih yok sayılır. Örneğin, `0001-01-01T18:00:00` Tarih bölüm _0001-01-01_' i YOKSAYARAK günlük _6:00 PM_ 'yi temsil eder. Aşağıdaki örnekte günlük yedeklemenin _9:00_ saat ve _6:00 PM_ 'de tetiklenmesi için yapılandırma gösterilmektedir.
+    2. **Zaman tabanlı yedekleme zamanlaması** : Bu zamanlama türü, ihtiyaç duyuyorsa günün veya haftanın belirli saatlerinde veri yedeklemesi gerçekleştirmek için kullanılmalıdır. Zamanlama sıklığı türü her gün veya haftalık olabilir.
+        1. **_Günlük_ saat tabanlı yedekleme zamanlaması** : Bu zamanlama türü, günün belirli saatlerinde veri yedeklemesi gerçekleşmelidir. Bunu belirtmek için, `ScheduleFrequencyType` _günlük_ olarak ayarlayın ve `RunTimes` ISO8601 biçimindeki gün boyunca istenen saat listesine ayarlayın, zaman içinde belirtilen tarih yok sayılır. Örneğin, `0001-01-01T18:00:00` Tarih bölüm _0001-01-01_ ' i YOKSAYARAK günlük _6:00 PM_ 'yi temsil eder. Aşağıdaki örnekte günlük yedeklemenin _9:00_ saat ve _6:00 PM_ 'de tetiklenmesi için yapılandırma gösterilmektedir.
 
             ```json
             {
@@ -59,7 +59,7 @@ Bir yedekleme ilkesi aşağıdaki yapılandırmalardan oluşur:
             }
             ```
 
-        2. ** _Haftalık_ zaman tabanlı yedekleme zamanlaması**: Bu zamanlama türü, günün belirli saatlerinde veri yedeklemesi yapmak için kimlik gereksinimi olması durumunda kullanılmalıdır. Bunu belirtmek için, `ScheduleFrequencyType` _haftalık_olarak ayarlayın; `RunDays` YEDEKLEMENIN tetiklenmesi ve ISO8601 biçimindeki gün boyunca istenen süre listesine ayarlanması için bir hafta içindeki gün listesine ayarlayın `RunTimes` , saat ile birlikte belirtilen tarih yok sayılır. Düzenli yedeklemenin tetiklenmesi için haftanın gün listesi. Aşağıdaki örnekte, Pazartesi 'Den Cuma 'ya _9:00_ ve _6:00 PM_ itibariyle günlük yedeklemenin tetiklenmesi için yapılandırma gösterilmektedir.
+        2. **_Haftalık_ zaman tabanlı yedekleme zamanlaması** : Bu zamanlama türü, günün belirli saatlerinde veri yedeklemesi kazanması gerektiğinde kullanılmalıdır. Bunu belirtmek için, `ScheduleFrequencyType` _haftalık_ olarak ayarlayın; `RunDays` YEDEKLEMENIN tetiklenmesi ve ISO8601 biçimindeki gün boyunca istenen süre listesine ayarlanması için bir hafta içindeki gün listesine ayarlayın `RunTimes` , saat ile birlikte belirtilen tarih yok sayılır. Düzenli yedeklemenin tetiklenmesi için haftanın gün listesi. Aşağıdaki örnekte, Pazartesi 'Den Cuma 'ya _9:00_ ve _6:00 PM_ itibariyle günlük yedeklemenin tetiklenmesi için yapılandırma gösterilmektedir.
 
             ```json
             {
@@ -79,8 +79,9 @@ Bir yedekleme ilkesi aşağıdaki yapılandırmalardan oluşur:
             }
             ```
 
-* **Yedekleme depolaması**: yedeklemelerin yükleneceği konumu belirtir. Depolama alanı, Azure Blob Mağazası veya dosya paylaşımından olabilir.
-    1. **Azure Blob Mağazası**: Bu depolama türü, Azure 'da oluşturulan yedeklemeleri depolamak için gerekli olduğunda seçilmelidir. Hem _tek başına_ hem de _Azure tabanlı_ kümeler, bu depolama türünü kullanabilir. Bu depolama türünün açıklaması, bağlantı dizesi ve yedeklemelerin karşıya yüklenmesi gereken kapsayıcının adını gerektirir. Belirtilen ada sahip kapsayıcı yoksa, bir yedeklemenin karşıya yüklenmesi sırasında oluşturulur.
+* **Yedekleme depolaması** : yedeklemelerin yükleneceği konumu belirtir. Depolama alanı, Azure Blob Mağazası veya dosya paylaşımından olabilir.
+    1. **Azure Blob Mağazası** : Bu depolama türü, Azure 'da oluşturulan yedeklemeleri depolamak için gerekli olduğunda seçilmelidir. Hem _tek başına_ hem de _Azure tabanlı_ kümeler, bu depolama türünü kullanabilir. Bu depolama türünün açıklaması, bağlantı dizesi ve yedeklemelerin karşıya yüklenmesi gereken kapsayıcının adını gerektirir. Belirtilen ada sahip kapsayıcı yoksa, bir yedeklemenin karşıya yüklenmesi sırasında oluşturulur.
+
         ```json
         {
             "StorageKind": "AzureBlobStore",
@@ -89,11 +90,12 @@ Bir yedekleme ilkesi aşağıdaki yapılandırmalardan oluşur:
             "ContainerName": "BackupContainer"
         }
         ```
-> [!NOTE]
-> Yedekleme geri yükleme hizmeti v1 Azure depolama ile çalışmıyor
->
 
-    2. **Dosya paylaşma**: Bu depolama türü, şirket içinde veri yedeklemenin depolanması gerektiğinde _tek başına_ kümeler için seçilmelidir. Bu depolama türünün açıklaması, yedeklemelerin yüklenmesi gereken dosya paylaşma yolunu gerektirir. Dosya paylaşımının erişimi, aşağıdaki seçeneklerden biri kullanılarak yapılandırılabilir
+        > [!NOTE]
+        > Yedekleme geri yükleme hizmeti v1 Azure depolama ile çalışmıyor
+        >
+
+    2. **Dosya paylaşma** : Bu depolama türü, şirket içinde veri yedeklemenin depolanması gerektiğinde _tek başına_ kümeler için seçilmelidir. Bu depolama türünün açıklaması, yedeklemelerin yüklenmesi gereken dosya paylaşma yolunu gerektirir. Dosya paylaşımının erişimi, aşağıdaki seçeneklerden biri kullanılarak yapılandırılabilir
         1. Dosya paylaşımının erişiminin Service Fabric kümesine ait tüm bilgisayarlara sağlandığı _Tümleşik Windows kimlik doğrulaması_. Bu durumda, _dosya paylaşma_ tabanlı yedekleme depolamasını yapılandırmak için aşağıdaki alanları ayarlayın.
 
             ```json
@@ -122,8 +124,8 @@ Bir yedekleme ilkesi aşağıdaki yapılandırmalardan oluşur:
 > Depolama güvenilirliğinin yedekleme verilerinin güvenilirlik gereksinimlerini karşıladığından veya bu gereksinimleri aştığından emin olun.
 >
 
-* **Bekletme ilkesi**: yapılandırılan depolamada yedeklemelerin tutulacağı ilkeyi belirtir. Yalnızca temel bekletme Ilkesi desteklenir.
-    1. **Temel bekletme ilkesi**: Bu bekletme ilkesi, daha gerekli olmayan yedekleme dosyalarını kaldırarak en iyi depolama kullanımını sağlamaya olanak tanır. `RetentionDuration` , yedeklemelerin depolama alanında korunması gereken zaman aralığını ayarlamak için belirtilebilir. `MinimumNumberOfBackups` , belirtilen sayıda yedeklemenin ne olursa olsun her zaman korunduğundan emin olmak için belirtilecek isteğe bağlı bir parametredir `RetentionDuration` . Aşağıdaki örnek, yedeklemeleri _10_ gün boyunca koruyacak yapılandırmayı gösterir ve yedekleme sayısının _20_' nin altına geçmesine izin vermez.
+* **Bekletme ilkesi** : yapılandırılan depolamada yedeklemelerin tutulacağı ilkeyi belirtir. Yalnızca temel bekletme Ilkesi desteklenir.
+    1. **Temel bekletme ilkesi** : Bu bekletme ilkesi, daha gerekli olmayan yedekleme dosyalarını kaldırarak en iyi depolama kullanımını sağlamaya olanak tanır. `RetentionDuration` , yedeklemelerin depolama alanında korunması gereken zaman aralığını ayarlamak için belirtilebilir. `MinimumNumberOfBackups` , belirtilen sayıda yedeklemenin ne olursa olsun her zaman korunduğundan emin olmak için belirtilecek isteğe bağlı bir parametredir `RetentionDuration` . Aşağıdaki örnek, yedeklemeleri _10_ gün boyunca koruyacak yapılandırmayı gösterir ve yedekleme sayısının _20_ ' nin altına geçmesine izin vermez.
 
         ```json
         {
@@ -134,48 +136,48 @@ Bir yedekleme ilkesi aşağıdaki yapılandırmalardan oluşur:
         ```
 
 ## <a name="enable-periodic-backup"></a>Düzenli yedeklemeyi etkinleştir
-Veri yedekleme gereksinimlerini karşılamak için yedekleme ilkesi tanımladıktan sonra, yedekleme ilkesi bir _uygulama_veya _hizmet_ya da bir _bölümle_uygun şekilde ilişkilendirilmelidir.
+Veri yedekleme gereksinimlerini karşılamak için yedekleme ilkesi tanımladıktan sonra, yedekleme ilkesi bir _uygulama_ veya _hizmet_ ya da bir _bölümle_ uygun şekilde ilişkilendirilmelidir.
 
 > [!NOTE]
 > Yedeklemeyi etkinleştirmeden önce devam eden bir uygulama yükseltme olmadığından emin olun
 >
 
 ### <a name="hierarchical-propagation-of-backup-policy"></a>Yedekleme ilkesinin hiyerarşik yayılımı
-Service Fabric, uygulama, hizmet ve bölümler arasındaki ilişki, [uygulama modelinde](./service-fabric-application-model.md)açıklanacak şekilde hiyerarşiktir. Yedekleme ilkesi, hiyerarşideki bir _uygulama_, _hizmet_ya da bir _bölümle_ ilişkilendirilebilir. Yedekleme ilkesi hiyerarşik olarak bir sonraki düzeye yayar. Yalnızca bir uygulamayla oluşturulmuş ve bir _uygulama_ile ilişkili olan tek bir yedekleme ilkesi olduğu varsayıldığında, tüm _güvenilir durum bilgisi olan hizmetlere_ ve _uygulamanın_ _Reliable Actors_ ait olan tüm durum bilgisi olmayan bölümlerin yedekleme ilkesi kullanılarak yedeklenirsiniz. Ya da yedekleme ilkesi _güvenilir bir durum bilgisi olmayan hizmetle_ilişkiliyse, tüm bölümleri yedekleme ilkesi kullanılarak yedeklenir.
+Service Fabric, uygulama, hizmet ve bölümler arasındaki ilişki, [uygulama modelinde](./service-fabric-application-model.md)açıklanacak şekilde hiyerarşiktir. Yedekleme ilkesi, hiyerarşideki bir _uygulama_ , _hizmet_ ya da bir _bölümle_ ilişkilendirilebilir. Yedekleme ilkesi hiyerarşik olarak bir sonraki düzeye yayar. Yalnızca bir uygulamayla oluşturulmuş ve bir _uygulama_ ile ilişkili olan tek bir yedekleme ilkesi olduğu varsayıldığında, tüm _güvenilir durum bilgisi olan hizmetlere_ ve _uygulamanın_ _Reliable Actors_ ait olan tüm durum bilgisi olmayan bölümlerin yedekleme ilkesi kullanılarak yedeklenirsiniz. Ya da yedekleme ilkesi _güvenilir bir durum bilgisi olmayan hizmetle_ ilişkiliyse, tüm bölümleri yedekleme ilkesi kullanılarak yedeklenir.
 
 ### <a name="overriding-backup-policy"></a>Yedekleme ilkesini geçersiz kılma
-Aynı yedekleme zamanlaması ile veri yedeklemenin, uygulamanın daha yüksek sıklık zamanlaması kullanarak veya farklı bir depolama hesabına veya dosya yedeğinden yedekleme yapması gereken belirli hizmetler dışında, uygulamanın tüm hizmetleri için gerekli olduğu bir senaryo olabilir. Yedekleme geri yükleme hizmeti bu senaryolara yönelik olarak hizmet ve bölüm kapsamındaki yayılan ilkeyi geçersiz kılmak için tesis sağlar. Yedekleme ilkesi _hizmet_ veya _bölüm_ile ilişkilendirildiğinde, varsa yayılan yedekleme ilkesini geçersiz kılar.
+Aynı yedekleme zamanlaması ile veri yedeklemenin, uygulamanın daha yüksek sıklık zamanlaması kullanarak veya farklı bir depolama hesabına veya dosya yedeğinden yedekleme yapması gereken belirli hizmetler dışında, uygulamanın tüm hizmetleri için gerekli olduğu bir senaryo olabilir. Yedekleme geri yükleme hizmeti bu senaryolara yönelik olarak hizmet ve bölüm kapsamındaki yayılan ilkeyi geçersiz kılmak için tesis sağlar. Yedekleme ilkesi _hizmet_ veya _bölüm_ ile ilişkilendirildiğinde, varsa yayılan yedekleme ilkesini geçersiz kılar.
 
 ### <a name="example"></a>Örnek
 
-Bu örnek, _MyApp_A_ ve _MyApp_B_iki uygulamayla kurulum kullanır. Uygulama _MyApp_A_ , iki güvenilir durum bilgisi içeren iki hizmet, _SvcA1_  &  _SvcA3_ve bir güvenilir aktör hizmeti olan _ActorA2_içerir. _SvcA1_ üç bölüm Içerir, _ActorA2_ ve _SvcA3_ her biri iki bölüm içerir.  Uygulama _MyApp_B_ , güvenilir durum bilgisi olan üç hizmet, _SvcB1_, _SvcB2_ve _SvcB3_içerir. _SvcB1_ ve _SvcB2_ her biri, _SvcB3_ üç bölüm içerdiğinde iki bölüm içerir.
+Bu örnek, _MyApp_A_ ve _MyApp_B_ iki uygulamayla kurulum kullanır. Uygulama _MyApp_A_ , iki güvenilir durum bilgisi içeren iki hizmet, _SvcA1_  &  _SvcA3_ ve bir güvenilir aktör hizmeti olan _ActorA2_ içerir. _SvcA1_ üç bölüm Içerir, _ActorA2_ ve _SvcA3_ her biri iki bölüm içerir.  Uygulama _MyApp_B_ , güvenilir durum bilgisi olan üç hizmet, _SvcB1_ , _SvcB2_ ve _SvcB3_ içerir. _SvcB1_ ve _SvcB2_ her biri, _SvcB3_ üç bölüm içerdiğinde iki bölüm içerir.
 
 Bu uygulamaların veri yedekleme gereksinimlerinin şu şekilde olduğunu varsayın
 
 1. MyApp_A
-    1. Tüm _güvenilir durum bilgisi olan hizmetler_ ve uygulamaya ait _Reliable Actors_ tüm bölümler için günlük yedekleme verileri oluşturun. Yedekleme verilerini _BackupStore1_konumuna yükleyin.
+    1. Tüm _güvenilir durum bilgisi olan hizmetler_ ve uygulamaya ait _Reliable Actors_ tüm bölümler için günlük yedekleme verileri oluşturun. Yedekleme verilerini _BackupStore1_ konumuna yükleyin.
 
-    2. Hizmetlerden biri olan _SvcA3_, her saat için veri yedeklemesi gerektirir.
+    2. Hizmetlerden biri olan _SvcA3_ , her saat için veri yedeklemesi gerektirir.
 
-    3. Bölüm _SvcA1_P2_ veri boyutu beklenenden fazla ve yedekleme verileri _BackupStore2_farklı depolama konumunda depolanmalıdır.
+    3. Bölüm _SvcA1_P2_ veri boyutu beklenenden fazla ve yedekleme verileri _BackupStore2_ farklı depolama konumunda depolanmalıdır.
 
 2. MyApp_B
-    1. _SvcB1_ hizmetinin tüm bölümleri Için her pazar günü 8:00:00 ' da bir veri yedeklemesi oluşturun. Yedekleme verilerini _BackupStore1_konumuna yükleyin.
+    1. _SvcB1_ hizmetinin tüm bölümleri Için her pazar günü 8:00:00 ' da bir veri yedeklemesi oluşturun. Yedekleme verilerini _BackupStore1_ konumuna yükleyin.
 
-    2. Bölüm _SvcB2_P1_için 8:00 günde her gün bir yedekleme oluşturun. Yedekleme verilerini _BackupStore1_konumuna yükleyin.
+    2. Bölüm _SvcB2_P1_ için 8:00 günde her gün bir yedekleme oluşturun. Yedekleme verilerini _BackupStore1_ konumuna yükleyin.
 
 Bu veri yedekleme gereksinimlerini karşılamak için, BP_5 BP_1 yedekleme ilkeleri oluşturulur ve yedekleme aşağıdaki gibi etkinleştirilir.
 1. MyApp_A
-    1. Sıklık tabanlı yedekleme zamanlaması olan _BP_1_yedekleme ilkesi oluşturun, sıklık 24 saat olarak ayarlanır. ve _BackupStore1_depolama konumunu kullanacak şekilde yapılandırılmış yedekleme depolama alanı. [Uygulama yedekleme](/rest/api/servicefabric/sfclient-api-enableapplicationbackup) API 'sini etkinleştir ' i kullanarak uygulama _MyApp_A_ için bu ilkeyi etkinleştirin. Bu eylem, _güvenilir durum bilgisi olan hizmetlerin_ tüm bölümleri ve uygulama _MyApp_A_ait _Reliable Actors_ için yedekleme ilkesi _BP_1_ kullanarak veri yedeklemesini sağlar.
+    1. Sıklık tabanlı yedekleme zamanlaması olan _BP_1_ yedekleme ilkesi oluşturun, sıklık 24 saat olarak ayarlanır. ve _BackupStore1_ depolama konumunu kullanacak şekilde yapılandırılmış yedekleme depolama alanı. [Uygulama yedekleme](/rest/api/servicefabric/sfclient-api-enableapplicationbackup) API 'sini etkinleştir ' i kullanarak uygulama _MyApp_A_ için bu ilkeyi etkinleştirin. Bu eylem, _güvenilir durum bilgisi olan hizmetlerin_ tüm bölümleri ve uygulama _MyApp_A_ ait _Reliable Actors_ için yedekleme ilkesi _BP_1_ kullanarak veri yedeklemesini sağlar.
 
-    2. Sıklık 1 saat olarak ayarlandığı sıklık tabanlı yedekleme zamanlamasıyla _BP_2_yedekleme ilkesi oluşturun. ve _BackupStore1_depolama konumunu kullanacak şekilde yapılandırılmış yedekleme depolama alanı. [Hizmet yedekleme API 'Sini etkinleştir özelliğini](/rest/api/servicefabric/sfclient-api-enableservicebackup) kullanarak Service _SvcA3_ için bu ilkeyi etkinleştirin. Bu eylem, otomatik olarak etkinleştirilen ilke _BP_1_ , bu bölümler için _BP_2_ yedekleme Ilkesi 'ni kullanarak Service _SvcA3_ 'in tüm bölümleri tarafından veri yedeklemeye _BP_2_ .
+    2. Sıklık 1 saat olarak ayarlandığı sıklık tabanlı yedekleme zamanlamasıyla _BP_2_ yedekleme ilkesi oluşturun. ve _BackupStore1_ depolama konumunu kullanacak şekilde yapılandırılmış yedekleme depolama alanı. [Hizmet yedekleme API 'Sini etkinleştir özelliğini](/rest/api/servicefabric/sfclient-api-enableservicebackup) kullanarak Service _SvcA3_ için bu ilkeyi etkinleştirin. Bu eylem, otomatik olarak etkinleştirilen ilke _BP_1_ , bu bölümler için _BP_2_ yedekleme Ilkesi 'ni kullanarak Service _SvcA3_ 'in tüm bölümleri tarafından veri yedeklemeye _BP_2_ .
 
-    3. Sıklık tabanlı yedekleme zamanlaması olan _BP_3_yedekleme ilkesi oluşturun, sıklık 24 saat olarak ayarlanır. ve _BackupStore2_depolama konumunu kullanacak şekilde yapılandırılmış yedekleme depolama alanı. Bölüm [yedeklemesini etkinleştir](/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API 'yi kullanarak bölüm _SvcA1_P2_ için bu ilkeyi etkinleştirin. Bu eylem, bölüm _SvcA1_P2_için _BP_3_ açık olarak etkinleştirilen _BP_1_ yayılan ilkeyi geçersiz kılar.
+    3. Sıklık tabanlı yedekleme zamanlaması olan _BP_3_ yedekleme ilkesi oluşturun, sıklık 24 saat olarak ayarlanır. ve _BackupStore2_ depolama konumunu kullanacak şekilde yapılandırılmış yedekleme depolama alanı. Bölüm [yedeklemesini etkinleştir](/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API 'yi kullanarak bölüm _SvcA1_P2_ için bu ilkeyi etkinleştirin. Bu eylem, bölüm _SvcA1_P2_ için _BP_3_ açık olarak etkinleştirilen _BP_1_ yayılan ilkeyi geçersiz kılar.
 
 2. MyApp_B
-    1. Zamanlama sıklığı türünün haftalık olarak ayarlandığı, çalıştırma günleri pazar olarak ayarlandığı ve çalışma zamanlarının 8:00 olarak ayarlandığı zamana dayalı yedekleme zamanlamasıyla yedekleme ilkesi oluşturun _BP_4_. Depolama konumu _BackupStore1_kullanacak şekilde yapılandırılmış yedekleme depolama alanı. [Hizmet yedekleme API 'Sini etkinleştir özelliğini](/rest/api/servicefabric/sfclient-api-enableservicebackup) kullanarak Service _SvcB1_ için bu ilkeyi etkinleştirin. Bu eylem, Service _SvcB1_'in tüm bölümleri için yedekleme ilkesi _BP_4_ kullanarak veri yedeklemeyi mümkün bir şekilde sunar.
+    1. Zamanlama sıklığı türünün haftalık olarak ayarlandığı, çalıştırma günleri pazar olarak ayarlandığı ve çalışma zamanlarının 8:00 olarak ayarlandığı zamana dayalı yedekleme zamanlamasıyla yedekleme ilkesi oluşturun _BP_4_. Depolama konumu _BackupStore1_ kullanacak şekilde yapılandırılmış yedekleme depolama alanı. [Hizmet yedekleme API 'Sini etkinleştir özelliğini](/rest/api/servicefabric/sfclient-api-enableservicebackup) kullanarak Service _SvcB1_ için bu ilkeyi etkinleştirin. Bu eylem, Service _SvcB1_ 'in tüm bölümleri için yedekleme ilkesi _BP_4_ kullanarak veri yedeklemeyi mümkün bir şekilde sunar.
 
-    2. Zamanlama sıklığı türünün günlük olarak ayarlandığı ve çalışma zamanlarının 8:00 olarak ayarlandığı zamana dayalı yedekleme zamanlamasıyla _BP_5_yedekleme ilkesi oluşturun. Depolama konumu _BackupStore1_kullanacak şekilde yapılandırılmış yedekleme depolama alanı. Bölüm [yedeklemesini etkinleştir](/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API 'yi kullanarak bölüm _SvcB2_P1_ için bu ilkeyi etkinleştirin. Bu eylem, bölüm _SvcB2_P1_için yedekleme ilkesi _BP_5_ kullanarak veri yedeklemeye izin vermez.
+    2. Zamanlama sıklığı türünün günlük olarak ayarlandığı ve çalışma zamanlarının 8:00 olarak ayarlandığı zamana dayalı yedekleme zamanlamasıyla _BP_5_ yedekleme ilkesi oluşturun. Depolama konumu _BackupStore1_ kullanacak şekilde yapılandırılmış yedekleme depolama alanı. Bölüm [yedeklemesini etkinleştir](/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API 'yi kullanarak bölüm _SvcB2_P1_ için bu ilkeyi etkinleştirin. Bu eylem, bölüm _SvcB2_P1_ için yedekleme ilkesi _BP_5_ kullanarak veri yedeklemeye izin vermez.
 
 Aşağıdaki diyagramda açık olarak etkinleştirilen yedekleme ilkeleri ve yayılmış yedekleme ilkeleri gösterilmektedir.
 
@@ -186,7 +188,7 @@ Yedekleme ilkeleri, verileri yedeklemeye gerek kalmadığında devre dışı bı
 
 * Bir _uygulama_ için yedekleme ilkesini devre dışı bırakmak, yedekleme Ilkesinin güvenilir durum bilgisi olan hizmet bölümlerine veya güvenilir aktör bölümlerine yayılmasının sonucu olarak oluşan tüm düzenli veri yedeklemelerini durduruyor.
 
-* Bir _hizmet_ için yedekleme ilkesini devre dışı bırakmak, bu yedekleme ilkesinin _hizmet_bölümlerine yayılmasının sonucu olarak oluşan tüm düzenli veri yedeklemelerini sonlandırır.
+* Bir _hizmet_ için yedekleme ilkesini devre dışı bırakmak, bu yedekleme ilkesinin _hizmet_ bölümlerine yayılmasının sonucu olarak oluşan tüm düzenli veri yedeklemelerini sonlandırır.
 
 * _Bölüm_ için yedekleme ilkesini devre dışı bırakmak, bölümdeki yedekleme ilkesi nedeniyle tüm düzenli veri yedeklemesini sonlandırır.
 
@@ -201,7 +203,7 @@ Yedekleme ilkeleri, verileri yedeklemeye gerek kalmadığında devre dışı bı
 >
 
 ## <a name="suspend--resume-backup"></a>Askıya al & yedeklemeyi sürdürür
-Belirli durumlar, verilerin düzenli olarak yedeklenme için geçici olarak askıya alma talebinde bulunabilir. Bu tür durumlarda, gereksinime bağlı olarak, yedekleme API 'sini bir _uygulama_, _hizmet_veya _bölümde_kullanabilirsiniz. Düzenli yedekleme askıya alma, uygulama hiyerarşisinin uygulandığı noktadan sonra alt ağacı üzerinde geçişlidir. 
+Belirli durumlar, verilerin düzenli olarak yedeklenme için geçici olarak askıya alma talebinde bulunabilir. Bu tür durumlarda, gereksinime bağlı olarak, yedekleme API 'sini bir _uygulama_ , _hizmet_ veya _bölümde_ kullanabilirsiniz. Düzenli yedekleme askıya alma, uygulama hiyerarşisinin uygulandığı noktadan sonra alt ağacı üzerinde geçişlidir. 
 
 * [Askıya alma, uygulama yedeklemesi](/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) API 'sini kullanarak bir _uygulamaya_ uygulandığında, verilerin düzenli olarak yedeklenmesi için bu uygulamadaki tüm hizmetler ve bölümler askıya alınır.
 
@@ -209,13 +211,13 @@ Belirli durumlar, verilerin düzenli olarak yedeklenme için geçici olarak ask�
 
 * [Askıya alma, Bölüm yedekleme](/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) API 'sini kullanarak bir _bölüme_ uygulandığında, verilerin düzenli olarak yedeklenmesi için bu hizmetin altındaki bölümleri askıya alır.
 
-Askıya alma gereksinimi bittikten sonra, ilgili yedekleme API 'SI kullanılarak düzenli veri yedeklemesi geri yüklenebilir. Düzenli yedekleme, askıya alındığı yerde aynı _uygulama_, _hizmet_veya _bölümde_ sürdürülmelidir.
+Askıya alma gereksinimi bittikten sonra, ilgili yedekleme API 'SI kullanılarak düzenli veri yedeklemesi geri yüklenebilir. Düzenli yedekleme, askıya alındığı yerde aynı _uygulama_ , _hizmet_ veya _bölümde_ sürdürülmelidir.
 
-* Bir _uygulamaya_askıya alma uygulanmışsa, [uygulama yedekleme](/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) API 'sini sürdürür kullanılarak devam edilmelidir. 
+* Bir _uygulamaya_ askıya alma uygulanmışsa, [uygulama yedekleme](/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) API 'sini sürdürür kullanılarak devam edilmelidir. 
 
-* Askıya alma _hizmeti bir hizmette_uygulanmışsa, [hizmet yedekleme](/rest/api/servicefabric/sfclient-api-resumeservicebackup) API 'si kullanılarak devam edilmelidir.
+* Askıya alma _hizmeti bir hizmette_ uygulanmışsa, [hizmet yedekleme](/rest/api/servicefabric/sfclient-api-resumeservicebackup) API 'si kullanılarak devam edilmelidir.
 
-* Bir _bölüme_askıya alma uygulanmışsa, [bölüm yedekleme](/rest/api/servicefabric/sfclient-api-resumepartitionbackup) API 'si kullanılarak devam edilmelidir.
+* Bir _bölüme_ askıya alma uygulanmışsa, [bölüm yedekleme](/rest/api/servicefabric/sfclient-api-resumepartitionbackup) API 'si kullanılarak devam edilmelidir.
 
 ### <a name="difference-between-suspend-and-disable-backups"></a>Yedeklemeleri askıya al ve devre dışı bırak arasındaki fark
 Belirli bir uygulama, hizmet veya bölüm için yedeklemeler artık gerekli olmadığında yedeklemeyi devre dışı bırak kullanılmalıdır. Bunlardan biri, temiz yedeklemeler parametresi ile birlikte devre dışı bırakma ve tüm mevcut yedeklemelerin de silindiği anlamına gelir. Ancak, yerel disk tam veya karşıya yükleme, bilinen ağ sorunu nedeniyle başarısız olduğunda yedeklemeleri geçici olarak kapatmak istediği senaryolarda askıya alma kullanılır. 
@@ -232,7 +234,7 @@ Service Fabric, bölümün veri kaybına neden olduğunu algıladığında, `OnD
 >
 
 ## <a name="get-backup-configuration"></a>Yedekleme yapılandırmasını al
-Ayrı API 'Ler, bir _uygulama_, _hizmet_ve _bölüm_ kapsamında yedekleme yapılandırma bilgilerini almak için kullanılabilir hale getirilir. [Uygulama yedekleme yapılandırma bilgilerini alın](/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo), [hizmet yedekleme yapılandırma bilgilerini alın](/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)ve [bölüm yedekleme yapılandırma bilgilerini al](/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) , bu API 'ler sırasıyla bu API 'lerdir. Genellikle, bu API 'Ler, yedekleme ilkesinin uygulandığı kapsam ve yedekleme askıya alma ayrıntıları için geçerli yedekleme ilkesini döndürür. Aşağıda, bu API 'lerin döndürülen sonuçları hakkında kısa bir açıklama verilmiştir.
+Ayrı API 'Ler, bir _uygulama_ , _hizmet_ ve _bölüm_ kapsamında yedekleme yapılandırma bilgilerini almak için kullanılabilir hale getirilir. [Uygulama yedekleme yapılandırma bilgilerini alın](/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo), [hizmet yedekleme yapılandırma bilgilerini alın](/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)ve [bölüm yedekleme yapılandırma bilgilerini al](/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) , bu API 'ler sırasıyla bu API 'lerdir. Genellikle, bu API 'Ler, yedekleme ilkesinin uygulandığı kapsam ve yedekleme askıya alma ayrıntıları için geçerli yedekleme ilkesini döndürür. Aşağıda, bu API 'lerin döndürülen sonuçları hakkında kısa bir açıklama verilmiştir.
 
 - Uygulama yedekleme yapılandırma bilgisi: uygulamada uygulanan yedekleme ilkesinin ayrıntılarını ve uygulamaya ait hizmetlere ve bölümlere yönelik tüm ridden ilkelerini sağlar. Ayrıca, uygulama ve BT hizmetleri ve bölümleri için askıya alınma bilgilerini içerir.
 
@@ -242,7 +244,7 @@ Ayrı API 'Ler, bir _uygulama_, _hizmet_ve _bölüm_ kapsamında yedekleme yapı
 
 ## <a name="list-available-backups"></a>Kullanılabilir yedeklemeleri listeleme
 
-Kullanılabilir yedeklemeler, yedekleme listesi API 'SI kullanılarak listelenebilir. API çağrısının sonucu, yedek depolamada bulunan ve geçerli yedekleme ilkesinde yapılandırılan tüm yedeklemelerle ilgili yedekleme bilgileri öğelerini içerir. Bu API 'nin farklı türevleri, bir uygulamaya, hizmete veya bölüme ait kullanılabilir yedeklemeleri listelemek için verilmiştir. Bu API 'Ler, tüm uygulanabilir bölümlerin _en son_ kullanılabilir yedeklemesini veya _Başlangıç tarihi_ ile _bitiş tarihine_göre yedeklemelerin filtrelenmesini destekler.
+Kullanılabilir yedeklemeler, yedekleme listesi API 'SI kullanılarak listelenebilir. API çağrısının sonucu, yedek depolamada bulunan ve geçerli yedekleme ilkesinde yapılandırılan tüm yedeklemelerle ilgili yedekleme bilgileri öğelerini içerir. Bu API 'nin farklı türevleri, bir uygulamaya, hizmete veya bölüme ait kullanılabilir yedeklemeleri listelemek için verilmiştir. Bu API 'Ler, tüm uygulanabilir bölümlerin _en son_ kullanılabilir yedeklemesini veya _Başlangıç tarihi_ ile _bitiş tarihine_ göre yedeklemelerin filtrelenmesini destekler.
 
 Bu API 'Ler Ayrıca sonuçların sayfalandırmayı destekler, _MaxResults_ parametresi sıfır olmayan pozitif tamsayı olarak AYARLANDıĞıNDA, API en yüksek _MaxResults_ yedekleme bilgileri öğelerini döndürür. Büyük bir durumda, _MaxResults_ değerinden daha fazla yedek bilgi öğesi bulunur, sonra bir devamlılık belirteci döndürülür. Geçerli devamlılık belirteci parametresi, sonraki sonuç kümesini almak için kullanılabilir. Geçerli devamlılık belirteci değeri, API 'nin bir sonraki çağrısına geçirildiğinde, API sonraki sonuç kümesini döndürür. Tüm kullanılabilir sonuçlar döndürüldüğünde yanıta hiçbir devamlılık belirteci eklenmez.
 

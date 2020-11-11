@@ -14,12 +14,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: sstein
   ms.date: 10/30/2019
-  ms.openlocfilehash: ba3439ab515539149bb53bcd38c7c646f9f2da07
-  ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+  ms.openlocfilehash: c6d4a6afa1e85a4b159673a11081bc694e3b9cf4
+  ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 10/28/2020
-  ms.locfileid: "92790857"
+  ms.lasthandoff: 11/11/2020
+  ms.locfileid: "94490874"
 landingContent:
 - title: Azure SQL Veritabanı
   linkLists:
@@ -117,6 +117,16 @@ landingContent:
       url: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
     - text: Performans yönergeleri
       url: virtual-machines/windows/performance-guidelines-best-practices.md
+- title: SQL Server’dan geçirme
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Azure SQL Veritabanı
+      url: migration-guides/database/sql-server-to-sql-database-overview.md
+    - text: Azure SQL Yönetilen Örnek
+      url: migration-guides/managed-instance/sql-server-to-managed-instance-overview.md
+    - text: Azure VM’lerinde SQL Server
+      url: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-migration-overview.md
 - title: Bağlanma ve sorgulama
   linkLists:
   - linkListType: quickstart
@@ -137,40 +147,6 @@ landingContent:
       url: database/connect-query-dotnet-core.md
     - text: Python
       url: database/connect-query-python.md
-- title: Geliştirme
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Uygulama geliştirme
-      url: database/develop-overview.md
-    - text: Olağanüstü durum kurtarma uygulaması tasarımı
-      url: database/designing-cloud-solutions-for-disaster-recovery.md
-    - text: Sıralı yükseltmeleri yönetme (SQL DB)
-      url: database/manage-application-rolling-upgrade.md
-    - text: Geliştirme stratejileri (SQL VM)
-      url: virtual-machines/windows/application-patterns-development-strategies.md
-    - text: SaaS veritabanı kiracı desenleri
-      url: database/saas-tenancy-app-design-patterns.md
-  - linkListType: how-to-guide
-    links:
-    - text: İlk veritabanını tasarlama (SSMS)
-      url: database/design-first-database-tutorial.md
-    - text: İlk veritabanını tasarlama (C#)
-      url: database/design-first-database-csharp-tutorial.md
-- title: Azure SQL’i öğrenme
-  linkLists:
-  - linkListType: learn
-    links:
-    - text: Yeni başlayanlar için Azure SQL
-      url: https://aka.ms/azuresql4beginners
-    - text: Azure SQL ile ilgili temel bilgiler
-      url: /learn/paths/azure-sql-fundamentals/
-    - text: Uygulamalı Azure SQL laboratuvarları
-      url: https://aka.ms/asqlworkshop
-    - text: Azure SQL bootcamp
-      url: https://aka.ms/azuresqlbootcamp
-    - text: Eğitim için SQL kaynakları
-      url: /sql/sql-server/educational-sql-resources
 - title: Başvuru
   linkLists:
   - linkListType: deploy
@@ -203,3 +179,37 @@ landingContent:
       url: /powershell/module/az.sql
     - text: REST API
       url: /rest/api/sql/
+- title: Azure SQL’i öğrenme
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Yeni başlayanlar için Azure SQL
+      url: https://aka.ms/azuresql4beginners
+    - text: Azure SQL ile ilgili temel bilgiler
+      url: /learn/paths/azure-sql-fundamentals/
+    - text: Uygulamalı Azure SQL laboratuvarları
+      url: https://aka.ms/asqlworkshop
+    - text: Azure SQL bootcamp
+      url: https://aka.ms/azuresqlbootcamp
+    - text: Eğitim için SQL kaynakları
+      url: /sql/sql-server/educational-sql-resources
+- title: Geliştirme
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Uygulama geliştirme
+      url: database/develop-overview.md
+    - text: Olağanüstü durum kurtarma uygulaması tasarımı
+      url: database/designing-cloud-solutions-for-disaster-recovery.md
+    - text: Sıralı yükseltmeleri yönetme (SQL DB)
+      url: database/manage-application-rolling-upgrade.md
+    - text: Geliştirme stratejileri (SQL VM)
+      url: virtual-machines/windows/application-patterns-development-strategies.md
+    - text: SaaS veritabanı kiracı desenleri
+      url: database/saas-tenancy-app-design-patterns.md
+  - linkListType: how-to-guide
+    links:
+    - text: İlk veritabanını tasarlama (SSMS)
+      url: database/design-first-database-tutorial.md
+    - text: İlk veritabanını tasarlama (C#)
+      url: database/design-first-database-csharp-tutorial.md

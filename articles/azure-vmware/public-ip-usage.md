@@ -3,12 +3,12 @@ title: Azure VMware çözümünde genel IP işlevselliğini kullanma
 description: Bu makalede, Azure sanal WAN 'da genel IP işlevlerinin nasıl kullanılacağı açıklanmaktadır.
 ms.topic: how-to
 ms.date: 10/28/2020
-ms.openlocfilehash: 63475b478a951632c068b168353acf2e0bb7061c
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 7ff1debe7b52599a2e4f20378f385359325be2f7
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490398"
+ms.locfileid: "94504416"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>Azure VMware çözümünde genel IP işlevselliğini kullanma
 
@@ -29,7 +29,7 @@ Azure VMware Çözüm özel bulut dağıtımının bir parçası olarak, genel I
 
 Bu makalede, sanal WAN 'da genel IP işlevselliğini nasıl kullanabileceğiniz hakkında bilgi bulabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure VMware Çözüm ortamı
 - Azure VMware Çözüm ortamında çalışan bir Web sunucusu.
@@ -39,14 +39,14 @@ Bu makalede, sanal WAN 'da genel IP işlevselliğini nasıl kullanabileceğiniz 
 
 :::image type="content" source="media/public-ip-usage/public-ip-architecture-diagram.png" alt-text="Genel IP mimarisi diyagramı" border="false" lightbox="media/public-ip-usage/public-ip-architecture-diagram.png":::
 
-Mimari diyagramı, Azure VMware Çözüm ortamında barındırılan ve RFC1918 özel IP adresleriyle yapılandırılmış bir müşteri web sunucusu gösterir.  Bu Web hizmeti, sanal WAN genel IP işlevselliği aracılığıyla internet için kullanılabilir hale getirilir.  Genel IP, genellikle Azure Güvenlik Duvarı 'nda çevrilen bir hedef NAT 'dir. DNAT kuralları ile, güvenlik duvarı ilkesi genel IP adresi isteklerini bir bağlantı noktası ile özel bir adrese (Web sunucusu) çevirir.
+Mimari diyagramı, Azure VMware Çözüm ortamında barındırılan ve RFC1918 özel IP adresleriyle yapılandırılmış bir Web sunucusunu gösterir.  Web hizmeti, sanal WAN genel IP işlevselliği aracılığıyla internet için kullanılabilir hale getirilir.  Genel IP, genellikle Azure Güvenlik Duvarı 'nda çevrilen bir hedef NAT 'dir. DNAT kuralları ile, güvenlik duvarı ilkesi genel IP adresi isteklerini bir bağlantı noktası ile özel bir adrese (Web sunucusu) çevirir.
 
 Kullanıcı istekleri, Azure Güvenlik duvarında DNAT kuralları kullanılarak özel IP 'ye çevrilen genel bir IP 'deki güvenlik duvarından isabet ediyor. Güvenlik Duvarı NAT tablosunu denetler ve istek bir girdiyle eşleşiyorsa, trafiği Azure VMware Çözüm ortamındaki çevrilmiş adrese ve bağlantı noktasına iletir.
 
 Web sunucusu isteği alır ve istenen bilgilerle veya sayfayla yanıt verir. güvenlik duvarı, bilgileri genel IP adresindeki kullanıcıya iletir.
 
 ## <a name="test-case"></a>Test çalışması
-Bu senaryoda, IIS Web sunucusunu Internet 'te yayımlamanız gerekir. Web sitesini genel bir IP adresinde yayımlamak için Azure VMware çözümünde genel IP özelliğini kullanın.  Güvenlik duvarında NAT kurallarını yapılandıracağız ve genel IP ile Azure VMware Çözüm kaynağına (Web sunucusu olan VM 'Lere) erişirsiniz.
+Bu senaryoda, IIS Web sunucusunu Internet 'te yayımlamanız gerekir. Web sitesini genel bir IP adresinde yayımlamak için Azure VMware çözümünde genel IP özelliğini kullanın.  Güvenlik duvarında NAT kurallarını yapılandıracağız ve genel IP ile Azure VMware Çözüm kaynağına (Web sunucusu olan VM 'Ler) erişirsiniz.
 
 ## <a name="deploy-virtual-wan"></a>Sanal WAN dağıtma
 

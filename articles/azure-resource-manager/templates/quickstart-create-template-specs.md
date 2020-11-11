@@ -2,21 +2,21 @@
 title: Şablon belirtimini oluşturma ve dağıtma
 description: ARM şablonundan bir şablon belirtimi oluşturmayı öğrenin. Ardından, şablon belirtimini aboneliğinizdeki bir kaynak grubuna dağıtın.
 author: tfitzmac
-ms.date: 10/02/2020
+ms.date: 11/10/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: e1bd2f3da8204cf5947d0cf423cd57b023674608
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 96ef5796aac1d0ee02e6bbafc40b7d3bcdea4e2f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728786"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506371"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Hızlı başlangıç: şablon belirtimini oluşturma ve dağıtma (Önizleme)
 
 Bu hızlı başlangıçta, bir Azure Resource Manager şablonu (ARM şablonu) bir [şablon](template-specs.md) belirtimine paketlemeyi ve ardından bu şablon belirtimini dağıtmayı gösterir. Şablon spec, depolama hesabı dağıtan bir ARM şablonu içerir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -27,7 +27,7 @@ Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://az
 
 ## <a name="create-template-spec"></a>Şablon belirtimi oluşturma
 
-Şablon belirtimi, **Microsoft. resources/Templatespec**adlı bir kaynak türüdür. Şablon belirtimini oluşturmak için Azure PowerShell, Azure CLı veya ARM şablonunu kullanabilirsiniz. Tüm seçeneklerde, şablon belirtimi içinde paketlenmiş bir ARM şablonuna ihtiyacınız vardır.
+Şablon belirtimi, **Microsoft. resources/Templatespec** adlı bir kaynak türüdür. Şablon belirtimini oluşturmak için Azure PowerShell, Azure CLı veya ARM şablonunu kullanabilirsiniz. Tüm seçeneklerde, şablon belirtimi içinde paketlenmiş bir ARM şablonuna ihtiyacınız vardır.
 
 PowerShell ve CLı ile ARM şablonu komutuna bir parametre olarak geçirilir. ARM şablonuyla, şablon belirtimi içinde paketlenecek ARM şablonu, şablon belirtimi tanımına katıştırılır.
 
@@ -35,7 +35,7 @@ Bu seçenekler aşağıda gösterilmiştir.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. PowerShell ile bir şablon belirtimi oluşturduğunuzda yerel bir şablon geçirebilirsiniz. Aşağıdaki şablonu kopyalayın ve **azuredeploy.js**adlı bir dosyaya yerel olarak kaydedin. Bu hızlı başlangıç, bir yola **c:\Templates\azuredeploy.js** kaydettiğiniz, ancak herhangi bir yolu kullanabileceğiniz varsayılmaktadır.
+1. PowerShell ile bir şablon belirtimi oluşturduğunuzda yerel bir şablon geçirebilirsiniz. Aşağıdaki şablonu kopyalayın ve **azuredeploy.js** adlı bir dosyaya yerel olarak kaydedin. Bu hızlı başlangıç, bir yola **c:\Templates\azuredeploy.js** kaydettiğiniz, ancak herhangi bir yolu kullanabileceğiniz varsayılmaktadır.
 
     :::code language="json" source="~/quickstart-templates/101-storage-account-create/azuredeploy.json":::
 
@@ -47,7 +47,7 @@ Bu seçenekler aşağıda gösterilmiştir.
       -Location westus2
     ```
 
-1. Ardından, bu kaynak grubunda şablon belirtimini oluşturun. Yeni şablon belirtimini **storageSpec**adını verirsiniz.
+1. Ardından, bu kaynak grubunda şablon belirtimini oluşturun. Yeni şablon belirtimini **storageSpec** adını verirsiniz.
 
     ```azurepowershell
     New-AzTemplateSpec `
@@ -60,7 +60,7 @@ Bu seçenekler aşağıda gösterilmiştir.
 
 # <a name="cli"></a>[CLI](#tab/azure-cli)
 
-1. CLı ile bir şablon belirtimi oluşturduğunuzda yerel bir şablon geçirebilirsiniz. Aşağıdaki şablonu kopyalayın ve **azuredeploy.js**adlı bir dosyaya yerel olarak kaydedin. Bu hızlı başlangıç, bir yola **c:\Templates\azuredeploy.js** kaydettiğiniz, ancak herhangi bir yolu kullanabileceğiniz varsayılmaktadır.
+1. CLı ile bir şablon belirtimi oluşturduğunuzda yerel bir şablon geçirebilirsiniz. Aşağıdaki şablonu kopyalayın ve **azuredeploy.js** adlı bir dosyaya yerel olarak kaydedin. Bu hızlı başlangıç, bir yola **c:\Templates\azuredeploy.js** kaydettiğiniz, ancak herhangi bir yolu kullanabileceğiniz varsayılmaktadır.
 
     :::code language="json" source="~/quickstart-templates/101-storage-account-create/azuredeploy.json":::
 
@@ -72,7 +72,7 @@ Bu seçenekler aşağıda gösterilmiştir.
       --location westus2
     ```
 
-1. Ardından, bu kaynak grubunda şablon belirtimini oluşturun. Yeni şablon belirtimini **storageSpec**adını verirsiniz.
+1. Ardından, bu kaynak grubunda şablon belirtimini oluşturun. Yeni şablon belirtimini **storageSpec** adını verirsiniz.
 
     ```azurecli
     az ts create \
@@ -85,10 +85,10 @@ Bu seçenekler aşağıda gösterilmiştir.
 
 # <a name="arm-template"></a>[ARM şablonu](#tab/azure-resource-manager)
 
-1. Şablon belirtimini oluşturmak için ARM şablonu kullandığınızda, şablon kaynak tanımına katıştırılır. Aşağıdaki şablonu kopyalayın ve **azuredeploy.js**olarak yerel olarak kaydedin. Bu hızlı başlangıç, bir yola **c:\Templates\azuredeploy.js** kaydettiğiniz, ancak herhangi bir yolu kullanabileceğiniz varsayılmaktadır.
+1. Şablon belirtimini oluşturmak için ARM şablonu kullandığınızda, şablon kaynak tanımına katıştırılır. Aşağıdaki şablonu kopyalayın ve **azuredeploy.js** olarak yerel olarak kaydedin. Bu hızlı başlangıç, bir yola **c:\Templates\azuredeploy.js** kaydettiğiniz, ancak herhangi bir yolu kullanabileceğiniz varsayılmaktadır.
 
     > [!NOTE]
-    > Katıştırılmış şablonda, sol köşeli ayraçlara ikinci bir sol köşeli ayraç konulmalıdır. `[[`Yerine kullanın `[` .
+    > Katıştırılmış şablonda, ikinci bir sol köşeli ayraç ile tüm [şablon ifadelerine](template-expressions.md) kaçmalıdır. `"[[`Yerine kullanın `"[` . JSON dizileri hala tek sol köşeli ayraç kullanır.
 
     ```json
     {
@@ -278,7 +278,7 @@ Artık şablon belirtimini dağıtabilirsiniz. Şablon belirtiminin dağıtım, 
 
 # <a name="arm-template"></a>[ARM şablonu](#tab/azure-resource-manager)
 
-1. Aşağıdaki şablonu kopyalayın ve **storage.js**adlı bir dosyaya yerel olarak kaydedin.
+1. Aşağıdaki şablonu kopyalayın ve **storage.js** adlı bir dosyaya yerel olarak kaydedin.
 
     ```json
        {

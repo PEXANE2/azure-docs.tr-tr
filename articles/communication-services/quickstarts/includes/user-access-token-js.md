@@ -2,20 +2,20 @@
 title: include dosyası
 description: include dosyası
 services: azure-communication-services
-author: matthewrobertson
-manager: nimag
+author: tomaschladek
+manager: nmurav
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
 ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
-ms.author: marobert
-ms.openlocfilehash: 22cfe369561eab1ca334c7ff2450162dfae3e761
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.author: tchladek
+ms.openlocfilehash: af5af26a8970409b07eda6195b0853c3fa931b3f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92346935"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506281"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -30,7 +30,7 @@ ms.locfileid: "92346935"
 Terminal veya komut pencerenizi açın, uygulamanız için yeni bir dizin oluşturun ve bu dizine gidin.
 
 ```console
-mkdir user-tokens-quickstart && cd user-tokens-quickstart
+mkdir access-tokens-quickstart && cd access-tokens-quickstart
 ```
 
 `npm init -y`Dosya **üzerinde** varsayılan ayarlarla birpackage.jsoluşturmak için öğesini çalıştırın.
@@ -65,7 +65,7 @@ Başlamak için aşağıdaki kodu kullanın:
 const { CommunicationIdentityClient } = require('@azure/communication-administration');
 
 const main = async () => {
-  console.log("Azure Communication Services - User Access Tokens Quickstart")
+  console.log("Azure Communication Services - Access Tokens Quickstart")
 
   // Quickstart code goes here
 };
@@ -76,9 +76,7 @@ main().catch((error) => {
 })
 ```
 
-1. Yeni dosyayı, *Kullanıcı belirteçleri-hızlı başlangıç* dizinine **issue-token.js** olarak kaydedin.
-
-[!INCLUDE [User Access Tokens Object Model](user-access-tokens-object-model.md)]
+1. Yeni dosyayı, *erişim-belirteçleri-hızlı başlangıç* dizinine **issue-access-token.js** olarak kaydedin.
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
@@ -91,64 +89,67 @@ main().catch((error) => {
 // from an environment variable.
 const connectionString = process.env['COMMUNICATION_SERVICES_CONNECTION_STRING'];
 
-// Instantiate the user token client
+// Instantiate the identity client
 const identityClient = new CommunicationIdentityClient(connectionString);
 ```
 
-## <a name="create-a-user"></a>Kullanıcı oluşturma
+## <a name="create-an-identity"></a>Kimlik oluşturma
 
-Azure Iletişim Hizmetleri, hafif bir kimlik dizini sağlar. `createUser`Dizinde benzersiz olan yeni bir giriş oluşturmak için yöntemini kullanın `Id` . Uygulamanızın kullanıcıları ve Iletişim Hizmetleri tarafından oluşturulan kimlikler (örneğin, uygulama sunucunuzun veritabanında depolayarak) arasında bir eşleme korumanız gerekir.
+Azure Iletişim Hizmetleri, hafif bir kimlik dizini sağlar. `createUser`Dizinde benzersiz olan yeni bir giriş oluşturmak için yöntemini kullanın `Id` . Uygulamanın kullanıcılarına eşleme ile alınan kimliği depola. Örneğin, bunları uygulama sunucunuzun veritabanında depolayarak. Daha sonra erişim belirteçleri vermek için kimlik gereklidir.
 
 ```javascript
-let userResponse = await identityClient.createUser();
-console.log(`\nCreated a user with ID: ${userResponse.communicationUserId}`);
+let identityResponse = await identityClient.createUser();
+console.log(`\nCreated an identity with ID: ${identityResponse.communicationUserId}`);
 ```
 
-## <a name="issue-user-access-tokens"></a>Kullanıcı erişim belirteçleri verme
+## <a name="issue-access-tokens"></a>Erişim belirteçleri verme
 
-`issueToken`Iletişim Hizmetleri kullanıcısına erişim belirteci vermek için yöntemini kullanın. İsteğe bağlı parametreyi sağlamazsanız, `user` Yeni bir Kullanıcı oluşturulur ve belirteçle döndürülür.
+`issueToken`Zaten var olan Iletişim Hizmetleri kimliği için bir erişim belirteci vermek üzere metodunu kullanın. Parametresi `scopes` , bu erişim belirtecini yetkilendirecek temel öğeler kümesini tanımlar. [Desteklenen eylemlerin listesine](../../concepts/authentication.md)bakın. Parametresinin yeni örneği, `communicationUser` Azure Iletişim hizmeti kimliğinin dize gösterimine göre oluşturulabilir.
 
 ```javascript
-// Issue an access token with the "voip" scope for a new user
-let tokenResponse = await identityClient.issueToken(userResponse, ["voip"]);
+// Issue an access token with the "voip" scope for an identity
+let tokenResponse = await identityClient.issueToken(identityResponse, ["voip"]);
 const { token, expiresOn } = tokenResponse;
-console.log(`\nIssued a token with 'voip' scope that expires at ${expiresOn}:`);
+console.log(`\nIssued an access token with 'voip' scope that expires at ${expiresOn}:`);
 console.log(token);
 ```
 
-Kullanıcı erişim belirteçleri, kullanıcılarınızın hizmet kesintilerini yaşmasını engellemek için yeniden verilmesini gerektiren kısa süreli kimlik bilgileridir. `expiresOn`Response özelliği, belirtecin ömrünü gösterir.
+Erişim belirteçleri yeniden verilmesini gerektiren kısa ömürlü kimlik bilgileridir. Bunu yapmamak, uygulamanızın kullanıcı deneyiminin kesintiye uğramasına neden olabilir. `expiresOn`Response özelliği, erişim belirtecinin ömrünü gösterir.
 
-## <a name="revoke-user-access-tokens"></a>Kullanıcı erişim belirteçlerini iptal et
 
-Bazı durumlarda, örneğin, bir kullanıcı hizmetinize kimlik doğrulamak için kullandıkları parolayı değiştirdiğinde Kullanıcı erişim belirteçlerini açıkça iptal etmeniz gerekebilir. Bu, `revokeTokens` kullanıcının tüm erişim belirteçlerini geçersiz kılmak için yöntemini kullanır.
+## <a name="refresh-access-tokens"></a>Erişim belirteçlerini yenileme
 
-```javascript  
-await identityClient.revokeTokens(userResponse);
-console.log(`\nSuccessfully revoked all tokens for user with Id: ${userResponse.communicationUserId}`);
-```
-
-## <a name="refresh-user-access-tokens"></a>Kullanıcı erişim belirteçlerini Yenile
-
-Bir belirteci yenilemek için, `CommunicationUser` yeniden vermek üzere nesnesini kullanın:
+Bir erişim belirtecini yenilemek için, öğesini kullanarak yeniden `CommunicationUser` yayımlayın:
 
 ```javascript  
-let userResponse = new CommunicationUser(existingUserId);
-let tokenResponse = await identityClient.issueToken(userResponse, ["voip"]);
+// Value existingIdentity represents identity of Azure Communication Services stored during identity creation
+identityResponse = new CommunicationUser(existingIdentity);
+tokenResponse = await identityClient.issueToken(identityResponse, ["voip"]);
 ```
 
-## <a name="delete-a-user"></a>Kullanıcı silme
 
-Bir kullanıcının silinmesi, tüm etkin belirteçleri iptal eder ve kimlikler için sonraki belirteçleri yayınlamaya engel olur. Ayrıca, kullanıcıyla ilişkili tüm kalıcı içeriği de kaldırır.
+## <a name="revoke-access-tokens"></a>Erişim belirteçlerini iptal et
+
+Bazı durumlarda, erişim belirteçlerini açıkça iptal edebilirsiniz. Örneğin, bir uygulamanın kullanıcısı hizmetinize kimlik doğrulaması yapmak için kullandıkları parolayı değiştirdiğinde. Yöntem `revokeTokens` , kimliğe verilen tüm etkin erişim belirteçlerini geçersiz kılar.
+
+```javascript  
+await identityClient.revokeTokens(identityResponse);
+console.log(`\nSuccessfully revoked all access tokens for identity with Id: ${identityResponse.communicationUserId}`);
+```
+
+## <a name="delete-an-identity"></a>Kimlik silme
+
+Bir kimlik silindiğinde tüm etkin erişim belirteçleri iptal olur ve kimlik için erişim belirteçleri yayınınızdan sonra. Ayrıca, kimlik ile ilişkili tüm kalıcı içeriği de kaldırır.
 
 ```javascript
-await identityClient.deleteUser(userResponse);
-console.log(`\nDeleted the user with Id: ${userResponse.communicationUserId}`);
+await identityClient.deleteUser(identityResponse);
+console.log(`\nDeleted the identity with Id: ${identityResponse.communicationUserId}`);
 ```
 
 ## <a name="run-the-code"></a>Kodu çalıştırma
 
-Konsol isteminde *issue-token.js* dosyasını içeren dizine gidin, ardından `node` uygulamayı çalıştırmak için aşağıdaki komutu yürütün.
+Konsol isteminde *issue-access-token.js* dosyasını içeren dizine gidin, ardından `node` uygulamayı çalıştırmak için aşağıdaki komutu yürütün.
 
 ```console
-node ./issue-token.js
+node ./issue-access-token.js
 ```

@@ -6,14 +6,14 @@ ms.date: 09/22/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python
 zone_pivot_groups: python-frameworks-01
 adobe-target: true
-ms.openlocfilehash: 9262d9674aa8100e3cfc52ee2834d3e8224f36f5
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 8b88b8ef81dc8186c122a24896d85114ef8a163d
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359043"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506473"
 ---
-# <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Hızlı başlangıç: Linux üzerinde Azure App Service bir Python uygulaması oluşturma
+# <a name="quickstart-create-a-python-app-in-azure-app-service-for-linux"></a>Hızlı başlangıç: Linux için Azure App Service bir Python uygulaması oluşturma
 
 Bu hızlı başlangıçta, Azure 'un yüksek düzeyde ölçeklenebilir ve kendini yayama Web barındırma hizmeti [olan Linux üzerinde App Service](overview.md#app-service-on-linux)Için bir Python web uygulaması dağıtırsınız. Bir Mac, Linux veya Windows bilgisayarında yerel [Azure komut satırı arabirimi 'ni (CLI)](/cli/azure/install-azure-cli) kullanarak Flask veya Docgo çerçeveleri ile bir örnek dağıtabilirsiniz. Yapılandırdığınız Web uygulaması ücretsiz bir App Service katmanını kullanır, bu nedenle bu makalenin kursunda hiçbir ücret ödeirsiniz.
 

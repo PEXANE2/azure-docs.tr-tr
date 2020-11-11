@@ -5,16 +5,16 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: 363af72df89be9104e4d946bf8da0d44908382d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef5476ade205109f5dfede1b3bb2c3a4ae2e81a7
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776230"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506014"
 ---
-# <a name="question-and-answer-pair-concepts"></a>Soru ve yanıt çifti kavramları
+# <a name="question-and-answer-pair"></a>Soru ve yanıt çifti
 
-Bilgi Bankası, soru ve yanıt (QnA) çiftlerinden oluşur.  Her çiftin bir yanıtı vardır ve bir çift, bu _Yanıt_ile ilişkili tüm bilgileri içerir. Bir yanıt, bir veritabanı satırına veya bir veri yapısı örneğine benzeyebilirler.
+Bilgi Bankası, soru ve yanıt (QnA) çiftlerinden oluşur.  Her çiftin bir yanıtı vardır ve bir çift, bu _Yanıt_ ile ilişkili tüm bilgileri içerir. Bir yanıt, bir veritabanı satırına veya bir veri yapısı örneğine benzeyebilirler.
 
 ## <a name="question-and-answer-pairs"></a>Soru ve yanıt çiftleri
 
@@ -23,13 +23,13 @@ Soru-cevap (QnA) çiftinde **gerekli** ayarlar şunlardır:
 * farklı bir metinle, ancak aynı Yanıt ile Kullanıcı sorusunun metniyle hizalamak için makine öğrenimine Soru-Cevap Oluşturma için kullanılan Kullanıcı sorgusunun **soru** metni.
 * **Yanıt** -çiftin yanıtı, bir Kullanıcı sorgusu ilişkili soru ile eşleştiğinde döndürülen yanıttır
 
-Her çift bir **kimlik**ile temsil edilir.
+Her çift bir **kimlik** ile temsil edilir.
 
 Bir çiftin **isteğe bağlı** ayarları şunlardır:
 
 * **Sorunun alternatif biçimleri** -bu, soru-cevap oluşturma çok çeşitli soru açısından doğru yanıtı döndürmenize yardımcı olur
-* **Meta**veri: meta veriler bir QNA çiftiyle ilişkili etiketlerdir ve anahtar-değer çiftleri olarak temsil edilir. Meta veri etiketleri, QnA çiftlerini filtrelemek ve sorgu eşleştirmesinin gerçekleştirileceği kümeyi sınırlamak için kullanılır.
-* Çoklu çift **istemler**, çok yönlü bir konuşmaya devam etmek için kullanılır
+* **Meta** veri: meta veriler bir QNA çiftiyle ilişkili etiketlerdir ve anahtar-değer çiftleri olarak temsil edilir. Meta veri etiketleri, QnA çiftlerini filtrelemek ve sorgu eşleştirmesinin gerçekleştirileceği kümeyi sınırlamak için kullanılır.
+* Çoklu çift **istemler** , çok yönlü bir konuşmaya devam etmek için kullanılır
 
 ![Bilgi temellerini Soru-Cevap Oluşturma](media/qnamaker-concepts-knowledgebase/knowledgebase.png)
 

@@ -6,19 +6,19 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: efba69372f46c9b8a7f2857e37b34ec8c88654a0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1a9d5fe69cd9d853d0bf8ec971f31518bbf47c9a
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546288"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504705"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Redin için Azure önbelleği Azure özel bağlantısı (Genel Önizleme)
 Bu makalede, Azure portal kullanarak özel bir uç nokta ile Redsıs örneği için bir sanal ağ ve Azure önbelleği oluşturmayı öğreneceksiniz. Ayrıca, Redsıs örneği için mevcut bir Azure önbelleğine özel bir uç nokta eklemeyi öğreneceksiniz.
 
 Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen, özel olarak ve güvenli bir şekilde Azure önbelleğine bağlayan bir ağ arabirimidir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 
 > [!IMPORTANT]
@@ -71,7 +71,7 @@ Bir önbellek örneği oluşturmak için aşağıdaki adımları izleyin.
    
 1. **Yeni** sayfada **veritabanları** ' nı seçin ve ardından **redsıs için Azure önbelleği** ' ni seçin.
 
-    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Kaynak oluştur ' u seçin.":::
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Redsıs için Azure önbelleği ' ni seçin.":::
    
 1. **Yeni Redis Cache** sayfasında, yeni önbelleğiniz için ayarları yapılandırın.
    
@@ -89,7 +89,7 @@ Bir önbellek örneği oluşturmak için aşağıdaki adımları izleyin.
 
 1. Özel uç noktanızı oluşturmak için **Ekle** düğmesine tıklayın.
 
-    :::image type="content" source="media/cache-private-link/3-add-private-endpoint.png" alt-text="Kaynak oluştur ' u seçin.":::
+    :::image type="content" source="media/cache-private-link/3-add-private-endpoint.png" alt-text="Ağ ' da özel bir uç nokta ekleyin.":::
 
 1. **Özel uç nokta oluştur** sayfasında, Özel uç noktanızın ayarlarını, son bölümde oluşturduğunuz sanal ağ ve alt ağ ile yapılandırın ve **Tamam** ' ı seçin. 
 
@@ -98,7 +98,6 @@ Bir önbellek örneği oluşturmak için aşağıdaki adımları izleyin.
 1. Bir temel veya standart önbellek örneğinin **Gelişmiş** SEKMESINDE, TLS olmayan bir bağlantı noktasını etkinleştirmek istiyorsanız geçişi etkinleştir ' i seçin.
 
 1. Premium önbellek örneğinin **Gelişmiş** SEKMESINDE, TLS olmayan bağlantı noktası, kümeleme ve veri kalıcılığı için ayarları yapılandırın.
-
 
 1. **Sonraki: Etiketler** sekmesini seçin veya sayfanın altındaki **Sonraki: Etiketler** düğmesine tıklayın.
 
@@ -170,7 +169,7 @@ Bir sanal ağ oluşturmak için aşağıdaki adımları izleyin.
 
 1. Azure portal, **Reda Için Azure önbelleği** araması yapın ve ENTER tuşuna basın veya arama önerilerinde seçin.
 
-    :::image type="content" source="media/cache-private-link/4-search-for-cache.png" alt-text="Kaynak oluştur ' u seçin.":::
+    :::image type="content" source="media/cache-private-link/4-search-for-cache.png" alt-text="Redsıs için Azure önbelleği araması yapın.":::
 
 2. Özel uç nokta eklemek istediğiniz önbellek örneğini seçin.
 
@@ -178,7 +177,7 @@ Bir sanal ağ oluşturmak için aşağıdaki adımları izleyin.
 
 4. Özel uç noktanızı oluşturmak için **Özel uç nokta** düğmesine tıklayın.
 
-    :::image type="content" source="media/cache-private-link/5-add-private-endpoint.png" alt-text="Kaynak oluştur ' u seçin.":::
+    :::image type="content" source="media/cache-private-link/5-add-private-endpoint.png" alt-text="Özel uç nokta ekleyin.":::
 
 5. **Özel uç nokta Oluştur sayfasında** , Özel uç noktanız için ayarları yapılandırın.
 
@@ -205,7 +204,37 @@ Bir sanal ağ oluşturmak için aşağıdaki adımları izleyin.
 
 13. Yeşil **doğrulama başarılı** Iletisi göründüğünde **Oluştur** ' u seçin.
 
+## <a name="faq"></a>SSS
+
+### <a name="why-cant-i-connect-to-a-private-endpoint"></a>Özel bir uç noktaya neden bağlanamıyorum?
+Önbelleğiniz zaten VNet 'e eklenmiş bir önbelleğiniz varsa, Özel uç noktalar önbellek örneğiniz ile kullanılamaz. Önbellek örneğiniz desteklenmeyen bir özellik kullanıyorsa (aşağıda listelenmiştir), Özel uç nokta örneğinize bağlanamazsınız. Buna ek olarak, Özel uç noktaları kullanmak için, 15 Temmuz 'dan sonra önbellek örneklerinin oluşturulması gerekir.
+
+### <a name="what-features-are-not-supported-with-private-endpoints"></a>Özel uç noktalarla hangi özellikler desteklenmez?
+Coğrafi çoğaltma, güvenlik duvarı kuralları, Portal konsolu desteği, kümelenmiş önbellek başına birden fazla uç nokta, güvenlik duvarı kuralları ve bölge artıklığı kalıcılığı. 
+
+### <a name="how-can-i-change-my-private-endpoint-to-be-disabled-from-public-network-access"></a>Özel uç noktadan genel ağ erişiminin devre dışı bırakılması için nasıl değiştirebilirim?
+`publicNetworkAccess`Varsayılan olarak bir bayrak vardır `Enabled` . Bu bayrak, isteğe bağlı olarak ayarlandıysa önbelleğe hem genel hem de özel uç nokta erişimine izin vermek için tasarlanmıştır `Enabled` . Olarak ayarlanırsa `Disabled` , yalnızca özel uç nokta erişimine izin verir. Değerini `Disabled` aşağıdaki düzeltme eki isteğiyle olarak ayarlayabilirsiniz.
+```http
+PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
+{    "properties": {
+       "publicNetworkAccess":"Disabled"
+   }
+}
+```
+
+### <a name="are-network-security-groups-nsg-enabled-for-private-endpoints"></a>Ağ güvenlik grupları (NSG) özel uç noktalar için etkin mi?
+Hayır, Özel uç noktalar için devre dışı bırakılmıştır. Ancak, alt ağda başka kaynaklar varsa NSG zorlaması bu kaynaklara uygulanır.
+
+### <a name="how-can-i-connect-to-a-clustered-cache"></a>Kümelenmiş bir önbelleğe nasıl bağlanabilirim?
+`publicNetworkAccess` olarak ayarlanması gerekir `Disabled` ve yalnızca bir özel uç nokta bağlantısı olabilir.
+
+### <a name="since-my-private-endpoint-instance-is-not-in-my-vnet-how-is-it-associated-with-my-vnet"></a>Özel uç nokta örneğim VNet 'imde olmadığından, sanal ağım ile nasıl ilişkilendirilir?
+Yalnızca VNet 'iniz ile bağlantılıdır. VNet 'iniz içinde olmadığından, NSG kurallarının bağımlı uç noktalar için değiştirilmesi gerekmez.
+
+### <a name="how-can-i-migrate-my-vnet-injected-cache-to-a-private-endpoint-cache"></a>VNet 'e eklenen önbelleğinizi özel bir uç nokta önbelleğine nasıl geçirebilirim?
+VNet eklenen önbelleğinizi silmeniz ve özel bir uç nokta ile yeni bir önbellek örneği oluşturmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure özel bağlantısı hakkında daha fazla bilgi edinmek için bkz. [Azure özel bağlantı belgeleri](../private-link/private-link-overview.md).
+* Azure özel bağlantısı hakkında daha fazla bilgi edinmek için bkz. [Azure özel bağlantı belgeleri](../private-link/private-link-overview.md).
+* Önbellek örneğiniz için çeşitli ağ yalıtımı seçeneklerini karşılaştırmak için bkz. [redsıs ağ yalıtımı seçenekleri Için Azure önbelleği](cache-network-isolation.md).

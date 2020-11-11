@@ -92,6 +92,8 @@
           href: multiclass-neural-network.md
         - name: Bir - Tüm Çok Sınıflılık Karşılaştırması
           href: one-vs-all-multiclass.md
+        - name: Bir - Bir Çok Sınıflı
+          href: one-vs-one-multiclass.md
         - name: İki Sınıflı Ortalaması Alınmış Perceptron
           href: two-class-averaged-perceptron.md
         - name: İki Sınıflı Artırmalı Karar Ağacı

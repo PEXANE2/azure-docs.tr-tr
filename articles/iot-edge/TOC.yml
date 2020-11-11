@@ -1,5 +1,7 @@
 - name: Azure IoT Edge belgeleri
   href: index.yml
+- name: Azure IoT Edge sürümleri
+  href: version-history.md
 - name: Genel Bakış
   items:
     - name: Azure IoT Edge hakkında
@@ -13,13 +15,13 @@
       href: quickstart.md
 - name: Öğreticiler
   items:
-    - name: 1. Geliştirme ortamı ayarlama
+    - name: Geliştirme ortamı ayarlama
       items:
         - name: Linux cihazları için geliştirme
           href: tutorial-develop-for-linux.md
         - name: Windows cihazları için geliştirme
           href: tutorial-develop-for-windows.md
-    - name: 2. Özel kod modülleri geliştirme
+    - name: Özel kod modülleri geliştirme
       items:
         - name: C
           items:
@@ -39,7 +41,7 @@
           href: tutorial-node-module.md
         - name: Python
           href: tutorial-python-module.md
-    - name: 3. Azure hizmetlerini modül olarak dağıtma
+    - name: Azure hizmetlerini modül olarak dağıtma
       items:
         - name: Azure İşlevleri ile verileri filtreleme
           href: tutorial-deploy-function.md
@@ -51,7 +53,11 @@
           href: tutorial-deploy-custom-vision.md
         - name: SQL ile verileri yerel ortamda depolama
           href: tutorial-store-data-sql-server.md
-    - name: 4. Kenarda uçtan uca makine öğrenimi örneği
+    - name: IoT Edge’i ağ geçidi olarak kullanma
+      items:
+        - name: IoT Edge cihazlarının hiyerarşilerini oluşturma
+          href: tutorial-nested-iot-edge.md
+    - name: Kenarda uçtan uca makine öğrenimi örneği
       items:
         - name: Giriş
           href: tutorial-machine-learning-edge-01-intro.md
@@ -187,16 +193,26 @@
           href: how-to-access-built-in-metrics.md
     - name: IoT Edge cihazlarını ağ geçidi olarak kullanma
       items:
-        - name: Saydam bir ağ geçidi yapılandırma
-          href: how-to-create-transparent-gateway.md
-        - name: Aşağı akış cihazının kimliğini doğrulama
-          href: how-to-authenticate-downstream-device.md
-        - name: Aşağı akış cihazını bağlama
-          href: how-to-connect-downstream-device.md
-        - name: Modbus protokolü ağ geçidi
-          href: deploy-modbus-gateway.md
+        - name: IoT cihazları için ağ geçitleri
+          items:
+            - name: Saydam bir ağ geçidi yapılandırma
+              href: how-to-create-transparent-gateway.md
+            - name: Aşağı akış cihazının kimliğini doğrulama
+              href: how-to-authenticate-downstream-device.md
+            - name: Aşağı akış cihazını bağlama
+              href: how-to-connect-downstream-device.md
+            - name: Modbus protokolü ağ geçidi
+              href: deploy-modbus-gateway.md
+        - name: IoT Edge cihazları için ağ geçitleri
+          items:
+            - name: IoT Edge cihazları için ağ geçitlerini yapılandırma
+              href: how-to-connect-downstream-iot-edge-device.md
+            - name: API ara sunucu modülünü yapılandırma
+              href: how-to-configure-api-proxy-module.md
     - name: Proxy desteğini yapılandırma
       href: how-to-configure-proxy-support.md
+    - name: IoT Edge ile yayımlama ve abone olma
+      href: how-to-publish-subscribe.md
     - name: IoT Edge üzerinde Azure Blob Depolama
       items:
         - name: Uç sistemlerde blob depolamayı anlama

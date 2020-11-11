@@ -3,12 +3,12 @@ title: Azure İşlevleri için uygulama ayarları başvurusu
 description: Azure Işlevleri uygulama ayarları veya ortam değişkenleri için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 3d3def7057eeb022b3e207cbecf06ee3074a91af
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 2b71bee620ab7d5b1ef98b60013d1978f49d127f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043224"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505895"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure İşlevleri için uygulama ayarları başvurusu
 
@@ -135,7 +135,7 @@ Anahtar depolaması için kullanılacak depoyu veya sağlayıcıyı belirtir. Ş
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
-Azure Işlevleri çalışma zamanı, HTTP ile tetiklenen işlevler hariç tüm işlevler için bu depolama hesabı bağlantı dizesini kullanır. Depolama hesabı Blobları, kuyrukları ve tabloları destekleyen bir genel amaçlı olmalıdır. Bkz. [depolama hesabı](functions-infrastructure-as-code.md#storage-account) ve [depolama hesabı gereksinimleri](storage-considerations.md#storage-account-requirements).
+Azure Işlevleri çalışma zamanı, normal işlem için bu depolama hesabı bağlantı dizesini kullanır. Bu depolama hesabının bazı kullanımları anahtar yönetimi, Zamanlayıcı tetikleyici yönetimi ve Event Hubs kontrol noktaları içerir. Depolama hesabı Blobları, kuyrukları ve tabloları destekleyen bir genel amaçlı olmalıdır. Bkz. [depolama hesabı](functions-infrastructure-as-code.md#storage-account) ve [depolama hesabı gereksinimleri](storage-considerations.md#storage-account-requirements).
 
 |Anahtar|Örnek değer|
 |---|------------|

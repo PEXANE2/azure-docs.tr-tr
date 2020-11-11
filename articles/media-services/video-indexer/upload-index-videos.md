@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 11/10/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ea1df2937c6ae771407e4adf839c9ff0fa9f7f5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: a5106e1089e2353d2db884977eb51a4fd2717b99
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218988"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506184"
 ---
 # <a name="upload-and-index-your-videos"></a>Videolarınızı karşıya yükleme ve dizinleme  
 
@@ -26,7 +26,7 @@ Video Indexer API'siyle videoları karşıya yüklerken aşağıdaki karşıya y
 * video dosyasını istek gövdesinde bir bayt dizisi olarak gönderin,
 * [Varlık kimliğini](../latest/assets-concept.md) sağlayarak mevcut Azure Media Services varlığını kullanın (yalnızca ücretli hesaplarda desteklenir).
 
-Videonuz karşıya yüklendikten sonra Video Indexer (isteğe bağlı olarak) videoyu kodlar (makalede ele alınmıştır). Video Indexer hesabınızı oluştururken ücretsiz bir deneme hesabı (belirli sayıda ücretsiz dizin oluşturma dakikası elde edersiniz) veya ücretli bir seçenek (kota sınırlaması olmaz) arasından seçim yapabilirsiniz. Ücretsiz deneme kullanıldığında Video Indexer, web sitesi kullanıcılarına 600 dakikaya kadar ve API kullanıcılarına ise 2400 dakikaya kadar ücretsiz dizin oluşturma olanağı sunar. Ücretli seçenek kullanıldığında [Azure aboneliğinize ve bir Azure Media Services hesabına bağlı](connect-to-azure.md) bir Video Indexer hesabı oluşturulur. Dizin oluşturma faaliyeti yapılan dakika sayısının yanı sıra Medya Hesabı ile ilgili ücretler için ödeme yaparsınız. 
+Videonuz karşıya yüklendikten sonra Video Indexer (isteğe bağlı olarak) videoyu kodlar (makalede ele alınmıştır). Video Indexer hesabınızı oluştururken ücretsiz bir deneme hesabı (belirli sayıda ücretsiz dizin oluşturma dakikası elde edersiniz) veya ücretli bir seçenek (kota sınırlaması olmaz) arasından seçim yapabilirsiniz. Ücretsiz deneme kullanıldığında Video Indexer, web sitesi kullanıcılarına 600 dakikaya kadar ve API kullanıcılarına ise 2400 dakikaya kadar ücretsiz dizin oluşturma olanağı sunar. Ücretli seçenek kullanıldığında [Azure aboneliğinize ve bir Azure Media Services hesabına bağlı](connect-to-azure.md) bir Video Indexer hesabı oluşturulur. Dizin oluşturma için ödeme yaparsınız. daha fazla bilgi için bkz. [Media Services fiyatlandırması](https://azure.microsoft.com/pricing/details/media-services/).
 
 Makalesinde, bu seçeneklerle videolarınızı karşıya yükleme ve dizin oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir:
 
@@ -79,7 +79,7 @@ Video Indexer ile kullanabileceğiniz dosya biçimlerinin bir listesi için bkz.
 1. Videonuz karşıya yüklendikten sonra Video Indexer videoyu dizinlemeye ve analiz etmeye başlar.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="Karşıya yükle":::
+    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="Karşıya yükleme ilerleme durumu":::
 1. Video Indexer çözümlendikten sonra, videonuza bağlantı içeren bir e-posta alacaksınız ve videonuzda nelerin bulunmuştur ilgili kısa bir açıklama alırsınız. Örnek: kişiler, konular, OCR’ler.
 
 ## <a name="upload-and-index-with-api"></a><a name="apis"></a>API ile karşıya yükleme ve Dizin
@@ -118,7 +118,7 @@ Aşağıdaki olaylar hakkında müşteriyi bilgilendirmek için kullanılan bir 
         
     - Örnek: https: \/ /test.com/notifyme?projectName=MyProject&ID = 1234abcd&çok yönlü kimliği = 12&Knownpersonıd = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
 
-##### <a name="notes"></a>Notlar
+##### <a name="other-considerations"></a>Diğer önemli noktalar
 
 - Video Indexer, özgün URL 'de belirtilen mevcut parametreleri döndürür.
 - Belirtilen URL kodlanmalıdır.
@@ -140,7 +140,7 @@ Fiyat, seçilen dizinleme seçeneğine bağlıdır.
 
 #### <a name="priority"></a>Priority
 
-Videoların önceliklerine göre Video Indexer dizini oluşturulur. Dizin önceliğini belirtmek için **Priority** parametresini kullanın. Şu değerler geçerlidir: **düşük**, **normal** (varsayılan) ve **yüksek**.
+Videoların önceliklerine göre Video Indexer dizini oluşturulur. Dizin önceliğini belirtmek için **Priority** parametresini kullanın. Şu değerler geçerlidir: **düşük** , **normal** (varsayılan) ve **yüksek**.
 
 **Priority** parametresi yalnızca ücretli hesaplar için desteklenir.
 
@@ -176,7 +176,7 @@ Bu kodu geliştirme platformunuza kopyaladıktan sonra iki parametre sağlamanı
     API anahtarınızı almak için şu akışa gidin:
 
     * https://api-portal.videoindexer.ai/ sayfasına gidin
-    * Oturum açma
+    * Oturum aç
     * **Ürünler**  ->  **Yetkilendirme**  ->  **Yetkilendirme aboneliğine** git
     * **Birincil anahtarı** Kopyala
 * Video URL 'SI: endekslenecek video/ses dosyasının URL 'SI. URL bir medya dosyasına yönlendirmelidir (HTML sayfaları desteklenmez). Dosya, URI'nin parçası olarak sunulan bir erişim belirteci tarafından korunabilir ve dosyayı sunan uç noktanın güvenliği TLS 1.2 veya üzeri bir sürümle sağlanmalıdır. URL’nin kodlanması gerekir.

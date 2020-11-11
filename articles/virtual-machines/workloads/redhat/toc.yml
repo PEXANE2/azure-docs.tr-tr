@@ -18,3 +18,5 @@
   href: byos.md
 - name: Red Hat Enterprise Linux Genişletilmiş Yaşam Döngüsü Desteği
   href: redhat-extended-lifecycle-support.md
+- name: Azure’da Red Hat Enterprise görüntülerinin yerinde güncelleştirilmesi
+  href: redhat-in-place-upgrade.md

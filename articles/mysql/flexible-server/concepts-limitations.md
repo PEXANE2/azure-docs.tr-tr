@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: 6fff7f22e7d265eb9b15bcec8604eeab692ac1c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a064b2b2d0bad5fc8ded9a59b66d84a361facec9
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650298"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504348"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı 'nda sınırlamalar-esnek sunucu (Önizleme)
 
@@ -23,9 +23,9 @@ Bu makalede MySQL için Azure veritabanı esnek sunucu hizmeti kısıtlamaları 
 ## <a name="server-parameters"></a>Sunucu parametreleri
 
 > [!NOTE]
-> Ve gibi sunucu parametreleri için Min/Max değerlerini arıyorsanız `max_connections` `innodb_buffer_pool_size` , bu bilgiler sunucu parametreleri kavramlarına taşınır <!-- **[server parameters](./concepts-server-parameters.md)** --> bakın.
+> Ve gibi sunucu parametreleri için Min/Max değerlerini arıyorsanız `max_connections` `innodb_buffer_pool_size` , bu bilgiler sunucu parametreleri kavramlar [sunucu parametreleri](./concepts-server-parameters.md) makalesine taşınır.
 
-MySQL için Azure veritabanı, sunucu parametrelerinin değerlerini ayarlamayı destekler. Bazı parametrelerin en küçük ve en büyük değeri (örn. `max_connections`, `join_buffer_size` , `query_cache_size` ) sunucunun işlem katmanına ve işlem boyutuna göre belirlenir. Sunucu parametreleri kavramlarını inceleyin <!-- [server parameters](./concepts-server-parameters.md)--> Bu sınırlar hakkında daha fazla bilgi için.
+MySQL için Azure veritabanı, sunucu parametrelerinin değerlerini ayarlamayı destekler. Bazı parametrelerin en küçük ve en büyük değeri (örn. `max_connections`, `join_buffer_size` , `query_cache_size` ) sunucunun işlem katmanına ve işlem boyutuna göre belirlenir. Bu sınırlar hakkında daha fazla bilgi için [sunucu parametrelerine](./concepts-server-parameters.md) bakın.
 
 "Validate_password" ve "caching_sha2_password" gibi parola eklentileri hizmet tarafından desteklenmez.
 

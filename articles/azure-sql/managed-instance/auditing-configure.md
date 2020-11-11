@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: 393fceaa91600ab143912bb3af38c349f29f770a
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 31a1169ca6c2194b8d5564e5d0df50116dd25084
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427947"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505674"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Azure SQL yönetilen örnek denetimi 'ni kullanmaya başlama
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -59,7 +59,7 @@ Aşağıdaki bölümde, yönetilen örneğiniz üzerinde denetim yapılandırmas
   
 3. Denetim günlükleri için kapsayıcıyı oluşturduktan sonra, denetim günlüklerinin hedefi olarak yapılandırmak için iki yol vardır: [T-SQL kullanma](#blobtsql) veya [SQL Server Management Studio (SSMS) Kullanıcı arabirimini kullanma](#blobssms):
 
-   - <a id="blobtsql"></a>T-SQL kullanarak denetim günlükleri için blob depolamayı yapılandırma:
+   - <a id="blobtsql"></a>**T-SQL kullanarak denetim günlükleri için blob depolamayı yapılandırma:**
 
      1. Kapsayıcılar listesinde, yeni oluşturulan kapsayıcıya ve ardından **kapsayıcı özellikleri** ' ne tıklayın.
 
@@ -120,7 +120,7 @@ Aşağıdaki bölümde, yönetilen örneğiniz üzerinde denetim yapılandırmas
 
      1. [Sunucu denetim belirtimini veya veritabanı denetim belirtimini oluşturarak](#createspec)devam edin.
 
-   - <a id="blobssms"></a>SQL Server Management Studio 18 ' i kullanarak denetim günlükleri için blob depolamayı yapılandırma (Önizleme):
+   - <a id="blobssms"></a>**SQL Server Management Studio 18 ' i kullanarak denetim günlükleri için blob depolamayı yapılandırma:**
 
      1. SQL Server Management Studio Kullanıcı arabirimini kullanarak yönetilen örneğe bağlanın.
 
@@ -143,8 +143,8 @@ Aşağıdaki bölümde, yönetilen örneğiniz üzerinde denetim yapılandırmas
         ![Azure aboneliği, depolama hesabı ve BLOB kapsayıcısı seçin](./media/auditing-configure/13_mi_SSMS_select_subscription_account_container.png)
 
      1. **Denetim oluştur** Iletişim kutusunda **Tamam** ' a tıklayın.
-
-4. <a id="createspec"></a>Blob kapsayıcısını denetim günlükleri için hedef olarak yapılandırdıktan sonra, SQL Server için yaptığınız şekilde sunucu denetim belirtimini veya veritabanı denetim belirtimini oluşturun ve etkinleştirin:
+     
+     1. <a id="createspec"></a>Blob kapsayıcısını denetim günlükleri için hedef olarak yapılandırdıktan sonra, SQL Server için yaptığınız şekilde sunucu denetim belirtimini veya veritabanı denetim belirtimini oluşturun ve etkinleştirin:
 
    - [Sunucu denetim belirtimi oluşturma T-SQL Kılavuzu](/sql/t-sql/statements/create-server-audit-specification-transact-sql)
    - [Veritabanı denetim belirtimi oluşturma T-SQL Kılavuzu](/sql/t-sql/statements/create-database-audit-specification-transact-sql)

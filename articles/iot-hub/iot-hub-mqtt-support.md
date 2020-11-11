@@ -13,12 +13,14 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
 - contperfq1
-ms.openlocfilehash: 9f063b147fbddaeaa7888af755dba8f325d4fe0f
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+- fasttrack-edit
+- iot
+ms.openlocfilehash: 4e06edaf6323c13b3a5af037b5b85b5b0acecc79
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899098"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505657"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT protokolünü kullanarak IoT Hub 'ınız ile iletişim kurma
 
@@ -54,7 +56,7 @@ Aşağıdaki tablo desteklenen her dil için kod örneklerine bağlantılar içe
 | --- | --- | --- |
 | [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | Azure-IoT-Device-MQTT. MQTT | Azure-IoT-Device-MQTT. MqttWs |
 | [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable). MQTT | IotHubClientProtocol.MQTT_WS |
-| [,](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
+| [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
 | [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet). MQTT | TransportType. MQTT, MQTT başarısız olursa Web Yuvaları üzerinden MQTT 'e geri döner. Yalnızca Web Yuvaları üzerinden MQTT belirtmek için TransportType.Mqtt_WebSocket_Only kullanın |
 | [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) | Varsayılan olarak MQTT 'yi destekler | `websockets=True`İstemciyi oluşturmak için çağrıya ekleyin |
 
@@ -283,7 +285,7 @@ client.connect(iot_hub_name+".azure-devices.net", port=8883)
 
 ## <a name="sending-device-to-cloud-messages"></a>Cihazdan buluta iletiler gönderme
 
-Başarılı bir bağlantı yaptıktan sonra, bir cihaz IoT Hub `devices/{device_id}/messages/events/` `devices/{device_id}/messages/events/{property_bag}` bir **Konu adı** olarak veya kullanarak ileti gönderebilir. `{property_bag}`Öğesi, cihazın URL kodlamalı bir biçimde ek özelliklerle ileti göndermesini sağlar. Örneğin:
+Başarılı bir bağlantı yaptıktan sonra, bir cihaz IoT Hub `devices/{device_id}/messages/events/` `devices/{device_id}/messages/events/{property_bag}` bir **Konu adı** olarak veya kullanarak ileti gönderebilir. `{property_bag}`Öğesi, cihazın URL kodlamalı bir biçimde ek özelliklerle ileti göndermesini sağlar. Örnek:
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -298,7 +300,8 @@ IoT Hub uygulamaya özgü davranışların bir listesi aşağıda verilmiştir:
 
 * IoT Hub iletileri kalıcı olarak sürdürmez. Bir cihaz, **bekletme** bayrağı 1 olarak ayarlanmış bir ileti gönderirse IoT Hub **MQTT** uygulama özelliğini iletiye ekler. Bu durumda, bekletme iletisini kalıcı hale getirmeniz yerine IoT Hub arka uç uygulamasına geçirir.
 
-* IoT Hub, cihaz başına yalnızca bir etkin MQTT bağlantısını destekler. Aynı cihaz KIMLIĞI adına göre yeni MQTT bağlantısı, IoT Hub var olan bağlantıyı bırakmaya neden olur.
+* IoT Hub, cihaz başına yalnızca bir etkin MQTT bağlantısını destekler. Aynı cihaz KIMLIĞI adına yapılan tüm yeni MQTT bağlantıları, IoT Hub var olan bağlantıyı başlatmasına neden olur ve **400027 Connectionforcefullyıclosedonnewconnection** IoT Hub günlüklerde oturum açar
+
 
 Daha fazla bilgi için bkz. [mesajlaşma Geliştirici Kılavuzu](iot-hub-devguide-messaging.md).
 
@@ -370,7 +373,7 @@ Aşağıdaki sıra, bir cihazın IoT Hub cihaz ikizi bildirilen özelliklerini n
 
 3. Bu hizmet daha sonra, konusunun bildirilen özellikler koleksiyonu için yeni ETag değerini içeren bir yanıt iletisi gönderir `$iothub/twin/res/{status}/?$rid={request id}` . Bu yanıt iletisi istekle aynı **Istek kimliğini** kullanır.
 
-İstek iletisi gövdesi, bildirilen özelliklerin yeni değerlerini içeren bir JSON belgesi içerir. JSON belgesindeki her üye, Device ikizi 'in belgesine karşılık gelen üyeyi güncelleştirir veya ekler. Üye `null` , içerilen nesneden üyeyi siler. Örneğin:
+İstek iletisi gövdesi, bildirilen özelliklerin yeni değerlerini içeren bir JSON belgesi içerir. JSON belgesindeki her üye, Device ikizi 'in belgesine karşılık gelen üyeyi güncelleştirir veya ekler. Üye `null` , içerilen nesneden üyeyi siler. Örnek:
 
 ```json
 {
@@ -408,7 +411,7 @@ Daha fazla bilgi için bkz. [cihaz TWINS Geliştirici Kılavuzu](iot-hub-devguid
 
 ## <a name="receiving-desired-properties-update-notifications"></a>İstenen özellikleri güncelleştirme bildirimleri alınıyor
 
-Bir cihaz bağlandığında IoT Hub, `$iothub/twin/PATCH/properties/desired/?$version={new version}` çözüm arka ucu tarafından gerçekleştirilen güncelleştirmenin içeriğini içeren konuya bildirim gönderir. Örneğin:
+Bir cihaz bağlandığında IoT Hub, `$iothub/twin/PATCH/properties/desired/?$version={new version}` çözüm arka ucu tarafından gerçekleştirilen güncelleştirmenin içeriğini içeren konuya bildirim gönderir. Örnek:
 
 ```json
 {

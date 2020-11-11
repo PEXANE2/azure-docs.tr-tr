@@ -8,21 +8,21 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/03/2020
+ms.date: 11/10/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 85d392323b24df3cede196d2c68f05c9522b2293
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfaef4460df040ecc9b055fba83d33a3b687b200
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458306"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505385"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Öğretici: Video Indexer API'sini kullanma
 
 Video Indexer, Microsoft tarafından sunulan çeşitli ses ve video yapay zeka (AI) teknolojilerini tek bir tümleşik hizmette birleştirerek geliştirmeyi daha kolay hale getirir. API 'Ler, geliştiricilerin ölçek, küresel erişim, kullanılabilirlik ve bulut platformlarının güvenilirliğini öğrenmek zorunda kalmadan medya AI teknolojilerine odaklanmasını sağlamak üzere tasarlanmıştır. API 'Leri kullanarak dosyalarınızı karşıya yükleyebilir, ayrıntılı video öngörüleri alabilir, eklenebilir Öngörüler ve oynatıcı Pencere öğelerinin URL 'Lerini alabilir ve daha fazlasını yapabilirsiniz.
 
-Video Indexer hesabınızı oluştururken ücretsiz bir deneme hesabı (belirli sayıda ücretsiz dizin oluşturma dakikası elde edersiniz) veya ücretli bir seçenek (kota sınırlaması olmaz) arasından seçim yapabilirsiniz. Ücretsiz deneme kullanıldığında Video Indexer, web sitesi kullanıcılarına 600 dakikaya kadar ve API kullanıcılarına ise 2400 dakikaya kadar ücretsiz dizin oluşturma olanağı sunar. Ücretli bir seçenekle, [Azure aboneliğinize ve Azure Media Services hesabına bağlı](connect-to-azure.md)bir video Indexer hesabı oluşturursunuz. Dizin oluşturma faaliyeti yapılan dakika sayısının yanı sıra Azure Media Services hesabıyla ilgili ücretler için ödeme yaparsınız.
+Video Indexer hesabınızı oluştururken ücretsiz bir deneme hesabı (belirli sayıda ücretsiz dizin oluşturma dakikası elde edersiniz) veya ücretli bir seçenek (kota sınırlaması olmaz) arasından seçim yapabilirsiniz. Ücretsiz deneme kullanıldığında Video Indexer, web sitesi kullanıcılarına 600 dakikaya kadar ve API kullanıcılarına ise 2400 dakikaya kadar ücretsiz dizin oluşturma olanağı sunar. Ücretli bir seçenekle, [Azure aboneliğinize ve Azure Media Services hesabına bağlı](connect-to-azure.md)bir video Indexer hesabı oluşturursunuz. Dizin oluşturma için ödeme yaparsınız. daha fazla bilgi için bkz. [Media Services fiyatlandırması](https://azure.microsoft.com/pricing/details/media-services/).
 
 Bu makalede geliştiricilerin [Video Indexer API’sinden](https://api-portal.videoindexer.ai/) nasıl yararlanabileceği açıklanmaktadır.
 
@@ -45,7 +45,7 @@ Bu makalede geliştiricilerin [Video Indexer API’sinden](https://api-portal.vi
     > [!NOTE]
     > Yeni kullanıcılar otomatik olarak Yetkilendirme’ye abone edilir.
     
-    Abone olduktan sonra, aboneliğinizi **ürünlerin**  ->  **yetkilendirmesi**altında bulabilirsiniz. Abonelik sayfasında, birincil ve ikincil anahtarları bulacaksınız. Anahtarlar korunmalıdır. Anahtarlar yalnızca sunucu kodunuz tarafından kullanılmalıdır. İstemci tarafında (. js,. html vb.) kullanılamayacak.
+    Abone olduktan sonra, aboneliğinizi **ürünlerin**  ->  **yetkilendirmesi** altında bulabilirsiniz. Abonelik sayfasında, birincil ve ikincil anahtarları bulacaksınız. Anahtarlar korunmalıdır. Anahtarlar yalnızca sunucu kodunuz tarafından kullanılmalıdır. İstemci tarafında (. js,. html vb.) kullanılamayacak.
 
     ![Video Indexer geliştirici portalındaki abonelik ve anahtarlar](./media/video-indexer-use-apis/video-indexer-api03.png)
 
@@ -60,13 +60,13 @@ Yetkilendirme API 'sine abone olduktan sonra erişim belirteçleri elde edebilir
 
 - Kullanıcı düzeyi: Kullanıcı düzeyi erişim belirteçleri, **Kullanıcı** düzeyinde işlem gerçekleştirmenize olanak tanır. Örnek: ilişkili hesaplar alma.
 - Hesap düzeyi: hesap düzeyi erişim belirteçleri, **Hesap** düzeyinde veya **video** düzeyinde işlemler gerçekleştirmenize olanak tanır. Örneğin, videoyu karşıya yükleyin, tüm videoları listeleyin, video öngörüleri alın ve bu şekilde devam edin.
-- Video düzeyi: video düzeyi erişim belirteçleri, belirli bir **video**üzerinde işlemler gerçekleştirmenize olanak tanır. Örneğin, video öngörüleri edinin, resim yazıları indirin, pencere öğelerini alın vb.
+- Video düzeyi: video düzeyi erişim belirteçleri, belirli bir **video** üzerinde işlemler gerçekleştirmenize olanak tanır. Örneğin, video öngörüleri edinin, resim yazıları indirin, pencere öğelerini alın vb.
 
-Bu belirteçlerin salt okunurdur veya **AllowEdit = true/false**belirterek düzenlenmesine izin verip vermeyeceklerini kontrol edebilirsiniz.
+Bu belirteçlerin salt okunurdur veya **AllowEdit = true/false** belirterek düzenlenmesine izin verip vermeyeceklerini kontrol edebilirsiniz.
 
-Çoğu sunucu-sunucu senaryosunda, büyük olasılıkla **Hesap** işlemlerini ve **video** işlemlerini kapsadığından aynı **Hesap** belirtecini kullanacaksınız. Ancak, Video Indexer için istemci tarafı çağrıları yapmayı planlıyorsanız (örneğin, JavaScript 'ten), istemcilerin tüm hesaba erişimini engellemek için bir **video** erişim belirteci kullanmak istersiniz. Ayrıca, istemci kodu Video Indexer Katıştırırken (örneğin, **öngörüleri al pencere öğesini** veya **Player pencere öğesini al**' ı kullanarak), bir **video** erişim belirteci sağlamanız gerekir.
+Çoğu sunucu-sunucu senaryosunda, büyük olasılıkla **Hesap** işlemlerini ve **video** işlemlerini kapsadığından aynı **Hesap** belirtecini kullanacaksınız. Ancak, Video Indexer için istemci tarafı çağrıları yapmayı planlıyorsanız (örneğin, JavaScript 'ten), istemcilerin tüm hesaba erişimini engellemek için bir **video** erişim belirteci kullanmak istersiniz. Ayrıca, istemci kodu Video Indexer Katıştırırken (örneğin, **öngörüleri al pencere öğesini** veya **Player pencere öğesini al** ' ı kullanarak), bir **video** erişim belirteci sağlamanız gerekir.
 
-İşleri kolaylaştırmak için **Yetkilendirme** API’si > **GetAccounts**’u kullanarak ilk önce bir kullanıcı belirteci almaya gerek kalmadan hesaplarınızı alabilirsiniz. Ayrıca, hesapları geçerli belirteçlerle almayı da isteyebilirsiniz. Böylece hesap belirteci almak için yapılacak ek bir çağrıyı atlayabilirsiniz.
+İşleri kolaylaştırmak için **Yetkilendirme** API’si > **GetAccounts** ’u kullanarak ilk önce bir kullanıcı belirteci almaya gerek kalmadan hesaplarınızı alabilirsiniz. Ayrıca, hesapları geçerli belirteçlerle almayı da isteyebilirsiniz. Böylece hesap belirteci almak için yapılacak ek bir çağrıyı atlayabilirsiniz.
 
 Erişim belirteçlerinin süresi 1 saatte dolar. İşlemler API'sini kullanmadan önce erişim belirtecinizin geçerli olduğundan emin olun. Süresi dolarsa, yeni bir erişim belirteci almak için yetkilendirme API 'sini yeniden çağırın.
 
@@ -84,7 +84,7 @@ Hesap Kimliği parametresi, işleme yönelik tüm API çağrıları için gerekl
 
         ![Video Indexer ayarları ve hesap KIMLIĞI](./media/video-indexer-use-apis/account-id.png)
 
-* Hesap Kimliğini programlı olarak almak için **Video Indexer Geliştirici Portalı**’nı kullanın.
+* Hesap Kimliğini programlı olarak almak için **Video Indexer Geliştirici Portalı** ’nı kullanın.
 
     [Hesap al](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Account?) API 'sini kullanın.
 
@@ -103,9 +103,9 @@ Hesap Kimliği parametresi, işleme yönelik tüm API çağrıları için gerekl
 
 Bu bölümde, Video Indexer API kullanırken işinize yarayacak bazı öneriler sunulmaktadır.
 
-- Bir videoyu karşıya yüklemeyi planlıyorsanız dosyayı bazı genel ağ konumlarına (örneğin, OneDrive) yerleştirmeniz önerilir. Videonun bağlantısını alın ve URL'yi karşıya dosya yükleme parametresi olarak kullanın.
+- Bir videoyu karşıya yüklemeyi planlıyorsanız dosyayı bazı genel ağ konumlarına (örneğin, bir Azure Blob depolama hesabı) yerleştirmeniz önerilir. Videonun bağlantısını alın ve URL'yi karşıya dosya yükleme parametresi olarak kullanın.
 
-    Video Indexer’a sağlanan URL bir medya dosyasına (ses veya video) yönlendirmelidir. OneDrive tarafından oluşturulan bağlantıların bazıları, dosyayı içeren bir HTML sayfası içindir. URL için kolay bir doğrulama bir tarayıcıya yapıştırmaktır — dosya indirilbaşlarsa, büyük olasılıkla iyi bir URL olur. Tarayıcı bazı görselleştirmeleri işliyorsa, büyük olasılıkla bir dosyanın bağlantısı değildir ve bir HTML sayfasına değildir.
+    Video Indexer’a sağlanan URL bir medya dosyasına (ses veya video) yönlendirmelidir. URL (veya SAS URL 'SI) için kolay bir doğrulama bir tarayıcıya yapıştırmaktır; dosya çalmaya/indirmeye başlarsa, büyük olasılıkla iyi bir URL olur. Tarayıcı bazı görselleştirmeleri işliyorsa, büyük olasılıkla bir dosyanın bağlantısı değildir ve bir HTML sayfasına değildir.
 
 - Belirtilen video için video içgörüleri alan API’yi çağırdığınızda yanıt içeriği olarak ayrıntılı bir JSON çıktısını alırsınız. [Döndürülen JSON hakkındaki ayrıntıları bu konuda görebilirsiniz](video-indexer-output-json-v2.md).
 
@@ -215,5 +215,5 @@ Debug.WriteLine(playerWidgetLink);
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [JSON çıkışının ayrıntılarını inceleyin](video-indexer-output-json-v2.md)
-- Videoyu karşıya yükleme ve dizine almanın önemli yönlerini gösteren [örnek koda](https://github.com/Azure-Samples/media-services-video-indexer) göz atın. Code WIL, API 'imizi temel işlevler için nasıl kullanacağınızı size iyi bir fikir verir. Satır içi açıklamaları okuduğunuzdan emin olun ve en iyi yöntemler ilerlerimize dikkat edin.
+- Videoyu karşıya yükleme ve dizine almanın önemli yönlerini gösteren [örnek koda](https://github.com/Azure-Samples/media-services-video-indexer) göz atın. Kodu takip etmek, API 'lerimizi temel işlevler için nasıl kullanacağınızı size iyi bir fikir verecektir. Satır içi açıklamaları okuduğunuzdan emin olun ve en iyi yöntemler ilerlerimize dikkat edin.
 

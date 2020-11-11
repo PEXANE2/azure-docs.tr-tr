@@ -4,12 +4,12 @@ description: Python ile işlev geliştirmeyi anlama
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: cc99a8c10ecefc063fdb89c61bdaeb0e686b1a82
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ce8abf439c44e06134113dd562ebadc62b803a28
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358057"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506082"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
@@ -312,10 +312,10 @@ Performansı iyileştirmeye yönelik bir anahtar, uygulamanızın kaynakları na
 
 Varsayılan yapılandırma, Azure Işlevleri uygulamalarının çoğu için uygundur. Ancak, iş yükü profilinize göre yapılandırma uygulayarak uygulamalarınızın aktarım hızı performansını artırabilirsiniz. İlk adım, çalıştırdığınız iş yükünün türünü anlamaktır.
 
-|&nbsp;| G/ç bağlantılı iş yükü | CPU ile bağlantılı iş yükü |
+| | G/ç bağlantılı iş yükü | CPU ile bağlantılı iş yükü |
 |--| -- | -- |
-|İşlev uygulaması özellikleri| <ul><li>Uygulamanın birçok eşzamanlı çağırma işlemesi gerekiyor.</li> <li> Uygulama, ağ çağrıları ve disk okuma/yazma gibi çok sayıda g/ç olayını işler.</li> </ul>| <ul><li>Uygulama, görüntü yeniden boyutlandırma gibi uzun süre çalışan hesaplamalar yapar.</li> <li>Uygulama veri dönüşümünü yapar.</li> </ul> |
-|Örnekler| <ul><li>Web API'leri</li><ul> | <ul><li>Veri işleme</li><li> Makine öğrenimi çıkarımı</li><ul>|
+|**İşlev uygulaması özellikleri**| <ul><li>Uygulamanın birçok eşzamanlı çağırma işlemesi gerekiyor.</li> <li> Uygulama, ağ çağrıları ve disk okuma/yazma gibi çok sayıda g/ç olayını işler.</li> </ul>| <ul><li>Uygulama, görüntü yeniden boyutlandırma gibi uzun süre çalışan hesaplamalar yapar.</li> <li>Uygulama veri dönüşümünü yapar.</li> </ul> |
+|**Örnekler**| <ul><li>Web API'leri</li><ul> | <ul><li>Veri işleme</li><li> Makine öğrenimi çıkarımı</li><ul>|
 
 
 > [!NOTE]

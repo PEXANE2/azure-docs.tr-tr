@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: d5e8305fb80e6869bf604108aaa0e4d8e36cab8e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4da0f40c25d322953fea968396ef33924877c2e1
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314751"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505232"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Değerlendirme/bağımlılık görselleştirmesi sorunlarını giderme
 
@@ -23,10 +23,10 @@ Bu makale, [Azure geçişi: Sunucu değerlendirmesi](migrate-services-overview.m
 
 Değerlendirme hazırlık sorunlarını aşağıdaki şekilde giderin:
 
-**Konuda** | **Düzeltme**
+**Konuda** | **Onar**
 --- | ---
 Desteklenmeyen önyükleme türü | Azure, EFı önyükleme türü olan VM 'Leri desteklemez. Geçiş çalıştırmadan önce önyükleme türünü BIOS 'a dönüştürmeniz önerilir. <br/><br/>Bu sanal makinelerin geçişini yönetmek için Azure geçişi sunucu geçişini kullanabilirsiniz. Geçiş sırasında VM 'nin önyükleme türünü BIOS 'a dönüştürür.
-Koşullu olarak desteklenen Windows işletim sistemi | İşletim sistemi destek son tarihini geçti ve [Azure 'da destek](/troubleshoot/azure/virtual-machines/server-software-support)için özel bir destek SÖZLEŞMESINE (CSA) ihtiyaç duyuyor. Azure 'a geçiş yapmadan önce yükseltmeyi göz önünde bulundurun.
+Koşullu olarak desteklenen Windows işletim sistemi | İşletim sistemi destek son tarihini geçti ve [Azure 'da destek](/troubleshoot/azure/virtual-machines/server-software-support)için özel bir destek SÖZLEŞMESINE (CSA) ihtiyaç duyuyor. Azure 'a geçiş yapmadan önce yükseltmeyi göz önünde bulundurun. Azure 'a geçiş için [Windows Server 2003 çalıştıran makineleri hazırlama](prepare-windows-server-2003-migration.md) hakkındaki bilgileri [gözden geçirin]() .
 Desteklenmeyen Windows işletim sistemi | Azure yalnızca [Seçili Windows işletim sistemi sürümlerini](/troubleshoot/azure/virtual-machines/server-software-support)destekler. Azure 'a geçiş yapmadan önce makineyi yükseltmeyi düşünün.
 Koşullu olarak onaylama Linux işletim sistemi | Azure yalnızca [Seçili Linux işletim sistemleri sürümlerini](../virtual-machines/linux/endorsed-distros.md)onaylar. Azure 'a geçiş yapmadan önce makineyi yükseltmeyi düşünün. Ayrıca daha fazla ayrıntı için [buraya](#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment) başvurun.
 Hazırlanmamış Linux işletim sistemi | Makine Azure 'da başlayabilir, ancak Azure işletim sistemi desteği sağlamaz. Azure 'a geçiş yapmadan önce, [onaylı bir Linux sürümüne](../virtual-machines/linux/endorsed-distros.md) yükseltmeyi düşünün.
@@ -48,7 +48,7 @@ Bir iç hata nedeniyle VM uygunluğu belirlenemedi | Grup için yeni bir değerl
 Bir iç hata nedeniyle bir veya daha fazla disk için uygunluğu belirlenemedi | Grup için yeni bir değerlendirme oluşturmayı deneyin.
 Bir iç hata nedeniyle bir veya daha fazla ağ bağdaştırıcısı için uygunluğu belirlenemedi | Grup için yeni bir değerlendirme oluşturmayı deneyin.
 Teklif para birimi ayrılmış örneği için VM boyutu bulunamadı | Seçilen RI, teklif ve para birimi birleşimi için VM boyutu bulunamadığı için makine uygun değil olarak işaretlendi. Geçerli birleşimleri seçmek ve değerlendirmeyi yeniden hesaplamak için değerlendirme özelliklerini düzenleyin. 
-Koşullu olarak Ready Internet Protokolü | Yalnızca Azure VMware Çözüm (AVS) değerlendirmelerinde geçerlidir. AVS, IPv6 Internet adresi faktörünü desteklemez.Makineniz IPv6 ile algılanıyorsa düzeltme kılavuzu için AVS ekibine başvurun.
+Koşullu olarak Ready Internet Protokolü | Yalnızca Azure VMware Çözüm (AVS) değerlendirmelerinde geçerlidir. AVS, IPv6 Internet adresi faktörünü desteklemez. Makineniz IPv6 ile algılanıyorsa düzeltme kılavuzu için AVS ekibine başvurun.
 
 ## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>İçeri aktarma temelli AVS değerlendirmesi bilinmeyen olarak işaretlenmiş olan önerilen geçiş aracı
 
@@ -75,7 +75,7 @@ Fiziksel sunucular için işletim sistemi ikincil sürüm bilgileri kullanılabi
 Azure geçişi sunucu değerlendirmesi, Azure VM SKU 'Larını, değerlendirme türüne göre geçerli şirket içi ayırmadan daha fazla çekirdek ve bellek ile önerebilir:
 
 - VM SKU 'SU önerisi, değerlendirme özelliklerine bağlıdır.
-- Bu, sunucu değerlendirmesi: *performans tabanlı*veya *Şirket içi olarak*gerçekleştirdiğiniz değerlendirme türünden etkilenir.
+- Bu, sunucu değerlendirmesi: *performans tabanlı* veya *Şirket içi olarak* gerçekleştirdiğiniz değerlendirme türünden etkilenir.
 - Performans tabanlı değerlendirmelere yönelik sunucu değerlendirmesi, şirket içi sanal makinelerinize yönelik doğru hedef VM SKU 'sunu belirlemede şirket içi VM 'lerin (CPU, bellek, disk ve ağ kullanımı) kullanım verilerini dikkate alır. Ayrıca etkili kullanımı saptarken de bir konfor katsayısı ekler.
 - Şirket içi boyutlandırma için performans verileri göz önünde bulundurulmaz ve hedef SKU, şirket içi ayırmaya göre önerilir.
 
@@ -83,7 +83,7 @@ Bunun önerileri nasıl etkileyebileceğini göstermek için bir örnek alalım:
 
 Dört çekirdekli ve sekiz GB bellek içeren, %50 CPU kullanımı ve %50 bellek kullanımı ve belirli bir rahatlık 1,3 faktörü içeren bir şirket içi VM sunuyoruz.
 
--  Değerlendirme **Şirket içinde**ise, dört çekirdekli ve 8 GB bellek Içeren BIR Azure VM SKU 'su önerilir.
+-  Değerlendirme **Şirket içinde** ise, dört çekirdekli ve 8 GB bellek Içeren BIR Azure VM SKU 'su önerilir.
 - Değerlendirme, etkin CPU ve bellek kullanımı 50 (4 çekirdek * 1,3 = 2,6 çekirdekler 50 ve 8 GB bellek * 1,3 = 5,3-GB bellek) temel alınarak, dört çekirdekli sanal makine SKU 'SU (en yakın desteklenen çekirdek sayısı) ve sekiz GB bellek (en yakın desteklenen bellek boyutu) önerilir.
 - Değerlendirme boyutlandırma hakkında [daha fazla bilgi edinin](concepts-assessment-calculation.md#types-of-assessments) .
 
@@ -91,8 +91,8 @@ Dört çekirdekli ve sekiz GB bellek içeren, %50 CPU kullanımı ve %50 bellek 
 
 Azure geçişi sunucu değerlendirmesi, değerlendirme türüne göre daha büyük bir disk önerebilir.
 - Sunucu değerlendirmesinde disk boyutlandırma iki değerlendirme özelliklerine bağlıdır: boyutlandırma ölçütleri ve depolama türü.
-- Boyutlandırma ölçütü **performans tabanlıdır**ve depolama türü **Otomatik**, IOPS ve aktarım hızı değerleri, hedef disk türü (Standart HDD, standart SSD veya Premium) tanımlanırken kabul edilir. Daha sonra disk türünden bir disk SKU 'SU önerilir ve öneri, şirket içi diskin boyut gereksinimlerini dikkate alır.
-- Boyutlandırma ölçütü **performans tabanlıdır**ve depolama türü **Premium**ise, şirket içi diskin IOPS, verimlilik ve Boyut gereksinimlerine bağlı olarak Azure 'DA BIR Premium disk SKU 'su önerilir. Aynı mantık, boyutlandırma ölçütleri **Şirket içinde** olduğunda ve depolama türü **Standart HDD**, **Standart SSD**veya **Premium**olduğunda disk boyutlandırmayı gerçekleştirmek için kullanılır.
+- Boyutlandırma ölçütü **performans tabanlıdır** ve depolama türü **Otomatik** , IOPS ve aktarım hızı değerleri, hedef disk türü (Standart HDD, standart SSD veya Premium) tanımlanırken kabul edilir. Daha sonra disk türünden bir disk SKU 'SU önerilir ve öneri, şirket içi diskin boyut gereksinimlerini dikkate alır.
+- Boyutlandırma ölçütü **performans tabanlıdır** ve depolama türü **Premium** ise, şirket içi diskin IOPS, verimlilik ve Boyut gereksinimlerine bağlı olarak Azure 'DA BIR Premium disk SKU 'su önerilir. Aynı mantık, boyutlandırma ölçütleri **Şirket içinde** olduğunda ve depolama türü **Standart HDD** , **Standart SSD** veya **Premium** olduğunda disk boyutlandırmayı gerçekleştirmek için kullanılır.
 
 Örnek olarak, 32 GB bellek içeren bir şirket içi diskiniz varsa, ancak diskin toplanmış okuma ve yazma ıOPS değeri 800 ıOPS ise, sunucu değerlendirmesi bir Premium disk önerir (daha yüksek ıOPS gereksinimleri nedeniyle) ve ardından gerekli ıOPS ve boyutu destekleyebilen bir disk SKU 'SU önerir. Bu örnekteki en yakın eşleşme P15 (256 GB, 1100 IOPS) olabilir. Şirket içi diskin gerektirdiği boyut 32 GB olsa da, şirket içi diskin yüksek ıOPS gereksinimi nedeniyle sunucu değerlendirmesi daha büyük bir disk önerir.
 
@@ -165,8 +165,8 @@ Linux sanal makineleri için, MMA ve bağımlılık aracısının yükleme komut
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
-- **MMS Aracısı**: desteklenen [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)ve [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) işletim sistemlerini gözden geçirin.
-- **Bağımlılık Aracısı**: desteklenen [Windows ve Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) işletim sistemleri.
+- **MMS Aracısı** : desteklenen [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)ve [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) işletim sistemlerini gözden geçirin.
+- **Bağımlılık Aracısı** : desteklenen [Windows ve Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) işletim sistemleri.
 
 ## <a name="visualize-dependencies-for--hour"></a>> saat bağımlılıklarını görselleştirin
 
@@ -202,15 +202,15 @@ Ağ trafiği günlüklerini aşağıda gösterildiği gibi toplayın:
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Geliştirici Araçları başlamak için F12 tuşuna basın. Gerekirse,  **Gezinti ayarında girişleri temizle** ' yi temizleyin.
 3. **Ağ** sekmesini seçin ve ağ trafiğini yakalamaya başlayın:
-   - Chrome 'da **günlüğü koru**' yı seçin. Kayıt otomatik olarak başlamalıdır. Kırmızı bir daire trafiğin yakalandığını gösterir. Kırmızı daire görünmezse başlamak için siyah daireyi seçin.
+   - Chrome 'da **günlüğü koru** ' yı seçin. Kayıt otomatik olarak başlamalıdır. Kırmızı bir daire trafiğin yakalandığını gösterir. Kırmızı daire görünmezse başlamak için siyah daireyi seçin.
    - Microsoft Edge ve Internet Explorer 'da kayıt otomatik olarak başlamalıdır. Aksi takdirde, yeşil oynatma düğmesini seçin.
 4. Hatayı yeniden oluşturmaya çalışın.
 5. Kayıt sırasında hata ile karşılaşduktan sonra kaydı durdurun ve kayıtlı etkinliğin bir kopyasını kaydedin:
-   - Chrome 'da, sağ tıklayın ve **IÇERIKLE har olarak kaydet**' i seçin. Bu eylem, günlükleri bir. har dosyası olarak sıkıştırır ve dışarı aktarır.
+   - Chrome 'da, sağ tıklayın ve **IÇERIKLE har olarak kaydet** ' i seçin. Bu eylem, günlükleri bir. har dosyası olarak sıkıştırır ve dışarı aktarır.
    - Microsoft Edge veya Internet Explorer 'da **yakalanan trafiği dışarı aktar** seçeneğini belirleyin. Bu eylem günlüğü sıkıştırır ve dışarı aktarır.
 6. Herhangi bir uyarı veya hata olup olmadığını denetlemek için **konsol** sekmesini seçin. Konsol günlüğünü kaydetmek için:
-   - Chrome 'da konsol günlüğünde herhangi bir yere sağ tıklayın. Günlüğe **Kaydet**, dışarı aktarmak için ve günlüğü posta ' yı seçin.
-   - Microsoft Edge veya Internet Explorer 'da hatalara sağ tıklayıp **Tümünü Kopyala**' yı seçin.
+   - Chrome 'da konsol günlüğünde herhangi bir yere sağ tıklayın. Günlüğe **Kaydet** , dışarı aktarmak için ve günlüğü posta ' yı seçin.
+   - Microsoft Edge veya Internet Explorer 'da hatalara sağ tıklayıp **Tümünü Kopyala** ' yı seçin.
 7. Geliştirici Araçları kapatın.
 
 

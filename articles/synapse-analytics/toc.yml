@@ -171,7 +171,7 @@
           href: sql/overview-features.md
         - name: Kaynak tüketimi modelleri
           href: sql/resource-consumption-models.md
-        - name: İşlenen veriler
+        - name: Sunucusuz SQL havuzu için maliyet yönetimi
           href: sql/data-processed.md
         - name: Sunucusuz SQL havuzu için en iyi yöntemler
           href: sql/best-practices-sql-on-demand.md
@@ -996,6 +996,8 @@
       href: /powershell/module/az.synapse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: REST API'leri
       href: /rest/api/synapse/
+    - name: Microsoft Spark Yardımcı Programları
+      href: ./spark/microsoft-spark-utilities.md
     - name: Örnekler
       href: 'https://github.com/Azure-Samples/Synapse'
     - name: Sistem görünümleri

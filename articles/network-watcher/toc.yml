@@ -13,7 +13,7 @@
       href: diagnose-vm-network-traffic-filtering-problem-powershell.md
     - name: VM trafik filtresi sorununu tanılama - Azure CLI
       href: diagnose-vm-network-traffic-filtering-problem-cli.md
-    - name: ARM Şablonu kullanarak NSG akış günlüklerini yapılandırma
+    - name: ARM şablonu kullanarak NSG akış günlüklerini yapılandırma
       displayName: Resource Manager
       href: quickstart-configure-network-security-group-flow-logs-from-arm-template.md
 - name: Öğreticiler
@@ -29,7 +29,7 @@
 - name: Kavramlar
   items:
     - name: Bağlantı İzleyicisi (Önizleme)
-      href: connection-monitor-preview.md
+      href: connection-monitor-overview.md
     - name: VM ağ trafiği filtre sorunlarını tanılama
       href: network-watcher-ip-flow-verify-overview.md
     - name: NSG kurallarını ve Trafik filtrelemeyi tanılama
@@ -61,9 +61,9 @@
     - name: Bağlantı İzleyicisi oluşturma (Önizleme)
       items:
         - name: Azure portalını kullanma
-          href: connection-monitor-preview-create-using-portal.md
+          href: connection-monitor-create-using-portal.md
         - name: ARMClient kullanma
-          href: connection-monitor-preview-create-using-arm-client.md
+          href: connection-monitor-create-using-template.md
         - name: PowerShell'i kullanma
           href: connection-monitor-create-using-powershell.md
     - name: Bağlantı İzleyicisi’ne geçiş (Önizleme)
@@ -88,7 +88,7 @@
               href: diagnose-vm-network-routing-problem-cli.md
         - name: Giden bağlantı sorunlarını tanılama
           items:
-            - name: Azure portal
+            - name: Azure portalı
               href: network-watcher-connectivity-portal.md
             - name: Azure PowerShell
               href: network-watcher-connectivity-powershell.md

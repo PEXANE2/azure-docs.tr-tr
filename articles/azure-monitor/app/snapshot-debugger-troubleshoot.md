@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: bb2ac221169cea84205d087cbe0aadfd035d22db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49a4ab0315dad539a594a20e53eae9fd2890e551
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760521"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504977"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Application Insights Snapshot Debugger etkinleştirme veya anlık görüntüleri görüntüleme sorunlarını giderme
 Uygulamanız için Application Insights Snapshot Debugger etkinleştirdiyseniz, ancak özel durumlar için anlık görüntüler görmüyorsanız, bu yönergeleri kullanarak sorun giderme yapabilirsiniz. Anlık görüntülerin oluşturulmamasının birçok farklı nedeni olabilir. Olası yaygın nedenlerin bazılarını belirlemek için anlık görüntü sistem durumu denetimini çalıştırabilirsiniz.
@@ -57,22 +57,24 @@ Ayarı denetlemek için web.config dosyanızı açın ve System. Web bölümün�
 > TargetFramework 4,7 veya üzeri ise, Windows kullanılabilir protokolleri belirler. Azure App Service, TLS 1,2 kullanılabilir. Ancak, kendi sanal makinenizi kullanıyorsanız, işletim sisteminde TLS 1,2 ' i etkinleştirmeniz gerekebilir.
 
 ## <a name="preview-versions-of-net-core"></a>.NET Core 'un önizleme sürümleri
-Uygulama .NET Core 'un önizleme sürümünü kullanıyorsa ve Snapshot Debugger portalda [Application Insights bölmesi](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) aracılığıyla etkinleştirildiyse Snapshot Debugger başlatılamayabilir. [Diğer ortamlar için Snapshot Debugger etkinleştir](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) bölümündeki yönergeleri izleyerek, [Application Insights bölmesi](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)aracılığıyla etkinleştirmenin ***yanı sıra*** [Microsoft. ApplicationInsights. snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketini uygulamaya ekleyin.
+Uygulama .NET Core 'un önizleme sürümünü kullanıyorsa ve Snapshot Debugger portalda [Application Insights bölmesi](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) aracılığıyla etkinleştirildiyse Snapshot Debugger başlatılamayabilir. [Application Insights bölmesini](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)etkinleştirmek için, daha önce [diğer ortamlar için Snapshot Debugger etkinleştir](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) bölümündeki yönergeleri Izleyerek [Microsoft. ApplicationInsights. snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketini uygulamayla birlikte * **ek _ içine** ekleyin.
 
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>NuGet paketinin en son sürümüne yükseltin
 
 Snapshot Debugger [portalda Application Insights bölmesi](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)aracılığıyla etkinleştirildiyse, uygulamanız zaten en son NuGet paketini çalıştırıyor olmalıdır. Snapshot Debugger [Microsoft. ApplicationInsights. snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketini ekleyerek etkinleştirilmişse, Microsoft. ApplicationInsights. snapshotcollector 'ın en son sürümünü kullandığınızdan emin olmak Için Visual Studio 'Nun NuGet paket yöneticisini kullanın.
 
+En son güncelleştirmeler ve hata düzeltmeleri için [sürüm notlarına bakın](./snapshot-collector-release-notes.md).
+
 ## <a name="check-the-uploader-logs"></a>Uploader günlüklerini denetleyin
 
 Bir anlık görüntü oluşturulduktan sonra, diskte bir mini döküm dosyası (. dmp) oluşturulur. Ayrı bir Uploader işlemi, bu mini döküm dosyasını oluşturur ve Snapshot Debugger depolama Application Insights için ilişkili tüm pdb 'leri birlikte karşıya yükler. Mini döküm başarıyla karşıya yüklendikten sonra diskten silinir. Uploader işleminin günlük dosyaları diskte tutulur. App Service ortamında bu günlükleri ' de bulabilirsiniz `D:\Home\LogFiles` . Bu günlük dosyalarını bulmak için App Service kudu yönetim sitesini kullanın.
 
 1. App Service uygulamanızı Azure portal açın.
-2. **Gelişmiş Araçlar**' a tıklayın veya **kudu**araması yapın.
-3. **Git**' e tıklayın.
-4. **Hata ayıklama konsolu** aşağı açılan liste kutusunda **cmd**' yi seçin.
-5. **Günlük dosyaları**' na tıklayın.
+2. _ * Gelişmiş Araçlar * * seçeneğine tıklayın veya **kudu** 'yi arayın.
+3. **Git** ' e tıklayın.
+4. **Hata ayıklama konsolu** aşağı açılan liste kutusunda **cmd** ' yi seçin.
+5. **Günlük dosyaları** ' na tıklayın.
 
 Veya uzantısıyla başlayan en az bir dosya görmeniz gerekir `Uploader_` `SnapshotUploader_` `.log` . Herhangi bir günlük dosyasını indirmek veya bir tarayıcıda açmak için uygun simgeye tıklayın.
 Dosya adı, App Service örneğini tanımlayan benzersiz bir sonek içerir. App Service örneğiniz birden fazla makinede barındırılıyorsa, her makine için ayrı günlük dosyaları vardır. Uploader yeni bir mini döküm dosyası algıladığında, günlük dosyasına kaydedilir. İşte başarılı bir anlık görüntü ve karşıya yükleme örneği:
@@ -223,7 +225,7 @@ Ya da bir .NET Core uygulamasıyla üzerinde appsettings.jskullanıyorsanız:
 Bir anlık görüntü oluşturulduğunda, oluşturan özel durum bir anlık görüntü KIMLIĞIYLE etiketlenir. Özel durum telemetrisi Application Insights olarak bildirildiğinde bu anlık görüntü KIMLIĞI özel bir özellik olarak dahil edilir. Application Insights **arama** kullanarak, özel özellik ile tüm telemetrileri bulabilirsiniz `ai.snapshot.id` .
 
 1. Azure portal Application Insights kaynağına gidin.
-2. **Ara**’ya tıklayın.
+2. **Ara** ’ya tıklayın.
 3. `ai.snapshot.id`Arama metin kutusuna yazın ve ENTER tuşuna basın.
 
 ![Portalda anlık görüntü KIMLIĞIYLE telemetri arama](./media/snapshot-debugger/search-snapshot-portal.png)

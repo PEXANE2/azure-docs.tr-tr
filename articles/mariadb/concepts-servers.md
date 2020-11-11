@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 444d7f1574cf1517b01250bcb9d810731030182d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f519ac30468d197c14fcf53d386168ebde5cf8ac
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79527801"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504365"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda sunucu kavramları
 Bu makalede, MariaDB sunucuları için Azure veritabanı ile çalışmaya yönelik konular ve yönergeler sağlanmaktadır.
@@ -39,17 +39,30 @@ Aşağıdaki öğeler veritabanınıza güvenli erişimin sağlanmasına yardım
 
 |||
 | :--| :--|
-| **Kimlik doğrulaması ve yetkilendirme** | MariaDB sunucusu için Azure veritabanı yerel MySQL kimlik doğrulamasını destekler. Sunucu Yöneticisi oturum açma bilgileri ile sunucuya bağlanabilir ve kimlik doğrulaması yapabilirsiniz. |
+| **Kimlik doğrulama ve yetkilendirme** | MariaDB sunucusu için Azure veritabanı yerel MySQL kimlik doğrulamasını destekler. Sunucu Yöneticisi oturum açma bilgileri ile sunucuya bağlanabilir ve kimlik doğrulaması yapabilirsiniz. |
 | **Protokol** | Hizmet MySQL tarafından kullanılan ileti tabanlı bir protokolü destekler. |
 | **TCP/IP** | Protokol TCP/IP üzerinden ve UNIX-etki alanı Yuvaları üzerinden desteklenir. |
 | **Güvenlik duvarı** | Verilerinizin korunmasına yardımcı olmak için, hangi bilgisayarların iznine sahip olduğunu belirtene kadar bir güvenlik duvarı kuralı, veritabanı sunucunuza tüm erişimi engeller. Bkz. [MariaDB sunucusu Için Azure veritabanı güvenlik duvarı kuralları](./concepts-firewall-rules.md). |
 | **SSL** | Hizmet, uygulamalarınız ve veritabanı sunucunuz arasında SSL bağlantısı uygulanmasını destekler. [MariaDB Için Azure veritabanı 'na güvenli bir şekilde bağlanmak üzere UYGULAMANıZDA SSL bağlantısını yapılandırma](./howto-configure-ssl.md)konusuna bakın. |
+
+## <a name="stopstart-an-azure-database-for-mariadb-preview"></a>MariaDB için Azure veritabanı 'nı Durdur/Başlat (Önizleme)
+MariaDB için Azure veritabanı, kullanımda olmadığında sunucuyu **durdurma** ve etkinlik sürdürüleceği zaman sunucuyu **başlatma** olanakları sağlar. Bu aslında, veritabanı sunucularında maliyetleri kaydetmek ve yalnızca kullanımda olduğunda kaynak için ödeme yapmak amacıyla yapılır. Bu, geliştirme ve test iş yükleri için ve yalnızca günün bir parçası için sunucuyu kullanırken daha da önemli olur. Sunucuyu durdurduğunuzda, tüm etkin bağlantılar bırakılır. Daha sonra, sunucuyu yeniden çevrimiçi duruma getirmek istediğinizde [Azure Portal](../mysql/how-to-stop-start-server.md) veya [CLI](../mysql/how-to-stop-start-server.md)kullanabilirsiniz.
+
+Sunucu **durdurulmuş** durumdaysa, sunucunun işlem faturalandırılmaz. Ancak, sunucu yeniden başlatıldığında veri dosyalarının kullanılabilir olduğundan emin olmak için, depolama alanı faturalandırılmaya devam eder.
+
+> [!IMPORTANT]
+> Sunucuyu **durdurduğunuzda** bir esnette sonraki 7 gün için bu durumda kalır. Bu süre içinde el ile **başlatmadıysanız** , sunucu otomatik olarak 7 gün sonunda başlatılır. Sunucuyu kullanmıyorsanız yeniden **durdurmayı** seçebilirsiniz.
+
+Sunucu durdurulduğunda, sunucuda hiçbir yönetim işlemi gerçekleştirilemez. Sunucudaki yapılandırma ayarlarını değiştirmek için [sunucusunu başlatmanız](../mysql/how-to-stop-start-server.md)gerekir.
+
+### <a name="limitations-of-stopstart-operation"></a>Durdur/Başlat işleminin sınırlamaları
+- Okuma çoğaltması yapılandırmalarında (kaynak ve çoğaltmalar) desteklenmez.
 
 ## <a name="how-do-i-manage-a-server"></a>Sunucu Nasıl yaparım? mi?
 MariaDB sunucuları için Azure veritabanı 'nı Azure portal veya Azure CLı kullanarak yönetebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Hizmete genel bakış için bkz. [MariaDB Için Azure veritabanı genel bakış](./overview.md)
-- **Hizmet katmanınıza**dayalı belirli kaynak kotaları ve sınırlamalar hakkında bilgi için bkz. [hizmet katmanları](./concepts-pricing-tiers.md)
+- **Hizmet katmanınıza** dayalı belirli kaynak kotaları ve sınırlamalar hakkında bilgi için bkz. [hizmet katmanları](./concepts-pricing-tiers.md)
 
 <!-- - For information about connecting to the service, see [Connection libraries for Azure Database for MariaDB](./concepts-connection-libraries.md). -->

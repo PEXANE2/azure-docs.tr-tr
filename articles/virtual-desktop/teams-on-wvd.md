@@ -3,15 +3,15 @@ title: Windows sanal masaüstündeki Microsoft ekipleri-Azure
 description: Microsoft ekiplerini Windows sanal masaüstü 'nde kullanma.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/28/2020
+ms.date: 11/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cae40b9aeed4058ab2082a1d1360558c1c656e1d
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 101b3a05591a7815ba28756bb5b07e855b64e769
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131777"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505555"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Microsoft ekiplerini Windows sanal masaüstü 'nde kullanma
 
@@ -25,14 +25,13 @@ Windows sanal masaüstündeki Microsoft ekipleri sohbet ve işbirliğini destekl
 
 Microsoft ekipleri için medya iyileştirmesi sayesinde, Windows Masaüstü istemcisi, takımlar ve toplantılar için ses ve videoyu yerel olarak işler. Windows sanal masaüstündeki Microsoft ekiplerini, iyileştirilmiş çağrı ve toplantılar olmadan diğer istemcilerle kullanmaya devam edebilirsiniz. Takımlar sohbeti ve işbirliği özellikleri tüm platformlarda desteklenir. Uzak oturumunuzdaki yerel cihazları yeniden yönlendirmek için [bir konak havuzunun Uzak Masaüstü Protokolü özelliklerini Özelleştir](#customize-remote-desktop-protocol-properties-for-a-host-pool)' e bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Windows sanal masaüstü 'nde Microsoft ekipleri kullanabilmeniz için şu işlemleri yapmanız gerekir:
 
 - [Ağınızı](/microsoftteams/prepare-network/) Microsoft ekipleri için hazırlayın.
 - Windows [masaüstü istemcisini](connect-windows-7-10.md) , Windows [Bilgisayarı üzerindeki takımlar için Microsoft ekipleri donanım gereksinimlerini](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)karşılayan bir Windows 10 veya Windows 10 IoT kurumsal cihazına yükler.
 - Windows 10 çoklu oturum veya Windows 10 Enterprise sanal makinesine (VM) bağlanın.
-- Makine başına yükleme kullanarak takımlar masaüstü uygulamasını konağa [indirin](https://www.microsoft.com/microsoft-365/microsoft-teams/download-app) ve yükleyin. Microsoft ekipleri için medya iyileştirmesi, takımlar masaüstü uygulaması sürüm 1.3.00.4461 veya üzerini gerektirir.
 
 ## <a name="install-the-teams-desktop-app"></a>Takımlar masaüstü uygulamasını yükler
 
@@ -42,7 +41,8 @@ Bu bölümde, Windows 10 çoklu oturum veya Windows 10 Enterprise VM yansımanı
 
 Takımlar için medya iyileştirmesini etkinleştirmek üzere konakta aşağıdaki kayıt defteri anahtarını ayarlayın:
 
-1. Başlat menüsünde, **Regedit** komutunu yönetici olarak çalıştırın. **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams**gidin.
+1. Başlat menüsünde, **Regedit** komutunu yönetici olarak çalıştırın. **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams** gidin. Henüz yoksa takımlar anahtarını oluşturun.
+
 2. Takımlar anahtarı için aşağıdaki değeri oluşturun:
 
 | Ad             | Tür   | Veri/değer  |
@@ -51,7 +51,7 @@ Takımlar için medya iyileştirmesini etkinleştirmek üzere konakta aşağıda
 
 ### <a name="install-the-teams-websocket-service"></a>Takımlar WebSocket hizmetini yükler
 
-VM yansımanıza en son [WebSocket hizmetini](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt) yükler. Yükleme hatasıyla karşılaşırsanız, yeniden [dağıtılabilir en son Microsoft Visual C++](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) yükleyip yeniden deneyin.
+VM yansımanıza en son [Uzak Masaüstü WebRTC yeniden yönlendirici hizmetini](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt) yükler. Yükleme hatasıyla karşılaşırsanız, yeniden [dağıtılabilir en son Microsoft Visual C++](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) yükleyip yeniden deneyin.
 
 #### <a name="latest-websocket-service-versions"></a>En son WebSocket hizmeti sürümleri
 
@@ -94,7 +94,7 @@ Ekipler masaüstü uygulamasını makine başına veya Kullanıcı başına yük
 
         Bu, ekipleri 32 bitlik bir işletim sisteminde Program Files (x86) klasörüne ve 64 bit işletim sistemindeki Program Files klasörüne yüklenir. Bu noktada, altın görüntü kurulumu tamamlanmıştır. Kalıcı olmayan kurulum için makine başına takımlar yükleme gerekir.
 
-        Ekipler yüklenirken ayarlanmış olabilecek iki bayrak vardır, **AllUser = 1** ve **ALLUSERS = 1**. Bu parametreler arasındaki farkı anlamak önemlidir. **AllUser = 1** PARAMETRESI yalnızca VDI ortamlarında, makine başına yükleme belirtmek için kullanılır. **ALLUSERS = 1** parametresi VDI olmayan ve VDI ortamlarında kullanılabilir. Bu parametreyi ayarladığınızda, takımlar Machine-Wide yükleyicisi, Denetim Masası 'ndaki program ve Özellikler ' de ve Windows ayarları 'ndaki uygulamalar & Özellikler ' de görünür. Makinede yönetici kimlik bilgilerine sahip tüm kullanıcılar takımları kaldırabilir.
+        Ekipler yüklenirken ayarlanmış olabilecek iki bayrak vardır, **AllUser = 1** ve **ALLUSERS = 1**. Bu parametreler arasındaki farkı anlamak önemlidir. **AllUser = 1** PARAMETRESI yalnızca VDI ortamlarında, makine başına yükleme belirtmek için kullanılır. **ALLUSERS = 1** parametresi VDI olmayan ve VDI ortamlarında kullanılabilir. Bu parametreyi ayarladığınızda, **takımlar Machine-Wide yükleyicisi** , Denetim Masası 'ndaki program ve Özellikler ' de ve Windows ayarları 'ndaki uygulamalar & Özellikler ' de görünür. Makinede yönetici kimlik bilgilerine sahip tüm kullanıcılar takımları kaldırabilir.
 
         > [!NOTE]
         > Kullanıcılar ve Yöneticiler, oturum açma sırasında şu anda takımlar için otomatik başlatmayı devre dışı bırakamıyorum.
@@ -114,14 +114,19 @@ Ekipler masaüstü uygulamasını makine başına veya Kullanıcı başına yük
 
 WebSocket hizmetini ve takımlar masaüstü uygulamasını yükledikten sonra, takımlar medya iyileştirmelerinin yüklendiğini doğrulamak için aşağıdaki adımları izleyin:
 
-1. Kullanıcı profili görüntünüzü seçin ve ardından **hakkında**' yı seçin.
-2. **Sürüm**seçin.
+1. Takımlar uygulamasından çıkıp yeniden başlatın.
 
-      Medya iyileştirmesi yüklüyse, başlık, **WVD Media optimize edilmiş**olarak gösterilir. Başlıkta **WVD Media bağlı değil**görünüyorsa, takımlar uygulamasından çıkıp yeniden deneyin.
+2. Kullanıcı profili görüntünüzü seçin ve ardından **hakkında** ' yı seçin.
 
-3. Kullanıcı profili görüntünüzü seçin ve ardından **Ayarlar**' ı seçin.
+3. **Sürüm** seçin.
 
-      Medya iyileştirmesi yüklüyse, yerel olarak bulunan ses cihazları ve kameralar cihaz menüsünde numaralandırılır. Menü **uzak sesi**gösteriyorsa, takımlar uygulamasından çıkıp yeniden deneyin. Cihazlar hala menüde görünmüyorsa, yerel bilgisayarınızdaki gizlilik ayarlarını kontrol edin. **Ayarlar**  >  **Gizlilik**  >  **Uygulama izinleri** altındaki **uygulamaların mikrofona erişmesine izin ver** ayarının **Açık**olduğundan emin olun. Uzak oturumla bağlantıyı kesin, sonra yeniden bağlayın ve ses ve video cihazlarını tekrar denetleyin. Aramalara ve toplantılara video ile katılabilmek için, ayrıca uygulamaların kameranıza erişmesine izin vermeniz gerekir.
+      Medya iyileştirmesi yüklüyse, başlık, **WVD Media optimize edilmiş** olarak gösterilir. Başlıkta **WVD Media bağlı değil** görünüyorsa, takımlar uygulamasından çıkıp yeniden deneyin.
+
+4. Kullanıcı profili görüntünüzü seçin ve ardından **Ayarlar** ' ı seçin.
+
+      Medya iyileştirmesi yüklüyse, yerel olarak bulunan ses cihazları ve kameralar cihaz menüsünde numaralandırılır. Menü **uzak sesi** gösteriyorsa, takımlar uygulamasından çıkıp yeniden deneyin. Cihazlar hala menüde görünmüyorsa, yerel bilgisayarınızdaki gizlilik ayarlarını kontrol edin. **Ayarlar**  >  **Gizlilik**  >  **Uygulama izinleri** altındaki **uygulamaların mikrofona erişmesine izin ver** ayarının **Açık** olduğundan emin olun. Uzak oturumla bağlantıyı kesin, sonra yeniden bağlayın ve ses ve video cihazlarını tekrar denetleyin. Aramalara ve toplantılara video ile katılabilmek için, ayrıca uygulamaların kameranıza erişmesine izin vermeniz gerekir.
+
+      İyileştirmeler yüklenmediğinden, ekipleri kaldırın ve yeniden yükleyin ve tekrar denetleyin.
 
 ## <a name="known-issues-and-limitations"></a>Bilinen sorunlar ve sınırlamalar
 
@@ -152,7 +157,7 @@ Takımlar [UserVoice sitesindeki](https://microsoftteams.uservoice.com/)Windows 
 
 Windows sanal masaüstü ortamınızda takımlar masaüstü uygulamasıyla ilgili sorunlarla karşılaşırsanız, konak VM üzerinde **% AppData% \Microsoft\Teams\logs.txt** altında istemci günlüklerini toplayın.
 
-Çağrılar ve toplantılar ile ilgili sorunlarla karşılaşırsanız, takımlar Web istemci günlüklerini, **CTRL**  +  **alt**  +  **SHIFT**  +  **1**tuş bileşimiyle toplayın. Günlükler, konak VM 'sindeki **%userprofile%\downloads\msteams tanılama günlüğü DATE_TIME.txt** yazılır.
+Çağrılar ve toplantılar ile ilgili sorunlarla karşılaşırsanız, takımlar Web istemci günlüklerini, **CTRL**  +  **alt**  +  **SHIFT**  +  **1** tuş bileşimiyle toplayın. Günlükler, konak VM 'sindeki **%userprofile%\downloads\msteams tanılama günlüğü DATE_TIME.txt** yazılır.
 
 ## <a name="contact-microsoft-teams-support"></a>Microsoft ekipleri desteğiyle iletişim kurun
 

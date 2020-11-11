@@ -100,7 +100,7 @@
   items:
     - name: Sorun giderme
       items:
-        - name: Dağıtım veya sağlama hatalarıyla ilgili yardım alma
+        - name: Dağıtım hataları için destek isteği açma
           href: fix-deployment-provisioning-failures.md
     - name: SSS
       href: faq.md

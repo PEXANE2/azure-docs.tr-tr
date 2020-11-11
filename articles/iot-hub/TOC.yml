@@ -9,7 +9,7 @@
   items:
     - name: Telemetri gönderme
       items:
-        - name: başlarken
+        - name: Kullanmaya başlayın
           href: quickstart-send-telemetry-cli.md
         - name: C
           href: quickstart-send-telemetry-c.md
@@ -471,7 +471,7 @@
       items:
         - name: İşlemleri izleme
           href: iot-hub-operations-monitoring.md
-        - name: Tanılama ayarlarına geçirme
+        - name: Azure İzleyici’ye geçme
           href: iot-hub-migrate-to-diagnostics-settings.md
         - name: TLS 1.0 ve 1.1’in kullanımdan kaldırılması
           href: iot-hub-tls-deprecating-1-0-and-1-1.md

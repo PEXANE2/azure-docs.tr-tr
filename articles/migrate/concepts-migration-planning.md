@@ -4,166 +4,158 @@ description: Azure geçişi ile geçiş planı oluşturmaya yönelik rehberlik s
 author: rashi-ms
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/21/2020
+ms.date: 11/11/2020
 ms.author: rajosh
-ms.openlocfilehash: 6629f02178b7c00ccc849e2ccfc3f0a48f419a7f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8f37814e29ce0089c26e235123768296efc2c0b0
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735560"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504933"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Azure Geçişi ile geçiş planı oluşturma
 
-Bu makalede [, Azure geçişi Ile Azure](migrate-services-overview.md)'a geçiş planınızı oluşturmaya yardımcı olacak hızlı bir kılavuz sunulmaktadır.Başka sorularınız varsa şu kaynakları kontrol edin:
+Azure geçişi ile Azure 'a geçiş planınızı derlemek için bu makaleyi [izleyin.](migrate-services-overview.md) 
 
-- Azure geçişi hakkında [genel sorular](resources-faq.md)
-- [Azure geçişi](common-questions-appliance.md) gereci hakkında sorular
-- [Sunucu geçişi](common-questions-server-migration.md) hakkında sorular
-- [Azure geçişi forumundaki](https://docs.microsoft.com/answers/topics/azure-migrate.html) soruların yanıtlarını alın
+## <a name="define-cloud-migration-goals"></a>Bulut geçiş hedeflerini tanımlama
 
-## <a name="define-the-goals-of-cloud-migration"></a>Bulut geçişinin hedeflerini tanımlama
+Başlamadan önce, buluta taşımak için [mosyon](/azure/cloud-adoption-framework/strategy/motivations) 'nizi anlamak ve değerlendirmek, başarılı bir iş sonucuna katkıda bulunabilir. [Bulut benimseme çerçevesinde](/azure/cloud-adoption-framework)açıklandığı gibi, birkaç tetikleyici ve sonuç vardır.   
 
-Bir geçiş planı oluşturmadan önce, daha başarılı iş sonuçları oluşturulmasına yardımcı olabilecek bir buluta geçmek için [mosyon](/azure/cloud-adoption-framework/strategy/motivations) 'nın anlaşılması ve değerlendirilmesi önemlidir. [Azure Için bulut benimseme çerçevesi](/azure/cloud-adoption-framework) 'nin açıklandığı şekilde, işletmeniz için uygun olan farklı tetikleyiciler ve geçiş yaklaşımları olabilir:  
-
-**Kritik iş olayları** | **Geçiş sonucu**
+**İş etkinliği** | **Geçiş sonucu**
 --- | ---
-Veri merkezi çıkışı | Maliyet tasarrufları
-Merger, alım veya divestiture | Satıcının veya teknik karmaşıklığın azaltılması
+Veri merkezi çıkışı | Maliyet 
+Merger, alım veya divestiture | Satıcı/teknik karmaşıklığa karşı azaltma
 Sermaye masraflarını azaltma | İç işlemleri iyileştirme
 Görev açısından kritik teknolojiler için destek sonu | İş çevikliği artırma
 Yasal uyumluluk değişikliklerine yanıt verme | Yeni teknik yetenekler için hazırlık
 Yeni veri egemenlik gereksinimleri | Pazar taleplerini karşılamak için ölçekleme
-Kesintileri azaltma ve BT kararlılığını iyileştirme | Coğrafi talepleri karşılamak için ölçekleme
+Kesintilerde azaltma ve BT kararlılığı geliştirmeleri | Coğrafi talepleri karşılamak için ölçekleme
 
-Geçiş motasyon, Azure 'a geçiş yaparak elde etmek istediğiniz stratejik hedefleri ve sonuçları yansıtmanıza da yardımcı olabilir. Sonraki adım, iş yükleriniz için uyarlanmış bir Azure 'a geçiş yolu tanımlamak ve planlamak. Azure geçişi: Sunucu değerlendirmesi Aracı, şirket içi iş yüklerini değerlendirmenize yardımcı olur ve geçiş yapmanıza yardımcı olacak yönergeler ve araçlar sağlar.
+Mosyon 'inizi tanımlamak, stratejik geçiş hedeflerinizi sabitlemek için size yardımcı olur. Bir sonraki adım, iş yükleriniz için uyarlanmış bir geçiş yolu tanımlamak ve planlamak. [Azure geçişi: Sunucu değerlendirmesi](migrate-services-overview.md#azure-migrate-server-assessment-tool) Aracı, şirket içi iş yüklerini değerlendirmenize yardımcı olur ve geçiş yapmanıza yardımcı olacak yönergeler ve araçlar sağlar.
 
 ## <a name="understand-your-digital-estate"></a>Dijital Emlak bilgilerinizi anlayın
 
-Azure 'a geçirmek istediğiniz iş yüklerini ve en iyi duruma getirilmiş maliyet projeksiyonlarını tanımanıza yardımcı olması için şirket içi altyapınızı, uygulamalarınızı ve bağımlılıklarınızı öğrendim ile başlayın. Sunucu değerlendirmesi Aracı, aşağıdaki soruları yanıtlamanıza yardımcı olur:
+Şirket içi altyapınızı, uygulamalarınızı ve bağımlılıklarını tanımlayarak başlayın. Bu, Azure 'a geçiş için iş yüklerini tanımlamanızı ve iyileştirilmiş maliyet projeksiyonlarını toplamanıza yardımcı olur. Sunucu değerlendirmesi Aracı, kullandığınız iş yüklerini, iş yükleri ve iş yükü iyileştirmesi arasındaki bağımlılıkları belirlemenize yardımcı olur.
 
-### <a name="what-workloads-are-in-use"></a>Hangi iş yükleri kullanımda?
+### <a name="workloads-in-use"></a>Kullanımdaki iş yükleri
 
-Şirket içi VMware VM 'Leri, Hyper-V VM 'Leri ve fiziksel sunucularınızın aracısız bir bulmayı gerçekleştirmek için basit Azure geçişi gereci kullanın. Sürekli bulma, makine yapılandırmasını ve performans meta verilerini toplar ve yüklü uygulamaların envanterini ve şirket içi makinelerinizde çalışan rolleri/özellikleri almak için de kullanılabilir. Azure geçişi gereci şunları toplar:
+Azure geçişi, şirket içi VMware VM 'Leri, Hyper-V VM 'Leri, diğer sanallaştırılmış makineler ve fiziksel sunucuları aracısız bulma işlemini gerçekleştirmek için basit bir Azure geçiş gereci kullanır. Sürekli bulma, makine yapılandırma bilgilerini ve performans meta verilerini ve uygulama verilerini toplar. Bu, gerecin şirket içi makinelerden nasıl topladığı aşağıda verilmiştir: 
 
-- Makinelerin, disklerin ve NIC 'lerin meta veri ayrıntıları
+- Makine, disk ve NIC meta verileri.
 
-- Uygulamalar ve roller/özellikler dahil yüklü uygulamalar  
+- Yüklü uygulamalar, roller ve Özellikler.
 
-- CPU ve bellek kullanımı, disk ıOPS ve aktarım hızı dahil performans verileri
+- CPU ve bellek kullanımı, disk ıOPS ve aktarım hızı dahil olmak üzere performans verileri.
 
-Sonra, iş yüklerinizde çalışan tüm SQL Server örneklerini öğrenmek için uygulama envanteri listesini dışarı aktarın ve Azure geçişi: veritabanı değerlendirmesi aracını kullanarak hazırlığını anlayın.
+Veriler toplandıktan sonra, uygulamalar bulmak ve makinelerinizde çalışan örnekleri SQL Server için uygulama envanteri listesini dışarı aktarabilirsiniz. SQL Server hazır olduğunu anlamak için Azure geçişi: veritabanı değerlendirmesi aracını kullanabilirsiniz.
 
  ![Portalda uygulama envanteri](./media/concepts-migration-planning/application-inventory-portal.png)
 
  ![Uygulama envanteri dışarı aktarma](./media/concepts-migration-planning/application-inventory-export.png)
 
-Sunucu değerlendirmesi aracının keşif verileri ile birlikte, sunucu ve veritabanınızın görünümünü oluşturmak ve iş birimleri, uygulama sahipleri, coğrafi öğeler, vb. genelinde sunucu dağıtımını anlamak için mevcut CMDB verilerinizi kullanın.
+Sunucu değerlendirmesi aracında bulunan verilerle birlikte, sunucunuzun ve veritabanınızın bir görünümünü oluşturmak ve sunucularınızın iş birimleri, uygulama sahipleri, coğrafi öğeler vb. arasında nasıl dağıtıldığını anlamak için yapılandırma yönetimi veritabanı (CMDB) verilerinizi kullanabilirsiniz. Bu, geçiş için hangi iş yüklerinin önceliklendirileceğine karar verir. 
 
-### <a name="what-dependencies-exist-between-workloads"></a>İş yükleri arasında hangi bağımlılıklar var?
+### <a name="dependencies-between-workloads"></a>İş yükleri arasındaki bağımlılıklar
 
-Sunucularınızı bulduktan sonra, birbirine bağlı sunucuları Azure 'a taşımak için çapraz sunucu bağımlılıklarını ve iyileştirme stratejilerini görselleştirmek ve tanımlamak üzere aracısız bağımlılık eşlemesini kullanın. Görselleştirme, belirli makinelerin kullanımda olup olmadığını veya geçirilmesi yerine kullanımdan kaldırılan olup olmayacağını anlamanıza yardımcı olur.  Herhangi bir şeyin geri ayrılmaması ve geçiş sırasında beklenmedik kesintilerden kaçınmak için bağımlılıkları analiz ettiğinizden emin olun. Uygulama envanterini ve bağımlılık eşlemesini gerçekleştirdikten sonra, yüksek güvenilirlikli gruplar oluşturabilir ve sunucularınızı değerlendirmeye başlayabilirsiniz.
+Sunucu bulma işleminden sonra, çapraz sunucu bağımlılıklarını görselleştirme ve belirlemek için [bağımlılıkları analiz](concepts-dependency-visualization.md)edebilir ve bağımlı sunucuları Azure 'a taşımaya yönelik iyileştirme stratejilerini yapabilirsiniz. Görselleştirme, belirli makinelerin kullanımda olup olmadığını veya geçiş yapmak yerine kullanımdan engellenmeyeceğini anlamaya yardımcı olur.  Bağımlılıkları analiz etmek, hiçbir şeyin geri döndürülmemesini ve geçiş sırasında beklenmedik kesintilerden ayrılmanıza yardımcı olur. Uygulamanızın envanterini ve bağımlılık analizinizi tamamladıktan sonra, yüksek güvenilirlikli sunucu grupları oluşturabilir ve bunları değerlendirmeye başlayabilirsiniz.
 
  ![Bağımlılık eşlemesi](./media/concepts-migration-planning/expand-client-group.png)
 
-### <a name="are-they-optimized-and-sized-properly"></a>İyileştirilen ve düzgün boyutlandırıldı mı?
+### <a name="optimization-and-sizing"></a>İyileştirme ve boyutlandırma
 
-Azure, bulut kapasitenizi zaman içinde yeniden boyutlandırmak için esneklik sağladığından, sunucularınıza ayrılan CPU ve bellek kaynaklarını iyileştirebilmeniz için bir fırsattır. İş yüklerinin performans geçmişini anlamak için önce tanımlanan grup üzerinde bir değerlendirme oluşturun; Bu işlem, Azure 'daki doğru sanal makine SKU 'Ları ve disk önerileri konusunda çok önemlidir.
+Azure, zaman içinde bulut kapasitenizi yeniden boyutlandırmak için esneklik sağlar ve geçiş, sunucularınıza ayrılan CPU ve bellek kaynaklarını iyileştirebilmeniz için bir fırsat sağlar. Kimlik sağladığınız sunucularda değerlendirme oluşturmak, iş yükü performans geçmişinizi anlamanıza yardımcı olur. Bu, Azure VM SKU 'Larını ve Azure 'daki disk önerilerini doğru boyutlandırmak için önemlidir.
 
-## <a name="assess-your-readiness-for-migration"></a>Geçiş hazırlığını değerlendirin
+## <a name="assess-migration-readiness"></a>Geçiş hazırlığını değerlendir
 
-### <a name="readiness-and-suitability-analysis-for-azure"></a>Azure için hazırlık ve uygunluk Analizi
-Azure VM değerlendirmesi raporunu dışarı aktarın ve VM 'nin Azure için hazır olduğunu anlamak için aşağıdaki hazırlık kategorilerine göre filtreleme yapın:
 
-- **Azure Için hazırlanma** : Bu makineleri, herhangi bir değişiklik yapmadan Azure 'a geçirebilirsiniz  
+### <a name="readinesssuitability-analysis"></a>Hazırlık/uygunluk Analizi
 
-- **Azure Için koşullu** olarak kullanılabilir: Bu makineleri Azure 'a geçirebilirsiniz, ancak değerlendirmede belirtilen düzeltme yönergelerine göre bu sunucularda küçük değişikliklere ihtiyaç duyarsınız
+Değerlendirme raporunu dışa aktarabilir ve Azure hazırlığını anlamak için bu kategorilere filtre uygulayabilirsiniz:
 
-- **Azure için hazırlanma** : Bu makineleri Azure 'a geçirmezsiniz ve geçişten önce düzeltme yönergelerine göre sorunları çözmeniz gerekir
+- **Azure Için hazırlanın** : makineler, hiçbir değişiklik yapılmadan Azure 'a kadar geçirilebilir. 
+- **Azure Için koşullu olarak hazırlanın** : makineler Azure 'a geçirilebilir, ancak değerlendirmede belirtilen düzeltme yönergelerine uygun olarak küçük değişikliklere ihtiyaç duyar.
+- **Azure için hazırlanma** : makineler, olduğu gibi Azure 'a geçirilemez. Sorunların, geçişten önce düzeltme kılavuzlarına göre düzeltilmesi gerekir. 
+- **Hazır olma bilinmiyor** : Azure geçişi, yetersiz meta veri nedeniyle makine hazırlığını belirleyemiyor.
 
-- **Hazır olma bilinmiyor** : Azure geçişi, yetersiz meta veri nedeniyle makinenin hazır olduğunu belirleyemiyor
-
-Veritabanı değerlendirmelerini kullanarak, SQL Server verilerinizi Azure SQL veritabanı 'na veya Azure SQL yönetilen örneklerine geçirme hazırlığını değerlendirebilirsiniz. SQL Server örneklerinizin her biri için geçiş hazırlık durumu yüzdesini görebilirsiniz. Ayrıca, örneklerin her biri için Azure 'da önerilen hedefi, olası geçiş engelleyicileri, önemli değişiklikler sayısını, Azure SQL DB/Azure SQL VM için hazırlık ve uyumluluk düzeyini görebilirsiniz. Geçiş engelleyicileri ve bunları gidermeye yönelik önerilerin etkisini anlamak için daha ayrıntılı bilgi alabilirsiniz.
+Veritabanı değerlendirmelerini kullanarak, Azure SQL veritabanı 'na veya Azure SQL yönetilen örneklerine geçiş için SQL Server verilerinizin hazır olduğunu değerlendirebilirsiniz. Değerlendirme, SQL Server örneklerinizin her biri için geçiş hazırlık durumu yüzdesini gösterir. Bunlara ek olarak, her bir örnek için Azure 'da önerilen hedefi, olası geçiş engelleyicileri, önemli değişiklikler sayısını, Azure SQL VERITABANı veya Azure SQL VM için hazır olduğunu ve uyumluluk düzeyini görebilirsiniz. Geçiş engelleyicilerin etkisini ve bunları düzeltmeye yönelik önerileri anlamak için daha ayrıntılı bilgi alabilirsiniz.
 
  ![Veritabanı değerlendirmeleri](./media/concepts-migration-planning/database-assessment-portal.png)
 
 ### <a name="sizing-recommendations"></a>Boyutlandırma önerileri
 
-Makine Azure için hazırlanıyor olarak işaretlendikten sonra sunucu değerlendirmesi, sanal makinelerinize yönelik Azure VM ve disk SKU 'sunu belirlemek için boyutlandırma önerileri sağlar. Performans geçmişine göre (geçiş yaparken kaynakları iyileştirirken) veya performans geçmişini dikkate almadan şirket içi yapılandırmaya bağlı olarak boyutlandırma önerisini görmeyi seçebilirsiniz. Veritabanları için veritabanı değerlendirmede veritabanı SKU 'SU, fiyatlandırma katmanı ve işlem düzeyiyle ilgili önerileri görebilirsiniz.  
+Bir makine Azure için hazırlanın olarak işaretlendikten sonra sunucu değerlendirmesi, makineleriniz için Azure VM SKU 'SU ve disk türünü tanımlayan boyutlandırma önerilerini sağlar. Performans geçmişine göre (geçiş yaparken kaynakları iyileştirmek için) veya şirket içi makine ayarlarına bağlı olarak, performans geçmişi olmadan boyutlandırma önerileri alabilirsiniz. Veritabanı değerlendirmesinde, veritabanı SKU 'SU, fiyatlandırma katmanı ve işlem düzeyi için öneriler görebilirsiniz.  
 
-### <a name="compute-assessments-to-get-estimated-costs-for-running-the-workloads-in-azure"></a>Azure 'da iş yüklerini çalıştırmaya yönelik Tahmini maliyetleri almak için değerlendirme hesaplama
+### <a name="get-compute-costs"></a>İşlem maliyetlerini al
 
-Değerlendirmelerinde *performans tabanlı* sağ boyutlandırma seçeneği, Azure için iş yüklerini iyileştirmenize olanak tanır. Maliyet tasarrufu sağlamaya yardımcı olmak için birkaç başka farklı şekilde göz atabilirsiniz:
+Azure geçişi değerlendirmelerinde performans tabanlı boyutlandırma seçeneği, VM 'Leri sağ boyutlandırmanıza yardımcı olur ve Azure 'da iş yüklerini iyileştirmek için en iyi uygulama olarak kullanılmalıdır. Doğru boyutlandırmanın yanı sıra, Azure maliyetlerini kaydetmeye yardımcı olacak diğer birkaç seçenek de mevcuttur: 
 
-- **Ayrılmış örnekler** : ayrılmış örneklerle, Windows ve Linux (VM) ' de 1 yıl veya 3 yıllık koşullarla Kullandıkça Öde fiyatlandırmasıyla karşılaştırıldığında maliyetleri önemli ölçüde azaltabilirsiniz.
-
-- **Azure hibrit avantajları** : Yazılım Güvencesi kapsamındaki Windows Server şirket Içi lisanslarını Azure 'a getirebilir ve ayrılmış örnekler seçenekleriyle birleştirebilirsiniz
-
-- **Kurumsal anlaşma teklif (EA)** : kurumsal anlaşma, aboneliğiniz için geçerli olan yerleşik tasarruflar sunar
-
-- **Teklifler** : birden çok Azure teklifi vardır. örneğin, Kullandıkça Öde Geliştirme ve Test ve Kurumsal Geliştirme ve test geliştirme veya test VM 'leri için daha düşük ücretler sağlar
-
-- **VM çalışma süresi** : Azure VM 'lerinin maliyetlerinizi azaltmak için çalışacağı gün başına gün ve saat başına gün ve saat olarak bir süre (RI için uygulanamaz) belirtebilirsiniz
-
-- **Hedef bölge** : bir coğrafya içindeki belirli bir bölgeye geçiş yapmak daha uygun maliyetli olabileceğinden karşılaştırmak için farklı bölgelerde birden fazla değerlendirme oluşturabilirsiniz
-
-- **Performans tabanlı öneriler** : en iyi uygulama olarak, bulut maliyetlerini kaydetmenize yardımcı olacak doğru Azure VM önerilerini kullanmayı deneyin
+- **Ayrılmış örnekler** : [ayrılmış örneklerle (RI)](https://azure.microsoft.com/pricing/reserved-vm-instances/), [Kullandıkça Öde fiyatlandırmasıyla](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/)karşılaştırıldığında maliyetleri önemli ölçüde azaltabilirsiniz.
+- **Azure hibrit avantajı** : [Azure hibrit avantajı](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/)Ile, etkin yazılım güvencesi veya Linux aboneliklerine sahip şirket Içi Windows Server lisanslarını Azure 'a getirebilir ve ayrılmış örnekler seçenekleriyle birleştirebilirsiniz.
+- **Kurumsal Anlaşma** : Azure [Kurumsal sözleşmeleri (EA)](../cost-management-billing/manage/ea-portal-agreements.md) , Azure abonelikleri ve hizmetleri için tasarruf sunabilir.
+- **Teklifler** : birden çok [Azure teklifi](https://azure.microsoft.com/support/legal/offer-details/)vardır. Örneğin, [Kullandıkça Öde geliştirme ve test](https://azure.microsoft.com/pricing/dev-test/)veya [Kurumsal Geliştirme ve test teklif](https://azure.microsoft.com/offers/ms-azr-0148p/), geliştirme ve test VM 'leri için daha düşük ücretler sağlamak üzere
+- **VM çalışma süresi** : Azure VM 'lerinin çalıştığı gün başına aylık gün ve saat sayısını gözden geçirebilirsiniz. Makineleri kullanımda olmadığında kapatmak, maliyetlerinizi azaltabilir (RIS için geçerli değildir).
+- **Hedef bölge** : belirli bir bölgeye geçiş yapılıp yapılmayacağını anlamak için farklı bölgelerde değerlendirmeler oluşturabilirsiniz. 
 
 ### <a name="visualize-data"></a>Verileri görselleştirme
 
-Sunucu değerlendirmesi raporunu portalda Azure hazırlığını ve aylık maliyet dağıtımını görebilir ve geçiş planını daha zengin hale getirmek için bulma ve değerlendirme verilerinde daha fazla görselleştirme uygulamak üzere değerlendirmeyi dışarı aktarabilirsiniz. Farklı özellik birleşimleri için birden fazla değerlendirme oluşturabilir ve işletmeniz için en iyi şekilde çalışan özellikler kümesini seçebilirsiniz.  
+Portalda sunucu değerlendirmesi raporlarını (Azure hazırlık bilgileri ve aylık maliyet dağıtımı ile) görüntüleyebilirsiniz. Ayrıca, değerlendirmeyi dışarı aktarabilir ve ek görselleştirmelerle geçiş planınızı zenginleştirebilirsiniz. Farklı özellikler birleşimleriyle birden çok değerlendirme oluşturabilir ve işletmeniz için en iyi şekilde çalışan özellikler kümesini seçebilirsiniz.  
 
  ![Değerlendirmelere genel bakış](./media/concepts-migration-planning/assessment-summary.png)
 
-### <a name="evaluate-gaps-and-potential-blockers"></a>Boşlukları ve olası engelleyicileri değerlendirin
+### <a name="evaluate-gapsblockers"></a>Boşlukları/engelleyicileri değerlendir
 
-Geçirilecek uygulamaları ve temel altyapıyı belirlerken, bu uygulamalar için kapalı kalma süresi kısıtlamalarını belirleyin ve uygulamalarınız ile temel alınan altyapı arasındaki işlem bağımlılıklarını arayın. Bu analiz, kurtarma süresi hedefini (RTO) karşılayan geçişleri planlamanız ve sıfır veri kaybını en aza düşürbaşlamanıza yardımcı olabilir. Geçirmeden önce, sunucu değerlendirmesi raporunun ve Azure geçişi: veritabanı değerlendirmesi önerilerinin yardımıyla sunucularınızı ve SQL veritabanlarınızı taşımaya engel olabilecek uyumluluk sorunlarını veya desteklenmeyen özellikleri incelemenizi ve azaltmanız önerilir.
+Geçirmek istediğiniz uygulamaları ve iş yüklerini saptayıp, bunlar için kapalı kalma süresi kısıtlamalarını belirlemek ve uygulamalarınız ile temel alınan altyapı arasında işlem bağımlılıklarını aramak için. Bu analiz, kurtarma süresi hedefini (RTO) karşılayan geçişleri planlamanızı ve sıfır veri kaybını en aza düşürmenize yardımcı olur. Geçirmeden önce, sunucu/SQL veritabanı geçişini engelleyebilen uyumluluk sorunlarını veya desteklenmeyen özellikleri incelemenizi ve azaltmanız önerilir. Azure geçişi sunucu değerlendirmesi raporu ve Azure geçişi veritabanı değerlendirmesi, bu konuda yardımcı olabilir. 
 
-### <a name="first-workloads-to-target-and-approach"></a>Hedeflenecek ilk iş yükleri ve yaklaşım
+### <a name="prioritize-workloads"></a>İş yüklerini önceliklendir
 
-Geçiş kararınızı almak için tüm önemli bilgilere sahip olduğunuza göre, öncelikle hangi uygulamaların ve iş yüklerinin geçirilmesi gerektiğini önceliklendirmelisiniz. Tam ölçekli bir geçiş üzerinde alanlarında önce, bu stratejide herhangi bir kusurları bir arada bırakmak için, hedeflenen uygulamalarınızı sistematik ve denetlenebilir bir şekilde geçirmeye yönelik bir "uygulama ve öğrenme" yaklaşımı geliştirin. Ayrıca, hangi uygulama gruplarının geçirileceğiyle ilgili öncelik vermek için karmaşıklıklar ve geçiş süresi gibi stratejik faktörleri de kullanabilirsiniz; Örneğin;
+Stoğunuzun bilgilerini topladıktan sonra, önce hangi uygulama ve iş yüklerinin geçirilecek olduğunu belirleyebilirsiniz. Uygulamaları sistematik ve denetlenebilir bir şekilde geçirmek için bir "uygulama ve öğrenme" yaklaşımı geliştirin, böylece tam ölçekli bir geçişe başlamadan önce herhangi bir kusuru dışarı aktarabilirsiniz.
 
-Önerilen bazı geçiş stratejileri şunlardır:
+Geçiş sırasının önceliklerini belirlemek için karmaşıklık, zaman geçişi, iş aciliyet, üretim/üretim dışı hususlar, uyumluluk, güvenlik gereksinimleri, uygulama bilgileri vb. gibi stratejik faktörleri kullanabilirsiniz. 
 
-- **Hızlı WINS 'Nizi önceliklendirin** : değerlendirme raporlarını, tam olarak kullanıma yönelik sunucular ve veritabanları ve Azure 'a geçiş için en az çaba gerektiren düşük asılı meyve 'yi belirlemek için kullanabilirsiniz:
-    - Azure İçin Hazır: değerlendirme raporunuzu dışarı aktarın ve "Azure için hazırlanma" olan tüm makineleri filtreleyin. Bu, Azure geçişi: sunucu geçiş aracı ile kaldırıp kaydırabileceğiniz ilk makine grubunuz olabilir.
-    - İşletim sistemi destek bitişi: değerlendirme raporunuzu dışarı aktarın ve Windows Server 2008 ve Windows Server 2008 R2 işletim sistemlerini çalıştıran tüm makineleri filtreleyin. Bu SKU 'Lar destek bitleridir ve yalnızca Azure, Azure 'a geçirdiğinizde ücretsiz 3 yıllık güvenlik güncelleştirmeleri sağlar. Ayrılmış örnekleri birleştirdiğinizde, Azure Hibrit Avantajı ve kullandığınızda, kaydetme çok daha yüksek olabilir.
-    - SQL Server Geçişi: Azure geçişi 'ni kullanarak Azure SQL veritabanlarına yönelik veritabanlarını geçirmek için veritabanı değerlendirmesi önerilerini kullanın: veritabanı geçişi ve Azure geçişi: sunucu geçişi kullanarak Azure SQL VM için kullanıma yönelik veritabanları.
-    - Yazılım desteği bitişi: uygulama envanterinizi dışarı aktarın ve destek sonuna ulaşmakta olabilecek yazılım/uzantılara filtre uygulayın. Bu uygulamaları önceliklendirmelisiniz.
-    - Aşırı sağlanan VM 'Ler: değerlendirme raporunuzu dışarı aktarın ve düşük CPU kullanımı (%) kullanarak makineleri filtreleyin. ve bellek kullanımı (%).  Bu fırsatı kullanarak Azure 'da doğru bir sanal makineye geçiş yapabilir ve az kullanılan kaynaklar için ödeme yaptığınız şeyleri kaydedebilirsiniz.
-    - Kapasite kısıtlamaları: yüksek CPU kullanımı (%) ile değerlendirme raporunuzu dışarı aktarın ve makineleri filtreleyin. ve bellek kullanımı (%).  Fazla kullanılabilir VM 'Lerin kesilmesini önler ve Azure 'a taşıyarak performansı artırabilir ve talebi karşılamak için otomatik ölçeklendirme özelliğinden yararlanabilirsiniz. Ayrıca, disk ıOPS ve aktarım hızını çözümleyerek ve gereksinimlerinize en uygun olan önerilen disk türünü bularak depolama kısıtlamalarını anlamak için değerlendirme raporuna göz atabilirsiniz.
+Birkaç öneri:
 
-- **Küçük bir başlangıç yapın ve ardından büyük** bir risk ve daha az karmaşık olan uygulamaları ve iş yüklerini, geçiş stratejinizde güvenle oluşturmak için kullanmaya başlayın. Ayrıca, pilot geçişlerinizde geliştirme ve test ortamı iş yüklerini bulmak ve geçirmek için kuruluşların CMDB depolarıyla Azure geçişi değerlendirme önerilerinizi de kesişeedebilirsiniz. Üretim iş yüklerini geçirirken, bu pil'lerden gelen dersleri kullanılabilir.  
+- **Hızlı WINS önceliklerini belirleme** : tam olarak kullanıma yönelik sunucular ve veritabanları da dahil olmak üzere düşük asılı olan meyve 'yi belirlemek için değerlendirme raporlarını kullanın ve Azure 'a geçiş için en az çaba gerektirir. Tablo, bunu yapmak için birkaç yol özetler.
 
-- **Mevzuata/sektör gereksinimlerinizle uyumlu** : Azure, en büyük uyumluluk portföyünü sektörde ve tekliflerin derinliğine göre sektör genelinde tutar. Azure 'a geçişlerinizi önceliklendirmenize ve ulusal, bölgesel ve sektöre özgü standartlarla ve yasalarınıza uyum sağlamak için bunu bir fırsat olarak kullanın. Bu özellikle, iş açısından kritik veya hassas bilgileri tutan ya da belirli durumlarda yapılan standartlar ve yönetmelikler en fazla değişebilir ve bu durumda, daha fazla değişiklik yapılmasını zorlaştırıyor.  
+    **Durum** | **Eylem**
+    --- | ---
+    **Azure 'a hazırlık VM 'Ler** | Değerlendirme raporunu dışarı aktarın ve tüm makineleri *Azure Için hazırlanıyor* durumuna göre filtreleyin. Bu, [Azure geçişi: sunucu geçiş](migrate-services-overview.md#azure-migrate-server-migration-tool) aracı 'nı kullanarak, çalıştırdığınız ve Azure 'a kaydırabileceğiniz ilk makine grubu olabilir.
+    **Destek sonu işletim sistemleri** | Değerlendirme raporunu dışarı aktarın ve Windows Server 2008 R2/Windows Server 2008 çalıştıran tüm makineleri filtreleyin. Bu işletim sistemleri destek sonunda yer almaktadır ve Azure 'a geçirdiğinizde yalnızca Azure, üç yıllık güvenlik güncelleştirmesi sağlar. Azure Hibrit Avantajı birleştirir ve RIS kullanıyorsanız, tasarruflar çok daha yüksek olabilir.
+    **SQL Server geçiş** | Azure geçişi: veritabanı geçiş aracını kullanarak Azure SQL veritabanı için kullanıma yönelik veritabanlarını geçirmek üzere veritabanı değerlendirmesi önerilerini kullanın. Azure geçişi: sunucu geçiş aracını kullanarak Azure SQL VM için hazırlanıyor veritabanlarını geçirin.
+    **Destek sonu yazılımı** | Uygulama envanterinizi dışarı aktarın ve destek sonuna ulaşmakta olabilecek tüm yazılım/uzantılara filtre uygulayın. Bu uygulamaların geçiş için önceliğini belirleyin.
+    **Sağlanan makineler** | Değerlendirme raporunu dışarı aktarın ve düşük CPU kullanımı (%) olan makineler için filtre uygulayın ve bellek kullanımı (%).  Doğru boyutlu bir Azure VM 'ye geçiş yapın ve az kullanılan kaynaklar için maliyet tasarrufu yapın.
+    **Aşırı sağlanan makineler** | Yüksek CPU kullanımı (%) olan makineler için değerlendirme raporu ve filtre 'yi dışa aktarma ve bellek kullanımı (%).  Kapasite kısıtlamalarını çözün, daha fazla makinenin kesilmesini önleyin ve bu makineleri Azure 'a geçirerek performansı artırın. Azure 'da, talebi karşılamak için otomatik ölçeklendirme özelliklerini kullanın.<br/><br/> Depolama kısıtlamalarını araştırmak için değerlendirme raporlarını çözümleyin. Disk ıOPS ve aktarım hızını ve önerilen disk türünü analiz edin.
 
-## <a name="finalize-the-migration-planandprepare-formigration"></a>Geçiş planını sonlandırma ve geçiş için hazırlanma
+- **Küçük bir başlangıç yapın ve ardından büyük** risk ve karmaşıklık sunan uygulamaları ve iş yüklerini taşıyarak, geçiş stratejinizde güvenle geliştirin. Pilot geçişleri için aday olabilecek geliştirme ve test iş yüklerini bulmak ve geçirmek için Azure geçişi değerlendirme önerilerini CMDB deponuzla birlikte çözümleyin. Pilot geçişlerinden geri bildirim ve dersleri, üretim iş yüklerini geçirmeye başladığınızda yararlı olabilir.  
+- **Uyumlu** : Azure, sektördeki en büyük uyumluluk portföyünü ve tekliflerin kapsamını içerir. Geçiş önceliklerini belirlemek için uyumluluk gereksinimleri ' ni kullanarak, uygulamalar ve iş yükleri ulusal, bölgesel ve sektöre özgü standartlarınız ve yasaları ile uyumludur. Bu özellikle, iş açısından kritik işlemle ilgilenen, hassas bilgileri tutan veya çok fazla düzenlenen sektörde bulunan kuruluşlar için geçerlidir. Bu tür kuruluşlar, standartlar ve düzenlemeler ABO ve sık değişebilir, ile devam etmek zor olur.  
 
-Geçiş planınızı sonuçlandırmadan önce, bu anahtar geçişi konularının geçiş planınıza hindrance oynamadığından emin olun:
+## <a name="finalize-the-migration-plan"></a>Geçiş planını sonlandırma
 
-- Beklenmedik gecikmelere neden olabilecek ve geçiş çoğaltma hızını kesintiye uğratan ağ bant genişliği ve gecikme süresi kısıtlamalarını değerlendirin.
+Geçiş planınızı sonuçlandırmadan önce, diğer olası engelleyiciler aşağıdaki gibi göz önünde bulundurduğunuzdan ve bunları azaltmanıza emin olun: 
 
-- Geçirilen uygulamalar üzerinde performans ve Kullanıcı kabul testi gerçekleştirme ya da veritabanı bağlantı dizelerini ve Web sunucusu yapılandırmalarının güncelleştirilmesi, tam geçişi ve temizleme gibi işlemler gibi geçiş sonrası uygulama tslarını yürütmek için zaman ara.
+- **Ağ gereksinimleri** : ağ bant genişliği ve gecikme kısıtlamalarını değerlendirin, bu durum, beklenmedik gecikmelerin ve kesintilerin geçiş çoğaltma hızına neden olabilir.
+- **Test/geçiş sonrası tyaks** : bir zaman arabelleğinin geçirilmiş uygulamalar için performans ve Kullanıcı kabul testi gerçekleştirmesini veya veritabanı bağlantı dizelerini güncelleştirme, Web sunucularını yapılandırma, kesme/ince ayar uygulama ve temizleme gibi uygulamaları yapılandırma/.
+- **İzinler** : önerilen Azure izinlerini ve geçiş için gereken sunucu/veritabanı erişim rollerini ve izinlerini gözden geçirin.
+- **Eğitim** : kuruluşunuzu dijital dönüşüm için hazırlayın. Sağlam bir eğitim altyapısı, başarılı bir kurumsal değişiklik için önemlidir. Azure temelleri, çözüm mimarileri ve güvenlik kursları dahil [Microsoft Learn](/learn/azure/?ocid=CM_Discovery_Checklist_PDF)ücretsiz eğitime göz atın. Takımınızı [Azure sertifikalarını](https://www.microsoft.com/learning/certification-overview.aspx?ocid=CM_Discovery_Checklist_PDF)keşfetmeye teşvik edin.  
+- **Uygulama desteği** : ihtiyacınız varsa uygulamanız için destek alın. Birçok kuruluş, bulut geçişini desteklemeye yönelik yardım dışarıdan tercih eder. Kişiselleştirilmiş yardım ile hızlı ve sorunsuz bir şekilde Azure 'a geçmek için, bir [Azure Expert yönetilen hizmet sağlayıcısı](https://www.microsoft.com/solution-providers/search?cacheId=9c2fed4f-f9e2-42fb-8966-4c565f08f11e&ocid=CM_Discovery_Checklist_PDF)veya [FastTrack for Azure](https://azure.microsoft.com/programs/azure-fasttrack/?ocid=CM_Discovery_Checklist_PDF)göz önünde bulundurun.  
 
-- Önerilen Azure izinlerini ve geçiş için gereken sunucu/veritabanı erişim rollerinizi ve izin modelinizi gözden geçirin.
 
-- Kuruluşunuzu hazırlayın ve dijital dönüştürmeye iş gücü hizalaması sağlayın. Sağlam bir eğitim altyapısı, başarılı bir kurumsal değişiklik için önemlidir. Azure temelleri, çözüm mimarisi ve güvenlik kursları dahil olmak üzere [Microsoft Learn](/learn/azure/?ocid=CM_Discovery_Checklist_PDF)sunulan ücretsiz eğitime göz atın. Takımınızı [Azure sertifikası](https://www.microsoft.com/learning/certification-overview.aspx?ocid=CM_Discovery_Checklist_PDF)'nı keşfetmeye teşvik edin   .  
+Geçirmek istediğiniz uygulamalar, uygulama/veritabanı kullanılabilirliği, kapalı kalma süresi kısıtlamaları ve geçiş kilometre taşları hakkında ayrıntılı bilgi içeren etkili bir bulut geçiş planı oluşturun. Plan, veri kopyasının ne kadar süreceğine göz önünde bulundurur ve geçiş sonrası testler ve kesilen etkinlikler için gerçekçi bir arabellek dahil eder. 
 
-- Gerekirse uygulamanız için destek alın. Birçok kuruluş, bulut geçişini desteklemeye yönelik yardım dışarıdan tercih eder. Kişiselleştirilmiş yardım ile hızlı ve sorunsuz bir şekilde Azure 'a geçmek için bir [Azure Expert yönetilen hizmet sağlayıcısı](https://www.microsoft.com/solution-providers/search?cacheId=9c2fed4f-f9e2-42fb-8966-4c565f08f11e&ocid=CM_Discovery_Checklist_PDF)   veya [FastTrack for Azure](https://azure.microsoft.com/programs/azure-fasttrack/?ocid=CM_Discovery_Checklist_PDF)değerlendirin.  
+Geçiş sonrası test planı, geçirilen uygulamaların beklendiği gibi çalışmasını ve tüm veritabanı nesnelerinin ve veri ilişkilerinin buluta başarıyla aktarılmasını sağlamak için işlevsel, tümleştirme, güvenlik ve performans testi ve kullanım durumları içermelidir.  
 
-Geçirmek istediğiniz uygulama listesi/grupları, uygulamanız ve veritabanı kullanılabilirliği ve kapalı kalma kısıtlamaları ve istediğiniz geçiş kilometre taşları hakkında ayrıntılı bilgi içeren etkili bir bulut geçiş planı oluşturun. Geçiş planınız Ayrıca veri kopyasının ne kadar süreyle alınacağını ve geçiş sonrası testi ve tam geçişi etkinlikleri için bir considerate arabelleği dahil etmeyi de dikkate almalıdır. Geçiş sonrası testi, geçirilen uygulamaların beklendiği gibi çalıştığından ve tüm veritabanı nesnelerinin ve veri ilişkilerinin buluta başarıyla aktarılmasını sağlamak için işlevsel, tümleştirme, güvenlik ve performans testi kullanım örneklerini içermelidir.  
+Geçiş yol haritası oluşturun ve uygulamalarınızı ve veritabanlarınızı en az sıfır kapalı kalma süresine geçirmek için bir bakım penceresi bildirin ve geçiş sırasında olası işletimsel ve iş etkisini sınırlayın.  
 
-Bu analizi kullanarak bir geçiş yol haritası oluşturun ve uygulamalarınızı ve veritabanlarınızı minimum ve sıfır kapalı kalma süresine geçirmek için bir bakım penceresi bildirin ve geçiş sırasında olası işletimsel/iş etkisini sınırlayın.  
+## <a name="migrate"></a>Geçiş
 
-Azure 'a yönelik tam ölçekli geçişleri kaldırmadan önce Azure geçişi 'nin *test geçiş* özelliğini kullanarak her zaman test etmenizi ve devam etmenizi öneririz. Bu gerçek veriler, ilgili gerçek süreyi tahmin etmenize ve geçiş planınız için gerekli olan tnak 'leri yapmanıza yardımcı olur. Test geçişi Ayrıca, geçiş planıyla ilgili olası sorunları bulmaya ve gerçek geçiş gerçekleşmeden önce bunları gidermeye yönelik bir fırsat sağlar.  
+Tam ölçekli bir geçişe başlamadan önce Azure geçişi 'nde bir test geçişi çalıştırmanızı öneririz. Test geçişi, dahil edilen süreyi tahmin etmenize yardımcı olur ve geçiş planınızı ince ayar. Olası sorunları bulmaya ve bunları tam geçişten önce gidermeye yönelik bir fırsat sağlar.
 
-Geçişe hazırsanız, uçtan uca izleme ile sorunsuz ve tümleşik bir geçiş deneyimi için Azure geçişi 'nin *sunucu geçiş aracı* 'Nı ve Azure geçişi 'Nin *veri geçiş hizmeti* 'ni kullanın. Sunucu geçiş aracı, şirket içi şirket içinde barındırılan VM 'Ler ve sunucuların ve AWS, GCP gibi diğer özel veya genel bulutlarının sıfır kapalı kalma süresiyle birlikte geçirilmesini destekler. Azure veritabanı geçiş hizmeti, birden çok veritabanı kaynağından Azure veri platformları arasında kesintisiz geçiş sağlamak için tasarlanan, tam olarak yönetilen bir hizmettir.  
+Geçişe hazırsanız, sorunsuz ve tümleşik bir geçiş deneyimi için Azure geçişi: sunucu geçiş aracı 'nı ve Azure veri geçiş hizmeti 'ni (DMS) uçtan uca izlemeye kullanın.
 
-> [!NOTE]
-> VMware VM 'Leri için sunucu değerlendirmesi, Konuk IŞLETIM sistemi analizini işlemek üzere vCenter Server ' de VM için belirtilen işletim sistemini kullanır. VMware üzerinde çalışan Linux VM 'Leri için şu anda Konuk işletim sisteminin tam çekirdek sürümünü tanımlamaz.
+- Sunucu geçiş aracı ile, şirket içi VM 'Leri ve sunucuları ya da diğer özel veya genel bulutta bulunan VM 'Leri (AWS, GCP dahil) sıfır kapalı kalma süresiyle geçirebilirsiniz.
+- Azure DMS, birden çok veritabanı kaynağından Azure veri platformları arasında kesintisiz geçişler sağlamak için tasarlanan tam olarak yönetilen bir hizmet sağlar.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Azure bulut benimseme çerçevesindeki [bulut geçiş yolculuğunu](/azure/architecture/cloud-adoption/getting-started/migrate)araştırın   .
-- Azure geçişi ile [çalışmaya](https://youtu.be/wFfq3YPxYHE) başlayın.
-- [VMware VM](./tutorial-assess-vmware-azure-vm.md) 'Leri veya [Hyper-V VM 'leri](tutorial-assess-hyper-v.md)için bir değerlendirme oluşturun.
+- Azure geçişi hakkında [hızlı bir genel bakış](migrate-services-overview.md) elde edin ve Başlarken [videosunu](https://youtu.be/wFfq3YPxYHE)izleyin.
+- [Azure VM](concepts-assessment-calculation.md)'lerine geçiş Için VM 'leri değerlendirme hakkında daha fazla bilgi edinin.

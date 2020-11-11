@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: ecfeebb9ce86d717531310c2ad1a33a3d27f4c0a
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 9827f79f8407bd04468f1b4456aec9d6a8793a6f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995728"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506303"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici için Log Analytics çalışma alanı yapılandırma
 VM'ler için Azure İzleyici, Azure Izleyici 'deki bir veya daha fazla Log Analytics çalışma alanından verilerini toplar. Aracıları ekleme öncesinde, bir çalışma alanı oluşturmanız ve yapılandırmanız gerekir. Bu makalede, çalışma alanının gereksinimleri açıklanmakta ve VM'ler için Azure İzleyici için yapılandırılacak.
@@ -20,10 +20,10 @@ VM'ler için Azure İzleyici, Azure Izleyici 'deki bir veya daha fazla Log Analy
 ## <a name="overview"></a>Genel Bakış
 Tek bir abonelik, gereksinimlerinize bağlı olarak herhangi bir sayıda çalışma alanı kullanabilir, çalışma alanının tek gereksinimi desteklenen bir konumda konumlandırılabilir ve *Vminsıghts* çözümü ile yapılandırılmalıdır.
 
-Çalışma alanı yapılandırıldıktan sonra, gerekli aracıları VM ve VMMS 'ye yüklemek için kullanılabilir seçeneklerden herhangi birini kullanabilir ve bunların verilerini gönderebilmesi için bir çalışma alanı belirtebilirsiniz. VM'ler için Azure İzleyici, aboneliğindeki herhangi bir yapılandırılmış çalışma alanından veri toplar.
+Çalışma alanı yapılandırıldıktan sonra, gerekli aracıları VM ve VMSS 'ye yüklemek için kullanılabilir seçeneklerden herhangi birini kullanabilir ve bunların verilerini gönderebilmesi için bir çalışma alanı belirtebilirsiniz. VM'ler için Azure İzleyici, aboneliğindeki herhangi bir yapılandırılmış çalışma alanından veri toplar.
 
 > [!NOTE]
-> Azure portal kullanarak tek bir VM veya VMMS üzerinde VM'ler için Azure İzleyici etkinleştirdiğinizde, var olan bir çalışma alanını seçme veya yeni bir tane oluşturma seçeneği sunulur. *Vminsıghts* çözümü henüz yoksa bu çalışma alanına yüklenecek. Daha sonra bu çalışma alanını diğer aracılar için kullanabilirsiniz.
+> Azure portal kullanarak tek bir VM 'de veya VMSS 'de VM'ler için Azure İzleyici etkinleştirdiğinizde, var olan bir çalışma alanını seçme veya yeni bir tane oluşturma seçeneği sunulur. *Vminsıghts* çözümü henüz yoksa bu çalışma alanına yüklenecek. Daha sonra bu çalışma alanını diğer aracılar için kullanabilirsiniz.
 
 
 ## <a name="create-log-analytics-workspace"></a>Log Analytics çalışma alanı oluşturma
@@ -38,7 +38,7 @@ Tek bir abonelik, gereksinimlerinize bağlı olarak herhangi bir sayıda çalı�
 Aşağıdaki yöntemlerden herhangi birini kullanarak yeni bir Log Analytics çalışma alanı oluşturabilirsiniz. Ortamınızda kullanmanız gereken çalışma alanı sayısını ve erişim stratejisini nasıl tasarlayacağınızı belirlemek için bkz. [Azure Izleyici günlükleri dağıtımınızı tasarlama](../platform/design-logs-deployment.md) .
 
 
-* [Azure portalı](../../azure-monitor/learn/quick-create-workspace.md)
+* [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
 * [PowerShell](../platform/powershell-workspace-configuration.md)
 * [Azure Resource Manager](../samples/resource-manager-workspace.md)
@@ -80,7 +80,7 @@ Bir Log Analytics çalışma alanının VM'ler için Azure İzleyici ile kullan�
 ### <a name="azure-portal"></a>Azure portal
 Azure portal var olan bir çalışma alanını yapılandırmak için üç seçenek vardır.
 
-Tek bir çalışma alanını yapılandırmak için **diğer ekleme seçeneklerini** belirleyin ve ardından **bir çalışma alanı yapılandırın**. Bir abonelik ve çalışma alanı seçin ve ardından **Yapılandır**' a tıklayın.
+Tek bir çalışma alanını yapılandırmak için **diğer ekleme seçeneklerini** belirleyin ve ardından **bir çalışma alanı yapılandırın**. Bir abonelik ve çalışma alanı seçin ve ardından **Yapılandır** ' a tıklayın.
 
 [![Çalışma alanını yapılandırma](media/vminsights-enable-at-scale-policy/configure-workspace.png)](media/vminsights-enable-at-scale-policy/configure-workspace.png#lightbox)
 
@@ -89,7 +89,7 @@ Birden çok çalışma alanını yapılandırmak için Azure portal **Monitor** 
 [![Çalışma alanı yapılandırması](media/vminsights-enable-at-scale-policy/workspace-configuration.png)](media/vminsights-enable-at-scale-policy/workspace-configuration.png#lightbox)
 
 
-Azure portal kullanarak tek bir VM veya VMMS üzerinde VM'ler için Azure İzleyici etkinleştirdiğinizde, var olan bir çalışma alanını seçme veya yeni bir tane oluşturma seçeneği sunulur. *Vminsıghts* çözümü henüz yoksa bu çalışma alanına yüklenecek. Daha sonra bu çalışma alanını diğer aracılar için kullanabilirsiniz.
+Azure portal kullanarak tek bir VM 'de veya VMSS 'de VM'ler için Azure İzleyici etkinleştirdiğinizde, var olan bir çalışma alanını seçme veya yeni bir tane oluşturma seçeneği sunulur. *Vminsıghts* çözümü henüz yoksa bu çalışma alanına yüklenecek. Daha sonra bu çalışma alanını diğer aracılar için kullanabilirsiniz.
 
 [![Portalda tek VM 'yi etkinleştirme](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png#lightbox)
 

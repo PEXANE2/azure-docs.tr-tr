@@ -7,12 +7,12 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: 29f50b2cf9523b9266de2f73607b0099f32852e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b8aa72c7b77da8fdde9925325587b67411de8d8
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005421"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506422"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Azure PowerShell kullanarak bir Web uygulaması güvenlik duvarı hız sınırı kuralı yapılandırma
 Azure ön kapısının Azure Web uygulaması güvenlik duvarı (WAF) hız sınırı kuralı, tek dakikalık bir süre içinde istemcilerden izin verilen isteklerin sayısını denetler.
@@ -20,7 +20,10 @@ Bu makalede, istemcilerden Azure PowerShell kullanarak URL 'de */promosyon* içe
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+> [!NOTE]
+> Her istemci IP adresi için hız sınırları uygulanır. Ön kapılarınıza farklı IP adreslerinden erişen birden fazla istemciniz varsa, bunların kendi hız limitleri uygulanmış olur.
+
+## <a name="prerequisites"></a>Ön koşullar
 Bir hız sınırı ilkesi ayarlamaya başlamadan önce, PowerShell ortamınızı ayarlayın ve bir ön kapı profili oluşturun.
 ### <a name="set-up-your-powershell-environment"></a>PowerShell ortamınızı hazırlama
 Azure PowerShell, Azure kaynaklarınızı yönetmek için [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) modelini kullanan bir dizi cmdlet sunar. 
@@ -73,9 +76,7 @@ Aşağıdaki örnek, *RequestUri* değişkeninin değeri olarak */promosyon* ile
 
 Kullanarak ön kapı profilini içeren kaynak grubunun adını bulun `Get-AzureRmResourceGroup` . Ardından, ön kapı profilini içeren belirtilen kaynak grubunda [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) kullanarak bir güvenlik ilkesini özel bir hız sınırı kuralıyla yapılandırın.
 
-Aşağıdaki örnek, [hızlı başlangıç: ön kapı oluşturma](../../frontdoor/quickstart-create-front-door.md) makalesinde sunulan yönergeleri kullanarak ön kapı profilini oluşturduğunuz varsayımıyla *myResourceGroupFD1* kaynak grubu adını kullanır.
-
- [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)kullanma.
+Aşağıdaki örnek, *MyResourceGroupFD1* kaynak grubu adını, [hızlı başlangıç: ön kapı oluşturma](../../frontdoor/quickstart-create-front-door.md) makalesinde sunulan [yönergeleri kullanarak ön](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)kapı profilini oluşturduğunuz varsayımıyla birlikte kullanır.
 
 ```powershell-interactive
    $ratePolicy = New-AzFrontDoorWafPolicy `

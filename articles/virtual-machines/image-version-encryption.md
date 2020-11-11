@@ -8,34 +8,35 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/3/2020
 ms.author: cynthn
-ms.openlocfilehash: e0534fa6eaccbfb9318369e0a4224d84fa8de7c8
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: b19dab8dffaa0c9c888e8a9974a43cbb48006fd7
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347718"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504331"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Önizleme: görüntüleri şifrelemek için müşteri tarafından yönetilen anahtarları kullanın
 
-Galeri görüntüleri yönetilen diskler olarak depolanır, bu nedenle otomatik olarak sunucu tarafı şifreleme kullanılarak şifrelenir. Sunucu tarafı şifreleme, 256 bit [AES şifrelemesi](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)kullanır, en güçlü blok şifrelemeleri KULLANILABILIR ve FIPS 140-2 uyumludur. Azure yönetilen diskleri temel alan şifreleme modülleri hakkında daha fazla bilgi için bkz [. şifreleme API 'si: yeni nesil](/windows/desktop/seccng/cng-portal)
+Paylaşılan görüntü galerisindeki görüntüler anlık görüntü olarak depolanır, bu nedenle otomatik olarak sunucu tarafı şifrelemesi aracılığıyla şifrelenir. Sunucu tarafı şifrelemesi, en güçlü blok şifrelemeleri bulunan 256 bit [AES şifrelemesi](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)kullanır. Sunucu tarafı şifreleme da FIPS 140-2 ile uyumludur. Azure yönetilen diskleri temel alan şifreleme modülleri hakkında daha fazla bilgi için bkz. [şifreleme API 'si: yeni nesil](/windows/desktop/seccng/cng-portal).
 
-Görüntülerinizin şifrelenmesi için platform tarafından yönetilen anahtarlar kullanabilir, kendi anahtarlarınızı kullanabilir veya Çift şifreleme için her ikisini birlikte kullanabilirsiniz. Şifrelemeyi kendi anahtarlarınız ile yönetmeyi seçerseniz, görüntülerinizdeki tüm diskleri şifrelemek ve şifrelerini çözmek için kullanılacak *müşteri tarafından yönetilen bir anahtar* belirtebilirsiniz. 
+Görüntülerinizin şifrelenmesi için platform tarafından yönetilen anahtarları kullanabilir veya kendi anahtarlarınızı kullanabilirsiniz. Çift şifreleme için her ikisini birlikte de kullanabilirsiniz. Şifrelemeyi kendi anahtarlarınız ile yönetmeyi seçerseniz, görüntülerinizdeki tüm diskleri şifrelemek ve şifrelerini çözmek için kullanılacak *müşteri tarafından yönetilen bir anahtar* belirtebilirsiniz. 
 
-Müşteri tarafından yönetilen anahtarlar kullanılarak sunucu tarafı şifreleme Azure Key Vault kullanır. [RSA anahtarlarınızı](../key-vault/keys/hsm-protected-keys.md) Key Vault içeri aktarabilir ya da Azure Key Vault yeni RSA anahtarları oluşturabilirsiniz.
+Müşteri tarafından yönetilen anahtarlar aracılığıyla sunucu tarafı şifreleme Azure Key Vault kullanır. [RSA anahtarlarınızı](../key-vault/keys/hsm-protected-keys.md) anahtar kasanıza aktarabilir ya da Azure Key Vault yeni RSA anahtarları oluşturabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu makalede, görüntünüzü çoğaltmak istediğiniz her bölgede zaten bir disk şifrelemesi ayarlamış olmanız gerekir.
+Bu makale, görüntünüzü çoğaltmak istediğiniz her bölgede zaten bir disk şifrelemesi ayarlamış olmanızı gerektirir:
 
-- Yalnızca müşteri tarafından yönetilen bir anahtar kullanmak için bkz. [Azure Portal](./disks-enable-customer-managed-keys-portal.md) veya [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset)'i kullanarak, **müşteri tarafından yönetilen anahtarları sunucu tarafı şifrelemesiyle etkinleştirme** .
+- Yalnızca müşteri tarafından yönetilen bir anahtar kullanmak için [Azure Portal](./disks-enable-customer-managed-keys-portal.md) veya [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset)'i kullanarak, müşteri tarafından yönetilen anahtarları sunucu tarafı şifrelemesiyle Etkinleştirme makalesine bakın.
 
-- Hem platform tarafından yönetilen hem de müşteri tarafından yönetilen anahtarları (Çift şifreleme için) kullanmak için bkz. [Azure Portal](./disks-enable-double-encryption-at-rest-portal.md) veya [PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md)kullanarak **rest 'te çift şifrelemeyi etkinleştirme** .
-    > [!IMPORTANT]
-    > Azure portal erişmek için bu bağlantıyı kullanmanız gerekir [https://aka.ms/diskencryptionupdates](https://aka.ms/diskencryptionupdates) . Rest 'te Çift şifreleme, bağlantıyı kullanmadan Genel Azure portal Şu anda görünür değil.
+- Hem platform tarafından yönetilen hem de müşteri tarafından yönetilen anahtarları kullanmak için (Çift şifreleme için), [Azure Portal](./disks-enable-double-encryption-at-rest-portal.md) veya [PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md)kullanarak Rest 'te çift şifrelemeyi Etkinleştirme makalesine bakın.
+
+   > [!IMPORTANT]
+   > [https://aka.ms/diskencryptionupdates](https://aka.ms/diskencryptionupdates)Azure Portal erişmek için bağlantıyı kullanmanız gerekir. Bu bağlantıyı kullanmadığınız takdirde, Rest 'te Çift şifreleme Şu anda genel Azure portal görünür değildir.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Paylaşılan görüntü Galerisi görüntülerini şifrelemek için müşteri tarafından yönetilen anahtarlar kullanılırken çeşitli sınırlamalar vardır:  
+Paylaşılan bir görüntü galerisinde resimleri şifrelemek için müşteri tarafından yönetilen anahtarlar kullanırken, bu sınırlamalar geçerlidir:   
 
 - Şifreleme anahtarı kümeleri görüntresimle aynı abonelikte olmalıdır.
 
@@ -43,29 +44,29 @@ Paylaşılan görüntü Galerisi görüntülerini şifrelemek için müşteri ta
 
 - Müşteri tarafından yönetilen anahtarlar kullanan görüntüleri kopyalayamaz veya paylaşamazsınız. 
 
-- Bir diski veya görüntüyü şifrelemek için kendi anahtarlarınızı kullandıysanız, bu diskleri veya görüntüleri şifrelemek için platform tarafından yönetilen anahtarları kullanmaya geri dönemezsiniz.
+- Bir diski veya görüntüyü şifrelemek için kendi anahtarlarınızı kullandıktan sonra, bu diskleri veya görüntüleri şifrelemek için platform tarafından yönetilen anahtarları kullanmaya geri dönemezsiniz.
 
 
 > [!IMPORTANT]
-> Müşteri tarafından yönetilen anahtarları kullanarak şifreleme Şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Müşteri tarafından yönetilen anahtarlar aracılığıyla şifreleme Şu anda genel önizlemededir.
+> Bu önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
 ## <a name="powershell"></a>PowerShell
 
-Genel önizleme için önce özelliği kaydetmeniz gerekir.
+Genel önizleme için önce özelliği kaydetmeniz gerekir:
 
 ```azurepowershell-interactive
 Register-AzProviderFeature -FeatureName SIGEncryption -ProviderNamespace Microsoft.Compute
 ```
 
-Kaydın tamamlanabilmesi birkaç dakika sürer. Özellik kaydının durumunu denetlemek için Get-AzProviderFeature kullanın.
+Kaydın tamamlanabilmesi birkaç dakika sürer. `Get-AzProviderFeature`Özellik kaydının durumunu denetlemek için kullanın:
 
 ```azurepowershell-interactive
 Get-AzProviderFeature -FeatureName SIGEncryption -ProviderNamespace Microsoft.Compute
 ```
 
-RegistrationState kaydedildiğinde, sonraki adıma geçebilirsiniz.
+`RegistrationState`Döndüğünde `Registered` , bir sonraki adıma geçebilirsiniz.
 
 Sağlayıcı kaydınızı denetleyin. Döndürdüğünden emin olun `Registered` .
 
@@ -73,13 +74,13 @@ Sağlayıcı kaydınızı denetleyin. Döndürdüğünden emin olun `Registered`
 Get-AzResourceProvider -ProviderNamespace Microsoft.Compute | Format-table -Property ResourceTypes,RegistrationState
 ```
 
-Döndürmezse `Registered` , sağlayıcıları kaydetmek için aşağıdakileri kullanın:
+Döndürmezse `Registered` , sağlayıcıları kaydetmek için aşağıdaki kodu kullanın:
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
-Bir görüntü sürümü için ayarlanmış bir disk şifrelemesi belirtmek için, parametresiyle  [New-Azgallerımagedefinition](/powershell/module/az.compute/new-azgalleryimageversion) komutunu kullanın `-TargetRegion` . 
+Bir görüntü sürümüne bir disk şifreleme kümesi belirtmek için,  [New-Azgallerımagedefinition](/powershell/module/az.compute/new-azgalleryimageversion) parametresini parametresiyle birlikte kullanın `-TargetRegion` : 
 
 ```azurepowershell-interactive
 
@@ -125,11 +126,11 @@ New-AzGalleryImageVersion `
    -TargetRegion $targetRegion
 ```
 
-### <a name="create-a-vm"></a>VM oluştur
+### <a name="create-a-vm"></a>VM oluşturma
 
-Paylaşılan görüntü galerisinden bir VM oluşturabilir ve diskleri şifrelemek için müşterinin yönettiği anahtarları kullanabilirsiniz. Söz dizimi, bir görüntüden [Genelleştirilmiş](vm-generalized-image-version-powershell.md) veya [özel](vm-specialized-image-version-powershell.md) bir VM oluşturma ile aynıdır, genişletilmiş parametre kümesini kullanmanız ve `Set-AzVMOSDisk -Name $($vmName +"_OSDisk") -DiskEncryptionSetId $diskEncryptionSet.Id -CreateOption FromImage` VM yapılandırmasına eklemeniz gerekir.
+Paylaşılan görüntü galerisinden bir sanal makine (VM) oluşturabilir ve diskleri şifrelemek için müşteri tarafından yönetilen anahtarları kullanabilirsiniz. Söz dizimi, bir görüntüden [Genelleştirilmiş](vm-generalized-image-version-powershell.md) veya [özel](vm-specialized-image-version-powershell.md) bir VM oluşturma ile aynıdır. Genişletilmiş parametre kümesini kullanın ve `Set-AzVMOSDisk -Name $($vmName +"_OSDisk") -DiskEncryptionSetId $diskEncryptionSet.Id -CreateOption FromImage` VM yapılandırmasına ekleyin.
 
-Veri disklerinde, `-DiskEncryptionSetId $setID` [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk)kullandığınızda parametresini eklemeniz gerekir.
+Veri diskleri için `-DiskEncryptionSetId $setID` [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk)kullandığınızda parametresini ekleyin.
 
 
 ## <a name="cli"></a>CLI 
@@ -140,30 +141,30 @@ Genel önizleme için öncelikle bu özelliğe kaydolmanız gerekir. Kayıt yakl
 az feature register --namespace Microsoft.Compute --name SIGEncryption
 ```
 
-Özellik kaydının durumunu denetleyin.
+Özellik kaydının durumunu denetleyin:
 
 ```azurecli-interactive
 az feature show --namespace Microsoft.Compute --name SIGEncryption | grep state
 ```
 
-Bu döndürüldüğünde bir `"state": "Registered"` sonraki adıma geçebilirsiniz.
+Bu kod döndüğünde bir `"state": "Registered"` sonraki adıma geçebilirsiniz.
 
-Kaydınızı denetleyin.
+Kaydınızı denetleyin:
 
 ```azurecli-interactive
 az provider show -n Microsoft.Compute | grep registrationState
 ```
 
-Kayıtlı değilse, aşağıdakileri çalıştırın:
+Kayıtlı değilse, aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az provider register -n Microsoft.Compute
 ```
 
 
-Bir görüntü sürümü için ayarlanmış bir disk şifrelemesi belirtmek için, parametresiyle  [az Image Gallery Create-Image-Version](/cli/azure/sig/image-version#az-sig-image-version-create) kullanın `--target-region-encryption` . Biçimi, `--target-region-encryption` işletim sistemi ve veri disklerini şifrelemek için bir virgülle ayrılmış anahtar listesidir. Şöyle görünmelidir: `<encryption set for the OS disk>,<Lun number of the data disk>,<encryption set for the data disk>,<Lun number for the second data disk>,<encryption set for the second data disk>` . 
+Bir görüntü sürümüne yönelik bir disk şifreleme kümesi belirtmek için, parametresiyle [az Image Gallery Create-Image-Version](/cli/azure/sig/image-version#az-sig-image-version-create) kullanın `--target-region-encryption` . Biçimi, `--target-region-encryption` işletim sistemi ve veri disklerini şifrelemek için bir virgülle ayrılmış anahtar listesidir. Şöyle görünmelidir: `<encryption set for the OS disk>,<Lun number of the data disk>,<encryption set for the data disk>,<Lun number for the second data disk>,<encryption set for the second data disk>` . 
 
-İşletim sistemi diskinin kaynağı yönetilen bir disk veya VM ise, `--managed-image` görüntü sürümü kaynağını belirtmek için öğesini kullanın. Bu örnekte, kaynak, LUN 0 ' da bir işletim sistemi diskine ve veri diskine sahip olan yönetilen bir görüntüdür. İşletim sistemi diski DiskEncryptionSet1 ile şifrelenir ve veri diski DiskEncryptionSet2 ile şifrelenir.
+İşletim sistemi diskinin kaynağı yönetilen bir disk veya VM ise, `--managed-image` görüntü sürümü kaynağını belirtmek için öğesini kullanın. Bu örnekte kaynak, LUN 0 ' da işletim sistemi diskine ve veri diskine sahip olan yönetilen bir görüntüdür. İşletim sistemi diski DiskEncryptionSet1 ile şifrelenir ve veri diski DiskEncryptionSet2 ile şifrelenir.
 
 ```azurecli-interactive
 az sig image-version create \
@@ -177,7 +178,7 @@ az sig image-version create \
    --managed-image "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage"
 ```
 
-İşletim sistemi diskinin kaynağı bir anlık görüntüdür, `--os-snapshot` işletim sistemi diskini belirtmek için kullanın. Aynı zamanda görüntü sürümünün parçası olması gereken veri diski anlık görüntüleri varsa, bunu `--data-snapshot-luns` LUN 'u belirtmek için kullanarak ve `--data-snapshots` anlık görüntüleri belirtecek şekilde ekleyin.
+İşletim sistemi diskinin kaynağı bir anlık görüntüdür, `--os-snapshot` işletim sistemi diskini belirtmek için kullanın. Aynı zamanda görüntü sürümünün parçası olması gereken veri diski anlık görüntüleri varsa, bunları ekleyin. `--data-snapshot-luns`LUN 'u belirtmek için öğesini kullanın ve `--data-snapshots` anlık görüntüleri belirtmek için öğesini kullanın.
 
 Bu örnekte, kaynaklar disk anlık görüntüleridir. LUN 0 ' da bir işletim sistemi diski ve bir veri diski vardır. İşletim sistemi diski DiskEncryptionSet1 ile şifrelenir ve veri diski DiskEncryptionSet2 ile şifrelenir.
 
@@ -198,24 +199,24 @@ az sig image-version create \
 
 ### <a name="create-the-vm"></a>Sanal makineyi oluşturma
 
-Paylaşılan görüntü galerisinden bir VM oluşturabilir ve diskleri şifrelemek için müşterinin yönettiği anahtarları kullanabilirsiniz. Söz dizimi, bir görüntüden [Genelleştirilmiş](vm-generalized-image-version-cli.md) veya [özel](vm-specialized-image-version-cli.md) bir VM oluşturma ile aynıdır; yalnızca, `--os-disk-encryption-set` şifreleme kümesinin kimliğiyle parametresini eklemeniz gerekir. Veri diskleri için, `--data-disk-encryption-sets` veri diskleri için disk şifreleme kümelerinin boşlukla ayrılmış bir listesiyle ekleyin.
+Paylaşılan görüntü galerisinden bir VM oluşturabilir ve diskleri şifrelemek için müşterinin yönettiği anahtarları kullanabilirsiniz. Söz dizimi, bir görüntüden [Genelleştirilmiş](vm-generalized-image-version-cli.md) veya [özel](vm-specialized-image-version-cli.md) bir VM oluşturma ile aynıdır. Yalnızca, `--os-disk-encryption-set` şifreleme KÜMESININ kimliğiyle parametresini eklemeniz yeterlidir. Veri diskleri için, `--data-disk-encryption-sets` veri diskleri için disk şifreleme kümelerinin boşlukla ayrılmış bir listesiyle ekleyin.
 
 
 ## <a name="portal"></a>Portal
 
-Portalda görüntü sürümünüzü oluşturduğunuzda, depolama şifreleme kümelerinizi Uygula ' yı girmek için **şifreleme** sekmesini kullanabilirsiniz.
+Portalda görüntü sürümünüzü oluşturduğunuzda, depolama şifreleme kümelerinizi uygulamak için **şifreleme** sekmesini kullanabilirsiniz.
 
 > [!IMPORTANT]
-> Çift şifrelemeyi kullanmak için, Azure portal erişmek için bu bağlantıyı kullanmanız gerekir [https://aka.ms/diskencryptionupdates](https://aka.ms/diskencryptionupdates) . Rest 'te Çift şifreleme, bağlantıyı kullanmadan Genel Azure portal Şu anda görünür değil.
+> Çift şifrelemeyi kullanmak için, [https://aka.ms/diskencryptionupdates](https://aka.ms/diskencryptionupdates) Azure Portal erişmek için bağlantıyı kullanmanız gerekir. Bu bağlantıyı kullanmadığınız takdirde, Rest 'te Çift şifreleme Şu anda genel Azure portal görünür değildir.
 
 
 1. **Görüntü sürümü oluştur** sayfasında **şifreleme** sekmesini seçin.
 2. **Şifreleme türü** ' nde, **müşteri tarafından yönetilen bir anahtarla** veya **platform tarafından yönetilen ve müşteri tarafından yönetilen anahtarlarla çift Şifrelemeli** şifreleme ' yi seçin. 
-3. Görüntüdeki her disk için, açılan listeden kullanılacak **disk şifrelemesi kümesini** seçin. 
+3. Görüntüdeki her disk için, **disk şifreleme kümesi** açılan listesinden bir şifreleme kümesi seçin. 
 
 ### <a name="create-the-vm"></a>Sanal makineyi oluşturma
 
-Bir görüntü sürümünden bir VM oluşturabilir ve diskleri şifrelemek için müşteri tarafından yönetilen anahtarları kullanabilirsiniz. Portalda VM oluştururken, **diskler** sekmesinde, **müşteri tarafından yönetilen anahtarlar** veya **şifreleme türü** Için müşteri tarafından yönetilen **anahtarlar ile çift şifreleme** ile bekleyen şifreleme ' yi seçin. Daha sonra açılan listeden şifreleme kümesini seçebilirsiniz.
+Bir görüntü sürümünden bir VM oluşturabilir ve diskleri şifrelemek için müşteri tarafından yönetilen anahtarları kullanabilirsiniz. Portalda VM oluştururken, **diskler** sekmesinde, **müşteri tarafından yönetilen anahtarlarla bekleyen şifreleme** veya **şifreleme türü** Için müşteri tarafından yönetilen **anahtarlar ile çift şifreleme** seçeneğini belirleyin. Daha sonra, açılan listeden şifreleme kümesini seçebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

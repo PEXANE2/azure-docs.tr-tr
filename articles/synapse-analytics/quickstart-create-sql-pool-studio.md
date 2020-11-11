@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 10/16/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6ffa7bb07ddb42946acdcef6ee3b7f2aa804f774
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f3ed5f3940a9b02701ad2f3c779b791e128e288c
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324322"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506354"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-using-synapse-studio"></a>Hızlı başlangıç: SYNAPSE Studio kullanarak adanmış bir SQL havuzu oluşturma
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, SYNAPSE Studio kullanarak bir Synapse çalışma alan
 Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [SYNAPSE çalışma alanı](quickstart-create-workspace.md)
@@ -75,6 +75,8 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
     > Adanmış SQL havuzlarının kullanabileceği adlarla ilgili belirli sınırlamalar olduğunu unutmayın. Adlar özel karakterler içeremez, 15 veya daha az karakter olmalı, ayrılmış sözcükler içermemelidir ve çalışma alanında benzersiz olmalıdır.
 
 4. Bir sonraki sekmede, **ek ayarlar** ' da, VERI olmadan SQL havuzunu sağlamak için **hiçbiri** ' ni seçin. Varsayılan harmanlamayı seçili olarak bırakın.
+
+    Adanmış SQL havuzunuzu bir geri yükleme noktasından geri yüklemek istiyorsanız **geri yükleme noktası** ' nı seçin. Geri yükleme gerçekleştirme hakkında daha fazla bilgi için bkz [. nasıl yapılır: var olan ayrılmış BIR SQL havuzunu geri yükleme](backuprestore/restore-sql-pool.md)
 
     ![SQL havuzu akış oluşturma-ek ayarlar sekmesi.](media/quickstart-create-sql-pool/create-sql-pool-studio-25.png)
 

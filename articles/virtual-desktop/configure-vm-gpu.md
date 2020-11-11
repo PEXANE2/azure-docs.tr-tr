@@ -5,12 +5,12 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 33b8d3f62ef45c6078f10535c6376f611472f5a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7599a0c7b48bdc371d851ec20282af82e77783bf
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441757"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505317"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows Sanal Masaüstü için grafik işlem birimi (GPU) hızlandırmasını yapılandırma
 
@@ -21,9 +21,12 @@ Windows sanal masaüstü, geliştirilmiş uygulama performansı ve ölçeklenebi
 
 GPU ile iyileştirilmiş bir Azure sanal makinesi oluşturmak, konak havuzunuza eklemek ve işleme ve kodlama için GPU hızlandırmasını kullanacak şekilde yapılandırmak için bu makaledeki yönergeleri izleyin. Bu makalede, zaten yapılandırılmış bir Windows sanal masaüstü kiracınız olduğu varsayılır.
 
-## <a name="select-a-gpu-optimized-azure-virtual-machine-size"></a>GPU için iyileştirilmiş bir Azure sanal makine boyutu seçin
+## <a name="select-an-appropriate-gpu-optimized-azure-virtual-machine-size"></a>Uygun bir GPU iyileştirilmiş Azure sanal makine boyutu seçin
 
-Azure, çok sayıda [GPU iyileştirilmiş sanal makine boyutu](/azure/virtual-machines/windows/sizes-gpu)sunar. Konak havuzunuzun sağ seçimi, belirli uygulama iş yükleriniz, istenen kullanıcı deneyimi kalitesi ve maliyet dahil olmak üzere çeşitli etkenlere bağlıdır. Genel olarak, daha büyük ve daha yetenekli GPU 'Lar belirli bir kullanıcı yoğunluğu konusunda daha iyi bir kullanıcı deneyimi sunar.
+Azure 'un [NV serisi](/azure/virtual-machines/nv-series), [NVv3-Series](/azure/virtual-machines/nvv3-series)veya [NVv4 serisi](/azure/virtual-machines/nvv4-series) VM boyutlarından birini seçin. Bunlar uygulama ve masaüstü sanallaştırma için uyarlanmış ve uygulamaların ve Windows Kullanıcı arabiriminin GPU hızlandırılmasını sağlamak için tasarlanmıştır. Konak havuzunuzun sağ seçimi, belirli uygulama iş yükleriniz, istenen kullanıcı deneyimi kalitesi ve maliyet dahil olmak üzere çeşitli etkenlere bağlıdır. Genel olarak, daha büyük ve daha yetenekli GPU 'Lar belirli bir kullanıcı yoğunluğu üzerinde daha iyi bir kullanıcı deneyimi sunar. daha küçük ve kısmi GPU boyutları, maliyet ve kalite üzerinde daha ayrıntılı denetim sağlar.
+
+>[!NOTE]
+>Azure 'un NC, NCv2, NCv3, ND ve NDv2 serisi VM 'Leri, Windows sanal masaüstü oturumu konakları için genellikle uygun değildir. Bu VM 'Ler, NVıDıA CUDA ile oluşturulan özel, yüksek performanslı bilgi işlem veya makine öğrenimi araçları için tasarlanmıştır. NVıDıA GPU 'Lar ile genel uygulama ve Masaüstü hızlandırma, NVıDıA GRID lisanslaması gerektirir; Bu, Azure tarafından önerilen VM boyutları için sağlanır, ancak NC/ND serisi VM 'Ler için ayrı olarak düzenlenmelidir.
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>Bir konak havuzu oluşturun, sanal makinenizi sağlayın ve bir uygulama grubu yapılandırın
 
@@ -40,7 +43,7 @@ Ayrıca, yeni bir konak havuzu oluştururken otomatik olarak oluşturulan varsay
 
 Windows sanal masaüstündeki Azure N serisi VM 'lerin GPU yetilerinden yararlanmak için uygun grafik sürücülerini yüklemelisiniz. Uygun grafik satıcısından sürücüleri el ile veya bir Azure VM uzantısı kullanarak yüklemek için [desteklenen işletim sistemleri ve sürücüler](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers) bölümündeki yönergeleri izleyin.
 
-Windows sanal masaüstü için yalnızca Azure tarafından dağıtılan sürücüler desteklenir. Ayrıca, NVıDıA GPU 'lara sahip Azure VM 'Leri için Windows sanal masaüstü için yalnızca [NVıDıA kılavuz sürücüleri](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) desteklenir.
+Windows sanal masaüstü için yalnızca Azure tarafından dağıtılan sürücüler desteklenir. NVıDıA GPU 'lara sahip Azure NV serisi sanal makineleri için yalnızca [NVıDıA kılavuz sürücüleri](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)ve NVIDIA Tesla (CUDA) sürücüleri, genel amaçlı uygulamalar ve Masaüstü BILGISAYARLAR için GPU hızlandırmasını destekler.
 
 Sürücü yüklemesinden sonra, bir VM yeniden başlatması gerekir. Grafik sürücülerinin başarıyla yüklendiğini doğrulamak için yukarıdaki yönergelerdeki doğrulama adımlarını kullanın.
 
@@ -50,7 +53,7 @@ Varsayılan olarak, çoklu oturum yapılandırmalarında çalışan uygulamalar 
 
 1. Yerel yönetici ayrıcalıklarına sahip bir hesap kullanarak VM 'nin masaüstüne bağlanın.
 2. Başlat menüsünü açın ve grup ilkesi düzenleyicisini açmak için "gpedit. msc" yazın.
-3. **Computer Configuration**  >  **Yönetim Şablonları**,  >  **Windows Components**  >  **Remote Desktop Services**  >  **Remote Desktop Session Host**  >  **uzak oturum ortamı**Uzak Masaüstü oturumu ana bilgisayarı Windows bileşenleri Uzak Masaüstü Hizmetleri Bilgisayar Yapılandırması ' na gidin.
+3. **Computer Configuration**  >  **Yönetim Şablonları** ,  >  **Windows Components**  >  **Remote Desktop Services**  >  **Remote Desktop Session Host**  >  **uzak oturum ortamı** Uzak Masaüstü oturumu ana bilgisayarı Windows bileşenleri Uzak Masaüstü Hizmetleri Bilgisayar Yapılandırması ' na gidin.
 4. İlke ' yi seçin **tüm Uzak Masaüstü Hizmetleri oturumları için donanım grafik bağdaştırıcılarını kullanın** ve bu ilkeyi, uzak oturumda GPU oluşturmayı etkinleştirmek için **etkin** olarak ayarlayın.
 
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>GPU hızlandırmalı çerçeve kodlamasını yapılandırma
@@ -63,7 +66,7 @@ Uzak Masaüstü, uzak masaüstü istemcilerine iletilmek üzere uygulamalar ve m
 1. **Uzak Masaüstü bağlantıları için, Ilke yapılandırma H. ıfer/AVC donanım kodlamasını** seçin ve bu ilkeyi uzak oturumda AVC/H. IBU için donanım kodlamayı etkinleştirmek üzere **etkin** olarak ayarlayın.
 
     >[!NOTE]
-    >Windows Server 2016 ' de, **her zaman denemek**Için **AVC donanım kodlamasını tercih et** seçeneğini belirleyin.
+    >Windows Server 2016 ' de, **her zaman denemek** Için **AVC donanım kodlamasını tercih et** seçeneğini belirleyin.
 
 2. Artık grup ilkeleri düzenlenmişse, bir grup ilkesi güncelleştirmesini zorlayın. Komut Istemi ' ni açın ve şunu yazın:
 

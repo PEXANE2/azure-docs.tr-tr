@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
 ms.author: jingwang
-ms.openlocfilehash: c08dd1b5b2f90e874f36c6cf01c4cc5f5ae74d17
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 4f5d691ef99ac4647d2031d6588d0b3922edd8cf
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636264"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505997"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>Özel uç noktaları kullanarak verileri Azure Blob depolamadan bir SQL veritabanına güvenli bir şekilde kopyalama
 
@@ -35,9 +35,9 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
 
 ## <a name="prerequisites"></a>Ön koşullar
-* **Azure aboneliği** . Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
-* **Azure depolama hesabı** . Blob depolama alanını *kaynak* veri deposu olarak kullanabilirsiniz. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md?tabs=azure-portal). *Depolama hesabının yalnızca seçili ağlardan erişime izin verdiğinden emin olun.* 
-* **Azure SQL veritabanı** . Veritabanını *havuz* veri deposu olarak kullanabilirsiniz. Azure SQL veritabanınız yoksa, oluşturma adımları için bkz. [SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) . *SQL veritabanı hesabının yalnızca seçili ağlardan erişime izin verdiğinden emin olun.* 
+* **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
+* **Azure depolama hesabı**. Blob depolama alanını *kaynak* veri deposu olarak kullanabilirsiniz. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md?tabs=azure-portal). *Depolama hesabının yalnızca seçili ağlardan erişime izin verdiğinden emin olun.* 
+* **Azure SQL veritabanı**. Veritabanını *havuz* veri deposu olarak kullanabilirsiniz. Azure SQL veritabanınız yoksa, oluşturma adımları için bkz. [SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) . *SQL veritabanı hesabının yalnızca seçili ağlardan erişime izin verdiğinden emin olun.* 
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Bir blob ve SQL tablosu oluşturma
 
@@ -59,17 +59,17 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
 SQL veritabanınızda **dbo.emp** tablosu oluşturmak için aşağıdaki SQL betiğini kullanın:
 
-    ```sql
-    CREATE TABLE dbo.emp
-    (
-        ID int IDENTITY(1,1) NOT NULL,
-        FirstName varchar(50),
-        LastName varchar(50)
-    )
-    GO
+```sql
+CREATE TABLE dbo.emp
+(
+    ID int IDENTITY(1,1) NOT NULL,
+    FirstName varchar(50),
+    LastName varchar(50)
+)
+GO
 
-    CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
-    ```
+CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
+```
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 Bu adımda, bir veri fabrikası oluşturacak ve veri fabrikasında bir işlem hattı oluşturmak için Data Factory kullanıcı arabirimini başlatacaksınız.
@@ -156,7 +156,7 @@ Bu öğreticide, bir işlem hattı oluşturarak başlayın. Daha sonra işlem ha
 
     ![Etkileşimli yazma gösteren ekran görüntüsü.](./media/tutorial-copy-data-portal-private/interactive-authoring.png)
 
-1. **Bağlantıyı sına** ’yı seçin. Depolama hesabı yalnızca **Seçili ağlardan** erişime izin veriyorsa ve bu, kullanılmadan önce onaylanması gereken Data Factory özel bir uç nokta oluşturmasını gerektirdiğinde başarısız olur. Hata iletisinde, yönetilen özel uç nokta oluşturmak için izleyebileceğiniz özel bir uç nokta oluşturmak için bir bağlantı görmeniz gerekir. Diğer bir seçenek de doğrudan **Yönet** sekmesine gidip bir [sonraki bölümdeki](#create-a-managed-private-endpoint) yönergeleri izleyerek yönetilen özel uç nokta oluşturur.
+1. **Bağlantıyı Sına** ' yı seçin. Depolama hesabı yalnızca **Seçili ağlardan** erişime izin veriyorsa ve bu, kullanılmadan önce onaylanması gereken Data Factory özel bir uç nokta oluşturmasını gerektirdiğinde başarısız olur. Hata iletisinde, yönetilen özel uç nokta oluşturmak için izleyebileceğiniz özel bir uç nokta oluşturmak için bir bağlantı görmeniz gerekir. Diğer bir seçenek de doğrudan **Yönet** sekmesine gidip bir [sonraki bölümdeki](#create-a-managed-private-endpoint) yönergeleri izleyerek yönetilen özel uç nokta oluşturur.
 
    > [!NOTE]
    > **Yönet** sekmesi tüm Data Factory örnekleri için kullanılamayabilir. Bunu görmüyorsanız özel uç noktalara, **Yazar**  >  **bağlantıları**  >  **Özel uç noktası** ' nı seçerek erişebilirsiniz.
@@ -234,7 +234,7 @@ Bağlantıyı test ettiğinizde köprüyü seçmediyseniz yolu izleyin. Şimdi o
     1. **Veritabanı adı** bölümünde SQL veritabanınızı seçin.
     1. **Kullanıcı adı** bölümüne kullanıcının adını girin.
     1. **Parola** bölümüne kullanıcının parolasını girin.
-    1. **Bağlantıyı sına** ’yı seçin. SQL Server yalnızca **Seçili ağlardan** erişime izin verdiğinden ve kendisine özel bir uç nokta oluşturmasını Data Factory gerektirdiğinden (Bu, kullanılmadan önce onaylanması gerekir) başarısız olmalıdır. Hata iletisinde, yönetilen özel uç nokta oluşturmak için izleyebileceğiniz özel bir uç nokta oluşturmak için bir bağlantı görmeniz gerekir. Diğer bir seçenek de doğrudan **Yönet** sekmesine gidip bir sonraki bölümdeki yönergeleri izleyerek yönetilen özel uç nokta oluşturur.
+    1. **Bağlantıyı Sına** ' yı seçin. SQL Server yalnızca **Seçili ağlardan** erişime izin verdiğinden ve kendisine özel bir uç nokta oluşturmasını Data Factory gerektirdiğinden (Bu, kullanılmadan önce onaylanması gerekir) başarısız olmalıdır. Hata iletisinde, yönetilen özel uç nokta oluşturmak için izleyebileceğiniz özel bir uç nokta oluşturmak için bir bağlantı görmeniz gerekir. Diğer bir seçenek de doğrudan **Yönet** sekmesine gidip bir sonraki bölümdeki yönergeleri izleyerek yönetilen özel uç nokta oluşturur.
     1. İletişim kutusunu açık tutun ve seçtiğiniz SQL Server 'a gidin.
     1. Özel bağlantıyı onaylamak için [Bu bölümdeki](#approval-of-a-private-link-in-sql-server) yönergeleri izleyin.
     1. İletişim kutusuna geri dönün. **Bağlantıyı yeniden sına** ' yı seçin ve bağlı hizmeti dağıtmak için **Oluştur** ' u seçin.

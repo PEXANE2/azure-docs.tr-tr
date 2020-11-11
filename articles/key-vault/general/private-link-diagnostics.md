@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: c4873bded750186f072dd39ddcb8d78941848586
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 870a55e5bc2701df5c03e142522e8490612b2917
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289375"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506065"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>Azure Key Vault'ta özel bağlantıları yapılandırma sorunlarını tanılama
 
@@ -142,21 +142,29 @@ Bu bölüm, öğrenme amaçlarına yöneliktir. Anahtar kasasının onaylanan du
 
 Windows:
 
-    C:\> nslookup fabrikam.vault.azure.net
+```console
+C:\> nslookup fabrikam.vault.azure.net
+```
 
-    Non-authoritative answer:
-    Address:  52.168.109.101
-    Aliases:  fabrikam.vault.azure.net
-              data-prod-eus.vaultcore.azure.net
-              data-prod-eus-region.vaultcore.azure.net
+```output
+Non-authoritative answer:
+Address:  52.168.109.101
+Aliases:  fabrikam.vault.azure.net
+          data-prod-eus.vaultcore.azure.net
+          data-prod-eus-region.vaultcore.azure.net
+```
 
 Linux:
 
-    joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```console
+joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```
 
-    fabrikam.vault.azure.net is an alias for data-prod-eus.vaultcore.azure.net.
-    data-prod-eus.vaultcore.azure.net is an alias for data-prod-eus-region.vaultcore.azure.net.
-    data-prod-eus-region.vaultcore.azure.net has address 52.168.109.101
+```output
+fabrikam.vault.azure.net is an alias for data-prod-eus.vaultcore.azure.net.
+data-prod-eus.vaultcore.azure.net is an alias for data-prod-eus-region.vaultcore.azure.net.
+data-prod-eus-region.vaultcore.azure.net has address 52.168.109.101
+```
 
 Adın bir genel IP adresine çözümlendiğini ve `privatelink` diğer ad olmadığını görebilirsiniz. Diğer ad daha sonra açıklanmaz, artık bu konuda endişelenmeyin.
 
@@ -168,23 +176,24 @@ Anahtar kasasında onaylanan durumda bir veya daha fazla özel uç nokta bağlan
 
 Windows:
 
-    C:\> nslookup fabrikam.vault.azure.net
+```console
+C:\> nslookup fabrikam.vault.azure.net
+```
 
-    Non-authoritative answer:
-    Address:  52.168.109.101
-    Aliases:  fabrikam.vault.azure.net
-              fabrikam.privatelink.vaultcore.azure.net
-              data-prod-eus.vaultcore.azure.net
-              data-prod-eus-region.vaultcore.azure.net
-
+Yetkili olmayan yanıt: Address: 52.168.109.101 takma adları: fabrikam.vault.azure.net fabrikam.privatelink.vaultcore.azure.net data-prod-eus.vaultcore.azure.net data-prod-eus-region.vaultcore.azure.net
+```
 Linux:
 
-    joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```console
+joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```
 
-    fabrikam.vault.azure.net is an alias for fabrikam.privatelink.vaultcore.azure.net.
-    fabrikam.privatelink.vaultcore.azure.net is an alias for data-prod-eus.vaultcore.azure.net.
-    data-prod-eus.vaultcore.azure.net is an alias for data-prod-eus-region.vaultcore.azure.net.
-    data-prod-eus-region.vaultcore.azure.net has address 52.168.109.101
+```output
+fabrikam.vault.azure.net is an alias for fabrikam.privatelink.vaultcore.azure.net.
+fabrikam.privatelink.vaultcore.azure.net is an alias for data-prod-eus.vaultcore.azure.net.
+data-prod-eus.vaultcore.azure.net is an alias for data-prod-eus-region.vaultcore.azure.net.
+data-prod-eus-region.vaultcore.azure.net has address 52.168.109.101
+```
 
 Önceki senaryodan gelen önemli fark, değeri olan yeni bir diğer ad olur `{vaultname}.privatelink.vaultcore.azure.net` . Bu, Anahtar Kasası veri düzlemi 'nin özel bağlantılardan gelen istekleri kabul etmeye hazır olduğu anlamına gelir.
 
@@ -198,19 +207,27 @@ Anahtar kasasında onaylanan durumda bir veya daha fazla özel uç nokta bağlan
 
 Windows:
 
-    C:\> nslookup fabrikam.vault.azure.net
+```console
+C:\> nslookup fabrikam.vault.azure.net
+```
 
-    Non-authoritative answer:
-    Address:  10.1.2.3
-    Aliases:  fabrikam.vault.azure.net
-              fabrikam.privatelink.vaultcore.azure.net
+```output
+Non-authoritative answer:
+Address:  10.1.2.3
+Aliases:  fabrikam.vault.azure.net
+          fabrikam.privatelink.vaultcore.azure.net
+```
 
 Linux:
 
-    joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```console
+joe@MyUbuntu:~$ host fabrikam.vault.azure.net
+```
 
-    fabrikam.vault.azure.net is an alias for fabrikam.privatelink.vaultcore.azure.net.
-    fabrikam.privatelink.vaultcore.azure.net has address 10.1.2.3
+```output
+fabrikam.vault.azure.net is an alias for fabrikam.privatelink.vaultcore.azure.net.
+fabrikam.privatelink.vaultcore.azure.net has address 10.1.2.3
+```
 
 İki önemli farkı vardır. İlk olarak, ad özel bir IP adresine çözümlenir. Bu, bu makalenin [karşılık gelen bölümünde](#find-the-key-vault-private-ip-address-in-the-virtual-network) BULDUĞUMUZ IP adresi olmalıdır. İkincisi, bundan sonra başka bir diğer ad yoktur `privatelink` . Bunun nedeni, sanal ağ DNS sunucularının diğer ad zincirini *kesmesini* ve özel IP adresini doğrudan adından döndürmesidir `fabrikam.privatelink.vaultcore.azure.net` . Bu giriş aslında `A` özel DNS bölgesindeki bir kayıttır. Bu konuda daha fazla bilgi alınacaktır.
 
@@ -227,7 +244,7 @@ DNS çözümlemesi, önceki bölümde açıklandığı gibi çalışmıyorsa, Ö
 
 Azure aboneliğinizin bu tam adı taşıyan bir [özel DNS bölge](../../dns/private-dns-privatednszone.md) kaynağı olmalıdır:
 
-    privatelink.vaultcore.azure.net
+`privatelink.vaultcore.azure.net`
 
 Portalda abonelik sayfasına giderek ve Sol menüdeki "kaynaklar" seçeneğini belirleyerek bu kaynağın varolup olmadığını kontrol edebilirsiniz. Kaynak adı olmalıdır `privatelink.vaultcore.azure.net` ve kaynak türü **özel DNS bölge** olmalıdır.
 
@@ -282,37 +299,48 @@ Anahtar kasanız `/healthstatus` , Tanılama için kullanılabilen uç nokta sa�
 
 Windows (PowerShell):
 
-    PS C:\> $(Invoke-WebRequest -UseBasicParsing -Uri https://fabrikam.vault.azure.net/healthstatus).Headers
+```powershell
+PS C:\> $(Invoke-WebRequest -UseBasicParsing -Uri https://fabrikam.vault.azure.net/healthstatus).Headers
+```
 
-    Key                           Value
-    ---                           -----
-    Pragma                        no-cache
-    x-ms-request-id               3729ddde-eb6d-4060-af2b-aac08661d2ec
-    x-ms-keyvault-service-version 1.2.27.0
-    x-ms-keyvault-network-info    addr=10.4.5.6;act_addr_fam=InterNetworkV6;
-    Strict-Transport-Security     max-age=31536000;includeSubDomains
-    Content-Length                4
-    Cache-Control                 no-cache
-    Content-Type                  application/json; charset=utf-8
+```output
+Key                           Value
+---                           -----
+Pragma                        no-cache
+x-ms-request-id               3729ddde-eb6d-4060-af2b-aac08661d2ec
+x-ms-keyvault-service-version 1.2.27.0
+x-ms-keyvault-network-info    addr=10.4.5.6;act_addr_fam=InterNetworkV6;
+Strict-Transport-Security     max-age=31536000;includeSubDomains
+Content-Length                4
+Cache-Control                 no-cache
+Content-Type                  application/json; charset=utf-8
+```
 
 Linux veya aşağıdakiler dahil olmak üzere Windows 10 ' un son sürümü `curl` :
 
-    joe@MyUbuntu:~$ curl -i https://fabrikam.vault.azure.net/healthstatus
-    HTTP/1.1 200 OK
-    Cache-Control: no-cache
-    Pragma: no-cache
-    Content-Type: application/json; charset=utf-8
-    x-ms-request-id: 6c090c46-0a1c-48ab-b740-3442ce17e75e
-    x-ms-keyvault-service-version: 1.2.27.0
-    x-ms-keyvault-network-info: addr=10.4.5.6;act_addr_fam=InterNetworkV6;
-    Strict-Transport-Security: max-age=31536000;includeSubDomains
-    Content-Length: 4
+```console
+joe@MyUbuntu:~$ curl -i https://fabrikam.vault.azure.net/healthstatus
+```
+
+```output
+HTTP/1.1 200 OK
+Cache-Control: no-cache
+Pragma: no-cache
+Content-Type: application/json; charset=utf-8
+x-ms-request-id: 6c090c46-0a1c-48ab-b740-3442ce17e75e
+x-ms-keyvault-service-version: 1.2.27.0
+x-ms-keyvault-network-info: addr=10.4.5.6;act_addr_fam=InterNetworkV6;
+Strict-Transport-Security: max-age=31536000;includeSubDomains
+Content-Length: 4
+```
 
 Aşağıdakine benzer bir çıktı almıyorsanız veya bir ağ hatası alırsanız, belirttiğiniz ana bilgisayar adı aracılığıyla anahtar kasanıza erişilemediği anlamına gelir ( `fabrikam.vault.azure.net` örnekte). Ana bilgisayar adı doğru IP adresine çözümlenmiyor ya da aktarım katmanında bir bağlantı sorunu var. Bu durum yönlendirme sorunları, paket bırakmaları ve diğer nedenlerden kaynaklanabilir. Daha fazla araştırma yapmanız gerekir.
 
 Yanıt üst bilgisi içermelidir `x-ms-keyvault-network-info` :
 
-    x-ms-keyvault-network-info: addr=10.4.5.6;act_addr_fam=InterNetworkV6;
+```console
+x-ms-keyvault-network-info: addr=10.4.5.6;act_addr_fam=InterNetworkV6;
+```
 
 `addr`Başlıktaki alanı, `x-ms-keyvault-network-info` ISTEĞIN kaynağının IP adresini gösterir. Bu IP adresi aşağıdakilerden biri olabilir:
 
@@ -330,11 +358,15 @@ Yanıt üst bilgisi içermelidir `x-ms-keyvault-network-info` :
 
 Yeni bir PowerShell sürümü yüklediyseniz, `-SkipCertificateCheck` HTTPS sertifika denetimlerini atlamak için kullanabilirsiniz, ardından [Anahtar Kasası IP adresini](#find-the-key-vault-private-ip-address-in-the-virtual-network) doğrudan hedefleyebilirsiniz:
 
-    PS C:\> $(Invoke-WebRequest -SkipCertificateCheck -Uri https://10.1.2.3/healthstatus).Headers
+```powershell
+PS C:\> $(Invoke-WebRequest -SkipCertificateCheck -Uri https://10.1.2.3/healthstatus).Headers
+```
 
 Kullanıyorsanız `curl` , bağımsız değişkenle aynı şekilde yapabilirsiniz `-k` :
 
-    joe@MyUbuntu:~$ curl -i -k https://10.1.2.3/healthstatus
+```console
+joe@MyUbuntu:~$ curl -i -k https://10.1.2.3/healthstatus
+```
 
 Yanıtların önceki bölümden aynı olması gerekir, yani `x-ms-keyvault-network-info` aynı değere sahip üstbilgiyi içermesi gerekir. `/healthstatus`Anahtar Kasası ana bilgisayar adını veya IP adresini kullanıyorsanız, uç nokta dikkate almaz.
 

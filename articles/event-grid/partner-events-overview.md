@@ -2,16 +2,16 @@
 title: Azure Event Grid Iş ortağı olayları
 description: Üçüncü taraf Event Grid SaaS ve PaaS iş ortaklarından olayları, Azure Event Grid Azure hizmetlerine doğrudan gönderin.
 ms.topic: conceptual
-ms.date: 10/29/2020
-ms.openlocfilehash: 87d1d40b3696229344b0b5c20d06d9d993a514a4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: 31a5fe611871eb4734b6a68e3818592028ebc75c
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93103149"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506155"
 ---
 # <a name="partner-events-in-azure-event-grid-preview"></a>Azure Event Grid iş ortağı olayları (Önizleme)
-**Iş ortağı olayları** özelliği, üçüncü taraf SaaS sağlayıcısı 'nın, bu olaylara abone olan tüketiciler tarafından kullanılabilmesini sağlamak için hizmetlerinden olayları yayımlamasına olanak sağlar. Bu, abonelerin olayları tüketmek için kullandığı bir iş ortağı konusunun bir [Konu](concepts.md#topics) türü olan bir **iş ortağı konusunun** bulunduğu üçüncü taraf olay kaynaklarına ilk taraf deneyimi sunar. Ayrıca, olay yayımcıları ve aboneler tarafından kullanılan kaynakların kaygılarını ve sahipliğini ayırarak temiz bir yayın-alt modeli sunar.
+**Iş ortağı olayları** özelliği, bir üçüncü taraf SaaS sağlayıcının, müşterilerin bu olaylara abone olabilmesi için kendi hizmetlerinden olay yayımlamasına olanak sağlar. Bu özellik, bir [Konu](concepts.md#topics) türü olan **iş ortağı konusunun** bulunduğu üçüncü taraf olay kaynaklarına ilk taraf bir deneyim sunar. Aboneler olayları tüketmek için bu konuya abonelikler oluşturur. Ayrıca, olay yayımcıları ve aboneler tarafından kullanılan kaynakların sahiplerini ve sahipliğini ayırarak temiz bir yayın-alt modeli sağlar.
 
 > [!NOTE]
 > Event Grid kullanmaya yeni başladıysanız bkz. [genel bakış](overview.md), [Kavramlar](concepts.md)ve [olay işleyicileri](event-handlers.md).
@@ -75,6 +75,20 @@ Bir olay kanalı, bir iş ortağı konusunun yansıtılmış kaynağıdır. Yay�
 
 ## <a name="resources-managed-by-subscribers"></a>Aboneler tarafından yönetilen kaynaklar 
 Aboneler, bir yayımcı tarafından tanımlanan iş ortağı konularını kullanabilir ve bunları görüp yönettikleri tek kaynak türüdür. Bir iş ortağı konusu oluşturulduktan sonra, bir abone kullanıcısı, [hedeflere/olay işleyicilerine](overview.md#event-handlers)filtre kuralları tanımlayan olay abonelikleri oluşturabilir. Aboneler için, bir iş ortağı konusu ve ilişkili olay abonelikleri, [özel konularda](custom-topics.md) ve ilgili abonelikleriyle birlikte aynı özelliklere sahip olan bir önemli farkı sağlar: iş ortağı konuları yalnızca desteklenen diğer şemalardan daha zengin bir özellik kümesi sağlayan [bulut olayları 1,0 şemasını](cloudevents-schema.md)destekler.
+
+Aşağıdaki görüntüde denetim düzlemi işlemlerinin akışı gösterilmektedir.
+
+:::image type="content" source="./media/partner-events-overview/partner-control-plane-flow.png" alt-text="İş ortağı olayları-denetim düzlemi akışı":::
+
+1. Yayımcı bir **iş ortağı kaydı** oluşturur. İş ortağı kayıtları geneldir. Diğer bir deyişle, belirli bir Azure bölgesiyle ilişkilendirilmemektedir. Bu adım isteğe bağlıdır.
+1. Yayımcı belirli bir bölgede bir **iş ortağı ad alanı** oluşturur.
+1. Abone 1 bir iş ortağı konusu oluşturmayı denediğinde, bir **olay** kanalı olan olay kanalı 1, önce yayımcının Azure aboneliğinde oluşturulur.
+1. Daha sonra iş ortağı konu 1 olan **iş** ortağı konusu, abonenin Azure aboneliğinde oluşturulur. Abonenin iş ortağı konusunu etkinleştirmesi gerekir. 
+1. Abone 1 Iş ortağı konu 1 ' e bir **Azure Logic Apps aboneliği** oluşturur.
+1. Abone 1 Iş ortağı konu 1 ' e bir **Azure Blob depolama aboneliği** oluşturur. 
+1. Abone 2 bir iş ortağı konusu oluşturmayı denediğinde, önce yayımcının Azure aboneliğinde başka bir **olay kanalı** , olay kanalı 2 oluşturulur. 
+1. Daha sonra iş **ortağı konu** 2, Ikinci abonenin Azure aboneliğinde oluşturulur. Abonenin iş ortağı konusunu etkinleştirmesi gerekir. 
+1. Abone 2 Iş ortağı konu 2 ' ye bir **Azure işlevleri aboneliği** oluşturur. 
 
 ## <a name="pricing"></a>Fiyatlandırma
 İş ortağı konuları Event Grid kullanılırken gerçekleştirilen işlem sayısına göre ücretlendirilir. Faturalandırma ve ayrıntılı fiyat bilgileri için temel olarak kullanılan tüm işlem türleri hakkında daha fazla bilgi için bkz. [Event Grid fiyatlandırması](https://azure.microsoft.com/pricing/details/event-grid/).
