@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Azure Işlevleri ile işlem yönetme'
-description: Azure işlevleri 'ni kullanarak Azure SYNAPSE Analytics 'te SQL havuzunuzun işlem yönetimini yönetin.
+description: Azure Işlevleri 'ni kullanarak Azure SYNAPSE Analytics 'te SQL havuzunuzun işlem yönetimini yönetin.
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 1683977d5c8be965cb329611c5a7fd6602a1cd97
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: bc615322c11a456699d2364cf44cad40e086e851
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043363"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517895"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Azure SYNAPSE Analytics SQL havuzundaki işlem kaynaklarını yönetmek için Azure Işlevleri 'ni kullanma
 

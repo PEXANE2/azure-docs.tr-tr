@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 10/16/2020
+ms.date: 11/11/2020
 ms.author: aahi
-ms.openlocfilehash: 0ca0c4eacce88bfb53582f7969ed7acbfd75bb8a
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: cabde27591159b5751435a97a909a5f6f8c3081b
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358720"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518235"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Metin Analizi içinde adlandırılmış varlık tanımayı kullanma
 
@@ -34,7 +34,7 @@ Adlandırılmış varlık tanıma (NER), metinde farklı varlıkları belirleme 
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-| Özellik                                                         | NER v 3.0 | NER v 3.1-Önizleme. 2 |
+| Öne çıkan özelliği                                                         | NER v 3.0 | NER v 3.1-Önizleme. 2 |
 |-----------------------------------------------------------------|--------|----------|
 | Tek ve toplu istekler için Yöntemler                          | X      | X        |
 | Çeşitli kategoriler genelinde Genişletilmiş varlık tanıma           | X      | X        |

@@ -3,12 +3,12 @@ title: Azure VMware çözümünde genel IP işlevselliğini kullanma
 description: Bu makalede, Azure sanal WAN 'da genel IP işlevlerinin nasıl kullanılacağı açıklanmaktadır.
 ms.topic: how-to
 ms.date: 10/28/2020
-ms.openlocfilehash: 7ff1debe7b52599a2e4f20378f385359325be2f7
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 036ec00077720e9dc3197bf9235bea34b77fb5f4
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504416"
+ms.locfileid: "94517912"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>Azure VMware çözümünde genel IP işlevselliğini kullanma
 
@@ -46,7 +46,7 @@ Kullanıcı istekleri, Azure Güvenlik duvarında DNAT kuralları kullanılarak 
 Web sunucusu isteği alır ve istenen bilgilerle veya sayfayla yanıt verir. güvenlik duvarı, bilgileri genel IP adresindeki kullanıcıya iletir.
 
 ## <a name="test-case"></a>Test çalışması
-Bu senaryoda, IIS Web sunucusunu Internet 'te yayımlamanız gerekir. Web sitesini genel bir IP adresinde yayımlamak için Azure VMware çözümünde genel IP özelliğini kullanın.  Güvenlik duvarında NAT kurallarını yapılandıracağız ve genel IP ile Azure VMware Çözüm kaynağına (Web sunucusu olan VM 'Ler) erişirsiniz.
+Bu senaryoda, IIS Web sunucusu ' nu Internet 'te yayımlayacaksınız. Web sitesini genel bir IP adresinde yayımlamak için Azure VMware çözümünde genel IP özelliğini kullanın.  Ayrıca güvenlik duvarında NAT kuralları yapılandırıp Azure VMware Çözüm kaynağına (bir Web sunucusu olan VM 'Ler) genel IP ile erişin.
 
 ## <a name="deploy-virtual-wan"></a>Sanal WAN dağıtma
 
@@ -66,9 +66,9 @@ Bu senaryoda, IIS Web sunucusunu Internet 'te yayımlamanız gerekir. Web sitesi
 
 1. Varsayılan değerleri kabul edin veya değiştirin ve ardından **Oluştur** ' u seçin.
 
-   - Sanal geniş alan ağı kaynak grubu
+   - Sanal WAN kaynak grubu
 
-   - Sanal geniş alan ağı adı
+   - Sanal WAN adı
 
    - Sanal hub adres bloğu (yeni çakışmayan IP aralığı kullanılarak)
 
@@ -142,7 +142,7 @@ Tüm bileşenler dağıtıldıktan sonra, bunları eklenen kaynak grubunda göre
 
 1. Listeden bir hub seçin ve **Ekle** ' yi seçin.
 
-   :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="Scecured sanal hub 'Lara dönüştürülecek seçili hub 'ları gösteren ekran görüntüsü." border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
+   :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="Güvenli sanal hub 'Lara dönüştürülecek seçili hub 'ları gösteren ekran görüntüsü." border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
 
 1. Şunu seçin: **İleri: Etiketler**. 
 

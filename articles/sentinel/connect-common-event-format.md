@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: e8d1704b7f6048c14528b784f22d60b01592b54f
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: fd08e6cc953f9d8526174fc96dd4e4d1dc9063f5
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347616"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517980"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Ortak olay biçimini kullanarak dış çözümünüzü bağlama
 
@@ -27,14 +27,14 @@ CEF iletileri gönderen bir dış çözümü bağladığınızda, Azure Sentinel
 
 1. Adım: [Syslog/CEF ileticisi dağıtarak CEF 'Yi bağlama](connect-cef-agent.md) adım 2: [çözüme özgü adımları gerçekleştirme](connect-cef-solution-config.md) adım 3: [bağlantıyı doğrulama](connect-cef-verify.md)
 
-Bu makalede bağlantının nasıl çalıştığı açıklanır, Önkoşullar sağlanır ve Aracı, syslog 'nin en üstünde ortak olay biçimi (CEF) iletileri gönderen güvenlik çözümlerine dağıtmak için gereken adımları sağlar. 
+Bu makalede bağlantının nasıl çalıştığı, önkoşulları listeleyen ve güvenlik çözümleri için Syslog 'nin en üstünde ortak olay biçimi (CEF) iletileri göndermek için bir mekanizma dağıtma adımları gösterilmektedir. 
 
 > [!NOTE] 
 > Veriler, Azure Sentinel çalıştırdığınız çalışma alanının coğrafi konumunda depolanır.
 
 Bu bağlantıyı yapmak için, Gereç ve Azure Sentinel arasındaki iletişimi desteklemek üzere bir Syslog Iletici sunucusu dağıtmanız gerekir.  Sunucu, Linux için Log Analytics Aracısı yüklü olan adanmış bir Linux makinesinden (VM veya şirket içi) oluşur. 
 
-Aşağıdaki diyagramda, Azure 'da bir Linux sanal makinesi olayında kurulum açıklanmaktadır:
+Aşağıdaki diyagramda, Azure 'da bir Linux sanal makinesi söz konusu olduğunda kurulum açıklanmaktadır:
 
  ![Azure 'da CEF](./media/connect-cef/cef-syslog-azure.png)
 
@@ -42,29 +42,29 @@ Alternatif olarak, başka bir bulutta veya şirket içi bir makinede bir VM kull
 
  ![Şirket içi CEF](./media/connect-cef/cef-syslog-onprem.png)
 
-## <a name="security-considerations"></a>Güvenlik konuları
+## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
 
 Makinenin güvenliğini kuruluşunuzun güvenlik ilkesine göre yapılandırdığınızdan emin olun. Örneğin, ağınızı kurumsal ağ güvenlik ilkenize göre olacak şekilde yapılandırabilir ve gereksinimlerinize göre uyum sağlamak için arka plan programındaki bağlantı noktalarını ve protokolleri değiştirmelisiniz. Aşağıdaki yönergeleri kullanarak makinenizin güvenlik yapılandırmasını geliştirebilirsiniz:  [Azure 'Da GÜVENLI VM](../virtual-machines/security-policy.md), [ağ güvenliği için en iyi uygulamalar](../security/fundamentals/network-best-practices.md).
 
 Syslog kaynağı ve Syslog Ileticisi arasındaki TLS iletişimini kullanmak için Syslog Daemon 'u (rsyslog veya Syslog-ng) TLS 'de iletişim kurmak üzere yapılandırmanız gerekir: TLS [-rsyslog Ile Syslog trafiğini şifreleme](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [günlük iletilerini TLS – Syslog-NG ile şifreleme](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
  
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Günlük ileticisi olarak kullandığınız Linux makinenin aşağıdaki işletim sistemlerinden birini çalıştırdığından emin olun:
 
 - 64 bit
-  - CentOS 7 ve 8, alt sürümler dahil (6 değil)
+  - CentOS 7 ve 8, ikincil sürümler dahil (6 değil)
   - Amazon Linux 2017,09
   - Oracle Linux 7
-  - Red Hat Enterprise Linux (RHEL) Server 7 ve 8, alt sürümler dahil (6 değil)
+  - Red Hat Enterprise Linux (RHEL) Server 7 ve 8, ikincil sürümler dahil (6 değil)
   - Borçlu GNU/Linux 8 ve 9
   - Ubuntu Linux 14,04 LTS, 16,04 LTS ve 18,04 LTS
   - SUSE Linux Enterprise Server 12, 15
 
 - 32 bit
-  - CentOS 7 ve 8, alt sürümler dahil (6 değil)
+  - CentOS 7 ve 8, ikincil sürümler dahil (6 değil)
   - Oracle Linux 7
-  - Red Hat Enterprise Linux (RHEL) Server 7 ve 8, alt sürümler dahil (6 değil)
+  - Red Hat Enterprise Linux (RHEL) Server 7 ve 8, ikincil sürümler dahil (6 değil)
   - Borçlu GNU/Linux 8 ve 9
   - Ubuntu Linux 14,04 LTS ve 16,04 LTS
  
@@ -82,7 +82,7 @@ Makinenizin aynı zamanda aşağıdaki gereksinimleri karşıladığından emin 
   - Makinenizde yükseltilmiş izinleriniz (sudo) olmalıdır. 
 
 - Yazılım gereksinimleri
-  - Makinenizde Python 2,7 ' in çalıştığından emin olun.
+  - Makinenizde Python 2,7 veya 3 ' ün yüklü olduğundan emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

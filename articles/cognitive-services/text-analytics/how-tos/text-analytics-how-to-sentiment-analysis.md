@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 10/16/2020
+ms.date: 11/11/2020
 ms.author: aahi
-ms.openlocfilehash: 3bc2d339ade7dade3cf3be6e63e150c77d3c44b4
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 87e6ad488438ae28467f6e904fbb57f7ca5448ff
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366766"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518184"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Nasıl yapılır: Metin Analizi API'si kullanarak yaklaşımı algılama
 
@@ -29,7 +29,7 @@ Yaklaşım Analizi, önizleme aşamasında çok çeşitli dilleri destekler. Dah
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-| Özellik                                   | Yaklaşım Analizi v3 | Yaklaşım Analizi v 3.1 (Önizleme) |
+| Öne çıkan özelliği                                   | Yaklaşım Analizi v3 | Yaklaşım Analizi v 3.1 (Önizleme) |
 |-------------------------------------------|-----------------------|-----------------------------------|
 | Tek ve toplu istekler için Yöntemler    | X                     | X                                 |
 | Yaklaşım puanları ve etiketleme             | X                     | X                                 |
@@ -78,9 +78,9 @@ Belge boyutunun belge başına 5.120 karakter altında olması gerekir. Koleksiy
 
 Bir POST isteği oluşturun. Hızlı bir şekilde yapısına ve gönderebilmeniz için aşağıdaki başvuru bağlantılarında [Postman](text-analytics-how-to-call-api.md) veya **API test konsolunu** kullanabilirsiniz. 
 
-#### <a name="version-31-preview1"></a>[Sürüm 3,1-Önizleme. 1](#tab/version-3-1)
+#### <a name="version-31-preview2"></a>[Sürüm 3,1-Önizleme. 2](#tab/version-3-1)
 
-[Yaklaşım Analizi v 3.1 başvurusu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Sentiment)
+[Yaklaşım Analizi v 3.1 başvurusu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-2/operations/Sentiment)
 
 #### <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
 
@@ -95,13 +95,13 @@ Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kaps
 > [!NOTE]
 > Azure portalında Metin Analizi kaynağınız için anahtarınızı ve uç noktanızı bulabilirsiniz. Kaynak **yönetimi** altında kaynağın **hızlı başlangıç** sayfasında yer alır. 
 
-#### <a name="version-31-preview1"></a>[Sürüm 3,1-Önizleme. 1](#tab/version-3-1)
+#### <a name="version-31-preview2"></a>[Sürüm 3,1-Önizleme. 2](#tab/version-3-1)
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/sentiment`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment`
 
 Fikrinizi araştırma sonuçları almak için parametresini eklemeniz gerekir `opinionMining=true` . Örnek:
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/sentiment?opinionMining=true`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment?opinionMining=true`
 
 Bu parametre `false` Varsayılan olarak olarak ayarlanır. 
 
@@ -142,7 +142,7 @@ Yaklaşım analizi, tüm belge ve içindeki her cümle için bir yaklaşım etik
 
 Hemen çıktı döndürülür. Sonuçları JSON kabul eden bir uygulamaya veya çıktıyı yerel sistemdeki bir dosyaya kaydedebilirsiniz. Sonra çıktıyı, verileri sıralamak, aramak ve işlemek için kullanabileceğiniz bir uygulamaya içeri aktarın. Çok dilli ve Emoji desteği nedeniyle, yanıt metin uzaklıkları içerebilir. Daha fazla bilgi için bkz. [uzaklıkları işleme](../concepts/text-offsets.md) .
 
-#### <a name="version-31-preview1"></a>[Sürüm 3,1-Önizleme. 1](#tab/version-3-1)
+#### <a name="version-31-preview2"></a>[Sürüm 3,1-Önizleme. 2](#tab/version-3-1)
 
 ### <a name="sentiment-analysis-v31-example-response"></a>Yaklaşım Analizi v 3.1 örnek yanıtı
 

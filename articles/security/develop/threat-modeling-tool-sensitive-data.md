@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8c3b47659486ef32bdb0a9a26d1b0f39c5bcd7a9
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 0bcbe35fc6d9f104325bec8a3404ad57a6376cf2
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949760"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518133"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Güvenlik çerçevesi: hassas veriler | Karşı 
 | Ürün/hizmet | Makale |
@@ -132,7 +132,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | YOK  |
-| **Başvurular**              | [Nasıl yapılır: ASP.NET 2,0 ' de yapılandırma bölümlerini](https://msdn.microsoft.com/library/ff647398.aspx), [bir korumalı yapılandırma sağlayıcısı belirterek](https://msdn.microsoft.com/library/68ze1hb2.aspx), [uygulama gizli dizilerini korumak için Azure Key Vault kullanarak](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) şifreleme |
+| **Başvurular**              | [Nasıl yapılır: ASP.NET 2,0 ' de yapılandırma bölümlerini](/previous-versions/msp-n-p/ff647398(v=pandp.10)), [bir korumalı yapılandırma sağlayıcısı belirterek](/previous-versions/68ze1hb2(v=vs.140)), [uygulama gizli dizilerini korumak için Azure Key Vault kullanarak](/azure/architecture/multitenant-identity/web-api) şifreleme |
 | **Adımlar** | Web.config, appsettings.jsgibi yapılandırma dosyaları genellikle kullanıcı adları, parolalar, veritabanı bağlantı dizeleri ve şifreleme anahtarları dahil olmak üzere hassas bilgileri tutmak için kullanılır. Bu bilgileri korumayın, uygulamanız saldırganların veya kötü niyetli kullanıcıların hesap Kullanıcı adları ve parolalar, veritabanı adları ve sunucu adları gibi hassas bilgileri elde etmesine açıktır. Dağıtım türüne (Azure/on-Prem) bağlı olarak, yapılandırma dosyalarının hassas bölümlerini, DPAPI veya Azure Key Vault gibi hizmetleri kullanarak şifreleyin. |
 
 ## <a name="explicitly-disable-the-autocomplete-html-attribute-in-sensitive-forms-and-inputs"></a><a id="autocomplete-input"></a>Gizli formlarda ve girişlerde Otomatik Tamamla HTML özniteliğini açıkça devre dışı bırak
@@ -143,7 +143,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | YOK  |
-| **Başvurular**              | [MSDN: AutoComplete özniteliği](https://msdn.microsoft.com/library/ms533486(VS.85).aspx), [HTML 'de otomatik tamamlama özelliğini kullanarak](https://msdn.microsoft.com/library/ms533032.aspx) [HTML temizleme güvenlik açığı](https://technet.microsoft.com/security/bulletin/MS10-071), [otomatik tamamlama., tekrar?!](https://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
+| **Başvurular**              | [MSDN: AutoComplete özniteliği](https://msdn.microsoft.com/library/ms533486(VS.85).aspx), [HTML 'de otomatik tamamlama özelliğini kullanarak](/previous-versions/windows/internet-explorer/ie-developer/) [HTML temizleme güvenlik açığı](/security-updates/SecurityBulletins/2010/ms10-071), [otomatik tamamlama., tekrar?!](https://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
 | **Adımlar** | AutoComplete özniteliği bir formda Otomatik Tamamla 'nın açık veya kapalı olması gerekip gerekmediğini belirtir. Otomatik tamamlama açık olduğunda tarayıcı, kullanıcının daha önce girdiği değerlere göre değerleri otomatik olarak tamamlar. Örneğin, bir forma yeni bir ad ve parola girildiğinde ve form gönderildiğinde, tarayıcı parolanın kaydedilip kaydedilmediğini sorar. Daha sonra form görüntülendiğinde, ad ve parola otomatik olarak doldurulur veya ad girildiğinde tamamlanır. Yerel erişimi olan bir saldırgan, tarayıcı önbelleğinden şifresiz metin parolasını alabilir. Varsayılan olarak otomatik tamamlama etkindir ve açıkça devre dışı bırakılması gerekir. |
 
 ### <a name="example"></a>Örnek
@@ -173,7 +173,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | SQL Azure, Onprea |
 | **Öznitelikler**              | SQL sürümü-V12, SQL sürümü-MsSQL2016 |
-| **Başvurular**              | [Dinamik veri maskeleme](https://msdn.microsoft.com/library/mt130841) |
+| **Başvurular**              | [Dinamik veri maskeleme](/sql/relational-databases/security/dynamic-data-masking) |
 | **Adımlar** | Dinamik veri maskeleme amacı, hassas verilerin açıklanmasını kısıtlayabilmelidir, bu da verileri görüntülemeden veriye erişimi olmayan kullanıcıları önler. Dinamik veri maskeleme, veritabanı kullanıcılarının veritabanına doğrudan bağlanmasını ve hassas verilerin parçalarını açığa çıkaran ayrıntılı sorgular çalıştırmasını önlemeye yönelik değildir. Dinamik veri maskeleme, diğer SQL Server güvenlik özellikleri (denetim, şifreleme, satır düzeyi güvenliği...) için tamamlayıcı hale gelir ve bu özellik, veritabanındaki hassas verileri daha iyi korumak için bunlara ek olarak, bu özelliğin birlikte kullanılması önemle önerilir. Bu özelliğin yalnızca 2016 ve Azure SQL veritabanı ile başlayan SQL Server desteklendiğinden emin olun. |
 
 ## <a name="ensure-that-passwords-are-stored-in-salted-hash-format"></a><a id="salted-hash"></a>Parolaların sallaştırılmış karma biçiminde depolandığından emin olun
@@ -195,7 +195,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | SQL sürümü-tümü |
-| **Başvurular**              | [SQL Server 'da hassas verileri şifreleme](https://technet.microsoft.com/library/ff848751(v=sql.105).aspx), [nasıl yapılır: SQL Server bir veri sütununu](https://msdn.microsoft.com/library/ms179331)şifreleme, [sertifikayla şifreleme](https://msdn.microsoft.com/library/ms188061) |
+| **Başvurular**              | [SQL Server 'da hassas verileri şifreleme](/previous-versions/sql/sql-server-2008-r2/ff848751(v=sql.105)), [nasıl yapılır: SQL Server bir veri sütununu](/sql/relational-databases/security/encryption/encrypt-a-column-of-data)şifreleme, [sertifikayla şifreleme](/sql/t-sql/functions/encryptbycert-transact-sql) |
 | **Adımlar** | Kredi kartı numaraları gibi hassas veriler veritabanında şifrelenmelidir. Veriler, sütun düzeyinde şifreleme kullanılarak veya şifreleme işlevleri kullanılarak bir uygulama işlevi tarafından şifrelenebilir. |
 
 ## <a name="ensure-that-database-level-encryption-tde-is-enabled"></a><a id="tde-enabled"></a>Veritabanı düzeyinde şifrelemenin (TDE) etkinleştirildiğinden emin olun
@@ -206,7 +206,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | YOK  |
-| **Başvurular**              | [SQL Server Saydam Veri Şifrelemesi anlama (TDE)](https://technet.microsoft.com/library/bb934049(v=sql.105).aspx) |
+| **Başvurular**              | [SQL Server Saydam Veri Şifrelemesi anlama (TDE)](/previous-versions/sql/sql-server-2008-r2/bb934049(v=sql.105)) |
 | **Adımlar** | SQL Server 'daki Saydam Veri Şifrelemesi (TDE) özelliği, bir veritabanında hassas verileri şifrelemeye ve bir sertifikayla verileri şifrelemek için kullanılan anahtarları korumanıza yardımcı olur. Bu, anahtarları olmayan kişilerin verileri kullanmasını önler. TDE, verilerin ve günlük dosyalarının anlamı olan "bekleyen" verilerini korur. Çeşitli sektörlerde bulunan birçok yasalar, düzenleme ve kılavuzdan uyum sağlama olanağı sunar. |
 
 ## <a name="ensure-that-database-backups-are-encrypted"></a><a id="backup"></a>Veritabanı yedeklerinin şifrelendiğinden emin olun
@@ -217,7 +217,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | SQL Azure, Onprea |
 | **Öznitelikler**              | SQL sürümü-V12, SQL sürümü-MsSQL2014 |
-| **Başvurular**              | [SQL veritabanı yedekleme şifrelemesi](https://msdn.microsoft.com/library/dn449489) |
+| **Başvurular**              | [SQL veritabanı yedekleme şifrelemesi](/sql/relational-databases/backup-restore/backup-encryption) |
 | **Adımlar** | SQL Server, bir yedekleme oluştururken verileri şifreleyebilme özelliğine sahiptir. Bir yedekleme oluştururken şifreleme algoritmasını ve Şifreleyici 'yi (sertifika veya asimetrik anahtar) belirterek, bir şifrelenmiş yedekleme dosyası oluşturabilir. |
 
 ## <a name="ensure-that-sensitive-data-relevant-to-web-api-is-not-stored-in-browsers-storage"></a><a id="api-browser"></a>Web API 'siyle ilgili hassas verilerin tarayıcının depolama alanında depolanmadığından emin olun
@@ -263,7 +263,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL aşaması**               | Dağıtım |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | YOK  |
-| **Başvurular**              | [Sanal makineleriniz tarafından kullanılan diskleri şifrelemek için Azure disk şifrelemesini kullanma](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) |
+| **Başvurular**              | [Sanal makineleriniz tarafından kullanılan diskleri şifrelemek için Azure disk şifrelemesini kullanma](../../storage/blobs/security-recommendations.md#data-protection) |
 | **Adımlar** | <p>Azure disk şifrelemesi, şu anda önizleme aşamasında olan yeni bir özelliktir. Bu özellik, bir IaaS sanal makinesi tarafından kullanılan işletim sistemi disklerini ve veri disklerini şifrelemenizi sağlar. Windows için Sürücüler, sektör standardı BitLocker şifreleme teknolojisi kullanılarak şifrelenir. Linux için diskler DM-Crypt teknolojisi kullanılarak şifrelenir. Bu, disk şifreleme anahtarlarını denetlemenize ve yönetmenize olanak tanımak için Azure Key Vault ile tümleşiktir. Azure disk şifrelemesi çözümü, aşağıdaki üç müşteri şifreleme senaryosunu destekler:</p><ul><li>Müşteri tarafından şifrelenen VHD dosyalarından oluşturulan yeni IaaS sanal makinelerinde ve Azure Key Vault ' de depolanan müşteri tarafından sunulan şifreleme anahtarlarından şifrelemeyi etkinleştirin.</li><li>Azure Marketi 'nden oluşturulan yeni IaaS sanal makinelerinde şifrelemeyi etkinleştirin.</li><li>Azure 'da zaten çalışan mevcut IaaS VM 'lerinde şifrelemeyi etkinleştirin.</li></ul>| 
 
 ## <a name="encrypt-secrets-in-service-fabric-applications"></a><a id="fabric-apps"></a>Service Fabric uygulamalarında gizli dizileri şifreleyin
@@ -274,7 +274,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Ortam-Azure |
-| **Başvurular**              | [Service Fabric uygulamalarında gizli dizileri yönetme](https://azure.microsoft.com/documentation/articles/service-fabric-application-secret-management/) |
+| **Başvurular**              | [Service Fabric uygulamalarında gizli dizileri yönetme](../../service-fabric/service-fabric-application-secret-management.md) |
 | **Adımlar** | Gizlilikler, depolama bağlantı dizeleri, parolalar veya düz metin olarak işlenmemelidir diğer değerler gibi herhangi bir hassas bilgi olabilir. Service Fabric uygulamalarında anahtarları ve gizli dizileri yönetmek için Azure Key Vault kullanın. |
 
 ## <a name="perform-security-modeling-and-use-business-unitsteams-where-required"></a><a id="modeling-teams"></a>Güvenlik modellemesini gerçekleştirin ve gereken yerlerde Iş birimleri/takımlar kullanın
@@ -325,22 +325,22 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Storage | 
+| **Bileşen**               | Azure Depolama | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | StorageType-blob |
-| **Başvurular**              | [Bekleyen veriler için Azure Depolama Hizmeti Şifrelemesi (Önizleme)](https://azure.microsoft.com/documentation/articles/storage-service-encryption/) |
+| **Başvurular**              | [Bekleyen veriler için Azure Depolama Hizmeti Şifrelemesi (Önizleme)](../../storage/common/storage-service-encryption.md) |
 | **Adımlar** | <p>Rest 'teki veriler için Azure Depolama Hizmeti Şifrelemesi (SSE), kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamak üzere verilerinizi korumanıza ve korumanıza yardımcı olur. Bu özellik ile Azure Depolama, verilerinizi depolama alanında kalıcı hale gelmeden önce otomatik olarak şifreler ve alınmadan önce bunların şifresini çözer. Şifreleme, şifre çözme ve anahtar yönetimi kullanıcılara tamamen saydamdır. SSE yalnızca blok Blobları, sayfa Blobları ve ekleme Blobları için geçerlidir. Tablolar, kuyruklar ve dosyalar dahil olmak üzere diğer veri türleri şifrelenmeyecektir.</p><p>Şifreleme ve şifre çözme Iş akışı:</p><ul><li>Müşteri, depolama hesabında şifrelemeyi mümkün</li><li>Müşteri yeni veri yazdığında (blob, PUT bloğu, PUT sayfası, vb.) BLOB depolama birimine; her yazma, 256 bit AES şifrelemesi kullanılarak şifrelenir, en güçlü blok şifrelemeleri mevcuttur</li><li>Müşterinin verilere erişmesi gerektiğinde (blob al, vb.), verilerin kullanıcıya döndürülmesinden önce otomatik olarak şifresi çözülür</li><li>Şifreleme devre dışıysa, yeni yazma işlemleri artık şifrelenmez ve mevcut şifrelenmiş veriler, Kullanıcı tarafından yeniden başvuruluncaya kadar şifrelenmeye devam eder. Şifreleme etkinken, blob depolamaya yazma işlemleri şifrelenir. Verilerin durumu, depolama hesabı için şifrelemeyi etkinleştirme/devre dışı bırakma arasında geçiş yapma arasında değişiklik yapmaz</li><li>Tüm şifreleme anahtarları Microsoft tarafından depolanır, şifrelenir ve yönetilir</li></ul><p>Lütfen şu anda şifreleme için kullanılan anahtarların Microsoft tarafından yönetildiğini unutmayın. Microsoft, anahtarları başlangıçta oluşturur ve anahtarların güvenli depolama alanını ve iç Microsoft ilkesi tarafından tanımlanan normal döndürmeyi yönetir. Gelecekte, müşteriler kendi >şifreleme anahtarlarını yönetebilir ve Microsoft tarafından yönetilen anahtarlardan müşteri tarafından yönetilen anahtarlara geçiş yolu sağlar.</p>| 
 
 ## <a name="use-client-side-encryption-to-store-sensitive-data-in-azure-storage"></a><a id="client-storage"></a>Hassas verileri Azure depolama 'da depolamak için Client-Side şifrelemeyi kullanma
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Storage | 
+| **Bileşen**               | Azure Depolama | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | YOK  |
-| **Başvurular**              | [Istemci tarafı şifreleme ve Microsoft Azure depolama için Azure Key Vault](https://azure.microsoft.com/documentation/articles/storage-client-side-encryption/) [öğretici: Microsoft Azure depolama Azure Key Vault kullanarak blob 'ları şifreleme ve şifre çözme](https://azure.microsoft.com/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/), Azure [şifreleme uzantıları Ile Azure Blob depolamada verileri güvenli bir şekilde](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/06/17/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions/) depolama |
+| **Başvurular**              | [Istemci tarafı şifreleme ve Microsoft Azure depolama için Azure Key Vault](../../storage/common/storage-client-side-encryption.md) [öğretici: Microsoft Azure depolama Azure Key Vault kullanarak blob 'ları şifreleme ve şifre çözme](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md), Azure [şifreleme uzantıları Ile Azure Blob depolamada verileri güvenli bir şekilde](/archive/blogs/partnercatalystteam/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions) depolama |
 | **Adımlar** | <p>.NET NuGet paketi için Azure depolama Istemci kitaplığı, Azure depolama 'ya yüklemeden önce istemci uygulamalardaki verileri şifrelemeyi ve istemciye indirme sırasında verilerin şifresini çözmeyi destekler. Kitaplık ayrıca depolama hesabı anahtarı yönetimi için Azure Anahtar Kasası ile tümleştirmeyi destekler. İstemci tarafı şifrelemesinin nasıl çalıştığı hakkında kısa bir açıklama aşağıda verilmiştir:</p><ul><li>Azure depolama istemci SDK 'Sı, bir kerelik kullanılan simetrik anahtar olan bir içerik şifreleme anahtarı (CEK) oluşturur</li><li>Müşteri verileri bu CEK kullanılarak şifrelenir</li><li>CEK daha sonra anahtar şifreleme anahtarı (KEK) kullanılarak sarmalanır (şifrelenir). KEK bir anahtar tanımlayıcısı tarafından tanımlanır ve asimetrik bir anahtar çifti veya simetrik anahtar olabilir ve yerel olarak yönetilebilir veya Azure Key Vault depolanabilir. Depolama istemcisinin, KEK hiç erişimi yoktur. Yalnızca Key Vault tarafından sağlanmış olan anahtar sarmalama algoritmasını çağırır. Müşteriler, tercih ettikleri durumlarda anahtar sarmalama/sarmalama için özel sağlayıcılar kullanmayı seçebilir</li><li>Şifrelenmiş veriler daha sonra Azure Storage Service 'e yüklenir. Alt düzey uygulama ayrıntıları için başvurular bölümündeki bağlantıları kontrol edin.</li></ul>|
 
 ## <a name="encrypt-sensitive-or-pii-data-written-to-phones-local-storage"></a><a id="pii-phones"></a>Telefon yerel depolama alanına yazılan hassas veya PII verilerini şifreleyin
@@ -351,7 +351,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel, Xamarin  |
 | **Öznitelikler**              | YOK  |
-| **Başvurular**              | Microsoft Intune ilkeleri ve [Anahtarlık Valet](https://components.xamarin.com/view/square.valet) [ile cihazlarınızda ayarları ve özellikleri yönetme](https://docs.microsoft.com/mem/intune/configuration/) |
+| **Başvurular**              | Microsoft Intune ilkeleri ve [Anahtarlık Valet](https://components.xamarin.com/view/square.valet) [ile cihazlarınızda ayarları ve özellikleri yönetme](/mem/intune/configuration/) |
 | **Adımlar** | <p>Uygulama, kullanıcının PII (e-posta, telefon numarası, ad, soyadı, Tercihler vb.) gibi gizli bilgiler yazıyorsa -Mobil dosya sisteminde, yerel dosya sistemine yazılmadan önce şifrelenmelidir. Uygulama bir kurumsal uygulama ise, Windows Intune kullanarak uygulama yayımlama olasılığa göz atın.</p>|
 
 ### <a name="example"></a>Örnek
@@ -431,7 +431,7 @@ ClientCredentialType 'ı sertifika veya Windows olarak ayarlayın.
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel, .NET Framework 3 |
 | **Öznitelikler**              | Güvenlik modu-taşıma, güvenlik modu-Ileti |
-| **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [FORTIFY Krallığı](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference), [WCF güvenlik kodu dergi temelleri](https://www.codemag.com/article/0611051) |
+| **Başvurular**              | [MSDN](/previous-versions/msp-n-p/ff648500(v=pandp.10)), [FORTIFY Krallığı](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference), [WCF güvenlik kodu dergi temelleri](https://www.codemag.com/article/0611051) |
 | **Adımlar** | Aktarım veya ileti güvenliği tanımlanmadı. Aktarım veya ileti güvenliği olmayan iletileri ileten uygulamalar, iletilerin bütünlüğünü veya gizliliğini garanti edemez. WCF güvenlik bağlaması None olarak ayarlandığında, hem aktarım hem de ileti güvenliği devre dışı bırakılır. |
 
 ### <a name="example"></a>Örnek

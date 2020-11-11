@@ -9,12 +9,12 @@ ms.author: tchladek
 ms.date: 10/26/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 336e708334778e107331f5f393476c4b3dbb98a3
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 996f138a14923319381738e7a55cd7ba4e8c4320
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507551"
+ms.locfileid: "94517776"
 ---
 # <a name="identity-model"></a>Kimlik modeli
 
@@ -59,3 +59,9 @@ Azure Iletişim hizmeti 'nin erişim anahtarlarının dönmesi, eski erişim ana
 İstemci uygulamasında değil, sunucu tarafı hizmetinize erişim belirteçleri verilmesini öneririz. Bu, verme işlemi için erişim anahtarı veya yönetilen kimlik olması gerekir. Erişim anahtarlarının istemci uygulamasıyla paylaşılması için güvenlik nedenleriyle önerilmez. İstemci uygulaması, istemcilerinizin kimliğini doğrulayabilecek ve adına erişim belirteci veren güvenilir hizmet uç noktasını kullanmalıdır. Mimari hakkında daha fazla ayrıntıyı [burada](./client-and-server-architecture.md)bulabilirsiniz.
 
 Erişim belirteçlerini bir yedekleme deposuna önbellekliyorsanız, şifrelemeyi kullanmanızı öneririz. Erişim belirteci hassas verilere sahiptir ve korunmadığı takdirde kötü amaçlı etkinlik için kullanılabilir. Erişim belirtecine sahip ile SDK 'yı başlatabilir ve API 'ye erişim sağlayabilirsiniz. Erişilebilir API yalnızca erişim belirtecinin sahip olduğu kapsamlar temelinde kısıtlanır. Erişim belirteçlerinin yalnızca kapsamlarla verilmesini öneririz, bu gereklidir.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+* Belirteç yönetimine erişim tanıtımı için bkz. [erişim belirteçleri oluşturma ve yönetme](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens)
+* Kimlik doğrulamaya giriş için bkz. [Azure Iletişim hizmetlerinde kimlik doğrulama](https://docs.microsoft.com/azure/communication-services/concepts/authentication)
+* Veri yerleşimi ve gizliliği 'ne giriş için bkz. [bölge kullanılabilirliği ve veri](https://docs.microsoft.com/azure/communication-services/concepts/privacy) yerleşimi
