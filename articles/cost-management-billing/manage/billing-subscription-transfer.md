@@ -8,15 +8,15 @@ tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 10/05/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: d2814a989cb82216081083f3198d52ccd70210ff
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 1ce461f50a6775bf7884fedc4cfa4dc7cb41bb8c
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131930"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408153"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure aboneliğinin faturalama sahipliğini başka bir hesaba aktarma
 
@@ -24,7 +24,7 @@ Bu makalede Azure aboneliğinin faturalama sahipliğini başka bir hesaba aktarm
 
 Faturalama sahipliğinizi koruyup aboneliğinizin türünü değiştirmek istiyorsanız bkz. [Azure aboneliğinizi başka bir teklifle değiştirme](switch-azure-offer.md). Abonelikte kaynaklara erişebilecek kişileri denetlemek için bkz. [Azure yerleşik rolleri](../../role-based-access-control/built-in-roles.md).
 
-Kurumsal Anlaşma (EA) müşterisiyseniz kurumsal yöneticiniz aboneliklerinizin faturalama sahipliğini hesaplar arasında aktarabilir. Daha fazla bilgi için [Hesap sahibini değiştirme](ea-portal-get-started.md#change-account-owner) konusuna bakın.
+Kurumsal Anlaşma (EA) müşterisiyseniz kurumsal yöneticiniz aboneliklerinizin faturalama sahipliğini hesaplar arasında aktarabilir. Daha fazla bilgi için [Hesap sahibini değiştirme](ea-portal-administration.md#change-account-owner) konusuna bakın.
 
 Aboneliğin sahipliğini yalnızca hesabın faturalama yöneticisi aktarabilir.
 
@@ -33,15 +33,15 @@ Aboneliğin sahipliğini yalnızca hesabın faturalama yöneticisi aktarabilir.
 1. [Azure portalında](https://portal.azure.com), aktarmak istediğiniz aboneliği içeren ödeme hesabının yöneticisi olarak oturum açın. Yönetici olup olmadığınızı bilmiyorsanız veya kimin yönetici olduğunu belirlemeniz gerekiyorsa bkz. [Hesap faturalama yöneticisini belirleme](../understand/subscription-transfer.md#whoisaa).
 1. **Maliyet Yönetimi + Faturalama** araması yapın.  
    ![Azure portalı aramasını gösteren ekran görüntüsü](./media/billing-subscription-transfer/billing-search-cost-management-billing.png)
-1. Sol bölmeden **Abonelikler**’i seçin. Erişim izninize bağlı olarak faturalama kapsamını ve ardından **Abonelikler**'i veya **Azure abonelikleri**'ni seçmeniz gerekebilir.
-1. Aktarmak istediğiniz abonelik için **Faturalama sahipliğini aktar**'ı seçin.  
+1. Sol bölmeden **Abonelikler** ’i seçin. Erişim izninize bağlı olarak faturalama kapsamını ve ardından **Abonelikler** 'i veya **Azure abonelikleri** 'ni seçmeniz gerekebilir.
+1. Aktarmak istediğiniz abonelik için **Faturalama sahipliğini aktar** 'ı seçin.  
    ![Aktarılacak aboneliği seçin](./media/billing-subscription-transfer/billing-select-subscription-to-transfer.png)
 1. Aboneliğin yeni sahibi olacak hesabın faturalama yöneticisi olan kullanıcının e-posta adresini girin.
 1. Aboneliğinizi başka bir Azure AD kiracısındaki bir hesaba aktarıyorsanız, aboneliği yeni hesabın kiracısına taşımak isteyip istemediğinizi seçin. Daha fazla bilgi için bkz. [Aboneliği başka Azure AD kiracısındaki bir hesaba aktarma](#transfer-a-subscription-to-another-azure-ad-tenant-account).
     > [!IMPORTANT]
     > Aboneliği yeni hesabın Azure AD kiracısına taşımayı seçerseniz abonelikteki kaynaklara erişmeye yönelik tüm [Azure rol atamaları](../../role-based-access-control/role-assignments-portal.md) kalıcı olarak kaldırılır. Yalnızca aktarım isteğinizi kabul eden yeni hesaptaki kullanıcı, abonelikteki kaynakları yönetmek için erişime sahip olur. Alternatif olarak, aboneliği yeni hesabın kiracısına taşımadan faturalama sahipliğini aktarmak için **Abonelik Azure AD kiracısı** seçeneğinin işaretini temizleyebilirsiniz. Bunu yaparsanız Azure kaynaklarına erişecek mevcut Azure rol atamaları korunur.  
     ![Aktarım gönder sayfası](./media/billing-subscription-transfer/billing-send-transfer-request.png)
-1. **Aktarım isteği gönder**’i seçin.
+1. **Aktarım isteği gönder** ’i seçin.
 1. Kullanıcı, aktarma isteğinizi gözden geçirme yönergelerini içeren bir e-posta alır.  
    ![Alıcıya gönderilen abonelik aktarım e-postası](./media/billing-subscription-transfer/billing-receiver-email.png)
 1. Kullanıcı, aktarma isteğini onaylamak için e-postadaki bağlantıyı seçer ve yönergeleri izler. Ardından kullanıcı, abonelik ödemesini yapmak için kullanılacak bir ödeme yöntemi seçer. Kullanıcının bir Azure hesabı yoksa yeni bir hesap için kaydolması gerekir.  

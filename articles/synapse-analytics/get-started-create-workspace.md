@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 10/07/2020
-ms.openlocfilehash: 303ed66b7d268a5bab33d0d857399e907764d152
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: f7b96bcebb2106e52c62426ca2b64f9305e09141
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378865"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515418"
 ---
 # <a name="creating-a-synapse-workspace"></a>SYNAPSE çalışma alanı oluşturma
 
@@ -31,11 +31,10 @@ Bu öğreticinin adımlarını tamamlayabilmeniz için, **sahip** rolü atadığ
 1. Arama sonuçlarında **Hizmetler** altında **Azure SYNAPSE Analytics (çalışma alanları Önizleme)** öğesini seçin.
 1. Çalışma alanı oluşturmak için **Ekle** ' yi seçin.
 1. **Temel bilgiler** bölümünde tercih ettiğiniz **abonelik** , **kaynak grubu** , **bölge** girin ve ardından bir çalışma alanı adı seçin. Bu öğreticide, **MyWorkspace** kullanacağız.
-1. Bir çalışma alanı oluşturmak için bu hesapta bir ADLSGEN2 hesabı ve bir kapsayıcı gerekir. SYNAPSE çalışma alanı Spark tabloları ve Spark tablolarının verilerini depolamak için varsayılan konum olarak bu kapsayıcıyı kullanır.
-    1. **Data Lake Storage Gen 2** ' yi seçmek için gidin. 
-    1. **Yeni oluştur** ' a tıklayın ve **contosolake** olarak adlandırın.
-    1. **Dosya sistemi** ' ne tıklayın ve **kullanıcıları** adlandırın. Bu, **Kullanıcılar** adlı bir kapsayıcı oluşturur
-1. Azure SYNAPSE çalışma alanınız, bu depolama hesabını "birincil" depolama hesabı ve çalışma alanı verilerini depolamak için kapsayıcı olarak kullanacaktır. Çalışma alanı, verileri Apache Spark tablolarında depolar. Spark uygulama günlüklerini **/SYNAPSE/WorkspaceName** adlı bir klasörde depolar.
+1. **Data Lake Storage Gen 2** ' yi seçmek için gidin. 
+1. **Yeni oluştur** ' a tıklayın ve **contosolake** olarak adlandırın.
+1. **Dosya sistemi** ' ne tıklayın ve **kullanıcıları** adlandırın. Bu, **Kullanıcılar** adlı bir kapsayıcı oluşturur
+1. Çalışma alanı, bu depolama hesabını Spark tabloları ve Spark uygulama günlükleri için "birincil" depolama hesabı olarak kullanacaktır.
 1. **Gözden geçir ve oluştur** > **Oluştur** 'u seçin. Çalışma alanınız birkaç dakika içinde hazırlanıyor.
 
 ## <a name="open-synapse-studio"></a>SYNAPSE Studio 'Yu açın

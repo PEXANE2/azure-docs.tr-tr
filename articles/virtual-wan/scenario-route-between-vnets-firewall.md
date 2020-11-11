@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 301bc64bee291fa25506e7f435e923be7e244cd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d083607782f96744ecbd7d23976f77ee53fec49d
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267525"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515578"
 ---
 # <a name="scenario-azure-firewall---custom"></a>Senaryo: Azure Güvenlik Duvarı-özel
 
@@ -28,10 +28,10 @@ Kaç tane yol tablosunun gerekli olacağını anlamak için, her hücrenin bir k
 
 | Kaynak           | Hedef:      | *Sanal ağlar*      | *Dallar*    | *İnternet*   |
 |---             |---       |---           |---            |---           |
-| **Sanal ağlar**      |   &#8594;|     X        |     AzFW      |     AzFW     |
-| **Dallar**   |   &#8594;|    AzFW      |       X       |       X      |
+| **Sanal ağlar**      |   &#8594;|    Direct    |     AzFW      |     AzFW     |
+| **Dallar**   |   &#8594;|    AzFW      |    Direct     |    Direct    |
 
-Önceki tabloda, "X", sanal WAN 'daki Azure güvenlik duvarından geçen trafik olmadan iki bağlantı arasındaki doğrudan bağlantıyı temsil eder ve "AzFW" akışın Azure Güvenlik Duvarı üzerinden gidebileceğini belirtir. Matriste iki ayrı bağlantı deseni olduğundan, aşağıdaki şekilde yapılandırılacak iki yol tablosuna ihtiyacımız olacak:
+Önceki tabloda, "doğrudan" sanal WAN 'daki Azure güvenlik duvarından geçen trafik olmadan iki bağlantı arasındaki doğrudan bağlantıyı temsil eder ve "AzFW", akışın Azure güvenlik duvarından geçmeyeceğini gösterir. Matriste iki ayrı bağlantı deseni olduğundan, aşağıdaki şekilde yapılandırılacak iki yol tablosuna ihtiyacımız olacak:
 
 * Sanal ağlar:
   * İlişkili yol tablosu: **RT_VNet**
@@ -47,7 +47,7 @@ Sanal hub yönlendirmesi hakkında daha fazla bilgi için bkz. [sanal hub yönle
 
 ## <a name="workflow"></a><a name="workflow"></a>İş akışı
 
-Bu senaryoda, VNet 'Ten Internet 'e, VNet 'Ten dala veya şubelerden VNET 'e trafik için Azure Güvenlik Duvarı üzerinden trafiği yönlendirmek, ancak VNet 'ten VNet 'e trafik için doğrudan gitmek istiyor. Azure Güvenlik Duvarı Yöneticisi kullandıysanız, yol ayarları otomatik olarak **varsayılan yol tablosuna**doldurulur. Özel trafik, VNet ve dallar için geçerlidir, Internet trafiği 0.0.0.0/0 için geçerlidir.
+Bu senaryoda, VNet 'Ten Internet 'e, VNet 'Ten dala veya şubelerden VNET 'e trafik için Azure Güvenlik Duvarı üzerinden trafiği yönlendirmek, ancak VNet 'ten VNet 'e trafik için doğrudan gitmek istiyor. Azure Güvenlik Duvarı Yöneticisi kullandıysanız, yol ayarları otomatik olarak **varsayılan yol tablosuna** doldurulur. Özel trafik, VNet ve dallar için geçerlidir, Internet trafiği 0.0.0.0/0 için geçerlidir.
 
 VPN, ExpressRoute ve kullanıcı VPN bağlantıları toplu olarak dallar olarak adlandırılır ve aynı (varsayılan) yol tablosuyla ilişkilendirir. Tüm VPN, ExpressRoute ve kullanıcı VPN bağlantıları, rotaları aynı yol tabloları kümesine yayar. Bu senaryoyu yapılandırmak için aşağıdaki adımları göz önünde bulundurun:
 
@@ -62,7 +62,7 @@ VPN, ExpressRoute ve kullanıcı VPN bağlantıları toplu olarak dallar olarak 
    * Dalların ilişkilendirildiğini ve varsayılan yol tablosuna yayildiğini unutmayın.
    * Dallar RT_VNet yol tablosuna yayılmaz. Bu, Azure Güvenlik Duvarı aracılığıyla VNet 'ten dala trafiği akışa almanızı sağlar.
 
-Bu, **Şekil 1**' de gösterildiği gibi yönlendirme yapılandırması değişikliklerine neden olur.
+Bu, **Şekil 1** ' de gösterildiği gibi yönlendirme yapılandırması değişikliklerine neden olur.
 
 **Şekil 1**
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 53309023a838f4b256327a37866408f556c81d29
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: ac87d5040cd572635d81be51308f48a57ddd38e3
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924165"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335477"
 ---
 ::: zone target="docs"
 
@@ -117,21 +117,21 @@ Yerel web kullanıcı arabirimi ve portal kullanıcı arabirimini kullanarak cih
 
 1. Cihaza 192.168.100.5 statik IP adresi ve 255.255.255.0 alt ağı ile bağlanmak için kullanmakta olduğunuz dizüstü bilgisayardaki Ethernet bağdaştırıcısını yapılandırın. 
 2. Cihazınızın MGMT bağlantı noktasına bağlanın ve https\://192.168.100.10 konumundaki yerel web kullanıcı arabirimine erişin. Bu işlem, cihaz açıldıktan sonra 5 dakika sürebilir.
-3. **Ayrıntılar**’a ve sonra **Web sayfasına gidin**’e tıklayın.
+3. **Ayrıntılar** ’a ve sonra **Web sayfasına gidin** ’e tıklayın.
 
-   ![Yerel web kullanıcı arabirimine bağlanma](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png) 
+   ![Yerel web kullanıcı arabirimine bağlanma](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png)
 
 4. Yerel web kullanıcı arabiriminin **Oturum açma** sayfasını görürsünüz. Portal kullanıcı arabiriminde ve yerel web kullanıcı arabiriminde cihaz seri numarasının eşleştiğinden emin olun. Bu noktada cihaz kilitlidir.
 5. [Azure portal](https://portal.azure.com) oturum açın.
-6. Portaldan cihaz kimlik bilgilerini indirin. **Genel > Cihaz ayrıntıları**’na gidin. **Cihaz parolası**’nı kopyalayın. Cihaz parolası, portalda belirli bir sıraya bağlıdır. 
+6. Portaldan cihaz kimlik bilgilerini indirin. **Genel > Cihaz ayrıntıları** ’na gidin. **Cihaz parolası** ’nı kopyalayın. Cihaz parolası, portalda belirli bir sıraya bağlıdır. 
 
     ![Cihaz kimlik bilgilerini alma](media/data-box-deploy-set-up/data-box-device-credentials.png)
     
     
-7. Cihazın yerel web kullanıcı arabiriminde oturum açmak için önceki adımda Azure portalından aldığınız cihaz parolasını sağlayın. **Oturum aç**’a tıklayın.
-8. **Pano**’da ağ arabirimlerinin yapılandırıldığından emin olun. 
+7. Cihazın yerel web kullanıcı arabiriminde oturum açmak için önceki adımda Azure portalından aldığınız cihaz parolasını sağlayın. **Oturum aç** ’a tıklayın.
+8. **Pano** ’da ağ arabirimlerinin yapılandırıldığından emin olun. 
    - Ortamınızda DHCP etkinse, ağ arabirimleri otomatik olarak yapılandırılır. 
-   - DHCP etkin değilse, **Ağ arabirimlerini ayarla**’ya gidin ve gerekirse statik IP’ler atayın.
+   - DHCP etkin değilse, **Ağ arabirimlerini ayarla** ’ya gidin ve gerekirse statik IP’ler atayın.
 
      ![Cihaz panosu](media/data-box-deploy-set-up/data-box-dashboard-1.png)
 
@@ -145,7 +145,7 @@ Cihaz kurulumu tamamlandıktan sonra cihaz paylaşımlarına bağlanabilir ve ve
 
 ## <a name="connect-your-device"></a>Cihazınızı bağlama
 
-1. Cihaz parolasını almak için [Azure portalında](https://portal.azure.com)**Genel > Cihaz ayrıntıları**'na gidin.
+1. Cihaz parolasını almak için [Azure portalında](https://portal.azure.com)**Genel > Cihaz ayrıntıları** 'na gidin.
 2. Data Box'a bağlanmak için kullandığınız bilgisayardaki Ethernet bağdaştırıcısına 192.168.100.5 statik IP adresini ve 255.255.255.0 alt ağını atayın. Cihazın yerel web kullanıcı arabirimine `https://192.168.100.10` adresinden erişin. Siz cihazı açtıktan sonra bağlantı kurulması 5 dakika kadar sürebilir. 
 3. Azure portalından alınan parolayı kullanarak oturum açın. Web sitesinin güvenlik sertifikasında sorun olduğunu belirten bir hata görürsünüz. Web sayfasına ilerlemek için tarayıcıya özel yönergeleri izleyin.
 4. Varsayılan olarak, 10 Gb/sn (veya 1 Gb/sn) veri arabirimi için ağ ayarları DHCP olarak yapılandırılır. Gerekirse, bu arabirimi statik olarak yapılandırabilir ve bir IP adresi sağlayabilirsiniz. 

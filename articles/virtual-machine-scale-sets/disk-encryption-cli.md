@@ -9,20 +9,20 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 4d8e6d225e02006683166de73a0b66f795bc3993
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6edfa1beb568bb05bd0f3f1ef9e7792ac3c3cbe2
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321990"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515753"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLı ile bir sanal makine ölçek kümesindeki işletim sistemini ve bağlı veri disklerini şifreleme
 
 Azure CLI, komut satırından veya betik içindeki Azure kaynaklarını oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıçta, bir sanal makine ölçek kümesi oluşturmak ve şifrelemek için Azure CLı 'nın nasıl kullanılacağı gösterilmektedir. Azure disk şifrelemesini bir sanal makine ölçek kümesine uygulama hakkında daha fazla bilgi için bkz. [Sanal Makine Ölçek Kümeleri Için Azure disk şifrelemesi](disk-encryption-overview.md).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Azure CLı sürüm 2.0.31 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
+- Bu makale, Azure CLı 'nin sürüm 2.0.31 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
 ## <a name="create-a-scale-set"></a>Ölçek kümesi oluşturma
 
@@ -61,7 +61,7 @@ Tüm ölçek kümesi kaynaklarının ve VM'lerin oluşturulup yapılandırılmas
 
 Azure Key Vault, uygulamaları ve hizmetlerinize güvenli bir şekilde uygulamanızı sağlayan anahtarları, parolaları veya parolaları depolayabilirler. Şifreleme anahtarları yazılım korumasını kullanarak Azure Key Vault depolanır veya anahtarlarınızı FIPS 140-2 düzey 2 standartlarına sertifikalı donanım güvenlik modüllerinde (HSM 'ler) içeri aktarabilir veya oluşturabilirsiniz. Bu şifreleme anahtarları, VM 'nize bağlı sanal diskleri şifrelemek ve şifrelerini çözmek için kullanılır. Bu şifreleme anahtarlarının denetimini koruyabilir ve kullanımlarını denetleyebilir.
 
-Kendi benzersiz *keyvault_name*tanımlayın. Daha sonra, ölçek kümesiyle aynı abonelikte ve bölgede [az keykasatıon Create](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-create) Ile bir keykasa oluşturun ve *--Enabled-for-disk şifrelemesi* erişim ilkesini ayarlayın.
+Kendi benzersiz *keyvault_name* tanımlayın. Daha sonra, ölçek kümesiyle aynı abonelikte ve bölgede [az keykasatıon Create](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-create) Ile bir keykasa oluşturun ve *--Enabled-for-disk şifrelemesi* erişim ilkesini ayarlayın.
 
 ```azurecli-interactive
 # Provide your own unique Key Vault name
@@ -75,7 +75,7 @@ az keyvault create --resource-group myResourceGroup --name $keyvault_name --enab
 
 Bu adım yalnızca disk şifrelemesi ile kullanmak istediğiniz mevcut bir Key Vault varsa gereklidir. Önceki bölümde bir Key Vault oluşturduysanız bu adımı atlayın.
 
-Kendi benzersiz *keyvault_name*tanımlayın. Ardından, [az keykasatıon Update](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-update) Ile keykasalarınızı güncelledi ve *--Enabled-for-disk şifrelemesi* erişim ilkesini ayarlayın.
+Kendi benzersiz *keyvault_name* tanımlayın. Ardından, [az keykasatıon Update](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-update) Ile keykasalarınızı güncelledi ve *--Enabled-for-disk şifrelemesi* erişim ilkesini ayarlayın.
 
 ```azurecli-interactive
 # Provide your own unique Key Vault name
@@ -103,7 +103,7 @@ az vmss encryption enable \
 
 Şifreleme işleminin başlaması bir veya iki dakika sürebilir.
 
-Ölçek kümesi, önceki bir adımda oluşturulan ölçek kümesindeki yükseltme ilkesi *Otomatik*olarak ayarlandığından, sanal makine örnekleri otomatik olarak şifreleme işlemini başlatır. Yükseltme ilkesinin el ile olduğu ölçek kümelerinde, [az VMSS Update-Instances](/cli/azure/vmss#az-vmss-update-instances)ile sanal makine örneklerinde şifreleme ilkesini başlatın.
+Ölçek kümesi, önceki bir adımda oluşturulan ölçek kümesindeki yükseltme ilkesi *Otomatik* olarak ayarlandığından, sanal makine örnekleri otomatik olarak şifreleme işlemini başlatır. Yükseltme ilkesinin el ile olduğu ölçek kümelerinde, [az VMSS Update-Instances](/cli/azure/vmss#az-vmss-update-instances)ile sanal makine örneklerinde şifreleme ilkesini başlatın.
 
 ### <a name="enable-encryption-using-kek-to-wrap-the-key"></a>Anahtarı kaydırmak için KEK kullanarak şifrelemeyi etkinleştirme
 
@@ -139,7 +139,7 @@ az vmss encryption show --resource-group myResourceGroup --name myScaleSet
 
 VM örnekleri şifrelendiğinde, aşağıdaki örnek çıktıda gösterildiği gibi durum kodu *EncryptionState/* encrypı bildirir:
 
-```bash
+```console
 [
   {
     "disks": [

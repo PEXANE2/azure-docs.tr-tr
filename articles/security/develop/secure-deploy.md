@@ -13,15 +13,15 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: dfe4f09d00a5629249a3041946190f56e83c3480
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c71ddbf1d2b435697b2707acf0b1262f2c5dc31
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68934881"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517198"
 ---
 # <a name="deploy-secure-applications-on-azure"></a>Azure 'da güvenli uygulamalar dağıtma
-Bu makalede, bulut için uygulama dağıtırken göz önünde bulundurmanız gereken güvenlik etkinlikleri ve denetimler sunuyoruz. Microsoft [güvenlik geliştirme yaşam döngüsü 'nin (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) yayın ve yanıt aşamaları sırasında göz önünde bulundurmanız gereken güvenlik soruları ve kavramlar ele alınmıştır. Amaç, daha güvenli bir uygulama dağıtmak için kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
+Bu makalede, bulut için uygulama dağıtırken göz önünde bulundurmanız gereken güvenlik etkinlikleri ve denetimler sunuyoruz. Microsoft [güvenlik geliştirme yaşam döngüsü 'nin (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) yayın ve yanıt aşamaları sırasında göz önünde bulundurmanız gereken güvenlik soruları ve kavramlar ele alınmıştır. Amaç, daha güvenli bir uygulama dağıtmak için kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
 
 Aşağıdaki SDL aşamaları bu makalede ele alınmıştır:
 
@@ -40,7 +40,7 @@ Uygulamayı başlatıp üretim için güncelleştirmeleri dağıtmadan önce uyg
 
 Web uygulamaları, bilinen yaygın güvenlik açıklarından yararlanan kötü amaçlı saldırıların giderek daha fazla hedefi olmaktadır. Bu güvenlik açıkları arasında genel olarak SQL ekleme saldırıları ve siteler arası komut dosyası saldırıları bulunur. Uygulama kodundaki bu saldırıların önlenmesi zor olabilir. Uygulama topolojisinin birçok katmanında kapsamlı bakım, düzeltme eki uygulama ve izleme gerektirebilir. Merkezi bir WAF, güvenlik yönetiminin daha basit olmasına yardımcı olur. Bir WAF çözümü aynı zamanda, her bir Web uygulamasının güvenliğini sağlamak üzere merkezi bir konumdaki bilinen bir güvenlik açığına yama yaparak güvenlik tehditlerine da yanıt verebilir.
 
-[Azure Application Gateway WAF](../../application-gateway/waf-overview.md) , Web uygulamalarınızın yaygın güvenlik açıklarından ve güvenlik açıklarından merkezi bir şekilde korunmasını sağlar. WAF, [OWASP çekirdek kural kümelerinden](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,0 veya 2.2.9 göre kuralları temel alır.
+[Azure Application Gateway WAF](../../web-application-firewall/ag/ag-overview.md) , Web uygulamalarınızın yaygın güvenlik açıklarından ve güvenlik açıklarından merkezi bir şekilde korunmasını sağlar. WAF, [OWASP çekirdek kural kümelerinden](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,0 veya 2.2.9 göre kuralları temel alır.
 
 ### <a name="create-an-incident-response-plan"></a>Bir olay yanıtı planı oluşturma
 
@@ -75,9 +75,9 @@ Uygulama izlemeye yardımcı olan Azure hizmetleri şunlardır:
 
 #### <a name="azure-security-center"></a>Azure Güvenlik Merkezi
 
-[Azure Güvenlik Merkezi](../../security-center/security-center-intro.md) , Web uygulamaları dahil olmak üzere Azure kaynaklarınızın güvenliğine yönelik artırılmış görünürlük (ve üzerinde denetim) ile tehditleri önlemenize, algılamanıza ve yanıtlamanıza yardımcı olur. Azure Güvenlik Merkezi, aksi takdirde açıklanabilecek tehditleri algılamaya yardımcı olur. Çeşitli güvenlik çözümleriyle birlikte çalışmaktadır.
+[Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md) , Web uygulamaları dahil olmak üzere Azure kaynaklarınızın güvenliğine yönelik artırılmış görünürlük (ve üzerinde denetim) ile tehditleri önlemenize, algılamanıza ve yanıtlamanıza yardımcı olur. Azure Güvenlik Merkezi, aksi takdirde açıklanabilecek tehditleri algılamaya yardımcı olur. Çeşitli güvenlik çözümleriyle birlikte çalışmaktadır.
 
-Güvenlik Merkezi 'nin ücretsiz katmanı yalnızca Azure kaynaklarınız için sınırlı güvenlik sunar. [Güvenlik Merkezi Standart katmanı](../../security-center/security-center-onboarding.md) , bu özellikleri şirket içi kaynaklara ve diğer bulutlara genişletir.
+Güvenlik Merkezi 'nin ücretsiz katmanı yalnızca Azure kaynaklarınız için sınırlı güvenlik sunar. [Güvenlik Merkezi Standart katmanı](../../security-center/security-center-get-started.md) , bu özellikleri şirket içi kaynaklara ve diğer bulutlara genişletir.
 Güvenlik Merkezi Standart şunları yapmanıza yardımcı olur:
 
   - Güvenlik açıklarını bulun ve onarın.

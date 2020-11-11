@@ -13,15 +13,15 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 7818ae36c785311466d2fb26ce45dcf50983145d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ca0513f95bc490087f3c84eeecc4ea623f64604
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87283495"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517096"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Azure üzerinde güvenli uygulamalar geliştirme
-Bu makalede, bulut için uygulama geliştirirken göz önünde bulundurmanız gereken güvenlik etkinlikleri ve denetimler sunuyoruz. Microsoft [güvenlik geliştirme yaşam döngüsü 'nin (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) uygulama ve doğrulama aşamaları sırasında göz önünde bulundurmanız gereken güvenlik soruları ve kavramlar ele alınmıştır. Amaç, daha güvenli bir uygulama geliştirmek için kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
+Bu makalede, bulut için uygulama geliştirirken göz önünde bulundurmanız gereken güvenlik etkinlikleri ve denetimler sunuyoruz. Microsoft [güvenlik geliştirme yaşam döngüsü 'nin (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) uygulama ve doğrulama aşamaları sırasında göz önünde bulundurmanız gereken güvenlik soruları ve kavramlar ele alınmıştır. Amaç, daha güvenli bir uygulama geliştirmek için kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
 
 Aşağıdaki SDL aşamaları bu makalede ele alınmıştır:
 
@@ -34,11 +34,11 @@ Uygulamanızın kullanılmasını amaçlamadığınız yollarla kullanılacağı
 
 ### <a name="perform-code-reviews"></a>Kod İncelemeleri gerçekleştirme
 
-Kodu iade etmeden önce, genel kod kalitesini artırmak ve hata oluşturma riskini azaltmak için [kod İncelemeleri](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) gerçekleştirin. Kod inceleme sürecini yönetmek için [Visual Studio 'yu](https://docs.microsoft.com/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) kullanabilirsiniz.
+Kodu iade etmeden önce, genel kod kalitesini artırmak ve hata oluşturma riskini azaltmak için [kod İncelemeleri](/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) gerçekleştirin. Kod inceleme sürecini yönetmek için [Visual Studio 'yu](/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) kullanabilirsiniz.
 
 ### <a name="perform-static-code-analysis"></a>Statik kod analizini gerçekleştirme
 
-[Statik kod analizi](https://owasp.org/www-community/controls/Static_Code_Analysis) ( *kaynak kodu analizi*olarak da bilinir) genellikle kod incelemesinin bir parçası olarak gerçekleştirilir. Statik kod analizi, ortak olmayan kodda [taınt denetimi](https://en.wikipedia.org/wiki/Taint_checking) ve [veri akışı analizi](https://en.wikipedia.org/wiki/Data-flow_analysis)gibi teknikleri kullanarak olası güvenlik açıklarını bulmak için statik kod çözümleme araçları 'nı çalıştırmayı ifade eder.
+[Statik kod analizi](https://owasp.org/www-community/controls/Static_Code_Analysis) ( *kaynak kodu analizi* olarak da bilinir) genellikle kod incelemesinin bir parçası olarak gerçekleştirilir. Statik kod analizi, ortak olmayan kodda [taınt denetimi](https://en.wikipedia.org/wiki/Taint_checking) ve [veri akışı analizi](https://en.wikipedia.org/wiki/Data-flow_analysis)gibi teknikleri kullanarak olası güvenlik açıklarını bulmak için statik kod çözümleme araçları 'nı çalıştırmayı ifade eder.
 
 Azure Marketi, statik kod analizi gerçekleştiren ve kod incelemelerine yardımcı olan [Geliştirici Araçları](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1&search=code%20review) sunar.
 
@@ -62,7 +62,7 @@ Bu işi, istemci tarafında (veya sunucu ve istemci tarafında) değil, sunucuda
 
 ### <a name="verify-your-applications-outputs"></a>Uygulamanızın çıktılarını doğrulama
 
-Görsel olarak veya bir belge içinde mevcut olan tüm çıktılar her zaman kodlanmış ve çıkış olmalıdır. *Çıkış kodlaması*olarak da bilinen [kaçış](https://owasp.org/www-community/Injection_Theory#Escaping_.28aka_Output_Encoding.29), güvenilmeyen verilerin ekleme saldırılarına karşı bir araç olmamasını sağlamaya yardımcı olmak için kullanılır. Kaçış, veri doğrulamayla birlikte, sistemin güvenliğini bir bütün olarak artırmak için katmanlı savunma sağlar.
+Görsel olarak veya bir belge içinde mevcut olan tüm çıktılar her zaman kodlanmış ve çıkış olmalıdır. *Çıkış kodlaması* olarak da bilinen [kaçış](https://owasp.org/www-community/Injection_Theory#Escaping_.28aka_Output_Encoding.29), güvenilmeyen verilerin ekleme saldırılarına karşı bir araç olmamasını sağlamaya yardımcı olmak için kullanılır. Kaçış, veri doğrulamayla birlikte, sistemin güvenliğini bir bütün olarak artırmak için katmanlı savunma sağlar.
 
 Kaçış, her şeyin çıkış olarak görüntülendiğinden emin olur *.* Kaçış Ayrıca yorumlayıcı 'nın verilerin yürütülmesi amaçlandığını bilmesini sağlar ve bu da saldırıların çalışmasını önler. Bu, *siteler arası komut dosyası oluşturma* (XSS) adlı başka bir yaygın saldırı tekniğidir.
 
@@ -99,7 +99,7 @@ Uygulamanın parolaları otomatik olarak oluşturması gerekiyorsa, oluşturulan
 
 Uygulamanız [dosya karşıya yüklemeye](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload)izin veriyorsa, bu riskli etkinlik için uygulayabileceğiniz önlemleri göz önünde bulundurun. Birçok saldırının ilk adımı, saldırı altında olan bir sisteme bazı kötü amaçlı kodlar almanızı sağlar. Bir dosya yükleme işleminin kullanılması, saldırganın bunu gerçekleştirmenize yardımcı olur. OWASP, karşıya yüklediğiniz dosyanın güvende olduğundan emin olmak için bir dosyayı doğrulamaya yönelik çözümler sunar.
 
-Kötü amaçlı yazılımdan koruma, virüsler, casus yazılım ve diğer kötü amaçlı yazılımları belirleyip kaldırmanıza yardımcı olur. [Microsoft kötü amaçlı yazılımdan](../fundamentals/antimalware.md) koruma veya bir Microsoft iş ortağının Endpoint Protection çözümünü ([Trend Micro](https://www.trendmicro.com/azure/), [Broadcom](https://www.broadcom.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)ve [Endpoint Protection](https://docs.microsoft.com/configmgr/protect/deploy-use/endpoint-protection)) yükleyebilirsiniz.
+Kötü amaçlı yazılımdan koruma, virüsler, casus yazılım ve diğer kötü amaçlı yazılımları belirleyip kaldırmanıza yardımcı olur. [Microsoft kötü amaçlı yazılımdan](../fundamentals/antimalware.md) koruma veya bir Microsoft iş ortağının Endpoint Protection çözümünü ([Trend Micro](https://www.trendmicro.com/azure/), [Broadcom](https://www.broadcom.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)ve [Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)) yükleyebilirsiniz.
 
 [Microsoft Antimalware](../fundamentals/antimalware.md) gerçek zamanlı koruma, zamanlanmış tarama, kötü amaçlı yazılım düzeltme, imza güncelleştirmeleri, altyapı güncelleştirmeleri, örnek raporlama ve dışlama olay toplama gibi özellikler içerir. Microsoft kötü amaçlı yazılımdan koruma ve iş ortağı çözümlerini, dağıtım kolaylığı ve yerleşik algılamalar (Uyarılar ve olaylar) için [Azure Güvenlik Merkezi](../../security-center/security-center-partner-integration.md) ile tümleştirebilirsiniz.
 

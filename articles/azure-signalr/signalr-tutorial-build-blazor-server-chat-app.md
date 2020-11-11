@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
-ms.openlocfilehash: d1c13c5d4bea8bfdb0f70e67ce8f264a1929b8a2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 16fd15a5939cc6c268a80e88401f05042a206075
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150892"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516824"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>Öğretici: Blazor Server sohbet uygulaması oluşturma
 
@@ -24,7 +24,7 @@ Bu öğreticide bir Blazor sunucu uygulamasını nasıl derleyip değiştireceğ
 > * Visual Studio 'da Azure App Service hızlı dağıtım.
 > * Yerel SignalR hizmetini Azure SignalR hizmetine geçirin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * [.NET Core 3,0 SDK 'sını](https://dotnet.microsoft.com/download/dotnet-core/3.0) (sürüm >= 3.0.100) yükler
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) 'yi (sürüm >= 16,3) yükler
 > Visual Studio 2019 Preview sürümü Ayrıca, daha yeni .Net Core sürümünü hedefleyen en son Blazor Server uygulama şablonuyla serbest bırakılıyor.
@@ -96,7 +96,7 @@ Visual Studio 2019 sürüm 16.2.0 'den Azure SignalR hizmeti, derleme Web uygula
    dotnet add package Microsoft.AspNetCore.SignalR.Client --version 3.1.7
    ```
 
-1. `ChartRoom.razor` `Pages` SignalR istemcisini uygulamak için klasör altında oluşturun. Aşağıdaki adımları izleyin veya [ChatRoom. Razor](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BlazorChat/Pages/ChatRoom.razor)'yi kopyalayın.
+1. `ChatRoom.razor` `Pages` SignalR istemcisini uygulamak için klasör altında oluşturun. Aşağıdaki adımları izleyin veya [ChatRoom. Razor](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BlazorChat/Pages/ChatRoom.razor)'yi kopyalayın.
 
    1. Sayfa bağlantısı ve başvuru ekleyin.
       
@@ -285,7 +285,7 @@ Visual Studio 2019 sürüm 16.2.0 'den Azure SignalR hizmeti, derleme Web uygula
    </li>
    ```
    
-1. `site.css`Grafik alanı balon görünümlerini iyileştirmek için güncelleştirin. Sonundaki kodu sonuna ekleyin.
+1. `site.css`Sohbet alanı balon görünümlerini iyileştirmek için güncelleştirin. Sonundaki kodu sonuna ekleyin.
 
    ```css
    /* improved for chat text box */
@@ -379,7 +379,7 @@ Visual Studio 2019 sürüm 16.2.0 'den Azure SignalR hizmeti, derleme Web uygula
 
 1. Azure SignalR hizmeti bağımlılığı ekleme
 
-   Yayımlama profili oluşturulduktan sonra, **hizmet bağımlılıkları**altında önerilen bir ileti görebilirsiniz. Yeni oluşturmak veya panelde mevcut Azure SignalR hizmetini seçmek için **Yapılandır** ' a tıklayın.
+   Yayımlama profili oluşturulduktan sonra, **hizmet bağımlılıkları** altında önerilen bir ileti görebilirsiniz. Yeni oluşturmak veya panelde mevcut Azure SignalR hizmetini seçmek için **Yapılandır** ' a tıklayın.
 
    [![blazor-sohbet-bağımlılık ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png#lightbox)
 

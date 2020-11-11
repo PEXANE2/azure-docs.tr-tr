@@ -6,12 +6,12 @@ ms.author: jegeib
 ms.service: security
 ms.topic: article
 ms.date: 03/22/2020
-ms.openlocfilehash: 39963e9dadca0ee0be7bb8ad0ebf824c287bfee0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e182d40d20529b5743fa9105c68108a8ae55d943
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317914"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516909"
 ---
 # <a name="threat-modeling-tool-update-release-73003161---03222020"></a>Threat Modeling Tool güncelleştirme sürümü 7.3.00316.1-03/22/2020
 
@@ -49,7 +49,7 @@ Bir model açıkken ana menüye yeni bir DiagramReader özelliği eklenmiştir. 
 
 ## <a name="documentation-and-feedback"></a>Belgeler ve geri bildirim
 
-- Threat Modeling Tool belgeleri [docs.Microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool)konumunda bulunur ve [Aracı kullanma hakkında](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started)bilgiler içerir.
+- Threat Modeling Tool belgeleri [docs.Microsoft.com](./threat-modeling-tool.md)konumunda bulunur ve [Aracı kullanma hakkında](./threat-modeling-tool-getting-started.md)bilgiler içerir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

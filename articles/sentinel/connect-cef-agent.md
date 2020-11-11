@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 6ab02cc7e60870852666c8c01ccc17a1b1102a62
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2f90a7c954fc8930f69dfee3e7b56b394225405a
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742837"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516746"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>1. Adım: günlük ileticisini dağıtma
 
@@ -38,7 +38,7 @@ Bu adımda, günlükleri güvenlik çözümünüzden Azure Sentinel çalışma a
 
 - Belirlenen Linux makinenizde yükseltilmiş izinleriniz (sudo) olmalıdır.
 
-- Linux makinesinde **python 2,7** ' in yüklü olması gerekir.<br>`python -version`Denetlemek için komutunu kullanın.
+- Linux makinesinde **python 2,7** veya **3** ' ün yüklü olması gerekir.<br>`python -version`Denetlemek için komutunu kullanın.
 
 - Log Analytics aracısını yüklemeden önce Linux makinenin herhangi bir Azure çalışma alanına bağlı olmaması gerekir.
 

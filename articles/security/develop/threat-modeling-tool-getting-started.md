@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: eb0aff6692a12ca7fb00090c0585e46f37c84ace
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 322f5f6a79bdce23706b2211ccc04ef2451675d0
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913033"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515736"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Threat Modeling Tool kullanmaya başlama
 
 Microsoft Threat Modeling Tool 2018, ücretsiz **[tıklama-indirme](https://aka.ms/threatmodelingtool)** olarak 2018 Eylül 'de GA olarak yayımlanmıştır. Teslim mekanizmasında değişiklik, aracı her açtıklarında en son geliştirmeleri ve hata düzeltmelerini sunmamıza olanak tanır. bu sayede bakım ve kullanım kolaylığı kolaylaşır.
 Bu makale, Microsoft SDL tehdit modelleme yaklaşımını kullanmaya başlama sürecinde size kılavuzluk sağlar ve aracın, güvenlik sürecinizin bir omurgası olarak harika tehdit modellerini geliştirmek için nasıl kullanılacağını gösterir.
 
-Bu makalede, SDL tehdit modelleme yaklaşımının var olan bilgileri açıklanır. Hızlı bir inceleme için, 2006 ' de yayımlanan yaklaşım MSDN makalesini kullanarak **[tehdit modellemesi Web uygulamaları](https://msdn.microsoft.com/library/ms978516.aspx)** ' na ve **[güvenlik kusurlarını](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** açığa çıkarmak için arşivlenmiş bir sürüme bakın.
+Bu makalede, SDL tehdit modelleme yaklaşımının var olan bilgileri açıklanır. Hızlı bir inceleme için, 2006 ' de yayımlanan yaklaşım MSDN makalesini kullanarak **[tehdit modellemesi Web uygulamaları](/previous-versions/msp-n-p/ff648006(v=pandp.10))** ' na ve **[güvenlik kusurlarını](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** açığa çıkarmak için arşivlenmiş bir sürüme bakın.
 
 Bu yaklaşım hızlı bir şekilde özetlemek için bir diyagram oluşturmayı, tehditleri tanımlamayı ve her bir azalmayı doğrulamayı içerir. Bu işlemi vurgulayan bir diyagram aşağıda verilmiştir:
 

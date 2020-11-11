@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: 462242b001da5a5a6d2eba8e4bd06315c0b263a6
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 35ed275419cc4319e7edfed608340853c986a927
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491877"
+ms.locfileid: "94515634"
 ---
 # <a name="azure-monitor-logs-overview"></a>Azure Izleyici günlüklerine genel bakış
-Azure Izleyici günlükleri, [izlenen kaynaklardan](../monitor-reference.md)gelen günlük ve performans verilerini toplayan ve düzenleyen bir Azure izleyici özelliğidir. Azure hizmetlerinden farklı kaynaklardan gelen veriler, [sanal makine aracılarından](agents-overview.md) [gelen günlük](platform-logs-overview.md) ve performans verileri ve [uygulamalardan](../app/app-insights-overview.md) kullanım ve performans verileri tek bir çalışma alanında birleştirilebilir ve bu sayede milyonlarca kaydı hızlı bir şekilde analiz etme yeteneğine sahip olan gelişmiş bir sorgu dili kullanılarak analiz edilebilir. Yalnızca belirli bir kayıt kümesini alan basit bir sorgu gerçekleştirebilir veya izleme verilerinizde kritik desenleri belirlemek için gelişmiş veri analizi gerçekleştirebilirsiniz. Günlük sorgularıyla ve sonuçlarıyla birlikte Log Analytics kullanarak etkileşimli olarak çalışın, sorunları önceden bilgilendirerek bir uyarı kurallarında kullanın veya sonuçları bir çalışma kitabı veya panoda görselleştirin.
+Azure Izleyici günlükleri, [izlenen kaynaklardan](../monitor-reference.md)gelen günlük ve performans verilerini toplayan ve düzenleyen bir Azure izleyici özelliğidir. Azure hizmetlerinden gelen [Platform günlükleri](platform-logs-overview.md) , [sanal makine aracılarından](agents-overview.md)gelen günlük ve performans verileri ve [uygulamalardan](../app/app-insights-overview.md) kullanım ve performans verileri gibi farklı kaynaklardaki veriler tek bir çalışma alanında birleştirilebilir ve bu sayede milyonlarca kaydı hızlı bir şekilde analiz etme yeteneğine sahip olan gelişmiş bir sorgu dili kullanılarak analiz edilebilir. Yalnızca belirli bir kayıt kümesini alan basit bir sorgu gerçekleştirebilir veya izleme verilerinizde kritik desenleri belirlemek için gelişmiş veri analizi gerçekleştirebilirsiniz. Günlük sorgularıyla ve sonuçlarıyla birlikte Log Analytics kullanarak etkileşimli olarak çalışın, sorunları önceden bilgilendirerek bir uyarı kurallarında kullanın veya sonuçları bir çalışma kitabı veya panoda görselleştirin.
 
 > [!NOTE]
 > Azure Izleyici günlükleri, Azure Izleyicisini destekleyen veri platformunun bir yarısıdır. Diğer bir deyişle, sayısal verileri bir zaman serisi veritabanında depolayan [Azure Izleyici ölçümleri](data-platform-metrics.md) vardır. Bu, bu verilerin Azure Izleyici günlüklerinde verileri daha basit hale getirir ve neredeyse gerçek zamanlı senaryoları destekleyerek, sorunların uyarı ve hızlı bir şekilde algılanması için oldukça yararlı hale gelir. Yalnızca belirli bir yapıda sayısal veriler depolayabilse de, Günlükler her biri kendi yapısıyla çeşitli farklı veri türlerini depolayabilse de ölçümler. Ayrıca, ölçüm verilerinin çözümlenmesi için kullanılamayan günlük sorgularını kullanarak Günlükler verilerinde karmaşık analizler gerçekleştirebilirsiniz.

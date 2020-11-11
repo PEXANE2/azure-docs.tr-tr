@@ -13,15 +13,15 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 22f74d3135597e8627cf7af933f8c6f4fbebc990
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e8eab3a1054541b1ef7fc6d2e65089f01f0df3c0
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364057"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517164"
 ---
 # <a name="design-secure-applications-on-azure"></a>Azure 'da güvenli uygulamalar tasarlama
-Bu makalede, bulut için uygulama tasarlarken göz önünde bulundurmanız gereken güvenlik etkinlikleri ve denetimler sunuyoruz. Microsoft [güvenlik geliştirme yaşam döngüsü (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) gereksinimleri ve tasarım aşamaları sırasında göz önünde bulundurmanız gereken güvenlik sorularıyla ve kavramların yanı sıra eğitim kaynakları da ele alınmıştır. Amaç, daha güvenli bir uygulama tasarlamak için kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
+Bu makalede, bulut için uygulama tasarlarken göz önünde bulundurmanız gereken güvenlik etkinlikleri ve denetimler sunuyoruz. Microsoft [güvenlik geliştirme yaşam döngüsü (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) gereksinimleri ve tasarım aşamaları sırasında göz önünde bulundurmanız gereken güvenlik sorularıyla ve kavramların yanı sıra eğitim kaynakları da ele alınmıştır. Amaç, daha güvenli bir uygulama tasarlamak için kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
 
 Aşağıdaki SDL aşamaları bu makalede ele alınmıştır:
 
@@ -38,12 +38,12 @@ Geliştiriciler için kullanılabilen Azure hizmetlerini ve Azure 'da en iyi gü
 
   - [Azure geliştiricileri için Başlarken Kılavuzu](../../guides/developer/azure-developer-guide.md) , geliştirme Ihtiyaçları için Azure platformunu kullanmaya başlamak isteyen geliştiriciler için önemli bilgiler sağlar.
 
-  - [SDK 'lar ve araçlar](https://docs.microsoft.com/azure/index?pivot=sdkstools) , Azure 'da kullanılabilen araçları açıklar.
+  - [SDK 'lar ve araçlar](../../index.yml?pivot=sdkstools) , Azure 'da kullanılabilen araçları açıklar.
 
-  - [Azure DevOps Services](https://docs.microsoft.com/azure/devops/) , geliştirme işbirliği araçları sağlar. Araçlar arasında yüksek performanslı işlem hatları, ücretsiz Git depoları, yapılandırılabilir Kanban panoları ve kapsamlı otomatik ve bulut tabanlı yük testi vardır.
-    [DevOps kaynak merkezi](https://docs.microsoft.com/azure/devops/learn/) , Learning DevOps uygulamaları, git sürüm denetimi, çevik Yöntemler, Microsoft 'Ta DevOps ile nasıl çalışacağız ve kendi DevOps ilerinizi nasıl değerlendirdiğiniz ile ilgili kaynaklarımızı birleştirir.
+  - [Azure DevOps Services](/azure/devops/) , geliştirme işbirliği araçları sağlar. Araçlar arasında yüksek performanslı işlem hatları, ücretsiz Git depoları, yapılandırılabilir Kanban panoları ve kapsamlı otomatik ve bulut tabanlı yük testi vardır.
+    [DevOps kaynak merkezi](/azure/devops/learn/) , Learning DevOps uygulamaları, git sürüm denetimi, çevik Yöntemler, Microsoft 'Ta DevOps ile nasıl çalışacağız ve kendi DevOps ilerinizi nasıl değerlendirdiğiniz ile ilgili kaynaklarımızı birleştirir.
 
-  - [Üretime gönderilmeden önce dikkate alınması gereken ilk 5 güvenlik öğesi](https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider/index?WT.mc_id=Learn-Blog-tajanca) , Azure 'da Web uygulamalarınızın güvenliğini sağlama ve uygulamalarınızı en yaygın ve tehlikeli Web uygulaması saldırılarına karşı koruma konusunda size yardımcı olur.
+  - [Üretime gönderilmeden önce dikkate alınması gereken ilk 5 güvenlik öğesi](/learn/modules/top-5-security-items-to-consider/index?WT.mc_id=Learn-Blog-tajanca) , Azure 'da Web uygulamalarınızın güvenliğini sağlama ve uygulamalarınızı en yaygın ve tehlikeli Web uygulaması saldırılarına karşı koruma konusunda size yardımcı olur.
 
   - [Azure Için güvenli DevOps seti](https://azsk.azurewebsites.net/index.html) , kapsamlı Otomasyon kullanan çok sayıda Azure aboneliğine ve kaynak güvenliği gereksinimlerine göre sunulan bir komut dosyası, araç, uzantı ve otomatikleştirmeler koleksiyonudur. Azure için güvenli DevOps seti, güvenliği yerel DevOps iş akışlarınızla sorunsuz bir şekilde tümleştirme hakkında sizi gösterebilir. Kit, güvenlik doğrulama testleri (SVTs) gibi araçları adresleyen, geliştiricilerin güvenli kod yazmasına ve kodlama ve erken geliştirme aşamalarında bulut uygulamalarının güvenli yapılandırmasını test etmenize yardımcı olan araçları ele alabilir.
 
@@ -66,7 +66,7 @@ Uygulamanız için gereksinimleri yazdığınızda, uygulamanızın ve verilerin
 
   - Uygulamam gizli veriler içeriyor mu?
 
-  - Uygulamam, [Federal Finans Kurumu Inceleme Council (FFIEC)](../blueprints/ffiec-analytics-overview.md) veya [ödeme kartı sektör verileri güvenlik standartları (PCI DSS)](../blueprints/pcidss-analytics-overview.md)gibi endüstri standartlarına ve uyumluluk programlarına bağlı kalmalarını gerektiren verileri toplar veya depolar mı?
+  - Uygulamam, [Federal Finans Kurumu Inceleme Council (FFIEC)](/previous-versions/azure/security/blueprints/ffiec-analytics-overview) veya [ödeme kartı sektör verileri güvenlik standartları (PCI DSS)](/previous-versions/azure/security/blueprints/pcidss-analytics-overview)gibi endüstri standartlarına ve uyumluluk programlarına bağlı kalmalarını gerektiren verileri toplar veya depolar mı?
 
   - Uygulamam, tek bir kişiyi tanımlamak, iletişim kurmak veya bulmak için kendi başına veya diğer bilgilerle kullanılabilecek gizli kişisel veya müşteri verileri toplar ya da içeriyor mu?
 
@@ -89,7 +89,7 @@ OWASP En Iyi 10 Web uygulamalarına yönelik kritik güvenlik risklerini giderme
 Bu güvenlik risklerinin farkında, uygulamanızda bu riskleri en aza indirecek gereksinim ve tasarım kararları almanıza yardımcı olabilir.
 
 İhlallerinin önemli olduğunu engellemek için güvenlik denetimleri hakkında düşünce vardır.
-Ancak, [bir ihlalin meydana gelir olduğunu varsayalım](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/security-in-devops) . İhlalin, güvenlikle ilgili bazı önemli soruların yanıtlanmasına yardımcı olur ve bu nedenle bir acil durum ile yanıtlanması gerekmez:
+Ancak, [bir ihlalin meydana gelir olduğunu varsayalım](/azure/devops/learn/devops-at-microsoft/security-in-devops) . İhlalin, güvenlikle ilgili bazı önemli soruların yanıtlanmasına yardımcı olur ve bu nedenle bir acil durum ile yanıtlanması gerekmez:
 
   - Bir saldırıyı nasıl algılayabilirim?
 
@@ -126,7 +126,7 @@ Geliştirme için güvenli bir kodlama kitaplığı ve ekli güvenlik içeren bi
 Framework 'ün en son sürümünü ve çerçevede kullanılabilen tüm güvenlik özelliklerini kullandığınızdan emin olun. Microsoft, tüm geliştiriciler için bulut uygulamaları sunmak üzere tüm platformlarda veya dillerde çalışan kapsamlı bir [geliştirme araçları kümesi](https://azure.microsoft.com/product-categories/developer-tools/) sunar. Çeşitli [SDK](https://azure.microsoft.com/downloads/)'lardan seçim yaparak seçtiğiniz dille birlikte kod oluşturabilirsiniz.
 Gelişmiş hata ayıklama özelliklerine ve yerleşik Azure desteğine sahip olan, tam özellikli tümleşik geliştirme ortamları (IDE) ve düzenleyicilerden faydalanabilirsiniz.
 
-Microsoft, Azure 'da uygulama geliştirmek için kullanabileceğiniz çeşitli [Diller, çerçeveler ve araçlar](https://docs.microsoft.com/azure/index?pivot=sdkstools&panel=sdkstools-all) sunar. [.Net ve .NET Core geliştiricileri Için Azure](https://docs.microsoft.com/dotnet/azure/)bir örnektir. Sunduğumuz her dil ve çerçeve için hızlı başlangıç, öğreticiler ve API başvurularını hızla kullanmaya başlamanıza yardımcı olacak şekilde bulacaksınız.
+Microsoft, Azure 'da uygulama geliştirmek için kullanabileceğiniz çeşitli [Diller, çerçeveler ve araçlar](../../index.yml?panel=sdkstools-all&pivot=sdkstools) sunar. [.Net ve .NET Core geliştiricileri Için Azure](/dotnet/azure/)bir örnektir. Sunduğumuz her dil ve çerçeve için hızlı başlangıç, öğreticiler ve API başvurularını hızla kullanmaya başlamanıza yardımcı olacak şekilde bulacaksınız.
 
 Azure, Web sitelerini ve Web uygulamalarını barındırmak için kullanabileceğiniz çeşitli hizmetler sunar. Bu hizmetler, .NET, .NET Core, Java, Ruby, Node.js, PHP veya Python gibi en sevdiğiniz dilde geliştirme yapmanızı sağlar.
 [Azure App Service Web Apps](../../app-service/overview.md) (Web Apps) bu hizmetlerden biridir.
@@ -153,9 +153,9 @@ Uygulama tasarımını modelleme ve [ilerleme](https://docs.google.com/viewer?a=
 
 | Tehdit | Güvenlik özelliği | Olası Azure platformu risk azaltma |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Spoofing (Kimlik Sahtekarlığı)               | Kimlik Doğrulaması        | [HTTPS bağlantıları gerektir](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
-| Tampering (Kurcalama)              | Bütünlük             | SSL/TLS sertifikalarını doğrulayın. SSL/TLS kullanan uygulamaların, bağlandıkları varlıkların X. 509.440 sertifikalarını tam olarak doğrulaması gerekir. [X509 sertifikalarınızı yönetmek](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates)için Azure Key Vault sertifikaları kullanın. |
-| Repudiation (İnkar)            | İnkar edilemez       | Azure [izleme ve tanılama 'yı](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)etkinleştirin.|
+| Spoofing (Kimlik Sahtekarlığı)               | Kimlik Doğrulaması        | [HTTPS bağlantıları gerektir](/aspnet/core/security/enforcing-ssl?tabs=visual-studio&view=aspnetcore-2.1). |
+| Tampering (Kurcalama)              | Bütünlük             | SSL/TLS sertifikalarını doğrulayın. SSL/TLS kullanan uygulamaların, bağlandıkları varlıkların X. 509.440 sertifikalarını tam olarak doğrulaması gerekir. [X509 sertifikalarınızı yönetmek](../../key-vault/general/about-keys-secrets-certificates.md)için Azure Key Vault sertifikaları kullanın. |
+| Repudiation (İnkar)            | İnkar edilemez       | Azure [izleme ve tanılama 'yı](/azure/architecture/best-practices/monitoring)etkinleştirin.|
 | Information Disclosure (Bilgilerin Açığa Çıkması) | Gizlilik       | REST ve iletim [sırasında](../fundamentals/encryption-atrest.md) hassas verileri [in transit](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)şifreleyin. |
 | Denial of Service (Hizmet Reddi)      | Kullanılabilirlik          | Olası hizmet reddi koşulları için performans ölçümlerini izleyin. Bağlantı filtrelerini uygulayın. [Azure DDoS koruması](../../virtual-network/ddos-protection-overview.md#next-steps), uygulama tasarımı en iyi uygulamaları ile birlikte, DDoS saldırılarına karşı savunma sağlar.|
 | Elevation of Privilege (Ayrıcalık Yükseltme) | Yetkilendirme         | Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)kullanın.|
@@ -209,7 +209,7 @@ Web uygulamaları geliştirmeye yönelik kimlik merkezli bir yaklaşım gelişti
 
 Özel kod yerine platform tarafından sağlanan kimlik doğrulama ve yetkilendirme mekanizmalarını kullanın. Bunun nedeni, özel kimlik doğrulama kodunun geliştirmesinin hataya yol açabilir. Ticari kod (örneğin, Microsoft 'tan) genellikle güvenlik için kapsamlı olarak gözden geçirilir. [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) , kimlik ve erişim yönetimi için Azure çözümüdür. Bu Azure AD araçları ve Hizmetleri, güvenli geliştirmeyle ilgili olarak size yardımcı olur:
 
-- [Microsoft Identity platform](/azure/active-directory/develop/) , geliştiricilerin kullanıcılara güvenli bir şekilde oturum açtırmış uygulamalar oluşturmak için kullandığı bir bileşen kümesidir. Platform, çok kiracılı uygulamalar geliştirmek isteyen tek kiracılı, iş kolu (LOB) uygulamaları ve geliştiriciler oluşturan geliştiricilere yardımcı olur. Temel oturum açma 'ya ek olarak, Microsoft Identity platform kullanılarak oluşturulan uygulamalar Microsoft API 'Leri ve özel API 'Leri çağırabilir. Microsoft Identity platformu, OAuth 2,0 ve OpenID Connect gibi sektör standardı protokolleri destekler.
+- [Microsoft Identity platform](../../active-directory/develop/index.yml) , geliştiricilerin kullanıcılara güvenli bir şekilde oturum açtırmış uygulamalar oluşturmak için kullandığı bir bileşen kümesidir. Platform, çok kiracılı uygulamalar geliştirmek isteyen tek kiracılı, iş kolu (LOB) uygulamaları ve geliştiriciler oluşturan geliştiricilere yardımcı olur. Temel oturum açma 'ya ek olarak, Microsoft Identity platform kullanılarak oluşturulan uygulamalar Microsoft API 'Leri ve özel API 'Leri çağırabilir. Microsoft Identity platformu, OAuth 2,0 ve OpenID Connect gibi sektör standardı protokolleri destekler.
 
 - [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/index.yml) , uygulamalarınızı kullandıklarında müşterilerin nasıl kaydolup oturum açmasını ve profillerini nasıl yönetebileceğinizi denetlemek için kullanabileceğiniz bir kimlik yönetimi hizmetidir. Bu, diğer kullanıcıların yanı sıra iOS, Android ve .NET için geliştirilen uygulamaları içerir. Azure AD B2C, müşteri kimliklerini korurken bu eylemlere izin vermez.
 
@@ -219,7 +219,7 @@ Web uygulamaları geliştirmeye yönelik kimlik merkezli bir yaklaşım gelişti
 
 Yazılım geliştiricisi etki alanı yöneticisi haklarına ihtiyaç duyuyor mu? Yönetim Yardımcısı 'nın kişisel bilgisayarlarındaki yönetim denetimlerine erişmesi gerekiyor mu? Yazılıma erişimin değerlendirilmesi farklı değildir. Kullanıcılara uygulamanızda farklı yetenekler ve yetki vermek için [rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md) kullanıyorsanız herkese her şeye erişim vermeyiz. Her rol için gerekli olan erişimi sınırlayarak, oluşan bir güvenlik sorunu riskini sınırlandırırsınız.
 
-Uygulamanızın erişim desenlerinin tamamında [en az ayrıcalığı](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models#in-applications) zorladığından emin olun.
+Uygulamanızın erişim desenlerinin tamamında [en az ayrıcalığı](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models#in-applications) zorladığından emin olun.
 
 > [!NOTE]
 > En az ayrıcalık kurallarının yazılıma ve yazılımı oluşturan kişilere uygulanması gerekir. Yazılım geliştiricileri, çok fazla erişim verilirse BT güvenliği için büyük bir risk oluşturabilir. Bir geliştirici için kötü amaçlı bir amaç varsa veya çok fazla erişim verilirse sonuçlar ciddi bir şekilde olabilir. En az ayrıcalık kurallarının geliştirme yaşam döngüsü boyunca geliştiricilere uygulanmasını öneririz.
@@ -233,7 +233,7 @@ Ayrıcalıkların etkilenme süresini daha da azaltmak için *tam zamanında* (J
 
 ### <a name="require-re-authentication-for-important-transactions"></a>Önemli işlemler için yeniden kimlik doğrulaması gerektir
 
-[Siteler arası istek sahteciliği](https://docs.microsoft.com/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) ( *XSRF* veya *CSRF*olarak da bilinir), kötü amaçlı bir Web uygulamasının, bir istemci tarayıcısı ile bu tarayıcıya güvenen bir Web uygulaması arasındaki etkileşimi etkilediği Web 'de barındırılan uygulamalara karşı bir saldırıya karşı bir saldırıdır. Web tarayıcıları her bir Web sitesi isteğiyle otomatik olarak bazı tür kimlik doğrulama belirteçleri göndertiğinden, siteler arası istek sahteciliği saldırıları mümkündür.
+[Siteler arası istek sahteciliği](/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) ( *XSRF* veya *CSRF* olarak da bilinir), kötü amaçlı bir Web uygulamasının, bir istemci tarayıcısı ile bu tarayıcıya güvenen bir Web uygulaması arasındaki etkileşimi etkilediği Web 'de barındırılan uygulamalara karşı bir saldırıya karşı bir saldırıdır. Web tarayıcıları her bir Web sitesi isteğiyle otomatik olarak bazı tür kimlik doğrulama belirteçleri göndertiğinden, siteler arası istek sahteciliği saldırıları mümkündür.
 Bu kullanım biçimi, *tek tıklamayla saldırı* veya *oturum* , saldırı Kullanıcı tarafından daha önce kimliği doğrulanan oturumdan yararlandığından, bir tıklama olarak da bilinir.
 
 Bu tür bir saldırıya karşı savunmanız gereken en iyi yol, kullanıcıdan satın alma, hesap devre dışı bırakma veya parola değişikliği gibi her önemli işlemden önce yalnızca kullanıcının sağlayabileceği bir şeyi ister. Kullanıcıdan parolasını yeniden girmesi, CAPTCHA 'yı tamamlaması veya yalnızca kullanıcının sahip olacağı bir gizli belirteç gönderebilmesini isteyebilirsiniz. En yaygın yaklaşım, gizli belirteçtir.
@@ -244,9 +244,9 @@ Anahtar ve kimlik bilgilerinin kaybolması yaygın bir sorundur. Anahtarlarını
 
 Anahtar yönetimi çözümüne her zaman anahtarlarınızı, sertifikalarınızı, sırları ve bağlantı dizilerinizi koyun. Anahtar ve parolaların donanım güvenlik modüllerinde (HSM 'ler) depolandığı merkezi bir çözüm kullanabilirsiniz. Azure, [Azure Key Vault](../../key-vault/general/overview.md)ile BULUTTA bir HSM sağlar.
 
-*Gizli bir depo*olan Key Vault: uygulama gizli dizileri depolamak için merkezi bir bulut hizmetidir. Key Vault, uygulama gizli dizilerini tek bir merkezi konumda tutarak ve güvenli erişim, izin denetimi ve erişim günlüğü sağlayarak gizli verilerinizi güvende tutar.
+*Gizli bir depo* olan Key Vault: uygulama gizli dizileri depolamak için merkezi bir bulut hizmetidir. Key Vault, uygulama gizli dizilerini tek bir merkezi konumda tutarak ve güvenli erişim, izin denetimi ve erişim günlüğü sağlayarak gizli verilerinizi güvende tutar.
 
-Gizli *dizileri tek tek*kasaların içinde depolanır. Her kasanın, erişimi denetlemek için kendi yapılandırması ve güvenlik ilkeleri vardır. Verilerinize bir REST API veya birçok programlama dili için kullanılabilen bir istemci SDK 'Sı üzerinden ulaşabilirsiniz.
+Gizli *dizileri tek tek* kasaların içinde depolanır. Her kasanın, erişimi denetlemek için kendi yapılandırması ve güvenlik ilkeleri vardır. Verilerinize bir REST API veya birçok programlama dili için kullanılabilen bir istemci SDK 'Sı üzerinden ulaşabilirsiniz.
 
 > [!IMPORTANT]
 > Azure Key Vault, sunucu uygulamaları için yapılandırma gizli dizilerini depolamak üzere tasarlanmıştır. Uygulama kullanıcılarına ait olan verileri depolamak için tasarlanmamıştır. Bu, hizmetin performans özelliklerine, API’sine ve maliyet modeline yansımıştır.
@@ -277,21 +277,21 @@ Kodunuzda açıklama yerleştirdiğinizde, hassas bilgileri saklamayın olduğun
 
 Temel olarak, geliştirme projenizdeki her şeyin dağıtıldığında genel bilgi olacağını varsayalım. Projedeki herhangi bir türden hassas verileri dahil kullanmaktan kaçının.
 
-Daha önce [Azure Key Vault](../../key-vault/general/overview.md)tartışıyoruz. Key Vault kullanarak anahtarlar ve parolalar gibi gizli dizileri, onları sabit kodlamak yerine depolayın. Azure kaynakları için yönetilen kimliklerle birlikte Key Vault kullandığınızda Azure Web uygulamanız, kaynak denetiimde veya yapılandırmanızda gizli dizileri depolamadan kolayca ve güvenli bir şekilde gizli dizi yapılandırma değerlerine erişebilir. Daha fazla bilgi edinmek için bkz. [Azure Key Vault ile sunucu uygulamalarınızda gizli dizileri yönetme](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/).
+Daha önce [Azure Key Vault](../../key-vault/general/overview.md)tartışıyoruz. Key Vault kullanarak anahtarlar ve parolalar gibi gizli dizileri, onları sabit kodlamak yerine depolayın. Azure kaynakları için yönetilen kimliklerle birlikte Key Vault kullandığınızda Azure Web uygulamanız, kaynak denetiimde veya yapılandırmanızda gizli dizileri depolamadan kolayca ve güvenli bir şekilde gizli dizi yapılandırma değerlerine erişebilir. Daha fazla bilgi edinmek için bkz. [Azure Key Vault ile sunucu uygulamalarınızda gizli dizileri yönetme](/learn/modules/manage-secrets-with-azure-key-vault/).
 
 ### <a name="implement-fail-safe-measures"></a>Başarısız-güvenli ölçüleri uygulama
 
-Uygulamanız, yürütme sırasında oluşan [hataları](https://docs.microsoft.com/dotnet/standard/exceptions/) tutarlı bir şekilde işleyebilmelidir. Uygulamanın tüm hataları yakalayıp güvenli veya kapalı olması gerekir.
+Uygulamanız, yürütme sırasında oluşan [hataları](/dotnet/standard/exceptions/) tutarlı bir şekilde işleyebilmelidir. Uygulamanın tüm hataları yakalayıp güvenli veya kapalı olması gerekir.
 
 Ayrıca, şüpheli veya kötü amaçlı etkinlikleri belirlemek için hataların yeterli Kullanıcı bağlamına kaydedildiğinden emin olmanız gerekir. Gecikik analizine izin vermek için günlüklerin yeterli bir süre korunması gerekir. Günlükler, bir günlük yönetimi çözümü tarafından kolayca tüketilen bir biçimde olmalıdır. Güvenlikle ilgili hatalara yönelik uyarıların tetiklendiğinden emin olun. Yetersiz günlük kaydı ve izleme, saldırganların sistemleri daha fazla saldırı ve kalıcılık sağlama olanağı sağlar.
 
 ### <a name="take-advantage-of-error-and-exception-handling"></a>Hata ve özel durum işlemenin avantajlarından yararlanın
 
-Doğru hata ve [özel durum işleme](https://docs.microsoft.com/dotnet/standard/exceptions/best-practices-for-exceptions) uygulamak, savunma kodlamasının önemli bir parçasıdır. Bir sistem güvenilir ve güvenli hale getirmek için hata ve özel durum işleme kritik öneme sahiptir. Hata işlemede hatalar, saldırganlar için bilgi sızıntısı ve saldırganların platformunuz ve tasarımı hakkında daha fazla bilgi anlamasına yardımcı olmak gibi farklı türlerde güvenlik açıklarına yol açabilir.
+Doğru hata ve [özel durum işleme](/dotnet/standard/exceptions/best-practices-for-exceptions) uygulamak, savunma kodlamasının önemli bir parçasıdır. Bir sistem güvenilir ve güvenli hale getirmek için hata ve özel durum işleme kritik öneme sahiptir. Hata işlemede hatalar, saldırganlar için bilgi sızıntısı ve saldırganların platformunuz ve tasarımı hakkında daha fazla bilgi anlamasına yardımcı olmak gibi farklı türlerde güvenlik açıklarına yol açabilir.
 
 Aşağıdakileri doğrulayın:
 
-- Koddaki yinelenen [try/catch bloklarını](https://docs.microsoft.com/dotnet/standard/exceptions/how-to-use-the-try-catch-block-to-catch-exceptions) önlemek için özel durumları merkezi bir şekilde işlemiş olursunuz.
+- Koddaki yinelenen [try/catch bloklarını](/dotnet/standard/exceptions/how-to-use-the-try-catch-block-to-catch-exceptions) önlemek için özel durumları merkezi bir şekilde işlemiş olursunuz.
 
 - Tüm beklenmeyen davranışlar uygulama içinde işlenir.
 
@@ -303,7 +303,7 @@ Aşağıdakileri doğrulayın:
 
 ### <a name="use-logging-and-alerting"></a>Günlüğe kaydetme ve uyarı kullanma
 
-Güvenlik araştırmalarınızın güvenlik sorunlarını [günlüğe kaydedin](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1) ve kişilerin sorunları zamanında bilmesini sağlamak için sorunlar hakkında uyarı tetikleyin. Tüm bileşenlerde denetim ve günlüğe kaydetmeyi etkinleştirin. Denetim günlükleri kullanıcı bağlamını yakalayıp tüm önemli olayları tanımlamalıdır.
+Güvenlik araştırmalarınızın güvenlik sorunlarını [günlüğe kaydedin](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1) ve kişilerin sorunları zamanında bilmesini sağlamak için sorunlar hakkında uyarı tetikleyin. Tüm bileşenlerde denetim ve günlüğe kaydetmeyi etkinleştirin. Denetim günlükleri kullanıcı bağlamını yakalayıp tüm önemli olayları tanımlamalıdır.
 
 Kullanıcının sitenize gönderdiği gizli verileri günlüğe kaydetme izniniz olup olmadığını denetleyin. Hassas verilere örnek olarak şunlar verilebilir:
 

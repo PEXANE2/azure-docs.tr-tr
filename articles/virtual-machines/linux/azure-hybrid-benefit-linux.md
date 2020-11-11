@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: feaa2471f2867257deb06ab32ed5fc0a26a0d37e
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 8437c83faf8dfcec0a21add2006b6cf627447dd1
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443441"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516450"
 ---
 # <a name="public-preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Genel Önizleme: Azure Hibrit Avantajı – nasıl uygulandığı Linux Sanal Makineleri
 
@@ -53,10 +53,12 @@ Azure Hibrit Avantajı (Linux için) Şu anda genel önizleme aşamasındadır. 
 
 ### <a name="red-hat-customers"></a>Red Hat müşterileri
 
-1.    [Red Hat bulut erişim programına](https://aka.ms/rhel-cloud-access) kaydolun
-1.    Azure aboneliklerinizi bulut erişimi için etkinleştirin ve avantajını kullanmak istediğiniz VM 'Leri içeren abonelikleri etkinleştirin
-1.    Azure CLı aracılığıyla mevcut sanal makinelerinize avantajını uygulayın
-1.    VM 'lerinizi, ayrı bir güncelleştirme kaynağıyla avantajını alacak şekilde kaydedin
+RHEL için Azure Hibrit Avantajı, Azure 'da kullanıma uygun olan ve bu aboneliklerin bir veya birkaçını, [Red Hat bulut erişimi](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) programıyla Azure 'da kullanılmak üzere etkinleştiren etkin/kullanılmamış RHEL abonelikleri olan müşteriler tarafından kullanılabilir. 
+
+1.  [Red Hat bulut erişimi müşteri arabirimini](https://access.redhat.com/management/cloud)kullanarak Azure 'da kullanılmak üzere uygun RHEL aboneliklerinizden birini veya birkaçını etkinleştirin.
+1.  Red Hat bulut erişimi etkinleştirme işlemi sırasında verdiğiniz Azure abonelikleri Azure Hibrit Avantajı özelliğini kullanmasına izin verilir.
+1.  Azure Hibrit Avantajı mevcut RHEL PAYG sanal makinelerinizden ve Azure Marketi PAYG görüntülerinden dağıttığınız tüm yeni RHEL VM 'lerine uygulayın.
+1.  RHEL VM 'leriniz için güncelleştirme kaynaklarını yapılandırma ve RHEL abonelik uyumluluk yönergeleri için önerilen [sonraki adımları](https://access.redhat.com/articles/5419341) izleyin.
 
 
 ### <a name="suse-customers"></a>SUSE müşterileri
@@ -124,7 +126,19 @@ VM 'nin içinden, sanal makinenin licenseType öğesini tespit etmek için ıTı
 
 ### <a name="red-hat"></a>Red Hat
 
-RHEL sanal makinelerinize yönelik Azure Hibrit Avantajı kullanmak için, önce Red Hat bulut erişim programına kaydolmalısınız. Bunu, Red Hat bulut erişimi sitesi aracılığıyla yapabilirsiniz. VM 'nizin avantajını etkinleştirdikten sonra, sanal makineyi Red Hat abonelik Yöneticisi veya Red Hat uydu ile kendi güncelleştirme kaynağınıza kaydetmeniz gerekir. Güncelleştirmeler için kaydolmak, desteklenen bir durumda kalacağından emin olur.
+RHEL için Azure Hibrit Avantajı kullanan müşteriler, Azure Marketi RHEL teklifleriyle ilişkili standart [yasal hüküm](http://www.redhat.com/licenses/cloud_CSSA/Red_Hat_Cloud_Software_Subscription_Agreement_for_Microsoft_Azure.pdf) ve [Gizlilik bildirimini](http://www.redhat.com/licenses/cloud_CSSA/Red_Hat_Privacy_Statement_for_Microsoft_Azure.pdf) kabul etmiş olursunuz.
+
+RHEL için Azure Hibrit Avantajı kullanan müşterilerin, bu VM 'lere yazılım güncelleştirmeleri ve düzeltme ekleri sağlamak için üç seçeneği vardır:
+
+1.  [Red Hat güncelleştirme altyapısı (rhuı)](../workloads/redhat/redhat-rhui.md) (varsayılan seçenek)
+1.  Red Hat uydu sunucusu
+1.  Red Hat abonelik Yöneticisi
+
+RHUı seçeneğini seçmeden müşteriler, bu VM 'lere RHEL abonelikleri eklemeden AHB RHEL VM 'lerinin ana güncelleştirme kaynağı olarak RHUı kullanmaya devam edebilir.  RHUı seçeneğini seçmeden müşteriler RHEL abonelik uyumluluğunu sağlamaktan sorumludur.
+
+Red Hat uydu sunucusu veya Red Hat abonelik Yöneticisi ' ni seçerek müşteriler RHUı yapılandırmasını kaldırmalı ve sonra AHB RHEL VM 'lerine bir bulut erişimi etkinleştirilmiş RHEL aboneliği iliştirmelidir.  
+
+Red Hat abonelik uyumluluğu, yazılım güncelleştirmeleri ve AHB RHEL VM 'lerinin kaynakları hakkında daha fazla bilgi [burada](https://access.redhat.com/articles/5419341)bulabilirsiniz.
 
 ### <a name="suse"></a>SUSE
 

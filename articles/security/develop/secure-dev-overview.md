@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c4314a0dcbbcb907ef4d6de0a2788cf04dfe1641
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: baaa311620f5c10948aa3494002ce359cc5dab28
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68934860"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517181"
 ---
 # <a name="secure-development-best-practices-on-azure"></a>Azure 'da güvenli geliştirme en iyi uygulamaları
 Bu makale serisi, bulut için uygulama geliştirirken göz önünde bulundurmanız gereken güvenlik etkinliklerini ve denetimleri sunar. Yaşam döngüsünün her aşamasında dikkate alınması gereken Microsoft Security Development Lifecycle (SDL) ve güvenlik sorularının ve kavramların aşamaları ele alınmıştır. Amaç, daha güvenli bir uygulama tasarlamak, geliştirmek ve dağıtmak için yaşam döngüsünün her aşamasında kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
@@ -37,7 +37,7 @@ Güvenli yazılım geliştirme için aşağıdaki en iyi yöntemler, proje yönt
 
 Daha sonra geliştirme yaşam döngünüzün bir sorununu düzelttikten sonra, bu daha fazla çözüm size ücretlendirilecektir. Güvenlik sorunları özel durum değildir. Yazılım geliştirmelerinizin erken aşamalarında güvenlik sorunlarını yoksayabilirsiniz, izleyen her aşama önceki aşamanın güvenlik açıklarını da devralınabilir. Son ürününüz birden çok güvenlik sorununu ve bir ihlal olasılığını birikmiş olacak. Geliştirme yaşam döngüsünün her aşamasında güvenlik oluşturmak, sorunları erken yakalemenize yardımcı olur ve Geliştirme maliyetlerinizi azaltmanıza yardımcı olur.
 
-Yaşam döngüsünün her aşamasında güvenli yazılım geliştirme uygulamalarını yerine getirmek için kullanabileceğiniz etkinlikler ve Azure hizmetleri tanıtmak üzere Microsoft [güvenlik geliştirme yaşam döngüsü (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) aşamalarını izliyoruz.
+Yaşam döngüsünün her aşamasında güvenli yazılım geliştirme uygulamalarını yerine getirmek için kullanabileceğiniz etkinlikler ve Azure hizmetleri tanıtmak üzere Microsoft [güvenlik geliştirme yaşam döngüsü (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) aşamalarını izliyoruz.
 
 SDL aşamaları şunlardır:
 
@@ -63,7 +63,7 @@ Birçok okuyucunun, uyum sağlamak için bir güvenlik veya uyumluluk takımına
 
 Güvenli uygulamalar geliştirme ve uygulamalarınızın güvenliğini sağlamaya yardımcı olma hakkında daha fazla bilgi edinmek için aşağıdaki kaynakları kullanın:
 
-[Microsoft Security Development lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) : SDL, Microsoft 'un geliştiricilerin daha güvenli yazılım oluşturmalarına yardımcı olan bir yazılım geliştirme işlemidir. Geliştirme maliyetlerini azaltırken güvenlik uyumluluk gereksinimlerini karşılamanıza yardımcı olur.
+[Microsoft Security Development lifecycle (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) : SDL, Microsoft 'un geliştiricilerin daha güvenli yazılım oluşturmalarına yardımcı olan bir yazılım geliştirme işlemidir. Geliştirme maliyetlerini azaltırken güvenlik uyumluluk gereksinimlerini karşılamanıza yardımcı olur.
 
 [Open Web Application Security Project (OWASP)](https://www.owasp.org/index.php/Main_Page) – OWASP, Web uygulaması güvenliği alanında ücretsiz olarak kullanılabilen makaleler, Yöntemler, Araçlar ve teknolojiler üreten bir çevrimiçi toplulukdır.
 

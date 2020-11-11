@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: ba14e2c475611ed77661060d6e17ae0bcbf0a6ca
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f0c38e72231fb343cb9b27def520f73d923a70f6
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744221"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515719"
 ---
 # <a name="step-3-validate-connectivity"></a>3. Adım: bağlantıyı doğrulama
 
@@ -29,7 +29,7 @@ Günlük ileticinizi dağıttıktan sonra (adım 1 ' de) ve Güvenlik çözümü
 
 - Günlük ileticisi makinenizde yükseltilmiş izinleriniz (sudo) olmalıdır.
 
-- Günlük ileticisi makinenizde **python 2,7** ' in yüklü olması gerekir.<br>
+- Günlük ileticisi makinenizde **python 2,7** veya **3** ' ün yüklü olması gerekir.<br>
 `python –version`Denetlemek için komutunu kullanın.
 
 - Bu işlemin bir noktasında çalışma alanı KIMLIĞI ve çalışma alanı birincil anahtarına ihtiyacınız olabilir. Onları çalışma alanı kaynağında, **aracılar yönetimi** altında bulabilirsiniz.

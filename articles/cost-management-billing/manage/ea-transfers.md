@@ -6,14 +6,15 @@ ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 10/05/2020
 ms.author: banders
-ms.openlocfilehash: 140fc450623f0dcb6c7cf1bf08a8cfc43b094763
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.custom: contperfq1
+ms.openlocfilehash: 3222c934998febe79c36121ca816f949b78d374e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371907"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411567"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Kurumsal aktarımlar
 
@@ -93,21 +94,25 @@ Azure Ön Ödemesi, kayıtlar arasında aktarılamaz. Azure Ön Ödeme bakiyeler
 
 Hesap veya kayıt aktarımı esnasında kesinti süresi yoktur. Gerekli tüm bilgiler sağlanırsa isteğiniz gün içinde tamamlanabilir.
 
+## <a name="transfer-an-enterprise-subscription-to-a-pay-as-you-go-subscription"></a>Kurumsal aboneliği Kullandıkça Öde aboneliğine aktarma
+
+Bir Kurumsal aboneliği Kullandıkça Öde fiyatlarına sahip bir aboneliğe aktarmak için Azure Enterprise Portal'da yeni bir destek isteği oluşturmanız gerekir. Destek isteği oluşturmak için **Yardım ve Destek** alanındaki **+ Yeni destek isteği** 'ni seçin.
+
 ## <a name="change-account-owner"></a>Hesap sahibini değiştirme
 
-Azure EA portalı, abonelikleri bir hesap sahibinden diğerine aktarabilir. Daha fazla bilgi için bkz. [Hesap sahibini değiştirme](ea-portal-get-started.md#change-account-owner).
+Azure EA portalı, abonelikleri bir hesap sahibinden diğerine aktarabilir. Daha fazla bilgi için bkz. [Hesap sahibini değiştirme](ea-portal-administration.md#change-account-owner).
 
 ## <a name="subscription-transfer-effects"></a>Abonelik aktarımının etkileri
 
 Bir Azure aboneliği aynı Azure Active Directory kiracısındaki bir hesaba aktarılırsa abonelikteki kaynakları yönetmek için [Azure rol tabanlı erişim denetimine (Azure RBAC)](../../role-based-access-control/overview.md) sahip olan tüm kullanıcılar, gruplar ve hizmet sorumluları aynı erişime sahip olmaya devam eder.
 
-Aboneliğe Azure RBAC erişimi olan kullanıcıları görüntülemek için:
+Aboneliğe RBAC erişimi olan kullanıcıları görüntülemek için:
 
-1. Azure portalında **Abonelikler**’i açın.
+1. Azure portalında **Abonelikler** ’i açın.
 2. Görüntülemek istediğiniz aboneliği seçin ve ardından **Erişim denetimi (IAM)** seçeneğini belirleyin.
-3. **Rol atamaları**’nı seçin. Rol atamaları sayfasında, aboneliğe Azure RBAC erişimi olan tüm kullanıcılar listelenir.
+3. **Rol atamaları** ’nı seçin. Rol atamaları sayfasında, aboneliğe RBAC erişimi olan tüm kullanıcılar listelenir.
 
-Abonelik farklı bir Azure AD kiracısındaki bir hesaba aktarılırsa, abonelikteki kaynakları yönetmek için [Azure RBAC](../../role-based-access-control/overview.md) iznine sahip olan tüm kullanıcılar, gruplar ve hizmet sorumluları erişimi _kaybeder_. Azure RBAC erişimi mevcut olmasa da aboneliğe aşağıdaki güvenlik mekanizmaları aracılığıyla erişilebilir:
+Abonelik farklı bir Azure AD kiracısındaki bir hesaba aktarılırsa, abonelikteki kaynakları yönetmek için [RBAC](../../role-based-access-control/overview.md) iznine sahip olan tüm kullanıcılar, gruplar ve hizmet sorumluları _erişimi_ kaybeder. RBAC erişimi mevcut olmasa da aboneliğe aşağıdaki güvenlik mekanizmaları aracılığıyla erişilebilir:
 
 - Abonelik kaynaklarına kullanıcı yöneticisi hakları veren yönetim sertifikaları. Daha fazla bilgi için bkz. [Azure için Yönetim Sertifikası Oluşturma ve Karşıya Yükleme](../../cloud-services/cloud-services-certs-create.md).
 - Depolama gibi hizmetler için erişim anahtarları. Daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../../storage/common/storage-account-overview.md).
@@ -116,9 +121,9 @@ Abonelik farklı bir Azure AD kiracısındaki bir hesaba aktarılırsa, abonelik
 Alıcının Azure kaynaklarına erişimi kısıtlaması gerekiyorsa, hizmetle ilişkili tüm gizli dizileri güncelleştirmeyi düşünmelidir. Çoğu kaynak aşağıdaki adımlar kullanılarak güncelleştirilebilir:
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2. Merkez menüsünde **Tüm kaynaklar**'ı seçin.
+2. Merkez menüsünde **Tüm kaynaklar** 'ı seçin.
 3. Kaynağı seçin.
-4. Kaynak sayfasında, mevcut gizli dizileri görüntülemek ve güncelleştirmek için **Ayarlar**’ı seçin.
+4. Kaynak sayfasında, mevcut gizli dizileri görüntülemek ve güncelleştirmek için **Ayarlar** ’ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
