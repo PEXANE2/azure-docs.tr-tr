@@ -15,10 +15,6 @@
       href: virtual-wan-expressroute-portal.md
 - name: Kavramlar
   items:
-    - name: Güvenlik
-      items:
-        - name: Güvenlik Temeli
-          href: security-baseline.md
     - name: Uzaktan çalışma
       items:
         - name: Uzaktan çalışmaya yönelik destek
@@ -109,6 +105,8 @@
           href: about-vpn-profile-download.md
         - name: Genel ve merkez tabanlı profil
           href: global-hub-profile.md
+        - name: Azure VPN İstemcisi’ni Windows 10 için yapılandırma
+          href: openvpn-azure-ad-client.md
         - name: OpenVPN istemcisi yapılandırması
           href: howto-openvpn-clients.md?
         - name: AlwaysOn VPN kullanıcı tüneli yapılandırma
@@ -119,8 +117,6 @@
           href: openvpn-azure-ad-mfa.md
         - name: Azure AD kimlik doğrulamasını yapılandırma
           href: virtual-wan-point-to-site-azure-ad.md
-        - name: Azure VPN İstemcisi’ni Windows 10 için yapılandırma
-          href: openvpn-azure-ad-client.md
         - name: Çok uygulamalı Azure AD kimlik doğrulamasını yapılandırma
           href: openvpn-azure-ad-tenant-multi-app.md
     - name: Yönlendirme
