@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: ae3d35bea1c75c797447100316ceab9a27fcbe48
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: f2f0177b5fe8bb97773d297319f6c9196d8178d2
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424445"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536243"
 ---
 # <a name="vm-is-unresponsive-while-waiting-for-the-local-session-manager"></a>Yerel oturum Yöneticisi beklenirken VM yanıt vermiyor
 
@@ -35,7 +35,7 @@ Yerel oturum Yöneticisi için bekleyen bir sanal makinenin takılmasının bird
 
 ## <a name="solution"></a>Çözüm
 
-Bazı durumlarda, işlemin tamamlanması için yeterince uzun sürmeniz sorunu çözmeyecektir. VM 'niz bir saatten fazla bekleme ekranında askıda ise, bir bellek dökümü toplamalı ve sonra Microsoft destek 'e başvurmanız gerekir.
+Bazı durumlarda, işlemin tamamlanması için yeterince uzun sürmeniz sorunu çözmeyecektir. VM 'niz yanıt vermiyorsa ve bekleme ekranında bir saat boyunca kalırsa, bir bellek dökümü toplayıp Microsoft desteği 'ne başvurmanız gerekir.
 
 ### <a name="collect-the-memory-dump-file"></a>Bellek dökümü dosyasını toplayın
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b31e3d44cc66e97506b29b81cef5b8d981d05e39
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: ca56c285baff9982ff465b0d4115d15eadedb8c9
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279415"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534764"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure dijital TWINS modellerini yönetme
 
@@ -20,9 +20,13 @@ Azure Digital TWINS örneğinizin, [**Digitaltwinmodeller API 'leri**](/rest/api
 
 Yönetim işlemlerine, modellerin karşıya yüklenmesi, doğrulanması, alınması ve silinmesi dahildir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
+
+## <a name="ways-to-manage-models"></a>Modelleri yönetme yolları
+
+[!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
 
 ## <a name="create-models"></a>Model oluşturma
 
@@ -73,17 +77,7 @@ Bu yöntemi izleyerek, hospstanonun için modeller, bölgeler veya hastanın ken
 
 [!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
-## <a name="manage-models-with-apis"></a>Modelleri API 'lerle yönetme
-
-Aşağıdaki bölümlerde, [Azure Digital TWINS API 'leri ve SDK 'ları](how-to-use-apis-sdks.md)kullanılarak farklı model yönetimi işlemlerinin nasıl tamamlanacağı gösterilmektedir.
-
-> [!NOTE]
-> Aşağıdaki örneklerde, breçekimi için hata işleme yoktur. Ancak, try/catch bloklarındaki hizmet çağrılarını kaydırmak için projelerinizde kesinlikle önerilir.
-
-> [!TIP] 
-> Tüm SDK yöntemlerinin zaman uyumlu ve zaman uyumsuz sürümlerde yer aldığını unutmayın. Disk belleği çağrılarında zaman uyumsuz yöntemler, `AsyncPageable<T>` zaman uyumlu sürümler geri dönirken döndürülür `Pageable<T>` .
-
-### <a name="upload-models"></a>Modelleri karşıya yükle
+## <a name="upload-models"></a>Modelleri karşıya yükle
 
 Modeller oluşturulduktan sonra Azure dijital TWINS örneğine yükleyebilirsiniz.
 
@@ -117,7 +111,7 @@ foreach (string fileName in dtdlFiles)
 client.CreateModels(dtdlStrings);
 ```
 
-Model dosyaları tek bir modelden daha fazla bulunabilir. Bu durumda, modellerin bir JSON dizisine yerleştirilmesi gerekir. Örneğin:
+Model dosyaları tek bir modelden daha fazla bulunabilir. Bu durumda, modellerin bir JSON dizisine yerleştirilmesi gerekir. Örnek:
 
 ```json
 [
@@ -136,7 +130,7 @@ Model dosyaları tek bir modelden daha fazla bulunabilir. Bu durumda, modellerin
  
 Karşıya yükleme sırasında model dosyaları hizmet tarafından onaylanır.
 
-### <a name="retrieve-models"></a>Modelleri al
+## <a name="retrieve-models"></a>Modelleri al
 
 Azure dijital TWINS örneğiniz üzerinde depolanan modelleri listeleyebilir ve alabilirsiniz. 
 
@@ -166,13 +160,13 @@ API 'leri, tüm dönüş nesnelerini almak için çağırır `DigitalTwinsModelD
 
 Modeller, içinde karşıya yüklendikleri belge formunda tam olarak döndürülmeyebilir. Azure dijital TWINS yalnızca dönüş formunun anlamsal olarak eşdeğer olmasını güvence altına alır. 
 
-### <a name="update-models"></a>Modelleri Güncelleştir
+## <a name="update-models"></a>Modelleri Güncelleştir
 
 Azure dijital TWINS örneğinize bir model yüklendikten sonra model arabiriminin tamamı sabittir. Bu, modellerin geleneksel "düzenlemesi" olmadığı anlamına gelir. Azure dijital TWINS ayrıca aynı modelin yeniden karşıya yüklenmesine izin vermez.
 
 Bunun yerine, bir modelde değişiklik yapmak istiyorsanız — Örneğin, güncelleştirme `displayName` veya `description` — bunu yapmanın yolu, modelin **daha yeni bir sürümünü** karşıya yüklemedir. 
 
-#### <a name="model-versioning"></a>Model sürümü oluşturma
+### <a name="model-versioning"></a>Model sürümü oluşturma
 
 Varolan bir modelin yeni bir sürümünü oluşturmak için özgün modelin DTDL ile başlayın. Değiştirmek istediğiniz alanları güncelleştirin, ekleyin veya kaldırın.
 
@@ -194,7 +188,7 @@ Ardından, modelin yeni sürümünü örneğinize yükleyin.
 
 Daha sonra modelin bu sürümü, dijital TWINS için kullanmak üzere Örneğinizde kullanılabilir olacaktır. Modelin önceki sürümlerinin üzerine yazmaz **, bu nedenle** modelin birden çok sürümü siz [onları](#remove-models)kaldırana kadar Örneğinizde birlikte kalır.
 
-#### <a name="impact-on-twins"></a>TWINS üzerindeki etki
+### <a name="impact-on-twins"></a>TWINS üzerindeki etki
 
 Yeni bir ikizi oluşturduğunuzda, yeni model sürümü ve eski model sürümü birlikte kullanıldığında, yeni ikizi modelin yeni sürümünü veya eski sürümünü kullanabilir.
 
@@ -202,7 +196,7 @@ Bu Ayrıca, bir modelin yeni bir sürümünün karşıya yüklenmesi mevcut TWIN
 
 *Nasıl yapılır: dijital TWINS 'ı yönetme* konusunun [*dijital Ikizi 'nin modelini güncelleştirme*](how-to-manage-twin.md#update-a-digital-twins-model) bölümünde açıklandığı gibi, var olan mevcut TWINS sürümlerini yeni model sürümüne güncelleştirebilirsiniz. Aynı düzeltme ekinde, hem **model kimliğini** (yeni sürüme) hem de **ikizi üzerinde değiştirilmesi gereken tüm alanları yeni modele uygun hale getirmek için** güncelleştirmeniz gerekir.
 
-### <a name="remove-models"></a>Modelleri kaldır
+## <a name="remove-models"></a>Modelleri kaldır
 
 Modeller, iki şekilde de hizmetten kaldırılabilir:
 * **Yetki alma** : bir model kullanımdan kaldırıldıktan sonra yeni dijital TWINS oluşturmak için artık bunu kullanamazsınız. Bu modeli zaten kullanan var olan dijital TWINS etkilenmemiştir, bu nedenle bunları Özellik değişiklikleri gibi şeyler ile güncelleştirebilir ve ilişkileri ekleme veya silme işlemleri yapabilirsiniz.
@@ -210,7 +204,7 @@ Modeller, iki şekilde de hizmetten kaldırılabilir:
 
 Bunlar ayrı özelliklerdir ve bir modeli kademeli olarak kaldırmak için birlikte kullanılabilmesine rağmen birbirini etkilemez. 
 
-#### <a name="decommissioning"></a>Yetkisini alma
+### <a name="decommissioning"></a>Yetkisini alma
 
 Bir modelin yetkisini alma kodu aşağıda verilmiştir:
 
@@ -223,7 +217,7 @@ client.DecommissionModel(dtmiOfPlanetInterface);
 
 Modelin yetki alma durumu, `ModelData` model alma API 'leri tarafından döndürülen kayıtlara dahildir.
 
-#### <a name="deletion"></a>Silme
+### <a name="deletion"></a>Silme
 
 Örneğinizdeki tüm modelleri aynı anda silebilir veya tek bir temelinde yapabilirsiniz.
 
@@ -231,7 +225,7 @@ Tüm modellerin nasıl silineceği hakkında bir örnek için öğreticide kulla
 
 Bu bölümün geri kalanı, model silme işlemini daha yakından ayrıntılandırır ve tek bir model için nasıl yapılacağını gösterir.
 
-##### <a name="before-deletion-deletion-requirements"></a>Silinmeden önce: silme gereksinimleri
+#### <a name="before-deletion-deletion-requirements"></a>Silinmeden önce: silme gereksinimleri
 
 Genellikle, modeller herhangi bir zamanda silinebilir.
 
@@ -239,7 +233,7 @@ Genellikle, modeller herhangi bir zamanda silinebilir.
 
 Bağımlılıkları kaldırmak veya bağımlı modeli tamamen silmek için bağımlı modeli güncelleştirerek bunu yapabilirsiniz.
 
-##### <a name="during-deletion-deletion-process"></a>Silme sırasında: silme işlemi
+#### <a name="during-deletion-deletion-process"></a>Silme sırasında: silme işlemi
 
 Bir model hemen silme gereksinimlerini karşılasa bile, arka planda kalan TWINS için istenmeyen sonuçlara engel olmak üzere birkaç adımdan önce gezinmek isteyebilirsiniz. Bu işlemi yönetmenize yardımcı olabilecek bazı adımlar aşağıda verilmiştir:
 1. İlk olarak, modelin yetkisini alın
@@ -255,7 +249,7 @@ Bir modeli silmek için şu çağrıyı kullanın:
 await client.DeleteModelAsync(IDToDelete);
 ```
 
-##### <a name="after-deletion-twins-without-models"></a>Silinmeden sonra: modeller olmadan TWINS
+#### <a name="after-deletion-twins-without-models"></a>Silinmeden sonra: modeller olmadan TWINS
 
 Model silindikten sonra, modeli kullanan herhangi bir dijital TWINS artık model olmadan kabul edilir. Bu durumda her türlü TWINS 'in bir listesini verebileceğinize karşın, TWINS 'in hangi tnelerin etkilendiğini görmek için silinen model *tarafından hala sorgu yapabileceğinize* izin vereceğimizi unutmayın.
 
@@ -274,17 +268,13 @@ Bir modeli olmayan TWINS ile neler yapabileceğinize ilişkin genel bir bakış 
 * Giden ilişkileri Düzenle (içinde olduğu gibi, bu ikizi ile diğer TWINS *arasındaki* ilişkiler)
 * Özellikleri düzenle
 
-##### <a name="after-deletion-re-uploading-a-model"></a>Silinmeden sonra: bir modeli yeniden yükleme
+#### <a name="after-deletion-re-uploading-a-model"></a>Silinmeden sonra: bir modeli yeniden yükleme
 
 Bir model silindikten sonra, sildikten sonra aynı KIMLIĞE sahip yeni bir modeli karşıya yüklemeye karar verebilirsiniz. Bu durumda ne olur?
 * Çözüm mağazasının perspektifinden, bu, tamamen yeni bir modeli karşıya yüklemeyle aynıdır. Hizmet, eski bir hizmetin karşıya yüklendiğini hatırlıyor.   
 * Grafikte silinen modele başvuran bir TWINS varsa, bunlar artık sahipsiz kalmaz; Bu model KIMLIĞI yeni tanımıyla yeniden geçerlidir. Ancak, modelin yeni tanımı silinen model tanımından farklıysa, bu TWINS, silinen tanımıyla eşleşen özellikler ve ilişkiler içerebilir ve yeni bir ile geçerli değildir.
 
 Azure dijital TWINS bu durumu engellemez, bu nedenle, model tanımı anahtarı aracılığıyla geçerli kalmasını sağlamak için TWINS 'i uygun şekilde düzeltme ekine dikkat edin.
-
-## <a name="manage-models-with-cli"></a>CLı ile modelleri yönetme
-
-Modeller ayrıca Azure dijital TWINS CLı kullanılarak yönetilebilir. Komutları [*nasıl yapılır: Azure dijital TWINS CLI 'Sını kullanma*](how-to-use-cli.md)bölümünde bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

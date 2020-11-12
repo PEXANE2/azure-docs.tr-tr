@@ -1,17 +1,17 @@
 ---
 title: Sorgu Performansı İçgörüleri-MariaDB için Azure veritabanı
 description: Bu makalede, MariaDB için Azure veritabanı 'nda Sorgu Performansı İçgörüleri özelliği açıklanmaktadır
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 88777ee44551ed6abdb7a6c7c909d6bf55db48c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b643ba3305736480e06d7c10d594b2271839038f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79527853"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536341"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı'nda Sorgu Performansı İçgörüleri
 
@@ -33,9 +33,9 @@ Sorgu Performansı İçgörüleri, en uzun çalışan sorguların ne olduğunu, 
 
 ## <a name="permissions"></a>İzinler
 
-Sorgu Performansı İçgörüleri’ndeki metni görünüm için **Sahip** veya **Katkıda bulunan** izinleri gereklidir. **Okuyucu**, grafikleri ve tabloları görüntüleyebilir ancak metni sorgulayamaz.
+Sorgu Performansı İçgörüleri’ndeki metni görünüm için **Sahip** veya **Katkıda bulunan** izinleri gereklidir. **Okuyucu** , grafikleri ve tabloları görüntüleyebilir ancak metni sorgulayamaz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Sorgu Performansı İçgörüleri çalışması için, verilerin [sorgu deposunda](concepts-query-store.md)bulunması gerekir.
 
@@ -56,7 +56,7 @@ Belirli bir zaman penceresine daraltmak için grafikte tıklayıp sürükleyebil
 ### <a name="wait-statistics"></a>Bekleme istatistikleri 
 
 > [!NOTE]
-> Bekleme istatistikleri sorgu performans sorunlarını gidermeye yöneliktir. Yalnızca sorun giderme amacıyla açık olması önerilir. <br>Azure portal "hata iletisini alırsanız,"*Microsoft. Dbformarıdb "için karşılaşılan sorun; istek yerine getirilemiyor. Bu sorun devam ederse veya beklenmiyorsa lütfen bu bilgilerle desteğe başvurun.*" Bekleme istatistiklerini görüntülerken, daha kısa bir zaman aralığı kullanın.
+> Bekleme istatistikleri sorgu performans sorunlarını gidermeye yöneliktir. Yalnızca sorun giderme amacıyla açık olması önerilir. <br>Azure portal "hata iletisini alırsanız," *Microsoft. Dbformarıdb "için karşılaşılan sorun; istek yerine getirilemiyor. Bu sorun devam ederse veya beklenmiyorsa lütfen bu bilgilerle desteğe başvurun.* " Bekleme istatistiklerini görüntülerken, daha kısa bir zaman aralığı kullanın.
 
 Bekleme istatistikleri, belirli bir sorgunun yürütülmesi sırasında oluşan bekleme olaylarının bir görünümünü sağlar. [MySQL Engine belgelerindeki](https://go.microsoft.com/fwlink/?linkid=2098206)bekleme olayı türleri hakkında daha fazla bilgi edinin.
 

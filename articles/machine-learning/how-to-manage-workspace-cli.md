@@ -10,19 +10,19 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 9b55c4873c4d7ee430e7d9ce84d2782a37e522ae
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: dc5dcf20b8c4fb1dae971b9bda4ef1a7552ce9d4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442149"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534747"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Azure CLı ile Azure Machine Learning çalışma alanı oluşturma
 
 
 Bu makalede, Azure CLı kullanarak Azure Machine Learning çalışma alanı oluşturmayı öğreneceksiniz. Azure CLı, Azure kaynaklarını yönetmeye yönelik komutlar sağlar. CLı 'ya makine öğrenimi uzantısı, Azure Machine Learning kaynaklarıyla çalışmaya yönelik komutlar sağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
@@ -156,9 +156,12 @@ Bu komutun çıktısı aşağıdaki JSON 'a benzerdir:
 
 ### <a name="customer-managed-key-and-high-business-impact-workspace"></a>Müşteri tarafından yönetilen anahtar ve yüksek iş etkisi çalışma alanı
 
-Varsayılan olarak, çalışma alanının ölçümleri ve meta verileri Microsoft 'un koruduğu bir Azure Cosmos DB örneğine depolanır. Bu veriler, Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. 
+Varsayılan olarak, çalışma alanının meta verileri Microsoft 'un koruduğu bir Azure Cosmos DB örneğine depolanır. Bu veriler, Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir.
 
-Microsoft tarafından yönetilen anahtarı kullanmak yerine kendi anahtarınızı sağlayın ' i kullanabilirsiniz. Bunun yapılması, ölçümleri ve meta verileri Azure aboneliğinizde depolayan Azure Cosmos DB örneğini oluşturur. `--cmk-keyvault`Anahtarı içeren Azure Key Vault belirtmek ve `--resource-cmk-uri` KASADAKI anahtarın URL 'sini belirtmek için parametresini kullanın.
+> [!NOTE]
+> Azure Cosmos DB model performansı, denemeleri tarafından günlüğe kaydedilen bilgiler veya model dağıtımlarınızdan günlüğe kaydedilen bilgiler gibi bilgileri depolamak __için kullanılmaz.__ Bu öğeleri izleme hakkında daha fazla bilgi için mimari ve kavramlar makalesinin [izleme ve günlüğe kaydetme](concept-azure-machine-learning-architecture.md) bölümüne bakın.
+
+Microsoft tarafından yönetilen anahtarı kullanmak yerine kendi anahtarınızı sağlayın ' i kullanabilirsiniz. Bunun yapılması, meta verileri Azure aboneliğinizde depolayan Azure Cosmos DB örneğini oluşturur. `--cmk-keyvault`Anahtarı içeren Azure Key Vault belirtmek ve `--resource-cmk-uri` KASADAKI anahtarın URL 'sini belirtmek için parametresini kullanın.
 
 `--cmk-keyvault`Ve parametrelerini kullanmadan önce `--resource-cmk-uri` , önce aşağıdaki eylemleri gerçekleştirmeniz gerekir:
 

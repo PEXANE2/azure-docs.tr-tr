@@ -1,24 +1,24 @@
 ---
 title: Yeniden yönlendirme ile bağlanma-MariaDB için Azure veritabanı
 description: Bu makalede, uygulamayı yeniden yönlendirme ile MariaDB için Azure veritabanı 'na bağlanmak üzere nasıl yapılandırabileceğiniz açıklanmaktadır.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/8/2020
-ms.openlocfilehash: 45d93797b72b3b35dd44cddc22124acb73eb3454
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f26de72839fcaa39bff4d827aba757721736934
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86121104"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537433"
 ---
 # <a name="connect-to-azure-database-for-mariadb-with-redirection"></a>Yeniden yönlendirme ile MariaDB için Azure veritabanı 'na bağlanma
 
 Bu konuda, bir uygulamanın MariaDB sunucusu için Azure veritabanı 'na yeniden yönlendirme moduyla nasıl bağlanacağı açıklanmaktadır. Uygulamaların doğrudan arka uç sunucu düğümlerine bağlanmasına izin vererek istemci uygulamaları ve MariaDB sunucuları arasındaki ağ gecikmesini azaltmak için amaçlar 'yi yeniden yönlendirme.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
-[Azure Portal](https://portal.azure.com)’ında oturum açın. Bir MariaDB sunucusu için altyapı sürümü 10,2 veya 10,3 olan bir Azure veritabanı oluşturun. 
+[Azure portalında](https://portal.azure.com) oturum açın. Bir MariaDB sunucusu için altyapı sürümü 10,2 veya 10,3 olan bir Azure veritabanı oluşturun. 
 
 Ayrıntılar için [Azure Portal](quickstart-create-mariadb-server-database-using-azure-portal.md) veya [Azure CLI](quickstart-create-mariadb-server-database-using-azure-cli.md)kullanarak MariaDB sunucusu için Azure veritabanı oluşturma bölümüne bakın.
 
@@ -40,7 +40,7 @@ Mysqlnd_azure uzantısı,,,,,,,,,,, bir,,, bir, ve resmi olarak yayımlanmış b
 >[!IMPORTANT]
 > Yeniden yönlendirme mantığı/davranışı 1.1.0 sürümü güncelleştirildi ve **1.1.0 + sürümünün kullanılması önerilir**.
 
-Yeniden yönlendirme davranışı değerine göre belirlenir `mysqlnd_azure.enableRedirect` . Aşağıdaki tabloda, **1.1.0 + sürümündeki**bu parametrenin değerine göre yeniden yönlendirme davranışı özetlenmektedir.
+Yeniden yönlendirme davranışı değerine göre belirlenir `mysqlnd_azure.enableRedirect` . Aşağıdaki tabloda, **1.1.0 + sürümündeki** bu parametrenin değerine göre yeniden yönlendirme davranışı özetlenmektedir.
 
 Mysqlnd_azure uzantısının (sürüm 1.0.0-1.0.3) eski bir sürümünü kullanıyorsanız, yeniden yönlendirme davranışı değerine göre belirlenir `mysqlnd_azure.enabled` . Geçerli değerler şunlardır `off` (aşağıdaki tabloda özetlenen davranış olarak benzer şekilde davranır) ve `on` (aşağıdaki tabloda olduğu gibi davranır `preferred` ).  
 
@@ -54,7 +54,7 @@ Belgenin sonraki bölümlerinde, `mysqlnd_azure` Bu parametrenin değerini nası
 
 ### <a name="ubuntu-linux"></a>Ubuntu Linux
 
-#### <a name="prerequisites"></a>Önkoşullar 
+#### <a name="prerequisites"></a>Ön koşullar 
 - PHP sürümleri 7.2.15 + ve 7.3.2 +
 - PHP PEAR 
 - PHP-MySQL
@@ -93,7 +93,7 @@ Belgenin sonraki bölümlerinde, `mysqlnd_azure` Bu parametrenin değerini nası
 
 ### <a name="windows"></a>Windows
 
-#### <a name="prerequisites"></a>Önkoşullar 
+#### <a name="prerequisites"></a>Ön koşullar 
 - PHP sürümleri 7.2.15 + ve 7.3.2 +
 - PHP-MySQL
 - MariaDB sunucusu için Azure veritabanı

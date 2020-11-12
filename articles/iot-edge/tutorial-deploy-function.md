@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure işlevlerini modül olarak dağıtma-Azure IoT Edge'
-description: Bu öğreticide, bir Azure işlevini IoT Edge modülü olarak geliştirirsiniz ve bir uç cihaza dağıtırsınız.
+title: 'Öğretici: Azure Işlevlerini modül olarak dağıtma-Azure IoT Edge'
+description: Bu öğreticide, bir Azure Işlevini IoT Edge modülü olarak geliştirirsiniz ve bir uç cihaza dağıtırsınız.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 6e148adfe6db62e6fdaea53165a5c23d9a08efba
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 45f990e5426516db5537319d07c11aa705e462e7
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042397"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534866"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Öğretici: Azure Işlevlerini IoT Edge modülleri olarak dağıtma
 
-İş mantığınızı doğrudan Azure IoT Edge cihazlarınıza uygulayan kodu dağıtmak için Azure İşlevleri'ni kullanabilirsiniz. Bu öğretici, sanal IoT Edge cihazında algılayıcı verilerini filtreleyen bir Azure Işlevi oluşturma ve dağıtma konusunda size yol gösterir. [Windows](quickstart.md)'ta veya [Linux](quickstart-linux.md)'ta bir simülasyon cihazına Azure IoT Edge dağıtma hızlı başlangıçlarında oluşturduğunuz simülasyon IoT Edge cihazınızı kullanacaksınız. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+İş mantığınızı doğrudan Azure IoT Edge cihazlarınıza uygulayan kodu dağıtmak için Azure İşlevleri'ni kullanabilirsiniz. Bu öğretici, sanal IoT Edge cihazında algılayıcı verilerini filtreleyen bir Azure Işlevi oluşturma ve dağıtma konusunda size yol gösterir. [Windows](quickstart.md)'ta veya [Linux](quickstart-linux.md)'ta bir simülasyon cihazına Azure IoT Edge dağıtma hızlı başlangıçlarında oluşturduğunuz simülasyon IoT Edge cihazınızı kullanacaksınız. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -36,7 +36,7 @@ Bu öğreticide oluşturduğunuz Azure Işlevi, cihazınız tarafından oluştur
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce, Linux kapsayıcı geliştirmesi için geliştirme ortamınızı ayarlamak üzere önceki öğreticiden çıkmalısınız: [Linux cihazları için IoT Edge modülleri](tutorial-develop-for-linux.md)geliştirme. Bu öğreticiyi tamamlayarak aşağıdaki önkoşulların yerine gelmelidir:
 
@@ -61,15 +61,15 @@ Kendi kodunuzla özelleştirebileceğiniz bir C# işlev çözüm şablonu oluşt
 
 1. Geliştirme makinenizde Visual Studio Code'u açın.
 
-2. **View**  >  **Komut paleti**göster ' i seçerek vs Code komut paleti ' ni açın.
+2. **View**  >  **Komut paleti** göster ' i seçerek vs Code komut paleti ' ni açın.
 
 3. Komut paletinde **Azure IoT Edge: New IoT Edge solution** komutunu girin ve çalıştırın. Çözümünüzü oluşturmak için komut paletindeki yönergeleri izleyin.
 
    | Alan | Değer |
    | ----- | ----- |
    | Klasör seçin | Geliştirme makinenizde VS Code'un çözüm dosyalarını oluşturmak için kullanacağı konumu seçin. |
-   | Çözüm adı sağlayın | Çözümünüz için **Functionsolution**gibi açıklayıcı bir ad girin veya varsayılan değeri kabul edin. |
-   | Modül şablonunu seçin | **Azure işlevleri-C#**' ı seçin. |
+   | Çözüm adı sağlayın | Çözümünüz için **Functionsolution** gibi açıklayıcı bir ad girin veya varsayılan değeri kabul edin. |
+   | Modül şablonunu seçin | **Azure işlevleri-C#** ' ı seçin. |
    | Modül adı sağlayın | Modülünüze **CSharpFunction** adını verin. |
    | Modül için Docker görüntü deposunu sağlama | Görüntü deposu, kapsayıcı kayıt defterinizin adını ve kapsayıcı görüntünüzün adını içerir. Kapsayıcı görüntünüz bir önceki adımdaki değerle önceden doldurulur. **Localhost: 5000** ' i Azure Container kayıt defterinizin **oturum açma sunucusu** değeriyle değiştirin. Oturum açma sunucusunu Azure portal kapsayıcı kayıt defterinizin genel bakış sayfasından alabilirsiniz. Son dize \<registry name\> . azurecr.io/CSharpFunction gibi görünür. |
 
@@ -89,15 +89,15 @@ IoT Edge uzantısı, Azure 'dan kapsayıcı kayıt defteri kimlik bilgilerinizi 
 
 Şu anda Visual Studio Code Linux AMD64 ve Linux ARM32v7 cihazları için C modülleri geliştirebilir. Kapsayıcı oluşturulup her mimari türü için farklı çalıştığından, her çözümle hedeflediğiniz mimariyi seçmeniz gerekir. Linux AMD64 varsayılandır.
 
-1. Komut paleti ' ni açın ve Azure IoT Edge için arama yapın **: Edge çözümü Için varsayılan hedef platformunu ayarla**veya pencerenin altındaki yan çubukta kısayol simgesini seçin.
+1. Komut paleti ' ni açın ve Azure IoT Edge için arama yapın **: Edge çözümü Için varsayılan hedef platformunu ayarla** veya pencerenin altındaki yan çubukta kısayol simgesini seçin.
 
-2. Komut paletinde, seçenekler listesinden hedef mimariyi seçin. Bu öğreticide, IoT Edge cihaz olarak bir Ubuntu sanal makinesi kullanıyoruz, bu nedenle varsayılan **AMD64**'yi tutacağız.
+2. Komut paletinde, seçenekler listesinden hedef mimariyi seçin. Bu öğreticide, IoT Edge cihaz olarak bir Ubuntu sanal makinesi kullanıyoruz, bu nedenle varsayılan **AMD64** 'yi tutacağız.
 
 ### <a name="update-the-module-with-custom-code"></a>Modülü özel kodla güncelleştirme
 
 Modülün iletileri IoT Hub iletmek için önce, daha fazla kod ekleyelim.
 
-1. Visual Studio Code 'de, **modules**  >  **csharpfunction**  >  **CSharpFunction.cs**modüllerini açın.
+1. Visual Studio Code 'de, **modules**  >  **csharpfunction**  >  **CSharpFunction.cs** modüllerini açın.
 
 1. **CSharpFunction.cs** dosyasının içeriğini aşağıdaki kodla değiştirin. Bu kod, çevresel ve makine sıcaklığı hakkında telemetri alır ve makine sıcaklığı tanımlı bir eşiğin üzerinde ise IoT Hub ileti yalnızca ' a iletir.
 
@@ -178,7 +178,7 @@ Modülün iletileri IoT Hub iletmek için önce, daha fazla kod ekleyelim.
 
 Önceki bölümde, bir IoT Edge çözümü oluşturdunuz ve, kabul edilen eşiğin altında bildirilen makine sıcaklıkları olan iletileri filtrelemek için **Csharpişlevini** değiştirmiş olursunuz. Şimdi çözümü kapsayıcı görüntüsü olarak derlemeniz ve kapsayıcı kayıt defterine göndermeniz gerekiyor.
 
-1. **Görünüm**terminali ' i seçerek vs Code tümleşik Terminal ' i açın  >  **Terminal**.
+1. **Görünüm** terminali ' i seçerek vs Code tümleşik Terminal ' i açın  >  **Terminal**.
 
 2. Terminalde aşağıdaki komutu girerek Docker 'da oturum açın. Azure Container Registry 'nizden Kullanıcı adı, parola ve oturum açma sunucusu ile oturum açın. Azure portal kayıt defterinizin **erişim tuşları** bölümünden bu değerleri alabilirsiniz.
 
@@ -188,7 +188,7 @@ Modülün iletileri IoT Hub iletmek için önce, daha fazla kod ekleyelim.
 
    Kullanımını öneren bir güvenlik uyarısı alabilirsiniz `--password-stdin` . Bu en iyi uygulama, üretim senaryolarında önerilse de, Bu öğreticinin kapsamı dışındadır. Daha fazla bilgi için bkz. [Docker oturum açma](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) başvurusu.
 
-3. VS Code Gezgini 'nde, dosya ** üzerindedeployment.template.js** sağ tıklayın ve **Build ve push IoT Edge çözümünü**seçin.
+3. VS Code Gezgini 'nde, dosya **üzerindedeployment.template.js** sağ tıklayın ve **Build ve push IoT Edge çözümünü** seçin.
 
    Build ve push komutu üç işlem başlatır. İlk olarak, dağıtım şablonunda ve diğer çözüm dosyalarında bilgi oluşturulan tam dağıtım bildirimini tutan **config** adlı çözümde yeni bir klasör oluşturur. İkincisi, `docker build` hedef mimariniz için uygun dockerfile 'ı temel alan kapsayıcı görüntüsünü oluşturmak için çalışır. Ardından, `docker push` görüntü deposunu kapsayıcı Kayıt defterinize göndermek için çalışır.
 
@@ -199,7 +199,7 @@ Modülün iletileri IoT Hub iletmek için önce, daha fazla kod ekleyelim.
 Kapsayıcı görüntünüz, kapsayıcı kayıt defterinize gönderildiğinde Visual Studio Code işlemin başarılı olduğunu belirten bir ileti görüntüler. İşlemin başarılı olduğunu kendiniz onaylamak isterseniz kayıt defterindeki görüntüye bakabilirsiniz.
 
 1. Azure portalında Azure kapsayıcı kayıt defterinize göz atın.
-2. **Depoları**seçin.
+2. **Depoları** seçin.
 3. Listede **csharpfunction** deposunu görüyor olmalısınız. Diğer ayrıntıları görmek için bu depoyu seçin.
 4. **Etiketler** bölümünde **0.0.1-amd64** etiketini görmeniz gerekir. Bu etiket, derlediğiniz görüntünün sürümünü ve platformunu gösterir. Bu değerler CSharpFunction klasöründeki module.json dosyasında belirlenir.
 
@@ -209,11 +209,11 @@ Işlev modülünüzü hızlı başlangıçlarda yaptığınız gibi bir IoT Edge
 
 1. Visual Studio Code Gezgini ' nde, **Azure IoT Hub** bölümünde **aygıtlar** ' ı genişleterek IoT cihazları listesini görüntüleyin.
 
-2. IoT Edge cihazınızın adına sağ tıklayın ve ardından **tek cihaz Için dağıtım oluştur**' u seçin.
+2. IoT Edge cihazınızın adına sağ tıklayın ve ardından **tek cihaz Için dağıtım oluştur** ' u seçin.
 
-3. **CSharpFunction** modülünü içeren çözüm klasörüne göz atın. Yapılandırma klasörünü açın, dosya ** üzerindedeployment.amd64.js** seçin ve ardından **kenar dağıtım bildirimini Seç**' i seçin.
+3. **CSharpFunction** modülünü içeren çözüm klasörüne göz atın. Yapılandırma klasörünü açın, dosya **üzerindedeployment.amd64.js** seçin ve ardından **kenar dağıtım bildirimini Seç** ' i seçin.
 
-4. Cihazınızın altında, dağıtılan ve çalışan modüllerin listesini görmek için **modüller** ' i genişletin. Yenile düğmesine tıklayın. **SimulatedTemperatureSensor** modülü ve **$edgeAgent** ve **$EdgeHub**birlikte çalışan yeni **csharpişlevini** görmeniz gerekir.
+4. Cihazınızın altında, dağıtılan ve çalışan modüllerin listesini görmek için **modüller** ' i genişletin. Yenile düğmesine tıklayın. **SimulatedTemperatureSensor** modülü ve **$edgeAgent** ve **$EdgeHub** birlikte çalışan yeni **csharpişlevini** görmeniz gerekir.
 
     Yeni modüllerin gösterilmesi birkaç dakika sürebilir. IoT Edge cihazınızın yeni dağıtım bilgilerini IoT Hub alma, yeni kapsayıcıları başlatma ve sonra durumu IoT Hub olarak bildirme.
 
@@ -223,7 +223,7 @@ Işlev modülünüzü hızlı başlangıçlarda yaptığınız gibi bir IoT Edge
 
 Azure IoT Hub çalıştırarak IoT Hub 'ınıza gelen tüm iletileri görebilirsiniz: komut paletinde **yerleşik olay uç noktasını Izlemeye başlayın** .
 
-IoT hub'ınıza belirli bir cihazdan gelen iletilerin gösterilmesi için görünüme filtre de uygulayabilirsiniz. **Azure IoT Hub cihazları** bölümünde cihaza sağ tıklayın ve **Izlemeyi Başlat yerleşik olay uç noktası**' nı seçin.
+IoT hub'ınıza belirli bir cihazdan gelen iletilerin gösterilmesi için görünüme filtre de uygulayabilirsiniz. **Azure IoT Hub cihazları** bölümünde cihaza sağ tıklayın ve **Izlemeyi Başlat yerleşik olay uç noktası** ' nı seçin.
 
 İzleme iletilerini durdurmak için, komut paletinde **Azure IoT Hub: yerleşik olay uç noktasını Izlemeyi durdur** komutunu çalıştırın.
 

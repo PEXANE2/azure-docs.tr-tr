@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 0d893eb2bf7a57e173d7acb8f15104522edbc3bf
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: db7d9e99de8a4ee67e49f8b7568700fc07b1e2fd
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408218"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536540"
 ---
 # <a name="introduction-to-azure-security"></a>Azure güvenliğe giriş
 ## <a name="overview"></a>Genel Bakış
@@ -60,7 +60,7 @@ Bulut hizmeti modeline bağlı olarak, uygulamanın veya hizmetin güvenliğini 
 
 Yerleşik yetenekler altı işlevsel alanda düzenlenmiştir: Işlemler, uygulamalar, depolama, ağ, Bilgi Işlem ve kimlik. Bu altı alanda Azure platformunda bulunan özellikler ve yetenekler hakkında ek ayrıntı Özet bilgiler aracılığıyla sağlanır.
 
-## <a name="operations"></a>İşlemler
+## <a name="operations"></a>Operations
 Bu bölümde güvenlik işlemlerinde temel özelliklerle ilgili ek bilgiler ve bu yetenekler hakkında özet bilgiler sağlanmaktadır.
 
 ### <a name="security-and-audit-dashboard"></a>Güvenlik ve Denetim Panosu
@@ -221,7 +221,7 @@ Azure sanal ağınız ile şirket içi siteniz arasında ağ trafiği göndermek
 ### <a name="express-route"></a>Express Route
 Microsoft Azure [ExpressRoute](../../expressroute/expressroute-introduction.md) , şirket içi ağlarınızı bir bağlantı sağlayıcısı tarafından kolaylaştırarak adanmış özel bir bağlantı üzerinden Microsoft bulutuna genişletmenizi sağlayan ADANMıŞ bir WAN bağlantısıdır.
 
-![Express Route](./media/overview/azure-security-fig1.png)
+![Express Route](./media/overview/azure-security-figure-1.png)
 
 ExpressRoute ile Microsoft Azure, Microsoft 365 ve CRM Online gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz. Ortak yerleşim tesisinde bağlantı sağlayıcısı üzerinden herhangi bir ağdan herhangi bir ağa (IP VPN), noktadan noktaya Ethernet ağı veya sanal çapraz bağlantısından bağlantı olabilir. 
 
@@ -231,7 +231,7 @@ ExpressRoute bağlantıları, genel Internet üzerinden geçmez ve bu nedenle VP
 ### <a name="application-gateway"></a>Application Gateway
 Microsoft [Azure Application Gateway](../../application-gateway/overview.md) , uygulamanız için çeşitli 7. katman yük dengeleme özellikleri sunan bir hizmet olarak [uygulama teslım denetleyicisi (ADC)](https://en.wikipedia.org/wiki/Application_delivery_controller) sağlar.
 
-![Application Gateway](./media/overview/azure-security-fig2.png)
+![Application Gateway](./media/overview/azure-security-figure-2.png)
 
 CPU yoğun TLS sonlandırmasını Application Gateway ("TLS yük boşaltma" veya "TLS köprüleme" olarak da bilinir) boşaltarak Web grubu üretkenliğini en iyi hale getirmenize olanak tanır. Ayrıca, gelen trafiğin hepsini bir kez deneme dağıtımı, tanımlama bilgisi tabanlı oturum benzeşimi, URL yolu tabanlı Yönlendirme ve tek bir Application Gateway arkasında birden fazla Web sitesi barındırma özelliği de dahil olmak üzere diğer 7. katman yönlendirme özelliklerini de sağlar. Azure Application Gateway, bir katman 7 yük dengeleyicidir.
 
@@ -242,7 +242,7 @@ Uygulama, HTTP yük dengelemesi, tanımlama bilgisi tabanlı oturum benzeşimi, 
 ### <a name="web-application-firewall"></a>Web Uygulaması Güvenlik Duvarı
 Web uygulaması güvenlik duvarı, standart uygulama teslim denetimi (ADC) işlevleri için Application Gateway kullanan Web uygulamalarına koruma sağlayan bir [Azure Application Gateway](../../application-gateway/overview.md) özelliğidir. Web uygulaması güvenlik duvarı bunu, uygulamaları OWASP tarafından sunulan en yaygın 10 web güvenlik açığının çoğuna karşı koruyarak gerçekleştirir.
 
-![Web Uygulaması Güvenlik Duvarı](./media/overview/azure-security-fig1.png)
+![Web Uygulaması Güvenlik Duvarı](./media/overview/azure-security-figure-3.png)
 
 -   SQL ekleme koruması
 

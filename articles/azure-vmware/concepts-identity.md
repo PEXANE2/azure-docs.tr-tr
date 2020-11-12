@@ -2,25 +2,25 @@
 title: Kavramlar-kimlik ve erişim
 description: Azure VMware çözümünün kimlik ve erişim kavramları hakkında bilgi edinin
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 7127109801d92d2177f6edac3efcaf76ddf217e6
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/11/2020
+ms.openlocfilehash: e9c0d62968d94e2b018186f67072b6ae7078db02
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674640"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536107"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware Çözüm kimliği kavramları
 
-Özel bir bulut dağıtımında, bir vCenter Server ve NSX-T Yöneticisi temin edin. Sanal makine (VM) iş yüklerini yönetmek için vCenter 'ı kullanın. Özel bulut yazılım tanımlı ağını genişletmek için NSX-T Yöneticisi 'ni kullanırsınız.
+Azure VMware çözümü özel bulutları bir vCenter Server ve NSX-T Yöneticisi ile sağlanır. Sanal makine (VM) iş yüklerini yönetmek için vCenter 'ı kullanın. Özel bulutu genişletmek için NSX-T yöneticisini kullanın.
 
 Erişim ve kimlik yönetimi NSX-T Manager için vCenter ve kısıtlı yönetici hakları için CloudAdmin Grup ayrıcalıklarını kullanın. Özel bulut platformunuzun en yeni özellikler ve düzeltme ekleriyle otomatik olarak yükseltmelerini sağlar.  Daha fazla bilgi için bkz. [özel bulut yükseltmeleri kavramları makalesi][concepts-upgrades].
 
 ## <a name="vcenter-access-and-identity"></a>vCenter erişimi ve kimliği
 
-VCenter 'daki ayrıcalıklar CloudAdmin grubu üzerinden sağlanır. Bu grup vCenter 'da yerel olarak yönetilebilir veya Azure Active Directory vCenter LDAP çoklu oturum açma tümleştirmesi aracılığıyla yapılandırılabilir. Özel bir bulut dağıttıktan sonra bu tümleştirmeyi etkinleştirebilme olanağı sunulur.
+CloudAdmin grubu vCenter 'da ayrıcalıkları sağlar. Grubu vCenter 'da yerel olarak yönetirsiniz. Diğer bir seçenek, Azure Active Directory ile vCenter LDAP çoklu oturum açma tümleştirmesini Tümleştirmesidir. Özel bulutunuzu dağıttıktan sonra bu tümleştirmeyi etkinleştirirsiniz. 
 
-CloudAdmin ve CloudGlobalAdmin ayrıcalıkları aşağıdaki tabloda gösterilmiştir.
+Tabloda **CloudAdmin** ve **CloudGlobalAdmin** ayrıcalıkları gösterilmektedir.
 
 |  Ayrıcalık kümesi           | CloudAdmin | CloudGlobalAdmin | Yorum |
 | :---                     |    :---:   |       :---:      |   :--:  |

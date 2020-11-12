@@ -1,17 +1,17 @@
 ---
 title: İşlem ve depolama seçenekleri-MySQL için Azure veritabanı-esnek sunucu
 description: Bu makalede, MySQL için Azure veritabanı-esnek sunucusu 'nda işlem ve depolama seçenekleri açıklanmaktadır.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: 0755ca7e77592a2efd6d8687f9eb19eacc2f0128
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 36f31ee390a6a208b202698ec9bda59b644c9e30
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315167"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534679"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı 'nda işlem ve depolama seçenekleri-esnek sunucu (Önizleme)
 
@@ -132,7 +132,7 @@ Sağlanan depolamayı arttırarak veya daha büyük bir işlem boyutuna taşıya
 
 En yüksek etkin ıOPS, işlem boyutu başına kullanılabilir maksimum ıOPS 'ye bağımlıdır. Aşağıdaki formüle bakın ve [B serisi](../../virtual-machines/sizes-b-series-burstable.md), [Ddsv4-Series](../../virtual-machines/ddv4-ddsv4-series.md)ve [Edsv4 serisi](../../virtual-machines/edv4-edsv4-series.md) belgelerinde *MAKSIMUM önbelleğe alınmamış disk aktarım hızı: IOPS/Mbps* sütununa bakın.
 
-**Maksimum ETKIN IOPS** = MINIMUM (*"önbelleğe alınmış maksimum disk aktarım hızı: IOPS/Mbps"* Işlem boyutu, gib * 3 ' te sağlanan depolama)
+**Maksimum ETKIN IOPS** = MINIMUM ( *"önbelleğe alınmış maksimum disk aktarım hızı: IOPS/Mbps"* Işlem boyutu, gib * 3 ' te sağlanan depolama)
 
 G/ç tüketiminizi, Azure portal (Azure Izleyici ile) üzerinde [GÇ yüzdesi](./concepts-monitoring.md) ölçümünü kullanarak izleyebilirsiniz. Daha fazla ıOPS gerekiyorsa, işlem boyutu veya sağlanan depolama alanı tarafından kısıtlanıp kısıtlanmayacağını anlamanız gerekir. Sunucunuzun işlem veya depolama alanı için uygun şekilde ölçeklendirme yapın.
 
@@ -153,7 +153,7 @@ Depolamanın ölçeklendirilmesi ve yedekleme saklama süresinin değiştirilmes
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-En güncel fiyatlandırma bilgileri için bkz. hizmet [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/MySQL/). İstediğiniz yapılandırmanın maliyetini görmek için [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer/flexibleServers) , seçtiğiniz seçeneklere göre **işlem + depolama** sekmesindeki aylık maliyeti gösterir. Azure aboneliğiniz yoksa, tahmini bir fiyat almak için Azure Fiyatlandırma hesaplayıcısı ' nı kullanabilirsiniz. [Azure Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/) Web sitesinde, **öğe Ekle**' yi seçin, **veritabanları** kategorisini genişletin, **MySQL için Azure veritabanı**' nı seçin ve seçenekleri özelleştirmek için dağıtım türü olarak **esnek sunucu** ' yı seçin.
+En güncel fiyatlandırma bilgileri için bkz. hizmet [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/MySQL/). İstediğiniz yapılandırmanın maliyetini görmek için [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer/flexibleServers) , seçtiğiniz seçeneklere göre **işlem + depolama** sekmesindeki aylık maliyeti gösterir. Azure aboneliğiniz yoksa, tahmini bir fiyat almak için Azure Fiyatlandırma hesaplayıcısı ' nı kullanabilirsiniz. [Azure Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/) Web sitesinde, **öğe Ekle** ' yi seçin, **veritabanları** kategorisini genişletin, **MySQL için Azure veritabanı** ' nı seçin ve seçenekleri özelleştirmek için dağıtım türü olarak **esnek sunucu** ' yı seçin.
 
 Sunucu maliyetini iyileştirmek isterseniz, aşağıdaki ipuçlarını göz önünde bulundurun:
 

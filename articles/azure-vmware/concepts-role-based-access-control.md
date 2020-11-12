@@ -2,13 +2,13 @@
 title: Kavramlar-rol tabanlı erişim denetimi (RBAC)
 description: Azure VMware çözümü için rol tabanlı erişim denetimi 'nin temel özellikleri hakkında bilgi edinin
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 4fbda24ec6a8c1d08570d7f64270a954eb3d8a35
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.date: 10/23/2020
+ms.openlocfilehash: 6e1864fdfe397325a7c5ba601b625bcc1776174c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440952"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535495"
 ---
 # <a name="role-based-access-control-rbac-for-azure-vmware-solution"></a>Azure VMware çözümü için rol tabanlı erişim denetimi (RBAC)
 
@@ -30,15 +30,15 @@ Azure VMware Çözüm dağıtımında, yöneticinin yönetici kullanıcı hesab�
 
 Azure VMware Çözüm CloudAdmin rolüne verilen ayrıcalıkları Azure VMware çözümünüz özel bulut vCenter ' da görebilirsiniz.
 
-1. SDDC vSphere istemcisinde oturum açın ve **menü**  >  **yönetimi**' ne gidin.
-1. **Access Control**altında **Roller**' i seçin.
-1. Roller listesinden **CloudAdmin** öğesini seçin ve ardından **ayrıcalıklar**' ı seçin. 
+1. SDDC vSphere istemcisinde oturum açın ve **menü**  >  **yönetimi** ' ne gidin.
+1. **Access Control** altında **Roller** ' i seçin.
+1. Roller listesinden **CloudAdmin** öğesini seçin ve ardından **ayrıcalıklar** ' ı seçin. 
 
    :::image type="content" source="media/role-based-access-control-cloudadmin-privileges.png" alt-text="VSphere Istemcisinde CloudAdmin rol ayrıcalıklarını görüntüleme":::
 
 Azure VMware çözümünde CloudAdmin rolü vCenter üzerinde aşağıdaki ayrıcalıklara sahiptir. Her ayrıcalık hakkında ayrıntılı bir açıklama için [VMware ürün belgelerine](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html) bakın.
 
-| Privilege | Description |
+| Privilege | Açıklama |
 | --------- | ----------- |
 | **Alarmlar** | Alarmı kabul et<br />Alarm oluştur<br />Alarm eylemini devre dışı bırak<br />Uyarıyı Değiştir<br />Alarmı kaldır<br />Alarm durumunu ayarla |
 | **İzinler** | İzinleri değiştir |
@@ -55,7 +55,7 @@ Azure VMware çözümünde CloudAdmin rolü vCenter üzerinde aşağıdaki ayrı
 | **Oturumlar** | İleti<br />Oturumu doğrula |
 | **Profil** | Profil temelli depolama görünümü |
 | **Depolama görünümü** | Görüntüle |
-| **vApp** | Sanal makine Ekle<br />Kaynak havuzu ata<br />VApp atama<br />Kopyalama<br />Oluştur<br />Sil<br />Dışarı Aktarma<br />İçeri Aktarma<br />Taşı<br />Kapatma<br />Açma<br />Rename<br />Askıya Alma<br />Kaydı Kaldır<br />OVF ortamını görüntüle<br />vApp uygulama yapılandırması<br />vApp örneği yapılandırması<br />yapılandırmaya göre vApp Managed<br />vApp kaynak yapılandırması |
+| **vApp** | Sanal makine Ekle<br />Kaynak havuzu ata<br />VApp atama<br />Kopyalama<br />Oluştur<br />Sil<br />Dışarı Aktarma<br />İçeri Aktar<br />Taşı<br />Kapatma<br />Açma<br />Rename<br />Askıya Alma<br />Kaydı Kaldır<br />OVF ortamını görüntüle<br />vApp uygulama yapılandırması<br />vApp örneği yapılandırması<br />yapılandırmaya göre vApp Managed<br />vApp kaynak yapılandırması |
 | **Sanal makine** | Yapılandırmayı Değiştir<br />&#160;&#160;&#160;&#160;disk kirası alma<br />Mevcut diski eklemek &#160;&#160;&#160;&#160;<br />&#160;&#160;&#160;&#160;yeni disk Ekle<br />Cihaz ekleme veya kaldırma &#160;&#160;&#160;&#160;<br />Gelişmiş yapılandırma &#160;&#160;&#160;&#160;<br />&#160;&#160;&#160;&#160;değişiklik CPU sayısı<br />&#160;&#160;&#160;&#160;değişiklik belleği<br />&#160;&#160;&#160;&#160;değişiklik ayarları<br />&#160;&#160;&#160;&#160;takas dosyası yerleşimini değiştirme<br />&#160;&#160;&#160;&#160;değişiklik kaynağı<br />&#160;&#160;&#160;&#160;Konağı USB cihazını yapılandırma<br />Ham cihaz yapılandırma &#160;&#160;&#160;&#160;<br />&#160;&#160;&#160;&#160;managedBy 'yi Yapılandır<br />&#160;&#160;&#160;&#160;bağlantı ayarlarını görüntüleme<br />Sanal diski &#160;&#160;&#160;&#160;Genişlet<br />&#160;&#160;&#160;&#160;cihaz ayarlarını değiştir<br />&#160;&#160;&#160;&#160;sorgu hatası toleransı uyumluluğu<br />Sorgu sahip olmayan dosyaları &#160;&#160;&#160;&#160;<br />Yollardan yeniden yükleme &#160;&#160;&#160;&#160;<br />Diski &#160;&#160;&#160;&#160;kaldır<br />&#160;&#160;&#160;&#160;yeniden adlandır<br />&#160;&#160;&#160;&#160;Konuk bilgilerini sıfırlama<br />&#160;&#160;&#160;&#160;ek açıklaması ayarla<br />&#160;&#160;&#160;&#160;disk değişiklik izlemeyi Değiştir<br />&#160;&#160;&#160;&#160;çatalını üst üste değiştirme<br />Sanal makine uyumluluğunu yükseltme &#160;&#160;&#160;&#160;<br />Stoku düzenleme<br />Mevcut &#160;&#160;&#160;&#160;oluştur<br />&#160;&#160;&#160;&#160;yeni oluştur<br />&#160;&#160;&#160;&#160;taşıma<br />Kayıt &#160;&#160;&#160;&#160;<br />&#160;&#160;&#160;&#160;kaldır<br />&#160;&#160;&#160;&#160;kaydını sil<br />Konuk işlemleri<br />&#160;&#160;&#160;&#160;Konuk işlemi diğer adı değişikliği<br />&#160;&#160;&#160;&#160;Konuk işlemi diğer adı sorgusu<br />&#160;&#160;&#160;&#160;Konuk işlem değişiklikleri<br />&#160;&#160;&#160;&#160;Konuk işlem programı yürütme<br />&#160;&#160;&#160;&#160;Konuk işlem sorguları<br />Etkileşim<br />&#160;&#160;&#160;&#160;cevap sorusu<br />Sanal makinede yedekleme işlemini &#160;&#160;&#160;&#160;<br />&#160;&#160;&#160;&#160;CD medyası yapılandırma<br />&#160;&#160;&#160;&#160;Floppy medyayı yapılandırma<br />&#160;&#160;&#160;&#160;cihazları bağlama<br />&#160;&#160;&#160;&#160;konsolu etkileşimi<br />&#160;&#160;&#160;&#160;ekran görüntüsü oluşturma<br />Tüm diskleri birleştirme &#160;&#160;&#160;&#160;<br />&#160;&#160;&#160;&#160;sürükleyip bırakma<br />VIX API tarafından Konuk işletim sistemi yönetimini &#160;&#160;&#160;&#160;<br />&#160;&#160;&#160;&#160;USB HID tarama kodları ekleme<br />&#160;&#160;&#160;&#160;VMware araçları 'nı yükler<br />&#160;&#160;&#160;&#160;duraklatma veya duraklamayı kaldırma<br />&#160;&#160;&#160;&#160;Temizleme veya küçültme işlemleri gerçekleştirme<br />&#160;&#160;&#160;&#160;kapatmayı kapat<br />&#160;&#160;&#160;&#160;açma<br />Sanal makinede kayıt oturumu &#160;&#160;&#160;&#160;<br />&#160;&#160;&#160;&#160;sanal makinede yeniden oynatma oturumu<br />&#160;&#160;&#160;&#160;askıya al<br />&#160;&#160;&#160;&#160;askıya alma hata toleransı<br />Yük devretme testini &#160;&#160;&#160;&#160;<br />&#160;&#160;&#160;&#160;test yeniden başlatma ikincil VM<br />Hata toleransını kapatma &#160;&#160;&#160;&#160;<br />Hata toleransını &#160;&#160;&#160;&#160;açın<br />Sağlama<br />&#160;&#160;&#160;&#160;disk erişimine Izin ver<br />&#160;&#160;&#160;&#160;dosya erişimine Izin ver<br />Salt okuma &#160;&#160;&#160;&#160;disk erişimine Izin ver<br />Sanal makine indirmeye Izin ver &#160;&#160;&#160;&#160;<br />Şablonu &#160;&#160;&#160;&#160;Kopyala<br />Sanal makineyi &#160;&#160;&#160;&#160;Kopyala<br />&#160;&#160;&#160;&#160;sanal makineden Şablon Oluştur<br />&#160;&#160;&#160;&#160;Konuk özelleştirme<br />&#160;&#160;&#160;&#160;şablonu dağıtma<br />Şablon olarak &#160;&#160;&#160;&#160;Işaretle<br />&#160;&#160;&#160;&#160;özelleştirme belirtimini değiştirme<br />Diskleri &#160;&#160;&#160;&#160;yükselt<br />&#160;&#160;&#160;&#160;özelleştirme belirtimlerini oku<br />Hizmet yapılandırması<br />Bildirimlere Izin ver &#160;&#160;&#160;&#160;<br />Genel olay bildirimlerinin yoklanmaya Izin &#160;&#160;&#160;&#160;<br />Hizmet yapılandırmasını yönetmek &#160;&#160;&#160;&#160;<br />Hizmet yapılandırmasını değiştirme &#160;&#160;&#160;&#160;<br />&#160;&#160;&#160;&#160;sorgu hizmeti yapılandırması<br />&#160;&#160;&#160;&#160;hizmeti yapılandırmasını oku<br />Anlık görüntü yönetimi<br />&#160;&#160;&#160;&#160;anlık görüntü oluştur<br />Anlık görüntüyü kaldırmak &#160;&#160;&#160;&#160;<br />&#160;&#160;&#160;&#160;anlık görüntüyü yeniden adlandır<br />Anlık görüntüyü &#160;&#160;&#160;&#160;al<br />vSphere çoğaltması<br />Çoğaltmayı yapılandırma &#160;&#160;&#160;&#160;<br />Çoğaltmayı yönetmek &#160;&#160;&#160;&#160;<br />&#160;&#160;&#160;&#160;Izleyicisi çoğaltması |
 | **vService** | Bağımlılık oluştur<br />Bağımlılığı yok et<br />Bağımlılık yapılandırmasını yeniden yapılandırın<br />Güncelleştirme bağımlılığı |
 

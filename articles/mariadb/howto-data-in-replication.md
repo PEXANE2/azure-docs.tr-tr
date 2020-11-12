@@ -1,17 +1,17 @@
 ---
 title: Veri çoğaltma yapılandırma-MariaDB için Azure veritabanı
 description: Bu makalede, MariaDB için Azure veritabanı 'nda Gelen Verileri Çoğaltma ayarlama açıklanır.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: 21a0aaaa9e10a7c3e445145eb178b50b446ba6ae
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: fe7e02cc34dc9c97e540d7b8d96c48ee8d5cfe09
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426000"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535376"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda Gelen Verileri Çoğaltma yapılandırma
 
@@ -45,7 +45,7 @@ Bu makaledeki adımları gerçekleştirmeden önce, verileri çoğaltmanın [sı
 > [!NOTE]
 > Sapma ücretsiz iletişim
 >
-> Microsoft, farklı ve üçlü ortamları destekler. Bu makale, _İkincil_sözcüğe başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) bunu bir exclusionword olarak tanır. Bu makalede, şu anda yazılımda görüntülenen sözcük olduğundan, bu makalede tutarlılık için kullanılır. Yazılım, sözcüğü kaldıracak şekilde güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
+> Microsoft, farklı ve üçlü ortamları destekler. Bu makale, _İkincil_ sözcüğe başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) bunu bir exclusionword olarak tanır. Bu makalede, şu anda yazılımda görüntülenen sözcük olduğundan, bu makalede tutarlılık için kullanılır. Yazılım, sözcüğü kaldıracak şekilde güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
 >
 
 ## <a name="configure-the-source-server"></a>Kaynak sunucuyu yapılandırma
@@ -54,7 +54,7 @@ Aşağıdaki adımlar, şirket içinde barındırılan MariaDB sunucusunu, bir V
 
 1. Devam etmeden önce [ana sunucu gereksinimlerini](concepts-data-in-replication.md#requirements) gözden geçirin. 
 
-2. Kaynak sunucunun bağlantı noktası 3306 ' de gelen ve giden trafiğe izin verdiğinden ve kaynak sunucunun **ortak BIR IP adresi**olduğundan, DNS genel olarak erişilebilir olduğundan veya tam etki alanı adı (FQDN) olduğundan emin olun. 
+2. Kaynak sunucunun bağlantı noktası 3306 ' de gelen ve giden trafiğe izin verdiğinden ve kaynak sunucunun **ortak BIR IP adresi** olduğundan, DNS genel olarak erişilebilir olduğundan veya tam etki alanı adı (FQDN) olduğundan emin olun. 
    
    Başka bir makinede barındırılan MySQL komut satırı veya Azure portal kullanılabilir [Azure Cloud Shell](../cloud-shell/overview.md) gibi bir araçtan bağlanmayı deneyerek kaynak sunucuya bağlantıyı test edin.
 
@@ -78,7 +78,7 @@ Aşağıdaki adımlar, şirket içinde barındırılan MariaDB sunucusunu, bir V
       ```bash
       ping <output of step 2b>
       ``` 
-      Örneğin: 
+      Örnek: 
       ```bash      
       C:\Users\testuser> ping e299ae56f000.tr1830.westus1-a.worker.database.windows.net
       Pinging tr1830.westus1-a.worker.database.windows.net (**11.11.111.111**) 56(84) bytes of data.
@@ -141,7 +141,7 @@ Aşağıdaki adımlar, şirket içinde barındırılan MariaDB sunucusunu, bir V
 
    **MySQL Workbench**
 
-   MySQL çalışma ekranı 'nda çoğaltma rolünü oluşturmak için, **Yönetim** bölmesinde, **Kullanıcılar ve ayrıcalıklar**' ı seçin. Ardından **Hesap Ekle**' yi seçin.
+   MySQL çalışma ekranı 'nda çoğaltma rolünü oluşturmak için, **Yönetim** bölmesinde, **Kullanıcılar ve ayrıcalıklar** ' ı seçin. Ardından **Hesap Ekle** ' yi seçin.
  
    ![Kullanıcılar ve ayrıcalıklar](./media/howto-data-in-replication/users_privileges.png)
 
@@ -149,7 +149,7 @@ Aşağıdaki adımlar, şirket içinde barındırılan MariaDB sunucusunu, bir V
 
    ![Kullanıcıyı Eşitle](./media/howto-data-in-replication/syncuser.png)
  
-   **Yönetim rolleri** panelini seçin ve ardından **genel ayrıcalıklar**listesinden **çoğaltma bağımlı**öğesini seçin. Çoğaltma rolünü oluşturmak için **Uygula** ' yı seçin.
+   **Yönetim rolleri** panelini seçin ve ardından **genel ayrıcalıklar** listesinden **çoğaltma bağımlı** öğesini seçin. Çoğaltma rolünü oluşturmak için **Uygula** ' yı seçin.
 
    ![Çoğaltma bağımlı](./media/howto-data-in-replication/replicationslave.png)
 

@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 1cf6c6516e01774d0345a3f75f6f1c2826451dce
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 68a308952b63d15aa6db90021400f826ef575c0c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289864"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537195"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>Özel bağlantılarla yönetilen disklere yönelik içeri/dışarı aktarma erişimini kısıtlamak için Azure portal kullanın
 
@@ -27,9 +27,6 @@ NetworkAccessPolicy özelliğini, `DenyAll` herhangi bir gövdenin bir disk veya
 
 [!INCLUDE [virtual-machines-disks-private-links-limitations](../../includes/virtual-machines-disks-private-links-limitations.md)]
 
-## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
-
-[!INCLUDE [virtual-machines-disks-private-links-regions](../../includes/virtual-machines-disks-private-links-regions.md)]
 
 ## <a name="create-a-disk-access-resource"></a>Disk erişim kaynağı oluşturma
 

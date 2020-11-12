@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 3200cfe290cbba208c61e914b17ffa6cd65e6eee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d323504a46cd35525c889a94d2d044193c1471ac
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899562"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535954"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 'SU üzerinde Redis, Arc etkin Kubernetes kümesine sahip bir PHP Konuk defteri olmayan uygulaması dağıtma
 
@@ -77,11 +77,11 @@ Azure yay kaynağını, Azure portal bir Gilar yapılandırması dağıtmak üze
 
     ![Azure yay kaynağına git](media/azure-stack-edge-gpu-connect-powershell-interface/verify-azure-arc-enabled-1.png)
 
-1. **Yapılandırmalar** ' a gidin ve **+ yapılandırma Ekle**' yi seçin.
+1. **Yapılandırmalar** ' a gidin ve **+ yapılandırma Ekle** ' yi seçin.
 
-    ![Yapılandırmalara git](media/azure-stack-edge-gpu-connect-powershell-interface/select-configurations-1.png)
+    ![Ekran görüntüsü, yapılandırma Ekle seçiliyken Azure Arc etkin Kubernetes kümesini gösterir.](media/azure-stack-edge-gpu-connect-powershell-interface/select-configurations-1.png)
 
-1. **Yapılandırma Ekle**' de alanlar için uygun değerleri girin ve **Uygula**' yı seçin.
+1. **Yapılandırma Ekle** ' de alanlar için uygun değerleri girin ve **Uygula** ' yı seçin.
 
     |Parametre  |Açıklama |
     |---------|---------|
@@ -89,22 +89,22 @@ Azure yay kaynağını, Azure portal bir Gilar yapılandırması dağıtmak üze
     |İşleç örneği adı     |Belirli bir yapılandırmayı tanımlamak için işlecin örnek adı. Ad, yalnızca küçük harf, alfasayısal, kısa çizgi ve nokta olması gereken en fazla 253 karakter dizesidir.         |
     |İşleç ad alanı     | Bu, dağıtımda belirtilen ad alanıyla eşleştiğinden **demotestkonuk defteri** olarak ayarlanır `yaml` . <br> Alan, işlecin yüklendiği ad alanını tanımlar. Ad, yalnızca küçük harf, alfasayısal, kısa çizgi ve nokta olması gereken en fazla 253 karakter dizesidir.         |
     |Depo URL 'SI     |<br>`http://github.com/username/repo`Gila yapılandırmanızın bulunduğu konum veya biçimdeki git deposunun yolu `git://github.com/username/repo` .         |
-    |İşleç kapsamı     | **Ad alanı**seçin. <br>Bu, işlecinin yüklendiği kapsamı tanımlar. Bunu ad alanı olarak seçin. Operatörünüz, dağıtım YAML dosyalarında belirtilen ad alanına yüklenecek.       |
+    |İşleç kapsamı     | **Ad alanı** seçin. <br>Bu, işlecinin yüklendiği kapsamı tanımlar. Bunu ad alanı olarak seçin. Operatörünüz, dağıtım YAML dosyalarında belirtilen ad alanına yüklenecek.       |
     |İşleç türü     | Varsayılan olarak bırakın. <br>Bu, varsayılan olarak, Flox olarak ayarlanan işlecin türünü belirtir.        |
     |İşleç parametreleri     | Bunu boş bırakın. <br>Bu alan Flox işlecine geçirilecek parametreleri içerir.        |
-    |Helm     | Bunu **devre dışı**olarak ayarlayın. <br>Grafik tabanlı dağıtımlar yapacaksınız bu seçeneği etkinleştirin.        |
+    |Helm     | Bunu **devre dışı** olarak ayarlayın. <br>Grafik tabanlı dağıtımlar yapacaksınız bu seçeneği etkinleştirin.        |
 
 
     ![Yapılandırma ekleme](media/azure-stack-edge-gpu-connect-powershell-interface/add-configuration-1.png)
 
 
-1. Yapılandırma dağıtımı başlar ve **operatör durumu** **Beklemede**olarak gösterilir. 
+1. Yapılandırma dağıtımı başlar ve **operatör durumu** **Beklemede** olarak gösterilir. 
 
-    ![Yapılandırmalara git](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-1.png)
+    ![Ekran görüntüsü, yenilendiğinde, Azure Arc etkinleştirilmiş Kubernetes kümesini bekleyen bir durumda gösterir.](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-1.png)
 
-1. Dağıtım birkaç dakika sürer. Dağıtım tamamlandığında, **işleç durumu** **yüklü**olarak gösterilir.
+1. Dağıtım birkaç dakika sürer. Dağıtım tamamlandığında, **işleç durumu** **yüklü** olarak gösterilir.
 
-    ![Yapılandırmalara git](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-2.png)
+    ![Ekran görüntüsü, Azure Arc etkin Kubernetes kümesini yüklü durumda gösterir.](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-2.png)
 
 
 ## <a name="verify-deployment"></a>Dağıtımı doğrulama
@@ -154,7 +154,7 @@ Gilar yapılandırması aracılığıyla dağıtım, `demotestguestbook` Git dep
 Dağıtımı silmek için Azure portal yapılandırmayı silebilirsiniz. Bu, dağıtımlar ve hizmetler dahil oluşturulan nesneleri silecektir.
 
 1. Azure portal, Azure Arc kaynak > yapılandırma ' ya gidin. 
-1. Silmek istediğiniz yapılandırmayı bulun. Şunu seçin... bağlam menüsünü çağırmak ve **Sil**' i seçin.
+1. Silmek istediğiniz yapılandırmayı bulun. Şunu seçin... bağlam menüsünü çağırmak ve **Sil** ' i seçin.
     ![Yapılandırmayı Sil](media/azure-stack-edge-gpu-connect-powershell-interface/delete-configuration-1.png)
 
 Yapılandırmanın silinmesi birkaç dakika sürebilir.

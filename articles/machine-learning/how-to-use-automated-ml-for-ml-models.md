@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: 0c697e6332b757e1d135a77b70f33a6e32528309
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: aa45bc9f70bf05074391dd14cc5fc774eb77c762
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358907"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536260"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Azure Machine Learning ile otomatik makine öğrenimi modelleri oluşturun, gözden geçirin ve dağıtın
 
@@ -162,6 +162,9 @@ Impute with| Verilerinizde hangi değerin eksik olduğunu belirlemek için değe
 ## <a name="run-experiment-and-view-results"></a>Deneme çalıştırma ve sonuçları görüntüleme
 
 Denemenizi çalıştırmak için **son** ' u seçin. Denemeyi hazırlama işlemi 10 dakika kadar sürebilir. Eğitim işlerinde her işlem hattının çalıştırılmasını tamamlamak fazladan 2-3 dakika daha sürebilir.
+
+> [!NOTE]
+> Otomatik ML algoritmaları, önerilen modellerde, doğruluk gibi son ölçüm puanına hafif değişimler oluşmasına neden olabilecek, rastgele bir şekilde sahiptir. Otomatikleştirilmiş ML, gerektiğinde tren-test Split, tren-doğrulama bölme veya çapraz doğrulama gibi veriler üzerinde işlemler de gerçekleştirir. Bu nedenle, aynı yapılandırma ayarları ve birincil ölçüm ile bir denemeyi birden çok kez çalıştırırsanız, bu faktörlere bağlı olarak her bir denemeleri son ölçüm puanı için çeşitleme görürsünüz. 
 
 ### <a name="view-experiment-details"></a>Deneme ayrıntılarını görüntüleme
 

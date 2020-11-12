@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1, automl
-ms.openlocfilehash: 435476bee4839d083e3fe6cb0aa635d5ca67c4c0
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b49b9f710a98495342687c4ce1dc702078b27246
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94352583"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535342"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 
@@ -37,7 +37,7 @@ Otomatik makine öğreniminde kullanılabilen yapılandırma seçenekleri:
 
 Kod deneyimini tercih ediyorsanız, [Azure Machine Learning Studio 'da otomatik makine öğrenimi denemeleri de oluşturabilirsiniz](how-to-use-automated-ml-for-ml-models.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 İhtiyacınız olan bu makalede, 
 * Azure Machine Learning çalışma alanı. Çalışma alanını oluşturmak için, bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
@@ -222,7 +222,7 @@ Her otomatik makine öğrenimi denemesinde, verileriniz, farklı ölçeklerde bu
 
 Denemeleri 'nizi yapılandırırken `AutoMLConfig` , ayarı etkinleştirebilir/devre dışı bırakabilirsiniz `featurization` . Aşağıdaki tabloda, [oto Mlconfig nesnesinde](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)fealeştirme için kabul edilen ayarlar gösterilmektedir. 
 
-|Korleştirme yapılandırması | Description |
+|Korleştirme yapılandırması | Açıklama |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Ön işleme 'nin bir parçası olarak, [veri guardı ve korleştirme adımlarının](how-to-configure-auto-features.md#featurization) otomatik olarak gerçekleştirileceğini belirtir. **Varsayılan ayar**.|
 |`"featurization": 'off'`| Korleştirme adımının otomatik olarak yapılmaması gerektiğini gösterir.|
@@ -346,6 +346,9 @@ Bir not defteriniz varsa, eğitim sonuçlarınızı bir pencere öğesinde veya 
 Her çalıştırma için sunulan performans grafiklerinin ve ölçümlerinin tanımları ve örnekleri için [otomatik makine öğrenimi sonuçlarını değerlendir](how-to-understand-automated-ml.md) bölümüne bakın. 
 
 Bir Özet Özeti almak ve belirli bir modele hangi özelliklerin eklendiğini anlamak için bkz. uygun [Saydamlık](how-to-configure-auto-features.md#featurization-transparency). 
+
+> [!NOTE]
+> Otomatik ML algoritmaları, önerilen modellerde, doğruluk gibi son ölçüm puanına hafif değişimler oluşmasına neden olabilecek, rastgele bir şekilde sahiptir. Otomatikleştirilmiş ML, gerektiğinde tren-test Split, tren-doğrulama bölme veya çapraz doğrulama gibi veriler üzerinde işlemler de gerçekleştirir. Bu nedenle, aynı yapılandırma ayarları ve birincil ölçüm ile bir denemeyi birden çok kez çalıştırırsanız, bu faktörlere bağlı olarak her bir denemeleri son ölçüm puanı için çeşitleme görürsünüz. 
 
 ## <a name="register-and-deploy-models"></a>Modelleri kaydetme ve dağıtma
 

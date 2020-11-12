@@ -1,19 +1,19 @@
 ---
 title: CLı betiği-restore Server-MariaDB için Azure veritabanı
 description: Bu örnek Azure CLı betiği, MariaDB sunucusu ve veritabanlarının veritabanları için Azure veritabanı 'nın zaman içinde önceki bir noktaya nasıl geri yükleneceğini gösterir.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: 2626f9c5c078b7dc5026f00014fd7f197641b32d
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: a4fc645f43858e80eeffc6c1672f6bd4369e7290
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518039"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536787"
 ---
 # <a name="restore-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure CLı kullanarak bir MariaDB sunucusu için Azure veritabanı 'nı geri yükleme
 Bu örnek CLı betiği, MariaDB sunucusu için tek bir Azure veritabanını zaman içinde önceki bir noktaya geri yükler.

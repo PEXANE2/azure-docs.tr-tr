@@ -1,7 +1,7 @@
 ---
 title: Machine Learning Web hizmeti uç noktalarından verileri izleme ve toplama
 titleSuffix: Azure Machine Learning
-description: Azure Application Insights kullanarak Azure Machine Learning ile dağıtılan Web hizmetlerini izleme
+description: Azure Kubernetes Service (AKS) veya Azure Container Instances (acı) içindeki Web hizmeti uç noktalarına dağıtılan modellerden nasıl veri toplayacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: blackmist
 ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 1f02c9b080b87b4fbffcd1870dd139b9d32de0c7
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 5d49a88b89f9e2f4e2c2e6fa8ef18a01c803e3f7
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357680"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536600"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>ML web hizmet uç noktalarından verileri izleme ve toplama
 
@@ -32,7 +32,7 @@ Bu makalede, Azure Kubernetes Service (AKS) veya Azure Container Instances (acı
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
  
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 

@@ -14,12 +14,12 @@ ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: bilgisayar görme, görüntü işleme uygulamaları, görüntü işleme hizmeti
-ms.openlocfilehash: fa00265f3c591578f9970b77770fbf7290d87510
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 851470971335f144ebe0f9b602a8adc7d5ee06cf
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90907079"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536226"
 ---
 # <a name="what-is-computer-vision"></a>Görüntü İşleme nedir?
 
@@ -39,7 +39,7 @@ Görüntü İşleme, [optik karakter tanıma (OCR)](concept-recognizing-text.md)
 
 ## <a name="analyze-images-for-insight"></a>İçgörü edinmek için görüntüleri analiz etme
 
-Görsel özellikleri ve özellikleri hakkında Öngörüler sağlamak için görüntüleri çözümleyebilirsiniz. Aşağıdaki tabloda bulunan tüm özellikler, [görüntüyü çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 'si tarafından sağlanır. Başlamak için [hızlı](#next-steps) başlangıcı izleyin.
+Görsel özellikleri ve özellikleri hakkında Öngörüler sağlamak için görüntüleri çözümleyebilirsiniz. Aşağıdaki tabloda bulunan tüm özellikler, [görüntüyü çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API 'si tarafından sağlanır. Başlamak için [hızlı](#next-steps) başlangıcı izleyin.
 
 
 ### <a name="tag-visual-features"></a>Görsel özellikleri etiketleme
@@ -80,11 +80,11 @@ Bir görüntüdeki renk kullanımını analiz edin. Görüntü İşleme, bir gö
 
 ### <a name="generate-a-thumbnail"></a>Küçük resim oluşturma
 
-Görüntülere uygun küçük resimler oluşturmak üzere söz konusu görüntülerin içeriklerini analiz edin. Görüntü İşleme ilk olarak yüksek kaliteli bir küçük resim oluşturur ve sonra *ilgilendiğiniz alanı*öğrenmek için görüntü içindeki nesneleri analiz eder. Görüntü İşleme sonra görüntüyü, ilgilendiğiniz alanın gereksinimlerine uyacak şekilde kırpar. Oluşturulan küçük resim, ihtiyaçlarınız doğrultusunda, özgün görüntünün en boy oranından farklı bir en boy oranı kullanılarak sunulabilir. [Küçük resim oluşturma](concept-generating-thumbnails.md)
+Görüntülere uygun küçük resimler oluşturmak üzere söz konusu görüntülerin içeriklerini analiz edin. Görüntü İşleme ilk olarak yüksek kaliteli bir küçük resim oluşturur ve sonra *ilgilendiğiniz alanı* öğrenmek için görüntü içindeki nesneleri analiz eder. Görüntü İşleme sonra görüntüyü, ilgilendiğiniz alanın gereksinimlerine uyacak şekilde kırpar. Oluşturulan küçük resim, ihtiyaçlarınız doğrultusunda, özgün görüntünün en boy oranından farklı bir en boy oranı kullanılarak sunulabilir. [Küçük resim oluşturma](concept-generating-thumbnails.md)
 
 ### <a name="get-the-area-of-interest"></a>İlgilendiğiniz alanı alın
 
-*İlgilendiğiniz alanın*koordinatlarını döndürmek için bir görüntünün içeriğini analiz edin. Görüntüyü kırpmak ve küçük resim oluşturmak yerine, Görüntü İşleme bölgenin sınırlayıcı kutusu koordinatlarını döndürür, böylece çağıran uygulama özgün görüntüyü istediğiniz gibi değiştirebilir. [İlgilendiğiniz alanı alın](concept-generating-thumbnails.md#area-of-interest)
+*İlgilendiğiniz alanın* koordinatlarını döndürmek için bir görüntünün içeriğini analiz edin. Görüntüyü kırpmak ve küçük resim oluşturmak yerine, Görüntü İşleme bölgenin sınırlayıcı kutusu koordinatlarını döndürür, böylece çağıran uygulama özgün görüntüyü istediğiniz gibi değiştirebilir. [İlgilendiğiniz alanı alın](concept-generating-thumbnails.md#area-of-interest)
 
 ## <a name="moderate-content-in-images"></a>Görüntü içeriklerini denetleme
 

@@ -1,17 +1,17 @@
 ---
 title: Güvenlik duvarı kurallarını yönetme-Azure portal-MariaDB için Azure veritabanı
 description: Azure portal kullanarak MariaDB için Azure veritabanı güvenlik duvarı kuralları oluşturma ve yönetme
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 464b13fe4aa727a4d3ca3ff074b8bb94544576a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 895c8e51e16cb0b82ebf3edcf954dabe62b08ff4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86101231"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537141"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>Azure portal kullanarak MariaDB için Azure veritabanı güvenlik duvarı kuralları oluşturun ve yönetin
 Sunucu düzeyinde güvenlik duvarı kuralları, belirli bir IP adresinden veya bir IP adresi aralığından MariaDB sunucusu için Azure veritabanı 'na erişimi yönetmek için kullanılabilir.
@@ -49,10 +49,10 @@ Azure 'daki uygulamaların, MariaDB sunucusu için Azure veritabanınıza bağla
 
 ## <a name="manage-existing-firewall-rules-in-the-azure-portal"></a>Azure portal mevcut güvenlik duvarı kurallarını yönetme
 Güvenlik duvarı kurallarını yönetmek için adımları yineleyin.
-* Geçerli bilgisayarı eklemek için **+ IP 'Mi Ekle**'ye tıklayın. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
-* Ek IP adresleri eklemek için **kural adı**, **Başlangıç IP**'si ve **bitiş IP 'si**yazın. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
-* Mevcut bir kuralı değiştirmek için kuraldaki alanlardan herhangi birine tıklayın ve ardından değiştirin. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
-* Mevcut bir kuralı silmek için, üç nokta işaretine [...] ve sonra **Sil**' e tıklayın. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
+* Geçerli bilgisayarı eklemek için **+ IP 'Mi Ekle** 'ye tıklayın. Değişiklikleri kaydetmek için **Kaydet** ’e tıklayın.
+* Ek IP adresleri eklemek için **kural adı** , **Başlangıç IP** 'si ve **bitiş IP 'si** yazın. Değişiklikleri kaydetmek için **Kaydet** ’e tıklayın.
+* Mevcut bir kuralı değiştirmek için kuraldaki alanlardan herhangi birine tıklayın ve ardından değiştirin. Değişiklikleri kaydetmek için **Kaydet** ’e tıklayın.
+* Mevcut bir kuralı silmek için, üç nokta işaretine [...] ve sonra **Sil** ' e tıklayın. Değişiklikleri kaydetmek için **Kaydet** ’e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
  - Benzer şekilde, [Azure CLI kullanarak MariaDB güvenlik duvarı kuralları Için Azure veritabanı oluşturmak ve yönetmek](howto-manage-firewall-cli.md)üzere komut dosyası oluşturabilirsiniz.

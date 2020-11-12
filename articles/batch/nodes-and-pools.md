@@ -2,13 +2,13 @@
 title: Azure Batch düğümler ve havuzlar
 description: İşlem düğümleri ve havuzlar hakkında bilgi edinin ve bunların bir geliştirme açısından Azure Batch iş akışında nasıl kullanıldığını öğrenin.
 ms.topic: conceptual
-ms.date: 10/21/2020
-ms.openlocfilehash: c85c50d0b30e30563390d2ffb05942f199047d67
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.date: 11/10/2020
+ms.openlocfilehash: 77f3a1c954f5591537436c9ee747052b3a642ec4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913815"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537620"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch düğümler ve havuzlar
 
@@ -72,9 +72,9 @@ Toplu Işte kullanılabilen iki tür havuz yapılandırması vardır.
 
 ### <a name="cloud-services-configuration"></a>Cloud Services yapılandırması
 
-**Cloud Services yapılandırması** , havuzun Azure Cloud Services düğümlerinden oluştuğunu belirtir. Cloud Services *yalnızca* Windows işlem düğümleri sağlar.
+**Cloud Services yapılandırması** , havuzun Azure Cloud Services düğümlerinden oluştuğunu belirtir. Cloud Services yalnızca Windows işlem düğümleri sağlar.
 
-Cloud Services Yapılandırması havuzları için kullanılabilen işletim sistemleri [Azure Konuk işletim sistemi sürümleri ve SDK uyumluluk matrisi](../cloud-services/cloud-services-guestos-update-matrix.md) içinde listelenmiştir. Cloud Services düğümleri içeren bir havuz oluşturduğunuzda, düğüm boyutunu ve *Işletim sistemi ailesini* belirtmeniz gerekir (hangi .NET sürümlerinin işletim sistemine yükleneceğini belirler). Cloud Services, Windows çalıştıran sanal makinelerden daha hızlı bir şekilde Azure 'a dağıtılır. Windows işlem düğümlerinden oluşan havuzlar oluşturmak istiyorsanız, Cloud Services'ın dağıtım süresi açısından daha iyi bir performans sunduğunu görebilirsiniz.
+Cloud Services yapılandırma havuzları için kullanılabilir işletim sistemleri, [Azure Konuk işletim sistemi sürümleri ve SDK uyumluluk matrisi](../cloud-services/cloud-services-guestos-update-matrix.md)' nda listelenir ve kullanılabilir işlem düğümü boyutları, [Cloud Services için Boyutlar](../cloud-services/cloud-services-sizes-specs.md)bölümünde listelenmiştir. Cloud Services düğümleri içeren bir havuz oluşturduğunuzda, düğüm boyutunu ve *Işletim sistemi ailesini* belirtirsiniz (hangi .NET sürümlerinin işletim sistemine yükleneceğini belirler). Cloud Services, Windows çalıştıran sanal makinelerden daha hızlı bir şekilde Azure 'a dağıtılır. Windows işlem düğümlerinden oluşan havuzlar oluşturmak istiyorsanız, Cloud Services'ın dağıtım süresi açısından daha iyi bir performans sunduğunu görebilirsiniz.
 
 Cloud Services dahilindeki çalışan rollerinde olduğu gibi bir *İşletim Sistemi Sürümü* belirtebilirsiniz (çalışan rolleri hakkında daha fazla bilgi için bkz. [Cloud Services’e genel bakış](../cloud-services/cloud-services-choose-me.md)). `Latest (*)`Düğümlerin otomatik olarak yükseltilmesi Için *Işletim sistemi sürümü* için belirtmenizi öneririz ve yeni yayınlanan sürümlere geçmek için gereken bir iş yoktur. Belirli bir işletim sistemi sürümünün seçildiği birincil kullanım durumu, sürümün güncelleştirilmesine izin vermeden önce geriye dönük uyumluluk testinin gerçekleştirilmesine izin vererek uygulama uyumluluğunun sağlandığından emin olmaktır. Doğrulamadan sonra, havuzun *Işletim sistemi sürümü* güncelleştirilemeyebilir ve yeni işletim sistemi görüntüsü yüklenebilirler. Çalışan tüm görevler kesintiye uğrar ve yeniden kuyruğa.
 
@@ -179,7 +179,7 @@ Bir sanal ağda Batch havuzu oluşturma hakkında daha fazla bilgi için bkz. [S
 
 Azure Batch çözümünüzü tasarlarken, havuzların nasıl ve ne zaman oluşturulduğunu ve bu havuzlardaki işlem düğümlerinin ne kadar süreyle kullanılabilir tutulacağını belirtmeniz gerekir.
 
-Spektrumun bir ucunda, gönderdiğiniz her iş için bir havuz oluşturabilir ve görevlerin yürütülmesi biter bitmez havuzu silebilirsiniz. Bu, düğümler yalnızca gerektiğinde ayrıldığından ve boşta kaldıktan sonra kapatılabileceği için kullanımı en üst düzeye çıkarır. Bu, işin düğümlerin ayrılmasını beklemesi gerektiği anlamına geldiğinden, düğümlerin ayrı ayrı ayrıldığı ve başlangıç görevinin tamamlandığı anda görevlerin yürütme için zamanlandığını aklınızda bulundurulmalıdır. Batch, görevler düğümlere atamadan önce havuzdaki tüm düğümlerin kullanılabilir olmasını *beklemez* . Böylece kullanılabilir tüm düğümlerden en iyi şekilde faydalanılmasını sağlar.
+Spektrumun bir ucunda, gönderdiğiniz her iş için bir havuz oluşturabilir ve görevlerin yürütülmesi biter bitmez havuzu silebilirsiniz. Bu, düğümler yalnızca gerektiğinde ayrıldığından ve boşta kaldıktan sonra kapatılabileceği için kullanımı en üst düzeye çıkarır. Bu, işin düğümlerin ayrılmasını beklemesi gerektiği anlamına geldiğinden, düğümlerin ayrı ayrı ayrıldığı ve başlangıç görevinin tamamlandığı anda görevlerin yürütme için zamanlandığını aklınızda bulundurulmalıdır. Batch, görevler düğümlere atamadan önce havuzdaki tüm düğümlerin kullanılabilir olmasını *beklemez*. Böylece kullanılabilir tüm düğümlerden en iyi şekilde faydalanılmasını sağlar.
 
 Spektrumun diğer ucunda, işlerin hemen başlatılması en yüksek önceliğe sahipse işler gönderilmeden önce bir havuz oluşturabilir ve bu havuzun düğümlerini kullanıma sunabilirsiniz. Bu senaryoda görevler hemen başlayabilir, ancak görevlerin atanmasını beklerken düğümler boşta kalmaya devam edebilir.
 

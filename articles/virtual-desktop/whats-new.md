@@ -3,17 +3,17 @@ title: Windows sanal masaüstündeki yenilikler nelerdir? - Azure
 description: Windows sanal masaüstü için yeni özellikler ve ürün güncelleştirmeleri.
 author: Heidilohr
 ms.topic: overview
-ms.date: 10/01/2020
+ms.date: 11/11/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: 0191d6ad74a9b6349f5d1724f9483607dce2d926
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c82312b40955b392243bf616ee991c0108a13fb5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91630024"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537399"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows sanal masaüstündeki yenilikler nelerdir?
 
@@ -25,6 +25,48 @@ Windows sanal masaüstü güncelleştirmeleri düzenli aralıklarla yapılır. B
 - Hata düzeltmeleri
 
 Bu makale aylık olarak güncelleştirilir. Yeni güncelleştirmeleri kullanmaya devam etmek için bu adımları en sık kontrol ettiğinizden emin olun.
+
+## <a name="october-2020"></a>Ekim 2020
+
+Ekim 2020 ' de değiştirilen özellikler:
+
+### <a name="improved-performance"></a>Geliştirilmiş performans
+
+- Aşağıdaki Azure coğrafi bölgelerde bağlantı gecikmesini azaltarak performansı en iyi duruma getiriyoruz:
+    - İsviçre
+    - Kanada
+
+Artık bu alanlardaki Kullanıcı deneyimi kalitesini tahmin etmek için [deneyim Estimator](https://azure.microsoft.com/services/virtual-desktop/assessment/) ' i kullanabilirsiniz.
+
+### <a name="azure-government-cloud-availability"></a>Azure Kamu Bulutu kullanılabilirliği
+
+Azure Kamu Bulutu artık genel kullanıma sunulmuştur. [Blog gönderimiz](https://azure.microsoft.com/updates/windows-virtual-desktop-is-now-generally-available-in-the-azure-government-cloud/)hakkında daha fazla bilgi edinin.
+
+### <a name="windows-virtual-desktop-azure-portal-updates"></a>Windows sanal masaüstü Azure portal güncelleştirmeleri
+
+Windows sanal masaüstü Azure portal bazı güncelleştirmeler yaptık:
+
+- Kullanıcıların "oturumlar" sekmesini açmasını önleyen bir RESOURCEID hatası düzeltildi.
+- "Oturum Konakları" sekmesinde Kullanıcı arabirimini kolaylaştırın.
+- RDP özellikleri altında "varsayılanlar," "kullanılabilirlik" ve "Varsayılanları geri yükle" ayarları düzeltildi.
+- Tüm sekmelerde tutarlı "Kaldır" ve "Sil" işlevleri yapıldı.
+- Portal şimdi "uygulama ekleme" iş akışında uygulama adlarını doğrular.
+- Oturum ana bilgisayarının dışarı aktarma verileri sütunlarda hizalanmadığı bir sorun düzeltildi.
+- Portalın kullanıcı oturumlarını alamadığında bir sorun düzeltildi.
+- Oturum Ana bilgisayar alımı, sanal makinenin farklı bir kaynak grubunda oluşturulması durumunda meydana gelen bir sorun düzeltildi.
+- Hem etkin hem de bağlantısı kesik oturumları listelemek için "oturum ana bilgisayarı" sekmesi güncelleştirildi.
+- "Uygulamalar" sekmesinde artık sayfalar vardır.
+- "Komut satırı gerektirir" metninin "uygulama listesi" sekmesinde doğru şekilde görüntülemediği bir sorun düzeltildi.
+- Paylaşılan görüntü galerisinin Almanca dil sürümünü kullanırken portalın konak havuzlarını veya sanal makineleri dağıtmaması durumunda sorun düzeltildi.
+
+### <a name="client-updates-for-october-2020"></a>2020 Ekim için istemci güncelleştirmeleri
+
+İstemcilerin yeni sürümlerini yayımladık. Daha fazla bilgi için şu makalelere göz atın:
+
+- [Windows](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-whatsnew)
+- [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
+
+Diğer istemciler hakkında daha fazla bilgi için bkz. [istemci güncelleştirmeleri](#client-updates).
 
 ## <a name="september-2020"></a>Eylül 2020
 
@@ -68,7 +110,7 @@ Ağustos 2020 ' de değiştirilen özellikler:
 
 - Azure Advisor artık Windows sanal masaüstü 'nün bir parçasıdır. Windows sanal masaüstüne Azure portal aracılığıyla eriştiğinizde, Windows sanal masaüstü ortamınızı iyileştirmek için öneriler görebilirsiniz. [Azure Danışmanı](azure-advisor.md)hakkında daha fazla bilgi edinin.
 
-- Azure CLı artık Windows `az desktopvirtualization` sanal masaüstü dağıtımlarınızı otomatikleştirmenize yardımcı olmak Için Windows sanal masaüstü 'nü () desteklemektedir. Uzantı komutlarının bir listesi için [desktopvirtualization](/cli/azure/ext/desktopvirtualization/?view=azure-cli-latest) 'a göz atın.
+- Azure CLı artık Windows `az desktopvirtualization` sanal masaüstü dağıtımlarınızı otomatikleştirmenize yardımcı olmak Için Windows sanal masaüstü 'nü () desteklemektedir. Uzantı komutlarının bir listesi için [desktopvirtualization](/cli/azure/ext/desktopvirtualization/?view=azure-cli-latest&preserve-view=true) 'a göz atın.
 
 - Dağıtım şablonlarımızı Windows sanal masaüstü Azure Resource Manager arabirimleriyle tamamen uyumlu hale getirmek için güncelleştirdik. Şablonları [GitHub](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates)' da bulabilirsiniz.
 
@@ -88,7 +130,7 @@ Yeni özellikler hakkında daha fazla bilgi edinmek için [Bu blog gönderisine]
 
 Otomatik ölçeklendirme aracının Önizlemedeki en son sürümü genel kullanıma sunulmuştur. Bu araç, bir konak havuzu içindeki oturum ana bilgisayarı sanal makinelerini (VM 'Ler) otomatik olarak kapatmak ve yeniden başlatmak için bir Azure Otomasyonu hesabı ve Azure Logic app kullanır ve altyapı maliyetlerini azaltır. [Azure Otomasyonu 'nu kullanarak ölçek oturum Konakları](set-up-scaling-script.md)hakkında daha fazla bilgi edinin.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Artık Windows sanal masaüstündeki Azure portal aşağıdaki işlemleri yapabilirsiniz: 
 
@@ -97,7 +139,7 @@ Artık Windows sanal masaüstündeki Azure portal aşağıdaki işlemleri yapabi
 
 ### <a name="diagnostics"></a>Tanılama
 
-Log Analytics çalışma alanı için yeni önceden oluşturulmuş sorgular yayımladık. Sorgulara erişmek için **günlüklere** gidin ve **Kategori**altında **Windows sanal masaüstü**' nü seçin. [Tanılama özelliği için Log Analytics kullanma](diagnostics-log-analytics.md)hakkında daha fazla bilgi edinin.
+Log Analytics çalışma alanı için yeni önceden oluşturulmuş sorgular yayımladık. Sorgulara erişmek için **günlüklere** gidin ve **Kategori** altında **Windows sanal masaüstü** ' nü seçin. [Tanılama özelliği için Log Analytics kullanma](diagnostics-log-analytics.md)hakkında daha fazla bilgi edinin.
 
 ### <a name="update-for-remote-desktop-client-for-android"></a>Android için Uzak Masaüstü istemcisi güncelleştirmesi
 
@@ -140,7 +182,7 @@ Bu güncelleştirmeyle Azure PowerShell az Module 'e yeni AzWvd cmdlet 'leri ekl
 
 Modülünü yüklemek için [Windows sanal masaüstü Için PowerShell modülünü ayarlama](powershell-module.md)bölümündeki yönergeleri izleyin.
 
-[Azwvd PowerShell başvurusunda](/powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization)kullanılabilir komutların listesini de görebilirsiniz.
+[Azwvd PowerShell başvurusunda](/powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization&preserve-view=true)kullanılabilir komutların listesini de görebilirsiniz.
 
 Yeni özellikler hakkında daha fazla bilgi için [blog gönderimize](https://techcommunity.microsoft.com/t5/itops-talk-blog/windows-virtual-desktop-spring-update-enters-public-preview/ba-p/1340245)göz atın.
 

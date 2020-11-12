@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c08e03e6ff77613c0950f17fe5225bccb706524c
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 83e8089073f7e7e7634ddf00f7276e12aaf645b0
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444405"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536447"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>IoT Edge cihazını ağ geçidi olarak kullanma
 
@@ -45,21 +45,21 @@ Tüm ağ geçidi desenleri aşağıdaki avantajları sağlar:
 
 Saydam ağ geçidi modelinde, teorik olarak IoT Hub bağlantı kurmak için bir ağ geçidi cihazına bağlanabilir cihazlar olabilir. Aşağı akış cihazlarının kendi IoT Hub kimlikleri vardır ve MQTT ya da AMQP protokollerini kullanarak bağlanır. Ağ geçidi basitçe cihazlarla IoT Hub arasındaki iletişimi geçirir. Her iki cihaz ve IoT Hub aracılığıyla onlarla etkileşim kuran kullanıcılar, bir ağ geçidinin iletişimlerini ortalamalarını farkında değildir. Bu tanıma olmaması, ağ geçidinin *saydam* olarak kabul edildiği anlamına gelir.
 
-<!-- 1.2.0 -->
-::: moniker range=">=iotedge-2020-11"
-
-IoT Edge cihazlar, saydam ağ geçitlerinin yanı sıra normal IoT cihazlarından da bağlanabilir.
-
-<!-- TODO add a downstream IoT Edge device to graphic -->
-
-::: moniker-end
-
 <!-- 1.0.10 -->
 ::: moniker range="iotedge-2018-06"
 
 IoT Edge cihazlar IoT Edge bir ağ geçidinin bir aşağı akış olamaz.
 
 ![Diyagram-saydam ağ geçidi kalıbı](./media/iot-edge-as-gateway/edge-as-gateway-transparent.png)
+
+::: moniker-end
+
+<!-- 1.2.0 -->
+::: moniker range=">=iotedge-2020-11"
+
+Sürüm 1.2.0 'den başlayarak IoT Edge cihazlar saydam ağ geçitleri aracılığıyla bağlanabilir.
+
+<!-- TODO add a downstream IoT Edge device to graphic -->
 
 ::: moniker-end
 
@@ -102,10 +102,22 @@ Birden çok IoT Edge ağ geçidi, bir ağ geçidi hiyerarşisinde birbirlerine b
 
 ### <a name="device-capabilities-behind-transparent-gateways"></a>Saydam ağ geçitlerinin arkasındaki cihaz özellikleri
 
-
 IoT Edge mesajlaşma ardışık düzeninde çalışan tüm IoT Hub temelleri de saydam ağ geçidi senaryolarını destekler. Her IoT Edge ağ geçidinde, üzerinden gelen iletiler için mağaza ve iletme özellikleri vardır.
 
 Ağ geçitlerinin arkasındaki cihazlara kıyasla farklı IoT Hub yeteneklerinin nasıl desteklendiğini görmek için aşağıdaki tabloyu kullanın.
+
+<!-- 1.0.10 -->
+::: moniker range="iotedge-2018-06"
+
+| Özellik | IoT cihazı | Bir ağ geçidinin arkasındaki IoT |
+| ---------- | ---------- | -------------------- |
+| [Cihazdan buluta (D2C) iletileri](../iot-hub/iot-hub-devguide-messages-d2c.md) |  ![Evet-IoT D2C](./media/iot-edge-as-gateway/check-yes.png) | ![Evet-alt IoT D2C](./media/iot-edge-as-gateway/check-yes.png) |
+| [Buluttan cihaza (C2D) iletiler](../iot-hub/iot-hub-devguide-messages-c2d.md) | ![Evet-IoT C2D](./media/iot-edge-as-gateway/check-yes.png) | ![Evet-IoT alt C2D](./media/iot-edge-as-gateway/check-yes.png) |
+| [Doğrudan yöntemler](../iot-hub/iot-hub-devguide-direct-methods.md) | ![Yes-IoT Direct yöntemi](./media/iot-edge-as-gateway/check-yes.png) | ![Evet-alt IoT doğrudan yöntemi](./media/iot-edge-as-gateway/check-yes.png) |
+| [Cihaz](../iot-hub/iot-hub-devguide-device-twins.md) ikikesi ve [Modül TWINS](../iot-hub/iot-hub-devguide-module-twins.md) | ![Evet-IoT TWINS](./media/iot-edge-as-gateway/check-yes.png) | ![Evet-alt IoT TWINS](./media/iot-edge-as-gateway/check-yes.png) |
+| [Karşıya dosya yükleme](../iot-hub/iot-hub-devguide-file-upload.md) | ![Evet-IoT dosya yükleme](./media/iot-edge-as-gateway/check-yes.png) | ![IoT alt dosya yükleme](./media/iot-edge-as-gateway/crossout-no.png) |
+
+::: moniker-end
 
 <!-- 1.2.0 -->
 ::: moniker range=">=iotedge-2020-11"
@@ -123,19 +135,6 @@ Ağ geçitlerinin arkasındaki cihazlara kıyasla farklı IoT Hub yeteneklerinin
 **Kapsayıcı görüntüleri** indirilebilir, depolanabilir ve üst cihazlardan alt cihazlara teslim edilebilir.
 
 Destek paketleri ve Günlükler de dahil olmak üzere **Bloblar** alt cihazlardan üst cihazlara yüklenebilir.
-
-::: moniker-end
-
-<!-- 1.0.10 -->
-::: moniker range="iotedge-2018-06"
-
-| Özellik | IoT cihazı | Bir ağ geçidinin arkasındaki IoT |
-| ---------- | ---------- | -------------------- |
-| [Cihazdan buluta (D2C) iletileri](../iot-hub/iot-hub-devguide-messages-d2c.md) |  ![Evet-IoT D2C](./media/iot-edge-as-gateway/check-yes.png) | ![Evet-alt IoT D2C](./media/iot-edge-as-gateway/check-yes.png) |
-| [Buluttan cihaza (C2D) iletiler](../iot-hub/iot-hub-devguide-messages-c2d.md) | ![Evet-IoT C2D](./media/iot-edge-as-gateway/check-yes.png) | ![Evet-IoT alt C2D](./media/iot-edge-as-gateway/check-yes.png) |
-| [Doğrudan yöntemler](../iot-hub/iot-hub-devguide-direct-methods.md) | ![Yes-IoT Direct yöntemi](./media/iot-edge-as-gateway/check-yes.png) | ![Evet-alt IoT doğrudan yöntemi](./media/iot-edge-as-gateway/check-yes.png) |
-| [Cihaz](../iot-hub/iot-hub-devguide-device-twins.md) ikikesi ve [Modül TWINS](../iot-hub/iot-hub-devguide-module-twins.md) | ![Evet-IoT TWINS](./media/iot-edge-as-gateway/check-yes.png) | ![Evet-alt IoT TWINS](./media/iot-edge-as-gateway/check-yes.png) |
-| [Karşıya dosya yükleme](../iot-hub/iot-hub-devguide-file-upload.md) | ![Evet-IoT dosya yükleme](./media/iot-edge-as-gateway/check-yes.png) | ![IoT alt dosya yükleme](./media/iot-edge-as-gateway/crossout-no.png) |
 
 ::: moniker-end
 
