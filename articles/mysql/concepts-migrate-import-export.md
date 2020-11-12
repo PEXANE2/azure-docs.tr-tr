@@ -1,17 +1,17 @@
 ---
 title: İçeri ve dışarı aktarma-MySQL için Azure veritabanı
 description: Bu makalede, MySQL için Azure veritabanı 'nda MySQL çalışma ekranı gibi araçları kullanarak veritabanlarını içeri ve dışarı aktarmanın yaygın yolları açıklanmaktadır.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/30/2020
-ms.openlocfilehash: 1b4959cbf082a589c90034f48d597907c9b7e6cc
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: af9f0f65e01a786d478fac0adde6174b8f03b2fd
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128938"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537909"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>İçeri ve dışarı aktarma kullanarak MySQL veritabanınızı geçirme
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
@@ -33,7 +33,7 @@ Bağlanmak için, MySQL için Azure veritabanı **'Na genel bakış** bölümün
 
 Bağlantı bilgilerini MySQL çalışma ekranına ekleyin.
 
-:::image type="content" source="./media/concepts-migrate-import-export/2_setup-new-connection.png" alt-text="Azure portal bağlantı bilgilerini bulun":::
+:::image type="content" source="./media/concepts-migrate-import-export/2_setup-new-connection.png" alt-text="MySQL çalışma ekranı bağlantı dizesi":::
 
 ## <a name="determine-when-to-use-import-and-export-techniques"></a>İçeri ve dışarı aktarma tekniklerini ne zaman kullanacağınızı belirleme
 
@@ -70,7 +70,7 @@ MySQL çalışma ekranına verileri dışarı ve içeri aktarmanın iki yolu var
 > - MySQL esnek sunucusu için ' ' kullanırsanız ' Kullanıcı adı ' kullanabilirsiniz username@servername , bağlantı başarısız olur.
 
 ### <a name="table-data-export-and-import-wizards-from-the-object-browsers-context-menu"></a>Nesne tarayıcısının bağlam menüsünden Tablo verilerini dışa aktarma ve içeri aktarma sihirbazları
-:::image type="content" source="./media/concepts-migrate-import-export/p1.png" alt-text="Azure portal bağlantı bilgilerini bulun":::
+:::image type="content" source="./media/concepts-migrate-import-export/p1.png" alt-text="Nesne tarayıcısının bağlam menüsündeki MySQL çalışma ekranı sihirbazları":::
 
 Tablo verilerine yönelik sihirbazlar CSV ve JSON dosyalarını kullanarak içeri ve dışarı aktarma işlemlerini destekler. Ayırıcılar, sütun seçimi ve kodlama seçimi gibi çeşitli yapılandırma seçeneklerini içerirler. Her Sihirbazı yerel veya uzaktan bağlanan MySQL sunucularında gerçekleştirebilirsiniz. İçeri aktarma eylemi tablo, sütun ve tür eşlemeyi içerir.
 
@@ -96,7 +96,7 @@ Aşağıdaki örnek, tabloyu bir CSV dosyasından içe aktarır:
 MySQL çalışma sunucusundan oluşturulan veya mysqldump komutundan oluşturulan SQL 'i içeri veya dışarı aktarmak için bir sihirbaz kullanın. Bu sihirbazlara **Gezgin** bölmesinden veya ana menüden **sunucu** ' yı seçerek erişin. Ardından **veri dışarı aktarma** veya **veri içeri aktarma** ' yı seçin.
 
 #### <a name="data-export"></a>Verileri Dışarı Aktarma
-:::image type="content" source="./media/concepts-migrate-import-export/p2.png" alt-text="Azure portal bağlantı bilgilerini bulun":::
+:::image type="content" source="./media/concepts-migrate-import-export/p2.png" alt-text="MySQL pencere verileri Gezgin bölmesini kullanarak dışarı aktarma":::
 
 MySQL verilerinizi dışarı aktarmak için **veri dışa aktarma** sekmesini kullanabilirsiniz.
 1. Dışarı aktarmak istediğiniz her şemayı seçin, isteğe bağlı olarak her şemadan belirli şema nesneleri/tablolar ' ı seçin ve dışarı aktarmayı oluşturun. Yapılandırma seçenekleri bir proje klasörüne veya kendi içindeki SQL dosyasına dışarı aktarma, saklı yordamlar ve olayların dökümünü alma veya tablo verilerini atlama içerir.
@@ -109,7 +109,7 @@ MySQL verilerinizi dışarı aktarmak için **veri dışa aktarma** sekmesini ku
 
 
 #### <a name="data-import"></a>Veri Içeri aktarma
-:::image type="content" source="./media/concepts-migrate-import-export/p3.png" alt-text="Azure portal bağlantı bilgilerini bulun":::
+:::image type="content" source="./media/concepts-migrate-import-export/p3.png" alt-text="MySQL çalışma ekranı verileri yönetim gezginini kullanarak Içeri aktarma":::
 
 Dışarı aktarılan verileri veri dışa aktarma işleminden veya mysqldump komutundan içeri aktarmak veya geri yüklemek için **veri Içeri aktarma** sekmesini kullanabilirsiniz.
 1. Proje klasörünü veya kendi içinde kapsanan SQL dosyasını seçin, içine aktarılacak şemayı seçin veya yeni bir şema tanımlamak için **Yeni** ' yi seçin.

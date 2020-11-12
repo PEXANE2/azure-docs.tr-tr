@@ -1,7 +1,7 @@
 ---
 title: Mimari & temel kavramlar
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning oluşturan mimari, hüküm ve kavramlar hakkında bilgi edinin.
+description: Bu makale, Azure Machine Learning oluşturan mimari, hüküm ve kavramların yüksek düzeyde bir şekilde anlaşılmasına olanak tanır.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: f17cdd42c892f6c0d218875cf304846937ba58d7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: a36481b2496060cb12bd755f56680915ec1074bb
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444850"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540204"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning nasıl kullanılır: mimari ve kavramlar
 
@@ -267,6 +267,18 @@ Azure IoT Edge modülünüzün çalıştığından emin olur ve bunu barındıra
 Machine Learning işlem [hatlarını](concept-ml-pipelines.md) kullanarak makine öğrenimi aşamalarını birlikte akışlı iş akışları oluşturabilir ve yönetebilirsiniz. Örneğin, bir işlem hattı veri hazırlığı, model eğitimi, model dağıtımı ve çıkarım/Puanlama aşamaları içerebilir. Her aşama, her biri çeşitli işlem hedeflerinde katılımsız olarak çalışabilen birden çok adımı kapsayabilir. 
 
 İşlem hattı adımları yeniden kullanılabilir ve bu adımların çıkışı değişmemişse önceki adımları yeniden çalıştırmadan çalıştırılabilir. Örneğin, veriler değişmemişse maliyetli veri hazırlama adımlarını yeniden çalıştırmadan bir modeli yeniden eğitebilirsiniz. İşlem hatları, makine öğrenimi iş akışının ayrı alanlarında çalışırken veri bilimcilerinin işbirliği yapmasına de olanak tanır.
+
+## <a name="monitoring-and-logging"></a>İzleme ve günlüğe kaydetme
+
+Azure Machine Learning aşağıdaki izleme ve günlüğe kaydetme yeteneklerini sağlar:
+
+* __Veri bilimcileri__ için denemeleri ve günlük bilgilerinizi eğitim çalışmalarından izleyebilirsiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
+   * [Eğitim çalıştırmalarını başlatın, izleyin ve iptal edin](how-to-manage-runs.md)
+   * [Eğitim çalıştırmaları için günlük ölçümleri](how-to-track-experiments.md)
+   * [MLflow ile denemeleri izleme](how-to-use-mlflow.md)
+   * [TensorBoard ile çalıştırmaları görselleştirme](how-to-monitor-tensorboard.md)
+* __Yöneticiler__ Için, Azure izleyici kullanarak çalışma alanı, ilgili Azure kaynakları ve kaynak oluşturma ve silme gibi olaylar hakkındaki bilgileri izleyebilirsiniz. Daha fazla bilgi için bkz. [izleme Azure Machine Learning](monitor-azure-machine-learning.md).
+* __DevOps__ veya __mlops__ için, dağıtımlarla ilgili sorunları belirlemek ve hizmete gönderilen verileri toplamak üzere Web Hizmetleri veya IoT Edge modülleri olarak dağıtılan modeller tarafından oluşturulan bilgileri izleyebilirsiniz. Daha fazla bilgi için bkz. [model verilerini toplama](how-to-enable-data-collection.md) ve [Application Insights ile izleme](how-to-enable-app-insights.md).
 
 ## <a name="interacting-with-your-workspace"></a>Çalışma alanınız ile etkileşim kurma
 

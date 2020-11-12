@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: 9b6e752f8352db565239aba4a990752b1c397f5f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b80a09c82b1e932fb93b4c85ee250773aa7d3c38
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517268"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539762"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux çalıştıran N serisi VM 'Lere NVıDıA GPU sürücülerini yükler
 
@@ -98,7 +98,9 @@ sudo reboot
   
    sudo reboot
 
-2. Install the latest [Linux Integration Services for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106).
+2. Install the latest [Linux Integration Services for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106). Check if LIS is required by verifying the results of lspci. If all GPU devices are listed as expected, installing LIS is not required.
+
+Skip this step if you plan to use CentOS 7.8(or higher) as LIS is no longer required for these versions.
 
    ```bash
    wget https://aka.ms/lis
@@ -150,7 +152,7 @@ Sürücü yüklüyse aşağıdakine benzer bir çıktı görürsünüz. Şu anda
 
 ## <a name="rdma-network-connectivity"></a>RDMA ağ bağlantısı
 
-RDMA ağ bağlantısı, aynı Kullanılabilirlik kümesinde veya bir sanal ağ (VM) ölçek kümesindeki tek bir yerleştirme grubunda dağıtılan NC24r gibi, RDMA özellikli N serisi VM 'lerde etkinleştirilebilir. RDMA ağı, Intel MPı 5. x veya sonraki bir sürümde çalışan uygulamalar için Ileti geçirme arabirimi (MPı) trafiğini destekler. Ek gereksinimler şunları izler:
+RDMA ağ bağlantısı, aynı Kullanılabilirlik kümesinde veya bir sanal makine (VM) ölçek kümesindeki tek bir yerleştirme grubunda dağıtılan NC24r gibi, RDMA özellikli N serisi VM 'lerde etkinleştirilebilir. RDMA ağı, Intel MPı 5. x veya sonraki bir sürümde çalışan uygulamalar için Ileti geçirme arabirimi (MPı) trafiğini destekler. Ek gereksinimler şunları izler:
 
 ### <a name="distributions"></a>Dağıtımları
 
@@ -225,7 +227,7 @@ NV veya NVv3 serisi VM 'Lere NVıDıA GRID sürücüleri yüklemek için, her VM
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
 
-6. X yapılandırma dosyanızı güncelleştirmek için NVIDIA-xconfig yardımcı programını çalıştırmak isteyip istemediğiniz sorulduğunda **Evet**' i seçin.
+6. X yapılandırma dosyanızı güncelleştirmek için NVIDIA-xconfig yardımcı programını çalıştırmak isteyip istemediğiniz sorulduğunda **Evet** ' i seçin.
 
 7. Yükleme tamamlandıktan sonra,/etc/Nvidia/gridd.conf.Template konumundaki yeni bir gridd. conf dosyasına kopyalayın/etc/Nvidia/
 
@@ -264,7 +266,7 @@ NV veya NVv3 serisi VM 'Lere NVıDıA GRID sürücüleri yüklemek için, her VM
    sudo yum install hyperv-daemons
    ```
 
-2. NVıDıA sürücüsüyle uyumsuz olan Nouveau Çekirdek sürücüsünü devre dışı bırakın. (Yalnızca NV veya NV2 VM 'lerinde NVıDıA sürücüsünü kullanın.) Bunu yapmak için, `/etc/modprobe.d` aşağıdaki içeriklerle adlandırılmış bir dosya oluşturun `nouveau.conf` :
+2. NVıDıA sürücüsüyle uyumsuz olan Nouveau Çekirdek sürücüsünü devre dışı bırakın. (Yalnızca NV veya NV3 VM 'lerinde NVıDıA sürücüsünü kullanın.) Bunu yapmak için, `/etc/modprobe.d` aşağıdaki içeriklerle adlandırılmış bir dosya oluşturun `nouveau.conf` :
 
    ```
    blacklist nouveau
@@ -272,7 +274,9 @@ NV veya NVv3 serisi VM 'Lere NVıDıA GRID sürücüleri yüklemek için, her VM
    blacklist lbm-nouveau
    ```
  
-3. [Hyper-V ve Azure IÇIN](https://www.microsoft.com/download/details.aspx?id=55106)VM 'yi yeniden başlatın, yeniden bağlanın ve en son Linux Tümleştirme hizmetlerini kurun.
+3. [Hyper-V ve Azure IÇIN](https://www.microsoft.com/download/details.aspx?id=55106)VM 'yi yeniden başlatın, yeniden bağlanın ve en son Linux Tümleştirme hizmetlerini kurun. Lspcı sonuçlarının doğrulanması için LIS 'nin gerekli olup olmadığını denetleyin. Tüm GPU cihazları beklenen olarak listeleniyorsa, LIS 'nin yüklenmesi gerekli değildir. 
+
+Bu adımı atla, CentOS/RHEL 7,8 ve üstünü kullanıyorsunuz.
  
    ```bash
    wget https://aka.ms/lis
@@ -298,7 +302,7 @@ NV veya NVv3 serisi VM 'Lere NVıDıA GRID sürücüleri yüklemek için, her VM
 
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
-6. X yapılandırma dosyanızı güncelleştirmek için NVIDIA-xconfig yardımcı programını çalıştırmak isteyip istemediğiniz sorulduğunda **Evet**' i seçin.
+6. X yapılandırma dosyanızı güncelleştirmek için NVIDIA-xconfig yardımcı programını çalıştırmak isteyip istemediğiniz sorulduğunda **Evet** ' i seçin.
 
 7. Yükleme tamamlandıktan sonra,/etc/Nvidia/gridd.conf.Template konumundaki yeni bir gridd. conf dosyasına kopyalayın/etc/Nvidia/
   
@@ -373,6 +377,7 @@ Ardından, içinde güncelleştirme betiğinizin bir girdisini oluşturun, `/etc
 
 * ' I kullanarak Kalıcılık modunu ayarlayabilirsiniz `nvidia-smi` . böylece, kartları sorgulamak için komutun çıktısının daha hızlı olması gerekir. Kalıcılık modunu ayarlamak için yürütün `nvidia-smi -pm 1` . VM yeniden başlatılırsa mod ayarının dışarıda olacağını unutmayın. Başlatma sırasında her zaman Mod ayarını çalıştırmak için komut dosyası oluşturabilirsiniz.
 * NVıDıA CUDA sürücülerini en son sürüme güncelleştirdiyseniz ve RDMA bağlantısı bulunursa, bu bağlantıyı yeniden kurmak için [RDMA sürücülerini yeniden yükleyin](#rdma-network-connectivity) . 
+* LIS için belirli bir CentOS/RHEL işletim sistemi sürümü (veya çekirdeği) desteklenmiyorsa, "desteklenmeyen çekirdek sürümü" hatası oluşturulur. Lütfen bu hatayı işletim sistemi ve çekirdek sürümleriyle birlikte bildirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,19 +1,19 @@
 ---
 title: Yedekleme ve geri yükleme-Azure PowerShell-MySQL için Azure veritabanı
 description: Azure PowerShell kullanarak MySQL için Azure veritabanı 'nda bir sunucuyu nasıl yedekleyeceğinizi ve geri yükleyeceğinizi öğrenin.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurepowershel
 ms.topic: how-to
 ms.date: 4/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5571d5a937fc48030c38ebe78c86ef27d6727a67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43ce39a1fc05c8ffedd1ae8404cc20c1a498a73f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87837321"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539065"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>PowerShell kullanarak MySQL için Azure veritabanı sunucusunu yedekleme ve geri yükleme
 
@@ -41,7 +41,7 @@ Sunucu oluşturma sırasında, sunucunuzu yerel olarak yedekli veya coğrafi ola
 > [!NOTE]
 > Bir sunucu oluşturulduktan sonra, coğrafi olarak yedekli ve yerel olarak yedekli olan artıklık türü değiştirilemez.
 
-Komutu aracılığıyla bir sunucu oluştururken `New-AzMySqlServer` , **GeoRedundantBackup** parametresi yedekleme yedekliliğe karar verir. **Etkinleştirilirse**, coğrafi olarak yedekli yedeklemeler alınır. Ya da **devre dışı**bırakılmışsa yerel olarak yedekli yedeklemeler alınır.
+Komutu aracılığıyla bir sunucu oluştururken `New-AzMySqlServer` , **GeoRedundantBackup** parametresi yedekleme yedekliliğe karar verir. **Etkinleştirilirse** , coğrafi olarak yedekli yedeklemeler alınır. Ya da **devre dışı** bırakılmışsa yerel olarak yedekli yedeklemeler alınır.
 
 Yedekleme saklama süresi **BackupRetentionDay** parametresine göre ayarlanır.
 
@@ -75,11 +75,11 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 Cmdlet 'in **Pointintimeresıtransaction** parametre kümesi `Restore-AzMySqlServer` aşağıdaki parametreleri gerektirir:
 
-| Ayar | Önerilen değer | Açıklama  |
+| Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
-| ResourceGroupName |  myresourcegroup |  Kaynak sunucunun varolduğu kaynak grubu.  |
-| Adı | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
-| Restorepoinıntime | 2020-03-13T13:59:00Z | Geri yüklenecek bir zaman noktası seçin. Bu tarih ve saat, kaynak sunucunun yedekleme saklama dönemi içinde olmalıdır. ISO8601 tarih ve saat biçimini kullanın. Örneğin, **2020-03-13T05:59:00-08:00**gibi kendi yerel saat diliminizi kullanabilirsiniz. UTC Zulu dili biçimini de kullanabilirsiniz; Örneğin, **2018-03-13T13:59:00Z**. |
+| ResourceGroupName |  myresourcegroup |  Kaynak sunucunun varolduğu kaynak grubu.  |
+| Ad | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
+| Restorepoinıntime | 2020-03-13T13:59:00Z | Geri yüklenecek bir zaman noktası seçin. Bu tarih ve saat, kaynak sunucunun yedekleme saklama dönemi içinde olmalıdır. ISO8601 tarih ve saat biçimini kullanın. Örneğin, **2020-03-13T05:59:00-08:00** gibi kendi yerel saat diliminizi kullanabilirsiniz. UTC Zulu dili biçimini de kullanabilirsiniz; Örneğin, **2018-03-13T13:59:00Z**. |
 | Usepointintimerestınic | `<SwitchParameter>` | Geri yüklemek için zaman noktası modunu kullanın. |
 
 Bir sunucuyu önceki bir zaman noktasına geri yüklediğinizde yeni bir sunucu oluşturulur. Özgün sunucu ve veritabanları belirtilen zaman noktasından yeni sunucuya kopyalanır.
@@ -106,7 +106,7 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzMySqlServer -Name mydemoserver-georestored -ResourceGroupName myresourcegroup -Location eastus -Sku GP_Gen5_8 -UseGeoRestore
 ```
 
-Bu örnek, **myresourcegroup**öğesine ait Doğu ABD bölgesinde **mydemoserver-geogeri yüklenen** adlı yeni bir sunucu oluşturur. 8 sanal çekirdeğe sahip bir Genel Amaçlı, Gen 5 sunucusudur. Sunucu, **myresourcegroup**kaynak grubundaki **demosunucum**'ın coğrafi olarak yedekli yedeğinden oluşturulur.
+Bu örnek, **myresourcegroup** öğesine ait Doğu ABD bölgesinde **mydemoserver-geogeri yüklenen** adlı yeni bir sunucu oluşturur. 8 sanal çekirdeğe sahip bir Genel Amaçlı, Gen 5 sunucusudur. Sunucu, **myresourcegroup** kaynak grubundaki **demosunucum** 'ın coğrafi olarak yedekli yedeğinden oluşturulur.
 
 Yeni sunucuyu mevcut sunucudan farklı bir kaynak grubunda oluşturmak için, aşağıdaki örnekte gösterildiği gibi **Resourcegroupname** parametresini kullanarak yeni kaynak grubu adını belirtin:
 
@@ -117,10 +117,10 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 Cmdlet 'in **Georestore** parametre kümesi `Restore-AzMySqlServer` aşağıdaki parametreleri gerektirir:
 
-| Ayar | Önerilen değer | Açıklama  |
+| Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
 |ResourceGroupName | myresourcegroup | Yeni sunucunun ait olduğu kaynak grubunun adı.|
-|Adı | mydemoserver-geogeri yüklendi | Yeni sunucunun adı. |
+|Ad | mydemoserver-geogeri yüklendi | Yeni sunucunun adı. |
 |Konum | eastus | Yeni sunucunun konumu. |
 |UseGeoRestore | `<SwitchParameter>` | Geri yüklemek için coğrafi mod kullanın. |
 

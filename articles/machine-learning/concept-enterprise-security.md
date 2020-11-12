@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: 2234b1507e6e0fdb0b668fc18a7c8533e3ea7cc1
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: eaaedc4404419e6028250a994077dd3df20b83d4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441792"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539660"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Azure Machine Learning için kurumsal güvenlik ve idare
 
@@ -123,10 +123,11 @@ Microsoft, otomatik Machine Learning gibi hizmetleri kullanırken, birden çok m
 
 Role ve izlenmekte göre Azure Machine Learning birkaç izleme senaryosu vardır.
 
-| Rol | Kullanım için izleme |
-| ---- | ----- |
-| Yönetici, DevOps, MLOps | [Azure izleyici ölçümleri](#azure-monitor), [etkinlik günlüğü](#activity-log), [güvenlik açığı taraması](#vulnerability-scanning) |
-| Veri bilimcisi, MLOps | [İzleme çalıştırmaları](#monitor-runs) |
+| Rol | Kullanım için izleme | Açıklama |
+| ---- | ----- | ----- |
+| Yönetici, DevOps, MLOps | [Azure izleyici ölçümleri](#azure-monitor), [etkinlik günlüğü](#activity-log), [güvenlik açığı taraması](#vulnerability-scanning) | Hizmet düzeyi bilgileri |
+| Veri bilimcisi, MLOps | [İzleme çalıştırmaları](#monitor-runs) | Eğitim çalıştırmaları sırasında günlüğe kaydedilen bilgiler |
+| MLOps | [Model verilerini toplama](how-to-enable-data-collection.md), [Application Insights ile izleme](how-to-enable-app-insights.md) | Web Hizmetleri veya IoT Edge modülleri olarak dağıtılan modellerle günlüğe kaydedilen bilgiler|
 
 ### <a name="monitor-runs"></a>İzleme çalıştırmaları
 

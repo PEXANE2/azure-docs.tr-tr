@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5f32ec82c2b4c6d8b902195782b286cca82befb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a24890f42b795bb4b9a7d187f74ceb9a4f8557f5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85507645"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539235"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>StorSimple Sanal dizisine yönelik uyarıları yönetmek için StorSimple Aygıt Yöneticisi kullanma
 
@@ -43,30 +43,30 @@ Bir sanal dizi için e-posta bildirimini etkinleştirdikten sonra, bildirim list
 
 #### <a name="to-enable-email-notification-for-alerts"></a>Uyarılar için e-posta bildirimini etkinleştirmek için
 
-1. StorSimple Aygıt Yöneticisi hizmetinize gidin ve **Yönetim** bölümünde **cihazlar**' ı seçin ve tıklatın. Görüntülenmiş cihaz listesinden cihazınızı seçin ve tıklayın.
+1. StorSimple Aygıt Yöneticisi hizmetinize gidin ve **Yönetim** bölümünde **cihazlar** ' ı seçin ve tıklatın. Görüntülenmiş cihaz listesinden cihazınızı seçin ve tıklayın.
    
     ![Uyarı ayarları](./media/storsimple-virtual-array-manage-alerts/alerts2.png)
-2. Bu, **Ayarlar** dikey penceresini açar. **Cihaz ayarları** bölümünde **genel**' i seçin. Bu, **Genel ayarlar** dikey penceresini açar.
+2. Bu, **Ayarlar** dikey penceresini açar. **Cihaz ayarları** bölümünde **genel** ' i seçin. Bu, **Genel ayarlar** dikey penceresini açar.
    
-    ![Uyarılar bildirim yapılandırması](./media/storsimple-virtual-array-manage-alerts/alerts4.png)
+    ![Ekran görüntüsünde, uyarı ayarları alanı olarak adlandırılan cihaz ayarları bölmesi görüntülenir.](./media/storsimple-virtual-array-manage-alerts/alerts4.png)
 3. **Genel ayarlar** dikey penceresinde **Uyarı ayarları** bölümüne gidin ve şunları ayarlayın:
    
-   1. **E-posta bildirimini etkinleştir** alanında **Evet**' i seçin.
+   1. **E-posta bildirimini etkinleştir** alanında **Evet** ' i seçin.
    2. Hizmet yöneticisinin ve tüm ortak yöneticilerin uyarı bildirimlerini almasını istiyorsanız **e-posta hizmeti yöneticileri** alanında **Evet** ' i seçin.
-   3. **Ek e-posta alıcıları** alanına, uyarı bildirimlerini alması gereken diğer tüm alıcıların e-posta adreslerini girin. Adları *birisi \@ Somewhere.com*biçiminde girin. E-posta adreslerini ayırmak için noktalı virgül kullanın. Sanal cihaz başına en fazla 20 e-posta adresi yapılandırabilirsiniz.
+   3. **Ek e-posta alıcıları** alanına, uyarı bildirimlerini alması gereken diğer tüm alıcıların e-posta adreslerini girin. Adları *birisi \@ Somewhere.com* biçiminde girin. E-posta adreslerini ayırmak için noktalı virgül kullanın. Sanal cihaz başına en fazla 20 e-posta adresi yapılandırabilirsiniz.
       
-       ![Uyarılar bildirim yapılandırması](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
-   4. Sınama e-postası bildirimi göndermek için **Test e-postası gönder ' e**tıklayın. StorSimple Aygıt Yöneticisi hizmeti, test bildirimini ileten durum iletilerini görüntüler.
+       ![Ekran görüntüsünde, bu adımda açıklanan ayarlarla ilgili uyarı ayarları ayrıntıları gösterilir.](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
+   4. Sınama e-postası bildirimi göndermek için **Test e-postası gönder ' e** tıklayın. StorSimple Aygıt Yöneticisi hizmeti, test bildirimini ileten durum iletilerini görüntüler.
       
-       ![Uyarı sınama bildirimi e-postası gönderildi](./media/storsimple-virtual-array-manage-alerts/alerts7.png)
+       ![Ekran görüntüsü, sınama e-postasını doğrulayan bir bilgilendirici iletişim kutusu gösterir.](./media/storsimple-virtual-array-manage-alerts/alerts7.png)
       
       > [!NOTE]
-      > Test bildirim iletisi gönderilemezse, StorSimple Aygıt Yöneticisi hizmetinde uygun bir ileti görüntülenir. **Tamam**' a tıklayın, birkaç dakika bekleyin ve ardından test bildirim iletinizi yeniden göndermeye çalışın.
+      > Test bildirim iletisi gönderilemezse, StorSimple Aygıt Yöneticisi hizmetinde uygun bir ileti görüntülenir. **Tamam** ' a tıklayın, birkaç dakika bekleyin ve ardından test bildirim iletinizi yeniden göndermeye çalışın.
       >
       >
-   5. Yapılandırmanızı kaydetmek için sayfanın alt kısmındaki **Kaydet** ' e tıklayın. Onayınız istendiğinde **Evet**’e tıklayın.
+   5. Yapılandırmanızı kaydetmek için sayfanın alt kısmındaki **Kaydet** ' e tıklayın. Onayınız istendiğinde **Evet** ’e tıklayın.
       
-      ![Uyarı sınama bildirimi e-postası gönderildi](./media/storsimple-virtual-array-manage-alerts/alerts10.png)
+      ![Ekran görüntüsünde Kaydet düğmesinin seçili olduğu ayarlar bölmesi görüntülenir.](./media/storsimple-virtual-array-manage-alerts/alerts10.png)
 
 ## <a name="common-alert-conditions"></a>Ortak uyarı koşulları
 
@@ -99,9 +99,9 @@ Uyarının en son ne zaman bildirildiğini, cihazdaki uyarının oluşum sayıs�
 
 ![Uyarı listesi ve Ayrıntılar](./media/storsimple-virtual-array-manage-alerts/alerts16.png)
 
-Bilgileri Microsoft Desteği göndermeniz gerekiyorsa, uyarı ayrıntılarını bir metin dosyasına kopyalayabilirsiniz. Öneriyi uyguladıktan ve şirket içi uyarı koşulunu çözümledikten sonra, listeden uyarıyı temizlemeniz gerekir. Listeden uyarıyı seçin ve ardından **Temizle**' ye tıklayın. Birden çok uyarıyı temizlemek için, her bir uyarıyı seçin, **Uyarı** sütunu dışında herhangi bir sütuna tıklayın ve sonra temizlenecek tüm uyarıları seçtikten sonra **Temizle** ' ye tıklayın.
+Bilgileri Microsoft Desteği göndermeniz gerekiyorsa, uyarı ayrıntılarını bir metin dosyasına kopyalayabilirsiniz. Öneriyi uyguladıktan ve şirket içi uyarı koşulunu çözümledikten sonra, listeden uyarıyı temizlemeniz gerekir. Listeden uyarıyı seçin ve ardından **Temizle** ' ye tıklayın. Birden çok uyarıyı temizlemek için, her bir uyarıyı seçin, **Uyarı** sütunu dışında herhangi bir sütuna tıklayın ve sonra temizlenecek tüm uyarıları seçtikten sonra **Temizle** ' ye tıklayın.
 
-**Temizle**' ye tıkladığınızda, uyarı ve sorunu çözmek için gerçekleştirdiğiniz adımlar hakkında açıklama sağlama fırsatına sahip olursunuz.
+**Temizle** ' ye tıkladığınızda, uyarı ve sorunu çözmek için gerçekleştirdiğiniz adımlar hakkında açıklama sağlama fırsatına sahip olursunuz.
 
 ![Uyarı açıklamaları](./media/storsimple-virtual-array-manage-alerts/alerts17.png)
 
@@ -137,14 +137,14 @@ Aşağıdaki tablolarda, karşılaşabileceğiniz StorSimple uyarılarından baz
 | Uyarı metni | Olay | Daha fazla bilgi/Önerilen Eylemler |
 |:--- |:--- |:--- |
 | Şirket içi sanal cihaz yapılandırması desteklenmiyor. |Yavaş performans. |Geçerli yapılandırma performans düşüşüne neden olabilir. Sunucunuzun en düşük yapılandırma gereksinimlerini karşıladığından emin olun. Daha fazla bilgi için, [StorSimple Sanal dizi gereksinimlerine](storsimple-ova-system-requirements.md)gidin. |
-| <*Cihaz adı*üzerinde sağlanan disk alanından çalıştırıyorsunuz \> . |Disk alanı uyarısı. |Sağlanan disk alanını azalmış olarak çalıştırıyorsunuz. Alan boşaltmak için iş yüklerini başka bir birime taşımayı veya verileri paylaşmayı veya silmeyi düşünün. |
+| < *Cihaz adı* üzerinde sağlanan disk alanından çalıştırıyorsunuz \> . |Disk alanı uyarısı. |Sağlanan disk alanını azalmış olarak çalıştırıyorsunuz. Alan boşaltmak için iş yüklerini başka bir birime taşımayı veya verileri paylaşmayı veya silmeyi düşünün. |
 
 ### <a name="job-failure-alerts"></a>İş hatası uyarıları
 
 | Uyarı metni | Olay | Daha fazla bilgi/Önerilen Eylemler |
 |:--- |:--- |:--- |
-| <*Cihaz adı* yedeklemesi \> tamamlanamadı. |Yedekleme işi hatası. |Yedek oluşturulamadı. Aşağıdakilerden birini göz önünde bulundurun:<ul><li>Bağlantı sorunları yedekleme işleminin başarıyla tamamlanmasını engelliyor olabilir. Bağlantı sorunları olmadığından emin olun. Bağlantı sorunlarını giderme hakkında daha fazla bilgi için sanal cihazınızın [Yerel Web Kullanıcı arabirimine](storsimple-ova-web-ui-admin.md) gidin.</li><li>Kullanılabilir depolama sınırına ulaştınız. Alan boşaltmak için artık gerekli olmayan yedeklemeleri silmeyi göz önünde bulundurun.</li></ul> Sorunları çözümleyin, uyarıyı temizleyin ve işlemi yeniden deneyin. |
-| <*cihaz adının* kopyası \> tamamlanamadı. |Kopyalama işi hatası. |Kopya oluşturulamadı. Aşağıdakilerden birini göz önünde bulundurun:<ul><li>Yedekleme listeniz geçerli olmayabilir. Hala geçerli olduğunu doğrulamak için listeyi yenileyin.</li><li>Bağlantı sorunları kopyalama işleminin başarıyla tamamlanmasını engelliyor olabilir. Bağlantı sorunları olmadığından emin olun.</li><li>Kullanılabilir depolama sınırına ulaştınız. Alan boşaltmak için artık gerekli olmayan yedeklemeleri silmeyi göz önünde bulundurun.</li></ul>Sorunları çözümleyin, uyarıyı temizleyin ve işlemi yeniden deneyin. |
+| < *Cihaz adı* yedeklemesi \> tamamlanamadı. |Yedekleme işi hatası. |Yedek oluşturulamadı. Aşağıdakilerden birini göz önünde bulundurun:<ul><li>Bağlantı sorunları yedekleme işleminin başarıyla tamamlanmasını engelliyor olabilir. Bağlantı sorunları olmadığından emin olun. Bağlantı sorunlarını giderme hakkında daha fazla bilgi için sanal cihazınızın [Yerel Web Kullanıcı arabirimine](storsimple-ova-web-ui-admin.md) gidin.</li><li>Kullanılabilir depolama sınırına ulaştınız. Alan boşaltmak için artık gerekli olmayan yedeklemeleri silmeyi göz önünde bulundurun.</li></ul> Sorunları çözümleyin, uyarıyı temizleyin ve işlemi yeniden deneyin. |
+| < *cihaz adının* kopyası \> tamamlanamadı. |Kopyalama işi hatası. |Kopya oluşturulamadı. Aşağıdakilerden birini göz önünde bulundurun:<ul><li>Yedekleme listeniz geçerli olmayabilir. Hala geçerli olduğunu doğrulamak için listeyi yenileyin.</li><li>Bağlantı sorunları kopyalama işleminin başarıyla tamamlanmasını engelliyor olabilir. Bağlantı sorunları olmadığından emin olun.</li><li>Kullanılabilir depolama sınırına ulaştınız. Alan boşaltmak için artık gerekli olmayan yedeklemeleri silmeyi göz önünde bulundurun.</li></ul>Sorunları çözümleyin, uyarıyı temizleyin ve işlemi yeniden deneyin. |
 
 ### <a name="networking-alerts"></a>Ağ uyarıları
 
@@ -157,13 +157,13 @@ Aşağıdaki tablolarda, karşılaşabileceğiniz StorSimple uyarılarından baz
 | Uyarı metni | Olay | Daha fazla bilgi/Önerilen Eylemler |
 |:--- |:--- |:--- |
 | Veri aktarımında beklenmeyen gecikmeler yaşanıyor. |Yavaş veri aktarımı. |Bir depolama hizmetinin ölçeklenebilirlik hedeflerini aşarsanız azaltma hataları oluşur. Depolama hizmeti, tek bir istemcinin veya kiracının hizmeti diğer masrafına uygun olmamasını sağlamak için bunu yapar. Azure depolama hesabınızda sorun giderme hakkında daha fazla bilgi için, [izleme, tanılama ve sorun giderme Microsoft Azure depolama](../storage/common/storage-monitoring-diagnosing-troubleshooting.md)gidin. |
-| <*Cihaz adı*üzerinde yerel ayırma disk alanı azalıyor \> . |Yavaş yanıt süresi. |<*Cihaz adı* için sağlanan toplam boyutun %10 ' unun \> yerel cihazda ayrılması ve artık ayrılmış alana göre azaldıysanız. <*Cihaz adı* üzerindeki iş yükü \> daha yüksek bir karmaşıklık oranı oluşturuyor veya yakın zamanda büyük miktarda veri geçirdiniz. Bu, performansın düşmesine neden olabilir. Bu sorunu çözmek için aşağıdaki eylemlerden birini göz önünde bulundurun:<ul><li>Bu cihaz için bulut bant genişliğini artırın.</li><li>İş yüklerini başka bir birime veya paylaşıma düşürün veya taşıyın.</li></ul> |
+| < *Cihaz adı* üzerinde yerel ayırma disk alanı azalıyor \> . |Yavaş yanıt süresi. |< *Cihaz adı* için sağlanan toplam boyutun %10 ' unun \> yerel cihazda ayrılması ve artık ayrılmış alana göre azaldıysanız. < *Cihaz adı* üzerindeki iş yükü \> daha yüksek bir karmaşıklık oranı oluşturuyor veya yakın zamanda büyük miktarda veri geçirdiniz. Bu, performansın düşmesine neden olabilir. Bu sorunu çözmek için aşağıdaki eylemlerden birini göz önünde bulundurun:<ul><li>Bu cihaz için bulut bant genişliğini artırın.</li><li>İş yüklerini başka bir birime veya paylaşıma düşürün veya taşıyın.</li></ul> |
 
 ### <a name="security-alerts"></a>Güvenlik uyarıları
 
 | Uyarı metni | Olay | Daha fazla bilgi/Önerilen Eylemler |
 |:--- |:--- |:--- |
-| <*cihaz adının* parolasının \> sonunda <*sayısı* \> gün sonra dolacak. |Parola uyarısı. |Parolanızın *süre sonu <* \> gün içinde dolacak. Parolanızı değiştirmeyi göz önünde bulundurun. Daha fazla bilgi için, [StorSimple Sanal dizisi cihaz yönetici parolasını değiştirme](storsimple-virtual-array-change-device-admin-password.md)bölümüne gidin. |
+| < *cihaz adının* parolasının \> sonunda < *sayısı* \> gün sonra dolacak. |Parola uyarısı. |Parolanızın *süre sonu <* \> gün içinde dolacak. Parolanızı değiştirmeyi göz önünde bulundurun. Daha fazla bilgi için, [StorSimple Sanal dizisi cihaz yönetici parolasını değiştirme](storsimple-virtual-array-change-device-admin-password.md)bölümüne gidin. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

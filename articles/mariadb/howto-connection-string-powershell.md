@@ -1,18 +1,18 @@
 ---
 title: PowerShell ile bir bağlantı dizesi oluşturma-MariaDB için Azure veritabanı
 description: Bu makalede, MariaDB için Azure veritabanı 'na bağlanmak üzere bir bağlantı dizesi oluşturmak için bir Azure PowerShell örneği sağlanmaktadır.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.custom: mvc, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 8/5/2020
-ms.openlocfilehash: b08a1c60b1225b2786ea869f96ac40cc651c82f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9dee109c701d3760c93f39e639dcfd7cae07b595
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88185613"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538062"
 ---
 # <a name="how-to-generate-an-azure-database-for-mariadb-connection-string-with-powershell"></a>PowerShell ile MariaDB için Azure veritabanı bağlantı dizesi oluşturma
 
@@ -26,7 +26,7 @@ Bu makalede, başlangıç noktası olarak aşağıdaki kılavuzda oluşturulan k
 
 ## <a name="get-the-connection-string"></a>Bağlantı dizesini alma
 
-`Get-AzMariaDbConnectionString`Cmdlet 'i, uygulamaları MariaDB Için Azure veritabanı 'na bağlamak üzere bir bağlantı dizesi oluşturmak için kullanılır. Aşağıdaki örnek, **demosunucum**'dan bir php istemcisinin bağlantı dizesini döndürür.
+`Get-AzMariaDbConnectionString`Cmdlet 'i, uygulamaları MariaDB Için Azure veritabanı 'na bağlamak üzere bir bağlantı dizesi oluşturmak için kullanılır. Aşağıdaki örnek, **demosunucum** 'dan bir php istemcisinin bağlantı dizesini döndürür.
 
 ```azurepowershell-interactive
 Get-AzMariaDbConnectionString -Client PHP -Name mydemoserver -ResourceGroupName myresourcegroup

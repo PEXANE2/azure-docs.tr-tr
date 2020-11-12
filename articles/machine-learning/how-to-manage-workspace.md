@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 2c9d00f1d78d2dea46d4ff4a08433360e00c7b9d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 29c378d40e3a4f92852f433677125a9e8a6d1133
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445634"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540136"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning çalışma alanları oluşturma ve yönetme 
 
@@ -191,7 +191,7 @@ Azure Güvenlik Merkezi, hibrit bulut iş yükleri arasında birleşik güvenlik
 
 ### <a name="advanced"></a>Gelişmiş
 
-Varsayılan olarak, çalışma alanının ölçümleri ve meta verileri Microsoft 'un koruduğu bir Azure Cosmos DB örneğine depolanır. Bu veriler, Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir.
+Varsayılan olarak, çalışma alanının meta verileri Microsoft 'un koruduğu bir Azure Cosmos DB örneğine depolanır. Bu veriler, Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir.
 
 Çalışma alanınızda Microsoft 'un topladığı verileri sınırlandırmak için portalda __yüksek iş etkisi çalışma alanını__ seçin veya `hbi_workspace=true ` Python 'da ayarlayın. Bu ayar hakkında daha fazla bilgi için bkz. [bekleyen şifreleme](concept-data-encryption.md#encryption-at-rest).
 
@@ -200,7 +200,7 @@ Varsayılan olarak, çalışma alanının ölçümleri ve meta verileri Microsof
 
 #### <a name="use-your-own-key"></a>Kendi anahtarınızı kullanın
 
-Veri şifreleme için kendi anahtarınızı sağlayabilirsiniz. Bunun yapılması, ölçümleri ve meta verileri Azure aboneliğinizde depolayan Azure Cosmos DB örneğini oluşturur.
+Veri şifreleme için kendi anahtarınızı sağlayabilirsiniz. Bunun yapılması, meta verileri Azure aboneliğinizde depolayan Azure Cosmos DB örneğini oluşturur.
 
 [!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 

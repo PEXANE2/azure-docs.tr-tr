@@ -1,17 +1,17 @@
 ---
 title: Yedekleme ve geri yükleme-Azure portal-MySQL için Azure veritabanı
 description: Bu makalede, Azure portal kullanarak MySQL için Azure veritabanı 'nda bir sunucunun nasıl geri yükleneceği açıklanmaktadır.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 7c9e7cda862fe1112cce7ed8cff270843f0a8475
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9bc31cf8fee2669634ff366caac77cb090baf075
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90902781"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539150"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı 'nda sunucu yedekleme ve geri yükleme
 
@@ -39,9 +39,9 @@ Oluşturma sırasında bu değerleri ayarlama hakkında daha fazla bilgi için b
 Yedekleme saklama süresi bir sunucuda aşağıdaki adımlarla değiştirilebilir:
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. MySQL için Azure veritabanı sunucunuzu seçin. Bu eylem **genel bakış** sayfasını açar.
-3. Menüde, **Ayarlar**' ın altında **fiyatlandırma katmanı** ' nı seçin. Kaydırıcıyı kullanarak **yedekleme saklama süresini** 7 ila 35 gün süreyle tercihlerinize göre değiştirebilirsiniz.
+3. Menüde, **Ayarlar** ' ın altında **fiyatlandırma katmanı** ' nı seçin. Kaydırıcıyı kullanarak **yedekleme saklama süresini** 7 ila 35 gün süreyle tercihlerinize göre değiştirebilirsiniz.
 Aşağıdaki ekran görüntüsünde 34 güne yükselmiştir.
-:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="Fiyatlandırma Katmanı-yedek yedeklilik seçin":::
+:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="Yedekleme bekletme süresi arttı":::
 
 4. Değişikliği onaylamak için **Tamam** ' ı tıklatın.
 
@@ -55,17 +55,17 @@ MySQL için Azure veritabanı, sunucuyu bir zaman noktasına geri yüklemenize v
 Aşağıdaki adımlar örnek sunucuyu bir zaman noktasına geri yükler:
 1. Azure portal, MySQL için Azure veritabanı sunucunuzu seçin. 
 
-2. Sunucunun **genel bakış** sayfasının araç çubuğunda **geri yükle**' yi seçin.
+2. Sunucunun **genel bakış** sayfasının araç çubuğunda **geri yükle** ' yi seçin.
 
-   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Fiyatlandırma Katmanı-yedek yedeklilik seçin":::
+   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="MySQL için Azure veritabanı-genel bakış-geri yükleme düğmesi":::
 
 3. Geri yükleme formunu gereken bilgilerle doldurun:
 
-   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Fiyatlandırma Katmanı-yedek yedeklilik seçin":::
-   - **Geri yükleme noktası**: geri yüklemek istediğiniz zaman noktasını seçin.
-   - **Hedef sunucu**: yeni sunucu için bir ad sağlayın.
-   - **Konum**: bölgeyi seçemezsiniz. Varsayılan olarak, kaynak sunucu ile aynıdır.
-   - **Fiyatlandırma katmanı**: bir zaman içinde geri yükleme yaparken bu parametreleri değiştiremezsiniz. Kaynak sunucuyla aynıdır. 
+   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="MySQL için Azure veritabanı-geri yükleme bilgileri":::
+   - **Geri yükleme noktası** : geri yüklemek istediğiniz zaman noktasını seçin.
+   - **Hedef sunucu** : yeni sunucu için bir ad sağlayın.
+   - **Konum** : bölgeyi seçemezsiniz. Varsayılan olarak, kaynak sunucu ile aynıdır.
+   - **Fiyatlandırma katmanı** : bir zaman içinde geri yükleme yaparken bu parametreleri değiştiremezsiniz. Kaynak sunucuyla aynıdır. 
 
 4. Sunucuyu bir zaman noktasına geri yüklemek üzere geri yüklemek için **Tamam** ' a tıklayın. 
 
@@ -84,15 +84,15 @@ Geri yükleme sırasında oluşturulan yeni sunucu, özgün sunucuda var olan VN
 ## <a name="geo-restore"></a>Coğrafi geri yükleme
 Sunucunuzu coğrafi olarak yedekli yedeklemeler için yapılandırdıysanız, var olan sunucunun yedeklemesinden yeni bir sunucu oluşturulabilir. Bu yeni sunucu, MySQL için Azure veritabanı 'nın kullanılabildiği herhangi bir bölgede oluşturulabilir.  
 
-1. Portalın sol üst köşesinde bulunan **kaynak oluştur** düğmesini (+) seçin. **Veritabanları**  >  **MySQL için Azure veritabanı**' nı seçin.
+1. Portalın sol üst köşesinde bulunan **kaynak oluştur** düğmesini (+) seçin. **Veritabanları**  >  **MySQL için Azure veritabanı** ' nı seçin.
 
-   :::image type="content" source="./media/howto-restore-server-portal/1_navigate-to-mysql.png" alt-text="Fiyatlandırma Katmanı-yedek yedeklilik seçin":::
+   :::image type="content" source="./media/howto-restore-server-portal/1_navigate-to-mysql.png" alt-text="MySQL için Azure veritabanı 'na gidin.":::
  
 2. Yeni sunucunun aboneliğini, kaynak grubunu ve adını sağlayın. 
 
-3. **Veri kaynağı**olarak **yedekleme** ' yi seçin. Bu eylem, coğrafi olarak yedekli yedeklemelerin etkinleştirildiği sunucuların listesini sağlayan bir açılan menü yükler.
+3. **Veri kaynağı** olarak **yedekleme** ' yi seçin. Bu eylem, coğrafi olarak yedekli yedeklemelerin etkinleştirildiği sunucuların listesini sağlayan bir açılan menü yükler.
    
-   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="Fiyatlandırma Katmanı-yedek yedeklilik seçin":::
+   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="Veri kaynağını seçin.":::
     
    > [!NOTE]
    > Sunucu ilk oluşturulduğunda coğrafi geri yükleme için hemen kullanılamayabilir. Gerekli meta verilerin doldurulması birkaç saat sürebilir.
@@ -100,25 +100,25 @@ Sunucunuzu coğrafi olarak yedekli yedeklemeler için yapılandırdıysanız, va
 
 4. **Yedekleme** açılan listesini seçin.
    
-   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="Fiyatlandırma Katmanı-yedek yedeklilik seçin":::
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="Yedekleme açılan listesini seçin.":::
 
 5. Geri yüklenecek kaynak sunucuyu seçin.
    
-   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Fiyatlandırma Katmanı-yedek yedeklilik seçin":::
+   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Yedekle 'yi seçin.":::
 
-6. Sunucu, **sanal çekirdek**sayısı, **yedekleme saklama süresi**, **yedekleme artıklığı seçeneği**, **altyapı sürümü**ve **yönetici kimlik bilgileri**için varsayılan değerleri sağlar. **Devam**’ı seçin. 
+6. Sunucu, **sanal çekirdek** sayısı, **yedekleme saklama süresi** , **yedekleme artıklığı seçeneği** , **altyapı sürümü** ve **yönetici kimlik bilgileri** için varsayılan değerleri sağlar. **Devam** ’ı seçin. 
    
-   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Fiyatlandırma Katmanı-yedek yedeklilik seçin":::
+   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Yedeklemeye devam edin.":::
 
-7. Formun geri kalanını tercihlerinize göre doldurun. Herhangi bir **konum**seçebilirsiniz.
+7. Formun geri kalanını tercihlerinize göre doldurun. Herhangi bir **konum** seçebilirsiniz.
 
-    Konumu seçtikten sonra, **Işlem üretimini** güncelleştirmek Için **Sunucu Yapılandır** ' ı seçebilirsiniz (seçtiğiniz bölgede varsa), **sanal çekirdek**sayısı, **yedekleme saklama süresi**ve **yedek artıklık seçeneği**. Geri yükleme sırasında **fiyatlandırma katmanını** (temel, genel amaçlı veya bellek için iyileştirilmiş) veya **depolama** boyutunu değiştirme desteklenmiyor.
+    Konumu seçtikten sonra, **Işlem üretimini** güncelleştirmek Için **Sunucu Yapılandır** ' ı seçebilirsiniz (seçtiğiniz bölgede varsa), **sanal çekirdek** sayısı, **yedekleme saklama süresi** ve **yedek artıklık seçeneği**. Geri yükleme sırasında **fiyatlandırma katmanını** (temel, genel amaçlı veya bellek için iyileştirilmiş) veya **depolama** boyutunu değiştirme desteklenmiyor.
 
-   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="Fiyatlandırma Katmanı-yedek yedeklilik seçin"::: 
+   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="Form Doldur."::: 
 
 8. Seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin. 
 
-9. Sunucuyu sağlamak için **Oluştur**’u seçin. Bu işlem birkaç dakika sürebilir.
+9. Sunucuyu sağlamak için **Oluştur** ’u seçin. Bu işlem birkaç dakika sürebilir.
 
 Coğrafi geri yükleme tarafından oluşturulan yeni sunucu, geri yükleme başlatıldığı sırada mevcut sunucu için geçerli olan Sunucu Yöneticisi oturum açma adı ve parolaya sahiptir. Parola, yeni sunucunun **genel bakış** sayfasından değiştirilebilir.
 

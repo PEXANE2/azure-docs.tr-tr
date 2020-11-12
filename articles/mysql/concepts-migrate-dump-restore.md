@@ -1,17 +1,17 @@
 ---
 title: Döküm ve geri yükleme kullanarak geçirme-MySQL için Azure veritabanı
 description: Bu makalede, mysqldump, MySQL II ve PHPMyAdmin gibi araçları kullanarak MySQL için Azure veritabanınızdaki veritabanlarını yedeklemenin ve geri yüklemenin iki yaygın yolu açıklanmaktadır.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/30/2020
-ms.openlocfilehash: 336021792b7e5340e35a0c59e0f113d4dad9307d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f21587fe6a48d042ed98c126beb2a7dcaa39b7d8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128972"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537926"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Döküm alma ve geri yükleme işlemlerini kullanarak MySQL veritabanınızı MySQL için Azure Veritabanı'na geçirme
 
@@ -73,7 +73,7 @@ Bağlanmak için, MySQL için Azure veritabanı **'Na genel bakış** bölümün
 
 Bağlantı bilgilerini MySQL çalışma ekranına ekleyin.
 
-:::image type="content" source="./media/concepts-migrate-dump-restore/2_setup-new-connection.png" alt-text="Azure portal bağlantı bilgilerini bulun":::
+:::image type="content" source="./media/concepts-migrate-dump-restore/2_setup-new-connection.png" alt-text="MySQL çalışma ekranı bağlantı dizesi":::
 
 ## <a name="preparing-the-target-azure-database-for-mysql-server-for-fast-data-loads"></a>Hızlı veri yükleri için MySQL için Azure veritabanı sunucusu için hedef hazırlama
 Daha hızlı veri yükleri için hedef Azure veritabanını MySQL sunucusuna hazırlamak üzere aşağıdaki sunucu parametreleri ve yapılandırmasının değiştirilmesi gerekir.

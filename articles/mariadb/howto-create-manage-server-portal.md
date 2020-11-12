@@ -1,22 +1,22 @@
 ---
 title: Sunucu Yönetme-Azure portal-MariaDB için Azure veritabanı
 description: MariaDB sunucusu için Azure veritabanı 'nı Azure portal yönetme hakkında bilgi edinin.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 24481abb6606d9ce830e5b65285b31637417cbd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ade70c884a3ef01db45273e4789f34b629473661
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90562460"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537994"
 ---
 # <a name="manage-an-azure-database-for-mariadb-server-using-the-azure-portal"></a>Azure portal kullanarak bir MariaDB sunucusu için Azure veritabanı 'nı yönetme
 Bu makalede, MariaDB sunucuları için Azure veritabanınızı nasıl yöneteceğiniz gösterilmektedir. Yönetim görevleri işlem ve depolama ölçeklendirmesi, yönetici parola sıfırlama ve sunucu ayrıntılarını görüntüleme içerir.
 
-## <a name="sign-in"></a>Oturum aç
+## <a name="sign-in"></a>Oturum açın
 [Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-a-server"></a>Sunucu oluşturma
@@ -30,9 +30,9 @@ Sunucu oluşturulduktan sonra, gereksinimleriniz değiştikçe Genel Amaçlı ve
 
 Genel Amaçlı En Iyi duruma getirilmiş ve tam tersi yönde ölçeklendirebilirsiniz. Sunucu oluşturulduktan sonra temel katmandan ve arasında geçiş yapmak desteklenmez. 
 
-1. Azure portal sunucunuzu seçin. **Ayarlar** bölümünde bulunan **fiyatlandırma katmanını**seçin.
+1. Azure portal sunucunuzu seçin. **Ayarlar** bölümünde bulunan **fiyatlandırma katmanını** seçin.
 
-2. Ölçeklendirdiğinize göre **genel amaçlı** veya **bellek için iyileştirilmiş**' u seçin. 
+2. Ölçeklendirdiğinize göre **genel amaçlı** veya **bellek için iyileştirilmiş** ' u seçin. 
 
     ![Ekran görüntüsünde, fiyatlandırma katmanının seçildiği Azure portal ve bellek için Iyileştirilmiş bir değer gösterilir.](./media/howto-create-manage-server-portal/change-pricing-tier.png)
 
@@ -44,7 +44,7 @@ Genel Amaçlı En Iyi duruma getirilmiş ve tam tersi yönde ölçeklendirebilir
 
 ### <a name="scale-vcores-up-or-down"></a>Sanal çekirdekleri yukarı veya aşağı ölçeklendirme
 
-1. Azure portal sunucunuzu seçin. **Ayarlar** bölümünde bulunan **fiyatlandırma katmanını**seçin.
+1. Azure portal sunucunuzu seçin. **Ayarlar** bölümünde bulunan **fiyatlandırma katmanını** seçin.
 
 2. Kaydırıcıyı istediğiniz değere taşıyarak **Vcore** ayarını değiştirin.
 
@@ -58,7 +58,7 @@ Genel Amaçlı En Iyi duruma getirilmiş ve tam tersi yönde ölçeklendirebilir
 
 ### <a name="scale-storage-up"></a>Depolama ölçeğini artırma
 
-1. Azure portal sunucunuzu seçin. **Ayarlar** bölümünde bulunan **fiyatlandırma katmanını**seçin.
+1. Azure portal sunucunuzu seçin. **Ayarlar** bölümünde bulunan **fiyatlandırma katmanını** seçin.
 
 2. Kaydırıcıyı istediğiniz değere taşıyarak **depolama** ayarını değiştirin.
 
@@ -73,7 +73,7 @@ Genel Amaçlı En Iyi duruma getirilmiş ve tam tersi yönde ölçeklendirebilir
 ## <a name="update-admin-password"></a>Yönetici parolasını Güncelleştir
 Azure portal kullanarak yönetici rolü parolasını değiştirebilirsiniz.
 
-1. Azure portal sunucunuzu seçin. **Genel bakış** penceresinde **Parolayı Sıfırla**' yı seçin.
+1. Azure portal sunucunuzu seçin. **Genel bakış** penceresinde **Parolayı Sıfırla** ' yı seçin.
 
    ![genel bakış](./media/howto-create-manage-server-portal/overview-reset-password.png)
 
@@ -88,7 +88,7 @@ Azure portal kullanarak yönetici rolü parolasını değiştirebilirsiniz.
 
 Artık gerekmiyorsa, sunucunuzu silebilirsiniz. 
 
-1. Azure portal sunucunuzu seçin. **Genel bakış** penceresinde **Sil**' i seçin.
+1. Azure portal sunucunuzu seçin. **Genel bakış** penceresinde **Sil** ' i seçin.
 
     ![delete](./media/howto-create-manage-server-portal/overview-delete.png)
 
@@ -99,7 +99,7 @@ Artık gerekmiyorsa, sunucunuzu silebilirsiniz.
     > [!NOTE]
     > Sunucu silindiğinde geri alınamaz.
 
-3. **Sil**’i seçin.
+3. **Sil** ’i seçin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

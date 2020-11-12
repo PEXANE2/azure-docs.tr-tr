@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca42ddbc648f7c342b1cd649c19b77df803257d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfbd5e6f190e0600c31aa17e9b1a75f08e213df4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979807"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537671"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde erişim isteklerini onaylama veya reddetme
 
@@ -53,15 +53,15 @@ E-postanız yoksa, bu adımları izleyerek Onayınızı bekleyen erişim istekle
 
 1. Erişimimde **onaylar** sekmesine gidin.
 
-1. Onaylamak istediğiniz isteğe gidin ve **Ayrıntılar**' a tıklayın. Karar vermek için hazırsanız **Onayla** veya **Reddet** ' e de tıklayabilirsiniz.
+1. Onaylamak istediğiniz isteğe gidin ve **Ayrıntılar** ' a tıklayın. Karar vermek için hazırsanız **Onayla** veya **Reddet** ' e de tıklayabilirsiniz.
 
-1. **İstek ayrıntıları**' na tıklayın.
+1. **İstek ayrıntıları** ' na tıklayın.
 
      ![Erişim Portalı-erişim isteği-tıklama isteği ayrıntıları](./media/entitlement-management-request-approve/requestor-information-request-details.png)
 
 1. İstek sahibi tarafından belirtilen bilgiler panelin en altında olacaktır.
 
-     ![Erişim Portalı-erişim isteği](./media/entitlement-management-request-approve/requestor-information-requestor-answers.png)
+     ![Ekran görüntüsü, isteğin ayrıntılarını gösterir](./media/entitlement-management-request-approve/requestor-information-requestor-answers.png)
 
 1. Talep sahibinin verdiği bilgilere bağlı olarak, isteği onaylayabilir veya reddedebilirsiniz. Rehberlik için istekleri onaylama veya reddetme adımlarına bakın.
 
@@ -77,11 +77,11 @@ Onay bekleyen bir erişim isteği açtıktan sonra, bir onaylama veya reddetme k
 
     Ayrıntılar arasında kullanıcının adı, kuruluş, erişim başlangıç ve bitiş tarihi, iş gerekçe, isteğin gönderildiği zaman ve isteğin ne zaman dolacağı bulunur.
 
-1. **Onayla** veya **Reddet**' e tıklayın.
+1. **Onayla** veya **Reddet** ' e tıklayın.
 
 1. Gerekirse bir neden girin.
 
-    ![Erişim Portalı-erişim isteği](./media/entitlement-management-request-approve/my-access-approve-request.png)
+    ![Ekran görüntüsünde, isteği kabul ettiğiniz veya reddetmeniz gereken sayfa gösterilir.](./media/entitlement-management-request-approve/my-access-approve-request.png)
 
 1. Kararınızı göndermek için **Gönder** ' e tıklayın.
 

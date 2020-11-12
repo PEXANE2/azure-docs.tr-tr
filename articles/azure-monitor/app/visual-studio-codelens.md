@@ -4,12 +4,12 @@ description: Application Insights istek ve özel durum telemetrinize Visual Stud
 ms.topic: conceptual
 ms.date: 03/17/2017
 ms.custom: vs-azure
-ms.openlocfilehash: 92879e9dc7b9de7ef5862f30241f2b80e6aac9e8
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 2cfc4e06dcb5671f34ff98794c9569b6ed5ddae7
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932660"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538504"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Visual Studio CodeLens’te Application Insights telemetrisi
 Web uygulamanızın kodundaki yöntemlere, çalışma zamanı özel durumları ve istek yanıt süreleri hakkında telemetri ile açıklama eklenebilir. [Azure Application Insights](./app-insights-overview.md)’ı uygulamanıza yüklerseniz telemetri Visual Studio [CodeLens](/visualstudio/ide/find-code-changes-and-other-history-with-codelens?view=vs-2015) içinde (işlevin başvurulduğu yer sayısı veya düzenleyen kişi gibi yararlı bilgileri görmeye alışkın olduğunuz her bir işlevin üst kısmında) görünür.
@@ -30,7 +30,7 @@ Application Insights telemetrisini web uygulamanızın ortak istek yöntemlerini
 > 
 
 ## <a name="exceptions-in-codelens"></a>CodeLens’teki özel durumlar
-![TBD](./media/visual-studio-codelens/codelens-exceptions.png)
+![Ekran görüntüsü CodeLens 'te gösterilen 47 özel durumu gösterir.](./media/visual-studio-codelens/codelens-exceptions.png)
 
 CodeLens özel durum göstergesi, yöntemin sunduğu isteği işlerken son 24 içinde uygulamanızda en sık gerçekleşen 15 özel durumdan birkaç tanesini gösterir.
 
@@ -38,10 +38,10 @@ Daha fazla ayrıntı için CodeLens özel durum göstergesine tıklayın:
 
 * Önceki 24 saat le onun öncesindeki 24 saat arasında özel durum sayısında meydana gelen değişiklik yüzdesi
 * Özel durumu oluşturan işlevin kaynak koduna gitmek için **Koda git** öğesini seçin
-* Bu özel durumun son 24 saat içinde gerçekleşen tüm örneklerini sorgulamak için **Ara**’yı seçin
-* Bu özel durumun son 24 saat içinde gerçekleşen tüm örneklerine ilişkin bir eğilim görselini görüntülemek için **Eğilim**’i seçin
-* Son 24 saat içinde gerçekleşen tüm özel durumları sorgulamak için **Bu uygulamadaki tüm özel durumları görüntüle**’yi seçin
-* Son 24 saat içinde gerçekleşen tüm özel durumlara ilişkin bir eğilim görselini görüntülemek için **Özel durum eğilimlerini keşfet**’i seçin. 
+* Bu özel durumun son 24 saat içinde gerçekleşen tüm örneklerini sorgulamak için **Ara** ’yı seçin
+* Bu özel durumun son 24 saat içinde gerçekleşen tüm örneklerine ilişkin bir eğilim görselini görüntülemek için **Eğilim** ’i seçin
+* Son 24 saat içinde gerçekleşen tüm özel durumları sorgulamak için **Bu uygulamadaki tüm özel durumları görüntüle** ’yi seçin
+* Son 24 saat içinde gerçekleşen tüm özel durumlara ilişkin bir eğilim görselini görüntülemek için **Özel durum eğilimlerini keşfet** ’i seçin. 
 
 > [!TIP]
 > CodeLens’te "0 özel durum" görmenize karşın özel durumlar olması gerektiğini biliyorsanız CodeLens’te doğru Application Insights kaynağının seçildiğinden emin olun. Başka bir kaynak seçmek için Çözüm Gezgini'nde projenize sağ tıklayın ve **Application Insights > Telemetri Kaynağı Seç** öğesini seçin. CodeLens, uygulamanızda yalnızca son 24 saat içinde en sık gerçekleşen 15 özel durum için gösterilir; dolayısıyla özel durum en sık gerçekleşen 16. veya daha sonraki bir özel durumsa "0 özel durum" görürsünüz. ASP.NET görünümlerindeki özel durumlar bu görünümleri oluşturan denetleyici yöntemlerinde görünmeyebilir.
@@ -52,7 +52,7 @@ Daha fazla ayrıntı için CodeLens özel durum göstergesine tıklayın:
 > 
 
 ## <a name="requests-in-codelens"></a>CodeLens’teki istekler
-![TBD](./media/visual-studio-codelens/codelens-requests.png)
+![Ekran görüntüsünde, %7 başarısızlık da dahil olmak üzere 684 isteklerinin ayrıntıları gösterilir.](./media/visual-studio-codelens/codelens-requests.png)
 
 CodeLens istek göstergesi son 24 saat içinde bir yöntemin sunduğu HTTP isteklerinin sayısını ve başarısız olan isteklerin yüzdesini gösterir.
 
@@ -60,8 +60,8 @@ Daha fazla ayrıntı için CodeLens istek göstergesine tıklayın:
 
 * Son 24 saat ile ondan önceki 24 saat içinde gerçekleşen istek, başarısız istek ve ortalama yanıt sürelerinin mutlak değişimleri ile değişiklik yüzdelerini karşılaştırma
 * Son 24 saatte başarısız olmayan isteklerin yüzdesi olarak hesaplanan yöntem güvenilirliği
-* Son 24 saatte gerçekleşen tüm (başarısız) istekleri sorgulamak üzere istekler ya da başarısız istekler için **Ara**’yı seçin
-* Son 24 saatte gerçekleşen istek, başarısız istek veya ortalama yanıt sürelerine ilişkin bir eğilim görselini görüntülemek için **Eğilim**’i seçin.
+* Son 24 saatte gerçekleşen tüm (başarısız) istekleri sorgulamak üzere istekler ya da başarısız istekler için **Ara** ’yı seçin
+* Son 24 saatte gerçekleşen istek, başarısız istek veya ortalama yanıt sürelerine ilişkin bir eğilim görselini görüntülemek için **Eğilim** ’i seçin.
 * CodeLens verilerinin kaynağını değiştirmek için CodeLens ayrıntılı görünümünün sol üst köşesinden Application Insights kaynağının adını seçin.
 
 ## <a name="next-steps"></a><a name="next"></a>Sonraki adımlar
