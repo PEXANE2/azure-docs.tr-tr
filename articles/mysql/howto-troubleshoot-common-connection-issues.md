@@ -2,17 +2,17 @@
 title: Bağlantı sorunlarını giderme-MySQL için Azure veritabanı
 description: Yeniden denemeler, güvenlik duvarı sorunları ve kesintiler gerektiren geçici hatalar da dahil olmak üzere MySQL için Azure veritabanı 'nda bağlantı sorunlarını nasıl giderebileceğinizi öğrenin.
 keywords: MySQL bağlantısı, bağlantı dizesi, bağlantı sorunları, geçici hata, bağlantı hatası
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: e4afcb8756f64ab9b66044a1bf1304427330e365
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da500087aeb4ad5e2bf516c3d0ce3cceaf8396af
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82100898"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540782"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>MySQL için Azure Veritabanı bağlantı sorunlarını giderme
 
@@ -48,7 +48,7 @@ Uygulama, MySQL için Azure veritabanı 'na kalıcı olarak bağlanamazsa, genel
 
 * Sunucu güvenlik duvarı yapılandırması: MySQL Server güvenlik duvarı için Azure veritabanı 'nın, proxy sunucuları ve ağ geçitleri dahil olmak üzere istemcinizden gelen bağlantılara izin verecek şekilde yapılandırıldığından emin olun.
 * İstemci güvenlik duvarı yapılandırması: istemcinizdeki güvenlik duvarı, veritabanı sunucunuza yönelik bağlantılara izin vermelidir. Bazı güvenlik duvarlarındaki MySQL gibi uygulama adlarının yanı sıra, izin verilmeyen sunucunun IP adreslerine ve bağlantı noktalarına izin verilmesi gerekir.
-* Kullanıcı hatası: bağlantı dizesindeki sunucu adı veya Kullanıcı adında eksik * \@ ServerName* son eki gibi yanlış bağlantı parametreleri olabilir.
+* Kullanıcı hatası: bağlantı dizesindeki sunucu adı veya Kullanıcı adında eksik *\@ ServerName* son eki gibi yanlış bağlantı parametreleri olabilir.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Kalıcı bağlantı sorunlarını giderme adımları
 

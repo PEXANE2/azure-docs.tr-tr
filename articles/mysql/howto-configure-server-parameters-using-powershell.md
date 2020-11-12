@@ -1,26 +1,26 @@
 ---
 title: Sunucu parametrelerini Yapılandırma-Azure PowerShell-MySQL için Azure veritabanı
 description: Bu makalede, PowerShell kullanarak MySQL için Azure veritabanı 'nda hizmet parametrelerinin nasıl yapılandırılacağı açıklanır.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 10/1/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3888e83738d8617d6ec1433a3b760a2c518b874c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 973025dfd8c0141ed0884539fe5207cc64ec822c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627224"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541870"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-powershell"></a>PowerShell kullanarak MySQL için Azure veritabanı 'nda sunucu parametrelerini yapılandırma
 
 PowerShell kullanarak MySQL için Azure veritabanı sunucusu için yapılandırma parametrelerini listeleyebilir, gösterebilir ve güncelleştirebilirsiniz. Altyapı yapılandırmalarının bir alt kümesi sunucu düzeyinde sunulur ve değiştirilebilir.
 
 >[!Note]
-> Sunucu parametreleri genel olarak sunucu düzeyinde güncelleştirilemeyebilir, [Azure CLI](./howto-configure-server-parameters-using-cli.md), [PowerShell](./howto-configure-server-parameters-using-powershell.md)veya [Azure Portal](./howto-server-parameters.md)kullanabilirsiniz.
+> Sunucu parametreleri sunucu düzeyinde genel olarak güncelleştirilebilir; [Azure CLI](./howto-configure-server-parameters-using-cli.md), [PowerShell](./howto-configure-server-parameters-using-powershell.md) veya [Azure Portal](./howto-server-parameters.md) kullanın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -41,7 +41,7 @@ PowerShell 'i yerel olarak kullanmayı seçerseniz, [Connect-AzAccount](/powersh
 
 Bir sunucudaki tüm değiştirilebilir parametreleri ve değerlerini listelemek için `Get-AzMySqlConfiguration` cmdlet 'ini çalıştırın.
 
-Aşağıdaki örnekte, **myresourcegroup**kaynak grubundaki **demosunucum** sunucusu için sunucu yapılandırma parametreleri listelenmektedir.
+Aşağıdaki örnekte, **myresourcegroup** kaynak grubundaki **demosunucum** sunucusu için sunucu yapılandırma parametreleri listelenmektedir.
 
 ```azurepowershell-interactive
 Get-AzMySqlConfiguration -ResourceGroupName myresourcegroup -ServerName mydemoserver
@@ -53,7 +53,7 @@ Listelenen parametrelerin her birinin tanımı için [sunucu sistem değişkenle
 
 Bir sunucu için belirli bir yapılandırma parametresi ayrıntılarını göstermek için `Get-AzMySqlConfiguration` cmdlet 'ini çalıştırın ve **ad** parametresini belirtin.
 
-Bu örnekte, **myresourcegroup**kaynak grubu altındaki **demosunucum** sunucusu için **yavaş \_ sorgu \_ günlüğü** sunucu yapılandırma parametresinin ayrıntıları gösterilmektedir.
+Bu örnekte, **myresourcegroup** kaynak grubu altındaki **demosunucum** sunucusu için **yavaş \_ sorgu \_ günlüğü** sunucu yapılandırma parametresinin ayrıntıları gösterilmektedir.
 
 ```azurepowershell-interactive
 Get-AzMySqlConfiguration -Name slow_query_log -ResourceGroupName myresourcegroup -ServerName mydemoserver

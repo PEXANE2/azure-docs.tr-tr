@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 5b2a74450477d562231eafd684b3d781d92f700d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 78a8ae7724c9ede06b24649d3b19ea90b791ae08
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489582"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541326"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Öğretici: IoT Edge cihazları hiyerarşisi oluşturma (Önizleme)
 
@@ -45,7 +45,7 @@ Bu öğreticide, aşağıdaki ağ katmanları tanımlanmıştır:
 
 Bu öğreticide kolaylık sağlamak için iki cihaz hiyerarşisi kullanılmaktadır. Bir cihaz, **topLayerDevice** , hiyerarşinin en üst katmanında, doğrudan buluta bağlanabilecek bir cihazı temsil eder. Bu cihaza **ana cihaz** da denir. Diğer cihaz, küçük **harf Layerdevice** , hiyerarşinin alt katmanında doğrudan buluta bağlanamaz bir cihazı temsil eder. Bu cihaza **alt cihaz** da denir. Üretim ortamınızı temsil etmek için ek alt katman cihazları ekleyebilirsiniz. Diğer tüm ek katman cihazlarının yapılandırması, küçük **Layerdevice** 'ın yapılandırmasını izler.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 IoT Edge cihazlarının bir hiyerarşisini oluşturmak için şunlar gerekir:
 
@@ -244,7 +244,7 @@ Cihazlarınızı yapılandırmak için bu adımları tamamlayıp IoT Edge hizmet
    hostname: <device fqdn or IP>
    ```
 
-1. **Daha düşük katmanlardaki** IoT Edge cihazlar için, yapılandırma dosyasını üst aygıtın ana **bilgisayar adı** alanındaki ile eşleşen FQDN veya IP 'nin IP 'sine işaret etmek üzere güncelleştirin. **Üst katmandaki** IoT Edge cihazlar için bu parametreyi boş bırakın.
+1. **Daha düşük katmanlardaki** IoT Edge cihazlar için, yapılandırma dosyasını üst aygıtın ana **bilgisayar adı** alanındaki ile eşleşen FQDN veya IP 'nin IP 'sine işaret etmek üzere güncelleştirin. **Üst katmandaki** IoT Edge cihazlar için, bu parametreyi açıklama olarak bırakın.
 
    ```yml
    parent_hostname: <parent device fqdn or IP>

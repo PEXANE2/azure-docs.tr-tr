@@ -1,17 +1,17 @@
 ---
 title: Veri çoğaltma yapılandırma-MySQL için Azure veritabanı
 description: Bu makalede MySQL için Azure veritabanı 'nın Gelen Verileri Çoğaltma nasıl ayarlanacağı açıklanır.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: 58df34ae6a6ff3304304da192b429ac83c1b55c3
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b7f1f16b5182658f42ad6594aace22fb5a1a80fc
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544044"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541411"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>MySQL için Azure veritabanı 'nı yapılandırma Gelen Verileri Çoğaltma
 
@@ -75,7 +75,7 @@ Aşağıdaki adımlar, şirket içinde barındırılan MySQL sunucusunu, bir san
       ```bash
       ping <output of step 2b>
       ``` 
-      Örneğin: 
+      Örnek: 
       ```bash      
       C:\Users\testuser> ping e299ae56f000.tr1830.westus1-a.worker.database.windows.net
       Pinging tr1830.westus1-a.worker.database.windows.net (**11.11.111.111**) 56(84) bytes of data.
@@ -140,11 +140,11 @@ Aşağıdaki adımlar, şirket içinde barındırılan MySQL sunucusunu, bir san
 
    Kullanıcı **adını oturum açma adı** alanına yazın. 
 
-   :::image type="content" source="./media/howto-data-in-replication/syncuser.png" alt-text="Kullanıcılar ve ayrıcalıklar":::
+   :::image type="content" source="./media/howto-data-in-replication/syncuser.png" alt-text="Kullanıcıyı Eşitle":::
  
    **Yönetim rolleri** paneline tıklayın ve sonra **genel ayrıcalıklar** listesinden **çoğaltma bağımlı** öğesini seçin. Ardından, çoğaltma rolünü oluşturmak için **Uygula** ' ya tıklayın.
 
-   :::image type="content" source="./media/howto-data-in-replication/replicationslave.png" alt-text="Kullanıcılar ve ayrıcalıklar":::
+   :::image type="content" source="./media/howto-data-in-replication/replicationslave.png" alt-text="Çoğaltma bağımlı":::
 
 1. Kaynak sunucuyu salt okunurdur moduna ayarlama
 
@@ -164,7 +164,7 @@ Aşağıdaki adımlar, şirket içinde barındırılan MySQL sunucusunu, bir san
    ```
    Sonuçlar aşağıdaki gibi olmalıdır. Sonraki adımlarda kullanılacak ikili dosya adını unutmayın.
 
-   :::image type="content" source="./media/howto-data-in-replication/masterstatus.png" alt-text="Kullanıcılar ve ayrıcalıklar":::
+   :::image type="content" source="./media/howto-data-in-replication/masterstatus.png" alt-text="Ana durum sonuçları":::
  
 ## <a name="dump-and-restore-source-server"></a>Kaynak sunucu dökümünü al ve geri yükle
 

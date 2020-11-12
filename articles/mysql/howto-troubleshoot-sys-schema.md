@@ -1,17 +1,17 @@
 ---
 title: Sys_schema kullanma-MySQL için Azure veritabanı
 description: MySQL için Azure veritabanı 'nda performans sorunlarını bulmak ve veritabanını korumak için sys_schema kullanmayı öğrenin.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/30/2020
-ms.openlocfilehash: 74aa0bf84c19b9d663b92d529604c08bf5800c45
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a20510ee2800a54f9a51a2f498ee8ae8a3e51d55
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544860"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94543158"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda performans ayarlama ve veritabanı bakımı için sys_schema kullanma
 
@@ -29,7 +29,7 @@ Sys_schema 52 görünüm vardır ve her görünüm aşağıdaki öneklerden biri
 - Kullanıcı: kullanıcılara göre tüketilen ve gruplandırılan kaynaklar. Dosya g/ç, bağlantı ve bellek örnekleri örnektir.
 - Wait: bekleme olayları ana bilgisayara veya kullanıcıya göre gruplandırılır.
 
-Şimdi sys_schema bazı yaygın kullanım düzenlerine göz atalım. Kullanmaya başlamak için kullanım desenlerini iki kategoride gruplarız: **performans ayarlama** ve **Veritabanı Bakımı** .
+Şimdi sys_schema bazı yaygın kullanım düzenlerine göz atalım. Kullanmaya başlamak için kullanım desenlerini iki kategoride gruplarız: **performans ayarlama** ve **Veritabanı Bakımı**.
 
 ## <a name="performance-tuning"></a>Performans ayarlama
 
@@ -37,23 +37,23 @@ Sys_schema 52 görünüm vardır ve her görünüm aşağıdaki öneklerden biri
 
 GÇ, veritabanında en pahalı bir işlemdir. *Sys.user_summary_by_file_io* görünümünü SORGULAYARAK ortalama GÇ gecikme süresini bulabiliriz. Varsayılan 125 GB sağlanmış depolama alanı ile GÇ gecikme süresi yaklaşık 15 saniyedir.
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/io-latency-125GB.png" alt-text="sys_schema görünümleri":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/io-latency-125GB.png" alt-text="GÇ gecikmesi: 125 GB":::
 
 MySQL için Azure veritabanı, depolama 'ya göre GÇ 'yi ölçeklendirdikten sonra, sağlanan depolama alanını 1 TB olarak artırdıktan sonra, GÇ gecikmesi 571 MS olarak azalır.
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/io-latency-1TB.png" alt-text="sys_schema görünümleri":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/io-latency-1TB.png" alt-text="GÇ gecikmesi: 1TB":::
 
 ### <a name="sysschema_tables_with_full_table_scans"></a>*sys.schema_tables_with_full_table_scans*
 
 Dikkatli bir planlamaya rağmen çok sayıda sorgu yine de tam tablo taramasına neden olabilir. Dizinlerin türleri ve bunların nasıl iyileştirileceği hakkında ek bilgiler için, bu makaleye başvurabilirsiniz: [sorgu performansı sorunlarını giderme](./howto-troubleshoot-query-performance.md). Tam tablo taramaları Kaynak yoğunluklu ve veritabanı performanslarını düşürür. Tam tablo taraması olan tabloları bulmanın en hızlı yolu *sys.schema_tables_with_full_table_scans* görünümünü sorgulamanızı sağlar.
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/full-table-scans.png" alt-text="sys_schema görünümleri":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/full-table-scans.png" alt-text="tam tablo taramaları":::
 
 ### <a name="sysuser_summary_by_statement_type"></a>*sys.user_summary_by_statement_type*
 
 Veritabanı performans sorunlarını gidermek için veritabanınızın içinde oluşan olayları belirlemek yararlı olabilir ve *sys.user_summary_by_statement_type* görünümünün kullanılması yalnızca eli olabilir.
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/summary-by-statement.png" alt-text="sys_schema görünümleri":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/summary-by-statement.png" alt-text="deyime göre Özet":::
 
 Bu örnekte, MySQL için Azure veritabanı, slog sorgu günlüğü 44579 kez temizlenme 53 dakika harcamıştır. Bu uzun süredir ve çok sayıda IOs. Yavaş sorgu günlüğliğinizi devre dışı bırakarak veya yavaş sorgu oturum açma Azure portal sıklığını azaltabilmeniz için bu etkinliği azaltabilirsiniz.
 
@@ -66,7 +66,7 @@ Bu örnekte, MySQL için Azure veritabanı, slog sorgu günlüğü 44579 kez tem
 
 InnoDB arabellek havuzu bellekte bulunur ve DBMS ile depolama arasındaki ana önbellek mekanizmasıdır. InnoDB arabellek havuzunun boyutu performans katmanına bağlıdır ve farklı bir Ürün SKU 'SU seçilmediği takdirde değiştirilemez. İşletim Sisteminizdeki bellekte olduğu gibi, fresher verileri için yer açmak üzere eski sayfalar takas edilir. Hangi tabloların en fazla InnoDB arabellek havuzu belleği tükettiği hakkında bilgi edinmek için *sys.innodb_buffer_stats_by_table* görünümünde sorgulama yapabilirsiniz.
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/innodb-buffer-status.png" alt-text="sys_schema görünümleri":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/innodb-buffer-status.png" alt-text="InnoDB arabellek durumu":::
 
 Yukarıdaki grafikte, sistem tabloları ve görünümleri dışında, WordPress Sitelerimin birini barındıran mysqldatabase033 veritabanındaki her tablo, bellekteki verilerin 16 KB veya 1 sayfa üzerinde kapladığı şekilde görünür.
 
@@ -74,9 +74,9 @@ Yukarıdaki grafikte, sistem tabloları ve görünümleri dışında, WordPress 
 
 Dizinler, okuma performansını artırmaya yönelik harika araçlardır, ancak eklemeler ve depolama için ek maliyetler doğurur. *Sys.schema_unused_indexes* ve *sys.schema_redundant_indexes* , kullanılmayan veya yinelenen dizinler hakkında öngörüler sağlar.
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/unused-indexes.png" alt-text="sys_schema görünümleri":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/unused-indexes.png" alt-text="kullanılmayan dizinler":::
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/redundant-indexes.png" alt-text="sys_schema görünümleri":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/redundant-indexes.png" alt-text="Yedekli dizinler":::
 
 ## <a name="conclusion"></a>Sonuç
 

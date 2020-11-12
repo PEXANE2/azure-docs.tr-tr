@@ -11,22 +11,22 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 6ec84a2a528b992a2645e94472987ea67331b533
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 879b451131ef7b2fa108ca1ae307107506fe8f27
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969509"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541921"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>Hızlı başlangıç: Görüntü İşleme REST API ve C kullanarak yerel bir görüntüyü çözümleme #
 
-Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak görsel özellikleri ayıklamak için yerel olarak depolanmış bir görüntüyü analiz edersiniz. [Görüntüyü çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) yöntemiyle, görüntü içeriğinden görsel özellik bilgilerini ayıklayabilirsiniz.
+Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak görsel özellikleri ayıklamak için yerel olarak depolanmış bir görüntüyü analiz edersiniz. [Görüntüyü çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) yöntemiyle, görüntü içeriğinden görsel özellik bilgilerini ayıklayabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) veya sonraki bir sürümü olmalıdır
-* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir görüntü işleme kaynağı oluşturun görüntü işleme bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
+* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir görüntü işleme kaynağı oluşturun görüntü işleme bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
     * Uygulamanızı Görüntü İşleme hizmetine bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
     * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
 * Sırasıyla ve olarak adlandırılan anahtar ve uç nokta URL 'SI için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT` .
@@ -37,9 +37,9 @@ Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak görsel özel
 
 1. Visual C# konsol uygulaması (.NET Core Framework) şablonunu kullanarak Visual Studio 'da yeni bir Visual Studio çözümü/projesi oluşturun.
 1. Newtonsoft.Json NuGet paketini yükleyin.
-    1. Menüde **Araçlar**’a tıklayın, **NuGet Paket Yöneticisi**’ni ve ardından **Çözüm için NuGet Paketlerini Yönet**’i seçin.
+    1. Menüde **Araçlar** ’a tıklayın, **NuGet Paket Yöneticisi** ’ni ve ardından **Çözüm için NuGet Paketlerini Yönet** ’i seçin.
     1. **Araştır** sekmesine tıklayın ve **arama** kutusuna "Newtonsoft.Json" (henüz görüntülenmiyorsa) yazın.
-    1. **Newtonsoft.Js**' i seçin, sonra proje adınızın yanındaki onay kutusuna **tıklayın ve '** ı tıklatın.
+    1. **Newtonsoft.Js** ' i seçin, sonra proje adınızın yanındaki onay kutusuna **tıklayın ve '** ı tıklatın.
 1. Örnek kod parçacığını Program.cs dosyanıza kopyalayın/yapıştırın. Ad alanı adını, oluşturduğunuz sunucudan farklıysa ayarlayın.
 1. Seçtiğiniz bir görüntüsünü bin/Debug/netcoreappX. X klasörünüze ekleyin ve ardından görüntü adını (uzantılı) ' ımagefilepath ' değişkenine ekleyin.
 1. Programı çalıştırın.

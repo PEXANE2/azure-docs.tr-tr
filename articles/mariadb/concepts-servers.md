@@ -1,17 +1,17 @@
 ---
 title: Sunucular-MariaDB için Azure veritabanı
 description: Bu konu, MariaDB sunucuları için Azure veritabanı ile çalışmaya yönelik hususlar ve yönergeleri sağlar.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: f519ac30468d197c14fcf53d386168ebde5cf8ac
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 4d8293258083ea3e8d0172f510e5b41e91328736
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504365"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541071"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda sunucu kavramları
 Bu makalede, MariaDB sunucuları için Azure veritabanı ile çalışmaya yönelik konular ve yönergeler sağlanmaktadır.

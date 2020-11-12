@@ -1,7 +1,7 @@
 ---
 title: Bir TensorFlow modelini eğitme ve dağıtma
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning kullanarak, TensorFlow eğitim betiklerini nasıl bir ölçekte çalıştırmayı öğrenin.
+description: Azure Machine Learning, elastik bulut bilgi işlem kaynaklarını kullanarak bir TensorFlow eğitim işini ölçeklendirmenizi nasıl sağlayacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: mx-iao
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 5c1c6af5f8304fd9093aa0351078b84d3f4d0b5d
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 9b8d48139e6cbabfbc5bf63f85d2d03c64d7efd9
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360760"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542295"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>TensorFlow modellerini Azure Machine Learning ölçeklendirerek eğitme
 
@@ -25,7 +25,7 @@ Bu örnek, derin sinir ağı (DNN) kullanarak el ile yapılan rakamları sınıf
 
 Baştan sona bir iş akışı modeli geliştirmenize veya [mevcut bir modeli](how-to-deploy-existing-model.md) buluta verdiğinize göre, üretim sınıfı modellerini derlemek, dağıtmak, sürüm ve izlemek üzere açık kaynaklı eğitim işlerini ölçeklendirmek için Azure Machine Learning kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu kodu şu ortamlardan birinde çalıştırın:
 

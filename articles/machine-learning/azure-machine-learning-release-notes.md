@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 0afd1f2f8dd06c3c224d64304eec2e18489a7e81
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 54b15d5865b1abb0d624628ed4b5c9892ab04d41
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489140"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542142"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
@@ -107,6 +107,16 @@ Veri etiketlemesi içindeki görüntü örneği segmentleme (Çokgen ek açıkla
   + **azureml-train-automl-client**
     + Get_output bir XGBoostError 'ın yükseltebileceği bir sorun düzeltildi.
 
+### <a name="azure-machine-learning-studio-notebooks-experience-october-update"></a>Azure Machine Learning Studio Not defteri deneyimi (Ekim güncelleştirmesi)
++ **Yeni özellikler**
+  + [Tam sanal ağ desteği](https://docs.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network)
+  + [Odak modu](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#focus-mode)
+  + Not defterlerini kaydet CTRL-S
+  + Satır numaraları
+
++ **Hata düzeltmeleri ve geliştirmeleri**
+  + Hız ve çekirdek güvenilirliğini geliştirme
+  + Jupyıter pencere öğesi Kullanıcı Arabirimi güncelleştirmeleri
 
 ## <a name="2020-10-12"></a>2020-10-12
 
@@ -315,7 +325,7 @@ Veri etiketlemesi içindeki görüntü örneği segmentleme (Çokgen ek açıkla
     + Yerel zaman uyumsuz kaldırıldı, yönetilen ortam, oto ml 'den çalışır. Tüm yerel çalıştırmalar çalıştırmanın başlatıldığı ortamda çalışır.
     + Kullanıcı tarafından sağlanmayan betikler olmadan, oto ml çalıştırmaları gönderilirken düzeltilen anlık görüntü sorunları.
     + Veriler Nan içerdiğinde ve korleştirme kapalıyken düzeltilen alt çalıştırma sorunları.
-  + **azureml-tren-oto ml-çalışma zamanı**
+  + **azureml-train-automl-runtime**
     + Okuma sırasında içerik değiştirildiğinde, reml, dataprep 'ten yeni bir hata kodu oluşturur.
     + Kullanıcı tarafından sağlanmayan betikler olmadan, oto ml çalıştırmaları gönderilirken düzeltilen anlık görüntü sorunları.
     + Veriler Nan içerdiğinde ve korleştirme kapalıyken düzeltilen alt çalıştırma sorunları.
@@ -506,7 +516,7 @@ Veri etiketlemesi içindeki görüntü örneği segmentleme (Çokgen ek açıkla
     + Uzaktan işlem hedefinde bir oto ml denemesi gerçekleştirirken azureml_automl. log ' ın oluşturulmamasına veya eksik Günlükler oluşmasına neden olan bir hatayı düzeltir.
     + İmletilmiş sınıflarla sınıflandırma veri kümeleri için, özellik Sweeper, alt örneklenen veriler için bu değeri belirlerse, ağırlık dengelemesi, sınıflandırma görevinin performansını belirli bir eşiğin arttıran, ağırlık dengelemesi uygulayacağız.
     + Parallel ml çalıştırmaları artık paralel çalıştırma adımının alt çalıştırması olarak işaretlenir.
-  + **azureml-tren-oto ml-çalışma zamanı**
+  + **azureml-train-automl-runtime**
     + Hizmet Kullanıcı hatası oluşturursa UserErrorException 'yı yükseltmek için, oto ml çalıştırma davranışı değiştirildi
     + Parallel ml çalıştırmaları artık paralel çalıştırma adımının alt çalıştırması olarak işaretlenir.
 

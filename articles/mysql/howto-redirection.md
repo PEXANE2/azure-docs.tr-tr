@@ -1,24 +1,24 @@
 ---
 title: Yeniden yönlendirme ile bağlanma-MySQL için Azure veritabanı
 description: Bu makalede, uygulamanızı yeniden yönlendirme ile MySQL için Azure veritabanı 'na bağlanmak üzere nasıl yapılandırabileceğiniz açıklanmaktadır.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/8/2020
-ms.openlocfilehash: be660101a28d5ef289de1b25f8f7d33fbe9f617b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bea618b34809544308caba46a0ffbdecee91d69f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86107827"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541819"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Yeniden yönlendirme ile MySQL için Azure Veritabanı'na bağlanma
 
 Bu konuda, MySQL için Azure veritabanı sunucusuna yeniden yönlendirme moduyla bir uygulamanın nasıl bağlanacağı açıklanmaktadır. Uygulamaların doğrudan arka uç sunucu düğümlerine bağlanmasına izin vererek istemci uygulamaları ve MySQL sunucuları arasındaki ağ gecikmesini azaltmak için amaçlar 'yi yeniden yönlendirme.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
-[Azure Portal](https://portal.azure.com)’ında oturum açın. Altyapı sürümü 5,6, 5,7 veya 8,0 olan MySQL için Azure veritabanı sunucusu oluşturun. 
+[Azure portalında](https://portal.azure.com) oturum açın. Altyapı sürümü 5,6, 5,7 veya 8,0 olan MySQL için Azure veritabanı sunucusu oluşturun. 
 
 Ayrıntılar için [Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) veya [Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md)kullanarak MySQL için Azure veritabanı sunucusu oluşturma bölümüne bakın.
 
@@ -40,7 +40,7 @@ Mysqlnd_azure uzantısı,,,,,,,,,,, bir,,, bir, ve resmi olarak yayımlanmış b
 >[!IMPORTANT]
 > Yeniden yönlendirme mantığı/davranışı 1.1.0 sürümü güncelleştirildi ve **1.1.0 + sürümünün kullanılması önerilir**.
 
-Yeniden yönlendirme davranışı değerine göre belirlenir `mysqlnd_azure.enableRedirect` . Aşağıdaki tabloda, **1.1.0 + sürümündeki**bu parametrenin değerine göre yeniden yönlendirme davranışı özetlenmektedir.
+Yeniden yönlendirme davranışı değerine göre belirlenir `mysqlnd_azure.enableRedirect` . Aşağıdaki tabloda, **1.1.0 + sürümündeki** bu parametrenin değerine göre yeniden yönlendirme davranışı özetlenmektedir.
 
 Mysqlnd_azure uzantısının (sürüm 1.0.0-1.0.3) eski bir sürümünü kullanıyorsanız, yeniden yönlendirme davranışı değerine göre belirlenir `mysqlnd_azure.enabled` . Geçerli değerler şunlardır `off` (aşağıdaki tabloda özetlenen davranış olarak benzer şekilde davranır) ve `on` (aşağıdaki tabloda olduğu gibi davranır `preferred` ).  
 
@@ -54,7 +54,7 @@ Belgenin sonraki bölümlerinde, `mysqlnd_azure` Bu parametrenin değerini nası
 
 ### <a name="ubuntu-linux"></a>Ubuntu Linux
 
-#### <a name="prerequisites"></a>Önkoşullar 
+#### <a name="prerequisites"></a>Ön koşullar 
 - PHP sürümleri 7.2.15 + ve 7.3.2 +
 - PHP PEAR 
 - PHP-MySQL
@@ -93,7 +93,7 @@ Belgenin sonraki bölümlerinde, `mysqlnd_azure` Bu parametrenin değerini nası
 
 ### <a name="windows"></a>Windows
 
-#### <a name="prerequisites"></a>Önkoşullar 
+#### <a name="prerequisites"></a>Ön koşullar 
 - PHP sürümleri 7.2.15 + ve 7.3.2 +
 - PHP-MySQL
 - MySQL için Azure veritabanı sunucusu

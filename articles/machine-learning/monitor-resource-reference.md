@@ -1,6 +1,6 @@
 ---
 title: Azure Machine Learning veri başvurusunu izleme | Microsoft Docs
-description: Azure Machine Learning izlerken gereken önemli başvuru malzemeleri. Azure Machine Learning için toplanan ve Azure Izleyici 'de kullanılabilen veriler ve kaynaklar hakkında bilgi edinin. Azure Izleyici Azure Machine Learning çalışma alanınız hakkındaki verileri toplar ve yüzeyler ve ölçümleri görüntülemenize, uyarıları ayarlamanıza ve günlüğe kaydedilen verileri çözümlemenize olanak tanır.
+description: İzleme Azure Machine Learning için başvuru belgeleri. Azure Izleyici 'de toplanan ve sunulan veri & kaynakları hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2020
-ms.openlocfilehash: be8d6ca79a43ddd2bd709390dd476cb9dcfa7b29
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bab74a1db04bb557aa6604fe76c05ba3d087f8c0
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323948"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540799"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Azure Machine Learning veri başvurusunu izleme
 
@@ -61,7 +61,7 @@ Kota bilgileri yalnızca Azure Machine Learning işlem amaçlıdır.
 | Cpukullanımı | Yüzde | Bir çalıştırma/iş sırasında belirli bir düğüm için CPU 'nun yüzde ne kadarı kullanıldı. Bu ölçüm yalnızca bir düğüm üzerinde bir iş çalışırken yayımlanır. Bir iş, bir veya daha fazla düğüm kullanabilir. Bu ölçüm düğüm başına yayımlanır. |
 | Gpukullanım | Yüzde | Bir çalıştırma/iş sırasında belirli bir düğüm için GPU 'nun ne kadarının kullanıldığı. Bir düğümde bir veya daha fazla GPU bulunabilir. Bu ölçüm, düğüm başına GPU başına yayımlanır. |
 
-**Çalıştır**
+**Çalışmaz**
 
 Eğitim çalıştırmaları hakkında bilgiler.
 

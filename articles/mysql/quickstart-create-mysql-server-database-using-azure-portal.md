@@ -1,18 +1,18 @@
 ---
 title: 'Hızlı başlangıç: sunucu oluşturma-Azure portal-MySQL için Azure veritabanı'
 description: Bu makalede, Azure portalını kullanarak örnek bir MySQL için Azure Veritabanı sunucusunu yaklaşık beş dakika içinde oluşturma adımları gösterilmektedir.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: ea131c33b37c8989f3c5eb8f11b8e0d7a236190f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 4282294ff54fd3da3f764f53efc8b040b9522191
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504510"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542261"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak MySQL için Azure veritabanı sunucusu oluşturma
 

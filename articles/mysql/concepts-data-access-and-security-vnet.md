@@ -1,17 +1,17 @@
 ---
 title: VNet hizmet uç noktaları-MySQL için Azure veritabanı
 description: Sanal ağ hizmet uç noktalarının MySQL sunucusu için Azure veritabanı için nasıl çalıştığını açıklar.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: dba6b3f2137230ebe95f1bc89156cf6b127c8f52
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 225afcbafeaf7213b4f040a07d709d33e46b44f4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428140"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540816"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>MySQL için Azure Veritabanı ile Sanal Ağ hizmet uç noktalarını ve kuralları kullanma
 
@@ -33,9 +33,9 @@ Ayrıca, bağlantılar için [özel bağlantı](concepts-data-access-security-pr
 
 **Sanal ağ:** Azure aboneliğinizle ilişkili sanal ağlarınız olabilir.
 
-**Alt ağ:** Bir sanal ağ, **alt ağlar**içerir. Sahip olduğunuz tüm Azure sanal makineleri (VM 'Ler) alt ağlara atanır. Bir alt ağ birden çok VM veya başka işlem düğümü içerebilir. Ağınızı erişime izin verecek şekilde yapılandırmadığınız müddetçe, sanal ağınızın dışındaki işlem düğümleri sanal ağınıza erişemez.
+**Alt ağ:** Bir sanal ağ, **alt ağlar** içerir. Sahip olduğunuz tüm Azure sanal makineleri (VM 'Ler) alt ağlara atanır. Bir alt ağ birden çok VM veya başka işlem düğümü içerebilir. Ağınızı erişime izin verecek şekilde yapılandırmadığınız müddetçe, sanal ağınızın dışındaki işlem düğümleri sanal ağınıza erişemez.
 
-**Sanal ağ hizmeti uç noktası:** [Sanal ağ hizmeti uç noktası][vm-virtual-network-service-endpoints-overview-649d] , özellik değerleri bir veya daha fazla resmi Azure hizmet türü adı içeren bir alt ağıdır. Bu makalede, SQL veritabanı adlı Azure hizmetine başvuran **Microsoft. SQL**tür adı ile ilgileniyoruz. Bu hizmet etiketi, MySQL için Azure veritabanı ve PostgreSQL Hizmetleri için de geçerlidir. **Microsoft. SQL** hizmet etiketi bir sanal ağ hizmeti uç noktasına uygulanırken, tüm Azure SQL veritabanı, MySQL Için Azure veritabanı ve alt ağdaki PostgreSQL Için Azure veritabanı sunucuları için hizmet uç noktası trafiğini yapılandıracaksınız. 
+**Sanal ağ hizmeti uç noktası:** [Sanal ağ hizmeti uç noktası][vm-virtual-network-service-endpoints-overview-649d] , özellik değerleri bir veya daha fazla resmi Azure hizmet türü adı içeren bir alt ağıdır. Bu makalede, SQL veritabanı adlı Azure hizmetine başvuran **Microsoft. SQL** tür adı ile ilgileniyoruz. Bu hizmet etiketi, MySQL için Azure veritabanı ve PostgreSQL Hizmetleri için de geçerlidir. **Microsoft. SQL** hizmet etiketi bir sanal ağ hizmeti uç noktasına uygulanırken, tüm Azure SQL veritabanı, MySQL Için Azure veritabanı ve alt ağdaki PostgreSQL Için Azure veritabanı sunucuları için hizmet uç noktası trafiğini yapılandıracaksınız. 
 
 **Sanal ağ kuralı:** MySQL için Azure veritabanı sunucunuz için bir sanal ağ kuralı, MySQL için Azure veritabanı sunucunuzun erişim denetim listesi 'nde (ACL) listelenen bir alt ağıdır. MySQL için Azure veritabanı sunucunuzun ACL 'sinde olması için, alt ağın **Microsoft. SQL** tür adını içermesi gerekir.
 
@@ -55,7 +55,7 @@ Bir sanal ağ kuralı, MySQL için Azure veritabanı sunucunuzun alt ağdaki her
 
 ### <a name="a-allow-access-to-azure-services"></a>A. Azure hizmetlerine erişim izni verme
 
-Bağlantı güvenlik bölmesinde, **Azure hizmetlerine erişime Izin ver**etiketli bir **açık/kapalı** düğmesi vardır. **Açık** ayarı tüm Azure IP adreslerinden ve tüm Azure alt ağlarının iletişimlerine izin verir. Bu Azure IP 'Leri veya alt ağları size ait olmayabilir. Bu ayar, MySQL veritabanınızın Azure veritabanınızın olmasını istediğiniz büyük olasılıkla **daha açıktır.** Sanal ağ kuralı özelliği, daha ayrıntılı bir denetim sağlar.
+Bağlantı güvenlik bölmesinde, **Azure hizmetlerine erişime Izin ver** etiketli bir **açık/kapalı** düğmesi vardır. **Açık** ayarı tüm Azure IP adreslerinden ve tüm Azure alt ağlarının iletişimlerine izin verir. Bu Azure IP 'Leri veya alt ağları size ait olmayabilir. Bu ayar, MySQL veritabanınızın Azure veritabanınızın olmasını istediğiniz büyük olasılıkla **daha açıktır.** Sanal ağ kuralı özelliği, daha ayrıntılı bir denetim sağlar.
 
 ### <a name="b-ip-rules"></a>B. IP kuralları
 
@@ -130,7 +130,7 @@ Bağlantı hattınızdan MySQL için Azure veritabanı 'na yönelik iletişime i
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>VNET hizmet uç noktalarını açmadan sunucunuza VNET güvenlik duvarı kuralı ekleme
 
-Yalnızca bir VNet güvenlik duvarı kuralı ayarlamak sunucunun VNet 'e güvenli hale getirmeye yardımcı olmaz. Ayrıca güvenliğin etkili olabilmesi için VNet hizmet **uç noktalarını açmanız gerekir** . Hizmet uç noktalarını **Açık**olarak açtığınızda, VNET alt ağınız **kapalı** kalma süresini **Açık**olarak tamamlanana kadar kesinti yaşar. Bu, büyük sanal ağlar bağlamında özellikle doğrudur. Geçiş sırasında kesinti süresini azaltmak veya ortadan kaldırmak için **ıgnoremissingserviceendpoint** bayrağını kullanabilirsiniz.
+Yalnızca bir VNet güvenlik duvarı kuralı ayarlamak sunucunun VNet 'e güvenli hale getirmeye yardımcı olmaz. Ayrıca güvenliğin etkili olabilmesi için VNet hizmet **uç noktalarını açmanız gerekir** . Hizmet uç noktalarını **Açık** olarak açtığınızda, VNET alt ağınız **kapalı** kalma süresini **Açık** olarak tamamlanana kadar kesinti yaşar. Bu, büyük sanal ağlar bağlamında özellikle doğrudur. Geçiş sırasında kesinti süresini azaltmak veya ortadan kaldırmak için **ıgnoremissingserviceendpoint** bayrağını kullanabilirsiniz.
 
 **Ignoremissingserviceendpoint** BAYRAĞıNı Azure CLI veya portalını kullanarak ayarlayabilirsiniz.
 

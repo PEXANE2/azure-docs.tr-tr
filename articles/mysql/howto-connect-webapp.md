@@ -1,17 +1,17 @@
 ---
 title: Azure App Service bağlanma-MySQL için Azure veritabanı
 description: Mevcut bir Azure App Service MySQL için Azure veritabanı 'na doğru şekilde bağlama yönergeleri
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: deb99ea4f674c901974ca219a0e1bf831f5b4e51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6355afe6ce5decbed029db4536b1b1b19f5a876c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905844"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541513"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>Mevcut bir Azure App Service MySQL sunucusu için Azure veritabanı 'na bağlama
 Bu konu, mevcut bir Azure App Service MySQL Server için Azure veritabanınıza nasıl bağlayabileceğinizi açıklamaktadır.
@@ -28,19 +28,19 @@ MySQL için Azure veritabanı, verilerinizi korumak için bir güvenlik duvarı 
 
    :::image type="content" source="./media/howto-connect-webapp/1-connection-security.png" alt-text="Azure portal-bağlantı güvenliği ' ne tıklayın":::
 
-2. **Azure hizmetlerine erişime Izin ver**' in **üzerinde** seçim yapın, sonra **kaydedin**.
-   :::image type="content" source="./media/howto-connect-webapp/allow-azure.png" alt-text="Azure portal-bağlantı güvenliği ' ne tıklayın":::
+2. **Azure hizmetlerine erişime Izin ver** ' in **üzerinde** seçim yapın, sonra **kaydedin**.
+   :::image type="content" source="./media/howto-connect-webapp/allow-azure.png" alt-text="Azure portal-Azure erişimine Izin ver":::
 
 ## <a name="solution-2---create-a-firewall-rule-to-explicitly-allow-outbound-ips"></a>Çözüm 2-giden IP 'Lere açıkça izin vermek için bir güvenlik duvarı kuralı oluşturma
 Azure App Service giden tüm IP 'lerini açık olarak ekleyebilirsiniz.
 
-1. App Service Özellikler dikey penceresinde **gıden IP adresinizi**görüntüleyin.
+1. App Service Özellikler dikey penceresinde **gıden IP adresinizi** görüntüleyin.
 
-   :::image type="content" source="./media/howto-connect-webapp/2_1-outbound-ip-address.png" alt-text="Azure portal-bağlantı güvenliği ' ne tıklayın":::
+   :::image type="content" source="./media/howto-connect-webapp/2_1-outbound-ip-address.png" alt-text="Azure portal-giden IP 'Leri görüntüleme":::
 
 2. MySQL bağlantısı güvenliği dikey penceresinde, giden IP 'Leri tek tek ekleyin.
 
-   :::image type="content" source="./media/howto-connect-webapp/2_2-add-explicit-ips.png" alt-text="Azure portal-bağlantı güvenliği ' ne tıklayın":::
+   :::image type="content" source="./media/howto-connect-webapp/2_2-add-explicit-ips.png" alt-text="Azure portal-açık IP 'Leri ekleme":::
 
 3. Güvenlik Duvarı kurallarınızı **kaydetmeyi** unutmayın.
 

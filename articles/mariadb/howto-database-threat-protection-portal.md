@@ -1,17 +1,17 @@
 ---
 title: Gelişmiş tehdit koruması-Azure portal-MariaDB için Azure veritabanı
 description: MariaDB için Azure veritabanı tehdit koruması, veritabanında olası güvenlik tehditlerini gösteren anormal veritabanı etkinliklerini algılar.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 1b5a16a014892764ee26b524489a82744fe6ca82
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7734feddabb1a4a86e7932da3ef4adc57352637e
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425967"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542703"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı için Gelişmiş tehdit koruması
 
@@ -31,7 +31,7 @@ Gelişmiş tehdit koruması, gelişmiş güvenlik özelliklerine yönelik Birle�
 3. **Gelişmiş tehdit koruması (Önizleme)** yapılandırma sayfasında:
 
    - Sunucuda Gelişmiş tehdit koruması 'nı etkinleştirin.
-   - **Gelişmiş tehdit koruması ayarları**' nda, **uyarıları gönder** metin kutusunda, anormal veritabanı etkinliklerinin algılanması üzerine güvenlik uyarılarını alacak e-postaların listesini belirtin.
+   - **Gelişmiş tehdit koruması ayarları** ' nda, **uyarıları gönder** metin kutusunda, anormal veritabanı etkinliklerinin algılanması üzerine güvenlik uyarılarını alacak e-postaların listesini belirtin.
   
    ![Tehdit algılamayı ayarlama](./media/howto-database-threat-protection-portal/set-up-threat-protection.png)
 

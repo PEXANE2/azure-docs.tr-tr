@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: SYNAPSE Studio kullanarak adanmış bir adanmış SQL havuzu oluşturma'
+title: 'Hızlı başlangıç: SYNAPSE Studio kullanarak adanmış bir SQL havuzu oluşturma'
 description: Bu kılavuzdaki adımları izleyerek, SYNAPSE Studio kullanarak adanmış bir SQL havuzu oluşturun.
 services: synapse-analytics
 author: julieMSFT
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 10/16/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: f3ed5f3940a9b02701ad2f3c779b791e128e288c
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 3644891f12a6475ec9cfec51f572df4742481e8f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506354"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541853"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-using-synapse-studio"></a>Hızlı başlangıç: SYNAPSE Studio kullanarak adanmış bir SQL havuzu oluşturma
 
@@ -110,6 +110,7 @@ Adanmış SQL havuzunu silmek istiyorsanız aşağıdakileri yapın:
 1. Silmeyi onaylayın ve **Sil** düğmesine basın.
 1. İşlem başarıyla tamamlandığında, adanmış SQL havuzu artık çalışma alanı kaynaklarında listelenmez.
 
-## <a name="next-steps"></a>Sonraki adımlar 
+## <a name="next-steps"></a>Sonraki adımlar
+ 
 - Bkz. [hızlı başlangıç: Apache Spark Not defteri oluşturma](quickstart-apache-spark-notebook.md).
 - Bkz. [hızlı başlangıç: Azure Portal kullanarak adanmış BIR SQL havuzu oluşturma](quickstart-create-sql-pool-portal.md).

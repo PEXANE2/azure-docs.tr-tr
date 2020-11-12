@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3bd54d8a23aca7e493cd3c0ddb7f057a6e1f5362
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e7f2e445c3e4e8df7420c0587e156968f3a2c92
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761490"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542686"
 ---
 # <a name="sizing-guidance"></a>Boyutlandırma Kılavuzu
 
@@ -89,6 +89,7 @@ Her SQL yönetilen örneği aşağıdaki en düşük kaynak isteklerini içermel
 - Çekirdekler: 1
 
 Oluşturulan her SQL yönetilen örnek Pod, üç kapsayıcı içerir:
+
 |Kapsayıcı adı|CPU Isteği|Bellek Isteği|CPU sınırı|Bellek sınırı|Notlar|
 |---|---|---|---|---|---|
 |floentbit|100 milyon|100 mı|Belirtilmemiş|Belirtilmemiş|Floentbit kapsayıcı kaynak istekleri, SQL yönetilen örneği için belirtilen isteklere _ek_ niteliğindedir.||
@@ -104,6 +105,7 @@ Her PostgreSQL hiper ölçek sunucu grubu düğümü, aşağıdaki en düşük k
 - Çekirdekler: 1
 
 Oluşturulan her PostgreSQL hiper ölçek sunucu grubu Düzenleyicisi veya çalışan Pod üç kapsayıcı içerir:
+
 |Kapsayıcı adı|CPU Isteği|Bellek Isteği|CPU sınırı|Bellek sınırı|Notlar|
 |---|---|---|---|---|---|
 |floentbit|100 milyon|100 mı|Belirtilmemiş|Belirtilmemiş|Akıcı entbit kapsayıcı kaynak istekleri, PostgreSQL hiper ölçek sunucu grubu düğümleri için belirtilen isteklere _ek_ niteliğindedir.|
@@ -122,9 +124,9 @@ Her veritabanı örneği için istediğiniz çekirdekler ve belleğe ek olarak, 
 
 Gereksinimler:
 
-- **"SQL1"**: 16 GB RAM, 4 çekirdek IÇEREN 1 SQL yönetilen örneği
-- **"SQL2"**: 256 GB RAM, 16 çekirdek IÇEREN 1 SQL yönetilen örneği
-- **"Postgres1"**: 12 GB RAM, 4 çekirdek üzerinde 4 çalışan 1 PostgreSQL hiper ölçek sunucu grubu
+- **"SQL1"** : 16 GB RAM, 4 çekirdek IÇEREN 1 SQL yönetilen örneği
+- **"SQL2"** : 256 GB RAM, 16 çekirdek IÇEREN 1 SQL yönetilen örneği
+- **"Postgres1"** : 12 GB RAM, 4 çekirdek üzerinde 4 çalışan 1 PostgreSQL hiper ölçek sunucu grubu
 
 Boyutlandırma hesaplamaları:
 

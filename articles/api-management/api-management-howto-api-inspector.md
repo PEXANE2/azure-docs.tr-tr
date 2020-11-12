@@ -9,12 +9,12 @@ ms.service: api-management
 ms.topic: tutorial
 ms.date: 10/30/2020
 ms.author: apimpm
-ms.openlocfilehash: e9a101de408b506fb5375b5f16c1deff4f67532d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 531e346569b85ababc382f997fd7764a92b3d05f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422053"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542323"
 ---
 # <a name="tutorial-debug-your-apis-using-request-tracing"></a>Öğretici: istek izlemeyi kullanarak API 'lerinizin hatalarını ayıklama
 
@@ -47,7 +47,7 @@ API 'niz için kullanılan aboneliğin **Izlemeye Izin ver** ayarı etkinleştir
 1. API listenizden  **Tanıtım Konferansı API 'si** ' ni seçin.
 1. **Test** sekmesini seçin.
 1. **GetSpeakers** işlemini seçin.
-1. HTTP istek üst bilgisinin **OCP-admin-Trace: true** ve **OCP-admin-Subscription-Key** için geçerli bir değer içerdiğini doğrulayın. Değilse, üstbilgiyi eklemek için **+ üst bilgi Ekle** ' yi seçin.
+1. HTTP istek üst bilgisinin **OCP-apim-Trace: true** ve **OCP-apim-Subscription-Key** için geçerli bir değer içerdiğini doğrulayın. Değilse, üstbilgiyi eklemek için **+ üst bilgi Ekle** ' yi seçin.
 1. API çağrısı yapmak için **Gönder** ' i seçin.
 
   :::image type="content" source="media/api-management-howto-api-inspector/06-debug-your-apis-01-trace-call.png" alt-text="API izlemeyi yapılandırma":::

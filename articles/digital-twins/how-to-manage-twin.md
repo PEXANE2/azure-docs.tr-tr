@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 929181f9a4d159892956274a7958b1daa95cbc10
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 9e00e0e5a34eecd6974e8919ce0d0e16f48757f3
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360080"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540978"
 ---
 # <a name="manage-digital-twins"></a>Dijital ikizleri yönetme
 
@@ -23,9 +23,13 @@ Bu makale, dijital TWINS yönetimine odaklanır; ilişkiler ve [ikizi Graf](conc
 > [!TIP]
 > Tüm SDK işlevleri, zaman uyumlu ve zaman uyumsuz sürümlerde gelir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
+
+## <a name="ways-to-manage-twins"></a>TWINS 'yi yönetmenin yolları
+
+[!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
 
 ## <a name="create-a-digital-twin"></a>Dijital ikizi oluşturma
 
@@ -82,7 +86,7 @@ Console.WriteLine("The twin is created successfully");
 ```
 
 >[!NOTE]
-> `BasicDigitalTwin` nesneler bir alanla gelir `Id` . Bu alanı boş bırakabilirsiniz, ancak bir KIMLIK değeri eklerseniz, çağrıya geçirilen ID parametresiyle eşleşmesi gerekir `CreateOrReplaceDigitalTwinAsync()` . Örneğin:
+> `BasicDigitalTwin` nesneler bir alanla gelir `Id` . Bu alanı boş bırakabilirsiniz, ancak bir KIMLIK değeri eklerseniz, çağrıya geçirilen ID parametresiyle eşleşmesi gerekir `CreateOrReplaceDigitalTwinAsync()` . Örnek:
 >
 >```csharp
 >twin.Id = "myRoomId";
@@ -187,6 +191,17 @@ foreach (string prop in twin.Contents.Keys)
 ```
 
 Serileştirme yardımcı sınıfları hakkında daha fazla bilgi [*Için bkz. nasıl yapılır: Azure dijital TWINS API 'leri ve SDK 'Larını kullanma*](how-to-use-apis-sdks.md).
+
+## <a name="view-all-digital-twins"></a>Tüm dijital TWINS 'i görüntüle
+
+Örneğinizdeki dijital TWINS 'in tamamını görüntülemek için bir [sorgu](how-to-query-graph.md)kullanın. Sorgu [API 'leri](/rest/api/digital-twins/dataplane/query) veya [CLI komutlarıyla](how-to-use-cli.md)bir sorgu çalıştırabilirsiniz.
+
+Örnekteki tüm dijital TWINS listesini döndürecek temel sorgunun gövdesi aşağıda verilmiştir:
+
+```sql
+SELECT *
+FROM DIGITALTWINS
+``` 
 
 ## <a name="update-a-digital-twin"></a>Dijital ikizi güncelleştirme
 
@@ -360,7 +375,7 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 
 Tüm TWINS sürümlerini aynı anda silme hakkında bir örnek için, _Tutorial kullanılan örnek uygulamayı indirin [: örnek bir istemci uygulamasıyla ilgili temel bilgileri keşfet *](tutorial-command-line-app.md). *CommandLoop.cs* dosyası bunu bir `CommandDeleteAllTwins()` işlevde yapar.
 
-## <a name="manage-twins-using-runnable-code-sample"></a>Runzorla kod örneğini kullanarak TWINS 'i yönetme
+## <a name="runnable-digital-twin-code-sample"></a>Runbir Digital ikizi Code örneği
 
 Bir ikizi oluşturmak, ayrıntılarını güncelleştirmek ve ikizi silmek için aşağıdaki çalıştırılabilir kod örneğini kullanabilirsiniz. 
 
@@ -535,22 +550,6 @@ Yukarıdaki programın konsol çıktısı aşağıda verilmiştir:
 
 :::image type="content" source="./media/how-to-manage-twin/console-output-manage-twins.png" alt-text="İkizi oluşturulduğunu, güncelleştirildiğini ve silindiğini gösteren konsol çıkışı" lightbox="./media/how-to-manage-twin/console-output-manage-twins.png":::
 
-## <a name="manage-twins-with-cli"></a>CLı ile TWINS 'i yönetme
-
-TWINS, Azure Digital TWINS CLı kullanılarak da yönetilebilir. Komutların [_How-to: Azure Digital TWINS CLI * kullanma](how-to-use-cli.md)bölümünde bulabilirsiniz.
-
-## <a name="view-all-digital-twins"></a>Tüm dijital TWINS 'i görüntüle
-
-Örneğinizdeki dijital TWINS 'in tamamını görüntülemek için bir [sorgu](how-to-query-graph.md)kullanın. Sorgu [API 'leri](/rest/api/digital-twins/dataplane/query) veya [CLI komutlarıyla](how-to-use-cli.md)bir sorgu çalıştırabilirsiniz.
-
-Örnekteki tüm dijital TWINS listesini döndürecek temel sorgunun gövdesi aşağıda verilmiştir:
-
-```sql
-SELECT *
-FROM DIGITALTWINS
-``` 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bkz. dijital TWINS 'niz arasında ilişkiler oluşturma ve yönetme:
-* [*Nasıl yapılır: ikizi grafiğini ilişkilerle yönetme*](how-to-manage-graph.md)
+Bkz. dijital TWINS 'niz arasında ilişkiler oluşturma ve yönetme: _ [ *nasıl yapılır: ikizi grafiğini Ilişkilerle yönetme*](how-to-manage-graph.md)

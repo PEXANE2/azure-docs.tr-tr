@@ -1,19 +1,19 @@
 ---
 title: Veri etiketleme projesi oluşturma
 titleSuffix: Azure Machine Learning
-description: Machine Learning için verileri etiketlemek üzere etiketleme projelerini oluşturma ve çalıştırma hakkında bilgi edinin.  Araçlar, göreve yardımcı olmak için ml yardımlı etiketleme veya döngü etiketlemenin insan sürümünde bulunur.
+description: Machine Learning için verileri etiketlemek üzere etiketleme projelerini oluşturma ve çalıştırma hakkında bilgi edinin.  Göreve yardımcı olması için ML yardımlı etiketleme veya döngü etiketleyerek insan 'yi kullanın.
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 601434628258b8af3fb5fb9336f701be72441c64
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: da046fd633120944231ee440605367bdb730cbff
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318127"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94543230"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Veri etiketleme projesi ve dışarı aktarma etiketleri oluşturma 
 
@@ -39,7 +39,7 @@ Bu makalede şunları yapmayı öğreneceksiniz:
 > * Etiketleri dışarı aktarma
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Yerel dosyalarda veya Azure Blob depolamada etiketlemek istediğiniz veriler.
 * Uygulamak istediğiniz Etiketler kümesi.

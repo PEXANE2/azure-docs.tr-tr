@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 07/28/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 3b407ae18316071d77cc87992a70a4fba857ab64
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0b0e198075455f697c87ad48741a770e6f78b5a5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979028"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542159"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure ayrılmış Konakları
 
@@ -70,7 +70,7 @@ Daha da fazla hata yalıtımı elde etmek için her iki özelliği birlikte kull
 > [!IMPORTANT]
 > Otomatik yerleştirme Şu anda genel önizlemededir.
 > Önizlemeye katılmak için Önizleme ekleme anketini şurada doldurun [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure 'da bir VM oluştururken, kullanılacak adanmış ana bilgisayarı seçebilirsiniz. Ayrıca, sanal makinelerinizi bir konak grubu içindeki mevcut konaklara otomatik olarak yerleştirmek için seçeneğini de kullanabilirsiniz. 
 
@@ -84,7 +84,6 @@ Otomatik VM yerleşimi kullanılırken bilinen sorunlar ve sınırlamalar:
 
 - Adanmış konaklarınıza Azure hibrit avantajları uygulayacaksınız.
 - VM 'nizi yeniden dağıtmanız mümkün olmayacaktır. 
-- Adanmış konaklarınız için bakımı denetleyemeyeceksiniz.
 - Adanmış konaklarla Lsv2, NVasv4, NVsv3, Msv2 veya d serisi VM 'Leri kullanamayacaksınız 
 
 
@@ -95,7 +94,7 @@ Sanal Makine Ölçek Kümeleri, bir grup sanal makineyi tek bir kaynak olarak de
 > [!IMPORTANT]
 > Adanmış konaklardaki sanal makine ölçek kümeleri Şu anda genel önizlemededir.
 > Önizlemeye katılmak için Önizleme ekleme anketini şurada doldurun [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bir sanal makine ölçek kümesi oluştururken, var olan bir konak grubunu özel konaklarda oluşturulan tüm VM örneklerine sahip olacak şekilde belirtebilirsiniz.
 
@@ -120,7 +119,7 @@ Tüm ölçek ayarlama düzenleme ve iyileştirmeler ayarları adanmış konaklar
 
 Sanal makinelerinizi destekleyen altyapı, güvenilirliği, performansı ve güvenliği artırmak ve yeni özellikleri başlatmak için zaman zaman güncelleştirilebileceğini. Azure platformu, mümkün olduğunda platform bakımının etkilerini en aza indirmeye çalışır, ancak *bakım duyarlı* iş yükleri olan müşteriler VM 'nin dondurulmuş olması veya bakım için kesilmesi gereken birkaç saniye daha fazla zaman sayalamaz.
 
-**Bakım denetimi** , müşterilere kendi adanmış konaklarında zamanlanan normal platform güncelleştirmelerini atlama seçeneği sağlar ve ardından bunu, 35 günlük bir pencere penceresinde tercih ettikleri zaman uygular.
+**Bakım denetimi** , müşterilere kendi adanmış konaklarında zamanlanan normal platform güncelleştirmelerini atlama seçeneği sağlar ve ardından bunu, 35 günlük bir pencere penceresinde tercih ettikleri zaman uygular. Bakım penceresinde, bakım ' ı dilediğiniz sırada doğrudan ana bilgisayar düzeyinde uygulayabilirsiniz. Bakım penceresi bittikten sonra, Microsoft ileri taşınır ve bekleyen Bakımı ana bilgisayarlara, Kullanıcı tanımlı hata etki alanlarına izleyemeyen bir sırada uygular.
 
 Daha fazla bilgi için bkz. [Platform güncelleştirmelerini bakım denetimiyle yönetme](./maintenance-control.md).
 

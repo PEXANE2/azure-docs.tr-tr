@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2230784eedd044acd95b3087793ba664b544f76a
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: b558e34d3f5d224515eee669dfa7b8f2c6bbb3cd
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505079"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541020"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-preview-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak adanmış bir SQL Havuzu (Önizleme) oluşturma
 
@@ -48,7 +48,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
     | Ayar | Önerilen değer | Açıklama |
     | :------ | :-------------- | :---------- |
-    | **adanmış SQL havuzu adı** | Geçerli bir ad | Adanmış SQL havuzunun adı. |
+    | **Adanmış SQL havuzu adı** | Geçerli bir ad | Adanmış SQL havuzunun adı. |
     | **Performans düzeyi** | DW100c | Bu hızlı başlangıç için maliyetleri azaltmak üzere en küçük boyuta ayarla |
 
   
@@ -73,7 +73,6 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
 8. Sağlama tamamlandıktan sonra, çalışma alanına geri dönmek Yeni oluşturulan adanmış SQL havuzu için yeni bir giriş gösterir.
  ![SQL havuzu akış oluşturma-kaynak sağlama.](media/quickstart-create-sql-pool/create-sql-pool-studio-27.png)
-
 
 
 Adanmış SQL havuzu oluşturulduktan sonra, veri yükleme, akışları işleme, Gölü okuma vb. için çalışma alanında kullanılabilir olur.

@@ -1,17 +1,17 @@
 ---
 title: Denetim günlükleri-MySQL için Azure veritabanı-esnek sunucu
 description: MySQL için Azure veritabanı esnek sunucusu 'nda bulunan denetim günlüklerini açıklar.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: e630ccec744c4edf0dc80d374ecc93526f960d44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5aab78ad99b80ff1d7be92bd36847b01dbc0e33b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295998"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542227"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>MySQL için Azure veritabanı esnek sunucusu 'nda denetim günlükleriyle veritabanı etkinliğini izleme
 
@@ -25,7 +25,7 @@ MySQL için Azure veritabanı esnek sunucu kullanıcılara denetim günlüklerin
 >[!IMPORTANT]
 > Sunucunuzun performansının yoğun bir şekilde etkilenmemesini sağlamak için, yalnızca denetim amaçlarıyla gerekli olay türlerini ve kullanıcıları günlüğe kaydetmek önerilir.
 
-Varsayılan olarak, denetim günlükleri devre dışıdır. Bunları etkinleştirmek için `audit_log_enabled` sunucu parametresini *Açık*olarak ayarlayın. Bu, Azure portal veya Azure CLı kullanılarak yapılandırılabilir <!-- add link to server parameter-->. 
+Varsayılan olarak, denetim günlükleri devre dışıdır. Bunları etkinleştirmek için `audit_log_enabled` sunucu parametresini *Açık* olarak ayarlayın. Bu, Azure portal veya Azure CLı kullanılarak yapılandırılabilir <!-- add link to server parameter-->. 
 
 Denetim günlüğü davranışlarını denetlemek için ayarlayabileceğiniz diğer parametreler şunlardır:
 

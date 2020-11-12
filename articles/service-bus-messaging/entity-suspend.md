@@ -3,28 +3,29 @@ title: Azure Service Bus-mesajlaşma varlıklarını askıya alma
 description: Bu makalede Azure Service Bus ileti varlıklarının (kuyruklar, konular ve abonelikler) geçici olarak askıya alınması ve yeniden etkinleştirilmesi açıklanmaktadır.
 ms.topic: article
 ms.date: 09/29/2020
-ms.openlocfilehash: f89e17e494cc777691b7f7ca47538cd29114d2dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea1acab3d0a86b0064f8b3eef7bfd1496bd17041
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575267"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94543060"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Mesajlaşma varlıklarını askıya alma ve yeniden etkinleştirme (devre dışı bırakma)
 
 Kuyruklar, konular ve abonelikler geçici olarak askıya alınabilir. Askıya alma, varlığı tüm iletilerin depolamada bulunduğu devre dışı durumuna geçirir. Ancak, iletiler kaldırılamaz veya eklenemez ve ilgili protokol işlemleri hatalara sebep olur.
 
-Bir varlığın askıya alınması genellikle acil yönetim nedenleriyle yapılır. Tek bir senaryo, iletileri kuyruktan alan, işleme başarısız olan ve iletileri yanlış bir şekilde tamamlayan ve bunları kaldıran hatalı bir alıcı dağıtmış olur. Bu davranış tanılıyorsa, düzeltilen kod dağıtılana ve hatalı kodun neden olduğu daha fazla veri kaybı önyükleninceye kadar kuyruk alma için devre dışı bırakılabilir.
+Acil Yönetim nedenleriyle bir varlığı askıya almak isteyebilirsiniz. Örneğin, hatalı alıcı iletileri kuyruktan çıkarır, işleme başarısız olur ve iletileri yanlış bir şekilde tamamlar ve onları kaldırır. Bu durumda, kodu düzeltip ve dağıtana kadar kuyruğu alma için devre dışı bırakmak isteyebilirsiniz. 
 
-Askıya alma veya yeniden etkinleştirme, Kullanıcı ya da sistem tarafından gerçekleştirilebilir. Sistem yalnızca abonelik harcama sınırına vurmaya yönelik aksan nedeniyle yönetim nedenlerinden dolayı varlıkları askıya alır. Sistem devre dışı bırakılmış varlıklar Kullanıcı tarafından yeniden etkinleştirilemez, ancak askıya alınma nedeni sağlandığında geri yüklenir.
+Askıya alma veya yeniden etkinleştirme, Kullanıcı ya da sistem tarafından gerçekleştirilebilir. Yalnızca abonelik harcama sınırına vurmaya yönelik aksan, yönetim nedenlerinden dolayı sistem varlıkları askıya alır. Sistem devre dışı bırakılmış varlıklar Kullanıcı tarafından yeniden etkinleştirilemez, ancak askıya alınma nedeni sağlandığında geri yüklenir.
 
 ## <a name="queue-status"></a>Sıra durumu 
-Bir kuyruk için ayarlanabilir durumlar şunlardır:
+Bir **kuyruk** için ayarlanabilir durumlar şunlardır:
 
--   **Etkin**: kuyruk etkin.
--   **Devre dışı**: sıra askıya alındı. Hem **Senddisabled** hem de **receivedisabled**ayarlamaya eşdeğerdir. 
--   **Senddisabled**: sıra, almaya izin verildiğinde kısmen askıya alınır.
--   **Receivedisabled**: sıra, gönderilmeye izin verilen kısmen askıya alındı.
+-   **Etkin** : kuyruk etkin. Kuyruğa ileti gönderebilir ve kuyruktan ileti alabilirsiniz. 
+-   **Devre dışı** : sıra askıya alındı. Hem **Senddisabled** hem de **receivedisabled** ayarlamaya eşdeğerdir. 
+-   **Senddisabled** : kuyruğa ileti gönderemezsiniz, ancak bundan ileti alabilirsiniz. Kuyruğa ileti göndermeye çalışırsanız bir özel durum alırsınız. 
+-   **Receivedisabled** : kuyruğa ileti gönderebilirsiniz, ancak bundan ileti alamazsınız. Kuyruğa ileti almaya çalışırsanız bir özel durum alırsınız.
+
 
 ### <a name="change-the-queue-status-in-the-azure-portal"></a>Azure portal sıra durumunu değiştirin: 
 
@@ -33,14 +34,14 @@ Bir kuyruk için ayarlanabilir durumlar şunlardır:
 1. **Service Bus kuyruğu** sayfasında, sıranın geçerli durumuna bir köprü olarak bakın. Sol menüde **genel bakış** seçilmezse, sıranın durumunu görmek için seçin. Değişiklik için kuyruğun geçerli durumunu seçin. 
 
     :::image type="content" source="./media/entity-suspend/select-state.png" alt-text="Kuyruğun durumunu seçin":::
-4. Kuyruğun yeni durumunu seçin ve **Tamam**' ı seçin. 
+4. Kuyruğun yeni durumunu seçin ve **Tamam** ' ı seçin. 
 
-    :::image type="content" source="./media/entity-suspend/entity-state-change.png" alt-text="Kuyruğun durumunu seçin":::
+    :::image type="content" source="./media/entity-suspend/entity-state-change.png" alt-text="Kuyruğun durumunu ayarla":::
     
-Portal yalnızca sıraların tamamen devre dışı bırakılmasını sağlar. Ayrıca, .NET Framework SDK 'sında Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API 'lerini kullanarak veya Azure clı veya Azure PowerShell aracılığıyla Azure Resource Manager şablonuyla, gönderme ve alma işlemlerini ayrı olarak devre dışı bırakabilirsiniz.
+Ayrıca, .NET SDK 'sında Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API 'lerini kullanarak gönderme ve alma işlemlerini devre dışı bırakabilir veya Azure clı veya Azure PowerShell aracılığıyla bir Azure Resource Manager şablonu kullanabilirsiniz.
 
 ### <a name="change-the-queue-status-using-azure-powershell"></a>Azure PowerShell kullanarak sıra durumunu değiştirme
-Bir sırayı devre dışı bırakmak için PowerShell komutu aşağıdaki örnekte gösterilmiştir. Yeniden etkinleştirme komutu eşdeğerdir, `Status` **etkin**olarak ayarlanıyor.
+Bir sırayı devre dışı bırakmak için PowerShell komutu aşağıdaki örnekte gösterilmiştir. Yeniden etkinleştirme komutu eşdeğerdir, `Status` **etkin** olarak ayarlanıyor.
 
 ```powershell
 $q = Get-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue
@@ -51,24 +52,31 @@ Set-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueu
 ```
 
 ## <a name="topic-status"></a>Konu durumu
-Azure portal konu durumunun değiştirilmesi, sıranın değiştirme durumuna benzerdir. Konunun geçerli durumunu seçtiğinizde, durumu değiştirmenize olanak sağlayan aşağıdaki sayfayı görürsünüz. 
+Azure portal konu durumu ' nu değiştirebilirsiniz. Durumu değiştirmenize olanak sağlayan aşağıdaki sayfayı görmek için konunun geçerli durumunu seçin. 
 
-:::image type="content" source="./media/entity-suspend/topic-state-change.png" alt-text="Kuyruğun durumunu seçin":::
+:::image type="content" source="./media/entity-suspend/topic-state-change.png" alt-text="Konu durumunu değiştir":::
 
-Bir konu için ayarlanabilir durumlar şunlardır:
-- **Etkin**: konu etkin.
-- **Devre dışı**: konu askıya alındı.
-- **Senddisabled**: **devre dışı**olarak aynı etkiye sahiptir.
+Bir **Konu** için ayarlanabilir durumlar şunlardır:
+- **Etkin** : konu etkin. Konuya ileti gönderebilirsiniz. 
+- **Devre dışı** : konu askıya alındı. Konuya ileti gönderemezsiniz. 
+- **Senddisabled** : **devre dışı** olarak aynı etkiye sahiptir. Konuya ileti gönderemezsiniz. Konuya ileti göndermeye çalışırsanız bir özel durum alırsınız. 
 
 ## <a name="subscription-status"></a>Abonelik durumu
-Azure portal abonelik durumunun değiştirilmesi, bir konunun veya kuyruğun değiştirme durumuna benzerdir. Aboneliğin geçerli durumunu seçtiğinizde, durumu değiştirmenize olanak sağlayan aşağıdaki sayfayı görürsünüz. 
+Azure portal abonelik durumunu değiştirebilirsiniz. Durumu değiştirmenize olanak sağlayan aşağıdaki sayfayı görmek için aboneliğin geçerli durumunu seçin. 
 
-:::image type="content" source="./media/entity-suspend/subscription-state-change.png" alt-text="Kuyruğun durumunu seçin":::
+:::image type="content" source="./media/entity-suspend/subscription-state-change.png" alt-text="Abonelik durumunu değiştir":::
 
-Bir konu için ayarlanabilir durumlar şunlardır:
-- **Etkin**: konu etkin.
-- **Devre dışı**: konu askıya alındı.
-- **Receivedisabled**: **devre dışı**olarak aynı efekt.
+Bir **abonelik** için ayarlanabilir durumlar şunlardır:
+- **Etkin** : Abonelik etkin. Aboneliği frm olarak alabilirsiniz.
+- **Devre dışı** : abonelik askıya alındı. Abonelikten ileti alamazsınız. 
+- **Receivedisabled** : **devre dışı** olarak aynı efekt. Abonelikten ileti alamazsınız. Abonelik için ileti almaya çalışırsanız bir özel durum alırsınız.
+
+| Konu durumu | Abonelik durumu | Davranış | 
+| ------------ | ------------------- | -------- | 
+| Etkin | Etkin | Konuya ileti gönderebilir ve abonelikten ileti alabilirsiniz. | 
+| Etkin | Devre dışı veya alma devre dışı | Konuya ileti gönderebilirsiniz, ancak abonelikten ileti alamazsınız | 
+| Devre dışı veya Gönder devre dışı | Etkin | Konuya ileti gönderemezsiniz, ancak zaten abonelikte olan iletileri alabilirsiniz. | 
+| Devre dışı veya Gönder devre dışı | Devre dışı veya alma devre dışı | Konuya ileti gönderemezsiniz ve abonelikten birini alamazsınız. | 
 
 ## <a name="other-statuses"></a>Diğer durumlar
 [EntityStatus](/dotnet/api/microsoft.servicebus.messaging.entitystatus) numaralandırması Ayrıca yalnızca sistem tarafından ayarlanabileceğini belirten bir geçiş durumları kümesi tanımlar. 

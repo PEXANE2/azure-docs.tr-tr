@@ -1,17 +1,17 @@
 ---
 title: Sürücü ve araçlar uyumluluğu-MySQL için Azure veritabanı
 description: Bu makalede MySQL için Azure veritabanı ile uyumlu MySQL sürücüleri ve yönetim araçları açıklanmaktadır.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 8d222eca76f020703f89dd1bdd5848cec4bc52ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2ea7af0ec9c740c07cd3a5e4ebd88a9ad1a031d
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006542"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542652"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>MySQL için Azure veritabanı ile uyumlu MySQL sürücüleri ve yönetim araçları
 Bu makalede, MySQL için Azure veritabanı ile uyumlu olan sürücüler ve yönetim araçları açıklanmaktadır.

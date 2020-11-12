@@ -6,14 +6,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: troubleshooting
-ms.date: 09/16/2020
+ms.date: 11/09/2020
 ms.author: jasteppe
-ms.openlocfilehash: a843ee15d4e7c67bcf69609067d70f592b9b50d6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 124c3b3667e847a5ee1bb8034ef01088c629d503
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394229"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540952"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>FHıR için Azure IoT Bağlayıcısı (Önizleme) sorun giderme kılavuzu
 
@@ -68,7 +68,7 @@ Bu bölümde, FHıR için Azure IoT bağlayıcısının, kullanım için kaydedi
 |Hesap yok.|API|FHAR için Azure IoT Bağlayıcısı ekleme girişimi ve FHıR için Azure API kaynağı yok.|FHıR kaynağı için Azure API 'SI oluşturun ve ardından işlemi yeniden deneyin.|
 |FHıR kaynağı için Azure API 'SI IoT Bağlayıcısı için desteklenmez.|API|FHıR için Azure API 'sinin uyumsuz bir sürümüyle fhır için bir Azure IoT Bağlayıcısı kullanılmaya çalışılıyor.|FHıR kaynağı (sürüm R4) için yeni bir Azure API 'SI oluşturun veya FHıR kaynağı için mevcut bir Azure API 'SI (sürüm R4) kullanın.
 
-##  <a name="why-is-my-azure-iot-connector-for-fhir-preview-data-not-showing-up-in-azure-api-for-fhir"></a>Azure IoT Bağlayıcım, fhır için Azure API 'de görünmüyor.
+## <a name="why-is-my-azure-iot-connector-for-fhir-preview-data-not-showing-up-in-azure-api-for-fhir"></a>Azure IoT Bağlayıcım, fhır için Azure API 'de görünmüyor.
 
 |Olası sorunlar|Düzeltmeler|
 |----------------|-----|
@@ -82,7 +82,74 @@ Bu bölümde, FHıR için Azure IoT bağlayıcısının, kullanım için kaydedi
 
 * Başvuru hızlı başlangıç: FHıR çözüm türleri için Azure IoT bağlayıcısının işlevsel bir açıklaması için [Azure Portal kullanarak Azure IoT bağlayıcısını (Önizleme) dağıtma](iot-fhir-portal-quickstart.md#create-new-azure-iot-connector-for-fhir-preview) (örneğin: arama veya oluşturma).
 
+## <a name="use-metrics-to-troubleshoot-issues-in-azure-iot-connector-for-fhir-preview"></a>Azure IoT Bağlayıcısı ile ilgili sorunları gidermek için ölçümleri kullanma (Önizleme)
+
+FHıR için Azure IoT Bağlayıcısı, veri akışı işleminde Öngörüler sağlamak için birden çok ölçüm oluşturur. Desteklenen ölçülerden birine, FHıR için bir Azure IoT Bağlayıcısı örneği içinde oluşan tüm hataların sayısını sağlayan *Toplam hata* adı verilir.
+
+Her hata, ilişkili birçok özellik ile günlüğe kaydedilir. Her özellik hata hakkında farklı bir boyut sağlar, bu da sorunları belirlemenize ve gidermenize yardımcı olabilir. Bu bölüm, *Toplam* hata ölçümünde her bir hata için yakalanan farklı özellikleri ve bu özellikler için olası değerleri listeler.
+
+> [!NOTE]
+> Fhir (Önizleme) için Azure IoT Bağlayıcısı (Önizleme) [ölçümleri sayfasında](iot-metrics-display.md)açıklandığı gibi fhır Için Azure IoT Bağlayıcısı 'nın bir örneği Için *Toplam hata* ölçümüne gidebilirsiniz.
+
+*Toplam hatalar* grafiğine tıklayın ve ardından aşağıda bahsedilen özelliklerden herhangi birini kullanarak hata ölçümünü dilimleyip zaratmak Için *Filtre Ekle* düğmesine tıklayın.
+
+### <a name="the-operation-performed-by-the-azure-iot-connector-for-fhir-preview"></a>FHıR için Azure IoT Bağlayıcısı tarafından gerçekleştirilen işlem (Önizleme)
+
+Bu özellik, hata oluştuğunda IoT Bağlayıcısı tarafından gerçekleştirilen işlemi temsil eder. Bir işlem, bir cihaz iletisini işlerken genellikle veri akışı aşamasını temsil eder. Bu özellik için olası değerlerin listesi aşağıda verilmiştir.
+
+> [!NOTE]
+> Daha fazla bilgi için Azure IoT Bağlayıcısı 'nda bulunan farklı veri akışı aşamaları hakkında daha fazla bilgi edinebilirsiniz ( [Önizleme).](iot-data-flow.md)
+
+|Veri akışı aşaması|Açıklama|
+|---------------|-----------|
+|Kurulum|IoT Bağlayıcısı örneğinizi ayarlamaya özgü işlem|
+|Normalleştirme|Cihaz verilerinin normalleştirilme aldığı veri akışı aşaması|
+|Gruplandırma|Normalleştirilmiş verilerin gruplandırıldığı veri akışı aşaması|
+|FHIRConversion|Gruplanmış normalleştirilmiş verilerin bir FHıR kaynağına dönüştürülebileceği veri akışı aşaması|
+|Bilinmiyor|Hata oluştuğunda işlem türü bilinmiyor|
+
+### <a name="the-severity-of-the-error"></a>Hatanın önem derecesi
+
+Bu özellik, gerçekleşen hatanın önem derecesini temsil eder. Bu özellik için olası değerlerin listesi aşağıda verilmiştir.
+
+|Önem Derecesi|Açıklama|
+|---------------|-----------|
+|Uyarı|Veri akışı işleminde küçük bir sorun var, ancak cihaz iletisi işleme durdurulmaz|
+|Hata|Belirli bir cihaz iletisinin işlenmesi bir hatayla çalıştırıldı ve diğer iletiler beklendiği gibi yürütülmeye devam edebilir|
+|Kritik|IoT bağlayıcısında bazı sistem düzeyi sorunları var ve işlemek beklenen bir ileti yok|
+
+### <a name="the-type-of-the-error"></a>Hatanın türü
+
+Bu özellik, benzer türdeki hatalara yönelik olarak temel olarak bir mantıksal gruplamayı temsil eden belirli bir hata için bir kategori belirtir. Bu özellik için olası değer listesi aşağıda verilmiştir.
+
+|Hata türü|Açıklama|
+|----------|-----------|
+|DeviceTemplateError|Cihaz eşleme şablonlarıyla ilgili hatalar|
+|DeviceMessageError|Belirli bir cihaz iletisi işlenirken hatalar oluştu|
+|FHIRTemplateError|FHıR eşleme şablonlarıyla ilgili hatalar|
+|FHIRConversionError|Bir ileti FHıR kaynağına dönüştürülürken hatalar oluştu|
+|FHIRResourceError|IoT Bağlayıcısı tarafından başvurulan FHıR sunucusundaki mevcut kaynaklarla ilgili hatalar|
+|Fhirsunucuhatası|FHıR sunucusuyla iletişim kurulurken oluşan hatalar|
+|GeneralError|Diğer tüm hata türleri|
+
+### <a name="the-name-of-the-error"></a>Hatanın adı
+
+Bu özellik belirli bir hata için ad sağlar. Açıklamaları ve ilişkili hata türleri, önem derecesi ve veri akışı aşamalarıyla birlikte tüm hata adlarının listesi aşağıda verilmiştir.
+
+|Hata adı|Açıklama|Hata türleri|Hata önem derecesi|Veri akışı aşaması|
+|----------|-----------|-------------|--------------|------------------|
+|MultipleResourceFoundException|FHıR sunucusunda, cihaz iletisinde bulunan ilgili tanımlayıcılar için birden çok hasta veya cihaz kaynağı bulunduğunda hata oluştu|FHIRResourceError|Hata|FHIRConversion|
+|TemplateNotFoundException|Bir cihaz veya FHıR eşleme şablonu IoT Bağlayıcısı örneğiyle yapılandırılmadı|DeviceTemplateError, FHIRTemplateError|Kritik|Normalleştirme, FHIRConversion|
+|CorrelationIdNotDefinedException|İlişki KIMLIĞI, cihaz eşleme şablonunda belirtilmedi. CorrelationIdNotDefinedException, yalnızca FHıR gözlemlerinin bir bağıntı KIMLIĞI kullanarak cihaz ölçümlerini gruplandırmalıdır ancak doğru şekilde yapılandırılmadığı durumlarda oluşabilecek bir koşullu hatadır|DeviceMessageError|Hata|Normalleştirme|
+|Haentdevicemismatchexception|Bu hata, FHıR sunucusundaki cihaz kaynağı bir hasta kaynağına başvuru olduğunda meydana gelir ve bu durum iletide bulunan hasta tanımlayıcısı ile eşleşmez|FHIRResourceError|Hata|FHIRConversionError|
+|Haentnotfoundexception|Cihaz iletisinde bulunan cihaz tanımlayıcısıyla ilişkili cihaz FHıR kaynağı tarafından hiçbir hasta FHıR kaynağına başvurulmadı. Bu hata, yalnızca IoT Bağlayıcısı örneği *arama* çözümleme türü ile yapılandırıldığında oluşur|FHIRConversionError|Hata|FHIRConversion|
+|DeviceNotFoundException|Cihaz iletisinde bulunan cihaz tanımlayıcısıyla ilişkili FHıR sunucusunda cihaz kaynağı yok|DeviceMessageError|Hata|Normalleştirme|
+|PatientIdentityNotDefinedException|Bu hata, cihaz iletisinde hasta tanımlayıcıyı ayrıştırmaya yönelik ifade cihaz eşleme şablonunda yapılandırılmamışsa veya cihaz iletisinde hasta tanımlayıcı yoksa oluşur. Bu hata yalnızca IoT bağlayıcısının çözüm türü *Oluştur* olarak ayarlandığında oluşur|DeviceTemplateError|Kritik|Normalleştirme|
+|DeviceIdentityNotDefinedException|Bu hata, cihaz tanımlayıcısı cihaz eşleme şablonunda yapılandırılmadığı veya cihaz iletisinde cihaz tanımlayıcı olmadığı zaman oluşur|DeviceTemplateError|Kritik|Normalleştirme|
+|NotSupportedException|Desteklenmeyen biçimdeki cihaz iletisi alındığında hata oluştu|DeviceMessageError|Hata|Normalleştirme|
+
 ## <a name="creating-copies-of-the-azure-iot-connector-for-fhir-preview-conversion-mapping-json"></a>Azure IoT bağlayıcısının, FHIR (Önizleme) dönüştürme eşlemesi JSON için kopyalarını oluşturma
+
 FHıR eşleme dosyaları için Azure IoT bağlayıcısının kopyalanması, Azure portal web sitesinin dışında düzenlenebilir ve arşivlenmek üzere yararlı olabilir.
 
 Sorun gidermeye yardımcı olmak üzere bir destek bileti açılırken, eşleme dosya kopyaları Azure teknik desteği 'ne sağlanmalıdır.

@@ -1,18 +1,18 @@
 ---
 title: SSL 'yi yapılandırma-MySQL için Azure veritabanı
 description: MySQL için Azure veritabanı 'nı ve ilişkili uygulamaları doğru şekilde SSL bağlantıları kullanacak şekilde yapılandırma yönergeleri
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 1bedeb752a18d7a0212ede2b34526efb8ea09287
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71e6d024b27ecad09b3339a7b0a8c406c7a3eda1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905829"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541530"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'na güvenli bir şekilde bağlanmak üzere uygulamanızda SSL bağlantısı yapılandırma
 
@@ -40,7 +40,7 @@ MySQL çalışma ekranı 'nı SSL üzerinden güvenli bir şekilde bağlanacak �
 
 1. **SSL kullan** alanını "gerektir" olarak güncelleştirin.
 
-1. **SSL CA dosyası:** alanına, **Baltimorecybertrustroot. CRT. ped**dosyasının konumunu girin.
+1. **SSL CA dosyası:** alanına, **Baltimorecybertrustroot. CRT. ped** dosyasının konumunu girin.
 
    :::image type="content" source="./media/howto-configure-ssl/mysql-workbench-ssl.png" alt-text="SSL yapılandırmasını Kaydet":::
 
@@ -61,9 +61,9 @@ mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p -
 
 ### <a name="using-the-azure-portal"></a>Azure portalını kullanma
 
-Azure portal kullanarak MySQL için Azure veritabanı sunucunuzu ziyaret edin ve **bağlantı güvenliği**' ne tıklayın. **SSL bağlantısını zorla** ayarını etkinleştirmek veya devre dışı bırakmak için iki durumlu düğmeyi kullanın ve ardından **Kaydet**' e tıklayın. Microsoft, gelişmiş güvenlik için her zaman **SSL bağlantısını zorla** ayarını etkinleştirmenizi önerir.
+Azure portal kullanarak MySQL için Azure veritabanı sunucunuzu ziyaret edin ve **bağlantı güvenliği** ' ne tıklayın. **SSL bağlantısını zorla** ayarını etkinleştirmek veya devre dışı bırakmak için iki durumlu düğmeyi kullanın ve ardından **Kaydet** ' e tıklayın. Microsoft, gelişmiş güvenlik için her zaman **SSL bağlantısını zorla** ayarını etkinleştirmenizi önerir.
 
-:::image type="content" source="./media/howto-configure-ssl/enable-ssl.png" alt-text="SSL yapılandırmasını Kaydet":::
+:::image type="content" source="./media/howto-configure-ssl/enable-ssl.png" alt-text="MySQL için Azure veritabanı 'nda SSL bağlantılarını zorlamak için Azure portal ekran görüntüsü":::
 
 ### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
 

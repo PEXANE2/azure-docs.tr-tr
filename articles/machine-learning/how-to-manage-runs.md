@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 01/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 2f7d102ad6bf2aba2056456acfe6207a0b0643ba
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 0da4127960450a13b64ec23908b4a4fd4c69bd7e
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357989"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542023"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python 'da eğitim çalıştırmalarını başlatın, izleyin ve iptal edin
 
@@ -30,7 +30,11 @@ Bu makalede aşağıdaki görevlerin örnekleri gösterilmektedir:
 * Alt çalıştırmalar oluşturun.
 * Etiket ve bulma çalıştırmaları.
 
-## <a name="prerequisites"></a>Önkoşullar
+> [!TIP]
+> Azure Machine Learning hizmeti ve ilişkili Azure hizmetlerini izleme hakkında bilgi arıyorsanız bkz. [nasıl yapılır Azure Machine Learning](monitor-azure-machine-learning.md).
+> Web Hizmetleri veya IoT Edge modülleri olarak dağıtılan izleme modelleri hakkında bilgi arıyorsanız, bkz. [model verilerini toplama](how-to-enable-data-collection.md) ve [Application Insights ile izleme](how-to-enable-app-insights.md).
+
+## <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki öğeler gerekir:
 

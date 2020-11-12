@@ -1,18 +1,18 @@
 ---
 title: 'Hızlı başlangıç: MySQL için Azure DB-ARM şablonu oluşturma'
 description: Bu hızlı başlangıçta, bir Azure Resource Manager şablonu kullanarak, sanal ağ tümleştirmesiyle MySQL için Azure veritabanı sunucusu oluşturmayı öğrenin.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/19/2020
-ms.openlocfilehash: 952bfa7182997511ce072c051d872140c3b907cb
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 0e7fcf51d9c663ca4a289f54972f00ef037cb323
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041202"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542278"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>Hızlı başlangıç: MySQL için Azure veritabanı sunucusu oluşturmak için ARM şablonu kullanma
 
@@ -24,7 +24,7 @@ Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakk�
 
 [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure 'a dağıtma":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mysql-with-vnet%2fazuredeploy.json)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -66,7 +66,7 @@ MySQL için Azure veritabanı şablon örnekleri, [hızlı başlangıç şablonu
 
 MySQL için Azure veritabanı sunucu şablonunu Azure portal dağıtmak için aşağıdaki bağlantıyı seçin:
 
-[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure 'a dağıtma":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mysql-with-vnet%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure’a dağıtma":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mysql-with-vnet%2fazuredeploy.json)
 
 **VNET Ile MySQL Için Azure veritabanı 'Nı dağıtma** sayfasında:
 
@@ -76,7 +76,7 @@ MySQL için Azure veritabanı sunucu şablonunu Azure portal dağıtmak için a�
 
 3. **Sunucu adı** , **yönetici oturumu açma** ve **yönetici oturum açma parolası** girin.
 
-    :::image type="content" source="./media/quickstart-create-mysql-server-database-using-arm-template/deploy-azure-database-for-mysql-with-vnet.png" alt-text="Azure 'a dağıtma":::
+    :::image type="content" source="./media/quickstart-create-mysql-server-database-using-arm-template/deploy-azure-database-for-mysql-with-vnet.png" alt-text="Sanal ağ ile MySQL için Azure veritabanı 'nı dağıtma, Azure hızlı başlangıç şablonu, Azure portal":::
 
 4. İsterseniz diğer varsayılan ayarları değiştirin:
 

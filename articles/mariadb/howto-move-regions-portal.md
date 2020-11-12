@@ -1,18 +1,18 @@
 ---
 title: Azure bölgelerini taşıma-Azure portal-MariaDB için Azure veritabanı
 description: MariaDB sunucusu için bir Azure veritabanını bir Azure bölgesinden diğerine, okuma çoğaltması ve Azure portal kullanarak taşıyın.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: 75fabeeb7fa879a0f2843538d34f85e5ccec40e4
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: f4ce34bc1a1af7b2c0ee57a3297415bd9d033517
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425891"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540833"
 ---
 # <a name="move-an-azure-database-for-mariadb-server-to-another-region-by-using-the-azure-portal"></a>MariaDB sunucusu için Azure veritabanı 'nı Azure portal kullanarak başka bir bölgeye taşıma
 
@@ -35,8 +35,8 @@ Azure portal kullanarak hedef bölgede çapraz bölge okuma çoğaltması sunucu
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Kaynak sunucu olarak kullanmak istediğiniz MariaDB sunucusu için mevcut Azure veritabanını seçin. Bu eylem **genel bakış** sayfasını açar.
-1. **Ayarlar**' ın altında, menüden **çoğaltma** ' yı seçin.
-1. **Çoğaltma ekle**' yi seçin.
+1. **Ayarlar** ' ın altında, menüden **çoğaltma** ' yı seçin.
+1. **Çoğaltma ekle** ' yi seçin.
 1. Çoğaltma sunucusu için bir ad girin.
 1. Çoğaltma sunucusunun konumunu seçin. Varsayılan konum, kaynak sunucu ile aynıdır. Çoğaltmanın dağıtılmasını istediğiniz hedef konumu seçtiğinizden emin olun.
 1. Çoğaltmanın oluşturulmasını onaylamak için **Tamam ' ı** seçin. Çoğaltma oluşturma sırasında, veriler kaynak sunucudan çoğaltmaya kopyalanır. Oluşturma zamanı, kaynak sunucunun boyutuyla orantılı olarak son birkaç dakika veya daha fazla olabilir.
@@ -53,19 +53,19 @@ Azure portal kullanarak hedef bölgede çapraz bölge okuma çoğaltması sunucu
 Çoğaltma sunucusuna çoğaltma durdurulduğunda, tek başına sunucu haline gelmesine neden olur. Azure portal çoğaltmaya çoğaltmayı durdurmak için aşağıdaki adımları kullanın:
 
 1. Çoğaltma oluşturulduktan sonra, MariaDB kaynak sunucusu için Azure veritabanınızı bulun ve seçin. 
-1. **Ayarlar**' ın altında, menüden **çoğaltma** ' yı seçin.
+1. **Ayarlar** ' ın altında, menüden **çoğaltma** ' yı seçin.
 1. Çoğaltma sunucusunu seçin.
-1. **Çoğaltmayı durdur**' u seçin.
-1. **Tamam**' a tıklayarak çoğaltmayı durdurmak istediğinizi onaylayın.
+1. **Çoğaltmayı durdur** ' u seçin.
+1. **Tamam** ' a tıklayarak çoğaltmayı durdurmak istediğinizi onaylayın.
 
 ## <a name="clean-up-source-server"></a>Kaynak sunucuyu temizle
 
 MariaDB sunucusu için kaynak Azure veritabanını silmek isteyebilirsiniz. Bunu yapmak için aşağıdaki adımları kullanın:
 
 1. Çoğaltma oluşturulduktan sonra, MariaDB kaynak sunucusu için Azure veritabanınızı bulun ve seçin.
-1. **Genel bakış** penceresinde **Sil**' i seçin.
+1. **Genel bakış** penceresinde **Sil** ' i seçin.
 1. Silmek istediğinizi onaylamak için kaynak sunucunun adını yazın.
-1. **Sil**’i seçin.
+1. **Sil** ’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 819ac1f01cc182c79571de35ec0753f694dc7722
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ed99145a2d3860849c4a8117a93a9a0f24d227c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653622"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540935"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>SAP iş yükü için Azure Depolama türleri
 Azure 'da yetenekler, verimlilik, gecikme ve fiyatlara göre büyük ölçüde farklı depolama türlerine sahiptir. Bazı depolama türleri veya SAP senaryolarında sınırlı kullanılabilir değildir. Ancak, birkaç Azure depolama türü, belirli SAP iş yükü senaryoları için uygundur veya iyileştirilmiştir. Özellikle SAP HANA için, bazı Azure Depolama türleri SAP HANA kullanım için sertifikalandıralındı. Bu belgede, farklı depolama türlerini inceleyeceğiz ve SAP iş yükleri ve SAP bileşenleriyle yeteneklerini ve kullanılabilirliğini anladık.
@@ -273,7 +273,7 @@ ANF depolamanın ek yerleşik işlevleri:
 - Anlık görüntülerden ANF birimlerinin kopyalanması
 - Birimleri anlık görüntülerden geri yükle (yaslama geri çevir)
 
-**Özet**: Azure NetApp FILES, NFS ve SMB birimleri veya paylaşımları dağıtmaya izin veren, Hana sertifikalı düşük gecikmeli bir depodır. Depolama, birimin GiB kapasitesi başına doğrusal bir şekilde farklı verimlilik ve ıOPS sağlayan üç farklı hizmet düzeyiyle gelir. ANF depolaması, bekleyen bir düğümle SAP HANA genişleme senaryolarına dağıtım yapmak için etkinleştiriliyor. Depolama alanı,/sapmnt veya SAP Genel aktarım dizini için gerektiğinde dosya paylaşımları sağlamaya uygundur. ANF depolama, yerel NetApp işlevselliği olarak kullanılabilen işlev kullanılabilirliğiyle birlikte gelir.  
+**Özet** : Azure NetApp FILES, NFS ve SMB birimleri veya paylaşımları dağıtmaya izin veren, Hana sertifikalı düşük gecikmeli bir depodır. Depolama, birimin GiB kapasitesi başına doğrusal bir şekilde farklı verimlilik ve ıOPS sağlayan üç farklı hizmet düzeyiyle gelir. ANF depolaması, bekleyen bir düğümle SAP HANA genişleme senaryolarına dağıtım yapmak için etkinleştiriliyor. Depolama alanı,/sapmnt veya SAP Genel aktarım dizini için gerektiğinde dosya paylaşımları sağlamaya uygundur. ANF depolama, yerel NetApp işlevselliği olarak kullanılabilen işlev kullanılabilirliğiyle birlikte gelir.  
 
 
 
@@ -352,11 +352,10 @@ Azure VM 'lerini bir SAP sisteminin yaşam döngüsünde ayarlarken, yeni ve dah
 
 
 ## <a name="striping-or-not-striping"></a>Şeritleme veya şeridi yok
-Birden çok Azure diskinin daha büyük bir birimde bir dizi kümesi oluşturulması, tek tek disklerin ıOPS ve üretilen iş verimini tek bir birimde birikmesini sağlar. Yalnızca Azure Standart depolama ve Azure Premium Depolama için kullanılır. Aktarım hızını ve ıOPS 'yi bir diskin kapasitesinden bağımsız olarak yapılandırabileceğiniz Azure Ultra disk, Stripe kümelerinin kullanımını gerektirmez. NFS veya SMB tabanlı paylaşılan birimler şeritli olamaz. Azure Premium Depolama verimlilik ve ıOPS 'nin doğrusal olmayan doğası nedeniyle, büyük tek Azure Premium Depolama disklerinden aynı ıOPS ve aktarım hızı ile daha küçük kapasite sağlayabilirsiniz. Bu, Azure Premium Depolama kullanarak daha düşük maliyetli verimlilik veya ıOPS elde etme yöntemidir. Örneğin:
+Birden çok Azure diskinin daha büyük bir birimde bir dizi kümesi oluşturulması, tek tek disklerin ıOPS ve üretilen iş verimini tek bir birimde birikmesini sağlar. Yalnızca Azure Standart depolama ve Azure Premium Depolama için kullanılır. Aktarım hızını ve ıOPS 'yi bir diskin kapasitesinden bağımsız olarak yapılandırabileceğiniz Azure Ultra disk, Stripe kümelerinin kullanımını gerektirmez. NFS veya SMB tabanlı paylaşılan birimler şeritli olamaz. Azure Premium Depolama verimlilik ve ıOPS 'nin doğrusal olmayan doğası nedeniyle, büyük tek Azure Premium Depolama disklerinden aynı ıOPS ve aktarım hızı ile daha küçük kapasite sağlayabilirsiniz. Bu, Azure Premium Depolama kullanarak daha düşük maliyetli verimlilik veya ıOPS elde etme yöntemidir. Örneğin, iki P15 Premium Depolama diski arasında dizme size şu şekilde bir aktarım hızı sağlar: 
 
-- İki P15 Premium Depolama diski arasında şeritleme size 
 - 250 MIB/sn. Bu tür bir birimde 512 GiB kapasitesi vardır. Saniyede 250 MIB üretilen işi sağlayan tek bir diske sahip olmak istiyorsanız, 2 TiB kapasiteye sahip bir P40 disk seçmeniz gerekir. 
-- Veya dört P10 Premium depolama diskini şeritleyerek Toplam 512 GiB kapasitesine sahip dört Premium Depolama diski şeritleyerek 400 MIB/sn aktarım hızı elde edebilirsiniz. Saniyede en az 500 MIB işleme içeren tek bir diske sahip olmak isterseniz, 8 TiB ile bir P60 Premium Depolama diski seçmeniz gerekir. Maliyetlendirme veya Premium Depolama kapasitesi kapasiteye göre doğrusal olduğundan, dizme kullanarak maliyet tasarrufu sağlayabilirsiniz.
+- 400 MIB/sn dört P10 Premium depolama diskini şeritleyerek Toplam 512 GiB kapasitesine sahip. Saniyede en az 500 MIB işleme içeren tek bir diske sahip olmak isterseniz, 8 TiB ile bir P60 Premium Depolama diski seçmeniz gerekir. Premium depolamanın maliyeti kapasiteye göre doğrusal olduğundan, dizme kullanarak maliyet tasarrufu sağlayabilirsiniz.
 
 Bazı kuralların dizme üzerinde izlenmesi gerekir:
 

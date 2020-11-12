@@ -1,23 +1,23 @@
 ---
 title: Etiketleme projesindeki resimleri etiketleme
-titleSuffix: Azure Machine Learning
-description: Azure Machine Learning etiketleme projesindeki veri etiketleme araçlarını kullanmayı öğrenin.
+title.suffix: Azure Machine Learning
+description: Azure Machine Learning etiketleme projesindeki bir Machine Learning için verileri hızlıca hazırlamak üzere veri etiketleme araçlarını nasıl kullanacağınızı öğrenin.
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: cd015e952f93655a7bdba8c947fac6e9a8f6546c
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 4392086146642e18b1fdef28a9e602bdbb5b0b18
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518269"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542193"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Etiketleme projesindeki resimleri etiketleme 
 
-Proje yöneticiniz Azure Machine Learning [bir etiketleme projesi](./how-to-create-labeling-projects.md#create-a-labeling-project) oluşturduktan sonra etiketleme aracını (Genel Önizleme) kullanarak bir Machine Learning projesi için hızlı bir şekilde veri hazırlayabilir. Bu makalede şunları açıklanmaktadır:
+Proje yöneticiniz Azure Machine Learning ' de [bir etiketleme projesi](./how-to-create-labeling-projects.md#create-a-labeling-project) oluşturduktan sonra etiketleme aracını kullanarak bir Machine Learning projesi için hızlı bir şekilde veri hazırlayabilir. Bu makalede şunları açıklanmaktadır:
 
 > [!div class="checklist"]
 > * Etiketleme projelerinize erişme
@@ -141,11 +141,11 @@ Bir çokgeni silmek için, oluşturulduktan sonra çokgenin yanında görünen X
 
 Bir çokgenin etiketini değiştirmek istiyorsanız, **bölgeyi taşı** aracını seçin, Çokgen ' e tıklayın ve doğru etiketi seçin.
 
-Mevcut poligonları düzenleyebilirsiniz. **Kilitleme/kilit açma bölgesi** aracı ![ kilitleme/kilit açma bölgesi aracı ](./media/how-to-label-images/lock-bounding-boxes-tool.png) veya "L" Bu davranışa geçiş yapar. Bölgeler kilitliyse, yalnızca yeni bir çokgenin şeklini veya konumunu değiştirebilirsiniz.
+Mevcut poligonları düzenleyebilirsiniz. **Kilitleme/kilit açma bölgesi** Aracı, ![ poligonları kilitle/kilidini aç aracı ](./media/how-to-label-images/lock-bounding-boxes-tool.png) veya "L" olan düzenleme, bu davranışa geçiş yapar. Bölgeler kilitliyse, yalnızca yeni bir çokgenin şeklini veya konumunu değiştirebilirsiniz.
 
-Varolan çokgeni ayarlamak için **Çokgen noktaları Ekle veya Kaldır** araç ![ bölgesi düzenleme aracını ](./media/how-to-label-images/add-remove-points-tool.png) veya "U" kullanın. Bir nokta eklemek veya kaldırmak için Çokgen ' e tıklayın. Bir bölgeyi düzenleyemezsiniz, büyük olasılıkla bir bölgeyi **Kilitle/kilidini aç** aracını atlayabilirsiniz.
+Çokgen noktaları **Ekle veya Kaldır** aracını kullanın ![ varolan çokgeni ayarlamak için Çokgen noktaları Ekle veya Kaldır aracını ](./media/how-to-label-images/add-remove-points-tool.png) veya "U". Bir nokta eklemek veya kaldırmak için Çokgen ' e tıklayın. Bir bölgeyi düzenleyemezsiniz, büyük olasılıkla bir bölgeyi **Kilitle/kilidini aç** aracını atlayabilirsiniz.
 
-Geçerli görüntüdeki *Tüm* poligonları silmek için **tüm bölgeleri Sil** araç bölgelerini Sil aracını seçin ![ ](./media/how-to-label-images/delete-regions-tool.png) .
+Geçerli görüntüdeki *Tüm* poligonları silmek için **tüm bölgeleri Sil** araç ![ tüm bölgeleri Sil aracını seçin ](./media/how-to-label-images/delete-regions-tool.png) .
 
 Bir görüntü için çokgenler oluşturduktan sonra, çalışmanızı kaydetmek için **Gönder** ' i seçin veya sürmekte olan çalışmanız kaydedilmez.
 

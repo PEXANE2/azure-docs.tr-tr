@@ -1,17 +1,17 @@
 ---
 title: Veritabanları ve kullanıcılar oluşturma-MySQL için Azure veritabanı
 description: Bu makalede, MySQL için Azure veritabanı sunucusu ile etkileşim kurmak üzere yeni kullanıcı hesaplarının nasıl oluşturulacağı açıklanır.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/1/2020
-ms.openlocfilehash: 3e1f24b3ae6133241660751293f52fec63dfbe73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e934ede193d6efb9cc795c6b63cb485b88f792e
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766877"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541428"
 ---
 # <a name="create-databases-and-users-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda veritabanları ve kullanıcılar oluşturma
 
@@ -22,7 +22,7 @@ Bu makalede, MySQL için Azure veritabanı 'nda kullanıcıların nasıl oluştu
 > [!NOTE]
 > **Sapma ücretsiz iletişim**
 >
-> Microsoft, farklı ve üçlü ortamları destekler. Bu makale, *İkincil*sözcüğe başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) bunu bir exclusionword olarak tanır. Bu makalede, şu anda yazılımda görünen sözcük olduğundan, bu makale tutarlılık için kullanılır. Yazılım, sözcüğü kaldıracak şekilde güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
+> Microsoft, farklı ve üçlü ortamları destekler. Bu makale, *İkincil* sözcüğe başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) bunu bir exclusionword olarak tanır. Bu makalede, şu anda yazılımda görünen sözcük olduğundan, bu makale tutarlılık için kullanılır. Yazılım, sözcüğü kaldıracak şekilde güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
 >
 
 MySQL Server için Azure veritabanınızı ilk oluşturduğunuzda, bir sunucu yöneticisi Kullanıcı adı ve parolası sağladınız. Daha fazla bilgi için bu [hızlı](quickstart-create-mysql-server-database-using-azure-portal.md)başlangıca bakın. Sunucu Yöneticisi Kullanıcı adınızı Azure portal belirleyebilirsiniz.
@@ -94,7 +94,7 @@ MySQL için Azure veritabanı sunucusu oluşturduktan sonra, daha fazla kullanı
    
    Nasıl bağlanadığınızdan emin değilseniz, bkz. [bağlanmak ve veri sorgulamak Için MySQL çalışma ekranı kullanma](./connect-workbench.md).
 
-3. Aşağıdaki SQL kodunu düzenleyin ve çalıştırın. Yer tutucu değerini `new_master_user` Yeni Kullanıcı adınızla değiştirin. Bu söz dizimi, kullanıcıya tüm veritabanı şemaları (*.*) üzerinde listelenen ayrıcalıkları verir ( `new_master_user` Bu örnekte).
+3. Aşağıdaki SQL kodunu düzenleyin ve çalıştırın. Yer tutucu değerini `new_master_user` Yeni Kullanıcı adınızla değiştirin. Bu söz dizimi, kullanıcıya tüm veritabanı şemaları ( *.* ) üzerinde listelenen ayrıcalıkları verir ( `new_master_user` Bu örnekte).
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';

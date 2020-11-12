@@ -1,19 +1,19 @@
 ---
 title: 'Hızlı başlangıç: sunucu oluşturma-Azure CLı-bir MySQL için Azure veritabanı-esnek sunucu'
 description: Bu hızlı başlangıçta bir Azure Kaynak grubunda MySQL için Azure veritabanı esnek sunucusu oluşturmak üzere Azure CLı 'nın nasıl kullanılacağı açıklanmaktadır.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/21/2020
 ms.custom: mvc
-ms.openlocfilehash: 4be295ada476e4dc41a86d06908ef1d653a3bad8
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3e2cb1d7c5f4d19a91eeb2999d7cbe449c10f822
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545030"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94543009"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-flexible-server-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak MySQL için Azure veritabanı esnek sunucusu oluşturma
 
@@ -30,7 +30,7 @@ Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin** 'i s
 
 CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu hızlı başlangıç, Azure CLı sürüm 2,0 veya üzerini gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Az Login](/cli/azure/reference-index#az-login) komutunu kullanarak hesabınızda oturum açmanız gerekir. Azure hesabınızın **ABONELIK kimliğini** ifade eden **ID** özelliğine göz önüne alın.
 

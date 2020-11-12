@@ -1,18 +1,18 @@
 ---
 title: PowerShell ile bir bağlantı dizesi oluşturma-MySQL için Azure veritabanı
 description: Bu makalede, MySQL için Azure veritabanı 'na bağlanmak üzere bir bağlantı dizesi oluşturmak için bir Azure PowerShell örneği sağlanmaktadır.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.custom: mvc, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 8/5/2020
-ms.openlocfilehash: fcba366a0322c3c1b5c6dcdf0fc3571646053fad
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9f960d32dcf1f359327dccc01eeb06825cc3a062
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337192"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541479"
 ---
 # <a name="how-to-generate-an-azure-database-for-mysql-connection-string-with-powershell"></a>PowerShell ile MySQL için Azure veritabanı bağlantı dizesi oluşturma
 

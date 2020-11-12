@@ -1,7 +1,7 @@
 ---
 title: Kaynakları ve kotaları yönetme
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning için kaynaklardaki kotalar hakkında bilgi edinin ve Kota artışlarına nasıl istek yapılacağını öğrenin.
+description: Azure Machine Learning için kaynaklardaki kotalar ve sınırlamalar hakkında bilgi edinin ve kota artışlarının nasıl isteneceğini öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 10/13/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: 9bcf6ac9991c1ad070f823c97b5bd0460eff07c2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d82cbafbbdeb379c8eb97494ca8d3243f356b7a1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309085"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542125"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning olan kaynaklar için kotaları yönetme ve artırma
 
@@ -49,7 +49,7 @@ Bu bölümde, aşağıdaki kaynaklar için varsayılan ve en yüksek kota sını
 + Azure Machine Learning işlem
 + Azure Machine Learning işlem hatları
 + Azure Container Instances
-+ Azure Storage
++ Azure Depolama
 
 > [!IMPORTANT]
 > Sınırlar değişikliğe tabidir. En son bilgiler için bkz. Azure [aboneliği ve hizmet limitleri, Kotalar ve](../azure-resource-manager/management/azure-subscription-service-limits.md) tüm Azure için kısıtlamalar.
