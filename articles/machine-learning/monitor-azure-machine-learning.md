@@ -9,24 +9,26 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/01/2020
-ms.openlocfilehash: b8ca96dd0b11f7a4c76f7a954959ef5005fb4a40
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a77f9c8f7e37d2c5a040a48b6bd96bef11d51f14
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323983"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533489"
 ---
 # <a name="monitor-azure-machine-learning"></a>Azure Machine Learning'i izleme
 
 Azure kaynaklarına bağlı kritik Uygulamalarınız ve iş süreçleriniz olduğunda, bu kaynakları kullanılabilirlik, performans ve işlem için izlemek istersiniz. Bu makalede, Azure Machine Learning tarafından oluşturulan izleme verileri ve Azure Izleyici ile bu verileri çözümleme ve uyarma açıklanır.
 
 > [!TIP]
-> Bu belgedeki bilgiler birincil olarak yöneticiler içindir, çünkü Azure Machine Learning *çalışma alanı* düzeyinde izlemeyi açıklar. Bir veri bilimcu veya geliştiricisiyseniz ve *model eğitim çalışmalarınız* için özel bilgileri izlemek istiyorsanız aşağıdaki belgelere bakın:
+> Bu belgedeki bilgiler, Azure Machine Learning hizmeti ve ilişkili Azure hizmetleri için izlemeyi açıkladığı gibi birincil olarak __Yöneticiler__ içindir. Bir __veri bilimcu__ veya __geliştiricisiyseniz__ ve *model eğitim çalışmalarınız* için özel bilgileri izlemek istiyorsanız aşağıdaki belgelere bakın:
 >
 > * [Eğitim çalıştırmalarını başlatın, izleyin ve iptal edin](how-to-manage-runs.md)
 > * [Eğitim çalıştırmaları için günlük ölçümleri](how-to-track-experiments.md)
 > * [MLflow ile denemeleri izleme](how-to-use-mlflow.md)
 > * [TensorBoard ile çalıştırmaları görselleştirme](how-to-monitor-tensorboard.md)
+>
+> Web Hizmetleri veya IoT Edge modülleri olarak dağıtılan modeller tarafından oluşturulan bilgileri izlemek isterseniz, bkz. [model verilerini toplama](how-to-enable-data-collection.md) ve [Application Insights ile izleme](how-to-enable-app-insights.md).
 
 ## <a name="what-is-azure-monitor"></a>Azure İzleyici nedir?
 

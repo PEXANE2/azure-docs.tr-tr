@@ -5,18 +5,18 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/10/2020
 ms.author: baanders
-ms.openlocfilehash: a07c2684856cfe21001f996bb62ce4ea3297e8c2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 37bccbcd92f627fd45a7f786725afe5b2e475f3c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379810"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533903"
 ---
 ## <a name="visualization"></a>Görselleştirme
 
 Azure dijital TWINS örneğinizle etkileşimde bulunmak için birincil yöntem [API 'ler ve SDK 'lar](../articles/digital-twins/how-to-use-apis-sdks.md)aracılığıyla olsa da, örneğiniz içinde oluşturmakta olduğunuz TWINS ve grafiklerin görselliğini görmek faydalı olabilir.
 
-[**Azure dijital TWINS Gezgini**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) , Azure dijital TWINS 'i görselleştirme ve bunlarla çalışmaya yönelik örnek bir uygulamadır. Uygulama kodunu indirmek ve çalıştırmak için örnekle birlikte sunulan yönergeleri izleyin. 
+[**Azure dijital TWINS (ADT) Gezgini**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) , Azure dijital TWINS 'i görselleştirme ve bunlarla çalışmaya yönelik örnek bir uygulamadır. Uygulama kodunu indirmek ve çalıştırmak için örnekle birlikte sunulan yönergeleri izleyin. 
 
 Bu örnekle, diğer oluşturma ve yönetim etkinliklerinin yanı sıra, dijital TWINS 'nizin ve oluşturdukları grafiğin görsel bir gösterimini görebilirsiniz.
 

@@ -3,17 +3,17 @@ title: Linux 'ta Java Web uygulaması performansını izleme-Azure | Microsoft D
 description: Application Insights için CollectD eklentisi ile Java Web sitenizin genişletilmiş uygulama performansı izlemesi.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 63b64226c9e788e060298050a74d9009c8035b89
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: a4ce1ad6a8248680b8bdeec8a98195c3dbfe31a1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379018"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532877"
 ---
-# <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd: Application Insights Linux performans ölçümleri
+# <a name="collectd-linux-performance-metrics-in-application-insights-deprecated"></a>collectd: Application Insights Linux performans ölçümleri [kullanım dışı]
 
 > [!IMPORTANT]
-> Java uygulamalarını izlemek için önerilen yaklaşım, kodu değiştirmeden otomatik izleme kullanmaktır. Lütfen [Application Insights Java 3,0 Aracısı](./java-in-process-agent.md)için yönergeleri izleyin.
+> Java uygulamalarını izlemek için **Önerilen yaklaşım** , kodu değiştirmeden otomatik izleme kullanmaktır. Lütfen **[Application Insights Java 3,0 Aracısı](./java-in-process-agent.md)** için yönergeleri izleyin.
 
 [Application Insights](./app-insights-overview.md)'deki Linux sistem performans ölçümlerini araştırmak için, Application Insights eklentisiyle [toplanan](https://collectd.org/)'yi birlikte yüklemelisiniz. Bu açık kaynaklı çözüm çeşitli sistem ve ağ istatistiklerini toplar.
 

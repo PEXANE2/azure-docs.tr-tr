@@ -4,35 +4,38 @@ description: Azure SYNAPSE Analytics not defterlerinde Msmini yardımcı program
 author: ruxu
 services: synapse-analytics
 ms.service: synapse-analytics
-ms.topic: conceptual
+ms.topic: reference
 ms.subservice: spark
 ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 648c5b75f125725ebda2966d3ebc4200ee76b98c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: c03d8e744598386db3d6d03a71e4d1b735d9d71f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428686"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533285"
 ---
 # <a name="introduction-of-microsoft-spark-utilities"></a>Microsoft Spark yardımcı programlarına giriş
-Microsoft Spark Utilities (Msparlak utils), yaygın olarak kullanılan görevleri daha kolay bir şekilde yapmanıza yardımcı olacak yerleşik bir pakettir. Msmini yardımcı programları kullanarak dosya sistemiyle birlikte çalışarak ortam değişkenlerini alabilir ve gizli dizilerle çalışabilirsiniz. Msmini yardımcı programları,, `PySpark (Python)` `Scala` , ve `.NET Spark (C#)` dizüstü bilgisayarlarda ve SYNAPSE işlem hatları 'nda mevcuttur.
+
+Microsoft Spark Utilities (Msparlak utils), ortak görevleri kolayca gerçekleştirmenize yardımcı olan yerleşik bir pakettir. Msmini yardımcı programları kullanarak dosya sistemleriyle çalışabilir, ortam değişkenlerini alabilir ve gizli dosyalarla çalışabilirsiniz. Msmini yardımcı programları,, `PySpark (Python)` `Scala` , ve `.NET Spark (C#)` dizüstü bilgisayarlarda ve SYNAPSE işlem hatları 'nda mevcuttur.
 
 ## <a name="pre-requisites"></a>Ön koşullar
+
 ### <a name="configure-access-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. erişimi yapılandırma 
+
 SYNAPSE Not defterleri, ADLS 2. hesaplarına erişmek için Azure Active Directory (Azure AD) geçişini kullanır. ADLS 2. hesabına (veya klasöre) erişmek için bir **BLOB depolama katılımcısı** olması gerekir. 
 
-SYNAPSE işlem hatları, depolama hesaplarına erişmek için çalışma alanı kimliğini (MSI) kullanır. İşlem hattı etkinliklerinizde Msmini yardımcı programları kullanmak için, çalışma alanı kimliğinizin, ADLS 2. hesabına (veya klasöre) erişmek için bir **BLOB depolama katılımcısı** olması gerekir.
+SYNAPSE işlem hatları, depolama hesaplarına erişmek için çalışma alanı kimliğini (MSI) kullanır. İşlem hattı etkinliklerinizde Msmini yardımcı programları kullanmak için, ADLS 2. hesabına (veya klasöre) erişmek için çalışma alanı kimliğinizin **BLOB depolama katılımcısı** olması gerekir.
 
 Azure AD ve çalışma alanı MSI ADLS 2. hesabına erişimi olduğundan emin olmak için şu adımları izleyin:
 1. [Azure Portal](https://portal.azure.com/) ve erişmek istediğiniz depolama hesabını açın. Erişmek istediğiniz belirli bir kapsayıcıya gidebilirsiniz.
 2. Sol paneldeki **erişim denetimini (IAM)** seçin.
-3. Depolama hesabındaki **Depolama Blobu veri katılımcısı** rolü Için, **Azure AD hesabınızı** ve **çalışma alanı kimliğinizi** (çalışma alanı adınızla aynı) atayın veya zaten atanmış olduğundan emin olun. 
-4. **Kaydet** ’e tıklayın.
+3. **Azure AD hesabınızı** ve **çalışma alanı kimliğinizi** (çalışma alanı adınızla aynı), henüz atanmamışsa depolama hesabındaki **Depolama Blobu veri katılımcısı** rolüne atayın. 
+4. **Kaydet** ’i seçin.
 
-Aşağıdaki URL aracılığıyla ADLS 2., SYNAPSE Spark ile verilere erişebilirsiniz:
+ADLS 2. verilerine aşağıdaki URL aracılığıyla SYNAPSE Spark ile erişebilirsiniz:
 
 <code>abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/<path></code>
 
@@ -45,10 +48,10 @@ Azure Blob depolama hesabı için yeni bir bağlı hizmet eklemek için aşağı
 1. [Azure SYNAPSE Studio 'yu](https://web.azuresynapse.net/)açın.
 2. Sol panelden **Yönet** ' i seçin ve **dış bağlantılar** altında **bağlı hizmetler** ' i seçin.
 3. Sağ taraftaki **yeni bağlı hizmet** panelinde **Azure Blob Storage** 'ı arayın.
-4. **Devam** ’a tıklayın.
+4. **Devam** ’ı seçin.
 5. Bağlı hizmet adına erişmek ve yapılandırmak için Azure Blob Depolama hesabını seçin. **Kimlik doğrulama yöntemi** için **hesap anahtarını** kullanmayı önerin.
-6. Ayarların doğru olduğunu doğrulamak için **Bağlantıyı Sına** ' ya tıklayın.
-7. Önce **Oluştur** ' a tıklayın ve değişikliklerinizi kaydetmek Için **Tümünü Yayımla** ' ya tıklayın. 
+6. Ayarların doğru olduğunu doğrulamak için **Bağlantıyı Sına** ' yı seçin.
+7. Önce **Oluştur** ' u seçin ve değişikliklerinizi kaydetmek Için **Tümünü Yayımla** ' ya tıklayın. 
 
 Aşağıdaki URL aracılığıyla SYNAPSE Spark ile Azure Blob depolama üzerindeki verilere erişebilirsiniz:
 
@@ -103,25 +106,25 @@ SYNAPSE ' de kimlik bilgilerinizi yönetmek için bağlı hizmet olarak Azure Ke
 2. Sol panelden **Yönet** ' i seçin ve **dış bağlantılar** altında **bağlı hizmetler** ' i seçin.
 3. Sağ taraftaki **yeni bağlı hizmet** panelinde **Azure Key Vault** arama yapın.
 4. Bağlı hizmet adına erişmek ve yapılandırmak için Azure Key Vault hesabını seçin.
-5. Ayarların doğru olduğunu doğrulamak için **Bağlantıyı Sına** ' ya tıklayın.
-6. Önce **Oluştur** ' a tıklayın ve değişikliklerinizi kaydetmek Için **Tümünü Yayımla** ' ya tıklayın. 
+5. Ayarların doğru olduğunu doğrulamak için **Bağlantıyı Sına** ' yı seçin.
+6. Önce **Oluştur** ' u seçin ve değişikliklerinizi kaydetmek Için **Tümünü Yayımla** ' ya tıklayın. 
 
 SYNAPSE Not defterleri Azure Key Vault erişmek için Azure Active Directory (Azure AD) geçişli geçiş kullanır. SYNAPSE işlem hatları Azure Key Vault erişmek için çalışma alanı kimliğini (MSI) kullanır. Kodunuzun hem not defterinde hem de SYNAPSE işlem hattında çalıştığından emin olmak için hem Azure AD hesabınız hem de çalışma alanı Kimliğiniz için gizli erişim izni verilmesi önerilir.
 
 Çalışma alanı kimliğinize gizli erişim sağlamak için aşağıdaki adımları izleyin:
 1. [Azure Portal](https://portal.azure.com/) ve erişmek istediğiniz Azure Key Vault açın. 
 2. Sol panelden **erişim ilkeleri** ' ni seçin.
-3. **Erişim Ilkesi Ekle** ' ye tıklayın: 
+3. **Erişim Ilkesi Ekle** ' yi seçin: 
     - **Anahtar, gizli dizi & Sertifika yönetimini** yapılandırma şablonu olarak seçin.
     - Sorumluyu Seç ' de **Azure AD hesabınızı** ve **çalışma alanı kimliğinizi** (çalışma alanı adınızla aynı) seçin veya zaten atanmış olduğundan emin olun. 
-4. **Seç** ve **Ekle** ' ye tıklayın.
-5. Değişiklikleri uygulamak için **Kaydet** düğmesine tıklayın.  
+4. **Seç** ve **Ekle** ' yi seçin.
+5. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.  
 
 ## <a name="file-system-utilities"></a>Dosya sistemi yardımcı programları
 
 `mssparkutils.fs` Azure Data Lake Storage 2. (ADLS 2.) ve Azure Blob depolama gibi çeşitli dosya sistemleriyle çalışmak için yardımcı programlar sağlar. [Azure Data Lake Storage 2.](#configure-access-to-azure-data-lake-storage-gen2) ve [Azure Blob depolamaya](#configure-access-to-azure-blob-storage) erişimi uygun şekilde yapılandırmadığınızdan emin olun.
 
-Kullanılabilir yöntemler hakkında genel bir bakış almak için aşağıdaki komutu çalıştırın:
+Kullanılabilir yöntemlere genel bir bakış için aşağıdaki komutları çalıştırın:
 
 :::zone pivot = "programming-language-python"
 
@@ -196,7 +199,7 @@ FS.Ls("Your directory path")
 
 
 ### <a name="view-file-properties"></a>Dosya özelliklerini görüntüle
-Dosya adı, dosya yolu, dosya boyutu, bir dizin olup olmadığı ve bir dosya olup olmadığı dahil dosya özelliklerini döndürür.
+Dosya adı, dosya yolu, dosya boyutu ve bir dizin ve bir dosya olup olmadığı dahil dosya özelliklerini döndürür.
 
 :::zone pivot = "programming-language-python"
 
@@ -230,7 +233,8 @@ foreach(var File in Files) {
 ::: zone-end
 
 ### <a name="create-new-directory"></a>Yeni dizin oluştur
-Mevcut değilse, gerekli üst dizinleri oluşturarak verilen dizini oluşturur.
+
+Mevcut dizin yoksa ve gerekli üst dizinler varsa, bu dizini oluşturur.
 
 :::zone pivot = "programming-language-python"
 
@@ -256,7 +260,8 @@ FS.Mkdirs("new directory name")
 ::: zone-end
 
 ### <a name="copy-file"></a>Dosyayı Kopyala
-Dosya veya dizin kopyalar, dosya sistemleri arasında kopyalamayı destekler.
+
+Bir dosya veya dizini kopyalar. Dosya sistemleri arasında kopyalamayı destekler.
 
 :::zone pivot = "programming-language-python"
 
@@ -282,6 +287,7 @@ FS.Cp("source file or directory", "destination file or directory", true) // Set 
 ::: zone-end
 
 ### <a name="preview-file-content"></a>Dosya içeriğini Önizle
+
 Belirtilen dosyanın ilk ' Maxbyte ' baytını UTF-8 ' de kodlanmış bir dize olarak döndürür.
 
 :::zone pivot = "programming-language-python"
@@ -308,7 +314,8 @@ FS.Head("file path", maxBytes to read)
 ::: zone-end
 
 ### <a name="move-file"></a>Dosyayı taşı
-Dosya veya dizin taşır ve dosya sistemleri arasında geçiş desteklenir.
+
+Bir dosya veya dizin taşıdıkça. Dosya sistemleri arasında taşımayı destekler.
 
 :::zone pivot = "programming-language-python"
 
@@ -334,6 +341,7 @@ FS.Mv("source file or directory", "destination directory", true)
 ::: zone-end
 
 ### <a name="write-file"></a>Dosya yaz
+
 Verilen dizeyi UTF-8 ile kodlanmış bir dosyaya yazar.
 
 :::zone pivot = "programming-language-python"
@@ -360,6 +368,7 @@ FS.Put("file path", "content to write", true) // Set the last parameter as True 
 ::: zone-end
 
 ### <a name="append-content-to-a-file"></a>Bir dosyaya içerik Ekle
+
 Verilen dizeyi UTF-8 ile kodlanmış bir dosyaya ekler.
 
 :::zone pivot = "programming-language-python"
@@ -386,6 +395,7 @@ FS.Append("file path","content to append",true) // Set the last parameter as Tru
 ::: zone-end
 
 ### <a name="delete-file-or-directory"></a>Dosya veya dizini Sil
+
 Bir dosyayı veya dizini kaldırır.
 
 :::zone pivot = "programming-language-python"
@@ -414,9 +424,9 @@ FS.Rm("file path", true) // Set the last parameter as True to remove all files a
 
 ## <a name="credentials-utilities"></a>Kimlik bilgileri yardımcı programları
 
-Msparlak utils kimlik bilgileri yardımcı programlarını kullanarak, bağlı hizmetlerin erişim belirteçlerini alabilir ve Azure Key Vault gizli dizileri yönetebilirsiniz. 
+Msparlak utils kimlik bilgileri yardımcı programlarını, bağlı hizmetlerin erişim belirteçlerini almak ve Azure Key Vault gizli dizileri yönetmek için kullanabilirsiniz. 
 
-Kullanılabilir yöntemler hakkında genel bir bakış almak için aşağıdaki komutu çalıştırın:
+Kullanılabilir yöntemlere genel bir bakış almak için aşağıdaki komutu çalıştırın:
 
 :::zone pivot = "programming-language-python"
 
@@ -454,6 +464,7 @@ putSecret(akvName, secretName, secretValue): puts AKV secret for a given akvName
 ```
 
 ### <a name="get-token"></a>Belirteç al
+
 Belirli bir hedef kitle için Azure AD belirtecini döndürür, ad (isteğe bağlı). Aşağıdaki tabloda, kullanılabilir tüm hedef kitle türleri listelenmektedir: 
 
 |Hedef kitle türü|Hedef kitle anahtarı|
@@ -492,6 +503,7 @@ mssparkutils.credentials.getToken("audience Key")
 
 
 ### <a name="validate-token"></a>Belirteci doğrula
+
 Belirtecin süresinin dolmadığı durumlarda true döndürür.
 
 :::zone pivot = "programming-language-python"
@@ -519,6 +531,7 @@ mssparkutils.credentials.isValidToken("your token")
 
 
 ### <a name="get-connection-string-or-credentials-for-linked-service"></a>Bağlı hizmet için bağlantı dizesini veya kimlik bilgilerini al
+
 Bağlı hizmet için bağlantı dizesini veya kimlik bilgilerini döndürür. 
 
 :::zone pivot = "programming-language-python"
@@ -546,6 +559,7 @@ mssparkutils.credentials.getConnectionStringOrCreds("linked service name")
 
 
 ### <a name="get-secret-using-workspace-identity"></a>Çalışma alanı kimliğini kullanarak gizli dizi al
+
 Verilen bir Azure Key Vault adı, gizli adı ve çalışma alanı kimliği kullanarak bağlı hizmet adı için Azure Key Vault gizli dizisi döndürür. [Azure Key Vault](#configure-access-to-azure-key-vault) erişimi uygun şekilde yapılandırdığınızdan emin olun.
 
 :::zone pivot = "programming-language-python"
@@ -573,6 +587,7 @@ mssparkutils.credentials.getSecret("azure key vault name","secret name","linked 
 
 
 ### <a name="get-secret-using-user-credentials"></a>Kullanıcı kimlik bilgilerini kullanarak gizli dizi al
+
 Belirli bir Azure Key Vault adı, gizli adı ve Kullanıcı kimlik bilgilerini kullanarak bağlı hizmet adı için Azure Key Vault gizli dizisi döndürür. 
 
 :::zone pivot = "programming-language-python"
@@ -599,6 +614,7 @@ mssparkutils.credentials.getSecret("azure key vault name","secret name")
 ::: zone-end
 
 ### <a name="put-secret-using-workspace-identity"></a>Çalışma alanı kimliği kullanarak gizli dizi koy
+
 , Belirli bir Azure Key Vault adı, gizli adı ve çalışma alanı kimliği kullanarak bağlı hizmet adı için Azure Key Vault gizli dizisi koyar. [Azure Key Vault](#configure-access-to-azure-key-vault) erişimi uygun şekilde yapılandırdığınızdan emin olun.
 
 :::zone pivot = "programming-language-python"
@@ -626,6 +642,7 @@ mssparkutils.credentials.putSecret("azure key vault name","secret name","secret 
 
 
 ### <a name="put-secret-using-user-credentials"></a>Kullanıcı kimlik bilgilerini kullanarak gizli dizi koy
+
 Kullanıcı kimlik bilgilerini kullanarak belirli bir Azure Key Vault adı, gizli adı ve bağlı hizmet adı için Azure Key Vault gizli dizisi koyar. 
 
 :::zone pivot = "programming-language-python"
@@ -654,7 +671,7 @@ mssparkutils.credentials.putSecret("azure key vault name","secret name","secret 
 
 ## <a name="environment-utilities"></a>Ortam yardımcı programları 
 
-Kullanılabilir yöntemler hakkında genel bir bakış almak için aşağıdaki komutu çalıştırın:
+Kullanılabilir yöntemlere genel bir bakış almak için aşağıdaki komutları çalıştırın:
 
 :::zone pivot = "programming-language-python"
 
@@ -689,6 +706,7 @@ getClusterId(): returns cluster id
 ```
 
 ### <a name="get-user-name"></a>Kullanıcı adını al
+
 Geçerli Kullanıcı adını döndürür.
 
 :::zone pivot = "programming-language-python"
@@ -715,6 +733,7 @@ mssparkutils.env.getUserName()
 ::: zone-end
 
 ### <a name="get-user-id"></a>Kullanıcı KIMLIĞINI al
+
 Geçerli kullanıcı KIMLIĞINI döndürür.
 
 :::zone pivot = "programming-language-python"
@@ -741,6 +760,7 @@ mssparkutils.env.getUserId()
 ::: zone-end
 
 ### <a name="get-job-id"></a>İş KIMLIĞINI al
+
 İş KIMLIĞINI döndürür.
 
 :::zone pivot = "programming-language-python"
@@ -767,6 +787,7 @@ mssparkutils.env.getJobId()
 ::: zone-end
 
 ### <a name="get-workspace-name"></a>Çalışma alanı adını al
+
 Çalışma alanı adını döndürür.
 
 :::zone pivot = "programming-language-python"
@@ -793,6 +814,7 @@ mssparkutils.env.getWorkspaceName()
 ::: zone-end
 
 ### <a name="get-pool-name"></a>Havuz adını al
+
 Spark havuz adını döndürür.
 
 :::zone pivot = "programming-language-python"
@@ -819,6 +841,7 @@ mssparkutils.env.getPoolName()
 ::: zone-end
 
 ### <a name="get-cluster-id"></a>Küme KIMLIĞINI al
+
 Geçerli küme KIMLIĞINI döndürür.
 
 :::zone pivot = "programming-language-python"
@@ -845,6 +868,7 @@ mssparkutils.env.getClusterId()
 ::: zone-end
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 - [SYNAPSE örnek not defterlerine göz atın](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)
 - [Hızlı başlangıç: Web araçlarını kullanarak Azure SYNAPSE Analytics 'te Apache Spark Havuzu (Önizleme) oluşturma](../quickstart-apache-spark-notebook.md)
 - [Azure SYNAPSE Analytics 'te Apache Spark nedir?](apache-spark-overview.md)

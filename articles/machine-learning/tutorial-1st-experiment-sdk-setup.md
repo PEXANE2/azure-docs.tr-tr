@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: Jupyter Notebook (Python) ile çalışmaya başlama'
 titleSuffix: Azure Machine Learning
-description: Jupyter Notebook öğreticileri için kurulum. Azure Machine Learning çalışma alanı oluşturun, Jupyıter not defterlerini çalışma alanına kopyalayın ve not defterlerini çalıştırdığınız bir işlem örneği oluşturun.
+description: Jupyter Notebook öğreticileri için kurulum. Çalışma alanı oluşturun, not defterlerini çalışma alanına kopyalayın ve not defterlerini çalıştırdığınız bir işlem örneği oluşturun.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 601e124c1ad87724babfabffc95e9265bc962d87
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 6eb76c9d8cc8447755e045972a7aceddefd1604a
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913305"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532979"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>Öğretici: Jupyter not defterlerinde Azure Machine Learning kullanmaya başlayın
 
@@ -82,7 +82,7 @@ Aşağıdaki deneme kurulumunu tamamlayıp Azure Machine Learning Studio 'da ad�
     
 1. **Öğreticiler/Image-Classification-mnist-Data** klasörünüzdeki **öğretici-1-deneme-SDK-eğitme. ipynb** dosyasını seçin.
 
-    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="Klonlama öğreticileri klasörünü gösteren ekran görüntüsü.":::
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="Açık öğreticiler klasörünü gösteren ekran görüntüsü.":::
 
 1. Üst kısımdaki çubukta, Not defterini çalıştırmak için kullanılacak bir işlem örneği seçin. Bu sanal makineler (VM 'Ler) [Azure Machine Learning çalıştırmanız gereken her şey](concept-compute-instance.md#contents)ile önceden yapılandırılmıştır.
 

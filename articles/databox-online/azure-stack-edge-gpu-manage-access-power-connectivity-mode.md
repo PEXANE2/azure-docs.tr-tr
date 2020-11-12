@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: alkohli
-ms.openlocfilehash: 99dd3da3f9e8434f9c859afd347bd19d10628083
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b66a184abce53c31fade19fc9e10ffe4c7ff8415
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941355"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532452"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 'SU için erişimi, güç ve bağlantı modunu yönetme
 
@@ -36,25 +36,25 @@ Azure Stack Edge Pro cihazınıza erişim, bir cihaz parolasının kullanımı i
 
 Cihaz parolasını değiştirmek için yerel kullanıcı arabirimindeki adımları izleyin.
 
-1. Yerel Web Kullanıcı arabiriminde **bakım > parolası**' na gidin.
+1. Yerel Web Kullanıcı arabiriminde **bakım > parolası** ' na gidin.
 2. Geçerli parolayı ve ardından yeni parolayı girin. Sağlanan parola 8 ile 16 karakter arasında olmalıdır. Parola şu karakterlerden 3 ' i içermelidir: büyük harf, küçük harf, sayısal ve özel karakterler. Yeni parolayı onaylayın.
 
     ![Parolayı değiştir](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/change-password-1.png)
 
-3. **Parolayı Değiştir**' i seçin.
+3. **Parolayı Değiştir** ' i seçin.
  
 ### <a name="reset-device-password"></a>Cihaz parolasını sıfırla
 
 Sıfırlama iş akışı, kullanıcının eski parolayı geri çekemesini gerektirmez ve parola kaybolduğunda faydalıdır. Bu iş akışı Azure portal gerçekleştirilir.
 
-1. Azure portal, **genel bakış > yönetici parolasını sıfırla**' ya gidin.
+1. Azure portal, **genel bakış > yönetici parolasını sıfırla** ' ya gidin.
 
-    ![Parola sıfırlama](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-1.png)
+    ![Ekran görüntüsü cihaz parolasını sıfırla seçiliyken cihazı gösterir.](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-1.png)
 
 
-2. Yeni parolayı girip onaylayın. Sağlanan parola 8 ile 16 karakter arasında olmalıdır. Parola şu karakterlerden 3 ' i içermelidir: büyük harf, küçük harf, sayısal ve özel karakterler. **Sıfırla**’yı seçin.
+2. Yeni parolayı girip onaylayın. Sağlanan parola 8 ile 16 karakter arasında olmalıdır. Parola şu karakterlerden 3 ' i içermelidir: büyük harf, küçük harf, sayısal ve özel karakterler. **Sıfırla** ’yı seçin.
 
-    ![Parola sıfırlama](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
+    ![Ekran görüntüsü, cihaz parolasını Sıfırla iletişim kutusunu gösterir.](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>Kaynak erişimini yönetme
 
@@ -114,15 +114,15 @@ Varsayılan tam bağlı moddan ayrı olarak, cihazınız kısmen bağlı veya ta
 
 Cihaz modunu değiştirmek için şu adımları izleyin:
 
-1. Cihazınızın yerel Web Kullanıcı arabiriminde **yapılandırma > bulut**' a gidin.
-2. Açılan listeden, cihazı çalıştırmak istediğiniz modu seçin. **Tam bağlı**, **kısmen bağlı**ve **tamamen bağlantısı kesilen**' ı seçebilirsiniz. Cihazı kısmen bağlantısı kesik modda çalıştırmak için **Azure Portal yönetimini**etkinleştirin.
+1. Cihazınızın yerel Web Kullanıcı arabiriminde **yapılandırma > bulut** ' a gidin.
+2. Açılan listeden, cihazı çalıştırmak istediğiniz modu seçin. **Tam bağlı** , **kısmen bağlı** ve **tamamen bağlantısı kesilen** ' ı seçebilirsiniz. Cihazı kısmen bağlantısı kesik modda çalıştırmak için **Azure Portal yönetimini** etkinleştirin.
 
  
 ## <a name="manage-power"></a>Güç yönetimi
 
 Fiziksel cihazınızı yerel web kullanıcı arabirimini kullanarak kapatabilir ya da yeniden başlatabilirsiniz. Cihazı yeniden başlatmadan önce veri sunucusundaki paylaşımları sonra da cihazı çevrimdışına almanız önerilir. Bu eylem veri bozulması olasılığını en aza indirir.
 
-1. Yerel Web Kullanıcı arabiriminde **bakım > gücü**' ne gidin.
+1. Yerel Web Kullanıcı arabiriminde **bakım > gücü** ' ne gidin.
 2. Ne yapmak istediğinize bağlı olarak, **kapanıyor** ' u veya **Yeniden Başlat** ' ı seçin.
 
     ![Güç ayarları](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/shut-down-restart-1.png)

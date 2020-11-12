@@ -1,39 +1,33 @@
 ---
 title: Sanal makine işlem düğümlerinde Linux çalıştırma
-description: Azure Batch içindeki Linux sanal makinelerinin havuzlarında paralel işlem iş yüklerinizi nasıl işleyeceğini öğrenin.
+description: Azure Batch 'de Linux sanal makinelerinin havuzlarında paralel işlem iş yüklerini işlemeyi öğrenin.
 ms.topic: how-to
-ms.date: 06/01/2018
+ms.date: 11/10/2020
 ms.custom: H1Hack27Feb2017, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 704b73ab43f40a5542e80ffebc4ab34edfc446dc
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 0a9c801a13af05f077b87f296992da7f50742e4b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913798"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533506"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Batch havuzlarında Linux işlem düğümleri sağlama
 
-Hem Linux hem de Windows sanal makinelerinde paralel işlem iş yüklerini çalıştırmak için Azure Batch kullanabilirsiniz. Bu makalede Batch hizmeti 'nde hem [Batch Python][py_batch_package] hem de [Batch .net][api_net] istemci kitaplıkları kullanılarak Linux işlem düğümleri havuzlarının nasıl oluşturulacağı açıklanır.
-
-> [!NOTE]
-> Uygulama paketleri 5 Temmuz 2017’den sonra oluşturulmuş tüm Batch havuzlarında desteklenir. Bunların 10 Mart 2016 ve 5 Haziran 2017 arasında oluşturulmuş Batch havuzlarında desteklenebilmesi için, havuzun Bulut Hizmeti yapılandırması kullanılarak oluşturulmuş olması gerekir. 10 Mart 2016’dan önce oluşturulan Batch havuzları uygulama paketlerini desteklemez. Uygulama paketlerini kullanarak uygulamalarınızı Batch düğümlerine dağıtma hakkında daha fazla bilgi için bkz. [Batch uygulama paketleriyle işlem düğümlerine uygulama dağıtımı](batch-application-packages.md).
->
->
+Hem Linux hem de Windows sanal makinelerinde paralel işlem iş yüklerini çalıştırmak için Azure Batch kullanabilirsiniz. Bu makalede Batch hizmeti 'nde hem [Batch Python](https://pypi.python.org/pypi/azure-batch) hem de [Batch .net](/dotnet/api/microsoft.azure.batch) istemci kitaplıkları kullanılarak Linux işlem düğümleri havuzlarının nasıl oluşturulacağı açıklanır. 
 
 ## <a name="virtual-machine-configuration"></a>Sanal makine yapılandırması
-Batch 'de işlem düğümleri havuzu oluşturduğunuzda, düğüm boyutunu ve işletim sistemini seçebileceğiniz iki seçeneğe sahip olursunuz: Cloud Services yapılandırma ve sanal makine yapılandırması.
 
-**Cloud Services Yapılandırması***yalnızca* Windows işlem düğümleri sağlar. Kullanılabilir işlem düğümü boyutları [Cloud Services Için boyutlar](../cloud-services/cloud-services-sizes-specs.md)bölümünde listelenir ve kullanılabilir Işletim sistemleri [Azure Konuk işletim SISTEMI sürümleri ve SDK uyumluluk matrisi](../cloud-services/cloud-services-guestos-update-matrix.md)' nde listelenir. Azure Cloud Services düğümlerini içeren bir havuz oluşturduğunuzda, daha önce bahsedilen makalelerde açıklanan düğüm boyutunu ve işletim sistemi ailesini belirtirsiniz. Windows işlem düğümlerinin havuzları için Cloud Services en yaygın olarak kullanılır.
+Batch 'de işlem düğümleri havuzu oluşturduğunuzda, düğüm boyutunu ve işletim sistemini seçebileceğiniz iki seçeneğe sahip olursunuz: Cloud Services yapılandırma ve sanal makine yapılandırması. Çoğu Windows işlem düğümü havuzu, havuzun Azure Cloud Services düğümlerinden oluştuğunu belirten [Cloud Services yapılandırma](nodes-and-pools.md#cloud-services-configuration)kullanır. Bu havuzlar yalnızca Windows işlem düğümleri sağlar.
 
-**Sanal makine yapılandırması** , işlem düğümleri Için hem Linux hem de Windows görüntülerini sağlar. Kullanılabilir işlem düğüm boyutları, Azure 'daki sanal [makinelere yönelik boyutlarda](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) (Linux) ve [Azure 'Daki sanal makinelerin boyutlarına](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) (Windows) göre listelenmiştir. Sanal makine yapılandırma düğümlerini içeren bir havuz oluşturduğunuzda düğümlerin boyutunu, sanal makine görüntü başvurusunu ve düğümlere yüklenecek Batch düğümü aracı SKU 'sunu belirtmeniz gerekir.
+Buna karşılık, [sanal makine yapılandırması](nodes-and-pools.md#virtual-machine-configuration) , havuzun Linux veya Windows görüntülerinden oluşturulan Azure VM 'lerinden oluştuğunu belirtir. Sanal makine yapılandırmasıyla bir havuz oluşturduğunuzda, [kullanılabilir bir işlem düğüm boyutu](../virtual-machines/sizes.md), sanal makine görüntüsü başvurusu ve Batch düğüm Aracısı SKU 'su (her düğümde çalışan bir program ve düğüm ile Batch hizmeti arasında bir arabirim sağlar) ve düğümlere yüklenecek sanal makine görüntüsü başvurusu belirtmeniz gerekir.
 
 ### <a name="virtual-machine-image-reference"></a>Sanal makine görüntüsü başvurusu
 
-Batch hizmeti, sanal makine yapılandırmasında işlem düğümleri sağlamak için [sanal makine ölçek kümelerini](../virtual-machine-scale-sets/overview.md) kullanır. [Azure Marketi][vm_marketplace]'nden bir görüntü belirtebilir veya hazırladığınız özel bir görüntü sağlayabilirsiniz. Özel görüntüler hakkında daha fazla bilgi için bkz. [paylaşılan görüntü Galerisi ile havuz oluşturma](batch-sig-images.md).
+Batch hizmeti, sanal makine yapılandırmasında işlem düğümleri sağlamak için [sanal makine ölçek kümelerini](../virtual-machine-scale-sets/overview.md) kullanır. [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images&page=1)'nden bir görüntü belirtebilir veya [paylaşılan görüntü Galerisi ' ni kullanarak özel bir görüntü hazırlayabilir](batch-sig-images.md).
 
-Bir sanal makine görüntü başvurusunu yapılandırdığınızda, sanal makine görüntüsünün özelliklerini belirtirsiniz. Bir sanal makine görüntü başvurusu oluştururken aşağıdaki özellikler gereklidir:
+Bir sanal makine görüntü başvurusu oluşturduğunuzda, aşağıdaki özellikleri belirtmeniz gerekir:
 
-| **Görüntü başvurusu özellikleri** | **Örnek** |
+| **Görüntü başvurusu özelliği** | **Örnek** |
 | --- | --- |
 | Publisher |Canonical |
 | Sunduğu |UbuntuServer |
@@ -41,27 +35,25 @@ Bir sanal makine görüntü başvurusunu yapılandırdığınızda, sanal makine
 | Sürüm |en son |
 
 > [!TIP]
-> Bu özellikler hakkında daha fazla bilgi edinebilirsiniz ve [Azure 'DA CLI veya PowerShell Ile Linux sanal makine görüntülerini seçebilirsiniz](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Tüm Market görüntülerinin Şu anda Batch ile uyumlu olduğunu unutmayın. Daha fazla bilgi için bkz. [düğüm Aracısı SKU 'su](#node-agent-sku).
->
->
+> Bu özellikler hakkında daha fazla bilgi ve Azure [CLI Ile Azure Marketi 'Nde LINUX VM görüntülerini bulma](../virtual-machines/linux/cli-ps-findimage.md)bölümünde Market görüntülerinin nasıl belirtilme hakkında daha fazla bilgi edinebilirsiniz. Tüm Market görüntülerinin Şu anda Batch ile uyumlu olduğunu unutmayın.
 
 ### <a name="node-agent-sku"></a>Düğüm Aracısı SKU 'SU
 
 [Batch düğüm Aracısı](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md) , havuzdaki her düğüm üzerinde çalışan ve düğüm ile Batch hizmeti arasında komut ve denetim arabirimini sağlayan bir programdır. Farklı işletim sistemleri için SKU olarak bilinen düğüm aracısının farklı uygulamaları vardır. Temelde, bir sanal makine yapılandırması oluşturduğunuzda, önce sanal makine görüntüsü başvurusunu belirttikten sonra görüntüye yüklenecek düğüm aracısını belirlersiniz. Genellikle, her düğüm Aracısı SKU 'SU birden çok sanal makine görüntüsü ile uyumludur. Düğüm Aracısı SKU 'Larının birkaç örneği aşağıda verilmiştir:
 
-* Batch. Node. Ubuntu 18,04
-* Batch. Node. CentOS 7
-* Batch. Node. Windows AMD64
+- Batch. Node. Ubuntu 18,04
+- Batch. Node. CentOS 7
+- Batch. Node. Windows AMD64
 
-> [!IMPORTANT]
-> Market 'te mevcut olan tüm sanal makine görüntüleri, şu anda kullanılabilir olan Batch düğüm aracılarıyla uyumlu değildir. Kullanılabilir düğüm Aracısı SKU 'Larını ve bunların uyumlu olduğu sanal makine görüntülerini listelemek için Batch SDK 'Larını kullanın. Daha fazla bilgi ve çalışma zamanında geçerli görüntülerin listesini alma örnekleri için bu makalenin ilerleyen bölümlerindeki [sanal makine görüntülerinin listesine](#list-of-virtual-machine-images) bakın.
->
->
+### <a name="list-of-virtual-machine-images"></a>Sanal makine görüntülerinin listesi
+
+Tüm Market görüntüleri, mevcut olan toplu Iş düğüm aracılarıyla uyumlu değildir. Batch hizmeti ve bunlara karşılık gelen düğüm Aracısı SKU 'Ları için desteklenen tüm Market sanal makine görüntülerini listelemek için [list_supported_images](/python/api/azure-batch/azure.batch.operations.AccountOperations#list-supported-images-account-list-supported-images-options-none--custom-headers-none--raw-false----operation-config-) (Python), [Listsupportedimages](/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages) (Batch .net) veya başka bir dil SDK 'sında karşılık gelen API 'yi kullanın.
 
 ## <a name="create-a-linux-pool-batch-python"></a>Linux havuzu oluşturma: Batch Python
-Aşağıdaki kod parçacığı, bir Ubuntu sunucu işlem düğümleri havuzu oluşturmak için [Python için Microsoft Azure Batch Istemci kitaplığının][py_batch_package] nasıl kullanılacağına ilişkin bir örnek gösterir. Batch Python modülü için başvuru belgeleri belgeleri okurken [azure.batch paketinde][py_batch_docs] bulunabilir.
 
-Bu kod parçacığı açıkça bir [ImageReference][py_imagereference] oluşturur ve her bir özelliğini (yayımcı, TEKLIF, SKU, sürüm) belirtir. Ancak üretim kodunda, çalışma zamanında kullanılabilir görüntü ve düğüm Aracısı SKU kombinasyonlarını belirlemek ve seçmek için [list_supported_images][py_list_supported_images] yöntemini kullanmanızı öneririz.
+Aşağıdaki kod parçacığı, bir Ubuntu sunucu işlem düğümleri havuzu oluşturmak için [Python için Microsoft Azure Batch Istemci kitaplığının](https://pypi.python.org/pypi/azure-batch) nasıl kullanılacağına ilişkin bir örnek gösterir. Batch Python modülü hakkında daha fazla ayrıntı için [başvuru belgelerini](/python/api/overview/azure/batch)görüntüleyin.
+
+Bu kod parçacığı açıkça bir [ImageReference](/python/api/azure-mgmt-batch/azure.mgmt.batch.models.imagereference) oluşturur ve her bir özelliğini (yayımcı, TEKLIF, SKU, sürüm) belirtir. Ancak üretim kodunda, çalışma zamanında kullanılabilir görüntü ve düğüm Aracısı SKU birleşimleri arasından seçim yapmak için [list_supported_images](/python/api/azure-batch/azure.batch.operations.AccountOperations#list-supported-images-account-list-supported-images-options-none--custom-headers-none--raw-false----operation-config-) yöntemini kullanmanızı öneririz.
 
 ```python
 # Import the required modules from the
@@ -96,7 +88,7 @@ start_task.command_line = "printenv AZ_BATCH_NODE_STARTUP_DIR"
 new_pool.start_task = start_task
 
 # Create an ImageReference which specifies the Marketplace
-# virtual machine image to install on the nodes.
+# virtual machine image to install on the nodes
 ir = batchmodels.ImageReference(
     publisher="Canonical",
     offer="UbuntuServer",
@@ -104,8 +96,8 @@ ir = batchmodels.ImageReference(
     version="latest")
 
 # Create the VirtualMachineConfiguration, specifying
-# the VM image reference and the Batch node agent to
-# be installed on the node.
+# the VM image reference and the Batch node agent
+# to install on the node
 vmc = batchmodels.VirtualMachineConfiguration(
     image_reference=ir,
     node_agent_sku_id="batch.node.ubuntu 18.04")
@@ -117,7 +109,7 @@ new_pool.virtual_machine_configuration = vmc
 client.pool.add(new_pool)
 ```
 
-Daha önce bahsedildiği gibi, şu anda desteklenen düğüm Aracısı/Market görüntü kombinasyonlarından [dinamik olarak seçim][py_imagereference] yapmak için [list_supported_images][py_list_supported_images] yöntemini kullanmanız önerilir. Aşağıdaki Python kod parçacığı, bu yöntemin nasıl kullanılacağını göstermektedir.
+Daha önce belirtildiği gibi, şu anda desteklenen düğüm Aracısı/Market görüntü kombinasyonlarından dinamik olarak seçim yapmak için [list_supported_images](/python/api/azure-batch/azure.batch.operations.AccountOperations#list-supported-images-account-list-supported-images-options-none--custom-headers-none--raw-false----operation-config-) yöntemini kullanmanızı öneririz (bir [ImageReference](/python/api/azure-mgmt-batch/azure.mgmt.batch.models.imagereference) oluşturmak yerine). Aşağıdaki Python kod parçacığı, bu yöntemin nasıl kullanılacağını göstermektedir.
 
 ```python
 # Get the list of supported images from the Batch service
@@ -136,16 +128,17 @@ if image is None:
   raise RuntimeError('invalid image reference for desired configuration')
 
 # Create the VirtualMachineConfiguration, specifying the VM image
-# reference and the Batch node agent to be installed on the node.
+# reference and the Batch node agent to be installed on the node
 vmc = batchmodels.VirtualMachineConfiguration(
     image_reference=image.image_reference,
     node_agent_sku_id=image.node_agent_sku_id)
 ```
 
 ## <a name="create-a-linux-pool-batch-net"></a>Linux havuzu oluşturma: Batch .NET
-Aşağıdaki kod parçacığı, bir Ubuntu sunucu işlem düğümleri havuzu oluşturmak için [Batch .net][nuget_batch_net] istemci kitaplığının nasıl kullanılacağına ilişkin bir örnek gösterir. [Batch .net başvuru belgelerini][api_net] docs.Microsoft.com üzerinde bulabilirsiniz.
 
-Aşağıdaki kod parçacığı, [Pooloperations işlemlerini][net_pool_ops]kullanır. [Listsupportedimages][net_list_supported_images] yöntemi şu anda desteklenen Market görüntüsü ve düğüm Aracısı SKU birleşimleri listesinden seçilecek şekilde. Desteklenen Kombinezonların listesi zaman zaman değiştirebileceğinden bu teknik tercih edilir. En yaygın olarak desteklenen birleşimler eklenmiştir.
+Aşağıdaki kod parçacığı, bir Ubuntu sunucu işlem düğümleri havuzu oluşturmak için [Batch .net](https://www.nuget.org/packages/Microsoft.Azure.Batch/) istemci kitaplığının nasıl kullanılacağına ilişkin bir örnek gösterir. Batch .NET hakkında daha fazla ayrıntı için [başvuru belgelerini](/dotnet/api/microsoft.azure.batch)görüntüleyin.
+
+Aşağıdaki kod parçacığı, şu anda desteklenen Market görüntüsü ve düğüm Aracısı SKU birleşimleri listesinden seçmek için [Pooloperations. ListSupportedImages](/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages) yöntemini kullanır. Desteklenen Kombinezonların listesi zaman zaman değiştirebileceğinden bu teknik önerilir. En yaygın olarak desteklenen birleşimler eklenmiştir.
 
 ```csharp
 // Pool settings
@@ -189,7 +182,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 await pool.CommitAsync();
 ```
 
-Önceki kod parçacığı [Pooloperations][net_pool_ops]'ı kullanıyor olsa da. [Listsupportedimages][net_list_supported_images] Yöntemi desteklenen görüntü ve düğüm Aracısı SKU kombinasyonlarını (önerilir) dinamik olarak listelemek ve seçmek için de bir [ImageReference][net_imagereference] 'ı açıkça yapılandırabilirsiniz:
+Önceki kod parçacığında, desteklenen görüntü ve düğüm Aracısı SKU kombinasyonlarını (önerilir) dinamik olarak listelemek ve seçmek için [Pooloperations. istSupportedImages](/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages) yöntemini kullanıyor olsa da, bir [ImageReference](/dotnet/api/microsoft.azure.batch.imagereference) 'ı açıkça de yapılandırabilirsiniz:
 
 ```csharp
 ImageReference imageReference = new ImageReference(
@@ -199,10 +192,8 @@ ImageReference imageReference = new ImageReference(
     version: "latest");
 ```
 
-## <a name="list-of-virtual-machine-images"></a>Sanal makine görüntülerinin listesi
-Batch hizmeti ve bunlara karşılık gelen düğüm aracıları için desteklenen tüm Market sanal makine görüntülerinin listesini almak için lütfen [list_supported_images][py_list_supported_images] (Python), [Listsupportedimages][net_list_supported_images] (Batch .net) veya seçtiğiniz ilgili dil SDK 'sında karşılık gelen API 'den yararlanın.
-
 ## <a name="connect-to-linux-nodes-using-ssh"></a>SSH kullanarak Linux düğümlerine bağlanma
+
 Geliştirme sırasında veya sorun giderirken, havuzunuzdaki düğümlerde oturum açmayı gerekli bulabilirsiniz. Windows işlem düğümlerinden farklı olarak, Linux düğümlerine bağlanmak için Uzak Masaüstü Protokolü (RDP) kullanamazsınız. Bunun yerine, Batch hizmeti uzak bağlantı için her düğümde SSH erişimi sunar.
 
 Aşağıdaki Python kod parçacığı, bir havuzdaki her düğümde uzak bağlantı için gerekli olan bir kullanıcı oluşturur. Daha sonra her düğüm için Secure Shell (SSH) bağlantı bilgilerini yazdırır.
@@ -264,7 +255,7 @@ for node in nodes:
                                          login.remote_login_port))
 ```
 
-Aşağıda dört Linux düğümü içeren bir havuzun önceki kodu için örnek çıktı verilmiştir:
+Bu kod, aşağıdaki örneğe benzer bir çıktı olacaktır. Bu durumda, havuz dört Linux düğümü içerir.
 
 ```
 Password:
@@ -274,40 +265,15 @@ tvm-1219235766_3-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50002
 tvm-1219235766_4-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50001
 ```
 
-Bir parola yerine, bir düğümde Kullanıcı oluştururken bir SSH ortak anahtarı belirtebilirsiniz. Python SDK 'sında [Computenodeuser][py_computenodeuser]üzerinde **ssh_public_key** parametresini kullanın. .NET ' te [Computenodeuser][net_computenodeuser]öğesini kullanın. [Sshpublickey][net_ssh_key] özelliği.
+Bir parola yerine, bir düğümde Kullanıcı oluştururken bir SSH ortak anahtarı belirtebilirsiniz. Python SDK 'sında [Computenodeuser](/python/api/azure-batch/azure.batch.models.computenodeuser)üzerinde **ssh_public_key** parametresini kullanın. .NET ' te [Computenodeuser. SshPublicKey](/dotnet/api/microsoft.azure.batch.computenodeuser.sshpublickey#Microsoft_Azure_Batch_ComputeNodeUser_SshPublicKey) özelliğini kullanın.
 
 ## <a name="pricing"></a>Fiyatlandırma
-Azure Batch Azure Cloud Services ve Azure sanal makineler teknolojisinden oluşturulmuştur. Batch hizmeti 'nin kendisi ücretsiz olarak sunulur, bu da yalnızca toplu Iş çözümlerinizin tükettiği işlem kaynakları (ve buna yönelik ilişkili maliyetler) için ücretlendirilirsiniz. **Cloud Services yapılandırma** ' yı seçtiğinizde, [Cloud Services fiyatlandırma][cloud_services_pricing] yapısına göre ücretlendirilirsiniz. **Sanal makine yapılandırması** ' nı seçtiğinizde, [sanal makinelerin fiyatlandırma][vm_pricing] yapısına göre ücretlendirilirsiniz.
+
+Azure Batch Azure Cloud Services ve Azure sanal makineler teknolojisinden oluşturulmuştur. Batch hizmeti 'nin kendisi ücretsiz olarak sunulur, bu da yalnızca toplu Iş çözümlerinizin tükettiği işlem kaynakları (ve buna yönelik ilişkili maliyetler) için ücretlendirilirsiniz. **Sanal makine yapılandırması** ' nı seçtiğinizde, [sanal makinelerin fiyatlandırma](https://azure.microsoft.com/pricing/details/virtual-machines/) yapısına göre ücretlendirilirsiniz.
 
 [Uygulama paketlerini](batch-application-packages.md)kullanarak toplu iş düğümlerinize uygulamalar dağıtırsanız, uygulama paketlerinizin kullanacağı Azure depolama kaynakları için de ücretlendirilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-GitHub 'daki [Azure-Batch-Samples][github_samples] deposundaki [Python kodu örnekleri][github_samples_py] , havuz, iş ve görev oluşturma gibi yaygın toplu işlemlerin nasıl gerçekleştirileceğini gösteren betikler içerir. Python örneklerine eşlik eden [Benioku dosyası][github_py_readme] , gerekli paketlerin nasıl yükleneceğine ilişkin ayrıntılara sahiptir.
-
-[api_net]: /dotnet/api/microsoft.azure.batch
-[api_net_mgmt]: /dotnet/api/overview/azure/batch
-[api_rest]: /rest/api/batchservice/
-[cloud_services_pricing]: https://azure.microsoft.com/pricing/details/cloud-services/
-[github_py_readme]: https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/README.md
-[github_samples]: https://github.com/Azure/azure-batch-samples
-[github_samples_py]: https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch
-[github_samples_pyclient]: https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/article_samples/python_tutorial_client.py
-[portal]: https://portal.azure.com
-[net_cloudpool]: /dotnet/api/microsoft.azure.batch.cloudpool
-[net_computenodeuser]: /dotnet/api/microsoft.azure.batch.computenodeuser
-[net_imagereference]: /dotnet/api/microsoft.azure.batch.imagereference
-[net_list_supported_images]: /dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages
-[net_pool_ops]: /dotnet/api/microsoft.azure.batch.pooloperations
-[net_ssh_key]: /dotnet/api/microsoft.azure.batch.computenodeuser.sshpublickey#Microsoft_Azure_Batch_ComputeNodeUser_SshPublicKey
-[nuget_batch_net]: https://www.nuget.org/packages/Microsoft.Azure.Batch/
-[rest_add_pool]: /rest/api/batchservice/pool/add
-[py_account_ops]: http://azure-sdk-for-python.readthedocs.org/en/dev/ref/azure.batch.operations.html#azure.batch.operations.AccountOperations
-[py_azure_sdk]: https://pypi.python.org/pypi/azure
-[py_batch_docs]: https://azure.github.io/azure-sdk-for-python/ref/Batch.html
-[py_batch_package]: https://pypi.python.org/pypi/azure-batch
-[py_computenodeuser]: /python/api/azure-batch/azure.batch.models.computenodeuser
-[py_imagereference]: /python/api/azure-mgmt-batch/azure.mgmt.batch.models.imagereference
-[py_list_supported_images]: /python/api/azure-batch/azure.batch.operations.AccountOperations
-[vm_marketplace]: https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images&page=1
-[vm_pricing]: https://azure.microsoft.com/pricing/details/virtual-machines/
+- Havuz, iş ve görev oluşturma gibi yaygın toplu işlemleri nasıl gerçekleştirebileceğiniz hakkında bilgi için [Azure-Batch-Samples GitHub deposundaki](https://github.com/Azure/azure-batch-samples) [Python kod örneklerini](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch) inceleyin. Python örneklerine eşlik eden [Benioku dosyası](https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/README.md) , gerekli paketlerin nasıl yükleneceğine ilişkin ayrıntılara sahiptir.
+- Batch ile [düşük öncelikli VM 'ler](batch-low-pri-vms.md) kullanma hakkında bilgi edinin.

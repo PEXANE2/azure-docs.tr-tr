@@ -4,19 +4,19 @@ description: Azure Işlevleri, çalışma zamanının birden çok sürümünü d
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 12/09/2019
-ms.openlocfilehash: 6641461e63d7c9452351f3b0b99a274d2714a92e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c67708b5c23667a7b0a1603b756d564b35fa0c3f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88208116"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533744"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Işlevleri çalışma zamanı sürümlerine genel bakış
 
 Azure Işlevleri Şu anda çalışma zamanı ana bilgisayarının üç sürümünü desteklemektedir: 1. x, 2. x ve 3. x. Her üç sürüm de üretim senaryolarında desteklenir.  
 
 > [!IMPORTANT]
-> Sürüm 1. x bakım modunda ve yalnızca Azure portal veya Windows bilgisayarlarda yerel olarak geliştirme desteklenir. Geliştirmeler yalnızca sonraki sürümlerde sağlanır. 
+> Sürüm 1. x bakım modunda ve yalnızca Azure portal, Azure Stack hub portalında veya Windows bilgisayarlarda yerel olarak geliştirme desteklenir. Geliştirmeler yalnızca sonraki sürümlerde sağlanır. 
 
 Bu makalede çeşitli sürümler, her sürümü nasıl oluşturabileceğiniz ve sürümlerin nasıl değiştirileceği hakkında bazı farklılıklar açıklanır.
 
@@ -28,7 +28,7 @@ Aşağıdaki tablo, her çalışma zamanı sürümünde hangi programlama diller
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-Daha fazla bilgi için bkz. [desteklenen diller](supported-languages.md).
+Daha fazla bilgi için bkz. [Desteklenen diller](supported-languages.md).
 
 ## <a name="run-on-a-specific-version"></a><a name="creating-1x-apps"></a>Belirli bir sürümde Çalıştır
 

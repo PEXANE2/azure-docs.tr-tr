@@ -1,17 +1,17 @@
 ---
 title: Veri çoğaltma-MariaDB için Azure veritabanı
 description: Bir dış sunucudan MariaDB hizmeti için Azure veritabanı ile eşitleme yapmak üzere verileri çoğaltma hakkında bilgi edinin.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: db85892115f345039353cd90eeedbe809eb6ae67
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 331e064bcf11af31a778cb8dd06c463712421b7c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425570"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533438"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'na veri çoğaltma
 
@@ -37,7 +37,7 @@ Kaynak sunucudaki [*MySQL sistem veritabanı*](https://mariadb.com/kb/en/library
 - Kaynak sunucuda SSL etkinse, etki alanı için sağlanan SSL CA sertifikasının saklı yordama eklendiğinden emin olun `mariadb.az_replication_change_master` . Aşağıdaki [örneklere](howto-data-in-replication.md#link-the-source-and-replica-servers-to-start-data-in-replication) ve `master_ssl_ca` parametresine bakın.
 - Kaynak sunucunun IP adresinin, MariaDB çoğaltma sunucusunun güvenlik duvarı kuralları için Azure veritabanı 'na eklendiğinden emin olun. [Azure portalını](howto-manage-firewall-portal.md) veya [Azure CLI](howto-manage-firewall-cli.md)’yı kullanarak güvenlik duvarı kurallarını güncelleştirin.
 - Kaynak sunucuyu barındıran makinenin 3306 numaralı bağlantı noktasında hem gelen hem de giden trafiğe izin verdiğinden emin olun.
-- Kaynak sunucunun **Genel BIR IP adresi**olduğundan, DNS 'nin genel olarak erişilebilir olduğundan veya tam etki alanı adı (FQDN) olduğundan emin olun.
+- Kaynak sunucunun **Genel BIR IP adresi** olduğundan, DNS 'nin genel olarak erişilebilir olduğundan veya tam etki alanı adı (FQDN) olduğundan emin olun.
 
 ### <a name="other"></a>Diğer
 - Veri içi çoğaltma yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş fiyatlandırma katmanlarında desteklenir.

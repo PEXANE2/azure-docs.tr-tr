@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 49626d418f90f8b4bc7288a6d2f7d195cd906f7a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 950c159ed4d2c57796f33b9505e6931dbec983ba
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961366"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532384"
 ---
 # <a name="display-controls"></a>Görüntüleme denetimleri
 
@@ -27,8 +27,6 @@ ms.locfileid: "91961366"
 Aşağıdaki görüntüde, birincil ve ikincil e-posta adresini doğrulayan iki görüntü denetimine sahip kendiliğinden onaylanan bir kaydolma sayfası gösterilmektedir.
 
 ![Örnek işlenmiş görüntüleme denetimi](media/display-controls/display-control-email.png)
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -57,7 +55,7 @@ Aşağıdaki görüntüde, birincil ve ikincil e-posta adresini doğrulayan iki 
 | ------- | ----------- | ----------- |
 | Inputclaims | 0:1 | **Inputclaim** , kullanıcıdan toplanacak taleplerin değerini önceden doldurmak için kullanılır. Daha fazla bilgi için bkz. [ınputclaim](technicalprofiles.md#inputclaims) öğesi. |
 | DisplayClaim | 0:1 | **DisplayClaim** , kullanıcıdan toplanacak talepleri temsil etmek için kullanılır. Daha fazla bilgi için bkz. [DisplayClaim](technicalprofiles.md#displayclaim) öğesi.|
-| Outputclaim | 0:1 | **Outputclaim** , bu **DisplayControl**için geçici olarak kaydedilecek talepleri temsil etmek için kullanılır. Daha fazla bilgi için bkz. [Outputclaim](technicalprofiles.md#outputclaims) öğesi.|
+| Outputclaim | 0:1 | **Outputclaim** , bu **DisplayControl** için geçici olarak kaydedilecek talepleri temsil etmek için kullanılır. Daha fazla bilgi için bkz. [Outputclaim](technicalprofiles.md#outputclaims) öğesi.|
 | Eylemler | 0:1 | **Eylemler** , ön uçta oluşan Kullanıcı eylemleri için çağrılacak doğrulama teknik profillerini listelemek için kullanılır. |
 
 ### <a name="input-claims"></a>Giriş talepleri
@@ -78,9 +76,9 @@ Aşağıdaki örnek, e-posta adresini önceden var olan adresle doğrulanacak ş
 
 Her bir görüntüleme denetimi türü, gerçekleştirilecek farklı bir görüntüleme talepleri, [Çıkış talepleri](#output-claims)ve [eylem](#display-control-actions) kümesi gerektirir.
 
-[Kendi kendini onaylanan bir teknik profilde](self-asserted-technical-profile.md#display-claims)tanımlanan **görüntüleme taleplerine** benzer şekilde, görüntüleme talepleri Kullanıcı tarafından görüntüleme denetimindeki toplanacak talepleri temsil eder. Başvurulan **ClaimType** öğesinin, veya gibi Azure AD B2C tarafından desteklenen bir kullanıcı giriş türü Için **userınputtype** öğesini belirtmesi gerekir `TextBox` `DropdownSingleSelect` . Bir **eylem**için bir görüntüleme talep değeri gerekliyse, **Required** `true` kullanıcıyı o belirli görüntüleme talebi için bir değer sağlamaya zorlamak üzere gerekli özniteliği olarak ayarlayın.
+[Kendi kendini onaylanan bir teknik profilde](self-asserted-technical-profile.md#display-claims)tanımlanan **görüntüleme taleplerine** benzer şekilde, görüntüleme talepleri Kullanıcı tarafından görüntüleme denetimindeki toplanacak talepleri temsil eder. Başvurulan **ClaimType** öğesinin, veya gibi Azure AD B2C tarafından desteklenen bir kullanıcı giriş türü Için **userınputtype** öğesini belirtmesi gerekir `TextBox` `DropdownSingleSelect` . Bir **eylem** için bir görüntüleme talep değeri gerekliyse, **Required** `true` kullanıcıyı o belirli görüntüleme talebi için bir değer sağlamaya zorlamak üzere gerekli özniteliği olarak ayarlayın.
 
-Belirli görüntüleme talepleri belirli görüntüleme denetimi türleri için gereklidir. Örneğin, doğrulamalar **Icationcontrol**türündeki görüntüleme denetimi Için **doğrulama kodu** gereklidir. Bu gerekli talep için hangi DisplayClaim 'nin kullanılacağını belirtmek için **Controlclaimtype** özniteliğini kullanın. Örnek:
+Belirli görüntüleme talepleri belirli görüntüleme denetimi türleri için gereklidir. Örneğin, doğrulamalar **Icationcontrol** türündeki görüntüleme denetimi Için **doğrulama kodu** gereklidir. Bu gerekli talep için hangi DisplayClaim 'nin kullanılacağını belirtmek için **Controlclaimtype** özniteliğini kullanın. Örnek:
 
 ```xml
 <DisplayClaim ClaimTypeReferenceId="otpCode" ControlClaimType="VerificationCode" Required="true" />
@@ -96,7 +94,7 @@ Sonraki düzenleme adımındaki çıkış taleplerini kabarcığa çıkarmak iç
 
 Bir görüntü denetiminin **eylemleri** , bir kullanıcı istemci tarafında (tarayıcı) belirli bir işlem gerçekleştirdiğinde Azure AD B2C arka uçta gerçekleşen yordamlardır. Örneğin, Kullanıcı sayfada bir düğme seçtiğinde gerçekleştirilecek doğrulamalar.
 
-Bir eylem, **doğrulama teknik profillerinin**bir listesini tanımlar. Bunlar, görüntüleme denetiminin görüntüleme taleplerinin bazılarını veya tümünü doğrulamak için kullanılır. Doğrulama teknik profili, Kullanıcı girişini doğrular ve kullanıcıya bir hata döndürebilir. Kendi kendini onaylanan bir teknik profilde [doğrulama teknik profillerinde](validation-technical-profile.md) kullanılanlara benzer şekilde, görüntü denetimi eyleminde **devam**ediyor, **devam onSuccess**ve **önkoşulları** kullanabilirsiniz.
+Bir eylem, **doğrulama teknik profillerinin** bir listesini tanımlar. Bunlar, görüntüleme denetiminin görüntüleme taleplerinin bazılarını veya tümünü doğrulamak için kullanılır. Doğrulama teknik profili, Kullanıcı girişini doğrular ve kullanıcıya bir hata döndürebilir. Kendi kendini onaylanan bir teknik profilde [doğrulama teknik profillerinde](validation-technical-profile.md) kullanılanlara benzer şekilde, görüntü denetimi eyleminde **devam** ediyor, **devam onSuccess** ve **önkoşulları** kullanabilirsiniz.
 
 #### <a name="actions"></a>Eylemler
 

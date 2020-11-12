@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e42c889277f937a33e72eaf57819385166d6a409
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd90be6d93dc5ca399ac87daba0ca44fa7e88ff8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85202323"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532503"
 ---
 # <a name="verification-display-control"></a>Doğrulama görüntüleme denetimi
 
@@ -30,11 +30,9 @@ Doğrulama görüntüleme denetimi iki adımdan oluşur (Eylemler):
 
     ![Kod gönder eyleminin örnek sayfası](media/display-control-verification/display-control-verification-email-action-01.png)
 
-1. Kod gönderildikten sonra kullanıcı iletiyi okur, doğrulama kodunu görüntüleme denetimi tarafından sunulan denetime girer ve **kodu doğrula**' yı seçer. **Kodu doğrula**' yı seçerek **verifycode eylemi** yürütülür ve adresle ilişkili kodu doğrular. Kullanıcı **Yeni kod gönder**' i seçerse, ilk eylem yeniden yürütülür.
+1. Kod gönderildikten sonra kullanıcı iletiyi okur, doğrulama kodunu görüntüleme denetimi tarafından sunulan denetime girer ve **kodu doğrula** ' yı seçer. **Kodu doğrula** ' yı seçerek **verifycode eylemi** yürütülür ve adresle ilişkili kodu doğrular. Kullanıcı **Yeni kod gönder** ' i seçerse, ilk eylem yeniden yürütülür.
 
     ![Kodu doğrula eyleminin örnek sayfası](media/display-control-verification/display-control-verification-email-action-02.png)
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="verificationcontrol-required-elements"></a>Doğrulama gerekli öğeleri
 
@@ -49,7 +47,7 @@ Doğrulama görüntüleme denetimi iki adımdan oluşur (Eylemler):
   - **Sendcode** -kullanıcıya bir kod gönderir. Bu eylem genellikle bir kod oluşturmak ve göndermek için iki doğrulama teknik profili içerir.
   - **Verifycode** -kodu doğrular. Bu eylem genellikle tek bir doğrulama teknik profili içerir.
 
-Aşağıdaki örnekte, sayfada bir **e-posta** metin kutusu görüntülenir. Kullanıcı e-posta adreslerini girdiğinde ve **sendcode**'u seçtiğinde, Azure AD B2C arka uçta **sendcode** eylemi tetiklenir.
+Aşağıdaki örnekte, sayfada bir **e-posta** metin kutusu görüntülenir. Kullanıcı e-posta adreslerini girdiğinde ve **sendcode** 'u seçtiğinde, Azure AD B2C arka uçta **sendcode** eylemi tetiklenir.
 
 Ardından Kullanıcı, **doğrulama** kodunu girer ve geri uçtaki **verifycode** eylemini tetiklemek için **verifycode** 'u seçer. Tüm doğrulamalar başarılı olursa, **doğrulamaları ıationcontrol** tamamlanmış olarak kabul edilir ve Kullanıcı bir sonraki adıma devam edebilir.
 

@@ -4,12 +4,12 @@ description: Hata ayıklama ve üretim sırasında wen uygulaması performans an
 ms.topic: conceptual
 ms.date: 03/17/2017
 ms.custom: vs-azure
-ms.openlocfilehash: a3937719fd47ba988cf1e0a93f4c06fcc8112d3e
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: d2de29d897c84496fd44d74d88d58decbc64b7f8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932218"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532911"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Visual Studio 'da Azure Application Insights ile uygulamalarınızın hatalarını ayıklama
 Visual Studio’da (2015 ve sonraki sürümler) hem hata ayıklama hem de üretim sırasında [Azure Application Insights](./app-insights-overview.md)’tan alınan telemetri verilerini kullanarak, ASP.NET web uygulamanızdaki performansı çözümleyebilir ve sorunları tanılayabilirsiniz.
@@ -53,12 +53,12 @@ Arama penceresinde özel durum raporları gösterilir. (ASP.NET uygulamasının 
 
 Yığın izlemesi almak için bir özel duruma tıklayın. Visual Studio’da uygulamanın kodu açıksa yığın izlemesinden tıklayarak ilgili kod satırına gidebilirsiniz.
 
-![Özel durum yığın izlemesi](./media/visual-studio/17.png)
+![Ekran görüntüsü bir yığın izlemesinde hakkında nesnesini gösterir.](./media/visual-studio/17.png)
 
 ## <a name="view-request-and-exception-summaries-in-the-code"></a>Koddaki istek ve özel durum özetlerini görüntüleme
 Her işleyici yönteminin üzerindeki kod lens satırında, son 24 h 'de Application Insights tarafından günlüğe kaydedilen isteklerin ve özel durumların sayısını görürsünüz.
 
-![Özel durum yığın izlemesi](./media/visual-studio/21.png)
+![Ekran görüntüsünde bir bağlam iletişim kutusunda özel durum gösterilir.](./media/visual-studio/21.png)
 
 > [!NOTE] 
 > Kod Odağı, Application Insights verilerini yalnızca [uygulamanızı Application Insights portalına telemetri gönderecek şekilde yapılandırdıysanız](./asp-net.md) gösterir.
@@ -69,7 +69,7 @@ Her işleyici yönteminin üzerindeki kod lens satırında, son 24 h 'de Applica
 ## <a name="trends"></a>Eğilimler
 Eğilimler, uygulamanızın zaman içinde nasıl davrandığını görselleştirmeye yönelik bir araçtır. 
 
-Application Insights araç çubuğu düğmesinden veya Application Insights Arama penceresinden **Telemetri Eğilimlerini Keşfet**’i seçin. Başlamak için beş genel sorgudan birini seçin. Telemetri türleri, zaman aralıkları ve diğer özelliklere göre farklı veri kümelerini çözümleyebilirsiniz. 
+Application Insights araç çubuğu düğmesinden veya Application Insights Arama penceresinden **Telemetri Eğilimlerini Keşfet** ’i seçin. Başlamak için beş genel sorgudan birini seçin. Telemetri türleri, zaman aralıkları ve diğer özelliklere göre farklı veri kümelerini çözümleyebilirsiniz. 
 
 Verilerinizdeki anormallikleri bulmak için "Görünüm Türü" açılır listesi altındaki anormallik seçeneklerinden birini belirleyin. Pencerenin altındaki filtreleme seçenekleri, telemetrinizdeki belirli alt kümelere odaklanmayı kolaylaştırır.
 
