@@ -3,17 +3,17 @@ title: MySQL için Azure Veritabanı belgeleri
 summary: MySQL için Azure Veritabanı, MySQL topluluk sürümü tarafından güçlendirilen ilişkisel bir veritabanı hizmetidir. Azure’da MySQL veritabanı barındırmak için Tek Sunucu’yu veya Esnek Sunucu’yu (Önizleme) kullanabilirsiniz. Bu, kritik iş yüklerini teslim edebilen, tahmin edilebilir performans ve dinamik ölçeklenebilirlik sunan, tam olarak yönetilen bir hizmet olarak veritabanıdır.
 metadata:
   description: MySQL için Azure Veritabanı, MySQL Community Edition tarafından desteklenen, Microsoft bulutunda geliştiriciler için oluşturulmuş bir ilişkisel veritabanı hizmetidir. MySQL veritabanınızı Azure’a dağıtmak için Tek Sunucu’yu veya Esnek Sunucu’yu (Önizleme) seçebilirsiniz.
-  author: ajlam
-  ms.author: andrela
+  author: savjani
+  ms.author: pariks
   ms.date: 09/03/2019
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 9ac045aac0587f7080ab7df277522674ca603040
-  ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+  ms.openlocfilehash: 82c736b3256a099aa0dbd2edca14f402a3b935be
+  ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 10/26/2020
-  ms.locfileid: "92546305"
+  ms.lasthandoff: 11/12/2020
+  ms.locfileid: "94543043"
 landingContent:
 - title: MySQL için Azure Veritabanı hakkında
   linkLists:

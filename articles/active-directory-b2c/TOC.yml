@@ -7,6 +7,8 @@
       href: overview.md
     - name: Tekniğe ve özelliklere genel bakış
       href: technical-overview.md
+    - name: Docs’taki yenilikler?
+      href: whats-new-docs.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:

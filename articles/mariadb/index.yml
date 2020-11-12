@@ -3,17 +3,17 @@ title: MariaDB için Azure Veritabanı belgeleri
 summary: MariaDB için Azure Veritabanı, açık kaynak MySQL MariaDB Server altyapısını temel alan ilişkisel bir veritabanı hizmetidir.  Bu, kritik iş yüklerini teslim edebilen, tahmin edilebilir performans ve dinamik ölçeklenebilirlik sunan, tam olarak yönetilen bir hizmet olarak veritabanıdır. MariaDB için Azure Veritabanı ile açık kaynak araçları ve seçtiğiniz platformu kullanarak uygulamalar geliştirin. Hızlı başlangıç kılavuzlarımız, öğreticilerimiz ve örneklerimizle, MariaDB için Azure Veritabanı’nı kullanmayı öğrenin.
 metadata:
   description: MariaDB için Azure Veritabanı, açık kaynak MariaDB veritabanı altyapısını temel alan, Microsoft bulutunda geliştiriciler için oluşturulmuş ilişkisel bir veritabanı hizmetidir.
-  author: ajlam
-  ms.author: andrela
+  author: savjani
+  ms.author: pariks
   ms.date: 09/05/2019
   ms.service: mariadb
   ms.topic: landing-page
-  ms.openlocfilehash: 3e49a860cca6cb59543f450cda4bda8c6b0c0a38
-  ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+  ms.openlocfilehash: 3c2ea25c4d928071da6f6d3047b58996289aaa13
+  ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 10/22/2020
-  ms.locfileid: "92428329"
+  ms.lasthandoff: 11/12/2020
+  ms.locfileid: "94539813"
 landingContent:
 - title: MariaDB için Azure Veritabanı hakkında
   linkLists:

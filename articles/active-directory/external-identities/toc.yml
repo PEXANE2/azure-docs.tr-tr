@@ -10,6 +10,8 @@
           href: what-is-b2b.md
         - name: Azure AD B2C nedir?
           href: ../../active-directory-b2c/overview.md
+        - name: Docs’taki yenilikler?
+          href: whats-new-docs.md
     - name: Hızlı Başlangıçlar
       items:
         - name: Portala konuk kullanıcılar ekleme

@@ -2128,7 +2128,7 @@
           href: myday-provision-tutorial.md
     - name: N - Z
       items:
-        - name: Netskope Yönetici Konsolu
+        - name: Netskope Kimlik Doğrulaması
           href: netskope-administrator-console-provisioning-tutorial.md
         - name: Kuruluşa göre New Relic
           href: new-relic-by-organization-provisioning-tutorial.md
