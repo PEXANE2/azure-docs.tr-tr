@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: azure-communication-services
 author: mikben
 manager: mikben
@@ -10,14 +10,14 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 3c05596e16edc5243b8a97002a5cc5990c69ec43
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2b7d00335253772683b867acf0765b77fc493e79
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90948079"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523671"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Başlamadan önce şunları yaptığınızdan emin olun:
 
 - Etkin abonelikle bir Azure hesabı oluşturun. Ayrıntılar için bkz. [ücretsiz hesap oluşturma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
@@ -85,7 +85,7 @@ chat_client = ChatClient(endpoint, CommunicationUserCredential(<Access Token>))
 `create_chat_thread`Bir sohbet iş parçacığı oluşturmak için yöntemini kullanın.
 
 - `topic`İş parçacığı konusu vermek için kullanın; Konu, işlevi kullanılarak sohbet iş parçacığı oluşturulduktan sonra güncelleştirilemeyebilir `update_thread` .
-- `members` `ChatThreadMember` Sohbet iş parçacığına eklenecek olan öğesini listelemek için kullanın, `ChatThreadMember` `CommunicationUser` `user` [bir kullanıcı oluşturarak](../../access-tokens.md#create-a-user) oluşturduğunuz tarihten sonra aldığınız gibi, türü olarak alır
+- `members` `ChatThreadMember` Sohbet iş parçacığına eklenecek olan öğesini listelemek için kullanın, `ChatThreadMember` `CommunicationUser` `user` [bir kullanıcı oluşturarak](../../access-tokens.md#create-an-identity) oluşturduğunuz tarihten sonra aldığınız gibi, türü olarak alır
 
 Yanıt, `chat_thread_client` sohbet iş parçacığına üye ekleme, ileti gönderme, ileti silme vb. gibi yeni oluşturulan sohbet iş parçacığı üzerinde işlem gerçekleştirmek için kullanılır. `thread_id` Sohbet iş parçacığının BENZERSIZ kimliği olan bir özelliği içerir.
 
@@ -158,7 +158,7 @@ Sohbet iş parçacığı oluşturulduktan sonra, bundan sonra kullanıcı ekleye
 `add_members`ThreadID tarafından tanımlanan iş parçacığına iş parçacığı üyeleri eklemek için yöntemini kullanın.
 
 - `members`Sohbet iş parçacığına eklenecek üyeleri listelemek için kullanın;
-- `user`, gereken, `CommunicationUser` `CommunicationIdentityClient` [Kullanıcı oluşturma](../../access-tokens.md#create-a-user) sırasında tarafından oluşturduğunuz
+- `user`, gereken, `CommunicationUser` `CommunicationIdentityClient` [Kullanıcı oluşturma](../../access-tokens.md#create-an-identity) sırasında tarafından oluşturduğunuz
 - `display_name`, isteğe bağlı, iş parçacığı üyesi için görünen addır.
 - `share_history_time`, isteğe bağlı, sohbet geçmişinin üye ile paylaşıldıkları süredir. Sohbet iş parçacığının başlatılmasından bu yana geçmişi paylaşmak için, bu özelliği, iş parçacığı oluşturma zamanından daha küçük veya ona eşit bir tarih olarak ayarlayın. Üyenin eklendiği tarihten önce hiçbir geçmiş paylaşmak için, geçerli tarih olarak ayarlayın. Kısmi geçmişi paylaşmak için, bunu bir ara tarih olarak ayarlayın.
 

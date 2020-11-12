@@ -7,28 +7,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: include
-ms.date: 10/26/2020
+ms.date: 11/10/2020
 ms.author: pafarley
-ms.openlocfilehash: ec23ec58a020cc314f301e33b72b4787f4e32e14
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: cf7b82ec1da660ac68c6031434c0e0748ee67b3d
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925033"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523785"
 ---
 Python için yüz istemci kitaplığını kullanarak yüz tanıma ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Yüz tanıma hizmeti, görüntülerdeki insan yüzlerini algılayıp tanımayı sağlayan gelişmiş algoritmalara erişmenizi sağlar.
 
 Python için yüz istemci kitaplığını kullanarak şunları yapın:
 
-* Bir görüntüdeki yüzleri algılama
-* Benzer yüzleri bulma
-* Kişi grubu oluşturma ve eğitme
-* Yüz tanıma
-* Yüzeyleri doğrula
+* [Bir görüntüdeki yüzleri algılama](#detect-faces-in-an-image)
+* [Benzer yüzeyleri bulun](#find-similar-faces)
+* [Kişi grubu oluşturma ve eğitme](#create-and-train-a-person-group)
+* [Yüz tanıma](#identify-a-face)
+* [Yüzeyleri doğrula](#verify-faces)
 
 [Başvuru belgeleri](/python/api/azure-cognitiveservices-vision-face/?view=azure-python)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face)  |  [Paket (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/)  |  [Örnekler](/samples/browse/?products=azure&term=face)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Python 3.x](https://www.python.org/)
@@ -48,7 +48,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 ### <a name="create-a-new-python-application"></a>Yeni Python uygulaması oluşturma
 
-Örneğin, yeni bir Python betiği oluşturun &mdash; *QuickStart-File.py* . Ardından bunu tercih ettiğiniz düzenleyicide veya IDE 'de açın ve aşağıdaki kitaplıkları içeri aktarın.
+Örneğin, yeni bir Python betiği oluşturun &mdash; *QuickStart-File.py*. Ardından bunu tercih ettiğiniz düzenleyicide veya IDE 'de açın ve aşağıdaki kitaplıkları içeri aktarın.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_imports)]
 

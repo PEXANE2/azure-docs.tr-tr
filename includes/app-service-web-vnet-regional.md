@@ -2,14 +2,14 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 06/08/2020
+ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 14b9d9fe0eb9dfe2f25373c2d87d9b4af15dd0d9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 1a9f468b8e2f9fff20b9b26b8890d485e426b691
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371876"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523735"
 ---
 Bölgesel VNet tümleştirmesini kullanmak, uygulamanızın erişmesini sağlar:
 
@@ -18,7 +18,7 @@ Bölgesel VNet tümleştirmesini kullanmak, uygulamanızın erişmesini sağlar:
 * Hizmet uç noktası güvenliği sağlanmış hizmetler.
 * Azure ExpressRoute bağlantıları genelindeki kaynaklar.
 * Tümleştirmiş olduğunuz VNet 'teki kaynaklar.
-* Azure ExpressRoute bağlantıları içeren, eşlenen bağlantılar arasındaki kaynaklar.
+* Azure ExpressRoute bağlantılarını içeren, eşlenen bağlantılar arasındaki kaynaklar.
 * Özel uç noktalar 
 
 VNet ile VNet tümleştirmesini aynı bölgede kullandığınızda, aşağıdaki Azure ağ özelliklerini kullanabilirsiniz:
@@ -42,10 +42,10 @@ Varsayılan olarak, uygulamanız yalnızca sanal ağınıza RFC1918 trafiği yö
 Aynı bölgedeki sanal ağlar ile VNet tümleştirmesi kullanımıyla ilgili bazı sınırlamalar vardır:
 
 * Genel eşleme bağlantıları genelindeki kaynaklara ulaşıamazsınız.
-* Özelliği yalnızca PremiumV2 App Service planlarını destekleyen daha yeni Azure App Service ölçek birimlerinden kullanılabilir. Bu, *uygulamanızın bir PremiumV2 fiyatlandırma katmanında çalıştırılması gerektiğini* , yalnızca PremiumV2 seçeneğinin kullanılabildiği bir App Service planında çalışması gerektiğini (Yani bu VNET tümleştirme özelliğinin de kullanılabilir olduğu daha yeni bir ölçek birimi olduğunu gösterir) unutmayın.
+* Özelliği Premium v2 ve Premium v3 'deki tüm App Service ölçek birimlerinden kullanılabilir. Yalnızca daha yeni App Service ölçek birimlerinden standart olarak da kullanılabilir. Daha eski bir ölçek biriminiz varsa, özelliği yalnızca Premium v2 App Service planınızdan kullanabilirsiniz. Özelliği standart bir App Service planında kullanmak istiyorsanız, uygulamanızı Premium v3 App Service planına göre oluşturun. Bu planlar yalnızca en yeni ölçek birimlerimiz üzerinde desteklenir. Bundan sonra isterseniz ölçeği azaltabilirsiniz.  
 * Tümleştirme alt ağı yalnızca bir App Service planı tarafından kullanılabilir.
 * Özelliği, bir App Service Ortamı olan yalıtılmış plan uygulamaları tarafından kullanılamaz.
-* Bu özellik, bir Azure Resource Manager VNet 'te 32 adresi veya daha büyük bir/27 veya daha büyük olmayan kullanılmayan bir alt ağ gerektirir.
+* Özelliği, bir Azure Resource Manager VNet 'te bir/28 veya daha büyük olan kullanılmayan bir alt ağ gerektirir.
 * Uygulama ve VNet aynı bölgede olmalıdır.
 * Tümleşik bir uygulamayla VNet 'i silemezsiniz. VNet 'i silmeden önce tümleştirmeyi kaldırın.
 * Yalnızca uygulama ile aynı abonelikte VNET 'ler ile tümleştirilebilir.
@@ -53,7 +53,21 @@ Aynı bölgedeki sanal ağlar ile VNet tümleştirmesi kullanımıyla ilgili baz
 * Bölgesel VNet tümleştirmesi kullanan bir uygulama varken, bir uygulamanın veya planın aboneliğini değiştiremezsiniz.
 * Uygulamanız, yapılandırma değişiklikleri olmadan Azure DNS Özel Bölgeleri adresleri çözemez
 
-Her plan örneği için bir adres kullanılır. Uygulamanızı beş örneğe ölçeklendirirseniz, beş adres kullanılır. Alt ağ boyutu atamadan sonra değiştirilemediğinden, uygulamanızın ulaşabileceği ölçeğe uyum sağlayacak kadar büyük bir alt ağ kullanmanız gerekir. 64 adresi olan bir/26 önerilen boyutdir. 64 adresi olan bir/26, 30 örnek içeren bir Premium planı karşılar. Bir planı yukarı veya aşağı ölçeklendirirseniz, kısa bir süre için birçok adrese iki kez ihtiyacınız vardır.
+VNet tümleştirmesi, ayrılmış bir alt ağın kullanımına bağlıdır.  Bir alt ağ sağladığınızda, Azure alt ağı başlangıçtan itibaren 5 IP 'yi kaybeder. Her plan örneği için tümleştirme alt ağından bir adres kullanılır. Uygulamanızı dört örneğe ölçeklendirirseniz dört adres kullanılır. 5 adresin alt ağ boyutundan borçlu olması, CıDR bloğu başına kullanılabilir en fazla adres sayısını ifade etmek anlamına gelir:
+
+- /28 11 adrese sahiptir
+- /27, 27 adrese sahiptir
+- /26 59 adresi vardır
+
+Boyutu ölçeği büyütme veya küçültme yaparsanız, kısa bir süre için adresiniz olması gerekir. Boyut sınırları, alt ağınız bir ise, alt ağ boyutu başına gerçek kullanılabilir desteklenen örneklerin olduğu anlamına gelir:
+
+- /28, en büyük yatay ölçek 5 örnek
+- /27, en büyük yatay ölçeğe 13 örnek
+- Maksimum Yatay ölçeklendirmeniz 29 örnekdir
+
+Maksimum Yatay ölçekte belirtilen sınırlar, bir noktada boyut veya SKU 'da ölçeği büyütme veya küçültme yapmanız gerektiğini varsayar. 
+
+Alt ağ boyutu atamadan sonra değiştirilemediğinden, uygulamanızın ulaşabileceği ölçeğe uyum sağlayacak kadar büyük bir alt ağ kullanın. Alt ağ kapasitesine sahip herhangi bir sorunu önlemek için, önerilen boyut olan 64 adresine sahip bir/26.  
 
 Farklı bir plandaki uygulamalarınızın, başka bir plandaki uygulamalar tarafından zaten bağlı olan bir VNet 'e ulaşmasını istiyorsanız, önceden var olan VNet tümleştirmesi tarafından kullanılandan farklı bir alt ağ seçin.
 
@@ -82,21 +96,15 @@ Sınır Ağ Geçidi Protokolü (BGP) rotaları de uygulama trafiğinizi etkiler.
 
 ### <a name="azure-dns-private-zones"></a>Azure DNS Özel Bölgeleri 
 
-Uygulamanız VNet 'iniz ile tümleştirdikten sonra, sanal ağınızın yapılandırıldığı aynı DNS sunucusunu kullanır. Varsayılan olarak, uygulamanız Azure DNS Özel Bölgeleri çalışmaz. Azure DNS Özel Bölgeleri çalışmak için aşağıdaki uygulama ayarlarını eklemeniz gerekir:
-
-1. 168.63.129.16 değeri ile WEBSITE_DNS_SERVER
-1. Değer 1 ile WEBSITE_VNET_ROUTE_ALL
-
-Bu ayarlar, uygulamanızdaki tüm giden çağrıları sanal ağınıza gönderir. Ayrıca, Özel DNS bölgesini çalışan düzeyinde sorgulayarak uygulamanın Azure DNS kullanmasına olanak sağlar. Bu işlev, çalışan bir uygulama Özel DNS bir bölgeye erişirken kullanılır.
-
-> [!NOTE]
->Özel DNS bölgeyi kullanarak Web uygulamasına özel bir etki alanı eklemeye çalışmak, Sanal Ağ Tümleştirmesi için mümkün değildir. Özel etki alanı doğrulama işlemi, DNS kayıtlarının görüntülenmesini önleyen çalışan düzeyinde değil, denetleyici düzeyinde yapılır. Bir Özel DNS bölgesinden özel bir etki alanı kullanmak için, doğrulamanın bir Application Gateway veya ıLB App Service Ortamı kullanılarak atlanmak gerekir.
-
-
+Uygulamanız VNet 'iniz ile tümleştirdikten sonra, sanal ağınızın yapılandırıldığı aynı DNS sunucusunu kullanır. WEBSITE_DNS_SERVER uygulama ayarını istediğiniz DNS sunucunuzun adresiyle yapılandırarak uygulamanızda bu davranışı geçersiz kılabilirsiniz. Sanal ağınız ile yapılandırılmış bir özel DNS sunucunuz varsa ancak uygulamanızın Azure DNS özel bölgeler kullanmasını istiyorsanız 168.63.129.16 değeri ile WEBSITE_DNS_SERVER ayarlamanız gerekir. 
 
 ### <a name="private-endpoints"></a>Özel uç noktalar
 
-[Özel uç noktalara][privateendpoints]çağrılar yapmak istiyorsanız, Azure DNS özel bölgeleri ile tümleştirmeniz veya uygulamanız tarafından kullanılan DNS sunucusunda özel uç noktasını yönetmeniz gerekir. 
+[Özel uç noktalara][privateendpoints]çağrılar yapmak ISTIYORSANıZ, DNS aramalarınızın özel uç noktaya çözümlendiğinden emin olmanız gerekir. Uygulamanızdan gelen DNS aramalarının özel uç noktalarınıza işaret edecek şekilde emin olmak için şunları yapabilirsiniz:
+
+* Azure DNS Özel Bölgeleri ile tümleştirin. VNet 'iniz özel bir DNS sunucusuna sahip değilse, bu otomatik olur
+* uygulamanız tarafından kullanılan DNS sunucusunda özel uç noktasını yönetin. Bunu yapmak için özel uç nokta adresini bilmeniz ve sonra bir kayıt ile bu adrese ulaşmaya çalıştığınız uç noktayı işaret etmeniz gerekir.
+* kendi DNS sunucunuzu Azure DNS özel bölgelere iletmek üzere yapılandırın
 
 <!--Image references-->
 [4]: ../includes/media/web-sites-integrate-with-vnet/vnetint-appsetting.png

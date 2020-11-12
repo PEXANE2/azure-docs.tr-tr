@@ -7,18 +7,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: include
-ms.date: 10/14/2020
+ms.date: 11/09/2020
 ms.author: mbullwin
-ms.openlocfilehash: cf4404bbfe7e8f0ad664c9ca8dda07ff61be12d9
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: 2c79773d6697ae9fb62e2b7515da60178243fe40
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186874"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523992"
 ---
 [Başvuru belgeleri](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.html)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/metricsadvisor/azure-ai-metricsadvisor/README.md)  |  [Paket (PiPy)](https://pypi.org/project/azure-ai-metricsadvisor/)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/metricsadvisor/azure-ai-metricsadvisor/samples/README.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Python 3.x](https://www.python.org/)
@@ -70,9 +70,9 @@ Aşağıdaki sınıflar, ölçüm Danışmanı Python SDK 'sının önemli özel
 |Ad|Açıklama|
 |---|---|
 | [MetricsAdvisorClient](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.html#azure.ai.metricsadvisor.MetricsAdvisorClient) | **Kullanım için** : <br> -Olayları listeleme <br> -Olayların temel nedenini listeleme <br> -Özgün zaman serisi verileri ve zaman serisi verilerinin hizmet tarafından zenginleştirerek elde alınması. <br> -Uyarılar listeleniyor <br> -Modelinizi ayarlamak için geri bildirim ekleme |
-| [MetricsAdvisorAdministrationClient](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.html?highlight=metricsadvisoradministrationclient#azure.ai.metricsadvisor.MetricsAdvisorAdministrationClient)| **Şunları yapmanıza olanak sağlar:** <br> -Veri akışlarını yönetme <br> -Anomali algılama yapılandırması oluşturma, yapılandırma, alma, listeleme ve silme <br> -Anomali uyarı yapılandırması oluşturma, yapılandırma, alma, listeleme ve silme <br> -Kancaları Yönet  | |
+| [MetricsAdvisorAdministrationClient](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.html#azure.ai.metricsadvisor.MetricsAdvisorAdministrationClient) | **Şunları yapmanıza olanak sağlar:** <br> -Veri akışlarını yönetme <br> -Anomali algılama yapılandırması oluşturma, yapılandırma, alma, listeleme ve silme <br> -Anomali uyarı yapılandırması oluşturma, yapılandırma, alma, listeleme ve silme <br> -Kancaları Yönet  | |
 | [Veri akışı](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.models.html?highlight=datafeed#azure.ai.metricsadvisor.models.DataFeed)| **Veri kaynağından alınan ölçüm danışmanı. Şu `DataFeed` satırları içerir:** <br> -Zaman damgaları <br> -Sıfır veya daha fazla boyut <br> -Bir veya daha fazla ölçü  |
-| [Ölçüm](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.models.html?highlight=metric#azure.ai.metricsadvisor.models.Metric) | , `Metric` Belirli bir iş sürecinin durumunu izlemek ve değerlendirmek için kullanılan, ölçülebilir bir ölçüdür. Bu, boyutlara bölünen birden çok zaman serisi değerinin bir birleşimi olabilir. Örneğin, bir Web durumu ölçümü Kullanıcı sayısı ve en-US pazarında boyut içerebilir. |
+| [DataFeedMetric](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.models.html?highlight=datafeedmetric#azure.ai.metricsadvisor.models.DataFeedMetric) | , `DataFeedMetric` Belirli bir iş sürecinin durumunu izlemek ve değerlendirmek için kullanılan, ölçülebilir bir ölçüdür. Bu, boyutlara bölünen birden çok zaman serisi değerinin bir birleşimi olabilir. Örneğin, bir Web durumu ölçümü Kullanıcı sayısı ve en-US pazarında boyut içerebilir. |
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -96,7 +96,7 @@ client = MetricsAdvisorAdministrationClient(service_endpoint,
 
 ## <a name="add-a-data-feed"></a>Veri akışı Ekle
 
-Yeni bir yöntemde, aşağıdaki örnekte olduğu gibi içeri aktarma deyimleri oluşturun. `sql_server_connection_string`Kendı SQL Server bağlantı dizeniz ile değiştirin ve `query` tek bir zaman damgasında verilerinizi döndüren bir sorgu ile değiştirin. Ayrıca, `metric` ve `dimension` değerlerini özel verilerinize göre ayarlamanız gerekir.
+Yeni bir yöntemde, aşağıdaki örnekte olduğu gibi içeri aktarma deyimleri oluşturun. `sql_server_connection_string`Kendı SQL Server bağlantı dizeniz ile değiştirin ve `query` tek bir zaman damgasında verilerinizi döndüren bir sorgu ile değiştirin. Ayrıca, `DataFeedmetric` ve `DataFeedDimension` değerlerini özel verilerinize göre ayarlamanız gerekir.
 
 > [!IMPORTANT]
 > Sorgu her bir zaman damgasında her bir boyut birleşimi için en çok bir kayıt döndürmelidir. Ve sorgu tarafından döndürülen tüm kayıtlar aynı zaman damgalarına sahip olmalıdır. Ölçüm Danışmanı, verilerinizi almak için bu sorguyu her zaman damgası için çalıştırır. Daha fazla bilgi ve örnek için [sorgular hakkında SSS bölümüne](../../faq.md#how-do-i-write-a-valid-query-for-ingesting-my-data) bakın. 
@@ -110,11 +110,10 @@ def sample_create_data_feed():
     from azure.ai.metricsadvisor.models import (
         SQLServerDataFeed,
         DataFeedSchema,
-        Metric,
-        Dimension,
+        DataFeedMetric,
+        DataFeedDimension,
         DataFeedOptions,
-        DataFeedRollupSettings,
-        DataFeedMissingDataPointFillSettings
+        DataFeedRollupSettings
     )
     sql_server_connection_string = "<replace-with-your-sql-server-connection-string>"
     query = "<replace-with-metrics-advisor-sql-server-query>"
@@ -123,69 +122,73 @@ def sample_create_data_feed():
                                   MetricsAdvisorKeyCredential(subscription_key, api_key))
 
     data_feed = client.create_data_feed(
-        name="My data feed",
-        source=SQLServerDataFeed(
-            connection_string=sql_server_connection_string,
-            query=query,
+    name="My data feed",
+    source=SQLServerDataFeed(
+        connection_string=sql_server_connection_string,
+        query=query,
+    ),
+    granularity="Daily",
+    schema=DataFeedSchema(
+        metrics=[
+            DataFeedMetric(name="cost", display_name="Cost"),
+            DataFeedMetric(name="revenue", display_name="Revenue")
+        ],
+        dimensions=[
+            DataFeedDimension(name="category", display_name="Category"),
+            DataFeedDimension(name="city", display_name="City")
+        ],
+        timestamp_column="Timestamp"
+    ),
+    ingestion_settings=datetime.datetime(2019, 10, 1),
+    options=DataFeedOptions(
+        data_feed_description="cost/revenue data feed",
+        rollup_settings=DataFeedRollupSettings(
+            rollup_type="AutoRollup",
+            rollup_method="Sum",
+            rollup_identification_value="__CUSTOM_SUM__"
         ),
-        granularity="Daily",
-        schema=DataFeedSchema(
-            metrics=[
-                Metric(name="cost", display_name="Cost"),
-                Metric(name="revenue", display_name="Revenue")
-            ],
-            dimensions=[
-                Dimension(name="category", display_name="Category"),
-                Dimension(name="city", display_name="City")
-            ],
-            timestamp_column="Timestamp"
+        missing_data_point_fill_settings=DataFeedMissingDataPointFillSettings(
+            fill_type="SmartFilling"
         ),
-        ingestion_settings=datetime.datetime(2019, 10, 1),
-        options=DataFeedOptions(
-            data_feed_description="cost/revenue data feed",
-            rollup_settings=DataFeedRollupSettings(
-                rollup_type="AutoRollup",
-                rollup_method="Sum",
-                rollup_identification_value="__CUSTOM_SUM__"
-            ),
-            missing_data_point_fill_settings=DataFeedMissingDataPointFillSettings(
-                fill_type="SmartFilling"
-            ),
-            access_mode="Private"
-        )
+        access_mode="Private"
     )
+)
 
-    return data_feed
+return data_feed
 sample_create_data_feed()
 ```
 
 ## <a name="check-the-ingestion-status"></a>Alma durumunu denetleme
 
-Yeni bir yöntemde, aşağıdaki örnekte olduğu gibi bir içeri aktarma açıklaması oluşturun. `data_feed_id`Oluşturduğunuz veri akışı kimliğiyle değiştirin. Anahtarlarınız ve uç noktanız ile bir istemci oluşturun ve `client.get_data_feed_ingestion_progress()` alma ilerlemesini almak için kullanın. Son etkin ve başarılı zaman damgaları gibi ayrıntıları yazdırın.
+Yeni bir yöntemde, aşağıdaki örnekte olduğu gibi bir içeri aktarma açıklaması oluşturun. `data_feed_id`Oluşturduğunuz veri akışı kimliğiyle değiştirin. Anahtarlarınız ve uç noktanız ile bir istemci oluşturun ve `client.list_data_feed_ingestion_status()` alma ilerlemesini almak için kullanın. Son etkin ve başarılı zaman damgaları gibi ayrıntıları yazdırın.
 
 
 ```python
-def sample_get_data_feed_ingestion_progress():
     from azure.ai.metricsadvisor import MetricsAdvisorKeyCredential, MetricsAdvisorAdministrationClient
 
     data_feed_id = "<replace-with-your-metrics-advisor-data-feed-id>"
 
-    client = MetricsAdvisorAdministrationClient(service_endpoint,
-                                  MetricsAdvisorKeyCredential(subscription_key, api_key))
+   client = MetricsAdvisorAdministrationClient(service_endpoint,
+    MetricsAdvisorKeyCredential(subscription_key, api_key)
+)
 
-    progress = client.get_data_feed_ingestion_progress(data_feed_id)
+ingestion_status = client.list_data_feed_ingestion_status(
+    data_feed_id,
+    datetime.datetime(2020, 9, 20),
+    datetime.datetime(2020, 9, 25)
+)
+for status in ingestion_status:
+    print("Timestamp: {}".format(status.timestamp))
+    print("Status: {}".format(status.status))
+    print("Message: {}\n".format(status.message))
 
-    print("Latest active timestamp: {}".format(progress.latest_active_timestamp))
-    print("Latest successful timestamp: {}".format(progress.latest_success_timestamp))
-sample_get_data_feed_ingestion_progress()
 ```
 
 ## <a name="configure-anomaly-detection"></a>Anomali algılamayı yapılandırma
 
-Yeni bir yöntemde, aşağıdaki örnekte olduğu gibi içeri aktarma deyimleri oluşturun. `metric_id`Yapılandırmak istediğiniz ölçümün kimliğiyle değiştirin. Anahtarlarınız ve uç noktanızla bir istemci oluşturun ve `client.create_metric_anomaly_detection_configuration` Yeni bir algılama yapılandırması oluşturmak için kullanın. Eşik koşulları anomali algılama için parametreleri belirtir.
+Yeni bir yöntemde, aşağıdaki örnekte olduğu gibi içeri aktarma deyimleri oluşturun. `metric_id`Yapılandırmak istediğiniz ölçümün kimliğiyle değiştirin. Anahtarlarınız ve uç noktanızla bir istemci oluşturun ve `client.create_detection_configuration` Yeni bir algılama yapılandırması oluşturmak için kullanın. Eşik koşulları anomali algılama için parametreleri belirtir.
 
 ```python
-def sample_create_detection_config():
     from azure.ai.metricsadvisor import MetricsAdvisorKeyCredential, MetricsAdvisorAdministrationClient
     from azure.ai.metricsadvisor.models import (
         ChangeThresholdCondition,
@@ -196,52 +199,52 @@ def sample_create_detection_config():
     )
     metric_id = "replace-with-your-metric-id"
 
-    client = MetricsAdvisorAdministrationClient(service_endpoint,
-                                  MetricsAdvisorKeyCredential(subscription_key, api_key))
+    
+client = MetricsAdvisorAdministrationClient(
+    service_endpoint,
+    MetricsAdvisorKeyCredential(subscription_key, api_key)
+)
 
-    change_threshold_condition = ChangeThresholdCondition(
-        anomaly_detector_direction="Both",
-        change_percentage=20,
-        shift_point=10,
-        within_range=True,
-        suppress_condition=SuppressCondition(
-            min_number=5,
-            min_ratio=2
-        )
+change_threshold_condition = ChangeThresholdCondition(
+    anomaly_detector_direction="Both",
+    change_percentage=20,
+    shift_point=10,
+    within_range=True,
+    suppress_condition=SuppressCondition(
+        min_number=5,
+        min_ratio=2
     )
-    hard_threshold_condition = HardThresholdCondition(
-        anomaly_detector_direction="Up",
-        upper_bound=100,
-        suppress_condition=SuppressCondition(
-            min_number=2,
-            min_ratio=2
-        )
+)
+hard_threshold_condition = HardThresholdCondition(
+    anomaly_detector_direction="Up",
+    upper_bound=100,
+    suppress_condition=SuppressCondition(
+        min_number=2,
+        min_ratio=2
     )
-    smart_detection_condition = SmartDetectionCondition(
-        anomaly_detector_direction="Up",
-        sensitivity=10,
-        suppress_condition=SuppressCondition(
-            min_number=2,
-            min_ratio=2
-        )
+)
+smart_detection_condition = SmartDetectionCondition(
+    anomaly_detector_direction="Up",
+    sensitivity=10,
+    suppress_condition=SuppressCondition(
+        min_number=2,
+        min_ratio=2
     )
+)
 
-    detection_config = client.create_metric_anomaly_detection_configuration(
-        name="my_detection_config",
-        metric_id=metric_id,
-        description="anomaly detection config for metric",
-        whole_series_detection_condition=MetricDetectionCondition(
-            cross_conditions_operator="OR",
-            change_threshold_condition=change_threshold_condition,
-            hard_threshold_condition=hard_threshold_condition,
-            smart_detection_condition=smart_detection_condition
-        )
+detection_config = client.create_detection_configuration(
+    name="my_detection_config",
+    metric_id=metric_id,
+    description="anomaly detection config for metric",
+    whole_series_detection_condition=MetricDetectionCondition(
+        cross_conditions_operator="OR",
+        change_threshold_condition=change_threshold_condition,
+        hard_threshold_condition=hard_threshold_condition,
+        smart_detection_condition=smart_detection_condition
     )
-
-    return detection_config
-sample_create_detection_config()
+)
+return detection_config
 ```
-
 
 ## <a name="create-a-hook"></a>Kanca oluşturma
 
@@ -251,27 +254,27 @@ Yeni bir yöntemde, aşağıdaki örnekte olduğu gibi içeri aktarma deyimleri 
 def sample_create_hook():
 
     from azure.ai.metricsadvisor import MetricsAdvisorKeyCredential, MetricsAdvisorAdministrationClient
-    from azure.ai.metricsadvisor.models import EmailHook
+    from azure.ai.metricsadvisor.models import EmailNotificationHook
 
     client = MetricsAdvisorAdministrationClient(service_endpoint,
                                   MetricsAdvisorKeyCredential(subscription_key, api_key))
 
-    hook = client.create_hook(
-        name="email hook",
-        hook=EmailHook(
-            description="my email hook",
-            emails_to_alert=["alertme@contoso.com"],
-            external_link="https://adwiki.azurewebsites.net/articles/howto/alerts/create-hooks.html"
-        )
-    )
+client = MetricsAdvisorAdministrationClient(service_endpoint,
+    MetricsAdvisorKeyCredential(subscription_key, api_key))
 
-    return hook
-sample_create_hook()
+hook = client.create_hook(
+    hook=EmailNotificationHook(
+        name="email hook",
+        description="my email hook",
+        emails_to_alert=["alertme@alertme.com"],
+        external_link="https://example.com/handleAlerts", # you must enter a valid webhook url to post the alert payload
+    )
+)
 ```
 
 ##  <a name="create-an-alert-configuration"></a>Uyarı yapılandırması oluşturma
 
-Yeni bir yöntemde, aşağıdaki örnekte olduğu gibi içeri aktarma deyimleri oluşturun. `anomaly_detection_configuration_id`Anomali algılama YAPıLANDıRMANıZıN kimliğiyle değiştirin ve öğesini `hook_id` daha önce oluşturduğunuz kanca ile değiştirin. Anahtarlarınız ve uç noktanızla bir istemci oluşturun ve `client.create_anomaly_alert_configuration()` bir uyarı yapılandırması oluşturmak için kullanın. `metric_alert_configurations``MetricAlertConfiguration`her yapılandırmanın koşullarını ve kapsamını belirten nesnelerin bir listesidir.
+Yeni bir yöntemde, aşağıdaki örnekte olduğu gibi içeri aktarma deyimleri oluşturun. `detection_configuration_id`Anomali algılama YAPıLANDıRMANıZıN kimliğiyle değiştirin ve öğesini `hook_id` daha önce oluşturduğunuz kanca ile değiştirin. Anahtarlarınız ve uç noktanızla bir istemci oluşturun ve `client.create_alert_configuration()` bir uyarı yapılandırması oluşturmak için kullanın. 
 
 ```python
 def sample_create_alert_config():
@@ -288,16 +291,18 @@ def sample_create_alert_config():
     anomaly_detection_configuration_id = "<replace-with-your-detection-configuration-id"
     hook_id = "<replace-with-your-hook-id>"
 
-    client = MetricsAdvisorAdministrationClient(service_endpoint,
-                                  MetricsAdvisorKeyCredential(subscription_key, api_key))
+    client = MetricsAdvisorAdministrationClient(
+    service_endpoint,
+    MetricsAdvisorKeyCredential(subscription_key, api_key)
+)
 
-    alert_config = client.create_anomaly_alert_configuration(
+alert_config = client.create_alert_configuration(
         name="my alert config",
         description="alert config description",
         cross_metrics_operator="AND",
         metric_alert_configurations=[
             MetricAlertConfiguration(
-                detection_configuration_id=anomaly_detection_configuration_id,
+                detection_configuration_id=detection_configuration_id,
                 alert_scope=MetricAnomalyAlertScope(
                     scope_type="WholeSeries"
                 ),
@@ -309,7 +314,7 @@ def sample_create_alert_config():
                 )
             ),
             MetricAlertConfiguration(
-                detection_configuration_id=anomaly_detection_configuration_id,
+                detection_configuration_id=detection_configuration_id,
                 alert_scope=MetricAnomalyAlertScope(
                     scope_type="TopN",
                     top_n_group_in_scope=TopNGroupScope(
@@ -339,26 +344,36 @@ def sample_create_alert_config():
 
 ### <a name="query-the-alert"></a>Uyarıyı sorgulama
 
-Yeni bir yöntemde, aşağıdaki örnekte olduğu gibi bir içeri aktarma açıklaması oluşturun. `alert_id`Uyarınız için olan kimlikle değiştirin ve `alert_config_id` uyarı yapılandırma kimliğiyle değiştirin. Anahtarlarınız ve uç noktanızla bir istemci oluşturun ve `client.list_anomalies_for_alert()` bir uyarı yapılandırması listelemek için öğesini kullanın. 
+Yeni bir yöntemde, aşağıdaki örnekte olduğu gibi bir içeri aktarma açıklaması oluşturun. `alert_id`Uyarınız için olan kimlikle değiştirin ve `alert_config_id` uyarı yapılandırma kimliğiyle değiştirin. Anahtarlarınız ve uç noktanız ile bir istemci oluşturun ve `client.list_anomalies` bir uyarının anorlarını listelemek için kullanın. 
 
 ```python
-def sample_list_anomalies_for_alert(alert_config_id, alert_id):
-
-    from azure.ai.metricsadvisor import MetricsAdvisorKeyCredential, MetricsAdvisorClient
+from azure.ai.metricsadvisor import MetricsAdvisorKeyCredential, MetricsAdvisorClient
     
-    alert_id = "<replace-with-your-alert-id>"
-    alert_config_id = "<replace-with-your-alert-configuration-id"
-    client = MetricsAdvisorClient(service_endpoint,
-                                  MetricsAdvisorKeyCredential(subscription_key, api_key))
+alert_id = "<replace-with-your-alert-id>"
+alert_config_id = "<replace-with-your-alert-configuration-id"
 
-    results = client.list_anomalies_for_alert(
-            alert_configuration_id=alert_config_id,
-            alert_id=alert_id,
-        )
-    for result in results:
-        print("Create on: {}".format(result.created_on))
-        print("Severity: {}".format(result.severity))
-        print("Status: {}".format(result.status))
+client = MetricsAdvisorClient(service_endpoint,
+    MetricsAdvisorKeyCredential(subscription_key, api_key)
+)
+
+results = client.list_alerts(
+    alert_configuration_id=alert_config_id,
+    start_time=datetime.datetime(2020, 1, 1),
+    end_time=datetime.datetime(2020, 9, 9),
+    time_mode="AnomalyTime",
+)
+for result in results:
+    print("Alert id: {}".format(result.id))
+    print("Create on: {}".format(result.created_on))
+
+results = client.list_anomalies(
+    alert_configuration_id=alert_config_id,
+    alert_id=alert_id,
+)
+for result in results:
+    print("Create on: {}".format(result.created_on))
+    print("Severity: {}".format(result.severity))
+    print("Status: {}".format(result.status))
 ```
 
 ### <a name="run-the-application"></a>Uygulamayı çalıştırma

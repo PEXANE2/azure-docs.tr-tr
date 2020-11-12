@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: azure-communication-services
 author: mikben
 manager: mikben
@@ -10,14 +10,14 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 994f2829d260223567dcb5aed859812aa1fef3d1
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 5eb9867b17151987b165021f42a075e9355a315d
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91829028"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523752"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Başlamadan önce şunları yaptığınızdan emin olun:
 - Etkin abonelikle bir Azure hesabı oluşturun. Ayrıntılar için bkz. [ücretsiz hesap oluşturma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - [Visual Studio 'yu](https://visualstudio.microsoft.com/downloads/) yükler 
@@ -77,7 +77,7 @@ ChatClient chatClient = new ChatClient(endpoint, communicationUserCredential);
 
 `createChatThread`Bir sohbet iş parçacığı oluşturmak için yöntemini kullanın.
 - `topic`Bu sohbete bir konu vermek için kullanın; Konu, işlevi kullanılarak sohbet iş parçacığı oluşturulduktan sonra güncelleştirilemeyebilir `UpdateThread` .
-- `members` `ChatThreadMember` Sohbet iş parçacığına eklenecek nesne listesini geçirmek için özelliğini kullanın. `ChatThreadMember`Nesne bir nesne ile başlatılır `CommunicationUser` . Bir nesne almak için `CommunicationUser` , [bir kullanıcı oluşturmak](../../access-tokens.md#create-a-user) için aşağıdaki yönergeyi uygulayarak oluşturduğunuz erişim kimliğini geçirmeniz gerekir
+- `members` `ChatThreadMember` Sohbet iş parçacığına eklenecek nesne listesini geçirmek için özelliğini kullanın. `ChatThreadMember`Nesne bir nesne ile başlatılır `CommunicationUser` . Bir nesne almak için `CommunicationUser` , [bir kullanıcı oluşturmak](../../access-tokens.md#create-an-identity) için aşağıdaki yönergeyi uygulayarak oluşturduğunuz erişim kimliğini geçirmeniz gerekir
 
 Yanıt, `chatThreadClient` oluşturulan sohbet iş parçacığı üzerinde işlem gerçekleştirmek için kullanılır: sohbet iş parçacığına üye ekleme, ileti gönderme, ileti silme, vb. `Id` Sohbet iş parçacığının BENZERSIZ kimliği olan özniteliği içerir. 
 
