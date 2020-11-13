@@ -4,13 +4,13 @@ description: Azure portal belirtilen bölge, LUO uygulamasını yayımlayacağı
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 11/19/2019
-ms.openlocfilehash: 134f71e957b39cf35b4e45e42c2101fbce233f05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: a591a8d0df751c071a17b1d77febdb3607a1b53d
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91277164"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555779"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>Yazma ve yayımlama bölgeleri ve ilişkili anahtarlar
 
@@ -23,9 +23,9 @@ Bölgeye göre üç LUı yazma portalı vardır. Aynı bölgede yazmanız ve yay
 
 |LUIS|Yazma bölgesi|Azure bölge adı|
 |--|--|--|
-|[www.luis.ai][www.luis.ai] <br>[previous.luis.ai](https://previous.luis.ai)|ABD<br>Avrupa değil<br>Avustralya değil| `westus`|
-|[au.luis.ai][au.luis.ai] <br>[previous.au.luis.ai](https://previous.au.luis.ai)|Avustralya| `australiaeast`|
-|[eu.luis.ai][eu.luis.ai] <br>[previous.eu.luis.ai](https://previous.eu.luis.ai)|Avrupa|`westeurope`|
+|[www.luis.ai][www.luis.ai] |ABD<br>Avrupa değil<br>Avustralya değil| `westus`|
+|[au.luis.ai][au.luis.ai] |Avustralya| `australiaeast`|
+|[eu.luis.ai][eu.luis.ai] |Avrupa|`westeurope`|
 
 Yazma bölgeleri, [Yük devretme bölgelerini eşleştirilmiştir](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
@@ -76,7 +76,7 @@ Diğer bölgelere yayımlamak için yalnızca LUSıS uygulamaları oluşturursun
 
  Genel bölge | Yazma API bölgesi & yazma Web sitesi| Bölge & yayımlanıyor<br>`API region name`   |  Uç nokta URL biçimi   |
 |-----|------|------|------|
-| Afrika | `westus`<br>[www.luis.ai][www.luis.ai]| Güney Afrika Kuzey<br>`southafricanorth` |  `https://southafricanorth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
+| Afrika | `westus`<br>[www.luis.ai][www.luis.ai]| Güney Afrika - Kuzey<br>`southafricanorth` |  `https://southafricanorth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
 | Asya | `westus`<br>[www.luis.ai][www.luis.ai]| Orta Hindistan<br>`centralindia` |  `https://centralindia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
 | Asya | `westus`<br>[www.luis.ai][www.luis.ai]| Doğu Asya<br>`eastasia`     |  `https://eastasia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |
 | Asya | `westus`<br>[www.luis.ai][www.luis.ai]| Doğu Japonya<br>`japaneast`     |   `https://japaneast.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY`   |

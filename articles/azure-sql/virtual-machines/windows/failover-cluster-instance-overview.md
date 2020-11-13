@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 1b8dae471729b42b1c302c6c45033ddc808c7b43
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 5845a3bdc4b86fbbe44c92779e5aae95044eb6b2
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289303"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556379"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure sanal makineler 'de SQL Server yük devretme kümesi örnekleri
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -51,8 +51,8 @@ Azure VM 'lerinde SQL Server, SQL Server yük devretme kümesi örneklerinin da�
 |**En düşük işletim sistemi sürümü**| Tümü |Windows Server 2012|Windows Server 2016|
 |**En düşük SQL Server sürümü**|Tümü|SQL Server 2012|SQL Server 2016|
 |**Desteklenen VM kullanılabilirliği** |Yakınlık yerleşimi gruplarıyla kullanılabilirlik kümeleri |Kullanılabilirlik kümeleri ve kullanılabilirlik bölgeleri|Kullanılabilirlik kümeleri |
-|**FILESTREAM 'i destekler**|Evet|Hayır|Evet |
-|**Azure Blob önbelleği**|Hayır|Hayır|Evet|
+|**FILESTREAM 'i destekler**|Yes|Hayır|Yes |
+|**Azure Blob önbelleği**|Hayır|Hayır|Yes|
 
 Bu bölümün geri kalanında, Azure VM 'lerinde SQL Server için kullanılabilen her depolama seçeneğinin avantajları ve sınırlamaları listelenmektedir. 
 
@@ -148,10 +148,11 @@ Küme bağlantı seçenekleri hakkında daha fazla bilgi için bkz. [Azure VM 'l
 
 Azure sanal makinelerinde SQL Server yük devretme kümesi örnekleri için aşağıdaki sınırlamaları göz önünde bulundurun. 
 
-### <a name="lightweight-resource-provider"></a>Hafif kaynak sağlayıcısı   
-Şu anda Azure sanal makinelerinde SQL Server yük devretme kümesi örnekleri yalnızca [SQL Server IaaS aracı uzantısının](sql-server-iaas-agent-extension-automate-management.md) [basit yönetim moduyla](sql-server-iaas-agent-extension-automate-management.md#management-modes) desteklenir. Tam uzantı modundan hafif olarak geçiş yapmak için, karşılık gelen VM 'Ler için **SQL sanal makine** kaynağını silin ve ardından bunları basıt modda SQL VM kaynak sağlayıcısı 'na kaydedin. Azure portal kullanarak **SQL sanal makine** kaynağını silerken, doğru sanal makinenin yanındaki onay kutusunu temizleyin. 
+### <a name="lightweight-extension-support"></a>Hafif uzantı desteği   
 
-Tam uzantı otomatik yedekleme, düzeltme eki uygulama ve gelişmiş Portal yönetimi gibi özellikleri destekler. Bu özellikler, aracı hafif yönetim modunda yeniden yüklendikten sonra SQL Server VM 'Ler için çalışmaz.
+Şu anda Azure sanal makinelerinde SQL Server yük devretme kümesi örnekleri yalnızca SQL Server IaaS aracı uzantısının [basit yönetim moduyla](sql-server-iaas-agent-extension-automate-management.md#management-modes) desteklenir. Tam uzantı modundan hafif olarak geçiş yapmak için, karşılık gelen VM 'Ler için **SQL sanal makine** kaynağını silin ve ardından bunları basıt modda SQL IaaS Aracısı Uzantısı ile kaydedin. Azure portal kullanarak **SQL sanal makine** kaynağını silerken, sanal makineyi silmeyi önlemek için doğru sanal makinenin yanındaki onay kutusunu temizleyin. 
+
+Tam uzantı otomatik yedekleme, düzeltme eki uygulama ve gelişmiş Portal yönetimi gibi özellikleri destekler. Bu özellikler, hafif yönetim modunda kayıtlı SQL Server VM 'Ler için çalışmaz.
 
 ### <a name="msdtc"></a>MSDTC 
 
@@ -167,7 +168,7 @@ Azure sanal makinelerde, kümelenmiş paylaşılan birimlerde Windows Server 201
 
 [Küme yapılandırmalarının en iyi yöntemlerini](hadr-cluster-best-practices.md)gözden geçirin ve ardından [SQL Server VM FCI için hazırlayabilirsiniz](failover-cluster-instance-prepare-vm.md). 
 
-Daha fazla bilgi için bkz. 
+Daha fazla bilgi için bkz: 
 
 - [Windows küme teknolojileri](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server yük devretme kümesi örnekleri](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

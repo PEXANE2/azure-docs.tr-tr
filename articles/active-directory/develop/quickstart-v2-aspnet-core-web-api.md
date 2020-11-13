@@ -12,19 +12,19 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: dc0cdca2355403bc8f5409d9a6ca7f4ae89caf25
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aa0a001f9c35202939eeb4a7752803b998a3acf7
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90948063"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562024"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>Hızlı başlangıç: ASP.NET Core Web API 'sini Microsoft Identity platformu ile koruma
 
-Bu hızlı başlangıçta, bir ASP.NET Core Web API 'sini yalnızca yetkili hesaplar tarafından erişilebilmesi için nasıl koruyacağınızı öğrenmek üzere bir kod örneği kullanırsınız. Hesaplar kişisel hesap (hotmail.com, outlook.com ve diğerleri) ve herhangi bir Azure Active Directory (Azure AD) örneğinde iş ve okul hesapları olabilir.
+Bu hızlı başlangıçta, bir ASP.NET Core Web API kodu örneği indirir ve bu kodu, kaynaklara erişimi yalnızca yetkili hesaplara kısıtlayan kod gözden geçirdiniz. Örnek, tüm Azure Active Directory (Azure AD) kuruluşunda kişisel Microsoft hesaplarının ve hesaplarının yetkilendirmesini destekler.
 
 > [!div renderon="docs"]
-> ## <a name="prerequisites"></a>Önkoşullar
+> ## <a name="prerequisites"></a>Ön koşullar
 >
 > - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 > - [Azure Active Directory kiracı](quickstart-create-new-tenant.md)
@@ -37,20 +37,20 @@ Bu hızlı başlangıçta, bir ASP.NET Core Web API 'sini yalnızca yetkili hesa
 >
 > 1. [Azure portalında](https://portal.azure.com) oturum açın.
 > 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
-> 1. **Azure Active Directory**'yi bulun ve seçin.
-> 1. **Yönet**altında **uygulama kayıtları**ve ardından **Yeni kayıt**' ı seçin.
+> 1. **Azure Active Directory** 'yi bulun ve seçin.
+> 1. **Yönet** altında **uygulama kayıtları** ve ardından **Yeni kayıt** ' ı seçin.
 > 1. Uygulamanız için bir **ad** girin (örneğin,) `AspNetCoreWebApi-Quickstart` . Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
-> 1. **Kaydet**’i seçin.
-> 1. **Yönet**altında **bir API 'yi kullanıma** sunma ' yı seçin.
-> 1. **Kapsam Ekle** ' yi seçin ve **Kaydet '** i SEÇIN ve varsayılan **uygulama kimliği URI**'sini kabul edin.
+> 1. **Kaydet** ’i seçin.
+> 1. **Yönet** altında **bir API 'yi kullanıma** sunma ' yı seçin.
+> 1. **Kapsam Ekle** ' yi seçin ve **Kaydet '** i SEÇIN ve varsayılan **uygulama kimliği URI** 'sini kabul edin.
 > 1. **Kapsam Ekle** bölmesinde, aşağıdaki değerleri girin:
->    - **Kapsam adı**: `access_as_user`
->    - **Kimler izin verebilir?**: **Yöneticiler ve kullanıcılar**
->    - **Yönetici onayı görünen adı**: `Access AspNetCoreWebApi-Quickstart`
->    - **Yönetici onay açıklaması**: `Allows the app to access AspNetCoreWebApi-Quickstart as the signed-in user.`
->    - **Kullanıcı izni görünen adı**: `Access AspNetCoreWebApi-Quickstart`
->    - **Kullanıcı onay açıklaması**: `Allow the application to access AspNetCoreWebApi-Quickstart on your behalf.`
->    - **Durum**: **etkin**
+>    - **Kapsam adı** : `access_as_user`
+>    - **Kimler izin verebilir?** : **Yöneticiler ve kullanıcılar**
+>    - **Yönetici onayı görünen adı** : `Access AspNetCoreWebApi-Quickstart`
+>    - **Yönetici onay açıklaması** : `Allows the app to access AspNetCoreWebApi-Quickstart as the signed-in user.`
+>    - **Kullanıcı izni görünen adı** : `Access AspNetCoreWebApi-Quickstart`
+>    - **Kullanıcı onay açıklaması** : `Allow the application to access AspNetCoreWebApi-Quickstart on your behalf.`
+>    - **Durum** : **etkin**
 > 1. Kapsam **eklemeyi tamamlayacak kapsam Ekle** ' yi seçin.
 
 ## <a name="step-2-download-the-aspnet-core-project"></a>2. Adım: ASP.NET Core projesini Indirin
@@ -65,7 +65,7 @@ Bu hızlı başlangıçta, bir ASP.NET Core Web API 'sini yalnızca yetkili hesa
 >
 > 1. . Zip arşivini sürücünüzün köküne yakın bir klasöre ayıklayın. Örneğin, *C:\Azure-Samples*.
 > 1. Çözümü kod düzenleyicinizdeki *WebApi* klasöründe açın.
-> 1. appsettings.jsdosya * üzerinde* açın ve aşağıdakileri değiştirin:
+> 1. appsettings.jsdosya *üzerinde* açın ve aşağıdakileri değiştirin:
 >
 >    ```json
 >    "ClientId": "Enter_the_Application_Id_here",
@@ -74,9 +74,9 @@ Bu hızlı başlangıçta, bir ASP.NET Core Web API 'sini yalnızca yetkili hesa
 >
 >    - `Enter_the_Application_Id_here`Azure Portal kaydettiğiniz uygulamanın **uygulama (ISTEMCI) kimliğiyle** değiştirin. Uygulamanın **genel bakış** sayfasında **uygulama (istemci) kimliğini** bulabilirsiniz.
 >    - `Enter_the_Tenant_Info_Here`Aşağıdakilerden biriyle değiştirin:
->       - Uygulamanız **yalnızca bu kuruluş dizinindeki hesapları**destekliyorsa, bu değeri **Dizin (kiracı) kimliği** (GUID) veya **kiracı adı** (örneğin,) ile değiştirin `contoso.onmicrosoft.com` . Uygulamanın **genel bakış** sayfasında **Dizin (kiracı) kimliğini** bulabilirsiniz.
+>       - Uygulamanız **yalnızca bu kuruluş dizinindeki hesapları** destekliyorsa, bu değeri **Dizin (kiracı) kimliği** (GUID) veya **kiracı adı** (örneğin,) ile değiştirin `contoso.onmicrosoft.com` . Uygulamanın **genel bakış** sayfasında **Dizin (kiracı) kimliğini** bulabilirsiniz.
 >       - Uygulamanız **Herhangi bir kuruluş dizinindeki hesaplar** yaklaşımını destekliyorsa bu değeri `organizations` ile değiştirin
->       - Uygulamanız **tüm Microsoft hesabı kullanıcıları**destekliyorsa, bu değeri şu şekilde bırakın `common`
+>       - Uygulamanız **tüm Microsoft hesabı kullanıcıları** destekliyorsa, bu değeri şu şekilde bırakın `common`
 >
 > Bu hızlı başlangıçta, dosyadaki *appsettings.js* başka bir değeri değiştirmeyin.
 
@@ -100,7 +100,7 @@ Web API 'SI bir istemci uygulamasından bir belirteç alır ve Web API 'sindeki 
 
 İçeren çizgi, `.AddMicrosoftIdentityWebApi` Web API 'Nize Microsoft Identity platform yetkilendirmesi ekler. Daha sonra, `AzureAD` yapılandırma dosyası *appsettings.js* bölümündeki bilgileri temel alarak Microsoft Identity platform uç noktası tarafından verilen erişim belirteçlerini doğrulamak üzere yapılandırılmıştır:
 
-| *appsettings.js* anahtarda | Açıklama                                                                                                                                                          |
+| *appsettings.js* anahtarda | Description                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClientId`             | Azure portal kayıtlı uygulamanın **uygulama (istemci) kimliği** .                                                                                       |
 | `Instance`             | Kullanıcının kimlik doğrulaması için güvenlik belirteci hizmeti (STS) uç noktası. Bu değer genellikle `https://login.microsoftonline.com/` Azure genel bulutu 'nı gösterir. |

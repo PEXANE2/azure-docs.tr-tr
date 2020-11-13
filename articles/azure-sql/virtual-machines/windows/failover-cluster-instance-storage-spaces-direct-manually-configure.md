@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 9b90d13d6f4fa5a33bff38aaa66728a5d0f3d70f
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 01f9ee1ad134c14150d16569fd57e658b160784c
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289943"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556327"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>Depolama Alanları Doğrudan (Azure VM 'lerinde SQL Server) ile bir FCı oluşturma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -50,7 +50,7 @@ Yukarıdaki diyagramda, aynı kaynak grubundaki aşağıdaki kaynaklar gösteril
    > Bu çözümün tamamını, bir şablondan Azure 'da oluşturabilirsiniz. GitHub [Azure hızlı başlangıç şablonları](https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad) sayfasında bir şablon örneği bulunur. Bu örnek, belirli bir iş yükü için tasarlanmamıştır veya test edilmemiştir. Etki alanına bağlı Depolama Alanları Doğrudan depolama alanı ile bir SQL Server FCı oluşturmak için şablonu çalıştırabilirsiniz. Şablonu değerlendirebilir ve sizin amacınıza göre değiştirebilirsiniz.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki yönergeleri tamamlamadan önce Şu durumda olmalıdır:
 
@@ -217,7 +217,7 @@ Yük devretme kümesini ve depolama dahil tüm küme bileşenlerini yapılandır
 
 ## <a name="register-with-the-sql-vm-rp"></a>SQL VM RP ile kaydolun
 
-SQL Server VM portaldan yönetmek için, SQL VM kaynak sağlayıcısı 'nı (RP) [basit yönetim modunda](sql-vm-resource-provider-register.md#lightweight-management-mode)kaydedin, şu anda yalnızca FCI ile desteklenen tek mod ve Azure vm 'lerinde SQL Server. 
+SQL Server VM portaldan yönetmek için, SQL IaaS Aracısı uzantısı 'na (RP) [basit yönetim modunda](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode)kaydedin, şu anda yalnızca FCI ile desteklenen tek mod ve Azure vm 'lerinde SQL Server. 
 
 
 PowerShell ile hafif modda bir SQL Server VM kaydetme:  
@@ -239,7 +239,7 @@ Trafiği geçerli birincil düğüme uygun bir şekilde yönlendirmek için, ort
 
 - Azure sanal makineleri, Windows Server 2019 ' de CSV ve [Standart yük dengeleyici](../../../load-balancer/load-balancer-overview.md)depolama ile Microsoft Dağıtılmış işlem DÜZENLEYICISI (MSDTC) destekler.
 - NTFS biçimli diskler olarak eklenmiş diskler, yalnızca disk uygunluk seçeneği işaretli değilse ya da depolama alanı kümeye eklenirken silinirse Depolama Alanları Doğrudan ile kullanılabilir. 
-- Yalnızca [basit yönetim MODUNDAKI](sql-server-iaas-agent-extension-automate-management.md#management-modes) SQL VM kaynak sağlayıcısı ile kaydolma desteklenir.
+- Yalnızca [hafif yönetim modunda](sql-server-iaas-agent-extension-automate-management.md#management-modes) SQL IaaS Aracısı Uzantısı ile kaydolma desteklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -249,6 +249,6 @@ Sizin için uygun FCı depolama çözümü değilse, bunun yerine [Azure paylaş
 
 Daha fazla bilgi edinmek için bkz. Azure VM 'lerde SQL Server ve [küme yapılandırması en iyi yöntemleri](hadr-cluster-best-practices.md) [ile FCI](failover-cluster-instance-overview.md) 'ye genel bakış. 
 
-Daha fazla bilgi için bkz. 
+Daha fazla bilgi için bkz: 
 - [Windows küme teknolojileri](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server yük devretme kümesi örnekleri](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

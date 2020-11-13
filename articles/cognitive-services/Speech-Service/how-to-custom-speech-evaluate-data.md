@@ -1,27 +1,27 @@
 ---
-title: Özel Konuşma Tanıma konuşma hizmeti için doğruluğu değerlendirin
+title: Özel Konuşma Tanıma doğruluğu değerlendirin ve geliştirir-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Bu belgede, konuşmadan metin modelimizin veya özel modelinizin kalitesini nasıl ölçeceğinizi öğreneceksiniz. Ses + insan etiketli Döküm verileri, doğruluk sınaması için gereklidir ve 5 saatlik temsili ses sağlanmalıdır.
+description: Bu belgede, konuşmadan metin modelimizin veya özel modelinizin kalitesini nasıl ölçeceğinizi ve artıracağınızı öğreneceksiniz. Ses + insan etiketli Döküm verileri, doğruluk sınaması için gereklidir ve 5 saatlik temsili ses sağlanmalıdır.
 services: cognitive-services
-author: erhopf
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/06/2019
-ms.author: erhopf
-ms.openlocfilehash: cadbe79bbe0af2b5cebacb3d0c7c4e910fc7dbb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/11/2020
+ms.author: trbye
+ms.openlocfilehash: affbf57fcda5ff9fb56e148c2fa8769e7aa775e6
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85856824"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555813"
 ---
-# <a name="evaluate-custom-speech-accuracy"></a>Özel Konuşma doğruluğunu değerlendirme
+# <a name="evaluate-and-improve-custom-speech-accuracy"></a>Özel Konuşma Tanıma doğruluğu değerlendirin ve geliştirir
 
-Bu belgede, Microsoft 'un konuşmaya metin modeli veya özel modeliniz kalitesini nasıl ölçeceğinizi öğreneceksiniz. Ses + insan etiketli Döküm verileri, doğruluk sınaması için gereklidir ve 5 saatlik temsili ses sağlanmalıdır.
+Bu makalede, Microsoft 'un konuşma-metin modellerinin veya kendi özel modellerinizin doğruluğunu nasıl ölçeceğinizi ve artıracağınızı öğreneceksiniz. Ses + insan etiketli Döküm verileri, doğruluk sınaması için gereklidir ve 5 saatlik temsili ses sağlanmalıdır.
 
-## <a name="what-is-word-error-rate-wer"></a>Word hata oranı (WER) nedir?
+## <a name="evaluate-custom-speech-accuracy"></a>Özel Konuşma doğruluğunu değerlendirme
 
 Model doğruluğunu ölçmek için sektör standardı, *sözcük hata oranı* (WER). WER, tanıma sırasında tanımlanan yanlış sözcüklerin sayısını sayar ve sonra, insan tarafından etiketlenmiş döküm betiğine (aşağıda N olarak gösterilmiştir) verilen toplam sözcük sayısına böler. Son olarak, bu sayı WER 'i hesaplamak için %100 ile çarpılır.
 
@@ -52,22 +52,87 @@ Microsoft 'un konuşmaya metin taban çizgisi modeli veya eğitilen özel bir mo
 Modelleri yan yana değerlendirmek için:
 
 1. [Özel konuşma tanıma portalında](https://speech.microsoft.com/customspeech)oturum açın.
-2. **Test > > [proje adı] Özel Konuşma Tanıma > konuşmadan metne**gidin.
-3. **Test Ekle**' ye tıklayın.
-4. **Doğruluğu değerlendir**' i seçin. Teste bir ad, açıklama verin ve ses + insan etiketli döküm veri kümenizi seçin.
+2. **Test > > [proje adı] Özel Konuşma Tanıma > konuşmadan metne** gidin.
+3. **Test Ekle** ' ye tıklayın.
+4. **Doğruluğu değerlendir** ' i seçin. Teste bir ad, açıklama verin ve ses + insan etiketli döküm veri kümenizi seçin.
 5. Test etmek istediğiniz en fazla iki model seçin.
-6. **Oluştur**’a tıklayın.
+6. **Oluştur** 'a tıklayın.
 
 Testiniz başarıyla oluşturulduktan sonra sonuçları yan yana karşılaştırabilirsiniz.
 
-## <a name="side-by-side-comparison"></a>Yan yana karşılaştırma
+### <a name="side-by-side-comparison"></a>Yan yana karşılaştırma
 
-Test tamamlandıktan sonra durum değişikliği *başarılı*olarak belirtilmişse, testinizde her iki model için de bir wer numarası bulacaksınız. Test ayrıntısı sayfasını görüntülemek için test adına tıklayın. Bu ayrıntı sayfasında, veri kümenizdeki tüm bildirimler listelenir. Bu, gönderilen veri kümesinden gelen döküm ile birlikte iki modelin tanınma sonuçlarını gösterir. Yan yana karşılaştırmayı incelemeye yardımcı olması için ekleme, silme ve değiştirme gibi çeşitli hata türlerini değiştirebilirsiniz. Her sütunda sesli dinleyerek ve iki konuşmadan metne modellerle ilgili sonuçları gösteren her bir sütundaki tanıma sonuçlarını karşılaştıran şekilde, hangi modelin ihtiyaçlarınıza uygun olduğunu ve ek eğitim ve iyileştirmeler gerektiğini belirleyebilirsiniz.
+Test tamamlandıktan sonra durum değişikliği *başarılı* olarak belirtilmişse, testinizde her iki model için de bir wer numarası bulacaksınız. Test ayrıntısı sayfasını görüntülemek için test adına tıklayın. Bu ayrıntı sayfasında, veri kümenizdeki tüm bildirimler listelenir. Bu, gönderilen veri kümesinden gelen döküm ile birlikte iki modelin tanınma sonuçlarını gösterir. Yan yana karşılaştırmayı incelemeye yardımcı olması için ekleme, silme ve değiştirme gibi çeşitli hata türlerini değiştirebilirsiniz. Her sütunda sesli dinleyerek ve iki konuşmadan metne modellerle ilgili sonuçları gösteren her bir sütundaki tanıma sonuçlarını karşılaştıran şekilde, hangi modelin ihtiyaçlarınıza uygun olduğunu ve ek eğitim ve iyileştirmeler gerektiğini belirleyebilirsiniz.
+
+## <a name="improve-custom-speech-accuracy"></a>Özel Konuşma doğruluğunu iyileştirme
+
+Konuşma tanıma senaryoları ses kalitesine ve dile (sözlük ve konuşma stili) göre farklılık gösterir. Aşağıdaki tabloda dört yaygın senaryo incelenir:
+
+| Senaryo | Ses kalitesi | Sözlük | Konuşma stili |
+|----------|---------------|------------|----------------|
+| Çağrı merkezi | Düşük, 8 kHz, 1 ses kanalında 2 insana olabilir, sıkıştırılabilir | Dar, benzersiz etki alanı ve ürünler | Konuşma, gevşek yapılandırılmış |
+| Ses Yardımcısı (Cortana veya bir sürücü aracılığıyla bir pencere) | Yüksek, 16 kHz | Varlık ağır (şarkı başlıkları, ürünler, konumlar) | Açıkça belirtilen sözcükler ve ifadeler |
+| Dikte (anında ileti, notlar, arama) | Yüksek, 16 kHz | Değiştirilecek | Göz önünde bulundurularak |
+| Video kapalı açıklamalı altyazı | Değişen mikrofon kullanımı, müzik eklendi gibi değişen | Toplantılar, yeniden dağıtılmış konuşma, müzik sözleri | Okuma, hazır veya gevşek yapılandırılmış |
+
+Farklı senaryolar farklı kalite sonuçları üretir. Aşağıdaki tabloda, bu dört senaryodan alınan içeriğin, [sözcük hata oranı 'nda (WER)](how-to-custom-speech-evaluate-data.md)nasıl hızlarının yapılacağı incelenir. Tablo, her senaryo için en yaygın olarak kullanılan hata türlerini gösterir.
+
+| Senaryo | Konuşma tanıma kalitesi | Ekleme hataları | Silme hataları | Değiştirme hataları |
+|----------|----------------------------|------------------|-----------------|---------------------|
+| Çağrı merkezi | Orta (<% 30 WER) | Düşük, diğer kişilerin arka planda konuştuğu durumlar dışında | Yüksek olabilir. Çağrı merkezleri gürültülü olabilir ve çakışan hoparlörler modeli karıştırabilirler | Orta. Ürünlerin ve kişilerin adları bu hatalara neden olabilir |
+| Ses asistanı | Yüksek (<% 10 WER) | Düşük | Düşük | Orta, şarkı başlıkları, ürün adları veya konumlar nedeniyle |
+| Etme | Yüksek (<% 10 WER) | Düşük | Düşük | Yüksek |
+| Video kapalı açıklamalı altyazı | Video türüne bağlıdır (<% 50) | Düşük | Müzik, önemli, mikrofon kalitesi nedeniyle yüksek olabilir | Jargon bu hatalara neden olabilir |
+
+WER bileşenlerinin belirlenmesi (ekleme, silme ve değiştirme hatalarının sayısı) modeli geliştirmek için hangi tür verilerin ekleneceğini belirlemeye yardımcı olur. Temel bir modelin kalitesini görüntülemek için [özel konuşma tanıma portalını](https://speech.microsoft.com/customspeech) kullanın. Portal, WER kalite ücretine bağlı ekleme, değiştirme ve silme hata oranlarını raporlar.
+
+## <a name="improve-model-recognition"></a>Model tanımayı geliştirme
+
+[Özel konuşma tanıma portalına](https://speech.microsoft.com/customspeech)eğitim verileri ekleyerek, tanınma hatalarını azaltabilirsiniz. 
+
+Kaynak malzemeleri düzenli aralıklarla ekleyerek özel modelinizin korunmasını planlayın. Özel modelinize, varlıklarınızda yapılan değişiklikleri haberdar etmek için ek eğitim gerekir. Örneğin, ürün adlarına, şarkı adlarına veya yeni hizmet konumlarına yönelik güncelleştirmelere ihtiyacınız olabilir.
+
+Aşağıdaki bölümlerde her bir ek eğitim verisinin hata düzeyini nasıl azaltabileceğini açıklamaktadır.
+
+### <a name="add-related-text-sentences"></a>İlgili metin cümleleri ekleyin
+
+Ek ilgili metin cümleleri öncelikle, ortak sözcüklerin ve etki alanına özgü sözcüklerin yanlış tanınmasına ilişkin değiştirme hatalarını, bunları bağlamında göstererek azaltabilirsiniz. Etki alanına özgü sözcükler seyrek olabilir veya bir sözcük oluşturabilir, ancak telaffuz tanınmak için basit olmalıdır.
+
+> [!NOTE]
+> Tanınmayan karakterler veya sözcükler gibi gürültü içeren ilgili metin cümlelerini önleyin.
+
+### <a name="add-audio-with-human-labeled-transcripts"></a>İnsan etiketli yazılı betikler ile ses ekleme
+
+İnsan etiketli dökümü olan ses, ses hedef kullanım durumundan geliyorsa en büyük doğruluk geliştirmelerini sunar. Örnekler, tam konuşma kapsamını kapsamalıdır. Örneğin, bir perakende mağaza için çağrı merkezi, yaz ayları sırasında swimwear ve güneşlük hakkındaki çağrıların çoğunu alır. Örneğin, algılamak istediğiniz tam konuşma kapsamını içerdiğinden emin olmanız gerekir.
+
+Bu ayrıntıları göz önünde bulundurun:
+
+* Özel Konuşma Tanıma, ekleme veya silme hatalarını değil, değiştirme hatalarını azaltmak için yalnızca kelime bağlamını yakalayabilir.
+* Döküm hataları içeren örneklerden kaçının, ancak ses kalitesi çeşitliliğe sahiptir.
+* Sorun etki alanınız ile ilgili olmayan cümlelerden kaçının. İlişkisiz cümleler modelinize zarar verebilir.
+* Döküm kalitesi farklılık gösterir, ağırlığın artması için, hariç tutulan ve çok iyi cümleler (anahtar tümceleri içeren harika döküm gibi) çoğaltabilirsiniz.
+
+### <a name="add-new-words-with-pronunciation"></a>Telaffuz ile yeni sözcükler ekleme
+
+Oluşturulan veya yüksek ölçüde özelleştirilmiş kelimelerin benzersiz söylenişleri olabilir. Bu sözcükler, sözcüğün pronounce daha küçük bir sözcüğe bölüneceği durumlarda tanınabilmesi için tanınabilir. Örneğin, **Xbox** , Pronounce as **X kutusunu** tanımak için. Bu yaklaşım genel doğruluğu artırmaz, ancak bu anahtar sözcüklerin tanınmasını artırabilir.
+
+> [!NOTE]
+> Bu teknik, şu anda yalnızca bazı diller için kullanılabilir. Ayrıntılar için [konuşmayı metne](language-support.md) dönüştürme bölümüne bakın.
+
+## <a name="sources-by-scenario"></a>Senaryoya göre kaynaklar
+
+Aşağıdaki tabloda, ses tanıma senaryoları gösterilmektedir ve yukarıda listelenen üç eğitim içeriği kategorisi dahilinde göz önünde bulundurmanız gereken kaynak malzemeler listelenmiştir.
+
+| Senaryo | İlgili metin cümleleri | Ses + insan etiketli yazılı betikler | Söylenişi olan yeni sözcükler |
+|----------|------------------------|------------------------------|------------------------------|
+| Çağrı merkezi             | pazarlama belgeleri, Web sitesi, Çağrı Merkezi etkinliğiyle ilgili ürün incelemeleri | Arama Merkezi, insanların yaptığı çağrıları | belirsiz söylenişleri olan terimler (yukarıdaki Xbox 'a bakın) |
+| Ses asistanı         | komutların ve varlıkların tüm birleşimlerini kullanarak cümleleri listeleyin | Seslendirmeyi bir cihaza kaydetme ve metin yerleştirme | benzersiz söylenişleri olan adlar (Filmler, şarkılar, ürünler) |
+| Etme               | anlık iletiler veya e-postalar gibi yazılı giriş | yukarıdakine benzer | yukarıdakine benzer |
+| Video kapalı açıklamalı altyazı | TV görüntüleme betikleri, Filmler, pazarlama içeriği, video özetleri | videoların tam yazılı betikleri | yukarıdakine benzer |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Modelinizi eğitme](how-to-custom-speech-train-model.md)
-* [Modelinizi dağıtın](how-to-custom-speech-deploy-model.md)
+* [Modeli eğitme ve dağıtma](how-to-custom-speech-train-model.md)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

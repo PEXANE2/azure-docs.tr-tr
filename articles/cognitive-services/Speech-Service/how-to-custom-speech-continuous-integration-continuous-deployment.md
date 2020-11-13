@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: 46bdc314e7aa0002937e808d7982f43c8e725d6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de0065abaf5669859e864186fc9a3fb88219414b
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357480"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555830"
 ---
 # <a name="cicd-for-custom-speech"></a>Özel Konuşma Tanıma için CI/CD
 
@@ -37,7 +37,7 @@ Bu şekilde iş akışları, verileri, testleri, test dosyalarını, modelleri v
 
 ### <a name="ci-workflow-for-testing-data-updates"></a>Veri güncelleştirmelerini test etmek için CI iş akışı
 
-CI/CD iş akışlarının asıl amacı, eğitim verilerini kullanarak yeni bir model oluşturmak ve bu modeli, [Word hata oranının](how-to-custom-speech-evaluate-data.md#what-is-word-error-rate-wer) (WER) önceki en iyi şekilde gerçekleştiren modelle ("kıyaslama modeli") karşılaştırıldığında iyileştirilip artmadığını belirlemek için test verilerini kullanarak test etmek içindir. Yeni model daha iyi çalışıyorsa, gelecekteki modellerin karşılaştırılacağı yeni kıyaslama modeli olur.
+CI/CD iş akışlarının asıl amacı, eğitim verilerini kullanarak yeni bir model oluşturmak ve bu modeli, [Word hata oranının](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) (WER) önceki en iyi şekilde gerçekleştiren modelle ("kıyaslama modeli") karşılaştırıldığında iyileştirilip artmadığını belirlemek için test verilerini kullanarak test etmek içindir. Yeni model daha iyi çalışıyorsa, gelecekteki modellerin karşılaştırılacağı yeni kıyaslama modeli olur.
 
 Veri güncelleştirmelerini test etmek için CI iş akışı, düzeltilen WER 'yi hesaplamak için geçerli kıyaslama modelini güncelleştirilmiş test verileriyle yeniden test etmelidir. Bu, yeni bir modelin WER, kıyaslama WER ile karşılaştırıldığında, her iki modelin de aynı test verileriyle test edilmiş olması ve benzer şekilde karşılaştırılabilmesini sağlar.
 
@@ -84,8 +84,8 @@ Eğitim verilerine yönelik bir güncelleştirme bir modelin tanınmasını iyil
 
 - Şablon deposunu GitHub hesabınıza kopyalayın, ardından GitHub eylemleri CI/CD iş akışları için Azure kaynakları ve [hizmet sorumlusu](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) oluşturun.
 - "[Geliştirme iç döngüsü](https://mitchdenny.com/the-inner-loop/)" boyunca ilerleyin. Güncelleştirme eğitimi ve bir özellik dalında verileri test edin, değişiklikleri geçici bir geliştirme modeliyle test edin ve değişiklikleri önermek ve gözden geçirmek için bir çekme isteği yükseltin.
-- Eğitim verileri, *ana öğe*için bir çekme isteğinde güncelleniyorsa, modelleri GITHUB eylemleri CI iş akışıyla eğitme.
-- Bir modelin [sözcük hata oranını](how-to-custom-speech-evaluate-data.md#what-is-word-error-rate-wer) (WER) oluşturmak için otomatik doğruluk testi gerçekleştirin. Test sonuçlarını Azure Blob 'da depolayın.
+- Eğitim verileri, *ana öğe* için bir çekme isteğinde güncelleniyorsa, modelleri GITHUB eylemleri CI iş akışıyla eğitme.
+- Bir modelin [sözcük hata oranını](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) (WER) oluşturmak için otomatik doğruluk testi gerçekleştirin. Test sonuçlarını Azure Blob 'da depolayın.
 - WER artdığı zaman bir uç nokta oluşturmak için CD iş akışını yürütün.
 
 ## <a name="next-steps"></a>Sonraki adımlar

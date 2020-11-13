@@ -3,12 +3,12 @@ title: Azure'a Dağıt düğmesi
 description: Bir GitHub deposundan Azure Resource Manager şablonları dağıtmak için düğmeyi kullanın.
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 7d002508f6b2402f8cff40fb0369896080ecbbad
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 25ec5fd7a0c5b356097412ab6f1765cb0886522a
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490908"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555275"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>GitHub deposundan şablon dağıtmak için bir dağıtım düğmesi kullanın
 
@@ -19,11 +19,15 @@ Dağıtım kapsamı, şablon şemasına göre belirlenir. Daha fazla bilgi için
 * [kaynak grupları](deploy-to-resource-group.md)
 * [Aboneliklerin](deploy-to-subscription.md)
 * [Yönetim grupları](deploy-to-management-group.md)
-* [kiracılar](deploy-to-tenant.md).
+* [Kira](deploy-to-tenant.md)
 
 ## <a name="use-common-image"></a>Ortak görüntü kullan
 
 Web sayfanıza veya depoya düğme eklemek için aşağıdaki görüntüyü kullanın:
+
+```markdown
+![Deploy to Azure](https://aka.ms/deploytoazurebutton)
+```
 
 ```html
 <img src="https://aka.ms/deploytoazurebutton"/>
@@ -48,6 +52,7 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
 Ardından, URL 'yi bir URL kodlu değere dönüştürün. Çevrimiçi bir kodlayıcı kullanabilir veya bir komut çalıştırabilirsiniz. Aşağıdaki PowerShell örneği, bir değeri nasıl bir değerin kodlayagösterdiğini gösterir.
 
 ```powershell
+$url = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
 [uri]::EscapeDataString($url)
 ```
 
@@ -70,6 +75,8 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.github
 ```
 
 Bağlantı için tam URL 'niz vardır.
+
+Genellikle, şablonu genel depoda barındırabilirsiniz. Özel depo kullanırsanız, şablonun ham içeriğine erişmek için bir belirteç dahil etmeniz gerekir. GitHub tarafından oluşturulan belirteç yalnızca kısa bir süre için geçerlidir. Bağlantıyı sık sık güncelleştirmeniz gerekir.
 
 GitHub deposu yerine [Azure Repos git](/azure/devops/repos/git/) kullanıyorsanız, Azure 'a dağıt düğmesini kullanmaya devam edebilirsiniz. Deponuzın ortak olduğundan emin olun. Şablonu almak için [öğeler işlemini](/rest/api/azure/devops/git/items/get) kullanın. İsteğiniz aşağıdaki biçimde olmalıdır:
 

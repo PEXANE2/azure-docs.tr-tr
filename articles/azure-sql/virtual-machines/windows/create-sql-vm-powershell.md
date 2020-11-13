@@ -15,12 +15,12 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6bf17f85892691fe930d3d4b1e12846da8f9dc58
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c49f8b2732a1b62760cec69626d56751971e6a44
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789820"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556446"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server sağlamak için Azure PowerShell kullanma
 
@@ -367,12 +367,17 @@ Sanal makine oluşturulur.
 
 ## <a name="install-the-sql-iaas-agent"></a>SQL Iaas Aracısı'nı yükleme
 
-SQL Server sanal makineler, [SQL Server IaaS Aracısı uzantısı](sql-server-iaas-agent-extension-automate-management.md)ile otomatikleştirilmiş yönetim özelliklerini destekler. Aracıyı yeni VM 'ye yüklemek ve kaynak sağlayıcısına kaydetmek için, sanal makine oluşturulduktan sonra [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) komutunu çalıştırın. SQL Server VM için lisans türünü belirtin, [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)aracılığıyla Kullandıkça Öde veya kendi lisansını getir seçeneklerinden birini belirleyin. Lisanslama hakkında daha fazla bilgi için bkz. [lisans modeli](licensing-model-azure-hybrid-benefit-ahb-change.md). 
+SQL Server sanal makineler, [SQL Server IaaS Aracısı uzantısı](sql-server-iaas-agent-extension-automate-management.md)ile otomatikleştirilmiş yönetim özelliklerini destekler. SQL Server uzantıya kaydetmek için, sanal makine oluşturulduktan sonra [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) komutunu çalıştırın. SQL Server VM için lisans türünü belirtin, [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)aracılığıyla Kullandıkça Öde veya kendi lisansını getir seçeneklerinden birini belirleyin. Lisanslama hakkında daha fazla bilgi için bkz. [lisans modeli](licensing-model-azure-hybrid-benefit-ahb-change.md). 
 
 
    ```powershell
    New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Location -LicenseType <PAYG/AHUB> 
    ```
+
+Uzantıya kaydolmak için üç yol vardır: 
+- [Bir abonelikteki tüm geçerli ve gelecekteki VM 'Ler için otomatik olarak](sql-agent-extension-automatic-registration-all-vms.md)
+- [Tek bir VM için el ile](sql-agent-extension-manually-register-single-vm.md)
+- [Toplu olarak birden çok VM için el ile](sql-agent-extension-manually-register-vms-bulk.md)
 
 
 ## <a name="stop-or-remove-a-vm"></a>VM 'yi durdurma veya kaldırma

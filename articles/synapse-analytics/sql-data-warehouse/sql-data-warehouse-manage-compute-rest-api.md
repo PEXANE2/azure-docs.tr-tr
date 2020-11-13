@@ -1,6 +1,6 @@
 ---
 title: Duraklatma, devam etmeyi, REST API 'lerle ölçeklendirme
-description: REST API 'Leri aracılığıyla Azure SYNAPSE Analytics veri ambarındaki işlem gücünü yönetin.
+description: REST API 'Leri aracılığıyla Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) için işlem gücünü yönetin.
 services: synapse-analytics
 author: antvgski
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 03/29/2019
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: bbb8e82710b4c8ca7736b53d427b3880faf2be05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49702051b5399d5079aacc97c00233a23ba8712d
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213287"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556021"
 ---
-# <a name="rest-apis-for-azure-synapse-analytics-data-warehouse"></a>Azure SYNAPSE Analytics veri ambarı için REST API 'Leri
+# <a name="rest-apis-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) için REST API 'Leri
 
-Azure SYNAPSE Analytics veri ambarı 'nda işlem yönetimi için REST API 'Leri.
+Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) için işlem yönetimi için REST API 'Leri.
 
 ## <a name="scale-compute"></a>Hesaplamayı ölçeklendirme
 
@@ -64,7 +64,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ## <a name="get-maintenance-schedule"></a>Bakım zamanlaması al
 
-Bir veri ambarı için ayarlanmış bakım zamanlamasını denetleyin.
+Adanmış bir SQL Havuzu (eski adıyla SQL DW) için ayarlanmış bakım zamanlamasını denetleyin.
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1
@@ -73,7 +73,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ## <a name="set-maintenance-schedule"></a>Bakım zamanlamasını ayarla
 
-Mevcut bir veri ambarında bakım zamanlaması ayarlamak ve güncelleştirmek için.
+Mevcut ayrılmış bir SQL havuzunda (eski adıyla SQL DW) bir bakım zamanlaması ayarlamak ve güncelleştirmek için.
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1

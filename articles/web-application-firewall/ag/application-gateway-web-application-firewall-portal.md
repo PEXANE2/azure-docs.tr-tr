@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: tutorial
 ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: 58002140cd6ec0cd90eefc506dc743be05e7be7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9733eeb0d9941f6e23dcc9c0fa4dba60f4e4d30
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274495"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561038"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak bir Web uygulaması güvenlik duvarı ile uygulama ağ geçidi oluşturma
 
@@ -52,37 +52,37 @@ Azure portal sol menüsünde **kaynak oluştur** ' u seçin. **Yeni** pencere g�
 
 1. **Temel bilgiler** sekmesinde, aşağıdaki uygulama ağ geçidi ayarları için şu değerleri girin:
 
-   - **Kaynak grubu**: kaynak grubu için **myResourceGroupAG** öğesini seçin. Yoksa, oluşturmak için **Yeni oluştur** ' u seçin.
-   - **Uygulama ağ geçidi adı**: uygulama ağ geçidinin adı Için *myappgateway* girin.
-   - **Katman**: **WAF v2**'yi seçin.
+   - **Kaynak grubu** : kaynak grubu için **myResourceGroupAG** öğesini seçin. Yoksa, oluşturmak için **Yeni oluştur** ' u seçin.
+   - **Uygulama ağ geçidi adı** : uygulama ağ geçidinin adı Için *myappgateway* girin.
+   - **Katman** : **WAF v2** 'yi seçin.
 
      ![Yeni uygulama ağ geçidi oluşturma: temel bilgiler](../media/application-gateway-web-application-firewall-portal/application-gateway-create-basics.png)
 
 2.  Azure 'un, oluşturduğunuz kaynaklar arasında iletişim kurması için bir sanal ağa ihtiyacı vardır. Yeni bir sanal ağ oluşturabilir veya var olan bir ağı kullanabilirsiniz. Bu örnekte, uygulama ağ geçidini oluşturduğunuz sırada yeni bir sanal ağ oluşturacaksınız. Application Gateway örnekleri ayrı alt ağlarda oluşturulur. Bu örnekte iki alt ağ oluşturursunuz: bir tane uygulama ağ geçidi ve arka uç sunucuları için bir diğeri.
 
-    **Sanal ağı Yapılandır**altında **Yeni oluştur**' u seçerek yeni bir sanal ağ oluşturun. Açılan **sanal ağ oluştur** penceresinde, sanal ağ ve iki alt ağ oluşturmak için aşağıdaki değerleri girin:
+    **Sanal ağı Yapılandır** altında **Yeni oluştur** ' u seçerek yeni bir sanal ağ oluşturun. Açılan **sanal ağ oluştur** penceresinde, sanal ağ ve iki alt ağ oluşturmak için aşağıdaki değerleri girin:
 
-    - **Ad**: sanal ağın adı Için *myvnet* girin.
+    - **Ad** : sanal ağın adı Için *myvnet* girin.
 
-    - **Alt ağ adı** (Application Gateway alt ağ): **alt ağlar** Kılavuzu *varsayılan*olarak adlandırılan bir alt ağ gösterir. Bu alt ağın adını *Myagsubnet*olarak değiştirin.<br>Application Gateway alt ağı yalnızca uygulama ağ geçitleri içerebilir. Başka hiçbir kaynağa izin verilmez.
+    - **Alt ağ adı** (Application Gateway alt ağ): **alt ağlar** Kılavuzu *varsayılan* olarak adlandırılan bir alt ağ gösterir. Bu alt ağın adını *Myagsubnet* olarak değiştirin.<br>Application Gateway alt ağı yalnızca uygulama ağ geçitleri içerebilir. Başka hiçbir kaynağa izin verilmez.
 
     - **Alt ağ adı** (arka uç sunucusu alt ağı): alt **ağlar** kılavuzunun Ikinci satırında, **alt ağ adı** sütununa *mybackendsubnet* yazın.
 
-    - **Adres aralığı** (arka uç sunucusu alt ağı): **alt ağlar** kılavuzunun Ikinci satırına *myagsubnet*adres aralığıyla çakışmayacak bir adres aralığı girin. Örneğin, *Myagsubnet* adres aralığı 10.0.0.0/24 Ise, *Mybackendsubnet*adres aralığı için *10.0.1.0/24* girin.
+    - **Adres aralığı** (arka uç sunucusu alt ağı): **alt ağlar** kılavuzunun Ikinci satırına *myagsubnet* adres aralığıyla çakışmayacak bir adres aralığı girin. Örneğin, *Myagsubnet* adres aralığı 10.0.0.0/24 Ise, *Mybackendsubnet* adres aralığı için *10.0.1.0/24* girin.
 
     **Sanal ağ oluştur** penceresini kapatmak ve sanal ağ ayarlarını kaydetmek için **Tamam ' ı** seçin.
 
      ![Yeni uygulama ağ geçidi oluştur: sanal ağ](../media/application-gateway-web-application-firewall-portal/application-gateway-create-vnet.png)
     
-3. **Temel bilgiler** sekmesinde, diğer ayarlar için varsayılan değerleri kabul edin ve ardından **Ileri: ön uçlar**' ı seçin.
+3. **Temel bilgiler** sekmesinde, diğer ayarlar için varsayılan değerleri kabul edin ve ardından **Ileri: ön uçlar** ' ı seçin.
 
 ### <a name="frontends-tab"></a>Ön uçlar sekmesi
 
-1. Ön **uçlar** sekmesinde, **ön uç IP adresi türünün** **genel**olarak ayarlandığını doğrulayın. <br>Ön uç IP 'sini kullanım çalışmanıza göre genel veya özel olacak şekilde yapılandırabilirsiniz. Bu örnekte, genel ön uç IP 'si seçersiniz.
+1. Ön **uçlar** sekmesinde, **ön uç IP adresi türünün** **genel** olarak ayarlandığını doğrulayın. <br>Ön uç IP 'sini kullanım çalışmanıza göre genel veya özel olacak şekilde yapılandırabilirsiniz. Bu örnekte, genel ön uç IP 'si seçersiniz.
    > [!NOTE]
    > Application Gateway v2 SKU 'SU için yalnızca **genel** ön uç IP yapılandırması ' nı seçebilirsiniz. Özel ön uç IP yapılandırması şu anda bu v2 SKU 'SU için etkin değil.
 
-2. **Genel IP** adresi Için **Yeni oluştur** ' u seçin ve genel IP adresi adı Için *myagpublicıpaddress* girin ve **Tamam**' ı seçin. 
+2. **Genel IP** adresi Için **Yeni oluştur** ' u seçin ve genel IP adresi adı Için *myagpublicıpaddress* girin ve **Tamam** ' ı seçin. 
 
      ![Yeni uygulama ağ geçidi oluştur: ön uçlar](../media/application-gateway-web-application-firewall-portal/application-gateway-create-frontends.png)
 
@@ -92,18 +92,18 @@ Azure portal sol menüsünde **kaynak oluştur** ' u seçin. **Yeni** pencere g�
 
 Arka uç havuzu, isteği sunan arka uç sunucularına istekleri yönlendirmek için kullanılır. Arka uç havuzları, NIC 'Ler, sanal makine ölçek kümeleri, genel IP 'Ler, iç IP 'Ler, tam etki alanı adları (FQDN) ve Azure App Service gibi çok kiracılı arka uçlar olabilir. Bu örnekte, uygulama ağ geçidiniz ile boş bir arka uç havuzu oluşturacak ve arka uç havuzuna arka uç hedefleri ekleyeceğiz.
 
-1. **Backends** sekmesinde **+ arka uç Havuzu Ekle**' yi seçin.
+1. **Backends** sekmesinde **+ arka uç Havuzu Ekle** ' yi seçin.
 
 2. Açılan **bir arka uç havuzu ekleyin** penceresinde, boş bir arka uç havuzu oluşturmak için aşağıdaki değerleri girin:
 
-    - **Ad**: arka uç havuzunun adı Için *mybackendpool* girin.
-    - **Hedefleri olmayan arka uç Havuzu Ekle**: hedefi olmayan bir arka uç havuzu oluşturmak için **Evet** ' i seçin. Uygulama ağ geçidini oluşturduktan sonra arka uç hedefleri ekleyeceksiniz.
+    - **Ad** : arka uç havuzunun adı Için *mybackendpool* girin.
+    - **Hedefleri olmayan arka uç Havuzu Ekle** : hedefi olmayan bir arka uç havuzu oluşturmak için **Evet** ' i seçin. Uygulama ağ geçidini oluşturduktan sonra arka uç hedefleri ekleyeceksiniz.
 
 3. Arka uç havuzu **Ekle** penceresinde, arka uç havuzu yapılandırmasını kaydetmek ve **backends** sekmesine dönmek için **Ekle** ' yi seçin.
 
      ![Yeni uygulama ağ geçidi oluştur: arka uçları](../media/application-gateway-web-application-firewall-portal/application-gateway-create-backends.png)
 
-4. **Backends** sekmesinde **İleri: yapılandırma**' yı seçin.
+4. **Backends** sekmesinde **İleri: yapılandırma** ' yı seçin.
 
 ### <a name="configuration-tab"></a>Yapılandırma sekmesi
 
@@ -111,20 +111,20 @@ Arka uç havuzu, isteği sunan arka uç sunucularına istekleri yönlendirmek i�
 
 1. **Yönlendirme kuralları** sütununda **Kural Ekle** ' yi seçin.
 
-2. Açılan **yönlendirme kuralı ekle** penceresinde, **kural adı**için *myroutingrule* yazın.
+2. Açılan **yönlendirme kuralı ekle** penceresinde, **kural adı** için *myroutingrule* yazın.
 
 3. Yönlendirme kuralı bir dinleyici gerektirir. **Yönlendirme kuralı ekle** penceresinin içindeki **dinleyici** sekmesinde, dinleyici için aşağıdaki değerleri girin:
 
-    - **Dinleyici adı**: dinleyicinin adı Için *MyListener* girin.
-    - **Ön uç IP**: ön uç için oluşturduğunuz ortak IP 'yi seçmek için **genel** ' i seçin.
+    - **Dinleyici adı** : dinleyicinin adı Için *MyListener* girin.
+    - **Ön uç IP** : ön uç için oluşturduğunuz ortak IP 'yi seçmek için **genel** ' i seçin.
   
       **Dinleyici** sekmesinde diğer ayarlar için varsayılan değerleri kabul edin, sonra yönlendirme kuralının geri kalanını yapılandırmak Için **arka uç hedefleri** sekmesini seçin.
 
    ![Yeni uygulama ağ geçidi oluşturma: dinleyici](../media/application-gateway-web-application-firewall-portal/application-gateway-create-rule-listener.png)
 
-4. **Arka uç hedefleri** sekmesinde, **arka uç hedefi**Için **mybackendpool** ' u seçin.
+4. **Arka uç hedefleri** sekmesinde, **arka uç hedefi** Için **mybackendpool** ' u seçin.
 
-5. **Http ayarı**Için yeni **Oluştur** ' u seçerek yeni bir http ayarı oluşturun. HTTP ayarı, yönlendirme kuralının davranışını tespit eder. Açılan **http ayarı Ekle** penceresinde **http ayar adı**için *myhttpsetting* girin. **Http ayarı Ekle** penceresinde diğer ayarlar için varsayılan değerleri kabul edin ve ardından **Ekle** ' yi seçerek **yönlendirme kuralı ekle** penceresine dönün. 
+5. **Http ayarı** Için yeni **Oluştur** ' u seçerek yeni bir http ayarı oluşturun. HTTP ayarı, yönlendirme kuralının davranışını tespit eder. Açılan **http ayarı Ekle** penceresinde **http ayar adı** için *myhttpsetting* girin. **Http ayarı Ekle** penceresinde diğer ayarlar için varsayılan değerleri kabul edin ve ardından **Ekle** ' yi seçerek **yönlendirme kuralı ekle** penceresine dönün. 
 
      ![Yeni uygulama ağ geçidi oluştur: HTTP ayarı](../media/application-gateway-web-application-firewall-portal/application-gateway-create-httpsetting.png)
 
@@ -146,32 +146,32 @@ Bu örnekte, sanal makineleri hedef arka uç olarak kullanacaksınız. Var olan 
 
 Bunu yapmak için şunları yapmanız gerekir:
 
-1. Arka uç sunucuları olarak kullanılmak üzere *Myvm* ve *myVM2*olmak üzere iki yeni VM oluşturun.
+1. Arka uç sunucuları olarak kullanılmak üzere *Myvm* ve *myVM2* olmak üzere iki yeni VM oluşturun.
 2. Uygulama ağ geçidinin başarıyla oluşturulduğunu doğrulamak için sanal makinelere IIS 'yi yükler.
 3. Arka uç sunucularını arka uç havuzuna ekleyin.
 
 ### <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
-1. Azure portal **kaynak oluştur**' u seçin. **Yeni** pencere görüntülenir.
+1. Azure portal **kaynak oluştur** ' u seçin. **Yeni** pencere görüntülenir.
 2. **Popüler** listede **Windows Server 2016 Datacenter** ' ı seçin. **Sanal makine oluştur** sayfası görüntülenir.<br>Application Gateway, arka uç havuzunda kullanılan herhangi bir sanal makine türüne trafiği yönlendirebilir. Bu örnekte, bir Windows Server 2016 Datacenter kullanırsınız.
 3. Aşağıdaki sanal makine ayarları için **temel bilgiler** sekmesine bu değerleri girin:
 
-    - **Kaynak grubu**: kaynak grubu adı için **myResourceGroupAG** öğesini seçin.
-    - **Sanal makine adı**: sanal makinenin adı Için *myvm* girin.
-    - **Kullanıcı**adı: Yönetici Kullanıcı adı için *azureuser* girin.
-    - **Parola**: *Azure123456 girin!* Yönetici parolası için.
-4. Diğer varsayılanları kabul edin ve ardından **İleri: diskler**' i seçin.  
+    - **Kaynak grubu** : kaynak grubu adı için **myResourceGroupAG** öğesini seçin.
+    - **Sanal makine adı** : sanal makinenin adı Için *myvm* girin.
+    - **Kullanıcı** adı: Yönetici Kullanıcı adı için *azureuser* girin.
+    - **Parola** : *Azure123456 girin!* Yönetici parolası için.
+4. Diğer varsayılanları kabul edin ve ardından **İleri: diskler** ' i seçin.  
 5. **Diskler** sekmesi varsayılan değerlerini kabul edin ve ardından İleri ' yi seçin **: ağ**.
-6. **Ağ** sekmesinde, **sanal ağ** için **Myvnet** öğesinin seçildiğini ve **alt ağın** **mybackendsubnet**olarak ayarlandığını doğrulayın. Diğer varsayılanları kabul edin ve ardından **İleri: yönetim**' i seçin.<br>Application Gateway, içinde bulunduğu sanal ağ dışındaki örneklerle iletişim kurabilir, ancak IP bağlantısı olduğundan emin olmanız gerekir.
-7. **Yönetim** sekmesinde, **önyükleme tanılamayı** **kapalı**olarak ayarlayın. Diğer varsayılanları kabul edin ve ardından **gözden geçir + oluştur**' u seçin.
-8. **Gözden geçir + oluştur** sekmesinde ayarları gözden geçirin, doğrulama hatalarını düzeltin ve ardından **Oluştur**' u seçin.
+6. **Ağ** sekmesinde, **sanal ağ** için **Myvnet** öğesinin seçildiğini ve **alt ağın** **mybackendsubnet** olarak ayarlandığını doğrulayın. Diğer varsayılanları kabul edin ve ardından **İleri: yönetim** ' i seçin.<br>Application Gateway, içinde bulunduğu sanal ağ dışındaki örneklerle iletişim kurabilir, ancak IP bağlantısı olduğundan emin olmanız gerekir.
+7. **Yönetim** sekmesinde, **önyükleme tanılamayı** **kapalı** olarak ayarlayın. Diğer varsayılanları kabul edin ve ardından **gözden geçir + oluştur** ' u seçin.
+8. **Gözden geçir + oluştur** sekmesinde ayarları gözden geçirin, doğrulama hatalarını düzeltin ve ardından **Oluştur** ' u seçin.
 9. Devam etmeden önce sanal makine oluşturma işleminin tamamlanmasını bekleyin.
 
 ### <a name="install-iis-for-testing"></a>Test için IIS 'yi yükler
 
 Bu örnekte, yalnızca Azure 'un Application Gateway 'i başarıyla oluşturduğunu doğrulamak için sanal makinelere IIS yüklersiniz.
 
-1. [Azure PowerShell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell)açın. Bunu yapmak için, Azure portal üst gezinti çubuğundan **Cloud Shell** ' ı seçin ve ardından açılır listeden **PowerShell** ' i seçin. 
+1. [Azure PowerShell](../../cloud-shell/quickstart-powershell.md)açın. Bunu yapmak için, Azure portal üst gezinti çubuğundan **Cloud Shell** ' ı seçin ve ardından açılır listeden **PowerShell** ' i seçin. 
 
     ![Özel uzantıyı yükleme](../media/application-gateway-web-application-firewall-portal/application-gateway-extension.png)
 
@@ -193,19 +193,19 @@ Bu örnekte, yalnızca Azure 'un Application Gateway 'i başarıyla oluşturduğ
 
 ### <a name="add-backend-servers-to-backend-pool"></a>Arka uç sunucularını arka uç havuzuna Ekle
 
-1. **Tüm kaynaklar**' ı ve ardından **myappgateway**' i seçin.
+1. **Tüm kaynaklar** ' ı ve ardından **myappgateway** ' i seçin.
 
 2. Sol menüden **arka uç havuzları** ' nı seçin.
 
-3. **Mybackendpool**öğesini seçin.
+3. **Mybackendpool** öğesini seçin.
 
-4. **Hedefler**' in altında, açılan listeden **sanal makine** ' yi seçin.
+4. **Hedefler** ' in altında, açılan listeden **sanal makine** ' yi seçin.
 
-5. **Sanal makine** ve **ağ arabirimleri**altında, açılan listelerden **myvm** ve **myVM2** sanal makinelerini ve bunlarla ilişkili ağ arabirimlerini seçin.
+5. **Sanal makine** ve **ağ arabirimleri** altında, açılan listelerden **myvm** ve **myVM2** sanal makinelerini ve bunlarla ilişkili ağ arabirimlerini seçin.
 
     ![Arka uç sunucuları ekleme](../media/application-gateway-web-application-firewall-portal/application-gateway-backend.png)
 
-6. **Kaydet**’i seçin.
+6. **Kaydet** ’i seçin.
 
 7. Sonraki adıma geçmeden önce dağıtımın tamamlanmasını bekleyin.
 
@@ -216,23 +216,23 @@ Bu örnekte, yalnızca Azure 'un Application Gateway 'i başarıyla oluşturduğ
 Bu makalede, uygulama ağ geçidi, algılama ve önleme amaçlarıyla verileri depolamak için bir depolama hesabı kullanır. Ayrıca Azure Izleyici günlüklerini veya Olay Hub 'ını kullanarak verileri kaydedebilirsiniz.
 
 1. Azure portal sol üst köşesinde **kaynak oluştur** ' u seçin.
-1. **Depolama**' yı ve ardından **depolama hesabı**' nı seçin.
-1. *Kaynak grubu*için kaynak grubu için **myResourceGroupAG** öğesini seçin.
+1. **Depolama** ' yı ve ardından **depolama hesabı** ' nı seçin.
+1. *Kaynak grubu* için kaynak grubu için **myResourceGroupAG** öğesini seçin.
 1. Depolama hesabının adı için *myagstore1* yazın.
-1. Diğer ayarlar için varsayılan değerleri kabul edin ve ardından **gözden geçir + oluştur**' u seçin.
-1. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
+1. Diğer ayarlar için varsayılan değerleri kabul edin ve ardından **gözden geçir + oluştur** ' u seçin.
+1. Ayarları gözden geçirin ve ardından **Oluştur** ' u seçin.
 
 ### <a name="configure-diagnostics"></a>Tanılama yapılandırma
 
 Tanılamayı ApplicationGatewayAccessLog, ApplicationGatewayPerformanceLog ve ApplicationGatewayFirewallLog günlüklerine verileri kaydedecek şekilde yapılandırın.
 
-1. Sol taraftaki menüden **tüm kaynaklar**' ı ve ardından *myappgateway*' i seçin.
-2. Izleme altında **Tanılama ayarları**' nı seçin.
-3. **Tanılama ayarı Ekle**' yi seçin.
+1. Sol taraftaki menüden **tüm kaynaklar** ' ı ve ardından *myappgateway* ' i seçin.
+2. Izleme altında **Tanılama ayarları** ' nı seçin.
+3. **Tanılama ayarı Ekle** ' yi seçin.
 4. Tanılama ayarlarının adı olarak *Mydiagnosticssettings* yazın.
-5. **Bir depolama hesabına arşiv**' i seçin ve ardından **Yapılandır** ' ı seçerek daha önce oluşturduğunuz *myagstore1* depolama hesabını seçin ve ardından **Tamam**' ı seçin.
+5. **Bir depolama hesabına arşiv** ' i seçin ve ardından **Yapılandır** ' ı seçerek daha önce oluşturduğunuz *myagstore1* depolama hesabını seçin ve ardından **Tamam** ' ı seçin.
 6. Toplanacak ve saklanacak uygulama ağ geçidi günlüklerini seçin.
-7. **Kaydet**’i seçin.
+7. **Kaydet** ’i seçin.
 
     ![Tanılama yapılandırma](../media/application-gateway-web-application-firewall-portal/application-gateway-diagnostics.png)
 
@@ -248,7 +248,7 @@ Uygulama ağ geçidi oluşturmak için IIS gerekli olmasa da, Azure 'un uygulama
 
 1. Uygulama ağ geçidinin genel IP adresini **genel bakış** sayfasında bulabilirsiniz. ![ Uygulama Ağ Geçidi genel IP adresini Kaydet](../media/application-gateway-web-application-firewall-portal/application-gateway-record-ag-address.png) 
 
-   Ya da, **tüm kaynaklar**' ı seçip Arama kutusuna *Myagpublicıpaddress* girebilir ve arama sonuçlarında bunu seçebilirsiniz. Azure **genel bakış** SAYFASıNDA genel IP adresini görüntüler.
+   Ya da, **tüm kaynaklar** ' ı seçip Arama kutusuna *Myagpublicıpaddress* girebilir ve arama sonuçlarında bunu seçebilirsiniz. Azure **genel bakış** SAYFASıNDA genel IP adresini görüntüler.
 1. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın.
 1. Yanıtı denetleyin. Geçerli bir yanıt, uygulama ağ geçidinin başarıyla oluşturulduğunu ve arka uca başarıyla bağlanabildiğini doğrular.
 
@@ -260,10 +260,10 @@ Uygulama ağ geçidiyle oluşturduğunuz kaynaklara artık ihtiyacınız kalmad�
 
 Kaynak grubunu kaldırmak için:
 
-1. Azure portal sol menüsünde **kaynak grupları**' nı seçin.
+1. Azure portal sol menüsünde **kaynak grupları** ' nı seçin.
 2. **Kaynak grupları** sayfasında, listede **myResourceGroupAG** araması yapın ve ardından seçin.
-3. **Kaynak grubu sayfasında**, **kaynak grubunu sil**' i seçin.
-4. **Kaynak grubu adını yazmak** için *MyResourceGroupAG* girin ve **Sil**' i seçin.
+3. **Kaynak grubu sayfasında** , **kaynak grubunu sil** ' i seçin.
+4. **Kaynak grubu adını yazmak** için *MyResourceGroupAG* girin ve **Sil** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

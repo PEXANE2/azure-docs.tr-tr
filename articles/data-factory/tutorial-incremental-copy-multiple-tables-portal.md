@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: b07c53d048d60b555c33cacf42557f5da26552cc
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/09/2020
+ms.openlocfilehash: 065cfe6695d7651d3cda49ad32428127633b834c
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637488"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555456"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>SQL Server içindeki birden çok tablodan verileri, Azure portal kullanarak Azure SQL veritabanındaki bir veritabanına artımlı olarak yükleme
 
@@ -42,11 +42,11 @@ Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
 ## <a name="overview"></a>Genel Bakış
 Bu çözümü oluşturmak için önemli adımlar şunlardır: 
 
-1. **Eşit sütununu seçin** .
+1. **Eşit sütununu seçin**.
     
     Kaynak veri deposunda her çalıştırma için yeni veya güncelleştirilmiş kayıtları tanımlamak için her tablodan kullanılabilen bir sütun seçin. Normalde, satırlar oluşturulduğunda veya güncelleştirildiğinde seçilen bu sütundaki veriler (örneğin, last_modify_time veya kimlik) artmaya devam eder. Bu sütundaki en büyük değer eşik olarak kullanılır.
 
-1. **Eşik değerini depolamak için veri deposunu hazırlayın** .   
+1. **Eşik değerini depolamak için veri deposunu hazırlayın**.   
     
     Bu öğreticide, eşik değerini bir SQL veritabanında depolayacaksınız.
 
@@ -68,8 +68,8 @@ Bu çözümü oluşturmak için önemli adımlar şunlardır:
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
-* **SQL Server** . Bu öğreticide kaynak veri deposu olarak bir SQL Server veritabanı kullanırsınız. 
-* **Azure SQL veritabanı** . Azure SQL veritabanı 'ndaki bir veritabanını havuz veri deposu olarak kullanırsınız. SQL veritabanında bir veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) . 
+* **SQL Server**. Bu öğreticide kaynak veri deposu olarak bir SQL Server veritabanı kullanırsınız. 
+* **Azure SQL veritabanı**. Azure SQL veritabanı 'ndaki bir veritabanını havuz veri deposu olarak kullanırsınız. SQL veritabanında bir veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) . 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>SQL Server veritabanınızda kaynak tabloları oluşturma
 
@@ -236,7 +236,7 @@ END
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
-2. Sol menüde, **kaynak**  >  **Analizi**  >  **Data Factory** oluştur ' u seçin: 
+2. Sol menüde, **kaynak**  >  **tümleştirmesi**  >  **Data Factory** oluştur ' u seçin: 
    
    ![“Yeni” bölmesinde Data Factory seçimi](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -479,7 +479,7 @@ Bu işlem hattı parametre olarak tablo adları listesini alır. ForEach etkinli
 
         | Ad | Tür | Değer | 
         | ---- | ---- | ----- |
-        | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
+        | LastModifiedtime | Tarih-Saat | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | Dize | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![Saklı Yordam Etkinliği - saklı yordam ayarları](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)

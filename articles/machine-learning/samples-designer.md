@@ -1,7 +1,7 @@
 ---
 title: Tasarımcı için veri kümeleri & örnek işlem hatları
 titleSuffix: Azure Machine Learning
-description: Makine öğrenimi işlem hatlarınızı atlayaöğrenmek için Azure Machine Learning tasarımcısında örnekleri kullanın.
+description: Makine öğrenimi işlem hatlarınızı atlayaöğrenmek için Azure Machine Learning tasarımcısında örnekleri nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/14/2020
 ms.custom: designer
-ms.openlocfilehash: ecdb011310d8aa5bd63e9b9e9679bb525cb4f7b3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: a27e18d9b6f6307f1cc8ed48ca897dd4d1f0f1f3
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074609"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555507"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Azure Machine Learning Designer için veri kümeleri & örnek işlem hatları
 
@@ -36,7 +36,7 @@ Tasarımcı örneği kullanımı aşağıda verilmiştir:
 
 1. <a href="https://ml.azure.com?tabs=jre" target="_blank">Ml.Azure.com</a>'de oturum açın ve birlikte çalışmak istediğiniz çalışma alanını seçin.
 
-1. **Tasarımcı**' yı seçin.
+1. **Tasarımcı** ' yı seçin.
 
 1. **Yeni işlem hattı** bölümünde örnek bir işlem hattı seçin.
 
@@ -44,9 +44,9 @@ Tasarımcı örneği kullanımı aşağıda verilmiştir:
 
 1. Bir işlem hattını çalıştırmak için, önce varsayılan işlem hedefini, ardışık düzeni çalıştırmak için ayarlamanız gerekir.
 
-   1. Tuvalin sağındaki **Ayarlar** bölmesinde, **işlem hedefini seç**' i seçin.
+   1. Tuvalin sağındaki **Ayarlar** bölmesinde, **işlem hedefini seç** ' i seçin.
 
-   1. Görüntülenen iletişim kutusunda, var olan bir işlem hedefini seçin veya yeni bir tane oluşturun. **Kaydet**'i seçin.
+   1. Görüntülenen iletişim kutusunda, var olan bir işlem hedefini seçin veya yeni bir tane oluşturun. **Kaydet** ’i seçin.
 
    1. Bir işlem hattı çalıştırması göndermek için tuvalin en üstünde **Gönder** ' i seçin.
 
@@ -56,7 +56,7 @@ Tasarımcı örneği kullanımı aşağıda verilmiştir:
 1. İşlem hattı çalışmaya başladıktan sonra, daha fazla bilgi edinmek için işlem hattını gözden geçirebilir ve her bir modülün çıktısını görüntüleyebilirsiniz. Modül çıkışlarını görüntülemek için aşağıdaki adımları kullanın:
 
    1. Tuvalde çıktısını görmek istediğiniz modüle sağ tıklayın.
-   1. **Görselleştir**' i seçin.
+   1. **Görselleştir** ' i seçin.
 
 
    En yaygın makine öğrenimi senaryolarından bazıları için örnekleri başlangıç noktaları olarak kullanın.
@@ -117,8 +117,8 @@ Azure Machine Learning tasarımcısında yeni bir işlem hattı oluşturduğunuz
 
 | Veri kümesi &nbsp; adı&nbsp;&nbsp;&nbsp;&nbsp;| Veri kümesi açıklaması |
 |-------------|:--------------------|
-| Yetişkin Census geliri Ikili sınıflandırma veri kümesi | > 100 ' nin ayarlanmış bir gelir dizini ile 16 yaşın üzerinde çalışan yetişkinler kullanılarak 1994 Census veritabanının bir alt kümesi.<br/>**Kullanım**: bir kişinin 50 bin üzerinde bir yıl boyunca mi olduğunu tahmin etmek için demografik kullanan kişileri sınıflandırın.<br/> **Ilgili araştırma**: Kohavi, R., Becker, B., (1996). [UCI Machine Learning deposu](https://archive.ics.uci.edu/ml). Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi|
-|Otomobil fiyat verileri (ham)|, Bir sigorta riski puanı ve bu fiyat dahil olmak üzere, marka ve model bazında otomobil hakkında bilgiler.<br/> Risk puanı başlangıçta otomatik fiyatla ilişkilendirilir. Daha sonra, söz konusu bir işlemdeki bir işlem için, symboling olarak bilinen bir işlemde gerçek risk için ayarlanır. + 3 değeri, otomatik olarak riskli olduğunu ve büyük olasılıkla güvenli olduğunu belirten-3 değerini gösterir.<br/>**Kullanım**: gerileme veya çok sayıda sınıflandırma kullanarak, özelliklerle risk Puanını tahmin edin.<br/>**Ilgili araştırma**: schlikökü, J.C. (1987). [UCI Machine Learning deposu](https://archive.ics.uci.edu/ml). Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi. |
+| Yetişkin Census geliri Ikili sınıflandırma veri kümesi | > 100 ' nin ayarlanmış bir gelir dizini ile 16 yaşın üzerinde çalışan yetişkinler kullanılarak 1994 Census veritabanının bir alt kümesi.<br/>**Kullanım** : bir kişinin 50 bin üzerinde bir yıl boyunca mi olduğunu tahmin etmek için demografik kullanan kişileri sınıflandırın.<br/> **Ilgili araştırma** : Kohavi, R., Becker, B., (1996). [UCI Machine Learning deposu](https://archive.ics.uci.edu/ml). Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi|
+|Otomobil fiyat verileri (ham)|, Bir sigorta riski puanı ve bu fiyat dahil olmak üzere, marka ve model bazında otomobil hakkında bilgiler.<br/> Risk puanı başlangıçta otomatik fiyatla ilişkilendirilir. Daha sonra, söz konusu bir işlemdeki bir işlem için, symboling olarak bilinen bir işlemde gerçek risk için ayarlanır. + 3 değeri, otomatik olarak riskli olduğunu ve büyük olasılıkla güvenli olduğunu belirten-3 değerini gösterir.<br/>**Kullanım** : gerileme veya çok sayıda sınıflandırma kullanarak, özelliklerle risk Puanını tahmin edin.<br/>**Ilgili araştırma** : schlikökü, J.C. (1987). [UCI Machine Learning deposu](https://archive.ics.uci.edu/ml). Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi. |
 | CRM uygulama paylaşılan etiketleri |KDD Fin2009 müşteri ilişkisi tahmin sınamasına ait Etiketler ([orange_small_train_appetency. Etiketler](http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels)).|
 |Paylaşılan CRM dalgalanması etiketleri|KDD Fin2009 müşteri ilişkisi tahmin sınamasına ait Etiketler ([orange_small_train_churn. Etiketler](http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels)).|
 |CRM veri kümesi paylaşıldı | Bu veriler, KDD Fin2009 müşteri ilişkisi tahmin Challenge ([orange_small_train.data.zip](http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip)) ' den gelir. <br/>Veri kümesi, Fransız telekomünikasyon şirketi turuncu 'dan 50K müşterileri içerir. Her müşterinin 230 anonim özelliği vardır, bunlar sayısal ve 40 kategorik olan 190 ' dir. Özellikler çok seyrek. |
@@ -129,9 +129,9 @@ Azure Machine Learning tasarımcısında yeni bir işlem hattı oluşturduğunuz
 |Film derecelendirmeleri|Veri kümesi, film arası doldurulabilir veri kümesinin genişletilmiş bir sürümüdür. Veri kümesi, filmler için 170K derecelendirmesine sahiptir ve Twitter 'daki iyi yapılandırılmış ara kaynaklardan ayıklanır. Her örnek bir tweet temsil eder ve bir tanımlama grubu: Kullanıcı KIMLIĞI, ıMDB film KIMLIĞI, derecelendirme, zaman damgası, bu tweet için sık kullanılanlar sayısı ve bu tweet yeniden dengelendirme sayısı. DataSet, öneren Systems Challenge 2014 için bir. diyor, S. Çizms, B. Loni ve D. Tikk tarafından kullanılabilir hale getirilir.|
 |Hava durumu veri kümesi|NOAA 'den saatlik Land tabanlı hava durumu gözlemlerini ([201304 ile 201310 arasında Birleşik veriler](https://az754797.vo.msecnd.net/data/WeatherDataset.csv)).<br/>Hava durumu verileri, April-October 2013 zaman dilimini kapsayan Havaalanı hava durumu istasyonlarından gerçekleştirilen gözlemleri kapsamaktadır. Tasarımcıya yüklemeden önce veri kümesi şu şekilde işlenir:    <br/> -Hava durumu istasyonu kimlikleri ilgili Havaalanı kimliklerine eşlendi    <br/> -70 ortalamanızı ile ilişkilendirilmemiş Hava durumu istasyonları filtrelendi    <br/> -Tarih sütunu ayrı yıl, ay ve gün sütunlarına bölündü    <br/> -Şu sütunlar seçildi: Airportıd, Year, ay, gün, saat, saat dilimi, ufuk koşulu, görünürlük, dalgalı Thertype, DryBulbFarenheit, Dronblik, WetBulbFarenheit, Wetbulbgrat, DewPointFarenheit, Dewpointsanti, Relativenem, WIN,,,.|
 |Vikipedi SP 500 veri kümesi|Veriler https://www.wikipedia.org/) ,, XML verileri olarak depolanan her bir S&P 500 şirketinin makalelerine bağlı olarak, Vikipden türetilir.    <br/>Tasarımcıya yüklemeden önce veri kümesi şu şekilde işlenir:    <br/> -Belirli bir şirkete ait metin içeriğini Ayıkla    <br/> -Wiki biçimlendirmesini kaldır    <br/> -Alfasayısal olmayan karakterleri kaldır    <br/> -Tüm metni küçük harfe Dönüştür    <br/> -Bilinen şirket kategorileri eklendi    <br/>Bazı şirketlerde bir makalenin bulunamadığını, bu nedenle kayıt sayısının 500 ' den küçük olduğunu unutmayın.|
-|Restoran özellik verileri| Restoran ve bunların özellikleri (yiyecek türü, dinleme stili ve konum gibi) için bir meta veri kümesi. <br/>**Kullanım**: bir öneren sistemini eğitmek ve test etmek için bu veri kümesini diğer iki restoran veri kümesiyle birlikte kullanın.<br/> **Ilgili araştırma**: Bache, K. ve Lichman, M. (2013). [UCI Machine Learning deposu](https://archive.ics.uci.edu/ml). Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi.|
-|Restoran derecelendirmeleri| Kullanıcılar tarafından, 0 ' dan 2 ' ye kadar bir ölçeğe göre restoranlar için verilen derecelendirmeleri içerir.<br/>**Kullanım**: bir öneren sistemini eğitmek ve test etmek için bu veri kümesini diğer iki restoran veri kümesiyle birlikte kullanın. <br/>**Ilgili araştırma**: Bache, K. ve Lichman, M. (2013). [UCI Machine Learning deposu](https://archive.ics.uci.edu/ml). Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi.|
-|Restoran müşteri verileri| Demografik ve Tercihler dahil olmak üzere müşteriler hakkında bir meta veri kümesi. <br/>**Kullanım**: bir öneren sistemini eğitmek ve test etmek için bu veri kümesini diğer iki restoran veri kümesiyle birlikte kullanın. <br/> **Ilgili araştırma**: Bache, K. ve Lichman, M. (2013). [UCI Machine Learning deposu](https://archive.ics.uci.edu/ml) Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi.|
+|Restoran özellik verileri| Restoran ve bunların özellikleri (yiyecek türü, dinleme stili ve konum gibi) için bir meta veri kümesi. <br/>**Kullanım** : bir öneren sistemini eğitmek ve test etmek için bu veri kümesini diğer iki restoran veri kümesiyle birlikte kullanın.<br/> **Ilgili araştırma** : Bache, K. ve Lichman, M. (2013). [UCI Machine Learning deposu](https://archive.ics.uci.edu/ml). Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi.|
+|Restoran derecelendirmeleri| Kullanıcılar tarafından, 0 ' dan 2 ' ye kadar bir ölçeğe göre restoranlar için verilen derecelendirmeleri içerir.<br/>**Kullanım** : bir öneren sistemini eğitmek ve test etmek için bu veri kümesini diğer iki restoran veri kümesiyle birlikte kullanın. <br/>**Ilgili araştırma** : Bache, K. ve Lichman, M. (2013). [UCI Machine Learning deposu](https://archive.ics.uci.edu/ml). Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi.|
+|Restoran müşteri verileri| Demografik ve Tercihler dahil olmak üzere müşteriler hakkında bir meta veri kümesi. <br/>**Kullanım** : bir öneren sistemini eğitmek ve test etmek için bu veri kümesini diğer iki restoran veri kümesiyle birlikte kullanın. <br/> **Ilgili araştırma** : Bache, K. ve Lichman, M. (2013). [UCI Machine Learning deposu](https://archive.ics.uci.edu/ml) Irvine, CA: California Üniversitesi, bilgi Okulu ve bilgisayar bilimi.|
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

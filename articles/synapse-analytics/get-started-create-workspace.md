@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 10/07/2020
-ms.openlocfilehash: f7b96bcebb2106e52c62426ca2b64f9305e09141
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 65d89436486940ad5239dd2c3e83401b82234a21
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515418"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555473"
 ---
 # <a name="creating-a-synapse-workspace"></a>SYNAPSE çalışma alanı oluşturma
 
@@ -47,14 +47,9 @@ Azure SYNAPSE çalışma alanınız oluşturulduktan sonra, SYNAPSE Studio 'Yu a
 ## <a name="create-a-dedicated-sql-pool"></a>Adanmış bir SQL havuzu oluşturma
 
 1. SYNAPSE Studio 'da, sol taraftaki bölmede **Manage**  >  **SQL havuzlarını** Yönet ' i seçin.
-1. **Yeni** ' yi seçin ve şu ayarları girin:
-
-    |Ayar | Önerilen değer | 
-    |---|---|---|
-    |**SQL havuzu adı**| **SQLDB1**|
-    |**Performans düzeyi**|**DW100C**|
-    |||
-
+1. **Yeni** ' yi seçin
+1. **SQL havuzu adı** için **SQLDB1** seçin
+1. **Performans düzeyi** için **DW100C** seçin
 1. **Gözden geçir ve oluştur** > **Oluştur** 'u seçin. Adanmış SQL havuzunuz birkaç dakika içinde hazırlanacaktır. Adanmış SQL havuzunuz, **SQLDB1** olarak da bilinen ayrılmış bir SQL havuzu veritabanıyla ilişkilidir.
 
 Adanmış bir SQL havuzu, etkin olduğu sürece faturalanabilir kaynakları kullanır. Daha sonra maliyetleri azaltmak için havuzu duraklatabilirsiniz.
@@ -62,14 +57,10 @@ Adanmış bir SQL havuzu, etkin olduğu sürece faturalanabilir kaynakları kull
 ## <a name="create-a-serverless-apache-spark-pool"></a>Sunucusuz Apache Spark havuzu oluşturma
 
 1. SYNAPSE Studio 'da, sol taraftaki bölmede **Manage**  >  **Apache Spark havuzlarını** Yönet ' i seçin.
-1. **Yeni** ' yi seçin ve şu ayarları girin:
-
-    |Ayar | Önerilen değer | 
-    |---|---|---|
-    |**Apache Spark havuzu adı**|**Spark1**
-    |**Düğüm boyutu**| **Küçük**|
-    |**Düğüm sayısı**| En az 3 ve en fazla 3 olarak ayarlayın|
-
+1. **Yeni** ' yi seçin 
+1. **Apache Spark havuz adı** için **Spark1** girin.
+1. **Düğüm boyutu** için **küçük** girin.
+1. **Düğüm sayısı** için en az 3 ve en fazla 3 olarak ayarlayın
 1. **Gözden geçir ve oluştur** > **Oluştur** 'u seçin. Apache Spark havuzunuz birkaç saniye içinde hazırlanacaktır.
 
 Azure SYNAPSE 'te Spark etkinliği gerçekleştirdiğinizde, kullanmak için bir Spark havuzu belirtirsiniz. Havuz, Azure SYNAPSE 'in kaç Spark kaynağı kullandığını söyler. Yalnızca kullandığınız kaynaklar için ödeme yaparsınız. Havuzu kullanmayı etkin bir şekilde durdurduğunuzda, kaynakların otomatik olarak zaman aşımına uğrar ve geri dönüştürülür.

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2019
-ms.openlocfilehash: 9a195497b4376633bd3c767d7d0ea029109fdf9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/12/2020
+ms.openlocfilehash: c66fbe59fd5b2660d02bfca285f78666d64569fe
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76314547"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555609"
 ---
 # <a name="apply-sql-transformation"></a>SQL Dönüşümü Uygulama
 
@@ -29,11 +29,26 @@ SQL dönüştürme modülünü Uygula ' yı kullanarak şunları yapabilirsiniz:
 -   Verileri filtrelemek veya değiştirmek ve sorgu sonuçlarını veri tablosu olarak döndürmek için SQL sorgu deyimlerini yürütün.  
 
 > [!IMPORTANT]
-> Bu modülde kullanılan SQL altyapısı **SQLite**' dur. SQLite sözdizimi hakkında daha fazla bilgi için daha fazla bilgi için bkz. [SQLite tarafından anlaşıldığı SQL](https://www.sqlite.org/index.html) .  
+> Bu modülde kullanılan SQL altyapısı **SQLite** ' dur. SQLite sözdizimi hakkında daha fazla bilgi için bkz. [SQLite tarafından anlaşıldığı gibi SQL](https://www.sqlite.org/index.html).
+> Bu modül, verileri bellek DB 'de bulunan SQLite 'a çarpacaktır, bu nedenle modül yürütmesi çok daha fazla bellek gerektirir ve bir `Out of memory` hatayla karşılaşabilir. Bilgisayarınızda yeterli sayıda RAM bulunduğundan emin olun.
 
 ## <a name="how-to-configure-apply-sql-transformation"></a>SQL dönüşümünü Uygula ' yı yapılandırma  
 
 Modülün giriş olarak üç veri kümesi olabilir. Her giriş bağlantı noktasına bağlı veri kümelerine başvurduğunuzda, ve adlarını kullanmanız gerekir `t1` `t2` `t3` . Tablo numarası, giriş bağlantı noktasının dizinini gösterir.  
+
+Aşağıdaki örnek kod, iki tablonun nasıl birleştirileceğini gösterir. T1 ve T2, **SQL dönüşümünü Uygula** 'nın sol ve orta giriş bağlantı noktalarına bağlı iki veri kümeleridir:
+
+```sql
+SELECT t1.*
+    , t3.Average_Rating
+FROM t1 join
+    (SELECT placeID
+        , AVG(rating) AS Average_Rating
+    FROM t2
+    GROUP BY placeID
+    ) as t3
+on t1.placeID = t3.placeID
+```
   
 Kalan parametre, SQLite sözdizimini kullanan bir SQL sorgusudur. **SQL betiği** metin kutusuna birden çok satır yazarken her bir ifadeyi sonlandırmak için noktalı virgül kullanın. Aksi takdirde, satır sonları boşluklara dönüştürülür.  
 

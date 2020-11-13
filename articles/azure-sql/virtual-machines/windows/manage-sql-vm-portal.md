@@ -12,12 +12,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 467cbe91f4e516dc6facd2d30c38da1483308b77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b563e8ca93487a123f97f0bbb86624dc3be2db0
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316979"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556299"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>Azure 'da SQL Server VM 'Leri Azure portal kullanarak yönetin
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,17 +30,17 @@ ms.locfileid: "91316979"
 ## <a name="remarks"></a>Açıklamalar
 
 - Azure 'da SQL Server VM 'lerinizi görüntülemek ve yönetmek için [**SQL sanal makineler**](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) kaynağını kullanmanızı öneririz. Ancak şu anda **SQL sanal makineler** kaynağı, [destek sonu](sql-server-2008-extend-end-of-support.md) SQL Server VM 'lerinin yönetimini desteklemez. Destek sonu SQL Server sanal makinelerinizin ayarlarını yönetmek için, bunun yerine kullanım dışı [SQL Server Yapılandırma sekmesini](#access-the-sql-server-configuration-tab) kullanın. 
-- **SQL sanal makineler** kaynağı yalnızca [SQL VM kaynak sağlayıcısına kayıtlı](sql-vm-resource-provider-register.md)SQL Server VM 'ler için kullanılabilir. 
+- **SQL sanal makineler** kaynağı yalnızca [SQL IaaS aracısı uzantısına kayıtlı](sql-agent-extension-manually-register-single-vm.md)SQL Server VM 'ler için kullanılabilir. 
 
 
 ## <a name="access-the-sql-virtual-machines-resource"></a>SQL sanal makineler kaynağına erişin
 **SQL sanal makineler** kaynağına erişmek için aşağıdakileri yapın:
 
 1. [Azure portalını](https://portal.azure.com) açın. 
-1. **Tüm hizmetler**' i seçin. 
+1. **Tüm hizmetler** ' i seçin. 
 1. Arama kutusuna **SQL sanal makinelerini** girin.
 1. (İsteğe bağlı): Bu seçeneği **Sık Kullanılanlar** menünüzde eklemek için **SQL sanal makineler** ' in yanındaki yıldızı seçin. 
-1. **SQL sanal makinelerini**seçin. 
+1. **SQL sanal makinelerini** seçin. 
 
    ![Tüm hizmetlerde SQL Server sanal makineler bulun](./media/manage-sql-vm-portal/sql-vm-search.png)
 
@@ -57,15 +57,15 @@ ms.locfileid: "91316979"
 > **SQL sanal makineler** kaynağı adanmış SQL Server ayarları içindir. **Sanal makine** kutusunda VM 'nin adını seçerek VM 'ye özgü ayarları açın, ancak SQL Server dışlamalı. 
 
 ## <a name="access-the-sql-server-configuration-tab"></a>SQL Server yapılandırma sekmesine erişin
-**SQL Server yapılandırma** sekmesi kullanım dışı bırakıldı. Şu anda, [destek sonu](sql-server-2008-extend-end-of-support.md) SQL Server vm 'leri SQL Server ve [SQL VM kaynak sağlayıcısına kayıtlı](sql-vm-resource-provider-register.md)olmayan VM 'leri yönetmeye yönelik tek yöntem budur.
+**SQL Server yapılandırma** sekmesi kullanım dışı bırakıldı. Şu anda, [destek sonu](sql-server-2008-extend-end-of-support.md) SQL Server VM 'LERI ve [SQL IaaS Aracısı uzantısına kayıtlı](sql-agent-extension-manually-register-single-vm.md)olmayan SQL Server VM 'leri yönetmeye yönelik tek yöntem budur.
 
 Kullanım dışı **SQL Server yapılandırma** sekmesine erişmek için **sanal makineler** kaynağına gidin. Aşağıdaki adımları kullanın:
 
 1. [Azure portalını](https://portal.azure.com) açın. 
-1. **Tüm hizmetler**' i seçin. 
+1. **Tüm hizmetler** ' i seçin. 
 1. Arama kutusuna **sanal makineler** girin.
 1. (İsteğe bağlı): Bu seçeneği **Sık Kullanılanlar** menünüzde eklemek için **sanal makineler** ' in yanındaki yıldızı seçin. 
-1. **Sanal makineler**'i seçin. 
+1. **Sanal makineler** 'i seçin. 
 
    ![Sanal makineleri ara](./media/manage-sql-vm-portal/vm-search.png)
 
@@ -76,7 +76,7 @@ Kullanım dışı **SQL Server yapılandırma** sekmesine erişmek için **sanal
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için aşağıdaki makaleleri inceleyin: 
+Daha fazla bilgi için aşağıdaki makalelere bakın: 
 
 * [Windows VM 'de SQL Server genel bakış](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows VM 'de SQL Server hakkında SSS](frequently-asked-questions-faq.md)

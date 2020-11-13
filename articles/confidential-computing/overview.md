@@ -8,12 +8,12 @@ ms.subservice: workloads
 ms.topic: overview
 ms.date: 09/22/2020
 ms.author: JenCook
-ms.openlocfilehash: 16f45c39a329998f4b4da4ea89315683a0fab790
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 44479db6b29075e87b0d2dcef6f0d9bc1881738c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90967583"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560834"
 ---
 # <a name="confidential-computing-on-azure"></a>Azure 'da gizli bilgi işlem
 
@@ -37,7 +37,7 @@ Bulut verilerinizin güvenliğini güvenli hale getirmenin önemli olduğunu bil
 - Nasıl yaparım? şirketimin içindeki ayrıcalıklı yöneticilerden güvenlik tehditleri önlemektir mi?
 - Üçüncü tarafların hassas müşteri verilerine erişmesini Engelleyebildiğim daha fazla yol var mı?
 
-Microsoft Azure, saldırı yüzeyinizi daha güçlü veri koruma kazanmak için en aza indirmenize yardımcı olur Azure, istemci tarafı şifreleme ve sunucu tarafı şifreleme gibi modellerle [**bekleyen verileri**](../security/fundamentals/encryption-atrest.md) korumak için zaten birçok araç sunmaktadır. Ayrıca, Azure, [**iletim içindeki VERILERI**](../security/fundamentals/data-encryption-best-practices.md#protect-data-in-transit) TLS ve https gibi güvenli protokoller aracılığıyla şifrelemek için mekanizmalar sunar. Bu sayfada veri şifrelemenin üçüncü bir tarafı tanıtılmıştır. **Kullanımdaki verilerin**şifrelenmesi.
+Microsoft Azure, saldırı yüzeyinizi daha güçlü veri koruma kazanmak için en aza indirmenize yardımcı olur Azure, istemci tarafı şifreleme ve sunucu tarafı şifreleme gibi modellerle [**bekleyen verileri**](../security/fundamentals/encryption-atrest.md) korumak için zaten birçok araç sunmaktadır. Ayrıca, Azure, [**iletim içindeki VERILERI**](../security/fundamentals/data-encryption-best-practices.md#protect-data-in-transit) TLS ve https gibi güvenli protokoller aracılığıyla şifrelemek için mekanizmalar sunar. Bu sayfada veri şifrelemenin üçüncü bir tarafı tanıtılmıştır. **Kullanımdaki verilerin** şifrelenmesi.
 
 ## <a name="introduction-to-confidential-computing"></a>Gizli bilgi işlem konusuna giriş 
 
@@ -49,11 +49,11 @@ T, yalnızca yetkili kodun yürütülmesini zorlayan bir ortamdır. T 'deki herh
 Bulutta çalışan iş yükleri için güven gerekir. Bu güveni, uygulamanızın farklı bileşenlerini etkinleştiren çeşitli sağlayıcılara verirsiniz.
 
 
-**Uygulama yazılım satıcıları**: açık kaynak kullanarak veya şirket içi uygulama yazılımı oluşturarak şirket içinde dağıtımı yaparak yazılıma güvenin.
+**Uygulama yazılım satıcıları** : açık kaynak kullanarak veya şirket içi uygulama yazılımı oluşturarak şirket içinde dağıtımı yaparak yazılıma güvenin.
 
-**Donanım satıcıları**: şirket içi donanım veya şirket içi donanım kullanarak donanıma güvenin. 
+**Donanım satıcıları** : şirket içi donanım veya şirket içi donanım kullanarak donanıma güvenin. 
 
-**Altyapı sağlayıcıları**: bulut sağlayıcılarına güvenin veya kendi şirket içi veri merkezlerinizi yönetin.
+**Altyapı sağlayıcıları** : bulut sağlayıcılarına güvenin veya kendi şirket içi veri merkezlerinizi yönetin.
 
 
 Azure gizli bilgi işlem, işlem bulutu altyapısının çeşitli yönleri genelinde güven gereksinimini azaltarak bulut sağlayıcısına güvenmeyi kolaylaştırır. Azure gizli bilgi işlem, konak işletim sistemi çekirdeği, hiper yönetici, VM Yöneticisi ve konak Yöneticisi için güveni en aza indirir.
@@ -68,13 +68,13 @@ Daha düşük bir TCB daha yüksek güvenlik anlamına gelir. Çeşitli güvenli
 
 Azure gizli bilgi işlem, sanallaştırılmış bir ortamda gizli bilgi işlem özelliklerinden yararlanmanızı sağlar. Artık güvenli donanımın üzerine derlemek için araçlar, yazılımlar ve bulut altyapısını kullanabilirsiniz.  
 
-**Yetkisiz erişimi engelleyin**: bulutta hassas verileri çalıştırın. Azure 'un şimdiye kadar en iyi veri korumasını sağladığı güvenle, bugüne kadar çok değişiklik yapılmamaktadır.
+**Yetkisiz erişimi engelleyin** : bulutta hassas verileri çalıştırın. Azure 'un şimdiye kadar en iyi veri korumasını sağladığı güvenle, bugüne kadar çok değişiklik yapılmamaktadır.
 
-**Mevzuata uyumluluğu**: kişisel bilgileri korumak ve kurumsal IP güvenliğini sağlamak için kuruluşa geçiş yapın ve kamu düzenlemelerine uygun şekilde tam denetim sağlayın.
+**Mevzuata uyumluluğu** : kişisel bilgileri korumak ve kurumsal IP güvenliğini sağlamak için kuruluşa geçiş yapın ve kamu düzenlemelerine uygun şekilde tam denetim sağlayın.
 
-**Güvenli ve güvenilmeyen işbirliği**: büyük veri analizlerinin ve daha derin Öngörüler 'in kilidini açmak için kuruluşlar genelinde, hatta rakipler genelinde sektör genelinde iş ölçeğinde sorunları ortadan kaldırır.
+**Güvenli ve güvenilmeyen işbirliği** : büyük veri analizlerinin ve daha derin Öngörüler 'in kilidini açmak için kuruluşlar genelinde, hatta rakipler genelinde sektör genelinde iş ölçeğinde sorunları ortadan kaldırır.
 
-**Yalıtılmış işleme**: özel veriler üzerinde, görme engelli bir yükümlülüğün sorumluluğun kaldırılması için yeni bir ürün dalgası sunun. Kullanıcı verileri, hizmet sağlayıcısı tarafından bile alınamaz. 
+**Yalıtılmış işleme** : özel veriler üzerinde, görme engelli bir yükümlülüğün sorumluluğun kaldırılması için yeni bir ürün dalgası sunun. Kullanıcı verileri, hizmet sağlayıcısı tarafından bile alınamaz. 
 
 ## <a name="get-started"></a>Başlarken
 ### <a name="azure-compute"></a>Azure İşlem
@@ -84,7 +84,7 @@ Azure 'da gizli bilgi işlem IaaS tekliflerinin üzerine uygulamalar oluşturun.
 
 ### <a name="azure-security"></a>Azure Güvenlik 
 Doğrulama yöntemleri ve donanımla sınırlı anahtar yönetimi sayesinde iş yüklerinizin güvende olduğundan emin olun. 
-- Kanıtlama: [kanıtlama Microsoft Azure (Önizleme)](https://docs.microsoft.com/azure/attestation/overview)
+- Kanıtlama: [kanıtlama Microsoft Azure (Önizleme)](../attestation/overview.md)
 - Anahtar yönetimi: Managed-HSM (Önizleme)
 
 ### <a name="develop"></a>Geliştirme
@@ -94,7 +94,7 @@ Doğrulama yöntemleri ve donanımla sınırlı anahtar yönetimi sayesinde iş 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-DCsv2 serisi bir sanal makine dağıtın ve bu makineye OE SDK 'Yı yükler.
+DCsv2-Series bir sanal makine dağıtın ve bu makineye OE SDK 'Yı yüklersiniz.
 
 > [!div class="nextstepaction"]
 > [Azure Marketi 'nde gizli bilgi işlem VM 'si dağıtma](quick-create-marketplace.md)

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 6/10/2020
-ms.openlocfilehash: 402214da75bffd278e12db94f089d64acd62221e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: f94975b91a332e480a1b570c29f02040a1047f75
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84730162"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555422"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Veri Kopyalama aracını kullanarak, LastModifiedDate tabanlı yeni ve değiştirilmiş dosyaları artımlı olarak kopyalama
 
@@ -37,22 +37,22 @@ Bu öğreticide, şu görevleri tamamlayacaksınız:
 > * Veri Kopyalama aracını kullanarak bir işlem hattı oluşturun.
 > * İşlem hattı ve etkinlik çalıştırmalarını izleme.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-* **Azure depolama hesabı**: kaynak ve havuz veri depoları için BLOB depolama kullanın. Azure depolama hesabınız yoksa [depolama hesabı oluşturma](../storage/common/storage-account-create.md)' daki yönergeleri izleyin.
+* **Azure aboneliği** : Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+* **Azure depolama hesabı** : kaynak ve havuz veri depoları için BLOB depolama kullanın. Azure depolama hesabınız yoksa [depolama hesabı oluşturma](../storage/common/storage-account-create.md)' daki yönergeleri izleyin.
 
 ## <a name="create-two-containers-in-blob-storage"></a>Blob depolamada iki kapsayıcı oluşturma
 
 Aşağıdaki adımları tamamlayarak BLOB depolama alanınızı öğreticiye hazırlayın:
 
-1. **Kaynak**adlı bir kapsayıcı oluşturun. Bu görevi gerçekleştirmek için [Azure Depolama Gezgini](https://storageexplorer.com/)gibi çeşitli araçları kullanabilirsiniz.
+1. **Kaynak** adlı bir kapsayıcı oluşturun. Bu görevi gerçekleştirmek için [Azure Depolama Gezgini](https://storageexplorer.com/)gibi çeşitli araçları kullanabilirsiniz.
 
-2. **Hedef**adlı bir kapsayıcı oluşturun.
+2. **Hedef** adlı bir kapsayıcı oluşturun.
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
-1. Sol bölmede **Kaynak oluştur**'u seçin. **Analiz**  >  **Data Factory**seçin:
+1. Sol bölmede **Kaynak oluştur** 'u seçin. **Tümleştirme**  >  **Data Factory** seçin:
 
    ![Data Factory seçin](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -63,8 +63,8 @@ Aşağıdaki adımları tamamlayarak BLOB depolama alanınızı öğreticiye haz
    ![Ad kullanılamıyor hata iletisi](./media/doc-common-process/name-not-available-error.png)
 
    Ad değeriyle ilgili bir hata iletisi alırsanız, veri fabrikası için farklı bir ad girin. Örneğin, _**adınız**_**ADFTutorialDataFactory** adını kullanın. Data Factory yapıtlarını adlandırma kuralları için bkz. [Data Factory adlandırma kuralları](naming-rules.md).
-3. **Abonelik**altında yeni veri fabrikasını oluşturacağınız Azure aboneliğini seçin.
-4. **Kaynak grubu**altında şu adımlardan birini uygulayın:
+3. **Abonelik** altında yeni veri fabrikasını oluşturacağınız Azure aboneliğini seçin.
+4. **Kaynak grubu** altında şu adımlardan birini uygulayın:
 
     * **Mevcut olanı kullan** ' ı seçin ve ardından listeden var olan bir kaynak grubunu seçin.
 
@@ -72,9 +72,9 @@ Aşağıdaki adımları tamamlayarak BLOB depolama alanınızı öğreticiye haz
          
     Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).
 
-5. **Sürüm** bölümünde **V2**'yi seçin.
-6. **Konum**bölümünde veri fabrikasının konumunu seçin. Listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikanızın kullandığı veri depoları (örneğin, Azure depolama ve Azure SQL veritabanı) ve işlemler (örneğin, Azure HDInsight) başka konumlarda ve bölgelerde olabilir.
-8. **Oluştur**’u seçin.
+5. **Sürüm** bölümünde **V2** 'yi seçin.
+6. **Konum** bölümünde veri fabrikasının konumunu seçin. Listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikanızın kullandığı veri depoları (örneğin, Azure depolama ve Azure SQL veritabanı) ve işlemler (örneğin, Azure HDInsight) başka konumlarda ve bölgelerde olabilir.
+8. **Oluştur** ’u seçin.
 9. Data Factory oluşturulduktan sonra Data Factory giriş sayfası görüntülenir.
 10. Azure Data Factory Kullanıcı arabirimini (UI) ayrı bir sekmede açmak için **yazar & izleyici** kutucuğunu seçin:
 
@@ -88,15 +88,15 @@ Aşağıdaki adımları tamamlayarak BLOB depolama alanınızı öğreticiye haz
 
 2. **Özellikler** sayfasında, aşağıdaki adımları uygulayın:
 
-    a. **Görev adı**altında **Deltacopyfromblobpipeline**girin.
+    a. **Görev adı** altında **Deltacopyfromblobpipeline** girin.
 
-    b. **Görev temposunda veya görev zamanlaması**altında **zamanlamaya göre düzenli olarak çalıştır**' ı seçin.
+    b. **Görev temposunda veya görev zamanlaması** altında **zamanlamaya göre düzenli olarak çalıştır** ' ı seçin.
 
-    c. **Tetikleyici türü**altında, atlayan **pencere**' yi seçin.
+    c. **Tetikleyici türü** altında, atlayan **pencere** ' yi seçin.
 
-    d. **Yinelenme**altına **15 dakika**girin.
+    d. **Yinelenme** altına **15 dakika** girin.
 
-    e. **İleri**’yi seçin.
+    e. **İleri** ’yi seçin.
 
     Data Factory, belirtilen görev adıyla bir işlem hattı oluşturur.
 
@@ -106,13 +106,13 @@ Aşağıdaki adımları tamamlayarak BLOB depolama alanınızı öğreticiye haz
 
     a. Bağlantı eklemek için  **Yeni bağlantı oluştur** ' u seçin.
 
-    b. Galeriden **Azure Blob depolama** ' yı seçin ve ardından **devam**' ı seçin:
+    b. Galeriden **Azure Blob depolama** ' yı seçin ve ardından **devam** ' ı seçin:
 
     ![Azure blog depolamayı seçin](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-blob.png)
 
-    c. **Yeni bağlı hizmet (Azure Blob depolama)** sayfasında **depolama hesabı adı** listesinden depolama hesabınızı seçin. Bağlantıyı test edin ve **Oluştur**' u seçin.
+    c. **Yeni bağlı hizmet (Azure Blob depolama)** sayfasında **depolama hesabı adı** listesinden depolama hesabınızı seçin. Bağlantıyı test edin ve **Oluştur** ' u seçin.
 
-    d. Yeni bağlı hizmeti seçin ve ardından **İleri**' yi seçin:
+    d. Yeni bağlı hizmeti seçin ve ardından **İleri** ' yi seçin:
 
    ![Yeni bağlı hizmeti seçin](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-linkedservice.png)
 
@@ -122,13 +122,13 @@ Aşağıdaki adımları tamamlayarak BLOB depolama alanınızı öğreticiye haz
 
     ![Girdi dosyası veya klasörü seçin](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-input-file-folder.png)
 
-    b. **Dosya yükleme davranışı**altında **artımlı yük: LastModifiedDate**öğesini seçin.
+    b. **Dosya yükleme davranışı** altında **artımlı yük: LastModifiedDate** öğesini seçin.
 
-    c. **İkili kopya** ' yı seçin ve ardından **İleri**' yi seçin:
+    c. **İkili kopya** ' yı seçin ve ardından **İleri** ' yi seçin:
 
      ![Giriş dosyası veya klasör sayfasını seçin](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/check-binary-copy.png)
 
-5. **Hedef veri deposu** sayfasında, oluşturduğunuz **AzureBlobStorage** hizmetini seçin. Bu, kaynak veri deposuyla aynı depolama hesabıdır. Ardından **İleri**’yi seçin.
+5. **Hedef veri deposu** sayfasında, oluşturduğunuz **AzureBlobStorage** hizmetini seçin. Bu, kaynak veri deposuyla aynı depolama hesabıdır. Sonra **İleri** ’yi seçin.
 
 6. **Çıktı dosyasını veya klasörünü seçin** sayfasında aşağıdaki adımları uygulayın:
 
@@ -136,19 +136,19 @@ Aşağıdaki adımları tamamlayarak BLOB depolama alanınızı öğreticiye haz
 
     ![Çıkış dosyasını veya klasör sayfasını seçin](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-output-file-folder.png)
 
-    b. **İleri**’yi seçin.
+    b. **İleri** ’yi seçin.
 
-7. **Ayarlar** sayfasında **İleri**’yi seçin.
+7. **Ayarlar** sayfasında **İleri** ’yi seçin.
 
-8. **Özet** sayfasında, ayarları gözden geçirin ve ardından **İleri**' yi seçin.
+8. **Özet** sayfasında, ayarları gözden geçirin ve ardından **İleri** ' yi seçin.
 
     ![Özet sayfası](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/summary-page.png)
 
-9. **Dağıtım** sayfasında, işlem hattını (görev) izlemek için **İzleyici**’yi seçin.
+9. **Dağıtım** sayfasında, işlem hattını (görev) izlemek için **İzleyici** ’yi seçin.
 
     ![Dağıtım sayfası](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/deployment-page.png)
 
-10. Soldaki **İzleyici** sekmesinin otomatik olarak seçildiğine dikkat edin. Uygulama **izleyici** sekmesine geçer. İşlem hattının durumunu görürsünüz. Listeyi yenilemek için **Yenile**’yi seçin. Etkinlik çalıştırma ayrıntılarını görüntülemek veya işlem hattını yeniden çalıştırmak için işlem **hattı adı** altındaki bağlantıyı seçin.
+10. Soldaki **İzleyici** sekmesinin otomatik olarak seçildiğine dikkat edin. Uygulama **izleyici** sekmesine geçer. İşlem hattının durumunu görürsünüz. Listeyi yenilemek için **Yenile** ’yi seçin. Etkinlik çalıştırma ayrıntılarını görüntülemek veya işlem hattını yeniden çalıştırmak için işlem **hattı adı** altındaki bağlantıyı seçin.
 
     ![Listeyi yenile ve etkinlik çalıştırma ayrıntılarını görüntüle](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs-1.png)
 
@@ -160,11 +160,11 @@ Aşağıdaki adımları tamamlayarak BLOB depolama alanınızı öğreticiye haz
 
     ![Kaynak kapsayıcısında veya hedef kapsayıcıda dosya yok](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3.png)
 
-12. Boş bir metin dosyası oluşturun ve **file1.txt**adlandırın. Bu metin dosyasını Depolama hesabınızdaki kaynak kapsayıcıya yükleyin. [Azure Depolama Gezgini](https://storageexplorer.com/)gibi bu görevleri gerçekleştirmek için çeşitli araçları kullanabilirsiniz.
+12. Boş bir metin dosyası oluşturun ve **file1.txt** adlandırın. Bu metin dosyasını Depolama hesabınızdaki kaynak kapsayıcıya yükleyin. [Azure Depolama Gezgini](https://storageexplorer.com/)gibi bu görevleri gerçekleştirmek için çeşitli araçları kullanabilirsiniz.
 
     ![file1.txt oluşturun ve kaynak kapsayıcıya yükleyin](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
 
-13. İşlem hattı **çalıştırmaları** görünümüne geri dönmek için **tüm işlem hattı çalıştırmaları**' nı seçin ve aynı işlem hattının yeniden otomatik olarak tetiklenmesi için bekleyin.  
+13. İşlem hattı **çalıştırmaları** görünümüne geri dönmek için **tüm işlem hattı çalıştırmaları** ' nı seçin ve aynı işlem hattının yeniden otomatik olarak tetiklenmesi için bekleyin.  
 
 14. İkinci işlem hattı çalıştırıldığında, etkinliğin çalışma ayrıntılarını gözden geçirmek için yukarıda bahsedilen adımların aynısını izleyin.  
 
@@ -172,7 +172,7 @@ Aşağıdaki adımları tamamlayarak BLOB depolama alanınızı öğreticiye haz
 
     ![file1.txt, kaynak kapsayıcıdan hedef kapsayıcıya kopyalanmış](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs6.png)
 
-15. Başka bir boş metin dosyası oluşturun ve **file2.txt**adlandırın. Bu metin dosyasını Blob Depolama hesabınızdaki kaynak kapsayıcıya yükleyin.
+15. Başka bir boş metin dosyası oluşturun ve **file2.txt** adlandırın. Bu metin dosyasını Blob Depolama hesabınızdaki kaynak kapsayıcıya yükleyin.
 
 16. İkinci metin dosyası için 13. ve 14. adımları yineleyin. Bu işlem hattı çalıştırıldığında, kaynak kapsayıcıdan yalnızca yeni dosyanın (file2.txt) depolama hesabınızın hedef kapsayıcısına kopyalandığını görürsünüz.  
 

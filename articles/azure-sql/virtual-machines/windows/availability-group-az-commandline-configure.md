@@ -13,12 +13,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: a85c1326501a362371d3bc961f5c5ae448e8d22e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9129d0cb44aea9b85c5569d4d939c0904c398c07
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790092"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556531"
 ---
 # <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Azure VM 'de SQL Server için bir kullanılabilirlik grubu yapılandırmak için PowerShell veya az CLı kullanın 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,7 +35,7 @@ Her zaman açık kullanılabilirlik grubunu yapılandırmak için aşağıdaki �
 
 - Bir [Azure aboneliği](https://azure.microsoft.com/free/).
 - Etki alanı denetleyicisi olan bir kaynak grubu. 
-- Azure 'daki bir veya daha fazla etki alanına katılmış VM, *aynı* kullanılabilirlik KÜMESINDE veya [SQL VM kaynak sağlayıcısına kaydedilmiş](sql-vm-resource-provider-register.md) *farklı* kullanılabilirlik bölgelerinde [SQL Server 2016 (veya üzeri) Enterprise Edition çalıştırıyor](./create-sql-vm-portal.md) .  
+- Azure 'daki bir veya daha fazla etki alanına katılmış VM, *aynı* kullanılabilirlik KÜMESINDE veya [SQL IaaS Aracısı Uzantısı ile kaydedilmiş](sql-agent-extension-manually-register-single-vm.md) *farklı* kullanılabilirlik bölgelerinde [SQL Server 2016 (veya üzeri) Enterprise Edition çalıştırıyor](./create-sql-vm-portal.md) .  
 - [PowerShell](/powershell/scripting/install/installing-powershell) veya [Azure CLI](/cli/azure/install-azure-cli)'nin en son sürümü. 
 - Kullanılabilir iki (herhangi bir varlık tarafından kullanılmayan) IP adresleri. Bunlardan biri iç yük dengeleyiciye yöneliktir. Diğeri, kullanılabilirlik grubu ile aynı alt ağda bulunan kullanılabilirlik grubu dinleyicisine yöneliktir. Var olan bir yük dengeleyiciyi kullanıyorsanız, kullanılabilirlik grubu dinleyicisi için yalnızca bir kullanılabilir IP adresine sahip olmanız gerekir. 
 
@@ -423,9 +423,9 @@ Bir çoğaltmayı kullanılabilirlik grubundan kaldırmak için:
 ---
 
 ## <a name="remove-listener"></a>Dinleyiciyi kaldır
-Azure CLı ile yapılandırılmış kullanılabilirlik grubu dinleyicisini daha sonra kaldırmanız gerekirse, SQL VM kaynak sağlayıcısı ' na gitmeniz gerekir. Dinleyici SQL VM kaynak sağlayıcısı aracılığıyla kaydedildiğinden, SQL Server Management Studio aracılığıyla silmeniz yeterlidir. 
+Azure CLı ile yapılandırılmış kullanılabilirlik grubu dinleyicisini daha sonra kaldırmanız gerekirse, SQL IaaS Aracısı uzantısı ' na gitmeniz gerekir. Dinleyici SQL IaaS Aracısı uzantısı aracılığıyla kaydedildiğinden, SQL Server Management Studio aracılığıyla silmeniz yeterlidir. 
 
-En iyi yöntem, Azure CLı 'de aşağıdaki kod parçacığını kullanarak SQL VM kaynak sağlayıcısı aracılığıyla bunu silmektir. Bunun yapılması, kullanılabilirlik grubu dinleyicisi meta verilerini SQL VM kaynak sağlayıcısından kaldırır. Ayrıca, dinleyiciyi kullanılabilirlik grubundan fiziksel olarak siler. 
+En iyi yöntem, Azure CLı 'de aşağıdaki kod parçacığını kullanarak SQL IaaS Aracısı uzantısı aracılığıyla silmektir. Bunun yapılması, kullanılabilirlik grubu dinleyicisi meta verilerini SQL IaaS Aracısı uzantısı 'ndan kaldırır. Ayrıca, dinleyiciyi kullanılabilirlik grubundan fiziksel olarak siler. 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -451,7 +451,7 @@ Remove-AzAvailabilityGroupListener -Name <Listener> `
 
 ## <a name="remove-cluster"></a>Kümeyi kaldır
 
-Kümeyi yok etmek için kümeden tüm düğümleri kaldırın ve ardından SQL VM kaynak sağlayıcısından küme meta verilerini kaldırın. Azure CLı veya PowerShell kullanarak bunu yapabilirsiniz. 
+Kümeyi yok etmek için kümeden tüm düğümleri kaldırın ve ardından SQL IaaS Aracısı uzantısından küme meta verilerini kaldırın. Azure CLı veya PowerShell kullanarak bunu yapabilirsiniz. 
 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -468,7 +468,7 @@ az sql vm remove-from-group --name <VM2 name>  --resource-group <resource group 
 
 Bunlar kümedeki tek VM 'lardır, küme yok edilir. Kümeden kaldırılan SQL Server VM 'lerden ayrı başka VM 'Ler varsa, diğer VM 'Ler kaldırılmaz ve küme yok edilmez. 
 
-Sonra, SQL VM kaynak sağlayıcısından küme meta verilerini kaldırın: 
+Sonra, SQL IaaS Aracısı uzantısından küme meta verilerini kaldırın: 
 
 ```azurecli-interactive
 # Remove the cluster from the SQL VM RP metadata
@@ -497,7 +497,7 @@ $sqlvm = Get-AzSqlVM -Name <VM Name> -ResourceGroupName <Resource Group Name>
 
 Bunlar kümedeki tek VM 'lardır, küme yok edilir. Kümeden kaldırılan SQL Server VM 'lerden ayrı başka VM 'Ler varsa, diğer VM 'Ler kaldırılmaz ve küme yok edilmez. 
 
-Sonra, SQL VM kaynak sağlayıcısından küme meta verilerini kaldırın: 
+Sonra, SQL IaaS Aracısı uzantısından küme meta verilerini kaldırın: 
 
 ```powershell-interactive
 # Remove the cluster metadata

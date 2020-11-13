@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: tasarımcı ile ML modellerini dağıtma'
 titleSuffix: Azure Machine Learning
-description: Bu öğreticide, Azure Machine Learning tasarımcısında tahmine dayalı analiz çözümünün nasıl oluşturulacağı gösterilmektedir. Sürükle ve bırak modüllerini kullanarak makine öğrenimi modelini eğitme, Puanlama ve dağıtma.
+description: Azure Machine Learning tasarımcısında bir tahmine dayalı analiz çözümü oluşturun. Sürükle ve bırak modüllerini kullanarak makine öğrenimi modelini eğitme, Puanlama ve dağıtma.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 95e5b3ac568cfa370fd1e49fad990b681aef46d9
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 31b742144bfb20af14cf6f5e95f5dfc951845ee2
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311507"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555524"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Öğretici: tasarımcı ile makine öğrenimi modeli dağıtma
 
@@ -40,7 +40,7 @@ Tasarımcı 'da makine öğrenimi modelinin nasıl eğeceğinizi ve puanlandıra
 
 ### <a name="create-a-real-time-inference-pipeline"></a>Gerçek zamanlı bir çıkarım işlem hattı oluşturma
 
-1. İşlem hattı tuvalinin üzerinde, **çıkarım ardışık düzen**  >  **gerçek zamanlı çıkarım işlem hattı**' nı seçin.
+1. İşlem hattı tuvalinin üzerinde, **çıkarım ardışık düzen**  >  **gerçek zamanlı çıkarım işlem hattı** ' nı seçin.
 
     :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png"alt-text="Ardışık düzen oluştur düğmesinin nerede bulunacağını gösteren ekran görüntüsü":::
 
@@ -48,9 +48,9 @@ Tasarımcı 'da makine öğrenimi modelinin nasıl eğeceğinizi ve puanlandıra
 
    ![Dağıtım için hazırlandıktan sonra işlem hattının beklenen yapılandırmasını gösteren ekran görüntüsü](./media/tutorial-designer-automobile-price-deploy/real-time-inference-pipeline.png)
 
-    **Çıkarım işlem hattı oluştur**' u seçtiğinizde birkaç şey meydana gelir:
+    **Çıkarım işlem hattı oluştur** ' u seçtiğinizde birkaç şey meydana gelir:
     
-    * Eğitilen model, modül paletinde bir **veri kümesi** modülü olarak depolanır. **Veri kümelerim**altında bulabilirsiniz.
+    * Eğitilen model, modül paletinde bir **veri kümesi** modülü olarak depolanır. **Veri kümelerim** altında bulabilirsiniz.
     * Model ve **bölünmüş verileri** **eğitme** gibi eğitim modülleri kaldırılır.
     * Kaydedilen eğitilen model ardışık düzene geri eklenir.
     * **Web hizmeti girişi** ve **Web hizmeti çıkış** modülleri eklendi. Bu modüller, Kullanıcı verilerinin işlem hattına girdiği ve verilerin döndürüldüğü yeri gösterir.
@@ -59,11 +59,11 @@ Tasarımcı 'da makine öğrenimi modelinin nasıl eğeceğinizi ve puanlandıra
     > Varsayılan olarak, **Web hizmeti girişi** , tahmine dayalı işlem hattını oluşturmak için kullanılan eğitim verileriyle aynı veri şemasını bekler. Bu senaryoda, şemaya bir değer dahildir. Ancak, fiyat tahmin sırasında bir faktör olarak kullanılmaz.
     >
 
-1. **Gönder**' i seçin ve aynı işlem hedefini kullanın ve birinci bölümde kullandığınız deneyin.
+1. **Gönder** ' i seçin ve aynı işlem hedefini kullanın ve birinci bölümde kullandığınız deneyin.
 
     İlk çalıştırıldıysanız, işlem hattının çalışmasının tamamlanması 20 dakikaya kadar sürebilir. Varsayılan işlem ayarlarının minimum düğüm boyutu 0 ' dır ve bu, tasarımcının boşta kaldıktan sonra kaynakları ayırması gerektiği anlamına gelir. İşlem kaynakları zaten ayrıldığından tekrarlanan işlem hattı çalıştırmaları daha az zaman alır. Ayrıca tasarımcı, verimliliği artırmak için her modül için önbelleğe alınmış sonuçları kullanır.
 
-1. **Dağıt**'ı seçin.
+1. **Dağıt** 'ı seçin.
 
 ## <a name="create-an-inferencing-cluster"></a>Bir ınıri yalıtma kümesi oluşturma
 
@@ -71,17 +71,17 @@ Görüntülenen iletişim kutusunda, modelinizi dağıtmak için mevcut herhangi
 
 1. **İşlem** sayfasına git görüntülenen Iletişim kutusunda **işlem** ' i seçin.
 
-1. Gezinti şeridinde, **çıkarım kümeleri**  >  **+ Yeni**' yi seçin.
+1. Gezinti şeridinde, **çıkarım kümeleri**  >  **+ Yeni** ' yi seçin.
 
     ![Yeni çıkarım kümesi bölmesine nasıl alınacağını gösteren ekran görüntüsü](./media/tutorial-designer-automobile-price-deploy/new-inference-cluster.png)
    
 1. Çıkarım kümesi bölmesinde yeni bir Kubernetes hizmeti yapılandırın.
 
-1. **İşlem adı**için *aks-COMPUTE* girin.
+1. **İşlem adı** için *aks-COMPUTE* girin.
     
-1. **Bölge**için kullanılabilen bir yakın bölge seçin.
+1. **Bölge** için kullanılabilen bir yakın bölge seçin.
 
-1. **Oluştur**’u seçin.
+1. **Oluştur** ’u seçin.
 
     > [!NOTE]
     > Yeni bir AKS hizmeti oluşturmak yaklaşık 15 dakika sürer. **Çıkarım kümeleri** sayfasında sağlama durumunu kontrol edebilirsiniz.
@@ -93,13 +93,13 @@ AKS hizmetiniz sağlamayı tamamladıktan sonra, dağıtımı tamamlamaya yönel
 
 1. Tuvalin üzerinde **Dağıt** ' ı seçin.
 
-1. **Yeni gerçek zamanlı uç noktayı dağıt**' ı seçin. 
+1. **Yeni gerçek zamanlı uç noktayı dağıt** ' ı seçin. 
 
 1. Oluşturduğunuz AKS kümesini seçin.
 
-1. **Dağıt**'ı seçin.
+1. **Dağıt** 'ı seçin.
     
-    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="Ardışık düzen oluştur düğmesinin nerede bulunacağını gösteren ekran görüntüsü":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="Yeni bir gerçek zamanlı uç noktanın nasıl ayarlanacağını gösteren ekran görüntüsü":::
 
     Dağıtım bittikten sonra tuvalin üzerindeki başarı bildirimi görüntülenir. İşlem birkaç dakika sürebilir.
 

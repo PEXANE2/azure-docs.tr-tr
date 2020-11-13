@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: eaaedc4404419e6028250a994077dd3df20b83d4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: fb1f1d098970927ba04c840e77ec0a0b8d76ca02
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539660"
+ms.locfileid: "94561327"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Azure Machine Learning için kurumsal güvenlik ve idare
 
@@ -105,7 +105,13 @@ Azure Machine Learning, `aml-` `Microsoft-AzureML-Support-App-` her çalışma a
 
 Azure Machine Learning kaynaklara fiziksel erişimi kısıtlamak için Azure sanal ağ (VNet) kullanabilirsiniz. VNET 'ler, genel İnternet 'ten kısmen veya tamamen yalıtılmış olan ağ ortamları oluşturmanıza olanak tanır. Bu, çözümünüz için saldırı yüzeyini ve veri kaybı olasılığını azaltır.
 
-Daha fazla bilgi için bkz. [sanal ağ yalıtımı ve gizliliğe genel bakış](how-to-network-security-overview.md).
+Daha fazla bilgi için, aşağıdaki belgelere bakın:
+
+* [Sanal ağ yalıtımı ve gizliliği genel bakış](how-to-network-security-overview.md)
+* [Güvenli çalışma alanı kaynakları](how-to-secure-workspace-vnet.md)
+* [Güvenli eğitim ortamı](how-to-secure-training-vnet.md)
+* [Güvenli çıkarım ortamı](how-to-secure-inferencing-vnet.md)
+* [Güvenli bir sanal ağda Studio 'yu kullanma](how-to-enable-studio-virtual-network.md)
 
 <a id="encryption-at-rest"></a><a id="azure-blob-storage"></a>
 
@@ -123,7 +129,7 @@ Microsoft, otomatik Machine Learning gibi hizmetleri kullanırken, birden çok m
 
 Role ve izlenmekte göre Azure Machine Learning birkaç izleme senaryosu vardır.
 
-| Rol | Kullanım için izleme | Açıklama |
+| Rol | Kullanım için izleme | Description |
 | ---- | ----- | ----- |
 | Yönetici, DevOps, MLOps | [Azure izleyici ölçümleri](#azure-monitor), [etkinlik günlüğü](#activity-log), [güvenlik açığı taraması](#vulnerability-scanning) | Hizmet düzeyi bilgileri |
 | Veri bilimcisi, MLOps | [İzleme çalıştırmaları](#monitor-runs) | Eğitim çalıştırmaları sırasında günlüğe kaydedilen bilgiler |

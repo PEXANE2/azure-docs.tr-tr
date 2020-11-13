@@ -11,12 +11,12 @@ ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/15/2020
-ms.openlocfilehash: 249e65b5a9440678015598d9969c0d2ed689c626
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 262e15754ba481ee37b6af9783e5a3bc82d9450c
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285360"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556365"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server için belge değişiklikleri
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,7 +33,7 @@ Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine (VM) dağıt
 
 | Değişiklikler | Ayrıntılar |
 | --- | --- |
-| **Otomatik RP kaydı** | Artık [otomatik kayıt](sql-vm-resource-provider-automatic-registration.md) özelliğini, aboneliğinize zaten dağıtılmış olan tüm SQL Server VM 'leri ve gelecekte eklenen SQL Server sanal makineleri otomatik olarak kaydedecek şekilde etkinleştirebilirsiniz.  | 
+| **Otomatik uzantı kaydı** | Artık [otomatik kayıt](sql-agent-extension-automatic-registration-all-vms.md) özelliğini, aboneliğinize zaten dağıtılmış olan tüm SQL Server sanal makinelerini [SQL IaaS Aracısı uzantısı](sql-server-iaas-agent-extension-automate-management.md)ile otomatik olarak kaydedecek şekilde etkinleştirebilirsiniz. Bu, tüm mevcut VM 'Ler için geçerlidir ve gelecekte eklenen tüm SQL Server VM 'Leri otomatik olarak kaydeder.   | 
 
 
 ## <a name="august-2020"></a>Ağustos 2020
@@ -49,7 +49,7 @@ Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine (VM) dağıt
 | Değişiklikler | Ayrıntılar |
 | --- | --- |
 | **Günlüğü Ultra diske geçir** | Yüksek performans ve düşük gecikme süresine karşı [günlük dosyanızı bir ultra diske nasıl geçirebileceğinizi](storage-migrate-to-ultradisk.md) öğrenin. | 
-| **PowerShell kullanarak AG oluşturma** | Artık, [PowerShell](availability-group-az-commandline-configure.md) ve Azure CLI kullanarak bir kullanılabilirlik grubu oluşturulmasını basitleştirmek mümkündür. | 
+| **Azure PowerShell kullanarak AG oluşturma** | Artık [Azure PowerShell](availability-group-az-commandline-configure.md) ve Azure CLI 'yi kullanarak bir kullanılabilirlik grubu oluşturulmasını basitleştirmek mümkündür. | 
 
 
 ## <a name="june-2020"></a>Haziran 2020
@@ -73,7 +73,7 @@ Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine (VM) dağıt
 
 | Değişiklikler | Ayrıntılar |
 | --- | --- |
-| **Azure Kamu desteği** | Artık [Azure Kamu](https://azure.microsoft.com/global-infrastructure/government/) bulutunda barındırılan sanal MAKINELER IÇIN SQL VM kaynak sağlayıcısı ile SQL Server sanal makineleri kaydetmek mümkündür. | 
+| **Azure Kamu desteği** | Artık [Azure Kamu](https://azure.microsoft.com/global-infrastructure/government/) bulutunda barındırılan sanal MAKINELER Için SQL IaaS Aracısı uzantısına sahip SQL Server sanal makineleri kaydetmek mümkündür. | 
 | &nbsp; | &nbsp; |
 
 ## <a name="2019"></a>2019
@@ -81,22 +81,22 @@ Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine (VM) dağıt
 |Değişiklikler | Ayrıntılar |
  --- | --- |
 | **Azure 'da ücretsiz DR çoğaltması** | [Yazılım güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3)'niz varsa şirket içi SQL Server Örneğiniz için Azure 'da olağanüstü durum kurtarma için [ücretsiz bir pasif örnek](business-continuity-high-availability-disaster-recovery-hadr-overview.md#free-dr-replica-in-azure) barındırabilirsiniz. | 
-| **Toplu kaynak sağlayıcısı kaydı** | Artık SQL Server sanal makinelerini kaynak sağlayıcısına [toplu olarak kaydedebilirsiniz](sql-vm-resource-provider-bulk-register.md) . | 
+| **Toplu SQL IaaS uzantı kaydı** | Artık [SQL IaaS Aracısı uzantısı](sql-server-iaas-agent-extension-automate-management.md)ile SQL Server sanal makinelere [toplu kayıt](sql-agent-extension-manually-register-vms-bulk.md) yapabilirsiniz. | 
 |**Performans için iyileştirilmiş depolama yapılandırması** | Artık yeni bir SQL Server VM oluştururken [depolama yapılandırmanızı tamamen özelleştirebilirsiniz](storage-configuration.md#new-vms) . |
 |**FCı için Premium dosya paylaşma** | Artık [depolama alanları doğrudan](failover-cluster-instance-storage-spaces-direct-manually-configure.md)orijinal yöntemi yerine [Premium dosya paylaşma](failover-cluster-instance-premium-file-share-manually-configure.md) kullanarak bir yük devretme kümesi örneği oluşturabilirsiniz. 
-| **Azure Ayrılmış Konak** | [Azure adanmış ana bilgisayar](dedicated-host.md)üzerinde SQL Server VM çalıştırabilirsiniz. | 
+| **Azure adanmış ana bilgisayar** | [Azure adanmış ana bilgisayar](dedicated-host.md)üzerinde SQL Server VM çalıştırabilirsiniz. | 
 | **Farklı bir bölgeye geçiş SQL Server VM** | [SQL Server VM bir bölgeden diğerine geçirmek](move-sql-vm-different-region.md)için Azure Site Recovery kullanın. |
 |  **Yeni SQL IaaS yükleme modları** | SQL Server hizmetinin yeniden başlatılmasını önlemek için SQL Server IaaS uzantısını [hafif modda](sql-server-iaas-agent-extension-automate-management.md) yüklemek mümkündür.  |
 | **SQL Server sürümü değişikliği** | Artık SQL Server VM için [sürüm özelliğini](change-sql-server-edition.md) değiştirebilirsiniz. |
-| **SQL VM kaynak sağlayıcısında yapılan değişiklikler** | [SQL VM kaynak sağlayıcısı ile SQL Server VM](sql-vm-resource-provider-register.md) yeni SQL IaaS modlarını kullanarak kaydedebilirsiniz. Bu özellik [Windows Server 2008](sql-server-iaas-agent-extension-automate-management.md#management-modes) görüntülerini içerir.|
+| **SQL IaaS Aracısı uzantısında yapılan değişiklikler** | [SQL IaaS Aracısı uzantısına sahip SQL Server VM](sql-agent-extension-manually-register-single-vm.md) yeni SQL IaaS modlarını kullanarak kaydedebilirsiniz. Bu özellik [Windows Server 2008](sql-server-iaas-agent-extension-automate-management.md#management-modes) görüntülerini içerir.|
 | **Azure Hibrit Avantajı kullanarak kendi lisans görüntülerini getirin** | Azure Marketi 'nden dağıtılan kendi lisans görüntülerini getir, şimdi de [Lisans türlerini Kullandıkça Öde olarak](licensing-model-azure-hybrid-benefit-ahb-change.md#remarks)değiştirebilir.| 
 | **Azure portal yeni SQL Server VM yönetimi** | Artık Azure portal SQL Server VM yönetmenin bir yolu vardır. Daha fazla bilgi için bkz. [Azure portal SQL Server VM 'Leri yönetme](manage-sql-vm-portal.md).  | 
 | **SQL Server 2008 ve 2008 R2 için genişletilmiş destek** | SQL Server 2008 ve SQL Server 2008 R2 desteğini bir Azure VM 'ye *olduğu gibi* geçirerek [genişletin](sql-server-2008-extend-end-of-support.md) . | 
-| **Özel görüntü desteklenebilirliği** | Artık [SQL Server IaaS uzantısını](sql-server-iaas-agent-extension-automate-management.md#installation) özel işletim sistemi ve SQL Server görüntülerine yükleyebilirsiniz ve bu da [Esnek lisansın](licensing-model-azure-hybrid-benefit-ahb-change.md)sınırlı işlevlerini sunar. Özel görüntünüzü SQL VM kaynak sağlayıcısı ile kaydederken, lisans türünü "AHUB" olarak belirtin. Aksi takdirde, kayıt başarısız olur. | 
+| **Özel görüntü desteklenebilirliği** | Artık [SQL Server IaaS uzantısını](sql-server-iaas-agent-extension-automate-management.md#installation) özel işletim sistemi ve SQL Server görüntülerine yükleyebilirsiniz ve bu da [Esnek lisansın](licensing-model-azure-hybrid-benefit-ahb-change.md)sınırlı işlevlerini sunar. Özel görüntünüzü SQL IaaS Aracısı Uzantısı ile kaydederken, lisans türünü "AHUB" olarak belirtin. Aksi takdirde, kayıt başarısız olur. | 
 | **Adlandırılmış örnek desteklenebilirliği** | Varsayılan örnek düzgün şekilde kaldırılmışsa, artık [SQL Server IaaS uzantısını](sql-server-iaas-agent-extension-automate-management.md#installation) adlandırılmış bir örnekle kullanabilirsiniz. | 
 | **Portal geliştirmesi** | SQL Server VM dağıtmaya yönelik Azure portal deneyim, kullanılabilirliği iyileştirmeye yönelik olarak yeniden belirlenmiştir. Daha fazla bilgi için bkz. kısa [Başlangıç](sql-vm-create-portal-quickstart.md) ve daha kapsamlı [nasıl yapılır Kılavuzu](create-sql-vm-portal.md) SQL Server VM dağıtma.|
-| **Portal geliştirme** | Bir SQL Server VM için lisans modelini, [Azure Portal](licensing-model-azure-hybrid-benefit-ahb-change.md#vms-already-registered-with-the-resource-provider)kullanarak kendi lisansınıza sahip olmak üzere Kullandıkça Öde için değiştirmek mümkündür.|
-| **Azure CLı aracılığıyla SQL Server VM kullanılabilirlik grubu dağıtımının basitleştirmesi** | Artık bir kullanılabilirlik grubunu Azure 'da bir SQL Server VM dağıtmaya hiç zamankinden daha kolay. Windows Yük devretme kümesi, iç yük dengeleyici ve kullanılabilirlik grubu dinleyicilerini komut satırından oluşturmak için [Azure CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid&preserve-view=true) 'yı kullanabilirsiniz. Daha fazla bilgi için bkz. Azure [CLI kullanarak bir Azure VM 'de SQL Server Için her zaman açık kullanılabilirlik grubu yapılandırma](./availability-group-az-commandline-configure.md). | 
+| **Portal geliştirme** | Bir SQL Server VM için lisans modelini, [Azure Portal](licensing-model-azure-hybrid-benefit-ahb-change.md#change-license-model)kullanarak kendi lisansınıza sahip olmak üzere Kullandıkça Öde için değiştirmek mümkündür.|
+| **Azure CLı aracılığıyla SQL Server VM kullanılabilirlik grubu dağıtımının basitleştirmesi** | Artık bir kullanılabilirlik grubunu Azure 'da bir SQL Server VM dağıtmaya hiç zamankinden daha kolay. Windows Yük devretme kümesi, iç yük dengeleyici ve kullanılabilirlik grubu dinleyicilerini komut satırından oluşturmak için [Azure CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid&preserve-view=true) 'yı kullanabilirsiniz. Daha fazla bilgi için bkz. Azure [CLI kullanarak bir Azure VM 'de SQL Server Için her zaman açık kullanılabilirlik grubu yapılandırma](availability-group-az-cli-configure.md). | 
 | &nbsp; | &nbsp; |
 
 ## <a name="2018"></a>2018 
@@ -105,8 +105,8 @@ Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine (VM) dağıt
 | --- | --- |
 |  **SQL Server kümesi için yeni kaynak sağlayıcısı** | Yeni bir kaynak sağlayıcısı (Microsoft. SqlVirtualMachine/SqlVirtualMachineGroups), Windows Yük devretme kümesinin meta verilerini tanımlar. Windows Server yük devretme kümesi (WSFC) hizmeti önyükleme ve VM 'yi kümeyle birleştiren *Sqlvirtualmachinegroups* 'a katılma SQL Server VM.  |
 | **Azure hızlı başlangıç şablonları ile bir kullanılabilirlik grubu dağıtımının otomatik kurulumu** |Windows Yük devretme kümesi oluşturmak, bu kümeye SQL Server VM 'Leri birleştirmek, dinleyiciyi oluşturmak ve iki Azure hızlı başlangıç şablonunu kullanarak iç yük dengeleyiciyi yapılandırmak artık mümkündür. Daha fazla bilgi için bkz. Azure [Hızlı Başlangıç şablonlarını kullanarak bir Azure VM 'de SQL Server Için her zaman açık kullanılabilirlik grubu yapılandırma](availability-group-quickstart-template-configure.md). | 
-| **SQL VM kaynak sağlayıcısına otomatik kayıt** | Bu aydan sonra dağıtılan SQL Server VM 'Ler, yeni SQL VM kaynak sağlayıcısına otomatik olarak kaydedilir. Bu aya göre dağıtılan SQL Server sanal makinelerin yine de el ile kaydedilmesi gerekir. Daha fazla bilgi için bkz. [Azure 'da SQL Server sanal MAKINESINI SQL VM kaynak sağlayıcısıyla kaydetme](sql-vm-resource-provider-register.md).|
-|**Yeni SQL VM kaynak sağlayıcısı** |  Yeni bir kaynak sağlayıcısı (Microsoft. SqlVirtualMachine) SQL Server sanal makinelerinizin daha iyi yönetilmesini sağlar. VM 'lerinizi kaydetme hakkında daha fazla bilgi için bkz. [Azure 'da SQL Server sanal MAKINESINI SQL VM kaynak sağlayıcısıyla kaydetme](sql-vm-resource-provider-register.md). |
+| **SQL IaaS Aracısı uzantısına otomatik kayıt** | Bu aydan sonra dağıtılan SQL Server VM 'Ler, yeni SQL IaaS Aracısı Uzantısı ile otomatik olarak kaydedilir. Bu aya göre dağıtılan SQL Server sanal makinelerin yine de el ile kaydedilmesi gerekir. Daha fazla bilgi için bkz. [Azure 'da SQL Server sanal MAKINESINI SQL IaaS Aracısı uzantısıyla kaydetme](sql-agent-extension-manually-register-single-vm.md).|
+|**Yeni SQL IaaS Aracısı uzantısı** |  Yeni bir kaynak sağlayıcısı (Microsoft. SqlVirtualMachine) SQL Server sanal makinelerinizin daha iyi yönetilmesini sağlar. VM 'lerinizi kaydetme hakkında daha fazla bilgi için bkz. [Azure 'da SQL Server sanal MAKINESINI SQL IaaS Aracısı uzantısıyla kaydetme](sql-agent-extension-manually-register-single-vm.md). |
 |**Lisans modelini Değiştir** | Artık Azure CLı veya PowerShell kullanarak SQL Server VM için, kullanım başına ödeme ve kendi lisans modelleriniz arasında geçiş yapabilirsiniz. Daha fazla bilgi için bkz. [Azure 'da SQL Server sanal makinesi için lisans modelini değiştirme](licensing-model-azure-hybrid-benefit-ahb-change.md). | 
 | &nbsp; | &nbsp; |
 

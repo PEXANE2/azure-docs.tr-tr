@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/09/2020
-ms.openlocfilehash: 8abcbc74506599e7896ad6d41b9444e946172283
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/12/2020
+ms.openlocfilehash: 1489ce74da2ecff5212feb5a1a2e3c9151b73424
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324905"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555592"
 ---
 # <a name="convert-to-image-directory"></a>Görüntü Dizinine Dönüştürme
 
@@ -47,7 +47,8 @@ Bu makalede, görüntü veri kümesini, Azure Machine Learning tasarımcısında
     
     ![Görüntü örneği veri kümesi](./media/module/image-sample-dataset.png)
 
-    Puanlama için, görüntü veri kümesi klasörünün yalnızca sınıflandırılmayan görüntüleri içermesi gerekir.
+    > [!NOTE]
+    > Çıkarım için, görüntü veri kümesi klasörünün yalnızca sınıflandırılmayan görüntüleri içermesi gerekir.
 
 1. Görüntü dizini modülüne dönüştürme girişi bir **dosya veri kümesi** olması gerektiğinden, görüntü veri kümesini çalışma alanınıza [bir dosya veri kümesi olarak kaydedin](../how-to-create-register-datasets.md) .
 
@@ -70,13 +71,13 @@ Bu makalede, görüntü veri kümesini, Azure Machine Learning tasarımcısında
 
 ###  <a name="expected-inputs"></a>Beklenen girişler  
 
-| Ad          | Tür                  | Açıklama   |
+| Ad          | Tür                  | Description   |
 | ------------- | --------------------- | ------------- |
 | Giriş veri kümesi | AnyDirectory, ZipFile | Giriş veri kümesi |
 
 ###  <a name="output"></a>Çıkış  
 
-| Ad                   | Tür           | Açıklama            |
+| Ad                   | Tür           | Description            |
 | ---------------------- | -------------- | ---------------------- |
 | Çıkış resmi dizini | ImageDirectory | Çıkış resmi dizini |
 

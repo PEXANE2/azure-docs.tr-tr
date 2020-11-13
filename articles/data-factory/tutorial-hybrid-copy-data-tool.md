@@ -1,6 +1,6 @@
 ---
 title: Azure Veri Kopyalama aracını kullanarak şirket içi verileri kopyalama
-description: Bir Azure Veri Fabrikası oluşturun ve ardından Veri Kopyalama aracını kullanarak SQL Server veritabanından Azure Blob depolama alanına veri kopyalayın.
+description: Bir Azure Data Factory oluşturun ve Veri Kopyalama aracını kullanarak verileri SQL Server veritabanından Azure Blob depolama alanına kopyalayın.
 services: data-factory
 ms.author: abnarain
 author: nabhishek
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: 7d10eec3fb200d2ef9e583c012cc522888f3c65b
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: d9cf9729d8be77845572efd9ef6e2486ddceaaaf
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553599"
+ms.locfileid: "94562007"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Veri Kopyalama aracını kullanarak bir SQL Server veritabanından Azure Blob depolama alanına veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]

@@ -13,24 +13,26 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 28ab0a158507e3f29ecfdc026203d92d71877633
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 37f6e60aea033dee8adfd66839c82b9fd165c879
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786522"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556276"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Azure'da SQL sanal makinesi için lisans modelini değiştirme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 
-Bu makalede, Azure 'daki bir SQL Server sanal makinesi (VM) için lisans modelinin, **Microsoft. SqlVirtualMachine** adlı yeni SQL Server VM kaynak sağlayıcısını kullanarak nasıl değiştirileceği açıklanır.
+Bu makalede, [SQL IaaS Aracısı uzantısı](./sql-server-iaas-agent-extension-automate-management.md)kullanılarak Azure 'da bir SQL Server sanal MAKINESI (VM) için lisans modelinin nasıl değiştirileceği açıklanır.
 
-SQL Server barındıran bir VM için üç lisans modeli vardır: Kullandıkça öde, Azure Hibrit Avantajı (AHB) ve olağanüstü durum kurtarma (DR). SQL Server VM lisans modelini, Azure portal, Azure CLı veya PowerShell kullanarak değiştirebilirsiniz. 
+## <a name="overview"></a>Genel Bakış
+
+SQL Server barındıran bir Azure VM için üç lisans modeli vardır: Kullandıkça öde, Azure Hibrit Avantajı (AHB) ve yüksek kullanılabilirlik/olağanüstü durum kurtarma (HA/DR). SQL Server VM lisans modelini, Azure portal, Azure CLı veya PowerShell kullanarak değiştirebilirsiniz. 
 
 - **Kullandıkça Öde** modeli, Azure VM 'yi çalıştırmanın ikinci başına maliyetinin SQL Server lisansın maliyetini içerir.
 - [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) , SQL Server ÇALıŞTıRAN bir VM ile kendi SQL Server lisansınızı kullanmanıza olanak sağlar. 
-- **Olağanüstü durum kurtarma** lisans türü, Azure 'DAKI [ücretsiz Dr çoğaltması](business-continuity-high-availability-disaster-recovery-hadr-overview.md#free-dr-replica-in-azure) için kullanılır. 
+- **Ha/Dr** lisans türü, Azure 'DAKI [ÜCRETSIZ ha/Dr çoğaltması](business-continuity-high-availability-disaster-recovery-hadr-overview.md#free-dr-replica-in-azure) için kullanılır. 
 
 Azure Hibrit Avantajı, Azure sanal makinelerinde yazılım güvencesi ("nitelikli lisans") ile SQL Server lisansların kullanılmasına izin verir. Azure Hibrit Avantajı, müşteriler bir sanal makinede SQL Server Lisansı kullanımı için ücretlendirilmez. Ancak yine de temel alınan bulut işlem maliyeti (yani, taban fiyat), depolama ve yedeklemeler için ücret ödemelidir. Ayrıca, Hizmetleri kullanımıyla ilişkili g/ç için de ödeme yapılmalıdır (geçerli olduğu gibi).
 
@@ -40,7 +42,7 @@ Azure VM 'de SQL Server Azure Hibrit Avantajı kullanımını ve uyumlu olduğun
 
 - Azure Marketi 'nden kendi lisansını getir SQL Server görüntüsünü kullanarak bir sanal makine sağlayın. Bu seçenek yalnızca Kurumsal Anlaşma olan müşteriler için kullanılabilir.
 - Azure Marketi 'nden Kullandıkça Öde SQL Server görüntüsünü kullanarak bir sanal makine sağlayın ve Azure Hibrit Avantajı etkinleştirin.
-- Azure VM 'de kendi kendine SQL Server, [SQL VM kaynak sağlayıcısına](sql-vm-resource-provider-register.md)el ile kaydolun ve Azure hibrit avantajı etkinleştirin.
+- Azure VM 'de SQL Server kendi kendine yükleyip [SQL IaaS Aracısı Uzantısı ile](sql-agent-extension-manually-register-single-vm.md)el ile kaydedin ve Azure hibrit avantajı etkinleştirin.
 
 SQL Server lisans türü, VM sağlandığında veya daha sonra dilediğiniz zaman yapılandırılabilir. Lisans modelleri arasında geçiş kesinti olmaz, VM 'yi veya SQL Server hizmetini yeniden başlatmaz, hiçbir ek maliyet eklemez ve hemen geçerli olur. Aslında Azure Hibrit Avantajı etkinleştirilmesi maliyeti *azaltır* .
 
@@ -49,13 +51,13 @@ SQL Server lisans türü, VM sağlandığında veya daha sonra dilediğiniz zama
 SQL Server VM lisanslama modelinin değiştirilmesi aşağıdaki gereksinimlere sahiptir: 
 
 - Bir [Azure aboneliği](https://azure.microsoft.com/free/).
-- [SQL VM kaynak sağlayıcısına](sql-vm-resource-provider-register.md)kayıtlı bir [SQL Server VM](./create-sql-vm-portal.md) .
+- [SQL IaaS Aracısı uzantısına](./sql-server-iaas-agent-extension-automate-management.md)kayıtlı bir [SQL Server VM](./create-sql-vm-portal.md) .
 - [Yazılım güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)kullanmak için bir gereksinimdir. 
 
 
-## <a name="vms-already-registered-with-the-resource-provider"></a>Kaynak sağlayıcısına zaten kayıtlı VM 'Ler 
+## <a name="change-license-model"></a>Lisans modelini değiştirme
 
-# <a name="the-azure-portal"></a>[Azure portal](#tab/azure-portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
@@ -69,78 +71,43 @@ Lisans modelini doğrudan portaldan değiştirebilirsiniz:
 ![Portalda Azure Hibrit Avantajı](./media/licensing-model-azure-hybrid-benefit-ahb-change/ahb-in-portal.png)
 
 
-# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLı 'yi, lisans modelinizi değiştirmek için kullanabilirsiniz.  
 
+**Lisans türü** için aşağıdaki değerleri belirtin:
+- `AHUB` Azure Hibrit Avantajı için
+- `PAYG` Kullandıkça Öde için
+- `DR` Ücretsiz HA/DR çoğaltmasını etkinleştirmek için
 
-**Azure Hibrit Avantajı**
 
 ```azurecli-interactive
-# Switch your SQL Server VM license from pay-as-you-go to bring-your-own
 # example: az sql vm update -n AHBTest -g AHBTest --license-type AHUB
 
-az sql vm update -n <VMName> -g <ResourceGroupName> --license-type AHUB
-```
-
-**Kullandıkça Öde** : 
-
-```azurecli-interactive
-# Switch your SQL Server VM license from bring-your-own to pay-as-you-go
-# example: az sql vm update -n AHBTest -g AHBTest --license-type PAYG
-
-az sql vm update -n <VMName> -g <ResourceGroupName> --license-type PAYG
-```
-
-**Olağanüstü durum kurtarma (DR)**
-
-```azurecli-interactive
-# Switch your SQL Server VM license from bring-your-own to pay-as-you-go
-# example: az sql vm update -n AHBTest -g AHBTest --license-type DR
-
-az sql vm update -n <VMName> -g <ResourceGroupName> --license-type DR
+az sql vm update -n <VMName> -g <ResourceGroupName> --license-type <license-type>
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell 'i, lisans modelinizi değiştirmek için kullanabilirsiniz.
 
-**Azure Hibrit Avantajı**
+**Lisans türü** için aşağıdaki değerleri belirtin:
+- `AHUB` Azure Hibrit Avantajı için
+- `PAYG` Kullandıkça Öde için
+- `DR` Ücretsiz HA/DR çoğaltmasını etkinleştirmek için
+
 
 ```powershell-interactive
-# Switch your SQL Server VM license from pay-as-you-go to bring-your-own
-Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType AHUB
-```
-
-**Kullandıkça ödeyin**
-
-```powershell-interactive
-# Switch your SQL Server VM license from bring-your-own to pay-as-you-go
-Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType PAYG
-```
-
-**Olağanüstü Durum Kurtarma** 
-
-```powershell-interactive
-# Switch your SQL Server VM license from bring-your-own to pay-as-you-go
-Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType DR
+Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType <license-type>
 ```
 
 ---
 
-## <a name="vms-not-registered-with-the-resource-provider"></a>Kaynak sağlayıcısına kayıtlı olmayan VM 'Ler
-
-Kullandıkça Öde Azure Marketi görüntülerinden bir SQL Server VM sağladıysanız, SQL Server lisans türü Kullandıkça Öde olacaktır. Azure Marketi 'nden kendi lisansını getir görüntüsünü kullanarak bir SQL Server VM sağladıysanız, lisans türü AHUB olur. Varsayılan (Kullandıkça öde) veya kendi lisansını getir Azure Marketi görüntülerinin sağlandığı tüm SQL Server VM 'Ler otomatik olarak SQL VM kaynak sağlayıcısına kaydedilir ve bu sayede [lisans türünü](#vms-already-registered-with-the-resource-provider)değiştirebilirler.
-
-Azure VM üzerinde SQL Server Azure Hibrit Avantajı aracılığıyla yalnızca kendi kendine yüklemeye uygunsunuz. Bu VM 'Leri, Microsoft Ürün koşullarına göre Azure Hibrit Avantajı kullanımını göstermek için SQL Server lisansını Azure Hibrit Avantajı olarak ayarlayarak [SQL VM kaynak sağlayıcısı ile kaydetmeniz](sql-vm-resource-provider-register.md) gerekir.
-
-SQL Server VM lisans türünü, yalnızca SQL Server VM SQL VM kaynak sağlayıcısı 'na kayıtlıysa, Kullandıkça Öde veya Azure Hibrit Avantajı olarak değiştirebilirsiniz.
-
 ## <a name="remarks"></a>Açıklamalar
 
 - Azure bulut çözümü sağlayıcısı (CSP) müşterileri, önce bir Kullandıkça Öde sanal makinesi dağıtarak ve ardından etkin yazılım güvencesi varsa, kendi lisansını getir 'e dönüştürerek Azure Hibrit Avantajı kullanabilir.
-- SQL Server VM kaynağınızı düşürülebiliyorsanız, görüntünün sabit kodlu lisans ayarına geri dönebilirsiniz. 
-- Lisans modelini değiştirme özelliği, SQL VM kaynak sağlayıcısı 'nın bir özelliğidir. Azure Marketi görüntüsünü Azure portal aracılığıyla dağıtmak, SQL Server VM otomatik olarak kaynak sağlayıcısıyla kaydeder. Ancak kendi kendini yükleyen SQL Server müşterilerin SQL Server VM el ile [kaydetmesi](sql-vm-resource-provider-register.md)gerekir. 
+- SQL sanal makine kaynağınızı düşürülebiliyorsanız, görüntünün sabit kodlu lisans ayarına geri dönebilirsiniz. 
+- Lisans modelini değiştirme özelliği, SQL IaaS Aracısı uzantısının bir özelliğidir. Azure Marketi görüntüsünü Azure portal aracılığıyla dağıtmak, SQL Server VM otomatik olarak uzantıya kaydeder. Ancak kendi kendini yükleyen SQL Server müşterilerin SQL Server VM el ile [kaydetmesi](sql-agent-extension-manually-register-single-vm.md)gerekir. 
 - Bir kullanılabilirlik kümesine SQL Server VM eklendiğinde VM 'nin yeniden oluşturulması gerekir. Bu nedenle, bir kullanılabilirlik kümesine eklenen tüm VM 'Ler varsayılan Kullandıkça Öde lisans türüne geri döner. Azure Hibrit Avantajı yeniden etkinleştirilmesi gerekir. 
 
 
@@ -153,6 +120,8 @@ Lisans modelinin değiştirilmesi:
    - Yalnızca genel veya Azure Kamu bulutları için kullanılabilir. 
    - Yalnızca tek bir ağ arabirimine (NIC) sahip sanal makinelerde desteklenir. 
 
+> [!Note]
+> Yalnızca yazılım güvencesi veya abonelik lisanslarına sahip çekirdek tabanlı lisanslama SQL Server Azure Hibrit Avantajı uygundur. SQL Server için sunucu + CAL Lisanslama kullanıyorsanız ve yazılım güvencesi varsa, bu sunucular için lisans taşınabilirliği ' ni kullanarak Azure SQL Server sanal makine görüntüsüne kendi lisansını getir ' i kullanabilirsiniz, ancak Azure Hibrit Avantajı diğer özelliklerinden yararlanabilirsiniz. 
 
 ## <a name="known-errors"></a>Bilinen hatalar
 
@@ -160,11 +129,11 @@ Yaygın olarak bilinen hataları ve bunların çözümlerini gözden geçirin.
 
 **' ' Kaynak grubunun altındaki ' Microsoft. SqlVirtualMachine/SqlVirtualMachines/ \<resource-group> ' kaynağı \<resource-group> bulunamadı.**
 
-Bu hata, SQL VM kaynak sağlayıcısına kayıtlı olmayan bir SQL Server VM lisans modelini değiştirmeye çalıştığınızda oluşur:
+Bu hata, SQL Server IaaS Aracısı uzantısına kayıtlı olmayan bir SQL Server VM lisans modelini değiştirmeye çalıştığınızda oluşur:
 
 `The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<resource-group>' under resource group '\<resource-group>' was not found. The property 'sqlServerLicenseType' cannot be found on this object. Verify that the property exists and can be set.`
 
-Aboneliğinizi kaynak sağlayıcısına kaydetmeniz ve ardından [SQL Server VM kaynak sağlayıcısına kaydetmeniz](sql-vm-resource-provider-register.md)gerekir. 
+Aboneliğinizi kaynak sağlayıcısına kaydetmeniz ve sonra [SQL Server VM SQL IaaS Aracısı Uzantısı ile kaydetmeniz](sql-agent-extension-manually-register-single-vm.md)gerekir. 
 
 
 **' ' Sanal makinesi \<vmname\> ilişkili birden fazla NIC 'ye sahip**
@@ -180,3 +149,4 @@ Daha fazla bilgi için aşağıdaki makalelere bakın:
 * [Windows VM 'de SQL Server hakkında SSS](frequently-asked-questions-faq.md)
 * [Windows VM üzerinde SQL Server için fiyatlandırma Kılavuzu](pricing-guidance.md)
 * [Windows VM 'de SQL Server için sürüm notları](../../database/doc-changes-updates-release-notes.md)
+* [SQL IaaS Aracısı uzantısına genel bakış](./sql-server-iaas-agent-extension-automate-management.md)

@@ -5,18 +5,18 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 76e7b3d0b0dd514feb7d16a6bc23d1b908be683f
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: f2e63903546e173e17f2b457b78eb41bcdf65dbd
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207215"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555575"
 ---
 # <a name="pbr-materials"></a>PBR malzemeleri
 
 *PBR malzemeleri* , Azure uzaktan işlemede desteklenen [malzeme türlerinden](../../concepts/materials.md) biridir. Gerçekçi aydınlatma alması gereken [kafesler](../../concepts/meshes.md) için kullanılırlar.
 
-PBR, **P**HYS, **B**ased **R**endering için temsil eder ve malzemenin, bir yüzeyin görsel özelliklerini fiziksel bir şekilde, her aydınlatma koşullarında gerçekçi sonuçlar olabilmesinden kaynaklanan bir şekilde açıkladığı anlamına gelir. Çoğu modern oyun altyapısı ve içerik oluşturma araçları, gerçek zamanlı işleme için gerçek dünya senaryolarının en iyi şekilde değerlendirildikleri için PBR malzemelerini destekler.
+PBR, **P** HYS, **B** ased **R** endering için temsil eder ve malzemenin, bir yüzeyin görsel özelliklerini fiziksel bir şekilde, her aydınlatma koşullarında gerçekçi sonuçlar olabilmesinden kaynaklanan bir şekilde açıkladığı anlamına gelir. Çoğu modern oyun altyapısı ve içerik oluşturma araçları, gerçek zamanlı işleme için gerçek dünya senaryolarının en iyi şekilde değerlendirildikleri için PBR malzemelerini destekler.
 
 ![ARR tarafından oluşturulan Helmet glTF örnek modeli](media/helmet.png)
 
@@ -26,7 +26,7 @@ PBR malzemeleri evrensel bir çözüm değildir, ancak. Görüntüleme açısın
 
 Bu özellikler tüm malzemelerde ortaktır:
 
-* **Albedocolor:** Bu renk, *Albedomap* veya * :::no-loc text="vertex "::: renkler*gibi diğer renklerle çarpılır. Bir malzemeden *Saydamlık* etkinse alfa kanalı, `1` tam donuk ve anlamı tamamen saydam olan opaklığı ayarlamak için kullanılır `0` . Varsayılan değer beyazdır.
+* **Albedocolor:** Bu renk, *Albedomap* veya *:::no-loc text="vertex "::: renkler* gibi diğer renklerle çarpılır. Bir malzemeden *Saydamlık* etkinse alfa kanalı, `1` tam donuk ve anlamı tamamen saydam olan opaklığı ayarlamak için kullanılır `0` . Varsayılan değer beyazdır.
 
   > [!NOTE]
   > Bir PBR malzemesi tamamen saydam olduğunda, mükemmel bir cam taş gibi, ortamı yine de yansıtır. Güneş gibi parlak noktalar hala yansıma içinde görünür. Bu [renk malzemeleri](color-materials.md)için farklıdır.
@@ -37,17 +37,23 @@ Bu özellikler tüm malzemelerde ortaktır:
 
 * **textureCoordinateScale** ve **TEXTURECOORDINATEOFFSET:** ölçek UV doku koordinatlarına çarpılır, bu da ona eklenir. Dokuları uzatmak ve kaydırmak için kullanılabilir. Varsayılan ölçek (1, 1) ve konum (0, 0).
 
-* **Usevertexcolor:** Kafes :::no-loc text="vertex"::: renkler içeriyorsa ve bu seçenek etkinleştirilirse, kafeslerin :::no-loc text="vertex"::: rengi *Albedocolor* ve *albedomap*ile çarpılır. Varsayılan olarak *UI, Texcolor* devre dışıdır.
+* **Usevertexcolor:** Kafes :::no-loc text="vertex"::: renkler içeriyorsa ve bu seçenek etkinleştirilirse, kafeslerin :::no-loc text="vertex"::: rengi *Albedocolor* ve *albedomap* ile çarpılır. Varsayılan olarak *UI, Texcolor* devre dışıdır.
 
 * **ıdoubleyüzlü:** Çift sidebir değer true olarak ayarlanırsa, kamera arka yüzlerine baksa bile bu malzemeden üçgenler işlenir. PBR malzemeleri için aydınlatma, arka yüzlere uygun olarak da hesaplanır. Varsayılan olarak bu seçenek devre dışıdır. Ayrıca bkz. [ :::no-loc text="Single-sided"::: işleme](single-sided-rendering.md).
 
 * **TransparencyWritesDepth:** TransparencyWritesDepth bayrağı malzeme üzerinde ayarlandıysa ve malzeme saydamsa, bu malzemeyi kullanan nesneler Ayrıca son derinlik arabelleğine katkıda bulunur. Sonraki bölümde bkz. PBR malzeme bayrağı *saydam* . Kullanım betiğini tamamen saydam sahneler için daha fazla sayıda daha uygun bir [geç doldurma](late-stage-reprojection.md) gerekirse bu özelliğin etkinleştirilmesi önerilir. Karışık donuk/saydam sahneler için, bu ayar, kesin yansıtma davranışı veya yeniden projeksiyon yapıtları ortaya çıkarabilir. Bu nedenle, genel kullanım durumu için varsayılan ve önerilen ayar bu bayrağı devre dışı bırakktır. Yazılı derinlik değerleri, kameraya en yakın nesnenin piksel başına derinlik katmanından alınır.
 
+* **FresnelEffect:** Bu malzeme bayrağı, ilgili malzemeden [adfresnel düşüşünü efektini](../../overview/features/fresnel-effect.md) sunar. Efektin görünümü, aşağıda açıklanan diğer Fresnel düşüşünü parametrelerine tabidir. 
+
+* **FresnelEffectColor:** Bu malzeme için kullanılan Fresnel düşüşünü rengi. Yalnızca bu malzeme üzerinde Fresnel düşüşünü etkisi biti ayarlandığında önemlidir (yukarıya bakın). Bu özellik Fresnel düşüşünü görünün taban rengini denetler (tam açıklama için bkz. [Fresnel düşüşünü etkisi](../../overview/features/fresnel-effect.md) ). Şu anda yalnızca RGB kanalı değerleri önemlidir ve alfa değeri yok sayılır.
+
+* **FresnelEffectExponent:** Bu malzeme için kullanılan Fresnel düşüşünü üs. Yalnızca bu malzeme üzerinde Fresnel düşüşünü etkisi biti ayarlandığında önemlidir (yukarıya bakın). Bu özellik Fresnel düşüşünü görünün yayılmasını denetler. Minimum 0,01 değeri nesnenin tamamına yayılmasına neden olur. 10,0 en büyük değeri, yalnızca en fazla kullanılan kenarları görünür olarak aydınlatır.
+
 ## <a name="pbr-material-properties"></a>PBR malzeme özellikleri
 
-Fiziksel olarak temel işlemenin temel fikri, çok çeşitli gerçek dünyada malzemelere öykünmek için *Basecolor*, *Metalness*ve *kablık* özelliklerini kullanmaktır. PBR 'nin ayrıntılı bir açıklaması Bu makalenin kapsamı dışındadır. PBR hakkında daha fazla bilgi için bkz. [diğer kaynaklar](http://www.pbr-book.org). Aşağıdaki özellikler, PBR malzemelere özgüdür:
+Fiziksel olarak temel işlemenin temel fikri, çok çeşitli gerçek dünyada malzemelere öykünmek için *Basecolor* , *Metalness* ve *kablık* özelliklerini kullanmaktır. PBR 'nin ayrıntılı bir açıklaması Bu makalenin kapsamı dışındadır. PBR hakkında daha fazla bilgi için bkz. [diğer kaynaklar](http://www.pbr-book.org). Aşağıdaki özellikler, PBR malzemelere özgüdür:
 
-* **Basecolor:** PBR malzemeleri ' nde, *Albedo rengi* *temel renk*olarak adlandırılır. Azure uzaktan Işlemede *Albedo Color* özelliği ortak malzeme özellikleri aracılığıyla zaten mevcut olduğundan, ek bir temel renk özelliği yoktur.
+* **Basecolor:** PBR malzemeleri ' nde, *Albedo rengi* *temel renk* olarak adlandırılır. Azure uzaktan Işlemede *Albedo Color* özelliği ortak malzeme özellikleri aracılığıyla zaten mevcut olduğundan, ek bir temel renk özelliği yoktur.
 
 * **kabalık** ve **kabonlik** , yüzlü, yüzeyin ne kadar kaba veya düzgün olduğunu tanımlar. Kaba yüzeyler, ışığın keskin yüzeylere göre daha fazla yönde dağılımı ve bu da yansımaları keskin hale getirir. Değer aralığı-' dır `0.0` `1.0` . `roughness`Eşit olduğunda `0.0` , yansımalar keskin olur. `roughness`Eşitse `0.5` , yansıtımları bulanık hale gelir.
 

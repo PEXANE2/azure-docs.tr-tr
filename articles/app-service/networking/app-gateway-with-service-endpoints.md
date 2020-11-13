@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: dbf38c303f024884971e95f7be9d4dfc50d118de
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 954e94063ec91cd2a6d67d154dfd7da553e0935a
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127833"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560902"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>Hizmet uç noktaları ile Application Gateway tümleştirme
 Azure Application Gateway tümleştirmesi için biraz farklı yapılandırma gerektiren App Service üç çeşidi vardır. Çeşitlemeler, çok kiracılı, Iç Load Balancer (ıLB) App Service Ortamı (Ao) ve dış Ao olarak da bilinen normal App Service içerir. Bu makalede, bunu App Service (çok kiracılı) ile yapılandırma ve ıLB ve dış Ao hakkındaki konuları tartışacak.
@@ -36,7 +36,7 @@ Azure portal, kurulumu sağlamak ve yapılandırmak için dört adımı takip ed
 1. App Service belgelerindeki hızlı başlangıçlardan birini kullanarak App Service oluşturun, örneğin [.NET Core hızlı başlangıç](../quickstart-dotnetcore.md)
 2. [Portal Hızlı](../../application-gateway/quick-create-portal.md)başlangıcını kullanarak bir Application Gateway oluşturun, ancak arka uç hedefleri ekle bölümünü atlayın.
 3. [App Service Application Gateway arka ucu olarak](../../application-gateway/configure-web-app-portal.md)yapılandırın, ancak erişimi kısıtla bölümünü atlayın.
-4. Son olarak, [hizmet uç noktalarını kullanarak erişim kısıtlaması](../../app-service/app-service-ip-restrictions.md#service-endpoints)oluşturun.
+4. Son olarak, [hizmet uç noktalarını kullanarak erişim kısıtlaması](../../app-service/app-service-ip-restrictions.md#use-service-endpoints)oluşturun.
 
 Artık Application Gateway üzerinden App Service erişebilirsiniz ancak doğrudan App Service erişmeyi denerseniz, Web sitesinin durdurulduğunu belirten 403 HTTP hatası almalısınız.
 

@@ -10,16 +10,16 @@ ms.topic: reference
 ms.date: 09/06/2017
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: accd32f376c6030900a9f9a3c29547118d0a1a7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc536fa4292d794e8d89a2564ad10a3c10dd0a3d
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388519"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560869"
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: uzantılar uygulaması
 
-Azure AD B2C bir dizin oluşturulduğunda, adlı bir uygulama `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` Yeni dizin içinde otomatik olarak oluşturulur. **B2C-Extensions-App**olarak anılan bu uygulama *uygulama kayıtları*görünür. Kullanıcılar ve özel öznitelikler hakkında bilgi depolamak için Azure AD B2C hizmeti tarafından kullanılır. Uygulama silinirse, Azure AD B2C düzgün çalışmayacaktır ve üretim ortamınız etkilenecektir.
+Azure AD B2C bir dizin oluşturulduğunda, adlı bir uygulama `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` Yeni dizin içinde otomatik olarak oluşturulur. **B2C-Extensions-App** olarak anılan bu uygulama *uygulama kayıtları* görünür. Kullanıcılar ve özel öznitelikler hakkında bilgi depolamak için Azure AD B2C hizmeti tarafından kullanılır. Uygulama silinirse, Azure AD B2C düzgün çalışmayacaktır ve üretim ortamınız etkilenecektir.
 
 > [!IMPORTANT]
 > Kiracınızı hemen silmeyi planlamadığınız müddetçe B2C-Extensions-App ' i silmeyin. Uygulama 30 günden uzun bir süre sonra silinirse, Kullanıcı bilgileri kalıcı olarak kaybedilir.
@@ -29,7 +29,7 @@ Azure AD B2C bir dizin oluşturulduğunda, adlı bir uygulama `b2c-extensions-ap
 B2C-Extensions-uygulamasının mevcut olduğunu doğrulamak için:
 
 1. Azure AD B2C kiracınızda, sol taraftaki gezinti menüsünde **tüm hizmetler** ' e tıklayın.
-1. **Uygulama kayıtları**arayın ve açın.
+1. **Uygulama kayıtları** arayın ve açın.
 1. **B2C-Extensions-App** ile başlayan bir uygulama arayın
 
 ## <a name="recover-the-extensions-app"></a>Uzantılar uygulamasını kurtarma
@@ -39,7 +39,7 @@ B2C-Extensions-App ' i yanlışlıkla sildiyseniz, bu uygulamayı kurtarmak içi
 1. [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/) adresine göz atın.
 1. İçin silinen uygulamayı geri yüklemek istediğiniz Azure AD B2C dizin için genel yönetici olarak sitede oturum açın. Bu genel yöneticinin aşağıdakine benzer bir e-posta adresi olmalıdır: `username@{yourTenant}.onmicrosoft.com` .
 1. `https://graph.windows.net/myorganization/deletedApplications`Api-Version = 1.6 Ile URL 'ye yönelik BIR http get verme. Bu işlem, son 30 gün içinde silinmiş tüm uygulamaların listesini alacak.
-1. Adın ' B2C-Extension-App ' ile başladığı listede uygulamayı bulun ve `objectid` özellik değerini kopyalayın.
+1. Adın ' B2C-Extensions-App ' ile başladığı listede uygulamayı bulun ve `objectid` özellik değerini kopyalayın.
 1. URL 'ye karşı bir HTTP POST verme `https://graph.windows.net/myorganization/deletedApplications/{OBJECTID}/restore` . `{OBJECTID}`URL 'nin bölümünü önceki adımdan bulunan ile değiştirin `objectid` .
 
 Artık Azure portal [geri yüklenen uygulamayı görebilmelisiniz](#verifying-that-the-extensions-app-is-present) .

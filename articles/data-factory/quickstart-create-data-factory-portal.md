@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 06/04/2020
+ms.date: 11/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 519447dfffaa660131fa587eaef946c76f66983b
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 454bdaeb83e329ae059d6450b928d1286cd9552a
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027338"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555762"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Hızlı Başlangıç: Azure Data Factory kullanıcı arabirimini kullanarak bir veri fabrikası oluşturma 
 
@@ -26,7 +26,7 @@ ms.locfileid: "93027338"
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu hızlı başlangıçta, Azure Data Factory UI kullanarak veri fabrikasını oluşturma ve izleme işlemi açıklanır. Bu veri fabrikasında oluşturduğunuz işlem hattı, verileri Azure Blob depolama alanındaki bir klasörden başka bir klasöre *kopyalar* . Azure Data Factory kullanarak verileri *dönüştürmek* için bkz. [eşleme veri akışı](concepts-data-flow-overview.md) ve [wrangling veri akışı (Önizleme)](wrangling-data-flow-overview.md).
+Bu hızlı başlangıçta, Azure Data Factory UI kullanarak veri fabrikasını oluşturma ve izleme işlemi açıklanır. Bu veri fabrikasında oluşturduğunuz işlem hattı, verileri Azure Blob depolama alanındaki bir klasörden başka bir klasöre *kopyalar*. Azure Data Factory kullanarak verileri *dönüştürmek* için bkz. [eşleme veri akışı](concepts-data-flow-overview.md) ve [wrangling veri akışı (Önizleme)](wrangling-data-flow-overview.md).
 
 > [!NOTE]
 > Azure Data Factory'yi kullanmaya yeni başlıyorsanız, bu hızlı başlangıçtaki işlemleri gerçekleştirmeden önce [Azure Data Factory'ye giriş](introduction.md) konusuna bakın. 
@@ -42,7 +42,7 @@ Bu videoyu izlemeniz, Data Factory kullanıcı arabirimini anlamanıza yardımc�
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
 1. [Azure portalına](https://portal.azure.com) gidin. 
 1. Azure portalı menüsünden **Kaynak oluştur** 'u seçin.
-1. **Analiz** ' i ve ardından **Data Factory** ' yi seçin. 
+1. **Tümleştirme** ' i ve ardından **Data Factory** ' yi seçin. 
    
    ![“Yeni” bölmesinde Data Factory seçimi](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. **Yeni veri fabrikası** sayfasında **Ad** için **ADFTutorialDataFactory** girin. 
@@ -102,7 +102,7 @@ Bu yordamda, Azure depolama hesabınızı veri fabrikasına bağlamak için bağ
 
 
 ## <a name="create-datasets"></a>Veri kümeleri oluşturma
-Bu yordamda iki veri kümesi oluşturursunuz: **InputDataset** ve **OutputDataset** . Bu veri kümeleri **AzureBlob** türündedir. Bunlar, önceki bölümde oluşturduğunuz Azure Depolama bağlı hizmetine başvurur. 
+Bu yordamda iki veri kümesi oluşturursunuz: **InputDataset** ve **OutputDataset**. Bu veri kümeleri **AzureBlob** türündedir. Bunlar, önceki bölümde oluşturduğunuz Azure Depolama bağlı hizmetine başvurur. 
 
 Giriş veri kümesi, giriş klasöründeki kaynak verileri temsil eder. Giriş veri kümesi tanımında, kaynak verileri içeren blob kapsayıcısını ( **adftutorial** ), klasörü ( **input** ) ve dosyayı ( **emp.txt** ) belirtirsiniz. 
 

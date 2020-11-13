@@ -4,14 +4,14 @@ description: Azure Izleyici iş ortakları ve bunlarla tümleştirme için belge
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: b56b2386422d9f7f2fa598ff804a2206bf4b4d83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc33e9d8d613b9d0575da069d884e454d9930eac
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460109"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555648"
 ---
-# <a name="azure-monitor-partner-integrations"></a>Azure Izleyici iş ortağı tümleştirmeleri
+# <a name="azure-monitor-partner-integrations"></a>Azure İzleyici iş ortağı tümleştirmeleri
 
 Alfabetik sırada listelenmiştir. 
 
@@ -151,7 +151,7 @@ Mikro odak **Arcizlemesinde** , Azure izleyici Olay Hub 'ları için akıllı ba
 
 Mikro odak **Işlemleri Köprüsü** , her türlü cihaz, işletim sistemi, veritabanı, uygulama veya hizmet tüm karma BT kaynaklarını otomatik olarak izler ve nerede çalıştığı ve tüm veri türlerine aıops uygular – olaylar, ölçümler, Günlükler ve bağımlılıklar. Bu, kapsamlı uygulama sistem durumu analizi ile bağlanmış, hizmet kalitesi izlemenin benzersiz bir birleşimini sağlar ve Microsoft Azure hizmetleri için kapsamlı performans ve kullanılabilirlik izleme içerir. İşlemler Köprüsü, müşterilerin hem iş hem de BT paydaşlarının anlayabilmesi için, tarayıcıyla her cihazda kullanılabilen tek bir cam bölmesi sağlamasına olanak sağlar.
 
-Daha fazla bilgi edinin
+Daha fazlasını öğrenin
 - [OB Suite 'e genel bakış](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [İndir](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - [Sitescope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -Sitescope, Işlemler köprü paketindeki bir bileşendir.
@@ -253,7 +253,7 @@ Gürültü ortadan kaldırmak, önceliklendirmesini sağlamak, ML 'yi kullanarak
 
 ![SignalFX logosu](./media/partners/signalfx.png)
 
-SignalFx, veri odaklı DevOps için gerçek zamanlı operasyonel zeka 'nın lideridir. Hizmet, buluttaki her bileşen genelinde ölçümleri bulur ve toplar. Geleneksel nokta araçlarının yerini alır ve bugünün dinamik ortamlarında gerçek zamanlı görünürlük sağlar. Yüksek düzeyde ölçeklenebilir SignalFx platformunu kullanarak, SaaS platformu kapsayıcı ve mikro hizmet tabanlı mimariler için iyileştirilmiştir ve her boyuttaki kuruluşlar genelinde güçlü görselleştirme, proaktif uyarı ve işbirliğine dayalı önceliklendirme olanakları sağlar. Signalfx, doğrudan Azure izleyici ile tümleşir ve *telegraf*, *statsd*ve *toplanan* gibi açık kaynaklı bağlayıcılar aracılığıyla Azure için en iyi sınıf panoları, analizlerini ve uyarıları sağlar.
+SignalFx, veri odaklı DevOps için gerçek zamanlı operasyonel zeka 'nın lideridir. Hizmet, buluttaki her bileşen genelinde ölçümleri bulur ve toplar. Geleneksel nokta araçlarının yerini alır ve bugünün dinamik ortamlarında gerçek zamanlı görünürlük sağlar. Yüksek düzeyde ölçeklenebilir SignalFx platformunu kullanarak, SaaS platformu kapsayıcı ve mikro hizmet tabanlı mimariler için iyileştirilmiştir ve her boyuttaki kuruluşlar genelinde güçlü görselleştirme, proaktif uyarı ve işbirliğine dayalı önceliklendirme olanakları sağlar. Signalfx, doğrudan Azure izleyici ile tümleşir ve *telegraf* , *statsd* ve *toplanan* gibi açık kaynaklı bağlayıcılar aracılığıyla Azure için en iyi sınıf panoları, analizlerini ve uyarıları sağlar.
 
 [signalfx belgeleri](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-azure)
 
@@ -301,9 +301,19 @@ Turbonomic, gerçek zamanlı performans, maliyet ve uyumluluğu eşzamanlı olar
 
 [Turbonomic tanıtımı](https://turbonomic.com/)
 
+## <a name="bmc-helix"></a>BMC Helix
+
+![BMC Helix logosu](./media/partners/BMCHelix.png)
+
+BMC Helix, özerk bir kurumsal hizmet ve Operations SaaS platformudur. 360 derecelik zeka tümleştirilerek, işletmeler BT ve iş kolu için OMNI kanal deneyimlerini önceden ve tahmin etmeye, izlemeye, hizmete, düzeltmeye, iyileştirmenize ve sunmaya olanak sağlıyor.
+Ayrıca, ıTSM ve BT operasyon yönetimi 'ni (ıTOM) sorunsuz bir şekilde tümleştirerek, BMC Helix BT ve iş kullanıcılarının BT silolarını ortadan kaldırabilmesini, veri odaklı iş kararları almasını ve sektör lideri müşteri deneyimlerini sunmalarını sağlar.
+Müşteriler, BMC Helix platformunu tercih ettikleri, Private veya hibrit bulut dağıtımıyla dağıtabilir. Ayrıca, müşterilerin sektör lideri sağlayıcılardan yararlanmak için bir AI/ML çözümleri seçeneği vardır.
+
+[BMC Helix hakkında daha fazla bilgi](https://www.bmc.com/it-solutions/bmc-helix.html?vu=helix)
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Izleyici hakkında daha fazla bilgi edinin](../overview.md)
+- [Azure İzleyici hakkında daha fazla bilgi edinin](../overview.md)
 - [REST API kullanarak ölçümlere erişin](rest-api-walkthrough.md)
 - [Etkinlik günlüğünü Microsoft dışı bir hizmete akış](./activity-log.md#legacy-collection-methods)
 - [Kaynak günlüklerini Microsoft dışı bir hizmete akış](./resource-logs.md#send-to-azure-event-hubs)

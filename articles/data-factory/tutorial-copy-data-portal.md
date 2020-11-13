@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 05/28/2020
+ms.date: 11/11/2020
 ms.author: jingwang
-ms.openlocfilehash: becebf5e56840b8430dd8d4a7714229503e677da
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: ef9ac29735289d5c7a60ff0fca3b9e9f360f6e08
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637131"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555405"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob depolamadan Azure SQL veritabanı 'ndaki bir veritabanına veri kopyalama
 
@@ -39,9 +39,9 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * İşlem hattı ve etkinlik çalıştırmalarını izleme.
 
 ## <a name="prerequisites"></a>Ön koşullar
-* **Azure aboneliği** . Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
-* **Azure depolama hesabı** . Blob depolama alanını *kaynak* veri deposu olarak kullanabilirsiniz. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md).
-* **Azure SQL veritabanı** . Veritabanını *havuz* veri deposu olarak kullanabilirsiniz. Azure SQL veritabanında bir veritabanınız yoksa, oluşturma adımları için [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) bölümüne bakın.
+* **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
+* **Azure depolama hesabı**. Blob depolama alanını *kaynak* veri deposu olarak kullanabilirsiniz. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md).
+* **Azure SQL veritabanı**. Veritabanını *havuz* veri deposu olarak kullanabilirsiniz. Azure SQL veritabanında bir veritabanınız yoksa, oluşturma adımları için [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) bölümüne bakın.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Bir blob ve SQL tablosu oluşturma
 
@@ -81,7 +81,7 @@ Aşağıdaki adımları uygulayarak öğretici için Blob depolama alanınızı 
 Bu adımda, bir veri fabrikası oluşturacak ve veri fabrikasında bir işlem hattı oluşturmak için Data Factory kullanıcı arabirimini başlatacaksınız.
 
 1. **Microsoft Edge** veya **Google Chrome** 'ı açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
-2. Sol menüde, **kaynak**  >  **Analizi**  >  **Data Factory** oluştur ' u seçin.
+2. Sol menüde, **kaynak**  >  **tümleştirmesi**  >  **Data Factory** oluştur ' u seçin.
 3. **Yeni veri fabrikası** sayfasında **Ad** bölümüne **ADFTutorialDataFactory** girin.
 
    Azure veri fabrikasının adı *genel olarak benzersiz* olmalıdır. Ad değeriyle ilgili bir hata iletisi alırsanız, veri fabrikası için farklı bir ad girin. (örneğin, Adınızadftutorialdatafactory). Data Factory yapıtlarının adlandırma kuralları için bkz.[Data Factory adlandırma kuralları](naming-rules.md).
@@ -224,19 +224,17 @@ Bu zamanlamada, işlem hattı için bir zamanlayıcı tetikleyicisi oluşturacak
 
     a. **Ad** bölümüne **RunEveryMinute** girin.
 
-    b. **Bitiş** bölümünde **Tarih** seçeneğini belirleyin.
+    b. Tetikleyicinizin **başlangıç tarihini** güncelleştirin. Tarih, geçerli tarih saatten önce ise, tetikleyici, değişiklik yayımlandıktan sonra devreye girer. 
 
-    c. **Bitiş Tarihi** bölümde açılan listeden seçim yapın.
+    c. **Saat dilimi** bölümünde açılan listeyi seçin.
 
-    d. **Geçerli gün** seçeneğini belirleyin. Varsayılan olarak, bitiş günü olarak bir sonraki gün ayarlanır.
+    d. **Yinelemeyi** **her 1 dakikada** bir olarak ayarlayın.
 
-    e. **Bitiş zamanı** bölümünü, geçerli tarih/saatten birkaç dakika sonra güncelleştirin. Tetikleyicinin etkinleştirilmesi için, önce sizin değişiklikleri yayımlamanız gerekir. Bunu yalnızca birkaç dakika olarak ayarlarsanız ve daha sonra yayımlamazsanız, tetikleyici çalıştırmayı görmezsiniz.
+    e. **Bitiş tarihini belirtme** onay kutusunu seçin ve geçerli tarih/saatten birkaç dakika sonra **son** parçayı güncelleştirin. Tetikleyicinin etkinleştirilmesi için, önce sizin değişiklikleri yayımlamanız gerekir. Bunu yalnızca birkaç dakika olarak ayarlarsanız ve daha sonra yayımlamazsanız, tetikleyici çalıştırmayı görmezsiniz.
 
-    f. **Tamam** ’ı seçin.
+    f. **Etkin** seçeneği için **Evet** ' i seçin.
 
-    örneğin: **Etkin** seçeneği için **Evet** ' i seçin.
-
-    h. **Tamam** ’ı seçin.
+    örneğin: **Tamam** ’ı seçin.
 
     > [!IMPORTANT]
     > Her bir işlem hattı çalıştırması ile bir maliyet ilişkilendirildiğinden bitiş tarihini uygun bir şekilde ayarlayın.

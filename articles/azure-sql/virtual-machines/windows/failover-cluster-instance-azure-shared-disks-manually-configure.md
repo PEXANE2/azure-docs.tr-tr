@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: c78899bff39f37c63c7db0eeb12690ab2a90cac4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: df50583e650d3d44e702c0f7d1596f2a733a4445
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285378"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556395"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Azure Paylaşılan disklerle (Azure VM 'lerinde SQL Server) bir FCı oluşturma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,7 +28,7 @@ Bu makalede, Azure sanal makinelerinde (VM) SQL Server ile Azure paylaşılan di
 Daha fazla bilgi edinmek için bkz. Azure VM 'lerde ve [küme en iyi uygulamalarında](hadr-cluster-best-practices.md) [SQL Server ile FCI](failover-cluster-instance-overview.md) 'ye genel bakış. 
 
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 Bu makaledeki yönergeleri tamamlamadan önce Şu durumda olmalıdır:
 
@@ -197,7 +197,7 @@ FCı veri dizinlerinin Azure Paylaşılan disklerinde olması gerekir.
 
 ## <a name="register-with-the-sql-vm-rp"></a>SQL VM RP ile kaydolun
 
-SQL Server VM portaldan yönetmek için, SQL VM kaynak sağlayıcısı 'nı (RP) [basit yönetim modunda](sql-vm-resource-provider-register.md#lightweight-management-mode)kaydedin, şu anda, FCI ile desteklenen tek mod ve Azure vm 'lerinde SQL Server. 
+SQL Server VM portaldan yönetmek için, SQL IaaS Aracısı uzantısı 'na (RP) [basit yönetim modunda](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode)kaydedin, şu anda şu anda FCI ile desteklenen tek mod ve Azure vm 'lerinde SQL Server. 
 
 
 PowerShell ile hafif modda bir SQL Server VM kaydetme:  
@@ -217,7 +217,7 @@ Trafiği geçerli birincil düğüme uygun bir şekilde yönlendirmek için, ort
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- Yalnızca [basit yönetim MODUNDAKI](sql-server-iaas-agent-extension-automate-management.md#management-modes) SQL VM kaynak sağlayıcısı ile kaydolma desteklenir.
+- Yalnızca [hafif yönetim modunda](sql-server-iaas-agent-extension-automate-management.md#management-modes) SQL IaaS Aracısı Uzantısı ile kaydolma desteklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -228,6 +228,6 @@ Azure paylaşılan diskler sizin için uygun FCı depolama çözümü değilse, 
 
 Daha fazla bilgi edinmek için bkz. Azure VM 'lerde SQL Server ve [küme yapılandırması en iyi yöntemleri](hadr-cluster-best-practices.md) [ile FCI](failover-cluster-instance-overview.md) 'ye genel bakış.
 
-Daha fazla bilgi için bkz. 
+Daha fazla bilgi için bkz: 
 - [Windows küme teknolojileri](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server yük devretme kümesi örnekleri](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

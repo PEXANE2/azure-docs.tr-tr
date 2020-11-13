@@ -1,7 +1,7 @@
 ---
 title: Yapı & eğitme modelleri
 titleSuffix: Azure Machine Learning
-description: Scikit-öğrenme, TensorFlow ve PyTorch gibi popüler çerçevelerle çalışma dahil olmak üzere Azure Machine Learning modelleri eğitme hakkında bilgi edinin. Machine Learning işlem hatları, katılımsız çalıştırmaları zamanlamayı, heterojen işlem ortamları kullanmayı ve iş akışınızın parçalarını yeniden kullanmayı kolaylaştırır. Ve çalıştırma yapılandırması, eğitim sürecinin üzerinde çalıştığı işlem hedefleri üzerinde ayrıntılı denetim sağlar.
+description: Modelleri Azure Machine Learning ile eğitme hakkında bilgi edinin. Farklı eğitim yöntemlerini keşfedebilir ve projeniz için doğru olanı seçin.
 services: machine-learning
 ms.service: machine-learning
 author: Blackmist
@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 8888393cdbc738525b89ace1cf6f5864b7aa3b6e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2448f5f778f19674aec63291acb72536c65ca6c9
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324814"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555898"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modelleri Azure Machine Learning ile eğitme
 
@@ -23,7 +23,7 @@ Azure Machine Learning, SDK 'yı kullanarak otomatik makine öğrenimi ve görse
 
 + [Python IÇIN sdk Azure Machine Learning](#python-sdk): Python SDK, her biri farklı yeteneklere sahip modelleri eğitmek için çeşitli yollar sağlar.
 
-    | Eğitim yöntemi | Açıklama |
+    | Eğitim yöntemi | Description |
     | ----- | ----- |
     | [Yapılandırmayı Çalıştır](#run-configuration) | **Modelleri eğitmek için tipik bir yol** , bir eğitim betiği kullanmaktır ve yapılandırma çalıştırmalıdır. Çalıştırma yapılandırması, modelinizi eğitemak için kullanılan eğitim ortamını yapılandırmak için gereken bilgileri sağlar. Çalışma yapılandırmanızda eğitim betiğinizi, işlem hedefini ve Azure ML ortamınızı belirtebilir ve bir eğitim işi çalıştırabilirsiniz. |
     | [Otomatik makine öğrenimi](#automated-machine-learning) | Otomatikleştirilmiş makine **öğrenimi, kapsamlı veri bilimi veya programlama bilgisi olmadan modelleri eğmenize** olanak tanır. Veri bilimi ve programlama arka planına sahip kişiler için, algoritma seçimini ve hiper parametre ayarlamayı otomatikleştirerek zaman ve kaynak tasarrufu yapmak için bir yol sağlar. Otomatik makine öğrenimi kullanırken çalıştırma yapılandırması tanımlama konusunda endişelenmeniz gerekmez. |

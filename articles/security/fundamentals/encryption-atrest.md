@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure veri şifrelemesi-Rest | Microsoft Docs
-description: Bu makalede, bekleyen veri şifreleme, genel yetenekler ve genel konular hakkında Microsoft Azure genel bir bakış sunulmaktadır.
+title: Azure veri şifreleme-Rest-Azure güvenliği
+description: Bu makalede, Azure veri şifrelemesi için bekleyen, genel yetenekler ve Genel hususlar hakkında genel bir bakış sunulmaktadır.
 services: security
 documentationcenter: na
 author: msmbaldwin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dafc55656be2d8ef2c0f52d633c7db7eeee83534
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: c9a68661a89f53c5aa27bdd046b5bc09a47db400
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412791"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556633"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure bekleyen verileri şifreleme
 
@@ -128,7 +128,7 @@ Tüm Azure depolama hizmetleri (BLOB depolama, kuyruk depolama, tablo depolama v
 
 Azure SQL veritabanı şu anda Microsoft tarafından yönetilen hizmet tarafı ve istemci tarafı şifreleme senaryoları için bekleyen şifrelemeyi desteklemektedir.
 
-Sunucu şifrelemesi desteği şu anda Saydam Veri Şifrelemesi adlı SQL özelliği aracılığıyla sunulmaktadır. Azure SQL veritabanı müşterisi, TDE anahtarı etkinleştirildikten sonra otomatik olarak oluşturulur ve yönetilir. Bekleyen şifreleme, veritabanı ve sunucu düzeylerinde etkinleştirilebilir. Haziran 2017 itibariyle, yeni oluşturulan veritabanlarında [Saydam veri şifrelemesi (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) varsayılan olarak etkindir. Azure SQL veritabanı, Azure Key Vault 'de RSA 2048 bit müşteri tarafından yönetilen anahtarları destekler. Daha fazla bilgi için bkz. [Azure SQL veritabanı ve veri ambarı için kendi anahtarını getir desteğiyle saydam veri şifrelemesi](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql?view=azuresqldb-current).
+Sunucu şifrelemesi desteği şu anda Saydam Veri Şifrelemesi adlı SQL özelliği aracılığıyla sunulmaktadır. Azure SQL veritabanı müşterisi, TDE anahtarı etkinleştirildikten sonra otomatik olarak oluşturulur ve yönetilir. Bekleyen şifreleme, veritabanı ve sunucu düzeylerinde etkinleştirilebilir. Haziran 2017 itibariyle, yeni oluşturulan veritabanlarında [Saydam veri şifrelemesi (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) varsayılan olarak etkindir. Azure SQL veritabanı, Azure Key Vault 'de RSA 2048 bit müşteri tarafından yönetilen anahtarları destekler. Daha fazla bilgi için bkz. [Azure SQL veritabanı ve veri ambarı için kendi anahtarını getir desteğiyle saydam veri şifrelemesi](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql).
 
 Azure SQL veritabanı verilerinin istemci tarafı şifrelemesi [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) özelliği aracılığıyla desteklenir. Always Encrypted, istemci tarafından oluşturulan ve depolanan bir anahtarı kullanır. Müşteriler ana anahtarı bir Windows sertifika deposunda, Azure Key Vault veya yerel bir donanım güvenlik modülünde depolayabilirler. SQL Server Management Studio kullanarak, SQL kullanıcıları hangi sütunu şifrelemek için kullanmak istediğiniz anahtarı seçer.
 
@@ -140,3 +140,4 @@ Azure hizmetleri 'nde depolanan müşteri verilerinin korunması, Microsoft 'a i
 
 - Hizmet tarafından yönetilen anahtarlar ve müşteri tarafından yönetilen anahtarlar hakkında daha fazla bilgi edinmek için bkz. [veri şifreleme modelleri](encryption-models.md) .
 - Azure 'un, verileri şifreleyen tehditleri azaltmak için [çift şifrelemeyi](double-encryption.md) nasıl kullandığını öğrenin.
+- Microsoft 'un, donanım ve üretici yazılımı oluşturma, tümleştirme, işlem başlatma ve onarım işlem hatlarından geçen ana bilgisayarların [Platform bütünlüğünü ve güvenliğini](platform.md) sağlamak için neler yaptığını öğrenin.

@@ -7,18 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 8/12/2020
 ms.author: shants
-ms.openlocfilehash: 14c7c3deb60c50fe71cf52959e342a3dcf2afc94
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 53cde1178a4faae0fbd11222e4219f70be29145d
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151548"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560817"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Planlı bakım bildirimlerini işleme
 
 Azure sanal makine konak altyapısının güvenilirlik, performans ve güvenliğini iyileştirmek için düzenli olarak güncelleştirmeler yapar. Güncelleştirmeler, barındırma ortamında düzeltme eki uygulama veya donanım yükseltme ve kullanımdan kaldırma gibi değişikliklerdir. Bu güncelleştirmelerin çoğu, barındırılan sanal makinelere herhangi bir etki olmadan tamamlanır. Ancak, güncelleştirmelerin etkisi olan durumlar vardır:
 
-- Bakım için yeniden başlatma gerektirmiyorsa, Azure, konak güncelleştirilirken VM 'yi duraklatmak için yerinde geçiş kullanır. Bu tür bakımı işlemleri hata etki alanına göre hata etki alanına göre uygulanır. Herhangi bir uyarı sistem durumu sinyali alındığında ilerleme durdurulur.
+- Bakım için yeniden başlatma gerekli değilse, Azure, ana bilgisayar güncelleştirilirken VM 'yi birkaç saniye duraklatır. Bu tür bakım işlemleri, hata etki alanına göre hata etki alanına göre uygulanır. Herhangi bir uyarı sistem durumu sinyali alındığında ilerleme durdurulur.
 
 - Bakım için yeniden başlatma gerekiyorsa, bakımın ne zaman planlandığına ilişkin bir uyarı alırsınız. Sizin için uygun olduğunda, bakımı kendiniz başlatabileceğiniz yaklaşık 35 günlük bir zaman penceresi sunulur.
 
@@ -43,7 +43,7 @@ Aşağıdaki kılavuzlar, bu özelliği kullanıp kullanmayacağınızı ve bak�
 > Self servis bakımı, tüm sanal makinelerinize uygun olmayabilir. VM 'niz için öngörülü yeniden dağıtım olup olmadığını öğrenmek için, bakım durumu ' na **Şimdi başlayın** ' a bakın. Self servis bakımı şu anda Cloud Services (Web/çalışan rolü) ve Service Fabric için kullanılamaz.
 
 
-Self servis bakımı, **kullanılabilirlik kümeleri**kullanan dağıtımlar için önerilmez. Kullanılabilirlik kümeleri aynı anda yalnızca bir güncelleştirme etki alanını güncelledi. 
+Self servis bakımı, **kullanılabilirlik kümeleri** kullanan dağıtımlar için önerilmez. Kullanılabilirlik kümeleri aynı anda yalnızca bir güncelleştirme etki alanını güncelledi. 
 
 - Azure 'un Bakımı tetiklemesine izin verin. Yeniden başlatma gerektiren bakım için, bakım etki alanı güncelleştirme etki alanı tarafından güncelleştirme yapılır. Güncelleştirme etki alanları, bakımı sırayla almaz ve güncelleştirme etki alanları arasında 30 dakikalık bir duraklama olur. 
 - Bazı kapasitenin geçici bir kaybı (1 güncelleştirme etki alanı) sorun oluşturacaksa, bakım dönemi boyunca örnek ekleyebilirsiniz. 
@@ -80,7 +80,7 @@ Yüksek kullanılabilirlik hakkında daha fazla bilgi için bkz. [Azure 'da sana
 
 **S: planlı bakım hakkında bilgi almak Nasıl yaparım? mı?**
 
-Y **:** Planlı bir bakım dalgası, bir veya daha fazla Azure bölgesine zamanlama ayarlayarak başlar. Yakında, abonelik yöneticisine ve ortak yöneticilere (abonelik başına bir e-posta) bir e-posta bildirimi gönderilir. Bu bildirimin ek kanalları ve alıcıları, etkinlik günlüğü uyarıları kullanılarak yapılandırılabilir. Planlanmış bakımın zaten zamanlandığı bir bölgeye bir sanal makine dağıtırsanız, bildirimi almazsınız ancak VM 'nin bakım durumunu denetlemeniz gerekir.
+Y **:** Planlı bir bakım dalgası, bir veya daha fazla Azure bölgesine zamanlama ayarlayarak başlar. Yakında, abonelik yöneticileri, ortak yöneticiler, sahipler ve katkıda bulunanlar (abonelik başına bir e-posta) ile bir e-posta bildirimi gönderilir. Bu bildirimin ek kanalları ve alıcıları, etkinlik günlüğü uyarıları kullanılarak yapılandırılabilir. Planlanmış bakımın zaten zamanlandığı bir bölgeye bir sanal makine dağıtırsanız, bildirimi almazsınız ancak VM 'nin bakım durumunu denetlemeniz gerekir.
 
 **S: Portal, PowerShell veya CLı 'de planlı bakım hakkında herhangi bir gösterge görmüyorum. Ne oldu?**
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 052418924e73252a780689aea33e84d5bfdbc3f6
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 98510132b2341736664dfafa52e9567df95652be
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927660"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561106"
 ---
 # <a name="custom-commands-concepts-and-definitions"></a>Özel komutlar kavramları ve tanımları
 
@@ -49,20 +49,22 @@ Bu onay kutusu, bu parametrenin kapsamının uygulamadaki tüm komutlarda payla�
 ### <a name="required"></a>Gerekli
 Bu onay kutusu, komut yerine getirme veya tamamlama için bu parametre için bir değer gerekip gerekmediğini gösterir. Bir parametre gerekli olarak işaretlenmişse kullanıcıdan bir değer sağlamasını istemek için yanıtları yapılandırmanız gerekir.
 
+**Gerekli bir parametreyi** **varsayılan bir değere** sahip olacak şekilde yapılandırdıysanız, sistemin parametrenin değerini açıkça istediğine unutmayın.
+
 ### <a name="type"></a>Tür
 Özel komutlar aşağıdaki parametre türlerini destekler:
 
-* DateTime
+* Tarih-Saat
 * Coğrafya
 * Sayı
 * Dize
 
-Tüm bu parametre türleri, Azure portal yapılandırabileceğiniz varsayılan değer yapılandırmalarını destekler.
+Coğrafya hariç tüm bu parametre türleri, portaldan yapılandırabileceğiniz varsayılan değer yapılandırmasını destekler.
 
 ### <a name="configuration"></a>Yapılandırma
 Yapılandırma yalnızca tür dizesi için tanımlanan bir parametre özelliğidir. Aşağıdaki değerler desteklenir:
 
-* **Yok** .
+* **Yok**.
 * **Tam girişi kabul et** : etkinleştirildiğinde, bir parametre herhangi bir giriş açıklamasını kabul eder. Bu seçenek, kullanıcının tam utterlik bir parametreye ihtiyacı olduğunda faydalıdır. Posta adresleri bir örnektir.
 * **Dış katalogdan önceden tanımlanmış giriş değerlerini kabul et** : Bu değer, çok çeşitli değerleri varsayan bir parametre yapılandırmak için kullanılır. Bir satış kataloğu örneğidir. Bu durumda, Katalog bir dış Web uç noktasında barındırılır ve bağımsız olarak yapılandırılabilir.
 * **İç katalogdan önceden tanımlanmış giriş değerlerini kabul et** : Bu değer, birkaç değeri varsayacak bir parametreyi yapılandırmak için kullanılır. Bu durumda, konuşma Studio 'da değerlerin yapılandırılması gerekir.
@@ -71,7 +73,7 @@ Yapılandırma yalnızca tür dizesi için tanımlanan bir parametre özelliğid
 ### <a name="validation"></a>Doğrulama
 Doğrulamalar, bir parametre değerindeki kısıtlamaları yapılandırmanıza olanak sağlayan belirli parametre türleri için geçerli olan yapılardır. Şu anda özel komutlar aşağıdaki parametre türlerinde doğrulamaları destekler:
 
-* DateTime
+* Tarih-Saat
 * Sayı
 
 ## <a name="rules-configuration"></a>Kural yapılandırması

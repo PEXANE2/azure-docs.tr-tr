@@ -1,15 +1,15 @@
 ---
 title: Değişiklikleri engellemek için kaynakları kilitle
-description: Kullanıcıların, tüm kullanıcılar ve roller için bir kilit uygulayarak kritik Azure kaynaklarını güncelleştirmesini veya silmelerini önleyin.
+description: Kullanıcıların tüm kullanıcılar ve roller için bir kilit uygulayarak Azure kaynaklarını güncelleştirmesini ve silmesini engelleyin.
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 11/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 57b4fecd0293c714dfd910ae2ad4866397646ce8
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: f1073d8c4a6902ea00a9b4098ef87bc411b3e6c0
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340150"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555677"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Beklenmeyen değişiklikleri önlemek için kaynakları kilitleme
 
@@ -74,19 +74,91 @@ Kilitli altyapı kaynak grubu dahil olmak üzere hizmetin her şeyi silmek için
 
 ### <a name="arm-template"></a>ARM şablonu
 
-Kilidi dağıtmak için bir Kaynak Yöneticisi şablonu kullanırken, kilit kapsamına bağlı olarak ad ve tür için farklı değerler kullanırsınız.
+Kilit dağıtmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanılırken, kilidin kapsamını ve dağıtımın kapsamını bilmeniz gerekir. Bir kaynak grubunu veya aboneliği kilitlemek gibi dağıtım kapsamında bir kilit uygulamak için kapsam özelliğini ayarlayın. Dağıtım kapsamındaki bir kaynağı kilitlerken Scope özelliğini ayarlayın.
 
-Bir **kaynağa** bir kilit uygularken aşağıdaki biçimleri kullanın:
+Aşağıdaki şablon, dağıtıldığı kaynak grubuna bir kilit uygular. Kilit kapsamı, dağıtımın kapsamıyla eşleştiğinden kilit kaynağında bir Scope özelliği olmadığına dikkat edin. Bu şablon, kaynak grubu düzeyinde dağıtılır.
 
-* ada `{resourceName}/Microsoft.Authorization/{lockName}`
-* türüyle `{resourceProviderNamespace}/{resourceType}/providers/locks`
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {  
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Authorization/locks",
+            "apiVersion": "2016-09-01",
+            "name": "rgLock",
+            "properties": {
+                "level": "CanNotDelete",
+                "notes": "Resource Group should not be deleted."
+            }
+        }
+    ]
+}
+```
 
-Bir **kaynak grubuna** veya **aboneliğe** bir kilit uygularken aşağıdaki biçimleri kullanın:
+Bir kaynak grubu oluşturmak ve kilitlemek için, abonelik düzeyinde aşağıdaki şablonu dağıtın.
 
-* ada `{lockName}`
-* türüyle `Microsoft.Authorization/locks`
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "rgName": {
+            "type": "string"
+        },
+        "rgLocation": {
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Resources/resourceGroups",
+            "apiVersion": "2019-10-01",
+            "name": "[parameters('rgName')]",
+            "location": "[parameters('rgLocation')]",
+            "properties": {}
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "lockDeployment",
+            "resourceGroup": "[parameters('rgName')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Resources/resourceGroups/', parameters('rgName'))]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "type": "Microsoft.Authorization/locks",
+                            "apiVersion": "2016-09-01",
+                            "name": "rgLock",
+                            "properties": {
+                                "level": "CanNotDelete",
+                                "notes": "Resource group and its resources should not be deleted."
+                            }
+                        }
+                    ],
+                    "outputs": {}
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
 
-Aşağıdaki örnek, Web sitesinde bir App Service planı, bir Web sitesi ve bir kilit oluşturan bir şablon gösterir. Kilidin kaynak türü, kilitlenecek kaynak ve **/providers/kilitleri** kaynak türüdür. Kilit adı, kaynak adı **/Microsoft.Authorization/** ile ve kilidin adı ile birleştirerek oluşturulur.
+Kaynak grubu içindeki bir **kaynağa** bir kilit uygularken kapsam özelliğini ekleyin. Kapsamı, kilitlenecek kaynağın adı olarak ayarlayın.
+
+Aşağıdaki örnek, Web sitesinde bir App Service planı, bir Web sitesi ve bir kilit oluşturan bir şablon gösterir. Kilidin kapsamı Web sitesine ayarlanır.
 
 ```json
 {
@@ -95,6 +167,10 @@ Aşağıdaki örnek, Web sitesinde bir App Service planı, bir Web sitesi ve bir
   "parameters": {
     "hostingPlanName": {
       "type": "string"
+    },
+    "location": {
+        "type": "string",
+        "defaultValue": "[resourceGroup().location]"
     }
   },
   "variables": {
@@ -103,9 +179,9 @@ Aşağıdaki örnek, Web sitesinde bir App Service planı, bir Web sitesi ve bir
   "resources": [
     {
       "type": "Microsoft.Web/serverfarms",
-      "apiVersion": "2019-08-01",
+      "apiVersion": "2020-06-01",
       "name": "[parameters('hostingPlanName')]",
-      "location": "[resourceGroup().location]",
+      "location": "[parameters('location')]",
       "sku": {
         "tier": "Free",
         "name": "f1",
@@ -117,9 +193,9 @@ Aşağıdaki örnek, Web sitesinde bir App Service planı, bir Web sitesi ve bir
     },
     {
       "type": "Microsoft.Web/sites",
-      "apiVersion": "2019-08-01",
+      "apiVersion": "2020-06-01",
       "name": "[variables('siteName')]",
-      "location": "[resourceGroup().location]",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
       ],
@@ -128,9 +204,10 @@ Aşağıdaki örnek, Web sitesinde bir App Service planı, bir Web sitesi ve bir
       }
     },
     {
-      "type": "Microsoft.Web/sites/providers/locks",
+      "type": "Microsoft.Authorization/locks",
       "apiVersion": "2016-09-01",
-      "name": "[concat(variables('siteName'), '/Microsoft.Authorization/siteLock')]",
+      "name": "siteLock",
+      "scope": "[concat('Microsoft.Web/sites/', variables('siteName'))]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/sites', variables('siteName'))]"
       ],
@@ -142,8 +219,6 @@ Aşağıdaki örnek, Web sitesinde bir App Service planı, bir Web sitesi ve bir
   ]
 }
 ```
-
-Bir kaynak grubunda kilit ayarlamaya ilişkin bir örnek için bkz. [kaynak grubu oluşturma ve kilitleme](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment).
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 

@@ -13,21 +13,19 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 514782d62f117af5bfff4a5d2b3354c4e263eece
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cd7074467332f89d4d6c60830be34f4e2a638c1
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80550246"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562092"
 ---
 # <a name="overview-of-shared-device-mode"></a>Paylaşılan cihaz moduna genel bakış
 
 Paylaşılan cihaz modu, Ilk satır çalışanlarını destekleyen ve bunlara dağıtılan cihazlarda paylaşılan cihaz modunu etkinleştiren uygulamalar oluşturmanıza olanak sağlayan bir Azure Active Directory özelliğidir.
 
-> [!NOTE]
-> Bu özellik genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>[!IMPORTANT]
+> Bu özellik [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 ## <a name="what-are-firstline-workers"></a>Firstline çalışanları nelerdir?
 
@@ -45,7 +43,7 @@ Firstline Worker iş akışlarının etkinleştirilmesi, genellikle tipik bilgi 
 
 Kuruluşun çalışanlarının uygulamalarını bu çalışanlar tarafından paylaşılan bir cihaz havuzunda kullanmasına izin vermek için, geliştiricilerin karşı deneyimi etkinleştirmeleri gerekir. Çalışanlar havuzdan bir cihaz seçebilmelidir ve vardiyalarına yönelik olarak "BT 'yi yap" için tek bir hareket gerçekleştirebilir. Bu kişilerin, kendi kişisel ve şirket bilgilerinin cihaz havuzuna geri dönebilmeleri için tüm kişisel ve şirket bilgilerini kaldırdığından başka bir hareket gerçekleştirebilmeleri gerekir. Ayrıca, bir çalışan oturumu kapatmak unutursa, cihazın otomatik olarak, vardiyası sonunda ve/veya bir süre etkinlik dışı kaldıktan sonra imzalanması gerekir.
 
-Azure Active Directory, **paylaşılan cihaz modu**adlı bir özellik ile bu senaryolara izin vermez.
+Azure Active Directory, **paylaşılan cihaz modu** adlı bir özellik ile bu senaryolara izin vermez.
 
 ## <a name="introducing-shared-device-mode"></a>Paylaşılan cihaz moduna giriş
 
@@ -56,7 +54,7 @@ Belirtildiği gibi, paylaşılan cihaz modu, aşağıdakileri yapmanızı sağla
 
 ### <a name="build-applications-that-support-firstline-workers"></a>Firstline çalışanlarını destekleyen uygulamalar oluşturun
 
-*Paylaşılan cihaz modu*adlı bir cihaz durumunun etkinleştirilmesi Için Microsoft kimlik doğrulama KITAPLıĞı (msal) ve [Microsoft Authenticator uygulamasını](../user-help/user-help-auth-app-overview.md) kullanarak uygulamalarınızda Firstline çalışanlarını destekleyebilirsiniz. Bir cihaz paylaşılan cihaz modundayken, Microsoft, uygulamanın cihazdaki Kullanıcı durumuna bağlı olarak davranışını değiştirmesine izin vermek için bilgileri sağlar ve Kullanıcı verilerini koruyor.
+*Paylaşılan cihaz modu* adlı bir cihaz durumunun etkinleştirilmesi Için Microsoft kimlik doğrulama KITAPLıĞı (msal) ve [Microsoft Authenticator uygulamasını](../user-help/user-help-auth-app-overview.md) kullanarak uygulamalarınızda Firstline çalışanlarını destekleyebilirsiniz. Bir cihaz paylaşılan cihaz modundayken, Microsoft, uygulamanın cihazdaki Kullanıcı durumuna bağlı olarak davranışını değiştirmesine izin vermek için bilgileri sağlar ve Kullanıcı verilerini koruyor.
 
 Desteklenen özellikler şunlardır:
 
@@ -75,7 +73,7 @@ Uygulamalarınızı paylaşılan cihaz modunu destekleyecek şekilde değiştirm
 
 Uygulamalarınız paylaşılan cihaz modunu destekledikten ve gerekli verileri ve güvenlik değişikliklerini dahil ederek, bunları Firstline çalışanları tarafından kullanılabilir olarak tanıtabilirsiniz.
 
-Bir kuruluşun cihaz yöneticileri, cihazlarını ve uygulamalarınızı, Microsoft Intune gibi bir mobil cihaz yönetimi (MDM) çözümü aracılığıyla mağazalarına ve iş konumlarına dağıtabiyor. Sağlama sürecinin bir parçası, cihazı *paylaşılan bir cihaz*olarak işaretliyor. Yöneticiler, [Microsoft Authenticator uygulamasını](../user-help/user-help-auth-app-overview.md) dağıtarak ve paylaşılan cihaz modunu yapılandırma parametreleri aracılığıyla ayarlayarak paylaşılan cihaz modunu yapılandırır. Bu adımları gerçekleştirdikten sonra, paylaşılan cihaz modunu destekleyen tüm uygulamalar, Kullanıcı durumunu yönetmek ve cihaz ve kuruluşa yönelik güvenlik özellikleri sağlamak için Microsoft Authenticator uygulamasını kullanır.
+Bir kuruluşun cihaz yöneticileri, cihazlarını ve uygulamalarınızı, Microsoft Intune gibi bir mobil cihaz yönetimi (MDM) çözümü aracılığıyla mağazalarına ve iş konumlarına dağıtabiyor. Sağlama sürecinin bir parçası, cihazı *paylaşılan bir cihaz* olarak işaretliyor. Yöneticiler, [Microsoft Authenticator uygulamasını](../user-help/user-help-auth-app-overview.md) dağıtarak ve paylaşılan cihaz modunu yapılandırma parametreleri aracılığıyla ayarlayarak paylaşılan cihaz modunu yapılandırır. Bu adımları gerçekleştirdikten sonra, paylaşılan cihaz modunu destekleyen tüm uygulamalar, Kullanıcı durumunu yönetmek ve cihaz ve kuruluşa yönelik güvenlik özellikleri sağlamak için Microsoft Authenticator uygulamasını kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 080e56a5b6be8ba68c901509fe87421632144643
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 79a4db1f7d4be88260ea41ce1090007bc66cc7c8
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312035"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556038"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>SYNAPSE çalışma alanınızın güvenliğini sağlama (Önizleme) 
 
@@ -31,12 +31,12 @@ Bir Synapse çalışma alanını (Önizleme) güvenli hale getirmek için, aşa�
   - Azure SYNAPSE Analytics Yöneticisi için Apache Spark
 - Azure Data Lake Storage Gen 2 ' deki veriler için erişim denetimi (ADLSGEN2).
 - SYNAPSE SQL ve Spark veritabanları için erişim denetimi
-- 
+
 ## <a name="steps-to-secure-a-synapse-workspace"></a>SYNAPSE çalışma alanını güvenli hale getirme adımları
 
 Bu belge yönergeleri basitleştirmek için standart adları kullanır. Bunları dilediğiniz adlarla değiştirin.
 
-|Ayar | Örnek değer | Açıklama |
+|Ayar | Örnek değer | Description |
 | :------ | :-------------- | :---------- |
 | **SYNAPSE çalışma alanı** | WS1 |  SYNAPSE çalışma alanının sahip olacağı ad. |
 | **ADLSGEN2 hesabı** | STG1 | Çalışma alanınız ile kullanılacak ADLS hesabı. |

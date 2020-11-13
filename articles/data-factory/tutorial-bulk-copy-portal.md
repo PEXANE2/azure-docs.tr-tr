@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 06/22/2020
-ms.openlocfilehash: c26ad02b6e275f6480826837af36e8f3c70ca262
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/09/2020
+ms.openlocfilehash: ae96a81485064637db9e23b7164021bfbc952162
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634190"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555953"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Azure portal Azure Data Factory kullanarak birden çok tabloyu toplu olarak kopyalama
 
@@ -49,10 +49,10 @@ Bu senaryoda, Azure SQL veritabanı 'nda Azure SYNAPSE Analytics 'e (eski adıyl
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
-* **Azure depolama hesabı** . Azure Depolama hesabı, toplu kopyalama işleminde hazırlama blob depolama alanı olarak kullanılır. 
-* **Azure SQL veritabanı** . Bu veritabanı, kaynak verileri içerir. 
-* **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** . Bu veri ambarı, SQL Veritabanından kopyalanan verileri tutar. 
+## <a name="prerequisites"></a>Önkoşullar
+* **Azure depolama hesabı**. Azure Depolama hesabı, toplu kopyalama işleminde hazırlama blob depolama alanı olarak kullanılır. 
+* **Azure SQL veritabanı**. Bu veritabanı, kaynak verileri içerir. 
+* **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)**. Bu veri ambarı, SQL Veritabanından kopyalanan verileri tutar. 
 
 ### <a name="prepare-sql-database-and-azure-synapse-analytics-formerly-sql-dw"></a>SQL veritabanı ve Azure SYNAPSE Analytics (eski adıyla SQL DW) hazırlama
 
@@ -76,7 +76,8 @@ Bu ayarı doğrulamak ve etkinleştirmek için, sunucunuza > güvenlik > güvenl
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
 1. [Azure portalına](https://portal.azure.com) gidin. 
-1. Azure Portal menüsünün solunda, **kaynak**  >  **Analizi** oluştur  >  **Data Factory** ' u seçin. 
+1. Azure Portal menüsünün sol tarafında, **kaynak**  >  **tümleştirmesi**  >  **Data Factory** oluştur ' u seçin. 
+
    ![“Yeni” bölmesinde Data Factory seçimi](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. **Yeni Veri Fabrikası** sayfasında **ad** için **ADFTutorialBulkCopyDF** girin. 
  
@@ -204,7 +205,7 @@ Bu öğreticide, kaynak ve hedef SQL tabloları veri kümesi tanımında sabit k
     
 
 ## <a name="create-pipelines"></a>İşlem hattı oluşturma
-Bu öğreticide, iki işlem hattı oluşturursunuz: **IterateAndCopySQLTables** ve **GetTableListAndTriggerCopyData** . 
+Bu öğreticide, iki işlem hattı oluşturursunuz: **IterateAndCopySQLTables** ve **GetTableListAndTriggerCopyData**. 
 
 **Gettablelistandtriggercopydata** işlem hattı iki eylem gerçekleştirir:
 

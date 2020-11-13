@@ -13,12 +13,12 @@ ms.date: 01/14/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 997e867798922975757a588ef50248f0d09a96e0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 801a9a112615bd6220b5f273b51ed39248ebcd45
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789854"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556480"
 ---
 # <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Azure VM'deki SQL Server sürümünü yerinde değiştirme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +34,7 @@ SQL Server sürümü dahili olarak SQL Server VM değiştirildikten sonra, Fatur
 SQL Server sürümünde yerinde bir değişiklik yapmak için şunlar gerekir: 
 
 - Bir [Azure aboneliği](https://azure.microsoft.com/free/).
-- [SQL VM kaynak sağlayıcısına](sql-vm-resource-provider-register.md)kayıtlı [Windows SQL Server VM](./create-sql-vm-portal.md) .
+- [SQL IaaS Aracısı uzantısına](sql-agent-extension-manually-register-single-vm.md)kayıtlı [Windows üzerinde SQL Server VM](./create-sql-vm-portal.md) .
 - SQL Server **istenen sürümü** ile medyayı kurun. [Yazılım Güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)'ne sahip olan müşteriler, yükleme medyasını [Toplu Lisanslama Merkezi](https://www.microsoft.com/Licensing/servicecenter/default.aspx)'nden alabilir. Yazılım Güvencesi sahibi olmayan müşteriler, istenen sürümü olan (genellikle içinde bulunan) bir Azure Marketi SQL Server VM görüntüsünden kurulum medyasını kullanabilir `C:\SQLServerFull` . 
 
 
@@ -75,9 +75,9 @@ SQL Server sürümü indirgendikten sonra, Azure portal SQL Server sanal makines
 
 ## <a name="change-edition-in-portal"></a>Portalda sürümü Değiştir 
 
-Yükleme medyasını kullanarak SQL Server sürümünü değiştirmişseniz ve SQL Server VM [SQL VM kaynak sağlayıcısı](sql-vm-resource-provider-register.md)ile kaydolduktan sonra, faturalama amacıyla SQL Server VM sürüm özelliğini değiştirmek için Azure Portal kullanabilirsiniz. Bunu yapmak için aşağıdaki adımları izleyin: 
+Yükleme medyasını kullanarak SQL Server sürümünü değiştirmişseniz ve SQL Server VM [SQL IaaS Aracısı uzantısı](sql-agent-extension-manually-register-single-vm.md)ile kaydettirdiyseniz, faturalandırma amacıyla SQL Server VM sürüm özelliğini değiştirmek için Azure Portal kullanabilirsiniz. Bunu yapmak için aşağıdaki adımları izleyin: 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 1. SQL Server sanal makine kaynağına gidin. 
 1. **Ayarlar** altında **Yapılandır** ' ı seçin. Ardından, **Sürüm** ' ün altındaki açılan listeden istediğiniz SQL Server sürümünüzü seçin. 
 
@@ -91,7 +91,7 @@ Yükleme medyasını kullanarak SQL Server sürümünü değiştirmişseniz ve S
 
 - SQL Server VM Edition özelliği, hem Kullandıkça Öde hem de kendi lisans türlerini getir dahil olmak üzere tüm SQL Server sanal makineler için yüklenmiş SQL Server örneğinin sürümüyle eşleşmelidir.
 - SQL Server VM kaynağınızı düşürülebiliyorsanız, görüntünün sabit kodlanmış sürüm ayarına geri dönebilirsiniz.
-- Sürümü değiştirme özelliği, SQL VM kaynak sağlayıcısı 'nın bir özelliğidir. Azure Marketi görüntüsünü Azure portal aracılığıyla dağıtmak, SQL Server VM otomatik olarak kaynak sağlayıcısıyla kaydeder. Ancak, kendi kendini yükleyen SQL Server müşterilerin SQL Server VM el ile [kaydetmesi](sql-vm-resource-provider-register.md)gerekir.
+- Sürümü değiştirme özelliği, SQL IaaS Aracısı uzantısının bir özelliğidir. Azure Marketi görüntüsünü Azure portal aracılığıyla dağıtmak, otomatik olarak SQL IaaS Aracısı Uzantısı ile bir SQL Server VM kaydeder. Ancak, kendi kendini yükleyen SQL Server müşterilerin SQL Server VM el ile [kaydetmesi](sql-agent-extension-manually-register-single-vm.md)gerekir.
 - Bir kullanılabilirlik kümesine SQL Server VM eklendiğinde VM 'nin yeniden oluşturulması gerekir. Bir kullanılabilirlik kümesine eklenen tüm VM 'Ler varsayılan sürüme geri döner ve sürüm yeniden değiştirilmeyecektir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

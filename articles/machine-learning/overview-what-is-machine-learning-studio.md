@@ -1,6 +1,6 @@
 ---
 title: Azure Machine Learning stüdyo nedir?
-description: Azure Machine Learning Studio, Azure Machine Learning çalışma alanları için bir Web portalıdır. Studio, kapsamlı bir veri bilimi platformu oluşturmak için kod içermeyen ve kod-ilk deneyimleri birleştirir.
+description: Studio, Azure Machine Learning çalışma alanları için bir Web portalıdır. Studio, kapsamlı bir veri bilimi platformu için kod içermez ve kod ilk deneyimlerini birleştirir.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 345c925d3b1350dfc2ea69d65d8d14688c6930b9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 229c1d2aaab6029ccec3f8831f42a7ce8de2e31e
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310178"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555490"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning stüdyo nedir?
 
@@ -80,7 +80,7 @@ Yeni kullanıcıların, en son veri bilimi araçları aralığı için ML Studio
 
 Aşağıdaki tablo ML Studio (klasik) ve Azure Machine Learning arasındaki önemli farklılıkları özetler.
 
-| Özellik | ML Studio (klasik) | Azure Machine Learning |
+| Öne çıkan özelliği | ML Studio (klasik) | Azure Machine Learning |
 |---| --- | --- |
 | Sürükle ve bırak arabirimi | Klasik deneyim | Güncelleştirilmiş deneyim- [Azure Machine Learning Tasarımcısı](concept-designer.md)| 
 | Kod SDK 'Ları | Desteklenmeyen | [Azure Machine Learning Python](/python/api/overview/azure/ml/) ve [R](tutorial-1st-r-experiment.md) SDK 'leriyle tamamen tümleşik |

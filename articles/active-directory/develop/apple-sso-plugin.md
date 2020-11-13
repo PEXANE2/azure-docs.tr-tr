@@ -13,19 +13,17 @@ ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: ec0ab4601e15129ecd8917e0e750a3e1661dc558
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7ec6ab8b52d9d43d898f481a2f36310e5c0897d
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530706"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561089"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Apple cihazları için Microsoft Enterprise SSO eklentisi (Önizleme)
 
-> [!NOTE]
-> Bu özellik genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>[!IMPORTANT]
+> Bu özellik [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 *Apple cihazları Için Microsoft ENTERPRISE SSO eklentisi* , Apple 'ın [Kurumsal Çoklu oturum açma](https://developer.apple.com/documentation/authenticationservices) özelliğini destekleyen tüm uygulamalarda Azure Active Directory (Azure AD) hesapları için çoklu oturum açma (SSO) sağlar. Microsoft, Apple ve Microsoft 'un sağlayabilecekleri en iyi korumayı sağlarken uygulamanızın kullanılabilirliğini artırmak üzere bu eklentiyi geliştirmek üzere Apple ile yakın bir şekilde çalışmıştır.
 
@@ -53,10 +51,10 @@ Apple cihazları için Microsoft Enterprise SSO eklentisini etkinleştirmek üze
 
 Apple cihazları için Microsoft Enterprise SSO eklentisini yapılandırmak için aşağıdaki parametreleri kullanın:
 
-- **Tür**: Redirect
-- **UZANTı kimliği**: `com.microsoft.azureauthenticator.ssoextension`
-- **Takım Kimliği**: (Bu alan iOS için gerekli değildir)
-- **URL 'ler**:
+- **Tür** : Redirect
+- **UZANTı kimliği** : `com.microsoft.azureauthenticator.ssoextension`
+- **Takım Kimliği** : (Bu alan iOS için gerekli değildir)
+- **URL 'ler** :
   - `https://login.microsoftonline.com`
   - `https://login.microsoft.com`
   - `https://sts.windows.net`
@@ -80,10 +78,10 @@ Yalnızca yerel Apple ağ teknolojilerini veya Web görünümlerini kullanan uyg
 
 MSAL kullanmayan uygulamalar için Microsoft Enterprise SSO eklentisini yapılandırmak için aşağıdaki parametreleri kullanın:
 
-- **Anahtar**: `AppAllowList`
-- **Şunu yazın**: `String`
-- **Değer**: SSO 'ya katılmasına izin verilen uygulamalar için uygulama paket kimliklerinin virgülle ayrılmış listesi
-- **Örnek**: `com.contoso.workapp, com.contoso.travelapp`
+- **Anahtar** : `AppAllowList`
+- **Şunu yazın** : `String`
+- **Değer** : SSO 'ya katılmasına izin verilen uygulamalar için uygulama paket kimliklerinin virgülle ayrılmış listesi
+- **Örnek** : `com.contoso.workapp, com.contoso.travelapp`
 
 MDM yöneticisinin SSO 'ya katılması için izin verilen [uygulamalar](./application-consent-experience.md) , son kullanıcı için sessizce bir belirteç alabilir. Bu nedenle, yalnızca izin verilenler listesine güvenilen uygulamalar eklemek önemlidir. 
 
@@ -95,9 +93,9 @@ Varsayılan olarak, Microsoft Enterprise SSO eklentisi, yalnızca SSO eklentisin
 
 `browser_sso_interaction_enabled`Bayrak etkinleştirme, msal olmayan uygulamalara ve Safari tarayıcısına ilk önyüklemeyi ve paylaşılan bir kimlik bilgisi almasını sağlar. Microsoft Enterprise SSO eklentisinin, henüz paylaşılan bir kimlik bilgisi yoksa, Safari tarayıcısı, ASWebAuthenticationSession, SafariViewController veya başka bir izin verilen yerel uygulama içindeki bir Azure AD URL 'sinden her oturum açma işlemi yapıldığında bir tane almaya çalışır.  
 
-- **Anahtar**: `browser_sso_interaction_enabled`
-- **Şunu yazın**: `Integer`
-- **Değer**: 1 veya 0
+- **Anahtar** : `browser_sso_interaction_enabled`
+- **Şunu yazın** : `Integer`
+- **Değer** : 1 veya 0
 
 Tüm uygulamalar üzerinde daha tutarlı bir deneyim sağlamak için bu bayrağın etkinleştirilmesini öneririz. Varsayılan olarak devre dışıdır. 
 
@@ -107,9 +105,9 @@ Microsoft Enterprise SSO eklentisi, izin verilen uygulamalardan gelen ağ istekl
 
 `disable_explicit_app_prompt`Bayrak etkinleştirme, hem yerel hem de Web uygulamalarının, protokol katmanında Son Kullanıcı istemi 'ni zorunlu hale getirme ve SSO atlama olanağını kısıtlar.
 
-- **Anahtar**: `disable_explicit_app_prompt`
-- **Şunu yazın**: `Integer`
-- **Değer**: 1 veya 0
+- **Anahtar** : `disable_explicit_app_prompt`
+- **Şunu yazın** : `Integer`
+- **Değer** : 1 veya 0
 
 Tüm uygulamalar üzerinde daha tutarlı bir deneyim sağlamak için bu bayrağın etkinleştirilmesini öneririz. Varsayılan olarak devre dışıdır. 
 

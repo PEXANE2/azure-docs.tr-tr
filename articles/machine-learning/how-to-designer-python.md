@@ -1,7 +1,7 @@
 ---
 title: Tasarımcıda Python betiğini yürütme
 titleSuffix: Azure Machine Learning
-description: Verileri dönüştürmek için Azure Machine Learning tasarımcısında Python kullanmayı öğrenin.
+description: Python 'da yazılmış özel işlemleri çalıştırmak için Azure Machine Learning tasarımcısında Python betik modelini Çalıştır ' ın nasıl kullanılacağını öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: keli19
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer, devx-track-python
-ms.openlocfilehash: 6a393cf2c0787a2bc2111581126cbc261d85f1f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcc28d98efbc82079586de8cfbecd35effc93d6e
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897745"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556242"
 ---
 # <a name="run-python-code-in-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısında Python kodu çalıştırma
 
@@ -58,7 +58,7 @@ Doğrudan **Python betik** modülünde veri oluşturabileceğiniz veya içeri ak
 
 Tasarımcı, düzenlemeniz için bir başlangıç giriş noktası betiği sağlar ve kendi Python kodunuzu girersiniz. 
 
-Bu örnekte, **her horseüs için dolar**, yeni bir sütun oluşturmak için, otomobil veri kümesinde, **Price** ve **gücünü**'da bulunan iki sütunu birleştirmek üzere Pandas kullanırsınız. Bu sütun her horseüs için ne kadar ücret Ödediğinize göre temsil eder. Bu, bir otomobil para için iyi bir anlaşma olup olmadığına karar veren yararlı bir özelliktir. 
+Bu örnekte, **her horseüs için dolar** , yeni bir sütun oluşturmak için, otomobil veri kümesinde, **Price** ve **gücünü** 'da bulunan iki sütunu birleştirmek üzere Pandas kullanırsınız. Bu sütun her horseüs için ne kadar ücret Ödediğinize göre temsil eder. Bu, bir otomobil para için iyi bir anlaşma olup olmadığına karar veren yararlı bir özelliktir. 
 
 1. **Python betik modülünü Yürüt** ' ü seçin.
 
@@ -83,7 +83,7 @@ Bu örnekte, **her horseüs için dolar**, yeni bir sütun oluşturmak için, ot
     
 1. İşlem hattını gönderme.
 
-Şimdi, bir otomobil öneren eğitiminde yararlı olabilecek yeni **ABD Doları/HP**özelliğini içeren bir veri kümeniz var. Bu, özellik ayıklama ve boyutlılık azaltmaya bir örnektir. 
+Şimdi, bir otomobil öneren eğitiminde yararlı olabilecek yeni **ABD Doları/HP** özelliğini içeren bir veri kümeniz var. Bu, özellik ayıklama ve boyutlılık azaltmaya bir örnektir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

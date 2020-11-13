@@ -7,18 +7,18 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: e8323c5a290ee2a78e2a3a131d50883d5f8c5a28
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 723d93b9a5e986501278bdee35835cfa0c234711
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "92330997"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555869"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Azure portal kullanarak VNet-VNet VPN Gateway bağlantısı yapılandırma
 
 Bu makale, VNet-VNet bağlantı türünü kullanarak sanal ağları (VNet 'ler) bağlamanıza yardımcı olur. Sanal ağlar farklı bölgelerde ve farklı aboneliklerden olabilir. Farklı aboneliklerden VNET 'leri bağladığınızda, aboneliklerin aynı Active Directory kiracısıyla ilişkilendirilmesi gerekmez. 
 
-![v2v diyagramı](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v2vrmps.png)
+:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet-vnet-diagram.png" alt-text="VNet 'ten VNet 'e diyagramı":::
 
 Bu makaledeki adımlar Azure Resource Manager dağıtım modeli için geçerlidir ve Azure portal kullanır. Aşağıdaki makalelerde açıklanan seçenekleri kullanarak, bu yapılandırmayı farklı bir dağıtım aracı veya modeliyle oluşturabilirsiniz:
 
@@ -65,7 +65,7 @@ Sanal ağları aşağıdaki nedenlerden dolayı VNet-VNet bağlantısı kullanar
 
 Hatta Sanal Ağdan Sanal Ağa iletişim çok siteli yapılandırmalarla bile birleştirilebilir. Bu yapılandırma, aşağıdaki diyagramda gösterildiği gibi şirket içi ağ bağlantısıyla şirketler arası bağlantıyı birleştiren ağ topolojileri ayarlamanıza olanak sağlar:
 
-![Bağlantılar hakkında](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/aboutconnections.png "Bağlantılar hakkında")
+:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections-diagram.png" alt-text="VNet bağlantıları diyagramı":::
 
 Bu makalede VNet-VNet bağlantı türünü kullanarak sanal ağların nasıl bağlanacağı gösterilmektedir. Bu adımları bir alıştırma olarak izlediğinizde, aşağıdaki örnek ayarlar değerlerini kullanabilirsiniz. Örnekte, sanal ağlar aynı abonelikte ancak farklı kaynak gruplarındadır. Sanal ağlarınız farklı aboneliklerdeyse, portalda bağlantı oluşturamazsınız. Bunun yerine [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) veya [CLI](vpn-gateway-howto-vnet-vnet-cli.md) kullanın. VNet-VNet bağlantıları hakkında daha fazla bilgi için bkz. [VNET-VNET hakkında SSS](#vnet-to-vnet-faq).
 
@@ -157,17 +157,17 @@ VNet1 yapılandırdıktan sonra, önceki adımları tekrarlayarak ve değerleri 
 
 Hem VNet1 hem de Ile vnet4 arasında için sanal ağ geçitleri tamamlandığında, sanal ağ geçidi bağlantılarınızı oluşturabilirsiniz. Bu bölümde VNet1 ile VNet4 arasında bir bağlantı oluşturursunuz. Bu adımlar yalnızca aynı abonelikteki sanal ağlar için geçerlidir. Sanal ağlarınız farklı aboneliklerdeyse, bağlantıyı kurmak için [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) kullanmanız gerekir. Ancak sanal ağlarınız aynı abonelikte farklı kaynak gruplarıdır, portalı kullanarak bunları bağlayabilirsiniz.
 
-1. Azure portal, **tüm kaynaklar** ' ı seçin, arama kutusuna *sanal ağ geçidi* girin ve ardından VNET 'iniz için sanal ağ geçidine gidin. Örneğin, **VNet1GW** . **Sanal ağ geçidi** sayfasını açmak için ağ geçidini seçin.
+1. Azure portal, **tüm kaynaklar** ' ı seçin, arama kutusuna *sanal ağ geçidi* girin ve ardından VNET 'iniz için sanal ağ geçidine gidin. Örneğin, **VNet1GW**. **Sanal ağ geçidi** sayfasını açmak için ağ geçidini seçin.
 1. Ağ Geçidi sayfasında, **Ayarlar->bağlantılar** ' a gidin. Ardından **+ Ekle** ' yi seçin.
 
    :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png" alt-text="Bağlantılar sayfası":::
 1. **Bağlantı ekle** sayfası açılır.
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4.png" alt-text="Bağlantılar sayfası":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4.png" alt-text="Bağlantı ekleme":::
 
    **Bağlantı ekle** sayfasında, bağlantınızın değerlerini girin:
 
-   * **Ad** : bağlantınız için bir ad girin. Örneğin, *VNet1toVNet4* .
+   * **Ad** : bağlantınız için bir ad girin. Örneğin, *VNet1toVNet4*.
 
    * **Bağlantı türü** : açılan listeden VNet **-VNET** ' i seçin.
 
@@ -175,7 +175,7 @@ Hem VNet1 hem de Ile vnet4 arasında için sanal ağ geçitleri tamamlandığın
 
    * **İkinci sanal ağ geçidi** : Bu alan, bağlantı oluşturmak istediğiniz VNET 'in sanal ağ geçidindir. **Sanal ağ geçidi Seç** sayfasını açmak için **başka bir sanal ağ geçidi seçin öğesini** seçin.
 
-      :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/choose.png" alt-text="Bağlantılar sayfası":::
+      :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/choose.png" alt-text="Ağ geçidi seçme":::
 
      * Bu sayfada listelenen sanal ağ geçitlerini görüntüleyin. Yalnızca aboneliğinizdeki sanal ağ geçitleri listelenir. Aboneliğinizde olmayan bir sanal ağ geçidine bağlanmak istiyorsanız, [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)kullanın.
 
@@ -193,10 +193,10 @@ Sonra, Ile vnet4 arasında ile VNet1 arasında bir bağlantı oluşturun. Portal
 1. Azure portal sanal ağ geçidini bulun. 
 1. Sanal **ağ geçidi** sayfasında, sanal ağ geçidinin **Bağlantılar** sayfasını görüntülemek için **Bağlantılar** ' ı seçin. Bağlantı kurulduktan sonra **durum** değerlerinin **bağlı** olarak değiştirilmesini görürsünüz.
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png" alt-text="Bağlantılar sayfası":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png" alt-text="Bağlantıları doğrula":::
 1. **Ad** sütununda, daha fazla bilgi görüntülemek için bağlantılardan birini seçin. Veriler akışa başladığında, **Içindeki verilerin** değerlerini ve **dışarı veri** akışını görürsünüz.
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png" alt-text="Bağlantılar sayfası":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png" alt-text="Ekran görüntüsü, içindeki verilerin ve veri çıkış değerlerinin bulunduğu bir kaynak grubunu gösterir":::
 
 ## <a name="add-additional-connections"></a>Ek bağlantı ekleme
 

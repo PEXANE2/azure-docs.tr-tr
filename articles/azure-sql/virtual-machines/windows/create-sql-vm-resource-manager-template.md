@@ -7,12 +7,12 @@ ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
-ms.openlocfilehash: b57303a1c9fdba2bea8637bef6c148622087a8d3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9d0dd8ee1b99ddd2abf4fad154c70315a3d33c83
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789786"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556429"
 ---
 # <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak SQL Server VM oluşturma
 
@@ -45,14 +45,14 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 - [Microsoft. Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups): bir ağ güvenlik grubu oluşturur. 
 - [Microsoft. Network/NetworkInterfaces](/azure/templates/microsoft.network/networkinterfaces): ağ arabirimini yapılandırır. 
 - [Microsoft. COMPUTE/virtualMachines](/azure/templates/microsoft.compute/virtualmachines): Azure 'da bir sanal makine oluşturur. 
-- [Microsoft. sqlvirtualmachine/SqlVirtualMachines](/azure/templates/microsoft.sqlvirtualmachine/sqlvirtualmachines): sanal MAKINEYI SQL VM kaynak sağlayıcısına kaydeder. 
+- [Microsoft. SqlVirtualMachine/SqlVirtualMachines](/azure/templates/microsoft.sqlvirtualmachine/sqlvirtualmachines): sanal makineyi SQL IaaS Aracısı uzantısına kaydeder. 
 
 Azure VM şablonlarındaki daha fazla SQL Server [hızlı başlangıç şablonu galerisinde](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sqlvirtualmachine&pageNumber=1&sort=Popular)bulabilirsiniz.
 
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-1. Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın. Şablon, tasarlanan SQL Server sürümünün yüklü olduğu bir sanal makine oluşturur ve SQL VM kaynak sağlayıcısına kaydedilir. 
+1. Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın. Şablon, tasarlanan SQL Server sürümünün yüklü olduğu bir sanal makine oluşturur ve SQL IaaS Aracısı uzantısına kaydedilir. 
 
    [![Azure’a dağıtma](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-sql-vm-new-storage%2fazuredeploy.json)
 
@@ -60,7 +60,7 @@ Azure VM şablonlarındaki daha fazla SQL Server [hızlı başlangıç şablonu 
 
     * **Abonelik** : bir Azure aboneliği seçin.
     * **Kaynak grubu** : SQL Server VM hazırlanan kaynak grubu. 
-    * **Bölge** : bir bölge seçin.  Örneğin **Orta ABD** .
+    * **Bölge** : bir bölge seçin.  Örneğin **Orta ABD**.
     * **Sanal makine adı** : SQL Server sanal makine için bir ad girin. 
     * **Sanal makine boyutu** : açılan kutudan sanal makineniz için uygun boyutu seçin.
     * **Var olan sanal ağ adı** : SQL Server VM hazırlanan sanal ağın adını girin. 
@@ -77,7 +77,7 @@ Azure VM şablonlarındaki daha fazla SQL Server [hızlı başlangıç şablonu 
     * **Günlük yolu** : SQL Server günlük dosyalarının yolu. 
     * **Konum** : tüm kaynakların konumu, bu değer varsayılan olarak kalmalıdır `[resourceGroup().location]` . 
 
-3. **Gözden geçir ve oluştur** ’u seçin. SQL Server VM başarıyla dağıtıldıktan sonra bir bildirim alırsınız.
+3. **Gözden geçir + oluştur** ’u seçin. SQL Server VM başarıyla dağıtıldıktan sonra bir bildirim alırsınız.
 
 Şablonu dağıtmak için Azure portalı kullanılır. Azure portal ek olarak, Azure PowerShell, Azure CLı ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../../../azure-resource-manager/templates/deploy-powershell.md).
 
