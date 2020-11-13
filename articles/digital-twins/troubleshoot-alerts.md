@@ -5,14 +5,14 @@ description: Bkz. Azure dijital TWINS ölçümleri üzerinde uyarıları etkinle
 author: baanders
 ms.author: baanders
 ms.date: 7/28/2020
-ms.topic: troubleshooting
+ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ae7e85624f5da06603ddc2675787b84203bc987b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 057a1b08095a71e2fca6119f5b63bfdc787eea88
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90087226"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616611"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>Azure dijital TWINS sorunlarını giderme: uyarılar
 
@@ -26,7 +26,7 @@ Azure dijital TWINS örneğiniz için uyarıların nasıl etkinleştirileceği a
 
 1. [Azure Portal](https://portal.azure.com) oturum açın ve Azure dijital TWINS örneğinize gidin. Bunu, adını Portal arama çubuğuna yazarak bulabilirsiniz. 
 
-2. Menüden **Uyarı** ' ı ve sonra **+ Yeni uyarı kuralı**' nı seçin.
+2. Menüden **Uyarı** ' ı ve sonra **+ Yeni uyarı kuralı** ' nı seçin.
 
 3. Aşağıdaki *Uyarı kuralı oluştur* sayfasında, koşulları, tetiklenecek eylemleri ve uyarı ayrıntılarını belirlemek için istemleri takip edebilirsiniz.     
     * **Kapsam** ayrıntıları, örneğinizin ayrıntıları ile otomatik olarak doldurulmalıdır
@@ -44,17 +44,17 @@ Bu alanları doldurmaya yönelik kılavuzlu bir anlatım için bkz. [*Microsoft 
 
 Azure dijital TWINS için hangi tür uyarı sinyallerinin kullanılabildiğini gösteren *Select Condition* işleminden alıntı aşağıda verilmiştir. Bu sayfada, sinyal türünü filtreleyebilir ve listeden istediğiniz sinyali seçebilirsiniz.
 
-:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic.png" alt-text="Kapsam, koşul, eylem grubu ve uyarı kuralı ayrıntılarının bölümleri ile uyarı kuralı oluştur sayfasını gösteren ekran görüntüsü":::
+:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic.png" alt-text="İlk sinyal mantığını Yapılandır sayfasını gösteren ekran görüntüsü. Ölçüm veya etkinlik günlüklerini seçmek için sinyal türü kutusunda bir vurgu vardır ve bunun altında seçilebilirler.":::
 
 Bir sinyal seçtikten sonra uyarının mantığını yapılandırmanız istenir. Bir boyut üzerinde filtre uygulayabilir, uyarılarınız için bir eşik değeri ayarlayabilir ve koşul için denetim sıklığını ayarlayabilirsiniz. Ortalama yönlendirme hatası oranı ölçüsünün %5 ' inin üzerinde ne zaman geçgireceğini bildiren bir uyarı ayarlamaya bir örnek aşağıda verilmiştir.
 
-:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic-2.png" alt-text="Kapsam, koşul, eylem grubu ve uyarı kuralı ayrıntılarının bölümleri ile uyarı kuralı oluştur sayfasını gösteren ekran görüntüsü":::
+:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic-2.png" alt-text="İkinci sinyal mantığını Yapılandır sayfasını gösteren ekran görüntüsü. Sayfa, ölçüm geçmişini gösterir, Event Grid işlemler gibi bir boyut üzerinde filtrelemeye yönelik bir alana sahiptir ve ' ortalama, 5 ' ten büyük olan uyarı mantığını tanımlamaya yönelik bir bölümdür":::
 
 ### <a name="verify-success"></a>Başarıyı doğrula
 
 Uyarıları ayarladıktan sonra, örneğiniz için *Uyarılar* sayfasında geri görünür.
  
-:::image type="content" source="media/troubleshoot-alerts/alerts-post.png" alt-text="Kapsam, koşul, eylem grubu ve uyarı kuralı ayrıntılarının bölümleri ile uyarı kuralı oluştur sayfasını gösteren ekran görüntüsü" lightbox="media/troubleshoot-alerts/alerts-post.png":::
+:::image type="content" source="media/troubleshoot-alerts/alerts-post.png" alt-text="Uyarı sayfasını ve eklenecek düğmeyi gösteren ekran görüntüsü. Yapılandırılmış bir uyarı var" lightbox="media/troubleshoot-alerts/alerts-post.png":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

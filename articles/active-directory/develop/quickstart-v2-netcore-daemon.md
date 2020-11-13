@@ -13,18 +13,20 @@ ms.date: 10/05/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: b6b02348f9d77348976f6b814c982c5250dab7aa
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d50a953c9593c9ae78889be336697686e59d965f
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896523"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592756"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Hızlı başlangıç: konsol uygulamasının kimliğini kullanarak bir belirteç alın ve Microsoft Graph API 'sini çağırın
 
-Bu hızlı başlangıçta, uygulamanın kendi kimliğini kullanarak bir erişim belirteci alabilir ve sonra dizindeki [kullanıcıların listesini](/graph/api/user-list) göstermek IÇIN Microsoft Graph API 'sini çağırabilmeniz için bir .NET Core uygulaması yazmayı öğreneceksiniz. Bu senaryo, kullanıcının kimliği yerine gözetimsiz, katılımsız iş veya Windows hizmeti 'nin bir uygulama kimliğiyle çalışması gereken durumlar için yararlıdır. (Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.)
+Bu hızlı başlangıçta, bir .NET Core konsol uygulamasının Microsoft Graph API 'yi çağırmak ve dizindeki [kullanıcıların listesini](/graph/api/user-list) göstermek için bir erişim belirteci elde etme şeklini gösteren bir kod örneği indirip çalıştırırsınız. Kod örneği Ayrıca bir işin veya bir Windows hizmetinin bir kullanıcı kimliği yerine bir uygulama kimliğiyle nasıl çalıştırılabileceğinizi gösterir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.
+
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıç, [.NET Core 3,1](https://www.microsoft.com/net/download/dotnet-core)gerektirir.
 
@@ -196,7 +198,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-> | Burada: | Açıklama |
+> | Burada: | Description |
 > |---------|---------|
 > | `config.ClientSecret` | Azure portalında uygulama için istemci gizli dizisi oluşturulmuştur. |
 > | `config.ClientId` | **Uygulama (istemci) Kimliği** , Azure portalda kayıtlı uygulamadır. Bu değeri Azure portalda uygulamanın **Genel bakış** sayfasında bulabilirsiniz. |
@@ -213,7 +215,7 @@ result = await app.AcquireTokenForClient(scopes)
                   .ExecuteAsync();
 ```
 
-> |Burada:| Açıklama |
+> |Burada:| Description |
 > |---------|---------|
 > | `scopes` | İstenen kapsamları içerir. Gizli istemciler için, `{Application ID URI}/.default` istenen kapsamların Azure portalında ayarlanmış uygulama nesnesi içinde statik olarak tanımlanmış olduğunu göstermek için şuna benzer biçimi kullanmalıdır (Microsoft Graph için, `{Application ID URI}` işaret eder `https://graph.microsoft.com` ). Özel Web API 'Leri için, `{Application ID URI}` Azure portalının uygulama kaydı 'nda (Önizleme) **bir API 'yi kullanıma** sunma bölümünde tanımlanmıştır. |
 

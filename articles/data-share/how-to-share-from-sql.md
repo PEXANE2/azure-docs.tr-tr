@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 10/15/2020
-ms.openlocfilehash: 205600e488822c5ade4b808c29c66741d28a84a7
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 11/12/2020
+ms.openlocfilehash: 87d6ca8ee69ca49cf52b61e6beddb56721658afa
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/13/2020
-ms.locfileid: "94575926"
+ms.locfileid: "94593748"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Veritabanı ve Azure Synapse Analytics'ten veri paylaşma ve alma
 
@@ -19,7 +19,7 @@ ms.locfileid: "94575926"
 
 Azure veri paylaşımı, anlık görüntü tabanlı paylaşım Azure SQL veritabanı ve Azure SYNAPSE Analytics 'i destekler. Bu makalede, bu kaynaklardan verilerin nasıl paylaşılacağını ve alınacağı açıklanmaktadır.
 
-Azure veri paylaşımı, Azure SQL veritabanı ve Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) tablolarından tablo veya görünümlerin paylaşılmasını ve Azure SYNAPSE Analytics (çalışma alanı) SQL havuzundan tabloların paylaşılmasını destekler. Veri tüketicileri, verileri Azure Data Lake Storage 2. veya Azure Blob depolama alanına CSV veya Parquet dosyası olarak kabul edip Azure SQL veritabanı ve Azure SYNAPSE Analytics 'i de tablolar olarak kabul edebilir.
+Azure veri paylaşımı, Azure SQL veritabanı ve Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) ve Azure SYNAPSE Analytics (çalışma alanı) adanmış SQL havuzundan tablo ve görünümlerin paylaşılmasını destekler. Azure SYNAPSE Analytics (çalışma alanı) sunucusuz SQL havuzunun paylaşılması Şu anda desteklenmiyor. Veri tüketicileri, verileri Azure Data Lake Storage 2. veya Azure Blob depolama alanına CSV veya Parquet dosyası olarak kabul edip Azure SQL veritabanı ve Azure SYNAPSE Analytics 'i de tablolar olarak kabul edebilir.
 
 Azure Data Lake Store Gen2 veya Azure Blob depolama alanına veri kabul edildiğinde, tam anlık görüntüler zaten varsa hedef dosyanın içeriğinin üzerine yazar.
 Veriler SQL tablosuna alındığında ve hedef tablo henüz yoksa, Azure veri paylaşımında kaynak şeması ile SQL tablosu oluşturulur. Aynı ada sahip bir hedef tablo zaten varsa, en son tam anlık görüntüyle bırakılır ve üzerine yazılır. Artımlı anlık görüntüler şu anda desteklenmiyor.
@@ -61,7 +61,7 @@ SQL kaynağından veri paylaşmaya yönelik önkoşulların listesi aşağıda v
 
 #### <a name="prerequisites-for-sharing-from-azure-synapse-analytics-workspace-sql-pool"></a>Azure SYNAPSE Analytics (çalışma alanı) SQL havuzundan paylaşım önkoşulları
 
-* Paylaşmak istediğiniz tabloları içeren bir Azure SYNAPSE Analytics (çalışma alanı) SQL Havuzu. Görünüm paylaşımı Şu anda desteklenmiyor.
+* Bir Azure SYNAPSE Analytics (çalışma alanı) paylaşmak istediğiniz tablolarla ayrılmış bir SQL Havuzu. Görünüm paylaşımı Şu anda desteklenmiyor. Sunucusuz SQL havuzundan paylaşım Şu anda desteklenmiyor.
 * *Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/Write* Içinde bulunan SYNAPSE çalışma alanındaki SQL havuzuna yazma izni. Bu izin **Katkıda Bulunan** rolünde vardır.
 * SYNAPSE çalışma alanı SQL havuzuna erişmek için veri paylaşımının yönetilen kimliği izni. Bu, aşağıdaki adımlarla yapılabilir: 
     1. Azure portal ' de SYNAPSE çalışma alanı ' na gidin. Sol gezinmede SQL Active Directory Yöneticisi ' ni seçin ve kendiniz **Azure Active Directory Yöneticisi** olarak ayarlayın.
@@ -132,7 +132,7 @@ Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
 
     ![Adddataset 'ler](./media/add-datasets.png "Veri kümesi Ekle")    
 
-1. SQL Server veya SYNAPSE çalışma alanınızı seçin, istenirse kimlik bilgilerini sağlayın ve paylaşmak istediğiniz nesneye gitmek için **İleri ' yi** seçin ve ' veri kümesi Ekle ' seçeneğini belirleyin. 
+1. SQL Server veya SYNAPSE çalışma alanınızı seçin, istenirse kimlik bilgilerini sağlayın ve paylaşmak istediğiniz nesneye gitmek için **İleri ' yi** seçin ve ' veri kümesi Ekle ' seçeneğini belirleyin. Azure SQL veritabanı ve Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) veya Azure SYNAPSE Analytics (çalışma alanı) adanmış SQL havuzundaki tabloları ve görünümleri seçebilirsiniz. 
 
     ![Selectdataset 'ler](./media/select-datasets-sql.png "Veri kümelerini seçin")    
 
@@ -201,7 +201,7 @@ Azure SQL veritabanı 'na veri almayı seçerseniz Azure SYNAPSE Analytics, önk
  
 #### <a name="prerequisites-for-receiving-data-into-azure-synapse-analytics-workspace-sql-pool"></a>Azure SYNAPSE Analytics (çalışma alanı) SQL havuzu 'na veri alma önkoşulları
 
-* Bir Azure SYNAPSE Analytics (çalışma alanı) SQL Havuzu.
+* Bir Azure SYNAPSE Analytics (çalışma alanı) adanmış SQL Havuzu. Sunucusuz SQL havuzunda verilerin alınması Şu anda desteklenmiyor.
 * *Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/Write* Içinde bulunan SYNAPSE çalışma alanındaki SQL havuzuna yazma izni. Bu izin **Katkıda Bulunan** rolünde vardır.
 * SYNAPSE çalışma alanı SQL havuzuna erişmek için veri paylaşımının yönetilen kimliği izni. Bu, aşağıdaki adımlarla yapılabilir: 
     1. Azure portal ' de SYNAPSE çalışma alanı ' na gidin. Sol gezinmede SQL Active Directory Yöneticisi ' ni seçin ve kendiniz **Azure Active Directory Yöneticisi** olarak ayarlayın.

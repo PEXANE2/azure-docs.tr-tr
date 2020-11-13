@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018, devx-track-js
-ms.openlocfilehash: 2c797ef365f9d9463a841835fc5f6f15f5da0c93
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 335568ec04a970aa1e5926c02e6ff83898b46358
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099938"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593544"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-nodejs"></a>Hızlı başlangıç: Bing Resim Arama REST API ve Node.js kullanarak görüntü arama
 
@@ -30,7 +30,7 @@ Bing Resim Arama API'si arama isteklerinin nasıl gönderileceğini öğrenmek i
 
 Bu örneğe ilişkin kaynak kodu, ek hata işleme ve ek açıklama ile [GitHub 'da](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingImageSearchv7Quickstart.js) kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Node.js](https://nodejs.org/en/download/)'in en son sürümü.
 
@@ -165,8 +165,8 @@ Bing Resim Arama API'sinden yanıtlar JSON olarak döndürülür. Bu örnek yan�
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Bing Resim Arama API’si nedir?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Bing Resim Arama API’si nedir?](../overview.md)  
 * [Çevrimiçi etkileşimli bir tanıtımı deneyin](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)
 * [Bing Arama API'leri için fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) 
-* [Azure bilişsel hizmetler belgeleri](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing Resim Arama API’si başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Azure bilişsel hizmetler belgeleri](../../index.yml)
+* [Bing Resim Arama API’si başvurusu](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

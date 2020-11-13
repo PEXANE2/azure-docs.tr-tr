@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: ef999d4b452f3f31942e1fb2ddb46efe760acff0
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: c3cdc0a9fb9fa236fae37a52194f446278a42f72
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342156"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616255"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Gerçek dünyadan bir örnek kullanarak Azure Cosmos DB'de verileri modelleme ve bölümleme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -21,6 +21,8 @@ ms.locfileid: "93342156"
 Bu makalede, [veri modelleme](modeling-data.md), [bölümleme](partitioning-overview.md)ve [sağlanan aktarım hızı](request-units.md) gibi çeşitli Azure Cosmos DB kavramlarıyla ilgili olarak gerçek bir veri tasarımı denemesinin nasıl üstesinden geldiğini göstermek için derleme yapılır.
 
 Genellikle ilişkisel veritabanları ile çalışıyorsanız, büyük olasılıkla bir veri modelinin nasıl tasarlanacağını gösteren alışkanlıkları ve kavramları oluşturabilirsiniz. Ayrıca, belirli kısıtlamalar nedeniyle Azure Cosmos DB benzersiz güçlerinin yanı sıra, bu en iyi uygulamalardan çoğu doğru şekilde çevrilmez ve sizi en uygun çözümlere sürükleyebilirsiniz. Bu makalenin amacı, öğe modellemesinin varlık birlikte bulundurma ve kapsayıcı bölümlendirme olarak Azure Cosmos DB bir gerçek dünya kullanım örneğini modellemenin tam sürecinde size rehberlik sağlamaktır.
+
+Bu makaledeki kavramları gösteren [topluluk tarafından oluşturulan bir kaynak kodunu indirin veya görüntüleyin](https://github.com/jwidmer/AzureCosmosDbBlogExample) . Bu kod örneği bir topluluk katılımcısı tarafından katkıda bulunulmuş ve Azure Cosmos DB ekibi, bakımını desteklemiyor.
 
 ## <a name="the-scenario"></a>Senaryo
 

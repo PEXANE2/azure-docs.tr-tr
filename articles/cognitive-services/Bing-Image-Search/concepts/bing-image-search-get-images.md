@@ -11,12 +11,12 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: b414711f5589a141d59fbe2f14d0a8ae992f5acf
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3e5041855cc036c278979ba1c87634a61ec68ec7
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084451"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593493"
 ---
 # <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>Bing Resim Arama API'si Web 'den resimleri alın
 
@@ -36,7 +36,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-URL kodlamalı arama teriminizle ilgili [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) sorgu parametresini kullanın. Örneğin, *SAI dingerleri* girerseniz, `q` veya olarak ayarlayın `sailing+dinghies` `sailing%20dinghies` .
+URL kodlamalı arama teriminizle ilgili [q](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) sorgu parametresini kullanın. Örneğin, *SAI dingerleri* girerseniz, `q` veya olarak ayarlayın `sailing+dinghies` `sailing%20dinghies` .
 
 > [!IMPORTANT]
 > * Tüm isteklerin bir istemciden değil, bir sunucudan yapılması gerekir.
@@ -44,29 +44,29 @@ URL kodlamalı arama teriminizle ilgili [q](https://docs.microsoft.com/rest/api/
 
 ## <a name="get-images-from-a-specific-web-domain"></a>Belirli bir Web etki alanındaki görüntüleri al
 
-Belirli bir etki alanındaki görüntüleri almak için [site:](https://msdn.microsoft.com/library/ff795613.aspx) dize işlecini kullanın.
+Belirli bir etki alanındaki görüntüleri almak için [site:](/previous-versions/bing/search/ff795613(v=msdn.10)) dize işlecini kullanın.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
 ```
 
 > [!NOTE]
-> İşleci kullanarak sorgulara verilen yanıtlar `site:` , [SafeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) ayarından bağımsız olarak yetişkinlere yönelik içerik içerebilir. Yalnızca `site:` etki alanındaki içeriğin farkında değilseniz kullanın.
+> İşleci kullanarak sorgulara verilen yanıtlar `site:` , [SafeSearch](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) ayarından bağımsız olarak yetişkinlere yönelik içerik içerebilir. Yalnızca `site:` etki alanındaki içeriğin farkında değilseniz kullanın.
 
 ## <a name="filter-images"></a>Görüntüleri filtrele
 
  Varsayılan olarak, Resim Arama API 'SI sorguyla ilgili olan tüm görüntüleri döndürür. Bing 'in döndürdüğü görüntüleri filtrelemek istiyorsanız (örneğin, yalnızca saydam bir arka plana veya belirli boyuta sahip görüntüleri döndürmek için) aşağıdaki sorgu parametrelerini kullanın:
 
-* [en boy](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#aspect)— görüntüleri en boy oranına göre filtreleyin (örneğin, standart veya geniş ekran görüntüleri).
-* [Color](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#color)— görüntüleri baskın renge veya siyaha ve beyaza göre filtreleyin.
-* [yenilik](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#freshness)— resimleri yaş (örneğin, son hafta içinde Bing tarafından bulunan görüntüler) olarak filtreleyin.
-* [Yükseklik](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#height), [Genişlik](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#width)— görüntüleri genişliğe ve yüksekliğe göre filtreleyin.
-* [ImageContent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagecontent)— görüntüleri içeriğe göre filtreleyin (örneğin, yalnızca bir kişinin yüzünü gösteren görüntüler).
-* [ImageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype)— görüntüleri türe göre filtreleyin (örneğin, küçük resim, animasyonlu GIF 'ler veya saydam arka planlar).
-* [Lisans](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#license)— görüntüleri siteyle ilişkili lisans türüne göre filtreleyin.
-* [Boyut](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#size)— görüntüleri, 200 x 200 piksel kadar küçük görüntüler gibi boyuta göre filtreleyin.
+* [en boy](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#aspect)— görüntüleri en boy oranına göre filtreleyin (örneğin, standart veya geniş ekran görüntüleri).
+* [Color](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#color)— görüntüleri baskın renge veya siyaha ve beyaza göre filtreleyin.
+* [yenilik](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#freshness)— resimleri yaş (örneğin, son hafta içinde Bing tarafından bulunan görüntüler) olarak filtreleyin.
+* [Yükseklik](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#height), [Genişlik](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#width)— görüntüleri genişliğe ve yüksekliğe göre filtreleyin.
+* [ImageContent](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagecontent)— görüntüleri içeriğe göre filtreleyin (örneğin, yalnızca bir kişinin yüzünü gösteren görüntüler).
+* [ImageType](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype)— görüntüleri türe göre filtreleyin (örneğin, küçük resim, animasyonlu GIF 'ler veya saydam arka planlar).
+* [Lisans](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#license)— görüntüleri siteyle ilişkili lisans türüne göre filtreleyin.
+* [Boyut](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#size)— görüntüleri, 200 x 200 piksel kadar küçük görüntüler gibi boyuta göre filtreleyin.
 
-Belirli bir etki alanındaki görüntüleri almak için [site:](https://msdn.microsoft.com/library/ff795613.aspx) dize işlecini kullanın.
+Belirli bir etki alanındaki görüntüleri almak için [site:](/previous-versions/bing/search/ff795613(v=msdn.10)) dize işlecini kullanın.
 
 Aşağıdaki örnek, Bing 'in geçen hafta içinde bulduğu ContosoSailing.com 'tan küçük görüntülerin nasıl alınacağını gösterir.  
 
@@ -81,7 +81,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="bing-image-search-response-format"></a>Bing Resim Arama yanıt biçimi
 
-Bing 'den yanıt iletisi, bilişsel hizmetler 'in sorguyla ilgili olduğunu belirlenen görüntülerin listesini içeren bir [görüntü](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) yanıtı içerir. Listedeki her [görüntü](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) nesnesi, görüntü hakkında şu bilgileri IÇERIR: URL, boyutu, boyutları, kodlama biçimi, görüntünün küçük resminin URL 'si ve küçük resmin boyutları.
+Bing 'den yanıt iletisi, bilişsel hizmetler 'in sorguyla ilgili olduğunu belirlenen görüntülerin listesini içeren bir [görüntü](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) yanıtı içerir. Listedeki her [görüntü](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) nesnesi, görüntü hakkında şu bilgileri IÇERIR: URL, boyutu, boyutları, kodlama biçimi, görüntünün küçük resminin URL 'si ve küçük resmin boyutları.
 
 > [!NOTE]
 > * Görüntülerin yanıtta belirtilen sırada görüntülenmesi gerekir.
@@ -114,7 +114,7 @@ Bing 'den yanıt iletisi, bilişsel hizmetler 'in sorguyla ilgili olduğunu beli
 },
 ```
 
-Bing Resim Arama API'sini çağırdığınızda Bing, sonuç listesini döndürür. Bu liste sorguyla ilgili tüm sonuçların alt kümesidir. Yanıtın `totalEstimatedMatches` alanı, görüntülenebilecek tahmini görüntü sayısını içerir. Görüntülerin geri kalanı hakkında daha fazla bilgi için bkz. [sayfalama görüntüleri](../paging-images.md).
+Bing Resim Arama API'sini çağırdığınızda Bing, sonuç listesini döndürür. Bu liste sorguyla ilgili tüm sonuçların alt kümesidir. Yanıtın `totalEstimatedMatches` alanı, görüntülenebilecek tahmini görüntü sayısını içerir. Görüntülerin geri kalanı hakkında daha fazla bilgi için bkz. [sayfalama görüntüleri](../../bing-web-search/paging-search-results.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

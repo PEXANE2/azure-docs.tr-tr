@@ -1,6 +1,6 @@
 ---
 title: Hive etkinliğini kullanarak verileri dönüştürme-Azure
-description: Bir Azure Data Factory v1 'de Hive etkinliğini isteğe bağlı bir/kendi HDInsight kümeniz üzerinde çalıştırmak için nasıl kullanabileceğinizi öğrenin.
+description: Bir isteğe bağlı/kendi HDInsight kümeniz üzerinde Hive sorguları çalıştırmak için Azure Data Factory v1 'de Hive etkinliğini nasıl kullanabileceğinizi öğrenin.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 36e0d8a0c0ee5e5202c47acdd74b869181cfaf9e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0271029814071b3a692209d3a2015cfdbe5fa941
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371690"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616782"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory Hive etkinliğini kullanarak verileri dönüştürme 
 > [!div class="op_single_selector" title1="Dönüştürme etkinlikleri"]
@@ -26,8 +26,8 @@ ms.locfileid: "92371690"
 > * [MapReduce etkinliği](data-factory-map-reduce.md)
 > * [Hadoop akışı etkinliği](data-factory-hadoop-streaming-activity.md)
 > * [Spark etkinliği](data-factory-spark.md)
-> * [Azure Machine Learning Studio (klasik) Batch yürütme etkinliği](data-factory-azure-ml-batch-execution-activity.md)
-> * [Azure Machine Learning Studio (klasik) kaynak güncelleştirme etkinliği](data-factory-azure-ml-update-resource-activity.md)
+> * [Azure Machine Learning Studio (klasik) Batch Yürütme Etkinliği](data-factory-azure-ml-batch-execution-activity.md)
+> * [Azure Machine Learning Studio (klasik) Kaynak Güncelleştirme Etkinliği](data-factory-azure-ml-update-resource-activity.md)
 > * [Saklı Yordam Etkinliği](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL Etkinliği](data-factory-usql-activity.md)
 > * [.NET özel etkinliği](data-factory-use-custom-activities.md)
@@ -74,15 +74,15 @@ Bir Data Factory işlem [hattının](data-factory-create-pipelines.md) HDInsight
 ## <a name="syntax-details"></a>Söz dizimi ayrıntıları
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| name |Etkinliğin adı |Yes |
-| açıklama |Etkinliğin ne için kullanıldığını açıklayan metin |No |
-| tür |Hdınsighthive |Yes |
-| girişi |Hive etkinliği tarafından tüketilen girişler |No |
-| çıkışı |Hive etkinliği tarafından oluşturulan çıktılar |Yes |
-| linkedServiceName |Data Factory bağlı hizmet olarak kaydedilen HDInsight kümesine başvuru |Yes |
-| betik |Hive betiğini satır içi olarak belirt |No |
-| scriptPath |Hive betiğini bir Azure Blob depolama alanında depolayın ve dosyanın yolunu sağlayın. ' Script ' veya ' scriptPath ' özelliğini kullanın. İkisi birlikte kullanılamaz. Dosya adı büyük/küçük harfe duyarlıdır. |No |
-| tanımlar |' Hiveconf ' kullanarak Hive betiği içinde başvurmak için bir anahtar/değer çiftleri olarak parametre belirtin |No |
+| name |Etkinliğin adı |Evet |
+| açıklama |Etkinliğin ne için kullanıldığını açıklayan metin |Hayır |
+| tür |Hdınsighthive |Evet |
+| girişi |Hive etkinliği tarafından tüketilen girişler |Hayır |
+| çıkışı |Hive etkinliği tarafından oluşturulan çıktılar |Evet |
+| linkedServiceName |Data Factory bağlı hizmet olarak kaydedilen HDInsight kümesine başvuru |Evet |
+| betik |Hive betiğini satır içi olarak belirt |Hayır |
+| scriptPath |Hive betiğini bir Azure Blob depolama alanında depolayın ve dosyanın yolunu sağlayın. ' Script ' veya ' scriptPath ' özelliğini kullanın. İkisi birlikte kullanılamaz. Dosya adı büyük/küçük harfe duyarlıdır. |Hayır |
+| tanımlar |' Hiveconf ' kullanarak Hive betiği içinde başvurmak için bir anahtar/değer çiftleri olarak parametre belirtin |Hayır |
 
 ## <a name="example"></a>Örnek
 Kullanıcıların, şirketiniz tarafından başlatılan oyunları oynatılması için harcadığı zamanı belirlemek istediğiniz oyun günlüğü analizinin bir örneğini ele alalım. 
@@ -177,7 +177,7 @@ Bu örnekte, oyun günlükleri Azure Blob depolama alanında günlük olarak al�
 
 Parametreli Hive betiğini kullanmak için şunları yapın
 
-* **Tanımlar**içindeki parametreleri tanımlayın.
+* **Tanımlar** içindeki parametreleri tanımlayın.
 
     ```JSON  
     {

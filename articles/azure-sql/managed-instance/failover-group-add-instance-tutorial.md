@@ -8,16 +8,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: tutorial
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sashan, sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: sashan
 ms.date: 08/27/2019
-ms.openlocfilehash: df10e2b674a8e97766ee96a802e614e2bd797b7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92d1ce51306e846e2d842bef33bb9782da14019a
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617749"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594003"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Öğretici: yük devretme grubuna SQL yönetilen örneği ekleme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -63,16 +63,16 @@ Performans nedenleriyle, [eşleştirilmiş bölgelere](../../best-practices-avai
 
 Azure portal kullanarak kaynak grubunu ve birincil yönetilen örneğinizi oluşturun. 
 
-1. Azure portal sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve `Azure SQL` Arama kutusuna yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
+1. Azure portal sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler** ' i seçin ve `Azure SQL` Arama kutusuna yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
 1. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. **Veritabanları** kutucuğunda **Ayrıntıları göster** ' i seçerek farklı veritabanları hakkındaki ek bilgileri görüntüleyebilirsiniz.
 1. **SQL yönetilen örnekler** kutucuğunda **Oluştur** ' u seçin. 
 
     ![SQL yönetilen örneği Seç](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
 
 1. **Azure SQL yönetilen örneği oluştur** sayfasında, **temel bilgiler** sekmesinde:
-    1. **Proje ayrıntıları**' nın altında, açılır listeden **aboneliğinizi** seçin ve ardından yeni kaynak grubu **oluşturmayı** seçin. Kaynak grubunuz için gibi bir ad yazın `myResourceGroup` . 
-    1. **SQL yönetilen örnek ayrıntıları**' nın altında, yönetilen örneğinizin adını ve yönetilen örneğinizi dağıtmak istediğiniz bölgeyi girin. **İşlem + depolama alanını** varsayılan değerlerle bırakın. 
-    1. **Yönetici hesabı**altında, gibi bir yönetici oturum açma `azureuser` ve karmaşık yönetici parolası sağlayın. 
+    1. **Proje ayrıntıları** ' nın altında, açılır listeden **aboneliğinizi** seçin ve ardından yeni kaynak grubu **oluşturmayı** seçin. Kaynak grubunuz için gibi bir ad yazın `myResourceGroup` . 
+    1. **SQL yönetilen örnek ayrıntıları** ' nın altında, yönetilen örneğinizin adını ve yönetilen örneğinizi dağıtmak istediğiniz bölgeyi girin. **İşlem + depolama alanını** varsayılan değerlerle bırakın. 
+    1. **Yönetici hesabı** altında, gibi bir yönetici oturum açma `azureuser` ve karmaşık yönetici parolası sağlayın. 
 
     ![Birincil yönetilen örnek oluştur](./media/failover-group-add-instance-tutorial/primary-sql-mi-values.png)
 
@@ -161,8 +161,8 @@ PowerShell kullanarak kaynak grubunuzu ve birincil yönetilen örneği oluşturu
    # Suppress networking breaking changes warning (https://aka.ms/azps-changewarnings
    Set-Item Env:\SuppressAzurePowerShellBreakingChangeWarnings "true"
    
-   # Set the subscription context
-   Set-AzContext -SubscriptionId $subscriptionId 
+   # Set the subscription context
+   Set-AzContext -SubscriptionId $subscriptionId 
    
    # Create the resource group
    Write-host "Creating resource group..."
@@ -415,16 +415,16 @@ Yönetilen örneğinizi oluşturmak için Azure portal kullanıyorsanız, birinc
 Birincil sanal ağınızın alt ağ aralığını doğrulamak için şu adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com), kaynak grubunuza gidin ve birincil örneğiniz için sanal ağı seçin.  
-2. **Ayarlar** altında **alt ağlar** ' ı seçin ve **adres aralığını**aklınızda edin. İkincil yönetilen örnek için sanal ağın alt ağ adres aralığı bu ile çakışamaz. 
+2. **Ayarlar** altında **alt ağlar** ' ı seçin ve **adres aralığını** aklınızda edin. İkincil yönetilen örnek için sanal ağın alt ağ adres aralığı bu ile çakışamaz. 
 
 
    ![Birincil alt ağ](./media/failover-group-add-instance-tutorial/verify-primary-subnet-range.png)
 
 Bir sanal ağ oluşturmak için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com), **kaynak oluştur** ve *sanal ağ*ara ' yı seçin. 
+1. [Azure Portal](https://portal.azure.com), **kaynak oluştur** ve *sanal ağ* ara ' yı seçin. 
 1. Microsoft tarafından yayımlanan **sanal ağ** seçeneğini seçin ve ardından sonraki sayfada **Oluştur** ' u seçin. 
-1. İkincil yönetilen örneğinizin sanal ağını yapılandırmak için gerekli alanları doldurun ve **Oluştur**' u seçin. 
+1. İkincil yönetilen örneğinizin sanal ağını yapılandırmak için gerekli alanları doldurun ve **Oluştur** ' u seçin. 
 
    Aşağıdaki tabloda, ikincil sanal ağ için gereken değerler gösterilmektedir:
 
@@ -457,7 +457,7 @@ Bu adımda, Azure portal bir ikincil yönetilen örnek oluşturacaksınız ve bu
 
 Azure portal kullanarak ikincil yönetilen örnek oluşturun. 
 
-1. Azure portal sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve `Azure SQL` Arama kutusuna yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
+1. Azure portal sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler** ' i seçin ve `Azure SQL` Arama kutusuna yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
 1. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. **Veritabanları** kutucuğunda **Ayrıntıları göster** ' i seçerek farklı veritabanları hakkındaki ek bilgileri görüntüleyebilirsiniz.
 1. **SQL yönetilen örnekler** kutucuğunda **Oluştur** ' u seçin. 
 
@@ -477,11 +477,11 @@ Azure portal kullanarak ikincil yönetilen örnek oluşturun.
     | **Parola** | Yeni ikincil yönetilen örnek için yönetici oturumu tarafından kullanılacak karmaşık bir parola.  |
     | &nbsp; | &nbsp; |
 
-1. **Ağ** sekmesinde, **sanal ağ**için, açılan listeden ikincil yönetilen örnek için oluşturduğunuz sanal ağı seçin.
+1. **Ağ** sekmesinde, **sanal ağ** için, açılan listeden ikincil yönetilen örnek için oluşturduğunuz sanal ağı seçin.
 
    ![İkincil mı ağı](./media/failover-group-add-instance-tutorial/networking-settings-for-secondary-mi.png)
 
-1. **Ek ayarlar** sekmesinde, **coğrafi çoğaltma**için, _Yük devretme Ikincili olarak kullanmak_için **Evet** ' i seçin. Açılan listeden birincil yönetilen örneği seçin. 
+1. **Ek ayarlar** sekmesinde, **coğrafi çoğaltma** için, _Yük devretme Ikincili olarak kullanmak_ için **Evet** ' i seçin. Açılan listeden birincil yönetilen örneği seçin. 
     
    Harmanlama ve saat diliminin, birincil yönetilen örnekle eşleştiğinden emin olun. Bu öğreticide oluşturulan birincil yönetilen örnek, `SQL_Latin1_General_CP1_CI_AS` harmanlama ve `(UTC) Coordinated Universal Time` saat dilimi varsayılanını kullanır. 
 
@@ -751,11 +751,11 @@ Azure portal kullanarak, birincil yönetilen örneğinizin sanal ağı için ağ
 
 
 1. [Azure Portal](https://portal.azure.com), kaynak grubunuza gidin ve birincil yönetilen örneğiniz için **sanal ağ** kaynağını seçin. 
-1. **Ayarlar** altında **alt ağlar** ' ı seçin ve ardından yeni bir **ağ geçidi alt ağı**eklemeyi seçin. Varsayılan değerleri bırakın. 
+1. **Ayarlar** altında **alt ağlar** ' ı seçin ve ardından yeni bir **ağ geçidi alt ağı** eklemeyi seçin. Varsayılan değerleri bırakın. 
 
    ![Birincil yönetilen örnek için ağ geçidi ekle](./media/failover-group-add-instance-tutorial/add-subnet-gateway-primary-vnet.png)
 
-1. Alt ağ geçidi oluşturulduktan sonra sol gezinti bölmesinden **kaynak oluştur** ' u seçin ve `Virtual network gateway` Arama kutusuna yazın. **Microsoft**tarafından yayınlanan **sanal ağ geçidi** kaynağını seçin. 
+1. Alt ağ geçidi oluşturulduktan sonra sol gezinti bölmesinden **kaynak oluştur** ' u seçin ve `Virtual network gateway` Arama kutusuna yazın. **Microsoft** tarafından yayınlanan **sanal ağ geçidi** kaynağını seçin. 
 
    ![Yeni bir sanal ağ geçidi oluştur](./media/failover-group-add-instance-tutorial/create-virtual-network-gateway.png)
 
@@ -768,11 +768,11 @@ Azure portal kullanarak, birincil yönetilen örneğinizin sanal ağı için ağ
     | **Abonelik** |  Birincil yönetilen örneğinizin bulunduğu abonelik. |
     | **Ad** | Sanal ağ geçidinizin adı, örneğin `primary-mi-gateway` . | 
     | **Bölge** | Birincil yönetilen örneğinizin bulunduğu bölge. |
-    | **Ağ geçidi türü** | **VPN**' yi seçin. |
-    | **VPN türü** | **Rota tabanlı**' ı seçin. |
+    | **Ağ geçidi türü** | **VPN** ' yi seçin. |
+    | **VPN türü** | **Rota tabanlı** ' ı seçin. |
     | **SKU**| Varsayılan bırakın `VpnGw1` . |
     | **Sanal ağ**| 2. bölümde oluşturulan sanal ağı seçin `vnet-sql-mi-primary` . |
-    | **Genel IP adresi**| **Yeni oluştur**’u seçin. |
+    | **Genel IP adresi**| **Yeni oluştur** ’u seçin. |
     | **Genel IP adresi adı**| IP adresiniz için gibi bir ad girin `primary-gateway-IP` . |
     | &nbsp; | &nbsp; |
 
@@ -849,11 +849,11 @@ Azure portal kullanarak, ikincil yönetilen örnek için sanal ağ alt ağını 
    | **Abonelik** |  İkincil yönetilen örneğinizin olduğu abonelik. |
    | **Ad** | Sanal ağ geçidinizin adı, örneğin `secondary-mi-gateway` . | 
    | **Bölge** | İkincil yönetilen örneğinizin bulunduğu bölge. |
-   | **Ağ geçidi türü** | **VPN**' yi seçin. |
-   | **VPN türü** | **Rota tabanlı**' ı seçin. |
+   | **Ağ geçidi türü** | **VPN** ' yi seçin. |
+   | **VPN türü** | **Rota tabanlı** ' ı seçin. |
    | **SKU**| Varsayılan bırakın `VpnGw1` . |
    | **Sanal ağ**| İkincil yönetilen örnek için sanal ağı seçin (örneğin,) `vnet-sql-mi-secondary` . |
-   | **Genel IP adresi**| **Yeni oluştur**’u seçin. |
+   | **Genel IP adresi**| **Yeni oluştur** ’u seçin. |
    | **Genel IP adresi adı**| IP adresiniz için gibi bir ad girin `secondary-gateway-IP` . |
    | &nbsp; | &nbsp; |
 
@@ -925,15 +925,15 @@ Azure portal kullanarak iki ağ geçidini bağlayın.
 1. Azure portal **kaynak oluştur** ' u seçin [Azure portal](https://portal.azure.com).
 1. Arama `connection` kutusuna yazın ve ardından arama yapmak için ENTER tuşuna basın. Bu, sizi Microsoft tarafından yayımlanan **bağlantı** kaynağına götürür.
 1. Bağlantınızı oluşturmak için **Oluştur** ' u seçin. 
-1. **Temel bilgiler** sayfasında, aşağıdaki değerleri seçip **Tamam**' ı seçin. 
-    1. `VNet-to-VNet` **Bağlantı türü**için seçin. 
+1. **Temel bilgiler** sayfasında, aşağıdaki değerleri seçip **Tamam** ' ı seçin. 
+    1. `VNet-to-VNet` **Bağlantı türü** için seçin. 
     1. Açılan listeden aboneliğinizi seçin. 
     1. Açılan kutuda SQL yönetilen örneği için kaynak grubunu seçin. 
     1. Açılan listeden birincil yönetilen örneğinizin konumunu seçin. 
-1. **Ayarlar** sayfasında, aşağıdaki değerleri seçin veya girin ve sonra **Tamam**' ı seçin:
-    1. **İlk sanal ağ geçidi**için, gibi birincil ağ geçidini seçin `primaryGateway` .  
-    1. **İkinci sanal ağ geçidi**için ikincil ağ geçidini (gibi) seçin `secondaryGateway` . 
-    1. **Çift yönlü bağlantı oluştur**' un yanındaki onay kutusunu işaretleyin. 
+1. **Ayarlar** sayfasında, aşağıdaki değerleri seçin veya girin ve sonra **Tamam** ' ı seçin:
+    1. **İlk sanal ağ geçidi** için, gibi birincil ağ geçidini seçin `primaryGateway` .  
+    1. **İkinci sanal ağ geçidi** için ikincil ağ geçidini (gibi) seçin `secondaryGateway` . 
+    1. **Çift yönlü bağlantı oluştur** ' un yanındaki onay kutusunu işaretleyin. 
     1. Varsayılan birincil bağlantı adını bırakın ya da seçtiğiniz bir değerle yeniden adlandırın. 
     1. Bağlantı için, gibi bir **paylaşılan anahtar (PSK)** sağlayın `mi1m2psk` . 
     1. Ayarlarınızı kaydetmek için **Tamam ' ı** seçin. 
@@ -983,9 +983,9 @@ Bu adımda, yük devretme grubunu oluşturacak ve yönetilen örneklerin her iki
 Azure portal kullanarak yük devretme grubunu oluşturun. 
 
 
-1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve `Azure SQL` Arama kutusuna yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
+1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler** ' i seçin ve `Azure SQL` Arama kutusuna yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
 1. İlk bölümde oluşturduğunuz birincil yönetilen örneği (örneğin,) seçin `sql-mi-primary` . 
-1. **Ayarlar**altında, örnek yük **devretme grupları** ' na gidin ve sonra **örnek yük devretme grubu** sayfasını açmak için **Grup Ekle** ' yi seçin. 
+1. **Ayarlar** altında, örnek yük **devretme grupları** ' na gidin ve sonra **örnek yük devretme grubu** sayfasını açmak için **Grup Ekle** ' yi seçin. 
 
    ![Yük devretme grubu ekleme](./media/failover-group-add-instance-tutorial/add-failover-group.png)
 
@@ -1090,9 +1090,9 @@ Yük devretme grubunu birincil sunucuya geri döndürür:
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 1. [Azure Portal](https://portal.azure.com)kaynak grubunuza gidin. 
-1. Yönetilen örnekleri seçin ve ardından **Sil**' i seçin. `yes`Kaynağı silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil**' i seçin. Bu işlemin tamamlanması biraz zaman alabilir ve tamamlanana kadar *sanal kümeyi* ya da başka herhangi bir bağımlı kaynağı silemeyeceksiniz. Yönetilen örneğinizin silindiğini onaylamak için **etkinlik** sekmesindeki silme işlemini izleyin. 
-1. Yönetilen örnek silindikten sonra, *sanal kümeyi* kaynak grubunuzda seçip **Sil**' i seçerek silin. `yes`Kaynağı silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil**' i seçin. 
-1. Kalan kaynakları silin. `yes`Kaynağı silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil**' i seçin. 
+1. Yönetilen örnekleri seçin ve ardından **Sil** ' i seçin. `yes`Kaynağı silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil** ' i seçin. Bu işlemin tamamlanması biraz zaman alabilir ve tamamlanana kadar *sanal kümeyi* ya da başka herhangi bir bağımlı kaynağı silemeyeceksiniz. Yönetilen örneğinizin silindiğini onaylamak için **etkinlik** sekmesindeki silme işlemini izleyin. 
+1. Yönetilen örnek silindikten sonra, *sanal kümeyi* kaynak grubunuzda seçip **Sil** ' i seçerek silin. `yes`Kaynağı silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil** ' i seçin. 
+1. Kalan kaynakları silin. `yes`Kaynağı silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil** ' i seçin. 
 1. Kaynak grubunu Sil ' i seçerek kaynak **grubunu Sil ' i seçin,** kaynak grubunun adını yazın ve Sil ' i `myResourceGroup` seçin. **Delete** 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)

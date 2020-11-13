@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 34baa054104a6cf2c78864cc2827b16c1eedb084
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5cde4b539262c9e20bbcf2e7dd8c8e9de38035c3
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613314"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594258"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Hızlı başlangıç: Node.js Web uygulamasına OpenID Connect ile oturum açma ekleme
 
-Bu hızlı başlangıçta, Express ile Node.js kullanılarak oluşturulmuş bir Web uygulamasında OpenID Connect kimlik doğrulamasını ayarlamayı öğreneceksiniz. Örnek, herhangi bir platformda çalışmak üzere tasarlanmıştır.
+Bu hızlı başlangıçta, Express ile Node.js kullanılarak oluşturulmuş bir Web uygulamasında OpenID Connect kimlik doğrulamasının nasıl ayarlanacağını gösteren bir kod örneği indirip çalıştırırsınız. Örnek, herhangi bir platformda çalışmak üzere tasarlanmıştır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/en/download/).
@@ -40,7 +40,7 @@ Bu hızlı başlangıçta, Express ile Node.js kullanılarak oluşturulmuş bir 
 
 1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin:
     - **Ad** bölümünde, uygulamanın kullanıcılarına gösterilecek anlamlı bir ad girin. Örneğin: MyWebApp
-    - **Desteklenen hesap türleri** bölümünde, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında (ör. Skype, Xbox, Outlook.com) hesaplar**' ı seçin.
+    - **Desteklenen hesap türleri** bölümünde, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında (ör. Skype, Xbox, Outlook.com) hesaplar** ' ı seçin.
 
     Birden fazla yeniden yönlendirme URI 'si varsa, bunları daha sonra uygulama başarıyla oluşturulduktan sonra **kimlik doğrulama** sekmesinden eklemeniz gerekir.
 
@@ -48,14 +48,14 @@ Bu hızlı başlangıçta, Express ile Node.js kullanılarak oluşturulmuş bir 
 
 1. Uygulamanın **genel bakış** sayfasında, **uygulama (istemci) kimlik** değerini bulun ve daha sonra için kaydedin. Uygulamayı bu projede daha sonra yapılandırmak için bu değere ihtiyacınız olacak.
 
-1. Uygulama sayfa listesinde **Kimlik doğrulaması**'nı seçin.
+1. Uygulama sayfa listesinde **Kimlik doğrulaması** 'nı seçin.
     - **Yeniden yönlendirme URI 'leri** bölümünde, açılan kutudan **Web** ' i seçin ve aşağıdaki yeniden yönlendirme URI 'sini girin:`http://localhost:3000/auth/openid/return`
     - **Gelişmiş ayarlar** bölümünde, **oturum kapatma URL 'sini** olarak ayarlayın `https://localhost:3000` .
     - **Gelişmiş ayarlar > örtük verme** bölümünde, **kimlik belirteçlerini** denetleyin, bu örnek, kullanıcının oturum açması için [örtük verme akışının](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow) etkinleştirilmesini gerektirir.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet** ’i seçin.
 
-1. **Sertifikalar & gizlilikler** sayfasında, **istemci gizli** dizileri bölümünde **yeni istemci parolası**' nı seçin.
+1. **Sertifikalar & gizlilikler** sayfasında, **istemci gizli** dizileri bölümünde **yeni istemci parolası** ' nı seçin.
     - Bir anahtar açıklaması girin (örneğin, uygulama gizli anahtarı).
     - **1 yılda, 2 yıl içinde** bir anahtar süresi seçin veya **hiçbir zaman sona ermez**.
     - **Ekle** düğmesine tıkladığınızda, anahtar değeri görüntülenecektir. Anahtar değerini kopyalayın ve güvenli bir konuma kaydedin.

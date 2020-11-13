@@ -12,18 +12,18 @@ ms.date: 09/14/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: görüntü tanıma, görüntü tanımlayıcı, görüntü tanıma uygulaması, Özel Vizyon
-ms.openlocfilehash: 47227a60b1ed45499afdb42fbc062abc5ae51ff9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aa338bf708abaa49d65b6a817009224973f3fb29
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90605597"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616918"
 ---
 # <a name="what-is-custom-vision"></a>Özel Görüntü İşleme nedir?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure Özel Görüntü İşleme, kendi görüntü tanımlayıcılarınızı oluşturmanıza, dağıtmanıza ve iyileştirmenize olanak tanıyan bir görüntü tanıma hizmetidir. Görüntü tanımlayıcısı, görsel özelliklerine göre resimlere (sınıfları veya nesneleri temsil eden) etiketleri uygular. [Görüntü işleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) hizmetinden farklı olarak, özel görüntü işleme, etiketleri belirleyip özel modeller eğitmenize olanak tanır.
+Azure Özel Görüntü İşleme, kendi görüntü tanımlayıcılarınızı oluşturmanıza, dağıtmanıza ve iyileştirmenize olanak tanıyan bir görüntü tanıma hizmetidir. Görüntü tanımlayıcısı, görsel özelliklerine göre resimlere (sınıfları veya nesneleri temsil eden) etiketleri uygular. [Görüntü işleme](../computer-vision/overview.md) hizmetinden farklı olarak, özel görüntü işleme, etiketleri belirleyip özel modeller eğitmenize olanak tanır.
 
 ## <a name="what-it-does"></a>Ne yapar?
 

@@ -5,14 +5,14 @@ description: Tanılama ayarlarıyla günlüğe yazmayı etkinleştirme ve günl�
 author: baanders
 ms.author: baanders
 ms.date: 11/9/2020
-ms.topic: troubleshooting
+ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0d775ffa1ce063c01fc6762d77201e5a4caaad87
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: d988617fcaf7479c7bb3356e6ef6f87824ed23a7
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411774"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616663"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure dijital TWINS sorunlarını giderme: tanılama günlüğü
 
@@ -114,7 +114,7 @@ API günlüklerinin alan ve özellik açıklamaları aşağıda verilmiştir.
 
 | Alan adı | Veri türü | Açıklama |
 |-----|------|-------------|
-| `Time` | Tarih-Saat | Bu olayın gerçekleştiği tarih ve saat (UTC) |
+| `Time` | DateTime | Bu olayın gerçekleştiği tarih ve saat (UTC) |
 | `ResourceID` | Dize | Olayın gerçekleştiği kaynak için Azure Resource Manager kaynak KIMLIĞI |
 | `OperationName` | Dize  | Olay sırasında gerçekleştirilen eylemin türü |
 | `OperationVersion` | Dize | Olay sırasında kullanılan API sürümü |
@@ -200,7 +200,7 @@ Bu, Günlükler için şemadır `ADTEventRoutesOperation` . Bunlar, özel duruml
 
 |Alan adı | Veri türü | Açıklama |
 |-----|------|-------------|
-| `Time` | Tarih-Saat | Bu olayın gerçekleştiği tarih ve saat (UTC) |
+| `Time` | DateTime | Bu olayın gerçekleştiği tarih ve saat (UTC) |
 | `ResourceId` | Dize | Olayın gerçekleştiği kaynak için Azure Resource Manager kaynak KIMLIĞI |
 | `OperationName` | Dize  | Olay sırasında gerçekleştirilen eylemin türü |
 | `Category` | Dize | Yayılmakta olan kaynağın türü |

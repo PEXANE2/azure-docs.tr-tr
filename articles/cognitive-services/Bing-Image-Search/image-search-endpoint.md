@@ -10,21 +10,21 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 4ed48a46a01cee5a7a981d4e863f981010b44112
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 67fec77136f5d593279be2846e63c51b60e16bb4
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084264"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593527"
 ---
 # <a name="endpoints-for-the-bing-image-search-api"></a>Bing Resim Arama API'si uç noktaları
 
 > [!WARNING]
-> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](/bing/search-apis/bing-web-search/create-bing-search-service-resource)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
 > Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
-> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
+> Geçiş yönergeleri için bkz. [Bing arama Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
-**Resim arama API 'si** üç uç nokta içerir.  Endpoint 1, bir sorguya göre Web 'den görüntüleri döndürür. Uç nokta 2 [ımageınsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse)döndürüyor.  Uç nokta 3, popüler resimleri döndürür.
+**Resim arama API 'si** üç uç nokta içerir.  Endpoint 1, bir sorguya göre Web 'den görüntüleri döndürür. Uç nokta 2 [ımageınsights](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse)döndürüyor.  Uç nokta 3, popüler resimleri döndürür.
 
 ## <a name="endpoints"></a>Uç Noktalar
 
@@ -39,9 +39,9 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/images/search
 ```
  GET or POST https://api.cognitive.microsoft.com/bing/v7.0/images/details
 ```
-GET isteği, görüntüyü içeren Web sayfaları gibi bir görüntüyle ilgili öngörüleri döndürür. Bir istek ile [ınsi, Stoken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) parametresini ekleyin `GET` .
+GET isteği, görüntüyü içeren Web sayfaları gibi bir görüntüyle ilgili öngörüleri döndürür. Bir istek ile [ınsi, Stoken](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) parametresini ekleyin `GET` .
 
-Ya da bir isteğin gövdesine bir ikili görüntü ekleyebilir `POST` ve [modüller](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) parametresini olarak ayarlayabilirsiniz `RecognizedEntities` . Bu işlem, görüntüdeki kişiler hakkında bilgi döndüren sonraki bir istekte parametre olarak kullanılacak bir [ınsibir sToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v5-reference#insightstoken) döndürür `GET` .  `modules` `All` `RecognizedEntities` `POST` Kullanılarak başka bir çağrı yapmadan sonuçları hariç tüm öngörüleri almak için olarak ayarlayın `insightsToken` .
+Ya da bir isteğin gövdesine bir ikili görüntü ekleyebilir `POST` ve [modüller](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) parametresini olarak ayarlayabilirsiniz `RecognizedEntities` . Bu işlem, görüntüdeki kişiler hakkında bilgi döndüren sonraki bir istekte parametre olarak kullanılacak bir [ınsibir sToken](/rest/api/cognitiveservices-bingsearch/bing-images-api-v5-reference#insightstoken) döndürür `GET` .  `modules` `All` `RecognizedEntities` `POST` Kullanılarak başka bir çağrı yapmadan sonuçları hariç tüm öngörüleri almak için olarak ayarlayın `insightsToken` .
 
 
 **Uç nokta 3:** Başkaları tarafından yapılan arama isteklerine göre popüler olan görüntüleri döndürür. Görüntüler, örneğin, önemli kişilere veya olaylara bağlı olarak farklı kategorilere ayrılmıştır.
@@ -49,14 +49,14 @@ Ya da bir isteğin gövdesine bir ikili görüntü ekleyebilir `POST` ve [modül
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/trending
 ```
 
-Popüler resimleri destekleyen pazarların bir listesi için bkz. [popüler görüntüler](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/trending-images).
+Popüler resimleri destekleyen pazarların bir listesi için bkz. [popüler görüntüler](./trending-images.md).
 
-Üstbilgiler, parametreler, Pazar kodları, yanıt nesneleri, hatalar vb. hakkında ayrıntılar için [Bing resim arama API'si v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) başvurusuna bakın.
+Üstbilgiler, parametreler, Pazar kodları, yanıt nesneleri, hatalar vb. hakkında ayrıntılar için [Bing resim arama API'si v7](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) başvurusuna bakın.
 ## <a name="response-json"></a>JSON yanıtı
-Bir görüntü arama isteğine yönelik yanıt, sonuçları JSON nesneleri olarak içerir. Sonuçları ayrıştırma örnekleri için bkz. [öğretici](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app) ve [kaynak kodu](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app-source).
+Bir görüntü arama isteğine yönelik yanıt, sonuçları JSON nesneleri olarak içerir. Sonuçları ayrıştırma örnekleri için bkz. [öğretici](./tutorial-bing-image-search-single-page-app.md) ve [kaynak kodu](./tutorial-bing-image-search-single-page-app.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 **Bing** API 'leri türlerine göre sonuçlar döndüren arama eylemlerini destekler. Tüm arama uç noktaları sonuçları JSON yanıt nesneleri olarak döndürür.  Tüm uç noktalar, Boylam, enlem ve arama yarıçapı tarafından belirli bir dili ve/veya konumu döndüren sorguları destekler.
 
 Her uç nokta tarafından desteklenen parametreler hakkında tüm bilgiler için, her tür için başvuru sayfalarına bakın.
-Görüntü arama API 'sini kullanan temel isteklerin örnekleri için bkz. [resim arama Hızlı Başlat](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/search-the-web).
+Görüntü arama API 'sini kullanan temel isteklerin örnekleri için bkz. [resim arama Hızlı Başlat](./overview.md).

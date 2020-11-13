@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: d7d66e247c6a6240bd6fde08612b8eb770bd3b92
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b85b2d9b81e84ec6c6e09fef16c66a919aa30cd7
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737544"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616765"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Öğretici: kamera resimlerde Azure hizmet logolarını tanıma
 
@@ -31,12 +31,12 @@ Bu öğreticide şunları nasıl yapacağınızı gösterilecek:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/downloads/)
-- Visual Studio için Xamarin iş yükü (bkz. [Xamarin 'ı yükleme](https://docs.microsoft.com/xamarin/cross-platform/get-started/installation/windows))
+- Visual Studio için Xamarin iş yükü (bkz. [Xamarin 'ı yükleme](/xamarin/cross-platform/get-started/installation/windows))
 - Visual Studio için iOS veya Android öykünücüsü
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) (isteğe bağlı)
+- [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest) (isteğe bağlı)
 
 ## <a name="get-the-source-code"></a>Kaynak kodunu alma
 
@@ -94,7 +94,7 @@ Uygulamanın bu verileri nasıl işleyeceği hakkında daha fazla bilgi edinmek 
 
 Öğreticinin Özel Görüntü İşleme kısmı tamamlanmıştır. Uygulamayı çalıştırmak istiyorsanız, Görüntü İşleme hizmetini de tümleştirmeniz gerekir. Uygulama, logo algılama işlemini tamamlamak için Görüntü İşleme metin tanıma özelliğini kullanır. Azure logosu, görünümü *veya* yakınında yazılı metin tarafından tanınır. Özel Görüntü İşleme modellerinden farklı olarak, Görüntü İşleme görüntülerde veya videolarda belirli işlemleri gerçekleştirmek için önceden eğitilmiş olur.
 
-Anahtar ve uç nokta URL 'SI almak için Görüntü İşleme hizmetine abone olun. Bu adımla ilgili yardım için bkz. [abonelik anahtarları nasıl elde edilir](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe).
+Anahtar ve uç nokta URL 'SI almak için Görüntü İşleme hizmetine abone olun. Bu adımla ilgili yardım için bkz. [abonelik anahtarları nasıl elde edilir](../cognitive-services-apis-create-account.md?tabs=singleservice%2Cwindows).
 
 ![Azure portal, Hızlı Başlangıç menüsü seçili olan Görüntü İşleme hizmetidir. API uç noktası URL 'SI olduğu gibi anahtarlar için bir bağlantı özetlenmiştir](media/azure-logo-tutorial/comvis-keys.png)
 
@@ -104,7 +104,7 @@ Sonra *Source\visualprovision\appsettings.cs* dosyasını açın ve `ComputerVis
 
 ## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
-Uygulamanın Azure aboneliğinize hizmet dağıtması için bir Azure hizmet sorumlusu hesabının olması gerekir. Hizmet sorumlusu, Azure rol tabanlı erişim denetimi kullanarak bir uygulamaya belirli izinler atamanıza olanak tanır. Daha fazla bilgi edinmek için bkz. [hizmet sorumluları Kılavuzu](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals).
+Uygulamanın Azure aboneliğinize hizmet dağıtması için bir Azure hizmet sorumlusu hesabının olması gerekir. Hizmet sorumlusu, Azure rol tabanlı erişim denetimi kullanarak bir uygulamaya belirli izinler atamanıza olanak tanır. Daha fazla bilgi edinmek için bkz. [hizmet sorumluları Kılavuzu](/azure-stack/operator/azure-stack-create-service-principals).
 
 Burada gösterildiği gibi Azure Cloud Shell veya Azure CLı kullanarak bir hizmet sorumlusu oluşturabilirsiniz. Başlamak için oturum açın ve kullanmak istediğiniz aboneliği seçin.
 

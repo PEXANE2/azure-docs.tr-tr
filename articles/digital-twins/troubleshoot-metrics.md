@@ -5,14 +5,14 @@ description: Bkz. Azure Izleyici 'de Azure dijital TWINS ölçümlerini görünt
 author: baanders
 ms.author: baanders
 ms.date: 8/4/2020
-ms.topic: troubleshooting
+ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7fde67ab9b9160bb89493748d09e83bd9cfcff34
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 46e053856b05f5a009eb1ae8bc6a7246dfb6167e
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091710"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616697"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure dijital TWINS sorunlarını giderme: ölçümler
 
@@ -34,12 +34,12 @@ Bu makalede açıklanan ölçümler, Azure aboneliğinizdeki Azure dijital TWINS
     
 3. Menüdeki **Tanılama ayarları** ' nı ve ardından **Tanılama ayarı Ekle** ' yi seçerek ölçüm verilerinizi bir Event Hubs uç noktasına veya bir Azure depolama hesabına gönderebilirsiniz.
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Azure dijital TWINS için ölçüm sayfasını gösteren ekran görüntüsü":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Tanılama Ayarları sayfasını ve eklenecek düğmeyi gösteren ekran görüntüsü":::
 
     Bu işlem hakkında daha fazla bilgi için bkz. [*sorun giderme: tanılamayı ayarlama*](troubleshoot-diagnostics.md).
 
 4. Menüden **Uyarılar** ' ı ve sonra **+ Yeni uyarı kuralı** ' nı seçerek ölçüm verilerinize yönelik uyarıları ayarlamayı tercih edebilirsiniz.
-    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Azure dijital TWINS için ölçüm sayfasını gösteren ekran görüntüsü":::
+    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Uyarı sayfasını ve eklenecek düğmeyi gösteren ekran görüntüsü":::
 
     Bu işlem hakkında daha fazla bilgi için bkz. [*sorun giderme: uyarıları ayarlama*](troubleshoot-alerts.md).
 

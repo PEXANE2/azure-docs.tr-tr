@@ -10,12 +10,12 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 2e77d76ddae540a311655eca36c53b23c418f5e3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9abc069c202af425970e46286d88d1c18ece5a20
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744147"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616204"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Azure App Service için bir Java uygulaması yapılandırma
 
@@ -68,11 +68,11 @@ Performans raporları, trafik görselleştirmeleri ve sistem durumu sağlaması,
 
 Daha fazla bilgi için bkz. [Cloud Shell akış günlükleri](troubleshoot-diagnostic-logs.md#in-cloud-shell).
 
+::: zone pivot="platform-linux"
+
 ### <a name="ssh-console-access"></a>SSH konsol erişimi
 
 [!INCLUDE [Open SSH session in browser](../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
-
-::: zone pivot="platform-linux"
 
 ### <a name="troubleshooting-tools"></a>Sorun giderme araçları
 

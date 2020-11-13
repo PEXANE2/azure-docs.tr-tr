@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 919d2989cf1d86320d89e8f263bb2a192c992fb4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: f2a01c4e4d364494d271fa676bca5bfac2677395
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533183"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592762"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Hızlı başlangıç: bir JavaScript SPA 'da Kullanıcı oturumu açma ve erişim belirteci edinme
 
-Bu hızlı başlangıçta, bir JavaScript tek sayfalı uygulamanın (SPA) kişisel hesap, iş hesabı ve okul hesapları kullanıcılarına nasıl oturum açabileceğinizi öğrenmek için bir kod örneği kullanırsınız. JavaScript SPA, Microsoft Graph API 'sini veya herhangi bir Web API 'sini çağırmak için bir erişim belirteci de alabilir. Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.
+Bu hızlı başlangıçta, JavaScript tek sayfalı uygulamanın (SPA) kullanıcılara nasıl oturum açıp Microsoft Graph çağırabileceğinizi gösteren bir kod örneği indirip çalıştırırsınız. Kod örneği Ayrıca, Microsoft Graph API 'sini veya herhangi bir Web API 'sini çağırmak için bir erişim belirtecinin nasıl alınacağını gösterir.
+
+Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -203,7 +205,7 @@ Hızlı başlangıç kodu ayrıca MSAL kitaplığının nasıl başlatılacağı
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-> |Konum  | Açıklama |
+> |Konum  | Description |
 > |---------|---------|
 > |`clientId`     | Azure portal kayıtlı uygulamanın uygulama KIMLIĞI.|
 > |`authority`    | Seçim Daha önce yapılandırma bölümünde açıklandığı gibi, hesap türlerini destekleyen yetkili URL 'SI. Varsayılan yetkili `https://login.microsoftonline.com/common` . |
@@ -231,7 +233,7 @@ myMSALObj.loginPopup(loginRequest)
 });
 ```
 
-> |Konum  | Açıklama |
+> |Konum  | Description |
 > |---------|---------|
 > | `scopes`   | Seçim Oturum açma sırasında kullanıcı onayı için istenen kapsamları içerir. Örneğin, `[ "user.read" ]` Microsoft Graph veya `[ "<Application ID URL>/scope" ]` özel Web API 'leri için (yani, `api://<Application ID>/access_as_user` ). |
 
@@ -261,7 +263,7 @@ myMSALObj.acquireTokenSilent(tokenRequest)
     });
 ```
 
-> |Konum  | Açıklama |
+> |Konum  | Description |
 > |---------|---------|
 > | `scopes`   | API için erişim belirtecine döndürülmek istenen kapsamları içerir. Örneğin, `[ "mail.read" ]` Microsoft Graph veya `[ "<Application ID URL>/scope" ]` özel Web API 'leri için (yani, `api://<Application ID>/access_as_user` ).|
 

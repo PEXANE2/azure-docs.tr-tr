@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: a62133737d48a8ebf454b5fab83ef52ef2daad09
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a9dba9222816ef2cc7891ff7f803e6a7409802a4
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098442"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593459"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Öğretici: Bing Resim Arama API’sini kullanarak tek sayfalı uygulama oluşturma
 
@@ -37,7 +37,7 @@ Bing Resim Arama API’si, web’de yüksek kaliteli, alakalı görüntüleri ar
 
 Bu öğreticinin tam kaynak kodu, [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Image-Search)’da mevcuttur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Node.js](https://nodejs.org/)'in en son sürümü.
 * Node.js için [Express.js](https://expressjs.com/) çerçevesi. Kaynak koda ilişkin yükleme yönergeleri GitHub örnek Benioku dosyasında bulunabilir.
@@ -122,7 +122,7 @@ Varsayılan olarak `onsubmit` işleyicisi, formun gönderilmesini engelleyen `fa
 
 ![[Bing Resim Arama formu]](media/cognitive-services-bing-images-api/image-search-spa-form.png)
 
-Bing Resim Arama API’si, arama sonuçlarını daraltmak ve filtrelemek için birçok [filtre sorgusu parametresi](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters) sunar. Bu uygulamadaki HTML formu, aşağıdaki parametre seçeneklerini kullanır ve görüntüler:
+Bing Resim Arama API’si, arama sonuçlarını daraltmak ve filtrelemek için birçok [filtre sorgusu parametresi](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters) sunar. Bu uygulamadaki HTML formu, aşağıdaki parametre seçeneklerini kullanır ve görüntüler:
 
 | Seçenek | Açıklama |
 |--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -322,7 +322,7 @@ function renderImageResults(items) {
 
 Bing Resim Arama API’si, kullanıcıların arama deneyimlerine yol göstermesi için dört tür arama önerisi döndürebilir; bunların her biri kendi üst düzey nesnesinde yer alır:
 
-| Öneri         | Açıklama                                                                                                                                                                                                         |
+| Öneri         | Description                                                                                                                                                                                                         |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `pivotSuggestions` | Özgün aramadaki asıl sözcüğü başka bir sözcükle değiştiren sorgular. Örneğin, "kırmızı çiçekler" araması yaparsanız pivot sözcüğü "kırmızı" ve pivot öneri de "sarı çiçekler" olabilir. |
 | `queryExpansions`  | Daha fazla terim ekleyerek özgün aramayı daraltan sorgular. Örneğin, "Microsoft Surface" araması yaparsanız genişletilmiş sorgu "Microsoft Surface Pro" olabilir.                                   |

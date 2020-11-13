@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: ebc6ca630ea3cabb519805ae8505abf336a2a9ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 833ec0f706786ebb86a54fb3c5b13d9c6e5c6062
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604300"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616238"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Öğretici: Görsel durumları raporlamak için IoT cihazındaki Özel Görüntü İşleme kullanma
 
@@ -41,16 +41,16 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 * Ayrıca Azure 'da [bir IoT Hub kaynağı oluşturmanız](https://ms.portal.azure.com/#create/Microsoft.IotHub) gerekecektir.
 * [Visual Studio 2015 veya üzeri](https://www.visualstudio.com/downloads/)
 * İsteğe bağlı olarak, Windows 10 IoT Core sürüm 17763 veya üstünü çalıştıran bir IoT aygıtıdır. Uygulamayı doğrudan bilgisayarınızdan de çalıştırabilirsiniz.
-   * Raspberry PI 2 ve 3 için, Windows 10 ' u doğrudan IoT panosu uygulamasından ayarlayabilirsiniz. Drangwith gibi diğer cihazlarda, [eMMC metodunu](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup#flashing-with-emmc-for-dragonboard-410c-other-qualcomm-devices)kullanarak Flash 'ı kullanmanız gerekir. Yeni bir cihaz ayarlamayla ilgili yardıma ihtiyacınız varsa, bkz. Windows IoT belgelerinde [cihazınızı ayarlama](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup) .
+   * Raspberry PI 2 ve 3 için, Windows 10 ' u doğrudan IoT panosu uygulamasından ayarlayabilirsiniz. Drangwith gibi diğer cihazlarda, [eMMC metodunu](/windows/iot-core/tutorials/quickstarter/devicesetup#flashing-with-emmc-for-dragonboard-410c-other-qualcomm-devices)kullanarak Flash 'ı kullanmanız gerekir. Yeni bir cihaz ayarlamayla ilgili yardıma ihtiyacınız varsa, bkz. Windows IoT belgelerinde [cihazınızı ayarlama](/windows/iot-core/tutorials/quickstarter/devicesetup) .
 
 ## <a name="about-the-visual-alerts-app"></a>Görsel uyarılar uygulaması hakkında
 
 IoT görsel uyarıları uygulaması sürekli bir döngüde çalışarak dört farklı durum arasında uygun şekilde geçiş yapar:
 
-* **Model yok**: işlem dışı durum. Uygulama bir saniyede sürekli uykuya geçecek ve kamerayı denetlecektir.
-* **Eğitim görüntülerini yakalama**: Bu durumda, uygulama bir resim yakalar ve hedef özel görüntü işleme projesine bir eğitim görüntüsü olarak yükler. Uygulama daha sonra 500 MS için uyku moduna geçer ve görüntünün hedef sayısını ayarla yakalanana kadar işlemi yineler. Ardından Özel Görüntü İşleme modelin eğitimini tetikler.
-* **Eğitilen model bekleniyor**: Bu durumda uygulama, hedef projenin eğitilen bir yineleme içerip içermediğini denetlemek için her sanıye özel görüntü işleme API 'sini çağırır. Bir tane bulduğunda, karşılık gelen ONNX modelini yerel bir dosyaya indirir ve **Puanlama** durumuna geçirir.
-* **Puanlama**: Bu durumda, uygulama, kameradan yerel onnx modeline karşı tek bir çerçeveyi değerlendirmek IÇIN Windows ml 'yi kullanır. Ortaya çıkan görüntü sınıflandırması ekranda görüntülenir ve IoT Hub ileti olarak gönderilir. Daha sonra uygulama, yeni bir görüntü Puanlama yapmadan önce bir saniye boyunca uyku moduna geçer.
+* **Model yok** : işlem dışı durum. Uygulama bir saniyede sürekli uykuya geçecek ve kamerayı denetlecektir.
+* **Eğitim görüntülerini yakalama** : Bu durumda, uygulama bir resim yakalar ve hedef özel görüntü işleme projesine bir eğitim görüntüsü olarak yükler. Uygulama daha sonra 500 MS için uyku moduna geçer ve görüntünün hedef sayısını ayarla yakalanana kadar işlemi yineler. Ardından Özel Görüntü İşleme modelin eğitimini tetikler.
+* **Eğitilen model bekleniyor** : Bu durumda uygulama, hedef projenin eğitilen bir yineleme içerip içermediğini denetlemek için her sanıye özel görüntü işleme API 'sini çağırır. Bir tane bulduğunda, karşılık gelen ONNX modelini yerel bir dosyaya indirir ve **Puanlama** durumuna geçirir.
+* **Puanlama** : Bu durumda, uygulama, kameradan yerel onnx modeline karşı tek bir çerçeveyi değerlendirmek IÇIN Windows ml 'yi kullanır. Ortaya çıkan görüntü sınıflandırması ekranda görüntülenir ve IoT Hub ileti olarak gönderilir. Daha sonra uygulama, yeni bir görüntü Puanlama yapmadan önce bir saniye boyunca uyku moduna geçer.
 
 ## <a name="examine-the-code-structure"></a>Kod yapısını İnceleme
 
@@ -76,7 +76,7 @@ Bilgisayarınızda veya IoT cihazınızda çalışan IoT görsel uyarıları uyg
     1. Değişkeni, `targetCVSProjectGuid` kullanmak istediğiniz özel görüntü işleme projenin karşılık gelen kimliğiyle güncelleştirin. 
 1. IoT Hub kaynağını ayarlama:
     1. _IoTHub\IotHubWrapper.cs_ komut dosyasında, `s_connectionString` değişkeni cihazınız için uygun bağlantı dizesiyle güncelleştirin. 
-    1. Azure portal, IoT Hub örneğinizi yükleyin, **araştırıcılar**altında **IoT cihazları** ' na tıklayın, hedef cihazınızda ' i seçin (veya gerekirse bir tane oluşturun) ve **birincil bağlantı dizesi**altında bağlantı dizesini bulun. Dize, IoT Hub adı, cihaz KIMLIĞI ve paylaşılan erişim anahtarınızı içerir; Şu biçimdedir: `{your iot hub name}.azure-devices.net;DeviceId={your device id};SharedAccessKey={your access key}` .
+    1. Azure portal, IoT Hub örneğinizi yükleyin, **araştırıcılar** altında **IoT cihazları** ' na tıklayın, hedef cihazınızda ' i seçin (veya gerekirse bir tane oluşturun) ve **birincil bağlantı dizesi** altında bağlantı dizesini bulun. Dize, IoT Hub adı, cihaz KIMLIĞI ve paylaşılan erişim anahtarınızı içerir; Şu biçimdedir: `{your iot hub name}.azure-devices.net;DeviceId={your device id};SharedAccessKey={your access key}` .
 
 ## <a name="run-the-app"></a>Uygulamayı çalıştırma
 
@@ -107,8 +107,8 @@ Bu işlemi kendi senaryoınızla yinelemek için:
 1. [Özel görüntü işleme web sitesinde](http://customvision.ai)oturum açın.
 1. Artık uygulamanın karşıya yüklediği tüm eğitim görüntülerini içermelidir hedef projenizi bulun.
 1. Tanımlamak istediğiniz her görsel durum için uygun görüntüleri seçin ve etiketi el ile uygulayın.
-    * Örneğin, hedefiniz bir boş oda ve içindeki kişilerle bir oda arasında ayrım yapmak ise, kişilerle birlikte beş veya daha fazla görüntüyü yeni bir sınıf, **kişi**ve kişiler olmadan beş veya daha fazla görüntü etiketlemesini öneririz. **Negative** Bu, modelin iki durum arasında ayrım yapmanıza yardımcı olur.
-    * Başka bir örnek olarak, amacınız bir rafı ne kadar yaklaşmayı düşünüyorsanız, **Emptyrafı**, **Partiallyfullrafı**ve **fullrafı**gibi etiketleri kullanabilirsiniz.
+    * Örneğin, hedefiniz bir boş oda ve içindeki kişilerle bir oda arasında ayrım yapmak ise, kişilerle birlikte beş veya daha fazla görüntüyü yeni bir sınıf, **kişi** ve kişiler olmadan beş veya daha fazla görüntü etiketlemesini öneririz. **Negative** Bu, modelin iki durum arasında ayrım yapmanıza yardımcı olur.
+    * Başka bir örnek olarak, amacınız bir rafı ne kadar yaklaşmayı düşünüyorsanız, **Emptyrafı** , **Partiallyfullrafı** ve **fullrafı** gibi etiketleri kullanabilirsiniz.
 1. İşiniz bittiğinde **eğitme** düğmesini seçin.
 1. Eğitim tamamlandıktan sonra uygulama, eğitilen bir yinelemenin kullanılabildiğini algılar. Eğitilen modeli ONNX 'e aktarma ve cihaza indirme işlemi başlatılır.
 
@@ -116,7 +116,7 @@ Bu işlemi kendi senaryoınızla yinelemek için:
 
 Uygulama eğitilen modeli indirdikten sonra, **Puanlama** durumuna geçiş yapar ve bir sürekli döngüde kameradan Puanlama görüntülerini başlatır.
 
-Yakalanan her görüntü için, uygulama ekranda en üstteki etiketi görüntüler. Görsel durumu algılamazsa, **hiçbir eşleşme**göstermez. Uygulama ayrıca bu iletileri IoT Hub gönderir ve algılanmakta olan bir sınıf varsa, bu ileti etiketi, güvenirlik Puanını ve adlı bir özelliği içerir `detectedClassAlert` . Bu, özellikleri temel alarak hızlı ileti yönlendirmesi yapmak isteyen IoT Hub istemciler tarafından kullanılabilir.
+Yakalanan her görüntü için, uygulama ekranda en üstteki etiketi görüntüler. Görsel durumu algılamazsa, **hiçbir eşleşme** göstermez. Uygulama ayrıca bu iletileri IoT Hub gönderir ve algılanmakta olan bir sınıf varsa, bu ileti etiketi, güvenirlik Puanını ve adlı bir özelliği içerir `detectedClassAlert` . Bu, özellikleri temel alarak hızlı ileti yönlendirmesi yapmak isteyen IoT Hub istemciler tarafından kullanılabilir.
 
 Buna ek olarak, örnek bir Sense HAT birimiyle bir Raspberry Pi üzerinde ne zaman çalıştığını algılamak için bir [Sense hat kitaplığı](https://github.com/emmellsoft/RPi.SenseHat) kullanır. bu nedenle, bir sınıf algıladığında tüm görüntüleme ışıkları kırmızı ve herhangi bir şeyi algılamadığında boş olarak ayarlayarak bunu bir çıktı görüntüsü olarak kullanabilir.
 
@@ -142,5 +142,5 @@ Bu öğreticide, bir IoT cihazında görsel durum bilgilerini algılayan ve sonu
 > [Iotgörselalalerts örneği (GitHub)](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/tree/master/IoTVisualAlerts)
 
 * Uygulamayı doğrudan **eğitilen model durumuna bekleme** durumuna geçirmek için bir IoT Hub yöntemi ekleyin. Bu şekilde, modeli cihazın kendisi tarafından yakalanmayan görüntülerle eğitebilirsiniz ve ardından yeni modeli, komut üzerindeki cihaza gönderebilirsiniz.
-* Örnek tarafından gönderilen IoT Hub uyarılarını görselleştirmek üzere bir Power BI panosu oluşturmak için [gerçek zamanlı algılayıcı verilerini görselleştirin](https://docs.microsoft.com/azure/iot-hub/iot-hub-live-data-visualization-in-power-bi) öğreticisini izleyin.
-* Görsel durumlar algılandığında IoT Hub uyarılara yanıt veren bir mantıksal uygulama oluşturmak için [IoT uzaktan izleme](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps) öğreticisini izleyin.
+* Örnek tarafından gönderilen IoT Hub uyarılarını görselleştirmek üzere bir Power BI panosu oluşturmak için [gerçek zamanlı algılayıcı verilerini görselleştirin](../../iot-hub/iot-hub-live-data-visualization-in-power-bi.md) öğreticisini izleyin.
+* Görsel durumlar algılandığında IoT Hub uyarılara yanıt veren bir mantıksal uygulama oluşturmak için [IoT uzaktan izleme](../../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md) öğreticisini izleyin.

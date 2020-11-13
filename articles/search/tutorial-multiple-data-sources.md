@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6a1a7e19e598980b21ee6c41f6984de38d6a6f2b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c9d9c43ae1be755ccb30fc377692257a81332ea8
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791622"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593731"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak birden çok veri kaynağından Dizin
 
@@ -72,15 +72,15 @@ Bu örnek, yedi kurgusal oteli tanımlayan iki küçük veri kümesini kullanır
 
 1. **Otel-odalar-DB** adını girin. Geri kalan ayarlar için varsayılan değerleri kabul edin.
 
-   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-dbname.png" alt-text="Yeni veritabanı oluşturma" border="false":::
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-dbname.png" alt-text="Veritabanını yapılandır" border="false":::
 
 1. Yeni bir kapsayıcı oluşturun. Yeni oluşturduğunuz mevcut veritabanını kullanın. Kapsayıcı adı için **oteller** girin ve bölüm anahtarı için **/Hotelıd** kullanın.
 
-   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-add-container.png" alt-text="Yeni veritabanı oluşturma" border="false":::
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-add-container.png" alt-text="Kapsayıcı ekleme" border="false":::
 
 1. **Oteller** altındaki **öğeleri** seçin ve ardından komut çubuğunda **öğeyi karşıya yükle** ' ye tıklayın. Öğesine gidin ve proje klasöründe **cosmosdb/HotelsDataSubset_CosmosDb.js** dosyasını seçin.
 
-   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-upload.png" alt-text="Yeni veritabanı oluşturma" border="false":::
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-upload.png" alt-text="Azure Cosmos DB koleksiyonuna yükle" border="false":::
 
 1. Oteller koleksiyonundaki öğelerin görünümünü yenilemek için Yenile düğmesini kullanın. Yedi yeni veritabanı belgesi listelendiğini görmeniz gerekir.
 
@@ -92,11 +92,11 @@ Bu örnek, yedi kurgusal oteli tanımlayan iki küçük veri kümesini kullanır
 
 1. Örnek otel odası JSON dosyalarını depolamak için **otel odaları** adlı [bir blob kapsayıcısı oluşturun](../storage/blobs/storage-quickstart-blobs-portal.md) . Ortak erişim düzeyini geçerli değerlerinden herhangi birine ayarlayabilirsiniz.
 
-   :::image type="content" source="media/tutorial-multiple-data-sources/blob-add-container.png" alt-text="Yeni veritabanı oluşturma" border="false":::
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-add-container.png" alt-text="Blob kapsayıcısı oluşturma" border="false":::
 
 1. Kapsayıcı oluşturulduktan sonra açın ve komut çubuğunda **karşıya yükle** ' yi seçin. Örnek dosyaları içeren klasöre gidin. Tümünü seçip **karşıya yükle** ' ye tıklayın.
 
-   :::image type="content" source="media/tutorial-multiple-data-sources/blob-upload.png" alt-text="Yeni veritabanı oluşturma" border="false":::
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-upload.png" alt-text="Dosyaları karşıya yükleme" border="false":::
 
 1. Depolama hesabı adını ve bir bağlantı dizesini **erişim tuşları** sayfasından Not defteri 'ne kopyalayın. Sonraki adımda **appsettings.js** için her iki değere de ihtiyaç duyarsınız.
 
@@ -112,7 +112,7 @@ Arama hizmetinize kimlik doğrulaması yapmak için, hizmet URL 'SI ve erişim a
 
 1. **Ayarlar**  >  **anahtarlar** ' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
-   :::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="Yeni veritabanı oluşturma" border="false":::
+   :::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="Hizmet adı ve yönetici ve sorgu anahtarlarını alın" border="false":::
 
 İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
 
@@ -122,7 +122,7 @@ Arama hizmetinize kimlik doğrulaması yapmak için, hizmet URL 'SI ve erişim a
 
 1. **Araştır** sekmesinde **Azure.Search.Documtları** (sürüm 11,0 veya üzeri) bulun ve ardından bu Yüklemeyi tamamlaması için ek iletişim kutularına tıklamacaksınız.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Yeni veritabanı oluşturma" border="false":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Azure kitaplıklarını eklemek için NuGet kullanma" border="false":::
 
 1. NuGet paketlerinde **Microsoft.Extensions.Configurlama** ve **Microsoft.Extensions.Configuration.Js** arayın ve bunları da birlikte yüklersiniz.
 
@@ -350,7 +350,7 @@ await indexerClient.CreateOrUpdateIndexerAsync(blobIndexer);
 try
 {
     // Run the indexer.
-    await searchService.Indexers.RunAsync(cosmosDbIndexer.Name);
+    await searchService.Indexers.RunAsync(blobIndexer.Name);
 }
 catch (CloudException e) when (e.Response.StatusCode == (HttpStatusCode)429)
 {
@@ -369,7 +369,7 @@ Program çalıştırıldıktan sonra, portalda [**Arama Gezgini**](search-explor
 
 Azure portal ' de, arama hizmeti **genel bakış** sayfasını açın ve **dizinler** listesinde **otel-odalar-Sample** dizinini bulun.
 
-  :::image type="content" source="media/tutorial-multiple-data-sources/index-list.png" alt-text="Yeni veritabanı oluşturma" border="false":::
+  :::image type="content" source="media/tutorial-multiple-data-sources/index-list.png" alt-text="Azure Bilişsel Arama dizinlerinin listesi" border="false":::
 
 Listedeki otel-odalar-örnek dizinine tıklayın. Dizin için bir arama Gezgini arabirimi görürsünüz. "Merkezlerini" gibi bir terim için bir sorgu girin. Sonuçlarda en az bir belge görmeniz gerekir ve bu belge, Oda dizisindeki bir oda nesnelerinin bir listesini göstermelidir.
 

@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/06/2019
+ms.date: 11/12/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d2c21d85d1b88f33ff696ba1d230d34bbd6945d1
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 1cb882ac1051c41f4d887a9ff4dd8cd64bc9f56c
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091687"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593612"
 ---
 # <a name="create-an-account-sas-with-net"></a>.NET ile hesap SAS oluşturma
 
@@ -25,6 +25,14 @@ ms.locfileid: "92091687"
 Bu makalede, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage)Ile hesap SAS oluşturmak üzere depolama hesabı anahtarının nasıl kullanılacağı gösterilmektedir.
 
 ## <a name="create-an-account-sas"></a>Hesap SAS’si oluşturma
+
+### <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+
+Hesap erişim anahtarı ile bir hesap SAS imzalanır. SAS imzalamak için kullanılan kimlik bilgisini oluşturmak için [Storagesharedkeycredential](/dotnet/api/azure.storage.storagesharedkeycredential) sınıfını kullanın. Ardından, yeni bir [Accountsasbuilder](/dotnet/api/azure.storage.sas.accountsasbuilder) nesnesi oluşturun ve SAS belirteç dizesini almak için [ToSasQueryParameters](/dotnet/api/azure.storage.sas.accountsasbuilder.tosasqueryparameters) çağırın.
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetAccountSASToken":::
+
+### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
 Bir kapsayıcı için hesap SAS oluşturmak için [Cloudstorageaccount. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.getsharedaccesssignature) metodunu çağırın.
 
@@ -52,9 +60,21 @@ static string GetAccountSASToken()
 }
 ```
 
+---
+
 ## <a name="use-an-account-sas-from-a-client"></a>İstemciden hesap SAS kullanma
 
-Blob hizmeti için hizmet düzeyi API 'Lerine erişmek üzere hesap SAS 'yi kullanmak için, depolama hesabınız için SAS ve BLOB depolama uç noktasını kullanarak bir blob hizmeti istemci nesnesi oluşturun. Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Blob hizmeti için hizmet düzeyi API 'Lerine erişmek üzere hesap SAS 'yi kullanmak için, depolama hesabınız için SAS ve BLOB depolama uç noktasını kullanarak bir blob hizmeti istemci nesnesi oluşturun.
+
+### <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+
+
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_UseAccountSAS":::
+
+### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+Bu kod parçacığında, `<storage-account>` yer tutucuyu depolama hesabınızın adıyla değiştirin.
 
 ```csharp
 static void UseAccountSAS(string sasToken)
@@ -95,6 +115,8 @@ static void UseAccountSAS(string sasToken)
     Console.WriteLine(serviceProperties.HourMetrics.Version);
 }
 ```
+
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

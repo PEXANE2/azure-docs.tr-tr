@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 32748a996e0622c4b75d887aebf8a1805c5368bd
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f3056c500453c2249d66a05079334851c851df33
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319071"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616629"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Azure Machine Learning yazılım ortamları oluşturun & kullanın
 
@@ -34,7 +34,7 @@ Bu makaledeki örneklerde nasıl yapılacağı gösterilmektedir:
 
 Ortamların Azure Machine Learning nasıl çalıştığı hakkında üst düzey bir genel bakış için bkz. [ml ortamları nedir?](concept-environments.md) Geliştirme ortamlarını yapılandırma hakkında daha fazla bilgi için [buraya](how-to-configure-environment.md)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0)
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)
@@ -114,7 +114,7 @@ Varsayılan olarak, yeni oluşturulan Docker görüntüsü, çalışma alanıyla
 
 #### <a name="use-a-prebuilt-docker-image"></a>Önceden oluşturulmuş bir Docker görüntüsü kullanma
 
-Hizmet, varsayılan olarak, tarafından tanımlanan Ubuntu Linux tabanlı [temel görüntülerden](https://github.com/Azure/AzureML-Containers)birini otomatik olarak kullanır `azureml.core.environment.DEFAULT_CPU_IMAGE` . Ardından, belirtilen Azure ML ortamı tarafından tanımlanan tüm belirtilen Python paketlerini yüklenir. [Özel bir Docker temel görüntüsü](./how-to-deploy-custom-docker-image.md#create-a-custom-base-image)kullanmak da mümkündür.
+Hizmet, varsayılan olarak, tarafından tanımlanan Ubuntu Linux tabanlı [temel görüntülerden](https://github.com/Azure/AzureML-Containers)birini otomatik olarak kullanır `azureml.core.environment.DEFAULT_CPU_IMAGE` . Ardından, belirtilen Azure ML ortamı tarafından tanımlanan tüm belirtilen Python paketlerini yüklenir. Diğer Azure ML CPU ve GPU temel görüntüleri kapsayıcı [deposunda](https://github.com/Azure/AzureML-Containers)mevcuttur. [Özel bir Docker temel görüntüsü](./how-to-deploy-custom-docker-image.md#create-a-custom-base-image)kullanmak da mümkündür.
 
 ```python
 # Specify custom Docker base image and registry, if you don't want to use the defaults

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 5fe1c3e344705b6cde9791f889b22be53a9e8c76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/13/2020
+ms.openlocfilehash: 69d27c102ca059974da87224e44f0ad7aa103fff
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372604"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592643"
 ---
 # <a name="import-data-module"></a>Veri modülünü içeri aktarma
 
@@ -54,15 +54,23 @@ Kaynak verileriniz değişirse, [verileri Içeri aktar](./import-data.md)' ı ye
 
 1. Sağ bölmeyi açmak için modülü seçin.
 
-1. **Veri kaynağı**' nı seçin ve veri kaynağı türünü seçin. HTTP veya veri deposu olabilir.
+1. **Veri kaynağı** ' nı seçin ve veri kaynağı türünü seçin. HTTP veya veri deposu olabilir.
 
     Veri deposu ' nu seçerseniz, Azure Machine Learning çalışma alanınıza zaten kayıtlı olan mevcut veri depolarını seçebilirsiniz veya yeni bir veri deposu oluşturabilirsiniz. Ardından veri deposuna aktarılacak verilerin yolunu tanımlayın. Yolu, yol seçimi iletişim kutusunu açan yolu araştır bağlantısına **tıklayarak yola kolayca gözatacaksınız** ![ .](media/module/import-data-path.png)
+
+    > [!NOTE]
+    > **Veri alma** modülü yalnızca **tablo** verileri içindir.
+    > Birden çok tablolu veri dosyasını bir kez içeri aktarmak istiyorsanız, aşağıdaki koşulları gerektirir, aksi takdirde hatalar oluşur:
+    > 1. Tüm veri dosyalarını klasöre dahil etmek için, yol için giriş yapmanız gerekir `folder_name/**` . **Path**
+    > 2. Tüm veri dosyaları Unicode-8 ile kodlanmalıdır.
+    > 3. Tüm veri dosyaları aynı sütun numaralarına ve sütun adlarına sahip olmalıdır.
+    > 4. Birden çok veri dosyasının içe aktarılması sonucunda, birden fazla dosyanın tüm satırları sırayla birleştiriliyor.
 
 1. Dahil etmek istediğiniz sütunları filtrelemek için Önizleme şemasını seçin. Ayrıca, ayrıştırma seçeneklerinde sınırlayıcı gibi gelişmiş ayarları tanımlayabilirsiniz.
 
     ![İçeri aktarma-veri önizleme](media/module/import-data.png)
 
-1. Onay kutusu, **çıktıyı yeniden oluştur**, çalışma zamanında çıktıyı yeniden oluşturmak için modülün yürütülüp yürütülmeyeceğine karar verir. 
+1. Onay kutusu, **çıktıyı yeniden oluştur** , çalışma zamanında çıktıyı yeniden oluşturmak için modülün yürütülüp yürütülmeyeceğine karar verir. 
 
     Bu, varsayılan olarak seçili değildir, bu da modülün aynı parametrelerle daha önce yürütülmesi durumunda sistemin, çalışma süresini azaltmak için son çalıştırışınızda çıktıyı yeniden kullanacağı anlamına gelir. 
 
@@ -79,9 +87,9 @@ Kaynak verileriniz değişirse, [verileri Içeri aktar](./import-data.md)' ı ye
 
 ## <a name="results"></a>Sonuçlar
 
-İçeri aktarma tamamlandığında, çıktı veri kümesine tıklayın ve verilerin başarıyla içeri aktarılmadığını görmek için **Görselleştir** ' i seçin.
+İçeri aktarma tamamlandığında, çıktı veri kümesine sağ tıklayın ve verilerin başarıyla içe aktarılmadığını görmek için **Görselleştir** ' i seçin.
 
-İşlem hattı her çalıştırıldığında verilerin yeni bir kümesini içeri aktarmak yerine yeniden kullanım için kaydetmek istiyorsanız, modülün sağ panelindeki **çıktılar** sekmesinin altında bulunan veri **kümesini kaydet** simgesini seçin. Veri kümesi için bir ad seçin. Kaydedilen veri kümesi, kaydetme sırasında verileri korur, işlem hattının veri kümesi değişse bile, işlem hattı yeniden çalıştırıldığında veri kümesi güncellenmez. Bu, verilerin anlık görüntülerini almak için yararlı olabilir.
+İşlem hattı her çalıştırıldığında yeni bir veri kümesini içeri aktarmak yerine yeniden kullanım için kaydetmek istiyorsanız, modülün sağ panelindeki **çıktılar + Günlükler** sekmesinin altında veri **kümesi kaydet** simgesini seçin. Veri kümesi için bir ad seçin. Kaydedilen veri kümesi, kaydetme sırasında verileri korur, işlem hattının veri kümesi değişse bile, işlem hattı yeniden çalıştırıldığında veri kümesi güncellenmez. Bu, verilerin anlık görüntülerini almak için yararlı olabilir.
 
 Verileri içeri aktardıktan sonra, modelleme ve analiz için bazı ek hazırlıklar gerekebilir:
 

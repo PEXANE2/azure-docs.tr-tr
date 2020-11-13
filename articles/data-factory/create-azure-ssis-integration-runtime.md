@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 55083da596f15409ed460e498438f9eaea10dfa8
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: effa0d3ba9f7098b691605bfbd76bff9ea3d5e66
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633238"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593765"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory 'de bir Azure-SSIS tümleştirme çalışma zamanı oluşturma
 
@@ -43,9 +43,9 @@ Bu makalede, Azure portal, Azure PowerShell ve Azure Resource Manager şablonunu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure aboneliği** . Aboneliğiniz yoksa [ücretsiz bir deneme](https://azure.microsoft.com/pricing/free-trial/) hesabı oluşturabilirsiniz.
+- **Azure aboneliği**. Aboneliğiniz yoksa [ücretsiz bir deneme](https://azure.microsoft.com/pricing/free-trial/) hesabı oluşturabilirsiniz.
 
-- **Azure SQL veritabanı sunucusu veya SQL yönetilen örneği (isteğe bağlı)** . Henüz bir veritabanı sunucunuz veya yönetilen örneğiniz yoksa, başlamadan önce Azure portal bir tane oluşturun. Data Factory, bu veritabanı sunucusunda SSıSDB örneği oluşturacak. 
+- **Azure SQL veritabanı sunucusu veya SQL yönetilen örneği (isteğe bağlı)**. Henüz bir veritabanı sunucunuz veya yönetilen örneğiniz yoksa, başlamadan önce Azure portal bir tane oluşturun. Data Factory, bu veritabanı sunucusunda SSıSDB örneği oluşturacak. 
 
   Veritabanı sunucusunu veya yönetilen örneği, tümleştirme çalışma zamanı ile aynı Azure bölgesinde oluşturmanızı öneririz. Bu yapılandırma, tümleştirme çalışma zamanının yürütme günlüklerini Azure bölgeleriyle çıkmadan SSSıSDB 'ye yazmasını sağlar.
 
@@ -63,13 +63,13 @@ Bu makalede, Azure portal, Azure PowerShell ve Azure Resource Manager şablonunu
 
   - Veritabanı sunucunuzun zaten bir SSıSDB örneğine sahip olmadığından emin olun. Azure-SSIS IR sağlanması, var olan bir SSıSDB örneğinin kullanımını desteklemez.
 
-- **Sanal ağ Azure Resource Manager (isteğe bağlı)** . Aşağıdaki koşullardan en az biri doğru ise bir Azure Resource Manager sanal ağınız olmalıdır:
+- **Sanal ağ Azure Resource Manager (isteğe bağlı)**. Aşağıdaki koşullardan en az biri doğru ise bir Azure Resource Manager sanal ağınız olmalıdır:
 
   - IP güvenlik duvarı kuralları/sanal ağ hizmeti uç noktaları veya özel uç nokta ile yönetilen bir örnek olan bir Azure SQL veritabanı sunucusunda SSSıSDB barındırıyorsanız.
 
   - Şirket içinde barındırılan bir IR yapılandırmadan Azure-SSIS IR çalışan SSIS paketlerindeki şirket içi veri depolarına bağlanmak istiyorsunuz.
 
-- **Azure PowerShell (isteğe bağlı)** . Azure-SSIS IR sağlamak üzere bir PowerShell Betiği çalıştırmak istiyorsanız, [Azure PowerShell 'yi yüklemek ve yapılandırmak](/powershell/azure/install-az-ps)için yönergeleri izleyin.
+- **Azure PowerShell (isteğe bağlı)**. Azure-SSIS IR sağlamak üzere bir PowerShell Betiği çalıştırmak istiyorsanız, [Azure PowerShell 'yi yüklemek ve yapılandırmak](/powershell/azure/install-az-ps)için yönergeleri izleyin.
 
 ### <a name="regional-support"></a>Bölgesel destek
 
@@ -79,7 +79,7 @@ Data Factory ve Azure-SSIS IR kullanılabilen Azure bölgelerinin listesi için 
 
 Aşağıdaki tabloda, Azure-SSıR IR ile bağlantılı olarak bir Azure SQL veritabanı sunucusunun ve SQL yönetilen örneğinin belirli özellikleri karşılaştırılmaktadır:
 
-| Özellik | SQL Veritabanı| SQL yönetilen örneği |
+| Öne çıkan özelliği | SQL Veritabanı| SQL yönetilen örneği |
 |---------|--------------|------------------|
 | **Zamanlama** | SQL Server Agent kullanılamıyor.<br/><br/>Bkz. Data Factory işlem hattında [paket yürütmeyi zamanlama](/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity).| Yönetilen örnek Aracısı kullanılabilir. |
 | **Kimlik Doğrulaması** | **Db_owner** rolünde üye olarak, veri fabrikanızın yönetilen kimliği ile herhangi BIR Azure AD grubunu temsil eden bir bulunan veritabanı kullanıcısına sahıp bır SSISDB örneği oluşturabilirsiniz.<br/><br/>Bkz. [Azure SQL veritabanı sunucusunda BIR SSıSDB oluşturmak Için Azure AD kimlik doğrulamasını etkinleştirme](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Veri fabrikanızın yönetilen kimliğini temsil eden kapsanan bir veritabanı kullanıcısına sahip bir SSıSDB örneği oluşturabilirsiniz. <br/><br/>Bkz. Azure [SQL yönetilen örneği 'NDE SSıSDB oluşturmak Için Azure AD kimlik doğrulamasını etkinleştirme](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-sql-managed-instance). |
@@ -126,7 +126,7 @@ Data Factory oluşturulduktan sonra, Azure portal genel bakış sayfasını aç�
 
    6. **Sürüm/lisans** için, tümleştirme çalışma zamanı için SQL Server sürümünü seçin: Standart veya kurumsal. Tümleştirme çalışma zamanı ' nda Gelişmiş özellikleri kullanmak istiyorsanız Kurumsal ' i seçin.
 
-   7. Tasarruf **için,** tümleştirme çalışma zamanı için Azure hibrit avantajı seçeneğini belirleyin: **Evet** veya **Hayır** . Karma kullanım ile maliyet tasarruflarından faydalanmak için kendi SQL Server lisansınızı Yazılım Güvencesine getirmek istiyorsanız **Evet** ' i seçin.
+   7. Tasarruf **için,** tümleştirme çalışma zamanı için Azure hibrit avantajı seçeneğini belirleyin: **Evet** veya **Hayır**. Karma kullanım ile maliyet tasarruflarından faydalanmak için kendi SQL Server lisansınızı Yazılım Güvencesine getirmek istiyorsanız **Evet** ' i seçin.
 
    8. **İleri** ’yi seçin.
 
@@ -166,6 +166,9 @@ Onay kutusunu seçerseniz, kendi adınıza oluşturacağınız ve yönetecağım
 
 Uygun olduğunda **Bağlantıyı Sına** ' yı seçin ve başarılı olursa **İleri** ' yi seçin.
 
+> [!NOTE]
+   > SSıSDB barındırmak için Azure SQL veritabanı sunucusu kullanıyorsanız, verileriniz varsayılan olarak, yedeklemeler için coğrafi olarak yedekli depolama alanında depolanır. Verilerinizin diğer bölgelerde çoğaltılmasını istemiyorsanız, [PowerShell kullanarak yedekleme depolama yedekliliği yapılandırma](https://docs.microsoft.com/azure/azure-sql/database/automated-backups-overview?tabs=single-database#configure-backup-storage-redundancy-by-using-powershell)yönergelerini izleyin.
+   
 ##### <a name="creating-azure-ssis-ir-package-stores"></a>Azure-SSIS IR paket depoları oluşturma
 
 **Tümleştirme çalışma zamanı kurulum** bölmesinin **dağıtım ayarları** sayfasında, msdb, dosya sistemi veya Azure dosyaları 'Na (paket dağıtım modeli) dağıtılan paketlerinizi Azure-SSIS IR paket depolarıyla yönetmek Istiyorsanız, **Azure SQL yönetilen örneği tarafından barındırılan dosya sistemine/Azure DOSYALARıNA/SQL Server veritabanına (msdb) dağıtılan paketlerinizi yönetmek için paket depolarını oluştur** onay kutusunu seçin.
@@ -197,7 +200,7 @@ Bu onay kutusunu seçerseniz, **Yeni** ' yi seçerek Azure-SSIS IR birden çok p
 
       1. **Azure dosya depolama** ' yı seçerseniz, aşağıdaki adımları izleyin. 
 
-         1. **Hesap seçme yöntemi** için **Azure aboneliği ' nden** seçim yapın veya **el ile girin** .
+         1. **Hesap seçme yöntemi** için **Azure aboneliği ' nden** seçim yapın veya **el ile girin**.
          
          1. **Azure aboneliğinden** seçim yaparsanız ilgili **Azure aboneliğini** , **depolama hesabı adını** ve **Dosya payını** seçin.
             

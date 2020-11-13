@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/16/2019
-ms.openlocfilehash: 1c08ba51b815386783c3412e9238d2e96da03ff9
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.date: 11/13/2020
+ms.openlocfilehash: 92ef5b372113d0d226335b8ec464a75a5a684bc3
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94377698"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592915"
 ---
 # <a name="one-vs-one-multiclass"></a>Tek vs-bir çoklu sınıf
 
@@ -31,6 +31,8 @@ Bu modül, bir ikili modelin sınıf çifti başına oluşturulduğu tek yönlü
 Temelde, modül tek tek modellerin bir kopyasını oluşturur ve ardından sonuçları birleştirir ve tüm sınıfları tahmin eden tek bir model oluşturur. Herhangi bir ikili sınıflandırıcı, tek yönlü bir modelin temeli olarak kullanılabilir.  
 
 Örneğin, [Iki sınıflı bir destek vektör makine](two-class-support-vector-machine.md) modeli yapılandırıp bunu tek vs-bir çok sınıf modülüne giriş olarak sağlayadığınızı varsayalım. Modül, çıkış sınıfının tüm üyeleri için iki sınıf destek vektör makine modeli oluşturur. Ardından, tüm sınıfların sonuçlarını birleştirmek için tek yönlü bir yöntemi uygular.  
+
+Modül OneVsOneClassifier of sköğren kullanır ve [burada](https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsOneClassifier.html)daha fazla bilgi edinebilirsiniz.
 
 ## <a name="how-to-configure-the-one-vs-one-multiclass-classifier"></a>Tek vs-tek birden çok sınıf sınıflandırıcısını yapılandırma  
 

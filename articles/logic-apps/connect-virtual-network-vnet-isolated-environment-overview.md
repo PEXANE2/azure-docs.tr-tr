@@ -5,19 +5,19 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 07/05/2020
-ms.openlocfilehash: 86d647a79b7babc2780cb0db904e689f3916673f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/12/2020
+ms.openlocfilehash: 19c9ec39d85bfc56b118498aba62c3752d6d771c
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500394"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616935"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Tümleştirme hizmeti ortamlarını (sesleri) kullanarak Azure Logic Apps Azure sanal ağ kaynaklarına erişim
 
 Bazen mantıksal uygulamalarınızın, sanal makineler (VM 'Ler) ve diğer sistemler veya hizmetler gibi bir [Azure sanal ağı](../virtual-network/virtual-networks-overview.md)içinde veya bağlı olan güvenli kaynaklara erişmesi gerekir. Bu erişimi ayarlamak için [bir *tümleştirme hizmeti ortamı* (ISE) oluşturabilirsiniz](../logic-apps/connect-virtual-network-vnet-isolated-environment.md). ISE, adanmış kaynakları kullanan ve "küresel" çok kiracılı Logic Apps hizmetinden ayrı olarak çalıştırılan Logic Apps hizmetin bir örneğidir.
 
-Örneğin, Azure depolama, Azure Cosmos DB veya Azure SQL veritabanı, iş ortağı hizmetleri veya Azure 'da barındırılan müşteri hizmetleri gibi Azure PaaS hizmetlerine erişim sağlamak için Azure [özel bağlantısı](../private-link/private-link-overview.md)aracılığıyla ayarlayabileceğiniz özel uç noktalar, bazı Azure sanal ağı tarafından kullanılır. Mantıksal uygulamalarınızın özel uç noktaları kullanan sanal ağlara erişmesi gerekiyorsa, bu mantık uygulamalarını bir ıSE içinde oluşturmanız, dağıtmanız ve çalıştırmanız gerekir.
+Örneğin, bazı Azure sanal ağları, Azure depolama, Azure Cosmos DB veya Azure SQL veritabanı, iş ortağı hizmetleri veya Azure 'da barındırılan müşteri hizmetleri gibi Azure PaaS hizmetlerine erişim sağlamak için [Azure özel bağlantısı](../private-link/private-link-overview.md)aracılığıyla ayarlayabileceğiniz özel uç noktalar kullanır. Mantıksal uygulamalarınızın özel uç noktaları kullanan sanal ağlara erişmesi gerekiyorsa, bu mantık uygulamalarını bir ıSE içinde oluşturmanız, dağıtmanız ve çalıştırmanız gerekir.
 
 Bir ıSE oluşturduğunuzda, Azure bu ıSE 'yi Azure sanal ağınıza *çıkartır* veya dağıtır. Daha sonra bu ıSE 'yi, erişmesi gereken Logic Apps ve tümleştirme hesaplarının konumu olarak kullanabilirsiniz.
 
@@ -47,7 +47,7 @@ Mantıksal uygulamaları kendi ayrı ayrılmış Örneğinizde çalıştırmak, 
 
 ## <a name="dedicated-versus-multi-tenant"></a>Adanmış ve çok kiracılı
 
-Bir ıSE 'de Logic Apps oluşturup çalıştırdığınızda, aynı kullanıcı deneyimlerini ve çok kiracılı Logic Apps hizmetiyle benzer özellikleri alırsınız. Çok kiracılı Logic Apps hizmetinde bulunan tüm yerleşik Tetikleyicileri, eylemleri ve yönetilen bağlayıcıları kullanabilirsiniz. Bazı yönetilen bağlayıcılar ek ıSE sürümlerini sunar. Ise bağlayıcılar ve ıSE olmayan bağlayıcılar arasındaki fark, çalıştırıldıkları yerde ve bir ıSE içinde çalışırken Logic App Designer 'da sahip oldukları Etiketler arasında bulunur.
+Bir ıSE 'de Logic Apps oluşturup çalıştırdığınızda, aynı kullanıcı deneyimlerini ve çok kiracılı Logic Apps hizmetiyle benzer özellikleri alırsınız. Çok kiracılı Logic Apps hizmetinde bulunan tüm yerleşik Tetikleyicileri, eylemleri ve yönetilen bağlayıcıları kullanabilirsiniz. Bazı yönetilen bağlayıcılar ek ıSE sürümlerini sunar. Ise bağlayıcılar ve ıSE olmayan bağlayıcılar arasındaki fark, çalıştırıldıkları yerde ve bir ıSE içinde çalışırken mantıksal uygulama tasarımcısında bulunan Etiketler arasında bulunur.
 
 ![ISE 'de etiketleri olan ve olmayan bağlayıcılar](./media/connect-virtual-network-vnet-isolated-environment-overview/labeled-trigger-actions-integration-service-environment.png)
 
@@ -67,7 +67,7 @@ Bir ıSE 'de Logic Apps oluşturup çalıştırdığınızda, aynı kullanıcı 
 
 * **Ise** etiketini görüntülememeyen yönetilen bağlayıcılar, BIR Ise içindeki Logic Apps için çalışmaya devam eder. Bu bağlayıcılar her zaman ıSE 'de değil *çok kiracılı Logic Apps hizmetinde çalışır*.
 
-* *BIR Ise dışında*oluşturduğunuz ve [Şirket içi veri ağ geçidi](../logic-apps/logic-apps-gateway-connection.md)GEREKTIRMEKSIZIN, bir Ise içindeki Logic Apps için çalışmaya devam etmeksizin özel bağlayıcılar. Ancak, *BIR ıSE içinde* oluşturduğunuz özel bağlayıcılar şirket içi veri ağ geçidi ile çalışmaz. Daha fazla bilgi için bkz. Şirket [içi sistemlere erişim](#on-premises).
+* *BIR Ise dışında* oluşturduğunuz ve [Şirket içi veri ağ geçidi](../logic-apps/logic-apps-gateway-connection.md)GEREKTIRMEKSIZIN, bir Ise içindeki Logic Apps için çalışmaya devam etmeksizin özel bağlayıcılar. Ancak, *BIR ıSE içinde* oluşturduğunuz özel bağlayıcılar şirket içi veri ağ geçidi ile çalışmaz. Daha fazla bilgi için bkz. Şirket [içi sistemlere erişim](#on-premises).
 
 <a name="on-premises"></a>
 
@@ -83,7 +83,7 @@ Bir ıSE içinde çalışan Logic Apps, bu öğeleri kullanarak bir Azure sanal 
 
 * Özel bir bağlayıcı
 
-  * *BIR Ise dışında*oluşturduğunuz ve [Şirket içi veri ağ geçidi](../logic-apps/logic-apps-gateway-connection.md)GEREKTIRMEKSIZIN, bir Ise içindeki Logic Apps için çalışmaya devam etmeksizin özel bağlayıcılar.
+  * *BIR Ise dışında* oluşturduğunuz ve [Şirket içi veri ağ geçidi](../logic-apps/logic-apps-gateway-connection.md)GEREKTIRMEKSIZIN, bir Ise içindeki Logic Apps için çalışmaya devam etmeksizin özel bağlayıcılar.
 
   * *BIR ıSE içinde* oluşturduğunuz özel bağlayıcılar, şirket içi veri ağ geçidi ile çalışmaz. Ancak, bu bağlayıcılar, şirket içi sistemlere ve şirket içinde bulunan ya da bağlı olan sanal ağ üzerindeki veri kaynaklarına doğrudan erişebilir. Bu nedenle, bir ıSE içindeki Logic Apps genellikle bu kaynaklara erişirken veri ağ geçidine gerek kalmaz.
 
@@ -117,18 +117,26 @@ ISE 'yi oluşturduğunuzda, iç veya dış erişim uç noktaları kullanmayı te
 > [!IMPORTANT]
 > Erişim uç noktasını yalnızca ıSE oluşturma sırasında seçebilir ve bu seçeneği daha sonra değiştiremezsiniz.
 
-* **İç**: özel uç noktalar, ortamınızdaki Logic Apps çağrılarına izin verir ve Logic Apps 'in çalışma geçmişinden gelen giriş ve çıkışları *yalnızca sanal ağınızın*içinden görüntüleyebilir ve bunlara erişebilirsiniz.
+* **İç** : özel uç noktalar, ortamınızdaki Logic Apps çağrılarına izin verir ve Logic Apps 'in çalışma geçmişinden gelen giriş ve çıkışları *yalnızca sanal ağınızın* içinden görüntüleyebilir ve bunlara erişebilirsiniz.
 
   > [!IMPORTANT]
-  > Özel uç noktalar ve çalıştırma geçmişine erişmek istediğiniz bilgisayar arasında ağ bağlantısına sahip olduğunuzdan emin olun. Aksi takdirde, mantıksal uygulamanızın çalıştırma geçmişini görüntülemeye çalıştığınızda, "beklenmeyen hata" ifadesini içeren bir hata alırsınız. Alınamadı ".
+  > Bu Web kancası tabanlı Tetikleyicileri kullanmanız gerekiyorsa, ıSE 'yi oluşturduğunuzda iç uç noktalar *değil* dış uç noktaları kullanın:
+  > 
+  > * Azure DevOps
+  > * Azure Event Grid
+  > * Common Data Service
+  > * Office 365
+  > * SAP (ıSE sürümü)
+  > 
+  > Ayrıca, Özel uç noktalar ve çalıştırma geçmişine erişmek istediğiniz bilgisayar arasında ağ bağlantısına sahip olduğunuzdan emin olun. Aksi takdirde, mantıksal uygulamanızın çalıştırma geçmişini görüntülemeye çalıştığınızda, "beklenmeyen hata" ifadesini içeren bir hata alırsınız. Alınamadı ".
   >
   > ![Azure depolama eylem hatası, güvenlik duvarı üzerinden trafik gönderememesine neden oldu](./media/connect-virtual-network-vnet-isolated-environment-overview/integration-service-environment-error.png)
   >
   > Örneğin, istemci bilgisayarınız ıSE 'nin sanal ağı içinde veya eşleme veya sanal özel ağ aracılığıyla ıSE 'nin sanal ağına bağlı bir sanal ağ içinde bulunabilir. 
 
-* **Dış**: genel uç noktaları, *sanal ağınızın dışından*Logic Apps 'in çalışma geçmişinden gelen giriş ve çıkışları görüntüleyebileceğiniz ve erişebileceğiniz, ortamınızda Logic Apps çağrılarına izin verir. Ağ güvenlik grupları (NSG 'ler) kullanıyorsanız, çalıştırma geçmişinin giriş ve çıkışlarına erişime izin vermek için gelen kurallarla ayarlandıklarından emin olun. Daha fazla bilgi için bkz. [Ise için erişimi etkinleştirme](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access).
+* **Dış** : genel uç noktaları, *sanal ağınızın dışından* Logic Apps 'in çalışma geçmişinden gelen giriş ve çıkışları görüntüleyebileceğiniz ve erişebileceğiniz, ortamınızda Logic Apps çağrılarına izin verir. Ağ güvenlik grupları (NSG 'ler) kullanıyorsanız, çalıştırma geçmişinin giriş ve çıkışlarına erişime izin vermek için gelen kurallarla ayarlandıklarından emin olun. Daha fazla bilgi için bkz. [Ise için erişimi etkinleştirme](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access).
 
-ISE 'nizin iç veya dış erişim uç noktası kullanıp kullanmadığını belirlemek için, ıSE menüsünde, **Ayarlar**' ın altında **Özellikler**' i seçin ve **erişim uç noktası** özelliğini bulun:
+ISE 'nizin iç veya dış erişim uç noktası kullanıp kullanmadığını belirlemek için, ıSE menüsünde, **Ayarlar** ' ın altında **Özellikler** ' i seçin ve **erişim uç noktası** özelliğini bulun:
 
 ![ISE erişim uç noktası bul](./media/connect-virtual-network-vnet-isolated-environment-overview/find-ise-access-endpoint.png)
 

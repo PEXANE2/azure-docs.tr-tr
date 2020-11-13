@@ -9,24 +9,24 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: e042fd62d99c9fdf88a144c93739bf1f3f08a78c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 12163419ad779acfa116f1dee66284623e2d45fb
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325576"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616119"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Visual Studio Code ile etkileşimli hata ayıklama
 
 
 
-Visual Studio Code (VS Code) ve [depugpy](https://github.com/microsoft/debugpy/)kullanarak Azure Machine Learning denemeleri, işlem hatları ve dağıtımlarda etkileşimli olarak hata ayıklamayı öğrenin.
+Visual Studio Code (VS Code) ve hata ayıklayıcı [GPY](https://github.com/microsoft/debugpy/)kullanarak Azure Machine Learning denemeleri, işlem hatları ve dağıtımlarda etkileşimli olarak hata ayıklamayı öğrenin.
 
 ## <a name="run-and-debug-experiments-locally"></a>Denemeleri yerel olarak çalıştır ve hata ayıkla
 
 Machine Learning denemeleri 'i buluta göndermeden önce doğrulamak, çalıştırmak ve hatalarını ayıklamak için Azure Machine Learning uzantısını kullanın.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * Azure Machine Learning VS Code uzantısı (Önizleme). Daha fazla bilgi için bkz. [set up Azure Machine Learning vs Code uzantısı](tutorial-setup-vscode-extension.md).
 * [Docker](https://www.docker.com/get-started)
@@ -84,7 +84,7 @@ Uzaktan denemenin çalışmasına benzer şekilde, günlükleri ve çıkışlar�
 
 Bazı durumlarda, ML ardışık düzeninde kullanılan Python kodunda etkileşimli olarak hata ayıklaması yapmanız gerekebilir. VS Code ve hata ayıklama GPY kullanarak, eğitim ortamında çalışırken koda ekleyebilirsiniz.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * __Azure sanal ağını__ kullanmak üzere yapılandırılmış bir __Azure Machine Learning çalışma alanı__ .
 * İşlem hattı adımlarının bir parçası olarak Python betikleri kullanan bir __Azure Machine Learning işlem hattı__ . Örneğin, bir PythonScriptStep.

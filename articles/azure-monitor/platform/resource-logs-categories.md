@@ -4,12 +4,12 @@ description: Azure Izleyici başvurusu, Azure Kaynak günlükleri için destekle
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/03/2020
-ms.openlocfilehash: 81f79b81c03e7996d7f6d45b002d8160740c3c14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fd6f07151c93b64c150f01e5c0b5c7f4cffed85
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318309"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593017"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Azure Kaynak günlükleri için desteklenen Kategoriler
 
@@ -497,7 +497,6 @@ Hala bir sorun yoksa, bu makalenin alt kısmında bir GitHub açıklaması açab
 |Kategori|Kategori görünen adı|
 |---|---|
 |NetworkSecurityGroupEvent|Ağ güvenlik grubu olayı|
-|NetworkSecurityGroupFlowEvent|Ağ güvenlik grubu kural akışı olayı|
 |NetworkSecurityGroupRuleCounter|Ağ güvenlik grubu kuralı sayacı|
 
 
@@ -616,7 +615,7 @@ Hala bir sorun yoksa, bu makalenin alt kısmında bir GitHub açıklaması açab
 |Otomatik olarak ayarlama|Otomatik ayarlama|
 |Bloklar|Bloklar|
 |DatabaseWaitStatistics|Veritabanı bekleme Istatistikleri|
-|Çık|Çık|
+|Kilitlenmeler|Kilitlenmeler|
 |Devopsoperationsaudıt|DevOps işlemleri denetim günlükleri|
 |Dmsçalışanları|DMS çalışanları|
 |Hatalar|Hatalar|

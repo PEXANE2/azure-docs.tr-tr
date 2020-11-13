@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 8e947a7db7b10746ebd01726fd2103cf3e5c8df6
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 6503955c69b8ca64678efbc0c01cea7f78509f8d
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533217"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592728"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Hızlı başlangıç: uygulama kimliğini kullanarak bir Python konsol uygulamasından belirteç alma ve Microsoft Graph API çağırma
 
-Bu hızlı başlangıçta, uygulamanın kimliğini kullanarak bir erişim belirteci alan bir Python uygulaması yazın ve ardından dizindeki [kullanıcıların listesini](/graph/api/user-list) göstermek IÇIN Microsoft Graph API 'sini çağırır. Bu senaryo, kullanıcının kimliği yerine gözetimsiz, katılımsız iş veya Windows hizmeti 'nin bir uygulama kimliğiyle çalışması gereken durumlar için yararlıdır.
+Bu hızlı başlangıçta, bir Python uygulamasının, Microsoft Graph API 'sini çağırmak ve dizindeki [kullanıcıların listesini](/graph/api/user-list) göstermek için uygulamanın kimliğini kullanarak bir erişim belirtecini nasıl alabileceğinizi gösteren bir kod örneği indirip çalıştırırsınız. Kod örneği, katılımsız bir işin veya Windows hizmetinin bir kullanıcının kimliği yerine bir uygulama kimliğiyle nasıl çalışacağını gösterir. 
 
 > [!div renderon="docs"]
 > ![Bu hızlı başlangıç tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
@@ -190,7 +190,7 @@ app = msal.ConfidentialClientApplication(
     client_credential=config["secret"])
 ```
 
-> | Burada: |Açıklama |
+> | Burada: |Description |
 > |---------|---------|
 > | `config["secret"]` | Azure portalında uygulama için istemci gizli dizisi oluşturulmuştur. |
 > | `config["client_id"]` | **Uygulama (istemci) Kimliği** , Azure portalda kayıtlı uygulamadır. Bu değeri Azure portalda uygulamanın **Genel bakış** sayfasında bulabilirsiniz. |
@@ -211,7 +211,7 @@ if not result:
     result = app.acquire_token_for_client(scopes=config["scope"])
 ```
 
-> |Burada:| Açıklama |
+> |Burada:| Description |
 > |---------|---------|
 > | `config["scope"]` | İstenen kapsamları içerir. Gizli istemciler için, `{Application ID URI}/.default` istenen kapsamların Azure portalında ayarlanmış uygulama nesnesi içinde statik olarak tanımlanmış olduğunu göstermek için şuna benzer biçimi kullanmalıdır (Microsoft Graph için, `{Application ID URI}` işaret eder `https://graph.microsoft.com` ). Özel Web API 'Leri için, `{Application ID URI}` Azure portalının uygulama kaydı 'nda (Önizleme) **bir API 'yi kullanıma** sunma bölümünde tanımlanmıştır. |
 

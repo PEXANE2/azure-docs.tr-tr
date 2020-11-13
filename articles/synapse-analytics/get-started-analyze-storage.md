@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 2a22174fb23a4f0f7bebd58e276a6778e986ce9e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: fabfdce72202f79e2ac5bad08d124df7ce2de542
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322930"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592592"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>Depolama hesabındaki verileri analiz etme
 
@@ -36,16 +36,16 @@ Aşağıdaki kodu bir not defterinde çalıştırın. Depolama hesabında bir CS
 %%pyspark
 df = spark.sql("SELECT * FROM nyctaxi.passengercountstats")
 df = df.repartition(1) # This ensure we'll get a single file during write()
-df.write.mode("overwrite").csv("/NYCTaxi/PassengerCountStats.csv")
-df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
+df.write.mode("overwrite").csv("/NYCTaxi/PassengerCountStats_csvformat")
+df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats_parquetformat")
 ```
 
 ### <a name="analyze-data-in-a-storage-account"></a>Depolama hesabındaki verileri analiz etme
 
 1. SYNAPSE Studio 'da **veri** merkezine gidin ve **bağlı** ' yı seçin.
 1. **Depolama hesapları**  >  **MyWorkspace (birincil-contosolake)** sayfasına gidin.
-1. **Kullanıcıları (birincil)** seçin. **NYCTaxi** klasörünü görmeniz gerekir. İçinde **PassengerCountStats.csv** ve **Passengercountstats. Parquet** adlı iki klasör görmeniz gerekir.
-1. **Passengercountstats. Parquet** klasörünü açın. İçinde, benzer bir adı olan bir Parquet dosyası görürsünüz `part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` .
+1. **Kullanıcıları (birincil)** seçin. **NYCTaxi** klasörünü görmeniz gerekir. İçinde **PassengerCountStats_csvformat** ve **PassengerCountStats_parquetformat** adlı iki klasör görmeniz gerekir.
+1. **PassengerCountStats_parquetformat** klasörünü açın. İçinde, benzer bir adı olan bir Parquet dosyası görürsünüz `part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` .
 1. **. Parquet** öğesine sağ tıklayın ve ardından **Yeni Not defteri** ' ni seçin. Şöyle bir hücre içeren bir not defteri oluşturur:
 
     ```py

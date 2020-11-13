@@ -3,12 +3,12 @@ title: Azure VMware Solution (AVS) iş yüklerini dengelemek için Traffic Manag
 description: Farklı bölgelerde birden fazla uç nokta arasında uygulama iş yüklerini dengelemek için Traffic Manager Azure VMware çözümü (AVS) ile tümleştirmeyi öğrenin.
 ms.topic: how-to
 ms.date: 08/14/2020
-ms.openlocfilehash: d461cc444c60e1907a34a08c68139446301c133c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 076d9c77d68df3d8acb7b531b3dfbea40fb3cedd
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91580583"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593180"
 ---
 # <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-avs-workloads"></a>Azure VMware Solution (AVS) iş yüklerini dengelemek için Traffic Manager dağıtma
 
@@ -30,7 +30,7 @@ Azure Traffic Manager, aşağıdaki şekilde gösterildiği gibi, bölgesel uç 
 
 İki AVS özel bulut bölgesi, Batı ABD ve Batı Avrupa ve Doğu ABD içindeki şirket içi sunucu arasında sanal ağ bağlantısı, bir ExpressRoute ağ geçidi kullanır.   
 
-![AVS ile tümleştirme Traffic Manager](media/traffic-manager/traffic-manager-topology.png)
+![Azure VMware çözümüyle Traffic Manager tümleştirme mimarisinin diyagramı](media/traffic-manager/traffic-manager-topology.png)
  
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -55,15 +55,15 @@ Aşağıdaki adımlar, uygulama ağ geçitlerinizin doğru yapılandırmasını 
     - AVS-EUS (Şirket içi)
     - AVS-GW-WEU
 
-    :::image type="content" source="media/traffic-manager/app-gateways-list-1.png" alt-text="Uygulama ağ geçitlerinin listesi." lightbox="media/traffic-manager/app-gateways-list-1.png":::
+    :::image type="content" source="media/traffic-manager/app-gateways-list-1.png" alt-text="Yapılandırılmış uygulama ağ geçitlerinin listesini gösteren uygulama ağ geçidi sayfasının ekran görüntüsü." lightbox="media/traffic-manager/app-gateways-list-1.png":::
 
 2. Önceden dağıtılan uygulama ağ geçitlerinden birini seçin. Uygulama ağ geçidinde çeşitli bilgileri gösteren bir pencere açılır. Arka uç havuzlarından birinin yapılandırmasını doğrulamak için **arka uç havuzlarını** seçin.
 
-   :::image type="content" source="media/traffic-manager/backend-pool-config.png" alt-text="Uygulama ağ geçitlerinin listesi." lightbox="media/traffic-manager/backend-pool-config.png":::
+   :::image type="content" source="media/traffic-manager/backend-pool-config.png" alt-text="Seçili uygulama ağ geçidinin ayrıntılarını gösteren uygulama ağ geçidi sayfasının ekran görüntüsü." lightbox="media/traffic-manager/backend-pool-config.png":::
  
 3. Bu durumda, 172.29.1.10 IP adresine sahip bir Web sunucusu olarak yapılandırılmış bir sanal makine arka uç havuzu üyesi görüyoruz.
  
-    :::image type="content" source="media/traffic-manager/backend-pool-ip-address.png" alt-text="Uygulama ağ geçitlerinin listesi.":::
+    :::image type="content" source="media/traffic-manager/backend-pool-ip-address.png" alt-text="Hedef IP adresi vurgulanmış şekilde arka uç havuzunu düzenleme sayfasının ekran görüntüsü.":::
 
     Benzer şekilde, diğer uygulama ağ geçitlerinin ve arka uç havuz üyelerinin yapılandırılmasını da doğrulayabilirsiniz. 
 
@@ -75,53 +75,47 @@ Senaryolarımızda, bir NSX-T segmenti, arka uç havuzu üyesi sanal makinenin e
 
 1. Yapılandırılmış segmentlerinizi görüntülemek için **segmentleri** seçin. Bu durumda, contoso-SEGMENT1 ' nin bir katman 1 esnek yönlendirici olan contoso-T01 ağ geçidine bağlı olduğunu görüyoruz.
 
-    :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="Uygulama ağ geçitlerinin listesi.":::    
+    :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="NSX-T Manager 'daki segment profillerini gösteren ekran görüntüsü.":::    
 
 2. Katman 1 ağ geçitlerinizin bir listesini, bağlantılı parçaların sayısıyla birlikte görmek için **Katman 1 ağ geçitleri** ' ni seçin. Contoso-T01 ile bağlantılı segmenti seçin. Katman-01 yönlendiricisinde yapılandırılan mantıksal arabirimi gösteren bir pencere açılır. Bu, kesime bağlı arka uç havuzu üye sanal makinesinin ağ geçidi olarak görev yapar.
 
-   :::image type="content" source="media/traffic-manager/nsx-t-segment-linked-2.png" alt-text="Uygulama ağ geçitlerinin listesi.":::    
+   :::image type="content" source="media/traffic-manager/nsx-t-segment-linked-2.png" alt-text="Seçilen segmentin ağ geçidi adresini gösteren ekran görüntüsü.":::    
 
 3. VM vSphere istemcisinde, ayrıntılarını görüntülemek için sanal makineyi seçin. IP adresi, yukarıdaki bölümün 3. adımında gördük ile eşleşir: 172.29.1.10.
 
-    :::image type="content" source="media/traffic-manager/nsx-t-vm-details.png" alt-text="Uygulama ağ geçitlerinin listesi.":::    
+    :::image type="content" source="media/traffic-manager/nsx-t-vm-details.png" alt-text="VSphere Istemcisinde VM ayrıntılarını gösteren ekran görüntüsü.":::    
 
 4. Sanal makineyi seçin ve ardından NSX-T segmentiyle bağlantıyı doğrulamak için **eylemler > Ayarları Düzenle** ' ye tıklayın.
 
 ## <a name="create-your-traffic-manager-profile"></a>Traffic Manager profilinizi oluşturma
 
-1. [Azure Portal](https://rc.portal.azure.com/#home)oturum açın. **Azure hizmetleri > ağ**altında **Traffic Manager profiller**' i seçin.
+1. [Azure Portal](https://rc.portal.azure.com/#home)oturum açın. **Azure hizmetleri > ağ** altında **Traffic Manager profiller** ' i seçin.
 
 2. Yeni bir Traffic Manager profili oluşturmak için **+ Ekle** ' yi seçin.
  
-3. Profil adı, yönlendirme yöntemi belirtin (Bu senaryoda ağırlıklı olarak kullanacağız; [Traffic Manager yönlendirme yöntemleri](../traffic-manager/traffic-manager-routing-methods.md)), abonelik ve kaynak grubu ' na bakın ve **Oluştur**' u seçin.
+3. Profil adı, yönlendirme yöntemi belirtin (Bu senaryoda ağırlıklı olarak kullanacağız; [Traffic Manager yönlendirme yöntemleri](../traffic-manager/traffic-manager-routing-methods.md)), abonelik ve kaynak grubu ' na bakın ve **Oluştur** ' u seçin.
 
 ## <a name="add-external-endpoints-into-the-traffic-manager-profile"></a>Traffic Manager profiline dış uç noktalar ekleme
 
-1. Arama sonuçları bölmesinden Traffic Manager profilini seçin, **uç noktalar** ' ı ve sonra **+ Ekle**' yi seçin.
+1. Arama sonuçları bölmesinden Traffic Manager profilini seçin, **uç noktalar** ' ı ve sonra **+ Ekle** ' yi seçin.
 
-2. Gerekli ayrıntıları girin: tür, ad, tam etki alanı adı (FQDN) veya IP ve ağırlık (Bu senaryoda, her bir uç noktaya 1 ağırlık atacağız). **Ekle**’yi seçin.
+2. Gerekli ayrıntıları girin: tür, ad, tam etki alanı adı (FQDN) veya IP ve ağırlık (Bu senaryoda, her bir uç noktaya 1 ağırlık atacağız). **Ekle** ’yi seçin. Bu, dış uç noktayı oluşturur. İzleyici durumu **çevrimiçi** olmalıdır. Biri farklı bir bölgede ve diğer şirket içi olmak üzere iki farklı dış uç nokta oluşturmak için aynı adımları yineleyin. Oluşturulduktan sonra üçü Traffic Manager profilinde görüntülenir ve üçünün durumu **çevrimiçi** olmalıdır.
 
-   :::image type="content" source="media/traffic-manager/traffic-manager-profile.png" alt-text="Uygulama ağ geçitlerinin listesi.":::  
- 
-   Bu, dış uç noktayı oluşturur. İzleyici durumu **çevrimiçi**olmalıdır. 
+3. **Genel bakış** 'ı seçin. **DNS adı** altında URL 'yi kopyalayın.
 
-   Biri farklı bir bölgede ve diğer şirket içi olmak üzere iki farklı dış uç nokta oluşturmak için aynı adımları yineleyin. Oluşturulduktan sonra üçü Traffic Manager profilinde görüntülenir ve üçünün durumu **çevrimiçi**olmalıdır.
-
-3. **Genel bakış**'ı seçin. **DNS adı**altında URL 'yi kopyalayın.
-
-   :::image type="content" source="media/traffic-manager/traffic-manager-endpoints.png" alt-text="Uygulama ağ geçitlerinin listesi."::: 
+   :::image type="content" source="media/traffic-manager/traffic-manager-endpoints.png" alt-text="DNS adı vurgulanmış bir Traffic Manager uç noktaya genel bakış gösteren ekran görüntüsü."::: 
 
 4. DNS adı URL 'sini bir tarayıcıya yapıştırın. Aşağıdaki ekran görüntüsünde Batı Avrupa bölgesine yönlendiren trafik gösterilmektedir.
 
-   :::image type="content" source="media/traffic-manager/traffic-to-west-europe.png" alt-text="Uygulama ağ geçitlerinin listesi."::: 
+   :::image type="content" source="media/traffic-manager/traffic-to-west-europe.png" alt-text="Batı Avrupa yönlendirilen trafiği gösteren tarayıcı penceresinin ekran görüntüsü."::: 
 
 5. Tarayıcınızı yenileyin. Aşağıdaki ekran görüntüsünde trafik artık Batı ABD bölgesindeki başka bir arka uç havuzu üyesi kümesine yönlendirmektedir.
 
-   :::image type="content" source="media/traffic-manager/traffic-to-west-us.png" alt-text="Uygulama ağ geçitlerinin listesi."::: 
+   :::image type="content" source="media/traffic-manager/traffic-to-west-us.png" alt-text="Batı ABD yönlendirilen trafiği gösteren tarayıcı penceresinin ekran görüntüsü."::: 
 
 6. Tarayıcınızı yeniden yenileyin. Aşağıdaki ekran görüntüsünde trafik artık şirket içi havuz üyelerinin son kümesini yönlendiren trafik gösterilmektedir.
 
-   :::image type="content" source="media/traffic-manager/traffic-to-on-premises.png" alt-text="Uygulama ağ geçitlerinin listesi.":::
+   :::image type="content" source="media/traffic-manager/traffic-to-on-premises.png" alt-text="Şirket içine yönlendirilen trafiği gösteren tarayıcı penceresinin ekran görüntüsü.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

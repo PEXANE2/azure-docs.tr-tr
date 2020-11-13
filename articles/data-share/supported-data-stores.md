@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 10/30/2020
-ms.openlocfilehash: 47c484268573334057e6b4dd14bbae849f9ce774
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 11/12/2020
+ms.openlocfilehash: 6289395b5d508de8da3e5c8c89caebb4b0e9b817
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577230"
+ms.locfileid: "94592439"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure Veri Paylaşımı'nda desteklenen veri depoları
 
@@ -55,7 +55,7 @@ Azure veri paylaşımı, dosya, klasör ve dosya sistemlerinin Azure Data Lake g
 Lütfen [Azure Blob depolama alanından paylaşma ve veri alma ve](how-to-share-from-storage.md) ayrıntılar için Azure Data Lake Storage bakın.
 
 ## <a name="share-from-a-sql-based-source"></a>SQL tabanlı bir kaynaktan paylaşma
-Azure veri paylaşımı, Azure SQL veritabanı ve Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) tablolarından tablo veya görünümlerin paylaşılmasını ve Azure SYNAPSE Analytics (çalışma alanı) SQL havuzundan tabloların paylaşılmasını destekler. Veri tüketicileri, verileri Azure Data Lake Storage 2. veya Azure Blob depolama alanına CSV veya Parquet dosyası olarak kabul edip Azure SQL veritabanı ve Azure SYNAPSE Analytics 'i de tablolar olarak kabul edebilir.
+Azure veri paylaşımı, Azure SQL veritabanı ve Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) ve Azure SYNAPSE Analytics (çalışma alanı) adanmış SQL havuzundan tablo ve görünümlerin paylaşılmasını destekler. Azure SYNAPSE Analytics (çalışma alanı) sunucusuz SQL havuzunun paylaşılması Şu anda desteklenmiyor. Veri tüketicileri, verileri Azure Data Lake Storage 2. veya Azure Blob depolama alanına CSV veya Parquet dosyası olarak kabul edip Azure SQL veritabanı ve Azure SYNAPSE Analytics 'i de tablolar olarak kabul edebilir.
 
 Azure Data Lake Store Gen2 veya Azure Blob depolama alanına veri kabul edildiğinde, tam anlık görüntüler zaten varsa hedef dosyanın içeriğinin üzerine yazar.
 Veriler tabloya alındığında ve hedef tablo henüz yoksa, Azure veri paylaşımında kaynak şeması ile SQL tablosu oluşturulur. Aynı ada sahip bir hedef tablo zaten varsa, en son tam anlık görüntüyle bırakılır ve üzerine yazılır. Artımlı anlık görüntüler şu anda desteklenmiyor.

@@ -3,16 +3,16 @@ title: Azure Application Insights kullanarak performans sorunlarını tanılama 
 description: Azure Application Insights kullanarak uygulamanızdaki performans sorunlarını bulma ve tanılama hakkındaki öğretici.
 ms.subservice: application-insights
 ms.topic: tutorial
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 06/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 3c7185e07190895dfcc97555c6603049ed41c18c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df7cfff7d5bf1b89f88105f79c072d1d7e731b31
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322508"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592575"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Azure Application Insights ile performans sorunlarını bulma ve tanılama
 
@@ -41,8 +41,8 @@ Bu öğreticiyi tamamlamak için:
 ## <a name="identify-slow-server-operations"></a>Yavaş sunucu işlemlerini belirleme
 Application Insights, uygulamanızdaki farklı işlemlerin performans ayrıntılarını toplar. Süresi en uzun olan işlemleri belirleyerek olası sorunları veya sürmekte olan geliştirme sürecinizin en iyi hedefini tanılayabilir ve uygulamanın genel performansını geliştirebilirsiniz.
 
-1. **Application Insights**’ı ve sonra aboneliğinizi seçin.  
-1. **Performans** panelini açmak için **Araştır** menüsü altından **Performans**’ı seçin veya **Sunucu Yanıt Süresi** grafiğine tıklayın.
+1. **Application Insights** ’ı ve sonra aboneliğinizi seçin.  
+1. **Performans** panelini açmak için **Araştır** menüsü altından **Performans** ’ı seçin veya **Sunucu Yanıt Süresi** grafiğine tıklayın.
 
     ![Performans](media/tutorial-performance/1-overview.png)
 
@@ -61,13 +61,13 @@ Application Insights, uygulamanızdaki farklı işlemlerin performans ayrıntıl
     ![İşlem uçtan uca ayrıntıları](media/tutorial-performance/4-end-to-end.png)
     
 
-6.  [**Profil Oluşturucu**](../app/profiler-overview.md) , işlem için çalıştırılan gerçek kodu ve her adım için gereken süreyi göstererek kod düzeyi tanılamalarla daha fazla yararlanmanıza yardımcı olur. Profil oluşturucu belirli aralıklarla çalıştığından, bazı işlemlerin izlemesi olmayabilir.  Zamanla daha fazla işlemin izlemesi olmalıdır.  İşlem için profil oluşturucuyu başlatmak için **Profiler izlemeleri**’ne tıklayın.
+6.  [**Profil Oluşturucu**](../app/profiler-overview.md) , işlem için çalıştırılan gerçek kodu ve her adım için gereken süreyi göstererek kod düzeyi tanılamalarla daha fazla yararlanmanıza yardımcı olur. Profil oluşturucu belirli aralıklarla çalıştığından, bazı işlemlerin izlemesi olmayabilir.  Zamanla daha fazla işlemin izlemesi olmalıdır.  İşlem için profil oluşturucuyu başlatmak için **Profiler izlemeleri** ’ne tıklayın.
 5.  İzlemede her işleme yönelik olaylar tek tek gösterildiğinden, genel işlem süresinin kök nedenini tanılayabilirsiniz.  Üstteki en uzun süreye sahip örneklerden birine tıklayın.
 6.  İşlemin toplam süresine en çok katkıda bulunan olayların belirli yolunu vurgulamak için **etkin yol** ' e tıklayın.  Bu örnekte, en yavaş çağrının *FabrikamFiberAzureStorage.GetStorageTableData* metodundan geldiğini görebilirsiniz. En çok zaman alan bölüm *CloudTable.CreateIfNotExist* metodudur. İşlev her çağrıldığında bu kod satırı yürütülürse gereksiz ağ çağrısı ve CPU kaynağı tüketilir. Kodunuzu düzeltmenin en iyi yolu, bu satırı yalnızca bir kere yürütülen bir başlangıç yöntemine eklemektir.
 
     ![Profil oluşturucu ayrıntıları](media/tutorial-performance/5-hot-path.png)
 
-7.  Ekranın üstündeki **Performans İpucu**, sürenin uzun olmasının beklemekten kaynaklandığı değerlendirmesini destekliyor.  Farklı olay türlerinin yorumlanmasına yönelik belgeler için **bekliyor** bağlantısına tıklayın.
+7.  Ekranın üstündeki **Performans İpucu** , sürenin uzun olmasının beklemekten kaynaklandığı değerlendirmesini destekliyor.  Farklı olay türlerinin yorumlanmasına yönelik belgeler için **bekliyor** bağlantısına tıklayın.
 
     ![Performans ipucu](media/tutorial-performance/6-perf-tip.png)
 
@@ -90,7 +90,7 @@ Application Insights, iyileştirilecek sunucu işlemlerini belirlemeye ek olarak
 
     ![Tarayıcı özeti](media/tutorial-performance/8-browser.png)
 
-2. İşlem adlarından birini seçin ve ardından sağ alt köşedeki mavi örnekler düğmesine tıklayın ve bir işlem seçin. Bu, uçtan uca işlem ayrıntılarını getirecek ve sağ taraftaki **sayfa görünümü özelliklerini**görüntüleyemeyecektir. Bu, tarayıcı türü ve konumu dahil olmak üzere sayfayı isteyen istemcinin ayrıntılarını görüntülemenizi sağlar. Bu bilgiler, belirli istemci türleriyle ilgili performans sorunları olup olmadığını belirlemenize yardımcı olabilir.
+2. İşlem adlarından birini seçin ve ardından sağ alt köşedeki mavi örnekler düğmesine tıklayın ve bir işlem seçin. Bu, uçtan uca işlem ayrıntılarını getirecek ve sağ taraftaki **sayfa görünümü özelliklerini** görüntüleyemeyecektir. Bu, tarayıcı türü ve konumu dahil olmak üzere sayfayı isteyen istemcinin ayrıntılarını görüntülemenizi sağlar. Bu bilgiler, belirli istemci türleriyle ilgili performans sorunları olup olmadığını belirlemenize yardımcı olabilir.
 
     ![Sayfa görüntüleme](media/tutorial-performance/9-page-view-properties.png)
 
@@ -102,11 +102,6 @@ Sunucu performansı için toplanan veriler gibi Application Insights, tüm istem
 2. Günlükler, paneldeki her bir görünüm için bir sorgu ile açılır. İlk sorgu, zaman içinde farklı sayfa görüntüleme işlemlerinin süresini gösterir.
 
     ![Günlük sorgusu](media/tutorial-performance/10-page-view-logs.png)
-
-3.  Akıllı tanılama, verilerdeki benzersiz desenleri tanımlayan bir Günlükler özelliğidir. Çizgi grafikte Akıllı Tanılama noktasına tıkladığınızda, aynı sorgu anomaliye yol açan kayıtlar olmadan çalıştırılır. Sürenin aşırı uzun olmasına yol açan sayfa görüntülemelerini tanımlayabilmeniz için sorgunun açıklama bölümünde bu kayıtların ayrıntıları gösterilir.
-
-    ![Akıllı tanılama ile Günlükler](media/tutorial-performance/11-page-view-logs-dsmart.png)
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Artık çalışma zamanı özel durumlarının nasıl belirleneceğini öğrendiğinize göre, hatalara yanıt olarak uyarı oluşturmayı öğrenmek için bir sonraki öğreticiye ilerleyebilirsiniz.

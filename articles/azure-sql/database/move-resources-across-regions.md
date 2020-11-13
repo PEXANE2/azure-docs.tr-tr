@@ -8,16 +8,16 @@ ms.subservice: data-movement
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: how-to
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: 0b78419f4fb37bb96e2c71c89f740a35914ccede
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae6c87c9eabea837ba9c43676d4ca712caa385cb
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446386"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594173"
 ---
 # <a name="move-resources-to-new-region---azure-sql-database--azure-sql-managed-instance"></a>Kaynakları yeni bölgeye taşı-Azure SQL veritabanı & Azure SQL yönetilen örneği
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -68,7 +68,7 @@ Bu makale, kaynakları farklı bir bölgeye taşımak için genel bir iş akış
 
 ### <a name="monitor-the-preparation-process"></a>Hazırlama işlemini izleme
 
-Veritabanlarınızı kaynaktan hedefe çoğaltmayı izlemek için, [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) öğesini düzenli aralıklarla çağırabilirsiniz. Çıkış nesnesi `Get-AzSqlDatabaseFailoverGroup` **replicationstate**için bir özellik içerir:
+Veritabanlarınızı kaynaktan hedefe çoğaltmayı izlemek için, [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) öğesini düzenli aralıklarla çağırabilirsiniz. Çıkış nesnesi `Get-AzSqlDatabaseFailoverGroup` **replicationstate** için bir özellik içerir:
 
 - **Replicationstate = 2** (CATCH_UP), veritabanının eşitlendiğini ve güvenle yük devretmekte olduğunu gösterir.
 - **Replicationstate = 0** (dengeli dağıtım), veritabanının henüz çalıştırılmadığını ve Yük Devretme girişiminin başarısız olacağını belirtir.
@@ -122,7 +122,7 @@ Taşıma tamamlandıktan sonra gereksiz ücretlerden kaçınmak için kaynak bö
 
 ### <a name="monitor-the-preparation-process"></a>Hazırlama işlemini izleme
 
-Veritabanlarınızı kaynaktan hedefe çoğaltmayı izlemek için, [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) öğesini düzenli aralıklarla çağırabilirsiniz. Çıkış nesnesi `Get-AzSqlDatabaseFailoverGroup` **replicationstate**için bir özellik içerir:
+Veritabanlarınızı kaynaktan hedefe çoğaltmayı izlemek için, [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) öğesini düzenli aralıklarla çağırabilirsiniz. Çıkış nesnesi `Get-AzSqlDatabaseFailoverGroup` **replicationstate** için bir özellik içerir:
 
 - **Replicationstate = 2** (CATCH_UP), veritabanının eşitlendiğini ve güvenle yük devretmekte olduğunu gösterir.
 - **Replicationstate = 0** (dengeli dağıtım), veritabanının henüz çalıştırılmadığını ve Yük Devretme girişiminin başarısız olacağını belirtir.
@@ -170,7 +170,7 @@ Her örnekteki tüm veritabanlarının çoğaltılması otomatik olarak başlat�
 
 ### <a name="monitor-the-preparation-process"></a>Hazırlama işlemini izleme
 
-Veritabanlarınızı kaynaktan hedefe çoğaltmayı izlemek için, [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) öğesini düzenli aralıklarla çağırabilirsiniz. Çıkış nesnesi `Get-AzSqlDatabaseFailoverGroup` **replicationstate**için bir özellik içerir:
+Veritabanlarınızı kaynaktan hedefe çoğaltmayı izlemek için, [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) öğesini düzenli aralıklarla çağırabilirsiniz. Çıkış nesnesi `Get-AzSqlDatabaseFailoverGroup` **replicationstate** için bir özellik içerir:
 
 - **Replicationstate = 2** (CATCH_UP), veritabanının eşitlendiğini ve güvenle yük devretmekte olduğunu gösterir.
 - **Replicationstate = 0** (dengeli dağıtım), veritabanının henüz çalıştırılmadığını ve Yük Devretme girişiminin başarısız olacağını belirtir.

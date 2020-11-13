@@ -8,17 +8,19 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 11/10/2020
+ms.date: 11/12/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a5106e1089e2353d2db884977eb51a4fd2717b99
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 85c9111b0b16667e847aaf70d746e87fe524ef87
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506184"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592932"
 ---
 # <a name="upload-and-index-your-videos"></a>Videolarınızı karşıya yükleme ve dizinleme  
+
+Videonuz karşıya yüklendikten sonra Video Indexer (isteğe bağlı olarak) videoyu kodlar (makalede ele alınmıştır). Video Indexer hesabınızı oluştururken ücretsiz bir deneme hesabı (belirli sayıda ücretsiz dizin oluşturma dakikası elde edersiniz) veya ücretli bir seçenek (kota sınırlaması olmaz) arasından seçim yapabilirsiniz. Ücretsiz deneme kullanıldığında Video Indexer, web sitesi kullanıcılarına 600 dakikaya kadar ve API kullanıcılarına ise 2400 dakikaya kadar ücretsiz dizin oluşturma olanağı sunar. Ücretli seçenek kullanıldığında [Azure aboneliğinize ve bir Azure Media Services hesabına bağlı](connect-to-azure.md) bir Video Indexer hesabı oluşturulur. Dizin oluşturma için ödeme yaparsınız. daha fazla bilgi için bkz. [Media Services fiyatlandırması](https://azure.microsoft.com/pricing/details/media-services/).
 
 Video Indexer API'siyle videoları karşıya yüklerken aşağıdaki karşıya yükleme seçeneklerini kullanabilirsiniz: 
 
@@ -26,34 +28,10 @@ Video Indexer API'siyle videoları karşıya yüklerken aşağıdaki karşıya y
 * video dosyasını istek gövdesinde bir bayt dizisi olarak gönderin,
 * [Varlık kimliğini](../latest/assets-concept.md) sağlayarak mevcut Azure Media Services varlığını kullanın (yalnızca ücretli hesaplarda desteklenir).
 
-Videonuz karşıya yüklendikten sonra Video Indexer (isteğe bağlı olarak) videoyu kodlar (makalede ele alınmıştır). Video Indexer hesabınızı oluştururken ücretsiz bir deneme hesabı (belirli sayıda ücretsiz dizin oluşturma dakikası elde edersiniz) veya ücretli bir seçenek (kota sınırlaması olmaz) arasından seçim yapabilirsiniz. Ücretsiz deneme kullanıldığında Video Indexer, web sitesi kullanıcılarına 600 dakikaya kadar ve API kullanıcılarına ise 2400 dakikaya kadar ücretsiz dizin oluşturma olanağı sunar. Ücretli seçenek kullanıldığında [Azure aboneliğinize ve bir Azure Media Services hesabına bağlı](connect-to-azure.md) bir Video Indexer hesabı oluşturulur. Dizin oluşturma için ödeme yaparsınız. daha fazla bilgi için bkz. [Media Services fiyatlandırması](https://azure.microsoft.com/pricing/details/media-services/).
-
 Makalesinde, bu seçeneklerle videolarınızı karşıya yükleme ve dizin oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir:
 
-* [Video Indexer web sitesi](#website) 
-* [Video Indexer API'leri](#apis)
-
-## <a name="uploading-considerations-and-limitations"></a>Karşıya yükleme konusunda dikkat edilmesi gerekenler ve sınırlamalar
- 
-- Videonun adı 80 karakterden uzun olamaz.
-- Videonuzu URL’ye dayalı olarak karşıya yüklerken (tercih edilir) uç noktanın güvenliği TLS 1.2 (veya üzeri) ile sağlanmalıdır.
-- URL seçeneğiyle karşıya yükleme boyutu 30 GB ile sınırlıdır.
-- İstek URL'si uzunluğu 6144 karakterle, sorgu dizesi URL'si uzunluğu ise 4096 karakterle sınırlıdır.
-- Bayt dizisi seçeneğiyle karşıya yükleme boyutu 2 GB ile sınırlıdır.
-- Bayt dizisi seçeneği 30 dakika sonra zaman aşımına uğrar.
-- Param 'da belirtilen URL 'nin `videoURL` kodlanması gerekir.
-- Indexing Media Services varlıklarında, URL'den dizin oluşturmayla aynı sınırlama geçerlidir.
-- Video Indexer'ın tek dosya için maksimum süre sınırı 4 saattir.
-- URL'nin erişilebilir olması gerekir (örneğin genel URL olabilir). 
-
-    Bu bir özel URL'yse erişim belirteci istekte sağlanmalıdır.
-- URL, sayfanın bağlantısı gibi bir Web sayfasına değil, geçerli bir medya dosyasına işaret etmek zorunda `www.youtube.com` .
-- Ücretli bir hesapta dakikada 50 filme kadar ve deneme hesabında da dakikada 5 filme kadar karşıya yükleyebilirsiniz.
-
-> [!Tip]
-> .NET Framework 4.6.2 veya üzeri bir sürümünü kullanmanız önerilir. Eski .NET Framework sürümlerinde varsayılan olarak TLS 1.2 ayarı kullanılmaz.
->
-> Eski .NET Framework sürümlerini kullanmanız gerekirse kodunuzda REST API çağrısı öncesine bir satır ekleyin:  <br/> System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+* [Video Indexer web sitesi](#upload-and-index-a-video-using-the-video-indexer-website) 
+* [Video Indexer API'leri](#upload-and-index-with-api)
 
 ## <a name="supported-file-formats-for-video-indexer"></a>Video Indexer için desteklenen dosya biçimleri
 
@@ -66,7 +44,7 @@ Video Indexer ile kullanabileceğiniz dosya biçimlerinin bir listesi için bkz.
 - Video ve ses dosyalarınızı her zaman, Video Indexer tarafından ayıklanan meta verileri ve öngörüleri de silebilirsiniz. Video Indexer bir dosyayı sildikten sonra dosya ve meta verileri ve öngörüleri Video Indexer kalıcı olarak kaldırılır. Ancak, Azure depolama 'da kendi yedekleme çözümünüzü uyguladıysanız, dosya Azure depolama alanında kalır.
 - Karşıya yükleme işlemi Video Indexer Web sitesini veya karşıya yükleme API 'sini kullanmayı ne olursa olsun, videonun kalıcılığı aynı olur.
    
-## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a><a name="website"></a>Video Indexer Web sitesini kullanarak bir videoyu karşıya yükleme ve dizin oluşturma
+## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a>Video Indexer Web sitesini kullanarak bir videoyu karşıya yükleme ve dizin oluşturma
 
 > [!NOTE]
 > Videonun adı 80 karakterden uzun olamaz.
@@ -82,7 +60,7 @@ Video Indexer ile kullanabileceğiniz dosya biçimlerinin bir listesi için bkz.
     > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="Karşıya yükleme ilerleme durumu":::
 1. Video Indexer çözümlendikten sonra, videonuza bağlantı içeren bir e-posta alacaksınız ve videonuzda nelerin bulunmuştur ilgili kısa bir açıklama alırsınız. Örnek: kişiler, konular, OCR’ler.
 
-## <a name="upload-and-index-with-api"></a><a name="apis"></a>API ile karşıya yükleme ve Dizin
+## <a name="upload-and-index-with-api"></a>API ile karşıya yükleme ve Dizin
 
 Videoları karşıya yüklemek ve bir URL 'ye göre dizinlemek için [video yükleme](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API 'sini kullanın. Aşağıdaki kod örneği, bayt dizisinin nasıl karşıya yükleneceğini gösteren açıklamalı dışarı çıkan kodu içerir. 
 
@@ -359,11 +337,33 @@ public class AccountContractSlim
 
 Upload işlemi aşağıdaki tabloda listelenen durum kodlarını döndürebilir.
 
-|Durum kodu|ErrorType (yanıt gövdesinde)|Açıklama|
+|Durum kodu|ErrorType (yanıt gövdesinde)|Description|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|Bu video zaten aynı hesapta işleniyor.|
 |400|VIDEO_ALREADY_FAILED|Bu videonun işlenmesi 2 saatten daha kısa bir süre önce aynı hesapta başarısız oldu. API istemcilerin videoyu yeniden yüklemek için en az 2 saat beklemesi gerekir.|
 |429||Deneme hesaplarına dakika başına 5 karşıya yükleme izni verilir. Ücretli hesaplara dakika başına 50 yükleme izni verilir.|
+
+## <a name="uploading-considerations-and-limitations"></a>Karşıya yükleme konusunda dikkat edilmesi gerekenler ve sınırlamalar
+ 
+- Videonun adı 80 karakterden uzun olamaz.
+- Videonuzu URL’ye dayalı olarak karşıya yüklerken (tercih edilir) uç noktanın güvenliği TLS 1.2 (veya üzeri) ile sağlanmalıdır.
+- URL seçeneğiyle karşıya yükleme boyutu 30 GB ile sınırlıdır.
+- İstek URL'si uzunluğu 6144 karakterle, sorgu dizesi URL'si uzunluğu ise 4096 karakterle sınırlıdır.
+- Bayt dizisi seçeneğiyle karşıya yükleme boyutu 2 GB ile sınırlıdır.
+- Bayt dizisi seçeneği 30 dakika sonra zaman aşımına uğrar.
+- Param 'da belirtilen URL 'nin `videoURL` kodlanması gerekir.
+- Indexing Media Services varlıklarında, URL'den dizin oluşturmayla aynı sınırlama geçerlidir.
+- Video Indexer'ın tek dosya için maksimum süre sınırı 4 saattir.
+- URL'nin erişilebilir olması gerekir (örneğin genel URL olabilir). 
+
+    Bu bir özel URL'yse erişim belirteci istekte sağlanmalıdır.
+- URL, sayfanın bağlantısı gibi bir Web sayfasına değil, geçerli bir medya dosyasına işaret etmek zorunda `www.youtube.com` .
+- Ücretli bir hesapta dakikada 50 filme kadar ve deneme hesabında da dakikada 5 filme kadar karşıya yükleyebilirsiniz.
+
+> [!Tip]
+> .NET Framework 4.6.2 veya üzeri bir sürümünü kullanmanız önerilir. Eski .NET Framework sürümlerinde varsayılan olarak TLS 1.2 ayarı kullanılmaz.
+>
+> Eski .NET Framework sürümlerini kullanmanız gerekirse kodunuzda REST API çağrısı öncesine bir satır ekleyin:  <br/> System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

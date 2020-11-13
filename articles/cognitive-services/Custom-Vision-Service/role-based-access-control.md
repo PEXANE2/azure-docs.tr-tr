@@ -10,30 +10,30 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 096946a1a63c0826381875cd3ce4eaf0129a85df
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d265b6698a87c1c651dff1413cf48dd4984cd606
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146376"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616901"
 ---
 # <a name="azure-role-based-access-control"></a>Azure rol tabanlı erişim denetimi
 
-Özel Görüntü İşleme, Azure kaynaklarına bireysel erişimi yönetmeye yönelik bir yetkilendirme sistemi olan Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) destekler. Azure RBAC kullanarak, farklı takım üyelerine Özel Görüntü İşleme projeleriniz için farklı düzeylerde izinler atarsınız. Azure RBAC hakkında daha fazla bilgi için bkz. [Azure RBAC belgeleri](https://docs.microsoft.com/azure/role-based-access-control/).
+Özel Görüntü İşleme, Azure kaynaklarına bireysel erişimi yönetmeye yönelik bir yetkilendirme sistemi olan Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) destekler. Azure RBAC kullanarak, farklı takım üyelerine Özel Görüntü İşleme projeleriniz için farklı düzeylerde izinler atarsınız. Azure RBAC hakkında daha fazla bilgi için bkz. [Azure RBAC belgeleri](../../role-based-access-control/index.yml).
 
 ## <a name="add-role-assignment-to-custom-vision-resource"></a>Özel Görüntü İşleme kaynağına rol ataması Ekle
 
 Azure RBAC, bir Özel Görüntü İşleme kaynağına atanabilir. Bir Azure kaynağına erişim izni vermek için, bir rol ataması eklersiniz.
-1. [Azure portalda](https://ms.portal.azure.com/)**Tüm hizmetler**’i seçin. 
-1. Ardından bilişsel **Hizmetler**' i seçin ve özel özel görüntü işleme eğitim kaynağına gidin.
+1. [Azure portalda](https://ms.portal.azure.com/)**Tüm hizmetler** ’i seçin. 
+1. Ardından bilişsel **Hizmetler** ' i seçin ve özel özel görüntü işleme eğitim kaynağına gidin.
    > [!NOTE]
    > Azure RBAC 'yi tüm kaynak grupları, abonelikler veya yönetim grupları için de ayarlayabilirsiniz. İstenen kapsam düzeyini seçip istenen öğeye (örneğin, **kaynak grupları** ' nı seçip istediğiniz kaynak grubunuza tıklayarak) gidip bunu yapın.
 1. Sol gezinti bölmesinde **erişim denetimi (IAM)** seçeneğini belirleyin.
 1. Bu kapsamın rol atamalarını görüntülemek için **rol atamaları** sekmesini seçin.
-1. **Add**  ->  **Rol Ekle ataması**Ekle ' yi seçin.
+1. **Add**  ->  **Rol Ekle ataması** Ekle ' yi seçin.
 1. **Rol** açılan listesinde, eklemek istediğiniz bir rol seçin.
 1. **Seç** listesinde, bir Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik seçin. Listede güvenlik sorumlusunu görmüyorsanız, görünen adlar, e-posta adresleri ve nesne tanımlayıcıları için dizinde arama yapmak üzere seçim kutusunu yazabilirsiniz.
-1. Rolü atamak için **Kaydet**’i seçin.
+1. Rolü atamak için **Kaydet** ’i seçin.
 
 Birkaç dakika içinde, hedefe seçili kapsamda seçili rol atanır.
 

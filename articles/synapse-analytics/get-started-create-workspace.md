@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 10/07/2020
-ms.openlocfilehash: 5a4f3c06f53191339bf42125c0781f3ac1238b32
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 862d2a93058c63dbfad1db49346edcbfe3c02ad1
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561055"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592456"
 ---
 # <a name="creating-a-synapse-workspace"></a>SYNAPSE çalışma alanı oluşturma
 
@@ -48,9 +48,9 @@ Azure SYNAPSE çalışma alanınız oluşturulduktan sonra, SYNAPSE Studio 'Yu a
 
 1. SYNAPSE Studio 'da, sol taraftaki bölmede **Manage**  >  **SQL havuzlarını** Yönet ' i seçin.
 1. **Yeni** ' yi seçin
-1. **SQL havuzu adı** için **SQLDB1** seçin
+1. **SQL havuzu adı** için **SQLPOOL1** seçin
 1. **Performans düzeyi** için **DW100C** seçin
-1. **Gözden geçir ve oluştur** > **Oluştur** 'u seçin. Adanmış SQL havuzunuz birkaç dakika içinde hazırlanacaktır. Adanmış SQL havuzunuz, **SQLDB1** olarak da bilinen ayrılmış bir SQL havuzu veritabanıyla ilişkilidir.
+1. **Gözden geçir ve oluştur** > **Oluştur** 'u seçin. Adanmış SQL havuzunuz birkaç dakika içinde hazırlanacaktır. Adanmış SQL havuzunuz, **SQLPOOL1** olarak da bilinen ayrılmış bir SQL havuzu veritabanıyla ilişkilidir.
 
 Adanmış bir SQL havuzu, etkin olduğu sürece faturalanabilir kaynakları kullanır. Daha sonra maliyetleri azaltmak için havuzu duraklatabilirsiniz.
 

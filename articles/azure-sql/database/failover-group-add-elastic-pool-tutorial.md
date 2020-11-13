@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: seo-lt-2019 sqldbrb=1
 ms.devlang: ''
 ms.topic: tutorial
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 08/27/2019
-ms.openlocfilehash: a9f5bac475fd019b294f79abf0acdfaff198f52b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdbc44158de2f24d7d33d68311979c3b8bdda85d
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442755"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593986"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Öğretici: bir yük devretme grubuna Azure SQL veritabanı elastik havuzu ekleme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -48,23 +48,23 @@ Bu adımda, bir elastik havuz oluşturacak ve veritabanınızı buna ekleyecek.
 
 Azure portal kullanarak elastik havuzunuzu oluşturun.
 
-1. Azure portal sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna "Azure SQL" yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin.
+1. Azure portal sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler** ' i seçin ve arama kutusuna "Azure SQL" yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin.
 1. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. Veritabanları kutucuğunda ayrıntıları göster ' i seçerek farklı veritabanları hakkındaki ek bilgileri görüntüleyebilirsiniz.
 1. **SQL veritabanları** kutucuğunda **kaynak türü** açılır listesinden **elastik havuz** ' ı seçin. Elastik havuzunuzu oluşturmak için **Oluştur** ' u seçin.
 
     ![Elastik havuz Seç](./media/failover-group-add-elastic-pool-tutorial/select-azure-sql-elastic-pool.png)
 
 1. Elastik havuzunuzu aşağıdaki değerlerle yapılandırın:
-   - **Ad**: elastik havuzunuz için gibi benzersiz bir ad sağlayın `myElasticPool` .
-   - **Abonelik**: açılır listeden aboneliğinizi seçin.
-   - **ResourceGroup**: `myResourceGroup` 1. bölümde oluşturduğunuz kaynak grubundan açılan listeden seçim yapın.
-   - **Sunucu**: açılan listeden, Bölüm 1 ' de oluşturduğunuz sunucuyu seçin.  
+   - **Ad** : elastik havuzunuz için gibi benzersiz bir ad sağlayın `myElasticPool` .
+   - **Abonelik** : açılır listeden aboneliğinizi seçin.
+   - **ResourceGroup** : `myResourceGroup` 1. bölümde oluşturduğunuz kaynak grubundan açılan listeden seçim yapın.
+   - **Sunucu** : açılan listeden, Bölüm 1 ' de oluşturduğunuz sunucuyu seçin.  
 
        ![Elastik havuz için yeni sunucu oluştur](./media/failover-group-add-elastic-pool-tutorial/use-existing-server-for-elastic-pool.png)
 
-   - **İşlem + depolama**: işlem, depolama alanınızı yapılandırmak ve esnek havuzunuza tek veritabanınızı eklemek için **elastik havuzu Yapılandır** ' ı seçin. **Havuz ayarları** sekmesinde, 2 sanal çekirdek ve 32 Ile varsayılan 5. nesil bırakın.
+   - **İşlem + depolama** : işlem, depolama alanınızı yapılandırmak ve esnek havuzunuza tek veritabanınızı eklemek için **elastik havuzu Yapılandır** ' ı seçin. **Havuz ayarları** sekmesinde, 2 sanal çekirdek ve 32 Ile varsayılan 5. nesil bırakın.
 
-1. **Yapılandır** sayfasında **veritabanları** sekmesini seçin ve ardından **veritabanı Ekle**' yi seçin. Bölüm 1 ' de oluşturduğunuz veritabanını seçin ve ardından, elastik havuzunuza eklemek için **Uygula** ' yı seçin. Esnek havuz ayarlarınızı uygulamak ve **Yapılandır** sayfasını kapatmak Için yeniden **Uygula** ' yı seçin.
+1. **Yapılandır** sayfasında **veritabanları** sekmesini seçin ve ardından **veritabanı Ekle** ' yi seçin. Bölüm 1 ' de oluşturduğunuz veritabanını seçin ve ardından, elastik havuzunuza eklemek için **Uygula** ' yı seçin. Esnek havuz ayarlarınızı uygulamak ve **Yapılandır** sayfasını kapatmak Için yeniden **Uygula** ' yı seçin.
 
     ![Elastik havuza veritabanı ekleme](./media/failover-group-add-elastic-pool-tutorial/add-database-to-elastic-pool.png)
 
@@ -133,7 +133,7 @@ Bu adımda, var olan bir sunucu ile başka bir bölgedeki yeni bir sunucu arası
 
 Azure portal kullanarak yük devretme grubunuz oluşturun.
 
-1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin.
+1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler** ' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin.
 1. Önceki bölümde oluşturulan elastik havuzu seçin (örneğin,) `myElasticPool` .
 1. **Genel bakış** bölmesinde sunucu **adı** bölümünde sunucu adı ' nı seçerek sunucu ayarlarını açın.
   
@@ -143,13 +143,13 @@ Azure portal kullanarak yük devretme grubunuz oluşturun.
 
     ![Yeni Yük devretme grubu Ekle](./media/failover-group-add-elastic-pool-tutorial/elastic-pool-failover-group.png)
 
-1. **Yük devretme grubu** sayfasında, aşağıdaki değerleri girin veya seçin ve ardından **Oluştur**' u seçin:
-    - **Yük devretme grubu adı**: gibi benzersiz bir yük devretme grubu adı yazın `failovergrouptutorial` .
-    - **İkincil sunucu**: *gerekli ayarları yapılandırma* seçeneğini belirleyin ve ardından **Yeni bir sunucu oluşturmayı**seçin. Alternatif olarak, zaten var olan bir sunucuyu ikincil sunucu olarak seçebilirsiniz. Yeni ikincil sunucunuz için aşağıdaki değerleri girdikten sonra **Seç**' i seçin.
-        - **Sunucu adı**: ikincil sunucu için, gibi benzersiz bir ad yazın `mysqlsecondary` .
-        - **Sunucu Yöneticisi oturum açma**: tür `azureuser`
-        - **Parola**: parola gereksinimlerini karşılayan karmaşık bir parola yazın.
-        - **Konum**: açılan listeden, gibi bir konum seçin `East US` . Bu konum, birincil sunucunuz ile aynı konumda olamaz.
+1. **Yük devretme grubu** sayfasında, aşağıdaki değerleri girin veya seçin ve ardından **Oluştur** ' u seçin:
+    - **Yük devretme grubu adı** : gibi benzersiz bir yük devretme grubu adı yazın `failovergrouptutorial` .
+    - **İkincil sunucu** : *gerekli ayarları yapılandırma* seçeneğini belirleyin ve ardından **Yeni bir sunucu oluşturmayı** seçin. Alternatif olarak, zaten var olan bir sunucuyu ikincil sunucu olarak seçebilirsiniz. Yeni ikincil sunucunuz için aşağıdaki değerleri girdikten sonra **Seç** ' i seçin.
+        - **Sunucu adı** : ikincil sunucu için, gibi benzersiz bir ad yazın `mysqlsecondary` .
+        - **Sunucu Yöneticisi oturum açma** : tür `azureuser`
+        - **Parola** : parola gereksinimlerini karşılayan karmaşık bir parola yazın.
+        - **Konum** : açılan listeden, gibi bir konum seçin `East US` . Bu konum, birincil sunucunuz ile aynı konumda olamaz.
 
        > [!NOTE]
        > Sunucu oturum açma ve güvenlik duvarı ayarları, birincil sunucunuzun bilgileriyle eşleşmelidir.
@@ -254,7 +254,7 @@ Bu adımda, yük devretme grubunuzu ikincil sunucuya devreder ve sonra Azure por
 
 Azure portal kullanarak yük devretme grubunuzun yük devretmesini test edin.
 
-1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin.
+1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler** ' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin.
 1. Önceki bölümde oluşturulan elastik havuzu seçin (örneğin,) `myElasticPool` .
 1. Sunucu ayarlarını açmak için sunucu **adı** altında sunucunun adını seçin.
 

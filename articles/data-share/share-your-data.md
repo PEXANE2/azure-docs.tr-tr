@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 10/30/2020
-ms.openlocfilehash: 5eb374806d0bdafa7f05b001e4446b184a446b52
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 11/12/2020
+ms.openlocfilehash: 27d48ef8961aa0b7fde4a92195ea92a1ec20c3f0
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577422"
+ms.locfileid: "94594207"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Öğretici: Azure Veri Paylaşımı’nı kullanarak verileri paylaşma  
 
@@ -67,7 +67,7 @@ SQL kaynağından veri paylaşmaya yönelik önkoşulların listesi aşağıda v
 
 #### <a name="prerequisites-for-sharing-from-azure-synapse-analytics-workspace-sql-pool"></a>Azure SYNAPSE Analytics (çalışma alanı) SQL havuzundan paylaşım önkoşulları
 
-* Paylaşmak istediğiniz tabloları içeren bir Azure SYNAPSE Analytics (çalışma alanı) SQL Havuzu. Görünüm paylaşımı Şu anda desteklenmiyor.
+* * Bir Azure SYNAPSE Analytics (çalışma alanı) paylaşmak istediğiniz tablolarla ayrılmış bir SQL Havuzu. Görünüm paylaşımı Şu anda desteklenmiyor. Sunucusuz SQL havuzundan paylaşım Şu anda desteklenmiyor.
 * *Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/Write* Içinde bulunan SYNAPSE çalışma alanındaki SQL havuzuna yazma izni. Bu izin **Katkıda Bulunan** rolünde vardır.
 * SYNAPSE çalışma alanı SQL havuzuna erişmek için veri paylaşımının yönetilen kimliği izni. Bu, aşağıdaki adımlarla yapılabilir: 
     1. Azure portal ' de SYNAPSE çalışma alanı ' na gidin. Sol gezinmede SQL Active Directory Yöneticisi ' ni seçin ve kendiniz **Azure Active Directory Yöneticisi** olarak ayarlayın.

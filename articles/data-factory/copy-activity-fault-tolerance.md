@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: yexu
-ms.openlocfilehash: caec9b802bb347333dd861ebe499f72249d75aa2
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e64f4ab31aed5c4c3e70ef10faf2049027525014
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634786"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593657"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure Data Factory’de kopyalama etkinliğinin hataya dayanıklılığı
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -27,7 +27,7 @@ ms.locfileid: "92634786"
 
 Verileri kaynaktan hedef depoya kopyaladığınızda, Azure Data Factory kopyalama etkinliği, veri hareketinin ortasında hata kesintilerini engellemek için belirli bir hata toleransı düzeyi sağlar. Örneğin, kaynak veritabanında milyonlarca satırı hedef depoya kopyalarsınız, ancak hedef veritabanında birincil bir anahtar oluşturulmuştur, ancak kaynak veritabanı tanımlı birincil anahtara sahip değildir. Çoğaltılan satırları kaynaktan hedefe kopyalamak istediğinizde, hedef veritabanında PK ihlali hatasına vurun. Şu anda kopyalama etkinliği, bu tür hataları idare etmek için iki yol sunar: 
 - Herhangi bir hatayla karşılaşıldığında kopyalama etkinliğini iptal edebilirsiniz. 
-- Uyumsuz verileri atlamak için hata toleransını etkinleştirerek geri kalanı kopyalamaya devam edebilirsiniz. Örneğin, bu durumda çoğaltılan satırı atlayın. Ayrıca, kopyalama etkinliği içinde oturum günlüğü etkinleştirerek atlanan verileri günlüğe kaydedebilirsiniz. 
+- Uyumsuz verileri atlamak için hata toleransını etkinleştirerek geri kalanı kopyalamaya devam edebilirsiniz. Örneğin, bu durumda çoğaltılan satırı atlayın. Ayrıca, kopyalama etkinliği içinde oturum günlüğü etkinleştirerek atlanan verileri günlüğe kaydedebilirsiniz. Daha fazla ayrıntı için, [kopyalama etkinliğinde oturum günlüğü '](copy-activity-log.md) ne başvurabilirsiniz.
 
 ## <a name="copying-binary-files"></a>İkili dosyalar kopyalanıyor 
 
@@ -61,13 +61,20 @@ Depolama depoları arasında ikili dosyaları kopyaladığınızda, hata toleran
         "dataInconsistency": true 
     }, 
     "validateDataConsistency": true, 
-    "logStorageSettings": { 
-        "linkedServiceName": { 
-            "referenceName": "ADLSGen2", 
-            "type": "LinkedServiceReference" 
-            }, 
-        "path": "sessionlog/" 
-     } 
+    "logSettings": {
+        "enableCopyActivityLog": true,
+        "copyActivityLogSettings": {            
+            "logLevel": "Warning",
+            "enableReliableLogging": false
+        },
+        "logLocationSettings": {
+            "linkedServiceName": {
+               "referenceName": "ADLSGen2",
+               "type": "LinkedServiceReference"
+            },
+            "path": "sessionlog/"
+        }
+    }
 } 
 ```
 Özellik | Açıklama | İzin verilen değerler | Gerekli
@@ -76,7 +83,7 @@ skipErrorFile | Veri taşıma sırasında atlamak istediğiniz başarısızlık 
 fileMissing | SkipErrorFile özellik paketi içindeki anahtar-değer çiftlerinden biri, ADF 'nin bir arada kopyalanırken diğer uygulamalar tarafından silinmekte olan dosyaları atlamak istediğinizi öğrenmek için. <br/> -True: diğer uygulamalar tarafından silinmekte olan dosyaları atlayarak geri kalanını kopyalamak istersiniz. <br/> -False: veri hareketinin ortasında Kaynak depodan silinen dosyalar silindiğinde kopyalama etkinliğini iptal etmek istiyorsunuz. <br/>Bu özelliğin varsayılan olarak true olarak ayarlandığını unutmayın. | True (varsayılan) <br/>Yanlış | Hayır
 Dosya yasak | Belirli dosyaları atlamak istiyorsanız, bu dosya veya klasörlerin ACL 'Leri ADF 'de yapılandırılan bağlantıdan daha yüksek izin düzeyi gerektirdiğinde, bu dosyaların atlanmasını istediğinizi öğrenmek için skipErrorFile özellik paketi içindeki anahtar-değer çiftlerinden biridir. <br/> -True: dosyaları atlayarak geri kalanı kopyalamak istiyorsunuz. <br/> -False: klasörler veya dosyalar üzerinde izin sorununu elde etmek için kopyalama etkinliğini iptal etmek istiyorsunuz. | Doğru <br/>False (varsayılan) | Hayır
 Veri tutarsızlığı | Kaynak ve hedef depo arasında tutarsız verileri atlamak istediğinizi öğrenmek için skipErrorFile özellik paketi içindeki anahtar-değer çiftlerinden biri. <br/> -True: tutarsız verileri atlayarak geri kalanı kopyalamak istiyorsunuz. <br/> -False: tutarsız veriler bulunduğunda kopyalama etkinliğini iptal etmek istiyorsunuz. <br/>Bu özelliğin yalnızca Validatedatatutarlılığı doğru olarak ayarladığınızda geçerli olduğunu unutmayın. | Doğru <br/>False (varsayılan) | Hayır
-logStorageSettings  | Atlanan nesne adlarını günlüğe kaydetmek istediğinizde belirtilenebilir bir özellik grubu. | &nbsp; | Hayır
+Günlüğe kaydetme ayarları  | Atlanan nesne adlarını günlüğe kaydetmek istediğinizde belirtilenebilir bir özellik grubu. | &nbsp; | Hayır
 linkedServiceName | [Azure Blob depolama alanına](connector-azure-blob-storage.md#linked-service-properties) bağlı hizmet veya oturum günlüğü dosyalarını depolamak için [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#linked-service-properties) . | `AzureBlobStorage` `AzureBlobFS` Günlük dosyasını depolamak için kullandığınız örneğe karşılık gelen veya tür bağlı bir hizmetin adları. | Hayır
 path | Günlük dosyalarının yolu. | Günlük dosyalarını depolamak için kullandığınız yolu belirtin. Bir yol sağlamazsanız, hizmet sizin için bir kapsayıcı oluşturur. | Hayır
 
@@ -108,7 +115,7 @@ Okuma, yazma ve her bir kopyalama etkinliği çalışmasının çıktısı arac�
             "filesWritten": 1, 
             "filesSkipped": 2, 
             "throughput": 297,
-            "logPath": "https://myblobstorage.blob.core.windows.net//myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
+            "logFilePath": "myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
             "dataConsistencyVerification": 
            { 
                 "VerificationResult": "Verified", 
@@ -146,15 +153,15 @@ Yukarıdaki günlükte, ADF kopyalanırken başka bir uygulama bu dosyayı sildi
 ### <a name="supported-scenarios"></a>Desteklenen senaryolar
 Kopyalama etkinliği, uyumsuz tablolu verileri saptamak, atlamak ve günlüğe kaydetmek için üç senaryoyu destekler:
 
-- **Kaynak veri türü ile havuz yerel türü arasında uyumsuzluk** . 
+- **Kaynak veri türü ile havuz yerel türü arasında uyumsuzluk**. 
 
     Örneğin: BLOB depolama alanındaki bir CSV dosyasından, üç INT tür sütunu içeren bir şema tanımına sahip bir SQL veritabanına veri kopyalama. 123.456.789 gibi sayısal veriler içeren CSV dosyası satırları havuz deposuna başarıyla kopyalanır. Ancak, 123.456, ABC gibi sayısal olmayan değerler içeren satırlar uyumsuz olarak algılanır ve atlanır.
 
-- **Kaynak ve havuz arasındaki sütun sayısında uyuşmazlık var** .
+- **Kaynak ve havuz arasındaki sütun sayısında uyuşmazlık var**.
 
     Örneğin: BLOB depolama alanındaki bir CSV dosyasından, altı sütun içeren bir şema tanımına sahip bir SQL veritabanına veri kopyalama. Altı sütun içeren CSV dosyası satırları havuz deposuna başarıyla kopyalanır. Altıdan fazla sütun içeren CSV dosyası satırları uyumsuz olarak algılanır ve atlanır.
 
-- **SQL Server/Azure SQL veritabanı/Azure Cosmos DB yazılırken birincil anahtar ihlali** .
+- **SQL Server/Azure SQL veritabanı/Azure Cosmos DB yazılırken birincil anahtar ihlali**.
 
     Örneğin: bir SQL Server 'dan SQL veritabanı 'na veri kopyalama. Birincil anahtar, havuz SQL veritabanında tanımlanmıştır, ancak kaynak SQL Server 'da böyle bir birincil anahtar tanımlanmamıştır. Kaynakta bulunan yinelenen satırlar havuza kopyalanamıyor. Kopyalama etkinliği yalnızca kaynak verilerin ilk satırını havuza kopyalar. Yinelenen birincil anahtar değerini içeren sonraki kaynak satırlar uyumsuz olarak algılanır ve atlanır.
 
@@ -175,12 +182,19 @@ Aşağıdaki örnek, kopyalama etkinliğinde uyumsuz satırları atlamayı yapı
         "type": "AzureSqlSink" 
     }, 
     "enableSkipIncompatibleRow": true, 
-    "logStorageSettings": { 
-    "linkedServiceName": { 
-        "referenceName": "ADLSGen2", 
-        "type": "LinkedServiceReference" 
-        }, 
-    "path": "sessionlog/" 
+    "logSettings": {
+        "enableCopyActivityLog": true,
+        "copyActivityLogSettings": {            
+            "logLevel": "Warning",
+            "enableReliableLogging": false
+        },
+        "logLocationSettings": {
+            "linkedServiceName": {
+               "referenceName": "ADLSGen2",
+               "type": "LinkedServiceReference"
+            },
+            "path": "sessionlog/"
+        }
     } 
 }, 
 ```
@@ -188,7 +202,7 @@ Aşağıdaki örnek, kopyalama etkinliğinde uyumsuz satırları atlamayı yapı
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | -------- 
 Enableskipıncompatiblerow | Kopya sırasında uyumsuz satırların atlanıp atlanmayacağını belirtir. | Doğru<br/>False (varsayılan) | Hayır
-logStorageSettings | Uyumsuz satırları günlüğe kaydetmek istediğinizde belirtilenebilir bir özellik grubu. | &nbsp; | Hayır
+Günlüğe kaydetme ayarları | Uyumsuz satırları günlüğe kaydetmek istediğinizde belirtilenebilir bir özellik grubu. | &nbsp; | Hayır
 linkedServiceName | Atlanan satırları içeren günlüğü depolamak için [Azure Blob depolama](connector-azure-blob-storage.md#linked-service-properties) veya [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#linked-service-properties) bağlı hizmeti. | `AzureBlobStorage` `AzureBlobFS` Günlük dosyasını depolamak için kullandığınız örneğe karşılık gelen veya tür bağlı bir hizmetin adları. | Hayır
 path | Atlanan satırları içeren günlük dosyalarının yolu. | Uyumsuz verileri günlüğe kaydetmek için kullanmak istediğiniz yolu belirtin. Bir yol sağlamazsanız, hizmet sizin için bir kapsayıcı oluşturur. | Hayır
 
@@ -203,7 +217,7 @@ Kopyalama etkinliği çalıştırıldıktan sonra kopyalama etkinliğinin çık�
             "rowsSkipped": 2,
             "copyDuration": 16,
             "throughput": 0.01,
-            "logPath": "https://myblobstorage.blob.core.windows.net//myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
+            "logFilePath": "myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
             "errors": []
         },
 

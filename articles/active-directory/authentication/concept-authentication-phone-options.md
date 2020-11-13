@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 11/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45851015dd5a845497fb2d09bf1f9fffb9e35a06
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 74be3f4218149f0cdb9f107c8aba0be76d8da27e
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377760"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593085"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Azure Active Directory-telefon seçeneklerinde kimlik doğrulama yöntemleri
 
@@ -32,7 +32,7 @@ Doğru şekilde çalışmak için telefon numaralarının *+ CountryCode PhoneNu
 
 ## <a name="mobile-phone-verification"></a>Cep telefonu doğrulama
 
-Azure Multi-Factor Authentication veya SSPR için, kullanıcılar oturum açma arabirimine girmek üzere doğrulama kodu içeren bir kısa mesaj almayı seçebilir veya tanımlı PIN kodunu girmek için bir istem içeren bir telefon araması alabilir.
+Azure Multi-Factor Authentication veya SSPR için, kullanıcılar oturum açma arabirimine girmek üzere doğrulama kodu içeren bir kısa mesaj almayı seçebilir veya bir telefon araması alabilir.
 
 Kullanıcılar cep telefonu numarasının dizinde görünmesini istemiyor, ancak parola sıfırlama için kullanmak istiyorsanız, Yöneticiler dizindeki telefon numarasını doldurmamalıdır. Bunun yerine, kullanıcılar, **kimlik doğrulama telefonu** özniteliğini, Birleşik güvenlik bilgileri kaydı aracılığıyla doldurmalıdır [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) . Yöneticiler bu bilgileri kullanıcının profilinde görebilir, ancak başka bir yerde yayımlanmaz.
 
@@ -46,11 +46,11 @@ SSPR veya Azure Multi-Factor Authentication sırasında kısa mesaj doğrulamayl
 
 ### <a name="phone-call-verification"></a>Telefon araması doğrulaması
 
-SSPR veya Azure Multi-Factor Authentication sırasında telefon araması doğrulaması ile, Kullanıcı tarafından kaydedilen telefon numarasına otomatik bir sesli çağrı yapılır. Oturum açma işlemini tamamlamaya yönelik olarak, kullanıcıdan PIN numarasını girmesi istenir ve ardından tuş takımında # gelmelidir.
+SSPR veya Azure Multi-Factor Authentication sırasında telefon araması doğrulaması ile, Kullanıcı tarafından kaydedilen telefon numarasına otomatik bir sesli çağrı yapılır. Oturum açma işlemini tamamlamaya yönelik olarak, kullanıcıdan kendi tuş takımında # ' a basması istenir.
 
 ## <a name="office-phone-verification"></a>Office telefon doğrulaması
 
-SSPR veya Azure Multi-Factor Authentication sırasında telefon araması doğrulaması ile, Kullanıcı tarafından kaydedilen telefon numarasına otomatik bir sesli çağrı yapılır. Oturum açma işlemini tamamlamaya yönelik olarak, kullanıcıdan PIN numarasını girmesi istenir ve ardından tuş takımında # gelmelidir.
+SSPR veya Azure Multi-Factor Authentication sırasında telefon araması doğrulaması ile, Kullanıcı tarafından kaydedilen telefon numarasına otomatik bir sesli çağrı yapılır. Oturum açma işlemini tamamlamaya yönelik olarak, kullanıcıdan kendi tuş takımında # ' a basması istenir.
 
 ## <a name="troubleshooting-phone-options"></a>Telefon seçenekleriyle ilgili sorunları giderme
 
@@ -61,7 +61,7 @@ Azure AD için telefon kimlik doğrulamasıyla ilgili sorunlar yaşıyorsanız, 
 * Yanlış telefon numarası veya yanlış ülke/bölge kodu ya da kişisel telefon numarası ile iş telefonu numarası arasında karışıklık.
    * Kullanıcı nesnesi ve yapılandırılmış kimlik doğrulama yöntemleri sorunlarını giderin. Doğru telefon numaralarının kaydedildiğinden emin olun.
 * Yanlış PIN girildi.
-   * Kullanıcının, hesabı için kayıtlı doğru PIN 'ı kullandığını onaylayın.
+   * Kullanıcının hesabı için kayıtlı doğru PIN 'ı kullandığını onaylayın (yalnızca MFA sunucu kullanıcıları).
 * Sesli mesaj ile iletilen çağrı.
    * Kullanıcının telefonu açık olduğundan ve bu hizmetin kendi alanında kullanılabilir olduğundan emin olun veya alternatif yöntemi kullanın.
 * Kullanıcı engellendi

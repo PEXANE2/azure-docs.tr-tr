@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 39257419f179bdce8c94f2ddb3a7cd8f5ac2d34f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c65f28c040b15aaa2ec8f3425209351e4b60486
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89077764"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616221"
 ---
 # <a name="custom-vision-encryption-of-data-at-rest"></a>Bekleyen verilerin şifrelenmesi Özel Görüntü İşleme
 
@@ -39,5 +39,5 @@ Müşteri tarafından yönetilen anahtarlar Şu anda şu bölgelerde kullanılab
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * CMK 'yı destekleyen hizmetlerin tam listesi için bkz. bilişsel [Hizmetler Için müşteri tarafından yönetilen anahtarlar](../encryption/cognitive-services-encryption-keys-portal.md)
-* [Azure Key Vault nedir](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?
+* [Azure Key Vault nedir](../../key-vault/general/overview.md)?
 * [Bilişsel hizmetler Customer-Managed anahtar Isteği formu](https://aka.ms/cogsvc-cmk)

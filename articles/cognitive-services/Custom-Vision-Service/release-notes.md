@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: pafarley
-ms.openlocfilehash: f7259fe486a473f994d7795de5926b86717bb1b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ccf742e5ff612816cae1056ef7bf0e64fc9dbb5b
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85391715"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616476"
 ---
 # <a name="custom-vision-service-release-notes"></a>Özel Görüntü İşleme Hizmeti sürüm notları
 
@@ -41,7 +41,7 @@ ms.locfileid: "85391715"
 
 - Özel Görüntü İşleme Hizmeti Azure 'da genel kullanıma girdi!
 - Özellikle zorlu veri kümelerinde ve hassas sınıflandırmada geliştirilmiş performans için yeni bir makine öğrenimi arka ucu ile gelişmiş eğitim özelliği eklendi. Gelişmiş eğitimle eğitim için bir işlem süresi bütçesini belirtebilir ve Özel Görüntü İşleme en iyi eğitim ve genişletme ayarlarını belirlemek experimentally olacaktır. Hızlı yinelemeler için, var olan hızlı eğitimi kullanmaya devam edebilirsiniz.
-- 3,0 API 'Leri sunuldu. 1 Ekim 2019 ' de 3,0 öncesi API 'Leri kullanımdan kaldırma hakkında duyuruldu. Kullanmaya başlama hakkında örnekler için bkz. [.net](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/csharp-tutorial), [Python](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/python-tutorial), [node](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/node-tutorial), [Java](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/java-tutorial)veya [Go](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/go-tutorial) için hızlı başlangıç belgeleri.
+- 3,0 API 'Leri sunuldu. 1 Ekim 2019 ' de 3,0 öncesi API 'Leri kullanımdan kaldırma hakkında duyuruldu. Kullanmaya başlama hakkında örnekler için bkz. [.net](./quickstarts/image-classification.md), [Python](./quickstarts/image-classification.md), [node](./quickstarts/image-classification.md), [Java](./quickstarts/image-classification.md)veya [Go](./quickstarts/image-classification.md) için hızlı başlangıç belgeleri.
 - 3,0 API 'Lerinde Yayımla/yayımdan kaldırma ile "varsayılan yinelemeler" değiştirilmiştir.
 - Yeni model dışarı aktarma hedefleri eklendi. Dockerfile dışa aktarma, Raspberry PI 3 için ARM 'yi destekleyecek şekilde yükseltildi. [VISION AI Dev Kit](https://visionaidevkit.com/)'e dışa aktarma desteği eklenmiştir.
 - S0 katmanı için proje başına etiket sınırı 500 ' e kadar artar. S0 katmanı için proje başına görüntü sayısı üst sınırı 100.000 ' e kadar artar.

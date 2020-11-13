@@ -10,21 +10,21 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: c46adf9e9f5c1b2e74c1098ebf137c4556bfc58d
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: bc16dde7d3156df08b946a15012a201054cd8e0a
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147555"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592609"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Adanmış SQL havuzları ile verileri analiz etme
 
 Azure SYNAPSE Analytics, özel bir SQL havuzu ile verileri analiz etme yeteneği sağlar. Bu öğreticide, ayrılmış bir SQL havuzunun yeteneklerini araştırmak için NYC TAXI verilerini kullanacaksınız.
 
-## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>NYC TAXI verilerini SQLDB1 'e yükleme
+## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>NYC TAXI verilerini SQLPOOL1 'e yükleme
 
 1. SYNAPSE Studio 'da, **geliştirme** merkezine gidin ve yeni SQL betiği oluşturun
-1. Betiğin ' Bağlan ' bölümünde ' SQLDB1 ' havuzunu (Bu öğreticinin [1. adımında](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) oluşturulan havuz) seçin.
+1. Betiğin ' Bağlan ' bölümünde ' SQLPOOL1 ' havuzunu (Bu öğreticinin [1. adımında](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) oluşturulan havuz) seçin.
 1. Aşağıdaki kodu girin:
     ```
     CREATE TABLE [dbo].[Trip]
@@ -76,10 +76,10 @@ Azure SYNAPSE Analytics, özel bir SQL havuzu ile verileri analiz etme yeteneği
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>Özel SQL havuzundaki NYC TAXI verilerini keşfet
 
 1. SYNAPSE Studio 'da **veri** merkezine gidin.
-1. **SQLDB1**  >  **Tables**bölümüne gidin. Birkaç tablo yüklendiğini görürsünüz.
-1. Dbo öğesine sağ tıklayın **. Seyahat** tablosu ve **Yeni SQL betiği**Seç  >  **ilk 100 satır seçin**.
+1. **SQLPOOL1**  >  **Tables** bölümüne gidin. Birkaç tablo yüklendiğini görürsünüz.
+1. Dbo öğesine sağ tıklayın **. Seyahat** tablosu ve **Yeni SQL betiği** Seç  >  **ilk 100 satır seçin**.
 1. Yeni bir SQL betiği oluşturulup çalışırken bekleyin.
-1. SQL **komut dosyasının en üstünde,** **SQLDB1**adlı SQL havuzuna otomatik olarak ayarlandığını unutmayın.
+1. SQL **komut dosyasının en üstünde,** **SQLPOOL1** adlı SQL havuzuna otomatik olarak ayarlandığını unutmayın.
 1. SQL komut dosyasının metnini bu kodla değiştirin ve çalıştırın.
 
     ```sql

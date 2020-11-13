@@ -8,24 +8,24 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 10/05/2020
+ms.date: 11/13/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 168dc342eaf61a9ede632fb429311f6f5c1d4be4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e3d95be52215b03a30dc4b5c7f251357f163b24a
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311564"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616102"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Çalışma alanınızı özel DNS sunucusuyla kullanma
 
-Bir sanal ağla Azure Machine Learning kullanırken, [DNS ad çözümlemesini işlemenin birkaç yolu](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)vardır. Varsayılan olarak, Azure, çalışma alanınız ve özel uç noktanız için ad çözümlemesini otomatik olarak işler. Ancak, __kendi özel DNS sunucunuzu kullanırken__ , çalışma alanı için el ile DNS girdileri oluşturmanız gerekir.
+Bir sanal ağla Azure Machine Learning kullanırken, [DNS ad çözümlemesini işlemenin birkaç yolu](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)vardır. Varsayılan olarak, Azure, çalışma alanınız ve özel uç noktanız için ad çözümlemesini otomatik olarak işler. Bunun yerine _kendi özel DNS sunucunuzu kullanıyorsanız_ , çalışma alanı için el ile DNS girdileri oluşturmanız gerekir.
 
 > [!IMPORTANT]
 > Bu makalede, bu girdilerin yalnızca tam etki alanı adını (FQDN) ve IP adreslerini bulmak için DNS kayıtlarını yapılandırma hakkında bilgi sağlamayan bilgiler yer alır. Kayıt ekleme hakkında bilgi edinmek için DNS yazılımınızın belgelerine bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Kendı DNS sunucunuzu](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)kullanan bir Azure sanal ağı.
 
@@ -40,13 +40,14 @@ Bir sanal ağla Azure Machine Learning kullanırken, [DNS ad çözümlemesini i�
 Aşağıdaki liste, çalışma alanınız ve özel uç nokta tarafından kullanılan tam etki alanı adlarını (FQDN) içerir:
 
 * `<workspace-GUID>.workspace.<region>.api.azureml.ms`
-* `<workspace-GUID>.studio.workspace.<region>.api.azureml.ms`
-* `cert-<workspace-GUID>.workspace.<region>.api.azureml.ms`
 * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 * `<workspace-GUID>.workspace.<region>.aether.ms`
 * `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.ml`
-* Bir işlem örneği oluşturursanız, `<instance-name>.<region>.instances.azureml.ms` çalışma alanı özel uç noktasının özel IP 'si ile için bir giriş de eklemeniz gerekir. Lütfen işlem örneğine yalnızca sanal ağ içinden erişilebilir.
+* Bir işlem örneği oluşturursanız, `<instance-name>.<region>.instances.azureml.ms` çalışma alanı özel uç noktasının özel IP 'si ile için bir giriş de eklemeniz gerekir.
+
+    > [!NOTE]
+    > İşlem örneklerine yalnızca sanal ağ içinden erişilebilir.
 
 VNet 'teki FQDN 'lerin iç IP adreslerini bulmak için aşağıdaki yöntemlerden birini kullanın:
 
@@ -66,7 +67,7 @@ $workspaceDns=Get-AzPrivateEndpoint -Name <endpoint> -resourcegroupname <resourc
 $workspaceDns.CustomDnsConfigs | format-table
 ```
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/azure-portal)
 
 1. [Azure Portal](https://portal.azure.com), Azure Machine Learning __çalışma alanınızı__ seçin.
 1. __Ayarlar__ bölümünde, __Özel uç nokta bağlantıları__ ' nı seçin.
@@ -82,8 +83,6 @@ Tüm yöntemlerden döndürülen bilgiler aynıdır; kaynaklar için FQDN ve öz
 | FQDN | IP Adresi |
 | ----- | ----- |
 | `fb7e20a0-8891-458b-b969-55ddb3382f51.workspace.eastus.api.azureml.ms` | `10.1.0.5` |
-| `fb7e20a0-8891-458b-b969-55ddb3382f51.studio.workspace.eastus.api.azureml.ms` | `10.1.0.5` |
-| `cert-fb7e20a0-8891-458b-b969-55ddb3382f51.workspace.eastus.api.azureml.ms` | `10.1.0.5` |
 | `ml-myworkspace-eastus-fb7e20a0-8891-458b-b969-55ddb3382f51.notebooks.azure.net` | `10.1.0.6` |
 
 > [!IMPORTANT]

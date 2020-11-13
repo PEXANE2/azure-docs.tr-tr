@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: af2a58ecb97e4c62f437d0c693ec79a4b5f618b0
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 4903f1e48eb2f33c68d62c635201474b841ed146
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579241"
+ms.locfileid: "94591521"
 ---
 # <a name="azure-database-for-mysql-versioning-policy"></a>MySQL için Azure veritabanı sürüm oluşturma ilkesi
 
@@ -30,7 +30,7 @@ MySQL için Azure veritabanı aşağıdaki veritabanı sürümlerini destekler.
 
 
 ## <a name="major-version-support"></a>Ana sürüm desteği
-MySQL için Azure veritabanı, sürüm, sürüm [oluşturma ilkesinde](https://en.wikipedia.org/wiki/mysql)sağlandığı gibi MySQL Community tarafından devre dışı bırakılana kadar, MySQL Için Azure veritabanı tarafından desteklenecek.
+MySQL için Azure veritabanı, sürüm, sürüm [oluşturma ilkesinde](https://www.mysql.com/support/eol-notice.html)sağlandığı gibi MySQL Community tarafından devre dışı bırakılana kadar, MySQL Için Azure veritabanı tarafından desteklenecek.
 
 ## <a name="minor-version-support"></a>İkincil sürüm desteği
 MySQL için Azure veritabanı, düzenli bakımın parçası olarak Azure tercih edilen MySQL sürümüne küçük sürüm yükseltmeleri otomatik olarak gerçekleştirir. 

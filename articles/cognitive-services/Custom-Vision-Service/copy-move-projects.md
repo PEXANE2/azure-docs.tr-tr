@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: c742240cc82035b2a9af16348eaa9f2a40a32fa3
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 548d936538a909da10796d0377f119826582c420
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900328"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616068"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>Özel Görüntü İşleme projelerinizi kopyalayın ve taşıyın
 
@@ -26,11 +26,11 @@ Bir Özel Görüntü İşleme projesi oluşturup eğitimli olduktan sonra, proje
 
 Uygulamanız veya işletmeniz Özel Görüntü İşleme bir proje kullanımına bağımlıysa, modelinizi başka bir bölgedeki başka bir Özel Görüntü İşleme hesabına kopyalamanızı öneririz. Daha sonra bölgesel bir kesinti oluşursa, projenize kopyalandığı bölgede erişebilirsiniz.
 
-##  <a name="prerequisites"></a>Önkoşullar
+##  <a name="prerequisites"></a>Ön koşullar
 
 - İki Azure Özel Görüntü İşleme kaynağı. Bunlar yoksa, Azure portal gidin ve [Yeni bir özel görüntü işleme kaynağı oluşturun](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true).
 - Özel Görüntü İşleme kaynaklarınızın eğitim tuşları ve uç nokta URL 'Leri. Bu değerleri, Azure portal kaynağın **genel bakış** sekmesinde bulabilirsiniz.
-- Oluşturulmuş bir Özel Görüntü İşleme projesi. Bunu nasıl yapacağınız hakkında yönergeler için bkz. [sınıflandırıcı oluşturma](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/getting-started-build-a-classifier) .
+- Oluşturulmuş bir Özel Görüntü İşleme projesi. Bunu nasıl yapacağınız hakkında yönergeler için bkz. [sınıflandırıcı oluşturma](./getting-started-build-a-classifier.md) .
 
 ## <a name="process-overview"></a>İşleme genel bakış
 

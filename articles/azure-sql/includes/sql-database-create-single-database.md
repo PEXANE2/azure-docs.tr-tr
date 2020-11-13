@@ -4,14 +4,14 @@ ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
 ms.date: 03/10/2020
-ms.author: mathoma
+ms.author: sstein
 ms.reviewer: vanto
-ms.openlocfilehash: ad6e444f9672fbe521e9c6963649d250830154d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15209bc9dae1f10e1158c805ba7903b9f946766f
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84046141"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593957"
 ---
 Bu adımda, bir [MANTıKSAL SQL Server](../database/logical-servers.md) ve AdventureWorksLT örnek verisi kullanan [tek bir veritabanı](../database/single-database-overview.md) oluşturursunuz. Azure portal menüleri ve ekranları kullanarak veya Azure Cloud Shell bir Azure CLı veya PowerShell betiği kullanarak veritabanı oluşturabilirsiniz.
 
@@ -22,58 +22,58 @@ Tüm Yöntemler, sunucu düzeyinde bir güvenlik duvarı kuralını, kullanmakta
 Azure portal bir kaynak grubu, sunucu ve tek veritabanı oluşturmak için:
 
 1. [Portalda](https://portal.azure.com)oturum açın.
-1. Arama çubuğundan **Azure SQL**araması yapın ve seçin.
-1. **Azure SQL** sayfasında **Ekle**' yi seçin.
+1. Arama çubuğundan **Azure SQL** araması yapın ve seçin.
+1. **Azure SQL** sayfasında **Ekle** ' yi seçin.
 
    ![Azure SQL 'e Ekle](./media/sql-database-create-single-database/sqldbportal.png)
 
-1. **SQL dağıtım seçeneğini belirleyin** sayfasında, **kaynak türü**altında **tek bir veritabanı** ile **SQL veritabanları** kutucuğunu seçin. **Ayrıntıları göster**' i seçerek farklı veritabanları hakkında daha fazla bilgi görüntüleyebilirsiniz.
-1. **Oluştur**’u seçin.
+1. **SQL dağıtım seçeneğini belirleyin** sayfasında, **kaynak türü** altında **tek bir veritabanı** ile **SQL veritabanları** kutucuğunu seçin. **Ayrıntıları göster** ' i seçerek farklı veritabanları hakkında daha fazla bilgi görüntüleyebilirsiniz.
+1. **Oluştur** ’u seçin.
 
    ![Tek veritabanı oluşturma](./media/sql-database-create-single-database/create-single-database.png)
 
-1. **SQL veritabanı oluştur** formunun **temel bilgiler** sekmesinde, **proje ayrıntıları**' nın altında, henüz seçili değilse doğru Azure **aboneliğini** seçin.
-1. **Kaynak grubu**altında **Yeni oluştur**' u seçin, *myresourcegroup*girin ve **Tamam**' ı seçin.
-1. Veritabanı **ayrıntıları**' nın altında, **veritabanı adı** için *mysampledatabase*yazın.
-1. **Sunucu**Için **Yeni oluştur**' u seçin ve **Yeni sunucu** formunu aşağıdaki gibi doldurun:
-   - **Sunucu adı**: *te yapılandırılmış MySQLServer*ve benzersizlik için bazı karakterler girin.
-   - **Sunucu Yöneticisi oturum açma**: *azureuser*girin.
-   - **Parola**: gereksinimleri karşılayan bir parola girin ve **Parolayı Onayla** alanına yeniden girin.
-   - **Konum**: açılır ve **(US) Doğu ABD**gibi bir konum seçin.
+1. **SQL veritabanı oluştur** formunun **temel bilgiler** sekmesinde, **proje ayrıntıları** ' nın altında, henüz seçili değilse doğru Azure **aboneliğini** seçin.
+1. **Kaynak grubu** altında **Yeni oluştur** ' u seçin, *myresourcegroup* girin ve **Tamam** ' ı seçin.
+1. Veritabanı **ayrıntıları** ' nın altında, **veritabanı adı** için *mysampledatabase* yazın.
+1. **Sunucu** Için **Yeni oluştur** ' u seçin ve **Yeni sunucu** formunu aşağıdaki gibi doldurun:
+   - **Sunucu adı** : *te yapılandırılmış MySQLServer* ve benzersizlik için bazı karakterler girin.
+   - **Sunucu Yöneticisi oturum açma** : *azureuser* girin.
+   - **Parola** : gereksinimleri karşılayan bir parola girin ve **Parolayı Onayla** alanına yeniden girin.
+   - **Konum** : açılır ve **(US) Doğu ABD** gibi bir konum seçin.
 
-   **Tamam**’ı seçin.
+   **Tamam** ’ı seçin.
 
    ![Yeni sunucu](./media/sql-database-create-single-database/new-server.png)
 
    Sunucuda ve veritabanlarında oturum açabilmek için Sunucu Yöneticisi oturum açma bilgilerini ve parolasını kaydedin. Oturum açma veya parolayı unutursanız, veritabanı oluşturulduktan sonra **SQL Server** sayfasında oturum açma adını alabilir veya parolayı sıfırlayabilirsiniz. **SQL Server** sayfasını açmak Için veritabanına **genel bakış** sayfasında sunucu adını seçin.
 
-1. **İşlem + depolama**altında, Varsayılanları yeniden yapılandırmak Istiyorsanız **Veritabanını yapılandır**' ı seçin.
+1. **İşlem + depolama** altında, Varsayılanları yeniden yapılandırmak Istiyorsanız **Veritabanını yapılandır** ' ı seçin.
 
    **Yapılandır** sayfasında, isteğe bağlı olarak şunları yapabilirsiniz:
-   - **İşlem katmanını** **sağlanmasından** **sunucusuz**olarak değiştirin.
-   - **Sanal çekirdekler** ve **en fazla veri boyutu**ayarlarını gözden geçirin ve değiştirin.
+   - **İşlem katmanını** **sağlanmasından** **sunucusuz** olarak değiştirin.
+   - **Sanal çekirdekler** ve **en fazla veri boyutu** ayarlarını gözden geçirin ve değiştirin.
    - Donanım oluşturmayı değiştirmek için **yapılandırmayı Değiştir** ' i seçin.
 
-   Herhangi bir değişiklik yaptıktan sonra **Uygula**' yı seçin.
+   Herhangi bir değişiklik yaptıktan sonra **Uygula** ' yı seçin.
 
 1. **İleri ' yi** seçin. sayfanın en altındaki Ağ.
 
    ![Yeni SQL veritabanı-temel sekmesi](./media/sql-database-create-single-database/new-sql-database-basics.png)
 
-1. **Ağ** sekmesinde, **bağlantı yöntemi**altında **ortak uç nokta**' ı seçin.
-1. **Güvenlik duvarı kuralları**altında, **geçerli Istemci IP adresini ekle** ' yi **Evet**olarak ayarlayın.
+1. **Ağ** sekmesinde, **bağlantı yöntemi** altında **ortak uç nokta** ' ı seçin.
+1. **Güvenlik duvarı kuralları** altında, **geçerli Istemci IP adresini ekle** ' yi **Evet** olarak ayarlayın.
 1. Ileri ' yi seçin: sayfanın en altındaki **ek ayarlar** .
 
    ![Ağ sekmesi](./media/sql-database-create-single-database/networking.png)
   
    Güvenlik Duvarı ayarları hakkında daha fazla bilgi için bkz. [Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin verme](../database/network-access-controls-overview.md) ve [Özel uç nokta ekleme](../database/private-endpoint-overview.md).
 
-1. **Ek ayarlar** sekmesinde, **veri kaynağı** bölümünde **var olan verileri kullan**için **örnek**' i seçin.
+1. **Ek ayarlar** sekmesinde, **veri kaynağı** bölümünde **var olan verileri kullan** için **örnek** ' i seçin.
 1. Sayfanın alt kısmındaki **gözden geçir + oluştur** ' u seçin.
 
    ![Ek ayarlar sekmesi](./media/sql-database-create-single-database/additional-settings.png)
 
-1. Ayarları inceledikten sonra **Oluştur**' u seçin.
+1. Ayarları inceledikten sonra **Oluştur** ' u seçin.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -149,11 +149,11 @@ Yukarıdaki kod şu Azure CLı komutlarını kullanır:
 
 | Komut | Açıklama |
 |---|---|
-| [az Account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | Aboneliği geçerli etkin abonelik olacak şekilde ayarlar. |
+| [az Account set](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true) | Aboneliği geçerli etkin abonelik olacak şekilde ayarlar. |
 | [az group create](/cli/azure/group#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Veritabanları ve elastik havuzlar barındıran bir sunucu oluşturur. |
 | [az SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-create) | Sunucu düzeyinde bir güvenlik duvarı kuralı oluşturur. |
-| [az sql db create](/cli/azure/sql/db#az-sql-db-create?view=azure-cli-latest) | Bir veritabanı oluşturur. |
+| [az sql db create](/cli/azure/sql/db#az-sql-db-create?view=azure-cli-latest&preserve-view=true) | Bir veritabanı oluşturur. |
 
 Azure SQL veritabanı Azure CLı örnekleri hakkında daha fazla bilgi için bkz. [Azure CLI örnekleri](../database/az-cli-script-samples-content-guide.md).
 

@@ -3,15 +3,20 @@ title: Azure Event Grid-sorun giderme kılavuzu
 description: Bu makale, hata kodlarının, hata iletilerinin, açıklamaların ve önerilen eylemlerin bir listesini sağlar.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 1dd464339e7654f8886224ff07cf368b4724ff82
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 79533918ccc6995f459b39f058de9e01091c0958
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041392"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593000"
 ---
 # <a name="troubleshoot-azure-event-grid-errors"></a>Azure Event Grid hatalarında sorun giderme
-Bu sorun giderme kılavuzu, Azure Event Grid hata kodlarının, hata iletilerinin, açıklamalarının ve bu hataları aldığınızda gerçekleştirmeniz gereken önerilen eylemlerin bir listesini sağlar. 
+Bu sorun giderme kılavuzu, aşağıdaki bilgileri sağlar: 
+
+- Azure Event Grid hata kodları
+- Hata iletileri
+- Hataların açıklamaları
+- Bu hataları aldığınızda yapmanız gereken önerilen eylemler. 
 
 ## <a name="error-code-400"></a>Hata kodu: 400
 | Hata kodu | Hata iletisi | Description | Öneri |
@@ -23,8 +28,8 @@ Bu sorun giderme kılavuzu, Azure Event Grid hata kodlarının, hata iletilerini
 ## <a name="error-code-409"></a>Hata kodu: 409
 | Hata kodu | Hata iletisi | Description | Önerilen eylem |
 | ---------- | ------------- | ----------- | -------------- | 
-| HttpStatusCode. Conflict <br/>409 | Belirtilen ada sahip bir konu zaten var. Farklı bir konu adı seçin.   | Özel konu adı, doğru bir yayımlama işleminin sağlamak için tek bir Azure bölgesinde benzersiz olmalıdır. Aynı ad, farklı Azure bölgelerinde kullanılabilir. | Konu için farklı bir ad seçin. |
-| HttpStatusCode. Conflict <br/> 409 | Belirtilen etki alanı zaten var. Farklı bir etki alanı adı seçin. | Doğru bir yayımlama işlemi sağlamak için etki alanı adının tek bir Azure bölgesinde benzersiz olması gerekir. Aynı ad, farklı Azure bölgelerinde kullanılabilir. | Etki alanı için farklı bir ad seçin. |
+| HttpStatusCode. Conflict <br/>409 | Belirtilen ada sahip bir konu zaten var. Farklı bir konu adı seçin.   | Özel konu adı, doğru bir yayımlama işlemi sağlamak için tek bir Azure bölgesinde benzersiz olmalıdır. Aynı ad, farklı Azure bölgelerinde kullanılabilir. | Konu için farklı bir ad seçin. |
+| HttpStatusCode. Conflict <br/> 409 | Belirtilen etki alanı zaten var. Farklı bir etki alanı adı seçin. | Doğru bir yayımlama işlemi sağlamak için etki alanı adı tek bir Azure bölgesinde benzersiz olmalıdır. Aynı ad, farklı Azure bölgelerinde kullanılabilir. | Etki alanı için farklı bir ad seçin. |
 | HttpStatusCode. Conflict<br/>409 | Kota sınırına ulaşıldı. Bu limitlerin hakkında daha fazla bilgi için bkz. [Azure Event Grid sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md#event-grid-limits).  | Her Azure aboneliğinin kullanabileceği Azure Event Grid kaynak sayısı sınırlıdır. Bu kotanın bazıları veya tümü aşılmıştı ve daha fazla kaynak oluşturulamadı. |    Geçerli kaynak kullanımınızı denetleyin ve gerekmeyen kaynakları silin. Kotayı artırmanız gerekiyorsa, [aeg@microsoft.com](mailto:aeg@microsoft.com) tam olarak gereken kaynak sayısıyla bir e-posta gönderin. |
 
 ## <a name="error-code-403"></a>Hata kodu: 403
@@ -32,26 +37,16 @@ Bu sorun giderme kılavuzu, Azure Event Grid hata kodlarının, hata iletilerini
 | Hata kodu | Hata iletisi | Description | Önerilen eylem |
 | ---------- | ------------- | ----------- | ------------------ |
 | HttpStatusCode. yasak <br/>403 | IPAddress filtreleme kuralları nedeniyle {IPAddress} istemcisinin {konu/etki alanı} öğesine yayımlanması reddedildi. | Konu veya etki alanında IP güvenlik duvarı kuralları yapılandırılmış ve erişim yalnızca yapılandırılan IP adresleriyle kısıtlıdır. | IP adresini IP güvenlik duvarı kurallarına ekleyin, bkz. [IP güvenlik duvarını yapılandırma](configure-firewall.md) |
-| HttpStatusCode. yasak <br/> 403 | Özel uç noktasından istek geldiği ve kaynak için eşleşen özel uç nokta bağlantısı bulunmadığından, istemci tarafından {topic/etki alanı} üzerinde yayımlama reddedildi. | Konu veya etki alanı için yapılandırılmış özel uç noktalar ve yayımlama isteği, yapılandırılmamış/onaylanmamış özel bir uç noktadan geldi. | Konu/etki alanı için özel bir uç nokta yapılandırın. [Özel uç noktaları yapılandırma](configure-private-endpoints.md) |
+| HttpStatusCode. yasak <br/> 403 | Özel uç noktasından istek geldiği ve kaynak için eşleşen özel uç nokta bağlantısı bulunmadığından, istemci tarafından {topic/etki alanı} üzerinde yayımlama reddedildi. | Konunun veya etki alanının özel uç noktaları ve yayımlama isteği, yapılandırılmamış veya onaylanmamış özel bir uç noktadan geldi. | Konu/etki alanı için özel bir uç nokta yapılandırın. [Özel uç noktaları yapılandırma](configure-private-endpoints.md) |
 
-## <a name="troubleshoot-event-subscription-validation"></a>Olay aboneliği doğrulama sorunlarını giderme
+Ayrıca, Web kancasının bir Azure Application Gateway veya Web uygulaması güvenlik duvarının arkasında olup olmadığını kontrol edin. Varsa, aşağıdaki güvenlik duvarı kurallarını devre dışı bırakın ve bir HTTP POST yeniden yapın:
 
-Olay aboneliği oluşturma sırasında, gibi bir hata mesajı görüyorsanız `The attempt to validate the provided endpoint https://your-endpoint-here failed. For more details, visit https://aka.ms/esvalidation` , doğrulama el sıkışmasının bir hata olduğunu gösterir. Bu hatayı çözmek için aşağıdaki noktaları doğrulayın:
+- 920300 (istek bir Accept üst bilgisini içermiyor)
+- 942430 (kısıtlanan SQL karakter anomali algılama (args): özel karakter sayısı aşıldı (12))
+- 920230 (birden çok URL kodlaması algılandı)
+- 942130 (SQL ekleme saldırısı: SQL tautology algılandı.)
+- 931130 (olası uzaktan dosya ekleme (RFı) saldırısı = kapalı etki alanı başvurusu/bağlantı)
 
-- Postman veya kıvrık ya da benzer bir aracı kullanarak [örnek bir SubscriptionValidationEvent](webhook-event-delivery.md#validation-details) istek gövdesi ile Web kancası URL 'niz IÇIN BIR http gönderisi yapın.
-- Web kancası, zaman uyumlu doğrulama el sıkışma mekanizması uygualıyorsa, yanıtın bir parçası olarak ValidationCode 'un döndürüldüğünden emin olun.
-- Web kancası, zaman uyumsuz doğrulama el sıkışma mekanizmasını uygulamadıysanız, HTTP POST 'un 200 doğru olduğunu doğrulayın.
-- Web kancası yanıt karşılığında 403 (yasak) döndürüyorsa, Web kancasının bir Azure Application Gateway veya Web uygulaması güvenlik duvarının arkasında olup olmadığını denetleyin. Bu durumda, bu güvenlik duvarı kurallarını devre dışı bırakıp bir HTTP POST işlemini yeniden gerçekleştirmeniz gerekir:
-
-  920300 (istekte bir Accept üst bilgisi eksik, bunu çözebiliriz)
-
-  942430 (kısıtlanan SQL karakter anomali algılama (args): özel karakter sayısı aşıldı (12))
-
-  920230 (birden çok URL kodlaması algılandı)
-
-  942130 (SQL ekleme saldırısı: SQL tautology algılandı.)
-
-  931130 (olası uzaktan dosya ekleme (RFı) saldırısı = Off-Domain başvuru/bağlantı)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

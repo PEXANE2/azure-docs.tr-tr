@@ -12,23 +12,25 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: amikuma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: e223b5ae072a323ad56ed396c06580fea9b8b7ab
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 52e6c70b76b83c73059dc887eaefe8403befac13
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335256"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594241"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>Hızlı başlangıç: kimlik doğrulama kod akışını kullanarak Kullanıcı oturumu açma ve düğüm Web uygulamasında erişim belirteci edinme
 
-Bu hızlı başlangıçta, bir Node.js Web uygulamasının, yetkilendirme kodu akışını kullanarak kişisel hesap, iş hesabı ve okul hesaplarının kullanıcılarına nasıl oturum açıp çalıştırabileceklerini gösteren bir kod örneği çalıştırırsınız. Kod örneği Ayrıca, bir Web API 'SI çağırmak için bir erişim belirteci alma, bu durumda Microsoft Graph API 'SI de gösterir. Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.
+Bu hızlı başlangıçta, bir Node.js Web uygulamasının yetkilendirme kodu akışını kullanarak kullanıcılara nasıl oturum açabildiğini gösteren bir kod örneği indirip çalıştırırsınız. Kod örneği ayrıca Microsoft Graph API 'yi çağırmak için bir erişim belirtecinin nasıl alınacağını gösterir. 
+
+Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.
 
 Bu hızlı başlangıçta yetkilendirme kodu akışıyla Node.js (MSAL node) için Microsoft kimlik doğrulama kitaplığı kullanılmaktadır.
 
 > [!IMPORTANT]
 > MSAL düğümü [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz bir Azure aboneliği oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Node.js](https://nodejs.org/en/download/)
@@ -39,7 +41,7 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla Node.js (MSAL node) iç
 >
 > #### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 >
-> 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+> 1. [Azure portalında](https://portal.azure.com) oturum açın.
 > 1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst kısımdaki hesabınızı seçin ve ardından Portal oturumunuzu kullanmak istediğiniz Azure AD kiracısı olarak ayarlayın.
 > 1. [Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908)’nı seçin.
 > 1. **Yeni kayıt** seçeneğini belirleyin.

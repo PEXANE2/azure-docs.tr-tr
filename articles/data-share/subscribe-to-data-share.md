@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 10/30/2020
-ms.openlocfilehash: 752948d9dd6640a20963303833e7da613bc2e211
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 11/12/2020
+ms.openlocfilehash: 17c3e9ee157cedd31be39f472f619a2df9ae32a6
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577354"
+ms.locfileid: "94594190"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Öğretici: Azure Veri Paylaşımı’nı kullanarak veri kabul etme ve alma  
 
@@ -67,7 +67,7 @@ Azure SQL veritabanı 'na veri almayı seçerseniz Azure SYNAPSE Analytics, önk
  
 #### <a name="prerequisites-for-receiving-data-into-azure-synapse-analytics-workspace-sql-pool"></a>Azure SYNAPSE Analytics (çalışma alanı) SQL havuzu 'na veri alma önkoşulları
 
-* Bir Azure SYNAPSE Analytics (çalışma alanı) SQL Havuzu.
+* Bir Azure SYNAPSE Analytics (çalışma alanı) adanmış SQL Havuzu. Sunucusuz SQL havuzunda verilerin alınması Şu anda desteklenmiyor.
 * *Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar/Write* Içinde bulunan SYNAPSE çalışma alanındaki SQL havuzuna yazma izni. Bu izin **Katkıda Bulunan** rolünde vardır.
 * SYNAPSE çalışma alanı SQL havuzuna erişmek için veri paylaşımının yönetilen kimliği izni. Bu, aşağıdaki adımlarla yapılabilir: 
     1. Azure portal ' de SYNAPSE çalışma alanı ' na gidin. Sol gezinmede SQL Active Directory Yöneticisi ' ni seçin ve kendiniz **Azure Active Directory Yöneticisi** olarak ayarlayın.

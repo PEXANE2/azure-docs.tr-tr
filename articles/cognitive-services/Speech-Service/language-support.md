@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: a864717304dacaf6cf4c77c92050827af619ed39
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: cfd28171524ada5f5feea9e18e4b88a291254e88
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736682"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616799"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -36,7 +36,7 @@ To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
-| Dil                          | Yerel Ayar | Özelleştirmeler                                   |
+| Dil                          | Yerel ayar (BCP-47) | Özelleştirmeler                                   |
 |-----------------------------------|--------|--------------------------------------------------|
 |Arapça (Bahreyn), modern standart  |`ar-BH` | Dil modeli                                   |
 |Arapça (Mısır)                     |`ar-EG` | Dil modeli                                   |
@@ -136,7 +136,7 @@ Sinir sesleri, chatbots ve ses yardımcılarıyla daha doğal ve etkileyici bir 
 
 Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [bölgeler](regions.md#standard-and-neural-voices).
 
-|Dil  | Yerel Ayar           | Cinsiyet | Ses adı | Stil desteği |
+|Dil  | Yerel ayar (BCP-47)          | Cinsiyet | Ses adı | Stil desteği |
 |--|--|--|--|--|
 | Arapça (Mısır) | `ar-EG` | Kadın | `ar-EG-SalmaNeural` | Genel |
 | Arapça (Suudi Arabistan) | `ar-SA` | Kadın | `ar-SA-ZariyahNeural` | Genel |
@@ -219,7 +219,7 @@ Sinir seslerini nasıl yapılandıracağınızı ve ayarlayabileceğinizi öğre
 
 75 ' den fazla standart ses, daha fazla 45 dilde ve yerel ayarlarda bulunabilir ve bu da metni sentezleştirilmiş konuşmaya dönüştürmenize olanak tanır. Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [bölgeler](regions.md#standard-and-neural-voices).
 
-| Dil | Yerel Ayar | Cinsiyet | Ses adı |
+| Dil | Yerel ayar (BCP-47) | Cinsiyet | Ses adı |
 |--|--|--|--|
 | Arapça (Arapça)  |  `ar-EG`  |  Kadın  |  `ar-EG-Hoda`|
 | Arapça (Suudi Arabistan)  |  `ar-SA`  |  Erkek  |  `ar-SA-Naayf`|
@@ -397,7 +397,7 @@ Sinir seslerini nasıl yapılandıracağınızı ve ayarlayabileceğinizi öğre
 
 Çeşitli konuşmacı tanıma API 'Leri için desteklenen diller için aşağıdaki tabloya bakın. Konuşmacı Tanıma hakkında daha fazla bilgi için bkz. [genel bakış](speaker-recognition-overview.md) .
 
-| Dil | Yerel Ayar | Metne bağımlı doğrulama | Metnin bağımsız doğrulaması | Metnin bağımsız tanımlayıcısı |
+| Dil | Yerel ayar (BCP-47) | Metne bağımlı doğrulama | Metnin bağımsız doğrulaması | Metnin bağımsız tanımlayıcısı |
 |----|----|----|----|----|
 |İngilizce (ABD)  |  en-US  |  evet  |  evet  |  evet |
 |Çince (Mandarin, Basitleştirilmiş) | zh-CN     |     yok |     evet |     evet|

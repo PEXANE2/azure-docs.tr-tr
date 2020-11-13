@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/28/2020
+ms.date: 11/12/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 8f73f2a86e97dad1d6a0b0f05c54f3f896b4b49d
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: b670ec3cee2ebd1cc98ea2e04fb2b0dfd90e4e1a
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579224"
+ms.locfileid: "94594224"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. bulunan BLOB depolama özellikleri
 
@@ -29,7 +29,7 @@ Aşağıdaki tabloda, her bir BLOB depolama özelliğinin Data Lake Storage 2. i
 |---------------|-------------------|---|
 |Sık erişim katmanı|Genel kullanıma sunuldu|Desteklenmez|[Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](storage-blob-storage-tiers.md)|
 |Seyrek erişim katmanı|Genel kullanıma sunuldu|Desteklenmez|[Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](storage-blob-storage-tiers.md)|
-|Ekinlikler|Genel kullanıma sunuldu|Genel kullanıma sunuldu|[Blob depolama olaylarına yanıt verme](storage-blob-event-overview.md)|
+|Olaylar|Genel kullanıma sunuldu|Genel kullanıma sunuldu|[Blob depolama olaylarına yanıt verme](storage-blob-event-overview.md)|
 |Ölçümler (klasik)|Genel kullanıma sunuldu|Genel kullanıma sunuldu|[Azure Storage Analytics ölçümleri (klasik)](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Azure İzleyicisi'nde ölçümler|Genel kullanıma sunuldu|Önizleme|[Azure İzleyici’de Azure Depolama ölçümleri](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |BLOB depolama PowerShell komutları|Genel kullanıma sunuldu|Genel kullanıma sunuldu|[Hızlı başlangıç: PowerShell ile Blobları karşıya yükleme, indirme ve listeleme](storage-quickstart-blobs-powershell.md)|
@@ -52,8 +52,8 @@ Aşağıdaki tabloda, her bir BLOB depolama özelliğinin Data Lake Storage 2. i
 |Özel etki alanları|Henüz desteklenmiyor|Henüz desteklenmiyor|[Özel bir etki alanını Azure Blob depolama uç noktasıyla eşleme](storage-custom-domain-name.md)|
 |Şifreleme kapsamları|Henüz desteklenmiyor|Henüz desteklenmiyor|[Şifreleme kapsamları oluşturma ve yönetme (Önizleme)](encryption-scope-manage.md)|
 |Akışı değiştirme|Henüz desteklenmiyor|Henüz desteklenmiyor|[Azure Blob depolamada akış desteğini değiştirme](storage-blob-change-feed.md)|
-|Nesne çoğaltma|Henüz desteklenmiyor|Henüz desteklenmiyor|[Blok Blobları için nesne çoğaltmasını yapılandırma (Önizleme)](object-replication-configure.md)|
-|Blob sürümü oluşturma|Henüz desteklenmiyor|Henüz desteklenmiyor|[Blob sürüm oluşturmayı etkinleştirme ve yönetme (Önizleme)](versioning-enable.md)|
+|Nesne çoğaltma|Henüz desteklenmiyor|Henüz desteklenmiyor|[Blok Blobları için nesne çoğaltmasını yapılandırma](object-replication-configure.md)|
+|Blob sürümü oluşturma|Henüz desteklenmiyor|Henüz desteklenmiyor|[Blob sürüm oluşturmayı etkinleştirme ve yönetme](versioning-enable.md)|
 
 <div id="blob-container-ACL"><sup>1</sup> ACL 'leri kapsayıcının kök klasöründe ayarlayabilirsiniz, ancak kapsayıcının kendisi olamaz.</div><br>
 

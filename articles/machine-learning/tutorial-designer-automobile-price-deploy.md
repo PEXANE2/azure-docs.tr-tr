@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 06/28/2020
+ms.date: 11/13/2020
 ms.custom: designer
-ms.openlocfilehash: 31b742144bfb20af14cf6f5e95f5dfc951845ee2
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 5a5d166e36b2870ceb081c1c6d2635e01ab43a4d
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555524"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592558"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Öğretici: tasarımcı ile makine öğrenimi modeli dağıtma
 
@@ -112,6 +112,8 @@ Dağıtım bittikten sonra, **uç noktalar** sayfasına giderek gerçek zamanlı
 1. **Ayrıntılar** SEKMESINDE Rest URI, durum ve Etiketler gibi daha fazla bilgi görebilirsiniz.
 
 1. Kullanım sekmesinde **,** güvenlik anahtarlarını bulabilir ve kimlik doğrulama yöntemlerini ayarlayabilirsiniz.
+
+1. **Dağıtım günlükleri** sekmesinde, gerçek zamanlı uç noktanızın ayrıntılı dağıtım günlüklerini bulabilirsiniz. 
 
 Web hizmetinizi kullanma hakkında daha fazla bilgi için bkz. Web hizmeti [olarak dağıtılan bir modeli](how-to-consume-web-service.md) kullanma
 

@@ -6,16 +6,16 @@ ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.topic: tutorial
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 11/21/2019
-ms.openlocfilehash: 8173d53a5d4cac899b22f51a001f6e373f102236
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d2b45f5b51f4656294632aa46f679a7a09c06ed3
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790806"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593935"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Öğretici: Azure SQL yönetilen örneği ve SQL Server arasında işlemsel çoğaltmayı yapılandırma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "92790806"
 
 İşlemsel çoğaltma şu anda SQL yönetilen örneği için genel önizlemededir. 
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -155,7 +155,7 @@ VNet eşlemesi kurulduktan sonra, SQL Server SQL Server Management Studio (SSMS)
 
    ![Özel DNS bölgesi oluştur](./media/replication-two-instances-and-sql-server-configure-tutorial/create-private-dns-zone.png)
 
-1. **Gözden geçir ve oluştur** ’u seçin. Özel DNS bölgeniz için parametreleri gözden geçirin ve ardından **Oluştur** ' u seçerek kaynağı oluşturun.
+1. **Gözden geçir + oluştur** ’u seçin. Özel DNS bölgeniz için parametreleri gözden geçirin ve ardından **Oluştur** ' u seçerek kaynağı oluşturun.
 
 ### <a name="create-an-a-record"></a>Bir kayıt oluştur
 
@@ -170,7 +170,7 @@ VNet eşlemesi kurulduktan sonra, SQL Server SQL Server Management Studio (SSMS)
 ### <a name="link-the-virtual-network"></a>Sanal ağı bağlama
 
 1. Yeni **özel DNS bölgenize** gidin ve **sanal ağ bağlantıları** ' nı seçin.
-1. **+ Ekle** 'yi seçin.
+1. **+ Ekle** öğesini seçin.
 1. Bağlantı için gibi bir ad girin `Pub-link` .
 1. Açılır listeden aboneliğinizi seçin ve ardından yayımcı yönetilen örneğiniz için sanal ağı seçin.
 1. **Otomatik kaydolmayı etkinleştir ' in** yanındaki kutuyu işaretleyin.
@@ -283,13 +283,13 @@ Dağıtım yapılandırıldıktan sonra yayını oluşturabilirsiniz. Bunu yapma
 
 1. SQL Server üzerinde SQL Server Management Studio başlatın.
 1. `sql-mi-publisher`Yönetilen örneğe bağlanın.
-1. **Nesne Gezgini** , **çoğaltma** düğümünü genişletin ve **Yerel yayın** klasörüne sağ tıklayın. **Yeni yayın seç...** .
+1. **Nesne Gezgini** , **çoğaltma** düğümünü genişletin ve **Yerel yayın** klasörüne sağ tıklayın. **Yeni yayın seç...**.
 1. **İleri ' yi** seçerek hoş geldiniz sayfasının ötesine geçin.
 1. **Yayın veritabanı** sayfasında, `ReplTutorial` daha önce oluşturduğunuz veritabanını seçin. **İleri** ’yi seçin.
 1. **Yayın türü** sayfasında **işlem yayını** ' nı seçin. **İleri** ’yi seçin.
 1. **Makaleler** sayfasında, **Tablolar** ' ın yanındaki kutuyu işaretleyin. **İleri** ’yi seçin.
 1. **Tablo satırlarını filtrele** sayfasında herhangi bir filtre eklemeden **İleri** ' yi seçin.
-1. Anlık görüntü **Aracısı** sayfasında, anlık görüntü oluştur ' un yanındaki kutuyu işaretleyin **ve abonelikleri başlatmak için anlık görüntüyü kullanılabilir tutun** . **İleri** ’yi seçin.
+1. Anlık görüntü **Aracısı** sayfasında, anlık görüntü oluştur ' un yanındaki kutuyu işaretleyin **ve abonelikleri başlatmak için anlık görüntüyü kullanılabilir tutun**. **İleri** ’yi seçin.
 1. **Aracı Güvenlik** sayfasında **güvenlik ayarları...** öğesini seçin. Anlık görüntü Aracısı için kullanmak üzere SQL Server oturum açma kimlik bilgilerini sağlayın ve yayımcıya bağlanın. **Anlık görüntü Aracısı güvenlik** sayfasını kapatmak için **Tamam ' ı** seçin. **İleri** ’yi seçin.
 
    ![Snapshot Agent güvenliğini yapılandırma](./media/replication-two-instances-and-sql-server-configure-tutorial/snapshot-agent-security.png)

@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: af0e9cd66cf64366a6f563148fa6b075161151f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee9f49463e8e6749d29c810afaf7337cc99a98e8
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87875447"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616051"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Öğretici: Python’da TensorFlow modelini çalıştırma
 
-Özel Görüntü İşleme Hizmeti'ndeki [TensorFlow modelinizi dışarı aktardıktan](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) sonra bu hızlı başlangıcı izleyerek bu modeli görüntü sınıflandırma amacıyla yerel ortamda kullanabilirsiniz.
+Özel Görüntü İşleme Hizmeti'ndeki [TensorFlow modelinizi dışarı aktardıktan](./export-your-model.md) sonra bu hızlı başlangıcı izleyerek bu modeli görüntü sınıflandırma amacıyla yerel ortamda kullanabilirsiniz.
 
 > [!NOTE]
 > Bu öğretici yalnızca görüntü sınıflandırması projelerinden aktarılmış modeller için geçerlidir.
